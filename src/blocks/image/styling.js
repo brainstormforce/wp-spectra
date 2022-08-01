@@ -200,16 +200,17 @@ export default function styling( props ) {
 			),
 			'text-align': align
 		},
-		'.wp-block-uagb-image--layout-default img':{
+		'.wp-block-uagb-image--layout-default figure':{
 			'width': 'inherit',
 			'height': 'inherit',
 			'box-shadow': generateCSSUnit( imageBoxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( imageBoxShadowVOffset, 'px' ) +	' ' + generateCSSUnit( imageBoxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( imageBoxShadowSpread, 'px' ) + ' ' + imageBoxShadowColor + ' ' + getImageShadowPosition,
 			...imageBorderCSS
 		},
-		'.wp-block-uagb-image--layout-overlay img':{
+		'.wp-block-uagb-image--layout-overlay figure':{
 			'width': 'inherit',
 			'height': 'inherit',
 			'box-shadow': generateCSSUnit( imageBoxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( imageBoxShadowVOffset, 'px' ) +	' ' + generateCSSUnit( imageBoxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( imageBoxShadowSpread, 'px' ) + ' ' + imageBoxShadowColor + ' ' + getImageShadowPosition,
+			...imageBorderCSS
 		},
 		'.wp-block-uagb-image .wp-block-uagb-image__figure img:hover':{
 			'border-color': imageBorderHColor
@@ -388,7 +389,8 @@ export default function styling( props ) {
 		),
 	}
 
-	tablet_selectors['.wp-block-uagb-image--layout-default img'] = imageBorderCSSTablet
+	tablet_selectors['.wp-block-uagb-image--layout-default figure'] = imageBorderCSSTablet;
+	tablet_selectors['.wp-block-uagb-image--layout-overlay figure'] = imageBorderCSSTablet;
 
 	tablet_selectors['.wp-block-uagb-image'] = {
 		'margin-top': generateCSSUnit(
@@ -492,7 +494,8 @@ export default function styling( props ) {
 		),
 	}
 
-	mobile_selectors['.wp-block-uagb-image--layout-default img'] = imageBorderCSSMobile;
+	mobile_selectors['.wp-block-uagb-image--layout-default figure'] = imageBorderCSSMobile;
+	mobile_selectors['.wp-block-uagb-image--layout-overlay figure'] = imageBorderCSSMobile;
 
 	mobile_selectors['.wp-block-uagb-image'] = {
 		'margin-top': generateCSSUnit(
