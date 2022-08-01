@@ -218,18 +218,18 @@ function styling( props ) {
 		' .wp-block-uagb-container .block-editor-block-list__block a:hover' : {
 			'color': linkHoverColor,
 		},
-		' > .wp-block-uagb-container > .uagb-container__shape-top svg' : {
+		' > .uagb-container__shape-top svg' : {
 			'width': 'calc( ' + topWidth + '% + 1.3px )',
 			'height': generateCSSUnit( topHeight, 'px' )
 		},
-		' > .wp-block-uagb-container > .uagb-container__shape-top .uagb-container__shape-fill' : {
+		' > .uagb-container__shape-top .uagb-container__shape-fill' : {
 			'fill': hexToRgba( maybeGetColorForVariable( topColor ), 100 ),
 		},
-		' > .wp-block-uagb-container > .uagb-container__shape-bottom svg' : {
+		' > .uagb-container__shape-bottom svg' : {
 			'width': 'calc( ' + bottomWidth + '% + 1.3px )',
 			'height': generateCSSUnit( bottomHeight, 'px' )
 		},
-		' > .wp-block-uagb-container > .uagb-container__shape-bottom .uagb-container__shape-fill' : {
+		' > .uagb-container__shape-bottom .uagb-container__shape-fill' : {
 			'fill': hexToRgba( maybeGetColorForVariable( bottomColor ), 100 ),
 		},
 		' .uagb-container__video-wrap' : {
@@ -426,10 +426,10 @@ function styling( props ) {
 			'flex-wrap' : wrapTablet,
 			'align-content' : alignContentTablet,
 		},
-		' > .wp-block-uagb-container > .uagb-container__shape-top svg' : {
+		' > .uagb-container__shape-top svg' : {
 			'height': generateCSSUnit( topHeightTablet, 'px' )
 		},
-		' > .wp-block-uagb-container > .uagb-container__shape-bottom svg' : {
+		' > .uagb-container__shape-bottom svg' : {
 			'height': generateCSSUnit( bottomHeightTablet, 'px' )
 		},
 	};
@@ -485,10 +485,10 @@ function styling( props ) {
 			'flex-wrap' : wrapMobile,
 			'align-content' : alignContentMobile,
 		},
-		' > .wp-block-uagb-container > .uagb-container__shape-top svg' : {
+		' > .uagb-container__shape-top svg' : {
 			'height': generateCSSUnit( topHeightMobile, 'px' )
 		},
-		' > .wp-block-uagb-container > .uagb-container__shape-bottom svg' : {
+		' > .uagb-container__shape-bottom svg' : {
 			'height': generateCSSUnit( bottomHeightMobile, 'px' )
 		},
 	};
