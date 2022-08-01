@@ -168,22 +168,31 @@ const TextShadowControl = ( props ) => {
 							}
 						}
 						toggleAdvancedControls( ! showAdvancedControls )
-						if ( ! showAdvancedControls ) {
-							const blockName = getSelectedBlock()?.name;
-							const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
-							const data = {
+
+						const blockName = getSelectedBlock()?.name;
+						const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+						let data = {
+							...uagSettingState,
+							[blockName] : {
+								...uagSettingState?.[blockName],
+								selectedSetting : '.uag-text-shadow-options'
+							}
+						}
+
+						if ( showAdvancedControls ) {
+							data = {
 								...uagSettingState,
 								[blockName] : {
 									...uagSettingState?.[blockName],
-									selectedSetting : '.uag-text-shadow-options'
+									selectedSetting : false
 								}
 							}
-
-							const uagLocalStorage = getUAGEditorStateLocalStorage();
-							if ( uagLocalStorage ) {
-								uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
-							}
 						}
+						const uagLocalStorage = getUAGEditorStateLocalStorage();
+						if ( uagLocalStorage ) {
+							uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
+						}
+
 					}
 				}
 			>

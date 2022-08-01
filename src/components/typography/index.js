@@ -343,7 +343,7 @@ const TypographyControl = ( props ) => {
 						if ( ! showAdvancedControls ) {
 							const blockName = getSelectedBlock()?.name;
 							const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
-							const data = {
+							let data = {
 								...uagSettingState,
 								[blockName] : {
 									...uagSettingState?.[blockName],
@@ -351,6 +351,15 @@ const TypographyControl = ( props ) => {
 								}
 							}
 
+							if ( showAdvancedControls ) {
+								data = {
+									...uagSettingState,
+									[blockName] : {
+										...uagSettingState?.[blockName],
+										selectedSetting : false
+									}
+								}
+							}
 							const uagLocalStorage = getUAGEditorStateLocalStorage();
 							if ( uagLocalStorage ) {
 								uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );

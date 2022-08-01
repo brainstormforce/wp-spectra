@@ -208,7 +208,7 @@ const BoxShadowControl = ( props ) => {
 			</span>
 			<Button
 				className={ classNames(
-					'uag-box-shadow-button spectra-control-popup__options--action-button',					
+					'uag-box-shadow-button spectra-control-popup__options--action-button',
 					isBoxShadowUpdated ? 'spectra-control-popup__status--updated' : '',
 				) }
 				aria-pressed={ showAdvancedControls }
@@ -221,21 +221,29 @@ const BoxShadowControl = ( props ) => {
 							}
 						}
 						toggleAdvancedControls( ! showAdvancedControls )
-						if ( ! showAdvancedControls ) {
-							const blockName = getSelectedBlock()?.name;
-							const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
-							const data = {
+
+						const blockName = getSelectedBlock()?.name;
+						const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+						let data = {
+							...uagSettingState,
+							[blockName] : {
+								...uagSettingState?.[blockName],
+								selectedSetting : '.uag-box-shadow-options'
+							}
+						}
+
+						if ( showAdvancedControls ) {
+							data = {
 								...uagSettingState,
 								[blockName] : {
 									...uagSettingState?.[blockName],
-									selectedSetting : '.uag-box-shadow-options'
+									selectedSetting : false
 								}
 							}
-
-							const uagLocalStorage = getUAGEditorStateLocalStorage();
-							if ( uagLocalStorage ) {
-								uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
-							}
+						}
+						const uagLocalStorage = getUAGEditorStateLocalStorage();
+						if ( uagLocalStorage ) {
+							uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
 						}
 					}
 				}
