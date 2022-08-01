@@ -1,3 +1,7 @@
+.wp-admin {
+	overflow-y: scroll;
+}
+
 #wpbody-content > .notice:not(.uag-notice),
 #wpbody-content > .error {
 	display: none !important;
