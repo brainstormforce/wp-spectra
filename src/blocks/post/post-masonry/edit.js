@@ -361,6 +361,7 @@ const UAGBPostMasonry = ( props ) => {
 
 	const onSelectOffset = ( value ) => {
 		setAttributes( { enableOffset: value } );
+		setAttributes( { paginationType: 'none' } ); // setting up pagination none when enableOffset is true.
 	};
 
 	const {

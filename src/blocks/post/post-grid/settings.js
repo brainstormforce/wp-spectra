@@ -281,6 +281,7 @@ const Settings = ( props ) => {
 	};
 	const onSelectOffset = ( value ) => {
 		setAttributes( { enableOffset: value } );
+		setAttributes( { postPagination: !value } ); // disable pagination when enableOffset is true.
 	};
 	const onChangePostsPerPage = ( value ) => {
 		setAttributes( { postsToShow: value } );
