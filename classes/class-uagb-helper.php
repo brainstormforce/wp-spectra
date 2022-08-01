@@ -330,7 +330,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function get_query( $attributes, $block_type ) {
 			$fallback_for_posts_to_show = UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] );
-			$fallback_for_offset      = UAGB_Block_Helper::get_fallback_number( $attributes['postsOffset'], 'postsOffset', $attributes['blockName'] );
+			$fallback_for_offset        = UAGB_Block_Helper::get_fallback_number( $attributes['postsOffset'], 'postsOffset', $attributes['blockName'] );
 			// Block type is grid/masonry/carousel/timeline.
 			$query_args = array(
 				'posts_per_page'      => $fallback_for_posts_to_show,
@@ -342,7 +342,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				'paged'               => 1,
 			);
 
-			if ( $attributes['enableOffset'] ) {
+			if ( isset( $attributes['enableOffset'] ) && false !== $attributes['enableOffset'] && 0 !== $attributes['postsOffset'] ) {
 				$query_args['offset'] = $fallback_for_offset;
 			}
 

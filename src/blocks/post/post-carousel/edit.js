@@ -669,7 +669,7 @@ const UAGBPostCarousel = ( props ) => {
 				{ enableOffset && (
 				<Range
 					label={ __(
-						'Offset',
+						'Offset By',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={ setAttributes }
