@@ -40,9 +40,7 @@
                 enableDescription,
                 enableImage,
                 ctaTarget,
-                ctaLink,
-				imgTagHeight,
-				imgTagWidth,
+                ctaLink
             } = attributes
 
                 const newAverage = parts.map((i) => i.value).reduce((total, v) => total + v) / parts.length;
@@ -70,8 +68,7 @@
 
             if ( mainimage && mainimage.url ) {
 
-                image_icon_html = <img className="uagb-howto__source-image" src={url} title={title}
-									width={ imgTagWidth} height={ imgTagHeight} loading="lazy"/>
+                image_icon_html = <img className="uagb-howto__source-image" src={url} title={title} />
 
             }
 

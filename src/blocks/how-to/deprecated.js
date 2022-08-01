@@ -35,8 +35,6 @@ const deprecated = [
 				showEstcost,
 				showTools,
 				showMaterials,
-				imgTagHeight,
-				imgTagWidth,
 			} = attributes;
 
 			let urlChk = '';
@@ -73,8 +71,6 @@ const deprecated = [
 						className="uagb-howto__source-image"
 						src={ url }
 						title={ title }
-						width={imgTagWidth} height={imgTagHeight}
-						loading="lazy"
 					/>
 				);
 			}
@@ -293,8 +289,6 @@ const deprecated = [
 						className="uagb-howto__source-image"
 						src={ url }
 						title={ title }
-						width={imgTagWidth} height={imgTagHeight}
-						loading="lazy"
 					/>
 				);
 			}

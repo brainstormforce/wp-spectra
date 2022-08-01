@@ -66,7 +66,6 @@ const deprecated = [
 									<img
 										className="uagb-ss__source-image"
 										src={ social.image.url }
-										width="640" height="360" loading="lazy"
 									/>
 								);
 							}
@@ -147,7 +146,6 @@ const deprecated = [
 									<img
 										className="uagb-ss__source-image"
 										src={ social.image.url }
-										width="640" height="360" loading="lazy"
 									/>
 								);
 							}
@@ -228,7 +226,6 @@ const deprecated = [
 									<img
 										className="uagb-ss__source-image"
 										src={ social.image.url }
-										width="640" height="360" loading="lazy"
 									/>
 								);
 							}
