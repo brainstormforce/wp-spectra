@@ -75,7 +75,8 @@
 					outline: none;
 				}
 
-				&:hover {
+				&:hover,
+				&.spectra-control-popup__status--updated {
 					color: $spectra-color-primary;
 				}
 			}
