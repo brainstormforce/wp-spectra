@@ -154,6 +154,7 @@ export default function Image( {
 					} );
 				} }
 				ref={ imageRef }
+				loading="lazy"
 			/>
 			{ temporaryURL && <Spinner /> }
 		</>

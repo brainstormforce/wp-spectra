@@ -38,6 +38,7 @@ export default function Save( props ) {
 			width={ width }
 			height={ height }
 			title={ title }
+			loading="lazy"
 		/>
 	);
 	// block validation issue fixing - ImageURLInputUI components automatic provide "noopener"
