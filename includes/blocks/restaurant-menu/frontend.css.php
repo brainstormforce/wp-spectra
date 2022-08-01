@@ -151,6 +151,26 @@ if ( 'none' !== $attr['seperatorStyle'] ) {
 		'width' => UAGB_Helper::get_css_value( $seperator_width_mobile_fallback, $attr['seperatorWidthType'] ),
 	);
 }
+if( $attr['columns'] === 1 ) {
+	$selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
+		'grid-template-columns' => 'auto',
+	);
+} 
+if( $attr['columns'] === 2 ) {
+	$selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
+		'grid-template-columns' => 'auto auto',
+	);
+}
+if( $attr['columns'] === 3 ) {
+	$selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
+		'grid-template-columns' => 'auto auto auto',
+	);
+}
+if( $attr['columns'] === 4 ) {
+	$selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
+		'grid-template-columns' => 'auto auto auto auto',
+	);
+}
 if ( $attr['imgAlign'] === 'side' ) {
 	$selectors[' .wp-block-uagb-restaurant-menu-child .uagb-rm__content'] = array(
 		'align-items' => $attr['imageAlignment'] === 'top' ? 'flex-start' : 'center',
