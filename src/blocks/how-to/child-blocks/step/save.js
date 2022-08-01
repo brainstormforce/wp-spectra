@@ -9,7 +9,7 @@ import { RichText } from '@wordpress/block-editor';
 export default function save( props ) {
 	const { attributes } = props;
 
-	const { 
+	const {
 		block_id,
 		name,
 		description,
@@ -19,7 +19,9 @@ export default function save( props ) {
 		imageSize,
 		urlText,
 		urlTarget,
-		imgPosition
+		imgPosition,
+		imgTagHeight,
+		imgTagWidth,
 	} = attributes;
 
 	let urlCheck = '';
@@ -34,7 +36,7 @@ export default function save( props ) {
 	let imageUrl = '';
 	if ( urlCheck !== '' ) {
 		const size = image.sizes;
-		
+
 		if (
 			typeof size !== 'undefined' &&
 			typeof size[ imageSize ] !== 'undefined'
@@ -55,6 +57,8 @@ export default function save( props ) {
 			className="uagb-how-to-step-image"
 			src={ imageUrl }
 			alt={ image.alt }
+			width={imgTagWidth} height={imgTagHeight}
+			loading="lazy"
 		/>
 	);
 	const contentMarkup = (
