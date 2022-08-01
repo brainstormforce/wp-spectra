@@ -64,9 +64,9 @@ const Render = ( props ) => {
 		target = '_blank';
 	}
 
-	useEffect(()=>{
-		getImageHeightWidth( imageUrl, setAttributes)
-	},[ imageUrl ])
+	useEffect( () => {
+		getImageHeightWidth( imageUrl, setAttributes )
+	}, [ imageUrl ] )
 
 	const imageMarkup = (
 		<img

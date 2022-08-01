@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import PositionClasses from './classes';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import React, { lazy, Suspense, useLayoutEffect, useRef, useEffect } from 'react';
+import React, { lazy, Suspense, useLayoutEffect, useRef } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TestimonialImage from './components/Image';
 import AuthorName from './components/AuthorName';
@@ -50,8 +50,6 @@ const Render = ( props ) => {
 		autoplaySpeed,
 		arrowColor,
 		equalHeight,
-		imageWidthTablet,
-		imageWidthMobile
 	} = attributes;
 
 	const sliderRef = useRef();
@@ -128,19 +126,6 @@ const Render = ( props ) => {
 	};
 
 	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/testimonials.png`;
-
-	// useEffect(()=>{
-	// 	if ( deviceType === 'Desktop'){
-	// 		setAttributes({responsiveImageWidth: imageWidth})
-	// 	}
-	// 	else if( deviceType === 'Tablet' ){
-	// 		setAttributes({responsiveImageWidth: imageWidthTablet})
-	// 	}
-	// 	else{
-	// 		setAttributes({responsiveImageWidth: imageWidthMobile})
-	// 	}
-
-	// },[ deviceType ])
 
 	return (
 		isPreview ? <img width='100%' src={previewImageData} alt=''/> :

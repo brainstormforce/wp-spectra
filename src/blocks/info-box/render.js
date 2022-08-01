@@ -52,9 +52,9 @@ const Render = ( props ) => {
 	const seperatorHtml = <InfoBoxSeparator attributes={ attributes } />;
 	let showSeperator = true;
 
-	useEffect( ()=>{
-		getImageHeightWidth( attributes.iconImage.url, setAttributes)
-	},[ attributes.imageSize ])
+	useEffect( ()=> {
+		getImageHeightWidth( attributes.iconImage.url, setAttributes )
+	}, [ attributes.imageSize ] )
 
 	if (
 		seperatorPos === 'after_icon' &&
