@@ -21,7 +21,7 @@ const Render = ( props ) => {
 	const {
 		className,
 		setAttributes,
-		attributes: { isPreview, rating, range, title, displayTitle, starPosition },
+		attributes: { isPreview, rating, range, title, displayTitle },
 	} = props;
 
 	const rangeValue = parseInt( range );
@@ -40,7 +40,6 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				'before' === starPosition ? `uagb-star-position-${ starPosition }` : '',
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
 			) }
 		>

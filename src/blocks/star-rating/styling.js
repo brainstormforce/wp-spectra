@@ -193,36 +193,34 @@ function styling( props ) {
 	if ( 'stack' === layout ) {
 		if( 'before' === starPosition ){
 			index = 'margin-top';
-			selectors[ '.wp-block-uagb-star-rating.uagb-star-position-before' ] = {
+			selectors[ '.wp-block-uagb-star-rating' ] = {
 				'flex-direction': 'column-reverse',
 				'align-items': flexJustifyContent( align ), // To align-item in flex-direction column-reverse.
 			}
 		} else if( 'after' === starPosition ) {
 			index = 'margin-bottom';
+			selectors[ '.wp-block-uagb-star-rating' ] = {
+				'flex-direction' : 'column', // Stack layout using flex.
+				'align-items' : flexJustifyContent( align ), // To align-item in flex-direction column.
+				...wrapperCSS
+			};
 		}
-
-		selectors[ '.wp-block-uagb-star-rating' ] = {
-			'flex-direction' : 'column', // Stack layout using flex.
-			'align-items' : flexJustifyContent( align ), // To align-item in flex-direction column.
-			...wrapperCSS
-		};
 	} else if( 'inline' === layout ) {
 		if( 'before' === starPosition ){
 			index = 'margin-left';
-
-			selectors[ '.wp-block-uagb-star-rating.uagb-star-position-before' ] = {
+			selectors[ '.wp-block-uagb-star-rating' ] = {
 				'flex-direction': 'row-reverse',
 				'justify-content': flexAlignmentWhenDirectionIsRowReverse( align ),
 			}
 		} else if( 'after' === starPosition ) {
 			index = 'margin-right';
+			selectors[ '.wp-block-uagb-star-rating' ] = {
+				'flex-direction' : 'row', // inline layout using flex.
+				'align-items'    : 'center',
+				'justify-content' : flexJustifyContent( align ),
+				...wrapperCSS
+			};
 		}
-		selectors[ '.wp-block-uagb-star-rating' ] = {
-			'flex-direction' : 'row', // inline layout using flex.
-			'align-items'    : 'center',
-			'justify-content' : flexJustifyContent( align ),
-			...wrapperCSS
-		};
 	}
 
 	selectors[ ' p.uag-star-rating__title.block-editor-rich-text__editable' ][
@@ -301,38 +299,38 @@ function styling( props ) {
 		},
 	};
 
-	let indexTablet = 'margin-right';
+	let indexTablet = 'margin-right'; console.log(starPositionTablet)
 	if ( 'stack' === layoutTablet ) {
 		if( 'before' === starPositionTablet ){
 			indexTablet = 'margin-top';
-			tabletSelectors[ '.wp-block-uagb-star-rating.uagb-star-position-before ' ] = {
+			tabletSelectors[ '.wp-block-uagb-star-rating ' ] = {
 				'flex-direction': 'column-reverse',
 				'align-items': flexJustifyContent( alignTablet ), // To align-item in flex-direction column-reverse.
 			}
 		} else if( 'after' === starPositionTablet ) {
 			indexTablet = 'margin-bottom';
+			tabletSelectors[ '.wp-block-uagb-star-rating ' ] = {
+				'flex-direction': 'column',
+				'align-items': flexJustifyContent( alignTablet ), // To align-item in flex-direction column.
+				...wrapperCSSTablet
+			};
 		}
-		tabletSelectors[ '.wp-block-uagb-star-rating ' ] = {
-			'flex-direction': 'column',
-			'align-items': flexJustifyContent( alignTablet ), // To align-item in flex-direction column.
-			...wrapperCSSTablet
-		};
 	}  else if( 'inline' === layoutTablet ) {
 		if( 'before' === starPositionTablet ){
 			indexTablet = 'margin-left';
-			tabletSelectors[ '.wp-block-uagb-star-rating.uagb-star-position-before ' ] = {
+			tabletSelectors[ '.wp-block-uagb-star-rating ' ] = {
 				'flex-direction': 'row-reverse',
 				'justify-content': flexAlignmentWhenDirectionIsRowReverse( alignTablet ),
 			}
 		} else if( 'after' === starPositionTablet ) {
 			indexTablet = 'margin-right';
+			tabletSelectors[ '.wp-block-uagb-star-rating ' ] = {
+				'flex-direction': 'row',
+				'align-items'    : 'center',
+				'justify-content' : flexJustifyContent( alignTablet ),
+				...wrapperCSSTablet
+			};
 		}
-		tabletSelectors[ '.wp-block-uagb-star-rating ' ] = {
-			'flex-direction': 'row',
-			'align-items'    : 'center',
-			'justify-content' : flexJustifyContent( alignTablet ),
-			...wrapperCSSTablet
-		};
 	}
 
 	const wrapperCSSMobile = {
@@ -391,36 +389,36 @@ function styling( props ) {
 	if ( 'stack' === layoutMobile ) {
 		if( 'before' === starPositionMobile ){
 			indexMobile = 'margin-top';
-			mobileSelectors[ '.wp-block-uagb-star-rating.uagb-star-position-before ' ] = {
+			mobileSelectors[ '.wp-block-uagb-star-rating ' ] = {
 				'flex-direction': 'column-reverse',
 				'align-items': flexJustifyContent( alignMobile ), // To align-item in flex-direction column-reverse.
 			}
 		} else if( 'after' === starPositionMobile ) {
 			indexMobile = 'margin-bottom';
+			mobileSelectors[ '.wp-block-uagb-star-rating ' ] = {
+				'flex-direction': 'column',
+				'align-items': flexJustifyContent( alignMobile ),
+				...wrapperCSSMobile
+			};
 		}
-		mobileSelectors[ '.wp-block-uagb-star-rating ' ] = {
-			'flex-direction': 'column',
-			'align-items': flexJustifyContent( alignMobile ),
-			...wrapperCSSMobile
-		};
 	}  else if( 'inline' === layoutMobile ) {
 		if( 'before' === starPositionMobile ){
 
 			indexMobile = 'margin-left';
-			mobileSelectors[ '.wp-block-uagb-star-rating.uagb-star-position-before ' ] = {
+			mobileSelectors[ '.wp-block-uagb-star-rating ' ] = {
 				'flex-direction': 'row-reverse',
 				'justify-content': flexAlignmentWhenDirectionIsRowReverse( alignMobile ) ,
 			}
 		} else if( 'after' === starPositionMobile ) {
 			indexMobile = 'margin-right';
+			mobileSelectors[ '.wp-block-uagb-star-rating ' ] = {
+				'flex-direction': 'row',
+				'align-items'    : 'center',
+				'justify-content': flexJustifyContent( alignMobile ),
+				'margin-bottom' : 0,
+				...wrapperCSSMobile
+			};
 		}
-		mobileSelectors[ '.wp-block-uagb-star-rating ' ] = {
-			'flex-direction': 'row',
-			'align-items'    : 'center',
-			'justify-content': flexJustifyContent( alignMobile ),
-			'margin-bottom' : 0,
-			...wrapperCSSMobile
-		};
 		mobileSelectors[ ' p.block-editor-rich-text__editable.uag-star-rating__title ' ] = {
 			'margin-bottom' : 0,
 		};

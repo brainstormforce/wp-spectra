@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
-	const { rating, block_id, title, range, displayTitle, starPosition } = props.attributes;
+	const { rating, block_id, title, range, displayTitle } = props.attributes;
 
 	const rangeValue = parseInt( range );
 	const stars = [];
@@ -21,7 +21,6 @@ export default function save( props ) {
 		<div
 			className={ classnames(
 				props.className,
-				'before' === starPosition ? `uagb-star-position-${ starPosition }` : '',
 				`uagb-block-${ block_id }`
 			) }
 		>

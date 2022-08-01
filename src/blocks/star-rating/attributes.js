@@ -11,12 +11,14 @@ const attributes = {
 	},
 	layoutTablet: {
 		type: 'string',
+		default: 'inline',
 		UAGCopyPaste: {
 			styleType: 'layout-tablet'
 		},
 	},
 	layoutMobile: {
 		type: 'string',
+		default: 'inline',
 		UAGCopyPaste: {
 			styleType: 'layout-mobile'
 		},
