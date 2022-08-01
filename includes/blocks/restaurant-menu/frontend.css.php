@@ -37,10 +37,6 @@ $title_space_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['ti
 $title_space_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleSpaceTablet'], 'titleSpaceTablet', $block_name );
 $title_space_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleSpaceMobile'], 'titleSpaceMobile', $block_name );
 
-$column_fallback  = UAGB_Block_Helper::get_fallback_number( $attr['columns'], 'columns', $block_name );
-$attr['tcolumns'] = is_numeric( $attr['tcolumns'] ) ? $attr['tcolumns'] : $column_fallback;
-$attr['mcolumns'] = is_numeric( $attr['mcolumns'] ) ? $attr['mcolumns'] : $attr['tcolumns'];
-
 $align = $attr['headingAlign'];
 if ( 'left' === $align ) {
 	$align = 'flex-start';
@@ -58,10 +54,9 @@ $contentPaddingBottom = isset( $attr['contentPaddingBottom'] ) ? $attr['contentP
 $contentPaddingLeft   = isset( $attr['contentPaddingLeft'] ) ? $attr['contentPaddingLeft'] : $attr['contentHrPadding'];
 
 $selectors = array(
-	' .uagb-rest_menu__wrap'      => array(
-		'padding-left'  => UAGB_Helper::get_css_value( ( $column_gap_fallback / 2 ), $attr['columnGapType'] ),
-		'padding-right' => UAGB_Helper::get_css_value( ( $column_gap_fallback / 2 ), $attr['columnGapType'] ),
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, $attr['rowGapType'] ),
+	'.wp-block-uagb-restaurant-menu'      => array(
+		'column-gap' => UAGB_Helper::get_css_value( $column_gap_fallback, $attr['columnGapType'] ),
+		'row-gap' => UAGB_Helper::get_css_value( $row_gap_fallback, $attr['rowGapType'] ),
 	),
 	' .uagb-rest_menu__wrap img'  => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $imgPaddingLeft, $attr['imgPaddingUnit'] ),
@@ -71,11 +66,11 @@ $selectors = array(
 		'width'          => UAGB_Helper::get_css_value( $image_width_fallback, $attr['imageWidthType'] ),
 		'max-width'      => UAGB_Helper::get_css_value( $image_width_fallback, $attr['imageWidthType'] ),
 	),
+	// Backward
 	' .uagb-rm__separator-parent' => array(
 		'justify-content' => $align,
 	),
 	' .uagb-rm__content'          => array(
-		'text-align'     => $attr['headingAlign'],
 		'padding-left'   => UAGB_Helper::get_css_value( $contentPaddingLeft, $attr['contentPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $contentPaddingRight, $attr['contentPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $contentPaddingTop, $attr['contentPaddingUnit'] ),
@@ -94,27 +89,13 @@ $selectors = array(
 	),
 );
 
-$selectors[ ' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $column_fallback . ':nth-child(' . $column_fallback . 'n+1)' ] = array(
-	'margin-left' => '0',
-	'clear'       => 'left',
-);
-
 $t_selectors = array(
 	' .uagb-rest_menu__wrap .uagb-rm__content .uagb-rm-details .uagb-rm__title' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $title_space_tablet_fallback, $attr['titleSpaceType'] ),
 	),
-	' .uagb-rest_menu__wrap'     => array(
-		'padding-left'  => UAGB_Helper::get_css_value( ( $attr['columnGapTablet'] / 2 ), $attr['columnGapType'] ),
-		'padding-right' => UAGB_Helper::get_css_value( ( $attr['columnGapTablet'] / 2 ), $attr['columnGapType'] ),
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_tablet_fallback, $attr['rowGapType'] ),
-	),
-	' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $column_fallback . ':nth-child(' . $column_fallback . 'n+1)' => array(
-		'margin-left' => 'unset',
-		'clear'       => 'unset',
-	),
-	' .uagb-rest_menu__wrap.uagb-rm__tablet-column-' . $attr['tcolumns'] . ':nth-child(' . $attr['tcolumns'] . 'n+1)' => array(
-		'margin-left' => '0',
-		'clear'       => 'left',
+	'.wp-block-uagb-restaurant-menu'      => array(
+		'column-gap' => UAGB_Helper::get_css_value( $attr['columnGapTablet'], $attr['columnGapType'] ),
+		'row-gap' => UAGB_Helper::get_css_value( $row_gap_tablet_fallback , $attr['rowGapType'] ),
 	),
 	' .uagb-rest_menu__wrap img' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['imgPaddingLeftTablet'], $attr['imgTabletPaddingUnit'] ),
@@ -136,18 +117,9 @@ $m_selectors = array(
 	' .uagb-rest_menu__wrap .uagb-rm__content .uagb-rm-details .uagb-rm__title' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $title_space_mobile_fallback, $attr['titleSpaceType'] ),
 	),
-	' .uagb-rest_menu__wrap'     => array(
-		'padding-left'  => UAGB_Helper::get_css_value( ( $attr['columnGapMobile'] / 2 ), $attr['columnGapType'] ),
-		'padding-right' => UAGB_Helper::get_css_value( ( $attr['columnGapMobile'] / 2 ), $attr['columnGapType'] ),
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_mobile_fallback, $attr['rowGapType'] ),
-	),
-	' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $column_fallback . ':nth-child(' . $column_fallback . 'n+1)' => array(
-		'margin-left' => 'unset',
-		'clear'       => 'unset',
-	),
-	' .uagb-rest_menu__wrap.uagb-rm__mobile-column-' . $attr['mcolumns'] . ':nth-child(' . $attr['mcolumns'] . 'n+1)' => array(
-		'margin-left' => '0',
-		'clear'       => 'left',
+	'.wp-block-uagb-restaurant-menu'      => array(
+		'column-gap' => UAGB_Helper::get_css_value( $attr['columnGapMobile'], $attr['columnGapType'] ),
+		'row-gap' => UAGB_Helper::get_css_value( $row_gap_mobile_fallback , $attr['rowGapType'] ),
 	),
 	' .uagb-rest_menu__wrap img' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['imgPaddingLeftMobile'], $attr['imgMobilePaddingUnit'] ),
@@ -179,7 +151,66 @@ if ( 'none' !== $attr['seperatorStyle'] ) {
 		'width' => UAGB_Helper::get_css_value( $seperator_width_mobile_fallback, $attr['seperatorWidthType'] ),
 	);
 }
+if( $attr['imgAlign'] === 'side' ) {
+	$selectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = array(
+		'align-items' => $attr['imageAlignment'] === 'top' ? 'flex-start' : 'center',
+		'display' => 'inline-flex'
+	);
 
+	if( $attr['stack'] === 'tablet' ) {
+		$t_selectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = array(
+			'display' => 'block',
+			'text-align' => $attr['imagePosition'] === 'left' ? 'left' : 'right'
+		);
+		$m_selectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = array(
+			'display' => 'block',
+			'text-align' => $attr['imagePosition'] === 'left' ? 'left' : 'right'
+		);
+	} else if ( $attr['stack'] === 'mobile' ) {
+		$m_selectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = array(
+			'display' => 'block',
+			'text-align' => $attr['imagePosition'] === 'left' ? 'left' : 'right'
+		);
+	}
+	if( $attr['imagePosition'] === 'left' ) {
+		$selectors[ ' .uagb-rm-details' ] = array(
+			'text-align' => 'left'
+		);
+	} else if(  $attr['imagePosition'] === 'right' ) {
+		$selectors[ ' .uagb-rm-details' ] = array(
+			'text-align' => 'right'
+		);
+		$selectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__separator'] = array(
+			'margin-left'=> 'auto'
+		);
+	} 
+}
+
+if( $attr['imgAlign'] === 'top' ) {
+	$selectors[ ' .wp-block-uagb-restaurant-menu-child ' ] = array(
+		'text-align' => $attr['headingAlign'],
+		'display'=> 'block'
+	);
+	$selectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = array(
+		'text-align' => $attr['headingAlign'],
+		'display' => 'inline-flex',
+	);
+	if ( 'center' === $attr['headingAlign'] ) {
+		$selectors[ ' .uagb-rm__content ' ] = array(
+			'display' => 'block'
+		);
+		$selectors[ ' .uagb-rm__content ' ] = array(
+			'display' => 'block'
+		);
+		$selectors[ ' .wp-block-uagb-restaurant-menu-child  .uagb-rm__separator'] = array(
+			'margin'=> '0 auto'
+		);
+	} else if ( 'right' === $attr['headingAlign'] ) {
+		$selectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__separator'] = array(
+			'margin-left'=> 'auto'
+		);
+	}
+}
 $combined_selectors = array(
 	'desktop' => $selectors,
 	'tablet'  => $t_selectors,
