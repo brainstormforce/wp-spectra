@@ -2,7 +2,6 @@ const RestMenuImage = ( props ) => {
 	const { attributes, index_value } = props;
 	let urlCheck = '';
 	let imageArr = '';
-	const { imageWidth } = attributes
 
 	if ( typeof index_value !== 'undefined' ) {
 		const imageArray = attributes.rest_menu_item_arr[ index_value ];
@@ -41,7 +40,7 @@ const RestMenuImage = ( props ) => {
 			return (
 				<div className="uagb-rm__image-content">
 					<div className="uagb-rm__image">
-						<img className="" src={ url } alt={ image.alt }  width={imageWidth} loading="lazy" />
+						<img className="" src={ url } alt={ image.alt } />
 					</div>
 				</div>
 			);
