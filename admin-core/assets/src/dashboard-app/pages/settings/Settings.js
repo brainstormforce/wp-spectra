@@ -58,8 +58,8 @@ const Settings = () => {
     return (
         <>
             <div className="max-w-3xl mx-auto lg:max-w-[77rem] mt-10 mb-8 font-semibold text-2xl">Settings</div>
-            <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-md shadow overflow-hidden h-[36rem]">
-                <div className="lg:grid lg:grid-cols-12 h-full">
+            <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-md shadow overflow-hidden min-h-[36rem]">
+                <div className="lg:grid lg:grid-cols-12 min-h-[36rem] h-full">
                     <aside className="py-6 sm:px-6 lg:py-6 lg:px-0 lg:col-span-3">
                         <nav className="space-y-1">
                             {navigation.map( ( item ) => (
@@ -85,7 +85,7 @@ const Settings = () => {
                         ) )}
                         </nav>
                     </aside>
-                    <div className='lg:col-span-9 border-l spectra__scrollable-settings spectra__scrollable--settings'>
+                    <div className='lg:col-span-9 border-l spectra__settings'>
                         { 'global-settings' === activeSettingsNavigationTab &&
                             <>
                                 <LoadFontAwesome5/>

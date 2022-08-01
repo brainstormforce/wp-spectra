@@ -19,6 +19,7 @@
 	outline: none;
 }
 
+// This Class Can Be Cleared Before Final Push.
 #uag-menu-page .uag-accordion {
 
 	svg {
@@ -332,6 +333,7 @@
 	}
 }
 
+// This Class Can Be Cleared Before Final Push.
 // Custom Scrollbar.
 .spectra__scrollable {
 	scrollbar-width: 0.5rem;
@@ -380,6 +382,16 @@
 			border-radius: 0.25rem;
 			background-color: #cbd5e1;
 			opacity: 0.4;
+		}
+	}
+}
+
+.spectra {
+	
+	&__settings {
+
+		& > section:last-child {
+			border-bottom: none;
 		}
 	}
 }
