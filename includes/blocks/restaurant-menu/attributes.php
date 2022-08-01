@@ -128,6 +128,6 @@ return array(
 	'titleLetterSpacingTablet'   => '',
 	'titleLetterSpacingMobile'   => '',
 	'titleLetterSpacingType'     => 'px',
-	'imgAlign' => 'side',
-	'stack' => 'tablet'
+	'imgAlign'                   => 'side',
+	'stack'                      => 'tablet',
 );
