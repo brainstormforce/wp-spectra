@@ -162,6 +162,7 @@ const Settings = ( props ) => {
 		backgroundCustomSizeMobile,
 		backgroundCustomSizeType,
 		overlayType,
+		customPosition,
 		backgroundVideoColor,
 		backgroundVideo,
 		topInvert,
@@ -1007,7 +1008,8 @@ const Settings = ( props ) => {
 						value: true,
 					}}
 					customPosition={{
-						value: 'default',
+						value: customPosition,
+						label: 'customPosition'
 					}}
 					backgroundVideoType={ {
 						value: true,

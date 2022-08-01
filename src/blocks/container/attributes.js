@@ -875,6 +875,13 @@ const attributes = {
 			styleType: 'background-overlay-type'
 		}
 	},
+	customPosition:{
+		type: 'string',
+		default: 'default',
+		UAGCopyPaste: {
+			styleType: 'background-image-position-type'
+		}
+	},
 	backgroundVideoColor: {
 		type: 'string',
 		UAGCopyPaste: {

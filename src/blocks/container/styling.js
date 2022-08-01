@@ -132,6 +132,7 @@ function styling( props ) {
 		backgroundCustomSizeType,
 		backgroundImageColor,
 		overlayType,
+		customPosition,
 		backgroundVideoOpacity,
 		backgroundVideoColor,
 		innerContentCustomWidthType,
@@ -202,6 +203,7 @@ function styling( props ) {
 		'backgroundCustomSizeType' : backgroundCustomSizeType,
 		'backgroundImageColor' : backgroundImageColor,
 		'overlayType' : overlayType,
+		'customPosition': customPosition,
 		'backgroundVideo' : backgroundVideo,
 		'backgroundVideoColor' : backgroundVideoColor,
     };

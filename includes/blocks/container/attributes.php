@@ -145,6 +145,7 @@ return array_merge(
 		'backgroundCustomSizeMobile'        => '',
 		'backgroundCustomSizeType'          => '%',
 		'overlayType'                       => 'none',
+		'customPosition'                    => 'default',
 		'backgroundVideoColor'              => '#FFFFFF75',
 		'backgroundVideo'                   => '',
 		'backgroundVideoOpacity'            => 0.5,

@@ -42,6 +42,7 @@ $bg_obj_desktop           = array(
 	'backgroundAttachment'     => $attr['backgroundAttachmentDesktop'],
 	'backgroundImageColor'     => $attr['backgroundImageColor'],
 	'overlayType'              => $attr['overlayType'],
+	'customPosition'           => $attr['customPosition'],
 	'backgroundCustomSize'     => $attr['backgroundCustomSizeDesktop'],
 	'backgroundCustomSizeType' => $attr['backgroundCustomSizeType'],
 	'backgroundVideo'          => $attr['backgroundVideo'],
