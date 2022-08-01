@@ -39,7 +39,7 @@ $height_tablet = '' !== $attr['heightTablet'] ? $attr['heightTablet'] . 'px' : $
 $height_mobile = '' !== $attr['heightMobile'] ? $attr['heightMobile'] . 'px' : $height_tablet;
 
 $selectors = array(
-	'.wp-block-uagb-image'                     => array(
+	'.wp-block-uagb-image'                        => array(
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['imageTopMargin'], $attr['imageMarginUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['imageRightMargin'], $attr['imageMarginUnit'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageBottomMargin'], $attr['imageMarginUnit'] ),
@@ -74,8 +74,8 @@ $selectors = array(
 	),
 	// overlay.
 	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper' => array(
-		'background'                 => $attr['overlayBackground'],
-		'opacity'                    => $overlay_opacity_fallback,
+		'background' => $attr['overlayBackground'],
+		'opacity'    => $overlay_opacity_fallback,
 	),
 	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner' => array_merge(
 		$overlay_border_css,
@@ -163,8 +163,8 @@ if ( 'none' !== $attr['maskShape'] ) {
 }
 
 // tablet.
-$t_selectors['.wp-block-uagb-image--layout-default figure']              = $image_border_css_tablet;
-$t_selectors['.wp-block-uagb-image--layout-overlay figure']              = $image_border_css_tablet;
+$t_selectors['.wp-block-uagb-image--layout-default figure']           = $image_border_css_tablet;
+$t_selectors['.wp-block-uagb-image--layout-overlay figure']           = $image_border_css_tablet;
 $t_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
 	'width' => UAGB_Helper::get_css_value( $attr['widthTablet'], 'px' ),
 );
@@ -202,8 +202,8 @@ $t_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
 );
 
 // mobile.
-$m_selectors['.wp-block-uagb-image--layout-default figure']              = $image_border_css_mobile;
-$m_selectors['.wp-block-uagb-image--layout-overlay figure']              = $image_border_css_mobile;
+$m_selectors['.wp-block-uagb-image--layout-default figure']           = $image_border_css_mobile;
+$m_selectors['.wp-block-uagb-image--layout-overlay figure']           = $image_border_css_mobile;
 $m_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
 	'width' => UAGB_Helper::get_css_value( $attr['widthMobile'], 'px' ),
 );
