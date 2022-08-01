@@ -42,7 +42,20 @@ const Background = ( props ) => {
 		backgroundCustomSize,
 		backgroundCustomSizeType,
 		imageResponsive,
-		gradientOverlay
+		gradientOverlay,
+		customPosition,
+		xPositionDesktop,
+		xPositionTablet,
+		xPositionMobile,
+		xPositionType,
+		xPositionTypeTablet,
+		xPositionTypeMobile,
+		yPositionDesktop,
+		yPositionTablet,
+		yPositionMobile,
+		yPositionType,
+		yPositionTypeTablet,
+		yPositionTypeMobile,
 	} = props;
 
 	const onRemoveImage = () => {
@@ -472,6 +485,134 @@ const Background = ( props ) => {
 							backgroundImage={backgroundImage}
 							setAttributes={setAttributes}
 						/>
+					}
+					{ imageResponsive && backgroundImage[deviceType] && backgroundImage[deviceType]?.value &&  (
+						<>
+							<div className="uag-background-image-position">
+								<SelectControl
+									label={ __( 'Image Position' ) }
+									value={ customPosition }
+									onChange={ ( value ) =>
+										setAttributes( { customPosition: value } )
+									}
+									options={ [
+										{ value: 'default', label: __( 'Default' ) },
+										{ value: 'custom', label: __( 'Custom' ) },
+									] }
+								/>
+							</div>
+							<div className="uag-background-image-position">
+								<ResponsiveSlider
+									label={ __( 'X Position', 'ultimate-addons-for-gutenberg' ) }
+									data={ {
+										desktop: {
+											value: xPositionDesktop,
+											label: 'xPositionDesktop',
+											unit: {
+												value: xPositionType,
+												label: 'xPositionType',
+											},
+										},
+										tablet: {
+											value: xPositionTablet,
+											label: 'xPositionTablet',
+											unit: {
+												value: xPositionTypeTablet,
+												label: 'xPositionTypeTablet',
+											},
+										},
+										mobile: {
+											value: xPositionMobile,
+											label: 'xPositionMobile',
+											unit: {
+												value: xPositionTypeMobile,
+												label: 'xPositionTypeMobile',
+											},
+										},
+									} }
+									min={ 0 }
+									unit={ {
+										value: xPositionType,
+										label: 'xPositionType',
+									} }
+									limitMax={ { 'px': 1600, '%': 100, 'vw': 100 } }
+									units={ [
+										{
+											name: __(
+												'PX',
+												'ultimate-addons-for-gutenberg'
+											),
+											unitValue: 'px',
+										},
+										{
+											name: __( 'EM', 'ultimate-addons-for-gutenberg' ),
+											unitValue: 'em',
+										},
+										{
+											name: __( 'VW', 'ultimate-addons-for-gutenberg' ),
+											unitValue: 'vw',
+										},
+									] }
+									setAttributes={ setAttributes }
+								/>
+							</div>
+							<div className="uag-background-image-position">
+								<ResponsiveSlider
+									label={ __( 'Y Position', 'ultimate-addons-for-gutenberg' ) }
+									data={ {
+										desktop: {
+											value: yPositionDesktop,
+											label: 'yPositionDesktop',
+											unit: {
+												value: yPositionType,
+												label: 'yPositionType',
+											},
+										},
+										tablet: {
+											value: yPositionTablet,
+											label: 'yPositionTablet',
+											unit: {
+												value: yPositionTypeTablet,
+												label: 'yPositionTypeTablet',
+											},
+										},
+										mobile: {
+											value: yPositionMobile,
+											label: 'yPositionMobile',
+											unit: {
+												value: yPositionTypeMobile,
+												label: 'yPositionTypeMobile',
+											},
+										},
+									} }
+									min={ 0 }
+									unit={ {
+										value: yPositionType,
+										label: 'yPositionType',
+									} }
+									limitMax={ { 'px': 800, 'em': 100, 'vw': 100 } }
+									units={ [
+										{
+											name: __(
+												'PX',
+												'ultimate-addons-for-gutenberg'
+											),
+											unitValue: 'px',
+										},
+										{
+											name: __( 'EM', 'ultimate-addons-for-gutenberg' ),
+											unitValue: 'em',
+										},
+										{
+											name: __( 'VW', 'ultimate-addons-for-gutenberg' ),
+											unitValue: 'vw',
+										},
+									] }
+									setAttributes={ setAttributes }
+								/>
+							</div>
+						</>
+						)
 					}
 					{ imageResponsive && backgroundImage[deviceType] && backgroundImage[deviceType]?.value && (
 						<>

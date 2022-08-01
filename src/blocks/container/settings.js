@@ -1006,6 +1006,9 @@ const Settings = ( props ) => {
 					gradientOverlay={{
 						value: true,
 					}}
+					customPosition={{
+						value: 'default',
+					}}
 					backgroundVideoType={ {
 						value: true,
 					} }
