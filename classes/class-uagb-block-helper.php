@@ -512,6 +512,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				':not(.is-grid) .uagb-post__inner-wrap .uagb-post__text:last-child' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $paddingBottom, $attr['contentPaddingUnit'] ),
 				),
+				':not(.is-grid) .uagb-post__inner-wrap .uagb-post__text:first-child' => array(
+					'margin-top' => UAGB_Helper::get_css_value( $paddingTop, $attr['contentPaddingUnit'] ),
+				),
 				':not(.is-grid).uagb-post__items'         => array(
 					'margin-right' => UAGB_Helper::get_css_value( (int) ( -$row_gap_fallback / 2 ), $attr['rowGapUnit'] ),
 					'margin-left'  => UAGB_Helper::get_css_value( (int) ( -$row_gap_fallback / 2 ), $attr['rowGapUnit'] ),
@@ -529,9 +532,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-top'  => UAGB_Helper::get_css_value( $paddingTop, $attr['contentPaddingUnit'] ),
 					'margin-left' => UAGB_Helper::get_css_value( $paddingLeft, $attr['contentPaddingUnit'] ),
 				),
-				':not(.is-grid) .uagb-post__inner-wrap .uagb-post__text:first-child' => array(
-					'margin-top' => UAGB_Helper::get_css_value( $paddingTop, $attr['contentPaddingUnit'] ),
-				),
 				' .uagb-post__inner-wrap'                 => array(
 					'background' => $attr['bgColor'],
 					'text-align' => $attr['align'],
@@ -540,19 +540,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color' => $attr['overallBorderHColor'],
 				),
 				' .uagb-post__inner-wrap .uagb-post__cta' => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $cta_bottom_space_fallback, $attr['ctaBottomSpaceUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $cta_bottom_space_fallback, $attr['ctaBottomSpaceUnit'] ),
 				),
 				' .uagb-post__image '                     => array(
 					'padding-bottom' => UAGB_Helper::get_css_value( $image_bottom_space_fallback, $attr['imageBottomSpaceUnit'] ),
 				),
 				' .uagb-post__title'                      => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $title_bottom_space_fallback, $attr['titleBottomSpaceUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $title_bottom_space_fallback, $attr['titleBottomSpaceUnit'] ),
 				),
 				' .uagb-post-grid-byline'                 => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $meta_bottom_space_fallback, $attr['metaBottomSpaceUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $meta_bottom_space_fallback, $attr['metaBottomSpaceUnit'] ),
 				),
 				' .uagb-post__excerpt'                    => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $excerpt_bottom_space_fallback, $attr['excerptBottomSpaceUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $excerpt_bottom_space_fallback, $attr['excerptBottomSpaceUnit'] ),
 				),
 				' .uagb-post__image:before'               => array(
 					'background-color' => $attr['bgOverlayColor'],
@@ -567,7 +567,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			// If hover blur or hover color are set, show the hover shadow.
 			if ( ( ( '' !== $attr['boxShadowBlurHover'] ) && ( null !== $attr['boxShadowBlurHover'] ) ) || '' !== $attr['boxShadowColorHover'] ) {
 
-				$selectors[' .uagb-post__inner-wrap:hover']['box-shadow'] = UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
+				$selectors['.is-grid .uagb-post__inner-wrap:hover']['box-shadow'] = UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
 																			' ' .
 																			UAGB_Helper::get_css_value( $attr['boxShadowVOffsetHover'], 'px' ) .
 																			' ' .
@@ -662,19 +662,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selector = array(
 				' .uagb-post__inner-wrap .uagb-post__text.uagb-post__cta' => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $ctaBottomSpaceMobile, $attr['ctaBottomSpaceUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $ctaBottomSpaceMobile, $attr['ctaBottomSpaceUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post__image' => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $imageBottomSpaceMobile, $attr['imageBottomSpaceUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $imageBottomSpaceMobile, $attr['imageBottomSpaceUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post__title' => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $titleBottomSpaceMobile, $attr['titleBottomSpaceUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $titleBottomSpaceMobile, $attr['titleBottomSpaceUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post-grid-byline' => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $metaBottomSpaceMobile, $attr['metaBottomSpaceUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $metaBottomSpaceMobile, $attr['metaBottomSpaceUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post__excerpt' => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $excerptBottomSpaceMobile, $attr['excerptBottomSpaceUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $excerptBottomSpaceMobile, $attr['excerptBottomSpaceUnit'] ),
 				),
 				'.is-grid .uagb-post__inner-wrap'         => array_merge(
 					array(
@@ -697,6 +697,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.is-grid.uagb-post__items'               => array(
 					'row-gap'    => UAGB_Helper::get_css_value( $rowGapMobile, $attr['rowGapUnit'] ),
 					'column-gap' => UAGB_Helper::get_css_value( $columnGapMobile, $attr['columnGapUnit'] ),
+				),
+				':not(.is-grid).uagb-post__items article' => array(
+					'padding-right' => UAGB_Helper::get_css_value( (int) ( $rowGapMobile / 2 ), $attr['rowGapUnit'] ),
+					'padding-left'  => UAGB_Helper::get_css_value( (int) ( $rowGapMobile / 2 ), $attr['rowGapUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( ( $columnGapMobile ), $attr['columnGapUnit'] ),
+				),
+				':not(.is-grid).uagb-post__items'         => array(
+					'margin-right' => UAGB_Helper::get_css_value( (int) ( -$rowGapMobile / 2 ), $attr['rowGapUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( (int) ( -$rowGapMobile / 2 ), $attr['rowGapUnit'] ),
 				),
 			);
 
@@ -733,19 +742,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$t_selector = array(
 				' .uagb-post__inner-wrap .uagb-post__text.uagb-post__cta' => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $ctaBottomSpaceTablet, $attr['ctaBottomSpaceUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $ctaBottomSpaceTablet, $attr['ctaBottomSpaceUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post__image' => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $imageBottomSpaceTablet, $attr['imageBottomSpaceUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $imageBottomSpaceTablet, $attr['imageBottomSpaceUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post__title' => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $titleBottomSpaceTablet, $attr['titleBottomSpaceUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $titleBottomSpaceTablet, $attr['titleBottomSpaceUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post-grid-byline' => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $metaBottomSpaceTablet, $attr['metaBottomSpaceUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $metaBottomSpaceTablet, $attr['metaBottomSpaceUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post__excerpt' => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $excerptBottomSpaceTablet, $attr['excerptBottomSpaceUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $excerptBottomSpaceTablet, $attr['excerptBottomSpaceUnit'] ),
 				),
 				' .uagb-post__inner-wrap'                 => array_merge(
 					array(
@@ -768,6 +777,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.is-grid.uagb-post__items'               => array(
 					'row-gap'    => UAGB_Helper::get_css_value( $rowGapTablet, $attr['rowGapUnit'] ),
 					'column-gap' => UAGB_Helper::get_css_value( $columnGapTablet, $attr['columnGapUnit'] ),
+				),
+				':not(.is-grid).uagb-post__items article' => array(
+					'padding-right' => UAGB_Helper::get_css_value( (int) ( $rowGapTablet / 2 ), $attr['rowGapUnit'] ),
+					'padding-left'  => UAGB_Helper::get_css_value( (int) ( $rowGapTablet / 2 ), $attr['rowGapUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( ( $columnGapTablet ), $attr['columnGapUnit'] ),
+				),
+				':not(.is-grid).uagb-post__items'         => array(
+					'margin-right' => UAGB_Helper::get_css_value( (int) ( -$rowGapTablet / 2 ), $attr['rowGapUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( (int) ( -$rowGapTablet / 2 ), $attr['rowGapUnit'] ),
 				),
 			);
 
