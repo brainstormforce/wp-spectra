@@ -186,8 +186,10 @@ const Settings = ( props ) => {
 		bottomHeightTypeMobile,
 
 		overflow,
-		topDividerType,
-		bottomDividerType
+		topDividerWidthType,
+		bottomDividerWidthType,
+		topDividerHeightType,
+		bottomDividerHeightType
 	} = attributes;
 
 	let currentDirection = directionDesktop;
@@ -1646,8 +1648,8 @@ const Settings = ( props ) => {
 							min={ 0 }
 							max={ 100 }
 							unit={ {
-								value: topDividerType,
-								label: 'topDividerType',
+								value: topDividerWidthType,
+								label: 'topDividerWidthType',
 							} }
 							units={ [
 								{
@@ -1692,7 +1694,19 @@ const Settings = ( props ) => {
 							} }
 							min={ 0 }
 							max={ 500 }
-							displayUnit={ false }
+							unit={ {
+								value: topDividerHeightType,
+								label: 'topDividerHeightType',
+							} }
+							units={ [
+								{
+									name: __(
+										'px',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+							] }
 							setAttributes={ setAttributes }
 						/>
 						<ToggleControl
@@ -1776,8 +1790,8 @@ const Settings = ( props ) => {
 							min={ 0 }
 							max={ 100 }
 							unit={ {
-								value: bottomDividerType,
-								label: 'bottomDividerType',
+								value: bottomDividerWidthType,
+								label: 'bottomDividerWidthType',
 							} }
 							units={ [
 								{
@@ -1822,7 +1836,19 @@ const Settings = ( props ) => {
 							} }
 							min={ 0 }
 							max={ 500 }
-							displayUnit={ false }
+							unit={ {
+								value: bottomDividerHeightType,
+								label: 'bottomDividerHeightType',
+							} }
+							units={ [
+								{
+									name: __(
+										'px',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+							] }
 							setAttributes={ setAttributes }
 						/>
 						<ToggleControl
