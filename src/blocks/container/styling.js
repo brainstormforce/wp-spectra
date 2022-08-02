@@ -353,7 +353,7 @@ function styling( props ) {
 		widthSelectorsDesktop[`.is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
 			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthType })`,
 			'max-width' : 'var(--inner-content-custom-width)',
-			'width' : 'var(--inner-content-custom-width)',
+			'width' : '100%',
 			'margin-left': 'auto',
 			'margin-right': 'auto'
 		};
@@ -361,7 +361,7 @@ function styling( props ) {
 		widthSelectorsTablet[`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-tablet > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
 			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthTablet || innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthTypeTablet })`,
 			'max-width' : 'var(--inner-content-custom-width)',
-			'width' : 'var(--inner-content-custom-width)',
+			'width' :'100%',
 			'margin-left': 'auto',
 			'margin-right': 'auto'
 		};
@@ -369,7 +369,7 @@ function styling( props ) {
 		widthSelectorsMobile[`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-mobile > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
 			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthMobile || innerContentCustomWidthTablet || innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthTypeMobile })`,
 			'max-width' : 'var(--inner-content-custom-width)',
-			'width' : 'var(--inner-content-custom-width)',
+			'width' : '100%',
 			'margin-left': 'auto',
 			'margin-right': 'auto'
 		};
