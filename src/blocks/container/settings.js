@@ -1701,7 +1701,7 @@ const Settings = ( props ) => {
 							units={ [
 								{
 									name: __(
-										'px',
+										'PX',
 										'ultimate-addons-for-gutenberg'
 									),
 									unitValue: 'px',
@@ -1843,7 +1843,7 @@ const Settings = ( props ) => {
 							units={ [
 								{
 									name: __(
-										'px',
+										'PX',
 										'ultimate-addons-for-gutenberg'
 									),
 									unitValue: 'px',
