@@ -1281,6 +1281,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$bg_video            = isset( $bg_obj['backgroundVideo'] ) ? $bg_obj['backgroundVideo'] : '';
 			$bg_video_color      = isset( $bg_obj['backgroundVideoColor'] ) ? $bg_obj['backgroundVideoColor'] : '';
 
+			$customPosition		= isset( $bg_obj['customPosition'] ) ? $bg_obj['customPosition'] : '';
+			$xPosition			= isset( $bg_obj['xPosition'] ) ? $bg_obj['xPosition'] : '';
+			$xPositionType		= isset( $bg_obj['xPositionType'] ) ? $bg_obj['xPositionType'] : '';
+			$yPosition			= isset( $bg_obj['yPosition'] ) ? $bg_obj['yPosition'] : '';
+			$yPositionType		= isset( $bg_obj['yPositionType'] ) ? $bg_obj['yPositionType'] : '';
+
 			if ( 'custom' === $size ) {
 				$size = $bg_custom_size . $bg_custom_size_type;
 			}
@@ -1333,8 +1339,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$gen_bg_css['background-repeat'] = esc_attr( $repeat );
 				}
 
-				if ( isset( $position ) && isset( $position['x'] ) && isset( $position['y'] ) ) {
+				if ( 'custom' !== $customPosition && isset( $position ) && isset( $position['x'] ) && isset( $position['y'] ) ) {
 					$position_value                    = $position['x'] * 100 . '% ' . $position['y'] * 100 . '%';
+					$gen_bg_css['background-position'] = $position_value;
+				} else if ( 'custom' === $customPosition && isset( $xPosition ) && isset( $yPosition) && isset( $xPositionType ) && isset( $yPositionType ) ) {
+					$position_value                    = $xPosition . $xPositionType . ' ' . $yPosition . $yPositionType;
 					$gen_bg_css['background-position'] = $position_value;
 				}
 
