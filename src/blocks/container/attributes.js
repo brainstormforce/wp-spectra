@@ -875,6 +875,7 @@ const attributes = {
 			styleType: 'background-overlay-type'
 		}
 	},
+	// Background image position.
 	customPosition:{
 		type: 'string',
 		default: 'default',
@@ -882,6 +883,70 @@ const attributes = {
 			styleType: 'background-image-position-type'
 		}
 	},
+	xPositionDesktop: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-image-x-position-desktop'
+		},
+		default: ''
+	},
+	xPositionTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-image-x-position-tablet'
+		},
+	},
+	xPositionMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-image-x-position-mobile'
+		},
+	},
+	xPositionType: {
+		type: 'string',
+		default: 'px',
+	},
+	xPositionTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	xPositionTypeMobile: {
+		type: 'string',
+		default: 'px',
+	},
+	
+	yPositionDesktop: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-image-y-position-desktop'
+		},
+		default: ''
+	},
+	yPositionTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-image-y-position-tablet'
+		},
+	},
+	yPositionMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-image-y-position-mobile'
+		},
+	},
+	yPositionType: {
+		type: 'string',
+		default: 'px',
+	},
+	yPositionTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	yPositionTypeMobile: {
+		type: 'string',
+		default: 'px',
+	},
+
 	backgroundVideoColor: {
 		type: 'string',
 		UAGCopyPaste: {

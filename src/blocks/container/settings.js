@@ -163,6 +163,18 @@ const Settings = ( props ) => {
 		backgroundCustomSizeType,
 		overlayType,
 		customPosition,
+		xPositionDesktop,
+		xPositionTablet,
+		xPositionMobile,
+		xPositionType,
+		xPositionTypeTablet,
+		xPositionTypeMobile,
+		yPositionDesktop,
+		yPositionTablet,
+		yPositionMobile,
+		yPositionType,
+		yPositionTypeTablet,
+		yPositionTypeMobile,
 		backgroundVideoColor,
 		backgroundVideo,
 		topInvert,
@@ -1010,6 +1022,54 @@ const Settings = ( props ) => {
 					customPosition={{
 						value: customPosition,
 						label: 'customPosition'
+					}}
+					xPositionDesktop={{
+						value: xPositionDesktop,
+						label: 'xPositionDesktop'
+					}}
+					xPositionTablet={{
+						value: xPositionTablet,
+						label: 'xPositionTablet'
+					}}
+					xPositionMobile={{
+						value: xPositionMobile,
+						label: 'xPositionMobile'
+					}}
+					xPositionType={{
+						value: xPositionType,
+						label: 'xPositionType'
+					}}
+					xPositionTypeTablet={{
+						value: xPositionTypeTablet,
+						label: 'xPositionTypeTablet'
+					}}
+					xPositionTypeMobile={{
+						value: xPositionTypeMobile,
+						label: 'xPositionTypeMobile'
+					}}
+					yPositionDesktop={{
+						value: yPositionDesktop,
+						label: 'yPositionDesktop'
+					}}
+					yPositionTablet={{
+						value: yPositionTablet,
+						label: 'yPositionTablet'
+					}}
+					yPositionMobile={{
+						value: yPositionMobile,
+						label: 'yPositionMobile'
+					}}
+					yPositionType={{
+						value: yPositionType,
+						label: 'yPositionType'
+					}}
+					yPositionTypeTablet={{
+						value: yPositionTypeTablet,
+						label: 'yPositionTypeTablet'
+					}}
+					yPositionTypeMobile={{
+						value: yPositionTypeMobile,
+						label: 'yPositionTypeMobile'
 					}}
 					backgroundVideoType={ {
 						value: true,

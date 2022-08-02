@@ -510,36 +510,32 @@ const Background = ( props ) => {
 											label={ __( 'X Position', 'ultimate-addons-for-gutenberg' ) }
 											data={ {
 												desktop: {
-													value: xPositionDesktop,
+													value: xPositionDesktop.value,
 													label: 'xPositionDesktop',
 													unit: {
-														value: xPositionType,
+														value: xPositionType.value,
 														label: 'xPositionType',
 													},
 												},
 												tablet: {
-													value: xPositionTablet,
+													value: xPositionTablet.value,
 													label: 'xPositionTablet',
 													unit: {
-														value: xPositionTypeTablet,
+														value: xPositionTypeTablet.value,
 														label: 'xPositionTypeTablet',
 													},
 												},
 												mobile: {
-													value: xPositionMobile,
+													value: xPositionMobile.value,
 													label: 'xPositionMobile',
 													unit: {
-														value: xPositionTypeMobile,
+														value: xPositionTypeMobile.value,
 														label: 'xPositionTypeMobile',
 													},
 												},
 											} }
-											min={ 0 }
-											unit={ {
-												value: xPositionType,
-												label: 'xPositionType',
-											} }
-											limitMax={ { 'px': 1600, '%': 100, 'vw': 100 } }
+											limitMin={ { 'px': -800, '%': -100, 'em': -100, 'vw': -100 } }
+											limitMax={ { 'px': 800, '%': 100, 'em': 100, 'vw': 100 } }
 											units={ [
 												{
 													name: __(
@@ -547,6 +543,10 @@ const Background = ( props ) => {
 														'ultimate-addons-for-gutenberg'
 													),
 													unitValue: 'px',
+												},
+												{
+													name: __( '%', 'ultimate-addons-for-gutenberg' ),
+													unitValue: '%',
 												},
 												{
 													name: __( 'EM', 'ultimate-addons-for-gutenberg' ),
@@ -561,59 +561,59 @@ const Background = ( props ) => {
 										/>
 									</div>
 									<div className="uag-background-image-position">
-										<ResponsiveSlider
-											label={ __( 'Y Position', 'ultimate-addons-for-gutenberg' ) }
-											data={ {
-												desktop: {
-													value: yPositionDesktop,
-													label: 'yPositionDesktop',
-													unit: {
-														value: yPositionType,
-														label: 'yPositionType',
-													},
+									<ResponsiveSlider
+										label={ __( 'Y Position', 'ultimate-addons-for-gutenberg' ) }
+										data={ {
+											desktop: {
+												value: yPositionDesktop.value,
+												label: 'yPositionDesktop',
+												unit: {
+													value: yPositionType.value,
+													label: 'yPositionType',
 												},
-												tablet: {
-													value: yPositionTablet,
-													label: 'yPositionTablet',
-													unit: {
-														value: yPositionTypeTablet,
-														label: 'yPositionTypeTablet',
-													},
+											},
+											tablet: {
+												value: yPositionTablet.value,
+												label: 'yPositionTablet',
+												unit: {
+													value: yPositionTypeTablet.value,
+													label: 'yPositionTypeTablet',
 												},
-												mobile: {
-													value: yPositionMobile,
-													label: 'yPositionMobile',
-													unit: {
-														value: yPositionTypeMobile,
-														label: 'yPositionTypeMobile',
-													},
+											},
+											mobile: {
+												value: yPositionMobile.value,
+												label: 'yPositionMobile',
+												unit: {
+													value: yPositionTypeMobile.value,
+													label: 'yPositionTypeMobile',
 												},
-											} }
-											min={ 0 }
-											unit={ {
-												value: yPositionType,
-												label: 'yPositionType',
-											} }
-											limitMax={ { 'px': 800, 'em': 100, 'vw': 100 } }
-											units={ [
-												{
-													name: __(
-														'PX',
-														'ultimate-addons-for-gutenberg'
-													),
-													unitValue: 'px',
-												},
-												{
-													name: __( 'EM', 'ultimate-addons-for-gutenberg' ),
-													unitValue: 'em',
-												},
-												{
-													name: __( 'VW', 'ultimate-addons-for-gutenberg' ),
-													unitValue: 'vw',
-												},
-											] }
-											setAttributes={ setAttributes }
-										/>
+											},
+										} }
+										limitMin={ { 'px': -800, '%': -100, 'em': -100, 'vw': -100 } }
+										limitMax={ { 'px': 800, '%': 100, 'em': 100, 'vw': 100 } }
+										units={ [
+											{
+												name: __(
+													'PX',
+													'ultimate-addons-for-gutenberg'
+												),
+												unitValue: 'px',
+											},
+											{
+												name: __( '%', 'ultimate-addons-for-gutenberg' ),
+												unitValue: '%',
+											},
+											{
+												name: __( 'EM', 'ultimate-addons-for-gutenberg' ),
+												unitValue: 'em',
+											},
+											{
+												name: __( 'VW', 'ultimate-addons-for-gutenberg' ),
+												unitValue: 'vw',
+											},
+										] }
+										setAttributes={ setAttributes }
+									/>
 									</div>
 								</>
 							) }

@@ -47,6 +47,10 @@ $bg_obj_desktop           = array(
 	'backgroundCustomSizeType' => $attr['backgroundCustomSizeType'],
 	'backgroundVideo'          => $attr['backgroundVideo'],
 	'backgroundVideoColor'     => $attr['backgroundVideoColor'],
+	'xPositionDesktop'			=> $attr['xPositionDesktop'],
+	'xPositionType'				=> $attr['xPositionType'],
+	'yPositionDesktop'			=> $attr['yPositionDesktop'],
+	'yPositionType'				=> $attr['yPositionType'],
 );
 $container_bg_css_desktop = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_desktop );
 
@@ -199,6 +203,10 @@ $bg_obj_tablet              = array(
 	'backgroundCustomSizeType' => $attr['backgroundCustomSizeType'],
 	'backgroundVideo'          => $attr['backgroundVideo'],
 	'backgroundVideoColor'     => $attr['backgroundVideoColor'],
+	'xPositionTablet'			=> $attr['xPositionTablet'],
+	'xPositionTypeTablet'		=> $attr['xPositionTypeTablet'],
+	'yPositionTablet'			=> $attr['yPositionTablet'],
+	'yPositionTypeTablet'		=> $attr['yPositionTypeTablet'],
 );
 $container_bg_css_tablet    = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_tablet );
 $container_tablet_css       = array_merge(
@@ -243,20 +251,24 @@ $t_selectors = array(
 );
 
 $bg_obj_mobile              = array(
-	'backgroundType'           => $attr['backgroundType'],
-	'backgroundImage'          => $attr['backgroundImageMobile'],
-	'backgroundColor'          => $attr['backgroundColor'],
-	'gradientValue'            => $attr['gradientValue'],
-	'backgroundRepeat'         => $attr['backgroundRepeatMobile'],
-	'backgroundPosition'       => $attr['backgroundPositionMobile'],
-	'backgroundSize'           => $attr['backgroundSizeMobile'],
-	'backgroundAttachment'     => $attr['backgroundAttachmentMobile'],
-	'backgroundImageColor'     => $attr['backgroundImageColor'],
-	'overlayType'              => $attr['overlayType'],
-	'backgroundCustomSize'     => $attr['backgroundCustomSizeMobile'],
-	'backgroundCustomSizeType' => $attr['backgroundCustomSizeType'],
-	'backgroundVideo'          => $attr['backgroundVideo'],
-	'backgroundVideoColor'     => $attr['backgroundVideoColor'],
+	'backgroundType'           	=> $attr['backgroundType'],
+	'backgroundImage'          	=> $attr['backgroundImageMobile'],
+	'backgroundColor'          	=> $attr['backgroundColor'],
+	'gradientValue'            	=> $attr['gradientValue'],
+	'backgroundRepeat'         	=> $attr['backgroundRepeatMobile'],
+	'backgroundPosition'       	=> $attr['backgroundPositionMobile'],
+	'backgroundSize'           	=> $attr['backgroundSizeMobile'],
+	'backgroundAttachment'     	=> $attr['backgroundAttachmentMobile'],
+	'backgroundImageColor'     	=> $attr['backgroundImageColor'],
+	'overlayType'              	=> $attr['overlayType'],
+	'backgroundCustomSize'     	=> $attr['backgroundCustomSizeMobile'],
+	'backgroundCustomSizeType' 	=> $attr['backgroundCustomSizeType'],
+	'backgroundVideo'          	=> $attr['backgroundVideo'],
+	'backgroundVideoColor'     	=> $attr['backgroundVideoColor'],
+	'xPositionMobile'			=> $attr['xPositionMobile'],
+	'xPositionTypeMobile'		=> $attr['xPositionTypeMobile'],
+	'yPositionMobile'			=> $attr['yPositionMobile'],
+	'yPositionTypeMobile'		=> $attr['yPositionTypeMobile'],
 );
 $container_bg_css_mobile    = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_mobile );
 $container_mobile_css       = array_merge(

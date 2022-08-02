@@ -133,6 +133,18 @@ function styling( props ) {
 		backgroundImageColor,
 		overlayType,
 		customPosition,
+		xPositionDesktop,
+		xPositionTablet,
+		xPositionMobile,
+		xPositionType,
+		xPositionTypeTablet,
+		xPositionTypeMobile,
+		yPositionDesktop,
+		yPositionTablet,
+		yPositionMobile,
+		yPositionType,
+		yPositionTypeTablet,
+		yPositionTypeMobile,
 		backgroundVideoOpacity,
 		backgroundVideoColor,
 		innerContentCustomWidthType,
@@ -203,7 +215,6 @@ function styling( props ) {
 		'backgroundCustomSizeType' : backgroundCustomSizeType,
 		'backgroundImageColor' : backgroundImageColor,
 		'overlayType' : overlayType,
-		'customPosition': customPosition,
 		'backgroundVideo' : backgroundVideo,
 		'backgroundVideoColor' : backgroundVideoColor,
     };
@@ -257,6 +268,11 @@ function styling( props ) {
 		'overlayType' : overlayType,
 		'backgroundVideo' : backgroundVideo,
 		'backgroundVideoColor' : backgroundVideoColor,
+		'customPosition': customPosition,
+		'xPositionDesktop': xPositionDesktop,
+		'xPositionType': xPositionType,
+		'yPositionDesktop': yPositionDesktop,
+		'yPositionType': yPositionType,
     };
 
 	const containerBackgroundCSSDesktop = generateBackgroundCSS( backgroundAttributesDesktop );
@@ -392,6 +408,10 @@ function styling( props ) {
 		'overlayType' : overlayType,
 		'backgroundVideo' : backgroundVideo,
 		'backgroundVideoColor' : backgroundVideoColor,
+		'xPositionTablet': xPositionTablet,
+		'xPositionTypeTablet': xPositionTypeTablet,
+		'yPositionTablet': yPositionTablet,
+		'yPositionTypeTablet': yPositionTypeTablet,
     };
 
 	const containerBackgroundCSSTablet = generateBackgroundCSS( backgroundAttributesTablet );
@@ -451,6 +471,11 @@ function styling( props ) {
 		'overlayType' : overlayType,
 		'backgroundVideo' : backgroundVideo,
 		'backgroundVideoColor' : backgroundVideoColor,
+		'backgroundVideoColor' : backgroundVideoColor,
+		'xPositionMobile': xPositionMobile,
+		'xPositionTypeMobile': xPositionTypeMobile,
+		'yPositionMobile': yPositionMobile,
+		'yPositionTypeMobile': yPositionTypeMobile,
     };
 
 	const containerBackgroundCSSMobile = generateBackgroundCSS( backgroundAttributesMobile );
