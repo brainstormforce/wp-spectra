@@ -146,17 +146,17 @@ const Settings = ( props ) => {
 		headingAlign,
 		imgAlign,
 		descLetterSpacing,
-descLetterSpacingTablet,
-descLetterSpacingMobile,
-descLetterSpacingType,
-priceLetterSpacing,
-priceLetterSpacingTablet,
-priceLetterSpacingMobile,
-priceLetterSpacingType,
-titleLetterSpacing,
-titleLetterSpacingTablet,
-titleLetterSpacingMobile,
-titleLetterSpacingType,
+		descLetterSpacingTablet,
+		descLetterSpacingMobile,
+		descLetterSpacingType,
+		priceLetterSpacing,
+		priceLetterSpacingTablet,
+		priceLetterSpacingMobile,
+		priceLetterSpacingType,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
 	} = attributes;
 
 	const setimageSize = ( value ) => {
@@ -170,6 +170,66 @@ titleLetterSpacingType,
 		setAttributes( { imageSize: value } );
 	};
 
+	const setheadingTag = ( value ) => {
+		
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.headingTag = value;
+			
+		} );
+		setAttributes( { headingTag: value } )
+	}
+	
+	const setimagePosition = ( value ) => {
+		
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.imagePosition = value
+		} );
+		setAttributes( { imagePosition: value } )
+	}
+	
+	const setColumns = ( column, tcolumn, mcolumn ) => {
+		
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.columns = column;
+			pricelistChild.attributes.tcolumns = tcolumn;
+			pricelistChild.attributes.mcolumns = mcolumn;
+		} );	
+	}
+
+	const setimageAlignment = ( value ) => {
+		
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.imageAlignment = value
+		} );
+		setAttributes( { imageAlignment: value } )
+	}
+
+	const setStack = ( value ) => {
+		
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.stack = value
+		} );
+		setAttributes( { stack: value } )
+	}
+
+	const setHeadingAlign = ( value ) => {
+		
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.headingAlign = value
+		} );
+		setAttributes( { headingAlign: value } )
+	}
 	let loadTitleGoogleFonts;
 	let loadDescGoogleFonts;
 	let loadPriceGoogleFonts;
@@ -459,6 +519,7 @@ titleLetterSpacingType,
 							),
 						},
 					] }
+					onChange = { setimagePosition }
 					showIcons={ true }
 				/>
 				)}
@@ -510,6 +571,7 @@ titleLetterSpacingType,
 						},
 					] }
 					showIcons={ true }
+					onChange = { setHeadingAlign }
 				/>
 				)}
 				{ ( imagePosition === 'left' || imagePosition === 'right' ) && (
@@ -542,6 +604,7 @@ titleLetterSpacingType,
 							help={ __(
 								'Note: Choose on what breakpoint the Images will stack.'
 							) }
+							onChange = { setStack }
 							showIcons={ false }
 						/>
 						<MultiButtonsControl
@@ -566,6 +629,7 @@ titleLetterSpacingType,
 								},
 							] }
 							showIcons={ false }
+							onChange = {setimageAlignment }
 						/>
 					</>
 				) }
@@ -1179,7 +1243,8 @@ titleLetterSpacingType,
 								min={ 1 }
 								max={ Math.min( maxColumns, menu_item_count ) }
 								displayUnit={ false }
-								setAttributes={ setAttributes }
+								setAttributes={ setAttributes }	
+								onChange = { setColumns( columns, tcolumns, mcolumns ) }
 							/>
 							<MultiButtonsControl
 								setAttributes={ setAttributes }
@@ -1249,6 +1314,8 @@ titleLetterSpacingType,
 										),
 									},
 								] }
+								
+								onChange={ setheadingTag }
 							/>
 						</UAGAdvancedPanelBody>
 						{ imageSettings() }
