@@ -16,9 +16,10 @@
 		.uagb-post__taxonomy {
 			display: inline-flex;
 			flex-wrap: wrap;
+			margin: 5px;
 
 			&.default {
-				margin: 5px 5px 5px 20px;
+				margin: 5px 5px 5px 0;
 			}
 
 			&.highlighted {
