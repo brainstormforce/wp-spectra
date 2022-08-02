@@ -269,9 +269,9 @@ function styling( props ) {
 		'backgroundVideo' : backgroundVideo,
 		'backgroundVideoColor' : backgroundVideoColor,
 		'customPosition': customPosition,
-		'xPositionDesktop': xPositionDesktop,
+		'xPosition': xPositionDesktop,
 		'xPositionType': xPositionType,
-		'yPositionDesktop': yPositionDesktop,
+		'yPosition': yPositionDesktop,
 		'yPositionType': yPositionType,
     };
 
@@ -408,10 +408,11 @@ function styling( props ) {
 		'overlayType' : overlayType,
 		'backgroundVideo' : backgroundVideo,
 		'backgroundVideoColor' : backgroundVideoColor,
-		'xPositionTablet': xPositionTablet,
-		'xPositionTypeTablet': xPositionTypeTablet,
-		'yPositionTablet': yPositionTablet,
-		'yPositionTypeTablet': yPositionTypeTablet,
+		'customPosition': customPosition,
+		'xPosition': xPositionTablet,
+		'xPositionType': xPositionTypeTablet,
+		'yPosition': yPositionTablet,
+		'yPositionType': yPositionTypeTablet,
     };
 
 	const containerBackgroundCSSTablet = generateBackgroundCSS( backgroundAttributesTablet );
@@ -472,10 +473,11 @@ function styling( props ) {
 		'backgroundVideo' : backgroundVideo,
 		'backgroundVideoColor' : backgroundVideoColor,
 		'backgroundVideoColor' : backgroundVideoColor,
-		'xPositionMobile': xPositionMobile,
-		'xPositionTypeMobile': xPositionTypeMobile,
-		'yPositionMobile': yPositionMobile,
-		'yPositionTypeMobile': yPositionTypeMobile,
+		'customPosition': customPosition,
+		'xPosition': xPositionMobile,
+		'xPositionType': xPositionTypeMobile,
+		'yPosition': yPositionMobile,
+		'yPositionType': yPositionTypeMobile,
     };
 
 	const containerBackgroundCSSMobile = generateBackgroundCSS( backgroundAttributesMobile );
