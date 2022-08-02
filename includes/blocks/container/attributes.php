@@ -58,7 +58,7 @@ return array_merge(
 		'backgroundColor'                   => '',
 		'backgroundOpacity'                 => '',
 		'backgroundImageColor'              => '#FFFFFF75',
-		'gradientValue'                     => 'linear-gradient(90deg, rgb(6, 147, 227) 0%, rgb(155, 81, 224) 100%)',
+		'gradientValue'                     => 'linear-gradient(90deg, rgba(6, 147, 227, 0.5) 0%, rgba(155, 81, 224, 0.5) 100%)',
 		'boxShadowColor'                    => '#00000070',
 		'boxShadowHOffset'                  => 0,
 		'boxShadowVOffset'                  => 0,
