@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
@@ -171,40 +171,40 @@ const Settings = ( props ) => {
 	};
 
 	const setheadingTag = ( value ) => {
-		
+
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
-		
+
 		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.headingTag = value;
-			
+
 		} );
 		setAttributes( { headingTag: value } )
 	}
-	
+
 	const setimagePosition = ( value ) => {
-		
+
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
-		
+
 		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.imagePosition = value
 		} );
 		setAttributes( { imagePosition: value } )
 	}
-	
+
 	const setColumns = ( column, tcolumn, mcolumn ) => {
-		
+
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
 		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.columns = column;
 			pricelistChild.attributes.tcolumns = tcolumn;
 			pricelistChild.attributes.mcolumns = mcolumn;
-		} );	
+		} );
 	}
 
 	const setimageAlignment = ( value ) => {
-		
+
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
-		
+
 		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.imageAlignment = value
 		} );
@@ -212,19 +212,32 @@ const Settings = ( props ) => {
 	}
 
 	const setStack = ( value ) => {
-		
+
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
-		
+
 		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.stack = value
 		} );
 		setAttributes( { stack: value } )
 	}
 
-	const setHeadingAlign = ( value ) => {
-		
+	const setWidth = () => {
+
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
-		
+
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.imageWidth = imageWidth
+		} );
+	}
+
+	useEffect( () => {
+		setWidth()
+	}, [ imageWidth ] )
+
+	const setHeadingAlign = ( value ) => {
+
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+
 		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.headingAlign = value
 		} );
@@ -1243,7 +1256,7 @@ const Settings = ( props ) => {
 								min={ 1 }
 								max={ Math.min( maxColumns, menu_item_count ) }
 								displayUnit={ false }
-								setAttributes={ setAttributes }	
+								setAttributes={ setAttributes }
 								onChange = { setColumns( columns, tcolumns, mcolumns ) }
 							/>
 							<MultiButtonsControl
@@ -1314,7 +1327,7 @@ const Settings = ( props ) => {
 										),
 									},
 								] }
-								
+
 								onChange={ setheadingTag }
 							/>
 						</UAGAdvancedPanelBody>
