@@ -185,7 +185,11 @@ const Settings = ( props ) => {
 		bottomHeightTypeTablet,
 		bottomHeightTypeMobile,
 
-		overflow
+		overflow,
+		topDividerWidthType,
+		bottomDividerWidthType,
+		topDividerHeightType,
+		bottomDividerHeightType
 	} = attributes;
 
 	let currentDirection = directionDesktop;
@@ -1641,9 +1645,21 @@ const Settings = ( props ) => {
 								value: topWidth,
 								label: 'topWidth',
 							} }
-							min={ 100 }
-							max={ 2000 }
-							displayUnit={ false }
+							min={ 0 }
+							max={ 100 }
+							unit={ {
+								value: topDividerWidthType,
+								label: 'topDividerWidthType',
+							} }
+							units={ [
+								{
+									name: __(
+										'%',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: '%',
+								},
+							] }
 						/>
 						<ResponsiveSlider
 							label={ __(
@@ -1678,7 +1694,19 @@ const Settings = ( props ) => {
 							} }
 							min={ 0 }
 							max={ 500 }
-							displayUnit={ false }
+							unit={ {
+								value: topDividerHeightType,
+								label: 'topDividerHeightType',
+							} }
+							units={ [
+								{
+									name: __(
+										'PX',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+							] }
 							setAttributes={ setAttributes }
 						/>
 						<ToggleControl
@@ -1759,9 +1787,21 @@ const Settings = ( props ) => {
 								value: bottomWidth,
 								label: 'bottomWidth',
 							} }
-							min={ 100 }
-							max={ 2000 }
-							displayUnit={ false }
+							min={ 0 }
+							max={ 100 }
+							unit={ {
+								value: bottomDividerWidthType,
+								label: 'bottomDividerWidthType',
+							} }
+							units={ [
+								{
+									name: __(
+										'%',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: '%',
+								},
+							] }
 						/>
 						<ResponsiveSlider
 							label={ __(
@@ -1796,7 +1836,19 @@ const Settings = ( props ) => {
 							} }
 							min={ 0 }
 							max={ 500 }
-							displayUnit={ false }
+							unit={ {
+								value: bottomDividerHeightType,
+								label: 'bottomDividerHeightType',
+							} }
+							units={ [
+								{
+									name: __(
+										'PX',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+							] }
 							setAttributes={ setAttributes }
 						/>
 						<ToggleControl
