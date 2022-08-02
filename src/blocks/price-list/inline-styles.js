@@ -422,16 +422,37 @@ function RestMenuStyle( props ) {
 		};
 
 		if( stack === 'tablet' ) {
-			tabletSelectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = {
-				'display' : 'block'
-			};
-			mobileSelectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = {
-				'display' : 'block'
-			};
+			if( imagePosition === 'left' ) {
+				tabletSelectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = {
+					'display' : 'block'
+				};
+				mobileSelectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = {
+					'display' : 'block'
+				};
+			}else {
+				tabletSelectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = {
+					'display' : 'flex',
+					'flex-direction': 'column-reverse',
+					'align-items': 'flex-end'
+				};
+				mobileSelectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = {
+					'display' : 'flex',
+					'flex-direction': 'column-reverse',
+					'align-items': 'flex-end'
+				};
+			}
 		} else if ( stack === 'mobile' ) {
-			mobileSelectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = {
-				'display' : 'block'
-			};
+			if( imagePosition === 'left' ) {
+				mobileSelectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = {
+					'display' : 'block'
+				};
+			} else {
+				mobileSelectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = {
+					'display' : 'flex',
+					'flex-direction': 'column-reverse',
+					'align-items': 'flex-end'
+				};
+			}
 		}
 		if( imagePosition === 'left' ) {
 			selectors[ ' .uagb-rm-details' ] = {

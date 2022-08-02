@@ -178,19 +178,40 @@ if ( $attr['imgAlign'] === 'side' ) {
 	);
 
 	if ( $attr['stack'] === 'tablet' ) {
-		$t_selectors[' .wp-block-uagb-restaurant-menu-child .uagb-rm__content'] = array(
-			'display'    => 'block',
-			'text-align' => $attr['imagePosition'] === 'left' ? 'left' : 'right',
-		);
-		$m_selectors[' .wp-block-uagb-restaurant-menu-child .uagb-rm__content'] = array(
-			'display'    => 'block',
-			'text-align' => $attr['imagePosition'] === 'left' ? 'left' : 'right',
-		);
+		if ( $attr['imagePosition'] === 'left' ) {
+			$t_selectors[' .wp-block-uagb-restaurant-menu-child .uagb-rm__content'] = array(
+				'display'    => 'block',
+				'text-align' => $attr['imagePosition'] === 'left' ? 'left' : 'right',
+			);
+			$m_selectors[' .wp-block-uagb-restaurant-menu-child .uagb-rm__content'] = array(
+				'display'    => 'block',
+				'text-align' => $attr['imagePosition'] === 'left' ? 'left' : 'right',
+			);
+		}else {
+			$t_selectors[' .wp-block-uagb-restaurant-menu-child .uagb-rm__content'] = array(
+				'display' => 'flex',
+				'flex-direction'=> 'column-reverse',
+				'align-items'=> 'flex-end'
+			);
+			$m_selectors[' .wp-block-uagb-restaurant-menu-child .uagb-rm__content'] = array(
+				'display' => 'flex',
+				'flex-direction'=> 'column-reverse',
+				'align-items'=> 'flex-end'
+			);
+		}
 	} elseif ( $attr['stack'] === 'mobile' ) {
-		$m_selectors[' .wp-block-uagb-restaurant-menu-child .uagb-rm__content'] = array(
-			'display'    => 'block',
-			'text-align' => $attr['imagePosition'] === 'left' ? 'left' : 'right',
-		);
+		if ( $attr['imagePosition'] === 'left' ) {
+			$m_selectors[' .wp-block-uagb-restaurant-menu-child .uagb-rm__content'] = array(
+				'display'    => 'block',
+				'text-align' => $attr['imagePosition'] === 'left' ? 'left' : 'right',
+			);
+		} else {
+			$m_selectors[' .wp-block-uagb-restaurant-menu-child .uagb-rm__content'] = array(
+				'display' => 'flex',
+				'flex-direction'=> 'column-reverse',
+				'align-items'=> 'flex-end'
+			);
+		}
 	}
 	if ( $attr['imagePosition'] === 'left' ) {
 		$selectors[' .uagb-rm-details'] = array(
