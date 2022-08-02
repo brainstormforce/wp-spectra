@@ -52,6 +52,12 @@ const attributes = {
 			styleType: 'arrow-border-radius'
 		},
 	},
+	arrowDistance			: {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'arrow-distance'
+		},
+	},
 	arrowColor              : {
 		type    : 'string',
 		default : '#000',

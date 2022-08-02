@@ -216,7 +216,8 @@ function styling( props ) {
 		boxShadowBlurHover,
 		boxShadowSpreadHover,
 		boxShadowPositionHover,
-		overallBorderHColor
+		overallBorderHColor,
+		arrowDistance
 	} = props.attributes;
 
 	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
@@ -689,6 +690,13 @@ function styling( props ) {
 		'width': generateCSSUnit( arrowSizeFallback, 'px' ),
 	};
 
+	selectors[ '.uagb-post__arrow-outside.uagb-post-grid .slick-prev' ] = {
+		'left': generateCSSUnit( arrowDistance, 'px' ),
+	};
+
+	selectors[ '.uagb-post__arrow-outside.uagb-post-grid .slick-next' ] = {
+		'right': generateCSSUnit( arrowDistance, 'px' ),
+	};
 
 	mobileSelectors = {
 		' .uagb-post__inner-wrap .uagb-post__title': {

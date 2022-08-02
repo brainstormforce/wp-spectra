@@ -400,6 +400,7 @@ const UAGBPostCarousel = ( props ) => {
 		arrowColor,
 		arrowBorderSize,
 		arrowBorderRadius,
+		arrowDistance,
 		excerptLength,
 		overlayOpacity,
 		bgOverlayColor,
@@ -2176,6 +2177,21 @@ const UAGBPostCarousel = ( props ) => {
 					} }
 					min={ 0 }
 					max={ 50 }
+				/>
+				<Range
+					label={ __(
+						'Distance from Edges',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ arrowDistance }
+					data={ {
+						value: arrowDistance,
+						label: 'arrowDistance',
+					} }
+					min={ -50 }
+					max={ 50 }
+					setAttributes={ setAttributes }
+					displayUnit={ false }
 				/>
 				</>
 			}
