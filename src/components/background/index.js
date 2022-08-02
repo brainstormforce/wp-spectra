@@ -486,7 +486,7 @@ const Background = ( props ) => {
 							setAttributes={setAttributes}
 						/>
 					}
-					{ imageResponsive && backgroundImage[deviceType] && backgroundImage[deviceType]?.value &&  (
+					{ imageResponsive && backgroundImage[deviceType] && backgroundImage[deviceType]?.value && (
 						<>
 							<div className="uag-background-image-position">
 								<SelectControl
@@ -503,6 +503,15 @@ const Background = ( props ) => {
 									] }
 								/>
 							</div>
+							{ 'custom' !== customPosition.value && (
+								<div className="uag-background-image-position">
+									<ResponsiveUAGFocalPointPicker
+										backgroundPosition={backgroundPosition}
+										setAttributes={ setAttributes }
+										backgroundImage={backgroundImage}
+									/>
+								</div>
+							) }
 							{ 'custom' === customPosition.value && (
 								<>
 									<div className="uag-background-image-position">
@@ -561,74 +570,62 @@ const Background = ( props ) => {
 										/>
 									</div>
 									<div className="uag-background-image-position">
-									<ResponsiveSlider
-										label={ __( 'Y Position', 'ultimate-addons-for-gutenberg' ) }
-										data={ {
-											desktop: {
-												value: yPositionDesktop.value,
-												label: 'yPositionDesktop',
-												unit: {
-													value: yPositionType.value,
-													label: 'yPositionType',
+										<ResponsiveSlider
+											label={ __( 'Y Position', 'ultimate-addons-for-gutenberg' ) }
+											data={ {
+												desktop: {
+													value: yPositionDesktop.value,
+													label: 'yPositionDesktop',
+													unit: {
+														value: yPositionType.value,
+														label: 'yPositionType',
+													},
 												},
-											},
-											tablet: {
-												value: yPositionTablet.value,
-												label: 'yPositionTablet',
-												unit: {
-													value: yPositionTypeTablet.value,
-													label: 'yPositionTypeTablet',
+												tablet: {
+													value: yPositionTablet.value,
+													label: 'yPositionTablet',
+													unit: {
+														value: yPositionTypeTablet.value,
+														label: 'yPositionTypeTablet',
+													},
 												},
-											},
-											mobile: {
-												value: yPositionMobile.value,
-												label: 'yPositionMobile',
-												unit: {
-													value: yPositionTypeMobile.value,
-													label: 'yPositionTypeMobile',
+												mobile: {
+													value: yPositionMobile.value,
+													label: 'yPositionMobile',
+													unit: {
+														value: yPositionTypeMobile.value,
+														label: 'yPositionTypeMobile',
+													},
 												},
-											},
-										} }
-										limitMin={ { 'px': -800, '%': -100, 'em': -100, 'vw': -100 } }
-										limitMax={ { 'px': 800, '%': 100, 'em': 100, 'vw': 100 } }
-										units={ [
-											{
-												name: __(
-													'PX',
-													'ultimate-addons-for-gutenberg'
-												),
-												unitValue: 'px',
-											},
-											{
-												name: __( '%', 'ultimate-addons-for-gutenberg' ),
-												unitValue: '%',
-											},
-											{
-												name: __( 'EM', 'ultimate-addons-for-gutenberg' ),
-												unitValue: 'em',
-											},
-											{
-												name: __( 'VW', 'ultimate-addons-for-gutenberg' ),
-												unitValue: 'vw',
-											},
-										] }
-										setAttributes={ setAttributes }
-									/>
+											} }
+											limitMin={ { 'px': -800, '%': -100, 'em': -100, 'vw': -100 } }
+											limitMax={ { 'px': 800, '%': 100, 'em': 100, 'vw': 100 } }
+											units={ [
+												{
+													name: __(
+														'PX',
+														'ultimate-addons-for-gutenberg'
+													),
+													unitValue: 'px',
+												},
+												{
+													name: __( '%', 'ultimate-addons-for-gutenberg' ),
+													unitValue: '%',
+												},
+												{
+													name: __( 'EM', 'ultimate-addons-for-gutenberg' ),
+													unitValue: 'em',
+												},
+												{
+													name: __( 'VW', 'ultimate-addons-for-gutenberg' ),
+													unitValue: 'vw',
+												},
+											] }
+											setAttributes={ setAttributes }
+										/>
 									</div>
 								</>
 							) }
-						</>
-						)
-					}
-					{ imageResponsive && backgroundImage[deviceType] && backgroundImage[deviceType]?.value && 'custom' !== customPosition.value && (
-						<>
-							<div className="uag-background-image-position">
-								<ResponsiveUAGFocalPointPicker
-									backgroundPosition={backgroundPosition}
-									setAttributes={ setAttributes }
-									backgroundImage={backgroundImage}
-								/>
-							</div>
 							<div className="uag-background-image-attachment">
 								<ResponsiveSelectControl
 									label={ __( 'Attachment', 'ultimate-addons-for-gutenberg' ) }
