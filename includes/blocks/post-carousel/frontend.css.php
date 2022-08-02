@@ -43,11 +43,11 @@ $selectors[' .slick-arrow'] = array(
 );
 
 $selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-prev'] = array(
-	'left'  => UAGB_Helper::get_css_value( $attr['arrowDistance'], 'px' ),
+	'left' => UAGB_Helper::get_css_value( $attr['arrowDistance'], 'px' ),
 );
 
 $selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-next'] = array(
-	'right'  => UAGB_Helper::get_css_value( $attr['arrowDistance'], 'px' ),
+	'right' => UAGB_Helper::get_css_value( $attr['arrowDistance'], 'px' ),
 );
 
 $selectors['.uagb-post-grid ul.slick-dots li.slick-active button:before'] = array(

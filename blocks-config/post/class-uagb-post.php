@@ -220,8 +220,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => '#000',
 							),
-							'arrowDistance'        => array(
-								'type'    => 'number',
+							'arrowDistance'     => array(
+								'type' => 'number',
 							),
 							'equalHeight'       => array(
 								'type'    => 'boolean',

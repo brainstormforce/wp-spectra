@@ -105,7 +105,7 @@ return array_merge(
 		'arrowDots'                  => '',
 		'arrowBorderSize'            => '0',
 		'arrowBorderRadius'          => '0',
-		'arrowDistance'          	 => '',
+		'arrowDistance'              => '',
 		'overlayOpacity'             => '50',
 		'bgOverlayColor'             => '#ffffff',
 		'ctaText'                    => __( 'Read More', 'ultimate-addons-for-gutenberg' ),
