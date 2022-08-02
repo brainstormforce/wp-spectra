@@ -21,20 +21,6 @@ const UAGBRestaurantMenuChild = ( props ) => {
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 	}, [] );
 
-	// to change the imageWidth according to parent
-	const parentBlock = select( 'core/block-editor' ).getBlockParents(
-		props.clientId
-	);
-	const parentBlockAttributes = select(
-		'core/block-editor'
-	).getBlockAttributes( parentBlock );
-
-	const imageWidth = ( parentBlockAttributes || null !== parentBlockAttributes ) ? parentBlockAttributes.imageWidth : '';
-
-	useEffect( () => {
-		props.setAttributes( { imageWidth } );
-	}, [ imageWidth ] )
-
 	return (
 		<>
 			<Suspense fallback={ lazyLoader() }>
