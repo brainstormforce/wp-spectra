@@ -44,7 +44,8 @@ import {
 	Spinner,
 	ToggleControl,
 	TextControl,
-	Icon
+	Icon,
+	Notice,
 } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
@@ -2454,6 +2455,11 @@ const UAGBPostMasonry = ( props ) => {
 		<InspectorControls>
 			<InspectorTabs>
 				<InspectorTab { ...UAGTabs.general }>
+					<Notice status="warning" isDismissible={false}>
+						{
+							__( 'This block has been deprecated.', 'ultimate-addons-for-gutenberg' )
+						}
+					</Notice>
 					{ generalSettings() }
 					{ imageSettings() }
 					{ contentSettings() }

@@ -68,6 +68,9 @@ const InspectorTabs = ( props ) => {
 		// This code is to fix the side-effect of the editor responsive click settings panel refresh issue.
 		if ( uagSettingState && uagSettingState[blockName] && currentTab !== uagSettingState[blockName]?.selectedTab ) {
 			setCurrentTab( uagSettingState[blockName]?.selectedTab || 'general' )
+			if ( sidebarPanel ) {
+				sidebarPanel.setAttribute( 'data-uagb-tab', uagSettingState[blockName]?.selectedTab || 'general' );
+			}
 		} else if ( sidebarPanel ) {
 			sidebarPanel.setAttribute( 'data-uagb-tab', 'general' );
 		}
