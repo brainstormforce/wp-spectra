@@ -1281,11 +1281,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$bg_video            = isset( $bg_obj['backgroundVideo'] ) ? $bg_obj['backgroundVideo'] : '';
 			$bg_video_color      = isset( $bg_obj['backgroundVideoColor'] ) ? $bg_obj['backgroundVideoColor'] : '';
 
-			$customPosition = isset( $bg_obj['customPosition'] ) ? $bg_obj['customPosition'] : '';
-			$xPosition      = isset( $bg_obj['xPosition'] ) ? $bg_obj['xPosition'] : '';
-			$xPositionType  = isset( $bg_obj['xPositionType'] ) ? $bg_obj['xPositionType'] : '';
-			$yPosition      = isset( $bg_obj['yPosition'] ) ? $bg_obj['yPosition'] : '';
-			$yPositionType  = isset( $bg_obj['yPositionType'] ) ? $bg_obj['yPositionType'] : '';
+			$custom_position = isset( $bg_obj['customPosition'] ) ? $bg_obj['customPosition'] : '';
+			$x_position      = isset( $bg_obj['xPosition'] ) ? $bg_obj['xPosition'] : '';
+			$x_position_type  = isset( $bg_obj['xPositionType'] ) ? $bg_obj['xPositionType'] : '';
+			$y_position      = isset( $bg_obj['yPosition'] ) ? $bg_obj['yPosition'] : '';
+			$y_position_type  = isset( $bg_obj['yPositionType'] ) ? $bg_obj['yPositionType'] : '';
 
 			if ( 'custom' === $size ) {
 				$size = $bg_custom_size . $bg_custom_size_type;
@@ -1339,11 +1339,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$gen_bg_css['background-repeat'] = esc_attr( $repeat );
 				}
 
-				if ( 'custom' !== $customPosition && isset( $position ) && isset( $position['x'] ) && isset( $position['y'] ) ) {
+				if ( 'custom' !== $custom_position && isset( $position ) && isset( $position['x'] ) && isset( $position['y'] ) ) {
 					$position_value                    = $position['x'] * 100 . '% ' . $position['y'] * 100 . '%';
 					$gen_bg_css['background-position'] = $position_value;
-				} elseif ( 'custom' === $customPosition && isset( $xPosition ) && isset( $yPosition ) && isset( $xPositionType ) && isset( $yPositionType ) ) {
-					$position_value                    = $xPosition . $xPositionType . ' ' . $yPosition . $yPositionType;
+				} elseif ( 'custom' === $custom_position && isset( $x_position ) && isset( $y_position ) && isset( $x_position_type ) && isset( $y_position_type ) ) {
+					$position_value                    = $x_position . $x_position_type . ' ' . $y_position . $y_position_type;
 					$gen_bg_css['background-position'] = $position_value;
 				}
 
