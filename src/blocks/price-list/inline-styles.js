@@ -441,6 +441,9 @@ function RestMenuStyle( props ) {
 			selectors[ ' .uagb-rm-details' ] = {
 				'text-align' : 'right'
 			};
+			selectors[ ' .uagb-rest_menu__wrap .uagb-rm__content' ] = {
+				'text-align' : 'right'
+			};
 			selectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__separator'] = {
 				'margin-left': 'auto'
 			}
