@@ -472,7 +472,6 @@ function styling( props ) {
 		'overlayType' : overlayType,
 		'backgroundVideo' : backgroundVideo,
 		'backgroundVideoColor' : backgroundVideoColor,
-		'backgroundVideoColor' : backgroundVideoColor,
 		'customPosition': customPosition,
 		'xPosition': xPositionMobile,
 		'xPositionType': xPositionTypeMobile,
