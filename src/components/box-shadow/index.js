@@ -26,6 +26,21 @@ const BoxShadowControl = ( props ) => {
 
 			if ( popupButton && ! popupButton?.contains( e.target ) && popupWrap && ! popupWrap?.contains( e.target ) && ! e.target?.classList?.contains( 'uagb-advanced-color-indicate' ) && ! e.target?.parentElement?.closest( '.uagb-popover-color' ) && ! e.target?.parentElement?.closest( '.uagb-reset' ) ) {
 				toggleAdvancedControls( false )
+				const blockName = getSelectedBlock()?.name;
+				const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+
+				const data = {
+					...uagSettingState,
+					[blockName] : {
+						...uagSettingState?.[blockName],
+						selectedSetting : false
+					}
+				}
+
+				const uagLocalStorage = getUAGEditorStateLocalStorage();
+				if ( uagLocalStorage ) {
+					uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
+				}
 			}
 		  } );
 	}, [] );
