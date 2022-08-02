@@ -356,6 +356,63 @@ const Settings = ( props ) => {
 			},
 		];
 
+		const alignContentOptions = [
+			{
+				value: 'flex-start',
+				tooltip: __( 'Flex Start', 'ultimate-addons-for-gutenberg' ),
+				icon: (
+					<Icon
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-start` ) }
+					/>
+				),
+			},
+			{
+				value: 'center',
+				tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
+				icon: (
+					<Icon
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-center` ) }
+					/>
+				),
+			},
+			{
+				value: 'flex-end',
+				tooltip: __( 'Flex End', 'ultimate-addons-for-gutenberg' ),
+				icon: (
+					<Icon
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-end` ) }
+					/>
+				),
+			},
+			{
+				value: 'space-between',
+				tooltip: __( 'Space Between', 'ultimate-addons-for-gutenberg' ),
+				icon: (
+					<Icon
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-space-between` ) }
+					/>
+				),
+			},
+			{
+				value: 'space-around',
+				tooltip: __( 'Space Around', 'ultimate-addons-for-gutenberg' ),
+				icon: (
+					<Icon
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-space-around` ) }
+					/>
+				),
+			},
+			{
+				value: 'space-evenly',
+				tooltip: __( 'Space Evenly', 'ultimate-addons-for-gutenberg' ),
+				icon: (
+					<Icon
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-space-evenly` ) }
+					/>
+				),
+			},
+		];
+
 		const wrapOptions = [
 			{
 				value: 'wrap',
@@ -879,7 +936,7 @@ const Settings = ( props ) => {
 									label: 'alignContentMobile',
 								},
 							} }
-							options={ justifyContentOptions }
+							options={ alignContentOptions }
 							showIcons={ true }
 							responsive={ true }
 							help={ alignContentHint }
