@@ -272,6 +272,7 @@ function styling( props ) {
 			 'fill': iconColor,
 			 'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
 		 },
+		 // Need This for All
 		 ' .uagb-iconbox-icon-wrap': {
 			 'margin' : 'auto',
 			 'display' : 'inline-block',
@@ -282,10 +283,7 @@ function styling( props ) {
 			 'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			 'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			 'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			 'padding-bottom': generateCSSUnit(
-				 iconBottomMargin,
-				 iconMarginUnit
-			 ),
+			 'padding-bottom': generateCSSUnit( iconBottomMargin, iconMarginUnit ),
 		 },
 		 ' .uagb-ifb-content .uagb-ifb-left-title-image svg': {
 			 'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
@@ -329,28 +327,19 @@ function styling( props ) {
 			 'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			 'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			 'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			 'padding-bottom': generateCSSUnit(
-				 iconBottomMargin,
-				 iconMarginUnit
-			 ),
+			 'padding-bottom': generateCSSUnit( iconBottomMargin, iconMarginUnit ),
 		 },
 		 '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-icon-wrap > svg': {
 			 'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			 'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			 'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			 'padding-bottom': generateCSSUnit(
-				 iconBottomMargin,
-				 iconMarginUnit
-			 ),
+			 'padding-bottom': generateCSSUnit( iconBottomMargin, iconMarginUnit ),
 		 },
 		 '.uagb-infobox__content-wrap .uagb-ifb-image-content > img': {
 			 'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			 'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			 'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			 'padding-bottom': generateCSSUnit(
-				 iconBottomMargin,
-				 iconMarginUnit
-			 ),
+			 'padding-bottom': generateCSSUnit( iconBottomMargin, iconMarginUnit ),
 			 'border-radius': generateCSSUnit(
 				 iconimgBorderRadiusFallback,
 				 iconimgBorderRadiusUnit
@@ -360,10 +349,7 @@ function styling( props ) {
 			 'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			 'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			 'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			 'padding-bottom': generateCSSUnit(
-				 iconBottomMargin,
-				 iconMarginUnit
-			 ),
+			 'padding-bottom': generateCSSUnit( iconBottomMargin, iconMarginUnit ),
 			 'border-radius': generateCSSUnit(
 				 iconimgBorderRadiusFallback,
 				 iconimgBorderRadiusUnit
@@ -373,10 +359,7 @@ function styling( props ) {
 			 'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			 'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			 'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			 'padding-bottom': generateCSSUnit(
-				 iconBottomMargin,
-				 iconMarginUnit
-			 ),
+			 'padding-bottom': generateCSSUnit( iconBottomMargin, iconMarginUnit ),
 			 'border-radius': generateCSSUnit(
 				 iconimgBorderRadiusFallback,
 				 iconimgBorderRadiusUnit
@@ -386,10 +369,7 @@ function styling( props ) {
 			 'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			 'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			 'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			 'padding-bottom': generateCSSUnit(
-				 iconBottomMargin,
-				 iconMarginUnit
-			 ),
+			 'padding-bottom': generateCSSUnit( iconBottomMargin, iconMarginUnit ),
 			 'border-radius': generateCSSUnit(
 				 iconimgBorderRadiusFallback,
 				 iconimgBorderRadiusUnit
@@ -559,6 +539,12 @@ function styling( props ) {
 	selectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSS;
 
 	 const tabletSelectors = {
+		' .uagb-iconbox-icon-wrap': {
+			'padding-top': generateCSSUnit( iconMarginTopTablet, iconTabletMarginUnit ),
+			'padding-right': generateCSSUnit( iconMarginRightTablet, iconTabletMarginUnit ),
+			'padding-bottom': generateCSSUnit( iconMarginBottomTablet, iconTabletMarginUnit ),
+			'padding-left': generateCSSUnit( iconMarginLeftTablet, iconTabletMarginUnit ),
+		},
 		 ' .block-editor-rich-text__editable.uagb-ifb-desc': {
 			 'margin-bottom': generateCSSUnit( subHeadTabletSpace, subHeadTabletMarginUnit ),
 			 'margin-top': generateCSSUnit( subHeadMarginTopTablet, subHeadTabletMarginUnit ),
@@ -604,205 +590,42 @@ function styling( props ) {
 			 ),
 			 'letter-spacing': generateCSSUnit( prefixLetterSpacingTablet, prefixLetterSpacingType ),
 		 },
-		 ' .uagb-ifb-icon-wrap > svg': {
-			 'padding-top': generateCSSUnit(
-				 iconMarginTopTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-right': generateCSSUnit(
-				 iconMarginRightTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-bottom': generateCSSUnit(
-				 iconMarginBottomTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-left': generateCSSUnit(
-				 iconMarginLeftTablet,
-				 iconTabletMarginUnit
-			 ),
-		 },
-		 '.uagb-infobox__content-wrap > svg': {
-			 'padding-top': generateCSSUnit(
-				 iconMarginTopTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-right': generateCSSUnit(
-				 iconMarginRightTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-bottom': generateCSSUnit(
-				 iconMarginBottomTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-left': generateCSSUnit(
-				 iconMarginLeftTablet,
-				 iconTabletMarginUnit
-			 ),
-		 },
-		 '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img': {
-			 'padding-top': generateCSSUnit(
-				 iconMarginTopTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-right': generateCSSUnit(
-				 iconMarginRightTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-bottom': generateCSSUnit(
-				 iconMarginBottomTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-left': generateCSSUnit(
-				 iconMarginLeftTablet,
-				 iconTabletMarginUnit
-			 ),
-		 },
-		 '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img': {
-			 'padding-top': generateCSSUnit(
-				 iconMarginTopTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-right': generateCSSUnit(
-				 iconMarginRightTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-bottom': generateCSSUnit(
-				 iconMarginBottomTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-left': generateCSSUnit(
-				 iconMarginLeftTablet,
-				 iconTabletMarginUnit
-			 ),
-		 },
-		 ' .uagb-ifb-content > svg': {
-			 'padding-top': generateCSSUnit(
-				 iconMarginTopTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-right': generateCSSUnit(
-				 iconMarginRightTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-bottom': generateCSSUnit(
-				 iconMarginBottomTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-left': generateCSSUnit(
-				 iconMarginLeftTablet,
-				 iconTabletMarginUnit
-			 ),
-		 },
-		 ' .uagb-ifb-content .uagb-ifb-left-title-image > svg': {
-			 'padding-top': generateCSSUnit(
-				 iconMarginTopTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-right': generateCSSUnit(
-				 iconMarginRightTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-bottom': generateCSSUnit(
-				 iconMarginBottomTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-left': generateCSSUnit(
-				 iconMarginLeftTablet,
-				 iconTabletMarginUnit
-			 ),
-		 },
-		 ' .uagb-ifb-content .uagb-ifb-right-title-image > svg': {
-			 'padding-top': generateCSSUnit(
-				 iconMarginTopTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-right': generateCSSUnit(
-				 iconMarginRightTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-bottom': generateCSSUnit(
-				 iconMarginBottomTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-left': generateCSSUnit(
-				 iconMarginLeftTablet,
-				 iconTabletMarginUnit
-			 ),
-		 },
-		 //img
-		 ' .uagb-ifb-content .uagb-ifb-left-title-image > img ': {
-			 'padding-top': generateCSSUnit(
-				 iconMarginTopTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-right': generateCSSUnit(
-				 iconMarginRightTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-bottom': generateCSSUnit(
-				 iconMarginBottomTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-left': generateCSSUnit(
-				 iconMarginLeftTablet,
-				 iconTabletMarginUnit
-			 ),
-		 },
-		 ' .uagb-ifb-content > svg ': {
-			 'padding-top': generateCSSUnit(
-				 iconMarginTopTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-right': generateCSSUnit(
-				 iconMarginRightTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-bottom': generateCSSUnit(
-				 iconMarginBottomTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-left': generateCSSUnit(
-				 iconMarginLeftTablet,
-				 iconTabletMarginUnit
-			 ),
-		 },
-		 ' .uagb-ifb-content .uagb-ifb-right-title-image > img ': {
-			 'padding-top': generateCSSUnit(
-				 iconMarginTopTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-right': generateCSSUnit(
-				 iconMarginRightTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-bottom': generateCSSUnit(
-				 iconMarginBottomTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-left': generateCSSUnit(
-				 iconMarginLeftTablet,
-				 iconTabletMarginUnit
-			 ),
-		 },
-		 '.uagb-infobox__content-wrap img': {
-			 'padding-top': generateCSSUnit(
-				 iconMarginTopTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-right': generateCSSUnit(
-				 iconMarginRightTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-bottom': generateCSSUnit(
-				 iconMarginBottomTablet,
-				 iconTabletMarginUnit
-			 ),
-			 'padding-left': generateCSSUnit(
-				 iconMarginLeftTablet,
-				 iconTabletMarginUnit
-			 ),
-		 },
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg': {
+			'padding-top': generateCSSUnit( iconMarginTopTablet, iconTabletMarginUnit ),
+			'padding-right': generateCSSUnit( iconMarginRightTablet, iconTabletMarginUnit ),
+			'padding-bottom': generateCSSUnit( iconMarginBottomTablet, iconTabletMarginUnit ),
+			'padding-left': generateCSSUnit( iconMarginLeftTablet, iconTabletMarginUnit ),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-icon-wrap > svg': {
+			'padding-top': generateCSSUnit( iconMarginTopTablet, iconTabletMarginUnit ),
+			'padding-right': generateCSSUnit( iconMarginRightTablet, iconTabletMarginUnit ),
+			'padding-bottom': generateCSSUnit( iconMarginBottomTablet, iconTabletMarginUnit ),
+			'padding-left': generateCSSUnit( iconMarginLeftTablet, iconTabletMarginUnit ),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-image-content > img': {
+			'padding-top': generateCSSUnit( iconMarginTopTablet, iconTabletMarginUnit ),
+			'padding-right': generateCSSUnit( iconMarginRightTablet, iconTabletMarginUnit ),
+			'padding-bottom': generateCSSUnit( iconMarginBottomTablet, iconTabletMarginUnit ),
+			'padding-left': generateCSSUnit( iconMarginLeftTablet, iconTabletMarginUnit ),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img': {
+			'padding-top': generateCSSUnit( iconMarginTopTablet, iconTabletMarginUnit ),
+			'padding-right': generateCSSUnit( iconMarginRightTablet, iconTabletMarginUnit ),
+			'padding-bottom': generateCSSUnit( iconMarginBottomTablet, iconTabletMarginUnit ),
+			'padding-left': generateCSSUnit( iconMarginLeftTablet, iconTabletMarginUnit ),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img': {
+			'padding-top': generateCSSUnit( iconMarginTopTablet, iconTabletMarginUnit ),
+			'padding-right': generateCSSUnit( iconMarginRightTablet, iconTabletMarginUnit ),
+			'padding-bottom': generateCSSUnit( iconMarginBottomTablet, iconTabletMarginUnit ),
+			'padding-left': generateCSSUnit( iconMarginLeftTablet, iconTabletMarginUnit ),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content img': {
+			'padding-top': generateCSSUnit( iconMarginTopTablet, iconTabletMarginUnit ),
+			'padding-right': generateCSSUnit( iconMarginRightTablet, iconTabletMarginUnit ),
+			'padding-bottom': generateCSSUnit( iconMarginBottomTablet, iconTabletMarginUnit ),
+			'padding-left': generateCSSUnit( iconMarginLeftTablet, iconTabletMarginUnit ),
+		},
 		 ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
 			 'padding-top': generateCSSUnit(
 				 paddingBtnTopTablet,
@@ -853,6 +676,12 @@ function styling( props ) {
 	 };
 
 	 const mobileSelectors = {
+		' .uagb-iconbox-icon-wrap': {
+			'padding-top': generateCSSUnit( iconMarginTopMobile, iconMobileMarginUnit ),
+			'padding-right': generateCSSUnit( iconMarginRightMobile, iconMobileMarginUnit ),
+			'padding-bottom': generateCSSUnit( iconMarginBottomMobile, iconMobileMarginUnit ),
+			'padding-left': generateCSSUnit( iconMarginLeftMobile, iconMobileMarginUnit ),
+		},
 		 ' .block-editor-rich-text__editable.uagb-ifb-desc': {
 			 'font-size': generateCSSUnit(
 				 subHeadFontSizeMobile,
@@ -904,150 +733,43 @@ function styling( props ) {
 			 'margin-left': generateCSSUnit( separatorMarginLeftMobile, separatorMobileMarginUnit ),
 			 'margin-right': generateCSSUnit( separatorMarginRightMobile, separatorMobileMarginUnit ),
 		 },
-		 ' .uagb-ifb-icon-wrap > svg': {
-			 'padding-top': generateCSSUnit(
-				 iconMarginTopMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-right': generateCSSUnit(
-				 iconMarginRightMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-bottom': generateCSSUnit(
-				 iconMarginBottomMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-left': generateCSSUnit(
-				 iconMarginLeftMobile,
-				 iconMobileMarginUnit
-			 ),
-		 },
-		 '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img': {
-			 'padding-top': generateCSSUnit(
-				 iconMarginTopMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-right': generateCSSUnit(
-				 iconMarginRightMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-bottom': generateCSSUnit(
-				 iconMarginBottomMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-left': generateCSSUnit(
-				 iconMarginLeftMobile,
-				 iconMobileMarginUnit
-			 ),
-		 },
-		 '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img': {
-			 'padding-top': generateCSSUnit(
-				 iconMarginTopMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-right': generateCSSUnit(
-				 iconMarginRightMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-bottom': generateCSSUnit(
-				 iconMarginBottomMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-left': generateCSSUnit(
-				 iconMarginLeftMobile,
-				 iconMobileMarginUnit
-			 ),
-		 },
-		 '.uagb-infobox__content-wrap > svg': {
-			 'padding-top': generateCSSUnit(
-				 iconMarginTopMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-right': generateCSSUnit(
-				 iconMarginRightMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-bottom': generateCSSUnit(
-				 iconMarginBottomMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-left': generateCSSUnit(
-				 iconMarginLeftMobile,
-				 iconMobileMarginUnit
-			 ),
-		 },
-		 ' .uagb-ifb-content > svg': {
-			 'padding-top': generateCSSUnit(
-				 iconMarginTopMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-right': generateCSSUnit(
-				 iconMarginRightMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-bottom': generateCSSUnit(
-				 iconMarginBottomMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-left': generateCSSUnit(
-				 iconMarginLeftMobile,
-				 iconMobileMarginUnit
-			 ),
-		 },
-		 ' .uagb-ifb-content .uagb-ifb-left-title-image > svg': {
-			 'padding-top': generateCSSUnit(
-				 iconMarginTopMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-right': generateCSSUnit(
-				 iconMarginRightMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-bottom': generateCSSUnit(
-				 iconMarginBottomMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-left': generateCSSUnit(
-				 iconMarginLeftMobile,
-				 iconMobileMarginUnit
-			 ),
-		 },
-		 ' .uagb-ifb-content .uagb-ifb-right-title-image > svg': {
-			 'padding-top': generateCSSUnit(
-				 iconMarginTopMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-right': generateCSSUnit(
-				 iconMarginRightMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-bottom': generateCSSUnit(
-				 iconMarginBottomMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-left': generateCSSUnit(
-				 iconMarginLeftMobile,
-				 iconMobileMarginUnit
-			 ),
-		 },
-		 '.uagb-infobox__content-wrap img': {
-			 'padding-top': generateCSSUnit(
-				 iconMarginTopMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-right': generateCSSUnit(
-				 iconMarginRightMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-bottom': generateCSSUnit(
-				 iconMarginBottomMobile,
-				 iconMobileMarginUnit
-			 ),
-			 'padding-left': generateCSSUnit(
-				 iconMarginLeftMobile,
-				 iconMobileMarginUnit
-			 ),
-		 },
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg': {
+			'padding-top': generateCSSUnit( iconMarginTopMobile, iconMobileMarginUnit ),
+			'padding-right': generateCSSUnit( iconMarginRightMobile, iconMobileMarginUnit ),
+			'padding-bottom': generateCSSUnit( iconMarginBottomMobile, iconMobileMarginUnit ),
+			'padding-left': generateCSSUnit( iconMarginLeftMobile, iconMobileMarginUnit ),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-icon-wrap > svg': {
+			'padding-top': generateCSSUnit( iconMarginTopMobile, iconMobileMarginUnit ),
+			'padding-right': generateCSSUnit( iconMarginRightMobile, iconMobileMarginUnit ),
+			'padding-bottom': generateCSSUnit( iconMarginBottomMobile, iconMobileMarginUnit ),
+			'padding-left': generateCSSUnit( iconMarginLeftMobile, iconMobileMarginUnit ),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-image-content > img': {
+			'padding-top': generateCSSUnit( iconMarginTopMobile, iconMobileMarginUnit ),
+			'padding-right': generateCSSUnit( iconMarginRightMobile, iconMobileMarginUnit ),
+			'padding-bottom': generateCSSUnit( iconMarginBottomMobile, iconMobileMarginUnit ),
+			'padding-left': generateCSSUnit( iconMarginLeftMobile, iconMobileMarginUnit ),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img': {
+			'padding-top': generateCSSUnit( iconMarginTopMobile, iconMobileMarginUnit ),
+			'padding-right': generateCSSUnit( iconMarginRightMobile, iconMobileMarginUnit ),
+			'padding-bottom': generateCSSUnit( iconMarginBottomMobile, iconMobileMarginUnit ),
+			'padding-left': generateCSSUnit( iconMarginLeftMobile, iconMobileMarginUnit ),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img': {
+			'padding-top': generateCSSUnit( iconMarginTopMobile, iconMobileMarginUnit ),
+			'padding-right': generateCSSUnit( iconMarginRightMobile, iconMobileMarginUnit ),
+			'padding-bottom': generateCSSUnit( iconMarginBottomMobile, iconMobileMarginUnit ),
+			'padding-left': generateCSSUnit( iconMarginLeftMobile, iconMobileMarginUnit ),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content img': {
+			'padding-top': generateCSSUnit( iconMarginTopMobile, iconMobileMarginUnit ),
+			'padding-right': generateCSSUnit( iconMarginRightMobile, iconMobileMarginUnit ),
+			'padding-bottom': generateCSSUnit( iconMarginBottomMobile, iconMobileMarginUnit ),
+			'padding-left': generateCSSUnit( iconMarginLeftMobile, iconMobileMarginUnit ),
+			'box-sizing' : `${ boxSizingImageMobile }`,
+		},
 		 ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
 			 'padding-top': generateCSSUnit(
 				 paddingBtnTopMobile,
@@ -1085,9 +807,6 @@ function styling( props ) {
 				 ctaFontSizeType
 			 ),
 			 'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
-		 },
-		 '.uagb-infobox__content-wrap .uagb-ifb-content img': {
-			 'box-sizing' : `${boxSizingImageMobile}`,
 		 },
 	 };
 
