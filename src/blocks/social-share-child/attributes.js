@@ -19,7 +19,7 @@ const attributes = {
 	},
 	icon: {
 		type: 'string',
-		default: 'fab fa-facebook',
+		default: 'facebook',
 	},
 	image: {
 		type: 'object',

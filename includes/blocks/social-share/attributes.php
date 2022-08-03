@@ -18,7 +18,7 @@ return array(
 		array(
 			'type'                => 'facebook',
 			'image_icon'          => 'icon',
-			'icon'                => 'fab fa-facebook',
+			'icon'                => 'facebook',
 			'image'               => '',
 			'icon_color'          => '#3a3a3a',
 			'icon_hover_color'    => '#3a3a3a',
