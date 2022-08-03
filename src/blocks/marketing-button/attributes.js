@@ -261,7 +261,7 @@ const attributes = {
 	// Icon attributes
 	icon: {
 		type: 'string',
-		default: 'external-link-alt',
+		default: 'up-right-from-square',
 	},
 	iconPosition: {
 		type: 'string',
