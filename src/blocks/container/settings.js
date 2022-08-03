@@ -198,7 +198,11 @@ const Settings = ( props ) => {
 		bottomHeightTypeTablet,
 		bottomHeightTypeMobile,
 
-		overflow
+		overflow,
+		topDividerWidthType,
+		bottomDividerWidthType,
+		topDividerHeightType,
+		bottomDividerHeightType
 	} = attributes;
 
 	let currentDirection = directionDesktop;
@@ -360,6 +364,63 @@ const Settings = ( props ) => {
 				icon: (
 					<Icon
 						icon={ renderCustomIcon( `flex-${currentDirection}-space-evenly` ) }
+					/>
+				),
+			},
+		];
+
+		const alignContentOptions = [
+			{
+				value: 'flex-start',
+				tooltip: __( 'Flex Start', 'ultimate-addons-for-gutenberg' ),
+				icon: (
+					<Icon
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-start` ) }
+					/>
+				),
+			},
+			{
+				value: 'center',
+				tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
+				icon: (
+					<Icon
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-center` ) }
+					/>
+				),
+			},
+			{
+				value: 'flex-end',
+				tooltip: __( 'Flex End', 'ultimate-addons-for-gutenberg' ),
+				icon: (
+					<Icon
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-end` ) }
+					/>
+				),
+			},
+			{
+				value: 'space-between',
+				tooltip: __( 'Space Between', 'ultimate-addons-for-gutenberg' ),
+				icon: (
+					<Icon
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-space-between` ) }
+					/>
+				),
+			},
+			{
+				value: 'space-around',
+				tooltip: __( 'Space Around', 'ultimate-addons-for-gutenberg' ),
+				icon: (
+					<Icon
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-space-around` ) }
+					/>
+				),
+			},
+			{
+				value: 'space-evenly',
+				tooltip: __( 'Space Evenly', 'ultimate-addons-for-gutenberg' ),
+				icon: (
+					<Icon
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-space-evenly` ) }
 					/>
 				),
 			},
@@ -888,7 +949,7 @@ const Settings = ( props ) => {
 									label: 'alignContentMobile',
 								},
 							} }
-							options={ justifyContentOptions }
+							options={ alignContentOptions }
 							showIcons={ true }
 							responsive={ true }
 							help={ alignContentHint }
@@ -1706,9 +1767,21 @@ const Settings = ( props ) => {
 								value: topWidth,
 								label: 'topWidth',
 							} }
-							min={ 100 }
-							max={ 2000 }
-							displayUnit={ false }
+							min={ 0 }
+							max={ 100 }
+							unit={ {
+								value: topDividerWidthType,
+								label: 'topDividerWidthType',
+							} }
+							units={ [
+								{
+									name: __(
+										'%',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: '%',
+								},
+							] }
 						/>
 						<ResponsiveSlider
 							label={ __(
@@ -1743,7 +1816,19 @@ const Settings = ( props ) => {
 							} }
 							min={ 0 }
 							max={ 500 }
-							displayUnit={ false }
+							unit={ {
+								value: topDividerHeightType,
+								label: 'topDividerHeightType',
+							} }
+							units={ [
+								{
+									name: __(
+										'PX',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+							] }
 							setAttributes={ setAttributes }
 						/>
 						<ToggleControl
@@ -1824,9 +1909,21 @@ const Settings = ( props ) => {
 								value: bottomWidth,
 								label: 'bottomWidth',
 							} }
-							min={ 100 }
-							max={ 2000 }
-							displayUnit={ false }
+							min={ 0 }
+							max={ 100 }
+							unit={ {
+								value: bottomDividerWidthType,
+								label: 'bottomDividerWidthType',
+							} }
+							units={ [
+								{
+									name: __(
+										'%',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: '%',
+								},
+							] }
 						/>
 						<ResponsiveSlider
 							label={ __(
@@ -1861,7 +1958,19 @@ const Settings = ( props ) => {
 							} }
 							min={ 0 }
 							max={ 500 }
-							displayUnit={ false }
+							unit={ {
+								value: bottomDividerHeightType,
+								label: 'bottomDividerHeightType',
+							} }
+							units={ [
+								{
+									name: __(
+										'PX',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+							] }
 							setAttributes={ setAttributes }
 						/>
 						<ToggleControl
