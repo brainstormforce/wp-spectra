@@ -325,11 +325,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 1.8.2
 		 */
 		public static function get_query( $attributes, $block_type ) {
-
+			$fallback_for_posts_to_show = UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] );
+			$fallback_for_offset        = UAGB_Block_Helper::get_fallback_number( $attributes['postsOffset'], 'postsOffset', $attributes['blockName'] );
 			// Block type is grid/masonry/carousel/timeline.
 			$query_args = array(
-				'offset'              => UAGB_Block_Helper::get_fallback_number( $attributes['postsOffset'], 'postsOffset', $attributes['blockName'] ),
-				'posts_per_page'      => UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] ),
+				'posts_per_page'      => $fallback_for_posts_to_show,
 				'post_status'         => 'publish',
 				'post_type'           => ( isset( $attributes['postType'] ) ) ? $attributes['postType'] : 'post',
 				'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
@@ -337,6 +337,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				'ignore_sticky_posts' => 1,
 				'paged'               => 1,
 			);
+
+			if ( isset( $attributes['enableOffset'] ) && false !== $attributes['enableOffset'] && 0 !== $attributes['postsOffset'] ) {
+				$query_args['offset'] = $fallback_for_offset;
+			}
 
 			if ( $attributes['excludeCurrentPost'] ) {
 				$query_args['post__not_in'] = array( get_the_ID() );
