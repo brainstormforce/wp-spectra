@@ -11,6 +11,10 @@ const attributes = {
 		type    : 'boolean',
 		default : true,
 	},
+	enableOffset              : {
+		type    : 'boolean',
+		default : false,
+	},
 	infiniteLoop            : {
 		type    : 'boolean',
 		default : true,

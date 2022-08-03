@@ -412,6 +412,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						'type'    => 'number',
 						'default' => 6,
 					),
+					'enableOffset'                  => array(
+						'type'    => 'boolean',
+						'default' => false,
+					),
 					'postsOffset'                   => array(
 						'type'    => 'number',
 						'default' => 0,
