@@ -404,6 +404,9 @@ const UAGBPostCarousel = ( props ) => {
 		arrowColor,
 		arrowBorderSize,
 		arrowBorderRadius,
+		arrowDistance,
+		arrowDistanceTablet,
+		arrowDistanceMobile,
 		excerptLength,
 		overlayOpacity,
 		bgOverlayColor,
@@ -2203,6 +2206,27 @@ const UAGBPostCarousel = ( props ) => {
 					} }
 					min={ 0 }
 					max={ 50 }
+				/>
+				<ResponsiveSlider
+					label={ __( 'Arrow Distance from Edges', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: arrowDistance,
+							label: 'arrowDistance',
+						},
+						tablet: {
+							value: arrowDistanceTablet,
+							label: 'arrowDistanceTablet',
+						},
+						mobile: {
+							value: arrowDistanceMobile,
+							label: 'arrowDistanceMobile',
+						},
+					} }
+					min={ -50 }
+					max={ 50 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 				</>
 			}
