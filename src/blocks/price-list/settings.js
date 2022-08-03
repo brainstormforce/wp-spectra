@@ -491,7 +491,7 @@ const Settings = ( props ) => {
 						},
 					] }
 					showIcons={ false }
-					onchange = { setImgAlign }
+					onChange = { setImgAlign }
 				/>
 				{ ( imgAlign === 'side' ) && (
 					<>
@@ -533,6 +533,7 @@ const Settings = ( props ) => {
 							},
 						] }
 						showIcons={ true }
+						onChange = {setimagePosition}
 					/>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
@@ -563,6 +564,7 @@ const Settings = ( props ) => {
 							'Note: Choose on what breakpoint the Images will stack.'
 						) }
 						showIcons={ false }
+						onChange={ setStack }
 					/>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
@@ -586,6 +588,7 @@ const Settings = ( props ) => {
 							},
 						] }
 						showIcons={ false }
+						onChange = { setimageAlignment }
 					/>
 				</>
 				)}
