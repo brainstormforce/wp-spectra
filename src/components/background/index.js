@@ -489,14 +489,16 @@ const Background = ( props ) => {
 					{ imageResponsive && backgroundImage[deviceType] && backgroundImage[deviceType]?.value && (
 						<>
 							<div className="uag-background-image-position">
-								<SelectControl
-									label={ __( 'Image Position' ) }
-									value={ customPosition.value }
-									onChange={ ( value ) =>
-										setAttributes( {
-											[ customPosition.label ]: value,
-										} )
-									}
+								<MultiButtonsControl
+									setAttributes={ setAttributes }
+									label={ __(
+										'Image Position',
+										'ultimate-addons-for-gutenberg'
+									) }
+									data={ {
+										value: customPosition.value,
+										label: customPosition.label,
+									} }
 									options={ [
 										{ value: 'default', label: __( 'Default' ) },
 										{ value: 'custom', label: __( 'Custom' ) },
