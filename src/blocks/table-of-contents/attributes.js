@@ -37,7 +37,7 @@ const attributes = {
 	},
 	icon: {
 		type: 'string',
-		default: 'fa-angle-down',
+		default: 'angle-down',
 	},
 	iconSize: {
 		type: 'number',
