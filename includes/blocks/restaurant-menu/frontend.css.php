@@ -66,7 +66,7 @@ $selectors = array(
 		'width'          => UAGB_Helper::get_css_value( $image_width_fallback, $attr['imageWidthType'] ),
 		'max-width'      => UAGB_Helper::get_css_value( $image_width_fallback, $attr['imageWidthType'] ),
 	),
-	// Backward
+	// Backward.
 	' .uagb-rm__separator-parent'    => array(
 		'justify-content' => $align,
 	),
