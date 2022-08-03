@@ -41,6 +41,7 @@ return array_merge(
 		'backgroundHoverOpacity'    => '',
 		'titleColor'                => '',
 		'titleHoverColor'           => '',
+		'icon'                      => 'up-right-from-square',
 		'iconColor'                 => '',
 		'iconHoverColor'            => '',
 		'iconPosition'              => 'after',

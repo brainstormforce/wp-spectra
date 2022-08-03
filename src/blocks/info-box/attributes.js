@@ -71,7 +71,7 @@
 	},
 	icon: {
 		type: 'string',
-		default: 'fa fa-check-circle',
+		default: 'circle-check',
 	},
 	iconimgPosition: {
 		type: 'string',
