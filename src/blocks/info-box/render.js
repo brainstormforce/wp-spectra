@@ -66,8 +66,9 @@ const Render = ( props ) => {
 
 	if (
 		seperatorPos === 'after_icon' &&
-		( iconimgPosition !== 'above-title' ||
-			iconimgPosition !== 'below-title' )
+		( iconimgPosition === 'left-title' ||
+			iconimgPosition === 'right-title' || iconimgPosition === 'left' ||
+			iconimgPosition === 'right' )
 	) {
 		seperatorPos = 'after_title';
 	}
