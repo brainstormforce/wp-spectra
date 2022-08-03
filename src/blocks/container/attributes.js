@@ -61,11 +61,11 @@ const attributes = {
 	},
 	innerContentCustomWidthTablet: {
 		type: 'number',
-		default: 768
+		default: 1024
 	},
 	innerContentCustomWidthMobile: {
 		type: 'number',
-		default: 426
+		default: 767
 	},
 	innerContentCustomWidthType: {
 		type: 'string',
@@ -425,28 +425,24 @@ const attributes = {
 
 	topPaddingDesktop: {
 		type: 'number',
-		default: 20,
 		UAGCopyPaste: {
 			styleType: 'container-top-padding-desktop'
 		},
 	},
 	bottomPaddingDesktop: {
 		type: 'number',
-		default: 20,
 		UAGCopyPaste: {
 			styleType: 'container-bottom-padding-desktop'
 		},
 	},
 	leftPaddingDesktop: {
 		type: 'number',
-		default: 20,
 		UAGCopyPaste: {
 			styleType: 'container-left-padding-desktop'
 		},
 	},
 	rightPaddingDesktop: {
 		type: 'number',
-		default: 20,
 		UAGCopyPaste: {
 			styleType: 'container-right-padding-desktop'
 		},
@@ -968,6 +964,22 @@ const attributes = {
 	overflow: {
 		type: 'string',
 		default: 'visible'
+	},
+	topDividerWidthType: {
+		type: 'string',
+		default: '%',
+	},
+	bottomDividerWidthType: {
+		type: 'string',
+		default: '%',
+	},
+	topDividerHeightType: {
+		type: 'string',
+		default: 'px',
+	},
+	bottomDividerHeightType: {
+		type: 'string',
+		default: 'px',
 	},
 	...inputBorderAttributes
 };

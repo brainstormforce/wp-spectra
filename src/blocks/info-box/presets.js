@@ -134,7 +134,7 @@ const buttonsPresets = [
         label: __( 'Preset 4', 'ultimate-addons-for-gutenberg' ),
         attributes: [
             { label: 'ctaText', value: 'Button Text' },
-			{ label: 'ctaIcon',  value: 'long-arrow-alt-right' },
+			{ label: 'ctaIcon',  value: 'right-long' },
 			{ label: 'ctaIconSpace', value: 12 },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 5 },
@@ -219,7 +219,7 @@ const buttonsPresets = [
 			{ label: 'ctaBgHoverColor', value: '#3a3a3a' },
 			{ label: 'ctaBtnLinkColor', value: '#0170b9' },
 			{ label: 'ctaLinkHoverColor', value: '#ffffff' },
-			{ label: 'ctaIcon',  value: 'long-arrow-alt-right' },
+			{ label: 'ctaIcon',  value: 'right-long' },
 			{ label: 'ctaIconSpace', value: 12 },
             { label: 'btnBorderStyle', value: 'solid' },
             { label: 'btnBorderTopLeftRadius', value: 5 },
