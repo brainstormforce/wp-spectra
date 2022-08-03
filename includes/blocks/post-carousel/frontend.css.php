@@ -51,11 +51,11 @@ $selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-next'] = array(
 );
 
 $t_selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-prev'] = array(
-	'left' => UAGB_Helper::get_css_value( $attr['arrowDistancetablet'], 'px' ),
+	'left' => UAGB_Helper::get_css_value( $attr['arrowDistanceTablet'], 'px' ),
 );
 
 $t_selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-next'] = array(
-	'right' => UAGB_Helper::get_css_value( $attr['arrowDistancetablet'], 'px' ),
+	'right' => UAGB_Helper::get_css_value( $attr['arrowDistanceTablet'], 'px' ),
 );
 
 $m_selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-prev'] = array(
