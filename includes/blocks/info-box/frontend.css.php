@@ -269,7 +269,7 @@ if ( 'text' === $attr['ctaType'] ) {
 		'text-decoration' => $attr['ctaDecoration'],
 		'color'           => $attr['ctaLinkColor'],
 	);
-	$selectors[' .uagb-infobox-cta-link:hover']                        = array(
+	$selectors[' div.uagb-ifb-button-wrapper a.uagb-infobox-cta-link:hover']                        = array(
 		'color' => $attr['ctaLinkHoverColor'],
 	);
 	$selectors[' .uagb-infobox-cta-link:hover svg']                    = array(
