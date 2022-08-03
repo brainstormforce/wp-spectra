@@ -9,7 +9,7 @@ const attributes = {
 	label: {
 		type: 'html',
 		selector: '.uagb-icon-list__label',
-		default: '#Label',
+		default: 'List item',
 	},
 	image_icon: {
 		type: 'string',
