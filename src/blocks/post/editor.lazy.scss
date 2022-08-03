@@ -3,9 +3,11 @@
  */
 
 .editor-styles-wrapper .uagb-post-grid {
+
 	&:not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap {
 		background-clip: content-box !important;
 	}
+
 	.uagb-post__inner-wrap {
 
 		&.uagb-post__edit-mode {
@@ -16,12 +18,15 @@
 				margin-right: 10px;
 				font-weight: 500;
 			}
+
 			.block-editor-block-list__block {
 				margin-bottom: 25px;
-				.uagb-post__taxonomy{
+
+				.uagb-post__taxonomy {
 					font-size: unset;
 				}
-				.uagb-post__image{
+
+				.uagb-post__image {
 					width: 50%;
 				}
 			}
@@ -31,9 +36,11 @@
 			flex-wrap: nowrap;
 		}
 	}
-	.uagb-block-all-post__actions{
+
+	.uagb-block-all-post__actions {
 		margin: 20px;
 	}
+
 	h2 a {
 		text-decoration: none;
 	}
