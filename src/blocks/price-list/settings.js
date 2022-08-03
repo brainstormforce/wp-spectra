@@ -181,6 +181,66 @@ const Settings = ( props ) => {
 		setAttributes( { imageSize: value } );
 	};
 
+	const setheadingTag = ( value ) => {
+		
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.headingTag = value;
+			
+		} );
+		setAttributes( { headingTag: value } )
+	}
+	
+	const setimagePosition = ( value ) => {
+		
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.imagePosition = value
+		} );
+		setAttributes( { imagePosition: value } )
+	}
+	
+	const setColumns = ( column, tcolumn, mcolumn ) => {
+		
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.columns = column;
+			pricelistChild.attributes.tcolumns = tcolumn;
+			pricelistChild.attributes.mcolumns = mcolumn;
+		} );	
+	}
+
+	const setimageAlignment = ( value ) => {
+		
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.imageAlignment = value
+		} );
+		setAttributes( { imageAlignment: value } )
+	}
+
+	const setStack = ( value ) => {
+		
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.stack = value
+		} );
+		setAttributes( { stack: value } )
+	}
+
+	const setHeadingAlign = ( value ) => {
+		
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.headingAlign = value
+		} );
+		setAttributes( { headingAlign: value } )
+	}
 	let loadTitleGoogleFonts;
 	let loadDescGoogleFonts;
 	let loadPriceGoogleFonts;
@@ -577,6 +637,7 @@ const Settings = ( props ) => {
 						},
 					] }
 					showIcons={ true }
+					onChange = { setHeadingAlign }
 				/>
 				)}
 				<UAGSelectControl
@@ -1189,7 +1250,8 @@ const Settings = ( props ) => {
 								min={ 1 }
 								max={ Math.min( maxColumns, menu_item_count ) }
 								displayUnit={ false }
-								setAttributes={ setAttributes }
+								setAttributes={ setAttributes }	
+								onChange = { setColumns( columns, tcolumns, mcolumns ) }
 							/>
 							<MultiButtonsControl
 								setAttributes={ setAttributes }
@@ -1259,6 +1321,8 @@ const Settings = ( props ) => {
 										),
 									},
 								] }
+								
+								onChange={ setheadingTag }
 							/>
 						</UAGAdvancedPanelBody>
 						{ imageSettings() }
