@@ -453,7 +453,7 @@
 	},
 	seperatorSpace: {
 		type: 'number',
-		default: 10,
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'separator-bottom-margin'
 		}
@@ -1249,7 +1249,7 @@
 		},
 		default: 'px',
 	},
-	
+
 	// padding
 	blockTopPadding : {
 		type: 'number',
