@@ -4,11 +4,12 @@ import {
 	renderPostLayout,
 } from '.././function';
 import { useDeviceType } from '@Controls/getPreviewType';
-import React from 'react';
+import React, { useRef } from 'react';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 const Blog = ( props ) => {
 	const blockName = props.name.replace( 'uagb/', '' );
+	const article = useRef();
 	const { attributes, className, latestPosts, block_id } = props;
 	const deviceType = useDeviceType();
 	const {
