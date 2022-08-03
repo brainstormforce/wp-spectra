@@ -90,7 +90,7 @@ class Admin_Menu {
 			'<a href="' . $default_url . '">' . __( 'Settings', 'ultimate-addons-for-gutenberg' ) . '</a>',
 		);
 
-		return array_merge( $links, $mylinks );
+		return array_merge( $mylinks, $links );
 	}
 
 	/**
@@ -279,6 +279,7 @@ class Admin_Menu {
 					$exclude_blocks[] = 'section';
 					$exclude_blocks[] = 'cf7-styler';
 					$exclude_blocks[] = 'gf-styler';
+					$exclude_blocks[] = 'post-masonry';
 				}
 
 				if ( array_key_exists( 'extension', $info ) && $info['extension'] ) {

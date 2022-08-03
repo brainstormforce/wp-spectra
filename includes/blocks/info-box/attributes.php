@@ -172,7 +172,7 @@ return array_merge(
 		'seperatorMobileSpace'       => '',
 		'seperatorTabletSpace'       => '',
 		'seperatorSpaceUnit'         => 'px',
-		'seperatorSpace'             => '10',
+		'seperatorSpace'             => 0,
 		'separatorTopMargin'         => '',
 		'separatorRightMargin'       => '',
 		'separatorLeftMargin'        => '',

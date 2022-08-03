@@ -446,7 +446,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				'wp-block-uagb-table-of-contents',
 				'uagb-toc__align-' . $attributes['align'],
 				'uagb-toc__columns-' . $attributes['tColumnsDesktop'],
-				( ( true === $attributes['initialCollapse'] ) ? 'uagb-toc__collapse' : ' ' ),
+				( ( true === $attributes['initialCollapse'] ) ? 'uagb-toc__collapse' : '' ),
 				'uagb-block-' . $attributes['block_id'],
 				( isset( $attributes['className'] ) ) ? $attributes['className'] : '',
 				$desktop_class,

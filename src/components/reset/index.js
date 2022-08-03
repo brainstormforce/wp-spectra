@@ -44,7 +44,7 @@ const UAGReset = ( props ) => {
 		let resetDisableState = true;
 
 		attributeNames.map( ( attributeName ) => {
-			if ( selectedBlockAttributes?.[attributeName] !== defaultValues?.[attributeName] ) {
+			if ( selectedBlockAttributes?.[attributeName] && selectedBlockAttributes?.[attributeName] !== defaultValues?.[attributeName] ) {
 				resetDisableState = false;
 			}
 			return attributeName;

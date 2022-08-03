@@ -369,7 +369,7 @@ export default function Settings( props ) {
 	const objectFitOptions = {
 		desktop: [
 			{
-				value: 'default',
+				value: '',
 				label: __(
 					'Default',
 					'ultimate-addons-for-gutenberg'
@@ -399,7 +399,7 @@ export default function Settings( props ) {
 		],
 		tablet: [
 			{
-				value: 'default',
+				value: '',
 				label: __(
 					'Default',
 					'ultimate-addons-for-gutenberg'
@@ -429,7 +429,7 @@ export default function Settings( props ) {
 		],
 		mobile: [
 			{
-				value: 'default',
+				value: '',
 				label: __(
 					'Default',
 					'ultimate-addons-for-gutenberg'
@@ -1622,16 +1622,12 @@ export default function Settings( props ) {
 			title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
-			{
-				layout === 'default' && (
-					<ResponsiveBorder
-						setAttributes={ setAttributes }
-						prefix={'image'}
-						attributes={ attributes }
-						deviceType={deviceType}
-					/>
-				)
-			}
+			<ResponsiveBorder
+				setAttributes={ setAttributes }
+				prefix={'image'}
+				attributes={ attributes }
+				deviceType={deviceType}
+			/>
 
 			<SpacingControl
 				label={ __(

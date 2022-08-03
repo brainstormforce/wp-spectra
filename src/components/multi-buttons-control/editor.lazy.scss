@@ -44,10 +44,6 @@
 		color: $spectra-color-body;
 	}
 
-	.uagb-multi-button.is-primary:focus:not(:disabled) {
-		box-shadow: unset;
-	}
-
 	.uagb-multi-button.is-secondary:active:not(:disabled),
 	.uagb-multi-button-grou[aria-label="Gap"]
 	.uagb-multi-button.is-tertiary:active:not(:disabled) {
