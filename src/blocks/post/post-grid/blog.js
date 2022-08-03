@@ -67,13 +67,13 @@ const Blog = ( props ) => {
 		}, 100 )
 	};
 
-    useEffect( () => {
-		updateImageBgWidth();
-    }, [article] );
+    // useEffect( () => {
+	// 	updateImageBgWidth();
+    // }, [article] );
 
-	useEffect( () => {
-		updateImageBgWidth();
-    }, [imgPosition] );
+	// useEffect( () => {
+	// 	updateImageBgWidth();
+    // }, [imgPosition] );
 
 	const equalHeightClass = equalHeight ? 'uagb-post__equal-height' : '';
 	// Removing posts from display should be instant.

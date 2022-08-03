@@ -1534,7 +1534,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			if ( isset( self::$settings['grid'] ) && ! empty( self::$settings['grid'] ) ) {
 				foreach ( self::$settings['grid'] as $key => $value ) {
 					?>
-				<script type="text/javascript" id="uagb-post-grid-<?php echo esc_html( $key ); ?>">
+				<!-- <script type="text/javascript" id="uagb-post-grid-<?php echo esc_html( $key ); ?>">
 					document.addEventListener("DOMContentLoaded", function(){
 						// This CSS is for Post BG Image Spacing
 						let articles = document.querySelectorAll( '.uagb-post__image-position-background .uagb-post__inner-wrap' );
@@ -1552,7 +1552,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 						}
 					});
-				</script>
+				</script> -->
 					<?php
 				}
 			}
