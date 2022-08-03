@@ -107,21 +107,25 @@ function styling( props ) {
 
 	const gapFallback = getFallbackNumber( gap, 'gap', blockName );
 	const bgSizeFallback = getFallbackNumber( bgSize, 'bgSize', blockName );
-	const bgSizeTabletFallback = getFallbackNumber( bgSizeTablet, 'bgSizeTablet', blockName );
-	const bgSizeMobileFallback = getFallbackNumber( bgSizeMobile, 'bgSizeMobile', blockName );
 	const borderRadiusFallback = getFallbackNumber( borderRadius, 'borderRadius', blockName );
 	const borderRadiusTabletFallback = getFallbackNumber( borderRadiusTablet, 'borderRadiusTablet', blockName );
 	const borderRadiusMobileFallback = getFallbackNumber( borderRadiusMobile, 'borderRadiusMobile', blockName );
 	const borderFallback = getFallbackNumber( border, 'border', blockName );
-	const borderTabletFallback = getFallbackNumber( borderTablet, 'borderTablet', blockName );
-	const borderMobileFallback = getFallbackNumber( borderMobile, 'borderMobile', blockName );
 	const sizeFallback = getFallbackNumber( size, 'size', blockName );
-	const sizeTabletFallback = getFallbackNumber( sizeTablet, 'sizeTablet', blockName );
-	const sizeMobileFallback = getFallbackNumber( sizeMobile, 'sizeMobile', blockName );
 	const innerGapFallback = getFallbackNumber( inner_gap, 'inner_gap', blockName );
 	const innerGapTabletFallback = getFallbackNumber( innerGapTablet, 'innerGapTablet', blockName );
 	const innerGapMobileFallback = getFallbackNumber( innerGapMobile, 'innerGapMobile', blockName );
-
+	const fontSizeFallback = getFallbackNumber( fontSize, 'fontSize', blockName );
+	
+	// Responsive Fallback Values that Need to be Numeric for Math.
+	const sizeTabletFallback = isNaN( sizeTablet ) ? sizeFallback : sizeTablet;
+	const sizeMobileFallback = isNaN( sizeMobile ) ? sizeTabletFallback : sizeMobile;
+	const bgSizeTabletFallback = isNaN( bgSizeTablet ) ? bgSizeFallback : bgSizeTablet;
+	const bgSizeMobileFallback = isNaN( bgSizeMobile ) ? bgSizeTabletFallback : bgSizeMobile;
+	const borderTabletFallback = isNaN( borderTablet ) ? borderFallback : borderTablet;
+	const borderMobileFallback = isNaN( borderMobile ) ? borderTabletFallback : borderMobile;
+	const fontSizeTabletFallback = isNaN( fontSizeTablet ) ? fontSizeFallback : fontSizeTablet;
+	const fontSizeMobileFallback = isNaN( fontSizeMobile ) ? fontSizeTabletFallback : fontSizeMobile;
 	const gapTabletFallback = isNaN( gapTablet ) ? gapFallback : gapTablet;
 	const gapMobileFallback = isNaN( gapMobile ) ? gapTabletFallback : gapMobile;
 
@@ -165,8 +169,9 @@ function styling( props ) {
 	let positionTablet = '';
 	let positionMobile = '';
 
+	// The Math ( 3 * Icon Size ) / 5 aligns perfectly with the current defaults ( Font Size: 16px, Line Height: 1.8em ).
 	const topIconRealignment = ( 'top' === iconPosition ) ? ( {
-		'margin-top': `calc(${ fontSize }${ fontSizeType } - ${ sizeFallback / 2 }${ sizeType } - ${ bgSizeFallback }${ bgSizeType } - ${ borderFallback }${ borderType })`,
+		'margin-top': `max(0px, calc(${ fontSizeFallback }${ fontSizeType } - ${ 3 * sizeFallback / 5 }${ sizeType } - ${ bgSizeFallback }${ bgSizeType } - ${ borderFallback }${ borderType }))`,
 	} ) : null;
 	let topIconRealignmentTablet = null;
 	let topIconRealignmentMobile = null;
@@ -174,7 +179,7 @@ function styling( props ) {
 	if( iconPositionTablet === 'top' ) {
 		positionTablet = 'flex-start';
 		topIconRealignmentTablet = {
-			'margin-top': `calc(${ fontSizeTablet }${ fontSizeType } - ${ sizeTabletFallback / 2 }${ sizeType } - ${ bgSizeTabletFallback }${ bgSizeType } - ${ borderTabletFallback }${ borderType })`,
+			'margin-top': `max(0px, calc(${ fontSizeTabletFallback }${ fontSizeType } - ${ 3 * sizeTabletFallback / 5 }${ sizeType } - ${ bgSizeTabletFallback }${ bgSizeType } - ${ borderTabletFallback }${ borderType }))`,
 		}
 	} else if( iconPositionTablet === 'middle' ) {
 		positionTablet = 'center';
@@ -185,7 +190,7 @@ function styling( props ) {
 	if( iconPositionMobile === 'top' ) {
 		positionMobile = 'flex-start';
 		topIconRealignmentMobile = {
-			'margin-top': `calc(${ fontSizeMobile }${ fontSizeType } - ${ sizeMobileFallback / 2 }${ sizeType } - ${ bgSizeMobileFallback }${ bgSizeType } - ${ borderMobileFallback }${ borderType })`,
+			'margin-top': `max(0px, calc(${ fontSizeMobileFallback }${ fontSizeType } - ${ 3 * sizeMobileFallback / 5 }${ sizeType } - ${ bgSizeMobileFallback }${ bgSizeType } - ${ borderMobileFallback }${ borderType }))`,
 		}
 	} else if( iconPositionMobile === 'middle' ) {
 		positionMobile = 'center';

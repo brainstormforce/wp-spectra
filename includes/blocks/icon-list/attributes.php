@@ -56,7 +56,7 @@ return array(
 	'borderRadiusTablet'       => '',
 	'borderRadiusMobile'       => '',
 	'borderRadiusType'         => 'px',
-	'fontSize'                 => '',
+	'fontSize'                 => 16,
 	'fontSizeType'             => 'px',
 	'fontSizeMobile'           => '',
 	'fontSizeTablet'           => '',
