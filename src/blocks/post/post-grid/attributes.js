@@ -17,6 +17,10 @@ const attributes = {
 		type    : 'boolean',
 		default : false,
 	},
+	enableOffset              : {
+		type    : 'boolean',
+		default : false,
+	},
 	pageLimit                   : {
 		type    : 'number',
 		default : 10,

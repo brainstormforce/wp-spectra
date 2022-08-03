@@ -557,11 +557,11 @@ const attributes = {
 	},
 	icon: {
 		type: 'string',
-		default: 'fas fa-plus',
+		default: 'plus',
 	},
 	iconActive: {
 		type: 'string',
-		default: 'fas fa-minus',
+		default: 'minus',
 	},
 	iconAlign: {
 		type: 'string',

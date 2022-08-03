@@ -287,15 +287,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			// Load Polyfiller Array if needed.
 			if ( 'disabled' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', 'disabled' ) ) {
+				// If Icon doesn't need Polyfilling, use the Original.
 				$font_awesome_5_polyfiller = get_spectra_font_awesome_polyfiller();
-				$path                      = isset( $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands'] ) ? $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands']['path'] : $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['solid']['path'];
-				$view                      = isset( $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands'] ) ? $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands']['viewBox'] : $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['solid']['viewBox'];
-				if ( ! $path ) {
-					$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : $json[ $icon ]['svg']['solid']['path'];
-				}
-				if ( ! $view ) {
-					$view = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['viewBox'] : $json[ $icon ]['svg']['solid']['viewBox'];
-				}
+				$polyfilled_icon           = isset( $font_awesome_5_polyfiller[ $icon ] ) ? $font_awesome_5_polyfiller[ $icon ] : $icon;
+				$path                      = isset( $json[ $polyfilled_icon ]['svg']['brands'] ) ? $json[ $polyfilled_icon ]['svg']['brands']['path'] : $json[ $polyfilled_icon ]['svg']['solid']['path'];
+				$view                      = isset( $json[ $polyfilled_icon ]['svg']['brands'] ) ? $json[ $polyfilled_icon ]['svg']['brands']['viewBox'] : $json[ $polyfilled_icon ]['svg']['solid']['viewBox'];
 			} else {
 				$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : $json[ $icon ]['svg']['solid']['path'];
 				$view = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['viewBox'] : $json[ $icon ]['svg']['solid']['viewBox'];
@@ -329,11 +325,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 1.8.2
 		 */
 		public static function get_query( $attributes, $block_type ) {
-
+			$fallback_for_posts_to_show = UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] );
+			$fallback_for_offset        = UAGB_Block_Helper::get_fallback_number( $attributes['postsOffset'], 'postsOffset', $attributes['blockName'] );
 			// Block type is grid/masonry/carousel/timeline.
 			$query_args = array(
-				'offset'              => UAGB_Block_Helper::get_fallback_number( $attributes['postsOffset'], 'postsOffset', $attributes['blockName'] ),
-				'posts_per_page'      => UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] ),
+				'posts_per_page'      => $fallback_for_posts_to_show,
 				'post_status'         => 'publish',
 				'post_type'           => ( isset( $attributes['postType'] ) ) ? $attributes['postType'] : 'post',
 				'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
@@ -341,6 +337,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				'ignore_sticky_posts' => 1,
 				'paged'               => 1,
 			);
+
+			if ( isset( $attributes['enableOffset'] ) && false !== $attributes['enableOffset'] && 0 !== $attributes['postsOffset'] ) {
+				$query_args['offset'] = $fallback_for_offset;
+			}
 
 			if ( $attributes['excludeCurrentPost'] ) {
 				$query_args['post__not_in'] = array( get_the_ID() );
