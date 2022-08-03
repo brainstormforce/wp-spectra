@@ -1061,7 +1061,7 @@ const UAGB_Block_Icons = {
 	),
 	bg_gradient: el(
 		'svg',
-		{ width: 10, height: 10, viewBox: '0 0 10 10', className: 'uagb-editor-icons' },
+		{ width: 12, height: 12, viewBox: '0 0 10 10', className: 'uagb-editor-icons' },
 		el( 'path', {
 			fill: iconColor,
 			fillRule: 'evenodd',
