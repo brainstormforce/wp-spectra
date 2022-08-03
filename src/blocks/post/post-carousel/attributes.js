@@ -58,6 +58,18 @@ const attributes = {
 			styleType: 'arrow-distance'
 		},
 	},
+	arrowDistanceTablet		: {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'arrow-distance-tablet'
+		},
+	},
+	arrowDistanceMobile		: {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'arrow-distance-mobile'
+		},
+	},
 	arrowColor              : {
 		type    : 'string',
 		default : '#000',

@@ -106,6 +106,8 @@ return array_merge(
 		'arrowBorderSize'            => '0',
 		'arrowBorderRadius'          => '0',
 		'arrowDistance'              => '',
+		'arrowDistanceTablet'        => '',
+		'arrowDistanceMobile'        => '',
 		'overlayOpacity'             => '50',
 		'bgOverlayColor'             => '#ffffff',
 		'ctaText'                    => __( 'Read More', 'ultimate-addons-for-gutenberg' ),

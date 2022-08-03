@@ -401,6 +401,8 @@ const UAGBPostCarousel = ( props ) => {
 		arrowBorderSize,
 		arrowBorderRadius,
 		arrowDistance,
+		arrowDistanceTablet,
+		arrowDistanceMobile,
 		excerptLength,
 		overlayOpacity,
 		bgOverlayColor,
@@ -2178,20 +2180,26 @@ const UAGBPostCarousel = ( props ) => {
 					min={ 0 }
 					max={ 50 }
 				/>
-				<Range
-					label={ __(
-						'Distance from Edges',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ arrowDistance }
+				<ResponsiveSlider
+					label={ __( 'Arrow Distance from Edges', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
-						value: arrowDistance,
-						label: 'arrowDistance',
+						desktop: {
+							value: arrowDistance,
+							label: 'arrowDistance',
+						},
+						tablet: {
+							value: arrowDistanceTablet,
+							label: 'arrowDistanceTablet',
+						},
+						mobile: {
+							value: arrowDistanceMobile,
+							label: 'arrowDistanceMobile',
+						},
 					} }
 					min={ -50 }
 					max={ 50 }
-					setAttributes={ setAttributes }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 				</>
 			}

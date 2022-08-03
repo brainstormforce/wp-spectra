@@ -223,6 +223,12 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							'arrowDistance'     => array(
 								'type' => 'number',
 							),
+							'arrowDistanceTablet'     => array(
+								'type' => 'number',
+							),
+							'arrowDistanceMobile'     => array(
+								'type' => 'number',
+							),
 							'equalHeight'       => array(
 								'type'    => 'boolean',
 								'default' => false,
@@ -1186,6 +1192,12 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			}
 			if ( isset( $attributes['arrowDistance'] ) ) {
 				$attributes['arrowDistance'] = UAGB_Block_Helper::get_fallback_number( $attributes['arrowDistance'], 'arrowDistance', $attributes['blockName'] );
+			}
+			if ( isset( $attributes['arrowDistanceTablet'] ) ) {
+				$attributes['arrowDistanceTablet'] = UAGB_Block_Helper::get_fallback_number( $attributes['arrowDistanceTablet'], 'arrowDistanceTablet', $attributes['blockName'] );
+			}
+			if ( isset( $attributes['arrowDistanceMobile'] ) ) {
+				$attributes['arrowDistanceMobile'] = UAGB_Block_Helper::get_fallback_number( $attributes['arrowDistanceMobile'], 'arrowDistanceMobile', $attributes['blockName'] );
 			}
 			if ( isset( $attributes['arrowBorderSize'] ) ) {
 				$attributes['arrowBorderSize'] = UAGB_Block_Helper::get_fallback_number( $attributes['arrowBorderSize'], 'arrowBorderSize', $attributes['blockName'] );
