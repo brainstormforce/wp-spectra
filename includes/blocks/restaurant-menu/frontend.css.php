@@ -151,63 +151,63 @@ if ( 'none' !== $attr['seperatorStyle'] ) {
 		'width' => UAGB_Helper::get_css_value( $seperator_width_mobile_fallback, $attr['seperatorWidthType'] ),
 	);
 }
-if ( $attr['columns'] === 1 ) {
+if ( 1 === $attr['columns'] ) {
 	$selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
 		'grid-template-columns' => 'auto',
 	);
 }
-if ( $attr['columns'] === 2 ) {
+if ( 2 === $attr['columns'] ) {
 	$selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
 		'grid-template-columns' => 'auto auto',
 	);
 }
-if ( $attr['columns'] === 3 ) {
+if ( 3 === $attr['columns'] ) {
 	$selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
 		'grid-template-columns' => 'auto auto auto',
 	);
 }
-if ( $attr['columns'] === 4 ) {
+if ( 4 === $attr['columns'] ) {
 	$selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
 		'grid-template-columns' => 'auto auto auto auto',
 	);
 }
 
-if ( $attr['tcolumns'] === 1 ) {
+if ( 1 === $attr['tcolumns'] ) {
 	$t_selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
 		'grid-template-columns' => 'auto',
 	);
 }
-if ( $attr['tcolumns'] === 2 ) {
+if ( 2 === $attr['tcolumns'] ) {
 	$t_selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
 		'grid-template-columns' => 'auto auto',
 	);
 }
-if ( $attr['tcolumns'] === 3 ) {
+if ( 3 === $attr['tcolumns'] ) {
 	$t_selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
 		'grid-template-columns' => 'auto auto auto',
 	);
 }
-if ( $attr['tcolumns'] === 4 ) {
+if ( 4 === $attr['tcolumns'] ) {
 	$t_selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
 		'grid-template-columns' => 'auto auto auto auto',
 	);
 }
-if ( $attr['mcolumns'] === 1 ) {
+if ( 1 === $attr['mcolumns'] ) {
 	$m_selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
 		'grid-template-columns' => 'auto',
 	);
 }
-if ( $attr['mcolumns'] === 2 ) {
+if ( 2 === $attr['mcolumns'] ) {
 	$m_selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
 		'grid-template-columns' => 'auto auto',
 	);
 }
-if ( $attr['mcolumns'] === 3 ) {
+if ( 3 === $attr['mcolumns'] ) {
 	$m_selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
 		'grid-template-columns' => 'auto auto auto',
 	);
 }
-if ( $attr['mcolumns'] === 4 ) {
+if ( 4 === $attr['mcolumns'] ) {
 	$m_selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
 		'grid-template-columns' => 'auto auto auto auto',
 	);
