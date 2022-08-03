@@ -1550,8 +1550,8 @@ const Settings = ( props ) => {
 						{ companyStyle() }
 						{ imageStyle() }
 						{ carouselStyle() }
-						{ borderSetting() }
 						{ backgroundStyle() }
+						{ borderSetting() }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
