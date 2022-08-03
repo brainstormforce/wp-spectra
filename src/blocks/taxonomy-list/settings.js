@@ -1274,10 +1274,10 @@ const Settings = ( props ) => {
 						bgColorPanel() }
 					{ 'grid' === layout &&
 						'dropdown' !== listDisplayStyle &&
-						boxShadowPanel() }
+						borderPanel() }
 					{ 'grid' === layout &&
 						'dropdown' !== listDisplayStyle &&
-						borderPanel() }
+						boxShadowPanel() }
 					{ 'list' === layout &&
 						'dropdown' !== listDisplayStyle &&
 						listPanel() }
