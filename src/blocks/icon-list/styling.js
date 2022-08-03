@@ -165,8 +165,17 @@ function styling( props ) {
 	let positionTablet = '';
 	let positionMobile = '';
 
+	const topIconRealignment = ( 'top' === iconPosition ) ? ( {
+		'margin-top': `calc(${ fontSize }${ fontSizeType } - ${ sizeFallback / 2 }${ sizeType } - ${ bgSizeFallback }${ bgSizeType } - ${ borderFallback }${ borderType })`,
+	} ) : null;
+	let topIconRealignmentTablet = null;
+	let topIconRealignmentMobile = null;
+
 	if( iconPositionTablet === 'top' ) {
 		positionTablet = 'flex-start';
+		topIconRealignmentTablet = {
+			'margin-top': `calc(${ fontSizeTablet }${ fontSizeType } - ${ sizeTabletFallback / 2 }${ sizeType } - ${ bgSizeTabletFallback }${ bgSizeType } - ${ borderTabletFallback }${ borderType })`,
+		}
 	} else if( iconPositionTablet === 'middle' ) {
 		positionTablet = 'center';
 	} else {
@@ -175,6 +184,9 @@ function styling( props ) {
 
 	if( iconPositionMobile === 'top' ) {
 		positionMobile = 'flex-start';
+		topIconRealignmentMobile = {
+			'margin-top': `calc(${ fontSizeMobile }${ fontSizeType } - ${ sizeMobileFallback / 2 }${ sizeType } - ${ bgSizeMobileFallback }${ bgSizeType } - ${ borderMobileFallback }${ borderType })`,
+		}
 	} else if( iconPositionMobile === 'middle' ) {
 		positionMobile = 'center';
 	} else {
@@ -189,7 +201,8 @@ function styling( props ) {
 			'border-radius': generateCSSUnit( borderRadiusFallback, borderRadiusType ),
 			'border-style': ( 0 === borderFallback || undefined === borderFallback ) ? 'none' : 'solid',
 			'border-width': generateCSSUnit( borderFallback, borderType ),
-			'align-self' : position
+			'align-self' : position,
+			...topIconRealignment,
 		},
 		' .uagb-icon-list__source-image': {
 			'width': generateCSSUnit( sizeFallback, sizeType ),
@@ -514,6 +527,7 @@ function styling( props ) {
 		'border-style':	( 0 === borderMobileFallback || undefined === borderMobileFallback ) ? 'none' : 'solid',
 		'border-width': generateCSSUnit( borderMobileFallback, borderType ),
 		'align-self' : positionMobile,
+		...topIconRealignmentMobile,
 	};
 
 	tabletSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap' ] = {
@@ -522,6 +536,7 @@ function styling( props ) {
 		'border-style':	( 0 === borderTabletFallback || undefined === borderTabletFallback ) ? 'none' : 'solid',
 		'border-width': generateCSSUnit( borderTabletFallback, borderType ),
 		'align-self' : positionTablet,
+		...topIconRealignmentTablet,
 	};
 
 	let stylingCss = '';

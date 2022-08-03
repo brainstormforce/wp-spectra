@@ -60,7 +60,7 @@ return array(
 	'fontSizeType'             => 'px',
 	'fontSizeMobile'           => '',
 	'fontSizeTablet'           => '',
-	'lineHeight'               => '',
+	'lineHeight'               => 1.8,
 	'lineHeightType'           => 'em',
 	'lineHeightMobile'         => '',
 	'lineHeightTablet'         => '',
