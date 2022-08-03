@@ -171,6 +171,47 @@ if( $attr['columns'] === 4 ) {
 		'grid-template-columns' => 'auto auto auto auto',
 	);
 }
+
+if( $attr['tcolumns'] === 1 ) {
+	$t_selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
+		'grid-template-columns' => 'auto',
+	);
+} 
+if( $attr['tcolumns'] === 2 ) {
+	$t_selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
+		'grid-template-columns' => 'auto auto',
+	);
+}
+if( $attr['tcolumns'] === 3 ) {
+	$t_selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
+		'grid-template-columns' => 'auto auto auto',
+	);
+}
+if( $attr['tcolumns'] === 4 ) {
+	$t_selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
+		'grid-template-columns' => 'auto auto auto auto',
+	);
+}
+if( $attr['mcolumns'] === 1 ) {
+	$m_selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
+		'grid-template-columns' => 'auto',
+	);
+} 
+if( $attr['mcolumns'] === 2 ) {
+	$m_selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
+		'grid-template-columns' => 'auto auto',
+	);
+}
+if( $attr['mcolumns'] === 3 ) {
+	$m_selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
+		'grid-template-columns' => 'auto auto auto',
+	);
+}
+if( $attr['mcolumns'] === 4 ) {
+	$m_selectors['.wp-block-uagb-restaurant-menu.uagb-rest_menu__outer-wrap '] = array(
+		'grid-template-columns' => 'auto auto auto auto',
+	);
+}
 if ( $attr['imgAlign'] === 'side' ) {
 	$selectors[' .wp-block-uagb-restaurant-menu-child .uagb-rm__content'] = array(
 		'align-items' => $attr['imageAlignment'] === 'top' ? 'flex-start' : 'center',
