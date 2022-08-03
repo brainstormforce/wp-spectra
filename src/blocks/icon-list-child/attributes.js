@@ -9,6 +9,7 @@ const attributes = {
 	label: {
 		type: 'html',
 		selector: '.uagb-icon-list__label',
+		// Need to Dynamically Number List Items.
 		default: 'List item',
 	},
 	image_icon: {
