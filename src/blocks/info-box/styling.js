@@ -389,6 +389,7 @@ function styling( props ) {
 				ctaLineHeight,
 				ctaLineHeightType
 			 ),
+			 'color': ctaLinkColor
 		 },
 		 ' .uagb-infobox-cta-link:hover': {
 			 'color': ctaLinkHoverColor,
