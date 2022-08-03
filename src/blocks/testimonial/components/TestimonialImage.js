@@ -34,7 +34,7 @@ const TestimonialImage = ( props ) => {
 						className="uagb-tm__image"
 						key={ 'tm_img-' + index_value }
 					>
-						<img className="" src={ url } alt={ image.alt } width={imageWidth} loading="lazy" />
+						<img className="" src={ url } alt={ image.alt } />
 					</div>
 				</div>
 			);
