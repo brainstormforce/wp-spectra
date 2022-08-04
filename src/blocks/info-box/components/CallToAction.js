@@ -1,3 +1,4 @@
+import { RichText } from '@wordpress/block-editor';
 import classnames from 'classnames';
 import renderSVG from '@Controls/deprecatedRenderIcon';
 
@@ -41,9 +42,19 @@ const InfoBoxCta = ( props ) => {
 					>
 						{ attributes.ctaIconPosition === 'before' &&
 							ctaIconOutput }
-						<span className="uagb-inline-editing">
-							{ attributes.ctaText }
-						</span>
+							<RichText
+								tagName="span"
+								placeholder={ __(
+									'Read More',
+									'ultimate-addons-for-gutenberg'
+								) }
+								value={ attributes.ctaText }
+								className="uagb-inline-editing"
+								multiline={ false }
+								onChange={ ( value ) => {
+									setAttributes( { ctaText: value } );
+								} }
+							/>
 						{ attributes.ctaIconPosition === 'after' &&
 							ctaIconOutput }
 					</a>
@@ -65,9 +76,19 @@ const InfoBoxCta = ( props ) => {
 						>
 							{ ctaIconOutput }
 							<span className="uagb-ifb-cta-content-wrapper">
-								<span className="uagb-inline-editing ">
-									{ attributes.ctaText }
-								</span>
+							<RichText
+								tagName="span"
+								placeholder={ __(
+									'Read More',
+									'ultimate-addons-for-gutenberg'
+								) }
+								value={ attributes.ctaText }
+								className="uagb-inline-editing"
+								multiline={ false }
+								onChange={ ( value ) => {
+									setAttributes( { ctaText: value } );
+								} }
+							/>
 							</span>
 						</a>
 					</div>
@@ -86,9 +107,11 @@ const InfoBoxCta = ( props ) => {
 					alt=""
 				>
 					{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
-					<span className="uagb-inline-editing">
-						{ attributes.ctaText }
-					</span>
+						<RichText.Content
+							tagName="span"
+							value={ attributes.ctaText }
+							className="uagb-inline-editing"
+						/>
 					{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 				</a>
 			) }
@@ -109,9 +132,11 @@ const InfoBoxCta = ( props ) => {
 					>
 						{ ctaIconOutput }
 						<span className="uagb-ifb-cta-content-wrapper">
-							<span className="uagb-inline-editing ">
-								{ attributes.ctaText }
-							</span>
+							<RichText.Content
+								tagName="span"
+								value={ attributes.ctaText }
+								className="uagb-inline-editing"
+							/>
 						</span>
 					</a>
 				</div>

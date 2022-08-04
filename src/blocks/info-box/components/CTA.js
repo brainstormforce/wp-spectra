@@ -1,3 +1,4 @@
+import { RichText } from '@wordpress/block-editor';
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 
@@ -27,7 +28,19 @@ const InfoBoxCta = ( props ) => {
 						rel={ rel }
 					>
 						{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
-						{ attributes.ctaText }
+							<RichText
+								tagName="span"
+								placeholder={ __(
+									'Read More',
+									'ultimate-addons-for-gutenberg'
+								) }
+								value={ attributes.ctaText }
+								className="uagb-inline-editing"
+								multiline={ false }
+								onChange={ ( value ) => {
+									setAttributes( { ctaText: value } );
+								} }
+							/>
 						{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 					</a>
 				) }
@@ -46,7 +59,19 @@ const InfoBoxCta = ( props ) => {
 						>
 
 							{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
-							{ attributes.ctaText }
+							<RichText
+								tagName="span"
+								placeholder={ __(
+									'Read More',
+									'ultimate-addons-for-gutenberg'
+								) }
+								value={ attributes.ctaText }
+								className="uagb-inline-editing"
+								multiline={ false }
+								onChange={ ( value ) => {
+									setAttributes( { ctaText: value } );
+								} }
+							/>
 							{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 						</a>
 					</div>
@@ -66,7 +91,11 @@ const InfoBoxCta = ( props ) => {
 							alt=""
 						>
 							{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
-							{ attributes.ctaText }
+							<RichText.Content
+								tagName="span"
+								value={ attributes.ctaText }
+								className="uagb-inline-editing"
+							/>
 							{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 						</a>
 					) }
@@ -79,7 +108,11 @@ const InfoBoxCta = ( props ) => {
 							alt=""
 						>
 							{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
-							{ attributes.ctaText }
+							<RichText.Content
+								tagName="span"
+								value={ attributes.ctaText }
+								className="uagb-inline-editing"
+							/>
 							{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 						</a>
 					) }
