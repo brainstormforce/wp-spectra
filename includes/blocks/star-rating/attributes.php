@@ -17,7 +17,7 @@ return array(
 	'align'                    => 'left',
 	'layout'                   => 'inline',
 	'layoutTablet'             => 'inline',
-	'layoutMobile'             => 'stack',
+	'layoutMobile'             => 'inline',
 	'gap'                      => 2,
 	'gapTablet'                => '',
 	'gapMobile'                => '',
