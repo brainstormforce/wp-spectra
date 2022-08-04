@@ -869,8 +869,8 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.style }>
 						{ !removeText && textSettings() }
 						{ '' !== icon && IconSettings() }
-						{ borderSettings() }
 						{ backgroundSettings() }
+						{ borderSettings() }
 						{ boxShadowSettings() }
 						{ spacingSettings() }
 					</InspectorTab>

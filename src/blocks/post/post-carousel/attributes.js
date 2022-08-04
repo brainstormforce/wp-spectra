@@ -11,6 +11,10 @@ const attributes = {
 		type    : 'boolean',
 		default : true,
 	},
+	enableOffset              : {
+		type    : 'boolean',
+		default : false,
+	},
 	infiniteLoop            : {
 		type    : 'boolean',
 		default : true,
@@ -50,6 +54,24 @@ const attributes = {
 		default : 0,
 		UAGCopyPaste: {
 			styleType: 'arrow-border-radius'
+		},
+	},
+	arrowDistance			: {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'arrow-distance'
+		},
+	},
+	arrowDistanceTablet		: {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'arrow-distance-tablet'
+		},
+	},
+	arrowDistanceMobile		: {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'arrow-distance-mobile'
 		},
 	},
 	arrowColor              : {
