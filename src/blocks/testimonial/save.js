@@ -25,9 +25,9 @@ export default function save( props ) {
 	const equalHeightClass = equalHeight
 	? 'uagb-post__carousel_equal-height'
 	: '';
-	const isGridLayout = test_item_count == columns ? 'uagb-post__carousel_notset' : '';
-	const isGridLayoutTablet = test_item_count == tcolumns ? 'uagb-post__carousel_notset-tablet' : '';
-	const isGridLayoutMobile = test_item_count == mcolumns ? 'uagb-post__carousel_notset-mobile' : '';
+	const isGridLayout = test_item_count === columns ? 'uagb-post__carousel_notset' : '';
+	const isGridLayoutTablet = test_item_count === tcolumns ? 'uagb-post__carousel_notset-tablet' : '';
+	const isGridLayoutMobile = test_item_count === mcolumns ? 'uagb-post__carousel_notset-mobile' : '';
 	return (
 		<div
 			className={ classnames(
