@@ -1046,7 +1046,8 @@
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'prefix-top-margin'
-		}
+		},
+		default: 5,
 	},
 	prefixRightMargin : {
 		type: 'number',
@@ -1059,7 +1060,7 @@
 		UAGCopyPaste: {
 			styleType: 'prefix-bottom-margin'
 		},
-		default : 5
+		default : 10
 	},
 	prefixLeftMargin : {
 		type: 'number',
