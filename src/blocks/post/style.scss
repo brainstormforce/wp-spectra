@@ -14,9 +14,6 @@
 	.uagb-post__inner-wrap {
 
 		.uagb-post__taxonomy {
-			display: inline-flex;
-			flex-wrap: wrap;
-			margin: 0;
 
 			&.default {
 				margin: 5px 5px 5px 0;
@@ -215,7 +212,8 @@
 	}
 
 	.uagb-post__author,
-	.uagb-post__date {
+	.uagb-post__date,
+	.uagb-post__comment {
 		display: inline-block;
 		word-break: break-all;
 
@@ -286,6 +284,10 @@
 
 .is-grid.uagb-post__columns-1 {
 	grid-template-columns: auto;
+}
+
+.is-grid:last-child .uagb-post-pagination-wrap {
+	grid-column: 1 / -1;
 }
 
 .uagb-post__image-position-background {

@@ -132,6 +132,19 @@ function styling( props ) {
 		backgroundCustomSizeType,
 		backgroundImageColor,
 		overlayType,
+		customPosition,
+		xPositionDesktop,
+		xPositionTablet,
+		xPositionMobile,
+		xPositionType,
+		xPositionTypeTablet,
+		xPositionTypeMobile,
+		yPositionDesktop,
+		yPositionTablet,
+		yPositionMobile,
+		yPositionType,
+		yPositionTypeTablet,
+		yPositionTypeMobile,
 		backgroundVideoOpacity,
 		backgroundVideoColor,
 		innerContentCustomWidthType,
@@ -218,18 +231,18 @@ function styling( props ) {
 		' .wp-block-uagb-container .block-editor-block-list__block a:hover' : {
 			'color': linkHoverColor,
 		},
-		' > .wp-block-uagb-container > .uagb-container__shape-top svg' : {
+		' > .uagb-container__shape-top svg' : {
 			'width': 'calc( ' + topWidth + '% + 1.3px )',
 			'height': generateCSSUnit( topHeight, 'px' )
 		},
-		' > .wp-block-uagb-container > .uagb-container__shape-top .uagb-container__shape-fill' : {
+		' > .uagb-container__shape-top .uagb-container__shape-fill' : {
 			'fill': hexToRgba( maybeGetColorForVariable( topColor ), 100 ),
 		},
-		' > .wp-block-uagb-container > .uagb-container__shape-bottom svg' : {
+		' > .uagb-container__shape-bottom svg' : {
 			'width': 'calc( ' + bottomWidth + '% + 1.3px )',
 			'height': generateCSSUnit( bottomHeight, 'px' )
 		},
-		' > .wp-block-uagb-container > .uagb-container__shape-bottom .uagb-container__shape-fill' : {
+		' > .uagb-container__shape-bottom .uagb-container__shape-fill' : {
 			'fill': hexToRgba( maybeGetColorForVariable( bottomColor ), 100 ),
 		},
 		' .uagb-container__video-wrap' : {
@@ -255,6 +268,11 @@ function styling( props ) {
 		'overlayType' : overlayType,
 		'backgroundVideo' : backgroundVideo,
 		'backgroundVideoColor' : backgroundVideoColor,
+		'customPosition': customPosition,
+		'xPosition': xPositionDesktop,
+		'xPositionType': xPositionType,
+		'yPosition': yPositionDesktop,
+		'yPositionType': yPositionType,
     };
 
 	const containerBackgroundCSSDesktop = generateBackgroundCSS( backgroundAttributesDesktop );
@@ -353,7 +371,7 @@ function styling( props ) {
 		widthSelectorsDesktop[`.is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
 			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthType })`,
 			'max-width' : 'var(--inner-content-custom-width)',
-			'width' : 'var(--inner-content-custom-width)',
+			'width' : '100%',
 			'margin-left': 'auto',
 			'margin-right': 'auto'
 		};
@@ -361,7 +379,7 @@ function styling( props ) {
 		widthSelectorsTablet[`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-tablet > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
 			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthTablet || innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthTypeTablet })`,
 			'max-width' : 'var(--inner-content-custom-width)',
-			'width' : 'var(--inner-content-custom-width)',
+			'width' :'100%',
 			'margin-left': 'auto',
 			'margin-right': 'auto'
 		};
@@ -369,7 +387,7 @@ function styling( props ) {
 		widthSelectorsMobile[`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-mobile > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
 			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthMobile || innerContentCustomWidthTablet || innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthTypeMobile })`,
 			'max-width' : 'var(--inner-content-custom-width)',
-			'width' : 'var(--inner-content-custom-width)',
+			'width' : '100%',
 			'margin-left': 'auto',
 			'margin-right': 'auto'
 		};
@@ -390,6 +408,11 @@ function styling( props ) {
 		'overlayType' : overlayType,
 		'backgroundVideo' : backgroundVideo,
 		'backgroundVideoColor' : backgroundVideoColor,
+		'customPosition': customPosition,
+		'xPosition': xPositionTablet,
+		'xPositionType': xPositionTypeTablet,
+		'yPosition': yPositionTablet,
+		'yPositionType': yPositionTypeTablet,
     };
 
 	const containerBackgroundCSSTablet = generateBackgroundCSS( backgroundAttributesTablet );
@@ -426,10 +449,10 @@ function styling( props ) {
 			'flex-wrap' : wrapTablet,
 			'align-content' : alignContentTablet,
 		},
-		' > .wp-block-uagb-container > .uagb-container__shape-top svg' : {
+		' > .uagb-container__shape-top svg' : {
 			'height': generateCSSUnit( topHeightTablet, 'px' )
 		},
-		' > .wp-block-uagb-container > .uagb-container__shape-bottom svg' : {
+		' > .uagb-container__shape-bottom svg' : {
 			'height': generateCSSUnit( bottomHeightTablet, 'px' )
 		},
 	};
@@ -449,6 +472,11 @@ function styling( props ) {
 		'overlayType' : overlayType,
 		'backgroundVideo' : backgroundVideo,
 		'backgroundVideoColor' : backgroundVideoColor,
+		'customPosition': customPosition,
+		'xPosition': xPositionMobile,
+		'xPositionType': xPositionTypeMobile,
+		'yPosition': yPositionMobile,
+		'yPositionType': yPositionTypeMobile,
     };
 
 	const containerBackgroundCSSMobile = generateBackgroundCSS( backgroundAttributesMobile );
@@ -485,10 +513,10 @@ function styling( props ) {
 			'flex-wrap' : wrapMobile,
 			'align-content' : alignContentMobile,
 		},
-		' > .wp-block-uagb-container > .uagb-container__shape-top svg' : {
+		' > .uagb-container__shape-top svg' : {
 			'height': generateCSSUnit( topHeightMobile, 'px' )
 		},
-		' > .wp-block-uagb-container > .uagb-container__shape-bottom svg' : {
+		' > .uagb-container__shape-bottom svg' : {
 			'height': generateCSSUnit( bottomHeightMobile, 'px' )
 		},
 	};

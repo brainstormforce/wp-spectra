@@ -983,7 +983,7 @@ const Settings = ( props ) => {
 	};
 	const iconSettings = () => {
 		return <UAGAdvancedPanelBody
-					title={ __( 'Select Icon', 'ultimate-addons-for-gutenberg' ) }
+					title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 				>
 					<UAGIconPicker
