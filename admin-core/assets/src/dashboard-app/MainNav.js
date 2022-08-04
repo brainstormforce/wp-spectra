@@ -12,7 +12,7 @@ export default function MainNav() {
         path: '',
     },
     {
-        name: __( 'Blocks', 'ultimate-addons-for-gutenberg' ),
+        name: __( 'Blocks / Extensions', 'ultimate-addons-for-gutenberg' ),
         slug: uag_react.home_slug,
         path: 'blocks',
     },

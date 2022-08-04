@@ -168,7 +168,7 @@ const FilterTabs = () => {
                             ( tab.slug === activeBlocksFilterTab )
                                 ? 'bg-white text-slate-800 active:text-slate-800 focus:text-slate-800 hover:text-slate-800 shadow shadow-focused'
                                 : 'text-slate-500 focus:text-slate-500 focus-visible:border-slate-200 active:text-slate-500 hover:text-slate-500 hover:border-slate-200',
-                            'px-3 py-0.5 font-medium h-6 text-sm rounded-xl cursor-pointer border border-transparent transition'
+                            'px-4 py-1 font-medium text-sm rounded-2xl cursor-pointer border border-transparent transition'
                         ) }
                         onClick={ () => {
 							dispatch( {type:'UPDATE_BLOCKS_ACTIVE_FILTER_TAB', payload: tab.slug} )
