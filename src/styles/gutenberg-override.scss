@@ -12,7 +12,7 @@
 
 		&:focus {
 			border-color: $spectra-color-border-hover;
-			box-shadow: 0 0 0 1px $spectra-color-border-hover;
+			box-shadow: unset;
 		}
 	}
 
@@ -137,6 +137,7 @@
 		.components-input-control__backdrop {
 			border-color: $spectra-color-border;
 			border-radius: $spectra-control-border-radius;
+			box-shadow: unset;
 		}
 
 		// Angle Picker Input Field.
@@ -146,6 +147,14 @@
 
 		.components-truncate {
 			color: $spectra-color-body;
+		}
+
+		.components-input-control__input:focus-visible,
+		.components-select-control__input:active {
+
+			& ~ .components-input-control__backdrop {
+				border-color: $spectra-color-border-hover;
+			}
 		}
 	}
 
