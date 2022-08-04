@@ -38,6 +38,21 @@ const TextShadowControl = ( props ) => {
 
 			if ( popupButton && ! popupButton?.contains( e.target ) && ! e.target?.classList?.contains( 'uagb-advanced-color-indicate' ) && ! e.target?.parentElement?.closest( '.uagb-popover-color' ) && popupWrap && ! popupWrap?.contains( e.target ) && ! e.target?.parentElement?.closest( '.uagb-reset' ) ) {
 				toggleAdvancedControls( false )
+				const blockName = getSelectedBlock()?.name;
+				const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+
+				const data = {
+					...uagSettingState,
+					[blockName] : {
+						...uagSettingState?.[blockName],
+						selectedSetting : false
+					}
+				}
+
+				const uagLocalStorage = getUAGEditorStateLocalStorage();
+				if ( uagLocalStorage ) {
+					uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
+				}
 			}
 		  } );
 	}, [] );
@@ -168,22 +183,31 @@ const TextShadowControl = ( props ) => {
 							}
 						}
 						toggleAdvancedControls( ! showAdvancedControls )
-						if ( ! showAdvancedControls ) {
-							const blockName = getSelectedBlock()?.name;
-							const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
-							const data = {
+
+						const blockName = getSelectedBlock()?.name;
+						const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+						let data = {
+							...uagSettingState,
+							[blockName] : {
+								...uagSettingState?.[blockName],
+								selectedSetting : '.uag-text-shadow-options'
+							}
+						}
+
+						if ( showAdvancedControls ) {
+							data = {
 								...uagSettingState,
 								[blockName] : {
 									...uagSettingState?.[blockName],
-									selectedSetting : '.uag-text-shadow-options'
+									selectedSetting : false
 								}
 							}
-
-							const uagLocalStorage = getUAGEditorStateLocalStorage();
-							if ( uagLocalStorage ) {
-								uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
-							}
 						}
+						const uagLocalStorage = getUAGEditorStateLocalStorage();
+						if ( uagLocalStorage ) {
+							uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
+						}
+
 					}
 				}
 			>

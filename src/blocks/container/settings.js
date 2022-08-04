@@ -162,6 +162,19 @@ const Settings = ( props ) => {
 		backgroundCustomSizeMobile,
 		backgroundCustomSizeType,
 		overlayType,
+		customPosition,
+		xPositionDesktop,
+		xPositionTablet,
+		xPositionMobile,
+		xPositionType,
+		xPositionTypeTablet,
+		xPositionTypeMobile,
+		yPositionDesktop,
+		yPositionTablet,
+		yPositionMobile,
+		yPositionType,
+		yPositionTypeTablet,
+		yPositionTypeMobile,
 		backgroundVideoColor,
 		backgroundVideo,
 		topInvert,
@@ -351,6 +364,63 @@ const Settings = ( props ) => {
 				icon: (
 					<Icon
 						icon={ renderCustomIcon( `flex-${currentDirection}-space-evenly` ) }
+					/>
+				),
+			},
+		];
+
+		const alignContentOptions = [
+			{
+				value: 'flex-start',
+				tooltip: __( 'Flex Start', 'ultimate-addons-for-gutenberg' ),
+				icon: (
+					<Icon
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-start` ) }
+					/>
+				),
+			},
+			{
+				value: 'center',
+				tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
+				icon: (
+					<Icon
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-center` ) }
+					/>
+				),
+			},
+			{
+				value: 'flex-end',
+				tooltip: __( 'Flex End', 'ultimate-addons-for-gutenberg' ),
+				icon: (
+					<Icon
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-end` ) }
+					/>
+				),
+			},
+			{
+				value: 'space-between',
+				tooltip: __( 'Space Between', 'ultimate-addons-for-gutenberg' ),
+				icon: (
+					<Icon
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-space-between` ) }
+					/>
+				),
+			},
+			{
+				value: 'space-around',
+				tooltip: __( 'Space Around', 'ultimate-addons-for-gutenberg' ),
+				icon: (
+					<Icon
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-space-around` ) }
+					/>
+				),
+			},
+			{
+				value: 'space-evenly',
+				tooltip: __( 'Space Evenly', 'ultimate-addons-for-gutenberg' ),
+				icon: (
+					<Icon
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-space-evenly` ) }
 					/>
 				),
 			},
@@ -879,7 +949,7 @@ const Settings = ( props ) => {
 									label: 'alignContentMobile',
 								},
 							} }
-							options={ justifyContentOptions }
+							options={ alignContentOptions }
 							showIcons={ true }
 							responsive={ true }
 							help={ alignContentHint }
@@ -1009,6 +1079,58 @@ const Settings = ( props ) => {
 					}}
 					gradientOverlay={{
 						value: true,
+					}}
+					customPosition={{
+						value: customPosition,
+						label: 'customPosition'
+					}}
+					xPositionDesktop={{
+						value: xPositionDesktop,
+						label: 'xPositionDesktop'
+					}}
+					xPositionTablet={{
+						value: xPositionTablet,
+						label: 'xPositionTablet'
+					}}
+					xPositionMobile={{
+						value: xPositionMobile,
+						label: 'xPositionMobile'
+					}}
+					xPositionType={{
+						value: xPositionType,
+						label: 'xPositionType'
+					}}
+					xPositionTypeTablet={{
+						value: xPositionTypeTablet,
+						label: 'xPositionTypeTablet'
+					}}
+					xPositionTypeMobile={{
+						value: xPositionTypeMobile,
+						label: 'xPositionTypeMobile'
+					}}
+					yPositionDesktop={{
+						value: yPositionDesktop,
+						label: 'yPositionDesktop'
+					}}
+					yPositionTablet={{
+						value: yPositionTablet,
+						label: 'yPositionTablet'
+					}}
+					yPositionMobile={{
+						value: yPositionMobile,
+						label: 'yPositionMobile'
+					}}
+					yPositionType={{
+						value: yPositionType,
+						label: 'yPositionType'
+					}}
+					yPositionTypeTablet={{
+						value: yPositionTypeTablet,
+						label: 'yPositionTypeTablet'
+					}}
+					yPositionTypeMobile={{
+						value: yPositionTypeMobile,
+						label: 'yPositionTypeMobile'
 					}}
 					backgroundVideoType={ {
 						value: true,

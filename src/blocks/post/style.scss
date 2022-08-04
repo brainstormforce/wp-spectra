@@ -282,6 +282,10 @@
 	grid-template-columns: auto;
 }
 
+.is-grid:last-child .uagb-post-pagination-wrap {
+	grid-column: 1 / -1;
+}
+
 .uagb-post__image-position-background {
 
 	.uagb-post__link-complete-box {

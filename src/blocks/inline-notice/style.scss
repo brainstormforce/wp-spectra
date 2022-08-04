@@ -26,10 +26,12 @@
 
 .wp-block-uagb-inline-notice {
 
+	width: 100%;
+	position: relative;
+
 	&.uagb-notice__active {
 		display: none;
 	}
-	position: relative;
 
 	.uagb-notice-title {
 		margin: 0;
