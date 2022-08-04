@@ -558,6 +558,113 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
+	const layoutSettings = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<ResponsiveSlider
+					label={ __(
+						'Column Gap',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: columnGap,
+							label: 'columnGap',
+						},
+						tablet: {
+							value: columnGapTablet,
+							label: 'columnGapTablet',
+						},
+						mobile: {
+							value: columnGapMobile,
+							label: 'columnGapMobile',
+						},
+					} }
+					min={ 1 }
+					max={ 50 }
+					unit={ {
+						value: columnGapType,
+						label: 'columnGapType',
+					} }
+					setAttributes={ setAttributes }
+				/>
+				<SpacingControl
+					{ ...props }
+					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
+					valueTop={ {
+						value: paddingTop,
+						label: 'paddingTop',
+					} }
+					valueRight={ {
+						value: paddingRight,
+						label: 'paddingRight',
+					} }
+					valueBottom={ {
+						value: paddingBottom,
+						label: 'paddingBottom',
+					} }
+					valueLeft={ {
+						value: paddingLeft,
+						label: 'paddingLeft',
+					} }
+					valueTopTablet={ {
+						value: paddingTopTablet,
+						label: 'paddingTopTablet',
+					} }
+					valueRightTablet={ {
+						value: paddingRightTablet,
+						label: 'paddingRightTablet',
+					} }
+					valueBottomTablet={ {
+						value: paddingBottomTablet,
+						label: 'paddingBottomTablet',
+					} }
+					valueLeftTablet={ {
+						value: paddingLeftTablet,
+						label: 'paddingLeftTablet',
+					} }
+					valueTopMobile={ {
+						value: paddingTopMobile,
+						label: 'paddingTopMobile',
+					} }
+					valueRightMobile={ {
+						value: paddingRightMobile,
+						label: 'paddingRightMobile',
+					} }
+					valueBottomMobile={ {
+						value: paddingBottomMobile,
+						label: 'paddingBottomMobile',
+					} }
+					valueLeftMobile={ {
+						value: paddingLeftMobile,
+						label: 'paddingLeftMobile',
+					} }
+					unit={ {
+						value: paddingUnit,
+						label: 'paddingUnit',
+					} }
+					mUnit={ {
+						value: mobilePaddingUnit,
+						label: 'mobilePaddingUnit',
+					} }
+					tUnit={ {
+						value: tabletPaddingUnit,
+						label: 'tabletPaddingUnit',
+					} }
+					deviceType={ deviceType }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: spacingLink,
+						label: 'spacingLink',
+					} }
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
 	const backgroundStyle = () => {
 
 		return (
@@ -864,104 +971,6 @@ const Settings = ( props ) => {
 						label: 'descSpaceType',
 					} }
 					setAttributes={ setAttributes }
-				/>
-				<ResponsiveSlider
-					label={ __(
-						'Column Gap',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						desktop: {
-							value: columnGap,
-							label: 'columnGap',
-						},
-						tablet: {
-							value: columnGapTablet,
-							label: 'columnGapTablet',
-						},
-						mobile: {
-							value: columnGapMobile,
-							label: 'columnGapMobile',
-						},
-					} }
-					min={ 1 }
-					max={ 50 }
-					unit={ {
-						value: columnGapType,
-						label: 'columnGapType',
-					} }
-					setAttributes={ setAttributes }
-				/>
-				<SpacingControl
-					{ ...props }
-					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
-					valueTop={ {
-						value: paddingTop,
-						label: 'paddingTop',
-					} }
-					valueRight={ {
-						value: paddingRight,
-						label: 'paddingRight',
-					} }
-					valueBottom={ {
-						value: paddingBottom,
-						label: 'paddingBottom',
-					} }
-					valueLeft={ {
-						value: paddingLeft,
-						label: 'paddingLeft',
-					} }
-					valueTopTablet={ {
-						value: paddingTopTablet,
-						label: 'paddingTopTablet',
-					} }
-					valueRightTablet={ {
-						value: paddingRightTablet,
-						label: 'paddingRightTablet',
-					} }
-					valueBottomTablet={ {
-						value: paddingBottomTablet,
-						label: 'paddingBottomTablet',
-					} }
-					valueLeftTablet={ {
-						value: paddingLeftTablet,
-						label: 'paddingLeftTablet',
-					} }
-					valueTopMobile={ {
-						value: paddingTopMobile,
-						label: 'paddingTopMobile',
-					} }
-					valueRightMobile={ {
-						value: paddingRightMobile,
-						label: 'paddingRightMobile',
-					} }
-					valueBottomMobile={ {
-						value: paddingBottomMobile,
-						label: 'paddingBottomMobile',
-					} }
-					valueLeftMobile={ {
-						value: paddingLeftMobile,
-						label: 'paddingLeftMobile',
-					} }
-					unit={ {
-						value: paddingUnit,
-						label: 'paddingUnit',
-					} }
-					mUnit={ {
-						value: mobilePaddingUnit,
-						label: 'mobilePaddingUnit',
-					} }
-					tUnit={ {
-						value: tabletPaddingUnit,
-						label: 'tabletPaddingUnit',
-					} }
-					deviceType={ deviceType }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					link={ {
-						value: spacingLink,
-						label: 'spacingLink',
-					} }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1549,6 +1558,7 @@ const Settings = ( props ) => {
 						{ carouselStyle() }
 						{ backgroundStyle() }
 						{ borderSetting() }
+						{ layoutSettings() }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
