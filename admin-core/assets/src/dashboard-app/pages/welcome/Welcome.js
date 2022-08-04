@@ -33,7 +33,7 @@ const Welcome = () => {
 							<h2 className="sr-only" id="section-1-title">
 								Section title
 							</h2>
-							<div className="rounded-md bg-white overflow-hidden shadow flex flex-col justify-center h-full">
+							<div className="rounded-md bg-white overflow-hidden shadow-sm flex flex-col justify-center h-full">
 								<div className="p-12 pt-[2.2rem]">
 									<h2 className='text-slate-800 text-[1.8rem] leading-[2.4rem] pb-3 font-medium text-left'>{__( 'Welcome to Spectra!', 'ultimate-addons-for-gutenberg' )}</h2>
 									<p className='text-slate-500 pb-7'>{__( 'We designed Spectra to be intuitive but we do recommend learning how it works by checking our comprehensive documentation and watching the video below. Enjoy your time with Spectra!', 'ultimate-addons-for-gutenberg' )}</p>
@@ -68,7 +68,7 @@ const Welcome = () => {
 							<h2 className="sr-only" id="section-2-title">
 								Section title
 							</h2>
-							<div className="box-border rounded-md bg-slate-50 border border-slate-200 overflow-hidden transition hover:bg-white hover:border-white hover:shadow-2xl">
+							<div className="box-border rounded-md bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
 								<div className="p-8 pr-10">
 									<h3 className='text-slate-800 text-xl font-medium pb-2'>
 										{ __(
@@ -96,7 +96,7 @@ const Welcome = () => {
 							<h2 className="sr-only" id="section-2-title">
 								Section title
 							</h2>
-							<div className="box-border rounded-md bg-slate-50 border border-slate-200 overflow-hidden transition hover:bg-white hover:border-white hover:shadow-2xl">
+							<div className="box-border rounded-md bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
 								<div className="p-8 pr-10">
 									<h3 className='text-slate-800 text-xl font-medium pb-2'>
 										{ __(
@@ -124,7 +124,7 @@ const Welcome = () => {
 							<h2 className="sr-only" id="section-2-title">
 								Section title
 							</h2>
-							<div className="box-border rounded-md bg-slate-50 border border-slate-200 overflow-hidden transition hover:bg-white hover:border-white hover:shadow-2xl">
+							<div className="box-border rounded-md bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
 								<div className="p-8 pr-10">
 									<h3 className='text-slate-800 text-xl font-medium pb-2'>
 										{ __(
