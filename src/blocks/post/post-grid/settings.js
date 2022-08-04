@@ -1229,7 +1229,7 @@ const Settings = ( props ) => {
 	const spacingSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Layout Settings', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
 				<AdvancedPopColorControl

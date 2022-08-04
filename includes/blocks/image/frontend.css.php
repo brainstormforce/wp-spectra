@@ -123,8 +123,11 @@ $selectors = array(
 $selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
 	'object-fit' => $attr['objectFit'],
 	'width'      => $attr['width'] . 'px',
-	'height'     => $attr['height'] . 'px',
+	'height'     => 'auto',
 );
+if ( $attr['customHeightSetDesktop'] ) {
+	$selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img']['height'] = $attr['height'] . 'px';
+}
 
 if ( 'hover' === $attr['headingShowOn'] ) {
 	$selectors['.wp-block-uagb-image .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading'] = array(
@@ -198,8 +201,12 @@ $t_selectors['.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .
 $t_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
 	'object-fit' => $attr['objectFitTablet'],
 	'width'      => $width_tablet,
-	'height'     => $height_tablet,
+	'height'     => 'auto',
 );
+
+if ( $attr['customHeightSetTablet'] ) {
+	$t_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img']['height'] = $height_tablet;
+}
 
 // mobile.
 $m_selectors['.wp-block-uagb-image--layout-default figure']           = $image_border_css_mobile;
@@ -238,8 +245,12 @@ $m_selectors['.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .
 $m_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
 	'object-fit' => $attr['objectFitMobile'],
 	'width'      => $width_mobile,
-	'height'     => $height_mobile,
+	'height'     => 'auto',
 );
+
+if ( $attr['customHeightSetMobile'] ) {
+	$m_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img']['height'] = $height_mobile;
+}
 
 $combined_selectors = array(
 	'desktop' => $selectors,
