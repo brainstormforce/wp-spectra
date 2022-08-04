@@ -24,7 +24,6 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 				const $root = this.closest( '.wp-block-uagb-table-of-contents' );
 
 				if ( $root.classList.contains( 'uagb-toc__collapse' ) ) {
-
 					$root.classList.remove( 'uagb-toc__collapse' );
 					UAGBTableOfContents._slideDown(
 						elementToOpen.querySelector( '.wp-block-uagb-table-of-contents .uagb-toc__list-wrap' ),
@@ -57,7 +56,7 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 		target.style.paddingBottom = 0;
 		target.style.marginTop = 0;
 		target.style.marginBottom = 0;
-		window.setTimeout( function () {
+		window.setTimeout( () => {
 			target.style.display = 'none';
 			target.style.removeProperty( 'height' );
 			target.style.removeProperty( 'padding-top' );
@@ -94,7 +93,7 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 		target.style.removeProperty( 'padding-bottom' );
 		target.style.removeProperty( 'margin-top' );
 		target.style.removeProperty( 'margin-bottom' );
-		window.setTimeout( function () {
+		window.setTimeout( () => {
 			target.style.removeProperty( 'height' );
 			target.style.removeProperty( 'overflow' );
 			target.style.removeProperty( 'transition-duration' );
@@ -160,9 +159,9 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 			scrollData = node.getAttribute( 'data-scroll' );
 			scrollOffset = node.getAttribute( 'data-offset' );
 			let offset = null;
-			if ( document.querySelector( hash ) ) {
+			if ( document?.querySelector( hash ) ) {
 
-				offset = document.querySelector( hash ).getBoundingClientRect().top + window.scrollY;
+				offset = document.querySelector( hash )?.getBoundingClientRect().top + window.scrollY;
 			}
 			if ( scrollData ) {
 				if ( null !== offset ) {

@@ -37,6 +37,7 @@ module.exports = {
 		define: true,
 		Cookies: true,
 		UAGBTableOfContents: true,
-		localStorage: true
+		localStorage: true,
+		uagb_timeline_data: true
 	},
 };

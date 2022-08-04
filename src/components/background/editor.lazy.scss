@@ -69,6 +69,7 @@
 
 		.uagb-size-type-field-tabs {
 			flex-direction: column;
+			align-items: flex-start;
 
 			.uagb-control__header {
 				margin-bottom: 10px;
@@ -84,6 +85,10 @@
 					img {
 						border-radius: $spectra-control-border-radius;
 					}
+				}
+
+				.focal-point-picker__controls-position-unit-control {
+					width: 115px;
 				}
 			}
 		}

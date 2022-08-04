@@ -500,19 +500,19 @@ const attributes = {
 	},
 	twitterIcon: {
 		type: 'string',
-		default: 'fab fa-twitter',
+		default: 'twitter',
 	},
 	fbIcon: {
 		type: 'string',
-		default: 'fab fa-facebook',
+		default: 'facebook',
 	},
 	linkedinIcon: {
 		type: 'string',
-		default: 'fab fa-linkedin',
+		default: 'linkedin',
 	},
 	pinIcon: {
 		type: 'string',
-		default: 'fab fa-pinterest',
+		default: 'pinterest',
 	},
 	twitterLink: {
 		type: 'string',
