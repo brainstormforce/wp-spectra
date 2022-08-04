@@ -176,64 +176,64 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'attributes'      => array_merge(
 						$common_attributes,
 						array(
-							'blockName'         => array(
+							'blockName'           => array(
 								'type'    => 'string',
 								'default' => 'post-carousel',
 							),
-							'pauseOnHover'      => array(
+							'pauseOnHover'        => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'infiniteLoop'      => array(
+							'infiniteLoop'        => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'transitionSpeed'   => array(
+							'transitionSpeed'     => array(
 								'type'    => 'number',
 								'default' => 500,
 							),
-							'arrowDots'         => array(
+							'arrowDots'           => array(
 								'type'    => 'string',
 								'default' => 'arrows_dots',
 							),
-							'autoplay'          => array(
+							'autoplay'            => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'autoplaySpeed'     => array(
+							'autoplaySpeed'       => array(
 								'type'    => 'number',
 								'default' => 2000,
 							),
-							'arrowSize'         => array(
+							'arrowSize'           => array(
 								'type'    => 'number',
 								'default' => 24,
 							),
-							'arrowBorderSize'   => array(
+							'arrowBorderSize'     => array(
 								'type'    => 'number',
 								'default' => 0,
 							),
-							'arrowBorderRadius' => array(
+							'arrowBorderRadius'   => array(
 								'type'    => 'number',
 								'default' => 0,
 							),
-							'arrowColor'        => array(
+							'arrowColor'          => array(
 								'type'    => 'string',
 								'default' => '#000',
 							),
-							'arrowDistance'     => array(
+							'arrowDistance'       => array(
 								'type' => 'number',
 							),
-							'arrowDistanceTablet'     => array(
+							'arrowDistanceTablet' => array(
 								'type' => 'number',
 							),
-							'arrowDistanceMobile'     => array(
+							'arrowDistanceMobile' => array(
 								'type' => 'number',
 							),
-							'equalHeight'       => array(
+							'equalHeight'         => array(
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'layoutConfig'      => array(
+							'layoutConfig'        => array(
 								'type'    => 'array',
 								'default' => array(
 									array( 'uagb/post-image' ),
@@ -244,7 +244,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									array( 'uagb/post-button' ),
 								),
 							),
-							'post_type'         => array(
+							'post_type'           => array(
 								'type'    => 'string',
 								'default' => 'carousel',
 							),

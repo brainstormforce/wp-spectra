@@ -161,6 +161,9 @@ return array_merge(
 		'captionLetterSpacingTablet'  => '',
 		'captionLetterSpacingMobile'  => '',
 		'captionLetterSpacingType'    => 'px',
+		'customHeightSetDesktop'      => false,
+		'customHeightSetTablet'       => false,
+		'customHeightSetMobile'       => false,
 	),
 	$image_attribute,
 	$overlay_attribute

@@ -1085,6 +1085,18 @@ const attributes = {
 			styleType: 'desc-letter-spacing-type'
 		}
 	},
+	customHeightSetDesktop: {
+		type: 'boolean',
+		default: false
+	},
+	customHeightSetTablet: {
+		type: 'boolean',
+		default: false
+	},
+	customHeightSetMobile: {
+		type: 'boolean',
+		default: false
+	},
 	...imageBorderAttributes,
 	...overlayBorderAttributes
 };
