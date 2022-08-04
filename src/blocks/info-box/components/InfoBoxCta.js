@@ -97,7 +97,7 @@ const InfoBoxCta = ( props ) => {
 						<RichText.Content
 							tagName="span"
 							value={ attributes.ctaText }
-							className="uagb-inline-editing sushma"
+							className="uagb-inline-editing"
 						/>
 					{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 				</a>
@@ -116,7 +116,7 @@ const InfoBoxCta = ( props ) => {
 							<RichText.Content
 								tagName="span"
 								value={ attributes.ctaText }
-								className="uagb-inline-editing sushma"
+								className="uagb-inline-editing"
 							/>
 						</span>
 					</a>
