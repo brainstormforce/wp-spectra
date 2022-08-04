@@ -291,6 +291,12 @@ const transforms = {
 					columnsBorderTopRightRadius,
 					columnsBorderBottomLeftRadius,
 					columnsBorderBottomRightRadius,
+					columnsBorderStyle,
+					columnsBorderColor,
+					columnsBorderTopWidth,
+					columnsBorderBottomWidth,
+					columnsBorderLeftWidth,
+					columnsBorderRightWidth,
 				} = attributes;
 
 				const containerWidth = 'full' === align ? 'alignfull' : 'alignwide';
@@ -342,6 +348,16 @@ const transforms = {
 						topPadding,
 						bottomPadding,
 						colWidth,
+						columnBorderTopLeftRadius,
+						columnBorderTopRightRadius,
+						columnBorderBottomLeftRadius,
+						columnBorderBottomRightRadius,
+						columnBorderStyle,
+						columnBorderColor,
+						columnBorderTopWidth,
+						columnBorderBottomWidth,
+						columnBorderLeftWidth,
+						columnBorderRightWidth,
 					} = child?.attributes;
 
 					const width = colWidth ? colWidth : containerChildWidth;
@@ -382,7 +398,16 @@ const transforms = {
 							rightPaddingDesktop: rightPadding,
 							topPaddingDesktop: topPadding,
 							bottomPaddingDesktop: bottomPadding,
-
+							containerBorderTopLeftRadius: borderRadius || columnBorderTopLeftRadius,
+							containerBorderTopRightRadius: borderRadius || columnBorderTopRightRadius,
+							containerBorderBottomLeftRadius: borderRadius || columnBorderBottomLeftRadius,
+							containerBorderBottomRightRadius: borderRadius || columnBorderBottomRightRadius,
+							containerBorderStyle: borderStyle || columnBorderStyle,
+							containerBorderColor: borderColor || columnBorderColor,
+							containerBorderTopWidth: borderWidth || columnBorderTopWidth,
+							containerBorderBottomWidth: borderWidth || columnBorderBottomWidth,
+							containerBorderLeftWidth: borderWidth || columnBorderLeftWidth,
+							containerBorderRightWidth: borderWidth || columnBorderRightWidth,
 						},
 						child?.innerBlocks
 					] );
@@ -451,6 +476,12 @@ const transforms = {
 						containerBorderTopRightRadius: borderRadius || columnsBorderTopRightRadius,
 						containerBorderBottomLeftRadius: borderRadius || columnsBorderBottomLeftRadius,
 						containerBorderBottomRightRadius: borderRadius || columnsBorderBottomRightRadius,
+						containerBorderStyle: borderStyle || columnsBorderStyle,
+						containerBorderColor: borderColor || columnsBorderColor,
+						containerBorderTopWidth: borderWidth || columnsBorderTopWidth,
+						containerBorderBottomWidth: borderWidth || columnsBorderBottomWidth,
+						containerBorderLeftWidth: borderWidth || columnsBorderLeftWidth,
+						containerBorderRightWidth: borderWidth || columnsBorderRightWidth,
 					},
 					createBlocksFromInnerBlocksTemplate( innerBlocksTemplate )
 				);
