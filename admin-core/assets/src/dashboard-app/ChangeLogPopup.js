@@ -56,7 +56,7 @@ return (
 									</button>
 								</div>
 							</div>
-							<div className="relative flex-1 overflow-y-scroll">
+							<div className="relative flex-1 overflow-y-auto">
 								<div className="relative grid bg-white divide-y divide-gray-200">
 									{dynamicUAGChangelogRSSFeed.map( ( item, index ) => {
 										const title = dynamicUAGChangelogRSSFeed[index].title;
