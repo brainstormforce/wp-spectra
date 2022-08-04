@@ -42,6 +42,30 @@ $selectors[' .slick-arrow'] = array(
 	'border-radius' => UAGB_Helper::get_css_value( $attr['arrowBorderRadius'], 'px' ),
 );
 
+$selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-prev'] = array(
+	'left' => UAGB_Helper::get_css_value( $attr['arrowDistance'], 'px' ),
+);
+
+$selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-next'] = array(
+	'right' => UAGB_Helper::get_css_value( $attr['arrowDistance'], 'px' ),
+);
+
+$t_selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-prev'] = array(
+	'left' => UAGB_Helper::get_css_value( $attr['arrowDistanceTablet'], 'px' ),
+);
+
+$t_selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-next'] = array(
+	'right' => UAGB_Helper::get_css_value( $attr['arrowDistanceTablet'], 'px' ),
+);
+
+$m_selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-prev'] = array(
+	'left' => UAGB_Helper::get_css_value( $attr['arrowDistanceMobile'], 'px' ),
+);
+
+$m_selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-next'] = array(
+	'right' => UAGB_Helper::get_css_value( $attr['arrowDistanceMobile'], 'px' ),
+);
+
 $selectors['.uagb-post-grid ul.slick-dots li.slick-active button:before'] = array(
 	'color' => $attr['arrowColor'],
 );

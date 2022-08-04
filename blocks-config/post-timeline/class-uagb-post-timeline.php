@@ -528,7 +528,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						),
 						'icon'                       => array(
 							'type'    => 'string',
-							'default' => 'fab fa fa-calendar-alt',
+							'default' => 'calendar-days',
 						),
 						'borderRadius'               => array(
 							'type'    => 'number',
