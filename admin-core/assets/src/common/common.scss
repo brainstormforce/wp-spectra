@@ -205,10 +205,6 @@
 			//stylelint-disable-next-line declaration-property-unit-allowed-list
 			line-height: 1.25rem;
 
-			&:hover {
-				color: #2c3338;
-			}
-
 			&:focus {
 				outline: none;
 				border-color: $spectra-wpcolor;
@@ -223,6 +219,10 @@
 
 		&__dropdown {
 			padding-right: 2rem;
+
+			&:hover {
+				color: #2c3338;
+			}
 		}
 	}
 

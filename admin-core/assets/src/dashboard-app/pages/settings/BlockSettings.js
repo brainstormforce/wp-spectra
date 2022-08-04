@@ -88,9 +88,9 @@ const BlockSettings = () => {
 	};
 
 	return (
-		<section className='block border-b border-solid border-slate-200 p-6 justify-between'>  
+		<section className='block border-b border-solid border-slate-200 px-12 py-8 justify-between'>  
 			<div className='mr-16 w-full flex items-center'>
-				<h3 className="p-0 flex-1 justify-right inline-flex text-lg leading-6 font-medium text-gray-900">
+				<h3 className="p-0 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900">
 						{ __( 'Form - Google reCAPTCHA', 'ultimate-addons-for-gutenberg' ) }
 				</h3>
 			</div>
@@ -105,22 +105,50 @@ const BlockSettings = () => {
 					'ultimate-addons-for-gutenberg'
 				) }
 			</a>
-			<section className='flex justify-between mt-8 w-9/12'>
-				<div className='spectra-recaptcha-input-field pr-2'>
-					<h3 className="mb-5 font-medium text-md text-gray-900">
-						{__( 'V2', 'ultimate-addons-for-gutenberg' )}
-					</h3>
-					<input placeholder="Site Key V2" className="mb-4 appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 spectra-admin__input-field" value={siteKeyV2} name='site_key_v2' onChange={updateRecaptchaSiteKeyV2} id="grid-zip"  type="text"  />
-					<input placeholder="Secret Key V2" className="mb-4 appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 spectra-admin__input-field" id="grid-zip"  value={secretKeyV2} name='secret_key_v2' onChange={updateRecaptchaSecretKeyV2}  type="text"  />
-				</div>
-				<div className='spectra-recaptcha-input-field pl-2'>
-					<h3 className="mb-5 font-medium text-md text-gray-900">
-						{__( 'V3', 'ultimate-addons-for-gutenberg' )}
-					</h3>
-					<input placeholder="Site Key V3" className="mb-4 appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 spectra-admin__input-field" id="grid-zip"  type="text"  value={siteKeyV3} name='site_key_v3' onChange={updateRecaptchaSiteKeyV3}/>
-					<input placeholder="Secret Key V3" className="mb-4 appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 spectra-admin__input-field" id="grid-zip"  type="text"  value={secretKeyV3} name='secret_key_v3' onChange={updateRecaptchaSecretKeyV3}/>
-				</div>
-			</section>
+			{/* Recaptcha V2 */}
+			<h3 className="mt-8 font-medium text-sm text-slate-800">
+				{ __( 'reCAPTCHA v2', 'ultimate-addons-for-gutenberg' ) }
+			</h3>
+			<input
+				className="mt-3 w-9/12 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
+				placeholder={ __( 'Site Key v2', 'ultimate-addons-for-gutenberg' ) }
+				value={ siteKeyV2 }
+				name='site_key_v2'
+				onChange={ updateRecaptchaSiteKeyV2 }
+				id="grid-zip"
+				type="text"
+			/>
+			<input
+				className="mt-3 w-9/12 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
+				placeholder={ __( 'Secret Key v2', 'ultimate-addons-for-gutenberg' ) }
+				id="grid-zip"
+				value={ secretKeyV2 }
+				name='secret_key_v2'
+				onChange={ updateRecaptchaSecretKeyV2 }
+				type="text"
+			/>
+			{/* Recaptcha V3 */}
+			<h3 className="mt-8 font-medium text-sm text-slate-800">
+				{ __( 'reCAPTCHA v3', 'ultimate-addons-for-gutenberg' ) }
+			</h3>
+			<input
+				className="mt-3 w-9/12 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
+				placeholder={ __( 'Site Key v3', 'ultimate-addons-for-gutenberg' ) }
+				id="grid-zip"
+				type="text"
+				value={ siteKeyV3 }
+				name='site_key_v3'
+				onChange={ updateRecaptchaSiteKeyV3 }
+			/>
+			<input
+				className="mt-3 w-9/12 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
+				placeholder={ __( 'Secret Key v3', 'ultimate-addons-for-gutenberg' ) }
+				id="grid-zip"
+				type="text"
+				value={ secretKeyV3 }
+				name='secret_key_v3'
+				onChange={ updateRecaptchaSecretKeyV3 }
+			/>
 		</section>
 	);
 };

@@ -44,9 +44,9 @@ const AssetsGeneration = () => {
     };
 
     return (
-        <section className='block border-b border-solid border-slate-200 p-6 justify-between'>  
+        <section className='block border-b border-solid border-slate-200 px-12 py-8 justify-between'>  
             <div className='mr-16 w-full flex items-center'>
-                <h3 className="p-0 flex-1 justify-right inline-flex text-lg leading-6 font-medium text-gray-900">
+                <h3 className="p-0 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900">
                     { __( 'File Generation', 'ultimate-addons-for-gutenberg' ) }
                 </h3>
                 <Switch
@@ -66,7 +66,7 @@ const AssetsGeneration = () => {
                     />
                 </Switch>
             </div>
-            <p className="mt-2 w-10/12 text-sm">
+            <p className="mt-2 w-9/12 text-sm">
                 { __( 'Spectra loads the CSS and JS inline on the page by default. If you want to generate separate CSS and JS files for Spectra blocks, enable this option. Please read ', 'ultimate-addons-for-gutenberg' ) }
                 <a className='text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover' href="https://www.ultimategutenberg.com/clean-html-with-uag/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard"> { __( 'this article', 'ultimate-addons-for-gutenberg' ) } </a>
                 { __( ' to learn the difference between generating CSS and JS inline and in a separate file.', 'ultimate-addons-for-gutenberg' ) }

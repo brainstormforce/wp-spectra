@@ -85,9 +85,9 @@ const SelectedFontFamilies = () => {
 
 	}
     return (
-        <section className='block border-b border-solid border-slate-200 p-6 justify-between'>  
+        <section className='block border-b border-solid border-slate-200 px-12 py-8 justify-between'>  
             <div className='mr-16 w-full flex items-center'>
-                <h3 className="p-0 flex-1 justify-right inline-flex text-lg leading-6 font-medium text-gray-900">
+                <h3 className="p-0 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900">
                     { __( 'Allow Only Selected Fonts', 'ultimate-addons-for-gutenberg' ) }
                 </h3>
                 <Switch
@@ -119,7 +119,7 @@ const SelectedFontFamilies = () => {
                 maxMenuHeight={ 140 }
                 minMenuHeight = { 70 }
                 isSearchable={true}
-                className={ `mt-4 w-9/12 cursor-pointer transition focus:ring-spectra` }
+                className={ `mt-4 w-9/12 h-10 text-base cursor-pointer transition focus:ring-spectra` }
                 theme={ ( theme ) => ( {
                     ...theme,
                     colors: {
