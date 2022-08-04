@@ -63,9 +63,14 @@ export default function ImageSizeControl( {
 				label={ __( 'Height' ) }
 				value={ currentHeight }
 				min={ 1 }
-				onChange={ ( value ) =>
+				onChange={ ( value ) => {
 					updateDimension( 'height', value )
-				}
+					if ( ! isNaN( value ) && '' !== value ) {
+						setAttributes( { customHeightSetDesktop: true } );
+					} else {
+						setAttributes( { customHeightSetDesktop: false } );
+					}
+				} }
 			/>
 		</>
 	);
@@ -88,9 +93,14 @@ export default function ImageSizeControl( {
 				label={ __( 'Height' ) }
 				value={ heightTablet }
 				min={ 1 }
-				onChange={ ( value ) =>
-					setAttributes( { heightTablet: value} )
-				}
+				onChange={ ( value ) => {
+					setAttributes( { heightTablet: value} );
+					if ( ! isNaN( value ) && '' !== value ) {
+						setAttributes( { customHeightSetTablet: true } );
+					} else {
+						setAttributes( { customHeightSetTablet: false } );
+					}
+				}}
 			/>
 		</>
 	);
@@ -113,9 +123,14 @@ export default function ImageSizeControl( {
 				label={ __( 'Height' ) }
 				value={ heightMobile }
 				min={ 1 }
-				onChange={ ( value ) =>
-					setAttributes( { heightMobile: value} )
-				}
+				onChange={ ( value ) => {
+					setAttributes( { heightMobile: value} );
+					if ( ! isNaN( value ) && '' !== value ) {
+						setAttributes( { customHeightSetMobile: true } );
+					} else {
+						setAttributes( { customHeightSetMobile: false } );
+					}
+				}}
 			/>
 		</>
 	);

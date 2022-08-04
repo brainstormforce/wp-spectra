@@ -377,7 +377,7 @@ function styling( props ) {
 			 'box-sizing' : `${boxSizingImage}`,
 		 },
 		 // CTA style
-		 ' div.uagb-ifb-cta a.uagb-infobox-cta-link.uagb-infobox-cta-link': {
+		 ' div.uagb-ifb-cta a.uagb-infobox-cta-link': {
 			 'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			 'font-family': ctaFontFamily,
 			 'font-weight': ctaFontWeight,
@@ -389,8 +389,9 @@ function styling( props ) {
 				ctaLineHeight,
 				ctaLineHeightType
 			 ),
+			 'color': ctaLinkColor
 		 },
-		 ' .uagb-infobox-cta-link:hover': {
+		 ' div.uagb-ifb-cta a.uagb-infobox-cta-link:hover': {
 			 'color': ctaLinkHoverColor,
 		 },
 		 ' .uagb-infobox-cta-link svg': {

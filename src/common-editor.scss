@@ -362,7 +362,7 @@ hr.uagb-editor__separator {
 	background: transparent;
 	border: none;
 	outline: none;
-	color: #000;
+	color: $spectra-color-heading;
 	text-decoration: underline;
 	-webkit-box-shadow: none;
 }
@@ -374,7 +374,7 @@ hr.uagb-editor__separator {
 
 .uagb-size-type-field button.components-button.uagb-size-btn:hover,
 .uagb-size-type-field button.components-button.uagb-size-btn:hover:focus:not(:disabled):not([aria-disabled="true"]) {
-	color: #000;
+	color: $spectra-color-heading;
 	background: transparent;
 	-webkit-box-shadow: none;
 	box-shadow: none;
@@ -641,6 +641,8 @@ button.components-button.uagb-review-select-btn.is-secondary {
 }
 
 .interface-interface-skeleton__sidebar {
+
+	margin-bottom: 10px;
 
 	.components-panel[data-uagb-tab="advance"] .block-editor-block-inspector__advanced.uagb-extention-tab {
 		border: none;
