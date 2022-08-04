@@ -61,11 +61,11 @@ const attributes = {
 	},
 	innerContentCustomWidthTablet: {
 		type: 'number',
-		default: 768
+		default: 1024
 	},
 	innerContentCustomWidthMobile: {
 		type: 'number',
-		default: 426
+		default: 767
 	},
 	innerContentCustomWidthType: {
 		type: 'string',
@@ -320,7 +320,7 @@ const attributes = {
 	},
 	gradientValue: {
 		type: 'string',
-		default: 'linear-gradient(90deg, rgb(6, 147, 227, 0.5) 0%, rgb(155, 81, 224, 0.5) 100%)',
+		default: 'linear-gradient(90deg, rgba(6, 147, 227, 0.5) 0%, rgba(155, 81, 224, 0.5) 100%)',
 		UAGCopyPaste: {
 			styleType: 'container-bg-gradient-value'
 		},
@@ -425,28 +425,24 @@ const attributes = {
 
 	topPaddingDesktop: {
 		type: 'number',
-		default: 20,
 		UAGCopyPaste: {
 			styleType: 'container-top-padding-desktop'
 		},
 	},
 	bottomPaddingDesktop: {
 		type: 'number',
-		default: 20,
 		UAGCopyPaste: {
 			styleType: 'container-bottom-padding-desktop'
 		},
 	},
 	leftPaddingDesktop: {
 		type: 'number',
-		default: 20,
 		UAGCopyPaste: {
 			styleType: 'container-left-padding-desktop'
 		},
 	},
 	rightPaddingDesktop: {
 		type: 'number',
-		default: 20,
 		UAGCopyPaste: {
 			styleType: 'container-right-padding-desktop'
 		},
@@ -875,6 +871,78 @@ const attributes = {
 			styleType: 'background-overlay-type'
 		}
 	},
+	// Background image position.
+	customPosition:{
+		type: 'string',
+		default: 'default',
+		UAGCopyPaste: {
+			styleType: 'background-image-position-type'
+		}
+	},
+	xPositionDesktop: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-image-x-position-desktop'
+		},
+		default: ''
+	},
+	xPositionTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-image-x-position-tablet'
+		},
+	},
+	xPositionMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-image-x-position-mobile'
+		},
+	},
+	xPositionType: {
+		type: 'string',
+		default: 'px',
+	},
+	xPositionTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	xPositionTypeMobile: {
+		type: 'string',
+		default: 'px',
+	},
+	
+	yPositionDesktop: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-image-y-position-desktop'
+		},
+		default: ''
+	},
+	yPositionTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-image-y-position-tablet'
+		},
+	},
+	yPositionMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-image-y-position-mobile'
+		},
+	},
+	yPositionType: {
+		type: 'string',
+		default: 'px',
+	},
+	yPositionTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	yPositionTypeMobile: {
+		type: 'string',
+		default: 'px',
+	},
+
 	backgroundVideoColor: {
 		type: 'string',
 		UAGCopyPaste: {
@@ -968,6 +1036,22 @@ const attributes = {
 	overflow: {
 		type: 'string',
 		default: 'visible'
+	},
+	topDividerWidthType: {
+		type: 'string',
+		default: '%',
+	},
+	bottomDividerWidthType: {
+		type: 'string',
+		default: '%',
+	},
+	topDividerHeightType: {
+		type: 'string',
+		default: 'px',
+	},
+	bottomDividerHeightType: {
+		type: 'string',
+		default: 'px',
 	},
 	...inputBorderAttributes
 };
