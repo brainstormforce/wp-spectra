@@ -156,7 +156,8 @@ const transforms = {
 					backgroundVideoColor,
 					backgroundVideo,
 					overlayType,
-					backgroundImageColor
+					backgroundImageColor,
+					tag,
 				} = attributes;
 
 				const containerWidth = 'full_width' === contentWidth ? 'alignfull' : 'alignwide';
@@ -222,7 +223,8 @@ const transforms = {
 						backgroundVideo,
 						overlayType,
 						backgroundImageColor: backgroundImageColor || '#00000000',
-						variationSelected: true
+						variationSelected: true,
+						htmlTag: tag,
 					},
 					innerBlocks
 				);
