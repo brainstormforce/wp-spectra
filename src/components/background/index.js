@@ -42,7 +42,20 @@ const Background = ( props ) => {
 		backgroundCustomSize,
 		backgroundCustomSizeType,
 		imageResponsive,
-		gradientOverlay
+		gradientOverlay,
+		customPosition,
+		xPositionDesktop,
+		xPositionTablet,
+		xPositionMobile,
+		xPositionType,
+		xPositionTypeTablet,
+		xPositionTypeMobile,
+		yPositionDesktop,
+		yPositionTablet,
+		yPositionMobile,
+		yPositionType,
+		yPositionTypeTablet,
+		yPositionTypeMobile,
 	} = props;
 
 	const onRemoveImage = () => {
@@ -476,12 +489,145 @@ const Background = ( props ) => {
 					{ imageResponsive && backgroundImage[deviceType] && backgroundImage[deviceType]?.value && (
 						<>
 							<div className="uag-background-image-position">
-								<ResponsiveUAGFocalPointPicker
-									backgroundPosition={backgroundPosition}
+								<MultiButtonsControl
 									setAttributes={ setAttributes }
-									backgroundImage={backgroundImage}
+									label={ __(
+										'Image Position',
+										'ultimate-addons-for-gutenberg'
+									) }
+									data={ {
+										value: customPosition.value,
+										label: customPosition.label,
+									} }
+									options={ [
+										{ value: 'default', label: __( 'Default' ) },
+										{ value: 'custom', label: __( 'Custom' ) },
+									] }
 								/>
 							</div>
+							{ 'custom' !== customPosition.value && (
+								<div className="uag-background-image-position">
+									<ResponsiveUAGFocalPointPicker
+										backgroundPosition={backgroundPosition}
+										setAttributes={ setAttributes }
+										backgroundImage={backgroundImage}
+									/>
+								</div>
+							) }
+							{ 'custom' === customPosition.value && (
+								<>
+									<div className="uag-background-image-position">
+										<ResponsiveSlider
+											label={ __( 'X Position', 'ultimate-addons-for-gutenberg' ) }
+											data={ {
+												desktop: {
+													value: xPositionDesktop.value,
+													label: 'xPositionDesktop',
+													unit: {
+														value: xPositionType.value,
+														label: 'xPositionType',
+													},
+												},
+												tablet: {
+													value: xPositionTablet.value,
+													label: 'xPositionTablet',
+													unit: {
+														value: xPositionTypeTablet.value,
+														label: 'xPositionTypeTablet',
+													},
+												},
+												mobile: {
+													value: xPositionMobile.value,
+													label: 'xPositionMobile',
+													unit: {
+														value: xPositionTypeMobile.value,
+														label: 'xPositionTypeMobile',
+													},
+												},
+											} }
+											limitMin={ { 'px': -800, '%': -100, 'em': -100, 'vw': -100 } }
+											limitMax={ { 'px': 800, '%': 100, 'em': 100, 'vw': 100 } }
+											units={ [
+												{
+													name: __(
+														'PX',
+														'ultimate-addons-for-gutenberg'
+													),
+													unitValue: 'px',
+												},
+												{
+													name: __( '%', 'ultimate-addons-for-gutenberg' ),
+													unitValue: '%',
+												},
+												{
+													name: __( 'EM', 'ultimate-addons-for-gutenberg' ),
+													unitValue: 'em',
+												},
+												{
+													name: __( 'VW', 'ultimate-addons-for-gutenberg' ),
+													unitValue: 'vw',
+												},
+											] }
+											setAttributes={ setAttributes }
+										/>
+									</div>
+									<div className="uag-background-image-position">
+										<ResponsiveSlider
+											label={ __( 'Y Position', 'ultimate-addons-for-gutenberg' ) }
+											data={ {
+												desktop: {
+													value: yPositionDesktop.value,
+													label: 'yPositionDesktop',
+													unit: {
+														value: yPositionType.value,
+														label: 'yPositionType',
+													},
+												},
+												tablet: {
+													value: yPositionTablet.value,
+													label: 'yPositionTablet',
+													unit: {
+														value: yPositionTypeTablet.value,
+														label: 'yPositionTypeTablet',
+													},
+												},
+												mobile: {
+													value: yPositionMobile.value,
+													label: 'yPositionMobile',
+													unit: {
+														value: yPositionTypeMobile.value,
+														label: 'yPositionTypeMobile',
+													},
+												},
+											} }
+											limitMin={ { 'px': -800, '%': -100, 'em': -100, 'vw': -100 } }
+											limitMax={ { 'px': 800, '%': 100, 'em': 100, 'vw': 100 } }
+											units={ [
+												{
+													name: __(
+														'PX',
+														'ultimate-addons-for-gutenberg'
+													),
+													unitValue: 'px',
+												},
+												{
+													name: __( '%', 'ultimate-addons-for-gutenberg' ),
+													unitValue: '%',
+												},
+												{
+													name: __( 'EM', 'ultimate-addons-for-gutenberg' ),
+													unitValue: 'em',
+												},
+												{
+													name: __( 'VW', 'ultimate-addons-for-gutenberg' ),
+													unitValue: 'vw',
+												},
+											] }
+											setAttributes={ setAttributes }
+										/>
+									</div>
+								</>
+							) }
 							<div className="uag-background-image-attachment">
 								<ResponsiveSelectControl
 									label={ __( 'Attachment', 'ultimate-addons-for-gutenberg' ) }
