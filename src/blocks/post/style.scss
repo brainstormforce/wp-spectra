@@ -16,7 +16,7 @@
 		.uagb-post__taxonomy {
 			display: inline-flex;
 			flex-wrap: wrap;
-			margin: 5px;
+			margin: 0;
 
 			&.default {
 				margin: 5px 5px 5px 0;
@@ -184,6 +184,10 @@
 				text-decoration: none;
 			}
 		}
+	}
+
+	.uagb-post-grid-byline > * { // Adding margin-right 10px for meta.
+		margin-right: 10px;
 	}
 
 	.uagb-post-grid-byline,
