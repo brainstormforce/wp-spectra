@@ -1211,10 +1211,7 @@ const Settings = ( props ) => {
 												description:
 													'I have been working with these guys since years now! With lots of hard work and timely communication they made sure they delivered the best to me. Highly recommended!',
 												name: 'John Doe',
-												company:
-													'Company' +
-													( cloneTest_block.length +
-														1 ),
+												company: 'Company Name',
 												image: '',
 											} );
 										}
