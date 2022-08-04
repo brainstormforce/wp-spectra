@@ -496,7 +496,7 @@ const Settings = ( props ) => {
 				) }
 				<ResponsiveSlider
 					label={ __(
-						'Gap Between Content & Dots',
+						'Top Margin for Dots',
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
