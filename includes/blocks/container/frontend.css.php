@@ -46,6 +46,11 @@ $bg_obj_desktop           = array(
 	'backgroundCustomSizeType' => $attr['backgroundCustomSizeType'],
 	'backgroundVideo'          => $attr['backgroundVideo'],
 	'backgroundVideoColor'     => $attr['backgroundVideoColor'],
+	'customPosition'           => $attr['customPosition'],
+	'xPosition'                => $attr['xPositionDesktop'],
+	'xPositionType'            => $attr['xPositionType'],
+	'yPosition'                => $attr['yPositionDesktop'],
+	'yPositionType'            => $attr['yPositionType'],
 );
 $container_bg_css_desktop = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_desktop );
 
@@ -198,6 +203,11 @@ $bg_obj_tablet              = array(
 	'backgroundCustomSizeType' => $attr['backgroundCustomSizeType'],
 	'backgroundVideo'          => $attr['backgroundVideo'],
 	'backgroundVideoColor'     => $attr['backgroundVideoColor'],
+	'customPosition'           => $attr['customPosition'],
+	'xPosition'                => $attr['xPositionTablet'],
+	'xPositionType'            => $attr['xPositionTypeTablet'],
+	'yPosition'                => $attr['yPositionTablet'],
+	'yPositionType'            => $attr['yPositionTypeTablet'],
 );
 $container_bg_css_tablet    = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_tablet );
 $container_tablet_css       = array_merge(
@@ -256,6 +266,11 @@ $bg_obj_mobile              = array(
 	'backgroundCustomSizeType' => $attr['backgroundCustomSizeType'],
 	'backgroundVideo'          => $attr['backgroundVideo'],
 	'backgroundVideoColor'     => $attr['backgroundVideoColor'],
+	'customPosition'           => $attr['customPosition'],
+	'xPosition'                => $attr['xPositionMobile'],
+	'xPositionType'            => $attr['xPositionTypeMobile'],
+	'yPosition'                => $attr['yPositionMobile'],
+	'yPositionType'            => $attr['yPositionTypeMobile'],
 );
 $container_bg_css_mobile    = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_mobile );
 $container_mobile_css       = array_merge(
@@ -303,7 +318,7 @@ if ( 'alignwide' === $attr['innerContentWidth'] && 'alignfull' === $attr['conten
 		array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'--inner-content-custom-width' => 'min( 100%, ' . $inner_content_custom_width_desktop_fallback . $attr['innerContentCustomWidthType'] . ')',
 		'max-width'                    => 'var(--inner-content-custom-width)',
-		'width'                        => 'var(--inner-content-custom-width)',
+		'width'                        => '100%',
 		),
 		$inner_container_css
 	);
@@ -312,7 +327,7 @@ if ( 'alignwide' === $attr['innerContentWidth'] && 'alignfull' === $attr['conten
 		array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'--inner-content-custom-width' => 'min( 100%, ' . $inner_content_custom_width_tablet_fallback . $attr['innerContentCustomWidthTypeTablet'] . ')',
 		'max-width'                    => 'var(--inner-content-custom-width)',
-		'width'                        => 'var(--inner-content-custom-width)',
+		'width'                        => '100%',
 		),
 		$inner_container_tablet_css
 	);
@@ -321,7 +336,7 @@ if ( 'alignwide' === $attr['innerContentWidth'] && 'alignfull' === $attr['conten
 		array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'--inner-content-custom-width' => 'min( 100%, ' . $inner_content_custom_width_mobile_fallback . $attr['innerContentCustomWidthTypeMobile'] . ')',
 		'max-width'                    => 'var(--inner-content-custom-width)',
-		'width'                        => 'var(--inner-content-custom-width)',
+		'width'                        => '100%',
 		),
 		$inner_container_mobile_css
 	);

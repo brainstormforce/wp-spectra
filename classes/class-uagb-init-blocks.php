@@ -550,7 +550,7 @@ class UAGB_Init_Blocks {
 		$content_width = \UAGB_Admin_Helper::get_global_content_width();
 
 		if ( '' === $content_width ) {
-			$content_width = 1200;
+			$content_width = 1140;
 		}
 
 		wp_localize_script(

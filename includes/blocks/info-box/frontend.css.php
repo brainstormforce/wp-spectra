@@ -265,17 +265,17 @@ if ( 'Stacked' === $attr['iconView'] ) {
 	);
 }
 if ( 'text' === $attr['ctaType'] ) {
-	$selectors[' div.uagb-ifb-button-wrapper a.uagb-infobox-cta-link'] = array(
+	$selectors[' div.uagb-ifb-button-wrapper a.uagb-infobox-cta-link']       = array(
 		'text-decoration' => $attr['ctaDecoration'],
 		'color'           => $attr['ctaLinkColor'],
 	);
-	$selectors[' .uagb-infobox-cta-link:hover']                        = array(
+	$selectors[' div.uagb-ifb-button-wrapper a.uagb-infobox-cta-link:hover'] = array(
 		'color' => $attr['ctaLinkHoverColor'],
 	);
-	$selectors[' .uagb-infobox-cta-link:hover svg']                    = array(
+	$selectors[' .uagb-infobox-cta-link:hover svg']                          = array(
 		'fill' => $attr['ctaLinkHoverColor'],
 	);
-	$selectors[' .uagb-infobox-cta-link svg']                          = array(
+	$selectors[' .uagb-infobox-cta-link svg']                                = array(
 		'font-size'   => $cta_icon_size,
 		'height'      => $cta_icon_size,
 		'width'       => $cta_icon_size,

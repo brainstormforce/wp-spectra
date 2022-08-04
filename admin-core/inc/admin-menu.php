@@ -90,7 +90,7 @@ class Admin_Menu {
 			'<a href="' . $default_url . '">' . __( 'Settings', 'ultimate-addons-for-gutenberg' ) . '</a>',
 		);
 
-		return array_merge( $links, $mylinks );
+		return array_merge( $mylinks, $links );
 	}
 
 	/**
