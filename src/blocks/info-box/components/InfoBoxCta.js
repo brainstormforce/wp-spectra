@@ -1,9 +1,7 @@
-import { RichText } from '@wordpress/block-editor';
 import classnames from 'classnames';
-import { __ } from '@wordpress/i18n';
 
 const InfoBoxCta = ( props ) => {
-	const { attributes, setAttributes = 'not_set' } = props;
+	const { attributes } = props;
 
 	const ctaBtnClass = 'uagb-infobox-cta-link uagb-ifb-cta-button';
 
@@ -26,65 +24,6 @@ const InfoBoxCta = ( props ) => {
 			</span>
 		);
 	}
-
-	if( setAttributes !== 'not_set' ) {
-		return (
-			<div className="uagb-ifb-cta uagb-infobox-cta-link-style">
-				{ attributes.ctaType === 'text' && (
-					<a
-						href={ attributes.ctaLink }
-						target={ target }
-						className="uagb-infobox-cta-link"
-						rel={ rel }
-					>
-						{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
-						<RichText
-							tagName="span"
-							placeholder={ __(
-								'Read More',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ attributes.ctaText }
-							className="uagb-inline-editing"
-							multiline={ false }
-							onChange={ ( value ) => {
-								setAttributes( { ctaText: value } );
-							} }
-						/>
-						{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
-					</a>
-				) }
-	
-				{ attributes.ctaType === 'button' && (
-					<div className="uagb-ifb-button-wrapper">
-						<a
-							href={ attributes.ctaLink }
-							className={ ctaBtnClass }
-							target={ target }
-							rel={ rel }
-						>
-							{ ctaIconOutput }
-							<span className="uagb-ifb-cta-content-wrapper">
-								<RichText
-									tagName="span"
-									placeholder={ __(
-										'Read More',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ attributes.ctaText }
-									className="uagb-inline-editing"
-									multiline={ false }
-									onChange={ ( value ) => {
-										setAttributes( { ctaText: value } );
-									} }
-								/>
-							</span>
-						</a>
-					</div>
-				) }
-			</div>
-		);
-	}
 	return (
 		<div className="uagb-ifb-cta uagb-infobox-cta-link-style">
 			{ attributes.ctaType === 'text' && (
@@ -95,11 +34,9 @@ const InfoBoxCta = ( props ) => {
 					rel={ rel }
 				>
 					{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
-						<RichText.Content
-							tagName="span"
-							value={ attributes.ctaText }
-							className="uagb-inline-editing"
-						/>
+					<span className="uagb-inline-editing">
+						{ attributes.ctaText }
+					</span>
 					{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 				</a>
 			) }
@@ -114,11 +51,9 @@ const InfoBoxCta = ( props ) => {
 					>
 						{ ctaIconOutput }
 						<span className="uagb-ifb-cta-content-wrapper">
-							<RichText.Content
-								tagName="span"
-								value={ attributes.ctaText }
-								className="uagb-inline-editing"
-							/>
+							<span className="uagb-inline-editing ">
+								{ attributes.ctaText }
+							</span>
 						</span>
 					</a>
 				</div>

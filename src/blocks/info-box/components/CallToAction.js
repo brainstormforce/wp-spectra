@@ -1,7 +1,5 @@
-import { RichText } from '@wordpress/block-editor';
 import classnames from 'classnames';
 import renderSVG from '@Controls/deprecatedRenderIcon';
-import { __ } from '@wordpress/i18n';
 
 const InfoBoxCta = ( props ) => {
 	const { attributes, setAttributes = 'not_set' } = props;
@@ -43,19 +41,9 @@ const InfoBoxCta = ( props ) => {
 					>
 						{ attributes.ctaIconPosition === 'before' &&
 							ctaIconOutput }
-							<RichText
-								tagName="span"
-								placeholder={ __(
-									'Read More',
-									'ultimate-addons-for-gutenberg'
-								) }
-								value={ attributes.ctaText }
-								className="uagb-inline-editing"
-								multiline={ false }
-								onChange={ ( value ) => {
-									setAttributes( { ctaText: value } );
-								} }
-							/>
+						<span className="uagb-inline-editing">
+							{ attributes.ctaText }
+						</span>
 						{ attributes.ctaIconPosition === 'after' &&
 							ctaIconOutput }
 					</a>
@@ -77,19 +65,9 @@ const InfoBoxCta = ( props ) => {
 						>
 							{ ctaIconOutput }
 							<span className="uagb-ifb-cta-content-wrapper">
-							<RichText
-								tagName="span"
-								placeholder={ __(
-									'Read More',
-									'ultimate-addons-for-gutenberg'
-								) }
-								value={ attributes.ctaText }
-								className="uagb-inline-editing"
-								multiline={ false }
-								onChange={ ( value ) => {
-									setAttributes( { ctaText: value } );
-								} }
-							/>
+								<span className="uagb-inline-editing ">
+									{ attributes.ctaText }
+								</span>
 							</span>
 						</a>
 					</div>
@@ -108,11 +86,9 @@ const InfoBoxCta = ( props ) => {
 					alt=""
 				>
 					{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
-						<RichText.Content
-							tagName="span"
-							value={ attributes.ctaText }
-							className="uagb-inline-editing"
-						/>
+					<span className="uagb-inline-editing">
+						{ attributes.ctaText }
+					</span>
 					{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 				</a>
 			) }
@@ -133,11 +109,9 @@ const InfoBoxCta = ( props ) => {
 					>
 						{ ctaIconOutput }
 						<span className="uagb-ifb-cta-content-wrapper">
-							<RichText.Content
-								tagName="span"
-								value={ attributes.ctaText }
-								className="uagb-inline-editing"
-							/>
+							<span className="uagb-inline-editing ">
+								{ attributes.ctaText }
+							</span>
 						</span>
 					</a>
 				</div>
