@@ -1,6 +1,7 @@
 import { RichText } from '@wordpress/block-editor';
 import classnames from 'classnames';
 import renderSVG from '@Controls/deprecatedRenderIcon';
+import { __ } from '@wordpress/i18n';
 
 const InfoBoxCta = ( props ) => {
 	const { attributes, setAttributes = 'not_set' } = props;
