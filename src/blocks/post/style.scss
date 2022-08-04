@@ -183,6 +183,10 @@
 		}
 	}
 
+	.uagb-post-grid-byline > * { // Adding margin-right 10px for meta.
+		margin-right: 10px;
+	}
+
 	.uagb-post-grid-byline,
 	.uagb-post__taxonomy {
 		text-transform: capitalize;
