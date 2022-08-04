@@ -286,7 +286,11 @@ const transforms = {
 					backgroundVideoColor,
 					backgroundVideo,
 					overlayType,
-					backgroundImageColor
+					backgroundImageColor,
+					columnsBorderTopLeftRadius,
+					columnsBorderTopRightRadius,
+					columnsBorderBottomLeftRadius,
+					columnsBorderBottomRightRadius,
 				} = attributes;
 
 				const containerWidth = 'full' === align ? 'alignfull' : 'alignwide';
@@ -443,6 +447,10 @@ const transforms = {
 						directionMobile: 'mobile' === stack ? 'column' : 'row',
 						variationSelected: true,
 						columnGapDesktop: 0,
+						containerBorderTopLeftRadius: borderRadius || columnsBorderTopLeftRadius,
+						containerBorderTopRightRadius: borderRadius || columnsBorderTopRightRadius,
+						containerBorderBottomLeftRadius: borderRadius || columnsBorderBottomLeftRadius,
+						containerBorderBottomRightRadius: borderRadius || columnsBorderBottomRightRadius,
 					},
 					createBlocksFromInnerBlocksTemplate( innerBlocksTemplate )
 				);
