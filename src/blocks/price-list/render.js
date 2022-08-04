@@ -1,5 +1,4 @@
 import classnames from 'classnames';
-import PositionClasses from './classes';
 import React, { useLayoutEffect, useMemo } from 'react';
 import { InnerBlocks } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
@@ -20,7 +19,7 @@ const Render = ( props ) => {
 	const { className, attributes } = props;
 
 	// Setup the attributes.
-	const { isPreview, menu_item_count } = attributes;
+	const { isPreview, menu_item_count, columns, tcolumns, mcolumns } = attributes;
 
 	const getPriceListTemplate = useMemo( () => {
 		const childList = [];
@@ -41,7 +40,9 @@ const Render = ( props ) => {
 				className,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-				...PositionClasses( attributes, props.name )
+				`uagb-rm__desk-column-${columns}`,
+				`uagb-rm__tablet-column-${tcolumns}`,
+				`uagb-rm__mobile-column-${mcolumns}`,
 			) }
 		>
 			<InnerBlocks

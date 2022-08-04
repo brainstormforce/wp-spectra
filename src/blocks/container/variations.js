@@ -42,9 +42,9 @@ const variations = [
 			wrapMobile: 'wrap'
 		},
 		innerBlocks: [
-			[ 'uagb/container', { widthDesktop: 33.33, widthMobile: 100, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 33.33, widthMobile: 100, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 33.33, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 33, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 33, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 33, widthMobile: 100, widthSetByUser:true } ],
 		],
 		scope: [ 'block' ],
 	},
