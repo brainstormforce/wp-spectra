@@ -526,7 +526,7 @@ const Settings = ( props ) => {
 						label: 'postsToShow',
 					} }
 					onChange={ onChangePostsPerPage }
-					min={ 0 }
+					min={ 1 }
 					max={ 50 }
 					displayUnit={ false }
 				/>
