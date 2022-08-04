@@ -168,10 +168,10 @@
 
 @media (min-width: 1025px) {
 	.wp-block-uagb-testimonial.uagb-post__carousel_notset {
-		.slick-slide:not(:first-child) .uagb-testimonial__wrap {
+		.slick-slide:last-child .uagb-testimonial__wrap {
 			padding-right: 0;
 		}
-		.slick-slide:not(:last-child) .uagb-testimonial__wrap {
+		.slick-slide:first-child .uagb-testimonial__wrap {
 			padding-left: 0;
 		}
 		.uagb-testimonial__wrap {
@@ -185,10 +185,10 @@
 
 @media (max-width: 976px) {
 
-	.slick-slide:not(:first-child) .uagb-testimonial__wrap {
+	.slick-slide:last-child .uagb-testimonial__wrap {
 		padding-right: 0;
 	}
-	.slick-slide:not(:last-child) .uagb-testimonial__wrap {
+	.slick-slide:first-child .uagb-testimonial__wrap {
 		padding-left: 0;
 	}
 	.wp-block-uagb-testimonial.uagb-post__carousel_notset-tablet {
@@ -273,10 +273,10 @@
 
 @media (max-width: 768px) {
 
-	.slick-slide:not(:first-child) .uagb-testimonial__wrap {
+	.slick-slide:last-child .uagb-testimonial__wrap {
 		padding-right: 0;
 	}
-	.slick-slide:not(:last-child) .uagb-testimonial__wrap {
+	.slick-slide:first-child .uagb-testimonial__wrap {
 		padding-left: 0;
 	}
 
