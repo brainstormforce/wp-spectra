@@ -17,11 +17,11 @@ const attributes = {
 	},
 	icon: {
 		type: 'html',
-		default: 'fas fa-plus',
+		default: 'plus',
 	},
 	iconActive: {
 		type: 'html',
-		default: 'fas fa-minus',
+		default: 'minus',
 	},
 	layout: {
 		type: 'string',

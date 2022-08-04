@@ -107,7 +107,7 @@ return array(
 	'blockMarginUnitTablet'    => 'px',
 	'blockMarginUnitMobile'    => 'px',
 	'blockMarginLink'          => '',
-	'parentIcon'               => 'fab fa-arrow-circle-right',
+	'parentIcon'               => 'circle-arrow-right',
 	// padding.
 	'blockTopPadding'          => '',
 	'blockRightPadding'        => '',

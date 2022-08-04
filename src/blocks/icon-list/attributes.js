@@ -66,7 +66,7 @@ const attributes = {
 	},
 	parentIcon: {
 		type: 'string',
-		default: 'fab fa-arrow-circle-right',
+		default: 'circle-arrow-right',
 	},
 	icons: {
 		type: 'array',
