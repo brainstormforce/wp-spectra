@@ -300,6 +300,24 @@ const transforms = {
 					columnsBorderBottomWidth,
 					columnsBorderLeftWidth,
 					columnsBorderRightWidth,
+					// Shape Divider Top
+					topType,
+					topColor,
+					topWidth,
+					topHeight,
+					topHeightTablet,
+					topHeightMobile,
+					topFlip,
+					topContentAboveShape,
+					// Shape Divider Bottom
+					bottomType,
+					bottomColor,
+					bottomWidth,
+					bottomHeight,
+					bottomHeightTablet,
+					bottomHeightMobile,
+					bottomFlip,
+					bottomContentAboveShape,
 				} = attributes;
 
 				const containerWidth = 'full' === align ? 'alignfull' : 'alignwide';
@@ -486,6 +504,24 @@ const transforms = {
 						containerBorderLeftWidth: borderWidth || columnsBorderLeftWidth,
 						containerBorderRightWidth: borderWidth || columnsBorderRightWidth,
 						htmlTag: tag,
+						// Shape Divider Top
+						topType,
+						topColor,
+						topWidth,
+						topHeight,
+						topHeightTablet,
+						topHeightMobile,
+						topFlip,
+						topContentAboveShape,
+						// Shape Divider Bottom
+						bottomType,
+						bottomColor,
+						bottomWidth,
+						bottomHeight,
+						bottomHeightTablet,
+						bottomHeightMobile,
+						bottomFlip,
+						bottomContentAboveShape,
 					},
 					createBlocksFromInnerBlocksTemplate( innerBlocksTemplate )
 				);
