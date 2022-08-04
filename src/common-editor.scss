@@ -362,7 +362,7 @@ hr.uagb-editor__separator {
 	background: transparent;
 	border: none;
 	outline: none;
-	color: #000;
+	color: $spectra-color-heading;
 	text-decoration: underline;
 	-webkit-box-shadow: none;
 }
@@ -374,7 +374,7 @@ hr.uagb-editor__separator {
 
 .uagb-size-type-field button.components-button.uagb-size-btn:hover,
 .uagb-size-type-field button.components-button.uagb-size-btn:hover:focus:not(:disabled):not([aria-disabled="true"]) {
-	color: #000;
+	color: $spectra-color-heading;
 	background: transparent;
 	-webkit-box-shadow: none;
 	box-shadow: none;

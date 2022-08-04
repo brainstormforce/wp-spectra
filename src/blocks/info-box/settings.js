@@ -2152,58 +2152,6 @@ const Settings = ( props ) => {
 					'all' !== ctaType && (
 						<UAGAdvancedPanelBody title="Call to Action" initialOpen={ false }>
 							<>
-								{ ctaType === 'text' && (
-									<>
-										<UAGTabsControl
-											tabs={ [
-												{
-													name: 'normal',
-													title: __(
-														'Normal',
-														'ultimate-addons-for-gutenberg'
-													),
-												},
-												{
-													name: 'hover',
-													title: __(
-														'Hover',
-														'ultimate-addons-for-gutenberg'
-													),
-												},
-											] }
-											normal={
-												<AdvancedPopColorControl
-													label={ __(
-														'Text Color',
-														'ultimate-addons-for-gutenberg'
-													) }
-													colorValue={ ctaLinkColor ? ctaLinkColor : '' }
-													data={ {
-														value: ctaLinkColor,
-														label: 'ctaLinkColor',
-													} }
-													setAttributes={ setAttributes }
-												/>
-											}
-											hover={
-												<AdvancedPopColorControl
-													label={ __(
-														'Text Color',
-														'ultimate-addons-for-gutenberg'
-													) }
-													colorValue={
-														ctaLinkHoverColor ? ctaLinkHoverColor : ''
-													}
-													data={ {
-														value: ctaLinkHoverColor,
-														label: 'ctaLinkHoverColor',
-													} }
-													setAttributes={ setAttributes }
-												/>
-												}
-										/>
-									</>
-								) }
 								<TypographyControl
 									label={ __(
 										'Typography',
@@ -2284,6 +2232,57 @@ const Settings = ( props ) => {
 										label: 'ctaLetterSpacingType',
 									} }
 								/>
+								{ ctaType === 'text' && (
+									<UAGTabsControl
+										tabs={ [
+											{
+												name: 'normal',
+												title: __(
+													'Normal',
+													'ultimate-addons-for-gutenberg'
+												),
+											},
+											{
+												name: 'hover',
+												title: __(
+													'Hover',
+													'ultimate-addons-for-gutenberg'
+												),
+											},
+										] }
+										normal={
+											<AdvancedPopColorControl
+												label={ __(
+													'Text Color',
+													'ultimate-addons-for-gutenberg'
+												) }
+												colorValue={ ctaLinkColor ? ctaLinkColor : '' }
+												data={ {
+													value: ctaLinkColor,
+													label: 'ctaLinkColor',
+												} }
+												setAttributes={ setAttributes }
+											/>
+										}
+										hover={
+											<AdvancedPopColorControl
+												label={ __(
+													'Text Color',
+													'ultimate-addons-for-gutenberg'
+												) }
+												colorValue={
+													ctaLinkHoverColor ? ctaLinkHoverColor : ''
+												}
+												data={ {
+													value: ctaLinkHoverColor,
+													label: 'ctaLinkHoverColor',
+												} }
+												setAttributes={ setAttributes }
+											/>
+										}
+										disableBottomSeparator={ true }
+									/>
+								) }
 								{  ctaType === 'button' && (
 									<>
 										<UAGTabsControl
@@ -2305,7 +2304,7 @@ const Settings = ( props ) => {
 											] }
 											normal={
 												<>
-												<AdvancedPopColorControl
+													<AdvancedPopColorControl
 														label={ __(
 															'Button Text Color',
 															'ultimate-addons-for-gutenberg'
@@ -2335,11 +2334,11 @@ const Settings = ( props ) => {
 														} }
 														setAttributes={ setAttributes }
 													/>
-													</>
+												</>
 											}
 											hover={
 												<>
-												<AdvancedPopColorControl
+													<AdvancedPopColorControl
 														label={ __(
 															'Button Text Color',
 															'ultimate-addons-for-gutenberg'
@@ -2371,8 +2370,8 @@ const Settings = ( props ) => {
 														} }
 														setAttributes={ setAttributes }
 													/>
-													</>
-												}
+												</>
+											}
 										/>
 										<SpacingControl
 											{ ...props }
