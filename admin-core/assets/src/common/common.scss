@@ -224,6 +224,10 @@
 				color: #2c3338;
 			}
 		}
+
+		&__block-label {
+			box-sizing: content-box;
+		}
 	}
 
 	// This is required since Tailwind CSS is overridden by load-styles

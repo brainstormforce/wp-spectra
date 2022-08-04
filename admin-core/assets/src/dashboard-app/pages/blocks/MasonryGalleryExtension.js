@@ -50,24 +50,21 @@ const MasonryGalleryExtension = () => {
         key={'masonry-gallery'}
         className={ classNames(
             masonryGallerysStatus
-                ? 'border-white bg-white shadow hover:shadow-lg hover:z-50'
+                ? 'border-white bg-white shadow hover:shadow-hover hover:z-50'
                 : 'border-slate-200 spectra-disabled-icon',
             'box-border relative border rounded-md h-20 p-4 flex items-center gap-x-4 snap-start transition spectra-icon-transition'
         ) }
         >
-            <div className={ classNames(
-                masonryGallerysStatus
-                    ? ''
-                    : 'border-t-slate-200 border-r-slate-200',
-                'uagb-block-card__deprecated-label absolute -top-px -right-px border border-violet-50 bg-violet-50 text-spectra rounded-tr-md rounded-bl-md px-2 py-1 text-xs leading-3 font-medium'
-            ) }>
-                EXTENSION
-            </div>
             <div className="flex-shrink-0">
                 { UAGB_Block_Icons['masonry-gallery'] }
             </div>
             <div className="uagb-admin-block__extension-title flex-1 min-w-0">
-                <p className="text-base font-medium text-slate-800">{__( 'Masonry Gallery', 'ultimate-addons-for-gutenberg' )}</p>
+                <p className="text-base font-medium text-slate-800">
+                    { __( 'Masonry Gallery', 'ultimate-addons-for-gutenberg' ) }
+                    <div className="inline-block align-top max-h-4 px-1.5 py-1 ml-1.5 text-[10px] leading-[10px] border border-slate-400 text-slate-500 rounded spectra-admin__block-label">
+                        { __( 'Extension', 'ultimate-addons-for-gutenberg' ) }
+                    </div>
+                </p>
                 <a className="focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate" href='https://ultimategutenberg.com/docs/masonry-image-gallery/' target="_blank"rel="noreferrer">{__( 'Documentation', 'ultimate-addons-for-gutenberg' )}</a>
             </div>
             <Switch
