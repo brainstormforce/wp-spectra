@@ -1,26 +1,30 @@
 import classnames from 'classnames';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-
+const attributes = {
+	block_id: {
+		type: 'string',
+	},
+	address: {
+		type: 'string',
+		default: 'Brainstorm Force',
+	},
+	height: {
+		type: 'number',
+		default: 300,
+	},
+	zoom: {
+		type: 'number',
+		default: 12,
+	},
+	language: {
+		type: "string",
+		default: "en",
+	},
+}
 const deprecated = [
 	{
-		attributes: {
-			block_id: {
-				type: 'string',
-			},
-			address: {
-				type: 'string',
-				default: 'Brainstorm Force',
-			},
-			height: {
-				type: 'number',
-				default: 300,
-			},
-			zoom: {
-				type: 'number',
-				default: 12,
-			},
-		},
+		attributes,
 		save( props ) {
 			const { block_id, height, zoom, address } = props.attributes;
 
@@ -47,23 +51,7 @@ const deprecated = [
 		},
 	},
 	{
-		attributes: {
-			block_id: {
-				type: 'string',
-			},
-			address: {
-				type: 'string',
-				default: 'Brainstorm Force',
-			},
-			height: {
-				type: 'number',
-				default: 300,
-			},
-			zoom: {
-				type: 'number',
-				default: 12,
-			},
-		},
+		attributes,
 		save( props ) {
 			const { block_id, height, zoom, address } = props.attributes;
 
@@ -89,23 +77,7 @@ const deprecated = [
 		},
 	},
 	{
-		attributes: {
-			block_id: {
-				type: 'string',
-			},
-			address: {
-				type: 'string',
-				default: 'Brainstorm Force',
-			},
-			height: {
-				type: 'number',
-				default: 300,
-			},
-			zoom: {
-				type: 'number',
-				default: 12,
-			},
-		},
+		attributes,
 		save( props ) {
 			const { block_id, height, zoom, address } = props.attributes;
 
@@ -131,27 +103,7 @@ const deprecated = [
 		},
 	},
 	{
-		attributes: {
-			block_id: {
-				type: "string"
-			},
-			address: {
-				type: "string",
-				default: "Brainstorm Force"
-			},
-			height: {
-				type: "number",
-				default: 300
-			},
-			zoom: {
-				type: "number",
-				default: 12
-			},
-			language: {
-				type: "string",
-				default: "en",
-			},
-		},
+		attributes,
 		save ( props ) {
 
 			const {
