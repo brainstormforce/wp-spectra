@@ -287,6 +287,7 @@ const transforms = {
 					backgroundVideo,
 					overlayType,
 					backgroundImageColor,
+					tag,
 					columnsBorderTopLeftRadius,
 					columnsBorderTopRightRadius,
 					columnsBorderBottomLeftRadius,
@@ -482,6 +483,7 @@ const transforms = {
 						containerBorderBottomWidth: borderWidth || columnsBorderBottomWidth,
 						containerBorderLeftWidth: borderWidth || columnsBorderLeftWidth,
 						containerBorderRightWidth: borderWidth || columnsBorderRightWidth,
+						htmlTag: tag,
 					},
 					createBlocksFromInnerBlocksTemplate( innerBlocksTemplate )
 				);
