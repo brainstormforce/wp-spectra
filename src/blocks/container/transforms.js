@@ -441,7 +441,8 @@ const transforms = {
 						directionDesktop: 'row',
 						directionTablet: 'tablet' === stack ? 'column' : 'row',
 						directionMobile: 'mobile' === stack ? 'column' : 'row',
-						variationSelected: true
+						variationSelected: true,
+						columnGapDesktop: 0,
 					},
 					createBlocksFromInnerBlocksTemplate( innerBlocksTemplate )
 				);
