@@ -66,7 +66,9 @@
 			color: inherit;
 		}
 	}
-
+	.wp-block-uagb-post-grid:last-child .uagb-post-pagination-wrap {
+		grid-column: 1 / -1;
+	}
 	&.uagb-editor-preview-mode-tablet {
 
 		&:not(.wp-block-uagb-post-grid).uagb-post__columns-tablet-1 article {
