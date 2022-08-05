@@ -21,12 +21,9 @@ $t_selectors = array();
 $m_selectors = array();
 $selectors   = array();
 
-$alignment              = 'flex-start';
-$alignment_tablet       = 'flex-start';
-$alignment_mobile       = 'flex-start';
-$stack_alignment        = $attr['align'];
-$stack_alignment_tablet = $attr['alignTablet'];
-$stack_alignment_mobile = $attr['alignMobile'];
+$alignment        = 'flex-start';
+$alignment_tablet = 'flex-start';
+$alignment_mobile = 'flex-start';
 
 if ( '' !== $attr['align'] ) {
 	if ( 'right' === $attr['align'] ) {
@@ -34,8 +31,7 @@ if ( '' !== $attr['align'] ) {
 	} elseif ( 'center' === $attr['align'] ) {
 		$alignment = 'center';
 	} elseif ( 'full' === $attr['align'] ) {
-		$alignment       = 'space-between';
-		$stack_alignment = 'left';
+		$alignment = 'space-between';
 	} else {
 		$alignment = 'flex-start';
 	}
@@ -47,8 +43,7 @@ if ( '' !== $attr['alignTablet'] ) {
 	} elseif ( 'center' === $attr['alignTablet'] ) {
 		$alignment_tablet = 'center';
 	} elseif ( 'full' === $attr['alignTablet'] ) {
-		$alignment_tablet       = 'space-between';
-		$stack_alignment_tablet = 'left';
+		$alignment_tablet = 'space-between';
 	} else {
 		$alignment_tablet = 'flex-start';
 	}
@@ -60,8 +55,7 @@ if ( '' !== $attr['alignMobile'] ) {
 	} elseif ( 'center' === $attr['alignMobile'] ) {
 		$alignment_mobile = 'center';
 	} elseif ( 'full' === $attr['alignMobile'] ) {
-		$alignment_mobile       = 'space-between';
-		$stack_alignment_mobile = 'left';
+		$alignment_mobile = 'space-between';
 	} else {
 		$alignment_mobile = 'flex-start';
 	}
@@ -124,31 +118,39 @@ $selectors = array(
 
 $index = 'margin-right';
 if ( 'stack' === $attr['layout'] ) {
-	$index                                    = 'margin-bottom';
-	$selectors['.wp-block-uagb-star-rating '] = array_merge(
-		array(
-			'display'    => 'block',
-			'text-align' => $stack_alignment,
-		),
-		$wrapperCSS
-	);
-
-	// Since title text is set to flex, we need this property that aligns flex objects.
-	$selectors[' .uag-star-rating__title '] = array(
-		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment ),
-	);
-	$selectors[' div.uag-star-rating ']     = array(
-		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment ),
-	);
-} else {
-	$index                                    = 'margin-right';
-	$selectors['.wp-block-uagb-star-rating '] = array_merge(
-		array(
-			'display'         => 'flex',
-			'justify-content' => $alignment,
-		),
-		$wrapperCSS
-	);
+	if ( 'before' === $attr['starPosition'] ) {
+		$index                                   = 'margin-top';
+		$selectors['.wp-block-uagb-star-rating'] = array(
+			'flex-direction' => 'column-reverse',
+			'align-items'    => $alignment, // To align-item in flex-direction column-reverse.
+		);
+	} elseif ( 'after' === $attr['starPosition'] ) {
+		$index                                    = 'margin-bottom';
+		$selectors['.wp-block-uagb-star-rating '] = array_merge(
+			array(
+				'flex-direction' => 'column', // Stack layout using flex.
+				'align-items'    => $alignment, // To align-item in flex-direction column.
+			),
+			$wrapperCSS
+		);
+	}
+} elseif ( 'inline' === $attr['layout'] ) {
+	if ( 'before' === $attr['starPosition'] ) {
+		$index                                   = 'margin-left';
+		$selectors['.wp-block-uagb-star-rating'] = array(
+			'flex-direction'  => 'row-reverse',
+			'justify-content' => UAGB_Block_Helper::flex_alignment_when_direction_is_row_reverse( $alignment ), // To align-item in flex-direction column-reverse.
+		);
+	} elseif ( 'after' === $attr['starPosition'] ) {
+		$index                                    = 'margin-right';
+		$selectors['.wp-block-uagb-star-rating '] = array_merge(
+			array(
+				'flex-direction'  => 'row', // inline layout using flex.
+				'justify-content' => $alignment,
+			),
+			$wrapperCSS
+		);
+	}
 }
 
 
@@ -165,34 +167,40 @@ $wrapperCSSTablet = array(
 
 $index_tablet = 'margin-right';
 if ( 'stack' === $attr['layoutTablet'] ) {
-	$index_tablet                               = 'margin-bottom';
-	$t_selectors['.wp-block-uagb-star-rating '] = array_merge(
-		array(
-			'display'    => 'block',
-			'text-align' => $stack_alignment_tablet,
-		),
-		$wrapperCSSTablet
-	);
-
-	// Keeping this here, in case responsive alignment is added in the future.
-	// Since title text is set to flex, we need this property that aligns flex objects.
-	$t_selectors[' .uag-star-rating__title '] = array(
-		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment_tablet ),
-		'margin-right'    => 0,
-	);
-	$t_selectors[' div.uag-star-rating ']     = array(
-		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment_tablet ),
-	);
+	if ( 'before' === $attr['starPositionTablet'] ) {
+		$index_tablet                              = 'margin-top';
+		$t_selectors['.wp-block-uagb-star-rating'] = array(
+			'flex-direction' => 'column-reverse',
+			'align-items'    => $alignment_tablet, // To align-item in flex-direction column-reverse.
+		);
+	} elseif ( 'after' === $attr['starPositionTablet'] ) {
+		$index_tablet                               = 'margin-bottom';
+		$t_selectors['.wp-block-uagb-star-rating '] = array_merge(
+			array(
+				'flex-direction' => 'column', // inline layout using flex.
+				'align-items'    => $alignment_tablet,
+			),
+			$wrapperCSSTablet
+		);
+	}
 } else {
-	$index_tablet                               = 'margin-right';
-	$t_selectors['.wp-block-uagb-star-rating '] = array_merge(
-		array(
-			'display'         => 'flex',
-			'justify-content' => $alignment_tablet,
-		),
-		$wrapperCSSTablet
-	);
-	$t_selectors[' .uag-star-rating__title ']   = array(
+	if ( 'before' === $attr['starPositionTablet'] ) {
+		$index_tablet                              = 'margin-left';
+		$t_selectors['.wp-block-uagb-star-rating'] = array(
+			'flex-direction'  => 'row-reverse',
+			'justify-content' => UAGB_Block_Helper::flex_alignment_when_direction_is_row_reverse( $alignment_tablet ), // To align-item in flex-direction column-reverse.
+		);
+	} elseif ( 'after' === $attr['starPositionTablet'] ) {
+		$index_tablet                               = 'margin-right';
+		$t_selectors['.wp-block-uagb-star-rating '] = array_merge(
+			array(
+				'flex-direction'  => 'row',
+				'justify-content' => $alignment_tablet,
+			),
+			$wrapperCSSTablet
+		);
+	}
+	$t_selectors[' .uag-star-rating__title '] = array(
 		'margin-bottom' => 0,
 	);
 }
@@ -210,34 +218,40 @@ $wrapperCSSMobile = array(
 
 $index_mobile = 'margin-right';
 if ( 'stack' === $attr['layoutMobile'] ) {
-	$index_mobile                               = 'margin-bottom';
-	$m_selectors['.wp-block-uagb-star-rating '] = array_merge(
-		array(
-			'display'    => 'block',
-			'text-align' => $stack_alignment_mobile,
-		),
-		$wrapperCSSMobile
-	);
-
-	// Keeping this here, in case responsive alignment is added in the future.
-	// Since title text is set to flex, we need this property that aligns flex objects.
-	$m_selectors[' .uag-star-rating__title '] = array(
-		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment_mobile ),
-		'margin-right'    => 0,
-	);
-	$m_selectors[' div.uag-star-rating ']     = array(
-		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment_mobile ),
-	);
+	if ( 'before' === $attr['starPositionMobile'] ) {
+		$index_mobile                              = 'margin-top';
+		$m_selectors['.wp-block-uagb-star-rating'] = array(
+			'flex-direction' => 'column-reverse',
+			'align-items'    => $alignment_mobile, // To align-item in flex-direction column-reverse.
+		);
+	} elseif ( 'after' === $attr['starPositionMobile'] ) {
+		$index_mobile                               = 'margin-bottom';
+		$m_selectors['.wp-block-uagb-star-rating '] = array_merge(
+			array(
+				'flex-direction' => 'column', // inline layout using flex.
+				'align-items'    => $alignment_mobile,
+			),
+			$wrapperCSSMobile
+		);
+	}
 } else {
-	$index_mobile                               = 'margin-right';
-	$m_selectors['.wp-block-uagb-star-rating '] = array_merge(
-		array(
-			'display'         => 'flex',
-			'justify-content' => $alignment_mobile,
-		),
-		$wrapperCSSMobile
-	);
-	$m_selectors[' .uag-star-rating__title ']   = array(
+	if ( 'before' === $attr['starPositionMobile'] ) {
+		$index_mobile                              = 'margin-left';
+		$m_selectors['.wp-block-uagb-star-rating'] = array(
+			'flex-direction'  => 'row-reverse',
+			'justify-content' => UAGB_Block_Helper::flex_alignment_when_direction_is_row_reverse( $alignment_mobile ), // To align-item in flex-direction column-reverse.
+		);
+	} elseif ( 'after' === $attr['starPositionMobile'] ) {
+		$index_mobile                               = 'margin-right';
+		$m_selectors['.wp-block-uagb-star-rating '] = array_merge(
+			array(
+				'flex-direction'  => 'row',
+				'justify-content' => $alignment_mobile,
+			),
+			$wrapperCSSMobile
+		);
+	}
+	$m_selectors[' .uag-star-rating__title '] = array(
 		'margin-bottom' => 0,
 	);
 }

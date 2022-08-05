@@ -115,7 +115,6 @@ const Settings = ( props ) => {
 		seperatorThickness,
 		thicknessUnit,
 		ctaType,
-		ctaText,
 		ctaLink,
 		ctaTarget,
 		ctaIcon,
@@ -913,20 +912,6 @@ const Settings = ( props ) => {
 						presetInputType = 'radioImage'
 					/>
 				}
-				{ ( ctaType === 'text' || ctaType === 'button' ) && (
-					<>
-						<TextControl
-							label={ __(
-								'Text',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ ctaText }
-							onChange={ ( value ) =>
-								setAttributes( { ctaText: value } )
-							}
-						/>
-					</>
-				) }
 				{ ctaType !== 'none' && (
 					<>
 						<TextControl
