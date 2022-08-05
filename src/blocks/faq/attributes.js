@@ -44,6 +44,9 @@ const attributes = {
 	enableSeparator: {
 		type: 'boolean',
 		default: false,
+		UAGCopyPaste: {
+			styleType: 'enable-separator'
+		},
 	},
 	rowsGap: {
 		type: 'number',
@@ -554,11 +557,11 @@ const attributes = {
 	},
 	icon: {
 		type: 'string',
-		default: 'fas fa-plus',
+		default: 'plus',
 	},
 	iconActive: {
 		type: 'string',
-		default: 'fas fa-minus',
+		default: 'minus',
 	},
 	iconAlign: {
 		type: 'string',

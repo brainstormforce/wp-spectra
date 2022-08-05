@@ -28,5 +28,5 @@ return array(
 	'columnGap'        => 10,
 	'contentHrPadding' => 5,
 	'contentVrPadding' => 5,
-
+	'imgAlign'         => 'side',
 );

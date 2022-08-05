@@ -20,7 +20,6 @@ $separator_thickness_fallback   = UAGB_Block_Helper::get_fallback_number( $attr[
 $overlay_opacity_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['overlayOpacity'], 'overlayOpacity', $block_name );
 $overlay_opacity_hover_fallback = UAGB_Block_Helper::get_fallback_number( $attr['overlayHoverOpacity'], 'overlayHoverOpacity', $block_name );
 
-
 $imageBoxShadowPosition = $attr['imageBoxShadowPosition'];
 if ( 'outset' === $attr['imageBoxShadowPosition'] ) {
 	$imageBoxShadowPosition = '';
@@ -40,21 +39,24 @@ $height_tablet = '' !== $attr['heightTablet'] ? $attr['heightTablet'] . 'px' : $
 $height_mobile = '' !== $attr['heightMobile'] ? $attr['heightMobile'] . 'px' : $height_tablet;
 
 $selectors = array(
-	'.wp-block-uagb-image'                     => array(
+	'.wp-block-uagb-image'                        => array(
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['imageTopMargin'], $attr['imageMarginUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['imageRightMargin'], $attr['imageMarginUnit'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageBottomMargin'], $attr['imageMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['imageLeftMargin'], $attr['imageMarginUnit'] ),
 		'text-align'    => $attr['align'],
 	),
-	'.wp-block-uagb-image--layout-default img' => array_merge(
+	'.wp-block-uagb-image--layout-default figure' => array_merge(
 		$image_border_css,
 		array(
 			'box-shadow' => UAGB_Helper::get_css_value( $attr['imageBoxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowSpread'], 'px' ) . ' ' . $attr['imageBoxShadowColor'] . ' ' . $imageBoxShadowPosition,
 		)
 	),
-	'.wp-block-uagb-image--layout-overlay img' => array(
-		'box-shadow' => UAGB_Helper::get_css_value( $attr['imageBoxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowSpread'], 'px' ) . ' ' . $attr['imageBoxShadowColor'] . ' ' . $imageBoxShadowPosition,
+	'.wp-block-uagb-image--layout-overlay figure' => array_merge(
+		$image_border_css,
+		array(
+			'box-shadow' => UAGB_Helper::get_css_value( $attr['imageBoxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowSpread'], 'px' ) . ' ' . $attr['imageBoxShadowColor'] . ' ' . $imageBoxShadowPosition,
+		)
 	),
 	'.wp-block-uagb-image .wp-block-uagb-image__figure img:hover' => array(
 		'border-color' => $attr['imageBorderHColor'],
@@ -121,8 +123,11 @@ $selectors = array(
 $selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
 	'object-fit' => $attr['objectFit'],
 	'width'      => $attr['width'] . 'px',
-	'height'     => $attr['height'] . 'px',
+	'height'     => 'auto',
 );
+if ( $attr['customHeightSetDesktop'] ) {
+	$selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img']['height'] = $attr['height'] . 'px';
+}
 
 if ( 'hover' === $attr['headingShowOn'] ) {
 	$selectors['.wp-block-uagb-image .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading'] = array(
@@ -161,7 +166,8 @@ if ( 'none' !== $attr['maskShape'] ) {
 }
 
 // tablet.
-$t_selectors['.wp-block-uagb-image--layout-default img']              = $image_border_css_tablet;
+$t_selectors['.wp-block-uagb-image--layout-default figure']           = $image_border_css_tablet;
+$t_selectors['.wp-block-uagb-image--layout-overlay figure']           = $image_border_css_tablet;
 $t_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
 	'width' => UAGB_Helper::get_css_value( $attr['widthTablet'], 'px' ),
 );
@@ -195,11 +201,16 @@ $t_selectors['.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .
 $t_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
 	'object-fit' => $attr['objectFitTablet'],
 	'width'      => $width_tablet,
-	'height'     => $height_tablet,
+	'height'     => 'auto',
 );
 
+if ( $attr['customHeightSetTablet'] ) {
+	$t_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img']['height'] = $height_tablet;
+}
+
 // mobile.
-$m_selectors['.wp-block-uagb-image--layout-default img']              = $image_border_css_mobile;
+$m_selectors['.wp-block-uagb-image--layout-default figure']           = $image_border_css_mobile;
+$m_selectors['.wp-block-uagb-image--layout-overlay figure']           = $image_border_css_mobile;
 $m_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
 	'width' => UAGB_Helper::get_css_value( $attr['widthMobile'], 'px' ),
 );
@@ -234,8 +245,12 @@ $m_selectors['.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .
 $m_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
 	'object-fit' => $attr['objectFitMobile'],
 	'width'      => $width_mobile,
-	'height'     => $height_mobile,
+	'height'     => 'auto',
 );
+
+if ( $attr['customHeightSetMobile'] ) {
+	$m_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img']['height'] = $height_mobile;
+}
 
 $combined_selectors = array(
 	'desktop' => $selectors,

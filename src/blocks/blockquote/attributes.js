@@ -2,7 +2,7 @@
  * BLOCK: UAGB Quote Block Attributes
  */
 
-const attributes = {
+ const attributes = {
 	block_id: {
 		type: 'string',
 	},
@@ -13,6 +13,9 @@ const attributes = {
 	skinStyle: {
 		type: 'string',
 		default: 'border',
+		UAGCopyPaste: {
+			styleType: 'skin-style'
+		}
 	},
 	align: {
 		type: 'string',
@@ -373,7 +376,10 @@ const attributes = {
 	},
 	iconSkin: {
 		type: 'string',
-		default: 'classic'
+		default: 'classic',
+		UAGCopyPaste: {
+			styleType: 'icon-skin'
+		}
 	},
 	iconLabel: {
 		type: 'string',
@@ -606,6 +612,9 @@ const attributes = {
 	quoteStyle: {
 		type: 'string',
 		default: 'style_2',
+		UAGCopyPaste: {
+			styleType: 'quote-style'
+		}
 	},
 	quoteColor: {
 		type: 'string',

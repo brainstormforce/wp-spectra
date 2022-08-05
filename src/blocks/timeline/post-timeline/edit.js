@@ -29,11 +29,8 @@ const PostTimelineComponent = ( props ) => {
 		props.setAttributes( { block_id: props.clientId } );
 
 		const {
-			verticalSpace,
 			horizontalSpace,
-			topMargin,
 			rightMargin,
-			bottomMargin,
 			leftMargin,
 			bgPadding,
 			topPadding,
@@ -42,7 +39,11 @@ const PostTimelineComponent = ( props ) => {
 			leftPadding,
 			contentPadding,
 			ctaBottomSpacing,
-			headTopSpacing
+			headTopSpacing,
+			timelinAlignment,
+			stack,
+			timelinAlignmentTablet,
+			timelinAlignmentMobile
 		} = props.attributes;
 
 		if ( bgPadding ) {
@@ -68,14 +69,6 @@ const PostTimelineComponent = ( props ) => {
 				props.setAttributes( { headTopSpacing: contentPadding } );
 			}
 		}
-		if ( verticalSpace ) {
-			if ( ! topMargin ) {
-				props.setAttributes( { topMargin: verticalSpace } );
-			}
-			if ( ! bottomMargin ) {
-				props.setAttributes( { bottomMargin: verticalSpace } );
-			}
-		}
 		if ( horizontalSpace ) {
 			if ( ! rightMargin ) {
 				props.setAttributes( { rightMargin: horizontalSpace } );
@@ -84,6 +77,28 @@ const PostTimelineComponent = ( props ) => {
 				props.setAttributes( { leftMargin: horizontalSpace } );
 			}
 		}
+
+		if( timelinAlignment ) {
+            if( 'none' === stack ) { 
+                if( undefined === timelinAlignmentTablet ) {
+                    props.setAttributes( { timelinAlignmentTablet: timelinAlignment } );
+                }
+                if( undefined === timelinAlignmentMobile ) {
+                    props.setAttributes( { timelinAlignmentMobile: timelinAlignment } );
+                }
+            } else {
+                if( undefined === timelinAlignmentTablet && 'tablet' === stack ) {
+                    props.setAttributes( { timelinAlignmentTablet: 'left' } );
+                    props.setAttributes( { timelinAlignmentMobile: 'left' } );
+                }
+
+                if( undefined === timelinAlignmentMobile && 'mobile' === stack ) {
+                    props.setAttributes( { timelinAlignmentMobile: 'left' } );
+                    props.setAttributes( { timelinAlignmentTablet: timelinAlignment } );
+                }
+            }
+        }
+
 	}, [] );
 
 	useEffect( () => {
@@ -95,7 +110,7 @@ const PostTimelineComponent = ( props ) => {
 			detail: {},
 		} );
 		document.dispatchEvent( loadPostTimelineEditor );
-	}, [ props ] );
+	}, [ props, deviceType ] );
 
 
 	useEffect( () => {

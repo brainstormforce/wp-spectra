@@ -1,14 +1,14 @@
 const SettingsIcons = {
     'asset-generation' : (
         <svg className="flex-shrink-0 mr-4 stroke-inherit" fill="none" width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 1V6H1.58152M16.9381 8C16.446 4.05369 13.0796 1 9 1C5.64262 1 2.76829 3.06817 1.58152 6M1.58152 6H6M17 17V12H16.4185M16.4185 12C15.2317 14.9318 12.3574 17 9 17C4.92038 17 1.55399 13.9463 1.06189 10M16.4185 12H12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M1 1V6H1.58152M16.9381 8C16.446 4.05369 13.0796 1 9 1C5.64262 1 2.76829 3.06817 1.58152 6M1.58152 6H6M17 17V12H16.4185M16.4185 12C15.2317 14.9318 12.3574 17 9 17C4.92038 17 1.55399 13.9463 1.06189 10M16.4185 12H12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
     ),
     'templates' : (
         <svg className="flex-shrink-0 mr-4 stroke-inherit" fill="none" width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 2C1 1.44772 1.44772 1 2 1H16C16.5523 1 17 1.44772 17 2V4C17 4.55228 16.5523 5 16 5H2C1.44772 5 1 4.55228 1 4V2Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M1 10C1 9.44772 1.44772 9 2 9H8C8.55228 9 9 9.44772 9 10V16C9 16.5523 8.55228 17 8 17H2C1.44772 17 1 16.5523 1 16V10Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M13 10C13 9.44772 13.4477 9 14 9H16C16.5523 9 17 9.44772 17 10V16C17 16.5523 16.5523 17 16 17H14C13.4477 17 13 16.5523 13 16V10Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M1 2C1 1.44772 1.44772 1 2 1H16C16.5523 1 17 1.44772 17 2V4C17 4.55228 16.5523 5 16 5H2C1.44772 5 1 4.55228 1 4V2Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M1 10C1 9.44772 1.44772 9 2 9H8C8.55228 9 9 9.44772 9 10V16C9 16.5523 8.55228 17 8 17H2C1.44772 17 1 16.5523 1 16V10Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M13 10C13 9.44772 13.4477 9 14 9H16C16.5523 9 17 9.44772 17 10V16C17 16.5523 16.5523 17 16 17H14C13.4477 17 13 16.5523 13 16V10Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
     ),
     'version-control' : (
@@ -18,27 +18,27 @@ const SettingsIcons = {
     ),
     'fonts-performance' : (
         <svg className="flex-shrink-0 mr-4 stroke-inherit" fill="none" width="18" height="20" viewBox="0 0 18 20" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 8V1L1 12H8L8 19L17 8L10 8Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 8V1L1 12H8L8 19L17 8L10 8Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
     ),
     'global-settings' : (
         <svg className="flex-shrink-0 mr-4 stroke-inherit" fill="none" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8.32463 2.31731C8.75103 0.560897 11.249 0.560897 11.6754 2.31731C11.9508 3.45193 13.2507 3.99038 14.2478 3.38285C15.7913 2.44239 17.5576 4.2087 16.6172 5.75218C16.0096 6.74925 16.5481 8.04918 17.6827 8.32463C19.4391 8.75103 19.4391 11.249 17.6827 11.6754C16.5481 11.9508 16.0096 13.2507 16.6172 14.2478C17.5576 15.7913 15.7913 17.5576 14.2478 16.6172C13.2507 16.0096 11.9508 16.5481 11.6754 17.6827C11.249 19.4391 8.75103 19.4391 8.32463 17.6827C8.04918 16.5481 6.74926 16.0096 5.75219 16.6172C4.2087 17.5576 2.44239 15.7913 3.38285 14.2478C3.99038 13.2507 3.45193 11.9508 2.31731 11.6754C0.560897 11.249 0.560897 8.75103 2.31731 8.32463C3.45193 8.04918 3.99037 6.74926 3.38285 5.75218C2.44239 4.2087 4.2087 2.44239 5.75219 3.38285C6.74926 3.99037 8.04918 3.45193 8.32463 2.31731Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M13 10C13 11.6569 11.6569 13 10 13C8.34315 13 7 11.6569 7 10C7 8.34315 8.34315 7 10 7C11.6569 7 13 8.34315 13 10Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8.32463 2.31731C8.75103 0.560897 11.249 0.560897 11.6754 2.31731C11.9508 3.45193 13.2507 3.99038 14.2478 3.38285C15.7913 2.44239 17.5576 4.2087 16.6172 5.75218C16.0096 6.74925 16.5481 8.04918 17.6827 8.32463C19.4391 8.75103 19.4391 11.249 17.6827 11.6754C16.5481 11.9508 16.0096 13.2507 16.6172 14.2478C17.5576 15.7913 15.7913 17.5576 14.2478 16.6172C13.2507 16.0096 11.9508 16.5481 11.6754 17.6827C11.249 19.4391 8.75103 19.4391 8.32463 17.6827C8.04918 16.5481 6.74926 16.0096 5.75219 16.6172C4.2087 17.5576 2.44239 15.7913 3.38285 14.2478C3.99038 13.2507 3.45193 11.9508 2.31731 11.6754C0.560897 11.249 0.560897 8.75103 2.31731 8.32463C3.45193 8.04918 3.99037 6.74926 3.38285 5.75218C2.44239 4.2087 4.2087 2.44239 5.75219 3.38285C6.74926 3.99037 8.04918 3.45193 8.32463 2.31731Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M13 10C13 11.6569 11.6569 13 10 13C8.34315 13 7 11.6569 7 10C7 8.34315 8.34315 7 10 7C11.6569 7 13 8.34315 13 10Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
         
     ),
 	'block-settings' : (
 		<svg className="flex-shrink-0 mr-4 stroke-inherit" fill="none" width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 3C1 1.89543 1.89543 1 3 1H5C6.10457 1 7 1.89543 7 3V5C7 6.10457 6.10457 7 5 7H3C1.89543 7 1 6.10457 1 5V3Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M11 3C11 1.89543 11.8954 1 13 1H15C16.1046 1 17 1.89543 17 3V5C17 6.10457 16.1046 7 15 7H13C11.8954 7 11 6.10457 11 5V3Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M1 13C1 11.8954 1.89543 11 3 11H5C6.10457 11 7 11.8954 7 13V15C7 16.1046 6.10457 17 5 17H3C1.89543 17 1 16.1046 1 15V13Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M11 13C11 11.8954 11.8954 11 13 11H15C16.1046 11 17 11.8954 17 13V15C17 16.1046 16.1046 17 15 17H13C11.8954 17 11 16.1046 11 15V13Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M1 3C1 1.89543 1.89543 1 3 1H5C6.10457 1 7 1.89543 7 3V5C7 6.10457 6.10457 7 5 7H3C1.89543 7 1 6.10457 1 5V3Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M11 3C11 1.89543 11.8954 1 13 1H15C16.1046 1 17 1.89543 17 3V5C17 6.10457 16.1046 7 15 7H13C11.8954 7 11 6.10457 11 5V3Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M1 13C1 11.8954 1.89543 11 3 11H5C6.10457 11 7 11.8954 7 13V15C7 16.1046 6.10457 17 5 17H3C1.89543 17 1 16.1046 1 15V13Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M11 13C11 11.8954 11.8954 11 13 11H15C16.1046 11 17 11.8954 17 13V15C17 16.1046 16.1046 17 15 17H13C11.8954 17 11 16.1046 11 15V13Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
     ),
 	'coming-soon' : (
 		<svg className="flex-shrink-0 mr-4 stroke-inherit" fill="none" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 6V10L13 13M19 10C19 14.9706 14.9706 19 10 19C5.02944 19 1 14.9706 1 10C1 5.02944 5.02944 1 10 1C14.9706 1 19 5.02944 19 10Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 6V10L13 13M19 10C19 14.9706 14.9706 19 10 19C5.02944 19 1 14.9706 1 10C1 5.02944 5.02944 1 10 1C14.9706 1 19 5.02944 19 10Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
 	)
 };

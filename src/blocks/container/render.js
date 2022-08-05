@@ -16,6 +16,8 @@ const Render = ( props ) => {
 
 	const {
 		block_id,
+		htmlTag,
+		htmlTagLink,
 		topType,
 		topFlip,
 		topContentAboveShape,
@@ -25,7 +27,10 @@ const Render = ( props ) => {
 		backgroundType,
 		backgroundVideo,
 		topInvert,
-		bottomInvert
+		bottomInvert,
+		isBlockRootParent,
+		contentWidth,
+		innerContentWidth
 	} = attributes;
 
 	const direction = attributes[ 'direction' + deviceType ];
@@ -70,37 +75,66 @@ const Render = ( props ) => {
 
 	const hasChildBlocks = getBlockOrder( clientId ).length > 0;
 
+	const CustomTag = `${htmlTag}`;
+	const customTagLinkAttributes = {};
+	if( htmlTag === 'a' ){
+		customTagLinkAttributes.rel = 'noopener'
+		customTagLinkAttributes.onClick = ( e ) => e.preventDefault()
+		if( htmlTagLink?.url ){
+			customTagLinkAttributes.href = htmlTagLink?.url;
+		}
+		if( htmlTagLink?.opensInNewTab ){
+			customTagLinkAttributes.target = '_blank';
+		}
+		if( htmlTagLink?.noFollow ){
+			customTagLinkAttributes.rel = 'nofollow noopener';
+		}
+	}
+
 	return (
-		<div
-			className={ classnames(
-				className,
-				`uagb-block-${ block_id }`,
-			) }
-			key = { block_id }
-		>
+		<>
 			{ topDividerHtml }
-			{ 'video' === backgroundType && (
-				<div className="uagb-container__video-wrap">
-					{ backgroundVideo && (
-						<video autoPlay loop muted playsinline>
-							<source
-								src={ backgroundVideo.url }
-								type="video/mp4"
-							/>
-						</video>
+				<CustomTag
+					className={ classnames(
+						className,
+						`uagb-block-${ block_id }`,
 					) }
-				</div>
-			) }
-			<div className='uagb-container-inner-blocks-wrap'>
-				<InnerBlocks
-					__experimentalMoverDirection={ moverDirection }
-					renderAppender = { hasChildBlocks
-					? undefined
-					: InnerBlocks.ButtonBlockAppender }
-				/>
-			</div>
+					key = { block_id }
+					{...customTagLinkAttributes}
+				>
+					{ 'video' === backgroundType && (
+						<div className="uagb-container__video-wrap">
+							{ backgroundVideo && (
+								<video autoPlay loop muted playsinline>
+									<source
+										src={ backgroundVideo.url }
+										type="video/mp4"
+									/>
+								</video>
+							) }
+						</div>
+					) }
+					{ isBlockRootParent && 'alignfull' === contentWidth && 'alignwide' === innerContentWidth
+					?  (
+						<div className='uagb-container-inner-blocks-wrap'>
+							<InnerBlocks
+								__experimentalMoverDirection={ moverDirection }
+								renderAppender = { hasChildBlocks
+								? undefined
+								: InnerBlocks.ButtonBlockAppender }
+							/>
+						</div>
+					)
+					: <InnerBlocks
+							__experimentalMoverDirection={ moverDirection }
+							renderAppender = { hasChildBlocks
+							? undefined
+							: InnerBlocks.ButtonBlockAppender }
+						/>
+					}
+				</CustomTag>
 			{ bottomDividerHtml }
-		</div>
+		</>
 	);
 };
 export default React.memo( Render );

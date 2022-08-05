@@ -187,6 +187,14 @@ class UAGB_Post_Assets {
 	public $load_uag_fonts = true;
 
 	/**
+	 * Common Assets Added.
+	 *
+	 * @since 2.0.0-beta.3
+	 * @var preview
+	 */
+	public static $common_assets_added = false;
+
+	/**
 	 * Constructor
 	 *
 	 * @param int $post_id Post ID.
@@ -489,6 +497,15 @@ class UAGB_Post_Assets {
 		wp_localize_script(
 			'uagb-container-js',
 			'uagb_container_data',
+			array(
+				'tablet_breakpoint' => UAGB_TABLET_BREAKPOINT,
+				'mobile_breakpoint' => UAGB_MOBILE_BREAKPOINT,
+			)
+		);
+
+		wp_localize_script(
+			'uagb-timeline-js',
+			'uagb_timeline_data',
 			array(
 				'tablet_breakpoint' => UAGB_TABLET_BREAKPOINT,
 				'mobile_breakpoint' => UAGB_MOBILE_BREAKPOINT,
@@ -880,6 +897,13 @@ class UAGB_Post_Assets {
 		}
 
 		$assets = $this->get_blocks_assets( $blocks );
+
+		if ( 'enabled' === $this->file_generation && isset( $assets['css'] ) && ! self::$common_assets_added ) {
+
+			$common_static_css_all_blocks = $this->get_block_static_css( 'extensions' );
+			$assets['css']                = $assets['css'] . $common_static_css_all_blocks;
+			self::$common_assets_added    = true;
+		}
 
 		$this->stylesheet .= $assets['css'];
 		$this->script     .= $assets['js'];

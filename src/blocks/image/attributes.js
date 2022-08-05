@@ -17,6 +17,9 @@ const attributes = {
 	layout: {
 		type: 'string',
 		default: 'default',
+		UAGCopyPaste: {
+			styleType: 'image-layout'
+		}
 	},
 	url: {
 		type: 'string',
@@ -45,14 +48,23 @@ const attributes = {
 	align: {
 		type: 'string',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'image-align'
+		}
 	},
 	alignTablet: {
 		type: 'string',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'image-align-tablet'
+		}
 	},
 	alignMobile: {
 		type: 'string',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'image-align-mobile'
+		}
 	},
 	id: {
 		type: 'integer',
@@ -777,6 +789,9 @@ const attributes = {
 	seperatorShowOn: {
 		type: 'string',
 		default: 'hover',
+		UAGCopyPaste: {
+			styleType: 'seperator-show-on'
+		}
 	},
 	seperatorStyle: {
 		type: 'string',
@@ -944,15 +959,12 @@ const attributes = {
 	},
 	objectFit: {
 		type: 'string',
-		default: 'default'
 	},
 	objectFitTablet: {
 		type: 'string',
-		default: 'default'
 	},
 	objectFitMobile: {
 		type: 'string',
-		default: 'default'
 	},
 	imageBoxShadowColor: {
 		type: 'string',
@@ -1072,6 +1084,18 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'desc-letter-spacing-type'
 		}
+	},
+	customHeightSetDesktop: {
+		type: 'boolean',
+		default: false
+	},
+	customHeightSetTablet: {
+		type: 'boolean',
+		default: false
+	},
+	customHeightSetMobile: {
+		type: 'boolean',
+		default: false
 	},
 	...imageBorderAttributes,
 	...overlayBorderAttributes

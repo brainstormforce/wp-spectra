@@ -46,7 +46,7 @@ const Render = ( props ) => {
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId }`,
 				'uagb-timeline__content-wrap',
-				...ContentTmClasses( props.attributes )
+				...ContentTmClasses( props.attributes, deviceType )
 			) }
 		>
 			<InnerBlocks

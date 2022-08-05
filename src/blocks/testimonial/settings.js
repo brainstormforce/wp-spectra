@@ -496,7 +496,7 @@ const Settings = ( props ) => {
 				) }
 				<ResponsiveSlider
 					label={ __(
-						'Gap Between Content & Dots',
+						'Top Margin for Dots',
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
@@ -1211,10 +1211,7 @@ const Settings = ( props ) => {
 												description:
 													'I have been working with these guys since years now! With lots of hard work and timely communication they made sure they delivered the best to me. Highly recommended!',
 												name: 'John Doe',
-												company:
-													'Company' +
-													( cloneTest_block.length +
-														1 ),
+												company: 'Company Name',
 												image: '',
 											} );
 										}
@@ -1406,7 +1403,7 @@ const Settings = ( props ) => {
 											<MultiButtonsControl
 												setAttributes={ setAttributes }
 												label={ __(
-													'Vertical ALignment',
+													'Vertical Alignment',
 													'ultimate-addons-for-gutenberg'
 												) }
 												data={ {
@@ -1550,8 +1547,8 @@ const Settings = ( props ) => {
 						{ companyStyle() }
 						{ imageStyle() }
 						{ carouselStyle() }
-						{ borderSetting() }
 						{ backgroundStyle() }
+						{ borderSetting() }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }

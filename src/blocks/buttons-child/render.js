@@ -54,7 +54,7 @@ const Render = ( props ) => {
 						onChange={ ( value ) => {
 							setAttributes( { label: value } );
 						} }
-						allowedFormats={ [ 'bold', 'italic', 'strikethrough' ] }
+						allowedFormats={ [ 'core/bold', 'core/italic', 'core/strikethrough' ] }
 						className="uagb-button__link"
 						rel= { noFollow ? 'nofollow noopener' : 'follow noopener' }
 						keepPlaceholderOnFocus

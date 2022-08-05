@@ -71,11 +71,14 @@
 	},
 	icon: {
 		type: 'string',
-		default: 'fa fa-check-circle',
+		default: 'circle-check',
 	},
 	iconimgPosition: {
 		type: 'string',
 		default: 'above-title',
+		UAGCopyPaste: {
+			styleType: 'icon-img-position'
+		}
 	},
 	iconSize: {
 		type: 'number',
@@ -450,7 +453,7 @@
 	},
 	seperatorSpace: {
 		type: 'number',
-		default: 10,
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'separator-bottom-margin'
 		}
@@ -1043,7 +1046,8 @@
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'prefix-top-margin'
-		}
+		},
+		default: 5,
 	},
 	prefixRightMargin : {
 		type: 'number',
@@ -1056,7 +1060,7 @@
 		UAGCopyPaste: {
 			styleType: 'prefix-bottom-margin'
 		},
-		default : 5
+		default : 10
 	},
 	prefixLeftMargin : {
 		type: 'number',
@@ -1246,7 +1250,7 @@
 		},
 		default: 'px',
 	},
-	
+
 	// padding
 	blockTopPadding : {
 		type: 'number',

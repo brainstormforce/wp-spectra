@@ -20,8 +20,18 @@ const SelectedFontFamilies = () => {
 
     const fonts = [];
 
+    const customFonts = uag_admin_react.spectra_custom_fonts;
+
 	Object.keys( googleFonts ).map( ( name ) => {  // eslint-disable-line array-callback-return
 
+		if ( 'Default' !== name  ) {
+			fonts.push( { value: name, label: name } );
+		}
+	} );
+
+    // Push custom Fonts into stytem fonts object.
+	Object.keys( customFonts ).map( ( name ) => {  // eslint-disable-line array-callback-return
+        
 		if ( 'Default' !== name  ) {
 			fonts.push( { value: name, label: name } );
 		}
@@ -102,7 +112,7 @@ const SelectedFontFamilies = () => {
 		} ),
         multiValueRemove: ( provided ) => ( {
 			...provided,
-            color: '#64748b', // Tailwind Slate-500.
+            'color': '#64748b', // Tailwind Slate-500.
             '&:hover': {
                 color: '#ef4444', // Tailwind Red-500.
                 backgroundColor: '#e2e8f0', // Tailwind Slate-200.

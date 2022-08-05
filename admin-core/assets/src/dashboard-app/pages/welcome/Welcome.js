@@ -38,7 +38,8 @@ const Welcome = () => {
 									<h2 className='text-slate-800 text-[1.8rem] leading-[2.4rem] pb-3 font-medium text-left'>{__( 'Welcome to Spectra!', 'ultimate-addons-for-gutenberg' )}</h2>
 									<p className='text-slate-500 pb-7'>{__( 'We designed Spectra to be intuitive but we do recommend learning how it works by checking our comprehensive documentation and watching the video below. Enjoy your time with Spectra!', 'ultimate-addons-for-gutenberg' )}</p>
 									<div className="mr-[80px] spectra-video-container">
-										<iframe className="spectra-video" src={`https://www.youtube.com/embed/5Llg8huGs74?showinfo=0&autoplay=${allowAutoPlay}&mute=${allowAutoPlay}`} allow="autoplay" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
+										{/* Added rel=0 query paramter at the end to disable YouTube recommendations */}
+										<iframe className="spectra-video" src={`https://www.youtube.com/embed/5Llg8huGs74?showinfo=0&autoplay=${allowAutoPlay}&mute=${allowAutoPlay}&rel=0`} allow="autoplay" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
 									</div>
 									<span className="relative z-0 inline-flex pt-6 justify-start w-full">
 										<button
@@ -47,7 +48,6 @@ const Welcome = () => {
 											onClick={ onCreateNewPageClick }
 										>
 											{__( 'Create New Page', 'ultimate-addons-for-gutenberg' )}
-
 										</button>
 										<button
 											type="button"
