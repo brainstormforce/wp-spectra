@@ -382,6 +382,12 @@ const transforms = {
 						columnBorderBottomWidth,
 						columnBorderLeftWidth,
 						columnBorderRightWidth,
+						backgroundImage,
+						backgroundPosition,
+						backgroundAttachment,
+						backgroundRepeat,
+						backgroundSize,
+						backgroundImageColor,
 					} = child?.attributes;
 
 					const width = colWidth ? colWidth : containerChildWidth;
@@ -432,6 +438,12 @@ const transforms = {
 							containerBorderBottomWidth: borderWidth || columnBorderBottomWidth,
 							containerBorderLeftWidth: borderWidth || columnBorderLeftWidth,
 							containerBorderRightWidth: borderWidth || columnBorderRightWidth,
+							backgroundImageDesktop: backgroundImage,
+							backgroundPositionDesktop: backgroundPosition,
+							backgroundAttachmentDesktop: backgroundAttachment,
+							backgroundRepeatDesktop: backgroundRepeat,
+							backgroundSizeDesktop: backgroundSize,
+							backgroundImageColor,
 						},
 						child?.innerBlocks
 					] );
