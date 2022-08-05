@@ -299,7 +299,7 @@ function styling( props ) {
 		},
 	};
 
-	let indexTablet = 'margin-right'; console.log(starPositionTablet)
+	let indexTablet = 'margin-right';
 	if ( 'stack' === layoutTablet ) {
 		if( 'before' === starPositionTablet ){
 			indexTablet = 'margin-top';
