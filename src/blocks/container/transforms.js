@@ -470,6 +470,7 @@ const transforms = {
 							backgroundSizeDesktop: backgroundSize,
 							backgroundImageColor,
 							overlayType,
+							alignItemsDesktop: 'flex-start',
 						},
 						child?.innerBlocks
 					] );
