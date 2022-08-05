@@ -167,7 +167,6 @@ UAGNumberControl.defaultProps = {
 	className: '',
 	allowReset: true,
 	isShiftStepEnabled: true,
-	disabledRangeSlider: false,
 	max: Infinity,
 	min: -Infinity,
 	resetFallbackValue: '',

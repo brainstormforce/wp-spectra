@@ -724,7 +724,7 @@ const UAGBPostMasonry = ( props ) => {
 						label: 'postsToShow',
 					} }
 					min={ 1 }
-					max={ 50 }
+					max={ 100 }
 					displayUnit={ false }
 				/>
 				<ToggleControl
@@ -766,7 +766,7 @@ const UAGBPostMasonry = ( props ) => {
 					} }
 					onChange={ onChangePostsOffset }
 					min={ 0 }
-					max={ 50 }
+					max={ 100 }
 					displayUnit={ false }
 					help= {
 						<>

@@ -651,7 +651,7 @@ const UAGBPostCarousel = ( props ) => {
 						label: 'postsToShow',
 					} }
 					min={ 1 }
-					max={ 50 }
+					max={ 100 }
 					displayUnit={ false }
 				/>
 				<ToggleControl
@@ -683,7 +683,7 @@ const UAGBPostCarousel = ( props ) => {
 						label: 'postsOffset',
 					} }
 					min={ 0 }
-					max={ 50 }
+					max={ 100 }
 					displayUnit={ false }
 					help= {
 						<>
