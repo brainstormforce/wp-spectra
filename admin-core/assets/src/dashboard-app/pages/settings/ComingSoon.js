@@ -89,9 +89,15 @@ const ComingSoon = () => {
 		control: ( provided ) => ( {
 			...provided,
 			cursor: 'pointer',
-			fontSize: '0.875rem',
-			borderRadius: '0.375rem',
-			borderColor: '#E2E8F0',
+			fontSize: '0.875rem', // Tailwind Text-sm.
+			lineHeight: '1.25rem', // Tailwind Text-sm.
+			borderRadius: '0.375rem', // Tailwind Rounded-md.
+			borderColor: '#e2e8f0', // Tailwind Slate-200.
+			boxShadow: 'none',
+		} ),
+		placeholder: ( provided ) => ( {
+			...provided,
+			color: '#94a3b8', // Tailwind Slate-400.
 		} ),
 	};
 
@@ -134,14 +140,14 @@ const ComingSoon = () => {
 				maxMenuHeight={ 140 }
 				minMenuHeight = { 70 }
 				isSearchable={ true }
-				className={ `mt-4 w-9/12 h-10 text-base cursor-pointer transition focus:ring-spectra` }
+				className={ `mt-4 w-9/12 h-10 transition` }
 				isLoading={ isFetchPages }
 				onMenuOpen={ fetchPageHandler }
 				theme={ ( theme ) => ( {
 					...theme,
 					colors: {
 						...theme.colors,
-						primary: '#6104ff',
+						primary: '#94a3b8', // Tailwind Slate-400.
 					},
 				} ) }
 				styles={ customStyles }

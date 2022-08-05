@@ -207,12 +207,12 @@
 
 			&:focus {
 				outline: none;
-				border-color: $spectra-wpcolor;
-				box-shadow: $spectra-wpcolor 0 0 0 1px;
+				border-color: $slate-400;
+				box-shadow: none;
 
 				& + .spectra-admin__input-field--end-display {
-					border-color: $spectra-wpcolor;
-					box-shadow: $spectra-wpcolor 0 0 0 1px;
+					border-color: $slate-400;
+					box-shadow: none;
 				}
 			}
 		}
