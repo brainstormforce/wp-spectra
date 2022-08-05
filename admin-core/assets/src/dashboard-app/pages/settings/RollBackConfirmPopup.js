@@ -1,7 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useRef, useState, useEffect } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { ExclamationIcon } from '@heroicons/react/outline'
+import { Fragment, useRef, useState, useEffect } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
 import { __ } from '@wordpress/i18n';
 
 const RollBackConfirmPopup = ( props ) => {
