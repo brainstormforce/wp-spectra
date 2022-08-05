@@ -652,7 +652,6 @@ const UAGBPostCarousel = ( props ) => {
 					} }
 					min={ 1 }
 					max={ 100 }
-					displayUnit={ false }
 				/>
 				<ToggleControl
 					label={ __(
@@ -684,7 +683,6 @@ const UAGBPostCarousel = ( props ) => {
 					} }
 					min={ 0 }
 					max={ 100 }
-					displayUnit={ false }
 					help= {
 						<>
 						{ enableOffset && __(
