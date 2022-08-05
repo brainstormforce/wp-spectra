@@ -529,6 +529,7 @@ const Settings = ( props ) => {
 					onChange={ onChangePostsPerPage }
 					min={ 1 }
 					max={ 50 }
+					displayUnit={ false }
 				/>
 				<ToggleControl
 					label={ __(
@@ -570,6 +571,7 @@ const Settings = ( props ) => {
 					onChange={ onChangePostsOffset }
 					min={ 0 }
 					max={ 50 }
+					displayUnit={ false }
 					help= {
 						<>
 						{ enableOffset && __(
