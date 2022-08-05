@@ -143,7 +143,8 @@ const Settings = ( props ) => {
 		answerLetterSpacingTablet,
 		answerLetterSpacingMobile,
 		answerLetterSpacingType,
-		boxBgHoverColor
+		boxBgHoverColor,
+		vanswerPaddingDesktop,
 	} = attributes;
 
 	const onchangeIcon = ( value ) => {
