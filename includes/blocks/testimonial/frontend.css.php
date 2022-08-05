@@ -176,9 +176,9 @@ $m_selectors = array(
 	'  .uagb-testimonial__wrap .uagb-tm__image-content' => array(
 		'text-align'     => $attr['headingAlignMobile'],
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['imgpaddingTopMobile'], $attr['imgmobilePaddingUnit'] ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $attr['imgpaddingRightMobile'], $attr['imgmobilePaddingUnit'] ),
-		'padding-left'   => UAGB_Helper::get_css_value( $attr['imgpaddingBottomMobile'], $attr['imgmobilePaddingUnit'] ),
-		'padding-right'  => UAGB_Helper::get_css_value( $attr['imgpaddingLeftMobile'], $attr['imgmobilePaddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['imgpaddingBottomMobile'], $attr['imgmobilePaddingUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['imgpaddingLeftMobile'], $attr['imgmobilePaddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['imgpaddingRightMobile'], $attr['imgmobilePaddingUnit'] ),
 	),
 );
 $t_selectors = array(
@@ -209,9 +209,9 @@ $t_selectors = array(
 	'  .uagb-testimonial__wrap .uagb-tm__image-content' => array(
 		'text-align'     => $attr['headingAlignTablet'],
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['imgpaddingTopTablet'], $attr['imgtabletPaddingUnit'] ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $attr['imgpaddingRightTablet'], $attr['imgtabletPaddingUnit'] ),
-		'padding-left'   => UAGB_Helper::get_css_value( $attr['imgpaddingBottomTablet'], $attr['imgtabletPaddingUnit'] ),
-		'padding-right'  => UAGB_Helper::get_css_value( $attr['imgpaddingLeftTablet'], $attr['imgtabletPaddingUnit'] ),
+		'padding-right' => UAGB_Helper::get_css_value( $attr['imgpaddingRightTablet'], $attr['imgtabletPaddingUnit'] ),
+		'padding-bottom'   => UAGB_Helper::get_css_value( $attr['imgpaddingBottomTablet'], $attr['imgtabletPaddingUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $attr['imgpaddingLeftTablet'], $attr['imgtabletPaddingUnit'] ),
 	),
 );
 
