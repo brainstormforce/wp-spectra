@@ -4,8 +4,7 @@
 
 import { createElement as el } from '@wordpress/element';
 
-// const iconColor = '#1e293b';
-const iconColor = '#db2777';
+const iconColor = '#1e293b';
 
 const UAGB_Block_Icons = {
 	'section': el(
