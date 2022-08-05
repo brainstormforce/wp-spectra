@@ -143,7 +143,10 @@ const Settings = ( props ) => {
 
 	const buttonSettings = () => {
 		return (
-			<UAGAdvancedPanelBody>
+			<UAGAdvancedPanelBody
+				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
 				<UAGIconPicker
 					label={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 					value={ icon }
