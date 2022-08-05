@@ -1283,9 +1283,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$custom_position = isset( $bg_obj['customPosition'] ) ? $bg_obj['customPosition'] : '';
 			$x_position      = isset( $bg_obj['xPosition'] ) ? $bg_obj['xPosition'] : '';
-			$x_position_type  = isset( $bg_obj['xPositionType'] ) ? $bg_obj['xPositionType'] : '';
+			$x_position_type = isset( $bg_obj['xPositionType'] ) ? $bg_obj['xPositionType'] : '';
 			$y_position      = isset( $bg_obj['yPosition'] ) ? $bg_obj['yPosition'] : '';
-			$y_position_type  = isset( $bg_obj['yPositionType'] ) ? $bg_obj['yPositionType'] : '';
+			$y_position_type = isset( $bg_obj['yPositionType'] ) ? $bg_obj['yPositionType'] : '';
 
 			if ( 'custom' === $size ) {
 				$size = $bg_custom_size . $bg_custom_size_type;
