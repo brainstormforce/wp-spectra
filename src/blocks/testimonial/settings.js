@@ -558,10 +558,10 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
-	const layoutSettings = () => {
+	const spacingSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<ResponsiveSlider
@@ -1558,7 +1558,7 @@ const Settings = ( props ) => {
 						{ carouselStyle() }
 						{ backgroundStyle() }
 						{ borderSetting() }
-						{ layoutSettings() }
+						{ spacingSettings() }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
