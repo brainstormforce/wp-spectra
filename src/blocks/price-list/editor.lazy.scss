@@ -11,14 +11,13 @@
 		width: 100%;
 	}
 
-	.block-editor-block-list__layout {
-		display: grid;
-	}
-
 	.wp-block-uagb-restaurant-menu {
 		width: 100%;
 		display: block;
 
+		.block-editor-block-list__layout {
+			display: grid;
+		}
 		.uagb-rm__title {
 			margin-top: 0;
 		}
