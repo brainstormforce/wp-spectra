@@ -318,6 +318,9 @@ const transforms = {
 					bottomHeightMobile,
 					bottomFlip,
 					bottomContentAboveShape,
+					// Directions
+					reverseMobile,
+					reverseTablet,
 				} = attributes;
 
 				const containerWidth = 'full' === align ? 'alignfull' : 'alignwide';
@@ -436,6 +439,12 @@ const transforms = {
 					return child;
 				} );
 
+				const getReverseColMobile = ( reverseTablet || reverseMobile ? 'column-reverse' : 'column' );
+				const getReverseRowMobile = ( reverseTablet || reverseMobile ? 'row-reverse' : 'row' );
+
+				const getReverseColTablet = ( reverseTablet ? 'column-reverse' : 'column' );
+				const getReverseRowTablet = ( reverseTablet ? 'row-reverse' : 'row' );
+
 				return createBlock(
 					'uagb/container',
 					{
@@ -489,8 +498,8 @@ const transforms = {
 						overlayType,
 						backgroundImageColor: backgroundImageColor || '#00000000',
 						directionDesktop: 'row',
-						directionTablet: 'tablet' === stack ? 'column' : 'row',
-						directionMobile: 'mobile' === stack ? 'column' : 'row',
+						directionTablet: 'tablet' === stack ? getReverseColTablet : getReverseRowTablet,
+						directionMobile: ( 'mobile' === stack ) ? getReverseColMobile : getReverseRowMobile,
 						variationSelected: true,
 						columnGapDesktop: 0,
 						containerBorderTopLeftRadius: borderRadius || columnsBorderTopLeftRadius,
