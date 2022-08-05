@@ -6,6 +6,29 @@
 	createBlocksFromInnerBlocksTemplate,
 } from '@wordpress/blocks';
 
+// A function that converts text-based image position values to the
+// new container's object based image position values.
+function getImageBackgroundPosition( oldImagePosition ) {
+
+	switch( oldImagePosition ) {
+
+		case 'left top': return { x: 0, y:0 };
+		case 'center top': return { x: 0.5, y:0 };
+		case 'right top': return { x: 1, y:0 };
+
+		case 'left center': return { x: 0, y:0.5 };
+		case 'center center': return { x: 0.5, y:0.5 };
+		case 'right center': return { x: 1, y:0.5 };
+
+		case 'left bottom': return { x: 0, y:1 };
+		case 'center bottom': return { x: 0.5, y:1 };
+		case 'right bottom': return { x: 1, y:1 };
+
+		default: return { x: 0.5, y:0.5 };
+
+	}
+}
+
 const transforms = {
 	from: [
 		{
@@ -282,6 +305,7 @@ const transforms = {
 					width,
 					columns,
 					backgroundImage,
+					backgroundPosition,
 					backgroundSize,
 					backgroundRepeat,
 					backgroundAttachment,
@@ -439,7 +463,7 @@ const transforms = {
 							containerBorderLeftWidth: borderWidth || columnBorderLeftWidth,
 							containerBorderRightWidth: borderWidth || columnBorderRightWidth,
 							backgroundImageDesktop: backgroundImage,
-							backgroundPositionDesktop: backgroundPosition,
+							backgroundPositionDesktop: getImageBackgroundPosition( backgroundPosition ),
 							backgroundAttachmentDesktop: backgroundAttachment,
 							backgroundRepeatDesktop: backgroundRepeat,
 							backgroundSizeDesktop: backgroundSize,
@@ -502,6 +526,7 @@ const transforms = {
 						topPaddingDesktop : topPadding,
 						bottomPaddingDesktop : bottomPadding,
 						backgroundImageDesktop : backgroundImage,
+						backgroundPositionDesktop: getImageBackgroundPosition( backgroundPosition ),
 						backgroundSizeDesktop : backgroundSize,
 						backgroundRepeatDesktop : backgroundRepeat,
 						backgroundAttachmentDesktop : backgroundAttachment,
