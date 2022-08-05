@@ -18,7 +18,7 @@ const attributes = {
 	},
 	layoutMobile: {
 		type: 'string',
-		default: 'stack',
+		default: 'inline',
 		UAGCopyPaste: {
 			styleType: 'layout-mobile'
 		},
@@ -481,6 +481,27 @@ const attributes = {
 		default: false,
 		isUAGStyle: true,
 	},
+	starPosition: {
+		type: 'string',
+		default: 'after',
+		UAGCopyPaste: {
+			styleType: 'image-position'
+		},
+	},
+	starPositionTablet: {
+		type: 'string',
+		default: 'after',
+		UAGCopyPaste: {
+			styleType: 'image-position'
+		},
+	},
+	starPositionMobile: {
+		type: 'string',
+		default: 'after',
+		UAGCopyPaste: {
+			styleType: 'image-position'
+		},
+	}
 };
 
 export default attributes;
