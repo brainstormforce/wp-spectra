@@ -119,13 +119,13 @@ $selectors = array(
 $index = 'margin-right';
 if ( 'stack' === $attr['layout'] ) {
 	if ( 'before' === $attr['starPosition'] ) {
-		$index = 'margin-top';
+		$index                                   = 'margin-top';
 		$selectors['.wp-block-uagb-star-rating'] = array(
 			'flex-direction' => 'column-reverse',
 			'align-items'    => $alignment, // To align-item in flex-direction column-reverse.
 		);
 	} elseif ( 'after' === $attr['starPosition'] ) {
-		$index = 'margin-bottom';
+		$index                                    = 'margin-bottom';
 		$selectors['.wp-block-uagb-star-rating '] = array_merge(
 			array(
 				'flex-direction' => 'column', // Stack layout using flex.
@@ -134,16 +134,15 @@ if ( 'stack' === $attr['layout'] ) {
 			$wrapperCSS
 		);
 	}
-
 } elseif ( 'inline' === $attr['layout'] ) {
 	if ( 'before' === $attr['starPosition'] ) {
-		$index = 'margin-left';
+		$index                                   = 'margin-left';
 		$selectors['.wp-block-uagb-star-rating'] = array(
 			'flex-direction'  => 'row-reverse',
 			'justify-content' => UAGB_Block_Helper::flex_alignment_when_direction_is_row_reverse( $alignment ), // To align-item in flex-direction column-reverse.
 		);
 	} elseif ( 'after' === $attr['starPosition'] ) {
-		$index = 'margin-right';
+		$index                                    = 'margin-right';
 		$selectors['.wp-block-uagb-star-rating '] = array_merge(
 			array(
 				'flex-direction'  => 'row', // inline layout using flex.
@@ -169,13 +168,13 @@ $wrapperCSSTablet = array(
 $index_tablet = 'margin-right';
 if ( 'stack' === $attr['layoutTablet'] ) {
 	if ( 'before' === $attr['starPositionTablet'] ) {
-		$index_tablet = 'margin-top';
+		$index_tablet                              = 'margin-top';
 		$t_selectors['.wp-block-uagb-star-rating'] = array(
 			'flex-direction' => 'column-reverse',
 			'align-items'    => $alignment_tablet, // To align-item in flex-direction column-reverse.
 		);
 	} elseif ( 'after' === $attr['starPositionTablet'] ) {
-		$index_tablet = 'margin-bottom';
+		$index_tablet                               = 'margin-bottom';
 		$t_selectors['.wp-block-uagb-star-rating '] = array_merge(
 			array(
 				'flex-direction' => 'column', // inline layout using flex.
@@ -184,16 +183,15 @@ if ( 'stack' === $attr['layoutTablet'] ) {
 			$wrapperCSSTablet
 		);
 	}
-
 } else {
 	if ( 'before' === $attr['starPositionTablet'] ) {
-		$index_tablet = 'margin-left';
+		$index_tablet                              = 'margin-left';
 		$t_selectors['.wp-block-uagb-star-rating'] = array(
 			'flex-direction'  => 'row-reverse',
 			'justify-content' => UAGB_Block_Helper::flex_alignment_when_direction_is_row_reverse( $alignment_tablet ), // To align-item in flex-direction column-reverse.
 		);
 	} elseif ( 'after' === $attr['starPositionTablet'] ) {
-		$index_tablet = 'margin-right';
+		$index_tablet                               = 'margin-right';
 		$t_selectors['.wp-block-uagb-star-rating '] = array_merge(
 			array(
 				'flex-direction'  => 'row',
@@ -202,7 +200,7 @@ if ( 'stack' === $attr['layoutTablet'] ) {
 			$wrapperCSSTablet
 		);
 	}
-	$t_selectors[' .uag-star-rating__title ']   = array(
+	$t_selectors[' .uag-star-rating__title '] = array(
 		'margin-bottom' => 0,
 	);
 }
@@ -221,13 +219,13 @@ $wrapperCSSMobile = array(
 $index_mobile = 'margin-right';
 if ( 'stack' === $attr['layoutMobile'] ) {
 	if ( 'before' === $attr['starPositionMobile'] ) {
-		$index_mobile = 'margin-top';
+		$index_mobile                              = 'margin-top';
 		$m_selectors['.wp-block-uagb-star-rating'] = array(
 			'flex-direction' => 'column-reverse',
 			'align-items'    => $alignment_mobile, // To align-item in flex-direction column-reverse.
 		);
 	} elseif ( 'after' === $attr['starPositionMobile'] ) {
-		$index_mobile = 'margin-bottom';
+		$index_mobile                               = 'margin-bottom';
 		$m_selectors['.wp-block-uagb-star-rating '] = array_merge(
 			array(
 				'flex-direction' => 'column', // inline layout using flex.
@@ -238,13 +236,13 @@ if ( 'stack' === $attr['layoutMobile'] ) {
 	}
 } else {
 	if ( 'before' === $attr['starPositionMobile'] ) {
-		$index_mobile = 'margin-left';
+		$index_mobile                              = 'margin-left';
 		$m_selectors['.wp-block-uagb-star-rating'] = array(
 			'flex-direction'  => 'row-reverse',
 			'justify-content' => UAGB_Block_Helper::flex_alignment_when_direction_is_row_reverse( $alignment_mobile ), // To align-item in flex-direction column-reverse.
 		);
 	} elseif ( 'after' === $attr['starPositionMobile'] ) {
-		$index_mobile = 'margin-right';
+		$index_mobile                               = 'margin-right';
 		$m_selectors['.wp-block-uagb-star-rating '] = array_merge(
 			array(
 				'flex-direction'  => 'row',
@@ -253,7 +251,7 @@ if ( 'stack' === $attr['layoutMobile'] ) {
 			$wrapperCSSMobile
 		);
 	}
-	$m_selectors[' .uag-star-rating__title ']   = array(
+	$m_selectors[' .uag-star-rating__title '] = array(
 		'margin-bottom' => 0,
 	);
 }
