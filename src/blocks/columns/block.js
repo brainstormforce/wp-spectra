@@ -17,7 +17,7 @@ import { registerBlockType } from '@wordpress/blocks';
 if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) {
 	registerBlockType( 'uagb/columns', {
 		title: __( 'Advanced Columns', 'ultimate-addons-for-gutenberg' ),
-		description:  __( 'This block gives you advanced options to insert a number of columns within a single row.', 'ultimate-addons-for-gutenberg' ),
+		description:  __( 'This block is an immediate child of Advanced Columns.', 'ultimate-addons-for-gutenberg' ),
 		icon: UAGB_Block_Icons.columns,
 		category: uagb_blocks_info.category,
 		keywords: [
