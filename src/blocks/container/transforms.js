@@ -187,6 +187,7 @@ const transforms = {
 					overlayType,
 					backgroundImageColor,
 					tag,
+					backgroundPosition,
 				} = attributes;
 
 				const containerWidth = 'full_width' === contentWidth ? 'alignfull' : 'alignwide';
@@ -260,6 +261,7 @@ const transforms = {
 						backgroundImageColor: backgroundImageColor || '#00000000',
 						variationSelected: true,
 						htmlTag: tag,
+						backgroundPositionDesktop: getImageBackgroundPosition( backgroundPosition ),
 					},
 					innerBlocks
 				);
