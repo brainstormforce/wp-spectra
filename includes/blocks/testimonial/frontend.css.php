@@ -209,9 +209,9 @@ $t_selectors = array(
 	'  .uagb-testimonial__wrap .uagb-tm__image-content' => array(
 		'text-align'     => $attr['headingAlignTablet'],
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['imgpaddingTopTablet'], $attr['imgtabletPaddingUnit'] ),
-		'padding-right' => UAGB_Helper::get_css_value( $attr['imgpaddingRightTablet'], $attr['imgtabletPaddingUnit'] ),
-		'padding-bottom'   => UAGB_Helper::get_css_value( $attr['imgpaddingBottomTablet'], $attr['imgtabletPaddingUnit'] ),
-		'padding-left'  => UAGB_Helper::get_css_value( $attr['imgpaddingLeftTablet'], $attr['imgtabletPaddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['imgpaddingRightTablet'], $attr['imgtabletPaddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['imgpaddingBottomTablet'], $attr['imgtabletPaddingUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['imgpaddingLeftTablet'], $attr['imgtabletPaddingUnit'] ),
 	),
 );
 
