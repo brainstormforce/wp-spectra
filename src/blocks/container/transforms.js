@@ -412,6 +412,7 @@ const transforms = {
 						backgroundRepeat,
 						backgroundSize,
 						backgroundImageColor,
+						overlayType,
 					} = child?.attributes;
 
 					const width = colWidth ? colWidth : containerChildWidth;
@@ -468,6 +469,7 @@ const transforms = {
 							backgroundRepeatDesktop: backgroundRepeat,
 							backgroundSizeDesktop: backgroundSize,
 							backgroundImageColor,
+							overlayType,
 						},
 						child?.innerBlocks
 					] );
