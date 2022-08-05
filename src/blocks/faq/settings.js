@@ -144,7 +144,6 @@ const Settings = ( props ) => {
 		answerLetterSpacingMobile,
 		answerLetterSpacingType,
 		boxBgHoverColor,
-		vanswerPaddingDesktop,
 	} = attributes;
 
 	const onchangeIcon = ( value ) => {
