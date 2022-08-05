@@ -42,13 +42,13 @@ const ContentWidth = () => {
 					</span>
 				</div>
 			</div>
-			<p className="mt-2 w-9/12 text-sm">
+			<p className="mt-2 w-9/12 text-sm text-slate-500">
 				{
 					__( 'This setting will apply to Container Block\'s default Content Width.', 'ultimate-addons-for-gutenberg' )
 				}
 			</p>
 			{ 'Spectra' !== uag_react.uag_content_width_set_by &&
-				<p className="mt-2 w-9/12 text-sm italic">
+				<p className="mt-2 w-9/12 text-sm text-slate-500 italic">
 					{
 						// eslint-disable-next-line @wordpress/i18n-no-variables
 						__( `The current Content width is applied from ${ uag_react.uag_content_width_set_by }.`, 'ultimate-addons-for-gutenberg' )

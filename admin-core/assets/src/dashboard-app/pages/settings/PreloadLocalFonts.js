@@ -69,7 +69,7 @@ const PreloadLocalFonts = () => {
                     />
                 </Switch>
             </div>
-            <p className="mt-2 w-9/12 text-sm">
+            <p className="mt-2 w-9/12 text-sm text-slate-500">
                 { __( 'This option will load the font files right away on page load. Preloading Local Fonts can speeds up your website even further.', 'ultimate-addons-for-gutenberg' ) }
             </p>
         </section>

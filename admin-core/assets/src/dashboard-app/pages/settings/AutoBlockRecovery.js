@@ -63,7 +63,7 @@ const AutoBlockRecovery = () => {
                     />
                 </Switch>
             </div>
-            <p className="mt-2 w-9/12 text-sm">
+            <p className="mt-2 w-9/12 text-sm text-slate-500">
                 { __( 'Enable this to automatically recover any erroneous blocks that may occur on your web pages. This will save you time spent on clicking all those \"Attempt Block Recovery\" Buttons.', 'ultimate-addons-for-gutenberg' ) }
             </p>
         </section>

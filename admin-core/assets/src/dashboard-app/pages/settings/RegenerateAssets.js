@@ -54,7 +54,7 @@ const RegenerateAssets = () => {
                     </button>
                 </div>
             </div>
-            <p className="mt-2 w-9/12 text-sm">
+            <p className="mt-2 w-9/12 text-sm text-slate-500">
                 { __( 'Facing issues with style, layout, color or another page element? Use this option to regenerate CSS and Javascript assets. It can help with all kinds of asset issues.', 'ultimate-addons-for-gutenberg' ) }
             </p>
         </section>

@@ -92,12 +92,17 @@ const ComingSoon = () => {
 			fontSize: '0.875rem', // Tailwind Text-sm.
 			lineHeight: '1.25rem', // Tailwind Text-sm.
 			borderRadius: '0.375rem', // Tailwind Rounded-md.
+            color: '#64748b', // Tailwind Slate-500.
 			borderColor: '#e2e8f0', // Tailwind Slate-200.
 			boxShadow: 'none',
 		} ),
 		placeholder: ( provided ) => ( {
 			...provided,
 			color: '#94a3b8', // Tailwind Slate-400.
+		} ),
+        singleValue: ( provided ) => ( {
+			...provided,
+            color: '#64748b', // Tailwind Slate-500.
 		} ),
 	};
 
@@ -124,10 +129,10 @@ const ComingSoon = () => {
 						/>
                 </Switch>
 			</div>
-			<p className="mt-2 w-9/12 text-sm">
+			<p className="mt-2 w-9/12 text-sm text-slate-500">
 				{ __( 'Is your website still in the making? Is it not yet ready for other people to see?', 'ultimate-addons-for-gutenberg' ) }
 			</p>
-			<p className="mt-2 w-9/12 text-sm">
+			<p className="mt-2 w-9/12 text-sm text-slate-500">
 				{ __( 'Enable the coming soon mode. Only the page you select below will be displayed to people who are not logged in.', 'ultimate-addons-for-gutenberg' ) }
 			</p>
 			<Select

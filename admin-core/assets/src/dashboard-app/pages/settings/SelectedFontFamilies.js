@@ -82,6 +82,7 @@ const SelectedFontFamilies = () => {
 			fontSize: '0.875rem', // Tailwind Text-sm.
 			lineHeight: '1.25rem', // Tailwind Text-sm.
 			borderRadius: '0.375rem', // Tailwind Rounded-md.
+            color: '#64748b', // Tailwind Slate-500.
 			borderColor: '#e2e8f0', // Tailwind Slate-200.
 			boxShadow: 'none',
 		} ),
@@ -89,10 +90,25 @@ const SelectedFontFamilies = () => {
 			...provided,
 			color: '#94a3b8', // Tailwind Slate-400.
 		} ),
-        // multiValue: ( provided ) => ( {
-		// 	...provided,
-		// 	backgroundColor: 'yellowgreen',
-		// } ),
+        multiValue: ( provided ) => ( {
+			...provided,
+            marging: '0',
+			borderRadius: '0.25rem', // Tailwind Rounded.            
+			backgroundColor: '#e2e8f0', // Tailwind Slate-200.
+		} ),
+        multiValueLabel: ( provided ) => ( {
+			...provided,
+            color: '#64748b', // Tailwind Slate-500.
+		} ),
+        multiValueRemove: ( provided ) => ( {
+			...provided,
+            color: '#64748b', // Tailwind Slate-500.
+            '&:hover': {
+                color: '#ef4444', // Tailwind Red-500.
+                backgroundColor: '#e2e8f0', // Tailwind Slate-200.
+            },
+		} ),
+
 
 	}
     return (
@@ -118,7 +134,7 @@ const SelectedFontFamilies = () => {
                     />
                 </Switch>
             </div>
-            <p className="mt-2 w-9/12 text-sm">
+            <p className="mt-2 w-9/12 text-sm text-slate-500">
                 { __( 'Spectra offers 700+ Google font options. If this is overwhelming for your clients, you can use this option to show only limited number of fonts in the block settings.', 'ultimate-addons-for-gutenberg' ) }
             </p>
             <Select

@@ -51,7 +51,7 @@ const RollBack = () => {
                         </button>
                     </div>
                 </div>
-                <p className="mt-2 w-9/12 text-sm">
+                <p className="mt-2 w-9/12 text-sm text-slate-500">
                     {
                         // eslint-disable-next-line @wordpress/i18n-no-variables
                         __( `Experiencing an issue with Spectra version ${ uag_react.plugin_ver }? Roll back to a previous version to help troubleshoot the issue.`, 'ultimate-addons-for-gutenberg' )

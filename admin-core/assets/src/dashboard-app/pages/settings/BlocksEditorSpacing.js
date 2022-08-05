@@ -42,7 +42,7 @@ const BlocksEditorSpacing = () => {
                     </span>
                 </div>
             </div>
-            <p className="mt-2 w-9/12 text-sm">
+            <p className="mt-2 w-9/12 text-sm text-slate-500">
                 { __( 'This setting will apply spacing in between all blocks inside block editor.', 'ultimate-addons-for-gutenberg' ) }
             </p>
         </section>

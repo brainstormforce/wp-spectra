@@ -94,7 +94,7 @@ const BlockSettings = () => {
 						{ __( 'Form - Google reCAPTCHA', 'ultimate-addons-for-gutenberg' ) }
 				</h3>
 			</div>
-			<p className="my-2 w-9/12 text-sm">{ __( 'To enable reCAPTCHA feature on your forms blocks Please enable reCAPTCHA option on your blocks setting and select version. Add google reCAPTCHA secret and site key here. reCAPTCHA will be added to your page on front-end.', 'ultimate-addons-for-gutenberg' ) }</p>
+			<p className="my-2 w-9/12 text-sm text-slate-500">{ __( 'To enable reCAPTCHA feature on your forms blocks Please enable reCAPTCHA option on your blocks setting and select version. Add google reCAPTCHA secret and site key here. reCAPTCHA will be added to your page on front-end.', 'ultimate-addons-for-gutenberg' ) }</p>
 			<a className='text-sm text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover' href="https://www.google.com/recaptcha/admin/create" target="_blank" rel="noreferrer">
 				{ __( 'Get Keys', 'ultimate-addons-for-gutenberg' ) }
 			</a>
