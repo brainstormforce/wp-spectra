@@ -305,9 +305,17 @@ function styling( props ) {
 			'px'
 		),
 		'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
-		'text-shadow': headShadowColor && generateCSSUnit( headShadowHOffset, 'px' ) + ' ' + generateCSSUnit( headShadowVOffset, 'px' ) + ' ' + generateCSSUnit( headShadowBlur, 'px' ) + ' ' +  headShadowColor,
 		...headingGradientStyle
 	};
+
+	const headingTextShadow = headShadowColor && generateCSSUnit( headShadowHOffset, 'px' ) + ' ' + generateCSSUnit( headShadowVOffset, 'px' ) + ' ' + generateCSSUnit( headShadowBlur, 'px' ) + ' ' +  headShadowColor;
+
+	// Text Shadow conditional CSS as per Color Type of Heading.
+	if ( 'gradient' === headingColorType ) {
+		selectors[ ' ' + headingTag + '.uagb-heading-text' ].filter = `drop-shadow(${headingTextShadow})`;
+	} else {
+		selectors[ ' ' + headingTag + '.uagb-heading-text' ]['text-shadow'] = headingTextShadow
+	}
 
 	// separator
 	if ( seperatorStyle !== 'none' ) {
