@@ -176,64 +176,64 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'attributes'      => array_merge(
 						$common_attributes,
 						array(
-							'blockName'         => array(
+							'blockName'           => array(
 								'type'    => 'string',
 								'default' => 'post-carousel',
 							),
-							'pauseOnHover'      => array(
+							'pauseOnHover'        => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'infiniteLoop'      => array(
+							'infiniteLoop'        => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'transitionSpeed'   => array(
+							'transitionSpeed'     => array(
 								'type'    => 'number',
 								'default' => 500,
 							),
-							'arrowDots'         => array(
+							'arrowDots'           => array(
 								'type'    => 'string',
 								'default' => 'arrows_dots',
 							),
-							'autoplay'          => array(
+							'autoplay'            => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'autoplaySpeed'     => array(
+							'autoplaySpeed'       => array(
 								'type'    => 'number',
 								'default' => 2000,
 							),
-							'arrowSize'         => array(
+							'arrowSize'           => array(
 								'type'    => 'number',
 								'default' => 24,
 							),
-							'arrowBorderSize'   => array(
+							'arrowBorderSize'     => array(
 								'type'    => 'number',
 								'default' => 0,
 							),
-							'arrowBorderRadius' => array(
+							'arrowBorderRadius'   => array(
 								'type'    => 'number',
 								'default' => 0,
 							),
-							'arrowColor'        => array(
+							'arrowColor'          => array(
 								'type'    => 'string',
 								'default' => '#000',
 							),
-							'arrowDistance'     => array(
+							'arrowDistance'       => array(
 								'type' => 'number',
 							),
-							'arrowDistanceTablet'     => array(
+							'arrowDistanceTablet' => array(
 								'type' => 'number',
 							),
-							'arrowDistanceMobile'     => array(
+							'arrowDistanceMobile' => array(
 								'type' => 'number',
 							),
-							'equalHeight'       => array(
+							'equalHeight'         => array(
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'layoutConfig'      => array(
+							'layoutConfig'        => array(
 								'type'    => 'array',
 								'default' => array(
 									array( 'uagb/post-image' ),
@@ -244,7 +244,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									array( 'uagb/post-button' ),
 								),
 							),
-							'post_type'         => array(
+							'post_type'           => array(
 								'type'    => 'string',
 								'default' => 'carousel',
 							),
@@ -1553,31 +1553,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function add_post_dynamic_script() {
-			if ( isset( self::$settings['grid'] ) && ! empty( self::$settings['grid'] ) ) {
-				foreach ( self::$settings['grid'] as $key => $value ) {
-					?>
-				<script type="text/javascript" id="uagb-post-grid-<?php echo esc_html( $key ); ?>">
-					document.addEventListener("DOMContentLoaded", function(){
-						// This CSS is for Post BG Image Spacing
-						let articles = document.querySelectorAll( '.uagb-post__image-position-background .uagb-post__inner-wrap' );
-
-						for( let article of articles ) {
-							let articleWidth = article.offsetWidth;
-							let rowGap = <?php echo esc_html( $value['rowGap'] ); ?>;
-							let imageWidth = 100 - ( rowGap / articleWidth ) * 100;
-							let image = article.getElementsByClassName('uagb-post__image');
-							if ( image[0] ) {
-								image[0].style.width = imageWidth + '%';
-								image[0].style.marginLeft = rowGap / 2 + 'px';
-
-							}
-
-						}
-					});
-				</script>
-					<?php
-				}
-			}
 			if ( isset( self::$settings['masonry'] ) && ! empty( self::$settings['masonry'] ) ) {
 				foreach ( self::$settings['masonry'] as $key => $value ) {
 					?>
