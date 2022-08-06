@@ -63,7 +63,7 @@ $position        = 'top' === $attr['iconPosition'] ? 'flex-start' : 'center';
 $tablet_position = '';
 $mobile_position = '';
 
-$top_icon_realignment = ( 'top' === $attr['iconPosition'] ) ? (
+$top_icon_realignment        = ( 'top' === $attr['iconPosition'] ) ? (
 	array(
 		'margin-top' => 'max(0px, calc(' . $font_size_fallback . $attr['fontSizeType'] . ' - ' . $half_size . $attr['sizeType'] . ' - ' . $bg_size_fallback . $attr['bgSizeType'] . ' - ' . $border_fallback . $attr['borderType'] . '))',
 	)
