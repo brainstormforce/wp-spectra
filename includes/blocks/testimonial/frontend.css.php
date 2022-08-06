@@ -61,9 +61,9 @@ $imgpaddingLeft   = isset( $attr['imgpaddingLeft'] ) ? $attr['imgpaddingLeft'] :
 
 $selectors = array(
 	' .uagb-testimonial__wrap'                         => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, $attr['rowGapType'] ),
 		'padding-left'  => UAGB_Helper::get_css_value( ( ( $column_gap_fallback ) / 2 ), $attr['columnGapType'] ),
 		'padding-right' => UAGB_Helper::get_css_value( ( ( $column_gap_fallback ) / 2 ), $attr['columnGapType'] ),
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, $attr['rowGapType'] ),
 	),
 	' .uagb-tm__content'                               => array(
 		'text-align'     => $attr['headingAlign'],
