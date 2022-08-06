@@ -439,7 +439,7 @@ function styling( props ) {
 			...containerBackgroundCSSTablet,
 			...borderCSSTablet
 		},
-		'containerFlexSelector' : {
+		[containerFlexSelector] : {
 			'flex-direction' : directionTablet,
 			'align-items' : alignItemsTablet,
 			'justify-content' : justifyContentTablet,
@@ -503,7 +503,7 @@ function styling( props ) {
 			...containerBackgroundCSSMobile,
 			...borderCSSMobile
 		},
-		'containerFlexSelector' : {
+		[containerFlexSelector] : {
 			'flex-direction' : directionMobile,
 			'align-items' : alignItemsMobile,
 			'justify-content' : justifyContentMobile,
