@@ -9,7 +9,7 @@ const borderDefault = {
 	borderTopRightRadius: 2,
 	borderBottomLeftRadius: 2,
 	borderBottomRightRadius: 2,
-	borderColor: '',
+	borderColor: '#1e1e1e',
 	borderHColor: '',
 }
 const borderAttributes = getBorderAttributes( 'overall', borderDefault );
