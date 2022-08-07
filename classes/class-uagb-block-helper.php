@@ -103,7 +103,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors[' .wp-block-button__link:hover'] = $btn_hover_bg_css;
 			}
 
-			$selectors[' .uagb-button__wrapper .uagb-buttons-repeater'] = array(
+			$selectors[' .uagb-button__wrapper .uagb-buttons-repeater']                   = array(
 				'font-family'     => $attr['fontFamily'],
 				'font-weight'     => $attr['fontWeight'],
 				'font-style'      => $attr['fontStyle'],
@@ -121,7 +121,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
 				'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
 			);
-			$selectors[ $wrapper . '.wp-block-button__link:hover' ]     = array(
+			$selectors[' .wp-block-button__link.has-text-color:hover .uagb-button__link'] = array(
 				'color' => $attr['hColor'],
 			);
 			if ( 0 !== $attr['boxShadowHOffset'] || 0 !== $attr['boxShadowVOffset'] ) {
@@ -1281,6 +1281,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$bg_video            = isset( $bg_obj['backgroundVideo'] ) ? $bg_obj['backgroundVideo'] : '';
 			$bg_video_color      = isset( $bg_obj['backgroundVideoColor'] ) ? $bg_obj['backgroundVideoColor'] : '';
 
+			$custom_position = isset( $bg_obj['customPosition'] ) ? $bg_obj['customPosition'] : '';
+			$x_position      = isset( $bg_obj['xPosition'] ) ? $bg_obj['xPosition'] : '';
+			$x_position_type = isset( $bg_obj['xPositionType'] ) ? $bg_obj['xPositionType'] : '';
+			$y_position      = isset( $bg_obj['yPosition'] ) ? $bg_obj['yPosition'] : '';
+			$y_position_type = isset( $bg_obj['yPositionType'] ) ? $bg_obj['yPositionType'] : '';
+
 			if ( 'custom' === $size ) {
 				$size = $bg_custom_size . $bg_custom_size_type;
 			}
@@ -1333,8 +1339,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$gen_bg_css['background-repeat'] = esc_attr( $repeat );
 				}
 
-				if ( isset( $position ) && isset( $position['x'] ) && isset( $position['y'] ) ) {
+				if ( 'custom' !== $custom_position && isset( $position ) && isset( $position['x'] ) && isset( $position['y'] ) ) {
 					$position_value                    = $position['x'] * 100 . '% ' . $position['y'] * 100 . '%';
+					$gen_bg_css['background-position'] = $position_value;
+				} elseif ( 'custom' === $custom_position && isset( $x_position ) && isset( $y_position ) && isset( $x_position_type ) && isset( $y_position_type ) ) {
+					$position_value                    = $x_position . $x_position_type . ' ' . $y_position . $y_position_type;
 					$gen_bg_css['background-position'] = $position_value;
 				}
 
@@ -1578,24 +1587,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		}
 
 		/**
-		 * Since title text is set to flex, we need this function so that stack alignment doesn't break.
-		 * It converts the normal text-align values to flex-alignment based values.
+		 * For flex-direction: row-reverse, justify-content work opposite.
 		 *
 		 * @since 2.0.0-beta.3
 		 * @param string $text_align Alignment value from text-align property.
 		 */
-		public static function text_alignment_to_flex( $text_align ) {
+		public static function flex_alignment_when_direction_is_row_reverse( $text_align ) {
 
 			switch ( $text_align ) {
 
-				case 'left':
-					return 'start';
+				case 'flex-end':
+					return 'flex-start';
 				case 'center':
 					return 'center';
-				case 'right':
-					return 'end';
+				case 'space-between':
+					return 'space-between';
 				default:
-					return 'start';
+					return 'flex-end';
 			}
 
 		}

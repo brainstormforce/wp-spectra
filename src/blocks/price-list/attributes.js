@@ -90,19 +90,21 @@ const attributes = {
 	},
 	imgHrPadding: {
 		type: 'number',
-		default: 0,
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'image-horizontal-padding'
 		},
 	},
 	imgPaddingTop: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'image-top-padding'
 		},
 	},
 	imgPaddingRight: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'image-right-padding'
 		},
@@ -286,7 +288,6 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'main-title-font-size'
 		},
-		default: 20
 	},
 	titleFontSizeTablet: {
 		type: 'number',
@@ -520,7 +521,7 @@ const attributes = {
 	},
 	imagePosition: {
 		type: 'string',
-		default: 'top',
+		default: 'left',
 		UAGCopyPaste: {
 			styleType: 'image-position'
 		},
@@ -780,7 +781,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'image-align'
 		},
-		default: '',
+		default: 'side',
 	},
 	isPreview: {
 		type: 'boolean',

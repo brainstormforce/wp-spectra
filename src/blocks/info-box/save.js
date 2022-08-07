@@ -59,13 +59,12 @@ export default function save( props ) {
 		);
 	}
 
-	if (
-		position === 'after_icon' &&
-		( iconimgPosition !== 'above-title' ||
-			iconimgPosition !== 'below-title' )
-	) {
+	if ( position === 'after_icon' && ( iconimgPosition === 'left-title' ||
+	iconimgPosition === 'right-title' || iconimgPosition === 'left' ||
+	iconimgPosition === 'right' ) ) {
 		position = 'after_title';
 	}
+
 
 	if ( iconimgPosition === 'below-title' && position === 'after_title' ) {
 		showSeperator = false;

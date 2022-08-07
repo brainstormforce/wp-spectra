@@ -8,6 +8,10 @@ const attributes = {
 		type    : 'string',
 		default : 'post-masonry',
 	},
+	enableOffset              : {
+		type    : 'boolean',
+		default : false,
+	},
 	paginationType               : {
 		type    : 'string',
 		default : 'none',

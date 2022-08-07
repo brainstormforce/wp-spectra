@@ -174,9 +174,9 @@ function testimonialStyle( props ) {
 
 	const selectors = {
 		' .uagb-testimonial__wrap': {
+			'margin-bottom': generateCSSUnit( rowGapFallback, rowGapType ),
 			'padding-left': generateCSSUnit( columnGapFallback / 2, columnGapType ),
 			'padding-right': generateCSSUnit( columnGapFallback / 2, columnGapType ),
-			'margin-bottom': generateCSSUnit( rowGapFallback, rowGapType ),
 		},
 		' .uagb-testimonial__wrap .uagb-tm__image-content': {
 			'padding-top': generateCSSUnit( imgpaddingTop, imgpaddingUnit ),

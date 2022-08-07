@@ -24,7 +24,7 @@ const attributes = {
 	},
 	imagePosition: {
 		type: 'string',
-		default: 'top',
+		default: 'left',
 		UAGCopyPaste: {
 			styleType: 'image-position'
 		},
@@ -73,6 +73,13 @@ const attributes = {
 	imageWidth:{
 		type: 'number',
 		default: 100,
+	imgAlign: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'image-align'
+		},
+		default: 'side',
+	}
 	}
 };
 

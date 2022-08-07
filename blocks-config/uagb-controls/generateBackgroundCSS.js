@@ -14,7 +14,12 @@ function generateBackgroundCSS ( backgroundAttributes ) {
 		backgroundImageColor,
 		overlayType,
 		backgroundVideoColor,
-		backgroundVideo
+		backgroundVideo,
+		customPosition,
+		xPosition,
+		xPositionType,
+		yPosition,
+		yPositionType,
     } = backgroundAttributes;
 
     const bgCSS = {};
@@ -64,9 +69,13 @@ function generateBackgroundCSS ( backgroundAttributes ) {
 
             bgCSS['background-repeat'] = backgroundRepeat;
 
-			if ( backgroundPosition?.x && backgroundPosition?.y ) {
+            if( 'custom' !== customPosition && backgroundPosition?.x && backgroundPosition?.y ) {
 
-				bgCSS['background-position'] = `${ backgroundPosition?.x * 100 }% ${ backgroundPosition?.y * 100 }%`;
+                bgCSS['background-position'] = `${ backgroundPosition?.x * 100 }% ${ backgroundPosition?.y * 100 }%`;
+
+            } else if ( 'custom' === customPosition && xPosition && yPosition ) {
+                
+				bgCSS['background-position'] = `${ xPosition }${ xPositionType } ${ yPosition }${ yPositionType }`;
 			}
 
             bgCSS['background-size'] = backgroundSizeValue;

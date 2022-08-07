@@ -39,6 +39,7 @@ const Render = ( props ) => {
 		columns,
 		tcolumns,
 		mcolumns,
+		test_item_count,
 		pauseOnHover,
 		infiniteLoop,
 		transitionSpeed,
@@ -126,6 +127,9 @@ const Render = ( props ) => {
 	};
 
 	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/testimonials.png`;
+	const isGridLayout = test_item_count === columns ? 'uagb-post__carousel_notset' : '';
+	const isGridLayoutTablet = test_item_count === tcolumns ? 'uagb-post__carousel_notset-tablet' : '';
+	const isGridLayoutMobile = test_item_count === mcolumns ? 'uagb-post__carousel_notset-mobile' : '';
 
 	return (
 		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
@@ -136,6 +140,9 @@ const Render = ( props ) => {
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
 				`${ equalHeightClass }`,
+				isGridLayout,
+				isGridLayoutTablet,
+				isGridLayoutMobile
 			) }
 		>
 			<Suspense fallback={ lazyLoader() }>
@@ -143,7 +150,7 @@ const Render = ( props ) => {
 					className={ classnames(
 						'is-carousel',
 						`uagb-tm__columns-${ getFallbackNumber( columns, 'columns', blockName ) }`,
-						'uagb-tm__items'
+						'uagb-tm__items',
 					) }
 					{ ...settings }
 					ref={ sliderRef }
