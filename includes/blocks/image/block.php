@@ -17,5 +17,5 @@ $block_data = array(
 	'description'      => __( 'This block let\'s you add an Image.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 2,
+	'priority'         => 3,
 );

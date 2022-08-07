@@ -18,5 +18,5 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-inline-notice-js', 'uagb-cookie-lib' ),
-	'priority'         => 20,
+	'priority'         => 17,
 );
