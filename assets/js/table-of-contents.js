@@ -18,7 +18,8 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 		}
 
 		const elementToOpen = document.querySelector( id );
-		if( document.querySelector( '.uagb-toc__wrap svg' ) !== null ){
+
+		if( document.querySelector( '.uagb-toc__wrap svg' ) !== null && elementToOpen ){
 
 			elementToOpen.querySelector( '.uagb-toc__wrap svg' )?.addEventListener( 'click', function(){
 				const $root = this.closest( '.wp-block-uagb-table-of-contents' );
