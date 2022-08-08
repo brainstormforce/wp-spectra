@@ -138,13 +138,13 @@ const Welcome = () => {
 											'ultimate-addons-for-gutenberg'
 										) }
 									</p>
-									<a className='text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline' href='https://www.facebook.com/groups/wpastra/' target='_blank' rel="noreferrer">
+									<a className='text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline' href='https://www.facebook.com/groups/wpspectra' target='_blank' rel="noreferrer">
 										{ __(
 											'Join Now',
 											'ultimate-addons-for-gutenberg'
 										) }
 									</a>
-									<a className='text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline' href='https://www.facebook.com/groups/wpastra/' target='_blank' rel="noreferrer"> → </a>
+									<a className='text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline' href='https://www.facebook.com/groups/wpspectra' target='_blank' rel="noreferrer"> → </a>
 								</div>
 							</div>
 						</section>
