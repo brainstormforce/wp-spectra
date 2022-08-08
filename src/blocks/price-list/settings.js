@@ -22,7 +22,7 @@ const maxColumns = 3;
 
 import { InspectorControls } from '@wordpress/block-editor';
 
-import { Icon } from '@wordpress/components';
+import { Icon, ToggleControl } from '@wordpress/components';
 
 
 
@@ -157,6 +157,7 @@ const Settings = ( props ) => {
 		titleLetterSpacingTablet,
 		titleLetterSpacingMobile,
 		titleLetterSpacingType,
+		showImage,
 	} = attributes;
 
 	const setImgAlign = ( value ) => {
@@ -469,234 +470,248 @@ const Settings = ( props ) => {
 	const imageSettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Image' ) } initialOpen={ false }>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
+				<ToggleControl
 					label={ __(
-						'Position',
+						'Show Image',
 						'ultimate-addons-for-gutenberg'
 					) }
-					data={ {
-						value: imgAlign,
-						label: 'imgAlign',
-					} }
-					className="uagb-multi-button-alignment-control"
-					options={ [
-						{
-							value: 'top',
-							label: 'Top',
-						},
-						{
-							value: 'side',
-							label: 'Side',
-						},
-					] }
-					showIcons={ false }
-					onChange = { setImgAlign }
+					checked={ showImage }
+					onChange={ () =>
+						setAttributes( { showImage : ! showImage } )
+					}
 				/>
-				{ ( imgAlign === 'side' ) && (
+				{ showImage && (
 					<>
-					<MultiButtonsControl
-						setAttributes={ setAttributes }
-						label={ __(
-							'Alignment',
-							'ultimate-addons-for-gutenberg'
-						) }
-						data={ {
-							value: imagePosition,
-							label: 'imagePosition',
-						} }
-						className="uagb-multi-button-alignment-control"
-						options={ [
-							{
-								value: 'left',
-								icon: (
-									<Icon
-										icon={ renderSVG( 'fa fa-align-left' ) }
-									/>
-								),
-								tooltip: __(
-									'Left',
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __(
+								'Position',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: imgAlign,
+								label: 'imgAlign',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'top',
+									label: 'Top',
+								},
+								{
+									value: 'side',
+									label: 'Side',
+								},
+							] }
+							showIcons={ false }
+							onChange = { setImgAlign }
+						/>
+						{ ( imgAlign === 'side' ) && (
+							<>
+							<MultiButtonsControl
+								setAttributes={ setAttributes }
+								label={ __(
+									'Alignment',
 									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'right',
-								icon: (
-									<Icon
-										icon={ renderSVG( 'fa fa-align-right' ) }
-									/>
-								),
-								tooltip: __(
-									'Right',
+								) }
+								data={ {
+									value: imagePosition,
+									label: 'imagePosition',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ [
+									{
+										value: 'left',
+										icon: (
+											<Icon
+												icon={ renderSVG( 'fa fa-align-left' ) }
+											/>
+										),
+										tooltip: __(
+											'Left',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'right',
+										icon: (
+											<Icon
+												icon={ renderSVG( 'fa fa-align-right' ) }
+											/>
+										),
+										tooltip: __(
+											'Right',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+								] }
+								showIcons={ true }
+								onChange = {setimagePosition}
+							/>
+							<MultiButtonsControl
+								setAttributes={ setAttributes }
+								label={ __(
+									'Stack on',
 									'ultimate-addons-for-gutenberg'
-								),
-							},
-						] }
-						showIcons={ true }
-						onChange = {setimagePosition}
-					/>
-					<MultiButtonsControl
-						setAttributes={ setAttributes }
-						label={ __(
-							'Stack on',
-							'ultimate-addons-for-gutenberg'
-						) }
-						data={ {
-							value: stack,
-							label: 'stack',
-						} }
-						className="uagb-multi-button-alignment-control"
-						options={ [
-							{
-								value: 'none',
-								label: 'None',
-							},
-							{
-								value: 'tablet',
-								label: 'Tablet',
-							},
-							{
-								value: 'mobile',
-								label: 'Mobile',
-							},
-						] }
-						help={ __(
-							'Note: Choose on what breakpoint the Images will stack.'
-						) }
-						showIcons={ false }
-						onChange={ setStack }
-					/>
-					<MultiButtonsControl
-						setAttributes={ setAttributes }
-						label={ __(
-							'Vertical Alignment',
-							'ultimate-addons-for-gutenberg'
-						) }
-						data={ {
-							value: imageAlignment,
-							label: 'imageAlignment',
-						} }
-						className="uagb-multi-button-alignment-control"
-						options={ [
-							{
-								value: 'top',
-								label: 'Top',
-							},
-							{
-								value: 'middle',
-								label: 'Middle',
-							},
-						] }
-						showIcons={ false }
-						onChange = { setimageAlignment }
-					/>
-				</>
-				)}
-				{ ( imgAlign === 'top' ) && (
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						value: headingAlign,
-						label: 'headingAlign',
-					} }
-					className="uagb-multi-button-alignment-control"
-					options={ [
-						{
-							value: 'left',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-left' ) }
-								/>
-							),
-							tooltip: __(
-								'Left',
+								) }
+								data={ {
+									value: stack,
+									label: 'stack',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ [
+									{
+										value: 'none',
+										label: 'None',
+									},
+									{
+										value: 'tablet',
+										label: 'Tablet',
+									},
+									{
+										value: 'mobile',
+										label: 'Mobile',
+									},
+								] }
+								help={ __(
+									'Note: Choose on what breakpoint the Images will stack.'
+								) }
+								showIcons={ false }
+								onChange={ setStack }
+							/>
+							<MultiButtonsControl
+								setAttributes={ setAttributes }
+								label={ __(
+									'Vertical Alignment',
+									'ultimate-addons-for-gutenberg'
+								) }
+								data={ {
+									value: imageAlignment,
+									label: 'imageAlignment',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ [
+									{
+										value: 'top',
+										label: 'Top',
+									},
+									{
+										value: 'middle',
+										label: 'Middle',
+									},
+								] }
+								showIcons={ false }
+								onChange = { setimageAlignment }
+							/>
+						</>
+						)}
+						{ ( imgAlign === 'top' ) && (
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
+							data={ {
+								value: headingAlign,
+								label: 'headingAlign',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'left',
+									icon: (
+										<Icon
+											icon={ renderSVG( 'fa fa-align-left' ) }
+										/>
+									),
+									tooltip: __(
+										'Left',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'center',
+									icon: (
+										<Icon
+											icon={ renderSVG( 'fa fa-align-center' ) }
+										/>
+									),
+									tooltip: __(
+										'Center',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'right',
+									icon: (
+										<Icon
+											icon={ renderSVG( 'fa fa-align-right' ) }
+										/>
+									),
+									tooltip: __(
+										'Right',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
+							showIcons={ true }
+							onChange = { setHeadingAlign }
+						/>
+						)}
+						<UAGSelectControl
+							label={ __(
+								'Size',
 								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'center',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-center' ) }
-								/>
-							),
-							tooltip: __(
-								'Center',
+							) }
+							data={ {
+								value: imageSize,
+							} }
+							onChange={ setimageSize }
+							options={ imageSizeOptions }
+						/>
+						<ResponsiveSlider
+							label={ __(
+								'Width',
 								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'right',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-right' ) }
-								/>
-							),
-							tooltip: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					showIcons={ true }
-					onChange = { setHeadingAlign }
-				/>
-				)}
-				<UAGSelectControl
-					label={ __(
-						'Size',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						value: imageSize,
-					} }
-					onChange={ setimageSize }
-					options={ imageSizeOptions }
-				/>
-				<ResponsiveSlider
-					label={ __(
-						'Width',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						desktop: {
-							value: imageWidth,
-							label: 'imageWidth',
-						},
-						tablet: {
-							value: imageWidthTablet,
-							label: 'imageWidthTablet',
-						},
-						mobile: {
-							value: imageWidthMobile,
-							label: 'imageWidthMobile',
-						},
-					} }
-					min={ 0 }
-					max={ 500 }
-					unit={ {
-						value: imageWidthType,
-						label: 'imageWidthType',
-					} }
-					units={ [
-						{
-							name: __(
-								'Pixel',
-								'ultimate-addons-for-gutenberg'
-							),
-							unitValue: 'px',
-						},
-						{
-							name: __(
-								'Em',
-								'ultimate-addons-for-gutenberg'
-							),
-							unitValue: 'em',
-						},
-					] }
-					setAttributes={ setAttributes }
-				/>
+							) }
+							data={ {
+								desktop: {
+									value: imageWidth,
+									label: 'imageWidth',
+								},
+								tablet: {
+									value: imageWidthTablet,
+									label: 'imageWidthTablet',
+								},
+								mobile: {
+									value: imageWidthMobile,
+									label: 'imageWidthMobile',
+								},
+							} }
+							min={ 0 }
+							max={ 500 }
+							unit={ {
+								value: imageWidthType,
+								label: 'imageWidthType',
+							} }
+							units={ [
+								{
+									name: __(
+										'Pixel',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+								{
+									name: __(
+										'Em',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'em',
+								},
+							] }
+							setAttributes={ setAttributes }
+						/>
+					</>
+				) }
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -1333,7 +1348,7 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.style }>
 						{ titleSettings() }
 						{ separatorSettings() }
-						{ imageStyles() }
+						{ showImage && imageStyles() }
 						{ contentSettings() }
 						{ priceSettings() }
 						{ marginSettings() }
