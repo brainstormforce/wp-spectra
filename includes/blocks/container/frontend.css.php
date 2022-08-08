@@ -212,7 +212,7 @@ $bg_obj_tablet              = array(
 $container_bg_css_tablet    = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_tablet );
 $container_tablet_css       = array_merge(
 	array(
-		'min-height'     => UAGB_Helper::get_css_value( $attr['minHeightTablet'], $attr['minHeightType'] ),
+		'min-height'     => UAGB_Helper::get_css_value( $attr['minHeightTablet'], $attr['minHeightTypeTablet'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $top_padding_tablet, $attr['paddingTypeTablet'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding_tablet, $attr['paddingTypeTablet'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $left_padding_tablet, $attr['paddingTypeTablet'] ),
@@ -275,6 +275,7 @@ $bg_obj_mobile              = array(
 $container_bg_css_mobile    = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_mobile );
 $container_mobile_css       = array_merge(
 	array(
+		'min-height'     => UAGB_Helper::get_css_value( $attr['minHeightMobile'], $attr['minHeightTypeMobile'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $top_padding_mobile, $attr['paddingTypeMobile'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding_mobile, $attr['paddingTypeMobile'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $left_padding_mobile, $attr['paddingTypeMobile'] ),
@@ -288,7 +289,6 @@ $container_mobile_css       = array_merge(
 );
 $container_mobile_css       = array_merge( $container_mobile_css, $container_bg_css_mobile );
 $inner_container_mobile_css = array(
-	'min-height'      => UAGB_Helper::get_css_value( $attr['minHeightMobile'], $attr['minHeightType'] ),
 	'flex-direction'  => $attr['directionMobile'],
 	'align-items'     => $attr['alignItemsMobile'],
 	'justify-content' => $attr['justifyContentMobile'],
@@ -313,6 +313,7 @@ $m_selectors = array(
 		'height' => UAGB_Helper::get_css_value( $attr['topHeightMobile'], 'px' ),
 	),
 );
+
 if ( 'alignwide' === $attr['innerContentWidth'] && 'alignfull' === $attr['contentWidth'] ) {
 	$selectors[ '.uagb-is-root-container.alignfull.uagb-block-' . $id . ' > .uagb-container-inner-blocks-wrap' ] = array_merge(
 		array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
