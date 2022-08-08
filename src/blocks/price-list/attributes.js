@@ -864,7 +864,7 @@ const attributes = {
 	},
 	showImage: {
 		type: 'boolean',
-		default: false,
+		default: true,
 	},
 };
 
