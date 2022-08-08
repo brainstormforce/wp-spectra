@@ -608,9 +608,6 @@ select {
 }.mx-auto {
   margin-right: auto;
   margin-left: auto;
-}.my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
 }.my-\[2\.43rem\] {
   margin-top: 2.43rem;
   margin-bottom: 2.43rem;
@@ -642,6 +639,8 @@ select {
   margin-left: 4rem;
 }.mt-2 {
   margin-top: 0.5rem;
+}.ml-8 {
+  margin-right: 2rem;
 }.mt-8 {
   margin-top: 2rem;
 }.mt-4 {
@@ -783,6 +782,8 @@ select {
   cursor: pointer;
 }.snap-start {
   scroll-snap-align: start;
+}.list-decimal {
+  list-style-type: decimal;
 }.appearance-none {
   -webkit-appearance: none;
           appearance: none;

@@ -94,17 +94,25 @@ const BlockSettings = () => {
 						{ __( 'Form - Google reCAPTCHA', 'ultimate-addons-for-gutenberg' ) }
 				</h3>
 			</div>
-			<p className="my-2 w-9/12 text-sm text-slate-500">{ __( 'To enable reCAPTCHA feature on your forms blocks Please enable reCAPTCHA option on your blocks setting and select version. Add google reCAPTCHA secret and site key here. reCAPTCHA will be added to your page on front-end.', 'ultimate-addons-for-gutenberg' ) }</p>
-			<a className='text-sm text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover' href="https://www.google.com/recaptcha/admin/create" target="_blank" rel="noreferrer">
-				{ __( 'Get Keys', 'ultimate-addons-for-gutenberg' ) }
-			</a>
-			{ __( ' | ', 'ultimate-addons-for-gutenberg' ) }
-			<a className='text-sm text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover' href="https://developers.google.com/recaptcha/intro" target="_blank" rel="noreferrer">
-				{ __(
-					' Documentation',
-					'ultimate-addons-for-gutenberg'
-				) }
-			</a>
+			<p className="mt-2 w-9/12 text-sm text-slate-500">{ __( 'To enable reCAPTCHA for your form, please follow the steps mentioned below:', 'ultimate-addons-for-gutenberg' ) }</p>
+			<ol className="mt-2 w-9/12 text-sm text-slate-500 list-decimal">
+				<li className="mt-2 ml-8">{ __( 'Go to forms block on your page and enable Google reCAPTCHA.', 'ultimate-addons-for-gutenberg' ) }</li>
+				<li className="mt-2 ml-8">{ __( 'Select reCAPTCHA version.', 'ultimate-addons-for-gutenberg' ) }</li>
+				<li className="mt-2 ml-8">{ __( 'Come back to this screen and add site key along with secret key.', 'ultimate-addons-for-gutenberg' ) }</li>
+			</ol>
+			<p className="mt-2 w-9/12 text-sm text-slate-500">{ __( 'Once done, reCAPTCHA will be enabled for your form.', 'ultimate-addons-for-gutenberg' ) }</p>
+			<p className="mt-2 w-9/12 text-sm">
+				<a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href="https://www.google.com/recaptcha/admin/create" target="_blank" rel="noreferrer">
+					{ __( 'Get Keys', 'ultimate-addons-for-gutenberg' ) }
+				</a>
+				{ __( ' | ', 'ultimate-addons-for-gutenberg' ) }
+				<a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href="https://developers.google.com/recaptcha/intro" target="_blank" rel="noreferrer">
+					{ __(
+						' Documentation',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</a>
+			</p>
 			{/* Recaptcha V2 */}
 			<h3 className="mt-8 font-medium text-sm text-slate-800">
 				{ __( 'reCAPTCHA v2', 'ultimate-addons-for-gutenberg' ) }

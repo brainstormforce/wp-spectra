@@ -82,13 +82,13 @@ const Welcome = () => {
 											'ultimate-addons-for-gutenberg'
 										) }
 									</p>
-									<a className='text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline' href='https://ultimategutenberg.com/docs/' target='_blank' rel="noreferrer">
+									<a className='text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline' href='https://wpspectra.com/docs/' target='_blank' rel="noreferrer">
 										{ __(
 											'Browse Now',
 											'ultimate-addons-for-gutenberg'
 										) }
 									</a>
-									<a className='text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline' href='https://ultimategutenberg.com/docs/' target='_blank' rel="noreferrer"> → </a>
+									<a className='text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline' href='https://wpspectra.com/docs/' target='_blank' rel="noreferrer"> → </a>
 								</div>
 							</div>
 						</section>
@@ -110,13 +110,13 @@ const Welcome = () => {
 											'ultimate-addons-for-gutenberg'
 										) }
 									</p>
-									<a className='text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline' href='https://ultimategutenberg.com/support/' target='_blank' rel="noreferrer">
+									<a className='text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline' href='https://wpspectra.com/support/' target='_blank' rel="noreferrer">
 										{ __(
 											'Get Support',
 											'ultimate-addons-for-gutenberg'
 										) }
 									</a>
-									<a className='text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline' href='https://ultimategutenberg.com/support/' target='_blank' rel="noreferrer"> → </a>
+									<a className='text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline' href='https://wpspectra.com/support/' target='_blank' rel="noreferrer"> → </a>
 								</div>
 							</div>
 						</section>
