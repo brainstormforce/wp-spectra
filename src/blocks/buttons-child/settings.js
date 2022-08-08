@@ -33,7 +33,7 @@ import {
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
-import boxShadowPresets from './presets';
+import boxShadowPresets, { buttonsPresets } from './presets';
 import UAGPresets from '@Components/presets';
 
 const Settings = ( props ) => {
@@ -128,9 +128,25 @@ const Settings = ( props ) => {
 
 	} = attributes;
 
+	const presetSettings = () => {
+		return <UAGAdvancedPanelBody
+					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
+				>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { buttonsPresets }
+						presetInputType = 'radioImage'
+					/>
+				</UAGAdvancedPanelBody>
+	};
+
 	const buttonSettings = () => {
 		return (
-			<UAGAdvancedPanelBody>
+			<UAGAdvancedPanelBody
+				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
 				<UAGIconPicker
 					label={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 					value={ icon }
@@ -864,6 +880,7 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
+						{ presetSettings() }
 						{ buttonSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
