@@ -52,8 +52,16 @@ const UAGBFormsEdit = ( props ) => {
 			reCaptchaSecretKeyV2,
 			reCaptchaSiteKeyV3,
 			reCaptchaSecretKeyV3,
-			reCaptchaEnable
+			reCaptchaEnable,
+			toggleColor,
+			inputColor
 		} = props.attributes;
+
+		if( inputColor ) {
+			if ( undefined === toggleColor ) {
+				setAttributes( { toggleColor: inputColor } );
+			}
+		}
 
 		if ( vPaddingSubmit ) {
 			if ( undefined === paddingBtnTop ) {
