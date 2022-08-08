@@ -211,9 +211,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 				'blocks_activation_status'	=> $blocks_status,
 			);
 
-			error_log( print_r( $default_stats, true ) );
-
-
 		}
 
 		/**
