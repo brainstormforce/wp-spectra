@@ -21,6 +21,8 @@ return array_merge(
 		'minHeightTablet'                   => '',
 		'minHeightMobile'                   => '',
 		'minHeightType'                     => 'px',
+		'minHeightTypeTablet'               => 'px',
+		'minHeightTypeMobile'               => 'px',
 		'directionDesktop'                  => 'column',
 		'directionTablet'                   => '',
 		'directionMobile'                   => '',
