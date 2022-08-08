@@ -71,7 +71,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			$pagination_masonry_border_attribute = array();
 
-			if ( function_exists( 'uag_generate_php_border_attribute' ) ) {
+			if ( method_exists( 'UAGB_Block_Helper', 'uag_generate_php_border_attribute' ) ) {
 
 				$pagination_masonry_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'paginationMasonry' );
 
@@ -388,7 +388,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$btn_border_attribute     = array();
 			$overall_border_attribute = array();
 
-			if ( function_exists( 'uag_generate_php_border_attribute' ) ) {
+			if ( method_exists( 'UAGB_Block_Helper', 'uag_generate_php_border_attribute' )) {
 
 				$btn_border_attribute     = UAGB_Block_Helper::uag_generate_php_border_attribute( 'btn' );
 				$overall_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'overall' );

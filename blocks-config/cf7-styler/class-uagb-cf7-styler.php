@@ -56,7 +56,7 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 			$field_border_attribute = array();
 			$btn_border_attribute   = array();
 
-			if ( function_exists( 'uag_generate_php_border_attribute' ) ) {
+			if ( method_exists( 'UAGB_Block_Helper', 'uag_generate_php_border_attribute' ) ) {
 
 				$field_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'input' );
 				$btn_border_attribute   = UAGB_Block_Helper::uag_generate_php_border_attribute( 'btn' );
