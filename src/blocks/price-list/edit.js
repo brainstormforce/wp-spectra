@@ -137,11 +137,6 @@ const UAGBRestaurantMenu = ( props ) => {
                         showImage: props.attributes.showImage,
                     }
                 );
-                dispatch( 'core/block-editor' ).updateBlockAttributes(
-                    block.clientId, {
-                        showImage: props.attributes.showImage,
-                    }
-                );
 
             } );
 	}, [ props.attributes.showImage ] );
