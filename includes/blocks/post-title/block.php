@@ -16,4 +16,5 @@ $block_data = array(
 	'description' => __( 'This block fetches the blog title.', 'ultimate-addons-for-gutenberg' ),
 	'default'     => true,
 	'is_child'    => true,
+	'deprecated'  => false,
 );
