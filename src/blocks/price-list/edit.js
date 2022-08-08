@@ -3,7 +3,7 @@
  */
 
 import RestMenuStyle from './inline-styles';
-import { select } from '@wordpress/data';
+import { select, dispatch } from '@wordpress/data';
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -125,6 +125,26 @@ const UAGBRestaurantMenu = ( props ) => {
 
 		addBlockEditorDynamicStyles( 'uagb-restaurant-menu-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [deviceType] );
+
+	useEffect( () => {
+		// Set showImage attribute in child blocks based on current parent block's value.
+		select( 'core/block-editor' )
+            .getBlocksByClientId( props.clientId )[0]
+            .innerBlocks.forEach( function( block ) {
+
+                dispatch( 'core/block-editor' ).updateBlockAttributes(
+                    block.clientId, {
+                        showImage: props.attributes.showImage,
+                    }
+                );
+                dispatch( 'core/block-editor' ).updateBlockAttributes(
+                    block.clientId, {
+                        showImage: props.attributes.showImage,
+                    }
+                );
+
+            } );
+	}, [ props.attributes.showImage ] );
 
 	return (
 		<>
