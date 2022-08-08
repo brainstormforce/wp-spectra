@@ -862,6 +862,10 @@ const attributes = {
 			styleType: 'title-letter-spacing-type'
 		}
 	},
+	showImage: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 export default attributes;
