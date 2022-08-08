@@ -65,7 +65,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 			if ( function_exists( 'uag_generate_php_border_attribute' ) ) {
 
 				$border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'overall' );
-			
+
 			}
 
 			register_block_type(

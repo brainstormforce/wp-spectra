@@ -385,14 +385,14 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 */
 		public function get_post_attributes() {
 
-			$btn_border_attribute  = array();
+			$btn_border_attribute     = array();
 			$overall_border_attribute = array();
-			
+
 			if ( function_exists( 'uag_generate_php_border_attribute' ) ) {
 
 				$btn_border_attribute     = UAGB_Block_Helper::uag_generate_php_border_attribute( 'btn' );
 				$overall_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'overall' );
-			
+
 			}
 
 			return array_merge(
