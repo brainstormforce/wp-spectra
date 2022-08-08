@@ -24,6 +24,7 @@ import { buttonsPresets, boxShadowPresets, boxShadowHoverPresets } from './prese
 import UAGPresets from '@Components/presets';
 import BoxShadowControl from '@Components/box-shadow';
 import { decodeEntities } from '@wordpress/html-entities';
+import UAGNumberControl from '@Components/number-control';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -514,7 +515,7 @@ const Settings = ( props ) => {
 						} )
 					}
 				/>
-				<Range
+				<UAGNumberControl
 					label={ __(
 						'Posts Per Page',
 						'ultimate-addons-for-gutenberg'
@@ -556,7 +557,7 @@ const Settings = ( props ) => {
 					}
 				/>
 				{ enableOffset && (
-				<Range
+				<UAGNumberControl
 					label={ __(
 						'Offset By',
 						'ultimate-addons-for-gutenberg'
