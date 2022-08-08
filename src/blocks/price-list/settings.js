@@ -489,138 +489,41 @@ const Settings = ( props ) => {
 					checked={ showImage }
 					onChange={ setShowImage }
 				/>
-				{ showImage && (
-					<>
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __(
+							'Position',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
+							value: imgAlign,
+							label: 'imgAlign',
+						} }
+						className="uagb-multi-button-alignment-control"
+						options={ [
+							{
+								value: 'top',
+								label: 'Top',
+							},
+							{
+								value: 'side',
+								label: 'Side',
+							},
+						] }
+						showIcons={ false }
+						onChange = { setImgAlign }
+					/>
+					{ ( imgAlign === 'side' ) && (
+						<>
 						<MultiButtonsControl
 							setAttributes={ setAttributes }
 							label={ __(
-								'Position',
+								'Alignment',
 								'ultimate-addons-for-gutenberg'
 							) }
 							data={ {
-								value: imgAlign,
-								label: 'imgAlign',
-							} }
-							className="uagb-multi-button-alignment-control"
-							options={ [
-								{
-									value: 'top',
-									label: 'Top',
-								},
-								{
-									value: 'side',
-									label: 'Side',
-								},
-							] }
-							showIcons={ false }
-							onChange = { setImgAlign }
-						/>
-						{ ( imgAlign === 'side' ) && (
-							<>
-							<MultiButtonsControl
-								setAttributes={ setAttributes }
-								label={ __(
-									'Alignment',
-									'ultimate-addons-for-gutenberg'
-								) }
-								data={ {
-									value: imagePosition,
-									label: 'imagePosition',
-								} }
-								className="uagb-multi-button-alignment-control"
-								options={ [
-									{
-										value: 'left',
-										icon: (
-											<Icon
-												icon={ renderSVG( 'fa fa-align-left' ) }
-											/>
-										),
-										tooltip: __(
-											'Left',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-									{
-										value: 'right',
-										icon: (
-											<Icon
-												icon={ renderSVG( 'fa fa-align-right' ) }
-											/>
-										),
-										tooltip: __(
-											'Right',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-								] }
-								showIcons={ true }
-								onChange = {setimagePosition}
-							/>
-							<MultiButtonsControl
-								setAttributes={ setAttributes }
-								label={ __(
-									'Stack on',
-									'ultimate-addons-for-gutenberg'
-								) }
-								data={ {
-									value: stack,
-									label: 'stack',
-								} }
-								className="uagb-multi-button-alignment-control"
-								options={ [
-									{
-										value: 'none',
-										label: 'None',
-									},
-									{
-										value: 'tablet',
-										label: 'Tablet',
-									},
-									{
-										value: 'mobile',
-										label: 'Mobile',
-									},
-								] }
-								help={ __(
-									'Note: Choose on what breakpoint the Images will stack.'
-								) }
-								showIcons={ false }
-								onChange={ setStack }
-							/>
-							<MultiButtonsControl
-								setAttributes={ setAttributes }
-								label={ __(
-									'Vertical Alignment',
-									'ultimate-addons-for-gutenberg'
-								) }
-								data={ {
-									value: imageAlignment,
-									label: 'imageAlignment',
-								} }
-								className="uagb-multi-button-alignment-control"
-								options={ [
-									{
-										value: 'top',
-										label: 'Top',
-									},
-									{
-										value: 'middle',
-										label: 'Middle',
-									},
-								] }
-								showIcons={ false }
-								onChange = { setimageAlignment }
-							/>
-						</>
-						)}
-						{ ( imgAlign === 'top' ) && (
-						<MultiButtonsControl
-							setAttributes={ setAttributes }
-							label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
-							data={ {
-								value: headingAlign,
-								label: 'headingAlign',
+								value: imagePosition,
+								label: 'imagePosition',
 							} }
 							className="uagb-multi-button-alignment-control"
 							options={ [
@@ -633,18 +536,6 @@ const Settings = ( props ) => {
 									),
 									tooltip: __(
 										'Left',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'center',
-									icon: (
-										<Icon
-											icon={ renderSVG( 'fa fa-align-center' ) }
-										/>
-									),
-									tooltip: __(
-										'Center',
 										'ultimate-addons-for-gutenberg'
 									),
 								},
@@ -662,9 +553,118 @@ const Settings = ( props ) => {
 								},
 							] }
 							showIcons={ true }
-							onChange = { setHeadingAlign }
+							onChange = {setimagePosition}
 						/>
-						)}
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __(
+								'Stack on',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: stack,
+								label: 'stack',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'none',
+									label: 'None',
+								},
+								{
+									value: 'tablet',
+									label: 'Tablet',
+								},
+								{
+									value: 'mobile',
+									label: 'Mobile',
+								},
+							] }
+							help={ __(
+								'Note: Choose on what breakpoint the Images will stack.'
+							) }
+							showIcons={ false }
+							onChange={ setStack }
+						/>
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __(
+								'Vertical Alignment',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: imageAlignment,
+								label: 'imageAlignment',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'top',
+									label: 'Top',
+								},
+								{
+									value: 'middle',
+									label: 'Middle',
+								},
+							] }
+							showIcons={ false }
+							onChange = { setimageAlignment }
+						/>
+					</>
+					)}
+					{ ( imgAlign === 'top' ) && (
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: headingAlign,
+							label: 'headingAlign',
+						} }
+						className="uagb-multi-button-alignment-control"
+						options={ [
+							{
+								value: 'left',
+								icon: (
+									<Icon
+										icon={ renderSVG( 'fa fa-align-left' ) }
+									/>
+								),
+								tooltip: __(
+									'Left',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'center',
+								icon: (
+									<Icon
+										icon={ renderSVG( 'fa fa-align-center' ) }
+									/>
+								),
+								tooltip: __(
+									'Center',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'right',
+								icon: (
+									<Icon
+										icon={ renderSVG( 'fa fa-align-right' ) }
+									/>
+								),
+								tooltip: __(
+									'Right',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+						] }
+						showIcons={ true }
+						onChange = { setHeadingAlign }
+					/>
+					)}
+				{ showImage && (
+					<>
 						<UAGSelectControl
 							label={ __(
 								'Size',
