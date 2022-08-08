@@ -48,6 +48,7 @@ class Admin_Helper {
 			'rollback_to_previous_version'       => isset( $uag_versions[0]['value'] ) ? $uag_versions[0]['value'] : '',
 			'uag_previous_versions'              => $uag_versions,
 			'changelog_data'                     => $changelog_data,
+			'blocks_activation_and_deactivation' => self::get_blocks(),
             'recaptcha_site_key_v2'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
 			'recaptcha_secret_key_v2'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ),
 			'recaptcha_site_key_v3'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),
@@ -70,7 +71,6 @@ class Admin_Helper {
 		$options = array(
 			'enable_beta_updates'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uagb_beta', 'no' ),
 			'enable_file_generation'             => \UAGB_Admin_Helper::get_admin_settings_option( '_uagb_allow_file_generation', 'enabled' ),
-			'blocks_activation_and_deactivation' => self::get_blocks(),
 			'enable_templates_button'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' ),
 			'enable_block_condition'             => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_condition', 'disabled' ),
 			'enable_masonry_gallery'             => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ),
@@ -88,6 +88,12 @@ class Admin_Helper {
 			'auto_block_recovery'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_auto_block_recovery', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
 			'uagb_old_user_less_than_2'          => get_option( 'uagb-old-user-less-than-2' ),
 		);
+
+		$setting_data = get_option( 'spectra_settings_data' );
+
+		if( ! $setting_data ) {
+			update_option( 'spectra_settings_data', $options );
+		}
 
 		return $options;
 	}
@@ -163,15 +169,10 @@ class Admin_Helper {
 		$general_settings = self::get_common_settings();
 		$all_options = self::get_settings_page_data();
 
+
 		$options = array_merge( $general_settings, $all_options );
 
 		$options = apply_filters( 'uag_global_data_options', $options );
-
-		$setting_data = get_option( 'spectra_settings_data' );
-
-		if( ! $setting_data ) {
-			update_option( 'spectra_settings_data', $all_options );
-		}
 
 		return $options;
 	}
