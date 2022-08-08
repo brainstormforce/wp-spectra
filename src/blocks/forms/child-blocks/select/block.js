@@ -11,7 +11,7 @@ import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/forms-select', {
 	title: __( 'Select', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'This block helps to add Select field.', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'Add a select dropdown to list choices.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.select,
 	category: uagb_blocks_info.category,
 	parent: [ 'uagb/forms' ],
