@@ -61,9 +61,9 @@ $imgpaddingLeft   = isset( $attr['imgpaddingLeft'] ) ? $attr['imgpaddingLeft'] :
 
 $selectors = array(
 	' .uagb-testimonial__wrap'                         => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, $attr['rowGapType'] ),
 		'padding-left'  => UAGB_Helper::get_css_value( ( ( $column_gap_fallback ) / 2 ), $attr['columnGapType'] ),
 		'padding-right' => UAGB_Helper::get_css_value( ( ( $column_gap_fallback ) / 2 ), $attr['columnGapType'] ),
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, $attr['rowGapType'] ),
 	),
 	' .uagb-tm__content'                               => array(
 		'text-align'     => $attr['headingAlign'],
@@ -209,9 +209,9 @@ $t_selectors = array(
 	'  .uagb-testimonial__wrap .uagb-tm__image-content' => array(
 		'text-align'     => $attr['headingAlignTablet'],
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['imgpaddingTopTablet'], $attr['imgtabletPaddingUnit'] ),
-		'padding-right' => UAGB_Helper::get_css_value( $attr['imgpaddingRightTablet'], $attr['imgtabletPaddingUnit'] ),
-		'padding-bottom'   => UAGB_Helper::get_css_value( $attr['imgpaddingBottomTablet'], $attr['imgtabletPaddingUnit'] ),
-		'padding-left'  => UAGB_Helper::get_css_value( $attr['imgpaddingLeftTablet'], $attr['imgtabletPaddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['imgpaddingRightTablet'], $attr['imgtabletPaddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['imgpaddingBottomTablet'], $attr['imgtabletPaddingUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['imgpaddingLeftTablet'], $attr['imgtabletPaddingUnit'] ),
 	),
 );
 
