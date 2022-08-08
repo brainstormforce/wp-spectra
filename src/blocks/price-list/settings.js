@@ -171,6 +171,17 @@ const Settings = ( props ) => {
 		setAttributes( { imgAlign: value } );
 	};
 
+	const setShowImage = ( value ) => {
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
+			props.clientId
+		);
+
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.showImage = value;
+		} );
+		setAttributes( { showImage: value } );
+	};
+
 	const setimageSize = ( value ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
@@ -476,9 +487,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ showImage }
-					onChange={ () =>
-						setAttributes( { showImage : ! showImage } )
-					}
+					onChange={ setShowImage }
 				/>
 				{ showImage && (
 					<>
