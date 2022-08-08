@@ -65,6 +65,10 @@ class UAGB_Init_Blocks {
 			add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
 		}
 
+		// delete_option( 'spectra_blocks_pages_counted' );
+		// delete_option( 'spectra_blocks_count_status' );
+		// delete_option( 'get_spectra_block_count' );
+
 		add_action( 'spectra_total_blocks_count_action', array( $this, 'blocks_count_logic' ) );
 
 		add_action( 'spectra_analytics_count_actions', array( $this, 'send_spectra_specific_stats' ) );
@@ -96,17 +100,22 @@ class UAGB_Init_Blocks {
 		$list_blocks    = UAGB_Helper::$block_list;
 		$spectra_block_count = 0;
 		$blocks_count 	= array();
+		$all_blocks_data 	= array();
 
 		$page = get_option( 'spectra_blocks_pages_counted', 1 );
 
 		$saved_block_count = get_option( 'get_spectra_block_count', 0 );
+
 		$count_status = get_option( 'spectra_blocks_count_status' );
 
 		if( ! $saved_block_count ) {
 			// Update block list count.
 			foreach ( $list_blocks as $slug => $value ) {
 				$_slug                    = str_replace( 'uagb/', '', $slug );
-				$blocks_count[ '<!-- wp:' . $slug ] = array(
+				$all_blocks_data[ '<!-- wp:' . $slug ] = array(
+					'name' => $_slug
+				);
+				$blocks_count[ $_slug ] = array(
 					'name' => $_slug,
 					'count' => 0
 				);
@@ -126,10 +135,12 @@ class UAGB_Init_Blocks {
 
 		if ( $query->have_posts() && $query->max_num_pages >= $page ) {
 			foreach ( $query->posts as $key => $post ) {
-				foreach ( $blocks_count as $block_key => $block ) {
+				foreach ( $all_blocks_data as $block_key => $block ) {
 					if ( false !== strpos( $post->post_content, $block_key ) ) {
-						$usage_count = $blocks_count[ $block_key ][ 'count' ];
-						$blocks_count[ $block_key ][ 'count' ] = $usage_count + 1;
+						$block_slug = str_replace( '<!-- wp:uagb/', '', $block_key );
+
+						$usage_count = $blocks_count[ $block_slug ][ 'count' ];
+						$blocks_count[ $block_slug ][ 'count' ] = $usage_count + 1;
 						$spectra_block_count++;
 					}
 				}
@@ -142,6 +153,8 @@ class UAGB_Init_Blocks {
 		} else {
 			update_option( 'spectra_blocks_count_status', 'done' );
 		}
+
+		error_log( print_r( $blocks_count, true ) );
 
 		if ( $spectra_block_count > 0 ) {
 			update_option( 'get_spectra_block_count', $blocks_count );
