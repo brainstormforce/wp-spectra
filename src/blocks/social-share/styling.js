@@ -135,7 +135,7 @@ function styling( props ) {
 			return 'flex-start';
 		} else if( textalign === 'right' ){
 			return 'flex-end';
-		} 
+		}
 		return 'center';
 	}
 
@@ -216,16 +216,22 @@ function styling( props ) {
 				'margin-left': 0,
 				'margin-right': 0,
 				'margin-bottom': generateCSSUnit( gapFallback, 'px' ),
+				'background': iconBgColor,
+
 			};
 			tabletSelectors[ ' .uagb-ss__wrapper' ] = {
 				'margin-left': 0,
 				'margin-right': 0,
 				'margin-bottom': generateCSSUnit( gapTablet, 'px' ),
+				'background': iconBgColor,
+
 			};
 			mobileSelectors[ ' .uagb-ss__wrapper' ] = {
 				'margin-left': 0,
 				'margin-right': 0,
 				'margin-bottom': generateCSSUnit( gapMobile, 'px' ),
+				'background': iconBgColor,
+
 			};
 
 			selectors[ '.uagb-social-share__outer-wrap' ] = {
@@ -262,6 +268,7 @@ function styling( props ) {
 				'margin-left': 0,
 				'margin-right': 0,
 				'margin-bottom': generateCSSUnit( gapTablet, 'px' ),
+				'background': iconBgColor,
 			};
 
 			tabletSelectors[
@@ -314,6 +321,8 @@ function styling( props ) {
 				'margin-left': 0,
 				'margin-right': 0,
 				'margin-bottom': generateCSSUnit( gapMobile, 'px' ),
+				'background': iconBgColor,
+
 			};
 
 			mobileSelectors[

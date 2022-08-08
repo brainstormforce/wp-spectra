@@ -25,6 +25,8 @@ function styling( props ) {
 		minHeightTablet,
 		minHeightMobile,
 		minHeightType,
+		minHeightTypeTablet,
+		minHeightTypeMobile,
 		directionDesktop,
 		directionTablet,
 		directionMobile,
@@ -433,11 +435,11 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( bottomMarginTablet, marginTypeTablet )  + ' !important',
 			'margin-left': generateCSSUnit( leftMarginTablet, marginTypeTablet ),
 			'margin-right': generateCSSUnit( rightMarginTablet, marginTypeTablet ),
-			'min-height' : generateCSSUnit( minHeightTablet, minHeightType ),
+			'min-height' : generateCSSUnit( minHeightTablet, minHeightTypeTablet ),
 			...containerBackgroundCSSTablet,
 			...borderCSSTablet
 		},
-		'containerFlexSelector' : {
+		[containerFlexSelector] : {
 			'flex-direction' : directionTablet,
 			'align-items' : alignItemsTablet,
 			'justify-content' : justifyContentTablet,
@@ -445,10 +447,10 @@ function styling( props ) {
 			'align-content' : alignContentTablet,
 			'row-gap' : generateCSSUnit( rowGapTablet, rowGapTypeTablet ),
 			'column-gap' : generateCSSUnit( columnGapTablet, columnGapTypeTablet ),
-			'min-height' : generateCSSUnit( minHeightTablet, minHeightType ),
+			'min-height' : generateCSSUnit( minHeightTablet, minHeightTypeTablet ),
 		},
 		'.block-editor-block-list__block' : {
-			'min-height' : generateCSSUnit( minHeightTablet, minHeightType ),
+			'min-height' : generateCSSUnit( minHeightTablet, minHeightTypeTablet ),
 			'flex-direction' : directionTablet,
 			'align-items' : alignItemsTablet,
 			'justify-content' : justifyContentTablet,
@@ -497,11 +499,11 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( bottomMarginMobile, marginTypeMobile )  + ' !important',
 			'margin-left': generateCSSUnit( leftMarginMobile, marginTypeMobile ),
 			'margin-right': generateCSSUnit( rightMarginMobile, marginTypeMobile ),
-			'min-height' : generateCSSUnit( minHeightMobile, minHeightType ),
+			'min-height' : generateCSSUnit( minHeightMobile, minHeightTypeMobile ),
 			...containerBackgroundCSSMobile,
 			...borderCSSMobile
 		},
-		'containerFlexSelector' : {
+		[containerFlexSelector] : {
 			'flex-direction' : directionMobile,
 			'align-items' : alignItemsMobile,
 			'justify-content' : justifyContentMobile,
@@ -509,10 +511,10 @@ function styling( props ) {
 			'align-content' : alignContentMobile,
 			'row-gap' : generateCSSUnit( rowGapMobile, rowGapTypeMobile ),
 			'column-gap' : generateCSSUnit( columnGapMobile, columnGapTypeMobile ),
-			'min-height' : generateCSSUnit( minHeightMobile, minHeightType ),
+			'min-height' : generateCSSUnit( minHeightMobile, minHeightTypeMobile ),
 		},
 		'.block-editor-block-list__block' : {
-			'min-height' : generateCSSUnit( minHeightMobile, minHeightType ),
+			'min-height' : generateCSSUnit( minHeightMobile, minHeightTypeMobile ),
 			'flex-direction' : directionMobile,
 			'align-items' : alignItemsMobile,
 			'justify-content' : justifyContentMobile,
