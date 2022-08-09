@@ -27,6 +27,7 @@ import presets, {buttonsPresets} from './presets';
 import UAGPresets from '@Components/presets';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import UAGNumberControl from '@Components/number-control';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -638,20 +639,20 @@ const UAGBPostCarousel = ( props ) => {
 						} )
 					}
 				/>
-				<Range
+				<UAGNumberControl
 					label={ __(
 						'Posts Per Page',
 						'ultimate-addons-for-gutenberg'
 					) }
+					setAttributes={ setAttributes }
 					value={ postsToShow }
 					data={ {
 						value: postsToShow,
 						label: 'postsToShow',
 					} }
-					setAttributes={ setAttributes }
-					displayUnit={ false }
 					min={ 1 }
 					max={ 100 }
+					displayUnit={ false }
 				/>
 				<ToggleControl
 					label={ __(
@@ -670,7 +671,7 @@ const UAGBPostCarousel = ( props ) => {
 						}
 				/>
 				{ enableOffset && (
-				<Range
+				<UAGNumberControl
 					label={ __(
 						'Offset By',
 						'ultimate-addons-for-gutenberg'

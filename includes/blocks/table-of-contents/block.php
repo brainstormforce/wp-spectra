@@ -19,4 +19,5 @@ $block_data = array(
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-table-of-contents' ),
 	'priority'         => 19,
+	'deprecated'       => false,
 );

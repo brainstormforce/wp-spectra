@@ -210,6 +210,52 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 			>
 				<ResponsiveSlider
+					label={ __(
+						'Gap between Items',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: gap,
+							label: 'gap',
+						},
+						tablet: {
+							value: gapTablet,
+							label: 'gapTablet',
+						},
+						mobile: {
+							value: gapMobile,
+							label: 'gapMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 100 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+	const presetSettings = () => {
+		return <UAGAdvancedPanelBody
+					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
+				>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { presets }
+						presetInputType = 'radioImage'
+					/>
+				</UAGAdvancedPanelBody>
+	};
+
+	const iconSettings = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
+			>
+								<ResponsiveSlider
 					label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
@@ -280,52 +326,6 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 				/>
-				<ResponsiveSlider
-					label={ __(
-						'Gap between Items',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						desktop: {
-							value: gap,
-							label: 'gap',
-						},
-						tablet: {
-							value: gapTablet,
-							label: 'gapTablet',
-						},
-						mobile: {
-							value: gapMobile,
-							label: 'gapMobile',
-						},
-					} }
-					min={ 0 }
-					max={ 100 }
-					displayUnit={ false }
-					setAttributes={ setAttributes }
-				/>
-			</UAGAdvancedPanelBody>
-		);
-	};
-	const presetSettings = () => {
-		return <UAGAdvancedPanelBody
-					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
-					initialOpen={ true }
-				>
-					<UAGPresets
-						setAttributes = { setAttributes }
-						presets = { presets }
-						presetInputType = 'radioImage'
-					/>
-				</UAGAdvancedPanelBody>
-	};
-
-	const iconColorSettings = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
 				<UAGTabsControl
 					tabs={ [
 						{
@@ -410,7 +410,7 @@ const Settings = ( props ) => {
 						{ generalSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-						{iconColorSettings()}
+						{iconSettings()}
 						{ spacingSettings() }
 					</InspectorTab>
 					<InspectorTab
