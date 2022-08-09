@@ -134,10 +134,10 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$spectra_bsf_analytics->set_entity(
 				array(
-					'spectra' => array(
-						'product_name'   => 'Spectra',
-						'path'           => UAGB_DIR . 'admin/bsf-analytics',
-						'author'         => 'Brainstorm Force',
+					'bsf' => array(
+						'product_name'    => 'Spectra',
+						'path'            => UAGB_DIR . 'admin/bsf-analytics',
+						'author'          => 'Brainstorm Force',
 						'time_to_display' => '+24 hours',
 					),
 				)
@@ -155,6 +155,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 				require_once UAGB_DIR . 'classes/class-uagb-beta-updates.php';
 				require_once UAGB_DIR . 'classes/class-uagb-rollback.php';
 			}
+
 		}
 
 		/**
@@ -192,11 +193,11 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			add_filter( 'rest_pre_dispatch', array( $this, 'rest_pre_dispatch' ), 10, 3 );
 
-			if( 'done' === get_option( 'spectra_blocks_count_status' ) ) {
+			if ( 'done' === get_option( 'spectra_blocks_count_status' ) && get_option( 'spectra_settings_data' ) && get_option( 'get_spectra_block_count' ) ) {
 
 				// Active widgets data to analytics.
 				add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
-	
+
 			}
 
 		}
@@ -211,12 +212,14 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		public function spectra_specific_stats( $default_stats ) {
 
 			$settings_data = get_option( 'spectra_settings_data' );
-			$blocks_count = get_option( 'get_spectra_block_count' );
+			$blocks_count  = get_option( 'get_spectra_block_count' );
+			$blocks_status = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks' );
 
 			$default_stats['spectra_settings'] = array(
-				'spectra_version'  	=> UAGB_VER,
-				'settings_data'		=> $settings_data,
-				'blocks_count'		=> $blocks_count,
+				'spectra_version'          => UAGB_VER,
+				'settings_page_data'       => $settings_data,
+				'blocks_count'             => $blocks_count,
+				'blocks_activation_status' => $blocks_status,
 			);
 
 			return $default_stats;
