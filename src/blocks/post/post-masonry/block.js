@@ -15,6 +15,7 @@ import { __ } from '@wordpress/i18n';
 // Register block controls
 import { registerBlockType } from '@wordpress/blocks';
 
+if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) {
 // Register the block
 registerBlockType( 'uagb/post-masonry', {
 	title: __( 'Post Masonry', 'ultimate-addons-for-gutenberg' ),
@@ -27,9 +28,14 @@ registerBlockType( 'uagb/post-masonry', {
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
 	edit,
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	// Render via PHP
 	save() {
 		return null;
 	},
 } );
+}

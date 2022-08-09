@@ -8,6 +8,7 @@ import Company from './components/Company';
 import Description from './components/Description';
 import PositionClasses from './classes';
 import TestimonialImage from './components/Image';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 export default function save( props ) {
 	const {
@@ -16,20 +17,24 @@ export default function save( props ) {
 		columns,
 		test_block,
 		imagePosition,
+		equalHeight
 	} = props.attributes;
-
+	const equalHeightClass = equalHeight
+	? 'uagb-post__carousel_equal-height'
+	: '';
 	return (
 		<div
 			className={ classnames(
 				className,
 				'uagb-slick-carousel uagb-tm__arrow-outside',
-				`uagb-block-${ block_id }`
+				`uagb-block-${ block_id }`,
+				`${ equalHeightClass }`,
 			) }
 		>
 			<div
 				className={ classnames(
 					'is-carousel',
-					`uagb-tm__columns-${ columns }`,
+					`uagb-tm__columns-${ getFallbackNumber( columns, 'columns', 'testimonial' ) }`,
 					'uagb-tm__items'
 				) }
 			>

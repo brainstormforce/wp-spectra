@@ -10,12 +10,12 @@
 $block_slug = 'uagb/container';
 $block_data = array(
 	'slug'             => '',
-	'admin_categories' => array( 'content' ),
+	'admin_categories' => array( 'content', 'core' ),
 	'link'             => 'container',
 	'doc'              => 'container',
 	'title'            => __( 'Container', 'ultimate-addons-for-gutenberg' ),
 	'description'      => __( 'This block lets you add a Flex Properties Based Container.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 2,
+	'priority'         => 1,
 );

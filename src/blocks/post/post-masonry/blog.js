@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
 import React, { useRef, useEffect, lazy, Suspense } from 'react';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 const Masonry = lazy( () =>
 	import(
@@ -15,10 +16,12 @@ import {
 } from '.././function';
 
 function Blog( props ) {
+	const blockName = props.name.replace( 'uagb/', '' );
 	const article = useRef();
 	const { attributes, className, latestPosts, block_id } = props;
 	const deviceType = useDeviceType();
 	const {
+		isPreview,
 		columns,
 		tcolumns,
 		mcolumns,
@@ -31,6 +34,12 @@ function Blog( props ) {
 		rowGap
 	} = attributes;
 
+	const postsToShowFallback = getFallbackNumber( postsToShow, 'postsToShow', blockName );
+	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
+	const tcolumnsFallback = getFallbackNumber( tcolumns, 'tcolumns', blockName );
+	const mcolumnsFallback = getFallbackNumber( mcolumns, 'mcolumns', blockName );
+	const rowGapFallback = getFallbackNumber( rowGap, 'rowGap', blockName );
+
 	const updateImageBgWidth = () => {
 
 		setTimeout( () => {
@@ -38,7 +47,7 @@ function Blog( props ) {
 			if( article?.current ){
 
 				const articleWidth  = article?.current?.offsetWidth;
-				const imageWidth = 100 - ( rowGap / articleWidth ) * 100;
+				const imageWidth = 100 - ( rowGapFallback / articleWidth ) * 100;
 				const parent = article?.current?.parentNode;
 
 				if ( parent && parent.classList.contains( 'uagb-post__image-position-background' ) ) {
@@ -46,7 +55,7 @@ function Blog( props ) {
 					for( const image of images ) {
 						if ( image ) {
 							image.style.width = imageWidth + '%';
-							image.style.marginLeft = rowGap / 2 + 'px';
+							image.style.marginLeft = rowGapFallback / 2 + 'px';
 
 						}
 					}
@@ -66,8 +75,8 @@ function Blog( props ) {
 
 	// Removing posts from display should be instant.
 	const displayPosts =
-		latestPosts.length > postsToShow
-			? latestPosts.slice( 0, postsToShow )
+		latestPosts.length > postsToShowFallback
+			? latestPosts.slice( 0, postsToShowFallback )
 			: latestPosts;
 
 	const paginationRender = () => {
@@ -95,7 +104,9 @@ function Blog( props ) {
 			}
 		}
 	};
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/post-masonry.png`;
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				className,
@@ -111,9 +122,9 @@ function Blog( props ) {
 				<Masonry
 					className={ classnames(
 						'is-masonry',
-						`uagb-post__columns-${ columns }`,
-						`uagb-post__columns-tablet-${ tcolumns }`,
-						`uagb-post__columns-mobile-${ mcolumns }`,
+						`uagb-post__columns-${ columnsFallback }`,
+						`uagb-post__columns-tablet-${ tcolumnsFallback }`,
+						`uagb-post__columns-mobile-${ mcolumnsFallback }`,
 						'uagb-post__items',
 						className,
 						'uagb-post-grid',

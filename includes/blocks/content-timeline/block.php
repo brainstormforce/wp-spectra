@@ -11,7 +11,7 @@ $block_slug = 'uagb/content-timeline';
 $block_data = array(
 	'doc'                 => 'content-timeline',
 	'slug'                => '',
-	'admin_categories'    => array( 'creative', 'content' ),
+	'admin_categories'    => array( 'content' ),
 	'link'                => 'content-timeline',
 	'title'               => __( 'Content Timeline', 'ultimate-addons-for-gutenberg' ),
 	'description'         => __( 'The Timeline block lets you create beautiful timelines on your website.', 'ultimate-addons-for-gutenberg' ),
@@ -24,7 +24,7 @@ $block_data = array(
 			'type' => 'js',
 		),
 	),
-	'priority'            => 3,
+	'priority'            => 28,
 	'static_css'          => 'timeline',
 	'dynamic_assets'      => array(
 		'dir' => 'content-timeline',

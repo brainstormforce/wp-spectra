@@ -14,7 +14,7 @@ const Settings = lazy( () =>
 const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/price-list/render" */ './render' )
 );
-
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 const UAGBRestaurantMenu = ( props ) => {
 	const deviceType = useDeviceType();
 	useEffect( () => {
@@ -77,15 +77,12 @@ const UAGBRestaurantMenu = ( props ) => {
 		if( imagePosition ){
 			if( 'left' === imagePosition ){
 				props.setAttributes( { imgAlign: 'side' } );
-				props.setAttributes( { imagePosition: 'left' } );
 			}
 			if( 'right' === imagePosition ){
 				props.setAttributes( { imgAlign: 'side' } );
-				props.setAttributes( { imagePosition: 'right' } );
 			}
 			if( 'top' === imagePosition ){
 				props.setAttributes( { imgAlign: 'top' } );
-				props.setAttributes( { imagePosition: 'top' } );
 			}
 		}
 
@@ -120,6 +117,11 @@ const UAGBRestaurantMenu = ( props ) => {
 			imageAlignment
 		} = props.attributes;
 
+		const blockName = props.name.replace( 'uagb/', '' );
+		const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
+		const tcolumnsFallback = getFallbackNumber( tcolumns, 'tcolumns', blockName );
+		const mcolumnsFallback = getFallbackNumber( mcolumns, 'mcolumns', blockName );
+
 		if( 'side' === imgAlign && 'right' !== imagePosition ){
 			props.setAttributes( { imagePosition : 'left' } );
 			props.setAttributes( { headingAlign : 'left' } );
@@ -149,9 +151,9 @@ const UAGBRestaurantMenu = ( props ) => {
 			const attrs = getBlockAttributes( clientId );
 			if (
 				attrs.imagePosition !== imagePosition ||
-				attrs.columns !== columns ||
-				attrs.tcolumns !== tcolumns ||
-				attrs.mcolumns !== mcolumns ||
+				attrs.columns !== columnsFallback ||
+				attrs.tcolumns !== tcolumnsFallback ||
+				attrs.mcolumns !== mcolumnsFallback ||
 				attrs.headingTag !== headingTag ||
 				attrs.imageSize !== imageSize ||
 				attrs.headingAlign !== headingAlign ||

@@ -7,14 +7,14 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 	const {
-		borderWidth,
-		borderStyle,
-		borderColor,
-		borderHColor,
-		borderRadius,
+		blockName,
+
+		btnBorderHColor,
 		align,
 
 		titleColor,
@@ -29,6 +29,8 @@ function styling( props ) {
 		titleLineHeightTablet,
 		titleLineHeightMobile,
 		titleBottomSpace,
+		titleBottomSpaceTablet,
+		titleBottomSpaceMobile,
 		titleTransform,
 		titleDecoration,
 		titleBottomSpaceUnit,
@@ -46,6 +48,8 @@ function styling( props ) {
 		metaLineHeightMobile,
 		metaColor,
 		metaBottomSpace,
+		metaBottomSpaceTablet,
+		metaBottomSpaceMobile,
 		metaTransform,
 		metaDecoration,
 		metaBottomSpaceUnit,
@@ -64,6 +68,8 @@ function styling( props ) {
 		excerptLineHeightMobile,
 		excerptColor,
 		excerptBottomSpace,
+		excerptBottomSpaceTablet,
+		excerptBottomSpaceMobile,
 		excerptBottomSpaceUnit,
 		excerptTransform,
 		excerptDecoration,
@@ -82,6 +88,8 @@ function styling( props ) {
 		ctaLineHeightTablet,
 		ctaLineHeightMobile,
 		ctaBottomSpace,
+		ctaBottomSpaceTablet,
+		ctaBottomSpaceMobile,
 		ctaBgColor,
 		ctaHColor,
 		ctaBgHColor,
@@ -90,6 +98,8 @@ function styling( props ) {
 		ctaBottomSpaceUnit,
 
 		imageBottomSpace,
+		imageBottomSpaceTablet,
+		imageBottomSpaceMobile,
 		imageBottomSpaceUnit,
 
 		overlayOpacity,
@@ -98,7 +108,11 @@ function styling( props ) {
 		rowGapUnit,
 		columnGapUnit,
 		rowGap,
+		rowGapTablet,
+		rowGapMobile,
 		columnGap,
+		columnGapTablet,
+		columnGapMobile,
 		bgColor,
 
 		paginationColor,
@@ -153,10 +167,6 @@ function styling( props ) {
 		paginationAlign,
 		paginationTextColor,
 		paginationMasonryBgColor,
-		paginationMasonryBorderStyle,
-		paginationMasonryBorderWidth,
-		paginationMasonryBorderRadius,
-		paginationMasonryBorderColor,
 		paginationMasonryBorderHColor,
 		paginationButtonPaddingType,
 		paginationTextHoverColor,
@@ -177,39 +187,125 @@ function styling( props ) {
 		tabletpaginationButtonPaddingType,
 		loaderSize,
 		loaderColor,
+		highlightedTextColor,
+		highlightedTextBgColor,
+		imgPosition,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		metaLetterSpacing,
+		metaLetterSpacingTablet,
+		metaLetterSpacingMobile,
+		metaLetterSpacingType,
+		excerptLetterSpacing,
+		excerptLetterSpacingTablet,
+		excerptLetterSpacingMobile,
+		excerptLetterSpacingType,
+		ctaLetterSpacing,
+		ctaLetterSpacingTablet,
+		ctaLetterSpacingMobile,
+		ctaLetterSpacingType,
+		boxShadowColor,
+		boxShadowHOffset,
+		boxShadowVOffset,
+		boxShadowBlur,
+		boxShadowSpread,
+		boxShadowPosition,
+		boxShadowColorHover,
+		boxShadowHOffsetHover,
+		boxShadowVOffsetHover,
+		boxShadowBlurHover,
+		boxShadowSpreadHover,
+		boxShadowPositionHover,
 	} = props.attributes;
+
+	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
+	const columnGapFallback = getFallbackNumber( columnGap, 'columnGap', blockName );
+	const rowGapFallback = getFallbackNumber( rowGap, 'rowGap', blockName );
+	const imageBottomSpaceFallback = getFallbackNumber( imageBottomSpace, 'imageBottomSpace', blockName );
+	const titleBottomSpaceFallback = getFallbackNumber( titleBottomSpace, 'titleBottomSpace', blockName );
+	const metaBottomSpaceFallback = getFallbackNumber( metaBottomSpace, 'metaBottomSpace', blockName );
+	const excerptBottomSpaceFallback = getFallbackNumber( excerptBottomSpace, 'excerptBottomSpace', blockName );
+	const ctaBottomSpaceFallback = getFallbackNumber( ctaBottomSpace, 'ctaBottomSpace', blockName );
+
+	const paginationSpacingFallback = undefined !== paginationSpacing ? getFallbackNumber( paginationSpacing, 'paginationSpacing', blockName ) : '';
+	const paginationBorderRadiusFallback = undefined !== paginationBorderRadius ? getFallbackNumber( paginationBorderRadius, 'paginationBorderRadius', blockName ) : '';
+	const paginationBorderSizeFallback = undefined !== paginationBorderSize ? getFallbackNumber( paginationBorderSize, 'paginationBorderSize', blockName ) : '';
+	const arrowSizeFallback = undefined !== arrowSize ? getFallbackNumber( arrowSize, 'arrowSize', blockName ) : '';
+	const paginationFontSizeFallback = undefined !== paginationFontSize ? getFallbackNumber( paginationFontSize, 'paginationFontSize', blockName ) : '';
+	const loaderSizeFallback = undefined !== loaderSize ? getFallbackNumber( loaderSize, 'loaderSize', blockName ) : '';
+
+	const rowGapTabletFallback = isNaN( rowGapTablet ) ? rowGapFallback : rowGapTablet;
+	const rowGapMobileFallback = isNaN( rowGapMobile ) ? rowGapTabletFallback : rowGapMobile;
+
+	const borderCSS = generateBorderCSS( props.attributes, 'btn' );
+	const borderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+
+	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' );
+	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' );
+	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' );
+
+	const paginationMasonryBorderCSS = generateBorderCSS( props.attributes, 'paginationMasonry' );
+	const paginationMasonryBorderCSSTablet = generateBorderCSS( props.attributes, 'paginationMasonry', 'tablet' );
+	const paginationMasonryBorderCSSMobile = generateBorderCSS( props.attributes, 'paginationMasonry', 'mobile' );
 
 	let mobileSelectors = {};
 	let tabletSelectors = {};
 
+	let boxShadowPositionCSS = boxShadowPosition;
+
+	if ( 'outset' === boxShadowPosition ) {
+		boxShadowPositionCSS = '';
+	}
+
+	let boxShadowPositionCSSHover = boxShadowPositionHover;
+
+	if ( 'outset' === boxShadowPositionHover ) {
+		boxShadowPositionCSSHover = '';
+	}
 	const selectors = {
-		'.uagb-post__items': {
-			'margin-right': generateCSSUnit( -rowGap / 2, rowGapUnit ),
-			'margin-left': generateCSSUnit( -rowGap / 2, rowGapUnit ),
+		'.wp-block-uagb-post-grid.uagb-post__items': {
+			'column-gap': generateCSSUnit( columnGapFallback , columnGapUnit ),
+			'row-gap': generateCSSUnit( rowGapFallback, rowGapUnit ),
 		},
-		'.uagb-post__items article': {
-			'padding-right': generateCSSUnit( rowGap / 2, rowGapUnit ),
-			'padding-left': generateCSSUnit( rowGap / 2, rowGapUnit ),
-			'margin-bottom': generateCSSUnit( columnGap, columnGapUnit ),
+		':not(.wp-block-uagb-post-grid).uagb-post__items': {
+			'margin-right': generateCSSUnit( -rowGapFallback / 2, rowGapUnit ),
+			'margin-left': generateCSSUnit( -rowGapFallback / 2, rowGapUnit ),
+		},
+		':not(.wp-block-uagb-post-grid).uagb-post__items article': {
+			'padding-right': generateCSSUnit( rowGapFallback / 2, rowGapUnit ),
+			'padding-left': generateCSSUnit( rowGapFallback / 2, rowGapUnit ),
+			'margin-bottom': generateCSSUnit( columnGapFallback, columnGapUnit ),
 		},
 		' .uagb-post__inner-wrap': {
 			'background': bgColor,
 			'text-align': align,
 		},
-		' .uagb-post__inner-wrap .uagb-post__text': {
+		'.wp-block-uagb-post-grid .uagb-post__inner-wrap': {
+			'box-shadow':
+				generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
+				generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
+				boxShadowColor + ' ' +	boxShadowPositionCSS,
+			...overallBorderCSS,
+			'padding-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
+			'padding-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
+			'padding-bottom': generateCSSUnit( paddingBottom, contentPaddingUnit ),
+			'padding-right': generateCSSUnit( paddingRight, contentPaddingUnit ),
+		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)': {
 			'margin-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
 			'margin-right': generateCSSUnit(
 				paddingRight,
 				contentPaddingUnit
 			),
 		},
-		' .uagb-post__inner-wrap .uagb-post__text:first-child': {
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text.highlighted:first-child': {
 			'margin-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
+			'margin-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
 		},
-		' .uagb-post__inner-wrap .uagb-post__text.uagb-post__title': {
-			'margin-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
-		},
-		' .uagb-post__inner-wrap .uagb-post__text:last-child': {
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:last-child': {
 			'margin-bottom': generateCSSUnit(
 				paddingBottom,
 				contentPaddingUnit
@@ -217,41 +313,48 @@ function styling( props ) {
 		},
 		' .uagb-post__inner-wrap .uagb-post__cta': {
 			'margin-bottom': generateCSSUnit(
-				ctaBottomSpace,
+				ctaBottomSpaceFallback,
 				ctaBottomSpaceUnit
 			),
 		},
 		' .uagb-post__inner-wrap .uagb-post__image': {
 			'margin-bottom': generateCSSUnit(
-				imageBottomSpace,
+				imageBottomSpaceFallback,
 				imageBottomSpaceUnit
 			),
 		},
+		' .uagb-post__inner-wrap .uagb-post__image + .uagb-post__title ': {
+			'margin-top': '0px',
+		},
 		' .uagb-post__inner-wrap .uagb-post__title': {
 			'margin-bottom': generateCSSUnit(
-				titleBottomSpace,
+				titleBottomSpaceFallback,
 				titleBottomSpaceUnit
+			),
+			'margin-top': generateCSSUnit(
+				paddingTop,
+				contentPaddingUnit
 			),
 		},
 		' .uagb-post__inner-wrap .uagb-post-grid-byline': {
 			'margin-bottom': generateCSSUnit(
-				metaBottomSpace,
+				metaBottomSpaceFallback,
 				metaBottomSpaceUnit
 			),
 		},
 		' .uagb-post__inner-wrap .uagb-post__excerpt': {
 			'margin-bottom': generateCSSUnit(
-				excerptBottomSpace,
+				excerptBottomSpaceFallback,
 				excerptBottomSpaceUnit
 			),
 		},
 		' .uagb-post__image:before': {
 			'background-color': bgOverlayColor,
-			'opacity': overlayOpacity / 100,
+			'opacity': overlayOpacityFallback / 100,
 		},
 		' .uagb-post-pagination-wrap': {
 			'margin-top': generateCSSUnit(
-				paginationSpacing,
+				paginationSpacingFallback,
 				paginationSpacingUnit
 			),
 			'justify-content': paginationAlignment,
@@ -259,9 +362,9 @@ function styling( props ) {
 	};
 
 	if ( 'left' === paginationAlignment ) {
-		selectors[' .uagb-post-pagination-wrap']['margin-left'] = generateCSSUnit( rowGap / 2, rowGapUnit );
+		selectors[' .uagb-post-pagination-wrap']['margin-left'] = generateCSSUnit( rowGapFallback / 2, rowGapUnit );
 	} else if ( 'right' === paginationAlignment ) {
-		selectors[' .uagb-post-pagination-wrap']['margin-right'] = generateCSSUnit( rowGap / 2, rowGapUnit );
+		selectors[' .uagb-post-pagination-wrap']['margin-right'] = generateCSSUnit( rowGapFallback / 2, rowGapUnit );
 	}
 
 	selectors[ ' .uagb-post__title' ] = {
@@ -276,6 +379,7 @@ function styling( props ) {
 		'text-transform': titleTransform,
 		'text-decoration': titleDecoration,
 		'font-style': titleFontStyle,
+		'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 	};
 	selectors[ ' .uagb-post__title a' ] = {
 		'color': titleColor,
@@ -286,6 +390,7 @@ function styling( props ) {
 			titleLineHeight,
 			titleLineHeightType
 		),
+		'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 	};
 	selectors[ ' .uagb-post-grid-byline' ] = {
 		'color': metaColor,
@@ -299,6 +404,62 @@ function styling( props ) {
 		'text-transform': metaTransform,
 		'text-decoration': metaDecoration,
 		'font-style': metaFontStyle,
+		'letter-spacing': generateCSSUnit( metaLetterSpacing, metaLetterSpacingType ),
+	};
+	selectors[ ' .uagb-post-grid-byline time' ] = {
+		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
+		'font-family': metaFontFamily,
+		'font-weight': metaFontWeight,
+		'line-height': generateCSSUnit(
+			metaLineHeight,
+			metaLineHeightType
+		),
+		'text-transform': metaTransform,
+		'text-decoration': metaDecoration,
+		'font-style': metaFontStyle,
+		'letter-spacing': generateCSSUnit( metaLetterSpacing, metaLetterSpacingType ),
+	};
+	selectors[ ' .uagb-post-grid-byline span.uagb-post__comment' ] = {
+		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
+		'font-family': metaFontFamily,
+		'font-weight': metaFontWeight,
+		'line-height': generateCSSUnit(
+			metaLineHeight,
+			metaLineHeightType
+		),
+		'text-transform': metaTransform,
+		'text-decoration': metaDecoration,
+		'font-style': metaFontStyle,
+		'letter-spacing': generateCSSUnit( metaLetterSpacing, metaLetterSpacingType ),
+	};
+	selectors[ ' span.uagb-post__taxonomy' ] = {
+		'color': metaColor,
+		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
+		'font-family': metaFontFamily,
+		'font-weight': metaFontWeight,
+		'line-height': generateCSSUnit(
+			metaLineHeight,
+			metaLineHeightType
+		),
+		'text-transform': metaTransform,
+		'text-decoration': metaDecoration,
+		'font-style': metaFontStyle,
+		'letter-spacing': generateCSSUnit( metaLetterSpacing, metaLetterSpacingType ),
+	};
+	selectors[ ' span.uagb-post__taxonomy.highlighted' ] = {
+		'color': highlightedTextColor,
+		'background-color': highlightedTextBgColor,
+		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
+		'font-family': metaFontFamily,
+		'font-weight': metaFontWeight,
+		'line-height': generateCSSUnit(
+			metaLineHeight,
+			metaLineHeightType
+		),
+		'text-transform': metaTransform,
+		'text-decoration': metaDecoration,
+		'font-style': metaFontStyle,
+		'letter-spacing': generateCSSUnit( metaLetterSpacing, metaLetterSpacingType ),
 	};
 	selectors[ ' .uagb-post-grid-byline .uagb-post__author' ] = {
 		'color': metaColor,
@@ -311,6 +472,7 @@ function styling( props ) {
 		),
 		'text-transform': metaTransform,
 		'text-decoration': metaDecoration,
+		'letter-spacing': generateCSSUnit( metaLetterSpacing, metaLetterSpacingType ),
 	};
 	selectors[ ' .uagb-post-grid-byline .uagb-post__author a' ] = {
 		'color': metaColor,
@@ -323,6 +485,7 @@ function styling( props ) {
 		),
 		'text-transform': metaTransform,
 		'text-decoration': metaDecoration,
+		'letter-spacing': generateCSSUnit( metaLetterSpacing, metaLetterSpacingType ),
 	};
 	selectors[ ' .uagb-post__excerpt' ] = {
 		'color': excerptColor,
@@ -339,6 +502,7 @@ function styling( props ) {
 		'font-style': excerptFontStyle,
 		'text-transform': excerptTransform,
 		'text-decoration': excerptDecoration,
+		'letter-spacing': generateCSSUnit( excerptLetterSpacing, excerptLetterSpacingType ),
 	};
 	selectors[ ' .uagb-post__cta .uagb-text-link' ] = {
 		'pointer-events': 'visible',
@@ -358,20 +522,18 @@ function styling( props ) {
 		'text-decoration': ctaDecoration,
 		'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 		'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
-		'border-width': generateCSSUnit( borderWidth, 'px' ),
-		'border-radius': generateCSSUnit( borderRadius, 'px' ),
-		'border-color': borderColor,
-		'border-style': borderStyle,
+		...borderCSS,
+		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
 	};
 	selectors[ ' .uagb-post__text .uagb-post__cta:hover' ] = {
 		'color': ctaHColor,
 		'background': ctaBgHColor,
-		'border-color': borderHColor,
+		'border-color': btnBorderHColor,
 	};
 	selectors[ ' .uagb-post__text .uagb-post__cta:hover a' ] = {
 		'color': ctaHColor,
 		'background': ctaBgHColor,
-		'border-color': borderHColor,
+		'border-color': btnBorderHColor,
 	};
 
 	if ( true === postPagination ) {
@@ -428,10 +590,10 @@ function styling( props ) {
 		if ( 'border' === paginationLayout ) {
 			selectors[ ' .uagb-post-pagination-wrap a' ] = {
 				'border-style': 'solid',
-				'border-width': generateCSSUnit( paginationBorderSize, 'px' ),
+				'border-width': generateCSSUnit( paginationBorderSizeFallback, 'px' ),
 				'border-color': paginationBorderColor,
 				'border-radius': generateCSSUnit(
-					paginationBorderRadius,
+					paginationBorderRadiusFallback,
 					'px'
 				),
 				'color': paginationColor,
@@ -446,12 +608,12 @@ function styling( props ) {
 				] = {
 					'border-style': 'solid',
 					'border-width': generateCSSUnit(
-						paginationBorderSize,
+						paginationBorderSizeFallback,
 						'px'
 					),
 					'border-color': paginationBorderActiveColor,
 					'border-radius': generateCSSUnit(
-						paginationBorderRadius,
+						paginationBorderRadiusFallback,
 						'px'
 					),
 					'color': paginationActiveColor,
@@ -467,12 +629,12 @@ function styling( props ) {
 				] = {
 					'border-style': 'solid',
 					'border-width': generateCSSUnit(
-						paginationBorderSize,
+						paginationBorderSizeFallback,
 						'px'
 					),
 					'border-color': paginationBorderColor,
 					'border-radius': generateCSSUnit(
-						paginationBorderRadius,
+						paginationBorderRadiusFallback,
 						'px'
 					),
 					'color': paginationActiveColor,
@@ -488,12 +650,12 @@ function styling( props ) {
 				] = {
 					'border-style': 'solid',
 					'border-width': generateCSSUnit(
-						paginationBorderSize,
+						paginationBorderSizeFallback,
 						'px'
 					),
 					'border-color': paginationBorderActiveColor,
 					'border-radius': generateCSSUnit(
-						paginationBorderRadius,
+						paginationBorderRadiusFallback,
 						'px'
 					),
 					'color': paginationColor,
@@ -501,7 +663,7 @@ function styling( props ) {
 				};
 			}
 			if (
-				'undefined' === typeof paginationBorderActiveColor &&
+				'undefined' === typeof paginationBorderHColor &&
 				'undefined' === typeof paginationActiveColor
 			) {
 				selectors[
@@ -509,12 +671,12 @@ function styling( props ) {
 				] = {
 					'border-style': 'solid',
 					'border-width': generateCSSUnit(
-						paginationBorderSize,
+						paginationBorderSizeFallback,
 						'px'
 					),
 					'border-color': paginationBorderColor,
 					'border-radius': generateCSSUnit(
-						paginationBorderRadius,
+						paginationBorderRadiusFallback,
 						'px'
 					),
 					'color': paginationColor,
@@ -530,32 +692,51 @@ function styling( props ) {
 
 	selectors[ ' .slick-arrow svg' ] = {
 		'fill': arrowColor,
-		'height': generateCSSUnit( arrowSize, 'px' ),
-		'width': generateCSSUnit( arrowSize, 'px' ),
+		'height': generateCSSUnit( arrowSizeFallback, 'px' ),
+		'width': generateCSSUnit( arrowSizeFallback, 'px' ),
 	};
 
 
 	mobileSelectors = {
-		' .uagb-post__title': {
+		' .uagb-post__inner-wrap .uagb-post__title': {
 			'font-size': generateCSSUnit(
 				titleFontSizeMobile,
 				titleFontSizeType
 			),
 			'line-height': titleLineHeightMobile + titleLineHeightType,
+			'margin-bottom': generateCSSUnit(
+				titleBottomSpaceMobile,
+				titleBottomSpaceUnit
+			),
 		},
+		'.wp-block-uagb-post-grid .uagb-post__inner-wrap': overallBorderCSSMobile,
 		' .uagb-post__title a': {
 			'font-size': generateCSSUnit(
 				titleFontSizeMobile,
 				titleFontSizeType
 			),
 			'line-height': titleLineHeightMobile + titleLineHeightType,
+			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 		},
-		' .uagb-post-grid-byline': {
+		' .uagb-post__inner-wrap .uagb-post-grid-byline': {
 			'font-size': generateCSSUnit(
 				metaFontSizeMobile,
 				metaFontSizeType
 			),
 			'line-height': metaLineHeightMobile + metaLineHeightType,
+			'margin-bottom': generateCSSUnit(
+				metaBottomSpaceMobile,
+				metaBottomSpaceUnit
+			),
+			'letter-spacing': generateCSSUnit( metaLetterSpacingMobile, metaLetterSpacingType ),
+		},
+		' span.uagb-post__text.uagb-post__taxonomy.default': {
+			'font-size': generateCSSUnit(
+				metaFontSizeMobile,
+				metaFontSizeType
+			),
+			'line-height': metaLineHeightMobile + metaLineHeightType,
+			'letter-spacing': generateCSSUnit( metaLetterSpacingMobile, metaLetterSpacingType ),
 		},
 		' .uagb-post-grid-byline .uagb-post__author': {
 			'font-size': generateCSSUnit(
@@ -563,6 +744,7 @@ function styling( props ) {
 				metaFontSizeType
 			),
 			'line-height': metaLineHeightMobile + metaLineHeightType,
+			'letter-spacing': generateCSSUnit( metaLetterSpacingMobile, metaLetterSpacingType ),
 		},
 		' .uagb-post-grid-byline .uagb-post__author a': {
 			'font-size': generateCSSUnit(
@@ -570,22 +752,33 @@ function styling( props ) {
 				metaFontSizeType
 			),
 			'line-height': metaLineHeightMobile + metaLineHeightType,
+			'letter-spacing': generateCSSUnit( metaLetterSpacingMobile, metaLetterSpacingType ),
 		},
-		' .uagb-post__excerpt': {
+		' .uagb-post__inner-wrap .uagb-post__excerpt': {
 			'font-size': generateCSSUnit(
 				excerptFontSizeMobile,
 				excerptFontSizeType
 			),
 			'line-height': excerptLineHeightMobile + excerptLineHeightType,
+			'margin-bottom': generateCSSUnit(
+				excerptBottomSpaceMobile,
+				excerptBottomSpaceUnit
+			),
+			'letter-spacing': generateCSSUnit( excerptLetterSpacingMobile, excerptLetterSpacingType ),
 		},
-		' .uagb-post__cta': {
+		' .uagb-post__inner-wrap .uagb-post__cta': {
 			'font-size': generateCSSUnit(
 				ctaFontSizeMobile,
 				ctaFontSizeType
 			),
 			'line-height': ctaLineHeightMobile + ctaLineHeightType,
+			'margin-bottom': generateCSSUnit(
+				ctaBottomSpaceMobile,
+				ctaBottomSpaceUnit
+			),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
 		},
-		' .uagb-post__cta a': {
+		' .uagb-post__inner-wrap .uagb-post__cta a': {
 			'font-size': generateCSSUnit(
 				ctaFontSizeMobile,
 				ctaFontSizeType
@@ -607,16 +800,57 @@ function styling( props ) {
 				paddingBtnRightMobile,
 				mobilePaddingBtnUnit
 			),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
+		},
+		' .uagb-post__inner-wrap .uagb-post__image': {
+			'margin-bottom': generateCSSUnit(
+				imageBottomSpaceMobile,
+				imageBottomSpaceUnit
+			),
+		},
+		'.uagb-post__items': {
+			'margin-right': generateCSSUnit( -rowGapMobileFallback / 2, rowGapUnit ),
+			'margin-left': generateCSSUnit( -rowGapMobileFallback / 2, rowGapUnit ),
+		},
+		':not(.wp-block-uagb-post-grid).uagb-post__items article': {
+			'padding-right': generateCSSUnit( rowGapMobileFallback / 2, rowGapUnit ),
+			'padding-left': generateCSSUnit( rowGapMobileFallback / 2, rowGapUnit ),
+			'margin-bottom': generateCSSUnit( columnGapMobile, columnGapUnit ),
+		},
+		'.wp-block-uagb-post-grid.uagb-post__items': {
+			'column-gap': generateCSSUnit( columnGapMobile , columnGapUnit ),
+			'row-gap': generateCSSUnit( rowGapMobile, rowGapUnit ),
+		},
+		' .is-masonry': {
+			'height': 'initial !important',
 		},
 	};
 
+	const boxShadowBlurHoverValue = isNaN( boxShadowBlurHover ) ? '' : boxShadowBlurHover;
+	const boxShadowColorHoverValue = boxShadowColorHover ? boxShadowColorHover : '';
+
+	if( '' !== boxShadowColorHoverValue || '' !== boxShadowBlurHoverValue ) {
+
+		const boxShadowBlurHoverCSSUnit = ( '' === boxShadowBlurHoverValue ) ? '' : generateCSSUnit( boxShadowBlurHoverValue, 'px' );
+
+		selectors['.wp-block-uagb-post-grid .uagb-post__inner-wrap:hover'] = {
+			'box-shadow' : generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
+													boxShadowBlurHoverCSSUnit + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
+													boxShadowColorHoverValue + ' ' +	boxShadowPositionCSSHover
+		}
+	}
+
 	tabletSelectors = {
-		' .uagb-post__title': {
+		' .uagb-post__inner-wrap .uagb-post__title': {
 			'font-size': generateCSSUnit(
 				titleFontSizeTablet,
 				titleFontSizeType
 			),
 			'line-height': titleLineHeightTablet + titleLineHeightType,
+			'margin-bottom': generateCSSUnit(
+				titleBottomSpaceTablet,
+				titleBottomSpaceUnit
+			),
 		},
 		' .uagb-post__title a': {
 			'font-size': generateCSSUnit(
@@ -624,13 +858,27 @@ function styling( props ) {
 				titleFontSizeType
 			),
 			'line-height': titleLineHeightTablet + titleLineHeightType,
+			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		},
-		' .uagb-post-grid-byline': {
+		' .uagb-post__inner-wrap .uagb-post-grid-byline': {
 			'font-size': generateCSSUnit(
 				metaFontSizeTablet,
 				metaFontSizeType
 			),
 			'line-height': metaLineHeightTablet + metaLineHeightType,
+			'margin-bottom': generateCSSUnit(
+				metaBottomSpaceTablet,
+				metaBottomSpaceUnit
+			),
+			'letter-spacing': generateCSSUnit( metaLetterSpacingTablet, metaLetterSpacingType ),
+		},
+		' span.uagb-post__text.uagb-post__taxonomy.default': {
+			'font-size': generateCSSUnit(
+				metaFontSizeTablet,
+				metaFontSizeType
+			),
+			'line-height': metaLineHeightTablet + metaLineHeightType,
+			'letter-spacing': generateCSSUnit( metaLetterSpacingTablet, metaLetterSpacingType ),
 		},
 		' .uagb-post-grid-byline .uagb-post__author': {
 			'font-size': generateCSSUnit(
@@ -638,6 +886,7 @@ function styling( props ) {
 				metaFontSizeType
 			),
 			'line-height': metaLineHeightTablet + metaLineHeightType,
+			'letter-spacing': generateCSSUnit( metaLetterSpacingTablet, metaLetterSpacingType ),
 		},
 		' .uagb-post-grid-byline .uagb-post__author a': {
 			'font-size': generateCSSUnit(
@@ -645,20 +894,32 @@ function styling( props ) {
 				metaFontSizeType
 			),
 			'line-height': metaLineHeightTablet + metaLineHeightType,
+			'letter-spacing': generateCSSUnit( metaLetterSpacingTablet, metaLetterSpacingType ),
 		},
-		' .uagb-post__excerpt': {
+		' .uagb-post__inner-wrap .uagb-post__excerpt': {
 			'font-size': generateCSSUnit(
 				excerptFontSizeTablet,
 				excerptFontSizeType
 			),
 			'line-height': excerptLineHeightTablet + excerptLineHeightType,
+			'margin-bottom': generateCSSUnit(
+				excerptBottomSpaceTablet,
+				excerptBottomSpaceUnit
+			),
+			'letter-spacing': generateCSSUnit( excerptLetterSpacingTablet, excerptLetterSpacingType ),
+
 		},
-		' .uagb-post__cta': {
+		' .uagb-post__inner-wrap .uagb-post__cta': {
 			'font-size': generateCSSUnit(
 				ctaFontSizeTablet,
 				ctaFontSizeType
 			),
 			'line-height': ctaLineHeightTablet + ctaLineHeightType,
+			'margin-bottom': generateCSSUnit(
+				ctaBottomSpaceTablet,
+				ctaBottomSpaceUnit
+			),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
 		},
 		' .uagb-post__cta a': {
 			'font-size': generateCSSUnit(
@@ -682,6 +943,30 @@ function styling( props ) {
 				paddingBtnRightTablet,
 				tabletPaddingBtnUnit
 			),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
+		},
+		' .uagb-post__inner-wrap .uagb-post__image': {
+			'margin-bottom': generateCSSUnit(
+				imageBottomSpaceTablet,
+				imageBottomSpaceUnit
+			),
+		},
+		'.uagb-post__items': {
+			'margin-right': generateCSSUnit( -rowGapTabletFallback / 2, rowGapUnit ),
+			'margin-left': generateCSSUnit( -rowGapTabletFallback / 2, rowGapUnit ),
+		},
+		':not(.wp-block-uagb-post-grid).uagb-post__items article': {
+			'padding-right': generateCSSUnit( rowGapTabletFallback / 2, rowGapUnit ),
+			'padding-left': generateCSSUnit( rowGapTabletFallback / 2, rowGapUnit ),
+			'margin-bottom': generateCSSUnit( columnGapTablet, columnGapUnit ),
+		},
+		'.wp-block-uagb-post-grid.uagb-post__items': {
+			'column-gap': generateCSSUnit( columnGapTablet , columnGapUnit ),
+			'row-gap': generateCSSUnit( rowGapTablet, rowGapUnit ),
+		},
+		'.wp-block-uagb-post-grid .uagb-post__inner-wrap': overallBorderCSSTablet,
+		' .is-masonry': {
+			'height': 'initial !important',
 		},
 	};
 
@@ -698,18 +983,8 @@ function styling( props ) {
 			] = {
 				'color': paginationTextColor,
 				'background-color': paginationMasonryBgColor,
-				'border-style': paginationMasonryBorderStyle,
-				'border-width': generateCSSUnit(
-					paginationMasonryBorderWidth,
-					'px'
-				),
-				'border-radius': generateCSSUnit(
-					paginationMasonryBorderRadius,
-					'px'
-				),
-				'border-color': paginationMasonryBorderColor,
 				'font-size': generateCSSUnit(
-					paginationFontSize,
+					paginationFontSizeFallback,
 					'px'
 				),
 				'padding-top': generateCSSUnit(
@@ -728,6 +1003,7 @@ function styling( props ) {
 					paginationButtonPaddingLeft,
 					paginationButtonPaddingType
 				),
+				...paginationMasonryBorderCSS
 			};
 			selectors[
 				' .uagb-post__load-more-wrap .uagb-post-pagination-button:hover'
@@ -779,8 +1055,8 @@ function styling( props ) {
 		}
 		if ( 'scroll' === paginationEventType ) {
 			selectors[ '.uagb-post-grid .uagb-post-inf-loader div' ] = {
-				'width': generateCSSUnit( loaderSize, 'px' ),
-				'height': generateCSSUnit( loaderSize, 'px' ),
+				'width': generateCSSUnit( loaderSizeFallback, 'px' ),
+				'height': generateCSSUnit( loaderSizeFallback, 'px' ),
 				'background-color': loaderColor,
 			};
 		}
@@ -809,12 +1085,21 @@ function styling( props ) {
 			mobilePaddingUnit
 		),
 	};
+	tabletSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSTablet;
+	mobileSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSMobile;
+	tabletSelectors[ ' .uagb-post__load-more-wrap .uagb-post-pagination-button' ] = paginationMasonryBorderCSSTablet;
+	mobileSelectors[ ' .uagb-post__load-more-wrap .uagb-post-pagination-button' ] = paginationMasonryBorderCSSMobile;
+	if ( 'background' === imgPosition ){
+		selectors[ ' .uagb-post__inner-wrap .uagb-post__text:nth-child(2)' ] = {
+			'margin-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
+		};
+	}
 
 	let stylingCss = '';
 
 	stylingCss = generateCSS(
 		selectors,
-		`.uagb-block-${ props.clientId.substr( 0, 8 ) }`
+		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`
 	);
 
 	stylingCss += generateCSS(

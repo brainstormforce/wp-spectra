@@ -26,7 +26,11 @@ registerBlockType( 'uagb/taxonomy-list', {
 		__( 'taxonomy', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	edit,
 	// Render via PHP
 	save() {

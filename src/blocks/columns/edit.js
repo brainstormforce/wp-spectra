@@ -8,6 +8,7 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import { useDeviceType } from '@Controls/getPreviewType';
 import React, { useEffect, lazy, Suspense, useLayoutEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/columns/settings" */ './settings' )
@@ -56,7 +57,8 @@ const ColumnsComponent = ( props ) => {
 			backgroundOpacity,
 			align,
 			vAlign,
-			backgroundImageColor
+			backgroundImageColor,
+			backgroundType
 		} = attributes
 
 		if ( 'middle' === vAlign ) {
@@ -64,11 +66,11 @@ const ColumnsComponent = ( props ) => {
 		}
 
 		if ( undefined === align ){
-			setAttributes( { align: 'wide' } );
+			setAttributes( { align: '' } );
 		}
 
 		if ( undefined === vAlign ){
-			setAttributes( { vAlign: 'top' } );
+			setAttributes( { vAlign: '' } );
 		}
 
 		// Replacement for componentDidMount.
@@ -91,12 +93,35 @@ const ColumnsComponent = ( props ) => {
 			}
 		}
 
-		if ( 101 !== backgroundOpacity ) {
-			const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
-			setAttributes( { backgroundImageColor: color } );
-			setAttributes( { backgroundOpacity: 101 } );
+		if ( 'image' === backgroundType ) {
+			if ( 101 !== backgroundOpacity ) {
+				const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
+				setAttributes( { backgroundImageColor: color } );
+				setAttributes( { backgroundOpacity: 101 } );
+			}
 		}
-
+		const { borderStyle, borderWidth, borderRadius, borderColor, borderHoverColor } = props.attributes
+		// border migration
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'columns', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHoverColor',
+				value: borderHoverColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes )
+		}
 	}, [] );
 
 	useEffect( () => {
@@ -142,10 +167,12 @@ const ColumnsComponent = ( props ) => {
 	};
 
 	const { variations, hasInnerBlocks } = props;
-
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/advanced-columns.png`;
 	if ( ! hasInnerBlocks ) {
-		
+
 		return (
+			props.attributes.isPreview ? <img width='100%' src={previewImageData} alt=''/> :
+			<>
 			<div className='uagb-columns-variation-picker'>
 				<BlockVariationPicker
 					icon={ '' }
@@ -160,12 +187,13 @@ const ColumnsComponent = ( props ) => {
 					}
 				/>
 			</div>
+			</>
 		);
 	}
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			<Settings parentProps={ props } />
+			<Settings parentProps={ props } deviceType = { deviceType } />
 			<Render parentProps={ props } />
 		</Suspense>
 	);

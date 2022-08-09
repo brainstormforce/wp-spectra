@@ -2,8 +2,6 @@ import { __ } from '@wordpress/i18n';
 
 import React from 'react';
 import {
-	AlignmentToolbar,
-	BlockControls,
 	InspectorControls,
 } from '@wordpress/block-editor';
 import UAGImage from '@Components/image';
@@ -19,7 +17,7 @@ const Settings = ( props ) => {
 	const { setAttributes, attributes } = props;
 
 	// Setup the attributes.
-	const { headingAlign, imagePosition, image } = attributes;
+	const { image } = attributes;
 
 	const onSelectRestImage = ( media ) => {
 		let imageUrl = null;
@@ -47,26 +45,8 @@ const Settings = ( props ) => {
 		} );
 	};
 
-	const blockControls = () => {
-		return (
-			<>
-				{ imagePosition === 'top' && (
-					<BlockControls key="controls">
-						<AlignmentToolbar
-							value={ headingAlign }
-							onChange={ ( value ) =>
-								setAttributes( { headingAlign: value } )
-							}
-						/>
-					</BlockControls>
-				) }
-			</>
-		);
-	};
-
 	return (
 		<>
-			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs tabs={ [ 'general', 'advance' ] }>
 					<InspectorTab { ...UAGTabs.general }>

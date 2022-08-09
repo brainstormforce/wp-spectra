@@ -39,6 +39,7 @@ const LoadFontsLocally = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
+			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
 		} );
     };
 
@@ -49,7 +50,7 @@ const LoadFontsLocally = () => {
                     {__( 'Load Google Fonts Locally', 'ultimate-addons-for-gutenberg' )}
                 </h3>
                 <p className="mt-[0.6rem] text-sm ">
-                    { __( 'Enable the "Load Google Fonts Locally" option to serve Google fonts from your server (locally). It will simply download the selected Google fonts and host those Google fonts locally on your WordPress site.', 'ultimate-addons-for-gutenberg' ) }
+                    { __( 'Enable this option to download Google fonts and save them on your server. This can be great for improving speed of your website and to comply with GDPR laws.', 'ultimate-addons-for-gutenberg' ) }
                 </p>
             </div>
             <div>

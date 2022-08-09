@@ -25,6 +25,7 @@ const Render = ( props ) => {
 		placeholder,
 		buttonType,
 		buttonText,
+		isPreview
 	} = attributes;
 
 	const renderClassic = () => {
@@ -118,7 +119,11 @@ const Render = ( props ) => {
 		return '';
 	};
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/wp-search.png`;
+
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
+		<>
 		<div
 			className={ classnames(
 				'uagb-wp-search__outer-wrap',
@@ -130,6 +135,7 @@ const Render = ( props ) => {
 			{ renderClassic() }
 			{ renderMinimal() }
 		</div>
+		</>
 	);
 };
 

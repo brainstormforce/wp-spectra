@@ -76,7 +76,7 @@ export default function save( props ) {
 								</>
 							)}
 							</div>
-							
+
 							</>
 						}
 					{ imagePosition === 'right' && (

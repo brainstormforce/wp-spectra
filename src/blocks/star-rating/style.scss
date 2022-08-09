@@ -9,10 +9,19 @@
 
 	.uag-star-rating__title {
 		margin: 0;
+		// Vertically center the title.
+		display: flex;
+		align-items: center;
+	}
+
+	.uag-star-rating {
+		display: flex;
+		align-items: center;
 	}
 
 	.uag-star {
 		color: #ccd6df;
 		display: inline-block;
+		line-height: 0.75em;
 	}
 }

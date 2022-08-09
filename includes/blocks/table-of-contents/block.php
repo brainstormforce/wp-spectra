@@ -24,7 +24,7 @@ $block_data = array(
 			'type' => 'js',
 		),
 	),
-	'priority'            => 2,
+	'priority'            => 19,
 	'dynamic_assets'      => array(
 		'dir' => 'table-of-contents',
 	),

@@ -6,6 +6,7 @@ import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import React, { useLayoutEffect } from 'react';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 var ALLOWED_BLOCKS = [ 'uagb/how-to-step' ]; // eslint-disable-line no-var
 
@@ -24,6 +25,8 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
+
+	const blockName = props.name.replace( 'uagb/', '' );
 
 	const deviceType = useDeviceType();
 
@@ -61,7 +64,7 @@ const Render = ( props ) => {
 			timeInYears,
 		},
 	} = props;
-	
+
 	const splitBlock = ( before, after, ...blocks ) => {
 		if ( after ) {
 			// Append "After" content as a new paragraph block to the end of
@@ -152,7 +155,9 @@ const Render = ( props ) => {
 		);
 	}
 
-	const minsValue = timeInMins ? timeInMins : time;
+	const minsValue = getFallbackNumber( timeInMins, 'timeInMins', blockName ) ?
+						getFallbackNumber( timeInMins, 'timeInMins', blockName ) :
+						time;
 
 	const getStepAsChild = [
 		[
@@ -180,19 +185,19 @@ const Render = ( props ) => {
 
 	//Time Labels
 	const yearLabel =
-		timeInYears > 1
+		getFallbackNumber( timeInYears, 'timeInYears', blockName ) > 1
 			? __( 'Years', 'ultimate-addons-for-gutenberg' )
 			: __( 'Year', 'ultimate-addons-for-gutenberg' );
 	const monthLabel =
-		timeInMonths > 1
+		getFallbackNumber( timeInMonths, 'timeInMonths', blockName ) > 1
 			? __( ' Months ', 'ultimate-addons-for-gutenberg' )
 			: __( ' Month ', 'ultimate-addons-for-gutenberg' );
 	const dayLabel =
-		timeInDays > 1
+		getFallbackNumber( timeInDays, 'timeInDays', blockName ) > 1
 			? __( ' Days ', 'ultimate-addons-for-gutenberg' )
 			: __( ' Day ', 'ultimate-addons-for-gutenberg' );
 	const hourLabel =
-		timeInHours > 1
+		getFallbackNumber( timeInHours, 'timeInHours', blockName ) > 1
 			? __( 'Hours ', 'ultimate-addons-for-gutenberg' )
 			: __( ' Hour ', 'ultimate-addons-for-gutenberg' );
 	const minsLabel =
@@ -273,11 +278,11 @@ const Render = ( props ) => {
 				) }
 				{ showTotaltime && (
 					<>
-						{ timeInYears && (
+						{ getFallbackNumber( timeInYears, 'timeInYears', blockName ) && (
 							<>
 								<p className="uagb-howto-timeNeeded-value">
 									{ ' ' }
-									{ timeInYears }
+									{ getFallbackNumber( timeInYears, 'timeInYears', blockName ) }
 								</p>
 								<p className="uagb-howto-timeINmin-text">
 									{ ' ' }
@@ -285,30 +290,30 @@ const Render = ( props ) => {
 								</p>
 							</>
 						) }
-						{ timeInMonths && (
+						{ getFallbackNumber( timeInMonths, 'timeInMonths', blockName ) && (
 							<>
 								<p className="uagb-howto-timeNeeded-value">
-									{ timeInMonths }
+									{ getFallbackNumber( timeInMonths, 'timeInMonths', blockName ) }
 								</p>
 								<p className="uagb-howto-timeINmin-text">
 									{ monthLabel }
 								</p>
 							</>
 						) }
-						{ timeInDays && (
+						{ getFallbackNumber( timeInDays, 'timeInDays', blockName ) && (
 							<>
 								<p className="uagb-howto-timeNeeded-value">
-									{ timeInDays }
+									{ getFallbackNumber( timeInDays, 'timeInDays', blockName ) }
 								</p>
 								<p className="uagb-howto-timeINmin-text">
 									{ dayLabel }
 								</p>
 							</>
 						) }
-						{ timeInHours && (
+						{ getFallbackNumber( timeInHours, 'timeInHours', blockName ) && (
 							<>
 								<p className="uagb-howto-timeNeeded-value">
-									{ timeInHours }
+									{ getFallbackNumber( timeInHours, 'timeInHours', blockName ) }
 								</p>
 								<p className="uagb-howto-timeINmin-text">
 									{ hourLabel }

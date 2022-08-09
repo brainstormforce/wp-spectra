@@ -12,6 +12,10 @@ const attributes = {
 		type: "boolean",
 		default: false
 	},
+	headingTitleToggle: {
+		source: 'boolean',
+		default: true,
+	},
 	headingTitle: {
 		source: "html",
 		selector: "h1,h2,h3,h4,h5,h6",
@@ -50,10 +54,12 @@ const attributes = {
 		default: "solid",
 	},
 	separatorHeight: {
-		type: "number"
+		type: "number",
+		default: 2
 	},
 	separatorWidth: {
-		type: "number"
+		type: "number",
+		default: 12
 	},
 	separatorWidthType : {
 		type: "string",
@@ -146,7 +152,11 @@ const attributes = {
 	subHeadLoadGoogleFonts: {
 		type: "boolean",
 		default: false
-	}
+	},
+	headingDescToggle: {
+		source: 'boolean',
+		default: true,
+	},
 }
 const deprecated = [
 	{

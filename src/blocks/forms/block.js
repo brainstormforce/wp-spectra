@@ -22,7 +22,11 @@ registerBlockType( 'uagb/forms', {
 		__( 'forms', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	attributes,
 	variations,
 	edit,

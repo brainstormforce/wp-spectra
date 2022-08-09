@@ -4,8 +4,13 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		headerBgColor,
 		titleAlign,
@@ -35,18 +40,18 @@ function styling( props ) {
 		titleTransform,
 		titleDecoration,
 		//Border
-		borderWidth,
-		borderColor,
-		borderStyle,
-		borderRadius,
-		borderHoverColor,
+		tabBorderHColor,
 		iconColor,
 		iconSize,
+		iconSizeTablet,
+		iconSizeMobile,
 		tabBodyLeftMargin,
 		tabBodyRightMargin,
 		tabBodyTopMargin,
 		tabBodyBottomMargin,
 		iconSpacing,
+		iconSpacingTablet,
+		iconSpacingMobile,
 		tabsStyleD,
 		tabsStyleM,
 		tabsStyleT,
@@ -100,8 +105,20 @@ function styling( props ) {
 		mobiletabBodyPaddingUnit,
 		mobiletabBodyMarginUnit,
 		titleFontStyle,
-		tabAlign
+		tabAlign,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		tabBorderStyle,
 	} = props.attributes;
+
+	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
+	const iconSpacingFallback = getFallbackNumber( iconSpacing, 'iconSpacing', blockName );
+
+	const borderCSS = generateBorderCSS( props.attributes, 'tab', '' );
+	const borderCSSTablet = generateBorderCSS( props.attributes,'tab', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes,'tab', 'mobile' );
 
 	let selectors = {};
 	let tabletSelectors = {};
@@ -110,6 +127,23 @@ function styling( props ) {
 		' > .uagb-tabs__panel .uagb-tab': {
 			'background': headerBgColor,
 			'text-align': titleAlign,
+			'margin-top': generateCSSUnit(
+				tabTitleTopMargin,
+				tabTitleMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				tabTitleLeftMargin,
+				tabTitleMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				tabTitleRightMargin,
+				tabTitleMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				tabTitleBottomMargin,
+				tabTitleMarginUnit
+			),
+			...borderCSS
 		},
 		' > .uagb-tabs__panel .uagb-tab a': {
 			'padding-top': generateCSSUnit(
@@ -128,22 +162,6 @@ function styling( props ) {
 				tabTitleRightPadding,
 				tabTitlePaddingUnit
 			),
-			'margin-top': generateCSSUnit(
-				tabTitleTopMargin,
-				tabTitleMarginUnit
-			),
-			'margin-left': generateCSSUnit(
-				tabTitleLeftMargin,
-				tabTitleMarginUnit
-			),
-			'margin-right': generateCSSUnit(
-				tabTitleRightMargin,
-				tabTitleMarginUnit
-			),
-			'margin-bottom': generateCSSUnit(
-				tabTitleBottomMargin,
-				tabTitleMarginUnit
-			),
 		},
 		' > .uagb-tabs__panel .uagb-tab a > p': {
 			'color': headerTextColor,
@@ -154,6 +172,7 @@ function styling( props ) {
 				titleLineHeight,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 			'text-transform': titleTransform,
 			'text-decoration': titleDecoration,
 			'font-style' : titleFontStyle,
@@ -206,39 +225,28 @@ function styling( props ) {
 			'color': bodyTextColor,
 		},
 		' .uagb-tabs__icon svg': {
-			'height': generateCSSUnit( iconSize, 'px' ),
-			'width': generateCSSUnit( iconSize, 'px' ),
+			'height': generateCSSUnit( iconSizeFallback, 'px' ),
+			'width': generateCSSUnit( iconSizeFallback, 'px' ),
 			'fill': iconColor,
 		},
-		'.uagb-tabs__wrap > .uagb-tabs__panel .uagb-tab': {
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-			'border-color': borderColor,
-		},
 		'.uagb-tabs__wrap > .uagb-tabs__panel .uagb-tab:hover': {
-			'border-color': borderHoverColor,
+			'border-color': tabBorderHColor,
 		},
-		'.uagb-tabs__wrap > .uagb-tabs__body-wrap': {
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-			'border-color': borderColor,
-		},
+		'.uagb-tabs__wrap > .uagb-tabs__body-wrap': borderCSS,
 		'.uagb-tabs__wrap > .uagb-tabs__body-wrap:hover': {
-			'border-color': borderHoverColor,
+			'border-color': tabBorderHColor,
 		},
 		' .uagb-tabs__icon-position-left  .uagb-tabs__icon ': {
-			'margin-right': generateCSSUnit( iconSpacing, 'px' ),
+			'margin-right': generateCSSUnit( iconSpacingFallback, 'px' ),
 		},
 		' .uagb-tabs__icon-position-right  .uagb-tabs__icon ': {
-			'margin-left': generateCSSUnit( iconSpacing, 'px' ),
+			'margin-left': generateCSSUnit( iconSpacingFallback, 'px' ),
 		},
 		' .uagb-tabs__icon-position-top  .uagb-tabs__icon ': {
-			'margin-bottom': generateCSSUnit( iconSpacing, 'px' ),
+			'margin-bottom': generateCSSUnit( iconSpacingFallback, 'px' ),
 		},
 		' .uagb-tabs__icon-position-bottom  .uagb-tabs__icon ': {
-			'margin-top': generateCSSUnit( iconSpacing, 'px' ),
+			'margin-top': generateCSSUnit( iconSpacingFallback, 'px' ),
 		},
 	};
 
@@ -259,6 +267,10 @@ function styling( props ) {
 	}
 
 	tabletSelectors = {
+		' .uagb-tabs__icon svg': {
+			'height': generateCSSUnit( iconSizeTablet, 'px' ),
+			'width': generateCSSUnit( iconSizeTablet, 'px' ),
+		},
 		' > .uagb-tabs__panel .uagb-tab p': {
 			'font-size': generateCSSUnit(
 				titleFontSizeTablet,
@@ -268,6 +280,7 @@ function styling( props ) {
 				titleLineHeightTablet,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		},
 		' > .uagb-tabs__panel .uagb-tab a': {
 			'padding-top': generateCSSUnit(
@@ -286,6 +299,8 @@ function styling( props ) {
 				tabTitleRightPaddingTablet,
 				tablettabTitlePaddingUnit
 			),
+		},
+		' > .uagb-tabs__panel .uagb-tab':{
 			'margin-top': generateCSSUnit(
 				tabTitleTopMarginTablet,
 				tablettabTitleMarginUnit
@@ -302,6 +317,7 @@ function styling( props ) {
 				tabTitleBottomMarginTablet,
 				tablettabTitleMarginUnit
 			),
+			...borderCSSTablet
 		},
 		' > .uagb-tabs__body-wrap ': {
 			'padding-top': generateCSSUnit(
@@ -336,9 +352,26 @@ function styling( props ) {
 				tabBodyBottomMarginTablet,
 				tablettabBodyMarginUnit
 			),
+			...borderCSSTablet
+		},
+		' .uagb-tabs__icon-position-left  .uagb-tabs__icon ': {
+			'margin-right': generateCSSUnit( iconSpacingTablet, 'px' ),
+		},
+		' .uagb-tabs__icon-position-right  .uagb-tabs__icon ': {
+			'margin-left': generateCSSUnit( iconSpacingTablet, 'px' ),
+		},
+		' .uagb-tabs__icon-position-top  .uagb-tabs__icon ': {
+			'margin-bottom': generateCSSUnit( iconSpacingTablet, 'px' ),
+		},
+		' .uagb-tabs__icon-position-bottom  .uagb-tabs__icon ': {
+			'margin-top': generateCSSUnit( iconSpacingTablet, 'px' ),
 		},
 	};
 	mobileSelectors = {
+		' .uagb-tabs__icon svg': {
+			'height': generateCSSUnit( iconSizeMobile, 'px' ),
+			'width': generateCSSUnit( iconSizeMobile, 'px' ),
+		},
 		' > .uagb-tabs__panel .uagb-tab p': {
 			'font-size': generateCSSUnit(
 				titleFontSizeMobile,
@@ -348,6 +381,26 @@ function styling( props ) {
 				titleLineHeightMobile,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
+		},
+		' > .uagb-tabs__panel .uagb-tab' :{
+			'margin-top': generateCSSUnit(
+				tabTitleTopMarginMobile,
+				mobiletabTitleMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				tabTitleLeftMarginMobile,
+				mobiletabTitleMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				tabTitleRightMarginMobile,
+				mobiletabTitleMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				tabTitleBottomMarginMobile,
+				mobiletabTitleMarginUnit
+			),
+			...borderCSSMobile
 		},
 		' > .uagb-tabs__panel .uagb-tab a': {
 			'padding-top': generateCSSUnit(
@@ -365,22 +418,6 @@ function styling( props ) {
 			'padding-right': generateCSSUnit(
 				tabTitleRightPaddingMobile,
 				mobiletabTitlePaddingUnit
-			),
-			'margin-top': generateCSSUnit(
-				tabTitleTopMarginMobile,
-				mobiletabTitleMarginUnit
-			),
-			'margin-left': generateCSSUnit(
-				tabTitleLeftMarginMobile,
-				mobiletabTitleMarginUnit
-			),
-			'margin-right': generateCSSUnit(
-				tabTitleRightMarginMobile,
-				mobiletabTitleMarginUnit
-			),
-			'margin-bottom': generateCSSUnit(
-				tabTitleBottomMarginMobile,
-				mobiletabTitleMarginUnit
 			),
 		},
 		' > .uagb-tabs__body-wrap ': {
@@ -416,101 +453,115 @@ function styling( props ) {
 				tabBodyBottomMarginMobile,
 				mobiletabBodyMarginUnit
 			),
+			...borderCSSMobile
+		},
+		' .uagb-tabs__icon-position-left  .uagb-tabs__icon ': {
+			'margin-right': generateCSSUnit( iconSpacingMobile, 'px' ),
+		},
+		' .uagb-tabs__icon-position-right  .uagb-tabs__icon ': {
+			'margin-left': generateCSSUnit( iconSpacingMobile, 'px' ),
+		},
+		' .uagb-tabs__icon-position-top  .uagb-tabs__icon ': {
+			'margin-bottom': generateCSSUnit( iconSpacingMobile, 'px' ),
+		},
+		' .uagb-tabs__icon-position-bottom  .uagb-tabs__icon ': {
+			'margin-top': generateCSSUnit( iconSpacingMobile, 'px' ),
 		},
 	};
+
+	if( tabsStyleD === 'vstyle8' ){
+		selectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle8-desktop ul.uagb-tabs__panel .uagb-tab:last-child' ] = {
+			'border-style': tabBorderStyle,
+		};
+		selectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle8-desktop ul.uagb-tabs__panel .uagb-tab' ] = {
+			'border-style': tabBorderStyle,
+		};
+	}
 
 	if ( tabsStyleD === 'hstyle5' ) {
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop ' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+			'border-style': tabBorderStyle,
 		};
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop:hover' ] = {
-			'border-color': borderHoverColor,
+			'border-color': tabBorderHColor,
+		};
+		selectors['.uagb-tabs__wrap > .uagb-tabs__body-wrap'] = {
+			'border-left-style': 'none',
+			'border-right-style':'none',
 		};
 	}
 	if ( tabsStyleD === 'vstyle10' ) {
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop ' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+			'border-style': tabBorderStyle,
 		};
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop:hover' ] = {
-			'border-color': borderHoverColor,
+			'border-color': tabBorderHColor,
 		};
 	}
+	tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop' ] = {
+		'border-style': 'none',
+	};
+	tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop' ] = {
+		'border-style': 'none',
+	};
 	if ( tabsStyleT === 'hstyle5' ) {
 		tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		};
 		tabletSelectors[
 			'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet:hover'
 		] = {
-			'border-color': borderHoverColor,
+			'border-color': tabBorderHColor,
 		};
 	}
 	if ( tabsStyleT === 'vstyle10' ) {
 		tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		};
 		tabletSelectors[
 			'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet:hover'
 		] = {
-			'border-color': borderHoverColor,
+			'border-color': tabBorderHColor,
 		};
 	}
 	if ( tabsStyleM === 'hstyle5' ) {
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile ' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+		};
+		mobileSelectors['.uagb-tabs__wrap > .uagb-tabs__body-wrap'] = {
+			'border-left-style': 'none',
+			'border-right-style':'none',
 		};
 		mobileSelectors[
 			'.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile:hover'
 		] = {
-			'border-color': borderHoverColor,
+			'border-color': tabBorderHColor,
 		};
 	}
 	if ( tabsStyleM === 'vstyle10' ) {
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile ' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		};
 		mobileSelectors[
 			'.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile:hover'
 		] = {
-			'border-color': borderHoverColor,
+			'border-color': tabBorderHColor,
 		};
 	}
+	mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop' ] = {
+		'border-style': 'none',
+	};
 	if ( tabsStyleM === 'stack4' ) {
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__stack4-mobile' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		};
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__stack4-mobile:hover' ] = {
-			'border-color': borderHoverColor,
+			'border-color': tabBorderHColor,
 		};
 	}
+
 	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
 		8

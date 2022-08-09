@@ -26,6 +26,7 @@ const Render = ( props ) => {
 
 	// Setup the attributes.
 	const {
+		isPreview,
 		icon,
 		iconimgPosition,
 		source_type,
@@ -36,8 +37,6 @@ const Render = ( props ) => {
 		showTitle,
 		showDesc,
 		block_id,
-		prefixTitle,
-		infoBoxTitle
 	} = attributes;
 	// Get icon/Image components.
 	let isImage = '';
@@ -115,7 +114,7 @@ const Render = ( props ) => {
 	// Get Title and Prefix components.
 	const titleText = (
 		<div className="uagb-ifb-title-wrap">
-			{ showPrefix && '' !== prefixTitle && (
+			{ showPrefix && (
 				<Prefix
 					attributes={ attributes }
 					setAttributes={ setAttributes }
@@ -125,7 +124,7 @@ const Render = ( props ) => {
 			{ 'none' !== seperatorStyle &&
 				seperatorPos === 'after_prefix' &&
 				seperatorHtml }
-			{ showTitle && '' !== infoBoxTitle && (
+			{ showTitle && (
 				<Title
 					attributes={ attributes }
 					setAttributes={ setAttributes }
@@ -184,7 +183,11 @@ const Render = ( props ) => {
 		</>
 	);
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/info-box.png`;
+
+
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				`uagb-block-${ block_id }`,

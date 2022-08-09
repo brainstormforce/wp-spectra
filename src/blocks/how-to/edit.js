@@ -53,7 +53,7 @@ const HowToComponent = ( props ) => {
         addBlockEditorDynamicStyles( 'uagb-how-to-schema-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
 
-	
+
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
 	    const blockStyling = styling( props );
@@ -81,12 +81,17 @@ const HowToComponent = ( props ) => {
 			timeInDays,
 			timeInMonths,
 			timeInYears,
+			isPreview,
 		},
 	} = props;
 	const minsValue = timeInMins ? timeInMins : time;
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/how-to.png`;
+
 	return (
 		<Suspense fallback={ lazyLoader() }>
+			{ isPreview ? <img width='100%' src={previewImageData} alt=''/> :
+			<>
 			<SchemaNotices
 				headingTitle={ headingTitle }
 				headingDesc={ headingDesc }
@@ -108,6 +113,8 @@ const HowToComponent = ( props ) => {
 			/>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
+			</>
+			}
 		</Suspense>
 	);
 };
@@ -193,13 +200,13 @@ export default compose(
 				jsonData.supply[ key ] = materialsData;
 			} );
 		}
-		
+
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			ownProps.clientId
 		);
 
 		getChildBlocks.forEach( ( steps, key ) => {
-			stepsData = {	
+			stepsData = {
 					'@type': 'HowToStep',
 					'url': steps.attributes?.ctaLink || steps.attributes?.url,
 					'name': steps.attributes?.infoBoxTitle || steps.attributes?.name,
@@ -207,8 +214,8 @@ export default compose(
 					'image': steps.attributes?.iconImage?.url || steps.attributes?.image?.url
 			}
 			jsonData.step[key] = stepsData;
-		} );	
-		
+		} );
+
 		return {
 			schemaJsonData: jsonData,
 		};

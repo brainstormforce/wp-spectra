@@ -17,7 +17,7 @@ $block_data = array(
 	'description'      => __( 'This block allows you to place an CTA along with a heading and description within a single block.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 3,
+	'priority'         => 8,
 	'dynamic_assets'   => array(
 		'dir' => 'call-to-action',
 	),

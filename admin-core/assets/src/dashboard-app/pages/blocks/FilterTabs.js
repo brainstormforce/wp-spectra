@@ -1,6 +1,7 @@
 import apiFetch from '@wordpress/api-fetch';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 function classNames( ...classes ) {
 return classes.filter( Boolean ).join( ' ' )
@@ -8,7 +9,8 @@ return classes.filter( Boolean ).join( ' ' )
 
 const FilterTabs = () => {
 
-    const blocksInfo = uag_react.blocks_info;
+	const query = new URLSearchParams( useLocation()?.search );
+	const blocksInfo = uag_react.blocks_info;
     const dispatch = useDispatch();
 
     const blocksStatuses = useSelector( ( state ) => state.blocksStatuses );
@@ -17,6 +19,7 @@ const FilterTabs = () => {
 
     const tabs = [
         { name: 'All', slug: 'all' },
+		{ name: 'Core', slug: 'core' },
         { name: 'Creative', slug: 'creative' },
         { name: 'Content', slug: 'content' },
         { name: 'Post', slug: 'post' },
@@ -28,6 +31,12 @@ const FilterTabs = () => {
 
     useEffect( () => {
 
+		// Activate Block Filter Tab from "filterTab" Hash in the URl is present.
+		const activePath = query.get( 'path' );
+		const activeHash = query.get( 'filterTab' );
+		const activeFilterTabFromHash = ( activeHash && 'blocks' === activePath ) ? activeHash : 'all';
+		dispatch( {type:'UPDATE_BLOCKS_ACTIVE_FILTER_TAB', payload: activeFilterTabFromHash} )
+
         const categoriesBlocksTemp = {
             ...categoriesBlocks
         };
@@ -36,7 +45,7 @@ const FilterTabs = () => {
 
             const blockCategories = block.admin_categories;
 
-            blockCategories.map( ( category ) => {
+            blockCategories?.map( ( category ) => {
 
                 if ( ! categoriesBlocksTemp [ category ] ) {
                     categoriesBlocksTemp [ category ] = [];
@@ -71,6 +80,7 @@ const FilterTabs = () => {
             // Update Extensions Statuses.
             dispatch( {type: 'UPDATE_ENABLE_MASONRY_EXTENSION', payload: 'enabled' } );
             dispatch( {type: 'UPDATE_ENABLE_DISPLAY_CONDITIONS', payload: 'enabled' } );
+			dispatch( {type: 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS', payload: 'enabled' } );
         }
 
 		const formData = new window.FormData();
@@ -87,6 +97,7 @@ const FilterTabs = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
+			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
 		} );
 	};
 
@@ -108,6 +119,7 @@ const FilterTabs = () => {
             // Update Extensions Statuses.
             dispatch( {type: 'UPDATE_ENABLE_MASONRY_EXTENSION', payload: 'disabled' } );
             dispatch( {type: 'UPDATE_ENABLE_DISPLAY_CONDITIONS', payload: 'disabled' } );
+			dispatch( {type: 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS', payload: 'disabled' } );
         }
 
 		const formData = new window.FormData();
@@ -124,6 +136,7 @@ const FilterTabs = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
+			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
 		} );
 	};
 
@@ -147,29 +160,35 @@ const FilterTabs = () => {
             <div className="hidden justify-between sm:flex">
                 <nav className="flex space-x-4" aria-label="Tabs">
                     {tabs.map( ( tab ) => (
-                    <a // eslint-disable-line
+                    <Link // eslint-disable-line
+						to={ {
+							pathname: 'options-general.php',
+							search: `?page=spectra&path=blocks&filterTab=${tab.slug}`,
+						} }
                         key={tab.name}
                         className={classNames(
-                        tab.slug === activeBlocksFilterTab ? 'bg-wphoverbgcolor text-wpcolor hover:text-wphovercolor' : ' hover:text-wphovercolor',
+                        tab.slug === activeBlocksFilterTab ? 'bg-wphoverbgcolor text-wpcolor focus:text-wphovercolor hover:text-wphovercolor active:text-wpcolor' : ' focus:text-wphovercolor active:text-wpcolor hover:text-wphovercolor',
                         'px-3 py-2 font-medium text-sm rounded-[0.2rem] cursor-pointer'
                         )}
-                        onClick={ () => dispatch( {type:'UPDATE_BLOCKS_ACTIVE_FILTER_TAB', payload: tab.slug} ) }
+                        onClick={ () => {
+							dispatch( {type:'UPDATE_BLOCKS_ACTIVE_FILTER_TAB', payload: tab.slug} )
+						}}
                     >
                         {tab.name}
-                    </a>
+					</Link>
                     ) )}
                 </nav>
                 <span className="z-0 flex shadow-sm rounded-[0.2rem] justify-center">
                     <button
                         type="button"
-                        className="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-70 focus:z-10 focus:outline-none rounded-l-md"
+                        className="focus:bg-wphoverbgcolor focus:text-wpcolor hover:bg-wphoverbgcolor hover:text-wpcolor -ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-70 focus:z-10 focus:outline-none rounded-l-md"
                         onClick={activateAllBlocks}
                     >
                         Activate all
                     </button>
                     <button
                         type="button"
-                        className="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-70 focus:z-10 focus:outline-none rounded-r-md"
+                        className="focus:bg-wphoverbgcolor focus:text-wpcolor hover:bg-wphoverbgcolor hover:text-wpcolor -ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-70 focus:z-10 focus:outline-none rounded-r-md"
                         onClick={deactivateAllBlocks}
                     >
                         Deactivate all

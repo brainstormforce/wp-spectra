@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -11,20 +11,19 @@ import InspectorTab, {
 } from '@Components/inspector-tabs/InspectorTab.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
-import Range from '@Components/range/Range.js';
+import ResponsiveSlider from '@Components/responsive-slider';
 import { InspectorControls } from '@wordpress/block-editor';
 import renderSVG from '@Controls/renderIcon';
 import UAGTabsControl from '@Components/tabs';
+import UAGSelectControl from '@Components/select-control';
 import {
-	SelectControl,
 	TextControl,
 	ToggleControl,
 	TextareaControl,
-	ExternalLink,
 	Icon,
 } from '@wordpress/components';
 
-import presets from './presets';
+import formsPresets, {buttonsPresets} from './presets';
 import UAGPresets from '@Components/presets';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -33,14 +32,31 @@ const Settings = ( props ) => {
 
 	const { attributes, setAttributes, deviceType } = props;
 	const {
+		formPaddingTop,
+		formPaddingRight,
+		formPaddingBottom,
+		formPaddingLeft,
+		formPaddingTopTab,
+		formPaddingRightTab,
+		formPaddingBottomTab,
+		formPaddingLeftTab,
+		formPaddingTopMob,
+		formPaddingRightMob,
+		formPaddingBottomMob,
+		formPaddingLeftMob,
+		formPaddingUnit,
+		formPaddingUnitTab,
+		formPaddingUnitMob,
+		formPaddingLink,
 		formLabel,
 		buttonAlign,
+		buttonAlignTablet,
+		buttonAlignMobile,
 		buttonSize,
 		confirmationType,
 		confirmationMessage,
 		failedMessage,
 		confirmationUrl,
-		sendAfterSubmitEmail,
 		afterSubmitToEmail,
 		afterSubmitCcEmail,
 		afterSubmitBccEmail,
@@ -49,11 +65,6 @@ const Settings = ( props ) => {
 		submitColorHover,
 		submitBgColor,
 		submitBgColorHover,
-		submitborderStyle,
-		submitborderWidth,
-		submitborderRadius,
-		submitborderColor,
-		submitborderHoverColor,
 		submitTextloadGoogleFonts,
 		submitTextFontFamily,
 		submitTextFontWeight,
@@ -88,44 +99,36 @@ const Settings = ( props ) => {
 		inputLineHeightTablet,
 		inputLineHeightMobile,
 		toggleSize,
+		toggleSizeTablet,
+		toggleSizeMobile,
 		toggleWidthSize,
-		toggleHeightSize,
+		toggleWidthSizeTablet,
+		toggleWidthSizeMobile,
+		toggleColor,
 		toggleActiveColor,
+		toggleDotColor,
+		toggleDotActiveColor,
 		labelColor,
+		labelHoverColor,
 		inputColor,
 		bgColor,
+		bgHoverColor,
+		bgActiveColor,
 		inputplaceholderColor,
-		inputactiveColor,
-		inputborderStyle,
-		inputborderWidth,
-		inputborderRadius,
-		inputborderColor,
-		inputborderHoverColor,
+		inputplaceholderHoverColor,
+		inputplaceholderActiveColor,
 		fieldGap,
+		fieldGapTablet,
+		fieldGapMobile,
 		formStyle,
 		overallAlignment,
 		reCaptchaEnable,
 		reCaptchaType,
-		reCaptchaSecretKeyV2,
-		reCaptchaSiteKeyV2,
-		reCaptchaSecretKeyV3,
-		reCaptchaSiteKeyV3,
-		hidereCaptchaBatch,
 		successMessageTextColor,
 		successMessageBGColor,
-		successMessageBorderColor,
-		successMessageBorderStyle,
-		successMessageBorderWidth,
 		failedMessageTextColor,
-		failedMessageBorderColor,
-		failedMessageBorderStyle,
-		failedMessageBorderWidth,
 		failedMessageBGColor,
 
-		successMessageBorderRadius,
-		successMessageHoverBorderColor,
-		failedMessageBorderRadius,
-		failedMessageHoverBorderColor,
 		paddingBtnTop,
 		paddingBtnRight,
 		paddingBtnBottom,
@@ -169,7 +172,28 @@ const Settings = ( props ) => {
 		submitTextFontStyle,
 		labelFontStyle,
 		inputFontStyle,
+		hidereCaptchaBatch,
+
+		labelGap,
+		labelGapTablet,
+		labelGapMobile,
+		labelGapUnit,
+
+		displayLabels,
+		labelLetterSpacing,
+		labelLetterSpacingTablet,
+		labelLetterSpacingMobile,
+		labelLetterSpacingType,
+		inputLetterSpacing,
+		inputLetterSpacingTablet,
+		inputLetterSpacingMobile,
+		inputLetterSpacingType,
+		submitTextLetterSpacing,
+		submitTextLetterSpacingTablet,
+		submitTextLetterSpacingMobile,
+		submitTextLetterSpacingType,
 	} = attributes;
+
 	const presetSettings = () => {
 		return <UAGAdvancedPanelBody
 					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
@@ -177,18 +201,94 @@ const Settings = ( props ) => {
 				>
 					<UAGPresets
 						setAttributes = { setAttributes }
-						presets = { presets }
+						presets = { formsPresets }
 						presetInputType = 'radioImage'
 					/>
 				</UAGAdvancedPanelBody>
 	};
+	const submitGeneral = () => (
+		<UAGAdvancedPanelBody
+			title={ __( 'Submit Button', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
+			// className="uagb__url-panel-body"
+		>
+			<MultiButtonsControl
+				setAttributes={ setAttributes }
+				label={ __( 'Button Alignment', 'ultimate-addons-for-gutenberg' ) }
+				data={ {
+					desktop: {
+						value: buttonAlign,
+						label: 'buttonAlign',
+					},
+					tablet: {
+						value: buttonAlignTablet,
+						label: 'buttonAlignTablet',
+					},
+					mobile: {
+						value: buttonAlignMobile,
+						label: 'buttonAlignMobile',
+					},
+				} }
+				options={ [
+					{
+						value: 'left',
+						icon: (
+							<Icon
+								icon={ renderSVG( 'fa fa-align-left' ) }
+							/>
+						),
+						tooltip: __(
+							'Left',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'center',
+						icon: (
+							<Icon
+								icon={ renderSVG( 'fa fa-align-center' ) }
+							/>
+						),
+						tooltip: __(
+							'Center',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'right',
+						icon: (
+							<Icon
+								icon={ renderSVG( 'fa fa-align-right' ) }
+							/>
+						),
+						tooltip: __(
+							'Right',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+				] }
+				showIcons={ true }
+				responsive={true}
+			/>
+		</UAGAdvancedPanelBody>
+	);
 	const generalSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
+				<ToggleControl
+					label={ __(
+						'Show Labels',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ displayLabels }
+					onChange={ () =>
+						setAttributes( { displayLabels : ! displayLabels } )
+					}
+				/>
 				<TextControl
 					label={ __(
 						'Hidden Field Label',
@@ -287,18 +387,10 @@ const Settings = ( props ) => {
 						{
 							value: 'message',
 							label: 'Message',
-							tooltip: __(
-								'Message',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'url',
 							label: 'URL Text',
-							tooltip: __(
-								'Url Text',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 					] }
 					showIcons={ false }
@@ -354,542 +446,92 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
-	const successMessageStyle = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __(
-					'Success Message',
+	const successMessageStyle = () => ( 'message' === confirmationType && (
+		<>
+			<AdvancedPopColorControl
+				label={ __(
+					'Text Color',
 					'ultimate-addons-for-gutenberg'
 				) }
-				initialOpen={ false }
-				className="uagb__url-panel-body"
-			>
-				{ 'message' === confirmationType && (
-					<>
-						<AdvancedPopColorControl
-							label={ __(
-								'Text Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={
-								successMessageTextColor
-									? successMessageTextColor
-									: ''
-							}
-							onColorChange={ ( value ) =>
-								setAttributes( {
-									successMessageTextColor: value,
-								} )
-							}
-						/>
-						<AdvancedPopColorControl
-							label={ __(
-								'Background Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={
-								successMessageBGColor
-									? successMessageBGColor
-									: ''
-							}
-							onColorChange={ ( value ) =>
-								setAttributes( {
-									successMessageBGColor: value,
-								} )
-							}
-						/>
-						<Border
-							setAttributes={ setAttributes }
-							borderStyle={ {
-								value: successMessageBorderStyle,
-								label: 'successMessageBorderStyle',
-								title: __(
-									'Style',
-									'ultimate-addons-for-gutenberg'
-								),
-							} }
-							borderWidth={ {
-								value: successMessageBorderWidth,
-								label: 'successMessageBorderWidth',
-								title: __(
-									'Width',
-									'ultimate-addons-for-gutenberg'
-								),
-							} }
-							borderRadius={ {
-								value: successMessageBorderRadius,
-								label: 'successMessageBorderRadius',
-								title: __(
-									'Radius',
-									'ultimate-addons-for-gutenberg'
-								),
-							} }
-							borderColor={ {
-								value: successMessageBorderColor,
-								label: 'successMessageBorderColor',
-								title: __(
-									'Color',
-									'ultimate-addons-for-gutenberg'
-								),
-							} }
-							borderHoverColor={ {
-								value: successMessageHoverBorderColor,
-								label: 'successMessageHoverBorderColor',
-								title: __(
-									'Hover Color',
-									'ultimate-addons-for-gutenberg'
-								),
-							} }
-							disableBottomSeparator={ true }
-						/>
-					</>
+				colorValue={
+					successMessageTextColor
+						? successMessageTextColor
+						: ''
+				}
+				data={ {
+					value: successMessageTextColor,
+					label: 'successMessageTextColor',
+				} }
+				setAttributes={ setAttributes }
+			/>
+			<AdvancedPopColorControl
+				label={ __(
+					'Background Color',
+					'ultimate-addons-for-gutenberg'
 				) }
-			</UAGAdvancedPanelBody>
-		);
-	};
-	const failedMessageStyle = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Error Message', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-				className="uagb__url-panel-body"
-			>
-				{ 'message' === confirmationType && (
-					<>
-						<AdvancedPopColorControl
-							label={ __(
-								'Text Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={
-								failedMessageTextColor
-									? failedMessageTextColor
-									: ''
-							}
-							onColorChange={ ( value ) =>
-								setAttributes( {
-									failedMessageTextColor: value,
-								} )
-							}
-						/>
-						<AdvancedPopColorControl
-							label={ __(
-								'Background Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={
-								failedMessageBGColor ? failedMessageBGColor : ''
-							}
-							onColorChange={ ( value ) =>
-								setAttributes( { failedMessageBGColor: value } )
-							}
-						/>
-						<Border
-							setAttributes={ setAttributes }
-							borderStyle={ {
-								value: failedMessageBorderStyle,
-								label: 'failedMessageBorderStyle',
-								title: __(
-									'Style',
-									'ultimate-addons-for-gutenberg'
-								),
-							} }
-							borderWidth={ {
-								value: failedMessageBorderWidth,
-								label: 'failedMessageBorderWidth',
-								title: __(
-									'Width',
-									'ultimate-addons-for-gutenberg'
-								),
-							} }
-							borderRadius={ {
-								value: failedMessageBorderRadius,
-								label: 'failedMessageBorderRadius',
-								title: __(
-									'Radius',
-									'ultimate-addons-for-gutenberg'
-								),
-							} }
-							borderColor={ {
-								value: failedMessageBorderColor,
-								label: 'failedMessageBorderColor',
-								title: __(
-									'Color',
-									'ultimate-addons-for-gutenberg'
-								),
-							} }
-							borderHoverColor={ {
-								value: failedMessageHoverBorderColor,
-								label: 'failedMessageHoverBorderColor',
-								title: __(
-									'Hover Color',
-									'ultimate-addons-for-gutenberg'
-								),
-							} }
-							disableBottomSeparator={ true }
-						/>
-					</>
+				colorValue={
+					successMessageBGColor
+						? successMessageBGColor
+						: ''
+				}
+				data={ {
+					value: successMessageBGColor,
+					label: 'successMessageBGColor',
+				} }
+				setAttributes={ setAttributes }
+			/>
+			<ResponsiveBorder
+				setAttributes={ setAttributes }
+				prefix={'successMsg'}
+				disabledBorderTitle= {false}
+				attributes={ attributes }
+				deviceType={deviceType}
+				disableBottomSeparator={ true }
+			/>
+		</>
+	) );
+	const failedMessageStyle = () => ( 'message' === confirmationType && (
+		<>
+			<AdvancedPopColorControl
+				label={ __(
+					'Text Color',
+					'ultimate-addons-for-gutenberg'
 				) }
-			</UAGAdvancedPanelBody>
-		);
-	};
-	const submitButtonStyle = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Submit', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-				className="uagb__url-panel-body"
-			>
-				<SelectControl
-					label={ __(
-						'Button Size',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ buttonSize }
-					onChange={ ( value ) =>
-						setAttributes( {
-							buttonSize: value,
-						} )
-					}
-					options={ [
-						{
-							value: 'small',
-							label: __(
-								'Small',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'medium',
-							label: __(
-								'Medium',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'large',
-							label: __(
-								'Large',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'extralarge',
-							label: __(
-								'Extra Large',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'full',
-							label: __(
-								'Full',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-				/>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __(
-						'Button Alignment',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						value: buttonAlign,
-						label: 'buttonAlign',
-					} }
-					className="uagb-multi-button-alignment-control"
-					options={ [
-						{
-							value: 'left',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-left' ) }
-								/>
-							),
-							tooltip: __(
-								'Left',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'center',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-center' ) }
-								/>
-							),
-							tooltip: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'right',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-right' ) }
-								/>
-							),
-							tooltip: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					showIcons={ true }
-				/>
-				<SpacingControl
-					{ ...props }
-					label={ __(
-						'Button Padding',
-						'ultimate-addons-for-gutenberg'
-					) }
-					valueTop={ {
-						value: paddingBtnTop,
-						label: 'paddingBtnTop',
-					} }
-					valueRight={ {
-						value: paddingBtnRight,
-						label: 'paddingBtnRight',
-					} }
-					valueBottom={ {
-						value: paddingBtnBottom,
-						label: 'paddingBtnBottom',
-					} }
-					valueLeft={ {
-						value: paddingBtnLeft,
-						label: 'paddingBtnLeft',
-					} }
-					valueTopTablet={ {
-						value: paddingBtnTopTablet,
-						label: 'paddingBtnTopTablet',
-					} }
-					valueRightTablet={ {
-						value: paddingBtnRightTablet,
-						label: 'paddingBtnRightTablet',
-					} }
-					valueBottomTablet={ {
-						value: paddingBtnBottomTablet,
-						label: 'paddingBtnBottomTablet',
-					} }
-					valueLeftTablet={ {
-						value: paddingBtnLeftTablet,
-						label: 'paddingBtnLeftTablet',
-					} }
-					valueTopMobile={ {
-						value: paddingBtnTopMobile,
-						label: 'paddingBtnTopMobile',
-					} }
-					valueRightMobile={ {
-						value: paddingBtnRightMobile,
-						label: 'paddingBtnRightMobile',
-					} }
-					valueBottomMobile={ {
-						value: paddingBtnBottomMobile,
-						label: 'paddingBtnBottomMobile',
-					} }
-					valueLeftMobile={ {
-						value: paddingBtnLeftMobile,
-						label: 'paddingBtnLeftMobile',
-					} }
-					unit={ {
-						value: paddingBtnUnit,
-						label: 'paddingBtnUnit',
-					} }
-					mUnit={ {
-						value: mobilePaddingBtnUnit,
-						label: 'mobilePaddingBtnUnit',
-					} }
-					tUnit={ {
-						value: tabletPaddingBtnUnit,
-						label: 'tabletPaddingBtnUnit',
-					} }
-					deviceType={ deviceType }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					link={ {
-						value: paddingspacingLink,
-						label: 'paddingspacingLink',
-					} }
-				/>
-				<UAGTabsControl
-					tabs={ [
-						{
-							name: 'normal',
-							title: __(
-								'Normal',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							name: 'hover',
-							title: __(
-								'Hover',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					normal={
-						<>
-							<AdvancedPopColorControl
-								label={ __(
-									'Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ submitColor ? submitColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { submitColor: value } )
-								}
-							/>
-							<AdvancedPopColorControl
-								label={ __(
-									'Background Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={
-									submitBgColor ? submitBgColor : ''
-								}
-								onColorChange={ ( value ) =>
-									setAttributes( { submitBgColor: value } )
-								}
-							/>
-						</>
-					}
-					hover={
-						<>
-							<AdvancedPopColorControl
-								label={ __(
-									'Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={
-									submitColorHover ? submitColorHover : ''
-								}
-								onColorChange={ ( value ) =>
-									setAttributes( { submitColorHover: value } )
-								}
-							/>
-							<AdvancedPopColorControl
-								label={ __(
-									'Background Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={
-									submitBgColorHover ? submitBgColorHover : ''
-								}
-								onColorChange={ ( value ) =>
-									setAttributes( {
-										submitBgColorHover: value,
-									} )
-								}
-							/>
-						</>
-					}
-				/>
-				<Border
-					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: submitborderStyle,
-						label: 'submitborderStyle',
-						title: __(
-							'Style',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderWidth={ {
-						value: submitborderWidth,
-						label: 'submitborderWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderRadius={ {
-						value: submitborderRadius,
-						label: 'submitborderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderColor={ {
-						value: submitborderColor,
-						label: 'submitborderColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ {
-						value: submitborderHoverColor,
-						label: 'submitborderHoverColor',
-						title: __(
-							'Hover Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					disableBottomSeparator={ false }
-				/>
-				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: submitTextloadGoogleFonts,
-						label: 'submitTextloadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: submitTextFontFamily,
-						label: 'submitTextFontFamily',
-					} }
-					fontWeight={ {
-						value: submitTextFontWeight,
-						label: 'submitTextFontWeight',
-					} }
-					fontStyle={ {
-						value: submitTextFontStyle,
-						label: 'submitTextFontStyle',
-					} }
-					fontSizeType={ {
-						value: submitTextFontSizeType,
-						label: 'submitTextFontSizeType',
-					} }
-					fontSize={ {
-						value: submitTextFontSize,
-						label: 'submitTextFontSize',
-					} }
-					fontSizeMobile={ {
-						value: submitTextFontSizeMobile,
-						label: 'submitTextFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: submitTextFontSizeTablet,
-						label: 'submitTextFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: submitTextLineHeightType,
-						label: 'submitTextLineHeightType',
-					} }
-					lineHeight={ {
-						value: submitTextLineHeight,
-						label: 'submitTextLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: submitTextLineHeightMobile,
-						label: 'submitTextLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: submitTextLineHeightTablet,
-						label: 'submitTextLineHeightTablet',
-					} }
-					transform={ {
-						value: submitTextTransform,
-						label: 'submitTextTransform',
-					} }
-					decoration={ {
-						value: submitTextDecoration,
-						label: 'submitTextDecoration',
-					} }
-				/>
-			</UAGAdvancedPanelBody>
-		);
-	};
+				colorValue={
+					failedMessageTextColor
+						? failedMessageTextColor
+						: ''
+				}
+				data={ {
+					value: failedMessageTextColor,
+					label: 'failedMessageTextColor',
+				} }
+				setAttributes={ setAttributes }
+			/>
+			<AdvancedPopColorControl
+				label={ __(
+					'Background Color',
+					'ultimate-addons-for-gutenberg'
+				) }
+				colorValue={
+					failedMessageBGColor ? failedMessageBGColor : ''
+				}
+				data={ {
+					value: failedMessageBGColor,
+					label: 'failedMessageBGColor',
+				} }
+				setAttributes={ setAttributes }
+			/>
+			<ResponsiveBorder
+				setAttributes={ setAttributes }
+				prefix={'errorMsg'}
+				disabledBorderTitle= {false}
+				attributes={ attributes }
+				deviceType={deviceType}
+				disableBottomSeparator={ true }
+			/>
+		</>
+	) );
 
 	const afterSubmitActions = () => {
 		return (
@@ -898,513 +540,1196 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
-				<ToggleControl
-					label={ __( 'Email', 'ultimate-addons-for-gutenberg' ) }
-					checked={ sendAfterSubmitEmail }
-					onChange={ () =>
-						setAttributes( {
-							sendAfterSubmitEmail: ! sendAfterSubmitEmail,
-						} )
-					}
-				/>
-				{ true === sendAfterSubmitEmail && (
-					<>
-						<UAGTabsControl
-							tabs={ [
-								{
-									name: 'to',
-									title: __(
-										'To',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									name: 'cc',
-									title: __(
-										'CC',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									name: 'bcc',
-									title: __(
-										'BCC',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-							] }
-							to={
-								<TextControl
-									placeholder={ __(
-										'Email',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ afterSubmitToEmail }
-									onChange={ ( value ) =>
-										setAttributes( {
-											afterSubmitToEmail: value,
-										} )
-									}
-								/>
-							}
-							cc={
-								<TextControl
-									placeholder={ __(
-										'Email',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ afterSubmitCcEmail }
-									onChange={ ( value ) =>
-										setAttributes( {
-											afterSubmitCcEmail: value,
-										} )
-									}
-								/>
-							}
-							bcc={
-								<TextControl
-									placeholder={ __(
-										'Email',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ afterSubmitBccEmail }
-									onChange={ ( value ) =>
-										setAttributes( {
-											afterSubmitBccEmail: value,
-										} )
-									}
-								/>
-							}
-							disableBottomSeparator={ false }
-						/>
+				<p className="uagb-form-notice">
+					{ __(
+						'Note: It is required to enter an email ID to receive the data submitted via Form. Else you will not receive any data.',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</p>
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'to',
+							title: __(
+								'To',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'cc',
+							title: __(
+								'CC',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'bcc',
+							title: __(
+								'BCC',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					to={
 						<TextControl
-							label={ __(
-								'Subject',
-								'ultimate-addons-for-gutenberg'
-							) }
 							placeholder={ __(
-								'Subject',
+								'Email',
 								'ultimate-addons-for-gutenberg'
 							) }
-							value={ afterSubmitEmailSubject }
+							value={ afterSubmitToEmail }
 							onChange={ ( value ) =>
 								setAttributes( {
-									afterSubmitEmailSubject: value,
+									afterSubmitToEmail: value,
 								} )
 							}
 						/>
-					</>
-				) }
+					}
+					cc={
+						<TextControl
+							placeholder={ __(
+								'Email',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ afterSubmitCcEmail }
+							onChange={ ( value ) =>
+								setAttributes( {
+									afterSubmitCcEmail: value,
+								} )
+							}
+						/>
+					}
+					bcc={
+						<TextControl
+							placeholder={ __(
+								'Email',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ afterSubmitBccEmail }
+							onChange={ ( value ) =>
+								setAttributes( {
+									afterSubmitBccEmail: value,
+								} )
+							}
+						/>
+					}
+					disableBottomSeparator={ false }
+				/>
+				<TextControl
+					label={ __(
+						'Subject',
+						'ultimate-addons-for-gutenberg'
+					) }
+					placeholder={ __(
+						'Subject',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ afterSubmitEmailSubject }
+					onChange={ ( value ) =>
+						setAttributes( {
+							afterSubmitEmailSubject: value,
+						} )
+					}
+				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
 
-	const labelSettings = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Label', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-				className="uagb__url-panel-body"
-			>
-				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ labelColor ? labelColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { labelColor: value } )
-					}
-				/>
-				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: labelloadGoogleFonts,
-						label: 'labelloadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: labelFontFamily,
-						label: 'labelFontFamily',
-					} }
-					fontWeight={ {
-						value: labelFontWeight,
-						label: 'labelFontWeight',
-					} }
-					fontStyle={ {
-						value: labelFontStyle,
-						label: 'labelFontStyle',
-					} }
-					fontSizeType={ {
-						value: labelFontSizeType,
-						label: 'labelFontSizeType',
-					} }
-					fontSize={ {
-						value: labelFontSize,
-						label: 'labelFontSize',
-					} }
-					fontSizeMobile={ {
-						value: labelFontSizeMobile,
-						label: 'labelFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: labelFontSizeTablet,
-						label: 'labelFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: labelLineHeightType,
-						label: 'labelLineHeightType',
-					} }
-					lineHeight={ {
-						value: labelLineHeight,
-						label: 'labelLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: labelLineHeightMobile,
-						label: 'labelLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: labelLineHeightTablet,
-						label: 'labelLineHeightTablet',
-					} }
-					transform={ {
-						value: labelTransform,
-						label: 'labelTransform',
-					} }
-					decoration={ {
-						value: labelDecoration,
-						label: 'labelDecoration',
-					} }
-				/>
-			</UAGAdvancedPanelBody>
-		);
-	};
-	const inputSettings = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Input', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-				className="uagb__url-panel-body"
-			>
-				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ inputColor ? inputColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { inputColor: value } )
-					}
-				/>
-				<AdvancedPopColorControl
-					label={ __(
-						'Placeholder Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={
-						inputplaceholderColor ? inputplaceholderColor : ''
-					}
-					onColorChange={ ( value ) =>
-						setAttributes( { inputplaceholderColor: value } )
-					}
-				/>
-				<AdvancedPopColorControl
-					label={ __(
-						'Active Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ inputactiveColor ? inputactiveColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { inputactiveColor: value } )
-					}
-				/>
-				{ 'underlined' !== formStyle && (
-				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ bgColor ? bgColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { bgColor: value } )
-					}
-				/>
-				)}
-				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: inputloadGoogleFonts,
-						label: 'inputloadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: inputFontFamily,
-						label: 'inputFontFamily',
-					} }
-					fontWeight={ {
-						value: inputFontWeight,
-						label: 'inputFontWeight',
-					} }
-					fontStyle={ {
-						value: inputFontStyle,
-						label: 'inputFontStyle',
-					} }
-					fontSizeType={ {
-						value: inputFontSizeType,
-						label: 'inputFontSizeType',
-					} }
-					fontSize={ {
-						value: inputFontSize,
-						label: 'inputFontSize',
-					} }
-					fontSizeMobile={ {
-						value: inputFontSizeMobile,
-						label: 'inputFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: inputFontSizeTablet,
-						label: 'inputFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: inputLineHeightType,
-						label: 'inputLineHeightType',
-					} }
-					lineHeight={ {
-						value: inputLineHeight,
-						label: 'inputLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: inputLineHeightMobile,
-						label: 'inputLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: inputLineHeightTablet,
-						label: 'inputLineHeightTablet',
-					} }
-					transform={ {
-						value: inputTransform,
-						label: 'inputTransform',
-					} }
-					decoration={ {
-						value: inputDecoration,
-						label: 'inputDecoration',
-					} }
-				/>
-				<Border
-					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: inputborderStyle,
-						label: 'inputborderStyle',
-						title: __(
-							'Style',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderWidth={ {
-						value: inputborderWidth,
-						label: 'inputborderWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderRadius={ {
-						value: inputborderRadius,
-						label: 'inputborderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderColor={ {
-						value: inputborderColor,
-						label: 'inputborderColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ {
-						value: inputborderHoverColor,
-						label: 'inputborderHoverColor',
-						title: __(
-							'Hover Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					disableBottomSeparator={ true }
-				/>
-			</UAGAdvancedPanelBody>
-		);
-	};
-	const fieldSettings = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Field', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-				className="uagb__url-panel-body"
-			>
-				<Range
-					label={ __(
-						'Spacing between fields',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					className={ 'uagb-padding-control' }
-					value={ fieldGap }
-					onChange={ ( value ) =>
-						setAttributes( {
-							fieldGap: value,
-						} )
-					}
-					min={ 0 }
-					max={ 100 }
-					unit={ {
-						value: fieldGapType,
-						label: 'fieldGapType',
-					} }
-				/>
-				<SpacingControl
-					{ ...props }
-					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
-					valueTop={ {
-						value: paddingFieldTop,
-						label: 'paddingFieldTop',
-					} }
-					valueRight={ {
-						value: paddingFieldRight,
-						label: 'paddingFieldRight',
-					} }
-					valueBottom={ {
-						value: paddingFieldBottom,
-						label: 'paddingFieldBottom',
-					} }
-					valueLeft={ {
-						value: paddingFieldLeft,
-						label: 'paddingFieldLeft',
-					} }
-					valueTopTablet={ {
-						value: paddingFieldTopTablet,
-						label: 'paddingFieldTopTablet',
-					} }
-					valueRightTablet={ {
-						value: paddingFieldRightTablet,
-						label: 'paddingFieldRightTablet',
-					} }
-					valueBottomTablet={ {
-						value: paddingFieldBottomTablet,
-						label: 'paddingFieldBottomTablet',
-					} }
-					valueLeftTablet={ {
-						value: paddingFieldLeftTablet,
-						label: 'paddingFieldLeftTablet',
-					} }
-					valueTopMobile={ {
-						value: paddingFieldTopMobile,
-						label: 'paddingFieldTopMobile',
-					} }
-					valueRightMobile={ {
-						value: paddingFieldRightMobile,
-						label: 'paddingFieldRightMobile',
-					} }
-					valueBottomMobile={ {
-						value: paddingFieldBottomMobile,
-						label: 'paddingFieldBottomMobile',
-					} }
-					valueLeftMobile={ {
-						value: paddingFieldLeftMobile,
-						label: 'paddingFieldLeftMobile',
-					} }
-					unit={ {
-						value: paddingFieldUnit,
-						label: 'paddingFieldUnit',
-					} }
-					mUnit={ {
-						value: paddingFieldUnitmobile,
-						label: 'paddingFieldUnitmobile',
-					} }
-					tUnit={ {
-						value: paddingFieldUnitTablet,
-						label: 'paddingFieldUnitTablet',
-					} }
-					deviceType={ deviceType }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					link={ {
-						value: paddingFieldLink,
-						label: 'paddingFieldLink',
-					} }
-				/>
-			</UAGAdvancedPanelBody>
-		);
-	};
-	const checkboxSettings = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __(
-					'Checkbox / Toggle',
+	const labelStyling = () => (
+		<UAGAdvancedPanelBody
+			title={ __( 'Label', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ true }
+		>
+			<TypographyControl
+				label={ __(
+					'Typography',
 					'ultimate-addons-for-gutenberg'
 				) }
-				initialOpen={ false }
-				className="uagb__url-panel-body"
-			>
-				<Range
-					label={ __(
-						'Checkbox/Radio Size',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ toggleSize }
-					onChange={ ( value ) =>
-						setAttributes( {
-							toggleSize: value,
-						} )
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				loadGoogleFonts={ {
+					value: labelloadGoogleFonts,
+					label: 'labelloadGoogleFonts',
+				} }
+				fontFamily={ {
+					value: labelFontFamily,
+					label: 'labelFontFamily',
+				} }
+				fontWeight={ {
+					value: labelFontWeight,
+					label: 'labelFontWeight',
+				} }
+				fontStyle={ {
+					value: labelFontStyle,
+					label: 'labelFontStyle',
+				} }
+				fontSizeType={ {
+					value: labelFontSizeType,
+					label: 'labelFontSizeType',
+				} }
+				fontSize={ {
+					value: labelFontSize,
+					label: 'labelFontSize',
+				} }
+				fontSizeMobile={ {
+					value: labelFontSizeMobile,
+					label: 'labelFontSizeMobile',
+				} }
+				fontSizeTablet={ {
+					value: labelFontSizeTablet,
+					label: 'labelFontSizeTablet',
+				} }
+				lineHeightType={ {
+					value: labelLineHeightType,
+					label: 'labelLineHeightType',
+				} }
+				lineHeight={ {
+					value: labelLineHeight,
+					label: 'labelLineHeight',
+				} }
+				lineHeightMobile={ {
+					value: labelLineHeightMobile,
+					label: 'labelLineHeightMobile',
+				} }
+				lineHeightTablet={ {
+					value: labelLineHeightTablet,
+					label: 'labelLineHeightTablet',
+				} }
+				letterSpacing={ {
+					value: labelLetterSpacing,
+					label: 'labelLetterSpacing',
+				} }
+				letterSpacingTablet={ {
+					value: labelLetterSpacingTablet,
+					label: 'labelLetterSpacingTablet',
+				} }
+				letterSpacingMobile={ {
+					value: labelLetterSpacingMobile,
+					label: 'labelLetterSpacingMobile',
+				} }
+				letterSpacingType={ {
+					value: labelLetterSpacingType,
+					label: 'labelLetterSpacingType',
+				} }
+				transform={ {
+					value: labelTransform,
+					label: 'labelTransform',
+				} }
+				decoration={ {
+					value: labelDecoration,
+					label: 'labelDecoration',
+				} }
+			/>
+			<UAGTabsControl
+				tabs={ [
+					{
+						name: 'normal',
+						title: __(
+							'Normal',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						name: 'hover',
+						title: __(
+							'Hover',
+							'ultimate-addons-for-gutenberg'
+						),
 					}
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: toggleSizeType,
-						label: 'toggleSizeType',
-					} }
-				/>
-				<Range
-					label={ __(
-						'Toggle Width',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ toggleWidthSize }
-					setAttributes={ setAttributes }
-					onChange={ ( value ) =>
-						setAttributes( {
-							toggleWidthSize: value,
-						} )
-					}
-					min={ 0 }
-					max={ 50 }
-					displayUnit={ false }
-				/>
-				<Range
-					label={ __(
-						'Toggle Height',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ toggleHeightSize }
-					onChange={ ( value ) =>
-						setAttributes( {
-							toggleHeightSize: value,
-						} )
-					}
-					min={ 0 }
-					max={ 50 }
-					displayUnit={ false }
-				/>
-				<AdvancedPopColorControl
-					label={ __(
-						'Toggle Active Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ toggleActiveColor ? toggleActiveColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { toggleActiveColor: value } )
-					}
-				/>
-			</UAGAdvancedPanelBody>
-		);
-	};
+				] }
+				normal={
+					<>
+						<AdvancedPopColorControl
+							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ labelColor ? labelColor : '' }
+							data={ {
+								value: labelColor,
+								label: 'labelColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					</>
+				}
+				hover={
+					<>
+						<AdvancedPopColorControl
+							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ labelHoverColor ? labelHoverColor : '' }
+							data={ {
+								value: labelHoverColor,
+								label: 'labelHoverColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					</>
+				}
+				disableBottomSeparator={ true }
+			/>
+		</UAGAdvancedPanelBody>
+	);
+
+	const inputStyling = () => (
+		<UAGAdvancedPanelBody
+			title={ __( 'Input', 'ultimate-addons-for-gutenberg' ) }
+			// If displayLabels is false, this panel would be shown first and hence it's initialOpen should be set to true.
+			initialOpen={ ! displayLabels }
+		>
+			<AdvancedPopColorControl
+				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+				colorValue={ inputColor ? inputColor : '' }
+				data={ {
+					value: inputColor,
+					label: 'inputColor',
+				} }
+				setAttributes={ setAttributes }
+			/>
+			<UAGTabsControl
+				tabs={ [
+					{
+						name: 'normal',
+						title: __(
+							'Normal',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						name: 'hover',
+						title: __(
+							'Hover',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						name: 'active',
+						title: __(
+							'Active',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+				] }
+				normal={
+					<>
+						<AdvancedPopColorControl
+							label={ __(
+								'Placeholder Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={
+								inputplaceholderColor ? inputplaceholderColor : ''
+							}
+							data={ {
+								value: inputplaceholderColor,
+								label: 'inputplaceholderColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+						{ 'underlined' !== formStyle && (
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ bgColor ? bgColor : '' }
+								data={ {
+									value: bgColor,
+									label: 'bgColor',
+								} }
+								setAttributes={ setAttributes }
+							/>
+						) }
+					</>
+				}
+				hover={
+					<>
+						<AdvancedPopColorControl
+							label={ __(
+								'Placeholder Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={
+								inputplaceholderHoverColor ? inputplaceholderHoverColor : ''
+							}
+							data={ {
+								value: inputplaceholderHoverColor,
+								label: 'inputplaceholderHoverColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+						{ 'underlined' !== formStyle && (
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ bgHoverColor ? bgHoverColor : '' }
+								data={ {
+									value: bgHoverColor,
+									label: 'bgHoverColor',
+								} }
+								setAttributes={ setAttributes }
+							/>
+						) }
+					</>
+				}
+				active={
+					<>
+						<AdvancedPopColorControl
+							label={ __(
+								'Placeholder Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={
+								inputplaceholderActiveColor ? inputplaceholderActiveColor : ''
+							}
+							data={ {
+								value: inputplaceholderActiveColor,
+								label: 'inputplaceholderActiveColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+						{ 'underlined' !== formStyle && (
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ bgActiveColor ? bgActiveColor : '' }
+								data={ {
+									value: bgActiveColor,
+									label: 'bgActiveColor',
+								} }
+								setAttributes={ setAttributes }
+							/>
+						) }
+					</>
+				}
+				disableBottomSeparator={ false }
+			/>
+			<ResponsiveBorder
+				setAttributes={ setAttributes }
+				prefix={'field'}
+				disabledBorderTitle= {false}
+				attributes={ attributes }
+				deviceType={deviceType}
+			/>
+			<SpacingControl
+				{ ...props }
+				label={ __( 'Input Padding', 'ultimate-addons-for-gutenberg' ) }
+				valueTop={ {
+					value: paddingFieldTop,
+					label: 'paddingFieldTop',
+				} }
+				valueRight={ {
+					value: paddingFieldRight,
+					label: 'paddingFieldRight',
+				} }
+				valueBottom={ {
+					value: paddingFieldBottom,
+					label: 'paddingFieldBottom',
+				} }
+				valueLeft={ {
+					value: paddingFieldLeft,
+					label: 'paddingFieldLeft',
+				} }
+				valueTopTablet={ {
+					value: paddingFieldTopTablet,
+					label: 'paddingFieldTopTablet',
+				} }
+				valueRightTablet={ {
+					value: paddingFieldRightTablet,
+					label: 'paddingFieldRightTablet',
+				} }
+				valueBottomTablet={ {
+					value: paddingFieldBottomTablet,
+					label: 'paddingFieldBottomTablet',
+				} }
+				valueLeftTablet={ {
+					value: paddingFieldLeftTablet,
+					label: 'paddingFieldLeftTablet',
+				} }
+				valueTopMobile={ {
+					value: paddingFieldTopMobile,
+					label: 'paddingFieldTopMobile',
+				} }
+				valueRightMobile={ {
+					value: paddingFieldRightMobile,
+					label: 'paddingFieldRightMobile',
+				} }
+				valueBottomMobile={ {
+					value: paddingFieldBottomMobile,
+					label: 'paddingFieldBottomMobile',
+				} }
+				valueLeftMobile={ {
+					value: paddingFieldLeftMobile,
+					label: 'paddingFieldLeftMobile',
+				} }
+				unit={ {
+					value: paddingFieldUnit,
+					label: 'paddingFieldUnit',
+				} }
+				mUnit={ {
+					value: paddingFieldUnitmobile,
+					label: 'paddingFieldUnitmobile',
+				} }
+				tUnit={ {
+					value: paddingFieldUnitTablet,
+					label: 'paddingFieldUnitTablet',
+				} }
+				deviceType={ deviceType }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				link={ {
+					value: paddingFieldLink,
+					label: 'paddingFieldLink',
+				} }
+			/>
+			<TypographyControl
+				label={ __(
+					'Input Typography',
+					'ultimate-addons-for-gutenberg'
+				) }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				loadGoogleFonts={ {
+					value: inputloadGoogleFonts,
+					label: 'inputloadGoogleFonts',
+				} }
+				fontFamily={ {
+					value: inputFontFamily,
+					label: 'inputFontFamily',
+				} }
+				fontWeight={ {
+					value: inputFontWeight,
+					label: 'inputFontWeight',
+				} }
+				fontStyle={ {
+					value: inputFontStyle,
+					label: 'inputFontStyle',
+				} }
+				fontSizeType={ {
+					value: inputFontSizeType,
+					label: 'inputFontSizeType',
+				} }
+				fontSize={ {
+					value: inputFontSize,
+					label: 'inputFontSize',
+				} }
+				fontSizeMobile={ {
+					value: inputFontSizeMobile,
+					label: 'inputFontSizeMobile',
+				} }
+				fontSizeTablet={ {
+					value: inputFontSizeTablet,
+					label: 'inputFontSizeTablet',
+				} }
+				lineHeightType={ {
+					value: inputLineHeightType,
+					label: 'inputLineHeightType',
+				} }
+				lineHeight={ {
+					value: inputLineHeight,
+					label: 'inputLineHeight',
+				} }
+				lineHeightMobile={ {
+					value: inputLineHeightMobile,
+					label: 'inputLineHeightMobile',
+				} }
+				lineHeightTablet={ {
+					value: inputLineHeightTablet,
+					label: 'inputLineHeightTablet',
+				} }
+				letterSpacing={ {
+					value: inputLetterSpacing,
+					label: 'inputLetterSpacing',
+				} }
+				letterSpacingTablet={ {
+					value: inputLetterSpacingTablet,
+					label: 'inputLetterSpacingTablet',
+				} }
+				letterSpacingMobile={ {
+					value: inputLetterSpacingMobile,
+					label: 'inputLetterSpacingMobile',
+				} }
+				letterSpacingType={ {
+					value: inputLetterSpacingType,
+					label: 'inputLetterSpacingType',
+				} }
+				transform={ {
+					value: inputTransform,
+					label: 'inputTransform',
+				} }
+				decoration={ {
+					value: inputDecoration,
+					label: 'inputDecoration',
+				} }
+			/>
+		</UAGAdvancedPanelBody>
+	);
+
+	const elementStyling = () => (
+		<UAGAdvancedPanelBody
+			title={ __( 'Checkbox/Toggle/Radio', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
+			// className="uagb__url-panel-body"
+		>
+			<ResponsiveSlider
+				label={ __(
+					'Checkbox/Radio Size',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: toggleSize,
+						label: 'toggleSize',
+					},
+					tablet: {
+						value: toggleSizeTablet,
+						label: 'toggleSizeTablet',
+					},
+					mobile: {
+						value: toggleSizeMobile,
+						label: 'toggleSizeMobile',
+					},
+				} }
+				min={ 0 }
+				max={ 50 }
+				unit={ {
+					value: toggleSizeType,
+					label: 'toggleSizeType',
+				} }
+				setAttributes={ setAttributes }
+			/>
+			<ResponsiveSlider
+				label={ __(
+					'Toggle Size',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: toggleWidthSize,
+						label: 'toggleWidthSize',
+					},
+					tablet: {
+						value: toggleWidthSizeTablet,
+						label: 'toggleWidthSizeTablet',
+					},
+					mobile: {
+						value: toggleWidthSizeMobile,
+						label: 'toggleWidthSizeMobile',
+					},
+				} }
+				min={ 0 }
+				max={ 50 }
+				displayUnit={ false }
+				setAttributes={ setAttributes }
+			/>
+			<UAGTabsControl
+				tabs={ [
+					{
+						name: 'normal',
+						title: __(
+							'Normal',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						name: 'active',
+						title: __(
+							'Active',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+				] }
+				normal={
+					<>
+						<AdvancedPopColorControl
+							label={ __(
+								'Background Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ toggleColor ? toggleColor : '' }
+							data={ {
+								value: toggleColor,
+								label: 'toggleColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+						<AdvancedPopColorControl
+							label={ __(
+								'Element Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ toggleDotColor ? toggleDotColor : '' }
+							data={ {
+								value: toggleDotColor,
+								label: 'toggleDotColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					</>
+				}
+				active={
+					<>
+						<AdvancedPopColorControl
+							label={ __(
+								'Background Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ toggleActiveColor ? toggleActiveColor : '' }
+							data={ {
+								value: toggleActiveColor,
+								label: 'toggleActiveColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+						<AdvancedPopColorControl
+							label={ __(
+								'Element Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ toggleDotActiveColor ? toggleDotActiveColor : '' }
+							data={ {
+								value: toggleDotActiveColor,
+								label: 'toggleDotActiveColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					</>
+				}
+				disableBottomSeparator={ false }
+			/>
+			<ResponsiveBorder
+				setAttributes={ setAttributes }
+				prefix={'checkBoxToggle'}
+				disabledBorderTitle= {false}
+				attributes={ attributes }
+				deviceType={deviceType}
+				borderHoverColorLabel={ __( 'Color', 'ultimate-addons-for-gutenberg' )}
+				hoverTabLabel={ __( 'Active', 'ultimate-addons-for-gutenberg' )}
+				disableBottomSeparator={ true }
+				borderRadiusHelp={ __(
+					'Border radius will be applied to Radio & Toggle only when the layout for those blocks is set to Square.',
+					'ultimate-addons-for-gutenberg'
+				) }
+			/>
+		</UAGAdvancedPanelBody>
+	);
+
+	const submitStyling = () => (
+		<UAGAdvancedPanelBody
+			title={ __( 'Submit Button', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
+			// className="uagb__url-panel-body"
+		>
+			<UAGPresets
+				setAttributes = { setAttributes }
+				presets = { buttonsPresets }
+				presetInputType = 'radioImage'
+			/>
+			<UAGSelectControl
+				label={ __(
+					'Button Size',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					value: buttonSize,
+					label: 'buttonSize',
+				} }
+				setAttributes={ setAttributes }
+				options={ [
+					{
+						value: 'small',
+						label: __(
+							'Small',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'medium',
+						label: __(
+							'Medium',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'large',
+						label: __(
+							'Large',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'extralarge',
+						label: __(
+							'Extra Large',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'full',
+						label: __(
+							'Full',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+				] }
+			/>
+			<SpacingControl
+				{ ...props }
+				label={ __(
+					'Button Padding',
+					'ultimate-addons-for-gutenberg'
+				) }
+				valueTop={ {
+					value: paddingBtnTop,
+					label: 'paddingBtnTop',
+				} }
+				valueRight={ {
+					value: paddingBtnRight,
+					label: 'paddingBtnRight',
+				} }
+				valueBottom={ {
+					value: paddingBtnBottom,
+					label: 'paddingBtnBottom',
+				} }
+				valueLeft={ {
+					value: paddingBtnLeft,
+					label: 'paddingBtnLeft',
+				} }
+				valueTopTablet={ {
+					value: paddingBtnTopTablet,
+					label: 'paddingBtnTopTablet',
+				} }
+				valueRightTablet={ {
+					value: paddingBtnRightTablet,
+					label: 'paddingBtnRightTablet',
+				} }
+				valueBottomTablet={ {
+					value: paddingBtnBottomTablet,
+					label: 'paddingBtnBottomTablet',
+				} }
+				valueLeftTablet={ {
+					value: paddingBtnLeftTablet,
+					label: 'paddingBtnLeftTablet',
+				} }
+				valueTopMobile={ {
+					value: paddingBtnTopMobile,
+					label: 'paddingBtnTopMobile',
+				} }
+				valueRightMobile={ {
+					value: paddingBtnRightMobile,
+					label: 'paddingBtnRightMobile',
+				} }
+				valueBottomMobile={ {
+					value: paddingBtnBottomMobile,
+					label: 'paddingBtnBottomMobile',
+				} }
+				valueLeftMobile={ {
+					value: paddingBtnLeftMobile,
+					label: 'paddingBtnLeftMobile',
+				} }
+				unit={ {
+					value: paddingBtnUnit,
+					label: 'paddingBtnUnit',
+				} }
+				mUnit={ {
+					value: mobilePaddingBtnUnit,
+					label: 'mobilePaddingBtnUnit',
+				} }
+				tUnit={ {
+					value: tabletPaddingBtnUnit,
+					label: 'tabletPaddingBtnUnit',
+				} }
+				deviceType={ deviceType }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				link={ {
+					value: paddingspacingLink,
+					label: 'paddingspacingLink',
+				} }
+			/>
+			<UAGTabsControl
+				tabs={ [
+					{
+						name: 'normal',
+						title: __(
+							'Normal',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						name: 'hover',
+						title: __(
+							'Hover',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+				] }
+				normal={
+					<>
+						<AdvancedPopColorControl
+							label={ __(
+								'Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ submitColor ? submitColor : '' }
+							data={ {
+								value: submitColor,
+								label: 'submitColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+						<AdvancedPopColorControl
+							label={ __(
+								'Background Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={
+								submitBgColor ? submitBgColor : ''
+							}
+							data={ {
+								value: submitBgColor,
+								label: 'submitBgColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					</>
+				}
+				hover={
+					<>
+						<AdvancedPopColorControl
+							label={ __(
+								'Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={
+								submitColorHover ? submitColorHover : ''
+							}
+							data={ {
+								value: submitColorHover,
+								label: 'submitColorHover',
+							} }
+							setAttributes={ setAttributes }
+						/>
+						<AdvancedPopColorControl
+							label={ __(
+								'Background Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={
+								submitBgColorHover ? submitBgColorHover : ''
+							}
+							data={ {
+								value: submitBgColorHover,
+								label: 'submitBgColorHover',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					</>
+				}
+			/>
+			<ResponsiveBorder
+				setAttributes={ setAttributes }
+				prefix={'btn'}
+				disabledBorderTitle= {false}
+				attributes={ attributes }
+				deviceType={deviceType}
+			/>
+			<TypographyControl
+				label={ __(
+					'Typography',
+					'ultimate-addons-for-gutenberg'
+				) }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				loadGoogleFonts={ {
+					value: submitTextloadGoogleFonts,
+					label: 'submitTextloadGoogleFonts',
+				} }
+				fontFamily={ {
+					value: submitTextFontFamily,
+					label: 'submitTextFontFamily',
+				} }
+				fontWeight={ {
+					value: submitTextFontWeight,
+					label: 'submitTextFontWeight',
+				} }
+				fontStyle={ {
+					value: submitTextFontStyle,
+					label: 'submitTextFontStyle',
+				} }
+				fontSizeType={ {
+					value: submitTextFontSizeType,
+					label: 'submitTextFontSizeType',
+				} }
+				fontSize={ {
+					value: submitTextFontSize,
+					label: 'submitTextFontSize',
+				} }
+				fontSizeMobile={ {
+					value: submitTextFontSizeMobile,
+					label: 'submitTextFontSizeMobile',
+				} }
+				fontSizeTablet={ {
+					value: submitTextFontSizeTablet,
+					label: 'submitTextFontSizeTablet',
+				} }
+				lineHeightType={ {
+					value: submitTextLineHeightType,
+					label: 'submitTextLineHeightType',
+				} }
+				lineHeight={ {
+					value: submitTextLineHeight,
+					label: 'submitTextLineHeight',
+				} }
+				lineHeightMobile={ {
+					value: submitTextLineHeightMobile,
+					label: 'submitTextLineHeightMobile',
+				} }
+				lineHeightTablet={ {
+					value: submitTextLineHeightTablet,
+					label: 'submitTextLineHeightTablet',
+				} }
+				letterSpacing={ {
+					value: submitTextLetterSpacing,
+					label: 'submitTextLetterSpacing',
+				} }
+				letterSpacingTablet={ {
+					value: submitTextLetterSpacingTablet,
+					label: 'submitTextLetterSpacingTablet',
+				} }
+				letterSpacingMobile={ {
+					value: submitTextLetterSpacingMobile,
+					label: 'submitTextLetterSpacingMobile',
+				} }
+				letterSpacingType={ {
+					value: submitTextLetterSpacingType,
+					label: 'submitTextLetterSpacingType',
+				} }
+				transform={ {
+					value: submitTextTransform,
+					label: 'submitTextTransform',
+				} }
+				decoration={ {
+					value: submitTextDecoration,
+					label: 'submitTextDecoration',
+				} }
+			/>
+		</UAGAdvancedPanelBody>
+	);
+
+	const messageStyling = () => (
+		<UAGAdvancedPanelBody
+			title={ __( 'Messages', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
+			// className="uagb__url-panel-body"
+		>
+			<UAGTabsControl
+				tabs={ [
+					{
+						name: 'success',
+						title: __(
+							'Success',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						name: 'error',
+						title: __(
+							'Error',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+				] }
+				success={ successMessageStyle() }
+				error={ failedMessageStyle() }
+				disableBottomSeparator={ true }
+			/>
+		</UAGAdvancedPanelBody>
+	);
+
+	const spaceStyling = () => (
+		<UAGAdvancedPanelBody
+			title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
+			// className="uagb__url-panel-body"
+		>
+			<SpacingControl
+				{ ...props }
+				label={ __(
+					'Form Padding',
+					'ultimate-addons-for-gutenberg'
+				) }
+				valueTop={ {
+					value: formPaddingTop,
+					label: 'formPaddingTop',
+				} }
+				valueRight={ {
+					value: formPaddingRight,
+					label: 'formPaddingRight',
+				} }
+				valueBottom={ {
+					value: formPaddingBottom,
+					label: 'formPaddingBottom',
+				} }
+				valueLeft={ {
+					value: formPaddingLeft,
+					label: 'formPaddingLeft',
+				} }
+				valueTopTablet={ {
+					value: formPaddingTopTab,
+					label: 'formPaddingTopTab',
+				} }
+				valueRightTablet={ {
+					value: formPaddingRightTab,
+					label: 'formPaddingRightTab',
+				} }
+				valueBottomTablet={ {
+					value: formPaddingBottomTab,
+					label: 'formPaddingBottomTab',
+				} }
+				valueLeftTablet={ {
+					value: formPaddingLeftTab,
+					label: 'formPaddingLeftTab',
+				} }
+				valueTopMobile={ {
+					value: formPaddingTopMob,
+					label: 'formPaddingTopMob',
+				} }
+				valueRightMobile={ {
+					value: formPaddingRightMob,
+					label: 'formPaddingRightMob',
+				} }
+				valueBottomMobile={ {
+					value: formPaddingBottomMob,
+					label: 'formPaddingBottomMob',
+				} }
+				valueLeftMobile={ {
+					value: formPaddingLeftMob,
+					label: 'formPaddingLeftMob',
+				} }
+				unit={ {
+					value: formPaddingUnit,
+					label: 'formPaddingUnit',
+				} }
+				mUnit={ {
+					value: formPaddingUnitTab,
+					label: 'formPaddingUnitTab',
+				} }
+				tUnit={ {
+					value: formPaddingUnitMob,
+					label: 'formPaddingUnitMob',
+				} }
+				deviceType={ deviceType }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				link={ {
+					value: formPaddingLink,
+					label: 'formPaddingLink',
+				} }
+			/>
+			<ResponsiveSlider
+				label={ __(
+					'Row Spacing',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: fieldGap,
+						label: 'fieldGap',
+					},
+					tablet: {
+						value: fieldGapTablet,
+						label: 'fieldGapTablet',
+					},
+					mobile: {
+						value: fieldGapMobile,
+						label: 'fieldGapMobile',
+					},
+				} }
+				min={ 0 }
+				max={ 100 }
+				unit={ {
+					value: fieldGapType,
+					label: 'fieldGapType',
+				} }
+				units={ [
+					{
+						name: __(
+							'Pixel',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: 'px',
+					},
+					{
+						name: __(
+							'%',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: '%',
+					},
+					{
+						name: __(
+							'em',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: 'em',
+					},
+				] }
+				setAttributes={ setAttributes }
+			/>
+			<ResponsiveSlider
+				label={ __(
+					'Label Bottom Margin',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: labelGap,
+						label: 'labelGap',
+					},
+					tablet: {
+						value: labelGapTablet,
+						label: 'labelGapTablet',
+					},
+					mobile: {
+						value: labelGapMobile,
+						label: 'labelGapMobile',
+					},
+				} }
+				min={ 0 }
+				max={ 100 }
+				unit={ {
+					value: labelGapUnit,
+					label: 'labelGapUnit',
+				} }
+				units={ [
+					{
+						name: __(
+							'Pixel',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: 'px',
+					},
+					{
+						name: __(
+							'%',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: '%',
+					},
+					{
+						name: __(
+							'em',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: 'em',
+					},
+				] }
+				setAttributes={ setAttributes }
+			/>
+		</UAGAdvancedPanelBody>
+	);
+
 
 	const googleReCaptcha = () => {
 		return (
@@ -1421,7 +1746,6 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>
-
 				<ToggleControl
 					label={ __(
 						'Enable reCAPTCHA ',
@@ -1435,136 +1759,60 @@ const Settings = ( props ) => {
 					}
 				/>
 				{ reCaptchaEnable && (
-					<MultiButtonsControl
-						setAttributes={ setAttributes }
-						label={ __(
-							'Select Version',
-							'ultimate-addons-for-gutenberg'
-						) }
-						data={ {
-							value: reCaptchaType,
-							label: 'reCaptchaType',
-						} }
-						className="uagb-multi-button-alignment-control"
-						options={ [
-							{
-								value: 'v2',
-								label: 'V2',
-								tooltip: __(
-									'V2',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'v3',
-								label: 'V3',
-								tooltip: __(
-									'V3',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-						] }
-						showIcons={ false }
-					/>
-				) }
-				{ reCaptchaEnable && 'v2' === reCaptchaType && (
 					<>
-						<TextControl
+						<p className="uagb-form-notice">
+							Please configure the Google reCAPTCHA Site & Secret key from <a target = "_blank" href={`${uagb_blocks_info.uagb_home_url}/wp-admin/options-general.php?page=spectra&path=settings&settings=block-settings`} rel="noreferrer">here.</a>
+						</p>
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
 							label={ __(
-								'Site Key',
+								'Select Version',
 								'ultimate-addons-for-gutenberg'
 							) }
-							value={ reCaptchaSiteKeyV2 }
-							onChange={ ( value ) =>
-								setAttributes( {
-									reCaptchaSiteKeyV2: value,
-								} )
-							}
-							placeholder={ __(
-								'Enter v2 Keys',
-								'ultimate-addons-for-gutenberg'
-							) }
-						/>
-						<TextControl
-							label={ __(
-								'Secret Key',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ reCaptchaSecretKeyV2 }
-							onChange={ ( value ) =>
-								setAttributes( {
-									reCaptchaSecretKeyV2: value,
-								} )
-							}
-							placeholder={ __(
-								'Enter v2 Keys',
-								'ultimate-addons-for-gutenberg'
-							) }
+							data={ {
+								value: reCaptchaType,
+								label: 'reCaptchaType',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'v2',
+									label: 'V2',
+									tooltip: __(
+										'V2',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'v3',
+									label: 'V3',
+									tooltip: __(
+										'V3',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
+							showIcons={ false }
 						/>
 					</>
 				) }
 				{ reCaptchaEnable && 'v3' === reCaptchaType && (
-					<>
-						<TextControl
-							label={ __(
-								'Site Key',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ reCaptchaSiteKeyV3 }
-							onChange={ ( value ) =>
-								setAttributes( {
-									reCaptchaSiteKeyV3: value,
-								} )
-							}
-							placeholder={ __(
-								'Enter v3 Keys',
-								'ultimate-addons-for-gutenberg'
-							) }
-						/>
-						<TextControl
-							label={ __(
-								'Secret Key',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ reCaptchaSecretKeyV3 }
-							onChange={ ( value ) =>
-								setAttributes( {
-									reCaptchaSecretKeyV3: value,
-								} )
-							}
-							placeholder={ __(
-								'Enter v3 Keys',
-								'ultimate-addons-for-gutenberg'
-							) }
-						/>
-						<ToggleControl
-							label={ __(
-								'Hide reCAPTCHA Badge',
-								'ultimate-addons-for-gutenberg'
-							) }
-							checked={ hidereCaptchaBatch }
-							onChange={ () =>
-								setAttributes( {
-									hidereCaptchaBatch: ! hidereCaptchaBatch,
-								} )
-							}
-						/>
-					</>
+					<ToggleControl
+						label={ __(
+							'Hide reCAPTCHA Badge',
+							'ultimate-addons-for-gutenberg'
+						) }
+						checked={ hidereCaptchaBatch }
+						onChange={ () =>
+							setAttributes( {
+								hidereCaptchaBatch: ! hidereCaptchaBatch,
+							} )
+						}
+					/>
 				) }
-				<h2> { __( 'Know More', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<ExternalLink href="https://www.google.com/recaptcha/admin/create">
-					{ __( 'Get Keys', 'ultimate-addons-for-gutenberg' ) }
-				</ExternalLink>
-				<ExternalLink href="https://developers.google.com/recaptcha/intro">
-					{ __(
-						' | Documentation',
-						'ultimate-addons-for-gutenberg'
-					) }
-				</ExternalLink>
 			</UAGAdvancedPanelBody>
 		);
 	};
-
 	let loadsubmittextGoogleFonts;
 
 	if ( submitTextloadGoogleFonts === true ) {
@@ -1622,17 +1870,19 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.general }>
 						{ presetSettings() }
 						{ generalSettings() }
+						{ submitGeneral() }
 						{ afterSubmitActions() }
 						{ googleReCaptcha() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-						{ labelSettings() }
-						{ inputSettings() }
-						{ fieldSettings() }
-						{ checkboxSettings() }
-						{ successMessageStyle() }
-						{ failedMessageStyle() }
-						{ submitButtonStyle() }
+						{ displayLabels &&
+							labelStyling()
+						}
+						{ inputStyling() }
+						{ elementStyling() }
+						{ submitStyling() }
+						{ messageStyling() }
+						{ spaceStyling() }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }

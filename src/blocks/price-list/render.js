@@ -20,7 +20,7 @@ const Render = ( props ) => {
 	const { className, attributes } = props;
 
 	// Setup the attributes.
-	const { menu_item_count } = attributes;
+	const { isPreview, menu_item_count } = attributes;
 
 	const getPriceListTemplate = useMemo( () => {
 		const childList = [];
@@ -32,13 +32,16 @@ const Render = ( props ) => {
 		return childList;
 	}, [ menu_item_count ] );
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/price-list.png`;
+
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				className,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-				...PositionClasses( attributes )
+				...PositionClasses( attributes, props.name )
 			) }
 		>
 			<InnerBlocks

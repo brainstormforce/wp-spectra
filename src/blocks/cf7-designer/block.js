@@ -13,7 +13,7 @@ import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
 
-if ( uagb_blocks_info.blocks[ 'uagb/cf7-styler' ].is_active ) {
+if ( uagb_blocks_info.blocks[ 'uagb/cf7-styler' ].is_active && 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) {
 	registerBlockType( 'uagb/cf7-styler', {
 		title: __( 'Contact Form 7 Designer', 'ultimate-addons-for-gutenberg' ), // Block title.
 		description: __( 'This block allows you to add and style your Contact Form 7 forms right in the Gutenberg editor.', 'ultimate-addons-for-gutenberg' ), // Block description.
@@ -28,7 +28,11 @@ if ( uagb_blocks_info.blocks[ 'uagb/cf7-styler' ].is_active ) {
 		},
 		category: uagb_blocks_info.category,
 		edit,
-		example: {},
+		example: {
+			attributes: {
+				isPreview: true,
+			}
+		},
 		save() {
 			return null;
 		},

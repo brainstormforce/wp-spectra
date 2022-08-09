@@ -31,6 +31,10 @@ registerBlockType( 'uagb/table-of-contents', {
 	save() {
 		return null;
 	},
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	deprecated,
 } );

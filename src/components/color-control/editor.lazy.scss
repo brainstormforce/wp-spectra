@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .uagb-advanced-color-settings-container {
 	display: flex;
 	align-items: center;
@@ -33,21 +35,31 @@
 
 	.uagb-color-icon-indicate
 	.component-color-indicator.uagb-advanced-color-indicate {
-		width: 28px;
-		height: 28px;
+		width: $spectra-control-circle-indicator;
+		height: $spectra-control-circle-indicator;
 		border-radius: 50%;
 		margin: 0;
 	}
 
 	.uagb-advanced-color-indicate.uag-global-indicator::before {
 		content: "\f11f";
-		color: #fff;
 		font-family: dashicons; // stylelint-disable-line font-family-no-missing-generic-family-keyword
-		font-size: 16px;
 		position: absolute;
+		font-size: 16px;
 		top: 6px;
 		left: 7px;
-		mix-blend-mode: difference;
+		// Suggested Formula for Indicator Icons...
+		// font-size: ($spectra-control-circle-indicator / 1.75);
+		// top: (($spectra-control-circle-indicator - ($spectra-control-circle-indicator / 1.75)) / 2);
+		// left: (($spectra-control-circle-indicator - ($spectra-control-circle-indicator / 1.75)) / 2);
+	}
+
+	.uag-global-icon-black::before {
+		color: #000;
+	}
+
+	.uag-global-icon-white::before {
+		color: #fff;
 	}
 
 }

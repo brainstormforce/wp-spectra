@@ -3,6 +3,7 @@ import React, { useLayoutEffect } from 'react';
 import Title from './components/Title';
 import Description from './components/Description';
 import CTA from './components/CallToActionNew';
+import SecondCTAButton from './components/SecondCTAButton';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
 
@@ -20,9 +21,11 @@ const Render = ( props ) => {
 	const deviceType = useDeviceType();
 
 	// Setup the attributes.
-	const { block_id, ctaPosition, ctaType, stack  } = attributes;
+	const { isPreview, block_id, ctaType, enabledSecondCtaButton  } = attributes;
 
 	const isCta = <CTA attributes={ attributes } setAttributes={ setAttributes } />;
+
+	const secondCtaButton = ( 'button' === ctaType && enabledSecondCtaButton ) ? <SecondCTAButton attributes={ attributes } setAttributes={ setAttributes } /> : '';
 
 	// Get description components.
 	const descText = (
@@ -45,37 +48,27 @@ const Render = ( props ) => {
 	const output = () => {
 		return (
 			<>
-					{ ctaPosition === 'below-title' && (
-						<>
-							{ titleText }
-							{ descText }
-							{ isCta }
-						</>
-					) }
-					{ ctaPosition === 'right' && (
-						<>
-							<div className="uagb-cta__wrap">
-								{ titleText }
-								{ descText }
-							</div>
-							{isCta}
-						</>
-					) }
+				<div className="uagb-cta__wrap">
+					{ titleText }
+					{ descText }
+				</div>
+				<div className='uagb-cta__buttons'>
+					{isCta}
+					{secondCtaButton}
+				</div>
 			</>
 		);
 	};
-	let iconimgStyleClass;
-	if ( ctaPosition === 'right' && stack !== 'none' ) {
-		iconimgStyleClass = 'uagb-cta__content-stacked-' + stack + ' ';
-	}
+
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/call-to-action.png`;
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 			<div
 				className={ classnames(
 					`uagb-block-${ block_id }`,
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					'uagb-cta__outer-wrap',
 					'button' === ctaType ? 'wp-block-button' : '',
-					iconimgStyleClass
 				) }
 			>
 				{ ctaType === 'all' && (

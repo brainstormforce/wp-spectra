@@ -6,6 +6,7 @@ import renderSVG from '@Controls/renderIcon';
 import { RichText } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -23,6 +24,7 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
+	const blockName = props.name.replace( 'uagb/', '' );
 	const deviceType = useDeviceType();
 	const { attributes, setAttributes, className, headers } = props;
 
@@ -34,6 +36,8 @@ const Render = ( props ) => {
 		tColumnsDesktop,
 		mappingHeaders,
 		headingTitle,
+		isPreview,
+		separatorStyle,
 	} = attributes;
 
 	let iconHtml = '';
@@ -41,14 +45,15 @@ const Render = ( props ) => {
 	if ( makeCollapsible && icon ) {
 		iconHtml = renderSVG( icon );
 	}
-
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/table-of-contents.png`;
 	return (
 		<>
+		 { isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 			<div
 				className={ classnames(
 					className,
 					`uagb-toc__align-${ align }`,
-					`uagb-toc__columns-${ tColumnsDesktop }`,
+					`uagb-toc__columns-${ getFallbackNumber( tColumnsDesktop, 'tColumnsDesktop', blockName ) }`,
 					initialCollapse ? 'uagb-toc__collapse' : '',
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ props.clientId.substr( 0, 8 ) }`
@@ -70,12 +75,17 @@ const Render = ( props ) => {
 						/>
 						{ iconHtml }
 						</div>
+						{ separatorStyle !== 'none' && (
+								<div className='uagb-toc__separator'></div>
+							)
+						}
 					<TableOfContents
 						mappingHeaders={ mappingHeaders }
 						headers={ headers }
 					/>
 				</div>
 			</div>
+}
 		</>
 	);
 };

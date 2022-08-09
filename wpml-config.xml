@@ -1,3 +1,4 @@
+
 <wpml-config>
 	<gutenberg-blocks>
 		<gutenberg-block type="uagb/advanced-heading" translate="1">
@@ -6,15 +7,24 @@
 			<key name="customUrl" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/post-masonry" translate="1">
+			<key name="headingTitle" />
 			<key name="ctaText" />
+			<key name="paginationType" />
+			<key name="buttonText" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/post-grid" translate="1">
+			<key name="headingTitle" />
 			<key name="ctaText" />
+			<key name="postPagination" />
+			<key name="paginationPrevText" />
+			<key name="paginationNextText" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/post-timeline" translate="1">
+			<key name="headingTitle" />
 			<key name="readMoreText" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/post-carousel" translate="1">
+			<key name="headingTitle" />
 			<key name="ctaText" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/section" translate="0"/>
@@ -24,14 +34,14 @@
 		<gutenberg-block type="uagb/column" translate="0"/>
 		<gutenberg-block type="uagb/social-share" translate="0"/>
 		<gutenberg-block type="uagb/social-share-child" translate="0"/>
-		<gutenberg-block type="uagb/tabs" translate="0"/>
 		<gutenberg-block type="uagb/google-map" translate="0"/>
 		<gutenberg-block type="uagb/info-box" translate="1">
 			<xpath>//span[@class="uagb-ifb-title-prefix"]</xpath>
 			<xpath>//a/@href</xpath>
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
 			<xpath>//p[@class="uagb-ifb-desc"]</xpath>
-			<xpath>//span[contains(@class, 'uagb-inline-editing')]</xpath>
+			<key name="ctaText" />
+			<key name="ctaType" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/testimonial" translate="1">
 			<xpath>//div[@class="uagb-tm__desc"]</xpath>
@@ -48,8 +58,10 @@
 			<xpath>//div[contains(@class, "wp-block-uagb-icon-list-child")]/a/@href</xpath>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/tabs" translate="1">
-			<xpath>//li[@class="uagb-tab"]/li</xpath>
-			<xpath>//div[(@class="uagb-tabs__body")]/div</xpath>
+			<xpath>//div/ul/li/a</xpath>
+		</gutenberg-block>
+		<gutenberg-block type="uagb/tabs-child" translate="1">
+			<key name="tabHeaders" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/restaurant-menu" translate="1">
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
@@ -65,13 +77,13 @@
 		<gutenberg-block type="uagb/call-to-action" translate="1">
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
 			<xpath>//p[@class="uagb-cta__desc"]</xpath>
-			<xpath>//a[contains(@class,"uagb-cta__block-link")]/@href</xpath>
-			<xpath>//span[@class="uagb-cta__link-content-inner"]/span</xpath>
+			<xpath>//*[@class="uagb-cta__buttons"]</xpath>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/blockquote" translate="1">
 			<xpath>//div[@class="uagb-blockquote__content"]</xpath>
 			<xpath>//cite[@class="uagb-blockquote__author"]</xpath>
-			<xpath>//span[@class="uagb-blockquote__tweet-label"]</xpath>
+			<key name="iconView" />
+			<key name="iconLabel" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/marketing-button" translate="1">
 			<xpath>//a[@class="uagb-marketing-btn__link"]/@href</xpath>
@@ -79,13 +91,21 @@
 			<xpath>//p[@class="uagb-marketing-btn__prefix"]</xpath>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/table-of-contents" translate="1">
-			<xpath>//div[@class="uagb-toc__title"]</xpath>
-			<xpath>//ul[@class="uagb-toc__list"]/li/a</xpath>
-			<xpath>//a/@href</xpath>
+			<key name="headingTitle" />
+			<xpath>//div/ul/li/a</xpath>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/buttons-child" translate="1">
-			<xpath>//a[@class="uagb-button__link"]</xpath>
-			<xpath>//a[@class="uagb-button__link"]/@href</xpath>
+			<xpath>//div[@class="uagb-button__link"]</xpath>
+            <xpath>//a[@class="uagb-button__link"]/@href</xpath>
+            <xpath>//*[@class="uagb-button__link"]</xpath>
+		</gutenberg-block>
+		<gutenberg-block type="uagb/image" translate="1">
+			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
+			<xpath>//figcaption[@class="uagb-image-caption"]</xpath>
+			<xpath>//figure/figcaption</xpath>
+		</gutenberg-block>
+		<gutenberg-block type="uagb/taxonomy-list" translate="1">
+			<key name="headingTitle" />
 		</gutenberg-block>
 	</gutenberg-blocks>
 </wpml-config>

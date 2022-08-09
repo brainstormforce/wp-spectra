@@ -23,7 +23,7 @@ $block_data = array(
 			'type' => 'js',
 		),
 	),
-	'priority'            => 2,
+	'priority'            => 11,
 	'dynamic_assets'      => array(
 		'dir' => 'forms',
 	),

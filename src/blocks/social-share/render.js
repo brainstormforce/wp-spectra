@@ -23,7 +23,7 @@ const Render = ( props ) => {
 	const deviceType = useDeviceType();
 	const { attributes } = props;
 
-	const { className, social_layout } = attributes;
+	const { isPreview, className, social_layout } = attributes;
 
 	const getSocialShareTemplate = [
 		[
@@ -33,7 +33,7 @@ const Render = ( props ) => {
 				image_icon: 'icon',
 				icon: 'fab fa-facebook',
 				image: '',
-				icon_color: '#3a3a3a',
+				icon_color: '#3b5998',
 				icon_hover_color: '',
 				icon_bg_color: '',
 				icon_bg_hover_color: '',
@@ -46,7 +46,7 @@ const Render = ( props ) => {
 				image_icon: 'icon',
 				icon: 'fab fa-twitter-square',
 				image: '',
-				icon_color: '#3a3a3a',
+				icon_color: '#55acee',
 				icon_hover_color: '',
 				icon_bg_color: '',
 				icon_bg_hover_color: '',
@@ -59,7 +59,20 @@ const Render = ( props ) => {
 				image_icon: 'icon',
 				icon: 'fab fa-pinterest-square',
 				image: '',
-				icon_color: '#3a3a3a',
+				icon_color: '#bd081c',
+				icon_hover_color: '',
+				icon_bg_color: '',
+				icon_bg_hover_color: '',
+			},
+		],
+		[
+			'uagb/social-share-child',
+			{
+				type: 'linkedin',
+				image_icon: 'icon',
+				icon: 'fab fa-linkedin',
+				image: '',
+				icon_color: '#0077b5',
 				icon_hover_color: '',
 				icon_bg_color: '',
 				icon_bg_hover_color: '',
@@ -67,7 +80,10 @@ const Render = ( props ) => {
 		],
 	];
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/social-share.png`;
+
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				className,

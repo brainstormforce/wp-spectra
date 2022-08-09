@@ -27,3 +27,4 @@ registerBlockType( 'uagb/column', {
 	save,
 	deprecated,
 } );
+

@@ -25,7 +25,11 @@ registerBlockType( 'uagb/inline-notice', {
 		anchor: true,
 	},
 	attributes,
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	deprecated,
 	edit,
 	save,

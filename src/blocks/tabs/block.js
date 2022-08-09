@@ -29,4 +29,9 @@ registerBlockType( 'uagb/tabs', {
 	edit,
 	save,
 	deprecated,
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 } );

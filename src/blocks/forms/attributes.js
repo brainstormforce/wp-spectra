@@ -1,8 +1,148 @@
 import { __ } from '@wordpress/i18n';
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const successMessageBorderAttributes = getBorderAttributes( 'successMsg' );
+const failedMessageBorderAttributes = getBorderAttributes( 'errorMsg' );
+const inputBorderAttributes = getBorderAttributes( 'field' , {
+	borderStyle: 'solid',
+	borderTopLeftRadius: 3,
+	borderTopRightRadius: 3,
+	borderBottomLeftRadius: 3,
+	borderBottomRightRadius: 3,
+	borderTopWidth: 1,
+	borderRightWidth: 1,
+	borderLeftWidth: 1,
+	borderBottomWidth: 1,
+	borderColor:'#bdbdbd',
+	borderHColor: '',
+} );
+const toggleBorderAttributes = getBorderAttributes( 'checkBoxToggle' , {
+	borderStyle: 'solid',
+	borderTopLeftRadius: 3,
+	borderTopRightRadius: 3,
+	borderBottomLeftRadius: 3,
+	borderBottomRightRadius: 3,
+	borderTopWidth: 1,
+	borderRightWidth: 1,
+	borderLeftWidth: 1,
+	borderBottomWidth: 1,
+	borderColor:'#1e1e1e',
+	borderHColor: '#017cba',
+} );
+const submitBorderAttributes = getBorderAttributes( 'btn' );
 
 const attributes = {
 	block_id: {
 		type: 'string',
+	},
+	formPaddingTop: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-top-padding'
+		},
+	},
+	formPaddingRight: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-right-padding'
+		},
+	},
+	formPaddingBottom: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-bottom-padding'
+		},
+	},
+	formPaddingLeft: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-left-padding'
+		},
+	},
+	formPaddingTopTab: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-top-padding-tablet'
+		},
+	},
+	formPaddingRightTab: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-right-padding-tablet'
+		},
+	},
+	formPaddingBottomTab: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-bottom-padding-tablet'
+		},
+	},
+	formPaddingLeftTab: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-left-padding-tablet'
+		},
+	},
+	formPaddingTopMob: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-top-padding-mobile'
+		},
+	},
+	formPaddingRightMob: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-right-padding-mobile'
+		},
+	},
+	formPaddingBottomMob: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-bottom-padding-mobile'
+		},
+	},
+	formPaddingLeftMob: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-left-padding-mobile'
+		},
+	},
+	formPaddingUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'block-padding-unit'
+		},
+	},
+	formPaddingUnitTab: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'block-padding-unit-tablet'
+		},
+	},
+	formPaddingUnitMob: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'block-padding-unit-mobile'
+		},
+	},
+	formPaddingLink: {
+		type: 'boolean',
+		default: true,
 	},
 	submitButtonText: {
 		type: 'string',
@@ -10,11 +150,19 @@ const attributes = {
 	},
 	formLabel: {
 		type: 'string',
-		default: __( 'UAG Form', 'ultimate-addons-for-gutenberg' ),
+		default: __( 'Spectra Form', 'ultimate-addons-for-gutenberg' ),
 	},
 	buttonAlign: {
 		type: 'string',
 		default: 'left',
+	},
+	buttonAlignTablet: {
+		type: 'string',
+		default: '',
+	},
+	buttonAlignMobile: {
+		type: 'string',
+		default: '',
 	},
 	confirmationType: {
 		type: 'string',
@@ -36,28 +184,29 @@ const attributes = {
 	},
 	failedMessageTextColor    : {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'failed-msg-text-color'
+		},
 		default: ''
 	},
 	failedMessageBorderColor  : {
 		type: 'string',
-		isUAGStyle: true,
-		default: ''
+		default: 'red'
 	},
 	failedMessageBGColor      : {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'failed-msg-bg-color'
+		},
 		default: ''
 	},
 	failedMessageBorderStyle  : {
 		type: 'string',
-		isUAGStyle: true,
 		default: 'solid'
 	},
 	failedMessageBorderWidth  : {
 		type: 'number',
-		default: 2,
-		isUAGStyle: true,
+		default: 3,
 	},
 	confirmationUrl: {
 		type: 'string',
@@ -84,115 +233,143 @@ const attributes = {
 	},
 	submitColor: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-color'
+		},
 		default: '',
 	},
 	submitColorHover: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-hover-color'
+		},
 		default: '',
 	},
 	submitBgColor: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-bg-color'
+		},
 		default: '',
 	},
 	submitBgColorHover: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-bg-hover-color'
+		},
 		default: '',
 	},
 	buttonSize: {
 		type: 'string',
 		default: 'medium',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-color'
+		},
 	},
 	// Border
 	submitborderStyle: {
 		type: 'string',
-		isUAGStyle: true,
-		default: 'none'
 	},
 	submitborderWidth: {
 		type: 'number',
-		isUAGStyle: true,
 	},
 	submitborderRadius: {
 		type: 'number',
-		default: 3,
-		isUAGStyle: true,
 	},
 	submitborderColor: {
 		type: 'string',
-		isUAGStyle: true,
-		default: '',
 	},
 	submitborderHoverColor: {
 		type: 'string',
-		isUAGStyle: true,
 	},
 	hPaddingSubmit: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-horizontal-padding'
+		},
 	},
 	vPaddingSubmit: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-vertical-padding'
+		},
 	},
 	// Submit text Typography
 
 	submitTextloadGoogleFonts: {
 		type: 'boolean',
 		default: false,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-load-google-fontst'
+		},
 	},
 	submitTextFontFamily: {
 		type: 'string',
 		default: 'Default',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-font-family'
+		},
 	},
 	submitTextFontWeight: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-font-weight'
+		},
 	},
 	// submitText Font Size
 	submitTextFontSize: {
 		type: 'number',
 		default: 15,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-font-size'
+		},
 	},
 	submitTextFontSizeType: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-font-size-type'
+		},
 		default: 'px'
 	},
 	submitTextFontSizeTablet: {
 		type: 'number',
 		default: 15,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-font-size-tablet'
+		},
 	},
 	submitTextFontSizeMobile: {
 		type: 'number',
 		default: 15,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-font-size-mobile'
+		},
 	},
 	// submitText Line Height
 	submitTextLineHeightType: {
 		type: 'string',
 		default: 'em',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-line-height-type'
+		},
 	},
 	submitTextLineHeight: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-line-height'
+		},
 	},
 	submitTextLineHeightTablet: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-line-height-tablet'
+		},
 	},
 	submitTextLineHeightMobile: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-line-height-mobile'
+		},
 	},
 
 	// Label Font Family
@@ -200,55 +377,106 @@ const attributes = {
 	labelloadGoogleFonts: {
 		type: 'boolean',
 		default: false,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-load-google-fonts'
+		},
 	},
 	labelFontFamily: {
 		type: 'string',
 		default: 'Default',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-font-family'
+		},
 	},
 	labelFontWeight: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-font-weight'
+		},
 	},
 	// label Font Size
 	labelFontSize: {
 		type: 'number',
 		default: 15,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size'
+		},
 	},
 	labelFontSizeType: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size-type'
+		},
 		default: 'px'
 	},
 	labelFontSizeTablet: {
 		type: 'number',
 		default: 15,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size-tablet'
+		},
 	},
 	labelFontSizeMobile: {
 		type: 'number',
 		default: 15,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size-mobile'
+		},
 	},
 	// label Line Height
 	labelLineHeightType: {
 		type: 'string',
 		default: 'em',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-line-height-type'
+		},
 	},
 	labelLineHeight: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-line-height'
+		},
 	},
 	labelLineHeightTablet: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-line-height-tablet'
+		},
 	},
 	labelLineHeightMobile: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-line-height-mobile'
+		},
+	},
+
+	// Label Spacing
+
+	labelGap: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
+	labelGapTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin-tablet'
+		},
+	},
+	labelGapMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-margin-bottom-mobile'
+		},
+	},
+	labelGapUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-margin-unit'
+		},
 	},
 
 	// Input Font Family
@@ -256,153 +484,297 @@ const attributes = {
 	inputloadGoogleFonts: {
 		type: 'boolean',
 		default: false,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'input-load-google-fonts'
+		},
 	},
 	inputFontFamily: {
 		type: 'string',
 		default: 'Default',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'input-font-family'
+		},
 	},
 	inputFontWeight: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'input-font-weight'
+		},
 	},
 	// input Font Size
 	inputFontSize: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'input-font-size'
+		},
 	},
 	inputFontSizeType: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'input-font-size-type'
+		},
 		default: 'px'
 	},
 	inputFontSizeTablet: {
 		type: 'number',
 		default: 15,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'input-font-size-tablet'
+		},
 	},
 	inputFontSizeMobile: {
 		type: 'number',
 		default: 15,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'input-font-size-mobile'
+		},
 	},
 	// input Line Height
 	inputLineHeightType: {
 		type: 'string',
 		default: 'em',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'input-line-height-type'
+		},
 	},
 	inputLineHeight: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'input-line-height'
+		},
 	},
 	toggleSize: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'toggle-size'
+		},
 		default: 15,
+	},
+	toggleSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'toggle-size'
+		},
+	},
+	toggleSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'toggle-size'
+		},
 	},
 	toggleWidthSize: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'toggle-width-size'
+		},
 		default: 0,
+	},
+	toggleWidthSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'toggle-width-size'
+		},
+	},
+	toggleWidthSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'toggle-width-size'
+		},
+	},
+	toggleColor: {
+		type: 'string',
+		default: '#ffffff',
+		UAGCopyPaste: {
+			styleType: 'toggle-color'
+		},
 	},
 	toggleActiveColor: {
 		type: 'string',
-		default: '#000000',
-		isUAGStyle: true,
+		default: '#017cba',
+		UAGCopyPaste: {
+			styleType: 'toggle-active-color'
+		},
 	},
-	toggleHeightSize: {
+	toggleDotColor: {
+		type: 'string',
+		default: '#1e1e1e',
+		UAGCopyPaste: {
+			styleType: 'toggle-dot-color'
+		},
+	},
+	toggleDotActiveColor: {
+		type: 'string',
+		default: '#ffffff',
+		UAGCopyPaste: {
+			styleType: 'toggle-dot-active-color'
+		},
+	},
+	// Toggle Border
+	toggleBorderStyle: {
+		type: 'string',
+	},
+	toggleBorderWidth: {
 		type: 'number',
-		isUAGStyle: true,
-		default: 0,
 	},
+	toggleBorderRadius: {
+		type: 'number',
+	},
+	toggleBorderColor: {
+		type: 'string',
+	},
+	toggleBorderActiveColor: {
+		type: 'string',
+	},
+
+	// Input Line Height
 	inputLineHeightTablet: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'input-line-height-tablet'
+		},
 	},
 	inputLineHeightMobile: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'input-line-height-mobile'
+		},
 	},
 
 	//Color.
 	labelColor: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-color'
+		},
+		default: '',
+	},
+	labelHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-hover-color'
+		},
 		default: '',
 	},
 	inputColor: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'input-color'
+		},
 		default: '',
 	},
 	bgColor: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'input-bg-color'
+		},
+		default: '',
+	},
+	bgHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'input-bg-hover-color'
+		},
+		default: '',
+	},
+	bgActiveColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'input-bg-active-color'
+		},
 		default: '',
 	},
 	inputplaceholderColor: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'input-placeholder-color'
+		},
+		default: '#abb8c3',
+	},
+	inputplaceholderHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'input-placeholder-hover-color'
+		},
+		default: '#abb8c3',
+	},
+	inputplaceholderActiveColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'input-placeholder-active-color'
+		},
 		default: '#abb8c3',
 	},
 	inputactiveColor: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'input-active-color'
+		},
 		default: '#000000',
 	},
 
 	// InputBorder
 	inputborderStyle: {
 		type: 'string',
-		default: 'solid',
-		isUAGStyle: true,
 	},
 	inputborderWidth: {
 		type: 'number',
-		default: 1,
-		isUAGStyle: true,
 	},
 	inputborderRadius: {
 		type: 'number',
-		default: 3,
-		isUAGStyle: true,
 	},
 	inputborderColor: {
 		type: 'string',
-		default: '#BDBDBD',
-		isUAGStyle: true,
 	},
 	inputborderHoverColor: {
 		type: 'string',
-		isUAGStyle: true,
 	},
 	hPaddingField: {
 		type: 'number',
 		default: 10,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'field-h-padding'
+		},
 	},
 	vPaddingField: {
 		type: 'number',
 		default: 10,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'field-v-padding'
+		},
 	},
 	fieldGap: {
 		type: 'number',
 		default: 20,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'field-gap'
+		},
+	},
+	fieldGapTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'field-gap'
+		},
+	},
+	fieldGapMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'field-gap'
+		},
 	},
 
 	formStyle: {
 		type: 'string',
 		default: 'boxed',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'form-style'
+		},
 	},
 	overallAlignment: {
 		type: 'string',
 		default: 'left',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'overall-alignment'
+		},
 	},
 
 	//recaptha.
@@ -437,28 +809,38 @@ const attributes = {
 	//message attributes
 	successMessageTextColor: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'success-msg-color'
+		},
 		default: '',
 	},
 	successMessageBGColor: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'success-msg-bg-color'
+		},
 		default: '',
 	},
 	successMessageBorderColor: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'success-msg-border-color'
+		},
 		default: 'green',
 	},
 	successMessageBorderStyle: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'success-msg-border-style'
+		},
 		default: 'solid',
 	},
 	successMessageBorderWidth: {
-		type: 'string',
-		isUAGStyle: true,
-		default: '2',
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'success-msg-border-width'
+		},
+		default: 3,
 	},
 	captchaMessage: {
 		type: 'string',
@@ -469,82 +851,124 @@ const attributes = {
 	},
 
 	successMessageBorderRadius: {
-		type: 'string',
-		isUAGStyle: true,
+		type: 'number',
+		default: 6,
+		UAGCopyPaste: {
+			styleType: 'success-msg-border-radius'
+		},
 	},
 	successMessageHoverBorderColor: {
 		type: 'string',
-		isUAGStyle: true,
+		default: 'yellowgreen',
+		UAGCopyPaste: {
+			styleType: 'success-msg-hover-border-color'
+		},
 	},
 	failedMessageBorderRadius: {
-		type: 'string',
-		isUAGStyle: true,
+		type: 'number',
+		default: 6,
+		UAGCopyPaste: {
+			styleType: 'failed-msg-border-radius'
+		},
 	},
 	failedMessageHoverBorderColor: {
 		type: 'string',
-		isUAGStyle: true,
+		default: 'deeppink',
+		UAGCopyPaste: {
+			styleType: 'failed-msg-hover-border-color'
+		},
 	},
 	paddingBtnTop: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-top-padding'
+		},
 	},
 	paddingBtnRight: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-right-padding'
+		},
 	},
 	paddingBtnBottom: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-bottom-padding'
+		},
 	},
 	paddingBtnLeft: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-left-padding'
+		},
 	},
 	paddingBtnTopTablet: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-top-padding-tablet'
+		},
 	},
 	paddingBtnRightTablet: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-right-padding-tablet'
+		},
 	},
 	paddingBtnBottomTablet: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-bottom-padding-tablet'
+		},
 	},
 	paddingBtnLeftTablet: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-left-padding-tablet'
+		},
 	},
 	paddingBtnTopMobile: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-top-padding-mobile'
+		},
 	},
 	paddingBtnRightMobile: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-right-padding-mobile'
+		},
 	},
 	paddingBtnBottomMobile: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-bottom-padding-mobile'
+		},
 	},
 	paddingBtnLeftMobile: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-left-padding-mobile'
+		},
 	},
 	paddingBtnUnit: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-padding-unit'
+		},
 		default: 'px',
 	},
 	mobilePaddingBtnUnit: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-padding-unit-mobile'
+		},
 		default: 'px',
 	},
 	tabletPaddingBtnUnit: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-padding-unit-tablet'
+		},
 		default: 'px',
 	},
 	paddingspacingLink: {
@@ -553,99 +977,143 @@ const attributes = {
 	},
 	submitTextTransform: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-transform'
+		},
 	},
 	submitTextDecoration: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-decoration'
+		},
 	},
 	labelTransform: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-transform'
+		},
 	},
 	labelDecoration: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-decoration'
+		},
 	},
 	inputTransform: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'input-transform'
+		},
 	},
 	inputDecoration: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'input-decoration'
+		},
 	},
 	fieldGapType: {
 		type: 'string',
 		default: 'px',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'field-gap-type'
+		},
 	},
 	paddingFieldTop: {
 		type: 'number',
 		default: 12,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'field-top-padding'
+		},
 	},
 	paddingFieldRight: {
 		type: 'number',
 		default: 12,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'field-right-padding'
+		},
 	},
 	paddingFieldBottom: {
 		type: 'number',
 		default: 12,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'field-bottom-padding'
+		},
 	},
 	paddingFieldLeft: {
 		type: 'number',
 		default: 12,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'field-left-padding'
+		},
 	},
 	paddingFieldTopTablet: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'field-top-padding-tablet'
+		},
 	},
 	paddingFieldRightTablet: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'field-right-padding-tablet'
+		},
 	},
 	paddingFieldBottomTablet: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'field-bottom-padding-tablet'
+		},
 	},
 	paddingFieldLeftTablet: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'field-left-padding-tablet'
+		},
 	},
 	paddingFieldTopMobile: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'field-top-padding-mobile'
+		},
 	},
 	paddingFieldRightMobile: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'field-right-padding-mobile'
+		},
 	},
 	paddingFieldBottomMobile: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'field-bottom-padding-mobile'
+		},
 	},
 	paddingFieldLeftMobile: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'field-left-padding-mobile'
+		},
 	},
 	paddingFieldUnit: {
 		type: 'string',
 		default: 'px',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'field-padding-unit'
+		},
 	},
 	paddingFieldUnitmobile: {
 		type: 'string',
 		default: 'px',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'field-padding-unit-mobile'
+		},
 	},
 	paddingFieldUnitTablet: {
 		type: 'string',
 		default: 'px',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'field-padding-unit-tablet'
+		},
 	},
 	paddingFieldLink: {
 		type: 'boolean',
@@ -654,22 +1122,122 @@ const attributes = {
 	toggleSizeType: {
 		type: 'string',
 		default: 'px',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'toggle-size-type'
+		},
 	},
 	submitTextFontStyle: {
 		type: 'string',
 		default: 'normal',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-font-style'
+		},
 	},
 	labelFontStyle: {
 		type: 'string',
 		default: 'normal',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-font-style'
+		},
 	},
 	inputFontStyle: {
 		type: 'string',
 		default: 'normal',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'input-font-style'
+		},
+	},
+
+	displayLabels: {
+		type: 'boolean',
+		default: true,
+		UAGCopyPaste: {
+			styleType: 'display-labels'
+		},
+	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
+	...successMessageBorderAttributes,
+	...failedMessageBorderAttributes,
+	...inputBorderAttributes,
+	...toggleBorderAttributes,
+	...submitBorderAttributes,
+	labelLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing'
+		}
+	},
+	labelLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing-tablet'
+		}
+	},
+	labelLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing-mobile'
+		}
+	},
+	labelLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing-type'
+		}
+	},
+	inputLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'input-letter-spacing'
+		}
+	},
+	inputLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'input-letter-spacing-tablet'
+		}
+	},
+	inputLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'input-letter-spacing-mobile'
+		}
+	},
+	inputLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'input-letter-spacing-type'
+		}
+	},
+	submitTextLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'submit-letter-spacing'
+		}
+	},
+	submitTextLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'submit-letter-spacing-tablet'
+		}
+	},
+	submitTextLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'submit-letter-spacing-mobile'
+		}
+	},
+	submitTextLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'submit-letter-spacing-type'
+		}
 	},
 };
 export default attributes;

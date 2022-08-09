@@ -9,6 +9,7 @@ import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/post-grid/settings" */ './settings' )
@@ -57,62 +58,131 @@ const PostGridComponent = ( props ) => {
 		} = props.attributes;
 
 		if ( btnVPadding ) {
-			if ( ! paddingBtnTop ) {
+			if ( undefined === paddingBtnTop ) {
 				props.setAttributes( { paddingBtnTop: btnVPadding } );
 			}
-			if ( ! paddingBtnBottom ) {
+			if ( undefined === paddingBtnBottom ) {
 				props.setAttributes( { paddingBtnBottom: btnVPadding } );
 			}
 		}
 		if ( btnHPadding ) {
-			if ( ! paddingBtnRight ) {
+			if ( undefined === paddingBtnRight ) {
 				props.setAttributes( { paddingBtnRight: btnHPadding } );
 			}
-			if ( ! paddingBtnLeft ) {
+			if ( undefined === paddingBtnLeft ) {
 				props.setAttributes( { paddingBtnLeft: btnHPadding } );
 			}
 		}
 		if ( contentPadding ) {
-			if ( ! paddingTop ) {
+			if ( undefined === paddingTop ) {
 				props.setAttributes( { paddingTop: contentPadding } );
 			}
-			if ( ! paddingBottom ) {
+			if ( undefined === paddingBottom ) {
 				props.setAttributes( { paddingBottom: contentPadding } );
 			}
-			if ( ! paddingRight ) {
+			if ( undefined === paddingRight ) {
 				props.setAttributes( { paddingRight: contentPadding } );
 			}
-			if ( ! paddingLeft ) {
+			if ( undefined === paddingLeft ) {
 				props.setAttributes( { paddingLeft: contentPadding } );
 			}
 		}
 
 		if ( contentPaddingMobile ) {
-			if ( ! paddingTopMobile ) {
+			if ( undefined === paddingTopMobile ) {
 				props.setAttributes( {
 					paddingTopMobile: contentPaddingMobile,
 				} );
 			}
-			if ( ! paddingBottomMobile ) {
+			if ( undefined === paddingBottomMobile ) {
 				props.setAttributes( {
 					paddingBottomMobile: contentPaddingMobile,
 				} );
 			}
-			if ( ! paddingRightMobile ) {
+			if ( undefined === paddingRightMobile ) {
 				props.setAttributes( {
 					paddingRightMobile: contentPaddingMobile,
 				} );
 			}
-			if ( ! paddingLeftMobile ) {
+			if ( undefined === paddingLeftMobile ) {
 				props.setAttributes( {
 					paddingLeftMobile: contentPaddingMobile,
 				} );
 			}
 		}
+		const {
+			borderStyle,
+			borderWidth,
+			borderRadius,
+			borderColor,
+			borderHColor,
+			btnBorderTopWidth,
+			btnBorderLeftWidth,
+			btnBorderRightWidth,
+			btnBorderBottomWidth,
+			btnBorderTopLeftRadius,
+			btnBorderTopRightRadius,
+			btnBorderBottomLeftRadius,
+			btnBorderBottomRightRadius,
+			btnBorderColor,
+			btnBorderHColor,
+			btnBorderStyle,
+		} = props.attributes;
 
+		if( borderWidth ){
+			if( undefined === btnBorderTopWidth ) {
+				props.setAttributes( {
+					btnBorderTopWidth: borderWidth,
+				} );
+			}
+			if( undefined === btnBorderLeftWidth ) {
+				props.setAttributes( { btnBorderLeftWidth : borderWidth} );
+			}
+			if( undefined === btnBorderRightWidth ) {
+				props.setAttributes( { btnBorderRightWidth : borderWidth} );
+			}
+			if( undefined === btnBorderBottomWidth ) {
+				props.setAttributes( { btnBorderBottomWidth : borderWidth} );
+			}
+		}
+
+		if( borderRadius ){
+
+			if( undefined === btnBorderTopLeftRadius ) {
+				props.setAttributes( { btnBorderTopLeftRadius : borderRadius} );
+			}
+			if( undefined === btnBorderTopRightRadius ) {
+				props.setAttributes( { btnBorderTopRightRadius : borderRadius} );
+			}
+			if( undefined === btnBorderBottomLeftRadius ) {
+				props.setAttributes( { btnBorderBottomLeftRadius : borderRadius} );
+			}
+			if( undefined === btnBorderBottomRightRadius ) {
+				props.setAttributes( { btnBorderBottomRightRadius : borderRadius} );
+			}
+		}
+
+		if( borderColor ){
+			if( undefined === btnBorderColor ) {
+				props.setAttributes( { btnBorderColor : borderColor} );
+			}
+		}
+
+		if( borderHColor ){
+			if( undefined === btnBorderHColor ) {
+				props.setAttributes( { btnBorderHColor : borderHColor} );
+			}
+		}
+
+		if( borderStyle ){
+			if( undefined === btnBorderStyle ) {
+				props.setAttributes( { btnBorderStyle : borderStyle} );
+			}
+		}
 	}, [] );
 
 	useEffect( () => {
+
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
@@ -188,11 +258,13 @@ const PostGridComponent = ( props ) => {
 export default compose(
 	withSelect( ( select, props ) => {
 		const {
+			blockName,
 			categories,
 			postsToShow,
 			order,
 			orderBy,
 			postType,
+			postsOffset,
 			taxonomyType,
 			paginationMarkup,
 			postPagination,
@@ -243,7 +315,8 @@ export default compose(
 		const latestPostsQuery = {
 			order,
 			orderby: orderBy,
-			per_page: postsToShow,
+			per_page: getFallbackNumber( postsToShow, 'postsToShow', blockName ),
+			offset: getFallbackNumber( postsOffset, 'postsOffset', blockName ),
 		};
 		if ( excludeCurrentPost ) {
 			latestPostsQuery.exclude = select(

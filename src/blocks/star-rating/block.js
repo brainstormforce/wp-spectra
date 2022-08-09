@@ -28,8 +28,8 @@ registerBlockType( 'uagb/star-rating', {
 	},
 	example: {
 		attributes: {
-			rating: 4,
-		},
+			isPreview: true,
+		}
 	},
 	category: uagb_blocks_info.category,
 	attributes,

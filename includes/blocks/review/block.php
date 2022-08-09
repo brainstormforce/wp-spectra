@@ -17,7 +17,7 @@ $block_data = array(
 	'description'      => __( 'This block helps you to add a review for various items with schema support.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 4,
+	'priority'         => 29,
 	'dynamic_assets'   => array(
 		'dir' => 'review',
 	),

@@ -27,7 +27,7 @@ $block_data = array(
 			'type' => 'js',
 		),
 	),
-	'priority'            => 5,
+	'priority'            => 32,
 	'dynamic_assets'      => array(
 		'dir' => 'lottie',
 	),

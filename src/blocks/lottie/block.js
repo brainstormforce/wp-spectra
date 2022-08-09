@@ -18,7 +18,11 @@ registerBlockType( 'uagb/lottie', {
 		__( 'animation', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	category: uagb_blocks_info.category,
 	edit,
 	// Render via PHP

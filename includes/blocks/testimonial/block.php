@@ -11,7 +11,7 @@ $block_slug = 'uagb/testimonial';
 $block_data = array(
 	'doc'                 => 'testimonial',
 	'slug'                => '',
-	'admin_categories'    => array( 'content', 'social' ),
+	'admin_categories'    => array( 'social' ),
 	'link'                => 'testimonials',
 	'title'               => __( 'Testimonials', 'ultimate-addons-for-gutenberg' ),
 	'description'         => __( 'This block helps your display some amazing client feedback within your website.', 'ultimate-addons-for-gutenberg' ),
@@ -25,7 +25,7 @@ $block_data = array(
 			'type' => 'js',
 		),
 	),
-	'priority'            => 3,
+	'priority'            => 26,
 	'dynamic_assets'      => array(
 		'dir' => 'testimonial',
 	),

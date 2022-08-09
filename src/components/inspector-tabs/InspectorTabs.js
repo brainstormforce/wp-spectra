@@ -9,7 +9,7 @@ import {
 	useRef,
 	useEffect,
 } from '@wordpress/element';
-
+import { select } from '@wordpress/data';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 
 const LAYOUT = 'general',
@@ -25,7 +25,8 @@ const InspectorTabs = ( props ) => {
 		};
 	}, [] );
 
-	const uagLastOpenedState = getUAGEditorStateLocalStorage( 'uagLastOpenedState' );
+	const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+
 	const { defaultTab, children, tabs } = props;
 	const [ currentTab, setCurrentTab ] = useState( defaultTab ? defaultTab : tabs[ 0 ] );
 
@@ -36,15 +37,6 @@ const InspectorTabs = ( props ) => {
 	useEffect( () => {
 		sidebarPanel = tabContainer.current.closest( '.components-panel' );
 	} );
-
-	const observer = new IntersectionObserver( // eslint-disable-line no-undef
-		( [ e ] ) =>
-			e.target.classList.toggle(
-				'uagb-is-sticky',
-				e.intersectionRatio < 1
-			),
-		{ threshold: [ 1 ] }
-	);
 
 	const renderUAGTabsSettingsInOrder = () => {
 
@@ -68,18 +60,19 @@ const InspectorTabs = ( props ) => {
 
 	// component did mount
 	useEffect( () => {
-		// sticky tabs menu
-		const container = document.querySelector(
-			'.uagb-inspector-tabs-container'
-		);
-		if ( container ) {
-			observer.observe( container );
-		}
+
 		renderUAGTabsSettingsInOrder();
 
+		const { getSelectedBlock } = select( 'core/block-editor' );
+		const blockName = getSelectedBlock()?.name;
 		// This code is to fix the side-effect of the editor responsive click settings panel refresh issue.
-		if ( uagLastOpenedState && uagLastOpenedState?.inspectorTabName && currentTab !== uagLastOpenedState?.inspectorTabName ) {
-			setCurrentTab( uagLastOpenedState?.inspectorTabName )
+		if ( uagSettingState && uagSettingState[blockName] && currentTab !== uagSettingState[blockName]?.selectedTab ) {
+			setCurrentTab( uagSettingState[blockName]?.selectedTab || 'general' )
+			if ( sidebarPanel ) {
+				sidebarPanel.setAttribute( 'data-uagb-tab', uagSettingState[blockName]?.selectedTab || 'general' );
+			}
+		} else if ( sidebarPanel ) {
+			sidebarPanel.setAttribute( 'data-uagb-tab', 'general' );
 		}
 		// Above Section Ends.
 		// component will unmount
@@ -98,18 +91,27 @@ const InspectorTabs = ( props ) => {
 
 	}, [] );
 
-	useEffect( () => {
-		if ( sidebarPanel ) {
-			sidebarPanel.setAttribute( 'data-uagb-tab', defaultTab );
-		}
-	}, [ defaultTab ] );
-
 	const _onTabChange = ( tab ) => {
 		renderUAGTabsSettingsInOrder();
 		setCurrentTab( tab );
 
 		if ( sidebarPanel ) {
 			sidebarPanel.setAttribute( 'data-uagb-tab', tab );
+		}
+
+		// Below code is to set the setting state of Tab for each block.
+		const { getSelectedBlock } = select( 'core/block-editor' );
+		const blockName = getSelectedBlock()?.name;
+
+		const data = {
+			...uagSettingState,
+			[blockName] : {
+				selectedTab : tab
+			}
+		}
+		const uagLocalStorage = getUAGEditorStateLocalStorage();
+		if ( uagLocalStorage ) {
+			uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
 		}
 	};
 
@@ -185,7 +187,7 @@ const InspectorTabs = ( props ) => {
 									d="M15.666 6.325c-.277-.05-.572-.082-.85-.115a6.385 6.385 0 00-.571-1.389c.18-.229.343-.457.523-.686a.994.994 0 00-.098-1.291l-.997-.997a.994.994 0 00-1.291-.098c-.23.163-.458.343-.687.523a6.954 6.954 0 00-1.39-.589c-.032-.277-.08-.572-.113-.85A.987.987 0 009.21 0H7.805a1 1 0 00-.98.834c-.05.277-.082.572-.115.85-.474.13-.947.326-1.389.571-.229-.18-.457-.343-.686-.523a.994.994 0 00-1.291.098l-.997.997a.994.994 0 00-.098 1.291c.163.23.343.458.523.687a6.954 6.954 0 00-.589 1.39c-.277.032-.572.08-.85.113A.987.987 0 00.5 7.29v1.406a1 1 0 00.834.98c.277.05.572.082.85.115.13.474.326.947.571 1.389-.18.229-.343.457-.523.686a.994.994 0 00.098 1.291l.997.997a.994.994 0 001.291.098c.23-.163.458-.343.687-.523.441.245.899.442 1.39.589.032.294.08.572.113.85.066.473.49.833.981.833h1.406a1 1 0 00.98-.834c.05-.277.082-.572.115-.85.474-.13.947-.326 1.389-.571.229.18.457.343.686.523a.994.994 0 001.291-.098l.997-.997a.994.994 0 00.098-1.291 19.095 19.095 0 00-.523-.687c.245-.441.442-.899.589-1.39.277-.032.572-.08.85-.113a.987.987 0 00.833-.981V7.305a1 1 0 00-.834-.98zM8.492 11.57a3.571 3.571 0 01-3.563-3.563 3.571 3.571 0 013.563-3.563 3.571 3.571 0 013.563 3.563 3.571 3.571 0 01-3.563 3.563z"
 								/>
 							</svg>
-							<h5>{ __( 'Advanced' ) }</h5>
+							<h5>{ __( 'Other' ) }</h5>
 						</button>
 					) }
 				</div>

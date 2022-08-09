@@ -1,6 +1,5 @@
 import { useLayoutEffect } from 'react';
 import { decodeEntities } from '@wordpress/html-entities';
-import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 
 export const PostTitle = ( props ) => {
@@ -30,8 +29,7 @@ export const PostTitle = ( props ) => {
 					target={ target }
 					rel="noopener noreferrer"
 				>
-					{ decodeEntities( post.title.rendered.trim() ) ||
-						__( '(Untitled)' ) }
+					{ decodeEntities( post.title.rendered.trim() ) }
 				</a>
 			</Tag>
 		);

@@ -36,5 +36,8 @@
 	<exclude-pattern>*/scripts/*</exclude-pattern>
 	<exclude-pattern>*/admin/assets/*</exclude-pattern>
 	<exclude-pattern>*/admin/bsf-analytics/*</exclude-pattern>
+	<exclude-pattern>/blocks-config/uagb-controls/spectra-icons-v6.php</exclude-pattern>
+	<exclude-pattern>/blocks-config/uagb-controls/uagb-icons.php</exclude-pattern>
+
 </ruleset>
 
