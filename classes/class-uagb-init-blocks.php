@@ -79,6 +79,7 @@ class UAGB_Init_Blocks {
 		delete_option( 'spectra_blocks_pages_counted' );
 		delete_option( 'spectra_blocks_count_status' );
 		delete_option( 'get_spectra_block_count' );
+
 	}
 
 	/**
