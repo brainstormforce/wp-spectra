@@ -257,7 +257,7 @@ const transforms = {
 						backgroundAttachmentDesktop : backgroundAttachment,
 						backgroundVideoColor: backgroundVideoColor || '#00000011',
 						backgroundVideo,
-						overlayType,
+						overlayType: ( overlayType === 'color' && backgroundImageColor ) ? overlayType : ( overlayType === 'gradient' ) ? 'gradient' : 'none',  // eslint-disable-line no-nested-ternary
 						backgroundImageColor: backgroundImageColor || '#00000000',
 						variationSelected: true,
 						htmlTag: tag,
