@@ -325,7 +325,6 @@ const transforms = {
 					backgroundAttachment,
 					backgroundVideoColor,
 					backgroundVideo,
-					overlayType,
 					backgroundImageColor,
 					tag,
 					columnsBorderTopLeftRadius,
@@ -428,7 +427,6 @@ const transforms = {
 						backgroundRepeat,
 						backgroundSize,
 						backgroundImageColor,
-						overlayType,
 					} = child?.attributes;
 
 					const width = colWidth ? colWidth : containerChildWidth;
@@ -486,7 +484,7 @@ const transforms = {
 							backgroundRepeatDesktop: backgroundRepeat,
 							backgroundSizeDesktop: backgroundSize,
 							backgroundImageColor,
-							overlayType,
+							overlayType: backgroundImageColor ? 'color' : 'none',
 							alignItemsDesktop: 'flex-start',
 						},
 						child?.innerBlocks
@@ -552,7 +550,7 @@ const transforms = {
 						backgroundAttachmentDesktop : backgroundAttachment,
 						backgroundVideoColor: backgroundVideoColor || '#00000011',
 						backgroundVideo,
-						overlayType,
+						overlayType: backgroundImageColor ? 'color' : 'none',
 						backgroundImageColor: backgroundImageColor || '#00000000',
 						directionDesktop: 'row',
 						directionTablet: 'tablet' === stack ? getReverseColTablet : getReverseRowTablet,
