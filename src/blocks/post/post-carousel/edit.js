@@ -502,7 +502,7 @@ const UAGBPostCarousel = ( props ) => {
 		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
 	];
 
-	if ( '' !== taxonomyList ) {
+	if ( '' !== taxonomyList && undefined !== taxonomyList ) {
 		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
