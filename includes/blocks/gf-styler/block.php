@@ -19,4 +19,5 @@ $block_data = array(
 	'extension'        => false,
 	'is_active'        => class_exists( 'GFForms' ),
 	'priority'         => 33,
+	'deprecated'       => true,
 );
