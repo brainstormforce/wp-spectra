@@ -24,6 +24,7 @@ import { buttonsPresets, boxShadowPresets, boxShadowHoverPresets } from './prese
 import UAGPresets from '@Components/presets';
 import BoxShadowControl from '@Components/box-shadow';
 import { decodeEntities } from '@wordpress/html-entities';
+import UAGNumberControl from '@Components/number-control';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -514,7 +515,7 @@ const Settings = ( props ) => {
 						} )
 					}
 				/>
-				<Range
+				<UAGNumberControl
 					label={ __(
 						'Posts Per Page',
 						'ultimate-addons-for-gutenberg'
@@ -526,7 +527,7 @@ const Settings = ( props ) => {
 						label: 'postsToShow',
 					} }
 					onChange={ onChangePostsPerPage }
-					min={ 0 }
+					min={ 1 }
 					max={ 50 }
 					displayUnit={ false }
 				/>
@@ -556,7 +557,7 @@ const Settings = ( props ) => {
 					}
 				/>
 				{ enableOffset && (
-				<Range
+				<UAGNumberControl
 					label={ __(
 						'Offset By',
 						'ultimate-addons-for-gutenberg'
@@ -1229,7 +1230,7 @@ const Settings = ( props ) => {
 	const spacingSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Layout Settings', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
 				<AdvancedPopColorControl
@@ -1245,7 +1246,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<ResponsiveSlider
-					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: columnGap,
@@ -1269,7 +1270,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<ResponsiveSlider
-					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: rowGap,
