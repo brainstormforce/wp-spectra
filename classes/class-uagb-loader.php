@@ -195,17 +195,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			if ( 'done' === get_option( 'spectra_blocks_count_status' ) && get_option( 'spectra_settings_data' ) && get_option( 'get_spectra_block_count' ) ) {
 
-				$settings_data = get_option( 'spectra_settings_data' );
-				$blocks_count  = get_option( 'get_spectra_block_count' );
-				$blocks_status = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks' );
-
-				$default_stats['spectra_settings'] = array(
-					'spectra_version'          => UAGB_VER,
-					'settings_page_data'       => $settings_data,
-					'blocks_count'             => $blocks_count,
-					'blocks_activation_status' => $blocks_status,
-				);
-
 				// Active widgets data to analytics.
 				add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
 
