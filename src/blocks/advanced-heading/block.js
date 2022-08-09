@@ -15,7 +15,7 @@ import './format'
 registerBlockType( 'uagb/advanced-heading', {
 	title: __( 'Heading', 'ultimate-addons-for-gutenberg' ),
 	description: __(
-		'Add heading, sub heading and a seperator using one block.',
+		'Add heading, sub heading and a separator using one block.',
 		'ultimate-addons-for-gutenberg'
 	),
 	icon: UAGB_Block_Icons.advanced_heading,
