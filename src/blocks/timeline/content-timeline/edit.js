@@ -25,25 +25,23 @@ const ContentTimelineComponent = ( props ) => {
     const deviceType = useDeviceType();
     useEffect( () => {
         const { setAttributes, clientId, attributes } = props;
+
         // Replacement for componentDidMount.
         //Store client id.
         setAttributes( { block_id: clientId } );
         setAttributes( { classMigrate: true } );
         setAttributes( { childMigrate: true } );
 
-
         const {
-            verticalSpace,
-            horizontalSpace,
-            topMargin,
-            rightMargin,
-            bottomMargin,
-            leftMargin,
             bgPadding,
             topPadding,
             rightPadding,
             bottomPadding,
             leftPadding,
+            timelinAlignment,
+            timelinAlignmentTablet,
+            timelinAlignmentMobile,
+            stack
         } = attributes;
 
         if ( bgPadding ) {
@@ -61,27 +59,34 @@ const ContentTimelineComponent = ( props ) => {
             }
         }
 
-        if ( verticalSpace ) {
-            if ( undefined === topMargin ) {
-                setAttributes( { topMargin: verticalSpace } );
-            }
-            if ( undefined === bottomMargin ) {
-                setAttributes( { bottomMargin: verticalSpace } );
+        if( timelinAlignment ) {
+            if( 'none' === stack ) { 
+                if( undefined === timelinAlignmentTablet ) {
+                    setAttributes( { timelinAlignmentTablet: timelinAlignment } );
+                }
+                if( undefined === timelinAlignmentMobile ) {
+                    setAttributes( { timelinAlignmentMobile: timelinAlignment } );
+                }
+            } else {
+                if( undefined === timelinAlignmentTablet && 'tablet' === stack ) {
+                    setAttributes( { timelinAlignmentTablet: 'left' } );
+                    setAttributes( { timelinAlignmentMobile: 'left' } );
+                }
+
+                if( undefined === timelinAlignmentMobile && 'mobile' === stack ) {
+                    setAttributes( { timelinAlignmentMobile: 'left' } );
+                    setAttributes( { timelinAlignmentTablet: timelinAlignment } );
+                }
             }
         }
-        if ( horizontalSpace ) {
-            if ( undefined === rightMargin ) {
-                setAttributes( { rightMargin: horizontalSpace } );
-            }
-            if ( undefined === leftMargin ) {
-                setAttributes( { leftMargin: horizontalSpace } );
-            }
-        }
+
+        
     }, [] );
 
     useEffect( () => {
         // Replacement for componentDidUpdate.
         const blockStyling = contentTimelineStyle( props );
+        const { attributes } = props;
 
         addBlockEditorDynamicStyles( 'uagb-content-timeline-style-' + props.clientId.substr( 0, 8 ), blockStyling );
         if (
@@ -92,15 +97,26 @@ const ContentTimelineComponent = ( props ) => {
         ) {
             return;
         }
+
+        let device = deviceType;
+
+        // For desktop, attribute name does not have `desktop` suffix to support backward compatibility. 
+        if( 'Desktop' === deviceType ) {
+            device = '';
+        }
+
+        const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + device ] ? attributes['timelinAlignment' + device ] : attributes.timelinAlignment;
+
         select( 'core/block-editor' )
             .getBlocksByClientId( props.clientId )[0]
             .innerBlocks.forEach( function( block, key ) {
+
                 let alignClass = '';
-                if ( 'left' === block.attributes.timelinAlignment ) {
+                if ( 'left' === timelinAlignment ) {
                     alignClass = 'uagb-timeline__left';
-                } else if ( 'right' === block.attributes.timelinAlignment ) {
+                } else if ( 'right' === timelinAlignment ) {
                     alignClass = 'uagb-timeline__right';
-                } else if ( 'center' === block.attributes.timelinAlignment ) {
+                } else if ( 'center' === timelinAlignment ) {
                     if ( key % 2 === 0 ) {
                         alignClass =
                             'uagb-timeline__right';
@@ -111,13 +127,13 @@ const ContentTimelineComponent = ( props ) => {
                 }
 
                 let dayAlignClass = '';
-                if ( 'left' === block.attributes.timelinAlignment ) {
+                if ( 'left' === timelinAlignment ) {
                     dayAlignClass =
                         'uagb-timeline__day-new uagb-timeline__day-left';
-                } else if ( 'right' === block.attributes.timelinAlignment ) {
+                } else if ( 'right' === timelinAlignment ) {
                     dayAlignClass =
                         'uagb-timeline__day-new uagb-timeline__day-right';
-                } else if ( 'center' === block.attributes.timelinAlignment ) {
+                } else if ( 'center' === timelinAlignment ) {
                     if ( key % 2 === 0 ) {
                         dayAlignClass =
                             'uagb-timeline__day-new uagb-timeline__day-right';
@@ -155,10 +171,10 @@ const ContentTimelineComponent = ( props ) => {
         addBlockEditorDynamicStyles( 'uagb-content-timeline-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [deviceType] );
 
-    return ( 
+    return (
 		<Suspense fallback = { lazyLoader() }>
-            <Settings parentProps = { props }/> 
-		    <Render parentProps = { props }/> 
+            <Settings parentProps = { props }/>
+		    <Render parentProps = { props }/>
 		</Suspense>
     );
 };

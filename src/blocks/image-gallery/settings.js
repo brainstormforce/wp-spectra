@@ -451,15 +451,23 @@ const Settings = ( props ) => {
 						? captionBackgroundBlurOpacityHover
 						: captionBackgroundBlurOpacity
 					}
-					onChange={
-						isHover
-						? ( value ) => setAttributes( {
-							captionBackgroundBlurOpacityHover: value
-						} )
-						: ( value ) => setAttributes( {
-							captionBackgroundBlurOpacity: value
-						} )
-					}
+					data={ {
+						value: isHover
+							? captionBackgroundBlurOpacityHover
+							: captionBackgroundBlurOpacity,
+						label: isHover
+							? 'captionBackgroundBlurOpacityHover'
+							: 'captionBackgroundBlurOpacity',
+					} }
+					// onChange={
+					// 	isHover
+					// 	? ( value ) => setAttributes( {
+					// 		captionBackgroundBlurOpacityHover: value
+					// 	} )
+					// 	: ( value ) => setAttributes( {
+					// 		captionBackgroundBlurOpacity: value
+					// 	} )
+					// }
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ false }
@@ -481,15 +489,23 @@ const Settings = ( props ) => {
 							? captionBackgroundEffectAmountHover
 							: captionBackgroundEffectAmount
 						}
-						onChange={
-							isHover
-							? ( value ) => setAttributes( {
-								captionBackgroundEffectAmountHover: value
-							} )
-							: ( value ) => setAttributes( {
-								captionBackgroundEffectAmount: value
-							} )
-						}
+						data={ {
+							value: isHover
+								? captionBackgroundEffectAmountHover
+								: captionBackgroundEffectAmount,
+							label: isHover
+								? 'captionBackgroundEffectAmountHover'
+								: 'captionBackgroundEffectAmount',
+						} }
+						// onChange={
+						// 	isHover
+						// 	? ( value ) => setAttributes( {
+						// 		captionBackgroundEffectAmountHover: value
+						// 	} )
+						// 	: ( value ) => setAttributes( {
+						// 		captionBackgroundEffectAmount: value
+						// 	} )
+						// }
 						min={ 0 }
 						max={ 100 }
 						displayUnit={ false }
@@ -604,7 +620,11 @@ const Settings = ( props ) => {
 						label={ __( 'Max Caption Length (Characters)', 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }
 						value={ imageCaptionLength }
-						onChange={ ( value ) => setAttributes( { imageCaptionLength: value } ) }
+						data={ {
+							value: imageCaptionLength,
+							label: 'imageCaptionLength',
+						} }
+						// onChange={ ( value ) => setAttributes( { imageCaptionLength: value } ) }
 						min={ 1 }
 						max={ 100 }
 						displayUnit={ false }
@@ -671,9 +691,13 @@ const Settings = ( props ) => {
 											label={ __( 'Caption Gap', 'ultimate-addons-for-gutenberg' ) }
 											setAttributes={ setAttributes }
 											value={ captionGap }
-											onChange={ ( value ) =>
-												setAttributes( { captionGap: value } )
-											}
+											data={ {
+												value: captionGap,
+												label: 'captionGap',
+											} }
+											// onChange={ ( value ) =>
+											// 	setAttributes( { captionGap: value } )
+											// }
 											min={ 0 }
 											max={ 100 }
 											unit={ {
@@ -928,7 +952,11 @@ const Settings = ( props ) => {
 						label={ __( `Starting Image`, 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }
 						value={ carouselStartAt + 1 }
-						onChange={ ( value ) => setAttributes( { carouselStartAt: value -1 } ) }
+						data={ {
+							value: carouselStartAt,
+							label: 'carouselStartAt',
+						} }
+						onChange={ ( value ) => setAttributes( { carouselStartAt: value - 1 } ) }
 						min={ 1 }
 						max={ mediaGallery.length }
 						displayUnit={ false }
@@ -937,7 +965,11 @@ const Settings = ( props ) => {
 						label={ __( `Transition Speed (ms)`, 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }
 						value={ carouselTransitionSpeed }
-						onChange={ ( value ) => setAttributes( { carouselTransitionSpeed: value } ) }
+						data={ {
+							value: carouselTransitionSpeed,
+							label: 'carouselTransitionSpeed',
+						} }
+						// onChange={ ( value ) => setAttributes( { carouselTransitionSpeed: value } ) }
 						min={ 0 }
 						max={ 5000 }
 						displayUnit={ false }
@@ -998,7 +1030,11 @@ const Settings = ( props ) => {
 								label={ __( `Autoplay Speed (ms)`, 'ultimate-addons-for-gutenberg' ) }
 								setAttributes={ setAttributes }
 								value={ carouselAutoplaySpeed }
-								onChange={ ( value ) => setAttributes( { carouselAutoplaySpeed: value } ) }
+								data={ {
+									value: carouselAutoplaySpeed,
+									label: 'carouselAutoplaySpeed',
+								} }
+								// onChange={ ( value ) => setAttributes( { carouselAutoplaySpeed: value 	} ) }
 								min={ 0 }
 								max={ 5000 }
 								displayUnit={ false }
@@ -1044,7 +1080,11 @@ const Settings = ( props ) => {
 							<Range
 								label={ __( `Page Limit`, 'ultimate-addons-for-gutenberg' ) }
 								value={ paginateLimit }
-								onChange={ ( value ) => setAttributes( { paginateLimit: value } ) }
+								data={ {
+									value: paginateLimit,
+									label: 'paginateLimit',
+								} }
+								// onChange={ ( value ) => setAttributes( { paginateLimit: value } ) }
 								min={ 1 }
 								max={ 100 }
 								displayUnit={ false }
@@ -1245,9 +1285,13 @@ const Settings = ( props ) => {
 				label={ __( 'Border Radius', 'ultimate-addons-for-gutenberg' ) }
 				setAttributes={ setAttributes }
 				value={ imageBorderRadius }
-				onChange={ ( value ) =>
-					setAttributes( { imageBorderRadius: value } )
-				}
+				data={ {
+					value: imageBorderRadius,
+					label: 'imageBorderRadius',
+				} }
+				// onChange={ ( value ) =>
+				// 	setAttributes( { imageBorderRadius: value } )
+				// }
 				min={ 0 }
 				max={ 100 }
 				unit={ {
@@ -1328,9 +1372,13 @@ const Settings = ( props ) => {
 					label={ __( `Blur Amount`, 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ captionBackgroundBlurAmount }
-					onChange={ ( value ) => setAttributes( {
-						captionBackgroundBlurAmount: value
-					} ) }
+					data={ {
+						value: captionBackgroundBlurAmount,
+						label: 'captionBackgroundBlurAmount',
+					} }
+					// onChange={ ( value ) => setAttributes( {
+					// 	captionBackgroundBlurAmount: value
+					// } ) }
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
@@ -1577,9 +1625,13 @@ const Settings = ( props ) => {
 						label={ __( 'Arrow Distance from Edge', 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }
 						value={ paginateArrowDistance }
-						onChange={ ( value ) =>
-							setAttributes( { paginateArrowDistance: value } )
-						}
+						data={ {
+							value: paginateArrowDistance,
+							label: 'paginateArrowDistance',
+						} }
+						// onChange={ ( value ) =>
+						// 	setAttributes( { paginateArrowDistance: value } )
+						// }
 						min={ -50 }
 						max={ 50 }
 						unit={ {
@@ -1646,9 +1698,13 @@ const Settings = ( props ) => {
 								label={ __( `Arrow Border Radius`, 'ultimate-addons-for-gutenberg' ) }
 								setAttributes={ setAttributes }
 								value={ paginateArrowBorderRadius }
-								onChange={ ( value ) => setAttributes( {
-									paginateArrowBorderRadius: value
-								} ) }
+								data={ {
+									value: paginateArrowBorderRadius,
+									label: 'paginateArrowBorderRadius',
+								} }
+								// onChange={ ( value ) => setAttributes( {
+								// 	paginateArrowBorderRadius: value
+								// } ) }
 								min={ 0 }
 								max={ 50 }
 								displayUnit={ false }
@@ -1657,9 +1713,13 @@ const Settings = ( props ) => {
 								label={ __( `Arrow Border Width`, 'ultimate-addons-for-gutenberg' ) }
 								setAttributes={ setAttributes }
 								value={ paginateArrowBorderWidth }
-								onChange={ ( value ) => setAttributes( {
-									paginateArrowBorderWidth: value
-								} ) }
+								data={ {
+									value: paginateArrowBorderWidth,
+									label: 'paginateArrowBorderWidth',
+								} }
+								// onChange={ ( value ) => setAttributes( {
+								// 	paginateArrowBorderWidth: value
+								// } ) }
 								min={ 0 }
 								max={ 50 }
 								displayUnit={ false }
@@ -1677,9 +1737,13 @@ const Settings = ( props ) => {
 								label={ __( `Loader Size`, 'ultimate-addons-for-gutenberg' ) }
 								setAttributes={ setAttributes }
 								value={ paginateLoaderSize }
-								onChange={ ( value ) => setAttributes( {
-									paginateLoaderSize: value
-								} ) }
+								data={ {
+									value: paginateLoaderSize,
+									label: 'paginateLoaderSize',
+								} }
+								// onChange={ ( value ) => setAttributes( {
+								// 	paginateLoaderSize: value
+								// } ) }
 								min={ 0 }
 								max={ 50 }
 								displayUnit={ false }
@@ -1800,9 +1864,13 @@ const Settings = ( props ) => {
 									label={ __( `Button Border Radius`, 'ultimate-addons-for-gutenberg' ) }
 									setAttributes={ setAttributes }
 									value={ paginateButtonBorderRadius }
-									onChange={ ( value ) => setAttributes( {
-										paginateButtonBorderRadius: value
-									} ) }
+									data={ {
+										value: paginateButtonBorderRadius,
+										label: 'paginateButtonBorderRadius',
+									} }
+									// onChange={ ( value ) => setAttributes( {
+									// 	paginateButtonBorderRadius: value
+									// } ) }
 									min={ 0 }
 									max={ 100 }
 									displayUnit={ false }
@@ -1812,9 +1880,13 @@ const Settings = ( props ) => {
 										label={ __( `Button Border Width`, 'ultimate-addons-for-gutenberg' ) }
 										setAttributes={ setAttributes }
 										value={ paginateButtonBorderWidth }
-										onChange={ ( value ) => setAttributes( {
-											paginateButtonBorderWidth: value
-										} ) }
+										data={ {
+											value: paginateButtonBorderWidth,
+											label: 'paginateButtonBorderWidth',
+										} }
+										// onChange={ ( value ) => setAttributes( {
+										// 	paginateButtonBorderWidth: value
+										// } ) }
 										min={ 0 }
 										max={ 50 }
 										displayUnit={ false }

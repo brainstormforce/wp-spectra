@@ -35,10 +35,12 @@ import taxonomyListAttribute from '@Blocks/taxonomy-list/attributes';
 import reviewAttribute from '@Blocks/review/attributes';
 import wpSearchAttribute from '@Blocks/wp-search/attributes';
 import formsAttribute from '@Blocks/forms/attributes';
+import formsTextareaAttribute from '@Blocks/forms/child-blocks/textarea/attributes';
 import tabsAttribute from '@Blocks/tabs/attributes';
 import lottieAttribute from '@Blocks/lottie/attributes';
 import starRatingAttribute from '@Blocks/star-rating/attributes';
 import containerAttribute from '@Blocks/container/attributes';
+import imageAttribute from '@Blocks/image/attributes';
 import imageGalleryAttribute from '@Blocks/image-gallery/attributes';
 
 export const blocksAttributes = {
@@ -75,6 +77,7 @@ export const blocksAttributes = {
 	'review' : reviewAttribute,
 	'wp-search' : wpSearchAttribute,
 	'forms' : formsAttribute,
+	'forms-textarea' : formsTextareaAttribute, 
 	'tabs' : tabsAttribute,
 	'lottie' : lottieAttribute,
 	'star-rating' : starRatingAttribute,
@@ -83,5 +86,6 @@ export const blocksAttributes = {
     'post-timeline' : postTimelineAttribute,
     'how-to-step' : howToStepAttribute,
 	'container' : containerAttribute,
-	'image-gallery' : imageGalleryAttribute,
+	'image': imageAttribute,
+	'image-gallery': imageGalleryAttribute,
 };

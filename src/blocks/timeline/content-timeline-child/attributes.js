@@ -33,6 +33,20 @@ const attributes = {
 			styleType: 'overall-alignment'
 		},
 	},
+	alignTablet: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		},
+	},
+	alignMobile: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
+		},
+	},
 	headingTag: {
 		type: 'string',
 		default: 'h4',
@@ -42,6 +56,20 @@ const attributes = {
 		default: 'center',
 		UAGCopyPaste: {
 			styleType: 'timeline-alignment'
+		},
+	},
+	timelinAlignmentTablet: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'timeline-alignment-tablet'
+		},
+	},
+	timelinAlignmentMobile: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'timeline-alignment-mobile'
 		},
 	},
 	arrowlinAlignment: {
@@ -72,7 +100,7 @@ const attributes = {
 	},
 	icon: {
 		type: 'string',
-		default: 'fab fa fa-calendar-alt',
+		default: 'calendar-days',
 	},
 	t_date: {
 		type: 'string',

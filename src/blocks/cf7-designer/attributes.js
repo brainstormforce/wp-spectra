@@ -1,6 +1,27 @@
 /**
  * BLOCK: UAGB CF7 Attributes
  */
+ import { getBorderAttributes } from '@Controls/generateAttributes';
+ const fieldDefaults = {
+	borderStyle             :  'solid',
+	borderTopWidth: 1,
+	borderRightWidth: 1,
+	borderBottomWidth: 1,
+	borderLeftWidth: 1,
+	borderColor              :  '#eeeeee',
+	borderHColor         :  '',
+ }
+ const fieldBorderAttributes = getBorderAttributes( 'input', fieldDefaults );
+ const buttonDefaults = {
+	borderStyle         : 'solid',
+	borderTopWidth: 1,
+	borderRightWidth: 1,
+	borderBottomWidth: 1,
+	borderLeftWidth: 1,
+	borderColor         : '#333',
+	borderHColor        : '#333',
+ }
+ const buttonBorderAttributes = getBorderAttributes( 'btn', buttonDefaults );
 
  const attributes = { // eslint-disable-line no-unused-vars
 	block_id                      : {
@@ -30,6 +51,9 @@
 	fieldStyle                    : {
 		type    : 'string',
 		default : 'box',
+		UAGCopyPaste: {
+			styleType: 'field-style'
+		},
 	},
 	fieldVrPadding                : {
 		type    : 'number',
@@ -68,44 +92,38 @@
 	},
 	fieldBorderStyle              : {
 		type    : 'string',
-		default : 'solid',
-		UAGCopyPaste: {
-			styleType: 'input-border-style'
-		},
 	},
 	fieldBorderWidth              : {
 		type    : 'number',
-		default : 1,
-		UAGCopyPaste: {
-			styleType: 'input-border-width'
-		},
 	},
 	fieldBorderRadius             : {
 		type    : 'number',
-		default : 0,
-		UAGCopyPaste: {
-			styleType: 'input-border-radius'
-		},
 	},
 	fieldBorderColor              : {
 		type    : 'string',
-		default : '#eeeeee',
-		UAGCopyPaste: {
-			styleType: 'input-border-color'
-		},
 	},
 	fieldBorderFocusColor         : {
 		type    : 'string',
-		default : '',
-		UAGCopyPaste: {
-			styleType: 'input-border-hover-color'
-		},
 	},
 	buttonAlignment               : {
 		type    : 'string',
 		default : 'left',
 		UAGCopyPaste: {
 			styleType: 'btn-align'
+		},
+	},
+	buttonAlignmentTablet               : {
+		type    : 'string',
+		default : '',
+		UAGCopyPaste: {
+			styleType: 'btn-align-tablet'
+		},
+	},
+	buttonAlignmentMobile               : {
+		type    : 'string',
+		default : '',
+		UAGCopyPaste: {
+			styleType: 'btn-align-mobile'
 		},
 	},
 	buttonVrPadding               : {
@@ -124,31 +142,15 @@
 	},
 	buttonBorderStyle             : {
 		type    : 'string',
-		default : 'solid',
-		UAGCopyPaste: {
-			styleType: 'btn-border-style'
-		},
 	},
 	buttonBorderWidth             : {
 		type    : 'number',
-		default : 1,
-		UAGCopyPaste: {
-			styleType: 'btn-border-width'
-		},
 	},
 	buttonBorderRadius            : {
 		type    : 'number',
-		default : 0,
-		UAGCopyPaste: {
-			styleType: 'btn-border-radius'
-		},
 	},
 	buttonBorderColor             : {
 		type    : 'string',
-		default : '#333',
-		UAGCopyPaste: {
-			styleType: 'btn-border-color'
-		},
 	},
 	buttonTextColor               : {
 		type    : 'string',
@@ -159,7 +161,7 @@
 	},
 	buttonBgColor                 : {
 		type    : 'string',
-		default : 'transparent',
+		default : '',
 		UAGCopyPaste: {
 			styleType: 'btn-bg-color'
 		},
@@ -167,9 +169,6 @@
 	buttonBorderHoverColor        : {
 		type    : 'string',
 		default : '#333',
-		UAGCopyPaste: {
-			styleType: 'btn-border-hover-color'
-		},
 	},
 	buttonTextHoverColor          : {
 		type    : 'string',
@@ -180,7 +179,7 @@
 	},
 	buttonBgHoverColor            : {
 		type    : 'string',
-		default : 'transparent',
+		default : '',
 		UAGCopyPaste: {
 			styleType: 'btn-bg-hover-color'
 		},
@@ -192,11 +191,39 @@
 			styleType: 'field-bottom-margin'
 		},
 	},
+	fieldSpacingTablet: {
+		type: 'number',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'field-bottom-margin'
+		},
+	},
+	fieldSpacingMobile: {
+		type: 'number',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'field-bottom-margin'
+		},
+	},
 	fieldLabelSpacing             : {
 		type    : 'number',
 		default : '',
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
+		},
+	},
+	fieldLabelSpacingTablet: {
+		type: 'number',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin-tablet'
+		},
+	},
+	fieldLabelSpacingMobile: {
+		type: 'number',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin-mobile'
 		},
 	},
 	labelFontSize                 : {
@@ -415,10 +442,27 @@
 	enableOveride                 : {
 		type    : 'boolean',
 		default : true,
+		UAGCopyPaste: {
+			styleType: 'enable-overide'
+		},
 	},
 	radioCheckSize                : {
 		type    : 'number',
-		default : '',
+		default : 10,
+		UAGCopyPaste: {
+			styleType: 'radio-size'
+		},
+	},
+	radioCheckSizeTablet: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'radio-size'
+		},
+	},
+	radioCheckSizeMobile: {
+		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'radio-size'
 		},
@@ -456,6 +500,27 @@
 		default : '',
 		UAGCopyPaste: {
 			styleType: 'radio-border-width'
+		},
+	},
+	radioCheckBorderWidthTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'radio-border-width'
+		},
+	},
+	radioCheckBorderWidthMobile: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'radio-border-width'
+		},
+	},
+	radioCheckBorderWidthUnit: {
+		type    : 'string',
+		default : 'px',
+		UAGCopyPaste: {
+			styleType: 'radio-border-width-type'
 		},
 	},
 	radioCheckBorderRadius        : {
@@ -539,6 +604,9 @@
 	validationMsgPosition         : {
 		type    : 'string',
 		default : 'default',
+		UAGCopyPaste: {
+			styleType: 'validation-msg-position'
+		},
 	},
 	validationMsgColor            : {
 		type    : 'string',
@@ -557,6 +625,9 @@
 	enableHighlightBorder         : {
 		type    : 'boolean',
 		default : false,
+		UAGCopyPaste: {
+			styleType: 'enable-highlight-border'
+		},
 	},
 	highlightBorderColor          : {
 		type    : 'string',
@@ -685,6 +756,13 @@
 			styleType: 'msg-border-size'
 		},
 	},
+	msgBorderSizeUnit               : {
+		type    : 'string',
+		default : 'px',
+		UAGCopyPaste: {
+			styleType: 'msg-border-size-type'
+		},
+	},
 	msgBorderRadius               : {
 		type    : 'number',
 		default : '',
@@ -794,9 +872,6 @@
 	fieldBorderRadiusType         : {
 		type    : 'string',
 		default : 'px',
-		UAGCopyPaste: {
-			styleType: 'field-border-radius-type'
-		},
 	},
 	buttonBorderRadiusType        : {
 		type    : 'string',
@@ -1199,6 +1274,158 @@
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	...fieldBorderAttributes,
+	...buttonBorderAttributes,
+	labelLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing'
+		}
+	},
+	labelLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing-tablet'
+		}
+	},
+	labelLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing-mobile'
+		}
+	},
+	labelLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing-type'
+		}
+	},
+	inputLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'input-letter-spacing'
+		}
+	},
+	inputLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'input-letter-spacing-tablet'
+		}
+	},
+	inputLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'input-letter-spacing-mobile'
+		}
+	},
+	inputLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'input-letter-spacing-type'
+		}
+	},
+	radioCheckLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'radioCheck-letter-spacing'
+		}
+	},
+	radioCheckLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'radioCheck-letter-spacing-tablet'
+		}
+	},
+	radioCheckLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'radioCheck-letter-spacing-mobile'
+		}
+	},
+	radioCheckLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'radioCheck-letter-spacing-type'
+		}
+	},
+	buttonLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'button-letter-spacing'
+		}
+	},
+	buttonLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'button-letter-spacing-tablet'
+		}
+	},
+	buttonLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'button-letter-spacing-mobile'
+		}
+	},
+	buttonLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'button-letter-spacing-type'
+		}
+	},
+	validationMsgLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'validationMsg-letter-spacing'
+		}
+	},
+	validationMsgLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'validationMsg-letter-spacing-tablet'
+		}
+	},
+	validationMsgLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'validationMsg-letter-spacing-mobile'
+		}
+	},
+	validationMsgLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'validationMsg-letter-spacing-type'
+		}
+	},
+	msgLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'msg-letter-spacing'
+		}
+	},
+	msgLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'msg-letter-spacing-tablet'
+		}
+	},
+	msgLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'msg-letter-spacing-mobile'
+		}
+	},
+	msgLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'msg-letter-spacing-type'
+		}
+	},
  }
  export default attributes;

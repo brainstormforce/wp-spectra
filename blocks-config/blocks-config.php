@@ -18,4 +18,5 @@ require_once UAGB_DIR . 'blocks-config/taxonomy-list/class-uagb-taxonomy-list.ph
 require_once UAGB_DIR . 'blocks-config/table-of-content/class-uagb-table-of-content.php';
 require_once UAGB_DIR . 'blocks-config/forms/class-uagb-forms.php';
 require_once UAGB_DIR . 'blocks-config/lottie/class-uagb-lottie.php';
+require_once UAGB_DIR . 'blocks-config/image/class-uagb-image.php';
 require_once UAGB_DIR . 'blocks-config/image-gallery/class-uagb-image-gallery.php';

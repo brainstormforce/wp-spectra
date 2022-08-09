@@ -4,13 +4,36 @@
 
 import classnames from 'classnames';
 import attributes from './attributes';
-import contentTimelineStyle from '.././inline-styles';
 import ContentTmClasses from '.././classes';
 import AlignClass from '.././align-classes';
 import DayAlignClass from '.././day-align-classes';
 import renderSVG from '@Controls/deprecatedRenderIcon';
 import { InnerBlocks, RichText } from '@wordpress/block-editor';
 import { dateI18n, __experimentalGetSettings } from '@wordpress/date';
+
+function DeprecatedContentTmClasses( attributes ) {
+	/* Arrow position */
+	var arrow_align_class  = "uagb-timeline__arrow-top"+" "
+	if( attributes.arrowlinAlignment == "center" ){
+		arrow_align_class = "uagb-timeline__arrow-center"+" "
+	}else if( attributes.arrowlinAlignment == "bottom" ){
+		arrow_align_class = "uagb-timeline__arrow-bottom"+" "
+	}
+
+	/* Alignmnet */
+	var align_class = "uagb-timeline__center-block "+" "
+	if( attributes.timelinAlignment == "left" ){
+		align_class = "uagb-timeline__left-block"+" "
+	}else if( attributes.timelinAlignment == "right"){
+		align_class = "uagb-timeline__right-block"+" "
+	}
+	align_class+= arrow_align_class+""
+	align_class += "uagb-timeline__responsive-"+attributes.stack+" uagb-timeline"
+
+	return [
+		align_class
+	]
+}
 
 const deprecated = [
 	{
@@ -27,9 +50,6 @@ const deprecated = [
 				stack,
 				className,
 			} = props.attributes;
-
-			/* Style for elements */
-			const front_style = contentTimelineStyle( props );
 
 			const hasItems = Array.isArray( tm_content ) && tm_content.length;
 
@@ -201,9 +221,6 @@ const deprecated = [
 				className,
 			} = props.attributes;
 
-			/* Style for elements */
-			const front_style = contentTimelineStyle( props );
-
 			const hasItems = Array.isArray( tm_content ) && tm_content.length;
 
 			const dateFormat = __experimentalGetSettings().formats.date;
@@ -372,9 +389,6 @@ const deprecated = [
 				stack,
 				timelineItem,
 			} = props.attributes;
-
-			/* Style for elements */
-			const front_style = contentTimelineStyle( props );
 
 			const hasItems = Array.isArray( tm_content ) && tm_content.length;
 
@@ -552,9 +566,6 @@ const deprecated = [
 				timelineItem,
 				dateFormat,
 			} = props.attributes;
-
-			/* Style for elements */
-			const front_style = contentTimelineStyle( props );
 
 			const hasItems = Array.isArray( tm_content ) && tm_content.length;
 
@@ -735,7 +746,7 @@ const deprecated = [
 					<div
 						className={ classnames(
 							'uagb-timeline__content-wrap',
-							...ContentTmClasses( props.attributes )
+							...DeprecatedContentTmClasses( props.attributes )
 						) }
 					>
 						<div className="uagb-timeline-wrapper">

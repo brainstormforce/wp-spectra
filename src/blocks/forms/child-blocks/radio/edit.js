@@ -14,17 +14,15 @@ const Render = lazy( () =>
 );
 
 const UAGBFormsRadioEdit = ( props ) => {
-	const [ setState ] = useState( {
-		optionsstate: [
-			{
-				optiontitle: __(
-					'Option Name 1',
-					'ultimate-addons-for-gutenberg'
-				),
-			},
-		],
-	} );
 
+	const [ state, setState ] = useState( { optionsstate: [ // eslint-disable-line no-unused-vars
+		{
+			optiontitle: __(
+				'Option Name 1',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+	], } );
 	useEffect( () => {
 		const { setAttributes } = props;
 
@@ -40,12 +38,16 @@ const UAGBFormsRadioEdit = ( props ) => {
 		document.head.appendChild( $style );
 	}, [] );
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/form-radio.svg`;
+
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } setState={ setState } />
-			</Suspense>
+			{ props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+				<Suspense fallback={ lazyLoader() }>
+					<Settings parentProps={ props } />
+					<Render parentProps={ props } setState={ setState } />
+				</Suspense>
+			) }
 		</>
 	);
 };

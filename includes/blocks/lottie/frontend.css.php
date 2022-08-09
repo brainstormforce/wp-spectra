@@ -21,9 +21,11 @@ $selectors                                   = array(
 	),
 	'.uagb-lottie__left'       => array(
 		'margin-right' => 'auto',
+		'margin-left'  => '0px',
 	),
 	'.uagb-lottie__right'      => array(
-		'margin-left' => 'auto',
+		'margin-left'  => 'auto',
+		'margin-right' => '0px',
 	),
 	'.uagb-lottie__center'     => array(
 		'margin' => '0 auto',

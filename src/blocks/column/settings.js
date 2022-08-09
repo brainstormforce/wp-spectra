@@ -5,7 +5,7 @@
 import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import Background from '@Components/background';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import SpacingControl from '@Components/spacing-control';
 import { __ } from '@wordpress/i18n';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -15,6 +15,8 @@ import InspectorTab, {
 import ResponsiveSlider from '@Components/responsive-slider';
 
 import { InspectorControls } from '@wordpress/block-editor';
+
+import { Notice } from '@wordpress/components';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -55,11 +57,6 @@ const Settings = ( props ) => {
 			backgroundSize,
 			backgroundImageColor,
 			gradientValue,
-			borderStyle,
-			borderWidth,
-			borderRadius,
-			borderColor,
-			borderHoverColor,
 			overlayType,
 			mobilePaddingType,
 			tabletPaddingType,
@@ -73,6 +70,7 @@ const Settings = ( props ) => {
 			tabletMarginType,
 			desktopMarginType,
 		},
+		deviceType,
 		setAttributes,
 	} = props;
 
@@ -263,7 +261,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<Background
 					setAttributes={ setAttributes }
@@ -279,6 +277,9 @@ const Settings = ( props ) => {
 						value: overlayType,
 						label: 'overlayType',
 					} }
+					gradientOverlay={{
+						value: false,
+					}}
 					backgroundSize={ {
 						value: backgroundSize,
 						label: 'backgroundSize',
@@ -322,37 +323,13 @@ const Settings = ( props ) => {
 				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Border
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: borderStyle,
-						label: 'borderStyle',
-						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderWidth={ {
-						value: borderWidth,
-						label: 'borderWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderRadius={ {
-						value: borderRadius,
-						label: 'borderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderColor={ {
-						value: borderColor,
-						label: 'borderColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ {
-						value: borderHoverColor,
-						label: 'borderHoverColor',
-						title: __(
-							'Hover Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+					prefix={'column'}
+					attributes={ props.attributes }
+					deviceType={ deviceType }
 					disableBottomSeparator={ true }
+					disabledBorderTitle= { true }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -363,6 +340,17 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
+						<Notice status="warning" isDismissible={false}>
+							{
+								__( 'This block has been deprecated. We recommend using the new', 'ultimate-addons-for-gutenberg' )
+							}
+							{' '}
+							<strong>{__( 'Container', 'ultimate-addons-for-gutenberg' )}</strong>
+							{' '}
+							{
+								__( 'block instead for more flexibility, and better code markup.', 'ultimate-addons-for-gutenberg' )
+							}
+						</Notice>
 						{ layoutSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>

@@ -1,10 +1,11 @@
 /**
  * Returns Dynamic Generated CSS
  */
-
+import generateBorderCSS from '@Controls/generateBorderCSS';
 import inlineStyles from './inline-styles';
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+
 
 function styling( props ) {
 	const {
@@ -22,7 +23,6 @@ function styling( props ) {
 		gradientType,
 		gradientAngle,
 		gradientPosition,
-		borderRadius,
 		topPaddingTablet,
 		bottomPaddingTablet,
 		leftPaddingTablet,
@@ -59,13 +59,10 @@ function styling( props ) {
 		boxShadowSpread,
 		boxShadowPosition,
 		gradientValue,
-		borderStyle,
-		borderWidth,
-		borderColor,
-		borderHoverColor,
-		backgroundVideoOpacity
+		overallBorderHColor,
+		backgroundVideoOpacity,
+		backgroundOpacity
 	} = props.attributes;
-
 	let inner_width = '100%';
 
 	if ( typeof contentWidth !== 'undefined' ) {
@@ -85,8 +82,14 @@ function styling( props ) {
 	}
 	let videoOpacity = 0.5;
 	if ( typeof backgroundVideoOpacity !== 'undefined' ) {
-		videoOpacity = ( 1 < backgroundVideoOpacity ) ? ( ( 100 - backgroundVideoOpacity ) / 100 ) : ( ( 1 - backgroundVideoOpacity ) ); 
+		videoOpacity = ( 1 < backgroundVideoOpacity ) ? ( ( 100 - backgroundVideoOpacity ) / 100 ) : ( ( 1 - backgroundVideoOpacity ) );
 	}
+
+	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' )
+	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' )
+	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' )
+
+
 	const selectors = {
 		'.uagb-section__wrap': inlineStyles( props ),
 		' .uagb-section__video-wrap': {
@@ -110,74 +113,64 @@ function styling( props ) {
 				boxShadowPositionCSS,
 		},
 		' > .uagb-section__overlay:hover': {
-			'border-color': borderHoverColor,
+			'border-color': overallBorderHColor,
 		},
 	};
 
-	selectors[ ' > .uagb-section__overlay' ] = {};
-
+	let backgroundTypeCSS = {}
 	if ( 'video' === backgroundType ) {
-		selectors[ ' > .uagb-section__overlay' ] = {
+		backgroundTypeCSS = {
 			'opacity' : 1,
 			'background-color': backgroundVideoColor,
 		};
 	} else if ( 'image' === backgroundType ) {
 		if ( 'color' === overlayType ) {
-			selectors[ ' > .uagb-section__overlay' ] = {
+			backgroundTypeCSS = {
 				'background-color': backgroundImageColor,
+				'opacity' : backgroundOpacity ? backgroundOpacity / 100 : 0
 			};
 		} else {
-			selectors[ ' > .uagb-section__overlay' ][ 'background-color' ] =
+			backgroundTypeCSS[ 'background-color' ] =
 				'transparent';
-			
+
 			if ( 'linear' === gradientOverlayType ) {
-				selectors[ ' > .uagb-section__overlay' ][
+				backgroundTypeCSS[
 					'background-image'
 				] = `linear-gradient(${ gradientOverlayAngle }deg, ${ gradientOverlayColor1 } ${ gradientOverlayLocation1 }%, ${ gradientOverlayColor2 } ${ gradientOverlayLocation2 }%)`;
 			} else {
-				selectors[ ' > .uagb-section__overlay' ][
+				backgroundTypeCSS[
 					'background-image'
 				] = `radial-gradient( at ${ gradientOverlayPosition }, ${ gradientOverlayColor1 } ${ gradientOverlayLocation1 }%, ${ gradientOverlayColor2 } ${ gradientOverlayLocation2 }%)`;
 			}
 		}
 	} else if ( 'color' === backgroundType ) {
-		selectors[ ' > .uagb-section__overlay' ] = {
+		backgroundTypeCSS = {
 			'background-color': backgroundColor,
 		};
 	} else if ( 'gradient' === backgroundType ) {
-		selectors[ ' > .uagb-section__overlay' ][ 'background-color' ] =
+		backgroundTypeCSS[ 'background-color' ] =
 			'transparent';
-			
+
 		if ( gradientValue ) {
-			selectors[ ' > .uagb-section__overlay' ][
+			backgroundTypeCSS[
 				'background-image'
 			] = gradientValue;
 		} else if ( 'linear' === gradientType ) {
-			selectors[ ' > .uagb-section__overlay' ][
+			backgroundTypeCSS[
 				'background-image'
 			] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
 		} else {
-			selectors[ ' > .uagb-section__overlay' ][
+			backgroundTypeCSS[
 				'background-image'
 			] = `radial-gradient( at ${ gradientPosition }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
 		}
 	}
 
-	selectors[ ' > .uagb-section__overlay' ][
-		'border-radius'
-	] = generateCSSUnit( borderRadius, 'px' );
+	selectors[ ' > .uagb-section__overlay' ] = {
+		...overallBorderCSS,
+		...backgroundTypeCSS
+	};
 
-	if ( borderStyle !== 'none' ) {
-		selectors[ ' > .uagb-section__overlay' ][
-			'border-style'
-		] = borderStyle;
-		selectors[ ' > .uagb-section__overlay' ][
-			'border-width'
-		] = generateCSSUnit( borderWidth, 'px' );
-		selectors[ ' > .uagb-section__overlay' ][
-			'border-color'
-		] = borderColor;
-	}
 	tabletSelectors = {
 		'.uagb-section__wrap': {
 			'padding-top': generateCSSUnit(
@@ -197,6 +190,7 @@ function styling( props ) {
 				tabletPaddingType
 			),
 		},
+		' > .uagb-section__overlay': overallBorderCSSTablet
 	};
 
 	mobileSelectors = {
@@ -218,6 +212,7 @@ function styling( props ) {
 				mobilePaddingType
 			),
 		},
+		' > .uagb-section__overlay': overallBorderCSSMobile
 	};
 	tabletSelectors[ '.uagb-section__wrap' ][ 'margin-top' ] = generateCSSUnit(
 		topMarginTablet,

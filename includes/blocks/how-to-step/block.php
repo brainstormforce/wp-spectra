@@ -2,7 +2,7 @@
 /**
  * Block Information & Attributes File.
  *
- * @since x.x.x
+ * @since 2.0.0-beta.3
  *
  * @package uagb
  */
@@ -14,4 +14,5 @@ $block_data = array(
 	'description' => __( 'This block helps you add Step in How to Block.', 'ultimate-addons-for-gutenberg' ),
 	'default'     => true,
 	'js_assets'   => array(),
+	'deprecated'  => false,
 );

@@ -123,6 +123,10 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'src' => UAGB_Scripts_Utils::get_js_url( 'post' ),
 						'dep' => $post_js_dep,
 					),
+					'uagb-testimonial-js'    => array(
+						'src' => UAGB_Scripts_Utils::get_js_url( 'testimonial' ),
+						'dep' => array(),
+					),
 					'uagb-faq-js'            => array(
 						'src'        => UAGB_Scripts_Utils::get_js_url( 'faq' ),
 						'dep'        => array(),
@@ -146,9 +150,14 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'dep'        => array( 'uagb-bodymovin-js' ),
 						'skipEditor' => true,
 					),
+					'uagb-container-js'      => array(
+						'src'        => UAGB_Scripts_Utils::get_js_url( 'container' ),
+						'skipEditor' => true,
+						'dep'        => array(),
+					),
 					'uagb-image-gallery-js'  => array(
-						'src'                => UAGB_Scripts_Utils::get_js_url( 'image-gallery' ),
-						'dep'                => array(),
+						'src' => UAGB_Scripts_Utils::get_js_url( 'image-gallery' ),
+						'dep' => array(),
 					),
 				);
 			}
@@ -288,6 +297,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb/wp-search'              => array(
 						'name' => 'wp-search',
+					),
+					'uagb/image'                  => array(
+						'name' => 'image',
 					),
 					'uagb/image-gallery'          => array(
 						'name' => 'image-gallery',

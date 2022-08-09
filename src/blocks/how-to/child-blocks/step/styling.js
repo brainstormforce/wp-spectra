@@ -20,7 +20,7 @@ function styling( props ) {
 		titleFontSizeTablet,
 		titleFontFamily,
 		titleFontWeight,
-		
+
 		descriptionFontSize,
 		descriptionFontSizeType,
 		descriptionFontSizeMobile,
@@ -40,6 +40,30 @@ function styling( props ) {
 		descriptionFontStyle,
 		descriptionTransform,
 		descriptionDecoration,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		descriptionLetterSpacing,
+		descriptionLetterSpacingTablet,
+		descriptionLetterSpacingMobile,
+		descriptionLetterSpacingType,
+		titleLineHeight,
+		titleLineHeightTablet,
+		titleLineHeightMobile,
+		titleLineHeightType,
+		descriptionLineHeight,
+		descriptionLineHeightType,
+		descriptionLineHeightTablet,
+		descriptionLineHeightMobile,
+		urlLineHeight,
+		urlLineHeightTablet,
+		urlLineHeightMobile,
+		urlLineHeightType,
+		urlLetterSpacing,
+		urlLetterSpacingTablet,
+		urlLetterSpacingMobile,
+		urlLetterSpacingType,
 	} = props.attributes;
 
 	let tabletSelectors = {};
@@ -57,6 +81,11 @@ function styling( props ) {
 				urlFontSize,
 				urlFontSizeType
 			),
+			'line-height': generateCSSUnit(
+				urlLineHeight,
+				urlLineHeightType
+			),
+			'letter-spacing': generateCSSUnit( urlLetterSpacing, urlLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-how-to-step-name': {
 			'color': titleColor,
@@ -69,6 +98,11 @@ function styling( props ) {
 				titleFontSize,
 				titleFontSizeType
 			),
+			'line-height': generateCSSUnit(
+				titleLineHeight,
+				titleLineHeightType
+			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-how-to-step-description': {
 			'color': descriptionColor,
@@ -81,6 +115,11 @@ function styling( props ) {
 				descriptionFontSize,
 				descriptionFontSizeType
 			),
+			'line-height': generateCSSUnit(
+				descriptionLineHeight,
+				descriptionLineHeightType
+			),
+			'letter-spacing': generateCSSUnit( descriptionLetterSpacing, descriptionLetterSpacingType ),
 		},
 	};
 
@@ -90,18 +129,33 @@ function styling( props ) {
 				urlFontSizeMobile,
 				urlFontSizeType
 			),
+			'line-height': generateCSSUnit(
+				urlLineHeightMobile,
+				urlLineHeightType
+			),
+			'letter-spacing': generateCSSUnit( urlLetterSpacingMobile, urlLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-how-to-step-name': {
 			'font-size': generateCSSUnit(
 				titleFontSizeMobile,
 				titleFontSizeType
 			),
+			'line-height': generateCSSUnit(
+				titleLineHeightMobile,
+				titleLineHeightType
+			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-how-to-step-description': {
 			'font-size': generateCSSUnit(
 				descriptionFontSizeMobile,
 				descriptionFontSizeType
 			),
+			'line-height': generateCSSUnit(
+				descriptionLineHeightMobile,
+				descriptionLineHeightType
+			),
+			'letter-spacing': generateCSSUnit( descriptionLetterSpacingMobile, descriptionLetterSpacingType ),
 		},
 	};
 
@@ -111,18 +165,33 @@ function styling( props ) {
 				urlFontSizeTablet,
 				urlFontSizeType
 			),
+			'line-height': generateCSSUnit(
+				urlLineHeightTablet,
+				urlLineHeightType
+			),
+			'letter-spacing': generateCSSUnit( urlLetterSpacingTablet, urlLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-how-to-step-name': {
 			'font-size': generateCSSUnit(
 				titleFontSizeTablet,
 				titleFontSizeType
 			),
+			'line-height': generateCSSUnit(
+				titleLineHeightTablet,
+				titleLineHeightType
+			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-how-to-step-description': {
 			'font-size': generateCSSUnit(
 				descriptionFontSizeTablet,
 				descriptionFontSizeType
 			),
+			'line-height': generateCSSUnit(
+				descriptionLineHeightTablet,
+				descriptionLineHeightType
+			),
+			'letter-spacing': generateCSSUnit( descriptionLetterSpacingTablet, descriptionLetterSpacingType ),
 		},
 	};
 

@@ -2,6 +2,10 @@ const attributes = {  // eslint-disable-line no-unused-vars
 	block_id         : {
 		type : 'string',
 	},
+	lottieSource: {
+		type: 'string',
+		default: 'library',
+	},
 	align            : {
 		type    : 'string',
 		default : 'center',
@@ -91,6 +95,6 @@ const attributes = {  // eslint-disable-line no-unused-vars
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
 }
 export default attributes;

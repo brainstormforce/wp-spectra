@@ -7,7 +7,7 @@ import UAGIconPicker from '@Components/icon-picker';
 import { __ } from '@wordpress/i18n';
 import React from 'react';
 import { InspectorControls } from '@wordpress/block-editor';
-import { SelectControl } from '@wordpress/components';
+import UAGSelectControl from '@Components/select-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -93,9 +93,15 @@ const Settings = ( props ) => {
 	const generalSettings = () => {
 		return (
 			<UAGAdvancedPanelBody initialOpen={ true }>
-				<SelectControl
-					label={ __( 'Type' ) }
-					value={ type }
+				<UAGSelectControl
+					label={ __(
+						'Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: type,
+					} }
+					onChange={ onChangeType }
 					options={ [
 						{
 							value: 'facebook',
@@ -235,7 +241,6 @@ const Settings = ( props ) => {
 							),
 						},
 					] }
-					onChange={ onChangeType }
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -255,18 +260,10 @@ const Settings = ( props ) => {
 								'Icon',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'Icon',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'image',
 							label: __(
-								'Image',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
 								'Image',
 								'ultimate-addons-for-gutenberg'
 							),
@@ -313,9 +310,11 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						colorValue={ icon_bg_color ? icon_bg_color : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { icon_bg_color: value } )
-						}
+						data={ {
+							value: icon_bg_color,
+							label: 'icon_bg_color',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			);
@@ -329,9 +328,11 @@ const Settings = ( props ) => {
 						colorValue={
 							icon_bg_hover_color ? icon_bg_hover_color : ''
 						}
-						onColorChange={ ( value ) =>
-							setAttributes( { icon_bg_hover_color: value } )
-						}
+						data={ {
+							value: icon_bg_hover_color,
+							label: 'icon_bg_hover_color',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			);
@@ -341,9 +342,11 @@ const Settings = ( props ) => {
 					<AdvancedPopColorControl
 						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ icon_color ? icon_color : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { icon_color: value } )
-						}
+						data={ {
+							value: icon_color,
+							label: 'icon_color',
+						} }
+						setAttributes={ setAttributes }
 					/>
 					<AdvancedPopColorControl
 						label={ __(
@@ -351,9 +354,11 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						colorValue={ icon_bg_color ? icon_bg_color : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { icon_bg_color: value } )
-						}
+						data={ {
+							value: icon_bg_color,
+							label: 'icon_bg_color',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			);
@@ -362,9 +367,11 @@ const Settings = ( props ) => {
 					<AdvancedPopColorControl
 						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ icon_hover_color ? icon_hover_color : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { icon_hover_color: value } )
-						}
+						data={ {
+							value: icon_hover_color,
+							label: 'icon_hover_color',
+						} }
+						setAttributes={ setAttributes }
 					/>
 					<AdvancedPopColorControl
 						label={ __(
@@ -374,9 +381,11 @@ const Settings = ( props ) => {
 						colorValue={
 							icon_bg_hover_color ? icon_bg_hover_color : ''
 						}
-						onColorChange={ ( value ) =>
-							setAttributes( { icon_bg_hover_color: value } )
-						}
+						data={ {
+							value: icon_bg_hover_color,
+							label: 'icon_bg_hover_color',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			);
@@ -384,6 +393,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
 			>
 				<UAGTabsControl
 					tabs={ [

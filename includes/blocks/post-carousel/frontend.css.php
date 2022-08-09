@@ -10,13 +10,15 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_post_gfont( $attr );
 
+$arrow_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['arrowSize'], 'arrowSize', $attr['blockName'] );
+
 $selectors = UAGB_Block_Helper::get_post_selectors( $attr );
 
 $m_selectors = UAGB_Block_Helper::get_post_mobile_selectors( $attr );
 
 $t_selectors = UAGB_Block_Helper::get_post_tablet_selectors( $attr );
 
-$arrow_size                 = UAGB_Helper::get_css_value( $attr['arrowSize'], 'px' );
+$arrow_size                 = UAGB_Helper::get_css_value( $arrow_size_fallback, 'px' );
 $selectors[' .slick-arrow'] = array(
 	'border-color' => $attr['arrowColor'],
 );
@@ -38,6 +40,30 @@ $selectors[' .slick-arrow'] = array(
 	'border-color'  => $attr['arrowColor'],
 	'border-width'  => UAGB_Helper::get_css_value( $attr['arrowBorderSize'], 'px' ),
 	'border-radius' => UAGB_Helper::get_css_value( $attr['arrowBorderRadius'], 'px' ),
+);
+
+$selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-prev'] = array(
+	'left' => UAGB_Helper::get_css_value( $attr['arrowDistance'], 'px' ),
+);
+
+$selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-next'] = array(
+	'right' => UAGB_Helper::get_css_value( $attr['arrowDistance'], 'px' ),
+);
+
+$t_selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-prev'] = array(
+	'left' => UAGB_Helper::get_css_value( $attr['arrowDistanceTablet'], 'px' ),
+);
+
+$t_selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-next'] = array(
+	'right' => UAGB_Helper::get_css_value( $attr['arrowDistanceTablet'], 'px' ),
+);
+
+$m_selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-prev'] = array(
+	'left' => UAGB_Helper::get_css_value( $attr['arrowDistanceMobile'], 'px' ),
+);
+
+$m_selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-next'] = array(
+	'right' => UAGB_Helper::get_css_value( $attr['arrowDistanceMobile'], 'px' ),
 );
 
 $selectors['.uagb-post-grid ul.slick-dots li.slick-active button:before'] = array(

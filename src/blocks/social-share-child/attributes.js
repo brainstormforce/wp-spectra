@@ -19,7 +19,7 @@ const attributes = {
 	},
 	icon: {
 		type: 'string',
-		default: 'fab fa-facebook',
+		default: 'facebook',
 	},
 	image: {
 		type: 'object',
@@ -27,7 +27,7 @@ const attributes = {
 	},
 	icon_color: {
 		type: 'string',
-		default: '#3a3a3a',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'icon-color'
 		},

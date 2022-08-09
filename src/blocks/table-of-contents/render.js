@@ -1,11 +1,12 @@
 import classnames from 'classnames';
 import TableOfContents from './toc';
-import React, { useLayoutEffect, useEffect } from 'react';
+import React, { useLayoutEffect, useEffect, useRef } from 'react';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import { RichText } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -16,17 +17,14 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	useEffect( () => {
-		if ( UAGBTableOfContents ) {
-			UAGBTableOfContents.init();
-		}
-	}, [] );
-
 	props = props.parentProps;
+	const blockName = props.name.replace( 'uagb/', '' );
 	const deviceType = useDeviceType();
 	const { attributes, setAttributes, className, headers } = props;
 
 	const {
+		classMigrate,
+		block_id,
 		align,
 		makeCollapsible,
 		initialCollapse,
@@ -35,7 +33,32 @@ const Render = ( props ) => {
 		mappingHeaders,
 		headingTitle,
 		isPreview,
+		separatorStyle,
 	} = attributes;
+
+	useEffect( () => {
+		if ( UAGBTableOfContents ) {
+			const baseSelector = classMigrate ? '.uagb-block-' : '#uagb-toc-';
+			const selector      = baseSelector + block_id;
+			UAGBTableOfContents.init( selector );
+		}
+	}, [] );
+
+	// Editor Useable Collaps Begins Here.
+	const tocRoot = useRef();
+
+	useEffect( () => {
+		if ( (
+			tocRoot.current && ! makeCollapsible
+		) && tocRoot.current.classList.contains( 'uagb-toc__collapse' ) ) {
+			tocRoot.current.classList.remove( 'uagb-toc__collapse' );
+			UAGBTableOfContents._slideDown(
+				tocRoot.current.querySelector( '.uagb-toc__list-wrap' ),
+				500
+			);
+		}
+	}, [ makeCollapsible ] );
+	// Editor Useable Collaps Ends Here.
 
 	let iconHtml = '';
 
@@ -50,11 +73,12 @@ const Render = ( props ) => {
 				className={ classnames(
 					className,
 					`uagb-toc__align-${ align }`,
-					`uagb-toc__columns-${ tColumnsDesktop }`,
-					initialCollapse ? 'uagb-toc__collapse' : '',
+					`uagb-toc__columns-${ getFallbackNumber( tColumnsDesktop, 'tColumnsDesktop', blockName ) }`,
+					( makeCollapsible && initialCollapse ) ? 'uagb-toc__collapse' : '',
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ props.clientId.substr( 0, 8 ) }`
 				) }
+				ref={ tocRoot }
 			>
 				<div className="uagb-toc__wrap">
 					<div className="uagb-toc__title">
@@ -72,6 +96,10 @@ const Render = ( props ) => {
 						/>
 						{ iconHtml }
 						</div>
+						{ separatorStyle !== 'none' && (
+								<div className='uagb-toc__separator'></div>
+							)
+						}
 					<TableOfContents
 						mappingHeaders={ mappingHeaders }
 						headers={ headers }

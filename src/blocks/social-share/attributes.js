@@ -10,7 +10,7 @@ for ( let i = 1; i <= itemCount; i++ ) {
 	socials.push( {
 		type: 'facebook',
 		image_icon: 'icon',
-		icon: 'fab fa-facebook',
+		icon: 'facebook',
 		image: '',
 		icon_color: '#3a3a3a',
 		icon_hover_color: '',
@@ -38,7 +38,21 @@ const attributes = {
 		type: 'string',
 		default: 'center',
 		UAGCopyPaste: {
-			styleType: 'column-gradient-value'
+			styleType: 'overall-alignment'
+		}
+	},
+	alignTablet: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment'
+		}
+	},
+	alignMobile: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment'
 		}
 	},
 	social_count: {
@@ -53,7 +67,19 @@ const attributes = {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'column-gradient-value'
+			styleType: 'icon-gap'
+		}
+	},
+	gapTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-gap-tablet'
+		}
+	},
+	gapMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-gap-mobile'
 		}
 	},
 	size: {
@@ -98,12 +124,14 @@ const attributes = {
 	},
 	bgSizeMobile: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'icon-bg-size-mobile'
 		}
 	},
 	bgSizeTablet: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'icon-bg-size-tablet'
 		}
@@ -115,9 +143,24 @@ const attributes = {
 		},
 		default: 0,
 	},
+	borderRadiusTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-border-radius-tablet'
+		},
+	},
+	borderRadiusMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-border-radius-mobile'
+		},
+	},
 	social_layout: {
 		type: 'string',
 		default: 'horizontal',
+		UAGCopyPaste: {
+			styleType: 'social-layout'
+		},
 	},
 	stack: {
 		type: 'string',
@@ -126,7 +169,35 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	iconColor: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'icon-color'
+		},
+	},
+	iconHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-hover-color'
+		},
+		default: '',
+	},
+	iconBgColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-color'
+		},
+		default: '',
+	},
+	iconBgHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-hover-color'
+		},
+		default: '',
+	},
 };
 
 export default attributes;

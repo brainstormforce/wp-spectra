@@ -108,7 +108,7 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 		/**
 		 * Update How-to old user option by checking condition.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 * @return void
 		 */
 		public function update_uag_old_user_less_than_2_option() {

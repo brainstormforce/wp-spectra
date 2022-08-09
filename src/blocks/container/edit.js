@@ -6,6 +6,7 @@ import React, { lazy, Suspense, useEffect, useLayoutEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import { useDeviceType } from '@Controls/getPreviewType';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
 const Settings = lazy( () =>
 	import(
@@ -22,7 +23,7 @@ const Render = lazy( () =>
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 
-import { withSelect, useDispatch, select, dispatch } from '@wordpress/data';
+import { withSelect, useDispatch, select } from '@wordpress/data';
 
 import { compose } from '@wordpress/compose';
 
@@ -72,7 +73,7 @@ const UAGBContainer = ( props ) => {
 			element = document.getElementById( 'block-' + props.clientId )
 		}
 		// Add Close Button for Variation Selector.
-		const variationPicker = element.querySelector( '.uagb-container-variation-picker .block-editor-block-variation-picker' );
+		const variationPicker = element?.querySelector( '.uagb-container-variation-picker .block-editor-block-variation-picker' );
 		const closeButton = document.createElement( 'button' );
 		closeButton.onclick = function() {
 			if ( props.defaultVariation.attributes ) {
@@ -98,7 +99,10 @@ const UAGBContainer = ( props ) => {
 				element.classList.add( 'uagb-container-has-children' );
 			}
 			if ( props.attributes.isBlockRootParent || isBlockRootParent ) {
-				element.dataset.align = props.attributes.contentWidth.split( 'align' )[1];
+				element.classList.remove( 'alignfull' );
+				element.classList.remove( 'alignwide' );
+				element.classList.remove( 'default' );
+				element.classList.add( props.attributes.contentWidth );
 			}
 		}
 
@@ -107,6 +111,40 @@ const UAGBContainer = ( props ) => {
 		if ( descendants.length !== props.attributes.blockDescendants.length ) {
 			props.setAttributes( { blockDescendants: descendants } );
 		}
+		const {
+			borderStyle,
+			borderWidth,
+			borderColor,
+			borderHColor,
+			borderRadius
+		} = props.attributes;
+
+		// border
+		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'container', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHColor',
+				value: borderHColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes )
+		}
+
+		if( 0 !== select( 'core/block-editor' ).getBlockParents(  props.clientId ).length ){ // if there is no parent for container when child container moved outside root then do not show variations.
+			props.setAttributes( { variationSelected: true } );
+		}
+
 	}, [] );
 
 	useEffect( () => {
@@ -132,9 +170,23 @@ const UAGBContainer = ( props ) => {
 			if ( hasChildren ) {
 				element.classList.add( 'uagb-container-has-children' );
 			}
+
 			if ( props.attributes.isBlockRootParent ) {
-				element.dataset.align = props.attributes.contentWidth.split( 'align' )[1];
+
+				element.classList.remove( 'alignfull' );
+				element.classList.remove( 'alignwide' );
+				element.classList.remove( 'default' );
+				element.classList.add( props.attributes.contentWidth );
 			}
+
+			setTimeout( () => {
+				if ( props.attributes.isBlockRootParent ) {
+					element.classList.remove( 'alignfull' );
+					element.classList.remove( 'alignwide' );
+					element.classList.remove( 'default' );
+					element.classList.add( props.attributes.contentWidth );
+				}
+			} );
 		}
 
 		const blockStyling = styling( props );
@@ -150,20 +202,6 @@ const UAGBContainer = ( props ) => {
 	}, [ props ] );
 
 	useEffect( () => {
-		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
-		let element;
-		if( iframeEl ){
-			element = iframeEl.contentDocument.getElementById( 'block-' + props.clientId )
-		} else {
-			element = document.getElementById( 'block-' + props.clientId )
-		}
-
-		if ( element ) {
-			element.classList.remove( `uagb-editor-preview-mode-desktop` );
-			element.classList.remove( `uagb-editor-preview-mode-tablet` );
-			element.classList.remove( `uagb-editor-preview-mode-mobile` );
-			element.classList.add( `uagb-editor-preview-mode-${deviceType.toLowerCase() }` );
-		}
 
 		const blockStyling = styling( props );
 
@@ -196,33 +234,6 @@ const UAGBContainer = ( props ) => {
 				)
 		);
 	};
-
-	useEffect( ()=>{
-
-		const {
-			blockDescendants
-		} = props.attributes;
-
-		let currentDirection = 'row';
-
-		if ( props.attributes[ 'direction' + deviceType ].split( '-' )[0] ) {
-
-			currentDirection = props.attributes[ 'direction' + deviceType ].split( '-' )[0];
-		}
-		const childColumnsWidth = ( 100 / blockDescendants.length );
-
-		if ( 'row' === currentDirection ) {
-			blockDescendants.map( ( child ) => {
-				if ( ! child.attributes.widthSetByUser ) {
-					dispatch( 'core/block-editor' ).updateBlockAttributes( child.clientId, {
-						[`width${deviceType}`] : childColumnsWidth,
-					} );
-				}
-				return child;
-			} );
-		}
-
-	}, [props.attributes.blockDescendants] );
 
 	const { variations } = props;
 

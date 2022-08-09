@@ -19,7 +19,16 @@ const initialState = {
     enableMasonryExtension : '',
 	enableResponsiveConditions : '',
 	contentWidth: '',
+	siteKeyV2: '',
+	siteKeyV3: '',
+	secretKeyV2: '',
+	secretKeyV3: '',
 	settingsSavedNotification: false,
+	enableComingSoonMode: 'disabled',
+	comingSoonPage: '',
+	blocksEditorSpacing: '',
+    enableFontAwesome5: ( 'yes' === uag_react.global_data.uagb_old_user_less_than_2 ) ? 'enabled' : 'disabled',
+    enableAutoBlockRecovery: ( 'yes' === uag_react.global_data.uagb_old_user_less_than_2 ) ? 'enabled' : 'disabled',
 };
 
 const globalDataStore = createStore(

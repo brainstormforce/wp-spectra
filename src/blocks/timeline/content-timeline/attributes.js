@@ -60,11 +60,28 @@ const attributes = {
 		type: 'string',
 		default: 'F j, Y',
 	},
+	blockName: {
+		type: 'string',
+		default : 'content-timeline',
+	},
 	align: {
 		type: 'string',
-		default: 'center',
 		UAGCopyPaste: {
 			styleType: 'overall-alignment'
+		},
+	},
+	alignTablet: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		},
+	},
+	alignMobile: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
 		},
 	},
 	headingColor: {
@@ -132,12 +149,60 @@ const attributes = {
 		},
 		default: 10,
 	},
+	horizontalSpaceTablet         : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'row-gap-tablet'
+		},
+	},
+	horizontalSpaceMobile         : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'row-gap-mobile'
+		},
+	},
+	horizontalSpaceUnit      : {
+		type    : 'string',
+		default : 'px',
+	},
+	horizontalSpaceUnitTablet : {
+		type    : 'string',
+		default : 'px',
+	},
+	horizontalSpaceUnitMobile : {
+		type    : 'string',
+		default : 'px',
+	},
 	verticalSpace: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'column-gap'
 		},
 		default: 15,
+	},
+	verticalSpaceTablet      : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'column-gap-tablet'
+		},
+	},
+	verticalSpaceMobile     : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'column-gap-mobile'
+		},
+	},
+	verticalSpaceUnit      : {
+		type    : 'string',
+		default : 'px',
+	},
+	verticalSpaceUnitTablet : {
+		type    : 'string',
+		default : 'px',
+	},
+	verticalSpaceUnitMobile : {
+		type    : 'string',
+		default : 'px',
 	},
 	headFontSize: {
 		type: 'number',
@@ -227,12 +292,24 @@ const attributes = {
 		},
 		default: false,
 	},
-	timelinAlignment: {
-		type: 'string',
+	timelinAlignment  : {
+		type    : 'string',
+		default : 'center',
 		UAGCopyPaste: {
 			styleType: 'overall-alignment'
 		},
-		default: 'center',
+	},
+	timelinAlignmentTablet  : {
+		type    : 'string',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		},
+	},
+	timelinAlignmentMobile  : {
+		type    : 'string',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
+		},
 	},
 	arrowlinAlignment: {
 		type: 'string',
@@ -332,6 +409,18 @@ const attributes = {
 	headSpace: {
 		type: 'number',
 		default: 5,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
+	headSpaceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
+	headSpaceMobile: {
+		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
 		},
@@ -473,6 +562,18 @@ const attributes = {
 		},
 		default: 35,
 	},
+	connectorBgsizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'connector-bg-size-tablet'
+		}
+	},
+	connectorBgsizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'connector-bg-size-mobile'
+		}
+	},
 	subHeadSpace: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -486,6 +587,18 @@ const attributes = {
 			styleType: 'prefix-bottom-space'
 		},
 		default: 5,
+	},
+	dateBottomspaceTablet         : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'date-bottom-space'
+		},
+	},
+	dateBottomspaceMobile         : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'date-bottom-space'
+		},
 	},
 	block_id: {
 		type: 'string',
@@ -506,6 +619,18 @@ const attributes = {
 			styleType: 'overall-border-radius'
 		},
 	},
+	borderRadiusTablet            : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'overall-border-radius'
+		},
+	},
+	borderRadiusMobile            : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'overall-border-radius'
+		},
+	},
 	bgPadding: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -520,9 +645,21 @@ const attributes = {
 		},
 		default: 12,
 	},
+	iconSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size-tablet'
+		},
+	},
+	iconSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size-mobile'
+		},
+	},
 	icon: {
 		type: 'string',
-		default: 'fab fa fa-calendar-alt',
+		default: 'calendar-days',
 	},
 	t_date: {
 		type: 'array',
@@ -733,7 +870,82 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	headLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'head-letter-spacing'
+		}
+	},
+	headLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'head-letter-spacing-tablet'
+		}
+	},
+	headLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'head-letter-spacing-mobile'
+		}
+	},
+	headLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'head-letter-spacing-type'
+		}
+	},
+	subHeadLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'subHead-letter-spacing'
+		}
+	},
+	subHeadLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'subHead-letter-spacing-tablet'
+		}
+	},
+	subHeadLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'subHead-letter-spacing-mobile'
+		}
+	},
+	subHeadLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'subHead-letter-spacing-type'
+		}
+	},
+	dateLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'date-letter-spacing'
+		}
+	},
+	dateLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'date-letter-spacing-tablet'
+		}
+	},
+	dateLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'date-letter-spacing-mobile'
+		}
+	},
+	dateLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'date-letter-spacing-type'
+		}
+	},
 };
 
 export default attributes;

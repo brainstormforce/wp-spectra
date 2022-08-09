@@ -9,13 +9,17 @@
  * Webpack is compiling as the input file.
  */
 
- import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
+import domReady from '@wordpress/dom-ready';
+import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 
 // Delete the local storage on every refresh.
 const uagLocalStorage = getUAGEditorStateLocalStorage();
 if ( uagLocalStorage ) {
-	uagLocalStorage.removeItem( 'uagLastOpenedState' );
+	uagLocalStorage.removeItem( 'uagSettingState' );
 }
+
+import blocksEditorSpacing from './blocks/extensions/blocks-editor-spacing';
+blocksEditorSpacing();
 
 __webpack_public_path__ = uagb_blocks_info.uagb_url + 'dist/';
 
@@ -72,17 +76,32 @@ import './blocks/section/block.js';
 import './blocks/buttons/block.js';
 import './blocks/buttons-child/block.js';
 import './blocks/wp-search/block.js';
+import './blocks/image/block.js';
 import './blocks/extensions/block.js';
 import './blocks/image-gallery/block.js';
 
-
+// Responsive Device Icons on Editor
+import './components/responsive-icons/index.js';
 
 wp.UAGBSvgIcons = Object.keys( uagb_blocks_info.uagb_svg_icons );
 
 import UAGB_Block_Icons from '@Controls/block-icons';
+import autoBlockRecovery from '@Controls/autoBlockRecovery';
 
 import { updateCategory } from '@wordpress/blocks';
 
 updateCategory( 'uagb', {
 	icon: UAGB_Block_Icons.logo,
 } );
+
+export const initAutoBlockRecovery = () => {
+	if ( window._wpLoadBlockEditor ) {
+		window._wpLoadBlockEditor.then( () => {
+			autoBlockRecovery();
+		} );
+	}
+};
+
+if ( 'disabled' !== uagb_blocks_info.auto_block_recovery ) {
+	domReady( initAutoBlockRecovery );
+}

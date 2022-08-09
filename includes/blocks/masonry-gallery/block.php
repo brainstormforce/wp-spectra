@@ -16,4 +16,5 @@ $block_data = array(
 	'extension'   => true,
 	'js_assets'   => array(),
 	'attributes'  => array(),
+	'deprecated'  => false,
 );

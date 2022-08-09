@@ -3,9 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-function classNames( ...classes ) {
-return classes.filter( Boolean ).join( ' ' )
-}
+const classNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
 
 const FilterTabs = () => {
 
@@ -19,6 +17,7 @@ const FilterTabs = () => {
 
     const tabs = [
         { name: 'All', slug: 'all' },
+		{ name: 'Core', slug: 'core' },
         { name: 'Creative', slug: 'creative' },
         { name: 'Content', slug: 'content' },
         { name: 'Post', slug: 'post' },
@@ -79,6 +78,7 @@ const FilterTabs = () => {
             // Update Extensions Statuses.
             dispatch( {type: 'UPDATE_ENABLE_MASONRY_EXTENSION', payload: 'enabled' } );
             dispatch( {type: 'UPDATE_ENABLE_DISPLAY_CONDITIONS', payload: 'enabled' } );
+			dispatch( {type: 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS', payload: 'enabled' } );
         }
 
 		const formData = new window.FormData();
@@ -95,6 +95,7 @@ const FilterTabs = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
+			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
 		} );
 	};
 
@@ -116,6 +117,7 @@ const FilterTabs = () => {
             // Update Extensions Statuses.
             dispatch( {type: 'UPDATE_ENABLE_MASONRY_EXTENSION', payload: 'disabled' } );
             dispatch( {type: 'UPDATE_ENABLE_DISPLAY_CONDITIONS', payload: 'disabled' } );
+			dispatch( {type: 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS', payload: 'disabled' } );
         }
 
 		const formData = new window.FormData();
@@ -132,11 +134,12 @@ const FilterTabs = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
+			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
 		} );
 	};
 
     return (
-        <div className="max-w-3xl mx-auto p-[1.3rem] lg:max-w-[77rem] bg-white mt-[2.43rem] mb-[2.43rem] rounded-[0.2rem] shadow">
+        <div className="max-w-3xl mx-auto lg:max-w-[77rem] mb-6">
             <div className="sm:hidden">
             <label htmlFor="tabs" className="sr-only">
                 Select a tab
@@ -152,7 +155,7 @@ const FilterTabs = () => {
                 ) )}
             </select>
             </div>
-            <div className="hidden justify-between sm:flex">
+            <div className="hidden justify-between items-center sm:flex">
                 <nav className="flex space-x-4" aria-label="Tabs">
                     {tabs.map( ( tab ) => (
                     <Link // eslint-disable-line
@@ -161,10 +164,12 @@ const FilterTabs = () => {
 							search: `?page=spectra&path=blocks&filterTab=${tab.slug}`,
 						} }
                         key={tab.name}
-                        className={classNames(
-                        tab.slug === activeBlocksFilterTab ? 'bg-wphoverbgcolor text-wpcolor hover:text-wphovercolor' : ' hover:text-wphovercolor',
-                        'px-3 py-2 font-medium text-sm rounded-[0.2rem] cursor-pointer'
-                        )}
+                        className={ classNames(
+                            ( tab.slug === activeBlocksFilterTab )
+                                ? 'bg-white text-slate-800 active:text-slate-800 focus:text-slate-800 hover:text-slate-800 shadow shadow-focused'
+                                : 'text-slate-500 focus:text-slate-500 focus-visible:border-slate-200 active:text-slate-500 hover:text-slate-500 hover:border-slate-200',
+                            'px-4 py-1 font-medium text-sm rounded-2xl cursor-pointer border border-transparent transition'
+                        ) }
                         onClick={ () => {
 							dispatch( {type:'UPDATE_BLOCKS_ACTIVE_FILTER_TAB', payload: tab.slug} )
 						}}
@@ -176,14 +181,14 @@ const FilterTabs = () => {
                 <span className="z-0 flex shadow-sm rounded-[0.2rem] justify-center">
                     <button
                         type="button"
-                        className="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-70 focus:z-10 focus:outline-none rounded-l-md"
+                        className="focus:bg-indigo-50 focus:text-slate-500 focus-visible:text-spectra hover:bg-indigo-50 hover:text-spectra -ml-px relative inline-flex items-center px-4 py-2 border border-slate-200 bg-white text-sm font-medium text-slate-500 focus:z-10 focus:outline-none rounded-l-md transition"
                         onClick={activateAllBlocks}
                     >
                         Activate all
                     </button>
                     <button
                         type="button"
-                        className="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-70 focus:z-10 focus:outline-none rounded-r-md"
+                        className="focus:bg-indigo-50 focus:text-slate-500 focus-visible:text-spectra hover:bg-indigo-50 hover:text-spectra -ml-px relative inline-flex items-center px-4 py-2 border border-slate-200 bg-white text-sm font-medium text-slate-500 focus:z-10 focus:outline-none rounded-r-md transition"
                         onClick={deactivateAllBlocks}
                     >
                         Deactivate all

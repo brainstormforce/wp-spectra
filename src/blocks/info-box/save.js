@@ -59,13 +59,12 @@ export default function save( props ) {
 		);
 	}
 
-	if (
-		position === 'after_icon' &&
-		( iconimgPosition !== 'above-title' ||
-			iconimgPosition !== 'below-title' )
-	) {
+	if ( position === 'after_icon' && ( iconimgPosition === 'left-title' ||
+	iconimgPosition === 'right-title' || iconimgPosition === 'left' ||
+	iconimgPosition === 'right' ) ) {
 		position = 'after_title';
 	}
+
 
 	if ( iconimgPosition === 'below-title' && position === 'after_title' ) {
 		showSeperator = false;
@@ -100,24 +99,24 @@ export default function save( props ) {
 
 	// Get Title and Prefix components.
 	const titleText = (
-		<div className="uagb-ifb-title-wrap">
-			{ showPrefix && '' !== prefixTitle && (
-				<Prefix
-					attributes={ props.attributes }
-					setAttributes="not_set"
-				/>
-			) }
-			{ 'none' !== seperatorStyle &&
-				position === 'after_prefix' &&
-				seperatorHtml }
-			{ showTitle && '' !== infoBoxTitle && (
-				<Title
-					attributes={ props.attributes }
-					setAttributes="not_set"
-				/>
-			) }
-		</div>
-	);
+			<div className="uagb-ifb-title-wrap">
+				{ showPrefix && '' !== prefixTitle && (
+					<Prefix
+						attributes={ props.attributes }
+						setAttributes="not_set"
+					/>
+				) }
+				{ 'none' !== seperatorStyle &&
+					position === 'after_prefix' &&
+					seperatorHtml }
+				{ showTitle && '' !== infoBoxTitle && (
+					<Title
+						attributes={ props.attributes }
+						setAttributes="not_set"
+					/>
+				) }
+			</div>
+		);
 
 	const output = (
 		<>

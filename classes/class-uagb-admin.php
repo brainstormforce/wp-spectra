@@ -197,10 +197,10 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 						__( 'I already did', 'ultimate-addons-for-gutenberg' )
 					),
 					'repeat-notice-after'        => MONTH_IN_SECONDS,
-					'display-notice-after'       => WEEK_IN_SECONDS,
+					'display-notice-after'       => ( 2 * WEEK_IN_SECONDS ), // Display notice after 2 weeks.
 					'priority'                   => 20,
 					'display-with-other-notices' => false,
-					'show_if'                    => UAGB_Admin_Helper::show_rating_notice(),
+					'show_if'                    => true,
 				)
 			);
 

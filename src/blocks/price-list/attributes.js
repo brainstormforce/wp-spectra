@@ -65,6 +65,18 @@ const attributes = {
 			styleType: 'main-title-bottom-margin'
 		},
 	},
+	titleSpaceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
+	titleSpaceMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
 	block_id: {
 		type: 'string',
 		default: 'not_set',
@@ -78,25 +90,28 @@ const attributes = {
 	},
 	imgHrPadding: {
 		type: 'number',
-		default: 0,
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'image-horizontal-padding'
 		},
 	},
 	imgPaddingTop: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'image-top-padding'
 		},
 	},
 	imgPaddingRight: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'image-right-padding'
 		},
 	},
 	imgPaddingBottom: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'image-bottom-padding'
 		},
@@ -150,6 +165,18 @@ const attributes = {
 		},
 		default: 10,
 	},
+	rowGapTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'row-gap'
+		},
+	},
+	rowGapMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'row-gap'
+		},
+	},
 	columnGap: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -157,19 +184,29 @@ const attributes = {
 		},
 		default: 10,
 	},
+	columnGapTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'column-gap'
+		},
+	},
+	columnGapMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'column-gap'
+		},
+	},
 	contentVrPadding: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'desc-vertical-padding'
-		},
-		default: 5,
+		}
 	},
 	contentHrPadding: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'desc-horizontal-padding'
-		},
-		default: 5,
+		}
 	},
 
 	stack: {
@@ -185,21 +222,33 @@ const attributes = {
 	},
 	seperatorWidth: {
 		type: 'number',
-		default: '100',
+		default: 100,
+		UAGCopyPaste: {
+			styleType: 'separator-width'
+		},
+	},
+	seperatorWidthTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'separator-width'
+		},
+	},
+	seperatorWidthMobile: {
+		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'separator-width'
 		},
 	},
 	seperatorThickness: {
 		type: 'number',
-		default: '1',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'separator-thickness'
 		},
 	},
 	seperatorColor: {
 		type: 'string',
-		default: '#dddddd',
+		default: '#b2b4b5',
 		UAGCopyPaste: {
 			styleType: 'separator-color'
 		},
@@ -278,18 +327,21 @@ const attributes = {
 	},
 	titleLineHeight: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'main-title-line-height'
 		},
 	},
 	titleLineHeightTablet: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'main-title-line-height-tablet'
 		},
 	},
 	titleLineHeightMobile: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'main-title-line-height-mobile'
 		},
@@ -355,18 +407,21 @@ const attributes = {
 	},
 	priceLineHeight: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'prefix-line-height'
 		},
 	},
 	priceLineHeightTablet: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'prefix-line-height-tablet'
 		},
 	},
 	priceLineHeightMobile: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'prefix-line-height-mobile'
 		},
@@ -432,18 +487,21 @@ const attributes = {
 	},
 	descLineHeight: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'desc-line-height'
 		},
 	},
 	descLineHeightTablet: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'desc-line-height-tablet'
 		},
 	},
 	descLineHeightMobile: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'desc-line-height-mobile'
 		},
@@ -461,7 +519,7 @@ const attributes = {
 	},
 	imagePosition: {
 		type: 'string',
-		default: 'top',
+		default: 'left',
 		UAGCopyPaste: {
 			styleType: 'image-position'
 		},
@@ -483,6 +541,18 @@ const attributes = {
 	imageWidth: {
 		type: 'number',
 		default: 100,
+		UAGCopyPaste: {
+			styleType: 'image-width'
+		},
+	},
+	imageWidthTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'image-width'
+		},
+	},
+	imageWidthMobile: {
+		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'image-width'
 		},
@@ -709,12 +779,87 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'image-align'
 		},
-		default: '',
+		default: 'side',
 	},
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	descLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	descLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	descLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	descLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
+	},
+	priceLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'price-letter-spacing'
+		}
+	},
+	priceLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'price-letter-spacing-tablet'
+		}
+	},
+	priceLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'price-letter-spacing-mobile'
+		}
+	},
+	priceLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'price-letter-spacing-type'
+		}
+	},
+	titleLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'title-letter-spacing'
+		}
+	},
+	titleLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'title-letter-spacing-tablet'
+		}
+	},
+	titleLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'title-letter-spacing-mobile'
+		}
+	},
+	titleLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'title-letter-spacing-type'
+		}
+	},
 };
 
 export default attributes;

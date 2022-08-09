@@ -560,7 +560,7 @@ msgid "This block allows you to place a Marketing Button with small description.
 msgstr ""
 
 #: classes/class-uagb-config.php:1325
-msgid "Multi Buttons"
+msgid "Buttons"
 msgstr ""
 
 #: classes/class-uagb-config.php:1326
@@ -2076,7 +2076,7 @@ msgid "buttons"
 msgstr ""
 
 #: dist/blocks.js:1
-msgid "multi buttons"
+msgid "buttons"
 msgstr ""
 
 #: dist/blocks.js:1

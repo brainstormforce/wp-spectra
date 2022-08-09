@@ -59,11 +59,6 @@ const Render = ( props ) => {
 				onChange={ ( value ) =>
 					setAttributes( { heading: value } )
 				}
-				allowedFormats={ [
-					'bold',
-					'italic',
-					'strikethrough',
-				] }
 				className="uagb-marketing-btn__title"
 				onRemove={ () => onReplace( [] ) }
 				multiline={ false }
@@ -125,11 +120,6 @@ const Render = ( props ) => {
 							onChange={ ( value ) =>
 								setAttributes( { prefix: value } )
 							}
-							allowedFormats={ [
-								'bold',
-								'italic',
-								'strikethrough',
-							] }
 							className="uagb-marketing-btn__prefix"
 							onRemove={ () => onReplace( [] ) }
 							multiline={ false }

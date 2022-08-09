@@ -3,7 +3,7 @@ import { SelectControl, Placeholder, Spinner } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import React, { useLayoutEffect } from 'react';
 import styles from './editor.lazy.scss';
-
+import { useDeviceType } from '@Controls/getPreviewType';
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -14,6 +14,7 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
+	const deviceType = useDeviceType();
 	const { className, attributes, setAttributes } = props;
 	// Setup the attributes.
 	const {
@@ -25,6 +26,8 @@ const Render = ( props ) => {
 		titleDescStyle,
 		fieldStyle,
 		buttonAlignment,
+		buttonAlignmentTablet,
+		buttonAlignmentMobile,
 		enableLabel,
 		enableOveride,
 		advancedValidationSettings,
@@ -74,6 +77,7 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				'uagb-gf-styler__outer-wrap',
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
 			) }
 		>
@@ -82,6 +86,8 @@ const Render = ( props ) => {
 					`uagb-gf-styler__align-${ align }`,
 					`uagb-gf-styler__field-style-${ fieldStyle }`,
 					`uagb-gf-styler__btn-align-${ buttonAlignment }`,
+					`uagb-gf-styler__btn-align-tablet-${ buttonAlignmentTablet }`,
+					`uagb-gf-styler__btn-align-mobile-${ buttonAlignmentMobile }`,
 					`uagb-gf-styler__gform-heading-${ titleDescStyle }`,
 					enableOveride ? 'uagb-gf-styler__check-style-enabled' : '',
 					enableLabel ? 'uagb-gf-styler__hide-label' : '',

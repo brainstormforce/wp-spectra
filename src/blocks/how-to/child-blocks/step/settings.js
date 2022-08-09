@@ -7,9 +7,9 @@ import { InspectorControls } from '@wordpress/block-editor';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
+import UAGSelectControl from '@Components/select-control';
 import { getImageSize } from '@Utils/Helpers';
 import {
-	SelectControl,
 	ToggleControl,
 	TextControl,
 } from '@wordpress/components';
@@ -76,6 +76,30 @@ const Settings = ( props ) => {
 		descriptionFontStyle,
 		descriptionTransform,
 		descriptionDecoration,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		descriptionLetterSpacing,
+		descriptionLetterSpacingTablet,
+		descriptionLetterSpacingMobile,
+		descriptionLetterSpacingType,
+		titleLineHeight,
+		titleLineHeightTablet,
+		titleLineHeightMobile,
+		titleLineHeightType,
+		descriptionLineHeight,
+		descriptionLineHeightType,
+		descriptionLineHeightTablet,
+		descriptionLineHeightMobile,
+		urlLineHeight,
+		urlLineHeightTablet,
+		urlLineHeightMobile,
+		urlLineHeightType,
+		urlLetterSpacing,
+		urlLetterSpacingTablet,
+		urlLetterSpacingMobile,
+		urlLetterSpacingType,
 	} = attributes;
 	/*
 	 * Event to set Image as while adding.
@@ -172,32 +196,35 @@ const Settings = ( props ) => {
 					image.url !== 'null' &&
 					image.url !== '' && (
 						<>
-						<SelectControl
-							label={__(
-								'Image Size',
-								'ultimate-addons-for-gutenberg'
-							)}
-							options={imageSizeOptions}
-							value={imageSize}
-							onChange={( value ) =>
-								setAttributes( {
-									imageSize: value,
-								} )
-							}
-						/>
-						<SelectControl
-							label={__( 'Select Position' )}
-							value={imgPosition}
-							onChange={( value ) =>
-								setAttributes( { imgPosition: value } )
-							}
-							options={[
-								{ value: 'above-title', label: __( 'Above Title' ) },
-								{ value: 'left-title', label: __( 'Left of Title' ) },
-								{ value: 'right-title', label: __( 'Right of Title' ) }
-							]}
-						/>
-					</>
+							<UAGSelectControl
+								label={ __(
+									'Image Size',
+									'ultimate-addons-for-gutenberg'
+								) }
+								data={ {
+									value: imageSize,
+									label: 'imageSize',
+								} }
+								setAttributes={ setAttributes }
+								options={ imageSizeOptions }
+							/>
+							<UAGSelectControl
+								label={ __(
+									'Select Position',
+									'ultimate-addons-for-gutenberg'
+								) }
+								data={ {
+									value: imgPosition,
+									label: 'imgPosition',
+								} }
+								setAttributes={ setAttributes }
+								options={[
+									{ value: 'above-title', label: __( 'Above Title' ) },
+									{ value: 'left-title', label: __( 'Left of Title' ) },
+									{ value: 'right-title', label: __( 'Right of Title' ) }
+								]}
+							/>
+						</>
 					)
 
 				}
@@ -208,10 +235,16 @@ const Settings = ( props ) => {
 
 		return (
 			<UAGAdvancedPanelBody title={__( 'Add Link' )} initialOpen={false}>
-				<SelectControl
-					label={__( 'Type' )}
-					value={urlType}
-					onChange={( value ) => setAttributes( { urlType: value } )}
+				<UAGSelectControl
+					label={ __(
+						'Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: urlType,
+						label: 'urlType',
+					} }
+					setAttributes={ setAttributes }
 					options={[
 						{ value: 'text', label: __( 'Text' ) },
 						{ value: 'all', label: __( 'Complete Box' ) },
@@ -297,14 +330,47 @@ const Settings = ( props ) => {
 						value: urlFontSizeTablet,
 						label: 'urlFontSizeTablet',
 					}}
-					disableLineHeight={true}
+					lineHeightType={ {
+						value: urlLineHeightType,
+						label: 'urlLineHeightType',
+					} }
+					lineHeight={ {
+						value: urlLineHeight,
+						label: 'urlLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: urlLineHeightMobile,
+						label: 'urlLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: urlLineHeightTablet,
+						label: 'urlLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: urlLetterSpacing,
+						label: 'urlLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: urlLetterSpacingTablet,
+						label: 'urlLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: urlLetterSpacingMobile,
+						label: 'urlLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: urlLetterSpacingType,
+						label: 'urlLetterSpacingType',
+					} }
 				/>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ urlColor ? urlColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { urlColor: value } )
-					}
+					data={ {
+						value: urlColor,
+						label: 'urlColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -312,7 +378,7 @@ const Settings = ( props ) => {
 	const titleStyle = () => {
 
 		return (
-			<UAGAdvancedPanelBody title={__( 'Title' )} initialOpen={false}>
+			<UAGAdvancedPanelBody title={__( 'Title' )} initialOpen={ true }>
 				<TypographyControl
 					label={__( 'Typography' )}
 					attributes={attributes}
@@ -357,14 +423,47 @@ const Settings = ( props ) => {
 						value: titleFontSizeTablet,
 						label: 'titleFontSizeTablet',
 					}}
-					disableLineHeight={true}
+					lineHeightType={ {
+						value: titleLineHeightType,
+						label: 'titleLineHeightType',
+					} }
+					lineHeight={ {
+						value: titleLineHeight,
+						label: 'titleLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: titleLineHeightMobile,
+						label: 'titleLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: titleLineHeightTablet,
+						label: 'titleLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: titleLetterSpacing,
+						label: 'titleLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: titleLetterSpacingTablet,
+						label: 'titleLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: titleLetterSpacingMobile,
+						label: 'titleLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: titleLetterSpacingType,
+						label: 'titleLetterSpacingType',
+					} }
 				/>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { titleColor: value } )
-					}
+					data={ {
+						value: titleColor,
+						label: 'titleColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -418,14 +517,47 @@ const Settings = ( props ) => {
 						value: descriptionFontSizeTablet,
 						label: 'descriptionFontSizeTablet',
 					}}
-					disableLineHeight={true}
+					lineHeightType={ {
+						value: descriptionLineHeightType,
+						label: 'descriptionLineHeightType',
+					} }
+					lineHeight={ {
+						value: descriptionLineHeight,
+						label: 'descriptionLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: descriptionLineHeightMobile,
+						label: 'descriptionLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: descriptionLineHeightTablet,
+						label: 'descriptionLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: descriptionLetterSpacing,
+						label: 'descriptionLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: descriptionLetterSpacingTablet,
+						label: 'descriptionLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: descriptionLetterSpacingMobile,
+						label: 'descriptionLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: descriptionLetterSpacingType,
+						label: 'descriptionLetterSpacingType',
+					} }
 				/>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ descriptionColor ? descriptionColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { descriptionColor: value } )
-					}
+					data={ {
+						value: descriptionColor,
+						label: 'descriptionColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
