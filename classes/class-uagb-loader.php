@@ -193,7 +193,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			add_filter( 'rest_pre_dispatch', array( $this, 'rest_pre_dispatch' ), 10, 3 );
 
-			if ( 'done' === get_option( 'spectra_blocks_count_status' ) && get_option( 'spectra_settings_data' ) ) {
+			if ( 'done' === get_option( 'spectra_blocks_count_status' ) && get_option( 'spectra_settings_data' ) && get_option( 'get_spectra_block_count' ) ) {
 
 				$settings_data = get_option( 'spectra_settings_data' );
 				$blocks_count  = get_option( 'get_spectra_block_count' );
