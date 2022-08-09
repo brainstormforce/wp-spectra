@@ -31,4 +31,6 @@ $block_data = array(
 	'dynamic_assets'      => array(
 		'dir' => 'lottie',
 	),
+	'js_assets'        => array( 'uagb-lottie-js', 'uagb-bodymovin-js' ),
+	'deprecated'       => false
 );

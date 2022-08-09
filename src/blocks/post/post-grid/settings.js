@@ -24,6 +24,7 @@ import { buttonsPresets, boxShadowPresets, boxShadowHoverPresets } from './prese
 import UAGPresets from '@Components/presets';
 import BoxShadowControl from '@Components/box-shadow';
 import { decodeEntities } from '@wordpress/html-entities';
+import UAGNumberControl from '@Components/number-control';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -32,6 +33,7 @@ import {
 	ToolbarGroup,
 	TextControl,
 	Icon,
+	ExternalLink
 } from '@wordpress/components';
 
 import {
@@ -262,6 +264,7 @@ const Settings = ( props ) => {
 		boxShadowBlurHover,
 		boxShadowSpreadHover,
 		boxShadowPositionHover,
+		enableOffset
 	} = attributes;
 
 	const onSelectPostType = ( value ) => {
@@ -276,6 +279,10 @@ const Settings = ( props ) => {
 	const onSelectPagination = ( value ) => {
 		setAttributes( { postPagination: value } );
 		setAttributes( { paginationMarkup: 'empty' } );
+	};
+	const onSelectOffset = ( value ) => {
+		setAttributes( { enableOffset: value } );
+		setAttributes( { postPagination: !value } ); // disable pagination when enableOffset is true.
 	};
 	const onChangePostsPerPage = ( value ) => {
 		setAttributes( { postsToShow: value } );
@@ -508,7 +515,7 @@ const Settings = ( props ) => {
 						} )
 					}
 				/>
-				<Range
+				<UAGNumberControl
 					label={ __(
 						'Posts Per Page',
 						'ultimate-addons-for-gutenberg'
@@ -520,13 +527,39 @@ const Settings = ( props ) => {
 						label: 'postsToShow',
 					} }
 					onChange={ onChangePostsPerPage }
-					min={ 0 }
+					min={ 1 }
 					max={ 50 }
 					displayUnit={ false }
 				/>
-				<Range
+				<ToggleControl
 					label={ __(
 						'Offset Starting Post',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ enableOffset }
+					onChange={ onSelectOffset }
+					help= {
+						<>
+						{ !enableOffset && (
+							<>
+							{ __(
+								'Note: Enabling this will disable the Pagination. Setting the offset parameter overrides/ignores the paged parameter and breaks pagination. ',
+								'ultimate-addons-for-gutenberg' ) }
+							<ExternalLink
+								href={ 'https://developer.wordpress.org/reference/classes/wp_query/#pagination-parameters:~:text=Warning%3A%20Setting%20the%20offset%20parameter%20overrides/ignores%20the%20paged%20parameter%20and%20breaks%20pagination.%20The%20%27offset%27%20parameter%20is%20ignored%20when%20%27posts_per_page%27%3D%3E%2D1%20(show%20all%20posts)%20is%20used.' }
+							>
+								{ __( 'Read more' ) }
+							</ExternalLink>
+							</>
+							)
+						}
+						</>
+					}
+				/>
+				{ enableOffset && (
+				<UAGNumberControl
+					label={ __(
+						'Offset By',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={ setAttributes }
@@ -539,10 +572,15 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
-					help= {__(
-						'P.S. Note that We need to add Offset Starting Post to start post loading from specific post order.',
+					help= {
+						<>
+						{ enableOffset && __(
+						'Note: The offset will skip the number of posts set, and will use the next post as the starting post.',
 						'ultimate-addons-for-gutenberg' )}
+						</>
+					}
 				/>
+				) }
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Order By', 'ultimate-addons-for-gutenberg' ) }
@@ -640,6 +678,7 @@ const Settings = ( props ) => {
 						setAttributes( { equalHeight: ! equalHeight } )
 					}
 				/>
+				{ ! enableOffset && (
 				<ToggleControl
 					label={ __(
 						'Post Pagination',
@@ -648,6 +687,7 @@ const Settings = ( props ) => {
 					checked={ postPagination }
 					onChange={ onSelectPagination }
 				/>
+				) }
 				{ postPagination === true && (
 					<Range
 						label={ __(
@@ -1190,7 +1230,7 @@ const Settings = ( props ) => {
 	const spacingSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Layout Settings', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
 				<AdvancedPopColorControl
@@ -1206,7 +1246,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<ResponsiveSlider
-					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: columnGap,
@@ -1230,7 +1270,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<ResponsiveSlider
-					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: rowGap,

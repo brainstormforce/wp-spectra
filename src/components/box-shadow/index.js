@@ -11,6 +11,9 @@ import MultiButtonsControl from '../multi-buttons-control/index';
 import React, { useLayoutEffect } from 'react';
 import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
+import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
+
+const classNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
 
 const BoxShadowControl = ( props ) => {
 
@@ -23,6 +26,21 @@ const BoxShadowControl = ( props ) => {
 
 			if ( popupButton && ! popupButton?.contains( e.target ) && popupWrap && ! popupWrap?.contains( e.target ) && ! e.target?.classList?.contains( 'uagb-advanced-color-indicate' ) && ! e.target?.parentElement?.closest( '.uagb-popover-color' ) && ! e.target?.parentElement?.closest( '.uagb-reset' ) ) {
 				toggleAdvancedControls( false )
+				const blockName = getSelectedBlock()?.name;
+				const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+
+				const data = {
+					...uagSettingState,
+					[blockName] : {
+						...uagSettingState?.[blockName],
+						selectedSetting : false
+					}
+				}
+
+				const uagLocalStorage = getUAGEditorStateLocalStorage();
+				if ( uagLocalStorage ) {
+					uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
+				}
 			}
 		  } );
 	}, [] );
@@ -42,6 +60,52 @@ const BoxShadowControl = ( props ) => {
 
 	let advancedControls;
 	const activeClass = showAdvancedControls ? 'active' : '';
+
+	// Array of all the current Typography Control's Labels.
+	const attributeNames = [
+		boxShadowColor.label,
+		boxShadowHOffset.label,
+		boxShadowVOffset.label,
+		boxShadowBlur.label,
+		boxShadowSpread.label,
+		boxShadowPosition.label,
+	];
+
+	const { getSelectedBlock } = select( 'core/block-editor' );
+
+	// Function to get the Block's default Box Shadow Values.
+	const getBlockBoxShadowValue = () => {
+		const selectedBlockName = getSelectedBlock()?.name.replace( 'uagb/', '' );
+		let defaultValues = false;
+		if ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ] ) {
+			attributeNames.forEach( ( attributeName ) => {
+				if ( attributeName ) {
+					const blockDefaultAttributeValue = ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ][ attributeName ]?.default ) ? blocksAttributes[ selectedBlockName ][ attributeName ]?.default : '';
+					defaultValues = {
+						...defaultValues,
+						[ attributeName ] : blockDefaultAttributeValue,
+					}
+				}
+			} );
+		}
+		return defaultValues;
+	}
+
+	// Function to check if any Box Shadow Setting has changed.
+	const getUpdateState = () => {
+		const defaultValues = getBlockBoxShadowValue();
+		const selectedBlockAttributes = getSelectedBlock()?.attributes;
+		let isBoxShadowUpdated = false;
+		attributeNames.forEach( ( attributeName ) => {
+			if ( selectedBlockAttributes?.[ attributeName ] && ( selectedBlockAttributes?.[ attributeName ] !== defaultValues?.[ attributeName ] ) ) {
+				isBoxShadowUpdated = true;
+			}
+		} );
+		return isBoxShadowUpdated;
+	};
+
+	// Flag to check if this control has been updated or not.
+	const isBoxShadowUpdated = popup && getUpdateState();
 
 	const overallControls = (
 		<>
@@ -158,7 +222,10 @@ const BoxShadowControl = ( props ) => {
 				{ label }
 			</span>
 			<Button
-				className={ 'uag-box-shadow-button spectra-control-popup__options--action-button' }
+				className={ classNames(
+					'uag-box-shadow-button spectra-control-popup__options--action-button',
+					isBoxShadowUpdated ? 'spectra-control-popup__status--updated' : '',
+				) }
 				aria-pressed={ showAdvancedControls }
 				onClick={ () => {
 						const allPopups = document.querySelectorAll( '.spectra-control-popup__options' );
@@ -169,22 +236,29 @@ const BoxShadowControl = ( props ) => {
 							}
 						}
 						toggleAdvancedControls( ! showAdvancedControls )
-						if ( ! showAdvancedControls ) {
-							const { getSelectedBlock } = select( 'core/block-editor' );
-							const blockName = getSelectedBlock()?.name;
-							const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
-							const data = {
+
+						const blockName = getSelectedBlock()?.name;
+						const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+						let data = {
+							...uagSettingState,
+							[blockName] : {
+								...uagSettingState?.[blockName],
+								selectedSetting : '.uag-box-shadow-options'
+							}
+						}
+
+						if ( showAdvancedControls ) {
+							data = {
 								...uagSettingState,
 								[blockName] : {
 									...uagSettingState?.[blockName],
-									selectedSetting : '.uag-box-shadow-options'
+									selectedSetting : false
 								}
 							}
-
-							const uagLocalStorage = getUAGEditorStateLocalStorage();
-							if ( uagLocalStorage ) {
-								uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
-							}
+						}
+						const uagLocalStorage = getUAGEditorStateLocalStorage();
+						if ( uagLocalStorage ) {
+							uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
 						}
 					}
 				}

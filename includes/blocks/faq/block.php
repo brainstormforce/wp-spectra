@@ -29,4 +29,6 @@ $block_data = array(
 	'dynamic_assets'      => array(
 		'dir' => 'faq',
 	),
+	'js_assets'        => array( 'uagb-faq-js' ),
+	'deprecated'       => false,
 );

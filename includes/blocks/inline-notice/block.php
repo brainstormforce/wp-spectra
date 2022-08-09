@@ -32,4 +32,6 @@ $block_data = array(
 	'dynamic_assets'      => array(
 		'dir' => 'inline-notice',
 	),
+	'js_assets'        => array( 'uagb-inline-notice-js', 'uagb-cookie-lib' ),
+	'deprecated'       => false,
 );

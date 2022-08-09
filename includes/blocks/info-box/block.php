@@ -21,4 +21,5 @@ $block_data = array(
 	'dynamic_assets'   => array(
 		'dir' => 'info-box',
 	),
+	'deprecated'       => false,
 );
