@@ -134,7 +134,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$spectra_bsf_analytics->set_entity(
 				array(
-					'spectra' => array(
+					'bsf' => array(
 						'product_name'    => 'Spectra',
 						'path'            => UAGB_DIR . 'admin/bsf-analytics',
 						'author'          => 'Brainstorm Force',
