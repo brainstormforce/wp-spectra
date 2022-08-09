@@ -18,4 +18,5 @@ $block_data = array(
 	'default'          => true,
 	'js_assets'        => array( 'uagb-forms-js' ),
 	'priority'         => 11,
+	'deprecated'       => false,
 );

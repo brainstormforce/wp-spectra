@@ -3,7 +3,10 @@ import { RectSkeleton } from '@Skeleton';
 const BlocksSkeleton = () => {
 	return (
 		<>
-			<div className="max-w-3xl mx-auto p-[1.3rem] lg:max-w-[77rem] bg-white mt-[2.43rem] mb-[2.43rem] rounded-[0.2rem] shadow">
+			<div className="max-w-3xl mx-auto lg:max-w-[77rem] mt-10 mb-8 font-semibold text-2xl">
+				<RectSkeleton width="75px" height="32px" />
+			</div>
+			<div className="max-w-3xl mx-auto lg:max-w-[77rem] mb-[2.43rem]">
 				<div className="hidden justify-between sm:flex">
 					<nav className="flex space-x-4" aria-label="Tabs">
 						<RectSkeleton width="25px" height="35px" />
@@ -21,12 +24,12 @@ const BlocksSkeleton = () => {
 					</span>
 				</div>
 			</div>
-			<div className="lg:max-w-[80rem] mx-auto grid grid-cols-2 gap-4 sm:grid-cols-3 p-6 pt-0">
-			{ Array( 33 )
+			<div className="lg:max-w-[80rem] mx-auto grid grid-cols-2 gap-6 sm:grid-cols-3 p-6 pt-0">
+			{ Array( 36 )
 			.fill()
 			.map( ( i ) => {
 				return (
-					<RectSkeleton key={i} width="400px" height="90px" />
+					<RectSkeleton key={i} width="400px" height="80px" />
 				);
 			} ) }
 			</div>
