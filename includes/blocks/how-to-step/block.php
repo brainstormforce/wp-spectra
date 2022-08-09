@@ -14,4 +14,5 @@ $block_data = array(
 	'description' => __( 'This block helps you add Step in How to Block.', 'ultimate-addons-for-gutenberg' ),
 	'default'     => true,
 	'js_assets'   => array(),
+	'deprecated'  => false,
 );

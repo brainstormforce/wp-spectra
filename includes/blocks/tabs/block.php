@@ -19,4 +19,5 @@ $block_data = array(
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-tabs-js' ),
 	'priority'         => 28,
+	'deprecated'       => false,
 );

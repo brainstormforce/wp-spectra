@@ -19,4 +19,5 @@ $block_data = array(
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-faq-js' ),
 	'priority'         => 12,
+	'deprecated'       => false,
 );

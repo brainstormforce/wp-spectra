@@ -20,4 +20,5 @@ $block_data = array(
 	'js_assets'        => array( 'uagb-slick-js', 'uagb-post-js', 'uagb-imagesloaded' ),
 	'css_assets'       => array( 'uagb-slick-css' ),
 	'priority'         => 20,
+	'deprecated'       => false,
 );

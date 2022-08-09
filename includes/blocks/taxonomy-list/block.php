@@ -17,4 +17,5 @@ $block_data = array(
 	'description'      => __( 'This block helps you to display content categorization for various post types', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'priority'         => 29,
+	'deprecated'       => false,
 );

@@ -18,4 +18,5 @@ $block_data = array(
 	'default'          => true,
 	'js_assets'        => array(),
 	'priority'         => 26,
+	'deprecated'       => false,
 );
