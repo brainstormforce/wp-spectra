@@ -49,7 +49,7 @@ class Admin_Helper {
 			'uag_previous_versions'              => $uag_versions,
 			'changelog_data'                     => $changelog_data,
 			'blocks_activation_and_deactivation' => self::get_blocks(),
-            'recaptcha_site_key_v2'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
+			'recaptcha_site_key_v2'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
 			'recaptcha_secret_key_v2'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ),
 			'recaptcha_site_key_v3'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),
 			'recaptcha_secret_key_v3'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v3', '' ),
@@ -57,7 +57,7 @@ class Admin_Helper {
 		);
 
 		return $options;
-		
+
 	}
 
 	/**
@@ -66,32 +66,32 @@ class Admin_Helper {
 	 * @return array.
 	 */
 	public static function get_settings_page_data() {
-		$content_width  = \UAGB_Admin_Helper::get_global_content_width();
+		$content_width = \UAGB_Admin_Helper::get_global_content_width();
 
 		$options = array(
-			'enable_beta_updates'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uagb_beta', 'no' ),
-			'enable_file_generation'             => \UAGB_Admin_Helper::get_admin_settings_option( '_uagb_allow_file_generation', 'enabled' ),
-			'enable_templates_button'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' ),
-			'enable_block_condition'             => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_condition', 'disabled' ),
-			'enable_masonry_gallery'             => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ),
-			'enable_block_responsive'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_responsive', 'enabled' ),
-			'select_font_globally'               => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_select_font_globally', array() ),
-			'load_select_font_globally'          => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_select_font_globally', 'disabled' ),
-			'load_gfonts_locally'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_gfonts_locally', 'disabled' ),
-			'collapse_panels'                    => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
-			'copy_paste'                         => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
-			'preload_local_fonts'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
-			'enable_coming_soon_mode'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_coming_soon_mode', 'disabled' ),
-			'content_width'                      => $content_width,
-			'blocks_editor_spacing'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_blocks_editor_spacing', 0 ),
-			'load_font_awesome_5'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
-			'auto_block_recovery'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_auto_block_recovery', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
-			'uagb_old_user_less_than_2'          => get_option( 'uagb-old-user-less-than-2' ),
+			'enable_beta_updates'       => \UAGB_Admin_Helper::get_admin_settings_option( 'uagb_beta', 'no' ),
+			'enable_file_generation'    => \UAGB_Admin_Helper::get_admin_settings_option( '_uagb_allow_file_generation', 'enabled' ),
+			'enable_templates_button'   => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' ),
+			'enable_block_condition'    => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_condition', 'disabled' ),
+			'enable_masonry_gallery'    => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ),
+			'enable_block_responsive'   => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_responsive', 'enabled' ),
+			'select_font_globally'      => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_select_font_globally', array() ),
+			'load_select_font_globally' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_select_font_globally', 'disabled' ),
+			'load_gfonts_locally'       => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_gfonts_locally', 'disabled' ),
+			'collapse_panels'           => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
+			'copy_paste'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
+			'preload_local_fonts'       => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
+			'enable_coming_soon_mode'   => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_coming_soon_mode', 'disabled' ),
+			'content_width'             => $content_width,
+			'blocks_editor_spacing'     => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_blocks_editor_spacing', 0 ),
+			'load_font_awesome_5'       => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
+			'auto_block_recovery'       => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_auto_block_recovery', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
+			'uagb_old_user_less_than_2' => get_option( 'uagb-old-user-less-than-2' ),
 		);
 
 		$setting_data = get_option( 'spectra_settings_data' );
 
-		if( ! $setting_data ) {
+		if ( ! $setting_data ) {
 			update_option( 'spectra_settings_data', $options );
 		}
 
@@ -167,8 +167,7 @@ class Admin_Helper {
 	public static function get_options() {
 
 		$general_settings = self::get_common_settings();
-		$all_options = self::get_settings_page_data();
-
+		$all_options      = self::get_settings_page_data();
 
 		$options = array_merge( $general_settings, $all_options );
 
