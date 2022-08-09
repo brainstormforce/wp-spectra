@@ -12,7 +12,7 @@ import { __ } from '@wordpress/i18n';
 
 registerBlockType( 'uagb/forms-checkbox', {
 	title: __( 'Checkbox', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'Add checkboxes to allow mulitple choices from optons.', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'Add checkboxes to allow multiple choices from options.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.checkbox,
 	category: uagb_blocks_info.category,
 	parent: [ 'uagb/forms' ],
