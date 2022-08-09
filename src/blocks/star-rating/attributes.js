@@ -5,14 +5,23 @@ const attributes = {
 	layout: {
 		type: 'string',
 		default: 'inline',
+		UAGCopyPaste: {
+			styleType: 'layout'
+		},
 	},
 	layoutTablet: {
 		type: 'string',
 		default: 'inline',
+		UAGCopyPaste: {
+			styleType: 'layout-tablet'
+		},
 	},
 	layoutMobile: {
 		type: 'string',
-		default: 'stack',
+		default: 'inline',
+		UAGCopyPaste: {
+			styleType: 'layout-mobile'
+		},
 	},
 	rating: {
 		type: 'number',
@@ -105,12 +114,14 @@ const attributes = {
 	},
 	titleGapTablet: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
 		},
 	},
 	titleGapMobile: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
 		},
@@ -472,6 +483,27 @@ const attributes = {
 		default: false,
 		isUAGStyle: true,
 	},
+	starPosition: {
+		type: 'string',
+		default: 'after',
+		UAGCopyPaste: {
+			styleType: 'image-position'
+		},
+	},
+	starPositionTablet: {
+		type: 'string',
+		default: 'after',
+		UAGCopyPaste: {
+			styleType: 'image-position'
+		},
+	},
+	starPositionMobile: {
+		type: 'string',
+		default: 'after',
+		UAGCopyPaste: {
+			styleType: 'image-position'
+		},
+	}
 };
 
 export default attributes;

@@ -72,7 +72,7 @@ const attributes = {
 	},
 	icon: {
 		type: 'string',
-		default: 'fa fa-window-close',
+		default: 'rectangle-xmark',
 	},
 	iconSize: {
 		type: 'number',
@@ -385,6 +385,9 @@ const attributes = {
 	layout: {
 		type: 'string',
 		default: 'modern',
+		UAGCopyPaste: {
+			styleType: 'notice-layout'
+		},
 	},
 	highlightWidth: {
 		type: 'number',

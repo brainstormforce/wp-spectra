@@ -17,6 +17,7 @@
 		-ms-display: flex;
 		display: flex;
 		flex-direction: column;
+		justify-content: flex-end;
 
 		&--small {
 			height: $spectra-control-mediapicker-height-small;
@@ -78,7 +79,7 @@
 			color: $spectra-color-body;
 			background-color: $spectra-color-light-background;
 			position: absolute;
-			bottom: 0;
+			bottom: -1px;
 			-webkit-display: flex;
 			-moz-display: flex;
 			-ms-display: flex;

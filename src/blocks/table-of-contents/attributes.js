@@ -37,7 +37,7 @@ const attributes = {
 	},
 	icon: {
 		type: 'string',
-		default: 'fa-angle-down',
+		default: 'angle-down',
 	},
 	iconSize: {
 		type: 'number',
@@ -937,6 +937,67 @@ const attributes = {
 	markerView: {
 		type: 'string',
 		default: 'disc'
+	},
+	separatorStyle: {
+		type: 'string',
+		default: 'none',
+		UAGCopyPaste: {
+			styleType: 'separator-style'
+		}
+	},
+	separatorHeight: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'separator-thickness'
+		},
+		default: 1
+	},
+	separatorHeightType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'separator-height-type'
+		}
+	},
+	separatorSpace: {
+		type: 'number',
+		default: 15,
+		UAGCopyPaste: {
+			styleType: 'separator-bottom-margin'
+		}
+	},
+	separatorSpaceTablet: {
+		type: 'number',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'separator-bottom-margin'
+		}
+	},
+	separatorSpaceMobile: {
+		type: 'number',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'separator-bottom-margin'
+		}
+	},
+	separatorSpaceType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'separator-width-type'
+		}
+	},
+	separatorColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'separator-color'
+		}
+	},
+	separatorHColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'separator-color-hover'
+		}
 	},
 };
 

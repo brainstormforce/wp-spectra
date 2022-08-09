@@ -180,7 +180,7 @@ const UAGCopyPasteStyles = () => {
 
 							const key = blockAttributes[attribute].UAGCopyPaste.styleType;
 
-							if ( attributes[attribute] ) {
+							if ( undefined !== attributes[attribute] && null !== attributes[attribute] ) {
 
                                 styles[key] = attributes[attribute];
                                 parentStyle[attribute] = attributes[attribute];

@@ -4,6 +4,7 @@
 
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+
 const Settings = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/price-list-child/settings" */ './settings'

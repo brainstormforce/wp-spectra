@@ -76,7 +76,7 @@ window.UAGBPostMasonry = {
 		const windowHeight50 = window.innerHeight / 1.25;
 		let $scope = document.querySelector( $selector );
 		const loader = $scope.querySelectorAll( '.uagb-post-inf-loader' )
-		if ( 'scroll' === $attr.paginationEventType ) {
+		if ( 'none' !== $attr.paginationType && 'scroll' === $attr.paginationEventType ) {
 
 			window.addEventListener( 'scroll', function() {
 

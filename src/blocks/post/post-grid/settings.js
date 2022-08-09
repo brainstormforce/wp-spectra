@@ -20,9 +20,11 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
 import renderSVG from '@Controls/renderIcon';
 import UAGTabsControl from '@Components/tabs';
-import {buttonsPresets} from './presets';
+import { buttonsPresets, boxShadowPresets, boxShadowHoverPresets } from './presets';
 import UAGPresets from '@Components/presets';
+import BoxShadowControl from '@Components/box-shadow';
 import { decodeEntities } from '@wordpress/html-entities';
+import UAGNumberControl from '@Components/number-control';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -31,14 +33,13 @@ import {
 	ToolbarGroup,
 	TextControl,
 	Icon,
+	ExternalLink
 } from '@wordpress/components';
 
 import {
 	InspectorControls,
 	BlockControls,
 } from '@wordpress/block-editor';
-
-
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -55,6 +56,7 @@ const Settings = ( props ) => {
 
 	// Caching all attributes.
 	const {
+		block_id,
 		displayPostTitle,
 		displayPostDate,
 		displayPostComment,
@@ -249,6 +251,20 @@ const Settings = ( props ) => {
 		ctaLetterSpacingTablet,
 		ctaLetterSpacingMobile,
 		ctaLetterSpacingType,
+
+		boxShadowColor,
+		boxShadowHOffset,
+		boxShadowVOffset,
+		boxShadowBlur,
+		boxShadowSpread,
+		boxShadowPosition,
+		boxShadowColorHover,
+		boxShadowHOffsetHover,
+		boxShadowVOffsetHover,
+		boxShadowBlurHover,
+		boxShadowSpreadHover,
+		boxShadowPositionHover,
+		enableOffset
 	} = attributes;
 
 	const onSelectPostType = ( value ) => {
@@ -263,6 +279,10 @@ const Settings = ( props ) => {
 	const onSelectPagination = ( value ) => {
 		setAttributes( { postPagination: value } );
 		setAttributes( { paginationMarkup: 'empty' } );
+	};
+	const onSelectOffset = ( value ) => {
+		setAttributes( { enableOffset: value } );
+		setAttributes( { postPagination: !value } ); // disable pagination when enableOffset is true.
 	};
 	const onChangePostsPerPage = ( value ) => {
 		setAttributes( { postsToShow: value } );
@@ -495,7 +515,7 @@ const Settings = ( props ) => {
 						} )
 					}
 				/>
-				<Range
+				<UAGNumberControl
 					label={ __(
 						'Posts Per Page',
 						'ultimate-addons-for-gutenberg'
@@ -507,13 +527,39 @@ const Settings = ( props ) => {
 						label: 'postsToShow',
 					} }
 					onChange={ onChangePostsPerPage }
-					min={ 0 }
+					min={ 1 }
 					max={ 50 }
 					displayUnit={ false }
 				/>
-				<Range
+				<ToggleControl
 					label={ __(
 						'Offset Starting Post',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ enableOffset }
+					onChange={ onSelectOffset }
+					help= {
+						<>
+						{ !enableOffset && (
+							<>
+							{ __(
+								'Note: Enabling this will disable the Pagination. Setting the offset parameter overrides/ignores the paged parameter and breaks pagination. ',
+								'ultimate-addons-for-gutenberg' ) }
+							<ExternalLink
+								href={ 'https://developer.wordpress.org/reference/classes/wp_query/#pagination-parameters:~:text=Warning%3A%20Setting%20the%20offset%20parameter%20overrides/ignores%20the%20paged%20parameter%20and%20breaks%20pagination.%20The%20%27offset%27%20parameter%20is%20ignored%20when%20%27posts_per_page%27%3D%3E%2D1%20(show%20all%20posts)%20is%20used.' }
+							>
+								{ __( 'Read more' ) }
+							</ExternalLink>
+							</>
+							)
+						}
+						</>
+					}
+				/>
+				{ enableOffset && (
+				<UAGNumberControl
+					label={ __(
+						'Offset By',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={ setAttributes }
@@ -526,10 +572,15 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
-					help= {__(
-						'P.S. Note that We need to add Offset Starting Post to start post loading from specific post order.',
+					help= {
+						<>
+						{ enableOffset && __(
+						'Note: The offset will skip the number of posts set, and will use the next post as the starting post.',
 						'ultimate-addons-for-gutenberg' )}
+						</>
+					}
 				/>
+				) }
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Order By', 'ultimate-addons-for-gutenberg' ) }
@@ -627,6 +678,7 @@ const Settings = ( props ) => {
 						setAttributes( { equalHeight: ! equalHeight } )
 					}
 				/>
+				{ ! enableOffset && (
 				<ToggleControl
 					label={ __(
 						'Post Pagination',
@@ -635,6 +687,7 @@ const Settings = ( props ) => {
 					checked={ postPagination }
 					onChange={ onSelectPagination }
 				/>
+				) }
 				{ postPagination === true && (
 					<Range
 						label={ __(
@@ -683,6 +736,57 @@ const Settings = ( props ) => {
 				title={ __( 'Pagination', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __(
+						'Pagination Alignment',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: paginationAlignment,
+						label: 'paginationAlignment',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'left',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-left' ) }
+								/>
+							),
+							tooltip: __(
+								'Left',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'center',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-center' ) }
+								/>
+							),
+							tooltip: __(
+								'Center',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'right',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-right' ) }
+								/>
+							),
+							tooltip: __(
+								'Right',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ true }
+				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
@@ -1126,7 +1230,7 @@ const Settings = ( props ) => {
 	const spacingSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Layout Settings', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
 				<AdvancedPopColorControl
@@ -1142,7 +1246,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<ResponsiveSlider
-					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: columnGap,
@@ -1166,7 +1270,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<ResponsiveSlider
-					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: rowGap,
@@ -2002,63 +2106,170 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
+	const borderSettings = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<ResponsiveBorder
+					setAttributes={ setAttributes }
+					prefix={'overall'}
+					attributes={ attributes }
+					deviceType={ deviceType }
+					disableBottomSeparator={ true }
+					disabledBorderTitle= { true }
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+	const boxShadowSettings = () => {
+		return(
+			<UAGAdvancedPanelBody
+				title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<>
+						<UAGPresets
+								setAttributes = { setAttributes }
+								presets = { boxShadowPresets }
+								presetInputType = 'radioImage'
+							/>
+							<BoxShadowControl
+								blockId={ block_id }
+								setAttributes={ setAttributes }
+								label={ __(
+									'Box Shadow',
+									'ultimate-addons-for-gutenberg'
+								) }
+								boxShadowColor={ {
+									value: boxShadowColor,
+									label: 'boxShadowColor',
+									title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowHOffset={ {
+									value: boxShadowHOffset,
+									label: 'boxShadowHOffset',
+									title: __(
+										'Horizontal',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowVOffset={ {
+									value: boxShadowVOffset,
+									label: 'boxShadowVOffset',
+									title: __(
+										'Vertical',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowBlur={ {
+									value: boxShadowBlur,
+									label: 'boxShadowBlur',
+									title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowSpread={ {
+									value: boxShadowSpread,
+									label: 'boxShadowSpread',
+									title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowPosition={ {
+									value: boxShadowPosition,
+									label: 'boxShadowPosition',
+									title: __(
+										'Position',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+							/>
+						</>
+					}
+					hover={
+						<>
+						<UAGPresets
+								setAttributes = { setAttributes }
+								presets = { boxShadowHoverPresets }
+								presetInputType = 'radioImage'
+							/>
+							<BoxShadowControl
+								blockId={ block_id }
+								setAttributes={ setAttributes }
+								label={ __(
+									'Box Shadow',
+									'ultimate-addons-for-gutenberg'
+								) }
+								boxShadowColor={ {
+									value: boxShadowColorHover,
+									label: 'boxShadowColorHover',
+									title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowHOffset={ {
+									value: boxShadowHOffsetHover,
+									label: 'boxShadowHOffsetHover',
+									title: __(
+										'Horizontal',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowVOffset={ {
+									value: boxShadowVOffsetHover,
+									label: 'boxShadowVOffsetHover',
+									title: __(
+										'Vertical',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowBlur={ {
+									value: boxShadowBlurHover,
+									label: 'boxShadowBlurHover',
+									title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowSpread={ {
+									value: boxShadowSpreadHover,
+									label: 'boxShadowSpreadHover',
+									title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowPosition={ {
+									value: boxShadowPositionHover,
+									label: 'boxShadowPositionHover',
+									title: __(
+										'Position',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+							/>
+						</>
+					}
+					disableBottomSeparator={ true }
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	}
 	const paginationStyle = () => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Pagination', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __(
-						'Pagination Alignment',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						value: paginationAlignment,
-						label: 'paginationAlignment',
-					} }
-					className="uagb-multi-button-alignment-control"
-					options={ [
-						{
-							value: 'left',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-left' ) }
-								/>
-							),
-							tooltip: __(
-								'Left',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'center',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-center' ) }
-								/>
-							),
-							tooltip: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'right',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-right' ) }
-								/>
-							),
-							tooltip: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					showIcons={ true }
-				/>
 				<UAGTabsControl
 					tabs={ [
 						{
@@ -2247,6 +2458,8 @@ const Settings = ( props ) => {
 						{ postPagination && paginationStyle() }
 						{ displayPostImage === true &&
 							imageStyle() }
+						{ borderSettings() }
+						{ boxShadowSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.advance } parentProps={ props.parentProps }></InspectorTab>
 				</InspectorTabs>

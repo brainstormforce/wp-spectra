@@ -1,6 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 const btnBorderAttributes = getBorderAttributes( 'btn' );
+
 const attributes = {
 	blockName               : {
 		type    : 'string',
@@ -9,6 +10,10 @@ const attributes = {
 	pauseOnHover            : {
 		type    : 'boolean',
 		default : true,
+	},
+	enableOffset              : {
+		type    : 'boolean',
+		default : false,
 	},
 	infiniteLoop            : {
 		type    : 'boolean',
@@ -49,6 +54,24 @@ const attributes = {
 		default : 0,
 		UAGCopyPaste: {
 			styleType: 'arrow-border-radius'
+		},
+	},
+	arrowDistance			: {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'arrow-distance'
+		},
+	},
+	arrowDistanceTablet		: {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'arrow-distance-tablet'
+		},
+	},
+	arrowDistanceMobile		: {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'arrow-distance-mobile'
 		},
 	},
 	arrowColor              : {

@@ -3,7 +3,7 @@ const itemCount = 2;
 const buttons = [];
 
 for ( let i = 1; i <= itemCount; i++ ) {
-	const label = '#Click Here';
+	const label = 'Click Here';
 	const link = '#';
 	buttons.push( {
 		label,
@@ -89,6 +89,9 @@ const attributes = {
 	stack: {
 		type: 'string',
 		default: 'none',
+		UAGCopyPaste: {
+			styleType: 'btn-stack'
+		}
 	},
 	loadGoogleFonts: {
 		type: 'boolean',

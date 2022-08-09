@@ -19,4 +19,5 @@ $block_data = array(
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-masonry', 'uagb-imagesloaded', 'uagb-post-js' ),
 	'priority'         => 16,
+	'deprecated'       => true,
 );
