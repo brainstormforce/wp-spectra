@@ -27,7 +27,6 @@ $selectors = array(
 			UAGB_Block_Helper::get_fallback_number( $attr['headSpace'], 'headSpace', $block_name ),
 			'px'
 		),
-		'text-shadow'   => ( ! empty( $attr['headShadowColor'] ) ? UAGB_Helper::get_css_value( $attr['headShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['headShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['headShadowBlur'], 'px' ) . ' ' . $attr['headShadowColor'] : '' ),
 	),
 	'.wp-block-uagb-advanced-heading '                => array(
 		'background'     => 'classic' === $attr['blockBackgroundType'] ? $attr['blockBackground'] : $attr['blockGradientBackground'],
@@ -111,6 +110,8 @@ $selectors = array(
 	),
 );
 
+$heading_text_shadow_color = ( ! empty( $attr['headShadowColor'] ) ? UAGB_Helper::get_css_value( $attr['headShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['headShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['headShadowBlur'], 'px' ) . ' ' . $attr['headShadowColor'] : '' );
+
 if ( 'gradient' === $attr['headingColorType'] ) {
 	$selectors[' .uagb-heading-text']                     = array_merge(
 		$selectors[' .uagb-heading-text'],
@@ -118,6 +119,7 @@ if ( 'gradient' === $attr['headingColorType'] ) {
 			'background'              => $attr['headingGradientColor'],
 			'-webkit-background-clip' => 'text',
 			'-webkit-text-fill-color' => 'transparent',
+			'filter'                  => 'drop-shadow( ' . $heading_text_shadow_color . ' )',
 		)
 	);
 	$selectors['.wp-block-uagb-advanced-heading a']       = array_merge(
@@ -130,6 +132,13 @@ if ( 'gradient' === $attr['headingColorType'] ) {
 		$selectors['.wp-block-uagb-advanced-heading a:hover'],
 		array(
 			'-webkit-text-fill-color' => $attr['linkHColor'],
+		)
+	);
+} else {
+	$selectors[' .uagb-heading-text'] = array_merge(
+		$selectors[' .uagb-heading-text'],
+		array(
+			'text-shadow' => $heading_text_shadow_color,
 		)
 	);
 }
