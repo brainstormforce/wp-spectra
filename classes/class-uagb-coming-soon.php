@@ -66,8 +66,7 @@ class UAGB_Coming_Soon {
 		$coming_soon_page_id = intval( UAGB_Admin_Helper::get_admin_settings_option( 'uag_coming_soon_page', false ) );
 		$current_page_id     = get_the_ID();
 
-		if ( $coming_soon_page_id !== $current_page_id ) {
-
+		if ( $coming_soon_page_id !== $current_page_id && 'publish' === get_post_status( $coming_soon_page_id ) ) {
 			wp_safe_redirect( get_page_link( $coming_soon_page_id ) );
 			exit();
 		}
