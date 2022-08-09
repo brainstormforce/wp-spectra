@@ -20,4 +20,5 @@ $block_data = array(
 	'dynamic_assets'   => array(
 		'dir' => 'taxonomy-list',
 	),
+	'deprecated'       => false,
 );

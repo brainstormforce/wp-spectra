@@ -15,4 +15,5 @@ $block_data = array(
 	'description' => __( 'This block fetches post comments, author, publish date and categories data.', 'ultimate-addons-for-gutenberg' ),
 	'default'     => true,
 	'is_child'    => true,
+	'deprecated'  => false,
 );

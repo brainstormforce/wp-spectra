@@ -22,4 +22,5 @@ $block_data = array(
 	'dynamic_assets'   => array(
 		'dir' => 'gf-styler',
 	),
+	'deprecated'       => true,
 );

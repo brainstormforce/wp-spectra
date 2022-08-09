@@ -21,7 +21,7 @@ export const PostTaxonomy = ( props ) => {
 
 	return (
 		<>
-			{ displayPostTaxonomy && 'aboveTitle' === displayPostTaxonomyAboveTitle && (
+			{ displayPostTaxonomy && 'aboveTitle' === displayPostTaxonomyAboveTitle && 0 !== categoriesName.length && (
 				<>
 				{ ( 'default' === taxStyle ) && (
 					<span className=" uagb-post__text uagb-post__taxonomy  default">

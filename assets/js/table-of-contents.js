@@ -18,13 +18,13 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 		}
 
 		const elementToOpen = document.querySelector( id );
-		if( document.querySelector( '.uagb-toc__wrap svg' ) !== null ){
+
+		if( document.querySelector( '.uagb-toc__wrap svg' ) !== null && elementToOpen ){
 
 			elementToOpen.querySelector( '.uagb-toc__wrap svg' )?.addEventListener( 'click', function(){
 				const $root = this.closest( '.wp-block-uagb-table-of-contents' );
 
 				if ( $root.classList.contains( 'uagb-toc__collapse' ) ) {
-
 					$root.classList.remove( 'uagb-toc__collapse' );
 					UAGBTableOfContents._slideDown(
 						elementToOpen.querySelector( '.wp-block-uagb-table-of-contents .uagb-toc__list-wrap' ),
@@ -57,7 +57,7 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 		target.style.paddingBottom = 0;
 		target.style.marginTop = 0;
 		target.style.marginBottom = 0;
-		window.setTimeout( function () {
+		window.setTimeout( () => {
 			target.style.display = 'none';
 			target.style.removeProperty( 'height' );
 			target.style.removeProperty( 'padding-top' );
@@ -94,7 +94,7 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 		target.style.removeProperty( 'padding-bottom' );
 		target.style.removeProperty( 'margin-top' );
 		target.style.removeProperty( 'margin-bottom' );
-		window.setTimeout( function () {
+		window.setTimeout( () => {
 			target.style.removeProperty( 'height' );
 			target.style.removeProperty( 'overflow' );
 			target.style.removeProperty( 'transition-duration' );

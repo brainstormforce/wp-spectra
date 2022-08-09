@@ -29,4 +29,6 @@ $block_data = array(
 	'dynamic_assets'      => array(
 		'dir' => 'content-timeline',
 	),
+	'js_assets'        => array( 'uagb-timeline-js' ),
+	'deprecated'       => false
 );

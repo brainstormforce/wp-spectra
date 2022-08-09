@@ -100,6 +100,9 @@ const Settings = ( props ) => {
 			blockMarginUnitTablet,
 			blockMarginUnitMobile,
 			blockMarginLink,
+			starPosition,
+			starPositionTablet,
+			starPositionMobile
 		},
 		deviceType,
 	} = props;
@@ -262,7 +265,35 @@ const Settings = ( props ) => {
 				/>
 
 			) }
-
+			<MultiButtonsControl
+				setAttributes={ setAttributes }
+				label={ __( 'Star Position', 'ultimate-addons-for-gutenberg' ) }
+				data={ {
+					desktop: {
+						value: starPosition,
+						label: 'starPosition',
+					},
+					tablet: {
+						value: starPositionTablet,
+						label: 'starPositionTablet',
+					},
+					mobile: {
+						value: starPositionMobile,
+						label: 'starPositionMobile',
+					},
+				} }
+				options={ [
+					{
+						value: 'before',
+						label: __( 'Before', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'after',
+						label: __( 'After', 'ultimate-addons-for-gutenberg' ),
+					},
+				] }
+				responsive={true}
+			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }

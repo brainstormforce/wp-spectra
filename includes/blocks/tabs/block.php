@@ -28,4 +28,5 @@ $block_data = array(
 	'dynamic_assets'      => array(
 		'dir' => 'tabs',
 	),
+	'deprecated'       => false,
 );

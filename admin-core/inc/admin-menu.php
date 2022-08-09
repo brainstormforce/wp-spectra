@@ -90,7 +90,7 @@ class Admin_Menu {
 			'<a href="' . $default_url . '">' . __( 'Settings', 'ultimate-addons-for-gutenberg' ) . '</a>',
 		);
 
-		return array_merge( $links, $mylinks );
+		return array_merge( $mylinks, $links );
 	}
 
 	/**
@@ -200,6 +200,7 @@ class Admin_Menu {
 				'global_data'              => Admin_Helper::get_options(),
 				'uag_content_width_set_by' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_content_width_set_by', __( 'Spectra', 'ultimate-addons-for-gutenberg' ) ),
 				'spectra_pro_status'       => is_plugin_active( 'uag-pro/uag-pro.php' ),
+				'spectra_custom_fonts'     => apply_filters( 'spectra_system_fonts', array() ),
 			)
 		);
 
@@ -382,7 +383,7 @@ class Admin_Menu {
 
 		$logs_page_url = '#';
 
-		echo '<span id="footer-thankyou"> Thank you for using <a href="#" class="focus:text-wphovercolor active:text-wphovercolor hover:text-wphovercolor">Spectra.</a></span>';
+		echo '<span id="footer-thankyou"> Thank you for using <a href="#" class="focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover">Spectra.</a></span>';
 	}
 
 }

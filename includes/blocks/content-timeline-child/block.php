@@ -16,4 +16,5 @@ $block_data = array(
 	'default'     => true,
 	'is_child'    => true,
 	'static_css'  => 'timeline',
+	'deprecated'  => false,
 );

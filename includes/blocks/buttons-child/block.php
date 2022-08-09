@@ -19,4 +19,5 @@ $block_data = array(
 	'dynamic_assets' => array(
 		'dir' => 'buttons-child',
 	),
+	'deprecated'  => false,
 );

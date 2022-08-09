@@ -38,4 +38,8 @@ $block_data = array(
 	'dynamic_assets'      => array(
 		'dir' => 'post-carousel',
 	),
+
+	'js_assets'        => array( 'uagb-slick-js', 'uagb-post-js', 'uagb-imagesloaded' ),
+	'css_assets'       => array( 'uagb-slick-css' ),
+	'deprecated'       => false
 );

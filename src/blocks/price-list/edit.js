@@ -3,7 +3,7 @@
  */
 
 import RestMenuStyle from './inline-styles';
-import { select, dispatch } from '@wordpress/data';
+import { select } from '@wordpress/data';
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -14,7 +14,6 @@ const Settings = lazy( () =>
 const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/price-list/render" */ './render' )
 );
-import { getFallbackNumber } from '@Controls/getAttributeFallback';
 const UAGBRestaurantMenu = ( props ) => {
 	const deviceType = useDeviceType();
 	useEffect( () => {
@@ -107,20 +106,8 @@ const UAGBRestaurantMenu = ( props ) => {
 		const {
 			imgAlign,
 			imagePosition,
-			columns,
-			tcolumns,
-			mcolumns,
-			headingTag,
-			imageSize,
-			headingAlign,
-			stack,
-			imageAlignment
 		} = props.attributes;
 
-		const blockName = props.name.replace( 'uagb/', '' );
-		const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
-		const tcolumnsFallback = getFallbackNumber( tcolumns, 'tcolumns', blockName );
-		const mcolumnsFallback = getFallbackNumber( mcolumns, 'mcolumns', blockName );
 
 		if( 'side' === imgAlign && 'right' !== imagePosition ){
 			props.setAttributes( { imagePosition : 'left' } );
@@ -129,52 +116,6 @@ const UAGBRestaurantMenu = ( props ) => {
 		if( 'top' === imgAlign ){
 			props.setAttributes( { imagePosition : 'top' } );
 		}
-
-		const { getSelectedBlock, getBlockAttributes } = select( 'core/block-editor' );
-
-        let childBlocks = [];
-
-        if ( getSelectedBlock()?.innerBlocks ) {
-            childBlocks = getSelectedBlock().innerBlocks;
-        }
-
-        const childBlocksClientIds = [];
-
-        childBlocks.map( ( childBlock ) => {
-            if ( childBlock.clientId ) {
-                childBlocksClientIds.push( childBlock.clientId );
-            }
-            return childBlock;
-        } );
-
-        childBlocksClientIds.map( ( clientId ) => {
-			const attrs = getBlockAttributes( clientId );
-			if (
-				attrs.imagePosition !== imagePosition ||
-				attrs.columns !== columnsFallback ||
-				attrs.tcolumns !== tcolumnsFallback ||
-				attrs.mcolumns !== mcolumnsFallback ||
-				attrs.headingTag !== headingTag ||
-				attrs.imageSize !== imageSize ||
-				attrs.headingAlign !== headingAlign ||
-				attrs.stack !== stack ||
-				attrs.imageAlignment !== imageAlignment
-			) {
-				const childAttrs = {
-					imagePosition,
-					columns,
-					tcolumns,
-					mcolumns,
-					headingTag,
-					imageSize,
-					headingAlign,
-					stack,
-					imageAlignment,
-				}
-				dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, childAttrs );
-			}
-			return clientId;
-        } );
 
 	}, [ props ] );
 
