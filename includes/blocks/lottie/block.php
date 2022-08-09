@@ -18,4 +18,5 @@ $block_data = array(
 	'default'          => true,
 	'js_assets'        => array( 'uagb-lottie-js', 'uagb-bodymovin-js' ),
 	'priority'         => 32,
+	'deprecated'       => false,
 );
