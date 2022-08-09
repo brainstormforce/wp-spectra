@@ -52,7 +52,7 @@ const ContainerGlobalPadding = () => {
                 </div>
             </div>
             <p className="mt-2 w-9/12 text-sm text-slate-500">
-                { __( 'This setting will apply default spacing in the Container Block.', 'ultimate-addons-for-gutenberg' ) }
+                { __( 'This setting will apply default padding in the Container Block.', 'ultimate-addons-for-gutenberg' ) }
             </p>
         </section>
     );
