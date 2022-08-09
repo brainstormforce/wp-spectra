@@ -24,21 +24,6 @@ $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
 	)
 );
 
-$sepearator_border_defaults = array(
-	'borderStyle'             => 'none',
-	'borderTopWidth'          => 100,
-	'borderRightWidth'        => 100,
-	'borderBottomWidth'       => 100,
-	'borderLeftWidth'         => 100,
-	'borderTopLeftRadius'     => 0,
-	'borderTopRightRadius'    => 0,
-	'borderBottomLeftRadius'  => 0,
-	'borderBottomRightRadius' => 0,
-	'borderColor'             => '#b2b4b5',
-	'borderHColor'            => '#b2b4b5',
-);
-$separator_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'seperator', $sepearator_border_defaults );
-
 return array_merge(
 	array(
 		'block_id'                 => '',
@@ -145,7 +130,11 @@ return array_merge(
 		'listLetterSpacingTablet'  => '',
 		'listLetterSpacingMobile'  => '',
 		'listLetterSpacingType'    => 'px',
+		'seperatorStyle'           => 'none',
+		'seperatorWidth'           => 100,
+		'seperatorThickness'       => 1,
+		'seperatorColor'           => '#b2b4b5',
+		'seperatorHoverColor'      => '#b2b4b5',
 	),
-	$separator_border_attribute,
 	$border_attribute
 );
