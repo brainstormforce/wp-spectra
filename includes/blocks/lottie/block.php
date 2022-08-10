@@ -17,6 +17,6 @@ $block_data = array(
 	'description'      => __( 'This block helps you add Lottie animation and customize it as required.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'js_assets'        => array( 'uagb-lottie-js', 'uagb-bodymovin-js' ),
-	'priority'         => 32,
+	'priority'         => 18,
 	'deprecated'       => false,
 );

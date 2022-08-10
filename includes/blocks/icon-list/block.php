@@ -17,6 +17,6 @@ $block_data = array(
 	'description'      => __( 'This block allows you to place an image or icon in a list format.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 12,
+	'priority'         => 16,
 	'deprecated'       => false,
 );
