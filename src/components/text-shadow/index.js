@@ -12,8 +12,6 @@ import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
 
-const classNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
-
 const TextShadowControl = ( props ) => {
 	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
 

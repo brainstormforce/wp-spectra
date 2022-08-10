@@ -21,8 +21,6 @@ import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
 // Export for ease of importing in individual blocks.
 export { TypographyStyles };
 
-const classNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
-
 const TypographyControl = ( props ) => {
 
 	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
