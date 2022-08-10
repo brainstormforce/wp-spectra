@@ -17,6 +17,6 @@ $block_data = array(
 	'description'      => __( 'This block gives you advanced options to insert a number of columns within a single row.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 35,
+	'priority'         => 90,
 	'deprecated'       => true,
 );

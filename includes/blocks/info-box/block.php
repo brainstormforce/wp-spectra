@@ -17,6 +17,6 @@ $block_data = array(
 	'description'      => __( 'This block allows you to place an image or icon along with a heading, description, separator and CTA within a single block.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 7,
+	'priority'         => 5,
 	'deprecated'       => false,
 );

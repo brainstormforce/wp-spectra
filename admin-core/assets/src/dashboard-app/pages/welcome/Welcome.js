@@ -16,7 +16,7 @@ const Welcome = () => {
 
 	const onReadFullGuideClick = () => {
 		window.open(
-			'https://ultimategutenberg.com',
+			'https://wpspectra.com/',
 			'_blank'
 		);
 	};

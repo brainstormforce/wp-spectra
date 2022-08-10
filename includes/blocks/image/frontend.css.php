@@ -58,7 +58,7 @@ $selectors = array(
 			'box-shadow' => UAGB_Helper::get_css_value( $attr['imageBoxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowSpread'], 'px' ) . ' ' . $attr['imageBoxShadowColor'] . ' ' . $imageBoxShadowPosition,
 		)
 	),
-	'.wp-block-uagb-image .wp-block-uagb-image__figure img:hover' => array(
+	'.wp-block-uagb-image .wp-block-uagb-image__figure:hover' => array(
 		'border-color' => $attr['imageBorderHColor'],
 	),
 	'.wp-block-uagb-image .wp-block-uagb-image__figure figcaption' => array(

@@ -68,25 +68,25 @@ const AdvancedPopColorControl = ( props ) => {
 		let newColor;
 		if ( palette ) {
 			newColor = color;
-		} else if (	color.rgb && color.rgb.a && 1 !== color.rgb.a ) {
+		} else if (	color?.rgb && color?.rgb?.a && 1 !== color?.rgb?.a ) {
 
 			if ( onOpacityChange ) {
-				opacity = color.rgb.a;
+				opacity = color?.rgb?.a;
 			}
 
 			newColor =
 				'rgba(' +
-				color.rgb.r +
+				color?.rgb?.r +
 				',' +
-				color.rgb.g +
+				color?.rgb?.g +
 				',' +
-				color.rgb.b +
+				color?.rgb?.b +
 				',' +
-				color.rgb.a +
+				color?.rgb?.a +
 				')';
 
-		} else if ( color.hex ) {
-			newColor = color.hex;
+		} else if ( color?.hex ) {
+			newColor = color?.hex;
 		} else {
 			newColor = color;
 		}
@@ -99,7 +99,7 @@ const AdvancedPopColorControl = ( props ) => {
 
 		if ( true === palette ) {
 			setValue( {
-				refresh: ! value.refresh,
+				refresh: ! value?.refresh,
 			} );
 		}
 

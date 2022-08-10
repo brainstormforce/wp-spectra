@@ -18,6 +18,6 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-timeline-js' ),
-	'priority'         => 28,
+	'priority'         => 11,
 	'deprecated'       => false,
 );

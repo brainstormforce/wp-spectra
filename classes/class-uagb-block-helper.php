@@ -144,7 +144,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors[ $wrapper ]                         = $border_css_mobile;
 			$t_selectors[ $wrapper ]                         = $border_css_tablet;
 			$selectors[ $wrapper . ':hover' ]                = array(
-				'border-color' => isset( $attr['borderHoverColor'] ) && ! empty( $attr['borderHoverColor'] ) ? $attr['borderHoverColor'] : $attr['btnBorderHColor'],
+				'border-color' => $attr['btnBorderHColor'],
 			);
 			$selectors[ $wrapper . ' .uagb-button__link' ]   = array(
 				'color'           => $attr['color'],
