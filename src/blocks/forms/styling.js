@@ -72,10 +72,10 @@ function styling( props ) {
 		toggleActiveColor,
 		toggleDotColor,
 		toggleDotActiveColor,
-		toggleBorderStyle,
-		toggleBorderWidth,
+		checkBoxToggleBorderStyle,
+		checkBoxToggleBorderBottomWidth,
 		toggleBorderRadius,
-		toggleBorderColor,
+		checkBoxToggleBorderColor,
 		checkBoxToggleBorderHColor,
 		labelColor,
 		labelHoverColor,
@@ -86,7 +86,6 @@ function styling( props ) {
 		inputplaceholderColor,
 		inputplaceholderHoverColor,
 		inputplaceholderActiveColor,
-		inputactiveColor,
 		fieldBorderHColor,
 		fieldGap,
 		fieldGapTablet,
@@ -298,7 +297,7 @@ function styling( props ) {
 		},
 		' .uagb-forms-main-form .uagb-forms-input:focus': {
 			'outline': ' none !important',
-			'border': '2px solid ' + inputactiveColor,
+			'border': '2px solid ' + fieldBorderHColor,
 			'background-color': `${ bgActiveColor } !important`,
 		},
 		' .uagb-forms-main-form .uagb-forms-input:focus::placeholder': {
@@ -772,10 +771,10 @@ function styling( props ) {
 		tabletSelectors[ ' .uagb-slider ' ] = toggleBorderTablet;
 		// Label Hovev Colors
 	} else if ( 'underlined' === formStyle ) {
-		selectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
-			'border-top-width': 0,
-			'border-right-width': 0,
-			'border-left-width': 0,
+		selectors[ '.uagb-forms__outer-wrap .uagb-forms-main-form  .uagb-forms-input' ] = {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
 			'border-top': 0,
 			'border-left': 0,
 			'border-right': 0,
@@ -802,9 +801,6 @@ function styling( props ) {
 			'border-top-width': 0,
 			'border-right-width': 0,
 			'border-left-width': 0,
-			'border-top': 0,
-			'border-left': 0,
-			'border-right': 0,
 			'box-shadow': 'unset',
 		};
 		tabletSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
@@ -849,40 +845,40 @@ function styling( props ) {
 			' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'
 		] = {
 			'border-bottom':
-				generateCSSUnit( toggleBorderWidth, 'px' ) +
+				generateCSSUnit( checkBoxToggleBorderBottomWidth, 'px' ) +
 				' ' +
-				toggleBorderStyle +
+				checkBoxToggleBorderStyle +
 				' ' +
-				toggleBorderColor,
+				checkBoxToggleBorderColor,
 		};
 		selectors[
 			' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before'
 		] = {
 			'border-bottom':
-				generateCSSUnit( toggleBorderWidth, 'px' ) +
+				generateCSSUnit( checkBoxToggleBorderBottomWidth, 'px' ) +
 				' ' +
-				toggleBorderStyle +
+				checkBoxToggleBorderStyle +
 				' ' +
-				toggleBorderColor,
+				checkBoxToggleBorderColor,
 		};
 		selectors[
 			' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before'
 		] = {
 			'border-bottom':
-				generateCSSUnit( toggleBorderWidth, 'px' ) +
+				generateCSSUnit( checkBoxToggleBorderBottomWidth, 'px' ) +
 				' ' +
-				toggleBorderStyle +
+				checkBoxToggleBorderStyle +
 				' ' +
-				toggleBorderColor,
+				checkBoxToggleBorderColor,
 		};
 		selectors[ ' .uagb-slider ' ] = {
 			'background-color': toggleColor,
 			'border-bottom':
-				generateCSSUnit( toggleBorderWidth, 'px' ) +
+				generateCSSUnit( checkBoxToggleBorderBottomWidth, 'px' ) +
 				' ' +
-				toggleBorderStyle +
+				checkBoxToggleBorderStyle +
 				' ' +
-				toggleBorderColor,
+				checkBoxToggleBorderColor,
 		};
 	}
 
