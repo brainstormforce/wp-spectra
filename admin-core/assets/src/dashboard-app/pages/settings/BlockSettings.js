@@ -91,34 +91,20 @@ const BlockSettings = () => {
 		<section className='block border-b border-solid border-slate-200 px-12 py-8 justify-between'>  
 			<div className='mr-16 w-full flex items-center'>
 				<h3 className="p-0 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900">
-						{ __( 'Form - Google reCAPTCHA', 'ultimate-addons-for-gutenberg' ) }
+						{ __( 'Form', 'ultimate-addons-for-gutenberg' ) }
 				</h3>
 			</div>
-			<p className="mt-2 w-9/12 text-sm text-slate-500">{ __( 'To enable reCAPTCHA for your form, please follow the steps mentioned below:', 'ultimate-addons-for-gutenberg' ) }</p>
-			<ol className="mt-2 w-9/12 text-sm text-slate-500 list-decimal">
-				<li className="mt-2 ml-8">{ __( 'Go to forms block on your page and enable Google reCAPTCHA.', 'ultimate-addons-for-gutenberg' ) }</li>
-				<li className="mt-2 ml-8">{ __( 'Select reCAPTCHA version.', 'ultimate-addons-for-gutenberg' ) }</li>
-				<li className="mt-2 ml-8">{ __( 'Come back to this screen and add site key along with secret key.', 'ultimate-addons-for-gutenberg' ) }</li>
-			</ol>
-			<p className="mt-2 w-9/12 text-sm text-slate-500">{ __( 'Once done, reCAPTCHA will be enabled for your form.', 'ultimate-addons-for-gutenberg' ) }</p>
-			<p className="mt-2 w-9/12 text-sm">
+			<p className="mt-2 w-9/12 text-sm text-slate-500">{ __( 'To enable reCAPTCHA for your form, please follow the steps mentioned ', 'ultimate-addons-for-gutenberg' ) }
 				<a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href="https://www.google.com/recaptcha/admin/create" target="_blank" rel="noreferrer">
-					{ __( 'Get Keys', 'ultimate-addons-for-gutenberg' ) }
-				</a>
-				{ __( ' | ', 'ultimate-addons-for-gutenberg' ) }
-				<a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href="https://developers.google.com/recaptcha/intro" target="_blank" rel="noreferrer">
-					{ __(
-						' Documentation',
-						'ultimate-addons-for-gutenberg'
-					) }
+					{ __( 'here. ', 'ultimate-addons-for-gutenberg' ) }
 				</a>
 			</p>
 			{/* Recaptcha V2 */}
-			<h3 className="mt-8 font-medium text-sm text-slate-800">
+			<h4 className="mt-8 font-medium text-sm text-slate-800 spectra-recaptcha__heading">
 				{ __( 'reCAPTCHA v2', 'ultimate-addons-for-gutenberg' ) }
-			</h3>
+			</h4>
 			<input
-				className="mt-3 w-9/12 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
+				className="mt-3 w-80 mr-5 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
 				placeholder={ __( 'Site Key v2', 'ultimate-addons-for-gutenberg' ) }
 				value={ siteKeyV2 }
 				name='site_key_v2'
@@ -127,7 +113,7 @@ const BlockSettings = () => {
 				type="text"
 			/>
 			<input
-				className="mt-3 w-9/12 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
+				className="mt-3 w-80 mr-5 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
 				placeholder={ __( 'Secret Key v2', 'ultimate-addons-for-gutenberg' ) }
 				id="grid-zip"
 				value={ secretKeyV2 }
@@ -136,11 +122,11 @@ const BlockSettings = () => {
 				type="text"
 			/>
 			{/* Recaptcha V3 */}
-			<h3 className="mt-8 font-medium text-sm text-slate-800">
+			<h4 className="mt-8 font-medium text-sm text-slate-800 spectra-recaptcha__heading">
 				{ __( 'reCAPTCHA v3', 'ultimate-addons-for-gutenberg' ) }
-			</h3>
+			</h4>
 			<input
-				className="mt-3 w-9/12 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
+				className="mt-3 w-80 mr-5 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
 				placeholder={ __( 'Site Key v3', 'ultimate-addons-for-gutenberg' ) }
 				id="grid-zip"
 				type="text"
@@ -149,7 +135,7 @@ const BlockSettings = () => {
 				onChange={ updateRecaptchaSiteKeyV3 }
 			/>
 			<input
-				className="mt-3 w-9/12 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
+				className="mt-3 w-80 mr-5 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
 				placeholder={ __( 'Secret Key v3', 'ultimate-addons-for-gutenberg' ) }
 				id="grid-zip"
 				type="text"
