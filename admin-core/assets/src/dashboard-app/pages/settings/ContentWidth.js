@@ -30,13 +30,13 @@ const ContentWidth = () => {
 	};
 
     return (
-        <section className='block border-b border-solid border-slate-200 px-12 py-8 justify-between'>  
+        <section className='block border-b border-solid border-slate-200 px-12 py-8 justify-between'>
             <div className='mr-16 w-full flex items-center'>
                 <h3 className="p-0 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900">
 					{ __( 'Default Content Width', 'ultimate-addons-for-gutenberg' ) }
 				</h3>
 				<div className='flex spectra-content-width-input-wrap'>
-					<input className="appearance-none block w-20 h-8 leading-tight transition spectra-admin__input-field" id="grid-zip" value={contentWidth} onChange={updateContentWidth} type="number" placeholder="1200" min={0} max={1600} />
+					<input className="appearance-none block w-20 h-8 leading-tight transition spectra-admin__input-field" id="grid-zip" value={contentWidth} onChange={updateContentWidth} type="number" placeholder="1140" min={0} max={1600} />
 					<span className="inline-flex h-8 items-center sm:text-sm transition spectra-admin__input-field--end-display">
 						{ __( 'px', 'ultimate-addons-for-gutenberg' ) }
 					</span>
