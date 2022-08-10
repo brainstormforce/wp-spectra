@@ -530,13 +530,10 @@ function styling( props ) {
 	};
 
 	if ( 'default' === contentWidth ) {
-		selectors['.block-editor-block-list__block'].width = generateCSSUnit( widthDesktopFallback, widthType );
 		selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthDesktopFallback, widthType );
 
-		tablet_selectors['.block-editor-block-list__block'].width = generateCSSUnit( widthTablet, widthType );
 		tablet_selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthTablet, widthType );
 
-		mobile_selectors['.block-editor-block-list__block'].width = generateCSSUnit( widthMobile, widthType );
 		mobile_selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthMobile, widthType );
 	}
 
