@@ -10,7 +10,7 @@ import Description from './components/Description';
 import RestMenuImage from './components/RestMenuImage';
 
 export default function save( props ) {
-	const { imagePosition, headingAlign, imgAlign } = props.attributes;
+	const { imagePosition, headingAlign, imgAlign, showImage } = props.attributes;
 
 	return (
 		<div
@@ -20,7 +20,9 @@ export default function save( props ) {
 		>
 			{ imgAlign === 'top' && (
 				<>
-					<RestMenuImage attributes={ props.attributes } />
+					{ showImage &&
+						<RestMenuImage attributes={ props.attributes } />
+					}
 					<div className="uagb-rm__content">
 						{ headingAlign === 'right' && (
 							<Price
@@ -62,7 +64,7 @@ export default function save( props ) {
 			{ imgAlign === 'side' && (
 				<>
 					<div className="uagb-rm__content">
-						{ imagePosition === 'left' && (
+						{ imagePosition === 'left' && showImage && (
 							<RestMenuImage attributes={ props.attributes } />
 						)}
 						{ imagePosition === 'right' && (
@@ -91,7 +93,7 @@ export default function save( props ) {
 								props={ props }
 							/>	
 						)}
-						{ imagePosition === 'right' && (
+						{ imagePosition === 'right' && showImage && (
 							<RestMenuImage attributes={ props.attributes } />
 						)}
 					</div>
