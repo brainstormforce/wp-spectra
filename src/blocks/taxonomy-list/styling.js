@@ -110,6 +110,11 @@ function styling( props ) {
 		listLetterSpacingTablet,
 		listLetterSpacingMobile,
 		listLetterSpacingType,
+		seperatorStyle,
+		seperatorWidth,
+		seperatorThickness,
+		seperatorColor,
+		seperatorHoverColor,
 	} = props.attributes;
 
 	const listBottomMarginFallback = getFallbackNumber( listBottomMargin, 'listBottomMargin', blockName );
@@ -119,10 +124,6 @@ function styling( props ) {
 	const titleBottomSpaceFallback = getFallbackNumber( titleBottomSpace, 'titleBottomSpace', blockName );
 	const rowGapFallback = getFallbackNumber( rowGap, 'rowGap', blockName );
 	const columnGapFallback = getFallbackNumber( columnGap, 'columnGap', blockName );
-
-	const borderCSS = generateBorderCSS( props.attributes, 'separator', '' );
-	const borderCSSTablet = generateBorderCSS( props.attributes,'separator', 'tablet' );
-	const borderCSSMobile = generateBorderCSS( props.attributes,'separator', 'mobile' );
 
 	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall', '' );
 	const overallBorderCSSTablet = generateBorderCSS( props.attributes,'overall', 'tablet' );
@@ -336,14 +337,33 @@ function styling( props ) {
 		},
 		/* End Backword */
 	};
-
+	if ( seperatorStyle !== 'none' ) {
+		/* start Backword */
+		selectors[ ' .uagb-layout-list .uagb-tax-separator' ] = {
+			'border-top-color': seperatorColor,
+			'border-top-style': seperatorStyle,
+			'border-top-width': generateCSSUnit( seperatorThickness, 'px' ),
+			'width': generateCSSUnit( seperatorWidth, '%' ),
+		};
+		selectors[ ' .uagb-layout-list .uagb-tax-separator:hover' ] = {
+			'border-top-color': seperatorHoverColor,
+		};
+		/* End Backword */
+		selectors[ '.uagb-layout-list .uagb-tax-separator' ] = {
+			'border-top-color': seperatorColor,
+			'border-top-style': seperatorStyle,
+			'border-top-width': generateCSSUnit( seperatorThickness, 'px' ),
+			'width': generateCSSUnit( seperatorWidth, '%' ),
+		};
+		selectors[ '.uagb-layout-list .uagb-tax-separator:hover' ] = {
+			'border-top-color': seperatorHoverColor,
+		};
+	}
 	/* start Backword */
-	selectors[ ' .uagb-layout-list .uagb-tax-separator' ] = borderCSS;
 	selectors[ ' .uagb-layout-list .uagb-tax-separator:hover' ] = {
 		'border-top-color': seperatorBorderHColor,
 	};
 	/* End Backword */
-	selectors[ '.uagb-layout-list .uagb-tax-separator' ] = borderCSS;
 	selectors[ '.uagb-layout-list .uagb-tax-separator:hover' ] = {
 		'border-top-color': seperatorBorderHColor,
 	};
@@ -582,10 +602,6 @@ function styling( props ) {
 		},
 		/* End Backword */
 	};
-
-	tabletSelectors[ ' .uagb-layout-list .uagb-tax-separator' ] = borderCSSTablet;
-
-	mobileSelectors[ ' .uagb-layout-list .uagb-tax-separator' ] = borderCSSMobile;
 
 	let stylingCss = '';
 	const id = `.uagb-block-${ block_id }`;
