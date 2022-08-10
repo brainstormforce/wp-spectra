@@ -215,7 +215,7 @@ export default function styling( props ) {
 			'box-shadow': generateCSSUnit( imageBoxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( imageBoxShadowVOffset, 'px' ) +	' ' + generateCSSUnit( imageBoxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( imageBoxShadowSpread, 'px' ) + ' ' + imageBoxShadowColor + ' ' + getImageShadowPosition,
 			...imageBorderCSS
 		},
-		'.wp-block-uagb-image .wp-block-uagb-image__figure img:hover':{
+		'.wp-block-uagb-image .wp-block-uagb-image__figure:hover':{
 			'border-color': imageBorderHColor
 		},
 		'.wp-block-uagb-image .wp-block-uagb-image__figure figcaption': {
