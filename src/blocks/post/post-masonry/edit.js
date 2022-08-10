@@ -1198,7 +1198,6 @@ const UAGBPostMasonry = ( props ) => {
 								attributes={ attributes }
 								deviceType={ deviceType }
 								disableBottomSeparator={ true }
-								disabledBorderTitle= { true }
 							/>
 						</>
 					) }
@@ -2411,7 +2410,6 @@ const UAGBPostMasonry = ( props ) => {
 					prefix={ 'btn' }
 					attributes={ attributes }
 					deviceType={ deviceType }
-					disabledBorderTitle= { true }
 				/>
 				<SpacingControl
 					{ ...props }

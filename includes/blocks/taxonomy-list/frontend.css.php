@@ -152,13 +152,13 @@ $selectors = array(
 
 );
 if ( 'none' !== $attr['seperatorStyle'] ) {
-	$selectors['.uagb-layout-list .uagb-tax-separator']       = array(
+	$selectors['.uagb-layout-list .uagb-tax-separator']        = array(
 		'border-top-color' => $attr['seperatorColor'],
 		'border-top-style' => $attr['seperatorStyle'],
 		'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], 'px' ),
 		'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], '%' ),
 	);
-	$selectors['.uagb-layout-list .uagb-tax-separator:hover'] = array(
+	$selectors['.uagb-layout-list .uagb-tax-separator:hover']  = array(
 		'border-top-color' => $attr['seperatorHoverColor'],
 	);
 	$selectors[' .uagb-layout-list .uagb-tax-separator']       = array(
