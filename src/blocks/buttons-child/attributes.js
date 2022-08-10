@@ -275,7 +275,7 @@ const attributes = {
 	},
 	icon: {
 		type: 'string',
-		default: '',
+		default: 'arrow-right',
 	},
 	iconPosition: {
 		type: 'string',
@@ -535,6 +535,10 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'main-title-letter-spacing-type'
 		}
+	},
+	showIcon: {
+		type: 'boolean',
+		default: false,
 	},
 };
 

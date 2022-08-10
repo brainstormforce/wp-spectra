@@ -61,7 +61,7 @@ return (
 									{dynamicUAGChangelogRSSFeed.map( ( item, index ) => {
 										const title = dynamicUAGChangelogRSSFeed[index].title;
 										const description = dynamicUAGChangelogRSSFeed[index].description;
-										const link = 'https://ultimategutenberg.com/changelog/';
+										const link = 'https://wpspectra.com/changelog/';
 										const pubDate = dynamicUAGChangelogRSSFeed[index].date;
 
 										return (
