@@ -19,4 +19,5 @@ $block_data = array(
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-inline-notice-js', 'uagb-cookie-lib' ),
 	'priority'         => 20,
+	'deprecated'       => false,
 );

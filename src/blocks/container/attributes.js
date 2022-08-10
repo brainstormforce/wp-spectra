@@ -328,7 +328,6 @@ const attributes = {
 
 	borderStyle: {
 		type: 'string',
-		default: 'none',
 	},
 	borderWidth: {
 		type: 'number',

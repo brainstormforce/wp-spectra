@@ -200,15 +200,13 @@ const attributes = {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'desc-vertical-padding'
-		},
-		default: 5,
+		}
 	},
 	contentHrPadding: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'desc-horizontal-padding'
-		},
-		default: 5,
+		}
 	},
 
 	stack: {
@@ -861,6 +859,10 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'title-letter-spacing-type'
 		}
+	},
+	showImage: {
+		type: 'boolean',
+		default: true,
 	},
 };
 

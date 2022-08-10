@@ -15,7 +15,7 @@ import {
 	ColorPalette,
 } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
-import { useState } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import UAGReset from '../reset';
@@ -58,6 +58,10 @@ const AdvancedPopColorControl = ( props ) => {
 		refresh: false,
 	} );
 	const [ visible, setVisible ] = useState( { isVisible: false } );
+
+	useEffect( () => {
+		onChangeComplete( colorValue, '' )
+	}, [ colorValue ] );
 
 	const onChangeComplete = ( color, palette ) => {
 		let opacity = 100 === opacityUnit ? 100 : 1;
