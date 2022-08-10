@@ -1198,6 +1198,7 @@ const UAGBPostMasonry = ( props ) => {
 								attributes={ attributes }
 								deviceType={ deviceType }
 								disableBottomSeparator={ true }
+								disabledBorderTitle= { false }
 							/>
 						</>
 					) }
