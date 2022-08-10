@@ -17,6 +17,7 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import MultiMediaSelector from '@Components/multimedia-select';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGTabsControl from '@Components/tabs';
+import UAGSelectControl from '@Components/select-control';
 import {
 	InspectorControls,
 	__experimentalLinkControl,
@@ -24,7 +25,6 @@ import {
 import {
 	ToggleControl,
 	__experimentalAlignmentMatrixControl as AlignmentMatrixControl,
-	SelectControl ,
 	TextControl,
 	Icon,
 	Button,
@@ -218,6 +218,7 @@ const Settings = ( props ) => {
 		}
 	};
 	
+	// Loading Google Fonts.
 	let loadCaptionGoogleFonts;
 	let loadLoadMoreGoogleFonts;
 
@@ -240,8 +241,7 @@ const Settings = ( props ) => {
 		const loadMoreConfig = {
 			google: {
 				families: [
-					loadMoreFontFamily +
-						( loadMoreFontWeight ? ':' + loadMoreFontWeight : '' ),
+					loadMoreFontFamily + ( loadMoreFontWeight ? ':' + loadMoreFontWeight : '' ),
 				],
 			},
 		};
@@ -251,6 +251,7 @@ const Settings = ( props ) => {
 		);
 	}
 
+	// Get the Capitalized Title from the Word.
 	const titleFromValue = ( wordString ) => {
 		let newWords = '';
 		wordString = wordString.replaceAll( '-', ' ' )
@@ -260,10 +261,12 @@ const Settings = ( props ) => {
 		return newWords.slice( 1 );
 	};
 
+	// Combine Alignment to Matrix.
 	useEffect( () => {
 		setAttributes( { imageCaptionAlignment: `${ imageCaptionAlignment01 } ${ imageCaptionAlignment02 }` } );
 	},  [ imageCaptionAlignment01, imageCaptionAlignment02 ] );
 
+	// Update the Media Gallery.
 	const updateMediaGallery = ( media ) => {
         let goodToGo = true;
 		let updatedIDs = [];
@@ -280,6 +283,7 @@ const Settings = ( props ) => {
 			: setAttributes( { mediaGallery: mediaGallery, mediaIDs: mediaIDs,  readyToRender: mediaIDs ? true : false } );
 	};
 
+	// Split Up Alignment Matrix.
 	const updateSplitAlignments = ( matrixValue ) => {
 		setAttributes( {
 			// imageCaptionAlignment: matrixValue,
@@ -288,6 +292,7 @@ const Settings = ( props ) => {
 		} );
 	};
 
+	// Reset the Gaps when Switching Layouts from Grid to Masonry.
 	const resetGaps = ( layoutType ) => {
 		// First Default the Pagination for Carousel Only...
 		layoutType === 'carousel'
@@ -310,10 +315,12 @@ const Settings = ( props ) => {
 		}
 	};
 
+	// Update Caption Visibility when Bar is Outside.
 	useEffect( () => {
 		( captionDisplayType === 'bar-outside' ) && setAttributes( { captionVisibility: 'always' } ) 
 	}, [ captionDisplayType ] );
 
+	// Bar Option Generation.
 	const generateBarOptions = () => (
 		( feedLayout === 'grid' || feedLayout === 'tiled' )
 			? ( [
@@ -341,6 +348,14 @@ const Settings = ( props ) => {
 				}
 			] )
 	);
+
+	// Generate Image Size Options for All Image Gallery Images.
+	// const imageSizeOptions =  image?.media_details && imageSizes.reduce( ( acc, item ) => {
+	// 	if( image?.media_details?.sizes[item.slug] ){
+	// 		acc.push( { value: item.slug, label: item.name } )
+	// 	}
+	// 	return acc;
+	// }, [] );
 
 	const renderCaptionDisplay = ( isHover ) => (
 		<>
@@ -583,19 +598,44 @@ const Settings = ( props ) => {
 	);
 
 	const gallerySettings = () => (
-		<UAGAdvancedPanelBody title={ __( 'Gallery', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
-			<MultiMediaSelector
-				componentLabel={ 'Update Gallery' }
-				mediaTypeLabel={ 'Images' }
-				onSelectMedia={ updateMediaGallery }
-				mediaGallery={ mediaGallery }
-				mediaIDs={ mediaIDs }
-				allowedTypes={ ['image'] }
-				createGallery={ true }
-			/>
-		</UAGAdvancedPanelBody>
+		<>
+			<UAGAdvancedPanelBody title={ __( 'Gallery', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+				<MultiMediaSelector
+					componentLabel={ 'Update Gallery' }
+					mediaTypeLabel={ 'Images' }
+					onSelectMedia={ updateMediaGallery }
+					mediaGallery={ mediaGallery }
+					mediaIDs={ mediaIDs }
+					allowedTypes={ ['image'] }
+					createGallery={ true }
+				/>
+			</UAGAdvancedPanelBody>
+			{/* <ResponsiveSelectControl
+				label={ __( 'Image Size', 'ultimate-addons-for-gutenberg' ) }
+				options={ {
+					desktop: imageSizeOptions,
+					tablet: imageSizeOptions,
+					mobile: imageSizeOptions,
+				} }
+				data={ {
+					desktop: {
+						value: sizeSlug,
+						label: 'sizeSlug'
+					},
+					tablet: {
+						value: sizeSlugTablet,
+						label: 'sizeSlugTablet'
+					},
+					mobile: {
+						value: sizeSlugMobile,
+						label: 'sizeSlugMobile'
+					},
+				} }
+				setAttributes={ setAttributes }
+			/> */}
+		</>
 	);
-	
+
 	const captionSettings = () => (
 		<UAGAdvancedPanelBody title={ __( 'Caption', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<ToggleControl
@@ -629,25 +669,31 @@ const Settings = ( props ) => {
 						max={ 100 }
 						displayUnit={ false }
 					/>
-					<SelectControl
+					<UAGSelectControl
 						label={ __( 'Caption Type', 'ultimate-addons-for-gutenberg' ) }
-						value={ captionDisplayType }
-						onChange={ ( value ) => setAttributes( { captionDisplayType: value } ) }
+						data={ {
+							value: captionDisplayType,
+							label: 'captionDisplayType',
+						} }
+						setAttributes={ setAttributes }
 						options={ generateBarOptions() }
 					/>
 					{
 						captionDisplayType !== 'bar-outside'
 							? (
 								<>
-									<SelectControl
+									<UAGSelectControl
 										label={ __( 'Visibility', 'ultimate-addons-for-gutenberg' ) }
-										value={ captionVisibility }
-										onChange={ ( value ) => setAttributes( { captionVisibility: value } ) }
+										data={ {
+											value: captionVisibility,
+											label: 'captionVisibility',
+										} }
+										setAttributes={ setAttributes }
 									>
 										<option value="hover">Show on hover</option>
 										<option value="antiHover">Hide on hover</option>
 										<option value="always">Always Visible</option>
-									</SelectControl>
+									</UAGSelectControl>
 									<span className='uag-control-label'>
 										{ __( 'Caption Alignment', 'ultimate-addons-for-gutenberg' ) }
 									</span>
@@ -765,13 +811,16 @@ const Settings = ( props ) => {
 			) }
 		</UAGAdvancedPanelBody>
 	);
-	
+
 	const layoutSettings = () => (
 		<UAGAdvancedPanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
-			<SelectControl
+			<UAGSelectControl
 				label={ __( 'Layout Type', 'ultimate-addons-for-gutenberg' ) }
-				value={ feedLayout }
-				onChange={ ( value ) => resetGaps( value ) }
+				data={ {
+					value: feedLayout,
+					label: 'feedLayout',
+				} }
+				setAttributes={ setAttributes }
 				options = { [
 					{
 						label: __( 'Grid', 'ultimate-addons-for-gutenberg' ),
@@ -1649,10 +1698,13 @@ const Settings = ( props ) => {
 							},
 						] }
 					/>
-					<SelectControl
+					<UAGSelectControl
 						label={ __( 'Arrow Border Style', 'ultimate-addons-for-gutenberg' ) }
-						value={ paginateArrowBorderStyle }
-						onChange={ ( value ) => setAttributes( { paginateArrowBorderStyle: value } )}
+						data={ {
+							value: paginateArrowBorderStyle,
+							label: 'paginateArrowBorderStyle',
+						} }
+						setAttributes={ setAttributes }
 						options = { [
 							{
 								label: __( 'None', 'ultimate-addons-for-gutenberg' ),
@@ -1817,10 +1869,13 @@ const Settings = ( props ) => {
 										} }
 									/>
 								</Suspense>
-								<SelectControl
+								<UAGSelectControl
 									label={ __( 'Button Border Style', 'ultimate-addons-for-gutenberg' ) }
-									value={ paginateButtonBorderStyle }
-									onChange={ ( value ) => setAttributes( { paginateButtonBorderStyle: value } )}
+									data={ {
+										value: paginateButtonBorderStyle,
+										label: 'paginateButtonBorderStyle',
+									} }
+									setAttributes={ setAttributes }
 									options = { [
 										{
 											label: __( 'None', 'ultimate-addons-for-gutenberg' ),
