@@ -20,6 +20,7 @@ import SettingsSkeleton from '@DashboardApp/pages/settings/SettingsSkeleton';
 import BlockSettings from '@DashboardApp/pages/settings/BlockSettings';
 import LoadFontAwesome5 from '@DashboardApp/pages/settings/LoadFontAwesome5';
 import AutoBlockRecovery from '@DashboardApp/pages/settings/AutoBlockRecovery';
+import ContainerGlobalPadding from '@DashboardApp/pages/settings/ContainerGlobalPadding';
 import { Link, useLocation } from 'react-router-dom';
 import{ useEffect } from 'react';
 
@@ -89,6 +90,7 @@ const Settings = () => {
                         { 'global-settings' === activeSettingsNavigationTab &&
                             <>
                                 <ContentWidth/>
+								<ContainerGlobalPadding/>
                                 <BlocksEditorSpacing/>
                                 <CollapsePanels/>
                                 <CopyPasteStyles/>

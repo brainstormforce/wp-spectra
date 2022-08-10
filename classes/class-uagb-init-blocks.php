@@ -553,6 +553,13 @@ class UAGB_Init_Blocks {
 			$content_width = 1140;
 		}
 
+		$container_padding = UAGB_Admin_Helper::get_admin_settings_option( 'uag_container_global_padding', 'default' );
+
+		if ( 'default' === $container_padding ) {
+			\UAGB_Admin_Helper::update_admin_settings_option( 'uag_container_global_padding', 10 );
+			$container_padding = 10;
+		}
+
 		wp_localize_script(
 			'uagb-block-editor-js',
 			'uagb_blocks_info',
@@ -585,6 +592,7 @@ class UAGB_Init_Blocks {
 				'collapse_panels'                    => UAGB_Admin_Helper::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
 				'copy_paste'                         => UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
 				'content_width'                      => $content_width,
+				'container_global_padding'           => $container_padding,
 				'recaptcha_site_key_v2'              => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
 				'recaptcha_site_key_v3'              => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),
 				'recaptcha_secret_key_v2'            => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ),
