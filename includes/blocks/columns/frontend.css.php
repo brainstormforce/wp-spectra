@@ -165,7 +165,7 @@ $m_selectors = array(
 	),
 );
 
-$t_selectors                        = array(
+$t_selectors                      = array(
 	'.wp-block-uagb-columns.uagb-columns__wrap' => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingTablet'], $attr['tabletPaddingType'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingTablet'], $attr['tabletPaddingType'] ),
@@ -183,10 +183,10 @@ $t_selectors                        = array(
 		'height' => UAGB_Helper::get_css_value( $attr['topHeightTablet'], 'px' ),
 	),
 );
-$selectors['.uagb-columns__wrap']   = $border;
-$selectors['.uagb-columns__wrap:hover']['border-color']  = $attr['columnsBorderHColor'];
-$t_selectors['.uagb-columns__wrap'] = $border_tablet;
-$m_selectors['.uagb-columns__wrap'] = $border_mobile;
+$selectors['.uagb-columns__wrap'] = $border;
+$selectors['.uagb-columns__wrap:hover']['border-color'] = $attr['columnsBorderHColor'];
+$t_selectors['.uagb-columns__wrap']                     = $border_tablet;
+$m_selectors['.uagb-columns__wrap']                     = $border_mobile;
 
 $combined_selectors = array(
 	'desktop' => $selectors,
