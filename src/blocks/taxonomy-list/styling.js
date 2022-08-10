@@ -45,7 +45,7 @@ function styling( props ) {
 		titleBottomSpaceMobile,
 		alignment,
 		listStyle,
-		seperatorBorderHColor,
+		seperatorHoverColor,
 		listTextColor,
 		hoverlistTextColor,
 		listBottomMargin,
@@ -114,7 +114,6 @@ function styling( props ) {
 		seperatorWidth,
 		seperatorThickness,
 		seperatorColor,
-		seperatorHoverColor,
 	} = props.attributes;
 
 	const listBottomMarginFallback = getFallbackNumber( listBottomMargin, 'listBottomMargin', blockName );
@@ -361,11 +360,11 @@ function styling( props ) {
 	}
 	/* start Backword */
 	selectors[ ' .uagb-layout-list .uagb-tax-separator:hover' ] = {
-		'border-top-color': seperatorBorderHColor,
+		'border-top-color': seperatorHoverColor,
 	};
 	/* End Backword */
 	selectors[ '.uagb-layout-list .uagb-tax-separator:hover' ] = {
-		'border-top-color': seperatorBorderHColor,
+		'border-top-color': seperatorHoverColor,
 	};
 
 
