@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import React from 'react';
 import shapes from './shapes';
 import { select } from '@wordpress/data';
@@ -9,7 +9,6 @@ const Render = ( props ) => {
 	props = props.parentProps;
 	const {
 		attributes,
-		className,
 		deviceType,
 		clientId
 	} = props;
@@ -91,14 +90,17 @@ const Render = ( props ) => {
 		}
 	}
 
+	const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( clientId ).length;
+	const hasChildrenClass = hasChildren ? 'uagb-container-has-children' : '';
+	const blockProps = useBlockProps( {
+		className: `uagb-block-${ block_id } ${contentWidth} ${hasChildrenClass} uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+	} );
+
 	return (
 		<>
 			{ topDividerHtml }
 				<CustomTag
-					className={ classnames(
-						className,
-						`uagb-block-${ block_id }`,
-					) }
+					{ ...blockProps }
 					key = { block_id }
 					{...customTagLinkAttributes}
 				>
