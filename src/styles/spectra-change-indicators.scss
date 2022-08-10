@@ -1,0 +1,27 @@
+/* --------- All Change Indicators for Spectra --------- */
+
+.spectra {
+
+    &__change-indicator {
+
+        &--dot {
+            width: 6px;
+            height: 6px;
+            position: relative;
+            background-color: $spectra-color-primary;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: middle;
+
+            &-right {
+                @extend .spectra__change-indicator--dot;
+                left: 4px;
+            }
+
+            &-left {
+                @extend .spectra__change-indicator--dot;
+                right: 4px;
+            }
+        }
+    }
+}

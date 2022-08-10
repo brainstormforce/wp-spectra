@@ -220,12 +220,12 @@ const BoxShadowControl = ( props ) => {
 		<div className="spectra-control-popup__options--action-wrapper">
 			<span className="uag-control-label">
 				{ label }
+				{ isBoxShadowUpdated && (
+					<div className="spectra__change-indicator--dot-right"/>
+				) }
 			</span>
 			<Button
-				className={ classNames(
-					'uag-box-shadow-button spectra-control-popup__options--action-button',
-					isBoxShadowUpdated ? 'spectra-control-popup__status--updated' : '',
-				) }
+				className="uag-box-shadow-button spectra-control-popup__options--action-button"
 				aria-pressed={ showAdvancedControls }
 				onClick={ () => {
 						const allPopups = document.querySelectorAll( '.spectra-control-popup__options' );

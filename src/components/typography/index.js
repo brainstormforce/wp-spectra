@@ -340,10 +340,7 @@ const TypographyControl = ( props ) => {
 	if ( true !== disableFontFamily && true !== disableFontSize ) {
 		fontAdvancedControls = (
 			<Button
-				className={ classNames(
-					'uag-typography-button spectra-control-popup__options--action-button',
-					isTypographyUpdated ? 'spectra-control-popup__status--updated' : '',
-				) }
+				className="uag-typography-button spectra-control-popup__options--action-button"
 				aria-pressed={ showAdvancedControls }
 				onClick={ () => {
 
@@ -414,7 +411,12 @@ const TypographyControl = ( props ) => {
 	if ( true !== disableFontFamily && true !== disableFontSize ) {
 		fontTypoAdvancedControls = (
 			<div className="spectra-control-popup__options--action-wrapper">
-				<span className="uag-control-label">{ props.label }</span>
+				<span className="uag-control-label">
+					{ props.label }
+					{ isTypographyUpdated && (
+						<div className="spectra__change-indicator--dot-right"/>
+					) }
+				</span>
 				{ fontAdvancedControls }
 			</div>
 		);
