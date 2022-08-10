@@ -92,8 +92,6 @@ const buttonsPresets = [
 	},
 	{
 		defaultPresetAttributes: [
-			{ label: 'label' },
-			{ label: 'icon' },
 			{ label: 'iconSpace' },
 			{ label: 'backgroundType' },
             { label: 'hoverbackgroundType' },
@@ -116,7 +114,7 @@ const buttonsPresets = [
         value: 'preset-1',
         label: __( 'Preset 1', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-            { label: 'label', value: 'Button Text' },
+			{ label: 'showIcon',  value: false },
             { label: 'backgroundType', value: 'color' },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 0 },
@@ -131,7 +129,7 @@ const buttonsPresets = [
         value: 'preset-2',
         label: __( 'Preset 2', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-            { label: 'label', value: 'Button Text' },
+			{ label: 'showIcon',  value: false },
             { label: 'backgroundType', value: 'color' },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 5 },
@@ -145,7 +143,7 @@ const buttonsPresets = [
         value: 'preset-3',
         label: __( 'Preset 3', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-            { label: 'label', value: 'Button Text' },
+			{ label: 'showIcon',  value: false },
             { label: 'backgroundType', value: 'color' },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 30 },
@@ -159,9 +157,8 @@ const buttonsPresets = [
         value: 'preset-4',
         label: __( 'Preset 4', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-            { label: 'label', value: 'Button Text' },
             { label: 'backgroundType', value: 'color' },
-			{ label: 'icon',  value: 'right-long' },
+			{ label: 'showIcon',  value: true },
 			{ label: 'iconSpace', value: 12 },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 5 },
@@ -175,7 +172,7 @@ const buttonsPresets = [
         value: 'preset-5',
         label: __( 'Preset 5', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-            { label: 'label', value: 'Button Text' },
+			{ label: 'showIcon',  value: false },
             { label: 'backgroundType', value: 'transparent' },
             { label: 'hoverbackgroundType', value: 'color' },
 			{ label: 'hBackground', value: '#3a3a3a' },
@@ -198,7 +195,7 @@ const buttonsPresets = [
         value: 'preset-6',
         label: __( 'Preset 6', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-            { label: 'label', value: 'Button Text' },
+			{ label: 'showIcon',  value: false },
             { label: 'backgroundType', value: 'transparent' },
             { label: 'hoverbackgroundType', value: 'color' },
 			{ label: 'hBackground', value: '#3a3a3a' },
@@ -221,7 +218,7 @@ const buttonsPresets = [
         value: 'preset-7',
         label: __( 'Preset 7', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-            { label: 'label', value: 'Button Text' },
+			{ label: 'showIcon',  value: false },
             { label: 'backgroundType', value: 'transparent' },
             { label: 'hoverbackgroundType', value: 'color' },
 			{ label: 'hBackground', value: '#3a3a3a' },
@@ -244,13 +241,12 @@ const buttonsPresets = [
         value: 'preset-8',
         label: __( 'Preset 8', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-            { label: 'label', value: 'Button Text' },
             { label: 'backgroundType', value: 'transparent' },
             { label: 'hoverbackgroundType', value: 'color' },
 			{ label: 'hBackground', value: '#3a3a3a' },
 			{ label: 'color', value: '#0170b9' },
 			{ label: 'hColor', value: '#ffffff' },
-			{ label: 'icon',  value: 'right-long' },
+			{ label: 'showIcon',  value: true },
 			{ label: 'iconSpace', value: 12 },
 			{ label: 'btnBorderStyle', value: 'solid' },
             { label: 'btnBorderTopLeftRadius', value: 5 },

@@ -21,7 +21,8 @@ export default function save( props ) {
 		backgroundType,
 		borderStyle,
 		background,
-		color
+		color,
+		showIcon,
 	} = attributes;
 
 	const btnText = () => {
@@ -36,7 +37,7 @@ export default function save( props ) {
 
 	}
 	const iconHtml = ( curr_position ) => {
-		if ( '' !== icon && curr_position === iconPosition ) {
+		if ( showIcon && '' !== icon && curr_position === iconPosition ) {
 			return (
 				<span
 					className={ classnames(
