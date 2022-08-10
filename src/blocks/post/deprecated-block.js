@@ -7,10 +7,11 @@
  *
  * All blocks should be included here since this is the file that
  * Webpack is compiling as the input file.
+ * 
+ * These are Deprecated Post Blocks, Ordered by Name.
  */
 
-import './post-carousel/block.js';
-import './post-grid/block.js';
+import './post-masonry/block.js';
 import './post-title/block.js';
 import './post-image/block.js';
 import './post-taxonomy/block.js';

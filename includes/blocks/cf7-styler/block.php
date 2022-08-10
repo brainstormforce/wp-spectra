@@ -18,6 +18,6 @@ $block_data = array(
 	'is_active'        => class_exists( 'WPCF7_ContactForm' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 34,
+	'priority'         => 92,
 	'deprecated'       => true,
 );

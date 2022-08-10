@@ -172,7 +172,7 @@ if ( 'none' !== $attr['seperatorStyle'] ) {
 	);
 }
 $selectors['.uagb-layout-list .uagb-tax-separator:hover'] = array(
-	'border-top-color' => $attr['seperatorBorderHColor'],
+	'border-top-color' => $attr['seperatorHoverColor'],
 );
 $selectors[' .uagb-taxomony-box']                         = $overall_border_css;
 $selectors[' .uagb-taxomony-box:hover']                   = array(

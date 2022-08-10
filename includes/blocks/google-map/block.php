@@ -17,6 +17,6 @@ $block_data = array(
 	'description'      => __( 'This block allows you to place a Google Map Location.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 27,
+	'priority'         => 14,
 	'deprecated'       => false,
 );
