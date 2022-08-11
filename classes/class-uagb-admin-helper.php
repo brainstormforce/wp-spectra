@@ -109,13 +109,6 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		}
 
 		/**
-		 * Is Knowledgebase.
-		 *
-		 * @return string
-		 * @since 0.0.1
-		 */
-
-		/**
 		 *  Get Specific Stylesheet
 		 *
 		 * @since 1.13.4
