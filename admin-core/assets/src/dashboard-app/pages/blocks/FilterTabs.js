@@ -140,21 +140,23 @@ const FilterTabs = () => {
 
     return (
         <div className="mx-auto mb-6 px-6 lg:max-w-[80rem]">
-            <div className="sm:hidden">
-            <label htmlFor="tabs" className="sr-only">
-                Select a tab
-            </label>
-            {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
-            {/* Tailwind Classes do NOT work here. Overridden by WP UI. */}
-            <select
-                id="tabs"
-                name="tabs"
-                className="block max-w-full w-full border-slate-200 focus:border-slate-500 rounded-md"
-            >
-                {tabs.map( ( tab ) => (
-                <option key={tab.name}>{tab.name}</option>
-                ) )}
-            </select>
+            <div className="w-full sm:hidden">
+                <label htmlFor="tabs" className="sr-only">
+                    Select a tab
+                </label>
+                {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
+                <select
+                    id="tabs"
+                    name="tabs"
+                    className="w-full spectra-admin__input-field spectra-admin__dropdown"
+                    style={ {
+                        maxWidth: '100%',
+                    } }
+                >
+                    {tabs.map( ( tab ) => (
+                    <option key={tab.name}>{tab.name}</option>
+                    ) )}
+                </select>
             </div>
             <div className="hidden justify-between items-center space-y-4 sm:flex sm:flex-col lg:space-y-0 lg:flex-row">
                 <nav className="flex space-x-4 sm:flex-wrap sm:justify-center lg:flex-nowrap lg:justify-start" aria-label="Tabs">
