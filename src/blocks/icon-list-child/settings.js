@@ -19,7 +19,6 @@ import { TextControl, ToggleControl } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
-	const hideLabel = props.hideLabel;
 	props = props.parentProps;
 
 	const { attributes, setAttributes, deviceType } = props;
@@ -72,6 +71,7 @@ const Settings = ( props ) => {
 		childPaddingUnitTablet,
 		childPaddingUnitMobile,
 		childPaddingLink,
+		hideLabel,
 	} = attributes;
 
 	/*
