@@ -114,31 +114,6 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		 * @return string
 		 * @since 0.0.1
 		 */
-		public static function knowledgebase_data() {
-
-			$knowledgebase = array(
-				'enable_knowledgebase' => true,
-				'knowledgebase_url'    => '',
-			);
-
-			return $knowledgebase;
-		}
-
-		/**
-		 * Is Knowledgebase.
-		 *
-		 * @return string
-		 * @since 0.0.1
-		 */
-		public static function support_data() {
-
-			$support = array(
-				'enable_support' => true,
-				'support_url'    => 'https://wpspectra.com/support/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard',
-			);
-
-			return $support;
-		}
 
 		/**
 		 *  Get Specific Stylesheet
