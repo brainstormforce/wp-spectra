@@ -139,24 +139,25 @@ const FilterTabs = () => {
 	};
 
     return (
-        <div className="max-w-3xl mx-auto lg:max-w-[77rem] mb-6">
+        <div className="mx-auto mb-6 px-6 lg:max-w-[80rem]">
             <div className="sm:hidden">
             <label htmlFor="tabs" className="sr-only">
                 Select a tab
             </label>
             {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
+            {/* Tailwind Classes do NOT work here. Overridden by WP UI. */}
             <select
                 id="tabs"
                 name="tabs"
-                className="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-[0.2rem]"
+                className="block max-w-full w-full border-slate-200 focus:border-slate-500 rounded-md"
             >
                 {tabs.map( ( tab ) => (
                 <option key={tab.name}>{tab.name}</option>
                 ) )}
             </select>
             </div>
-            <div className="hidden justify-between items-center sm:flex">
-                <nav className="flex space-x-4" aria-label="Tabs">
+            <div className="hidden justify-between items-center space-y-4 sm:flex sm:flex-col lg:space-y-0 lg:flex-row">
+                <nav className="flex space-x-4 sm:flex-wrap sm:justify-center lg:flex-nowrap lg:justify-start" aria-label="Tabs">
                     {tabs.map( ( tab ) => (
                     <Link // eslint-disable-line
 						to={ {
