@@ -159,7 +159,7 @@ const FilterTabs = () => {
                 </select>
             </div>
             <div className="hidden justify-between items-center space-y-4 sm:flex sm:flex-col lg:space-y-0 lg:flex-row">
-                <nav className="flex space-x-4 sm:flex-wrap sm:justify-center lg:flex-nowrap lg:justify-start" aria-label="Tabs">
+                <nav className="flex -ml-4 flex-wrap justify-center lg:justify-start" aria-label="Tabs">
                     {tabs.map( ( tab ) => (
                     <Link // eslint-disable-line
 						to={ {
@@ -171,7 +171,7 @@ const FilterTabs = () => {
                             ( tab.slug === activeBlocksFilterTab )
                                 ? 'bg-white text-slate-800 active:text-slate-800 focus:text-slate-800 hover:text-slate-800 shadow shadow-focused'
                                 : 'text-slate-500 focus:text-slate-500 focus-visible:border-slate-200 active:text-slate-500 hover:text-slate-500 hover:border-slate-200',
-                            'px-4 py-1 font-medium text-sm rounded-2xl cursor-pointer border border-transparent transition'
+                            'px-4 py-1 ml-4 my-1 font-medium text-sm rounded-2xl cursor-pointer border border-transparent transition'
                         ) }
                         onClick={ () => {
 							dispatch( {type:'UPDATE_BLOCKS_ACTIVE_FILTER_TAB', payload: tab.slug} )
