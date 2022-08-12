@@ -98,44 +98,44 @@ const Render = ( props ) => {
 
 	return (
 		<>
-			{ topDividerHtml }
-				<CustomTag
-					{ ...blockProps }
-					key = { block_id }
-					{...customTagLinkAttributes}
-				>
-					{ 'video' === backgroundType && (
-						<div className="uagb-container__video-wrap">
-							{ backgroundVideo && (
-								<video autoPlay loop muted playsinline>
-									<source
-										src={ backgroundVideo.url }
-										type="video/mp4"
-									/>
-								</video>
-							) }
-						</div>
-					) }
-					{ isBlockRootParent && 'alignfull' === contentWidth && 'alignwide' === innerContentWidth
-					?  (
-						<div className='uagb-container-inner-blocks-wrap'>
-							<InnerBlocks
-								__experimentalMoverDirection={ moverDirection }
-								renderAppender = { hasChildBlocks
-								? undefined
-								: InnerBlocks.ButtonBlockAppender }
-							/>
-						</div>
-					)
-					: <InnerBlocks
+			<CustomTag
+				{ ...blockProps }
+				key = { block_id }
+				{...customTagLinkAttributes}
+			>
+				{ topDividerHtml }
+				{ 'video' === backgroundType && (
+					<div className="uagb-container__video-wrap">
+						{ backgroundVideo && (
+							<video autoPlay loop muted playsinline>
+								<source
+									src={ backgroundVideo.url }
+									type="video/mp4"
+								/>
+							</video>
+						) }
+					</div>
+				) }
+				{ isBlockRootParent && 'alignfull' === contentWidth && 'alignwide' === innerContentWidth
+				?  (
+					<div className='uagb-container-inner-blocks-wrap'>
+						<InnerBlocks
 							__experimentalMoverDirection={ moverDirection }
 							renderAppender = { hasChildBlocks
 							? undefined
 							: InnerBlocks.ButtonBlockAppender }
 						/>
-					}
-				</CustomTag>
-			{ bottomDividerHtml }
+					</div>
+				)
+				: <InnerBlocks
+						__experimentalMoverDirection={ moverDirection }
+						renderAppender = { hasChildBlocks
+						? undefined
+						: InnerBlocks.ButtonBlockAppender }
+					/>
+				}
+				{ bottomDividerHtml }
+			</CustomTag>
 		</>
 	);
 };
