@@ -2041,7 +2041,7 @@ const Settings = ( props ) => {
 
 	const presetSettings = () => {
 		return <UAGAdvancedPanelBody
-					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
+					title={ __( 'Inner Container Presets', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ true }
 				>
 					<UAGPresets

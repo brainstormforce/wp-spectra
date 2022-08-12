@@ -987,13 +987,18 @@ const Settings = ( props ) => {
 					deviceType={deviceType}
 					disabledBorderTitle= {true}
 				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+	const boxShadowSettings = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
 				<BoxShadowControl
 					blockId={ block_id }
 					setAttributes={ setAttributes }
-					label={ __(
-						'Box Shadow',
-						'ultimate-addons-for-gutenberg'
-					) }
 					boxShadowColor={ {
 						value: boxShadowColor,
 						label: 'boxShadowColor',
@@ -1037,7 +1042,6 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
-
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<InspectorControls>
@@ -1060,6 +1064,7 @@ const Settings = ( props ) => {
 						{ backgroundSettings() }
 						{ shapeDividersSettings() }
 						{ borderSettings() }
+						{ boxShadowSettings() }
 						{ spacingSettings() }
 					</InspectorTab>
 					<InspectorTab

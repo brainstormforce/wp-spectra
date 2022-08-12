@@ -92,6 +92,10 @@ import renderSVG from '@Controls/deprecatedRenderIcon';
 		type: "string",
 		default:""
 	} ,
+	backgroundType:{
+		type:'string',
+		default: 'color',
+	} ,
 	hColor: {
 		type: "string",
 		default:"#333"

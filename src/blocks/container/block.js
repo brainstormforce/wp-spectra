@@ -15,7 +15,7 @@ import transforms from './transforms';
 registerBlockType( 'uagb/container', {
 	title: __( 'Container', 'ultimate-addons-for-gutenberg' ),
 	description: __(
-		'This block lets you add a Flex Properties Based Container.',
+		'Create beautiful layouts with flexbox powered container block.',
 		'ultimate-addons-for-gutenberg'
 	),
 	icon: UAGB_Block_Icons.container,

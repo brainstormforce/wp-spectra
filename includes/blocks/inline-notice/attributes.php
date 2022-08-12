@@ -78,4 +78,10 @@ return array(
 	'descLetterSpacingTablet'  => '',
 	'descLetterSpacingMobile'  => '',
 	'descLetterSpacingType'    => 'px',
+	'titleLeftPadding'         => '',
+	'titleRightPadding'        => '',
+	'titleTopPadding'          => '',
+	'titleBottomPadding'       => '',
+
+
 );
