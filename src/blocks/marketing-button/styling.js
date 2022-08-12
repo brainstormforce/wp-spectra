@@ -183,6 +183,7 @@ function styling( props ) {
 
 		// Hover Background
 		selectors[ ' .uagb-marketing-btn__link:hover' ].background = backgroundHoverColor;
+		selectors[ ' .uagb-marketing-btn__link:focus' ].background = backgroundHoverColor;
 	} else if ( 'gradient' === backgroundType ) {
 		selectors[ ' .uagb-marketing-btn__link' ][ 'background-color' ] =
 			'transparent';
