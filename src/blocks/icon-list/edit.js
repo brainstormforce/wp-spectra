@@ -7,6 +7,7 @@ import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { select, dispatch } from '@wordpress/data';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/icon-list/settings" */ './settings' )
@@ -42,6 +43,23 @@ const UAGBIconList = ( props ) => {
 		addBlockEditorDynamicStyles( 'uagb-style-icon-list-' + props.clientId.substr( 0, 8 ), blockStyling );
 		
 	}, [ deviceType ] );
+
+	useEffect( () => {
+		
+		select( 'core/block-editor' )
+            .getBlocksByClientId( props.clientId )[0]
+            .innerBlocks.forEach( function( block ) {
+
+                dispatch( 'core/block-editor' ).updateBlockAttributes(
+                    block.clientId, {
+                        fromParentIcon: props.attributes.parentIcon,
+						hideLabel: props.attributes.hideLabel,
+                    }
+                );
+
+            } );
+
+	}, [ props.attributes.parentIcon, props.attributes.hideLabel ] );
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
