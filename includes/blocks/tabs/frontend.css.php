@@ -217,24 +217,127 @@ $t_selectors = array(
 
 // Desktop.
 if ( 'hstyle5' === $attr['tabsStyleD'] ) {
-	$selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop']       = array(
-		'background'   => $attr['bodyBgColor'],
-		'border-style' => $attr['tabBorderStyle'],
+	$selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop']                             = array_merge(
+		array(
+			'background' => $attr['bodyBgColor'],
+		),
+		$overall_border_css,
 	);
-	$selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop:hover'] = array(
+	$selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop .uagb-tab']                   = array(
+		'border-top-width'    => '0px',
+		'border-right-width'  => '0px',
+		'border-left-width'   => '0px',
+		'border-bottom-width' => '0px',
+		'border-top'          => 0,
+		'border-left'         => 0,
+		'border-right'        => 0,
+		'border-bottom'       => 0,
+		'outline'             => 0,
+		'border-radius'       => 0,
+	);
+	$selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop .uagb-tab.uagb-tabs__active'] = array_merge(
+		array(
+			'border-top-width'   => '0px',
+			'border-right-width' => '0px',
+			'border-left-width'  => '0px',
+			'border-top'         => 0,
+			'border-left'        => 0,
+			'border-right'       => 0,
+			'outline'            => 0,
+			'border-radius'      => 0,
+		),
+		$overall_border_css,
+	);
+	$selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop:hover']                       = array(
 		'border-color' => $attr['tabBorderHColor'],
 	);
-	$selectors['.uagb-tabs__wrap .uagb-tabs__body-wrap ']           = array(
+	$selectors['.uagb-tabs__wrap .uagb-tabs__body-wrap ']                                 = array(
 		'border-left-style'  => 'none',
 		'border-right-style' => 'none',
 	);
 }
 if ( 'vstyle10' === $attr['tabsStyleD'] ) {
-	$selectors['.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop']       = array(
-		'background'   => $attr['bodyBgColor'],
-		'border-style' => $attr['tabBorderStyle'],
+	$selectors['.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop']                               = array_merge(
+		array(
+			'background' => $attr['bodyBgColor'],
+		),
+		$overall_border_css,
+	);
+	$selectors['.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop ul.uagb-tabs__panel .uagb-tab'] = array(
+		'border-width' => '0px',
+		'border-style' => 'none',
+	);
+	$selectors['.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop .uagb-tabs__body-wrap']         = array(
+		'border-width' => '0px',
+		'border-style' => 'none',
+	);
+	$selectors['.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop ul.uagb-tabs__panel .uagb-tab.uagb-tabs__active'] = array_merge(
+		array(
+			'border-top-width'    => '0px',
+			'border-bottom-width' => '0px',
+			'border-left-width'   => '0px',
+			'border-top'          => 0,
+			'border-left'         => 0,
+			'border-bottom'       => 0,
+			'outline'             => 0,
+			'border-radius'       => 0,
+		),
+		$overall_border_css,
 	);
 	$selectors['.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop:hover'] = array(
+		'border-color' => $attr['tabBorderHColor'],
+	);
+}
+if ( 'hstyle2' === $attr['tabsStyleD'] ) {
+	$selectors['.uagb-tabs__wrap.uagb-tabs__hstyle2-desktop ul.uagb-tabs__panel'] = array_merge(
+		array(
+			'border-top-width'   => '0px',
+			'border-right-width' => '0px',
+			'border-left-width'  => '0px',
+			'border-top'         => 0,
+			'border-left'        => 0,
+			'border-right'       => 0,
+			'outline'            => 0,
+			'border-radius'      => 0,
+		),
+		$overall_border_css,
+	);
+
+	$selectors['.uagb-tabs__wrap.uagb-tabs__hstyle2-desktop > .uagb-tabs__body-wrap'] = array(
+		'border-width' => '0px',
+		'border-style' => 'none',
+	);
+	$selectors['.uagb-tabs__hstyle2-desktop > .uagb-tabs__panel .uagb-tab']           = array(
+		'border-top-width'   => '0px',
+		'border-right-width' => '0px',
+		'border-left-width'  => '0px',
+		'border-top-style'   => 'none',
+		'border-left-style'  => 'none',
+		'border-right-style' => 'none',
+	);
+	$selectors['.uagb-tabs__wrap.uagb-tabs__hstyle2-desktop:hover']                   = array(
+		'border-color' => $attr['tabBorderHColor'],
+	);
+}
+if ( 'vstyle7' === $attr['tabsStyleD'] ) {
+	$selectors['.uagb-tabs__wrap.uagb-tabs__vstyle7-desktop .uagb-tabs__body-wrap'] = array(
+		'border-width' => '0px',
+		'border-style' => 'none',
+	);
+	$selectors['.uagb-tabs__wrap.uagb-tabs__vstyle7-desktop .uagb-tab']             = array_merge(
+		array(
+			'border-top-width'   => '0px',
+			'border-right-width' => '0px',
+			'border-left-width'  => '0px',
+			'border-top'         => 0,
+			'border-left'        => 0,
+			'border-right'       => 0,
+			'outline'            => 0,
+			'border-radius'      => 0,
+		),
+		$overall_border_css,
+	);
+	$selectors['.uagb-tabs__wrap.uagb-tabs__vstyle7-desktop:hover']                 = array(
 		'border-color' => $attr['tabBorderHColor'],
 	);
 }
