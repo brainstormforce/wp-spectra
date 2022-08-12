@@ -2,12 +2,15 @@
 	display: flex;
 	position: relative;
 	box-sizing: border-box;
-	margin-left: auto;
-	margin-right: auto;
 	z-index: 2;
 	transition-property: box-shadow;
 	transition-duration: 0.2s;
 	transition-timing-function: ease;
+
+	&.uagb-is-root-container {
+		margin-left: auto;
+		margin-right: auto;
+	}
 
 	&.alignfull.uagb-is-root-container .uagb-container-inner-blocks-wrap {
 		display: flex;
