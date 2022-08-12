@@ -25,6 +25,8 @@ function styling( props ) {
 		minHeightTablet,
 		minHeightMobile,
 		minHeightType,
+		minHeightTypeTablet,
+		minHeightTypeMobile,
 		directionDesktop,
 		directionTablet,
 		directionMobile,
@@ -161,7 +163,10 @@ function styling( props ) {
 		innerContentCustomWidthTypeTablet,
 
 		overflow,
-		isBlockRootParent
+		isBlockRootParent,
+
+		widthTypeTablet,
+		widthTypeMobile
 	} = attributes;
 
 	const innerContentCustomWidthDesktopFallback = getFallbackNumber( innerContentCustomWidthDesktop, 'innerContentCustomWidthDesktop', blockName );
@@ -173,8 +178,6 @@ function styling( props ) {
 	const borderCSSTablet = generateBorderCSS( props.attributes, 'container', 'tablet' );
 	const borderCSSMobile = generateBorderCSS( props.attributes, 'container', 'mobile' );
 
-	topPaddingTablet = topPaddingTablet ? topPaddingTablet : topPaddingDesktop;
-	topPaddingMobile = topPaddingMobile ? topPaddingMobile : topPaddingTablet;
 	topPaddingTablet = 'undefined' !== typeof topPaddingTablet ? topPaddingTablet : topPaddingDesktop;
 	topPaddingMobile = 'undefined' !== typeof topPaddingMobile ? topPaddingMobile : topPaddingTablet;
 
@@ -223,13 +226,13 @@ function styling( props ) {
 	const videoBackgroundCSS = generateBackgroundCSS( videoBackgroundAttributes );
 
 	const selectors = {
-		' .wp-block-uagb-container .block-editor-block-list__block' : {
+		'.wp-block-uagb-container .block-editor-block-list__block' : {
 			'color': textColor,
 		},
-		' .wp-block-uagb-container .block-editor-block-list__block a' : {
+		'.wp-block-uagb-container .block-editor-block-list__block a' : {
 			'color': linkColor,
 		},
-		' .wp-block-uagb-container .block-editor-block-list__block a:hover' : {
+		'.wp-block-uagb-container .block-editor-block-list__block a:hover' : {
 			'color': linkHoverColor,
 		},
 		' > .uagb-container__shape-top svg' : {
@@ -327,9 +330,9 @@ function styling( props ) {
 													boxShadowColorHover + ' ' +	boxShadowPositionCSSHover;
 	}
 
-	let containerFlexSelector = ' > .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout';
-	if ( ! isBlockRootParent ) {
-		containerFlexSelector = ' > .wp-block-uagb-container > .block-editor-inner-blocks > .block-editor-block-list__layout';
+	let containerFlexSelector = '.wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout';
+	if ( ! isBlockRootParent || 'alignfull' !== contentWidth ) {
+		containerFlexSelector = '.wp-block-uagb-container > .block-editor-inner-blocks > .block-editor-block-list__layout';
 	}
 
 	selectors[containerFlexSelector] = {
@@ -360,21 +363,21 @@ function styling( props ) {
 
 	const widthSelectorsTablet = {
 		[`.is-root-container > .block-editor-block-list__block .uagb-editor-preview-mode-tablet.block-editor-block-list__block#block-${ props.clientId } `] : {
-			'max-width' : generateCSSUnit( widthTablet, widthType ),
-			'width' : generateCSSUnit( widthTablet, widthType ),
+			'max-width' : generateCSSUnit( widthTablet, widthTypeTablet ),
+			'width' : generateCSSUnit( widthTablet, widthTypeTablet ),
 		},
 	};
 
 	const widthSelectorsMobile = {
 		[`.is-root-container > .block-editor-block-list__block .uagb-editor-preview-mode-mobile.block-editor-block-list__block#block-${ props.clientId } `] : {
-			'max-width' : generateCSSUnit( widthMobile, widthType ),
-			'width' : generateCSSUnit( widthMobile, widthType ),
+			'max-width' : generateCSSUnit( widthMobile, widthTypeMobile ),
+			'width' : generateCSSUnit( widthMobile, widthTypeMobile ),
 		},
 	};
 
 	if ( 'alignfull' === contentWidth && 'alignwide' === innerContentWidth ) {
 
-		widthSelectorsDesktop[`.is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
+		widthSelectorsDesktop[`.is-root-container > .block-editor-block-list__block.wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
 			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthType })`,
 			'max-width' : 'var(--inner-content-custom-width)',
 			'width' : '100%',
@@ -382,7 +385,7 @@ function styling( props ) {
 			'margin-right': 'auto'
 		};
 
-		widthSelectorsTablet[`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-tablet > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
+		widthSelectorsTablet[`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-table.wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
 			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthTablet || innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthTypeTablet })`,
 			'max-width' : 'var(--inner-content-custom-width)',
 			'width' :'100%',
@@ -390,7 +393,7 @@ function styling( props ) {
 			'margin-right': 'auto'
 		};
 
-		widthSelectorsMobile[`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-mobile > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
+		widthSelectorsMobile[`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-mobile.wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
 			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthMobile || innerContentCustomWidthTablet || innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthTypeMobile })`,
 			'max-width' : 'var(--inner-content-custom-width)',
 			'width' : '100%',
@@ -433,11 +436,11 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( bottomMarginTablet, marginTypeTablet )  + ' !important',
 			'margin-left': generateCSSUnit( leftMarginTablet, marginTypeTablet ),
 			'margin-right': generateCSSUnit( rightMarginTablet, marginTypeTablet ),
-			'min-height' : generateCSSUnit( minHeightTablet, minHeightType ),
+			'min-height' : generateCSSUnit( minHeightTablet, minHeightTypeTablet ),
 			...containerBackgroundCSSTablet,
 			...borderCSSTablet
 		},
-		'containerFlexSelector' : {
+		[containerFlexSelector] : {
 			'flex-direction' : directionTablet,
 			'align-items' : alignItemsTablet,
 			'justify-content' : justifyContentTablet,
@@ -445,10 +448,10 @@ function styling( props ) {
 			'align-content' : alignContentTablet,
 			'row-gap' : generateCSSUnit( rowGapTablet, rowGapTypeTablet ),
 			'column-gap' : generateCSSUnit( columnGapTablet, columnGapTypeTablet ),
-			'min-height' : generateCSSUnit( minHeightTablet, minHeightType ),
+			'min-height' : generateCSSUnit( minHeightTablet, minHeightTypeTablet ),
 		},
 		'.block-editor-block-list__block' : {
-			'min-height' : generateCSSUnit( minHeightTablet, minHeightType ),
+			'min-height' : generateCSSUnit( minHeightTablet, minHeightTypeTablet ),
 			'flex-direction' : directionTablet,
 			'align-items' : alignItemsTablet,
 			'justify-content' : justifyContentTablet,
@@ -497,11 +500,11 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( bottomMarginMobile, marginTypeMobile )  + ' !important',
 			'margin-left': generateCSSUnit( leftMarginMobile, marginTypeMobile ),
 			'margin-right': generateCSSUnit( rightMarginMobile, marginTypeMobile ),
-			'min-height' : generateCSSUnit( minHeightMobile, minHeightType ),
+			'min-height' : generateCSSUnit( minHeightMobile, minHeightTypeMobile ),
 			...containerBackgroundCSSMobile,
 			...borderCSSMobile
 		},
-		'containerFlexSelector' : {
+		[containerFlexSelector] : {
 			'flex-direction' : directionMobile,
 			'align-items' : alignItemsMobile,
 			'justify-content' : justifyContentMobile,
@@ -509,10 +512,10 @@ function styling( props ) {
 			'align-content' : alignContentMobile,
 			'row-gap' : generateCSSUnit( rowGapMobile, rowGapTypeMobile ),
 			'column-gap' : generateCSSUnit( columnGapMobile, columnGapTypeMobile ),
-			'min-height' : generateCSSUnit( minHeightMobile, minHeightType ),
+			'min-height' : generateCSSUnit( minHeightMobile, minHeightTypeMobile ),
 		},
 		'.block-editor-block-list__block' : {
-			'min-height' : generateCSSUnit( minHeightMobile, minHeightType ),
+			'min-height' : generateCSSUnit( minHeightMobile, minHeightTypeMobile ),
 			'flex-direction' : directionMobile,
 			'align-items' : alignItemsMobile,
 			'justify-content' : justifyContentMobile,
@@ -528,14 +531,11 @@ function styling( props ) {
 	};
 
 	if ( 'default' === contentWidth ) {
-		selectors['.block-editor-block-list__block'].width = generateCSSUnit( widthDesktopFallback, widthType );
 		selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthDesktopFallback, widthType );
 
-		tablet_selectors['.block-editor-block-list__block'].width = generateCSSUnit( widthTablet, widthType );
-		tablet_selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthTablet, widthType );
+		tablet_selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthTablet, widthTypeTablet );
 
-		mobile_selectors['.block-editor-block-list__block'].width = generateCSSUnit( widthMobile, widthType );
-		mobile_selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthMobile, widthType );
+		mobile_selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthMobile, widthTypeMobile );
 	}
 
 	const base_selector = `.editor-styles-wrapper #block-${ props.clientId }`;

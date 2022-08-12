@@ -12,8 +12,6 @@ import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
 
-const classNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
-
 const TextShadowControl = ( props ) => {
 	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
 
@@ -167,12 +165,12 @@ const TextShadowControl = ( props ) => {
 		<div className="spectra-control-popup__options--action-wrapper">
 			<span className="uag-control-label">
 				{ label }
+				{ isTextShadowUpdated && (
+					<div className="spectra__change-indicator--dot-right"/>
+				) }
 			</span>
 			<Button
-				className={ classNames(
-					'uag-text-shadow-button spectra-control-popup__options--action-button',
-					isTextShadowUpdated ? 'spectra-control-popup__status--updated' : '',
-				) }
+				className="uag-text-shadow-button spectra-control-popup__options--action-button"
 				aria-pressed={ showAdvancedControls }
 				onClick={ () => {
 						const allPopups = document.querySelectorAll( '.spectra-control-popup__options' );

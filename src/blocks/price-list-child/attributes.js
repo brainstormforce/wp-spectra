@@ -20,7 +20,7 @@ const attributes = {
 	},
 	image: {
 		type: 'object',
-		default: null
+		default: { url:`${ uagb_blocks_info.uagb_url }/admin/assets/images/uag-placeholder.svg`},
 	},
 	imagePosition: {
 		type: 'string',
@@ -79,8 +79,12 @@ const attributes = {
 			styleType: 'image-align'
 		},
 		default: 'side',
-	}
-	}
+	},
+	showImage: {
+		type: 'boolean',
+		default: true,
+	},
+}
 };
 
 export default attributes;

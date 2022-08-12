@@ -52,8 +52,16 @@ const UAGBFormsEdit = ( props ) => {
 			reCaptchaSecretKeyV2,
 			reCaptchaSiteKeyV3,
 			reCaptchaSecretKeyV3,
-			reCaptchaEnable
+			reCaptchaEnable,
+			toggleColor,
+			inputColor
 		} = props.attributes;
+
+		if( inputColor ) {
+			if ( undefined === toggleColor ) {
+				setAttributes( { toggleColor: inputColor } );
+			}
+		}
 
 		if ( vPaddingSubmit ) {
 			if ( undefined === paddingBtnTop ) {
@@ -128,11 +136,6 @@ const UAGBFormsEdit = ( props ) => {
 			inputborderColor,
 			inputborderHColor,
 			inputborderRadius,
-			toggleBorderWidth,
-			toggleBorderRadius,
-			toggleBorderColor,
-			toggleBorderHColor,
-			toggleBorderStyle,
 			submitborderWidth,
 			submitborderRadius,
 			submitborderColor,
@@ -160,26 +163,24 @@ const UAGBFormsEdit = ( props ) => {
 			}
 			);
 			props.setAttributes( migrationAttributes );
-		}
-		if( toggleBorderWidth || toggleBorderRadius || toggleBorderColor || toggleBorderHColor || toggleBorderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'checkBoxToggle', {
-				label: 'toggleBorderWidth',
-				value: toggleBorderWidth,
+			const toggleMigrationAttributes = migrateBorderAttributes( 'checkBoxToggle', {
+				label: 'inputborderWidth',
+				value: inputborderWidth,
 			}, {
-				label: 'toggleBorderRadius',
-				value: toggleBorderRadius
+				label: 'inputborderRadius',
+				value: inputborderRadius
 			}, {
-				label: 'toggleBorderColor',
-				value: toggleBorderColor
+				label: 'inputborderColor',
+				value: inputborderColor
 			}, {
-				label: 'toggleBorderHColor',
-				value: toggleBorderHColor
+				label: 'inputborderHColor',
+				value: inputborderHColor
 			},{
-				label: 'toggleBorderStyle',
-				value: toggleBorderStyle
+				label: 'inputborderStyle',
+				value: inputborderStyle
 			}
 			);
-			props.setAttributes( migrationAttributes );
+			props.setAttributes( toggleMigrationAttributes );
 		}
 		if( submitborderWidth || submitborderRadius || submitborderColor || submitborderHColor || submitborderStyle ){
 			const migrationAttributes = migrateBorderAttributes( 'btn', {

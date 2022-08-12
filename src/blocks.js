@@ -23,61 +23,68 @@ blocksEditorSpacing();
 
 __webpack_public_path__ = uagb_blocks_info.uagb_url + 'dist/';
 
+// Priorities need to be adequately updated in the respective includes/blocks/block.php files.
+
+// Core Spectra Blocks: P1 - P9 .
+import './blocks/container/block.js'; // P1.
+import './blocks/advanced-heading/block.js'; // P2.
+import './blocks/image/block.js'; // P3.
+import './blocks/buttons/block.js'; // P4.
+import './blocks/buttons-child/block.js'; // Child Block.
+import './blocks/info-box/block.js'; // P5.
+import './blocks/call-to-action/block.js'; // P6.
+// Alphabetically Ordered Blocks: P10+.
+import './blocks/blockquote/block.js'; // P10.
+import './blocks/timeline/content-timeline/block.js'; // P11.
+import './blocks/timeline/content-timeline-child/block.js'; // Child Block.
+import './blocks/faq/block.js'; // P12.
+import './blocks/faq-child/block.js'; // Child Block.
+import './blocks/forms/block.js'; // P13.
+import './blocks/forms/child-blocks/name/block.js'; // Child Block.
+import './blocks/forms/child-blocks/email/block.js'; // Child Block.
+import './blocks/forms/child-blocks/hidden/block.js'; // Child Block.
+import './blocks/forms/child-blocks/phone/block.js'; // Child Block.
+import './blocks/forms/child-blocks/textarea/block.js'; // Child Block.
+import './blocks/forms/child-blocks/checkbox/block.js'; // Child Block.
+import './blocks/forms/child-blocks/radio/block.js'; // Child Block.
+import './blocks/forms/child-blocks/url/block.js'; // Child Block.
+import './blocks/forms/child-blocks/select/block.js'; // Child Block.
+import './blocks/forms/child-blocks/toggle/block.js'; // Child Block.
+import './blocks/forms/child-blocks/date/block.js'; // Child Block.
+import './blocks/forms/child-blocks/accept/block.js'; // Child Block.
+import './blocks/google-map/block.js'; // P14.
+import './blocks/how-to/block.js'; // P15.
+import './blocks/how-to/child-blocks/step/block.js'; // Child Block.
+import './blocks/icon-list/block.js'; // P16.
+import './blocks/icon-list-child/block.js'; // Child Block.
+import './blocks/inline-notice/block.js'; // P17.
+import './blocks/lottie/block.js'; // P18.
+import './blocks/marketing-button/block.js'; // P19.
+import './blocks/post/block.js'; // Carousel P20 | Grid P21.
+import './blocks/timeline/post-timeline/block.js'; // P22.
+import './blocks/price-list/block.js'; // P23.
+import './blocks/price-list-child/block.js'; // Child Block.
+import './blocks/review/block.js'; // P24.
+import './blocks/social-share/block.js'; // P25.
+import './blocks/social-share-child/block.js'; // Child Block.
+import './blocks/star-rating/block.js'; // P26.
+import './blocks/table-of-contents/block.js'; // P27.
+import './blocks/tabs/block.js'; // P28.
+import './blocks/tabs-child/block.js'; // Child Block.
+import './blocks/taxonomy-list/block.js'; // P29.
+import './blocks/team/block.js'; // P30.
+import './blocks/testimonial/block.js'; // P31.
+// Extensions.
 import './blocks/extensions/attributes.js';
-import './blocks/container/block.js';
-import './blocks/advanced-heading/block.js';
-import './blocks/info-box/block.js';
-import './blocks/call-to-action/block.js';
-import './blocks/tabs/block.js';
-import './blocks/tabs-child/block.js';
-import './blocks/forms/block.js';
-import './blocks/forms/child-blocks/name/block.js';
-import './blocks/forms/child-blocks/email/block.js';
-import './blocks/forms/child-blocks/hidden/block.js';
-import './blocks/forms/child-blocks/phone/block.js';
-import './blocks/forms/child-blocks/textarea/block.js';
-import './blocks/forms/child-blocks/checkbox/block.js';
-import './blocks/forms/child-blocks/radio/block.js';
-import './blocks/forms/child-blocks/url/block.js';
-import './blocks/forms/child-blocks/select/block.js';
-import './blocks/forms/child-blocks/toggle/block.js';
-import './blocks/forms/child-blocks/date/block.js';
-import './blocks/forms/child-blocks/accept/block.js';
-import './blocks/icon-list/block.js';
-import './blocks/icon-list-child/block.js';
-import './blocks/price-list/block.js';
-import './blocks/price-list-child/block.js';
-import './blocks/social-share/block.js';
-import './blocks/social-share-child/block.js';
-import './blocks/post/block.js';
-import './blocks/timeline/post-timeline/block.js'
-import './blocks/table-of-contents/block.js';
-import './blocks/inline-notice/block.js';
-import './blocks/star-rating/block.js';
-import './blocks/blockquote/block.js';
-import './blocks/how-to/block.js';
-import './blocks/how-to/child-blocks/step/block.js';
-import './blocks/faq/block.js';
-import './blocks/faq-child/block.js';
-import './blocks/team/block.js';
-import './blocks/testimonial/block.js';
-import './blocks/google-map/block.js';
-import './blocks/timeline/content-timeline/block.js';
-import './blocks/timeline/content-timeline-child/block.js';
-import './blocks/review/block.js';
-import './blocks/taxonomy-list/block.js';
-import './blocks/marketing-button/block.js';
-import './blocks/lottie/block.js';
-import './blocks/gf-designer/block.js';
-import './blocks/cf7-designer/block.js';
-import './blocks/column/block.js';
-import './blocks/columns/block.js';
-import './blocks/section/block.js';
-import './blocks/buttons/block.js';
-import './blocks/buttons-child/block.js';
-import './blocks/wp-search/block.js';
-import './blocks/image/block.js';
 import './blocks/extensions/block.js';
+// Deprecated Blocks: P90+.
+import './blocks/columns/block.js'; // P90.
+import './blocks/section/block.js'; // P91.
+import './blocks/column/block.js'; // Child Block.
+import './blocks/cf7-designer/block.js'; // P92.
+import './blocks/gf-designer/block.js'; // P93.
+import './blocks/post/deprecated-block.js'; // Masonry P94.
+import './blocks/wp-search/block.js'; // P95.
 
 // Responsive Device Icons on Editor
 import './components/responsive-icons/index.js';

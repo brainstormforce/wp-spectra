@@ -15,9 +15,9 @@ import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/tabs-child', {
 	title: __( 'Tabs child', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'This block allows you to display your content in tabs layout.', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'Display your content in a tab.', 'ultimate-addons-for-gutenberg' ),
 	parent: [ 'uagb/tabs' ],
-	icon: UAGB_Block_Icons.tabs,
+	icon: UAGB_Block_Icons.tabs_child,
 	category: uagb_blocks_info.category,
 	keywords: [
 		__( 'tabs', 'ultimate-addons-for-gutenberg' ),

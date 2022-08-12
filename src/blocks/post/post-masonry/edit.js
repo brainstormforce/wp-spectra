@@ -26,6 +26,7 @@ import {buttonsPresets} from './presets';
 import UAGPresets from '@Components/presets';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import { decodeEntities } from '@wordpress/html-entities';
+import UAGNumberControl from '@Components/number-control';
 
 const Settings = lazy( () =>
 	import(
@@ -711,20 +712,20 @@ const UAGBPostMasonry = ( props ) => {
 						} )
 					}
 				/>
-				<Range
+				<UAGNumberControl
 					label={ __(
 						'Posts Per Page',
 						'ultimate-addons-for-gutenberg'
 					) }
+					setAttributes={ setAttributes }
 					value={ postsToShow }
 					data={ {
 						value: postsToShow,
 						label: 'postsToShow',
 					} }
-					setAttributes={ setAttributes }
-					displayUnit={ false }
 					min={ 1 }
 					max={ 100 }
+					displayUnit={ false }
 				/>
 				<ToggleControl
 					label={ __(
@@ -752,7 +753,7 @@ const UAGBPostMasonry = ( props ) => {
 					}
 				/>
 				{ enableOffset && (
-				<Range
+				<UAGNumberControl
 					label={ __(
 						'Offset By',
 						'ultimate-addons-for-gutenberg'
@@ -1197,7 +1198,7 @@ const UAGBPostMasonry = ( props ) => {
 								attributes={ attributes }
 								deviceType={ deviceType }
 								disableBottomSeparator={ true }
-								disabledBorderTitle= { true }
+								disabledBorderTitle= { false }
 							/>
 						</>
 					) }
@@ -2410,7 +2411,6 @@ const UAGBPostMasonry = ( props ) => {
 					prefix={ 'btn' }
 					attributes={ attributes }
 					deviceType={ deviceType }
-					disabledBorderTitle= { true }
 				/>
 				<SpacingControl
 					{ ...props }
