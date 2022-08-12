@@ -163,7 +163,10 @@ function styling( props ) {
 		innerContentCustomWidthTypeTablet,
 
 		overflow,
-		isBlockRootParent
+		isBlockRootParent,
+
+		widthTypeTablet,
+		widthTypeMobile
 	} = attributes;
 
 	const innerContentCustomWidthDesktopFallback = getFallbackNumber( innerContentCustomWidthDesktop, 'innerContentCustomWidthDesktop', blockName );
@@ -330,7 +333,7 @@ function styling( props ) {
 	}
 
 	let containerFlexSelector = '.wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout';
-	if ( ! isBlockRootParent ) {
+	if ( ! isBlockRootParent || 'alignfull' !== contentWidth ) {
 		containerFlexSelector = '.wp-block-uagb-container > .block-editor-inner-blocks > .block-editor-block-list__layout';
 	}
 
@@ -362,15 +365,15 @@ function styling( props ) {
 
 	const widthSelectorsTablet = {
 		[`.is-root-container > .block-editor-block-list__block .uagb-editor-preview-mode-tablet.block-editor-block-list__block#block-${ props.clientId } `] : {
-			'max-width' : generateCSSUnit( widthTablet, widthType ),
-			'width' : generateCSSUnit( widthTablet, widthType ),
+			'max-width' : generateCSSUnit( widthTablet, widthTypeTablet ),
+			'width' : generateCSSUnit( widthTablet, widthTypeTablet ),
 		},
 	};
 
 	const widthSelectorsMobile = {
 		[`.is-root-container > .block-editor-block-list__block .uagb-editor-preview-mode-mobile.block-editor-block-list__block#block-${ props.clientId } `] : {
-			'max-width' : generateCSSUnit( widthMobile, widthType ),
-			'width' : generateCSSUnit( widthMobile, widthType ),
+			'max-width' : generateCSSUnit( widthMobile, widthTypeMobile ),
+			'width' : generateCSSUnit( widthMobile, widthTypeMobile ),
 		},
 	};
 
@@ -530,14 +533,11 @@ function styling( props ) {
 	};
 
 	if ( 'default' === contentWidth ) {
-		selectors['.block-editor-block-list__block'].width = generateCSSUnit( widthDesktopFallback, widthType );
 		selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthDesktopFallback, widthType );
 
-		tablet_selectors['.block-editor-block-list__block'].width = generateCSSUnit( widthTablet, widthType );
-		tablet_selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthTablet, widthType );
+		tablet_selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthTablet, widthTypeTablet );
 
-		mobile_selectors['.block-editor-block-list__block'].width = generateCSSUnit( widthMobile, widthType );
-		mobile_selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthMobile, widthType );
+		mobile_selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthMobile, widthTypeMobile );
 	}
 
 	const base_selector = `.editor-styles-wrapper #block-${ props.clientId }`;
