@@ -183,6 +183,9 @@ function styling( props ) {
 		' .uagb-marketing-btn__link:hover': {
 			'border-color': btnBorderHColor,
 		},
+		' .uagb-marketing-btn__link:focus': {
+			'border-color': btnBorderHColor,
+		},
 	};
 
 	if ( 'transparent' === backgroundType ) {

@@ -89,6 +89,9 @@ $selectors = array(
 	' .uagb-marketing-btn__link:hover'     => array(
 		'border-color' => isset( $attr['borderHoverColor'] ) && ! empty( $attr['borderHoverColor'] ) ? $attr['borderHoverColor'] : $attr['btnBorderHColor'],
 	),
+	' .uagb-marketing-btn__link:focus'     => array(
+		'border-color' => isset( $attr['borderHoverColor'] ) && ! empty( $attr['borderHoverColor'] ) ? $attr['borderHoverColor'] : $attr['btnBorderHColor'],
+	),
 	'.uagb-marketing-btn__icon-after .uagb-marketing-btn__link svg' => array(
 		'margin-left' => UAGB_Helper::get_css_value( $icon_space_fallback, 'px' ),
 	),
