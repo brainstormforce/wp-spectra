@@ -13,6 +13,7 @@ import variations from './variations';
 import transforms from './transforms';
 
 registerBlockType( 'uagb/container', {
+	apiVersion: 2,
 	title: __( 'Container', 'ultimate-addons-for-gutenberg' ),
 	description: __(
 		'Create beautiful layouts with flexbox powered container block.',
