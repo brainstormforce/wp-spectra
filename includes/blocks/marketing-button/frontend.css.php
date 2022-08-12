@@ -68,7 +68,13 @@ $selectors = array(
 	' .uagb-marketing-btn__link:hover p.uagb-marketing-btn__prefix' => array(
 		'color' => $attr['prefixHoverColor'],
 	),
+	' .uagb-marketing-btn__link:focus p.uagb-marketing-btn__prefix' => array(
+		'color' => $attr['prefixHoverColor'],
+	),
 	' .uagb-marketing-btn__link:hover svg' => array(
+		'fill' => $icon_hover_color,
+	),
+	' .uagb-marketing-btn__link:focus svg' => array(
 		'fill' => $icon_hover_color,
 	),
 	' .uagb-marketing-btn__link'           => array_merge(
@@ -104,6 +110,9 @@ $selectors[ ' ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
 
 
 $selectors[ ' .uagb-marketing-btn__link:hover ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
+	'color' => $attr['titleHoverColor'],
+);
+$selectors[ ' .uagb-marketing-btn__link:focus ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
 	'color' => $attr['titleHoverColor'],
 );
 

@@ -155,10 +155,19 @@ function styling( props ) {
 		' .uagb-marketing-btn__link:hover .block-editor-rich-text__editable.uagb-marketing-btn__title': {
 			'color': titleHoverColor,
 		},
+		' .uagb-marketing-btn__link:focus .block-editor-rich-text__editable.uagb-marketing-btn__title': {
+			'color': titleHoverColor,
+		},
 		' .uagb-marketing-btn__link:hover .block-editor-rich-text__editable.uagb-marketing-btn__prefix': {
 			'color': prefixHoverColor,
 		},
+		' .uagb-marketing-btn__link:focus .block-editor-rich-text__editable.uagb-marketing-btn__prefix': {
+			'color': prefixHoverColor,
+		},
 		' .uagb-marketing-btn__link:hover svg': {
+			'fill': setIconHoverColor,
+		},
+		' .uagb-marketing-btn__link:focus svg': {
 			'fill': setIconHoverColor,
 		},
 		' .uagb-marketing-btn__link': {
@@ -183,7 +192,6 @@ function styling( props ) {
 
 		// Hover Background
 		selectors[ ' .uagb-marketing-btn__link:hover' ].background = backgroundHoverColor;
-		selectors[ ' .uagb-marketing-btn__link:focus' ].background = backgroundHoverColor;
 	} else if ( 'gradient' === backgroundType ) {
 		selectors[ ' .uagb-marketing-btn__link' ][ 'background-color' ] =
 			'transparent';
