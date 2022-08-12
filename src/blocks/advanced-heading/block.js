@@ -46,7 +46,6 @@ registerBlockType( 'uagb/advanced-heading', {
 					return createBlock( 'uagb/advanced-heading', {
 						headingTitle: attribute.content,
 						headingAlign: attribute.align,
-						className: 'uagb-heading-text',
 					} );
 				},
 			},
@@ -57,7 +56,6 @@ registerBlockType( 'uagb/advanced-heading', {
 					return createBlock( 'uagb/advanced-heading', {
 						headingTitle: attribute.value,
 						headingDesc: attribute.citation,
-						className: 'uagb-heading-text',
 					} );
 				},
 			},
@@ -70,7 +68,6 @@ registerBlockType( 'uagb/advanced-heading', {
 					return createBlock( 'core/heading', {
 						content: attribute.headingTitle,
 						align: attribute.headingAlign,
-						className: 'uagb-heading-text',
 					} );
 				},
 			},
@@ -79,9 +76,8 @@ registerBlockType( 'uagb/advanced-heading', {
 				blocks: [ 'core/quote' ],
 				transform: ( attribute ) => {
 					return createBlock( 'core/quote', {
-						value: `<p>${ attribute.headingTitle }</p>`,
+						value: attribute.headingTitle,
 						citation: attribute.headingDesc,
-						className: 'uagb-heading-text',
 					} );
 				},
 			},
