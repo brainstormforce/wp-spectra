@@ -139,24 +139,27 @@ const FilterTabs = () => {
 	};
 
     return (
-        <div className="max-w-3xl mx-auto lg:max-w-[77rem] mb-6">
-            <div className="sm:hidden">
-            <label htmlFor="tabs" className="sr-only">
-                Select a tab
-            </label>
-            {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
-            <select
-                id="tabs"
-                name="tabs"
-                className="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-[0.2rem]"
-            >
-                {tabs.map( ( tab ) => (
-                <option key={tab.name}>{tab.name}</option>
-                ) )}
-            </select>
+        <div className="mx-auto mb-6 px-6 lg:max-w-[80rem]">
+            <div className="w-full sm:hidden">
+                <label htmlFor="tabs" className="sr-only">
+                    Select a tab
+                </label>
+                {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
+                <select
+                    id="tabs"
+                    name="tabs"
+                    className="w-full spectra-admin__input-field spectra-admin__dropdown"
+                    style={ {
+                        maxWidth: '100%',
+                    } }
+                >
+                    {tabs.map( ( tab ) => (
+                    <option key={tab.name}>{tab.name}</option>
+                    ) )}
+                </select>
             </div>
-            <div className="hidden justify-between items-center sm:flex">
-                <nav className="flex space-x-4" aria-label="Tabs">
+            <div className="hidden justify-between items-center space-y-4 sm:flex sm:flex-col lg:space-y-0 lg:flex-row">
+                <nav className="flex -ml-4 flex-wrap justify-center lg:justify-start" aria-label="Tabs">
                     {tabs.map( ( tab ) => (
                     <Link // eslint-disable-line
 						to={ {
@@ -168,7 +171,7 @@ const FilterTabs = () => {
                             ( tab.slug === activeBlocksFilterTab )
                                 ? 'bg-white text-slate-800 active:text-slate-800 focus:text-slate-800 hover:text-slate-800 shadow shadow-focused'
                                 : 'text-slate-500 focus:text-slate-500 focus-visible:border-slate-200 active:text-slate-500 hover:text-slate-500 hover:border-slate-200',
-                            'px-4 py-1 font-medium text-sm rounded-2xl cursor-pointer border border-transparent transition'
+                            'px-4 py-1 ml-4 my-1 font-medium text-sm rounded-2xl cursor-pointer border border-transparent transition'
                         ) }
                         onClick={ () => {
 							dispatch( {type:'UPDATE_BLOCKS_ACTIVE_FILTER_TAB', payload: tab.slug} )
