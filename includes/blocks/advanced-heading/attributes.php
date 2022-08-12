@@ -114,11 +114,11 @@ return array_merge(
 		'blockMarginUnitMobile'        => 'px',
 		'blockMarginLink'              => '',
 		// link.
-		'linkColor'                    => '#6104ff',
+		'linkColor'                    => '#007cba',
 		'linkHColor'                   => '',
 		// Highlight.
 		'highLightColor'               => '#fff',
-		'highLightBackground'          => '#6104ff',
+		'highLightBackground'          => '#007cba',
 		'highLightLoadGoogleFonts'     => false,
 		'highLightFontFamily'          => 'Default',
 		'highLightFontWeight'          => '',
