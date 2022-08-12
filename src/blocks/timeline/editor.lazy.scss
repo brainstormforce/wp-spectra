@@ -22,3 +22,10 @@
 	}
 }
 
+.uagb-editor-preview-mode-tablet.uagb-timeline,
+.uagb-editor-preview-mode-mobile.uagb-timeline {
+
+	.uagb-timeline__image img {
+		max-width: 100%;
+	}
+}
