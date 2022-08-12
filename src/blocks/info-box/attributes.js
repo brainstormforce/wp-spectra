@@ -39,14 +39,14 @@
 	},
 	headingAlignTablet: {
 		type: 'string',
-		default: 'center',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'overall-alignment-tablet'
 		}
 	},
 	headingAlignMobile: {
 		type: 'string',
-		default: 'center',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'overall-alignment-mobile'
 		}
