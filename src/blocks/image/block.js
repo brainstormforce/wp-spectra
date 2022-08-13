@@ -8,7 +8,7 @@ import attributes from './attributes'
 import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 import './style.scss';
-import { registerBlockType } from '@wordpress/blocks';
+import { registerBlockType, createBlock } from '@wordpress/blocks';
 
 
 registerBlockType( 'uagb/image', {
@@ -38,4 +38,41 @@ registerBlockType( 'uagb/image', {
 	attributes,
 	edit,
 	save,
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: [ 'core/image' ],
+				transform: ( { url, sizeSlug } ) => {
+					return createBlock( 'uagb/image', {
+						url,
+						sizeSlug,
+					} );
+				},
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/post-featured-image' ],
+				transform: ( { sizeSlug } ) => {
+					return createBlock( 'uagb/image', {
+						useDynamicData: true,
+						dynamicContentType: 'featured-image',
+						sizeSlug,
+					} );
+				},
+			},
+		],
+		to: [
+			{
+				type: 'block',
+				blocks: [ 'core/image' ],
+				transform: ( { url, sizeSlug } ) => {
+					return createBlock( 'core/image', {
+						url,
+						sizeSlug,
+					} );
+				},
+			},
+		],
+	},
 } );
