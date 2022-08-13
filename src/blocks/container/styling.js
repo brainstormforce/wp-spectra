@@ -178,8 +178,6 @@ function styling( props ) {
 	const borderCSSTablet = generateBorderCSS( props.attributes, 'container', 'tablet' );
 	const borderCSSMobile = generateBorderCSS( props.attributes, 'container', 'mobile' );
 
-	topPaddingTablet = topPaddingTablet ? topPaddingTablet : topPaddingDesktop;
-	topPaddingMobile = topPaddingMobile ? topPaddingMobile : topPaddingTablet;
 	topPaddingTablet = 'undefined' !== typeof topPaddingTablet ? topPaddingTablet : topPaddingDesktop;
 	topPaddingMobile = 'undefined' !== typeof topPaddingMobile ? topPaddingMobile : topPaddingTablet;
 
@@ -228,13 +226,13 @@ function styling( props ) {
 	const videoBackgroundCSS = generateBackgroundCSS( videoBackgroundAttributes );
 
 	const selectors = {
-		' .wp-block-uagb-container .block-editor-block-list__block' : {
+		'.wp-block-uagb-container .block-editor-block-list__block' : {
 			'color': textColor,
 		},
-		' .wp-block-uagb-container .block-editor-block-list__block a' : {
+		'.wp-block-uagb-container .block-editor-block-list__block a' : {
 			'color': linkColor,
 		},
-		' .wp-block-uagb-container .block-editor-block-list__block a:hover' : {
+		'.wp-block-uagb-container .block-editor-block-list__block a:hover' : {
 			'color': linkHoverColor,
 		},
 		' > .uagb-container__shape-top svg' : {
@@ -332,9 +330,9 @@ function styling( props ) {
 													boxShadowColorHover + ' ' +	boxShadowPositionCSSHover;
 	}
 
-	let containerFlexSelector = ' > .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout';
+	let containerFlexSelector = '.wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout';
 	if ( ! isBlockRootParent || 'alignfull' !== contentWidth ) {
-		containerFlexSelector = ' > .wp-block-uagb-container > .block-editor-inner-blocks > .block-editor-block-list__layout';
+		containerFlexSelector = '.wp-block-uagb-container > .block-editor-inner-blocks > .block-editor-block-list__layout';
 	}
 
 	selectors[containerFlexSelector] = {
@@ -379,7 +377,7 @@ function styling( props ) {
 
 	if ( 'alignfull' === contentWidth && 'alignwide' === innerContentWidth ) {
 
-		widthSelectorsDesktop[`.is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
+		widthSelectorsDesktop[`.is-root-container > .block-editor-block-list__block.wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
 			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthType })`,
 			'max-width' : 'var(--inner-content-custom-width)',
 			'width' : '100%',
@@ -387,7 +385,7 @@ function styling( props ) {
 			'margin-right': 'auto'
 		};
 
-		widthSelectorsTablet[`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-tablet > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
+		widthSelectorsTablet[`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-table.wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
 			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthTablet || innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthTypeTablet })`,
 			'max-width' : 'var(--inner-content-custom-width)',
 			'width' :'100%',
@@ -395,7 +393,7 @@ function styling( props ) {
 			'margin-right': 'auto'
 		};
 
-		widthSelectorsMobile[`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-mobile > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
+		widthSelectorsMobile[`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-mobile.wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
 			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthMobile || innerContentCustomWidthTablet || innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthTypeMobile })`,
 			'max-width' : 'var(--inner-content-custom-width)',
 			'width' : '100%',
