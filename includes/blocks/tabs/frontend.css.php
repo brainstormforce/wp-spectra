@@ -167,6 +167,91 @@ $m_selectors = array(
 	' .uagb-tabs__icon-position-top > .uagb-tabs__icon'    => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconSpacingMobile'], 'px' ),
 	),
+	'.uagb-tabs__hstyle2-tablet > .uagb-tabs__panel .uagb-tab' => array(
+		'border-top-width'=> '0px',
+		'border-right-width'=> '0px',
+		'border-left-width'=> '0px',
+		'border-top-style'=> 'none',
+		'border-left-style'=> 'none',
+		'border-right-style'=> 'none',
+	),
+	'.uagb-tabs__wrap.uagb-tabs__hstyle2-tablet > .uagb-tabs__body-wrap' => array(
+		'border-width'=> '0px',
+		'border-style'=> 'none',
+	),
+	'.uagb-tabs__wrap.uagb-tabs__hstyle2-tablet ul.uagb-tabs__panel' => array_merge( array(
+		'border-top-width'=> '0px',
+		'border-right-width'=> '0px',
+		'border-left-width'=> '0px',
+		'border-top'=> 0,
+		'border-left'=> 0,
+		'border-right'=> 0,
+		'outline'=> 0,
+		'border-radius'=> 0,
+	), $overall_border_mobile
+	),
+	'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet' => $overall_border_mobile,
+	'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet .uagb-tab' => array(
+		'border-top-width'=> '0px',
+		'border-right-width'=> '0px',
+		'border-left-width'=> '0px',
+		'border-bottom-width'=> '0px',
+		'border-top'=> 0,
+		'border-left'=> 0,
+		'border-right'=> 0,
+		'border-bottom'=> 0,
+		'outline'=> 0,
+		'border-radius'=> 0,
+	),
+	'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet .uagb-tab.uagb-tabs__active' => array_merge( array(
+		'border-top-width'=> '0px',
+		'border-right-width'=> '0px',
+		'border-left-width'=> '0px',
+		'border-top'=> 0,
+		'border-left'=> 0,
+		'border-right'=> 0,
+		'outline'=> 0,
+		'border-radius'=> 0,
+	), $overall_border_mobile
+	),
+	'.uagb-tabs__wrap.uagb-tabs__vstyle7-tablet .uagb-tab' => array_merge( array(
+		'border-top-width'=> '0px',
+		'border-right-width'=> '0px',
+		'border-left-width'=> '0px',
+		'border-top'=> 0,
+		'border-left'=> 0,
+		'border-right'=> 0,
+		'outline'=> 0,
+		'border-radius'=> 0,
+	), $overall_border_mobile
+	),
+	'.uagb-tabs__wrap.uagb-tabs__vstyle7-tablet > .uagb-tabs__body-wrap' => array(
+		'border-width'=> '0px',
+		'border-style'=> 'none',
+	),
+	'.uagb-tabs__wrap.uagb-tabs__vstyle8-tablet > .uagb-tabs__body-wrap' => array(
+		'margin-left'=> '0px',
+	),
+	'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet'=> $overall_border_mobile,
+	'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet ul.uagb-tabs__panel .uagb-tab' => array(
+		'border-width'=> '0px',
+		'border-style'=> 'none',
+	),
+	'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet .uagb-tabs__body-wrap' => array(
+		'border-width'=> '0px',
+		'border-style'=> 'none',
+	),
+	'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet ul.uagb-tabs__panel .uagb-tab.uagb-tabs__active'=> array_merge( array(
+		'border-top-width'=> '0px',
+		'border-bottom-width'=> '0px',
+		'border-left-width'=> '0px',
+		'border-top'=> 0,
+		'border-left'=> 0,
+		'border-bottom'=> 0,
+		'outline'=> 0,
+		'border-radius'=> 0,
+	), $overall_border_mobile
+	),
 );
 $t_selectors = array(
 	' .uagb-tabs__icon svg'                                => array(
@@ -212,6 +297,91 @@ $t_selectors = array(
 	),
 	' .uagb-tabs__icon-position-top > .uagb-tabs__icon'    => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconSpacingTablet'], 'px' ),
+	),
+	'.uagb-tabs__hstyle2-tablet > .uagb-tabs__panel .uagb-tab' => array(
+		'border-top-width'=> '0px',
+		'border-right-width'=> '0px',
+		'border-left-width'=> '0px',
+		'border-top-style'=> 'none',
+		'border-left-style'=> 'none',
+		'border-right-style'=> 'none',
+	),
+	'.uagb-tabs__wrap.uagb-tabs__hstyle2-tablet > .uagb-tabs__body-wrap' => array(
+		'border-width'=> '0px',
+		'border-style'=> 'none',
+	),
+	'.uagb-tabs__wrap.uagb-tabs__hstyle2-tablet ul.uagb-tabs__panel' => array_merge( array(
+		'border-top-width'=> '0px',
+		'border-right-width'=> '0px',
+		'border-left-width'=> '0px',
+		'border-top'=> 0,
+		'border-left'=> 0,
+		'border-right'=> 0,
+		'outline'=> 0,
+		'border-radius'=> 0,
+	), $overall_border_tablet
+	),
+	'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet' => $overall_border_tablet,
+	'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet .uagb-tab' => array(
+		'border-top-width'=> '0px',
+		'border-right-width'=> '0px',
+		'border-left-width'=> '0px',
+		'border-bottom-width'=> '0px',
+		'border-top'=> 0,
+		'border-left'=> 0,
+		'border-right'=> 0,
+		'border-bottom'=> 0,
+		'outline'=> 0,
+		'border-radius'=> 0,
+	),
+	'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet .uagb-tab.uagb-tabs__active' => array_merge( array(
+		'border-top-width'=> '0px',
+		'border-right-width'=> '0px',
+		'border-left-width'=> '0px',
+		'border-top'=> 0,
+		'border-left'=> 0,
+		'border-right'=> 0,
+		'outline'=> 0,
+		'border-radius'=> 0,
+	), $overall_border_tablet
+	),
+	'.uagb-tabs__wrap.uagb-tabs__vstyle7-tablet .uagb-tab' => array_merge( array(
+		'border-top-width'=> '0px',
+		'border-right-width'=> '0px',
+		'border-left-width'=> '0px',
+		'border-top'=> 0,
+		'border-left'=> 0,
+		'border-right'=> 0,
+		'outline'=> 0,
+		'border-radius'=> 0,
+	), $overall_border_tablet
+	),
+	'.uagb-tabs__wrap.uagb-tabs__vstyle7-tablet > .uagb-tabs__body-wrap' => array(
+		'border-width'=> '0px',
+		'border-style'=> 'none',
+	),
+	'.uagb-tabs__wrap.uagb-tabs__vstyle8-tablet > .uagb-tabs__body-wrap' => array(
+		'margin-left'=> '0px',
+	),
+	'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet'=> $overall_border_tablet,
+	'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet ul.uagb-tabs__panel .uagb-tab' => array(
+		'border-width'=> '0px',
+		'border-style'=> 'none',
+	),
+	'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet .uagb-tabs__body-wrap' => array(
+		'border-width'=> '0px',
+		'border-style'=> 'none',
+	),
+	'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet ul.uagb-tabs__panel .uagb-tab.uagb-tabs__active'=> array_merge( array(
+		'border-top-width'=> '0px',
+		'border-bottom-width'=> '0px',
+		'border-left-width'=> '0px',
+		'border-top'=> 0,
+		'border-left'=> 0,
+		'border-bottom'=> 0,
+		'outline'=> 0,
+		'border-radius'=> 0,
+	), $overall_border_tablet
 	),
 );
 
@@ -348,10 +518,6 @@ if ( 'hstyle5' === $attr['tabsStyleM'] ) {
 	);
 	$m_selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile:hover'] = array(
 		'border-color' => $attr['tabBorderHColor'],
-	);
-	$m_selectors['.uagb-tabs__wrap .uagb-tabs__body-wrap ']          = array(
-		'border-left-style'  => 'none',
-		'border-right-style' => 'none',
 	);
 }
 if ( 'vstyle10' === $attr['tabsStyleM'] ) {
