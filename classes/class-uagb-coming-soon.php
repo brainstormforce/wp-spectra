@@ -41,7 +41,9 @@ class UAGB_Coming_Soon {
 	 */
 	public function __construct() {
 		$enabled_coming_soon = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_coming_soon_mode', 'disabled' );
-		if ( 'enabled' === $enabled_coming_soon && ! is_user_logged_in() ) {
+		$coming_soon_page_id = UAGB_Admin_Helper::get_admin_settings_option( 'uag_coming_soon_page', false );
+
+		if ( 'enabled' === $enabled_coming_soon && ! is_user_logged_in() && false !== $coming_soon_page_id && isset( $coming_soon_page_id ) && ! empty( $coming_soon_page_id ) ) {
 			add_action( 'template_redirect', array( $this, 'set_coming_soon_page' ), 99 );
 			add_filter( 'template_include', array( $this, 'set_coming_soon_template' ), 99 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_asset_files' ) );
@@ -64,10 +66,10 @@ class UAGB_Coming_Soon {
 	 */
 	public function set_coming_soon_page() {
 		$coming_soon_page_id = intval( UAGB_Admin_Helper::get_admin_settings_option( 'uag_coming_soon_page', false ) );
-		$current_page_id     = get_the_ID();
 
-		if ( $coming_soon_page_id !== $current_page_id ) {
+		$current_page_id = get_the_ID();
 
+		if ( $coming_soon_page_id !== $current_page_id && 'publish' === get_post_status( $coming_soon_page_id ) ) {
 			wp_safe_redirect( get_page_link( $coming_soon_page_id ) );
 			exit();
 		}

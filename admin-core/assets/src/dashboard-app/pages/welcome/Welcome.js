@@ -16,7 +16,7 @@ const Welcome = () => {
 
 	const onReadFullGuideClick = () => {
 		window.open(
-			'https://ultimategutenberg.com',
+			'https://wpspectra.com/',
 			'_blank'
 		);
 	};
@@ -26,7 +26,7 @@ const Welcome = () => {
 			<div className="max-w-3xl mx-auto px-6 lg:max-w-7xl">
 				<h1 className="sr-only">Page title</h1>
 				{/* Main 3 column grid */}
-				<div className="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-[2.6rem]">
+				<div className="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-5 xl:gap-10">
 					{/* Left column */}
 					<div className="grid grid-cols-1 gap-4 lg:col-span-2 h-full">
 						<section aria-labelledby="section-1-title h-full">
@@ -63,7 +63,7 @@ const Welcome = () => {
 					</div>
 
 					{/* Right column */}
-					<div className="flex h-full flex-col justify-between">
+					<div className="space-y-4 flex h-full flex-col justify-between">
 						<section aria-labelledby="section-2-title">
 							<h2 className="sr-only" id="section-2-title">
 								Section title

@@ -9,6 +9,7 @@
 
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'container' );
 $default_width    = UAGB_Admin_Helper::get_global_content_width();
+$default_padding  = UAGB_Admin_Helper::get_admin_settings_option( 'uag_container_global_padding', '' );
 
 return array_merge(
 	array(
@@ -74,18 +75,18 @@ return array_merge(
 		'boxShadowSpreadHover'              => '',
 		'boxShadowPositionHover'            => 'outset',
 
-		'topPaddingDesktop'                 => '',
-		'bottomPaddingDesktop'              => '',
-		'leftPaddingDesktop'                => '',
-		'rightPaddingDesktop'               => '',
-		'topPaddingTablet'                  => '',
-		'bottomPaddingTablet'               => '',
-		'leftPaddingTablet'                 => '',
-		'rightPaddingTablet'                => '',
-		'topPaddingMobile'                  => '',
-		'bottomPaddingMobile'               => '',
-		'leftPaddingMobile'                 => '',
-		'rightPaddingMobile'                => '',
+		'topPaddingDesktop'                 => $default_padding,
+		'bottomPaddingDesktop'              => $default_padding,
+		'leftPaddingDesktop'                => $default_padding,
+		'rightPaddingDesktop'               => $default_padding,
+		'topPaddingTablet'                  => $default_padding,
+		'bottomPaddingTablet'               => $default_padding,
+		'leftPaddingTablet'                 => $default_padding,
+		'rightPaddingTablet'                => $default_padding,
+		'topPaddingMobile'                  => $default_padding,
+		'bottomPaddingMobile'               => $default_padding,
+		'leftPaddingMobile'                 => $default_padding,
+		'rightPaddingMobile'                => $default_padding,
 		'paddingType'                       => 'px',
 		'paddingTypeTablet'                 => 'px',
 		'paddingTypeMobile'                 => 'px',

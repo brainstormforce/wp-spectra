@@ -2070,7 +2070,7 @@ const UAGBPostCarousel = ( props ) => {
 					prefix={ 'btn' }
 					attributes={ attributes }
 					deviceType={ deviceType }
-					disabledBorderTitle= { true }
+					disabledBorderTitle= { false }
 				/>
 				<SpacingControl
 					{ ...props }
