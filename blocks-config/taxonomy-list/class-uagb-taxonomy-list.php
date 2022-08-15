@@ -610,20 +610,25 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 
 				$new_categories_list = get_terms( $attributes['taxonomyType'], $args );
 
-				foreach ( $new_categories_list as $key => $value ) {
-					$child_arg_empty_tax                 = array(
-						'hide_empty' => ! $attributes['showEmptyTaxonomy'],
-						'parent'     => $value->term_id,
-					);
-					$child_cat_empty_tax                 = get_terms( $attributes['taxonomyType'], $child_arg_empty_tax );
-					$child_cat_empty_tax_arr             = $child_cat_empty_tax ? $child_cat_empty_tax : '';
-					$new_categories_list[ $key ]->children = $child_cat_empty_tax_arr;
+				if ( is_array( $new_categories_list ) ) {
+					foreach ( $new_categories_list as $key => $value ) {
+						$child_arg_empty_tax                 = array(
+							'hide_empty' => ! $attributes['showEmptyTaxonomy'],
+							'parent'     => $value->term_id,
+						);
+						$child_cat_empty_tax                 = get_terms( $attributes['taxonomyType'], $child_arg_empty_tax );
+						$child_cat_empty_tax_arr             = $child_cat_empty_tax ? $child_cat_empty_tax : '';
+						$new_categories_list[ $key ]->children = $child_cat_empty_tax_arr;
+					}
 				}
 
 				?>
 				<?php if ( 'dropdown' !== $attributes['listDisplayStyle'] ) { ?>
 					<ul class="uagb-list-wrap">
-						<?php foreach ( $new_categories_list as $key => $value ) { ?>
+						<?php
+						if ( is_array( $new_categories_list ) ) {
+							foreach ( $new_categories_list as $key => $value ) {
+								?>
 							<li class="uagb-tax-list">
 								<<?php echo esc_html( $titleTag ); ?> class="uagb-tax-link-wrap">
 									<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>
@@ -647,19 +652,28 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 										<div class="uagb-tax-separator"></div>
 								<?php } ?>
 							</li>
-						<?php } ?>
+								<?php
+							}
+						}
+						?>
 					</ul>
 				<?php } else { ?>
 					<select class="uagb-list-dropdown-wrap" onchange="redirectToTaxonomyLink(this)">
 						<option selected value=""> -- Select -- </option>
-						<?php foreach ( $new_categories_list as $key => $value ) { ?>
+						<?php
+						if ( is_array( $new_categories_list ) ) {
+							foreach ( $new_categories_list as $key => $value ) {
+								?>
 							<option value="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>" >
 								<?php echo esc_attr( $value->name ); ?>
 								<?php if ( $showCount ) { ?>
 									<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
 								<?php } ?>
 							</option>
-						<?php } ?>
+								<?php
+							}
+						}
+						?>
 					</select>
 					<script type="text/javascript">
 						function redirectToTaxonomyLink( selectedOption ) {
