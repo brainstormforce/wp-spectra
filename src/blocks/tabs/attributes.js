@@ -50,7 +50,7 @@ const attributes = {
 	},
 	tabsStyleM: {
 		type: 'string',
-		default: 'vstyle6',
+		default: 'stack1',
 		UAGCopyPaste: {
 			styleType: 'tabs-style-mobile'
 		},
