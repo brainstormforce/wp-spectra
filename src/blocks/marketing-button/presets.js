@@ -37,7 +37,7 @@ const presets = [
         value: 'preset-2',
         label: __( 'Preset 2', 'ultimate-addons-for-gutenberg' ),
 		attributes: [
-            { label: 'backgroundColor', value: 'transparent' },
+            { label: 'backgroundColor', value: '#0170B9' },
             { label: 'btnBorderStyle', value: 'solid' },
 			{ label: 'btnBorderColor', value: '#000000' },
             { label: 'btnBorderTopWidth', value: 2 },
