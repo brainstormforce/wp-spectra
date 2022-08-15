@@ -19,7 +19,7 @@ const ResponsiveSlider = ( props ) => {
 			<Range
 				{ ...props }
 				label={ props.label }
-				value={ props.data.desktop.value || '' }
+				value={ isNaN( props.data.desktop.value ) ? '' : props.data.desktop.value }
 				data={ {
 					value: props.data.desktop.value,
 					label: props.data.desktop.label,
@@ -43,7 +43,7 @@ const ResponsiveSlider = ( props ) => {
 			<Range
 				{ ...props }
 				label={ props.label }
-				value={ props.data.tablet.value }
+				value={ isNaN( props.data.tablet.value ) ? '' : props.data.tablet.value }
 				data={ {
 					value: props.data.tablet.value,
 					label: props.data.tablet.label,
@@ -66,7 +66,7 @@ const ResponsiveSlider = ( props ) => {
 			<Range
 				{ ...props }
 				label={ props.label }
-				value={ props.data.mobile.value }
+				value={ isNaN( props.data.mobile.value ) ? '' : props.data.mobile.value }
 				data={ {
 					value: props.data.mobile.value,
 					label: props.data.mobile.label,

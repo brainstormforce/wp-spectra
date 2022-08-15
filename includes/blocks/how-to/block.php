@@ -14,11 +14,12 @@ $block_data = array(
 	'admin_categories' => array( 'seo' ),
 	'link'             => 'how-to-schema',
 	'title'            => __( 'How-to', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block allows you to design attractive How-to pages or articles with automatically adding How-to to your page.', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Add instructions/steps on processes using how to block.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 23,
 	'dynamic_assets'   => array(
 		'dir' => 'how-to',
 	),
+	'priority'         => 15,
+	'deprecated'       => false,
 );

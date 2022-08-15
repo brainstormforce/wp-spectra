@@ -82,13 +82,25 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 		// Tablet / Mobile Starts.
 		const tabletPreview = document.getElementsByClassName( 'is-tablet-preview' );
 		const mobilePreview = document.getElementsByClassName( 'is-mobile-preview' );
+		const twentyTwentyEditorIframe = document.getElementsByClassName( 'edit-site-visual-editor__editor-canvas' );
 
-		if ( 0 !== tabletPreview.length || 0 !== mobilePreview.length ) {
+		if ( 0 !== tabletPreview.length || 0 !== mobilePreview.length || 0 !== twentyTwentyEditorIframe.length ) {
 
 			const preview = tabletPreview[0] || mobilePreview[0];
 
-			const iframe = preview.getElementsByTagName( 'iframe' )[0];
-			const iframeDocument = iframe.contentWindow.document || iframe.contentDocument;
+			let iframe = false;
+
+			if ( 0 !== twentyTwentyEditorIframe.length ) {
+				iframe = twentyTwentyEditorIframe[0];
+			} else if ( preview ) {
+				iframe = preview.getElementsByTagName( 'iframe' )[0];
+			}
+
+			const iframeDocument = iframe?.contentWindow.document || iframe?.contentDocument;
+
+			if ( ! iframe || ! iframeDocument ) {
+				return;
+			}
 
 			// Static CSS.
 			if ( cloneStaticCSSStylesTag ) {

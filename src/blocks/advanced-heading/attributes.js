@@ -703,7 +703,7 @@ const attributes = {
 	// link
 	linkColor: {
 		type: 'string',
-		default: '#6104ff',
+		default: '#007cba',
 		UAGCopyPaste: {
 			styleType: 'link-color'
 		}
@@ -725,7 +725,7 @@ const attributes = {
 	},
 	highLightBackground: {
 		type: 'string',
-		default: '#6104ff',
+		default: '#007cba',
 		UAGCopyPaste: {
 			styleType: 'highlight-background'
 		}

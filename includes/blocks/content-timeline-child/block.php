@@ -12,8 +12,9 @@ $block_data = array(
 	'slug'        => '',
 	'link'        => '',
 	'title'       => __( 'Content Timeline Child', 'ultimate-addons-for-gutenberg' ),
-	'description' => __( 'The Timeline block lets you create beautiful timelines on your website.', 'ultimate-addons-for-gutenberg' ),
+	'description' => __( 'Add and customize displaying content of this timeline.', 'ultimate-addons-for-gutenberg' ),
 	'default'     => true,
 	'is_child'    => true,
 	'static_css'  => 'timeline',
+	'deprecated'  => false,
 );

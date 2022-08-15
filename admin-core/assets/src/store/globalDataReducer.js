@@ -144,6 +144,11 @@ const globalDataReducer = ( state = {}, action ) => {
                 ...state,
                 enableAutoBlockRecovery: action.payload,
             };
+		case 'UPDATE_CONTAINER_GLOBAL_PADDING':
+			return {
+				...state,
+				containerGlobalPadding: action.payload,
+				};
         default:
             return state;
     }

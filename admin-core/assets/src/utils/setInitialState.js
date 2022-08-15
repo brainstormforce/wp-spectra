@@ -31,6 +31,7 @@ const setInitialState = ( store ) => {
 			enableComingSoonMode: data.enable_coming_soon_mode,
 			comingSoonPage: data.coming_soon_page,
 			blocksEditorSpacing: data.blocks_editor_spacing,
+			containerGlobalPadding: data.container_global_padding,
 			enableFontAwesome5: data.load_font_awesome_5,
 			enableAutoBlockRecovery: data.auto_block_recovery,
         };

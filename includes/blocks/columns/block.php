@@ -14,11 +14,12 @@ $block_data = array(
 	'slug'             => '',
 	'link'             => 'advanced-columns',
 	'title'            => __( 'Advanced Columns', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block gives you advanced options to insert a number of columns within a single row.', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Insert a number of columns within a single row.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 35,
+	'priority'         => 90,
 	'dynamic_assets'   => array(
 		'dir' => 'columns',
 	),
+	'deprecated'       => true,
 );

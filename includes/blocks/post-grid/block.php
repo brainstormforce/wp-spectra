@@ -12,14 +12,15 @@ $block_data = array(
 	'doc'              => 'post-grid',
 	'slug'             => '',
 	'admin_categories' => array( 'content', 'post' ),
-	'link'             => 'post-layouts',
+	'link'             => 'post-layouts/#post-grid',
 	'title'            => __( 'Post Grid', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block fetches the blog posts you may have on your website and displays them in a grid layout.', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Display your posts in a grid layout.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 15,
+	'priority'         => 21,
 	'static_css'       => 'post',
 	'dynamic_assets'   => array(
 		'dir' => 'post-grid',
 	),
+	'deprecated'       => false,
 );

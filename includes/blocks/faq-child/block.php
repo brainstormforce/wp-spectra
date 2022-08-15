@@ -12,8 +12,9 @@ $block_data = array(
 	'slug'        => '',
 	'link'        => '',
 	'title'       => __( 'FAQ Child', 'ultimate-addons-for-gutenberg' ),
-	'description' => __( 'This block helps you add single FAQ.', 'ultimate-addons-for-gutenberg' ),
+	'description' => __( 'Add a frequently asked question/accordian to display information.', 'ultimate-addons-for-gutenberg' ),
 	'default'     => true,
 	'is_child'    => true,
 	'extension'   => false,
+	'deprecated'  => false,
 );

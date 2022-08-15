@@ -327,6 +327,12 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$theme_folder = get_template();
 
+			if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
+				if ( 'twentytwentytwo' === $theme_folder ) {
+					require_once UAGB_DIR . 'compatibility/class-uagb-twenty-twenty-two-compatibility.php';
+				}
+			}
+
 			if ( 'astra' === $theme_folder ) {
 				require_once UAGB_DIR . 'compatibility/class-uagb-astra-compatibility.php';
 			}

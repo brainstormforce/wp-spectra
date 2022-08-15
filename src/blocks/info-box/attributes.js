@@ -39,14 +39,14 @@
 	},
 	headingAlignTablet: {
 		type: 'string',
-		default: 'center',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'overall-alignment-tablet'
 		}
 	},
 	headingAlignMobile: {
 		type: 'string',
-		default: 'center',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'overall-alignment-mobile'
 		}
@@ -71,7 +71,7 @@
 	},
 	icon: {
 		type: 'string',
-		default: 'fa fa-check-circle',
+		default: 'circle-check',
 	},
 	iconimgPosition: {
 		type: 'string',
@@ -453,7 +453,7 @@
 	},
 	seperatorSpace: {
 		type: 'number',
-		default: 10,
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'separator-bottom-margin'
 		}
@@ -1046,7 +1046,8 @@
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'prefix-top-margin'
-		}
+		},
+		default: 5,
 	},
 	prefixRightMargin : {
 		type: 'number',
@@ -1059,7 +1060,7 @@
 		UAGCopyPaste: {
 			styleType: 'prefix-bottom-margin'
 		},
-		default : 5
+		default : 10
 	},
 	prefixLeftMargin : {
 		type: 'number',
@@ -1249,7 +1250,7 @@
 		},
 		default: 'px',
 	},
-	
+
 	// padding
 	blockTopPadding : {
 		type: 'number',

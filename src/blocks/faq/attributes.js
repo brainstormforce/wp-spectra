@@ -9,7 +9,7 @@ const borderDefault = {
 	borderTopRightRadius: 2,
 	borderBottomLeftRadius: 2,
 	borderBottomRightRadius: 2,
-	borderColor: '',
+	borderColor: '#1e1e1e',
 	borderHColor: '',
 }
 const borderAttributes = getBorderAttributes( 'overall', borderDefault );
@@ -557,11 +557,11 @@ const attributes = {
 	},
 	icon: {
 		type: 'string',
-		default: 'fas fa-plus',
+		default: 'plus',
 	},
 	iconActive: {
 		type: 'string',
-		default: 'fas fa-minus',
+		default: 'minus',
 	},
 	iconAlign: {
 		type: 'string',

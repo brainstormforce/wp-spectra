@@ -14,11 +14,12 @@ $block_data = array(
 	'admin_categories' => array( 'social' ),
 	'link'             => 'social-share',
 	'title'            => __( 'Social Share', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block allows you to let users share your content across various social networking sites.', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Share your content on different social media platforms.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 14,
+	'priority'         => 25,
 	'dynamic_assets'   => array(
 		'dir' => 'social-share',
 	),
+	'deprecated'       => false,
 );

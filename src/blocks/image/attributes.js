@@ -959,15 +959,12 @@ const attributes = {
 	},
 	objectFit: {
 		type: 'string',
-		default: 'default'
 	},
 	objectFitTablet: {
 		type: 'string',
-		default: 'default'
 	},
 	objectFitMobile: {
 		type: 'string',
-		default: 'default'
 	},
 	imageBoxShadowColor: {
 		type: 'string',
@@ -1087,6 +1084,18 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'desc-letter-spacing-type'
 		}
+	},
+	customHeightSetDesktop: {
+		type: 'boolean',
+		default: false
+	},
+	customHeightSetTablet: {
+		type: 'boolean',
+		default: false
+	},
+	customHeightSetMobile: {
+		type: 'boolean',
+		default: false
 	},
 	...imageBorderAttributes,
 	...overlayBorderAttributes

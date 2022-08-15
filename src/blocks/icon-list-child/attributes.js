@@ -9,7 +9,8 @@ const attributes = {
 	label: {
 		type: 'html',
 		selector: '.uagb-icon-list__label',
-		default: '#Label',
+		// Need to Dynamically Number List Items.
+		default: 'List item',
 	},
 	image_icon: {
 		type: 'string',
@@ -95,7 +96,7 @@ const attributes = {
 	},
 	fromParentIcon: {
 		type: 'string',
-		default: '',
+		default: 'circle-arrow-right',
 	},
 	// margin
 	childTopMargin : {

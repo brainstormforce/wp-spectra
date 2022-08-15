@@ -6,6 +6,9 @@
 
 	&:not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap {
 		background-clip: content-box !important;
+	}
+
+	.uagb-post__inner-wrap {
 
 		&.uagb-post__edit-mode {
 			margin: 20px;
@@ -15,11 +18,27 @@
 				margin-right: 10px;
 				font-weight: 500;
 			}
+
+			.block-editor-block-list__block {
+				margin-bottom: 25px;
+
+				.uagb-post__taxonomy {
+					font-size: unset;
+				}
+
+				.uagb-post__image {
+					width: 50%;
+				}
+			}
 		}
 
 		.uagb-post__taxonomy {
 			flex-wrap: nowrap;
 		}
+	}
+
+	.uagb-block-all-post__actions {
+		margin: 20px;
 	}
 
 	h2 a {
@@ -29,6 +48,10 @@
 	a {
 		cursor: default;
 		pointer-events: none;
+	}
+
+	.wp-block-uagb-post-grid article {
+		pointer-events: visible;
 	}
 
 	.uagb-post__load-more-wrap {
@@ -42,6 +65,10 @@
 		a {
 			color: inherit;
 		}
+	}
+
+	.wp-block-uagb-post-grid:last-child .uagb-post-pagination-wrap {
+		grid-column: 1 / -1;
 	}
 
 	&.uagb-editor-preview-mode-tablet {
@@ -213,3 +240,10 @@
 	-ms-transform: translate(-50%, -50%);
 }
 
+.editor-styles-wrapper .is-root-container.edit-site-block-editor__block-list.wp-site-blocks .is-masonry { // Applies only in theme builder 2022.
+	height: initial !important;
+}
+
+.editor-styles-wrapper [data-type="uagb/post-carousel"] {
+	width: 100%;
+}

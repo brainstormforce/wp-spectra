@@ -20,11 +20,11 @@ const attributes = {
 	},
 	image: {
 		type: 'object',
-		default: null
+		default: { url:`${ uagb_blocks_info.uagb_url }/admin/assets/images/uag-placeholder.svg`},
 	},
 	imagePosition: {
 		type: 'string',
-		default: 'top',
+		default: 'left',
 		UAGCopyPaste: {
 			styleType: 'image-position'
 		},
@@ -69,6 +69,17 @@ const attributes = {
 	stack: {
 		type: 'string',
 		default: 'tablet',
+	},
+	imgAlign: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'image-align'
+		},
+		default: 'side',
+	},
+	showImage: {
+		type: 'boolean',
+		default: true,
 	},
 };
 

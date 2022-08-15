@@ -9,14 +9,16 @@
 
 $block_slug = 'uagb/tabs';
 $block_data = array(
-	'slug'                => '',
-	'admin_categories'    => array( 'content' ),
-	'link'                => 'tabs',
-	'doc'                 => 'tabs-block',
-	'title'               => __( 'Tabs', 'ultimate-addons-for-gutenberg' ),
-	'description'         => __( 'This block allows you to display your content in tabs layout.', 'ultimate-addons-for-gutenberg' ),
-	'default'             => true,
-	'extension'           => false,
+	'slug'             => '',
+	'admin_categories' => array( 'content' ),
+	'link'             => 'tabs',
+	'doc'              => 'tabs-block',
+	'title'            => __( 'Tabs', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Display your content under different tabs.', 'ultimate-addons-for-gutenberg' ),
+	'default'          => true,
+	'extension'        => false,
+	'js_assets'        => array( 'uagb-tabs-js' ),
+	'priority'         => 28,
 	'static_dependencies' => array(
 		'uagb-tabs-js' => array(
 			'src'  => UAGB_Scripts_Utils::get_js_url( 'tabs' ),
@@ -24,8 +26,8 @@ $block_data = array(
 			'type' => 'js',
 		),
 	),
-	'priority'            => 9,
 	'dynamic_assets'      => array(
 		'dir' => 'tabs',
 	),
+	'deprecated'       => false,
 );

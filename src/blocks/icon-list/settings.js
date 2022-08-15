@@ -814,49 +814,50 @@ const Settings = ( props ) => {
 						},
 					] }
 					setAttributes={ setAttributes }
-					help={ __(
-						'Note: Border option is useful when one adds border color to the icons.',
-						'ultimate-addons-for-gutenberg'
-					) }
 				/>
-				<ResponsiveSlider
-					label={ __( 'Border Radius', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						desktop: {
-							value: borderRadius,
-							label: 'borderRadius',
-						},
-						tablet: {
-							value: borderRadiusTablet,
-							label: 'borderRadiusTablet',
-						},
-						mobile: {
-							value: borderRadiusMobile,
-							label: 'borderRadiusMobile',
-						},
-					} }
-					min={ 0 }
-					max={ 100 }
-					unit={ {
-						value: borderRadiusType,
-						label:
-							'borderRadiusType',
-					} }
-					units={ [
-						{
-							name: __(
-								'Pixel',
+				{ ( ( iconBgColor || iconBgHoverColor ) ||
+					( border || borderTablet || borderMobile ) ) && (
+					<>
+						<ResponsiveSlider
+							label={ __( 'Border Radius', 'ultimate-addons-for-gutenberg' ) }
+							data={ {
+								desktop: {
+									value: borderRadius,
+									label: 'borderRadius',
+								},
+								tablet: {
+									value: borderRadiusTablet,
+									label: 'borderRadiusTablet',
+								},
+								mobile: {
+									value: borderRadiusMobile,
+									label: 'borderRadiusMobile',
+								},
+							} }
+							min={ 0 }
+							max={ 100 }
+							unit={ {
+								value: borderRadiusType,
+								label:
+									'borderRadiusType',
+							} }
+							units={ [
+								{
+									name: __(
+										'Pixel',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+							] }
+							setAttributes={ setAttributes }
+							help={ __(
+								'Note: Border Radius option is useful when one adds background color or border to the icons.',
 								'ultimate-addons-for-gutenberg'
-							),
-							unitValue: 'px',
-						},
-					] }
-					setAttributes={ setAttributes }
-					help={ __(
-						'Note: Border Radius option is useful when one adds background color to the icons.',
-						'ultimate-addons-for-gutenberg'
-					) }
-				/>
+							) }
+						/>
+					</>
+				) }
 				<UAGTabsControl
 					tabs={ [
 						{
@@ -983,7 +984,7 @@ const Settings = ( props ) => {
 	};
 	const iconSettings = () => {
 		return <UAGAdvancedPanelBody
-					title={ __( 'Select Icon', 'ultimate-addons-for-gutenberg' ) }
+					title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 				>
 					<UAGIconPicker

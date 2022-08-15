@@ -28,6 +28,13 @@
 		border-width: 0;
 	}
 
+	&.uagb-faq-item {
+
+		p {
+			margin-bottom: 0;
+		}
+	}
+
 	&.uagb-faq-item .uagb-icon-active,
 	&.uagb-faq-item.uagb-faq-item-active .uagb-icon,
 	.uagb-faq-item .uagb-icon-active,
