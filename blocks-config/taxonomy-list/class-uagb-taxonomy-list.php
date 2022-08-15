@@ -553,9 +553,9 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 					'hide_empty' => ! $attributes['showEmptyTaxonomy'],
 					'parent'     => 0,
 				);
-				$newcategoriesList = get_terms( $attributes['taxonomyType'], $args );
+				$new_categories_list = get_terms( $attributes['taxonomyType'], $args );
 
-				foreach ( $newcategoriesList as $value ) {
+				foreach ( $new_categories_list as $value ) {
 					// If $value is of type WP_Error, warnings would be displayed on frontend.
 					if ( ! is_wp_error( get_term_link( $value, $attributes['taxonomyType'] ) ) ) {
 						?>
@@ -608,31 +608,31 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 					'parent'     => 0,
 				);
 
-				$newcategoriesList = get_terms( $attributes['taxonomyType'], $args );
+				$new_categories_list = get_terms( $attributes['taxonomyType'], $args );
 
-				foreach ( $newcategoriesList as $key => $value ) {
+				foreach ( $new_categories_list as $key => $value ) {
 					$child_arg_empty_tax                 = array(
 						'hide_empty' => ! $attributes['showEmptyTaxonomy'],
 						'parent'     => $value->term_id,
 					);
 					$child_cat_empty_tax                 = get_terms( $attributes['taxonomyType'], $child_arg_empty_tax );
 					$child_cat_empty_tax_arr             = $child_cat_empty_tax ? $child_cat_empty_tax : '';
-					$newcategoriesList[ $key ]->children = $child_cat_empty_tax_arr;
+					$new_categories_list[ $key ]->children = $child_cat_empty_tax_arr;
 				}
 
 				?>
 				<?php if ( 'dropdown' !== $attributes['listDisplayStyle'] ) { ?>
 					<ul class="uagb-list-wrap">
-						<?php foreach ( $newcategoriesList as $key => $value ) { ?>
+						<?php foreach ( $new_categories_list as $key => $value ) { ?>
 							<li class="uagb-tax-list">
 								<<?php echo esc_html( $titleTag ); ?> class="uagb-tax-link-wrap">
 									<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>
 										<?php if ( $showCount ) { ?>
 											<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
 										<?php } ?>
-										<?php if ( $attributes['showhierarchy'] && ! empty( $newcategoriesList[ $key ]->children ) ) { ?>
+										<?php if ( $attributes['showhierarchy'] && ! empty( $new_categories_list[ $key ]->children ) ) { ?>
 											<ul class="uagb-taxonomy-list-children">
-												<?php foreach ( $newcategoriesList[ $key ]->children as $value ) { ?>
+												<?php foreach ( $new_categories_list[ $key ]->children as $value ) { ?>
 													<li class="uagb-tax-list">
 													<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>
 													<?php if ( $showCount ) { ?>
@@ -652,7 +652,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 				<?php } else { ?>
 					<select class="uagb-list-dropdown-wrap" onchange="redirectToTaxonomyLink(this)">
 						<option selected value=""> -- Select -- </option>
-						<?php foreach ( $newcategoriesList as $key => $value ) { ?>
+						<?php foreach ( $new_categories_list as $key => $value ) { ?>
 							<option value="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>" >
 								<?php echo esc_attr( $value->name ); ?>
 								<?php if ( $showCount ) { ?>
@@ -719,14 +719,14 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 			);
 
 			if ( $taxonomyType && 'page' !== $postType ) {
-				$newcategoriesList = get_terms( $taxonomyType, $args );
+				$new_categories_list = get_terms( $taxonomyType, $args );
 			}
 
 			ob_start();
 
 			?>
 				<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>">
-					<?php if ( ! empty( $newcategoriesList ) ) { ?>
+					<?php if ( ! empty( $new_categories_list ) ) { ?>
 							<?php $this->grid_html( $attributes ); ?>
 							<?php $this->list_html( $attributes ); ?>
 					<?php } else { ?>
