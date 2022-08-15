@@ -555,23 +555,25 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 				);
 				$new_categories_list = get_terms( $attributes['taxonomyType'], $args );
 
-				foreach ( $new_categories_list as $value ) {
-					// If $value is of type WP_Error, warnings would be displayed on frontend.
-					if ( ! is_wp_error( get_term_link( $value, $attributes['taxonomyType'] ) ) ) {
-						?>
+				if ( is_array( $new_categories_list ) ) {
+					foreach ( $new_categories_list as $value ) {
+						// If $value is of type WP_Error, warnings would be displayed on frontend.
+						if ( ! is_wp_error( get_term_link( $value, $attributes['taxonomyType'] ) ) ) {
+							?>
 
-					<div class="uagb-taxomony-box">
-						<a class="uagb-tax-link" href= "<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>">
-							<<?php echo esc_html( $titleTag ); ?> class="uagb-tax-title"><?php echo esc_attr( $value->name ); ?>
-							</<?php echo esc_html( $titleTag ); ?>>
-							<?php if ( $showCount ) { ?>
-									<?php echo esc_attr( $value->count ); ?>
-									<?php $countName = ( $value->count > 1 ) ? esc_attr( $singular_name ) . 's' : esc_attr( $singular_name ); ?>
-									<?php echo esc_attr( apply_filters( 'uagb_taxonomy_count_text', $countName, $value->count ) ); ?>
-							<?php } ?>
-						</a>
-					</div>
-						<?php
+						<div class="uagb-taxomony-box">
+							<a class="uagb-tax-link" href= "<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>">
+								<<?php echo esc_html( $titleTag ); ?> class="uagb-tax-title"><?php echo esc_attr( $value->name ); ?>
+								</<?php echo esc_html( $titleTag ); ?>>
+								<?php if ( $showCount ) { ?>
+										<?php echo esc_attr( $value->count ); ?>
+										<?php $countName = ( $value->count > 1 ) ? esc_attr( $singular_name ) . 's' : esc_attr( $singular_name ); ?>
+										<?php echo esc_attr( apply_filters( 'uagb_taxonomy_count_text', $countName, $value->count ) ); ?>
+								<?php } ?>
+							</a>
+						</div>
+							<?php
+						}
 					}
 				}
 			}
