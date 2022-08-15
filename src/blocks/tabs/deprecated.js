@@ -5,7 +5,7 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/deprecatedRenderIcon';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
-
+import { __ } from '@wordpress/i18n';
 const attributes = {
 	block_id: {
 		type: 'string',
