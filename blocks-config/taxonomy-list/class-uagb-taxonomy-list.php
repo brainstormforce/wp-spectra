@@ -549,7 +549,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 				$pt            = get_post_type_object( $postType );
 				$singular_name = $pt->labels->singular_name;
 
-				$args              = array(
+				$args                = array(
 					'hide_empty' => ! $attributes['showEmptyTaxonomy'],
 					'parent'     => 0,
 				);
@@ -612,12 +612,12 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 
 				if ( is_array( $new_categories_list ) ) {
 					foreach ( $new_categories_list as $key => $value ) {
-						$child_arg_empty_tax                 = array(
+						$child_arg_empty_tax                   = array(
 							'hide_empty' => ! $attributes['showEmptyTaxonomy'],
 							'parent'     => $value->term_id,
 						);
-						$child_cat_empty_tax                 = get_terms( $attributes['taxonomyType'], $child_arg_empty_tax );
-						$child_cat_empty_tax_arr             = $child_cat_empty_tax ? $child_cat_empty_tax : '';
+						$child_cat_empty_tax                   = get_terms( $attributes['taxonomyType'], $child_arg_empty_tax );
+						$child_cat_empty_tax_arr               = $child_cat_empty_tax ? $child_cat_empty_tax : '';
 						$new_categories_list[ $key ]->children = $child_cat_empty_tax_arr;
 					}
 				}
