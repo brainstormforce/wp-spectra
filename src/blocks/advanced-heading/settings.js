@@ -403,22 +403,6 @@ const Settings = ( props ) => {
 				title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				<ColorSwitchControl
-					label={__( 'Text Color', 'ultimate-addons-for-gutenberg' )}
-					type={{
-						value: headingColorType,
-						label: 'headingColorType'
-					}}
-					classic={{
-						value: headingColor,
-						label: 'headingColor'
-					}}
-					gradient={{
-						value: headingGradientColor,
-						label: 'headingGradientColor'
-					}}
-					setAttributes={ setAttributes }
-				/>
 				<Suspense fallback={ lazyLoader() }>
 					<TypographyControl
 						label={ __(
@@ -501,6 +485,22 @@ const Settings = ( props ) => {
 						} }
 					/>
 				</Suspense>
+				<ColorSwitchControl
+					label={__( 'Text Color', 'ultimate-addons-for-gutenberg' )}
+					type={{
+						value: headingColorType,
+						label: 'headingColorType'
+					}}
+					classic={{
+						value: headingColor,
+						label: 'headingColor'
+					}}
+					gradient={{
+						value: headingGradientColor,
+						label: 'headingGradientColor'
+					}}
+					setAttributes={ setAttributes }
+				/>
 				<TextShadowControl
 					blockId={ block_id }
 					setAttributes={ setAttributes }
@@ -1071,24 +1071,6 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>
-				<AdvancedPopColorControl
-					label={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ highLightBackground }
-					data={ {
-						value: highLightBackground,
-						label: 'highLightBackground',
-					} }
-					setAttributes={ setAttributes }
-				/>
-				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ highLightColor }
-					data={ {
-						value: highLightColor,
-						label: 'highLightColor',
-					} }
-					setAttributes={ setAttributes }
-				/>
 				<Suspense fallback={ lazyLoader() }>
 					<TypographyControl
 						label={ __(
@@ -1171,6 +1153,24 @@ const Settings = ( props ) => {
 						} }
 					/>
 				</Suspense>
+				<AdvancedPopColorControl
+					label={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ highLightBackground }
+					data={ {
+						value: highLightBackground,
+						label: 'highLightBackground',
+					} }
+					setAttributes={ setAttributes }
+				/>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ highLightColor }
+					data={ {
+						value: highLightColor,
+						label: 'highLightColor',
+					} }
+					setAttributes={ setAttributes }
+				/>
 				<SpacingControl
 					label={ __(
 						'Padding',

@@ -68,7 +68,13 @@ $selectors = array(
 	' .uagb-marketing-btn__link:hover p.uagb-marketing-btn__prefix' => array(
 		'color' => $attr['prefixHoverColor'],
 	),
+	' .uagb-marketing-btn__link:focus p.uagb-marketing-btn__prefix' => array(
+		'color' => $attr['prefixHoverColor'],
+	),
 	' .uagb-marketing-btn__link:hover svg' => array(
+		'fill' => $icon_hover_color,
+	),
+	' .uagb-marketing-btn__link:focus svg' => array(
 		'fill' => $icon_hover_color,
 	),
 	' .uagb-marketing-btn__link'           => array_merge(
@@ -81,6 +87,9 @@ $selectors = array(
 		$btn_border_css
 	),
 	' .uagb-marketing-btn__link:hover'     => array(
+		'border-color' => isset( $attr['borderHoverColor'] ) && ! empty( $attr['borderHoverColor'] ) ? $attr['borderHoverColor'] : $attr['btnBorderHColor'],
+	),
+	' .uagb-marketing-btn__link:focus'     => array(
 		'border-color' => isset( $attr['borderHoverColor'] ) && ! empty( $attr['borderHoverColor'] ) ? $attr['borderHoverColor'] : $attr['btnBorderHColor'],
 	),
 	'.uagb-marketing-btn__icon-after .uagb-marketing-btn__link svg' => array(
@@ -106,6 +115,9 @@ $selectors[ ' ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
 $selectors[ ' .uagb-marketing-btn__link:hover ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
 	'color' => $attr['titleHoverColor'],
 );
+$selectors[ ' .uagb-marketing-btn__link:focus ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
+	'color' => $attr['titleHoverColor'],
+);
 
 if ( 'transparent' === $attr['backgroundType'] ) {
 
@@ -117,6 +129,7 @@ if ( 'transparent' === $attr['backgroundType'] ) {
 
 	// Hover Background.
 	$selectors[' .uagb-marketing-btn__link:hover']['background'] = UAGB_Helper::hex2rgba( $attr['backgroundHoverColor'], $attr['backgroundHoverOpacity'] );
+	$selectors[' .uagb-marketing-btn__link:focus']['background'] = UAGB_Helper::hex2rgba( $attr['backgroundHoverColor'], $attr['backgroundHoverOpacity'] );
 
 } elseif ( 'gradient' === $attr['backgroundType'] ) {
 
