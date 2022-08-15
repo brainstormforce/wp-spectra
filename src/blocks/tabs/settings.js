@@ -295,28 +295,28 @@ const Settings = ( props ) => {
 				{
 					value: 'stack1',
 					label: __(
-						'Stack Style 11',
+						'Stack Style 1',
 						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
 					value: 'stack2',
 					label: __(
-						'Stack Style 12',
+						'Stack Style 2',
 						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
 					value: 'stack3',
 					label: __(
-						'Stack Style 13',
+						'Stack Style 3',
 						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
 					value: 'stack4',
 					label: __(
-						'Stack Style 14',
+						'Stack Style 4',
 						'ultimate-addons-for-gutenberg'
 					),
 				},

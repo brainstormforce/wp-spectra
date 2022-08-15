@@ -626,6 +626,7 @@
 
 		.uagb-tab {
 			
+			width: -webkit-fill-available;
 			margin: 0 0 10px 0;
 			padding: 6px 12px;
 
@@ -645,16 +646,14 @@
 	ul.uagb-tabs__panel {
 		display: flex;
 		flex-direction: column;
-		max-width: 100%;
 		flex-grow: unset;
-		width: 100%;
 		margin: 0;
 		padding: 0;
 
 		.uagb-tab {
 			margin: 0 0 10px 0;
 			padding: 6px 12px;
-
+			width: -webkit-fill-available;
 			p {
 				margin: 0;
 			}
@@ -680,6 +679,7 @@
 
 		.uagb-tab {
 			
+			width: -webkit-fill-available;
 			margin: 0 0 10px 0;
 			padding: 6px 12px 6px 12px;
 
@@ -709,6 +709,8 @@
 		padding: 0;
 
 		.uagb-tab {
+			
+			width: -webkit-fill-available;
 			padding: 6px 12px;
 			margin: 0 0 10px 0;
 			text-align: center;
