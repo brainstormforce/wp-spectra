@@ -686,7 +686,6 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
-	...borderAttributes,
 	titleLetterSpacing: {
 		type: 'number',
 		UAGCopyPaste: {
