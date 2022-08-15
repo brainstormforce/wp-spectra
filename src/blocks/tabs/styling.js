@@ -376,9 +376,10 @@ function styling( props ) {
 				'border-radius': 0,
 				...borderCSSTablet
 			},
-			'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet': {
-				...borderCSSTablet
+			'.uagb-tabs__wrap.uagb-tabs__hstyle4-tablet ul.uagb-tabs__panel li.uagb-tab' : {
+				'border-radius' : '100%',
 			},
+			'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet': borderCSSTablet,
 			'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet .uagb-tab': {
 				'border-top-width': '0px',
 				'border-right-width': '0px',
@@ -391,7 +392,7 @@ function styling( props ) {
 				'outline': 0,
 				'border-radius': 0,
 			},
-			'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet .uagb-tab.uagb-tabs__active': {
+			'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet .uagb-tab.uagb-tabs__active a': {
 				'border-top-width': '0px',
 				'border-right-width': '0px',
 				'border-left-width': '0px',
@@ -420,12 +421,15 @@ function styling( props ) {
 			'.uagb-tabs__wrap.uagb-tabs__vstyle8-tablet > .uagb-tabs__body-wrap': {
 				'margin-left': '0px',
 			},
-			'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet':{
-				...borderCSSTablet                                  
+			'.uagb-tabs__wrap.uagb-tabs__vstyle9-tablet ul.uagb-tabs__panel .uagb-tab': {
+				'border-width': '0px',
+				'border-style': 'none',
 			},
+			'.uagb-tabs__wrap.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet': borderCSSTablet,
 			'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet ul.uagb-tabs__panel .uagb-tab': {
 				'border-width': '0px',
 				'border-style': 'none',
+				'border-radius': '100%'
 			},
 			'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet .uagb-tabs__body-wrap': {
 				'border-width': '0px',
