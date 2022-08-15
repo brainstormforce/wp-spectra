@@ -556,8 +556,9 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 				$newcategoriesList = get_terms( $attributes['taxonomyType'], $args );
 
 				foreach ( $newcategoriesList as $value ) {
-
-					?>
+					// If $value is of type WP_Error, warnings would be displayed on frontend.
+					if ( ! is_wp_error( get_term_link( $value, $attributes['taxonomyType'] ) ) ) {
+						?>
 
 					<div class="uagb-taxomony-box">
 						<a class="uagb-tax-link" href= "<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>">
@@ -570,7 +571,8 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 							<?php } ?>
 						</a>
 					</div>
-					<?php
+						<?php
+					}
 				}
 			}
 		}
