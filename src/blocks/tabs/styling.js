@@ -353,8 +353,101 @@ function styling( props ) {
 	}
 
 	tabletSelectors = {
-		' .uagb-tabs__icon svg': {
-			'height': generateCSSUnit( iconSizeTablet, 'px' ),
+			'.uagb-tabs__hstyle2-tablet > .uagb-tabs__panel .uagb-tab': {
+				'border-top-width': '0px',
+				'border-right-width': '0px',
+				'border-left-width': '0px',
+				'border-top-style': 'none',
+				'border-left-style': 'none',
+				'border-right-style': 'none',
+			},
+			'.uagb-tabs__wrap.uagb-tabs__hstyle2-tablet > .uagb-tabs__body-wrap': {
+				'border-width': '0px',
+				'border-style': 'none',
+			},
+			'.uagb-tabs__wrap.uagb-tabs__hstyle2-tablet ul.uagb-tabs__panel': {
+				'border-top-width': '0px',
+				'border-right-width': '0px',
+				'border-left-width': '0px',
+				'border-top': 0,
+				'border-left': 0,
+				'border-right': 0,
+				'outline': 0,
+				'border-radius': 0,
+				...borderCSSTablet
+			},
+			'.uagb-tabs__wrap.uagb-tabs__hstyle4-tablet ul.uagb-tabs__panel li.uagb-tab' : {
+				'border-radius' : '100%',
+			},
+			'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet': borderCSSTablet,
+			'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet .uagb-tab': {
+				'border-top-width': '0px',
+				'border-right-width': '0px',
+				'border-left-width': '0px',
+				'border-bottom-width': '0px',
+				'border-top': 0,
+				'border-left': 0,
+				'border-right': 0,
+				'border-bottom': 0,
+				'outline': 0,
+				'border-radius': 0,
+			},
+			'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet .uagb-tab.uagb-tabs__active a': {
+				'border-top-width': '0px',
+				'border-right-width': '0px',
+				'border-left-width': '0px',
+				'border-top': 0,
+				'border-left': 0,
+				'border-right': 0,
+				'outline': 0,
+				'border-radius': 0,
+				...borderCSSTablet
+			},
+			'.uagb-tabs__wrap.uagb-tabs__vstyle7-tablet .uagb-tab': {
+				'border-top-width': '0px',
+				'border-right-width': '0px',
+				'border-left-width': '0px',
+				'border-top': 0,
+				'border-left': 0,
+				'border-right': 0,
+				'outline': 0,
+				'border-radius': 0,
+				...borderCSSTablet
+			},
+			'.uagb-tabs__wrap.uagb-tabs__vstyle7-tablet > .uagb-tabs__body-wrap': {
+				'border-width': '0px',
+				'border-style': 'none',
+			},
+			'.uagb-tabs__wrap.uagb-tabs__vstyle8-tablet > .uagb-tabs__body-wrap': {
+				'margin-left': '0px',
+			},
+			'.uagb-tabs__wrap.uagb-tabs__vstyle9-tablet ul.uagb-tabs__panel .uagb-tab': {
+				'border-width': '0px',
+				'border-style': 'none',
+			},
+			'.uagb-tabs__wrap.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet': borderCSSTablet,
+			'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet ul.uagb-tabs__panel .uagb-tab': {
+				'border-width': '0px',
+				'border-style': 'none',
+				'border-radius': '100%'
+			},
+			'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet .uagb-tabs__body-wrap': {
+				'border-width': '0px',
+				'border-style': 'none',
+			},
+			'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet ul.uagb-tabs__panel .uagb-tab.uagb-tabs__active':{
+				'border-top-width': '0px',
+				'border-bottom-width': '0px',
+				'border-left-width': '0px',
+				'border-top': 0,
+				'border-left': 0,
+				'border-bottom': 0,
+				'outline': 0,
+				'border-radius': 0,
+				...borderCSSTablet
+			},
+			' .uagb-tabs__icon svg': {
+				'height': generateCSSUnit( iconSizeTablet, 'px' ),
 			'width': generateCSSUnit( iconSizeTablet, 'px' ),
 		},
 		' > .uagb-tabs__panel .uagb-tab p': {
@@ -454,6 +547,106 @@ function styling( props ) {
 		},
 	};
 	mobileSelectors = {
+		'.uagb-tabs__hstyle2-mobile > .uagb-tabs__panel .uagb-tab': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-top-style': 'none',
+			'border-left-style': 'none',
+			'border-right-style': 'none',
+		},
+		'.uagb-tabs__wrap.uagb-tabs__hstyle2-mobile > .uagb-tabs__body-wrap': {
+			'border-width': '0px',
+			'border-style': 'none',
+		},
+		'.uagb-tabs__wrap.uagb-tabs__hstyle2-mobile ul.uagb-tabs__panel': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSSTablet
+		},
+		'.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile': {
+			...borderCSSTablet
+		},
+		'.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile .uagb-tab': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-bottom-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'border-bottom': 0,
+			'outline': 0,
+			'border-radius': 0,
+		},
+		'.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile .uagb-tab.uagb-tabs__active': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSSTablet
+		},
+		'.uagb-tabs__wrap.uagb-tabs__vstyle7-mobile .uagb-tab': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSSTablet
+		},
+		'.uagb-tabs__wrap.uagb-tabs__vstyle7-mobile > .uagb-tabs__body-wrap': {
+			'border-width': '0px',
+			'border-style': 'none',
+		},
+		'.uagb-tabs__wrap.uagb-tabs__vstyle8-mobile > .uagb-tabs__body-wrap': {
+			'margin-left': '0px',
+		},
+		'.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile':{
+			...borderCSSTablet                                  
+		},
+		'.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile ul.uagb-tabs__panel .uagb-tab': {
+			'border-width': '0px',
+			'border-style': 'none',
+		},
+		'.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile .uagb-tabs__body-wrap': {
+			'border-width': '0px',
+			'border-style': 'none',
+		},
+		'.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile ul.uagb-tabs__panel .uagb-tab.uagb-tabs__active':{
+			'border-top-width': '0px',
+			'border-bottom-width': '0px',
+			'border-left-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-bottom': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSSTablet
+		},
+		'.uagb-tabs__wrap.uagb-tabs__stack2-mobile ul.uagb-tabs__panel .uagb-tab.uagb-tabs__active':{
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSSTablet
+		},
 		' .uagb-tabs__icon svg': {
 			'height': generateCSSUnit( iconSizeMobile, 'px' ),
 			'width': generateCSSUnit( iconSizeMobile, 'px' ),
