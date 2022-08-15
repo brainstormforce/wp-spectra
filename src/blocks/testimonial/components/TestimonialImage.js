@@ -6,7 +6,6 @@ const TestimonialImage = ( props ) => {
 
 	if ( imageArray && typeof imageArray !== 'undefined' ) {
 		const image = imageArray.image;
-		const { imageWidth } = attributes;
 		let url = '';
 
 		if ( typeof image !== 'undefined' && image !== null && image !== '' ) {
