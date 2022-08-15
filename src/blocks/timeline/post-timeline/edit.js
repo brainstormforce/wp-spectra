@@ -4,6 +4,7 @@
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
@@ -79,7 +80,7 @@ const PostTimelineComponent = ( props ) => {
 		}
 
 		if( timelinAlignment ) {
-            if( 'none' === stack ) { 
+            if( 'none' === stack ) {
                 if( undefined === timelinAlignmentTablet ) {
                     props.setAttributes( { timelinAlignmentTablet: timelinAlignment } );
                 }
@@ -114,10 +115,7 @@ const PostTimelineComponent = ( props ) => {
 
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-	    const blockStyling = contentTimelineStyle( props );
-
-        addBlockEditorDynamicStyles( 'uagb-timeline-style-' + props.clientId, blockStyling );
+		scrollBlockToView();
 	}, [deviceType] );
 
 	return (

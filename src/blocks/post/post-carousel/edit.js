@@ -26,6 +26,7 @@ import renderSVG from '@Controls/renderIcon';
 import presets, {buttonsPresets} from './presets';
 import UAGPresets from '@Components/presets';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import UAGNumberControl from '@Components/number-control';
 
@@ -268,6 +269,8 @@ const UAGBPostCarousel = ( props ) => {
 				'; }';
 
 		addBlockEditorDynamicStyles( 'uagb-post-carousel-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 
 	}, [ props.deviceType ] );
 
