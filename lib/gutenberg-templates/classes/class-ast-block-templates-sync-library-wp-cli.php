@@ -29,7 +29,9 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library_WP_CLI' ) && class_exists
 		public function sync( $args = array(), $assoc_args = array() ) {
 
 			// Start Sync.
-			WP_CLI::line( 'Sync Started' );
+			if ( ast_block_templates_doing_wp_cli() ) {
+				WP_CLI::line( 'Sync Started' );
+			}
 
 			$force = isset( $assoc_args['force'] ) ? true : false;
 
@@ -48,11 +50,17 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library_WP_CLI' ) && class_exists
 
 					// Import Blocks.
 					Ast_Block_Templates_Sync_Library::get_instance()->import_blocks( $page_no );
-					WP_CLI::line( 'BLOCK: Importing blocks from page ' . $page_no );
+					if ( ast_block_templates_doing_wp_cli() ) {
+						WP_CLI::line( 'BLOCK: Importing blocks from page ' . $page_no );
+					}
 				}
-				WP_CLI::line( 'BLOCK: Importd blocks from ' . $total_blocks_requests . ' pages.' );
+				if ( ast_block_templates_doing_wp_cli() ) {
+					WP_CLI::line( 'BLOCK: Importd blocks from ' . $total_blocks_requests . ' pages.' );
+				}
 			} else {
-				WP_CLI::line( 'BLOCK: No block requests found' );
+				if ( ast_block_templates_doing_wp_cli() ) {
+					WP_CLI::line( 'BLOCK: No block requests found' );
+				}
 			}
 
 			// Get Sites Count.
@@ -62,24 +70,34 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library_WP_CLI' ) && class_exists
 
 					// Import Sites.
 					Ast_Block_Templates_Sync_Library::get_instance()->import_sites( $page_no );
-					WP_CLI::line( 'SITE: Importing sites from page ' . $page_no );
+					if ( ast_block_templates_doing_wp_cli() ) {
+						WP_CLI::line( 'SITE: Importing sites from page ' . $page_no );
+					}
 				}
-				WP_CLI::line( 'SITE: Importd sites from ' . $total_sites_requests . ' pages.' );
+				if ( ast_block_templates_doing_wp_cli() ) {
+					WP_CLI::line( 'SITE: Importd sites from ' . $total_sites_requests . ' pages.' );
+				}
 			} else {
-				WP_CLI::line( 'SITE: No sites requests found' );
+				if ( ast_block_templates_doing_wp_cli() ) {
+					WP_CLI::line( 'SITE: No sites requests found' );
+				}
 			}
 
 			// Sync Complete.
 			Ast_Block_Templates_Sync_Library::get_instance()->update_library_complete();
 
 			// Start Sync.
-			WP_CLI::line( 'Sync Completed' );
+			if ( ast_block_templates_doing_wp_cli() ) {
+				WP_CLI::line( 'Sync Completed' );
+			}
 		}
 	}
 
 	/**
 	 * Add Command
 	 */
-	WP_CLI::add_command( 'ast-block-templates', 'Ast_Block_Templates_Sync_Library_WP_CLI' );
+	if ( ast_block_templates_doing_wp_cli() ) {
+		WP_CLI::add_command( 'ast-block-templates', 'Ast_Block_Templates_Sync_Library_WP_CLI' );
+	}
 
 endif;

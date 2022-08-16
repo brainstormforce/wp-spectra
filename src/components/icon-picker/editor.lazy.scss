@@ -1,0 +1,743 @@
+/*#######################################################################################*/
+
+// Base
+
+/**
+ * google-material-color v1.2.6
+ * https://github.com/danlevan/google-material-color
+ */
+// Palette
+$palette: (
+	Grey: (
+		50: #fafafa,
+		100: #f5f5f5,
+		200: #eee,
+		300: #e0e0e0,
+		400: #bdbdbd,
+		500: #9e9e9e,
+		600: #757575,
+		700: #616161,
+		800: #424242,
+		900: #212121,
+	),
+	Black: (
+		500: #000,
+		Text: rgba(0, 0, 0, 0.87),
+		Secondary Text: rgba(0, 0, 0, 0.54),
+		Icons: rgba(0, 0, 0, 0.54),
+		Disabled: rgba(0, 0, 0, 0.26),
+		Hint Text: rgba(0, 0, 0, 0.26),
+		Dividers: rgba(0, 0, 0, 0.12),
+	),
+	White: (
+		500: #fff,
+		Text: #fff,
+		Secondary Text: rgba(255, 255, 255, 0.7),
+		Icons: #fff,
+		Disabled: rgba(255, 255, 255, 0.3),
+		Hint Text: rgba(255, 255, 255, 0.3),
+		Dividers: rgba(255, 255, 255, 0.12),
+	),
+	Red: (
+		50: #ffebee,
+		100: #ffcdd2,
+		200: #ef9a9a,
+		300: #e57373,
+		400: #ef5350,
+		500: #f44336,
+		600: #e53935,
+		700: #d32f2f,
+		800: #c62828,
+		900: #b71c1c,
+		A100: #ff8a80,
+		A200: #ff5252,
+		A400: #ff1744,
+		A700: #d50001,
+	),
+);
+
+@function palette($color, $shade: 500) {
+	$colorMap: map-get($palette, $color);
+	$result: map-get($colorMap, $shade);
+
+	@return $result;
+}
+
+// Variables
+$scheme: #808080 !default;
+$bg: #fff !default;
+
+$text: palette(#808080, 800) !default;
+$icon-text: palette($scheme, 800) !default;
+
+$color-background: palette($bg, 500) !default;
+
+$elem-border-color: palette($scheme, 400) !default;
+$elem-border-focus-color: palette($scheme, 500) !default;
+
+$pager-bg-color: palette($scheme, 200) !default;
+$pager-bg-hover-color: palette($scheme, 400) !default;
+
+$ibox-bg-color: palette($scheme, 100) !default;
+$ibox-bg-selected-color: palette($scheme, 200) !default;
+$ibox-bg-hover-color: palette($scheme, 400) !default;
+
+$btn-bg-color: palette($bg, 500) !default;
+$btn-bg-dd-color: palette($scheme, 100) !default;
+$btn-border-color: palette($scheme, 300) !default;
+$btn-bg-hover-color: palette($scheme, 400) !default;
+$btn-bg-active-color: palette($scheme, 300) !default;
+
+$icon-border-color: palette($scheme, 200) !default;
+$empty-icon-color: palette($scheme, 300) !default;
+$error-icon-color: palette(#f00, 200) !default;
+
+$del-bg-color: palette($scheme, 200) !default;
+$del-bg-hover-color: palette($scheme, 300) !default;
+
+// Mixin
+/// Gives a card depth effect.
+/// @param {Number} $depth - depth level (between 1 and 5)
+/// @link https://www.google.com/design/spec/layout/layout-principles.html#layout-principles-dimensionality Google Design
+/// @requires {function} top-shadow
+/// @requires {function} bottom-shadow
+@mixin card($depth) {
+
+	@if $depth < 1 {
+		box-shadow: none;
+	}
+
+	@else if $depth > 5 {
+
+		@warn "Invalid $depth `#{$depth}` for mixin `card`.";
+	}
+
+	@else {
+		box-shadow: bottom-shadow($depth), top-shadow($depth);
+	}
+}
+/// Computes a top-shadow for a card effect.
+/// @param {Number} $depth - depth level
+/// @return {List}
+@function top-shadow($depth) {
+	$primary-offset: nth(1.5 3 10 14 19, $depth) * 1px;
+	$blur: nth(1.5 3 10 14 19, $depth) * 4px;
+	$color: rgba(#000, nth(0.12 0.16 0.19 0.25 0.3, $depth));
+
+	@return 0 $primary-offset $blur $color;
+}
+
+/// Computes a bottom-shadow for a card effect.
+/// @param {Number} $depth - depth level
+/// @return {List}
+@function bottom-shadow($depth) {
+	$primary-offset: nth(1.5 3 6 10 15, $depth) * 1px;
+	$blur: nth(1 3 3 5 6, $depth) * 4px;
+	$color: rgba(#000, nth(0.24 0.23 0.23 0.22 0.22, $depth));
+
+	@return 0 $primary-offset $blur $color;
+}
+
+/// Input type element
+@mixin input($elem-border-color, $elem-border-focus-color) {
+	border: 1px solid $elem-border-color;
+	transition: box-shadow 250ms, border 250ms;
+
+	&:focus,
+	&:active {
+		border-color: $elem-border-focus-color;
+		box-shadow: 0 0 0 0 $elem-border-focus-color;
+		outline: 0 none;
+	}
+}
+$theme: default;
+// Theme CSS
+// Button
+.rfipbtn--#{$theme} {
+	background-color: $btn-bg-color;
+	border: 1px solid $btn-border-color;
+
+	&:active,
+	&:focus {
+
+		@include card(1);
+		border: 1px solid $btn-bg-hover-color;
+	}
+
+	// dropdown button
+	.rfipbtn {
+
+		&__button {
+			border: 0 none transparent;
+			border-left: 1px solid $btn-border-color;
+			background-color: $btn-bg-dd-color;
+			color: $icon-text;
+
+			&:hover {
+				background-color: $btn-bg-hover-color;
+			}
+
+			&:active {
+				box-shadow: inset 0 0 10px 0 $btn-bg-active-color;
+			}
+		}
+
+		// icon
+		&__icon {
+			border: 1px solid $icon-border-color;
+			color: $icon-text;
+
+			// empty
+			&--empty {
+				color: $empty-icon-color;
+			}
+		}
+
+		// del
+		&__del {
+			background-color: $del-bg-color;
+
+			&:hover {
+				background-color: $del-bg-hover-color;
+			}
+
+			&:focus,
+			&:active {
+				outline: 1px solid $del-bg-hover-color;
+			}
+		}
+	}
+}
+
+.rfipdropdown--#{$theme} {
+
+	@include card(5);
+	color: $text;
+
+	input,
+	select {
+		color: $text;
+	}
+
+	background-color: $color-background;
+	border: 1px solid $btn-border-color;
+	// Category item
+	.rfipcategory {
+
+		select {
+			background-color: $color-background;
+
+			@include input($elem-border-color, $elem-border-focus-color);
+		}
+	}
+
+	// Icons box
+	.rfipicons {
+		// current page
+		&__cp {
+
+			@include input($elem-border-color, $elem-border-focus-color);
+		}
+
+		&__left,
+		&__right {
+			background-color: $pager-bg-color;
+			border: 1px solid $pager-bg-color;
+			color: $icon-text;
+
+			&:hover {
+				background-color: $pager-bg-hover-color;
+				border: 1px solid $pager-bg-hover-color;
+			}
+
+			&:focus,
+			&:active {
+				border: 1px solid $pager-bg-hover-color;
+			}
+		}
+
+		// Individual icon box
+		&__ibox {
+			background-color: $ibox-bg-color;
+			border: 1px solid $ibox-bg-color;
+			color: $icon-text;
+
+			&:hover {
+				background-color: $ibox-bg-hover-color;
+				border: 1px solid $ibox-bg-hover-color;
+			}
+
+			&:focus,
+			&:active {
+				border: 1px solid $ibox-bg-hover-color;
+			}
+
+			&--error {
+				color: $error-icon-color;
+			}
+		}
+	}
+
+	// Search
+	.rfipsearch {
+
+		input {
+
+			@include input($elem-border-color, $elem-border-focus-color);
+		}
+	}
+}
+
+// Theme CSS End.
+// Reset style inside fip dropdown
+.rfipbtn,
+.rfipdropdown {
+	margin: 0;
+	padding: 0;
+	font-family:
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		"Roboto",
+		"Oxygen",
+		"Ubuntu",
+		"Cantarell",
+		"Fira Sans",
+		"Droid Sans",
+		"Helvetica Neue",
+		sans-serif;
+	font-size: 14px;
+	line-height: (24/14);
+	vertical-align: baseline;
+
+	box-sizing: border-box;
+
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	input,
+	select {
+		font-size: 14px;
+	}
+}
+
+.rfip {
+	position: relative;
+	display: inline-block;
+	margin: 8px;
+	vertical-align: middle;
+	width: 100%;
+}
+// Button
+.rfipbtn {
+	width: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+	min-height: 50px;
+	border-radius: 2px;
+	cursor: pointer;
+	transition: box-shadow 250ms, border-color 250ms;
+	outline: 0 none;
+	user-select: none;
+
+	// open
+	&--open {
+		border-radius: 2px 2px 0 0;
+	}
+
+	// dropdown button
+	&__button {
+		width: 48px;
+		margin-left: auto;
+		display: flex;
+		align-items: center; /* x axis center */
+		justify-content: center; /* y axis center */
+		height: auto; /* auto height to fix the flex */
+		transition: background 250ms, box-shadow 250ms;
+
+		i {
+			font-size: 32px;
+			transition: transform 250ms;
+		}
+
+		// Open
+		&--open {
+
+			i {
+				transform: rotate(-180deg);
+			}
+		}
+	}
+
+	// current
+	&__current {
+		display: flex;
+		flex-flow: row nowrap;
+		align-items: center;
+		justify-content: center;
+		flex: 0 0 86px;
+		padding: 2px;
+	}
+
+	// multi
+	&--multi {
+		width: 258px;
+
+		// current
+		.rfipbtn__current {
+			flex-flow: row wrap;
+			justify-content: flex-start;
+			flex-basis: 212px;
+			align-content: center;
+		}
+	}
+
+	// icon
+	&__icon {
+		margin: 2px;
+		padding: 0;
+		height: 28px;
+		width: 48px;
+		display: flex;
+		flex-flow: row nowrap;
+		align-items: center;
+		justify-content: space-between;
+		border-radius: 2px;
+
+		// empty
+		&--empty {
+			font-size: 14px;
+			line-height: 16px;
+			margin-left: 8px;
+			text-align: center;
+			text-transform: lowercase;
+			font-style: italic;
+		}
+	}
+
+	// elm
+	&__elm {
+		display: flex;
+		height: 28px;
+		width: 28px;
+		align-items: center;
+		justify-content: center;
+		font-size: 18px;
+
+		img,
+		svg {
+			height: 18px;
+			width: auto;
+		}
+	}
+
+	// del
+	&__del {
+		width: 18px;
+		display: flex;
+		height: 28px;
+		align-items: center;
+		justify-content: center;
+		transition: background-color 250ms;
+		cursor: pointer;
+	}
+}
+// Category item
+.rfipcategory {
+	width: 100%;
+	margin: 0 0 8px;
+	position: relative;
+
+	select {
+		width: 100%;
+		display: block;
+		height: 32px;
+		line-height: 32px;
+		border-radius: 0;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none; /* remove default arrow */
+		transition: border 250ms, box-shadow 250ms;
+		background-color: transparent !important;
+	}
+
+	i {
+		position: absolute;
+		right: 2px;
+		top: 0;
+		font-size: 16px;
+		line-height: 32px;
+		z-index: -1;
+	}
+}
+// Dropdown
+.rfipdropdown {
+	width: 352px;
+	position: absolute;
+	left: 0;
+	margin-top: -1px;
+	z-index: 100000001;
+	border-radius: 0 1px 4px 4px;
+
+	.rfipicons__ibox--error {
+		color: #000;
+		text-transform: capitalize;
+		font-size: 14px;
+		font-weight: 500;
+	}
+
+	// Selector box
+	&__selector {
+		overflow: hidden;
+		padding: 16px;
+	}
+
+	// For animation
+	&.fipappear-enter-active,
+	&.fipappear-exit-active {
+
+		.rfipdropdown__selector {
+			transition: max-height 300ms ease-out, padding 300ms ease-out;
+			padding: 16px;
+		}
+	}
+}
+// Icons box
+.rfipicons {
+	// Pager
+	&__pager {
+		display: flex;
+		flex-flow: row nowrap;
+		height: 24px;
+		line-height: 24px;
+		align-items: center;
+		margin-bottom: 8px;
+	}
+
+	// num
+	&__num {
+		width: 100px;
+		margin-right: auto;
+	}
+	// current page
+	&__cp {
+		width: 32px;
+		margin-right: 8px;
+		height: 24px;
+		line-height: 24px;
+		text-align: right;
+	}
+	// separator
+	&__sp {
+		margin-right: 8px;
+	}
+	// total page
+	&__tp {
+		margin-right: 8px;
+	}
+
+	// arrows
+	&__arrow {
+		margin-left: auto;
+		width: 56px;
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: flex-end;
+		align-items: center;
+		height: 24px;
+		user-select: none;
+	}
+	// left and right
+	&__right {
+		margin-left: auto;
+	}
+
+	&__left,
+	&__right {
+		cursor: pointer;
+		width: 24px;
+		height: 24px;
+		position: relative;
+		transition: background-color 250ms, border 250ms;
+		outline: 0 none;
+		border-radius: 2px;
+		font-size: 18px;
+	}
+
+	// Label
+	&__label {
+		height: 22px;
+		width: 22px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		img {
+			height: 18px;
+			width: 18px;
+		}
+	}
+
+	// Icon Selector
+	&__selector {
+		display: flex;
+		flex: 1 1 20%;
+		flex-flow: row wrap;
+		align-content: center;
+		justify-content: flex-start;
+	}
+
+	// Individual icon box
+	&__ibox {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+		width: 100%;
+		transition: background-color 250ms, border 250ms;
+		border-radius: 2px;
+		outline: 0 none;
+		font-size: 20px;
+
+		img,
+		svg {
+			max-height: 24px;
+			width: auto;
+		}
+
+		> * {
+			transform: scale(1);
+			transition: transform 250ms;
+			transform-origin: center;
+		}
+
+		&:hover {
+
+			> * {
+				transform: scale(1.8);
+			}
+		}
+		// Error
+		&--error {
+			text-transform: lowercase;
+			font-style: italic;
+		}
+	}
+
+	// Invidual icons
+	&__icon {
+		width: 20%;
+		height: 64px;
+		padding: 1px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+
+		// Error
+		&--error {
+			display: block;
+			padding: 16px;
+			text-align: center;
+			font-size: 24px;
+			width: 100%;
+			line-height: 1;
+		}
+	}
+}
+// Search
+.rfipsearch {
+	width: 100%;
+	margin: 0 0 8px;
+
+	input {
+		width: 100%;
+		display: block;
+		height: 32px;
+		line-height: 32px;
+	}
+}
+
+.components-panel {
+
+	.rfipdropdown,
+	.rfipdropdown.rfipdropdown--default.fipappear-enter-done {
+		left: 0;
+		width: 100%;
+	}
+
+	.rfipicons__ibox {
+		font-size: 15px;
+	}
+
+	.rfipicons__icon {
+		height: 40px;
+	}
+
+	.rfipicons__ibox:hover > * {
+		-webkit-transform: scale(1.45);
+		-ms-transform: scale(1.45);
+		transform: scale(1.45);
+	}
+}
+
+.rfipdropdown--default .rfipicons__icon--selected .rfipicons__ibox svg {
+	fill: #007cba;
+}
+
+.rfipbtn--default .rfipbtn__icon {
+	color: #424242;
+	height: 40px;
+	border: 0;
+}
+
+.rfipbtn--default .rfipbtn__del {
+	height: 7px;
+	background-color: #007cba33;
+	color: #007cba;
+	font-weight: bold;
+	padding: 8px 8px 10px 8px;
+	border-radius: 100%;
+	margin-left: 10px;
+}
+
+.rfipdropdown--default .rfipicons__ibox,
+.rfipdropdown--default .rfipicons__ibox:focus,
+.rfipdropdown--default .rfipicons__ibox:active,
+.rfipdropdown--default .rfipicons__ibox:hover {
+	color: #424242;
+	background-color: transparent;
+	border: 0;
+}
+
+.rfipdropdown--default .rfipicons__icon--selected .rfipicons__ibox svg {
+	fill: #007cba;
+}
+
+.rfipicons__ibox img,
+.rfipicons__ibox svg {
+	width: 16px;
+	height: 16px;
+	max-height: 24px;
+}
+
+.rfipicons__ibox svg {
+	fill: #585858;
+}
+
+/* Override default CSS - UAG */
+
+.uag-icon-picker {
+
+	.rfip {
+		margin: 4px 0 0;
+	}
+
+	.uag-control-label {
+		padding-bottom: 4px;
+		display: block;
+	}
+}

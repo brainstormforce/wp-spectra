@@ -1,0 +1,19 @@
+/**
+ * Editor styles for the admin
+ */
+
+#wpwrap .edit-post-visual-editor a.uagb-icon-list__link {
+	color: #3a3a3a;
+}
+
+#wpwrap .wp-block-uagb-icon-list .wp-block-uagb-icon-list-child  span {
+	cursor: text;
+}
+
+[data-type="uagb/icon-list"] .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+	width: auto;
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: 0;
+	margin-right: 0;
+}

@@ -1,159 +1,235 @@
 /**
  * WordPress dependencies
  */
- import { __ } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
+import UAGSelectControl from '@Components/select-control';
+import RangeTypographyControl from './range-typography';
+import googleFonts from '@Controls/fonts';
+import Select from 'react-select';
 
-const {
-	SelectControl
-} = wp.components
-
-// Extend component
-const { Component, Fragment } = wp.element
-
-/**
- * Internal dependencies
- */
-import map from "lodash/map"
-import googleFonts from "./fonts"
-import Select from "react-select"
+const { uag_select_font_globally , uag_load_select_font_globally } = uagb_blocks_info;
 
 function FontFamilyControl( props ) {
 
-	const fonts = [
-		{ value: "", label: __( "Default",'ultimate-addons-for-gutenberg' ), weight: [ "100", "200", "300", "400", "500", "600", "700", "800", "900" ], google: false },
-		{ value: "Arial", label: "Arial", weight: [ "100", "200", "300", "400", "500", "600", "700", "800", "900" ], google: false },
-		{ value: "Helvetica", label: "Helvetica", weight: [ "100", "200", "300", "400", "500", "600", "700", "800", "900" ], google: false },
-		{ value: "Times New Roman", label: "Times New Roman", weight: [ "100", "200", "300", "400", "500", "600", "700", "800", "900" ], google: false },
-		{ value: "Georgia", label: "Georgia", weight: [ "100", "200", "300", "400", "500", "600", "700", "800", "900" ], google: false },
-	]
+	const fonts = [];
 
-	let fontWeight = ""
-	let fontSubset = ""
+	let fontWeight = '';
+
+	const customFonts = uagb_blocks_info.spectra_custom_fonts;
 
 	//Push Google Fonts into stytem fonts object
-	Object.keys( googleFonts ).map( ( k, v ) => {
-		fonts.push(
-			{ value: k, label: k, weight: googleFonts[k].weight }
-		)
+	Object.keys( googleFonts ).map( ( k ) => {  // eslint-disable-line array-callback-return
+		fonts.push( { value: k, label: k, weight: googleFonts[ k ].weight } );
 
-		if( k === props.fontFamily.value ) {
-			fontWeight = googleFonts[k].weight
-			fontSubset = googleFonts[k].subset
+		if ( k === props.fontFamily.value ) {
+			fontWeight = googleFonts[ k ].weight;
 		}
-	})
+	} );
+
+	//Push custom Fonts into stytem fonts object.
+	Object.keys( customFonts ).map( ( k ) => {  // eslint-disable-line array-callback-return
+		fonts.push( { value: k, label: k, weight: customFonts[ k ].weight } );
+		if ( k === props.fontFamily.value ) {
+			fontWeight = customFonts[ k ].weight;
+		}
+	} );
 
 	// check if the font is a system font and then apply the font weight accordingly.
-	if ( fontWeight === "" ) {
-		fontWeight = fonts[0].weight
+	if ( fontWeight === '' ) {
+		fontWeight = fonts[ 0 ].weight;
 	}
 
-	const fontWeightObj = []
+	const fontWeightObj = [];
+	fontWeight.forEach( function ( item ) {
+		fontWeightObj.push( {
+			value: ( 'Default' === item ) ? '' : item,
+			label: item,
+		} );
+	} );
 
-	fontWeight.forEach(function(item) {
-		fontWeightObj.push(
-			{ value: item, label: item }
-		)
-	})
-
-	const fontSubsetObj = []
-
-	if( typeof fontSubset == "object" ) {
-		fontSubset.forEach(function(item) {
-			fontSubsetObj.push(
-				{ value: item, label: item }
-			)
-		})
-	}
 
 	const onFontfamilyChange = ( value ) => {
-		const { loadGoogleFonts, fontFamily, fontWeight, fontSubset } = props
-		props.setAttributes( { [ fontFamily.label ]: value.label } )
-		onLoadGoogleFonts( loadGoogleFonts, value.label )
-		onFontChange( fontWeight, fontSubset, value.label )
-	}
-
-	const onFontChange = ( fontWeight, fontSubset, fontFamily ) => {
-
-		let font_flag
-		let new_value
-
-		if( typeof googleFonts[fontFamily] == "object" ) {
-
-			const gfontsObj = googleFonts[fontFamily].weight
-			const gfontSubsetObj = googleFonts[fontFamily].subset
-
-			if( typeof gfontsObj == "object" ) {
-
-				gfontsObj.forEach(function(item) {
-
-					if( fontWeight.value == item ) {
-						font_flag = false
-					} else {
-						new_value  = item
-						font_flag = true
-						props.setAttributes( { [ props.fontWeight.label ]: new_value } )
-						return
-					}
-				})
-
-				gfontSubsetObj.forEach(function(item) {
-
-					if( fontSubset.value == item ) {
-						font_flag = false
-					} else {
-						new_value  = item
-						font_flag = true
-						props.setAttributes( { [ props.fontSubset.label ]: new_value } )
-						return
-					}
-				})
-			}
-		}
-	}
+		const font = value.value;
+		const { loadGoogleFonts, fontFamily } = props; // eslint-disable-line no-shadow
+		props.setAttributes( { [ fontFamily.label ]: font } );
+		onLoadGoogleFonts( loadGoogleFonts, font );
+	};
 
 	const onLoadGoogleFonts = ( loadGoogleFonts, fontFamily ) => {
+		let value;
 
-		let value
-
-		if( fontFamily != "" && typeof googleFonts[fontFamily] != "object" ) {
-			value = false
+		if (
+			fontFamily !== '' &&
+			typeof googleFonts[ fontFamily ] !== 'object'
+		) {
+			value = false;
 		} else {
-			value = true
+			value = true;
 		}
 
-		props.setAttributes( { [loadGoogleFonts.label]: value } )
+		props.setAttributes( { [ loadGoogleFonts.label ]: value } );
+	};
+
+	const gFonts = uag_load_select_font_globally === 'enabled' && uag_select_font_globally !== 0 ? uag_select_font_globally : fonts;
+
+	const customSelectStyles = {
+		container: ( provided ) => ( {
+			...provided,
+			width: '100%',
+		} ),
+		control: ( provided ) => ( {
+			...provided,
+			border: '1px solid #E6E7E9',
+			boxShadow: 'none',
+			height: '30px',
+			minHeight: '30px',
+			borderRadius: '3px',
+		} ),
+		placeholder: ( provided ) => ( {
+			...provided,
+			color: '#50575E',
+		} ),
+		menu: ( provided ) => ( {
+			...provided,
+			color: '#50575E',
+		} ),
+		singleValue: ( provided ) => ( {
+			...provided,
+			color: '#50575E',
+			top: '50%',
+			transform: 'translateY(-50%);',
+		} ),
+		indicatorSeparator: ( provided ) => ( {
+			...provided,
+			display: 'none',
+		} ),
+		dropdownIndicator: ( provided ) => ( {
+			...provided,
+			color: '#50575E',
+		} ),
+		valueContainer: ( provided ) => ( {
+			...provided,
+			height: '30px',
+			padding: '0px 8px',
+		} ),
+	}
+
+	let fontFamilyValue;
+	//Push Google Fonts into stytem fonts object
+	if ( gFonts ) {
+		gFonts.map( ( font ) => {  // eslint-disable-line array-callback-return
+
+			if ( ! props.fontFamily.weight && font.value === props.fontFamily.value ) {
+				fontFamilyValue = { ...props.fontFamily, weight: font.weight, label: font.value };
+			}
+		} );
+	}
+
+	let fontSize;
+	const fontSizeStepsVal = ( 'em' === props.fontSizeType.value ? 0.1 : 1 ); // fractional value when unit is em.
+	if ( true !== props.disableFontSize ) {
+		fontSize = (
+			<RangeTypographyControl
+				type={ props.fontSizeType }
+				typeLabel={ props.fontSizeType.label }
+				sizeMobile={ props.fontSizeMobile }
+				sizeMobileLabel={ props.fontSizeMobile.label }
+				sizeTablet={ props.fontSizeTablet }
+				sizeTabletLabel={ props.fontSizeTablet.label }
+				size={ props.fontSize }
+				sizeLabel={ props.fontSize.label }
+				sizeMobileText={
+					! props.fontSizeLabel
+						? __( 'Font Size', 'ultimate-addons-for-gutenberg' )
+						: props.fontSizeLabel
+				}
+				sizeTabletText={
+					! props.fontSizeLabel
+						? __( 'Font Size', 'ultimate-addons-for-gutenberg' )
+						: props.fontSizeLabel
+				}
+				sizeText={
+					! props.fontSizeLabel
+						? __( 'Font Size', 'ultimate-addons-for-gutenberg' )
+						: props.fontSizeLabel
+				}
+				step={ fontSizeStepsVal }
+				{ ...props }
+			/>
+		);
 	}
 
 	return (
-		<div className="uag-typography-font-family-options">
-			<label className="uag-typography-font-family-label">{ __( "Font Family",'ultimate-addons-for-gutenberg' ) }</label>
-			<Select
-				options={ fonts }
-				value={ { value: props.fontFamily.value, label: props.fontFamily.value, weight: fontWeightObj } }
-				isMulti={ false }
-				maxMenuHeight={ 300 }
-				onChange={ onFontfamilyChange }
-				className="react-select-container" 
-				classNamePrefix="react-select"
+		<>
+			{ /* Font Family */ }
+			<div className="components-base-control uag-font-family-searchable-select__wrapper">
+				<label className="components-input-control__label" htmlFor="font-family">{ __( 'Font Family' ) }</label>
+				<Select
+					styles={ customSelectStyles }
+					placeholder={ __( 'Default', 'ultimate-addons-for-gutenberg' ) }
+					onChange={ onFontfamilyChange }
+					options={ gFonts }
+					value={ fontFamilyValue }
+					defaultValue = { fontFamilyValue }
+					isSearchable={true}
+					className="uag-font-family-searchable-select"
+					classNamePrefix="uag-font-family-select"
+				/>
+			</div>
+			{ /* Font Size*/ }
+			{ fontSize }
+			{ /* Font Weitght */ }
+			<UAGSelectControl
+				label={ __(
+					'Weight',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					value: props.fontWeight.value,
+					label: props.fontWeight.label,
+				} }
+				setAttributes={ props.setAttributes }
+				options={ fontWeightObj }
 			/>
-			<SelectControl
-				label={ __( "Font Weight",'ultimate-addons-for-gutenberg' ) }
-				value={ props.fontWeight.value }
-				onChange={ ( value ) => props.setAttributes( { [ props.fontWeight.label ]: value } ) }
-				options={
-					fontWeightObj
-				}
-			/>
-			<SelectControl
-				label={ __( "Font Subset",'ultimate-addons-for-gutenberg' ) }
-				value={ props.fontSubset.value }
-				onChange={ ( value ) => props.setAttributes( { [ props.fontSubset.label ]: value } ) }
-				options={
-					fontSubsetObj
-				}
-			/>
-		</div>
-	)
+			{ /* Font Style */ }
+			{ props.fontStyle &&
+				<UAGSelectControl
+					label={ __(
+						'Style',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: props.fontStyle.value,
+						label: props.fontStyle.label,
+					} }
+					setAttributes={ props.setAttributes }
+					options={ [
+						{
+							value: 'normal',
+							label: __(
+								'Default',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'italic',
+							label: __(
+								'Italic',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'oblique',
+							label: __(
+								'Oblique',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+				/>
+			}
+		</>
+	);
 }
 
-export default FontFamilyControl
+export default FontFamilyControl;

@@ -68,428 +68,736 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 				'uagb/post-timeline',
 				array(
 					'attributes'      => array(
-						'align'                   => array(
+						'blockName'                  => array(
 							'type'    => 'string',
-							'default' => 'center',
+							'default' => 'post-timeline',
 						),
-						'headingColor'            => array(
+						'align'                      => array(
+							'type'    => 'string',
+							'default' => '',
+						),
+						'alignTablet'                => array(
+							'type'    => 'string',
+							'default' => '',
+						),
+						'alignMobile'                => array(
+							'type'    => 'string',
+							'default' => '',
+						),
+						'headingColor'               => array(
 							'type'    => 'string',
 							'default' => '#333',
 						),
-						'subHeadingColor'         => array(
+						'subHeadingColor'            => array(
 							'type'    => 'string',
 							'default' => '#333',
 						),
-						'separatorBg'             => array(
+						'separatorBg'                => array(
 							'type'    => 'string',
 							'default' => '#eee',
 						),
-						'backgroundColor'         => array(
+						'backgroundColor'            => array(
 							'type'    => 'string',
 							'default' => '#eee',
 						),
-						'separatorColor'          => array(
+						'separatorColor'             => array(
 							'type'    => 'string',
 							'default' => '#eee',
 						),
-						'separatorFillColor'      => array(
+						'separatorFillColor'         => array(
 							'type'    => 'string',
-							'default' => '#61ce70',
+							'default' => '#0693e3',
 						),
-						'separatorBorder'         => array(
+						'separatorBorder'            => array(
 							'type'    => 'string',
 							'default' => '#eee',
 						),
-						'borderFocus'             => array(
+						'borderFocus'                => array(
 							'type'    => 'string',
 							'default' => '#5cb85c',
 						),
-						'headingTag'              => array(
+						'headingTag'                 => array(
 							'type'    => 'string',
 							'default' => 'h3',
 						),
-						'horizontalSpace'         => array(
+						'horizontalSpace'            => array(
 							'type'    => 'number',
 							'default' => 10,
 						),
-						'verticalSpace'           => array(
-							'type'    => 'number',
-							'default' => 15,
+						'horizontalSpaceTablet'      => array(
+							'type' => 'number',
 						),
-						'timelinAlignment'        => array(
-							'type'    => 'string',
-							'default' => 'center',
+						'horizontalSpaceMobile'      => array(
+							'type' => 'number',
 						),
-						'arrowlinAlignment'       => array(
-							'type'    => 'string',
-							'default' => 'center',
-						),
-						'subHeadFontSizeType'     => array(
+						'horizontalSpaceUnit'        => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'subHeadFontSize'         => array(
-							'type' => 'number',
-						),
-						'subHeadFontSizeTablet'   => array(
-							'type' => 'number',
-						),
-						'subHeadFontSizeMobile'   => array(
-							'type' => 'number',
-						),
-						'subHeadFontFamily'       => array(
+						'horizontalSpaceUnitTablet'  => array(
 							'type'    => 'string',
-							'default' => '',
+							'default' => 'px',
 						),
-						'subHeadFontWeight'       => array(
-							'type' => 'string',
-						),
-						'subHeadFontSubset'       => array(
-							'type' => 'string',
-						),
-						'subHeadLineHeightType'   => array(
+						'horizontalSpaceUnitMobile'  => array(
 							'type'    => 'string',
-							'default' => 'em',
+							'default' => 'px',
 						),
-						'subHeadLineHeight'       => array(
-							'type' => 'number',
-						),
-						'subHeadLineHeightTablet' => array(
-							'type' => 'number',
-						),
-						'subHeadLineHeightMobile' => array(
-							'type' => 'number',
-						),
-						'subHeadLoadGoogleFonts'  => array(
-							'type'    => 'boolean',
-							'default' => false,
-						),
-						'headSpace'               => array(
-							'type'    => 'number',
-							'default' => 5,
-						),
-						'authorSpace'             => array(
-							'type'    => 'number',
-							'default' => 5,
-						),
-						'contentSpace'            => array(
+						'verticalSpace'              => array(
 							'type'    => 'number',
 							'default' => 15,
 						),
-						'separatorwidth'          => array(
+						'verticalSpaceTablet'        => array(
+							'type' => 'number',
+						),
+						'verticalSpaceMobile'        => array(
+							'type' => 'number',
+						),
+						'verticalSpaceUnit'          => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'verticalSpaceUnitTablet'    => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'verticalSpaceUnitMobile'    => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'timelinAlignment'           => array(
+							'type'    => 'string',
+							'default' => 'center',
+						),
+						'timelinAlignmentTablet'     => array(
+							'type' => 'string',
+						),
+						'timelinAlignmentMobile'     => array(
+							'type' => 'string',
+						),
+						'arrowlinAlignment'          => array(
+							'type'    => 'string',
+							'default' => 'center',
+						),
+						'subHeadFontSizeType'        => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'subHeadFontSize'            => array(
+							'type' => 'number',
+						),
+						'subHeadFontSizeTablet'      => array(
+							'type' => 'number',
+						),
+						'subHeadFontSizeMobile'      => array(
+							'type' => 'number',
+						),
+						'subHeadFontFamily'          => array(
+							'type'    => 'string',
+							'default' => '',
+						),
+						'subHeadFontWeight'          => array(
+							'type' => 'string',
+						),
+						'subHeadFontStyle'           => array(
+							'type' => 'string',
+						),
+						'subHeadLineHeightType'      => array(
+							'type'    => 'string',
+							'default' => 'em',
+						),
+						'subHeadLineHeight'          => array(
+							'type' => 'number',
+						),
+						'subHeadLineHeightTablet'    => array(
+							'type' => 'number',
+						),
+						'subHeadLineHeightMobile'    => array(
+							'type' => 'number',
+						),
+						'subHeadLoadGoogleFonts'     => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+						'headSpace'                  => array(
+							'type'    => 'number',
+							'default' => 5,
+						),
+						'headSpaceTablet'            => array(
+							'type' => 'number',
+						),
+						'headSpaceMobile'            => array(
+							'type' => 'number',
+						),
+						'authorSpace'                => array(
+							'type'    => 'number',
+							'default' => 5,
+						),
+						'authorSpaceTablet'          => array(
+							'type' => 'number',
+						),
+						'authorSpaceMobile'          => array(
+							'type' => 'number',
+						),
+						'contentSpace'               => array(
+							'type'    => 'number',
+							'default' => 15,
+						),
+						'separatorwidth'             => array(
 							'type'    => 'number',
 							'default' => 3,
 						),
-						'borderwidth'             => array(
+						'borderwidth'                => array(
 							'type'    => 'number',
 							'default' => 0,
 						),
-						'iconColor'               => array(
+						'iconColor'                  => array(
 							'type'    => 'string',
 							'default' => '#333',
 						),
-						'iconFocus'               => array(
+						'iconFocus'                  => array(
 							'type'    => 'string',
 							'default' => '#fff',
 						),
-						'iconBgFocus'             => array(
+						'iconBgFocus'                => array(
 							'type'    => 'string',
-							'default' => '#61ce70',
+							'default' => '#0693e3',
 						),
-						'authorColor'             => array(
+						'authorColor'                => array(
 							'type'    => 'string',
 							'default' => '#333',
 						),
-						'authorFontSizeType'      => array(
+						'authorFontSizeType'         => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'authorFontSize'          => array(
+						'authorFontSize'             => array(
 							'type'    => 'number',
 							'default' => 11,
 						),
-						'authorFontSizeTablet'    => array(
+						'authorFontSizeTablet'       => array(
 							'type' => 'number',
 						),
-						'authorFontSizeMobile'    => array(
+						'authorFontSizeMobile'       => array(
 							'type' => 'number',
 						),
-						'authorFontFamily'        => array(
+						'authorFontFamily'           => array(
 							'type'    => 'string',
 							'default' => '',
 						),
-						'authorFontWeight'        => array(
+						'authorFontWeight'           => array(
 							'type' => 'string',
 						),
-						'authorFontSubset'        => array(
+						'authorFontStyle'            => array(
 							'type' => 'string',
 						),
-						'authorLineHeightType'    => array(
+						'authorLineHeightType'       => array(
 							'type'    => 'string',
 							'default' => 'em',
 						),
-						'authorLineHeight'        => array(
+						'authorLineHeight'           => array(
 							'type' => 'number',
 						),
-						'authorLineHeightTablet'  => array(
+						'authorLineHeightTablet'     => array(
 							'type' => 'number',
 						),
-						'authorLineHeightMobile'  => array(
+						'authorLineHeightMobile'     => array(
 							'type' => 'number',
 						),
-						'authorLoadGoogleFonts'   => array(
+						'authorLoadGoogleFonts'      => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'ctaFontSizeType'         => array(
+						'ctaFontSizeType'            => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'ctaFontSize'             => array(
+						'ctaFontSize'                => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'ctaFontSizeTablet'       => array(
+						'ctaFontSizeTablet'          => array(
 							'type' => 'number',
 						),
-						'ctaFontSizeMobile'       => array(
+						'ctaFontSizeMobile'          => array(
 							'type' => 'number',
 						),
-						'ctaFontFamily'           => array(
+						'ctaFontFamily'              => array(
 							'type'    => 'string',
 							'default' => '',
 						),
-						'ctaFontWeight'           => array(
+						'ctaFontWeight'              => array(
 							'type' => 'string',
 						),
-						'ctaFontSubset'           => array(
+						'ctaFontStyle'               => array(
 							'type' => 'string',
 						),
-						'ctaLineHeightType'       => array(
+						'ctaLineHeightType'          => array(
 							'type'    => 'string',
 							'default' => 'em',
 						),
-						'ctaLineHeight'           => array(
+						'ctaLineHeight'              => array(
 							'type' => 'number',
 						),
-						'ctaLineHeightTablet'     => array(
+						'ctaLineHeightTablet'        => array(
 							'type' => 'number',
 						),
-						'ctaLineHeightMobile'     => array(
+						'ctaLineHeightMobile'        => array(
 							'type' => 'number',
 						),
-						'ctaLoadGoogleFonts'      => array(
+						'ctaLoadGoogleFonts'         => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'dateColor'               => array(
+						'dateColor'                  => array(
 							'type'    => 'string',
 							'default' => '#333',
 						),
-						'dateFontsizeType'        => array(
+						'dateFontsizeType'           => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'dateFontsize'            => array(
+						'dateFontsize'               => array(
 							'type'    => 'number',
 							'default' => 12,
 						),
-						'dateFontsizeTablet'      => array(
+						'dateFontsizeTablet'         => array(
 							'type' => 'number',
 						),
-						'dateFontsizeMobile'      => array(
+						'dateFontsizeMobile'         => array(
 							'type' => 'number',
 						),
-						'dateFontFamily'          => array(
+						'dateFontFamily'             => array(
 							'type'    => 'string',
 							'default' => '',
 						),
-						'dateFontWeight'          => array(
+						'dateFontWeight'             => array(
 							'type' => 'string',
 						),
-						'dateFontSubset'          => array(
+						'dateFontStyle'              => array(
 							'type' => 'string',
 						),
-						'dateLineHeightType'      => array(
+						'dateLineHeightType'         => array(
 							'type'    => 'string',
 							'default' => 'em',
 						),
-						'dateLineHeight'          => array(
+						'dateLineHeight'             => array(
 							'type' => 'number',
 						),
-						'dateLineHeightTablet'    => array(
+						'dateLineHeightTablet'       => array(
 							'type' => 'number',
 						),
-						'dateLineHeightMobile'    => array(
+						'dateLineHeightMobile'       => array(
 							'type' => 'number',
 						),
-						'dateLoadGoogleFonts'     => array(
+						'dateLoadGoogleFonts'        => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'connectorBgsize'         => array(
+						'connectorBgsize'            => array(
 							'type'    => 'number',
 							'default' => 35,
 						),
-						'dateBottomspace'         => array(
+						'dateBottomspace'            => array(
 							'type'    => 'number',
 							'default' => 5,
 						),
-						'headFontSizeType'        => array(
+						'dateBottomspaceMobile'      => array(
+							'type' => 'number',
+						),
+						'dateBottomspaceTablet'      => array(
+							'type' => 'number',
+						),
+						'headFontSizeType'           => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'headFontSize'            => array(
+						'headFontSize'               => array(
 							'type' => 'number',
 						),
-						'headFontSizeTablet'      => array(
+						'headFontSizeTablet'         => array(
 							'type' => 'number',
 						),
-						'headFontSizeMobile'      => array(
+						'headFontSizeMobile'         => array(
 							'type' => 'number',
 						),
-						'headFontFamily'          => array(
+						'headFontFamily'             => array(
 							'type'    => 'string',
 							'default' => '',
 						),
-						'headFontWeight'          => array(
+						'headFontWeight'             => array(
 							'type' => 'string',
 						),
-						'headFontSubset'          => array(
+						'headFontStyle'              => array(
 							'type' => 'string',
 						),
-						'headLineHeightType'      => array(
+						'headLineHeightType'         => array(
 							'type'    => 'string',
 							'default' => 'em',
 						),
-						'headLineHeight'          => array(
+						'headLineHeight'             => array(
 							'type' => 'number',
 						),
-						'headLineHeightTablet'    => array(
+						'headLineHeightTablet'       => array(
 							'type' => 'number',
 						),
-						'headLineHeightMobile'    => array(
+						'headLineHeightMobile'       => array(
 							'type' => 'number',
 						),
-						'headLoadGoogleFonts'     => array(
+						'headLoadGoogleFonts'        => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'categories'              => array(
+						'categories'                 => array(
 							'type' => 'string',
 						),
-						'postType'                => array(
+						'postType'                   => array(
 							'type'    => 'string',
 							'default' => 'post',
 						),
-						'taxonomyType'            => array(
+						'taxonomyType'               => array(
 							'type'    => 'string',
 							'default' => 'category',
 						),
-						'postsToShow'             => array(
+						'postsToShow'                => array(
 							'type'    => 'number',
 							'default' => 6,
 						),
-						'displayPostDate'         => array(
+						'postsOffset'                => array(
+							'type'    => 'number',
+							'default' => 0,
+						),
+						'displayPostDate'            => array(
 							'type'    => 'boolean',
 							'default' => true,
 						),
-						'dateFormat'              => array(
+						'dateFormat'                 => array(
 							'type'    => 'string',
 							'default' => 'F j, Y',
 						),
-						'displayPostExcerpt'      => array(
+						'displayPostExcerpt'         => array(
 							'type'    => 'boolean',
 							'default' => true,
 						),
-						'displayPostAuthor'       => array(
+						'displayPostAuthor'          => array(
 							'type'    => 'boolean',
 							'default' => true,
 						),
-						'displayPostImage'        => array(
+						'displayPostImage'           => array(
 							'type'    => 'boolean',
 							'default' => true,
 						),
-						'displayPostLink'         => array(
+						'displayPostLink'            => array(
 							'type'    => 'boolean',
 							'default' => true,
 						),
-						'exerptLength'            => array(
+						'exerptLength'               => array(
 							'type'    => 'number',
 							'default' => 15,
 						),
-						'postLayout'              => array(
+						'postLayout'                 => array(
 							'type'    => 'string',
 							'default' => 'grid',
 						),
-						'columns'                 => array(
+						'columns'                    => array(
 							'type'    => 'number',
 							'default' => 2,
 						),
-						'width'                   => array(
+						'width'                      => array(
 							'type'    => 'string',
 							'default' => 'wide',
 						),
-						'order'                   => array(
+						'order'                      => array(
 							'type'    => 'string',
 							'default' => 'desc',
 						),
-						'orderBy'                 => array(
+						'orderBy'                    => array(
 							'type'    => 'string',
 							'default' => 'date',
 						),
-						'imageSize'               => array(
+						'imageSize'                  => array(
 							'type'    => 'string',
 							'default' => 'large',
 						),
-						'readMoreText'            => array(
+						'readMoreText'               => array(
 							'type'    => 'string',
 							'default' => __( 'Read More', 'ultimate-addons-for-gutenberg' ),
 						),
-						'block_id'                => array(
+						'block_id'                   => array(
 							'type'    => 'string',
 							'default' => 'not_set',
 						),
-						'icon'                    => array(
+						'icon'                       => array(
 							'type'    => 'string',
-							'default' => 'fab fa fa-calendar-alt',
+							'default' => 'calendar-days',
 						),
-						'borderRadius'            => array(
+						'borderRadius'               => array(
 							'type'    => 'number',
 							'default' => 2,
 						),
-						'bgPadding'               => array(
+						'borderRadiusTablet'         => array(
+							'type' => 'number',
+						),
+						'borderRadiusMobile'         => array(
+							'type' => 'number',
+						),
+						'bgPadding'                  => array(
 							'type'    => 'number',
 							'default' => 20,
 						),
-						'contentPadding'          => array(
+						'contentPadding'             => array(
 							'type'    => 'number',
 							'default' => 10,
 						),
-						'iconSize'                => array(
+						'ctaBottomSpacing'           => array(
+							'type'    => 'number',
+							'default' => 0,
+						),
+						'ctaBottomSpacingTablet'     => array(
+							'type' => 'number',
+						),
+						'ctaBottomSpacingMobile'     => array(
+							'type' => 'number',
+						),
+						'headTopSpacing'             => array(
+							'type'    => 'number',
+							'default' => 0,
+						),
+						'headTopSpacingTablet'       => array(
+							'type' => 'number',
+						),
+						'headTopSpacingMobile'       => array(
+							'type' => 'number',
+						),
+						'iconSize'                   => array(
 							'type'    => 'number',
 							'default' => 15,
 						),
-						'ctaColor'                => array(
-							'type'    => 'string',
-							'default' => '#fff',
+						'ctaColor'                   => array(
+							'type' => 'string',
 						),
-						'ctaBackground'           => array(
-							'type'    => 'string',
-							'default' => '#333',
+						'ctaBackground'              => array(
+							'type' => 'string',
 						),
-						'stack'                   => array(
+						'stack'                      => array(
 							'type'    => 'string',
 							'default' => 'tablet',
 						),
-						'linkTarget'              => array(
+						'linkTarget'                 => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
 						// Exclude Current Post.
-						'excludeCurrentPost'      => array(
+						'excludeCurrentPost'         => array(
 							'type'    => 'boolean',
 							'default' => false,
+						),
+						'leftMargin'                 => array(
+							'type' => 'number',
+						),
+						'rightMargin'                => array(
+							'type' => 'number',
+						),
+						'topMargin'                  => array(
+							'type' => 'number',
+						),
+						'bottomMargin'               => array(
+							'type' => 'number',
+						),
+						'leftMarginTablet'           => array(
+							'type' => 'number',
+						),
+						'rightMarginTablet'          => array(
+							'type' => 'number',
+						),
+						'topMarginTablet'            => array(
+							'type' => 'number',
+						),
+						'bottomMarginTablet'         => array(
+							'type' => 'number',
+						),
+						'leftMarginMobile'           => array(
+							'type' => 'number',
+						),
+						'rightMarginMobile'          => array(
+							'type' => 'number',
+						),
+						'topMarginMobile'            => array(
+							'type' => 'number',
+						),
+						'bottomMarginMobile'         => array(
+							'type' => 'number',
+						),
+						'marginUnit'                 => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'mobileMarginUnit'           => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'tabletMarginUnit'           => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'marginLink'                 => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+						'leftPadding'                => array(
+							'type' => 'number',
+						),
+						'rightPadding'               => array(
+							'type' => 'number',
+						),
+						'topPadding'                 => array(
+							'type' => 'number',
+						),
+						'bottomPadding'              => array(
+							'type' => 'number',
+						),
+						'leftPaddingTablet'          => array(
+							'type' => 'number',
+						),
+						'rightPaddingTablet'         => array(
+							'type' => 'number',
+						),
+						'topPaddingTablet'           => array(
+							'type' => 'number',
+						),
+						'bottomPaddingTablet'        => array(
+							'type' => 'number',
+						),
+						'leftPaddingMobile'          => array(
+							'type' => 'number',
+						),
+						'rightPaddingMobile'         => array(
+							'type' => 'number',
+						),
+						'topPaddingMobile'           => array(
+							'type' => 'number',
+						),
+						'bottomPaddingMobile'        => array(
+							'type' => 'number',
+						),
+						'paddingUnit'                => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'mobilePaddingUnit'          => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'tabletPaddingUnit'          => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'paddingLink'                => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+						'headTransform'              => array(
+							'type' => 'string',
+						),
+						'authorTransform'            => array(
+							'type' => 'string',
+						),
+						'subHeadTransform'           => array(
+							'type' => 'string',
+						),
+						'dateTransform'              => array(
+							'type' => 'string',
+						),
+						'ctaTransform'               => array(
+							'type' => 'string',
+						),
+						'headDecoration'             => array(
+							'type' => 'string',
+						),
+						'authorDecoration'           => array(
+							'type' => 'string',
+						),
+						'subHeadDecoration'          => array(
+							'type' => 'string',
+						),
+						'dateDecoration'             => array(
+							'type' => 'string',
+						),
+						'ctaDecoration'              => array(
+							'type' => 'string',
+						),
+						'isPreview'                  => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+						'headLetterSpacing'          => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'headLetterSpacingType'      => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'headLetterSpacingMobile'    => array(
+							'type' => 'number',
+						),
+						'headLetterSpacingTablet'    => array(
+							'type' => 'number',
+						),
+						'subHeadLetterSpacing'       => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'subHeadLetterSpacingType'   => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'subHeadLetterSpacingMobile' => array(
+							'type' => 'number',
+						),
+						'subHeadLetterSpacingTablet' => array(
+							'type' => 'number',
+						),
+						'ctaLetterSpacing'           => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'ctaLetterSpacingType'       => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'ctaLetterSpacingMobile'     => array(
+							'type' => 'number',
+						),
+						'ctaLetterSpacingTablet'     => array(
+							'type' => 'number',
+						),
+						'dateLetterSpacing'          => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'dateLetterSpacingType'      => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'dateLetterSpacingMobile'    => array(
+							'type' => 'number',
+						),
+						'dateLetterSpacingTablet'    => array(
+							'type' => 'number',
+						),
+						'authorLetterSpacing'        => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'authorLetterSpacingType'    => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'authorLetterSpacingMobile'  => array(
+							'type' => 'number',
+						),
+						'authorLetterSpacingTablet'  => array(
+							'type' => 'number',
 						),
 					),
 					'render_callback' => array( $this, 'post_timeline_callback' ),
@@ -515,7 +823,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			$tab_class     = '';
 			$mob_class     = '';
 
-			if ( array_key_exists( 'UAGDisplayConditions', $attributes ) && 'responsiveVisibility' === $attributes['UAGDisplayConditions'] ) {
+			if ( array_key_exists( 'UAGHideDesktop', $attributes ) || array_key_exists( 'UAGHideTab', $attributes ) || array_key_exists( 'UAGHideMob', $attributes ) ) {
 
 				$desktop_class = ( isset( $attributes['UAGHideDesktop'] ) ) ? 'uag-hide-desktop' : '';
 
@@ -527,6 +835,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			$outer_class = 'uagb-timeline__outer-wrap';
 
 			$main_classes = array(
+				'wp-block-uagb-post-timeline',
 				$outer_class,
 				$block_id,
 				$desktop_class,
@@ -536,22 +845,24 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 
 			ob_start();
 			?>
-			<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>" >
-				<div  class = "<?php echo esc_html( $this->get_classes( $attributes ) ); ?>" >
-					<div class = "uagb-timeline-wrapper">
-						<div class = "uagb-timeline__main">
-							<?php
-							if ( empty( $recent_posts ) ) {
-								esc_html_e( 'No posts found', 'ultimate-addons-for-gutenberg' );
-							} else {
-								$this->get_post_html( $attributes, $recent_posts );
-							}
-							?>
-							<div class = "uagb-timeline__line" >
-								<div class = "uagb-timeline__line__inner"></div>
-							</div>
-						</div>
-					</div>
+			<div class = "
+			<?php
+			echo esc_attr( implode( ' ', $main_classes ) );
+			echo esc_html( $this->get_classes( $attributes ) );
+			?>
+			<?php
+			echo esc_html( $this->get_classes( $attributes ) );
+			?>
+			" >
+				<?php
+				if ( empty( $recent_posts ) ) {
+					esc_html_e( 'No posts found', 'ultimate-addons-for-gutenberg' );
+				} else {
+					$this->get_post_html( $attributes, $recent_posts );
+				}
+				?>
+				<div class = "uagb-timeline__line" >
+					<div class = "uagb-timeline__line__inner"></div>
 				</div>
 			</div>
 			<?php
@@ -568,7 +879,6 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 		 */
 		public function get_post_html( $attributes, $query ) {
 			?>
-			<div class = "uagb-timeline__days">
 				<?php
 				$index = 0;
 				while ( $query->have_posts() ) {
@@ -579,7 +889,6 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 				}
 				wp_reset_postdata();
 				?>
-			</div>
 			<?php
 		}
 
@@ -599,36 +908,24 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			$day_align_class     = $this->get_day_align_classes( $attributes, $index );
 
 			?>
-			<article class = "uagb-timeline__field uagb-timeline__field-wrap">
-				<div class = "<?php echo esc_html( $content_align_class ); ?>">
+			<article class = "uagb-timeline__field <?php echo esc_html( $content_align_class ); ?>">
 					<?php $this->get_icon( $attributes ); ?>
-					<div class = "<?php echo esc_html( $day_align_class ); ?>" >
-						<div class = "uagb-timeline__events-new">
-							<div class ="uagb-timeline__events-inner-new">
-								<div class = "uagb-timeline__date-hide uagb-timeline__date-inner" >
-									<?php $this->get_date( $attributes, 'uagb-timeline__inner-date-new' ); ?>
-								</div>
-
-								<?php ( $attributes['displayPostImage'] ) ? $this->get_image( $attributes ) : ''; ?>
-
-								<div class = "uagb-content" >
-									<?php
-										$this->get_title( $attributes );
-										$this->get_author( $attributes, $post->post_author );
-										$this->get_excerpt( $attributes );
-										$this->get_cta( $attributes );
-									?>
-									<div class = "uagb-timeline__arrow"></div>
-								</div>
-							</div>
+					<div class = "<?php echo esc_html( $day_align_class ); ?> uagb-timeline__events-inner-new" >
+						<div class="uagb-timeline__events-inner--content">
+								<?php $this->get_date( $attributes, 'uagb-timeline__date-hide uagb-timeline__inner-date-new' ); ?>
+							<?php ( $attributes['displayPostImage'] ) ? $this->get_image( $attributes ) : ''; ?>
+								<?php
+									$this->get_title( $attributes );
+									$this->get_author( $attributes, $post->post_author );
+									$this->get_excerpt( $attributes );
+									$this->get_cta( $attributes );
+								?>
+								<div class = "uagb-timeline__arrow"></div>
 						</div>
 					</div>
 					<?php if ( $display_inner_date ) { ?>
-						<div class = "uagb-timeline__date-new" >
 						<?php $this->get_date( $attributes, 'uagb-timeline__date-new' ); ?>
-						</div>
 					<?php } ?>
-				</div>
 			</article>
 			<?php
 		}
@@ -641,7 +938,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 		public function get_icon( $attributes ) {
 			?>
 			<div class = "uagb-timeline__marker uagb-timeline__out-view-icon" >
-				<span class = "uagb-timeline__icon-new uagb-timeline__out-view-icon" ><?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?></span>
+				<?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?>
 			</div>
 			<?php
 		}
@@ -660,10 +957,8 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			$target = ( isset( $attributes['linkTarget'] ) && ( true === $attributes['linkTarget'] ) ) ? '_blank' : '_self';
 			do_action( "uagb_single_post_before_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
 			?>
-			<div class='uagb-timeline__image'>
-				<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imageSize'] ); ?>
+				<a class='uagb-timeline__image' href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imageSize'] ); ?>
 				</a>
-			</div>
 			<?php
 			do_action( "uagb_single_post_after_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
 		}
@@ -678,11 +973,15 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 
 			global $post;
 			$post_id = $post->ID;
-			if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
-				?>
-				<div datetime="<?php echo esc_attr( get_the_date( 'c', $post_id ) ); ?>" class="<?php echo esc_html( $classname ); ?>"><?php echo esc_html( get_the_date( $attributes['dateFormat'], $post_id ) ); ?></div>
+			?>
+			<div datetime="<?php echo esc_attr( get_the_date( 'c', $post_id ) ); ?>" class="<?php echo esc_html( $classname ); ?>">
 				<?php
-			}
+				if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
+					echo esc_html( get_the_date( $attributes['dateFormat'], $post_id ) );
+				}
+				?>
+			</div>
+			<?php
 		}
 
 		/**
@@ -697,13 +996,11 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			$tag = $attributes['headingTag'];
 			global $post;
 			?>
-			<div class = "uagb-timeline__heading-text" >
 				<?php do_action( "uagb_single_post_before_title_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 				<<?php echo esc_html( $tag ); ?> class="uagb-timeline__heading" >
-					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="noopener noreferrer"><?php ( '' !== get_the_title( $post->ID ) ) ? the_title() : esc_html_e( 'Untitled', 'ultimate-addons-for-gutenberg' ); ?></a>
+					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="noopener noreferrer"><?php the_title(); ?></a>
 				</<?php echo esc_html( $tag ); ?>>
 				<?php do_action( "uagb_single_post_after_title_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
-			</div>
 			<?php
 		}
 
@@ -720,8 +1017,8 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			$target = ( isset( $attributes['linkTarget'] ) && ( true === $attributes['linkTarget'] ) ) ? '_blank' : '_self';
 			do_action( "uagb_single_post_before_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
 			?>
-			<div class="uagb-timeline__link_parent">
-				<a class="uagb-timeline__link" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel=" noopener noreferrer"><?php echo esc_html( $attributes['readMoreText'] ); ?></a>
+			<div class="uagb-timeline__link_parent wp-block-button">
+				<a class="uagb-timeline__link wp-block-button__link" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel=" noopener noreferrer"><?php echo esc_html( $attributes['readMoreText'] ); ?></a>
 			</div>
 			<?php
 			do_action( "uagb_single_post_after_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
@@ -739,10 +1036,8 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			do_action( "uagb_single_post_before_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
 			if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
 				?>
-			<div class="uagb-timeline__author">
 				<span class="dashicons-admin-users dashicons"></span>
 				<a class="uagb-timeline__author-link" href="<?php echo esc_url( get_author_posts_url( $author ) ); ?>"><?php echo esc_html( get_the_author_meta( 'display_name', $author ) ); ?></a>
-			</div>
 				<?php
 			}
 			do_action( "uagb_single_post_after_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
@@ -759,7 +1054,12 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 				return;
 			}
 
-			$excerpt = wp_trim_words( get_the_excerpt(), $attributes['exerptLength'] );
+			global $post;
+
+			$excerpt_length_fallback = UAGB_Block_Helper::get_fallback_number( $attributes['exerptLength'], 'exerptLength', $attributes['blockName'] );
+
+			$excerpt = UAGB_Helper::uagb_get_excerpt( $post->ID, $post->post_content, $excerpt_length_fallback );
+
 			if ( ! $excerpt ) {
 				$excerpt = null;
 			}
@@ -796,7 +1096,6 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 				$classes[] = 'uagb_timeline__cta-enable';
 			}
 
-			$classes[] = 'uagb-timeline__responsive-' . $attributes['stack'];
 			$classes[] = 'uagb-timeline';
 			$classes[] = 'uagb-timeline__content-wrap';
 
@@ -813,7 +1112,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 		public function get_align_classes( $attributes, $index_val ) {
 
 			$classes   = array();
-			$classes[] = 'uagb-timeline__widget';
+			$classes[] = '';
 			if ( isset( $attributes['timelinAlignment'] ) && '' !== $attributes['timelinAlignment'] ) {
 				if ( 'center' !== $attributes['timelinAlignment'] ) {
 					$classes[] = 'uagb-timeline__' . $attributes['timelinAlignment'];

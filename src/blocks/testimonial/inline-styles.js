@@ -2,13 +2,19 @@
  * Returns Dynamic Generated CSS
  */
 
-import generateCSS from "@Controls/generateCSS"
-import generateCSSUnit from "@Controls/generateCSSUnit"
+import generateCSS from '@Controls/generateCSS';
+import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function TestimonialStyle( props ) {
+function testimonialStyle( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
-		classMigrate,
 		headingAlign,
+		headingAlignTablet,
+		headingAlignMobile,
 		companyColor,
 		descColor,
 		authorColor,
@@ -43,191 +49,469 @@ function TestimonialStyle( props ) {
 		descLineHeightTablet,
 		descLineHeightMobile,
 		descSpace,
+		descSpaceTablet,
+		descSpaceMobile,
 		nameSpace,
-		imgVrPadding,
-		imgHrPadding,
+		nameSpaceTablet,
+		nameSpaceMobile,
 		imageWidth,
+		imageWidthTablet,
+		imageWidthMobile,
 		rowGap,
+		rowGapTablet,
+		rowGapMobile,
 		columnGap,
-		contentPadding,
+		columnGapTablet,
+		columnGapMobile,
+		backgroundType,
 		backgroundColor,
 		backgroundImage,
 		backgroundPosition,
 		backgroundSize,
 		backgroundRepeat,
 		backgroundImageColor,
-		backgroundOpacity,
-		borderStyle,
-		borderWidth ,
-		borderRadius,
-		borderColor,
+		gradientColor1,
+		gradientColor2,
+		gradientLocation1,
+		gradientLocation2,
+		gradientType,
+		gradientAngle,
+		gradientPosition,
 		arrowColor,
 		test_item_count,
 		columns,
 		arrowDots,
-		arrowSize
-	} = props.attributes
+		arrowSize,
 
-	var img_align = "center"
+		imageWidthType,
+		arrowSizeType,
+		rowGapType,
+		columnGapType,
+		descSpaceType,
+		nameSpaceType,
+		gradientValue,
+		descTransform,
+		descDecoration,
+		nameTransform,
+		nameDecoration,
+		companyTransform,
+		companyDecoration,
+		paddingUnit,
+		mobilePaddingUnit,
+		tabletPaddingUnit,
+		paddingTop,
+		paddingBottom,
+		paddingLeft,
+		paddingRight,
+		paddingTopTablet,
+		paddingRightTablet,
+		paddingBottomTablet,
+		paddingLeftTablet,
+		paddingTopMobile,
+		paddingRightMobile,
+		paddingBottomMobile,
+		paddingLeftMobile,
+		imgpaddingTop,
+		imgpaddingRight,
+		imgpaddingBottom,
+		imgpaddingLeft,
+		imgpaddingTopTablet,
+		imgpaddingRightTablet,
+		imgpaddingBottomTablet,
+		imgpaddingLeftTablet,
+		imgpaddingTopMobile,
+		imgpaddingRightMobile,
+		imgpaddingBottomMobile,
+		imgpaddingLeftMobile,
+		imgpaddingUnit,
+		imgmobilePaddingUnit,
+		imgtabletPaddingUnit,
+		nameFontStyle,
+		companyFontStyle,
+		descFontStyle,
+		overallBorderHColor,
 
-	if( headingAlign == "left" ){
-		img_align = "flex-start"
-	}else if( headingAlign == "right" ){
-		img_align = "flex-end"
+		// letter spacing
+		nameLetterSpacing,
+		nameLetterSpacingTablet,
+		nameLetterSpacingMobile,
+		nameLetterSpacingType,
+		descLetterSpacing,
+		descLetterSpacingTablet,
+		descLetterSpacingMobile,
+		descLetterSpacingType,
+		companyLetterSpacing,
+		companyLetterSpacingTablet,
+		companyLetterSpacingMobile,
+		companyLetterSpacingType,
+	} = props.attributes;
+
+	const arrowSizeFallback = getFallbackNumber( arrowSize, 'arrowSize', blockName );
+	const testItemCountFallback = getFallbackNumber( test_item_count, 'test_item_count', blockName );
+	const rowGapFallback = getFallbackNumber( rowGap, 'rowGap', blockName );
+	const nameSpaceFallback = getFallbackNumber( nameSpace, 'nameSpace', blockName );
+	const descSpaceFallback = getFallbackNumber( descSpace, 'descSpace', blockName );
+	const columnGapFallback = getFallbackNumber( columnGap, 'columnGap', blockName );
+	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
+	const imageWidthFallback = getFallbackNumber( imageWidth, 'imageWidth', blockName );
+
+	const columnGapTabletFallback = isNaN( columnGapTablet ) ? columnGapFallback : columnGapTablet;
+	const columnGapMobileFallback = isNaN( columnGapMobile ) ? columnGapTabletFallback : columnGapMobile;
+
+	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' )
+	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' )
+	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' )
+
+	let imgAlign = 'center';
+
+	if ( headingAlign === 'left' ) {
+		imgAlign = 'flex-start';
+	} else if ( headingAlign === 'right' ) {
+		imgAlign = 'flex-end';
 	}
 
-	var position = backgroundPosition.replace( "-", " " )
+	const position = backgroundPosition.replace( '-', ' ' );
 
-	var selectors = {
-		" .uagb-testimonial__wrap": {
-			"padding-left" : generateCSSUnit( ( columnGap/2 ), "px" ),
-			"padding-right" : generateCSSUnit( ( columnGap/2 ), "px" ),
-			"margin-bottom" : generateCSSUnit( rowGap, "px" ),
+	const selectors = {
+		' .uagb-testimonial__wrap': {
+			'margin-bottom': generateCSSUnit( rowGapFallback, rowGapType ),
+			'padding-left': generateCSSUnit( columnGapFallback / 2, columnGapType ),
+			'padding-right': generateCSSUnit( columnGapFallback / 2, columnGapType ),
 		},
-		" .uagb-testimonial__wrap .uagb-tm__image-content": {
-			"padding-left" : generateCSSUnit( imgHrPadding, "px" ),
-			"padding-right" : generateCSSUnit( imgHrPadding, "px" ),
-			"padding-top" : generateCSSUnit( imgVrPadding, "px" ),
-			"padding-bottom" : generateCSSUnit( imgVrPadding, "px" ),
+		' .uagb-testimonial__wrap .uagb-tm__image-content': {
+			'padding-top': generateCSSUnit( imgpaddingTop, imgpaddingUnit ),
+			'padding-right': generateCSSUnit( imgpaddingRight, imgpaddingUnit ),
+			'padding-bottom': generateCSSUnit(
+				imgpaddingBottom,
+				imgpaddingUnit
+			),
+			'padding-left': generateCSSUnit( imgpaddingLeft, imgpaddingUnit ),
 		},
-		" .uagb-tm__image-position-top .uagb-tm__image-content": {
-			"justify-content" : img_align,
+		' .uagb-tm__image-position-top .uagb-tm__image-content': {
+			'justify-content': imgAlign,
 		},
 		// Image
-		" .uagb-tm__image img": {
-			"width": generateCSSUnit( imageWidth, "px" ),
-			"max-width": generateCSSUnit( imageWidth, "px" ),
+		' .uagb-tm__image img': {
+			'width': generateCSSUnit( imageWidthFallback, imageWidthType ),
+			'max-width': generateCSSUnit( imageWidthFallback, imageWidthType ),
 		},
-		" .uagb-tm__content": {
-			"text-align" : headingAlign,
-			"padding" : generateCSSUnit( contentPadding, "px" ),
+		' .uagb-tm__content': {
+			'text-align': headingAlign,
+			'padding-top': generateCSSUnit( paddingTop, paddingUnit ),
+			'padding-bottom': generateCSSUnit( paddingBottom, paddingUnit ),
+			'padding-left': generateCSSUnit( paddingLeft, paddingUnit ),
+			'padding-right': generateCSSUnit( paddingRight, paddingUnit ),
 		},
 		// Prefix Style
-		" .uagb-tm__author-name": {
-			"font-size" : generateCSSUnit( nameFontSize, nameFontSizeType ),
-			"font-family": nameFontFamily,
-			"font-weight": nameFontWeight,
-			"line-height": generateCSSUnit( nameLineHeight, nameLineHeightType ),
-			"color": authorColor,
-			"margin-bottom": generateCSSUnit( nameSpace, "px" ),
+		' .uagb-tm__author-name': {
+			'font-size': generateCSSUnit( nameFontSize, nameFontSizeType ),
+			'font-family': nameFontFamily,
+			'font-weight': nameFontWeight,
+			'font-style': nameFontStyle,
+			'text-decoration': nameDecoration,
+			'text-transform': nameTransform,
+			'line-height': generateCSSUnit(
+				nameLineHeight,
+				nameLineHeightType
+			),
+			'color': authorColor,
+			'margin-bottom': generateCSSUnit( nameSpaceFallback, nameSpaceType ),
+			'letter-spacing': generateCSSUnit( nameLetterSpacing, nameLetterSpacingType ),
 		},
 		// Title Style
-		" .uagb-tm__company": {
-			"font-size" : generateCSSUnit( companyFontSize, companyFontSizeType ),
-			"font-family": companyFontFamily,
-			"font-weight": companyFontWeight,
-			"line-height": generateCSSUnit( companyLineHeight, companyLineHeightType ),
-			"color": companyColor,
+		' .uagb-tm__company': {
+			'font-size': generateCSSUnit(
+				companyFontSize,
+				companyFontSizeType
+			),
+			'font-family': companyFontFamily,
+			'font-weight': companyFontWeight,
+			'font-style': companyFontStyle,
+			'text-decoration': companyDecoration,
+			'text-transform': companyTransform,
+			'line-height': generateCSSUnit(
+				companyLineHeight,
+				companyLineHeightType
+			),
+			'color': companyColor,
+			'letter-spacing': generateCSSUnit( companyLetterSpacing, companyLetterSpacingType ),
 		},
 		// Description Style
-		" .uagb-tm__desc": {
-			"font-size" : generateCSSUnit( descFontSize, descFontSizeType ),
-			"font-family": descFontFamily,
-			"font-weight": descFontWeight,
-			"line-height": generateCSSUnit( descLineHeight, descLineHeightType ),
-			"color": descColor,
-			"margin-bottom": generateCSSUnit( descSpace, "px" ),
+		' .uagb-tm__desc': {
+			'font-size': generateCSSUnit( descFontSize, descFontSizeType ),
+			'font-family': descFontFamily,
+			'font-style': descFontStyle,
+			'text-decoration': descDecoration,
+			'text-transform': descTransform,
+			'font-weight': descFontWeight,
+			'line-height': generateCSSUnit(
+				descLineHeight,
+				descLineHeightType
+			),
+			'color': descColor,
+			'margin-bottom': generateCSSUnit( descSpaceFallback, descSpaceType ),
+			'letter-spacing': generateCSSUnit( descLetterSpacing, descLetterSpacingType ),
 		},
-		" .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content": {
-			"background-color": backgroundColor,
+		' .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content': {
+			'background-color': backgroundColor,
 		},
-		" .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__content": {
-			"background-image": ( backgroundImage ) ? `url(${ backgroundImage.url })` : null,
-			"background-position":position,
-			"background-repeat":backgroundRepeat,
-			"background-size":backgroundSize,
+		' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__content': {
+			'background-image': backgroundImage
+				? `url(${ backgroundImage.url })`
+				: null,
+			'background-position': position,
+			'background-repeat': backgroundRepeat,
+			'background-size': backgroundSize,
 		},
-		" .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay": {
-			"background-color":backgroundImageColor,
-			"opacity":( typeof backgroundOpacity != "undefined" ) ? ( 100 - backgroundOpacity )/100 : 0.5,
+		' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay': {
+			'background-color': backgroundImageColor,
 		},
-		" ul.slick-dots li button:before": {
-			"color" : arrowColor,
+		' ul.slick-dots li button:before': {
+			'color': arrowColor,
 		},
-		" ul.slick-dots li.slick-active button:before": {
-			"color" : arrowColor,
+		' ul.slick-dots li.slick-active button:before': {
+			'color': arrowColor,
 		},
-		" .slick-arrow svg": {
-			"fill" : arrowColor,
-			"height": generateCSSUnit( arrowSize, "px" ),
-			"width": generateCSSUnit( arrowSize, "px" ),
+		' .slick-arrow svg': {
+			'fill': arrowColor,
+			'height': generateCSSUnit( arrowSizeFallback, arrowSizeType ),
+			'width': generateCSSUnit( arrowSizeFallback, arrowSizeType ),
 		},
+		' .uagb-testimonial__wrap .uagb-tm__content': overallBorderCSS,
+		' .uagb-testimonial__wrap .uagb-tm__content:hover': {
+			'border-color': overallBorderHColor,
+		}
+
+	};
+
+	if ( testItemCountFallback === columnsFallback ) {
+		selectors[ '.uagb-slick-carousel' ] = {
+			'padding': '0',
+		};
 	}
 
-	if( test_item_count == columns ) {
-		selectors[".uagb-slick-carousel"] = {
-			"padding": '0',
+	if ( arrowDots === 'dots' ) {
+		selectors[ ' .uagb-slick-carousel.uagb-tm__arrow-outside' ] = {
+			'padding': '0 0 35px 0',
+		};
+	}
+
+	if ( testItemCountFallback === 1 || testItemCountFallback === columnsFallback ) {
+		selectors[ ' .uagb-slick-carousel.uagb-tm__arrow-outside' ] = {
+			'padding': '0',
+		};
+	}
+
+	const mobileSelectors = {
+		' .uagb-tm__image img': {
+			'width': generateCSSUnit( imageWidthMobile, imageWidthType ),
+			'max-width': generateCSSUnit( imageWidthMobile, imageWidthType ),
+		},
+		' .uagb-testimonial__wrap': {
+			'padding-left': generateCSSUnit( columnGapMobileFallback / 2, columnGapType ),
+			'padding-right': generateCSSUnit( columnGapMobileFallback / 2, columnGapType ),
+			'margin-bottom': generateCSSUnit( rowGapMobile, rowGapType ),
+		},
+		' .block-editor-rich-text__editable.uagb-tm__author-name': {
+			'margin-bottom': generateCSSUnit( nameSpaceMobile, nameSpaceType ),
+			'letter-spacing': generateCSSUnit( nameLetterSpacingMobile, nameLetterSpacingType ),
+		},
+		' .uagb-tm__desc': {
+			'margin-bottom': generateCSSUnit( descSpaceMobile, descSpaceType ),
+			'font-size': generateCSSUnit(
+				descFontSizeMobile,
+				descFontSizeType
+			),
+			'line-height': generateCSSUnit(
+				descLineHeightMobile,
+				descLineHeightType
+			),
+			'letter-spacing': generateCSSUnit( descLetterSpacingMobile, descLetterSpacingType ),
+		},
+		' .uagb-testimonial__wrap .uagb-tm__content': overallBorderCSSMobile,
+		' .uagb-testimonial__wrap .uagb-tm__image-content': {
+			'text-align': headingAlignMobile,
+			'padding-top': generateCSSUnit(
+				imgpaddingTopMobile,
+				imgmobilePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				imgpaddingRightMobile,
+				imgmobilePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				imgpaddingBottomMobile,
+				imgmobilePaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				imgpaddingLeftMobile,
+				imgmobilePaddingUnit
+			),
+		},
+		' .uagb-tm__company': {
+			'font-size': generateCSSUnit(
+				companyFontSizeMobile,
+				companyFontSizeType
+			),
+			'line-height': generateCSSUnit(
+				companyLineHeightMobile,
+				companyLineHeightType
+			),
+			'letter-spacing': generateCSSUnit( companyLetterSpacingMobile, companyLetterSpacingType ),
+		},
+		' .uagb-tm__author-name': {
+			'font-size': generateCSSUnit(
+				nameFontSizeMobile,
+				nameFontSizeType
+			),
+			'line-height': generateCSSUnit(
+				nameLineHeightMobile,
+				nameLineHeightType
+			),
+		},
+		' .uagb-tm__content': {
+			'text-align': headingAlignMobile,
+			'padding-top': generateCSSUnit(
+				paddingTopMobile,
+				mobilePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBottomMobile,
+				mobilePaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				paddingLeftMobile,
+				mobilePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingRightMobile,
+				mobilePaddingUnit
+			),
+		},
+	};
+
+	const tabletSelectors = {
+		' .uagb-tm__image img': {
+			'width': generateCSSUnit( imageWidthTablet, imageWidthType ),
+			'max-width': generateCSSUnit( imageWidthTablet, imageWidthType ),
+		},
+		' .block-editor-rich-text__editable.uagb-tm__author-name': {
+			'margin-bottom': generateCSSUnit( nameSpaceTablet, nameSpaceType ),
+			'letter-spacing': generateCSSUnit( nameLetterSpacingTablet, nameLetterSpacingType ),
+		},
+		' .uagb-testimonial__wrap': {
+			'padding-left': generateCSSUnit( columnGapTabletFallback / 2, columnGapType ),
+			'padding-right': generateCSSUnit( columnGapTabletFallback / 2, columnGapType ),
+			'margin-bottom': generateCSSUnit( rowGapTablet, rowGapType ),
+		},
+		' .uagb-testimonial__wrap .uagb-tm__content': overallBorderCSSTablet,
+		' .uagb-testimonial__wrap .uagb-tm__image-content': {
+			'text-align': headingAlignTablet,
+			'padding-top': generateCSSUnit(
+				imgpaddingTopTablet,
+				imgtabletPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				imgpaddingRightTablet,
+				imgtabletPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				imgpaddingBottomTablet,
+				imgtabletPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				imgpaddingLeftTablet,
+				imgtabletPaddingUnit
+			),
+		},
+		' .uagb-tm__content': {
+			'text-align': headingAlignTablet,
+			'padding-top': generateCSSUnit(
+				paddingTopTablet,
+				tabletPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBottomTablet,
+				tabletPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				paddingLeftTablet,
+				tabletPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingRightTablet,
+				tabletPaddingUnit
+			),
+		},
+		' .uagb-tm__desc': {
+			'margin-bottom': generateCSSUnit( descSpaceTablet, descSpaceType ),
+			'font-size': generateCSSUnit(
+				descFontSizeTablet,
+				descFontSizeType
+			),
+			'line-height': generateCSSUnit(
+				descLineHeightTablet,
+				descLineHeightType
+			),
+			'letter-spacing': generateCSSUnit( descLetterSpacingTablet, descLetterSpacingType ),
+		},
+		' .uagb-tm__company': {
+			'font-size': generateCSSUnit(
+				companyFontSizeTablet,
+				companyFontSizeType
+			),
+			'line-height': generateCSSUnit(
+				companyLineHeightTablet,
+				companyLineHeightType
+			),
+			'letter-spacing': generateCSSUnit( companyLetterSpacingTablet, companyLetterSpacingType ),
+		},
+		' .uagb-tm__author-name': {
+			'font-size': generateCSSUnit(
+				nameFontSizeTablet,
+				nameFontSizeType
+			),
+			'line-height': generateCSSUnit(
+				nameLineHeightTablet,
+				nameLineHeightType
+			),
+		},
+	};
+	if ( 'gradient' === backgroundType ) {
+		selectors[ ' .uagb-tm__content' ][ 'background-color' ] = 'transparent';
+
+		if ( gradientValue ) {
+			selectors[ ' .uagb-tm__content' ][
+				'background-image'
+			] = gradientValue;
+		} else if ( 'linear' === gradientType ) {
+			selectors[ ' .uagb-tm__content' ][
+				'background-image'
+			] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+		} else {
+			selectors[ ' .uagb-tm__content' ][
+				'background-image'
+			] = `radial-gradient( at ${ gradientPosition }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
 		}
 	}
+	let stylingCss = '';
+	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
-	if ( borderStyle != "none" ) {
+	stylingCss = generateCSS( selectors, id );
+	stylingCss += generateCSS(
+		tabletSelectors,
+		`${ id }.uagb-editor-preview-mode-tablet`,
+		true,
+		'tablet'
+	);
+	stylingCss += generateCSS(
+		mobileSelectors,
+		`${ id }.uagb-editor-preview-mode-mobile`,
+		true,
+		'mobile'
+	);
 
-		selectors[" .uagb-testimonial__wrap .uagb-tm__content"] = {
-			"border-color": borderColor,
-			"border-style": borderStyle,
-			"border-width": generateCSSUnit( borderWidth, "px" ),
-			"border-radius": generateCSSUnit( borderRadius, "px" ),
-		}
-	}else{
-		selectors[" .uagb-testimonial__wrap .uagb-tm__content"] = {
-			"border-radius": generateCSSUnit( borderRadius, "px" ),
-		}
-	}
-
-	if( arrowDots === "dots"){
-		selectors[" .uagb-slick-carousel.uagb-tm__arrow-outside"] = {
-			"padding" : "0 0 35px 0",
-		}
-	}
-
-	if( test_item_count === 1 || test_item_count === columns ){
-		selectors[" .uagb-slick-carousel.uagb-tm__arrow-outside"] = {
-			"padding" : "0",
-		}
-	}
-
-	var mobile_selectors = {
-		" .uagb-tm__desc": {
-			"font-size" : generateCSSUnit( descFontSizeMobile, descFontSizeType ),
-			"line-height": generateCSSUnit( descLineHeightMobile, descLineHeightType ),
-		},
-		" .uagb-tm__company": {
-			"font-size" : generateCSSUnit( companyFontSizeMobile, companyFontSizeType ),
-			"line-height": generateCSSUnit( companyLineHeightMobile, companyLineHeightType ),
-		},
-		" .uagb-tm__author-name": {
-			"font-size" : generateCSSUnit( nameFontSizeMobile, nameFontSizeType ),
-			"line-height": generateCSSUnit( nameLineHeightMobile, nameLineHeightType ),
-		},
-	}
-
-	var tablet_selectors = {
-		" .uagb-tm__desc": {
-			"font-size" : generateCSSUnit( descFontSizeTablet, descFontSizeType ),
-			"line-height": generateCSSUnit( descLineHeightTablet, descLineHeightType ),
-		},
-		" .uagb-tm__company": {
-			"font-size" : generateCSSUnit( companyFontSizeTablet, companyFontSizeType ),
-			"line-height": generateCSSUnit( companyLineHeightTablet, companyLineHeightType ),
-		},
-		" .uagb-tm__author-name": {
-			"font-size" : generateCSSUnit( nameFontSizeTablet, nameFontSizeType ),
-			"line-height": generateCSSUnit( nameLineHeightTablet, nameLineHeightType ),
-		},
-		" .uagb-tm__content": {
-			"text-align" : "center",
-		},
-	}
-
-	var styling_css = ""
-	var id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`
-
-	styling_css = generateCSS( selectors, id )
-	styling_css += generateCSS( tablet_selectors, `${id}.uagb-editor-preview-mode-tablet`, true, "tablet" )
-	styling_css += generateCSS( mobile_selectors, `${id}.uagb-editor-preview-mode-mobile`, true, "mobile" )
-
-	return styling_css
-
+	return stylingCss;
 }
 
-export default TestimonialStyle
+export default testimonialStyle;

@@ -1,23 +1,23 @@
-const { dateI18n, format } = wp.date
-const { Fragment } = wp.element
-class PostDate extends React.Component {
+import { dateI18n, format } from '@wordpress/date';
+import React from 'react';
+const PostDate = ( props ) => {
+	const { post, attributes, dateClass } = props;
 
-	render() {
+	return (
+		<>
+			<div
+				dateTime={ format( 'c', post.date_gmt ) }
+				className={ dateClass }
+				style={ {
+					color: attributes.dateColor,
+				} }
+			>
+				{ attributes.displayPostDate && post.date_gmt && (
+					dateI18n( attributes.dateFormat, post.date_gmt )
+				) }
+			</div>
+		</>
+	);
+};
 
-		const { post, attributes, dateClass } = this.props
-
-		return (
-			<Fragment>				
-				{ attributes.displayPostDate && post.date_gmt &&
-					<time dateTime={ format( "c", post.date_gmt ) } className={dateClass} style= {{
-						color: attributes.dateColor
-					}}>						
-						{ dateI18n( attributes.dateFormat, post.date_gmt ) }
-					</time>
-				}				
-			</Fragment>
-		)
-	}
-}
-
-export default PostDate
+export default React.memo( PostDate );

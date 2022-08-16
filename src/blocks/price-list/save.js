@@ -3,25 +3,24 @@
  */
 
 // Import block dependencies and components.
-import classnames from "classnames"
+import classnames from 'classnames';
 
-const {	InnerBlocks } = wp.blockEditor
+import { InnerBlocks } from '@wordpress/block-editor';
 
 export default function save( props ) {
-
-	const {
-		block_id,
-		className,
-	} = props.attributes
+	const { block_id, className, columns, tcolumns, mcolumns } = props.attributes;
 
 	return (
-		<div className={ classnames(
+		<div
+			className={ classnames(
 				className,
-				"uagb-rest_menu__outer-wrap",
-				`uagb-block-${block_id}`,					
+				`uagb-block-${ block_id }`,
+				`uagb-rm__desk-column-${columns}`,
+				`uagb-rm__tablet-column-${tcolumns}`,
+				`uagb-rm__mobile-column-${mcolumns}`,
 			) }
-			>				
-		<InnerBlocks.Content/>
+		>
+			<InnerBlocks.Content />
 		</div>
-	)
+	);
 }

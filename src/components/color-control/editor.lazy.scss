@@ -1,0 +1,90 @@
+@import "../../styles/variables";
+
+.uagb-advanced-color-settings-container {
+	display: flex;
+	align-items: center;
+
+	.uagb-beside-color-click {
+		display: flex;
+		align-items: center;
+	}
+
+	.uagb-color-icon-indicate {
+		height: auto;
+		position: relative;
+		transform: scale(1);
+		transition: transform 0.1s ease;
+		border-radius: 50%;
+		padding: 0;
+	}
+
+	.uagb-has-alpha {
+		background-image:
+			linear-gradient(45deg, #ddd 25%, transparent 0),
+			linear-gradient(-45deg, #ddd 25%, transparent 0),
+			linear-gradient(45deg, transparent 75%, #ddd 0),
+			linear-gradient(-45deg, transparent 75%, #ddd 0);
+		background-size: 10px 10px;
+		background-position: 0 0, 0 5px, 5px -5px, -5px 0;
+	}
+
+	.uagb-beside-color-label {
+		flex-grow: 1;
+		margin: 0;
+	}
+
+	.uagb-color-icon-indicate
+	.component-color-indicator.uagb-advanced-color-indicate {
+		width: $spectra-control-circle-indicator;
+		height: $spectra-control-circle-indicator;
+		border-radius: 50%;
+		margin: 0;
+	}
+
+	.uagb-advanced-color-indicate.uag-global-indicator::before {
+		content: "\f11f";
+		font-family: dashicons; // stylelint-disable-line font-family-no-missing-generic-family-keyword
+		position: absolute;
+		font-size: 16px;
+		top: 6px;
+		left: 7px;
+		// Suggested Formula for Indicator Icons...
+		// font-size: ($spectra-control-circle-indicator / 1.75);
+		// top: (($spectra-control-circle-indicator - ($spectra-control-circle-indicator / 1.75)) / 2);
+		// left: (($spectra-control-circle-indicator - ($spectra-control-circle-indicator / 1.75)) / 2);
+	}
+
+	.uag-global-icon-black::before {
+		color: #000;
+	}
+
+	.uag-global-icon-white::before {
+		color: #fff;
+	}
+
+}
+
+.uagb-popover-color {
+
+	.components-popover__content {
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+
+	.components-circular-option-picker {
+		padding: 2px 0 10px 5px;
+
+		.components-circular-option-picker__swatches {
+			margin-right: 0;
+			text-align: left;
+			padding-left: 10px;
+		}
+	}
+
+	.uagb-clear-btn-inside-picker {
+		margin: 5px 20px 20px 15px;
+		padding: 0 8px;
+		border: 1px solid #ccc;
+		box-shadow: none;
+	}
+}

@@ -1,24 +1,31 @@
-
 /**
  * BLOCK: UAGB Form - Name Attributes
  */
- import { __ } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 const attributes = {
-    block_id: {
-		type: "string"
+	isPreview: {
+		type: 'boolean',
+		default: false,
 	},
-	nameRequired : {
-        type: "boolean",
-        default: false
-    },
-    name: {
-        type: "string",
-        default:__( "Name" , 'ultimate-addons-for-gutenberg')
-    },
-    placeholder: {
-        type: "string",
-        default: __( "John Doe" , 'ultimate-addons-for-gutenberg' )
-    },
-}
-export default attributes
+	block_id: {
+		type: 'string',
+	},
+	nameRequired: {
+		type: 'boolean',
+		default: false,
+	},
+	name: {
+		type: 'string',
+		default: __( 'Name', 'ultimate-addons-for-gutenberg' ),
+	},
+	placeholder: {
+		type: 'string',
+		default: __( 'John Doe', 'ultimate-addons-for-gutenberg' ),
+	},
+	autocomplete: {
+		type: 'string',
+		default: 'name',
+	}
+};
+export default attributes;

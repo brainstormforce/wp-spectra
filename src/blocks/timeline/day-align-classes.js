@@ -2,25 +2,30 @@
  * Returns Dynamic Generated Classes
  */
 
-function DayAlignClass( attributes, index_val ) {
+function DayAlignClass( attributes, index_val, deviceType ) {
+	let dayAlignClass = '';
+	let device = deviceType;
 
-	let day_align_class = ""
+	// For desktop, attribute name does not have `desktop` suffix to support backward compatibility. 
+	if( 'Desktop' === deviceType ) {
+		device = '';
+	}
 
-	if( "left" == attributes.timelinAlignment ){
-		day_align_class = "uagb-timeline__day-new uagb-timeline__day-left"
-	}else if( "right" == attributes.timelinAlignment ){
-		day_align_class = "uagb-timeline__day-new uagb-timeline__day-right"
-	}else if( "center" == attributes.timelinAlignment ){
-		if( index_val % 2 == "0" ){
-			day_align_class = "uagb-timeline__day-new uagb-timeline__day-right"
-		}else{
-			day_align_class = "uagb-timeline__day-new uagb-timeline__day-left"
+	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + device ] ? attributes['timelinAlignment' + device ] :  attributes.timelinAlignment;
+
+	if ( 'left' === timelinAlignment ) {
+		dayAlignClass = 'uagb-timeline__day-new uagb-timeline__day-left';
+	} else if ( 'right' === timelinAlignment ) {
+		dayAlignClass = 'uagb-timeline__day-new uagb-timeline__day-right';
+	} else if ( 'center' === timelinAlignment ) {
+		if ( index_val % 2 === 0 ) { 
+			dayAlignClass = 'uagb-timeline__day-new uagb-timeline__day-right';
+		} else {
+			dayAlignClass = 'uagb-timeline__day-new uagb-timeline__day-left';
 		}
 	}
 
-	return [
-		day_align_class
-	]
+	return [ dayAlignClass ];
 }
 
-export default DayAlignClass
+export default DayAlignClass;

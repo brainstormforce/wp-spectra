@@ -1,208 +1,437 @@
 /**
  * WordPress dependencies
  */
- import { __ } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
+import { Button, Dashicon } from '@wordpress/components';
+import { useState } from '@wordpress/element';
 
 /**
  * Internal dependencies
  */
-import FontFamilyControl from "./font-typography"
-import RangeTypographyControl from "./range-typography"
-import TypographyStyles from "./inline-styles"
-import "./editor.scss"
-
-const {
-	Button,
-	Dashicon
-} = wp.components
-
-
-// Extend component
-const { Component, Fragment } = wp.element
+import UAGSelectControl from '@Components/select-control';
+import FontFamilyControl from './font-typography';
+import RangeTypographyControl from './range-typography';
+import TypographyStyles from './inline-styles';
+import styles from './editor.lazy.scss';
+import React, { useLayoutEffect } from 'react';
+import { select } from '@wordpress/data'
+import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
+import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
 
 // Export for ease of importing in individual blocks.
-export {
-	TypographyStyles,
-}
+export { TypographyStyles };
 
-class TypographyControl extends Component {
+const TypographyControl = ( props ) => {
 
-	constructor() {
-		super( ...arguments )
-		this.onAdvancedControlClick  = this.onAdvancedControlClick.bind( this )
-		this.onAdvancedControlReset  = this.onAdvancedControlReset.bind( this )
-	}
+	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
 
-	onAdvancedControlClick() {
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect( () => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, [] );
 
-		let control = true
-		let label = __( "Hide Advanced",'ultimate-addons-for-gutenberg' )
+	useLayoutEffect( () => {
+		window.addEventListener( 'click', function( e ){
+			const popupButton = document.querySelector( `.active.popup-${props?.attributes?.block_id} .spectra-control-popup__options--action-button` );
+			const popupWrap = document.querySelector( `.active.popup-${props?.attributes?.block_id} .spectra-control-popup` );
 
-		if( this.state !== null && this.state.showAdvancedControls === true ) {
-			control = false
-			label = __( "Advanced",'ultimate-addons-for-gutenberg' )
-		}
+			if ( popupButton && ! popupButton?.contains( e.target ) && popupWrap && ! popupWrap?.contains( e.target ) && ! e.target?.parentElement?.parentElement?.classList?.contains( 'uag-font-family-select__menu' ) && ! e.target?.classList?.contains( 'uag-responsive-common-button' ) && ! e.target?.closest( '.uag-responsive-common-button' ) && ! e.target?.parentElement?.closest( '.uagb-reset' ) ) {
+				toggleAdvancedControls( false )
 
-		this.setState(
-			{
-				showAdvancedControls: control,
-				showAdvancedControlsLabel: label
-			}
-		)
-	}
+				const blockName = getSelectedBlock()?.name;
+				const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
 
-	onAdvancedControlReset() {
-
-		const { setAttributes } = this.props
-
-		// Reset Font family to default.
-		setAttributes( { [ this.props.fontFamily.label ]: "" } )
-		setAttributes( { [ this.props.fontWeight.label ]: "" } )
-		setAttributes( { [ this.props.fontSubset.label ]: "" } )
-
-		// Reset Font Size to default.
-		setAttributes( { [ this.props.fontSize.label ]: "" } )
-		setAttributes( { [ this.props.fontSizeType.label ]: "px" } )
-		setAttributes( { [ this.props.fontSizeMobile.label ]: "" } )
-		setAttributes( { [ this.props.fontSizeTablet.label ]: "" } )
-
-		// Reset Line Height to default.
-		setAttributes( { [ this.props.lineHeight.label ]: "" } )
-		setAttributes( { [ this.props.lineHeightType.label ]: "em" } )
-		setAttributes( { [ this.props.lineHeightMobile.label ]: "" } )
-		setAttributes( { [ this.props.lineHeightTablet.label ]: "" } )
-
-		// Reset Google Fonts to default.
-		setAttributes( { [ this.props.loadGoogleFonts.label ]: false } )
-
-	}
-
-	render() {
-
-		let fontSize
-		let fontWeight
-		let fontFamily
-		let fontAdvancedControls
-		let fontTypoAdvancedControls
-		let showAdvancedFontControls
-		let resetFontAdvancedControls
-
-		const {
-			disableFontFamily,
-			disableFontSize,
-			disableLineHeight,
-			disableAdvancedOptions = false
-		} = this.props
-
-		if( true !== disableFontFamily ) {
-			fontFamily = (
-				<FontFamilyControl
-					{ ...this.props }
-				/>
-			)
-		}
-
-		if( true !== disableLineHeight ) {
-			fontWeight = (
-				<RangeTypographyControl
-					type = { this.props.lineHeightType }
-					typeLabel = { this.props.lineHeightType.label }
-					sizeMobile = { this.props.lineHeightMobile }
-					sizeMobileLabel = { this.props.lineHeightMobile.label }
-					sizeTablet = { this.props.lineHeightTablet }
-					sizeTabletLabel = { this.props.lineHeightTablet.label }
-					size = { this.props.lineHeight }
-					sizeLabel = { this.props.lineHeight.label }
-					sizeMobileText = { __( "Line Height",'ultimate-addons-for-gutenberg' ) }
-					sizeTabletText = { __( "Line Height",'ultimate-addons-for-gutenberg' ) }
-					sizeText = { __( "Line Height",'ultimate-addons-for-gutenberg' ) }
-					steps = { 0.1 }
-					{ ...this.props }
-				/>
-			)
-		}
-
-		if( true !== disableFontSize ) {
-			fontSize = (
-				<RangeTypographyControl
-					type = { this.props.fontSizeType }
-					typeLabel = { this.props.fontSizeType.label }
-					sizeMobile = { this.props.fontSizeMobile }
-					sizeMobileLabel = { this.props.fontSizeMobile.label }
-					sizeTablet = { this.props.fontSizeTablet }
-					sizeTabletLabel = { this.props.fontSizeTablet.label }
-					size = { this.props.fontSize }
-					sizeLabel = { this.props.fontSize.label }
-					sizeMobileText = { ( ! this.props.fontSizeLabel ) ? __( "Font Size",'ultimate-addons-for-gutenberg' ) : this.props.fontSizeLabel }
-					sizeTabletText = { ( ! this.props.fontSizeLabel ) ? __( "Font Size",'ultimate-addons-for-gutenberg' ) : this.props.fontSizeLabel }
-					sizeText = { ( ! this.props.fontSizeLabel ) ? __( "Font Size",'ultimate-addons-for-gutenberg' ) : this.props.fontSizeLabel }
-					steps = { 0.1 }
-					{ ...this.props }
-				/>
-			)
-		}
-
-		if( true !== disableFontFamily && true !== disableFontSize ) {
-			fontAdvancedControls =  (
-				<Button
-					className="uagb-size-btn uagb-typography-control-btn"
-					isSmall
-					aria-pressed={ ( this.state !== null ) }
-					onClick={ this.onAdvancedControlClick }
-				><Dashicon icon="admin-tools" /></Button>
-			)
-
-			resetFontAdvancedControls =  (
-				<Button
-					className="uagb-size-btn uagb-typography-reset-btn"
-					isSmall
-					aria-pressed={ ( this.state !== null ) }
-					onClick={ this.onAdvancedControlReset }
-				><Dashicon icon="image-rotate" /></Button>
-			)
-		} else {
-			showAdvancedFontControls = (
-				<Fragment>
-					{ fontSize }
-					{ fontFamily }
-					{ fontWeight }
-				</Fragment>
-			)
-		}
-
-
-		if( this.state !== null && this.state.showAdvancedControls === true ) {
-
-			showAdvancedFontControls = (
-				<div className="uagb-typography-advanced">
-					{ fontSize }
-					{ fontFamily }
-					{ fontWeight }
-				</div>
-			)
-		}
-
-		if( true !== disableFontFamily && true !== disableFontSize ) {
-			fontTypoAdvancedControls =  (
-				<div className="uag-typography-option-actions">
-					<span>{ this.props.label }</span>
-					{ fontAdvancedControls }
-					{ resetFontAdvancedControls }
-				</div>
-			)
-		}
-
-		return (
-			<div className="uag-typography-options">
-				{ !disableAdvancedOptions &&
-					<Fragment>
-						{ fontTypoAdvancedControls }
-						{ showAdvancedFontControls }
-					</Fragment>
+				const data = {
+					...uagSettingState,
+					[blockName] : {
+						...uagSettingState?.[blockName],
+						selectedSetting : false
+					}
 				}
-			</div>
-		)
-	}
-}
 
-export default TypographyControl
+				const uagLocalStorage = getUAGEditorStateLocalStorage();
+				if ( uagLocalStorage ) {
+					uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
+				}
+			}
+		} );
+	}, [] );
+
+	let lineHeight;
+	let fontFamily;
+	let fontAdvancedControls;
+	let fontTypoAdvancedControls;
+	let showAdvancedFontControls;
+	let transform;
+	let decoration;
+	let letterSpacing;
+	const activeClass = showAdvancedControls ? 'active' : '';
+
+	const {
+		disableFontFamily,
+		disableFontSize,
+		disableLineHeight,
+		disableTransform,
+		disableDecoration,
+		disableAdvancedOptions = false,
+	} = props;
+
+	if ( true !== disableFontFamily ) {
+		fontFamily = <FontFamilyControl { ...props } />;
+	}
+	const lineHeightStepsVal = ( 'em' === props.lineHeightType?.value ? 0.1 : 1 ); // fractional value when unit is em.
+	const letterSpacingStepsVal = ( 'em' === props.letterSpacingType?.value ? 0.1 : 1 ); // fractional value when unit is em.
+
+	// Array of all the current Typography Control's Labels.
+	const attributeNames = [];
+
+	if ( ! disableFontFamily ) {
+		attributeNames.push(
+			props.fontFamily.label,
+			props.fontWeight.label,
+			props.fontStyle.label,
+		);
+	}
+
+	if ( ! disableFontSize ) {
+		attributeNames.push(
+			props.fontSizeType.label,
+			props.fontSize.label,
+			props.fontSizeMobile.label,
+			props.fontSizeTablet.label,
+		);
+	}
+
+	if ( ! disableLineHeight ) {
+		attributeNames.push(
+			props.lineHeightType.label,
+			props.lineHeight.label,
+			props.lineHeightMobile.label,
+			props.lineHeightTablet.label,
+		);
+	}
+
+	if ( ! disableTransform ) {
+		attributeNames.push(
+			props.transform.label,
+		);
+	}
+
+	if ( ! disableDecoration ) {
+		attributeNames.push(
+			props.decoration.label,
+		);
+	}
+
+	if ( props.letterSpacing ) {
+		attributeNames.push(
+			props.letterSpacing.label,
+			props.letterSpacingTablet.label,
+			props.letterSpacingMobile.label,
+			props.letterSpacingType.label,
+		);
+	}
+
+	const { getSelectedBlock } = select( 'core/block-editor' );
+
+	// Function to get the Block's default Typography Values.
+	const getBlockTypographyValue = () => {
+		const selectedBlockName = getSelectedBlock()?.name.replace( 'uagb/', '' );
+		let defaultValues = false;
+		if ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ] ) {
+			attributeNames.forEach( ( attributeName ) => {
+				if ( attributeName ) {
+					const blockDefaultAttributeValue = ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ][ attributeName ]?.default ) ? blocksAttributes[ selectedBlockName ][ attributeName ]?.default : '';
+					defaultValues = {
+						...defaultValues,
+						[ attributeName ] : blockDefaultAttributeValue,
+					}
+				}
+			} );
+		}
+		return defaultValues;
+	}
+
+	// Function to check if any Typography Setting has changed.
+	const getUpdateState = () => {
+		const defaultValues = getBlockTypographyValue();
+		const selectedBlockAttributes = getSelectedBlock()?.attributes;
+		let isTypographyUpdated = false;
+		attributeNames.forEach( ( attributeName ) => {
+			if ( selectedBlockAttributes?.[ attributeName ] && ( selectedBlockAttributes?.[ attributeName ] !== defaultValues?.[ attributeName ] ) ) {
+				isTypographyUpdated = true;
+			}
+		} );
+		return isTypographyUpdated;
+	};
+
+	// Flag to check if this control has been updated or not.
+	const isTypographyUpdated = getUpdateState();
+
+	if ( true !== disableLineHeight ) {
+		lineHeight = (
+			<RangeTypographyControl
+				type={ props.lineHeightType }
+				typeLabel={ props.lineHeightType.label }
+				sizeMobile={ props.lineHeightMobile }
+				sizeMobileLabel={ props.lineHeightMobile.label }
+				sizeTablet={ props.lineHeightTablet }
+				sizeTabletLabel={ props.lineHeightTablet.label }
+				size={ props.lineHeight }
+				sizeLabel={ props.lineHeight.label }
+				sizeMobileText={ __(
+					'Line Height',
+					'ultimate-addons-for-gutenberg'
+				) }
+				sizeTabletText={ __(
+					'Line Height',
+					'ultimate-addons-for-gutenberg'
+				) }
+				sizeText={ __(
+					'Line Height',
+					'ultimate-addons-for-gutenberg'
+				) }
+				step={ lineHeightStepsVal }
+				{ ...props }
+			/>
+		);
+	}
+
+	if ( props.letterSpacing ) {
+		letterSpacing = (
+			<RangeTypographyControl
+				type={ props.letterSpacingType }
+				typeLabel={ props.letterSpacingType.label }
+				sizeMobile={ props.letterSpacingMobile }
+				sizeMobileLabel={ props.letterSpacingMobile.label }
+				sizeTablet={ props.letterSpacingTablet }
+				sizeTabletLabel={ props.letterSpacingTablet.label }
+				size={ props.letterSpacing }
+				sizeLabel={ props.letterSpacing.label }
+				sizeMobileText={ __(
+					'Letter Spacing',
+					'ultimate-addons-for-gutenberg'
+				) }
+				sizeTabletText={ __(
+					'Letter Spacing',
+					'ultimate-addons-for-gutenberg'
+				) }
+				sizeText={ __(
+					'Letter Spacing',
+					'ultimate-addons-for-gutenberg'
+				) }
+				step={ letterSpacingStepsVal }
+				{ ...props }
+			/>
+		);
+	}
+
+	if ( ! disableTransform && props.transform ) {
+		transform = (
+			<UAGSelectControl
+				label={ __(
+					'Transform',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					value: props.transform.value,
+					label: props.transform.label,
+				} }
+				setAttributes={ props.setAttributes }
+				options={ [
+					{
+						value: '',
+						label: __(
+							'Default',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'normal',
+						label: __(
+							'Normal',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'capitalize',
+						label: __(
+							'Capitalize',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'uppercase',
+						label: __(
+							'Uppercase',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'lowercase',
+						label: __(
+							'Lowercase',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+				] }
+			/>
+		);
+	}
+	if ( ! disableDecoration && props.decoration ) {
+		decoration = (
+			<div className="uag-typography-decoration">
+				<UAGSelectControl
+					label={ __(
+						'Decoration',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: props.decoration.value,
+						label: props.decoration.label,
+					} }
+					setAttributes={ props.setAttributes }
+					options={ [
+						{
+							value: '',
+							label: __(
+								'Default',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'none',
+							label: __(
+								'None',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'underline',
+							label: __(
+								'Underline',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'overline',
+							label: __(
+								'Overline',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'line-through',
+							label: __(
+								'Line Through',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+				/>
+			</div>
+		);
+	}
+	if ( true !== disableFontFamily && true !== disableFontSize ) {
+		fontAdvancedControls = (
+			<Button
+				className="uag-typography-button spectra-control-popup__options--action-button"
+				aria-pressed={ showAdvancedControls }
+				onClick={ () => {
+
+						const allPopups = document.querySelectorAll( '.spectra-control-popup__options' );
+						if ( allPopups && 0 < allPopups.length ) {
+							for ( let i = 0; i < allPopups.length; i++ ) {
+								const popupButton = allPopups[i]?.querySelector( '.spectra-control-popup__options.active .spectra-control-popup__options--action-button' );
+								popupButton?.click();
+							}
+						}
+						toggleAdvancedControls( ! showAdvancedControls )
+
+						const blockName = getSelectedBlock()?.name;
+						const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+						let data = {
+							...uagSettingState,
+							[blockName] : {
+								...uagSettingState?.[blockName],
+								selectedSetting : '.uag-typography-options'
+							}
+						}
+
+						if ( showAdvancedControls ) {
+							data = {
+								...uagSettingState,
+								[blockName] : {
+									...uagSettingState?.[blockName],
+									selectedSetting : false
+								}
+							}
+						}
+
+						const uagLocalStorage = getUAGEditorStateLocalStorage();
+						if ( uagLocalStorage ) {
+							uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
+						}
+
+					}
+				}
+			>
+				<Dashicon icon="edit" />
+			</Button>
+		);
+	} else {
+		showAdvancedFontControls = (
+			<>
+				{ fontFamily }
+				{ transform }
+				{ decoration }
+				{ lineHeight }
+				{ letterSpacing }
+			</>
+		);
+	}
+
+	if ( showAdvancedControls === true ) {
+		showAdvancedFontControls = (
+			<div className="uagb-typography-advanced spectra-control-popup">
+				{ fontFamily }
+				{ transform }
+				{ decoration }
+				{ lineHeight }
+				{ letterSpacing }
+			</div>
+		);
+	}
+
+	if ( true !== disableFontFamily && true !== disableFontSize ) {
+		fontTypoAdvancedControls = (
+			<div className="spectra-control-popup__options--action-wrapper">
+				<span className="uag-control-label">
+					{ props.label }
+					{ isTypographyUpdated && (
+						<div className="spectra__change-indicator--dot-right"/>
+					) }
+				</span>
+				{ fontAdvancedControls }
+			</div>
+		);
+	}
+
+	return (
+		<div
+			className={ `components-base-control uag-typography-options spectra-control-popup__options popup-${props?.attributes?.block_id} ${ activeClass }` }
+		>
+			{ ! disableAdvancedOptions && (
+				<>
+					{ fontTypoAdvancedControls }
+					{ showAdvancedFontControls }
+				</>
+			) }
+		</div>
+	);
+};
+
+export default TypographyControl;

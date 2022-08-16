@@ -3,67 +3,103 @@
  */
 
 // Import block dependencies and components.
-import classnames from "classnames"
-import Title from "./components/Title"
-import Price from "./components/Price"
-import Description from "./components/Description"
-import PositionClasses from "../price-list/classes"
-import RestMenuImage from "./components/RestMenuImage"
-
-const { Fragment } = wp.element
+import classnames from 'classnames';
+import Title from './components/Title';
+import Price from './components/Price';
+import Description from './components/Description';
+import RestMenuImage from './components/RestMenuImage';
 
 export default function save( props ) {
-
-	const {
-		block_id,
-		className,
-		imagePosition,
-	} = props.attributes
+	const { imagePosition, headingAlign, imgAlign, showImage } = props.attributes;
 
 	return (
-		<Fragment>
-			
-			<div className={ classnames(	
-				"uagb-rest_menu__wrap",				
-					"uagb-rest_menu_repeater",
-					...PositionClasses( props.attributes )
-				) }
-				>
-			<div className={ classnames(
-					className,
-					"uagb-rest_menu__outer-wrap",
-					`uagb-block-${block_id}`
-				) }
-				>
-						<div className = { classnames(
-							...PositionClasses( props.attributes ),
-						) } >
-						<div className = "uagb-rm__content">
-							{ (imagePosition == "top" || imagePosition == "left" ) && <RestMenuImage  attributes={props.attributes}  /> }
-							<div className ="uagb-rm__text-wrap">
-								{
-									<Fragment>
-										<div className = "uagb-rm-details" >
-											<div className = "uagb-rm__title-wrap" >
-												<Title attributes={props.attributes} setAttributes = "not_set" props = { props } />
-												<div className = "uagb-rest-menu-text-wrap" >
-													<Description attributes={props.attributes} setAttributes = "not_set" props = { props }  />
-												</div>
-											</div>
-											<div className = "uagb-rm__price-wrap" >
-												<Price attributes={props.attributes} setAttributes = "not_set" props = { props }  />
-											</div>
-										</div>
-									</Fragment>
-								}
-							</div>
-							{ ( imagePosition == "right" ) && <RestMenuImage  attributes={props.attributes}  /> }
+		<div
+			className={ classnames(
+				'uagb-rest_menu__wrap'
+			) }
+		>
+			{ imgAlign === 'top' && (
+				<>
+					{ showImage &&
+						<RestMenuImage attributes={ props.attributes } />
+					}
+					<div className="uagb-rm__content">
+						{ headingAlign === 'right' && (
+							<Price
+								attributes={ props.attributes }
+								setAttributes= "not_set"
+								props={ props }
+							/>	
+						)}
+						<div className="uagb-rm-details">	
+							<Title
+								attributes={ props.attributes }
+								setAttributes= "not_set"
+								props={ props }
+							/>
+							<Description
+								attributes={ props.attributes }
+								setAttributes= "not_set"
+								props={ props }
+							/>
+							{ headingAlign === 'center' && (
+							<Price
+								attributes={ props.attributes }
+								setAttributes= "not_set"
+								props={ props }
+							/>	
+						)}
 						</div>
-						<div className="uagb-rm__separator-parent"><div className="uagb-rm__separator"></div></div>
+						{ headingAlign === 'left' && (
+							<Price
+								attributes={ props.attributes }
+								setAttributes= "not_set"
+								props={ props }
+							/>	
+						)}
 					</div>
+					<div className="uagb-rm__separator"></div>
+				</>
+			)}
+			{ imgAlign === 'side' && (
+				<>
+					<div className="uagb-rm__content">
+						{ imagePosition === 'left' && showImage && (
+							<RestMenuImage attributes={ props.attributes } />
+						)}
+						{ imagePosition === 'right' && (
+							<Price
+								attributes={ props.attributes }
+								setAttributes= "not_set"
+								props={ props }
+							/>	
+						)}
+						<div className="uagb-rm-details">	
+							<Title
+								attributes={ props.attributes }
+								setAttributes= "not_set"
+								props={ props }
+							/>
+							<Description
+								attributes={ props.attributes }
+								setAttributes= "not_set"
+								props={ props }
+							/>
+						</div>
+						{ imagePosition === 'left' && (
+							<Price
+								attributes={ props.attributes }
+								setAttributes= "not_set"
+								props={ props }
+							/>	
+						)}
+						{ imagePosition === 'right' && showImage && (
+							<RestMenuImage attributes={ props.attributes } />
+						)}
 					</div>
-				
-			</div>
-		</Fragment>
-	)
+					<div className="uagb-rm__separator"></div>
+				</>
+			)}
+		</div>
+	);
 }
