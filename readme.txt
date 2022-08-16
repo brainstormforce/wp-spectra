@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.0
-Stable tag: 2.0.0-beta.3
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -176,35 +176,70 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 == Changelog ==
 
-= 2.0.0-beta.3 - THURSDAY, 14TH JULY 2022 =
-* New: Block Presets - Introducing Preset for most used block.
-* New: Buttons - Introducing new button block with multiple new feature.
-* New: Container - Introducing container block with advanced flex property feature.
-* New: Copy Paste Styles - Added Copy/Paste styling feature for Core Gutenberg blocks & Spectra blocks.
-* New: Image - Introducing image block with advanced feature.
-* New: Presets - Added Preset for Box-Shadow, CTA button and Inner container.
+= 2.0.0 - TUESDAY, 16TH AUGUST 2022 =
+* New: Redesigned UI/UX controls of Spectra blocks.
+* New: Introduced new, beautiful & fast Spectra admin dashboard powered by React.
 * New: Introducing Coming Soon mode feature.
 * New: Introducing Allow only Selected fonts, Load fonts locally & Preload fonts feature.
 * New: Introducing new border control which allow user to set border to Top/Bottom/Left/Right in all direction.
-* Improvement: Heading - Renamed Advanced Heading block to Heading and added multiple new feature.
-* Improvement: Template - Enable Templates Button on admin dashboard.
+* New: Introducing Automatic Block Recovery.
+* New: Introducing Font Awesome 6 Support.
+* New: Introducing Collapse Panels.
+* New: Introducing Blocks Editor Spacing.
+* New: Block Presets - Introducing Preset for most used block.
+* New: Control Presets - Added Preset for Box-Shadow, Button and Inner container.
+* New: Copy Paste Styles - Added Copy/Paste styling feature for Core Gutenberg blocks & Spectra blocks.
+* New: Added global Container Padding option on admin dashboard.
+* New: Added global default Content Width for container on admin dashboard.
+* New: Added support for block based widget editor.
+* New: Container - Introducing container block with advanced flex property feature.
+* New: How-To - Separate child "Step" for how-to instead of info-box.
+* New: Image - Introducing image block with advanced feature.
+* New: Z-index extension for Spectra block.
+* Global Improvement: Responsive setting wherever needed.
+* Global Improvement: Refactored the Spectra blocks code & improved editor performance drastically.
+* Global Improvement: Typography control - Added text-transform, text-decoration, letter-spacing and font-style options.
+* Global Improvement: 4 way border control.
+* Global Improvement: 4 way spacing control for padding/margin.
+* Improvement: Buttons - Multiple Typography option for Text in parent.
+* Improvement: Buttons-child - Enable/disable Icon option.
+* Improvement: Buttons-child - Add "nofollow" to link option.
+* Improvement: Buttons-child - Remove Text option.
+* Improvement: Buttons-child - Separate Typography option for child.
+* Improvement: Buttons-child - Background transparent/color/gradient option.
+* Improvement: Buttons-child - Box-Shadow option.
+* Improvement: Blockquote - Moved Twitter Username field inside Tweeter Icon Tab.
+* Improvement: Call To Action - Enable Additional Button option.
 * Improvement: Display Condition & Responsive Visibility – Enable/Disable option for Spectra extensions on admin dashboard.
-* Improvement: Typography control - Added letter-spacing options.
-* Improvement: Post block - Added Taxonomy Styling option, show taxonomy above title option and layout normal/highlighted.
-* Improvement: Removed jQuery dependency from Spectra blocks.
 * Improvement: Forms - Global reCAPTCHA setting option on admin dashboard.
+* Improvement: Heading - Hide option for heading text and description.
+* Improvement: Heading - Text shadow, gradient color option for Title
+* Improvement: Heading - Color option when link added to heading text.
+* Improvement: Heading - Highlight heading text feature.
+* Improvement: Heading - Background color option classic and gradient.
+* Improvement: Info-box - Enable/disable Icon/Image option.
+* Improvement: Info-box - Allow P tag in Title.
+* Improvement: Info-box - Icon option View( Stacked/Framed ), Shape( Circle/Square ).
+* Improvement: Icon List - Icon Position before/after.
+* Improvement: Lotti - Moved File Source option in block setting.
+* Improvement: Marketing Button - Show Description toggle option.
+* Improvement: Post Layout - Offset Starting Post option.
+* Improvement: Post Layout - Show Meta Icon option.
+* Improvement: Post Layout - Overall Border option.
+* Improvement: Post Layout - Overall Box shadow option.
+* Improvement: Post Layout - Added Taxonomy Styling option, show taxonomy above title option and layout normal/highlighted.
+* Improvement: Removed jQuery dependency from Spectra blocks.
+* Improvement: Social Share Parent block Color and background color option.
+* Improvement: Star Rating - Enable Title option.
+* Improvement: Star Rating - Star Position option.
+* Improvement: Team - Title Span/Div tag support.
+* Improvement: Table of content - Added Marker View Bullet/Number.
+* Improvement: Table of content - Added Title below Separator Style.
+* Improvement: Template - Enable Templates Button on admin dashboard.
 * Fix: Multiple issues in multiple blocks.
-* Deprecated: Advanced Columns, Section, WP-Search, Contact Form 7 Designer and Gravity Form Designer block.
-
-= 2.0.0-beta.1 - THURSDAY, 30TH SEPTEMBER 2021 =
-* New: Redesigned UI/UX controls of UAG blocks.
-* New: Introduced new, beautiful & fast UAG admin dashboard powered by React.
-* Improvement: Display Condition – an UAG extensions will be enabled for Core Gutenberg blocks & UAG blocks by default, Also added a filter to enable UAG extension for third-party blocks.
-* Improvement: Refactored the UAG blocks' code & improved editor performance drastically.
-* Improvement: Typography control - Added text-transform, text-decoration and font-style options.
-* Improvement: Team Block - Span and Div tag support for Title.
-* Fix: Posts - Excerpt Layout Strips Shortcodes on Frontend.
-* Fix: Blockquote - Tweet content not shown in tweet box when double and single quotes are used.
+* Deprecated: Advanced Columns, Section, WP-Search, Post Masonry, Contact Form 7 Designer and Gravity Form Designer block.
+* Deprecated: Removed Spectra extention i.e responsive condition,display condition from core block.
+* Deprecated: Table of content - Removed Scroll Animation Delay.
 
 = 1.25.6 - TUESDAY, 31ST MAY 2022 =
 * Improvement: Updated Gutenberg Templates Library.
@@ -347,7 +382,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 = 1.22.2 =
 * Fix: Advanced Columns - Column not stacking on tablet & mobile devices.
-* Fix: Table of Contents - Showing default title instead of saved one.
+* Fix: Table of Contents - Showing default title instead of saved one
 
 = 1.22.1 =
 * Fix: Table of Contents: Content not being generated in few themes due to missing `entry-content` class.

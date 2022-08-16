@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.0  
-**Stable tag:** 1.25.6  
+**Stable tag:** 2.0.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -17,22 +17,18 @@ Power-up the Gutenberg editor with advanced and powerful blocks that help you bu
 
 Power-up the Gutenberg editor with advanced and powerful blocks that help you build websites in no time! This first Gutenberg plugin is here to make website building an ultimate journey.
 
-<<<<<<< HEAD
-<a href="https://www.ultimategutenberg.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Check out the live Spectra blocks demos.</a>
-=======
+
 <a href="https://wpspectra.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Check out the live Spectra blocks demos.</a>
->>>>>>> a52c75e84d55136b834ba48936d379f6744f918d
+
 
 Simply pick your favorite WordPress blocks from Spectra that speed up the process of website building with easy to use settings and customizations for intuitive visual styling.
 
 With Spectra, we took the hassle out of the website building process. It gives you a number of unique and creative blocks for Gutenberg that help you build and design pages or posts without a single line of code. An easy to use interface and several customizations make it easier to build pages and complete websites without any custom code.
 
 
-<<<<<<< HEAD
- <a href="https://www.ultimategutenberg.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">See the Spectra in action!</a>
-=======
+
  <a href="https://wpspectra.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">See the Spectra in action!</a>
->>>>>>> a52c75e84d55136b834ba48936d379f6744f918d
+
 
 <strong>Ready-to-use Full Website Demos for Gutenberg</strong>
 
@@ -72,15 +68,11 @@ You can read more in a detailed article about <a href="https://wpastra.com/guten
 
 <strong>Learn Spectra from Tutorials</strong>
 
-<<<<<<< HEAD
-Not sure how the blocks work? With <a href="https://www.ultimategutenberg.com/docs/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">detailed knowledge base articles</a> about every creative WordPress blocks in Spectra, we are here to make things easy for you and help you at every step.
 
-We also have an informative and detailed article that will help you to <a href="https://www.ultimategutenberg.com/getting-started-with-gutenberg-blocks/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">get started with Spectra </a> in few easy steps.
-=======
 Not sure how the blocks work? With <a href="https://wpspectra.com/docs/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">detailed knowledge base articles</a> about every creative WordPress blocks in Spectra, we are here to make things easy for you and help you at every step.
 
 We also have an informative and detailed article that will help you to <a href="https://wpspectra.com/getting-started-with-gutenberg-blocks/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">get started with Spectra </a> in few easy steps.
->>>>>>> a52c75e84d55136b834ba48936d379f6744f918d
+
 
 <strong>Spectra WordPress Blocks Library</strong>
 
@@ -150,7 +142,7 @@ For more information, please visit our <a href="https://wpspectra.com/docs/?utm_
 ## Frequently Asked Questions ##
 
 ### Who should use the Spectra? ###
-<<<<<<< HEAD
+
 
 The Spectra is a complete package of unique and creative blocks that help build beautiful pages and posts on a website. Therefore, it is certainly an asset for all those who love Gutenberg.
 
@@ -173,34 +165,6 @@ Yes! You can certainly use the Spectra on yours as well as your client’s websi
 ### Will the Spectra slow down my website? ###
 
 Absolutely no! The Spectra is built with ease and performance in mind. Its module architecture and the clean code keep it lightweight and fast. Therefore, it will not affect your website speed and performance in any way.
-
-### What more do I get with the Spectra? ###
-
-When you use the Spectra along with the free Astra theme, you get a huge library of ready-to-use starter sites that can be imported and used to build your own. Read an article about the <a href="https://www.ultimategutenberg.com/ready-websites-for-gutenberg/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Starter Sites with Gutenberg</a> to know more.
-=======
-
-The Spectra is a complete package of unique and creative blocks that help build beautiful pages and posts on a website. Therefore, it is certainly an asset for all those who love Gutenberg.
-
-### What are the requirements to use the Spectra? ###
-
-You only need to have the latest version of WordPress on your website, to begin with. The Spectra is basically an addon for the default WordPress editor. Therefore, the latest WordPress installation along with a theme should be enough, to begin with.
-
-### What themes does the Spectra work with? ###
-
-The Spectra is built to work great with all the themes. But, <a href="https://wpastra.com/gutenberg-compatible/?utm_source=wp-repo&utm_medium=uagb&utm_campaign=readme" target="_blank" rel="">Astra being among the first ones to be Gutenberg ready</a>, we recommend you to try using Astra since it is lightweight, fast, simple and comes with a lot of options.
-
-### Can I use the Spectra even while having another Page Builder? ###
-
-The basic need of the Spectra is the latest WordPress version. We have also made it compatible with all major page builders and therefore, it won’t interfere in their working. Should you need help, you can <a href="https://support.brainstormforce.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">get in touch with us.</a>
-
-### Can I use the Spectra on client websites? ###
-
-Yes! You can certainly use the Spectra on yours as well as your client’s websites.
-
-### Will the Spectra slow down my website? ###
-
-Absolutely no! The Spectra is built with ease and performance in mind. Its module architecture and the clean code keep it lightweight and fast. Therefore, it will not affect your website speed and performance in any way.
->>>>>>> a52c75e84d55136b834ba48936d379f6744f918d
 
 ### What more do I get with the Spectra? ###
 
@@ -212,37 +176,71 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 ## Changelog ##
 
-<<<<<<< HEAD
-### 2.0.0-beta.3 - THURSDAY, 14TH JULY 2022 ###
-* New: Block Presets - Introducing Preset for most used block.
-* New: Buttons - Introducing new button block with multiple new feature.
-* New: Container - Introducing container block with advanced flex property feature.
-* New: Copy Paste Styles - Added Copy/Paste styling feature for Core Gutenberg blocks & Spectra blocks.
-* New: Image - Introducing image block with advanced feature.
-* New: Presets - Added Preset for Box-Shadow, CTA button and Inner container.
+### 2.0.0 - TUESDAY, 16TH AUGUST 2022 ###
+* New: Redesigned UI/UX controls of Spectra blocks.
+* New: Introduced new, beautiful & fast Spectra admin dashboard powered by React.
 * New: Introducing Coming Soon mode feature.
 * New: Introducing Allow only Selected fonts, Load fonts locally & Preload fonts feature.
 * New: Introducing new border control which allow user to set border to Top/Bottom/Left/Right in all direction.
-* Improvement: Heading - Renamed Advanced Heading block to Heading and added multiple new feature.
-* Improvement: Template - Enable Templates Button on admin dashboard.
+* New: Introducing Automatic Block Recovery.
+* New: Introducing Font Awesome 6 Support.
+* New: Introducing Collapse Panels.
+* New: Introducing Blocks Editor Spacing.
+* New: Block Presets - Introducing Preset for most used block.
+* New: Control Presets - Added Preset for Box-Shadow, Button and Inner container.
+* New: Copy Paste Styles - Added Copy/Paste styling feature for Core Gutenberg blocks & Spectra blocks.
+* New: Added global Container Padding option on admin dashboard.
+* New: Added global default Content Width for container on admin dashboard.
+* New: Added support for block based widget editor.
+* New: Container - Introducing container block with advanced flex property feature.
+* New: How-To - Separate child "Step" for how-to instead of info-box.
+* New: Image - Introducing image block with advanced feature.
+* New: Z-index extension for Spectra block.
+* Global Improvement: Responsive setting wherever needed.
+* Global Improvement: Refactored the Spectra blocks code & improved editor performance drastically.
+* Global Improvement: Typography control - Added text-transform, text-decoration, letter-spacing and font-style options.
+* Global Improvement: 4 way border control.
+* Global Improvement: 4 way spacing control for padding/margin.
+* Improvement: Buttons - Multiple Typography option for Text in parent.
+* Improvement: Buttons-child - Enable/disable Icon option.
+* Improvement: Buttons-child - Add "nofollow" to link option.
+* Improvement: Buttons-child - Remove Text option.
+* Improvement: Buttons-child - Separate Typography option for child.
+* Improvement: Buttons-child - Background transparent/color/gradient option.
+* Improvement: Buttons-child - Box-Shadow option.
+* Improvement: Blockquote - Moved Twitter Username field inside Tweeter Icon Tab.
+* Improvement: Call To Action - Enable Additional Button option.
 * Improvement: Display Condition & Responsive Visibility – Enable/Disable option for Spectra extensions on admin dashboard.
-* Improvement: Typography control - Added letter-spacing options.
-* Improvement: Post block - Added Taxonomy Styling option, show taxonomy above title option and layout normal/highlighted.
-* Improvement: Removed jQuery dependency from Spectra blocks.
 * Improvement: Forms - Global reCAPTCHA setting option on admin dashboard.
+* Improvement: Heading - Hide option for heading text and description.
+* Improvement: Heading - Text shadow, gradient color option for Title
+* Improvement: Heading - Color option when link added to heading text.
+* Improvement: Heading - Highlight heading text feature.
+* Improvement: Heading - Background color option classic and gradient.
+* Improvement: Info-box - Enable/disable Icon/Image option.
+* Improvement: Info-box - Allow P tag in Title.
+* Improvement: Info-box - Icon option View( Stacked/Framed ), Shape( Circle/Square ).
+* Improvement: Icon List - Icon Position before/after.
+* Improvement: Lotti - Moved File Source option in block setting.
+* Improvement: Marketing Button - Show Description toggle option.
+* Improvement: Post Layout - Offset Starting Post option.
+* Improvement: Post Layout - Show Meta Icon option.
+* Improvement: Post Layout - Overall Border option.
+* Improvement: Post Layout - Overall Box shadow option.
+* Improvement: Post Layout - Added Taxonomy Styling option, show taxonomy above title option and layout normal/highlighted.
+* Improvement: Removed jQuery dependency from Spectra blocks.
+* Improvement: Social Share Parent block Color and background color option.
+* Improvement: Star Rating - Enable Title option.
+* Improvement: Star Rating - Star Position option.
+* Improvement: Team - Title Span/Div tag support.
+* Improvement: Table of content - Added Marker View Bullet/Number.
+* Improvement: Table of content - Added Title below Separator Style.
+* Improvement: Template - Enable Templates Button on admin dashboard.
 * Fix: Multiple issues in multiple blocks.
-* Deprecated: Advanced Columns, Section, WP-Search, Contact Form 7 Designer and Gravity Form Designer block.
+* Deprecated: Advanced Columns, Section, WP-Search, Post Masonry, Contact Form 7 Designer and Gravity Form Designer block.
+* Deprecated: Removed Spectra extention i.e responsive condition,display condition from core block.
+* Deprecated: Table of content - Removed Scroll Animation Delay.
 
-### 2.0.0-beta.1 - THURSDAY, 30TH SEPTEMBER 2021 ###
-* New: Redesigned UI/UX controls of UAG blocks.
-* New: Introduced new, beautiful & fast UAG admin dashboard powered by React.
-* Improvement: Display Condition – an UAG extensions will be enabled for Core Gutenberg blocks & UAG blocks by default, Also added a filter to enable UAG extension for third-party blocks.
-* Improvement: Refactored the UAG blocks' code & improved editor performance drastically.
-* Improvement: Typography control - Added text-transform, text-decoration and font-style options.
-* Improvement: Team Block - Span and Div tag support for Title.
-* Fix: Posts - Excerpt Layout Strips Shortcodes on Frontend.
-* Fix: Blockquote - Tweet content not shown in tweet box when double and single quotes are used.
-=======
 ### 1.25.6 - TUESDAY, 31ST MAY 2022 ###
 * Improvement: Updated Gutenberg Templates Library.
 * Improvement: Escaped URLs wherever required.
@@ -253,7 +251,6 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 ### 1.25.4 - MONDAY, 7TH FEBRUARY 2022 ###
 * Fix: CSS was not applying on responsive devices.
 * Fix: Multi Buttons - Child settings were not visible in the editor.
->>>>>>> a52c75e84d55136b834ba48936d379f6744f918d
 
 ### 1.25.3 - THURSDAY, 27TH JANUARY 2022 ###
 * Improvement: Added compatibility with WordPress v5.9.
@@ -385,7 +382,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 ### 1.22.2 ###
 * Fix: Advanced Columns - Column not stacking on tablet & mobile devices.
-* Fix: Table of Contents - Showing default title instead of saved one.
+* Fix: Table of Contents - Showing default title instead of saved one
 
 ### 1.22.1 ###
 * Fix: Table of Contents: Content not being generated in few themes due to missing `entry-content` class.
