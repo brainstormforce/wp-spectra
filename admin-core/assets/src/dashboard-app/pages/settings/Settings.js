@@ -116,9 +116,9 @@ const Settings = () => {
                         }
                         { 'fonts-performance' === activeSettingsNavigationTab &&
                             <>
-                                <SelectedFontFamilies/>
                                 <LoadFontsLocally/>
                                 <PreloadLocalFonts/>
+                                <SelectedFontFamilies/>
                             </>
                         }
                         { 'block-settings' === activeSettingsNavigationTab &&
