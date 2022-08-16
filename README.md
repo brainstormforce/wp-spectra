@@ -176,37 +176,28 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ### 2.0.0 - TUESDAY, 16TH AUGUST 2022 ###
 * New: Redesigned UI/UX controls of Spectra blocks.
 * New: Introduced new, beautiful & fast Spectra admin dashboard powered by React.
-* New: Block Presets - Introducing Preset for most used block.
-* New: Control Presets - Added Preset for Box-Shadow, Button and Inner container.
-* New: Copy Paste Styles - Added Copy/Paste styling feature for Core Gutenberg blocks & Spectra blocks.
 * New: Introducing Coming Soon mode feature.
 * New: Introducing Allow only Selected fonts, Load fonts locally & Preload fonts feature.
 * New: Introducing new border control which allow user to set border to Top/Bottom/Left/Right in all direction.
 * New: Introducing Automatic Block Recovery.
 * New: Introducing Font Awesome 6 Support.
-* New: Added global Container Padding option on admin dashboard.
-* New: Added global default Content Width for container on admin dashboard.
 * New: Introducing Collapse Panels.
 * New: Introducing Blocks Editor Spacing.
+* New: Block Presets - Introducing Preset for most used block.
+* New: Control Presets - Added Preset for Box-Shadow, Button and Inner container.
+* New: Copy Paste Styles - Added Copy/Paste styling feature for Core Gutenberg blocks & Spectra blocks.
+* New: Added global Container Padding option on admin dashboard.
+* New: Added global default Content Width for container on admin dashboard.
 * New: Added support for block based widget editor.
-* New: Z-index extension for Spectra block.
 * New: Container - Introducing container block with advanced flex property feature.
 * New: How-To - Separate child "Step" for how-to instead of info-box.
 * New: Image - Introducing image block with advanced feature.
+* New: Z-index extension for Spectra block.
 * Global Improvement: Responsive setting wherever needed.
+* Global Improvement: Refactored the Spectra blocks code & improved editor performance drastically.
+* Global Improvement: Typography control - Added text-transform, text-decoration, letter-spacing and font-style options.
 * Global Improvement: 4 way border control.
 * Global Improvement: 4 way spacing control for padding/margin.
-* Global Improvement: Refactored the Spectra blocks' code & improved editor performance drastically.
-* Global Improvement: Typography control - Added text-transform, text-decoration, letter-spacing and font-style options.
-* Improvement: Template - Enable Templates Button on admin dashboard.
-* Improvement: Display Condition & Responsive Visibility – Enable/Disable option for Spectra extensions on admin dashboard.
-* Improvement: Removed jQuery dependency from Spectra blocks.
-* Improvement: Forms - Global reCAPTCHA setting option on admin dashboard.
-* Improvement: Heading - Hide option for heading text and description.
-* Improvement: Heading - Text shadow, gradient color option for Title
-* Improvement: Heading - Color option when link added to heading text.
-* Improvement: Heading - Highlight heading text feature.
-* Improvement: Heading - Background color option classic and gradient.
 * Improvement: Buttons - Multiple Typography option for Text in parent.
 * Improvement: Buttons-child - Enable/disable Icon option.
 * Improvement: Buttons-child - Add "nofollow" to link option.
@@ -214,25 +205,34 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Buttons-child - Separate Typography option for child.
 * Improvement: Buttons-child - Background transparent/color/gradient option.
 * Improvement: Buttons-child - Box-Shadow option.
+* Improvement: Blockquote - Moved Twitter Username field inside Tweeter Icon Tab.
+* Improvement: Call To Action - Enable Additional Button option.
+* Improvement: Display Condition & Responsive Visibility – Enable/Disable option for Spectra extensions on admin dashboard.
+* Improvement: Forms - Global reCAPTCHA setting option on admin dashboard.
+* Improvement: Heading - Hide option for heading text and description.
+* Improvement: Heading - Text shadow, gradient color option for Title
+* Improvement: Heading - Color option when link added to heading text.
+* Improvement: Heading - Highlight heading text feature.
+* Improvement: Heading - Background color option classic and gradient.
 * Improvement: Info-box - Enable/disable Icon/Image option.
 * Improvement: Info-box - Allow P tag in Title.
 * Improvement: Info-box - Icon option View( Stacked/Framed ), Shape( Circle/Square ).
-* Improvement: Call To Action - Enable Additional Button option.
-* Improvement: Blockquote - Moved Twitter Username field inside Tweeter Icon Tab.
 * Improvement: Icon List - Icon Position before/after.
+* Improvement: Lotti - Moved File Source option in block setting.
+* Improvement: Marketing Button - Show Description toggle option.
+* Improvement: Post Layout - Offset Starting Post option.
+* Improvement: Post Layout - Show Meta Icon option.
+* Improvement: Post Layout - Overall Border option.
+* Improvement: Post Layout - Overall Box shadow option.
+* Improvement: Post Layout - Added Taxonomy Styling option, show taxonomy above title option and layout normal/highlighted.
+* Improvement: Removed jQuery dependency from Spectra blocks.
+* Improvement: Social Share Parent block Color and background color option.
+* Improvement: Star Rating - Enable Title option.
+* Improvement: Star Rating - Star Position option.
 * Improvement: Team - Title Span/Div tag support.
 * Improvement: Table of content - Added Marker View Bullet/Number.
 * Improvement: Table of content - Added Title below Separator Style.
-* Improvement: Marketing Button - Show Description toggle option
-* Improvement: Star Rating - Enable Title option.
-* Improvement: Star Rating - Star Position option.
-* Improvement: Moved File Source option in block setting.
-* Improvement: Post Layout - Offset Starting Post option
-* Improvement: Post Layout - Show Meta Icon option
-* Improvement: Post Layout - Overall Border option
-* Improvement: Post Layout - Overall Box shadow option
-* Improvement: Post Layout - Added Taxonomy Styling option, show taxonomy above title option and layout normal/highlighted.
-* Improvement: Social Share Parent block Color and background color option
+* Improvement: Template - Enable Templates Button on admin dashboard.
 * Fix: Multiple issues in multiple blocks.
 * Deprecated: Advanced Columns, Section, WP-Search, Post Masonry, Contact Form 7 Designer and Gravity Form Designer block.
 * Deprecated: Removed Spectra extention i.e responsive condition,display condition from core block.
