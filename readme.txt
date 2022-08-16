@@ -17,14 +17,14 @@ Power-up the Gutenberg editor with advanced and powerful blocks that help you bu
 
 Power-up the Gutenberg editor with advanced and powerful blocks that help you build websites in no time! This first Gutenberg plugin is here to make website building an ultimate journey.
 
-<a href="https://www.ultimategutenberg.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Check out the live Spectra blocks demos.</a>
+<a href="https://wpspectra.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Check out the live Spectra blocks demos.</a>
 
 Simply pick your favorite WordPress blocks from Spectra that speed up the process of website building with easy to use settings and customizations for intuitive visual styling.
 
 With Spectra, we took the hassle out of the website building process. It gives you a number of unique and creative blocks for Gutenberg that help you build and design pages or posts without a single line of code. An easy to use interface and several customizations make it easier to build pages and complete websites without any custom code.
 
 
- <a href="https://www.ultimategutenberg.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">See the Spectra in action!</a>
+ <a href="https://wpspectra.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">See the Spectra in action!</a>
 
 <strong>Ready-to-use Full Website Demos for Gutenberg</strong>
 
@@ -52,15 +52,15 @@ Reasons why people love the Astra Theme
  	<li><strong>Deeper Integrations </strong>: Astra works seamlessly with all major WooCommerce plugins, LifterLMS, LearnDash etc. You can use this theme to create different types of websites.</li>
 </ul>
 
-<strong>Astra’s Compatibility with Gutenberg Assures -</strong>
+<strong>Astra's Compatibility with Gutenberg Assures -</strong>
 
 <ul>
  	<li><strong>Front-end styling in Gutenberg Editor </strong>: The styling of your post or page is the same in the Gutenberg editor as well as the front end. Therefore, you know the changes you are working on.</li>
- 	<li><strong>Gutenberg blocks inherit theme settings </strong>: We’ve made sure that default Gutenberg blocks like Quote, Galleries, Files, etc. Inherit the settings from the Astra customizer.</li>
+ 	<li><strong>Gutenberg blocks inherit theme settings </strong>: We've made sure that default Gutenberg blocks like Quote, Galleries, Files, etc. Inherit the settings from the Astra customizer.</li>
  	<li><strong>Full-width support for Gutenberg blocks </strong>: We have enabled the full-width alignment in Astra and hence support this option added for blocks like the image, cover image, gallery, and post.</li>
 </ul>
 
-You can read more in a detailed article about <a href="https://wpastra.com/gutenberg-compatible/?utm_source=wp-repo&utm_medium=link&utm_campaign=uag-readme" target="_blank" rel="">Astra’s compatibility with Gutenberg.</a>
+You can read more in a detailed article about <a href="https://wpastra.com/gutenberg-compatible/?utm_source=wp-repo&utm_medium=link&utm_campaign=uag-readme" target="_blank" rel="">Astra's compatibility with Gutenberg.</a>
 
 <strong>Learn Spectra from Tutorials</strong>
 
@@ -72,22 +72,22 @@ We also have an informative and detailed article that will help you to <a href="
 
 <ul>
 	<li><a href="https://wpspectra.com/blocks/star-rating/" target="_blank">Star Ratings </a>: The Star Ratings block on a webpage can build trust and attract more customers. It allows you to add and completely customize star ratings anywhere on the Gutenberg page.</li>
-	<li><a href="https://ultimategutenberg.com/forms/" target="_blank">Forms </a>: The Forms block allow you to create interactive contact form, newsletter, suggestion, etc easily. You can add various fields like name, email, message box, phone number, checkboxes to your form and get more leads.</li>
-	<li><a href="https://wpspectra.com/docs/tabs-block/" target="_blank">Tabs </a>: The Tabs block offers an easy way to display tabbed content and enables you to add long content in a smaller place to enhances the user experience.</li>
-	<li><a href="https://wpspectra.com/docs/lottie/" target="_blank">Lottie </a>: Add attractive animation to your page design. Get a total control with advanced options like animation speed,  animation trigger etc, You can reverse the animation, manage the size and do much more.</li>
-	<li><a href="https://wpspectra.com/docs/review-schema/" target="_blank">Review Schema </a>: Add a review for a book, movie, course, software application, or product with star ratings. Enable review schema support just with a click to get higher rankings for your page/post in search results.</li>
+	<li><a href="https://wpspectra.com/blocks/forms/" target="_blank">Forms </a>: The Forms block allow you to create interactive contact form, newsletter, suggestion, etc easily. You can add various fields like name, email, message box, phone number, checkboxes to your form and get more leads.</li>
+	<li><a href="https://wpspectra.com/blocks/tabs/" target="_blank">Tabs </a>: The Tabs block offers an easy way to display tabbed content and enables you to add long content in a smaller place to enhances the user experience.</li>
+	<li><a href="https://wpspectra.com/blocks/lottie/" target="_blank">Lottie </a>: Add attractive animation to your page design. Get a total control with advanced options like animation speed,  animation trigger etc, You can reverse the animation, manage the size and do much more.</li>
+	<li><a href="https://wpspectra.com/blocks/review-schema/" target="_blank">Review Schema </a>: Add a review for a book, movie, course, software application, or product with star ratings. Enable review schema support just with a click to get higher rankings for your page/post in search results.</li>
 	<li><a href="https://wpspectra.com/blocks/taxonomy/" target="_blank">Taxonomy List </a>: With this block, you can easily display categories for post/pages or custom post types. Further, you can style it with a grid, list, or dropdown layout and set color, typography.</li>
-	<li><a href="https://wpspectra.com/docs/how-to-schema/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">How-to Schema </a>: This block allows you to design attractive How-to pages or articles that can describe the step-by-step procedure to achieve certain goals. The best thing is this block will automatically add How-to Schema to your page that can boost ranking in search results.</li>
- 	<li><a href="https://www.ultimategutenberg.com/faq/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">FAQ Schema </a>: This block helps you answering user’s common queries in an easy and attractive way.  You also get a one-click option to apply FAQ Schema on the page. That helps to display content in a rich snippet that can pull more traffic to your website.</li>
- 	<li><a href="https://wpspectra.com/docs/wp-search/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">WP - Search </a>: Search bars quickly bring information users are looking for and deliver a great user experience. You can display the WordPress search field anywhere on your page easily with the WP - Search block.</li>
- 	<li><a href="https://wpspectra.com/docs/inline-notice/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Inline Notice </a>: Sometimes while writing a procedure or steps to achieve some end results, you might need users to pay attention to a few important notes. Inline Notice block provides a nice ready-to-use box where you can quickly add text to highlight it.</li>
-	<li><a href="https://wpspectra.com/blocks/advanced-heading/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Advanced Heading </a>: The Advanced Heading block lets you add a combination of a heading and a sub-heading with a separator in between. You can select the heading tag for the heading and manage other settings and customizations too.</li>
+	<li><a href="https://wpspectra.com/blocks/how-to-schema/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">How-to Schema </a>: This block allows you to design attractive How-to pages or articles that can describe the step-by-step procedure to achieve certain goals. The best thing is this block will automatically add How-to Schema to your page that can boost ranking in search results.</li>
+ 	<li><a href="https://wpspectra.com/blocks/faq-schema/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">FAQ Schema </a>: This block helps you answering user's common queries in an easy and attractive way.  You also get a one-click option to apply FAQ Schema on the page. That helps to display content in a rich snippet that can pull more traffic to your website.</li>
+ 	<li><a href="https://wpspectra.com/blocks/wp-search/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">WP - Search </a>: Search bars quickly bring information users are looking for and deliver a great user experience. You can display the WordPress search field anywhere on your page easily with the WP - Search block.</li>
+ 	<li><a href="https://wpspectra.com/blocks/inline-notice/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Inline Notice </a>: Sometimes while writing a procedure or steps to achieve some end results, you might need users to pay attention to a few important notes. Inline Notice block provides a nice ready-to-use box where you can quickly add text to highlight it.</li>
+	<li><a href="https://wpspectra.com/blocks/heading/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Advanced Heading </a>: The Advanced Heading block lets you add a combination of a heading and a sub-heading with a separator in between. You can select the heading tag for the heading and manage other settings and customizations too.</li>
  	<li><a href="https://wpspectra.com/blocks/advanced-columns/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Advanced Columns </a>: This Advanced Columns block gives you advanced options to insert a number of columns within a single row. You get various customization options to manage the look and feel of the entire block and individual columns on the page with advanced shape dividers, variable widths, etc.</li>
  	<li><a href="https://wpspectra.com/blocks/blockquote/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Blockquote </a>: This Blockquote block lets you display quoted tweetable text in a trendy and designer format with lots of customization options.</li>
  	<li><a href="https://wpspectra.com/blocks/call-to-action/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Call To Action </a>: The Call To Action block helps you to create attractive call-to-action with a trendy title, description and a catchy button that boosts conversions on your website.</li>
  	<li><a href="https://wpspectra.com/blocks/contact-form-7-styler/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Contact Form 7 Styler </a>: The Contact Form 7 Styler is an easy to use Gutenberg block that allows to fully customize and design the existing Contact Form 7 forms on your website.</li>
  	<li><a href="https://wpspectra.com/blocks/content-timeline/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Content Timeline </a>: The Timeline block lets you create beautiful timelines on your website. This could be useful for displaying company history or progress, list down your personal achievements, roadmap or release cycle for products etc.</li>
- 	<li><a href="https://wpspectra.com/docs/google-map/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Google Map </a>: The Google Maps block allows you to display locations with zooming options you’ll love to try.</li>
+ 	<li><a href="https://wpspectra.com/blocks/google-maps/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Google Map </a>: The Google Maps block allows you to display locations with zooming options you'll love to try.</li>
 	<li><a href="https://wpspectra.com/blocks/gravity-form-styler/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Gravity Forms Styler</a>: Customize your default Gravity Form with the Gravity Form Styler to display more appealing forms that convert.</li>
  	<li><a href="https://wpspectra.com/blocks/icon-list/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Icon List </a>: The Icon List block allows you to place an image or icon in a list format. You can pick your favorite icon or image that suits a list to act as a bullet for each list item.</li>
  	<li><a href="https://wpspectra.com/blocks/info-box/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Info Box </a>: The Infobox allows you to place an image or icon along with a heading and description within a single block. You can select the image or icon and customize the content within the block.</li>
@@ -149,11 +149,11 @@ The Spectra is built to work great with all the themes. But, <a href="https://wp
 
 = Can I use the Spectra even while having another Page Builder? =
 
-The basic need of the Spectra is the latest WordPress version. We have also made it compatible with all major page builders and therefore, it won’t interfere in their working. Should you need help, you can <a href="https://support.brainstormforce.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">get in touch with us.</a>
+The basic need of the Spectra is the latest WordPress version. We have also made it compatible with all major page builders and therefore, it won't interfere in their working. Should you need help, you can <a href="https://support.brainstormforce.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">get in touch with us.</a>
 
 = Can I use the Spectra on client websites? =
 
-Yes! You can certainly use the Spectra on yours as well as your client’s websites.
+Yes! You can certainly use the Spectra on yours as well as your client's websites.
 
 = Will the Spectra slow down my website? =
 
@@ -339,7 +339,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Table of Contents: Content not being generated in few themes due to missing `entry-content` class.
 
 = 1.22.0 =
-* New: Forms Block. [Read More](https://ultimategutenberg.com/forms/).
+* New: Forms Block. [Read More](https://ultimategutenberg.com/blocks/forms/).
 * Improvement: Block Templates - Added filter to disable the Block Templates. [Read More](https://wpspectra.com/docs/spectra-enable-disable-templates-button/)
 * Improvement: Post Layouts - Now all the selected categories can be displayed in each post layout.
 * Improvement: Table of Contents - Now Table of Contents stores minimal data in databases and calculates the contents dynamically on page load.
