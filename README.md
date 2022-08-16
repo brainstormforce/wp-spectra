@@ -4,8 +4,8 @@
 **Tags:** gutenberg, blocks, gutenberg blocks, editor, block  
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
-**Tested up to:** 5.9  
-**Stable tag:** 1.25.3  
+**Tested up to:** 6.0  
+**Stable tag:** 2.0.0-beta.3  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -137,6 +137,7 @@ For more information, please visit our <a href="https://wpspectra.com/docs/?utm_
 
 ### Who should use the Spectra? ###
 
+
 The Spectra is a complete package of unique and creative blocks that help build beautiful pages and posts on a website. Therefore, it is certainly an asset for all those who love Gutenberg.
 
 ### What are the requirements to use the Spectra? ###
@@ -202,6 +203,17 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Team Block - Span and Div tag support for Title.
 * Fix: Posts - Excerpt Layout Strips Shortcodes on Frontend.
 * Fix: Blockquote - Tweet content not shown in tweet box when double and single quotes are used.
+
+### 1.25.6 - TUESDAY, 31ST MAY 2022 ###
+* Improvement: Updated Gutenberg Templates Library.
+* Improvement: Escaped URLs wherever required.
+
+### 1.25.5 - FRIDAY, 27TH MAY 2022 ###
+* Improvement: Updated the notice library.
+
+### 1.25.4 - MONDAY, 7TH FEBRUARY 2022 ###
+* Fix: CSS was not applying on responsive devices.
+* Fix: Multi Buttons - Child settings were not visible in the editor.
 
 ### 1.25.3 - THURSDAY, 27TH JANUARY 2022 ###
 * Improvement: Added compatibility with WordPress v5.9.

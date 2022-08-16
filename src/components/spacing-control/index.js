@@ -77,9 +77,8 @@ const SpacingControl = ( props ) => {
 				break;
 		}
 	};
-	const onChangeTopValue = ( event, device, value = '' ) => {
+	const onChangeTopValue = ( event, device, value = '', resetLink = false ) => {
 		let newValue = value;
-
 		if ( '' === value && '' !== event ) {
 
 			newValue =
@@ -88,10 +87,12 @@ const SpacingControl = ( props ) => {
 					: Number( event.target.value );
 		}
 
-		if ( link.value ) {
-			changeLinkedValues( newValue, device );
-		} else{
-			changedUnLinkedValues( device );
+		if ( ! resetLink ) {
+			if ( link.value ) {
+				changeLinkedValues( newValue, device );
+			} else{
+				changedUnLinkedValues( device );
+			}
 		}
 
 		switch ( device ) {
@@ -134,7 +135,7 @@ const SpacingControl = ( props ) => {
 		}
 
 	};
-	const onChangeRightValue = ( event, device, value = '' ) => {
+	const onChangeRightValue = ( event, device, value = '', resetLink = false ) => {
 		let newValue = value;
 
 		if ( '' === value && '' !== event ) {
@@ -143,12 +144,13 @@ const SpacingControl = ( props ) => {
 					? 0
 					: Number( event.target.value );
 		}
-		if ( link.value ) {
-			changeLinkedValues( newValue, device );
-		}else {
-			changedUnLinkedValues( device );
+		if ( ! resetLink ) {
+			if ( link.value ) {
+				changeLinkedValues( newValue, device );
+			}else {
+				changedUnLinkedValues( device );
+			}
 		}
-
 
 		switch ( device ) {
 			case 'desktop':
@@ -163,7 +165,7 @@ const SpacingControl = ( props ) => {
 		}
 	};
 
-	const onChangeBottomValue = ( event, device, value = '' ) => {
+	const onChangeBottomValue = ( event, device, value = '', resetLink = false ) => {
 		let newValue = value;
 
 		if ( '' === value && '' !== event ) {
@@ -172,12 +174,13 @@ const SpacingControl = ( props ) => {
 					? 0
 					: Number( event.target.value );
 		}
-		if ( link.value ) {
-			changeLinkedValues( newValue, device );
-		}else {
-			changedUnLinkedValues( deviceType );
+		if ( ! resetLink ) {
+			if ( link.value ) {
+				changeLinkedValues( newValue, device );
+			}else {
+				changedUnLinkedValues( deviceType );
+			}
 		}
-
 
 		switch ( device ) {
 			case 'desktop':
@@ -192,7 +195,7 @@ const SpacingControl = ( props ) => {
 		}
 	};
 
-	const onChangeLeftValue = ( event, device, value = '' ) => {
+	const onChangeLeftValue = ( event, device, value = '', resetLink = false ) => {
 		let newValue = value;
 
 		if ( '' === value && '' !== event ) {
@@ -201,10 +204,12 @@ const SpacingControl = ( props ) => {
 					? 0
 					: Number( event.target.value );
 		}
-		if ( link.value ) {
-			changeLinkedValues( newValue, device );
-		}else {
-			changedUnLinkedValues( deviceType );
+		if ( ! resetLink ) {
+		if ( link.value && ! resetLink ) {
+				changeLinkedValues( newValue, device );
+			}else {
+				changedUnLinkedValues( deviceType );
+			}
 		}
 
 		switch ( device ) {
@@ -341,25 +346,25 @@ const SpacingControl = ( props ) => {
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeTopValue( e, 'desktop' ) }
-					value={ valueTop.value }
+					value={ ( undefined !== valueTop.value ) ? valueTop.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeRightValue( e, 'desktop' ) }
-					value={ valueRight.value }
+					value={ ( undefined !== valueRight.value ) ? valueRight.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeBottomValue( e, 'desktop' ) }
-					value={ valueBottom.value }
+					value={ ( undefined !== valueBottom.value ) ? valueBottom.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeLeftValue( e, 'desktop' ) }
-					value={ valueLeft.value }
+					value={ ( undefined !== valueLeft.value ) ? valueLeft.value : '' }
 				/>
 				{ linkHtml }
 			</div>
@@ -372,25 +377,25 @@ const SpacingControl = ( props ) => {
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeTopValue( e, 'tablet' ) }
-					value={ valueTopTablet.value }
+					value={ ( undefined !== valueTopTablet.value ) ? valueTopTablet.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeRightValue( e, 'tablet' ) }
-					value={ valueRightTablet.value }
+					value={ ( undefined !== valueRightTablet.value ) ? valueRightTablet.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeBottomValue( e, 'tablet' ) }
-					value={ valueBottomTablet.value }
+					value={ ( undefined !== valueBottomTablet.value ) ? valueBottomTablet.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeLeftValue( e, 'tablet' ) }
-					value={ valueLeftTablet.value }
+					value={ ( undefined !== valueLeftTablet.value ) ? valueLeftTablet.value : '' }
 				/>
 				{ linkHtml }
 			</div>
@@ -403,25 +408,25 @@ const SpacingControl = ( props ) => {
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeTopValue( e, 'mobile' ) }
-					value={ valueTopMobile.value }
+					value={ ( undefined !== valueTopMobile.value ) ? valueTopMobile.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeRightValue( e, 'mobile' ) }
-					value={ valueRightMobile.value }
+					value={ ( undefined !== valueRightMobile.value ) ? valueRightMobile.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeBottomValue( e, 'mobile' ) }
-					value={ valueBottomMobile.value }
+					value={ ( undefined !== valueBottomMobile.value ) ? valueBottomMobile.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeLeftValue( e, 'mobile' ) }
-					value={ valueLeftMobile.value }
+					value={ ( undefined !== valueLeftMobile.value ) ? valueLeftMobile.value : '' }
 				/>
 				{ linkHtml }
 			</div>
@@ -433,24 +438,24 @@ const SpacingControl = ( props ) => {
 
 		switch ( device ) {
 			case 'desktop':
-				onChangeTopValue( '', 'desktop', defaultValues[valueTop.label] );
-				onChangeRightValue( '', 'desktop', defaultValues[valueRight.label] );
-				onChangeBottomValue( '', 'desktop', defaultValues[valueBottom.label] );
-				onChangeLeftValue( '', 'desktop', defaultValues[valueLeft.label] );
+				onChangeTopValue( '', 'desktop', defaultValues[valueTop.label], true );
+				onChangeRightValue( '', 'desktop', defaultValues[valueRight.label], true );
+				onChangeBottomValue( '', 'desktop', defaultValues[valueBottom.label], true );
+				onChangeLeftValue( '', 'desktop', defaultValues[valueLeft.label], true );
 				setAttributes( { [ unit?.label ]: defaultValues[unit?.label] } );
 				break;
 			case 'tablet':
-				onChangeTopValue( '', 'tablet', defaultValues[valueTopTablet.label] );
-				onChangeRightValue( '', 'tablet', defaultValues[valueRightTablet.label] );
-				onChangeBottomValue( '', 'tablet', defaultValues[valueBottomTablet.label] );
-				onChangeLeftValue( '', 'tablet', defaultValues[valueLeftTablet.label] );
+				onChangeTopValue( '', 'tablet', defaultValues[valueTopTablet.label], true );
+				onChangeRightValue( '', 'tablet', defaultValues[valueRightTablet.label], true );
+				onChangeBottomValue( '', 'tablet', defaultValues[valueBottomTablet.label], true );
+				onChangeLeftValue( '', 'tablet', defaultValues[valueLeftTablet.label], true );
 				setAttributes( { [ tUnit?.label ]: defaultValues[tUnit?.label] } );
 				break;
 			case 'mobile':
-				onChangeTopValue( '', 'tablet', defaultValues[valueTopMobile.label] );
-				onChangeRightValue( '', 'tablet', defaultValues[valueRightMobile.label] );
-				onChangeBottomValue( '', 'tablet', defaultValues[valueBottomMobile.label] );
-				onChangeLeftValue( '', 'tablet', defaultValues[valueLeftMobile.label] );
+				onChangeTopValue( '', 'mobile', defaultValues[valueTopMobile.label], true );
+				onChangeRightValue( '', 'mobile', defaultValues[valueRightMobile.label], true );
+				onChangeBottomValue( '', 'mobile', defaultValues[valueBottomMobile.label], true );
+				onChangeLeftValue( '', 'mobile', defaultValues[valueLeftMobile.label], true );
 				setAttributes( { [ mUnit?.label ]: defaultValues[mUnit?.label] } );
 				break;
 		}

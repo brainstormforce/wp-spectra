@@ -6,6 +6,7 @@ import styling from './styling';
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/column/settings" */ './settings' )
@@ -79,6 +80,8 @@ const ColumnComponent = ( props ) => {
 	    const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-column-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	return (

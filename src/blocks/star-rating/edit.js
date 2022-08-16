@@ -8,6 +8,7 @@ import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/star-rating/settings" */ './settings' )
 );
@@ -22,7 +23,6 @@ const UAGStarRating = ( props ) => {
 
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-
 	}, [] );
 
 	useEffect( () => {
@@ -36,6 +36,8 @@ const UAGStarRating = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-star-rating-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	return (

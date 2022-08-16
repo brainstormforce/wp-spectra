@@ -4,6 +4,7 @@ import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/blockquote/settings" */ './settings' )
@@ -32,13 +33,13 @@ const UAGBBlockQuote = ( props ) => {
 			authorImageWidthUnit,
 			authorImgBorderRadiusUnit,
 		} = props.attributes;
-		
+
 		if( undefined ===  authorImageWidthUnit ){
 			props.setAttributes( { authorImageWidthUnit: 'px' } );
-		} 
+		}
 		if( undefined ===  authorImgBorderRadiusUnit ){
 			props.setAttributes( { authorImgBorderRadiusUnit: '%' } );
-		} 
+		}
 
 		if ( tweetBtnVrPadding ) {
 			if ( undefined === paddingBtnTop ) {
@@ -63,7 +64,7 @@ const UAGBBlockQuote = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-blockquote-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
 	}, [ props ] );
 
 	useEffect( () => {
@@ -71,7 +72,8 @@ const UAGBBlockQuote = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-blockquote-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
+		scrollBlockToView();
 	}, [ deviceType ] );
 
 	return (

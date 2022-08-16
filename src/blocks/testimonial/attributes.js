@@ -20,15 +20,11 @@ for ( let i = 1; i <= itemCount; i++ ) {
 }
 import { getBorderAttributes } from '@Controls/generateAttributes';
 const overallBorderAttributes = getBorderAttributes( 'overall', {
-	borderStyle: 'solid',
+	borderStyle: 'none',
 	borderTopWidth: 1,
 	borderRightWidth: 1,
 	borderBottomWidth: 1,
-	borderLeftWidth: 1,
-	borderTopLeftRadius: 6,
-	borderTopRightRadius: 6,
-	borderBottomLeftRadius: 6,
-	borderBottomRightRadius: 6,
+	borderLeftWidth: 1
 } );
 const attributes = {
 	test_item_count: {
@@ -1072,5 +1068,4 @@ const attributes = {
 		}
 	},
 };
-
 export default attributes;

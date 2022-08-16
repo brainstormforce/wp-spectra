@@ -8,6 +8,7 @@ import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/price-list/settings" */ './settings' )
 );
@@ -94,7 +95,6 @@ const UAGBRestaurantMenu = ( props ) => {
 				props.attributes.imageAlignment;
 		} );
 
-
 	}, [] );
 
 	useEffect( () => {
@@ -124,14 +124,16 @@ const UAGBRestaurantMenu = ( props ) => {
 		const blockStyling = RestMenuStyle( props );
 
 		addBlockEditorDynamicStyles( 'uagb-restaurant-menu-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
+
 
 	useEffect( () => {
 		// Set showImage attribute in child blocks based on current parent block's value.
 		select( 'core/block-editor' )
             .getBlocksByClientId( props.clientId )[0]
             .innerBlocks.forEach( function( block ) {
-
                 dispatch( 'core/block-editor' ).updateBlockAttributes(
                     block.clientId, {
                         showImage: props.attributes.showImage,
@@ -150,5 +152,4 @@ const UAGBRestaurantMenu = ( props ) => {
 		</>
 	);
 };
-
 export default UAGBRestaurantMenu;
