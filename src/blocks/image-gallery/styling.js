@@ -2,16 +2,20 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import getMatrixAlignment from '@Controls/getMatrixAlignment';
 import generateBorderRadius from '@Controls/generateBorderRadius';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateSpacing from '@Controls/generateSpacing';
 import getPrecisePercentage from '@Controls/getPrecisePercentage';
 
 function styling( props ) {
 	const {
+		// Tile Calcualtion
 		tileSize,
 
+		// Block Layout.
 		feedLayout,
 		imageDisplayCaption,
 
+		// Gallery Layout Settings.
 		feedMarginTop,
 		feedMarginRight,
 		feedMarginBottom,
@@ -34,6 +38,7 @@ function styling( props ) {
 		gridImageGapUnitTab,
 		gridImageGapUnitMob,
 
+		// Caption Settings.
 		captionVisibility,
 		captionDisplayType,
 		imageCaptionAlignment,
@@ -55,12 +60,15 @@ function styling( props ) {
 		captionGap,
 		captionGapUnit,
 		
+		// Grid | Tab | Tiled Specific Settings.
 		columnsDesk,
 		columnsTab,
 		columnsMob,
 
+		// Carousel Specific Settings.
 		carouselSquares,
 
+		// Pagination Settings.
 		feedPagination,
 		paginateUseDots,
 		paginateUseLoader,
@@ -81,6 +89,7 @@ function styling( props ) {
 		paginateButtonPaddingUnitTab,
 		paginateButtonPaddingUnitMob,
 		
+		// Image Styling.
 		imageBorderRadius,
 		imageBorderRadiusUnit,
 		imageEnableZoom,
@@ -88,6 +97,7 @@ function styling( props ) {
 		captionBackgroundEnableBlur,
 		captionBackgroundBlurAmount,
 
+		// Caption Font.
 		captionFontFamily,
 		captionFontWeight,
 		captionFontStyle,
@@ -102,6 +112,7 @@ function styling( props ) {
 		captionLineHeightTab,
 		captionLineHeightMob,
 
+		// Pagination Font.
 		loadMoreFontFamily,
 		loadMoreFontWeight,
 		loadMoreFontStyle,
@@ -116,6 +127,7 @@ function styling( props ) {
 		loadMoreLineHeightTab,
 		loadMoreLineHeightMob,
 
+		// Caption Styling.
 		captionBackgroundBlurOpacity,
 		captionBackgroundBlurOpacityHover,
 		captionBackgroundEffect,
@@ -130,6 +142,7 @@ function styling( props ) {
 		overlayColorHover,
 		captionSeparateColors,
 
+		// Pagination Styling.
 		paginateArrowDistance,
 		paginateArrowDistanceUnit,
 		paginateArrowBorderStyle,
@@ -145,7 +158,18 @@ function styling( props ) {
 		paginateButtonBorderColorHover,
 		paginateColor,
 		paginateColorHover,
+
+		// Border Hover Colors.
+		buttonBorderHColor,
+		arrowBorderHColor,
 	} = props.attributes;
+
+	const buttonBorderCSS = generateBorderCSS( props.attributes, 'button' );
+	const buttonBorderCSSTablet = generateBorderCSS( props.attributes, 'button', 'tablet' );
+	const buttonBorderCSSMobile = generateBorderCSS( props.attributes, 'button', 'mobile' );
+	const arrowBorderCSS = generateBorderCSS( props.attributes, 'arrow' );
+	const arrowBorderCSSTablet = generateBorderCSS( props.attributes, 'arrow', 'tablet' );
+	const arrowBorderCSSMobile = generateBorderCSS( props.attributes, 'arrow', 'mobile' );
 
 	let selectors = {
 
@@ -179,13 +203,10 @@ function styling( props ) {
 			'fill': paginateColorHover,
 		},
 		'.uag-image-gallery__control-arrows--carousel': {
-			'border-style': paginateArrowBorderStyle,
-			'border-width': generateCSSUnit( paginateArrowBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit( paginateArrowBorderRadius, '%' ),
-			'border-color': paginateColor,
+			...arrowBorderCSS,
 		},
 		'.uag-image-gallery__control-arrows--carousel:hover': {
-			'border-color': paginateColorHover,
+			'border-color': arrowBorderHColor,
 		},
 		'.uag-image-gallery__control-arrows--carousel.slick-prev': {
 			'left': generateCSSUnit( paginateArrowDistance, paginateArrowDistanceUnit ),
@@ -223,10 +244,6 @@ function styling( props ) {
 			),
 			'color': paginateButtonTextColor,
 			'background-color': paginateColor,
-			'border-style': paginateButtonBorderStyle,
-			'border-width': generateCSSUnit( paginateButtonBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit( paginateButtonBorderRadius, 'px' ),
-			'border-color': paginateButtonBorderColor,
 			'font-family': loadMoreFontFamily === 'Default' ? '' : loadMoreFontFamily,
 			'font-weight': loadMoreFontWeight,
 			'font-style': loadMoreFontStyle,
@@ -234,11 +251,12 @@ function styling( props ) {
 			'text-transform': loadMoreTransform,
 			'font-size': generateCSSUnit( loadMoreFontSize, loadMoreFontSizeType ),
 			'line-height': generateCSSUnit( loadMoreLineHeight, loadMoreLineHeightType ),
+			...buttonBorderCSS,
 		},
 		'.uag-image-gallery__control-button:hover': {
 			'color': paginateButtonTextColorHover,
 			'background-color': paginateColorHover,
-			'border-color': paginateButtonBorderColorHover,
+			'border-color': buttonBorderHColor,
 		},
 		'.uag-image-gallery__control-lightbox': {
 			'top': `calc( ${

@@ -4,6 +4,7 @@ import renderSVG from '@Controls/renderIcon';
 import React, { Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import getMatrixAlignment from '@Controls/getMatrixAlignment';
+import { useDeviceType } from '@Controls/getPreviewType';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
@@ -14,6 +15,7 @@ import InspectorTab, {
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
+import ResponsiveBorder from '@Components/responsive-border';
 import MultiMediaSelector from '@Components/multimedia-select';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGTabsControl from '@Components/tabs';
@@ -34,10 +36,9 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 const MAX_IMAGE_COLUMNS = 8;
 
 const Settings = ( props ) => {
+	const deviceType = useDeviceType();
 	props = props.parentProps;
-
 	const { attributes, setAttributes } = props;
-
 	const {
 		readyToRender,
 
@@ -567,25 +568,6 @@ const Settings = ( props ) => {
 							: setAttributes( { paginateButtonTextColor: value } )
 						}
 					/>
-					{ paginateButtonBorderStyle !== 'none' && (
-						<AdvancedPopColorControl
-							label={ __( 'Border Color', 'ultimate-addons-for-gutenberg' ) }
-							colorValue={
-								isHover
-								? paginateButtonBorderColorHover
-									? paginateButtonBorderColorHover
-									: 'rgba(0,0,0,0)'
-								: paginateButtonBorderColor
-									? paginateButtonBorderColor
-									: 'rgba(0,0,0,0)'
-							}
-							onColorChange={ ( value ) =>
-								isHover
-								? setAttributes( { paginateButtonBorderColorHover: value } )
-								: setAttributes( { paginateButtonBorderColor: value } )
-							}
-						/>
-					) }
 				</>
 			) }
 		</>
@@ -1668,6 +1650,25 @@ const Settings = ( props ) => {
 
 	const paginationStyling = () => (
 		<UAGAdvancedPanelBody title={ __( 'Pagination', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+			{/* Grid Pagination */}
+			{ 'grid' === feedLayout && (
+				<UAGTabsControl
+				tabs={ [
+					{
+						name: 'normal',
+						title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						name: 'hover',
+						title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
+					},
+				] }
+				normal={ renderPaginationColors( false ) }
+				hover={ renderPaginationColors( true ) }
+				disableBottomSeparator={ true }
+				/>
+			) }
+			{/* Carousel Pagination */}
 			{ ( paginateUseArrows && feedLayout === 'carousel' ) && (
 				<>
 					<Range
@@ -1698,108 +1699,48 @@ const Settings = ( props ) => {
 							},
 						] }
 					/>
-					<UAGSelectControl
-						label={ __( 'Arrow Border Style', 'ultimate-addons-for-gutenberg' ) }
-						data={ {
-							value: paginateArrowBorderStyle,
-							label: 'paginateArrowBorderStyle',
-						} }
-						setAttributes={ setAttributes }
-						options = { [
+					<UAGTabsControl
+						tabs={ [
 							{
-								label: __( 'None', 'ultimate-addons-for-gutenberg' ),
-								value: 'none',
+								name: 'normal',
+								title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
-								label: __( 'Solid', 'ultimate-addons-for-gutenberg' ),
-								value: 'solid',
-							},
-							{
-								label: __( 'Double', 'ultimate-addons-for-gutenberg' ),
-								value: 'double',
-							},
-							{
-								label: __( 'Dotted', 'ultimate-addons-for-gutenberg' ),
-								value: 'dotted',
-							},
-							{
-								label: __( 'Dashed', 'ultimate-addons-for-gutenberg' ),
-								value: 'dashed',
-							},
-							{
-								label: __( 'Inset', 'ultimate-addons-for-gutenberg' ),
-								value: 'inset',
-							},
-							{
-								label: __( 'Outset', 'ultimate-addons-for-gutenberg' ),
-								value: 'outset',
-							},
-							{
-								label: __( 'Groove', 'ultimate-addons-for-gutenberg' ),
-								value: 'groove',
-							},
-							{
-								label: __( 'Ridge', 'ultimate-addons-for-gutenberg' ),
-								value: 'ridge',
+								name: 'hover',
+								title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
 							},
 						] }
+						normal={ renderPaginationColors( false ) }
+						hover={ renderPaginationColors( true ) }
 					/>
-					{ paginateArrowBorderStyle !== 'none' && (
-						<>
-							<Range
-								label={ __( `Arrow Border Radius`, 'ultimate-addons-for-gutenberg' ) }
-								setAttributes={ setAttributes }
-								value={ paginateArrowBorderRadius }
-								data={ {
-									value: paginateArrowBorderRadius,
-									label: 'paginateArrowBorderRadius',
-								} }
-								// onChange={ ( value ) => setAttributes( {
-								// 	paginateArrowBorderRadius: value
-								// } ) }
-								min={ 0 }
-								max={ 50 }
-								displayUnit={ false }
-							/>
-							<Range
-								label={ __( `Arrow Border Width`, 'ultimate-addons-for-gutenberg' ) }
-								setAttributes={ setAttributes }
-								value={ paginateArrowBorderWidth }
-								data={ {
-									value: paginateArrowBorderWidth,
-									label: 'paginateArrowBorderWidth',
-								} }
-								// onChange={ ( value ) => setAttributes( {
-								// 	paginateArrowBorderWidth: value
-								// } ) }
-								min={ 0 }
-								max={ 50 }
-								displayUnit={ false }
-							/>
-						</>
-					) }
+					<ResponsiveBorder
+						setAttributes={ setAttributes }
+						prefix={ 'arrow' }
+						attributes={ attributes }
+						deviceType={ deviceType }
+					/>
 				</>
-			) }
-			
+			) }			
+			{/* Masonry Pagination */}
 			{ ( feedLayout === 'masonry' ) && (
 				<>
 					{ paginateUseLoader
 						? (
-							<Range
-								label={ __( `Loader Size`, 'ultimate-addons-for-gutenberg' ) }
-								setAttributes={ setAttributes }
-								value={ paginateLoaderSize }
-								data={ {
-									value: paginateLoaderSize,
-									label: 'paginateLoaderSize',
-								} }
-								// onChange={ ( value ) => setAttributes( {
-								// 	paginateLoaderSize: value
-								// } ) }
-								min={ 0 }
-								max={ 50 }
-								displayUnit={ false }
-							/>
+							<>
+								<Range
+									label={ __( `Loader Size`, 'ultimate-addons-for-gutenberg' ) }
+									setAttributes={ setAttributes }
+									value={ paginateLoaderSize }
+									data={ {
+										value: paginateLoaderSize,
+										label: 'paginateLoaderSize',
+									} }
+									min={ 0 }
+									max={ 50 }
+									displayUnit={ false }
+								/>
+								{ renderPaginationColors( false ) }
+							</>
 						)
 						: (
 							<>
@@ -1869,104 +1810,31 @@ const Settings = ( props ) => {
 										} }
 									/>
 								</Suspense>
-								<UAGSelectControl
-									label={ __( 'Button Border Style', 'ultimate-addons-for-gutenberg' ) }
-									data={ {
-										value: paginateButtonBorderStyle,
-										label: 'paginateButtonBorderStyle',
-									} }
-									setAttributes={ setAttributes }
-									options = { [
+								<UAGTabsControl
+									tabs={ [
 										{
-											label: __( 'None', 'ultimate-addons-for-gutenberg' ),
-											value: 'none',
+											name: 'normal',
+											title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
 										},
 										{
-											label: __( 'Solid', 'ultimate-addons-for-gutenberg' ),
-											value: 'solid',
-										},
-										{
-											label: __( 'Double', 'ultimate-addons-for-gutenberg' ),
-											value: 'double',
-										},
-										{
-											label: __( 'Dotted', 'ultimate-addons-for-gutenberg' ),
-											value: 'dotted',
-										},
-										{
-											label: __( 'Dashed', 'ultimate-addons-for-gutenberg' ),
-											value: 'dashed',
-										},
-										{
-											label: __( 'Inset', 'ultimate-addons-for-gutenberg' ),
-											value: 'inset',
-										},
-										{
-											label: __( 'Outset', 'ultimate-addons-for-gutenberg' ),
-											value: 'outset',
-										},
-										{
-											label: __( 'Groove', 'ultimate-addons-for-gutenberg' ),
-											value: 'groove',
-										},
-										{
-											label: __( 'Ridge', 'ultimate-addons-for-gutenberg' ),
-											value: 'ridge',
+											name: 'hover',
+											title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
 										},
 									] }
+									normal={ renderPaginationColors( false ) }
+									hover={ renderPaginationColors( true ) }
 								/>
-								<Range
-									label={ __( `Button Border Radius`, 'ultimate-addons-for-gutenberg' ) }
+								<ResponsiveBorder
 									setAttributes={ setAttributes }
-									value={ paginateButtonBorderRadius }
-									data={ {
-										value: paginateButtonBorderRadius,
-										label: 'paginateButtonBorderRadius',
-									} }
-									// onChange={ ( value ) => setAttributes( {
-									// 	paginateButtonBorderRadius: value
-									// } ) }
-									min={ 0 }
-									max={ 100 }
-									displayUnit={ false }
+									prefix={ 'button' }
+									attributes={ attributes }
+									deviceType={ deviceType }
 								/>
-								{ paginateButtonBorderStyle !== 'none' && (
-									<Range
-										label={ __( `Button Border Width`, 'ultimate-addons-for-gutenberg' ) }
-										setAttributes={ setAttributes }
-										value={ paginateButtonBorderWidth }
-										data={ {
-											value: paginateButtonBorderWidth,
-											label: 'paginateButtonBorderWidth',
-										} }
-										// onChange={ ( value ) => setAttributes( {
-										// 	paginateButtonBorderWidth: value
-										// } ) }
-										min={ 0 }
-										max={ 50 }
-										displayUnit={ false }
-									/>
-								) }
 							</>
 						) 
 					}
 				</>
 			) }
-			<UAGTabsControl
-				tabs={ [
-					{
-						name: 'normal',
-						title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						name: 'hover',
-						title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
-					},
-				] }
-				normal={ renderPaginationColors( false ) }
-				hover={ renderPaginationColors( true ) }
-				disableBottomSeparator={ true }
-			/>
 		</UAGAdvancedPanelBody>
 	);
 

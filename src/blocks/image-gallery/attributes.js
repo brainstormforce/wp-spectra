@@ -1,3 +1,22 @@
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const buttonBorderAttributes = getBorderAttributes( 'button', {
+	borderTopLeftRadius: 50,
+	borderTopRightRadius: 50,
+	borderBottomLeftRadius: 50,
+	borderBottomRightRadius: 50,
+} );
+const arrowBorderAttributes = getBorderAttributes( 'arrow', {
+	borderTopWidth: 4,
+	borderRightWidth: 4,
+	borderLeftWidth: 4,
+	borderBottomWidth: 4,
+	borderTopLeftRadius: 50,
+	borderTopRightRadius: 50,
+	borderBottomLeftRadius: 50,
+	borderBottomRightRadius: 50,
+} );
+
 const attributes = {
 
 	// Block Requirements
@@ -939,53 +958,11 @@ const attributes = {
 			styleType: 'arrow-distance-unit'
 		},
 	},
-	paginateArrowBorderStyle: {
-		type: 'string',
-		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'arrow-border-style'
-		},
-	},
-	paginateArrowBorderWidth: {
-		type: 'number',
-		default: 4,
-		UAGCopyPaste: {
-			styleType: 'arrow-border-size'
-		},
-	},
-	paginateArrowBorderRadius: {
-		type: 'number',
-		default: 50,
-		UAGCopyPaste: {
-			styleType: 'arrow-border-radius'
-		},
-	},
 	paginateLoaderSize: {
 		type: 'number',
 		default: 18,
 		UAGCopyPaste: {
 			styleType: 'post-loader-size'
-		},
-	},
-	paginateButtonBorderStyle: {
-		type: 'string',
-		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'btn-border-style'
-		},
-	},
-	paginateButtonBorderWidth: {
-		type: 'number',
-		default: 4,
-		UAGCopyPaste: {
-			styleType: 'btn-border-width'
-		},
-	},
-	paginateButtonBorderRadius: {
-		type: 'number',
-		default: 50,
-		UAGCopyPaste: {
-			styleType: 'btn-border-radius'
 		},
 	},
 	paginateButtonTextColor: {
@@ -1002,20 +979,6 @@ const attributes = {
 			styleType: 'btn-hover-color'
 		},
 	},
-	paginateButtonBorderColor: {
-		type: 'string',
-		default: '#de99ec',
-		UAGCopyPaste: {
-			styleType: 'btn-border-color'
-		},
-	},
-	paginateButtonBorderColorHover: {
-		type: 'string',
-		default: '#4A01E0',
-		UAGCopyPaste: {
-			styleType: 'btn-border-hover-color'
-		},
-	},
 	paginateColor: {
 		type: 'string',
 		default: '#4A01E0',
@@ -1030,6 +993,10 @@ const attributes = {
 			styleType: 'btn-bg-hover-color'
 		},
 	},
+
+	// Border Attributes
+	...buttonBorderAttributes,
+	...arrowBorderAttributes,
 };
 
 export default attributes;

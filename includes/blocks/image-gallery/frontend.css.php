@@ -10,6 +10,13 @@
 // Adds Fonts
 UAGB_Block_JS::blocks_image_gallery_gfont( $attr );
 
+$button_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'button' );
+$button_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'button', 'tablet' );
+$button_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'button', 'mobile' );
+$arrow_border_css         = UAGB_Block_Helper::uag_generate_border_css( $attr, 'arrow' );
+$arrow_border_css_tablet  = UAGB_Block_Helper::uag_generate_border_css( $attr, 'arrow', 'tablet' );
+$arrow_border_css_mobile  = UAGB_Block_Helper::uag_generate_border_css( $attr, 'arrow', 'mobile' );
+
 $selectors = array(
 
 	// Feed Selectors
@@ -42,14 +49,9 @@ $selectors = array(
 	'.uag-image-gallery__control-arrows svg:hover' => array(
 		'fill' => $attr[ 'paginateColorHover' ],
 	),
-	'.uag-image-gallery__control-arrows--carousel' => array(
-		'border-style' => $attr[ 'paginateArrowBorderStyle' ],
-		'border-width' => UAGB_Helper::get_css_value( $attr[ 'paginateArrowBorderWidth' ], 'px' ),
-		'border-radius' => UAGB_Helper::get_css_value( $attr[ 'paginateArrowBorderRadius' ], '%' ),
-		'border-color' => $attr[ 'paginateColor' ],
-	),
+	'.uag-image-gallery__control-arrows--carousel' => $arrow_border_css,
 	'.uag-image-gallery__control-arrows--carousel:hover' => array(
-		'border-color' => $attr[ 'paginateColorHover' ],
+		'border-color' => $attr[ 'arrowBorderHColor' ],
 	),
 	'.uag-image-gallery__control-arrows--carousel.slick-prev' => array(
 		'left' => UAGB_Helper::get_css_value(
@@ -86,32 +88,31 @@ $selectors = array(
 		'width' => UAGB_Helper::get_css_value( $attr[ 'paginateLoaderSize' ], 'px' ),
 		'height' => UAGB_Helper::get_css_value( $attr[ 'paginateLoaderSize' ], 'px' ),
 	),
-	'.uag-image-gallery__control-button' => array(
-		'padding' => UAGB_Block_Helper::generate_spacing(
-			$attr[ 'paginateButtonPaddingUnit' ],
-			$attr[ 'paginateButtonPaddingTop' ],
-			$attr[ 'paginateButtonPaddingRight' ],
-			$attr[ 'paginateButtonPaddingBottom' ],
-			$attr[ 'paginateButtonPaddingLeft' ]
+	'.uag-image-gallery__control-button' => array_merge(
+		array(
+			'padding' => UAGB_Block_Helper::generate_spacing(
+				$attr[ 'paginateButtonPaddingUnit' ],
+				$attr[ 'paginateButtonPaddingTop' ],
+				$attr[ 'paginateButtonPaddingRight' ],
+				$attr[ 'paginateButtonPaddingBottom' ],
+				$attr[ 'paginateButtonPaddingLeft' ]
+			),
+			'color' => $attr[ 'paginateButtonTextColor' ],
+			'background-color' => $attr[ 'paginateColor' ],
+			'font-family' => $attr[ 'loadMoreFontFamily' ] === 'Default' ? '' : $attr[ 'loadMoreFontFamily' ],
+			'font-weight' => $attr[ 'loadMoreFontWeight' ],
+			'font-style' => $attr[ 'loadMoreFontStyle' ],
+			'text-decoration' => $attr[ 'loadMoreDecoration' ],
+			'text-transform' => $attr[ 'loadMoreTransform' ],
+			'font-size' => UAGB_Helper::get_css_value( $attr[ 'loadMoreFontSize' ], $attr[ 'loadMoreFontSizeType' ] ),
+			'line-height' => UAGB_Helper::get_css_value( $attr[ 'loadMoreLineHeight' ], $attr[ 'loadMoreLineHeightType' ] ),
 		),
-		'color' => $attr[ 'paginateButtonTextColor' ],
-		'background-color' => $attr[ 'paginateColor' ],
-		'border-style' => $attr[ 'paginateButtonBorderStyle' ],
-		'border-width' => UAGB_Helper::get_css_value( $attr[ 'paginateButtonBorderWidth' ], 'px' ),
-		'border-radius' => UAGB_Helper::get_css_value( $attr[ 'paginateButtonBorderRadius' ], 'px' ),
-		'border-color' => $attr[ 'paginateButtonBorderColor' ],
-		'font-family' => $attr[ 'loadMoreFontFamily' ] === 'Default' ? '' : $attr[ 'loadMoreFontFamily' ],
-		'font-weight' => $attr[ 'loadMoreFontWeight' ],
-		'font-style' => $attr[ 'loadMoreFontStyle' ],
-		'text-decoration' => $attr[ 'loadMoreDecoration' ],
-		'text-transform' => $attr[ 'loadMoreTransform' ],
-		'font-size' => UAGB_Helper::get_css_value( $attr[ 'loadMoreFontSize' ], $attr[ 'loadMoreFontSizeType' ] ),
-		'line-height' => UAGB_Helper::get_css_value( $attr[ 'loadMoreLineHeight' ], $attr[ 'loadMoreLineHeightType' ] ),
+		$button_border_css,
 	),
 	'.uag-image-gallery__control-button:hover' => array(
 		'color' => $attr[ 'paginateButtonTextColorHover' ],
 		'background-color' => $attr[ 'paginateColorHover' ],
-		'border-color' => $attr[ 'paginateButtonBorderColorHover' ],
+		'border-color' => $attr[ 'buttonBorderHColor' ],
 	),
 
 	//Need to implement Lightbox Styling
