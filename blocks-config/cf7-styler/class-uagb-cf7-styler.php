@@ -876,6 +876,7 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 					)
 				);
 			}
+
 		}
 
 		/**

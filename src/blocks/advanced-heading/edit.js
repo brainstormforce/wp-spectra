@@ -29,11 +29,10 @@ const UAGBAdvancedHeading = ( props ) => {
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-
-		setAttributes( { classMigrate: true } );
-
+		setAttributes( { classMigrate: true } )
 
 	}, [] );
+
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
@@ -50,6 +49,7 @@ const UAGBAdvancedHeading = ( props ) => {
 
 		scrollBlockToView();
 	}, [deviceType] );
+
 
 	return (
 		<>

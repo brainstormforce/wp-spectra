@@ -7,7 +7,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
-	
+
 	const blockName = props.name.replace( 'uagb/', '' );
 
 	const {

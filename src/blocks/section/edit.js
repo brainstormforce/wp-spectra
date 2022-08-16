@@ -43,6 +43,7 @@ const UAGBSectionEdit = ( props ) => {
 				value: borderStyle
 			} );
 			props.setAttributes( migrationAttributes )
+
 		}
 	}, [ ] );
 	useEffect( () => {

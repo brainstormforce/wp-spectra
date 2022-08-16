@@ -1,6 +1,7 @@
 /**
  * External dependencies
  */
+
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
@@ -66,6 +67,7 @@ const PostTimelineComponent = ( props ) => {
 			if ( isNaN( ctaBottomSpacing ) ) {
 				props.setAttributes( { ctaBottomSpacing: contentPadding } );
 			}
+
 			if ( isNaN( headTopSpacing ) ) {
 				props.setAttributes( { headTopSpacing: contentPadding } );
 			}
@@ -77,6 +79,7 @@ const PostTimelineComponent = ( props ) => {
 			if ( ! leftMargin ) {
 				props.setAttributes( { leftMargin: horizontalSpace } );
 			}
+
 		}
 
 		if( timelinAlignment ) {
@@ -125,7 +128,6 @@ const PostTimelineComponent = ( props ) => {
 		</Suspense>
 	);
 };
-
 export default withSelect( ( select, props ) => {
 	const {
 		categories,

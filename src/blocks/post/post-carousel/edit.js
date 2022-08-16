@@ -2356,6 +2356,7 @@ export default compose(
 				'core/editor'
 			).getCurrentPostId();
 		}
+
 		const category = [];
 		const temp = parseInt( categories );
 		category.push( temp );
