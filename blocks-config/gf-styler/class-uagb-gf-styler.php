@@ -53,6 +53,7 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 			if ( ! function_exists( 'register_block_type' ) ) {
 				return;
 			}
+
 			if ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) {
 				register_block_type(
 					'uagb/gf-styler',
@@ -987,6 +988,7 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 					)
 				);
 			}
+
 		}
 
 		/**

@@ -29,6 +29,7 @@ const UAGBWpSearchEdit = ( props ) => {
 	// componentDidMount.
 	useEffect( () => {
 		// Assigning block_id in the attribute.
+
 		props.setAttributes( {
 			block_id: props.clientId.substr( 0, 8 ),
 		} );
@@ -165,7 +166,7 @@ const UAGBWpSearchEdit = ( props ) => {
 			setState( {
 				isFocused: true,
 			} );
-		}
+        }
 
 		const blockStyling = styling( props );
 		addBlockEditorDynamicStyles( 'uagb-style-wp-search-' + props.clientId.substr( 0, 8 ), blockStyling );

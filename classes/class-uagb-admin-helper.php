@@ -343,7 +343,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		/**
 		 * Get Global Content Width
 		 *
-		 * @since 2.0.0-beta.3
+		 * @since 2.0.0
 		 * @return int
 		 * @access public
 		 */

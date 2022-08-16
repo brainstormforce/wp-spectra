@@ -96,7 +96,9 @@ const Settings = () => {
                                 <CollapsePanels/>
                                 <CopyPasteStyles/>
                                 <AutoBlockRecovery/>
-                                <LoadFontAwesome5/>
+                                {  'yes' === uag_react.global_data.uagb_old_user_less_than_2 &&
+                                    <LoadFontAwesome5/>
+                                }
                             </>
                         }
                         { 'asset-generation' === activeSettingsNavigationTab &&
@@ -116,9 +118,9 @@ const Settings = () => {
                         }
                         { 'fonts-performance' === activeSettingsNavigationTab &&
                             <>
-                                <SelectedFontFamilies/>
                                 <LoadFontsLocally/>
                                 <PreloadLocalFonts/>
+                                <SelectedFontFamilies/>
                             </>
                         }
                         { 'block-settings' === activeSettingsNavigationTab &&
