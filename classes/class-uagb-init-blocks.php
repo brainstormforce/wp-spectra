@@ -235,7 +235,7 @@ class UAGB_Init_Blocks {
 	/**
 	 * Ajax call to get Taxonomy List.
 	 *
-	 * @since 2.0.0-beta.3
+	 * @since 2.0.0
 	 */
 	public function get_taxonomy() {
 

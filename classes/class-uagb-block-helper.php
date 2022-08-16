@@ -1361,7 +1361,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Border attribute generation Function.
 		 *
-		 * @since 2.0.0-beta.3
+		 * @since 2.0.0
 		 * @param  array $prefix   Attribute Prefix.
 		 * @param array $default_args  default attributes args.
 		 * @return array
@@ -1426,7 +1426,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Border attribute generation Function.
 		 *
-		 * @since 2.0.0-beta.3
+		 * @since 2.0.0
 		 * @param  array $prefix   Attribute Prefix.
 		 * @param array $default_args  default attributes args.
 		 * @return array
@@ -1498,7 +1498,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Border CSS generation Function.
 		 *
-		 * @since 2.0.0-beta.3
+		 * @since 2.0.0
 		 * @param  array  $attr   Attribute List.
 		 * @param  string $prefix Attribuate prefix .
 		 * @param  string $device Responsive.
@@ -1553,7 +1553,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Deprecated Border CSS generation Function.
 		 *
-		 * @since 2.0.0-beta.3
+		 * @since 2.0.0
 		 * @param  array  $current_css   Current style list.
 		 * @param  string $border_width   Border Width.
 		 * @param  string $border_radius Border Radius.
@@ -1589,7 +1589,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * For flex-direction: row-reverse, justify-content work opposite.
 		 *
-		 * @since 2.0.0-beta.3
+		 * @since 2.0.0
 		 * @param string $text_align Alignment value from text-align property.
 		 */
 		public static function flex_alignment_when_direction_is_row_reverse( $text_align ) {
