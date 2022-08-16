@@ -105,6 +105,7 @@ const UAGBtestimonial = ( props ) => {
 			);
 			props.setAttributes( migrationAttributes )
 		}
+
 	}, [] );
 
 	useEffect( () => {
@@ -119,6 +120,7 @@ const UAGBtestimonial = ( props ) => {
 
 		addBlockEditorDynamicStyles( 'uagb-testinomial-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
+
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.

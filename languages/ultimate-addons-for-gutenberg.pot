@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-08-16T06:19:52+00:00\n"
+"POT-Creation-Date: 2022-08-16T12:23:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -248,7 +248,7 @@ msgstr ""
 msgid "Please select a valid Contact Form 7."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:541
+#: classes/class-uagb-init-blocks.php:543
 #: dist/blocks.js:9
 #: dist/chunks/buttons/settings.js:1
 #: dist/chunks/cf7-styler/settings.js:1
@@ -259,7 +259,7 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:631
+#: classes/class-uagb-init-blocks.php:633
 #: dist/blocks.js:9
 #: dist/blocks.js:15
 #: dist/chunks/advanced-heading/settings.js:1
@@ -282,18 +282,18 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:660
-#: classes/class-uagb-init-blocks.php:693
+#: classes/class-uagb-init-blocks.php:662
+#: classes/class-uagb-init-blocks.php:695
 #: dist/chunks/cf7-styler/settings.js:1
 #: dist/chunks/gf-styler/settings.js:1
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:674
+#: classes/class-uagb-init-blocks.php:676
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:707
+#: classes/class-uagb-init-blocks.php:709
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
