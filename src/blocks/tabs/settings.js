@@ -293,100 +293,30 @@ const Settings = ( props ) => {
 			],
 			mobile: [
 				{
-					value: 'hstyle1',
-					label: __(
-						'Horizontal Style 1',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
-					value: 'hstyle2',
-					label: __(
-						'Horizontal Style 2',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
-					value: 'hstyle3',
-					label: __(
-						'Horizontal Style 3',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
-					value: 'hstyle4',
-					label: __(
-						'Horizontal Style 4',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
-					value: 'hstyle5',
-					label: __(
-						'Horizontal Style 5',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
-					value: 'vstyle6',
-					label: __(
-						'Vertical Style 6',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
-					value: 'vstyle7',
-					label: __(
-						'Vertical Style 7',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
-					value: 'vstyle8',
-					label: __(
-						'Vertical Style 8',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
-					value: 'vstyle9',
-					label: __(
-						'Vertical Style 9',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
-					value: 'vstyle10',
-					label: __(
-						'Vertical Style 10',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
 					value: 'stack1',
 					label: __(
-						'Stack Style 11',
+						'Stack Style 1',
 						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
 					value: 'stack2',
 					label: __(
-						'Stack Style 12',
+						'Stack Style 2',
 						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
 					value: 'stack3',
 					label: __(
-						'Stack Style 13',
+						'Stack Style 3',
 						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
 					value: 'stack4',
 					label: __(
-						'Stack Style 14',
+						'Stack Style 4',
 						'ultimate-addons-for-gutenberg'
 					),
 				},
