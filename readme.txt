@@ -382,7 +382,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 = 1.22.2 =
 * Fix: Advanced Columns - Column not stacking on tablet & mobile devices.
-* Fix: Table of Contents - Showing default title instead of saved one.
+* Fix: Table of Contents - Showing default title instead of saved one
 
 = 1.22.1 =
 * Fix: Table of Contents: Content not being generated in few themes due to missing `entry-content` class.
