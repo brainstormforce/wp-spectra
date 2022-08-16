@@ -3,6 +3,7 @@
  */
 
 // Import classes
+
 import styling from './styling';
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';

@@ -173,7 +173,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 									%2$s
 								</div>
 								%3$s<br />
-								<div class="uagb-review-notice-container">
+								<div class="astra-review-notice-container">
 									<a href="%4$s" class="astra-notice-close uagb-review-notice button-primary" target="_blank">
 									%5$s
 									</a>
@@ -236,7 +236,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			// Styles.
 			wp_enqueue_style( 'uagb-notice-settings', UAGB_URL . 'admin/assets/admin-notice.css', array(), UAGB_VER );
 		}
-
 
 		/**
 		 * Rank Math SEO filter to add kb-elementor to the TOC list.

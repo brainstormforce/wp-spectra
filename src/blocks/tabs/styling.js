@@ -615,7 +615,7 @@ function styling( props ) {
 			'margin-left': '0px',
 		},
 		'.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile':{
-			...borderCSSTablet                                  
+			...borderCSSTablet
 		},
 		'.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile ul.uagb-tabs__panel .uagb-tab': {
 			'border-width': '0px',
