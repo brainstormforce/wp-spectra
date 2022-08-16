@@ -54,7 +54,7 @@ const Welcome = () => {
 											className="inline-flex items-center px-4 py-2 border border-slate-300 shadow-sm text-sm font-medium rounded-md text-slate-500 bg-white focus-visible:bg-slate-50 hover:bg-slate-50 focus:outline-none"
 											onClick={ onReadFullGuideClick }
 										>
-											{__( 'Read Full Guide', 'ultimate-addons-for-gutenberg' )}
+											{__( 'Visit Our Website', 'ultimate-addons-for-gutenberg' )}
 										</button>
 									</span>
 								</div>
