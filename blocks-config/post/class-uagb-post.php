@@ -1103,6 +1103,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						'default' => '',
 					),
 				),
+				'deviceType'              => array(
+					'type'    => 'string',
+					'default' => 'Desktop',
+				),
 			);
 		}
 

@@ -2,7 +2,7 @@ name: Plugin asset/readme update
 on:
   push:
     branches:
-    - master
+    - fix-css-issue-on-responsive-and-button-child-setting-not-visible
 jobs:
   master:
     name: Push to master

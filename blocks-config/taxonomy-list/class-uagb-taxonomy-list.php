@@ -517,6 +517,10 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 								'default' => '#E0E0E0',
 							),
 						),
+						'deviceType'            => array(
+							'type'    => 'string',
+							'default' => 'Desktop',
+						),
 					),
 					'render_callback' => array( $this, 'render_html' ),
 				)

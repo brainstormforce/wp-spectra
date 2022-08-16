@@ -124,6 +124,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 							wp_send_json_error( 400 );
 						}
 					}
+
 				}
 			}
 			if ( empty( $google_recaptcha_secret_key ) && ! empty( $google_recaptcha_site_key ) ) {

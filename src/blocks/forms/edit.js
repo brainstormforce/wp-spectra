@@ -220,6 +220,10 @@ const UAGBFormsEdit = ( props ) => {
 
 		scrollBlockToView();
 
+
+		const id = this.props.clientId
+		window.addEventListener( 'load', this.renderReadyClasses( id ) )
+
 	}, [deviceType] );
 
 	const blockVariationPickerOnSelect = useCallback(
@@ -363,7 +367,9 @@ const applyWithSelect = withSelect( ( select, props ) => {
 
 	const innerBlocks = getBlocks( props.clientId );
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
 
+	const deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 	return {
 		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
 		innerBlocks,
@@ -381,6 +387,10 @@ const applyWithSelect = withSelect( ( select, props ) => {
 				? null
 				: getBlockVariations( props.name ),
 		replaceInnerBlocks,
+		attributes: {
+			...props.attributes,
+			deviceType
+		}
 	};
 } );
 

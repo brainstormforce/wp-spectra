@@ -3,6 +3,7 @@
  */
 
 // Import classes
+
 import styling from './styling';
 import lazyLoader from '@Controls/lazy-loader';
 import React, { useEffect, lazy, Suspense } from 'react';
@@ -53,6 +54,7 @@ const SocialShareChildComponent = ( props ) => {
 
 		scrollBlockToView();
 	}, [deviceType] );
+
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
