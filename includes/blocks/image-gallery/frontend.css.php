@@ -299,16 +299,20 @@ $t_selectors = array(
 			$attr[ 'feedMarginUnitTab' ],
 		),
 	),
-	'.uag-image-gallery__control-button' => array(
-		'padding' => UAGB_Block_Helper::generate_spacing(
-			$attr[ 'paginateButtonPaddingUnitTab' ],
-			$attr[ 'paginateButtonPaddingTopTab' ],
-			$attr[ 'paginateButtonPaddingRightTab' ],
-			$attr[ 'paginateButtonPaddingBottomTab' ],
-			$attr[ 'paginateButtonPaddingLeftTab' ]
+	'.uag-image-gallery__control-arrows--carousel' => $arrow_border_css_tablet,
+	'.uag-image-gallery__control-button' => array_merge(
+		array(
+			'padding' => UAGB_Block_Helper::generate_spacing(
+				$attr[ 'paginateButtonPaddingUnitTab' ],
+				$attr[ 'paginateButtonPaddingTopTab' ],
+				$attr[ 'paginateButtonPaddingRightTab' ],
+				$attr[ 'paginateButtonPaddingBottomTab' ],
+				$attr[ 'paginateButtonPaddingLeftTab' ]
+			),
+			'font-size' => UAGB_Helper::get_css_value( $attr[ 'loadMoreFontSizeTab' ], $attr[ 'loadMoreFontSizeType' ] ),
+			'line-height' => UAGB_Helper::get_css_value( $attr[ 'loadMoreLineHeightTab' ], $attr[ 'loadMoreLineHeightType' ] ),
 		),
-		'font-size' => UAGB_Helper::get_css_value( $attr[ 'loadMoreFontSizeTab' ], $attr[ 'loadMoreFontSizeType' ] ),
-		'line-height' => UAGB_Helper::get_css_value( $attr[ 'loadMoreLineHeightTab' ], $attr[ 'loadMoreLineHeightType' ] ),
+		$button_border_css_tablet,
 	),
 	'.uag-image-gallery__layout--grid' => array(
 		'grid-gap' => UAGB_Helper::get_css_value(
@@ -382,16 +386,20 @@ $m_selectors = array(
 			$attr[ 'feedMarginUnitMob' ],
 		),
 	),
-	'.uag-image-gallery__control-button' => array(
-		'padding' => UAGB_Block_Helper::generate_spacing(
-			$attr[ 'paginateButtonPaddingUnitMob' ],
-			$attr[ 'paginateButtonPaddingTopMob' ],
-			$attr[ 'paginateButtonPaddingRightMob' ],
-			$attr[ 'paginateButtonPaddingBottomMob' ],
-			$attr[ 'paginateButtonPaddingLeftMob' ]
+	'.uag-image-gallery__control-arrows--carousel' => $arrow_border_css_mobile,
+	'.uag-image-gallery__control-button' => array_merge(
+		array(
+			'padding' => UAGB_Block_Helper::generate_spacing(
+				$attr[ 'paginateButtonPaddingUnitMob' ],
+				$attr[ 'paginateButtonPaddingTopMob' ],
+				$attr[ 'paginateButtonPaddingRightMob' ],
+				$attr[ 'paginateButtonPaddingBottomMob' ],
+				$attr[ 'paginateButtonPaddingLeftMob' ]
+			),
+			'font-size' => UAGB_Helper::get_css_value( $attr[ 'loadMoreFontSizeMob' ], $attr[ 'loadMoreFontSizeType' ] ),
+			'line-height' => UAGB_Helper::get_css_value( $attr[ 'loadMoreLineHeightMob' ], $attr[ 'loadMoreLineHeightType' ] ),
 		),
-		'font-size' => UAGB_Helper::get_css_value( $attr[ 'loadMoreFontSizeMob' ], $attr[ 'loadMoreFontSizeType' ] ),
-		'line-height' => UAGB_Helper::get_css_value( $attr[ 'loadMoreLineHeightMob' ], $attr[ 'loadMoreLineHeightType' ] ),
+		$button_border_css_mobile,
 	),
 	'.uag-image-gallery__layout--grid' => array(
 		'grid-gap' => UAGB_Helper::get_css_value(

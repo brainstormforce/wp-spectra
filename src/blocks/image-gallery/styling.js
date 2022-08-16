@@ -483,6 +483,7 @@ function styling( props ) {
 			),
 			'font-size': generateCSSUnit( loadMoreFontSizeTab, loadMoreFontSizeType ),
 			'line-height': generateCSSUnit( loadMoreLineHeightTab, loadMoreLineHeightType ),
+			...buttonBorderCSSTablet,
 		},
 		'.uag-image-gallery__layout--grid': {
 			'grid-gap': generateCSSUnit(
@@ -532,6 +533,9 @@ function styling( props ) {
 				captionPaddingUnitTab
 			),
 		},
+		'.uag-image-gallery__control-arrows--carousel': {
+			...arrowBorderCSSTablet,
+		},
 	};
 
 	let mobileSelectors = {
@@ -566,6 +570,7 @@ function styling( props ) {
 			),
 			'font-size': generateCSSUnit( loadMoreFontSizeMob, loadMoreFontSizeType ),
 			'line-height': generateCSSUnit( loadMoreLineHeightMob, loadMoreLineHeightType ),
+			...buttonBorderCSSMobile,
 		},
 		'.uag-image-gallery__layout--grid': {
 			'grid-gap': generateCSSUnit(
@@ -614,6 +619,9 @@ function styling( props ) {
 				captionPaddingLeftMob,
 				captionPaddingUnitMob
 			),
+		},
+		'.uag-image-gallery__control-arrows--carousel': {
+			...arrowBorderCSSMobile,
 		},
 	};
 
