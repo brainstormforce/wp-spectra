@@ -6,6 +6,7 @@ import styling from './styling';
 import React, { useEffect, lazy, Suspense } from 'react';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import lazyLoader from '@Controls/lazy-loader';
 
 const Settings = lazy( () =>
@@ -28,6 +29,8 @@ const UAGBTeam = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-team-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [ deviceType ] );
 
 	useEffect( () => {

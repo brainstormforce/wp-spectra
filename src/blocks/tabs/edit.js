@@ -6,6 +6,7 @@ import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
@@ -131,6 +132,8 @@ const UAGBTabsEdit = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-tab-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 
 	}, [ deviceType ] );
 

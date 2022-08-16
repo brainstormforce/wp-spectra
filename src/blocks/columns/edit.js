@@ -5,6 +5,7 @@
 import styling from './styling';
 import { __ } from '@wordpress/i18n';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import React, { useEffect, lazy, Suspense, useLayoutEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
@@ -138,6 +139,8 @@ const ColumnsComponent = ( props ) => {
 	    const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-columns-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	const blockVariationPickerOnSelect = (

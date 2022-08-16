@@ -8,6 +8,7 @@ import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/price-list/settings" */ './settings' )
 );
@@ -124,6 +125,8 @@ const UAGBRestaurantMenu = ( props ) => {
 		const blockStyling = RestMenuStyle( props );
 
 		addBlockEditorDynamicStyles( 'uagb-restaurant-menu-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	useEffect( () => {

@@ -7,6 +7,7 @@ import React, { useState, useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/lottie/settings" */ './settings' )
 );
@@ -37,6 +38,8 @@ const UAGBLottie = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-lottie-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	const loopLottie = () => {
