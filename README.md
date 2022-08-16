@@ -173,7 +173,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### 2.0.0 - TUSDAY, 14TH JULY 2022 ###
+### 2.0.0 - TUESDAY, 16TH AUGUST 2022 ###
 * New: Redesigned UI/UX controls of Spectra blocks.
 * New: Introduced new, beautiful & fast Spectra admin dashboard powered by React.
 * New: Block Presets - Introducing Preset for most used block.
