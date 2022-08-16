@@ -174,7 +174,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 2.0.0 - TUESDAY, 16TH AUGUST 2022 =
+= 2.0.0 - WEDNESDAY, 17TH AUGUST 2022 =
 * New: Redesigned UI/UX controls of Spectra blocks.
 * New: Introduced new, beautiful & fast Spectra admin dashboard powered by React.
 * New: Introducing Coming Soon mode feature.
@@ -386,7 +386,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Table of Contents: Content not being generated in few themes due to missing `entry-content` class.
 
 = 1.22.0 =
-* New: Forms Block. [Read More](https://ultimategutenberg.com/blocks/forms/).
+* New: Forms Block. [Read More](https://wpspectra.com/blocks/forms/).
 * Improvement: Block Templates - Added filter to disable the Block Templates. [Read More](https://wpspectra.com/docs/spectra-enable-disable-templates-button/)
 * Improvement: Post Layouts - Now all the selected categories can be displayed in each post layout.
 * Improvement: Table of Contents - Now Table of Contents stores minimal data in databases and calculates the contents dynamically on page load.
