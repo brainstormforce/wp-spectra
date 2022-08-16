@@ -10,6 +10,7 @@ import { withState, compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/review/settings" */ './settings' )
 );
@@ -91,6 +92,8 @@ const ReviewComponent = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-ratings-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	// Setup the attributes
