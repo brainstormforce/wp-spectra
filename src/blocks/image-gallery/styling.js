@@ -90,8 +90,22 @@ function styling( props ) {
 		paginateButtonPaddingUnitMob,
 		
 		// Image Styling.
-		imageBorderRadius,
+		imageBorderTopLeftRadius,
+		imageBorderTopRightRadius,
+		imageBorderBottomRightRadius,
+		imageBorderBottomLeftRadius,
+		imageBorderTopLeftRadiusTablet,
+		imageBorderTopRightRadiusTablet,
+		imageBorderBottomRightRadiusTablet,
+		imageBorderBottomLeftRadiusTablet,
+		imageBorderTopLeftRadiusMobile,
+		imageBorderTopRightRadiusMobile,
+		imageBorderBottomRightRadiusMobile,
+		imageBorderBottomLeftRadiusMobile,
 		imageBorderRadiusUnit,
+		imageBorderRadiusUnitTablet,
+		imageBorderRadiusUnitMobile,
+		imageBorderRadiusUnitLink,
 		imageEnableZoom,
 		imageZoomType,
 		captionBackgroundEnableBlur,
@@ -336,7 +350,10 @@ function styling( props ) {
 		'.uag-image-gallery-media': {
 			'border-radius': generateBorderRadius(
 				imageBorderRadiusUnit,
-				imageBorderRadius,
+				imageBorderTopLeftRadius,
+				imageBorderTopRightRadius,
+				imageBorderBottomRightRadius,
+				imageBorderBottomLeftRadius,
 			),
 		},
 
@@ -352,7 +369,10 @@ function styling( props ) {
 		'.uag-image-gallery-media__thumbnail-blurrer': {
 			'border-radius': generateBorderRadius(
 				imageBorderRadiusUnit,
-				imageBorderRadius,
+				imageBorderTopLeftRadius,
+				imageBorderTopRightRadius,
+				imageBorderBottomRightRadius,
+				imageBorderBottomLeftRadius,
 			),
 			'-webkit-backdrop-filter': `blur( ${ generateCSSUnit(
 				captionBackgroundBlurAmount,
@@ -379,7 +399,10 @@ function styling( props ) {
 		'.uag-image-gallery-media__thumbnail-caption-wrapper': {
 			'border-radius': generateBorderRadius(
 				imageBorderRadiusUnit,
-				imageBorderRadius,				
+				imageBorderTopLeftRadius,
+				imageBorderTopRightRadius,
+				imageBorderBottomRightRadius,
+				imageBorderBottomLeftRadius,
 			),
 		},
 		'.uag-image-gallery-media__thumbnail-caption-wrapper--overlay': {
@@ -427,7 +450,10 @@ function styling( props ) {
 		'.uag-image-gallery-media__thumbnail-caption--overlay': {
 			'border-radius': generateBorderRadius(
 				imageBorderRadiusUnit,
-				imageBorderRadius,				
+				imageBorderTopLeftRadius,
+				imageBorderTopRightRadius,
+				imageBorderBottomRightRadius,
+				imageBorderBottomLeftRadius,
 			),
 			'-webkit-align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
 			'align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
@@ -686,19 +712,19 @@ function styling( props ) {
 			case 'top':
 				selectors[ '.uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ] = {
 					...selectors[ '.uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnit, imageBorderRadius, imageBorderRadius, 0, 0 ),
+					'border-radius': generateBorderRadius( imageBorderRadiusUnit, imageBorderTopLeftRadius, imageBorderTopRightRadius, 0, 0 ),
 				};
 				selectors[ '.uag-image-gallery-media' ] = {
 					...selectors[ '.uag-image-gallery-media' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnit, 0, 0, imageBorderRadius, imageBorderRadius ),
+					'border-radius': generateBorderRadius( imageBorderRadiusUnit, 0, 0, imageBorderBottomRightRadius, imageBorderBottomLeftRadius ),
 				};
 				selectors[ '.uag-image-gallery-media__thumbnail' ] = {
 					...selectors[ '.uag-image-gallery-media__thumbnail' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnit, 0, 0, imageBorderRadius, imageBorderRadius ),
+					'border-radius': generateBorderRadius( imageBorderRadiusUnit, 0, 0, imageBorderBottomRightRadius, imageBorderBottomLeftRadius ),
 				};
 				selectors[ '.uag-image-gallery-media__thumbnail-blurrer' ] = {
 					...selectors[ '.uag-image-gallery-media__thumbnail-blurrer' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnit, 0, 0, imageBorderRadius, imageBorderRadius ),
+					'border-radius': generateBorderRadius( imageBorderRadiusUnit, 0, 0, imageBorderBottomRightRadius, imageBorderBottomLeftRadius ),
 				};
 				break;
 			case 'center':
@@ -713,19 +739,19 @@ function styling( props ) {
 			case 'bottom':
 				selectors[ '.uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ] = {
 					...selectors[ '.uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnit, 0, 0, imageBorderRadius, imageBorderRadius ),
+					'border-radius': generateBorderRadius( imageBorderRadiusUnit, 0, 0, imageBorderBottomRightRadius, imageBorderBottomLeftRadius ),
 				};
 				selectors[ '.uag-image-gallery-media' ] = {
 					...selectors[ '.uag-image-gallery-media' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnit, imageBorderRadius, imageBorderRadius, 0, 0 ),
+					'border-radius': generateBorderRadius( imageBorderRadiusUnit, imageBorderTopLeftRadius, imageBorderTopRightRadius, 0, 0 ),
 				};
 				selectors[ '.uag-image-gallery-media__thumbnail' ] = {
 					...selectors[ '.uag-image-gallery-media__thumbnail' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnit, imageBorderRadius, imageBorderRadius, 0, 0 ),
+					'border-radius': generateBorderRadius( imageBorderRadiusUnit, imageBorderTopLeftRadius, imageBorderTopRightRadius, 0, 0 ),
 				};
 				selectors[ '.uag-image-gallery-media__thumbnail-blurrer' ] = {
 					...selectors[ '.uag-image-gallery-media__thumbnail-blurrer' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnit, imageBorderRadius, imageBorderRadius, 0, 0 ),
+					'border-radius': generateBorderRadius( imageBorderRadiusUnit, imageBorderTopLeftRadius, imageBorderTopRightRadius, 0, 0 ),
 				};
 				break;
 		}

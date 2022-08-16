@@ -175,7 +175,10 @@ $selectors = array(
 	'.uag-image-gallery-media' => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
 			$attr[ 'imageBorderRadiusUnit' ],
-			$attr[ 'imageBorderRadius' ],
+			$attr[ 'imageBorderTopLeftRadius' ],
+			$attr[ 'imageBorderTopRightRadius' ],
+			$attr[ 'imageBorderBottomRightRadius' ],
+			$attr[ 'imageBorderBottomLeftRadius' ]
 		),
 	),
 
@@ -184,7 +187,10 @@ $selectors = array(
 	'.uag-image-gallery-media__thumbnail-blurrer' => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
 			$attr[ 'imageBorderRadiusUnit' ],
-			$attr[ 'imageBorderRadius' ],
+			$attr[ 'imageBorderTopLeftRadius' ],
+			$attr[ 'imageBorderTopRightRadius' ],
+			$attr[ 'imageBorderBottomRightRadius' ],
+			$attr[ 'imageBorderBottomLeftRadius' ]
 		),
 		'-webkit-backdrop-filter' => 'blur(' . UAGB_Helper::get_css_value(
 			$attr[ 'captionBackgroundBlurAmount' ],
@@ -211,7 +217,10 @@ $selectors = array(
 	'.uag-image-gallery-media__thumbnail-caption-wrapper' => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
 			$attr[ 'imageBorderRadiusUnit' ],
-			$attr[ 'imageBorderRadius' ],
+			$attr[ 'imageBorderTopLeftRadius' ],
+			$attr[ 'imageBorderTopRightRadius' ],
+			$attr[ 'imageBorderBottomRightRadius' ],
+			$attr[ 'imageBorderBottomLeftRadius' ]
 		),
 	),
 	'.uag-image-gallery-media__thumbnail-caption-wrapper--overlay' => array(
@@ -250,7 +259,10 @@ $selectors = array(
 	'.uag-image-gallery-media__thumbnail-caption--overlay' => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
 			$attr[ 'imageBorderRadiusUnit' ],
-			$attr[ 'imageBorderRadius' ],
+			$attr[ 'imageBorderTopLeftRadius' ],
+			$attr[ 'imageBorderTopRightRadius' ],
+			$attr[ 'imageBorderBottomRightRadius' ],
+			$attr[ 'imageBorderBottomLeftRadius' ]
 		),
 		'-webkit-align-items' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 1, 'flex' ),
 		'align-items' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 1, 'flex' ),
@@ -496,8 +508,8 @@ if ( $attr[ 'captionDisplayType'] === 'bar-outside' && $attr[ 'imageDisplayCapti
 		case 'top': 
 			$selectors[ '.uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
 				$attr[ 'imageBorderRadiusUnit' ],
-				$attr[ 'imageBorderRadius' ],
-				$attr[ 'imageBorderRadius' ],
+				$attr[ 'imageBorderTopLeftRadius' ],
+				$attr[ 'imageBorderTopRightRadius' ],
 				0,
 				0
 			);
@@ -505,22 +517,22 @@ if ( $attr[ 'captionDisplayType'] === 'bar-outside' && $attr[ 'imageDisplayCapti
 				$attr[ 'imageBorderRadiusUnit' ],
 				0,
 				0,
-				$attr[ 'imageBorderRadius' ],
-				$attr[ 'imageBorderRadius' ]
+				$attr[ 'imageBorderBottomRightRadius' ],
+				$attr[ 'imageBorderBottomLeftRadius' ]
 			);
 			$selectors[ '.uag-image-gallery-media__thumbnail' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
 				$attr[ 'imageBorderRadiusUnit' ],
 				0,
 				0,
-				$attr[ 'imageBorderRadius' ],
-				$attr[ 'imageBorderRadius' ]
+				$attr[ 'imageBorderBottomRightRadius' ],
+				$attr[ 'imageBorderBottomLeftRadius' ]
 			);
 			$selectors[ '.uag-image-gallery-media__thumbnail-blurrer' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
 				$attr[ 'imageBorderRadiusUnit' ],
 				0,
 				0,
-				 $attr[ 'imageBorderRadius' ],
-				 $attr[ 'imageBorderRadius' ]
+				 $attr[ 'imageBorderBottomRightRadius' ],
+				 $attr[ 'imageBorderBottomLeftRadius' ]
 			);
 			break;
 		case 'center':
@@ -534,27 +546,27 @@ if ( $attr[ 'captionDisplayType'] === 'bar-outside' && $attr[ 'imageDisplayCapti
 				$attr[ 'imageBorderRadiusUnit' ],
 				0,
 				0,
-				$attr[ 'imageBorderRadius' ],
-				$attr[ 'imageBorderRadius' ]
+				$attr[ 'imageBorderBottomRightRadius' ],
+				$attr[ 'imageBorderBottomLeftRadius' ]
 			);
 			$selectors[ '.uag-image-gallery-media' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
 				$attr[ 'imageBorderRadiusUnit' ],
-				$attr[ 'imageBorderRadius' ],
-				$attr[ 'imageBorderRadius' ],
+				$attr[ 'imageBorderTopLeftRadius' ],
+				$attr[ 'imageBorderTopRightRadius' ],
 				0,
 				0
 			);
 			$selectors[ '.uag-image-gallery-media__thumbnail' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
 				$attr[ 'imageBorderRadiusUnit' ],
-				$attr[ 'imageBorderRadius' ],
-				$attr[ 'imageBorderRadius' ],
+				$attr[ 'imageBorderTopLeftRadius' ],
+				$attr[ 'imageBorderTopRightRadius' ],
 				0,
 				0
 			);
 			$selectors[ '.uag-image-gallery-media__thumbnail-blurrer' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
 				$attr[ 'imageBorderRadiusUnit' ],
-				$attr[ 'imageBorderRadius' ],
-				$attr[ 'imageBorderRadius' ],
+				$attr[ 'imageBorderTopLeftRadius' ],
+				$attr[ 'imageBorderTopRightRadius' ],
 				0,
 				0
 			);

@@ -133,8 +133,22 @@ const Settings = ( props ) => {
 		paginateButtonPaddingUnitMob,
 		paginateButtonPaddingUnitLink,
 		
-		imageBorderRadius,
+		imageBorderTopLeftRadius,
+		imageBorderTopRightRadius,
+		imageBorderBottomRightRadius,
+		imageBorderBottomLeftRadius,
+		imageBorderTopLeftRadiusTablet,
+		imageBorderTopRightRadiusTablet,
+		imageBorderBottomRightRadiusTablet,
+		imageBorderBottomLeftRadiusTablet,
+		imageBorderTopLeftRadiusMobile,
+		imageBorderTopRightRadiusMobile,
+		imageBorderBottomRightRadiusMobile,
+		imageBorderBottomLeftRadiusMobile,
 		imageBorderRadiusUnit,
+		imageBorderRadiusUnitTablet,
+		imageBorderRadiusUnitMobile,
+		imageBorderRadiusUnitLink,
 		imageEnableZoom,
 		imageZoomType,
 		captionBackgroundEnableBlur,
@@ -1312,7 +1326,87 @@ const Settings = ( props ) => {
 
 	const imageStyling = () => (
 		<UAGAdvancedPanelBody title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
-			<Range
+			<SpacingControl
+				{ ...props }
+				label={ __( 'Border Radius', 'ultimate-addons-for-gutenberg' ) }
+				valueTop={ {
+					value: imageBorderTopLeftRadius,
+					label: 'imageBorderTopLeftRadius',
+				} }
+				valueRight={ {
+					value: imageBorderTopRightRadius,
+					label: 'imageBorderTopRightRadius',
+				} }
+				valueBottom={ {
+					value: imageBorderBottomRightRadius,
+					label: 'imageBorderBottomRightRadius',
+				} }
+				valueLeft={ {
+					value: imageBorderBottomLeftRadius,
+					label: 'imageBorderBottomLeftRadius',
+				} }
+				valueTopTablet={ {
+					value: imageBorderTopLeftRadiusTablet,
+					label: 'imageBorderTopLeftRadiusTablet',
+				} }
+				valueRightTablet={ {
+					value: imageBorderTopRightRadiusTablet,
+					label: 'imageBorderTopRightRadiusTablet',
+				} }
+				valueBottomTablet={ {
+					value: imageBorderBottomRightRadiusTablet,
+					label: 'imageBorderBottomRightRadiusTablet',
+				} }
+				valueLeftTablet={ {
+					value: imageBorderBottomLeftRadiusTablet,
+					label: 'imageBorderBottomLeftRadiusTablet',
+				} }
+				valueTopMobile={ {
+					value: imageBorderTopLeftRadiusMobile,
+					label: 'imageBorderTopLeftRadiusMobile',
+				} }
+				valueRightMobile={ {
+					value: imageBorderTopRightRadiusMobile,
+					label: 'imageBorderTopRightRadiusMobile',
+				} }
+				valueBottomMobile={ {
+					value: imageBorderBottomRightRadiusMobile,
+					label: 'imageBorderBottomRightRadiusMobile',
+				} }
+				valueLeftMobile={ {
+					value: imageBorderBottomLeftRadiusMobile,
+					label: 'imageBorderBottomLeftRadiusMobile',
+				} }
+				unit={ {
+					value: imageBorderRadiusUnit,
+					label: 'imageBorderRadiusUnit',
+				} }
+				tUnit={ {
+					value: imageBorderRadiusUnitTablet,
+					label: 'imageBorderRadiusUnitTablet',
+				} }
+				mUnit={ {
+					value: imageBorderRadiusUnitMobile,
+					label: 'imageBorderRadiusUnitMobile',
+				} }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				link={ {
+					value: imageBorderRadiusUnitLink,
+					label: 'imageBorderRadiusUnitLink',
+				} }
+				units={ [
+					{
+						name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+						unitValue: 'px',
+					},
+					{
+						name: __( '%', 'ultimate-addons-for-gutenberg' ),
+						unitValue: '%',
+					},
+				] }
+			/>
+			{/* <Range
 				label={ __( 'Border Radius', 'ultimate-addons-for-gutenberg' ) }
 				setAttributes={ setAttributes }
 				value={ imageBorderRadius }
@@ -1343,7 +1437,7 @@ const Settings = ( props ) => {
 						unitValue: '%',
 					},
 				] }
-			/>
+			/> */}
 			<ToggleControl
 				label={ __(
 					`Enable Hover Zoom`,
