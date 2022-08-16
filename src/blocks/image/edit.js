@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import styling from './styling';
 
@@ -36,6 +37,10 @@ export default function UAGBImageEdit( props ) {
 
         addBlockEditorDynamicStyles( 'uagb-image-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props, deviceType ] );
+
+	useEffect( () => {
+		scrollBlockToView();
+	}, [ deviceType ] );
 
 	return (
 		<React.Fragment>

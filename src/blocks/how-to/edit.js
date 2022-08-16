@@ -11,6 +11,7 @@ import lazyLoader from '@Controls/lazy-loader';
 import React, { lazy, Suspense } from 'react';
 import { useState, useEffect } from '@wordpress/element';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/how-to/settings" */ './settings' )
@@ -59,6 +60,8 @@ const HowToComponent = ( props ) => {
 	    const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-how-to-schema-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	// Setup the attributes

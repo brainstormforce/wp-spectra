@@ -4,6 +4,7 @@
 import styling from './styling';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/form/settings" */ './settings' )
@@ -205,7 +206,7 @@ const UAGBFormsEdit = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		
+
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-style-forms-' + props.clientId.substr( 0, 8 ), blockStyling );
@@ -216,6 +217,9 @@ const UAGBFormsEdit = ( props ) => {
 	    const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-style-forms-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
+
 	}, [deviceType] );
 
 	const blockVariationPickerOnSelect = useCallback(
