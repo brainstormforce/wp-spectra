@@ -165,7 +165,7 @@ const UAGBWpSearchEdit = ( props ) => {
 		if ( props.isSelected ) {
 			setState( {
 				isFocused: true,
-			} )
+			} );
         }
 
 		const blockStyling = styling( props );

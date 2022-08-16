@@ -845,10 +845,6 @@ const attributes = {
 			styleType: 'desc-letter-spacing-type'
 		}
 	},
-	deviceType: {
-		type: 'string',
-		default: 'Desktop'
-	}
 };
 
 export default attributes;
