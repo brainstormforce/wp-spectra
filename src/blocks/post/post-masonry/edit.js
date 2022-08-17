@@ -55,6 +55,7 @@ import { InspectorControls } from '@wordpress/block-editor';
 
 import { withSelect, withDispatch } from '@wordpress/data';
 
+
 const UAGBPostMasonry = ( props ) => {
 
 	const [ state, setState ] = useState( {
@@ -2635,6 +2636,7 @@ export default compose(
 					? categories
 					: category;
 		}
+
 		return {
 			latestPosts: getEntityRecords(
 				'postType',
