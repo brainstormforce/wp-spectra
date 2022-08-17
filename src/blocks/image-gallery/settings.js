@@ -1124,6 +1124,7 @@ const Settings = ( props ) => {
 						<>
 							<Range
 								label={ __( `Page Limit`, 'ultimate-addons-for-gutenberg' ) }
+								setAttributes={ setAttributes }
 								value={ paginateLimit }
 								data={ {
 									value: paginateLimit,
