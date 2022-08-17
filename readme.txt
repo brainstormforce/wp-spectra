@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.0
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,34 +71,30 @@ We also have an informative and detailed article that will help you to <a href="
 <strong>Spectra WordPress Blocks Library</strong>
 
 <ul>
+	<li><a href="https://wpspectra.com/container-layout/" target="_blank">Container </a>: The Container block allows you to create beautiful layouts with flexbox powered container.</li>
+	<li><a href="https://wpspectra.com/blocks/image-block/" target="_blank">Image </a>: The Image block add a images on your webpage and provide multiple customization options.</li>
 	<li><a href="https://wpspectra.com/blocks/star-rating/" target="_blank">Star Ratings </a>: The Star Ratings block on a webpage can build trust and attract more customers. It allows you to add and completely customize star ratings anywhere on the Gutenberg page.</li>
 	<li><a href="https://wpspectra.com/blocks/forms/" target="_blank">Forms </a>: The Forms block allow you to create interactive contact form, newsletter, suggestion, etc easily. You can add various fields like name, email, message box, phone number, checkboxes to your form and get more leads.</li>
 	<li><a href="https://wpspectra.com/blocks/tabs/" target="_blank">Tabs </a>: The Tabs block offers an easy way to display tabbed content and enables you to add long content in a smaller place to enhances the user experience.</li>
-	<li><a href="https://wpspectra.com/blocks/lottie/" target="_blank">Lottie </a>: Add attractive animation to your page design. Get a total control with advanced options like animation speed,  animation trigger etc, You can reverse the animation, manage the size and do much more.</li>
-	<li><a href="https://wpspectra.com/blocks/review-schema/" target="_blank">Review Schema </a>: Add a review for a book, movie, course, software application, or product with star ratings. Enable review schema support just with a click to get higher rankings for your page/post in search results.</li>
+	<li><a href="https://wpspectra.com/blocks/lottie/" target="_blank">Lottie Animation </a>: Add attractive animation to your page design. Get a total control with advanced options like animation speed,  animation trigger etc, You can reverse the animation, manage the size and do much more.</li>
+	<li><a href="https://wpspectra.com/blocks/review-schema/" target="_blank">Review </a>: Add a review for a book, movie, course, software application, or product with star ratings. Enable review schema support just with a click to get higher rankings for your page/post in search results.</li>
 	<li><a href="https://wpspectra.com/blocks/taxonomy/" target="_blank">Taxonomy List </a>: With this block, you can easily display categories for post/pages or custom post types. Further, you can style it with a grid, list, or dropdown layout and set color, typography.</li>
-	<li><a href="https://wpspectra.com/blocks/how-to-schema/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">How-to Schema </a>: This block allows you to design attractive How-to pages or articles that can describe the step-by-step procedure to achieve certain goals. The best thing is this block will automatically add How-to Schema to your page that can boost ranking in search results.</li>
- 	<li><a href="https://wpspectra.com/blocks/faq-schema/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">FAQ Schema </a>: This block helps you answering user's common queries in an easy and attractive way.  You also get a one-click option to apply FAQ Schema on the page. That helps to display content in a rich snippet that can pull more traffic to your website.</li>
- 	<li><a href="https://wpspectra.com/blocks/wp-search/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">WP - Search </a>: Search bars quickly bring information users are looking for and deliver a great user experience. You can display the WordPress search field anywhere on your page easily with the WP - Search block.</li>
+	<li><a href="https://wpspectra.com/blocks/how-to-schema/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">How-to </a>: This block allows you to design attractive How-to pages or articles that can describe the step-by-step procedure to achieve certain goals. The best thing is this block will automatically add How-to Schema to your page that can boost ranking in search results.</li>
+ 	<li><a href="https://wpspectra.com/blocks/faq-schema/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">FAQ </a>: This block helps you answering user's common queries in an easy and attractive way.  You also get a one-click option to apply FAQ Schema on the page. That helps to display content in a rich snippet that can pull more traffic to your website.</li>
  	<li><a href="https://wpspectra.com/blocks/inline-notice/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Inline Notice </a>: Sometimes while writing a procedure or steps to achieve some end results, you might need users to pay attention to a few important notes. Inline Notice block provides a nice ready-to-use box where you can quickly add text to highlight it.</li>
-	<li><a href="https://wpspectra.com/blocks/heading/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Advanced Heading </a>: The Advanced Heading block lets you add a combination of a heading and a sub-heading with a separator in between. You can select the heading tag for the heading and manage other settings and customizations too.</li>
- 	<li><a href="https://wpspectra.com/blocks/advanced-columns/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Advanced Columns </a>: This Advanced Columns block gives you advanced options to insert a number of columns within a single row. You get various customization options to manage the look and feel of the entire block and individual columns on the page with advanced shape dividers, variable widths, etc.</li>
+	<li><a href="https://wpspectra.com/blocks/heading/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Heading </a>: The Advanced Heading block lets you add a combination of a heading and a sub-heading with a separator in between. You can select the heading tag for the heading and manage other settings and customizations too.</li>
  	<li><a href="https://wpspectra.com/blocks/blockquote/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Blockquote </a>: This Blockquote block lets you display quoted tweetable text in a trendy and designer format with lots of customization options.</li>
  	<li><a href="https://wpspectra.com/blocks/call-to-action/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Call To Action </a>: The Call To Action block helps you to create attractive call-to-action with a trendy title, description and a catchy button that boosts conversions on your website.</li>
- 	<li><a href="https://wpspectra.com/blocks/contact-form-7-styler/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Contact Form 7 Styler </a>: The Contact Form 7 Styler is an easy to use Gutenberg block that allows to fully customize and design the existing Contact Form 7 forms on your website.</li>
  	<li><a href="https://wpspectra.com/blocks/content-timeline/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Content Timeline </a>: The Timeline block lets you create beautiful timelines on your website. This could be useful for displaying company history or progress, list down your personal achievements, roadmap or release cycle for products etc.</li>
  	<li><a href="https://wpspectra.com/blocks/google-maps/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Google Map </a>: The Google Maps block allows you to display locations with zooming options you'll love to try.</li>
-	<li><a href="https://wpspectra.com/blocks/gravity-form-styler/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Gravity Forms Styler</a>: Customize your default Gravity Form with the Gravity Form Styler to display more appealing forms that convert.</li>
  	<li><a href="https://wpspectra.com/blocks/icon-list/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Icon List </a>: The Icon List block allows you to place an image or icon in a list format. You can pick your favorite icon or image that suits a list to act as a bullet for each list item.</li>
  	<li><a href="https://wpspectra.com/blocks/info-box/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Info Box </a>: The Infobox allows you to place an image or icon along with a heading and description within a single block. You can select the image or icon and customize the content within the block.</li>
  	<li><a href="https://wpspectra.com/blocks/marketing-button/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Marketing Button </a>: The Marketing Button block allows you to create trendy CTA that aim at attracting the audience with conversion oriented text and a stunning button with lots of customization.</li>
- 	<li><a href="https://wpspectra.com/blocks/multi-buttons/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Multi Buttons </a>: This Gutenberg block allows you to add multiple buttons within a single block. You can add as many as 1 to 5 buttons with a Multi-Button block. Furthermore, it gives you additional settings for every button and allows you to manage spacing and responsive settings too.</li>
+ 	<li><a href="https://wpspectra.com/blocks/multi-buttons/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Buttons </a>: This Gutenberg block allows you to add multiple buttons within a single block. You can add as many as 1 to 5 buttons with a Multi-Button block. Furthermore, it gives you additional settings for every button and allows you to manage spacing and responsive settings too.</li>
  	<li><a href="https://wpspectra.com/blocks/post-layouts/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme#post-carousel" target="_blank">Post Carousel </a>: Wish to create a post slider in which your blog posts appear within a carousel? The Post Carousel block allows you to display posts in a carousel and manage their settings and the content you wish to display within them.</li>
  	<li><a href="https://wpspectra.com/blocks/post-layouts/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme#post-grid" target="_blank">Post Grid </a>: The Post Grid block fetches the blog posts you may have on your website and displays them in a grid layout. You can customize the order of your posts, and manage settings like the featured image, content, etc.</li>
- 	<li><a href="https://wpspectra.com/blocks/post-layouts/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme#post-masonary" target="_blank">Post Masonry </a>: The Post Masonry block fetches the blog posts on your website and displays them in a masonry layout. You can customize the way your posts look and manage settings like the featured image, the content you want to display, etc.</li>
  	<li><a href="https://wpspectra.com/blocks/post-timeline/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Post Timeline </a>: The Post Timeline block helps you display the blog posts on your website in an ordered list according to the dates they are published on. You can customize the content seen for each blog post and manage the date, featured image etc.</li>
  	<li><a href="https://wpspectra.com/blocks/price-list/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Price List </a>: This block allows you to design a nice-looking, easy to manage, Price List for your website.</li>
- 	<li><a href="https://wpspectra.com/blocks/sections/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Section </a>: This is an outer wrap section that allows you to add other blocks within it. You can manage the layout of this section and customize it using options like spacing, background, border and the advanced settings.</li>
  	<li><a href="https://wpspectra.com/blocks/social-share/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Social Share </a>: The Social Share block allows you to let users share your content across various social networking sites.</li>
  	<li><a href="https://wpspectra.com/blocks/table-of-contents/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Table Of Contents </a>: The Table of Contents Block lets you display an index or a list of headings included within a long post or page. This gives users an overview of the content and links to the specific sections on the page or post.</li>
  	<li><a href="https://wpspectra.com/blocks/team/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Team </a>: The Team block allows you to display your team. Add their picture, name, what they do and links to their social profiles.</li>
@@ -174,22 +170,27 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 2.0.1 - WEDNESDAY, 17TH AUGUST 2022 =
+* Improvement: Updated the link to the intro video in Spectra's admin dashboard.
+* Fix: Updated disabled block icon colors in the Spectra dashboard.
+* Fix: Deprecated blocks were not working for old users.
+
 = 2.0.0 - WEDNESDAY, 17TH AUGUST 2022 =
 * New: Redesigned UI/UX controls of Spectra blocks.
-* New: Introduced new, beautiful & fast Spectra admin dashboard powered by React.
+* New: Introduced a new, beautiful & fast Spectra admin dashboard powered by React.
 * New: Introducing Coming Soon mode feature.
 * New: Introducing Allow only Selected fonts, Load fonts locally & Preload fonts feature.
-* New: Introducing new border control which allow user to set border to Top/Bottom/Left/Right in all direction.
+* New: Introducing new border control allows users to set a border to Top/Bottom/Left/Right in all directions.
 * New: Introducing Automatic Block Recovery.
 * New: Introducing Font Awesome 6 Support.
 * New: Introducing Collapse Panels.
 * New: Introducing Blocks Editor Spacing.
-* New: Block Presets - Introducing Preset for most used block.
-* New: Control Presets - Added Preset for Box-Shadow, Button and Inner container.
+* New: Block Presets - Introducing Preset for a most used block.
+* New: Control Presets - Added Preset for Box-Shadow, Button, and Inner container.
 * New: Copy Paste Styles - Added Copy/Paste styling feature for Core Gutenberg blocks & Spectra blocks.
 * New: Added global Container Padding option on admin dashboard.
 * New: Added global default Content Width for container on admin dashboard.
-* New: Added support for block based widget editor.
+* New: Added support for block-based widget editor.
 * New: Container - Introducing container block with advanced flex property feature.
 * New: How-To - Separate child "Step" for how-to instead of info-box.
 * New: Image - Introducing image block with advanced feature.
@@ -197,23 +198,23 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Global Improvement: Responsive setting wherever needed.
 * Global Improvement: Refactored the Spectra blocks code & improved editor performance drastically.
 * Global Improvement: Typography control - Added text-transform, text-decoration, letter-spacing and font-style options.
-* Global Improvement: 4 way border control.
-* Global Improvement: 4 way spacing control for padding/margin.
-* Improvement: Buttons - Multiple Typography option for Text in parent.
+* Global Improvement: 4-way border control.
+* Global Improvement: 4-way spacing control for padding/margin.
+* Improvement: Buttons - Multiple Typography option for text in a parent.
 * Improvement: Buttons-child - Enable/disable Icon option.
-* Improvement: Buttons-child - Add "nofollow" to link option.
+* Improvement: Buttons-child - Add "nofollow" to the link option.
 * Improvement: Buttons-child - Remove Text option.
-* Improvement: Buttons-child - Separate Typography option for child.
+* Improvement: Buttons-child - Separate Typography option for a child.
 * Improvement: Buttons-child - Background transparent/color/gradient option.
 * Improvement: Buttons-child - Box-Shadow option.
 * Improvement: Blockquote - Moved Twitter Username field inside Tweeter Icon Tab.
-* Improvement: Call To Action - Enable Additional Button option.
+* Improvement: Call To Action - Enable the Additional Button option.
 * Improvement: Display Condition & Responsive Visibility – Enable/Disable option for Spectra extensions on admin dashboard.
 * Improvement: Forms - Global reCAPTCHA setting option on admin dashboard.
 * Improvement: Heading - Hide option for heading text and description.
 * Improvement: Heading - Text shadow, gradient color option for Title
 * Improvement: Heading - Color option when link added to heading text.
-* Improvement: Heading - Highlight heading text feature.
+* Improvement: Heading - Highlight the heading text feature.
 * Improvement: Heading - Background color option classic and gradient.
 * Improvement: Info-box - Enable/disable Icon/Image option.
 * Improvement: Info-box - Allow P tag in Title.
@@ -235,8 +236,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Table of content - Added Title below Separator Style.
 * Improvement: Template - Enable Templates Button on admin dashboard.
 * Fix: Multiple issues in multiple blocks.
-* Deprecated: Advanced Columns, Section, WP-Search, Post Masonry, Contact Form 7 Designer and Gravity Form Designer block.
-* Deprecated: Removed Spectra extention i.e responsive condition,display condition from core block.
+* Deprecated: Advanced Columns, Section, WP-Search, Post Masonry, Contact Form 7 Designer, and Gravity Form Designer block.
+* Deprecated: Removed Spectra extension, i.e., responsive condition, display condition from the core block.
 * Deprecated: Table of content - Removed Scroll Animation Delay.
 
 = 1.25.6 - TUESDAY, 31ST MAY 2022 =
