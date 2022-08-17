@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.0  
-**Stable tag:** 2.0.0  
+**Stable tag:** 2.0.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -173,6 +173,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ### 2.0.1 - WEDNESDAY, 17TH AUGUST 2022 ###
 * Improvement: Updated the link to the intro video in Spectra's admin dashboard.
 * Fix: Updated disabled block icon colors in the Spectra dashboard.
+* Fix: Deprecated blocks were not working for old users.
 
 ### 2.0.0 - WEDNESDAY, 17TH AUGUST 2022 ###
 * New: Redesigned UI/UX controls of Spectra blocks.
