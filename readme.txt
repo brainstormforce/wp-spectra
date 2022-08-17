@@ -222,7 +222,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Info-box - Allow P tag in Title.
 * Improvement: Info-box - Icon option View( Stacked/Framed ), Shape( Circle/Square ).
 * Improvement: Icon List - Icon Position before/after.
-* Improvement: Lotti - Moved File Source option in block setting.
+* Improvement: Lottie - Moved File Source option in block setting.
 * Improvement: Marketing Button - Show Description toggle option.
 * Improvement: Post Layout - Offset Starting Post option.
 * Improvement: Post Layout - Show Meta Icon option.
