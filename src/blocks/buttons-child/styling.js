@@ -2,22 +2,38 @@
  * Returns Dynamic Generated CSS
  */
 
-import generateCSS from "@Controls/generateCSS"
-import generateCSSUnit from "@Controls/generateCSSUnit"
+import generateCSS from '@Controls/generateCSS';
+import generateCSSUnit from '@Controls/generateCSSUnit';
+import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
 
 	const {
 		fontFamily,
 		fontWeight,
 		size,
-		vPadding,
-		hPadding,
-		borderWidth,
-		borderRadius,
-		borderStyle,
-		borderColor,
-		borderHColor,
+		topPadding,
+		rightPadding,
+		bottomPadding,
+		leftPadding,
+		//Mobile
+		topMobilePadding,
+		rightMobilePadding,
+		bottomMobilePadding,
+		leftMobilePadding,
+		//Tablet
+		topTabletPadding,
+		rightTabletPadding,
+		bottomTabletPadding,
+		leftTabletPadding,
+		paddingUnit,
+		mobilePaddingUnit,
+		tabletPaddingUnit,
+		btnBorderHColor,
 		color,
 		background,
 		hColor,
@@ -29,93 +45,261 @@ function styling( props ) {
 		lineHeightType,
 		lineHeightMobile,
 		lineHeightTablet,
-		inheritFromTheme,
-		iconSpace
+		iconSpace,
+		iconSpaceMobile,
+		iconSpaceTablet,
+
+		fontStyle,
+		transform,
+		decoration,
+		backgroundType,
+		hoverbackgroundType,
+		gradientValue,
+		hovergradientValue,
+		topMargin,
+		rightMargin,
+		bottomMargin,
+		leftMargin,
+		topMarginTablet,
+		rightMarginTablet,
+		bottomMarginTablet,
+		leftMarginTablet,
+		topMarginMobile,
+		rightMarginMobile,
+		bottomMarginMobile,
+		leftMarginMobile,
+		marginType,
+
+		boxShadowColor,
+		boxShadowHOffset,
+		boxShadowVOffset,
+		boxShadowBlur,
+		boxShadowSpread,
+		boxShadowPosition,
+		iconColor,
+		iconHColor,
+		iconSize,
+		iconSizeTablet,
+		iconSizeMobile,
+		removeText,
+
+		// letter spacing
+		letterSpacing,
+		letterSpacingTablet,
+		letterSpacingMobile,
+		letterSpacingType,
 	} = props.attributes;
 
-	var tablet_selectors = {}
-	var mobile_selectors = {}
-	var selectors = {}
+	const tabletSelectors = {};
+	const mobileSelectors = {};
+	let selectors = {};
 
-	if ( ! inheritFromTheme ) {
-		selectors = {
-			" .uagb-buttons-repeater" : {
-				"font-size" : generateCSSUnit( size, sizeType ),
-				"line-height" : generateCSSUnit( lineHeight, lineHeightType ),
-				"font-family": fontFamily,
-				"font-weight": fontWeight,
-				"border-width": generateCSSUnit( borderWidth, "px" ),
-				"border-style": borderStyle,
-				"border-color": borderColor,
-				"border-radius" : generateCSSUnit( borderRadius, "px" ),
-				"background": background,
-				"padding" : vPadding + "px " + hPadding + "px",
-			},
-			" .uagb-buttons-repeater:hover" : {
-				"background": hBackground,
-				"border-width": generateCSSUnit( borderWidth, "px" ),
-				"border-style": borderStyle,
-				"border-color": borderHColor,
-			},
-			" .uagb-buttons-repeater a.uagb-button__link" : {
-				"color": color
-			},
-			" .uagb-buttons-repeater:hover a.uagb-button__link" : {
-				"color": hColor
-			},
-			" .uagb-buttons-repeater:hover .uagb-button__link": {
-				"color": hColor
-			},
-			" .uagb-buttons-repeater .uagb-button__link" : {
-				"color": color
-			},	
+	let boxShadowPositionCSS = boxShadowPosition;
+
+	if ( 'outset' === boxShadowPosition ) {
+		boxShadowPositionCSS = '';
+	}
+	const borderCSS = generateBorderCSS( props.attributes, 'btn' )
+	const borderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' )
+	const borderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' )
+
+	selectors = {
+		'.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater': {
+			'font-size': generateCSSUnit( size, sizeType ),
+			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
+			'font-family': fontFamily,
+			'font-weight': fontWeight,
+			'font-style': fontStyle,
+			'text-transform': transform,
+			'text-decoration': decoration,
+			'padding-left': generateCSSUnit( leftPadding, paddingUnit ),
+			'padding-right': generateCSSUnit( rightPadding, paddingUnit ),
+			'padding-top': generateCSSUnit( topPadding, paddingUnit ),
+			'padding-bottom': generateCSSUnit( bottomPadding, paddingUnit ),
+			'margin-left': generateCSSUnit( leftMargin, marginType ),
+			'margin-right': generateCSSUnit( rightMargin, marginType ),
+			'margin-top': generateCSSUnit( topMargin, marginType ),
+			'margin-bottom': generateCSSUnit(
+				bottomMargin,
+				marginType
+			),
+			'color': color,
+			'box-shadow':
+			generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
+			generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
+			boxShadowColor + ' ' +	boxShadowPositionCSS,
+			'letter-spacing': generateCSSUnit( letterSpacing, letterSpacingType ),
+		},
+		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover': {
+			'color': hColor,
+		},
+		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__link': {
+			'color': hColor,
+		},
+		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__link': {
+			'color': color,
 		}
+	};
+	selectors[' .wp-block-button__link.uagb-buttons-repeater'] = borderCSS;
+	selectors[' .wp-block-button__link.uagb-buttons-repeater:hover'] = {
+		'border-color': btnBorderHColor,
+	};
 
-		mobile_selectors[" .uagb-buttons-repeater"] = {
-			"font-size" : generateCSSUnit( sizeMobile, sizeType ),
-			"line-height" : generateCSSUnit( lineHeightMobile, lineHeightType ),
+	mobileSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater' ] = {
+		'font-size': generateCSSUnit( sizeMobile, sizeType ),
+		'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
+		'letter-spacing': generateCSSUnit( letterSpacingMobile, letterSpacingType ),
+		'padding-left': generateCSSUnit(
+			leftMobilePadding,
+			mobilePaddingUnit
+		),
+		'padding-right': generateCSSUnit(
+			rightMobilePadding,
+			mobilePaddingUnit
+		),
+		'padding-top': generateCSSUnit(
+			topMobilePadding,
+			mobilePaddingUnit
+		),
+		'padding-bottom': generateCSSUnit(
+			bottomMobilePadding,
+			mobilePaddingUnit
+		),
+		'margin-left': generateCSSUnit( leftMarginMobile, marginType ),
+		'margin-right': generateCSSUnit( rightMarginMobile, marginType ),
+		'margin-top': generateCSSUnit( topMarginMobile, marginType ),
+		'margin-bottom': generateCSSUnit(
+			bottomMarginMobile,
+			marginType
+		),
+		...borderCSSMobile
+	};
+
+	tabletSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater' ] = {
+		'font-size': generateCSSUnit( sizeTablet, sizeType ),
+		'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
+		'letter-spacing': generateCSSUnit( letterSpacingTablet, letterSpacingType ),
+		'padding-left': generateCSSUnit(
+			leftTabletPadding,
+			tabletPaddingUnit
+		),
+		'padding-right': generateCSSUnit(
+			rightTabletPadding,
+			tabletPaddingUnit
+		),
+		'padding-top': generateCSSUnit(
+			topTabletPadding,
+			tabletPaddingUnit
+		),
+		'padding-bottom': generateCSSUnit(
+			bottomTabletPadding,
+			tabletPaddingUnit
+		),
+		'margin-left': generateCSSUnit( leftMarginTablet, marginType ),
+		'margin-right': generateCSSUnit( rightMarginTablet, marginType ),
+		'margin-top': generateCSSUnit( topMarginTablet, marginType ),
+		'margin-bottom': generateCSSUnit(
+			bottomMarginTablet,
+			marginType
+		),
+		...borderCSSTablet
+	};
+
+	selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg' ] = {
+		'width': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), 'px' ),
+		'height': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), 'px' ),
+		'fill': iconColor,
+	};
+	tabletSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg' ] = {
+		'width': generateCSSUnit( iconSizeTablet, 'px' ),
+		'height': generateCSSUnit( iconSizeTablet, 'px' ),
+		'fill': iconColor,
+	};
+	mobileSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg' ] = {
+		'width': generateCSSUnit( iconSizeMobile, 'px' ),
+		'height': generateCSSUnit( iconSizeMobile, 'px' ),
+		'fill': iconColor,
+	};
+	selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__icon > svg' ] = {
+		'fill': iconHColor,
+	};
+	if( ! removeText ) {
+		selectors[ ' .uagb-button__icon-position-after' ] = {
+			'margin-left': generateCSSUnit( getFallbackNumber( iconSpace, 'iconSpace', blockName ), 'px' ),
+		};
+
+		tabletSelectors[ ' .uagb-button__icon-position-before' ] = {
+			'margin-right': generateCSSUnit( iconSpaceTablet, 'px' ),
+		};
+		tabletSelectors[ ' .uagb-button__icon-position-after' ] = {
+			'margin-left': generateCSSUnit( iconSpaceTablet, 'px' ),
+		};
+
+		mobileSelectors[ ' .uagb-button__icon-position-before' ] = {
+			'margin-right': generateCSSUnit( iconSpaceMobile, 'px' ),
+		};
+		mobileSelectors[ ' .uagb-button__icon-position-after' ] = {
+			'margin-left': generateCSSUnit( iconSpaceMobile, 'px' ),
+		};
+
+		selectors[ ' .uagb-button__icon-position-before' ] = {
+			'margin-right': generateCSSUnit( getFallbackNumber( iconSpace, 'iconSpace', blockName ), 'px' ),
+		};
+	}
+
+	if ( 'transparent' === backgroundType ) {
+		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ]  = {
+			'background': 'transparent',
 		}
-	
-		tablet_selectors[" .uagb-buttons-repeater"] = {
-			"font-size" : generateCSSUnit( sizeTablet, sizeType ),
-			"line-height" : generateCSSUnit( lineHeightTablet, lineHeightType ),
+	} else if ( 'gradient' === backgroundType ) {
+		const backgroundAttributes = {
+			'backgroundType': 'gradient',
+			'gradientValue': gradientValue,
+		};
+
+		const btnBackground = generateBackgroundCSS( backgroundAttributes );
+		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = btnBackground;
+	} else if ( 'color' === backgroundType ) {
+		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater' ] = {
+			'background': background,
 		}
 	}
 
-	selectors[" .uagb-button__icon"] = {
-		"width" : generateCSSUnit( size, sizeType ),
+	if ( 'transparent' === hoverbackgroundType ) {
+		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover' ]  = {
+			'background': 'transparent',
+		}
+	} else if ( 'gradient' === hoverbackgroundType ) {
+		const hoverbackgroundAttributes = {
+			'backgroundType': 'gradient',
+			'gradientValue': hovergradientValue,
+		};
+
+		const btnhBackground = generateBackgroundCSS( hoverbackgroundAttributes );
+		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover' ] = btnhBackground;
+	} else if ( 'color' === hoverbackgroundType ) {
+		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
+			'background': hBackground,
+		}
 	}
+	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	let stylingCss = generateCSS( selectors, id );
 
-	if ( ! inheritFromTheme ) {
-		selectors[" .uagb-button__icon"]["color"] = color
-	}
+	stylingCss += generateCSS(
+		tabletSelectors,
+		`${ id }.uagb-editor-preview-mode-tablet`,
+		true,
+		'tablet'
+	);
 
-	selectors[" .uagb-button__icon-position-after"] = {
-		'margin-left' : generateCSSUnit( iconSpace, 'px' )
-	}
+	stylingCss += generateCSS(
+		mobileSelectors,
+		`${ id }.uagb-editor-preview-mode-mobile`,
+		true,
+		'mobile'
+	);
 
-	selectors[" .uagb-button__icon-position-before"] = {
-		'margin-right' : generateCSSUnit( iconSpace, 'px' )
-	}
-
-	mobile_selectors[" .uagb-button__icon"] = {
-		"width" : generateCSSUnit( sizeMobile, sizeType ),
-		"height" : generateCSSUnit( sizeMobile, sizeType ),
-	}
-
-	tablet_selectors[" .uagb-button__icon"] = {
-		"width" : generateCSSUnit( sizeTablet, sizeType ),
-		"height" : generateCSSUnit( sizeTablet, sizeType ),
-	}
-
-	var id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`
-	var styling_css = generateCSS( selectors, id )
-
-	styling_css += generateCSS( tablet_selectors, `${id}.uagb-editor-preview-mode-tablet`, true, "tablet" )
-
-	styling_css += generateCSS( mobile_selectors, `${id}.uagb-editor-preview-mode-mobile`, true, "mobile" )
-
-	return styling_css
+	return stylingCss;
 }
 
-export default styling
+export default styling;

@@ -1,83 +1,86 @@
-const { decodeEntities } = wp.htmlEntities
-
-import classnames from "classnames"
+import classnames from 'classnames';
 import {
 	InnerBlockLayoutContextProvider,
-	renderPostLayout 
+	renderPostLayout,
 } from '.././function';
+import { useDeviceType } from '@Controls/getPreviewType';
+import React, { useRef } from 'react';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
+const Blog = ( props ) => {
+	const blockName = props.name.replace( 'uagb/', '' );
+	const article = useRef();
+	const { attributes, className, latestPosts, block_id } = props;
+	const deviceType = useDeviceType();
+	const {
+		isPreview,
+		columns,
+		tcolumns,
+		mcolumns,
+		imgPosition,
+		postsToShow,
+		equalHeight,
+		paginationMarkup,
+		postPagination,
+		layoutConfig,
+	} = attributes;
 
-class Blog extends React.Component {
+	const postsToShowFallback = getFallbackNumber( postsToShow, 'postsToShow', blockName );
+	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
+	const tcolumnsFallback = getFallbackNumber( tcolumns, 'tcolumns', blockName );
+	const mcolumnsFallback = getFallbackNumber( mcolumns, 'mcolumns', blockName );
 
-	render() {
+	const equalHeightClass = equalHeight ? 'uagb-post__equal-height' : '';
+	// Removing posts from display should be instant.
+	const displayPosts =
+		latestPosts.length > postsToShowFallback
+			? latestPosts.slice( 0, postsToShowFallback )
+			: latestPosts;
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/post-grid.png`;
+	const isImageEnabled = ( attributes.displayPostImage === true ) ? 'uagb-post__image-enabled' : 'uagb-post__image-disabled';
 
-		const { attributes, className, latestPosts, block_id, categoriesList, deviceType} = this.props
-
-		const {
-			columns,
-			tcolumns,
-			mcolumns,
-			imgPosition,
-			postsToShow,
-			equalHeight,
-			paginationMarkup,
-			postPagination,
-			layoutConfig
-		} = attributes
-		
-		const equalHeightClass = equalHeight ? "uagb-post__equal-height" : ""
-		// Removing posts from display should be instant.
-		const displayPosts = latestPosts.length > postsToShow ?
-			latestPosts.slice( 0, postsToShow ) :
-			latestPosts
-		return (
-			<div
-				className={ classnames(
-					className,
-					"uagb-post-grid",
-					`uagb-post__image-position-${ imgPosition }`,
-					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-					`uagb-block-${ block_id }`
-				) }
+	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
+		<div
+			className={ classnames(
+				'is-grid',
+				`uagb-post__columns-${ columnsFallback }`,
+				`uagb-post__columns-tablet-${ tcolumnsFallback }`,
+				`uagb-post__columns-mobile-${ mcolumnsFallback }`,
+				'uagb-post__items',
+				`${ equalHeightClass }`,
+				`${ isImageEnabled }`,
+				className,
+				'uagb-post-grid',
+				`uagb-post__image-position-${ imgPosition }`,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+				`uagb-block-${ block_id }`
+			) }
+		>
+			<InnerBlockLayoutContextProvider
+				parentName="uagb/post-grid"
+				parentClassName="uagb-block-grid"
 			>
+				{ displayPosts.map( ( post = {}, i ) => (
+					<article ref={article} key={ i } className="uagb-post__inner-wrap">
+						{ renderPostLayout(
+							'uagb/post-grid',
+							post,
+							layoutConfig,
+							props.attributes,
+							props.categoriesList,
+							article
+						) }
+					</article>
+				) ) }
+			</InnerBlockLayoutContextProvider>
+			{ postPagination === true && 'empty' !== paginationMarkup && (
 				<div
-					className={ classnames(
-						"is-grid",
-						`uagb-post__columns-${ columns }`,
-						`uagb-post__columns-tablet-${ tcolumns }`,
-						`uagb-post__columns-mobile-${ mcolumns }`,
-						"uagb-post__items",
-						`${ equalHeightClass }`
-					) }
-				>
-					<InnerBlockLayoutContextProvider
-						parentName="uagb/post-grid"
-						parentClassName="uagb-block-grid"
-					>
-					{ displayPosts.map( ( post = {}, i ) =>
-						<article key={ i } >
-							<div className="uagb-post__inner-wrap" >
-								
-									{ renderPostLayout(
-										"uagb/post-grid",
-										post,
-										layoutConfig,
-										this.props.attributes,
-										this.props.categoriesList
-									) }
-								
-							</div>
-						</article>
-					) }
-					</InnerBlockLayoutContextProvider>
-				</div>
-				{ postPagination == true && 'empty' !== paginationMarkup &&
-					<div dangerouslySetInnerHTML={ { __html: paginationMarkup } } className="uagb-post-pagination-wrap">
-					</div>
-				}
-			</div>
-		)
-	}
-}
-
-export default Blog
+					dangerouslySetInnerHTML={ { __html: paginationMarkup } }
+					className="uagb-post-pagination-wrap"
+				></div>
+			) }
+		</div>
+	);
+};
+export default React.memo( Blog );

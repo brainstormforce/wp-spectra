@@ -1,0 +1,26 @@
+.spectra-responsive-icons__wrap {
+	margin-right: 15px;
+	border-radius: 3px;
+
+	.components-button-group .components-button {
+		padding-right: 10px;
+		padding-left: 10px;
+		box-shadow: none;
+		margin-right: 0;
+	}
+
+	svg {
+		height: 18px;
+		width: 18px;
+		fill: #9fa59c;
+
+		&:hover {
+			fill: #1e1e1e;
+		}
+	}
+
+	.uagb-responsive-tabs.active-tab > svg {
+		fill: #007cba;
+		color: #007cba;
+	}
+}

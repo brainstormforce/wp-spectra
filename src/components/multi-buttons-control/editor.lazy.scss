@@ -1,0 +1,126 @@
+/* Multi Button Gap */
+
+@import "../../styles/variables";
+
+.uagb-multi-button-button-group {
+	display: flex;
+	width: 100%;
+
+	.uagb-multi-button {
+		width: 100%;
+		justify-content: center;
+		height: unset;
+		padding: 6px;
+		line-height: 16px;
+		min-height: 30px;
+
+		&:first-child {
+			-webkit-border-radius: $spectra-control-border-radius 0 0 $spectra-control-border-radius;
+			-moz-border-radius: $spectra-control-border-radius 0 0 $spectra-control-border-radius;
+			border-radius: $spectra-control-border-radius 0 0 $spectra-control-border-radius;
+		}
+
+		&:last-child {
+			-webkit-border-radius: 0 $spectra-control-border-radius $spectra-control-border-radius 0;
+			-moz-border-radius: 0 $spectra-control-border-radius $spectra-control-border-radius 0;
+			border-radius: 0 $spectra-control-border-radius $spectra-control-border-radius 0;
+		}
+	}
+
+	button.uagb-multi-button.is-secondary {
+		color: $spectra-color-body;
+		box-shadow: inset 0 0 0 1px $spectra-color-border;
+	}
+
+	.uagb-multi-button.is-secondary:hover:not(:disabled),
+	.uagb-multi-button-grou[aria-label="Gap"]
+	.uagb-multi-button.is-tertiary:hover:not(:disabled) {
+		color: $spectra-color-heading;
+		box-shadow: inset 0 0 0 1px $spectra-color-border;
+	}
+
+	.uagb-multi-button.is-secondary,
+	.uagb-multi-button.is-tertiary {
+		color: $spectra-color-body;
+	}
+
+	.uagb-multi-button.is-secondary:active:not(:disabled),
+	.uagb-multi-button-grou[aria-label="Gap"]
+	.uagb-multi-button.is-tertiary:active:not(:disabled) {
+		background: $spectra-color-plain-background;
+		box-shadow: inset 0 0 0 1px $spectra-color-border;
+	}
+
+	button.uagb-multi-button {
+		font-size: 13px;
+		font-weight: 400;
+	}
+
+	svg {
+		width: 18px;
+		fill: $spectra-color-body;
+
+		path {
+			fill: inherit;
+		}
+	}
+}
+
+.uagb-multi-buttons-control {
+
+	&.uag-multibutton-icons .uagb-multi-button {
+		padding: 3px;
+	}
+}
+
+// Classes for Spectra Improvemnets (BEM Convention).
+.spectra-multi-buttons {
+
+	// Classes for Color Scheme.
+	&__color-scheme {
+
+		&--primary {
+
+			button.uagb-multi-button.is-primary.is-primary {
+				color: $spectra-color-primary;
+				background-color: $spectra-color-tab-background;
+				border-color: $spectra-color-tab-border;
+				box-shadow: inset 0 0 0 1px $spectra-color-tab-border;
+
+				svg {
+					fill: $spectra-color-primary;
+				}
+			}
+
+		}
+
+		&--secondary {
+
+			button.uagb-multi-button.is-primary.is-primary {
+				color: $spectra-color-plain-background;
+				background-color: $spectra-color-border-hover;
+				border-color: $spectra-color-border-hover;
+				box-shadow: inset 0 0 0 1px $spectra-color-border-hover;
+
+				svg {
+					fill: $spectra-color-plain-background;
+				}
+			}
+		}
+	}
+
+	// Classes for Layout. "full" is supported by default.
+	&__layout {
+
+		&--inline {
+			align-items: center;
+			display: grid;
+			grid-template-columns: 50% 50%;
+
+			.uagb-control__header,
+			.uag-control-label {
+				margin-bottom: 0;
+			}
+		}
+	}
+}

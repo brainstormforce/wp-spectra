@@ -34,7 +34,7 @@ class UAGB_Front_Assets {
 	 * Assets Post Object
 	 *
 	 * @since 1.23.0
-	 * @var array
+	 * @var object
 	 */
 	protected $post_assets;
 
@@ -78,7 +78,7 @@ class UAGB_Front_Assets {
 			return;
 		}
 
-		$this->post_assets = new UAGB_Post_Assets( $this->post_id );
+		$this->post_assets = uagb_get_post_assets( $this->post_id );
 
 		if ( ! $this->post_assets->is_allowed_assets_generation ) {
 			return;

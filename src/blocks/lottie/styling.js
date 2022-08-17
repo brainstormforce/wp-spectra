@@ -2,8 +2,7 @@
  * Returns Dynamic Generated CSS
  */
 
-import generateCSS from "@Controls/generateCSS"
-import generateCSSUnit from "@Controls/generateCSSUnit"
+import generateCSS from '@Controls/generateCSS';
 
 function styling( props ) {
 
@@ -15,42 +14,73 @@ function styling( props ) {
 		heightTablet,
 		heightMob,
 		backgroundColor,
-		backgroundHColor
-	} = props.attributes
+		backgroundHColor,
+	} = props.attributes;
 
-	var tablet_selectors = {}
-	var mobile_selectors = {}
+	const widthFallback = isNaN( width ) ? 'auto' : `${ width }px`;
+	const heightFallback = isNaN( height ) ? 'auto' : `${ height }px`;
 
-	var selectors = {
-		".uagb-lottie__outer-wrap": {
-			"width": generateCSSUnit( width, 'px' ),
-			"height": generateCSSUnit( height, 'px' ),
-			"background": backgroundColor
+	const widthTabletFallback = isNaN( widthTablet ) ? widthFallback : `${ widthTablet }px`;
+	const widthMobFallback = isNaN( widthMob ) ? widthTabletFallback : `${ widthMob }px`;
+	const heightTabletFallback = isNaN( heightTablet ) ? heightFallback : `${ heightTablet }px`;
+	const heightMobFallback = isNaN( heightMob ) ? heightTabletFallback : `${ heightMob }px`;
+
+	const selectors = {
+		'.uagb-lottie__outer-wrap': {
+			'width': widthFallback,
+			'height': heightFallback,
+			'background': backgroundColor,
 		},
-		".uagb-lottie__outer-wrap:hover": {
-			"background": backgroundHColor
-		}
-	}
-	
-	tablet_selectors[".uagb-lottie__outer-wrap"] = {
-		"width": generateCSSUnit( widthTablet, 'px' ),
-		"height": generateCSSUnit( heightTablet, 'px' ),
-	}
+		'.uagb-lottie__outer-wrap:hover': {
+			'background': backgroundHColor,
+		},
+		' .lf-player-container #lottie': {
+			'height': heightFallback,
+		},
+	};
 
-	mobile_selectors[".uagb-lottie__outer-wrap"] = {
-		"width": generateCSSUnit( widthMob, 'px' ),
-		"height": generateCSSUnit( heightMob, 'px' ),
-	}
+	const tablet_selectors = {
+		'.uagb-lottie__outer-wrap': {
+			'width': widthTabletFallback,
+			'height': heightTabletFallback,
+		},
+		' .lf-player-container #lottie': {
+			'height': heightTabletFallback,
+		},
+	};
 
-	var base_selector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr( 0, 8 ) }`
+	const mobile_selectors = {
+		'.uagb-lottie__outer-wrap': {
+			'width': widthMobFallback,
+			'height': heightMobFallback,
+		},
+		' .lf-player-container #lottie': {
+			'height': heightMobFallback,
+		},
+	};
 
-	var styling_css = generateCSS( selectors, base_selector )
+	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
+		0,
+		8
+	) }`;
 
-	styling_css += generateCSS( tablet_selectors, base_selector, true, "tablet" )
+	let styling_css = generateCSS( selectors, base_selector );
 
-	styling_css += generateCSS( mobile_selectors, base_selector, true, "mobile" )
+	styling_css += generateCSS(
+		tablet_selectors,
+		`${ base_selector }.uagb-editor-preview-mode-tablet`,
+		true,
+		'tablet'
+	);
 
-	return styling_css
+	styling_css += generateCSS(
+		mobile_selectors,
+		`${ base_selector }.uagb-editor-preview-mode-mobile`,
+		true,
+		'mobile'
+	);
+
+	return styling_css;
 }
 
-export default styling
+export default styling;

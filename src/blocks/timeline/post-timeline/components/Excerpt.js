@@ -1,32 +1,29 @@
-class Excerpt extends React.Component {
+import React from 'react';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+const Excerpt = ( props ) => {
+	const { post, attributes } = props;
+	const contentSpaceFallback = getFallbackNumber( attributes.contentSpace, 'contentSpace', 'post-timeline' );
+	const exerptLengthFallback = getFallbackNumber( attributes.exerptLength, 'exerptLength', 'post-timeline' );
+	let trimmed_excerpt;
+	if ( attributes.displayPostExcerpt && post.uagb_excerpt ) {
+		
+		trimmed_excerpt = post.uagb_excerpt.split( /\s+/ ).slice( 0, exerptLengthFallback ).join( ' ' );
 
-	render() {
-
-		const { post, attributes } = this.props
-
-		if (
-			attributes.displayPostExcerpt &&
-			undefined !== post.uagb_excerpt
-		) {
-
-			if( attributes.displayPostExcerpt && post.uagb_excerpt ){
-				var trimmed_excerpt =  (post.uagb_excerpt).split(/\s+/).slice(0,attributes.exerptLength).join(" ")
-			}
-
-			let margin_var = ""
-			if( attributes.displayPostLink ){
-            	margin_var = attributes.contentSpace+"px"
-			}
-			return (
-				<div className = "uagb-timeline-desc-content" dangerouslySetInnerHTML={ { __html: trimmed_excerpt } } style= {{
-					marginBottom: margin_var
-				}} />
-			)
-
-		} else {
-			return null
+		let margin_var = '';
+		if ( attributes.displayPostLink ) {
+			margin_var = contentSpaceFallback + 'px';
 		}
+		return (
+			<div
+				className="uagb-timeline-desc-content"
+				dangerouslySetInnerHTML={ { __html: trimmed_excerpt } }
+				style={ {
+					marginBottom: margin_var,
+				} }
+			/>
+		);
 	}
-}
+	return null;
+};
 
-export default Excerpt
+export default React.memo( Excerpt );

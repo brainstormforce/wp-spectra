@@ -2,13 +2,18 @@
  * Returns Dynamic Generated CSS
  */
 
-import generateCSS from "@Controls/generateCSS"
-import generateCSSUnit from "@Controls/generateCSSUnit"
+import generateBorderCSS from '@Controls/generateBorderCSS';
+import generateCSS from '@Controls/generateCSS';
+import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
 
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		customWidth,
+		makeCollapsible,
 		widthDesktop,
 		widthTablet,
 		widthMobile,
@@ -21,6 +26,7 @@ function styling( props ) {
 		iconColor,
 		bulletColor,
 		iconSize,
+		align,
 		//Color
 		backgroundColor,
 		linkColor,
@@ -29,38 +35,48 @@ function styling( props ) {
 		scrollToTopBgColor,
 		headingColor,
 		//Margin
-		vMarginDesktop,
-		hMarginDesktop,
 		marginTypeDesktop,
-		hMarginMobile,
-		vMarginMobile,
 		marginTypeMobile,
-		vMarginTablet,
-		hMarginTablet,
+		topMargin,
+		rightMargin,
+		bottomMargin,
+		leftMargin,
+		topMarginTablet,
+		rightMarginTablet,
+		bottomMarginTablet,
+		leftMarginTablet,
+		topMarginMobile,
+		rightMarginMobile,
+		bottomMarginMobile,
+		leftMarginMobile,
 		marginTypeTablet,
 		//Padding,
-		vPaddingDesktop,
-		vPaddingTablet,
-		vPaddingMobile,
-		hPaddingDesktop,
-		hPaddingTablet,
-		hPaddingMobile,
-		headingBottom,
-		paddingTypeDesktop,
-		paddingTypeTablet,
+		topPadding,
+		rightPadding,
+		bottomPadding,
+		leftPadding,
+		topPaddingTablet,
+		rightPaddingTablet,
+		bottomPaddingTablet,
+		leftPaddingTablet,
+		topPaddingMobile,
+		rightPaddingMobile,
+		bottomPaddingMobile,
+		leftPaddingMobile,
 		paddingTypeMobile,
+		paddingTypeTablet,
+		paddingTypeDesktop,
 		//Padding,
+		headingBottom,
+		headingBottomTablet,
+		headingBottomMobile,
+		headingBottomType,
 		contentPaddingDesktop,
 		contentPaddingTablet,
 		contentPaddingMobile,
 		contentPaddingTypeDesktop,
 		contentPaddingTypeTablet,
 		contentPaddingTypeMobile,
-		//Border
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
 		//Typography
 		fontFamily,
 		fontWeight,
@@ -83,201 +99,505 @@ function styling( props ) {
 		headingLineHeightTablet,
 		headingLineHeightMobile,
 		disableBullets,
+		overallBorderHColor,
+		fontStyle,
+		fontTransform,
+		fontDecoration,
+		headingFontStyle,
+		headingTransform,
+		headingDecoration,
 		headingAlignment,
-	} = props.attributes
+		headingLetterSpacing,
+		headingLetterSpacingTablet,
+		headingLetterSpacingMobile,
+		headingLetterSpacingType,
+		letterSpacing,
+		letterSpacingTablet,
+		letterSpacingMobile,
+		letterSpacingType,
+		markerView,
+		// separator
+		separatorStyle,
+		separatorHeight,
+		separatorHeightType,
+		separatorSpace,
+		separatorSpaceType,
+		separatorColor,
+		separatorHColor,
+		separatorSpaceTablet,
+		separatorSpaceMobile,
+	} = props.attributes;
 
-	var selectors = {}
-	var tablet_selectors = {}
-	var mobile_selectors = {}
+	const tColumnsDesktopFallback = getFallbackNumber( tColumnsDesktop, 'tColumnsDesktop', blockName );
+	const tColumnsTabletFallback = getFallbackNumber( tColumnsTablet, 'tColumnsTablet', blockName );
+	const tColumnsMobileFallback = getFallbackNumber( tColumnsMobile, 'tColumnsMobile', blockName );
+	const widthDesktopFallback = getFallbackNumber( widthDesktop, 'widthDesktop', blockName );
 
-	var alignment = ( headingAlignment == "left" ) ? "flex-start" : ( ( headingAlignment == "right" ) ? "flex-end" : "center" )
+	let selectors = {};
+	let tablet_selectors = {};
+	let mobile_selectors = {};
+
+	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' )
+	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' )
+	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' )
 
 	selectors = {
-		" .uagb-toc__list-wrap ol li a" : {
-			"font-size" : generateCSSUnit( fontSize, fontSizeType ),
-			"line-height" : generateCSSUnit( lineHeight, lineHeightType ),
-			"font-family": fontFamily,
-			"font-weight": fontWeight,
-			"color": linkColor,
+		' .uagb-toc__list-wrap ul li': {
+			'font-size': generateCSSUnit( fontSize, fontSizeType ),
 		},
-		" .uagb-toc__title-wrap" : {
-			"justify-content" : alignment,
-			"margin-bottom" : generateCSSUnit( headingBottom, "px" ),
+		' .uagb-toc__list-wrap ol li': {
+			'font-size': generateCSSUnit( fontSize, fontSizeType ),
 		},
-		" .uagb-toc__title" : {
-			"font-size" : generateCSSUnit( headingFontSize, headingFontSizeType ),
-			"line-height" : generateCSSUnit( headingLineHeight, headingLineHeightType ),
-			"font-family": headingFontFamily,
-			"font-weight": headingFontWeight,
-			"color": headingColor,
+		' .uagb-toc__list-wrap li a': {
+			'font-size': generateCSSUnit( fontSize, fontSizeType ),
+			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
+			'font-family': fontFamily,
+			'font-style' : fontStyle,
+			'text-decoration': fontDecoration,
+			'text-transform': fontTransform,
+			'font-weight': fontWeight,
+			'color': linkColor,
+			'letter-spacing': generateCSSUnit( letterSpacing, letterSpacingType ),
 		},
-		" .uagb-toc__list-wrap ol li a:hover" : {
-			"color": linkHoverColor,
+		' .uagb-toc__title-wrap': {
+			'justify-content': align,
+			'margin-bottom': generateCSSUnit( headingBottom, headingBottomType ),
 		},
-		" .uagb-toc__wrap" : {
-			"border-style": borderStyle,
-			"border-width": generateCSSUnit( borderWidth, "px" ),
-			"border-color": borderColor,
-			"border-radius": generateCSSUnit( borderRadius, "px" ),
-			"padding-left": generateCSSUnit( hPaddingDesktop, paddingTypeDesktop ),
-			"padding-right": generateCSSUnit( hPaddingDesktop, paddingTypeDesktop ),
-			"padding-top": generateCSSUnit( vPaddingDesktop, paddingTypeDesktop ),
-			"padding-bottom": generateCSSUnit( vPaddingDesktop, paddingTypeDesktop ),
-			"background": backgroundColor
+		' .uagb-toc__title': {
+			'justify-content': headingAlignment,
+			'margin-bottom': generateCSSUnit( headingBottom, headingBottomType ),
+			'font-size': generateCSSUnit(
+				headingFontSize,
+				headingFontSizeType
+			),
+			'line-height': generateCSSUnit(
+				headingLineHeight,
+				headingLineHeightType
+			),
+			'font-family': headingFontFamily,
+			'font-style' : headingFontStyle,
+			'text-decoration': headingDecoration,
+			'text-transform': headingTransform,
+			'font-weight': headingFontWeight,
+			'color': headingColor,
+			'letter-spacing': generateCSSUnit( headingLetterSpacing, headingLetterSpacingType ),
 		},
-		" .uagb-toc__list-wrap ol.uagb-toc__list:first-child" : {
-			"margin-left": generateCSSUnit( hMarginDesktop, marginTypeDesktop ),
-			"margin-right": generateCSSUnit( hMarginDesktop, marginTypeDesktop ),
-			"margin-top": generateCSSUnit( vMarginDesktop, marginTypeDesktop ),
-			"margin-bottom": generateCSSUnit( vMarginDesktop, marginTypeDesktop ),
+		' .uagb-toc__list-wrap ol li a:hover': {
+			'color': linkHoverColor,
 		},
-		" .uagb-toc__list-wrap > ol.uagb-toc__list > li:first-child" : {
-			"padding-top": 0
+		' .uagb-toc__wrap': {
+			...overallBorderCSS,
+			'padding-left': generateCSSUnit( leftPadding, paddingTypeDesktop ),
+			'padding-right': generateCSSUnit(
+				rightPadding,
+				paddingTypeDesktop
+			),
+			'padding-top': generateCSSUnit( topPadding, paddingTypeDesktop ),
+			'padding-bottom': generateCSSUnit(
+				bottomPadding,
+				paddingTypeDesktop
+			),
+			'background': backgroundColor,
 		},
-		" .uagb-toc__list-wrap > ol.uagb-toc__list li" : {
-			"color" : bulletColor
+		' .uagb-toc__wrap:hover': {
+			'border-color': overallBorderHColor,
 		},
-		" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" : {
-			"padding-bottom": 0
+		' .uagb-toc__list-wrap ol.uagb-toc__list:first-child': {
+			'margin-left': generateCSSUnit( leftMargin, marginTypeDesktop ),
+			'margin-right': generateCSSUnit( rightMargin, marginTypeDesktop ),
+			'margin-top': generateCSSUnit( topMargin, marginTypeDesktop ),
+			'margin-bottom': generateCSSUnit( bottomMargin, marginTypeDesktop ),
 		},
-		" .uagb-toc__list-wrap ol.uagb-toc__list > li" : {
-			"padding-top": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )",
-			"padding-bottom": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )"
+		' .uagb-toc__list-wrap > ol.uagb-toc__list li': {
+			'color': bulletColor,
 		},
-		" .uagb-toc__list-wrap ul.uagb-toc__list > li" : {
-			"padding-top": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )",
-			"padding-bottom": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )"
+		' .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child': {
+			'padding-bottom': 0,
 		},
-		" .uag-toc__collapsible-wrap svg" : {
-			"width" : generateCSSUnit( iconSize, "px" ),
-			"height" : generateCSSUnit( iconSize, "px" ),
-			"fill" : iconColor
-		}
-	}
-	
-	selectors[" .uagb-toc__list-wrap"] = {
-		'column-count': tColumnsDesktop,
+		' .uagb-toc__list-wrap ol.uagb-toc__list > li': {
+			'list-style-type': disableBullets ? 'none !important' :  markerView + ' !important',
+			'padding-top':
+				'calc( ' +
+				generateCSSUnit(
+					contentPaddingDesktop,
+					contentPaddingTypeDesktop
+				) +
+				' / 2 )',
+			'padding-bottom':
+				'calc( ' +
+				generateCSSUnit(
+					contentPaddingDesktop,
+					contentPaddingTypeDesktop
+				) +
+				' / 2 )',
+		},
+		' .uagb-toc__list-wrap ul.uagb-toc__list > li': {
+			'list-style-type': disableBullets ? 'none !important' :  markerView + ' !important',
+			'padding-top':
+				'calc( ' +
+				generateCSSUnit(
+					contentPaddingDesktop,
+					contentPaddingTypeDesktop
+				) +
+				' / 2 )',
+			'padding-bottom':
+				'calc( ' +
+				generateCSSUnit(
+					contentPaddingDesktop,
+					contentPaddingTypeDesktop
+				) +
+				' / 2 )',
+		},
+		' .uag-toc__collapsible-wrap svg': {
+			'width': generateCSSUnit( iconSize, 'px' ),
+			'height': generateCSSUnit( iconSize, 'px' ),
+			'fill': iconColor,
+		},
+		' svg': {
+			'width': generateCSSUnit( iconSize, 'px' ),
+			'height': generateCSSUnit( iconSize, 'px' ),
+			'fill': iconColor,
+		},
+	};
+
+	selectors[ ' .uagb-toc__list-wrap' ] = {
+		'column-count': tColumnsDesktopFallback,
 		'overflow': 'hidden',
-	}
+		'text-align': align,
+	};
 
 	if ( customWidth ) {
-		selectors[" .uagb-toc__wrap"]["width"] = generateCSSUnit( widthDesktop, widthTypeDesktop )
+		selectors[ ' .uagb-toc__wrap' ].width = generateCSSUnit(
+			widthDesktopFallback,
+			widthTypeDesktop
+		);
+	}
+
+	if ( customWidth && makeCollapsible ) {
+		selectors[ ' .uagb-toc__title']['justify-content'] = 'space-between';
 	}
 
 	if ( disableBullets ) {
-		selectors[".wp-block-uagb-table-of-contents ol.uagb-toc__list>li"] = {
-			'list-style-type': 'none'
-		}
-		selectors[" .uagb-toc__list"] = {
-			'list-style-type': 'none'
-		}
-		selectors[" .uagb-toc__list .uagb-toc__list"] = {
-			'list-style-type': 'none'
-		}
+		selectors[ '.wp-block-uagb-table-of-contents ol.uagb-toc__list>li' ] = {
+			'list-style-type': 'none !important',
+		};
+		selectors[ ' .uagb-toc__list' ] = {
+			'list-style-type': 'none  !important',
+		};
+		selectors[ ' .uagb-toc__list .uagb-toc__list' ] = {
+			'list-style-type': 'none !important',
+		};
 	}
 
 	tablet_selectors = {
-		" .uagb-toc__list-wrap ol li a" : {
-			"font-size": generateCSSUnit( fontSizeTablet, fontSizeType ),
-			"line-height": generateCSSUnit( lineHeightTablet, lineHeightType ),
+		' .uagb-toc__list-wrap ul li': {
+			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 		},
-		" .uagb-toc__title" : {
-			"font-size" : generateCSSUnit( headingFontSizeTablet, headingFontSizeType ),
-			"line-height" : generateCSSUnit( headingLineHeightTablet, headingLineHeightType ),
+		' .uagb-toc__list-wrap ol li': {
+			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 		},
-		" .uagb-toc__wrap" : {
-			"width" : generateCSSUnit( widthTablet, widthTypeTablet ),
-			"padding-left": generateCSSUnit( hPaddingTablet, paddingTypeTablet ),
-			"padding-right": generateCSSUnit( hPaddingTablet, paddingTypeTablet ),
-			"padding-top": generateCSSUnit( vPaddingTablet, paddingTypeTablet ),
-			"padding-bottom": generateCSSUnit( vPaddingTablet, paddingTypeTablet ),
+		' .uagb-toc__list-wrap ol li a': {
+			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
+			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
+			'letter-spacing': generateCSSUnit( letterSpacingTablet, letterSpacingType ),
 		},
-		" .uagb-toc__list-wrap ul.uagb-toc__list:first-child" : {
-			"margin-left": generateCSSUnit( hMarginTablet, marginTypeTablet ),
-			"margin-right": generateCSSUnit( hMarginTablet, marginTypeTablet ),
-			"margin-top": generateCSSUnit( vMarginTablet, marginTypeTablet ),
-			"margin-bottom": generateCSSUnit( vMarginTablet, marginTypeTablet ),
+		' .uagb-toc__title': {
+			'font-size': generateCSSUnit(
+				headingFontSizeTablet,
+				headingFontSizeType
+			),
+			'line-height': generateCSSUnit(
+				headingLineHeightTablet,
+				headingLineHeightType
+			),
+			'margin-bottom': generateCSSUnit( headingBottomTablet, headingBottomType ),
+			'letter-spacing': generateCSSUnit( headingLetterSpacingTablet, headingLetterSpacingType ),
 		},
-		" .uagb-toc__list-wrap" : {
-			'column-count': tColumnsTablet,
-			'overflow': 'hidden'
+		' .uagb-toc__wrap': {
+			...overallBorderCSSTablet,
+			'width': generateCSSUnit( widthTablet, widthTypeTablet ),
+			'padding-left': generateCSSUnit(
+				leftPaddingTablet,
+				paddingTypeTablet
+			),
+			'padding-right': generateCSSUnit(
+				rightPaddingTablet,
+				paddingTypeTablet
+			),
+			'padding-top': generateCSSUnit(
+				topPaddingTablet,
+				paddingTypeTablet
+			),
+			'padding-bottom': generateCSSUnit(
+				bottomPaddingTablet,
+				paddingTypeTablet
+			),
+		},
+		' .uagb-toc__list-wrap ul.uagb-toc__list:first-child': {
+			'margin-left': generateCSSUnit(
+				leftMarginTablet,
+				marginTypeTablet
+			),
+			'margin-right': generateCSSUnit(
+				rightMarginTablet,
+				marginTypeTablet
+			),
+			'margin-top': generateCSSUnit( topMarginTablet, marginTypeTablet ),
+			'margin-bottom': generateCSSUnit(
+				bottomMarginTablet,
+				marginTypeTablet
+			),
+		},
+		' .uagb-toc__list-wrap': {
+			'column-count': tColumnsTabletFallback,
+			'overflow': 'hidden',
+			'text-align': align,
 		},
 
-		" .uagb-toc__list-wrap > ol.uagb-toc__list > li:first-child" : {
-			"padding-top": generateCSSUnit( contentPaddingTablet, contentPaddingTypeTablet )
+		' .uagb-toc__list-wrap > ol.uagb-toc__list > li:first-child': {
+			'padding-top': generateCSSUnit(
+				contentPaddingTablet,
+				contentPaddingTypeTablet
+			),
 		},
-		" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" : {
-		    "padding-bottom": generateCSSUnit( contentPaddingTablet, contentPaddingTypeTablet )
+		' .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child': {
+			'padding-bottom': generateCSSUnit(
+				contentPaddingTablet,
+				contentPaddingTypeTablet
+			),
 		},
-		" .uagb-toc__list-wrap ol.uagb-toc__list > li" : {
-		    "padding-top": "calc( " + generateCSSUnit( contentPaddingTablet, contentPaddingTypeTablet ) + " / 2 )",
-		    "padding-bottom": "calc( " + generateCSSUnit( contentPaddingTablet, contentPaddingTypeTablet ) + " / 2 )"
+		' .uagb-toc__list-wrap ol.uagb-toc__list > li': {
+			'padding-top':
+				'calc( ' +
+				generateCSSUnit(
+					contentPaddingTablet,
+					contentPaddingTypeTablet
+				) +
+				' / 2 )',
+			'padding-bottom':
+				'calc( ' +
+				generateCSSUnit(
+					contentPaddingTablet,
+					contentPaddingTypeTablet
+				) +
+				' / 2 )',
 		},
-		" .uagb-toc__list-wrap ul.uagb-toc__list > li" : {
-		    "padding-top": "calc( " + generateCSSUnit( contentPaddingTablet, contentPaddingTypeTablet ) + " / 2 )",
-		    "padding-bottom": "calc( " + generateCSSUnit( contentPaddingTablet, contentPaddingTypeTablet ) + " / 2 )"
+		' .uagb-toc__list-wrap ul.uagb-toc__list > li': {
+			'padding-top':
+				'calc( ' +
+				generateCSSUnit(
+					contentPaddingTablet,
+					contentPaddingTypeTablet
+				) +
+				' / 2 )',
+			'padding-bottom':
+				'calc( ' +
+				generateCSSUnit(
+					contentPaddingTablet,
+					contentPaddingTypeTablet
+				) +
+				' / 2 )',
 		},
-	}
+	};
 
 	mobile_selectors = {
-		" .uagb-toc__list-wrap ol li a" : {
-			"font-size": generateCSSUnit( fontSizeMobile, fontSizeType ),
-			"line-height": generateCSSUnit( lineHeightMobile, lineHeightType ),
+		' .uagb-toc__list-wrap ul li': {
+			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 		},
-		" .uagb-toc__title" : {
-			"font-size" : generateCSSUnit( headingFontSizeMobile, headingFontSizeType ),
-			"line-height" : generateCSSUnit( headingLineHeightMobile, headingLineHeightType ),
+		' .uagb-toc__list-wrap ol li': {
+			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 		},
-		" .uagb-toc__wrap" : {
-			"width" : generateCSSUnit( widthMobile, widthTypeMobile ),
-			"padding-left": generateCSSUnit( hPaddingMobile, paddingTypeMobile ),
-			"padding-right": generateCSSUnit( hPaddingMobile, paddingTypeMobile ),
-			"padding-top": generateCSSUnit( vPaddingMobile, paddingTypeMobile ),
-			"padding-bottom": generateCSSUnit( vPaddingMobile, paddingTypeMobile ),
+		' .uagb-toc__list-wrap ol li a': {
+			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
+			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
+			'letter-spacing': generateCSSUnit( letterSpacingMobile, letterSpacingType ),
 		},
-		" .uagb-toc__list-wrap ul.uagb-toc__list:first-child" : {
-			"margin-left": generateCSSUnit( hMarginMobile, marginTypeMobile ),
-			"margin-right": generateCSSUnit( hMarginMobile, marginTypeMobile ),
-			"margin-top": generateCSSUnit( vMarginMobile, marginTypeMobile ),
-			"margin-bottom": generateCSSUnit( vMarginMobile, marginTypeMobile ),
+		' .uagb-toc__title': {
+			'font-size': generateCSSUnit(
+				headingFontSizeMobile,
+				headingFontSizeType
+			),
+			'line-height': generateCSSUnit(
+				headingLineHeightMobile,
+				headingLineHeightType
+			),
+			'margin-bottom': generateCSSUnit( headingBottomMobile, headingBottomType ),
+			'letter-spacing': generateCSSUnit( headingLetterSpacingMobile, headingLetterSpacingType ),
 		},
-		" .uagb-toc__list-wrap" : {
-			'column-count': tColumnsMobile,
-			'overflow': 'hidden'
-		},		
-		" .uagb-toc__list-wrap > ol.uagb-toc__list > li:first-child" : {
-		    "padding-top": generateCSSUnit( contentPaddingMobile, contentPaddingTypeMobile )
+		' .uagb-toc__wrap': {
+			...overallBorderCSSMobile,
+			'width': generateCSSUnit( widthMobile, widthTypeMobile ),
+			'padding-left': generateCSSUnit(
+				leftPaddingMobile,
+				paddingTypeMobile
+			),
+			'padding-right': generateCSSUnit(
+				rightPaddingMobile,
+				paddingTypeMobile
+			),
+			'padding-top': generateCSSUnit(
+				topPaddingMobile,
+				paddingTypeMobile
+			),
+			'padding-bottom': generateCSSUnit(
+				bottomPaddingMobile,
+				paddingTypeMobile
+			),
 		},
-		" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" : {
-		    "padding-bottom": generateCSSUnit( contentPaddingMobile, contentPaddingTypeMobile )
+		' .uagb-toc__list-wrap ul.uagb-toc__list:first-child': {
+			'margin-left': generateCSSUnit(
+				leftMarginMobile,
+				marginTypeMobile
+			),
+			'margin-right': generateCSSUnit(
+				rightMarginMobile,
+				marginTypeMobile
+			),
+			'margin-top': generateCSSUnit( topMarginMobile, marginTypeMobile ),
+			'margin-bottom': generateCSSUnit(
+				bottomMarginMobile,
+				marginTypeMobile
+			),
 		},
-		" .uagb-toc__list-wrap ol.uagb-toc__list > li" : {
-		    "padding-top": "calc( " + generateCSSUnit( contentPaddingMobile, contentPaddingTypeMobile ) + " / 2 )",
-		    "padding-bottom": "calc( " + generateCSSUnit( contentPaddingMobile, contentPaddingTypeMobile ) + " / 2 )"
+		' .uagb-toc__list-wrap': {
+			'column-count': tColumnsMobileFallback,
+			'overflow': 'hidden',
+			'text-align': align,
 		},
-		" .uagb-toc__list-wrap ul.uagb-toc__list > li" : {
-		    "padding-top": "calc( " + generateCSSUnit( contentPaddingMobile, contentPaddingTypeMobile ) + " / 2 )",
-		    "padding-bottom": "calc( " + generateCSSUnit( contentPaddingMobile, contentPaddingTypeMobile ) + " / 2 )"
+		' .uagb-toc__list-wrap > ol.uagb-toc__list > li:first-child': {
+			'padding-top': generateCSSUnit(
+				contentPaddingMobile,
+				contentPaddingTypeMobile
+			),
 		},
+		' .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child': {
+			'padding-bottom': generateCSSUnit(
+				contentPaddingMobile,
+				contentPaddingTypeMobile
+			),
+		},
+		' .uagb-toc__list-wrap ol.uagb-toc__list > li': {
+			'padding-top':
+				'calc( ' +
+				generateCSSUnit(
+					contentPaddingMobile,
+					contentPaddingTypeMobile
+				) +
+				' / 2 )',
+			'padding-bottom':
+				'calc( ' +
+				generateCSSUnit(
+					contentPaddingMobile,
+					contentPaddingTypeMobile
+				) +
+				' / 2 )',
+		},
+		' .uagb-toc__list-wrap ul.uagb-toc__list > li': {
+			'padding-top':
+				'calc( ' +
+				generateCSSUnit(
+					contentPaddingMobile,
+					contentPaddingTypeMobile
+				) +
+				' / 2 )',
+			'padding-bottom':
+				'calc( ' +
+				generateCSSUnit(
+					contentPaddingMobile,
+					contentPaddingTypeMobile
+				) +
+				' / 2 )',
+		},
+	};
+
+	// separator
+	if ( separatorStyle !== 'none' ) {
+
+		// Since we need the separator to ignore the padding and cover the entire width of the parent container,
+		// we use calc and do the following calculations.
+
+		const calcPaddingLeft = generateCSSUnit( leftPadding, paddingTypeDesktop );
+		const calcPaddingRight = generateCSSUnit( rightPadding, paddingTypeDesktop );
+
+		const tCalcPaddingLeft = generateCSSUnit( leftPaddingTablet, paddingTypeTablet );
+		const tCalcPaddingRight = generateCSSUnit( rightPaddingTablet, paddingTypeTablet );
+
+		const mCalcPaddingLeft = generateCSSUnit( leftPaddingMobile, paddingTypeMobile );
+		const mCalcPaddingRight = generateCSSUnit( rightPaddingMobile, paddingTypeMobile );
+
+		selectors[ ' .uagb-toc__separator' ] = {
+			'border-top-style': separatorStyle,
+			'border-top-width': generateCSSUnit(
+				getFallbackNumber( separatorHeight, 'separatorHeight', blockName ),
+				separatorHeightType
+			),
+			'width': 'calc( 100% + ' + calcPaddingLeft + ' + ' + calcPaddingRight +')',
+			'margin-left': '-' + calcPaddingLeft,
+			'border-color': separatorColor,
+			'margin-bottom': generateCSSUnit(
+				getFallbackNumber( separatorSpace, 'separatorSpace', blockName ),
+				separatorSpaceType
+			),
+		};
+
+		selectors[ ' .uagb-toc__wrap:hover .uagb-toc__separator' ] = {
+			'border-color': separatorHColor,
+		};
+
+		tablet_selectors[ ' .uagb-toc__separator' ] = {
+			'width': 'calc( 100% + ' + tCalcPaddingLeft + ' + ' + tCalcPaddingRight +')',
+			'margin-left': '-' + tCalcPaddingLeft,
+			'margin-bottom': generateCSSUnit(
+				getFallbackNumber( separatorSpaceTablet, 'separatorSpaceTablet', blockName ),
+				separatorSpaceType
+			),
+		};
+
+		mobile_selectors[ ' .uagb-toc__separator' ] = {
+			'width': 'calc( 100% + ' + mCalcPaddingLeft + ' + ' + mCalcPaddingRight +')',
+			'margin-left': '-' + mCalcPaddingLeft,
+			'margin-bottom': generateCSSUnit(
+				getFallbackNumber( separatorSpaceMobile, 'separatorSpaceMobile', blockName ),
+				separatorSpaceType
+			),
+		};
+
 	}
 
-	var id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`
+	const id = `.block-editor-block-list__block .uagb-block-${ props.clientId.substr(
+		0,
+		8
+	) }`;
 
-	var styling_css = generateCSS( selectors, id )
+	let styling_css = generateCSS( selectors, id );
 
-	styling_css += generateCSS( tablet_selectors, `${id}.uagb-editor-preview-mode-tablet`, true, "tablet" )
+	styling_css += generateCSS(
+		tablet_selectors,
+		`${ id }.uagb-editor-preview-mode-tablet`,
+		true,
+		'tablet'
+	);
 
-	styling_css += generateCSS( mobile_selectors, `${id}.uagb-editor-preview-mode-mobile`, true, "mobile" )
+	styling_css += generateCSS(
+		mobile_selectors,
+		`${ id }.uagb-editor-preview-mode-mobile`,
+		true,
+		'mobile'
+	);
 
-	if ( "" != scrollToTopColor ) {
-		styling_css += ".uagb-toc__scroll-top { color: " + scrollToTopColor + "; }"
+	if ( '' !== scrollToTopColor ) {
+		styling_css +=
+			'.uagb-toc__scroll-top { color: ' + scrollToTopColor + '; }';
 	}
 
-	if ( "" != scrollToTopBgColor ) {
-		styling_css += ".uagb-toc__scroll-top.uagb-toc__show-scroll { background: " + scrollToTopBgColor + "; }"
+	if ( '' !== scrollToTopBgColor ) {
+		styling_css +=
+			'.block-editor-page .uagb-toc__scroll-top.uagb-toc__show-scroll.uagb-toc__show-scroll { background: ' +
+			scrollToTopBgColor +
+			'; }';
 	}
 
-	return styling_css
+	return styling_css;
 }
 
-export default styling
+export default styling;

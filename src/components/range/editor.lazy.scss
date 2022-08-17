@@ -1,0 +1,84 @@
+.uag-range-control {
+
+	.uagb-range-control__mobile-controls {
+		display: flex;
+		width: 100%;
+		align-items: center;
+
+		.components-base-control.components-range-control {
+			-webkit-tap-highlight-color: transparent;
+			box-sizing: border-box;
+			align-items: flex-start;
+			-webkit-box-pack: start;
+			justify-content: flex-start;
+			margin-right: 20px;
+			position: relative;
+			width: 100%;
+			margin-bottom: 0;
+			max-height: 30px;
+
+			.components-range-control__tooltip {
+				left: 45%;
+			}
+		}
+
+		.components-input-control__container {
+			flex: 0 0 0%;
+			width: 100%;
+		}
+
+		.components-number-control {
+			width: 35%;
+			margin-left: 10px;
+
+			.components-input-control__input {
+				padding: 0 1px 0 8px !important;
+				text-align: left;
+				font-size: 14px;
+			}
+		}
+	}
+}
+
+/*.components-panel__body {
+	.components-font-size-picker__controls {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 0;
+		max-width: 248px;
+	}
+	.components-font-size-picker__select {
+		margin-bottom: 0 !important;
+		width: 115px;
+	}
+	.components-font-size-picker__select .components-base-control__field {
+		margin-bottom: 0;
+	}
+	.components-font-size-picker__select .components-base-control__field {
+		margin-bottom: 0;
+	}
+	.components-font-size-picker__select .components-base-control__label {
+		display: none;
+		margin-bottom: 5px;
+		visibility: hidden;
+	}
+	input[type="number"].uagb-range-control__number {
+		border-left: 1px solid #d5dadf;
+		-webkit-border-radius: 3px 0 0 3px;
+		border-right: 1px solid #d5dadf;
+		border-color: #d5dadf;
+	}
+}*/
+
+/*.components-panel__body {
+	.uagb-range-control__mobile-controls-item {
+		box-shadow: unset !important;
+		border-radius: unset;
+		&.uagb-range-control__mobile-controls-item--padding.components-button.is-secondary:active:not(:disabled),
+		.uagb-range-control__mobile-controls-item.uagb-range-control__mobile-controls-item--padding.components-button.is-tertiary:active:not(:disabled) {
+			background: #fff;
+			color: black;
+		}
+	}
+}*/

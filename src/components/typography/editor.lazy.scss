@@ -1,0 +1,71 @@
+/* Reset Gutenberg Css */
+
+@import "../../styles/variables";
+
+.spectra-control-popup__options .spectra-control-popup {
+
+	.uag-font-family-searchable-select {
+		display: flex;
+		width: 100%;
+		flex-direction: column;
+
+		// Note, the wrapper is used outside the actual component in the DOM.
+		&__wrapper {
+			align-items: center;
+			display: grid;
+			grid-template-columns: 50% 50%;
+			height: $spectra-control-input-height;
+
+			label {
+				margin-bottom: 0;
+			}
+		}
+
+		.uag-font-family-select__input input {
+			box-shadow: none;
+			border: none;
+			min-height: $spectra-control-input-height;
+		}
+
+		.uag-font-family-select__control {
+			cursor: pointer;
+
+			&:hover {
+				border: 1px solid $spectra-color-border;
+			}
+		}
+
+		.uag-font-family-select__menu {
+			z-index: 99999;
+		}
+
+		.uag-font-family-select__indicators {
+			height: $spectra-control-input-height;
+		}
+
+		.uag-font-family-select__dropdown-indicator {
+
+			padding-left: 6px;
+
+			svg {
+				fill: $spectra-color-body;
+				height: 14px;
+				width: 14px;
+			}
+		}
+
+		.uag-font-family-select__dropdown-indicator:hover {
+			color: $spectra-color-body;
+		}
+
+		.uag-font-family-select__value-container {
+
+			top: 0;
+
+			> div {
+				margin: 0;
+				padding: 0;
+			}
+		}
+	}
+}

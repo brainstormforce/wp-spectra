@@ -1,72 +1,40 @@
 /**
- * WordPress dependencies
- */
-
-const { Path, SVG, G } = wp.components
-/**
  * Custom icons
  */
 const rowIcons = {};
 
-rowIcons.colOne =
-	<SVG className="dashicon" height="26" viewBox="0 0 50 26" width="50" xmlns="http://www.w3.org/2000/svg"><Path d="m48.0833333 0h-46.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v22c0 1.1.8625 2 1.91666667 2h46.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-22c0-1.1-.8625-2-1.9166667-2zm0 24h-46.16666663v-22h46.16666663z" /></SVG>;
+rowIcons.colOne = (
+	<svg id="Layer_4" width="100" height="50" data-name="Layer 4" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 100 54.54"><path d="M385,133.37v54.54H285V133.37Z" transform="translate(-285 -133.37)"/></svg> 
 
-rowIcons.layout5050 =
-	<SVG className="dashicon" height="26" viewBox="0 0 50 26" width="50" xmlns="http://www.w3.org/2000/svg"><G fillRule="evenodd"><Path d="m48.0833333 0h-46.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v22c0 1.1.8625 2 1.91666667 2h46.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-22c0-1.1-.8625-2-1.9166667-2zm0 24h-46.16666663v-22h46.16666663z" fillRule="nonzero" /><Path d="m24 2h2v22h-2z" /></G></SVG>;
+);
 
-rowIcons.layout502525 =
-	<SVG className="dashicon" height="26" viewBox="0 0 50 26" width="50" xmlns="http://www.w3.org/2000/svg"><G fillRule="evenodd"><Path d="m48.0833333 0h-46.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v22c0 1.1.8625 2 1.91666667 2h46.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-22c0-1.1-.8625-2-1.9166667-2zm0 24h-46.16666663v-22h46.16666663z" fillRule="nonzero" /><Path d="m36 2h2v22h-2z" /><Path d="m24 2h2v22h-2z" /></G></SVG>;
+rowIcons.layout5050 = (
+	<svg id="Layer_2" width="100" height="50" data-name="Layer 2" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 100 54.54"><path d="M461,133.37v54.54H412V133.37Zm51,0v54.54H463V133.37Z" transform="translate(-412 -133.37)"/></svg>
+);
+rowIcons.layout3366 = (
+	<svg id="Layer_3" width="100" height="50" data-name="Layer 3" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 100 54.54"><path d="M571.67,133.37v54.54H539V133.37Zm67.33,0v54.54H573.67V133.37Z" transform="translate(-539 -133.37)"/></svg>
+);
+rowIcons.layout6633 = (
+	<svg id="Layer_5" width="100" height="50" data-name="Layer 5" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 100 54.54"><path d="M731.07,133.37v54.54H665.73V133.37Zm34.66,0v54.54H733.07V133.37Z" transform="translate(-665.73 -133.37)"/></svg>
+);
+rowIcons.layout333333 = (
+	<svg id="Layer_7" width="100" height="50" data-name="Layer 7" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 100 54.54"><path d="M444,207.83v54.54H412V207.83Zm34,0v54.54H446V207.83Zm34,0v54.54H480V207.83Z" transform="translate(-412 -207.83)"/></svg>
+);
+rowIcons.layout252550 = (
+	<svg  width="100" height="50" xmlns="https://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M24,0V50H0V0Z M50,0V50H26V0Z M100,0V50H52V0Z"></path></svg>
+);
+rowIcons.layout502525 = (
+	<svg id="Layer_6" width="100" height="50" data-name="Layer 6" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 100 54.54"><path d="M333,207.83v54.54H285V207.83Zm26,0v54.54H335V207.83Zm26,0v54.54H361V207.83Z" transform="translate(-285 -207.83)"/></svg>
+);
 
-rowIcons.layout25252525 =
-	<SVG className="dashicon" height="26" viewBox="0 0 50 26" width="50" xmlns="http://www.w3.org/2000/svg"><G fillRule="evenodd"><Path d="m48.0833333 0h-46.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v22c0 1.1.8625 2 1.91666667 2h46.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-22c0-1.1-.8625-2-1.9166667-2zm0 24h-46.16666663v-22h46.16666663z" fillRule="nonzero" /><Path d="m12 2h2v22h-2z" /><Path d="m24 2h2v22h-2z" /><Path d="m36 2h2v22h-2z" /></G></SVG>;
-
-rowIcons.layout3366 = 
-<SVG width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<Path
-	fillRule="evenodd"
-	clipRule="evenodd"
-	d="M39 12C40.1046 12 41 12.8954 41 14V34C41 35.1046 40.1046 36 39 36H9C7.89543 36 7 35.1046 7 34V14C7 12.8954 7.89543 12 9 12H39ZM39 34V14H20V34H39ZM18 34H9V14H18V34Z"
-/>
-</SVG>
-
-rowIcons.layout6633 = 
-<SVG
-width="48"
-height="48"
-viewBox="0 0 48 48"
-xmlns="http://www.w3.org/2000/svg"
->
-<Path
-	fillRule="evenodd"
-	clipRule="evenodd"
-	d="M39 12C40.1046 12 41 12.8954 41 14V34C41 35.1046 40.1046 36 39 36H9C7.89543 36 7 35.1046 7 34V14C7 12.8954 7.89543 12 9 12H39ZM39 34V14H30V34H39ZM28 34H9V14H28V34Z"
-/>
-</SVG>
-
-rowIcons.layout333333 = 
-<SVG
-width="48"
-height="48"
-viewBox="0 0 48 48"
-xmlns="http://www.w3.org/2000/svg"
->
-<Path
-	fillRule="evenodd"
-	d="M41 14a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h30a2 2 0 0 0 2-2V14zM28.5 34h-9V14h9v20zm2 0V14H39v20h-8.5zm-13 0H9V14h8.5v20z"
-/>
-</SVG>
-
-rowIcons.layout255025 = 
-<SVG
-width="48"
-height="48"
-viewBox="0 0 48 48"
-xmlns="http://www.w3.org/2000/svg"
->
-<Path
-	fillRule="evenodd"
-	d="M41 14a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h30a2 2 0 0 0 2-2V14zM31 34H17V14h14v20zm2 0V14h6v20h-6zm-18 0H9V14h6v20z"
-/>
-</SVG>
+rowIcons.layout255025 = (
+	<svg id="Layer_8" width="100" height="50" data-name="Layer 8" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 100 54.54"><path d="M563,207.83v54.54H539V207.83Zm50,0v54.54H565V207.83Zm26,0v54.54H615V207.83Z" transform="translate(-539 -207.83)"/></svg>
+);
+rowIcons.layout25252525 = (
+	<svg id="Layer_8" width="100" height="50" data-name="Layer 8" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 100 54.54"><path d="M689.23,207.64v54.55h-23.5V207.64Zm25.5,0v54.55h-23.5V207.64Zm25.5,0v54.55h-23.5V207.64Zm25.5,0v54.55h-23.5V207.64Z" transform="translate(-665.73 -207.64)"/></svg>
+);
+rowIcons.layout2525252525 = (
+	<svg  width="100" height="50" xmlns="https://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M18.4,0V50H0V0Z M38.8,0V50H20.4V0Z M59.2,0V50H40.8V0Z M79.6,0V50H61.2V0Z M100,0V50H81.6V0Z"></path></svg>
+);
 
 export default rowIcons;

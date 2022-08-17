@@ -1,0 +1,66 @@
+.edit-post-visual-editor .wp-block-gallery.uag-masonry {
+
+	/* For Backword */
+	ul.blocks-gallery-grid {
+		column-count: 4;
+		column-gap: 1em;
+		display: block;
+
+		li.blocks-gallery-item {
+			display: block;
+			grid-template-rows: 1fr auto;
+			margin: 0 0 1em 0;
+			break-inside: avoid;
+			width: unset;
+		}
+	}
+
+	/* End Backword */
+	&.blocks-gallery-grid {
+		column-count: 3;
+		column-gap: 1em;
+		display: block;
+
+		figure.wp-block-image:not(#individual-image) {
+			display: block;
+			grid-template-rows: 1fr auto;
+			margin: 0 0 1em 0;
+			break-inside: avoid;
+			width: unset;
+		}
+	}
+}
+
+.uag-copy-paste-styles-popover {
+
+	.components-menu-item__shortcut {
+		white-space: nowrap;
+	}
+
+	.components-menu-item__item {
+		min-width: 100%;
+		justify-content: space-around;
+	}
+
+	.components-popover__content {
+		border: 1px solid #1e1e1e;
+		box-shadow: none;
+	}
+
+	.components-button {
+		padding: 10px;
+		justify-content: center;
+	}
+}
+
+
+.uag-hide-desktop,
+.uagb-editor-preview-at-desktop.uag-hide-desktop,
+.uagb-editor-preview-at-tablet.uag-hide-tab,
+.uagb-editor-preview-at-mobile.uag-hide-mob {
+	display: inherit;
+	background: -o-repeating-linear-gradient(325deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05) 1px, transparent 2px, transparent 9px);
+	background: repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05) 1px, transparent 2px, transparent 9px);
+	border: 1px solid rgba(0, 0, 0, 0.02);
+}
+

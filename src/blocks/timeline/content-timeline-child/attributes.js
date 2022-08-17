@@ -6,70 +6,113 @@ import { __ } from '@wordpress/i18n';
 
 const attributes = {
 	content_class: {
-		type : "string",
+		type: 'string',
 	},
 	dayalign_class: {
-		type : "string",
+		type: 'string',
 	},
-	time_heading:{
-		type: "string",
-		default:__( "Timeline Heading ",'ultimate-addons-for-gutenberg' )
+	time_heading: {
+		type: 'string',
+		default: __( 'Timeline Heading ', 'ultimate-addons-for-gutenberg' ),
 	},
-	time_desc:{
-		type: "string",
-		default:__( "This is Timeline description, you can change me anytime click here ",'ultimate-addons-for-gutenberg' )
+	time_desc: {
+		type: 'string',
+		default: __(
+			'This is Timeline description, you can change me anytime click here ',
+			'ultimate-addons-for-gutenberg'
+		),
 	},
 	dateFormat: {
-		type: "string",
-		default: "F j, Y"
+		type: 'string',
+		default: 'F j, Y',
 	},
-	align : {
-		type : "string",
-		default : "center",
+	align: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment'
+		},
 	},
-	headingTag : {
-		type : "string",
-		default : "h4",
+	alignTablet: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		},
 	},
-	timelinAlignment : {
-		type : "string",
-		default : "center",
+	alignMobile: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
+		},
 	},
-	arrowlinAlignment : {
-		type : "string",
-		default : "center",
+	headingTag: {
+		type: 'string',
+		default: 'h4',
 	},
-	block_id  : {
-		type : "string",
-		default : "0",
+	timelinAlignment: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'timeline-alignment'
+		},
 	},
-	timelineItem :{
-		type : "number",
-		default : 5,
+	timelinAlignmentTablet: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'timeline-alignment-tablet'
+		},
 	},
-	tm_client_id  : {
-		type : "string",
-		default : "not_set",
+	timelinAlignmentMobile: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'timeline-alignment-mobile'
+		},
 	},
-	iconSize : {
-		type : "number",
-		default : 12,
+	arrowlinAlignment: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'arrowline-alignment'
+		},
 	},
-	icon : {
-		type : "string",
-		default : "fab fa fa-calendar-alt"
+	block_id: {
+		type: 'string',
+		default: '0',
 	},
-	t_date : {
-		type: "string",
+	timelineItem: {
+		type: 'number',
+		default: 5,
+	},
+	tm_client_id: {
+		type: 'string',
+		default: 'not_set',
+	},
+	iconSize: {
+		type: 'number',
+		default: 12,
+		UAGCopyPaste: {
+			styleType: 'icon-size'
+		},
+	},
+	icon: {
+		type: 'string',
+		default: 'calendar-days',
+	},
+	t_date: {
+		type: 'string',
 		default: '1/1/2019',
 	},
-	displayPostDate:{
-		type: "boolean",
+	displayPostDate: {
+		type: 'boolean',
 	},
 	stack: {
-		type: "string",
-		default: "tablet"
+		type: 'string',
+		default: 'tablet',
 	},
-}
+};
 
-export default attributes
+export default attributes;

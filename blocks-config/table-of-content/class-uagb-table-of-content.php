@@ -339,13 +339,16 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				} else {
 					$toc .= sprintf( '<li class="uagb-toc__list"><a href="#%s">%s</a>', esc_attr( $id ), $title );
 				}
+
 				$last_level = $level;
 			}
 
 			$toc .= str_repeat( '</li></ul>', $current_depth );
 			$toc .= '</ol>';
+
 			return $toc;
 		}
+
 		/**
 		 * Filters the Headings according to Mapping Headers Array.
 		 *
@@ -426,35 +429,55 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				return $value;
 			};
 
+			$desktop_class = '';
+			$tab_class     = '';
+			$mob_class     = '';
+
+			if ( array_key_exists( 'UAGHideDesktop', $attributes ) || array_key_exists( 'UAGHideTab', $attributes ) || array_key_exists( 'UAGHideMob', $attributes ) ) {
+
+				$desktop_class = ( isset( $attributes['UAGHideDesktop'] ) ) ? 'uag-hide-desktop' : '';
+
+				$tab_class = ( isset( $attributes['UAGHideTab'] ) ) ? 'uag-hide-tab' : '';
+
+				$mob_class = ( isset( $attributes['UAGHideMob'] ) ) ? 'uag-hide-mob' : '';
+			}
+
 			$wrap = array(
 				'wp-block-uagb-table-of-contents',
 				'uagb-toc__align-' . $attributes['align'],
 				'uagb-toc__columns-' . $attributes['tColumnsDesktop'],
-				( ( true === $attributes['initialCollapse'] ) ? 'uagb-toc__collapse' : ' ' ),
+				( ( true === $attributes['initialCollapse'] ) ? 'uagb-toc__collapse' : '' ),
 				'uagb-block-' . $attributes['block_id'],
 				( isset( $attributes['className'] ) ) ? $attributes['className'] : '',
+				$desktop_class,
+				$tab_class,
+				$mob_class,
 			);
 
 			ob_start();
 			?>
-				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>" 
+				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>"
 					data-scroll= "<?php echo esc_attr( $attributes['smoothScroll'] ); ?>"
-					data-offset= "<?php echo esc_attr( $attributes['smoothScrollOffset'] ); ?>"
-					data-delay= "<?php echo esc_attr( $attributes['smoothScrollDelay'] ); ?>"
+					data-offset= "<?php echo esc_attr( UAGB_Block_Helper::get_fallback_number( $attributes['smoothScrollOffset'], 'smoothScrollOffset', 'table-of-contents' ) ); ?>"
 				>
 				<div class="uagb-toc__wrap">
-					<div class="uagb-toc__title-wrap">
 						<div class="uagb-toc__title">
-							<?php echo wp_kses_post( $attributes['headingTitle'] ); ?>
+							<?php
+								echo wp_kses_post( $attributes['headingTitle'] );
+							if ( $attributes['makeCollapsible'] && $attributes['icon'] ) {
+								?>
+									<?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?>
+									<?php
+							}
+							?>
 						</div>
 						<?php
-						if ( $attributes['makeCollapsible'] && $attributes['icon'] ) {
+						if ( 'none' !== $attributes['separatorStyle'] ) {
 							?>
-							<span class="uag-toc__collapsible-wrap"><?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?></span>
+								<div class='uagb-toc__separator'></div>
 							<?php
 						}
 						?>
-					</div>
 					<?php if ( $uagb_toc_heading_content && count( $uagb_toc_heading_content ) > 0 && count( array_filter( $attributes['mappingHeaders'], $mapping_header_func ) ) > 0 ) { ?>
 					<div class="uagb-toc__list-wrap">
 						<?php
@@ -467,7 +490,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 							);
 						?>
 					</div>
-					<?php } else { ?> 
+					<?php } else { ?>
 						<p class='uagb_table-of-contents-placeholder'>
 						<?php echo esc_html( $attributes['emptyHeadingTeaxt'] ); ?>
 						</p>
@@ -522,7 +545,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									),
 									'icon'                 => array(
 										'type'    => 'string',
-										'default' => 'fa-angle-down',
+										'default' => 'angle-down',
 									),
 									'iconSize'             => array(
 										'type' => 'number',
@@ -537,6 +560,10 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 										'type'    => 'string',
 										'default' => 'left',
 									),
+									'headingAlignment'     => array(
+										'type'    => 'string',
+										'default' => 'left',
+									),
 									'heading'              => array(
 										'type'     => 'string',
 										'selector' => '.uagb-toc__title',
@@ -546,17 +573,9 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 										'type'    => 'string',
 										'default' => __( 'Table Of Contents', 'ultimate-addons-for-gutenberg' ),
 									),
-									'icon'                 => array(
-										'type'    => 'string',
-										'default' => 'fa-angle-down',
-									),
 									'smoothScroll'         => array(
 										'type'    => 'boolean',
 										'default' => true,
-									),
-									'smoothScrollDelay'    => array(
-										'type'    => 'number',
-										'default' => 800,
 									),
 									'smoothScrollOffset'   => array(
 										'type'    => 'number',
@@ -605,6 +624,38 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									),
 
 									// Padding.
+									'topPaddingTablet'     => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'bottomPaddingTablet'  => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'leftPaddingTablet'    => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'rightPaddingTablet'   => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'topPaddingMobile'     => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'bottomPaddingMobile'  => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'leftPaddingMobile'    => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'rightPaddingMobile'   => array(
+										'type'    => 'number',
+										'default' => '',
+									),
 									'vPaddingDesktop'      => array(
 										'type'    => 'number',
 										'default' => 30,
@@ -657,6 +708,12 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 										'default' => 'px',
 									),
 									'headingBottom'        => array(
+										'type' => 'number',
+									),
+									'headingBottomTablet'  => array(
+										'type' => 'number',
+									),
+									'headingBottomMobile'  => array(
 										'type' => 'number',
 									),
 									'paddingTypeDesktop'   => array(
@@ -725,9 +782,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									'fontWeight'           => array(
 										'type' => 'string',
 									),
-									'fontSubset'           => array(
-										'type' => 'string',
-									),
 									// Link Font Size.
 									'fontSize'             => array(
 										'type' => 'number',
@@ -770,9 +824,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 										'type'    => 'string',
 										'default' => '500',
 									),
-									'headingFontSubset'    => array(
-										'type' => 'string',
-									),
 									// Link Font Size.
 									'headingFontSize'      => array(
 										'type'    => 'number',
@@ -802,13 +853,46 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									'headingLineHeightMobile' => array(
 										'type' => 'number',
 									),
-									'headingAlignment'     => array(
-										'type'    => 'string',
-										'default' => 'left',
-									),
 									'emptyHeadingTeaxt'    => array(
 										'type'    => 'string',
 										'default' => __( 'Add a header to begin generating the table of contents', 'ultimate-addons-for-gutenberg' ),
+									),
+									// Separator.
+									'separatorStyle'       => array(
+										'type'    => 'string',
+										'default' => 'none',
+									),
+									'separatorHeight'      => array(
+										'type'    => 'number',
+										'default' => 1,
+									),
+									'separatorHeightType'  => array(
+										'type'    => 'string',
+										'default' => 'px',
+									),
+									'separatorSpace'       => array(
+										'type'    => 'number',
+										'default' => 15,
+									),
+									'separatorSpaceTablet' => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'separatorSpaceMobile' => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'separatorSpaceType'   => array(
+										'type'    => 'string',
+										'default' => 'px',
+									),
+									'separatorColor'       => array(
+										'type'    => 'string',
+										'default' => '',
+									),
+									'separatorHColor'      => array(
+										'type'    => 'string',
+										'default' => '',
 									),
 								)
 							),

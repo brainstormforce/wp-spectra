@@ -1,0 +1,81 @@
+.uagb-inspector-tab {
+
+	&.uagb-tab-content-general {
+
+		.uag-advance-panel-body-image {
+
+			.editor-bg-image-control {
+				margin-top: -35px;
+			}
+		}
+	}
+
+	.block-editor-image-size-control .block-editor-image-size-control__row {
+		text-transform: capitalize;
+	}
+
+	.components-base-control label.components-input-control__label {
+		text-transform: capitalize;
+	}
+
+	.block-editor-image-size-control {
+
+		&__row {
+
+			.components-button-group {
+
+				.components-button {
+					border: 1px solid #8f9395;
+					box-shadow: none;
+					font-size: 13px;
+					font-weight: 400;
+					height: 26px;
+
+					&.is-pressed {
+						background: #0085ba;
+						border-color: #0085ba;
+					}
+				}
+			}
+
+			.components-button {
+
+				span.dashicons-image-rotate {
+					font-size: 9px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					color: #2e92c4;
+				}
+			}
+		}
+	}
+}
+
+.wp-block-uagb-image {
+
+	.components-resizable-box__container {
+		max-width: 100% !important;
+		height: auto !important;
+
+		img {
+			max-width: 100% !important;
+		}
+	}
+
+	.components-placeholder.is-medium {
+
+		.components-placeholder__instructions {
+			display: block !important;
+		}
+
+		.components-placeholder__fieldset {
+			flex-direction: row;
+
+			.components-button {
+				margin-right: 10px;
+			}
+		}
+	}
+}
+
