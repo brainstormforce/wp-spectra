@@ -744,7 +744,8 @@ class UAGB_Post_Assets {
 				'js'  => '',
 			);
 		}
-
+		$blockattr = array();
+		
 		if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) ) {
 			/**
 			 * Filters the block attributes for CSS and JS generation.
