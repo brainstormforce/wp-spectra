@@ -170,22 +170,26 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+### 2.0.1 - WEDNESDAY, 17TH AUGUST 2022 ###
+* Improvement: Updated the link to the intro video in Spectra's admin dashboard.
+* Fix: Updated disabled block icon colors in the Spectra dashboard.
+
 ### 2.0.0 - WEDNESDAY, 17TH AUGUST 2022 ###
 * New: Redesigned UI/UX controls of Spectra blocks.
-* New: Introduced new, beautiful & fast Spectra admin dashboard powered by React.
+* New: Introduced a new, beautiful & fast Spectra admin dashboard powered by React.
 * New: Introducing Coming Soon mode feature.
 * New: Introducing Allow only Selected fonts, Load fonts locally & Preload fonts feature.
-* New: Introducing new border control which allow user to set border to Top/Bottom/Left/Right in all direction.
+* New: Introducing new border control allows users to set a border to Top/Bottom/Left/Right in all directions.
 * New: Introducing Automatic Block Recovery.
 * New: Introducing Font Awesome 6 Support.
 * New: Introducing Collapse Panels.
 * New: Introducing Blocks Editor Spacing.
-* New: Block Presets - Introducing Preset for most used block.
-* New: Control Presets - Added Preset for Box-Shadow, Button and Inner container.
+* New: Block Presets - Introducing Preset for a most used block.
+* New: Control Presets - Added Preset for Box-Shadow, Button, and Inner container.
 * New: Copy Paste Styles - Added Copy/Paste styling feature for Core Gutenberg blocks & Spectra blocks.
 * New: Added global Container Padding option on admin dashboard.
 * New: Added global default Content Width for container on admin dashboard.
-* New: Added support for block based widget editor.
+* New: Added support for block-based widget editor.
 * New: Container - Introducing container block with advanced flex property feature.
 * New: How-To - Separate child "Step" for how-to instead of info-box.
 * New: Image - Introducing image block with advanced feature.
@@ -193,23 +197,23 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Global Improvement: Responsive setting wherever needed.
 * Global Improvement: Refactored the Spectra blocks code & improved editor performance drastically.
 * Global Improvement: Typography control - Added text-transform, text-decoration, letter-spacing and font-style options.
-* Global Improvement: 4 way border control.
-* Global Improvement: 4 way spacing control for padding/margin.
-* Improvement: Buttons - Multiple Typography option for Text in parent.
+* Global Improvement: 4-way border control.
+* Global Improvement: 4-way spacing control for padding/margin.
+* Improvement: Buttons - Multiple Typography option for text in a parent.
 * Improvement: Buttons-child - Enable/disable Icon option.
-* Improvement: Buttons-child - Add "nofollow" to link option.
+* Improvement: Buttons-child - Add "nofollow" to the link option.
 * Improvement: Buttons-child - Remove Text option.
-* Improvement: Buttons-child - Separate Typography option for child.
+* Improvement: Buttons-child - Separate Typography option for a child.
 * Improvement: Buttons-child - Background transparent/color/gradient option.
 * Improvement: Buttons-child - Box-Shadow option.
 * Improvement: Blockquote - Moved Twitter Username field inside Tweeter Icon Tab.
-* Improvement: Call To Action - Enable Additional Button option.
+* Improvement: Call To Action - Enable the Additional Button option.
 * Improvement: Display Condition & Responsive Visibility – Enable/Disable option for Spectra extensions on admin dashboard.
 * Improvement: Forms - Global reCAPTCHA setting option on admin dashboard.
 * Improvement: Heading - Hide option for heading text and description.
 * Improvement: Heading - Text shadow, gradient color option for Title
 * Improvement: Heading - Color option when link added to heading text.
-* Improvement: Heading - Highlight heading text feature.
+* Improvement: Heading - Highlight the heading text feature.
 * Improvement: Heading - Background color option classic and gradient.
 * Improvement: Info-box - Enable/disable Icon/Image option.
 * Improvement: Info-box - Allow P tag in Title.
@@ -231,8 +235,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Table of content - Added Title below Separator Style.
 * Improvement: Template - Enable Templates Button on admin dashboard.
 * Fix: Multiple issues in multiple blocks.
-* Deprecated: Advanced Columns, Section, WP-Search, Post Masonry, Contact Form 7 Designer and Gravity Form Designer block.
-* Deprecated: Removed Spectra extention i.e responsive condition,display condition from core block.
+* Deprecated: Advanced Columns, Section, WP-Search, Post Masonry, Contact Form 7 Designer, and Gravity Form Designer block.
+* Deprecated: Removed Spectra extension, i.e., responsive condition, display condition from the core block.
 * Deprecated: Table of content - Removed Scroll Animation Delay.
 
 ### 1.25.6 - TUESDAY, 31ST MAY 2022 ###
