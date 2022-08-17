@@ -220,6 +220,9 @@ const UAGBFormsEdit = ( props ) => {
 
 		scrollBlockToView();
 
+		const id = props.clientId
+		window.addEventListener( 'load', renderReadyClasses( id ) )
+
 	}, [deviceType] );
 
 	const blockVariationPickerOnSelect = useCallback(
