@@ -175,7 +175,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 2.0.1 - WEDNESDAY, 17TH AUGUST 2022 =
-* Fix: Disabled block icons colors in the Spectra dashboard.
+* Fix: Updated disabled block icon colors in the Spectra dashboard.
 
 = 2.0.0 - WEDNESDAY, 17TH AUGUST 2022 =
 * New: Redesigned UI/UX controls of Spectra blocks.
