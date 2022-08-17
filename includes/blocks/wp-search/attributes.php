@@ -85,5 +85,5 @@ return array_merge(
 		'inputFontStyle'          => '',
 		'buttonFontStyle'         => '',
 	),
-	$inputBorderAttributes,
+	$inputBorderAttributes
 );

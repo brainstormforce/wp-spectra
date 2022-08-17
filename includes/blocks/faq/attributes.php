@@ -146,5 +146,5 @@ return array_merge(
 		'questionTextBgColor'          => '',
 		'questionTextActiveBgColor'    => '',
 	),
-	$border_attribute,
+	$border_attribute
 );

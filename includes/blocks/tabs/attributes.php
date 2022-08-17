@@ -123,5 +123,5 @@ return array_merge(
 		'titleLetterSpacingMobile'    => '',
 		'titleLetterSpacingType'      => 'px',
 	),
-	$border_attribute,
+	$border_attribute
 );
