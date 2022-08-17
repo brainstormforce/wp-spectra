@@ -369,7 +369,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									'default' => 'px',
 								),
 							),
-							$pagination_masonry_border_attribute,
+							$pagination_masonry_border_attribute
 						),
 						'render_callback' => array( $this, 'post_masonry_callback' ),
 					)
@@ -1102,7 +1102,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						'type'    => 'number',
 						'default' => '',
 					),
-				),
+				)
 			);
 		}
 

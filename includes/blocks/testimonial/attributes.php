@@ -163,5 +163,5 @@ return array_merge(
 		'companyLetterSpacingMobile' => '',
 		'companyLetterSpacingType'   => 'px',
 	),
-	$border_attribute,
+	$border_attribute
 );

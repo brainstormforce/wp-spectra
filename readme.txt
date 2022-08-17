@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.0
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -169,6 +169,12 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 2.0.2 - WEDNESDAY, 17TH AUGUST 2022 =
+* Fix: Compatibility issues with PHP version 7.2 and older.
+* Fix: Forms - Throws an error on drag and drop.
+* Fix: Icon List - Throws an undefined innerBlocks when drag and drop from block inserter.
+* Fix: Icon List - Throws an PHP Notice for old users.
 
 = 2.0.1 - WEDNESDAY, 17TH AUGUST 2022 =
 * Improvement: Updated the link to the intro video in Spectra's admin dashboard.

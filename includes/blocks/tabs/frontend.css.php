@@ -41,7 +41,7 @@ $selectors = array(
 			'background' => $attr['headerBgColor'],
 			'text-align' => $attr['titleAlign'],
 		),
-		$overall_border_css,
+		$overall_border_css
 	),
 	'.uagb-tabs__wrap ul.uagb-tabs__panel li.uagb-tab a '  => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $tab_title_top_padding, $attr['tabTitlePaddingUnit'] ),
@@ -418,7 +418,7 @@ if ( 'hstyle5' === $attr['tabsStyleD'] ) {
 		array(
 			'background' => $attr['bodyBgColor'],
 		),
-		$overall_border_css,
+		$overall_border_css
 	);
 	$selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop .uagb-tab']                   = array(
 		'border-top-width'    => '0px',
@@ -443,7 +443,7 @@ if ( 'hstyle5' === $attr['tabsStyleD'] ) {
 			'outline'            => 0,
 			'border-radius'      => 0,
 		),
-		$overall_border_css,
+		$overall_border_css
 	);
 	$selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop:hover']                       = array(
 		'border-color' => $attr['tabBorderHColor'],
@@ -458,7 +458,7 @@ if ( 'vstyle10' === $attr['tabsStyleD'] ) {
 		array(
 			'background' => $attr['bodyBgColor'],
 		),
-		$overall_border_css,
+		$overall_border_css
 	);
 	$selectors['.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop ul.uagb-tabs__panel .uagb-tab'] = array(
 		'border-width' => '0px',
@@ -479,7 +479,7 @@ if ( 'vstyle10' === $attr['tabsStyleD'] ) {
 			'outline'             => 0,
 			'border-radius'       => 0,
 		),
-		$overall_border_css,
+		$overall_border_css
 	);
 	$selectors['.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop:hover'] = array(
 		'border-color' => $attr['tabBorderHColor'],
@@ -497,7 +497,7 @@ if ( 'hstyle2' === $attr['tabsStyleD'] ) {
 			'outline'            => 0,
 			'border-radius'      => 0,
 		),
-		$overall_border_css,
+		$overall_border_css
 	);
 
 	$selectors['.uagb-tabs__wrap.uagb-tabs__hstyle2-desktop > .uagb-tabs__body-wrap'] = array(
@@ -532,7 +532,7 @@ if ( 'vstyle7' === $attr['tabsStyleD'] ) {
 			'outline'            => 0,
 			'border-radius'      => 0,
 		),
-		$overall_border_css,
+		$overall_border_css
 	);
 	$selectors['.uagb-tabs__wrap.uagb-tabs__vstyle7-desktop:hover']                 = array(
 		'border-color' => $attr['tabBorderHColor'],

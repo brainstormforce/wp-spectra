@@ -220,9 +220,8 @@ const UAGBFormsEdit = ( props ) => {
 
 		scrollBlockToView();
 
-
-		const id = this.props.clientId
-		window.addEventListener( 'load', this.renderReadyClasses( id ) )
+		const id = props.clientId
+		window.addEventListener( 'load', renderReadyClasses( id ) )
 
 	}, [deviceType] );
 

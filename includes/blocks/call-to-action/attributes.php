@@ -202,5 +202,5 @@ return array_merge(
 		'secondCtaLetterSpacingType'      => 'px',
 	),
 	$second_cta_border_attribute,
-	$cta_border_attribute,
+	$cta_border_attribute
 );
