@@ -159,17 +159,9 @@ function styling( props ) {
 		// Pagination Styling.
 		paginateArrowDistance,
 		paginateArrowDistanceUnit,
-		paginateArrowBorderStyle,
-		paginateArrowBorderWidth,
-		paginateArrowBorderRadius,
 		paginateLoaderSize,
-		paginateButtonBorderStyle,
-		paginateButtonBorderWidth,
-		paginateButtonBorderRadius,
 		paginateButtonTextColor,
 		paginateButtonTextColorHover,
-		paginateButtonBorderColor,
-		paginateButtonBorderColorHover,
 		paginateColor,
 		paginateColorHover,
 

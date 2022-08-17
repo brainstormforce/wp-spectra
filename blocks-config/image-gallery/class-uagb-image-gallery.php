@@ -657,47 +657,15 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 								'type' => 'number',
 								'default' => 'px',
 							),
-							'paginateArrowBorderStyle' => array(
-								'type' => 'string',
-								'default' => 'none',
-							),
-							'paginateArrowBorderWidth' => array(
-								'type' => 'number',
-								'default' => 4,
-							),
-							'paginateArrowBorderRadius' => array(
-								'type' => 'number',
-								'default' => 50,
-							),
 							'paginateLoaderSize' => array(
 								'type' => 'number',
 								'default' => 18,
-							),
-							'paginateButtonBorderStyle' => array(
-								'type' => 'string',
-								'default' => 'none',
-							),
-							'paginateButtonBorderWidth' => array(
-								'type' => 'number',
-								'default' => 4,
-							),
-							'paginateButtonBorderRadius' => array(
-								'type' => 'number',
-								'default' => 50,
 							),
 							'paginateButtonTextColor' => array(
 								'type' => 'string',
 								'default' => '#ffffff',
 							),
 							'paginateButtonTextColorHover' => array(
-								'type' => 'string',
-								'default' => '#4A01E0',
-							),
-							'paginateButtonBorderColor' => array(
-								'type' => 'string',
-								'default' => '#de99ec',
-							),
-							'paginateButtonBorderColorHover' => array(
 								'type' => 'string',
 								'default' => '#4A01E0',
 							),
