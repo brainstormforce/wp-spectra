@@ -66,618 +66,629 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 			if ( ! function_exists( 'register_block_type' ) ) {
 				return;
 			}
+
+			$btn_border_attributes   = array();
+			$arrow_border_attributes = array();
+
+			if ( method_exists( 'UAGB_Block_Helper', 'uag_generate_php_border_attribute' ) ) {
+				$btn_border_attributes   = UAGB_Block_Helper::uag_generate_php_border_attribute( 'btn' );
+				$arrow_border_attributes = UAGB_Block_Helper::uag_generate_php_border_attribute( 'arrow' );
+			}
 			
 			register_block_type(
 				'uagb/image-gallery',
 				array(
 					'attributes' => array_merge(
-						// Block Requirements
+						// Block Requirements.
 						array(
-							'block_id' => array(
+							'block_id'     => array(
 								'type' => 'string',
 							),
 							'classMigrate' => array(
-								'type' => 'boolean',
+								'type'    => 'boolean',
 								'default' => false,
 							),
 						),
-						// Editor Requirements
+						// Editor Requirements.
 						array(
-							'readyToRender' => array(
-								'type' => 'boolean',
+							'readyToRender'    => array(
+								'type'    => 'boolean',
 								'default' => false,
 							),
-							'tileSize' => array(
-								'type' => 'number',
+							'tileSize'         => array(
+								'type'    => 'number',
 								'default' => 0,
 							),
 							'tileSizeFrontEnd' => array(
-								'type' => 'number',
+								'type'    => 'number',
 								'default' => 0,
 							),
-							'focusList' => array(
-								'type' => 'array',
+							'focusList'        => array(
+								'type'    => 'array',
 								'default' => array(),
 							),
 						),
-						// Gallery Settings
+						// Gallery Settings.
 						array(
-							'mediaGallery' => array(
-								'type' => 'array',
+							'mediaGallery'        => array(
+								'type'    => 'array',
 								'default' => array(),
 							),
-							'mediaIDs' => array(
-								'type' => 'array',
+							'mediaIDs'            => array(
+								'type'    => 'array',
 								'default' => array(),
 							),
-							'feedLayout' => array(
-								'type' => 'string',
+							'feedLayout'          => array(
+								'type'    => 'string',
 								'default' => 'tiled',
 							),
 							'imageDisplayCaption' => array(
-								'type' => 'boolean',
+								'type'    => 'boolean',
 								'default' => true,
 							),
 						),
-						// Caption Settings
+						// Caption Settings.
 						array(
-							'imageCaptionLength' => array(
-								'type' => 'number',
+							'imageCaptionLength'      => array(
+								'type'    => 'number',
 								'default' => 30,
 							),
-							'captionVisibility' => array(
-								'type' => 'string',
+							'captionVisibility'       => array(
+								'type'    => 'string',
 								'default' => 'hover',
 							),
-							'captionDisplayType' => array(
-								'type' => 'string',
+							'captionDisplayType'      => array(
+								'type'    => 'string',
 								'default' => 'overlay',
 							),
-							'imageCaptionAlignment' => array(
-								'type' => 'string',
+							'imageCaptionAlignment'   => array(
+								'type'    => 'string',
 								'default' => 'center center',
 							),
 							'imageCaptionAlignment01' => array(
-								'type' => 'string',
+								'type'    => 'string',
 								'default' => 'center',
 							),
 							'imageCaptionAlignment02' => array(
-								'type' => 'string',
+								'type'    => 'string',
 								'default' => 'center',
 							),
-							'imageDefaultCaption' => array(
-								'type' => 'string',
+							'imageDefaultCaption'     => array(
+								'type'    => 'string',
 								'default' => 'No Caption',
 							),
-							'captionPaddingTop' => array(
-								'type' => 'number',
+							'captionPaddingTop'       => array(
+								'type'    => 'number',
 								'default' => 8,
 							),
-							'captionPaddingRight' => array(
-								'type' => 'number',
+							'captionPaddingRight'     => array(
+								'type'    => 'number',
 								'default' => 8,
 							),
-							'captionPaddingBottom' => array(
-								'type' => 'number',
+							'captionPaddingBottom'    => array(
+								'type'    => 'number',
 								'default' => 8,
 							),
-							'captionPaddingLeft' => array(
-								'type' => 'number',
+							'captionPaddingLeft'      => array(
+								'type'    => 'number',
 								'default' => 8,
 							),
-							'captionPaddingTopTab' => array(
-								'type' => 'number',
+							'captionPaddingTopTab'    => array(
+								'type'    => 'number',
 								'default' => 8,
 							),
-							'captionPaddingRightTab' => array(
-								'type' => 'number',
+							'captionPaddingRightTab'  => array(
+								'type'    => 'number',
 								'default' => 8,
 							),
 							'captionPaddingBottomTab' => array(
-								'type' => 'number',
+								'type'    => 'number',
 								'default' => 8,
 							),
-							'captionPaddingLeftTab' => array(
-								'type' => 'number',
+							'captionPaddingLeftTab'   => array(
+								'type'    => 'number',
 								'default' => 8,
 							),
-							'captionPaddingTopMob' => array(
-								'type' => 'number',
+							'captionPaddingTopMob'    => array(
+								'type'    => 'number',
 								'default' => 8,
 							),
-							'captionPaddingRightMob' => array(
-								'type' => 'number',
+							'captionPaddingRightMob'  => array(
+								'type'    => 'number',
 								'default' => 8,
 							),
 							'captionPaddingBottomMob' => array(
-								'type' => 'number',
+								'type'    => 'number',
 								'default' => 8,
 							),
-							'captionPaddingLeftMob' => array(
-								'type' => 'number',
+							'captionPaddingLeftMob'   => array(
+								'type'    => 'number',
 								'default' => 8,
 							),
-							'captionPaddingUnit' => array(
-								'type' => 'string',
+							'captionPaddingUnit'      => array(
+								'type'    => 'string',
 								'default' => 'px',
 							),
-							'captionPaddingUnitTab' => array(
-								'type' => 'string',
+							'captionPaddingUnitTab'   => array(
+								'type'    => 'string',
 								'default' => 'px',
 							),
-							'captionPaddingUnitMob' => array(
-								'type' => 'string',
+							'captionPaddingUnitMob'   => array(
+								'type'    => 'string',
 								'default' => 'px',
 							),
-							'captionPaddingUnitLink' => array(
-								'type' => 'boolean',
+							'captionPaddingUnitLink'  => array(
+								'type'    => 'boolean',
 								'default' => true,
 							),
-							'captionGap' => array(
-								'type' => 'number',
+							'captionGap'              => array(
+								'type'    => 'number',
 								'default' => 4,
 							),
-							'captionGapUnit' => array(
-								'type' => 'string',
+							'captionGapUnit'          => array(
+								'type'    => 'string',
 								'default' => 'px',
 							),
 						),
-						// Layout Settings
+						// Layout Settings.
 						array(
-							'columnsDesk' => array(
-								'type' => 'number',
+							'columnsDesk'         => array(
+								'type'    => 'number',
 								'default' => 6,
 							),
-							'columnsTab' => array(
-								'type' => 'number',
+							'columnsTab'          => array(
+								'type'    => 'number',
 								'default' => 4,
 							),
-							'columnsMob' => array(
-								'type' => 'number',
+							'columnsMob'          => array(
+								'type'    => 'number',
 								'default' => 3,
 							),
-							'gridImageGap' => array(
-								'type' => 'number',
+							'gridImageGap'        => array(
+								'type'    => 'number',
 								'default' => 2,
 							),
-							'gridImageGapTab' => array(
-								'type' => 'number',
+							'gridImageGapTab'     => array(
+								'type'    => 'number',
 								'default' => 2,
 							),
-							'gridImageGapMob' => array(
-								'type' => 'number',
+							'gridImageGapMob'     => array(
+								'type'    => 'number',
 								'default' => 2,
 							),
-							'gridImageGapUnit' => array(
-								'type' => 'string',
+							'gridImageGapUnit'    => array(
+								'type'    => 'string',
 								'default' => 'px',
 							),
 							'gridImageGapUnitTab' => array(
-								'type' => 'string',
+								'type'    => 'string',
 								'default' => 'px',
 							),
 							'gridImageGapUnitMob' => array(
-								'type' => 'string',
+								'type'    => 'string',
 								'default' => 'px',
 							),
-							'feedMarginTop' => array(
-								'type' => 'number',
+							'feedMarginTop'       => array(
+								'type'    => 'number',
 								'default' => 0,
 							),
-							'feedMarginRight' => array(
-								'type' => 'number',
+							'feedMarginRight'     => array(
+								'type'    => 'number',
 								'default' => 0,
 							),
-							'feedMarginBottom' => array(
-								'type' => 'number',
+							'feedMarginBottom'    => array(
+								'type'    => 'number',
 								'default' => 0,
 							),
-							'feedMarginLeft' => array(
-								'type' => 'number',
+							'feedMarginLeft'      => array(
+								'type'    => 'number',
 								'default' => 0,
 							),
-							'feedMarginTopTab' => array(
-								'type' => 'number',
+							'feedMarginTopTab'    => array(
+								'type'    => 'number',
 								'default' => 0,
 							),
-							'feedMarginRightTab' => array(
-								'type' => 'number',
+							'feedMarginRightTab'  => array(
+								'type'    => 'number',
 								'default' => 0,
 							),
 							'feedMarginBottomTab' => array(
-								'type' => 'number',
+								'type'    => 'number',
 								'default' => 0,
 							),
-							'feedMarginLeftTab' => array(
-								'type' => 'number',
+							'feedMarginLeftTab'   => array(
+								'type'    => 'number',
 								'default' => 0,
 							),
-							'feedMarginTopMob' => array(
-								'type' => 'number',
+							'feedMarginTopMob'    => array(
+								'type'    => 'number',
 								'default' => 0,
 							),
-							'feedMarginRightMob' => array(
-								'type' => 'number',
+							'feedMarginRightMob'  => array(
+								'type'    => 'number',
 								'default' => 0,
 							),
 							'feedMarginBottomMob' => array(
-								'type' => 'number',
+								'type'    => 'number',
 								'default' => 0,
 							),
-							'feedMarginLeftMob' => array(
-								'type' => 'number',
+							'feedMarginLeftMob'   => array(
+								'type'    => 'number',
 								'default' => 0,
 							),
-							'feedMarginUnit' => array(
-								'type' => 'string',
+							'feedMarginUnit'      => array(
+								'type'    => 'string',
 								'default' => 'px',
 							),
-							'feedMarginUnitTab' => array(
-								'type' => 'string',
+							'feedMarginUnitTab'   => array(
+								'type'    => 'string',
 								'default' => 'px',
 							),
-							'feedMarginUnitMob' => array(
-								'type' => 'string',
+							'feedMarginUnitMob'   => array(
+								'type'    => 'string',
 								'default' => 'px',
 							),
-							'feedMarginUnitLink' => array(
-								'type' => 'boolean',
+							'feedMarginUnitLink'  => array(
+								'type'    => 'boolean',
 								'default' => true,
 							),
 						),
-						// Layout Specific Settings
+						// Layout Specific Settings.
 						array(
-							'carouselStartAt' => array(
-								'type' => 'number',
+							'carouselStartAt'         => array(
+								'type'    => 'number',
 								'default' => 0,
 							),
-							'carouselSquares' => array(
-								'type' => 'boolean',
+							'carouselSquares'         => array(
+								'type'    => 'boolean',
 								'default' => false,
 							),
-							'carouselLoop' => array(
-								'type' => 'boolean',
+							'carouselLoop'            => array(
+								'type'    => 'boolean',
 								'default' => true,
 							),
-							'carouselAutoplay' => array(
-								'type' => 'boolean',
+							'carouselAutoplay'        => array(
+								'type'    => 'boolean',
 								'default' => true,
 							),
-							'carouselAutoplaySpeed' => array(
-								'type' => 'number',
+							'carouselAutoplaySpeed'   => array(
+								'type'    => 'number',
 								'default' => 2000,
 							),
-							'carouselPauseOnHover' => array(
-								'type' => 'boolean',
+							'carouselPauseOnHover'    => array(
+								'type'    => 'boolean',
 								'default' => true,
 							),
 							'carouselTransitionSpeed' => array(
-								'type' => 'number',
+								'type'    => 'number',
 								'default' => 500,
 							),
-							'gridPages' => array(
-								'type' => 'number',
+							'gridPages'               => array(
+								'type'    => 'number',
 								'default' => 1,
 							),
-							'gridPageNumber' => array(
-								'type' => 'number',
+							'gridPageNumber'          => array(
+								'type'    => 'number',
 								'default' => 1,
 							),
-							'generateSpecialTiles' => array(
-								'type' => 'boolean',
+							'generateSpecialTiles'    => array(
+								'type'    => 'boolean',
 								'default' => true,
 							),
 						),
-						// Pagination Settings
+						// Pagination Settings.
 						array(
-							'feedPagination' => array(
-								'type' => 'boolean',
+							'feedPagination'                 => array(
+								'type'    => 'boolean',
 								'default' => false,
 							),
-							'paginateUseArrows' => array(
-								'type' => 'boolean',
+							'paginateUseArrows'              => array(
+								'type'    => 'boolean',
 								'default' => true,
 							),
-							'paginateUseDots' => array(
-								'type' => 'boolean',
+							'paginateUseDots'                => array(
+								'type'    => 'boolean',
 								'default' => true,
 							),
-							'paginateUseLoader' => array(
-								'type' => 'boolean',
+							'paginateUseLoader'              => array(
+								'type'    => 'boolean',
 								'default' => true,
 							),
-							'paginateLimit' => array(
-								'type' => 'number',
+							'paginateLimit'                  => array(
+								'type'    => 'number',
 								'default' => 9,
 							),
-							'paginateButtonAlign' => array(
-								'type' => 'string',
+							'paginateButtonAlign'            => array(
+								'type'    => 'string',
 								'default' => 'center',
 							),
-							'paginateButtonText' => array(
-								'type' => 'string',
+							'paginateButtonText'             => array(
+								'type'    => 'string',
 								'default' => 'Load More Images',
 							),
-							'paginateButtonPaddingTop' => array(
-								'type' => 'number',
+							'paginateButtonPaddingTop'       => array(
+								'type'    => 'number',
 								'default' => 8,
 							),
-							'paginateButtonPaddingRight' => array(
-								'type' => 'number',
+							'paginateButtonPaddingRight'     => array(
+								'type'    => 'number',
 								'default' => 16,
 							),
-							'paginateButtonPaddingBottom' => array(
-								'type' => 'number',
+							'paginateButtonPaddingBottom'    => array(
+								'type'    => 'number',
 								'default' => 8,
 							),
-							'paginateButtonPaddingLeft' => array(
-								'type' => 'number',
+							'paginateButtonPaddingLeft'      => array(
+								'type'    => 'number',
 								'default' => 16,
 							),
-							'paginateButtonPaddingTopTab' => array(
-								'type' => 'number',
+							'paginateButtonPaddingTopTab'    => array(
+								'type'    => 'number',
 								'default' => 8,
 							),
-							'paginateButtonPaddingRightTab' => array(
-								'type' => 'number',
+							'paginateButtonPaddingRightTab'  => array(
+								'type'    => 'number',
 								'default' => 16,
 							),
 							'paginateButtonPaddingBottomTab' => array(
-								'type' => 'number',
+								'type'    => 'number',
 								'default' => 8,
 							),
-							'paginateButtonPaddingLeftTab' => array(
-								'type' => 'number',
+							'paginateButtonPaddingLeftTab'   => array(
+								'type'    => 'number',
 								'default' => 16,
 							),
-							'paginateButtonPaddingTopMob' => array(
-								'type' => 'number',
+							'paginateButtonPaddingTopMob'    => array(
+								'type'    => 'number',
 								'default' => 8,
 							),
-							'paginateButtonPaddingRightMob' => array(
-								'type' => 'number',
+							'paginateButtonPaddingRightMob'  => array(
+								'type'    => 'number',
 								'default' => 16,
 							),
 							'paginateButtonPaddingBottomMob' => array(
-								'type' => 'number',
+								'type'    => 'number',
 								'default' => 8,
 							),
-							'paginateButtonPaddingLeftMob' => array(
-								'type' => 'number',
+							'paginateButtonPaddingLeftMob'   => array(
+								'type'    => 'number',
 								'default' => 16,
 							),
-							'paginateButtonPaddingUnit' => array(
-								'type' => 'string',
+							'paginateButtonPaddingUnit'      => array(
+								'type'    => 'string',
 								'default' => 'px',
 							),
-							'paginateButtonPaddingUnitTab' => array(
-								'type' => 'string',
+							'paginateButtonPaddingUnitTab'   => array(
+								'type'    => 'string',
 								'default' => 'px',
 							),
-							'paginateButtonPaddingUnitMob' => array(
-								'type' => 'string',
+							'paginateButtonPaddingUnitMob'   => array(
+								'type'    => 'string',
 								'default' => 'px',
 							),
-							'paginateButtonPaddingUnitLink' => array(
-								'type' => 'boolean',
+							'paginateButtonPaddingUnitLink'  => array(
+								'type'    => 'boolean',
 								'default' => false,
 							),
 						),
-						// Image Styling
+						// Image Styling.
 						array(
-							'imageBorderRadius' => array(
-								'type' => 'number',
+							'imageBorderRadius'                 => array(
+								'type'    => 'number',
 								'default' => 0,
 							),
-							'imageBorderRadiusUnit' => array(
-								'type' => 'string',
+							'imageBorderRadiusUnit'             => array(
+								'type'    => 'string',
 								'default' => 'px',
 							),
-							'imageEnableZoom' => array(
-								'type' => 'boolean',
+							'imageEnableZoom'                   => array(
+								'type'    => 'boolean',
 								'default' => true,
 							),
-							'imageZoomType' => array(
-								'type' => 'string',
+							'imageZoomType'                     => array(
+								'type'    => 'string',
 								'default' => 'zoom-in',
 							),
-							'captionBackgroundEnableBlur' => array(
-								'type' => 'boolean',
+							'captionBackgroundEnableBlur'       => array(
+								'type'    => 'boolean',
 								'default' => false,
 							),
-							'captionBackgroundBlurAmount' => array(
-								'type' => 'number',
+							'captionBackgroundBlurAmount'       => array(
+								'type'    => 'number',
 								'default' => 10,
 							),
-							'captionBackgroundBlurOpacity' => array(
-								'type' => 'number',
+							'captionBackgroundBlurOpacity'      => array(
+								'type'    => 'number',
 								'default' => 0,
 							),
 							'captionBackgroundBlurOpacityHover' => array(
-								'type' => 'number',
+								'type'    => 'number',
 								'default' => 0,
 							),
 						),
-						// Caption Typography Styling
+						// Caption Typography Styling.
 						array(
 							'captionLoadGoogleFonts' => array(
-								'type' => 'boolean',
+								'type'    => 'boolean',
 								'default' => false,
 							),
-							'captionFontFamily' => array(
-								'type' => 'string',
+							'captionFontFamily'     => array(
+								'type'    => 'string',
 								'default' => 'Default',
 							),
-							'captionFontWeight' => array(
+							'captionFontWeight'     => array(
 								'type' => 'string',
 							),
-							'captionFontStyle' => array(
-								'type' => 'string',
+							'captionFontStyle'      => array(
+								'type'    => 'string',
 								'default' => 'normal',
 							),
-							'captionTransform' => array(
+							'captionTransform'      => array(
 								'type' => 'string',
 							),
-							'captionDecoration' => array(
-								'type' => 'string',
+							'captionDecoration'     => array(
+								'type'    => 'string',
 								'default' => 'none',
 							),
-							'captionFontSizeType' => array(
-								'type' => 'string',
+							'captionFontSizeType'   => array(
+								'type'    => 'string',
 								'default' => 'px',
 							),
-							'captionFontSize' => array(
+							'captionFontSize'       => array(
 								'type' => 'number',
 							),
-							'captionFontSizeTab' => array(
+							'captionFontSizeTab'    => array(
 								'type' => 'number',
 							),
-							'captionFontSizeMob' => array(
+							'captionFontSizeMob'    => array(
 								'type' => 'number',
 							),
 							'captionLineHeightType' => array(
-								'type' => 'string',
+								'type'    => 'string',
 								'default' => 'em',
 							),
-							'captionLineHeight' => array(
+							'captionLineHeight'     => array(
 								'type' => 'number',
 							),
-							'captionLineHeightTab' => array(
+							'captionLineHeightTab'  => array(
 								'type' => 'number',
 							),
-							'captionLineHeightMob' => array(
+							'captionLineHeightMob'  => array(
 								'type' => 'number',
 							),
 						),
-						// Pagination Button Typography Styling
+						// Pagination Button Typography Styling.
 						array(
 							'loadMoreLoadGoogleFonts' => array(
-								'type' => 'boolean',
+								'type'    => 'boolean',
 								'default' => false,
 							),
-							'loadMoreFontFamily' => array(
-								'type' => 'string',
+							'loadMoreFontFamily'     => array(
+								'type'    => 'string',
 								'default' => 'Default',
 							),
-							'loadMoreFontWeight' => array(
+							'loadMoreFontWeight'     => array(
 								'type' => 'string',
 							),
-							'loadMoreFontStyle' => array(
-								'type' => 'string',
+							'loadMoreFontStyle'      => array(
+								'type'    => 'string',
 								'default' => 'normal',
 							),
-							'loadMoreTransform' => array(
+							'loadMoreTransform'      => array(
 								'type' => 'string',
 							),
-							'loadMoreDecoration' => array(
-								'type' => 'string',
+							'loadMoreDecoration'     => array(
+								'type'    => 'string',
 								'default' => 'none',
 							),
-							'loadMoreFontSizeType' => array(
-								'type' => 'string',
+							'loadMoreFontSizeType'   => array(
+								'type'    => 'string',
 								'default' => 'px',
 							),
-							'loadMoreFontSize' => array(
+							'loadMoreFontSize'       => array(
 								'type' => 'number',
 							),
-							'loadMoreFontSizeTab' => array(
+							'loadMoreFontSizeTab'    => array(
 								'type' => 'number',
 							),
-							'loadMoreFontSizeMob' => array(
+							'loadMoreFontSizeMob'    => array(
 								'type' => 'number',
 							),
 							'loadMoreLineHeightType' => array(
-								'type' => 'string',
+								'type'    => 'string',
 								'default' => 'em',
 							),
-							'loadMoreLineHeight' => array(
+							'loadMoreLineHeight'     => array(
 								'type' => 'number',
 							),
-							'loadMoreLineHeightTab' => array(
+							'loadMoreLineHeightTab'  => array(
 								'type' => 'number',
 							),
-							'loadMoreLineHeightMob' => array(
+							'loadMoreLineHeightMob'  => array(
 								'type' => 'number',
 							),
 						),
-						// Hoverable Styling
+						// Hoverable Styling.
 						array(
-							'captionBackgroundEffect' => array(
-								'type' => 'string',
+							'captionBackgroundEffect'            => array(
+								'type'    => 'string',
 								'default' => 'none',
 							),
-							'captionBackgroundEffectHover' => array(
-								'type' => 'string',
+							'captionBackgroundEffectHover'       => array(
+								'type'    => 'string',
 								'default' => 'none',
 							),
-							'captionBackgroundEffectAmount' => array(
-								'type' => 'number',
+							'captionBackgroundEffectAmount'      => array(
+								'type'    => 'number',
 								'default' => 100,
 							),
 							'captionBackgroundEffectAmountHover' => array(
-								'type' => 'number',
+								'type'    => 'number',
 								'default' => 0,
 							),
-							'captionColor' => array(
-								'type' => 'string',
+							'captionColor'                       => array(
+								'type'    => 'string',
 								'default' => 'rgba(255,255,255,1)',
 							),
-							'captionColorHover' => array(
-								'type' => 'string',
+							'captionColorHover'                  => array(
+								'type'    => 'string',
 								'default' => 'rgba(255,255,255,1)',
 							),
-							'captionBackgroundColor' => array(
-								'type' => 'string',
+							'captionBackgroundColor'             => array(
+								'type'    => 'string',
 								'default' => 'rgba(0,0,0,0.75)',
 							),
-							'captionBackgroundColorHover' => array(
-								'type' => 'string',
+							'captionBackgroundColorHover'        => array(
+								'type'    => 'string',
 								'default' => 'rgba(0,0,0,0.75)',
 							),
-							'overlayColor' => array(
-								'type' => 'string',
+							'overlayColor'                       => array(
+								'type'    => 'string',
 								'default' => 'rgba(0,0,0,0)',
 							),
-							'overlayColorHover' => array(
-								'type' => 'string',
+							'overlayColorHover'                  => array(
+								'type'    => 'string',
 								'default' => 'rgba(0,0,0,0)',
 							),
-							'captionSeparateColors' => array(
-								'type' => 'boolean',
+							'captionSeparateColors'              => array(
+								'type'    => 'boolean',
 								'default' => false,
 							),
 						),
-						// Pagination Styling
+						// Pagination Styling.
 						array(
-							'paginateArrowDistance' => array(
-								'type' => 'number',
+							'paginateArrowDistance'        => array(
+								'type'    => 'number',
 								'default' => -24,
 							),
-							'paginateArrowDistanceUnit' => array(
-								'type' => 'number',
+							'paginateArrowDistanceUnit'    => array(
+								'type'    => 'number',
 								'default' => 'px',
 							),
-							'paginateLoaderSize' => array(
-								'type' => 'number',
+							'paginateLoaderSize'           => array(
+								'type'    => 'number',
 								'default' => 18,
 							),
-							'paginateButtonTextColor' => array(
-								'type' => 'string',
+							'paginateButtonTextColor'      => array(
+								'type'    => 'string',
 								'default' => '#ffffff',
 							),
 							'paginateButtonTextColorHover' => array(
-								'type' => 'string',
+								'type'    => 'string',
 								'default' => '#4A01E0',
 							),
-							'paginateColor' => array(
-								'type' => 'string',
+							'paginateColor'                => array(
+								'type'    => 'string',
 								'default' => '#4A01E0',
 							),
-							'paginateColorHover' => array(
-								'type' => 'string',
+							'paginateColorHover'           => array(
+								'type'    => 'string',
 								'default' => '#de99ec',
 							),
 						),
+						// Responsive Borders.
+						$arrow_border_attributes,
+						$btn_border_attributes,
 					),
 					'render_callback' => array( $this, 'render_initial_grid' ),
 				)

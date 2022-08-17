@@ -1,16 +1,16 @@
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const buttonBorderAttributes = getBorderAttributes( 'button', {
-	borderTopLeftRadius: 50,
-	borderTopRightRadius: 50,
-	borderBottomLeftRadius: 50,
-	borderBottomRightRadius: 50,
-} );
 const arrowBorderAttributes = getBorderAttributes( 'arrow', {
 	borderTopWidth: 4,
 	borderRightWidth: 4,
 	borderLeftWidth: 4,
 	borderBottomWidth: 4,
+	borderTopLeftRadius: 50,
+	borderTopRightRadius: 50,
+	borderBottomLeftRadius: 50,
+	borderBottomRightRadius: 50,
+} );
+const btnBorderAttributes = getBorderAttributes( 'btn', {
 	borderTopLeftRadius: 50,
 	borderTopRightRadius: 50,
 	borderBottomLeftRadius: 50,
@@ -1081,8 +1081,8 @@ const attributes = {
 	},
 
 	// Border Attributes
-	...buttonBorderAttributes,
 	...arrowBorderAttributes,
+	...btnBorderAttributes,
 };
 
 export default attributes;

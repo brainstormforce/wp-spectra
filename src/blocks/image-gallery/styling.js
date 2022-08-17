@@ -170,12 +170,12 @@ function styling( props ) {
 		arrowBorderHColor,
 	} = props.attributes;
 
-	const buttonBorderCSS = generateBorderCSS( props.attributes, 'button' );
-	const buttonBorderCSSTablet = generateBorderCSS( props.attributes, 'button', 'tablet' );
-	const buttonBorderCSSMobile = generateBorderCSS( props.attributes, 'button', 'mobile' );
 	const arrowBorderCSS = generateBorderCSS( props.attributes, 'arrow' );
 	const arrowBorderCSSTablet = generateBorderCSS( props.attributes, 'arrow', 'tablet' );
 	const arrowBorderCSSMobile = generateBorderCSS( props.attributes, 'arrow', 'mobile' );
+	const btnBorderCSS = generateBorderCSS( props.attributes, 'btn' );
+	const btnBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
+	const btnBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
 
 	let selectors = {
 
@@ -257,7 +257,7 @@ function styling( props ) {
 			'text-transform': loadMoreTransform,
 			'font-size': generateCSSUnit( loadMoreFontSize, loadMoreFontSizeType ),
 			'line-height': generateCSSUnit( loadMoreLineHeight, loadMoreLineHeightType ),
-			...buttonBorderCSS,
+			...btnBorderCSS,
 		},
 		'.uag-image-gallery__control-button:hover': {
 			'color': paginateButtonTextColorHover,
@@ -501,7 +501,7 @@ function styling( props ) {
 			),
 			'font-size': generateCSSUnit( loadMoreFontSizeTab, loadMoreFontSizeType ),
 			'line-height': generateCSSUnit( loadMoreLineHeightTab, loadMoreLineHeightType ),
-			...buttonBorderCSSTablet,
+			...btnBorderCSSTablet,
 		},
 		'.uag-image-gallery__layout--grid': {
 			'grid-gap': generateCSSUnit(
@@ -588,7 +588,7 @@ function styling( props ) {
 			),
 			'font-size': generateCSSUnit( loadMoreFontSizeMob, loadMoreFontSizeType ),
 			'line-height': generateCSSUnit( loadMoreLineHeightMob, loadMoreLineHeightType ),
-			...buttonBorderCSSMobile,
+			...btnBorderCSSMobile,
 		},
 		'.uag-image-gallery__layout--grid': {
 			'grid-gap': generateCSSUnit(

@@ -7,15 +7,6 @@
  * @package uagb
  */
 
-$button_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute(
-	'button',
-	array(
-		'borderTopLeftRadius'     => 50,
-		'borderTopRightRadius'    => 50,
-		'borderBottomLeftRadius'  => 50,
-		'borderBottomRightRadius' => 50,
-	)
-);
 $arrow_border_attributes  = UAGB_Block_Helper::uag_generate_border_attribute(
 	'arrow',
 	array(
@@ -23,6 +14,15 @@ $arrow_border_attributes  = UAGB_Block_Helper::uag_generate_border_attribute(
 		'borderRightWidth'        => 4,
 		'borderLeftWidth'         => 4,
 		'borderBottomWidth'       => 4,
+		'borderTopLeftRadius'     => 50,
+		'borderTopRightRadius'    => 50,
+		'borderBottomLeftRadius'  => 50,
+		'borderBottomRightRadius' => 50,
+	)
+);
+$btn_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute(
+	'btn',
+	array(
 		'borderTopLeftRadius'     => 50,
 		'borderTopRightRadius'    => 50,
 		'borderBottomLeftRadius'  => 50,
@@ -205,6 +205,6 @@ return array_merge(
 		'paginateColor'                      => '#4a01e0',
 		'paginateColorHover'                 => '#de99ec',
 	),
-	$button_border_attributes,
 	$arrow_border_attributes,
+	$btn_border_attributes,
 );

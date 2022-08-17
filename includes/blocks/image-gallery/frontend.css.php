@@ -10,12 +10,12 @@
 // Adds Fonts
 UAGB_Block_JS::blocks_image_gallery_gfont( $attr );
 
-$button_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'button' );
-$button_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'button', 'tablet' );
-$button_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'button', 'mobile' );
-$arrow_border_css         = UAGB_Block_Helper::uag_generate_border_css( $attr, 'arrow' );
-$arrow_border_css_tablet  = UAGB_Block_Helper::uag_generate_border_css( $attr, 'arrow', 'tablet' );
-$arrow_border_css_mobile  = UAGB_Block_Helper::uag_generate_border_css( $attr, 'arrow', 'mobile' );
+$arrow_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'arrow' );
+$arrow_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'arrow', 'tablet' );
+$arrow_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'arrow', 'mobile' );
+$btn_border_css          = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
+$btn_border_css_tablet   = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
+$btn_border_css_mobile   = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
 
 $selectors = array(
 
@@ -107,7 +107,7 @@ $selectors = array(
 			'font-size' => UAGB_Helper::get_css_value( $attr[ 'loadMoreFontSize' ], $attr[ 'loadMoreFontSizeType' ] ),
 			'line-height' => UAGB_Helper::get_css_value( $attr[ 'loadMoreLineHeight' ], $attr[ 'loadMoreLineHeightType' ] ),
 		),
-		$button_border_css,
+		$btn_border_css,
 	),
 	'.uag-image-gallery__control-button:hover' => array(
 		'color' => $attr[ 'paginateButtonTextColorHover' ],
@@ -324,7 +324,7 @@ $t_selectors = array(
 			'font-size' => UAGB_Helper::get_css_value( $attr[ 'loadMoreFontSizeTab' ], $attr[ 'loadMoreFontSizeType' ] ),
 			'line-height' => UAGB_Helper::get_css_value( $attr[ 'loadMoreLineHeightTab' ], $attr[ 'loadMoreLineHeightType' ] ),
 		),
-		$button_border_css_tablet,
+		$btn_border_css_tablet,
 	),
 	'.uag-image-gallery__layout--grid' => array(
 		'grid-gap' => UAGB_Helper::get_css_value(
@@ -411,7 +411,7 @@ $m_selectors = array(
 			'font-size' => UAGB_Helper::get_css_value( $attr[ 'loadMoreFontSizeMob' ], $attr[ 'loadMoreFontSizeType' ] ),
 			'line-height' => UAGB_Helper::get_css_value( $attr[ 'loadMoreLineHeightMob' ], $attr[ 'loadMoreLineHeightType' ] ),
 		),
-		$button_border_css_mobile,
+		$btn_border_css_mobile,
 	),
 	'.uag-image-gallery__layout--grid' => array(
 		'grid-gap' => UAGB_Helper::get_css_value(
