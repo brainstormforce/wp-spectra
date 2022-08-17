@@ -255,7 +255,7 @@ $selectors = array(
 			$attr[ 'captionPaddingBottom' ],
 			$attr[ 'captionPaddingLeft' ],
 		),
-	),	
+	),
 	'.uag-image-gallery-media__thumbnail-caption--overlay' => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
 			$attr[ 'imageBorderRadiusUnit' ],
@@ -360,6 +360,42 @@ $t_selectors = array(
 		'width' => 'calc( ' . UAGB_Block_Helper::get_precise_percentage( $attr[ 'columnsTab' ] ) . ' )',
 		'aspect-ratio' => 1,
 	),
+	'.uag-image-gallery-media' => array(
+		'border-radius' => UAGB_Block_Helper::generate_border_radius(
+			$attr[ 'imageBorderRadiusUnitTablet' ],
+			$attr[ 'imageBorderTopLeftRadiusTablet' ],
+			$attr[ 'imageBorderTopRightRadiusTablet' ],
+			$attr[ 'imageBorderBottomRightRadiusTablet' ],
+			$attr[ 'imageBorderBottomLeftRadiusTablet' ]
+		),
+	),
+	'.uag-image-gallery-media__thumbnail-blurrer' => array(
+		'border-radius' => UAGB_Block_Helper::generate_border_radius(
+			$attr[ 'imageBorderRadiusUnitTablet' ],
+			$attr[ 'imageBorderTopLeftRadiusTablet' ],
+			$attr[ 'imageBorderTopRightRadiusTablet' ],
+			$attr[ 'imageBorderBottomRightRadiusTablet' ],
+			$attr[ 'imageBorderBottomLeftRadiusTablet' ]
+		),
+	),
+	'.uag-image-gallery-media__thumbnail-caption-wrapper' => array(
+		'border-radius' => UAGB_Block_Helper::generate_border_radius(
+			$attr[ 'imageBorderRadiusUnitTablet' ],
+			$attr[ 'imageBorderTopLeftRadiusTablet' ],
+			$attr[ 'imageBorderTopRightRadiusTablet' ],
+			$attr[ 'imageBorderBottomRightRadiusTablet' ],
+			$attr[ 'imageBorderBottomLeftRadiusTablet' ]
+		),
+	),
+	'.uag-image-gallery-media__thumbnail-caption--overlay' => array(
+		'border-radius' => UAGB_Block_Helper::generate_border_radius(
+			$attr[ 'imageBorderRadiusUnitTablet' ],
+			$attr[ 'imageBorderTopLeftRadiusTablet' ],
+			$attr[ 'imageBorderTopRightRadiusTablet' ],
+			$attr[ 'imageBorderBottomRightRadiusTablet' ],
+			$attr[ 'imageBorderBottomLeftRadiusTablet' ]
+		),
+	),
 	'.uag-image-gallery-media__thumbnail-caption' => array(
 		'font-size' => UAGB_Helper::get_css_value( $attr[ 'captionFontSizeTab' ], $attr[ 'captionFontSizeType' ] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr[ 'captionLineHeightTab' ], $attr[ 'captionLineHeightType' ] ),
@@ -447,6 +483,42 @@ $m_selectors = array(
 		'width' => 'calc( ' . UAGB_Block_Helper::get_precise_percentage( $attr[ 'columnsMob' ] ) . ' )',
 		'aspect-ratio' => 1,
 	),
+	'.uag-image-gallery-media' => array(
+		'border-radius' => UAGB_Block_Helper::generate_border_radius(
+			$attr[ 'imageBorderRadiusUnitMobile' ],
+			$attr[ 'imageBorderTopLeftRadiusMobile' ],
+			$attr[ 'imageBorderTopRightRadiusMobile' ],
+			$attr[ 'imageBorderBottomRightRadiusMobile' ],
+			$attr[ 'imageBorderBottomLeftRadiusMobile' ]
+		),
+	),
+	'.uag-image-gallery-media__thumbnail-blurrer' => array(
+		'border-radius' => UAGB_Block_Helper::generate_border_radius(
+			$attr[ 'imageBorderRadiusUnitMobile' ],
+			$attr[ 'imageBorderTopLeftRadiusMobile' ],
+			$attr[ 'imageBorderTopRightRadiusMobile' ],
+			$attr[ 'imageBorderBottomRightRadiusMobile' ],
+			$attr[ 'imageBorderBottomLeftRadiusMobile' ]
+		),
+	),
+	'.uag-image-gallery-media__thumbnail-caption-wrapper' => array(
+		'border-radius' => UAGB_Block_Helper::generate_border_radius(
+			$attr[ 'imageBorderRadiusUnitMobile' ],
+			$attr[ 'imageBorderTopLeftRadiusMobile' ],
+			$attr[ 'imageBorderTopRightRadiusMobile' ],
+			$attr[ 'imageBorderBottomRightRadiusMobile' ],
+			$attr[ 'imageBorderBottomLeftRadiusMobile' ]
+		),
+	),
+	'.uag-image-gallery-media__thumbnail-caption--overlay' => array(
+		'border-radius' => UAGB_Block_Helper::generate_border_radius(
+			$attr[ 'imageBorderRadiusUnitMobile' ],
+			$attr[ 'imageBorderTopLeftRadiusMobile' ],
+			$attr[ 'imageBorderTopRightRadiusMobile' ],
+			$attr[ 'imageBorderBottomRightRadiusMobile' ],
+			$attr[ 'imageBorderBottomLeftRadiusMobile' ]
+		),
+	),
 	'.uag-image-gallery-media__thumbnail-caption' => array(
 		'font-size' => UAGB_Helper::get_css_value( $attr[ 'captionFontSizeMob' ], $attr[ 'captionFontSizeType' ] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr[ 'captionLineHeightMob' ], $attr[ 'captionLineHeightType' ] ),
@@ -505,7 +577,7 @@ if ( ! $attr[ 'captionBackgroundEnableBlur' ] ) {
 
 if ( $attr[ 'captionDisplayType'] === 'bar-outside' && $attr[ 'imageDisplayCaption' ] ){
 	switch( UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 1 ) ){
-		case 'top': 
+		case 'top':
 			$selectors[ '.uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
 				$attr[ 'imageBorderRadiusUnit' ],
 				$attr[ 'imageBorderTopLeftRadius' ],
@@ -533,6 +605,62 @@ if ( $attr[ 'captionDisplayType'] === 'bar-outside' && $attr[ 'imageDisplayCapti
 				0,
 				 $attr[ 'imageBorderBottomRightRadius' ],
 				 $attr[ 'imageBorderBottomLeftRadius' ]
+			);
+			$t_selectors[ '.uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
+				$attr[ 'imageBorderRadiusUnitTablet' ],
+				$attr[ 'imageBorderTopLeftRadiusTablet' ],
+				$attr[ 'imageBorderTopRightRadiusTablet' ],
+				0,
+				0
+			);
+			$t_selectors[ '.uag-image-gallery-media' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
+				$attr[ 'imageBorderRadiusUnitTablet' ],
+				0,
+				0,
+				$attr[ 'imageBorderBottomRightRadiusTablet' ],
+				$attr[ 'imageBorderBottomLeftRadiusTablet' ]
+			);
+			$t_selectors[ '.uag-image-gallery-media__thumbnail' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
+				$attr[ 'imageBorderRadiusUnitTablet' ],
+				0,
+				0,
+				$attr[ 'imageBorderBottomRightRadiusTablet' ],
+				$attr[ 'imageBorderBottomLeftRadiusTablet' ]
+			);
+			$t_selectors[ '.uag-image-gallery-media__thumbnail-blurrer' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
+				$attr[ 'imageBorderRadiusUnitTablet' ],
+				0,
+				0,
+				 $attr[ 'imageBorderBottomRightRadiusTablet' ],
+				 $attr[ 'imageBorderBottomLeftRadiusTablet' ]
+			);
+			$m_selectors[ '.uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
+				$attr[ 'imageBorderRadiusUnitMobile' ],
+				$attr[ 'imageBorderTopLeftRadiusMobile' ],
+				$attr[ 'imageBorderTopRightRadiusMobile' ],
+				0,
+				0
+			);
+			$m_selectors[ '.uag-image-gallery-media' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
+				$attr[ 'imageBorderRadiusUnitMobile' ],
+				0,
+				0,
+				$attr[ 'imageBorderBottomRightRadiusMobile' ],
+				$attr[ 'imageBorderBottomLeftRadiusMobile' ]
+			);
+			$m_selectors[ '.uag-image-gallery-media__thumbnail' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
+				$attr[ 'imageBorderRadiusUnitMobile' ],
+				0,
+				0,
+				$attr[ 'imageBorderBottomRightRadiusMobile' ],
+				$attr[ 'imageBorderBottomLeftRadiusMobile' ]
+			);
+			$m_selectors[ '.uag-image-gallery-media__thumbnail-blurrer' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
+				$attr[ 'imageBorderRadiusUnitMobile' ],
+				0,
+				0,
+				 $attr[ 'imageBorderBottomRightRadiusMobile' ],
+				 $attr[ 'imageBorderBottomLeftRadiusMobile' ]
 			);
 			break;
 		case 'center':
@@ -567,6 +695,62 @@ if ( $attr[ 'captionDisplayType'] === 'bar-outside' && $attr[ 'imageDisplayCapti
 				$attr[ 'imageBorderRadiusUnit' ],
 				$attr[ 'imageBorderTopLeftRadius' ],
 				$attr[ 'imageBorderTopRightRadius' ],
+				0,
+				0
+			);
+			$t_selectors[ '.uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
+				$attr[ 'imageBorderRadiusUnitTablet' ],
+				0,
+				0,
+				$attr[ 'imageBorderBottomRightRadiusTablet' ],
+				$attr[ 'imageBorderBottomLeftRadiusTablet' ]
+			);
+			$t_selectors[ '.uag-image-gallery-media' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
+				$attr[ 'imageBorderRadiusUnitTablet' ],
+				$attr[ 'imageBorderTopLeftRadiusTablet' ],
+				$attr[ 'imageBorderTopRightRadiusTablet' ],
+				0,
+				0
+			);
+			$t_selectors[ '.uag-image-gallery-media__thumbnail' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
+				$attr[ 'imageBorderRadiusUnitTablet' ],
+				$attr[ 'imageBorderTopLeftRadiusTablet' ],
+				$attr[ 'imageBorderTopRightRadiusTablet' ],
+				0,
+				0
+			);
+			$t_selectors[ '.uag-image-gallery-media__thumbnail-blurrer' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
+				$attr[ 'imageBorderRadiusUnitTablet' ],
+				$attr[ 'imageBorderTopLeftRadiusTablet' ],
+				$attr[ 'imageBorderTopRightRadiusTablet' ],
+				0,
+				0
+			);
+			$m_selectors[ '.uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
+				$attr[ 'imageBorderRadiusUnitMobile' ],
+				0,
+				0,
+				$attr[ 'imageBorderBottomRightRadiusMobile' ],
+				$attr[ 'imageBorderBottomLeftRadiusMobile' ]
+			);
+			$m_selectors[ '.uag-image-gallery-media' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
+				$attr[ 'imageBorderRadiusUnitMobile' ],
+				$attr[ 'imageBorderTopLeftRadiusMobile' ],
+				$attr[ 'imageBorderTopRightRadiusMobile' ],
+				0,
+				0
+			);
+			$m_selectors[ '.uag-image-gallery-media__thumbnail' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
+				$attr[ 'imageBorderRadiusUnitMobile' ],
+				$attr[ 'imageBorderTopLeftRadiusMobile' ],
+				$attr[ 'imageBorderTopRightRadiusMobile' ],
+				0,
+				0
+			);
+			$m_selectors[ '.uag-image-gallery-media__thumbnail-blurrer' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
+				$attr[ 'imageBorderRadiusUnitMobile' ],
+				$attr[ 'imageBorderTopLeftRadiusMobile' ],
+				$attr[ 'imageBorderTopRightRadiusMobile' ],
 				0,
 				0
 			);
