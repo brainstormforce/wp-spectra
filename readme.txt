@@ -171,7 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 2.0.2 - WEDNESDAY, 17TH AUGUST 2022 =
-* Fix: Forms - Throwing error when drag and drop.
+* Fix: Forms - Throws an error on drag and drop.
 
 = 2.0.1 - WEDNESDAY, 17TH AUGUST 2022 =
 * Improvement: Updated the link to the intro video in Spectra's admin dashboard.
