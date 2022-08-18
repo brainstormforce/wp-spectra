@@ -5,8 +5,10 @@ import generateBorderRadius from '@Controls/generateBorderRadius';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateSpacing from '@Controls/generateSpacing';
 import getPrecisePercentage from '@Controls/getPrecisePercentage';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+	const blockName = props.name.replace( 'uagb/', '' );
 	const {
 		// Tile Calcualtion
 		tileSize,
@@ -169,12 +171,31 @@ function styling( props ) {
 		arrowBorderHColor,
 	} = props.attributes;
 
+	// Border Attributes.
 	const arrowBorderCSS = generateBorderCSS( props.attributes, 'arrow' );
 	const arrowBorderCSSTablet = generateBorderCSS( props.attributes, 'arrow', 'tablet' );
 	const arrowBorderCSSMobile = generateBorderCSS( props.attributes, 'arrow', 'mobile' );
 	const btnBorderCSS = generateBorderCSS( props.attributes, 'btn' );
 	const btnBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
 	const btnBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+	
+	// Range Fallback.
+	const captionBackgroundBlurOpacityFallback = getFallbackNumber( captionBackgroundBlurOpacity, 'captionBackgroundBlurOpacity', blockName );
+	const captionBackgroundBlurOpacityHoverFallback = getFallbackNumber( captionBackgroundBlurOpacityHover, 'captionBackgroundBlurOpacityHover', blockName );
+	const captionBackgroundEffectAmountFallback = getFallbackNumber( captionBackgroundEffectAmount, 'captionBackgroundEffectAmount', blockName );
+	const captionBackgroundEffectAmountHoverFallback = getFallbackNumber( captionBackgroundEffectAmountHover, 'captionBackgroundEffectAmountHover', blockName );
+	const captionGapFallback = getFallbackNumber( captionGap, 'captionGap', blockName );
+	const captionBackgroundBlurAmountFallback = getFallbackNumber( captionBackgroundBlurAmount, 'captionBackgroundBlurAmount', blockName );
+	const paginateArrowDistanceFallback = getFallbackNumber( paginateArrowDistance, 'paginateArrowDistance', blockName );
+	const paginateLoaderSizeFallback = getFallbackNumber( paginateLoaderSize, 'paginateLoaderSize', blockName );
+	const columnsDeskFallback = getFallbackNumber( columnsDesk, 'columnsDesk', blockName );
+	const gridImageGapFallback = getFallbackNumber( gridImageGap, 'gridImageGap', blockName );
+	
+	// Responsive Slider Fallback.
+	const columnsTabFallback = isNaN( columnsTab ) ? columnsDeskFallback : columnsTab;
+	const columnsMobFallback = isNaN( columnsMob ) ? columnsTabFallback : columnsMob;
+	const gridImageGapTabFallback = isNaN( gridImageGapTab ) ? gridImageGapFallback : gridImageGapTab;
+	const gridImageGapMobFallback = isNaN( gridImageGapMob ) ? gridImageGapTabFallback : gridImageGapMob;
 
 	let selectors = {
 
@@ -214,10 +235,10 @@ function styling( props ) {
 			'border-color': arrowBorderHColor,
 		},
 		' .uag-image-gallery__control-arrows--carousel.slick-prev': {
-			'left': generateCSSUnit( paginateArrowDistance, paginateArrowDistanceUnit ),
+			'left': generateCSSUnit( paginateArrowDistanceFallback, paginateArrowDistanceUnit ),
 		},		
 		' .uag-image-gallery__control-arrows--carousel.slick-next': {
-			'right': generateCSSUnit( paginateArrowDistance, paginateArrowDistanceUnit ),
+			'right': generateCSSUnit( paginateArrowDistanceFallback, paginateArrowDistanceUnit ),
 		},
 		' .uag-image-gallery__layout--carousel ul.slick-dots': {
 			'margin-bottom': generateCSSUnit( feedMarginBottom, feedMarginUnit ),
@@ -236,8 +257,8 @@ function styling( props ) {
 		},
 		' .uag-image-gallery__control-loader div': {
 			'background-color': paginateColor,
-			'width': generateCSSUnit( paginateLoaderSize, 'px' ),
-			'height': generateCSSUnit( paginateLoaderSize, 'px' ),
+			'width': generateCSSUnit( paginateLoaderSizeFallback, 'px' ),
+			'height': generateCSSUnit( paginateLoaderSizeFallback, 'px' ),
 		},
 		' .uag-image-gallery__control-button': {
 			'padding': generateSpacing(
@@ -293,14 +314,14 @@ function styling( props ) {
 		
 		' .uag-image-gallery__layout--grid': {
 			'grid-gap': generateCSSUnit(
-				gridImageGap,
+				gridImageGapFallback,
 				gridImageGapUnit
 			),
 		},
 		' .uag-image-gallery__layout--masonry .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
 				gridImageGapUnit,
-				gridImageGap,
+				gridImageGapFallback,
 			),
 		},
 		' .uag-image-gallery__layout--carousel': {
@@ -309,17 +330,17 @@ function styling( props ) {
 		' .uag-image-gallery__layout--carousel .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
 				gridImageGapUnit,
-				gridImageGap,
+				gridImageGapFallback,
 			),
 		},
 		' .uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
 				gridImageGapUnit,
-				gridImageGap,
+				gridImageGapFallback,
 			),
 		},
 		' .uag-image-gallery__layout--tiled .uag-image-gallery-media-spacer': {
-			'width': `calc( ${ getPrecisePercentage( columnsDesk ) } )`,
+			'width': `calc( ${ getPrecisePercentage( columnsDeskFallback ) } )`,
 			'aspect-ratio': 1,
 		},
 		' .uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper--wide': {
@@ -331,12 +352,12 @@ function styling( props ) {
 			'width': `${ tileSize }px`,
 		},
 		' .uag-image-gallery__layout--tiled .uag-image-gallery-media--tiled-wide': {
-			'width': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridImageGapUnit, gridImageGap ) } * 2 ) )`,
-			'height': `calc( ${ tileSize }px - ( ${ generateSpacing( gridImageGapUnit, gridImageGap ) } * 2 ) )`,
+			'width': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridImageGapUnit, gridImageGapFallback ) } * 2 ) )`,
+			'height': `calc( ${ tileSize }px - ( ${ generateSpacing( gridImageGapUnit, gridImageGapFallback ) } * 2 ) )`,
 		},
 		' .uag-image-gallery__layout--tiled .uag-image-gallery-media--tiled-tall': {
-			'height': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridImageGapUnit, gridImageGap ) } * 2 ) )`,
-			'width': `calc( ${ tileSize }px - ( ${ generateSpacing( gridImageGapUnit, gridImageGap ) } * 2 ) )`,
+			'height': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridImageGapUnit, gridImageGapFallback ) } * 2 ) )`,
+			'width': `calc( ${ tileSize }px - ( ${ generateSpacing( gridImageGapUnit, gridImageGapFallback ) } * 2 ) )`,
 		},
 		' .uag-image-gallery-media': {
 			'border-radius': generateBorderRadius(
@@ -366,21 +387,21 @@ function styling( props ) {
 				imageBorderBottomLeftRadius,
 			),
 			'-webkit-backdrop-filter': `blur( ${ generateCSSUnit(
-				captionBackgroundBlurAmount,
+				captionBackgroundBlurAmountFallback,
 				'px'
 			) } )`,
 			'backdrop-filter': `blur( ${ generateCSSUnit(
-				captionBackgroundBlurAmount,
+				captionBackgroundBlurAmountFallback,
 				'px'
 			) } )`,
 			'opacity': generateCSSUnit(
-				captionBackgroundBlurOpacity,
+				captionBackgroundBlurOpacityFallback,
 				'%'
 			),
 		},
 		' .uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-blurrer': {
 			'opacity': generateCSSUnit(
-				captionBackgroundBlurOpacityHover,
+				captionBackgroundBlurOpacityHoverFallback,
 				'%'
 			),
 		},
@@ -504,46 +525,46 @@ function styling( props ) {
 		},
 		' .uag-image-gallery__layout--grid': {
 			'grid-gap': generateCSSUnit(
-				gridImageGapTab,
+				gridImageGapTabFallback,
 				gridImageGapUnitTab
 			),
 		},
 		// The Below Two Class Modifications are required for the Editor Responsive Isotope Fix.
 		' .uag-image-gallery__layout--masonry': {
-			'grid-template-columns': `repeat(${ columnsTab }, 1fr)`,
+			'grid-template-columns': `repeat(${ columnsTabFallback }, 1fr)`,
 		},
 		' .uag-image-gallery__layout--tiled': {
-			'grid-template-columns': `repeat(${ columnsTab }, 1fr)`,
+			'grid-template-columns': `repeat(${ columnsTabFallback }, 1fr)`,
 		},
 		' .uag-image-gallery__layout--masonry .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
 				gridImageGapUnitTab,
-				gridImageGapTab,
+				gridImageGapTabFallback,
 			),
 		},
 		' .uag-image-gallery__layout--carousel .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
 				gridImageGapUnitTab,
-				gridImageGapTab,
+				gridImageGapTabFallback,
 			),
 		},
 		' .uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
 				gridImageGapUnitTab,
-				gridImageGapTab,
+				gridImageGapTabFallback,
 			),
 		},
 		' .uag-image-gallery__layout--tiled .uag-image-gallery-media-spacer': {
-			'width': `calc( ${ getPrecisePercentage( columnsTab ) } )`,
+			'width': `calc( ${ getPrecisePercentage( columnsTabFallback ) } )`,
 			'aspect-ratio': 1,
 		},
 		' .uag-image-gallery__layout--tiled .uag-image-gallery-media--tiled-wide': {
-			'width': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridImageGapUnitTab, gridImageGapTab ) } * 2 ) )`,
-			'height': `calc( ${ tileSize }px - ( ${ generateSpacing( gridImageGapUnitTab, gridImageGapTab ) } * 2 ) )`,
+			'width': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridImageGapUnitTab, gridImageGapTabFallback ) } * 2 ) )`,
+			'height': `calc( ${ tileSize }px - ( ${ generateSpacing( gridImageGapUnitTab, gridImageGapTabFallback ) } * 2 ) )`,
 		},
 		' .uag-image-gallery__layout--tiled .uag-image-gallery-media--tiled-tall': {
-			'height': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridImageGapUnitTab, gridImageGapTab ) } * 2 ) )`,
-			'width': `calc( ${ tileSize }px - ( ${ generateSpacing( gridImageGapUnitTab, gridImageGapTab ) } * 2 ) )`,
+			'height': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridImageGapUnitTab, gridImageGapTabFallback ) } * 2 ) )`,
+			'width': `calc( ${ tileSize }px - ( ${ generateSpacing( gridImageGapUnitTab, gridImageGapTabFallback ) } * 2 ) )`,
 		},
 		' .uag-image-gallery-media': {
 			'border-radius': generateBorderRadius(
@@ -642,46 +663,46 @@ function styling( props ) {
 		},
 		' .uag-image-gallery__layout--grid': {
 			'grid-gap': generateCSSUnit(
-				gridImageGapMob,
+				gridImageGapMobFallback,
 				gridImageGapUnitMob
 			),
 		},
 		// The Below Two Class Modifications are required for the Editor Responsive Isotope Fix.
 		' .uag-image-gallery__layout--masonry': {
-			'grid-template-columns': `repeat(${ columnsMob }, 1fr)`,
+			'grid-template-columns': `repeat(${ columnsMobFallback }, 1fr)`,
 		},
 		' .uag-image-gallery__layout--tiled': {
-			'grid-template-columns': `repeat(${ columnsMob }, 1fr)`,
+			'grid-template-columns': `repeat(${ columnsMobFallback }, 1fr)`,
 		},
 		' .uag-image-gallery__layout--masonry .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
 				gridImageGapUnitMob,
-				gridImageGapMob,
+				gridImageGapMobFallback,
 			),
 		},
 		' .uag-image-gallery__layout--carousel .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
 				gridImageGapUnitMob,
-				gridImageGapMob,
+				gridImageGapMobFallback,
 			),
 		},
 		' .uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
 				gridImageGapUnitMob,
-				gridImageGapMob,
+				gridImageGapMobFallback,
 			),
 		},
 		' .uag-image-gallery__layout--tiled .uag-image-gallery-media-spacer': {
-			'width': `calc( ${ getPrecisePercentage( columnsMob ) } )`,
+			'width': `calc( ${ getPrecisePercentage( columnsMobFallback ) } )`,
 			'aspect-ratio': 1,
 		},
 		' .uag-image-gallery__layout--tiled .uag-image-gallery-media--tiled-wide': {
-			'width': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridImageGapUnitMob, gridImageGapMob ) } * 2 ) )`,
-			'height': `calc( ${ tileSize }px - ( ${ generateSpacing( gridImageGapUnitMob, gridImageGapMob ) } * 2 ) )`,
+			'width': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridImageGapUnitMob, gridImageGapMobFallback ) } * 2 ) )`,
+			'height': `calc( ${ tileSize }px - ( ${ generateSpacing( gridImageGapUnitMob, gridImageGapMobFallback ) } * 2 ) )`,
 		},
 		' .uag-image-gallery__layout--tiled .uag-image-gallery-media--tiled-tall': {
-			'height': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridImageGapUnitMob, gridImageGapMob ) } * 2 ) )`,
-			'width': `calc( ${ tileSize }px - ( ${ generateSpacing( gridImageGapUnitMob, gridImageGapMob ) } * 2 ) )`,
+			'height': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridImageGapUnitMob, gridImageGapMobFallback ) } * 2 ) )`,
+			'width': `calc( ${ tileSize }px - ( ${ generateSpacing( gridImageGapUnitMob, gridImageGapMobFallback ) } * 2 ) )`,
 		},
 		' .uag-image-gallery-media': {
 			'border-radius': generateBorderRadius(
@@ -759,11 +780,11 @@ function styling( props ) {
 			selectors[ ' .uag-image-gallery-media__thumbnail' ] = {
 				...selectors[ ' .uag-image-gallery-media__thumbnail' ],
 				'-webkit-filter': `${ captionBackgroundEffect }( ${ generateCSSUnit(
-					captionBackgroundEffectAmount,
+					captionBackgroundEffectAmountFallback,
 					'%'
 				) } )`,
 				'filter': `${ captionBackgroundEffect }( ${ generateCSSUnit(
-					captionBackgroundEffectAmount,
+					captionBackgroundEffectAmountFallback,
 					'%'
 				) } )`,
 			};
@@ -780,11 +801,11 @@ function styling( props ) {
 		case 'sepia':
 			selectors[ ' .uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail' ] = {
 				'-webkit-filter': `${ captionBackgroundEffectHover }( ${ generateCSSUnit(
-					captionBackgroundEffectAmountHover,
+					captionBackgroundEffectAmountHoverFallback,
 					'%'
 				) } )`,
 				'filter': `${ captionBackgroundEffectHover }( ${ generateCSSUnit(
-					captionBackgroundEffectAmountHover,
+					captionBackgroundEffectAmountHoverFallback,
 					'%'
 				) } )`,
 			};
@@ -856,7 +877,7 @@ function styling( props ) {
 				selectors[ ' .uag-image-gallery-media__thumbnail-caption-wrapper' ] = {
 					...selectors[ ' .uag-image-gallery-media__thumbnail-caption-wrapper' ],
 					'margin-top': generateCSSUnit(
-						captionGap,
+						captionGapFallback,
 						captionGapUnit
 					),
 				};

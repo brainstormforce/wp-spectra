@@ -11,6 +11,7 @@ import "/assets/js/imagesloaded.min";
 import { useDeviceType } from '@Controls/getPreviewType';
 
 const ImageGallery = ( { attributes, setAttributes } ) => {
+	const blockName = props.name.replace( 'uagb/', '' );
 	const {
 		focusList,
 
@@ -67,6 +68,18 @@ const ImageGallery = ( { attributes, setAttributes } ) => {
 		columnsMob,
 	} = attributes;
 
+	// Range Fallback.
+	const imageCaptionLengthFallback = getFallbackNumber( imageCaptionLength, 'imageCaptionLength', blockName );
+	const carouselStartAtFallback = getFallbackNumber( carouselStartAt, 'carouselStartAt', blockName );
+	const carouselTransitionSpeedFallback = getFallbackNumber( carouselTransitionSpeed, 'carouselTransitionSpeed', blockName );
+	const carouselAutoplaySpeedFallback = getFallbackNumber( carouselAutoplaySpeed, 'carouselAutoplaySpeed', blockName );
+	const paginateLimitFallback = getFallbackNumber( paginateLimit, 'paginateLimit', blockName );
+	const columnsDeskFallback = getFallbackNumber( columnsDesk, 'columnsDesk', blockName );
+
+	// Responsive Slider Fallback.
+	const columnsTabFallback = isNaN( columnsTab ) ? columnsDeskFallback : columnsTab;
+	const columnsMobFallback = isNaN( columnsMob ) ? columnsTabFallback : columnsMob;
+
 	const isGridPagesNeeded = feedPagination && ( feedLayout === "grid" || feedLayout === "masonry" );
 	const [ slickDotHeight, setSlickDotHeight ] = useState( 0 );
 	const [ focusUpdate, setFocusUpdate ] = useState( false );
@@ -113,13 +126,13 @@ const ImageGallery = ( { attributes, setAttributes } ) => {
 
 	useEffect( () => {
 		// First check if media items selected are less than the column count currently used.
-		( mediaGallery.length < columnsDesk ) && setAttributes( { columnsDesk: mediaGallery.length } );
-		( mediaGallery.length < columnsTab ) && setAttributes( { columnsTab: mediaGallery.length } );
-		( mediaGallery.length < columnsMob ) && setAttributes( { columnsMob: mediaGallery.length } ); 
+		( mediaGallery.length < columnsDeskFallback ) && setAttributes( { columnsDesk: mediaGallery.length } );
+		( mediaGallery.length < columnsTabFallback ) && setAttributes( { columnsTab: mediaGallery.length } );
+		( mediaGallery.length < columnsMobFallback ) && setAttributes( { columnsMob: mediaGallery.length } ); 
 		// Next Check if this is a carousel that needs dots, and set the height of the dots wrapper.
 		if ( ( mediaGallery && paginateUseDots ) && ( feedLayout === 'carousel' ) ){
 			setSlickDotHeight( 
-				( mediaGallery.length > columnsDesk )
+				( mediaGallery.length > columnsDeskFallback )
 				? slickCarousel.current.children[0].querySelector( '.slick-dots' ).clientHeight
 				: 0
 			);
@@ -272,26 +285,26 @@ const ImageGallery = ( { attributes, setAttributes } ) => {
 	const carouselSettings = {
 		arrows: paginateUseArrows,
 		dots: paginateUseDots,
-		initialSlide: carouselStartAt,
+		initialSlide: carouselStartAtFallback,
 		infinite: carouselLoop,
 		autoplay: carouselAutoplay,
-		autoplaySpeed: carouselAutoplaySpeed,
+		autoplaySpeed: carouselAutoplaySpeedFallback,
 		pauseOnHover: carouselPauseOnHover,
-		speed: carouselTransitionSpeed,
-		slidesToShow: columnsDesk,
+		speed: carouselTransitionSpeedFallback,
+		slidesToShow: columnsDeskFallback,
 		nextArrow: <SlickNextArrow />,
 		prevArrow: <SlickPrevArrow />,
 		responsive: [
 			{
 				breakpoint: 1024,
 				settings: {
-					slidesToShow: columnsTab,
+					slidesToShow: columnsTabFallback,
 				},
 			},
 			{
 				breakpoint: 767,
 				settings: {
-					slidesToShow: columnsMob,
+					slidesToShow: columnsMobFallback,
 				},
 			},
 		],
@@ -330,8 +343,8 @@ const ImageGallery = ( { attributes, setAttributes } ) => {
 	);
 
 	const getGridPageChunk = ( allMedia ) => allMedia.slice(
-		( gridPageNumber - 1 ) * paginateLimit,
-		gridPageNumber * paginateLimit
+		( gridPageNumber - 1 ) * paginateLimitFallback,
+		gridPageNumber * paginateLimitFallback
 	);
 
 	const alterFocus = ( image, needsFocus ) => {
@@ -422,9 +435,9 @@ const ImageGallery = ( { attributes, setAttributes } ) => {
 							className={ classnames(
 								`uag-image-gallery`,
 								`uag-image-gallery__layout--${ gridLayout }`,
-								`uag-image-gallery__layout--${ gridLayout }-col-${ columnsDesk }`,
-								`uag-image-gallery__layout--${ gridLayout }-col-tab-${ columnsTab }`,
-								`uag-image-gallery__layout--${ gridLayout }-col-mob-${ columnsMob }`
+								`uag-image-gallery__layout--${ gridLayout }-col-${ columnsDeskFallback }`,
+								`uag-image-gallery__layout--${ gridLayout }-col-tab-${ columnsTabFallback }`,
+								`uag-image-gallery__layout--${ gridLayout }-col-mob-${ columnsMobFallback }`
 							) }
 						>
 							{ renderImageLooper() }
@@ -439,9 +452,9 @@ const ImageGallery = ( { attributes, setAttributes } ) => {
 							className={ classnames(
 								`uag-image-gallery`,
 								`uag-image-gallery__layout--${ feedLayout }`,
-								`uag-image-gallery__layout--${ feedLayout }-col-${ columnsDesk }`,
-								`uag-image-gallery__layout--${ feedLayout }-col-tab-${ columnsTab }`,
-								`uag-image-gallery__layout--${ feedLayout }-col-mob-${ columnsMob }`
+								`uag-image-gallery__layout--${ feedLayout }-col-${ columnsDeskFallback }`,
+								`uag-image-gallery__layout--${ feedLayout }-col-tab-${ columnsTabFallback }`,
+								`uag-image-gallery__layout--${ feedLayout }-col-mob-${ columnsMobFallback }`
 							) }
 							updateOnEachImageLoad={ true }
 						>
@@ -457,9 +470,9 @@ const ImageGallery = ( { attributes, setAttributes } ) => {
 							className={ classnames(
 								`uag-image-gallery`,
 								`uag-image-gallery__layout--${ feedLayout }`,
-								`uag-image-gallery__layout--${ feedLayout }-col-${ columnsDesk }`,
-								`uag-image-gallery__layout--${ feedLayout }-col-tab-${ columnsTab }`,
-								`uag-image-gallery__layout--${ feedLayout }-col-mob-${ columnsMob }`
+								`uag-image-gallery__layout--${ feedLayout }-col-${ columnsDeskFallback }`,
+								`uag-image-gallery__layout--${ feedLayout }-col-tab-${ columnsTabFallback }`,
+								`uag-image-gallery__layout--${ feedLayout }-col-mob-${ columnsMobFallback }`
 							) }
 						>
 							<div className="uag-image-gallery-media-spacer" ref={ isotopeSpacer }></div>
@@ -490,7 +503,7 @@ const ImageGallery = ( { attributes, setAttributes } ) => {
 
 	const renderImageLooper = () => {
 		isGridPagesNeeded && setAttributes( {
-			gridPages: Math.ceil( mediaGallery.length / paginateLimit ),
+			gridPages: Math.ceil( mediaGallery.length / paginateLimitFallback ),
 		} );
 		const paginatedMedia = isGridPagesNeeded
 			? getGridPageChunk( mediaGallery )
@@ -585,11 +598,11 @@ const ImageGallery = ( { attributes, setAttributes } ) => {
 				? imageDefaultCaption
 				: "Unable to load image"
 			);
-		if ( needsEllipsis && mediaObject.caption.length <= imageCaptionLength ) {
+		if ( needsEllipsis && mediaObject.caption.length <= imageCaptionLengthFallback ) {
 			// The caption is already below the limiter.
 			needsEllipsis = false;
 		} else if ( needsEllipsis ) {
-			limitedCaption = limitedCaption.substr( 0, imageCaptionLength );
+			limitedCaption = limitedCaption.substr( 0, imageCaptionLengthFallback );
 			if ( imageCaptionOnlyWords ) {
 				if ( limitedCaption.lastIndexOf( " " ) === -1 ) {
 					// There's only 1 word.
