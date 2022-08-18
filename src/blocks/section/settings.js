@@ -18,7 +18,7 @@ import {
 	AlignmentToolbar,
 	InspectorControls,
 } from '@wordpress/block-editor';
-import { ToggleControl, Icon, Notice } from '@wordpress/components';
+import { ToggleControl, Icon } from '@wordpress/components';
 
 
 
@@ -619,17 +619,6 @@ const Settings = ( props ) => {
 		return (
 			<InspectorTabs>
 				<InspectorTab { ...UAGTabs.general }>
-					<Notice status="warning" isDismissible={false}>
-						{
-							__( 'This block has been deprecated. We recommend using the new', 'ultimate-addons-for-gutenberg' )
-						}
-						{' '}
-						<strong>{__( 'Container', 'ultimate-addons-for-gutenberg' )}</strong>
-						{' '}
-						{
-							__( 'block instead for more flexibility, and better code markup.', 'ultimate-addons-for-gutenberg' )
-						}
-					</Notice>
 					{ getLayoutPanelBody() }
 				</InspectorTab>
 				<InspectorTab { ...UAGTabs.style }>
