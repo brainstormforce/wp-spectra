@@ -508,6 +508,13 @@ function styling( props ) {
 				gridImageGapUnitTab
 			),
 		},
+		// The Below Two Class Modifications are required for the Editor Responsive Isotope Fix.
+		' .uag-image-gallery__layout--masonry': {
+			'grid-template-columns': `repeat(${ columnsTab }, 1fr)`,
+		},
+		' .uag-image-gallery__layout--tiled': {
+			'grid-template-columns': `repeat(${ columnsTab }, 1fr)`,
+		},
 		' .uag-image-gallery__layout--masonry .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
 				gridImageGapUnitTab,
@@ -529,6 +536,14 @@ function styling( props ) {
 		' .uag-image-gallery__layout--tiled .uag-image-gallery-media-spacer': {
 			'width': `calc( ${ getPrecisePercentage( columnsTab ) } )`,
 			'aspect-ratio': 1,
+		},
+		' .uag-image-gallery__layout--tiled .uag-image-gallery-media--tiled-wide': {
+			'width': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridImageGapUnitTab, gridImageGapTab ) } * 2 ) )`,
+			'height': `calc( ${ tileSize }px - ( ${ generateSpacing( gridImageGapUnitTab, gridImageGapTab ) } * 2 ) )`,
+		},
+		' .uag-image-gallery__layout--tiled .uag-image-gallery-media--tiled-tall': {
+			'height': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridImageGapUnitTab, gridImageGapTab ) } * 2 ) )`,
+			'width': `calc( ${ tileSize }px - ( ${ generateSpacing( gridImageGapUnitTab, gridImageGapTab ) } * 2 ) )`,
 		},
 		' .uag-image-gallery-media': {
 			'border-radius': generateBorderRadius(
@@ -631,6 +646,13 @@ function styling( props ) {
 				gridImageGapUnitMob
 			),
 		},
+		// The Below Two Class Modifications are required for the Editor Responsive Isotope Fix.
+		' .uag-image-gallery__layout--masonry': {
+			'grid-template-columns': `repeat(${ columnsMob }, 1fr)`,
+		},
+		' .uag-image-gallery__layout--tiled': {
+			'grid-template-columns': `repeat(${ columnsMob }, 1fr)`,
+		},
 		' .uag-image-gallery__layout--masonry .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
 				gridImageGapUnitMob,
@@ -652,6 +674,14 @@ function styling( props ) {
 		' .uag-image-gallery__layout--tiled .uag-image-gallery-media-spacer': {
 			'width': `calc( ${ getPrecisePercentage( columnsMob ) } )`,
 			'aspect-ratio': 1,
+		},
+		' .uag-image-gallery__layout--tiled .uag-image-gallery-media--tiled-wide': {
+			'width': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridImageGapUnitMob, gridImageGapMob ) } * 2 ) )`,
+			'height': `calc( ${ tileSize }px - ( ${ generateSpacing( gridImageGapUnitMob, gridImageGapMob ) } * 2 ) )`,
+		},
+		' .uag-image-gallery__layout--tiled .uag-image-gallery-media--tiled-tall': {
+			'height': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridImageGapUnitMob, gridImageGapMob ) } * 2 ) )`,
+			'width': `calc( ${ tileSize }px - ( ${ generateSpacing( gridImageGapUnitMob, gridImageGapMob ) } * 2 ) )`,
 		},
 		' .uag-image-gallery-media': {
 			'border-radius': generateBorderRadius(

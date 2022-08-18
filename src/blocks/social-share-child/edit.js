@@ -3,10 +3,12 @@
  */
 
 // Import classes
+
 import styling from './styling';
 import lazyLoader from '@Controls/lazy-loader';
 import React, { useEffect, lazy, Suspense } from 'react';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { select } from '@wordpress/data';
 
@@ -49,7 +51,10 @@ const SocialShareChildComponent = ( props ) => {
 	    const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-style-social-share-child-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
+
 
 	return (
 		<Suspense fallback={ lazyLoader() }>

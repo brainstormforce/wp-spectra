@@ -235,7 +235,7 @@ class UAGB_Init_Blocks {
 	/**
 	 * Ajax call to get Taxonomy List.
 	 *
-	 * @since 2.0.0-beta.3
+	 * @since 2.0.0
 	 */
 	public function get_taxonomy() {
 
@@ -446,7 +446,9 @@ class UAGB_Init_Blocks {
 				'version'      => UAGB_VER,
 			);
 		global $pagenow;
+
 		$script_dep = array_merge( $script_info['dependencies'], array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-api-fetch', 'uagb-cross-site-cp-helper-js' ) );
+
 		if ( 'widgets.php' !== $pagenow ) {
 			$script_dep = array_merge( $script_info['dependencies'], array( 'wp-editor' ) );
 		}

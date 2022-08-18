@@ -109,38 +109,6 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		}
 
 		/**
-		 * Is Knowledgebase.
-		 *
-		 * @return string
-		 * @since 0.0.1
-		 */
-		public static function knowledgebase_data() {
-
-			$knowledgebase = array(
-				'enable_knowledgebase' => true,
-				'knowledgebase_url'    => 'https://www.ultimategutenberg.com/docs/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard',
-			);
-
-			return $knowledgebase;
-		}
-
-		/**
-		 * Is Knowledgebase.
-		 *
-		 * @return string
-		 * @since 0.0.1
-		 */
-		public static function support_data() {
-
-			$support = array(
-				'enable_support' => true,
-				'support_url'    => 'https://www.ultimategutenberg.com/support/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard',
-			);
-
-			return $support;
-		}
-
-		/**
 		 *  Get Specific Stylesheet
 		 *
 		 * @since 1.13.4
@@ -343,7 +311,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		/**
 		 * Get Global Content Width
 		 *
-		 * @since 2.0.0-beta.3
+		 * @since 2.0.0
 		 * @return int
 		 * @access public
 		 */

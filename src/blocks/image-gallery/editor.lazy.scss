@@ -2,7 +2,69 @@
  * Editor styles for the admin
  */
 
+// This Mixing Forces an Element to it's Original Dimensions.
+@mixin forceSizeAuto {
+	width: auto !important;
+	height: auto !important;
+}
+
+// This Mixing Forces an Element to 100% of the Parent.
+@mixin forceSize100 {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+
+// This Mixin is used for Tiled and Masonry in the Editor Responsive Modes.
+@mixin isotopeIframeHandlers {
+	height: initial !important;
+	display: grid; // Columns handled in Dynamic Styling.
+	grid-auto-flow: dense;
+
+	.uag-image-gallery-media-wrapper {
+
+		@include forceSizeAuto();
+		aspect-ratio: 1;
+
+		&--wide {
+			grid-column: span 2;
+			aspect-ratio: 2/1;
+
+			.uag-image-gallery-media--tiled-wide {
+
+				@include forceSize100();
+			}
+		}
+
+		&--tall {
+			grid-row: span 2;
+			aspect-ratio: 1/2;
+
+			.uag-image-gallery-media--tiled-tall {
+
+				@include forceSize100();
+			}
+		}
+
+		&--focus {
+			grid-row: span 2;
+			grid-column: span 2;
+		}
+
+		.uag-image-gallery-media--masonry,
+		.uag-image-gallery-media__thumbnail--masonry {
+
+			@include forceSize100();
+		}
+	}
+	
+	.uag-image-gallery-media-spacer {
+		display: none;
+	}
+}
+
 .uag-image-gallery-init{
+
 	&-wrapper{
 		display: flex;
 		flex-direction: column;
@@ -11,6 +73,7 @@
 		background-color: #f5f5f5;
 		padding: 2rem;
 		width: 100%;
+
 		& .components-input-control__container{
 			box-sizing: border-box;
 			margin: 0;
@@ -19,19 +82,46 @@
 			min-height: 100%;
 			font-size: 13px;
 			line-height: 1.25em;
-			border-radius: 4px;	
+			border-radius: 4px;
+
 			&:focus {
 				box-shadow: none;
 				border-color: #aaa;
 				color: #444;
-			}		
+			}
+
 			&:hover {
 				color: #444;
 			}
 		}
+
 		& svg{
 			width: 3em;
 			height: 3em;
 		}
+	}
+}
+
+// Applies only for the Tiled and Masonry Layouts in the Responsive Gutenberg Editor.
+.uagb-editor-preview-mode-tablet,
+.uagb-editor-preview-mode-mobile {
+
+	.uag-image-gallery__layout--masonry {
+
+		@include isotopeIframeHandlers();
+	}
+
+	.uag-image-gallery__layout--tiled {
+
+		@include isotopeIframeHandlers();
+	}
+}
+
+// Applies only in theme builder 2022.
+.editor-styles-wrapper .is-root-container.edit-site-block-editor__block-list.wp-site-blocks {
+
+	.uag-image-gallery__layout--masonry,
+	.uag-image-gallery__layout--tiled {
+		height: initial !important;
 	}
 }
