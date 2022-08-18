@@ -562,6 +562,8 @@ class UAGB_Init_Blocks {
 			$container_padding = 10;
 		}
 
+		$container_elements_gap = UAGB_Admin_Helper::get_admin_settings_option( 'uag_container_global_elements_gap', 20 );
+
 		wp_localize_script(
 			'uagb-block-editor-js',
 			'uagb_blocks_info',
@@ -595,6 +597,7 @@ class UAGB_Init_Blocks {
 				'copy_paste'                         => UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
 				'content_width'                      => $content_width,
 				'container_global_padding'           => $container_padding,
+				'container_elements_gap'             => $container_elements_gap,
 				'recaptcha_site_key_v2'              => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
 				'recaptcha_site_key_v3'              => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),
 				'recaptcha_secret_key_v2'            => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ),
@@ -604,7 +607,6 @@ class UAGB_Init_Blocks {
 				'auto_block_recovery'                => UAGB_Admin_Helper::get_admin_settings_option( 'uag_auto_block_recovery', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
 				'font_awesome_5_polyfill'            => get_spectra_font_awesome_polyfiller(),
 				'spectra_custom_fonts'               => apply_filters( 'spectra_system_fonts', array() ),
-				'spectra_global_container_elements_gap'             => apply_filters( 'spectra_global_container_elements_gap', 20 ),
 			)
 		);
 		// To match the editor with frontend.
