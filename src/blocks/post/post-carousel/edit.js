@@ -1246,6 +1246,11 @@ const UAGBPostCarousel = ( props ) => {
 								setAttributes( { ctaText: value } )
 							}
 						/>
+						<UAGPresets
+							setAttributes = { setAttributes }
+							presets = { buttonsPresets }
+							presetInputType = 'radioImage'
+						/>
 					</>
 				) }
 			</UAGAdvancedPanelBody>
@@ -1884,11 +1889,6 @@ const UAGBPostCarousel = ( props ) => {
 				) }
 				initialOpen={ false }
 			>
-				<UAGPresets
-					setAttributes = { setAttributes }
-					presets = { buttonsPresets }
-					presetInputType = 'radioImage'
-				/>
 				<UAGTabsControl
 					tabs={ [
 						{
