@@ -9,9 +9,10 @@ import Slider from "react-slick";
 import "/assets/js/isotope.min";
 import "/assets/js/imagesloaded.min";
 import { useDeviceType } from '@Controls/getPreviewType';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-const ImageGallery = ( { attributes, setAttributes } ) => {
-	const blockName = props.name.replace( 'uagb/', '' );
+const ImageGallery = ( { attributes, setAttributes, name } ) => {
+	const blockName = name.replace( 'uagb/', '' );
 	const {
 		focusList,
 

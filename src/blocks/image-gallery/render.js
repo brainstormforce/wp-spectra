@@ -21,6 +21,7 @@ const Render = ( props ) => {
 		attributes,
 		setAttributes,
 		className,
+		name,
 	} = props;
 	const { block_id, readyToRender, isPreview } = attributes;
 	const deviceType = useDeviceType();
@@ -43,6 +44,7 @@ const Render = ( props ) => {
 								attributes={ attributes }
 								setAttributes={ setAttributes }
 								block_id={ block_id }
+								name={ name }
 							/>
 						)
 						: (
