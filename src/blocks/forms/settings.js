@@ -270,6 +270,11 @@ const Settings = ( props ) => {
 				showIcons={ true }
 				responsive={true}
 			/>
+			<UAGPresets
+				setAttributes = { setAttributes }
+				presets = { buttonsPresets }
+				presetInputType = 'radioImage'
+			/>
 		</UAGAdvancedPanelBody>
 	);
 	const generalSettings = () => {
@@ -1220,11 +1225,6 @@ const Settings = ( props ) => {
 			initialOpen={ false }
 			// className="uagb__url-panel-body"
 		>
-			<UAGPresets
-				setAttributes = { setAttributes }
-				presets = { buttonsPresets }
-				presetInputType = 'radioImage'
-			/>
 			<UAGSelectControl
 				label={ __(
 					'Button Size',
