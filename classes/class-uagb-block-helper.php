@@ -1583,7 +1583,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( $border_style ) {
 				$gen_border_css['border-style'] = $border_style;
 			}
-			return wp_parse_args( $current_css, $gen_border_css );
+			return wp_parse_args( $gen_border_css, $current_css );
 		}
 
 		/**
