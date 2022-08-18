@@ -736,25 +736,25 @@ const attributes = {
 	paddingTopTablet        : {
 		type : 'number',
 		UAGCopyPaste: {
-			styleType: 'post-top-padding-mobile'
+			styleType: 'post-top-padding-tablet'
 		},
 	},
 	paddingBottomTablet     : {
 		type : 'number',
 		UAGCopyPaste: {
-			styleType: 'post-bottom-padding-mobile'
+			styleType: 'post-bottom-padding-tablet'
 		},
 	},
 	paddingRightTablet      : {
 		type : 'number',
 		UAGCopyPaste: {
-			styleType: 'post-right-padding-mobile'
+			styleType: 'post-right-padding-tablet'
 		},
 	},
 	paddingLeftTablet       : {
 		type : 'number',
 		UAGCopyPaste: {
-			styleType: 'post-left-padding-mobile'
+			styleType: 'post-left-padding-tablet'
 		},
 	},
 	paddingBtnTop           : {
