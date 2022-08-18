@@ -73,6 +73,7 @@ const attributes = {
 	imageWidth:{
 		type: 'number',
 		default: 100,
+	},
 	imgAlign: {
 		type: 'string',
 		UAGCopyPaste: {
@@ -84,7 +85,6 @@ const attributes = {
 		type: 'boolean',
 		default: true,
 	},
-}
 };
 
 export default attributes;
