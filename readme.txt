@@ -170,6 +170,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 2.0.3 - WEDNESDAY, 17TH AUGUST 2022 =
+* Improvement: Added a filter to set Column Gap & Row Gap default values for Container Block Globally.
+
 = 2.0.2 - WEDNESDAY, 17TH AUGUST 2022 =
 * Fix: Compatibility issues with PHP version 7.2 and older.
 * Fix: Forms - Throws an error on drag and drop.
