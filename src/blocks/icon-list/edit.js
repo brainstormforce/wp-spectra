@@ -51,7 +51,7 @@ const UAGBIconList = ( props ) => {
 
 		select( 'core/block-editor' )
             .getBlocksByClientId( props.clientId )[0]
-            .innerBlocks.forEach( function( block ) {
+            ?.innerBlocks.forEach( function( block ) {
 
                 dispatch( 'core/block-editor' ).updateBlockAttributes(
                     block.clientId, {
