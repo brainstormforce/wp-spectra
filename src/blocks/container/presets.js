@@ -221,7 +221,6 @@ const innerContainerPresets = [
             { label: 'boxShadowVOffset', value: 0 },
             { label: 'boxShadowBlur', value: '' },
 			{ label: 'boxShadowSpread', value: '' },
-			{ label: 'borderColor', value: '#dddddd' },
 			{ label: 'topPaddingDesktop', value: 25 },
 			{ label: 'bottomPaddingDesktop', value: 25 },
 			{ label: 'leftPaddingDesktop', value: 25 },
