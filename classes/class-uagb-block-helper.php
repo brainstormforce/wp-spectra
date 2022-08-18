@@ -731,10 +731,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$border_css_tablet         = self::uag_generate_border_css( $attr, 'btn', 'tablet' );
 			$overall_border_css_tablet = self::uag_generate_border_css( $attr, 'overall', 'tablet' );
 
-			$paddingTopTablet    = isset( $attr['paddingTopTablet'] ) ? $attr['paddingTopTablet'] : $attr['contentPaddingTablet'];
-			$paddingBottomTablet = isset( $attr['paddingBottomTablet'] ) ? $attr['paddingBottomTablet'] : $attr['contentPaddingTablet'];
-			$paddingLeftTablet   = isset( $attr['paddingLeftTablet'] ) ? $attr['paddingLeftTablet'] : $attr['contentPaddingTablet'];
-			$paddingRightTablet  = isset( $attr['paddingRightTablet'] ) ? $attr['paddingRightTablet'] : $attr['contentPaddingTablet'];
+			$paddingTopTablet    = isset( $attr['paddingTopTablet'] ) ? $attr['paddingTopTablet'] : $attr['contentPadding'];
+			$paddingBottomTablet = isset( $attr['paddingBottomTablet'] ) ? $attr['paddingBottomTablet'] : $attr['contentPadding'];
+			$paddingLeftTablet   = isset( $attr['paddingLeftTablet'] ) ? $attr['paddingLeftTablet'] : $attr['contentPadding'];
+			$paddingRightTablet  = isset( $attr['paddingRightTablet'] ) ? $attr['paddingRightTablet'] : $attr['contentPadding'];
 
 			$paddingBtnTopTablet    = isset( $attr['paddingBtnTopTablet'] ) ? $attr['paddingBtnTopTablet'] : $attr['btnVPadding'];
 			$paddingBtnBottomTablet = isset( $attr['paddingBtnBottomTablet'] ) ? $attr['paddingBtnBottomTablet'] : $attr['btnVPadding'];
