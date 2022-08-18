@@ -13,8 +13,7 @@ const AuthorImage = ( { attributes } ) => {
 
 	if ( urlChk !== '' ) {
 		const size = attributes.authorImage.sizes;
-		const authorImageSize = attributes.authorImageSize;
-		const { authorImageWidth } = attributes;
+		const { authorImageSize, authorImageWidth } = attributes.authorImageSize;
 
 		url =
 			typeof size !== 'undefined' &&
