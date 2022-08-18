@@ -529,7 +529,7 @@ function contentTimelineStyle( props ) {
 			'border-right-color': backgroundColor,
 		},
 		// Responsive alignment CSS
-		
+
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__heading': {
 			'text-align': alignTablet,
 		},
@@ -752,7 +752,7 @@ function contentTimelineStyle( props ) {
 		},
 
 		//Responsive alignment CSS
-		
+
 		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__heading': {
 			'text-align': alignMobile,
 		},

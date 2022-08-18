@@ -1072,5 +1072,4 @@ const attributes = {
 		default: 60
 	}
 };
-
 export default attributes;

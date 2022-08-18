@@ -39,7 +39,7 @@ const Welcome = () => {
 									<p className='text-slate-500 pb-7'>{__( 'We designed Spectra to be intuitive but we do recommend learning how it works by checking our comprehensive documentation and watching the video below. Enjoy your time with Spectra!', 'ultimate-addons-for-gutenberg' )}</p>
 									<div className="mr-[80px] spectra-video-container">
 										{/* Added rel=0 query paramter at the end to disable YouTube recommendations */}
-										<iframe className="spectra-video" src={`https://www.youtube.com/embed/5Llg8huGs74?showinfo=0&autoplay=${allowAutoPlay}&mute=${allowAutoPlay}&rel=0`} allow="autoplay" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
+										<iframe className="spectra-video" src={`https://www.youtube.com/embed/GLNzTxArR6Y?showinfo=0&autoplay=${allowAutoPlay}&mute=${allowAutoPlay}&rel=0`} allow="autoplay" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
 									</div>
 									<span className="relative z-0 inline-flex pt-6 justify-start w-full">
 										<button
@@ -54,7 +54,7 @@ const Welcome = () => {
 											className="inline-flex items-center px-4 py-2 border border-slate-300 shadow-sm text-sm font-medium rounded-md text-slate-500 bg-white focus-visible:bg-slate-50 hover:bg-slate-50 focus:outline-none"
 											onClick={ onReadFullGuideClick }
 										>
-											{__( 'Read Full Guide', 'ultimate-addons-for-gutenberg' )}
+											{__( 'Visit Our Website', 'ultimate-addons-for-gutenberg' )}
 										</button>
 									</span>
 								</div>

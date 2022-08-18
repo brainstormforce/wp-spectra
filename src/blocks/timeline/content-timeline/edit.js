@@ -8,6 +8,7 @@ import lazyLoader from '@Controls/lazy-loader';
 import { dispatch, select } from '@wordpress/data';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 const Settings = lazy( () =>
     import (
         /* webpackChunkName: "chunks/content-timeline/settings" */
@@ -60,7 +61,7 @@ const ContentTimelineComponent = ( props ) => {
         }
 
         if( timelinAlignment ) {
-            if( 'none' === stack ) { 
+            if( 'none' === stack ) {
                 if( undefined === timelinAlignmentTablet ) {
                     setAttributes( { timelinAlignmentTablet: timelinAlignment } );
                 }
@@ -80,7 +81,7 @@ const ContentTimelineComponent = ( props ) => {
             }
         }
 
-        
+
     }, [] );
 
     useEffect( () => {
@@ -100,7 +101,7 @@ const ContentTimelineComponent = ( props ) => {
 
         let device = deviceType;
 
-        // For desktop, attribute name does not have `desktop` suffix to support backward compatibility. 
+        // For desktop, attribute name does not have `desktop` suffix to support backward compatibility.
         if( 'Desktop' === deviceType ) {
             device = '';
         }
@@ -169,6 +170,8 @@ const ContentTimelineComponent = ( props ) => {
 	    const blockStyling = contentTimelineStyle( props );
 
         addBlockEditorDynamicStyles( 'uagb-content-timeline-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
     return (

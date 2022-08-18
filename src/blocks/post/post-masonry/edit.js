@@ -22,6 +22,7 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import {buttonsPresets} from './presets';
 import UAGPresets from '@Components/presets';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
@@ -53,6 +54,7 @@ import {
 import { InspectorControls } from '@wordpress/block-editor';
 
 import { withSelect, withDispatch } from '@wordpress/data';
+
 
 const UAGBPostMasonry = ( props ) => {
 
@@ -335,6 +337,8 @@ const UAGBPostMasonry = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 
 	}, [ props.deviceType ] );
 
@@ -2632,6 +2636,7 @@ export default compose(
 					? categories
 					: category;
 		}
+
 		return {
 			latestPosts: getEntityRecords(
 				'postType',

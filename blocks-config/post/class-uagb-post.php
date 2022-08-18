@@ -369,7 +369,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									'default' => 'px',
 								),
 							),
-							$pagination_masonry_border_attribute,
+							$pagination_masonry_border_attribute
 						),
 						'render_callback' => array( $this, 'post_masonry_callback' ),
 					)
@@ -1102,7 +1102,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						'type'    => 'number',
 						'default' => '',
 					),
-				),
+				)
 			);
 		}
 
@@ -1430,7 +1430,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 *
 		 * @param array $attributes plugin.
 		 * @return array of requred query attributes.
-		 * @since 2.0.0-beta.3
+		 * @since 2.0.0
 		 */
 		public function required_attribute_for_query( $attributes ) {
 			return array(

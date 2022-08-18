@@ -870,12 +870,13 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 									'type'    => 'string',
 									'default' => '#333',
 								),
-							),
+							)
 						),
 						'render_callback' => array( $this, 'render_html' ),
 					)
 				);
 			}
+
 		}
 
 		/**

@@ -6,6 +6,7 @@ import lazyLoader from '@Controls/lazy-loader';
 import styling from './styling';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
 const Render = lazy( () =>
@@ -25,7 +26,7 @@ const UAGBInfoBox = ( props ) => {
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
 		setAttributes( { classMigrate: true } );
-		
+
 		const {
 			ctaBtnVertPadding,
 			ctaBtnHrPadding,
@@ -37,7 +38,7 @@ const UAGBInfoBox = ( props ) => {
 			ctaBorderWidth,
 			ctaBorderRadius,
 			ctaBorderColor,
-			ctaBorderhoverColor 
+			ctaBorderhoverColor
 		} = props.attributes;
 
 		if ( ctaBtnVertPadding ) {
@@ -58,7 +59,7 @@ const UAGBInfoBox = ( props ) => {
 		}
 		// Backward Border Migration
 		if( ctaBorderWidth || ctaBorderRadius || ctaBorderColor || ctaBorderhoverColor || ctaBorderStyle ){
-			
+
 			const migrationAttributes = migrateBorderAttributes( 'btn', {
 				label: 'ctaBorderWidth',
 				value: ctaBorderWidth,
@@ -80,7 +81,7 @@ const UAGBInfoBox = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-	
+
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
@@ -88,12 +89,15 @@ const UAGBInfoBox = ( props ) => {
 
 	}, [ props ] );
 
+
 	useEffect( () => {
 
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-info-box-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 
 	}, [ deviceType ] );
 

@@ -25,7 +25,7 @@ return array_merge(
 		'tabActiveFrontend'           => 0,
 		'tabsStyleD'                  => 'hstyle1',
 		'tabsStyleT'                  => 'vstyle6',
-		'tabsStyleM'                  => 'vstyle6',
+		'tabsStyleM'                  => 'stack1',
 		'headerBgColor'               => '',
 		'headerTextColor'             => '',
 		'bodyBgColor'                 => '',
@@ -123,5 +123,5 @@ return array_merge(
 		'titleLetterSpacingMobile'    => '',
 		'titleLetterSpacingType'      => 'px',
 	),
-	$border_attribute,
+	$border_attribute
 );

@@ -7,6 +7,7 @@ import React, { useState, useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 
 import {migrateBorderAttributes} from '@Controls/generateAttributes';
 
@@ -28,6 +29,7 @@ const UAGBWpSearchEdit = ( props ) => {
 	// componentDidMount.
 	useEffect( () => {
 		// Assigning block_id in the attribute.
+
 		props.setAttributes( {
 			block_id: props.clientId.substr( 0, 8 ),
 		} );
@@ -164,7 +166,7 @@ const UAGBWpSearchEdit = ( props ) => {
 			setState( {
 				isFocused: true,
 			} );
-		}
+        }
 
 		const blockStyling = styling( props );
 		addBlockEditorDynamicStyles( 'uagb-style-wp-search-' + props.clientId.substr( 0, 8 ), blockStyling );
@@ -175,6 +177,8 @@ const UAGBWpSearchEdit = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-wp-search-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	return (
