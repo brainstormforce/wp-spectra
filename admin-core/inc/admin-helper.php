@@ -56,11 +56,7 @@ class Admin_Helper {
 			'collapse_panels'                    => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
 			'copy_paste'                         => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
 			'preload_local_fonts'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
-			'login_block'                		 => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_login_block', [
-				'recaptchaVersion' => 'v2',
-				'recaptchaSiteKey' => '',
-				'recaptchaSecretKey' => '',
-				'recaptchaBadgeHide' => false,
+			'social'                		 => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_social', [
 				'socialRegister'	=> true,
 				'googleClientId' =>  '',
 				'facebookAppId' => '',

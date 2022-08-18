@@ -15,34 +15,18 @@ const defaultProps = {};
 
 export default function Login(props) {
 	const dispatch = useDispatch();
-	const loginBlock = useSelector( ( state ) => state.loginBlock );
-	const recaptchaVersion = loginBlock ? loginBlock.recaptchaVersion : 'v2';
-	const recaptchaSiteKey = loginBlock ? loginBlock.recaptchaSiteKey : '';
-	const recaptchaSecretKey = loginBlock ? loginBlock.recaptchaSecretKey : '';
-	const recaptchaBadgeHide = loginBlock ? loginBlock.recaptchaBadgeHide : false;
-	const socialRegister = loginBlock ? loginBlock.socialRegister : false;
-	const googleClientId = loginBlock ? loginBlock.googleClientId : '';
-	const facebookAppId = loginBlock ? loginBlock.facebookAppId : '';
-	const facebookAppSecret = loginBlock ? loginBlock.facebookAppSecret : '';
+	const social = useSelector( ( state ) => state.social );
+	const socialRegister = social ? social.socialRegister : false;
+	const googleClientId = social ? social.googleClientId : '';
+	const facebookAppId = social ? social.facebookAppId : '';
+	const facebookAppSecret = social ? social.facebookAppSecret : '';
 
 	const savedFormData = (type, payload) => {
 		dispatch({type, payload })
 		const formData = new window.FormData();
-		formData.append( 'action', 'uag_social_login' );
-		formData.append( 'security', uag_react.social_login_nonce );
+		formData.append( 'action', 'uag_social' );
+		formData.append( 'security', uag_react.social_nonce );
 		switch(type) {
-			case 'UPDATE_RECAPTCHA_VERSION':
-				formData.append( 'recaptchaVersion', payload );
-				break;
-			case 'UPDATE_RECAPTCHA_BADGE':
-				formData.append( 'recaptchaBadgeHide', payload );
-				break;
-			case 'UPDATE_RECAPTCHA_SITE_KEY':
-				formData.append( 'recaptchaSiteKey', payload );
-				break;
-			case 'UPDATE_RECAPTCHA_SECRET_KEY':
-				formData.append( 'recaptchaSecretKey', payload );
-				break;
 			case 'UPDATE_SOCIAL_REGISTER':
 				formData.append( 'socialRegister', payload );
 				break;
@@ -69,7 +53,7 @@ export default function Login(props) {
 				<section className='flex mt-8'>
 					<div className='pr-16 pb-8 w-[78%]'>
 						<h3 className="text-lg leading-6 font-medium text-gray-900">
-							{__( 'Login Block', 'ultimate-addons-for-gutenberg' )}
+							{__( 'Social Login/Register', 'ultimate-addons-for-gutenberg' )}
 						</h3>
 						<p className="mt-[0.6rem] text-sm ">
 							{ __( 'Enable Social Login Auto Register if user not registered.', 'ultimate-addons-for-gutenberg' ) }
@@ -80,7 +64,7 @@ export default function Login(props) {
 							checked={socialRegister}
 							onChange={(e) => savedFormData('UPDATE_SOCIAL_REGISTER', !socialRegister)}
 							className={classNames(
-								socialRegister ? 'bg-wpcolor' : 'bg-gray-200',
+								socialRegister ? 'bg-spectra' : 'bg-gray-200',
 								'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
 							)}
 							>
@@ -97,75 +81,7 @@ export default function Login(props) {
 				<div className='border-b pt-4'>
 					<div className='pb-4'>
 						<h3 className='text-lg leading-6 font-medium text-gray-900'>
-							{ __( 'Login Form - reCaptcha', 'ultimate-addons-for-gutenberg' ) }
-						</h3>
-						<p className='mt-[0.6rem] text-sm'>
-							{ __( 'Note: This setting is required if you wish to use Login reCaptcha in your website. Read', 'ultimate-addons-for-gutenberg' ) }
-							{' '}
-							<a href='https://developers.google.com/recaptcha/intro'>{__('this article', 'ultimate-addons-for-gutenberg')}</a>.
-						</p>
-					</div>
-					<div className='pb-8 flex'>
-						<div>
-							<div className='flex items-center'>
-								<div>
-									<span className="text-gray-700">{__('API Type', 'ultimate-addons-for-gutenberg')}</span>
-									<div className="mt-2">
-										<label
-											className="inline-flex items-center"
-											onClick={() => {
-												savedFormData('UPDATE_RECAPTCHA_VERSION', 'v2')
-											}}
-										>
-											<input type="radio" className="form-radio" name="recaptcha_version" value={recaptchaVersion} checked={recaptchaVersion === 'v2'} />
-											<span className="ml-2">{__('V2', 'ultimate-addons-for-gutenberg')}</span>
-										</label>
-										<label
-											className="inline-flex items-center ml-6"
-											onClick={() => {
-												savedFormData('UPDATE_RECAPTCHA_VERSION', 'v3')
-											}}
-										>
-											<input type="radio" className="form-radio" name="recaptcha_version" value={recaptchaVersion} checked={recaptchaVersion === 'v3'} />
-											<span className="ml-2">{__('V3', 'ultimate-addons-for-gutenberg')}</span>
-										</label>
-									</div>
-								</div>
-								<div className='ml-4'>
-									<label className='block'>{__('Hide reCaptcha Badge', 'ultimate-addons-for-gutenberg')}</label>
-									<Switch
-										checked={recaptchaBadgeHide}
-										onChange={(e) => savedFormData('UPDATE_RECAPTCHA_BADGE', !recaptchaBadgeHide)}
-										className={classNames(
-											recaptchaBadgeHide ? 'bg-wpcolor' : 'bg-gray-200',
-											'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
-										)}
-										>
-										<span
-											aria-hidden="true"
-											className={classNames(
-												recaptchaBadgeHide ? 'translate-x-5' : 'translate-x-0',
-											'pointer-events-none inline-block h-3.5 w-3.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
-											)}
-										/>
-									</Switch>
-								</div>
-							</div>
-						</div>
-						<div className='ml-4'>
-							<label className='block'>{__('Site Key', 'ultimate-addons-for-gutenberg')}</label>
-							<input className='block' type="text" name="recaptcha-site-key" value={recaptchaSiteKey || ''} onChange={(e) => savedFormData('UPDATE_RECAPTCHA_SITE_KEY', e.target.value)} />
-						</div>
-						<div className='ml-4'>
-							<label className='block'>{__('Secret Key', 'ultimate-addons-for-gutenberg')}</label>
-							<input className='block' type="text" name="recaptcha-secret-key" value={recaptchaSecretKey || ''} onChange={(e) => savedFormData('UPDATE_RECAPTCHA_SECRET_KEY', e.target.value)} />
-						</div>
-					</div>
-				</div>
-				<div className='border-b pt-4'>
-					<div className='pb-4'>
-						<h3 className='text-lg leading-6 font-medium text-gray-900'>
-							{ __( 'Login Form - Google Client ID', 'ultimate-addons-for-gutenberg' ) }
+							{ __( 'Social Login/Register - Google Client ID', 'ultimate-addons-for-gutenberg' ) }
 						</h3>
 						<p className='mt-[0.6rem] text-sm'>
 							{ __( 'Note: This setting is required if you wish to use Login with Google in your website. Read', 'ultimate-addons-for-gutenberg' ) }
@@ -181,7 +97,7 @@ export default function Login(props) {
 				<div className='border-b pt-4'>
 					<div className='pb-4'>
 						<h3 className='text-lg leading-6 font-medium text-gray-900'>
-							{ __( 'Login Form - Facebook App Details', 'ultimate-addons-for-gutenberg' ) }
+							{ __( 'Login Login/Register - Facebook App Details', 'ultimate-addons-for-gutenberg' ) }
 						</h3>
 						<p className='mt-[0.6rem] text-sm'>
 							{ __( 'Note: This setting is required if you wish to use Login with Facebook in your website. Need help to get Facebook App Details? Read', 'ultimate-addons-for-gutenberg' ) }
