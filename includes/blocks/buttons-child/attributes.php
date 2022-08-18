@@ -93,6 +93,7 @@ return array_merge(
 		'letterSpacingTablet'    => '',
 		'letterSpacingMobile'    => '',
 		'letterSpacingType'      => 'px',
+		'borderStyle'            => 'solid',
 	),
 	$border_attribute
 );
