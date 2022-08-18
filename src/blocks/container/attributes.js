@@ -638,7 +638,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'container-row-gap-desktop'
 		},
-		default: uagb_blocks_info.container_elements_gap
+		default: uagb_blocks_info.spectra_global_container_elements_gap
 	},
 	rowGapTablet: {
 		type: 'number',
@@ -678,7 +678,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'container-column-gap-desktop'
 		},
-		default: uagb_blocks_info.container_elements_gap
+		default: uagb_blocks_info.spectra_global_container_elements_gap
 	},
 	columnGapTablet: {
 		type: 'number',

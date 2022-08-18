@@ -604,7 +604,7 @@ class UAGB_Init_Blocks {
 				'auto_block_recovery'                => UAGB_Admin_Helper::get_admin_settings_option( 'uag_auto_block_recovery', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
 				'font_awesome_5_polyfill'            => get_spectra_font_awesome_polyfiller(),
 				'spectra_custom_fonts'               => apply_filters( 'spectra_system_fonts', array() ),
-				'container_elements_gap'             => apply_filters( 'container_elements_gap', 20 ),
+				'spectra_global_container_elements_gap'             => apply_filters( 'spectra_global_container_elements_gap', 20 ),
 			)
 		);
 		// To match the editor with frontend.
