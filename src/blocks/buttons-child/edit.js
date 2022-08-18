@@ -48,7 +48,9 @@ const ButtonsChildComponent = ( props ) => {
 			borderColor,
 			borderHColor
 		} = attributes;
-
+		console.log(vPadding)
+		console.log(topPadding)
+		console.log(bottomPadding)
 		if ( vPadding ) {
 			if ( undefined === topPadding ) {
 				setAttributes( { topPadding: vPadding } );
@@ -57,7 +59,9 @@ const ButtonsChildComponent = ( props ) => {
 				setAttributes( { bottomPadding: vPadding } );
 			}
 		}
-
+		console.log(hPadding)
+		console.log(leftPadding)
+		console.log(rightPadding)
 		if ( hPadding ) {
 			if ( undefined === rightPadding ) {
 				setAttributes( { rightPadding: hPadding } );
