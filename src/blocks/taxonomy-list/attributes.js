@@ -68,6 +68,7 @@ const attributes = {   // eslint-disable-line no-unused-vars
 	},
 	boxShadowColor             : {
 		type : 'string',
+		default: '#00000070',
 		UAGCopyPaste: {
 			styleType: 'box-shadow-color'
 		},
