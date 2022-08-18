@@ -507,7 +507,7 @@ const ImageGallery = ( { attributes, setAttributes } ) => {
 			ref={ ( element ) => ( isotopeChildren.current[ mediaObject.id ] = element ) }
 		>
 			{ renderThumbnail( mediaObject ) }
-			{ ( feedLayout === 'tiled' ) && renderFocusControl( mediaObject ) }
+			{ ( 'tiled' === feedLayout && 'Desktop' === deviceType ) && renderFocusControl( mediaObject ) }
 		</div>
 	);
 
