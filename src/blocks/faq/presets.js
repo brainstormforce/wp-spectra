@@ -28,7 +28,6 @@ const presets = [
 			{ label: 'overallBorderRightRadius', value: 4},
 			{ label: 'overallBorderBottomRadius', value: 4},
 			{ label: 'overallBorderLeftRadius', value: 4},
-			{ label: 'overallBorderColor' , value: '#dedede' },
 			{ label: 'boxBgColor' , value: 'transparent'},
 			{ label: 'layout' , value: 'accordion'},
 			{ label: 'enableSeparator' , value: false}
@@ -57,7 +56,6 @@ const presets = [
 			{ label: 'overallBorderRightRadius', value: 4},
 			{ label: 'overallBorderBottomRadius', value: 4},
 			{ label: 'overallBorderLeftRadius', value: 4},
-			{ label: 'overallBorderColor' , value: '#f0f0f0' },
 			{ label: 'boxBgColor' , value: '#F2F5F7'},
 			{ label: 'layout' , value: 'accordion'},
 			{ label: 'enableSeparator' , value: false}
@@ -86,7 +84,6 @@ const presets = [
 			{ label: 'overallBorderRightRadius', value: 5},
 			{ label: 'overallBorderBottomRadius', value: 5},
 			{ label: 'overallBorderLeftRadius', value: 5},
-			{ label: 'overallBorderColor' , value: '#dedede' },
 			{ label: 'boxBgColor' , value: 'transparent'},
 			{ label: 'layout' , value: 'grid'},
 			{ label: 'enableSeparator' , value: true}
@@ -106,7 +103,7 @@ const presets = [
 			{ label: 'answerRightPadding' , value: 25 },
 			{ label: 'answerBottomPadding' , value: 25 },
 			{ label: 'answerLeftPadding' , value: 25 },
-			{ label: 'overallBorderStyle' , value: 'solid' },
+			{ label: 'overallBorderStyle' , value: 'none' },
 			{ label: 'overallBorderTopWidth', value: 1},
 			{ label: 'overallBorderRightWidth', value: 1},
 			{ label: 'overallBorderBottomWidth', value: 1},
@@ -115,7 +112,6 @@ const presets = [
 			{ label: 'overallBorderRightRadius', value: 5},
 			{ label: 'overallBorderBottomRadius', value: 5},
 			{ label: 'overallBorderLeftRadius', value: 5},
-			{ label: 'overallBorderColor' , value: '#e9e9e9' },
 			{ label: 'boxBgColor' , value: '#F5F5F5'},
 			{ label: 'layout' , value: 'grid'},
 			{ label: 'enableSeparator' , value: true}
