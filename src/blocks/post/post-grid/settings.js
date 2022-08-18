@@ -1222,6 +1222,11 @@ const Settings = ( props ) => {
 								setAttributes( { ctaText: value } )
 							}
 						/>
+						<UAGPresets
+							setAttributes = { setAttributes }
+							presets = { buttonsPresets }
+							presetInputType = 'radioImage'
+						/>
 					</>
 				) }
 			</UAGAdvancedPanelBody>
@@ -1839,11 +1844,6 @@ const Settings = ( props ) => {
 				) }
 				initialOpen={ false }
 			>
-				<UAGPresets
-					setAttributes = { setAttributes }
-					presets = { buttonsPresets }
-					presetInputType = 'radioImage'
-				/>
 				<UAGTabsControl
 					tabs={ [
 						{
