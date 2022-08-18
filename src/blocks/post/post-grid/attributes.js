@@ -733,6 +733,30 @@ const attributes = {
 			styleType: 'post-left-padding-mobile'
 		},
 	},
+	paddingTopTablet        : {
+		type : 'number',
+		UAGCopyPaste: {
+			styleType: 'post-top-padding-mobile'
+		},
+	},
+	paddingBottomTablet     : {
+		type : 'number',
+		UAGCopyPaste: {
+			styleType: 'post-bottom-padding-mobile'
+		},
+	},
+	paddingRightTablet      : {
+		type : 'number',
+		UAGCopyPaste: {
+			styleType: 'post-right-padding-mobile'
+		},
+	},
+	paddingLeftTablet       : {
+		type : 'number',
+		UAGCopyPaste: {
+			styleType: 'post-left-padding-mobile'
+		},
+	},
 	paddingBtnTop           : {
 		type : 'number',
 		UAGCopyPaste: {
