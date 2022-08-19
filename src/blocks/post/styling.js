@@ -1114,6 +1114,24 @@ function styling( props ) {
 		};
 	}
 
+	if( imgPosition !== 'background' ){
+		selectors['.wp-block-uagb-post-grid .uagb-post__inner-wrap  > .uagb-post__image:first-child'] = {
+			'margin-top': generateCSSUnit( - paddingTop, contentPaddingUnit ),
+			'margin-left': generateCSSUnit( - paddingLeft, contentPaddingUnit ),
+			'margin-right': generateCSSUnit( - paddingRight, contentPaddingUnit ),
+		}
+		mobileSelectors['.wp-block-uagb-post-grid .uagb-post__inner-wrap  > .uagb-post__image:first-child'] = {
+			'margin-top': generateCSSUnit( - paddingTopMobile, mobilePaddingUnit ),
+			'margin-left': generateCSSUnit( - paddingLeftMobile, mobilePaddingUnit ),
+			'margin-right': generateCSSUnit( - paddingRightMobile, mobilePaddingUnit ),
+		}
+		tabletSelectors['.wp-block-uagb-post-grid .uagb-post__inner-wrap  > .uagb-post__image:first-child'] = {
+			'margin-top': generateCSSUnit( - paddingTopTablet, tabletPaddingUnit ),
+			'margin-left': generateCSSUnit( - paddingLeftTablet, tabletPaddingUnit ),
+			'margin-right': generateCSSUnit( - paddingRightTablet, tabletPaddingUnit ),
+		}
+	}
+
 	let stylingCss = '';
 
 	stylingCss = generateCSS(
