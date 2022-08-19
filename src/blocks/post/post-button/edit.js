@@ -37,6 +37,7 @@ export const PostButton = ( props ) => {
 						href={ post.link }
 						target={ target }
 						rel="noopener noreferrer"
+						onClick={ ( e ) => e.preventDefault() }
 					>
 						{ cta_text }
 					</a>
