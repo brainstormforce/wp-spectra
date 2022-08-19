@@ -125,10 +125,14 @@ $selectors = array(
 $selectors[' .uagb-section__overlay'] = $overall_border_css;
 
 if ( 'video' === $bg_type ) {
-	$selectors[' > .uagb-section__overlay'] = array(
-		'opacity'          => 1,
-		'background-color' => $attr['backgroundVideoColor'],
-	);
+	if ( 'color' === $overlay_type ) {
+		$selectors[' > .uagb-section__overlay'] = array(
+			'opacity'          => 1,
+			'background-color' => $attr['backgroundVideoColor'],
+		);
+	} else {
+		$selectors[' > .uagb-section__overlay']['background-image'] = $attr['gradientValue'];
+	}
 } elseif ( 'image' === $bg_type ) {
 	if ( 'color' === $overlay_type ) {
 		$selectors[' > .uagb-section__overlay'] = array(
@@ -136,32 +140,17 @@ if ( 'video' === $bg_type ) {
 			'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '',
 		);
 	} else {
-		$selectors[' > .uagb-section__overlay']['background-color'] = 'transparent';
-		if ( 'linear' === $attr['gradientOverlayType'] ) {
+		$selectors[' > .uagb-section__overlay']['background-image'] = $attr['gradientValue'];
 
-			$selectors[' > .uagb-section__overlay']['background-image'] = 'linear-gradient(' . $attr['gradientOverlayAngle'] . 'deg, ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
-		} else {
-
-			$selectors[' > .uagb-section__overlay']['background-image'] = 'radial-gradient( at ' . $gradientOverlayPosition . ', ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
-		}
 	}
 } elseif ( 'color' === $bg_type ) {
 	$selectors[' > .uagb-section__overlay'] = array(
 		'background-color' => $attr['backgroundColor'],
 	);
 } elseif ( 'gradient' === $bg_type ) {
-	$selectors[' > .uagb-section__overlay']['background-color'] = 'transparent';
 
-	if ( $attr['gradientValue'] ) {
 		$selectors[' > .uagb-section__overlay']['background-image'] = $attr['gradientValue'];
-	} else {
-		if ( 'linear' === $attr['gradientType'] ) {
 
-			$selectors[' > .uagb-section__overlay']['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
-		} else {
-			$selectors[' > .uagb-section__overlay']['background-image'] = 'radial-gradient( at ' . $gradientPosition . ', ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
-		}
-	}
 }
 
 $m_selectors = array(
