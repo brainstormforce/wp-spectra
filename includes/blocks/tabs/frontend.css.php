@@ -106,6 +106,9 @@ $selectors = array(
 	' .uagb-tabs__icon-position-top > .uagb-tabs__icon'    => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $icon_spacing_fallback, 'px' ),
 	),
+	'.uagb-tabs__wrap.uagb-tabs__vstyle9-desktop ul.uagb-tabs__panel .uagb-tab' => array(
+		'border-radius' => '30px',
+	),
 );
 if ( 'left' === $attr['tabAlign'] ) {
 	$selectors[' ul.uagb-tabs__panel'] = array(
@@ -167,7 +170,7 @@ $m_selectors = array(
 	' .uagb-tabs__icon-position-top > .uagb-tabs__icon'    => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconSpacingMobile'], 'px' ),
 	),
-	'.uagb-tabs__hstyle2-tablet > .uagb-tabs__panel .uagb-tab' => array(
+	'.uagb-tabs__hstyle2-mobile > .uagb-tabs__panel .uagb-tab' => array(
 		'border-top-width'   => '0px',
 		'border-right-width' => '0px',
 		'border-left-width'  => '0px',
@@ -175,11 +178,11 @@ $m_selectors = array(
 		'border-left-style'  => 'none',
 		'border-right-style' => 'none',
 	),
-	'.uagb-tabs__wrap.uagb-tabs__hstyle2-tablet > .uagb-tabs__body-wrap' => array(
+	'.uagb-tabs__wrap.uagb-tabs__hstyle2-mobile > .uagb-tabs__body-wrap' => array(
 		'border-width' => '0px',
 		'border-style' => 'none',
 	),
-	'.uagb-tabs__wrap.uagb-tabs__hstyle2-tablet ul.uagb-tabs__panel' => array_merge(
+	'.uagb-tabs__wrap.uagb-tabs__hstyle2-mobile ul.uagb-tabs__panel' => array_merge(
 		array(
 			'border-top-width'   => '0px',
 			'border-right-width' => '0px',
@@ -192,8 +195,8 @@ $m_selectors = array(
 		),
 		$overall_border_mobile
 	),
-	'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet'           => $overall_border_mobile,
-	'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet .uagb-tab' => array(
+	'.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile'           => $overall_border_mobile,
+	'.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile .uagb-tab' => array(
 		'border-top-width'    => '0px',
 		'border-right-width'  => '0px',
 		'border-left-width'   => '0px',
@@ -205,7 +208,7 @@ $m_selectors = array(
 		'outline'             => 0,
 		'border-radius'       => 0,
 	),
-	'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet .uagb-tab.uagb-tabs__active' => array_merge(
+	'.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile .uagb-tab.uagb-tabs__active' => array_merge(
 		array(
 			'border-top-width'   => '0px',
 			'border-right-width' => '0px',
@@ -218,7 +221,7 @@ $m_selectors = array(
 		),
 		$overall_border_mobile
 	),
-	'.uagb-tabs__wrap.uagb-tabs__vstyle7-tablet .uagb-tab' => array_merge(
+	'.uagb-tabs__wrap.uagb-tabs__vstyle7-mobile .uagb-tab' => array_merge(
 		array(
 			'border-top-width'   => '0px',
 			'border-right-width' => '0px',
@@ -231,23 +234,26 @@ $m_selectors = array(
 		),
 		$overall_border_mobile
 	),
-	'.uagb-tabs__wrap.uagb-tabs__vstyle7-tablet > .uagb-tabs__body-wrap' => array(
+	'.uagb-tabs__wrap.uagb-tabs__vstyle7-mobile > .uagb-tabs__body-wrap' => array(
 		'border-width' => '0px',
 		'border-style' => 'none',
 	),
-	'.uagb-tabs__wrap.uagb-tabs__vstyle8-tablet > .uagb-tabs__body-wrap' => array(
+	'.uagb-tabs__wrap.uagb-tabs__vstyle8-mobile > .uagb-tabs__body-wrap' => array(
 		'margin-left' => '0px',
 	),
-	'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet'          => $overall_border_mobile,
-	'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet ul.uagb-tabs__panel .uagb-tab' => array(
+	'.uagb-tabs__wrap.uagb-tabs__vstyle9-mobile ul.uagb-tabs__panel .uagb-tab' => array(
+		'border-radius' => '30px',
+	),
+	'.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile'          => $overall_border_mobile,
+	'.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile ul.uagb-tabs__panel .uagb-tab' => array(
 		'border-width' => '0px',
 		'border-style' => 'none',
 	),
-	'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet .uagb-tabs__body-wrap' => array(
+	'.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile .uagb-tabs__body-wrap' => array(
 		'border-width' => '0px',
 		'border-style' => 'none',
 	),
-	'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet ul.uagb-tabs__panel .uagb-tab.uagb-tabs__active' => array_merge(
+	'.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile ul.uagb-tabs__panel .uagb-tab.uagb-tabs__active' => array_merge(
 		array(
 			'border-top-width'    => '0px',
 			'border-bottom-width' => '0px',
