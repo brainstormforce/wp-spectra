@@ -21,7 +21,7 @@ import UAGTabsControl from '@Components/tabs';
 import {
 	InspectorControls,
 } from '@wordpress/block-editor';
-import { ToggleControl, Notice } from '@wordpress/components';
+import { ToggleControl } from '@wordpress/components';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -1047,17 +1047,6 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
-						<Notice status="warning" isDismissible={false}>
-							{
-								__( 'This block has been deprecated. We recommend using the new', 'ultimate-addons-for-gutenberg' )
-							}
-							{' '}
-							<strong>{__( 'Container', 'ultimate-addons-for-gutenberg' )}</strong>
-							{' '}
-							{
-								__( 'block instead for more flexibility, and better code markup.', 'ultimate-addons-for-gutenberg' )
-							}
-						</Notice>
 						{ layoutSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>

@@ -111,7 +111,14 @@ export default function save( props ) {
 					) }
 				</div>
 			) }
-			<InnerBlocks.Content />
+			<div
+				className={ classnames(
+					'uagb-columns__inner-wrap',
+					`uagb-columns__columns-${ columns }`
+				) }
+			>
+				<InnerBlocks.Content />
+			</div>
 			{ bottomDividerHtml }
 		</CustomTag>
 	);

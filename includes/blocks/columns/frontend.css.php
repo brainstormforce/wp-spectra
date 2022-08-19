@@ -105,10 +105,6 @@ $selectors = array(
 	),
 );
 
-$selectors[ '.wp-block-uagb-columns.uagb-columns__wrap.uagb-columns__max_width-' . $attr['contentWidth'] ] = array(
-	'max-width' => $inner_width,
-);
-
 if ( '' !== $attr['topWidth'] ) {
 	$selectors[' .uagb-columns__shape-top svg']['width'] = 'calc( ' . $attr['topWidth'] . '% + 1.3px )';
 }
