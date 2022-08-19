@@ -505,9 +505,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$overall_border_css
 				),
 				'.is-grid .uagb-post__inner-wrap .uagb-post__image:first-child' => array(
-					'padding-left'  => UAGB_Helper::get_css_value( - $paddingLeft, $attr['contentPaddingUnit'] ),
-					'padding-right' => UAGB_Helper::get_css_value( - $paddingRight, $attr['contentPaddingUnit'] ),
-					'padding-top'   => UAGB_Helper::get_css_value( - $paddingTop, $attr['contentPaddingUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( - $paddingLeft, $attr['contentPaddingUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( - $paddingRight, $attr['contentPaddingUnit'] ),
+					'margin-top'   => UAGB_Helper::get_css_value( - $paddingTop, $attr['contentPaddingUnit'] ),
 				),
 				':not(.is-grid) .uagb-post__inner-wrap .uagb-post__text:last-child' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $paddingBottom, $attr['contentPaddingUnit'] ),
@@ -707,6 +707,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-right' => UAGB_Helper::get_css_value( (int) ( -$rowGapMobile / 2 ), $attr['rowGapUnit'] ),
 					'margin-left'  => UAGB_Helper::get_css_value( (int) ( -$rowGapMobile / 2 ), $attr['rowGapUnit'] ),
 				),
+				'.is-grid .uagb-post__inner-wrap .uagb-post__image:first-child' => array(
+					'margin-left'  => UAGB_Helper::get_css_value( - (int) ( $paddingLeftMobile ), $attr['mobilePaddingBtnUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( - (int) ( $paddingRightMobile ), $attr['mobilePaddingBtnUnit'] ),
+					'margin-top'   => UAGB_Helper::get_css_value( - (int) ( $paddingTopMobile ), $attr['mobilePaddingBtnUnit'] ),
+				),
 			);
 
 			return $m_selector;
@@ -725,6 +730,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$border_css_tablet         = self::uag_generate_border_css( $attr, 'btn', 'tablet' );
 			$overall_border_css_tablet = self::uag_generate_border_css( $attr, 'overall', 'tablet' );
+
+			$paddingTopTablet    = isset( $attr['paddingTopTablet'] ) ? $attr['paddingTopTablet'] : $attr['contentPadding'];
+			$paddingBottomTablet = isset( $attr['paddingBottomTablet'] ) ? $attr['paddingBottomTablet'] : $attr['contentPadding'];
+			$paddingLeftTablet   = isset( $attr['paddingLeftTablet'] ) ? $attr['paddingLeftTablet'] : $attr['contentPadding'];
+			$paddingRightTablet  = isset( $attr['paddingRightTablet'] ) ? $attr['paddingRightTablet'] : $attr['contentPadding'];
 
 			$paddingBtnTopTablet    = isset( $attr['paddingBtnTopTablet'] ) ? $attr['paddingBtnTopTablet'] : $attr['btnVPadding'];
 			$paddingBtnBottomTablet = isset( $attr['paddingBtnBottomTablet'] ) ? $attr['paddingBtnBottomTablet'] : $attr['btnVPadding'];
@@ -758,10 +768,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-post__inner-wrap'                 => array_merge(
 					array(
-						'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingTopTablet'], $attr['tabletPaddingUnit'] ),
-						'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBottomTablet'], $attr['tabletPaddingUnit'] ),
-						'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingLeftTablet'], $attr['tabletPaddingUnit'] ),
-						'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingRightTablet'], $attr['tabletPaddingUnit'] ),
+						'padding-top'    => UAGB_Helper::get_css_value( $paddingTopTablet, $attr['tabletPaddingUnit'] ),
+						'padding-bottom' => UAGB_Helper::get_css_value( $paddingBottomTablet, $attr['tabletPaddingUnit'] ),
+						'padding-left'   => UAGB_Helper::get_css_value( $paddingLeftTablet, $attr['tabletPaddingUnit'] ),
+						'padding-right'  => UAGB_Helper::get_css_value( $paddingRightTablet, $attr['tabletPaddingUnit'] ),
 					),
 					$overall_border_css_tablet
 				),
@@ -786,6 +796,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				':not(.is-grid).uagb-post__items'         => array(
 					'margin-right' => UAGB_Helper::get_css_value( (int) ( -$rowGapTablet / 2 ), $attr['rowGapUnit'] ),
 					'margin-left'  => UAGB_Helper::get_css_value( (int) ( -$rowGapTablet / 2 ), $attr['rowGapUnit'] ),
+				),
+				'.is-grid .uagb-post__inner-wrap .uagb-post__image:first-child' => array(
+					'margin-left'  => UAGB_Helper::get_css_value( - (int) ( $paddingLeftTablet ), $attr['tabletPaddingUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( - (int) ( $paddingRightTablet ), $attr['tabletPaddingUnit'] ),
+					'margin-top'   => UAGB_Helper::get_css_value( - (int) ( $paddingTopTablet ), $attr['tabletPaddingUnit'] ),
 				),
 			);
 
