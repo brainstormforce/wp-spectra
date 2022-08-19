@@ -170,6 +170,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 2.0.3 -
+* Fix: Table of contents - Headings not scroll when Cyrillic and English combination is used.
+
 = 2.0.2 - WEDNESDAY, 17TH AUGUST 2022 =
 * Fix: Compatibility issues with PHP version 7.2 and older.
 * Fix: Forms - Throws an error on drag and drop.
