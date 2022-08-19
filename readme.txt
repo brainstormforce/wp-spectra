@@ -171,14 +171,17 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 2.0.3 - FRIDAY, 19TH AUGUST 2022 =
-* Improvement: Added a Setting in Spectra Admin Dashboard to set Column Gap & Row Gap default values for Container Block Globally.
-* Fix: Icon List - Fixed word wrapping and breaking behavior.
+* Decision: Instead of deprecating some blocks, we decided to call them "legacy" blocks. Legacy blocks work fine and will get support/bug fixes.
+* Improvement: Removed deprecation notices from the settings of the blocks.
+* Improvement: Added a setting to set default values for "column gap" & "row gap" in the container.
+* Fix: Advance Columns - Full-width layout not getting full width on the frontend.
+* Fix: Padding in some blocks were not visible in the editor for old user.
 * Fix: Post Grid - Content padding getting applied to post image.
-* Fix: Info Box, Heading, Call to Action - Text Color gets override on frontend when blocks used in Cover Block.
-* Fix: Post Carousel, Grid and Masonry - Disabled 'Read More' links in editor and ensured pointer is shown on button hover.
-* Fix: Post layout - Title color turn white when background image position is set.
-* Fix: Advance Columns - Full width layout not getting full width on frontend for old users.
-* Fix: Paddings in some blocks were not visible in editor for old user.
+* Fix: Icon List - Fixed word wrapping and breaking behavior.
+* Fix: Info Box, Heading, Call to Action - overridden text color on frontend when used in the Cover Block.
+* Fix: Post Carousel, Grid, and Masonry - Disabled 'Read More' links in the editor and ensured pointer is shown on button hover.
+* Fix: Post layout - Title color turns white when background image position is set.
+* Fix: Table of contents - Headings not scroll when Cyrillic and English combination is used.
 
 = 2.0.2 - WEDNESDAY, 17TH AUGUST 2022 =
 * Fix: Compatibility issues with PHP version 7.2 and older.
