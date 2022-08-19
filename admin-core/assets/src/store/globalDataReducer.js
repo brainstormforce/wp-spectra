@@ -144,6 +144,11 @@ const globalDataReducer = ( state = {}, action ) => {
 				...state,
 				containerGlobalPadding: action.payload,
 				};
+		case 'UPDATE_CONTAINER_GLOBAL_ELEMENTS_GAP':
+			return {
+				...state,
+				containerGlobalElementsGap: action.payload,
+				};
         default:
             return state;
     }
