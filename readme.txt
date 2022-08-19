@@ -172,6 +172,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 = 2.0.3 - FRIDAY, 19TH AUGUST 2022 =
 * Fix: Icon List - Fixed word wrapping and breaking behavior.
+* Fix: Post Grid - Content padding getting applied to post image.
 
 = 2.0.2 - WEDNESDAY, 17TH AUGUST 2022 =
 * Fix: Compatibility issues with PHP version 7.2 and older.
