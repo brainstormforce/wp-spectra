@@ -9,7 +9,7 @@
  const {
      RichText,
  } = wp.blockEditor
- 
+
  const attributes = {
 		ID: {
 			type: "string",
@@ -471,6 +471,10 @@
 		deviceType: {
 			type: "string",
 			default: 'Desktop'
+		},
+		paddingUnit: {
+			type: 'string',
+			default: 'px',
 		}
  }
  const deprecated = [
