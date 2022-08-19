@@ -808,6 +808,18 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'paddingLeftMobile'             => array(
 						'type' => 'number',
 					),
+					'paddingTopTablet'              => array(
+						'type' => 'number',
+					),
+					'paddingBottomTablet'           => array(
+						'type' => 'number',
+					),
+					'paddingRightTablet'            => array(
+						'type' => 'number',
+					),
+					'paddingLeftTablet'             => array(
+						'type' => 'number',
+					),
 					'paddingBtnTop'                 => array(
 						'type' => 'number',
 					),
