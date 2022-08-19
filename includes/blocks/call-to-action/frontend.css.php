@@ -79,12 +79,12 @@ if ( 'left' === $attr['textAlignMobile'] ) {
 	$alignmentMobile = 'center';
 }
 $selectors = array(
-	' .uagb-cta__title'                                    => array(
+	'.wp-block-uagb-call-to-action .uagb-cta__title'       => array(
 		'line-height'   => UAGB_Helper::get_css_value( $attr['titleLineHeight'], $attr['titleLineHeightType'] ),
 		'color'         => $attr['titleColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $title_space_fallback, $attr['titleSpaceType'] ),
 	),
-	' .uagb-cta__desc'                                     => array(
+	'.wp-block-uagb-call-to-action .uagb-cta__desc'        => array(
 		'color'         => $attr['descColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $desc_space_fallback, $attr['descSpaceType'] ),
 	),
