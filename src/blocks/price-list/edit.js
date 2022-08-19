@@ -133,7 +133,7 @@ const UAGBRestaurantMenu = ( props ) => {
 		// Set showImage attribute in child blocks based on current parent block's value.
 		select( 'core/block-editor' )
             .getBlocksByClientId( props.clientId )[0]
-            .innerBlocks.forEach( function( block ) {
+            ?.innerBlocks.forEach( function( block ) {
                 dispatch( 'core/block-editor' ).updateBlockAttributes(
                     block.clientId, {
                         showImage: props.attributes.showImage,
