@@ -178,6 +178,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Carousel, Grid and Masonry - Disabled 'Read More' links in editor and ensured pointer is shown on button hover.
 * Fix: Post layout - Title color turn white when background image position is set.
 * Fix: Advance Columns - Full width layout not getting full width on frontend for old users.
+* Fix: Paddings in some blocks were not visible in editor for old user.
 
 = 2.0.2 - WEDNESDAY, 17TH AUGUST 2022 =
 * Fix: Compatibility issues with PHP version 7.2 and older.

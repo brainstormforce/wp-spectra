@@ -354,7 +354,43 @@ const attributes = {
 	stack: {
 		type: "string",
 		default: "tablet"
-	}
+	},
+	nameSpaceType: {
+		type: 'string',
+		default: 'px',
+	},
+	descSpaceType: {
+		type: 'string',
+		default: 'px',
+	},
+	imgpaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	arrowBorderSizeUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	arrowBorderRadiusUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	arrowSizeType: {
+		type: 'string',
+		default: 'px',
+	},
+	rowGapType: {
+		type: 'string',
+		default: 'px',
+	},
+	columnGapType: {
+		type: 'string',
+		default: 'px',
+	},
+	paddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
 }
 
 const deprecated = [
