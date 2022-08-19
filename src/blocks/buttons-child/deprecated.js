@@ -147,6 +147,10 @@ import renderSVG from '@Controls/deprecatedRenderIcon';
 		type: "number",
 		default : 8
 	},
+	paddingUnit:{
+		type: "string",
+		default: "px"
+	}
 }
 
 const deprecated = [
