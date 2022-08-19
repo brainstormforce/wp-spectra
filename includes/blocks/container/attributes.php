@@ -7,9 +7,10 @@
  * @package uagb
  */
 
-$border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'container' );
-$default_width    = UAGB_Admin_Helper::get_global_content_width();
-$default_padding  = UAGB_Admin_Helper::get_admin_settings_option( 'uag_container_global_padding', '' );
+$border_attribute     = UAGB_Block_Helper::uag_generate_border_attribute( 'container' );
+$default_width        = UAGB_Admin_Helper::get_global_content_width();
+$default_padding      = UAGB_Admin_Helper::get_admin_settings_option( 'uag_container_global_padding', '' );
+$default_elements_gap = UAGB_Admin_Helper::get_admin_settings_option( 'uag_container_global_elements_gap', 20 );
 
 return array_merge(
 	array(
@@ -107,13 +108,13 @@ return array_merge(
 		'marginTypeTablet'                  => 'px',
 		'marginTypeMobile'                  => 'px',
 		'marginLink'                        => true,
-		'rowGapDesktop'                     => 20,
+		'rowGapDesktop'                     => $default_elements_gap,
 		'rowGapTablet'                      => '',
 		'rowGapMobile'                      => '',
 		'rowGapType'                        => 'px',
 		'rowGapTypeTablet'                  => 'px',
 		'rowGapTypeMobile'                  => 'px',
-		'columnGapDesktop'                  => 20,
+		'columnGapDesktop'                  => $default_elements_gap,
 		'columnGapTablet'                   => '',
 		'columnGapMobile'                   => '',
 		'columnGapType'                     => 'px',
