@@ -47,7 +47,6 @@ import {
 	ToggleControl,
 	TextControl,
 	Icon,
-	Notice,
 	ExternalLink
 } from '@wordpress/components';
 
@@ -2498,11 +2497,6 @@ const UAGBPostMasonry = ( props ) => {
 		<InspectorControls>
 			<InspectorTabs>
 				<InspectorTab { ...UAGTabs.general }>
-					<Notice status="warning" isDismissible={false}>
-						{
-							__( 'This block has been deprecated.', 'ultimate-addons-for-gutenberg' )
-						}
-					</Notice>
 					{ generalSettings() }
 					{ imageSettings() }
 					{ contentSettings() }
