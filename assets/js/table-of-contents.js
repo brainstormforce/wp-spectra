@@ -154,13 +154,15 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 		e.preventDefault();
 
 		let hash = e.target.getAttribute( 'href' );
-		if ( hash !== '' ) {
+		if ( hash ) {
 			const node = document.querySelector( '.wp-block-uagb-table-of-contents' ); // eslint-disable-line no-undef
 
 			scrollData = node.getAttribute( 'data-scroll' );
 			scrollOffset = node.getAttribute( 'data-offset' );
 			let offset = null;
+			
 			hash = hash.substring( 1 );
+
 			if ( document?.querySelector( "[id='" + hash + "']" ) ) {
 
 				offset = document.querySelector( "[id='" + hash + "']"  )?.getBoundingClientRect().top + window.scrollY;
