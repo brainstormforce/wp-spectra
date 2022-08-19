@@ -171,6 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 2.0.3 - FRIDAY, 19TH AUGUST 2022 ###
+* Improvement: Added a Setting in Spectra Admin Dashboard to set Column Gap & Row Gap default values for Container Block Globally.
 * Fix: Icon List - Fixed word wrapping and breaking behavior.
 * Fix: Post Grid - Content padding getting applied to post image.
 
