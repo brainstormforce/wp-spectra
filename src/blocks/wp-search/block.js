@@ -12,7 +12,7 @@ import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
 
-if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) {
+if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
 	registerBlockType( 'uagb/wp-search', {
 		title: __( 'Search', 'ultimate-addons-for-gutenberg' ),
 		description: __( 'Add a search widget to let users search posts from your website.', 'ultimate-addons-for-gutenberg' ),

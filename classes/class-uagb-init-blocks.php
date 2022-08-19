@@ -594,6 +594,7 @@ class UAGB_Init_Blocks {
 				'uag_select_font_globally'           => $selected_fonts,
 				'uagb_old_user_less_than_2'          => get_option( 'uagb-old-user-less-than-2' ),
 				'collapse_panels'                    => UAGB_Admin_Helper::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
+				'enable_legacy_blocks'               => UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' ),
 				'copy_paste'                         => UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
 				'content_width'                      => $content_width,
 				'container_global_padding'           => $container_padding,
