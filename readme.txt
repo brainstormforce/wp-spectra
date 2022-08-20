@@ -170,8 +170,14 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 2.0.4 - 
-* Tabs Child - Border not visible in editor for backward users 
+= 2.0.4 - SUNDAY, 21st AUGUST 2022 =
+* Feature: Added Enable Legacy Blocks option in Admin Dashboard.
+* Fix: Buttons - Text inside button not wrapping on small devices.
+* Fix: Automatic Block Recovery not working and block displays blank in editor when reusable block is present on the page.
+* Fix: FAQ - Enabling schema support does not give valid schema JSON on frontend.
+* Fix: Container - Fixed anchor bug (anchor wasn't working and the anchor value wasn't saved)
+* Fix: Advanced Row (Section) & Advanced Columns - Opacity not working for background image when image overlay type was set as gradient for old user.
+* Fix: Tabs Child - Border not visible in editor for old users.
 
 = 2.0.3 - FRIDAY, 19TH AUGUST 2022 =
 * Decision: Instead of deprecating some blocks, we decided to call them "legacy" blocks. Legacy blocks work fine and will get support/bug fixes.
