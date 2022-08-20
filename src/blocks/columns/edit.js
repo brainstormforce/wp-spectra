@@ -59,7 +59,15 @@ const ColumnsComponent = ( props ) => {
 			align,
 			vAlign,
 			backgroundImageColor,
-			backgroundType
+			backgroundType,
+			gradientOverlayColor1,
+			gradientOverlayColor2,
+			overlayType,
+			gradientOverlayAngle,
+			gradientOverlayLocation1,
+			gradientOverlayPosition,
+			gradientOverlayLocation2,
+			gradientOverlayType
 		} = attributes
 
 		if ( 'middle' === vAlign ) {
@@ -72,6 +80,18 @@ const ColumnsComponent = ( props ) => {
 
 		if ( undefined === vAlign ){
 			setAttributes( { vAlign: '' } );
+		}
+
+		if( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ){
+			const color1 = hexToRGBA( maybeGetColorForVariable( gradientOverlayColor1 ), backgroundOpacity );
+			const color2 = hexToRGBA( maybeGetColorForVariable( gradientOverlayColor2 ), backgroundOpacity );
+			let gradientVal;
+			if ( 'linear' === gradientOverlayType ) {
+				gradientVal = `linear-gradient(${ gradientOverlayAngle }deg, ${ color1 } ${ gradientOverlayLocation1 }%, ${ color2 } ${ gradientOverlayLocation2 }%)`;
+			} else {
+				gradientVal = `radial-gradient( at ${ gradientOverlayPosition }, ${ color1 } ${ gradientOverlayLocation1 }%, ${ color2 } ${ gradientOverlayLocation2 }%)`;
+			}
+			setAttributes( { gradientValue: gradientVal } );
 		}
 
 		// Replacement for componentDidMount.
