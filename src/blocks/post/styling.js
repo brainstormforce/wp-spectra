@@ -1078,7 +1078,7 @@ function styling( props ) {
 			};
 		}
 	}
-	tabletSelectors[ ' .uagb-post__inner-wrap' ] = {
+	tabletSelectors[ '.uagb-post-grid .uagb-post__inner-wrap' ] = {
 		'padding-top': generateCSSUnit( paddingTopTablet, tabletPaddingUnit ),
 		'padding-bottom': generateCSSUnit(
 			paddingBottomTablet,
@@ -1091,7 +1091,7 @@ function styling( props ) {
 		),
 		...overallBorderCSSTablet
 	};
-	mobileSelectors[ ' .uagb-post__inner-wrap' ] = {
+	mobileSelectors[ '.uagb-post-grid .uagb-post__inner-wrap' ] = {
 		'padding-top': generateCSSUnit( paddingTopMobile, mobilePaddingUnit ),
 		'padding-bottom': generateCSSUnit(
 			paddingBottomMobile,

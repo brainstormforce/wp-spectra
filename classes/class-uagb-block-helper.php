@@ -769,7 +769,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-post__inner-wrap .uagb-post__excerpt' => array(
 					'padding-bottom' => UAGB_Helper::get_css_value( $excerptBottomSpaceTablet, $attr['excerptBottomSpaceUnit'] ),
 				),
-				' .uagb-post__inner-wrap'                 => array_merge(
+				'.is-grid .uagb-post__inner-wrap'                 => array_merge(
 					array(
 						'padding-top'    => UAGB_Helper::get_css_value( $paddingTopTablet, $attr['tabletPaddingUnit'] ),
 						'padding-bottom' => UAGB_Helper::get_css_value( $paddingBottomTablet, $attr['tabletPaddingUnit'] ),
