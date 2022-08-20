@@ -833,6 +833,17 @@ function styling( props ) {
 		' .is-masonry': {
 			'height': 'initial !important',
 		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)': {
+			'margin-left': generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
+			'margin-right': generateCSSUnit( paddingRightMobile, mobilePaddingUnit ),
+		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text.highlighted:first-child': {
+			'margin-top': generateCSSUnit( paddingTopMobile, mobilePaddingUnit ),
+			'margin-left': generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
+		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:last-child': {
+			'margin-bottom': generateCSSUnit( paddingBottomMobile, mobilePaddingUnit ),
+		},
 	};
 
 	const boxShadowBlurHoverValue = isNaN( boxShadowBlurHover ) ? '' : boxShadowBlurHover;
@@ -985,6 +996,17 @@ function styling( props ) {
 		' .is-masonry': {
 			'height': 'initial !important',
 		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)': {
+			'margin-left': generateCSSUnit( paddingLeftTablet, tabletPaddingUnit ),
+			'margin-right': generateCSSUnit( paddingRightTablet, tabletPaddingUnit ),
+		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text.highlighted:first-child': {
+			'margin-top': generateCSSUnit( paddingTopTablet, tabletPaddingUnit ),
+			'margin-left': generateCSSUnit( paddingLeftTablet, tabletPaddingUnit ),
+		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:last-child': {
+			'margin-bottom': generateCSSUnit( paddingBottomTablet, tabletPaddingUnit ),
+		},
 	};
 
 	if ( 'infinite' === paginationType ) {
@@ -1078,7 +1100,7 @@ function styling( props ) {
 			};
 		}
 	}
-	tabletSelectors[ ' .uagb-post__inner-wrap' ] = {
+	tabletSelectors[ '.uagb-post-grid .uagb-post__inner-wrap' ] = {
 		'padding-top': generateCSSUnit( paddingTopTablet, tabletPaddingUnit ),
 		'padding-bottom': generateCSSUnit(
 			paddingBottomTablet,
@@ -1091,7 +1113,7 @@ function styling( props ) {
 		),
 		...overallBorderCSSTablet
 	};
-	mobileSelectors[ ' .uagb-post__inner-wrap' ] = {
+	mobileSelectors[ '.uagb-post-grid .uagb-post__inner-wrap' ] = {
 		'padding-top': generateCSSUnit( paddingTopMobile, mobilePaddingUnit ),
 		'padding-bottom': generateCSSUnit(
 			paddingBottomMobile,
