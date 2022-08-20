@@ -15,7 +15,7 @@ import { __ } from '@wordpress/i18n';
 // Register block controls
 import { registerBlockType } from '@wordpress/blocks';
 
-if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) {
+if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
 // Register the block
 registerBlockType( 'uagb/post-masonry', {
 	title: __( 'Post Masonry', 'ultimate-addons-for-gutenberg' ),
