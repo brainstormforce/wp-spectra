@@ -53,8 +53,6 @@ function styling( props ) {
 		iconSpacingTablet,
 		iconSpacingMobile,
 		tabsStyleD,
-		tabsStyleM,
-		tabsStyleT,
 		activeiconColor,
 		tabTitlePaddingUnit,
 		tabTitleMarginUnit,
@@ -125,12 +123,12 @@ function styling( props ) {
 	let mobileSelectors = {};
 	selectors = {
 		'.uagb-tabs__hstyle1-desktop > .uagb-tabs__panel .uagb-tab': borderCSS,
-		'.uagb-tabs__wrap.uagb-tabs__hstyle1-desktop > .uagb-tabs__body-wrap': borderCSS,
+		'.uagb-tabs__hstyle1-desktop > .uagb-tabs__body-wrap': borderCSS,
 		'.uagb-tabs__hstyle2-desktop > .uagb-tabs__panel .uagb-tab': {
 			'border-width': '0px',
 			'border-style': 'none',
 		},
-		'.uagb-tabs__wrap.uagb-tabs__hstyle2-desktop ul.uagb-tabs__panel': {
+		'.uagb-tabs__hstyle2-desktop ul.uagb-tabs__panel': {
 			'border-top-width': '0px',
 			'border-right-width': '0px',
 			'border-left-width': '0px',
@@ -141,14 +139,14 @@ function styling( props ) {
 			'border-radius': 0,
 			...borderCSS
 		},
-		'.uagb-tabs__wrap.uagb-tabs__hstyle2-desktop > .uagb-tabs__body-wrap': {
+		'.uagb-tabs__hstyle2-desktop > .uagb-tabs__body-wrap': {
 			'border-width': '0px',
 			'border-style': 'none',
 		},
-		'.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop': {
+		'.uagb-tabs__hstyle5-desktop': {
 			...borderCSS
 		},
-		'.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop .uagb-tab': {
+		'.uagb-tabs__hstyle5-desktop .uagb-tab': {
 			'border-top-width': '0px',
 			'border-right-width': '0px',
 			'border-left-width': '0px',
@@ -160,7 +158,7 @@ function styling( props ) {
 			'outline': 0,
 			'border-radius': 0,
 		},
-		'.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop .uagb-tab.uagb-tabs__active': {
+		'.uagb-tabs__hstyle5-desktop .uagb-tab.uagb-tabs__active': {
 			'border-top-width': '0px',
 			'border-right-width': '0px',
 			'border-left-width': '0px',
@@ -171,7 +169,7 @@ function styling( props ) {
 			'border-radius': 0,
 			...borderCSS
 		},
-		'.uagb-tabs__wrap.uagb-tabs__vstyle7-desktop .uagb-tab': {
+		'.uagb-tabs__vstyle7-desktop .uagb-tab': {
 			'border-top-width': '0px',
 			'border-right-width': '0px',
 			'border-left-width': '0px',
@@ -182,25 +180,25 @@ function styling( props ) {
 			'border-radius': 0,
 			...borderCSS
 		},
-		'.uagb-tabs__wrap.uagb-tabs__vstyle7-desktop > .uagb-tabs__body-wrap': {
+		'.uagb-tabs__vstyle7-desktop > .uagb-tabs__body-wrap': {
 			'border-width': '0px',
 			'border-style': 'none',
 		},
-		'.uagb-tabs__wrap.uagb-tabs__vstyle9-desktop ul.uagb-tabs__panel .uagb-tab':{
+		'.uagb-tabs__vstyle9-desktop ul.uagb-tabs__panel .uagb-tab':{
 			'border-radius': '30px',
 		},
-		'.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop':{
+		'.uagb-tabs__vstyle10-desktop':{
 			...borderCSS
 		},
-		'.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop ul.uagb-tabs__panel .uagb-tab': {
+		'.uagb-tabs__vstyle10-desktop ul.uagb-tabs__panel .uagb-tab': {
 			'border-width': '0px',
 			'border-style': 'none',
 		},
-		'.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop .uagb-tabs__body-wrap': {
+		'.uagb-tabs__vstyle10-desktop .uagb-tabs__body-wrap': {
 			'border-width': '0px',
 			'border-style': 'none',
 		},
-		'.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop ul.uagb-tabs__panel .uagb-tab.uagb-tabs__active':{
+		'.uagb-tabs__vstyle10-desktop ul.uagb-tabs__panel .uagb-tab.uagb-tabs__active':{
 			'border-top-width': '0px',
 			'border-bottom-width': '0px',
 			'border-left-width': '0px',
@@ -404,6 +402,8 @@ function styling( props ) {
 				'border-radius': 0,
 				...borderCSSTablet
 			},
+			'.uagb-tabs__wrap.uagb-tabs__vstyle6-tablet > ul.uagb-tabs__panel .uagb-tab': borderCSSTablet,
+			'.uagb-tabs__wrap.uagb-tabs__vstyle6-tablet > .uagb-tabs__body-wrap': borderCSSTablet,
 			'.uagb-tabs__wrap.uagb-tabs__vstyle7-tablet .uagb-tab': {
 				'border-top-width': '0px',
 				'border-right-width': '0px',
@@ -426,7 +426,7 @@ function styling( props ) {
 				'border-width': '0px',
 				'border-style': 'none',
 			},
-			'.uagb-tabs__wrap.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet': borderCSSTablet,
+			'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet': borderCSSTablet,
 			'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet ul.uagb-tabs__panel .uagb-tab': {
 				'border-width': '0px',
 				'border-style': 'none',
@@ -548,7 +548,7 @@ function styling( props ) {
 		},
 	};
 	mobileSelectors = {
-		'.uagb-tabs__hstyle2-mobile > .uagb-tabs__panel .uagb-tab': {
+		'.uagb-tabs__wrap.uagb-tabs__hstyle2-mobile > .uagb-tabs__panel .uagb-tab': {
 			'border-top-width': '0px',
 			'border-right-width': '0px',
 			'border-left-width': '0px',
@@ -786,64 +786,7 @@ function styling( props ) {
 	tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop' ] = {
 		'border-style': 'none',
 	};
-	tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop' ] = {
-		'border-style': 'none',
-	};
-	if ( tabsStyleT === 'hstyle5' ) {
-		tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet' ] = {
-			'background': bodyBgColor,
-		};
-		tabletSelectors[
-			'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet:hover'
-		] = {
-			'border-color': tabBorderHColor,
-		};
-	}
-	if ( tabsStyleT === 'vstyle10' ) {
-		tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet' ] = {
-			'background': bodyBgColor,
-		};
-		tabletSelectors[
-			'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet:hover'
-		] = {
-			'border-color': tabBorderHColor,
-		};
-	}
-	if ( tabsStyleM === 'hstyle5' ) {
-		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile ' ] = {
-			'background': bodyBgColor,
-		};
-		mobileSelectors['.uagb-tabs__wrap > .uagb-tabs__body-wrap'] = {
-			'border-left-style': 'none',
-			'border-right-style':'none',
-		};
-		mobileSelectors[
-			'.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile:hover'
-		] = {
-			'border-color': tabBorderHColor,
-		};
-	}
-	if ( tabsStyleM === 'vstyle10' ) {
-		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile ' ] = {
-			'background': bodyBgColor,
-		};
-		mobileSelectors[
-			'.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile:hover'
-		] = {
-			'border-color': tabBorderHColor,
-		};
-	}
-	mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop' ] = {
-		'border-style': 'none',
-	};
-	if ( tabsStyleM === 'stack4' ) {
-		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__stack4-mobile' ] = {
-			'background': bodyBgColor,
-		};
-		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__stack4-mobile:hover' ] = {
-			'border-color': tabBorderHColor,
-		};
-	}
+	tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop' ] = borderCSSTablet;
 
 	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
