@@ -56,7 +56,7 @@ const recoverBlocks = ( allBlocks ) => (
 			const reusableBlockPost = select( 'core' ).getEntityRecords(
 				'postType',
 				'wp_block',
-				{ include: [ ref ] });
+				{ include: [ ref ] } );
 
 			if ( null === reusableBlockPost ) {
 				return curBlock
