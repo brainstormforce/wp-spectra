@@ -87,7 +87,7 @@ const UAGBSectionEdit = ( props ) => {
 			if ( 'linear' === gradientOverlayType ) {
 				gradientVal = `linear-gradient(${ gradientOverlayAngle }deg, ${ color1 } ${ gradientOverlayLocation1 }%, ${ color2 } ${ gradientOverlayLocation2 }%)`;
 			} else {
-				gradientVal = `radial-gradient( at ${ gradientOverlayPosition }, ${ color2 } ${ gradientOverlayLocation1 }%, ${ color2 } ${ gradientOverlayLocation2 }%)`;
+				gradientVal = `radial-gradient( at ${ gradientOverlayPosition }, ${ color1 } ${ gradientOverlayLocation1 }%, ${ color2 } ${ gradientOverlayLocation2 }%)`;
 			}
 			setAttributes( { gradientValue: gradientVal } );
 		}
