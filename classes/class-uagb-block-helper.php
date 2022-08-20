@@ -1483,67 +1483,65 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array $default_args  default attributes args.
 		 * @return array
 		 */
-		public static function uag_generate_border_attribute( $prefix, $default_args = array() ) {
-			$defaults = wp_parse_args(
-				$default_args,
-				array(
-					// Width.
-					'borderTopWidth'                => '',
-					'borderRightWidth'              => '',
-					'borderBottomWidth'             => '',
-					'borderLeftWidth'               => '',
-					'borderTopWidthTablet'          => '',
-					'borderRightWidthTablet'        => '',
-					'borderBottomWidthTablet'       => '',
-					'borderLeftWidthTablet'         => '',
-					'borderTopWidthMobile'          => '',
-					'borderRightWidthMobile'        => '',
-					'borderBottomWidthMobile'       => '',
-					'borderLeftWidthMobile'         => '',
-					// Radius.
-					'borderTopLeftRadius'           => '',
-					'borderTopRightRadius'          => '',
-					'borderBottomRightRadius'       => '',
-					'borderBottomLeftRadius'        => '',
-					'borderTopLeftRadiusTablet'     => '',
-					'borderTopRightRadiusTablet'    => '',
-					'borderBottomRightRadiusTablet' => '',
-					'borderBottomLeftRadiusTablet'  => '',
-					'borderTopLeftRadiusMobile'     => '',
-					'borderTopRightRadiusMobile'    => '',
-					'borderBottomRightRadiusMobile' => '',
-					'borderBottomLeftRadiusMobile'  => '',
-					// unit.
-					'borderRadiusUnit'              => 'px',
-					'borderRadiusUnitTablet'        => 'px',
-					'borderRadiusUnitMobile'        => 'px',
-					// common.
-					'borderStyle'                   => 'none',
-					'borderColor'                   => '',
-					'borderHColor'                  => '',
-				)
+		public static function uag_generate_border_attribute( $prefix) {
+			$defaults = array(
+						// Width.
+						'borderTopWidth'                => '',
+						'borderRightWidth'              => '',
+						'borderBottomWidth'             => '',
+						'borderLeftWidth'               => '',
+						'borderTopWidthTablet'          => '',
+						'borderRightWidthTablet'        => '',
+						'borderBottomWidthTablet'       => '',
+						'borderLeftWidthTablet'         => '',
+						'borderTopWidthMobile'          => '',
+						'borderRightWidthMobile'        => '',
+						'borderBottomWidthMobile'       => '',
+						'borderLeftWidthMobile'         => '',
+						// Radius.
+						'borderTopLeftRadius'           => '',
+						'borderTopRightRadius'          => '',
+						'borderBottomRightRadius'       => '',
+						'borderBottomLeftRadius'        => '',
+						'borderTopLeftRadiusTablet'     => '',
+						'borderTopRightRadiusTablet'    => '',
+						'borderBottomRightRadiusTablet' => '',
+						'borderBottomLeftRadiusTablet'  => '',
+						'borderTopLeftRadiusMobile'     => '',
+						'borderTopRightRadiusMobile'    => '',
+						'borderBottomRightRadiusMobile' => '',
+						'borderBottomLeftRadiusMobile'  => '',
+						// unit.
+						'borderRadiusUnit'              => 'px',
+						'borderRadiusUnitTablet'        => 'px',
+						'borderRadiusUnitMobile'        => 'px',
+						// common.
+						'borderStyle'                   => 'none',
+						'borderColor'                   => '',
+						'borderHColor'                  => '',
+					
 			);
-
+		
 			$border_attr = array();
-
+		
 			$device = array( '', 'Tablet', 'Mobile' );
-
+		
 			foreach ( $device as $slug => $data ) {
-
-				$border_attr[ "{$prefix}BorderTopWidth{$data}" ]          = $defaults[ "borderTopWidth{$data}" ];
-				$border_attr[ "{$prefix}BorderLeftWidth{$data}" ]         = $defaults[ "borderLeftWidth{$data}" ];
-				$border_attr[ "{$prefix}BorderRightWidth{$data}" ]        = $defaults[ "borderRightWidth{$data}" ];
-				$border_attr[ "{$prefix}BorderBottomWidth{$data}" ]       = $defaults[ "borderBottomWidth{$data}" ];
-				$border_attr[ "{$prefix}BorderTopLeftRadius{$data}" ]     = $defaults[ "borderTopLeftRadius{$data}" ];
-				$border_attr[ "{$prefix}BorderTopRightRadius{$data}" ]    = $defaults[ "borderTopRightRadius{$data}" ];
-				$border_attr[ "{$prefix}BorderBottomLeftRadius{$data}" ]  = $defaults[ "borderBottomLeftRadius{$data}" ];
-				$border_attr[ "{$prefix}BorderBottomRightRadius{$data}" ] = $defaults[ "borderBottomLeftRadius{$data}" ];
-				$border_attr[ "{$prefix}BorderRadiusUnit{$data}" ]        = $defaults[ "borderRadiusUnit{$data}" ];
+		
+				$border_attr[ "{$prefix}BorderTopWidth{$data}" ]          = '';
+				$border_attr[ "{$prefix}BorderLeftWidth{$data}" ]         = '';
+				$border_attr[ "{$prefix}BorderRightWidth{$data}" ]        = '';
+				$border_attr[ "{$prefix}BorderBottomWidth{$data}" ]       = '';
+				$border_attr[ "{$prefix}BorderTopLeftRadius{$data}" ]     = '';
+				$border_attr[ "{$prefix}BorderTopRightRadius{$data}" ]    = '';
+				$border_attr[ "{$prefix}BorderBottomLeftRadius{$data}" ]  = '';
+				$border_attr[ "{$prefix}BorderBottomRightRadius{$data}" ] = '';
+				$border_attr[ "{$prefix}BorderRadiusUnit{$data}" ]        = '';
 			}
-
-			$border_attr[ "{$prefix}BorderStyle" ]  = $defaults['borderStyle'];
-			$border_attr[ "{$prefix}BorderColor" ]  = $defaults['borderColor'];
-			$border_attr[ "{$prefix}BorderHColor" ] = $defaults['borderHColor'];
+		
+			$border_attr[ "{$prefix}BorderStyle" ]  = '';
+			$border_attr[ "{$prefix}BorderColor" ]  = '';
+			$border_attr[ "{$prefix}BorderHColor" ] = '';
 			return $border_attr;
 		}
 
@@ -1635,7 +1633,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( $border_style ) {
 				$gen_border_css['border-style'] = $border_style;
 			}
-			return wp_parse_args( $gen_border_css, $current_css );
+			return wp_parse_args( $current_css, $gen_border_css );
 		}
 
 		/**
