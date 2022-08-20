@@ -12,7 +12,7 @@ import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
 
-if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) {
+if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
 	registerBlockType( 'uagb/section', {
 		title: __( 'Advanced Row', 'ultimate-addons-for-gutenberg' ),
 		description: __( 'Outer wrap section that allows you to add other blocks within it.', 'ultimate-addons-for-gutenberg' ),

@@ -274,7 +274,9 @@ class Admin_Menu {
 					$exclude_blocks[] = $addon;
 				}
 
-				if ( 'yes' !== get_option( 'uagb-old-user-less-than-2' ) ) {
+				$enable_legacy_blocks = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' );
+
+				if ( 'yes' !== get_option( 'uagb-old-user-less-than-2' ) || 'yes' !== $enable_legacy_blocks ) {
 					$exclude_blocks[] = 'wp-search';
 					$exclude_blocks[] = 'columns';
 					$exclude_blocks[] = 'section';

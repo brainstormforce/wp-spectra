@@ -170,7 +170,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### 2.0.4 - SATURDAY, 20th AUGUST 2022 ###
+### 2.0.4 - SUNDAY, 21st AUGUST 2022 ###
+* Feature: Added Enable Legacy Blocks option in Admin Dashboard.
 * Fix: Buttons - Text inside button not wrapping on small devices.
 * Fix: Automatic Block Recovery not working and block displays blank in editor when reusable block is present on the page.
 * Fix: FAQ - Enabling schema support does not give valid schema JSON on frontend.

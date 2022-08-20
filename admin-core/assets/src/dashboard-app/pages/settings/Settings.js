@@ -8,6 +8,7 @@ import RegenerateAssets from '@DashboardApp/pages/settings/RegenerateAssets';
 import TemplatesButton from '@DashboardApp/pages/settings/TemplatesButton';
 import RollBack from '@DashboardApp/pages/settings/RollBack';
 import BetaUpdates from '@DashboardApp/pages/settings/BetaUpdates';
+import LegacyBlocks from '@DashboardApp/pages/settings/LegacyBlocks';
 import SelectedFontFamilies from '@DashboardApp/pages/settings/SelectedFontFamilies';
 import LoadFontsLocally from '@DashboardApp/pages/settings/LoadFontsLocally';
 import PreloadLocalFonts from '@DashboardApp/pages/settings/PreloadLocalFonts';
@@ -116,6 +117,9 @@ const Settings = () => {
                             <>
                                 <RollBack/>
                                 <BetaUpdates/>
+								{  'yes' !== uag_react.global_data.uagb_old_user_less_than_2 &&
+                                    <LegacyBlocks/>
+                                }
                             </>
                         }
                         { 'fonts-performance' === activeSettingsNavigationTab &&
