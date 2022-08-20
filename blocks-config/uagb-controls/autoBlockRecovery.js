@@ -53,20 +53,24 @@ const recoverBlocks = ( allBlocks ) => (
 
 		if ( 'core/block' === block.name ) {
 			const { attributes: { ref } } = block;
-			const reusableBlockPost = select( 'core' ).getEntityRecords(
+			const reusableBlockPosts = select( 'core' ).getEntityRecords(
 				'postType',
-				'wp_block',
-				{ include: [ ref ] } );
+				'wp_block'
+			);
+
+			let reusableBlockPost = null;
+
+			reusableBlockPosts.forEach( ( post ) => {
+				if ( ref === post?.id )  {
+					reusableBlockPost = post?.content?.raw;
+				}
+			} );
 
 			if ( null === reusableBlockPost ) {
 				return curBlock
 			}
 
-			const parsedBlocks = parse( select( 'core' ).getEntityRecords(
-				'postType',
-				'wp_block',
-				{ include: [ ref ] }
-			)?.[0]?.content?.raw ) || [];
+			const parsedBlocks = parse( reusableBlockPost ) || [];
 
 			const [ recoveredBlocks, isRecovered ] = initBlockRecovery( parsedBlocks );
 
