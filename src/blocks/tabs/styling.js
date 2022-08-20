@@ -126,20 +126,22 @@ function styling( props ) {
 	selectors = {
 		'.uagb-tabs__hstyle1-desktop > .uagb-tabs__panel .uagb-tab': borderCSS,
 		'.uagb-tabs__wrap.uagb-tabs__hstyle1-desktop > .uagb-tabs__body-wrap': borderCSS,
-		'.uagb-tabs__wrap.uagb-tabs__hstyle2-desktop > .uagb-tabs__panel .uagb-tab.uagb-tabs__active': {
-			'border-top-width': '0px',
-			'border-right-width': '0px',
-			'border-left-width': '0px',
-			'border-top-style': 'none',
-			'border-left-style': 'none',
-			'border-right-style': 'none'
-		},
-		'.uagb-tabs__hstyle2-desktop > .uagb-tabs__panel .uagb-tab.uagb-tabs__active': borderCSS,
-		'.uagb-tabs__wrap.uagb-tabs__hstyle2-desktop > .uagb-tabs__body-wrap': {
+		'.uagb-tabs__hstyle2-desktop > .uagb-tabs__panel .uagb-tab': {
 			'border-width': '0px',
 			'border-style': 'none',
 		},
-		'.uagb-tabs__wrap.uagb-tabs__hstyle2-desktop > .uagb-tabs__panel .uagb-tab': {
+		'.uagb-tabs__wrap.uagb-tabs__hstyle2-desktop ul.uagb-tabs__panel': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSS
+		},
+		'.uagb-tabs__wrap.uagb-tabs__hstyle2-desktop > .uagb-tabs__body-wrap': {
 			'border-width': '0px',
 			'border-style': 'none',
 		},
