@@ -60,11 +60,13 @@ const recoverBlocks = ( allBlocks ) => (
 
 			let reusableBlockPost = null;
 
-			reusableBlockPosts.forEach( ( post ) => {
-				if ( ref === post?.id )  {
-					reusableBlockPost = post?.content?.raw;
-				}
-			} );
+			if ( reusableBlockPosts ) {
+				reusableBlockPosts?.forEach( ( post ) => {
+					if ( ref === post?.id )  {
+						reusableBlockPost = post?.content?.raw;
+					}
+				} );
+			}
 
 			if ( null === reusableBlockPost ) {
 				return curBlock
