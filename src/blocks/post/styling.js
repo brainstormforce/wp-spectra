@@ -833,6 +833,17 @@ function styling( props ) {
 		' .is-masonry': {
 			'height': 'initial !important',
 		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)': {
+			'margin-left': generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
+			'margin-right': generateCSSUnit( paddingRightMobile, mobilePaddingUnit ),
+		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text.highlighted:first-child': {
+			'margin-top': generateCSSUnit( paddingTopMobile, mobilePaddingUnit ),
+			'margin-left': generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
+		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:last-child': {
+			'margin-bottom': generateCSSUnit( paddingBottomMobile, mobilePaddingUnit ),
+		},
 	};
 
 	const boxShadowBlurHoverValue = isNaN( boxShadowBlurHover ) ? '' : boxShadowBlurHover;
@@ -984,6 +995,17 @@ function styling( props ) {
 		'.wp-block-uagb-post-grid .uagb-post__inner-wrap': overallBorderCSSTablet,
 		' .is-masonry': {
 			'height': 'initial !important',
+		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)': {
+			'margin-left': generateCSSUnit( paddingLeftTablet, tabletPaddingUnit ),
+			'margin-right': generateCSSUnit( paddingRightTablet, tabletPaddingUnit ),
+		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text.highlighted:first-child': {
+			'margin-top': generateCSSUnit( paddingTopTablet, tabletPaddingUnit ),
+			'margin-left': generateCSSUnit( paddingLeftTablet, tabletPaddingUnit ),
+		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:last-child': {
+			'margin-bottom': generateCSSUnit( paddingBottomTablet, tabletPaddingUnit ),
 		},
 	};
 
