@@ -157,6 +157,7 @@ if ( 'video' === $bg_type ) {
 } elseif ( 'color' === $bg_type ) {
 	$selectors[' > .uagb-section__overlay'] = array(
 		'background-color' => $attr['backgroundColor'],
+		'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '',
 	);
 } elseif ( 'gradient' === $bg_type ) {
 	$selectors[' > .uagb-section__overlay']['background-color'] = 'transparent';

@@ -129,6 +129,7 @@ function styling( props ) {
 	} else if ( 'color' === backgroundType ) {
 		backgroundTypeCSS = {
 			'background-color': backgroundColor,
+			'opacity' : backgroundOpacity ? backgroundOpacity / 100 : 0,
 		};
 	} else if ( 'gradient' === backgroundType ) {
 
