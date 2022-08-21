@@ -9,10 +9,10 @@
 
 global $content_width;
 
-$bg_type       = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
-$overlay_type  = ( isset( $attr['overlayType'] ) ) ? $attr['overlayType'] : 'color';
-$border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'columns' );
-$border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+$bg_type      = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
+$overlay_type = ( isset( $attr['overlayType'] ) ) ? $attr['overlayType'] : 'color';
+$border       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'columns' );
+$border       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$border,
 	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
 	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),

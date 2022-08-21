@@ -7,8 +7,8 @@
  * @package uagb
  */
 
-$cta_border = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
-$cta_border = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+$cta_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
+$cta_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$cta_border,
 	( isset( $attr['ctaBorderWidth'] ) ? $attr['ctaBorderWidth'] : '' ),
 	( isset( $attr['ctaBorderRadius'] ) ? $attr['ctaBorderRadius'] : '' ),
