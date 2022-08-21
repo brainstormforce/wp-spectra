@@ -7,8 +7,8 @@
  * @package uagb
  */
 
-$cta_border = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
-$cta_border = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+$cta_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
+$cta_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$cta_border,
 	( isset( $attr['ctaBorderWidth'] ) ? $attr['ctaBorderWidth'] : '' ),
 	( isset( $attr['ctaBorderRadius'] ) ? $attr['ctaBorderRadius'] : '' ),
@@ -16,7 +16,6 @@ $cta_border = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	( isset( $attr['ctaBorderStyle'] ) ? $attr['ctaBorderStyle'] : '' ),
 	( isset( $attr['ctaBorderHColor'] ) ? $attr['ctaBorderHColor'] : '' )
 );
-
 $cta_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
 $cta_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
 
