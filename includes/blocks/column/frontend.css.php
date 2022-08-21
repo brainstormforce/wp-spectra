@@ -13,6 +13,14 @@ $bg_type      = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] :
 $overlay_type = ( isset( $attr['overlayType'] ) ) ? $attr['overlayType'] : 'none';
 
 $border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'column' );
+$border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$border,
+	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
+	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
+	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
+	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' ),
+	( isset( $attr['borderHColor'] ) ? $attr['borderHColor'] : '' )
+);
 $border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'column', 'tablet' );
 $border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'column', 'mobile' );
 
