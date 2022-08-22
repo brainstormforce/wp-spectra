@@ -7,7 +7,17 @@
  * @package uagb
  */
 
-$button_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
+$button_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
+	'btn',
+	array(
+		'borderColor'       => '#333',
+		'borderStyle'       => 'solid',
+		'borderTopWidth'    => 1,
+		'borderRightWidth'  => 1,
+		'borderBottomWidth' => 1,
+		'borderLeftWidth'   => 1,
+	)
+);
 
 return array_merge(
 	array(
