@@ -96,11 +96,11 @@ return array_merge(
 		'prefixLetterSpacingTablet' => '',
 		'prefixLetterSpacingMobile' => '',
 		'prefixLetterSpacingType'   => 'px',
-		'borderStyle'            => 'solid',
-		'borderWidth'            => 1,
-		'borderRadius'           => 2,
-		'borderColor'            => '',
-		'borderHoverColor'       => '',
+		'borderStyle'               => 'solid',
+		'borderWidth'               => 1,
+		'borderRadius'              => 2,
+		'borderColor'               => '',
+		'borderHoverColor'          => '',
 	),
 	$button_attribute
 );
