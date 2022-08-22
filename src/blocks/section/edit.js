@@ -111,7 +111,6 @@ const UAGBSectionEdit = ( props ) => {
 			if ( 101 !== backgroundVideoOpacity ) {
 				const color = hexToRGBA( maybeGetColorForVariable( backgroundVideoColor ), backgroundVideoOpacity );
 				setAttributes( { backgroundVideoColor: color } );
-				setAttributes( { backgroundVideoOpacity: 101 } );
 			}
 		}
 

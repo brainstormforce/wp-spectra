@@ -107,7 +107,6 @@ function styling( props ) {
 	if ( 'video' === backgroundType ) {
 		if ( 'color' === overlayType ) {
 			backgroundTypeCSS = {
-				'opacity' : 1,
 				'background-color': backgroundVideoColor,
 			};
 		} else {

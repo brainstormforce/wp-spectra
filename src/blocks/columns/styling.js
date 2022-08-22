@@ -78,6 +78,7 @@ function styling( props ) {
 	let mobile_selectors = {}
 
 	let videoOpacity = 0.5;
+
 	if ( typeof backgroundVideoOpacity !== 'undefined' ) {
 		videoOpacity = ( 1 < backgroundVideoOpacity ) ? ( ( 100 - backgroundVideoOpacity ) / 100 ) : ( ( 1 - backgroundVideoOpacity ) );
 	}
@@ -126,7 +127,6 @@ function styling( props ) {
 	if ( 'video' === backgroundType ) {
 		if ( 'color' === overlayType ) {
 			selectors[' > .uagb-columns__overlay'] = {
-				'opacity' : ( typeof backgroundVideoOpacity !== 'undefined' && 0 !== backgroundVideoOpacity ) ? backgroundVideoOpacity/100 : '',
 				'background-color': backgroundVideoColor
 			}
 		} else {
