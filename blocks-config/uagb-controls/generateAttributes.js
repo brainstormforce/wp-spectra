@@ -32,7 +32,7 @@ export const getBorderAttributes = ( prefix, defaultArgs = {} ) => {
 		borderRadiusUnitTablet: 'px',
 		borderRadiusUnitMobile: 'px',
 		// common
-		borderStyle: 'none',
+		borderStyle: '',
 		borderColor:  '',
 		borderHColor: '',
 		...defaultArgs
