@@ -136,7 +136,7 @@ return array_merge(
 		'borderStyle'                  => 'solid',
 		'borderWidth'                  => 1,
 		'borderRadius'                 => 2,
-		'borderColor'                  => '',
+		'borderColor'                  => '#1e1e1e',
 		'borderHoverColor'             => '',
 	),
 	$border_attribute

@@ -133,7 +133,7 @@ return array_merge(
 		'separatorSpaceTablet'       => '',
 		'separatorSpaceMobile'       => '',
 		'separatorHColor'            => '',
-		'borderStyle'=> "solid",
+		'borderStyle'=> 'solid',
 		'borderWidth'=> 1,
 		'borderRadius'=> '',
 		'borderColor'=> "#333",
