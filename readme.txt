@@ -170,6 +170,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 2.0.5 =
+* Fix: Advanced Row (Section) & Advanced Columns - Background color not reflecting after update.
+
 = 2.0.4 - SUNDAY, 21st AUGUST 2022 =
 * Feature: Added Enable Legacy Blocks option in Admin Dashboard.
 * Fix: Buttons - Text inside button not wrapping on small devices.
