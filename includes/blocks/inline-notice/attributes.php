@@ -17,7 +17,7 @@ return array(
 	'noticeColor'              => '#FFD54F',
 	'contentBgColor'           => '',
 	'fontSize'                 => '14',
-	'icon'                     => 'fa fa-window-close',
+	'icon'                     => 'rectangle-xmark',
 	'iconSize'                 => 16,
 	'iconSizeTab'              => '',
 	'iconSizeMob'              => '',
@@ -78,4 +78,10 @@ return array(
 	'descLetterSpacingTablet'  => '',
 	'descLetterSpacingMobile'  => '',
 	'descLetterSpacingType'    => 'px',
+	'titleLeftPadding'         => '',
+	'titleRightPadding'        => '',
+	'titleTopPadding'          => '',
+	'titleBottomPadding'       => '',
+
+
 );

@@ -33,7 +33,7 @@ import {
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
-import boxShadowPresets from './presets';
+import boxShadowPresets, { buttonsPresets } from './presets';
 import UAGPresets from '@Components/presets';
 
 const Settings = ( props ) => {
@@ -126,43 +126,75 @@ const Settings = ( props ) => {
 		letterSpacingMobile,
 		letterSpacingType,
 
+		showIcon,
+
 	} = attributes;
+
+	const presetSettings = () => {
+		return <UAGAdvancedPanelBody
+					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
+				>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { buttonsPresets }
+						presetInputType = 'radioImage'
+					/>
+				</UAGAdvancedPanelBody>
+	};
 
 	const buttonSettings = () => {
 		return (
-			<UAGAdvancedPanelBody>
-				<UAGIconPicker
-					label={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
-					value={ icon }
-					onChange={ ( value ) => setAttributes( { icon: value } ) }
+			<UAGAdvancedPanelBody
+				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<ToggleControl
+					label={ __(
+						'Enable Icon',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ showIcon }
+					onChange={ () =>
+						setAttributes( { showIcon : ! showIcon } )
+					}
 				/>
-				{ '' !== icon && !removeText && (
+				{ showIcon &&
 					<>
-						<MultiButtonsControl
-							setAttributes={ setAttributes }
-							label={ __(
-								'Icon Position',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								value: iconPosition,
-								label: 'iconPosition',
-							} }
-							className="uagb-multi-button-alignment-control"
-							options={ [
-								{
-									value: 'before',
-									label: 'Before Text',
-								},
-								{
-									value: 'after',
-									label: 'After Text',
-								},
-							] }
-							showIcons={ false }
-						/>
+					<UAGIconPicker
+						label={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
+						value={ icon }
+						onChange={ ( value ) => setAttributes( { icon: value } ) }
+					/>
+					{ '' !== icon && !removeText && (
+						<>
+							<MultiButtonsControl
+								setAttributes={ setAttributes }
+								label={ __(
+									'Icon Position',
+									'ultimate-addons-for-gutenberg'
+								) }
+								data={ {
+									value: iconPosition,
+									label: 'iconPosition',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ [
+									{
+										value: 'before',
+										label: 'Before Text',
+									},
+									{
+										value: 'after',
+										label: 'After Text',
+									},
+								] }
+								showIcons={ false }
+							/>
+						</>
+					) }
 					</>
-				) }
+				}
 				<TextControl
 					label={ __(
 						'Link',
@@ -864,13 +896,14 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
+						{ presetSettings() }
 						{ buttonSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ !removeText && textSettings() }
 						{ '' !== icon && IconSettings() }
-						{ borderSettings() }
 						{ backgroundSettings() }
+						{ borderSettings() }
 						{ boxShadowSettings() }
 						{ spacingSettings() }
 					</InspectorTab>

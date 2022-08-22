@@ -8,6 +8,7 @@ import lazyLoader from '@Controls/lazy-loader';
 import React, { useEffect, Suspense, lazy } from 'react';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 const Settings = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/inline-notice/settings" */ './settings'
@@ -85,6 +86,8 @@ const UAGBInlineNoticeEdit = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-inline-notice-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	return (

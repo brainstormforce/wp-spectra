@@ -17,6 +17,7 @@ import React from 'react';
 import ResponsiveSlider from '@Components/responsive-slider';
 import SpacingControl from '@Components/spacing-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -100,8 +101,10 @@ const Settings = ( props ) => {
 			blockMarginUnitTablet,
 			blockMarginUnitMobile,
 			blockMarginLink,
+			starPosition,
+			starPositionTablet,
+			starPositionMobile
 		},
-		deviceType,
 	} = props;
 
 	let loadTitleGoogleFonts;
@@ -155,7 +158,10 @@ const Settings = ( props ) => {
 			),
 		},
 	];
-	if ( 'stack' === layout ) {
+
+	const deviceType = useDeviceType();
+
+	if ( 'stack' === layout || ( 'stack' === layoutTablet && 'Tablet' === deviceType ) || ( 'stack' === layoutMobile && 'Mobile' === deviceType ) ) {
 		alignmentOptions = [
 			{
 				value: 'left',
@@ -262,7 +268,35 @@ const Settings = ( props ) => {
 				/>
 
 			) }
-
+			<MultiButtonsControl
+				setAttributes={ setAttributes }
+				label={ __( 'Star Position', 'ultimate-addons-for-gutenberg' ) }
+				data={ {
+					desktop: {
+						value: starPosition,
+						label: 'starPosition',
+					},
+					tablet: {
+						value: starPositionTablet,
+						label: 'starPositionTablet',
+					},
+					mobile: {
+						value: starPositionMobile,
+						label: 'starPositionMobile',
+					},
+				} }
+				options={ [
+					{
+						value: 'before',
+						label: __( 'Before', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'after',
+						label: __( 'After', 'ultimate-addons-for-gutenberg' ),
+					},
+				] }
+				responsive={true}
+			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }

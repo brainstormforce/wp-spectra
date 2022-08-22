@@ -75,11 +75,11 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.0.0-beta.3' );
+			define( 'UAGB_VER', '2.0.4' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'spectra' );
-			define( 'UAGB_URI', trailingslashit( 'https://ultimategutenberg.com/' ) );
+			define( 'UAGB_URI', trailingslashit( 'https://wpspectra.com/' ) );
 
 			if ( ! defined( 'UAGB_TABLET_BREAKPOINT' ) ) {
 				define( 'UAGB_TABLET_BREAKPOINT', '976' );
@@ -278,6 +278,10 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 					unset( $attributes['UAGLoggedOut'] );
 				}
 
+				if ( isset( $attributes['zIndex'] ) ) {
+					unset( $attributes['zIndex'] );
+				}
+
 					$request['attributes'] = $attributes;
 
 			}
@@ -363,13 +367,19 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		/**
 		 * Init actions
 		 *
-		 * @since 2.0.0-beta.3
+		 * @since 2.0.0
 		 *
 		 * @return void
 		 */
 		public function init_actions() {
 
 			$theme_folder = get_template();
+
+			if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
+				if ( 'twentytwentytwo' === $theme_folder ) {
+					require_once UAGB_DIR . 'compatibility/class-uagb-twenty-twenty-two-compatibility.php';
+				}
+			}
 
 			if ( 'astra' === $theme_folder ) {
 				require_once UAGB_DIR . 'compatibility/class-uagb-astra-compatibility.php';
@@ -387,7 +397,7 @@ UAGB_Loader::get_instance();
 /**
  * Load main object
  *
- * @since 2.0.0-beta.3
+ * @since 2.0.0
  *
  * @return object
  */

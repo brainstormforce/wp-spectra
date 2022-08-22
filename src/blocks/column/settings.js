@@ -16,8 +16,6 @@ import ResponsiveSlider from '@Components/responsive-slider';
 
 import { InspectorControls } from '@wordpress/block-editor';
 
-import { Notice } from '@wordpress/components';
-
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -278,7 +276,7 @@ const Settings = ( props ) => {
 						label: 'overlayType',
 					} }
 					gradientOverlay={{
-						value: false,
+						value: true,
 					}}
 					backgroundSize={ {
 						value: backgroundSize,
@@ -340,17 +338,6 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
-						<Notice status="warning" isDismissible={false}>
-							{
-								__( 'This block has been deprecated. We recommend using the new', 'ultimate-addons-for-gutenberg' )
-							}
-							{' '}
-							<strong>{__( 'Container', 'ultimate-addons-for-gutenberg' )}</strong>
-							{' '}
-							{
-								__( 'block instead for more flexibility, and better code markup.', 'ultimate-addons-for-gutenberg' )
-							}
-						</Notice>
 						{ layoutSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>

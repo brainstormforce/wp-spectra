@@ -17,6 +17,7 @@ $border_defaults  = array(
 	'borderTopRightRadius'    => 2,
 	'borderBottomLeftRadius'  => 2,
 	'borderBottomRightRadius' => 2,
+	'borderColor'             => '#1e1e1e',
 );
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'overall', $border_defaults );
 
@@ -92,8 +93,8 @@ return array_merge(
 		'answerLineHeightType'         => 'em',
 		'answerLineHeightTablet'       => '',
 		'answerLineHeightMobile'       => '',
-		'icon'                         => 'fas fa-plus',
-		'iconActive'                   => 'fas fa-minus',
+		'icon'                         => 'plus',
+		'iconActive'                   => 'minus',
 		'iconAlign'                    => 'row',
 		'iconSize'                     => 12,
 		'iconSizeMobile'               => '',
@@ -145,5 +146,5 @@ return array_merge(
 		'questionTextBgColor'          => '',
 		'questionTextActiveBgColor'    => '',
 	),
-	$border_attribute,
+	$border_attribute
 );

@@ -6,6 +6,7 @@ import styling from './styling';
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/column/settings" */ './settings' )
@@ -25,7 +26,31 @@ const ColumnComponent = ( props ) => {
 
 		const { setAttributes, attributes } = props;
 
-		const { backgroundOpacity, backgroundImageColor, backgroundType } = attributes;
+		const {
+			backgroundOpacity,
+			backgroundImageColor,
+			gradientOverlayColor1,
+			gradientOverlayColor2,
+			backgroundType,
+			overlayType,
+			gradientOverlayAngle,
+			gradientOverlayLocation1,
+			gradientOverlayPosition,
+			gradientOverlayLocation2,
+			gradientOverlayType
+		   } = attributes;
+
+		   if( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ){
+			const color1 = hexToRGBA( maybeGetColorForVariable( gradientOverlayColor1 ), backgroundOpacity );
+			const color2 = hexToRGBA( maybeGetColorForVariable( gradientOverlayColor2 ), backgroundOpacity );
+			let gradientVal;
+			if ( 'linear' === gradientOverlayType ) {
+				gradientVal = `linear-gradient(${ gradientOverlayAngle }deg, ${ color1 } ${ gradientOverlayLocation1 }%, ${ color2 } ${ gradientOverlayLocation2 }%)`;
+			} else {
+				gradientVal = `radial-gradient( at ${ gradientOverlayPosition }, ${ color1 } ${ gradientOverlayLocation1 }%, ${ color2 } ${ gradientOverlayLocation2 }%)`;
+			}
+			setAttributes( { gradientValue: gradientVal } );
+		}
 
 		// Replacement for componentDidMount.
 
@@ -79,6 +104,8 @@ const ColumnComponent = ( props ) => {
 	    const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-column-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	return (

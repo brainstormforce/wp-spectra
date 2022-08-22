@@ -4,6 +4,7 @@
 import styling from './styling';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/form/settings" */ './settings' )
@@ -52,8 +53,16 @@ const UAGBFormsEdit = ( props ) => {
 			reCaptchaSecretKeyV2,
 			reCaptchaSiteKeyV3,
 			reCaptchaSecretKeyV3,
-			reCaptchaEnable
+			reCaptchaEnable,
+			toggleColor,
+			inputColor
 		} = props.attributes;
+
+		if( inputColor ) {
+			if ( undefined === toggleColor ) {
+				setAttributes( { toggleColor: inputColor } );
+			}
+		}
 
 		if ( vPaddingSubmit ) {
 			if ( undefined === paddingBtnTop ) {
@@ -128,11 +137,6 @@ const UAGBFormsEdit = ( props ) => {
 			inputborderColor,
 			inputborderHColor,
 			inputborderRadius,
-			toggleBorderWidth,
-			toggleBorderRadius,
-			toggleBorderColor,
-			toggleBorderHColor,
-			toggleBorderStyle,
 			submitborderWidth,
 			submitborderRadius,
 			submitborderColor,
@@ -160,26 +164,24 @@ const UAGBFormsEdit = ( props ) => {
 			}
 			);
 			props.setAttributes( migrationAttributes );
-		}
-		if( toggleBorderWidth || toggleBorderRadius || toggleBorderColor || toggleBorderHColor || toggleBorderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'checkBoxToggle', {
-				label: 'toggleBorderWidth',
-				value: toggleBorderWidth,
+			const toggleMigrationAttributes = migrateBorderAttributes( 'checkBoxToggle', {
+				label: 'inputborderWidth',
+				value: inputborderWidth,
 			}, {
-				label: 'toggleBorderRadius',
-				value: toggleBorderRadius
+				label: 'inputborderRadius',
+				value: inputborderRadius
 			}, {
-				label: 'toggleBorderColor',
-				value: toggleBorderColor
+				label: 'inputborderColor',
+				value: inputborderColor
 			}, {
-				label: 'toggleBorderHColor',
-				value: toggleBorderHColor
+				label: 'inputborderHColor',
+				value: inputborderHColor
 			},{
-				label: 'toggleBorderStyle',
-				value: toggleBorderStyle
+				label: 'inputborderStyle',
+				value: inputborderStyle
 			}
 			);
-			props.setAttributes( migrationAttributes );
+			props.setAttributes( toggleMigrationAttributes );
 		}
 		if( submitborderWidth || submitborderRadius || submitborderColor || submitborderHColor || submitborderStyle ){
 			const migrationAttributes = migrateBorderAttributes( 'btn', {
@@ -204,7 +206,7 @@ const UAGBFormsEdit = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		
+
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-style-forms-' + props.clientId.substr( 0, 8 ), blockStyling );
@@ -215,6 +217,12 @@ const UAGBFormsEdit = ( props ) => {
 	    const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-style-forms-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
+
+		const id = props.clientId
+		window.addEventListener( 'load', renderReadyClasses( id ) )
+
 	}, [deviceType] );
 
 	const blockVariationPickerOnSelect = useCallback(

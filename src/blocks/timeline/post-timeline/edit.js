@@ -1,9 +1,11 @@
 /**
  * External dependencies
  */
+
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
@@ -29,11 +31,8 @@ const PostTimelineComponent = ( props ) => {
 		props.setAttributes( { block_id: props.clientId } );
 
 		const {
-			verticalSpace,
 			horizontalSpace,
-			topMargin,
 			rightMargin,
-			bottomMargin,
 			leftMargin,
 			bgPadding,
 			topPadding,
@@ -42,7 +41,11 @@ const PostTimelineComponent = ( props ) => {
 			leftPadding,
 			contentPadding,
 			ctaBottomSpacing,
-			headTopSpacing
+			headTopSpacing,
+			timelinAlignment,
+			stack,
+			timelinAlignmentTablet,
+			timelinAlignmentMobile
 		} = props.attributes;
 
 		if ( bgPadding ) {
@@ -64,16 +67,9 @@ const PostTimelineComponent = ( props ) => {
 			if ( isNaN( ctaBottomSpacing ) ) {
 				props.setAttributes( { ctaBottomSpacing: contentPadding } );
 			}
+
 			if ( isNaN( headTopSpacing ) ) {
 				props.setAttributes( { headTopSpacing: contentPadding } );
-			}
-		}
-		if ( verticalSpace ) {
-			if ( ! topMargin ) {
-				props.setAttributes( { topMargin: verticalSpace } );
-			}
-			if ( ! bottomMargin ) {
-				props.setAttributes( { bottomMargin: verticalSpace } );
 			}
 		}
 		if ( horizontalSpace ) {
@@ -83,7 +79,30 @@ const PostTimelineComponent = ( props ) => {
 			if ( ! leftMargin ) {
 				props.setAttributes( { leftMargin: horizontalSpace } );
 			}
+
 		}
+
+		if( timelinAlignment ) {
+            if( 'none' === stack ) {
+                if( undefined === timelinAlignmentTablet ) {
+                    props.setAttributes( { timelinAlignmentTablet: timelinAlignment } );
+                }
+                if( undefined === timelinAlignmentMobile ) {
+                    props.setAttributes( { timelinAlignmentMobile: timelinAlignment } );
+                }
+            } else {
+                if( undefined === timelinAlignmentTablet && 'tablet' === stack ) {
+                    props.setAttributes( { timelinAlignmentTablet: 'left' } );
+                    props.setAttributes( { timelinAlignmentMobile: 'left' } );
+                }
+
+                if( undefined === timelinAlignmentMobile && 'mobile' === stack ) {
+                    props.setAttributes( { timelinAlignmentMobile: 'left' } );
+                    props.setAttributes( { timelinAlignmentTablet: timelinAlignment } );
+                }
+            }
+        }
+
 	}, [] );
 
 	useEffect( () => {
@@ -95,14 +114,11 @@ const PostTimelineComponent = ( props ) => {
 			detail: {},
 		} );
 		document.dispatchEvent( loadPostTimelineEditor );
-	}, [ props ] );
+	}, [ props, deviceType ] );
 
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-	    const blockStyling = contentTimelineStyle( props );
-
-        addBlockEditorDynamicStyles( 'uagb-timeline-style-' + props.clientId, blockStyling );
+		scrollBlockToView();
 	}, [deviceType] );
 
 	return (
@@ -112,7 +128,6 @@ const PostTimelineComponent = ( props ) => {
 		</Suspense>
 	);
 };
-
 export default withSelect( ( select, props ) => {
 	const {
 		categories,

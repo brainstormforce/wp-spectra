@@ -7,7 +7,22 @@
  * @package uagb
  */
 
-$cta_border_attribute        = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
+$cta_border_attribute        = UAGB_Block_Helper::uag_generate_border_attribute(
+	'btn',
+	array(
+		'borderColor'             => '#333',
+		'borderStyle'             => 'solid',
+		'borderTopWidth'          => 1,
+		'borderRightWidth'        => 1,
+		'borderBottomWidth'       => 1,
+		'borderLeftWidth'         => 1,
+		'borderTopLeftRadius'     => 3,
+		'borderTopRightRadius'    => 3,
+		'borderBottomLeftRadius'  => 3,
+		'borderBottomRightRadius' => 3,
+		'borderHColor'            => 'yellowgreen',
+	)
+);
 $second_cta_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'secondCta' );
 
 return array_merge(
@@ -202,5 +217,5 @@ return array_merge(
 		'secondCtaLetterSpacingType'      => 'px',
 	),
 	$second_cta_border_attribute,
-	$cta_border_attribute,
+	$cta_border_attribute
 );

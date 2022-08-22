@@ -53,7 +53,7 @@ return array_merge(
 		'widthTypeMobile'            => '%',
 		'makeCollapsible'            => false,
 		'initialCollapse'            => false,
-		'icon'                       => 'fa-angle-down',
+		'icon'                       => 'angle-down',
 		'iconColor'                  => '',
 		'bulletColor'                => '',
 		'iconSize'                   => '',
@@ -145,5 +145,5 @@ return array_merge(
 		'separatorSpaceMobile'       => '',
 		'separatorHColor'            => '',
 	),
-	$borderAttributes,
+	$borderAttributes
 );

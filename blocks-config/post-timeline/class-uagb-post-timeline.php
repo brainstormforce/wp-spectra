@@ -124,13 +124,55 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'number',
 							'default' => 10,
 						),
+						'horizontalSpaceTablet'      => array(
+							'type' => 'number',
+						),
+						'horizontalSpaceMobile'      => array(
+							'type' => 'number',
+						),
+						'horizontalSpaceUnit'        => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'horizontalSpaceUnitTablet'  => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'horizontalSpaceUnitMobile'  => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
 						'verticalSpace'              => array(
 							'type'    => 'number',
 							'default' => 15,
 						),
+						'verticalSpaceTablet'        => array(
+							'type' => 'number',
+						),
+						'verticalSpaceMobile'        => array(
+							'type' => 'number',
+						),
+						'verticalSpaceUnit'          => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'verticalSpaceUnitTablet'    => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'verticalSpaceUnitMobile'    => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
 						'timelinAlignment'           => array(
 							'type'    => 'string',
 							'default' => 'center',
+						),
+						'timelinAlignmentTablet'     => array(
+							'type' => 'string',
+						),
+						'timelinAlignmentMobile'     => array(
+							'type' => 'string',
 						),
 						'arrowlinAlignment'          => array(
 							'type'    => 'string',
@@ -486,7 +528,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						),
 						'icon'                       => array(
 							'type'    => 'string',
-							'default' => 'fab fa fa-calendar-alt',
+							'default' => 'calendar-days',
 						),
 						'borderRadius'               => array(
 							'type'    => 'number',
@@ -531,12 +573,10 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'default' => 15,
 						),
 						'ctaColor'                   => array(
-							'type'    => 'string',
-							'default' => '#fff',
+							'type' => 'string',
 						),
 						'ctaBackground'              => array(
-							'type'    => 'string',
-							'default' => '#333',
+							'type' => 'string',
 						),
 						'stack'                      => array(
 							'type'    => 'string',
@@ -871,6 +911,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			<article class = "uagb-timeline__field <?php echo esc_html( $content_align_class ); ?>">
 					<?php $this->get_icon( $attributes ); ?>
 					<div class = "<?php echo esc_html( $day_align_class ); ?> uagb-timeline__events-inner-new" >
+						<div class="uagb-timeline__events-inner--content">
 								<?php $this->get_date( $attributes, 'uagb-timeline__date-hide uagb-timeline__inner-date-new' ); ?>
 							<?php ( $attributes['displayPostImage'] ) ? $this->get_image( $attributes ) : ''; ?>
 								<?php
@@ -880,6 +921,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 									$this->get_cta( $attributes );
 								?>
 								<div class = "uagb-timeline__arrow"></div>
+						</div>
 					</div>
 					<?php if ( $display_inner_date ) { ?>
 						<?php $this->get_date( $attributes, 'uagb-timeline__date-new' ); ?>
@@ -975,8 +1017,8 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			$target = ( isset( $attributes['linkTarget'] ) && ( true === $attributes['linkTarget'] ) ) ? '_blank' : '_self';
 			do_action( "uagb_single_post_before_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
 			?>
-			<div class="uagb-timeline__link_parent">
-				<a class="uagb-timeline__link" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel=" noopener noreferrer"><?php echo esc_html( $attributes['readMoreText'] ); ?></a>
+			<div class="uagb-timeline__link_parent wp-block-button">
+				<a class="uagb-timeline__link wp-block-button__link" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel=" noopener noreferrer"><?php echo esc_html( $attributes['readMoreText'] ); ?></a>
 			</div>
 			<?php
 			do_action( "uagb_single_post_after_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
@@ -1054,7 +1096,6 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 				$classes[] = 'uagb_timeline__cta-enable';
 			}
 
-			$classes[] = 'uagb-timeline__responsive-' . $attributes['stack'];
 			$classes[] = 'uagb-timeline';
 			$classes[] = 'uagb-timeline__content-wrap';
 

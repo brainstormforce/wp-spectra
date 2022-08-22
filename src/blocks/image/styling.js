@@ -156,6 +156,9 @@ export default function styling( props ) {
 		captionLetterSpacingTablet,
 		captionLetterSpacingMobile,
 		captionLetterSpacingType,
+		customHeightSetDesktop,
+		customHeightSetTablet,
+		customHeightSetMobile
 	} = props.attributes;
 
 	const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
@@ -200,18 +203,13 @@ export default function styling( props ) {
 			),
 			'text-align': align
 		},
-		'.wp-block-uagb-image--layout-default img':{
-			'width': 'inherit',
-			'height': 'inherit',
-			'box-shadow': generateCSSUnit( imageBoxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( imageBoxShadowVOffset, 'px' ) +	' ' + generateCSSUnit( imageBoxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( imageBoxShadowSpread, 'px' ) + ' ' + imageBoxShadowColor + ' ' + getImageShadowPosition,
-			...imageBorderCSS
-		},
-		'.wp-block-uagb-image--layout-overlay img':{
+		'.wp-block-uagb-image--layout-default figure':{
 			'width': 'inherit',
 			'height': 'inherit',
 			'box-shadow': generateCSSUnit( imageBoxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( imageBoxShadowVOffset, 'px' ) +	' ' + generateCSSUnit( imageBoxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( imageBoxShadowSpread, 'px' ) + ' ' + imageBoxShadowColor + ' ' + getImageShadowPosition,
 		},
-		'.wp-block-uagb-image .wp-block-uagb-image__figure img:hover':{
+		'.wp-block-uagb-image--layout-default figure img': imageBorderCSS,
+		'.wp-block-uagb-image .wp-block-uagb-image__figure:hover':{
 			'border-color': imageBorderHColor
 		},
 		'.wp-block-uagb-image .wp-block-uagb-image__figure figcaption': {
@@ -252,9 +250,18 @@ export default function styling( props ) {
 			'color': captionColor,
 		},
 		// overlay
+		'.wp-block-uagb-image--layout-overlay figure':{
+			'width': 'inherit',
+			'height': 'inherit',
+			'box-shadow': generateCSSUnit( imageBoxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( imageBoxShadowVOffset, 'px' ) +	' ' + generateCSSUnit( imageBoxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( imageBoxShadowSpread, 'px' ) + ' ' + imageBoxShadowColor + ' ' + getImageShadowPosition,
+		},
+		'.wp-block-uagb-image--layout-overlay figure img':{
+			...imageBorderCSS
+		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper': {
 			'background': overlayBackground,
 			'opacity': overlayOpacityFallback,
+			...imageBorderCSS
 		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner': {
 			'left': generateCSSUnit( overlayPositionFromEdgeFallback, overlayPositionFromEdgeUnit ),
@@ -329,9 +336,12 @@ export default function styling( props ) {
 	selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = {
 		'object-fit': objectFit,
 		'width'     : width + 'px',
-		'height'    : height + 'px'
+		'height'    : 'auto'
 	}
 
+	if ( customHeightSetDesktop ) {
+		selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'].height = height + 'px';
+	}
 	if( headingShowOn === 'hover' ){
 		selectors['.wp-block-uagb-image .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading'] = {
 			'opacity': 1
@@ -388,7 +398,8 @@ export default function styling( props ) {
 		),
 	}
 
-	tablet_selectors['.wp-block-uagb-image--layout-default img'] = imageBorderCSSTablet
+	tablet_selectors['.wp-block-uagb-image--layout-default figure'] = imageBorderCSSTablet;
+	tablet_selectors['.wp-block-uagb-image--layout-overlay figure'] = imageBorderCSSTablet;
 
 	tablet_selectors['.wp-block-uagb-image'] = {
 		'margin-top': generateCSSUnit(
@@ -477,7 +488,11 @@ export default function styling( props ) {
 	tablet_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = {
 		'object-fit': objectFitTablet,
 		'width'     : tabletWidth + 'px',
-		'height'    : tabletHeight + 'px'
+		'height'    : 'auto'
+	}
+
+	if ( customHeightSetTablet ) {
+		tablet_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'].height = tabletHeight + 'px';
 	}
 
 	// Mobile
@@ -492,7 +507,8 @@ export default function styling( props ) {
 		),
 	}
 
-	mobile_selectors['.wp-block-uagb-image--layout-default img'] = imageBorderCSSMobile;
+	mobile_selectors['.wp-block-uagb-image--layout-default figure'] = imageBorderCSSMobile;
+	mobile_selectors['.wp-block-uagb-image--layout-overlay figure'] = imageBorderCSSMobile;
 
 	mobile_selectors['.wp-block-uagb-image'] = {
 		'margin-top': generateCSSUnit(
@@ -582,7 +598,11 @@ export default function styling( props ) {
 	mobile_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = {
 		'object-fit': objectFitMobile,
 		'width'     : mobileWidth + 'px',
-		'height'    : mobileHeight + 'px'
+		'height'    : 'auto'
+	}
+
+	if ( customHeightSetMobile ) {
+		mobile_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'].height = mobileHeight + 'px';
 	}
 
 	let styling_css = generateCSS( selectors, base_selector );

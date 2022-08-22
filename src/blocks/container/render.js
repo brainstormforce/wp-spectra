@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import React from 'react';
 import shapes from './shapes';
 import { select } from '@wordpress/data';
@@ -9,13 +9,14 @@ const Render = ( props ) => {
 	props = props.parentProps;
 	const {
 		attributes,
-		className,
 		deviceType,
 		clientId
 	} = props;
 
 	const {
 		block_id,
+		htmlTag,
+		htmlTagLink,
 		topType,
 		topFlip,
 		topContentAboveShape,
@@ -25,7 +26,10 @@ const Render = ( props ) => {
 		backgroundType,
 		backgroundVideo,
 		topInvert,
-		bottomInvert
+		bottomInvert,
+		isBlockRootParent,
+		contentWidth,
+		innerContentWidth
 	} = attributes;
 
 	const direction = attributes[ 'direction' + deviceType ];
@@ -70,37 +74,70 @@ const Render = ( props ) => {
 
 	const hasChildBlocks = getBlockOrder( clientId ).length > 0;
 
+	const CustomTag = `${htmlTag}`;
+	const customTagLinkAttributes = {};
+	if( htmlTag === 'a' ){
+		customTagLinkAttributes.rel = 'noopener'
+		customTagLinkAttributes.onClick = ( e ) => e.preventDefault()
+		if( htmlTagLink?.url ){
+			customTagLinkAttributes.href = htmlTagLink?.url;
+		}
+		if( htmlTagLink?.opensInNewTab ){
+			customTagLinkAttributes.target = '_blank';
+		}
+		if( htmlTagLink?.noFollow ){
+			customTagLinkAttributes.rel = 'nofollow noopener';
+		}
+	}
+
+	const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( clientId ).length;
+	const hasChildrenClass = hasChildren ? 'uagb-container-has-children' : '';
+	const isRootContainerClass = isBlockRootParent ? 'uagb-is-root-container' : '';
+	const blockProps = useBlockProps( {
+		className: `uagb-block-${ block_id } ${contentWidth} ${hasChildrenClass} uagb-editor-preview-mode-${ deviceType.toLowerCase() } ${isRootContainerClass}`,
+	} );
+
 	return (
-		<div
-			className={ classnames(
-				className,
-				`uagb-block-${ block_id }`,
-			) }
-			key = { block_id }
-		>
-			{ topDividerHtml }
-			{ 'video' === backgroundType && (
-				<div className="uagb-container__video-wrap">
-					{ backgroundVideo && (
-						<video autoPlay loop muted playsinline>
-							<source
-								src={ backgroundVideo.url }
-								type="video/mp4"
-							/>
-						</video>
-					) }
-				</div>
-			) }
-			<div className='uagb-container-inner-blocks-wrap'>
-				<InnerBlocks
-					__experimentalMoverDirection={ moverDirection }
-					renderAppender = { hasChildBlocks
-					? undefined
-					: InnerBlocks.ButtonBlockAppender }
-				/>
-			</div>
-			{ bottomDividerHtml }
-		</div>
+		<>
+			<CustomTag
+				{ ...blockProps }
+				key = { block_id }
+				{...customTagLinkAttributes}
+			>
+				{ topDividerHtml }
+				{ 'video' === backgroundType && (
+					<div className="uagb-container__video-wrap">
+						{ backgroundVideo && (
+							<video autoPlay loop muted playsinline>
+								<source
+									src={ backgroundVideo.url }
+									type="video/mp4"
+								/>
+							</video>
+						) }
+					</div>
+				) }
+				{ isBlockRootParent && 'alignfull' === contentWidth && 'alignwide' === innerContentWidth
+				?  (
+					<div className='uagb-container-inner-blocks-wrap'>
+						<InnerBlocks
+							__experimentalMoverDirection={ moverDirection }
+							renderAppender = { hasChildBlocks
+							? undefined
+							: InnerBlocks.ButtonBlockAppender }
+						/>
+					</div>
+				)
+				: <InnerBlocks
+						__experimentalMoverDirection={ moverDirection }
+						renderAppender = { hasChildBlocks
+						? undefined
+						: InnerBlocks.ButtonBlockAppender }
+					/>
+				}
+				{ bottomDividerHtml }
+			</CustomTag>
+		</>
 	);
 };
 export default React.memo( Render );

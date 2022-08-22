@@ -11,11 +11,12 @@ $block_slug = 'uagb/image';
 $block_data = array(
 	'slug'             => '',
 	'admin_categories' => array( 'content', 'core' ),
-	'link'             => 'image',
+	'link'             => 'image-block',
 	'doc'              => 'image',
 	'title'            => __( 'Image', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block let\'s you add an Image.', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Add images on your webpage with multiple customization options.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 2,
+	'priority'         => 3,
+	'deprecated'       => false,
 );

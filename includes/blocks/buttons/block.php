@@ -14,8 +14,9 @@ $block_data = array(
 	'admin_categories' => array( 'creative', 'core' ),
 	'link'             => 'multi-buttons',
 	'title'            => __( 'Buttons', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block allows you to add multiple buttons with a single block.', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Add multiple buttons to redirect user to different webpages.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 37,
+	'priority'         => 4,
+	'deprecated'       => false,
 );

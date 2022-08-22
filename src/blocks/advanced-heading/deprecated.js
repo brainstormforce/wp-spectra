@@ -157,6 +157,18 @@ const attributes = {
 		source: 'boolean',
 		default: true,
 	},
+	headSpaceType: {
+		type: 'string',
+		default: 'px',
+	},
+	separatorHeightType: {
+		type: 'string',
+		default: 'px',
+	},
+	separatorSpaceType: {
+		type: 'string',
+		default: 'px',
+	}
 }
 const deprecated = [
 	{

@@ -116,6 +116,9 @@ const devices = [
 	if ( inspectorTab.classList.contains( 'uagb-tab-content-general' ) ) {
 		inspectorTabName = 'general';
 	}
+	if ( inspectorTab.classList.contains( 'uagb-tab-content-advance' ) ) {
+		inspectorTabName = 'advance';
+	}
 
 	const data = {
 		...uagSettingState,

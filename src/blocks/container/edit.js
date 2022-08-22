@@ -5,6 +5,7 @@ import styling from './styling';
 import React, { lazy, Suspense, useEffect, useLayoutEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
@@ -56,7 +57,6 @@ const UAGBContainer = ( props ) => {
 
 	useEffect( () => {
 		const isBlockRootParent = 0 === select( 'core/block-editor' ).getBlockParents( props.clientId ).length;
-		const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( props.clientId ).length;
 
 		if ( isBlockRootParent ) {
 			props.setAttributes( { isBlockRootParent: true } );
@@ -85,25 +85,6 @@ const UAGBContainer = ( props ) => {
 		if ( variationPicker ) {
 			const variationPickerLabel = variationPicker.querySelector( '.components-placeholder__label' );
 			variationPicker.insertBefore( closeButton,variationPickerLabel );
-		}
-
-		if ( element ) {
-			element.classList.remove( `uagb-editor-preview-mode-desktop` );
-			element.classList.remove( `uagb-editor-preview-mode-tablet` );
-			element.classList.remove( `uagb-editor-preview-mode-mobile` );
-			element.classList.add( `uagb-editor-preview-mode-${ deviceType.toLowerCase() }` );
-			if ( ! hasChildren ) {
-				element.classList.remove( 'uagb-container-has-children' );
-			}
-			if ( hasChildren ) {
-				element.classList.add( 'uagb-container-has-children' );
-			}
-			if ( props.attributes.isBlockRootParent || isBlockRootParent ) {
-				element.classList.remove( 'alignfull' );
-				element.classList.remove( 'alignwide' );
-				element.classList.remove( 'default' );
-				element.classList.add( props.attributes.contentWidth );
-			}
 		}
 
 		const descendants = select( 'core/block-editor' ).getBlocks( props.clientId );
@@ -149,46 +130,6 @@ const UAGBContainer = ( props ) => {
 
 	useEffect( () => {
 
-		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
-		const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( props.clientId ).length;
-
-		let element;
-		if( iframeEl ){
-			element = iframeEl.contentDocument.getElementById( 'block-' + props.clientId )
-		} else {
-			element = document.getElementById( 'block-' + props.clientId )
-		}
-
-		if ( element ) {
-			element.classList.remove( `uagb-editor-preview-mode-desktop` );
-			element.classList.remove( `uagb-editor-preview-mode-tablet` );
-			element.classList.remove( `uagb-editor-preview-mode-mobile` );
-			element.classList.add( `uagb-editor-preview-mode-${deviceType.toLowerCase() }` );
-			if ( ! hasChildren ) {
-				element.classList.remove( 'uagb-container-has-children' );
-			}
-			if ( hasChildren ) {
-				element.classList.add( 'uagb-container-has-children' );
-			}
-
-			if ( props.attributes.isBlockRootParent ) {
-
-				element.classList.remove( 'alignfull' );
-				element.classList.remove( 'alignwide' );
-				element.classList.remove( 'default' );
-				element.classList.add( props.attributes.contentWidth );
-			}
-
-			setTimeout( () => {
-				if ( props.attributes.isBlockRootParent ) {
-					element.classList.remove( 'alignfull' );
-					element.classList.remove( 'alignwide' );
-					element.classList.remove( 'default' );
-					element.classList.add( props.attributes.contentWidth );
-				}
-			} );
-		}
-
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-container-style-' + props.clientId.substr( 0, 8 ), blockStyling );
@@ -206,6 +147,8 @@ const UAGBContainer = ( props ) => {
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-container-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 
 	}, [ deviceType ] );
 

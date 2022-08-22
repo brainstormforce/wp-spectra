@@ -8,6 +8,10 @@ const attributes = {
 		type    : 'string',
 		default : 'post-masonry',
 	},
+	enableOffset              : {
+		type    : 'boolean',
+		default : false,
+	},
 	paginationType               : {
 		type    : 'string',
 		default : 'none',
@@ -830,6 +834,30 @@ const attributes = {
 		type : 'number',
 		UAGCopyPaste: {
 			styleType: 'post-left-padding-mobile'
+		},
+	},
+	paddingTopTablet        : {
+		type : 'number',
+		UAGCopyPaste: {
+			styleType: 'post-top-padding-tablet'
+		},
+	},
+	paddingBottomTablet     : {
+		type : 'number',
+		UAGCopyPaste: {
+			styleType: 'post-bottom-padding-tablet'
+		},
+	},
+	paddingRightTablet      : {
+		type : 'number',
+		UAGCopyPaste: {
+			styleType: 'post-right-padding-tablet'
+		},
+	},
+	paddingLeftTablet       : {
+		type : 'number',
+		UAGCopyPaste: {
+			styleType: 'post-left-padding-tablet'
 		},
 	},
 	paddingBtnTop           : {

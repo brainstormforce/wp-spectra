@@ -7,6 +7,7 @@ import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/call-to-action/render" */ './render' )
 );
@@ -102,7 +103,7 @@ const UAGBCallToAction = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-	
+
 		// Replacement for componentDidUpdate.
 		const blockStyling = CtaStyle( props );
 
@@ -114,6 +115,8 @@ const UAGBCallToAction = ( props ) => {
 		const blockStyling = CtaStyle( props );
 
 		addBlockEditorDynamicStyles( 'uagb-cta-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	return (

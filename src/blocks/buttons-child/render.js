@@ -27,11 +27,12 @@ const Render = ( props ) => {
 		backgroundType,
 		borderStyle,
 		background,
-		color
+		color,
+		showIcon,
 	} = attributes;
 
 	const iconHtml = ( curr_position ) => {
-		if ( '' !== icon && curr_position === iconPosition ) {
+		if ( showIcon && '' !== icon && curr_position === iconPosition ) {
 			return (
 				<span
 					className={ classnames(
@@ -54,7 +55,7 @@ const Render = ( props ) => {
 						onChange={ ( value ) => {
 							setAttributes( { label: value } );
 						} }
-						allowedFormats={ [ 'bold', 'italic', 'strikethrough' ] }
+						allowedFormats={ [ 'core/bold', 'core/italic', 'core/strikethrough' ] }
 						className="uagb-button__link"
 						rel= { noFollow ? 'nofollow noopener' : 'follow noopener' }
 						keepPlaceholderOnFocus

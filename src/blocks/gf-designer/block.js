@@ -10,10 +10,10 @@ import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
 
-if ( uagb_blocks_info.blocks[ 'uagb/gf-styler' ].is_active && 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) {
+if ( uagb_blocks_info.blocks[ 'uagb/gf-styler' ].is_active && ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) ) {
 	registerBlockType( 'uagb/gf-styler', {
 		title: __( 'Gravity Form Designer', 'ultimate-addons-for-gutenberg' ), // Block title.
-		description: __( 'This block allows you to add and style your Gravity Forms right in the Gutenberg editor.', 'ultimate-addons-for-gutenberg' ), // Block description.
+		description: __( 'Highly customize and style your forms created by Gravity Forms.', 'ultimate-addons-for-gutenberg' ), // Block description.
 		icon: UAGB_Block_Icons.gf_styler,
 		keywords: [
 			__( 'GF styler', 'ultimate-addons-for-gutenberg' ),

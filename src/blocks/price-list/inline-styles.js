@@ -55,9 +55,6 @@ function RestMenuStyle( props ) {
 		columnGap,
 		columnGapTablet,
 		columnGapMobile,
-		columns,
-		tcolumns,
-		mcolumns,
 		seperatorStyle,
 		seperatorWidth,
 		seperatorWidthTablet,
@@ -110,27 +107,26 @@ function RestMenuStyle( props ) {
 		priceTransform,
 		priceDecoration,
 		descLetterSpacing,
-descLetterSpacingTablet,
-descLetterSpacingMobile,
-descLetterSpacingType,
-priceLetterSpacing,
-priceLetterSpacingTablet,
-priceLetterSpacingMobile,
-priceLetterSpacingType,
-titleLetterSpacing,
-titleLetterSpacingTablet,
-titleLetterSpacingMobile,
-titleLetterSpacingType,
+		descLetterSpacingTablet,
+		descLetterSpacingMobile,
+		descLetterSpacingType,
+		priceLetterSpacing,
+		priceLetterSpacingTablet,
+		priceLetterSpacingMobile,
+		priceLetterSpacingType,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		imagePosition,
+		imgAlign,
+		imageAlignment,
+		stack
 	} = props.attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
 
-
 	const seperatorThicknessFallback = getFallbackNumber( seperatorThickness, 'seperatorThickness', blockName );
-
-	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
-	const tcolumnsFallback = isNaN( tcolumns ) ? columnsFallback : tcolumns;
-	const mcolumnsFallback = isNaN( mcolumns ) ? tcolumnsFallback : mcolumns;
 
 	const rowGapFallback = getFallbackNumber( rowGap, 'rowGap', blockName );
 	const rowGapTabletFallback = getFallbackNumber( rowGapTablet, 'rowGapTablet', blockName );
@@ -155,18 +151,10 @@ titleLetterSpacingType,
 	let tabletSelectors = {};
 	let mobileSelectors = {};
 
-	let align = headingAlign;
-	if ( 'left' === align ) {
-		align = 'flex-start';
-	} else if ( 'right' === align ) {
-		align = 'flex-end';
-	}
-
 	const selectors = {
-		" [data-type='uagb/restaurant-menu-child'] .wp-block-uagb-restaurant-menu-child": {
-			'padding-left': generateCSSUnit( columnGapFallback / 2, columnGapType ),
-			'padding-right': generateCSSUnit( columnGapFallback / 2, columnGapType ),
-			'margin-bottom': generateCSSUnit( rowGapFallback, rowGapType ),
+		' .block-editor-block-list__layout': {
+			'column-gap': generateCSSUnit( columnGapFallback, columnGapType ),
+			'row-gap': generateCSSUnit( rowGapFallback, rowGapType ),
 		},
 		" [data-type='uagb/restaurant-menu-child'] img": {
 			'padding-left': generateCSSUnit( imgPaddingLeft, imgPaddingUnit ),
@@ -182,11 +170,7 @@ titleLetterSpacingType,
 			'width': generateCSSUnit( imageWidthFallback, imageWidthType ),
 			'max-width': generateCSSUnit( imageWidthFallback, imageWidthType ),
 		},
-		' .uagb-rm__separator': {
-			'justify-content': align,
-		},
 		' .uagb-rm__content': {
-			'text-align': headingAlign,
 			'padding-left': generateCSSUnit(
 				contentPaddingLeft,
 				contentPaddingUnit
@@ -203,10 +187,6 @@ titleLetterSpacingType,
 				contentPaddingBottom,
 				contentPaddingUnit
 			),
-		},
-		'.uagb-rm__align-center  .uagb-rest_menu__wrap .uagb-rm__content .uagb-rm__price': {
-			'text-align': headingAlign,
-			'display': 'inline-table',
 		},
 		// Prefix Style
 		'.wp-block-uagb-restaurant-menu .uagb-rest_menu__wrap .uagb-rm__content .uagb-rm-details .uagb-rm__title': {
@@ -257,28 +237,15 @@ titleLetterSpacingType,
 		},
 	};
 
-
-	selectors[
-		' .uagb-rest_menu__wrap.uagb-rm__desk-column-' +
-			columnsFallback +
-			':nth-child(' +
-			columnsFallback +
-			'n+1)'
-	] = {
-		'margin-left': 0,
-		'clear': 'left',
-	};
-
 	tabletSelectors = {
 		// Image
 		' img': {
 			'width': generateCSSUnit( imageWidthTabletFallback, imageWidthType ),
 			'max-width': generateCSSUnit( imageWidthTabletFallback, imageWidthType ),
 		},
-		" [data-type='uagb/restaurant-menu-child'] .wp-block-uagb-restaurant-menu-child": {
-			'padding-left': generateCSSUnit( columnGapTabletFallback / 2, columnGapType ),
-			'padding-right': generateCSSUnit( columnGapTabletFallback / 2, columnGapType ),
-			'margin-bottom': generateCSSUnit( rowGapTabletFallback, rowGapType ),
+		'.wp-block-uagb-restaurant-menu': {
+			'column-gap': generateCSSUnit( columnGapTabletFallback, columnGapType ),
+			'row-gap': generateCSSUnit( rowGapTabletFallback, rowGapType ),
 		},
 		'.wp-block-uagb-restaurant-menu .uagb-rest_menu__wrap .uagb-rm__content .uagb-rm-details .uagb-rm__title': {
 			'font-size': generateCSSUnit(
@@ -333,7 +300,6 @@ titleLetterSpacingType,
 			),
 		},
 		' .uagb-rm__content': {
-			'text-align': headingAlign,
 			'padding-left': generateCSSUnit(
 				contentPaddingLeftTablet,
 				contentTabletPaddingUnit
@@ -353,38 +319,15 @@ titleLetterSpacingType,
 		},
 	};
 
-	tabletSelectors[
-		' .uagb-rest_menu__wrap.uagb-rm__desk-column-' +
-			columnsFallback +
-			':nth-child(' +
-			columnsFallback +
-			'n+1)'
-	] = {
-		'margin-left': 'unset',
-		'clear': 'unset',
-	};
-
-	tabletSelectors[
-		' .uagb-rest_menu__wrap.uagb-rm__tablet-column-' +
-			tcolumnsFallback +
-			':nth-child(' +
-			tcolumnsFallback +
-			'n+1)'
-	] = {
-		'margin-left': 0,
-		'clear': 'left',
-	};
-
 	mobileSelectors = {
 		// Image
 		' img': {
 			'width': generateCSSUnit( imageWidthMobileFallback, imageWidthType ),
 			'max-width': generateCSSUnit( imageWidthMobileFallback, imageWidthType ),
 		},
-		" [data-type='uagb/restaurant-menu-child'] .wp-block-uagb-restaurant-menu-child": {
-			'padding-left': generateCSSUnit( columnGapMobileFallback / 2, columnGapType ),
-			'padding-right': generateCSSUnit( columnGapMobileFallback / 2, columnGapType ),
-			'margin-bottom': generateCSSUnit( rowGapMobileFallback, rowGapType ),
+		'.wp-block-uagb-restaurant-menu': {
+			'column-gap': generateCSSUnit( columnGapMobileFallback, columnGapType ),
+			'row-gap': generateCSSUnit( rowGapMobileFallback, rowGapType ),
 		},
 		'.wp-block-uagb-restaurant-menu .uagb-rest_menu__wrap .uagb-rm__content .uagb-rm-details .uagb-rm__title': {
 			'font-size': generateCSSUnit(
@@ -439,7 +382,6 @@ titleLetterSpacingType,
 			),
 		},
 		' .uagb-rm__content': {
-			'text-align': headingAlign,
 			'padding-left': generateCSSUnit(
 				contentPaddingLeftMobile,
 				contentMobilePaddingUnit
@@ -459,28 +401,6 @@ titleLetterSpacingType,
 		},
 	};
 
-	mobileSelectors[
-		' .uagb-rest_menu__wrap.uagb-rm__desk-column-' +
-			columns +
-			':nth-child(' +
-			columns +
-			'n+1)'
-	] = {
-		'margin-left': 'unset',
-		'clear': 'unset',
-	};
-
-	mobileSelectors[
-		' .uagb-rest_menu__wrap.uagb-rm__mobile-column-' +
-			mcolumnsFallback +
-			':nth-child(' +
-			mcolumnsFallback +
-			'n+1)'
-	] = {
-		'margin-left': 0,
-		'clear': 'left',
-	};
-
 	if ( seperatorStyle !== 'none' ) {
 		selectors[ ' .uagb-rm__separator' ] = {
 			'border-top-color': seperatorColor,
@@ -494,6 +414,88 @@ titleLetterSpacingType,
 		mobileSelectors[ ' .uagb-rm__separator' ] = {
 			'width': generateCSSUnit( seperatorWidthMobileFallback, seperatorWidthType ),
 		};
+	}
+
+	if( imgAlign === 'side' ) {
+		selectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = {
+			'align-items' : imageAlignment === 'top' ? 'flex-start' : 'center'
+		};
+
+		if( stack === 'tablet' ) {
+			if( imagePosition === 'left' ) {
+				tabletSelectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = {
+					'display' : 'block'
+				};
+				mobileSelectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = {
+					'display' : 'block'
+				};
+			}else {
+				tabletSelectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = {
+					'display' : 'flex',
+					'flex-direction': 'column-reverse',
+					'align-items': 'flex-end'
+				};
+				mobileSelectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = {
+					'display' : 'flex',
+					'flex-direction': 'column-reverse',
+					'align-items': 'flex-end'
+				};
+			}
+		} else if ( stack === 'mobile' ) {
+			if( imagePosition === 'left' ) {
+				mobileSelectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = {
+					'display' : 'block'
+				};
+			} else {
+				mobileSelectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = {
+					'display' : 'flex',
+					'flex-direction': 'column-reverse',
+					'align-items': 'flex-end'
+				};
+			}
+		}
+		if( imagePosition === 'left' ) {
+			selectors[ ' .uagb-rm-details' ] = {
+				'text-align' : 'left'
+			};
+		} else if(  imagePosition === 'right' ) {
+			selectors[ ' .uagb-rm-details' ] = {
+				'text-align' : 'right'
+			};
+			selectors[ ' .uagb-rest_menu__wrap .uagb-rm__content' ] = {
+				'text-align' : 'right'
+			};
+			selectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__separator'] = {
+				'margin-left': 'auto'
+			}
+		}
+	}
+
+	if( imgAlign === 'top' ) {
+		selectors[ ' .wp-block-uagb-restaurant-menu-child ' ] = {
+			'text-align' : headingAlign,
+			'display': 'block'
+		};
+		selectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = {
+			'text-align' : headingAlign,
+		};
+
+		if ( 'center' === headingAlign ) {
+			selectors[ ' .uagb-rm__content ' ] = {
+				'display' : 'block'
+			};
+			selectors[ ' .uagb-rm__content ' ] = {
+				'display' : 'block'
+			};
+			selectors[ ' .wp-block-uagb-restaurant-menu-child  .uagb-rm__separator'] = {
+				'margin': '0 auto'
+			}
+		} else if ( 'right' === headingAlign ) {
+			selectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__separator'] = {
+				'margin-left': 'auto'
+			}
+
+		}
 	}
 
 	let stylingCss = '';

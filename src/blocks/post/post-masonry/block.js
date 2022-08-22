@@ -15,10 +15,11 @@ import { __ } from '@wordpress/i18n';
 // Register block controls
 import { registerBlockType } from '@wordpress/blocks';
 
+if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
 // Register the block
 registerBlockType( 'uagb/post-masonry', {
 	title: __( 'Post Masonry', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'This block fetches the blog posts you may have on your website and displays them in a masonry layout.', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'Display your posts in a masonary layout.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.post_masonry,
 	category: uagb_blocks_info.category,
 	keywords: [
@@ -37,3 +38,4 @@ registerBlockType( 'uagb/post-masonry', {
 		return null;
 	},
 } );
+}

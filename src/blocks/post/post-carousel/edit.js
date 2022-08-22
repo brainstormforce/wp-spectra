@@ -26,7 +26,9 @@ import renderSVG from '@Controls/renderIcon';
 import presets, {buttonsPresets} from './presets';
 import UAGPresets from '@Components/presets';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import UAGNumberControl from '@Components/number-control';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -268,6 +270,8 @@ const UAGBPostCarousel = ( props ) => {
 
 		addBlockEditorDynamicStyles( 'uagb-post-carousel-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 
+		scrollBlockToView();
+
 	}, [ props.deviceType ] );
 
 	const onSelectPostType = ( value ) => {
@@ -283,6 +287,10 @@ const UAGBPostCarousel = ( props ) => {
 
 		setAttributes( { taxonomyType: value } );
 		setAttributes( { categories: '' } );
+	};
+
+	const onSelectOffset = ( value ) => {
+		setAttributes( { enableOffset: value } );
 	};
 
 	const {
@@ -400,6 +408,9 @@ const UAGBPostCarousel = ( props ) => {
 		arrowColor,
 		arrowBorderSize,
 		arrowBorderRadius,
+		arrowDistance,
+		arrowDistanceTablet,
+		arrowDistanceMobile,
 		excerptLength,
 		overlayOpacity,
 		bgOverlayColor,
@@ -479,6 +490,7 @@ const UAGBPostCarousel = ( props ) => {
 		ctaLetterSpacingTablet,
 		ctaLetterSpacingMobile,
 		ctaLetterSpacingType,
+		enableOffset
 	} = attributes;
 
 	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
@@ -630,24 +642,41 @@ const UAGBPostCarousel = ( props ) => {
 						} )
 					}
 				/>
-				<Range
+				<UAGNumberControl
 					label={ __(
 						'Posts Per Page',
 						'ultimate-addons-for-gutenberg'
 					) }
+					setAttributes={ setAttributes }
 					value={ postsToShow }
 					data={ {
 						value: postsToShow,
 						label: 'postsToShow',
 					} }
-					setAttributes={ setAttributes }
-					displayUnit={ false }
 					min={ 1 }
 					max={ 100 }
+					displayUnit={ false }
 				/>
-				<Range
+				<ToggleControl
 					label={ __(
 						'Offset Starting Post',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ enableOffset }
+					onChange={ onSelectOffset }
+					help= {
+						<>
+							{ !enableOffset && __(
+							'Note: The offset will skip the number of posts set, and will use the next post as the starting post.',
+							'ultimate-addons-for-gutenberg' )
+							}
+						</>
+						}
+				/>
+				{ enableOffset && (
+				<UAGNumberControl
+					label={ __(
+						'Offset By',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={ setAttributes }
@@ -659,10 +688,15 @@ const UAGBPostCarousel = ( props ) => {
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ false }
-					help= {__(
-						'P.S. Note that We need to add Offset Starting Post to start post loading from specific post order.',
+					help= {
+						<>
+						{ enableOffset && __(
+						'Note: The offset will skip the number of posts set, and will use the next post as the starting post.',
 						'ultimate-addons-for-gutenberg' )}
+						</>
+					}
 				/>
+				)}
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Order By', 'ultimate-addons-for-gutenberg' ) }
@@ -2039,7 +2073,7 @@ const UAGBPostCarousel = ( props ) => {
 					prefix={ 'btn' }
 					attributes={ attributes }
 					deviceType={ deviceType }
-					disabledBorderTitle= { true }
+					disabledBorderTitle= { false }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -2177,11 +2211,33 @@ const UAGBPostCarousel = ( props ) => {
 					min={ 0 }
 					max={ 50 }
 				/>
+				<ResponsiveSlider
+					label={ __( 'Arrow Distance from Edges', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: arrowDistance,
+							label: 'arrowDistance',
+						},
+						tablet: {
+							value: arrowDistanceTablet,
+							label: 'arrowDistanceTablet',
+						},
+						mobile: {
+							value: arrowDistanceMobile,
+							label: 'arrowDistanceMobile',
+						},
+					} }
+					min={ -50 }
+					max={ 50 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
+				/>
 				</>
 			}
 			</UAGAdvancedPanelBody>
 		);
 	};
+
 	const inspectorControls = (
 		<InspectorControls>
 			<InspectorTabs>
@@ -2300,6 +2356,7 @@ export default compose(
 				'core/editor'
 			).getCurrentPostId();
 		}
+
 		const category = [];
 		const temp = parseInt( categories );
 		category.push( temp );

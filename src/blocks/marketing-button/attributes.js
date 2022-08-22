@@ -261,7 +261,7 @@ const attributes = {
 	// Icon attributes
 	icon: {
 		type: 'string',
-		default: 'external-link-alt',
+		default: 'up-right-from-square',
 	},
 	iconPosition: {
 		type: 'string',
@@ -512,84 +512,72 @@ const attributes = {
 	},
 	paddingBtnTop: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding'
 		}
 	},
 	paddingBtnBottom: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding'
 		}
 	},
 	paddingBtnLeft: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding'
 		}
 	},
 	paddingBtnRight: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding'
 		}
 	},
 	paddingBtnTopTablet: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding-tablet'
 		}
 	},
 	paddingBtnRightTablet: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding-tablet'
 		}
 	},
 	paddingBtnBottomTablet: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding-tablet'
 		}
 	},
 	paddingBtnLeftTablet: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding-tablet'
 		}
 	},
 	paddingBtnTopMobile: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding-mobile'
 		}
 	},
 	paddingBtnRightMobile: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding-mobile'
 		}
 	},
 	paddingBtnBottomMobile: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding-mobile'
 		}
 	},
 	paddingBtnLeftMobile: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding-mobile'
 		}

@@ -21,7 +21,7 @@ import UAGTabsControl from '@Components/tabs';
 import {
 	InspectorControls,
 } from '@wordpress/block-editor';
-import { ToggleControl, Notice } from '@wordpress/components';
+import { ToggleControl } from '@wordpress/components';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -987,13 +987,18 @@ const Settings = ( props ) => {
 					deviceType={deviceType}
 					disabledBorderTitle= {true}
 				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+	const boxShadowSettings = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
 				<BoxShadowControl
 					blockId={ block_id }
 					setAttributes={ setAttributes }
-					label={ __(
-						'Box Shadow',
-						'ultimate-addons-for-gutenberg'
-					) }
 					boxShadowColor={ {
 						value: boxShadowColor,
 						label: 'boxShadowColor',
@@ -1037,29 +1042,18 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
-
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
-						<Notice status="warning" isDismissible={false}>
-							{
-								__( 'This block has been deprecated. We recommend using the new', 'ultimate-addons-for-gutenberg' )
-							}
-							{' '}
-							<strong>{__( 'Container', 'ultimate-addons-for-gutenberg' )}</strong>
-							{' '}
-							{
-								__( 'block instead for more flexibility, and better code markup.', 'ultimate-addons-for-gutenberg' )
-							}
-						</Notice>
 						{ layoutSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ backgroundSettings() }
 						{ shapeDividersSettings() }
 						{ borderSettings() }
+						{ boxShadowSettings() }
 						{ spacingSettings() }
 					</InspectorTab>
 					<InspectorTab

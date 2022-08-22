@@ -7,14 +7,30 @@
  * @package uagb
  */
 
-$cta_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
+$cta_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
+	'btn',
+	array(
+		'borderColor'             => '#333',
+		'borderStyle'             => 'solid',
+		'borderTopWidth'          => 1,
+		'borderRightWidth'        => 1,
+		'borderBottomWidth'       => 1,
+		'borderLeftWidth'         => 1,
+		'borderTopLeftRadius'     => 3,
+		'borderTopRightRadius'    => 3,
+		'borderBottomLeftRadius'  => 3,
+		'borderBottomRightRadius' => 3,
+		'borderHColor'            => 'yellowgreen',
+	)
+);
+
 return array_merge(
 	array(
 		'classMigrate'               => false,
 		'inheritFromTheme'           => false,
 		'headingAlign'               => 'center',
-		'headingAlignTablet'         => 'center',
-		'headingAlignMobile'         => 'center',
+		'headingAlignTablet'         => '',
+		'headingAlignMobile'         => '',
 		'headingColor'               => '',
 		'subHeadingColor'            => '',
 		'prefixColor'                => '',
@@ -59,7 +75,7 @@ return array_merge(
 		'separatorWidthMobile'       => '',
 		'separatorHeight'            => '',
 		'separatorWidthType'         => '%',
-		'icon'                       => '',
+		'icon'                       => 'circle-check',
 		'iconColor'                  => '#333',
 		'iconSize'                   => '30',
 		'iconSizeType'               => 'px',
@@ -172,7 +188,7 @@ return array_merge(
 		'seperatorMobileSpace'       => '',
 		'seperatorTabletSpace'       => '',
 		'seperatorSpaceUnit'         => 'px',
-		'seperatorSpace'             => '10',
+		'seperatorSpace'             => 0,
 		'separatorTopMargin'         => '',
 		'separatorRightMargin'       => '',
 		'separatorLeftMargin'        => '',
@@ -208,8 +224,8 @@ return array_merge(
 		'prefixTabletSpace'          => '',
 		'prefixMobileSpace'          => '',
 		'prefixSpaceUnit'            => 'px',
-		'prefixSpace'                => '5',
-		'prefixTopMargin'            => '',
+		'prefixSpace'                => '10',
+		'prefixTopMargin'            => '5',
 		'prefixRightMargin'          => '',
 		'prefixLeftMargin'           => '',
 		'prefixMarginTopTablet'      => '',

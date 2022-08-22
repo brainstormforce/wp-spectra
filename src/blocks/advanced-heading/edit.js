@@ -5,6 +5,7 @@ import styling from './styling';
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 const Settings = lazy( () =>
 	import(
@@ -28,11 +29,10 @@ const UAGBAdvancedHeading = ( props ) => {
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-
-		setAttributes( { classMigrate: true } );
-
+		setAttributes( { classMigrate: true } )
 
 	}, [] );
+
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
@@ -46,7 +46,10 @@ const UAGBAdvancedHeading = ( props ) => {
 	    const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-adv-heading-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
+
 
 	return (
 		<>
