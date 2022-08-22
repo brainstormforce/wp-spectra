@@ -56,6 +56,7 @@ const Background = ( props ) => {
 		yPositionType,
 		yPositionTypeTablet,
 		yPositionTypeMobile,
+		backgroundVideoOpacity
 	} = props;
 
 	const onRemoveImage = () => {
@@ -866,6 +867,10 @@ const Background = ( props ) => {
 											} }
 											setAttributes={ setAttributes }
 											onOpacityChange={onOpacityChange}
+											backgroundVideoOpacity={ {
+												value: backgroundVideoOpacity.value,
+												label: backgroundVideoOpacity.label,
+											} }
 										/>
 									</div>
 								) }

@@ -176,6 +176,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Heading - Set default alignment for heading as center for old users.
 * Fix: Call to Action - Buttons Text not wrapping on smaller devices.
 * Fix: Updated Border styling on front-end in multiple blocks for old users.
+* Fix: Advanced Row (Section) & Advanced Columns - Background color and Video opacity issue for old users.
 
 ### 2.0.4 - SUNDAY, 21st AUGUST 2022 ###
 * Feature: Added Enable Legacy Blocks option in Admin Dashboard.
