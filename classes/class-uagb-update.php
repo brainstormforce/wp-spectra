@@ -76,6 +76,11 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 				update_option( 'uagb-old-user-less-than-2', 'yes' );
 			}
 
+			// Enable Legacy Blocks for users older than 2.0.5.
+			if ( version_compare( $saved_version, '2.0.5', '<' ) ) {
+				UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_legacy_blocks', 'yes' );
+			}
+
 			// Create file if not present.
 			uagb_install()->create_files();
 
