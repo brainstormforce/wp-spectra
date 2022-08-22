@@ -126,7 +126,7 @@ function styling( props ) {
 	if ( 'video' === backgroundType ) {
 		if ( 'color' === overlayType ) {
 			selectors[' > .uagb-columns__overlay'] = {
-				'opacity' : 1,
+				'opacity' : ( typeof backgroundOpacity !== 'undefined' && 0 !== backgroundOpacity ) ? backgroundOpacity/100 : '',
 				'background-color': backgroundVideoColor
 			}
 		} else {
@@ -150,6 +150,7 @@ function styling( props ) {
 	} else if ( 'gradient' === backgroundType ) {
 
 		selectors[' > .uagb-columns__overlay']['background-image'] = gradientValue
+		selectors[' > .uagb-columns__overlay'].opacity =  backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : '';
 
 	}
 

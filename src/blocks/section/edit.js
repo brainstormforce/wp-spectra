@@ -77,7 +77,7 @@ const UAGBSectionEdit = ( props ) => {
 			 gradientOverlayLocation1,
 			 gradientOverlayPosition,
 			 gradientOverlayLocation2,
-			 gradientOverlayType
+			 gradientOverlayType,
 			} = attributes;
 
 		if( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ){

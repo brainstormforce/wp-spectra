@@ -132,10 +132,8 @@ function styling( props ) {
 			'opacity' : backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : '',
 		};
 	} else if ( 'gradient' === backgroundType ) {
-
-		backgroundTypeCSS[
-			'background-image'
-		] = gradientValue;
+		backgroundTypeCSS.opacity =  backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : '';
+		backgroundTypeCSS['background-image'] = gradientValue
 	}
 
 	selectors[ ' > .uagb-section__overlay' ] = {
