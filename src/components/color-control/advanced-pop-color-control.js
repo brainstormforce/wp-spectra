@@ -33,7 +33,7 @@ const AdvancedPopColorControl = ( props ) => {
 		alpha,
 		colorValue,
 		opacityValue,
-		videoOpacityObject,
+		backgroundVideoOpacity,
 		onOpacityChange,
 		data,
 		setAttributes,
@@ -64,7 +64,7 @@ const AdvancedPopColorControl = ( props ) => {
 	}, [ colorValue ] );
 
 	const onChangeComplete = ( color, palette ) => {
-		let opacity = videoOpacityObject;
+		let opacity = backgroundVideoOpacity?.value;
 		let newColor;
 		if ( palette ) {
 			newColor = color;

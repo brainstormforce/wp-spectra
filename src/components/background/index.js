@@ -867,7 +867,10 @@ const Background = ( props ) => {
 											} }
 											setAttributes={ setAttributes }
 											onOpacityChange={onOpacityChange}
-											videoOpacityObject={backgroundVideoOpacity}
+											backgroundVideoOpacity={ {
+												value: backgroundVideoOpacity.value,
+												label: backgroundVideoOpacity.label,
+											} }
 										/>
 									</div>
 								) }

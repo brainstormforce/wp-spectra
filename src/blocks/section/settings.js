@@ -530,7 +530,7 @@ const Settings = ( props ) => {
 						value: backgroundVideoOpacity,
 						label: 'backgroundVideoOpacity',
 					} }
-					onOpacityChange = { ( opacity ) => setAttributes( { backgroundVideoOpacity: opacity } ) }
+					// onOpacityChange = { ( opacity ) => setAttributes( { backgroundVideoOpacity: opacity } ) }
 					{ ...props }
 				/>
 			</UAGAdvancedPanelBody>
