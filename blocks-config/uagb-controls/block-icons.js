@@ -1165,4 +1165,14 @@ const UAGB_Block_Icons = {
 	),
 };
 
+export const renderLegacyBlockEditorIcon = ( blockName ) => {
+	console.log( UAGB_Block_Icons[ blockName ] );
+	return (
+		<>
+			{ UAGB_Block_Icons[ blockName ] }
+			<div className='spectra__legacy-icon--block-inserter-label'>Legacy</div>
+		</>
+	)
+}
+
 export default UAGB_Block_Icons;
