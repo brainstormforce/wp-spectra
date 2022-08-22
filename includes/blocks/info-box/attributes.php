@@ -8,20 +8,7 @@
  */
 
 $cta_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
-	'btn',
-	array(
-		'borderColor'             => '#333',
-		'borderStyle'             => 'solid',
-		'borderTopWidth'          => 1,
-		'borderRightWidth'        => 1,
-		'borderBottomWidth'       => 1,
-		'borderLeftWidth'         => 1,
-		'borderTopLeftRadius'     => 3,
-		'borderTopRightRadius'    => 3,
-		'borderBottomLeftRadius'  => 3,
-		'borderBottomRightRadius' => 3,
-		'borderHColor'            => 'yellowgreen',
-	)
+	'btn'
 );
 
 return array_merge(
@@ -263,6 +250,11 @@ return array_merge(
 		'blockPaddingUnitTablet'     => 'px',
 		'blockPaddingUnitMobile'     => 'px',
 		'blockPaddingLink'           => '',
+		'ctaBorderStyle'             => 'solid',
+		'ctaBorderColor'             => '',
+		'ctaBorderWidth'             => 1,
+		'ctaBorderRadius'            => 0,
+		'ctaBorderhoverColor'        => '',
 	),
 	$cta_border_attribute
 );
