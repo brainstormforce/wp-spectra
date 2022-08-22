@@ -703,14 +703,12 @@ const attributes = {
 	// link
 	linkColor: {
 		type: 'string',
-		default: '#007cba',
 		UAGCopyPaste: {
 			styleType: 'link-color'
 		}
 	},
 	linkHColor: {
 		type: 'string',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'link-hover-color'
 		}
