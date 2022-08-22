@@ -16,7 +16,6 @@ $cta_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	( isset( $attr['ctaBorderStyle'] ) ? $attr['ctaBorderStyle'] : '' ),
 	( isset( $attr['ctaBorderHColor'] ) ? $attr['ctaBorderHColor'] : '' )
 );
-var_dump( $attr['ctaBorderStyle']);
 $cta_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
 $cta_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
 
