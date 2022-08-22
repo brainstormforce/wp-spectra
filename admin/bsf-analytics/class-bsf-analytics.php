@@ -298,7 +298,6 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 			}
 
 			wp_safe_redirect(
-<<<<<<< HEAD
 				esc_url_raw(
 					remove_query_arg(
 						array(
@@ -306,15 +305,8 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 							$source . '_analytics_nonce',
 							'bsf_analytics_source',
 						)
-=======
-				esc_url_raw(remove_query_arg(
-					array(
-						$source . '_analytics_optin',
-						$source . '_analytics_nonce',
-						'bsf_analytics_source',
->>>>>>> 3620452ff748d32ae64cfa11ed6a6798e678e1e5
 					)
-				))
+				)
 			);
 		}
 
