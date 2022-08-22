@@ -174,6 +174,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Inherit Heading Block Link Color from theme.
 * Fix: Post Grid - Pagination alignment not working on frontend.
 * Fix: Heading - Set default alignment for heading as center for old users.
+* Fix: Updated Border styling on front-end in multiple blocks for old users.
 
 ### 2.0.4 - SUNDAY, 21st AUGUST 2022 ###
 * Feature: Added Enable Legacy Blocks option in Admin Dashboard.

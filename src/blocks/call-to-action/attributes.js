@@ -3,7 +3,9 @@
  */
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const borderAttributes = getBorderAttributes( 'btn' );
+const borderAttributes = getBorderAttributes( 'btn' , {
+	borderStyle: 'solid'
+} );
 const secondCtaBorderAttribute = getBorderAttributes( 'secondCta' );
 
 const attributes = {
