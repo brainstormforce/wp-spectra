@@ -1,18 +1,6 @@
 import { getBorderAttributes } from '@Controls/generateAttributes';
-const overallDefaults = {
-	borderStyle: 'solid',
-	borderTopWidth: 1,
-	borderRightWidth: 1,
-	borderBottomWidth: 1,
-	borderLeftWidth: 1,
-	borderTopLeftRadius: 3,
-	borderTopRightRadius: 3,
-	borderBottomLeftRadius: 3,
-	borderBottomRightRadius: 3,
-	borderColor                : '#E0E0E0',
-	borderHoverColor           : '#E0E0E0',
-};
-const overallBorderAttributes = getBorderAttributes( 'overall', overallDefaults );
+
+const overallBorderAttributes = getBorderAttributes( 'overall' );
 const attributes = {   // eslint-disable-line no-unused-vars
 	block_id                   : {
 		type : 'string',

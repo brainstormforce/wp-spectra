@@ -1,15 +1,6 @@
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const borderDefault = {
-	borderStyle: 'solid',
-	borderTopWidth: 1,
-	borderRightWidth: 1,
-	borderBottomWidth: 1,
-	borderLeftWidth: 1,
-	borderColor: '#333',
-	borderHColor: '',
-}
-const btnBorderAttributes = getBorderAttributes( 'btn', borderDefault )
+const btnBorderAttributes = getBorderAttributes( 'btn' )
 
 const attributes = {
 	block_id: {

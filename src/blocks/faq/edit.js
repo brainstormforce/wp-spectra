@@ -217,10 +217,21 @@ const FaqComponent = ( props ) => {
 			}
 		}
 
+	}, [] );
+
+	useEffect( () => {
+
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-style-faq-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
+			props.clientId
+		);
 		const {borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor} = props.attributes
 		// border migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'overall', {
+			migrateBorderAttributes( 'overall', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -235,22 +246,10 @@ const FaqComponent = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			}
+			}, 
+			props.setAttributes
 			);
-			props.setAttributes( migrationAttributes )
 		}
-	}, [] );
-
-	useEffect( () => {
-
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-style-faq-' + props.clientId.substr( 0, 8 ), blockStyling );
-
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
-
 		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.headingTag = props.attributes.headingTag;
 		} );
