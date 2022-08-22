@@ -124,7 +124,7 @@ const ColumnsComponent = ( props ) => {
 		const { borderStyle, borderWidth, borderRadius, borderColor, borderHoverColor } = props.attributes
 		// border migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'columns', {
+			migrateBorderAttributes( 'columns', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -139,9 +139,10 @@ const ColumnsComponent = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			}
+			},
+			props.setAttributes
 			);
-			props.setAttributes( migrationAttributes )
+			
 		}
 	}, [] );
 
