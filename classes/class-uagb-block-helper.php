@@ -1480,7 +1480,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 *
 		 * @since 2.0.0
 		 * @param  array $prefix   Attribute Prefix.
-		 * @param array $default_args  default attributes args.
 		 * @return array
 		 */
 		public static function uag_generate_border_attribute( $prefix ) {
