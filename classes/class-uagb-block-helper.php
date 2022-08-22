@@ -607,9 +607,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				$border_css
 			);
-			$selectors[' .uagb-post__text.uagb-post__cta']                                       = array_merge(
-				$border_css
-			);
 			$selectors[' .uagb-post__text.uagb-post__cta a']                                     = array(
 				'color'          => $attr['ctaColor'],
 				'padding-top'    => UAGB_Helper::get_css_value( $paddingBtnTop, $attr['paddingBtnUnit'] ),
@@ -619,8 +616,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			);
 			$selectors[' .uagb-post__text.uagb-post__cta:hover']                  = array(
-				'color'        => $attr['ctaHColor'],
-				'background'   => $attr['ctaBgHColor'],
 				'border-color' => $attr['btnBorderHColor'],
 			);
 			$selectors[' .uagb-post__text.uagb-post__cta:hover a.uagb-text-link'] = array(
