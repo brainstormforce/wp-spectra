@@ -9,6 +9,7 @@ import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
 const Settings = lazy( () =>
 	import(
@@ -60,7 +61,29 @@ const ButtonsChildComponent = ( props ) => {
 				setAttributes( { leftPadding: hPadding } );
 			}
 		}
-
+		const { borderStyle, borderWidth, borderRadius, borderColor, borderHoverColor } = props.attributes
+		// border migration
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
+			migrateBorderAttributes( 'columns', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHoverColor',
+				value: borderHoverColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			},
+			props.setAttributes
+			);
+			
+		}
 	}, [] );
 
 	useEffect( () => {

@@ -216,18 +216,6 @@ const FaqComponent = ( props ) => {
 				} );
 			}
 		}
-
-	}, [] );
-
-	useEffect( () => {
-
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-style-faq-' + props.clientId.substr( 0, 8 ), blockStyling );
-
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
 		const {borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor} = props.attributes
 		// border migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
@@ -250,6 +238,18 @@ const FaqComponent = ( props ) => {
 			props.setAttributes
 			);
 		}
+	}, [] );
+
+	useEffect( () => {
+
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-style-faq-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
+			props.clientId
+		);
+		
 		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.headingTag = props.attributes.headingTag;
 		} );

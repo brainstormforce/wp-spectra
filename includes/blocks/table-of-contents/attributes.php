@@ -133,10 +133,10 @@ return array_merge(
 		'separatorSpaceTablet'       => '',
 		'separatorSpaceMobile'       => '',
 		'separatorHColor'            => '',
-		'borderStyle'=> 'solid',
-		'borderWidth'=> 1,
-		'borderRadius'=> '',
-		'borderColor'=> "#333",
+		'borderStyle'                => 'solid',
+		'borderWidth'                => 1,
+		'borderRadius'               => '',
+		'borderColor'                => '#333',
 	),
 	$borderAttributes
 );

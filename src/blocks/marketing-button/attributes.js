@@ -63,20 +63,23 @@ const attributes = {
 		}
 	},
 	// Border
-	borderStyle: {
-		type: 'string'
-	},
-	borderWidth: {
-		type: 'number'
-	},
-	borderRadius: {
-		type: 'number'
-	},
-	borderColor: {
-		type: 'string'
-	},
-	borderHoverColor: {
+	borderStyle : {
 		type: 'string',
+		default: 'solid'
+	},
+	borderWidth : {
+		type: 'number',
+		default: 1
+	},
+	borderRadius : {
+		type: 'number'
+	},
+	borderColor : {
+		type: 'string',
+		default: '#333'
+	},
+	borderHoverColor : {
+		type: 'string'
 	},
 
 	// Background

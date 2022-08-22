@@ -122,10 +122,10 @@ return array_merge(
 		'seperatorThickness'       => 1,
 		'seperatorColor'           => '#b2b4b5',
 		'seperatorHoverColor'      => '#b2b4b5',
-		'borderStyle'=> "solid",
-		'borderWidth'=> 1,
-		'borderRadius'=> 0,
-		'borderColor'=> "#E0E0E0",
+		'borderStyle'              => 'solid',
+		'borderWidth'              => 1,
+		'borderRadius'             => 0,
+		'borderColor'              => '#E0E0E0',
 	),
 	$border_attribute
 );

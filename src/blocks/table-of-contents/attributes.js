@@ -651,17 +651,20 @@ const attributes = {
 	// Border
 	borderStyle: {
 		type: 'string',
+		default: 'solid',
 	},
 	borderWidth: {
 		type: 'number',
+		default: 1,
 	},
 	borderRadius: {
 		type: 'number',
+		default: 6,
 	},
 	borderColor: {
 		type: 'string',
 	},
-	borderHColor: {
+	borderHoverColor: {
 		type: 'string',
 	},
 
@@ -989,6 +992,7 @@ const attributes = {
 			styleType: 'separator-color-hover'
 		}
 	},
+
 };
 
 export default attributes;
