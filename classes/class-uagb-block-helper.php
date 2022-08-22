@@ -1516,7 +1516,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						'borderRadiusUnitTablet'        => 'px',
 						'borderRadiusUnitMobile'        => 'px',
 						// common.
-						'borderStyle'                   => 'none',
+						'borderStyle'                   => '',
 						'borderColor'                   => '',
 						'borderHColor'                  => '',
 					
@@ -1557,7 +1557,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		public static function uag_generate_border_css( $attr, $prefix, $device = 'desktop' ) {
 			$gen_border_css = array();
 			if ( 'tablet' === $device ) {
-				if ( 'none' !== $attr[ $prefix . 'BorderStyle' ] ) {
+				if ( 'none' !== $attr[ $prefix . 'BorderStyle' ] || '' !== $attr[$prefix . 'BorderStyle' ]) {
 					$gen_border_css['border-top-width']    = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderTopWidthTablet' ], 'px' );
 					$gen_border_css['border-left-width']   = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderLeftWidthTablet' ], 'px' );
 					$gen_border_css['border-right-width']  = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderRightWidthTablet' ], 'px' );
@@ -1612,6 +1612,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function uag_generate_deprecated_border_css( $current_css, $border_width, $border_radius, $border_color = '', $border_style = '' ) {
 			$gen_border_css = array();
+
 			if ( is_numeric( $border_width ) ) {
 				$gen_border_css['border-top-width']    = UAGB_Helper::get_css_value( $border_width, 'px' );
 				$gen_border_css['border-left-width']   = UAGB_Helper::get_css_value( $border_width, 'px' );
@@ -1629,11 +1630,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( $border_color ) {
 				$gen_border_css['border-color'] = $border_color;
 			}
-
 			if ( $border_style ) {
 				$gen_border_css['border-style'] = $border_style;
+				var_dump($gen_border_css['border-style']);
 			}
-			return wp_parse_args( $current_css, $gen_border_css );
+			return $gen_border_css;
 		}
 
 		/**

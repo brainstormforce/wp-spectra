@@ -114,6 +114,11 @@ return array_merge(
 		'titleLetterSpacingTablet'    => '',
 		'titleLetterSpacingMobile'    => '',
 		'titleLetterSpacingType'      => 'px',
+		'borderWidth'                 => 1,
+		'borderColor'                 => '#e0e0e0',
+		'borderRadius'                => '',
+		'borderStyle'                 => 'solid',
+		'borderHoverColor'            => '',
 	),
 	$border_attribute
 );

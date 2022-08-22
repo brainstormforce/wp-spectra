@@ -133,6 +133,11 @@ return array_merge(
 		'answerLetterSpacingType'      => 'px',
 		'questionTextBgColor'          => '',
 		'questionTextActiveBgColor'    => '',
+		'borderStyle'                  => 'solid',
+		'borderWidth'                  => 1,
+		'borderRadius'                 => 2,
+		'borderColor'                  => '',
+		'borderHoverColor'             => '',
 	),
 	$border_attribute
 );
