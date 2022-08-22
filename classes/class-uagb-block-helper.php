@@ -1535,7 +1535,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$border_attr[ "{$prefix}BorderTopRightRadius{$data}" ]    = '';
 				$border_attr[ "{$prefix}BorderBottomLeftRadius{$data}" ]  = '';
 				$border_attr[ "{$prefix}BorderBottomRightRadius{$data}" ] = '';
-				$border_attr[ "{$prefix}BorderRadiusUnit{$data}" ]        = '';
+				$border_attr[ "{$prefix}BorderRadiusUnit{$data}" ]        = 'px';
 			}
 
 			$border_attr[ "{$prefix}BorderStyle" ]  = '';
