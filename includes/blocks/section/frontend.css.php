@@ -127,7 +127,7 @@ $selectors[' .uagb-section__overlay'] = $overall_border_css;
 if ( 'video' === $bg_type ) {
 	if ( 'color' === $overlay_type ) {
 		$selectors[' > .uagb-section__overlay'] = array(
-			'opacity'          => ( isset( $attr['backgroundVideoOpacity'] ) && '' !== $attr['backgroundVideoOpacity'] && 101 !== $attr['backgroundVideoOpacity'] && 0 !== $attr['backgroundVideoOpacity'] ) ? $attr['backgroundVideoOpacity'] / 100 : '',
+			'opacity'          => 1,
 			'background-color' => $attr['backgroundVideoColor'],
 		);
 	} else {
@@ -161,7 +161,7 @@ if ( 'video' === $bg_type ) {
 	);
 } elseif ( 'gradient' === $bg_type ) {
 	$selectors[' > .uagb-section__overlay']['background-color'] = 'transparent';
-
+	$selectors[' > .uagb-section__overlay']['opacity']          = ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] && 0 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '';
 	if ( $attr['gradientValue'] ) {
 		$selectors[' > .uagb-section__overlay']['background-image'] = $attr['gradientValue'];
 	} else {

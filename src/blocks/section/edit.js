@@ -78,6 +78,8 @@ const UAGBSectionEdit = ( props ) => {
 			 gradientOverlayPosition,
 			 gradientOverlayLocation2,
 			 gradientOverlayType,
+			 backgroundVideoOpacity,
+			 backgroundVideoColor
 			} = attributes;
 
 		if( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ){
@@ -102,6 +104,14 @@ const UAGBSectionEdit = ( props ) => {
 				const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
 				setAttributes( { backgroundImageColor: color } );
 				setAttributes( { backgroundOpacity: 101 } );
+			}
+		}
+
+		if ( 'video' === backgroundType ) {
+			if ( 101 !== backgroundVideoOpacity ) {
+				const color = hexToRGBA( maybeGetColorForVariable( backgroundVideoColor ), backgroundVideoOpacity );
+				setAttributes( { backgroundVideoColor: color } );
+				setAttributes( { backgroundVideoOpacity: 101 } );
 			}
 		}
 

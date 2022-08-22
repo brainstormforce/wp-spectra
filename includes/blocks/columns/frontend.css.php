@@ -125,7 +125,7 @@ if ( '' !== $attr['bottomWidth'] ) {
 if ( 'video' === $bg_type ) {
 	if ( 'color' === $overlay_type ) {
 		$selectors[' > .uagb-columns__overlay'] = array(
-			'opacity'          => ( isset( $attr['backgroundVideoOpacity'] ) && '' !== $attr['backgroundVideoOpacity'] && 101 !== $attr['backgroundVideoOpacity'] && 0 !== $attr['backgroundVideoOpacity'] ) ? $attr['backgroundVideoOpacity'] / 100 : '',
+			'opacity'          => 1,
 			'background-color' => $attr['backgroundVideoColor'],
 		);
 	} else {
