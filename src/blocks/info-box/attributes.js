@@ -3,7 +3,11 @@
  */
  import { getBorderAttributes } from '@Controls/generateAttributes';
 
- const borderAttributes = getBorderAttributes( 'btn' );
+ const borderAttributes = getBorderAttributes( 'btn', {
+	borderStyle: 'solid',
+	borderColor: '#333',
+	borderHColor: '',
+} );
 
  const attributes = {
 	inheritFromTheme: {
@@ -740,6 +744,7 @@
 	},
 	ctaBorderStyle: {
 		type: 'string',
+		default: 'solid',
 	},
 	ctaBtnVertPadding: {
 		type: 'number',

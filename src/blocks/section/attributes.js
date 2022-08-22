@@ -5,7 +5,7 @@ const overallBorderAttributes = getBorderAttributes( 'overall', {
 	borderRightWidth: 1,
 	borderBottomWidth: 1,
 	borderLeftWidth: 1,
-	borderStyle: 'none',
+	borderStyle: '',
 } );
 
 /**
