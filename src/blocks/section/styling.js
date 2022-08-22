@@ -67,7 +67,7 @@ function styling( props ) {
 	}
 	let videoOpacity = 0.5;
 	if ( typeof backgroundVideoOpacity !== 'undefined' ) {
-		videoOpacity = ( 1 < backgroundVideoOpacity ) ? ( ( 100 - backgroundVideoOpacity ) / 100 ) : ( ( 1 - backgroundVideoOpacity ) );
+		videoOpacity = ( 1 < backgroundVideoOpacity?.value ) ? ( ( 100 - backgroundVideoOpacity?.value ) / 100 ) : ( ( 1 - backgroundVideoOpacity?.value ) );
 	}
 
 	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' )
