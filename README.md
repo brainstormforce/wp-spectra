@@ -171,7 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 2.0.5 ###
-* Fix: Post Grid - Pagination aligned left.
+* Fix: Post Grid - Pagination alignment not working on frontend.
 
 ### 2.0.4 - SUNDAY, 21st AUGUST 2022 ###
 * Feature: Added Enable Legacy Blocks option in Admin Dashboard.
