@@ -126,7 +126,7 @@ function styling( props ) {
 	if ( 'video' === backgroundType ) {
 		if ( 'color' === overlayType ) {
 			selectors[' > .uagb-columns__overlay'] = {
-				'opacity' : ( typeof backgroundOpacity !== 'undefined' && 0 !== backgroundOpacity ) ? backgroundOpacity/100 : '',
+				'opacity' : ( typeof backgroundVideoOpacity !== 'undefined' && 0 !== backgroundVideoOpacity ) ? backgroundVideoOpacity/100 : '',
 				'background-color': backgroundVideoColor
 			}
 		} else {

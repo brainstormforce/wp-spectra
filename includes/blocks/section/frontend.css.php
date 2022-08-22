@@ -127,7 +127,7 @@ $selectors[' .uagb-section__overlay'] = $overall_border_css;
 if ( 'video' === $bg_type ) {
 	if ( 'color' === $overlay_type ) {
 		$selectors[' > .uagb-section__overlay'] = array(
-			'opacity'          => 1,
+			'opacity'          => ( isset( $attr['backgroundVideoOpacity'] ) && '' !== $attr['backgroundVideoOpacity'] && 101 !== $attr['backgroundVideoOpacity'] && 0 !== $attr['backgroundVideoOpacity'] ) ? $attr['backgroundVideoOpacity'] / 100 : '',
 			'background-color' => $attr['backgroundVideoColor'],
 		);
 	} else {
