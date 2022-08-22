@@ -114,7 +114,7 @@ return array_merge(
 		'blockMarginUnitMobile'        => 'px',
 		'blockMarginLink'              => '',
 		// link.
-		'linkColor'                    => '#007cba',
+		'linkColor'                    => '',
 		'linkHColor'                   => '',
 		// Highlight.
 		'highLightColor'               => '#fff',
