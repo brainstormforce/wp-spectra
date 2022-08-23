@@ -33,7 +33,7 @@ const InitialSelector = ( { attributes, setAttributes } ) => {
 	};
 
     return setAttributes !== 'inapplicable' && (
-        <div className="uag-image-gallery-init-wrapper">
+        <div className="spectra-image-gallery-init-wrapper">
             { UAGB_Block_Icons.image_gallery }
             <h3>{ __( 'Spectra - Image Gallery', 'ultimate-addons-for-gutenberg' ) }</h3>
             <p>{ __( 'Select your images to get started', 'ultimate-addons-for-gutenberg' ) }</p>

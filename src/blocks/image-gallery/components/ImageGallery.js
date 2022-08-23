@@ -96,16 +96,16 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		setTimeout( () => {
 			switch ( feedLayout ) {
 				case 'tiled':
-					const isotopeTileChild = isotopeElement.current.querySelector( '.uag-image-gallery__layout--tiled' );
+					const isotopeTileChild = isotopeElement.current.querySelector( '.spectra-image-gallery__layout--tiled' );
 					setAttributes( { tileSize: isotopeSpacer.current.getBoundingClientRect().width } );
 					// console.log( isotopeSpacer.current.getBoundingClientRect().width );
 					isotope.current.destroy();
 					isotope.current = new Isotope( isotopeTileChild, {
-						itemSelector: '.uag-image-gallery-media-wrapper',
+						itemSelector: '.spectra-image-gallery-media-wrapper',
 						layoutMode: 'masonry',
 						// percentPosition: true,
 						masonry: {
-							columnWidth: '.uag-image-gallery-media-spacer',
+							columnWidth: '.spectra-image-gallery-media-spacer',
 							// horizontalOrder: true,
 						},
 					} );
@@ -142,8 +142,8 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		else if ( feedLayout === 'tiled' ){
 			mediaGallery.forEach( ( image ) => {
 				if ( isotopeChildren.current[ image.id ] !== undefined && isotopeChildren.current[ image.id ] !== null ){
-					if ( focusList[ image.id ] && ! isotopeChildren.current[ image.id ].classList.contains( 'uag-image-gallery-media-wrapper--focus' ) ){
-						isotopeChildren.current[ image.id ].classList.add( 'uag-image-gallery-media-wrapper--focus' );
+					if ( focusList[ image.id ] && ! isotopeChildren.current[ image.id ].classList.contains( 'spectra-image-gallery-media-wrapper--focus' ) ){
+						isotopeChildren.current[ image.id ].classList.add( 'spectra-image-gallery-media-wrapper--focus' );
 					}
 				}
 			} );
@@ -154,13 +154,13 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		setTimeout( () => {
 			switch ( feedLayout ) {
 				case 'tiled':
-					const isotopeChild = isotopeElement.current.querySelector( '.uag-image-gallery__layout--tiled' );
+					const isotopeChild = isotopeElement.current.querySelector( '.spectra-image-gallery__layout--tiled' );
 					setAttributes( { tileSize: isotopeSpacer.current.getBoundingClientRect().width } );
 					isotope.current = new Isotope( isotopeChild, {
-						itemSelector: '.uag-image-gallery-media-wrapper',
+						itemSelector: '.spectra-image-gallery-media-wrapper',
 						layoutMode: 'masonry',
 						masonry: {
-							columnWidth: '.uag-image-gallery-media-spacer',
+							columnWidth: '.spectra-image-gallery-media-spacer',
 						},
 					} );
 					imagesLoaded( isotopeChild ).on( 'progress', ( theInstance, theImage ) => {
@@ -210,7 +210,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			setFocusUpdate( true );
 			for ( let i = 0; i < isotopeChildren.current.length; i++ ){
 				if ( isotopeChildren.current[ i ] !== undefined && isotopeChildren.current[ i ] !== null ){
-					isotopeChildren.current[ i ].classList.remove( 'uag-image-gallery-media--clickable' );
+					isotopeChildren.current[ i ].classList.remove( 'spectra-image-gallery-media--clickable' );
 				}
 			}
 		}
@@ -223,8 +223,8 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		for ( let i = 0; i < focusList.length; i++ ){
 			if ( focusList[ i ] !== undefined && isotopeChildren.current[ i ] !== undefined && isotopeChildren.current[ i ] !== null ){
 				focusList[ i ]
-					? isotopeChildren.current[ i ].classList.add( 'uag-image-gallery-media-wrapper--focus' )
-					: isotopeChildren.current[ i ].classList.remove( 'uag-image-gallery-media-wrapper--focus' );
+					? isotopeChildren.current[ i ].classList.add( 'spectra-image-gallery-media-wrapper--focus' )
+					: isotopeChildren.current[ i ].classList.remove( 'spectra-image-gallery-media-wrapper--focus' );
 			}
 		}
 		( isotope.current ) && isotope.current.layout();
@@ -236,8 +236,8 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			type="button"
 			data-role="none"
 			className={ classnames(
-				`uag-image-gallery__control-arrows`,
-				`uag-image-gallery__control-arrows--${ feedLayout }`,
+				`spectra-image-gallery__control-arrows`,
+				`spectra-image-gallery__control-arrows--${ feedLayout }`,
 				{
 					"slick-next": ( feedLayout === "carousel" || feedLayout === "tiled" ),
 					"slick-arrow": ( feedLayout === "carousel" || feedLayout === "tiled" ),
@@ -262,8 +262,8 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			type="button"
 			data-role="none"
 			className={ classnames(
-				`uag-image-gallery__control-arrows`,
-				`uag-image-gallery__control-arrows--${ feedLayout }`,
+				`spectra-image-gallery__control-arrows`,
+				`spectra-image-gallery__control-arrows--${ feedLayout }`,
 				{
 					"slick-prev": feedLayout === "carousel",
 					"slick-arrow": feedLayout === "carousel",
@@ -317,7 +317,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			width="24px"
 			height="24px"
 			viewBox="0 0 24 24"
-			className="uag-image-gallery__control-focus"
+			className="spectra-image-gallery__control-focus"
 			onClick={ () => alterFocus( image, true ) }
 		>
 			<path d="M6,4C4.9,4,4,4.9,4,6v4.375h1.5V6c0-0.3,0.2-0.5,0.5-0.5h4.376V4H6z"/>
@@ -333,7 +333,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			width="24px"
 			height="24px"
 			viewBox="37 0.083 24 24"
-			className="uag-image-gallery__control-focus"
+			className="spectra-image-gallery__control-focus"
 			onClick={ () => alterFocus( image, false ) }
 		>
 			<path d="M45.791,10.375c1.1,0,2-0.9,2-2V4h-1.5v4.375c0,0.3-0.2,0.5-0.5,0.5h-4.376v1.5H45.791z"/>
@@ -358,24 +358,24 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	const createSpecialTile = ( imageElement ) => {
 		// Check if one dimension is greater than 2 times - half of the other dimension.
 		if ( imageElement.naturalWidth >= ( imageElement.naturalHeight * 2 ) - ( imageElement.naturalHeight / 2 ) ){
-			imageElement.parentElement.parentElement.classList.add( 'uag-image-gallery-media-wrapper--wide');
-			imageElement.parentElement.classList.add( 'uag-image-gallery-media--tiled-wide');
+			imageElement.parentElement.parentElement.classList.add( 'spectra-image-gallery-media-wrapper--wide');
+			imageElement.parentElement.classList.add( 'spectra-image-gallery-media--tiled-wide');
 		}
 		else if ( imageElement.naturalHeight >= ( imageElement.naturalWidth * 2 ) - ( imageElement.naturalWidth / 2 ) ){
-			imageElement.parentElement.parentElement.classList.add( 'uag-image-gallery-media-wrapper--tall');
-			imageElement.parentElement.classList.add( 'uag-image-gallery-media--tiled-tall');
+			imageElement.parentElement.parentElement.classList.add( 'spectra-image-gallery-media-wrapper--tall');
+			imageElement.parentElement.classList.add( 'spectra-image-gallery-media--tiled-tall');
 		}
 	};
 
 	const renderGridPagintion = () => (
-		<div className={ classnames( `uag-image-gallery__control-wrapper` ) }>
+		<div className={ classnames( `spectra-image-gallery__control-wrapper` ) }>
 			<SlickPrevArrow />
-			<ul className={ classnames( `uag-image-gallery__control-dots` ) }>
+			<ul className={ classnames( `spectra-image-gallery__control-dots` ) }>
 				{ [...Array( gridPages ) ].map( ( pageData, pageIndex ) => (
 					<li
 						key={ pageIndex }
-						className={ classnames( "uag-image-gallery__control-dot", {
-							"uag-image-gallery__control-dot--active":
+						className={ classnames( "spectra-image-gallery__control-dot", {
+							"spectra-image-gallery__control-dot--active":
 								pageIndex === gridPageNumber - 1,
 						} ) }
 						data-go-to={ pageIndex + 1 }
@@ -391,15 +391,15 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	const renderMasonryPagintion = () => (
 		<>
 			{ paginateUseLoader ? (
-				<div className="uag-image-gallery__control-loader">
-					<div className="uag-image-gallery__control-loader--1"></div>
-					<div className="uag-image-gallery__control-loader--2"></div>
-					<div className="uag-image-gallery__control-loader--3"></div>
+				<div className="spectra-image-gallery__control-loader">
+					<div className="spectra-image-gallery__control-loader--1"></div>
+					<div className="spectra-image-gallery__control-loader--2"></div>
+					<div className="spectra-image-gallery__control-loader--3"></div>
 				</div>
 			) : (
-				<div className="uag-image-gallery__control-wrapper">
+				<div className="spectra-image-gallery__control-wrapper">
 					<div
-						className={ classnames( `uag-image-gallery__control-button` ) }
+						className={ classnames( `spectra-image-gallery__control-button` ) }
 						aria-label={ __(
 							paginateButtonText,
 							'ultimate-addons-for-gutenberg'
@@ -421,7 +421,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	}
 
 	const renderIsoRef = () => (
-		<div className="uag-image-gallery__iso-ref-wrapper" ref={ isotopeElement }>
+		<div className="spectra-image-gallery__iso-ref-wrapper" ref={ isotopeElement }>
 			{ renderGallery() }
 		</div>
 	);
@@ -434,11 +434,11 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 					<>
 						<div
 							className={ classnames(
-								`uag-image-gallery`,
-								`uag-image-gallery__layout--${ gridLayout }`,
-								`uag-image-gallery__layout--${ gridLayout }-col-${ columnsDeskFallback }`,
-								`uag-image-gallery__layout--${ gridLayout }-col-tab-${ columnsTabFallback }`,
-								`uag-image-gallery__layout--${ gridLayout }-col-mob-${ columnsMobFallback }`
+								`spectra-image-gallery`,
+								`spectra-image-gallery__layout--${ gridLayout }`,
+								`spectra-image-gallery__layout--${ gridLayout }-col-${ columnsDeskFallback }`,
+								`spectra-image-gallery__layout--${ gridLayout }-col-tab-${ columnsTabFallback }`,
+								`spectra-image-gallery__layout--${ gridLayout }-col-mob-${ columnsMobFallback }`
 							) }
 						>
 							{ renderImageLooper() }
@@ -451,11 +451,11 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 					<>
 						<Masonry
 							className={ classnames(
-								`uag-image-gallery`,
-								`uag-image-gallery__layout--${ feedLayout }`,
-								`uag-image-gallery__layout--${ feedLayout }-col-${ columnsDeskFallback }`,
-								`uag-image-gallery__layout--${ feedLayout }-col-tab-${ columnsTabFallback }`,
-								`uag-image-gallery__layout--${ feedLayout }-col-mob-${ columnsMobFallback }`
+								`spectra-image-gallery`,
+								`spectra-image-gallery__layout--${ feedLayout }`,
+								`spectra-image-gallery__layout--${ feedLayout }-col-${ columnsDeskFallback }`,
+								`spectra-image-gallery__layout--${ feedLayout }-col-tab-${ columnsTabFallback }`,
+								`spectra-image-gallery__layout--${ feedLayout }-col-mob-${ columnsMobFallback }`
 							) }
 							updateOnEachImageLoad={ true }
 						>
@@ -469,14 +469,14 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 					<>
 						<div
 							className={ classnames(
-								`uag-image-gallery`,
-								`uag-image-gallery__layout--${ feedLayout }`,
-								`uag-image-gallery__layout--${ feedLayout }-col-${ columnsDeskFallback }`,
-								`uag-image-gallery__layout--${ feedLayout }-col-tab-${ columnsTabFallback }`,
-								`uag-image-gallery__layout--${ feedLayout }-col-mob-${ columnsMobFallback }`
+								`spectra-image-gallery`,
+								`spectra-image-gallery__layout--${ feedLayout }`,
+								`spectra-image-gallery__layout--${ feedLayout }-col-${ columnsDeskFallback }`,
+								`spectra-image-gallery__layout--${ feedLayout }-col-tab-${ columnsTabFallback }`,
+								`spectra-image-gallery__layout--${ feedLayout }-col-mob-${ columnsMobFallback }`
 							) }
 						>
-							<div className="uag-image-gallery-media-spacer" ref={ isotopeSpacer }></div>
+							<div className="spectra-image-gallery-media-spacer" ref={ isotopeSpacer }></div>
 							{ renderImageLooper() }
 						</div>
 					</>
@@ -485,8 +485,8 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				return (
 					<div
 						className={ classnames(
-							`uag-image-gallery`,
-							`uag-image-gallery__layout--${ feedLayout }`
+							`spectra-image-gallery`,
+							`spectra-image-gallery__layout--${ feedLayout }`
 						)}
 						ref={ slickCarousel }
 						style={ { 'margin-bottom': `${ slickDotHeight }px` } }
@@ -516,7 +516,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 
 	const renderImage = ( mediaObject ) => (
 		<div
-			className="uag-image-gallery-media-wrapper"
+			className="spectra-image-gallery-media-wrapper"
 			key={ mediaObject.id }
 			ref={ ( element ) => ( isotopeChildren.current[ mediaObject.id ] = element ) }
 		>
@@ -532,32 +532,32 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				imageDisplayCaption && (
 					<div
 						className={ classnames(
-							`uag-image-gallery-media__thumbnail-caption-wrapper`,
-							`uag-image-gallery-media__thumbnail-caption-wrapper--${ captionDisplayType }`
+							`spectra-image-gallery-media__thumbnail-caption-wrapper`,
+							`spectra-image-gallery-media__thumbnail-caption-wrapper--${ captionDisplayType }`
 						) }
 					>
 						{ renderCaption( mediaObject ) }
 					</div>
 				) }
 			<div className={ classnames(
-				"uag-image-gallery-media",
-				`uag-image-gallery-media--${ feedLayout }`,
+				"spectra-image-gallery-media",
+				`spectra-image-gallery-media--${ feedLayout }`,
 			) }>
 				<img
 					className={ classnames(
-						"uag-image-gallery-media__thumbnail",
-						`uag-image-gallery-media__thumbnail--${ feedLayout }`
+						"spectra-image-gallery-media__thumbnail",
+						`spectra-image-gallery-media__thumbnail--${ feedLayout }`
 					)}
 					src={ mediaObject.url }
 				/>
-				<div className="uag-image-gallery-media__thumbnail-blurrer"></div>
+				<div className="spectra-image-gallery-media__thumbnail-blurrer"></div>
 				{ imageDisplayCaption
 					? (
 						captionDisplayType !== "bar-outside" && (
 							<div
 								className={ classnames(
-									`uag-image-gallery-media__thumbnail-caption-wrapper`,
-									`uag-image-gallery-media__thumbnail-caption-wrapper--${ captionDisplayType }`
+									`spectra-image-gallery-media__thumbnail-caption-wrapper`,
+									`spectra-image-gallery-media__thumbnail-caption-wrapper--${ captionDisplayType }`
 								) }
 							>
 								{ renderCaption( mediaObject ) }
@@ -567,8 +567,8 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 					: (
 						<div
 							className={ classnames(
-								`uag-image-gallery-media__thumbnail-caption-wrapper`,
-								`uag-image-gallery-media__thumbnail-caption-wrapper--overlay`
+								`spectra-image-gallery-media__thumbnail-caption-wrapper`,
+								`spectra-image-gallery-media__thumbnail-caption-wrapper--overlay`
 							) }
 						></div>
 					)
@@ -579,8 +579,8 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				imageDisplayCaption && (
 					<div
 						className={ classnames(
-							`uag-image-gallery-media__thumbnail-caption-wrapper`,
-							`uag-image-gallery-media__thumbnail-caption-wrapper--${ captionDisplayType }`
+							`spectra-image-gallery-media__thumbnail-caption-wrapper`,
+							`spectra-image-gallery-media__thumbnail-caption-wrapper--${ captionDisplayType }`
 						) }
 					>
 						{ renderCaption( mediaObject ) }
@@ -668,8 +668,8 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		return (
 			<div
 				className={ classnames(
-					`uag-image-gallery-media__thumbnail-caption`,
-					`uag-image-gallery-media__thumbnail-caption--${ captionDisplayType }`
+					`spectra-image-gallery-media__thumbnail-caption`,
+					`spectra-image-gallery-media__thumbnail-caption--${ captionDisplayType }`
 				) }
 			>
 				{ `${
@@ -682,7 +682,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	};
 
 	const renderEmpty = () => (
-		<div className="uag-image-gallery-init-wrapper">
+		<div className="spectra-image-gallery-init-wrapper">
 			{ UAGB_Block_Icons.image_gallery }
 			<h3>
 				{ __(

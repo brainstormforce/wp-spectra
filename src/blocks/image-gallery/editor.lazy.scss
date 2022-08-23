@@ -2,13 +2,15 @@
  * Editor styles for the admin
  */
 
-// This Mixing Forces an Element to it's Original Dimensions.
+/* stylelint-disable at-rule-no-unknown */
+
+// This Mixin Forces an Element to it's Original Dimensions.
 @mixin forceSizeAuto {
 	width: auto !important;
 	height: auto !important;
 }
 
-// This Mixing Forces an Element to 100% of the Parent.
+// This Mixin Forces an Element to 100% of the Parent.
 @mixin forceSize100 {
 	width: 100% !important;
 	height: 100% !important;
@@ -21,7 +23,7 @@
 	display: grid; // Columns handled in Dynamic Styling.
 	grid-auto-flow: dense;
 
-	.uag-image-gallery-media-wrapper {
+	.spectra-image-gallery-media-wrapper {
 
 		@include forceSizeAuto();
 		aspect-ratio: 1;
@@ -30,7 +32,7 @@
 			grid-column: span 2;
 			aspect-ratio: 2/1;
 
-			.uag-image-gallery-media--tiled-wide {
+			.spectra-image-gallery-media--tiled-wide {
 
 				@include forceSize100();
 			}
@@ -40,7 +42,7 @@
 			grid-row: span 2;
 			aspect-ratio: 1/2;
 
-			.uag-image-gallery-media--tiled-tall {
+			.spectra-image-gallery-media--tiled-tall {
 
 				@include forceSize100();
 			}
@@ -51,21 +53,21 @@
 			grid-column: span 2;
 		}
 
-		.uag-image-gallery-media--masonry,
-		.uag-image-gallery-media__thumbnail--masonry {
+		.spectra-image-gallery-media--masonry,
+		.spectra-image-gallery-media__thumbnail--masonry {
 
 			@include forceSize100();
 		}
 	}
-	
-	.uag-image-gallery-media-spacer {
+
+	.spectra-image-gallery-media-spacer {
 		display: none;
 	}
 }
 
-.uag-image-gallery-init{
+.spectra-image-gallery-init {
 
-	&-wrapper{
+	&-wrapper {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -74,7 +76,7 @@
 		padding: 2rem;
 		width: 100%;
 
-		& .components-input-control__container{
+		& .components-input-control__container {
 			box-sizing: border-box;
 			margin: 0;
 			font-weight: var(--heading-weight-500);
@@ -95,7 +97,7 @@
 			}
 		}
 
-		& svg{
+		& svg {
 			width: 3em;
 			height: 3em;
 		}
@@ -106,12 +108,12 @@
 .uagb-editor-preview-mode-tablet,
 .uagb-editor-preview-mode-mobile {
 
-	.uag-image-gallery__layout--masonry {
+	.spectra-image-gallery__layout--masonry {
 
 		@include isotopeIframeHandlers();
 	}
 
-	.uag-image-gallery__layout--tiled {
+	.spectra-image-gallery__layout--tiled {
 
 		@include isotopeIframeHandlers();
 	}
@@ -120,8 +122,8 @@
 // Applies only in theme builder 2022.
 .editor-styles-wrapper .is-root-container.edit-site-block-editor__block-list.wp-site-blocks {
 
-	.uag-image-gallery__layout--masonry,
-	.uag-image-gallery__layout--tiled {
+	.spectra-image-gallery__layout--masonry,
+	.spectra-image-gallery__layout--tiled {
 		height: initial !important;
 	}
 }
