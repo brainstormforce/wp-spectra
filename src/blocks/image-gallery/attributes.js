@@ -16,6 +16,7 @@ const btnBorderAttributes = getBorderAttributes( 'btn', {
 	borderBottomLeftRadius: 50,
 	borderBottomRightRadius: 50,
 } );
+const mainTitleBorderAttributes = getBorderAttributes( 'mainTitle' );
 
 const attributes = {
 
@@ -1083,6 +1084,7 @@ const attributes = {
 	// Border Attributes
 	...arrowBorderAttributes,
 	...btnBorderAttributes,
+	...mainTitleBorderAttributes,
 };
 
 export default attributes;

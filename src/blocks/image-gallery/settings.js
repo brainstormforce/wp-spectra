@@ -1664,6 +1664,12 @@ const Settings = ( props ) => {
 					</>
 				)
 			}
+			<ResponsiveBorder
+				setAttributes={ setAttributes }
+				prefix={ 'mainTitle' }
+				attributes={ attributes }
+				deviceType={ deviceType }
+			/>
 		</UAGAdvancedPanelBody>
 	);
 

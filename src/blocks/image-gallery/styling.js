@@ -169,6 +169,7 @@ function styling( props ) {
 		// Border Hover Colors.
 		buttonBorderHColor,
 		arrowBorderHColor,
+		mainTitleBorderHColor,
 	} = props.attributes;
 
 	// Border Attributes.
@@ -178,7 +179,10 @@ function styling( props ) {
 	const btnBorderCSS = generateBorderCSS( props.attributes, 'btn' );
 	const btnBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
 	const btnBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
-	
+	const mainTitleBorderCSS = generateBorderCSS( props.attributes, 'mainTitle' );
+	const mainTitleBorderCSSTablet = generateBorderCSS( props.attributes, 'mainTitle', 'tablet' );
+	const mainTitleBorderCSSMobile = generateBorderCSS( props.attributes, 'mainTitle', 'mobile' );
+		
 	// Range Fallback.
 	const captionBackgroundBlurOpacityFallback = getFallbackNumber( captionBackgroundBlurOpacity, 'captionBackgroundBlurOpacity', blockName );
 	const captionBackgroundBlurOpacityHoverFallback = getFallbackNumber( captionBackgroundBlurOpacityHover, 'captionBackgroundBlurOpacityHover', blockName );
@@ -407,22 +411,12 @@ function styling( props ) {
 		},
 
 		// Caption Wrapper Selectors
-
-		' .uag-image-gallery-media__thumbnail-caption-wrapper': {
-			'border-radius': generateBorderRadius(
-				imageBorderRadiusUnit,
-				imageBorderTopLeftRadius,
-				imageBorderTopRightRadius,
-				imageBorderBottomRightRadius,
-				imageBorderBottomLeftRadius,
-			),
-		},
 		' .uag-image-gallery-media__thumbnail-caption-wrapper--overlay': {
 			'background-color': imageDisplayCaption ? ( ( captionVisibility === 'hover' ) ? 'rgba(0,0,0,0)' : captionBackgroundColor ) : overlayColor,
 		},
 		' .uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-caption-wrapper--overlay': {
 			'background-color': imageDisplayCaption ? ( ( captionVisibility === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( captionVisibility === 'always' && captionSeparateColors ) ? captionBackgroundColorHover : captionBackgroundColor ) ) : overlayColorHover,
-		},		
+		},
 		' .uag-image-gallery-media__thumbnail-caption-wrapper--bar-inside': {
 			'-webkit-align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
 			'align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
@@ -474,15 +468,19 @@ function styling( props ) {
 		},		
 		' .uag-image-gallery-media__thumbnail-caption--bar-inside': {
 			'background-color': ( captionVisibility === 'hover' ) ? 'rgba(0,0,0,0)' : captionBackgroundColor,
+			...mainTitleBorderCSS,
 		},
 		' .uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-caption--bar-inside': {
 			'background-color': ( captionVisibility === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( captionVisibility === 'always' && captionSeparateColors ) ? captionBackgroundColorHover : captionBackgroundColor ),
-		},		
+			'border-color': mainTitleBorderHColor,
+		},
 		' .uag-image-gallery-media__thumbnail-caption--bar-outside': {
 			'background-color': captionBackgroundColor,
+			...mainTitleBorderCSS,
 		},
 		' .uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-caption--bar-outside': {
 			'background-color': captionSeparateColors ? captionBackgroundColorHover : captionBackgroundColor,
+			'border-color': mainTitleBorderHColor,
 		},
 		' .uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-caption': {
 			'color': ( captionVisibility === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( captionVisibility === 'always' && captionSeparateColors ) ? captionColorHover : captionColor ),
@@ -510,6 +508,9 @@ function styling( props ) {
 		},
 		' .uag-image-gallery__layout--carousel ul.slick-dots': {
 			'margin-bottom': generateCSSUnit( feedMarginBottomTab, feedMarginUnitTab ),
+		},
+		' .uag-image-gallery__control-arrows--carousel': {
+			...arrowBorderCSSTablet,
 		},
 		' .uag-image-gallery__control-button': {
 			'padding': generateSpacing(
@@ -622,8 +623,12 @@ function styling( props ) {
 				captionPaddingUnitTab
 			),
 		},
-		' .uag-image-gallery__control-arrows--carousel': {
-			...arrowBorderCSSTablet,
+		' .uag-image-gallery-media__thumbnail-caption--bar-inside': {
+			...mainTitleBorderCSSTablet,
+		},
+
+		' .uag-image-gallery-media__thumbnail-caption--bar-outside': {
+			...mainTitleBorderCSSTablet,
 		},
 	};
 
@@ -648,6 +653,9 @@ function styling( props ) {
 		},
 		' .uag-image-gallery__layout--carousel ul.slick-dots': {
 			'margin-bottom': generateCSSUnit( feedMarginBottomMob, feedMarginUnitMob ),
+		},
+		' .uag-image-gallery__control-arrows--carousel': {
+			...arrowBorderCSSMobile,
 		},
 		' .uag-image-gallery__control-button': {
 			'padding': generateSpacing(
@@ -760,8 +768,12 @@ function styling( props ) {
 				captionPaddingUnitMob
 			),
 		},
-		' .uag-image-gallery__control-arrows--carousel': {
-			...arrowBorderCSSMobile,
+		' .uag-image-gallery-media__thumbnail-caption--bar-inside': {
+			...mainTitleBorderCSSMobile,
+		},
+
+		' .uag-image-gallery-media__thumbnail-caption--bar-outside': {
+			...mainTitleBorderCSSMobile,
 		},
 	};
 
@@ -817,122 +829,6 @@ function styling( props ) {
 			'-webkit-backdrop-filter': 'none',
 			'backdrop-filter': 'none',
 		};
-	}
-
-	// Caption Type based styling
-
-	if ( captionDisplayType === 'bar-outside' && imageDisplayCaption ){
-		switch( getMatrixAlignment( imageCaptionAlignment, 1 ) ){
-			case 'top':
-				selectors[ ' .uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ] = {
-					...selectors[ ' .uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnit, imageBorderTopLeftRadius, imageBorderTopRightRadius, 0, 0 ),
-				};
-				selectors[ ' .uag-image-gallery-media' ] = {
-					...selectors[ ' .uag-image-gallery-media' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnit, 0, 0, imageBorderBottomRightRadius, imageBorderBottomLeftRadius ),
-				};
-				selectors[ ' .uag-image-gallery-media__thumbnail' ] = {
-					...selectors[ ' .uag-image-gallery-media__thumbnail' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnit, 0, 0, imageBorderBottomRightRadius, imageBorderBottomLeftRadius ),
-				};
-				selectors[ ' .uag-image-gallery-media__thumbnail-blurrer' ] = {
-					...selectors[ ' .uag-image-gallery-media__thumbnail-blurrer' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnit, 0, 0, imageBorderBottomRightRadius, imageBorderBottomLeftRadius ),
-				};
-				tabletSelectors[ ' .uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ] = {
-					...tabletSelectors[ ' .uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnitTablet, imageBorderTopLeftRadiusTablet, imageBorderTopRightRadiusTablet, 0, 0 ),
-				};
-				tabletSelectors[ ' .uag-image-gallery-media' ] = {
-					...tabletSelectors[ ' .uag-image-gallery-media' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnitTablet, 0, 0, imageBorderBottomRightRadiusTablet, imageBorderBottomLeftRadiusTablet ),
-				};
-				tabletSelectors[ ' .uag-image-gallery-media__thumbnail' ] = {
-					...tabletSelectors[ ' .uag-image-gallery-media__thumbnail' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnitTablet, 0, 0, imageBorderBottomRightRadiusTablet, imageBorderBottomLeftRadiusTablet ),
-				};
-				tabletSelectors[ ' .uag-image-gallery-media__thumbnail-blurrer' ] = {
-					...tabletSelectors[ ' .uag-image-gallery-media__thumbnail-blurrer' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnitTablet, 0, 0, imageBorderBottomRightRadiusTablet, imageBorderBottomLeftRadiusTablet ),
-				};
-				mobileSelectors[ ' .uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ] = {
-					...mobileSelectors[ ' .uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnitMobile, imageBorderTopLeftRadiusMobile, imageBorderTopRightRadiusMobile, 0, 0 ),
-				};
-				mobileSelectors[ ' .uag-image-gallery-media' ] = {
-					...mobileSelectors[ ' .uag-image-gallery-media' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnitMobile, 0, 0, imageBorderBottomRightRadiusMobile, imageBorderBottomLeftRadiusMobile ),
-				};
-				mobileSelectors[ ' .uag-image-gallery-media__thumbnail' ] = {
-					...mobileSelectors[ ' .uag-image-gallery-media__thumbnail' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnitMobile, 0, 0, imageBorderBottomRightRadiusMobile, imageBorderBottomLeftRadiusMobile ),
-				};
-				mobileSelectors[ ' .uag-image-gallery-media__thumbnail-blurrer' ] = {
-					...mobileSelectors[ ' .uag-image-gallery-media__thumbnail-blurrer' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnitMobile, 0, 0, imageBorderBottomRightRadiusMobile, imageBorderBottomLeftRadiusMobile ),
-				};
-				break;
-			case 'center':
-				selectors[ ' .uag-image-gallery-media__thumbnail-caption-wrapper' ] = {
-					...selectors[ ' .uag-image-gallery-media__thumbnail-caption-wrapper' ],
-					'margin-top': generateCSSUnit(
-						captionGapFallback,
-						captionGapUnit
-					),
-				};
-				break;
-			case 'bottom':
-				selectors[ ' .uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ] = {
-					...selectors[ ' .uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnit, 0, 0, imageBorderBottomRightRadius, imageBorderBottomLeftRadius ),
-				};
-				selectors[ ' .uag-image-gallery-media' ] = {
-					...selectors[ ' .uag-image-gallery-media' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnit, imageBorderTopLeftRadius, imageBorderTopRightRadius, 0, 0 ),
-				};
-				selectors[ ' .uag-image-gallery-media__thumbnail' ] = {
-					...selectors[ ' .uag-image-gallery-media__thumbnail' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnit, imageBorderTopLeftRadius, imageBorderTopRightRadius, 0, 0 ),
-				};
-				selectors[ ' .uag-image-gallery-media__thumbnail-blurrer' ] = {
-					...selectors[ ' .uag-image-gallery-media__thumbnail-blurrer' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnit, imageBorderTopLeftRadius, imageBorderTopRightRadius, 0, 0 ),
-				};
-				tabletSelectors[ ' .uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ] = {
-					...tabletSelectors[ ' .uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnitTablet, 0, 0, imageBorderBottomRightRadiusTablet, imageBorderBottomLeftRadiusTablet ),
-				};
-				tabletSelectors[ ' .uag-image-gallery-media' ] = {
-					...tabletSelectors[ ' .uag-image-gallery-media' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnitTablet, imageBorderTopLeftRadiusTablet, imageBorderTopRightRadiusTablet, 0, 0 ),
-				};
-				tabletSelectors[ ' .uag-image-gallery-media__thumbnail' ] = {
-					...tabletSelectors[ ' .uag-image-gallery-media__thumbnail' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnitTablet, imageBorderTopLeftRadiusTablet, imageBorderTopRightRadiusTablet, 0, 0 ),
-				};
-				tabletSelectors[ ' .uag-image-gallery-media__thumbnail-blurrer' ] = {
-					...tabletSelectors[ ' .uag-image-gallery-media__thumbnail-blurrer' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnitTablet, imageBorderTopLeftRadiusTablet, imageBorderTopRightRadiusTablet, 0, 0 ),
-				};
-				mobileSelectors[ ' .uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ] = {
-					...mobileSelectors[ ' .uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnitMobile, 0, 0, imageBorderBottomRightRadiusMobile, imageBorderBottomLeftRadiusMobile ),
-				};
-				mobileSelectors[ ' .uag-image-gallery-media' ] = {
-					...mobileSelectors[ ' .uag-image-gallery-media' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnitMobile, imageBorderTopLeftRadiusMobile, imageBorderTopRightRadiusMobile, 0, 0 ),
-				};
-				mobileSelectors[ ' .uag-image-gallery-media__thumbnail' ] = {
-					...mobileSelectors[ ' .uag-image-gallery-media__thumbnail' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnitMobile, imageBorderTopLeftRadiusMobile, imageBorderTopRightRadiusMobile, 0, 0 ),
-				};
-				mobileSelectors[ ' .uag-image-gallery-media__thumbnail-blurrer' ] = {
-					...mobileSelectors[ ' .uag-image-gallery-media__thumbnail-blurrer' ],
-					'border-radius': generateBorderRadius( imageBorderRadiusUnitMobile, imageBorderTopLeftRadiusMobile, imageBorderTopRightRadiusMobile, 0, 0 ),
-				};
-				break;
-		}
 	}
 
 	// Carousel based styling

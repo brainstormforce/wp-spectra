@@ -29,6 +29,7 @@ $btn_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute(
 		'borderBottomRightRadius' => 50,
 	)
 );
+$main_title_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute( 'mainTitle' );
 
 return array_merge(
 	array(
@@ -207,4 +208,5 @@ return array_merge(
 	),
 	$arrow_border_attributes,
 	$btn_border_attributes,
+	$main_title_border_attributes,
 );
