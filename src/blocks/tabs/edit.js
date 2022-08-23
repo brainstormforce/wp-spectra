@@ -80,7 +80,7 @@ const UAGBTabsEdit = ( props ) => {
 		const { borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor } = props.attributes;
 		// Backward Border Migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'tab', {
+			migrateBorderAttributes( 'tab', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -95,8 +95,8 @@ const UAGBTabsEdit = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			} );
-			props.setAttributes( migrationAttributes )
+			},
+			props.setAttributes );
 		}
 	}, [] );
 

@@ -492,23 +492,24 @@ const attributes = {
 	},
 	borderWidth: {
 		type: 'number',
-		default: '',
-	},
+		default:1
+	} ,
 	borderRadius: {
 		type: 'number',
-	},
+		default:2
+	} ,
 	borderStyle: {
 		type: 'string',
-		default: 'none',
-	},
+		default:'solid'
+	} ,
 	borderColor: {
 		type: 'string',
-		default: '#000',
-	},
+		default:'#333'
+	} ,
 	borderHColor: {
 		type: 'string',
-		default: '',
-	},
+		default:'#333'
+	} ,
 	...borderAttributes,
 	// letter spacing.
 	letterSpacing: {

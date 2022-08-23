@@ -1,18 +1,6 @@
 import { getBorderAttributes } from '@Controls/generateAttributes';
-const borderDefault = {
-	borderStyle: 'solid',
-	borderTopWidth: 1,
-	borderRightWidth: 1,
-	borderBottomWidth: 1,
-	borderLeftWidth: 1,
-	borderTopLeftRadius: 2,
-	borderTopRightRadius: 2,
-	borderBottomLeftRadius: 2,
-	borderBottomRightRadius: 2,
-	borderColor: '#1e1e1e',
-	borderHColor: '',
-}
-const borderAttributes = getBorderAttributes( 'overall', borderDefault );
+
+const borderAttributes = getBorderAttributes( 'overall' );
 
 const attributes = {
 	block_id: {
@@ -179,6 +167,7 @@ const attributes = {
 	},
 	borderStyle: {
 		type: 'string',
+		default: 'solid'
 	},
 	borderWidth: {
 		type: 'number',	},

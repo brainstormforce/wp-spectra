@@ -740,6 +740,7 @@
 	},
 	ctaBorderStyle: {
 		type: 'string',
+		default: 'solid',
 	},
 	ctaBtnVertPadding: {
 		type: 'number',

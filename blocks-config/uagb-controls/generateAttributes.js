@@ -32,7 +32,7 @@ export const getBorderAttributes = ( prefix, defaultArgs = {} ) => {
 		borderRadiusUnitTablet: 'px',
 		borderRadiusUnitMobile: 'px',
 		// common
-		borderStyle: 'none',
+		borderStyle: '',
 		borderColor:  '',
 		borderHColor: '',
 		...defaultArgs
@@ -159,22 +159,21 @@ export const getBorderAttributes = ( prefix, defaultArgs = {} ) => {
 }
 
 
-export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, color = {}, hoverColor = {}, borderStyle = {} ) => {
+export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, color = {}, hoverColor = {}, borderStyle = {}, setAttributes ) => {
 	const attributes = {};
-
 	if( ! isNaN( borderWidth.value ) ){
-
+		
 		if( undefined === attributes[ prefix + 'BorderTopWidth' ] ) {
-			attributes[ prefix + 'BorderTopWidth' ] = borderWidth.value;
+			setAttributes( { [ prefix + 'BorderTopWidth'] : borderWidth.value } );
 		}
 		if( undefined === attributes[ prefix + 'BorderLeftWidth' ] ) {
-			attributes[ prefix + 'BorderLeftWidth' ] = borderWidth.value;
+			setAttributes( { [ prefix + 'BorderLeftWidth' ]: borderWidth.value } );
 		}
 		if( undefined === attributes[ prefix + 'BorderRightWidth' ] ) {
-			attributes[ prefix + 'BorderRightWidth' ] = borderWidth.value;
+			setAttributes( { [ prefix + 'BorderRightWidth' ]: borderWidth.value } );
 		}
 		if( undefined === attributes[ prefix + 'BorderBottomWidth' ] ) {
-			attributes[ prefix + 'BorderBottomWidth' ] = borderWidth.value;
+			setAttributes( { [ prefix + 'BorderBottomWidth' ] : borderWidth.value } );
 		}
 		// reset
 		attributes[borderWidth.label] = '';
@@ -183,16 +182,16 @@ export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, colo
 	if( ! isNaN ( borderRadius.value ) ){
 
 		if( undefined === attributes[ prefix + 'BorderTopLeftRadius' ] ) {
-			attributes[ prefix + 'BorderTopLeftRadius' ] = borderRadius.value;
+			setAttributes( { [ prefix + 'BorderTopLeftRadius' ] : borderRadius.value } );
 		}
 		if( undefined === attributes[ prefix + 'BorderTopRightRadius' ] ) {
-			attributes[ prefix + 'BorderTopRightRadius' ] = borderRadius.value;
+			setAttributes( { [ prefix + 'BorderTopRightRadius' ] : borderRadius.value } );
 		}
 		if( undefined === attributes[ prefix + 'BorderBottomLeftRadius' ] ) {
-			attributes[ prefix + 'BorderBottomLeftRadius' ] = borderRadius.value;
+			setAttributes( { [ prefix + 'BorderBottomLeftRadius' ] : borderRadius.value } );
 		}
 		if( undefined === attributes[ prefix + 'BorderBottomRightRadius' ] ) {
-			attributes[ prefix + 'BorderBottomRightRadius' ] = borderRadius.value;
+			setAttributes( { [ prefix + 'BorderBottomRightRadius' ] : borderRadius.value } );
 		}
 		// reset
 		attributes[ borderRadius.label ] = '';
@@ -200,7 +199,7 @@ export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, colo
 
 	if( color.value ){
 		if( undefined === attributes[ prefix + 'BorderColor' ] ) {
-			attributes[ prefix + 'BorderColor' ] = color.value;
+			setAttributes( { [ prefix + 'BorderColor' ] : color.value } );
 		}
 		// reset
 		attributes[ color.label ] = '';
@@ -208,7 +207,7 @@ export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, colo
 
 	if( hoverColor.value ){
 		if( undefined === attributes[ prefix + 'BorderHColor' ] ) {
-			attributes[ prefix + 'BorderHColor' ] = hoverColor.value;
+			setAttributes( { [ prefix + 'BorderHColor' ] : hoverColor.value } );
 		}
 		// reset
 		attributes[ hoverColor.label ] = '';
@@ -216,7 +215,7 @@ export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, colo
 
 	if( borderStyle.value ){
 		if( undefined === attributes[ prefix + 'BorderStyle' ] ) {
-			attributes[ prefix + 'BorderStyle' ] = borderStyle.value;
+			setAttributes( { [ prefix + 'BorderStyle' ] : borderStyle.value } );
 		}
 		// reset
 		attributes[ borderStyle.label ] = '';

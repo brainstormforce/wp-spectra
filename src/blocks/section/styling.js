@@ -107,7 +107,6 @@ function styling( props ) {
 	if ( 'video' === backgroundType ) {
 		if ( 'color' === overlayType ) {
 			backgroundTypeCSS = {
-				'opacity' : 1,
 				'background-color': backgroundVideoColor,
 			};
 		} else {
@@ -119,7 +118,7 @@ function styling( props ) {
 		if ( 'color' === overlayType ) {
 			backgroundTypeCSS = {
 				'background-color': backgroundImageColor,
-				'opacity' : backgroundOpacity ? backgroundOpacity / 100 : 0
+				'opacity' : backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : ''
 			};
 		} else {
 			backgroundTypeCSS[
@@ -129,13 +128,11 @@ function styling( props ) {
 	} else if ( 'color' === backgroundType ) {
 		backgroundTypeCSS = {
 			'background-color': backgroundColor,
-			'opacity' : backgroundOpacity ? backgroundOpacity / 100 : 0,
+			'opacity' : backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : '',
 		};
 	} else if ( 'gradient' === backgroundType ) {
-
-		backgroundTypeCSS[
-			'background-image'
-		] = gradientValue;
+		backgroundTypeCSS.opacity =  backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : '';
+		backgroundTypeCSS['background-image'] = gradientValue
 	}
 
 	selectors[ ' > .uagb-section__overlay' ] = {

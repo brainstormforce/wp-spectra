@@ -26,7 +26,7 @@ const UAGBSectionEdit = ( props ) => {
 		const { borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor } = props.attributes;
 		// Backward Border Migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'overall', {
+			migrateBorderAttributes( 'overall', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -41,8 +41,8 @@ const UAGBSectionEdit = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			} );
-			props.setAttributes( migrationAttributes )
+			},
+			props.setAttributes );
 
 		}
 	}, [ ] );
@@ -77,7 +77,9 @@ const UAGBSectionEdit = ( props ) => {
 			 gradientOverlayLocation1,
 			 gradientOverlayPosition,
 			 gradientOverlayLocation2,
-			 gradientOverlayType
+			 gradientOverlayType,
+			 backgroundVideoOpacity,
+			 backgroundVideoColor
 			} = attributes;
 
 		if( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ){
@@ -102,6 +104,13 @@ const UAGBSectionEdit = ( props ) => {
 				const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
 				setAttributes( { backgroundImageColor: color } );
 				setAttributes( { backgroundOpacity: 101 } );
+			}
+		}
+
+		if ( 'video' === backgroundType ) {
+			if ( 101 !== backgroundVideoOpacity ) {
+				const color = hexToRGBA( maybeGetColorForVariable( backgroundVideoColor ), backgroundVideoOpacity );
+				setAttributes( { backgroundVideoColor: color } );
 			}
 		}
 
