@@ -3,7 +3,7 @@
  */
 
 
-import React, {  } from 'react';
+import React from 'react';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';

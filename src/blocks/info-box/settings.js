@@ -1,6 +1,6 @@
 import UAGIconPicker from '@Components/icon-picker';
 import { __ } from '@wordpress/i18n';
-import React, {  } from 'react';
+import React from 'react';
 
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';

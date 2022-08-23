@@ -1,5 +1,5 @@
 
-import React, {  } from 'react';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls, BlockControls, Inserter } from '@wordpress/block-editor';
 import TypographyControl from '@Components/typography';

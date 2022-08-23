@@ -1,4 +1,4 @@
-import React, {  } from 'react';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
 import UAGIconPicker from '@Components/icon-picker';
 import renderSVG from '@Controls/renderIcon';

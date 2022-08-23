@@ -1,4 +1,4 @@
-import React, {  } from 'react';
+import React from 'react';
 
 import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';

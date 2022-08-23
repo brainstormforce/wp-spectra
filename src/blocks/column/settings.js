@@ -2,7 +2,7 @@
  * BLOCK: Column - Settings.
  */
 
-import React, {  } from 'react';
+import React from 'react';
 
 import Background from '@Components/background';
 import ResponsiveBorder from '@Components/responsive-border';

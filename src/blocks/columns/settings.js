@@ -2,7 +2,7 @@
  * BLOCK: Columns - Settings.
  */
 import { __ } from '@wordpress/i18n';
-import React, {  } from 'react';
+import React from 'react';
 
 import BoxShadowControl from '@Components/box-shadow';
 import MultiButtonsControl from '@Components/multi-buttons-control';
