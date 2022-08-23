@@ -102,7 +102,7 @@ const UAGBContainer = ( props ) => {
 
 		// border
 		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'container', {
+			migrateBorderAttributes( 'container', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -117,9 +117,9 @@ const UAGBContainer = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			}
+			},
+			props.setAttributes
 			);
-			props.setAttributes( migrationAttributes )
 		}
 
 		if( 0 !== select( 'core/block-editor' ).getBlockParents(  props.clientId ).length ){ // if there is no parent for container when child container moved outside root then do not show variations.

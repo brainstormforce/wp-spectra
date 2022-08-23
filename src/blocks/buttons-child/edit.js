@@ -42,11 +42,6 @@ const ButtonsChildComponent = ( props ) => {
 			rightPadding,
 			bottomPadding,
 			leftPadding,
-			borderStyle,
-			borderWidth,
-			borderRadius,
-			borderColor,
-			borderHColor
 		} = attributes;
 
 		if ( vPadding ) {
@@ -66,10 +61,10 @@ const ButtonsChildComponent = ( props ) => {
 				setAttributes( { leftPadding: hPadding } );
 			}
 		}
-
-		// border
-		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'btn', {
+		const { borderStyle, borderWidth, borderRadius, borderColor, borderHoverColor } = props.attributes
+		// border migration
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
+			migrateBorderAttributes( 'btn', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -79,14 +74,15 @@ const ButtonsChildComponent = ( props ) => {
 				label: 'borderColor',
 				value: borderColor
 			}, {
-				label: 'borderHColor',
-				value: borderHColor
+				label: 'borderHoverColor',
+				value: borderHoverColor
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			}
+			},
+			props.setAttributes
 			);
-			props.setAttributes( migrationAttributes );
+			
 		}
 	}, [] );
 

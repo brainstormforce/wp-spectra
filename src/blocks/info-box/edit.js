@@ -60,7 +60,7 @@ const UAGBInfoBox = ( props ) => {
 		// Backward Border Migration
 		if( ctaBorderWidth || ctaBorderRadius || ctaBorderColor || ctaBorderhoverColor || ctaBorderStyle ){
 
-			const migrationAttributes = migrateBorderAttributes( 'btn', {
+			migrateBorderAttributes( 'btn', {
 				label: 'ctaBorderWidth',
 				value: ctaBorderWidth,
 			}, {
@@ -75,8 +75,8 @@ const UAGBInfoBox = ( props ) => {
 			},{
 				label: 'ctaBorderStyle',
 				value: ctaBorderStyle
-			} );
-			props.setAttributes( migrationAttributes )
+			},
+			props.setAttributes );
 		}
 	}, [] );
 
