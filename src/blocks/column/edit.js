@@ -3,17 +3,13 @@
  */
 
 import styling from './styling';
-import React, { useEffect, lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect,    } from 'react';
+
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/column/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/column/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 import hexToRGBA from '@Controls/hexToRgba';
 
@@ -86,10 +82,11 @@ const ColumnComponent = ( props ) => {
 	}, [deviceType] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<Settings parentProps={ props } deviceType = { deviceType }/>
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 

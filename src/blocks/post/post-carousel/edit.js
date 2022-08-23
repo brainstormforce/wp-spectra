@@ -5,8 +5,8 @@
 import styling from '.././styling';
 import { compose } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
-import React, { useState, useEffect, Suspense, lazy } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useState, useEffect,   } from 'react';
+
 import TypographyControl from '@Components/typography';
 import { decodeEntities } from '@wordpress/html-entities';
 import ResponsiveBorder from '@Components/responsive-border';
@@ -32,14 +32,8 @@ import UAGNumberControl from '@Components/number-control';
 
 const MAX_POSTS_COLUMNS = 8;
 
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-carousel/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/post-carousel/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 import {
 	Placeholder,
@@ -2288,7 +2282,8 @@ const UAGBPostCarousel = ( props ) => {
 	}
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
+
 			<Settings
 				state={ state }
 				togglePreview={ togglePreview }
@@ -2301,7 +2296,8 @@ const UAGBPostCarousel = ( props ) => {
 				setState={ setState }
 				togglePreview={ togglePreview }
 			/>
-		</Suspense>
+			</>
+
 	);
 };
 

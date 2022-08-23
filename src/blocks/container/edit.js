@@ -2,23 +2,15 @@
  * BLOCK: Container
  */
 import styling from './styling';
-import React, { lazy, Suspense, useEffect, useLayoutEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {    useEffect, useLayoutEffect } from 'react';
+
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/container/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/container/render" */ './render'
-	)
-);
+import Settings from './settings';
+import Render from './render';
 
 //  Import CSS.
 import './style.scss';
@@ -209,10 +201,12 @@ const UAGBContainer = ( props ) => {
 
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
+
+						<>
+			<Settings parentProps={ props } />
 				<Render parentProps={ props } />
-			</Suspense>
+			</>
+
 		</>
 	);
 };

@@ -5,15 +5,11 @@ import {
 	renderPostLayout,
 } from '.././function';
 import { useDeviceType } from '@Controls/getPreviewType';
-import React, { lazy, Suspense, useRef, useEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {    useRef, useEffect } from 'react';
+
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-const Slider = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-carousel/react-slick" */ 'react-slick'
-	)
-);
+import Slider from 'react-slick';
 
 function Blog( props ) {
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -216,7 +212,7 @@ function Blog( props ) {
 	}
 	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/post-carousel.png`;
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			{ isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 			<>
 			<Slider
@@ -241,7 +237,7 @@ function Blog( props ) {
 			</Slider>
 			</>
 			}
-		</Suspense>
+</>
 	);
 }
 

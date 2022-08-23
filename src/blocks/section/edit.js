@@ -3,18 +3,14 @@
  */
 
 import styling from './styling';
-import React, { lazy, Suspense, useEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {    useEffect } from 'react';
+
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/section/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/section/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 import hexToRGBA from '@Controls/hexToRgba';
 
@@ -118,10 +114,12 @@ const UAGBSectionEdit = ( props ) => {
 
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
+
+						<>
+			<Settings parentProps={ props } />
 				<Render parentProps={ props } />
-			</Suspense>
+			</>
+
 		</>
 	);
 };

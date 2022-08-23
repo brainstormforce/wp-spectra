@@ -2,17 +2,13 @@
  * BLOCK: Testimonial
  */
 import TestimonialStyle from './inline-styles';
-import React, { lazy, Suspense, useEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {    useEffect } from 'react';
+
 
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/testimonial/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/testimonial/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
@@ -131,10 +127,12 @@ const UAGBtestimonial = ( props ) => {
 		scrollBlockToView();
 	}, [deviceType] );
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
+					<>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 
