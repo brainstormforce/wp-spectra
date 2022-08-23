@@ -70,13 +70,6 @@ function testimonialStyle( props ) {
 		backgroundSize,
 		backgroundRepeat,
 		backgroundImageColor,
-		gradientColor1,
-		gradientColor2,
-		gradientLocation1,
-		gradientLocation2,
-		gradientType,
-		gradientAngle,
-		gradientPosition,
 		arrowColor,
 		test_item_count,
 		columns,
@@ -478,20 +471,10 @@ function testimonialStyle( props ) {
 		},
 	};
 	if ( 'gradient' === backgroundType ) {
-		selectors[ ' .uagb-tm__content' ][ 'background-color' ] = 'transparent';
-
 		if ( gradientValue ) {
 			selectors[ ' .uagb-tm__content' ][
 				'background-image'
 			] = gradientValue;
-		} else if ( 'linear' === gradientType ) {
-			selectors[ ' .uagb-tm__content' ][
-				'background-image'
-			] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
-		} else {
-			selectors[ ' .uagb-tm__content' ][
-				'background-image'
-			] = `radial-gradient( at ${ gradientPosition }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
 		}
 	}
 	let stylingCss = '';

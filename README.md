@@ -170,6 +170,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+### 2.0.6 ###
+* Fix: Testimonial - Padding not working and gradient color not working on frontend.
+
 ### 2.0.5 - MONDAY, 22nd AUGUST 2022 ###
 * Fix: Inherit Heading Block Link Color from theme.
 * Fix: Post Grid - Pagination alignment not working on frontend.
