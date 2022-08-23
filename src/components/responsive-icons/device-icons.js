@@ -107,11 +107,11 @@ if ( ! deviceType ) {
 				<Button
 					key={ key }
 					className={ `components-button components-tab-panel__tabs-item ${ itemClass }${
-						name === deviceType
+						staticName === deviceType
 							? ' active-tab'
 							: ''
 					}` }
-					aria-pressed={ deviceType === name }
+					aria-pressed={ deviceType === staticName }
 					onClick={ () =>
 						customSetPreviewDeviceType(
 							staticName
