@@ -137,6 +137,7 @@ function testimonialStyle( props ) {
 		companyLetterSpacingTablet,
 		companyLetterSpacingMobile,
 		companyLetterSpacingType,
+		overlayType
 	} = props.attributes;
 
 	const arrowSizeFallback = getFallbackNumber( arrowSize, 'arrowSize', blockName );
@@ -244,20 +245,6 @@ function testimonialStyle( props ) {
 			'color': descColor,
 			'margin-bottom': generateCSSUnit( descSpaceFallback, descSpaceType ),
 			'letter-spacing': generateCSSUnit( descLetterSpacing, descLetterSpacingType ),
-		},
-		' .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content': {
-			'background-color': backgroundColor,
-		},
-		' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__content': {
-			'background-image': backgroundImage
-				? `url(${ backgroundImage.url })`
-				: null,
-			'background-position': position,
-			'background-repeat': backgroundRepeat,
-			'background-size': backgroundSize,
-		},
-		' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay': {
-			'background-color': backgroundImageColor,
 		},
 		' ul.slick-dots li button:before': {
 			'color': arrowColor,
@@ -477,6 +464,35 @@ function testimonialStyle( props ) {
 			] = gradientValue;
 		}
 	}
+
+	if ( 'image' === backgroundType ) {
+
+		if ( 'color' === overlayType ) {
+			selectors[ ' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay' ] = {
+				'background-color': backgroundImageColor,
+			};
+		} else if( 'gradient' === overlayType ) {
+			if( gradientValue ) {
+				selectors[ ' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay' ] = {
+					'background-image': gradientValue,
+				}
+			}
+		}
+	} else {
+		selectors[ ' .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content'] = {
+			'background-color': backgroundColor,
+		};
+	}
+
+	selectors[ ' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__content'] = {
+		'background-image': backgroundImage
+			? `url(${ backgroundImage.url })`
+			: null,
+		'background-position': position,
+		'background-repeat': backgroundRepeat,
+		'background-size': backgroundSize,
+	};
+
 	let stylingCss = '';
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
