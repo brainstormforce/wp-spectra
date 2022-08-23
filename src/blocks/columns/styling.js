@@ -78,6 +78,7 @@ function styling( props ) {
 	let mobile_selectors = {}
 
 	let videoOpacity = 0.5;
+
 	if ( typeof backgroundVideoOpacity !== 'undefined' ) {
 		videoOpacity = ( 1 < backgroundVideoOpacity ) ? ( ( 100 - backgroundVideoOpacity ) / 100 ) : ( ( 1 - backgroundVideoOpacity ) );
 	}
@@ -126,7 +127,6 @@ function styling( props ) {
 	if ( 'video' === backgroundType ) {
 		if ( 'color' === overlayType ) {
 			selectors[' > .uagb-columns__overlay'] = {
-				'opacity' : 1,
 				'background-color': backgroundVideoColor
 			}
 		} else {
@@ -135,7 +135,7 @@ function styling( props ) {
 	} else if( 'image' === backgroundType ) {
 		if ( 'color' === overlayType ) {
 			selectors[' > .uagb-columns__overlay'] = {
-				'opacity' : ( typeof backgroundOpacity !== 'undefined' ) ? backgroundOpacity/100 : '',
+				'opacity' : ( typeof backgroundOpacity !== 'undefined' && 0 !== backgroundOpacity ) ? backgroundOpacity/100 : '',
 				'background-color': backgroundImageColor
 			}
 		} else {
@@ -144,12 +144,13 @@ function styling( props ) {
 	} else if( 'color' === backgroundType ) {
 
 		selectors[' > .uagb-columns__overlay'] = {
-			'opacity' : ( typeof backgroundOpacity !== 'undefined' ) ? backgroundOpacity/100 : '',
+			'opacity' : ( typeof backgroundOpacity !== 'undefined' && 0 !== backgroundOpacity ) ? backgroundOpacity/100 : '',
 			'background-color' : backgroundColor
 		}
 	} else if ( 'gradient' === backgroundType ) {
 
 		selectors[' > .uagb-columns__overlay']['background-image'] = gradientValue
+		selectors[' > .uagb-columns__overlay'].opacity =  backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : '';
 
 	}
 
