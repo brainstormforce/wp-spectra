@@ -201,7 +201,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 		const {borderStyle,borderWidth,borderRadius,borderColor,borderHColor} = props.attributes;
 		// Backward Border Migration
 		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'overall', {
+			migrateBorderAttributes( 'overall', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -216,9 +216,9 @@ const UAGBTableOfContentsEdit = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			}
+			},
+			props.setAttributes
 			);
-			props.setAttributes( migrationAttributes )
 		}
 	}, [] );
 

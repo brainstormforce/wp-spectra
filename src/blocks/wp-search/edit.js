@@ -134,7 +134,7 @@ const UAGBWpSearchEdit = ( props ) => {
 		}
 		// border
 		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'input', {
+			migrateBorderAttributes( 'input', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -149,9 +149,9 @@ const UAGBWpSearchEdit = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			}
+			},
+			props.setAttributes
 			);
-			props.setAttributes( migrationAttributes )
 		}
 	}, [] );
 

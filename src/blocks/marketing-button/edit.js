@@ -110,7 +110,7 @@ const UAGBMarketingButtonEdit = ( props ) => {
 		const {borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor} = props.attributes
 		// border migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'btn', {
+			migrateBorderAttributes( 'btn', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -125,9 +125,9 @@ const UAGBMarketingButtonEdit = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			}
+			},
+			props.setAttributes
 			);
-			props.setAttributes( migrationAttributes )
 		}
 	}, [] );
 
