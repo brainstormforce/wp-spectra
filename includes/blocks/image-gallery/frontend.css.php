@@ -268,10 +268,13 @@ $selectors = array(
 			'background-color' => ( $attr[ 'captionVisibility' ] === 'hover' ) ? 'rgba(0,0,0,0)' : $attr[ 'captionBackgroundColor' ],
 		),
 		$main_title_border_css,
+		array(
+			'border-color' => ( $attr[ 'captionVisibility' ] === 'hover' ) ? 'rgba(0,0,0,0)' : $attr[ 'mainTitleBorderColor' ],
+		),
 	),
 	'.uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-caption--bar-inside' => array(
 		'background-color' => ( $attr[ 'captionVisibility' ] === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( $attr[ 'captionVisibility' ] === 'always' && $attr[ 'captionSeparateColors' ] ) ? $attr[ 'captionBackgroundColorHover' ] : $attr[ 'captionBackgroundColor' ] ),
-		'border-color'     => $attr[ 'mainTitleBorderHColor' ],
+		'border-color'     => ( $attr[ 'captionVisibility' ] === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( $attr[ 'captionVisibility' ] === 'always' && $attr[ 'captionSeparateColors' ] ) ? $attr[ 'mainTitleBorderHColor' ] : $attr[ 'mainTitleBorderColor' ] ),
 	),
 	'.uag-image-gallery-media__thumbnail-caption--bar-outside' => array_merge(
 		array(
@@ -281,7 +284,7 @@ $selectors = array(
 	),
 	'.uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-caption--bar-outside' => array(
 		'background-color' => $attr[ 'captionSeparateColors' ] ? $attr[ 'captionBackgroundColorHover' ] : $attr[ 'captionBackgroundColor' ],
-		'border-color'     => $attr[ 'mainTitleBorderHColor' ],
+		'border-color'     => $attr[ 'captionSeparateColors' ] ? $attr[ 'mainTitleBorderHColor' ] : $attr[ 'mainTitleBorderColor' ],
 	),
 	'.uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-caption' => array(
 		'color' => ( $attr[ 'captionVisibility' ] === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( $attr[ 'captionVisibility' ] === 'always' && $attr[ 'captionSeparateColors' ] ) ? $attr[ 'captionColorHover' ] : $attr[ 'captionColor' ] ),

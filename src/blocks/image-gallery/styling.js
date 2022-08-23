@@ -169,6 +169,7 @@ function styling( props ) {
 		// Border Hover Colors.
 		buttonBorderHColor,
 		arrowBorderHColor,
+		mainTitleBorderColor,
 		mainTitleBorderHColor,
 	} = props.attributes;
 
@@ -469,10 +470,11 @@ function styling( props ) {
 		' .uag-image-gallery-media__thumbnail-caption--bar-inside': {
 			'background-color': ( captionVisibility === 'hover' ) ? 'rgba(0,0,0,0)' : captionBackgroundColor,
 			...mainTitleBorderCSS,
+			'border-color': ( captionVisibility === 'hover' ) ? 'rgba(0,0,0,0)' : mainTitleBorderColor,
 		},
 		' .uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-caption--bar-inside': {
 			'background-color': ( captionVisibility === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( captionVisibility === 'always' && captionSeparateColors ) ? captionBackgroundColorHover : captionBackgroundColor ),
-			'border-color': mainTitleBorderHColor,
+			'border-color': ( captionVisibility === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( captionVisibility === 'always' && captionSeparateColors ) ? mainTitleBorderHColor : mainTitleBorderColor ),
 		},
 		' .uag-image-gallery-media__thumbnail-caption--bar-outside': {
 			'background-color': captionBackgroundColor,
@@ -480,7 +482,7 @@ function styling( props ) {
 		},
 		' .uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-caption--bar-outside': {
 			'background-color': captionSeparateColors ? captionBackgroundColorHover : captionBackgroundColor,
-			'border-color': mainTitleBorderHColor,
+			'border-color': captionSeparateColors ? mainTitleBorderHColor : mainTitleBorderColor,
 		},
 		' .uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-caption': {
 			'color': ( captionVisibility === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( captionVisibility === 'always' && captionSeparateColors ) ? captionColorHover : captionColor ),
