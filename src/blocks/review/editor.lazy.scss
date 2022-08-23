@@ -3,6 +3,12 @@ $breakpoint-mobile: 768px;
 
 .editor-styles-wrapper [data-type="uagb/review"] {
 
+	.uagb_review_entry div:nth-child(2) {
+		min-width: unset !important;
+		display: flex;
+		flex-direction: row-reverse;
+	}
+
 	.rating-schema-notices {
 		padding: 8px 10px;
 		background-color: #fff8e5;
