@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.0  
-**Stable tag:** 2.0.5  
+**Stable tag:** 2.0.6  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -170,7 +170,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### 2.0.6 ###
+### 2.0.6 - WEDNESDAY, 24th AUGUST 2022 ###
 * Fix: Testimonial - Bottom padding and gradient color not working on frontend.
 * Fix: Responsive preview in editor - Editor preview for mobile and tablets was not working across different languages.
 * Fix: Post Grid/Masonry/Carousel - Fixed hover color background leaking out of border radius.
