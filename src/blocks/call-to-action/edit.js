@@ -81,7 +81,7 @@ const UAGBCallToAction = ( props ) => {
 
 		// border
 		if( ctaBorderWidth || ctaBorderRadius || ctaBorderColor || ctaBorderHColor || ctaBorderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'btn', {
+			migrateBorderAttributes( 'btn', {
 				label: 'ctaBorderWidth',
 				value: ctaBorderWidth,
 			}, {
@@ -96,9 +96,9 @@ const UAGBCallToAction = ( props ) => {
 			},{
 				label: 'ctaBorderStyle',
 				value: ctaBorderStyle
-			}
+			},
+			props.setAttributes
 			);
-			props.setAttributes( migrationAttributes );
 		}
 	}, [] );
 

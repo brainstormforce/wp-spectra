@@ -44,7 +44,16 @@ const UAGBtestimonial = ( props ) => {
 			paddingLeft,
 			paddingRight,
 			backgroundOpacity,
-			backgroundImageColor
+			backgroundImageColor,
+			backgroundType,
+			overlayType,
+			gradientColor1,
+			gradientColor2,
+			gradientLocation1,
+			gradientLocation2,
+			gradientType,
+			gradientAngle,
+			gradientPosition,
 		} = attributes;
 
 		if ( imgVrPadding ) {
@@ -78,15 +87,30 @@ const UAGBtestimonial = ( props ) => {
 			}
 		}
 
-		if ( 101 !== backgroundOpacity ) {
-			const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
-			setAttributes( { backgroundImageColor: color } );
-			setAttributes( { backgroundOpacity: 101 } );
+
+		if( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ){
+			const color1 = hexToRGBA( maybeGetColorForVariable( gradientColor1 ), backgroundOpacity );
+			const color2 = hexToRGBA( maybeGetColorForVariable( gradientColor2 ), backgroundOpacity );
+			let gradientVal;
+			if ( 'linear' === gradientType ) {
+				gradientVal = `linear-gradient(${ gradientAngle }deg, ${ color1 } ${ gradientLocation1 }%, ${ color2 } ${ gradientLocation2 }%)`;
+			} else {
+				gradientVal = `radial-gradient( at ${ gradientPosition }, ${ color1 } ${ gradientLocation1 }%, ${ color2 } ${ gradientLocation2 }%)`;
+			}
+			setAttributes( { gradientValue: gradientVal } );
+		}
+
+		if ( 'image' === backgroundType ) {
+			if ( 101 !== backgroundOpacity ) {
+				const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
+				setAttributes( { backgroundImageColor: color } );
+				setAttributes( { backgroundOpacity: 101 } );
+			}
 		}
 		const { borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor } = props.attributes;
 		// Backward Border Migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'overall', {
+			migrateBorderAttributes( 'overall', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -101,9 +125,9 @@ const UAGBtestimonial = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			}
+			},
+			props.setAttributes
 			);
-			props.setAttributes( migrationAttributes )
 		}
 
 	}, [] );

@@ -4,15 +4,7 @@
 import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const borderDefault = {
-	borderStyle: 'solid',
-	borderTopWidth: 1,
-	borderRightWidth: 1,
-	borderBottomWidth: 1,
-	borderLeftWidth: 1,
-	borderColor: '#e0e0e0',
-}
-const borderAttributes = getBorderAttributes( 'tab', borderDefault );
+const borderAttributes = getBorderAttributes( 'tab' );
 
 const attributes = {
 	block_id: {
