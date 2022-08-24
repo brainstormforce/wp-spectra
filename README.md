@@ -176,6 +176,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Grid/Masonry/Carousel - Fixed hover color background leaking out of border radius.
 * Fix: Review - Fixed star size changing in editor, when text labels were long; Also reduced excess spacing between stars and delete icon for responsive preview.
 * Fix: Icon List - Font size and line height was not inherited from site/customizer settings.
+* Fix: Column-child - Migrate Border stylings on editor
 
 ### 2.0.5 - TUESDAY, 23rd AUGUST 2022 ###
 * Fix: Inherit Heading Block Link Color from theme.

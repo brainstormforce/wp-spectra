@@ -8,6 +8,8 @@ import React, { useEffect,    } from 'react';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
+
 import Settings from './settings';
 import Render from './render';
 
@@ -61,7 +63,30 @@ const ColumnComponent = ( props ) => {
 				setAttributes( { backgroundOpacity: 101 } );
 			}
 		}
-
+		const { borderStyle, borderWidth, borderRadius, borderColor, borderHoverColor } = props.attributes;
+		
+		// border migration
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
+	
+			migrateBorderAttributes( 'column', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHoverColor',
+				value: borderHoverColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			},
+			props.setAttributes
+		);	
+		}
 	}, [] );
 
 	useEffect( () => {
