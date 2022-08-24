@@ -86,7 +86,7 @@ const UAGBtestimonial = ( props ) => {
 		const { borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor } = props.attributes;
 		// Backward Border Migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'overall', {
+			migrateBorderAttributes( 'overall', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -101,9 +101,9 @@ const UAGBtestimonial = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			}
+			},
+			props.setAttributes
 			);
-			props.setAttributes( migrationAttributes )
 		}
 
 	}, [] );
