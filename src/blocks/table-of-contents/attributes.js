@@ -2,17 +2,7 @@ import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
 
-const overallBorderAttributes = getBorderAttributes( 'overall', {
-	borderStyle: 'solid',
-	borderTopWidth: 1,
-	borderRightWidth: 1,
-	borderBottomWidth: 1,
-	borderLeftWidth: 1,
-	borderTopLeftRadius: 6,
-	borderTopRightRadius: 6,
-	borderBottomLeftRadius: 6,
-	borderBottomRightRadius: 6,
-} );
+const overallBorderAttributes = getBorderAttributes( 'overall' );
 
 const attributes = {
 	block_id: {
@@ -661,17 +651,20 @@ const attributes = {
 	// Border
 	borderStyle: {
 		type: 'string',
+		default: 'solid',
 	},
 	borderWidth: {
 		type: 'number',
+		default: 1,
 	},
 	borderRadius: {
 		type: 'number',
+		default: 6,
 	},
 	borderColor: {
 		type: 'string',
 	},
-	borderHColor: {
+	borderHoverColor: {
 		type: 'string',
 	},
 
@@ -999,6 +992,7 @@ const attributes = {
 			styleType: 'separator-color-hover'
 		}
 	},
+
 };
 
 export default attributes;
