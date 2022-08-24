@@ -65,9 +65,16 @@ class UAGB_Init_Blocks {
 			add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
 		}
 
+		// delete_option( 'spectra_blocks_pages_counted' );
+		// delete_option( 'spectra_blocks_count_status' );
+		// delete_option( 'get_spectra_block_count' );
+		// delete_option( 'spectra_settings_data' );
+
 		add_action( 'spectra_total_blocks_count_action', array( $this, 'blocks_count_logic' ) );
 
 		add_action( 'spectra_analytics_count_actions', array( $this, 'send_spectra_specific_stats' ) );
+
+		error_log( print_r( get_option( 'get_spectra_block_count'), true ) );
 
 	}
 
@@ -109,7 +116,7 @@ class UAGB_Init_Blocks {
 			// Update block list count.
 			foreach ( $list_blocks as $slug => $value ) {
 				$_slug                                 = str_replace( 'uagb/', '', $slug );
-				$all_blocks_data[ '<!-- wp:' . $slug ] = array(
+				$all_blocks_data[ '<!-- wp:' . $slug . ' ' ] = array(
 					'name' => $_slug,
 				);
 				$blocks_count[ $_slug ]                = array(
@@ -135,9 +142,11 @@ class UAGB_Init_Blocks {
 				foreach ( $all_blocks_data as $block_key => $block ) {
 					if ( false !== strpos( $post->post_content, $block_key ) ) {
 						$block_slug = str_replace( '<!-- wp:uagb/', '', $block_key );
+						$block_slug = str_replace( ' ', '', $block_slug );
 
-						$usage_count                          = $blocks_count[ $block_slug ]['count'];
-						$blocks_count[ $block_slug ]['count'] = $usage_count + 1;
+						$usage_count                          	= $blocks_count[ $block_slug ]['count'];
+						$latest_count 							= substr_count( $post->post_content, $block_key );
+						$blocks_count[ $block_slug ]['count'] 	= $usage_count + $latest_count;
 						$spectra_block_count++;
 					}
 				}
