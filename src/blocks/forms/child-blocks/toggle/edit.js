@@ -2,14 +2,10 @@
  * BLOCK: Forms - Toggle - Edit
  */
 
-import React, { lazy, Suspense, useEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/form/toggle-settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form/toggle-render" */ './render' )
-);
+import React, {    useEffect } from 'react';
+
+import Settings from './settings';
+import Render from './render';
 
 const UAGBFormsToggleEdit = ( props ) => {
 	useEffect( () => {
@@ -24,10 +20,12 @@ const UAGBFormsToggleEdit = ( props ) => {
 	return (
 		<>
 			{ props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-				<Suspense fallback={ lazyLoader() }>
-					<Settings parentProps={ props } />
+
+							<>
+			<Settings parentProps={ props } />
 					<Render parentProps={ props } />
-				</Suspense>
+			</>
+
 			) }
 		</>
 	);

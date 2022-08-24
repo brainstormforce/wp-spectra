@@ -1,6 +1,6 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
-import lazyLoader from '@Controls/lazy-loader';
+
 import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
 import ResponsiveBorder from '@Components/responsive-border';
@@ -1817,7 +1817,7 @@ const Settings = ( props ) => {
 		</UAGAdvancedPanelBody>
 	);
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<BlockControls key="controls">
 				<AlignmentToolbar
 					value={ align }
@@ -1852,7 +1852,7 @@ const Settings = ( props ) => {
 			{ loadRadioGoogleFonts }
 			{ loadValidationGoogleFonts }
 			{ loadMsgGoogleFonts }
-		</Suspense>
+			</>
 	);
 };
 

@@ -3,8 +3,8 @@
  */
 
 import styling from './styling';
-import React, { useEffect, lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect,    } from 'react';
+
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
@@ -12,12 +12,8 @@ import {migrateBorderAttributes} from '@Controls/generateAttributes';
 import { select } from '@wordpress/data';
 const { isSavingPost } = select( 'core/editor' );
 
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/faq/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/faq/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 const FaqComponent = ( props ) => {
 
@@ -234,7 +230,7 @@ const FaqComponent = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			}, 
+			},
 			props.setAttributes
 			);
 		}
@@ -249,7 +245,7 @@ const FaqComponent = ( props ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
-		
+
 		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.headingTag = props.attributes.headingTag;
 		} );
@@ -335,10 +331,11 @@ const FaqComponent = ( props ) => {
 	}, [deviceType] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<Settings parentProps={ props } deviceType = { deviceType } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 
