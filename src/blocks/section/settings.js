@@ -1,6 +1,6 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
-import lazyLoader from '@Controls/lazy-loader';
+
 import BoxShadowControl from '@Components/box-shadow';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -634,7 +634,7 @@ const Settings = ( props ) => {
 		);
 	};
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<BlockControls>
 				<AlignmentToolbar
 					value={ align }
@@ -645,7 +645,8 @@ const Settings = ( props ) => {
 				/>
 			</BlockControls>
 			<InspectorControls>{ generalSetting() }</InspectorControls>
-		</Suspense>
+			</>
+
 	);
 };
 

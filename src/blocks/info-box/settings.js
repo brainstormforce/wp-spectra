@@ -1,7 +1,7 @@
 import UAGIconPicker from '@Components/icon-picker';
 import { __ } from '@wordpress/i18n';
-import React, { Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React from 'react';
+
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import ResponsiveBorder from '@Components/responsive-border';
@@ -280,7 +280,7 @@ const Settings = ( props ) => {
 		iconBackgroundColor,
 		iconBackgroundHoverColor,
 		iconBorderWidth,
-		
+
 		// padding
 		blockTopPadding,
 		blockRightPadding,
@@ -2582,12 +2582,12 @@ const Settings = ( props ) => {
 					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			<Suspense fallback={ lazyLoader() }>
+
 				{ loadPrefixGoogleFonts }
 				{ loadSubHeadGoogleFonts }
 				{ loadCtaGoogleFonts }
 				{ loadHeadGoogleFonts }
-			</Suspense>
+
 		</>
 	);
 };

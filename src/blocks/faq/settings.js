@@ -3,8 +3,8 @@
  */
 
 import renderSVG from '@Controls/renderIcon';
-import React, { Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React from 'react';
+
 import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
 import ResponsiveSlider from '@Components/responsive-slider';
@@ -1249,7 +1249,7 @@ const Settings = ( props ) => {
 	};
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
@@ -1271,7 +1271,7 @@ const Settings = ( props ) => {
 			</InspectorControls>
 			{ loadQuestionGoogleFonts }
 			{ loadAnswerGoogleFonts }
-		</Suspense>
+			</>
 	);
 };
 

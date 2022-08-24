@@ -2,15 +2,11 @@
  * BLOCK: Forms - Upload - Edit
  */
 
-import React, { useEffect, Suspense, lazy } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect,   } from 'react';
 
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/form/upload-settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form/upload-render" */ './render' )
-);
+
+import Settings from './settings';
+import Render from './render';
 
 const UAGBFormsUploadEdit = ( props ) => {
 	useEffect( () => {
@@ -30,10 +26,12 @@ const UAGBFormsUploadEdit = ( props ) => {
 
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
+
+						<>
+			<Settings parentProps={ props } />
 				<Render parentProps={ props } />
-			</Suspense>
+			</>
+
 		</>
 	);
 };
