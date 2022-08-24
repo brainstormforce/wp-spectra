@@ -115,7 +115,7 @@ function styling( props ) {
 	const innerGapFallback = getFallbackNumber( inner_gap, 'inner_gap', blockName );
 	const innerGapTabletFallback = getFallbackNumber( innerGapTablet, 'innerGapTablet', blockName );
 	const innerGapMobileFallback = getFallbackNumber( innerGapMobile, 'innerGapMobile', blockName );
-	const fontSizeFallback = getFallbackNumber( fontSize, 'fontSize', blockName );
+	const fontSizeFallback = isNaN( fontSize ) ? 16 : fontSize;
 	
 	// Responsive Fallback Values that Need to be Numeric for Math.
 	const sizeTabletFallback = isNaN( sizeTablet ) ? sizeFallback : sizeTablet;

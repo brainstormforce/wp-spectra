@@ -101,7 +101,7 @@ return array_merge(
 		'columnGapType'              => 'px',
 		'descSpaceType'              => 'px',
 		'nameSpaceType'              => 'px',
-		'overlayType'                => '',
+		'overlayType'                => 'color',
 		'backgroundAttachment'       => '',
 		'gradientValue'              => '',
 		'descTransform'              => '',

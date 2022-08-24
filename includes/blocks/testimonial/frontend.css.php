@@ -95,19 +95,6 @@ $selectors = array(
 		'color'         => $attr['descColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $desc_space_fallback, $attr['descSpaceType'] ),
 	),
-	' .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content' => array(
-		'background-color' => $attr['backgroundColor'],
-	),
-	' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__content' => array(
-		'background-image'    => ( isset( $attr['backgroundImage']['url'] ) && '' !== $attr['backgroundImage']['url'] ) ? 'url("' . $attr['backgroundImage']['url'] . '")' : null,
-		'background-position' => $position,
-		'background-repeat'   => $attr['backgroundRepeat'],
-		'background-size'     => $attr['backgroundSize'],
-	),
-	' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay' => array(
-		'background-color' => $attr['backgroundImageColor'],
-		'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] ) ? ( ( 100 - $attr['backgroundOpacity'] ) / 100 ) : '',
-	),
 	' .uagb-testimonial__wrap .uagb-tm__content'       => $overall_border,
 	' .uagb-testimonial__wrap .uagb-tm__content:hover' => array(
 		'border-color' => $attr['overallBorderHColor'],
@@ -136,6 +123,29 @@ if ( 'gradient' === $attr['backgroundType'] ) {
 		}
 	}
 }
+if ( 'image' === $attr['backgroundType'] ) {
+	if ( 'color' === $attr['overlayType'] ) {
+		$selectors[' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay'] = array(
+			'background-color' => $attr['backgroundImageColor'],
+			'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] ) ? ( ( 100 - $attr['backgroundOpacity'] ) / 100 ) : '',
+		);
+	} elseif ( 'gradient' === $attr['overlayType'] ) {
+		if ( $attr['gradientValue'] ) {
+			$selectors[' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay']['background-image'] = $attr['gradientValue'];
+		}
+	}
+} else {
+	$selectors['  .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content'] = array(
+		'background-color' => $attr['backgroundColor'],
+	);
+}
+
+$selectors['  .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__content'] = array(
+	'background-image'    => ( isset( $attr['backgroundImage']['url'] ) && '' !== $attr['backgroundImage']['url'] ) ? 'url("' . $attr['backgroundImage']['url'] . '")' : null,
+	'background-position' => $position,
+	'background-repeat'   => $attr['backgroundRepeat'],
+	'background-size'     => $attr['backgroundSize'],
+);
 if ( 'dots' === $attr['arrowDots'] ) {
 	$selectors['.uagb-slick-carousel'] = array(
 		'padding' => '0 0 35px 0',

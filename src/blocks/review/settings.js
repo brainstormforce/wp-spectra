@@ -1,8 +1,8 @@
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
-import React, { Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React from 'react';
+
 import {
 	InspectorControls,
 } from '@wordpress/block-editor';
@@ -1433,7 +1433,7 @@ const Settings = ( props ) => {
 	}
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+<>
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
@@ -1459,7 +1459,7 @@ const Settings = ( props ) => {
 			{ loadHeadingGoogleFonts }
 			{ loadSubHeadingGoogleFonts }
 			{ loadContentGoogleFonts }
-		</Suspense>
+		</>
 	);
 };
 export default React.memo( Settings );
