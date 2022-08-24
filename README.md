@@ -177,6 +177,10 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Review - Fixed star size changing in editor, when text labels were long; Also reduced excess spacing between stars and delete icon for responsive preview.
 * Fix: Icon List - Font size and line height was not inherited from site/customizer settings.
 * Fix: Column-child - Migrate Border stylings on editor
+* Fix: Button - Default padding is not retained for old users on frontend.
+* Fix: Disabled Lazy Loading of Blocks Components in Editor to fix the chunkLoading error.
+* Fix: Copy Paste Styles - Updated logic to work using site's local storage.
+
 
 ### 2.0.5 - TUESDAY, 23rd AUGUST 2022 ###
 * Fix: Inherit Heading Block Link Color from theme.
