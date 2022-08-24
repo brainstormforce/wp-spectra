@@ -9,6 +9,12 @@
 
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 
+$enable_legacy_blocks = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' );
+
+$v_padding_default = ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) || 'yes' === $enable_legacy_blocks ) ? 10 : '';
+
+$h_padding_default = ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) || 'yes' === $enable_legacy_blocks ) ? 14 : '';
+
 return array_merge(
 	array(
 		'inheritFromTheme'       => false,
@@ -19,8 +25,8 @@ return array_merge(
 		'target'                 => '',
 		'size'                   => '',
 		// If the paddings aren't set, the button child will fallback to the following vPadding and hPadding.
-		'vPadding'               => 10,
-		'hPadding'               => 14,
+		'vPadding'               => $v_padding_default,
+		'hPadding'               => $h_padding_default,
 		'topTabletPadding'       => '',
 		'rightTabletPadding'     => '',
 		'bottomTabletPadding'    => '',
