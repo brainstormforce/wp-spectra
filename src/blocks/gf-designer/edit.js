@@ -1,18 +1,14 @@
 import styling from './styling';
-import React, { lazy, Suspense, useEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {    useEffect } from 'react';
+
 import { __ } from '@wordpress/i18n';
 import { SelectControl, Placeholder } from '@wordpress/components';
 import apiFetch from '@wordpress/api-fetch';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/gf-styler/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/gf-styler/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 import { withSelect } from '@wordpress/data';
 
 const UAGBGF = ( props ) => {
@@ -154,10 +150,12 @@ const UAGBGF = ( props ) => {
 		);
 	}
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
+					<>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 

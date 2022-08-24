@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
-import React, { Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React from 'react';
+
 import TypographyControl from '@Components/typography';
 import UAGIconPicker from '@Components/icon-picker';
 import WebfontLoader from '@Components/typography/fontloader';
@@ -1334,7 +1334,7 @@ const Settings = ( props ) => {
 	const maxMob = '%' === widthTypeMobile ? 100 : 1000;
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			{ ! customWidth && (
 				<BlockControls>
 					<AlignmentToolbar
@@ -1370,7 +1370,7 @@ const Settings = ( props ) => {
 			</InspectorControls>
 			{ loadGFonts }
 			{ headingloadGFonts }
-		</Suspense>
+			</>
 	);
 };
 

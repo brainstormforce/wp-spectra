@@ -1,5 +1,5 @@
-import React, { Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React from 'react';
+
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
@@ -2506,7 +2506,7 @@ successMsgLetterSpacingType,
 	};
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
@@ -2534,7 +2534,7 @@ successMsgLetterSpacingType,
 			{ loadRadioGoogleFonts }
 			{ loadValidationGoogleFonts }
 			{ loadMsgGoogleFonts }
-		</Suspense>
+			</>
 	);
 };
 export default React.memo( Settings );

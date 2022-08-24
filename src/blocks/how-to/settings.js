@@ -1,5 +1,5 @@
-import React, { Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React from 'react';
+
 import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
 import './style.scss';
@@ -998,7 +998,7 @@ const Settings = ( props ) => {
 
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
@@ -1024,7 +1024,8 @@ const Settings = ( props ) => {
 			{ loadHeadingGoogleFonts }
 			{ loadSubHeadingGoogleFonts }
 			{ loadPriceGoogleFonts }
-		</Suspense>
+			</>
+
 	);
 };
 
