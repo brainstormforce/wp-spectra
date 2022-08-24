@@ -174,6 +174,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Testimonial - Bottom padding and gradient color not working on frontend.
 * Fix: Responsive preview in editor - Editor preview for mobile and tablets was not working across different languages.
 * Fix: Post Grid/Masonry/Carousel - Fixed hover color background leaking out of border radius.
+* Fix: Review - Fixed star size changing in editor, when text labels were long; Also reduced excess spacing between stars and delete icon for responsive preview.
 * Fix: Icon List - Font size and line height was not inherited from site/customizer settings.
 
 ### 2.0.5 - TUESDAY, 23rd AUGUST 2022 ###
