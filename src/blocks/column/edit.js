@@ -3,18 +3,15 @@
  */
 
 import styling from './styling';
-import React, { useEffect, lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect,    } from 'react';
+
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/column/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/column/render" */ './render' )
-);
-import {migrateBorderAttributes} from '@Controls/generateAttributes';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
+
+import Settings from './settings';
+import Render from './render';
 
 import hexToRGBA from '@Controls/hexToRgba';
 
@@ -66,10 +63,12 @@ const ColumnComponent = ( props ) => {
 				setAttributes( { backgroundOpacity: 101 } );
 			}
 		}
-		const { borderStyle, borderWidth, borderRadius, borderColor, borderHoverColor } = props.attributes
+		const { borderStyle, borderWidth, borderRadius, borderColor, borderHoverColor } = props.attributes;
+		
 		// border migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'column', {
+	
+			migrateBorderAttributes( 'column', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -84,11 +83,10 @@ const ColumnComponent = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			}
-			);
-			props.setAttributes( migrationAttributes )
+			},
+			props.setAttributes
+		);	
 		}
-
 	}, [] );
 
 	useEffect( () => {
@@ -109,10 +107,11 @@ const ColumnComponent = ( props ) => {
 	}, [deviceType] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<Settings parentProps={ props } deviceType = { deviceType }/>
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 

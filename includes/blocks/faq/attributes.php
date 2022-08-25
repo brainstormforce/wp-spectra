@@ -7,19 +7,7 @@
  * @package uagb
  */
 
-$border_defaults  = array(
-	'borderStyle'             => 'solid',
-	'borderTopWidth'          => 1,
-	'borderRightWidth'        => 1,
-	'borderBottomWidth'       => 1,
-	'borderLeftWidth'         => 1,
-	'borderTopLeftRadius'     => 2,
-	'borderTopRightRadius'    => 2,
-	'borderBottomLeftRadius'  => 2,
-	'borderBottomRightRadius' => 2,
-	'borderColor'             => '#1e1e1e',
-);
-$border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'overall', $border_defaults );
+$border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'overall' );
 
 return array_merge(
 	array(
@@ -145,6 +133,11 @@ return array_merge(
 		'answerLetterSpacingType'      => 'px',
 		'questionTextBgColor'          => '',
 		'questionTextActiveBgColor'    => '',
+		'borderStyle'                  => 'solid',
+		'borderWidth'                  => 1,
+		'borderRadius'                 => 2,
+		'borderColor'                  => '#1e1e1e',
+		'borderHoverColor'             => '',
 	),
 	$border_attribute
 );

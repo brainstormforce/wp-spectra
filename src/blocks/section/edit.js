@@ -3,18 +3,14 @@
  */
 
 import styling from './styling';
-import React, { lazy, Suspense, useEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {    useEffect } from 'react';
+
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/section/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/section/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 import hexToRGBA from '@Controls/hexToRgba';
 
@@ -26,7 +22,7 @@ const UAGBSectionEdit = ( props ) => {
 		const { borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor } = props.attributes;
 		// Backward Border Migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'overall', {
+			migrateBorderAttributes( 'overall', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -41,8 +37,8 @@ const UAGBSectionEdit = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			} );
-			props.setAttributes( migrationAttributes )
+			},
+			props.setAttributes );
 
 		}
 	}, [ ] );
@@ -77,7 +73,9 @@ const UAGBSectionEdit = ( props ) => {
 			 gradientOverlayLocation1,
 			 gradientOverlayPosition,
 			 gradientOverlayLocation2,
-			 gradientOverlayType
+			 gradientOverlayType,
+			 backgroundVideoOpacity,
+			 backgroundVideoColor
 			} = attributes;
 
 		if( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ){
@@ -105,14 +103,23 @@ const UAGBSectionEdit = ( props ) => {
 			}
 		}
 
+		if ( 'video' === backgroundType ) {
+			if ( 101 !== backgroundVideoOpacity ) {
+				const color = hexToRGBA( maybeGetColorForVariable( backgroundVideoColor ), backgroundVideoOpacity );
+				setAttributes( { backgroundVideoColor: color } );
+			}
+		}
+
 	}, [] );
 
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
+
+						<>
+			<Settings parentProps={ props } />
 				<Render parentProps={ props } />
-			</Suspense>
+			</>
+
 		</>
 	);
 };

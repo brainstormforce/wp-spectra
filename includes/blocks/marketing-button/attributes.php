@@ -8,15 +8,7 @@
  */
 
 $button_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
-	'btn',
-	array(
-		'borderColor'       => '#333',
-		'borderStyle'       => 'solid',
-		'borderTopWidth'    => 1,
-		'borderRightWidth'  => 1,
-		'borderBottomWidth' => 1,
-		'borderLeftWidth'   => 1,
-	)
+	'btn'
 );
 
 return array_merge(
@@ -104,6 +96,11 @@ return array_merge(
 		'prefixLetterSpacingTablet' => '',
 		'prefixLetterSpacingMobile' => '',
 		'prefixLetterSpacingType'   => 'px',
+		'borderStyle'               => 'solid',
+		'borderWidth'               => 1,
+		'borderRadius'              => 2,
+		'borderColor'               => '',
+		'borderHoverColor'          => '',
 	),
 	$button_attribute
 );

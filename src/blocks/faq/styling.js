@@ -113,10 +113,11 @@ function styling( props ) {
 		answerLetterSpacingTablet,
 		answerLetterSpacingMobile,
 		answerLetterSpacingType,
+		borderStyle, borderWidth, borderRadius, borderColor
 	} = props.attributes;
 
 
-	const borderCSS = generateBorderCSS( props.attributes, 'overall', '' );
+	const borderCSS = generateBorderCSS( props.attributes, 'overall', '', borderStyle, borderWidth, borderRadius, borderColor );
 	const borderCSSTablet = generateBorderCSS( props.attributes,'overall', 'tablet' );
 	const borderCSSMobile = generateBorderCSS( props.attributes,'overall', 'mobile' );
 

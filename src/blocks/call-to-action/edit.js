@@ -3,19 +3,13 @@
  */
 
 import CtaStyle from './inline-styles';
-import React, { useEffect, lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect,    } from 'react';
+
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/call-to-action/render" */ './render' )
-);
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/call-to-action/settings" */ './settings'
-	)
-);
+import Settings from './settings';
+import Render from './render';
 
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 const UAGBCallToAction = ( props ) => {
@@ -81,7 +75,7 @@ const UAGBCallToAction = ( props ) => {
 
 		// border
 		if( ctaBorderWidth || ctaBorderRadius || ctaBorderColor || ctaBorderHColor || ctaBorderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'btn', {
+			migrateBorderAttributes( 'btn', {
 				label: 'ctaBorderWidth',
 				value: ctaBorderWidth,
 			}, {
@@ -96,9 +90,9 @@ const UAGBCallToAction = ( props ) => {
 			},{
 				label: 'ctaBorderStyle',
 				value: ctaBorderStyle
-			}
+			},
+			props.setAttributes
 			);
-			props.setAttributes( migrationAttributes );
 		}
 	}, [] );
 
@@ -120,10 +114,12 @@ const UAGBCallToAction = ( props ) => {
 	}, [deviceType] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
+					<>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 
