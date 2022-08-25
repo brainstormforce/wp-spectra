@@ -5,7 +5,6 @@
 import classnames from 'classnames';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
-import { __ } from '@wordpress/i18n';
 
 export default function save( props ) {
 
