@@ -66,7 +66,7 @@ const Render = ( props ) => {
 
 	let urlChk = '';
 	let title = '';
-	let defaultedAlt = __( 'This review image has an empty alt attribute' , 'ultimate-addons-for-gutenberg' );
+	let defaultedAlt = '';
 
 	if (
 		'undefined' !== typeof props.attributes.mainimage &&
@@ -75,7 +75,7 @@ const Render = ( props ) => {
 	) {
 		urlChk = props.attributes.mainimage.url;
 		title = props.attributes.mainimage.title;
-		defaultedAlt = ( props.attributes.mainimage.alt ) ? props.attributes.mainimage.alt : defaultedAlt;
+		defaultedAlt = ( props.attributes.mainimage.alt ) ? props.attributes.mainimage.alt : '';
 	}
 
 	let url = '';
