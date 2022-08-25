@@ -17,9 +17,14 @@ const SecondCTAButton = ( props ) => {
 	}
 
 	let link = '/';
+	let preventDefaultFunc = ( e ) => {  // Disables click events for link in editor.
+		e.preventDefault();
+	}
 	if ( setAttributes === 'not_set' ) {
 		link = attributes.secondCtaLink;
+		preventDefaultFunc = false;  // Ensures click events for links aren't disabled for frontend.
 	}
+
 	return (
 		<>
 			<a
@@ -30,6 +35,7 @@ const SecondCTAButton = ( props ) => {
 				) }
 				target={ target }
 				rel={ rel }
+				onClick={ preventDefaultFunc }
 			>
 				{ attributes.secondCtaIconPosition === 'before' && secondCtaIconOutput }
 				{ attributes.secondCtaLabel }
