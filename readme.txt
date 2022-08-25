@@ -175,6 +175,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Updated the design of inactive block/extension tabs in the admin dashboard.
 * Fix: CTA - Disabled CTA links in editor.
 * Fix: Post Carousel - Slider dots overlapping on below blocks.
+* Fix: Container - Flex properties do not work when Container Width & Content Width both are set as full width.
 
 = 2.0.6 - WEDNESDAY, 24th AUGUST 2022 =
 * Fix: Testimonial - Bottom padding and gradient color not working on frontend.
