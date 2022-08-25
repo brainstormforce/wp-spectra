@@ -5,7 +5,6 @@
 // Import block dependencies and components.
 import classnames from 'classnames';
 import Stars from './star';
-import { __ } from '@wordpress/i18n';
 
 import { RichText } from '@wordpress/block-editor';
 

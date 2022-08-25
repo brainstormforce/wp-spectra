@@ -4,7 +4,6 @@ import ReviewBody from './review-body';
 import React, { useLayoutEffect, useState } from 'react';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
-import { __ } from '@wordpress/i18n';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
