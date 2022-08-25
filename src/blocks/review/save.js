@@ -5,6 +5,7 @@
 // Import block dependencies and components.
 import classnames from 'classnames';
 import Stars from './star';
+import { __ } from '@wordpress/i18n';
 
 import { RichText } from '@wordpress/block-editor';
 
@@ -43,6 +44,8 @@ export default function save( props ) {
 
 	let urlChk = '';
 	let title = '';
+	let defaultedAlt = __( 'This review image has an empty alt attribute' , 'ultimate-addons-for-gutenberg' );
+
 	if (
 		'undefined' !== typeof attributes.mainimage &&
 		null !== attributes.mainimage &&
@@ -50,6 +53,7 @@ export default function save( props ) {
 	) {
 		urlChk = attributes.mainimage.url;
 		title = attributes.mainimage.title;
+		defaultedAlt = ( props.attributes.mainimage.alt ) ? props.attributes.mainimage.alt : defaultedAlt;
 	}
 
 	let url = '';
@@ -75,7 +79,7 @@ export default function save( props ) {
 				className="uagb-howto__source-image"
 				src={ url }
 				title={ title }
-				alt=""
+				alt={ defaultedAlt }
 			/>
 		);
 	}
