@@ -67,13 +67,7 @@ export default function save( props ) {
 		}
 	}
 
-	let defaultedAlt;
-
-	if ( mainimage && mainimage.alt ) {
-		defaultedAlt = mainimage.alt;
-	} else {
-		defaultedAlt = __( 'This how-to image has an empty alt attribute' );
-	}
+	const defaultedAlt = ( mainimage && mainimage.alt ) ? mainimage.alt : '';
 
 	let imageIconHtml = '';
 
