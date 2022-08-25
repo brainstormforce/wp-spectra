@@ -142,6 +142,14 @@ const Render = ( props ) => {
 		}
 	}
 
+	let defaultedAlt;
+
+	if ( mainimage && mainimage.alt ) {
+		defaultedAlt = mainimage.alt;
+	} else {
+		defaultedAlt = __( 'This how-to image has an empty alt attribute' );
+	}
+
 	let imageIconHtml = '';
 
 	if ( mainimage && mainimage.url ) {
@@ -150,7 +158,7 @@ const Render = ( props ) => {
 				className="uagb-howto__source-image"
 				src={ url }
 				title={ title }
-				alt=""
+				alt={ defaultedAlt }
 			/>
 		);
 	}

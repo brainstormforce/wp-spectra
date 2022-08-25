@@ -5,6 +5,7 @@
 import classnames from 'classnames';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import { __ } from '@wordpress/i18n';
 
 export default function save( props ) {
 
@@ -66,6 +67,14 @@ export default function save( props ) {
 		}
 	}
 
+	let defaultedAlt;
+
+	if ( mainimage && mainimage.alt ) {
+		defaultedAlt = mainimage.alt;
+	} else {
+		defaultedAlt = __( 'This how-to image has an empty alt attribute' );
+	}
+
 	let imageIconHtml = '';
 
 	if ( mainimage && mainimage.url ) {
@@ -74,7 +83,7 @@ export default function save( props ) {
 				className="uagb-howto__source-image"
 				src={ url }
 				title={ title }
-				alt=""
+				alt= { defaultedAlt }
 			/>
 		);
 	}
