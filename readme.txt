@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.0
-Stable tag: 2.0.3
+Stable tag: 2.0.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -169,6 +169,42 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 2.0.7 - THURSDAY, 25th AUGUST 2022 =
+* Improvement: Updated the design of inactive block/extension tabs in the admin dashboard.
+
+= 2.0.6 - WEDNESDAY, 24th AUGUST 2022 =
+* Fix: Testimonial - Bottom padding and gradient color not working on frontend.
+* Fix: Responsive preview in editor - Editor preview for mobile and tablets was not working across different languages.
+* Fix: Post Grid/Masonry/Carousel - Fixed hover color background leaking out of border radius.
+* Fix: Review - Fixed star size changing in editor, when text labels were long; Also reduced excess spacing between stars and delete icon for responsive preview.
+* Fix: Icon List - Font size and line height was not inherited from site/customizer settings.
+* Fix: Column-child - Migrate Border stylings on editor
+* Fix: Button - Default padding is not retained for old users on frontend.
+* Fix: Disabled Lazy Loading of Blocks Components in Editor to fix the chunkLoading error.
+* Fix: Copy Paste Styles - Updated logic to work using site's local storage.
+
+
+= 2.0.5 - TUESDAY, 23rd AUGUST 2022 =
+* Fix: Inherit Heading Block Link Color from theme.
+* Fix: Post Grid - Pagination alignment not working on frontend.
+* Fix: Post Layout - Title content not visible after title HTML tag set to P.
+* Fix: Heading - Set default alignment for heading as center for old users.
+* Fix: Call to Action - Buttons Text not wrapping on smaller devices.
+* Fix: Updated Border styling on front-end in multiple blocks for old users.
+* Fix: Advanced Row (Section) & Advanced Columns - Background color and Video opacity issue for old users.
+
+= 2.0.4 - SUNDAY, 21st AUGUST 2022 =
+* Feature: Added Enable Legacy Blocks option in Admin Dashboard.
+* Fix: Buttons - Text inside button not wrapping on small devices.
+* Fix: Automatic Block Recovery not working and block displays blank in editor when reusable block is present on the page.
+* Fix: FAQ - Enabling schema support does not give valid schema JSON on frontend.
+* Fix: Container - Fixed anchor bug (anchor wasn't working and the anchor value wasn't saved)
+* Fix: Advanced Row (Section) & Advanced Columns - Opacity not working for background image when image overlay type was set as gradient for old user.
+* Fix: Post Masonry & Post Carousel - When image position is set to background then content bottom padding is not applicable.
+* Fix: Tabs Child - Border not visible in editor for old users.
+* Fix: Tabs - Layout styles not displaying as they should for responsive devices.
+* Fix: Border backward compatibility issues on frontend in multiple blocks.
 
 = 2.0.3 - FRIDAY, 19TH AUGUST 2022 =
 * Decision: Instead of deprecating some blocks, we decided to call them "legacy" blocks. Legacy blocks work fine and will get support/bug fixes.

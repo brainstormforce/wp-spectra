@@ -1,4 +1,4 @@
-import {getBorderAttributes} from '@Controls/generateAttributes';
+import { getBorderAttributes } from '@Controls/generateAttributes';
 
 const btnBorderAttributes = getBorderAttributes( 'btn' )
 
@@ -63,24 +63,23 @@ const attributes = {
 		}
 	},
 	// Border
-	borderStyle: {
+	borderStyle : {
 		type: 'string',
-		default: '',
+		default: 'solid'
 	},
-	borderWidth: {
+	borderWidth : {
 		type: 'number',
-		default: '',
+		default: 1
 	},
-	borderRadius: {
-		type: 'number',
-		default: '',
+	borderRadius : {
+		type: 'number'
 	},
-	borderColor: {
+	borderColor : {
 		type: 'string',
-		default: '',
+		default: '#333'
 	},
-	borderHoverColor: {
-		type: 'string',
+	borderHoverColor : {
+		type: 'string'
 	},
 
 	// Background

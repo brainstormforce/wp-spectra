@@ -7,7 +7,10 @@
  * @package uagb
  */
 
-$cta_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
+$cta_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
+	'btn'
+);
+
 return array_merge(
 	array(
 		'classMigrate'               => false,
@@ -247,6 +250,11 @@ return array_merge(
 		'blockPaddingUnitTablet'     => 'px',
 		'blockPaddingUnitMobile'     => 'px',
 		'blockPaddingLink'           => '',
+		'ctaBorderStyle'             => 'solid',
+		'ctaBorderColor'             => '',
+		'ctaBorderWidth'             => 1,
+		'ctaBorderRadius'            => 0,
+		'ctaBorderhoverColor'        => '',
 	),
 	$cta_border_attribute
 );

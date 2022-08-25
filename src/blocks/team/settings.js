@@ -1,8 +1,8 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
 import UAGIconPicker from '@Components/icon-picker';
 import renderSVG from '@Controls/renderIcon';
-import lazyLoader from '@Controls/lazy-loader';
+
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -1352,11 +1352,12 @@ const Settings = ( props ) => {
 
 	const getFontSettings = () => {
 		return (
-			<Suspense fallback={ lazyLoader() }>
+				<>
 				{ loadTitleGoogleFonts }
 				{ loadPrefixGoogleFonts }
 				{ loadDescGoogleFonts }
-			</Suspense>
+				</>
+
 		);
 	};
 

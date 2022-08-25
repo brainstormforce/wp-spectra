@@ -1,12 +1,6 @@
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const overallBorderAttributes = getBorderAttributes( 'overall', {
-	borderTopWidth: 1,
-	borderRightWidth: 1,
-	borderBottomWidth: 1,
-	borderLeftWidth: 1,
-	borderStyle: 'none',
-} );
+const overallBorderAttributes = getBorderAttributes( 'overall' );
 
 /**
  * BLOCK: UAGB column Attributes
@@ -504,7 +498,6 @@ const attributes = {
 	},
 	gradientValue: {
 		type: 'string',
-		default: 'linear-gradient(90deg, rgb(6, 147, 227, 0.5) 0%, rgb(155, 81, 224, 0.5) 100%)',
 		UAGCopyPaste: {
 			styleType: 'column-gradient-value'
 		},
