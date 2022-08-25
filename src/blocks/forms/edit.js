@@ -158,7 +158,8 @@ const UAGBFormsEdit = ( props ) => {
 				label: 'inputborderStyle',
 				value: inputborderStyle
 			},
-			props.setAttributes
+			props.setAttributes,
+			props.attributes
 			);
 			migrateBorderAttributes( 'checkBoxToggle', {
 				label: 'inputborderWidth',
@@ -176,7 +177,8 @@ const UAGBFormsEdit = ( props ) => {
 				label: 'inputborderStyle',
 				value: inputborderStyle
 			},
-			props.setAttributes
+			props.setAttributes,
+			props.attributes
 			);
 		}
 		if( submitborderWidth || submitborderRadius || submitborderColor || submitborderHColor || submitborderStyle ){
@@ -196,7 +198,8 @@ const UAGBFormsEdit = ( props ) => {
 				label: 'submitborderStyle',
 				value: submitborderStyle
 			},
-			props.setAttributes
+			props.setAttributes,
+			props.attributes
 			);
 		}
 	}, [] );

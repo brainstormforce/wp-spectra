@@ -159,10 +159,10 @@ export const getBorderAttributes = ( prefix, defaultArgs = {} ) => {
 }
 
 
-export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, color = {}, hoverColor = {}, borderStyle = {}, setAttributes ) => {
-	const attributes = {};
+export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, color = {}, hoverColor = {}, borderStyle = {}, setAttributes, attributes = {} ) => {
+
 	if( ! isNaN( borderWidth.value ) ){
-		
+
 		if( undefined === attributes[ prefix + 'BorderTopWidth' ] ) {
 			setAttributes( { [ prefix + 'BorderTopWidth'] : borderWidth.value } );
 		}
