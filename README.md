@@ -171,6 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 2.0.7 - THURSDAY, 25th AUGUST 2022 ###
+* Improvement: Added Legacy Labels in the Editor Block Inserter.
 * Improvement: Updated the design of inactive block/extension tabs in the admin dashboard.
 * Fix: CTA - Disabled CTA links in editor.
 
