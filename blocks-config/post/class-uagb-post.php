@@ -1693,11 +1693,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 								if( enableEqualHeight ){
 									$scope.imagesLoaded( function() {
-										UAGBPostCarousel._setHeight( $scope );
+										UAGBPostCarousel?._setHeight( $scope );
 									});
 
 									$scope.on( 'afterChange', function() {
-										UAGBPostCarousel._setHeight( $scope );
+										UAGBPostCarousel?._setHeight( $scope );
 									} );
 								}
 

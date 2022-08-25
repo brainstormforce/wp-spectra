@@ -13,7 +13,7 @@ window.UAGBPostCarousel = {
 			Object.keys( postActive ).forEach( ( key ) => {
 				const thisHeight = postActive[key].offsetHeight,
 				blogPost = postActive[key].querySelector( '.uagb-post__inner-wrap' ),
-				blogPostHeight = blogPost.offsetHeight;
+				blogPostHeight = blogPost?.offsetHeight;
 
 				if ( maxHeight < blogPostHeight ) {
 					maxHeight = blogPostHeight;
@@ -27,7 +27,9 @@ window.UAGBPostCarousel = {
 
 			Object.keys( postActive ).forEach( ( key ) => {
 				const selector =  postActive[key].querySelector( '.uagb-post__inner-wrap' );
-				selector.style.height = maxHeight + 'px';
+				if( selector ){
+					selector.style.height = maxHeight + 'px';
+				}
 			} );
 
 			let selector = scope[0].querySelector( '.slick-list' );
@@ -41,8 +43,10 @@ window.UAGBPostCarousel = {
 				}
 
 				selector = $this.querySelector( '.uagb-post__inner-wrap' );
-				const blogPostHeight = selector.offsetHeight;
-				selector.style.height = blogPostHeight + 'px';
+				const blogPostHeight = selector?.offsetHeight;
+				if( blogPostHeight ){
+					selector.style.height = blogPostHeight + 'px';
+				}
 
 			} );
 		}
