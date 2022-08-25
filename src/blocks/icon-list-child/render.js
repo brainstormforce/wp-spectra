@@ -33,6 +33,14 @@ const Render = ( props ) => {
 
 	const deviceType = useDeviceType();
 
+	let defaultedAlt;
+
+	if ( image && image.alt ) {
+		defaultedAlt = image.alt;
+	} else {
+		defaultedAlt = __( 'This icon-list image has an empty alt attribute' );
+	}
+
 	let imageIconHtml = '';
 
 	if ( image_icon === 'icon' ) {
@@ -43,7 +51,7 @@ const Render = ( props ) => {
 		imageIconHtml = (
 			<img
 				className="uagb-icon-list__source-image"
-				alt=""
+				alt= { defaultedAlt }
 				src={ image.url }
 			/>
 		);

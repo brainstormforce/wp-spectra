@@ -7,6 +7,7 @@ import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 
 import { RichText } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
 
 export default function save( props ) {
 	const { attributes , className } = props;
@@ -24,6 +25,14 @@ export default function save( props ) {
 		fromParentIcon
 	} = attributes;
 
+	let defaultedAlt;
+
+	if ( image && image.alt ) {
+		defaultedAlt = image.alt;
+	} else {
+		defaultedAlt = __( 'This icon-list image has an empty alt attribute' );
+	}
+
 	let imageIconHtml = '';
 
 	if ( image_icon === 'icon' ) {
@@ -35,7 +44,7 @@ export default function save( props ) {
 			<img
 				className="uagb-icon-list__source-image"
 				src={ image.url }
-				alt={ image.alt }
+				alt={ defaultedAlt }
 			/>
 		);
 	}
