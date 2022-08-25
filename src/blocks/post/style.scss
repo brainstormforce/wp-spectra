@@ -365,6 +365,10 @@
 	.is-carousel {
 		padding: 0;
 	}
+
+	ul.slick-dots {
+		transform: unset;
+	}
 }
 
 .uagb-post-grid[data-equal-height="yes"] .uagb-post__inner-wrap {
