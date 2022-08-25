@@ -32,6 +32,7 @@ const CTA = ( props ) => {
 					) }
 					target={ target }
 					rel={ rel }
+					onClick={ ( e ) => e.preventDefault() }
 				>
 					{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
 					{ attributes.ctaText }

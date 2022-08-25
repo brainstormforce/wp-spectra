@@ -30,6 +30,7 @@ const SecondCTAButton = ( props ) => {
 				) }
 				target={ target }
 				rel={ rel }
+				onClick={ ( e ) => e.preventDefault() }
 			>
 				{ attributes.secondCtaIconPosition === 'before' && secondCtaIconOutput }
 				{ attributes.secondCtaLabel }
