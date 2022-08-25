@@ -6,6 +6,7 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import links from './links';
+import { __ } from '@wordpress/i18n';
 
 export default function save( props ) {
 	const { className } = props;
@@ -13,6 +14,14 @@ export default function save( props ) {
 	const { type, image_icon, icon, image, block_id } = props.attributes;
 
 	const url = links[ type ];
+
+	let defaultedAlt;
+
+	if ( image && image.alt ) {
+		defaultedAlt = image.alt;
+	} else {
+		defaultedAlt = __( 'This social icon has an empty alt attribute' );
+	}
 
 	let imageIconHtml = '';
 
@@ -26,7 +35,7 @@ export default function save( props ) {
 		}
 	} else if ( image && image.url ) {
 		imageIconHtml = (
-			<img className="uagb-ss__source-image" src={ image.url } alt="" />
+			<img className="uagb-ss__source-image" src={ image.url } alt={ defaultedAlt } />
 		);
 	}
 

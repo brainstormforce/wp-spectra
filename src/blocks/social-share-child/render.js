@@ -7,6 +7,7 @@ import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
+import { __ } from '@wordpress/i18n';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -23,6 +24,14 @@ const Render = ( props ) => {
 
 	const { className, image_icon, icon, image } = attributes;
 
+	let defaultedAlt;
+
+	if ( image && image.alt ) {
+		defaultedAlt = image.alt;
+	} else {
+		defaultedAlt = __( 'This social icon has an empty alt attribute' );
+	}
+
 	let imageIconHtml = '';
 
 	if ( image_icon === 'icon' ) {
@@ -35,7 +44,7 @@ const Render = ( props ) => {
 		}
 	} else if ( image && image.url ) {
 		imageIconHtml = (
-			<img className="uagb-ss__source-image" src={ image.url } alt="" />
+			<img className="uagb-ss__source-image" src={ image.url } alt={ defaultedAlt } />
 		);
 	}
 
