@@ -6,7 +6,7 @@ import './style.scss';
 import save from './save';
 import edit from './edit';
 import attributes from './attributes';
-import UAGB_Block_Icons from '@Controls/block-icons';
+import { renderLegacyBlockEditorIcon } from '@Controls/block-icons';
 import deprecated from './deprecated';
 import { __ } from '@wordpress/i18n';
 
@@ -16,7 +16,7 @@ if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_bloc
 	registerBlockType( 'uagb/wp-search', {
 		title: __( 'Search', 'ultimate-addons-for-gutenberg' ),
 		description: __( 'Add a search widget to let users search posts from your website.', 'ultimate-addons-for-gutenberg' ),
-		icon: UAGB_Block_Icons.wp_search,
+		icon: renderLegacyBlockEditorIcon( 'wp_search' ),
 		keywords: [
 			__( 'search', 'ultimate-addons-for-gutenberg' ),
 			__( 'wp', 'ultimate-addons-for-gutenberg' ),
