@@ -7,7 +7,6 @@ import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 
 import { RichText } from '@wordpress/block-editor';
-import { __ } from '@wordpress/i18n';
 
 export default function save( props ) {
 	const { attributes , className } = props;
@@ -25,13 +24,7 @@ export default function save( props ) {
 		fromParentIcon
 	} = attributes;
 
-	let defaultedAlt;
-
-	if ( image && image.alt ) {
-		defaultedAlt = image.alt;
-	} else {
-		defaultedAlt = __( 'This icon-list image has an empty alt attribute' );
-	}
+	const defaultedAlt = ( image && image.alt ) ? image.alt : '';
 
 	let imageIconHtml = '';
 

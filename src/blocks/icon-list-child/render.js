@@ -33,13 +33,7 @@ const Render = ( props ) => {
 
 	const deviceType = useDeviceType();
 
-	let defaultedAlt;
-
-	if ( image && image.alt ) {
-		defaultedAlt = image.alt;
-	} else {
-		defaultedAlt = __( 'This icon-list image has an empty alt attribute' );
-	}
+	const defaultedAlt = ( image && image.alt ) ? image.alt : '';
 
 	let imageIconHtml = '';
 
