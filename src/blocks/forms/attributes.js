@@ -689,20 +689,24 @@ const attributes = {
 	},
 
 	// InputBorder
-	inputborderStyle: {
-		type: 'string',
+	inputborderStyle : {
+		type: "string",
+		default: "solid"
 	},
-	inputborderWidth: {
-		type: 'number',
+	inputborderWidth : {
+		type: "number",
+		default: 1
 	},
-	inputborderRadius: {
-		type: 'number',
+	inputborderRadius : {
+		type: "number",
+		default: 3
 	},
-	inputborderColor: {
-		type: 'string',
+	inputborderColor : {
+		type: "string",
+		default: "#BDBDBD"
 	},
-	inputborderHoverColor: {
-		type: 'string',
+	inputborderHoverColor : {
+		type: "string"
 	},
 	hPaddingField: {
 		type: 'number',
