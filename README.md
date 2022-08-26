@@ -170,9 +170,10 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### 2.0.7 - THURSDAY, 25th AUGUST 2022 ###
+### 2.0.7 - FRIDAY, 26th AUGUST 2022 ###
 * Improvement: Added Legacy Labels in the Editor Block Inserter.
 * Improvement: Updated the design of inactive block/extension tabs in the admin dashboard.
+* Fix: Table of Content - Updated Font Awesome 6 migration on front-end refresh.
 * Fix: CTA - Disabled CTA links in editor.
 * Fix: Post Carousel - Slider dots overlapping on below blocks.
 * Fix: Container - Flex properties do not work when Container Width & Content Width both are set as full width.
