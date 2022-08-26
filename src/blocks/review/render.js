@@ -74,7 +74,7 @@ const Render = ( props ) => {
 	) {
 		urlChk = props.attributes.mainimage.url;
 		title = props.attributes.mainimage.title;
-		defaultedAlt = ( props.attributes.mainimage.alt ) ? props.attributes.mainimage.alt : '';
+		defaultedAlt = ( props.attributes.mainimage?.alt ) ? props.attributes.mainimage?.alt : '';
 	}
 
 	let url = '';

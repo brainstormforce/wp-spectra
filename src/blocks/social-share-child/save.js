@@ -14,7 +14,7 @@ export default function save( props ) {
 
 	const url = links[ type ];
 
-	const defaultedAlt = ( image && image.alt ) ? image.alt : '';
+	const defaultedAlt = ( image && image?.alt ) ? image?.alt : '';
 
 	let imageIconHtml = '';
 

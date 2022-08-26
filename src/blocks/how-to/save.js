@@ -66,7 +66,7 @@ export default function save( props ) {
 		}
 	}
 
-	const defaultedAlt = ( mainimage && mainimage.alt ) ? mainimage.alt : '';
+	const defaultedAlt = ( mainimage && mainimage?.alt ) ? mainimage?.alt : '';
 
 	let imageIconHtml = '';
 

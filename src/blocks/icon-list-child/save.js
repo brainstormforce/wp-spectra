@@ -24,7 +24,7 @@ export default function save( props ) {
 		fromParentIcon
 	} = attributes;
 
-	const defaultedAlt = ( image && image.alt ) ? image.alt : '';
+	const defaultedAlt = ( image && image?.alt ) ? image?.alt : '';
 
 	let imageIconHtml = '';
 

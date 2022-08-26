@@ -33,7 +33,7 @@ const Render = ( props ) => {
 
 	const deviceType = useDeviceType();
 
-	const defaultedAlt = ( image && image.alt ) ? image.alt : '';
+	const defaultedAlt = ( image && image?.alt ) ? image?.alt : '';
 
 	let imageIconHtml = '';
 

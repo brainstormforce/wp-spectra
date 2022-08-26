@@ -23,7 +23,7 @@ const Render = ( props ) => {
 
 	const { className, image_icon, icon, image } = attributes;
 
-	const defaultedAlt = ( image && image.alt ) ? image.alt : '';
+	const defaultedAlt = ( image && image?.alt ) ? image?.alt : '';
 
 	let imageIconHtml = '';
 
