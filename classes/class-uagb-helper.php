@@ -301,9 +301,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			if ( $view ) {
 				$view = implode( ' ', $view );
 			}
-			?>
-			<svg xmlns="https://www.w3.org/2000/svg" viewBox= "<?php echo esc_html( $view ); ?>"><path d="<?php echo esc_html( $path ); ?>"></path></svg>
-			<?php
+			if ( '' !== $path && null !== $view ) {
+				?>
+				<svg xmlns="https://www.w3.org/2000/svg" viewBox= "<?php echo esc_html( $view ); ?>"><path d="<?php echo esc_html( $path ); ?>"></path></svg>
+				<?php
+			}
 		}
 
 		/**
