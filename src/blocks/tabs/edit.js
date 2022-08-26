@@ -92,7 +92,9 @@ const UAGBTabsEdit = ( props ) => {
 				label: 'borderStyle',
 				value: borderStyle
 			},
-			props.setAttributes );
+			props.setAttributes,
+			props.attributes
+			);
 		}
 	}, [] );
 

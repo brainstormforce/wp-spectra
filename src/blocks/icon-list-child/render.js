@@ -33,6 +33,8 @@ const Render = ( props ) => {
 
 	const deviceType = useDeviceType();
 
+	const defaultedAlt = ( image && image?.alt ) ? image?.alt : '';
+
 	let imageIconHtml = '';
 
 	if ( image_icon === 'icon' ) {
@@ -43,7 +45,7 @@ const Render = ( props ) => {
 		imageIconHtml = (
 			<img
 				className="uagb-icon-list__source-image"
-				alt=""
+				alt= { defaultedAlt }
 				src={ image.url }
 			/>
 		);

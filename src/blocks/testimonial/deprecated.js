@@ -10,6 +10,8 @@ import PositionClasses from './classes';
 import TestimonialImage from './components/TestimonialImage';
 import TestimonialImages from './components/Image';
 import React, { Fragment } from 'react';
+import { getBorderAttributes } from '@Controls/generateAttributes';
+const overallBorderAttributes = getBorderAttributes( 'overall' );
 
 const ITEM_COUNT = 3
 
@@ -391,6 +393,7 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 	},
+	...overallBorderAttributes
 }
 
 const deprecated = [
