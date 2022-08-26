@@ -3,15 +3,13 @@
  */
 
 import styling from './styling';
-import React, { useEffect,    } from 'react';
+import React, { useEffect } from 'react';
 
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import {migrateBorderAttributes} from '@Controls/generateAttributes';
 import { select } from '@wordpress/data';
-const { isSavingPost } = select( 'core/editor' );
-
 import Settings from './settings';
 import Render from './render';
 
@@ -19,9 +17,7 @@ const FaqComponent = ( props ) => {
 
 	const deviceType = useDeviceType();
 
-	const isSavingPostState = isSavingPost();
-
-	useEffect( () => {
+	const updatePageSchema = () => {
 
 		const { setAttributes, clientId } = props;
 		const allBlocks = select( 'core/block-editor' ).getBlocks( clientId );
@@ -51,8 +47,7 @@ const FaqComponent = ( props ) => {
 		} );
 
 		setAttributes( {schema: JSON.stringify( jsonData )} );
-
-	}, [isSavingPostState] );
+	};
 
 	useEffect( () => {
 		// Replacement for componentDidMount.
@@ -234,6 +229,12 @@ const FaqComponent = ( props ) => {
 			props.setAttributes
 			);
 		}
+
+		const postSaveButton = document.getElementsByClassName( 'editor-post-publish-button' )?.[0];
+
+		if ( postSaveButton ) {
+			postSaveButton.addEventListener( 'click', updatePageSchema );
+		}
 	}, [] );
 
 	useEffect( () => {
@@ -317,6 +318,13 @@ const FaqComponent = ( props ) => {
 					answerLeftPaddingMobile: props.attributes.hanswerPaddingMobile,
 				} );
 			}
+		}
+
+		const postSaveButton = document.getElementsByClassName( 'editor-post-publish-button' )?.[0];
+
+		if ( postSaveButton ) {
+			postSaveButton.addEventListener( 'click', updatePageSchema );
+			return () => { postSaveButton?.removeEventListener( 'click', updatePageSchema ); }
 		}
 
 	}, [ props ] );

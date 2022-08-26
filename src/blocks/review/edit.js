@@ -4,24 +4,18 @@
 
 import styling from './styling';
 import SchemaNotices from './schema-notices';
-import React, {   useEffect,  } from 'react';
-
-import { withState, compose } from '@wordpress/compose';
-import { withSelect, select } from '@wordpress/data';
+import React, { useEffect } from 'react';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
-const { isSavingPost } = select( 'core/editor' );
 
 const ReviewComponent = ( props ) => {
 
 	const deviceType = useDeviceType();
 
-	const isSavingPostState = isSavingPost();
-
-	useEffect( () => {
+	const updatePageSchema = () => {
 
 		const { setAttributes, attributes } = props;
 		const {
@@ -182,8 +176,7 @@ const ReviewComponent = ( props ) => {
 		}
 
 		setAttributes( {schema: JSON.stringify( jsonData )} );
-
-	}, [isSavingPostState] );
+	}
 
 	useEffect( () => {
 		// Assigning block_id in the attribute.
@@ -216,6 +209,12 @@ const ReviewComponent = ( props ) => {
 				setAttributes( { leftPadding: contentHrPadding } );
 			}
 		}
+
+		const postSaveButton = document.getElementsByClassName( 'editor-post-publish-button' )?.[0];
+
+		if ( postSaveButton ) {
+			postSaveButton.addEventListener( 'click', updatePageSchema );
+		}
 	}, [] );
 
 	useEffect( () => {
@@ -230,6 +229,15 @@ const ReviewComponent = ( props ) => {
 				event.preventDefault();
 			} );
 		}
+
+		const postSaveButton = document.getElementsByClassName( 'editor-post-publish-button' )?.[0];
+
+		if ( postSaveButton ) {
+			postSaveButton.addEventListener( 'click', updatePageSchema );
+			return () => { postSaveButton?.removeEventListener( 'click', updatePageSchema ); }
+		}
+
+
 	}, [ props ] );
 
 	useEffect( () => {
