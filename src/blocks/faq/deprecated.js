@@ -5,6 +5,9 @@
 // Import block dependencies and components.
 import classnames from 'classnames';
 import { InnerBlocks } from '@wordpress/block-editor';
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const borderAttributes = getBorderAttributes( 'overall' );
 
 const attributes = {
 	block_id: {
@@ -340,7 +343,8 @@ const attributes = {
 	rowsGapUnit: {
 		type: 'string',
 		default: 'px',
-	}
+	},
+	...borderAttributes
 }
 
 const deprecated = [

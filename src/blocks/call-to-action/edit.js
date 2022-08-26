@@ -37,7 +37,7 @@ const UAGBCallToAction = ( props ) => {
 			ctaBorderStyle,
 			ctaBorderWidth,
 			ctaBorderColor,
-			ctaBorderHColor,
+			ctaBorderhoverColor,
 			ctaBorderRadius
 		} = props.attributes;
 
@@ -74,7 +74,7 @@ const UAGBCallToAction = ( props ) => {
 		}
 
 		// border
-		if( ctaBorderWidth || ctaBorderRadius || ctaBorderColor || ctaBorderHColor || ctaBorderStyle ){
+		if( ctaBorderWidth || ctaBorderRadius || ctaBorderColor || ctaBorderhoverColor || ctaBorderStyle ){
 			migrateBorderAttributes( 'btn', {
 				label: 'ctaBorderWidth',
 				value: ctaBorderWidth,
@@ -85,13 +85,14 @@ const UAGBCallToAction = ( props ) => {
 				label: 'ctaBorderColor',
 				value: ctaBorderColor
 			}, {
-				label: 'ctaBorderHColor',
-				value: ctaBorderHColor
+				label: 'ctaBorderhoverColor',
+				value: ctaBorderhoverColor
 			},{
 				label: 'ctaBorderStyle',
 				value: ctaBorderStyle
 			},
-			props.setAttributes
+			props.setAttributes,
+			props.attributes
 			);
 		}
 	}, [] );

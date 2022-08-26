@@ -6,6 +6,9 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/deprecatedRenderIcon';
 import { RichText } from '@wordpress/block-editor';
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const btnBorderAttributes = getBorderAttributes( 'btn' )
 const attributes = {
 	block_id: {
 		type: "string"
@@ -304,7 +307,8 @@ const attributes = {
 	iconFontSizeMobile: {
 		type: "number",
 		default: 20
-	}
+	},
+	...btnBorderAttributes
 }
 
 const deprecated = [
