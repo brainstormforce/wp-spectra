@@ -6,7 +6,8 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 import renderSVG from '@Controls/deprecatedRenderIcon';
-
+import { getBorderAttributes } from '@Controls/generateAttributes';
+const borderAttributes = getBorderAttributes( 'btn' );
  const attributes = {
 	inheritFromTheme: {
 		type: "boolean",
@@ -150,7 +151,8 @@ import renderSVG from '@Controls/deprecatedRenderIcon';
 	paddingUnit:{
 		type: "string",
 		default: "px"
-	}
+	},
+	...borderAttributes
 }
 
 const deprecated = [

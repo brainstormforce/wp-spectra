@@ -1,10 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const successMessageBorderAttributes = getBorderAttributes( 'successMsg' );
-const failedMessageBorderAttributes = getBorderAttributes( 'errorMsg' );
 const inputBorderAttributes = getBorderAttributes( 'field' );
-const toggleBorderAttributes = getBorderAttributes( 'checkBoxToggle' );
 const submitBorderAttributes = getBorderAttributes( 'btn' );
 
 const attributes = {
@@ -1219,5 +1216,7 @@ const attributes = {
 			styleType: 'submit-letter-spacing-type'
 		}
 	},
+	...inputBorderAttributes,
+	...submitBorderAttributes
 };
 export default attributes;
