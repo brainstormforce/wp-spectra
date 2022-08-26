@@ -286,7 +286,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$view = null;
 
 			// Load Polyfiller Array if needed.
-			if ( 'disabled' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', 'disabled' ) ) {
+			$load_font_awesome_5 = UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' );
+
+			if ( 'disabled' !== $load_font_awesome_5 ) {
 				// If Icon doesn't need Polyfilling, use the Original.
 				$font_awesome_5_polyfiller = get_spectra_font_awesome_polyfiller();
 				$polyfilled_icon           = isset( $font_awesome_5_polyfiller[ $icon ] ) ? $font_awesome_5_polyfiller[ $icon ] : $icon;
