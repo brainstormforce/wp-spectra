@@ -170,6 +170,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 * Improvement: Added Legacy Labels in the Editor Block Inserter.
 * Improvement: Updated the design of inactive block/extension tabs in the admin dashboard.
 * Improvement: Social Share Child, Icon List Child, How to, Review Blocks - Added missing alt attributes for img tags.
+* Fix: Table of Content - Updated Font Awesome 6 migration on front-end refresh.
 * Fix: Borders - Borders styling not saving for multiple blocks for new block case.
 * Fix: CTA - Disabled CTA links in editor.
 * Fix: Post Carousel - Slider dots overlapping on below blocks.
