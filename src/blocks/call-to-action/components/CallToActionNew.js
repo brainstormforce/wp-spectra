@@ -17,9 +17,14 @@ const CTA = ( props ) => {
 	}
 
 	let link = '/';
+	let preventDefaultFunc = ( e ) => {  // Disables click events for link in editor.
+		e.preventDefault();
+	}
 	if ( setAttributes === 'not_set' ) {
 		link = attributes.ctaLink;
+		preventDefaultFunc = false;  // Ensures click events for links aren't disabled for frontend.
 	}
+
 	return (
 		<>
 			{ ( attributes.ctaType === 'button' ||
@@ -32,6 +37,7 @@ const CTA = ( props ) => {
 					) }
 					target={ target }
 					rel={ rel }
+					onClick={ preventDefaultFunc }
 				>
 					{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
 					{ attributes.ctaText }
