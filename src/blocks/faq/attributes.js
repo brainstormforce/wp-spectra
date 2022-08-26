@@ -165,19 +165,24 @@ const attributes = {
 			styleType: 'faq-horizontal-padding-desktop'
 		},
 	},
-	borderStyle: {
-		type: 'string',
-		default: 'solid'
-	},
-	borderWidth: {
-		type: 'number',	},
-	borderRadius: {
-		type: 'number',	},
-	borderColor: {
-		type: 'string',
-	},
 	borderHoverColor: {
 		type: 'string',
+	},
+	borderStyle: {
+		type: 'string',
+		default : 'solid'
+	},
+	borderWidth: {
+		type: 'number',
+		default : 1
+	},
+	borderRadius: {
+		type: 'number',
+		default : 2
+	},
+	borderColor: {
+		type: 'string',
+		default: '#D2D2D2'
 	},
 	questionTextColor: {
 		type: 'string',

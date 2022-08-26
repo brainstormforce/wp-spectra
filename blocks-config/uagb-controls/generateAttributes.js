@@ -159,20 +159,20 @@ export const getBorderAttributes = ( prefix, defaultArgs = {} ) => {
 }
 
 
-export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, color = {}, hoverColor = {}, borderStyle = {}, setAttributes ) => {
-	const attributes = {};
+export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, color = {}, hoverColor = {}, borderStyle = {}, setAttributes, attributes = {} ) => {
+
 	if( ! isNaN( borderWidth.value ) ){
-		
-		if( undefined === attributes[ prefix + 'BorderTopWidth' ] ) {
+
+		if( '' === attributes[ prefix + 'BorderTopWidth' ] ) {
 			setAttributes( { [ prefix + 'BorderTopWidth'] : borderWidth.value } );
 		}
-		if( undefined === attributes[ prefix + 'BorderLeftWidth' ] ) {
+		if( '' === attributes[ prefix + 'BorderLeftWidth' ] ) {
 			setAttributes( { [ prefix + 'BorderLeftWidth' ]: borderWidth.value } );
 		}
-		if( undefined === attributes[ prefix + 'BorderRightWidth' ] ) {
+		if( '' === attributes[ prefix + 'BorderRightWidth' ] ) {
 			setAttributes( { [ prefix + 'BorderRightWidth' ]: borderWidth.value } );
 		}
-		if( undefined === attributes[ prefix + 'BorderBottomWidth' ] ) {
+		if( '' === attributes[ prefix + 'BorderBottomWidth' ] ) {
 			setAttributes( { [ prefix + 'BorderBottomWidth' ] : borderWidth.value } );
 		}
 		// reset
@@ -181,16 +181,16 @@ export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, colo
 
 	if( ! isNaN ( borderRadius.value ) ){
 
-		if( undefined === attributes[ prefix + 'BorderTopLeftRadius' ] ) {
+		if( '' === attributes[ prefix + 'BorderTopLeftRadius' ] ) {
 			setAttributes( { [ prefix + 'BorderTopLeftRadius' ] : borderRadius.value } );
 		}
-		if( undefined === attributes[ prefix + 'BorderTopRightRadius' ] ) {
+		if( '' === attributes[ prefix + 'BorderTopRightRadius' ] ) {
 			setAttributes( { [ prefix + 'BorderTopRightRadius' ] : borderRadius.value } );
 		}
-		if( undefined === attributes[ prefix + 'BorderBottomLeftRadius' ] ) {
+		if( '' === attributes[ prefix + 'BorderBottomLeftRadius' ] ) {
 			setAttributes( { [ prefix + 'BorderBottomLeftRadius' ] : borderRadius.value } );
 		}
-		if( undefined === attributes[ prefix + 'BorderBottomRightRadius' ] ) {
+		if( '' === attributes[ prefix + 'BorderBottomRightRadius' ] ) {
 			setAttributes( { [ prefix + 'BorderBottomRightRadius' ] : borderRadius.value } );
 		}
 		// reset
@@ -198,7 +198,7 @@ export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, colo
 	}
 
 	if( color.value ){
-		if( undefined === attributes[ prefix + 'BorderColor' ] ) {
+		if( '' === attributes[ prefix + 'BorderColor' ] ) {
 			setAttributes( { [ prefix + 'BorderColor' ] : color.value } );
 		}
 		// reset
@@ -206,7 +206,7 @@ export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, colo
 	}
 
 	if( hoverColor.value ){
-		if( undefined === attributes[ prefix + 'BorderHColor' ] ) {
+		if( '' === attributes[ prefix + 'BorderHColor' ] ) {
 			setAttributes( { [ prefix + 'BorderHColor' ] : hoverColor.value } );
 		}
 		// reset
@@ -214,7 +214,7 @@ export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, colo
 	}
 
 	if( borderStyle.value ){
-		if( undefined === attributes[ prefix + 'BorderStyle' ] ) {
+		if( '' === attributes[ prefix + 'BorderStyle' ] ) {
 			setAttributes( { [ prefix + 'BorderStyle' ] : borderStyle.value } );
 		}
 		// reset
