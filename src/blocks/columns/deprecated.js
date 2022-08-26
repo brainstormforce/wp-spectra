@@ -9,6 +9,9 @@ import shapes from './deprecatedShapes';
 import { InnerBlocks } from '@wordpress/block-editor';
 
 import { __ } from '@wordpress/i18n';
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const borderAttributes = getBorderAttributes( 'columns' );
 
 const attributes = {
 	block_id: {
@@ -312,7 +315,7 @@ const attributes = {
 		type: "string",
 		default:"",
 	},
-
+	...borderAttributes
 }
 
 const deprecated = [

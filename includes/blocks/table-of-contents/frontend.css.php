@@ -80,7 +80,7 @@ $selectors = array(
 		'justify-content' => $attr['align'],
 		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
 	),
-	' .uagb-toc__title'                                   => array(
+	' .uagb-toc__wrap .uagb-toc__title'                   => array(
 		'color'           => $attr['headingColor'],
 		'justify-content' => $attr['headingAlignment'],
 		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),

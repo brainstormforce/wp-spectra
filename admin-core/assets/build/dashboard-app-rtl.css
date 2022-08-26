@@ -1190,6 +1190,9 @@ select {
 }.hover\:border-slate-200:hover {
   --tw-border-opacity: 1;
   border-color: rgb(226 232 240 / var(--tw-border-opacity));
+}.hover\:bg-white:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }.hover\:bg-indigo-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(238 242 255 / var(--tw-bg-opacity));
@@ -1293,9 +1296,9 @@ select {
 }.focus-visible\:border-slate-300:focus-visible {
   --tw-border-opacity: 1;
   border-color: rgb(203 213 225 / var(--tw-border-opacity));
-}.focus-visible\:border-slate-200:focus-visible {
-  --tw-border-opacity: 1;
-  border-color: rgb(226 232 240 / var(--tw-border-opacity));
+}.focus-visible\:bg-white:focus-visible {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }.focus-visible\:bg-spectra-hover:focus-visible {
   --tw-bg-opacity: 1;
   background-color: rgb(83 0 224 / var(--tw-bg-opacity));

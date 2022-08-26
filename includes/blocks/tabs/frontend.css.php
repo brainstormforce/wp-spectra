@@ -56,7 +56,7 @@ $selectors = array(
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['tabTitleRightMargin'], $attr['tabTitleMarginUnit'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['tabTitleBottomMargin'], $attr['tabTitleMarginUnit'] ),
 	),
-	' .uagb-tabs__panel .uagb-tab:hover '                  => array(
+	'.uagb-tabs__wrap .uagb-tabs__panel .uagb-tab:hover '  => array(
 		'border-color' => $attr['tabBorderHColor'],
 	),
 	' .uagb-tabs__panel .uagb-tab.uagb-tabs__active'       => array(
@@ -80,7 +80,7 @@ $selectors = array(
 		'margin-right'   => UAGB_Helper::get_css_value( $attr['tabBodyRightMargin'], $attr['tabBodyMarginUnit'] ),
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['tabBodyBottomMargin'], $attr['tabBodyMarginUnit'] ),
 	),
-	' .uagb-tabs__body-wrap:hover '                        => array(
+	'.uagb-tabs__wrap .uagb-tabs__body-wrap:hover '        => array(
 		'border-color' => $attr['tabBorderHColor'],
 	),
 	' .uagb-tabs__body-wrap p '                            => array(

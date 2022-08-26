@@ -1,0 +1,29 @@
+/* --------- Legacy Block Specific CSS in the Editor --------- */
+
+.spectra {
+
+	&__legacy {
+
+		&-icon {
+
+			&--block-inserter-label {
+				display: none;
+				position: absolute;
+				top: 40px;
+				margin: 0 auto;
+				padding: 2px 4px;
+				font-size: 10px;
+				line-height: 10px;
+				color: #94a3b8;
+				background-color: #fff;
+				border: 1px solid #e2e8f0;
+				border-radius: 4px;
+			}
+		}
+	}
+}
+
+// Show Label ONLY in the Block Inserter Panel.
+.block-editor-inserter__panel-content .spectra__legacy-icon--block-inserter-label {
+	display: block;
+}

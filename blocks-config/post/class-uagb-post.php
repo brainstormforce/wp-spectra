@@ -1636,7 +1636,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							( function( $ ) {
 								var cols = parseInt( '<?php echo esc_html( $value['columns'] ); ?>' );
 								var $scope = $( '.uagb-block-<?php echo esc_html( $key ); ?>' );
-								if ( ! $scope.hasClass('is-carousel') || cols >= $scope.children().length ) {
+								if ( ! $scope.hasClass('is-carousel') || cols >= $scope.children('article.uagb-post__inner-wrap').length ) {
 									return;
 								}
 								var slider_options = {
@@ -1693,11 +1693,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 								if( enableEqualHeight ){
 									$scope.imagesLoaded( function() {
-										UAGBPostCarousel._setHeight( $scope );
+										UAGBPostCarousel?._setHeight( $scope );
 									});
 
 									$scope.on( 'afterChange', function() {
-										UAGBPostCarousel._setHeight( $scope );
+										UAGBPostCarousel?._setHeight( $scope );
 									} );
 								}
 
