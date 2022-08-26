@@ -52,11 +52,8 @@ export default function save( props ) {
 	) {
 		urlChk = attributes.mainimage.url;
 		title = attributes.mainimage.title;
-		// defaultedAlt = ( props.attributes.mainimage.alt ) ? props.attributes.mainimage.alt : '';
-		defaultedAlt = props.attributes.mainimage.alt;
+		defaultedAlt = ( props.attributes.mainimage.alt ) ? props.attributes.mainimage.alt : '';
 	}
-
-	console.log( defaultedAlt );
 
 	let url = '';
 	if ( '' !== urlChk ) {
