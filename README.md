@@ -175,6 +175,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 * Fix: Post Carousel - Slider dots overlapping on below blocks.
 * Fix: Container - Flex properties do not work when Container Width & Content Width both are set as full width.
 * Fix: Legacy block not visible on Blocks/Extension page after enabling setting.
+* Fix: Review - Enabling schema support does not give valid schema JSON on frontend.
 * Fix: InfoBox - Default btn padding issue on front-end for old users.
 * Fix: Container - Inner Container overflow if the custom widths is set in pixels.
 * Fix: Post carousel - Broken and throwing console issue on shop page.
