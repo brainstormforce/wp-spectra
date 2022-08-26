@@ -33,7 +33,9 @@ window.UAGBPostCarousel = {
 			} );
 
 			let selector = scope[0].querySelector( '.slick-list' );
-			selector.style.height = postActiveHeight + 'px';
+			if( selector ){
+				selector.style.height = postActiveHeight + 'px';
+			}
 			maxHeight = -1;
 			wrapperHeight = -1;
 			Object.keys( postWrapper ).forEach( ( key ) => {
