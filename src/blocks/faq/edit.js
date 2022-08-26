@@ -231,7 +231,8 @@ const FaqComponent = ( props ) => {
 				label: 'borderStyle',
 				value: borderStyle
 			},
-			props.setAttributes
+			props.setAttributes,
+			props.attributes
 			);
 		}
 	}, [] );

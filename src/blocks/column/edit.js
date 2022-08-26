@@ -64,10 +64,10 @@ const ColumnComponent = ( props ) => {
 			}
 		}
 		const { borderStyle, borderWidth, borderRadius, borderColor, borderHoverColor } = props.attributes;
-		
+
 		// border migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-	
+
 			migrateBorderAttributes( 'column', {
 				label: 'borderWidth',
 				value: borderWidth,
@@ -84,8 +84,9 @@ const ColumnComponent = ( props ) => {
 				label: 'borderStyle',
 				value: borderStyle
 			},
-			props.setAttributes
-		);	
+			props.setAttributes,
+			props.attributes
+		);
 		}
 	}, [] );
 
