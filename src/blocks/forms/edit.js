@@ -131,7 +131,7 @@ const UAGBFormsEdit = ( props ) => {
 			inputborderStyle,
 			inputborderWidth,
 			inputborderColor,
-			inputborderHColor,
+			inputborderHoverColor,
 			inputborderRadius,
 			submitborderWidth,
 			submitborderRadius,
@@ -141,7 +141,7 @@ const UAGBFormsEdit = ( props ) => {
 		} = props.attributes;
 
 		// inputborder
-		if( inputborderWidth || inputborderRadius || inputborderColor || inputborderHColor || inputborderStyle ){
+		if( inputborderWidth || inputborderRadius || inputborderColor || inputborderHoverColor || inputborderStyle ){
 			migrateBorderAttributes( 'field', {
 				label: 'inputborderWidth',
 				value: inputborderWidth,
@@ -152,8 +152,8 @@ const UAGBFormsEdit = ( props ) => {
 				label: 'inputborderColor',
 				value: inputborderColor
 			}, {
-				label: 'inputborderHColor',
-				value: inputborderHColor
+				label: 'inputborderHoverColor',
+				value: inputborderHoverColor
 			},{
 				label: 'inputborderStyle',
 				value: inputborderStyle
@@ -171,8 +171,8 @@ const UAGBFormsEdit = ( props ) => {
 				label: 'inputborderColor',
 				value: inputborderColor
 			}, {
-				label: 'inputborderHColor',
-				value: inputborderHColor
+				label: 'inputborderHoverColor',
+				value: inputborderHoverColor
 			},{
 				label: 'inputborderStyle',
 				value: inputborderStyle

@@ -55,9 +55,9 @@ const ButtonsChildComponent = ( props ) => {
 				setAttributes( { leftPadding: hPadding } );
 			}
 		}
-		const { borderStyle, borderWidth, borderRadius, borderColor, borderHoverColor } = props.attributes
+		const { borderStyle, borderWidth, borderRadius, borderColor, borderHColor } = props.attributes
 		// border migration
-		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
+		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
 			migrateBorderAttributes( 'btn', {
 				label: 'borderWidth',
 				value: borderWidth,
@@ -68,8 +68,8 @@ const ButtonsChildComponent = ( props ) => {
 				label: 'borderColor',
 				value: borderColor
 			}, {
-				label: 'borderHoverColor',
-				value: borderHoverColor
+				label: 'borderHColor',
+				value: borderHColor
 			},{
 				label: 'borderStyle',
 				value: borderStyle
