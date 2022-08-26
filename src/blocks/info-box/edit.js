@@ -72,7 +72,9 @@ const UAGBInfoBox = ( props ) => {
 				label: 'ctaBorderStyle',
 				value: ctaBorderStyle
 			},
-			props.setAttributes );
+			props.setAttributes,
+			props.attributes
+		);
 		}
 	}, [] );
 

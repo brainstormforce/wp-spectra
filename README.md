@@ -171,6 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 2.0.7 - FRIDAY, 26th AUGUST 2022 ###
+* Fix: Borders - Borders styling not saving for multiple blocks for new block case.
 * Improvement: Added Legacy Labels in the Editor Block Inserter.
 * Improvement: Updated the design of inactive block/extension tabs in the admin dashboard.
 * Fix: CTA - Disabled CTA links in editor.

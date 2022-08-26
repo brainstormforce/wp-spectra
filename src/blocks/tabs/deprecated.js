@@ -6,6 +6,10 @@ import classnames from 'classnames';
 import renderSVG from '@Controls/deprecatedRenderIcon';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const borderAttributes = getBorderAttributes( 'tab' );
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -712,6 +716,7 @@ const attributes = {
 			styleType: 'main-title-letter-spacing-type'
 		}
 	},
+	...borderAttributes
 };
 
 
