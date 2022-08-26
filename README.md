@@ -177,7 +177,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Carousel - Slider dots overlapping on below blocks.
 * Fix: Container - Flex properties do not work when Container Width & Content Width both are set as full width.
 * Fix: Legacy block not visible on Blocks/Extension page after enabling setting.
-* Fix: Social Share Child, Icon List Child, How to, Review - Fixed image alt attribute issue.
+* Improvement: Social Share Child, Icon List Child, How to, Review Blocks - Added missing alt attributes for img tags.
 
 ### 2.0.6 - WEDNESDAY, 24th AUGUST 2022 ###
 * Fix: Testimonial - Bottom padding and gradient color not working on frontend.
