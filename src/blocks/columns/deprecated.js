@@ -11,7 +11,7 @@ import { InnerBlocks } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const borderAttributes = getBorderAttributes( 'column' );
+const borderAttributes = getBorderAttributes( 'columns' );
 
 const attributes = {
 	block_id: {

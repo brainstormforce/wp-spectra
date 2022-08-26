@@ -1,7 +1,10 @@
 import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
+const successMessageBorderAttributes = getBorderAttributes( 'successMsg' );
+const failedMessageBorderAttributes = getBorderAttributes( 'errorMsg' );
 const inputBorderAttributes = getBorderAttributes( 'field' );
+const toggleBorderAttributes = getBorderAttributes( 'checkBoxToggle' );
 const submitBorderAttributes = getBorderAttributes( 'btn' );
 
 const attributes = {
@@ -686,24 +689,20 @@ const attributes = {
 	},
 
 	// InputBorder
-	inputborderStyle : {
-		type: "string",
-		default: "solid"
+	inputborderStyle: {
+		type: 'string',
 	},
-	inputborderWidth : {
-		type: "number",
-		default: 1
+	inputborderWidth: {
+		type: 'number',
 	},
-	inputborderRadius : {
-		type: "number",
-		default: 3
+	inputborderRadius: {
+		type: 'number',
 	},
-	inputborderColor : {
-		type: "string",
-		default: "#BDBDBD"
+	inputborderColor: {
+		type: 'string',
 	},
-	inputborderHoverColor : {
-		type: "string"
+	inputborderHoverColor: {
+		type: 'string',
 	},
 	hPaddingField: {
 		type: 'number',
@@ -1216,7 +1215,5 @@ const attributes = {
 			styleType: 'submit-letter-spacing-type'
 		}
 	},
-	...inputBorderAttributes,
-	...submitBorderAttributes
 };
 export default attributes;
