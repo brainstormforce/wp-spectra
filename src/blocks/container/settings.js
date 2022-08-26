@@ -205,7 +205,7 @@ const Settings = ( props ) => {
 		bottomDividerHeightType
 	} = attributes;
 
-	let currentDirection = directionDesktop;
+	let currentDirection = directionDesktop?.split( '-' )?.[0];
 
 	if ( attributes[ 'direction' + deviceType ] && attributes[ 'direction' + deviceType ].split( '-' )[0] ) {
 

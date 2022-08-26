@@ -145,7 +145,7 @@ $selectors = array(
 	),
 	'.uagb-is-root-container .uagb-block-' . $id          => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'max-width' => UAGB_Helper::get_css_value( $width_desktop_fallback, $attr['widthType'] ),
-		'width'     => UAGB_Helper::get_css_value( $width_desktop_fallback, $attr['widthType'] ),
+		'width'     => '100%',
 	),
 	'.uagb-block-' . $id . ' .uagb-container__shape-top svg' => array(
 		'height' => UAGB_Helper::get_css_value( $attr['topHeight'], 'px' ),
@@ -245,7 +245,7 @@ $t_selectors = array(
 	'.uagb-block-' . $id                         => $container_tablet_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 	'.uagb-is-root-container .uagb-block-' . $id => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'max-width' => UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthTypeTablet'] ),
-		'width'     => UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthTypeTablet'] ),
+		'width'     => '100%',
 	),
 	'.uagb-block-' . $id . ' .uagb-container__shape-bottom svg' => array(
 		'height' => UAGB_Helper::get_css_value( $attr['bottomHeightTablet'], 'px' ),
@@ -310,7 +310,7 @@ $m_selectors = array(
 	'.uagb-block-' . $id                         => $container_mobile_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 	'.uagb-is-root-container .uagb-block-' . $id => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'max-width' => UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthTypeMobile'] ),
-		'width'     => UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthTypeMobile'] ),
+		'width'     => '100%',
 	),
 	'.uagb-block-' . $id . ' .uagb-container__shape-bottom svg' => array(
 		'height' => UAGB_Helper::get_css_value( $attr['bottomHeightMobile'], 'px' ),
