@@ -331,7 +331,7 @@ function styling( props ) {
 	}
 
 	let containerFlexSelector = '.wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout';
-	if ( ! isBlockRootParent || 'alignfull' !== contentWidth ) {
+	if ( ! isBlockRootParent || 'alignfull' !== contentWidth || 'alignwide' !== innerContentWidth ) {
 		containerFlexSelector = '.wp-block-uagb-container > .block-editor-inner-blocks > .block-editor-block-list__layout';
 	}
 
