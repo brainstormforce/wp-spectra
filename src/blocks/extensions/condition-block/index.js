@@ -1,4 +1,4 @@
-import { ToggleControl, SelectControl } from '@wordpress/components'
+import { ToggleControl, SelectControl, ExternalLink } from '@wordpress/components'
 import { __ } from '@wordpress/i18n';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
@@ -19,7 +19,7 @@ const UserConditionOptions = ( props ) => {
     return(
         <>
             <SelectControl
-				label={ __( 'Display Conditions ( Core )' ) }
+				label={ __( 'Display Conditions' ) }
 				value={ UAGDisplayConditions }
 				onChange={ ( value ) => setAttributes( { UAGDisplayConditions: value } ) }
 				options={ [
@@ -106,7 +106,7 @@ const UserResponsiveConditionOptions = ( props ) => {
 
     return(
         <>
-			<p className="components-base-control__label">{ __( 'Responsive Conditions ( Core )', 'ultimate-addons-for-gutenberg' ) }</p>
+			<p className="components-base-control__label">{ __( 'Responsive Conditions', 'ultimate-addons-for-gutenberg' ) }</p>
 			<>
 				<ToggleControl
 					label={ __( 'Hide on Desktop' )}
@@ -145,6 +145,11 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 				{ isCore && ! blockType.includes( blockName ) &&
 					<InspectorAdvancedControls>
 						<p className="components-base-control__help">{ __( "Below setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
+						<ExternalLink
+							href={ 'https://wpspectra.com/docs/display-conditions-blocks/' }
+						>
+							{ __( 'Filter to disable responsive/display condition. ' ) }
+						</ExternalLink>
 						<hr className="uagb-editor__separator" />
 						{ UserResponsiveConditionOptions( props ) }
 						<hr className="uagb-editor__separator" />
