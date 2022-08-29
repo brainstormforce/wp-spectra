@@ -23,7 +23,7 @@
 	display: grid; // Columns handled in Dynamic Styling.
 	grid-auto-flow: dense;
 
-	.spectra-image-gallery-media-wrapper {
+	.spectra-image-gallery__media-wrapper {
 
 		@include forceSizeAuto();
 		aspect-ratio: 1;
@@ -32,7 +32,7 @@
 			grid-column: span 2;
 			aspect-ratio: 2/1;
 
-			.spectra-image-gallery-media--tiled-wide {
+			.spectra-image-gallery__media--tiled-wide {
 
 				@include forceSize100();
 			}
@@ -42,7 +42,7 @@
 			grid-row: span 2;
 			aspect-ratio: 1/2;
 
-			.spectra-image-gallery-media--tiled-tall {
+			.spectra-image-gallery__media--tiled-tall {
 
 				@include forceSize100();
 			}
@@ -53,14 +53,14 @@
 			grid-column: span 2;
 		}
 
-		.spectra-image-gallery-media--masonry,
-		.spectra-image-gallery-media__thumbnail--masonry {
+		.spectra-image-gallery__media--masonry,
+		.spectra-image-gallery__media-thumbnail--masonry {
 
 			@include forceSize100();
 		}
 	}
 
-	.spectra-image-gallery-media-spacer {
+	.spectra-image-gallery__media-spacer {
 		display: none;
 	}
 }

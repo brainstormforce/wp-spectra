@@ -1869,7 +1869,7 @@ const Settings = ( props ) => {
 						{ ! readyToRender && initialSettings() }
 						{ readyToRender && gallerySettings() }
 						{ readyToRender && layoutSettings() }
-						{ ( readyToRender && feedLayout !== 'tiled' ) && layoutSpecificSettings() }
+						{ readyToRender && layoutSpecificSettings() }
 						{ readyToRender && captionSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>

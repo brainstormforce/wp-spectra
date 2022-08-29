@@ -778,7 +778,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 						ob_start();
 						?>
 							<div class="spectra-image-gallery spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?> spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-<?= $attributes[ 'columnsDesk' ] ?> spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-tab-<?= $attributes[ 'columnsTab' ] ?> spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-mob-<?= $attributes[ 'columnsMob' ] ?>">
-								<div class="spectra-image-gallery-media-spacer"></div>
+								<div class="spectra-image-gallery__media-spacer"></div>
 								<?= $allMedia ?>
 							</div>
 						<?php
@@ -933,10 +933,10 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 			// Check if this is part of the Tiled Layout, and if so then check if the current image is focused or not.
 			$focusedClass = '';
 			if ( $atts[ 'feedLayout' ] === 'tiled' && ( array_key_exists( $mediaArray[ 'id' ], $atts[ 'focusList' ] ) && $atts[ 'focusList' ][ $mediaArray[ 'id' ] ] === true ) ){
-				$focusedClass = ' spectra-image-gallery-media-wrapper--focus';
+				$focusedClass = ' spectra-image-gallery__media-wrapper--focus';
 			}
 			?>
-			<div class='spectra-image-gallery-media-wrapper<?= $focusedClass ?>' >
+			<div class='spectra-image-gallery__media-wrapper<?= $focusedClass ?>' >
 				<?php
 					$this->render_media_thumbnail( $mediaArray, $atts );
 					// echo $mediaArray[ 'caption' ];
@@ -949,7 +949,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 			?>
 			<a <?= ( $mediaArray[ 'url' ] )
 				? 'href="' . $mediaArray[ 'url' ] . '"'
-				: 'class="spectra-image-gallery-media--flagged"'; ?> target="_blank" rel="noopener noreferrer" >
+				: 'class="spectra-image-gallery__media--flagged"'; ?> target="_blank" rel="noopener noreferrer" >
 				<?php $this->render_media_thumbnail( $mediaArray, $atts ); ?>
 			</a>
 			<?php
@@ -958,20 +958,20 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		private function render_media_thumbnail( $mediaArray, $atts ) {
 			if ( $atts[ 'captionDisplayType' ] === 'bar-outside' && ( UAGB_Block_Helper::get_matrix_alignment( $atts[ 'imageCaptionAlignment' ], 1 ) === 'top' ) && $atts[ 'imageDisplayCaption' ] ) {
 				?>
-					<div class="spectra-image-gallery-media__thumbnail-caption-wrapper spectra-image-gallery-media__thumbnail-caption-wrapper--<?= $atts[ 'captionDisplayType' ]; ?>">
+					<div class="spectra-image-gallery__media-thumbnail-caption-wrapper spectra-image-gallery__media-thumbnail-caption-wrapper--<?= $atts[ 'captionDisplayType' ]; ?>">
 						<?php $this->render_media_caption( $mediaArray, $atts ); ?>
 					</div>
 				<?php
 			}
 			?>
-			<div class="spectra-image-gallery-media spectra-image-gallery-media--<?= $atts[ 'feedLayout' ]; ?>">
-				<img class="spectra-image-gallery-media__thumbnail spectra-image-gallery-media__thumbnail--<?= $atts[ 'feedLayout' ]; ?>" src="<?= $mediaArray[ 'url' ]; ?>" />
-				<div class="spectra-image-gallery-media__thumbnail-blurrer"></div>
+			<div class="spectra-image-gallery__media spectra-image-gallery__media--<?= $atts[ 'feedLayout' ]; ?>">
+				<img class="spectra-image-gallery__media-thumbnail spectra-image-gallery__media-thumbnail--<?= $atts[ 'feedLayout' ]; ?>" src="<?= $mediaArray[ 'url' ]; ?>" />
+				<div class="spectra-image-gallery__media-thumbnail-blurrer"></div>
 				<?php
 					if ( $atts[ 'imageDisplayCaption' ] ) {
 						if ( $atts[ 'captionDisplayType' ] !== 'bar-outside' ) {
 						?>
-							<div class="spectra-image-gallery-media__thumbnail-caption-wrapper spectra-image-gallery-media__thumbnail-caption-wrapper--<?= $atts[ 'captionDisplayType' ]; ?>">
+							<div class="spectra-image-gallery__media-thumbnail-caption-wrapper spectra-image-gallery__media-thumbnail-caption-wrapper--<?= $atts[ 'captionDisplayType' ]; ?>">
 								<?php $this->render_media_caption( $mediaArray, $atts ); ?>
 							</div>
 						<?php
@@ -979,7 +979,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 					}
 					else{
 						?>
-							<div class="spectra-image-gallery-media__thumbnail-caption-wrapper spectra-image-gallery-media__thumbnail-caption-wrapper--overlay"></div>
+							<div class="spectra-image-gallery__media-thumbnail-caption-wrapper spectra-image-gallery__media-thumbnail-caption-wrapper--overlay"></div>
 						<?php
 					}
 				?>
@@ -987,7 +987,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 			<?php
 			if( $atts[ 'captionDisplayType' ] === 'bar-outside' && ( UAGB_Block_Helper::get_matrix_alignment( $atts[ 'imageCaptionAlignment' ], 1 ) !== 'top' ) && $atts[ 'imageDisplayCaption' ] ) {
 				?>
-					<div class="spectra-image-gallery-media__thumbnail-caption-wrapper spectra-image-gallery-media__thumbnail-caption-wrapper--<?= $atts[ 'captionDisplayType' ]; ?>">
+					<div class="spectra-image-gallery__media-thumbnail-caption-wrapper spectra-image-gallery__media-thumbnail-caption-wrapper--<?= $atts[ 'captionDisplayType' ]; ?>">
 						<?php $this->render_media_caption( $mediaArray, $atts ); ?>
 					</div>
 				<?php
@@ -1055,7 +1055,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 				}
 			}
 			?>
-				<div class="spectra-image-gallery-media__thumbnail-caption spectra-image-gallery-media__thumbnail-caption--<?= $atts[ 'captionDisplayType' ]; ?>">
+				<div class="spectra-image-gallery__media-thumbnail-caption spectra-image-gallery__media-thumbnail-caption--<?= $atts[ 'captionDisplayType' ]; ?>">
 					<?= __( $limitedCaption, 'ultimate-addons-for-gutenberg' ); ?><?= $needsEllipsis ? ' &#8230;' : ''; ?>
 				</div>
 			<?php
@@ -1105,7 +1105,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 						if ( scope.children[0].classList.contains( 'spectra-image-gallery__layout--masonry' ) ) {
 							const element = scope.querySelector( '.spectra-image-gallery__layout--masonry' );
 							const isotope = new Isotope( element, {
-								itemSelector: '.spectra-image-gallery-media-wrapper',
+								itemSelector: '.spectra-image-gallery__media-wrapper',
 							} );
 							imagesLoaded( element ).on( 'progress', function() {
 								isotope.layout();
@@ -1127,7 +1127,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 						if ( scope.children[0].classList.contains( 'spectra-image-gallery__layout--isogrid' ) ) {
 							const element = scope.querySelector( '.spectra-image-gallery__layout--isogrid' );
 							const isotope = new Isotope( element, {
-								itemSelector: '.spectra-image-gallery-media-wrapper',
+								itemSelector: '.spectra-image-gallery__media-wrapper',
 								layoutMode: 'fitRows',
 							} );
 							imagesLoaded( element ).on( 'progress', function() {
@@ -1170,20 +1170,20 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 						if ( scope.children[0].classList.contains( 'spectra-image-gallery__layout--tiled' ) ) {
 							console.log('<?= json_encode( $attr[ 'focusList' ] ); ?>');
 							const element = scope.querySelector( '.spectra-image-gallery__layout--tiled' );
-							const tileSize = scope.querySelector( '.spectra-image-gallery-media-spacer' ).getBoundingClientRect().width;
+							const tileSize = scope.querySelector( '.spectra-image-gallery__media-spacer' ).getBoundingClientRect().width;
 							const isotope = new Isotope( element, {
-								itemSelector: '.spectra-image-gallery-media-wrapper',
+								itemSelector: '.spectra-image-gallery__media-wrapper',
 								layoutMode: 'masonry',
 								// percentPosition: true,
 								masonry: {
-									columnWidth: '.spectra-image-gallery-media-spacer',
+									columnWidth: '.spectra-image-gallery__media-spacer',
 									// horizontalOrder: true,
 								},
 							} );
 							imagesLoaded( element ).on( 'progress', ( theInstance, theImage ) => {
 								if ( theImage.isLoaded ){
 									const imageElement = theImage.img;
-									if( ! imageElement.parentElement.parentElement.classList.contains( 'spectra-image-gallery-media-wrapper--focus' ) ){
+									if( ! imageElement.parentElement.parentElement.classList.contains( 'spectra-image-gallery__media-wrapper--focus' ) ){
 										const wrapperElement = imageElement.parentElement.parentElement;
 										const mediaElement = imageElement.parentElement;
 										if ( imageElement.naturalWidth >= ( imageElement.naturalHeight * 2 ) - ( imageElement.naturalHeight / 2 ) ){
