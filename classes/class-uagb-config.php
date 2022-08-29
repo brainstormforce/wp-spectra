@@ -162,7 +162,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'src'        => UAGB_Scripts_Utils::get_js_url( 'container' ),
 						'skipEditor' => true,
 						'dep'        => array(),
-					)
+					),
 				);
 			}
 			return self::$block_assets;
@@ -305,7 +305,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/image'                  => array(
 						'name' => 'image',
 					),
-					'uagb/counter'                  => array(
+					'uagb/counter'                => array(
 						'name' => 'counter',
 					),
 				);
