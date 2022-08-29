@@ -157,7 +157,7 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 	};
 }, 'AdvancedControlsBlock' );
 
-function ApplyExtraClass( extraProps, blockType, attributes ) {
+function ApplyExtraClassCore( extraProps, blockType, attributes ) {
 
 	const {
 		UAGHideDesktop,
@@ -193,7 +193,7 @@ if( '1' === enableConditionsForCoreBlocks ){
 
     addFilter(
         'blocks.getSaveContent.extraProps',
-        'uagb/apply-extra-class',
-        ApplyExtraClass,
+        'uagb/apply-extra-class-core',
+        ApplyExtraClassCore,
     );
 }
