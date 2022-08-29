@@ -10,6 +10,7 @@ import { __ } from '@wordpress/i18n';
 import {AlignmentToolbar, BlockControls, InspectorControls} from '@wordpress/block-editor';
 import { TextControl, SelectControl } from '@wordpress/components';
 import Range from '@Components/range/Range.js';
+import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 
@@ -109,15 +110,37 @@ export default function Settings( props ) {
 			title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
-			<SelectControl
+			<MultiButtonsControl
+				setAttributes={ setAttributes }
 				label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-				value={ layout }
+				data={ {
+					value: layout,
+					label: 'layout',
+				} }
 				options={ [
-					{ label: __( 'Number Counter', 'ultimate-addons-for-gutenberg' ), value: 'number' },
-					{ label: __( 'Circle Counter', 'ultimate-addons-for-gutenberg' ), value: 'circle' },
-					{ label: __( 'Bars Counter', 'ultimate-addons-for-gutenberg' ), value: 'bars' },
+					{
+						value: 'number',
+						label: __(
+							'Number',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'circle',
+						label: __(
+							'Circle',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'bars',
+						label: __(
+							'Bars',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
 				] }
-				onChange={ ( value ) => setAttributes( {layout: value} ) }
+				showIcons={ false }
 			/>
 			<TextControl
 				label={ __( 'Starting Number', 'ultimate-addons-for-gutenberg' ) }
@@ -186,7 +209,7 @@ export default function Settings( props ) {
 		>
 			<TypographyControl
 				label={ __(
-					'Title Typography',
+					'Typography',
 					'ultimate-addons-for-gutenberg'
 				) }
 				setAttributes={ setAttributes }
@@ -337,7 +360,7 @@ export default function Settings( props ) {
 		>
 			<TypographyControl
 				label={ __(
-					'Number Typography',
+					'Typography',
 					'ultimate-addons-for-gutenberg'
 				) }
 				setAttributes={ setAttributes }
