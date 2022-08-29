@@ -305,6 +305,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/image'                  => array(
 						'name' => 'image',
 					),
+					'uagb/counter'                  => array(
+						'name' => 'counter',
+					),
 				);
 			}
 			return self::$block_assets_css;
