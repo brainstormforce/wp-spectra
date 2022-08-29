@@ -42,7 +42,7 @@ const withFaq = createHigherOrderComponent( ( BlockEdit ) => {
 
 registerBlockType( 'uagb/faq', {
 	title: __( 'FAQ', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'This block helps you add FAQ or Accordion with automatically adding FAQ Schema to your page.', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'Add accordions/FAQ schema to your page.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.faq,
 	category: uagb_blocks_info.category,
 	keywords: [
@@ -52,34 +52,9 @@ registerBlockType( 'uagb/faq', {
 		__( 'accordion', 'ultimate-addons-for-gutenberg' ),
 	],
 	example: {
-		innerBlocks: [
-			{
-				name: 'uagb/faq-child',
-				innerBlocks: [
-					{
-						name: 'uagb/faq-child',
-						attributes: {
-							question: 'What is FAQ?',
-							answer:
-								'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-						},
-					},
-				],
-			},
-			{
-				name: 'uagb/faq-child',
-				innerBlocks: [
-					{
-						name: 'uagb/faq-child',
-						attributes: {
-							question: 'What is FAQ?',
-							answer:
-								'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-						},
-					},
-				],
-			},
-		],
+		attributes: {
+			isPreview: true,
+		}
 	},
 	attributes,
 	deprecated,

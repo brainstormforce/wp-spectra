@@ -5,6 +5,8 @@ import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 import React, { useLayoutEffect } from 'react';
 import styles from './editor.lazy.scss';
+import { useDeviceType } from '@Controls/getPreviewType';
+
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -26,19 +28,24 @@ const Render = ( props ) => {
 		target,
 		disableLink,
 		hideLabel,
+		fromParentIcon
 	} = attributes;
+
+	const deviceType = useDeviceType();
+
+	const defaultedAlt = ( image && image?.alt ) ? image?.alt : '';
 
 	let imageIconHtml = '';
 
 	if ( image_icon === 'icon' ) {
-		if ( icon ) {
-			imageIconHtml = renderSVG( icon );
+		if( icon || fromParentIcon ){
+			imageIconHtml = icon ? renderSVG( icon ) : renderSVG( fromParentIcon );
 		}
-	} else if ( image && image.url ) {
+	} else if ( image && image.url && image_icon !== 'none' ) {
 		imageIconHtml = (
 			<img
 				className="uagb-icon-list__source-image"
-				alt=""
+				alt= { defaultedAlt }
 				src={ image.url }
 			/>
 		);
@@ -51,7 +58,8 @@ const Render = ( props ) => {
 		<div
 			className={ classnames(
 				className,
-				`uagb-block-${ block_id }`
+				`uagb-block-${ block_id }`,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 			) }
 		>
 			{ disableLink && (
@@ -64,10 +72,14 @@ const Render = ( props ) => {
 					{ ' ' }
 				</a>
 			) }
-			<span className="uagb-icon-list__source-wrap">
-				{ imageIconHtml }
-			</span>
-			{ ! hideLabel && '' !== label && (
+			{
+				imageIconHtml && (
+					<span className="uagb-icon-list__source-wrap">
+						{ imageIconHtml }
+					</span>
+				)
+			}
+			{ ! hideLabel && (
 				<RichText
 					tagName="span"
 					placeholder={ __(

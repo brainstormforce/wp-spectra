@@ -42,7 +42,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				return;
 			}
 
-			add_action( 'admin_notices', array( $this, 'register_notices' ) );
+			// Disabling asking 5 Stars from users for a few updated till we get stable.
+			// add_action( 'admin_notices', array( $this, 'register_notices' ) );.
 
 			add_filter( 'wp_kses_allowed_html', array( $this, 'add_data_attributes' ), 10, 2 );
 
@@ -53,9 +54,35 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			// Activation hook.
 			add_action( 'admin_init', array( $this, 'activation_redirect' ) );
 
+			add_action( 'admin_init', array( $this, 'update_old_user_option_by_url_params' ) );
+
 			add_action( 'admin_post_uag_rollback', array( $this, 'post_uagb_rollback' ) );
 
 		}
+
+		/**
+		 * Update Old user option using URL Param.
+		 *
+		 * If any user wants to set the site as old user then just add the URL param as true.
+		 *
+		 * @since 2.0.1
+		 * @access public
+		 */
+		public function update_old_user_option_by_url_params() {
+
+			if ( ! current_user_can( 'manage_options' ) ) {
+				return;
+			}
+
+			$spectra_old_user = isset( $_GET['spectra_old_user'] ) ? sanitize_text_field( $_GET['spectra_old_user'] ) : false; //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+			if ( 'yes' === $spectra_old_user ) {
+				update_option( 'uagb-old-user-less-than-2', 'yes' );
+			} elseif ( 'no' === $spectra_old_user ) {
+				delete_option( 'uagb-old-user-less-than-2' );
+			}
+		}
+
 		/**
 		 * UAG version rollback.
 		 *
@@ -120,7 +147,15 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				update_option( '__uagb_do_redirect', false );
 
 				if ( ! is_multisite() ) {
-					wp_safe_redirect( esc_url( admin_url( 'options-general.php?page=' . UAGB_SLUG ) ) );
+					wp_safe_redirect(
+						add_query_arg(
+							array(
+								'page' => UAGB_SLUG,
+								'spectra-activation-redirect' => true,
+							),
+							admin_url( 'options-general.php' )
+						)
+					);
 					exit();
 				}
 			}
@@ -151,7 +186,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				return;
 			}
 
-			$image_path = UAGB_URL . 'admin/assets/images/uagb_notice.svg';
+			$image_path = UAGB_URL . 'admin-core/assets/images/uag-logo.svg';
 
 			Astra_Notices::add_notice(
 				array(
@@ -159,13 +194,13 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 					'type'                       => '',
 					'message'                    => sprintf(
 						'<div class="notice-image">
-							<img src="%1$s" class="custom-logo" alt="Ultimate Addons for Gutenberg" itemprop="logo"></div>
+							<img src="%1$s" class="custom-logo" alt="Spectra" itemprop="logo"></div>
 							<div class="notice-content">
 								<div class="notice-heading">
 									%2$s
 								</div>
 								%3$s<br />
-								<div class="uagb-review-notice-container">
+								<div class="astra-review-notice-container">
 									<a href="%4$s" class="astra-notice-close uagb-review-notice button-primary" target="_blank">
 									%5$s
 									</a>
@@ -180,7 +215,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 								</div>
 							</div>',
 						$image_path,
-						__( 'Wow! The Ultimate Addons for Gutenberg has already powered over 5 pages on your website!', 'ultimate-addons-for-gutenberg' ),
+						__( 'Wow! The Spectra has already powered over 5 pages on your website!', 'ultimate-addons-for-gutenberg' ),
 						__( 'Would you please mind sharing your views and give it a 5 star rating on the WordPress repository?', 'ultimate-addons-for-gutenberg' ),
 						'https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/?filter=5#new-post',
 						__( 'Ok, you deserve it', 'ultimate-addons-for-gutenberg' ),
@@ -189,10 +224,10 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 						__( 'I already did', 'ultimate-addons-for-gutenberg' )
 					),
 					'repeat-notice-after'        => MONTH_IN_SECONDS,
-					'display-notice-after'       => WEEK_IN_SECONDS,
+					'display-notice-after'       => ( 2 * WEEK_IN_SECONDS ), // Display notice after 2 weeks.
 					'priority'                   => 20,
 					'display-with-other-notices' => false,
-					'show_if'                    => UAGB_Admin_Helper::show_rating_notice(),
+					'show_if'                    => true,
 				)
 			);
 
@@ -205,7 +240,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 							'type'                       => 'warning',
 							'message'                    => sprintf(
 								/* translators: %s: html tags */
-								__( 'Ultimate Addons for Gutenberg requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING.', 'ultimate-addons-for-gutenberg' ),
+								__( 'Spectra requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING.', 'ultimate-addons-for-gutenberg' ),
 								'<a href="' . admin_url( 'options-writing.php' ) . '">',
 								'</a>',
 								'<strong>',
@@ -229,14 +264,13 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			wp_enqueue_style( 'uagb-notice-settings', UAGB_URL . 'admin/assets/admin-notice.css', array(), UAGB_VER );
 		}
 
-
 		/**
 		 * Rank Math SEO filter to add kb-elementor to the TOC list.
 		 *
 		 * @param array $plugins TOC plugins.
 		 */
 		public function toc_plugin( $plugins ) {
-			$plugins['ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php'] = 'Ultimate Addons for Gutenberg';
+			$plugins['ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php'] = 'Spectra';
 			return $plugins;
 		}
 

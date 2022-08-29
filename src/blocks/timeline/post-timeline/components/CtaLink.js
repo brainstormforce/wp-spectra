@@ -8,14 +8,16 @@ const CtaLink = ( props ) => {
 
 	if ( attributes.displayPostLink ) {
 		return (
+			<div className="uagb-timeline__link_parent wp-block-button"	>
 				<a
-					className="uagb-timeline__link"
+					className="uagb-timeline__link wp-block-button__link"
 					href={ post.link }
 					target={ target }
 					rel="noopener noreferrer"
 				>
 					{ attributes.readMoreText }
 				</a>
+			</div>
 		);
 	}
 	return null;

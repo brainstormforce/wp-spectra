@@ -1,5 +1,6 @@
 .uagb-howto__cost-wrap {
-	display: block;
+	display: flex;
+	align-items: center;
 
 	.uagb-howto-estcost-text,
 	.uagb-howto-estcost-value,
@@ -9,7 +10,8 @@
 }
 
 .uagb-howto__time-wrap {
-	display: block;
+	display: flex;
+	align-items: center;
 
 	.uagb-howto-timeNeeded-text,
 	.uagb-howto-timeNeeded-value,
@@ -76,6 +78,7 @@
 }
 
 .uagb-howto-req-steps-text,
+.uagb-howto-req-tools-text,
 .uagb-howto-req-materials-text {
 	margin-block-start: 1.33em;
 	margin-block-end: 1.33em;

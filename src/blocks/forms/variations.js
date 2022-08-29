@@ -25,6 +25,7 @@ const variations = [
 					name: __( 'First Name', 'ultimate-addons-for-gutenberg' ),
 					placeholder: __( 'John', 'ultimate-addons-for-gutenberg' ),
 					nameRequired: true,
+					autocomplete: 'given-name',
 				},
 			],
 			[
@@ -33,6 +34,7 @@ const variations = [
 					name: __( 'Last Name', 'ultimate-addons-for-gutenberg' ),
 					placeholder: __( 'Doe', 'ultimate-addons-for-gutenberg' ),
 					nameRequired: true,
+					autocomplete: 'family-name',
 				},
 			],
 			[ 'uagb/forms-email', { emailRequired: true } ],
@@ -119,6 +121,7 @@ const variations = [
 						'ultimate-addons-for-gutenberg'
 					),
 					nameRequired: true,
+					autocomplete: 'off',
 				},
 			],
 			[ 'uagb/forms-textarea', { textareaRequired: true } ],

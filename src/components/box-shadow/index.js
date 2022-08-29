@@ -8,17 +8,40 @@ import AdvancedPopColorControl from '../color-control/advanced-pop-color-control
 import { Button, Dashicon } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import MultiButtonsControl from '../multi-buttons-control/index';
-import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
+import { select } from '@wordpress/data'
+import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
+import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
+
 const BoxShadowControl = ( props ) => {
-	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect( () => {
-		styles.use();
-		return () => {
-			styles.unuse();
-		};
-	}, [] );
+
 	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
+
+	useLayoutEffect( () => {
+		window.addEventListener( 'click', function( e ){
+			const popupButton = document.querySelector( `.active.popup-${blockId} .spectra-control-popup__options--action-button` );
+			const popupWrap = document.querySelector( `.active.popup-${blockId} .spectra-control-popup` );
+
+			if ( popupButton && ! popupButton?.contains( e.target ) && popupWrap && ! popupWrap?.contains( e.target ) && ! e.target?.classList?.contains( 'uagb-advanced-color-indicate' ) && ! e.target?.parentElement?.closest( '.uagb-popover-color' ) && ! e.target?.parentElement?.closest( '.uagb-reset' ) ) {
+				toggleAdvancedControls( false )
+				const blockName = getSelectedBlock()?.name;
+				const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+
+				const data = {
+					...uagSettingState,
+					[blockName] : {
+						...uagSettingState?.[blockName],
+						selectedSetting : false
+					}
+				}
+
+				const uagLocalStorage = getUAGEditorStateLocalStorage();
+				if ( uagLocalStorage ) {
+					uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
+				}
+			}
+		  } );
+	}, [] );
 
 	const {
 		setAttributes,
@@ -28,126 +51,214 @@ const BoxShadowControl = ( props ) => {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
+		label = __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ),
+		popup = false,
+		blockId
 	} = props;
 
 	let advancedControls;
 	const activeClass = showAdvancedControls ? 'active' : '';
 
+	// Array of all the current Typography Control's Labels.
+	const attributeNames = [
+		boxShadowColor.label,
+		boxShadowHOffset.label,
+		boxShadowVOffset.label,
+		boxShadowBlur.label,
+		boxShadowSpread.label,
+		boxShadowPosition.label,
+	];
+
+	const { getSelectedBlock } = select( 'core/block-editor' );
+
+	// Function to get the Block's default Box Shadow Values.
+	const getBlockBoxShadowValue = () => {
+		const selectedBlockName = getSelectedBlock()?.name.replace( 'uagb/', '' );
+		let defaultValues = false;
+		if ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ] ) {
+			attributeNames.forEach( ( attributeName ) => {
+				if ( attributeName ) {
+					const blockDefaultAttributeValue = ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ][ attributeName ]?.default ) ? blocksAttributes[ selectedBlockName ][ attributeName ]?.default : '';
+					defaultValues = {
+						...defaultValues,
+						[ attributeName ] : blockDefaultAttributeValue,
+					}
+				}
+			} );
+		}
+		return defaultValues;
+	}
+
+	// Function to check if any Box Shadow Setting has changed.
+	const getUpdateState = () => {
+		const defaultValues = getBlockBoxShadowValue();
+		const selectedBlockAttributes = getSelectedBlock()?.attributes;
+		let isBoxShadowUpdated = false;
+		attributeNames.forEach( ( attributeName ) => {
+			if ( selectedBlockAttributes?.[ attributeName ] && ( selectedBlockAttributes?.[ attributeName ] !== defaultValues?.[ attributeName ] ) ) {
+				isBoxShadowUpdated = true;
+			}
+		} );
+		return isBoxShadowUpdated;
+	};
+
+	// Flag to check if this control has been updated or not.
+	const isBoxShadowUpdated = popup && getUpdateState();
+
+	const overallControls = (
+		<>
+			{ /* Shadow Color */ }
+			<AdvancedPopColorControl
+				label={ boxShadowColor.title }
+				colorValue={ boxShadowColor.value }
+				data={ {
+					value: boxShadowColor.value,
+					label: boxShadowColor.label,
+				} }
+				setAttributes={ setAttributes }
+			/>
+			{ /* Horizontal Positioning */ }
+			<Range
+				label={ boxShadowHOffset.title }
+				value={ boxShadowHOffset.value }
+				min={ -100 }
+				max={ 100 }
+				displayUnit={ false }
+				setAttributes={setAttributes}
+				data={ {
+					value: boxShadowHOffset.value,
+					label: boxShadowHOffset.label,
+				} }
+			/>
+			{ /* Vertical Positioning */ }
+			<Range
+				label={ boxShadowVOffset.title }
+				value={ boxShadowVOffset.value }
+				min={ -100 }
+				max={ 100 }
+				displayUnit={ false }
+				setAttributes={setAttributes}
+				data={ {
+					value: boxShadowVOffset.value,
+					label: boxShadowVOffset.label,
+				} }
+			/>
+			{ /* Blur */ }
+			<Range
+				label={ boxShadowBlur.title }
+				value={ boxShadowBlur.value }
+				min={ 0 }
+				max={ 100 }
+				displayUnit={ false }
+				setAttributes={setAttributes}
+				data={ {
+					value: boxShadowBlur.value,
+					label: boxShadowBlur.label,
+				} }
+			/>
+			{ /* Spread */ }
+			<Range
+				label={ boxShadowSpread.title }
+				value={ boxShadowSpread.value }
+				min={ -100 }
+				max={ 100 }
+				displayUnit={ false }
+				setAttributes={setAttributes}
+				data={ {
+					value: boxShadowSpread.value,
+					label: boxShadowSpread.label,
+				} }
+			/>
+			{ /* Shadow Position */ }
+			<MultiButtonsControl
+				setAttributes={ setAttributes }
+				label={ boxShadowPosition.title }
+				data={ {
+					value: boxShadowPosition.value,
+					label: boxShadowPosition.label,
+				} }
+				options={ [
+					{
+						value: 'outset',
+						label: __(
+							'Outset',
+							'ultimate-addons-for-gutenberg'
+						),
+						tooltip: __(
+							'Outset',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'inset',
+						label: __(
+							'Inset',
+							'ultimate-addons-for-gutenberg'
+						),
+						tooltip: __(
+							'Inset (10px)',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+				] }
+				showIcons={ false }
+			/>
+		</>
+	);
+
 	if ( showAdvancedControls ) {
 		advancedControls = (
-			<div className="uagb-box-shadow-advanced">
-				<div className="uagb-shadow-color">
-					<AdvancedPopColorControl
-						label={ boxShadowColor.title }
-						colorValue={ boxShadowColor.value }
-						onColorChange={ ( value ) =>
-							setAttributes( { [ boxShadowColor.label ]: value } )
-						}
-					/>
-				</div>
-				<div className="uagb-horizontal-wrap">
-					<Range
-						label={ boxShadowHOffset.title }
-						value={ boxShadowHOffset.value }
-						onChange={ ( value ) =>
-							setAttributes( {
-								[ boxShadowHOffset.label ]: value,
-							} )
-						}
-						min={ 0 }
-						max={ 100 }
-						displayUnit={ false }
-					/>
-				</div>
-				<div className="uagb-vertical-wrap">
-					<Range
-						label={ boxShadowVOffset.title }
-						value={ boxShadowVOffset.value }
-						onChange={ ( value ) =>
-							setAttributes( {
-								[ boxShadowVOffset.label ]: value,
-							} )
-						}
-						min={ 0 }
-						max={ 100 }
-						displayUnit={ false }
-					/>
-				</div>
-				<div className="uagb-blur-wrap">
-					<Range
-						label={ boxShadowBlur.title }
-						value={ boxShadowBlur.value }
-						onChange={ ( value ) =>
-							setAttributes( { [ boxShadowBlur.label ]: value } )
-						}
-						min={ 0 }
-						max={ 100 }
-						displayUnit={ false }
-					/>
-				</div>
-				<div className="uagb-spread-wrap">
-					<Range
-						label={ boxShadowSpread.title }
-						value={ boxShadowSpread.value }
-						onChange={ ( value ) =>
-							setAttributes( {
-								[ boxShadowSpread.label ]: value,
-							} )
-						}
-						min={ -100 }
-						max={ 100 }
-						displayUnit={ false }
-					/>
-				</div>
-				<div className="uagb-shadow-type">
-					<MultiButtonsControl
-						setAttributes={ setAttributes }
-						label={ boxShadowPosition.title }
-						data={ {
-							value: boxShadowPosition.value,
-							label: boxShadowPosition.label,
-						} }
-						options={ [
-							{
-								value: 'outset',
-								label: __(
-									'Outset',
-									'ultimate-addons-for-gutenberg'
-								),
-								tooltip: __(
-									'Outset',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'inset',
-								label: __(
-									'Inset',
-									'ultimate-addons-for-gutenberg'
-								),
-								tooltip: __(
-									'Inset (10px)',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-						] }
-						showIcons={ false }
-					/>
-				</div>
+			<div className="uagb-box-shadow-advanced spectra-control-popup">
+				{ overallControls }
 			</div>
 		);
 	}
 
 	const boxShadowAdvancedControls = (
-		<div className="uag-box-shadow-option-actions">
+		<div className="spectra-control-popup__options--action-wrapper">
 			<span className="uag-control-label">
-				{ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
+				{ label }
+				{ isBoxShadowUpdated && (
+					<div className="spectra__change-indicator--dot-right"/>
+				) }
 			</span>
 			<Button
-				className={ 'uag-box-shadow-button' }
+				className="uag-box-shadow-button spectra-control-popup__options--action-button"
 				aria-pressed={ showAdvancedControls }
-				onClick={ () =>
-					toggleAdvancedControls( ! showAdvancedControls )
+				onClick={ () => {
+						const allPopups = document.querySelectorAll( '.spectra-control-popup__options' );
+						if ( allPopups && 0 < allPopups.length ) {
+							for ( let i = 0; i < allPopups.length; i++ ) {
+								const popupButton = allPopups[i]?.querySelector( '.spectra-control-popup__options.active .spectra-control-popup__options--action-button' );
+								popupButton?.click();
+							}
+						}
+						toggleAdvancedControls( ! showAdvancedControls )
+
+						const blockName = getSelectedBlock()?.name;
+						const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+						let data = {
+							...uagSettingState,
+							[blockName] : {
+								...uagSettingState?.[blockName],
+								selectedSetting : '.uag-box-shadow-options'
+							}
+						}
+
+						if ( showAdvancedControls ) {
+							data = {
+								...uagSettingState,
+								[blockName] : {
+									...uagSettingState?.[blockName],
+									selectedSetting : false
+								}
+							}
+						}
+						const uagLocalStorage = getUAGEditorStateLocalStorage();
+						if ( uagLocalStorage ) {
+							uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
+						}
+					}
 				}
 			>
 				<Dashicon icon="edit" />
@@ -155,13 +266,17 @@ const BoxShadowControl = ( props ) => {
 		</div>
 	);
 
-	return (
+	return popup ? (
 		<div
-			className={ `components-base-control uag-box-shadow-options ${ activeClass }` }
+			className={ `components-base-control uag-box-shadow-options spectra-control-popup__options popup-${blockId} ${ activeClass }` }
 		>
 			{ boxShadowAdvancedControls }
 			{ showAdvancedControls && advancedControls }
 		</div>
+	) : (
+		<>
+			{ overallControls }
+		</>
 	);
 };
 

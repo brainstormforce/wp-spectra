@@ -14,8 +14,9 @@ $block_data = array(
 	'admin_categories' => array( 'content' ),
 	'link'             => 'price-list',
 	'title'            => __( 'Price List', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block allows you to add attractive Price List.', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Create an attractive price list for your products.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 4,
+	'priority'         => 23,
+	'deprecated'       => false,
 );

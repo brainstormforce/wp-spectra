@@ -10,7 +10,7 @@ for ( let i = 1; i <= itemCount; i++ ) {
 	socials.push( {
 		type: 'facebook',
 		image_icon: 'icon',
-		icon: 'fab fa-facebook',
+		icon: 'facebook',
 		image: '',
 		icon_color: '#3a3a3a',
 		icon_hover_color: '',
@@ -37,7 +37,23 @@ const attributes = {
 	align: {
 		type: 'string',
 		default: 'center',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'overall-alignment'
+		}
+	},
+	alignTablet: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment'
+		}
+	},
+	alignMobile: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment'
+		}
 	},
 	social_count: {
 		type: 'number',
@@ -50,56 +66,137 @@ const attributes = {
 	gap: {
 		type: 'number',
 		default: 10,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-gap'
+		}
+	},
+	gapTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-gap-tablet'
+		}
+	},
+	gapMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-gap-mobile'
+		}
 	},
 	size: {
 		type: 'number',
-		default: 25,
-		isUAGStyle: true,
+		default: 30,
+		UAGCopyPaste: {
+			styleType: 'icon-size'
+		}
 	},
 	sizeType: {
 		type: 'string',
 		default: 'px',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-size-type'
+		}
 	},
 	sizeMobile: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-size-mobile'
+		}
 	},
 	sizeTablet: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-size-tablet'
+		}
 	},
 	bgSize: {
 		type: 'number',
-		default: 0,
-		isUAGStyle: true,
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'icon-bg-size'
+		}
 	},
 	bgSizeType: {
 		type: 'string',
 		default: 'px',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-bg-size-unit'
+		}
 	},
 	bgSizeMobile: {
 		type: 'number',
-		isUAGStyle: true,
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'icon-bg-size-mobile'
+		}
 	},
 	bgSizeTablet: {
 		type: 'number',
-		isUAGStyle: true,
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'icon-bg-size-tablet'
+		}
 	},
 	borderRadius: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-border-radius'
+		},
 		default: 0,
+	},
+	borderRadiusTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-border-radius-tablet'
+		},
+	},
+	borderRadiusMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-border-radius-mobile'
+		},
 	},
 	social_layout: {
 		type: 'string',
 		default: 'horizontal',
+		UAGCopyPaste: {
+			styleType: 'social-layout'
+		},
 	},
 	stack: {
 		type: 'string',
 		default: 'none',
+	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
+	iconColor: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'icon-color'
+		},
+	},
+	iconHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-hover-color'
+		},
+		default: '',
+	},
+	iconBgColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-color'
+		},
+		default: '',
+	},
+	iconBgHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-hover-color'
+		},
+		default: '',
 	},
 };
 

@@ -11,11 +11,12 @@ $block_slug = 'uagb/team';
 $block_data = array(
 	'doc'              => 'team',
 	'slug'             => '',
-	'admin_categories' => array( 'content' ),
+	'admin_categories' => array( 'social' ),
 	'link'             => 'team',
 	'title'            => __( 'Team', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block allows you to display your team. Add their picture, name, what they do and links to their social profiles.', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Showcase your team by displaying info and social media profiles.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 5,
+	'priority'         => 30,
+	'deprecated'       => false,
 );

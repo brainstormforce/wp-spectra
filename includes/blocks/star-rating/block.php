@@ -11,11 +11,12 @@ $block_slug = 'uagb/star-rating';
 $block_data = array(
 	'slug'             => '',
 	'doc'              => 'star-rating-block',
-	'admin_categories' => array( 'social' ),
+	'admin_categories' => array( 'creative' ),
 	'link'             => 'star-rating',
 	'title'            => __( 'Star Ratings', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block helps you add Star Ratings and customize it as required.', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Display customizable star ratings on your page.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'js_assets'        => array(),
-	'priority'         => 5,
+	'priority'         => 26,
+	'deprecated'       => false,
 );

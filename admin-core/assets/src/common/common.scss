@@ -1,3 +1,7 @@
+.wp-admin {
+	overflow-y: scroll;
+}
+
 #wpbody-content > .notice:not(.uag-notice),
 #wpbody-content > .error {
 	display: none !important;
@@ -15,7 +19,34 @@
 	outline: none;
 }
 
-.settings_page_uag #wpcontent {
+// This Class Can Be Cleared Before Final Push.
+#uag-menu-page .uag-accordion {
+
+	svg {
+		fill: #e2e8f0; // Tailwind Slate-200.
+	}
+
+	&:hover {
+
+		svg {
+			fill: #475569; // Tailwind Slate-600.
+		}
+	}
+
+	&:focus {
+		outline: none;
+		box-shadow: none;
+	}
+
+	&:focus-visible {
+
+		svg {
+			fill: #475569; // Tailwind Slate-600.
+		}
+	}
+}
+
+.settings_page_spectra #wpcontent {
 	padding-left: 0;
 }
 
@@ -86,6 +117,10 @@
 	.components-base-control__field {
 		font-size: 16px;
 	}
+}
+
+.spectra-recaptcha__heading {
+	color: var(--content-color);
 }
 
 .uag-user-info {
@@ -160,7 +195,65 @@
 }
 
 #wpwrap {
-	background: var(--background-light-color);
+	background-color: #f8fafc; // Tailwind Slate-50.
+
+	.spectra-admin {
+
+		&__input-field {
+			color: #64748b; // Tailwind Slate-500.
+			background-color: #fff;
+			border: 1px solid #e2e8f0; // Tailwind Slate-200.
+			border-radius: 0.375rem;
+			padding: 0.5rem 0.75rem;
+			font-size: 1rem;
+			//stylelint-disable-next-line declaration-property-unit-allowed-list
+			line-height: 1.25rem;
+
+			&:focus {
+				outline: none;
+				border-color: $slate-400;
+				box-shadow: none;
+
+				& + .spectra-admin__input-field--end-display {
+					border-color: $slate-400;
+					box-shadow: none;
+				}
+			}
+		}
+
+		&__dropdown {
+			padding-right: 2rem;
+
+			&:hover {
+				color: #2c3338;
+			}
+		}
+
+		&__block-label {
+			box-sizing: content-box;
+		}
+	}
+
+	// This is required since Tailwind CSS is overridden by load-styles
+	.spectra-content-width-input-wrap {
+
+		> input {
+			padding: 0.5rem 0 0.5rem 0.75rem;
+			border-radius: 0.25rem 0 0 0.25rem;
+			border-right-width: 0;
+		}
+
+		> span {
+			padding: 0.5rem 0.75rem;
+			font-size: 1rem;
+			//stylelint-disable-next-line declaration-property-unit-allowed-list
+			line-height: 1.25rem;
+			color: #64748b; // Tailwind Slate-500.
+			background-color: #fff;
+			border-radius: 0 0.25rem 0.25rem 0;
+			border: 1px solid #e2e8f0; // Tailwind Slate-200.
+		}
+	}
 }
 
 .uag-font-select-disabled {
@@ -177,7 +270,7 @@
 	}
 
 	h2 {
-		font-size: 2rem;
+		font-size: 1.8rem;
 	}
 
 	h3 {
@@ -185,10 +278,128 @@
 	}
 }
 
-.uag-dashboard-app .read-more a {
-	color: #2271b1;
+.spectra-video-container {
+	position: relative;
+	width: 100%;
+	padding-bottom: 56.25%;
+
+	.spectra-video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
 }
 
-.uag-dashboard-app .read-more a:hover {
-	color: #135e96;
+// The Block SVGs when Disabled
+.spectra-icon-transition {
+
+	svg,
+	path {
+		transition-property: stroke;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		transition-duration: 150ms;
+	}
+}
+
+.spectra-disabled-icon {
+
+	svg,
+	path {
+		stroke: #94a3b8; // Tailwind Slate-400.
+	}
+}
+
+// Changelog Styling.
+.spectra-changelog-description {
+
+	strong {
+		font-weight: 500;
+		font-size: 0.875rem;
+		//stylelint-disable-next-line declaration-property-unit-allowed-list
+		line-height: 1.25rem;
+		color: #1e293b;
+	}
+
+	ul {
+		margin-top: 0.25rem;
+		margin-bottom: 0.75rem;
+
+		&:last-child {
+			margin-top: 0;
+		}
+	}
+
+	li {
+		font-weight: 400;
+		font-size: 0.75rem;
+		//stylelint-disable-next-line declaration-property-unit-allowed-list
+		line-height: 1rem;
+		color: #64748b;
+	}
+}
+
+// This Class Can Be Cleared Before Final Push.
+// Custom Scrollbar.
+.spectra__scrollable {
+	scrollbar-width: 0.5rem;
+	scrollbar-color: #cbd5e1 #f1f5f9; // Tailwind Slate-300 and Slate-100.
+
+	&--blocks {
+		scrollbar-width: 0.5rem;
+		scrollbar-color: #cbd5e1 #f1f5f9; // Tailwind Slate-300 and Slate-100.
+
+		&::-webkit-scrollbar {
+			width: 0.5rem;
+			height: 0.5rem;
+		}
+
+		&::-webkit-scrollbar-track {
+			margin: 1rem 0;
+			border-radius: 0.25rem;
+			background-color: #f1f5f9;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			border-radius: 0.25rem;
+			background-color: #cbd5e1;
+		}
+	}
+
+	&--settings {
+		// overflow-y: auto;
+		overflow-y: scroll;
+		scrollbar-width: 0.5rem;
+		scrollbar-color: #cbd5e1 #f1f5f9; // Tailwind Slate-300 and Slate-100.
+		// scrollbar-gutter: stable both-edges;
+
+		&::-webkit-scrollbar {
+			width: 0.5rem;
+			height: 0.5rem;
+		}
+
+		&::-webkit-scrollbar-track {
+			border-radius: 0 0.5rem 0.5rem 0;
+			background-color: #f1f5f9;
+			opacity: 0.4;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			border-radius: 0.25rem;
+			background-color: #cbd5e1;
+			opacity: 0.4;
+		}
+	}
+}
+
+.spectra {
+
+	&__settings {
+
+		& > section:last-child {
+			border-bottom: none;
+		}
+	}
 }

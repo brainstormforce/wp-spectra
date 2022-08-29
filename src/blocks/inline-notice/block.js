@@ -13,7 +13,7 @@ import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/inline-notice', {
 	title: __( 'Inline Notice', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'This block helps you add an inline notice.', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'Highlight important information using inline notice block.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.inline_notice,
 	category: uagb_blocks_info.category,
 	keywords: [
@@ -25,7 +25,11 @@ registerBlockType( 'uagb/inline-notice', {
 		anchor: true,
 	},
 	attributes,
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	deprecated,
 	edit,
 	save,

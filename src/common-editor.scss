@@ -7,18 +7,26 @@
 
 /* ------------------------------------------------------------------------------------------------*/
 
+@import "styles/variables";
+
 /* Gutenberg Reset CSS */
 .block-editor-block-inspector {
 
 	.uagb-inspector-tab {
 
+		.components-notice.is-warning {
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+
 		.components-panel__body {
 
 			> .components-base-control {
-				margin-bottom: 24px;
+				margin-bottom: $spectra-control-vertical-gap;
 
 				.components-base-control,
 				.components-base-control__field {
+					padding-top: 0;
 					margin-bottom: 0;
 				}
 			}
@@ -44,8 +52,38 @@
 			.components-base-control__help {
 				margin-top: 10px;
 			}
+
+			/* Add a border top and bottom of responsive condition */
+			&:last-child {
+				border-bottom: 1px solid #e0e0e0;
+			}
 		}
 	}
+}
+
+/* Gutenberg Editor border hover */
+.edit-post-visual-editor .editor-styles-wrapper > .block-editor-block-list__layout {
+
+	.block-editor-block-list__block:hover::after,
+	.block-editor-block-list__block:not([contenteditable]):focus::after {
+		box-shadow: 0 0 0 1.5px $spectra-color-primary;
+		border-radius: 2px;
+	}
+
+
+	.block-editor-block-list__block:not([contenteditable]):focus {
+		z-index: 1;
+	}
+
+
+	.block-editor-block-list__block:hover {
+		z-index: 1;
+	}
+}
+
+.block-editor-block-list__layout .block-editor-block-list__block.is-selected { // Added CSS for better clarity to the users to indicates which block is selected & being edited.
+	box-shadow: 0 0 0 1.5px $spectra-color-primary;
+	border-radius: 2px;
 }
 
 /* UAG Help Notice CSS*/
@@ -56,57 +94,46 @@
 	color: rgb(117, 117, 117);
 }
 
-/* Reset CSS*/
-.components-panel__body {
-
-	.uagb-control__header {
-
-		.uagb-control__actions {
-
-			.uagb-reset {
-				padding: 0;
-				margin-right: 4px;
-			}
-
-			.uagb-spacing-control__units { /* Spacing control Units CSS*/
-				display: flex;
-				align-items: center;
-			}
-		}
-	}
-}
-
-
 /* UAG Control Label CSS*/
 .uag-control-label,
 .uagb-inspector-tab .components-base-control__label,
 .uagb-inspector-tab .components-panel__body label,
 .uagb-extention-tab label {
-	font-size: 13px;
-	line-height: 1.4;
+	color: $spectra-color-body;
+	font-size: $spectra-font-size-label;
+	line-height: $spectra-line-height-label;
+	margin-bottom: $spectra-control-label-bottom-margin;
 }
+
+.uagb-inspector-tab label.components-toggle-control__label {
+	margin-bottom: 0;
+}
+
+/* Editor panel sidebar - scrollbar design CSS start */
+
+.interface-interface-skeleton__sidebar::-webkit-scrollbar {
+	width: 5px;
+}
+
+.interface-interface-skeleton__sidebar::-webkit-scrollbar-thumb {
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	border-radius: 100px;
+}
+
+/* Editor panel sidebar - scrollbar design CSS end */
 
 /* Panel Body CSS*/
 .uagb-inspector-tab,
 [data-uagb-tab] {
 
 	.components-panel__body-title .components-button {
-		font-size: 14px;
+		font-size: $spectra-font-size-button;
 	}
 }
 
 /* GB Select Control CSS*/
 .uagb-inspector-tab .components-select-control {
 	height: auto;
-
-	.components-input-control__label {
-		padding-bottom: 8px !important;
-	}
-
-	.components-select-control__input {
-		font-size: 12px !important;
-		line-height: 2 !important;
-	}
 }
 
 /* Tabs Pabel CSS for .uagb-size-type-field-tabs START*/
@@ -125,13 +152,13 @@
 
 	button.active-tab svg,
 	button.active-tab svg:focus {
-		color: #007cba;
+		color: $spectra-color-primary;
 	}
 }
 
 .uagb-size-type-field-tabs .components-tab-panel__tabs button svg,
 .uagb-size-type-field-tabs .uag-responsive-label-wrap svg {
-	width: 10px;
+	width: auto;
 	height: 10px;
 }
 
@@ -153,7 +180,7 @@
 .uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab,
 .uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab:focus {
 	box-shadow: none;
-	color: #007cba;
+	color: $spectra-color-primary;
 	border-radius: 100%;
 	padding: 0;
 	margin: 0;
@@ -335,7 +362,7 @@ hr.uagb-editor__separator {
 	background: transparent;
 	border: none;
 	outline: none;
-	color: #000;
+	color: $spectra-color-heading;
 	text-decoration: underline;
 	-webkit-box-shadow: none;
 }
@@ -347,7 +374,7 @@ hr.uagb-editor__separator {
 
 .uagb-size-type-field button.components-button.uagb-size-btn:hover,
 .uagb-size-type-field button.components-button.uagb-size-btn:hover:focus:not(:disabled):not([aria-disabled="true"]) {
-	color: #000;
+	color: $spectra-color-heading;
 	background: transparent;
 	-webkit-box-shadow: none;
 	box-shadow: none;
@@ -364,30 +391,6 @@ hr.uagb-editor__separator {
 	margin-top: 1.5em;
 	margin-bottom: 2em;
 }
-
-/*.uag-typography-option-actions .uagb-typography-reset-btn,
-.uag-typography-option-actions .uagb-typography-reset-btn:hover,
-.uag-typography-option-actions .uagb-typography-reset-btn:active:enabled {
-	float: right;
-	box-shadow: none;
-	background: none;
-	border: none;
-}
-
-.uag-typography-option-actions button svg {
-	width: 15px;
-	height: 15px;
-}
-
-.uag-typography-option-actions button svg:hover {
-	fill: #23282d;
-}
-
-.uag-typography-option-actions button.uagb-typography-reset-btn svg {
-	width: 13px;
-	height: 13px;
-	fill: #777;
-}*/
 
 .uagb__url-panel-body .block-editor-url-input input {
 	width: 100%;
@@ -449,8 +452,11 @@ label.wp-block-uagb-blockquote__via-label svg {
 	vertical-align: middle;
 }
 
-.components-select-control__input {
+// Select control text going out of screen.
+
+.uagb-inspector-tab .components-select-control .components-input-control__container .components-select-control__input {
 	text-transform: capitalize;
+	line-height: 30px;
 }
 
 .components-panel__body.uagb-repeater-panel {
@@ -492,23 +498,19 @@ label.wp-block-uagb-blockquote__via-label svg {
 
 /* Common uagb reset CSS start here */
 button.components-button.uagb-reset.is-secondary.is-small:not(:disabled) {
-	color: #2e92c4;
+	color: $spectra-color-primary;
 }
 
 .uagb-reset .dashicons-image-rotate {
-	width: 12px;
-	height: 11px;
-	font-size: 9px;
-}
-
-.uagb-reset {
-	margin-top: 0.3em;
-	height: auto;
+	width: 10px;
+	height: 10px;
+	font-size: 10px;
 }
 
 button.components-button.uagb-reset.is-secondary.is-small {
 	box-shadow: unset;
 	background: 0 0;
+	color: $spectra-color-icon-disabled;
 }
 
 /* Common uagb reset CSS end here */
@@ -537,16 +539,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	margin-bottom: 10px;
 }
 
-.components-toggle-control__label {
-	line-height: 2;
-}
-
-.uagb-control__header {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 8px;
-}
-
 .components-panel__body .uagb-control__label {
 	margin-bottom: 0;
 }
@@ -562,7 +554,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .uag-typography-option-actions .uagb-typography-control-btn.components-button:focus:not(:disabled) {
 	box-shadow: unset;
 	outline: none;
-	color: #2e92c4;
+	color: $spectra-color-secondary;
 }
 
 .uagb-inspector-tab .components-panel__body.is-opened > .components-panel__body-title {
@@ -585,12 +577,12 @@ button.components-button.uagb-review-select-btn.is-secondary {
 
 .uag-responsive-common-button {
 	box-shadow: none;
-	color: #007cba;
+	color: $spectra-color-body;
 	border-radius: 100%;
 	border: 0;
 	border-bottom: 0;
 	outline: 0;
-	font-size: 8px;
+	font-size: 10px;
 	display: inline-block;
 	height: 16px;
 	width: 22px;
@@ -599,28 +591,11 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	padding: 4px;
 	margin: 0;
 	line-height: 0;
-	margin-left: 5px;
+	margin-left: 10px;
 
 	svg {
-		color: #007cba;
+		color: $spectra-color-body;
 	}
-}
-
-.uag-responsive-common-button .dashicon {
-	font-size: 15px;
-}
-
-.components-button.uag-responsive-common-button:hover,
-.components-button.uag-responsive-common-button:focus,
-.components-button.uag-responsive-common-button:active {
-	box-shadow: none;
-	outline: none;
-	color: #007cba;
-}
-
-.uag-responsive-label-wrap {
-	display: flex;
-	align-items: center;
 }
 
 .components-panel__body.is-opened .uagb-range-control-responsive {
@@ -638,11 +613,16 @@ button.components-button.uagb-review-select-btn.is-secondary {
 		padding: 4px;
 		line-height: 0;
 		box-shadow: none;
+		border: none;
+
+		&:hover {
+			color: #1e1e1e;
+		}
 	}
 }
 
 .uagb-inspector-tab .components-base-control .components-range-control__wrapper {
-	margin-left: 0;
+	margin-left: 5px;
 }
 
 .components-range-control__slider {
@@ -662,8 +642,113 @@ button.components-button.uagb-review-select-btn.is-secondary {
 
 .interface-interface-skeleton__sidebar {
 
+	margin-bottom: 10px;
+
 	.components-panel[data-uagb-tab="advance"] .block-editor-block-inspector__advanced.uagb-extention-tab {
 		border: none;
 		border-bottom: 1px solid #e0e0e0;
 	}
 }
+
+/* Block icons white when block is selected in list view. */
+.block-editor-list-view-leaf.is-selected .block-editor-list-view-block-contents svg.uagb-editor-icons {
+
+	> path {
+		stroke: #fff;
+	}
+}
+
+/* Block icons white when toggle is set to select from tools. */
+.block-editor-block-list__block-selection-button .block-editor-block-icon.has-colors svg.uagb-editor-icons {
+
+	> path {
+		stroke: #fff;
+	}
+}
+
+/* Block icons turn to secondary color when they are a parent block. */
+.block-editor-block-parent-selector .block-editor-block-icon svg.uagb-editor-icons {
+
+	> path {
+		stroke: $spectra-color-heading;
+	}
+}
+
+/* Block Editor Block Icons Color*/
+.block-editor-block-icon.has-colors svg.uagb-editor-icons {
+	stroke: $spectra-color-secondary;
+
+	path {
+		stroke: $spectra-color-secondary;
+	}
+}
+
+/* Breadcrumbs css */
+.block-editor .interface-interface-skeleton__footer {
+	padding: 5px;
+	border-top: 1px solid #e9e9e9;
+
+	.block-editor-block-breadcrumb {
+
+		li {
+			color: $spectra-color-secondary;
+			font-weight: 600;
+			font-size: 14px;
+
+			button {
+				color: $spectra-color-secondary;
+				font-weight: 600;
+			}
+
+			svg {
+				width: 25px;
+				height: 25px;
+			}
+
+			.block-editor-block-breadcrumb__button::before {
+				box-shadow: none;
+			}
+
+			.block-editor-block-breadcrumb__button:active:not(:disabled) {
+				background: transparent;
+			}
+		}
+	}
+}
+
+/* Gradient Picker CSS */
+.uagb-gradient-picker {
+
+	// This helps to fix alignment of gradient control input fields.
+	.components-flex.components-custom-gradient-picker__ui-line {
+		align-items: baseline;
+	}
+
+	.components-angle-picker-control {
+		margin-bottom: 0;
+	}
+
+	label {
+		text-transform: capitalize;
+		font-weight: 400;
+	}
+}
+
+/* Toggle Control */
+.uagb-inspector-tab {
+
+	.components-toggle-control .components-base-control__field {
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
+@import "styles/gutenberg-override";
+@import "styles/control-responsive";
+@import "styles/control-header";
+@import "styles/control-popup";
+@import "styles/control-media-picker";
+@import "styles/spectra-change-indicators";
+@import "styles/spectra-legacy";

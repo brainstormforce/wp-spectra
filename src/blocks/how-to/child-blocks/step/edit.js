@@ -2,17 +2,14 @@
  * BLOCK: How-to Step - Edit
  */
 
-import React, { lazy, useEffect, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {   useEffect,  } from 'react';
+
 import styling from './styling';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/how-to/step-settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/how-to/step-render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 const UAGBHowToStepEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -36,14 +33,18 @@ const UAGBHowToStepEdit = ( props ) => {
 	    const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-style-how-to-step-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
+
+						<>
+			<Settings parentProps={ props } />
 				<Render parentProps={ props } />
-			</Suspense>
+			</>
+
 		</>
 	);
 };

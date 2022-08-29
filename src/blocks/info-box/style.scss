@@ -24,11 +24,18 @@
 	font-style: initial;
 }
 
+.uagb-ifb-content .uagb-ifb-icon-wrap svg {
+	box-sizing: content-box;
+	width: inherit;
+	height: inherit;
+}
+
 .uagb-ifb-button-wrapper:empty {
 	display: none;
 }
 
-a.uagb-infobox-cta-link,
+div.uagb-ifb-button-wrapper a.uagb-infobox-cta-link,
+div.uagb-ifb-cta a.uagb-infobox-cta-link,
 .entry .entry-content a.uagb-infobox-cta-link,
 a.uagb-infobox-link-wrap,
 .entry .entry-content a.uagb-infobox-link-wrap {
@@ -96,7 +103,6 @@ a.uagb-infobox-link-wrap:hover,
 .uagb-infobox-icon-below-title.uagb-infobox__content-wrap {
 	display: block;
 	width: 100%;
-	min-width: 100%;
 }
 
 /* Left/Right of Title */
@@ -123,6 +129,20 @@ a.uagb-infobox-link-wrap:hover,
 	-js-display: flex;
 }
 
+.uagb-infobox-icon-left-title .uagb-ifb-left-title-image .uagb-ifb-image-content,
+.uagb-infobox-icon-right-title .uagb-ifb-right-title-image .uagb-ifb-image-content,
+.uagb-infobox-icon-left .uagb-ifb-image-content,
+.uagb-infobox-icon-right .uagb-ifb-image-content {
+	flex-shrink: 0;
+}
+
+.uagb-infobox-icon-left-title .uagb-ifb-left-title-image .uagb-ifb-title-wrap,
+.uagb-infobox-icon-right-title .uagb-ifb-right-title-image .uagb-ifb-title-wrap,
+.uagb-infobox-icon-left .uagb-ifb-content,
+.uagb-infobox-icon-right .uagb-ifb-content {
+	flex-grow: 1;
+}
+
 .uagb-infobox-icon-right.uagb-infobox__content-wrap,
 .uagb-infobox-icon-right-title .uagb-ifb-right-title-image {
 	-webkit-box-pack: end;
@@ -140,7 +160,6 @@ a.uagb-infobox-link-wrap:hover,
 	width: auto;
 	height: auto !important;
 	max-width: 100%;
-	box-sizing: content-box;
 	border-radius: inherit;
 	-webkit-box-sizing: content-box;
 	-moz-box-sizing: content-box;
@@ -179,6 +198,7 @@ a.uagb-infobox-link-wrap:hover,
 }
 
 .uagb-infobox__content-wrap {
+	box-sizing: border-box;
 	position: relative;
 	width: 100%;
 	word-break: break-word;
@@ -196,7 +216,10 @@ a.uagb-infobox-link-wrap:hover,
 
 .uagb-ifb-button-wrapper {
 	line-height: 1;
-	cursor: pointer;
+
+	.uagb-infobox-cta-link {
+		cursor: pointer;
+	}
 
 	.wp-block-button__link svg {
 		fill: currentColor;
@@ -243,13 +266,22 @@ a.uagb-infobox-link-wrap {
 	display: none;
 }
 
-.uagb-infobox__content-wrap  .uagb-ifb-content {
+.uagb-infobox__content-wrap .uagb-ifb-content {
 
-	img,
+	img {
+		display: inline-block;
+		max-width: 100%;
+	}
+
 	svg {
 		display: inline-block;
-		box-sizing: content-box;
 	}
+}
+
+.uagb-infobox__content-wrap .uagb-ifb-icon-wrap,
+.uagb-infobox-icon-left .uagb-ifb-image-content,
+.uagb-infobox-icon-right .uagb-ifb-image-content {
+	box-sizing: content-box;
 }
 
 .uagb-infobox-cta-link > svg {

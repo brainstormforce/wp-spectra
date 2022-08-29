@@ -16,7 +16,7 @@ export const name = 'core/latest-posts';
 // Register the block.
 registerBlockType( 'uagb/post-timeline', {
 	title: __( 'Post Timeline', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'The Timeline block lets you create beautiful timelines of Posts on your website.', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'Create an attractive timeline to display your posts.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.post_timeline,
 	category: uagb_blocks_info.category,
 	keywords: [
@@ -24,7 +24,11 @@ registerBlockType( 'uagb/post-timeline', {
 		__( 'timeline', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	edit,
 	// Render via PHP
 	save() {

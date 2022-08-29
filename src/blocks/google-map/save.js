@@ -1,12 +1,16 @@
 import classnames from 'classnames';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 export default function save( props ) {
-	const { block_id, height, zoom, address, language } = props.attributes;
+
+	const blockName = 'google-map';
+
+	const { block_id, zoom, address, language } = props.attributes;
 	const encoded_address = encodeURI( address );
 	const lang_par = language ? language : 'en';
-	const url = `https://www.google.com/maps/embed/v1/place?key=${ wp.uagb_google_api_key }&q=${ encoded_address }&zoom=${ zoom }&language=${ lang_par }`;
+	const url = `https://www.google.com/maps/embed/v1/place?key=${ wp.uagb_google_api_key }&q=${ encoded_address }&zoom=${ getFallbackNumber( zoom, 'zoom', blockName ) }&language=${ lang_par }`;
 
 	return (
 		<div
@@ -23,7 +27,6 @@ export default function save( props ) {
 					address
 				}
 				src={ url }
-				style={ { height } }
 			></iframe>
 		</div>
 	);

@@ -1,0 +1,40 @@
+@import "../../styles/variables";
+
+.uag-number-control {
+
+	.uagb-number-control__mobile-controls {
+		align-items: center;
+		display: grid;
+		grid-template-columns: 75% 25%;
+		color: $spectra-color-body;
+
+		.uag-control-label {
+			margin-bottom: 0;
+		}
+
+		.components-number-control .components-input-control__input {
+			padding: 0 4px !important;
+			text-align: center;
+		}
+
+		.components-input-control__container {
+			flex: 0 0 0%;
+			width: 100%;
+		}
+
+		.components-number-control {
+			display: grid;
+			width: 88%;
+			margin-left: 5px;
+
+		}
+	}
+
+	.uagb-control__header {
+		display: grid;
+		grid-template-columns: 100%;
+		justify-items: end;
+		justify-content: end;
+	}
+
+}

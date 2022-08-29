@@ -28,31 +28,7 @@ const Settings = ( props ) => {
 	const toggleInspectorControls = () => {
 		return (
 			<UAGAdvancedPanelBody initialOpen={ true }>
-				<p className="uagb-settings-notice">
-					{ __(
-						'Leaving the toggle in On/Off state will set it as a default value on page load for the user.',
-						'ultimate-addons-for-gutenberg'
-					) }
-				</p>
-
-				<ToggleControl
-					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
-					checked={ toggleRequired }
-					onChange={ () =>
-						setAttributes( { toggleRequired: ! toggleRequired } )
-					}
-				/>
-				<ToggleControl
-					label={
-						toggleStatus
-							? __( 'ON State', 'ultimate-addons-for-gutenberg' )
-							: __( 'OFF State', 'ultimate-addons-for-gutenberg' )
-					}
-					checked={ toggleStatus }
-					onChange={ () =>
-						setAttributes( { toggleStatus: ! toggleStatus } )
-					}
-				/>
+				
 				<TextControl
 					label={ __(
 						'True State',
@@ -93,6 +69,30 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
+				<ToggleControl
+					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
+					checked={ toggleRequired }
+					onChange={ () =>
+						setAttributes( { toggleRequired: ! toggleRequired } )
+					}
+				/>
+				<ToggleControl
+					label={
+						toggleStatus
+							? __( 'ON State', 'ultimate-addons-for-gutenberg' )
+							: __( 'OFF State', 'ultimate-addons-for-gutenberg' )
+					}
+					checked={ toggleStatus }
+					onChange={ () =>
+						setAttributes( { toggleStatus: ! toggleStatus } )
+					}
+				/>
+				<p className="uagb-settings-notice">
+					{ __(
+						'Leaving the toggle in On/Off state will set it as a default value on page load for the user.',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</p>
 			</UAGAdvancedPanelBody>
 		);
 	};

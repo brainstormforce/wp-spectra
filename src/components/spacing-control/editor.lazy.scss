@@ -1,24 +1,8 @@
+@import "../../styles/variables";
+
 .uagb-spacing-control {
 	position: relative;
 	display: inline-block;
-
-	.uagb-spacing-control__link {
-		border: 1px solid #8c8f94;
-		background-color: #d5dadf;
-		color: #1e8cbe;
-		justify-content: center;
-		display: flex;
-		align-items: center;
-		padding: 2px 0;
-		font-size: 12px;
-		line-height: 28px;
-		cursor: pointer;
-		width: 12%;
-
-		&.uagb-spacing-control-disconnected {
-			color: #2d3748;
-		}
-	}
 
 	.components-base-control__label {
 		margin-bottom: 5px;
@@ -30,9 +14,10 @@
 
 	input[type="number"].uagb-spacing-control__number,
 	.uagb-spacing-control__link {
-		border-left: 1px solid #d5dadf;
-		border-right: 1px solid #d5dadf;
-		border-color: #d5dadf;
+		border-left: 1px solid;
+		border-right: 1px solid;
+		border-color: $spectra-color-border;
+		color: $spectra-color-body;
 		border-radius: 0;
 		box-shadow: none !important;
 		height: 30px;
@@ -41,9 +26,30 @@
 		width: 25%;
 	}
 
-	input[type="number"].uagb-spacing-control__number:focus,
-	.uagb-spacing-control__link {
+	input[type="number"].uagb-spacing-control__number:focus {
 		z-index: 1;
+		outline-offset: -1px;
+		outline: 1px solid $spectra-color-icon-disabled;
+	}
+
+	.uagb-spacing-control__link {
+		border: 1px solid $spectra-color-border-hover;
+		background-color: $spectra-color-border-hover;
+		color: $spectra-color-plain-background;
+		justify-content: center;
+		display: flex;
+		align-items: center;
+		padding: 2px 0;
+		font-size: 12px;
+		line-height: 28px;
+		cursor: pointer;
+		transition: none;
+
+		&.uagb-spacing-control-disconnected {
+			border-color: $spectra-color-border;
+			background-color: $spectra-color-plain-background;
+			color: $spectra-color-border-hover;
+		}
 	}
 
 	.uagb-spacing-control__mobile-controls button[type="button"] > span {
@@ -54,13 +60,15 @@
 	}
 
 	.uagb-spacing-control__inputs > :first-child.uagb-spacing-control__number {
-		-webkit-border-radius: 3px 0 0 3px;
-		border-radius: 3px 0 0 3px;
+		-webkit-border-radius: $spectra-control-border-radius 0 0 $spectra-control-border-radius;
+		-moz-border-radius: $spectra-control-border-radius 0 0 $spectra-control-border-radius;
+		border-radius: $spectra-control-border-radius 0 0 $spectra-control-border-radius;
 	}
 
 	.uagb-spacing-control__inputs > :last-child {
-		-webkit-border-radius: 0 3px 3px 0;
-		border-radius: 0 3px 3px 0;
+		-webkit-border-radius: 0 $spectra-control-border-radius $spectra-control-border-radius 0;
+		-moz-border-radius: 0 $spectra-control-border-radius $spectra-control-border-radius 0;
+		border-radius: 0 $spectra-control-border-radius $spectra-control-border-radius 0;
 	}
 
 	.uagb-control__actions .components-tab-panel__tabs {
@@ -110,7 +118,7 @@
 		&.uagb-spacing-control__mobile-controls-item--spacing.components-button.is-secondary:active:not(:disabled),
 		&.uagb-spacing-control__mobile-controls-item--spacing.components-button.is-tertiary:active:not(:disabled) {
 			background: #fff;
-			color: #000;
+			color: $spectra-color-body;
 		}
 
 		&.components-button {
@@ -146,7 +154,7 @@
 
 		span {
 			text-align: center;
-			width: 25%;
+			width: 20%;
 		}
 
 		.uagb-spacing-control__link-label {
@@ -160,59 +168,10 @@
 	}
 
 	.uagb-spacing-control__number-label {
-		color: #6c7781;
+		color: $spectra-color-icon-disabled;
 		display: block;
-		font-size: 12px;
-		margin-bottom: 1px;
-		margin-top: 3px;
-	}
-
-	.uagb-control__actions {
-		position: relative;
-		top: 0;
-		display: flex;
-	}
-
-	.uagb-spacing-control__units {
-
-		.components-button:last-child {
-			padding: 0;
-		}
-
-		.components-button {
-			cursor: pointer;
-			padding: 0;
-			padding-right: 4px;
-			text-transform: uppercase;
-			font-size: 9px;
-
-			&.is-small {
-				box-shadow: unset;
-			}
-
-			&.is-primary.is-small {
-				background: unset;
-				background-color: unset;
-				color: #007cba;
-			}
-
-			&.is-secondary,
-			&.is-tertiary {
-				background: unset;
-				background-color: unset;
-				color: #050505;
-			}
-
-			&.is-primary:hover:not(:disabled) {
-				background: unset;
-				background-color: unset;
-				color: #007cba;
-			}
-
-			&.is-primary {
-				box-shadow: unset;
-			}
-		}
+		font-size: 10px;
+		margin-top: 5px;
 	}
 }
 

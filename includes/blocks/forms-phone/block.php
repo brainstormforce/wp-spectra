@@ -9,10 +9,12 @@
 
 $block_slug = 'uagb/forms-phone';
 $block_data = array(
-	'slug'        => '',
-	'link'        => '',
-	'title'       => __( 'Phone', 'ultimate-addons-for-gutenberg' ),
-	'description' => __( 'This block helps to add Phone field.', 'ultimate-addons-for-gutenberg' ),
-	'default'     => true,
-	'is_child'    => true,
+	'slug'            => '',
+	'link'            => '',
+	'title'           => __( 'Phone', 'ultimate-addons-for-gutenberg' ),
+	'description'     => __( 'Add a phone number field in your form', 'ultimate-addons-for-gutenberg' ),
+	'default'         => true,
+	'is_child'        => true,
+	'selectPhoneCode' => '+44',
+	'deprecated'      => false,
 );

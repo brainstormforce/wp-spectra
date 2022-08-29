@@ -28,14 +28,17 @@
 	}
 
 	svg {
+		fill: currentColor;
 		width: 20px;
 		height: 20px;
 		z-index: 1;
+		vertical-align: middle;
 	}
 
 	.uagb-marketing-btn__title,
 	svg {
 		display: inline;
+		vertical-align: middle;
 	}
 
 	&.uagb-marketing-btn__align-center,

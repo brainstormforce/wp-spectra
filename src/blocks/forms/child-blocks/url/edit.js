@@ -2,15 +2,11 @@
  * BLOCK: Forms - URL - Edit
  */
 
-import React, { lazy, Suspense, useEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {    useEffect } from 'react';
 
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/form/url-settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form/url-render" */ './render' )
-);
+
+import Settings from './settings';
+import Render from './render';
 
 const UAGBFormsUrlEdit = ( props ) => {
 	useEffect( () => {
@@ -28,12 +24,18 @@ const UAGBFormsUrlEdit = ( props ) => {
 		document.head.appendChild( $style );
 	}, [] );
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/form-url.svg`;
+
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } />
-			</Suspense>
+			{ props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+
+							<>
+			<Settings parentProps={ props } />
+					<Render parentProps={ props } />
+			</>
+
+			) }
 		</>
 	);
 };

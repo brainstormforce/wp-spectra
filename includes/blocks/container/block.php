@@ -10,12 +10,13 @@
 $block_slug = 'uagb/container';
 $block_data = array(
 	'slug'             => '',
-	'admin_categories' => array( 'content' ),
-	'link'             => 'container',
+	'admin_categories' => array( 'content', 'core' ),
+	'link'             => 'container-layout',
 	'doc'              => 'container',
 	'title'            => __( 'Container', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block lets you add a Flex Properties Based Container.', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Create beautiful layouts with flexbox powered container block.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 2,
+	'priority'         => 1,
+	'deprecated'       => false,
 );

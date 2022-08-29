@@ -15,6 +15,9 @@ import InfoBoxCta from './components/InfoBoxCta';
 import CallToAction from './components/CallToAction';
 import InfoBoxIconImage from './components/InfoBoxIconImage';
 import IconImage from './components/IconImage';
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const borderAttributes = getBorderAttributes( 'btn' );
 
 const attributes = {
 	inheritFromTheme: {
@@ -410,15 +413,13 @@ const attributes = {
 	},
 	ctaBorderColor: {
 		type: "string",
-		default: "#333",
 	},
 	ctaBorderhoverColor:{
 		type: "string",
-		default: "",
 	},
 	ctaBorderStyle: {
 		type: "string",
-		default: "solid",
+		default: 'solid',
 	},
 	ctaBtnVertPadding :{
 		type: "number",
@@ -430,11 +431,9 @@ const attributes = {
 	},
 	ctaBorderWidth :{
 		type: "number",
-		default: 1,
 	},
 	ctaBorderRadius :{
 		type: "number",
-		default: 0,
 	},
 	prefixSpace :{
 		type: "number",
@@ -479,6 +478,10 @@ const attributes = {
 		type: "string",
 		default: "tablet"
 	},
+	showIcon: {
+		type: 'boolean',
+		default: true,
+	},
 	showPrefix: {
 		type: "boolean",
 		default: true,
@@ -491,6 +494,11 @@ const attributes = {
 		type: "boolean",
 		default: true,
 	},
+	iconView: {
+		type: 'string',
+		default: 'none',
+	},
+	...borderAttributes
 }
 
 const deprecated = [

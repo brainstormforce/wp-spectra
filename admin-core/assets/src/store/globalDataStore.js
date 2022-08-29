@@ -4,7 +4,7 @@ import globalDataReducer from './globalDataReducer';
 const initialState = {
     initialStateSetFlag : false,
     activeBlocksFilterTab : 'all',
-    activeSettingsNavigationTab : 'asset-generation',
+    activeSettingsNavigationTab : '',
     blocksStatuses : [],
     enableFileGeneration : '',
     enableTemplates : '',
@@ -16,13 +16,28 @@ const initialState = {
     enableCollapsePanels : '',
     enableCopyPasteStyles : '',
     enableDisplayConditions : '',
-    enableMasonryExtension : ''
+    enableMasonryExtension : '',
+	enableResponsiveConditions : '',
+	contentWidth: '',
+	siteKeyV2: '',
+	siteKeyV3: '',
+	secretKeyV2: '',
+	secretKeyV3: '',
+	settingsSavedNotification: false,
+	enableComingSoonMode: 'disabled',
+	comingSoonPage: '',
+	blocksEditorSpacing: '',
+	containerGlobalPadding: '',
+	containerGlobalElementsGap: 20,
+    enableFontAwesome5: ( 'yes' === uag_react.global_data.uagb_old_user_less_than_2 ) ? 'enabled' : 'disabled',
+    enableAutoBlockRecovery: ( 'yes' === uag_react.global_data.uagb_old_user_less_than_2 ) ? 'enabled' : 'disabled',
+	enableLegacyBlocks: ( 'yes' === uag_react.global_data.uagb_old_user_less_than_2 ) ? 'yes' : 'no',
 };
 
 const globalDataStore = createStore(
     globalDataReducer,
-    initialState, 
-    window.__REDUX_DEVTOOLS_EXTENSION__ && 
+    initialState,
+    window.__REDUX_DEVTOOLS_EXTENSION__ &&
     window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

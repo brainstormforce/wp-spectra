@@ -21,20 +21,23 @@ export default function save( props ) {
 		target,
 		disableLink,
 		hideLabel,
+		fromParentIcon
 	} = attributes;
+
+	const defaultedAlt = ( image && image?.alt ) ? image?.alt : '';
 
 	let imageIconHtml = '';
 
 	if ( image_icon === 'icon' ) {
-		if ( icon ) {
-			imageIconHtml = renderSVG( icon )
+		if( icon || fromParentIcon ){
+			imageIconHtml = icon ? renderSVG( icon ) : renderSVG( fromParentIcon );
 		}
-	} else if ( image && image.url ) {
+	} else if ( image && image.url && image_icon !== 'none' ) {
 		imageIconHtml = (
 			<img
 				className="uagb-icon-list__source-image"
 				src={ image.url }
-				alt={ image.alt }
+				alt={ defaultedAlt }
 			/>
 		);
 	}
@@ -59,9 +62,13 @@ export default function save( props ) {
 					{ ' ' }
 				</a>
 			) }
-			<span className="uagb-icon-list__source-wrap">
-				{ imageIconHtml }
-			</span>
+			{
+				imageIconHtml && (
+					<span className="uagb-icon-list__source-wrap">
+						{ imageIconHtml }
+					</span>
+				)
+			}
 			{ ! hideLabel && '' !== label && (
 				<RichText.Content
 					tagName="span"

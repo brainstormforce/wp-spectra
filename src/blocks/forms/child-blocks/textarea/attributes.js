@@ -5,6 +5,10 @@
 import { __ } from '@wordpress/i18n';
 
 const attributes = {
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 	block_id: {
 		type: 'string',
 	},
@@ -24,5 +28,9 @@ const attributes = {
 		type: 'string',
 		default: __( 'Enter your message', 'ultimate-addons-for-gutenberg' ),
 	},
+	autocomplete: {
+		type: 'string',
+		default: 'off',
+	}
 };
 export default attributes;

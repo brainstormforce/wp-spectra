@@ -482,6 +482,13 @@ $theme: default;
 	z-index: 100000001;
 	border-radius: 0 1px 4px 4px;
 
+	.rfipicons__ibox--error {
+		color: #000;
+		text-transform: capitalize;
+		font-size: 14px;
+		font-weight: 500;
+	}
+
 	// Selector box
 	&__selector {
 		overflow: hidden;

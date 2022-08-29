@@ -4,9 +4,75 @@
 
 import classnames from 'classnames';
 import renderSVG from '@Controls/deprecatedRenderIcon';
-import attributes from './attributes';
-
 import { RichText } from '@wordpress/block-editor';
+
+const attributes = {
+	block_id: {
+		type: "string"
+	},
+	label: {
+		type: 'html',
+		selector: ".uagb-icon-list__label",
+		default: "#Label"
+	},
+	image_icon: {
+		type: "string",
+		default: "icon"
+	},
+	hideLabel: {
+		type: "boolean",
+		default: false
+	},
+	icon: {
+		type: "string",
+		default: "fab fa-arrow-circle-right"
+	},
+	image: {
+		type: "object",
+	},
+	icon_color: {
+		type: "string",
+		default: "#3a3a3a"
+	},
+	label_color: {
+		type: "string"
+	},
+	icon_hover_color: {
+		type: "string"
+	},
+	label_hover_color: {
+		type: "string"
+	},
+	icon_bg_color: {
+		type: "string"
+	},
+	icon_bg_hover_color: {
+		type: "string"
+	},
+	icon_border_color: {
+		type: "string"
+	},
+	icon_border_hover_color: {
+		type: "string"
+	},
+	link: {
+		type: "string",
+		default: "#"
+	},
+	target: {
+		type: "boolean",
+		default: false
+	},
+	disableLink: {
+		type: "boolean",
+		default: true
+	},
+	deviceType: {
+		type: "string",
+		default: 'Desktop'
+	}
+}
+
 const deprecated = [
 	{
 		attributes,
@@ -23,19 +89,20 @@ const deprecated = [
 				target,
 				disableLink,
 				hideLabel,
+				fromParentIcon
 			} = attributes;
 
 			let imageIconHtml = '';
 
 			if ( image_icon == 'icon' ) {
-				if ( icon ) {
+				if ( icon || fromParentIcon ) {
 					imageIconHtml = (
 						<span className="uagb-icon-list__source-icon">
-							{ renderSVG( icon ) }
+							{ icon ? renderSVG( icon ) : renderSVG( fromParentIcon ) }
 						</span>
 					);
 				}
-			} else if ( image && image.url ) {
+			} else if ( image && image.url && image_icon !== 'none' ) {
 				imageIconHtml = (
 					<img
 						className="uagb-icon-list__source-image"

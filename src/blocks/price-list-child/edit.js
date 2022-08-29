@@ -2,18 +2,11 @@
  * BLOCK: Price List
  */
 
-import React, { lazy, Suspense, useEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/price-list-child/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/price-list-child/render" */ './render'
-	)
-);
+import React, {    useEffect } from 'react';
+
+
+import Settings from './settings';
+import Render from './render';
 const UAGBRestaurantMenuChild = ( props ) => {
 	useEffect( () => {
 		// Assigning block_id in the attribute.
@@ -22,10 +15,12 @@ const UAGBRestaurantMenuChild = ( props ) => {
 
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
+
+						<>
+			<Settings parentProps={ props } />
 				<Render parentProps={ props } />
-			</Suspense>
+			</>
+
 		</>
 	);
 };

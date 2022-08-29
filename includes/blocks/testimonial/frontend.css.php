@@ -10,12 +10,39 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_testimonial_gfont( $attr );
 
+$block_name = 'testimonial';
+
+$test_item_count_fallback = UAGB_Block_Helper::get_fallback_number( $attr['test_item_count'], 'test_item_count', $block_name );
+$row_gap_fallback         = UAGB_Block_Helper::get_fallback_number( $attr['rowGap'], 'rowGap', $block_name );
+$name_space_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['nameSpace'], 'nameSpace', $block_name );
+$desc_space_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['descSpace'], 'descSpace', $block_name );
+$column_gap_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['columnGap'], 'columnGap', $block_name );
+$columns_fallback         = UAGB_Block_Helper::get_fallback_number( $attr['columns'], 'columns', $block_name );
+$image_width_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['imageWidth'], 'imageWidth', $block_name );
+
+$row_gap_tablet_fallback    = is_numeric( $attr['rowGapTablet'] ) ? $attr['rowGapTablet'] : $row_gap_fallback;
+$row_gap_mobile_fallback    = is_numeric( $attr['rowGapMobile'] ) ? $attr['rowGapMobile'] : $row_gap_tablet_fallback;
+$column_gap_tablet_fallback = is_numeric( $attr['columnGapTablet'] ) ? $attr['columnGapTablet'] : $column_gap_fallback;
+$column_gap_mobile_fallback = is_numeric( $attr['columnGapMobile'] ) ? $attr['columnGapMobile'] : $column_gap_tablet_fallback;
+
 $img_align = 'center';
 if ( 'left' === $attr['headingAlign'] ) {
 	$img_align = 'flex-start';
 } elseif ( 'right' === $attr['headingAlign'] ) {
 	$img_align = 'flex-end';
 }
+
+$overall_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall' );
+$overall_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$overall_border,
+	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
+	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
+	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
+	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' ),
+	( isset( $attr['borderHColor'] ) ? $attr['borderHColor'] : '' )
+);
+$overall_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'tablet' );
+$overall_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'mobile' );
 
 $position = str_replace( '-', ' ', $attr['backgroundPosition'] );
 
@@ -34,9 +61,9 @@ $imgpaddingLeft   = isset( $attr['imgpaddingLeft'] ) ? $attr['imgpaddingLeft'] :
 
 $selectors = array(
 	' .uagb-testimonial__wrap'                         => array(
-		'padding-left'  => UAGB_Helper::get_css_value( ( ( $attr['columnGap'] ) / 2 ), $attr['columnGapType'] ),
-		'padding-right' => UAGB_Helper::get_css_value( ( ( $attr['columnGap'] ) / 2 ), $attr['columnGapType'] ),
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGap'], $attr['rowGapType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, $attr['rowGapType'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( ( ( $column_gap_fallback ) / 2 ), $attr['columnGapType'] ),
+		'padding-right' => UAGB_Helper::get_css_value( ( ( $column_gap_fallback ) / 2 ), $attr['columnGapType'] ),
 	),
 	' .uagb-tm__content'                               => array(
 		'text-align'     => $attr['headingAlign'],
@@ -53,42 +80,24 @@ $selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $imgpaddingRight, $attr['imgpaddingUnit'] ),
 	),
 	' .uagb-tm__image img'                             => array(
-		'width'     => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthType'] ),
-		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthType'] ),
+		'width'     => UAGB_Helper::get_css_value( $image_width_fallback, $attr['imageWidthType'] ),
+		'max-width' => UAGB_Helper::get_css_value( $image_width_fallback, $attr['imageWidthType'] ),
 	),
 
 	' .uagb-tm__author-name'                           => array(
 		'color'         => $attr['authorColor'],
-		'margin-bottom' => $attr['nameSpace'] . $attr['nameSpaceType'],
+		'margin-bottom' => $name_space_fallback . $attr['nameSpaceType'],
 	),
 	' .uagb-tm__company'                               => array(
 		'color' => $attr['companyColor'],
 	),
 	' .uagb-tm__desc'                                  => array(
 		'color'         => $attr['descColor'],
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpace'], $attr['descSpaceType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $desc_space_fallback, $attr['descSpaceType'] ),
 	),
-	' .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content' => array(
-		'background-color' => $attr['backgroundColor'],
-	),
-	' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__content' => array(
-		'background-image'    => ( isset( $attr['backgroundImage']['url'] ) && '' !== $attr['backgroundImage']['url'] ) ? 'url("' . $attr['backgroundImage']['url'] . '")' : null,
-		'background-position' => $position,
-		'background-repeat'   => $attr['backgroundRepeat'],
-		'background-size'     => $attr['backgroundSize'],
-	),
-	' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay' => array(
-		'background-color' => $attr['backgroundImageColor'],
-		'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] ) ? ( ( 100 - $attr['backgroundOpacity'] ) / 100 ) : '',
-	),
-	' .uagb-testimonial__wrap .uagb-tm__content'       => array(
-		'border-color'  => $attr['borderColor'],
-		'border-style'  => $attr['borderStyle'],
-		'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
-		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
-	),
+	' .uagb-testimonial__wrap .uagb-tm__content'       => $overall_border,
 	' .uagb-testimonial__wrap .uagb-tm__content:hover' => array(
-		'border-color' => $attr['borderHoverColor'],
+		'border-color' => $attr['overallBorderHColor'],
 	),
 	' ul.slick-dots li button:before'                  => array(
 		'color' => $attr['arrowColor'],
@@ -114,45 +123,105 @@ if ( 'gradient' === $attr['backgroundType'] ) {
 		}
 	}
 }
+if ( 'image' === $attr['backgroundType'] ) {
+	if ( 'color' === $attr['overlayType'] ) {
+		$selectors[' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay'] = array(
+			'background-color' => $attr['backgroundImageColor'],
+			'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] ) ? ( ( 100 - $attr['backgroundOpacity'] ) / 100 ) : '',
+		);
+	} elseif ( 'gradient' === $attr['overlayType'] ) {
+		if ( $attr['gradientValue'] ) {
+			$selectors[' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay']['background-image'] = $attr['gradientValue'];
+		}
+	}
+} else {
+	$selectors['  .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content'] = array(
+		'background-color' => $attr['backgroundColor'],
+	);
+}
+
+$selectors['  .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__content'] = array(
+	'background-image'    => ( isset( $attr['backgroundImage']['url'] ) && '' !== $attr['backgroundImage']['url'] ) ? 'url("' . $attr['backgroundImage']['url'] . '")' : null,
+	'background-position' => $position,
+	'background-repeat'   => $attr['backgroundRepeat'],
+	'background-size'     => $attr['backgroundSize'],
+);
 if ( 'dots' === $attr['arrowDots'] ) {
 	$selectors['.uagb-slick-carousel'] = array(
 		'padding' => '0 0 35px 0',
 	);
 }
 
-if ( '1' === $attr['test_item_count'] || $attr['test_item_count'] === $attr['columns'] ) {
+if ( '1' === $test_item_count_fallback || $test_item_count_fallback === $columns_fallback ) {
 	$selectors['.uagb-slick-carousel'] = array(
 		'padding' => 0,
 	);
 }
 
 $m_selectors = array(
+	' .uagb-testimonial__wrap'                          => array(
+		'padding-left'  => UAGB_Helper::get_css_value( ( ( $column_gap_mobile_fallback ) / 2 ), $attr['columnGapType'] ),
+		'padding-right' => UAGB_Helper::get_css_value( ( ( $column_gap_mobile_fallback ) / 2 ), $attr['columnGapType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_mobile_fallback, $attr['rowGapType'] ),
+	),
+	' .uagb-tm__image img'                              => array(
+		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthType'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthType'] ),
+	),
+	' .uagb-tm__author-name'                            => array(
+		'margin-bottom' => $attr['nameSpaceMobile'] . $attr['nameSpaceType'],
+	),
+
+	' .uagb-testimonial__wrap .uagb-tm__content'        => $overall_border_Mobile,
+	' .uagb-tm__desc'                                   => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], $attr['descSpaceType'] ),
+	),
 	' .uagb-tm__content'                                => array(
-		'text-align'     => 'center',
+		'text-align'     => $attr['headingAlignMobile'],
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingTopMobile'], $attr['mobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingRightMobile'], $attr['mobilePaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBottomMobile'], $attr['mobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingLeftMobile'], $attr['mobilePaddingUnit'] ),
 	),
 	'  .uagb-testimonial__wrap .uagb-tm__image-content' => array(
+		'text-align'     => $attr['headingAlignMobile'],
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['imgpaddingTopMobile'], $attr['imgmobilePaddingUnit'] ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $attr['imgpaddingRightMobile'], $attr['imgmobilePaddingUnit'] ),
-		'padding-left'   => UAGB_Helper::get_css_value( $attr['imgpaddingBottomMobile'], $attr['imgmobilePaddingUnit'] ),
-		'padding-right'  => UAGB_Helper::get_css_value( $attr['imgpaddingLeftMobile'], $attr['imgmobilePaddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['imgpaddingBottomMobile'], $attr['imgmobilePaddingUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['imgpaddingLeftMobile'], $attr['imgmobilePaddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['imgpaddingRightMobile'], $attr['imgmobilePaddingUnit'] ),
 	),
 );
 $t_selectors = array(
+	' .uagb-testimonial__wrap'                          => array(
+		'padding-left'  => UAGB_Helper::get_css_value( ( ( $column_gap_tablet_fallback ) / 2 ), $attr['columnGapType'] ),
+		'padding-right' => UAGB_Helper::get_css_value( ( ( $column_gap_tablet_fallback ) / 2 ), $attr['columnGapType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_tablet_fallback, $attr['rowGapType'] ),
+	),
+	' .uagb-tm__image img'                              => array(
+		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthType'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthType'] ),
+	),
+	' .uagb-tm__author-name'                            => array(
+		'margin-bottom' => $attr['nameSpaceTablet'] . $attr['nameSpaceType'],
+	),
+	' .uagb-tm__desc'                                   => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceTablet'], $attr['descSpaceType'] ),
+	),
+
+	' .uagb-testimonial__wrap .uagb-tm__content'        => $overall_border_Tablet,
 	' .uagb-tm__content'                                => array(
+		'text-align'     => $attr['headingAlignTablet'],
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingTopTablet'], $attr['tabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingRightTablet'], $attr['tabletPaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBottomTablet'], $attr['tabletPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingLeftTablet'], $attr['tabletPaddingUnit'] ),
 	),
 	'  .uagb-testimonial__wrap .uagb-tm__image-content' => array(
+		'text-align'     => $attr['headingAlignTablet'],
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['imgpaddingTopTablet'], $attr['imgtabletPaddingUnit'] ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $attr['imgpaddingRightTablet'], $attr['imgtabletPaddingUnit'] ),
-		'padding-left'   => UAGB_Helper::get_css_value( $attr['imgpaddingBottomTablet'], $attr['imgtabletPaddingUnit'] ),
-		'padding-right'  => UAGB_Helper::get_css_value( $attr['imgpaddingLeftTablet'], $attr['imgtabletPaddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['imgpaddingRightTablet'], $attr['imgtabletPaddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['imgpaddingBottomTablet'], $attr['imgtabletPaddingUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['imgpaddingLeftTablet'], $attr['imgtabletPaddingUnit'] ),
 	),
 );
 

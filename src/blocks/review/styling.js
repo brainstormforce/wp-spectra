@@ -73,6 +73,18 @@ function styling( props ) {
 		headFontStyle,
 		subHeadFontStyle,
 		contentFontStyle,
+		headLetterSpacing,
+		headLetterSpacingTablet,
+		headLetterSpacingMobile,
+		headLetterSpacingType,
+		subHeadLetterSpacing,
+		subHeadLetterSpacingTablet,
+		subHeadLetterSpacingMobile,
+		subHeadLetterSpacingType,
+		contentLetterSpacing,
+		contentLetterSpacingTablet,
+		contentLetterSpacingMobile,
+		contentLetterSpacingType,
 	} = props.attributes;
 
 	let tabletSelectors = {};
@@ -96,6 +108,7 @@ function styling( props ) {
 				headLineHeight,
 				headLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
 			'color': titleColor,
 		},
 		' .uagb_review_entry': {
@@ -109,6 +122,7 @@ function styling( props ) {
 				headLineHeight,
 				headLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
 		},
 		' .uagb-rating-desc': {
 			'font-size': generateCSSUnit(
@@ -124,6 +138,7 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacing, subHeadLetterSpacingType ),
 			'color': descColor,
 		},
 		' .uagb-rating-author': {
@@ -140,23 +155,8 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacing, subHeadLetterSpacingType ),
 			'color': authorColor,
-		},
-		' .uagb-rating-desc, .uagb-rating-author': {
-			'font-size': generateCSSUnit(
-				subHeadFontSize,
-				subHeadFontSizeType
-			),
-			'font-weight': subHeadFontWeight,
-			'font-family': subHeadFontFamily,
-			'font-style' : subHeadFontStyle,
-			'text-decoration': subHeadDecoration,
-			'text-transform': subHeadTransform,
-			'line-height': generateCSSUnit(
-				subHeadLineHeight,
-				subHeadLineHeightType
-			),
-			'color': descColor,
 		},
 		' .uagb_review_block': {
 			'padding-left': generateCSSUnit( leftPadding, paddingUnit ),
@@ -179,6 +179,7 @@ function styling( props ) {
 				contentLineHeight,
 				contentLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( contentLetterSpacing, contentLetterSpacingType ),
 			'color': summaryColor,
 		},
 		' .uagb_review_entry .rich-text': {
@@ -203,6 +204,7 @@ function styling( props ) {
 				headLineHeightMobile,
 				headLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
 		},
 		' .uagb-rating-desc, .uagb-rating-author': {
 			'font-size': generateCSSUnit(
@@ -213,6 +215,7 @@ function styling( props ) {
 				subHeadLineHeightMobile,
 				subHeadLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacingMobile, subHeadLetterSpacingType ),
 		},
 		' .uagb_review_summary, p.rich-text.block-editor-rich-text__editable.uagb_review_summary_title': {
 			'font-size': generateCSSUnit(
@@ -223,6 +226,7 @@ function styling( props ) {
 				contentLineHeightMobile,
 				contentLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( contentLetterSpacingMobile, contentLetterSpacingType ),
 		},
 		' .uagb_review_block': {
 			'padding-left': generateCSSUnit(
@@ -254,6 +258,7 @@ function styling( props ) {
 				headLineHeightTablet,
 				headLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
 		},
 		' .uagb-rating-desc, .uagb-rating-author': {
 			'font-size': generateCSSUnit(
@@ -264,6 +269,7 @@ function styling( props ) {
 				subHeadLineHeightTablet,
 				subHeadLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacingTablet, subHeadLetterSpacingType ),
 		},
 		' .uagb_review_summary, p.rich-text.block-editor-rich-text__editable.uagb_review_summary_title': {
 			'font-size': generateCSSUnit(
@@ -274,6 +280,7 @@ function styling( props ) {
 				contentLineHeightTablet,
 				contentLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( contentLetterSpacingTablet, contentLetterSpacingType ),
 		},
 		' .uagb_review_block': {
 			'padding-left': generateCSSUnit(

@@ -75,11 +75,11 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.0.0-beta.1' );
+			define( 'UAGB_VER', '2.0.7' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
-			define( 'UAGB_SLUG', 'uag' );
-			define( 'UAGB_URI', trailingslashit( 'https://ultimategutenberg.com/' ) );
+			define( 'UAGB_SLUG', 'spectra' );
+			define( 'UAGB_URI', trailingslashit( 'https://wpspectra.com/' ) );
 
 			if ( ! defined( 'UAGB_TABLET_BREAKPOINT' ) ) {
 				define( 'UAGB_TABLET_BREAKPOINT', '976' );
@@ -162,6 +162,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/class-uagb-front-assets.php';
 			require_once UAGB_DIR . 'classes/class-uagb-init-blocks.php';
 			require_once UAGB_DIR . 'classes/class-uagb-rest-api.php';
+			require_once UAGB_DIR . 'classes/class-uagb-coming-soon.php';
 
 			if ( 'twentyseventeen' === get_template() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';
@@ -225,6 +226,10 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 					unset( $attributes['UAGLoggedOut'] );
 				}
 
+				if ( isset( $attributes['zIndex'] ) ) {
+					unset( $attributes['zIndex'] );
+				}
+
 					$request['attributes'] = $attributes;
 
 			}
@@ -279,7 +284,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$class = 'notice notice-error';
 			/* translators: %s: html tags */
-			$message = sprintf( __( 'The %1$sUltimate Addon for Gutenberg%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated.', 'ultimate-addons-for-gutenberg' ), '<strong>', '</strong>' );
+			$message = sprintf( __( 'The %1$sSpectra%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated.', 'ultimate-addons-for-gutenberg' ), '<strong>', '</strong>' );
 
 			$action_url   = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=gutenberg' ), 'install-plugin_gutenberg' );
 			$button_label = __( 'Install Gutenberg', 'ultimate-addons-for-gutenberg' );
@@ -310,13 +315,19 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		/**
 		 * Init actions
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0
 		 *
 		 * @return void
 		 */
 		public function init_actions() {
 
 			$theme_folder = get_template();
+
+			if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
+				if ( 'twentytwentytwo' === $theme_folder ) {
+					require_once UAGB_DIR . 'compatibility/class-uagb-twenty-twenty-two-compatibility.php';
+				}
+			}
 
 			if ( 'astra' === $theme_folder ) {
 				require_once UAGB_DIR . 'compatibility/class-uagb-astra-compatibility.php';
@@ -334,7 +345,7 @@ UAGB_Loader::get_instance();
 /**
  * Load main object
  *
- * @since x.x.x
+ * @since 2.0.0
  *
  * @return object
  */

@@ -12,7 +12,8 @@ $block_data = array(
 	'slug'        => '',
 	'link'        => '',
 	'title'       => __( 'Radio', 'ultimate-addons-for-gutenberg' ),
-	'description' => __( 'This block helps to add Radio field.', 'ultimate-addons-for-gutenberg' ),
+	'description' => __( 'Add radio select boxes to allow a single choice from options.', 'ultimate-addons-for-gutenberg' ),
 	'default'     => true,
 	'is_child'    => true,
+	'deprecated'  => false,
 );

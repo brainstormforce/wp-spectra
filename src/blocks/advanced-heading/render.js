@@ -8,9 +8,12 @@ const Render = ( props ) => {
 	props = props.parentProps;
 	const {
 		attributes: {
+			isPreview,
 			block_id,
+			headingTitleToggle,
 			headingTitle,
 			headingDesc,
+			headingDescToggle,
 			headingTag,
 			seperatorStyle,
 		},
@@ -53,7 +56,9 @@ const Render = ( props ) => {
 			onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
 		/>
 	);
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/creative-heading.png`;
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				className,
@@ -61,9 +66,9 @@ const Render = ( props ) => {
 				`uagb-block-${ block_id }`
 			) }
 		>
-			{ headingText }
+			{ headingTitleToggle && headingText }
 			{ separator }
-			{ descText }
+			{ headingDescToggle && descText  }
 		</div>
 	);
 };

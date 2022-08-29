@@ -1,5 +1,5 @@
 /**
- * BLOCK: Creative Heading
+ * BLOCK: Heading
  */
 
 import UAGB_Block_Icons from '@Controls/block-icons';
@@ -10,11 +10,12 @@ import deprecated from './deprecated';
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType, createBlock } from '@wordpress/blocks';
+import './format'
 
 registerBlockType( 'uagb/advanced-heading', {
-	title: __( 'Creative Heading', 'ultimate-addons-for-gutenberg' ),
+	title: __( 'Heading', 'ultimate-addons-for-gutenberg' ),
 	description: __(
-		'This block lets you add a combination of a heading and a sub-heading with a separator in between.',
+		'Add heading, sub heading and a separator using one block.',
 		'ultimate-addons-for-gutenberg'
 	),
 	icon: UAGB_Block_Icons.advanced_heading,
@@ -28,15 +29,8 @@ registerBlockType( 'uagb/advanced-heading', {
 	},
 	example: {
 		attributes: {
-			headingTitle: __(
-				'Write a Heading',
-				'ultimate-addons-for-gutenberg'
-			),
-			headingDesc: __(
-				'Write a Description',
-				'ultimate-addons-for-gutenberg'
-			),
-		},
+			isPreview: true,
+		}
 	},
 	category: uagb_blocks_info.category,
 	attributes,
@@ -52,7 +46,6 @@ registerBlockType( 'uagb/advanced-heading', {
 					return createBlock( 'uagb/advanced-heading', {
 						headingTitle: attribute.content,
 						headingAlign: attribute.align,
-						className: 'uagb-heading-text',
 					} );
 				},
 			},
@@ -63,7 +56,6 @@ registerBlockType( 'uagb/advanced-heading', {
 					return createBlock( 'uagb/advanced-heading', {
 						headingTitle: attribute.value,
 						headingDesc: attribute.citation,
-						className: 'uagb-heading-text',
 					} );
 				},
 			},
@@ -76,7 +68,6 @@ registerBlockType( 'uagb/advanced-heading', {
 					return createBlock( 'core/heading', {
 						content: attribute.headingTitle,
 						align: attribute.headingAlign,
-						className: 'uagb-heading-text',
 					} );
 				},
 			},
@@ -85,9 +76,8 @@ registerBlockType( 'uagb/advanced-heading', {
 				blocks: [ 'core/quote' ],
 				transform: ( attribute ) => {
 					return createBlock( 'core/quote', {
-						value: `<p>${ attribute.headingTitle }</p>`,
+						value: attribute.headingTitle,
 						citation: attribute.headingDesc,
-						className: 'uagb-heading-text',
 					} );
 				},
 			},

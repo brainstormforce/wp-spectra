@@ -10,6 +10,13 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_wp_search_gfont( $attr );
 
+$block_name = 'wp-search';
+
+$input_size_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['inputSize'], 'inputSize', $block_name );
+$button_width_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['buttonWidth'], 'buttonWidth', $block_name );
+$button_icon_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['buttonIconSize'], 'buttonIconSize', $block_name );
+$icon_size_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name );
+
 $selectors            = array();
 $t_selectors          = array();
 $m_selectors          = array();
@@ -31,8 +38,8 @@ $paddingInputRightMobile  = isset( $attr['paddingInputRightMobile'] ) ? UAGB_Hel
 $paddingInputBottomMobile = isset( $attr['paddingInputBottomMobile'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputBottomMobile'], $attr['mobilePaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
 $paddingInputLeftMobile   = isset( $attr['paddingInputLeftMobile'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputLeftMobile'], $attr['mobilePaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
 
-$iconSize       = UAGB_Helper::get_css_value( $attr['iconSize'], $attr['iconSizeType'] );
-$buttonIconSize = UAGB_Helper::get_css_value( $attr['buttonIconSize'], $attr['buttonIconSizeType'] );
+$iconSize       = UAGB_Helper::get_css_value( $icon_size_fallback, $attr['iconSizeType'] );
+$buttonIconSize = UAGB_Helper::get_css_value( $button_icon_size_fallback, $attr['buttonIconSizeType'] );
 $inputCSS       = array(
 	'color'            => $attr['textColor'],
 	'background-color' => $attr['inputBgColor'],
@@ -45,19 +52,31 @@ $inputCSS       = array(
 	'padding-right'    => $paddingInputRight,
 	'padding-left'     => $paddingInputLeft,
 );
-$boxCSS         = array(
-	'border-style'  => $attr['borderStyle'],
-	'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
-	'border-color'  => $attr['borderColor'],
-	'outline'       => 'unset',
-	'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
-	'box-shadow'    => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
-	'transition'    => 'all .5s',
+
+
+$inputBorderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input' );
+$inputBorderCSS       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$inputBorderCSS,
+	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
+	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
+	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
+	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
+);
+$inputBorderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input', 'tablet' );
+$inputBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input', 'mobile' );
+
+$boxCSS = array_merge(
+	$inputBorderCSS,
+	array(
+		'outline'    => 'unset',
+		'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
+		'transition' => 'all .5s',
+	)
 );
 if ( 'px' === $attr['inputSizeType'] ) {
-	$boxCSS['max-width'] = UAGB_Helper::get_css_value( $attr['inputSize'], $attr['inputSizeType'] );
+	$boxCSS['max-width'] = UAGB_Helper::get_css_value( $input_size_fallback, $attr['inputSizeType'] );
 } else {
-	$boxCSS['width'] = UAGB_Helper::get_css_value( $attr['inputSize'], $attr['inputSizeType'] );
+	$boxCSS['width'] = UAGB_Helper::get_css_value( $input_size_fallback, $attr['inputSizeType'] );
 }
 $icon_color = $attr['textColor'];
 
@@ -67,7 +86,7 @@ if ( $attr['iconColor'] && '' !== $attr['iconColor'] ) {
 
 $selectors = array(
 	' .uagb-search-form__container .uagb-search-submit' => array(
-		'width'   => UAGB_Helper::get_css_value( $attr['buttonWidth'], $attr['buttonWidthType'] ),
+		'width'   => UAGB_Helper::get_css_value( $button_width_fallback, $attr['buttonWidthType'] ),
 		'padding' => 0,
 		'border'  => 0,
 	),
@@ -103,7 +122,7 @@ if ( 'input-button' === $attr['layout'] || 'input' === $attr['layout'] ) {
 
 	$selectors[' .uagb-search-wrapper .uagb-search-form__container']       = $boxCSS;
 	$selectors[' .uagb-search-wrapper .uagb-search-form__container:hover'] = array(
-		'border-color' => $attr['borderHColor'],
+		'border-color' => $attr['inputBorderHColor'],
 	);
 
 	if ( 'inset' === $attr['boxShadowPosition'] ) {
@@ -129,6 +148,7 @@ $selectors['.uagb-layout-input-button .uagb-search-wrapper .uagb-search-form__co
 );
 
 $m_selectors = array(
+	' .uagb-search-wrapper .uagb-search-form__container' => $inputBorderCSSMobile,
 	' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input' => array(
 		'padding-top'    => $paddingInputTopMobile,
 		'padding-bottom' => $paddingInputBottomMobile,
@@ -143,6 +163,7 @@ $m_selectors = array(
 );
 
 $t_selectors        = array(
+	' .uagb-search-wrapper .uagb-search-form__container' => $inputBorderCSSTablet,
 	' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input' => array(
 		'padding-top'    => $paddingInputTopTablet,
 		'padding-bottom' => $paddingInputBottomTablet,

@@ -11,11 +11,12 @@ $block_slug = 'uagb/marketing-button';
 $block_data = array(
 	'doc'              => 'marketing-button',
 	'slug'             => '',
-	'admin_categories' => array( 'creative', 'social' ),
+	'admin_categories' => array( 'creative' ),
 	'link'             => 'marketing-button',
 	'title'            => __( 'Marketing Button', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block allows you to place a Marketing Button with small description.', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Add a marketing call to action button with a short description.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 3,
+	'priority'         => 19,
+	'deprecated'       => false,
 );

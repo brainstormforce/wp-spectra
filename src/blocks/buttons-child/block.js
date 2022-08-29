@@ -21,4 +21,7 @@ registerBlockType( 'uagb/buttons-child', {
 	edit,
 	save,
 	deprecated,
+	supports: {
+		anchor: true,
+	},
 } );

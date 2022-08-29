@@ -4,9 +4,8 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
-
-import { ToggleControl, SelectControl } from '@wordpress/components';
-
+import UAGSelectControl from '@Components/select-control';
+import { ToggleControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 
 
@@ -18,40 +17,66 @@ const Settings = ( props ) => {
 
 	const { attributes, setAttributes } = props;
 
-	const { phoneRequired, pattern } = attributes;
+	const { phoneRequired, pattern, autocomplete } = attributes;
 
 	const phoneInspectorControls = () => {
 		return (
 			<UAGAdvancedPanelBody initialOpen={ true }>
-				<ToggleControl
-					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
-					checked={ phoneRequired }
-					onChange={ () =>
-						setAttributes( { phoneRequired: ! phoneRequired } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Autocomplete',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: autocomplete,
+						label: 'autocomplete',
+					} }
+					setAttributes={ setAttributes }
+					options={ [
+						{ label: __( 'Off', 'ultimate-addons-for-gutenberg' ), value: 'off' },
+						{ label: __( 'Phone', 'ultimate-addons-for-gutenberg' ), value: 'tel-national' },
+					] }
 				/>
-				<SelectControl
-					label={ __( 'Pattern' ) }
-					value={ pattern }
+				<UAGSelectControl
+					label={ __(
+						'Pattern',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: pattern,
+						label: 'pattern',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{ label: 'None', value: '' },
 						{
 							label: '123-45-678',
 							value: __(
-								'[0-9]{3}-[0-9]{2}-[0-9]{3}',
+								'[0-9]{3}-?[0-9]{2}-?[0-9]{3}',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
-							label: '123-456-6789',
+							label: '123-456-7890',
 							value: __(
-								'[0-9]{3}-[0-9]{3}-[0-9]{4}',
+								'[0-9]{3}-?[0-9]{3}-?[0-9]{4}',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							label: '123 456 7890',
+							value: __(
+								'[0-9]{3}\s?[0-9]{3}\s?[0-9]{4}',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
 					] }
-					onChange={ ( value ) =>
-						setAttributes( { pattern: value } )
+				/>
+				<ToggleControl
+					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
+					checked={ phoneRequired }
+					onChange={ () =>
+						setAttributes( { phoneRequired: ! phoneRequired } )
 					}
 				/>
 			</UAGAdvancedPanelBody>

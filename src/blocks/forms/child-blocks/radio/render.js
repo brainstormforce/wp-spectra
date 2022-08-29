@@ -22,7 +22,7 @@ const Render = ( props ) => {
 
 	const { attributes, setAttributes, isSelected } = props;
 
-	const { block_id, radioRequired, options, radioName } = attributes;
+	const { block_id, radioRequired, options, radioName, layout } = attributes;
 
 	const addOption = () => {
 		const newOption = {
@@ -48,6 +48,7 @@ const Render = ( props ) => {
 					name={ `radio-${ block_id }` }
 					value={ option.optiontitle }
 					id={ option.optiontitle }
+					className={ layout }
 				/>
 				<label // eslint-disable-line jsx-a11y/label-has-associated-control
 					htmlFor={ option.optiontitle }
@@ -99,6 +100,7 @@ const Render = ( props ) => {
 						name={ block_id }
 						value={ optionvalue }
 						required={ radioRequired }
+						className={ layout }
 					/>
 					<label htmlFor={ value }>{ option.optiontitle }</label>
 					<br />

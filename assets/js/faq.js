@@ -24,7 +24,7 @@ function slideUp( target, duration ) {
 }
 
 function slideDown( target, duration ) {
-	
+
 	target.style.removeProperty( 'display' );
 	let display = window.getComputedStyle( target ).display;
 
@@ -100,8 +100,8 @@ function setupFAQ() {
 					faqItem = expandFirstelements[ item ]
 					.querySelectorAll( '.uagb-faq-child__outer-wrap .uagb-faq-item' )[ 0 ];
 				}
-	
-				
+
+
 				faqItem.classList.add( 'uagb-faq-item-active' );
 
 				faqItem.setAttribute( 'aria-expanded', true );
@@ -121,7 +121,7 @@ function setupFAQ() {
 			let otherItems = inactiveOtherelements[ item ].querySelectorAll(
 				'.uagb-faq-child__outer-wrap.uagb-faq-item'
 			);
-			
+
 			if( ! otherItems || 0 === otherItems.length ) {
 				otherItems = inactiveOtherelements[ item ].querySelectorAll(
 					'.uagb-faq-child__outer-wrap .uagb-faq-item'

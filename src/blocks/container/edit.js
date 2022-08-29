@@ -2,21 +2,15 @@
  * BLOCK: Container
  */
 import styling from './styling';
-import React, { lazy, Suspense, useEffect, useLayoutEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
-import { useDeviceType } from '@Controls/getPreviewType';
+import React, {    useEffect, useLayoutEffect } from 'react';
 
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/container/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/container/render" */ './render'
-	)
-);
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
+import { useDeviceType } from '@Controls/getPreviewType';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
+
+import Settings from './settings';
+import Render from './render';
 
 //  Import CSS.
 import './style.scss';
@@ -54,6 +48,12 @@ const UAGBContainer = ( props ) => {
 	}
 
 	useEffect( () => {
+		const isBlockRootParent = 0 === select( 'core/block-editor' ).getBlockParents( props.clientId ).length;
+
+		if ( isBlockRootParent ) {
+			props.setAttributes( { isBlockRootParent: true } );
+		}
+
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
@@ -64,58 +64,85 @@ const UAGBContainer = ( props ) => {
 		} else {
 			element = document.getElementById( 'block-' + props.clientId )
 		}
+		// Add Close Button for Variation Selector.
+		const variationPicker = element?.querySelector( '.uagb-container-variation-picker .block-editor-block-variation-picker' );
+		const closeButton = document.createElement( 'button' );
+		closeButton.onclick = function() {
+			if ( props.defaultVariation.attributes ) {
+				props.setAttributes( props.defaultVariation.attributes );
+			}
+		};
+		closeButton.setAttribute( 'class', 'uagb-variation-close' );
+		closeButton.innerHTML = '×';
+		if ( variationPicker ) {
+			const variationPickerLabel = variationPicker.querySelector( '.components-placeholder__label' );
+			variationPicker.insertBefore( closeButton,variationPickerLabel );
+		}
 
-		if ( element ) {
-			element.classList.remove( `uagb-editor-preview-mode-desktop` );
-			element.classList.remove( `uagb-editor-preview-mode-tablet` );
-			element.classList.remove( `uagb-editor-preview-mode-mobile` );
-			element.classList.add( `uagb-editor-preview-mode-${ deviceType.toLowerCase() }` );
+		const descendants = select( 'core/block-editor' ).getBlocks( props.clientId );
+
+		if ( descendants.length !== props.attributes.blockDescendants.length ) {
+			props.setAttributes( { blockDescendants: descendants } );
+		}
+		const {
+			borderStyle,
+			borderWidth,
+			borderColor,
+			borderHColor,
+			borderRadius
+		} = props.attributes;
+
+		// border
+		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+			migrateBorderAttributes( 'container', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHColor',
+				value: borderHColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			},
+			props.setAttributes,
+			props.attributes
+			);
+		}
+
+		if( 0 !== select( 'core/block-editor' ).getBlockParents(  props.clientId ).length ){ // if there is no parent for container when child container moved outside root then do not show variations.
+			props.setAttributes( { variationSelected: true } );
 		}
 
 	}, [] );
 
 	useEffect( () => {
 
-		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
-		let element;
-		if( iframeEl ){
-			element = iframeEl.contentDocument.getElementById( 'block-' + props.clientId )
-		} else {
-			element = document.getElementById( 'block-' + props.clientId )
-		}
-		
-		if ( element ) {
-			element.classList.remove( `uagb-editor-preview-mode-desktop` );
-			element.classList.remove( `uagb-editor-preview-mode-tablet` );
-			element.classList.remove( `uagb-editor-preview-mode-mobile` );
-			element.classList.add( `uagb-editor-preview-mode-${deviceType.toLowerCase() }` );
-		}
-
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-container-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		const descendants = select( 'core/block-editor' ).getBlocks( props.clientId );
+
+		if ( descendants.length !== props.attributes.blockDescendants.length ) {
+			props.setAttributes( { blockDescendants: descendants } );
+		}
+
 	}, [ props ] );
 
 	useEffect( () => {
-		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
-		let element;
-		if( iframeEl ){
-			element = iframeEl.contentDocument.getElementById( 'block-' + props.clientId )
-		} else {
-			element = document.getElementById( 'block-' + props.clientId )
-		}
-		
-		if ( element ) {
-			element.classList.remove( `uagb-editor-preview-mode-desktop` );
-			element.classList.remove( `uagb-editor-preview-mode-tablet` );
-			element.classList.remove( `uagb-editor-preview-mode-mobile` );
-			element.classList.add( `uagb-editor-preview-mode-${deviceType.toLowerCase() }` );
-		}
 
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-container-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
+		scrollBlockToView();
+
 	}, [ deviceType ] );
 
 	const blockVariationPickerOnSelect = (
@@ -146,34 +173,41 @@ const UAGBContainer = ( props ) => {
 
 	const { variations } = props;
 
-	const { variationSelected } = props.attributes;
+	const { variationSelected, isPreview } = props.attributes;
+
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/container.png`;
 
 	if ( ! variationSelected && 0 === select( 'core/block-editor' ).getBlockParents( props.clientId ).length ) {
-		
+
 		return (
+			isPreview ? <img width='100%' src={previewImageData} alt=''/> :
+			<>
 			<div className='uagb-container-variation-picker'>
 				<BlockVariationPicker
 					icon={ '' }
-					label={ uagb_blocks_info.blocks[ 'uagb/container' ].title }
-					instructions={ __(
-						'Select a variation to start with.',
+					label={ __(
+						'Select a Layout',
 						'ultimate-addons-for-gutenberg'
 					) }
+					instructions={ false }
 					variations={ variations }
 					onSelect={ ( nextVariation ) =>
 						blockVariationPickerOnSelect( nextVariation )
 					}
 				/>
 			</div>
+			</>
 		);
 	}
 
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
+
+						<>
+			<Settings parentProps={ props } />
 				<Render parentProps={ props } />
-			</Suspense>
+			</>
+
 		</>
 	);
 };

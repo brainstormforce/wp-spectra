@@ -29,7 +29,23 @@ const attributes = {
 	align: {
 		type: 'string',
 		default: 'center',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'overall-alignment'
+		},
+	},
+	alignTablet: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		},
+	},
+	alignMobile: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
+		},
 	},
 	headingTag: {
 		type: 'string',
@@ -38,12 +54,30 @@ const attributes = {
 	timelinAlignment: {
 		type: 'string',
 		default: 'center',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'timeline-alignment'
+		},
+	},
+	timelinAlignmentTablet: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'timeline-alignment-tablet'
+		},
+	},
+	timelinAlignmentMobile: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'timeline-alignment-mobile'
+		},
 	},
 	arrowlinAlignment: {
 		type: 'string',
 		default: 'center',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'arrowline-alignment'
+		},
 	},
 	block_id: {
 		type: 'string',
@@ -60,11 +94,13 @@ const attributes = {
 	iconSize: {
 		type: 'number',
 		default: 12,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-size'
+		},
 	},
 	icon: {
 		type: 'string',
-		default: 'fab fa fa-calendar-alt',
+		default: 'calendar-days',
 	},
 	t_date: {
 		type: 'string',

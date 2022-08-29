@@ -2,21 +2,16 @@
  * BLOCK: Content Timeline child.
  */
 
-import React, { useEffect, lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect,    } from 'react';
 
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/content-timeline-child/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/content-timeline-child/render" */ './render'
-	)
-);
+import { useDeviceType } from '@Controls/getPreviewType';
+
+import Settings from './settings';
+import Render from './render';
 
 const ContentTimelineChildComponent = ( props ) => {
+	const deviceType = useDeviceType();
+
 	useEffect( () => {
 		// Replacement for componentDidMount.
 		//Store client id.
@@ -28,13 +23,15 @@ const ContentTimelineChildComponent = ( props ) => {
 			detail: {},
 		} );
 		document.dispatchEvent( loadContentTimelineEditor );
-	}, [ props ] );
-	
+	}, [ props, deviceType ] );
+
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
+					<>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 

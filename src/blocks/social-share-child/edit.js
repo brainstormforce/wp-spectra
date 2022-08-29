@@ -3,21 +3,17 @@
  */
 
 // Import classes
+
 import styling from './styling';
-import lazyLoader from '@Controls/lazy-loader';
-import React, { useEffect, lazy, Suspense } from 'react';
+
+import React, { useEffect,    } from 'react';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/social-share-child/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/social-share-child/render" */ './render'
-	)
-);
+import { select } from '@wordpress/data';
+
+import Settings from './settings';
+import Render from './render';
 
 const SocialShareChildComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -26,9 +22,12 @@ const SocialShareChildComponent = ( props ) => {
 
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-		props.setAttributes( {
-			current_url: wp.data.select( 'core/editor' ).getPermalink(),
-		} );
+
+		if ( select( 'core/editor' ) ) {
+			props.setAttributes( {
+				current_url: select( 'core/editor' ).getPermalink(),
+			} );
+		}
 
 	}, [] );
 
@@ -44,13 +43,18 @@ const SocialShareChildComponent = ( props ) => {
 	    const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-style-social-share-child-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
+
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
+					<>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 

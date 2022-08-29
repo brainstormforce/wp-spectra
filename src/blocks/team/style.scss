@@ -7,6 +7,10 @@
 .wp-block-uagb-team {
 	display: flex;
 
+	.uagb-team__content {
+		width: 100%;
+	}
+
 	&.uagb-team__outer-wrap.uagb-team__image-position-left .uagb-team__wrap,
 	&.uagb-team__outer-wrap.uagb-team__image-position-right .uagb-team__wrap {
 		-js-display: flex;
@@ -17,12 +21,7 @@
 		display: flex;
 	}
 
-	.uagb-team__prefix {
-		color: #888;
-		font-size: 15px;
-		font-style: italic;
-	}
-
+	.uagb-team__title,
 	span.uagb-team__title {
 		display: block;
 	}
@@ -111,7 +110,6 @@
 		ul.uagb-team__social-list {
 			display: flex;
 			list-style: none;
-			justify-content: center;
 		}
 
 		.uagb-team__social-icon-wrap { // For Backword.
@@ -180,7 +178,6 @@
 
 	img {
 		display: inline;
-		height: auto !important;
 		max-width: 100%;
 		width: inherit;
 		-webkit-box-sizing: content-box;

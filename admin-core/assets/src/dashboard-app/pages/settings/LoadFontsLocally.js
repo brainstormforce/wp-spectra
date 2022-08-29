@@ -23,7 +23,7 @@ const LoadFontsLocally = () => {
             assetStatus = 'disabled';
 		}
 
-        dispatch( {type: 'UPDATE_ENABLE_LOAD_FONTS_LOCALLY', payload: assetStatus } );
+        dispatch( { type: 'UPDATE_ENABLE_LOAD_FONTS_LOCALLY', payload: assetStatus } );
 
 		const formData = new window.FormData();
 
@@ -39,37 +39,36 @@ const LoadFontsLocally = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
+			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
 		} );
     };
 
     return (
-        <section className='flex border-b border-solid border-slate-200'>
-            <div className='pr-16 pb-8 w-[78%]'>
-                <h3 className="text-lg leading-6 font-medium text-gray-900">
-                    {__( 'Load Google Fonts Locally', 'ultimate-addons-for-gutenberg' )}
+        <section className='block border-b border-solid border-slate-200 px-12 py-8 justify-between'>  
+            <div className='mr-16 w-full flex items-center'>
+                <h3 className="p-0 flex-1 justify-right inline-flextext-lg leading-8 font-medium text-gray-900">
+                    { __( 'Load Google Fonts Locally', 'ultimate-addons-for-gutenberg' ) }
                 </h3>
-                <p className="mt-[0.6rem] text-sm ">
-                    { __( 'Enable the "Load Google Fonts Locally" option to serve Google fonts from your server (locally). It will simply download the selected Google fonts and host those Google fonts locally on your WordPress site.', 'ultimate-addons-for-gutenberg' ) }
-                </p>
-            </div>
-            <div>
                 <Switch
-                    checked={enableLoadFontsLocallyStatus}
-                    onChange={updateLoadFontsLocallyStatus}
-                    className={classNames(
-                        enableLoadFontsLocallyStatus ? 'bg-wpcolor' : 'bg-gray-200',
+                    checked={ enableLoadFontsLocallyStatus }
+                    onChange={ updateLoadFontsLocallyStatus }
+                    className={ classNames(
+                        enableLoadFontsLocallyStatus ? 'bg-spectra' : 'bg-slate-200',
                         'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
-                    )}
+                    ) }
                     >
                     <span
                         aria-hidden="true"
-                        className={classNames(
-                        enableLoadFontsLocallyStatus ? 'translate-x-5' : 'translate-x-0',
-                        'pointer-events-none inline-block h-3.5 w-3.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
-                        )}
+                        className={ classNames(
+                            enableLoadFontsLocallyStatus ? 'translate-x-5' : 'translate-x-0',
+                            'pointer-events-none inline-block h-3.5 w-3.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
+                        ) }
                     />
                 </Switch>
             </div>
+            <p className="mt-2 w-9/12 text-sm text-slate-500">
+                { __( 'Enable this option to download Google fonts and save them on your server. This can be great for improving speed of your website and to comply with GDPR laws.', 'ultimate-addons-for-gutenberg' ) }
+            </p>
         </section>
     );
 };

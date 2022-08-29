@@ -21,7 +21,7 @@ const Render = ( props ) => {
 	const {
 		className,
 		setAttributes,
-		attributes: { rating, range, title },
+		attributes: { isPreview, rating, range, title, displayTitle },
 	} = props;
 
 	const rangeValue = parseInt( range );
@@ -33,25 +33,28 @@ const Render = ( props ) => {
 			</span>
 		);
 	}
-
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/star-ratings.png`;
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				className,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
+				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
 			) }
 		>
-			<RichText
-				tagName="p"
-				placeholder={ __(
-					'Write a title',
-					'ultimate-addons-for-gutenberg'
-				) }
-				value={ title }
-				className="uag-star-rating__title"
-				onChange={ ( value ) => setAttributes( { title: value } ) }
-			/>
+			{ displayTitle && (
+				<RichText
+					tagName="p"
+					placeholder={ __(
+						'Write a title',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ title }
+					className="uag-star-rating__title"
+					onChange={ ( value ) => setAttributes( { title: value } ) }
+				/>
+			) }
 			<div className="uag-star-rating" title={ `${ rating }/${ range }` }>
 				{ stars }
 			</div>

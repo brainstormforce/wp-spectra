@@ -1,18 +1,13 @@
 /**
  * BLOCK: Forms - Edit
- */
-
-import React, { useEffect, useCallback, Suspense, lazy } from 'react';
+ */import React, { useEffect, useCallback } from 'react';
 import styling from './styling';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/form/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 import { withSelect, useDispatch } from '@wordpress/data';
 
@@ -25,7 +20,10 @@ import { __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { withNotices } from '@wordpress/components';
 
 import { __ } from '@wordpress/i18n';
-import lazyLoader from '@Controls/lazy-loader';
+
+import apiFetch from '@wordpress/api-fetch';
+
+import {migrateBorderAttributes} from '@Controls/generateAttributes';
 
 const UAGBFormsEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -47,7 +45,20 @@ const UAGBFormsEdit = ( props ) => {
 			paddingBtnRight,
 			paddingBtnBottom,
 			paddingBtnLeft,
+			reCaptchaSiteKeyV2,
+			reCaptchaSecretKeyV2,
+			reCaptchaSiteKeyV3,
+			reCaptchaSecretKeyV3,
+			reCaptchaEnable,
+			toggleColor,
+			inputColor
 		} = props.attributes;
+
+		if( inputColor ) {
+			if ( undefined === toggleColor ) {
+				setAttributes( { toggleColor: inputColor } );
+			}
+		}
 
 		if ( vPaddingSubmit ) {
 			if ( undefined === paddingBtnTop ) {
@@ -85,9 +96,116 @@ const UAGBFormsEdit = ( props ) => {
 		const id = props.clientId;
 
 		window.addEventListener( 'load', renderReadyClasses( id ) );
+
+		if( reCaptchaEnable ) {
+
+			const keys = {};
+			if( '' === uagb_blocks_info.recaptcha_site_key_v2 && '' === uagb_blocks_info.recaptcha_secret_key_v2 && reCaptchaSiteKeyV2 && reCaptchaSecretKeyV2 ) {
+
+				keys.reCaptchaSiteKeyV2 = reCaptchaSiteKeyV2;
+				keys.reCaptchaSecretKeyV2 = reCaptchaSecretKeyV2;
+			}
+			if( '' === uagb_blocks_info.recaptcha_site_key_v3 && '' === uagb_blocks_info.recaptcha_secret_key_v3 && reCaptchaSiteKeyV3 && reCaptchaSecretKeyV3 ) {
+
+				keys.reCaptchaSiteKeyV3 = reCaptchaSiteKeyV3;
+				keys.reCaptchaSecretKeyV3 = reCaptchaSecretKeyV3;
+			}
+
+			const formData = new window.FormData();
+
+			formData.append( 'action', 'uagb_forms_recaptcha' );
+			formData.append( 'nonce', uagb_blocks_info.uagb_ajax_nonce );
+			formData.append( 'value', JSON.stringify( keys ) );
+
+			if ( Object.keys( keys ).length !== 0 ) {
+
+				apiFetch( {
+					url: uagb_blocks_info.ajax_url,
+					method: 'POST',
+					body: formData,
+				} ).then( () => {
+				} );
+			}
+		}
+		const {
+			inputborderStyle,
+			inputborderWidth,
+			inputborderColor,
+			inputborderHoverColor,
+			inputborderRadius,
+			submitborderWidth,
+			submitborderRadius,
+			submitborderColor,
+			submitborderHColor,
+			submitborderStyle,
+		} = props.attributes;
+
+		// inputborder
+		if( inputborderWidth || inputborderRadius || inputborderColor || inputborderHoverColor || inputborderStyle ){
+			migrateBorderAttributes( 'field', {
+				label: 'inputborderWidth',
+				value: inputborderWidth,
+			}, {
+				label: 'inputborderRadius',
+				value: inputborderRadius
+			}, {
+				label: 'inputborderColor',
+				value: inputborderColor
+			}, {
+				label: 'inputborderHoverColor',
+				value: inputborderHoverColor
+			},{
+				label: 'inputborderStyle',
+				value: inputborderStyle
+			},
+			props.setAttributes,
+			props.attributes
+			);
+			migrateBorderAttributes( 'checkBoxToggle', {
+				label: 'inputborderWidth',
+				value: inputborderWidth,
+			}, {
+				label: 'inputborderRadius',
+				value: inputborderRadius
+			}, {
+				label: 'inputborderColor',
+				value: inputborderColor
+			}, {
+				label: 'inputborderHoverColor',
+				value: inputborderHoverColor
+			},{
+				label: 'inputborderStyle',
+				value: inputborderStyle
+			},
+			props.setAttributes,
+			props.attributes
+			);
+		}
+		if( submitborderWidth || submitborderRadius || submitborderColor || submitborderHColor || submitborderStyle ){
+			migrateBorderAttributes( 'btn', {
+				label: 'submitborderWidth',
+				value: submitborderWidth,
+			}, {
+				label: 'submitborderRadius',
+				value: submitborderRadius
+			}, {
+				label: 'submitborderColor',
+				value: submitborderColor
+			}, {
+				label: 'submitborderHColor',
+				value: submitborderHColor
+			},{
+				label: 'submitborderStyle',
+				value: submitborderStyle
+			},
+			props.setAttributes,
+			props.attributes
+			);
+		}
 	}, [] );
 
 	useEffect( () => {
+
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-style-forms-' + props.clientId.substr( 0, 8 ), blockStyling );
@@ -98,6 +216,12 @@ const UAGBFormsEdit = ( props ) => {
 	    const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-style-forms-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
+
+		const id = props.clientId
+		window.addEventListener( 'load', renderReadyClasses( id ) )
+
 	}, [deviceType] );
 
 	const blockVariationPickerOnSelect = useCallback(
@@ -139,10 +263,10 @@ const UAGBFormsEdit = ( props ) => {
 			formscope = mainDiv.getElementsByClassName( 'uagb-forms__outer-wrap' )
 		} else {
 			mainDiv = document.getElementById( 'block-' + id )
-			formscope = mainDiv.getElementsByClassName( 'uagb-forms__outer-wrap' )
+			formscope = mainDiv?.getElementsByClassName( 'uagb-forms__outer-wrap' )
 		}
 
-		if ( null !== formscope[ 0 ] && undefined !== formscope[ 0 ] ) {
+		if ( formscope && formscope[ 0 ] ) {
 			const editorwrap = formscope[ 0 ].children;
 			const formInnerWrap = editorwrap[ 0 ].children;
 			const editorBlockWrap = formInnerWrap[ 0 ].getElementsByClassName(
@@ -197,12 +321,13 @@ const UAGBFormsEdit = ( props ) => {
 			}
 		}
 	} );
-
+const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/form.png`;
 	if ( ! hasInnerBlocks ) {
 		return (
 			<>
+			{ props.attributes.isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 				<__experimentalBlockVariationPicker
-					icon={ UAGB_Block_Icons.columns }
+					icon={ UAGB_Block_Icons.forms }
 					label={ uagb_blocks_info.blocks[ 'uagb/forms' ].title }
 					instructions={ __(
 						'Select a variation to start with.',
@@ -215,16 +340,19 @@ const UAGBFormsEdit = ( props ) => {
 					}
 					className="uagb-forms-variations"
 				/>
+	}
 			</>
 		);
 	}
 
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
+
+						<>
+			<Settings parentProps={ props } />
 				<Render parentProps={ props } />
-			</Suspense>
+			</>
+
 		</>
 	);
 };

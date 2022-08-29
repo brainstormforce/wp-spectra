@@ -1,20 +1,18 @@
 /**
  * External dependencies
  */
-import React, { useEffect, lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+
+import React, { useEffect,    } from 'react';
+
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+
 // Import css for timeline.
 import contentTimelineStyle from '.././inline-styles';
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-timeline/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/post-timeline/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 import { withSelect } from '@wordpress/data';
 
@@ -27,11 +25,8 @@ const PostTimelineComponent = ( props ) => {
 		props.setAttributes( { block_id: props.clientId } );
 
 		const {
-			verticalSpace,
 			horizontalSpace,
-			topMargin,
 			rightMargin,
-			bottomMargin,
 			leftMargin,
 			bgPadding,
 			topPadding,
@@ -40,7 +35,11 @@ const PostTimelineComponent = ( props ) => {
 			leftPadding,
 			contentPadding,
 			ctaBottomSpacing,
-			headTopSpacing
+			headTopSpacing,
+			timelinAlignment,
+			stack,
+			timelinAlignmentTablet,
+			timelinAlignmentMobile
 		} = props.attributes;
 
 		if ( bgPadding ) {
@@ -59,19 +58,12 @@ const PostTimelineComponent = ( props ) => {
 		}
 
 		if ( contentPadding ){
-			if ( ! ctaBottomSpacing ) {
+			if ( isNaN( ctaBottomSpacing ) ) {
 				props.setAttributes( { ctaBottomSpacing: contentPadding } );
 			}
-			if ( ! headTopSpacing ) {
+
+			if ( isNaN( headTopSpacing ) ) {
 				props.setAttributes( { headTopSpacing: contentPadding } );
-			}
-		}
-		if ( verticalSpace ) {
-			if ( ! topMargin ) {
-				props.setAttributes( { topMargin: verticalSpace } );
-			}
-			if ( ! bottomMargin ) {
-				props.setAttributes( { bottomMargin: verticalSpace } );
 			}
 		}
 		if ( horizontalSpace ) {
@@ -81,7 +73,30 @@ const PostTimelineComponent = ( props ) => {
 			if ( ! leftMargin ) {
 				props.setAttributes( { leftMargin: horizontalSpace } );
 			}
+
 		}
+
+		if( timelinAlignment ) {
+            if( 'none' === stack ) {
+                if( undefined === timelinAlignmentTablet ) {
+                    props.setAttributes( { timelinAlignmentTablet: timelinAlignment } );
+                }
+                if( undefined === timelinAlignmentMobile ) {
+                    props.setAttributes( { timelinAlignmentMobile: timelinAlignment } );
+                }
+            } else {
+                if( undefined === timelinAlignmentTablet && 'tablet' === stack ) {
+                    props.setAttributes( { timelinAlignmentTablet: 'left' } );
+                    props.setAttributes( { timelinAlignmentMobile: 'left' } );
+                }
+
+                if( undefined === timelinAlignmentMobile && 'mobile' === stack ) {
+                    props.setAttributes( { timelinAlignmentMobile: 'left' } );
+                    props.setAttributes( { timelinAlignmentTablet: timelinAlignment } );
+                }
+            }
+        }
+
 	}, [] );
 
 	useEffect( () => {
@@ -93,24 +108,22 @@ const PostTimelineComponent = ( props ) => {
 			detail: {},
 		} );
 		document.dispatchEvent( loadPostTimelineEditor );
-	}, [ props ] );
+	}, [ props, deviceType ] );
 
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-	    const blockStyling = contentTimelineStyle( props );
-
-        addBlockEditorDynamicStyles( 'uagb-timeline-style-' + props.clientId, blockStyling );
+		scrollBlockToView();
 	}, [deviceType] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
+					<>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
-
 export default withSelect( ( select, props ) => {
 	const {
 		categories,
@@ -121,6 +134,8 @@ export default withSelect( ( select, props ) => {
 		taxonomyType,
 		excludeCurrentPost,
 	} = props.attributes;
+
+	const postsToShowFallback = getFallbackNumber( postsToShow, 'postsToShow', 'post-timeline' );
 	const { getEntityRecords } = select( 'core' );
 
 	const allTaxonomy = uagb_blocks_info.all_taxonomy;
@@ -147,11 +162,11 @@ export default withSelect( ( select, props ) => {
 	const latestPostsQuery = {
 		order,
 		orderby: orderBy,
-		per_page: postsToShow,
+		per_page: postsToShowFallback,
 	};
 
 	if ( excludeCurrentPost ) {
-		latestPostsQuery.exclude = select( 'core/block-editor' ).getCurrentPostId();
+		latestPostsQuery.exclude = select( 'core/editor' ).getCurrentPostId();
 	}
 	const category = [];
 	const temp = parseInt( categories );

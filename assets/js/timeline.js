@@ -12,6 +12,7 @@ function uagbTimelineInit() {
 	} else {
 		mainDiv = document.querySelectorAll( '.uagb-timeline' );
 	}
+
 	const timeline = mainDiv;
 	if ( timeline.length === 0 ) {
 		return;
@@ -27,7 +28,9 @@ function uagbTimelineInit() {
 		const timelineStartIcon = iconClass[0];
 		const timelineEndIcon = iconClass[iconClass.length - 1];
 
-		lineOuter.style.top = timelineStartIcon?.offsetTop + 'px';
+		setTimeout( () => {
+			lineOuter.style.top = timelineStartIcon?.offsetTop + 'px';
+		}, 300 );
 		const timelineCardHeight = cardLast?.offsetHeight;
 
 		if ( content.classList.contains( 'uagb-timeline__arrow-center' ) ) {
@@ -64,11 +67,13 @@ function uagbTimelineInit() {
 
 		const startFlag = timelineStartIcon?.getBoundingClientRect()?.top +  window?.scrollY - ( window?.innerHeight - ( window?.innerHeight / 3 ) );
 
+
 		if ( startFlag <  document?.documentElement?.scrollTop ) {
 			const tscrollPerc = ( ( ( document?.documentElement?.scrollTop - startFlag ) / totalTimelineLineHeight ) * 100 );
 			const percHeight = ( totalTimelineLineHeight / 100 ) * tscrollPerc;
 
 			if ( percHeight < totalTimelineLineHeight + 60 ) {
+
 				lineInner.style.height = percHeight + 'px';
 			}
 		}
@@ -119,5 +124,79 @@ function uagbTimelineInit() {
 				);
 			}
 		}
+	}
+}
+
+// eslint-disable-next-line no-unused-vars
+function UAGBTimelineClasses ( attributes, id ) {
+
+	const timeline = document.querySelectorAll( id );
+
+	if ( timeline.length === 0 ) {
+		return;
+	}
+
+	const deviceWidth = Math.max( window.screen.width, window.innerWidth );
+
+	for ( const content of timeline ) {
+
+		content.classList.remove( 'uagb-timeline__left-block', 'uagb-timeline__right-block','uagb-timeline__center-block' );
+
+		let device = '';
+
+		if ( deviceWidth <= uagb_timeline_data.mobile_breakpoint ) {
+			device = 'Mobile';
+		} else if( deviceWidth <= uagb_timeline_data.tablet_breakpoint ) {
+			device = 'Tablet';
+		}
+
+		if( 'left' === attributes['timelinAlignment' + device ] ) {
+			content.classList.add( 'uagb-timeline__left-block' );
+		} else if ( 'right' === attributes['timelinAlignment' + device ] ) {
+			content.classList.add( 'uagb-timeline__right-block' );
+		} else {
+			content.classList.add( 'uagb-timeline__center-block' );
+		}
+
+		let timelineChild  = content.querySelectorAll( '.wp-block-uagb-content-timeline-child' );
+		let childIndex = 0;
+
+		if( 0 === timelineChild.length ) {
+			timelineChild =  content.querySelectorAll( '.uagb-timeline__field' );
+		}
+
+		for ( const child of timelineChild ) {
+
+			child.classList.remove( 'uagb-timeline__left', 'uagb-timeline__right' );
+			const timelineMarker = child.querySelectorAll( '.uagb-timeline__marker' )[0];
+			timelineMarker.classList.remove( 'uagb-timeline__left', 'uagb-timeline__right' );
+
+			const timeLineEventInner = child.querySelectorAll( '.uagb-timeline__events-inner-new' )[0];
+
+			timeLineEventInner.classList.remove( 'uagb-timeline__day-right', 'uagb-timeline__day-left' );
+
+			if( 'left' === attributes['timelinAlignment' + device ] ) {
+				child.classList.add( 'uagb-timeline__left' );
+				timelineMarker.classList.add( 'uagb-timeline__left' );
+				timeLineEventInner.classList.add( 'uagb-timeline__day-left' );
+			} else if ( 'right' === attributes['timelinAlignment' + device ] ) {
+				child.classList.add( 'uagb-timeline__right' );
+				timelineMarker.classList.add( 'uagb-timeline__left' );
+				timeLineEventInner.classList.add( 'uagb-timeline__day-right' );
+			} else if( 'center' === attributes['timelinAlignment' + device ] ) {
+				if ( childIndex % 2 === 0 ) {
+					child.classList.add( 'uagb-timeline__right' );
+					timelineMarker.classList.add( 'uagb-timeline__right' );
+					timeLineEventInner.classList.add( 'uagb-timeline__day-right' );
+				} else {
+					child.classList.add( 'uagb-timeline__left' );
+					timelineMarker.classList.add( 'uagb-timeline__left' );
+					timeLineEventInner.classList.add( 'uagb-timeline__day-left' );
+				}
+			}
+
+			childIndex++;
+		}
+
 	}
 }

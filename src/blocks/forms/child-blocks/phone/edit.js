@@ -2,15 +2,11 @@
  * BLOCK: Forms - Phone - Edit
  */
 
-import React, { lazy, useEffect, Suspense } from 'react';
+import React, {   useEffect,  } from 'react';
 
-import lazyLoader from '@Controls/lazy-loader';
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/form/phone-settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form/phone-render" */ './render' )
-);
+
+import Settings from './settings';
+import Render from './render';
 
 const UAGBFormsPhoneEdit = ( props ) => {
 	useEffect( () => {
@@ -28,12 +24,18 @@ const UAGBFormsPhoneEdit = ( props ) => {
 		document.head.appendChild( $style );
 	}, [] );
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/form-phone.svg`;
+
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } />
-			</Suspense>
+			{ props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+
+							<>
+			<Settings parentProps={ props } />
+					<Render parentProps={ props } />
+			</>
+
+			) }
 		</>
 	);
 };
