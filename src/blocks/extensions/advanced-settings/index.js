@@ -65,7 +65,7 @@ const UserConditionOptions = ( props ) => {
 						}
 						options={ [
 							{ value: '', label: __( 'None' ) },
-							{ value: 'iphone', label: __( 'IOS' ) },
+							{ value: 'iphone', label: __( 'iOS' ) },
 							{ value: 'android', label: __( 'Android' ) },
 							{ value: 'windows', label: __( 'Windows' ) },
 							{ value: 'open_bsd', label: __( 'OpenBSD' ) },
@@ -86,7 +86,6 @@ const UserConditionOptions = ( props ) => {
 						}
 						options={ [
 							{ value: '', label: __( 'None' ) },
-							{ value: 'ie', label: __( 'Internet Explorer' ) },
 							{
 								value: 'firefox',
 								label: __( 'Mozilla Firefox' ),

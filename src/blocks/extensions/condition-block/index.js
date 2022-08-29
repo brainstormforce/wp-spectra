@@ -19,7 +19,7 @@ const UserConditionOptions = ( props ) => {
     return(
         <>
             <SelectControl
-				label={ __( 'Display Conditions' ) }
+				label={ __( 'Display Conditions ( Core )' ) }
 				value={ UAGDisplayConditions }
 				onChange={ ( value ) => setAttributes( { UAGDisplayConditions: value } ) }
 				options={ [
@@ -52,7 +52,7 @@ const UserConditionOptions = ( props ) => {
                         onChange={ ( value ) => setAttributes( { UAGSystem: value } ) }
                         options={ [
                             { value: '', label: __( 'None' ) },
-                            { value: 'iphone', label: __( 'IOS' ) },
+                            { value: 'iphone', label: __( 'iOS' ) },
                             { value: 'android', label: __( 'Android' ) },
                             { value: 'windows', label: __( 'Windows' ) },
                             { value: 'open_bsd', label: __( 'OpenBSD' ) },
@@ -71,7 +71,6 @@ const UserConditionOptions = ( props ) => {
                         onChange={ ( value ) => setAttributes( { UAGBrowser: value } ) }
                         options={ [
                             { value: '', label: __( 'None' ) },
-                            { value: 'ie', label: __( 'Internet Explorer' ) },
                             { value: 'firefox', label: __( 'Mozilla Firefox' ) },
                             { value: 'chrome', label: __( 'Google Chrome' ) },
                             { value: 'opera_mini', label: __( 'Opera Mini' ) },
@@ -107,7 +106,7 @@ const UserResponsiveConditionOptions = ( props ) => {
 
     return(
         <>
-			<p className="components-base-control__label">{ __( 'Responsive Conditions', 'ultimate-addons-for-gutenberg' ) }</p>
+			<p className="components-base-control__label">{ __( 'Responsive Conditions ( Core )', 'ultimate-addons-for-gutenberg' ) }</p>
 			<>
 				<ToggleControl
 					label={ __( 'Hide on Desktop' )}
