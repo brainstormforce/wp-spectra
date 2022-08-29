@@ -949,7 +949,7 @@ function styling( props ) {
 			),
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
 		},
-		' .uagb-post__cta a': {
+		' .uagb-post__inner-wrap .uagb-post__cta .uagb-text-link': {
 			'font-size': generateCSSUnit(
 				ctaFontSizeTablet,
 				ctaFontSizeType
