@@ -166,6 +166,9 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 == Changelog ==
 
+= 2.0.8 - MONDAY, 29th AUGUST 2022 =
+* Fix: Image - Box shadow not applying to a valid element.
+
 = 2.0.7 - FRIDAY, 26th AUGUST 2022 =
 * Improvement: Added Legacy Labels in the Editor Block Inserter.
 * Improvement: Updated the design of inactive block/extension tabs in the admin dashboard.
