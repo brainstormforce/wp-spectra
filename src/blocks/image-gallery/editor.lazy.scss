@@ -4,63 +4,6 @@
 
 /* stylelint-disable at-rule-no-unknown */
 
-// This Mixin Forces an Element to it's Original Dimensions.
-@mixin forceSizeAuto {
-	width: auto !important;
-	height: auto !important;
-}
-
-// This Mixin Forces an Element to 100% of the Parent.
-@mixin forceSize100 {
-	width: 100% !important;
-	height: 100% !important;
-}
-
-
-// This Mixin is used for Tiled and Masonry in the Editor Responsive Modes.
-@mixin isotopeIframeHandlers {
-	height: initial !important;
-	display: grid; // Columns handled in Dynamic Styling.
-	grid-auto-flow: dense;
-
-	.spectra-image-gallery__media-wrapper {
-
-		@include forceSizeAuto();
-		aspect-ratio: 1;
-
-		&--wide {
-			grid-column: span 2;
-			aspect-ratio: 2/1;
-
-			.spectra-image-gallery__media--tiled-wide {
-
-				@include forceSize100();
-			}
-		}
-
-		&--tall {
-			grid-row: span 2;
-			aspect-ratio: 1/2;
-
-			.spectra-image-gallery__media--tiled-tall {
-
-				@include forceSize100();
-			}
-		}
-
-		&--focus {
-			grid-row: span 2;
-			grid-column: span 2;
-		}
-
-		.spectra-image-gallery__media--masonry,
-		.spectra-image-gallery__media-thumbnail--masonry {
-
-			@include forceSize100();
-		}
-	}
-}
-
 .spectra-image-gallery-init {
 
 	&-wrapper {
@@ -97,29 +40,5 @@
 			width: 3em;
 			height: 3em;
 		}
-	}
-}
-
-// Applies only for the Tiled and Masonry Layouts in the Responsive Gutenberg Editor.
-.uagb-editor-preview-mode-tablet,
-.uagb-editor-preview-mode-mobile {
-
-	.spectra-image-gallery__layout--masonry {
-
-		@include isotopeIframeHandlers();
-	}
-
-	.spectra-image-gallery__layout--tiled {
-
-		@include isotopeIframeHandlers();
-	}
-}
-
-// Applies only in theme builder 2022.
-.editor-styles-wrapper .is-root-container.edit-site-block-editor__block-list.wp-site-blocks {
-
-	.spectra-image-gallery__layout--masonry,
-	.spectra-image-gallery__layout--tiled {
-		height: initial !important;
 	}
 }

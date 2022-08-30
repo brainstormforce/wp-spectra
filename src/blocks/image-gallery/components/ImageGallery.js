@@ -155,6 +155,21 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		gridImageGapUnitMob,
 	] );
 
+	// Delayed Load Special Tile Selectors when Device Type is Changed.
+	useEffect( () => {
+		setTimeout( () => {
+			if ( 'tiled' === feedLayout ) {
+				tileSizer.current.style.display = 'initial';
+				setAttributes( { tileSize: Math.round( tileSizer.current.getBoundingClientRect().width ) } );
+				imagesLoaded( tiledImages.current ).on( 'progress', ( theInstance, theImage ) => {
+					if ( generateSpecialTiles && theImage.isLoaded ){
+						createSpecialTile( theImage.img );
+					}
+				} );
+			}
+		}, 250 );
+	}, [ deviceType	] );
+
 	// Remove the Tile Sizer when the size is acquired.
 	useEffect( () => {
 		setTimeout( () => {
