@@ -172,6 +172,7 @@ const ResponsiveConditionOptions = ( props ) => {
 				onChange={ () =>
 					setAttributes( {
 						UAGHideDesktop: ! attributes.UAGHideDesktop,
+						UAGDisplayConditions: 'responsiveVisibility'
 					} )
 				}
 			/>
@@ -181,6 +182,7 @@ const ResponsiveConditionOptions = ( props ) => {
 				onChange={ () =>
 					setAttributes( {
 						UAGHideTab: ! attributes.UAGHideTab,
+						UAGDisplayConditions: 'responsiveVisibility'
 					} )
 				}
 			/>
@@ -190,6 +192,7 @@ const ResponsiveConditionOptions = ( props ) => {
 				onChange={ () =>
 					setAttributes( {
 						UAGHideMob: ! attributes.UAGHideMob,
+						UAGDisplayConditions: 'responsiveVisibility'
 					} )
 				}
 			/>
@@ -206,8 +209,10 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		zIndex,
 		zIndexTablet,
 		zIndexMobile,
+		UAGDisplayConditions
 	} = attributes;
 
+	if ( 'responsiveVisibility' === UAGDisplayConditions ) {
 		if ( UAGHideDesktop ) {
 			extraProps.className = classnames( extraProps.className, 'uag-hide-desktop' );
 		}
@@ -225,7 +230,8 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 			extraProps.className = classnames( extraProps.className, 'uag-blocks-common-selector' );
 			extraProps.style = {'--z-index-desktop': zIndex + ';', '--z-index-tablet': zIndexTablet + ';', '--z-index-mobile': zIndexMobile + ';'}
 		}
-
+	}
+	
 	return extraProps;
 }
 
