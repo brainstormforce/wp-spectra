@@ -4,7 +4,6 @@ import { Transition } from '@headlessui/react'
 import { CheckCircleIcon } from '@heroicons/react/outline'
 import { XIcon } from '@heroicons/react/solid'
 import { useSelector, useDispatch } from 'react-redux';
-import { __ } from '@wordpress/i18n';
 
 export default function SettingsSavedNotification() {
 
@@ -14,12 +13,12 @@ export default function SettingsSavedNotification() {
 
   useEffect( () => {
 
-	if ( true === settingsSavedNotification ) {
-		setTimeout( ()=>{
-			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: false } );
-		}, 2000 );
-	}
-}, [settingsSavedNotification] );
+    if ( '' !== settingsSavedNotification ) {
+      setTimeout( ()=>{
+        dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: '' } );
+      }, 2000 );
+    }
+  }, [settingsSavedNotification] );
 
   return (
     <>
@@ -31,7 +30,7 @@ export default function SettingsSavedNotification() {
         <div className="w-full flex flex-col items-center space-y-4 sm:items-end">
           {/* Notification panel, dynamically insert this into the live region when it needs to be displayed */}
           <Transition
-            show={settingsSavedNotification}
+            show={ '' === settingsSavedNotification ? false : true }
             as={Fragment}
             enter="transform ease-out duration-300 transition"
             enterFrom="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
@@ -47,13 +46,13 @@ export default function SettingsSavedNotification() {
                     <CheckCircleIcon className="h-6 w-6 text-green-400" aria-hidden="true" />
                   </div>
                   <div className="ml-3 w-0 flex-1 pt-0.5">
-                    <p className="text-sm font-medium text-gray-900">{__( 'Successfully saved!', 'ultimate-addons-for-gutenberg' )}</p>
+                    <p className="text-sm font-medium text-gray-900">{ settingsSavedNotification }</p>
                   </div>
                   <div className="ml-4 flex-shrink-0 flex">
-                    <button
+                  <button
                       className="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       onClick={() => {
-                        dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: false } );
+                        dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: '' } );
                       }}
                     >
                       <span className="sr-only">Close</span>
