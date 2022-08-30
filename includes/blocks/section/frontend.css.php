@@ -122,7 +122,7 @@ $selectors = array(
 	),
 );
 
-$selectors[' .uagb-section__overlay'] = $overall_border_css;
+$selectors[' > .uagb-section__overlay'] = $overall_border_css;
 
 if ( 'video' === $bg_type ) {
 	if ( 'color' === $overlay_type ) {
@@ -180,7 +180,7 @@ $m_selectors = array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingMobile'], $attr['mobilePaddingType'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPaddingMobile'], $attr['mobilePaddingType'] ),
 	),
-	' .uagb-section__overlay' => $overall_border_css_mobile,
+	' > .uagb-section__overlay' => $overall_border_css_mobile,
 );
 
 $t_selectors                                      = array(
@@ -190,7 +190,7 @@ $t_selectors                                      = array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingTablet'], $attr['tabletPaddingType'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPaddingTablet'], $attr['tabletPaddingType'] ),
 	),
-	' .uagb-section__overlay' => $overall_border_css_tablet,
+	' > .uagb-section__overlay' => $overall_border_css_tablet,
 );
 $m_selectors['.uagb-section__wrap']['margin-top'] = UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['mobileMarginType'] );
 $m_selectors['.uagb-section__wrap']['margin-bottom'] = UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['mobileMarginType'] );
