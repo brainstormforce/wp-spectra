@@ -76,7 +76,7 @@ $selectors = array(
 	' .uagb-toc__list-wrap li a'                          => array(
 		'color' => $attr['linkColor'],
 	),
-	' .uagb-toc__wrap .uagb-toc__title-wrap'                              => array(
+	' .uagb-toc__wrap .uagb-toc__title-wrap'              => array(
 		'justify-content' => $attr['align'],
 		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
 	),
