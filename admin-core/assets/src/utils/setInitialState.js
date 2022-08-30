@@ -8,7 +8,7 @@ const setInitialState = ( store ) => {
             initialStateSetFlag : true,
             activeBlocksFilterTab : 'all',
             activeSettingsNavigationTab : 'global-settings',
-			settingsSavedNotification: false,
+			settingsSavedNotification: '',
             blocksStatuses : data.blocks_activation_and_deactivation,
             enableFileGeneration : data.enable_file_generation,
             enableTemplates : data.enable_templates_button,
