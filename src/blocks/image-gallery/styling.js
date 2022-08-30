@@ -343,7 +343,16 @@ function styling( props ) {
 				gridImageGapFallback,
 				gridImageGapUnit
 			),
+			'grid-auto-rows': generateCSSUnit( tileSize, 'px' ),
 		},
+		// ' .spectra-image-gallery__layout--tiled .spectra-image-gallery__media--tiled-wide': {
+		// 	'width': `calc( ( ${ tileSize }px * 2 ) + ${ generateCSSUnit( gridImageGap, gridImageGapUnit ) } )`,
+		// 	'height': generateCSSUnit( tileSize, 'px' ),
+		// },
+		// ' .spectra-image-gallery__layout--tiled .spectra-image-gallery__media--tiled-tall': {
+		// 	'width': generateCSSUnit( tileSize, 'px' ),
+		// 	'height': `calc( ( ${ tileSize }px * 2 ) + ${ generateCSSUnit( gridImageGap, gridImageGapUnit ) } )`,
+		// },
 		' .spectra-image-gallery__media': {
 			'border-radius': generateBorderRadius(
 				imageBorderRadiusUnit,
@@ -534,6 +543,14 @@ function styling( props ) {
 				gridImageGapUnitTab
 			),
 		},
+		// ' .spectra-image-gallery__layout--tiled .spectra-image-gallery__media--tiled-wide': {
+		// 	'width': `calc( ( ${ tileSize }px * 2 ) + ${ generateCSSUnit( gridImageGapTabFallback, gridImageGapUnitTab ) } )`,
+		// 	'height': generateCSSUnit( tileSize, 'px' ),
+		// },
+		// ' .spectra-image-gallery__layout--tiled .spectra-image-gallery__media--tiled-tall': {
+		// 	'width': generateCSSUnit( tileSize, 'px' ),
+		// 	'height': `calc( ( ${ tileSize }px * 2 ) + ${ generateCSSUnit( gridImageGapTabFallback, gridImageGapUnitTab ) } )`,
+		// },
 		' .spectra-image-gallery__media': {
 			'border-radius': generateBorderRadius(
 				imageBorderRadiusUnitTablet,
@@ -664,6 +681,14 @@ function styling( props ) {
 				gridImageGapUnitMob
 			),
 		},
+		// ' .spectra-image-gallery__layout--tiled .spectra-image-gallery__media--tiled-wide': {
+		// 	'width': `calc( ( ${ tileSize }px * 2 ) + ${ generateCSSUnit( gridImageGapMobFallback, gridImageGapUnitMob ) } )`,
+		// 	'height': generateCSSUnit( tileSize, 'px' ),
+		// },
+		// ' .spectra-image-gallery__layout--tiled .spectra-image-gallery__media--tiled-tall': {
+		// 	'width': generateCSSUnit( tileSize, 'px' ),
+		// 	'height': `calc( ( ${ tileSize }px * 2 ) + ${ generateCSSUnit( gridImageGapMobFallback, gridImageGapUnitMob ) } )`,
+		// },
 		' .spectra-image-gallery__media': {
 			'border-radius': generateBorderRadius(
 				imageBorderRadiusUnitMobile,
@@ -729,8 +754,7 @@ function styling( props ) {
 		},
 	};
 
-	// Background Effect based styling
-
+	// Background Effect based styling.
 	switch( captionBackgroundEffect ){
 		case 'none':
 			selectors[ ' .spectra-image-gallery__media-thumbnail' ] = {
@@ -783,8 +807,7 @@ function styling( props ) {
 		};
 	}
 
-	// Carousel based styling
-
+	// Carousel based styling.
 	if ( feedLayout === 'carousel' ) {
 		if ( carouselSquares ){
 			selectors[ ' .spectra-image-gallery__media--carousel' ] = {
@@ -798,14 +821,8 @@ function styling( props ) {
 			};
 		}
 	}
-	else {
-		// selectors[ ' .spectra-image-gallery__iso-ref-wrapper' ] = {
-		// 	'overflow': 'auto',
-		// };
-	}
 
-	// Masonry based styling
-
+	// Masonry based styling.
 	if ( feedLayout === 'masonry' && feedPagination && ! paginateUseLoader ){ 
 		selectors[ ' .spectra-image-gallery__control-wrapper' ] = {
 			'min-height': '58px',
@@ -816,8 +833,7 @@ function styling( props ) {
 		};
 	}
 
-	// New Zoom Effect on Hover
-
+	// New Zoom Effect on Hover.
 	switch ( imageZoomType ) {
 		case 'zoom-in':
 			if( imageEnableZoom ){

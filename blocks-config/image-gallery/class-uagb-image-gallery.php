@@ -778,7 +778,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 						ob_start();
 						?>
 							<div class="spectra-image-gallery spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?> spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-<?= $attributes[ 'columnsDesk' ] ?> spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-tab-<?= $attributes[ 'columnsTab' ] ?> spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-mob-<?= $attributes[ 'columnsMob' ] ?>">
-								<div class="spectra-image-gallery__media-spacer"></div>
+								<div class="spectra-image-gallery__media-sizer"></div>
 								<?= $allMedia ?>
 							</div>
 						<?php
@@ -1170,13 +1170,13 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 						if ( scope.children[0].classList.contains( 'spectra-image-gallery__layout--tiled' ) ) {
 							console.log('<?= json_encode( $attr[ 'focusList' ] ); ?>');
 							const element = scope.querySelector( '.spectra-image-gallery__layout--tiled' );
-							const tileSize = scope.querySelector( '.spectra-image-gallery__media-spacer' ).getBoundingClientRect().width;
+							const tileSize = scope.querySelector( '.spectra-image-gallery__media-sizer' ).getBoundingClientRect().width;
 							const isotope = new Isotope( element, {
 								itemSelector: '.spectra-image-gallery__media-wrapper',
 								layoutMode: 'masonry',
 								// percentPosition: true,
 								masonry: {
-									columnWidth: '.spectra-image-gallery__media-spacer',
+									columnWidth: '.spectra-image-gallery__media-sizer',
 									// horizontalOrder: true,
 								},
 							} );

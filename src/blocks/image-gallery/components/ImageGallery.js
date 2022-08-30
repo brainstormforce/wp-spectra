@@ -14,6 +14,7 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	const blockName = name.replace( 'uagb/', '' );
 	const {
+		tileSize,
 		focusList,
 
 		mediaGallery,
@@ -86,8 +87,10 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	const [ focusUpdate, setFocusUpdate ] = useState( false );
 	const slickCarousel = useRef( null );
 	const tiledImages = useRef( [] );
+	const tileSizer = useRef( null );
 	const deviceType = useDeviceType();
 
+	// Update the required properties when the Gallery is updated.
 	useEffect( () => {
 		// First check if media items selected are less than the column count currently used.
 		( mediaGallery.length < columnsDeskFallback ) && setAttributes( { columnsDesk: mediaGallery.length } );
@@ -116,6 +119,8 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	// Load Special Tile Selectors when needed.
 	useEffect( () => {
 		if ( 'tiled' === feedLayout ) {
+			tileSizer.current.style.display = 'initial';
+			setAttributes( { tileSize: Math.round( tileSizer.current.getBoundingClientRect().width ) } );
 			imagesLoaded( tiledImages.current ).on( 'progress', ( theInstance, theImage ) => {
 				if ( generateSpecialTiles && theImage.isLoaded ){
 					createSpecialTile( theImage.img );
@@ -129,7 +134,38 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		columnsDesk,
 		columnsTab,
 		columnsMob,
+		feedMarginTop,
+		feedMarginRight,
+		feedMarginBottom,
+		feedMarginLeft,
+		feedMarginTopTab,
+		feedMarginRightTab,
+		feedMarginBottomTab,
+		feedMarginLeftTab,
+		feedMarginTopMob,
+		feedMarginRightMob,
+		feedMarginBottomMob,
+		feedMarginLeftMob,
+		feedMarginUnit,
+		feedMarginUnitTab,
+		feedMarginUnitMob,
+		gridImageGap,
+		gridImageGapTab,
+		gridImageGapMob,
+		gridImageGapUnit,
+		gridImageGapUnitTab,
+		gridImageGapUnitMob,
 	] );
+
+	// Remove the Tile Sizer when the size is acquired.
+	useEffect( () => {
+		setTimeout( () => {
+			tileSizer.current.style.display = 'none';
+		}, 200 );
+	}, [
+		tileSize,
+	] );
+	
 
 	// Update the Focused Images based on the Focus List.
 	useEffect ( () => {
@@ -389,6 +425,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 						) }
 					>
 						{ renderImageLooper() }
+						<div className="spectra-image-gallery__media-sizer" ref={ tileSizer }></div>
 					</div>
 				);
 			case "carousel":
@@ -495,7 +532,8 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 					>
 						{ renderCaption( mediaObject ) }
 					</div>
-				) }
+				)
+			}
 		</>
 	);
 

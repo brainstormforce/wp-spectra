@@ -14,24 +14,10 @@
 	transition-duration: 0.2s;
 }
 
-// This Mixin Forces an Element to its Original Dimensions.
-@mixin forceSizeAuto {
-	width: auto !important;
-	height: auto !important;
-}
-
-// This Mixin Forces an Element to 100% of the Parent.
-@mixin forceSize100 {
-	width: 100% !important;
-	height: 100% !important;
-}
-
 // This Mixin Handles Special Tiles
 @mixin specialTiles {
 	
 	.spectra-image-gallery__media-wrapper {
-
-		@include forceSizeAuto();
 		position: relative;
 		overflow: hidden;
 		min-width: 0;
@@ -43,31 +29,15 @@
 
 	.spectra-image-gallery__media-wrapper--wide {
 		grid-column: span 2;
-
-		.spectra-image-gallery__media--tiled-wide {
-
-			@include forceSize100();
-		}
 	}
 
 	.spectra-image-gallery__media-wrapper--tall {
 		grid-row: span 2;
-
-		.spectra-image-gallery__media--tiled-tall {
-
-			@include forceSize100();
-		}
 	}
 
 	.spectra-image-gallery__media-wrapper--focus {
 		grid-row: span 2;
 		grid-column: span 2;
-
-		.spectra-image-gallery__media--tiled-wide,
-		.spectra-image-gallery__media--tiled-tall {
-
-			@include forceSize100();
-		}
 	}
 }
 
@@ -329,7 +299,15 @@
 			&-wide,
 			&-tall {
 				aspect-ratio: unset;
+				width: 100%;
+				height: 100%;
 			}
+		}
+
+		&-sizer {
+			// position: absolute;
+			aspect-ratio: 1;
+			background-color: rebeccapurple;
 		}
 
 		&-thumbnail {
