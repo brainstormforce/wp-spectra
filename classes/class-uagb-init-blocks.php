@@ -174,29 +174,12 @@ class UAGB_Init_Blocks {
 			return $block_content;
 		}
 
-		$browsers = array(
-			'firefox'    => 'Firefox',
-			'chrome'     => 'Chrome',
-			'opera_mini' => 'Opera Mini',
-			'opera'      => 'Opera',
-			'safari'     => 'Safari',
-			'edge'       => 'Edg',
-		);
-
 		$value = $block_attributes['UAGBrowser'];
 
-		$show = false;
+		$show       = false;
+		$user_agent = UAGB_Helper::get_browser_name( $_SERVER['HTTP_USER_AGENT'] );
 
-		if ( false !== strpos( $_SERVER['HTTP_USER_AGENT'], $browsers[ $value ] ) ) {
-			$show = true;
-
-			// Additional check for Chrome that returns Safari.
-			if ( 'safari' === $value || 'firefox' === $value ) {
-				if ( false !== strpos( $_SERVER['HTTP_USER_AGENT'], 'Chrome' ) ) {
-					$show = false;
-				}
-			}
-		}
+		$show = is_array( $value ) && ! empty( $value ) ? in_array( $user_agent, $value, true ) : $value === $user_agent;
 
 		return ( $show ) ? '' : $block_content;
 	}
