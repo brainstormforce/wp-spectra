@@ -19,6 +19,9 @@
 	outline: none;
 }
 
+.uag-rollback__dialog {
+	z-index: 99999;
+}
 // This Class Can Be Cleared Before Final Push.
 #uag-menu-page .uag-accordion {
 
