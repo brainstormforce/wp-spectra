@@ -167,6 +167,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 ## Changelog ##
 
 ### 2.0.8 - MONDAY, 29th AUGUST 2022 ###
+* Improvement: Updated Admin dashboard Stylings.
 * Fix: Image - Box shadow not applying to a valid element.
 * Fix: Post Carousel/Grid/Masonry - Inaccurate font size for 'Read More' link was displayed in the editor for tablet preview (when mobile and tablet font sizes were set).
 
