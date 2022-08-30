@@ -778,8 +778,8 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 						ob_start();
 						?>
 							<div class="spectra-image-gallery spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?> spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-<?= $attributes[ 'columnsDesk' ] ?> spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-tab-<?= $attributes[ 'columnsTab' ] ?> spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-mob-<?= $attributes[ 'columnsMob' ] ?>">
-								<div class="spectra-image-gallery__media-sizer"></div>
 								<?= $allMedia ?>
+								<div class="spectra-image-gallery__media-sizer"></div>
 							</div>
 						<?php
 						$allMedia = ob_get_clean();
@@ -1168,40 +1168,26 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 					const scope = document.querySelector( '.uagb-block-<?= $id; ?>' );
 					if ( scope ){
 						if ( scope.children[0].classList.contains( 'spectra-image-gallery__layout--tiled' ) ) {
-							console.log('<?= json_encode( $attr[ 'focusList' ] ); ?>');
 							const element = scope.querySelector( '.spectra-image-gallery__layout--tiled' );
-							const tileSize = scope.querySelector( '.spectra-image-gallery__media-sizer' ).getBoundingClientRect().width;
-							const isotope = new Isotope( element, {
-								itemSelector: '.spectra-image-gallery__media-wrapper',
-								layoutMode: 'masonry',
-								// percentPosition: true,
-								masonry: {
-									columnWidth: '.spectra-image-gallery__media-sizer',
-									// horizontalOrder: true,
-								},
-							} );
+							const tileSizer = scope.querySelector( '.spectra-image-gallery__media-sizer' );
+							element.style.gridAutoRows = `${ tileSizer.getBoundingClientRect().width }px`;
+							console.log( element.style );
 							imagesLoaded( element ).on( 'progress', ( theInstance, theImage ) => {
 								if ( theImage.isLoaded ){
 									const imageElement = theImage.img;
 									if( ! imageElement.parentElement.parentElement.classList.contains( 'spectra-image-gallery__media-wrapper--focus' ) ){
-										const wrapperElement = imageElement.parentElement.parentElement;
-										const mediaElement = imageElement.parentElement;
 										if ( imageElement.naturalWidth >= ( imageElement.naturalHeight * 2 ) - ( imageElement.naturalHeight / 2 ) ){
-											wrapperElement.style.width = `calc( ${ tileSize }px * 2 )`;
-											wrapperElement.style.height = `${ tileSize }px`;
-											mediaElement.style.width = `calc( ( ${ tileSize }px * 2 ) - ( <?= $attr[ 'gridImageGap' ] ?><?= $attr[ 'gridImageGapUnit' ] ?> * 2 ) )`;
-											mediaElement.style.height = `calc( ${ tileSize }px - ( <?= $attr[ 'gridImageGap' ] ?><?= $attr[ 'gridImageGapUnit' ] ?> * 2 ) )`;
+											imageElement.parentElement.parentElement.classList.add( 'spectra-image-gallery__media-wrapper--wide');
+											imageElement.parentElement.classList.add( 'spectra-image-gallery__media--tiled-wide');
 										}
 										else if ( imageElement.naturalHeight >= ( imageElement.naturalWidth * 2 ) - ( imageElement.naturalWidth / 2 ) ){
-											wrapperElement.style.height = `calc( ${ tileSize }px * 2 )`;
-											wrapperElement.style.width = `${ tileSize }px`;
-											mediaElement.style.height = `calc( ( ${ tileSize }px * 2 ) - ( <?= $attr[ 'gridImageGap' ] ?><?= $attr[ 'gridImageGapUnit' ] ?> * 2 ) )`;
-											mediaElement.style.width = `calc( ${ tileSize }px - ( <?= $attr[ 'gridImageGap' ] ?><?= $attr[ 'gridImageGapUnit' ] ?> * 2 ) )`;
+											imageElement.parentElement.parentElement.classList.add( 'spectra-image-gallery__media-wrapper--tall');
+											imageElement.parentElement.classList.add( 'spectra-image-gallery__media--tiled-tall');
 										}
 									}
-									isotope.layout();
 								}
 							} );
+							tileSizer.style.display = 'none';
 						}
 					}
 				} );

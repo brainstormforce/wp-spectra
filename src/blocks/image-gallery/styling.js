@@ -345,14 +345,6 @@ function styling( props ) {
 			),
 			'grid-auto-rows': generateCSSUnit( tileSize, 'px' ),
 		},
-		// ' .spectra-image-gallery__layout--tiled .spectra-image-gallery__media--tiled-wide': {
-		// 	'width': `calc( ( ${ tileSize }px * 2 ) + ${ generateCSSUnit( gridImageGap, gridImageGapUnit ) } )`,
-		// 	'height': generateCSSUnit( tileSize, 'px' ),
-		// },
-		// ' .spectra-image-gallery__layout--tiled .spectra-image-gallery__media--tiled-tall': {
-		// 	'width': generateCSSUnit( tileSize, 'px' ),
-		// 	'height': `calc( ( ${ tileSize }px * 2 ) + ${ generateCSSUnit( gridImageGap, gridImageGapUnit ) } )`,
-		// },
 		' .spectra-image-gallery__media': {
 			'border-radius': generateBorderRadius(
 				imageBorderRadiusUnit,
@@ -365,13 +357,6 @@ function styling( props ) {
 
 
 		// Thumbnail Selectors
-
-		// ' .spectra-image-gallery__media-thumbnail': {
-		// 	'border-radius': generateBorderRadius(
-		// 		imageBorderRadiusUnit,
-		// 		imageBorderRadius,
-		// 	),
-		// },
 		' .spectra-image-gallery__media-thumbnail-blurrer': {
 			'border-radius': generateBorderRadius(
 				imageBorderRadiusUnit,
@@ -521,10 +506,6 @@ function styling( props ) {
 				gridImageGapUnitTab
 			),
 		},
-		// This Class is required for the Editor Responsive Isotope Fix.
-		' .spectra-image-gallery__layout--masonry': {
-			'grid-template-columns': `repeat(${ columnsTabFallback }, 1fr)`,
-		},
 		' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper': {
 			'padding': generateSpacing(
 				gridImageGapUnitTab,
@@ -543,14 +524,6 @@ function styling( props ) {
 				gridImageGapUnitTab
 			),
 		},
-		// ' .spectra-image-gallery__layout--tiled .spectra-image-gallery__media--tiled-wide': {
-		// 	'width': `calc( ( ${ tileSize }px * 2 ) + ${ generateCSSUnit( gridImageGapTabFallback, gridImageGapUnitTab ) } )`,
-		// 	'height': generateCSSUnit( tileSize, 'px' ),
-		// },
-		// ' .spectra-image-gallery__layout--tiled .spectra-image-gallery__media--tiled-tall': {
-		// 	'width': generateCSSUnit( tileSize, 'px' ),
-		// 	'height': `calc( ( ${ tileSize }px * 2 ) + ${ generateCSSUnit( gridImageGapTabFallback, gridImageGapUnitTab ) } )`,
-		// },
 		' .spectra-image-gallery__media': {
 			'border-radius': generateBorderRadius(
 				imageBorderRadiusUnitTablet,
@@ -659,10 +632,6 @@ function styling( props ) {
 				gridImageGapUnitMob
 			),
 		},
-		// This Class is required for the Editor Responsive Isotope Fix.
-		' .spectra-image-gallery__layout--masonry': {
-			'grid-template-columns': `repeat(${ columnsMobFallback }, 1fr)`,
-		},
 		' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper': {
 			'padding': generateSpacing(
 				gridImageGapUnitMob,
@@ -681,14 +650,6 @@ function styling( props ) {
 				gridImageGapUnitMob
 			),
 		},
-		// ' .spectra-image-gallery__layout--tiled .spectra-image-gallery__media--tiled-wide': {
-		// 	'width': `calc( ( ${ tileSize }px * 2 ) + ${ generateCSSUnit( gridImageGapMobFallback, gridImageGapUnitMob ) } )`,
-		// 	'height': generateCSSUnit( tileSize, 'px' ),
-		// },
-		// ' .spectra-image-gallery__layout--tiled .spectra-image-gallery__media--tiled-tall': {
-		// 	'width': generateCSSUnit( tileSize, 'px' ),
-		// 	'height': `calc( ( ${ tileSize }px * 2 ) + ${ generateCSSUnit( gridImageGapMobFallback, gridImageGapUnitMob ) } )`,
-		// },
 		' .spectra-image-gallery__media': {
 			'border-radius': generateBorderRadius(
 				imageBorderRadiusUnitMobile,

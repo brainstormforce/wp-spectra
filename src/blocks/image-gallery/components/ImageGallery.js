@@ -5,8 +5,6 @@ import UAGB_Block_Icons from "@Controls/block-icons";
 import getMatrixAlignment from "@Controls/getMatrixAlignment";
 import Masonry from "react-masonry-component";
 import Slider from "react-slick";
-// import Isotope from "isotope-layout";
-import "/assets/js/isotope.min";
 import "/assets/js/imagesloaded.min";
 import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
@@ -161,7 +159,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	useEffect( () => {
 		setTimeout( () => {
 			tileSizer.current.style.display = 'none';
-		}, 200 );
+		}, 2000 );
 	}, [
 		tileSize,
 	] );
