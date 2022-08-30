@@ -128,13 +128,13 @@ $selectors = array(
 			$attr[ 'gridImageGapUnit' ]
 		),
 	),
-	'.spectra-image-gallery__layout--isogrid .spectra-image-gallery-media-wrapper' => array(
+	'.spectra-image-gallery__layout--isogrid .spectra-image-gallery__media-wrapper' => array(
 		'padding' => UAGB_Helper::get_css_value(
 			$attr[ 'gridImageGap' ] / 2,
 			$attr[ 'gridImageGapUnit' ]
 		),
 	),
-	'.spectra-image-gallery__layout--masonry .spectra-image-gallery-media-wrapper' => array(
+	'.spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper' => array(
 		'padding' => UAGB_Helper::get_css_value(
 			$attr[ 'gridImageGap' ],
 			$attr[ 'gridImageGapUnit' ]
@@ -143,39 +143,19 @@ $selectors = array(
 	'.spectra-image-gallery__layout--carousel' => array(
 		'margin' => '0px'
 	),
-	'.spectra-image-gallery__layout--carousel .spectra-image-gallery-media-wrapper' => array(
+	'.spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper' => array(
 		'padding' => UAGB_Helper::get_css_value(
 			$attr[ 'gridImageGap' ],
 			$attr[ 'gridImageGapUnit' ]
 		),
 	),
-	'.spectra-image-gallery__layout--tiled .spectra-image-gallery-media-wrapper' => array(
-		'padding' => UAGB_Helper::get_css_value(
+	'.spectra-image-gallery__layout--tiled' => array(
+		'grid-gap' => UAGB_Helper::get_css_value(
 			$attr[ 'gridImageGap' ],
-			$attr[ 'gridImageGapUnit' ],
+			$attr[ 'gridImageGapUnit' ]
 		),
 	),
-	'.spectra-image-gallery__layout--tiled .spectra-image-gallery-media-spacer' => array(
-		'width' => 'calc( ' . UAGB_Block_Helper::get_precise_percentage( $attr[ 'columnsDesk' ] ) . ' )',
-		'aspect-ratio' => 1,
-	),
-	// '.spectra-image-gallery__layout--tiled .spectra-image-gallery-media-wrapper--wide' => array(
-	// 	'width' => 'calc( ' . $attr[ 'tileSize' ] . 'px * 2 )',
-	// 	'height' => $attr[ 'tileSize' ] . 'px',
-	// ),
-	// '.spectra-image-gallery__layout--tiled .spectra-image-gallery-media-wrapper--tall' => array(
-	// 	'height' => 'calc( ' . $attr[ 'tileSize' ] . 'px * 2 )',
-	// 	'width' => $attr[ 'tileSize' ] . 'px',
-	// ),
-	// '.spectra-image-gallery__layout--tiled .spectra-image-gallery-media--tiled-wide' => array(
-	// 	'width' => 'calc( ( ' . $attr[ 'tileSize' ] . 'px * 2 ) - ( ' . UAGB_Block_Helper::generate_spacing( $attr[ 'gridImageGapUnit' ], $attr[ 'gridImageGap' ] ) . ' * 2 ) )',
-	// 	'height' => 'calc( ' . $attr[ 'tileSize' ] . 'px - ( ' . UAGB_Block_Helper::generate_spacing( $attr[ 'gridImageGapUnit' ], $attr[ 'gridImageGap' ] ) . ' * 2 ) )',
-	// ),
-	// '.spectra-image-gallery__layout--tiled .spectra-image-gallery-media--tiled-tall' => array(
-	// 	'height' => 'calc( ( ' . $attr[ 'tileSize' ] . 'px * 2 ) - ( ' . UAGB_Block_Helper::generate_spacing( $attr[ 'gridImageGapUnit' ], $attr[ 'gridImageGap' ] ) . ' * 2 ) )',
-	// 	'width' => 'calc( ' . $attr[ 'tileSize' ] . 'px - ( ' . UAGB_Block_Helper::generate_spacing( $attr[ 'gridImageGapUnit' ], $attr[ 'gridImageGap' ] ) . ' * 2 ) )',
-	// ),
-	'.spectra-image-gallery-media' => array(
+	'.spectra-image-gallery__media' => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
 			$attr[ 'imageBorderRadiusUnit' ],
 			$attr[ 'imageBorderTopLeftRadius' ],
@@ -187,7 +167,7 @@ $selectors = array(
 
 	// Thumbnail Selectors
 
-	'.spectra-image-gallery-media__thumbnail-blurrer' => array(
+	'.spectra-image-gallery__media-thumbnail-blurrer' => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
 			$attr[ 'imageBorderRadiusUnit' ],
 			$attr[ 'imageBorderTopLeftRadius' ],
@@ -208,7 +188,7 @@ $selectors = array(
 			'%'
 		),
 	),
-	'.spectra-image-gallery-media-wrapper:hover .spectra-image-gallery-media__thumbnail-blurrer' => array(
+	'.spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer' => array(
 		'opacity' => UAGB_Helper::get_css_value(
 			$attr[ 'captionBackgroundBlurOpacityHover' ],
 			'%'
@@ -217,13 +197,13 @@ $selectors = array(
 
 	// Caption Wrapper Selectors
 
-	'.spectra-image-gallery-media__thumbnail-caption-wrapper--overlay' => array(
+	'.spectra-image-gallery__media-thumbnail-caption-wrapper--overlay' => array(
 		'background-color' => $attr[ 'imageDisplayCaption' ] ? ( ( $attr[ 'captionVisibility' ] === 'hover' ) ? 'rgba(0,0,0,0)' : $attr[ 'captionBackgroundColor' ] ) : $attr[ 'overlayColor' ]
 	),
-	'.spectra-image-gallery-media-wrapper:hover .spectra-image-gallery-media__thumbnail-caption-wrapper--overlay' => array(
+	'.spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption-wrapper--overlay' => array(
 		'background-color' => $attr[ 'imageDisplayCaption' ] ? ( ( $attr[ 'captionVisibility' ] === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( $attr[ 'captionVisibility' ] === 'always' && $attr[ 'captionSeparateColors' ] ) ? $attr[ 'captionBackgroundColorHover' ] : $attr[ 'captionBackgroundColor' ] ) ) : $attr[ 'overlayColorHover' ],
 	),		
-	'.spectra-image-gallery-media__thumbnail-caption-wrapper--bar-inside' => array(
+	'.spectra-image-gallery__media-thumbnail-caption-wrapper--bar-inside' => array(
 		'-webkit-align-items' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 1, 'flex' ),
 		'align-items' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 1, 'flex' ),
 		'-webkit-justify-content' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 2, 'flex' ),
@@ -232,7 +212,7 @@ $selectors = array(
 	
 	// Caption Selectors
 
-	'.spectra-image-gallery-media__thumbnail-caption' => array(
+	'.spectra-image-gallery__media-thumbnail-caption' => array(
 		'color' => ( $attr[ 'captionVisibility' ] === 'hover' ) ? 'rgba(0,0,0,0)' : $attr[ 'captionColor' ],
 		'text-align' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 2 ),
 		'font-family' => $attr[ 'captionFontFamily' ] === 'Default' ? '' : $attr[ 'captionFontFamily' ],
@@ -250,7 +230,7 @@ $selectors = array(
 			$attr[ 'captionPaddingLeft' ],
 		),
 	),
-	'.spectra-image-gallery-media__thumbnail-caption--overlay' => array(
+	'.spectra-image-gallery__media-thumbnail-caption--overlay' => array(
 		'border-radius'           => UAGB_Block_Helper::generate_border_radius(
 			$attr[ 'imageBorderRadiusUnit' ],
 			$attr[ 'imageBorderTopLeftRadius' ],
@@ -263,7 +243,7 @@ $selectors = array(
 		'-webkit-justify-content' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 2, 'flex' ),
 		'justify-content'         => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 2, 'flex' ),
 	),
-	'.spectra-image-gallery-media__thumbnail-caption--bar-inside' => array_merge(
+	'.spectra-image-gallery__media-thumbnail-caption--bar-inside' => array_merge(
 		array(
 			'background-color' => ( $attr[ 'captionVisibility' ] === 'hover' ) ? 'rgba(0,0,0,0)' : $attr[ 'captionBackgroundColor' ],
 		),
@@ -272,21 +252,21 @@ $selectors = array(
 			'border-color' => ( $attr[ 'captionVisibility' ] === 'hover' ) ? 'rgba(0,0,0,0)' : $attr[ 'mainTitleBorderColor' ],
 		),
 	),
-	'.spectra-image-gallery-media-wrapper:hover .spectra-image-gallery-media__thumbnail-caption--bar-inside' => array(
+	'.spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption--bar-inside' => array(
 		'background-color' => ( $attr[ 'captionVisibility' ] === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( $attr[ 'captionVisibility' ] === 'always' && $attr[ 'captionSeparateColors' ] ) ? $attr[ 'captionBackgroundColorHover' ] : $attr[ 'captionBackgroundColor' ] ),
 		'border-color'     => ( $attr[ 'captionVisibility' ] === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( $attr[ 'captionVisibility' ] === 'always' && $attr[ 'captionSeparateColors' ] ) ? $attr[ 'mainTitleBorderHColor' ] : $attr[ 'mainTitleBorderColor' ] ),
 	),
-	'.spectra-image-gallery-media__thumbnail-caption--bar-outside' => array_merge(
+	'.spectra-image-gallery__media-thumbnail-caption--bar-outside' => array_merge(
 		array(
 			'background-color' => $attr[ 'captionBackgroundColor' ],
 		),
 		$main_title_border_css,
 	),
-	'.spectra-image-gallery-media-wrapper:hover .spectra-image-gallery-media__thumbnail-caption--bar-outside' => array(
+	'.spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption--bar-outside' => array(
 		'background-color' => $attr[ 'captionSeparateColors' ] ? $attr[ 'captionBackgroundColorHover' ] : $attr[ 'captionBackgroundColor' ],
 		'border-color'     => $attr[ 'captionSeparateColors' ] ? $attr[ 'mainTitleBorderHColor' ] : $attr[ 'mainTitleBorderColor' ],
 	),
-	'.spectra-image-gallery-media-wrapper:hover .spectra-image-gallery-media__thumbnail-caption' => array(
+	'.spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption' => array(
 		'color' => ( $attr[ 'captionVisibility' ] === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( $attr[ 'captionVisibility' ] === 'always' && $attr[ 'captionSeparateColors' ] ) ? $attr[ 'captionColorHover' ] : $attr[ 'captionColor' ] ),
 	),
 );
@@ -337,35 +317,31 @@ $t_selectors = array(
 			$attr[ 'gridImageGapUnitTab' ]
 		),
 	),
-	'.spectra-image-gallery__layout--isogrid .spectra-image-gallery-media-wrapper'  => array(
+	'.spectra-image-gallery__layout--isogrid .spectra-image-gallery__media-wrapper'  => array(
 		'padding' => UAGB_Helper::get_css_value(
 			$attr[ 'gridImageGapTab' ] / 2,
 			$attr[ 'gridImageGapUnitTab' ]
 		),
 	),
-	'.spectra-image-gallery__layout--masonry .spectra-image-gallery-media-wrapper'  => array(
+	'.spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper'  => array(
 		'padding' => UAGB_Helper::get_css_value(
 			$attr[ 'gridImageGapTab' ],
 			$attr[ 'gridImageGapUnitTab' ]
 		),
 	),
-	'.spectra-image-gallery__layout--carousel .spectra-image-gallery-media-wrapper' => array(
+	'.spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper' => array(
 		'padding' => UAGB_Block_Helper::generate_spacing(
 			$attr[ 'gridImageGapUnitTab' ],
 			$attr[ 'gridImageGapTab' ],
 		),
 	),
-	'.spectra-image-gallery__layout--tiled .spectra-image-gallery-media-wrapper'    => array(
-		'padding' => UAGB_Block_Helper::generate_spacing(
-			$attr[ 'gridImageGapUnitTab' ],
+	'.spectra-image-gallery__layout--tiled'    => array(
+		'grid-gap' => UAGB_Helper::get_css_value(
 			$attr[ 'gridImageGapTab' ],
+			$attr[ 'gridImageGapUnitTab' ]
 		),
 	),
-	'.spectra-image-gallery__layout--tiled .spectra-image-gallery-media-spacer'     => array(
-		'width'        => 'calc( ' . UAGB_Block_Helper::get_precise_percentage( $attr[ 'columnsTab' ] ) . ' )',
-		'aspect-ratio' => 1,
-	),
-	'.spectra-image-gallery-media'                                              => array(
+	'.spectra-image-gallery__media'                                              => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
 			$attr[ 'imageBorderRadiusUnitTablet' ],
 			$attr[ 'imageBorderTopLeftRadiusTablet' ],
@@ -374,7 +350,7 @@ $t_selectors = array(
 			$attr[ 'imageBorderBottomLeftRadiusTablet' ]
 		),
 	),
-	'.spectra-image-gallery-media__thumbnail-blurrer'                           => array(
+	'.spectra-image-gallery__media-thumbnail-blurrer'                           => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
 			$attr[ 'imageBorderRadiusUnitTablet' ],
 			$attr[ 'imageBorderTopLeftRadiusTablet' ],
@@ -383,7 +359,7 @@ $t_selectors = array(
 			$attr[ 'imageBorderBottomLeftRadiusTablet' ]
 		),
 	),
-	'.spectra-image-gallery-media__thumbnail-caption-wrapper'                   => array(
+	'.spectra-image-gallery__media-thumbnail-caption-wrapper'                   => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
 			$attr[ 'imageBorderRadiusUnitTablet' ],
 			$attr[ 'imageBorderTopLeftRadiusTablet' ],
@@ -392,7 +368,7 @@ $t_selectors = array(
 			$attr[ 'imageBorderBottomLeftRadiusTablet' ]
 		),
 	),
-	'.spectra-image-gallery-media__thumbnail-caption--overlay'                  => array(
+	'.spectra-image-gallery__media-thumbnail-caption--overlay'                  => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
 			$attr[ 'imageBorderRadiusUnitTablet' ],
 			$attr[ 'imageBorderTopLeftRadiusTablet' ],
@@ -401,7 +377,7 @@ $t_selectors = array(
 			$attr[ 'imageBorderBottomLeftRadiusTablet' ]
 		),
 	),
-	'.spectra-image-gallery-media__thumbnail-caption'                           => array(
+	'.spectra-image-gallery__media-thumbnail-caption'                           => array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr[ 'captionFontSizeTab' ], $attr[ 'captionFontSizeType' ] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr[ 'captionLineHeightTab' ], $attr[ 'captionLineHeightType' ] ),
 		'padding'     => UAGB_Block_Helper::generate_spacing(
@@ -412,8 +388,8 @@ $t_selectors = array(
 			$attr[ 'captionPaddingLeft' ],
 		),
 	),
-	'.spectra-image-gallery-media__thumbnail-caption--bar-inside'               => $main_title_border_css_tablet,
-	'.spectra-image-gallery-media__thumbnail-caption--bar-outside'              => $main_title_border_css_tablet,
+	'.spectra-image-gallery__media-thumbnail-caption--bar-inside'               => $main_title_border_css_tablet,
+	'.spectra-image-gallery__media-thumbnail-caption--bar-outside'              => $main_title_border_css_tablet,
 );
 
 $m_selectors = array(
@@ -462,35 +438,31 @@ $m_selectors = array(
 			$attr[ 'gridImageGapUnitMob' ]
 		),
 	),
-	'.spectra-image-gallery__layout--isogrid .spectra-image-gallery-media-wrapper'  => array(
+	'.spectra-image-gallery__layout--isogrid .spectra-image-gallery__media-wrapper'  => array(
 		'padding' => UAGB_Helper::get_css_value(
 			$attr[ 'gridImageGapMob' ] / 2,
 			$attr[ 'gridImageGapUnitMob' ]
 		),
 	),
-	'.spectra-image-gallery__layout--masonry .spectra-image-gallery-media-wrapper'  => array(
+	'.spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper'  => array(
 		'padding' => UAGB_Helper::get_css_value(
 			$attr[ 'gridImageGapMob' ],
 			$attr[ 'gridImageGapUnitMob' ]
 		),
 	),
-	'.spectra-image-gallery__layout--carousel .spectra-image-gallery-media-wrapper' => array(
+	'.spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper' => array(
 		'padding' => UAGB_Block_Helper::generate_spacing(
 			$attr[ 'gridImageGapUnitMob' ],
 			$attr[ 'gridImageGapMob' ],
 		),
 	),
-	'.spectra-image-gallery__layout--tiled .spectra-image-gallery-media-wrapper'    => array(
-		'padding' => UAGB_Block_Helper::generate_spacing(
-			$attr[ 'gridImageGapUnitMob' ],
+	'.spectra-image-gallery__layout--tiled .spectra-image-gallery__media-wrapper'    => array(
+		'grid-gap' => UAGB_Helper::get_css_value(
 			$attr[ 'gridImageGapMob' ],
+			$attr[ 'gridImageGapUnitMob' ]
 		),
 	),
-	'.spectra-image-gallery__layout--tiled .spectra-image-gallery-media-spacer'     => array(
-		'width'        => 'calc( ' . UAGB_Block_Helper::get_precise_percentage( $attr[ 'columnsMob' ] ) . ' )',
-		'aspect-ratio' => 1,
-	),
-	'.spectra-image-gallery-media'                                              => array(
+	'.spectra-image-gallery__media'                                              => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
 			$attr[ 'imageBorderRadiusUnitMobile' ],
 			$attr[ 'imageBorderTopLeftRadiusMobile' ],
@@ -499,7 +471,7 @@ $m_selectors = array(
 			$attr[ 'imageBorderBottomLeftRadiusMobile' ]
 		),
 	),
-	'.spectra-image-gallery-media__thumbnail-blurrer'                           => array(
+	'.spectra-image-gallery__media-thumbnail-blurrer'                           => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
 			$attr[ 'imageBorderRadiusUnitMobile' ],
 			$attr[ 'imageBorderTopLeftRadiusMobile' ],
@@ -508,7 +480,7 @@ $m_selectors = array(
 			$attr[ 'imageBorderBottomLeftRadiusMobile' ]
 		),
 	),
-	'.spectra-image-gallery-media__thumbnail-caption-wrapper'                   => array(
+	'.spectra-image-gallery__media-thumbnail-caption-wrapper'                   => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
 			$attr[ 'imageBorderRadiusUnitMobile' ],
 			$attr[ 'imageBorderTopLeftRadiusMobile' ],
@@ -517,7 +489,7 @@ $m_selectors = array(
 			$attr[ 'imageBorderBottomLeftRadiusMobile' ]
 		),
 	),
-	'.spectra-image-gallery-media__thumbnail-caption--overlay'                  => array(
+	'.spectra-image-gallery__media-thumbnail-caption--overlay'                  => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
 			$attr[ 'imageBorderRadiusUnitMobile' ],
 			$attr[ 'imageBorderTopLeftRadiusMobile' ],
@@ -526,7 +498,7 @@ $m_selectors = array(
 			$attr[ 'imageBorderBottomLeftRadiusMobile' ]
 		),
 	),
-	'.spectra-image-gallery-media__thumbnail-caption'                           => array(
+	'.spectra-image-gallery__media-thumbnail-caption'                           => array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr[ 'captionFontSizeMob' ], $attr[ 'captionFontSizeType' ] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr[ 'captionLineHeightMob' ], $attr[ 'captionLineHeightType' ] ),
 		'padding'     => UAGB_Block_Helper::generate_spacing(
@@ -537,24 +509,24 @@ $m_selectors = array(
 			$attr[ 'captionPaddingLeft' ],
 		),
 	),
-	'.spectra-image-gallery-media__thumbnail-caption--bar-inside'               => $main_title_border_css_mobile,
-	'.spectra-image-gallery-media__thumbnail-caption--bar-outside'              => $main_title_border_css_mobile,
+	'.spectra-image-gallery__media-thumbnail-caption--bar-inside'               => $main_title_border_css_mobile,
+	'.spectra-image-gallery__media-thumbnail-caption--bar-outside'              => $main_title_border_css_mobile,
 );
 
 // Background Effect based styling
 
 switch( $attr[ 'captionBackgroundEffect' ] ){
 	case 'none':
-		$selectors[ '.spectra-image-gallery-media__thumbnail' ][ '-webkit-filter' ] = 'none';
-		$selectors[ '.spectra-image-gallery-media__thumbnail' ][ 'filter' ] = 'none';
+		$selectors[ '.spectra-image-gallery__media-thumbnail' ][ '-webkit-filter' ] = 'none';
+		$selectors[ '.spectra-image-gallery__media-thumbnail' ][ 'filter' ] = 'none';
 		break;
 	case 'grayscale':
 	case 'sepia':
-		$selectors[ '.spectra-image-gallery-media__thumbnail' ][ '-webkit-filter' ] = $attr[ 'captionBackgroundEffect' ] . '(' . UAGB_Helper::get_css_value(
+		$selectors[ '.spectra-image-gallery__media-thumbnail' ][ '-webkit-filter' ] = $attr[ 'captionBackgroundEffect' ] . '(' . UAGB_Helper::get_css_value(
 			$attr[ 'captionBackgroundEffectAmount' ],
 			'%'
 		) . ')';
-		$selectors[ '.spectra-image-gallery-media__thumbnail' ][ 'filter' ] = $attr[ 'captionBackgroundEffect' ] . '(' . UAGB_Helper::get_css_value(
+		$selectors[ '.spectra-image-gallery__media-thumbnail' ][ 'filter' ] = $attr[ 'captionBackgroundEffect' ] . '(' . UAGB_Helper::get_css_value(
 			$attr[ 'captionBackgroundEffectAmount' ],
 			'%'
 		) . ')';
@@ -562,35 +534,35 @@ switch( $attr[ 'captionBackgroundEffect' ] ){
 };
 switch( $attr[ 'captionBackgroundEffectHover' ] ){
 	case 'none':
-		$selectors[ '.spectra-image-gallery-media-wrapper:hover .spectra-image-gallery-media__thumbnail' ][ '-webkit-filter' ] = 'none';
-		$selectors[ '.spectra-image-gallery-media-wrapper:hover .spectra-image-gallery-media__thumbnail' ][ 'filter' ] = 'none';
+		$selectors[ '.spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ][ '-webkit-filter' ] = 'none';
+		$selectors[ '.spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ][ 'filter' ] = 'none';
 		break;
 	case 'grayscale':
 	case 'sepia':
-		$selectors[ '.spectra-image-gallery-media-wrapper:hover .spectra-image-gallery-media__thumbnail' ][ '-webkit-filter' ] = $attr[ 'captionBackgroundEffectHover' ] . '(' . UAGB_Helper::get_css_value(
+		$selectors[ '.spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ][ '-webkit-filter' ] = $attr[ 'captionBackgroundEffectHover' ] . '(' . UAGB_Helper::get_css_value(
 			$attr[ 'captionBackgroundEffectAmountHover' ],
 			'%'
 		) . ')';
-		$selectors[ '.spectra-image-gallery-media-wrapper:hover .spectra-image-gallery-media__thumbnail' ][ 'filter' ] = $attr[ 'captionBackgroundEffectHover' ] . '(' . UAGB_Helper::get_css_value(
+		$selectors[ '.spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ][ 'filter' ] = $attr[ 'captionBackgroundEffectHover' ] . '(' . UAGB_Helper::get_css_value(
 			$attr[ 'captionBackgroundEffectAmountHover' ],
 			'%'
 		) . ')';
 		break;
 };
 if ( ! $attr[ 'captionBackgroundEnableBlur' ] ) {
-	$selectors[ '.spectra-image-gallery-media__thumbnail-blurrer' ][ '-webkit-backdrop-filter' ] = 'none';
-	$selectors[ '.spectra-image-gallery-media__thumbnail-blurrer' ][ 'backdrop-filter' ] = 'none';
+	$selectors[ '.spectra-image-gallery__media-thumbnail-blurrer' ][ '-webkit-backdrop-filter' ] = 'none';
+	$selectors[ '.spectra-image-gallery__media-thumbnail-blurrer' ][ 'backdrop-filter' ] = 'none';
 }
 
 // Carousel based styling
 
 if ( $attr[ 'feedLayout' ] === 'carousel' ) {
 	if ( $attr[ 'carouselSquares' ] ){
-		$selectors[ '.spectra-image-gallery-media--carousel' ][ 'aspect-ratio' ] = 1;
-		$selectors[ '.spectra-image-gallery-media__thumbnail--carousel' ][ 'height' ] = '100%';
-		$selectors[ '.spectra-image-gallery-media__thumbnail--carousel' ][ 'width' ] = '100%';
-		$selectors[ '.spectra-image-gallery-media__thumbnail--carousel' ][ '-o-object-fit' ] = 'cover';
-		$selectors[ '.spectra-image-gallery-media__thumbnail--carousel' ][ 'object-fit' ] = 'cover';
+		$selectors[ '.spectra-image-gallery__media--carousel' ][ 'aspect-ratio' ] = 1;
+		$selectors[ '.spectra-image-gallery__media-thumbnail--carousel' ][ 'height' ] = '100%';
+		$selectors[ '.spectra-image-gallery__media-thumbnail--carousel' ][ 'width' ] = '100%';
+		$selectors[ '.spectra-image-gallery__media-thumbnail--carousel' ][ '-o-object-fit' ] = 'cover';
+		$selectors[ '.spectra-image-gallery__media-thumbnail--carousel' ][ 'object-fit' ] = 'cover';
 	}
 }
 else {
@@ -612,14 +584,14 @@ if ( $attr[ 'feedLayout' ] === 'masonry' && $attr[ 'feedPagination' ] && ! $attr
 switch ( $attr[ 'imageZoomType' ] ) {
 	case 'zoom-in':
 		if( $attr[ 'imageEnableZoom' ] ){
-			$selectors[ '.spectra-image-gallery-media__thumbnail' ][ 'transform' ] = 'scale3d(1.005, 1.005, 1.005)';
-			$selectors[ '.spectra-image-gallery-media-wrapper:hover .spectra-image-gallery-media__thumbnail' ][ 'transform' ] = 'scale3d(1.025, 1.025, 1.025)';
+			$selectors[ '.spectra-image-gallery__media-thumbnail' ][ 'transform' ] = 'scale3d(1.005, 1.005, 1.005)';
+			$selectors[ '.spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ][ 'transform' ] = 'scale3d(1.025, 1.025, 1.025)';
 		}
 		break;
 	case 'zoom-out':
 		if( $attr[ 'imageEnableZoom' ] ){
-			$selectors[ '.spectra-image-gallery-media__thumbnail' ][ 'transform' ] = 'scale3d(1.025, 1.025, 1.025)';
-			$selectors[ '.spectra-image-gallery-media-wrapper:hover .spectra-image-gallery-media__thumbnail' ][ 'transform' ] = 'scale3d(1.005, 1.005, 1.005)';
+			$selectors[ '.spectra-image-gallery__media-thumbnail' ][ 'transform' ] = 'scale3d(1.025, 1.025, 1.025)';
+			$selectors[ '.spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ][ 'transform' ] = 'scale3d(1.005, 1.005, 1.005)';
 		}
 		break;
 }

@@ -6,6 +6,7 @@
 
 /* stylelint-disable at-rule-no-unknown */
 
+// This Mixin contains Common Transition Speeds.
 @mixin transitionSpeeds {
 	-webkit-transition-duration: 0.2s;
 	-moz-transition-duration: 0.2s;
@@ -13,14 +14,30 @@
 	transition-duration: 0.2s;
 }
 
-@mixin specialTileFocus {
-	height: auto !important;
+// This Mixin Handles Special Tiles
+@mixin specialTiles {
+	
+	.spectra-image-gallery__media-wrapper {
+		position: relative;
+		overflow: hidden;
+		min-width: 0;
 
-	& .spectra-image-gallery-media--tiled-tall,
-	& .spectra-image-gallery-media--tiled-wide {
-		width: 100% !important;
-		height: 100% !important;
-		aspect-ratio: 1 !important;
+		&:hover .spectra-image-gallery__control-focus {
+			opacity: 0.25;
+		}
+	}
+
+	.spectra-image-gallery__media-wrapper--wide {
+		grid-column: span 2;
+	}
+
+	.spectra-image-gallery__media-wrapper--tall {
+		grid-row: span 2;
+	}
+
+	.spectra-image-gallery__media-wrapper--focus {
+		grid-row: span 2;
+		grid-column: span 2;
 	}
 }
 
@@ -93,35 +110,35 @@
 
 			&-col {
 
-				&-1 .spectra-image-gallery-media-wrapper {
+				&-1 .spectra-image-gallery__media-wrapper {
 					width: 100%;
 				}
 
-				&-2 .spectra-image-gallery-media-wrapper {
+				&-2 .spectra-image-gallery__media-wrapper {
 					width: 50%;
 				}
 
-				&-3 .spectra-image-gallery-media-wrapper {
+				&-3 .spectra-image-gallery__media-wrapper {
 					width: 33.33%;
 				}
 
-				&-4 .spectra-image-gallery-media-wrapper {
+				&-4 .spectra-image-gallery__media-wrapper {
 					width: 25%;
 				}
 
-				&-5 .spectra-image-gallery-media-wrapper {
+				&-5 .spectra-image-gallery__media-wrapper {
 					width: 20%;
 				}
 
-				&-6 .spectra-image-gallery-media-wrapper {
+				&-6 .spectra-image-gallery__media-wrapper {
 					width: 16.66%;
 				}
 
-				&-7 .spectra-image-gallery-media-wrapper {
+				&-7 .spectra-image-gallery__media-wrapper {
 					width: 14.28%;
 				}
 
-				&-8 .spectra-image-gallery-media-wrapper {
+				&-8 .spectra-image-gallery__media-wrapper {
 					width: 12.5%;
 				}
 			}
@@ -136,35 +153,35 @@
 
 			&-col {
 
-				&-1 .spectra-image-gallery-media-wrapper {
+				&-1 .spectra-image-gallery__media-wrapper {
 					width: 100%;
 				}
 
-				&-2 .spectra-image-gallery-media-wrapper {
+				&-2 .spectra-image-gallery__media-wrapper {
 					width: 50%;
 				}
 
-				&-3 .spectra-image-gallery-media-wrapper {
+				&-3 .spectra-image-gallery__media-wrapper {
 					width: 33.33%;
 				}
 
-				&-4 .spectra-image-gallery-media-wrapper {
+				&-4 .spectra-image-gallery__media-wrapper {
 					width: 25%;
 				}
 
-				&-5 .spectra-image-gallery-media-wrapper {
+				&-5 .spectra-image-gallery__media-wrapper {
 					width: 20%;
 				}
 
-				&-6 .spectra-image-gallery-media-wrapper {
+				&-6 .spectra-image-gallery__media-wrapper {
 					width: 16.66%;
 				}
 
-				&-7 .spectra-image-gallery-media-wrapper {
+				&-7 .spectra-image-gallery__media-wrapper {
 					width: 14.28%;
 				}
 
-				&-8 .spectra-image-gallery-media-wrapper {
+				&-8 .spectra-image-gallery__media-wrapper {
 					width: 12.5%;
 				}
 			}
@@ -193,100 +210,63 @@
 
 		&--tiled {
 			position: relative;
+			display: grid;
+			grid-auto-flow: dense;
+			min-height: 0;
+			min-width: 0;
 
 			&-col {
 
-				&-1 .spectra-image-gallery-media-wrapper {
-					width: 100%;
+				&-1 {
+					grid-template-columns: repeat(1, minmax(0, 1fr));
 				}
 
-				&-2 .spectra-image-gallery-media-wrapper {
-					width: 50%;
+				&-2 {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
 
-					&--focus {
-						width: 100% !important;
-
-						@include specialTileFocus;
-					}
+					@include specialTiles();
 				}
 
-				&-3 .spectra-image-gallery-media-wrapper {
-					width: 33.33%;
+				&-3 {
+					grid-template-columns: repeat(3, minmax(0, 1fr));
 
-					&--focus {
-						width: 66.66% !important;
-
-						@include specialTileFocus;
-					}
+					@include specialTiles();
 				}
 
-				&-4 .spectra-image-gallery-media-wrapper {
-					width: 25%;
+				&-4 {
+					grid-template-columns: repeat(4, minmax(0, 1fr));
 
-					&--focus {
-						width: 50% !important;
-
-						@include specialTileFocus;
-					}
+					@include specialTiles();
 				}
 
-				&-5 .spectra-image-gallery-media-wrapper {
-					width: 20%;
+				&-5 {
+					grid-template-columns: repeat(5, minmax(0, 1fr));
 
-					&--focus {
-						width: 40% !important;
-
-						@include specialTileFocus;
-					}
+					@include specialTiles();
 				}
 
-				&-6 .spectra-image-gallery-media-wrapper {
-					width: 16.66%;
+				&-6 {
+					grid-template-columns: repeat(6, minmax(0, 1fr));
 
-					&--focus {
-						width: 33.32% !important;
-
-						@include specialTileFocus;
-					}
+					@include specialTiles();
 				}
 
-				&-7 .spectra-image-gallery-media-wrapper {
-					width: 14.28%;
+				&-7 {
+					grid-template-columns: repeat(7, minmax(0, 1fr));
 
-					&--focus {
-						width: 28.56% !important;
-
-						@include specialTileFocus;
-					}
+					@include specialTiles();
 				}
 
-				&-8 .spectra-image-gallery-media-wrapper {
-					width: 12.5%;
+				&-8 {
+					grid-template-columns: repeat(8, minmax(0, 1fr));
 
-					&--focus {
-						width: 25% !important;
-
-						@include specialTileFocus;
-					}
-				}
-			}
-
-			& .spectra-image-gallery-media-wrapper {
-				aspect-ratio: 1;
-
-				&--wide,
-				&--tall {
-					aspect-ratio: unset;
-				}
-
-				&:hover .spectra-image-gallery__control-focus {
-					opacity: 0.25;
+					@include specialTiles();
 				}
 			}
 		}
 	}
 
-	&-media {
+	&__media {
 		position: relative;
 		overflow: hidden;
 
@@ -319,10 +299,16 @@
 			&-wide,
 			&-tall {
 				aspect-ratio: unset;
+				width: 100%;
+				height: 100%;
 			}
 		}
 
-		&__thumbnail {
+		&-sizer {
+			aspect-ratio: 1;
+		}
+
+		&-thumbnail {
 			-webkit-transition: filter 0.2s, transform 0.5s;
 			-moz-transition: filter 0.2s, transform 0.5s;
 			-o-transition: filter 0.2s, transform 0.5s;
@@ -582,6 +568,7 @@
 		}
 
 		&-focus {
+			cursor: pointer;
 			position: absolute;
 			box-sizing: content-box !important;
 			top: 0;
@@ -697,116 +684,88 @@
 
 				&-col-tab {
 
-					&-1 .spectra-image-gallery-media-wrapper {
+					&-1 .spectra-image-gallery__media-wrapper {
 						width: 100%;
 					}
 
-					&-2 .spectra-image-gallery-media-wrapper {
+					&-2 .spectra-image-gallery__media-wrapper {
 						width: 50%;
 					}
 
-					&-3 .spectra-image-gallery-media-wrapper {
+					&-3 .spectra-image-gallery__media-wrapper {
 						width: 33.33%;
 					}
 
-					&-4 .spectra-image-gallery-media-wrapper {
+					&-4 .spectra-image-gallery__media-wrapper {
 						width: 25%;
 					}
 
-					&-5 .spectra-image-gallery-media-wrapper {
+					&-5 .spectra-image-gallery__media-wrapper {
 						width: 20%;
 					}
 
-					&-6 .spectra-image-gallery-media-wrapper {
+					&-6 .spectra-image-gallery__media-wrapper {
 						width: 16.66%;
 					}
 
-					&-7 .spectra-image-gallery-media-wrapper {
+					&-7 .spectra-image-gallery__media-wrapper {
 						width: 14.28%;
 					}
 
-					&-8 .spectra-image-gallery-media-wrapper {
+					&-8 .spectra-image-gallery__media-wrapper {
 						width: 12.5%;
 					}
 				}
 			}
 
 			&--tiled {
-
+	
 				&-col-tab {
-
-					&-1 .spectra-image-gallery-media-wrapper {
-						width: 100%;
+	
+					&-1 {
+						grid-template-columns: repeat(1, minmax(0, 1fr));
 					}
-
-					&-2 .spectra-image-gallery-media-wrapper {
-						width: 50%;
-
-						&--focus {
-							width: 100% !important;
-
-							@include specialTileFocus;
-						}
+	
+					&-2 {
+						grid-template-columns: repeat(2, minmax(0, 1fr));
+	
+						@include specialTiles();
 					}
-
-					&-3 .spectra-image-gallery-media-wrapper {
-						width: 33.33%;
-
-						&--focus {
-							width: 66.66% !important;
-
-							@include specialTileFocus;
-						}
+	
+					&-3 {
+						grid-template-columns: repeat(3, minmax(0, 1fr));
+	
+						@include specialTiles();
 					}
-
-					&-4 .spectra-image-gallery-media-wrapper {
-						width: 25%;
-
-						&--focus {
-							width: 50% !important;
-
-							@include specialTileFocus;
-						}
+	
+					&-4 {
+						grid-template-columns: repeat(4, minmax(0, 1fr));
+	
+						@include specialTiles();
 					}
-
-					&-5 .spectra-image-gallery-media-wrapper {
-						width: 20%;
-
-						&--focus {
-							width: 40% !important;
-
-							@include specialTileFocus;
-						}
+	
+					&-5 {
+						grid-template-columns: repeat(5, minmax(0, 1fr));
+	
+						@include specialTiles();
 					}
-
-					&-6 .spectra-image-gallery-media-wrapper {
-						width: 16.66%;
-
-						&--focus {
-							width: 33.32% !important;
-
-							@include specialTileFocus;
-						}
+	
+					&-6 {
+						grid-template-columns: repeat(6, minmax(0, 1fr));
+	
+						@include specialTiles();
 					}
-
-					&-7 .spectra-image-gallery-media-wrapper {
-						width: 14.28%;
-
-						&--focus {
-							width: 28.56% !important;
-
-							@include specialTileFocus;
-						}
+	
+					&-7 {
+						grid-template-columns: repeat(7, minmax(0, 1fr));
+	
+						@include specialTiles();
 					}
-
-					&-8 .spectra-image-gallery-media-wrapper {
-						width: 12.5%;
-
-						&--focus {
-							width: 25% !important;
-
-							@include specialTileFocus;
-						}
+	
+					&-8 {
+						grid-template-columns: repeat(8, minmax(0, 1fr));
+	
+						@include specialTiles();
 					}
 				}
 			}
@@ -862,116 +821,88 @@
 
 				&-col-mob {
 
-					&-1 .spectra-image-gallery-media-wrapper {
+					&-1 .spectra-image-gallery__media-wrapper {
 						width: 100%;
 					}
 
-					&-2 .spectra-image-gallery-media-wrapper {
+					&-2 .spectra-image-gallery__media-wrapper {
 						width: 50%;
 					}
 
-					&-3 .spectra-image-gallery-media-wrapper {
+					&-3 .spectra-image-gallery__media-wrapper {
 						width: 33.33%;
 					}
 
-					&-4 .spectra-image-gallery-media-wrapper {
+					&-4 .spectra-image-gallery__media-wrapper {
 						width: 25%;
 					}
 
-					&-5 .spectra-image-gallery-media-wrapper {
+					&-5 .spectra-image-gallery__media-wrapper {
 						width: 20%;
 					}
 
-					&-6 .spectra-image-gallery-media-wrapper {
+					&-6 .spectra-image-gallery__media-wrapper {
 						width: 16.66%;
 					}
 
-					&-7 .spectra-image-gallery-media-wrapper {
+					&-7 .spectra-image-gallery__media-wrapper {
 						width: 14.28%;
 					}
 
-					&-8 .spectra-image-gallery-media-wrapper {
+					&-8 .spectra-image-gallery__media-wrapper {
 						width: 12.5%;
 					}
 				}
 			}
 
 			&--tiled {
-
+	
 				&-col-mob {
-
-					&-1 .spectra-image-gallery-media-wrapper {
-						width: 100%;
+	
+					&-1 {
+						grid-template-columns: repeat(1, minmax(0, 1fr));
 					}
-
-					&-2 .spectra-image-gallery-media-wrapper {
-						width: 50%;
-
-						&--focus {
-							width: 100% !important;
-
-							@include specialTileFocus;
-						}
+	
+					&-2 {
+						grid-template-columns: repeat(2, minmax(0, 1fr));
+	
+						@include specialTiles();
 					}
-
-					&-3 .spectra-image-gallery-media-wrapper {
-						width: 33.33%;
-
-						&--focus {
-							width: 66.66% !important;
-
-							@include specialTileFocus;
-						}
+	
+					&-3 {
+						grid-template-columns: repeat(3, minmax(0, 1fr));
+	
+						@include specialTiles();
 					}
-
-					&-4 .spectra-image-gallery-media-wrapper {
-						width: 25%;
-
-						&--focus {
-							width: 50% !important;
-
-							@include specialTileFocus;
-						}
+	
+					&-4 {
+						grid-template-columns: repeat(4, minmax(0, 1fr));
+	
+						@include specialTiles();
 					}
-
-					&-5 .spectra-image-gallery-media-wrapper {
-						width: 20%;
-
-						&--focus {
-							width: 40% !important;
-
-							@include specialTileFocus;
-						}
+	
+					&-5 {
+						grid-template-columns: repeat(5, minmax(0, 1fr));
+	
+						@include specialTiles();
 					}
-
-					&-6 .spectra-image-gallery-media-wrapper {
-						width: 16.66%;
-
-						&--focus {
-							width: 33.32% !important;
-
-							@include specialTileFocus;
-						}
+	
+					&-6 {
+						grid-template-columns: repeat(6, minmax(0, 1fr));
+	
+						@include specialTiles();
 					}
-
-					&-7 .spectra-image-gallery-media-wrapper {
-						width: 14.28%;
-
-						&--focus {
-							width: 28.56% !important;
-
-							@include specialTileFocus;
-						}
+	
+					&-7 {
+						grid-template-columns: repeat(7, minmax(0, 1fr));
+	
+						@include specialTiles();
 					}
-
-					&-8 .spectra-image-gallery-media-wrapper {
-						width: 12.5%;
-
-						&--focus {
-							width: 25% !important;
-
-							@include specialTileFocus;
-						}
+	
+					&-8 {
+						grid-template-columns: repeat(8, minmax(0, 1fr));
+	
+						@include specialTiles();
 					}
 				}
 			}
