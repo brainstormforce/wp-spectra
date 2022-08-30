@@ -4,6 +4,8 @@ import { addFilter } from '@wordpress/hooks';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import classnames from 'classnames';
+import { useEffect } from 'react';
+
 const { enableConditions, enableResponsiveConditions } = uagb_blocks_info;
 
 const UserConditionOptions = ( props ) => {
@@ -161,8 +163,20 @@ const ResponsiveConditionOptions = ( props ) => {
 		UAGHideDesktop,
 		UAGHideMob,
 		UAGHideTab,
-		UAGResponsiveConditions
+		UAGResponsiveConditions,
+		UAGDisplayConditions
 	} = attributes;
+
+	useEffect( () => {
+
+		if ( 'responsiveVisibility' !== UAGDisplayConditions && ! UAGResponsiveConditions ) {
+			setAttributes( {
+				UAGHideDesktop: false,
+				UAGHideTab: false,
+				UAGHideMob: false
+			} )
+		}
+	}, [] );
 
 	return (
 		<>

@@ -3,6 +3,7 @@ import { __ } from '@wordpress/i18n';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
 const { enableConditionsForCoreBlocks } = uagb_blocks_info;
+import { useEffect } from 'react';
 
 const UserConditionOptions = ( props ) => {
 
@@ -102,7 +103,20 @@ const UserResponsiveConditionOptions = ( props ) => {
         UAGHideDesktop,
         UAGHideMob,
         UAGHideTab,
+        UAGResponsiveConditions,
+		UAGDisplayConditions
     } = attributes;
+
+    useEffect( () => {
+
+		if ( 'responsiveVisibility' !== UAGDisplayConditions && ! UAGResponsiveConditions ) {
+			setAttributes( {
+				UAGHideDesktop: false,
+				UAGHideTab: false,
+				UAGHideMob: false
+			} )
+		}
+	}, [] );
 
     return(
         <>
@@ -111,17 +125,26 @@ const UserResponsiveConditionOptions = ( props ) => {
 				<ToggleControl
 					label={ __( 'Hide on Desktop' )}
 					checked={UAGHideDesktop}
-					onChange={() => setAttributes( { UAGHideDesktop: !attributes.UAGHideDesktop } )}
+					onChange={() => setAttributes( {
+						UAGHideDesktop: ! attributes.UAGHideDesktop,
+						UAGResponsiveConditions: ! UAGResponsiveConditions
+					} )}
 				/>
 				<ToggleControl
 					label={ __( 'Hide on Tablet' ) }
 					checked={UAGHideTab}
-					onChange={() => setAttributes( { UAGHideTab: !attributes.UAGHideTab } )}
+                    onChange={() => setAttributes( {
+						UAGHideTab: ! attributes.UAGHideTab,
+						UAGResponsiveConditions: ! UAGResponsiveConditions
+					} )}
 				/>
 				<ToggleControl
 					label={ __( 'Hide on Mobile' ) }
 					checked={UAGHideMob}
-					onChange={() => setAttributes( { UAGHideMob: !attributes.UAGHideMob } )}
+                    onChange={() => setAttributes( {
+						UAGHideMob: ! attributes.UAGHideMob,
+						UAGResponsiveConditions: ! UAGResponsiveConditions
+					} )}
 				/>
 			</>
         </>
@@ -169,9 +192,10 @@ function ApplyExtraClassCore( extraProps, blockType, attributes ) {
 		UAGHideTab,
 		UAGHideMob,
 		UAGDisplayConditions,
+        UAGResponsiveConditions
 	} = attributes;
 
-	if ( 'responsiveVisibility' === UAGDisplayConditions ) {
+	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGResponsiveConditions ) {
 		if ( UAGHideDesktop ) {
 			extraProps.className = extraProps.className + ' uag-hide-desktop';
 		}
