@@ -179,7 +179,7 @@ class UAGB_Init_Blocks {
 		$show       = false;
 		$user_agent = UAGB_Helper::get_browser_name( $_SERVER['HTTP_USER_AGENT'] );
 
-		$show = is_array( $value ) && ! empty( $value ) ? in_array( $user_agent, $value, true ) : $value === $user_agent;
+		$show = ( $value === $user_agent ) ? true : false;
 
 		return ( $show ) ? '' : $block_content;
 	}
