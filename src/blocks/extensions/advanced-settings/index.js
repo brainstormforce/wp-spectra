@@ -161,6 +161,7 @@ const ResponsiveConditionOptions = ( props ) => {
 		UAGHideDesktop,
 		UAGHideMob,
 		UAGHideTab,
+		UAGResponsiveConditions
 	} = attributes;
 
 	return (
@@ -172,7 +173,7 @@ const ResponsiveConditionOptions = ( props ) => {
 				onChange={ () =>
 					setAttributes( {
 						UAGHideDesktop: ! attributes.UAGHideDesktop,
-						UAGDisplayConditions: 'responsiveVisibility'
+						UAGResponsiveConditions: ! UAGResponsiveConditions
 					} )
 				}
 			/>
@@ -182,7 +183,7 @@ const ResponsiveConditionOptions = ( props ) => {
 				onChange={ () =>
 					setAttributes( {
 						UAGHideTab: ! attributes.UAGHideTab,
-						UAGDisplayConditions: 'responsiveVisibility'
+						UAGResponsiveConditions: ! UAGResponsiveConditions
 					} )
 				}
 			/>
@@ -192,7 +193,7 @@ const ResponsiveConditionOptions = ( props ) => {
 				onChange={ () =>
 					setAttributes( {
 						UAGHideMob: ! attributes.UAGHideMob,
-						UAGDisplayConditions: 'responsiveVisibility'
+						UAGResponsiveConditions: ! UAGResponsiveConditions
 					} )
 				}
 			/>
@@ -209,10 +210,11 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		zIndex,
 		zIndexTablet,
 		zIndexMobile,
-		UAGDisplayConditions
+		UAGDisplayConditions,
+		UAGResponsiveConditions
 	} = attributes;
 
-	if ( 'responsiveVisibility' === UAGDisplayConditions ) {
+	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGResponsiveConditions ) {
 		if ( UAGHideDesktop ) {
 			extraProps.className = classnames( extraProps.className, 'uag-hide-desktop' );
 		}
@@ -224,12 +226,12 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		if ( UAGHideMob ) {
 			extraProps.className = classnames( extraProps.className, 'uag-hide-mob' );
 		}
+	}
 
-		if ( zIndex || zIndexTablet || zIndexMobile ) {
-			//Adding a common selector for blocks where z-index is applied.
-			extraProps.className = classnames( extraProps.className, 'uag-blocks-common-selector' );
-			extraProps.style = {'--z-index-desktop': zIndex + ';', '--z-index-tablet': zIndexTablet + ';', '--z-index-mobile': zIndexMobile + ';'}
-		}
+	if ( zIndex || zIndexTablet || zIndexMobile ) {
+		//Adding a common selector for blocks where z-index is applied.
+		extraProps.className = classnames( extraProps.className, 'uag-blocks-common-selector' );
+		extraProps.style = {'--z-index-desktop': zIndex + ';', '--z-index-tablet': zIndexTablet + ';', '--z-index-mobile': zIndexMobile + ';'}
 	}
 	
 	return extraProps;
