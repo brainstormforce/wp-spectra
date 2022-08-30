@@ -112,8 +112,8 @@ class UAGB_Front_Assets {
 			$this->post_assets->enqueue_scripts();
 		}
 
-		/* Archive compatibility */
-		if ( is_archive() || is_home() || is_search() ) {
+		/* Archive & 404 page compatibility */
+		if ( is_archive() || is_home() || is_search() || is_404() ) {
 
 			global $wp_query;
 			$cached_wp_query = $wp_query->posts;
@@ -124,6 +124,15 @@ class UAGB_Front_Assets {
 
 				$current_post_assets->enqueue_scripts();
 
+			}
+
+			/*
+			If no posts are present in the category/archive
+			or 404 page (which is an obvious case for 404), then get the current page ID and enqueue script.
+			*/
+			if ( ! $cached_wp_query ) {
+				$current_post_assets = new UAGB_Post_Assets( get_queried_object_id() );
+				$current_post_assets->enqueue_scripts();
 			}
 		}
 
