@@ -170,6 +170,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 * Fix: Price List - Inside container price list not aligned properly on editor.
 * Fix: Image - Box shadow not applying to a valid element.
 * Fix: Post Carousel/Grid/Masonry - Inaccurate font size for 'Read More' link was displayed in the editor for tablet preview (when mobile and tablet font sizes were set).
+* Fix: Footer Widgets - CSS was not loading for empty archive/category and 404 pages. 
 
 ### 2.0.7 - FRIDAY, 26th AUGUST 2022 ###
 * Improvement: Added Legacy Labels in the Editor Block Inserter.
