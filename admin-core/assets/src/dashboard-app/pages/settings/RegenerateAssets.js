@@ -20,9 +20,7 @@ const RegenerateAssets = () => {
 			body: formData,
 		} ).then( ( data ) => {
             if ( data.success ) {
-                setTimeout( function () {
-					dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Assets Regenerated!' } );
-				}, 2000 );
+				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Assets Regenerated!' } );
                 setRegenerateAssetsState( false );
 			}
 		} );
