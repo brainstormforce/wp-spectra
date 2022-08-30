@@ -13,6 +13,7 @@ const setInitialState = ( store ) => {
             enableFileGeneration : data.enable_file_generation,
             enableTemplates : data.enable_templates_button,
             enableBeta : data.enable_beta_updates,
+			enableLegacyBlocks: data.enable_legacy_blocks,
             enableSelectedFontFamilies : data.load_select_font_globally,
             selectedFontFamilies :  data.select_font_globally,
             enableLoadFontsLocally : data.load_gfonts_locally,
@@ -31,6 +32,7 @@ const setInitialState = ( store ) => {
 			comingSoonPage: data.coming_soon_page,
 			blocksEditorSpacing: data.blocks_editor_spacing,
 			containerGlobalPadding: data.container_global_padding,
+			containerGlobalElementsGap: data.container_global_elements_gap,
 			enableFontAwesome5: data.load_font_awesome_5,
 			enableAutoBlockRecovery: data.auto_block_recovery,
         };

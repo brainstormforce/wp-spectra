@@ -44,6 +44,7 @@ class Admin_Helper {
 		$options = array(
 			'rollback_to_previous_version'       => isset( $uag_versions[0]['value'] ) ? $uag_versions[0]['value'] : '',
 			'enable_beta_updates'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uagb_beta', 'no' ),
+			'enable_legacy_blocks'               => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' ),
 			'enable_file_generation'             => \UAGB_Admin_Helper::get_admin_settings_option( '_uagb_allow_file_generation', 'enabled' ),
 			'blocks_activation_and_deactivation' => self::get_blocks(),
 			'enable_templates_button'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' ),
@@ -62,6 +63,7 @@ class Admin_Helper {
 			'changelog_data'                     => $changelog_data,
 			'content_width'                      => $content_width,
 			'container_global_padding'           => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_container_global_padding', 'default' ),
+			'container_global_elements_gap'      => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_container_global_elements_gap', 20 ),
 			'recaptcha_site_key_v2'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
 			'recaptcha_secret_key_v2'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ),
 			'recaptcha_site_key_v3'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),

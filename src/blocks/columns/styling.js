@@ -32,13 +32,6 @@ function styling( props ) {
 		bottomHeightTablet,
 		bottomHeightMobile,
 		bottomWidth,
-		gradientColor1,
-		gradientColor2,
-		gradientLocation1,
-		gradientLocation2,
-		gradientType,
-		gradientAngle,
-		gradientPosition,
 		topPaddingTablet,
 		bottomPaddingTablet,
 		leftPaddingTablet,
@@ -64,7 +57,8 @@ function styling( props ) {
 		boxShadowSpread,
 		boxShadowPosition,
 		gradientValue,
-		columnsBorderHColor
+		columnsBorderHColor,
+		overlayType
 	} = props.attributes
 
 	let max_width = '100%'
@@ -84,6 +78,7 @@ function styling( props ) {
 	let mobile_selectors = {}
 
 	let videoOpacity = 0.5;
+
 	if ( typeof backgroundVideoOpacity !== 'undefined' ) {
 		videoOpacity = ( 1 < backgroundVideoOpacity ) ? ( ( 100 - backgroundVideoOpacity ) / 100 ) : ( ( 1 - backgroundVideoOpacity ) );
 	}
@@ -96,11 +91,11 @@ function styling( props ) {
 		' .uagb-columns__video-wrap': {
 			'opacity' : videoOpacity
 		},
-		' > .block-editor-inner-blocks > .block-editor-block-list__layout': {
+		' > .uagb-columns__inner-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout': {
 
 			'max-width' : max_width
 		},
-		' > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="uagb/column"]' : {
+		' > .uagb-columns__inner-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="uagb/column"]' : {
 			'padding' : generateCSSUnit( columnGap, 'px' )
 		},
 		' .uagb-columns__shape-top svg' : {
@@ -130,35 +125,32 @@ function styling( props ) {
 	selectors[' > .uagb-columns__overlay'] = {}
 
 	if ( 'video' === backgroundType ) {
-		selectors[' > .uagb-columns__overlay'] = {
-			'opacity' : 1,
-			'background-color': backgroundVideoColor
+		if ( 'color' === overlayType ) {
+			selectors[' > .uagb-columns__overlay'] = {
+				'background-color': backgroundVideoColor
+			}
+		} else {
+			selectors[' > .uagb-columns__overlay']['background-image'] = gradientValue
 		}
 	} else if( 'image' === backgroundType ) {
-		selectors[' > .uagb-columns__overlay'] = {
-			'opacity' : ( typeof backgroundOpacity !== 'undefined' ) ? backgroundOpacity/100 : '',
-			'background-color': backgroundImageColor
+		if ( 'color' === overlayType ) {
+			selectors[' > .uagb-columns__overlay'] = {
+				'opacity' : ( typeof backgroundOpacity !== 'undefined' && 0 !== backgroundOpacity ) ? backgroundOpacity/100 : '',
+				'background-color': backgroundImageColor
+			}
+		} else {
+			selectors[' > .uagb-columns__overlay']['background-image'] = gradientValue
 		}
 	} else if( 'color' === backgroundType ) {
 
 		selectors[' > .uagb-columns__overlay'] = {
-			'opacity' : ( typeof backgroundOpacity !== 'undefined' ) ? backgroundOpacity/100 : '',
+			'opacity' : ( typeof backgroundOpacity !== 'undefined' && 0 !== backgroundOpacity ) ? backgroundOpacity/100 : '',
 			'background-color' : backgroundColor
 		}
 	} else if ( 'gradient' === backgroundType ) {
 
-		selectors[' > .uagb-columns__overlay']['background-color'] = 'transparent'
-		selectors[' > .uagb-columns__overlay'].opacity = ( typeof backgroundOpacity !== 'undefined' ) ? backgroundOpacity/100 : ''
-		if( gradientValue ) {
-			selectors[' > .uagb-columns__overlay']['background-image'] = gradientValue
-
-		} else if ( 'linear' === gradientType ) {
-
-				selectors[' > .uagb-columns__overlay']['background-image'] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
-			} else {
-
-				selectors[' > .uagb-columns__overlay']['background-image'] = `radial-gradient( at ${ gradientPosition }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
-			}
+		selectors[' > .uagb-columns__overlay']['background-image'] = gradientValue
+		selectors[' > .uagb-columns__overlay'].opacity =  backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : '';
 
 	}
 

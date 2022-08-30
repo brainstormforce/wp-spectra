@@ -91,10 +91,6 @@
 		height: auto;
 	}
 
-	.uagb-post__inner-wrap > p {
-		display: none;
-	}
-
 	.uagb-post__author span,
 	.uagb-post__comment span,
 	.uagb-post__taxonomy span,
@@ -282,7 +278,7 @@
 	grid-template-columns: auto;
 }
 
-.is-grid:last-child .uagb-post-pagination-wrap {
+.wp-block-uagb-post-grid .uagb-post-pagination-wrap {
 	grid-column: 1 / -1;
 }
 
@@ -301,11 +297,6 @@
 
 		.uagb-post__text {
 			color: #fff;
-
-			&.uagb-post__title a,
-			a {
-				color: #fff;
-			}
 		}
 	}
 
@@ -373,6 +364,10 @@
 
 	.is-carousel {
 		padding: 0;
+	}
+
+	ul.slick-dots {
+		transform: unset;
 	}
 }
 

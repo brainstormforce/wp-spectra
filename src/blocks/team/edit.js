@@ -3,18 +3,14 @@
  */
 
 import styling from './styling';
-import React, { useEffect, lazy, Suspense } from 'react';
+import React, { useEffect,    } from 'react';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
-import lazyLoader from '@Controls/lazy-loader';
 
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/team/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/team/render" */ './render' )
-);
+
+import Settings from './settings';
+import Render from './render';
 
 const UAGBTeam = ( props ) => {
 	const deviceType = useDeviceType();
@@ -74,10 +70,12 @@ const UAGBTeam = ( props ) => {
 	}, [] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
+					<>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 

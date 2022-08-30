@@ -1,14 +1,9 @@
 import classnames from 'classnames';
-import lazyLoader from '@Controls/lazy-loader';
-import { useDeviceType } from '@Controls/getPreviewType';
-import React, { useRef, useEffect, lazy, Suspense } from 'react';
-import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-const Masonry = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-masonry/react-masonry-component" */ 'react-masonry-component'
-	)
-);
+import { useDeviceType } from '@Controls/getPreviewType';
+import React, { useRef, useEffect,    } from 'react';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import Masonry from 'react-masonry-component';
 
 import {
 	InnerBlockLayoutContextProvider,
@@ -118,7 +113,7 @@ function Blog( props ) {
 			) }
 			data-blog-id={ block_id }
 		>
-			<Suspense fallback={ lazyLoader() }>
+
 				<Masonry
 					className={ classnames(
 						'is-masonry',
@@ -152,7 +147,7 @@ function Blog( props ) {
 						) ) }
 					</InnerBlockLayoutContextProvider>
 				</Masonry>
-			</Suspense>
+
 			{ paginationRender() }
 		</div>
 	);

@@ -72,8 +72,6 @@ const variations = [
 			directionDesktop: 'row',
 			wrapDesktop: 'wrap',
 			wrapMobile: 'wrap',
-			rowGapDesktop: 20,
-			columnGapDesktop: 20
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 48, widthMobile: 100, widthSetByUser:true } ],
@@ -104,8 +102,6 @@ const variations = [
 			variationSelected: true,
 			directionDesktop: 'row',
 			wrapDesktop: 'wrap',
-			rowGapDesktop: 20,
-			columnGapDesktop: 20,
 			wrapMobile: 'wrap',
 		},
 		innerBlocks: [
@@ -154,8 +150,6 @@ const variations = [
 			variationSelected: true,
 			directionDesktop: 'row',
 			wrapDesktop: 'wrap',
-			rowGapDesktop: 20,
-			columnGapDesktop: 20,
 			wrapMobile: 'wrap',
 		},
 		innerBlocks: [
@@ -175,8 +169,6 @@ const variations = [
 			directionDesktop: 'row',
 			wrapDesktop: 'wrap',
 			wrapMobile: 'wrap',
-			rowGapDesktop: 20,
-			columnGapDesktop: 20
 		},
 		innerBlocks: [
 			[
@@ -199,8 +191,6 @@ const variations = [
 			directionDesktop: 'row',
 			wrapDesktop: 'wrap',
 			wrapMobile: 'wrap',
-			rowGapDesktop: 20,
-			columnGapDesktop: 20
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 23, widthMobile: 100, widthSetByUser:true } ],

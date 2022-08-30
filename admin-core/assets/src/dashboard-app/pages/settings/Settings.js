@@ -8,6 +8,7 @@ import RegenerateAssets from '@DashboardApp/pages/settings/RegenerateAssets';
 import TemplatesButton from '@DashboardApp/pages/settings/TemplatesButton';
 import RollBack from '@DashboardApp/pages/settings/RollBack';
 import BetaUpdates from '@DashboardApp/pages/settings/BetaUpdates';
+import LegacyBlocks from '@DashboardApp/pages/settings/LegacyBlocks';
 import SelectedFontFamilies from '@DashboardApp/pages/settings/SelectedFontFamilies';
 import LoadFontsLocally from '@DashboardApp/pages/settings/LoadFontsLocally';
 import PreloadLocalFonts from '@DashboardApp/pages/settings/PreloadLocalFonts';
@@ -21,6 +22,7 @@ import BlockSettings from '@DashboardApp/pages/settings/BlockSettings';
 import LoadFontAwesome5 from '@DashboardApp/pages/settings/LoadFontAwesome5';
 import AutoBlockRecovery from '@DashboardApp/pages/settings/AutoBlockRecovery';
 import ContainerGlobalPadding from '@DashboardApp/pages/settings/ContainerGlobalPadding';
+import ContainerGlobalElementsGap from '@DashboardApp/pages/settings/ContainerGlobalElementsGap';
 import { Link, useLocation } from 'react-router-dom';
 import{ useEffect } from 'react';
 
@@ -92,6 +94,7 @@ const Settings = () => {
                             <>
                                 <ContentWidth/>
 								<ContainerGlobalPadding/>
+								<ContainerGlobalElementsGap/>
                                 <BlocksEditorSpacing/>
                                 <CollapsePanels/>
                                 <CopyPasteStyles/>
@@ -114,6 +117,9 @@ const Settings = () => {
                             <>
                                 <RollBack/>
                                 <BetaUpdates/>
+								{  'yes' !== uag_react.global_data.uagb_old_user_less_than_2 &&
+                                    <LegacyBlocks/>
+                                }
                             </>
                         }
                         { 'fonts-performance' === activeSettingsNavigationTab &&

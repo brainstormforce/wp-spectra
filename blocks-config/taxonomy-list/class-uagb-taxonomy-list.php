@@ -516,7 +516,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 								'type'    => 'string',
 								'default' => '#E0E0E0',
 							),
-						),
+						)
 					),
 					'render_callback' => array( $this, 'render_html' ),
 				)

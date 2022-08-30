@@ -260,7 +260,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				)
 			);
 
-			if ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) {
+			$enable_legacy_blocks = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' );
+
+			if ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) || 'yes' === $enable_legacy_blocks ) {
 				register_block_type(
 					'uagb/post-masonry',
 					array(
@@ -369,7 +371,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									'default' => 'px',
 								),
 							),
-							$pagination_masonry_border_attribute,
+							$pagination_masonry_border_attribute
 						),
 						'render_callback' => array( $this, 'post_masonry_callback' ),
 					)
@@ -808,6 +810,18 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'paddingLeftMobile'             => array(
 						'type' => 'number',
 					),
+					'paddingTopTablet'              => array(
+						'type' => 'number',
+					),
+					'paddingBottomTablet'           => array(
+						'type' => 'number',
+					),
+					'paddingRightTablet'            => array(
+						'type' => 'number',
+					),
+					'paddingLeftTablet'             => array(
+						'type' => 'number',
+					),
 					'paddingBtnTop'                 => array(
 						'type' => 'number',
 					),
@@ -1102,7 +1116,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						'type'    => 'number',
 						'default' => '',
 					),
-				),
+				)
 			);
 		}
 
@@ -1622,7 +1636,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							( function( $ ) {
 								var cols = parseInt( '<?php echo esc_html( $value['columns'] ); ?>' );
 								var $scope = $( '.uagb-block-<?php echo esc_html( $key ); ?>' );
-								if ( ! $scope.hasClass('is-carousel') || cols >= $scope.children().length ) {
+								if ( ! $scope.hasClass('is-carousel') || cols >= $scope.children('article.uagb-post__inner-wrap').length ) {
 									return;
 								}
 								var slider_options = {
@@ -1679,11 +1693,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 								if( enableEqualHeight ){
 									$scope.imagesLoaded( function() {
-										UAGBPostCarousel._setHeight( $scope );
+										UAGBPostCarousel?._setHeight( $scope );
 									});
 
 									$scope.on( 'afterChange', function() {
-										UAGBPostCarousel._setHeight( $scope );
+										UAGBPostCarousel?._setHeight( $scope );
 									} );
 								}
 
