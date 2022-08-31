@@ -39,7 +39,7 @@ const CTA = ( props ) => {
 						'uagb-cta__button-wrapper',
 						attributes.inheritFromTheme &&
 							attributes.ctaType === 'button'
-							? 'wp-block-button'
+							? 'uagb-cta-button'
 							: null
 					) }
 				>
@@ -55,7 +55,7 @@ const CTA = ( props ) => {
 								: null,
 							attributes.inheritFromTheme &&
 								attributes.ctaType === 'button'
-								? 'wp-block-button__link'
+								? 'uagb-cta-button__link'
 								: null
 						) }
 						target={ target }

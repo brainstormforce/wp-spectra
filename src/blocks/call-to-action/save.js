@@ -74,7 +74,7 @@ export default function save( props ) {
 		<div
 			className={ classnames(
 				`uagb-block-${ block_id }`,
-				'button' === ctaType ? 'wp-block-button' : '',
+				'button' === ctaType ? 'uagb-cta-button' : '',
 			) }
 		>
 			{ ctaType === 'all' && (

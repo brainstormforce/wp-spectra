@@ -33,7 +33,7 @@ const CTA = ( props ) => {
 					href={ link }
 					className={ classnames(
 						'uagb-cta__button-link-wrapper',
-						'button' === attributes.ctaType ? 'wp-block-button__link' : ''
+						'button' === attributes.ctaType ? 'uagb-cta-button__link' : ''
 					) }
 					target={ target }
 					rel={ rel }
