@@ -25,13 +25,15 @@ const SecondCTAButton = ( props ) => {
 		preventDefaultFunc = false;  // Ensures click events for links aren't disabled for frontend.
 	}
 
+	const hasButtonBackgroundClass = attributes.ctaBgColor || attributes.ctaBgHoverColor ? 'has-background' : '';
+
 	return (
 		<>
 			<a
 				href={ link }
 				className={ classnames(
 					'uagb-cta-second__button',
-					'uagb-cta-button__link',
+					`wp-block-button__link ${hasButtonBackgroundClass}`,
 				) }
 				target={ target }
 				rel={ rel }

@@ -25,6 +25,8 @@ const CTA = ( props ) => {
 		preventDefaultFunc = false;  // Ensures click events for links aren't disabled for frontend.
 	}
 
+	const hasButtonBackgroundClass = attributes.ctaBgColor || attributes.ctaBgHoverColor ? 'has-background' : '';
+
 	return (
 		<>
 			{ ( attributes.ctaType === 'button' ||
@@ -33,7 +35,7 @@ const CTA = ( props ) => {
 					href={ link }
 					className={ classnames(
 						'uagb-cta__button-link-wrapper',
-						'button' === attributes.ctaType ? 'uagb-cta-button__link' : ''
+						'button' === attributes.ctaType ? 'wp-block-button__link ' + hasButtonBackgroundClass : ''
 					) }
 					target={ target }
 					rel={ rel }

@@ -30,6 +30,9 @@ const CTA = ( props ) => {
 	if ( setAttributes === 'not_set' ) {
 		link = attributes.ctaLink;
 	}
+
+	const hasButtonBackgroundClass = attributes.ctaBgColor || attributes.ctaBgHoverColor ? 'has-background' : '';
+
 	return (
 		<div className="uagb-cta__link-wrapper uagb-cta__block-link-style">
 			{ ( attributes.ctaType === 'button' ||
@@ -39,7 +42,7 @@ const CTA = ( props ) => {
 						'uagb-cta__button-wrapper',
 						attributes.inheritFromTheme &&
 							attributes.ctaType === 'button'
-							? 'uagb-cta-button'
+							? 'wp-block-button'
 							: null
 					) }
 				>
@@ -55,7 +58,7 @@ const CTA = ( props ) => {
 								: null,
 							attributes.inheritFromTheme &&
 								attributes.ctaType === 'button'
-								? 'uagb-cta-button__link'
+								? 'wp-block-button__link ' + hasButtonBackgroundClass
 								: null
 						) }
 						target={ target }

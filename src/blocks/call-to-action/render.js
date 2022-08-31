@@ -68,7 +68,7 @@ const Render = ( props ) => {
 					`uagb-block-${ block_id }`,
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					'uagb-cta__outer-wrap',
-					'button' === ctaType ? 'uagb-cta-button' : '',
+					'button' === ctaType ? 'wp-block-button' : '',
 				) }
 			>
 				{ ctaType === 'all' && (
