@@ -179,6 +179,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 * Fix: Heading - Set default alignment of heading & sub heading as center for old users.
 * Fix: Footer Widgets - CSS was not loading for empty archive/category and 404 pages.
 * Fix: Advanced Columns - Column reverse functionality not working as expected on frontend for old user.
+* Fix: Post Blocks - Max Number of columns should not be dependent on number of posts.
 * Fix: Post Grid - Post overflows its proper column size.
 
 ### 2.0.7 - FRIDAY, 26th AUGUST 2022 ###
