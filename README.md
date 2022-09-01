@@ -173,6 +173,8 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 * Fix: Image - Box shadow not applying to a valid element.
 * Fix: Section - Inner section block border not working properly on front-end.
 * Fix: Post Carousel/Grid/Masonry - Inaccurate font size for 'Read More' link was displayed in the editor for tablet preview (when mobile and tablet font sizes were set).
+* Fix: PHP notice for new users when they activate Astra theme.
+* Fix: Table of Content - Fixed collapsible icon alignment for frontend.
 * Fix: Heading - Set sub heading as enabled by default for old users.
 * Fix: Heading - Set default alignment of heading & sub heading as center for old users.
 * Fix: Footer Widgets - CSS was not loading for empty archive/category and 404 pages.
