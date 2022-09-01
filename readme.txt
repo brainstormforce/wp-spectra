@@ -167,6 +167,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 == Changelog ==
 
 = 2.0.8 - MONDAY, 29th AUGUST 2022 =
+* Improvement: Added Responsive and Display conditions settings to core blocks.
 * Improvement: Updated admin dashboard UI.
 * Fix: Price List - Inside container price list not aligned properly on editor.
 * Fix: Image - Box shadow not applying to a valid element.
