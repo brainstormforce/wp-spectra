@@ -206,6 +206,11 @@
 		flex-direction: column-reverse;
 	}
 
+	.uagb-columns__stack-tablet.uagb-columns__reverse-mobile .uagb-columns__inner-wrap {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+
 	.uagb-columns__reverse-tablet .uagb-columns__inner-wrap {
 		display: flex;
 		flex-direction: row-reverse;
