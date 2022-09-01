@@ -40,7 +40,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		 * Get all data from the admin settings page.
 		 *
 		 * @return mixed
-		 * @since 0.0.1
+		 * @since 2.0.8
 		 */
 		public static function get_admin_settings_shareable_data() {
 
@@ -75,7 +75,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		 *
 		 * @param array $data All settings of Admin.
 		 * @return mixed
-		 * @since 0.0.1
+		 * @since 2.0.8
 		 */
 		public static function update_admin_settings_shareable_data( $data = array() ) {
 
