@@ -166,7 +166,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 == Changelog ==
 
-= 2.0.8 - MONDAY, 29th AUGUST 2022 =
+= 2.0.8 - THURSDAY, 1st SEPTEMBER 2022 =
 * Improvement: Added Responsive and Display conditions settings to core blocks.
 * Improvement: Updated admin dashboard UI.
 * Fix: Price List - Inside container price list not aligned properly on editor.
@@ -178,6 +178,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 * Fix: Heading - Set sub heading as enabled by default for old users.
 * Fix: Heading - Set default alignment of heading & sub heading as center for old users.
 * Fix: Footer Widgets - CSS was not loading for empty archive/category and 404 pages.
+* Fix: Media Picker - Updated Lottie and Video Icon Colors.
 * Fix: Advanced Columns - Column reverse functionality not working as expected on frontend for old user.
 * Fix: Post Blocks - Max Number of columns should not be dependent on number of posts.
 * Fix: Post Grid - Post overflows its proper column size.
