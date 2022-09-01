@@ -37,3 +37,16 @@
     justify-content: left;
     align-items: center;
 }
+
+.rtl .astra-notice-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: right;
+}
+.rtl .astra-notice-container .notice-content {
+    margin-right: 15px;
+}
+.rtl .astra-review-notice-container .dashicons {
+    padding-right: 10px;
+}
