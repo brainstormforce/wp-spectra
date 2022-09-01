@@ -176,7 +176,6 @@ class UAGB_Init_Blocks {
 
 		$value = $block_attributes['UAGBrowser'];
 
-		$show       = false;
 		$user_agent = UAGB_Helper::get_browser_name( $_SERVER['HTTP_USER_AGENT'] );
 
 		$show = ( $value === $user_agent ) ? true : false;
