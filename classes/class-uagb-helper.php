@@ -1351,7 +1351,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param string $user_agent Browser names.
 		 * @return string
-		 * @since x.x.x
+		 * @since 2.0.8
 		 */
 		public static function get_browser_name( $user_agent ) {
 
