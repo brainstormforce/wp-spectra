@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.0  
-**Stable tag:** 2.0.7  
+**Stable tag:** 2.0.8  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -166,7 +166,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 ## Changelog ##
 
-### 2.0.8 - MONDAY, 29th AUGUST 2022 ###
+### 2.0.8 - THURSDAY, 1st SEPTEMBER 2022 ###
 * Improvement: Added Responsive and Display conditions settings to core blocks.
 * Improvement: Updated admin dashboard UI.
 * Fix: Price List - Inside container price list not aligned properly on editor.
