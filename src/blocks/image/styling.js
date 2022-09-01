@@ -203,12 +203,12 @@ export default function styling( props ) {
 			),
 			'text-align': align
 		},
-		'.wp-block-uagb-image--layout-default figure':{
+		'.wp-block-uagb-image--layout-default figure img':{
 			'width': 'inherit',
 			'height': 'inherit',
 			'box-shadow': generateCSSUnit( imageBoxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( imageBoxShadowVOffset, 'px' ) +	' ' + generateCSSUnit( imageBoxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( imageBoxShadowSpread, 'px' ) + ' ' + imageBoxShadowColor + ' ' + getImageShadowPosition,
+			...imageBorderCSS
 		},
-		'.wp-block-uagb-image--layout-default figure img': imageBorderCSS,
 		'.wp-block-uagb-image .wp-block-uagb-image__figure:hover':{
 			'border-color': imageBorderHColor
 		},
@@ -250,12 +250,10 @@ export default function styling( props ) {
 			'color': captionColor,
 		},
 		// overlay
-		'.wp-block-uagb-image--layout-overlay figure':{
+		'.wp-block-uagb-image--layout-overlay figure img':{
 			'width': 'inherit',
 			'height': 'inherit',
 			'box-shadow': generateCSSUnit( imageBoxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( imageBoxShadowVOffset, 'px' ) +	' ' + generateCSSUnit( imageBoxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( imageBoxShadowSpread, 'px' ) + ' ' + imageBoxShadowColor + ' ' + getImageShadowPosition,
-		},
-		'.wp-block-uagb-image--layout-overlay figure img':{
 			...imageBorderCSS
 		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper': {
