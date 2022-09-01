@@ -209,9 +209,9 @@ return array_merge(
 		'boxShadowBlurHover'                => '',
 		'boxShadowSpreadHover'              => '',
 		'boxShadowPositionHover'            => 'outset',
-		'columns'                     => 3,
-		'tcolumns'                    => 2,
-		'mcolumns'                    => 1
+		'columns'                           => 3,
+		'tcolumns'                          => 2,
+		'mcolumns'                          => 1,
 	),
 	$pagination_masonry_border_attribute,
 	$btn_border_attribute,
