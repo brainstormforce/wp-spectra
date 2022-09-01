@@ -174,7 +174,7 @@ if ( 'video' === $bg_type ) {
 }
 
 $m_selectors = array(
-	'.uagb-section__wrap'     => array(
+	'.uagb-section__wrap'       => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingMobile'], $attr['mobilePaddingType'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingMobile'], $attr['mobilePaddingType'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingMobile'], $attr['mobilePaddingType'] ),
@@ -184,7 +184,7 @@ $m_selectors = array(
 );
 
 $t_selectors                                      = array(
-	'.uagb-section__wrap'     => array(
+	'.uagb-section__wrap'       => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingTablet'], $attr['tabletPaddingType'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingTablet'], $attr['tabletPaddingType'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingTablet'], $attr['tabletPaddingType'] ),
