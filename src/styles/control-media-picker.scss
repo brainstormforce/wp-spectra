@@ -118,11 +118,11 @@
 		}
 
 		&--stroke svg path {
-			stroke: $spectra-color-icon;
+			stroke: $spectra-color-border-hover;
 		}
 
 		&--fill svg path {
-			fill: $spectra-color-icon;
+			fill: $spectra-color-border-hover;
 		}
 
 		& + .spectra-media-control__clickable--replace {
