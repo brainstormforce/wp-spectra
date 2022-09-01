@@ -167,16 +167,19 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 ## Changelog ##
 
 ### 2.0.8 - MONDAY, 29th AUGUST 2022 ###
+* Improvement: Added Responsive and Display conditions settings to core blocks.
 * Improvement: Updated admin dashboard UI.
 * Fix: Price List - Inside container price list not aligned properly on editor.
 * Fix: Image - Box shadow not applying to a valid element.
 * Fix: Section - Inner section block border not working properly on front-end.
 * Fix: Post Carousel/Grid/Masonry - Inaccurate font size for 'Read More' link was displayed in the editor for tablet preview (when mobile and tablet font sizes were set).
+* Fix: PHP notice for new users when they activate Astra theme.
 * Fix: Table of Content - Fixed collapsible icon alignment for frontend.
 * Fix: Heading - Set sub heading as enabled by default for old users.
 * Fix: Heading - Set default alignment of heading & sub heading as center for old users.
 * Fix: Footer Widgets - CSS was not loading for empty archive/category and 404 pages.
 * Fix: Post Blocks - Max Number of columns should not be dependent on number of posts.
+* Fix: Post Grid - Post overflows its proper column size.
 
 ### 2.0.7 - FRIDAY, 26th AUGUST 2022 ###
 * Improvement: Added Legacy Labels in the Editor Block Inserter.
