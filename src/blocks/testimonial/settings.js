@@ -10,7 +10,7 @@ import ResponsiveBorder from '@Components/responsive-border';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
-import UAGImage from '@Components/image';
+import UAGMediaPicker from '@Components/image';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import UAGSelectControl from '@Components/select-control';
@@ -1164,11 +1164,12 @@ const Settings = ( props ) => {
 		}
 		const labelIndex = index + 1;
 		return (
-			<UAGImage
-				label={ 'Image ' + labelIndex }
+			<UAGMediaPicker
 				onSelectImage={ ( media ) => onSelectTestImage( media, index ) }
 				backgroundImage={ imageVal }
 				onRemoveImage={ () => onRemoveTestImage( index ) }
+				slug={ `image-${ labelIndex }` }
+				label={ __( `Image ${ labelIndex }`, 'ultimate-addons-for-gutenberg' ) }
 			/>
 		);
 	};
