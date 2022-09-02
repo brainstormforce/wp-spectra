@@ -1,6 +1,6 @@
-import React, { Suspense, useLayoutEffect } from 'react';
+import React, {  useLayoutEffect } from 'react';
 import classnames from 'classnames';
-import lazyLoader from '@Controls/lazy-loader';
+
 import { Player } from '@lottiefiles/react-lottie-player';
 import styles from './editor.lazy.scss';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
@@ -68,7 +68,7 @@ const Render = ( props ) => {
 					: toStopPlayAnimation
 			}
 		>
-			<Suspense fallback={ lazyLoader() }>
+
 				<Player
 				    autoplay={ true }
 					ref={ lottieplayer }
@@ -77,7 +77,7 @@ const Render = ( props ) => {
 					speed={ getFallbackNumber( speed, 'speed', blockName ) }
 				>
 				</Player>
-			</Suspense>
+
 		</div>
 	);
 };

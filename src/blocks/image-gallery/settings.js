@@ -1,8 +1,7 @@
 // Import all of our Text Options requirements.
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
-import React, { Suspense, useEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect } from 'react';
 import getMatrixAlignment from '@Controls/getMatrixAlignment';
 import { useDeviceType } from '@Controls/getPreviewType';
 import TypographyControl from '@Components/typography';
@@ -1456,72 +1455,70 @@ const Settings = ( props ) => {
 
 	const captionStyling = () => (
 		<UAGAdvancedPanelBody title={ __( 'Caption', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
-			<Suspense fallback={ lazyLoader() }>
-				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: captionLoadGoogleFonts,
-						label: 'captionLoadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: captionFontFamily,
-						label: 'captionFontFamily',
-					} }
-					fontWeight={ {
-						value: captionFontWeight,
-						label: 'captionFontWeight',
-					} }
-					fontStyle={ {
-						value: captionFontStyle,
-						label: 'captionFontStyle',
-					} }
-					transform={ {
-						value: captionTransform,
-						label: 'captionTransform',
-					} }
-					decoration={ {
-						value: captionDecoration,
-						label: 'captionDecoration',
-					} }
-					fontSizeType={ {
-						value: captionFontSizeType,
-						label: 'captionFontSizeType',
-					} }
-					fontSize={ {
-						value: captionFontSize,
-						label: 'captionFontSize',
-					} }
-					fontSizeMobile={ {
-						value: captionFontSizeMob,
-						label: 'captionFontSizeMob',
-					} }
-					fontSizeTablet={ {
-						value: captionFontSizeTab,
-						label: 'captionFontSizeTab',
-					} }
-					lineHeightType={ {
-						value: captionLineHeightType,
-						label: 'captionLineHeightType',
-					} }
-					lineHeight={ {
-						value: captionLineHeight,
-						label: 'captionLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: captionLineHeightMob,
-						label: 'captionLineHeightMob',
-					} }
-					lineHeightTablet={ {
-						value: captionLineHeightTab,
-						label: 'captionLineHeightTab',
-					} }
-				/>
-			</Suspense>
+			<TypographyControl
+				label={ __(
+					'Typography',
+					'ultimate-addons-for-gutenberg'
+				) }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				loadGoogleFonts={ {
+					value: captionLoadGoogleFonts,
+					label: 'captionLoadGoogleFonts',
+				} }
+				fontFamily={ {
+					value: captionFontFamily,
+					label: 'captionFontFamily',
+				} }
+				fontWeight={ {
+					value: captionFontWeight,
+					label: 'captionFontWeight',
+				} }
+				fontStyle={ {
+					value: captionFontStyle,
+					label: 'captionFontStyle',
+				} }
+				transform={ {
+					value: captionTransform,
+					label: 'captionTransform',
+				} }
+				decoration={ {
+					value: captionDecoration,
+					label: 'captionDecoration',
+				} }
+				fontSizeType={ {
+					value: captionFontSizeType,
+					label: 'captionFontSizeType',
+				} }
+				fontSize={ {
+					value: captionFontSize,
+					label: 'captionFontSize',
+				} }
+				fontSizeMobile={ {
+					value: captionFontSizeMob,
+					label: 'captionFontSizeMob',
+				} }
+				fontSizeTablet={ {
+					value: captionFontSizeTab,
+					label: 'captionFontSizeTab',
+				} }
+				lineHeightType={ {
+					value: captionLineHeightType,
+					label: 'captionLineHeightType',
+				} }
+				lineHeight={ {
+					value: captionLineHeight,
+					label: 'captionLineHeight',
+				} }
+				lineHeightMobile={ {
+					value: captionLineHeightMob,
+					label: 'captionLineHeightMob',
+				} }
+				lineHeightTablet={ {
+					value: captionLineHeightTab,
+					label: 'captionLineHeightTab',
+				} }
+			/>
 			<SpacingControl
 				{ ...props }
 				label={ __( 'Caption Padding', 'ultimate-addons-for-gutenberg' ) }
@@ -1766,72 +1763,70 @@ const Settings = ( props ) => {
 						)
 						: (
 							<>
-								<Suspense fallback={ lazyLoader() }>
-									<TypographyControl
-										label={ __(
-											'Typography',
-											'ultimate-addons-for-gutenberg'
-										) }
-										attributes={ attributes }
-										setAttributes={ setAttributes }
-										loadGoogleFonts={ {
-											value: loadMoreLoadGoogleFonts,
-											label: 'loadMoreLoadGoogleFonts',
-										} }
-										fontFamily={ {
-											value: loadMoreFontFamily,
-											label: 'loadMoreFontFamily',
-										} }
-										fontWeight={ {
-											value: loadMoreFontWeight,
-											label: 'loadMoreFontWeight',
-										} }
-										fontStyle={ {
-											value: loadMoreFontStyle,
-											label: 'loadMoreFontStyle',
-										} }
-										transform={ {
-											value: loadMoreTransform,
-											label: 'loadMoreTransform',
-										} }
-										decoration={ {
-											value: loadMoreDecoration,
-											label: 'loadMoreDecoration',
-										} }
-										fontSizeType={ {
-											value: loadMoreFontSizeType,
-											label: 'loadMoreFontSizeType',
-										} }
-										fontSize={ {
-											value: loadMoreFontSize,
-											label: 'loadMoreFontSize',
-										} }
-										fontSizeMobile={ {
-											value: loadMoreFontSizeMob,
-											label: 'loadMoreFontSizeMob',
-										} }
-										fontSizeTablet={ {
-											value: loadMoreFontSizeTab,
-											label: 'loadMoreFontSizeTab',
-										} }
-										lineHeightType={ {
-											value: loadMoreLineHeightType,
-											label: 'loadMoreLineHeightType',
-										} }
-										lineHeight={ {
-											value: loadMoreLineHeight,
-											label: 'loadMoreLineHeight',
-										} }
-										lineHeightMobile={ {
-											value: loadMoreLineHeightMob,
-											label: 'loadMoreLineHeightMob',
-										} }
-										lineHeightTablet={ {
-											value: loadMoreLineHeightTab,
-											label: 'loadMoreLineHeightTab',
-										} }
-									/>
-								</Suspense>
+								<TypographyControl
+									label={ __(
+										'Typography',
+										'ultimate-addons-for-gutenberg'
+									) }
+									attributes={ attributes }
+									setAttributes={ setAttributes }
+									loadGoogleFonts={ {
+										value: loadMoreLoadGoogleFonts,
+										label: 'loadMoreLoadGoogleFonts',
+									} }
+									fontFamily={ {
+										value: loadMoreFontFamily,
+										label: 'loadMoreFontFamily',
+									} }
+									fontWeight={ {
+										value: loadMoreFontWeight,
+										label: 'loadMoreFontWeight',
+									} }
+									fontStyle={ {
+										value: loadMoreFontStyle,
+										label: 'loadMoreFontStyle',
+									} }
+									transform={ {
+										value: loadMoreTransform,
+										label: 'loadMoreTransform',
+									} }
+									decoration={ {
+										value: loadMoreDecoration,
+										label: 'loadMoreDecoration',
+									} }
+									fontSizeType={ {
+										value: loadMoreFontSizeType,
+										label: 'loadMoreFontSizeType',
+									} }
+									fontSize={ {
+										value: loadMoreFontSize,
+										label: 'loadMoreFontSize',
+									} }
+									fontSizeMobile={ {
+										value: loadMoreFontSizeMob,
+										label: 'loadMoreFontSizeMob',
+									} }
+									fontSizeTablet={ {
+										value: loadMoreFontSizeTab,
+										label: 'loadMoreFontSizeTab',
+									} }
+									lineHeightType={ {
+										value: loadMoreLineHeightType,
+										label: 'loadMoreLineHeightType',
+									} }
+									lineHeight={ {
+										value: loadMoreLineHeight,
+										label: 'loadMoreLineHeight',
+									} }
+									lineHeightMobile={ {
+										value: loadMoreLineHeightMob,
+										label: 'loadMoreLineHeightMob',
+									} }
+									lineHeightTablet={ {
+										value: loadMoreLineHeightTab,
+										label: 'loadMoreLineHeightTab',
+									} }
+								/>
 								<UAGTabsControl
 									tabs={ [
 										{
@@ -1861,7 +1856,7 @@ const Settings = ( props ) => {
 	);
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+		<>
 			{/* { blockControls() } */}
 			<InspectorControls>
 				<InspectorTabs>
@@ -1886,7 +1881,7 @@ const Settings = ( props ) => {
 			</InspectorControls>
 			{ loadCaptionGoogleFonts }
 			{ loadLoadMoreGoogleFonts }
-		</Suspense>
+		</>
 	);
 };
 

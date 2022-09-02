@@ -24,6 +24,8 @@ export default function save( props ) {
 		fromParentIcon
 	} = attributes;
 
+	const defaultedAlt = ( image && image?.alt ) ? image?.alt : '';
+
 	let imageIconHtml = '';
 
 	if ( image_icon === 'icon' ) {
@@ -35,7 +37,7 @@ export default function save( props ) {
 			<img
 				className="uagb-icon-list__source-image"
 				src={ image.url }
-				alt={ image.alt }
+				alt={ defaultedAlt }
 			/>
 		);
 	}

@@ -37,6 +37,54 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		}
 
 		/**
+		 * Get all data from the admin settings page.
+		 *
+		 * @return mixed
+		 * @since 2.0.8
+		 */
+		public static function get_admin_settings_shareable_data() {
+
+			$content_width = self::get_global_content_width();
+
+			return array(
+				'enable_beta_updates'           => self::get_admin_settings_option( 'uagb_beta', 'no' ),
+				'enable_legacy_blocks'          => self::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' ),
+				'enable_file_generation'        => self::get_admin_settings_option( '_uagb_allow_file_generation', 'enabled' ),
+				'enable_templates_button'       => self::get_admin_settings_option( 'uag_enable_templates_button', 'yes' ),
+				'enable_block_condition'        => self::get_admin_settings_option( 'uag_enable_block_condition', 'disabled' ),
+				'enable_masonry_gallery'        => self::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ),
+				'enable_block_responsive'       => self::get_admin_settings_option( 'uag_enable_block_responsive', 'enabled' ),
+				'select_font_globally'          => self::get_admin_settings_option( 'uag_select_font_globally', array() ),
+				'load_select_font_globally'     => self::get_admin_settings_option( 'uag_load_select_font_globally', 'disabled' ),
+				'load_gfonts_locally'           => self::get_admin_settings_option( 'uag_load_gfonts_locally', 'disabled' ),
+				'collapse_panels'               => self::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
+				'copy_paste'                    => self::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
+				'preload_local_fonts'           => self::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
+				'enable_coming_soon_mode'       => self::get_admin_settings_option( 'uag_enable_coming_soon_mode', 'disabled' ),
+				'container_global_padding'      => self::get_admin_settings_option( 'uag_container_global_padding', 'default' ),
+				'container_global_elements_gap' => self::get_admin_settings_option( 'uag_container_global_elements_gap', 20 ),
+				'blocks_editor_spacing'         => self::get_admin_settings_option( 'uag_blocks_editor_spacing', 0 ),
+				'load_font_awesome_5'           => self::get_admin_settings_option( 'uag_load_font_awesome_5', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
+				'auto_block_recovery'           => self::get_admin_settings_option( 'uag_auto_block_recovery', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
+				'content_width'                 => $content_width,
+			);
+		}
+
+		/**
+		 * Update all data from the admin settings page.
+		 *
+		 * @param array $data All settings of Admin.
+		 * @return mixed
+		 * @since 2.0.8
+		 */
+		public static function update_admin_settings_shareable_data( $data = array() ) {
+
+			foreach ( $data as $key => $value ) {
+				self::update_admin_settings_option( $key, $value );
+			}
+		}
+
+		/**
 		 * Returns an option from the database for
 		 * the admin settings page.
 		 *

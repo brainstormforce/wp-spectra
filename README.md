@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.0  
-**Stable tag:** 2.0.1  
+**Stable tag:** 2.0.9  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -119,7 +119,7 @@ You may now contribute to the plugin on Github: <a href="https://github.com/brai
 
 <strong>CREDITS</strong>
 
-The awesome React FontIconPicker is developed by <a href="http://codeb.it/" target="_blank" rel="">Alessandro Benoit</a> & <a href="https://github.com/swashata" target="_blank" rel="">Swashata</a>. Our external packages use <a href="https://github.com/n49/react-stars" target="_blank" rel="">Star Ratings Components</a> that are distributed under the terms of the ISC. While <a href="https://github.com/akiran/react-slick" target="_blank" rel="">Slick</a>, <a href="https://github.com/chenqingspring/react-lottie" target="_blank" rel="">Lottie</a> and <a href="https://github.com/ericnorris/striptags" target="_blank" rel="">Striptags</a> is distributed under the terms of the MIT.
+The awesome React FontIconPicker is developed by <a href="http://codeb.it/" target="_blank" rel="">Alessandro Benoit</a> & <a href="https://github.com/swashata" target="_blank" rel="">Swashata</a>. Our external packages use <a href="https://github.com/n49/react-stars" target="_blank" rel="">Star Ratings Component</a> that are distributed under the terms of the ISC. While <a href="https://github.com/akiran/react-slick" target="_blank" rel="">Slick</a>, <a href="https://github.com/chenqingspring/react-lottie" target="_blank" rel="">Lottie</a> and <a href="https://github.com/ericnorris/striptags" target="_blank" rel="">Striptags</a> is distributed under the terms of the MIT.
 
 ## Installation ##
 
@@ -160,15 +160,99 @@ Absolutely no! The Spectra is built with ease and performance in mind. Its modul
 
 When you use the Spectra along with the free Astra theme, you get a huge library of ready-to-use starter sites that can be imported and used to build your own. Read an article about the <a href="https://wpspectra.com/ready-websites-for-gutenberg/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Starter Sites with Gutenberg</a> to know more.
 
-## Credits ##
-
-The awesome React FontIconPicker is developed by [Alessandro Benoit](http://codeb.it/) & [Swashata](https://github.com/swashata). Our external packages uses [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
-
 ## Screenshots ##
 
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+
+### 2.0.9 - THURSDAY, 1st SEPTEMBER 2022 ###
+* Fix: Post Blocks - PHP notice if the number of columns are not set.
+
+### 2.0.8 - THURSDAY, 1st SEPTEMBER 2022 ###
+* Improvement: Added Responsive and Display conditions settings to core blocks.
+* Improvement: Updated admin dashboard UI.
+* Fix: Price List - Inside container price list not aligned properly on editor.
+* Fix: Image - Box shadow not applying to a valid element.
+* Fix: Section - Inner section block border not working properly on front-end.
+* Fix: Post Carousel/Grid/Masonry - Inaccurate font size for 'Read More' link was displayed in the editor for tablet preview (when mobile and tablet font sizes were set).
+* Fix: PHP notice for new users when they activate Astra theme.
+* Fix: Table of Content - Fixed collapsible icon alignment for frontend.
+* Fix: Heading - Set sub heading as enabled by default for old users.
+* Fix: Heading - Set default alignment of heading & sub heading as center for old users.
+* Fix: Footer Widgets - CSS was not loading for empty archive/category and 404 pages.
+* Fix: Media Picker - Updated Lottie and Video Icon Colors.
+* Fix: Advanced Columns - Column reverse functionality not working as expected on frontend for old user.
+* Fix: Post Blocks - Max Number of columns should not be dependent on number of posts.
+* Fix: Post Grid - Post overflows its proper column size.
+
+### 2.0.7 - FRIDAY, 26th AUGUST 2022 ###
+* Improvement: Added Legacy Labels in the Editor Block Inserter.
+* Improvement: Updated the design of inactive block/extension tabs in the admin dashboard.
+* Improvement: Social Share Child, Icon List Child, How to, Review Blocks - Added missing alt attributes for img tags.
+* Fix: Table of Content - Updated Font Awesome 6 migration on front-end refresh.
+* Fix: Borders - Borders styling not saving for multiple blocks for new block case.
+* Fix: CTA - Disabled CTA links in editor.
+* Fix: Post Carousel - Slider dots overlapping on below blocks.
+* Fix: Container - Flex properties do not work when Container Width & Content Width both are set as full width.
+* Fix: Legacy block not visible on Blocks/Extension page after enabling setting.
+* Fix: Review - Enabling schema support does not give valid schema JSON on frontend.
+* Fix: InfoBox - Default btn padding issue on front-end for old users.
+* Fix: Container - Inner Container overflow if the custom widths is set in pixels.
+* Fix: Post carousel - Broken and throwing console issue on shop page.
+
+### 2.0.6 - WEDNESDAY, 24th AUGUST 2022 ###
+* Fix: Testimonial - Bottom padding and gradient color not working on frontend.
+* Fix: Responsive preview in editor - Editor preview for mobile and tablets was not working across different languages.
+* Fix: Post Grid/Masonry/Carousel - Fixed hover color background leaking out of border radius.
+* Fix: Review - Fixed star size changing in editor, when text labels were long; Also reduced excess spacing between stars and delete icon for responsive preview.
+* Fix: Icon List - Font size and line height was not inherited from site/customizer settings.
+* Fix: Column-child - Migrate Border stylings on editor
+* Fix: Button - Default padding is not retained for old users on frontend.
+* Fix: Disabled Lazy Loading of Blocks Components in Editor to fix the chunkLoading error.
+* Fix: Copy Paste Styles - Updated logic to work using site's local storage.
+
+
+### 2.0.5 - TUESDAY, 23rd AUGUST 2022 ###
+* Fix: Inherit Heading Block Link Color from theme.
+* Fix: Post Grid - Pagination alignment not working on frontend.
+* Fix: Post Layout - Title content not visible after title HTML tag set to P.
+* Fix: Heading - Set default alignment for heading as center for old users.
+* Fix: Call to Action - Buttons Text not wrapping on smaller devices.
+* Fix: Updated Border styling on front-end in multiple blocks for old users.
+* Fix: Advanced Row (Section) & Advanced Columns - Background color and Video opacity issue for old users.
+
+### 2.0.4 - SUNDAY, 21st AUGUST 2022 ###
+* Feature: Added Enable Legacy Blocks option in Admin Dashboard.
+* Fix: Buttons - Text inside button not wrapping on small devices.
+* Fix: Automatic Block Recovery not working and block displays blank in editor when reusable block is present on the page.
+* Fix: FAQ - Enabling schema support does not give valid schema JSON on frontend.
+* Fix: Container - Fixed anchor bug (anchor wasn't working and the anchor value wasn't saved)
+* Fix: Advanced Row (Section) & Advanced Columns - Opacity not working for background image when image overlay type was set as gradient for old user.
+* Fix: Post Masonry & Post Carousel - When image position is set to background then content bottom padding is not applicable.
+* Fix: Tabs Child - Border not visible in editor for old users.
+* Fix: Tabs - Layout styles not displaying as they should for responsive devices.
+* Fix: Border backward compatibility issues on frontend in multiple blocks.
+
+### 2.0.3 - FRIDAY, 19TH AUGUST 2022 ###
+* Decision: Instead of deprecating some blocks, we decided to call them "legacy" blocks. Legacy blocks work fine and will get support/bug fixes.
+* Improvement: Removed deprecation notices from the settings of the blocks.
+* Improvement: Added a setting to set default values for "column gap" & "row gap" in the container.
+* Fix: Advance Columns - Full-width layout not getting full width on the frontend.
+* Fix: Padding in some blocks were not visible in the editor for old user.
+* Fix: Post Grid - Content padding getting applied to post image.
+* Fix: Icon List - Fixed word wrapping and breaking behavior.
+* Fix: Info Box, Heading, Call to Action - overridden text color on frontend when used in the Cover Block.
+* Fix: Post Carousel, Grid, and Masonry - Disabled 'Read More' links in the editor and ensured pointer is shown on button hover.
+* Fix: Post layout - Title color turns white when background image position is set.
+* Fix: Table of contents - Headings not scroll when Cyrillic and English combination is used.
+* Fix: Backward Compatibility border issues on front-end in multiple blocks
+
+### 2.0.2 - WEDNESDAY, 17TH AUGUST 2022 ###
+* Fix: Compatibility issues with PHP version 7.2 and older.
+* Fix: Forms - Throws an error on drag and drop.
+* Fix: Icon List - Throws an undefined innerBlocks when drag and drop from block inserter.
+* Fix: Icon List - Throws an PHP Notice for old users.
 
 ### 2.0.1 - WEDNESDAY, 17TH AUGUST 2022 ###
 * Improvement: Updated the link to the intro video in Spectra's admin dashboard.

@@ -153,16 +153,19 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 
 		e.preventDefault();
 
-		const hash = e.target.getAttribute( 'href' );
-		if ( hash !== '' ) {
+		let hash = e.target.getAttribute( 'href' );
+		if ( hash ) {
 			const node = document.querySelector( '.wp-block-uagb-table-of-contents' ); // eslint-disable-line no-undef
 
 			scrollData = node.getAttribute( 'data-scroll' );
 			scrollOffset = node.getAttribute( 'data-offset' );
 			let offset = null;
-			if ( document?.querySelector( hash ) ) {
+			
+			hash = hash.substring( 1 );
 
-				offset = document.querySelector( hash )?.getBoundingClientRect().top + window.scrollY;
+			if ( document?.querySelector( "[id='" + hash + "']" ) ) {
+
+				offset = document.querySelector( "[id='" + hash + "']"  )?.getBoundingClientRect().top + window.scrollY;
 			}
 			if ( scrollData ) {
 				if ( null !== offset ) {
@@ -244,7 +247,9 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 					const searchText = divsArr[i].innerText;
 					for ( let j = 0; j < aTags.length; j++ ) {
 						if ( aTags[j].textContent === searchText ) {
-							headerText = aTags[j].setAttribute( 'href' , ' ' );
+							const randomID = '#toc_' + Math.random();
+							aTags[j].setAttribute( 'href' , randomID );
+							headerText =  randomID.substring( 1 );
 						}
 					}
 				}

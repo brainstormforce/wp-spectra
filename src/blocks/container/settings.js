@@ -1,5 +1,5 @@
-import React, { Suspense, useEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {  useEffect } from 'react';
+
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -205,7 +205,7 @@ const Settings = ( props ) => {
 		bottomDividerHeightType
 	} = attributes;
 
-	let currentDirection = directionDesktop;
+	let currentDirection = directionDesktop?.split( '-' )?.[0];
 
 	if ( attributes[ 'direction' + deviceType ] && attributes[ 'direction' + deviceType ].split( '-' )[0] ) {
 
@@ -2053,7 +2053,7 @@ const Settings = ( props ) => {
 	};
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
@@ -2074,7 +2074,7 @@ const Settings = ( props ) => {
 					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-		</Suspense>
+
 	);
 };
 export default React.memo( Settings );

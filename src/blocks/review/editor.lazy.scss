@@ -1,4 +1,13 @@
+$breakpoint-tablet: 976px;
+$breakpoint-mobile: 768px;
+
 .editor-styles-wrapper [data-type="uagb/review"] {
+
+	.uagb_review_entry div:nth-child(2) {
+		min-width: unset !important;  // !important is required to override markup/inline-styling.
+		display: flex;
+		flex-direction: row-reverse;
+	}
 
 	.rating-schema-notices {
 		padding: 8px 10px;
@@ -35,5 +44,13 @@
 	.uagb_review_entry .dashicons-trash {
 		float: right;
 		margin-left: 50px;
+
+		@media screen and (max-width: $breakpoint-tablet) {
+			margin-left: 25px;
+		}
+
+		@media screen and (max-width: $breakpoint-mobile) {
+			margin-left: 15px;
+		}
 	}
 }

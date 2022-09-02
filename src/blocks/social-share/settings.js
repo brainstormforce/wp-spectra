@@ -2,8 +2,8 @@
  * BLOCK: Social Share - Settings.
  */
 
-import lazyLoader from '@Controls/lazy-loader';
-import React, { Suspense } from 'react';
+
+import React from 'react';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -402,7 +402,7 @@ const Settings = ( props ) => {
 	};
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
@@ -419,7 +419,7 @@ const Settings = ( props ) => {
 					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-		</Suspense>
+
 	);
 };
 

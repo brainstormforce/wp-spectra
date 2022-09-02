@@ -3,23 +3,15 @@
  */
 
 import styling from './styling';
-import React, { lazy, useEffect, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {   useEffect,  } from 'react';
+
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/table-of-contents/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/table-of-contents/render" */ './render'
-	)
-);
+import Settings from './settings';
+import Render from './render';
 
 import { withSelect } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
@@ -201,7 +193,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 		const {borderStyle,borderWidth,borderRadius,borderColor,borderHColor} = props.attributes;
 		// Backward Border Migration
 		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'overall', {
+			migrateBorderAttributes( 'overall', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -216,9 +208,10 @@ const UAGBTableOfContentsEdit = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			}
+			},
+			props.setAttributes,
+			props.attributes
 			);
-			props.setAttributes( migrationAttributes )
 		}
 	}, [] );
 
@@ -254,10 +247,12 @@ const UAGBTableOfContentsEdit = ( props ) => {
 	/* eslint-enable no-undef */
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
+					<>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 

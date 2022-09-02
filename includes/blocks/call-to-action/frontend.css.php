@@ -7,8 +7,8 @@
  * @package uagb
  */
 
-$cta_border = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
-$cta_border = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+$cta_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
+$cta_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$cta_border,
 	( isset( $attr['ctaBorderWidth'] ) ? $attr['ctaBorderWidth'] : '' ),
 	( isset( $attr['ctaBorderRadius'] ) ? $attr['ctaBorderRadius'] : '' ),
@@ -16,7 +16,6 @@ $cta_border = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	( isset( $attr['ctaBorderStyle'] ) ? $attr['ctaBorderStyle'] : '' ),
 	( isset( $attr['ctaBorderHColor'] ) ? $attr['ctaBorderHColor'] : '' )
 );
-
 $cta_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
 $cta_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
 
@@ -79,12 +78,12 @@ if ( 'left' === $attr['textAlignMobile'] ) {
 	$alignmentMobile = 'center';
 }
 $selectors = array(
-	' .uagb-cta__title'                                    => array(
+	'.wp-block-uagb-call-to-action .uagb-cta__title'       => array(
 		'line-height'   => UAGB_Helper::get_css_value( $attr['titleLineHeight'], $attr['titleLineHeightType'] ),
 		'color'         => $attr['titleColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $title_space_fallback, $attr['titleSpaceType'] ),
 	),
-	' .uagb-cta__desc'                                     => array(
+	'.wp-block-uagb-call-to-action .uagb-cta__desc'        => array(
 		'color'         => $attr['descColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $desc_space_fallback, $attr['descSpaceType'] ),
 	),
@@ -169,7 +168,7 @@ if ( 'button' === $attr['ctaType'] ) {
 			'padding-left'     => UAGB_Helper::get_css_value( $btn_padding_left, $attr['ctaPaddingUnit'] ),
 			'padding-right'    => UAGB_Helper::get_css_value( $btn_padding_right, $attr['ctaPaddingUnit'] ),
 		),
-		$cta_border,
+		$cta_border
 	);
 	$selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-button:hover']           = array(
 		'color'            => $attr['ctaLinkHoverColor'],
