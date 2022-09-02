@@ -166,6 +166,9 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 == Changelog ==
 
+= 2.0.10 =
+* Fix: Responsive condition - Conflicting with plugin using REST API block preview.
+
 = 2.0.9 - THURSDAY, 1st SEPTEMBER 2022 =
 * Fix: Post Blocks - PHP notice if the number of columns are not set.
 
