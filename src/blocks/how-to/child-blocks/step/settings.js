@@ -248,6 +248,7 @@ const Settings = ( props ) => {
 					options={[
 						{ value: 'text', label: __( 'Text' ) },
 						{ value: 'all', label: __( 'Complete Box' ) },
+						{ value: 'none', label: __( 'None' ) },
 					]}
 				/>
 				{urlType === 'text' && (
