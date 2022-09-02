@@ -230,6 +230,10 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 					unset( $attributes['zIndex'] );
 				}
 
+				if ( isset( $attributes['UAGResponsiveConditions'] ) ) {
+					unset( $attributes['UAGResponsiveConditions'] );
+				}
+
 					$request['attributes'] = $attributes;
 
 			}
