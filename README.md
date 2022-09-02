@@ -166,7 +166,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 ## Changelog ##
 
-### 2.0.8 - FRIDAY, 2nd SEPTEMBER 2022 ###
+### 2.0.10 - FRIDAY, 2nd SEPTEMBER 2022 ###
 * Fix: Info Box - Description margin considers values for desktop, even for tablet and mobile devices (on frontend).
 
 ### 2.0.9 - THURSDAY, 1st SEPTEMBER 2022 ###
