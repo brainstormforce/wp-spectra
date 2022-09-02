@@ -3,6 +3,15 @@ import { isBlobURL } from '@wordpress/blob';
 export const pickRelevantMediaFiles = ( image, size ) => {
 	const { alt, id, link, caption,url} = image
 	const imageProps = {alt, id, link, caption,url};
+	// console.log(image?.sizes)
+	// console.log(image?.sizes[size])
+	// console.log(image?.media_details?.sizes[size])
+	// console.log(image?.media_details)
+	// console.log(image)
+	// console.log(image?.sizes['full']?.width)
+	// console.log(image?.sizes['full']?.height)
+	// console.log(( image?.sizes && image?.sizes[size] ))
+	// console.log(( image?.media_details && image?.media_details?.sizes[size] ))
 	if( image?.sizes && image?.sizes[size] ){
 		return {
 			...imageProps,
@@ -21,6 +30,8 @@ export const pickRelevantMediaFiles = ( image, size ) => {
 
 	return {
 		...imageProps,
+		width: image?.sizes['full']?.width,
+		height: image?.sizes['full']?.height,
 		url: image?.url
 	}
 };
@@ -57,7 +68,14 @@ export const isExternalImage = ( id, url ) => url && ! id && ! isBlobURL( url );
  * @return {boolean} Whether or not it has default image size.
  */
 export const hasDefaultSize = ( image, defaultSize ) => {
-	return image.hasOwnProperty( 'sizes' ) || image.hasOwnProperty( 'url' ) || image.hasOwnProperty( 'media_details' ) || image.hasOwnProperty( 'source_url' ) || image[defaultSize] !== undefined
+	// return image.hasOwnProperty( 'sizes' ) || image.hasOwnProperty( 'url' ) || image.hasOwnProperty( 'media_details' ) || image.hasOwnProperty( 'source_url' ) || image[defaultSize] !== undefined
+	// console.log(image?.sizes?.[ defaultSize ]);
+	// console.log(image?.media_details?.sizes?.[ defaultSize ])
+	return ( image?.sizes?.[ defaultSize ] || image?.media_details?.sizes?.[ defaultSize ] ) ? true : false;
+	// return (
+	// 	'url' in ( image?.sizes?.[ defaultSize ] ?? {} ) ||
+	// 	'source_url' in ( image?.media_details?.sizes?.[ defaultSize ] ?? {} )
+	// );
 }
 
 /**

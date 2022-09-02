@@ -182,7 +182,7 @@ const Render = ( props ) => {
 				link: mediaAttributes.link
 			};
 		}
-
+// console.log(hasDefaultSize( media, imageDefaultSize ))
 		let additionalAttributes;
 		// Reset the dimension attributes if changing to a different image.
 		if ( ! media.id || media.id !== id ) {
