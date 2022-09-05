@@ -188,16 +188,16 @@ UAGBForms = { // eslint-disable-line no-undef
 
 		let captcha_response;
 
-		if( '' === attr.afterSubmitToEmail || null === attr.afterSubmitToEmail ) {
+		// if( '' === attr.afterSubmitToEmail || null === attr.afterSubmitToEmail ) {
 
-			const hideForm = document.querySelector( '[name="uagb-form-' + attr.block_id + '"]' );
-			hideForm.style.display = 'none';
+		// 	const hideForm = document.querySelector( '[name="uagb-form-' + attr.block_id + '"]' );
+		// 	hideForm.style.display = 'none';
 
-			const errorMsg = document.querySelector( '.uagb-forms-success-message-' + attr.block_id );
-			errorMsg.classList.remove( 'uagb-forms-submit-message-hide' );
-			errorMsg.classList.add( 'uagb-forms-success-message' );
-			return false;
-		}
+		// 	const errorMsg = document.querySelector( '.uagb-forms-success-message-' + attr.block_id );
+		// 	errorMsg.classList.remove( 'uagb-forms-submit-message-hide' );
+		// 	errorMsg.classList.add( 'uagb-forms-success-message' );
+		// 	return false;
+		// }
 
 		if ( attr.reCaptchaEnable === true ) {
 
@@ -230,19 +230,10 @@ UAGBForms = { // eslint-disable-line no-undef
 			const inputname = document.getElementById( originalSerialized[ i ].name );
 			if ( originalSerialized[ i ].name.endsWith( '[]' ) ) {
 				//For checkbox element
-				const name = document.getElementById( originalSerialized[ i ].name );
-				if ( ! ( name in postData ) ) {
-					postData[ name ] = [];
+				if ( ! ( originalSerialized[ i ].name in postData ) ) {
+					postData[ originalSerialized[ i ].name ] = [];
 				}
-				postData[ name ].push( originalSerialized[ i ].value );
-			} else if ( originalSerialized[ i ].value.startsWith( '+' ) ) {
-				//For phone element.
-				let name = originalSerialized[ i ].name;
-				name = name.substring( 0, name.length - 2 );
-				if ( ! ( name in postData ) ) {
-					postData[ name ] = [];
-				}
-				postData[ name ].push( originalSerialized[ i ].value );
+				postData[ originalSerialized[ i ].name ].push( originalSerialized[ i ].value );
 			} else if( inputname !== null ){
 					postData[ inputname.innerHTML] = originalSerialized[ i ].value;
 				}
