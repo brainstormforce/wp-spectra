@@ -562,8 +562,10 @@ const Settings = ( props ) => {
 		<>
 			<UAGAdvancedPanelBody title={ __( 'Gallery', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<MultiMediaSelector
-					componentLabel={ 'Update Gallery' }
-					mediaTypeLabel={ 'Images' }
+					slug={ 'gallery' }
+					label={ __( 'Update Gallery', 'ultimate-addons-for-gutenberg' ) }
+					disableLabel={ true }
+					mediaType={ 'images' }
 					onSelectMedia={ updateMediaGallery }
 					mediaGallery={ mediaGallery }
 					mediaIDs={ mediaIDs }

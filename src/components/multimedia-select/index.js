@@ -7,8 +7,10 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 const MultiMediaSelector = ( props ) => {
 
 	const {
-		componentLabel,
-		mediaTypeLabel,
+		slug = 'media',
+		label = __( 'Media', 'ultimate-addons-for-gutenberg' ),
+		disableLabel = false,
+		mediaType,
 		onSelectMedia,
 		mediaGallery,
 		mediaIDs,
@@ -18,21 +20,22 @@ const MultiMediaSelector = ( props ) => {
 	} = props;
 
 	const placeholderIcon = UAGB_Block_Icons.image_gallery;
-	
-	const mainLabel = __(
-		componentLabel ? componentLabel : 'Media',
-		'ultimate-addons-for-gutenberg'
-	);
 
-	const selectorLabel = __(
-		`Select ${ mediaTypeLabel ? mediaTypeLabel : 'Media' }`,
-		'ultimate-addons-for-gutenberg'
-	);
+	let selectorLabel, replacerLabel;
 
-	const replacerLabel = __(
-		createGallery ? 'Edit Gallery' : `Replace ${ mediaTypeLabel ? mediaTypeLabel : 'Media' }`,
-		'ultimate-addons-for-gutenberg'
-	);
+	switch ( mediaType ) {
+		case 'images':
+			selectorLabel = __( 'Select Images', 'ultimate-addons-for-gutenberg' );
+			replacerLabel = __( 'Replace Images', 'ultimate-addons-for-gutenberg' );
+			break;
+		default:
+			selectorLabel = __( 'Select Media', 'ultimate-addons-for-gutenberg' );
+			replacerLabel = __( 'Replace Media', 'ultimate-addons-for-gutenberg' );
+	}
+
+	if ( createGallery ) {
+		replacerLabel = __( 'Edit Gallery', 'ultimate-addons-for-gutenberg' );
+	}
 
 	const renderMediaUploader = ( open ) => {
 		const uploadType = mediaGallery[ 0 ]?.url ? 'replace' : 'add';
@@ -59,8 +62,9 @@ const MultiMediaSelector = ( props ) => {
 	return (
 		<BaseControl
 			className="spectra-media-control"
-			id={ `uagb-option-selector-${ componentLabel ? componentLabel : 'multimedia' }` }
-			label={ mainLabel }
+			id={ `uagb-option-selector-${ slug }` }
+			label={ label }
+			hideLabelFromVision={ disableLabel }
 		>
 			<div className="spectra-media-control__wrapper">
 				{ mediaGallery[ 0 ]?.url && (
@@ -91,45 +95,6 @@ const MultiMediaSelector = ( props ) => {
 			) }
 		</BaseControl>
 	);
-
-	// return (
-	// 	<BaseControl
-	// 		className="editor-bg-image-control"
-	// 		id={ `uagb-option-selector-${ componentLabel ? componentLabel : 'multimedia' }` }
-	// 		label={ mainLabel }
-	// 	>
-	// 		<div className="uagb-bg-image">
-	// 			<MediaUpload
-	// 				title={ selectorLabel }
-	// 				onSelect={ onSelectMedia }
-	// 				allowedTypes={ allowedTypes ? allowedTypes : [ 'image', 'video', 'audio' ] }
-	// 				multiple={ true }
-	// 				value={ mediaIDs }
-	// 				gallery={ createGallery }
-	// 				render={ ( { open } ) => (
-	// 					<Button isSecondary onClick={ open }>
-	// 						{ ! mediaGallery[ 0 ]?.url
-	// 							? selectorLabel
-	// 							: replacerLabel }
-	// 					</Button>
-	// 				) }
-	// 			/>
-	// 			{ onRemoveMedia && (
-	// 				<Button
-	// 					className="uagb-rm-btn"
-	// 					onClick={ onRemoveMedia }
-	// 					isLink
-	// 					isDestructive
-	// 				>
-	// 					{ removerLabel }
-	// 				</Button>
-	// 			) }
-	// 			{ props.help && (
-	// 				<p className="uag-control-help-notice">{ props.help }</p>
-	// 			) }
-	// 		</div>
-	// 	</BaseControl>
-	// );
 };
 
 export default MultiMediaSelector;
