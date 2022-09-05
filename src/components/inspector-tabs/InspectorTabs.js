@@ -2,6 +2,7 @@ import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
+import { doAction } from '@wordpress/hooks';
 import {
 	cloneElement,
 	Children,
@@ -96,11 +97,10 @@ const InspectorTabs = ( props ) => {
 	const _onTabChange = ( tab ) => {
 		renderUAGTabsSettingsInOrder();
 		setCurrentTab( tab );
-
+		doAction(`uag_inspector_change_tab`,tab);
 		if ( sidebarPanel ) {
 			sidebarPanel.setAttribute( 'data-uagb-tab', tab );
 		}
-
 		// Below code is to set the setting state of Tab for each block.
 		const { getSelectedBlock } = select( 'core/block-editor' );
 		const blockName = getSelectedBlock()?.name;
