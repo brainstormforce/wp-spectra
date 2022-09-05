@@ -1163,13 +1163,14 @@ const Settings = ( props ) => {
 			imageVal = test_block[ index ].image;
 		}
 		const labelIndex = index + 1;
+		const imageLabel = __( 'Image', 'ultimate-addons-for-gutenberg' );
 		return (
 			<UAGMediaPicker
 				onSelectImage={ ( media ) => onSelectTestImage( media, index ) }
 				backgroundImage={ imageVal }
 				onRemoveImage={ () => onRemoveTestImage( index ) }
 				slug={ `image-${ labelIndex }` }
-				label={ __( `Image ${ labelIndex }`, 'ultimate-addons-for-gutenberg' ) }
+				label={ `${ imageLabel } ${ labelIndex }` }
 			/>
 		);
 	};
