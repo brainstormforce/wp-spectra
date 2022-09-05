@@ -102,6 +102,8 @@ if ( 'image' === $bg_type ) {
 	}
 }
 
+$selectors[' > .uagb-column__overlay']['border-radius'] = $border['border-top-left-radius'] . ' ' . $border['border-top-right-radius'] . ' ' . $border['border-bottom-left-radius'] . ' ' . $border['border-bottom-right-radius'];
+
 if ( '' !== $attr['colWidth'] && 0 !== $attr['colWidth'] ) {
 
 	$selectors['.uagb-column__wrap']['width'] = UAGB_Helper::get_css_value( $attr['colWidth'], '%' );
