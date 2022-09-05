@@ -22,8 +22,8 @@ export const pickRelevantMediaFiles = ( image, size ) => {
 
 	return {
 		...imageProps,
-		width: image?.sizes['full']?.width,
-		height: image?.sizes['full']?.height,
+		width: image?.sizes?.full?.width,
+		height: image?.sizes?.full?.height,
 		url: image?.url
 	}
 };
