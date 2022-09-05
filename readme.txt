@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.0
-Stable tag: 2.0.9
+Stable tag: 2.0.10
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -168,6 +168,9 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 = 2.0.11 =
 * Fix: Image: Image Size not working as expected for images when drag and drop.
+
+= 2.0.10 - FRIDAY, 2nd SEPTEMBER 2022 =
+* Fix: Responsive condition - Conflicting with plugin using REST API block preview.e
 
 = 2.0.9 - THURSDAY, 1st SEPTEMBER 2022 =
 * Fix: Post Blocks - PHP notice if the number of columns are not set.
