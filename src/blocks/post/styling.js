@@ -267,9 +267,6 @@ function styling( props ) {
 	const dotsMarginTopTabletFallback = getFallbackNumber( dotsMarginTopTablet, 'dotsMarginTopTablet', blockName );
 	const dotsMarginTopMobileFallback = getFallbackNumber( dotsMarginTopMobile, 'dotsMarginTopMobile', blockName );
 
-	console.log(dotsMarginTopFallback)
-	console.log( dotsMarginTopUnit )
-
 	let mobileSelectors = {};
 	let tabletSelectors = {};
 
