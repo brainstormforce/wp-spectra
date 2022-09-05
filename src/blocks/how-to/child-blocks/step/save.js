@@ -70,16 +70,23 @@ export default function save( props ) {
 				value={ description }
 			/>
 			{'text' === urlType && (
-				<a
-					href={url}
-					target={target}
-					className="uagb-step-link"
-					rel="noopener noreferrer"
-				>
-					<span className="uagb-step-link-text">
-						{urlText}
-					</span>
-				</a>
+				<>
+					{ '' !== url?
+						<a
+							href={url}
+							target={target}
+							className="uagb-step-link"
+						>
+							<span className="uagb-step-link-text">
+							{urlText}
+							</span>
+						</a>
+						:
+						<span className="uagb-step-link-text">
+							{urlText}
+						</span>
+					}
+				</>
 			)}
 		</div>
 	);
