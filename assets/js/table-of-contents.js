@@ -19,9 +19,9 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 
 		const elementToOpen = document.querySelector( id );
 
-		document.addEventListener( 'click', someListener );
+		document.addEventListener( 'click', collapseListener );
 
-		function someListener( event ){
+		function collapseListener( event ){
 			
 			const element = event.target;
 
