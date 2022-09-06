@@ -86,6 +86,7 @@ export default function save( props ) {
 				`uagb-block-${ block_id }`,
 				isBlockRootParent ?  `${contentWidth} uagb-is-root-container` : '',
 			) }
+			style={blockProps.style}
 			{...customTagLinkAttributes}
 		>
 			{ topDividerHtml }
