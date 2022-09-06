@@ -1,5 +1,5 @@
-import React, {Suspense, useEffect} from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect} from 'react';
+
 import TypographyControl from '@Components/typography';
 import { useViewportMatch } from '@wordpress/compose';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -369,7 +369,7 @@ export default function Settings( props ) {
 	const objectFitOptions = {
 		desktop: [
 			{
-				value: 'default',
+				value: '',
 				label: __(
 					'Default',
 					'ultimate-addons-for-gutenberg'
@@ -399,7 +399,7 @@ export default function Settings( props ) {
 		],
 		tablet: [
 			{
-				value: 'default',
+				value: '',
 				label: __(
 					'Default',
 					'ultimate-addons-for-gutenberg'
@@ -429,7 +429,7 @@ export default function Settings( props ) {
 		],
 		mobile: [
 			{
-				value: 'default',
+				value: '',
 				label: __(
 					'Default',
 					'ultimate-addons-for-gutenberg'
@@ -1280,7 +1280,7 @@ export default function Settings( props ) {
 					},
 				] }
 			/>
-			<Suspense fallback={ lazyLoader() }>
+
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -1360,7 +1360,7 @@ export default function Settings( props ) {
 						label: 'headingLetterSpacingType',
 					} }
 				/>
-			</Suspense>
+
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ headingColor ? headingColor : '' }
@@ -1451,7 +1451,7 @@ export default function Settings( props ) {
 			title={ layout === 'overlay' ?  __( 'Description', 'ultimate-addons-for-gutenberg' ) : __( 'Caption', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
-			<Suspense fallback={ lazyLoader() }>
+
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -1531,7 +1531,7 @@ export default function Settings( props ) {
 						label: 'captionLetterSpacingType',
 					} }
 				/>
-			</Suspense>
+
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ captionColor ? captionColor : '' }
@@ -1622,16 +1622,12 @@ export default function Settings( props ) {
 			title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
-			{
-				layout === 'default' && (
-					<ResponsiveBorder
-						setAttributes={ setAttributes }
-						prefix={'image'}
-						attributes={ attributes }
-						deviceType={deviceType}
-					/>
-				)
-			}
+			<ResponsiveBorder
+				setAttributes={ setAttributes }
+				prefix={'image'}
+				attributes={ attributes }
+				deviceType={deviceType}
+			/>
 
 			<SpacingControl
 				label={ __(

@@ -7,7 +7,9 @@
  * @package uagb
  */
 
-$button_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
+$button_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
+	'btn'
+);
 
 return array_merge(
 	array(
@@ -41,6 +43,7 @@ return array_merge(
 		'backgroundHoverOpacity'    => '',
 		'titleColor'                => '',
 		'titleHoverColor'           => '',
+		'icon'                      => 'up-right-from-square',
 		'iconColor'                 => '',
 		'iconHoverColor'            => '',
 		'iconPosition'              => 'after',
@@ -93,6 +96,11 @@ return array_merge(
 		'prefixLetterSpacingTablet' => '',
 		'prefixLetterSpacingMobile' => '',
 		'prefixLetterSpacingType'   => 'px',
+		'borderStyle'               => 'solid',
+		'borderWidth'               => 1,
+		'borderRadius'              => 2,
+		'borderColor'               => '',
+		'borderHoverColor'          => '',
 	),
 	$button_attribute
 );

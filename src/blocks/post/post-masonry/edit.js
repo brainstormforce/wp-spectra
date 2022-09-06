@@ -1,9 +1,9 @@
 /**
  * External dependencies
  */
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect,    } from 'react';
 import { __ } from '@wordpress/i18n';
-import lazyLoader from '@Controls/lazy-loader';
+
 import styling from '.././styling';
 import { compose } from '@wordpress/compose';
 import TypographyControl from '@Components/typography';
@@ -22,20 +22,15 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import {buttonsPresets} from './presets';
 import UAGPresets from '@Components/presets';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import { decodeEntities } from '@wordpress/html-entities';
+import UAGNumberControl from '@Components/number-control';
 
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-masonry/settings" */ './settings'
-	)
-);
-
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/post-masonry/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -45,12 +40,13 @@ import {
 	ToggleControl,
 	TextControl,
 	Icon,
-	Notice,
+	ExternalLink
 } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
 
 import { withSelect, withDispatch } from '@wordpress/data';
+
 
 const UAGBPostMasonry = ( props ) => {
 
@@ -334,6 +330,8 @@ const UAGBPostMasonry = ( props ) => {
 
 		addBlockEditorDynamicStyles( 'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 
+		scrollBlockToView();
+
 	}, [ props.deviceType ] );
 
 	const togglePreview = () => {
@@ -356,6 +354,11 @@ const UAGBPostMasonry = ( props ) => {
 
 		setAttributes( { taxonomyType: value } );
 		setAttributes( { categories: '' } );
+	};
+
+	const onSelectOffset = ( value ) => {
+		setAttributes( { enableOffset: value } );
+		setAttributes( { paginationType: 'none' } ); // setting up pagination none when enableOffset is true.
 	};
 
 	const {
@@ -571,7 +574,7 @@ const UAGBPostMasonry = ( props ) => {
 		ctaLetterSpacingTablet,
 		ctaLetterSpacingMobile,
 		ctaLetterSpacingType,
-
+		enableOffset
 	} = attributes;
 
 	const taxonomyListOptions = [];
@@ -705,24 +708,50 @@ const UAGBPostMasonry = ( props ) => {
 						} )
 					}
 				/>
-				<Range
+				<UAGNumberControl
 					label={ __(
 						'Posts Per Page',
 						'ultimate-addons-for-gutenberg'
 					) }
+					setAttributes={ setAttributes }
 					value={ postsToShow }
 					data={ {
 						value: postsToShow,
 						label: 'postsToShow',
 					} }
-					setAttributes={ setAttributes }
-					displayUnit={ false }
 					min={ 1 }
 					max={ 100 }
+					displayUnit={ false }
 				/>
-				<Range
+				<ToggleControl
 					label={ __(
 						'Offset Starting Post',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ enableOffset }
+					onChange={ onSelectOffset }
+					help= {
+						<>
+						{ !enableOffset && (
+							<>
+							{ __(
+								'Note: Enabling this will disable the Pagination. Setting the offset parameter overrides/ignores the paged parameter and breaks pagination. ',
+								'ultimate-addons-for-gutenberg' ) }
+							<ExternalLink
+								href={ 'https://developer.wordpress.org/reference/classes/wp_query/#pagination-parameters:~:text=Warning%3A%20Setting%20the%20offset%20parameter%20overrides/ignores%20the%20paged%20parameter%20and%20breaks%20pagination.%20The%20%27offset%27%20parameter%20is%20ignored%20when%20%27posts_per_page%27%3D%3E%2D1%20(show%20all%20posts)%20is%20used.' }
+							>
+								{ __( 'Read more' ) }
+							</ExternalLink>
+							</>
+							)
+						}
+						</>
+					}
+				/>
+				{ enableOffset && (
+				<UAGNumberControl
+					label={ __(
+						'Offset By',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={ setAttributes }
@@ -735,10 +764,15 @@ const UAGBPostMasonry = ( props ) => {
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ false }
-				 	help= {__(
-					'P.S. Note that We need to add Offset Starting Post to start post loading from specific post order.',
-					'ultimate-addons-for-gutenberg' )}
+					help= {
+						<>
+						{ enableOffset && __(
+						'Note: The offset will skip the number of posts set, and will use the next post as the starting post.',
+						'ultimate-addons-for-gutenberg' )}
+						</>
+					}
 				/>
+				)}
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Order By', 'ultimate-addons-for-gutenberg' ) }
@@ -818,14 +852,11 @@ const UAGBPostMasonry = ( props ) => {
 						},
 					} }
 					min={ 0 }
-					max={
-						! hasPosts
-							? MAX_POSTS_COLUMNS
-							: Math.min( MAX_POSTS_COLUMNS, latestPosts.length )
-					}
+					max={MAX_POSTS_COLUMNS}
 					displayUnit={ false }
 					setAttributes={ setAttributes }
 				/>
+				{ ! enableOffset && (
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
@@ -849,6 +880,7 @@ const UAGBPostMasonry = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
+				) }
 				{ 'infinite' === paginationType && (
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
@@ -1158,7 +1190,7 @@ const UAGBPostMasonry = ( props ) => {
 								attributes={ attributes }
 								deviceType={ deviceType }
 								disableBottomSeparator={ true }
-								disabledBorderTitle= { true }
+								disabledBorderTitle= { false }
 							/>
 						</>
 					) }
@@ -2371,7 +2403,6 @@ const UAGBPostMasonry = ( props ) => {
 					prefix={ 'btn' }
 					attributes={ attributes }
 					deviceType={ deviceType }
-					disabledBorderTitle= { true }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -2455,11 +2486,6 @@ const UAGBPostMasonry = ( props ) => {
 		<InspectorControls>
 			<InspectorTabs>
 				<InspectorTab { ...UAGTabs.general }>
-					<Notice status="warning" isDismissible={false}>
-						{
-							__( 'This block has been deprecated.', 'ultimate-addons-for-gutenberg' )
-						}
-					</Notice>
 					{ generalSettings() }
 					{ imageSettings() }
 					{ contentSettings() }
@@ -2505,7 +2531,8 @@ const UAGBPostMasonry = ( props ) => {
 	}
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
+
 			<Settings
 				parentProps={ props }
 				state={ state }
@@ -2518,7 +2545,8 @@ const UAGBPostMasonry = ( props ) => {
 				setState={ setState }
 				togglePreview={ togglePreview }
 			/>
-		</Suspense>
+			</>
+
 	);
 };
 
@@ -2593,6 +2621,7 @@ export default compose(
 					? categories
 					: category;
 		}
+
 		return {
 			latestPosts: getEntityRecords(
 				'postType',

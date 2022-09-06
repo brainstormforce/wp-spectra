@@ -8,14 +8,7 @@
  */
 
 $overall_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute(
-	'overall',
-	array(
-		'borderTopWidth'    => 1,
-		'borderRightWidth'  => 1,
-		'borderLeftWidth'   => 1,
-		'borderBottomWidth' => 1,
-		'borderStyle'       => 'none',
-	)
+	'overall'
 );
 
 

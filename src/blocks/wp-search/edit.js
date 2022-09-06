@@ -3,19 +3,16 @@
  */
 
 import styling from './styling';
-import React, { useState, useEffect, lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useState, useEffect,    } from 'react';
+
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 
 import {migrateBorderAttributes} from '@Controls/generateAttributes';
 
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/wp-search/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/wp-search/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 const UAGBWpSearchEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -28,6 +25,7 @@ const UAGBWpSearchEdit = ( props ) => {
 	// componentDidMount.
 	useEffect( () => {
 		// Assigning block_id in the attribute.
+
 		props.setAttributes( {
 			block_id: props.clientId.substr( 0, 8 ),
 		} );
@@ -132,7 +130,7 @@ const UAGBWpSearchEdit = ( props ) => {
 		}
 		// border
 		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'input', {
+			migrateBorderAttributes( 'input', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -147,9 +145,10 @@ const UAGBWpSearchEdit = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			}
+			},
+			props.setAttributes,
+			props.attributes
 			);
-			props.setAttributes( migrationAttributes )
 		}
 	}, [] );
 
@@ -164,7 +163,7 @@ const UAGBWpSearchEdit = ( props ) => {
 			setState( {
 				isFocused: true,
 			} );
-		}
+        }
 
 		const blockStyling = styling( props );
 		addBlockEditorDynamicStyles( 'uagb-style-wp-search-' + props.clientId.substr( 0, 8 ), blockStyling );
@@ -175,13 +174,17 @@ const UAGBWpSearchEdit = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-wp-search-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
+					<>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 

@@ -2,22 +2,15 @@
  * BLOCK: Container
  */
 import styling from './styling';
-import React, { lazy, Suspense, useEffect, useLayoutEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {    useEffect, useLayoutEffect } from 'react';
+
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/container/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/container/render" */ './render'
-	)
-);
+import Settings from './settings';
+import Render from './render';
 
 //  Import CSS.
 import './style.scss';
@@ -56,7 +49,6 @@ const UAGBContainer = ( props ) => {
 
 	useEffect( () => {
 		const isBlockRootParent = 0 === select( 'core/block-editor' ).getBlockParents( props.clientId ).length;
-		const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( props.clientId ).length;
 
 		if ( isBlockRootParent ) {
 			props.setAttributes( { isBlockRootParent: true } );
@@ -87,25 +79,6 @@ const UAGBContainer = ( props ) => {
 			variationPicker.insertBefore( closeButton,variationPickerLabel );
 		}
 
-		if ( element ) {
-			element.classList.remove( `uagb-editor-preview-mode-desktop` );
-			element.classList.remove( `uagb-editor-preview-mode-tablet` );
-			element.classList.remove( `uagb-editor-preview-mode-mobile` );
-			element.classList.add( `uagb-editor-preview-mode-${ deviceType.toLowerCase() }` );
-			if ( ! hasChildren ) {
-				element.classList.remove( 'uagb-container-has-children' );
-			}
-			if ( hasChildren ) {
-				element.classList.add( 'uagb-container-has-children' );
-			}
-			if ( props.attributes.isBlockRootParent || isBlockRootParent ) {
-				element.classList.remove( 'alignfull' );
-				element.classList.remove( 'alignwide' );
-				element.classList.remove( 'default' );
-				element.classList.add( props.attributes.contentWidth );
-			}
-		}
-
 		const descendants = select( 'core/block-editor' ).getBlocks( props.clientId );
 
 		if ( descendants.length !== props.attributes.blockDescendants.length ) {
@@ -121,7 +94,7 @@ const UAGBContainer = ( props ) => {
 
 		// border
 		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'container', {
+			migrateBorderAttributes( 'container', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -136,9 +109,10 @@ const UAGBContainer = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			}
+			},
+			props.setAttributes,
+			props.attributes
 			);
-			props.setAttributes( migrationAttributes )
 		}
 
 		if( 0 !== select( 'core/block-editor' ).getBlockParents(  props.clientId ).length ){ // if there is no parent for container when child container moved outside root then do not show variations.
@@ -148,46 +122,6 @@ const UAGBContainer = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-
-		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
-		const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( props.clientId ).length;
-
-		let element;
-		if( iframeEl ){
-			element = iframeEl.contentDocument.getElementById( 'block-' + props.clientId )
-		} else {
-			element = document.getElementById( 'block-' + props.clientId )
-		}
-
-		if ( element ) {
-			element.classList.remove( `uagb-editor-preview-mode-desktop` );
-			element.classList.remove( `uagb-editor-preview-mode-tablet` );
-			element.classList.remove( `uagb-editor-preview-mode-mobile` );
-			element.classList.add( `uagb-editor-preview-mode-${deviceType.toLowerCase() }` );
-			if ( ! hasChildren ) {
-				element.classList.remove( 'uagb-container-has-children' );
-			}
-			if ( hasChildren ) {
-				element.classList.add( 'uagb-container-has-children' );
-			}
-
-			if ( props.attributes.isBlockRootParent ) {
-
-				element.classList.remove( 'alignfull' );
-				element.classList.remove( 'alignwide' );
-				element.classList.remove( 'default' );
-				element.classList.add( props.attributes.contentWidth );
-			}
-
-			setTimeout( () => {
-				if ( props.attributes.isBlockRootParent ) {
-					element.classList.remove( 'alignfull' );
-					element.classList.remove( 'alignwide' );
-					element.classList.remove( 'default' );
-					element.classList.add( props.attributes.contentWidth );
-				}
-			} );
-		}
 
 		const blockStyling = styling( props );
 
@@ -206,6 +140,8 @@ const UAGBContainer = ( props ) => {
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-container-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 
 	}, [ deviceType ] );
 
@@ -266,10 +202,12 @@ const UAGBContainer = ( props ) => {
 
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
+
+						<>
+			<Settings parentProps={ props } />
 				<Render parentProps={ props } />
-			</Suspense>
+			</>
+
 		</>
 	);
 };

@@ -9,10 +9,7 @@
 
 $image_attribute   = UAGB_Block_Helper::uag_generate_border_attribute( 'image' );
 $overlay_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
-	'overlay',
-	array(
-		'borderStyle' => 'solid',
-	)
+	'overlay'
 );
 
 return array_merge(
@@ -150,9 +147,9 @@ return array_merge(
 		'maskSize'                    => 'auto',
 		'maskPosition'                => 'center center',
 		'maskRepeat'                  => 'no-repeat',
-		'objectFit'                   => 'default',
-		'objectFitTablet'             => 'default',
-		'objectFitMobile'             => 'default',
+		'objectFit'                   => '',
+		'objectFitTablet'             => '',
+		'objectFitMobile'             => '',
 		'headingLetterSpacing'        => '',
 		'headingLetterSpacingTablet'  => '',
 		'headingLetterSpacingMobile'  => '',
@@ -161,6 +158,9 @@ return array_merge(
 		'captionLetterSpacingTablet'  => '',
 		'captionLetterSpacingMobile'  => '',
 		'captionLetterSpacingType'    => 'px',
+		'customHeightSetDesktop'      => false,
+		'customHeightSetTablet'       => false,
+		'customHeightSetMobile'       => false,
 	),
 	$image_attribute,
 	$overlay_attribute

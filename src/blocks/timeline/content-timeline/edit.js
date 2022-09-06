@@ -3,23 +3,14 @@
  */
 
 import contentTimelineStyle from './styling';
-import React, { useEffect, lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect,    } from 'react';
+
 import { dispatch, select } from '@wordpress/data';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
-const Settings = lazy( () =>
-    import (
-        /* webpackChunkName: "chunks/content-timeline/settings" */
-        './settings'
-    )
-);
-const Render = lazy( () =>
-    import (
-        /* webpackChunkName: "chunks/content-timeline/render" */
-        './render'
-    )
-);
+import scrollBlockToView from '@Controls/scrollBlockToView';
+import Settings from './settings';
+import Render from './render';
 
 const ContentTimelineComponent = ( props ) => {
     const deviceType = useDeviceType();
@@ -60,7 +51,7 @@ const ContentTimelineComponent = ( props ) => {
         }
 
         if( timelinAlignment ) {
-            if( 'none' === stack ) { 
+            if( 'none' === stack ) {
                 if( undefined === timelinAlignmentTablet ) {
                     setAttributes( { timelinAlignmentTablet: timelinAlignment } );
                 }
@@ -80,7 +71,7 @@ const ContentTimelineComponent = ( props ) => {
             }
         }
 
-        
+
     }, [] );
 
     useEffect( () => {
@@ -100,7 +91,7 @@ const ContentTimelineComponent = ( props ) => {
 
         let device = deviceType;
 
-        // For desktop, attribute name does not have `desktop` suffix to support backward compatibility. 
+        // For desktop, attribute name does not have `desktop` suffix to support backward compatibility.
         if( 'Desktop' === deviceType ) {
             device = '';
         }
@@ -169,13 +160,15 @@ const ContentTimelineComponent = ( props ) => {
 	    const blockStyling = contentTimelineStyle( props );
 
         addBlockEditorDynamicStyles( 'uagb-content-timeline-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
     return (
-		<Suspense fallback = { lazyLoader() }>
-            <Settings parentProps = { props }/>
-		    <Render parentProps = { props }/>
-		</Suspense>
+		<>
+			<Settings parentProps = { props }/>
+			<Render parentProps = { props }/>
+		</>
     );
 };
 

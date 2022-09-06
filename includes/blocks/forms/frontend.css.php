@@ -55,11 +55,11 @@ $input_underline_border      = ( isset( $attr['fieldBorderBottomWidth'] ) ? UAGB
 $success_message_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMsg' );
 $success_message_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$success_message_border,
-	( isset( $attr['successMsgborderWidth'] ) ? $attr['successMsgborderWidth'] : '' ),
-	( isset( $attr['successMsgborderRadius'] ) ? $attr['successMsgborderRadius'] : '' ),
-	( isset( $attr['successMsgborderColor'] ) ? $attr['successMsgborderColor'] : '' ),
-	( isset( $attr['successMsgborderStyle'] ) ? $attr['successMsgborderStyle'] : '' ),
-	( isset( $attr['successMsgborderHColor'] ) ? $attr['successMsgborderHColor'] : '' )
+	( isset( $attr['successMessageBorderWidth'] ) ? $attr['successMessageBorderWidth'] : '' ),
+	( isset( $attr['successMessageBorderRadius'] ) ? $attr['successMessageBorderRadius'] : '' ),
+	( isset( $attr['successMessageBorderColor'] ) ? $attr['successMessageBorderColor'] : '' ),
+	( isset( $attr['successMessageBorderStyle'] ) ? $attr['successMessageBorderStyle'] : '' ),
+	( isset( $attr['successMessageBorderHColor'] ) ? $attr['successMessageBorderHColor'] : '' )
 );
 $success_message_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMsg', 'tablet' );
 $success_message_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMsg', 'mobile' );
@@ -67,11 +67,11 @@ $success_message_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $at
 $failed_message_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'errorMsg' );
 $failed_message_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$failed_message_border,
-	( isset( $attr['errorMsgborderWidth'] ) ? $attr['errorMsgborderWidth'] : '' ),
-	( isset( $attr['errorMsgborderRadius'] ) ? $attr['errorMsgborderRadius'] : '' ),
-	( isset( $attr['errorMsgborderColor'] ) ? $attr['errorMsgborderColor'] : '' ),
-	( isset( $attr['errorMsgborderStyle'] ) ? $attr['errorMsgborderStyle'] : '' ),
-	( isset( $attr['errorMsgborderHColor'] ) ? $attr['errorMsgborderHColor'] : '' )
+	( isset( $attr['failedMessageBorderWidth'] ) ? $attr['failedMessageBorderWidth'] : '' ),
+	( isset( $attr['failedMessageBorderRadius'] ) ? $attr['failedMessageBorderRadius'] : '' ),
+	( isset( $attr['failedMessageBorderColor'] ) ? $attr['failedMessageBorderColor'] : '' ),
+	( isset( $attr['failedMessageBorderStyle'] ) ? $attr['failedMessageBorderStyle'] : '' ),
+	( isset( $attr['failedMessageBorderHColor'] ) ? $attr['failedMessageBorderHColor'] : '' )
 );
 $failed_message_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'errorMsg', 'tablet' );
 $failed_message_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'errorMsg', 'mobile' );
@@ -79,11 +79,11 @@ $failed_message_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $att
 $toggle_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'checkBoxToggle' );
 $toggle_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$toggle_border,
-	( isset( $attr['toggleborderWidth'] ) ? $attr['toggleborderWidth'] : '' ),
-	( isset( $attr['toggleborderRadius'] ) ? $attr['toggleborderRadius'] : '' ),
-	( isset( $attr['toggleborderColor'] ) ? $attr['toggleborderColor'] : '' ),
-	( isset( $attr['toggleborderStyle'] ) ? $attr['toggleborderStyle'] : '' ),
-	( isset( $attr['toggleborderHColor'] ) ? $attr['toggleborderHColor'] : '' )
+	( isset( $attr['inputborderWidth'] ) ? $attr['inputborderWidth'] : '' ),
+	( isset( $attr['inputborderRadius'] ) ? $attr['inputborderRadius'] : '' ),
+	( isset( $attr['inputborderColor'] ) ? $attr['inputborderColor'] : '' ),
+	( isset( $attr['inputborderStyle'] ) ? $attr['inputborderStyle'] : '' ),
+	( isset( $attr['inputborderHColor'] ) ? $attr['inputborderHColor'] : '' )
 );
 $toggle_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'checkBoxToggle', 'tablet' );
 $toggle_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'checkBoxToggle', 'mobile' );
@@ -92,29 +92,29 @@ $toggle_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'chec
 $toggle_border_top_fallback           = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-top-width'], 'checkBoxToggleBorderTopWidth', $block_name );
 $toggle_border_left_fallback          = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-left-width'], 'checkBoxToggleBorderLeftWidth', $block_name );
 $toggle_border_right_fallback         = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-right-width'], 'checkBoxToggleBorderRightWidth', $block_name );
-$toggle_border_bottom_fallback        = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-bottom-width'], 'checkBoxToggleBorderBottomWidth', $block_name );
-$toggle_border_top_tablet_fallback    = $toggle_border_tablet['border-top-width'] ? $toggle_border_tablet['border-top-width'] : $toggle_border_top_fallback;
-$toggle_border_left_tablet_fallback   = $toggle_border_tablet['border-left-width'] ? $toggle_border_tablet['border-left-width'] : $toggle_border_left_fallback;
-$toggle_border_right_tablet_fallback  = $toggle_border_tablet['border-right-width'] ? $toggle_border_tablet['border-right-width'] : $toggle_border_right_fallback;
-$toggle_border_bottom_tablet_fallback = $toggle_border_tablet['border-bottom-width'] ? $toggle_border_tablet['border-bottom-width'] : $toggle_border_bottom_fallback;
-$toggle_border_top_mobile_fallback    = $toggle_border_mobile['border-top-width'] ? $toggle_border_mobile['border-top-width'] : $toggle_border_top_tablet_fallback;
-$toggle_border_left_mobile_fallback   = $toggle_border_mobile['border-left-width'] ? $toggle_border_mobile['border-left-width'] : $toggle_border_left_tablet_fallback;
-$toggle_border_right_mobile_fallback  = $toggle_border_mobile['border-right-width'] ? $toggle_border_mobile['border-right-width'] : $toggle_border_right_tablet_fallback;
-$toggle_border_bottom_mobile_fallback = $toggle_border_mobile['border-bottom-width'] ? $toggle_border_mobile['border-bottom-width'] : $toggle_border_bottom_tablet_fallback;
+$toggle_border_bottom_fallback        = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-bottom-width'], 'checkBoxcheckBoxToggleBorderBottomWidth', $block_name );
+$toggle_border_top_tablet_fallback    = isset( $toggle_border_tablet['border-top-width'] ) ? ( ! empty( $toggle_border_tablet['border-top-width'] ) ? $toggle_border_tablet['border-top-width'] : $toggle_border_top_fallback ) : $toggle_border_top_fallback;
+$toggle_border_left_tablet_fallback   = isset( $toggle_border_tablet['border-left-width'] ) ? ( ! empty( $toggle_border_tablet['border-left-width'] ) ? $toggle_border_tablet['border-left-width'] : $toggle_border_left_fallback ) : $toggle_border_left_fallback;
+$toggle_border_right_tablet_fallback  = isset( $toggle_border_tablet['border-right-width'] ) ? ( ! empty( $toggle_border_tablet['border-right-width'] ) ? $toggle_border_tablet['border-right-width'] : $toggle_border_right_fallback ) : $toggle_border_right_fallback;
+$toggle_border_bottom_tablet_fallback = isset( $toggle_border_tablet['border-bottom-width'] ) ? ( ! empty( $toggle_border_tablet['border-bottom-width'] ) ? $toggle_border_tablet['border-bottom-width'] : $toggle_border_bottom_fallback ) : $toggle_border_bottom_fallback;
+$toggle_border_top_mobile_fallback    = isset( $toggle_border_mobile['border-top-width'] ) ? ( ! empty( $toggle_border_mobile['border-top-width'] ) ? $toggle_border_mobile['border-top-width'] : $toggle_border_top_tablet_fallback ) : $toggle_border_top_tablet_fallback;
+$toggle_border_left_mobile_fallback   = isset( $toggle_border_mobile['border-left-width'] ) ? ( ! empty( $toggle_border_mobile['border-left-width'] ) ? $toggle_border_mobile['border-left-width'] : $toggle_border_left_tablet_fallback ) : $toggle_border_left_tablet_fallback;
+$toggle_border_right_mobile_fallback  = isset( $toggle_border_mobile['border-right-width'] ) ? ( ! empty( $toggle_border_mobile['border-right-width'] ) ? $toggle_border_mobile['border-right-width'] : $toggle_border_right_tablet_fallback ) : $toggle_border_right_tablet_fallback;
+$toggle_border_bottom_mobile_fallback = isset( $toggle_border_mobile['border-bottom-width'] ) ? ( ! empty( $toggle_border_mobile['border-bottom-width'] ) ? $toggle_border_mobile['border-bottom-width'] : $toggle_border_bottom_tablet_fallback ) : $toggle_border_bottom_tablet_fallback;
 
 // Individual Toggle Border Radius Fallback for Inner Dot.
 $toggle_border_radius_tl_fallback        = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-top-left-radius'], 'checkBoxToggleBorderTopLeftRadius', $block_name );
 $toggle_border_radius_tr_fallback        = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-top-right-radius'], 'checkBoxToggleBorderTopRightRadius', $block_name );
 $toggle_border_radius_bl_fallback        = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-bottom-left-radius'], 'checkBoxToggleBorderBottomLeftRadius', $block_name );
 $toggle_border_radius_br_fallback        = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-bottom-right-radius'], 'checkBoxToggleBorderBottomRightRadius', $block_name );
-$toggle_border_radius_tl_tablet_fallback = $toggle_border_tablet['border-top-left-radius'] ? $toggle_border_tablet['border-top-left-radius'] : $toggle_border_radius_tl_fallback;
-$toggle_border_radius_tr_tablet_fallback = $toggle_border_tablet['border-top-right-radius'] ? $toggle_border_tablet['border-top-right-radius'] : $toggle_border_radius_tr_fallback;
-$toggle_border_radius_bl_tablet_fallback = $toggle_border_tablet['border-bottom-left-radius'] ? $toggle_border_tablet['border-bottom-left-radius'] : $toggle_border_radius_bl_fallback;
-$toggle_border_radius_br_tablet_fallback = $toggle_border_tablet['border-bottom-right-radius'] ? $toggle_border_tablet['border-bottom-right-radius'] : $toggle_border_radius_br_fallback;
-$toggle_border_radius_tl_mobile_fallback = $toggle_border_mobile['border-top-left-radius'] ? $toggle_border_mobile['border-top-left-radius'] : $toggle_border_radius_tl_tablet_fallback;
-$toggle_border_radius_tr_mobile_fallback = $toggle_border_mobile['border-top-right-radius'] ? $toggle_border_mobile['border-top-right-radius'] : $toggle_border_radius_tr_tablet_fallback;
-$toggle_border_radius_bl_mobile_fallback = $toggle_border_mobile['border-bottom-left-radius'] ? $toggle_border_mobile['border-bottom-left-radius'] : $toggle_border_radius_bl_tablet_fallback;
-$toggle_border_radius_br_mobile_fallback = $toggle_border_mobile['border-bottom-right-radius'] ? $toggle_border_mobile['border-bottom-right-radius'] : $toggle_border_radius_br_tablet_fallback;
+$toggle_border_radius_tl_tablet_fallback = isset( $toggle_border_tablet['border-top-left-radius'] ) ? ( ! empty( $toggle_border_tablet['border-top-left-radius'] ) ? $toggle_border_tablet['border-top-left-radius'] : $toggle_border_radius_tl_fallback ) : $toggle_border_radius_tl_fallback;
+$toggle_border_radius_tr_tablet_fallback = isset( $toggle_border_tablet['border-top-right-radius'] ) ? ( ! empty( $toggle_border_tablet['border-top-right-radius'] ) ? $toggle_border_tablet['border-top-right-radius'] : $toggle_border_radius_tr_fallback ) : $toggle_border_radius_tr_fallback;
+$toggle_border_radius_bl_tablet_fallback = isset( $toggle_border_tablet['border-bottom-left-radius'] ) ? ( ! empty( $toggle_border_tablet['border-bottom-left-radius'] ) ? $toggle_border_tablet['border-bottom-left-radius'] : $toggle_border_radius_bl_fallback ) : $toggle_border_radius_bl_fallback;
+$toggle_border_radius_br_tablet_fallback = isset( $toggle_border_tablet['border-bottom-right-radius'] ) ? ( ! empty( $toggle_border_tablet['border-bottom-right-radius'] ) ? $toggle_border_tablet['border-bottom-right-radius'] : $toggle_border_radius_br_fallback ) : $toggle_border_radius_br_fallback;
+$toggle_border_radius_tl_mobile_fallback = isset( $toggle_border_mobile['border-top-left-radius'] ) ? ( ! empty( $toggle_border_mobile['border-top-left-radius'] ) ? $toggle_border_mobile['border-top-left-radius'] : $toggle_border_radius_tl_tablet_fallback ) : $toggle_border_radius_tl_tablet_fallback;
+$toggle_border_radius_tr_mobile_fallback = isset( $toggle_border_mobile['border-top-right-radius'] ) ? ( ! empty( $toggle_border_mobile['border-top-right-radius'] ) ? $toggle_border_mobile['border-top-right-radius'] : $toggle_border_radius_tr_tablet_fallback ) : $toggle_border_radius_tr_tablet_fallback;
+$toggle_border_radius_bl_mobile_fallback = isset( $toggle_border_mobile['border-bottom-left-radius'] ) ? ( ! empty( $toggle_border_mobile['border-bottom-left-radius'] ) ? $toggle_border_mobile['border-bottom-left-radius'] : $toggle_border_radius_bl_tablet_fallback ) : $toggle_border_radius_bl_tablet_fallback;
+$toggle_border_radius_br_mobile_fallback = isset( $toggle_border_mobile['border-bottom-right-radius'] ) ? ( ! empty( $toggle_border_mobile['border-bottom-right-radius'] ) ? $toggle_border_mobile['border-bottom-right-radius'] : $toggle_border_radius_br_tablet_fallback ) : $toggle_border_radius_br_tablet_fallback;
 
 $btn_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
 $btn_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
@@ -441,16 +441,16 @@ $m_selectors[' .uagb-switch input:checked + .uagb-slider:before'] = array(
 );
 if ( 'underlined' === $attr['formStyle'] ) {
 	$selectors[' .uagb-forms-main-form  .uagb-forms-accept-wrap input[type=checkbox] + label:before']   = array(
-		'border-bottom' => UAGB_Helper::get_css_value( $attr['toggleBorderBottomWidth'], 'px' ) . ' ' . $attr['toggleBorderStyle'] . ' ' . $attr['toggleBorderColor'],
+		'border-bottom' => UAGB_Helper::get_css_value( $attr['checkBoxToggleBorderBottomWidth'], 'px' ) . ' ' . $attr['checkBoxToggleBorderStyle'] . ' ' . $attr['checkBoxToggleBorderColor'],
 	);
 	$selectors[' .uagb-forms-main-form  .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = array(
-		'border-bottom' => UAGB_Helper::get_css_value( $attr['toggleBorderBottomWidth'], 'px' ) . ' ' . $attr['toggleBorderStyle'] . ' ' . $attr['toggleBorderColor'],
+		'border-bottom' => UAGB_Helper::get_css_value( $attr['checkBoxToggleBorderBottomWidth'], 'px' ) . ' ' . $attr['checkBoxToggleBorderStyle'] . ' ' . $attr['checkBoxToggleBorderColor'],
 	);
 	$selectors[' .uagb-forms-main-form .uagb-slider'] = array(
-		'border-bottom' => UAGB_Helper::get_css_value( $attr['toggleBorderBottomWidth'], 'px' ) . ' ' . $attr['toggleBorderStyle'] . ' ' . $attr['toggleBorderColor'],
+		'border-bottom' => UAGB_Helper::get_css_value( $attr['checkBoxToggleBorderBottomWidth'], 'px' ) . ' ' . $attr['checkBoxToggleBorderStyle'] . ' ' . $attr['checkBoxToggleBorderColor'],
 	);
 	$selectors[' .uagb-forms-main-form  .uagb-forms-radio-wrap input[type=radio] + label:before'] = array(
-		'border-bottom' => UAGB_Helper::get_css_value( $attr['toggleBorderBottomWidth'], 'px' ) . ' ' . $attr['toggleBorderStyle'] . ' ' . $attr['toggleBorderColor'],
+		'border-bottom' => UAGB_Helper::get_css_value( $attr['checkBoxToggleBorderBottomWidth'], 'px' ) . ' ' . $attr['checkBoxToggleBorderStyle'] . ' ' . $attr['checkBoxToggleBorderColor'],
 	);
 	$selectors[' .uagb-forms-main-form  .uagb-forms-input']                                       = array_merge(
 		array(
@@ -460,7 +460,7 @@ if ( 'underlined' === $attr['formStyle'] ) {
 			'outline'       => 0,
 			'border-radius' => 0,
 			'background'    => 'transparent',
-			'border-bottom' => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidth'], 'px' ) . ' ' . $attr['inputBorderStyle'] . ' ' . $attr['inputBorderColor'],
+			'border-bottom' => UAGB_Helper::get_css_value( $attr['fieldBorderBottomWidth'], 'px' ) . ' ' . $attr['fieldBorderStyle'] . ' ' . $attr['fieldBorderColor'],
 			'color'         => $attr['inputColor'],
 		),
 		$input_overall_border
@@ -472,7 +472,7 @@ if ( 'underlined' === $attr['formStyle'] ) {
 		'border-bottom-width' => $input_underline_border,
 	);
 	$selectors[' .uagb-forms-input:hover']        = array(
-		'border-color' => $attr['inputBorderHColor'],
+		'border-color' => $attr['fieldBorderHColor'],
 	);
 	$selectors[' .uagb-forms-input::placeholder'] = array(
 		'color' => $attr['inputplaceholderColor'],

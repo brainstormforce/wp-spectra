@@ -12,8 +12,9 @@ $block_data = array(
 	'slug'        => '',
 	'link'        => '',
 	'title'       => __( 'Column', 'ultimate-addons-for-gutenberg' ),
-	'description' => __( 'This block is an immediate child of Advanced Columns.', 'ultimate-addons-for-gutenberg' ),
+	'description' => __( 'Immediate child of Advanced Columns.', 'ultimate-addons-for-gutenberg' ),
 	'default'     => true,
 	'is_child'    => true,
 	'extension'   => false,
+	'deprecated'  => true,
 );

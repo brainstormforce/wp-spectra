@@ -69,7 +69,13 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				return;
 			}
 
-			$pagination_masonry_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'paginationMasonry' );
+			$pagination_masonry_border_attribute = array();
+
+			if ( method_exists( 'UAGB_Block_Helper', 'uag_generate_php_border_attribute' ) ) {
+
+				$pagination_masonry_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'paginationMasonry' );
+
+			}
 
 			$common_attributes = $this->get_post_attributes();
 
@@ -176,55 +182,64 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'attributes'      => array_merge(
 						$common_attributes,
 						array(
-							'blockName'         => array(
+							'blockName'           => array(
 								'type'    => 'string',
 								'default' => 'post-carousel',
 							),
-							'pauseOnHover'      => array(
+							'pauseOnHover'        => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'infiniteLoop'      => array(
+							'infiniteLoop'        => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'transitionSpeed'   => array(
+							'transitionSpeed'     => array(
 								'type'    => 'number',
 								'default' => 500,
 							),
-							'arrowDots'         => array(
+							'arrowDots'           => array(
 								'type'    => 'string',
 								'default' => 'arrows_dots',
 							),
-							'autoplay'          => array(
+							'autoplay'            => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'autoplaySpeed'     => array(
+							'autoplaySpeed'       => array(
 								'type'    => 'number',
 								'default' => 2000,
 							),
-							'arrowSize'         => array(
+							'arrowSize'           => array(
 								'type'    => 'number',
 								'default' => 24,
 							),
-							'arrowBorderSize'   => array(
+							'arrowBorderSize'     => array(
 								'type'    => 'number',
 								'default' => 0,
 							),
-							'arrowBorderRadius' => array(
+							'arrowBorderRadius'   => array(
 								'type'    => 'number',
 								'default' => 0,
 							),
-							'arrowColor'        => array(
+							'arrowColor'          => array(
 								'type'    => 'string',
 								'default' => '#000',
 							),
-							'equalHeight'       => array(
+							'arrowDistance'       => array(
+								'type' => 'number',
+							),
+							'arrowDistanceTablet' => array(
+								'type' => 'number',
+							),
+							'arrowDistanceMobile' => array(
+								'type' => 'number',
+							),
+							'equalHeight'         => array(
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'layoutConfig'      => array(
+							'layoutConfig'        => array(
 								'type'    => 'array',
 								'default' => array(
 									array( 'uagb/post-image' ),
@@ -235,7 +250,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									array( 'uagb/post-button' ),
 								),
 							),
-							'post_type'         => array(
+							'post_type'           => array(
 								'type'    => 'string',
 								'default' => 'carousel',
 							),
@@ -245,7 +260,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				)
 			);
 
-			if ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) {
+			$enable_legacy_blocks = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' );
+
+			if ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) || 'yes' === $enable_legacy_blocks ) {
 				register_block_type(
 					'uagb/post-masonry',
 					array(
@@ -354,7 +371,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									'default' => 'px',
 								),
 							),
-							$pagination_masonry_border_attribute,
+							$pagination_masonry_border_attribute
 						),
 						'render_callback' => array( $this, 'post_masonry_callback' ),
 					)
@@ -369,8 +386,16 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function get_post_attributes() {
-			$btn_border_attribute     = UAGB_Block_Helper::uag_generate_php_border_attribute( 'btn' );
-			$overall_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'overall' );
+
+			$btn_border_attribute     = array();
+			$overall_border_attribute = array();
+
+			if ( method_exists( 'UAGB_Block_Helper', 'uag_generate_php_border_attribute' ) ) {
+
+				$btn_border_attribute     = UAGB_Block_Helper::uag_generate_php_border_attribute( 'btn' );
+				$overall_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'overall' );
+
+			}
 
 			return array_merge(
 				$btn_border_attribute,
@@ -402,6 +427,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'postsToShow'                   => array(
 						'type'    => 'number',
 						'default' => 6,
+					),
+					'enableOffset'                  => array(
+						'type'    => 'boolean',
+						'default' => false,
 					),
 					'postsOffset'                   => array(
 						'type'    => 'number',
@@ -781,6 +810,18 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'paddingLeftMobile'             => array(
 						'type' => 'number',
 					),
+					'paddingTopTablet'              => array(
+						'type' => 'number',
+					),
+					'paddingBottomTablet'           => array(
+						'type' => 'number',
+					),
+					'paddingRightTablet'            => array(
+						'type' => 'number',
+					),
+					'paddingLeftTablet'             => array(
+						'type' => 'number',
+					),
 					'paddingBtnTop'                 => array(
 						'type' => 'number',
 					),
@@ -1075,7 +1116,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						'type'    => 'number',
 						'default' => '',
 					),
-				),
+				)
 			);
 		}
 
@@ -1180,6 +1221,15 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			}
 			if ( isset( $attributes['arrowSize'] ) ) {
 				$attributes['arrowSize'] = UAGB_Block_Helper::get_fallback_number( $attributes['arrowSize'], 'arrowSize', $attributes['blockName'] );
+			}
+			if ( isset( $attributes['arrowDistance'] ) ) {
+				$attributes['arrowDistance'] = UAGB_Block_Helper::get_fallback_number( $attributes['arrowDistance'], 'arrowDistance', $attributes['blockName'] );
+			}
+			if ( isset( $attributes['arrowDistanceTablet'] ) ) {
+				$attributes['arrowDistanceTablet'] = UAGB_Block_Helper::get_fallback_number( $attributes['arrowDistanceTablet'], 'arrowDistanceTablet', $attributes['blockName'] );
+			}
+			if ( isset( $attributes['arrowDistanceMobile'] ) ) {
+				$attributes['arrowDistanceMobile'] = UAGB_Block_Helper::get_fallback_number( $attributes['arrowDistanceMobile'], 'arrowDistanceMobile', $attributes['blockName'] );
 			}
 			if ( isset( $attributes['arrowBorderSize'] ) ) {
 				$attributes['arrowBorderSize'] = UAGB_Block_Helper::get_fallback_number( $attributes['arrowBorderSize'], 'arrowBorderSize', $attributes['blockName'] );
@@ -1394,7 +1444,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 *
 		 * @param array $attributes plugin.
 		 * @return array of requred query attributes.
-		 * @since 2.0.0-beta.3
+		 * @since 2.0.0
 		 */
 		public function required_attribute_for_query( $attributes ) {
 			return array(
@@ -1531,31 +1581,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function add_post_dynamic_script() {
-			if ( isset( self::$settings['grid'] ) && ! empty( self::$settings['grid'] ) ) {
-				foreach ( self::$settings['grid'] as $key => $value ) {
-					?>
-				<script type="text/javascript" id="uagb-post-grid-<?php echo esc_html( $key ); ?>">
-					document.addEventListener("DOMContentLoaded", function(){
-						// This CSS is for Post BG Image Spacing
-						let articles = document.querySelectorAll( '.uagb-post__image-position-background .uagb-post__inner-wrap' );
-
-						for( let article of articles ) {
-							let articleWidth = article.offsetWidth;
-							let rowGap = <?php echo esc_html( $value['rowGap'] ); ?>;
-							let imageWidth = 100 - ( rowGap / articleWidth ) * 100;
-							let image = article.getElementsByClassName('uagb-post__image');
-							if ( image[0] ) {
-								image[0].style.width = imageWidth + '%';
-								image[0].style.marginLeft = rowGap / 2 + 'px';
-
-							}
-
-						}
-					});
-				</script>
-					<?php
-				}
-			}
 			if ( isset( self::$settings['masonry'] ) && ! empty( self::$settings['masonry'] ) ) {
 				foreach ( self::$settings['masonry'] as $key => $value ) {
 					?>
@@ -1611,7 +1636,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							( function( $ ) {
 								var cols = parseInt( '<?php echo esc_html( $value['columns'] ); ?>' );
 								var $scope = $( '.uagb-block-<?php echo esc_html( $key ); ?>' );
-								if ( ! $scope.hasClass('is-carousel') || cols >= $scope.children().length ) {
+								if ( ! $scope.hasClass('is-carousel') || cols >= $scope.children('article.uagb-post__inner-wrap').length ) {
 									return;
 								}
 								var slider_options = {
@@ -1668,11 +1693,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 								if( enableEqualHeight ){
 									$scope.imagesLoaded( function() {
-										UAGBPostCarousel._setHeight( $scope );
+										UAGBPostCarousel?._setHeight( $scope );
 									});
 
 									$scope.on( 'afterChange', function() {
-										UAGBPostCarousel._setHeight( $scope );
+										UAGBPostCarousel?._setHeight( $scope );
 									} );
 								}
 

@@ -1,8 +1,8 @@
 import classnames from 'classnames';
 import PositionClasses from './classes';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import React, { lazy, Suspense, useLayoutEffect, useRef } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {    useLayoutEffect, useRef } from 'react';
+
 import TestimonialImage from './components/Image';
 import AuthorName from './components/AuthorName';
 import Company from './components/Company';
@@ -10,12 +10,8 @@ import Description from './components/Description';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import Slider from 'react-slick';
 
-const Slider = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/testimonial/react-slick" */ 'react-slick'
-	)
-);
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -39,6 +35,7 @@ const Render = ( props ) => {
 		columns,
 		tcolumns,
 		mcolumns,
+		test_item_count,
 		pauseOnHover,
 		infiniteLoop,
 		transitionSpeed,
@@ -126,6 +123,9 @@ const Render = ( props ) => {
 	};
 
 	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/testimonials.png`;
+	const isGridLayout = test_item_count === columns ? 'uagb-post__carousel_notset' : '';
+	const isGridLayoutTablet = test_item_count === tcolumns ? 'uagb-post__carousel_notset-tablet' : '';
+	const isGridLayoutMobile = test_item_count === mcolumns ? 'uagb-post__carousel_notset-mobile' : '';
 
 	return (
 		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
@@ -136,14 +136,17 @@ const Render = ( props ) => {
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
 				`${ equalHeightClass }`,
+				isGridLayout,
+				isGridLayoutTablet,
+				isGridLayoutMobile
 			) }
 		>
-			<Suspense fallback={ lazyLoader() }>
+
 				<Slider
 					className={ classnames(
 						'is-carousel',
 						`uagb-tm__columns-${ getFallbackNumber( columns, 'columns', blockName ) }`,
-						'uagb-tm__items'
+						'uagb-tm__items',
 					) }
 					{ ...settings }
 					ref={ sliderRef }
@@ -230,7 +233,7 @@ const Render = ( props ) => {
 						</div>
 					) ) }
 				</Slider>
-			</Suspense>
+
 		</div>
 	);
 };

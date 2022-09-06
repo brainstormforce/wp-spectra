@@ -42,7 +42,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				return;
 			}
 
-			add_action( 'admin_notices', array( $this, 'register_notices' ) );
+			// Disabling asking 5 Stars from users for a few updated till we get stable.
+			// add_action( 'admin_notices', array( $this, 'register_notices' ) );.
 
 			add_filter( 'wp_kses_allowed_html', array( $this, 'add_data_attributes' ), 10, 2 );
 
@@ -53,9 +54,35 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			// Activation hook.
 			add_action( 'admin_init', array( $this, 'activation_redirect' ) );
 
+			add_action( 'admin_init', array( $this, 'update_old_user_option_by_url_params' ) );
+
 			add_action( 'admin_post_uag_rollback', array( $this, 'post_uagb_rollback' ) );
 
 		}
+
+		/**
+		 * Update Old user option using URL Param.
+		 *
+		 * If any user wants to set the site as old user then just add the URL param as true.
+		 *
+		 * @since 2.0.1
+		 * @access public
+		 */
+		public function update_old_user_option_by_url_params() {
+
+			if ( ! current_user_can( 'manage_options' ) ) {
+				return;
+			}
+
+			$spectra_old_user = isset( $_GET['spectra_old_user'] ) ? sanitize_text_field( $_GET['spectra_old_user'] ) : false; //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+			if ( 'yes' === $spectra_old_user ) {
+				update_option( 'uagb-old-user-less-than-2', 'yes' );
+			} elseif ( 'no' === $spectra_old_user ) {
+				delete_option( 'uagb-old-user-less-than-2' );
+			}
+		}
+
 		/**
 		 * UAG version rollback.
 		 *
@@ -173,7 +200,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 									%2$s
 								</div>
 								%3$s<br />
-								<div class="uagb-review-notice-container">
+								<div class="astra-review-notice-container">
 									<a href="%4$s" class="astra-notice-close uagb-review-notice button-primary" target="_blank">
 									%5$s
 									</a>
@@ -236,7 +263,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			// Styles.
 			wp_enqueue_style( 'uagb-notice-settings', UAGB_URL . 'admin/assets/admin-notice.css', array(), UAGB_VER );
 		}
-
 
 		/**
 		 * Rank Math SEO filter to add kb-elementor to the TOC list.

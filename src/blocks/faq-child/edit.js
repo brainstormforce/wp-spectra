@@ -2,15 +2,11 @@
  * BLOCK: FAQ - Child
  */
 
-import React, { useEffect, lazy, Suspense, useState } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect,    useState } from 'react';
 
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/faq-child/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/faq-child/render" */ './render' )
-);
+
+import Settings from './settings';
+import Render from './render';
 
 let prevState;
 
@@ -47,10 +43,10 @@ const FaqChildComponent = ( props ) => {
 	}, [ props ] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<Settings />
 			<Render parentProps={ props } state={ state } />
-		</Suspense>
+			</>
 	);
 };
 

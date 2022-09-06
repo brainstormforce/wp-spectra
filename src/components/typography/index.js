@@ -16,6 +16,7 @@ import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
+import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
 
 // Export for ease of importing in individual blocks.
 export { TypographyStyles };
@@ -39,6 +40,22 @@ const TypographyControl = ( props ) => {
 
 			if ( popupButton && ! popupButton?.contains( e.target ) && popupWrap && ! popupWrap?.contains( e.target ) && ! e.target?.parentElement?.parentElement?.classList?.contains( 'uag-font-family-select__menu' ) && ! e.target?.classList?.contains( 'uag-responsive-common-button' ) && ! e.target?.closest( '.uag-responsive-common-button' ) && ! e.target?.parentElement?.closest( '.uagb-reset' ) ) {
 				toggleAdvancedControls( false )
+
+				const blockName = getSelectedBlock()?.name;
+				const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+
+				const data = {
+					...uagSettingState,
+					[blockName] : {
+						...uagSettingState?.[blockName],
+						selectedSetting : false
+					}
+				}
+
+				const uagLocalStorage = getUAGEditorStateLocalStorage();
+				if ( uagLocalStorage ) {
+					uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
+				}
 			}
 		} );
 	}, [] );
@@ -67,6 +84,92 @@ const TypographyControl = ( props ) => {
 	}
 	const lineHeightStepsVal = ( 'em' === props.lineHeightType?.value ? 0.1 : 1 ); // fractional value when unit is em.
 	const letterSpacingStepsVal = ( 'em' === props.letterSpacingType?.value ? 0.1 : 1 ); // fractional value when unit is em.
+
+	// Array of all the current Typography Control's Labels.
+	const attributeNames = [];
+
+	if ( ! disableFontFamily ) {
+		attributeNames.push(
+			props.fontFamily.label,
+			props.fontWeight.label,
+			props.fontStyle.label,
+		);
+	}
+
+	if ( ! disableFontSize ) {
+		attributeNames.push(
+			props.fontSizeType.label,
+			props.fontSize.label,
+			props.fontSizeMobile.label,
+			props.fontSizeTablet.label,
+		);
+	}
+
+	if ( ! disableLineHeight ) {
+		attributeNames.push(
+			props.lineHeightType.label,
+			props.lineHeight.label,
+			props.lineHeightMobile.label,
+			props.lineHeightTablet.label,
+		);
+	}
+
+	if ( ! disableTransform ) {
+		attributeNames.push(
+			props.transform.label,
+		);
+	}
+
+	if ( ! disableDecoration ) {
+		attributeNames.push(
+			props.decoration.label,
+		);
+	}
+
+	if ( props.letterSpacing ) {
+		attributeNames.push(
+			props.letterSpacing.label,
+			props.letterSpacingTablet.label,
+			props.letterSpacingMobile.label,
+			props.letterSpacingType.label,
+		);
+	}
+
+	const { getSelectedBlock } = select( 'core/block-editor' );
+
+	// Function to get the Block's default Typography Values.
+	const getBlockTypographyValue = () => {
+		const selectedBlockName = getSelectedBlock()?.name.replace( 'uagb/', '' );
+		let defaultValues = false;
+		if ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ] ) {
+			attributeNames.forEach( ( attributeName ) => {
+				if ( attributeName ) {
+					const blockDefaultAttributeValue = ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ][ attributeName ]?.default ) ? blocksAttributes[ selectedBlockName ][ attributeName ]?.default : '';
+					defaultValues = {
+						...defaultValues,
+						[ attributeName ] : blockDefaultAttributeValue,
+					}
+				}
+			} );
+		}
+		return defaultValues;
+	}
+
+	// Function to check if any Typography Setting has changed.
+	const getUpdateState = () => {
+		const defaultValues = getBlockTypographyValue();
+		const selectedBlockAttributes = getSelectedBlock()?.attributes;
+		let isTypographyUpdated = false;
+		attributeNames.forEach( ( attributeName ) => {
+			if ( selectedBlockAttributes?.[ attributeName ] && ( selectedBlockAttributes?.[ attributeName ] !== defaultValues?.[ attributeName ] ) ) {
+				isTypographyUpdated = true;
+			}
+		} );
+		return isTypographyUpdated;
+	};
+
+	// Flag to check if this control has been updated or not.
+	const isTypographyUpdated = getUpdateState();
 
 	if ( true !== disableLineHeight ) {
 		lineHeight = (
@@ -193,9 +296,16 @@ const TypographyControl = ( props ) => {
 					setAttributes={ props.setAttributes }
 					options={ [
 						{
-							value: 'none',
+							value: '',
 							label: __(
 								'Default',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'none',
+							label: __(
+								'None',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
@@ -241,23 +351,31 @@ const TypographyControl = ( props ) => {
 						}
 						toggleAdvancedControls( ! showAdvancedControls )
 
-						if ( ! showAdvancedControls ) {
-							const { getSelectedBlock } = select( 'core/block-editor' );
-							const blockName = getSelectedBlock()?.name;
-							const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
-							const data = {
+						const blockName = getSelectedBlock()?.name;
+						const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+						let data = {
+							...uagSettingState,
+							[blockName] : {
+								...uagSettingState?.[blockName],
+								selectedSetting : '.uag-typography-options'
+							}
+						}
+
+						if ( showAdvancedControls ) {
+							data = {
 								...uagSettingState,
 								[blockName] : {
 									...uagSettingState?.[blockName],
-									selectedSetting : '.uag-typography-options'
+									selectedSetting : false
 								}
 							}
-
-							const uagLocalStorage = getUAGEditorStateLocalStorage();
-							if ( uagLocalStorage ) {
-								uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
-							}
 						}
+
+						const uagLocalStorage = getUAGEditorStateLocalStorage();
+						if ( uagLocalStorage ) {
+							uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
+						}
+
 					}
 				}
 			>
@@ -291,7 +409,12 @@ const TypographyControl = ( props ) => {
 	if ( true !== disableFontFamily && true !== disableFontSize ) {
 		fontTypoAdvancedControls = (
 			<div className="spectra-control-popup__options--action-wrapper">
-				<span className="uag-control-label">{ props.label }</span>
+				<span className="uag-control-label">
+					{ props.label }
+					{ isTypographyUpdated && (
+						<div className="spectra__change-indicator--dot-right"/>
+					) }
+				</span>
 				{ fontAdvancedControls }
 			</div>
 		);

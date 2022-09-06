@@ -12,7 +12,8 @@ $block_data = array(
 	'slug'        => '',
 	'link'        => '',
 	'title'       => __( 'Toggle', 'ultimate-addons-for-gutenberg' ),
-	'description' => __( 'This block helps to add Toggle field.', 'ultimate-addons-for-gutenberg' ),
+	'description' => __( 'Add a toggle button in your form.', 'ultimate-addons-for-gutenberg' ),
 	'default'     => true,
 	'is_child'    => true,
+	'deprecated'  => false,
 );

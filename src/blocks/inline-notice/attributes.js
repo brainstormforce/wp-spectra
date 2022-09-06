@@ -72,7 +72,7 @@ const attributes = {
 	},
 	icon: {
 		type: 'string',
-		default: 'fa fa-window-close',
+		default: 'rectangle-xmark',
 	},
 	iconSize: {
 		type: 'number',

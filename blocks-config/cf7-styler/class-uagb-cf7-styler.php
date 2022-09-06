@@ -53,9 +53,19 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 			if ( ! function_exists( 'register_block_type' ) ) {
 				return;
 			}
-			$field_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'input' );
-			$btn_border_attribute   = UAGB_Block_Helper::uag_generate_php_border_attribute( 'btn' );
-			if ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) {
+			$field_border_attribute = array();
+			$btn_border_attribute   = array();
+
+			if ( method_exists( 'UAGB_Block_Helper', 'uag_generate_php_border_attribute' ) ) {
+
+				$field_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'input' );
+				$btn_border_attribute   = UAGB_Block_Helper::uag_generate_php_border_attribute( 'btn' );
+
+			}
+
+			$enable_legacy_blocks = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' );
+
+			if ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) || 'yes' === $enable_legacy_blocks ) {
 				register_block_type(
 					'uagb/cf7-styler',
 					array(
@@ -862,12 +872,13 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 									'type'    => 'string',
 									'default' => '#333',
 								),
-							),
+							)
 						),
 						'render_callback' => array( $this, 'render_html' ),
 					)
 				);
 			}
+
 		}
 
 		/**

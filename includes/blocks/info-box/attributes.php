@@ -7,14 +7,17 @@
  * @package uagb
  */
 
-$cta_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
+$cta_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
+	'btn'
+);
+
 return array_merge(
 	array(
 		'classMigrate'               => false,
 		'inheritFromTheme'           => false,
 		'headingAlign'               => 'center',
-		'headingAlignTablet'         => 'center',
-		'headingAlignMobile'         => 'center',
+		'headingAlignTablet'         => '',
+		'headingAlignMobile'         => '',
 		'headingColor'               => '',
 		'subHeadingColor'            => '',
 		'prefixColor'                => '',
@@ -59,7 +62,7 @@ return array_merge(
 		'separatorWidthMobile'       => '',
 		'separatorHeight'            => '',
 		'separatorWidthType'         => '%',
-		'icon'                       => '',
+		'icon'                       => 'circle-check',
 		'iconColor'                  => '#333',
 		'iconSize'                   => '30',
 		'iconSizeType'               => 'px',
@@ -95,8 +98,8 @@ return array_merge(
 		'ctaLoadGoogleFonts'         => false,
 		'ctaBtnLinkColor'            => '',
 		'ctaBgColor'                 => '',
-		'ctaBtnVertPadding'          => '',
-		'ctaBtnHrPadding'            => '',
+		'ctaBtnVertPadding'          => 10,
+		'ctaBtnHrPadding'            => 14,
 		'paddingBtnUnit'             => 'px',
 		'mobilePaddingBtnUnit'       => 'px',
 		'tabletPaddingBtnUnit'       => 'px',
@@ -172,7 +175,7 @@ return array_merge(
 		'seperatorMobileSpace'       => '',
 		'seperatorTabletSpace'       => '',
 		'seperatorSpaceUnit'         => 'px',
-		'seperatorSpace'             => '10',
+		'seperatorSpace'             => 0,
 		'separatorTopMargin'         => '',
 		'separatorRightMargin'       => '',
 		'separatorLeftMargin'        => '',
@@ -208,8 +211,8 @@ return array_merge(
 		'prefixTabletSpace'          => '',
 		'prefixMobileSpace'          => '',
 		'prefixSpaceUnit'            => 'px',
-		'prefixSpace'                => '5',
-		'prefixTopMargin'            => '',
+		'prefixSpace'                => '10',
+		'prefixTopMargin'            => '5',
 		'prefixRightMargin'          => '',
 		'prefixLeftMargin'           => '',
 		'prefixMarginTopTablet'      => '',
@@ -247,6 +250,11 @@ return array_merge(
 		'blockPaddingUnitTablet'     => 'px',
 		'blockPaddingUnitMobile'     => 'px',
 		'blockPaddingLink'           => '',
+		'ctaBorderStyle'             => 'solid',
+		'ctaBorderColor'             => '',
+		'ctaBorderWidth'             => 1,
+		'ctaBorderRadius'            => 0,
+		'ctaBorderhoverColor'        => '',
 	),
 	$cta_border_attribute
 );

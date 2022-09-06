@@ -286,26 +286,26 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$view = null;
 
 			// Load Polyfiller Array if needed.
-			if ( 'disabled' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', 'disabled' ) ) {
+			$load_font_awesome_5 = UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' );
+
+			if ( 'disabled' !== $load_font_awesome_5 ) {
+				// If Icon doesn't need Polyfilling, use the Original.
 				$font_awesome_5_polyfiller = get_spectra_font_awesome_polyfiller();
-				$path                      = isset( $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands'] ) ? $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands']['path'] : $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['solid']['path'];
-				$view                      = isset( $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands'] ) ? $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands']['viewBox'] : $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['solid']['viewBox'];
-				if ( ! $path ) {
-					$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : $json[ $icon ]['svg']['solid']['path'];
-				}
-				if ( ! $view ) {
-					$view = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['viewBox'] : $json[ $icon ]['svg']['solid']['viewBox'];
-				}
+				$polyfilled_icon           = isset( $font_awesome_5_polyfiller[ $icon ] ) ? $font_awesome_5_polyfiller[ $icon ] : $icon;
+				$path                      = isset( $json[ $polyfilled_icon ]['svg']['brands'] ) ? $json[ $polyfilled_icon ]['svg']['brands']['path'] : ( isset( $json[ $polyfilled_icon ]['svg']['solid']['path'] ) ? $json[ $polyfilled_icon ]['svg']['solid']['path'] : '' );
+				$view                      = isset( $json[ $polyfilled_icon ]['svg']['brands'] ) ? $json[ $polyfilled_icon ]['svg']['brands']['viewBox'] : ( isset( $json[ $polyfilled_icon ]['svg']['solid']['viewBox'] ) ? $json[ $polyfilled_icon ]['svg']['solid']['viewBox'] : null );
 			} else {
-				$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : $json[ $icon ]['svg']['solid']['path'];
-				$view = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['viewBox'] : $json[ $icon ]['svg']['solid']['viewBox'];
+				$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : ( isset( $json[ $icon ]['svg']['solid']['path'] ) ? $json[ $icon ]['svg']['solid']['path'] : '' );
+				$view = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['viewBox'] : ( isset( $json[ $icon ]['svg']['solid']['viewBox'] ) ? $json[ $icon ]['svg']['solid']['viewBox'] : null );
 			}
 			if ( $view ) {
 				$view = implode( ' ', $view );
 			}
-			?>
-			<svg xmlns="https://www.w3.org/2000/svg" viewBox= "<?php echo esc_html( $view ); ?>"><path d="<?php echo esc_html( $path ); ?>"></path></svg>
-			<?php
+			if ( '' !== $path && null !== $view ) {
+				?>
+				<svg xmlns="https://www.w3.org/2000/svg" viewBox= "<?php echo esc_html( $view ); ?>"><path d="<?php echo esc_html( $path ); ?>"></path></svg>
+				<?php
+			}
 		}
 
 		/**
@@ -329,11 +329,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 1.8.2
 		 */
 		public static function get_query( $attributes, $block_type ) {
-
+			$fallback_for_posts_to_show = UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] );
+			$fallback_for_offset        = UAGB_Block_Helper::get_fallback_number( $attributes['postsOffset'], 'postsOffset', $attributes['blockName'] );
 			// Block type is grid/masonry/carousel/timeline.
 			$query_args = array(
-				'offset'              => UAGB_Block_Helper::get_fallback_number( $attributes['postsOffset'], 'postsOffset', $attributes['blockName'] ),
-				'posts_per_page'      => UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] ),
+				'posts_per_page'      => $fallback_for_posts_to_show,
 				'post_status'         => 'publish',
 				'post_type'           => ( isset( $attributes['postType'] ) ) ? $attributes['postType'] : 'post',
 				'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
@@ -341,6 +341,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				'ignore_sticky_posts' => 1,
 				'paged'               => 1,
 			);
+
+			if ( isset( $attributes['enableOffset'] ) && false !== $attributes['enableOffset'] && 0 !== $attributes['postsOffset'] ) {
+				$query_args['offset'] = $fallback_for_offset;
+			}
 
 			if ( $attributes['excludeCurrentPost'] ) {
 				$query_args['post__not_in'] = array( get_the_ID() );
@@ -1340,6 +1344,30 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			return empty( $excerpt ) ? '' : $excerpt;
+		}
+
+		/**
+		 * Get User Browser name
+		 *
+		 * @param string $user_agent Browser names.
+		 * @return string
+		 * @since 2.0.8
+		 */
+		public static function get_browser_name( $user_agent ) {
+
+			if ( strpos( $user_agent, 'Opera' ) || strpos( $user_agent, 'OPR/' ) ) {
+				return 'opera';
+			} elseif ( strpos( $user_agent, 'Edg' ) || strpos( $user_agent, 'Edge' ) ) {
+				return 'edge';
+			} elseif ( strpos( $user_agent, 'Chrome' ) ) {
+				return 'chrome';
+			} elseif ( strpos( $user_agent, 'Safari' ) ) {
+				return 'safari';
+			} elseif ( strpos( $user_agent, 'Firefox' ) ) {
+				return 'firefox';
+			} elseif ( strpos( $user_agent, 'MSIE' ) || strpos( $user_agent, 'Trident/7' ) ) {
+				return 'ie';
+			}
 		}
 	}
 

@@ -4,20 +4,15 @@
 
 // Import classes
 import styling from './styling';
-import lazyLoader from '@Controls/lazy-loader';
-import React, { useEffect, useState, lazy, Suspense } from 'react';
+
+import React, { useEffect, useState,    } from 'react';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/buttons-child/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/buttons-child/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 const ButtonsChildComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -41,11 +36,6 @@ const ButtonsChildComponent = ( props ) => {
 			rightPadding,
 			bottomPadding,
 			leftPadding,
-			borderStyle,
-			borderWidth,
-			borderRadius,
-			borderColor,
-			borderHColor
 		} = attributes;
 
 		if ( vPadding ) {
@@ -65,10 +55,10 @@ const ButtonsChildComponent = ( props ) => {
 				setAttributes( { leftPadding: hPadding } );
 			}
 		}
-
-		// border
+		const { borderStyle, borderWidth, borderRadius, borderColor, borderHColor } = props.attributes
+		// border migration
 		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'btn', {
+			migrateBorderAttributes( 'btn', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -83,9 +73,11 @@ const ButtonsChildComponent = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			}
+			},
+			props.setAttributes,
+			props.attributes
 			);
-			props.setAttributes( migrationAttributes );
+
 		}
 	}, [] );
 
@@ -101,10 +93,12 @@ const ButtonsChildComponent = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-button-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<Settings
 				parentProps={ props }
 				state={ state }
@@ -112,7 +106,8 @@ const ButtonsChildComponent = ( props ) => {
 				deviceType = { deviceType }
 			/>
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 export default ButtonsChildComponent;

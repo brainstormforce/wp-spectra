@@ -103,7 +103,6 @@ a.uagb-infobox-link-wrap:hover,
 .uagb-infobox-icon-below-title.uagb-infobox__content-wrap {
 	display: block;
 	width: 100%;
-	min-width: 100%;
 }
 
 /* Left/Right of Title */
@@ -199,6 +198,7 @@ a.uagb-infobox-link-wrap:hover,
 }
 
 .uagb-infobox__content-wrap {
+	box-sizing: border-box;
 	position: relative;
 	width: 100%;
 	word-break: break-word;

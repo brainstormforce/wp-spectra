@@ -3,27 +3,51 @@
  */
 
 import styling from './styling';
-import React, { useEffect, lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect } from 'react';
+
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import {migrateBorderAttributes} from '@Controls/generateAttributes';
-
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/faq/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/faq/render" */ './render' )
-);
-
-import { compose } from '@wordpress/compose';
-import { select, withSelect } from '@wordpress/data';
-
-let prevState;
+import { select } from '@wordpress/data';
+import Settings from './settings';
+import Render from './render';
 
 const FaqComponent = ( props ) => {
 
 	const deviceType = useDeviceType();
+
+	const updatePageSchema = () => {
+
+		const { setAttributes, clientId } = props;
+		const allBlocks = select( 'core/block-editor' ).getBlocks( clientId );
+		let pageURL = '';
+		if ( select( 'core/editor' ) ) {
+			pageURL = select( 'core/editor' ).getPermalink();
+		}
+		const jsonData = {
+			'@context': 'https://schema.org',
+			'@type': 'FAQPage',
+			'@id': pageURL,
+			'mainEntity': [],
+		};
+
+		allBlocks.forEach( ( block )=> {
+			let faqData = {};
+
+			faqData = {
+				'@type': 'Question',
+				'name': block.attributes.question,
+				'acceptedAnswer': {
+					'@type': 'Answer',
+					'text': block.attributes.answer,
+				},
+			};
+			jsonData.mainEntity.push( faqData );
+		} );
+
+		setAttributes( {schema: JSON.stringify( jsonData )} );
+	};
 
 	useEffect( () => {
 		// Replacement for componentDidMount.
@@ -65,8 +89,6 @@ const FaqComponent = ( props ) => {
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-
-		setAttributes( { schema: JSON.stringify( props.schemaJsonData ) } );
 
 		if (
 			10 === questionBottomPaddingDesktop &&
@@ -185,12 +207,10 @@ const FaqComponent = ( props ) => {
 				} );
 			}
 		}
-
-		prevState = props.schemaJsonData;
 		const {borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor} = props.attributes
 		// border migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'overall', {
+			migrateBorderAttributes( 'overall', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -205,9 +225,16 @@ const FaqComponent = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			}
+			},
+			props.setAttributes,
+			props.attributes
 			);
-			props.setAttributes( migrationAttributes )
+		}
+
+		const postSaveButton = document.getElementsByClassName( 'editor-post-publish-button' )?.[0];
+
+		if ( postSaveButton ) {
+			postSaveButton.addEventListener( 'click', updatePageSchema );
 		}
 	}, [] );
 
@@ -225,17 +252,82 @@ const FaqComponent = ( props ) => {
 			faqChild.attributes.headingTag = props.attributes.headingTag;
 		} );
 
-		if (
-			JSON.stringify( props.schemaJsonData ) !==
-			JSON.stringify( prevState )
-		) {
-			props.setAttributes( {
-				schema: JSON.stringify( props.schemaJsonData ),
-			} );
-
-			prevState = props.schemaJsonData;
+		// Use Effect Case to Update the Defaults for Backward Compatible Attributes that don't have a Default.
+		// Used when Resetting Preset to Default.
+		if ( props.attributes.vanswerPaddingDesktop ) {
+			if ( '' === props.attributes.answerTopPadding ) {
+				props.setAttributes( { answerTopPadding: props.attributes.vanswerPaddingDesktop } );
+			}
+			if ( '' === props.attributes.answerBottomPadding ) {
+				props.setAttributes( { answerBottomPadding: props.attributes.vanswerPaddingDesktop } );
+			}
 		}
-		
+		if ( props.attributes.hanswerPaddingDesktop ) {
+			if ( '' === props.attributes.answerRightPadding ) {
+				props.setAttributes( { answerRightPadding: props.attributes.hanswerPaddingDesktop } );
+			}
+			if ( '' === props.attributes.answerLeftPadding ) {
+				props.setAttributes( { answerLeftPadding: props.attributes.hanswerPaddingDesktop } );
+			}
+		}
+
+		if ( props.attributes.vanswerPaddingTablet ) {
+			if ( '' === props.attributes.answerTopPaddingTablet ) {
+				props.setAttributes( {
+					answerTopPaddingTablet: props.attributes.vanswerPaddingTablet,
+				} );
+			}
+			if ( '' === props.attributes.answerBottomPaddingTablet ) {
+				props.setAttributes( {
+					answerBottomPaddingTablet: props.attributes.vanswerPaddingTablet,
+				} );
+			}
+		}
+		if ( props.attributes.hanswerPaddingTablet ) {
+			if ( '' === props.attributes.answerRightPaddingTablet ) {
+				props.setAttributes( {
+					answerRightPaddingTablet: props.attributes.hanswerPaddingTablet,
+				} );
+			}
+			if ( '' === props.attributes.answerLeftPaddingTablet ) {
+				props.setAttributes( {
+					answerLeftPaddingTablet: props.attributes.hanswerPaddingTablet,
+				} );
+			}
+		}
+
+		if ( props.attributes.vanswerPaddingMobile ) {
+			if ( '' === props.attributes.answerTopPaddingMobile ) {
+				props.setAttributes( {
+					answerTopPaddingMobile: props.attributes.vanswerPaddingMobile,
+				} );
+			}
+			if ( '' === props.attributes.answerBottomPaddingMobile ) {
+				props.setAttributes( {
+					answerBottomPaddingMobile: props.attributes.vanswerPaddingMobile,
+				} );
+			}
+		}
+		if ( props.attributes.hanswerPaddingMobile ) {
+			if ( '' === props.attributes.answerRightPaddingMobile ) {
+				props.setAttributes( {
+					answerRightPaddingMobile: props.attributes.hanswerPaddingMobile,
+				} );
+			}
+			if ( '' === props.attributes.answerLeftPaddingMobile ) {
+				props.setAttributes( {
+					answerLeftPaddingMobile: props.attributes.hanswerPaddingMobile,
+				} );
+			}
+		}
+
+		const postSaveButton = document.getElementsByClassName( 'editor-post-publish-button' )?.[0];
+
+		if ( postSaveButton ) {
+			postSaveButton.addEventListener( 'click', updatePageSchema );
+			return () => { postSaveButton?.removeEventListener( 'click', updatePageSchema ); }
+		}
+
 	}, [ props ] );
 
 	useEffect( () => {
@@ -243,48 +335,17 @@ const FaqComponent = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-faq-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<Settings parentProps={ props } deviceType = { deviceType } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 
-export default compose(
-	withSelect( ( ownProps ) => {
-		let page_url = '';
-		if ( select( 'core/editor' ) ) {
-			page_url = select( 'core/editor' ).getPermalink();
-		}
-
-		let faq_data = {};
-		const json_data = {
-			'@context': 'https://schema.org',
-			'@type': 'FAQPage',
-			'@id': page_url,
-			'mainEntity': [],
-		};
-		const faqChildBlocks = select( 'core/block-editor' ).getBlocks(
-			ownProps.clientId
-		);
-
-		faqChildBlocks.forEach( ( faqChild, key ) => {
-			faq_data = {
-				'@type': 'Question',
-				'name': faqChild.attributes.question,
-				'acceptedAnswer': {
-					'@type': 'Answer',
-					'text': faqChild.attributes.answer,
-				},
-			};
-			json_data.mainEntity[ key ] = faq_data;
-		} );
-
-		return {
-			schemaJsonData: json_data,
-		};
-	} )
-)( FaqComponent );
+export default FaqComponent;
