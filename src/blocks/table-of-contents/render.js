@@ -24,7 +24,6 @@ const Render = ( props ) => {
 
 	const {
 		classMigrate,
-		block_id,
 		align,
 		makeCollapsible,
 		initialCollapse,
