@@ -19,14 +19,18 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 
 		const elementToOpen = document.querySelector( id );
 
+		/* We need the following fail-safe click listener cause an usual click-listener
+		 * will fail in case the 'Make TOC Collapsible' is not enabled right from the start/page-load.
+		*/ 
 		document.addEventListener( 'click', collapseListener );
 
 		function collapseListener( event ){
 			
 			const element = event.target;
 
-			const condition1 = ( element.tagName === 'path' || element.tagName === 'svg' );
-			const condition2 = ( element.parentNode.className === 'uagb-toc__title' );
+			// These two conditions help us target the required element (collapsible icon beside TOC heading). 
+			const condition1 = ( element.tagName === 'path' || element.tagName === 'svg' );  // Check if the clicked element type is either path or SVG.
+			const condition2 = ( element.parentNode.className === 'uagb-toc__title' );  // Check if the clicked element's parent has the required class.
 			
 			if( condition1 && condition2 ){
 				
