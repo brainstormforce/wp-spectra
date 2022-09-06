@@ -31,9 +31,9 @@ export default function DynamicContent(props) {
 	}
 	return (
 		<React.Fragment>
-			<section>
-				<section className='flex mt-8'>
-					<div className='pr-16 pb-8 w-[78%]'>
+			<section className='block border-b border-solid border-slate-200 px-12 py-8 justify-between'>
+				<section className='flex items-center'>
+					<div className='pr-16 w-[78%]'>
 						<h3 className="text-lg leading-6 font-medium text-gray-900">
 							{__( 'Dynamic Content', 'ultimate-addons-for-gutenberg' )}
 						</h3>
@@ -42,15 +42,15 @@ export default function DynamicContent(props) {
 						</p>
 					</div>
 					<div>
-					<div className="flex flex-row gap-x-4 justify-center">
-							<div className="form-check flex justify-center content-center">
-								<input className="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="dynamic_content_mode" value="popup" onChange={dynamicContentHandler} id="dynamic-content-popup" checked={dynamicContentMode === 'popup'} />
+					<div className="flex flex-row gap-[2.50rem] justify-center">
+							<div className="form-check flex justify-center items-center">
+								<input className="form-check-input appearance-none rounded-full h-4 w-4 border border-bg-spectra bg-white checked:bg-spectra checked:bg-spectra focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2.5 cursor-pointer" type="radio" name="dynamic_content_mode" value="popup" onChange={dynamicContentHandler} id="dynamic-content-popup" checked={dynamicContentMode === 'popup'} />
 								<label className="form-check-label inline-block text-gray-800" htmlFor="dynamic-content-popup">
 									{__('Popup', 'ultimate-addons-for-gutenberg')}
 								</label>
 							</div>
-							<div className="form-check flex justify-center content-center">
-								<input className="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="dynamic_content_mode" value="sidebar" onChange={dynamicContentHandler} id="dynamic-content-sidebar" checked={dynamicContentMode === 'sidebar'} />
+							<div className="form-check flex justify-center items-center">
+								<input className="form-check-input appearance-none rounded-full h-4 w-4 border border-bg-spectra bg-white checked:bg-spectra checked:bg-spectra focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2.5 cursor-pointer" type="radio" name="dynamic_content_mode" value="sidebar" onChange={dynamicContentHandler} id="dynamic-content-sidebar" checked={dynamicContentMode === 'sidebar'} />
 								<label className="form-check-label inline-block text-gray-800" htmlFor="dynamic-content-sidebar">
 									{__('Sidebar', 'ultimate-addons-for-gutenberg')}
 								</label>
