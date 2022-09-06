@@ -19,10 +19,18 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 
 		const elementToOpen = document.querySelector( id );
 
-		if( document.querySelector( '.uagb-toc__wrap svg' ) !== null && elementToOpen ){
+		document.addEventListener( 'click', someListener );
 
-			elementToOpen.querySelector( '.uagb-toc__wrap svg' )?.addEventListener( 'click', function(){
-				const $root = this.closest( '.wp-block-uagb-table-of-contents' );
+		function someListener( event ){
+			
+			const element = event.target;
+
+			const condition1 = ( element.tagName === 'path' || element.tagName === 'svg' );
+			const condition2 = ( element.parentNode.className === 'uagb-toc__title' );
+			
+			if( condition1 && condition2 ){
+				
+				const $root = element.closest( '.wp-block-uagb-table-of-contents' );
 
 				if ( $root.classList.contains( 'uagb-toc__collapse' ) ) {
 					$root.classList.remove( 'uagb-toc__collapse' );
@@ -38,8 +46,16 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 					);
 
 				}
-			} );
+
+			}
 		}
+
+		// if( document.querySelector( '.uagb-toc__wrap svg' ) !== null && elementToOpen ){
+
+		// 	elementToOpen.querySelector( '.uagb-toc__wrap svg' )?.addEventListener( 'click', function(){
+				
+		// 	} );
+		// }
 		document.addEventListener( 'scroll',
 			UAGBTableOfContents._showHideScroll// eslint-disable-line no-undef
 		);
