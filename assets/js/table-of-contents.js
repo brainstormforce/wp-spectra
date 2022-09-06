@@ -50,12 +50,6 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 			}
 		}
 
-		// if( document.querySelector( '.uagb-toc__wrap svg' ) !== null && elementToOpen ){
-
-		// 	elementToOpen.querySelector( '.uagb-toc__wrap svg' )?.addEventListener( 'click', function(){
-				
-		// 	} );
-		// }
 		document.addEventListener( 'scroll',
 			UAGBTableOfContents._showHideScroll// eslint-disable-line no-undef
 		);
