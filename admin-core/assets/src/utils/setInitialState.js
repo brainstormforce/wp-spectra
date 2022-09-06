@@ -21,6 +21,7 @@ const setInitialState = ( store ) => {
             enableCopyPasteStyles : data.copy_paste,
             enableDisplayConditions: data.enable_block_condition,
             enableMasonryExtension: data.enable_masonry_gallery,
+            enableDynamicContentExtension: data.enable_dynamic_content,
             dynamicContentMode: data.dynamic_content_mode,
 			enableResponsiveConditions: data.enable_block_responsive,
 			contentWidth: data.content_width,

@@ -57,6 +57,7 @@ class Common_Settings extends Ajax_Base {
 			'enable_block_condition',
 			'enable_masonry_gallery',
 			'enable_block_responsive',
+			'enable_dynamic_content',
 			'blocks_activation_and_deactivation',
 			'load_select_font_globally',
 			'select_font_globally',
@@ -777,6 +778,41 @@ class Common_Settings extends Ajax_Base {
 		wp_send_json_success( $response_data );
 
 	}
+	/**
+	 * Save settings.
+	 *
+	 * @return void
+	 */
+	public function enable_dynamic_content() {
+
+		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_enable_dynamic_content', 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		if ( empty( $_POST ) ) {
+			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_dynamic_content', sanitize_text_field( $_POST['value'] ) );
+
+		$response_data = array(
+			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
+		);
+		wp_send_json_success( $response_data );
+
+	}
+
 	/**
 	 * Save settings.
 	 *
