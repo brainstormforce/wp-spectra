@@ -24,6 +24,7 @@
     "@lottiefiles/react-lottie-player": "^3.4.1",
     "@wordpress/icons": "^2.10.1",
     "classnames": "^2.2.6",
+    "grunt-cli": "^1.4.3",
     "prop-types": "^15.6.2",
     "re-resizable": "^4.7.1",
     "react-color": "^2.18.0",
