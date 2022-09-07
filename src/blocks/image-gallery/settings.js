@@ -205,24 +205,6 @@ const Settings = ( props ) => {
 		paginateColor,
 		paginateColorHover,
 	} = attributes;
-
-	// Helpers
-
-	const getVisibleColors = () => {
-		// Skip to hover color if any of the following are true:
-		// For Text: captionColor.toLowerCase() === 'transparent'
-		// For Hex: captionColor.charAt( 0 ) === "#" && captionColor.length === 9 && captionColor.slice(-2) === "00"
-		// For RGBA: captionColor.slice(0,4) === "rgba" && parseFloat( captionColor.slice( captionColor.lastIndexOf( ',' ) ).slice( 1, -1 ) ) === 0.0
-		if (
-			captionColor.toLowerCase() === 'transparent' || (
-				captionColor.charAt( 0 ) === "#" && captionColor.length === 9 && captionColor.slice(-2) === "00"
-			) || (
-				captionColor.slice(0,4) === "rgba" && parseFloat( captionColor.slice( captionColor.lastIndexOf( ',' ) ).slice( 1, -1 ) ) === 0.0
-			)
-		){
-			// Use Hover Colors.
-		}
-	};
 	
 	// Loading Google Fonts.
 	let loadCaptionGoogleFonts;
@@ -296,29 +278,6 @@ const Settings = ( props ) => {
 			imageCaptionAlignment01: getMatrixAlignment( matrixValue, 1 ),
 			imageCaptionAlignment02: getMatrixAlignment( matrixValue, 2 ),
 		} );
-	};
-
-	// Reset the Gaps when Switching Layouts from Grid to Masonry.
-	const resetGaps = ( layoutType ) => {
-		// First Default the Pagination for Carousel Only...
-		layoutType === 'carousel'
-			? setAttributes( { feedPagination: true, paginateUseArrows: true, paginateUseDots: true } )
-			: setAttributes( { feedPagination: false, gridPageNumber: 1 } );
-		setAttributes( { feedLayout: layoutType } );
-		// Next Disable Bar Outside Image for Grid, Tiles and Squared Carousel...
-		switch ( layoutType ){
-			case 'grid':
-			case 'tiled':
-				if ( captionDisplayType === 'bar-outside' ){
-					setAttributes( { captionDisplayType: 'bar-inside' } );
-				}
-				break;
-			case 'carousel':
-				if ( carouselSquares && captionDisplayType === 'bar-outside' ){
-					setAttributes( { captionDisplayType: 'bar-inside' } );
-				}
-				break;
-		}
 	};
 
 	// Update Caption Visibility when Bar is Outside.

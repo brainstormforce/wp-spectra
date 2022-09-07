@@ -114,21 +114,15 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		}
 	}, [ JSON.stringify( mediaGallery ) ] );
 
-	// Load Special Tile Selectors when needed.
+	// Update Tile Sizer Tile when needed.
 	useEffect( () => {
 		if ( 'tiled' === feedLayout ) {
 			tileSizer.current.style.display = 'initial';
 			setAttributes( { tileSize: Math.round( tileSizer.current.getBoundingClientRect().width ) } );
-			imagesLoaded( tiledImages.current ).on( 'progress', ( theInstance, theImage ) => {
-				if ( generateSpecialTiles && theImage.isLoaded ){
-					createSpecialTile( theImage.img );
-				}
-			} );
 		}
 	}, [
-		JSON.stringify( mediaGallery ),
+		deviceType,
 		feedLayout,
-		generateSpecialTiles,
 		columnsDesk,
 		columnsTab,
 		columnsMob,
@@ -155,29 +149,30 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		gridImageGapUnitMob,
 	] );
 
-	// Delayed Load Special Tile Selectors when Device Type is Changed.
+	// Load Special Classes on Images when needed.
 	useEffect( () => {
 		setTimeout( () => {
-			if ( 'tiled' === feedLayout ) {
-				tileSizer.current.style.display = 'initial';
-				setAttributes( { tileSize: Math.round( tileSizer.current.getBoundingClientRect().width ) } );
-				imagesLoaded( tiledImages.current ).on( 'progress', ( theInstance, theImage ) => {
-					if ( generateSpecialTiles && theImage.isLoaded ){
-						createSpecialTile( theImage.img );
-					}
-				} );
+			const gallery = tiledImages.current;
+			// Delete the Object's KV Pairs that are null.
+			for ( let imageID in gallery ) {
+				if ( null === gallery[ imageID ] ) {
+					delete gallery[ imageID ];
+				}
 			}
-		}, 250 );
-	}, [ deviceType	] );
+			imagesLoaded( gallery ).on( 'progress', createSpecialTile );
+			imagesLoaded( gallery ).off( 'progress', createSpecialTile );
+		}, 500 );
+	}, [
+		generateSpecialTiles,
+		JSON.stringify( mediaGallery ),
+	] );
 
 	// Remove the Tile Sizer when the size is acquired.
 	useEffect( () => {
 		setTimeout( () => {
 			tileSizer.current.style.display = 'none';
 		}, 2000 );
-	}, [
-		tileSize,
-	] );
+	}, [ tileSize ] );
 	
 
 	// Update the Focused Images based on the Focus List.
@@ -323,15 +318,18 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		setFocusUpdate( true );
 	}
 
-	const createSpecialTile = ( imageElement ) => {
-		// Check if one dimension is greater than ( 2 times - half ) of the other dimension.
-		if ( imageElement.naturalWidth >= ( imageElement.naturalHeight * 2 ) - ( imageElement.naturalHeight / 2 ) ){
-			imageElement.parentElement.parentElement.classList.add( 'spectra-image-gallery__media-wrapper--wide');
-			imageElement.parentElement.classList.add( 'spectra-image-gallery__media--tiled-wide');
-		}
-		else if ( imageElement.naturalHeight >= ( imageElement.naturalWidth * 2 ) - ( imageElement.naturalWidth / 2 ) ){
-			imageElement.parentElement.parentElement.classList.add( 'spectra-image-gallery__media-wrapper--tall');
-			imageElement.parentElement.classList.add( 'spectra-image-gallery__media--tiled-tall');
+	const createSpecialTile = ( instance, image ) => {
+		if ( ( image && generateSpecialTiles ) && image.isLoaded ){
+			const imageElement = image.img;
+			// Check if one dimension is greater than ( 2 times - half ) of the other dimension.
+			if ( imageElement.naturalWidth >= ( imageElement.naturalHeight * 2 ) - ( imageElement.naturalHeight / 2 ) ){
+				imageElement.parentElement.parentElement.classList.add( 'spectra-image-gallery__media-wrapper--wide');
+				imageElement.parentElement.classList.add( 'spectra-image-gallery__media--tiled-wide');
+			}
+			else if ( imageElement.naturalHeight >= ( imageElement.naturalWidth * 2 ) - ( imageElement.naturalWidth / 2 ) ){
+				imageElement.parentElement.parentElement.classList.add( 'spectra-image-gallery__media-wrapper--tall');
+				imageElement.parentElement.classList.add( 'spectra-image-gallery__media--tiled-tall');
+			}
 		}
 	};
 
