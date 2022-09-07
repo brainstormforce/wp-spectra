@@ -532,29 +532,6 @@ const Settings = ( props ) => {
 					createGallery={ true }
 				/>
 			</UAGAdvancedPanelBody>
-			{/* <ResponsiveSelectControl
-				label={ __( 'Image Size', 'ultimate-addons-for-gutenberg' ) }
-				options={ {
-					desktop: imageSizeOptions,
-					tablet: imageSizeOptions,
-					mobile: imageSizeOptions,
-				} }
-				data={ {
-					desktop: {
-						value: sizeSlug,
-						label: 'sizeSlug'
-					},
-					tablet: {
-						value: sizeSlugTablet,
-						label: 'sizeSlugTablet'
-					},
-					mobile: {
-						value: sizeSlugMobile,
-						label: 'sizeSlugMobile'
-					},
-				} }
-				setAttributes={ setAttributes }
-			/> */}
 		</>
 	);
 
@@ -569,27 +546,6 @@ const Settings = ( props ) => {
 			/>
 			{ imageDisplayCaption && (
 				<>
-					<TextControl
-						autoComplete="off"
-						label={ __(
-							`Default Caption`,
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ imageDefaultCaption }
-						onChange={ ( value ) => setAttributes( { imageDefaultCaption: value } ) }
-					/>
-					<Range
-						label={ __( 'Max Caption Length (Characters)', 'ultimate-addons-for-gutenberg' ) }
-						setAttributes={ setAttributes }
-						value={ imageCaptionLength }
-						data={ {
-							value: imageCaptionLength,
-							label: 'imageCaptionLength',
-						} }
-						min={ 1 }
-						max={ 100 }
-						displayUnit={ false }
-					/>
 					<UAGSelectControl
 						label={ __( 'Caption Type', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
@@ -725,6 +681,27 @@ const Settings = ( props ) => {
 								</>
 							)
 					}
+					<TextControl
+						autoComplete="off"
+						label={ __(
+							`Default Caption`,
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ imageDefaultCaption }
+						onChange={ ( value ) => setAttributes( { imageDefaultCaption: value } ) }
+					/>
+					<Range
+						label={ __( 'Max Caption Length (Characters)', 'ultimate-addons-for-gutenberg' ) }
+						setAttributes={ setAttributes }
+						value={ imageCaptionLength }
+						data={ {
+							value: imageCaptionLength,
+							label: 'imageCaptionLength',
+						} }
+						min={ 1 }
+						max={ 100 }
+						displayUnit={ false }
+					/>
 				</>
 			) }
 		</UAGAdvancedPanelBody>
@@ -777,132 +754,6 @@ const Settings = ( props ) => {
 				min={ 1 }
 				max={ Math.min( MAX_IMAGE_COLUMNS, mediaGallery.length ) }
 				displayUnit={ false }
-				setAttributes={ setAttributes }
-			/>
-			<SpacingControl
-				{ ...props }
-				label={ __( 'Feed Margin', 'ultimate-addons-for-gutenberg' ) }
-				valueTop={ {
-					value: feedMarginTop,
-					label: 'feedMarginTop',
-				} }
-				valueRight={ {
-					value: feedMarginRight,
-					label: 'feedMarginRight',
-				} }
-				valueBottom={ {
-					value: feedMarginBottom,
-					label: 'feedMarginBottom',
-				} }
-				valueLeft={ {
-					value: feedMarginLeft,
-					label: 'feedMarginLeft',
-				} }
-				valueTopTablet={ {
-					value: feedMarginTopTab,
-					label: 'feedMarginTopTab',
-				} }
-				valueRightTablet={ {
-					value: feedMarginRightTab,
-					label: 'feedMarginRightTab',
-				} }
-				valueBottomTablet={ {
-					value: feedMarginBottomTab,
-					label: 'feedMarginBottomTab',
-				} }
-				valueLeftTablet={ {
-					value: feedMarginLeftTab,
-					label: 'feedMarginLeftTab',
-				} }
-				valueTopMobile={ {
-					value: feedMarginTopMob,
-					label: 'feedMarginTopMob',
-				} }
-				valueRightMobile={ {
-					value: feedMarginRightMob,
-					label: 'feedMarginRightMob',
-				} }
-				valueBottomMobile={ {
-					value: feedMarginBottomMob,
-					label: 'feedMarginBottomMob',
-				} }
-				valueLeftMobile={ {
-					value: feedMarginLeftMob,
-					label: 'feedMarginLeftMob',
-				} }
-				unit={ {
-					value: feedMarginUnit,
-					label: 'feedMarginUnit',
-				} }
-				tUnit={ {
-					value: feedMarginUnitTab,
-					label: 'feedMarginUnitTab',
-				} }
-				mUnit={ {
-					value: feedMarginUnitMob,
-					label: 'feedMarginUnitMob',
-				} }
-				attributes={ attributes }
-				setAttributes={ setAttributes }
-				link={ {
-					value: feedMarginUnitLink,
-					label: 'feedMarginUnitLink',
-				} }
-				units={ [
-					{
-						name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
-						unitValue: 'em',
-					},
-					{
-						name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
-						unitValue: 'px',
-					},
-					{
-						name: __( '%', 'ultimate-addons-for-gutenberg' ),
-						unitValue: '%',
-					},
-				] }
-			/>
-			<ResponsiveSlider
-				label={ __( `Gap ${ feedLayout === 'grid' ? 'Between' : 'Around' } Images`, 'ultimate-addons-for-gutenberg' ) }
-				data={ {
-					desktop: {
-						value: gridImageGap,
-						label: 'gridImageGap',
-						unit: {
-							value: gridImageGapUnit,
-							label: 'gridImageGapUnit',
-						},
-					},
-					tablet: {
-						value: gridImageGapTab,
-						label: 'gridImageGapTab',
-						unit: {
-							value: gridImageGapUnitTab,
-							label: 'gridImageGapUnitTab',
-						},
-					},
-					mobile: {
-						value: gridImageGapMob,
-						label: 'gridImageGapMob',
-						unit: {
-							value: gridImageGapUnitMob,
-							label: 'gridImageGapUnitMob',
-						},
-					},
-				} }
-				min={ 0 }
-				max={ 100 }
-				units={ [
-					{
-						name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
-						unitValue: 'em',
-					},
-					{
-						name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
-						unitValue: 'px',
-					},
-				] }
 				setAttributes={ setAttributes }
 			/>
 		</UAGAdvancedPanelBody>
@@ -1246,6 +1097,74 @@ const Settings = ( props ) => {
 
 	const imageStyling = () => (
 		<UAGAdvancedPanelBody title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+			<ToggleControl
+				label={ __(
+					`Enable Hover Zoom`,
+					'ultimate-addons-for-gutenberg'
+				) }
+				checked={ imageEnableZoom }
+				onChange={ () => 
+					setAttributes( { imageEnableZoom: ! imageEnableZoom } )
+				}
+			/>
+			{ imageEnableZoom && (
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __(
+						`Zoom Type`,
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: imageZoomType,
+						label: 'imageZoomType',
+					} }
+					options={ [
+						{
+							value: 'zoom-in',
+							label: __( 'Zoom In', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'zoom-out',
+							label: __( 'Zoom Out', 'ultimate-addons-for-gutenberg' ),
+						},
+					] }
+				/>
+			) }
+			<ToggleControl
+				label={ __(
+					`Enable Blur Overlay`,
+					'ultimate-addons-for-gutenberg'
+				) }
+				help={
+					captionBackgroundEnableBlur
+					? __(
+						'Blur Overlay may not be visible on some browsers',
+						'ultimate-addons-for-gutenberg'
+					)
+					: __(
+						'Blur Opacity can be edited for Normal and Hover.',
+						'ultimate-addons-for-gutenberg'
+					)
+				}
+				checked={ captionBackgroundEnableBlur }
+				onChange={ () => 
+					setAttributes( { captionBackgroundEnableBlur: ! captionBackgroundEnableBlur } )
+				}
+			/>
+			{ captionBackgroundEnableBlur && (
+				<Range
+					label={ __( `Blur Amount`, 'ultimate-addons-for-gutenberg' ) }
+					setAttributes={ setAttributes }
+					value={ captionBackgroundBlurAmount }
+					data={ {
+						value: captionBackgroundBlurAmount,
+						label: 'captionBackgroundBlurAmount',
+					} }
+					min={ 0 }
+					max={ 50 }
+					displayUnit={ false }
+				/>
+			) }
 			<SpacingControl
 				{ ...props }
 				label={ __( 'Border Radius', 'ultimate-addons-for-gutenberg' ) }
@@ -1326,74 +1245,6 @@ const Settings = ( props ) => {
 					},
 				] }
 			/>
-			<ToggleControl
-				label={ __(
-					`Enable Hover Zoom`,
-					'ultimate-addons-for-gutenberg'
-				) }
-				checked={ imageEnableZoom }
-				onChange={ () => 
-					setAttributes( { imageEnableZoom: ! imageEnableZoom } )
-				}
-			/>
-			<ToggleControl
-				label={ __(
-					`Enable Blur Overlay`,
-					'ultimate-addons-for-gutenberg'
-				) }
-				help={
-					captionBackgroundEnableBlur
-					? __(
-						'Blur Overlay may not be visible on some browsers',
-						'ultimate-addons-for-gutenberg'
-					)
-					: __(
-						'Blur Opacity can be edited for Normal and Hover.',
-						'ultimate-addons-for-gutenberg'
-					)
-				}
-				checked={ captionBackgroundEnableBlur }
-				onChange={ () => 
-					setAttributes( { captionBackgroundEnableBlur: ! captionBackgroundEnableBlur } )
-				}
-			/>
-			{ imageEnableZoom && (
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __(
-						`Zoom Type`,
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						value: imageZoomType,
-						label: 'imageZoomType',
-					} }
-					options={ [
-						{
-							value: 'zoom-in',
-							label: __( 'Zoom In', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'zoom-out',
-							label: __( 'Zoom Out', 'ultimate-addons-for-gutenberg' ),
-						},
-					] }
-				/>
-			) }
-			{ captionBackgroundEnableBlur && (
-				<Range
-					label={ __( `Blur Amount`, 'ultimate-addons-for-gutenberg' ) }
-					setAttributes={ setAttributes }
-					value={ captionBackgroundBlurAmount }
-					data={ {
-						value: captionBackgroundBlurAmount,
-						label: 'captionBackgroundBlurAmount',
-					} }
-					min={ 0 }
-					max={ 50 }
-					displayUnit={ false }
-				/>
-			) }
 			<UAGTabsControl
 				tabs={ [
 					{
@@ -1408,6 +1259,137 @@ const Settings = ( props ) => {
 				normal={ renderOverlayDisplay( false ) }
 				hover={ renderOverlayDisplay( true ) }
 				disableBottomSeparator={ true }
+			/>
+		</UAGAdvancedPanelBody>
+	);
+
+	const spacing = () => (
+		<UAGAdvancedPanelBody title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+			<SpacingControl
+				{ ...props }
+				label={ __( 'Margin', 'ultimate-addons-for-gutenberg' ) }
+				valueTop={ {
+					value: feedMarginTop,
+					label: 'feedMarginTop',
+				} }
+				valueRight={ {
+					value: feedMarginRight,
+					label: 'feedMarginRight',
+				} }
+				valueBottom={ {
+					value: feedMarginBottom,
+					label: 'feedMarginBottom',
+				} }
+				valueLeft={ {
+					value: feedMarginLeft,
+					label: 'feedMarginLeft',
+				} }
+				valueTopTablet={ {
+					value: feedMarginTopTab,
+					label: 'feedMarginTopTab',
+				} }
+				valueRightTablet={ {
+					value: feedMarginRightTab,
+					label: 'feedMarginRightTab',
+				} }
+				valueBottomTablet={ {
+					value: feedMarginBottomTab,
+					label: 'feedMarginBottomTab',
+				} }
+				valueLeftTablet={ {
+					value: feedMarginLeftTab,
+					label: 'feedMarginLeftTab',
+				} }
+				valueTopMobile={ {
+					value: feedMarginTopMob,
+					label: 'feedMarginTopMob',
+				} }
+				valueRightMobile={ {
+					value: feedMarginRightMob,
+					label: 'feedMarginRightMob',
+				} }
+				valueBottomMobile={ {
+					value: feedMarginBottomMob,
+					label: 'feedMarginBottomMob',
+				} }
+				valueLeftMobile={ {
+					value: feedMarginLeftMob,
+					label: 'feedMarginLeftMob',
+				} }
+				unit={ {
+					value: feedMarginUnit,
+					label: 'feedMarginUnit',
+				} }
+				tUnit={ {
+					value: feedMarginUnitTab,
+					label: 'feedMarginUnitTab',
+				} }
+				mUnit={ {
+					value: feedMarginUnitMob,
+					label: 'feedMarginUnitMob',
+				} }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				link={ {
+					value: feedMarginUnitLink,
+					label: 'feedMarginUnitLink',
+				} }
+				units={ [
+					{
+						name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
+						unitValue: 'em',
+					},
+					{
+						name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+						unitValue: 'px',
+					},
+					{
+						name: __( '%', 'ultimate-addons-for-gutenberg' ),
+						unitValue: '%',
+					},
+				] }
+			/>
+			<ResponsiveSlider
+				label={ __( 'Gap Between Images', 'ultimate-addons-for-gutenberg' ) }
+				data={ {
+					desktop: {
+						value: gridImageGap,
+						label: 'gridImageGap',
+						unit: {
+							value: gridImageGapUnit,
+							label: 'gridImageGapUnit',
+						},
+					},
+					tablet: {
+						value: gridImageGapTab,
+						label: 'gridImageGapTab',
+						unit: {
+							value: gridImageGapUnitTab,
+							label: 'gridImageGapUnitTab',
+						},
+					},
+					mobile: {
+						value: gridImageGapMob,
+						label: 'gridImageGapMob',
+						unit: {
+							value: gridImageGapUnitMob,
+							label: 'gridImageGapUnitMob',
+						},
+					},
+				} }
+				min={ 0 }
+				max={ 100 }
+				units={ [
+					{
+						name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
+						unitValue: 'em',
+					},
+					{
+						name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+						unitValue: 'px',
+					},
+				] }
+				setAttributes={ setAttributes }
 			/>
 		</UAGAdvancedPanelBody>
 	);
@@ -1627,6 +1609,7 @@ const Settings = ( props ) => {
 				prefix={ 'mainTitle' }
 				attributes={ attributes }
 				deviceType={ deviceType }
+				disableBottomSeparator={ true }
 			/>
 		</UAGAdvancedPanelBody>
 	);
@@ -1698,6 +1681,7 @@ const Settings = ( props ) => {
 						prefix={ 'arrow' }
 						attributes={ attributes }
 						deviceType={ deviceType }
+						disableBottomSeparator={ true }
 					/>
 				</>
 			) }			
@@ -1807,6 +1791,7 @@ const Settings = ( props ) => {
 									prefix={ 'button' }
 									attributes={ attributes }
 									deviceType={ deviceType }
+									disableBottomSeparator={ true }
 								/>
 							</>
 						) 
@@ -1818,7 +1803,6 @@ const Settings = ( props ) => {
 
 	return (
 		<>
-			{/* { blockControls() } */}
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
@@ -1833,6 +1817,7 @@ const Settings = ( props ) => {
 						{ readyToRender && imageStyling() }
 						{ ( readyToRender && imageDisplayCaption ) && captionStyling() }
 						{ ( readyToRender && feedPagination ) && paginationStyling() }
+						{ readyToRender && spacing() }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }

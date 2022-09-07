@@ -19,7 +19,7 @@ const MultiMediaSelector = ( props ) => {
 		createGallery,
 	} = props;
 
-	const placeholderIcon = UAGB_Block_Icons.image_gallery;
+	const placeholderIcon = UAGB_Block_Icons.gallery_placeholder;
 
 	let selectorLabel, replacerLabel;
 
@@ -68,7 +68,7 @@ const MultiMediaSelector = ( props ) => {
 		>
 			<div className="spectra-media-control__wrapper">
 				{ mediaGallery[ 0 ]?.url && (
-					<div className={ 'spectra-media-control__icon spectra-media-control__icon--fill' }>
+					<div className={ 'spectra-media-control__icon spectra-media-control__icon--stroke' }>
 						{ placeholderIcon }
 					</div>
 				) }

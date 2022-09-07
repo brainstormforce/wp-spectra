@@ -36,9 +36,13 @@
 			}
 		}
 
-		& svg {
+		svg {
 			width: 3em;
 			height: 3em;
+
+			path {
+				stroke: #959595;
+			}
 		}
 	}
 }
