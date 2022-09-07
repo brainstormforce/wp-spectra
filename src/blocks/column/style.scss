@@ -22,6 +22,11 @@
 		position: relative;
 	}
 
+	.aligncenter {
+		display: block;
+		text-align: center;
+	}
+
 	&.uagb-column__align-left {
 		margin-left: 0;
 		margin-right: auto;
