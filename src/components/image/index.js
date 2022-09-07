@@ -46,7 +46,6 @@ const UAGImage = ( props ) => {
 		);
 		allowedTypes = [ 'video' ];
 		placeholderIcon = UAGB_Block_Icons.video_placeholder;
-		iconColorType = 'fill';
 	}
 	labelText = label ? label : labelText;
 	labelText = false === label ? label : labelText;
