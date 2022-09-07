@@ -166,6 +166,9 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 ## Changelog ##
 
+### 2.0.11 - FRIDAY, 2nd SEPTEMBER 2022 ###
+* Improvement: Post Carousel - Gap between Content & Dots functionality.
+
 ### 2.0.10 - FRIDAY, 2nd SEPTEMBER 2022 ###
 * Fix: Responsive condition - Conflicting with plugin using REST API block preview.
 
