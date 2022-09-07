@@ -1,12 +1,12 @@
 import attributes from './attributes';
-import React from 'react';
-import classnames from 'classnames';
+import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
+import classnames from 'classnames';
 
 const deprecated = [
 	{
 		attributes,
-		Save( props ) {
+		save: ( props ) => {
 			const {
 				block_id,
 				layout,
@@ -132,7 +132,7 @@ const deprecated = [
 				</div>
 			);
 		}
-	}
+	},
 ];
 
 export default deprecated;
