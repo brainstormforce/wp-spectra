@@ -17,6 +17,6 @@ $block_data = array(
 	'description'      => __( 'Share your content on different social media platforms.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 25,
+	'priority'         => 26,
 	'deprecated'       => false,
 );

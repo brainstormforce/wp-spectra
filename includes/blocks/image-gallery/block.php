@@ -17,7 +17,7 @@ $block_data = array(
 	'description'      => __( 'This block allows you to display a highly customizable image gallery.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 32,
+	'priority'         => 17,
 	'js_assets'        => array( 'uagb-slick-js', 'uagb-masonry', 'uagb-imagesloaded', 'uagb-image-gallery-js' ),
 	'css_assets'       => array( 'uagb-slick-css' ),
 );

@@ -17,6 +17,6 @@ $block_data = array(
 	'description'      => __( 'Add reviews to items with Schema support.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 24,
+	'priority'         => 25,
 	'deprecated'       => false,
 );
