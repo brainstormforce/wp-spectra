@@ -1,8 +1,8 @@
 import { isBlobURL } from '@wordpress/blob';
 
 export const pickRelevantMediaFiles = ( image, size ) => {
-	const { alt, id, link, caption,url} = image
-	const imageProps = {alt, id, link, caption,url};
+	const { alt, id, link, caption} = image
+	const imageProps = {alt, id, link, caption};
 
 	if( image?.sizes && image?.sizes[size] ){
 		return {
