@@ -12,7 +12,7 @@ import InspectorTab, {
 import ResponsiveSlider from '@Components/responsive-slider';
 import SpacingControl from '@Components/spacing-control';
 import UAGTabsControl from '@Components/tabs';
-import UAGImage from '@Components/image';
+import UAGMediaPicker from '@Components/image';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import UAGSelectControl from '@Components/select-control';
@@ -280,11 +280,12 @@ tweetBtnLetterSpacingType,
 	// Image controls.
 	const imageControls = (
 		<>
-			<UAGImage
-				label={ __( 'Author Image', 'ultimate-addons-for-gutenberg' ) }
+			<UAGMediaPicker
 				onSelectImage={ onSelectImage }
 				backgroundImage={ authorImage }
 				onRemoveImage={ onRemoveImage }
+				label={ __( 'Author Image', 'ultimate-addons-for-gutenberg' ) }
+				slug={ 'author-image' }
 			/>
 			{ authorImage &&
 				authorImage.url !== 'null' &&
