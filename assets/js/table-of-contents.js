@@ -29,23 +29,23 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 			const element = event.target;
 
 			// These two conditions help us target the required element (collapsible icon beside TOC heading). 
-			const condition1 = ( element.tagName === 'path' || element.tagName === 'svg' );  // Check if the clicked element type is either path or SVG.
-			const condition2 = ( element.parentNode.className === 'uagb-toc__title' );  // Check if the clicked element's parent has the required class.
+			const condition1 = ( element?.tagName === 'path' || element?.tagName === 'svg' );  // Check if the clicked element type is either path or SVG.
+			const condition2 = ( element?.parentNode?.className === 'uagb-toc__title' );  // Check if the clicked element's parent has the required class.
 			
 			if( condition1 && condition2 ){
 				
-				const $root = element.closest( '.wp-block-uagb-table-of-contents' );
+				const $root = element?.closest( '.wp-block-uagb-table-of-contents' );
 
 				if ( $root.classList.contains( 'uagb-toc__collapse' ) ) {
 					$root.classList.remove( 'uagb-toc__collapse' );
 					UAGBTableOfContents._slideDown(
-						elementToOpen.querySelector( '.wp-block-uagb-table-of-contents .uagb-toc__list-wrap' ),
+						elementToOpen?.querySelector( '.wp-block-uagb-table-of-contents .uagb-toc__list-wrap' ),
 						500
 					);
 				} else {
 					$root.classList.add( 'uagb-toc__collapse' );
 					UAGBTableOfContents._slideUp(
-						elementToOpen.querySelector( '.wp-block-uagb-table-of-contents.uagb-toc__collapse .uagb-toc__list-wrap' ),
+						elementToOpen?.querySelector( '.wp-block-uagb-table-of-contents.uagb-toc__collapse .uagb-toc__list-wrap' ),
 						500
 					);
 
