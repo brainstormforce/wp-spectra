@@ -167,6 +167,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 == Changelog ==
 
 = 2.0.11 - THURSDAY, 8th SEPTEMBER 2022 =
+* Improvement: Updated copy-paste functionality logic for parent-child blocks.
 * Fix: Container - Child block's margin & padding gets removed in editor.
 * Fix: Info Box - Description margin considers values for desktop, even for tablet and mobile devices (on frontend).
 * Fix: Image: Image Size not working as expected for images when drag and drop.
