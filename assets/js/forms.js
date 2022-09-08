@@ -188,16 +188,16 @@ UAGBForms = { // eslint-disable-line no-undef
 
 		let captcha_response;
 
-		if( '' === attr.afterSubmitToEmail || null === attr.afterSubmitToEmail ) {
+		// if( '' === attr.afterSubmitToEmail || null === attr.afterSubmitToEmail ) {
 
-			const hideForm = document.querySelector( '[name="uagb-form-' + attr.block_id + '"]' );
-			hideForm.style.display = 'none';
+		// 	const hideForm = document.querySelector( '[name="uagb-form-' + attr.block_id + '"]' );
+		// 	hideForm.style.display = 'none';
 
-			const errorMsg = document.querySelector( '.uagb-forms-success-message-' + attr.block_id );
-			errorMsg.classList.remove( 'uagb-forms-submit-message-hide' );
-			errorMsg.classList.add( 'uagb-forms-success-message' );
-			return false;
-		}
+		// 	const errorMsg = document.querySelector( '.uagb-forms-success-message-' + attr.block_id );
+		// 	errorMsg.classList.remove( 'uagb-forms-submit-message-hide' );
+		// 	errorMsg.classList.add( 'uagb-forms-success-message' );
+		// 	return false;
+		// }
 
 		if ( attr.reCaptchaEnable === true ) {
 
@@ -223,11 +223,12 @@ UAGBForms = { // eslint-disable-line no-undef
 		}
 
 		const originalSerialized = window.UAGBForms._serializeIt( form );
-
+        
 		const postData = {};
 		postData.id = attr.block_id;
 		for ( let i = 0; i < originalSerialized.length; i++ ) {
 			const inputname = document.getElementById( originalSerialized[ i ].name );
+
 			if ( originalSerialized[ i ].name.endsWith( '[]' ) ) {
 				const name = originalSerialized[ i ].name.replace( /[\[\]']+/g,'' );
 				//For checkbox element
@@ -236,8 +237,15 @@ UAGBForms = { // eslint-disable-line no-undef
 				}
 				postData[ name ].push( originalSerialized[ i ].value );
 			} else if( inputname !== null ){
+				if( inputname.innerHTML ) {
 					postData[ inputname.innerHTML] = originalSerialized[ i ].value;
+				} else {
+					postData[ originalSerialized[ i ].name ] = originalSerialized[ i ].value;
+					 
 				}
+
+			}
+			
 		}
 
 		const after_submit_data = {
