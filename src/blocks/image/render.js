@@ -194,6 +194,12 @@ const Render = ( props ) => {
 				sizeSlug: hasDefaultSize( media, imageDefaultSize )
 					? imageDefaultSize
 					: 'full',
+				sizeSlugTablet: hasDefaultSize( media, imageDefaultSize )
+				? imageDefaultSize
+				: 'full',
+				sizeSlugMobile: hasDefaultSize( media, imageDefaultSize )
+				? imageDefaultSize
+				: 'full',
 			};
 		} else {
 			// Keep the same url when selecting the same file, so "Image Size"
@@ -258,6 +264,8 @@ const Render = ( props ) => {
 				width: undefined,
 				height: undefined,
 				sizeSlug: imageDefaultSize,
+				sizeSlugTablet: imageDefaultSize,
+				sizeSlugMobile: imageDefaultSize,
 			} );
 		}
 	}
