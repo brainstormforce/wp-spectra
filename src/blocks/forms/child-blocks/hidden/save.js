@@ -8,7 +8,6 @@ export default function save( props ) {
 	const { attributes } = props;
 
 	const { block_id, hidden_field_value } = attributes;
-
 	return (
 		<div
 			className={ classnames(
