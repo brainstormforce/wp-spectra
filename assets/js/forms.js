@@ -229,11 +229,12 @@ UAGBForms = { // eslint-disable-line no-undef
 		for ( let i = 0; i < originalSerialized.length; i++ ) {
 			const inputname = document.getElementById( originalSerialized[ i ].name );
 			if ( originalSerialized[ i ].name.endsWith( '[]' ) ) {
+				const name = originalSerialized[ i ].name.replace( /[\[\]']+/g,'' );
 				//For checkbox element
-				if ( ! ( originalSerialized[ i ].name in postData ) ) {
-					postData[ originalSerialized[ i ].name ] = [];
+				if ( ! ( name in postData ) ) {
+					postData[ name ] = [];
 				}
-				postData[ originalSerialized[ i ].name ].push( originalSerialized[ i ].value );
+				postData[ name ].push( originalSerialized[ i ].value );
 			} else if( inputname !== null ){
 					postData[ inputname.innerHTML] = originalSerialized[ i ].value;
 				}
