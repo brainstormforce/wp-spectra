@@ -176,6 +176,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 * Fix: Image: Image Size not working as expected for images when drag and drop.
 * Fix: Table of Contents - Collapse table icon/button not working in the editor.
 * Fix: Advanced Columns - Border radius does not apply properly to the column and inner-column elements.
+* Fix: Forms - Phone field label is null on the email template.
 
 = 2.0.10 - FRIDAY, 2nd SEPTEMBER 2022 =
 * Fix: Responsive condition - Conflicting with plugin using REST API block preview.
