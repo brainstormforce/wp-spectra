@@ -17,6 +17,7 @@ export default function save( props ) {
 		>
 			<input
 				type="hidden"
+				id="hidden"
 				className="uagb-forms-hidden-input"
 				value={ hidden_field_value }
 				name = { hidden_field_name }

@@ -237,15 +237,15 @@ UAGBForms = { // eslint-disable-line no-undef
 				}
 				postData[ name ].push( originalSerialized[ i ].value );
 			} else if( inputname !== null ){
-				if( inputname.innerHTML ) {
-					postData[ inputname.innerHTML] = originalSerialized[ i ].value;
-				} else {
-					postData[ originalSerialized[ i ].name ] = originalSerialized[ i ].value;
-					 
-				}
-
+				postData[ inputname.innerHTML] = originalSerialized[ i ].value;
 			}
 			
+			const hiddenField = document.getElementById( 'hidden' );
+
+			if ( hiddenField !== null && hiddenField !== undefined ) {
+				postData[ hiddenField.getAttribute( 'name' ) ] = hiddenField.getAttribute( 'value' );
+			}
+
 		}
 
 		const after_submit_data = {
