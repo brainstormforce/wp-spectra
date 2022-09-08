@@ -174,6 +174,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 * Fix: Star Rating - Padding/Margin were not working when the star position is set to “Before”.
 * Fix: Image: Image Size not working as expected for images when drag and drop.
 * Fix: Advanced Columns - Border radius does not apply properly to the column and inner-column elements.
+* Fix: Price List - Changed default padding for images so that the image aligns with the title.
 
 ### 2.0.10 - FRIDAY, 2nd SEPTEMBER 2022 ###
 * Fix: Responsive condition - Conflicting with plugin using REST API block preview.
