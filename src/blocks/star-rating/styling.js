@@ -161,8 +161,6 @@ function styling( props ) {
 			blockLeftPadding,
 			blockPaddingUnit
 		),
-		'justify-content': flexJustifyContent( align ),
-		'text-align': stackAlignment,
 	}
 
 	const selectors = {
@@ -196,6 +194,7 @@ function styling( props ) {
 			selectors[ '.wp-block-uagb-star-rating' ] = {
 				'flex-direction': 'column-reverse',
 				'align-items': flexJustifyContent( align ), // To align-item in flex-direction column-reverse.
+				...wrapperCSS
 			}
 		} else if( 'after' === starPosition ) {
 			index = 'margin-bottom';
@@ -211,6 +210,7 @@ function styling( props ) {
 			selectors[ '.wp-block-uagb-star-rating' ] = {
 				'flex-direction': 'row-reverse',
 				'justify-content': flexAlignmentWhenDirectionIsRowReverse( align ),
+				...wrapperCSS
 			}
 		} else if( 'after' === starPosition ) {
 			index = 'margin-right';
@@ -306,6 +306,7 @@ function styling( props ) {
 			tabletSelectors[ '.wp-block-uagb-star-rating ' ] = {
 				'flex-direction': 'column-reverse',
 				'align-items': flexJustifyContent( alignTablet ), // To align-item in flex-direction column-reverse.
+				...wrapperCSSTablet
 			}
 		} else if( 'after' === starPositionTablet ) {
 			indexTablet = 'margin-bottom';
@@ -321,6 +322,7 @@ function styling( props ) {
 			tabletSelectors[ '.wp-block-uagb-star-rating ' ] = {
 				'flex-direction': 'row-reverse',
 				'justify-content': flexAlignmentWhenDirectionIsRowReverse( alignTablet ),
+				...wrapperCSSTablet
 			}
 		} else if( 'after' === starPositionTablet ) {
 			indexTablet = 'margin-right';
@@ -395,6 +397,7 @@ function styling( props ) {
 			mobileSelectors[ '.wp-block-uagb-star-rating ' ] = {
 				'flex-direction': 'column-reverse',
 				'align-items': flexJustifyContent( alignMobile ), // To align-item in flex-direction column-reverse.
+				...wrapperCSSMobile
 			}
 		} else if( 'after' === starPositionMobile ) {
 			indexMobile = 'margin-bottom';
@@ -411,6 +414,7 @@ function styling( props ) {
 			mobileSelectors[ '.wp-block-uagb-star-rating ' ] = {
 				'flex-direction': 'row-reverse',
 				'justify-content': flexAlignmentWhenDirectionIsRowReverse( alignMobile ) ,
+				...wrapperCSSMobile
 			}
 		} else if( 'after' === starPositionMobile ) {
 			indexMobile = 'margin-right';
