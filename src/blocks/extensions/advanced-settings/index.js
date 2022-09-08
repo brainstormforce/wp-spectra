@@ -228,7 +228,9 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		UAGResponsiveConditions
 	} = attributes;
 
-	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGResponsiveConditions ) {
+	const isSpectra = blockType.name.match( /uagb/gi );
+
+	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGResponsiveConditions && isSpectra ) {
 		if ( UAGHideDesktop ) {
 			extraProps.className = classnames( extraProps.className, 'uag-hide-desktop' );
 		}
@@ -247,7 +249,7 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		extraProps.className = classnames( extraProps.className, 'uag-blocks-common-selector' );
 		extraProps.style = {'--z-index-desktop': zIndex + ';', '--z-index-tablet': zIndexTablet + ';', '--z-index-mobile': zIndexMobile + ';'}
 	}
-	
+
 	return extraProps;
 }
 

@@ -195,7 +195,9 @@ function ApplyExtraClassCore( extraProps, blockType, attributes ) {
         UAGResponsiveConditions
 	} = attributes;
 
-	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGResponsiveConditions ) {
+    const isCore = blockType.name.match( /core/gi );
+
+	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGResponsiveConditions && isCore ) {
 		if ( UAGHideDesktop ) {
 			extraProps.className = extraProps.className + ' uag-hide-desktop';
 		}
