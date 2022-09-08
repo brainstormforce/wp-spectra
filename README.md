@@ -166,8 +166,11 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 ## Changelog ##
 
-### 2.0.11 ###
+### 2.0.11 - THURSDAY, 8th SEPTEMBER 2022 ###
+* Fix: Container - Child block's margin & padding gets removed in editor.
+* Fix: Info Box - Description margin considers values for desktop, even for tablet and mobile devices (on frontend).
 * Fix: Table of content - When disable marker is enabled List style tab not visible.
+
 
 ### 2.0.10 - FRIDAY, 2nd SEPTEMBER 2022 ###
 * Fix: Responsive condition - Conflicting with plugin using REST API block preview.
