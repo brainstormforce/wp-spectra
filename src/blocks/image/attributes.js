@@ -1,8 +1,6 @@
 import {getBorderAttributes} from '@Controls/generateAttributes';
 
-const overlayBorderAttributes = getBorderAttributes( 'overlay', {
-	borderStyle: 'solid'
-} );
+const overlayBorderAttributes = getBorderAttributes( 'overlay' );
 const imageBorderAttributes = getBorderAttributes( 'image' );
 
 

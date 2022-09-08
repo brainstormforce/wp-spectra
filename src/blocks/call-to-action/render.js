@@ -77,6 +77,7 @@ const Render = ( props ) => {
 						href="/"
 						className="uagb-cta__link-to-all"
 						rel="noopener noreferrer"
+						onClick={ ( e ) => e.preventDefault() }
 					>
 						{ ' ' }
 					</a>

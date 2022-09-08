@@ -331,7 +331,7 @@ function styling( props ) {
 	}
 
 	let containerFlexSelector = '.wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout';
-	if ( ! isBlockRootParent || 'alignfull' !== contentWidth ) {
+	if ( ! isBlockRootParent || 'alignfull' !== contentWidth || 'alignwide' !== innerContentWidth ) {
 		containerFlexSelector = '.wp-block-uagb-container > .block-editor-inner-blocks > .block-editor-block-list__layout';
 	}
 
@@ -357,21 +357,21 @@ function styling( props ) {
 	const widthSelectorsDesktop = {
 		[`.is-root-container > .block-editor-block-list__block .block-editor-block-list__block#block-${ props.clientId } `] : {
 			'max-width' : generateCSSUnit( widthDesktopFallback, widthType ),
-			'width' : generateCSSUnit( widthDesktopFallback, widthType ),
+			'width' :'100%'
 		}
 	};
 
 	const widthSelectorsTablet = {
 		[`.is-root-container > .block-editor-block-list__block .uagb-editor-preview-mode-tablet.block-editor-block-list__block#block-${ props.clientId } `] : {
 			'max-width' : generateCSSUnit( widthTablet, widthTypeTablet ),
-			'width' : generateCSSUnit( widthTablet, widthTypeTablet ),
+			'width' :'100%'
 		},
 	};
 
 	const widthSelectorsMobile = {
 		[`.is-root-container > .block-editor-block-list__block .uagb-editor-preview-mode-mobile.block-editor-block-list__block#block-${ props.clientId } `] : {
 			'max-width' : generateCSSUnit( widthMobile, widthTypeMobile ),
-			'width' : generateCSSUnit( widthMobile, widthTypeMobile ),
+			'width' :'100%'
 		},
 	};
 

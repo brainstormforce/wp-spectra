@@ -4,17 +4,13 @@
 
 import RestMenuStyle from './inline-styles';
 import { select, dispatch } from '@wordpress/data';
-import React, { lazy, Suspense, useEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {    useEffect } from 'react';
+
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/price-list/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/price-list/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 const UAGBRestaurantMenu = ( props ) => {
 	const deviceType = useDeviceType();
 	useEffect( () => {
@@ -133,7 +129,7 @@ const UAGBRestaurantMenu = ( props ) => {
 		// Set showImage attribute in child blocks based on current parent block's value.
 		select( 'core/block-editor' )
             .getBlocksByClientId( props.clientId )[0]
-            .innerBlocks.forEach( function( block ) {
+            ?.innerBlocks.forEach( function( block ) {
                 dispatch( 'core/block-editor' ).updateBlockAttributes(
                     block.clientId, {
                         showImage: props.attributes.showImage,
@@ -145,10 +141,12 @@ const UAGBRestaurantMenu = ( props ) => {
 
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
+
+						<>
+			<Settings parentProps={ props } />
 				<Render parentProps={ props } />
-			</Suspense>
+			</>
+
 		</>
 	);
 };

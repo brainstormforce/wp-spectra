@@ -1,6 +1,6 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
-import lazyLoader from '@Controls/lazy-loader';
+
 import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
 import ResponsiveBorder from '@Components/responsive-border';
@@ -25,7 +25,6 @@ import {
 import {
 	ToggleControl,
 	Icon,
-	Notice,
 } from '@wordpress/components';
 
 
@@ -1818,7 +1817,7 @@ const Settings = ( props ) => {
 		</UAGAdvancedPanelBody>
 	);
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<BlockControls key="controls">
 				<AlignmentToolbar
 					value={ align }
@@ -1828,11 +1827,6 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
-						<Notice status="warning" isDismissible={false}>
-							{
-								__( 'This block has been deprecated.', 'ultimate-addons-for-gutenberg' )
-							}
-						</Notice>
 						{ generalSettings }
 						{ fieldSetting }
 						{ radioCheckSetting }
@@ -1858,7 +1852,7 @@ const Settings = ( props ) => {
 			{ loadRadioGoogleFonts }
 			{ loadValidationGoogleFonts }
 			{ loadMsgGoogleFonts }
-		</Suspense>
+			</>
 	);
 };
 

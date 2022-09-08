@@ -122,36 +122,45 @@ $selectors = array(
 	),
 );
 
-$selectors[' .uagb-section__overlay'] = $overall_border_css;
+$selectors[' > .uagb-section__overlay'] = $overall_border_css;
 
 if ( 'video' === $bg_type ) {
-	$selectors[' > .uagb-section__overlay'] = array(
-		'opacity'          => 1,
-		'background-color' => $attr['backgroundVideoColor'],
-	);
+	if ( 'color' === $overlay_type ) {
+		$selectors[' > .uagb-section__overlay'] = array(
+			'background-color' => $attr['backgroundVideoColor'],
+		);
+	} else {
+		$selectors[' > .uagb-section__overlay']['background-image'] = $attr['gradientValue'];
+	}
 } elseif ( 'image' === $bg_type ) {
 	if ( 'color' === $overlay_type ) {
 		$selectors[' > .uagb-section__overlay'] = array(
 			'background-color' => $attr['backgroundImageColor'],
-			'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '',
+			'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] && 0 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '',
 		);
 	} else {
-		$selectors[' > .uagb-section__overlay']['background-color'] = 'transparent';
-		if ( 'linear' === $attr['gradientOverlayType'] ) {
-
-			$selectors[' > .uagb-section__overlay']['background-image'] = 'linear-gradient(' . $attr['gradientOverlayAngle'] . 'deg, ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
+		if ( $attr['gradientValue'] ) {
+			$selectors[' > .uagb-section__overlay']['background-image'] = $attr['gradientValue'];
 		} else {
+			$selectors[' > .uagb-section__overlay']['background-color'] = 'transparent';
+			$selectors[' > .uagb-section__overlay']['opacity']          = ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] && 0 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '';
+			if ( 'linear' === $attr['gradientOverlayType'] ) {
 
-			$selectors[' > .uagb-section__overlay']['background-image'] = 'radial-gradient( at ' . $gradientOverlayPosition . ', ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
+				$selectors[' > .uagb-section__overlay']['background-image'] = 'linear-gradient(' . $attr['gradientOverlayAngle'] . 'deg, ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
+			} else {
+
+				$selectors[' > .uagb-section__overlay']['background-image'] = 'radial-gradient( at ' . $gradientOverlayPosition . ', ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
+			}
 		}
 	}
 } elseif ( 'color' === $bg_type ) {
 	$selectors[' > .uagb-section__overlay'] = array(
 		'background-color' => $attr['backgroundColor'],
+		'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] && 0 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '',
 	);
 } elseif ( 'gradient' === $bg_type ) {
 	$selectors[' > .uagb-section__overlay']['background-color'] = 'transparent';
-
+	$selectors[' > .uagb-section__overlay']['opacity']          = ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] && 0 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '';
 	if ( $attr['gradientValue'] ) {
 		$selectors[' > .uagb-section__overlay']['background-image'] = $attr['gradientValue'];
 	} else {
@@ -165,23 +174,23 @@ if ( 'video' === $bg_type ) {
 }
 
 $m_selectors = array(
-	'.uagb-section__wrap'     => array(
+	'.uagb-section__wrap'       => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingMobile'], $attr['mobilePaddingType'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingMobile'], $attr['mobilePaddingType'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingMobile'], $attr['mobilePaddingType'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPaddingMobile'], $attr['mobilePaddingType'] ),
 	),
-	' .uagb-section__overlay' => $overall_border_css_mobile,
+	' > .uagb-section__overlay' => $overall_border_css_mobile,
 );
 
 $t_selectors                                      = array(
-	'.uagb-section__wrap'     => array(
+	'.uagb-section__wrap'       => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingTablet'], $attr['tabletPaddingType'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingTablet'], $attr['tabletPaddingType'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingTablet'], $attr['tabletPaddingType'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPaddingTablet'], $attr['tabletPaddingType'] ),
 	),
-	' .uagb-section__overlay' => $overall_border_css_tablet,
+	' > .uagb-section__overlay' => $overall_border_css_tablet,
 );
 $m_selectors['.uagb-section__wrap']['margin-top'] = UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['mobileMarginType'] );
 $m_selectors['.uagb-section__wrap']['margin-bottom'] = UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['mobileMarginType'] );

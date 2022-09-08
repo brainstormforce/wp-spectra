@@ -51,7 +51,7 @@ const BlockCard = ( props ) => {
             method: 'POST',
             body: formData,
         } ).then( () => {
-			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
+			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
         } );
     };
 
@@ -73,7 +73,7 @@ const BlockCard = ( props ) => {
                     { title }
                     { deprecated && (
                         <div className="inline-block align-top max-h-4 px-1.5 py-1 ml-1.5 text-[10px] leading-[10px] border border-slate-200 text-slate-400 rounded spectra-admin__block-label">
-                            { __( 'Deprecated', 'ultimate-addons-for-gutenberg' ) }
+                            { __( 'Legacy', 'ultimate-addons-for-gutenberg' ) }
                         </div>
                     ) }
                 </p>

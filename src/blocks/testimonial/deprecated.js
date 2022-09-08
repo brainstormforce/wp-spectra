@@ -10,6 +10,8 @@ import PositionClasses from './classes';
 import TestimonialImage from './components/TestimonialImage';
 import TestimonialImages from './components/Image';
 import React, { Fragment } from 'react';
+import { getBorderAttributes } from '@Controls/generateAttributes';
+const overallBorderAttributes = getBorderAttributes( 'overall' );
 
 const ITEM_COUNT = 3
 
@@ -354,7 +356,44 @@ const attributes = {
 	stack: {
 		type: "string",
 		default: "tablet"
-	}
+	},
+	nameSpaceType: {
+		type: 'string',
+		default: 'px',
+	},
+	descSpaceType: {
+		type: 'string',
+		default: 'px',
+	},
+	imgpaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	arrowBorderSizeUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	arrowBorderRadiusUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	arrowSizeType: {
+		type: 'string',
+		default: 'px',
+	},
+	rowGapType: {
+		type: 'string',
+		default: 'px',
+	},
+	columnGapType: {
+		type: 'string',
+		default: 'px',
+	},
+	paddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	...overallBorderAttributes
 }
 
 const deprecated = [

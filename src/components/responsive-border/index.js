@@ -173,7 +173,7 @@ const ResponsiveBorder = ( props ) => {
 					},
 				] }
 			/>
-			{ undefined !== borderStyle && 'none' !== borderStyle && (
+			{ '' !== borderStyle && 'none' !== borderStyle && (
 				showWidth !== false &&
 					<SpacingControl
 					label={ borderWidthLabel }

@@ -76,11 +76,11 @@ $selectors = array(
 	' .uagb-toc__list-wrap li a'                          => array(
 		'color' => $attr['linkColor'],
 	),
-	' .uagb-toc__title-wrap'                              => array(
+	' .uagb-toc__wrap .uagb-toc__title-wrap'              => array(
 		'justify-content' => $attr['align'],
 		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
 	),
-	' .uagb-toc__title'                                   => array(
+	' .uagb-toc__wrap .uagb-toc__title'                   => array(
 		'color'           => $attr['headingColor'],
 		'justify-content' => $attr['headingAlignment'],
 		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
@@ -145,7 +145,7 @@ if ( $attr['customWidth'] ) {
 }
 
 if ( $attr['customWidth'] && $attr['makeCollapsible'] ) {
-	$selectors[' .uagb-toc__title']['justify-content'] = 'space-between';
+	$selectors[' .uagb-toc__wrap .uagb-toc__title']['justify-content'] = 'space-between';
 }
 
 if ( $attr['disableBullets'] ) {

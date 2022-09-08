@@ -8,14 +8,7 @@
  */
 
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
-	'overall',
-	array(
-		'borderStyle'       => 'none',
-		'borderTopWidth'    => 1,
-		'borderRightWidth'  => 1,
-		'borderBottomWidth' => 1,
-		'borderLeftWidth'   => 1,
-	)
+	'overall'
 );
 
 return array_merge(
@@ -108,7 +101,7 @@ return array_merge(
 		'columnGapType'              => 'px',
 		'descSpaceType'              => 'px',
 		'nameSpaceType'              => 'px',
-		'overlayType'                => '',
+		'overlayType'                => 'color',
 		'backgroundAttachment'       => '',
 		'gradientValue'              => '',
 		'descTransform'              => '',

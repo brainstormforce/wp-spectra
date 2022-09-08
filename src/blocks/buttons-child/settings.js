@@ -5,8 +5,8 @@
 // Import classes
 import UAGIconPicker from '@Components/icon-picker';
 import { __ } from '@wordpress/i18n';
-import lazyLoader from '@Controls/lazy-loader';
-import React, { Suspense } from 'react';
+
+import React from 'react';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import ResponsiveBorder from '@Components/responsive-border';
 import SpacingControl from '@Components/spacing-control';
@@ -892,7 +892,7 @@ const Settings = ( props ) => {
 	};
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+		<>
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
@@ -914,7 +914,7 @@ const Settings = ( props ) => {
 				</InspectorTabs>
 			</InspectorControls>
 			{loadBtnGoogleFonts}
-		</Suspense>
+			</>
 	);
 };
 

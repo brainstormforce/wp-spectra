@@ -1,6 +1,6 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
-import lazyLoader from '@Controls/lazy-loader';
+
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import ResponsiveBorder from '@Components/responsive-border';
@@ -1890,11 +1890,11 @@ const Settings = ( props ) => {
 					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			<Suspense fallback={ lazyLoader() }>
+
 				{ loadsubmittextGoogleFonts }
 				{ loadlabelGoogleFonts }
 				{ loadinputGoogleFonts }
-			</Suspense>
+
 		</>
 	);
 };

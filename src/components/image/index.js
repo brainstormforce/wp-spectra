@@ -19,6 +19,9 @@ const UAGImage = ( props ) => {
 	// This is used to render an icon in place of the background image when needed.
 	let placeholderIcon;
 
+	// This is used to determine the way the icon is colored.
+	let iconColorType = 'stroke';
+
 	// Need to refactor this code as per multi-image select for more diversity.
 	let labelText = __( 'Image', 'ultimate-addons-for-gutenberg' );
 	let selectImageLabel = __(
@@ -43,6 +46,7 @@ const UAGImage = ( props ) => {
 		);
 		allowedTypes = [ 'video' ];
 		placeholderIcon = UAGB_Block_Icons.video_placeholder;
+		iconColorType = 'fill';
 	}
 	labelText = label ? label : labelText;
 	labelText = false === label ? label : labelText;
@@ -126,7 +130,7 @@ const UAGImage = ( props ) => {
 				} }
 			>
 				{ ( placeholderIcon && backgroundImage?.url ) && (
-					<div className="spectra-media-control__icon">
+					<div className={ `spectra-media-control__icon spectra-media-control__icon--${ iconColorType }` }>
 						{ placeholderIcon }
 					</div>
 				) }

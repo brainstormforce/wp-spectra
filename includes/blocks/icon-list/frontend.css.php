@@ -24,7 +24,7 @@ $border_radius_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['
 $inner_gap_fallback            = UAGB_Block_Helper::get_fallback_number( $attr['inner_gap'], 'inner_gap', $block_name );
 $inner_gap_tablet_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['innerGapTablet'], 'innerGapTablet', $block_name );
 $inner_gap_mobile_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['innerGapMobile'], 'innerGapMobile', $block_name );
-$font_size_fallback            = UAGB_Block_Helper::get_fallback_number( $attr['fontSize'], 'fontSize', $block_name );
+$font_size_fallback            = is_numeric( $attr['fontSize'] ) ? $attr['fontSize'] : 16;
 
 // Responsive Fallback Values that Need to be Numeric for Math.
 $size_tablet_fallback      = is_numeric( $attr['sizeTablet'] ) ? $attr['sizeTablet'] : $size_fallback;
