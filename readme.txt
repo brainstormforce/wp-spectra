@@ -166,6 +166,9 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 == Changelog ==
 
+= 2.0.11 - FRIDAY, 2nd SEPTEMBER 2022 =
+* Fix: Fix: Post carousel - Row gap does not working as expected as v1.25.6. Image take full size of post.
+
 = 2.0.10 - FRIDAY, 2nd SEPTEMBER 2022 =
 * Fix: Responsive condition - Conflicting with plugin using REST API block preview.
 
