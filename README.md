@@ -174,6 +174,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 * Fix: Table of content - When disable marker is enabled List style tab not visible.
 * Fix: Star Rating - Padding/Margin were not working when the star position is set to “Before”.
 * Fix: Image: Image Size not working as expected for images when drag and drop.
+* Fix: Table of Contents - Collapse table icon/button not working in the editor.
 * Fix: Advanced Columns - Border radius does not apply properly to the column and inner-column elements.
 
 ### 2.0.10 - FRIDAY, 2nd SEPTEMBER 2022 ###
