@@ -55,7 +55,6 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		carouselTransitionSpeed,
 		gridPages,
 		gridPageNumber,
-		generateSpecialTiles,
 
 		feedPagination,
 		paginateUseArrows,
@@ -152,19 +151,21 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 
 	// Load Special Classes on Images when needed.
 	useEffect( () => {
-		setTimeout( () => {
-			const gallery = tiledImages.current;
-			// Delete the Object's KV Pairs that are null.
-			for ( let imageID in gallery ) {
-				if ( null === gallery[ imageID ] ) {
-					delete gallery[ imageID ];
+		if ( 'tiled' === feedLayout ) {
+			setTimeout( () => {
+				const gallery = tiledImages.current;
+				// Delete the Object's KV Pairs that are null.
+				for ( let imageID in gallery ) {
+					if ( null === gallery[ imageID ] ) {
+						delete gallery[ imageID ];
+					}
 				}
-			}
-			imagesLoaded( gallery ).on( 'progress', createSpecialTile );
-			imagesLoaded( gallery ).off( 'progress', createSpecialTile );
-		}, 500 );
+				imagesLoaded( gallery ).on( 'progress', createSpecialTile );
+				imagesLoaded( gallery ).off( 'progress', createSpecialTile );
+			}, 250 );
+		}
 	}, [
-		generateSpecialTiles,
+		feedLayout,
 		JSON.stringify( mediaGallery ),
 	] );
 
@@ -172,7 +173,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	useEffect( () => {
 		setTimeout( () => {
 			tileSizer.current.style.display = 'none';
-		}, 2000 );
+		}, 3000 );
 	}, [ tileSize ] );
 	
 
@@ -316,16 +317,20 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	}
 
 	const createSpecialTile = ( instance, image ) => {
-		if ( ( image && generateSpecialTiles ) && image.isLoaded ){
+		if ( image && image.isLoaded ){
 			const imageElement = image.img;
-			// Check if one dimension is greater than ( 2 times - half ) of the other dimension.
-			if ( imageElement.naturalWidth >= ( imageElement.naturalHeight * 2 ) - ( imageElement.naturalHeight / 2 ) ){
-				imageElement.parentElement.parentElement.classList.add( 'spectra-image-gallery__media-wrapper--wide');
-				imageElement.parentElement.classList.add( 'spectra-image-gallery__media--tiled-wide');
-			}
-			else if ( imageElement.naturalHeight >= ( imageElement.naturalWidth * 2 ) - ( imageElement.naturalWidth / 2 ) ){
-				imageElement.parentElement.parentElement.classList.add( 'spectra-image-gallery__media-wrapper--tall');
-				imageElement.parentElement.classList.add( 'spectra-image-gallery__media--tiled-tall');
+			const imageWrapper = imageElement.parentElement;
+			const tileWrapper = imageElement.parentElement.parentElement;
+			if ( ! tileWrapper.classList.contains( 'spectra-image-gallery__media-wrapper--focus' ) ) {
+				// Check if one dimension is greater than ( 2 times - half ) of the other dimension.
+				if ( imageElement.naturalWidth >= ( imageElement.naturalHeight * 2 ) - ( imageElement.naturalHeight / 2 ) ){
+					tileWrapper.classList.add( 'spectra-image-gallery__media-wrapper--wide');
+					imageWrapper.classList.add( 'spectra-image-gallery__media--tiled-wide');
+				}
+				else if ( imageElement.naturalHeight >= ( imageElement.naturalWidth * 2 ) - ( imageElement.naturalWidth / 2 ) ){
+					tileWrapper.classList.add( 'spectra-image-gallery__media-wrapper--tall');
+					imageWrapper.classList.add( 'spectra-image-gallery__media--tiled-tall');
+				}
 			}
 		}
 	};

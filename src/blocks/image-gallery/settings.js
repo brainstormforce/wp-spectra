@@ -106,7 +106,6 @@ const Settings = ( props ) => {
 		carouselAutoplaySpeed,
 		carouselPauseOnHover,
 		carouselTransitionSpeed,
-		generateSpecialTiles,
 
 		feedPagination,
 		paginateUseArrows,
@@ -287,7 +286,7 @@ const Settings = ( props ) => {
 
 	// Bar Option Generation.
 	const generateBarOptions = () => (
-		( feedLayout === 'grid' || feedLayout === 'tiled' )
+		( 'grid' === feedLayout || 'tiled' === feedLayout )
 			? ( [
 				{
 					label: __( 'Overlay', 'ultimate-addons-for-gutenberg' ),
@@ -517,24 +516,6 @@ const Settings = ( props ) => {
 		<p style={ { 'padding': '16px' } }>{ __( 'Create a gallery to enable settings.', 'ultimate-addons-for-gutenberg' ) }</p>
 	);
 
-	const gallerySettings = () => (
-		<>
-			<UAGAdvancedPanelBody title={ __( 'Gallery', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
-				<MultiMediaSelector
-					slug={ 'gallery' }
-					label={ __( 'Update Gallery', 'ultimate-addons-for-gutenberg' ) }
-					disableLabel={ true }
-					mediaType={ 'images' }
-					onSelectMedia={ updateMediaGallery }
-					mediaGallery={ mediaGallery }
-					mediaIDs={ mediaIDs }
-					allowedTypes={ ['image'] }
-					createGallery={ true }
-				/>
-			</UAGAdvancedPanelBody>
-		</>
-	);
-
 	const captionSettings = () => (
 		<UAGAdvancedPanelBody title={ __( 'Caption', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<ToggleControl
@@ -708,7 +689,18 @@ const Settings = ( props ) => {
 	);
 
 	const layoutSettings = () => (
-		<UAGAdvancedPanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+		<UAGAdvancedPanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+			<MultiMediaSelector
+				slug={ 'gallery' }
+				label={ __( 'Update Gallery', 'ultimate-addons-for-gutenberg' ) }
+				disableLabel={ true }
+				mediaType={ 'images' }
+				onSelectMedia={ updateMediaGallery }
+				mediaGallery={ mediaGallery }
+				mediaIDs={ mediaIDs }
+				allowedTypes={ ['image'] }
+				createGallery={ true }
+			/>
 			<UAGSelectControl
 				label={ __( 'Layout Type', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
@@ -1068,29 +1060,6 @@ const Settings = ( props ) => {
 						</>
 					) }
 				</>
-			) }
-			{ ( feedLayout === 'tiled' ) && (
-				<ToggleControl
-					label={ __(
-						`Generate Special Tiles`,
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ generateSpecialTiles }
-					onChange={ () => setAttributes( {
-						generateSpecialTiles: ! generateSpecialTiles,
-					} ) }
-					help={
-						generateSpecialTiles
-						? __(
-							`\"Wide\" and \"Tall\" tiles will be automatically generated.`,
-							'ultimate-addons-for-gutenberg'
-						)
-						: __(
-							`\"Wide\", \"Tall\", and \"Focus\" tiles will be set from the image\'s alt text.`,
-							'ultimate-addons-for-gutenberg'
-						)
-					}
-				/>
 			) }
 		</UAGAdvancedPanelBody>
 	);
@@ -1815,9 +1784,8 @@ const Settings = ( props ) => {
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
 						{ ! readyToRender && initialSettings() }
-						{ readyToRender && gallerySettings() }
 						{ readyToRender && layoutSettings() }
-						{ readyToRender && layoutSpecificSettings() }
+						{ ( readyToRender && 'tiled' !== feedLayout ) && layoutSpecificSettings() }
 						{ readyToRender && captionSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>

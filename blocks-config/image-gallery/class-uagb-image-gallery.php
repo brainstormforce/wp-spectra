@@ -393,10 +393,6 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 								'type'    => 'number',
 								'default' => 1,
 							),
-							'generateSpecialTiles'    => array(
-								'type'    => 'boolean',
-								'default' => true,
-							),
 						),
 						// Pagination Settings.
 						array(

@@ -455,10 +455,6 @@ const attributes = {
 		type: 'number',
 		default: 1,
 	},
-	generateSpecialTiles: {
-		type: 'boolean',
-		default: true,
-	},
 
 	// Pagination Settings
 

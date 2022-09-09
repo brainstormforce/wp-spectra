@@ -107,7 +107,6 @@ return array_merge(
 		'carouselTransitionSpeed'            => 500,
 		'gridPages'                          => 1,
 		'gridPageNumber'                     => 1,
-		'generateSpecialTiles'               => true,
 		// Pagination Settings
 		'feedPagination'                     => false,
 		'paginateUseArrows'                  => true,
