@@ -112,7 +112,10 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				}
 			} );
 		}
-	}, [ JSON.stringify( mediaGallery ) ] );
+	}, [
+		feedLayout,
+		JSON.stringify( mediaGallery ),
+	] );
 
 	// Update Tile Sizer Tile when needed.
 	useEffect( () => {
@@ -317,6 +320,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	}
 
 	const createSpecialTile = ( instance, image ) => {
+		console.log( image );
 		if ( image && image.isLoaded ){
 			const imageElement = image.img;
 			const imageWrapper = imageElement.parentElement;
