@@ -47,7 +47,7 @@ const DynamicContentExtension = () => {
 
     return (
         <div
-        key={'masonry-gallery'}
+        key={'dynamic-content'}
         className={ classNames(
             dynamicContentStatus
                 ? 'border-white bg-white shadow hover:shadow-hover hover:z-50'
@@ -56,7 +56,7 @@ const DynamicContentExtension = () => {
         ) }
         >
             <div className="flex-shrink-0">
-                { UAGB_Block_Icons['masonry-gallery'] }
+                { UAGB_Block_Icons['dynamic-content'] }
             </div>
             <div className="uagb-admin-block__extension-title flex-1 min-w-0">
                 <p className="text-base font-medium text-slate-800">
