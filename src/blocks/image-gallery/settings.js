@@ -28,7 +28,6 @@ import {
 	__experimentalAlignmentMatrixControl as AlignmentMatrixControl,
 	TextControl,
 	Icon,
-	Button,
 } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -278,6 +277,13 @@ const Settings = ( props ) => {
 			imageCaptionAlignment02: getMatrixAlignment( matrixValue, 2 ),
 		} );
 	};
+
+	// Switch from Bar Outside to Bar Inside for Unsupported Layouts.
+	useEffect( () => {
+		if ( 'bar-outside' === captionDisplayType && ( 'tiled' === feedLayout  || 'grid' === feedLayout ) ) {
+			setAttributes( { captionDisplayType: 'bar-inside' } ) 
+		}
+	}, [ feedLayout ] );
 
 	// Update Caption Visibility when Bar is Outside.
 	useEffect( () => {
