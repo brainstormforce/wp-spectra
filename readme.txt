@@ -166,6 +166,9 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 == Changelog ==
 
+= 2.0.12 =
+* Fix: Price List - Changed default padding for images so that the image aligns with the title.
+
 = 2.0.11 - THURSDAY, 8th SEPTEMBER 2022 =
 * Improvement: Updated copy-paste functionality logic for parent-child blocks.
 * Fix: Container - Child block's margin & padding gets removed in editor.
@@ -174,7 +177,6 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 * Fix: Star Rating - Padding/Margin were not working when the star position is set to “Before”.
 * Fix: Image: Image Size not working as expected for images when drag and drop.
 * Fix: Advanced Columns - Border radius does not apply properly to the column and inner-column elements.
-* Fix: Price List - Changed default padding for images so that the image aligns with the title.
 
 = 2.0.10 - FRIDAY, 2nd SEPTEMBER 2022 =
 * Fix: Responsive condition - Conflicting with plugin using REST API block preview.
