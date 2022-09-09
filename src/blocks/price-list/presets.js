@@ -74,7 +74,6 @@ const presets = [
 			{ label: 'imgPaddingTopTablet', value: '' },
 			{ label: 'imgPaddingTopMobile', value: '' },
 			{ label: 'imgPaddingRight', value: '' },
-			{ label: 'imgPaddingRight', value: '' },
 			{ label: 'imgPaddingRightTablet', value: '' },
 			{ label: 'imgPaddingRightMobile', value: '' },
 			{ label: 'showImage', value: true },
