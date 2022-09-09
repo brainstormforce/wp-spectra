@@ -132,7 +132,18 @@
 		top: 10px;
 		right: 10px;
 		border: 1px solid #E6E7E9;
-		padding: 5px 10px;
-		color: #959595;
+		padding: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 32px;
+		height: 32px;
+		color: #E6E7E9;
+		svg {
+			width: 16px;
+			stroke: #808285;
+			stroke-width: 1.4;
+			fill: none;
+		}
 	}
 }
