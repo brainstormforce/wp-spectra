@@ -4,4 +4,13 @@
 #wpwrap .edit-post-visual-editor .block-editor-block-list__block[data-type="uagb/content-timeline-child"] {
 	padding-left: 0;
 	padding-right: 0;
+
+	.uagb-timeline__heading {
+		margin-top: 0;
+	}
+
+	.uagb-timeline-desc-content{
+		margin-bottom: 0;
+	}
+
 }
