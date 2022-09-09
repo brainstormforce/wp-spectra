@@ -6,6 +6,12 @@ import { dateI18n, __experimentalGetSettings } from '@wordpress/date';
 
 import { RichText } from '@wordpress/block-editor';
 
+import { __ } from '@wordpress/i18n';
+
+attributes.time_desc.default = __( 'This is Timeline description, you can change me anytime click here ',
+									'ultimate-addons-for-gutenberg'
+								);
+
 const deprecated = [
 	{
 		attributes,
