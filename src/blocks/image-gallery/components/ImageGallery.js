@@ -83,6 +83,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	const isGridPagesNeeded = feedPagination && ( feedLayout === "grid" || feedLayout === "masonry" );
 	const [ slickDotHeight, setSlickDotHeight ] = useState( 0 );
 	const [ focusUpdate, setFocusUpdate ] = useState( false );
+	const [ tileResizeTrigger, setTileResizeTrigger ] = useState( false );
 	const slickCarousel = useRef( null );
 	const tiledImages = useRef( [] );
 	const tileSizer = useRef( null );
@@ -122,8 +123,10 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		if ( 'tiled' === feedLayout ) {
 			tileSizer.current.style.display = 'initial';
 			setAttributes( { tileSize: Math.round( tileSizer.current.getBoundingClientRect().width ) } );
+			setTileResizeTrigger( false );
 		}
 	}, [
+		tileResizeTrigger,
 		deviceType,
 		feedLayout,
 		columnsDesk,
@@ -165,6 +168,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				}
 				imagesLoaded( gallery ).on( 'progress', createSpecialTile );
 				imagesLoaded( gallery ).off( 'progress', createSpecialTile );
+				imagesLoaded( gallery ).on( 'always', () => setTileResizeTrigger( true ) );
 			}, 250 );
 		}
 	}, [
@@ -176,7 +180,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	useEffect( () => {
 		setTimeout( () => {
 			tileSizer.current.style.display = 'none';
-		}, 3000 );
+		}, 1000 );
 	}, [ tileSize ] );
 	
 
