@@ -166,6 +166,9 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 ## Changelog ##
 
+### 2.0.12 - FRIDAY, 2nd SEPTEMBER 2022 ###
+* Fix: Content Timeline - Removed extra margin added to title and description by theme and core WordPress in editor and frontend.
+
 ### 2.0.11 - THURSDAY, 8th SEPTEMBER 2022 ###
 * Improvement: Media Picker - Added Optional Label Display and Improved UI.
 * Improvement: Updated copy-paste functionality logic for parent-child blocks.
