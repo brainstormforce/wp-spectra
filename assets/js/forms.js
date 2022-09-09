@@ -223,29 +223,29 @@ UAGBForms = { // eslint-disable-line no-undef
 		}
 
 		const originalSerialized = window.UAGBForms._serializeIt( form );
-
+        
 		const postData = {};
 		postData.id = attr.block_id;
 		for ( let i = 0; i < originalSerialized.length; i++ ) {
 			const inputname = document.getElementById( originalSerialized[ i ].name );
+
 			if ( originalSerialized[ i ].name.endsWith( '[]' ) ) {
+				const name = originalSerialized[ i ].name.replace( /[\[\]']+/g,'' );
 				//For checkbox element
-				const name = document.getElementById( originalSerialized[ i ].name );
-				if ( ! ( name in postData ) ) {
-					postData[ name ] = [];
-				}
-				postData[ name ].push( originalSerialized[ i ].value );
-			} else if ( originalSerialized[ i ].value.startsWith( '+' ) ) {
-				//For phone element.
-				let name = originalSerialized[ i ].name;
-				name = name.substring( 0, name.length - 2 );
 				if ( ! ( name in postData ) ) {
 					postData[ name ] = [];
 				}
 				postData[ name ].push( originalSerialized[ i ].value );
 			} else if( inputname !== null ){
-					postData[ inputname.innerHTML] = originalSerialized[ i ].value;
-				}
+				postData[ inputname.innerHTML] = originalSerialized[ i ].value;
+			}
+			
+			const hiddenField = document.getElementById( 'hidden' );
+
+			if ( hiddenField !== null && hiddenField !== undefined ) {
+				postData[ hiddenField.getAttribute( 'name' ) ] = hiddenField.getAttribute( 'value' );
+			}
+
 		}
 
 		const after_submit_data = {

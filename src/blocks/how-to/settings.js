@@ -13,7 +13,7 @@ import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import Range from '@Components/range/Range.js';
-import UAGImage from '@Components/image';
+import UAGMediaPicker from '@Components/image';
 import { getImageSize } from '@Utils/Helpers';
 import renderSVG from '@Controls/renderIcon';
 import {
@@ -314,10 +314,11 @@ const Settings = ( props ) => {
 				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<UAGImage
+				<UAGMediaPicker
 					onSelectImage={ onSelectImage }
 					backgroundImage={ mainimage }
 					onRemoveImage={ onRemoveImage }
+					disableLabel={ true }
 				/>
 				{ mainimage &&
 					mainimage.url !== 'null' &&
