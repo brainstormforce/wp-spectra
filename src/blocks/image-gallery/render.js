@@ -43,7 +43,6 @@ const Render = ( props ) => {
 							<ImageGallery
 								attributes={ attributes }
 								setAttributes={ setAttributes }
-								block_id={ block_id }
 								name={ name }
 							/>
 						)

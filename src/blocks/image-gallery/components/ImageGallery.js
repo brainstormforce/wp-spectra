@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { __ } from "@wordpress/i18n";
-import classnames from "classnames";
 import UAGB_Block_Icons from "@Controls/block-icons";
 import getMatrixAlignment from "@Controls/getMatrixAlignment";
 import Masonry from "react-masonry-component";
@@ -8,6 +7,8 @@ import Slider from "react-slick";
 import "/assets/js/imagesloaded.min";
 import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+
+const classNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
 
 const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	const blockName = name.replace( 'uagb/', '' );
@@ -198,13 +199,11 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		<button
 			type="button"
 			data-role="none"
-			className={ classnames(
-				`spectra-image-gallery__control-arrows`,
+			className={ classNames(
+				'spectra-image-gallery__control-arrows',
 				`spectra-image-gallery__control-arrows--${ feedLayout }`,
-				{
-					"slick-next": ( feedLayout === "carousel" || feedLayout === "tiled" ),
-					"slick-arrow": ( feedLayout === "carousel" || feedLayout === "tiled" ),
-				}
+				( feedLayout === "carousel" ) ? 'slick-next' : '',
+				( feedLayout === "carousel" ) ? 'slick-arrow' : '',
 			) }
 			aria-label="Next"
 			tabIndex="0"
@@ -224,13 +223,11 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		<button
 			type="button"
 			data-role="none"
-			className={ classnames(
-				`spectra-image-gallery__control-arrows`,
+			className={ classNames(
+				'spectra-image-gallery__control-arrows',
 				`spectra-image-gallery__control-arrows--${ feedLayout }`,
-				{
-					"slick-prev": feedLayout === "carousel",
-					"slick-arrow": feedLayout === "carousel",
-				}
+				( feedLayout === "carousel" ) ? 'slick-prev' : '',
+				( feedLayout === "carousel" ) ? 'slick-arrow' : '',
 			) }
 			aria-label="Prev"
 			tabIndex="0"
@@ -334,16 +331,16 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	};
 
 	const renderGridPagintion = () => (
-		<div className={ classnames( `spectra-image-gallery__control-wrapper` ) }>
+		<div className="spectra-image-gallery__control-wrapper">
 			<SlickPrevArrow />
-			<ul className={ classnames( `spectra-image-gallery__control-dots` ) }>
+			<ul className="spectra-image-gallery__control-dots">
 				{ [...Array( gridPages ) ].map( ( pageData, pageIndex ) => (
 					<li
 						key={ pageIndex }
-						className={ classnames( "spectra-image-gallery__control-dot", {
-							"spectra-image-gallery__control-dot--active":
-								pageIndex === gridPageNumber - 1,
-						} ) }
+						className={ classNames(
+							'spectra-image-gallery__control-dot', 
+							( pageIndex === gridPageNumber - 1 ) ? 'spectra-image-gallery__control-dot--active' : '',
+						) }
 						data-go-to={ pageIndex + 1 }
 					>
 						<button onClick={ () => setAttributes( { gridPageNumber: pageIndex + 1 } ) } />
@@ -365,7 +362,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			) : (
 				<div className="spectra-image-gallery__control-wrapper">
 					<div
-						className={ classnames( `spectra-image-gallery__control-button` ) }
+						className="spectra-image-gallery__control-button"
 						aria-label={ __(
 							paginateButtonText,
 							'ultimate-addons-for-gutenberg'
@@ -393,8 +390,8 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				return (
 					<>
 						<div
-							className={ classnames(
-								`spectra-image-gallery`,
+							className={ classNames(
+								'spectra-image-gallery',
 								`spectra-image-gallery__layout--${ gridLayout }`,
 								`spectra-image-gallery__layout--${ gridLayout }-col-${ columnsDeskFallback }`,
 								`spectra-image-gallery__layout--${ gridLayout }-col-tab-${ columnsTabFallback }`,
@@ -410,8 +407,8 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				return(
 					<>
 						<Masonry
-							className={ classnames(
-								`spectra-image-gallery`,
+							className={ classNames(
+								'spectra-image-gallery',
 								`spectra-image-gallery__layout--${ feedLayout }`,
 								`spectra-image-gallery__layout--${ feedLayout }-col-${ columnsDeskFallback }`,
 								`spectra-image-gallery__layout--${ feedLayout }-col-tab-${ columnsTabFallback }`,
@@ -427,8 +424,8 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			case "tiled":
 				return (
 					<div
-						className={ classnames(
-							`spectra-image-gallery`,
+						className={ classNames(
+							'spectra-image-gallery',
 							`spectra-image-gallery__layout--${ feedLayout }`,
 							`spectra-image-gallery__layout--${ feedLayout }-col-${ columnsDeskFallback }`,
 							`spectra-image-gallery__layout--${ feedLayout }-col-tab-${ columnsTabFallback }`,
@@ -442,15 +439,15 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			case "carousel":
 				return (
 					<div
-						className={ classnames(
-							`spectra-image-gallery`,
+						className={ classNames(
+							'spectra-image-gallery',
 							`spectra-image-gallery__layout--${ feedLayout }`
 						)}
 						ref={ slickCarousel }
 						style={ { 'margin-bottom': `${ slickDotHeight }px` } }
 					>
 						<Slider
-							className={ classnames( `uagb-slick-carousel` ) }
+							className="uagb-slick-carousel"
 							{ ...carouselSettings }
 						>
 							{ renderImageLooper() }
@@ -489,23 +486,23 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				getMatrixAlignment( imageCaptionAlignment, 1 ) === "top" &&
 				imageDisplayCaption && (
 					<div
-						className={ classnames(
-							`spectra-image-gallery__media-thumbnail-caption-wrapper`,
+						className={ classNames(
+							'spectra-image-gallery__media-thumbnail-caption-wrapper',
 							`spectra-image-gallery__media-thumbnail-caption-wrapper--${ captionDisplayType }`
 						) }
 					>
 						{ renderCaption( mediaObject ) }
 					</div>
 				) }
-			<div className={ classnames(
-				"spectra-image-gallery__media",
+			<div className={ classNames(
+				'spectra-image-gallery__media',
 				`spectra-image-gallery__media--${ feedLayout }`,
 			) }>
 				<img
-					className={ classnames(
-						"spectra-image-gallery__media-thumbnail",
+					className={ classNames(
+						'spectra-image-gallery__media-thumbnail',
 						`spectra-image-gallery__media-thumbnail--${ feedLayout }`
-					)}
+					) }
 					src={ mediaObject.url }
 				/>
 				<div className="spectra-image-gallery__media-thumbnail-blurrer"></div>
@@ -513,8 +510,8 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 					? (
 						captionDisplayType !== "bar-outside" && (
 							<div
-								className={ classnames(
-									`spectra-image-gallery__media-thumbnail-caption-wrapper`,
+								className={ classNames(
+									'spectra-image-gallery__media-thumbnail-caption-wrapper',
 									`spectra-image-gallery__media-thumbnail-caption-wrapper--${ captionDisplayType }`
 								) }
 							>
@@ -524,9 +521,9 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 					)
 					: (
 						<div
-							className={ classnames(
-								`spectra-image-gallery__media-thumbnail-caption-wrapper`,
-								`spectra-image-gallery__media-thumbnail-caption-wrapper--overlay`
+							className={ classNames(
+								'spectra-image-gallery__media-thumbnail-caption-wrapper',
+								'spectra-image-gallery__media-thumbnail-caption-wrapper--overlay'
 							) }
 						></div>
 					)
@@ -536,8 +533,8 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				getMatrixAlignment( imageCaptionAlignment, 1 ) !== "top" &&
 				imageDisplayCaption && (
 					<div
-						className={ classnames(
-							`spectra-image-gallery__media-thumbnail-caption-wrapper`,
+						className={ classNames(
+							'spectra-image-gallery__media-thumbnail-caption-wrapper',
 							`spectra-image-gallery__media-thumbnail-caption-wrapper--${ captionDisplayType }`
 						) }
 					>
@@ -626,8 +623,8 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		}
 		return (
 			<div
-				className={ classnames(
-					`spectra-image-gallery__media-thumbnail-caption`,
+				className={ classNames(
+					'spectra-image-gallery__media-thumbnail-caption',
 					`spectra-image-gallery__media-thumbnail-caption--${ captionDisplayType }`
 				) }
 			>

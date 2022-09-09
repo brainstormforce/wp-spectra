@@ -1615,7 +1615,15 @@ const Settings = ( props ) => {
 	);
 
 	const paginationStyling = () => (
-		<UAGAdvancedPanelBody title={ __( 'Pagination', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+		<UAGAdvancedPanelBody
+			title={ 
+				( 'carousel' === feedLayout ) ? (
+					__( 'Arrows & Dots', 'ultimate-addons-for-gutenberg' )
+				) : (
+					__( 'Pagination', 'ultimate-addons-for-gutenberg' )
+				)
+			}
+			initialOpen={ false }>
 			{/* Grid Pagination */}
 			{ 'grid' === feedLayout && (
 				<UAGTabsControl
@@ -1816,7 +1824,7 @@ const Settings = ( props ) => {
 						{ ! readyToRender && initialSettings() }
 						{ readyToRender && imageStyling() }
 						{ ( readyToRender && imageDisplayCaption ) && captionStyling() }
-						{ ( readyToRender && feedPagination ) && paginationStyling() }
+						{ ( readyToRender && ( feedPagination || 'carousel' === feedLayout ) ) && paginationStyling() }
 						{ readyToRender && spacing() }
 					</InspectorTab>
 					<InspectorTab
