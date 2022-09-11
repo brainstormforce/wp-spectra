@@ -149,19 +149,17 @@ UAGBForms = { // eslint-disable-line no-undef
 			e.preventDefault();
 			if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v3' && reCaptchaSiteKeyV3 ) {
 				if( document.getElementsByClassName( 'grecaptcha-logo' ).length === 0 ){
-					console.log('if');
 					document.querySelector( '.uagb-form-reacaptcha-error-' + attr.block_id ).innerHTML = '<p style="color:red !important" class="error-captcha">Invalid Google reCAPTCHA Site Key.</p>';
 					return false;
 				}
+				const getForm = this;
 				grecaptcha.ready( function() { // eslint-disable-line no-undef
 					grecaptcha.execute( reCaptchaSiteKeyV3, {action: 'submit'} ).then( function( token ) { // eslint-disable-line no-undef
 						if ( token ) {
 							if( document.getElementsByClassName( 'uagb-forms-recaptcha' ).length !== 0 ) {
 								document.getElementById( 'g-recaptcha-response' ).value = token;
-								console.log( 'dsfs' );
-								console.log( reCaptchaSiteKeyV2, reCaptchaSiteKeyV3 );
-								window.UAGBForms._formSubmit( e, this, attr, reCaptchaSiteKeyV2, reCaptchaSiteKeyV3 );
-
+								
+								window.UAGBForms._formSubmit( e, getForm, attr, reCaptchaSiteKeyV2, reCaptchaSiteKeyV3 );
 							}else{
 								document.querySelector( '.uagb-form-reacaptcha-error-' + attr.block_id ).innerHTML = '<p style="color:red !important" class="error-captcha">Google reCAPTCHA Response not found.</p>';
 								return false;
@@ -170,7 +168,6 @@ UAGBForms = { // eslint-disable-line no-undef
 					} );
 				  } );
 			} else {
-				console.log('else');
 				window.UAGBForms._formSubmit( e, this, attr, reCaptchaSiteKeyV2, reCaptchaSiteKeyV3 );
 			}
 		} );
@@ -253,7 +250,6 @@ UAGBForms = { // eslint-disable-line no-undef
 
 		}
 
-		console.log(postData);
 		const after_submit_data = {
 			to: attr.afterSubmitToEmail,
 			cc: attr.afterSubmitCcEmail,
