@@ -111,7 +111,6 @@ const Settings = ( props ) => {
 		paginateUseLoader,
 		paginateLimit,
 		paginateButtonAlign,
-		paginateButtonText,
 		paginateButtonPaddingTop,
 		paginateButtonPaddingRight,
 		paginateButtonPaddingBottom,
@@ -976,15 +975,6 @@ const Settings = ( props ) => {
 									/>
 									{ ! paginateUseLoader && (
 										<>
-											<TextControl
-												autoComplete="off"
-												label={ __(
-													'Button Text',
-													'ultimate-addons-for-gutenberg'
-												) }
-												value={ paginateButtonText }
-												onChange={ ( value ) => setAttributes( { paginateButtonText: value } ) }
-											/>
 											<MultiButtonsControl
 												setAttributes={ setAttributes }
 												label={ __(

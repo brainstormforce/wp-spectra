@@ -8,6 +8,7 @@ import Slider from 'react-slick';
 import '/assets/js/imagesloaded.min';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import { RichText } from '@wordpress/block-editor';
 
 const classNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
 
@@ -384,13 +385,26 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				</div>
 			) : (
 				<div className="spectra-image-gallery__control-wrapper">
-					<div
+					<RichText
+						tagName="div"
+						placeholder={ __(
+							'Load More Images',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ paginateButtonText }
+						onChange={ ( value ) =>
+							setAttributes( {
+								paginateButtonText: value,
+							} )
+						}
 						className="spectra-image-gallery__control-button"
-						aria-label={ paginateButtonText }
-						tabIndex="0"
-					>
-						{ paginateButtonText }
-					</div>
+						multiline={ false }
+						allowedFormats={ [
+							'core/bold',
+							'core/italic',
+							'core/strikethrough',
+						] }
+					/>
 				</div>
 			) }
 		</>
