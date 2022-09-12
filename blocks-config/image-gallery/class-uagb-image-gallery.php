@@ -94,7 +94,15 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 						'borderBottomRightRadius' => 50,
 					)
 				);
-				$main_title_border_attributes = UAGB_Block_Helper::uag_generate_php_border_attribute( 'mainTitle' );
+				$main_title_border_attributes = UAGB_Block_Helper::uag_generate_php_border_attribute(
+					'mainTitle',
+					array(
+						'borderTopWidth'    => 2,
+						'borderRightWidth'  => 0,
+						'borderBottomWidth' => 2,
+						'borderLeftWidth'   => 0,
+					),
+				);
 			}
 			
 			register_block_type(

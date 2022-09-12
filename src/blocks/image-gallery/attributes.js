@@ -3,8 +3,8 @@ import { getBorderAttributes } from '@Controls/generateAttributes';
 const arrowBorderAttributes = getBorderAttributes( 'arrow', {
 	borderTopWidth: 4,
 	borderRightWidth: 4,
-	borderLeftWidth: 4,
 	borderBottomWidth: 4,
+	borderLeftWidth: 4,
 	borderTopLeftRadius: 50,
 	borderTopRightRadius: 50,
 	borderBottomLeftRadius: 50,
@@ -16,7 +16,12 @@ const btnBorderAttributes = getBorderAttributes( 'btn', {
 	borderBottomLeftRadius: 50,
 	borderBottomRightRadius: 50,
 } );
-const mainTitleBorderAttributes = getBorderAttributes( 'mainTitle' );
+const mainTitleBorderAttributes = getBorderAttributes( 'mainTitle', {
+	borderTopWidth: 2,
+	borderRightWidth: 0,
+	borderBottomWidth: 2,
+	borderLeftWidth: 0,
+} );
 
 const attributes = {
 

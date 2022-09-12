@@ -1594,7 +1594,7 @@ const Settings = ( props ) => {
 						] }
 						normal={ renderCaptionDisplay( false ) }
 						hover={ renderCaptionDisplay( true ) }
-						disableBottomSeparator={ true }
+						disableBottomSeparator={ ( 'overlay' === captionDisplayType ) }
 					/>
 				)
 				: (
@@ -1620,13 +1620,15 @@ const Settings = ( props ) => {
 					</>
 				)
 			}
-			<ResponsiveBorder
-				setAttributes={ setAttributes }
-				prefix={ 'mainTitle' }
-				attributes={ attributes }
-				deviceType={ deviceType }
-				disableBottomSeparator={ true }
-			/>
+			{ ( 'overlay' !== captionDisplayType ) && (
+				<ResponsiveBorder
+					setAttributes={ setAttributes }
+					prefix={ 'mainTitle' }
+					attributes={ attributes }
+					deviceType={ deviceType }
+					disableBottomSeparator={ true }
+				/>
+			) }
 		</UAGAdvancedPanelBody>
 	);
 

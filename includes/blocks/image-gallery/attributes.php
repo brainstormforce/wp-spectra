@@ -12,8 +12,8 @@ $arrow_border_attributes  = UAGB_Block_Helper::uag_generate_border_attribute(
 	array(
 		'borderTopWidth'          => 4,
 		'borderRightWidth'        => 4,
-		'borderLeftWidth'         => 4,
 		'borderBottomWidth'       => 4,
+		'borderLeftWidth'         => 4,
 		'borderTopLeftRadius'     => 50,
 		'borderTopRightRadius'    => 50,
 		'borderBottomLeftRadius'  => 50,
@@ -29,7 +29,15 @@ $btn_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute(
 		'borderBottomRightRadius' => 50,
 	)
 );
-$main_title_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute( 'mainTitle' );
+$main_title_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute(
+	'mainTitle',
+	array(
+		'borderTopWidth'    => 2,
+		'borderRightWidth'  => 0,
+		'borderBottomWidth' => 2,
+		'borderLeftWidth'   => 0,
+	)
+);
 
 return array_merge(
 	array(
