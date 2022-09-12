@@ -167,7 +167,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 ## Changelog ##
 
 ### 2.0.12 ###
-* Fix: Forms - Fixed alignment for required toggle button in Phone block.
+* Fix: Forms - Fixed alignment for required toggle button in Phone block and added spacing between toggle and the 'Required' label.
 
 ### 2.0.11 - THURSDAY, 8th SEPTEMBER 2022 ###
 * Improvement: Media Picker - Added Optional Label Display and Improved UI.
