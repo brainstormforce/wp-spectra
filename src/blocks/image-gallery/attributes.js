@@ -1,3 +1,4 @@
+import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
 const arrowBorderAttributes = getBorderAttributes( 'arrow', {
@@ -121,7 +122,7 @@ const attributes = {
 	},
 	imageDefaultCaption: {
 		type: 'string',
-		default: 'No Caption',
+		default: __( 'No Caption', 'ultimate-addons-for-gutenberg' ),
 	},
 	captionPaddingTop: {
 		type: 'number',
@@ -504,7 +505,7 @@ const attributes = {
 	},
 	paginateButtonText: {
 		type: 'string',
-		default: 'Load More Images',
+		default: __( 'Load More Images', 'ultimate-addons-for-gutenberg' ),
 	},
 	paginateButtonPaddingTop: {
 		type: 'number',
