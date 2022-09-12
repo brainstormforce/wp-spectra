@@ -166,6 +166,9 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 ## Changelog ##
 
+### 2.0.12 - MONDAY, 12th SEPTEMBER 2022 ###
+* Fix: Responsive Borer - Border width occasionally misbehaves when set to zero.
+
 ### 2.0.11 - THURSDAY, 8th SEPTEMBER 2022 ###
 * Improvement: Media Picker - Added Optional Label Display and Improved UI.
 * Improvement: Updated copy-paste functionality logic for parent-child blocks.
