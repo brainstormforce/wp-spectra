@@ -1,8 +1,7 @@
 import classnames from 'classnames';
-import React, { useLayoutEffect, useEffect } from 'react';
-import { __ } from '@wordpress/i18n';
-import InitialSelector from "./components/InitialSelector";
-import ImageGallery from "./components/ImageGallery";
+import React, { useLayoutEffect } from 'react';
+import InitialSelector from './components/InitialSelector';
+import ImageGallery from './components/ImageGallery';
 import { useDeviceType } from '@Controls/getPreviewType';
 import styles from './editor.lazy.scss';
 

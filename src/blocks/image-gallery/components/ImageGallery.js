@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
-import { __ } from "@wordpress/i18n";
-import UAGB_Block_Icons from "@Controls/block-icons";
-import getMatrixAlignment from "@Controls/getMatrixAlignment";
-import Masonry from "react-masonry-component";
-import Slider from "react-slick";
-import "/assets/js/imagesloaded.min";
+/* eslint-disable no-nested-ternary */
+import React, { useState, useEffect, useRef } from 'react';
+import { __ } from '@wordpress/i18n';
+import UAGB_Block_Icons from '@Controls/block-icons';
+import getMatrixAlignment from '@Controls/getMatrixAlignment';
+import Masonry from 'react-masonry-component';
+import Slider from 'react-slick';
+import '/assets/js/imagesloaded.min';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
@@ -80,7 +81,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	const columnsTabFallback = isNaN( columnsTab ) ? columnsDeskFallback : columnsTab;
 	const columnsMobFallback = isNaN( columnsMob ) ? columnsTabFallback : columnsMob;
 
-	const isGridPagesNeeded = feedPagination && ( feedLayout === "grid" || feedLayout === "masonry" );
+	const isGridPagesNeeded = feedPagination && ( feedLayout === 'grid' || feedLayout === 'masonry' );
 	const [ slickDotHeight, setSlickDotHeight ] = useState( 0 );
 	const [ focusUpdate, setFocusUpdate ] = useState( false );
 	const [ tileResizeTrigger, setTileResizeTrigger ] = useState( false );
@@ -92,12 +93,18 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	// Update the required properties when the Gallery is updated.
 	useEffect( () => {
 		// First check if media items selected are less than the column count currently used.
-		( mediaGallery.length < columnsDeskFallback ) && setAttributes( { columnsDesk: mediaGallery.length } );
-		( mediaGallery.length < columnsTabFallback ) && setAttributes( { columnsTab: mediaGallery.length } );
-		( mediaGallery.length < columnsMobFallback ) && setAttributes( { columnsMob: mediaGallery.length } ); 
+		if ( mediaGallery.length < columnsDeskFallback ) {
+			setAttributes( { columnsDesk: mediaGallery.length } );
+		}
+		if ( mediaGallery.length < columnsTabFallback ) {
+			setAttributes( { columnsTab: mediaGallery.length } );
+		}
+		if ( mediaGallery.length < columnsMobFallback ) {
+			setAttributes( { columnsMob: mediaGallery.length } );
+		}
 		// Next Check if this is a carousel that needs dots, and set the height of the dots wrapper.
 		if ( ( mediaGallery && paginateUseDots ) && ( feedLayout === 'carousel' ) ){
-			setSlickDotHeight( 
+			setSlickDotHeight(
 				( mediaGallery.length > columnsDeskFallback )
 				? slickCarousel.current.children[0].querySelector( '.slick-dots' ).clientHeight
 				: 0
@@ -161,14 +168,16 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			setTimeout( () => {
 				const gallery = tiledImages.current;
 				// Delete the Object's KV Pairs that are null.
-				for ( let imageID in gallery ) {
+				for ( const imageID in gallery ) {
 					if ( null === gallery[ imageID ] ) {
 						delete gallery[ imageID ];
 					}
 				}
+				/* eslint-disable no-undef */
 				imagesLoaded( gallery ).on( 'progress', createSpecialTile );
 				imagesLoaded( gallery ).off( 'progress', createSpecialTile );
 				imagesLoaded( gallery ).on( 'always', () => setTileResizeTrigger( true ) );
+				/* eslint-enable no-undef */
 			}, 250 );
 		}
 	}, [
@@ -182,11 +191,10 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			tileSizer.current.style.display = 'none';
 		}, 1000 );
 	}, [ tileSize ] );
-	
 
 	// Update the Focused Images based on the Focus List.
 	useEffect ( () => {
-		if( ! focusUpdate ){
+		if ( ! focusUpdate ) {
 			return;
 		}
 		for ( let i = 0; i < focusList.length; i++ ){
@@ -194,10 +202,13 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				focusList[ i ] !== undefined && (
 					tiledImages.current[ i ] !== undefined && tiledImages.current[ i ] !== null
 				)
-			){
-				focusList[ i ]
-					? tiledImages.current[ i ].classList.add( 'spectra-image-gallery__media-wrapper--focus' )
-					: tiledImages.current[ i ].classList.remove( 'spectra-image-gallery__media-wrapper--focus' );
+			) {
+				if ( focusList[ i ] ) {
+					tiledImages.current[ i ].classList.add( 'spectra-image-gallery__media-wrapper--focus' );
+				}
+				else {
+					tiledImages.current[ i ].classList.remove( 'spectra-image-gallery__media-wrapper--focus' );
+				}
 			}
 		}
 		setFocusUpdate( false );
@@ -210,18 +221,18 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			className={ classNames(
 				'spectra-image-gallery__control-arrows',
 				`spectra-image-gallery__control-arrows--${ feedLayout }`,
-				( feedLayout === "carousel" ) ? 'slick-next' : '',
-				( feedLayout === "carousel" ) ? 'slick-arrow' : '',
+				( 'carousel' === feedLayout ) ? 'slick-next' : '',
+				( 'carousel' === feedLayout ) ? 'slick-arrow' : '',
 			) }
 			aria-label="Next"
 			tabIndex="0"
 			data-direction="Next"
-			onClick={ () =>
-				feedLayout === "grid"
+			onClick={ () => (
+				( 'grid' === feedLayout )
 					? setAttributes( { gridPageNumber: gridPageNumber + 1 } )
-					: ""
-			}
-			disabled={ feedLayout === "grid" && gridPageNumber === gridPages }
+					: ''
+			) }
+			disabled={ ( 'grid' === feedLayout && gridPageNumber === gridPages ) }
 		>
 			{ UAGB_Block_Icons.carousel_right }
 		</button>
@@ -234,18 +245,18 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			className={ classNames(
 				'spectra-image-gallery__control-arrows',
 				`spectra-image-gallery__control-arrows--${ feedLayout }`,
-				( feedLayout === "carousel" ) ? 'slick-prev' : '',
-				( feedLayout === "carousel" ) ? 'slick-arrow' : '',
+				( 'carousel' === feedLayout ) ? 'slick-prev' : '',
+				( 'carousel' === feedLayout ) ? 'slick-arrow' : '',
 			) }
 			aria-label="Prev"
 			tabIndex="0"
 			data-direction="Prev"
-			onClick={ () =>
-				feedLayout === "grid"
+			onClick={ () => (
+				( 'grid' === feedLayout )
 					? setAttributes( { gridPageNumber: gridPageNumber - 1 } )
-					: ""
-			}
-			disabled={ feedLayout === "grid" && gridPageNumber === 1 }
+					: ''
+			) }
+			disabled={ ( 'grid' === feedLayout && 1 === gridPageNumber ) }
 		>
 			{ UAGB_Block_Icons.carousel_left }
 		</button>
@@ -317,14 +328,13 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	);
 
 	const alterFocus = ( image, needsFocus ) => {
-		let updatedFocusPairs = focusList;
+		const updatedFocusPairs = focusList;
 		updatedFocusPairs[ image.id ] = needsFocus;
 		setAttributes( { focusList: updatedFocusPairs } );
 		setFocusUpdate( true );
 	}
 
 	const createSpecialTile = ( instance, image ) => {
-		console.log( image );
 		if ( image && image.isLoaded ){
 			const imageElement = image.img;
 			const imageWrapper = imageElement.parentElement;
@@ -332,12 +342,12 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			if ( ! tileWrapper.classList.contains( 'spectra-image-gallery__media-wrapper--focus' ) ) {
 				// Check if one dimension is greater than ( 2 times - half ) of the other dimension.
 				if ( imageElement.naturalWidth >= ( imageElement.naturalHeight * 2 ) - ( imageElement.naturalHeight / 2 ) ){
-					tileWrapper.classList.add( 'spectra-image-gallery__media-wrapper--wide');
-					imageWrapper.classList.add( 'spectra-image-gallery__media--tiled-wide');
+					tileWrapper.classList.add( 'spectra-image-gallery__media-wrapper--wide' );
+					imageWrapper.classList.add( 'spectra-image-gallery__media--tiled-wide' );
 				}
 				else if ( imageElement.naturalHeight >= ( imageElement.naturalWidth * 2 ) - ( imageElement.naturalWidth / 2 ) ){
-					tileWrapper.classList.add( 'spectra-image-gallery__media-wrapper--tall');
-					imageWrapper.classList.add( 'spectra-image-gallery__media--tiled-tall');
+					tileWrapper.classList.add( 'spectra-image-gallery__media-wrapper--tall' );
+					imageWrapper.classList.add( 'spectra-image-gallery__media--tiled-tall' );
 				}
 			}
 		}
@@ -347,11 +357,11 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		<div className="spectra-image-gallery__control-wrapper">
 			<SlickPrevArrow />
 			<ul className="spectra-image-gallery__control-dots">
-				{ [...Array( gridPages ) ].map( ( pageData, pageIndex ) => (
+				{ [ ...Array( gridPages ) ].map( ( pageData, pageIndex ) => (
 					<li
 						key={ pageIndex }
 						className={ classNames(
-							'spectra-image-gallery__control-dot', 
+							'spectra-image-gallery__control-dot',
 							( pageIndex === gridPageNumber - 1 ) ? 'spectra-image-gallery__control-dot--active' : '',
 						) }
 						data-go-to={ pageIndex + 1 }
@@ -376,30 +386,24 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				<div className="spectra-image-gallery__control-wrapper">
 					<div
 						className="spectra-image-gallery__control-button"
-						aria-label={ __(
-							paginateButtonText,
-							'ultimate-addons-for-gutenberg'
-						) }
+						aria-label={ paginateButtonText }
 						tabIndex="0"
 					>
-						{ __(
-							paginateButtonText,
-							'ultimate-addons-for-gutenberg'
-						) }
+						{ paginateButtonText }
 					</div>
 				</div>
 			) }
 		</>
 	);
-	
-	const renderFocusControl = ( mediaObject ) => {
-		return focusList[ mediaObject.id ] ? svgUnfocus( mediaObject ) : svgFocus( mediaObject );	
-	}
+
+	const renderFocusControl = ( mediaObject ) => (
+		focusList[ mediaObject.id ] ? svgUnfocus( mediaObject ) : svgFocus( mediaObject )
+	);
 
 	const renderGallery = () => {
 		switch ( feedLayout ) {
-			case "grid":
-				const gridLayout = 'grid'; 
+			case 'grid':
+				const gridLayout = 'grid';
 				return (
 					<>
 						<div
@@ -416,8 +420,8 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 						{ feedPagination && renderGridPagintion() }
 					</>
 				);
-			case "masonry":
-				return(
+			case 'masonry':
+				return (
 					<>
 						<Masonry
 							className={ classNames(
@@ -434,7 +438,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 						{ feedPagination && renderMasonryPagintion() }
 					</>
 				);
-			case "tiled":
+			case 'tiled':
 				return (
 					<div
 						className={ classNames(
@@ -449,13 +453,13 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 						<div className="spectra-image-gallery__media-sizer" ref={ tileSizer }></div>
 					</div>
 				);
-			case "carousel":
+			case 'carousel':
 				return (
 					<div
 						className={ classNames(
 							'spectra-image-gallery',
 							`spectra-image-gallery__layout--${ feedLayout }`
-						)}
+						) }
 						ref={ slickCarousel }
 						style={ { 'margin-bottom': `${ slickDotHeight }px` } }
 					>
@@ -471,15 +475,15 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	};
 
 	const renderImageLooper = () => {
-		isGridPagesNeeded && setAttributes( {
-			gridPages: Math.ceil( mediaGallery.length / paginateLimitFallback ),
-		} );
+		if ( isGridPagesNeeded ) {
+			setAttributes( {
+				gridPages: Math.ceil( mediaGallery.length / paginateLimitFallback ),
+			} );
+		}
 		const paginatedMedia = isGridPagesNeeded
 			? getGridPageChunk( mediaGallery )
 			: mediaGallery;
-		return paginatedMedia.map( ( media ) =>
-			renderImage( media )
-		);
+		return paginatedMedia.map( ( media ) => renderImage( media ) );
 	};
 
 	const renderImage = ( mediaObject ) => (
@@ -495,66 +499,53 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 
 	const renderThumbnail = ( mediaObject ) => (
 		<>
-			{ captionDisplayType === "bar-outside" &&
-				getMatrixAlignment( imageCaptionAlignment, 1 ) === "top" &&
-				imageDisplayCaption && (
-					<div
-						className={ classNames(
-							'spectra-image-gallery__media-thumbnail-caption-wrapper',
-							`spectra-image-gallery__media-thumbnail-caption-wrapper--${ captionDisplayType }`
-						) }
-					>
-						{ renderCaption( mediaObject ) }
-					</div>
-				) }
+			{ ( imageDisplayCaption && ( 'bar-outside' === captionDisplayType && 'top' === getMatrixAlignment( imageCaptionAlignment, 1 ) ) ) && (
+				<div className={ classNames(
+					'spectra-image-gallery__media-thumbnail-caption-wrapper',
+					`spectra-image-gallery__media-thumbnail-caption-wrapper--${ captionDisplayType }`
+				) } >
+					{ renderCaption( mediaObject ) }
+				</div>
+			) }
 			<div className={ classNames(
 				'spectra-image-gallery__media',
 				`spectra-image-gallery__media--${ feedLayout }`,
-			) }>
+			) } >
 				<img
 					className={ classNames(
 						'spectra-image-gallery__media-thumbnail',
 						`spectra-image-gallery__media-thumbnail--${ feedLayout }`
 					) }
 					src={ mediaObject.url }
+					alt={ mediaObject.alt }
 				/>
-				<div className="spectra-image-gallery__media-thumbnail-blurrer"></div>
-				{ imageDisplayCaption
-					? (
-						captionDisplayType !== "bar-outside" && (
-							<div
-								className={ classNames(
-									'spectra-image-gallery__media-thumbnail-caption-wrapper',
-									`spectra-image-gallery__media-thumbnail-caption-wrapper--${ captionDisplayType }`
-								) }
-							>
-								{ renderCaption( mediaObject ) }
-							</div>
-						)
-					)
-					: (
+				<div className="spectra-image-gallery__media-thumbnail-blurrer" />
+				{ imageDisplayCaption ? (
+					( 'bar-outside' !== captionDisplayType ) && (
 						<div
 							className={ classNames(
 								'spectra-image-gallery__media-thumbnail-caption-wrapper',
-								'spectra-image-gallery__media-thumbnail-caption-wrapper--overlay'
+								`spectra-image-gallery__media-thumbnail-caption-wrapper--${ captionDisplayType }`
 							) }
-						></div>
+						>
+							{ renderCaption( mediaObject ) }
+						</div>
 					)
-				}
+				) : (
+					<div className={ classNames(
+						'spectra-image-gallery__media-thumbnail-caption-wrapper',
+						'spectra-image-gallery__media-thumbnail-caption-wrapper--overlay'
+					) } />
+				) }
 			</div>
-			{ captionDisplayType === "bar-outside" &&
-				getMatrixAlignment( imageCaptionAlignment, 1 ) !== "top" &&
-				imageDisplayCaption && (
-					<div
-						className={ classNames(
-							'spectra-image-gallery__media-thumbnail-caption-wrapper',
-							`spectra-image-gallery__media-thumbnail-caption-wrapper--${ captionDisplayType }`
-						) }
-					>
-						{ renderCaption( mediaObject ) }
-					</div>
-				)
-			}
+			{ ( imageDisplayCaption && ( 'bar-outside' === captionDisplayType && getMatrixAlignment( imageCaptionAlignment, 1 ) !== 'top' ) ) && (
+				<div className={ classNames(
+					'spectra-image-gallery__media-thumbnail-caption-wrapper',
+					`spectra-image-gallery__media-thumbnail-caption-wrapper--${ captionDisplayType }`
+				) } >
+					{ renderCaption( mediaObject ) }
+				</div>
+			) }
 		</>
 	);
 
@@ -562,71 +553,58 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		// Utilizing Constant instead of Attribute for always active state.
 		const imageCaptionOnlyWords = true;
 		let needsEllipsis = mediaObject.caption ? true : false;
-		let limitedCaption = mediaObject.caption
-			? mediaObject.caption
-			: ( mediaObject.url
-				? imageDefaultCaption
-				: "Unable to load image"
-			);
+		let limitedCaption = mediaObject.caption ? (
+			mediaObject.caption
+		) : (
+			mediaObject.url ? (
+				imageDefaultCaption
+			): (
+				'Unable to load image'
+			)
+		);
 		if ( needsEllipsis && mediaObject.caption.length <= imageCaptionLengthFallback ) {
 			// The caption is already below the limiter.
 			needsEllipsis = false;
 		} else if ( needsEllipsis ) {
 			limitedCaption = limitedCaption.substr( 0, imageCaptionLengthFallback );
 			if ( imageCaptionOnlyWords ) {
-				if ( limitedCaption.lastIndexOf( " " ) === -1 ) {
+				if ( -1 === limitedCaption.lastIndexOf( ' ' ) ) {
 					// There's only 1 word.
-					if ( mediaObject.caption.lastIndexOf( " " ) === -1 ) {
+					if ( -1 === mediaObject.caption.lastIndexOf( ' ' ) ) {
 						// There's only 1 word in the original caption.
-						if (
-							limitedCaption.length ===
-							mediaObject.caption.split( " " )[ 0 ].length
-						) {
+						if ( limitedCaption.length === mediaObject.caption.split( ' ' )[ 0 ].length ) {
 							// The limited caption is the same as the original.
 							needsEllipsis = false;
 						} else {
 							// The limited caption differs from the original.
-							limitedCaption = "";
+							limitedCaption = '';
 						}
-					} else {
-						// There's more than 1 word in the original caption.
-						if (
-							limitedCaption.length !==
-							mediaObject.caption.split( " " )[ 0 ].length
-						) {
-							// The limited caption is smaller than 1 word in the original.
-							limitedCaption = "";
-						}
+					} else if ( limitedCaption.length !== mediaObject.caption.split( ' ' )[ 0 ].length ) {
+						// There's more than 1 word in the original caption, and...
+						// The limited caption is smaller than 1 word in the original.
+						limitedCaption = '';
 					}
-				} else {
-					// There is a space
-					if ( limitedCaption.length === mediaObject.caption.length ) {
-						// The limited caption is the same as the original.
-						needsEllipsis = false;
-					} else {
-						// The limited caption differs from the original
-						if (
-							mediaObject.caption.charAt(
-								limitedCaption.length
-							) !== " "
-						) {
-							// The end of the limited text is not a word
-							limitedCaption = limitedCaption.substr(
-								0,
-								Math.min(
-									limitedCaption.length,
-									limitedCaption.lastIndexOf( " " )
-								)
-							);
-						}
-					}
+				} else if ( limitedCaption.length === mediaObject.caption.length ) {
+					// There is a space, and...
+					// The limited caption is the same as the original.
+					needsEllipsis = false;
+				} else if ( ' ' !== mediaObject.caption.charAt( limitedCaption.length ) ) {
+					// The limited caption differs from the original, and...
+					// The end of the limited text is not a word.
+					limitedCaption = limitedCaption.substr(
+						0,
+						Math.min(
+							limitedCaption.length,
+							limitedCaption.lastIndexOf( ' ' )
+						)
+					);
 				}
 			}
 			// Remove Trailing Characters
 			switch ( limitedCaption.charAt( limitedCaption.length - 1 ) ) {
-				case ",":
-				case ".":
-				case " ":
+				case ',':
+				case '.':
+				case ' ':
 				case "'":
 					limitedCaption = limitedCaption.slice(
 						0,
@@ -635,17 +613,11 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			}
 		}
 		return (
-			<div
-				className={ classNames(
-					'spectra-image-gallery__media-thumbnail-caption',
-					`spectra-image-gallery__media-thumbnail-caption--${ captionDisplayType }`
-				) }
-			>
-				{ `${
-					__( limitedCaption, 'ultimate-addons-for-gutenberg' )
-				}${
-					needsEllipsis ? " ..." : ""
-				}` }
+			<div className={ classNames(
+				'spectra-image-gallery__media-thumbnail-caption',
+				`spectra-image-gallery__media-thumbnail-caption--${ captionDisplayType }`
+			) } >
+				{ `${ limitedCaption }${ needsEllipsis ? ' …' : '' }` }
 			</div>
 		);
 	};
@@ -654,13 +626,10 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		<div className="spectra-image-gallery-init-wrapper">
 			{ UAGB_Block_Icons.image_gallery }
 			<h3>
-				{ __(
-					`Spectra - Image Gallery`,
-					'ultimate-addons-for-gutenberg'
-				) }
+				{ __( `Spectra - Image Gallery`, 'ultimate-addons-for-gutenberg' ) }
 			</h3>
 			<p>
-				{ __( `No images to display...`, 'ultimate-addons-for-gutenberg' ) }
+				{ __( 'No images to display…', 'ultimate-addons-for-gutenberg' ) }
 			</p>
 		</div>
 	);

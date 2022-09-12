@@ -1,4 +1,4 @@
-// Import all of our Text Options requirements.
+/* eslint-disable no-nested-ternary */
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import React, { useEffect } from 'react';
@@ -21,7 +21,6 @@ import UAGTabsControl from '@Components/tabs';
 import UAGSelectControl from '@Components/select-control';
 import {
 	InspectorControls,
-	__experimentalLinkControl,
 } from '@wordpress/block-editor';
 import {
 	ToggleControl,
@@ -237,15 +236,59 @@ const Settings = ( props ) => {
 		);
 	}
 
-	// Get the Capitalized Title from the Word.
-	const titleFromValue = ( wordString ) => {
-		let newWords = '';
-		wordString = wordString.replaceAll( '-', ' ' )
-		wordString.split( ' ' ).forEach( ( word ) => {
-			newWords += ` ${ word.charAt( 0 ).toUpperCase() + word.slice( 1 ) }`;
-		});
-		return newWords.slice( 1 );
-	};
+	// Internationilized Dynamic Labels.
+	let labelForCaptionBgColor;
+	let labelForBgEffectAmount;
+	let labelForHoverBgEffectAmount;
+	let labelForLayoutPanel;
+	const labelForPaginationColor = paginateUseLoader ? (
+		__( 'Color', 'ultimate-addons-for-gutenberg' )
+	) : (
+		__( 'Background Color', 'ultimate-addons-for-gutenberg' )
+	);
+
+	// Assigning Internationilized Dynamic Label.
+	switch ( captionDisplayType ) {
+		case 'overlay':
+			labelForCaptionBgColor = __( 'Overlay Color', 'ultimate-addons-for-gutenberg' );
+			break;
+		case 'bar-inside':
+		case 'bar-outside':
+			labelForCaptionBgColor = __( 'Bar Color', 'ultimate-addons-for-gutenberg' );
+			break;
+		default:
+			labelForCaptionBgColor = __( 'Background Color', 'ultimate-addons-for-gutenberg' );
+	}
+	switch ( captionBackgroundEffect ) {
+		case 'grayscale':
+			labelForBgEffectAmount = __( 'Grayscale Amount', 'ultimate-addons-for-gutenberg' );
+			break;
+		case 'sepia':
+			labelForBgEffectAmount = __( 'Sepia Amount', 'ultimate-addons-for-gutenberg' );
+			break;
+		default:
+			labelForBgEffectAmount = __( 'Effect Amount', 'ultimate-addons-for-gutenberg' );
+	}
+	switch ( captionBackgroundEffectHover ) {
+		case 'grayscale':
+			labelForHoverBgEffectAmount = __( 'Grayscale Amount', 'ultimate-addons-for-gutenberg' );
+			break;
+		case 'sepia':
+			labelForHoverBgEffectAmount = __( 'Sepia Amount', 'ultimate-addons-for-gutenberg' );
+			break;
+		default:
+			labelForHoverBgEffectAmount = __( 'Effect Amount', 'ultimate-addons-for-gutenberg' );
+	}
+	switch ( feedLayout ) {
+		case 'carousel':
+			labelForLayoutPanel = __( 'Carousel', 'ultimate-addons-for-gutenberg' );
+			break;
+		case 'tiled':
+			labelForLayoutPanel = __( 'Tiled', 'ultimate-addons-for-gutenberg' );
+			break;
+		default:
+			labelForLayoutPanel = __( 'Pagination', 'ultimate-addons-for-gutenberg' );
+	}
 
 	// Combine Alignment to Matrix.
 	useEffect( () => {
@@ -255,7 +298,7 @@ const Settings = ( props ) => {
 	// Update the Media Gallery.
 	const updateMediaGallery = ( media ) => {
         let goodToGo = true;
-		let updatedIDs = [];
+		const updatedIDs = [];
         media.forEach( ( image ) => {
             if ( ! image || ! image.url || ! image.type || 'image' !== image.type ) {
                 goodToGo = false;
@@ -264,9 +307,20 @@ const Settings = ( props ) => {
                 updatedIDs.push( image.id );
             }            
         } );
-        goodToGo
-			? setAttributes( { mediaGallery: media, mediaIDs: updatedIDs, readyToRender: true } )
-			: setAttributes( { mediaGallery: mediaGallery, mediaIDs: mediaIDs,  readyToRender: mediaIDs ? true : false } );
+        if ( goodToGo ) { 
+			setAttributes( {
+				mediaGallery: media,
+				mediaIDs: updatedIDs,
+				readyToRender: true,
+			} );
+		}
+		else {
+			setAttributes( {
+				mediaGallery,
+				mediaIDs,
+				readyToRender: mediaIDs ? true : false,
+			} );
+		}
 	};
 
 	// Split Up Alignment Matrix.
@@ -280,14 +334,16 @@ const Settings = ( props ) => {
 
 	// Switch from Bar Outside to Bar Inside for Unsupported Layouts.
 	useEffect( () => {
-		if ( 'bar-outside' === captionDisplayType && ( 'tiled' === feedLayout  || 'grid' === feedLayout ) ) {
+		if ( captionDisplayType === 'bar-outside' && ( feedLayout === 'tiled' || feedLayout === 'grid' ) ) {
 			setAttributes( { captionDisplayType: 'bar-inside' } ) 
 		}
 	}, [ feedLayout ] );
 
 	// Update Caption Visibility when Bar is Outside.
 	useEffect( () => {
-		( captionDisplayType === 'bar-outside' ) && setAttributes( { captionVisibility: 'always' } ) 
+		if ( captionDisplayType === 'bar-outside' ) {
+			setAttributes( { captionVisibility: 'always' } );
+		}
 	}, [ captionDisplayType ] );
 
 	// Bar Option Generation.
@@ -339,14 +395,7 @@ const Settings = ( props ) => {
 				}
 			/>
 			<AdvancedPopColorControl
-				label={ __(
-					`${
-						imageDisplayCaption
-						? titleFromValue( captionDisplayType ).split( ' ' )[ 0 ]
-						: 'Overlay'
-					} Color`,
-					'ultimate-addons-for-gutenberg'
-				) }
+				label={ labelForCaptionBgColor }
 				colorValue={
 					isHover
 					? captionBackgroundColorHover
@@ -450,7 +499,7 @@ const Settings = ( props ) => {
 			case 'sepia':
 				return (
 					<Range
-						label={ __( `${ titleFromValue( bgEffect ) } Amount`, 'ultimate-addons-for-gutenberg' ) }
+						label={ isHover ? labelForBgEffectAmount : labelForHoverBgEffectAmount }
 						setAttributes={ setAttributes }
 						value={ 
 							isHover
@@ -476,7 +525,7 @@ const Settings = ( props ) => {
 	const renderPaginationColors = ( isHover ) => (
 		<>
 			<AdvancedPopColorControl
-				label={ __( `${  ! paginateUseLoader ? 'Background ' : '' }Color`, 'ultimate-addons-for-gutenberg' ) }
+				label={ labelForPaginationColor }
 				colorValue={
 					isHover
 					? paginateColorHover
@@ -519,7 +568,9 @@ const Settings = ( props ) => {
 	// Panel Component Renders
 
 	const initialSettings = () => (
-		<p style={ { 'padding': '16px' } }>{ __( 'Create a gallery to enable settings.', 'ultimate-addons-for-gutenberg' ) }</p>
+		<p style={ { padding: '16px' } }>
+			{ __( 'Create a gallery to enable settings.', 'ultimate-addons-for-gutenberg' ) }
+		</p>
 	);
 
 	const captionSettings = () => (
@@ -756,12 +807,9 @@ const Settings = ( props ) => {
 			/>
 		</UAGAdvancedPanelBody>
 	);
-	
+
 	const layoutSpecificSettings = () => (
-		<UAGAdvancedPanelBody title={ __(
-			`${ ( feedLayout === 'carousel' || feedLayout === 'tiled' ) ? titleFromValue( feedLayout ) : 'Pagination' }`,
-			'ultimate-addons-for-gutenberg' 
-		) } initialOpen={ false }>
+		<UAGAdvancedPanelBody title={ labelForLayoutPanel } initialOpen={ false }>
 			{ ( feedLayout === 'carousel' ) && (
 				<>
 					<Range
@@ -1561,14 +1609,7 @@ const Settings = ( props ) => {
 							onColorChange={ ( value ) => setAttributes( { captionColor: value } ) }
 						/>
 						<AdvancedPopColorControl
-							label={ __(
-								`${
-									imageDisplayCaption
-									? titleFromValue( captionDisplayType ).split( ' ' )[ 0 ]
-									: 'Overlay'
-								} Color`,
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ labelForCaptionBgColor }
 							colorValue={
 								captionBackgroundColor
 								? captionBackgroundColor

@@ -1,11 +1,11 @@
 
 let spectraImageGalleryLoadStatus  = true;
 
-UAGBImageGalleryMasonry = {
+const UAGBImageGalleryMasonry = {
 	init( $attr, $selector ) {
 		let count = 2;
 		const windowHeight50 = window.innerHeight / 1.25;
-		let $scope = document.querySelector( $selector );
+		const $scope = document.querySelector( $selector );
 		const loader = $scope.querySelector( '.uag-image-gallery__control-loader' );
 		const loadButton = $scope.querySelector( '.uag-image-gallery__control-button' );
 		if ( $attr.feedPagination && $attr.paginateUseLoader ) {
@@ -76,7 +76,7 @@ UAGBImageGalleryMasonry = {
 	callAjax( $scope, $obj, $attr, append = false, count ) {
 		const mediaData = new FormData(); // eslint-disable-line no-undef
 		mediaData.append( 'action', 'uag_load_image_gallery_masonry' );
-		mediaData.append( 'nonce', uagb_image_gallery.uagb_image_gallery_masonry_ajax_nonce );
+		mediaData.append( 'nonce', uagb_image_gallery.uagb_image_gallery_masonry_ajax_nonce ); // eslint-disable-line no-undef
 		mediaData.append( 'page_number', $obj.page_number );
 		mediaData.append( 'attr', JSON.stringify( $attr ) );
 		fetch( uagb_image_gallery.ajax_url, { // eslint-disable-line no-undef
@@ -96,9 +96,9 @@ UAGBImageGalleryMasonry = {
 				stagger: 10,
 			} );
 			isotope.insert( UAGBImageGalleryMasonry.createElementFromHTML( data.data ) );
-			imagesLoaded( element ).on( 'progress', function() {
+			imagesLoaded( element ).on( 'progress', function() { // eslint-disable-line no-undef
 				isotope.layout();
-			});
+			} );
 			spectraImageGalleryLoadStatus = true;
 			if ( true === append ) {
 				$scope.querySelector( '.uag-image-gallery__control-button' ).classList.toggle( 'disabled' );
@@ -107,7 +107,7 @@ UAGBImageGalleryMasonry = {
 				$scope.querySelector( '.uag-image-gallery__control-button' ).style.opacity = 0;
 				setTimeout( () => {
 					$scope.querySelector( '.uag-image-gallery__control-button' ).parentElement.style.display = 'none';
-				}, 2000);
+				}, 2000 );
 			}
 		} )
 		.catch( function( error ) {
@@ -116,10 +116,10 @@ UAGBImageGalleryMasonry = {
 	}
 };
 
-UAGBImageGalleryPagedGrid = {
+const UAGBImageGalleryPagedGrid = {
 	init( $attr, $selector ) {
 		let count = 1;
-		let $scope = document.querySelector( $selector );
+		const $scope = document.querySelector( $selector );
 		const arrows = $scope.querySelectorAll( '.uag-image-gallery__control-arrows--grid' );
 		const dots = $scope.querySelectorAll( '.uag-image-gallery__control-dot' );
 		for ( let i = 0; i < arrows.length; i++ ) {
@@ -167,7 +167,7 @@ UAGBImageGalleryPagedGrid = {
 			dots[ i ].addEventListener( 'click', ( event ) => {
 				// console.log( `%cThis Works`, 'color: crimson; font-weight: bold; font-family: Raleway;' );
 				const thisDot = event.currentTarget;
-				let page = thisDot.getAttribute( 'data-go-to' );
+				const page = thisDot.getAttribute( 'data-go-to' );
 				let mediaItem = $scope.querySelector( '.uag-image-gallery-media-wrapper' );
 				if ( ! mediaItem ) {
 					mediaItem = $scope
@@ -198,7 +198,7 @@ UAGBImageGalleryPagedGrid = {
 	callAjax( $scope, $obj, $attr, arrows ) {
 		const mediaData = new FormData(); // eslint-disable-line no-undef
 		mediaData.append( 'action', 'uag_load_image_gallery_grid_pagination' );
-		mediaData.append( 'nonce', uagb_image_gallery.uagb_image_gallery_grid_pagination_ajax_nonce );
+		mediaData.append( 'nonce', uagb_image_gallery.uagb_image_gallery_grid_pagination_ajax_nonce ); // eslint-disable-line no-undef
 		mediaData.append( 'page_number', $obj.page_number );
 		mediaData.append( 'attr', JSON.stringify( $attr ) );
 		fetch( uagb_image_gallery.ajax_url, { // eslint-disable-line no-undef
@@ -209,8 +209,6 @@ UAGBImageGalleryPagedGrid = {
 		.then( ( resp ) => resp.json() )
 		.then( function( data ) {
 			if ( data.success === false ){
-				console.error( 'Spectra pagination encountered an error, data below:' );
-				console.error( data );
 				return;
 			}
 			let element = $scope.querySelector( '.uag-image-gallery__layout--isogrid' );
@@ -228,7 +226,7 @@ UAGBImageGalleryPagedGrid = {
 				isotope.layout();
 			} );
 			isotope.insert( UAGBImageGalleryPagedGrid.createElementFromHTML( data.data ) );
-			imagesLoaded( element ).on( 'progress', function() {
+			imagesLoaded( element ).on( 'progress', function() { // eslint-disable-line no-undef
 				isotope.layout();
 			} );
 			if ( parseInt( $obj.page_number ) === 1 ) {
@@ -247,8 +245,7 @@ UAGBImageGalleryPagedGrid = {
 				} );
 			}
 			$scope.querySelector( '.uag-image-gallery__control-dot--active' ).classList.toggle( 'uag-image-gallery__control-dot--active' );
-			$activeDot = $scope.querySelectorAll( '.uag-image-gallery__control-dot' );
-			// console.log( `%c${ $obj.page_number }`, 'color: salmon; font-weight: bold; font-family: Raleway;' )
+			const $activeDot = $scope.querySelectorAll( '.uag-image-gallery__control-dot' );
 			$activeDot[ parseInt( $obj.page_number ) - 1 ].classList.toggle( 'uag-image-gallery__control-dot--active' );
 		} )
 		.catch( function( error ) {
