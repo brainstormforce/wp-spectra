@@ -308,6 +308,9 @@
 @media (max-width: 976px) {
 
 	.wp-block-uagb-restaurant-menu {
+		.wp-block-uagb-restaurant-menu-child.uagb-rest_menu__wrap .uagb-rm-details .uagb-rm__title {
+			white-space: normal;
+		}
 
 		.uagb-rm__image-position-left.uagb-rm-stacked-tablet {
 
