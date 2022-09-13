@@ -114,10 +114,10 @@ return array_merge(
 		'titleLetterSpacingTablet'    => '',
 		'titleLetterSpacingMobile'    => '',
 		'titleLetterSpacingType'      => 'px',
-		'borderWidth'                 => '',
-		'borderColor'                 => '',
+		'borderWidth'                 => 1,
+		'borderColor'                 => '#e0e0e0',
 		'borderRadius'                => '',
-		'borderStyle'                 => '',
+		'borderStyle'                 => 'solid',
 		'borderHoverColor'            => '',
 	),
 	$border_attribute
