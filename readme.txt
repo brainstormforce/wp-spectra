@@ -173,6 +173,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 * Improvement: Forms - Added 'Required' toggle for Accept field/sub-block.
 * Improvement: Content Timeline - Changed default description.
 * Improvement: Media Picker - Updated Video Icon.
+* Improvement: Post Carousel - Gap between Content & Dots functionality.
 * Fix: Forms - Fixed alignment for required toggle button in Phone block and added spacing between toggle and the 'Required' label.
 * Fix: Content Timeline - Removed extra margin added to title and description by theme and core WordPress in editor and frontend.
 * Fix: Info Box - Images looked enlarged after upgrading to Spectra.
