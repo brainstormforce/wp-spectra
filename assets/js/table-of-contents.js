@@ -19,27 +19,41 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 
 		const elementToOpen = document.querySelector( id );
 
-		if( document.querySelector( '.uagb-toc__wrap svg' ) !== null && elementToOpen ){
+		/* We need the following fail-safe click listener cause an usual click-listener
+		 * will fail in case the 'Make TOC Collapsible' is not enabled right from the start/page-load.
+		*/ 
+		document.addEventListener( 'click', collapseListener );
 
-			elementToOpen.querySelector( '.uagb-toc__wrap svg' )?.addEventListener( 'click', function(){
-				const $root = this.closest( '.wp-block-uagb-table-of-contents' );
+		function collapseListener( event ){
+			
+			const element = event.target;
+
+			// These two conditions help us target the required element (collapsible icon beside TOC heading). 
+			const condition1 = ( element?.tagName === 'path' || element?.tagName === 'svg' );  // Check if the clicked element type is either path or SVG.
+			const condition2 = ( element?.parentNode?.className === 'uagb-toc__title' );  // Check if the clicked element's parent has the required class.
+			
+			if( condition1 && condition2 ){
+				
+				const $root = element?.closest( '.wp-block-uagb-table-of-contents' );
 
 				if ( $root.classList.contains( 'uagb-toc__collapse' ) ) {
 					$root.classList.remove( 'uagb-toc__collapse' );
 					UAGBTableOfContents._slideDown(
-						elementToOpen.querySelector( '.wp-block-uagb-table-of-contents .uagb-toc__list-wrap' ),
+						elementToOpen?.querySelector( '.wp-block-uagb-table-of-contents .uagb-toc__list-wrap' ),
 						500
 					);
 				} else {
 					$root.classList.add( 'uagb-toc__collapse' );
 					UAGBTableOfContents._slideUp(
-						elementToOpen.querySelector( '.wp-block-uagb-table-of-contents.uagb-toc__collapse .uagb-toc__list-wrap' ),
+						elementToOpen?.querySelector( '.wp-block-uagb-table-of-contents.uagb-toc__collapse .uagb-toc__list-wrap' ),
 						500
 					);
 
 				}
-			} );
+
+			}
 		}
+
 		document.addEventListener( 'scroll',
 			UAGBTableOfContents._showHideScroll// eslint-disable-line no-undef
 		);
