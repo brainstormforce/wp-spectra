@@ -166,8 +166,14 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 == Changelog ==
 
-= 2.0.12 - FRIDAY, 2nd SEPTEMBER 2022 =
+= 2.0.13 - MONDAY, 12th SEPTEMBER 2022 =
 * Fix: Tabs - tabs border inconsistence inside editor as well on frontend.
+
+= 2.0.12 - MONDAY, 12th SEPTEMBER 2022 =
+* Fix: Form - Form is sending empty data after adding keys for ReCaptcha V3 .
+* Fix: Forms - Required Toggle for Checkbox field was not clickable in editor.
+* Fix: Price List - Changed default padding for images so that the image aligns with the title.
+* Fix: Responsive Borer - Border width occasionally misbehaves when set to zero.
 
 = 2.0.11 - THURSDAY, 8th SEPTEMBER 2022 =
 * Improvement: Media Picker - Added Optional Label Display and Improved UI.
