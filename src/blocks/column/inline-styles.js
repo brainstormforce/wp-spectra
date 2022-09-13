@@ -1,21 +1,21 @@
 /**
  * Returns Dynamic Generated CSS
  */
-
-import generateCSSUnit from '@Controls/generateCSSUnit';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function inlineStyles( props ) {
 	const {
 		backgroundColor,
 		backgroundType,
 		backgroundImageColor,
-		borderRadius,
 		overlayType,
 		gradientValue,
 		backgroundOpacity
 	} = props.attributes;
 
 	const style = {};
+
+	const borderCSS = generateBorderCSS( props.attributes, 'column' );
 
 	switch ( backgroundType ) {
 		case 'image':
@@ -36,7 +36,7 @@ function inlineStyles( props ) {
 			break;
 	}
 
-	style[ 'border-radius' ] = generateCSSUnit( borderRadius, 'px' );
+	style[ 'border-radius' ] = `${borderCSS['border-top-left-radius']} ${borderCSS['border-top-right-radius']} ${borderCSS['border-bottom-right-radius']} ${ borderCSS['border-bottom-left-radius']}`;
 
 	return style;
 }
