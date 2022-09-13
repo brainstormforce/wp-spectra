@@ -12,7 +12,7 @@ import { registerBlockType } from '@wordpress/blocks';
 registerBlockType( 'uagb/image-gallery', {
 	title: __( 'Image Gallery', 'ultimate-addons-for-gutenberg' ),
 	description: __(
-		'This block allows you to display a highly customizable image gallery',
+		'Create a highly customizable image gallery',
 		'ultimate-addons-for-gutenberg'
 	),
 	icon: UAGB_Block_Icons.image_gallery,

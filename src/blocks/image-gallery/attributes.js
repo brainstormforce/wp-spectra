@@ -2,6 +2,7 @@ import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
 const arrowBorderAttributes = getBorderAttributes( 'arrow', {
+	borderStyle: 'none',
 	borderTopWidth: 4,
 	borderRightWidth: 4,
 	borderBottomWidth: 4,

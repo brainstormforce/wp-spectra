@@ -10,6 +10,7 @@
 $arrow_border_attributes      = UAGB_Block_Helper::uag_generate_border_attribute(
 	'arrow',
 	array(
+		'borderStyle'             => 'none',
 		'borderTopWidth'          => 4,
 		'borderRightWidth'        => 4,
 		'borderBottomWidth'       => 4,

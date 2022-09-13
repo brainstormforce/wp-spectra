@@ -74,6 +74,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 				$arrow_border_attributes      = UAGB_Block_Helper::uag_generate_php_border_attribute(
 					'arrow',
 					array(
+						'borderStyle'             => 'none',
 						'borderTopWidth'          => 4,
 						'borderRightWidth'        => 4,
 						'borderLeftWidth'         => 4,
