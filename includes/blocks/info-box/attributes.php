@@ -127,7 +127,7 @@ return array_merge(
 		'iconTabletMarginUnit'       => 'px',
 		'iconMobileMarginUnit'       => 'px',
 		'imageSize'                  => 'thumbnail',
-		'imageWidth'                 => '',
+		'imageWidth'                 => 120,
 		'ctaLinkHoverColor'          => '',
 		'ctaBgHoverColor'            => '',
 		'ctaIconSpace'               => '5',
