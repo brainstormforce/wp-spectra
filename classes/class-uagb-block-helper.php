@@ -1742,14 +1742,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 *  generate_border_radius( 'em', 9, 7, 5, 3 );
 		 *
 		 * @param string $unit  Alignment Matrix value.
-		 * @param int $topLeft  Top Left Value.
-		 * @param int $topRight  Top Right Value.
-		 * @param int $bottomRight  Bottom Right Value.
-		 * @param int $bottomLeft  Bottom Left Value.
+		 * @param int    $topLeft  Top Left Value.
+		 * @param int    $topRight  Top Right Value.
+		 * @param int    $bottomRight  Bottom Right Value.
+		 * @param int    $bottomLeft  Bottom Left Value.
 		 * @since 2.0.0
 		 */
-		public static function generate_border_radius( $unit, $topLeft, $topRight=NAN, $bottomRight=NAN, $bottomLeft=NAN ){
-			$borderRadius =  ! is_nan( $topRight )
+		public static function generate_border_radius( $unit, $topLeft, $topRight = NAN, $bottomRight = NAN, $bottomLeft = NAN ) {
+			$borderRadius = ! is_nan( $topRight )
 				? (
 					! is_nan( $bottomRight )
 					? (
@@ -1762,7 +1762,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				: UAGB_Helper::get_css_value( $topLeft, $unit );
 			return $borderRadius;
 		}
-		
+
 		/**
 		 * Generate Spacing
 		 *
@@ -1781,7 +1781,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param int    $left   Left Value.
 		 * @since 2.0.0
 		 */
-		public static function generate_spacing( $unit, $top, $right = NAN, $bottom = NAN, $left = NAN ){
+		public static function generate_spacing( $unit, $top, $right = NAN, $bottom = NAN, $left = NAN ) {
 			$spacing = ! is_nan( $right )
 				? (
 					! is_nan( $bottom )
@@ -1795,7 +1795,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				: UAGB_Helper::get_css_value( $top, $unit );
 			return $spacing;
 		}
-		
+
 		/**
 		 * Get the Precise 2-Floating Point Percentage, Rounded to Floor for Precision.
 		 *
@@ -1810,10 +1810,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param int $divisions The number of divisions.
 		 * @since 2.0.0
 		 */
-		public static function get_precise_percentage( $divisions ){
+		public static function get_precise_percentage( $divisions ) {
 			$matches = array();
 			preg_match( '/^-?\d+(?:\.\d{0,2})?/', strval( 100 / $divisions ), $matches );
 			return floatval( $matches[0] ) . '%';
 		}
-	}	
+	}
 }

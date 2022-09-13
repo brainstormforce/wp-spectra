@@ -7,7 +7,7 @@
  * @package uagb
  */
 
-$arrow_border_attributes  = UAGB_Block_Helper::uag_generate_border_attribute(
+$arrow_border_attributes      = UAGB_Block_Helper::uag_generate_border_attribute(
 	'arrow',
 	array(
 		'borderTopWidth'          => 4,
@@ -20,7 +20,7 @@ $arrow_border_attributes  = UAGB_Block_Helper::uag_generate_border_attribute(
 		'borderBottomRightRadius' => 50,
 	)
 );
-$btn_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute(
+$btn_border_attributes        = UAGB_Block_Helper::uag_generate_border_attribute(
 	'btn',
 	array(
 		'borderTopLeftRadius'     => 50,
@@ -41,19 +41,19 @@ $main_title_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute
 
 return array_merge(
 	array(
-		// Block Requirements
+		// Block Requirements.
 		'block_id'                           => '',
 		'classMigrate'                       => false,
-		// Editor Requirements
+		// Editor Requirements.
 		'readyToRender'                      => false,
 		'tileSize'                           => 0,
 		'focusList'                          => array(),
-		// Gallery Settings
+		// Gallery Settings.
 		'mediaGallery'                       => array(),
 		'mediaIDs'                           => array(),
 		'feedLayout'                         => 'tiled',
 		'imageDisplayCaption'                => true,
-		// Caption Settings
+		// Caption Settings.
 		'imageCaptionLength'                 => 30,
 		'captionVisibility'                  => 'hover',
 		'captionDisplayType'                 => 'overlay',
@@ -79,7 +79,7 @@ return array_merge(
 		'captionPaddingUnitLink'             => true,
 		'captionGap'                         => 4,
 		'captionGapUnit'                     => 'px',
-		// Layout Settings
+		// Layout Settings.
 		'columnsDesk'                        => 6,
 		'columnsTab'                         => 4,
 		'columnsMob'                         => 3,
@@ -105,7 +105,7 @@ return array_merge(
 		'feedMarginUnitTab'                  => 'px',
 		'feedMarginUnitMob'                  => 'px',
 		'feedMarginUnitLink'                 => true,
-		// Layout Specific Settings	
+		// Layout Specific Settings.
 		'carouselStartAt'                    => 0,
 		'carouselSquares'                    => false,
 		'carouselLoop'                       => true,
@@ -115,7 +115,7 @@ return array_merge(
 		'carouselTransitionSpeed'            => 500,
 		'gridPages'                          => 1,
 		'gridPageNumber'                     => 1,
-		// Pagination Settings
+		// Pagination Settings.
 		'feedPagination'                     => false,
 		'paginateUseArrows'                  => true,
 		'paginateUseDots'                    => true,
@@ -139,7 +139,7 @@ return array_merge(
 		'paginateButtonPaddingUnitTab'       => 'px',
 		'paginateButtonPaddingUnitMob'       => 'px',
 		'paginateButtonPaddingUnitLink'      => false,
-		// Image Styling
+		// Image Styling.
 		'imageBorderTopLeftRadius'           => '',
 		'imageBorderTopRightRadius'          => '',
 		'imageBorderBottomRightRadius'       => '',
@@ -162,7 +162,7 @@ return array_merge(
 		'captionBackgroundBlurAmount'        => 10,
 		'captionBackgroundBlurOpacity'       => 0,
 		'captionBackgroundBlurOpacityHover'  => 0,
-		// Caption Typography Styling
+		// Caption Typography Styling.
 		'captionLoadGoogleFonts'             => false,
 		'captionFontFamily'                  => 'Default',
 		'captionFontWeight'                  => '',
@@ -177,7 +177,7 @@ return array_merge(
 		'captionLineHeight'                  => '',
 		'captionLineHeightTab'               => '',
 		'captionLineHeightMob'               => '',
-		// Pagination Button Typography Styling
+		// Pagination Button Typography Styling.
 		'loadMoreLoadGoogleFonts'            => false,
 		'loadMoreFontFamily'                 => 'Default',
 		'loadMoreFontWeight'                 => '',
@@ -192,7 +192,7 @@ return array_merge(
 		'loadMoreLineHeight'                 => '',
 		'loadMoreLineHeightTab'              => '',
 		'loadMoreLineHeightMob'              => '',
-		// Hoverable Styling
+		// Hoverable Styling.
 		'captionBackgroundEffect'            => 'none',
 		'captionBackgroundEffectHover'       => 'none',
 		'captionBackgroundEffectAmount'      => 100,
@@ -204,7 +204,7 @@ return array_merge(
 		'overlayColor'                       => 'rgba(0,0,0,0)',
 		'overlayColorHover'                  => 'rgba(0,0,0,0)',
 		'captionSeparateColors'              => false,
-		// Pagination Styling
+		// Pagination Styling.
 		'paginateArrowDistance'              => -24,
 		'paginateArrowDistanceUnit'          => 'px',
 		'paginateLoaderSize'                 => 18,
@@ -215,5 +215,5 @@ return array_merge(
 	),
 	$arrow_border_attributes,
 	$btn_border_attributes,
-	$main_title_border_attributes,
+	$main_title_border_attributes
 );

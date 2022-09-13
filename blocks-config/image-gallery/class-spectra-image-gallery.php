@@ -1,26 +1,25 @@
 <?php
 /**
- * Spectra Pro Image Gallery.
+ * Spectra - Image Gallery
  *
- * @package UAG_PRO
- * @since 0.0.1
+ * @package UAGB
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
+if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 
 	/**
-	 * Class Spectra_Pro_Image_Gallery.
+	 * Class Spectra_Image_Gallery.
 	 */
-	final class Spectra_Pro_Image_Gallery {
+	final class Spectra_Image_Gallery {
 
 		/**
 		 * Member Variable
 		 *
-		 * @since 0.0.1
+		 * @since 2.1
 		 * @var instance
 		 */
 		private static $instance;
@@ -28,7 +27,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		/**
 		 * Member Variable
 		 *
-		 * @since 0.0.1
+		 * @since 2.1
 		 * @var settings
 		 */
 		private static $settings;
@@ -36,7 +35,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		/**
 		 *  Initiator
 		 *
-		 * @since 0.0.1
+		 * @since 2.1
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
@@ -59,7 +58,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		/**
 		 * Registers the `image-gallery` block on server.
 		 *
-		 * @since 0.0.1
+		 * @since 2.1
 		 */
 		public function register_image_gallery() {
 			// Check if the register function exists.
@@ -101,14 +100,14 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 						'borderRightWidth'  => 0,
 						'borderBottomWidth' => 2,
 						'borderLeftWidth'   => 0,
-					),
+					)
 				);
 			}
-			
+
 			register_block_type(
 				'uagb/image-gallery',
 				array(
-					'attributes' => array_merge(
+					'attributes'      => array_merge(
 						// Block Requirements.
 						array(
 							'block_id'     => array(
@@ -404,55 +403,55 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 						),
 						// Pagination Settings.
 						array(
-							'feedPagination'                 => array(
+							'feedPagination'               => array(
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'paginateUseArrows'              => array(
+							'paginateUseArrows'            => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'paginateUseDots'                => array(
+							'paginateUseDots'              => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'paginateUseLoader'              => array(
+							'paginateUseLoader'            => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'paginateLimit'                  => array(
+							'paginateLimit'                => array(
 								'type'    => 'number',
 								'default' => 9,
 							),
-							'paginateButtonAlign'            => array(
+							'paginateButtonAlign'          => array(
 								'type'    => 'string',
 								'default' => 'center',
 							),
-							'paginateButtonText'             => array(
+							'paginateButtonText'           => array(
 								'type'    => 'string',
 								'default' => 'Load More Images',
 							),
-							'paginateButtonPaddingTop'       => array(
+							'paginateButtonPaddingTop'     => array(
 								'type'    => 'number',
 								'default' => 8,
 							),
-							'paginateButtonPaddingRight'     => array(
+							'paginateButtonPaddingRight'   => array(
 								'type'    => 'number',
 								'default' => 16,
 							),
-							'paginateButtonPaddingBottom'    => array(
+							'paginateButtonPaddingBottom'  => array(
 								'type'    => 'number',
 								'default' => 8,
 							),
-							'paginateButtonPaddingLeft'      => array(
+							'paginateButtonPaddingLeft'    => array(
 								'type'    => 'number',
 								'default' => 16,
 							),
-							'paginateButtonPaddingTopTab'    => array(
+							'paginateButtonPaddingTopTab'  => array(
 								'type'    => 'number',
 								'default' => 8,
 							),
-							'paginateButtonPaddingRightTab'  => array(
+							'paginateButtonPaddingRightTab' => array(
 								'type'    => 'number',
 								'default' => 16,
 							),
@@ -460,15 +459,15 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 								'type'    => 'number',
 								'default' => 8,
 							),
-							'paginateButtonPaddingLeftTab'   => array(
+							'paginateButtonPaddingLeftTab' => array(
 								'type'    => 'number',
 								'default' => 16,
 							),
-							'paginateButtonPaddingTopMob'    => array(
+							'paginateButtonPaddingTopMob'  => array(
 								'type'    => 'number',
 								'default' => 8,
 							),
-							'paginateButtonPaddingRightMob'  => array(
+							'paginateButtonPaddingRightMob' => array(
 								'type'    => 'number',
 								'default' => 16,
 							),
@@ -476,54 +475,54 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 								'type'    => 'number',
 								'default' => 8,
 							),
-							'paginateButtonPaddingLeftMob'   => array(
+							'paginateButtonPaddingLeftMob' => array(
 								'type'    => 'number',
 								'default' => 16,
 							),
-							'paginateButtonPaddingUnit'      => array(
+							'paginateButtonPaddingUnit'    => array(
 								'type'    => 'string',
 								'default' => 'px',
 							),
-							'paginateButtonPaddingUnitTab'   => array(
+							'paginateButtonPaddingUnitTab' => array(
 								'type'    => 'string',
 								'default' => 'px',
 							),
-							'paginateButtonPaddingUnitMob'   => array(
+							'paginateButtonPaddingUnitMob' => array(
 								'type'    => 'string',
 								'default' => 'px',
 							),
-							'paginateButtonPaddingUnitLink'  => array(
+							'paginateButtonPaddingUnitLink' => array(
 								'type'    => 'boolean',
 								'default' => false,
 							),
 						),
 						// Image Styling.
 						array(
-							'imageBorderRadius'                 => array(
+							'imageBorderRadius'            => array(
 								'type'    => 'number',
 								'default' => 0,
 							),
-							'imageBorderRadiusUnit'             => array(
+							'imageBorderRadiusUnit'        => array(
 								'type'    => 'string',
 								'default' => 'px',
 							),
-							'imageEnableZoom'                   => array(
+							'imageEnableZoom'              => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'imageZoomType'                     => array(
+							'imageZoomType'                => array(
 								'type'    => 'string',
 								'default' => 'zoom-in',
 							),
-							'captionBackgroundEnableBlur'       => array(
+							'captionBackgroundEnableBlur'  => array(
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'captionBackgroundBlurAmount'       => array(
+							'captionBackgroundBlurAmount'  => array(
 								'type'    => 'number',
 								'default' => 10,
 							),
-							'captionBackgroundBlurOpacity'      => array(
+							'captionBackgroundBlurOpacity' => array(
 								'type'    => 'number',
 								'default' => 0,
 							),
@@ -538,48 +537,48 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'captionFontFamily'     => array(
+							'captionFontFamily'      => array(
 								'type'    => 'string',
 								'default' => 'Default',
 							),
-							'captionFontWeight'     => array(
+							'captionFontWeight'      => array(
 								'type' => 'string',
 							),
-							'captionFontStyle'      => array(
+							'captionFontStyle'       => array(
 								'type'    => 'string',
 								'default' => 'normal',
 							),
-							'captionTransform'      => array(
+							'captionTransform'       => array(
 								'type' => 'string',
 							),
-							'captionDecoration'     => array(
+							'captionDecoration'      => array(
 								'type'    => 'string',
 								'default' => 'none',
 							),
-							'captionFontSizeType'   => array(
+							'captionFontSizeType'    => array(
 								'type'    => 'string',
 								'default' => 'px',
 							),
-							'captionFontSize'       => array(
+							'captionFontSize'        => array(
 								'type' => 'number',
 							),
-							'captionFontSizeTab'    => array(
+							'captionFontSizeTab'     => array(
 								'type' => 'number',
 							),
-							'captionFontSizeMob'    => array(
+							'captionFontSizeMob'     => array(
 								'type' => 'number',
 							),
-							'captionLineHeightType' => array(
+							'captionLineHeightType'  => array(
 								'type'    => 'string',
 								'default' => 'em',
 							),
-							'captionLineHeight'     => array(
+							'captionLineHeight'      => array(
 								'type' => 'number',
 							),
-							'captionLineHeightTab'  => array(
+							'captionLineHeightTab'   => array(
 								'type' => 'number',
 							),
-							'captionLineHeightMob'  => array(
+							'captionLineHeightMob'   => array(
 								'type' => 'number',
 							),
 						),
@@ -589,62 +588,62 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'loadMoreFontFamily'     => array(
+							'loadMoreFontFamily'      => array(
 								'type'    => 'string',
 								'default' => 'Default',
 							),
-							'loadMoreFontWeight'     => array(
+							'loadMoreFontWeight'      => array(
 								'type' => 'string',
 							),
-							'loadMoreFontStyle'      => array(
+							'loadMoreFontStyle'       => array(
 								'type'    => 'string',
 								'default' => 'normal',
 							),
-							'loadMoreTransform'      => array(
+							'loadMoreTransform'       => array(
 								'type' => 'string',
 							),
-							'loadMoreDecoration'     => array(
+							'loadMoreDecoration'      => array(
 								'type'    => 'string',
 								'default' => 'none',
 							),
-							'loadMoreFontSizeType'   => array(
+							'loadMoreFontSizeType'    => array(
 								'type'    => 'string',
 								'default' => 'px',
 							),
-							'loadMoreFontSize'       => array(
+							'loadMoreFontSize'        => array(
 								'type' => 'number',
 							),
-							'loadMoreFontSizeTab'    => array(
+							'loadMoreFontSizeTab'     => array(
 								'type' => 'number',
 							),
-							'loadMoreFontSizeMob'    => array(
+							'loadMoreFontSizeMob'     => array(
 								'type' => 'number',
 							),
-							'loadMoreLineHeightType' => array(
+							'loadMoreLineHeightType'  => array(
 								'type'    => 'string',
 								'default' => 'em',
 							),
-							'loadMoreLineHeight'     => array(
+							'loadMoreLineHeight'      => array(
 								'type' => 'number',
 							),
-							'loadMoreLineHeightTab'  => array(
+							'loadMoreLineHeightTab'   => array(
 								'type' => 'number',
 							),
-							'loadMoreLineHeightMob'  => array(
+							'loadMoreLineHeightMob'   => array(
 								'type' => 'number',
 							),
 						),
 						// Hoverable Styling.
 						array(
-							'captionBackgroundEffect'            => array(
+							'captionBackgroundEffect'      => array(
 								'type'    => 'string',
 								'default' => 'none',
 							),
-							'captionBackgroundEffectHover'       => array(
+							'captionBackgroundEffectHover' => array(
 								'type'    => 'string',
 								'default' => 'none',
 							),
-							'captionBackgroundEffectAmount'      => array(
+							'captionBackgroundEffectAmount' => array(
 								'type'    => 'number',
 								'default' => 100,
 							),
@@ -652,31 +651,31 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 								'type'    => 'number',
 								'default' => 0,
 							),
-							'captionColor'                       => array(
+							'captionColor'                 => array(
 								'type'    => 'string',
 								'default' => 'rgba(255,255,255,1)',
 							),
-							'captionColorHover'                  => array(
+							'captionColorHover'            => array(
 								'type'    => 'string',
 								'default' => 'rgba(255,255,255,1)',
 							),
-							'captionBackgroundColor'             => array(
+							'captionBackgroundColor'       => array(
 								'type'    => 'string',
 								'default' => 'rgba(0,0,0,0.75)',
 							),
-							'captionBackgroundColorHover'        => array(
+							'captionBackgroundColorHover'  => array(
 								'type'    => 'string',
 								'default' => 'rgba(0,0,0,0.75)',
 							),
-							'overlayColor'                       => array(
+							'overlayColor'                 => array(
 								'type'    => 'string',
 								'default' => 'rgba(0,0,0,0)',
 							),
-							'overlayColorHover'                  => array(
+							'overlayColorHover'            => array(
 								'type'    => 'string',
 								'default' => 'rgba(0,0,0,0)',
 							),
-							'captionSeparateColors'              => array(
+							'captionSeparateColors'        => array(
 								'type'    => 'boolean',
 								'default' => false,
 							),
@@ -715,7 +714,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 						// Responsive Borders.
 						$arrow_border_attributes,
 						$btn_border_attributes,
-						$main_title_border_attributes,
+						$main_title_border_attributes
 					),
 					'render_callback' => array( $this, 'render_initial_grid' ),
 				)
@@ -725,86 +724,86 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		/**
 		 * Renders All Images.
 		 *
-		 * @since 0.0.1
+		 * @param array $attributes Array of block attributes.
+		 *
+		 * @since 2.1
 		 */
 		public function render_initial_grid( $attributes ) {
 			$allMedia = '';
-			if ( $attributes[ 'readyToRender' ] ){
-				$media = ( ( $attributes[ 'feedLayout' ] !== 'carousel' ) && $attributes[ 'feedPagination' ] )
+			if ( $attributes['readyToRender'] ) {
+				$media = ( ( 'carousel' !== $attributes['feedLayout'] ) && $attributes['feedPagination'] )
 					? $this->get_gallery_images( $attributes, 'paginated' )
 					: $this->get_gallery_images( $attributes, 'full' );
-				if( ! $media ){
+				if ( ! $media ) {
 					ob_start();
 					?>
 					<!-- Configure your Spectra Image Gallery -->
 					<?php
-					$empty = ob_get_clean();
-					return $empty;
+					return ob_get_clean();
 				}
 				foreach ( $attributes as $key => $attribute ) {
 					$attributes[ $key ] = ( 'false' === $attribute ) ? false : ( ( 'true' === $attribute ) ? true : $attribute );
 				}
 				$allMedia = $this->render_media_markup( $media, $attributes );
-				switch ( $attributes[ 'feedLayout' ] ) {
+				ob_start();
+				?>
+					<div class="wp-block-uagb-image-gallery uagb-block-<?php echo esc_html( $attributes['block_id'] ); ?>">
+				<?php
+				switch ( $attributes['feedLayout'] ) {
 					case 'grid':
-						$gridLayout = ( $attributes[ 'feedPagination' ] ) ? 'isogrid' : 'grid';
-						ob_start();
+						$gridLayout = ( $attributes['feedPagination'] ) ? 'isogrid' : 'grid';
 						?>
-							<div class="spectra-image-gallery spectra-image-gallery__layout--<?= $gridLayout ?> spectra-image-gallery__layout--<?= $gridLayout ?>-col-<?= $attributes[ 'columnsDesk' ] ?> spectra-image-gallery__layout--<?= $gridLayout ?>-col-tab-<?= $attributes[ 'columnsTab' ] ?> spectra-image-gallery__layout--<?= $gridLayout ?>-col-mob-<?= $attributes[ 'columnsMob' ] ?>">
-								<?= $allMedia ?>
+							<div class="spectra-image-gallery spectra-image-gallery__layout--<?php echo esc_html( $gridLayout ); ?> spectra-image-gallery__layout--<?php echo esc_html( $gridLayout ); ?>-col-<?php echo esc_html( $attributes['columnsDesk'] ); ?> spectra-image-gallery__layout--<?php echo esc_html( $gridLayout ); ?>-col-tab-<?php echo esc_html( $attributes['columnsTab'] ); ?> spectra-image-gallery__layout--<?php echo esc_html( $gridLayout ); ?>-col-mob-<?php echo esc_html( $attributes['columnsMob'] ); ?>">
+								<?php echo $allMedia; ?>
 							</div>
-							<?= $attributes[ 'feedPagination' ] ? $this->render_grid_pagination_controls( $attributes ) : "" ?>
+							<?php echo $attributes['feedPagination'] ? $this->render_grid_pagination_controls( $attributes ) : ''; ?>
 						<?php
-						$allMedia = ob_get_clean();
 						break;
-					case "masonry":
-						ob_start();
+					case 'masonry':
 						?>
-							<div class="spectra-image-gallery spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?> spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-<?= $attributes[ 'columnsDesk' ] ?> spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-tab-<?= $attributes[ 'columnsTab' ] ?> spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-mob-<?= $attributes[ 'columnsMob' ] ?>">
-								<?= $allMedia ?>
+							<div class="spectra-image-gallery spectra-image-gallery__layout--<?php echo esc_html( $attributes['feedLayout'] ); ?> spectra-image-gallery__layout--<?php echo esc_html( $attributes['feedLayout'] ); ?>-col-<?php echo esc_html( $attributes['columnsDesk'] ); ?> spectra-image-gallery__layout--<?php echo esc_html( $attributes['feedLayout'] ); ?>-col-tab-<?php echo esc_html( $attributes['columnsTab'] ); ?> spectra-image-gallery__layout--<?php echo esc_html( $attributes['feedLayout'] ); ?>-col-mob-<?php echo esc_html( $attributes['columnsMob'] ); ?>">
+								<?php echo $allMedia; ?>
 							</div>
-							<?= $attributes[ 'feedPagination' ] ? $this->render_masonry_pagination_controls( $attributes ) : "" ?>
+							<?php echo $attributes['feedPagination'] ? $this->render_masonry_pagination_controls( $attributes ) : ''; ?>
 						<?php
-						$allMedia = ob_get_clean();
 						break;
-					case "carousel":
-						ob_start();
+					case 'carousel':
 						?>
-							<div class="spectra-image-gallery spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>">
-								<div class="uagb-slick-carousel uagb-block-<?= $attributes[ 'block_id' ] ?>">
-								<?= $allMedia ?>
+							<div class="spectra-image-gallery spectra-image-gallery__layout--<?php echo esc_html( $attributes['feedLayout'] ); ?>">
+								<div class="uagb-slick-carousel uagb-block-<?php echo esc_html( $attributes['block_id'] ); ?>">
+									<?php echo $allMedia; ?>
 								</div>
 							</div>
 						<?php
-						$allMedia = ob_get_clean();
 						break;
-					case "tiled":
-						ob_start();
+					case 'tiled':
 						?>
-							<div class="spectra-image-gallery spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?> spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-<?= $attributes[ 'columnsDesk' ] ?> spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-tab-<?= $attributes[ 'columnsTab' ] ?> spectra-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-mob-<?= $attributes[ 'columnsMob' ] ?>">
-								<?= $allMedia ?>
+							<div class="spectra-image-gallery spectra-image-gallery__layout--<?php echo esc_html( $attributes['feedLayout'] ); ?> spectra-image-gallery__layout--<?php echo esc_html( $attributes['feedLayout'] ); ?>-col-<?php echo esc_html( $attributes['columnsDesk'] ); ?> spectra-image-gallery__layout--<?php echo esc_html( $attributes['feedLayout'] ); ?>-col-tab-<?php echo esc_html( $attributes['columnsTab'] ); ?> spectra-image-gallery__layout--<?php echo esc_html( $attributes['feedLayout'] ); ?>-col-mob-<?php echo esc_html( $attributes['columnsMob'] ); ?>">
+								<?php echo $allMedia; ?>
 								<div class="spectra-image-gallery__media-sizer"></div>
 							</div>
 						<?php
-						$allMedia = ob_get_clean();
 						break;
 				}
-				ob_start();
 				?>
-					<div class="wp-block-uagb-image-gallery uagb-block-<?= $attributes[ 'block_id' ] ?>">
-						<?= $allMedia ?>
 					</div>
 				<?php
-				$allMedia = ob_get_clean();
+				return ob_get_clean();
 			}
-			return $allMedia;
 		}
-		
-		private function render_grid_pagination_controls( $attributes ){
+
+		/**
+		 * Renders Grid Pagination Controls.
+		 *
+		 * @param array $attributes Array of block attributes.
+		 *
+		 * @since 2.1
+		 */
+		private function render_grid_pagination_controls( $attributes ) {
 			ob_start();
 			?>
 			<div class="spectra-image-gallery__control-wrapper">
-				<button type="button" data-role="none"class="spectra-image-gallery__control-arrows spectra-image-gallery__control-arrows--<?= $attributes[ 'feedLayout' ] ?>" aria-label="Prev" tabIndex="0" data-direction="Prev" disabled=<?= ( $attributes[ 'feedLayout' ] === "grid" && $attributes[ 'gridPageNumber' ] === 1 ) ? true : false; ?>>
+				<button type="button" data-role="none"class="spectra-image-gallery__control-arrows spectra-image-gallery__control-arrows--<?php echo esc_html( $attributes['feedLayout'] ); ?>" aria-label="Prev" tabIndex="0" data-direction="Prev" disabled=<?php echo ( 'grid' === $attributes['feedLayout'] && 1 === $attributes['gridPageNumber'] ) ? true : false; ?>>
 					<svg width=20 height=20 viewBox="0 0 256 512">
 						<path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z">
 						</path>
@@ -812,16 +811,16 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 				</button>
 				<ul class="spectra-image-gallery__control-dots">
 					<?php
-					for( $i = 0; $i < $attributes[ 'gridPages' ]; $i++ ){
+					for ( $i = 0; $i < $attributes['gridPages']; $i++ ) {
 						?>
-						<li class="spectra-image-gallery__control-dot<?= ( $i === ( $attributes[ 'gridPageNumber' ] - 1 ) ) ? " spectra-image-gallery__control-dot--active" : "" ?>" data-go-to=<?= $i + 1 ?>>
+						<li class="spectra-image-gallery__control-dot<?php echo ( ( $attributes['gridPageNumber'] - 1 ) === $i ) ? ' spectra-image-gallery__control-dot--active' : ''; ?>" data-go-to=<?php echo esc_html( $i + 1 ); ?>>
 							<button></button>
 						</li>
 						<?php
 					}
 					?>
 				</ul>
-				<button type="button" data-role="none"class="spectra-image-gallery__control-arrows spectra-image-gallery__control-arrows--<?= $attributes[ 'feedLayout' ] ?>" aria-label="Next" tabIndex="0" data-direction="Next" disabled=<?= ( $attributes[ 'feedLayout' ] === "grid" && $attributes[ 'gridPageNumber' ] === $attributes[ 'gridPages' ] ) ? true : false; ?>>
+				<button type="button" data-role="none"class="spectra-image-gallery__control-arrows spectra-image-gallery__control-arrows--<?php echo esc_html( $attributes['feedLayout'] ); ?>" aria-label="Next" tabIndex="0" data-direction="Next" disabled=<?php echo ( 'grid' === $attributes['feedLayout'] && $attributes['gridPages'] === $attributes['gridPageNumber'] ) ? true : false; ?>>
 					<svg width=20 height=20 viewBox="0 0 256 512">
 						<path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z">
 						</path>
@@ -832,9 +831,16 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 			return ob_get_clean();
 		}
 
-		function render_masonry_pagination_controls( $attributes ){
+		/**
+		 * Renders Masonry Pagination Controls.
+		 *
+		 * @param array $attributes Array of block attributes.
+		 *
+		 * @since 2.1
+		 */
+		private function render_masonry_pagination_controls( $attributes ) {
 			ob_start();
-			if ( $attributes[ 'paginateUseLoader' ] ){
+			if ( $attributes['paginateUseLoader'] ) {
 				?>
 					<div class="spectra-image-gallery__control-loader">
 						<div class="spectra-image-gallery__control-loader--1"></div>
@@ -842,12 +848,11 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 						<div class="spectra-image-gallery__control-loader--3"></div>
 					</div>
 				<?php
-			}
-			else{
+			} else {
 				?>
 					<div class="spectra-image-gallery__control-wrapper">
-						<div class="spectra-image-gallery__control-button" aria-label="<?= __( $attributes[ 'paginateButtonText' ], 'ultimate-addons-for-gutenberg' ) ?>" tabIndex=0>
-							<?= __( $attributes[ 'paginateButtonText' ], 'ultimate-addons-for-gutenberg' ) ?>
+						<div class="spectra-image-gallery__control-button" aria-label="<?php echo esc_html( array( 'paginateButtonText' ) ); ?>" tabIndex=0>
+							<?php echo esc_html( $attributes['paginateButtonText'] ); ?>
 						</div>
 					</div>
 				<?php
@@ -858,34 +863,36 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		/**
 		 * Required attribute for query.
 		 *
-		 * @param array $attributes plugin.
+		 * @param array $attributes Array of block attributes.
+		 *
 		 * @return array of requred query attributes.
-		 * @since 0.0.1
+		 *
+		 * @since 2.1
 		 */
 		public function required_atts( $attributes ) {
 			return array(
-				'mediaGallery' => ( isset( $attributes[ 'mediaGallery' ] ) ) ? json_encode( $attributes[ 'mediaGallery' ] ) : [],
-				'feedPagination' => ( isset( $attributes[ 'feedPagination' ] ) ) ? sanitize_text_field( $attributes[ 'feedPagination' ] ) : false,
-				'gridPages' => ( isset( $attributes[ 'gridPages' ] ) ) ? sanitize_text_field( $attributes[ 'gridPages' ] ) : 1,
-				'gridPageNumber' => ( isset( $attributes[ 'gridPageNumber' ] ) ) ? sanitize_text_field( $attributes[ 'gridPageNumber' ] ) : 1,
-				'paginateLimit' => ( isset( $attributes[ 'paginateLimit' ] ) ) ? sanitize_text_field( $attributes[ 'paginateLimit' ] ) : 9,
+				'mediaGallery'   => ( isset( $attributes['mediaGallery'] ) ) ? wp_json_encode( $attributes['mediaGallery'] ) : array(),
+				'feedPagination' => ( isset( $attributes['feedPagination'] ) ) ? sanitize_text_field( $attributes['feedPagination'] ) : false,
+				'gridPages'      => ( isset( $attributes['gridPages'] ) ) ? sanitize_text_field( $attributes['gridPages'] ) : 1,
+				'gridPageNumber' => ( isset( $attributes['gridPageNumber'] ) ) ? sanitize_text_field( $attributes['gridPageNumber'] ) : 1,
+				'paginateLimit'  => ( isset( $attributes['paginateLimit'] ) ) ? sanitize_text_field( $attributes['paginateLimit'] ) : 9,
 			);
 		}
 
 		/**
 		 * Sends the Images to Masonry AJAX.
 		 *
-		 * @since 0.0.1
+		 * @since 2.1
 		 */
 		public function render_masonry_pagination() {
 			check_ajax_referer( 'uagb_image_gallery_masonry_ajax_nonce', 'nonce' );
-			$media_atts = array();
-			$attr = isset( $_POST[ 'attr' ] ) ? json_decode( stripslashes( $_POST[ 'attr' ] ), true ) : array();
-			$attr[ 'gridPageNumber' ] = $_POST[ 'page_number' ];
-			$media_atts = $this->required_atts( $attr );
-			$media_atts[ 'mediaGallery' ] = json_decode( $media_atts[ 'mediaGallery' ] );
-			$media = $this->get_gallery_images( $media_atts, 'paginated' );
-			if( ! $media ){
+			$media_atts                 = array();
+			$attr                       = isset( $_POST['attr'] ) ? json_decode( stripslashes( $_POST['attr'] ), true ) : array();
+			$attr['gridPageNumber']     = $_POST['page_number'];
+			$media_atts                 = $this->required_atts( $attr );
+			$media_atts['mediaGallery'] = json_decode( $media_atts['mediaGallery'] );
+			$media                      = $this->get_gallery_images( $media_atts, 'paginated' );
+			if ( ! $media ) {
 				wp_send_json_error();
 			}
 			foreach ( $attr as $key => $attribute ) {
@@ -898,17 +905,17 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		/**
 		 * Sends the Imsges to Grid AJAX.
 		 *
-		 * @since 0.0.1
+		 * @since 2.1
 		 */
 		public function render_grid_pagination() {
 			check_ajax_referer( 'uagb_image_gallery_grid_pagination_ajax_nonce', 'nonce' );
-			$media_atts = array();
-			$attr = isset( $_POST[ 'attr' ] ) ? json_decode( stripslashes( $_POST[ 'attr' ] ), true ) : array();
-			$attr[ 'gridPageNumber' ] = $_POST[ 'page_number' ];
-			$media_atts = $this->required_atts( $attr );
-			$media_atts[ 'mediaGallery' ] = json_decode( $media_atts[ 'mediaGallery' ] );
-			$media = $this->get_gallery_images( $media_atts, 'paginated' );
-			if ( ! $media ){
+			$media_atts                 = array();
+			$attr                       = isset( $_POST['attr'] ) ? json_decode( stripslashes( $_POST['attr'] ), true ) : array();
+			$attr['gridPageNumber']     = $_POST['page_number'];
+			$media_atts                 = $this->required_atts( $attr );
+			$media_atts['mediaGallery'] = json_decode( $media_atts['mediaGallery'] );
+			$media                      = $this->get_gallery_images( $media_atts, 'paginated' );
+			if ( ! $media ) {
 				wp_send_json_error();
 			}
 			foreach ( $attr as $key => $attribute ) {
@@ -919,138 +926,147 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		}
 
 		/**
-		 * Render Media HTML.
+		 * Renders Entire Gallery HTML.
 		 *
-		 * @param array $media Part of Gallery Images.
-		 * @param array  $attributes Array of block attributes.
-		 * @since 0.0.1
+		 * @param array $media      Part of Gallery Images.
+		 * @param array $attributes Array of block attributes.
+		 *
+		 * @since 2.1
 		 */
 		private function render_media_markup( $media, $attributes ) {
+			$totalImages = count( $media );
 			ob_start();
-			for ( $i = 0; $i < count( $media ); $i++ ) { 
-				$this->render_single_media( ( array ) $media[ $i ], $attributes );
+			for ( $i = 0; $i < $totalImages; $i++ ) {
+				$this->render_single_media( (array) $media[ $i ], $attributes );
 			}
 			return ob_get_clean();
 		}
 
+		/**
+		 * Renders an Individual Image Element with All Wrappers.
+		 *
+		 * @param array $mediaArray Array of current image's details.
+		 * @param array $atts       Array of attributes.
+		 *
+		 * @since 2.1
+		 */
 		private function render_single_media( $mediaArray, $atts ) {
 			// Check if this is part of the Tiled Layout, and if so then check if the current image is focused or not.
 			$focusedClass = '';
-			if ( $atts[ 'feedLayout' ] === 'tiled' && ( array_key_exists( $mediaArray[ 'id' ], $atts[ 'focusList' ] ) && $atts[ 'focusList' ][ $mediaArray[ 'id' ] ] === true ) ){
+			if ( 'tiled' === $atts['feedLayout'] && ( array_key_exists( $mediaArray['id'], $atts['focusList'] ) && ( true === $atts['focusList'][ $mediaArray['id'] ] ) ) ) {
 				$focusedClass = ' spectra-image-gallery__media-wrapper--focus';
 			}
 			?>
-			<div class='spectra-image-gallery__media-wrapper<?= $focusedClass ?>' >
+			<div class='spectra-image-gallery__media-wrapper<?php echo esc_html( $focusedClass ); ?>' >
 				<?php
 					$this->render_media_thumbnail( $mediaArray, $atts );
-					// echo $mediaArray[ 'caption' ];
 				?>
 			</div>
 			<?php
 		}
-	
-		private function render_media_link( $mediaArray, $atts ) {
-			?>
-			<a <?= ( $mediaArray[ 'url' ] )
-				? 'href="' . $mediaArray[ 'url' ] . '"'
-				: 'class="spectra-image-gallery__media--flagged"'; ?> target="_blank" rel="noopener noreferrer" >
-				<?php $this->render_media_thumbnail( $mediaArray, $atts ); ?>
-			</a>
-			<?php
-		}
-	
+
+		/**
+		 * Renders the Image.
+		 *
+		 * @param array $mediaArray Array of current image's details.
+		 * @param array $atts       Array of attributes.
+		 *
+		 * @since 2.1
+		 */
 		private function render_media_thumbnail( $mediaArray, $atts ) {
-			if ( $atts[ 'captionDisplayType' ] === 'bar-outside' && ( UAGB_Block_Helper::get_matrix_alignment( $atts[ 'imageCaptionAlignment' ], 1 ) === 'top' ) && $atts[ 'imageDisplayCaption' ] ) {
+			if ( 'bar-outside' === $atts['captionDisplayType'] && ( 'top' === UAGB_Block_Helper::get_matrix_alignment( $atts['imageCaptionAlignment'], 1 ) ) && $atts['imageDisplayCaption'] ) {
 				?>
-					<div class="spectra-image-gallery__media-thumbnail-caption-wrapper spectra-image-gallery__media-thumbnail-caption-wrapper--<?= $atts[ 'captionDisplayType' ]; ?>">
+					<div class="spectra-image-gallery__media-thumbnail-caption-wrapper spectra-image-gallery__media-thumbnail-caption-wrapper--<?php echo esc_html( $atts['captionDisplayType'] ); ?>">
 						<?php $this->render_media_caption( $mediaArray, $atts ); ?>
 					</div>
 				<?php
 			}
 			?>
-			<div class="spectra-image-gallery__media spectra-image-gallery__media--<?= $atts[ 'feedLayout' ]; ?>">
-				<img class="spectra-image-gallery__media-thumbnail spectra-image-gallery__media-thumbnail--<?= $atts[ 'feedLayout' ]; ?>" src="<?= $mediaArray[ 'url' ]; ?>" />
+			<div class="spectra-image-gallery__media spectra-image-gallery__media--<?php echo esc_html( $atts['feedLayout'] ); ?>">
+				<img class="spectra-image-gallery__media-thumbnail spectra-image-gallery__media-thumbnail--<?php echo esc_html( $atts['feedLayout'] ); ?>" src="<?php echo esc_html( $mediaArray['url'] ); ?>" alt="<?php echo esc_html( $mediaArray['alt'] ); ?>"/>
 				<div class="spectra-image-gallery__media-thumbnail-blurrer"></div>
 				<?php
-					if ( $atts[ 'imageDisplayCaption' ] ) {
-						if ( $atts[ 'captionDisplayType' ] !== 'bar-outside' ) {
+				if ( $atts['imageDisplayCaption'] ) {
+					if ( 'bar-outside' !== $atts['captionDisplayType'] ) {
 						?>
-							<div class="spectra-image-gallery__media-thumbnail-caption-wrapper spectra-image-gallery__media-thumbnail-caption-wrapper--<?= $atts[ 'captionDisplayType' ]; ?>">
-								<?php $this->render_media_caption( $mediaArray, $atts ); ?>
+							<div class="spectra-image-gallery__media-thumbnail-caption-wrapper spectra-image-gallery__media-thumbnail-caption-wrapper--<?php echo esc_html( $atts['captionDisplayType'] ); ?>">
+							<?php $this->render_media_caption( $mediaArray, $atts ); ?>
 							</div>
 						<?php
-						}
 					}
-					else{
-						?>
+				} else {
+					?>
 							<div class="spectra-image-gallery__media-thumbnail-caption-wrapper spectra-image-gallery__media-thumbnail-caption-wrapper--overlay"></div>
-						<?php
-					}
+					<?php
+				}
 				?>
 			</div>
 			<?php
-			if( $atts[ 'captionDisplayType' ] === 'bar-outside' && ( UAGB_Block_Helper::get_matrix_alignment( $atts[ 'imageCaptionAlignment' ], 1 ) !== 'top' ) && $atts[ 'imageDisplayCaption' ] ) {
+			if ( 'bar-outside' === $atts['captionDisplayType'] && ( 'top' !== UAGB_Block_Helper::get_matrix_alignment( $atts['imageCaptionAlignment'], 1 ) ) && $atts['imageDisplayCaption'] ) {
 				?>
-					<div class="spectra-image-gallery__media-thumbnail-caption-wrapper spectra-image-gallery__media-thumbnail-caption-wrapper--<?= $atts[ 'captionDisplayType' ]; ?>">
+					<div class="spectra-image-gallery__media-thumbnail-caption-wrapper spectra-image-gallery__media-thumbnail-caption-wrapper--<?php echo esc_html( $atts['captionDisplayType'] ); ?>">
 						<?php $this->render_media_caption( $mediaArray, $atts ); ?>
 					</div>
 				<?php
 			}
 		}
-	
+
+		/**
+		 * Renders Image Caption.
+		 *
+		 * @param array $mediaArray Array of current image's details.
+		 * @param array $atts       Array of attributes.
+		 *
+		 * @since 2.1
+		 */
 		private function render_media_caption( $mediaArray, $atts ) {
-			$needsEllipsis = isset( $mediaArray[ 'caption' ] ) ? true : false;
-			$capSpacePos = isset( $mediaArray[ 'caption' ] ) ? strpos( $mediaArray[ 'caption' ], ' ' ) : false;
-			$limitedCaption =  ( isset( $mediaArray[ 'caption' ] ) && $mediaArray[ 'caption' ] )
-				? $mediaArray[ 'caption' ]
+			$needsEllipsis  = isset( $mediaArray['caption'] ) ? true : false;
+			$capSpacePos    = isset( $mediaArray['caption'] ) ? strpos( $mediaArray['caption'], ' ' ) : false;
+			$limitedCaption = ( isset( $mediaArray['caption'] ) && $mediaArray['caption'] )
+				? $mediaArray['caption']
 				: (
-					$mediaArray[ 'url' ]
-					? $atts[ 'imageDefaultCaption' ]
+					$mediaArray['url']
+					? $atts['imageDefaultCaption']
 					: 'Unable to load image'
 				);
-			if( $needsEllipsis && strlen( $mediaArray[ 'caption' ] ) <= $atts[ 'imageCaptionLength' ] ) {
-				// The caption is already below the limiter.    
+			if ( $needsEllipsis && strlen( $mediaArray['caption'] ) <= $atts['imageCaptionLength'] ) {
+				// The caption is already below the limiter.
 				$needsEllipsis = false;
-			}
-			else if ( $needsEllipsis ){
-				$limitedCaption = substr( $limitedCaption, 0, $atts[ 'imageCaptionLength' ] );
+			} elseif ( $needsEllipsis ) {
+				$limitedCaption  = substr( $limitedCaption, 0, $atts['imageCaptionLength'] );
 				$limitedSpacePos = strpos( $limitedCaption, ' ' );
-				$limitedEnd = substr( $limitedCaption, -1 );
+				$limitedEnd      = substr( $limitedCaption, -1 );
 				if ( ! $limitedSpacePos ) {
 					// There's only 1 word.
 					if ( ! $capSpacePos ) {
 						// There's only 1 word in the original caption.
-						if ( strlen( $limitedCaption ) === strlen( explode( ' ', $mediaArray[ 'caption' ] )[0] ) ) {
+						if ( strlen( $limitedCaption ) === strlen( explode( ' ', $mediaArray['caption'] )[0] ) ) {
 							// The limited caption is the same as the original.
 							$needsEllipsis = false;
-						}
-						else{
+						} else {
 							// The limited caption differs from the original.
 							$limitedCaption = '';
 						}
-					}
-					else{
+					} else {
 						// There's more than 1 word in the original caption.
-						if ( strlen( $limitedCaption ) !== strlen( explode( ' ', $mediaArray[ 'caption' ] )[0] ) ) {
+						if ( strlen( $limitedCaption ) !== strlen( explode( ' ', $mediaArray['caption'] )[0] ) ) {
 							// The limited caption is smaller than 1 word in the original.
 							$limitedCaption = '';
 						}
 					}
-				}
-				else{
-					// There is a space
-					if ( strlen( $limitedCaption ) === strlen( $mediaArray[ 'caption' ] ) ) {
+				} else {
+					// There is a space.
+					if ( strlen( $limitedCaption ) === strlen( $mediaArray['caption'] ) ) {
 						// The limited caption is the same as the original.
 						$needsEllipsis = false;
-					}
-					else{
-						// The limited caption differs from the original
+					} else {
+						// The limited caption differs from the original.
 						if ( substr( $limitedCaption, -1 ) !== ' ' ) {
 							$limitedCaption = substr( $limitedCaption, 0, min( strlen( $limitedCaption ), strrpos( $limitedCaption, ' ' ) ) );
 						}
 					}
 				}
-				switch( substr( $limitedCaption, -1 ) ) {
+				switch ( substr( $limitedCaption, -1 ) ) {
 					case ',':
 					case '.':
 					case ' ':
@@ -1059,39 +1075,40 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 				}
 			}
 			?>
-				<div class="spectra-image-gallery__media-thumbnail-caption spectra-image-gallery__media-thumbnail-caption--<?= $atts[ 'captionDisplayType' ]; ?>">
-					<?= __( $limitedCaption, 'ultimate-addons-for-gutenberg' ); ?><?= $needsEllipsis ? ' &#8230;' : ''; ?>
+				<div class="spectra-image-gallery__media-thumbnail-caption spectra-image-gallery__media-thumbnail-caption--<?php echo esc_html( $atts['captionDisplayType'] ); ?>">
+					<?php echo esc_html( $limitedCaption ); ?><?php echo $needsEllipsis ? ' &#8230;' : ''; ?>
 				</div>
 			<?php
 		}
 
 		/**
-		 * Render Images.
+		 * Renders All Images.
 		 *
-		 * @param array $attributes Array of block attributes.
+		 * @param array  $attributes Array of block attributes.
+		 * @param string $fetchType String to identify whether paginated or full.
 		 *
-		 * @since 0.0.1
+		 * @since 2.1
 		 */
 		private static function get_gallery_images( $attributes, $fetchType ) {
-			// fetch type could be - paginated | full
 			$mediaRequired = array();
 			switch ( $fetchType ) {
 				case 'paginated':
-					if ( isset( $attributes[ 'mediaGallery' ] ) && isset( $attributes[ 'feedPagination' ] ) && isset( $attributes[ 'gridPages' ] ) && isset( $attributes[ 'gridPageNumber' ] ) && isset( $attributes[ 'paginateLimit' ] ) && $attributes[ 'feedPagination' ] && $attributes[ 'mediaGallery' ] ) {
-						$mediaIndex = ( $attributes[ 'gridPageNumber' ] - 1 ) * $attributes[ 'paginateLimit' ];
-						for ( $i = 0; $i < $attributes[ 'paginateLimit' ]; $i++ ) {
-							if( array_key_exists( $mediaIndex + $i, $attributes[ 'mediaGallery' ] ) ) {
-								array_push( $mediaRequired, $attributes[ 'mediaGallery' ][ $mediaIndex + $i ] );
+					if ( isset( $attributes['mediaGallery'] ) && isset( $attributes['feedPagination'] ) && isset( $attributes['gridPages'] ) && isset( $attributes['gridPageNumber'] ) && isset( $attributes['paginateLimit'] ) && $attributes['feedPagination'] && $attributes['mediaGallery'] ) {
+						$mediaIndex = ( $attributes['gridPageNumber'] - 1 ) * $attributes['paginateLimit'];
+						for ( $i = 0; $i < $attributes['paginateLimit']; $i++ ) {
+							if ( array_key_exists( $mediaIndex + $i, $attributes['mediaGallery'] ) ) {
+								array_push( $mediaRequired, $attributes['mediaGallery'][ $mediaIndex + $i ] );
 							}
 						}
 					}
 					break;
 				case 'full':
-					if ( isset( $attributes[ 'mediaGallery' ] ) && $attributes[ 'mediaGallery' ] ) {
-						$mediaIndex = 0;
-						for ( $i = 0; $i < count( $attributes[ 'mediaGallery' ] ); $i++ ) {
-							if( array_key_exists( $mediaIndex + $i, $attributes[ 'mediaGallery' ] ) ) {
-								array_push( $mediaRequired, $attributes[ 'mediaGallery' ][ $mediaIndex + $i ] );
+					if ( isset( $attributes['mediaGallery'] ) && $attributes['mediaGallery'] ) {
+						$mediaIndex    = 0;
+						$galleryLength = count( $attributes['mediaGallery'] );
+						for ( $i = 0; $i < $galleryLength; $i++ ) {
+							if ( array_key_exists( $mediaIndex + $i, $attributes['mediaGallery'] ) ) {
+								array_push( $mediaRequired, $attributes['mediaGallery'][ $mediaIndex + $i ] );
 							}
 						}
 					}
@@ -1100,11 +1117,20 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 			return $mediaRequired;
 		}
 
-		public static function render_frontend_masonry_layout( $id, $attr, $selector ){
+		/**
+		 * Renders Front-end Masonry Layout.
+		 *
+		 * @param string $id       Block ID.
+		 * @param array  $attr      Array of attributes.
+		 * @param string $selector Selector to identify the carousel.
+		 *
+		 * @since 2.1
+		 */
+		public static function render_frontend_masonry_layout( $id, $attr, $selector ) {
 			ob_start();
 			?>
 				window.addEventListener( 'DOMContentLoaded', function() {
-					const scope = document.querySelector( '.uagb-block-<?= $id; ?>' );
+					const scope = document.querySelector( '.uagb-block-<?php echo esc_html( $id ); ?>' );
 					if ( scope ){
 						if ( scope.children[0].classList.contains( 'spectra-image-gallery__layout--masonry' ) ) {
 							const element = scope.querySelector( '.spectra-image-gallery__layout--masonry' );
@@ -1115,18 +1141,27 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 								isotope.layout();
 							});
 						}
-						UAGBImageGalleryMasonry.init( <?= wp_json_encode( $attr ); ?>, '<?= esc_attr( $selector ); ?>' );
+						UAGBImageGalleryMasonry.init( <?php echo wp_json_encode( $attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
 					}
 				});
 			<?php
 			return ob_get_clean();
 		}
-		
-		public static function render_frontend_grid_pagination( $id, $attr, $selector ){
+
+		/**
+		 * Renders Front-end Grid Paginated Layout.
+		 *
+		 * @param string $id       Block ID.
+		 * @param array  $attr      Array of attributes.
+		 * @param string $selector Selector to identify the carousel.
+		 *
+		 * @since 2.1
+		 */
+		public static function render_frontend_grid_pagination( $id, $attr, $selector ) {
 			ob_start();
 			?>
 				window.addEventListener( 'DOMContentLoaded', function() {
-					const scope = document.querySelector( '.uagb-block-<?= $id; ?>' );
+					const scope = document.querySelector( '.uagb-block-<?php echo esc_html( $id ); ?>' );
 					if ( scope ){
 						if ( scope.children[0].classList.contains( 'spectra-image-gallery__layout--isogrid' ) ) {
 							const element = scope.querySelector( '.spectra-image-gallery__layout--isogrid' );
@@ -1138,18 +1173,27 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 								isotope.layout();
 							});
 						}
-						UAGBImageGalleryPagedGrid.init( <?= wp_json_encode( $attr ); ?>, '<?= esc_attr( $selector ); ?>' );
+						UAGBImageGalleryPagedGrid.init( <?php echo wp_json_encode( $attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
 					}
 				});
 			<?php
 			return ob_get_clean();
 		}
 
-		public static function render_frontend_carousel_layout( $id, $settings, $selector ){
+		/**
+		 * Renders Front-end Carousel Layout.
+		 *
+		 * @param string $id       Block ID.
+		 * @param array  $settings  Array of carousel settings.
+		 * @param string $selector Selector to identify the carousel.
+		 *
+		 * @since 2.1
+		 */
+		public static function render_frontend_carousel_layout( $id, $settings, $selector ) {
 			ob_start();
 			?>
 				jQuery( document ).ready( function() {
-					const scope = document.querySelector( '.uagb-block-<?= $id; ?>' );
+					const scope = document.querySelector( '.uagb-block-<?php echo esc_html( $id ); ?>' );
 					if ( scope ){
 						if ( scope.children[0].classList.contains( 'spectra-image-gallery__layout--carousel' ) ) {
 							const carousel = scope.children[0];
@@ -1165,11 +1209,18 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 			return 'jQuery( document ).ready( function() { if( jQuery( "' . $selector . '" ).length > 0 ){ jQuery( "' . $selector . '" ).find( ".uagb-slick-carousel" ).slick( ' . $settings . ' ); } } );' . $buffer;
 		}
 
-		public static function render_frontend_tiled_layout( $id, $attr, $selector ){
+		/**
+		 * Renders Front-end Tiled Layout.
+		 *
+		 * @param string $id Block ID.
+		 *
+		 * @since 2.1
+		 */
+		public static function render_frontend_tiled_layout( $id ) {
 			ob_start();
 			?>
 				window.addEventListener( 'DOMContentLoaded', function() {
-					const scope = document.querySelector( '.uagb-block-<?= $id; ?>' );
+					const scope = document.querySelector( '.uagb-block-<?php echo esc_html( $id ); ?>' );
 					if ( scope ){
 						if ( scope.children[0].classList.contains( 'spectra-image-gallery__layout--tiled' ) ) {
 							const element = scope.querySelector( '.spectra-image-gallery__layout--tiled' );
@@ -1201,8 +1252,8 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 	}
 
 	/**
-	 *  Prepare if class 'Spectra_Pro_Image_Gallery' exist.
+	 *  Prepare if class 'Spectra_Image_Gallery' exist.
 	 *  Kicking this off by calling 'get_instance()' method
 	 */
-	Spectra_Pro_Image_Gallery::get_instance();
+	Spectra_Image_Gallery::get_instance();
 }
