@@ -169,6 +169,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 = 2.0.12 - MONDAY, 12th SEPTEMBER 2022 =
 * Fix: Form - Form is sending empty data after adding keys for ReCaptcha V3 .
 * Fix: Forms - Required Toggle for Checkbox field was not clickable in editor.
+* Fix: Responsive Borer - Border width occasionally misbehaves when set to zero.
 
 = 2.0.11 - THURSDAY, 8th SEPTEMBER 2022 =
 * Improvement: Media Picker - Added Optional Label Display and Improved UI.
