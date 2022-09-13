@@ -69,7 +69,6 @@ const UAGBImageGalleryMasonry = {
 		const htmlElement = document.createElement( 'div' );
 		const htmlCleanString = htmlString.replace( /\s+/gm, ' ' ).replace( /( )+/gm, ' ' ).trim();
 		htmlElement.innerHTML = htmlCleanString;
-		//console.log( `%c${ htmlElement.innerHTML }`, 'color: lime; font-weight: bold; font-family: Raleway;' );
 		return htmlElement;
 	},
 
@@ -90,7 +89,6 @@ const UAGBImageGalleryMasonry = {
 			if ( ! element ) {
 				element = $scope;
 			}
-			// console.log( `%c${ element }`, 'color: orange; font-weight: bold; font-family: Raleway;' );
 			const isotope = new Isotope( element, { // eslint-disable-line no-undef
 				itemSelector: '.spectra-image-gallery__media-wrapper',
 				stagger: 10,
@@ -109,9 +107,6 @@ const UAGBImageGalleryMasonry = {
 					$scope.querySelector( '.spectra-image-gallery__control-button' ).parentElement.style.display = 'none';
 				}, 2000 );
 			}
-		} )
-		.catch( function( error ) {
-			console.error( `%c${ error }`, 'color: turquoise; font-weight: bold; font-family: Raleway;' ); // eslint-disable-line no-console
 		} );
 	}
 };
@@ -122,8 +117,6 @@ const UAGBImageGalleryPagedGrid = {
 		const $scope = document.querySelector( $selector );
 		const arrows = $scope.querySelectorAll( '.spectra-image-gallery__control-arrows--grid' );
 		const dots = $scope.querySelectorAll( '.spectra-image-gallery__control-dot' );
-		console.log( $selector );
-		console.log( $scope );
 		for ( let i = 0; i < arrows.length; i++ ) {
 			arrows[ i ].addEventListener( 'click', ( event ) => {
 				const thisArrow = event.currentTarget;
@@ -164,10 +157,8 @@ const UAGBImageGalleryPagedGrid = {
 				}
 			} );
 		}
-		// console.log( `%c${ dots.length }`, 'color: blueviolet; font-weight: bold; font-family: Raleway;' );
 		for ( let i = 0; i < dots.length; i++ ) {
 			dots[ i ].addEventListener( 'click', ( event ) => {
-				// console.log( `%cThis Works`, 'color: crimson; font-weight: bold; font-family: Raleway;' );
 				const thisDot = event.currentTarget;
 				const page = thisDot.getAttribute( 'data-go-to' );
 				let mediaItem = $scope.querySelector( '.spectra-image-gallery__media-wrapper' );
@@ -193,7 +184,6 @@ const UAGBImageGalleryPagedGrid = {
 		const htmlElement = document.createElement( 'div' );
 		const htmlCleanString = htmlString.replace( /\s+/gm, ' ' ).replace( /( )+/gm, ' ' ).trim();
 		htmlElement.innerHTML = htmlCleanString;
-		// console.log( `%c${ htmlElement.innerHTML }`, 'color: lime; font-weight: bold; font-family: Raleway;' );
 		return htmlElement;
 	},
 
@@ -217,7 +207,6 @@ const UAGBImageGalleryPagedGrid = {
 			if ( ! element ) {
 				element = $scope;
 			};
-			// console.log( `%c${ data.data }`, 'color: orange; font-weight: bold; font-family: Raleway;' )
 			const mediaElements = element.querySelectorAll( '.spectra-image-gallery__media-wrapper' );
 			const isotope = new Isotope( element, { // eslint-disable-line no-undef
 				itemSelector: '.spectra-image-gallery__media-wrapper',
@@ -249,9 +238,6 @@ const UAGBImageGalleryPagedGrid = {
 			$scope.querySelector( '.spectra-image-gallery__control-dot--active' ).classList.toggle( 'spectra-image-gallery__control-dot--active' );
 			const $activeDot = $scope.querySelectorAll( '.spectra-image-gallery__control-dot' );
 			$activeDot[ parseInt( $obj.page_number ) - 1 ].classList.toggle( 'spectra-image-gallery__control-dot--active' );
-		} )
-		.catch( function( error ) {
-			console.error( `%c${ error }`, 'color: turquoise; font-weight: bold; font-family: Raleway;' ); // eslint-disable-line no-console
 		} );
 	}
 };

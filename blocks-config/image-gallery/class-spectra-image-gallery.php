@@ -759,22 +759,20 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 						'data-direction' => true,
 						'disabled'       => true,
 					),
-					'svg'   => array(
+					'svg'    => array(
 						'width'       => true,
 						'height'      => true,
 						'viewbox'     => true,
 						'aria-hidden' => true,
 					),
-					'path'  => array( 'd' => true ),
-					'ul' => array( 'class' => true ),
-					'li' => array(
+					'path'   => array( 'd' => true ),
+					'ul'     => array( 'class' => true ),
+					'li'     => array(
 						'class'      => true,
-						'data-go-to' => true
-					)
+						'data-go-to' => true,
+					),
 				);
 				$grid_page_allowed_tags = array_merge( $grid_page_kses, $grid_page_args );
-
-				// echo wp_kses( $rich_text_that_might_include_SVGs, $grid_page_allowed_tags );
 
 				ob_start();
 				?>
