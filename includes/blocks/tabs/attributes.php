@@ -7,28 +7,7 @@
  * @package uagb
  */
 
-// $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'tab' );
-
-// $border_attribute = array_merge(
-// 	$border_attribute,
-// 	array(
-// 		'tabBorderTopWidth' => 1,
-// 		'tabBorderRightWidth' => 1,
-// 		'tabBorderBottomWidth' => 1,
-// 		'tabBorderLeftWidth' => 1,
-// 	)
-// );
-$border_attribute      = UAGB_Block_Helper::uag_generate_border_attribute(
-	'tab',
-	array(
-		'borderTopWidth'          => 1,
-		'borderRightWidth'        => 1,
-		'borderBottomWidth'       => 1,
-		'borderLeftWidth'         => 1,
-
-	)
-);
-var_dump($border_attribute);
+$border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'tab' );
 
 return array_merge(
 	array(
