@@ -2,7 +2,7 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
-import UAGImage from '@Components/image';
+import UAGMediaPicker from '@Components/image';
 import { InspectorControls } from '@wordpress/block-editor';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
@@ -187,10 +187,11 @@ const Settings = ( props ) => {
 				initialOpen={ true }
 				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 			>
-				<UAGImage
-					onSelectImage={onSelectImage}
-					backgroundImage={image}
-					onRemoveImage={onRemoveImage}
+				<UAGMediaPicker
+					onSelectImage={ onSelectImage }
+					backgroundImage={ image }
+					onRemoveImage={ onRemoveImage }
+					disableLabel={ true }
 				/>
 				{image &&
 					image.url !== 'null' &&

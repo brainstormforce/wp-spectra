@@ -241,16 +241,17 @@ const UAGCopyPasteStyles = () => {
 
 						const childName = childBlock.name.replace( 'uagb/', '' );
 						const blockAttributes = blocksAttributes[childName];
+						
+						if( pasteStyle.innerblocks[index].name === 'uagb/' + childName ) {
+							Object.keys( blockAttributes ).map( ( attribute ) => {
 
-						Object.keys( blockAttributes ).map( ( attribute ) => {
+								if ( blockAttributes[attribute].UAGCopyPaste ) {
 
-							if ( blockAttributes[attribute].UAGCopyPaste ) {
-
-								childAttr[attribute] = pasteStyle.innerblocks[index].attributes[attribute];
-							}
-							return childAttr;
-						} );
-
+									childAttr[attribute] = pasteStyle.innerblocks[index].attributes[attribute];
+								}
+								return childAttr;
+							} );
+						}
 						updateBlockStyles( childBlock.clientId,  childAttr );
 
 						return childBlock;

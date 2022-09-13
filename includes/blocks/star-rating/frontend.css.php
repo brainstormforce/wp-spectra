@@ -120,9 +120,12 @@ $index = 'margin-right';
 if ( 'stack' === $attr['layout'] ) {
 	if ( 'before' === $attr['starPosition'] ) {
 		$index                                   = 'margin-top';
-		$selectors['.wp-block-uagb-star-rating'] = array(
-			'flex-direction' => 'column-reverse',
-			'align-items'    => $alignment, // To align-item in flex-direction column-reverse.
+		$selectors['.wp-block-uagb-star-rating'] = array_merge(
+			array(
+				'flex-direction' => 'column-reverse',
+				'align-items'    => $alignment, // To align-item in flex-direction column-reverse.
+			),
+			$wrapperCSS
 		);
 	} elseif ( 'after' === $attr['starPosition'] ) {
 		$index                                    = 'margin-bottom';
@@ -137,9 +140,12 @@ if ( 'stack' === $attr['layout'] ) {
 } elseif ( 'inline' === $attr['layout'] ) {
 	if ( 'before' === $attr['starPosition'] ) {
 		$index                                   = 'margin-left';
-		$selectors['.wp-block-uagb-star-rating'] = array(
-			'flex-direction'  => 'row-reverse',
-			'justify-content' => UAGB_Block_Helper::flex_alignment_when_direction_is_row_reverse( $alignment ), // To align-item in flex-direction column-reverse.
+		$selectors['.wp-block-uagb-star-rating'] = array_merge(
+			array(
+				'flex-direction'  => 'row-reverse',
+				'justify-content' => UAGB_Block_Helper::flex_alignment_when_direction_is_row_reverse( $alignment ), // To align-item in flex-direction column-reverse.
+			),
+			$wrapperCSS
 		);
 	} elseif ( 'after' === $attr['starPosition'] ) {
 		$index                                    = 'margin-right';
@@ -169,9 +175,12 @@ $index_tablet = 'margin-right';
 if ( 'stack' === $attr['layoutTablet'] ) {
 	if ( 'before' === $attr['starPositionTablet'] ) {
 		$index_tablet                              = 'margin-top';
-		$t_selectors['.wp-block-uagb-star-rating'] = array(
-			'flex-direction' => 'column-reverse',
-			'align-items'    => $alignment_tablet, // To align-item in flex-direction column-reverse.
+		$t_selectors['.wp-block-uagb-star-rating'] = array_merge(
+			array(
+				'flex-direction' => 'column-reverse',
+				'align-items'    => $alignment_tablet, // To align-item in flex-direction column-reverse.
+			),
+			$wrapperCSSTablet
 		);
 	} elseif ( 'after' === $attr['starPositionTablet'] ) {
 		$index_tablet                               = 'margin-bottom';
@@ -186,9 +195,12 @@ if ( 'stack' === $attr['layoutTablet'] ) {
 } else {
 	if ( 'before' === $attr['starPositionTablet'] ) {
 		$index_tablet                              = 'margin-left';
-		$t_selectors['.wp-block-uagb-star-rating'] = array(
-			'flex-direction'  => 'row-reverse',
-			'justify-content' => UAGB_Block_Helper::flex_alignment_when_direction_is_row_reverse( $alignment_tablet ), // To align-item in flex-direction column-reverse.
+		$t_selectors['.wp-block-uagb-star-rating'] = array_merge(
+			array(
+				'flex-direction'  => 'row-reverse',
+				'justify-content' => UAGB_Block_Helper::flex_alignment_when_direction_is_row_reverse( $alignment_tablet ), // To align-item in flex-direction column-reverse.
+			),
+			$wrapperCSSTablet
 		);
 	} elseif ( 'after' === $attr['starPositionTablet'] ) {
 		$index_tablet                               = 'margin-right';
@@ -220,9 +232,12 @@ $index_mobile = 'margin-right';
 if ( 'stack' === $attr['layoutMobile'] ) {
 	if ( 'before' === $attr['starPositionMobile'] ) {
 		$index_mobile                              = 'margin-top';
-		$m_selectors['.wp-block-uagb-star-rating'] = array(
-			'flex-direction' => 'column-reverse',
-			'align-items'    => $alignment_mobile, // To align-item in flex-direction column-reverse.
+		$m_selectors['.wp-block-uagb-star-rating'] = array_merge(
+			array(
+				'flex-direction' => 'column-reverse',
+				'align-items'    => $alignment_mobile, // To align-item in flex-direction column-reverse.
+			),
+			$wrapperCSSMobile
 		);
 	} elseif ( 'after' === $attr['starPositionMobile'] ) {
 		$index_mobile                               = 'margin-bottom';
@@ -237,9 +252,12 @@ if ( 'stack' === $attr['layoutMobile'] ) {
 } else {
 	if ( 'before' === $attr['starPositionMobile'] ) {
 		$index_mobile                              = 'margin-left';
-		$m_selectors['.wp-block-uagb-star-rating'] = array(
-			'flex-direction'  => 'row-reverse',
-			'justify-content' => UAGB_Block_Helper::flex_alignment_when_direction_is_row_reverse( $alignment_mobile ), // To align-item in flex-direction column-reverse.
+		$m_selectors['.wp-block-uagb-star-rating'] = array_merge(
+			array(
+				'flex-direction'  => 'row-reverse',
+				'justify-content' => UAGB_Block_Helper::flex_alignment_when_direction_is_row_reverse( $alignment_mobile ), // To align-item in flex-direction column-reverse.
+			),
+			$wrapperCSSMobile
 		);
 	} elseif ( 'after' === $attr['starPositionMobile'] ) {
 		$index_mobile                               = 'margin-right';

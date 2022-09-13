@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.0
-Stable tag: 2.0.9
+Stable tag: 2.0.11
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -166,7 +166,31 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 == Changelog ==
 
-= 2.0.10 =
+= 2.0.12 - MONDAY, 12th SEPTEMBER 2022 =
+* Improvement: Forms - Added 'Required' toggle for Accept field/sub-block.
+* Improvement: Content Timeline - Changed default description.
+* Improvement: Media Picker - Updated Video Icon.
+* Fix: Forms - Fixed alignment for required toggle button in Phone block and added spacing between toggle and the 'Required' label.
+* Fix: Content Timeline - Removed extra margin added to title and description by theme and core WordPress in editor and frontend.
+* Fix: Info Box - Images looked enlarged after upgrading to Spectra.
+* Fix: Form - Form is sending empty data after adding keys for ReCaptcha V3 .
+* Fix: Forms - Required Toggle for Checkbox field was not clickable in editor.
+* Fix: Price List - Changed default padding for images so that the image aligns with the title.
+* Fix: Responsive Border - Border width occasionally misbehaves when set to zero.
+
+= 2.0.11 - THURSDAY, 8th SEPTEMBER 2022 =
+* Improvement: Media Picker - Added Optional Label Display and Improved UI.
+* Improvement: Updated copy-paste functionality logic for parent-child blocks.
+* Fix: Container - Child block's margin & padding gets removed in editor.
+* Fix: Info Box - Description margin considers values for desktop, even for tablet and mobile devices (on frontend).
+* Fix: Table of content - When disable marker is enabled List style tab not visible.
+* Fix: Star Rating - Padding/Margin were not working when the star position is set to “Before”.
+* Fix: Image: Image Size not working as expected for images when drag and drop.
+* Fix: Table of Contents - Collapse table icon/button not working in the editor.
+* Fix: Advanced Columns - Border radius does not apply properly to the column and inner-column elements.
+* Fix: Forms - Phone field label is null on the email template.
+
+= 2.0.10 - FRIDAY, 2nd SEPTEMBER 2022 =
 * Fix: Responsive condition - Conflicting with plugin using REST API block preview.
 
 = 2.0.9 - THURSDAY, 1st SEPTEMBER 2022 =
