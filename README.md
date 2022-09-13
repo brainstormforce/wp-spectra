@@ -169,6 +169,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 ### 2.0.12 - MONDAY, 12th SEPTEMBER 2022 ###
 * Improvement: Forms - Added 'Required' toggle for Accept field/sub-block.
 * Improvement: Content Timeline - Changed default description.
+* Improvement: Media Picker - Updated Video Icon.
 * Fix: Content Timeline - Removed extra margin added to title and description by theme and core WordPress in editor and frontend.
 * Fix: Info Box - Images looked enlarged after upgrading to Spectra.
 * Fix: Form - Form is sending empty data after adding keys for ReCaptcha V3 .
