@@ -14,7 +14,7 @@ for ( let i = 1; i <= itemCount; i++ ) {
 		time_heading:
 			__( 'Timeline Heading ', 'ultimate-addons-for-gutenberg' ) + i,
 		time_desc: __(
-			'This is Timeline description, you can change me anytime click here ',
+			'This is timeline description. Please click here to change this description.',
 			'ultimate-addons-for-gutenberg'
 		),
 	} );

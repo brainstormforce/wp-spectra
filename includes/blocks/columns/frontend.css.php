@@ -170,6 +170,8 @@ if ( 'video' === $bg_type ) {
 	}
 }
 
+$selectors[' > .uagb-columns__overlay']['border-radius'] = $border['border-top-left-radius'] . ' ' . $border['border-top-right-radius'] . ' ' . $border['border-bottom-left-radius'] . ' ' . $border['border-bottom-right-radius'];
+
 $m_selectors = array(
 	'.wp-block-uagb-columns.uagb-columns__wrap' => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingMobile'], $attr['mobilePaddingType'] ),
