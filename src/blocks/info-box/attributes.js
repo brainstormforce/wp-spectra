@@ -805,7 +805,7 @@
 		UAGCopyPaste: {
 			styleType: 'image-width'
 		},
-		default: '',
+		default: 120,
 	},
 	imageWidthMobile: {
 		type: 'number',
