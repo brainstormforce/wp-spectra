@@ -4,7 +4,13 @@
 import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const borderAttributes = getBorderAttributes( 'tab' );
+const borderAttributes = getBorderAttributes( 'tab',{
+		// Width
+		borderTopWidth: 1,
+		borderRightWidth: 1,
+		borderBottomWidth: 1,
+		borderLeftWidth: 1,
+} );
 
 const attributes = {
 	block_id: {
