@@ -1622,7 +1622,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$border_width  = is_numeric( $border_width ) ? $border_width : '';
 			$border_radius = is_numeric( $border_radius ) ? $border_radius : '';
 
-			// These would either be in the format of '1px', '0', or '-1px'. 
+			// These would either be in the format of '1px', '0', or '-1px'.
 			$gen_border_css['border-top-width']    = ( isset( $current_css['border-top-width'] ) && ( ! empty( $current_css['border-top-width'] ) || 0 === $current_css['border-top-width'] ) ) ? $current_css['border-top-width'] : UAGB_Helper::get_css_value( $border_width, 'px' );
 			$gen_border_css['border-left-width']   = ( isset( $current_css['border-left-width'] ) && ( ! empty( $current_css['border-left-width'] ) || 0 === $current_css['border-left-width'] ) ) ? $current_css['border-left-width'] : UAGB_Helper::get_css_value( $border_width, 'px' );
 			$gen_border_css['border-right-width']  = ( isset( $current_css['border-right-width'] ) && ( ! empty( $current_css['border-right-width'] ) || 0 === $current_css['border-right-width'] ) ) ? $current_css['border-right-width'] : UAGB_Helper::get_css_value( $border_width, 'px' );
