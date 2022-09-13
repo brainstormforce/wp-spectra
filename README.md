@@ -167,6 +167,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 ## Changelog ##
 
 ### 2.0.12 - MONDAY, 12th SEPTEMBER 2022 ###
+* Improvement: How to block - Option to disable step links.
 * Improvement: Forms - Added 'Required' toggle for Accept field/sub-block.
 * Improvement: Content Timeline - Changed default description.
 * Improvement: Media Picker - Updated Video Icon.
