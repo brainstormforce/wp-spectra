@@ -83,7 +83,7 @@ const attributes = {
 	},
 	imgVrPadding: {
 		type: 'number',
-		default: 0,
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'image-vertical-padding'
 		},
@@ -97,7 +97,6 @@ const attributes = {
 	},
 	imgPaddingTop: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'image-top-padding'
 		},
@@ -111,7 +110,6 @@ const attributes = {
 	},
 	imgPaddingBottom: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'image-bottom-padding'
 		},

@@ -1119,10 +1119,20 @@ const UAGB_Block_Icons = {
 	),
 	video_placeholder: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '0 0 512 512', className: 'uagb-editor-icons' },
+		{ width: 24, height: 24, viewBox: '0 0 24 24', fill: 'none', className: 'uagb-editor-icons' },
 		el( 'path', {
-			fill: spectraDarkColor,
-			d: 'M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM176 168V344C176 352.7 180.7 360.7 188.3 364.9C195.8 369.2 205.1 369 212.5 364.5L356.5 276.5C363.6 272.1 368 264.4 368 256C368 247.6 363.6 239.9 356.5 235.5L212.5 147.5C205.1 142.1 195.8 142.8 188.3 147.1C180.7 151.3 176 159.3 176 168V168z',
+			d: 'M14.7519 11.1679L11.5547 9.03647C10.8901 8.59343 10 9.06982 10 9.86852V14.1315C10 14.9302 10.8901 15.4066 11.5547 14.9635L14.7519 12.8321C15.3457 12.4362 15.3457 11.5638 14.7519 11.1679Z',
+			stroke: spectraDarkColor,
+			strokeWidth: 1.4,
+			strokeLinecap: 'round',
+			strokeLinejoin: 'round',
+		} ),
+		el( 'path', {
+			d: 'M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z',
+			stroke: spectraDarkColor,
+			strokeWidth: 1.4,
+			strokeLinecap: 'round',
+			strokeLinejoin: 'round',
 		} ),
 	),
 	bg_color: el(
