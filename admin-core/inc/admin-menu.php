@@ -101,9 +101,10 @@ class Admin_Menu {
 	}
 
 	/**
-	 *  Initialize after Cartflows pro get loaded.
+	 *  Initialize after Spectra gets loaded.
 	 */
 	public function settings_admin_scripts() {
+
 		// Enqueue admin scripts.
 		if ( ! empty( $_GET['page'] ) && ( $this->menu_slug === $_GET['page'] || false !== strpos( $_GET['page'], $this->menu_slug . '_' ) ) ) { //phpcs:ignore
 

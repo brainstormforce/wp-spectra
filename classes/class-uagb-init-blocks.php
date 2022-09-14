@@ -108,11 +108,11 @@ class UAGB_Init_Blocks {
 		if ( ! $saved_block_count ) {
 			// Update block list count.
 			foreach ( $list_blocks as $slug => $value ) {
-				$_slug                                 = str_replace( 'uagb/', '', $slug );
-				$all_blocks_data[ '<!-- wp:' . $slug ] = array(
+				$_slug                                       = str_replace( 'uagb/', '', $slug );
+				$all_blocks_data[ '<!-- wp:' . $slug . ' ' ] = array(
 					'name' => $_slug,
 				);
-				$blocks_count[ $_slug ]                = array(
+				$blocks_count[ $_slug ]                      = array(
 					'name'  => $_slug,
 					'count' => 0,
 				);
@@ -135,9 +135,11 @@ class UAGB_Init_Blocks {
 				foreach ( $all_blocks_data as $block_key => $block ) {
 					if ( false !== strpos( $post->post_content, $block_key ) ) {
 						$block_slug = str_replace( '<!-- wp:uagb/', '', $block_key );
+						$block_slug = str_replace( ' ', '', $block_slug );
 
 						$usage_count                          = $blocks_count[ $block_slug ]['count'];
-						$blocks_count[ $block_slug ]['count'] = $usage_count + 1;
+						$latest_count                         = substr_count( $post->post_content, $block_key );
+						$blocks_count[ $block_slug ]['count'] = $usage_count + $latest_count;
 						$spectra_block_count++;
 					}
 				}
