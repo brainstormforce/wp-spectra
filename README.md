@@ -166,7 +166,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 ## Changelog ##
 
-### 2.0.13 - MONDAY, 12th SEPTEMBER 2022 ###
+### 2.0.12 - MONDAY, 12th SEPTEMBER 2022 ###
 * Fix: Tabs - tabs border inconsistence inside editor as well on frontend.
 
 ### 2.0.12 - MONDAY, 12th SEPTEMBER 2022 ###
