@@ -178,6 +178,20 @@ function styling( props ) {
 	const paginateLoaderSizeFallback = getFallbackNumber( paginateLoaderSize, 'paginateLoaderSize', blockName );
 	const gridImageGapFallback = getFallbackNumber( gridImageGap, 'gridImageGap', blockName );
 
+	// Spacing Fallback
+	const feedMarginTopFallback = isNaN( feedMarginTop ) ? 0 : feedMarginTop;
+	const feedMarginRightFallback = isNaN( feedMarginRight ) ? 0 : feedMarginRight;
+	const feedMarginBottomFallback = isNaN( feedMarginBottom ) ? 0 : feedMarginBottom;
+	const feedMarginLeftFallback = isNaN( feedMarginLeft ) ? 0 : feedMarginLeft;
+	const feedMarginTopTabFallback = isNaN( feedMarginTopTab ) ? 0 : feedMarginTopTab;
+	const feedMarginRightTabFallback = isNaN( feedMarginRightTab ) ? 0 : feedMarginRightTab;
+	const feedMarginBottomTabFallback = isNaN( feedMarginBottomTab ) ? 0 : feedMarginBottomTab;
+	const feedMarginLeftTabFallback = isNaN( feedMarginLeftTab ) ? 0 : feedMarginLeftTab;
+	const feedMarginTopMobFallback = isNaN( feedMarginTopMob ) ? 0 : feedMarginTopMob;
+	const feedMarginRightMobFallback = isNaN( feedMarginRightMob ) ? 0 : feedMarginRightMob;
+	const feedMarginBottomMobFallback = isNaN( feedMarginBottomMob ) ? 0 : feedMarginBottomMob;
+	const feedMarginLeftMobFallback = isNaN( feedMarginLeftMob ) ? 0 : feedMarginLeftMob;
+
 	// Responsive Slider Fallback.
 	const gridImageGapTabFallback = isNaN( gridImageGapTab ) ? gridImageGapFallback : gridImageGapTab;
 	const gridImageGapMobFallback = isNaN( gridImageGapMob ) ? gridImageGapTabFallback : gridImageGapMob;
@@ -200,10 +214,10 @@ function styling( props ) {
 		'.wp-block-uagb-image-gallery': {
 			'padding': generateSpacing(
 				feedMarginUnit,
-				feedMarginTop,
-				feedMarginRight,
-				feedMarginBottom,
-				feedMarginLeft
+				feedMarginTopFallback,
+				feedMarginRightFallback,
+				( 'carousel' === feedLayout ) ? ( feedMarginBottomFallback + 5 ) : feedMarginBottomFallback, // Editor Only Fix for the Carousel Dots.
+				feedMarginLeftFallback
 			),
 		},
 
@@ -500,10 +514,10 @@ function styling( props ) {
 		'.wp-block-uagb-image-gallery': {
 			'padding': generateSpacing(
 				feedMarginUnitTab,
-				feedMarginTopTab,
-				feedMarginRightTab,
-				feedMarginBottomTab,
-				feedMarginLeftTab
+				feedMarginTopTabFallback,
+				feedMarginRightTabFallback,
+				( 'carousel' === feedLayout ) ? ( feedMarginBottomTabFallback + 5 ) : feedMarginBottomTabFallback, // Editor Only Fix for the Carousel Dots.
+				feedMarginLeftTabFallback
 			),
 		},
 		' .spectra-image-gallery__control-arrows--carousel': {
@@ -614,10 +628,10 @@ function styling( props ) {
 		'.wp-block-uagb-image-gallery': {
 			'padding': generateSpacing(
 				feedMarginUnitMob,
-				feedMarginTopMob,
-				feedMarginRightMob,
-				feedMarginBottomMob,
-				feedMarginLeftMob
+				feedMarginTopMobFallback,
+				feedMarginRightMobFallback,
+				( 'carousel' === feedLayout ) ? ( feedMarginBottomMobFallback + 5 ) : feedMarginBottomMobFallback, // Editor Only Fix for the Carousel Dots.
+				feedMarginLeftMobFallback
 			),
 		},
 		' .spectra-image-gallery__control-arrows--carousel': {
