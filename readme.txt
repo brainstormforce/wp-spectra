@@ -181,6 +181,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Info Box - Images looked enlarged after upgrading to Spectra.
 * Fix: Form - Form is sending empty data after adding keys for ReCaptcha V3 .
 * Fix: Forms - Required Toggle for Checkbox field was not clickable in editor.
+* Fix: Advanced Row - Border not visible for backward user.
 * Fix: Price List - Changed default padding for images so that the image aligns with the title.
 * Fix: Responsive Border - Border width occasionally misbehaves when set to zero.
 
