@@ -185,7 +185,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 							),
 							'imageDefaultCaption'     => array(
 								'type'    => 'string',
-								'default' => 'No Caption',
+								'default' => __( 'No Caption', 'ultimate-addons-for-gutenberg' ),
 							),
 							'captionPaddingTop'       => array(
 								'type'    => 'number',
@@ -416,7 +416,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 							),
 							'paginateButtonText'           => array(
 								'type'    => 'string',
-								'default' => 'Load More Images',
+								'default' => __( 'Load More Images', 'ultimate-addons-for-gutenberg' ),
 							),
 							'paginateButtonPaddingTop'     => array(
 								'type'    => 'number',
