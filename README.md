@@ -167,9 +167,6 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 ## Changelog ##
 
 ### 2.0.12 - MONDAY, 12th SEPTEMBER 2022 ###
-* Fix: Post carousel/Masonry - Overlay Color is not same as front end when image set as background.
-
-### 2.0.12 - MONDAY, 12th SEPTEMBER 2022 ###
 * Improvement: How to block - Option to disable step links.
 * Improvement: Forms - Added 'Required' toggle for Accept field/sub-block.
 * Improvement: Content Timeline - Changed default description.
@@ -186,6 +183,8 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 * Fix: Price List - Changed default padding for images so that the image aligns with the title.
 * Fix: Responsive Border - Border width occasionally misbehaves when set to zero.
 * Fix: Container - Shape divider background color issue on editor.
+* Fix: Post carousel/Masonry - Overlay Color is not same as front end when image set as background.
+
 
 ### 2.0.11 - THURSDAY, 8th SEPTEMBER 2022 ###
 * Improvement: Media Picker - Added Optional Label Display and Improved UI.
