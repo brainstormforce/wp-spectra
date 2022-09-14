@@ -128,6 +128,7 @@ const UserResponsiveConditionOptions = ( props ) => {
 					checked={UAGHideDesktop}
 					onChange={() => setAttributes( {
 						UAGHideDesktop: ! attributes.UAGHideDesktop,
+						UAGResponsiveConditions: true,
 					} )}
 				/>
 				<ToggleControl
@@ -135,6 +136,7 @@ const UserResponsiveConditionOptions = ( props ) => {
 					checked={UAGHideTab}
                     onChange={() => setAttributes( {
 						UAGHideTab: ! attributes.UAGHideTab,
+						UAGResponsiveConditions: true,
 					} )}
 				/>
 				<ToggleControl
@@ -142,6 +144,7 @@ const UserResponsiveConditionOptions = ( props ) => {
 					checked={UAGHideMob}
                     onChange={() => setAttributes( {
 						UAGHideMob: ! attributes.UAGHideMob,
+						UAGResponsiveConditions: true,
 					} )}
 				/>
 			</>
@@ -156,7 +159,7 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 		const { InspectorAdvancedControls } = wp.blockEditor;
 
 		const blockName = props.name;
-		const isCore = blockName.match( /core/gi );
+		const isCore = blockName.includes( 'core/' );
 
 		const blockType = [ 'uagb/*','wpforms/form-selector','formidable/simple-form','formidable/calculator','llms/lesson-navigation','llms/pricing-table','llms/course-syllabus','llms/instructors','core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss','real-media-library/gallery' ];
 

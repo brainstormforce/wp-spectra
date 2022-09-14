@@ -51,7 +51,7 @@ function addAttributes( settings ) {
 				},
 				UAGResponsiveConditions: {
 					type: 'boolean',
-					default: true,
+					default: false,
 				},
 			} );
 		}

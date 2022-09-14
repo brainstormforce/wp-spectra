@@ -187,6 +187,7 @@ const ResponsiveConditionOptions = ( props ) => {
 				onChange={ () =>
 					setAttributes( {
 						UAGHideDesktop: ! attributes.UAGHideDesktop,
+						UAGResponsiveConditions: true,
 					} )
 				}
 			/>
@@ -196,6 +197,7 @@ const ResponsiveConditionOptions = ( props ) => {
 				onChange={ () =>
 					setAttributes( {
 						UAGHideTab: ! attributes.UAGHideTab,
+						UAGResponsiveConditions: true,
 					} )
 				}
 			/>
@@ -205,6 +207,7 @@ const ResponsiveConditionOptions = ( props ) => {
 				onChange={ () =>
 					setAttributes( {
 						UAGHideMob: ! attributes.UAGHideMob,
+						UAGResponsiveConditions: true,
 					} )
 				}
 			/>
