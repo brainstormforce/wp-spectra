@@ -182,6 +182,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 * Fix: Advanced Row - Border not visible for backward user.
 * Fix: Price List - Changed default padding for images so that the image aligns with the title.
 * Fix: Responsive Border - Border width occasionally misbehaves when set to zero.
+* Fix: Price List - Columns settings are not working in mobile editor.
 * Fix: Container - Shape divider background color issue on editor.
 
 ### 2.0.11 - THURSDAY, 8th SEPTEMBER 2022 ###
