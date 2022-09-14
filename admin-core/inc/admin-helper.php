@@ -168,10 +168,16 @@ class Admin_Helper {
 	 */
 	public static function get_options() {
 
+<<<<<<< HEAD
 		$general_settings = self::get_common_settings();
 		$all_options      = self::get_settings_page_data();
 
 		$options = array_merge( $general_settings, $all_options );
+=======
+		$general_settings          = self::get_common_settings();
+		$shareable_common_settings = \UAGB_Admin_Helper::get_admin_settings_shareable_data();
+		$options                   = array_merge( $general_settings, $shareable_common_settings );
+>>>>>>> ea242f7dc5264dc7d569c9ddec12999c7c5042b3
 
 		$options = apply_filters( 'uag_global_data_options', $options );
 

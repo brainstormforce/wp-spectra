@@ -1,8 +1,8 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
 import UAGIconPicker from '@Components/icon-picker';
 import renderSVG from '@Controls/renderIcon';
-import lazyLoader from '@Controls/lazy-loader';
+
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -13,7 +13,7 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
 import MultiButtonsControl from '@Components/multi-buttons-control';
-import UAGImage from '@Components/image';
+import UAGMediaPicker from '@Components/image';
 import UAGTabsControl from '@Components/tabs';
 import UAGSelectControl from '@Components/select-control';
 import { getImageSize } from '@Utils/Helpers';
@@ -356,7 +356,7 @@ const Settings = ( props ) => {
 						showIcons={ true }
 					/>
 				}
-				<UAGImage
+				<UAGMediaPicker
 					onSelectImage={ onSelectImage }
 					backgroundImage={ image }
 					onRemoveImage={ onRemoveImage }
@@ -1352,11 +1352,12 @@ const Settings = ( props ) => {
 
 	const getFontSettings = () => {
 		return (
-			<Suspense fallback={ lazyLoader() }>
+				<>
 				{ loadTitleGoogleFonts }
 				{ loadPrefixGoogleFonts }
 				{ loadDescGoogleFonts }
-			</Suspense>
+				</>
+
 		);
 	};
 

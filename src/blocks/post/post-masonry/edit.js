@@ -1,9 +1,9 @@
 /**
  * External dependencies
  */
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect,    } from 'react';
 import { __ } from '@wordpress/i18n';
-import lazyLoader from '@Controls/lazy-loader';
+
 import styling from '.././styling';
 import { compose } from '@wordpress/compose';
 import TypographyControl from '@Components/typography';
@@ -29,15 +29,8 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import { decodeEntities } from '@wordpress/html-entities';
 import UAGNumberControl from '@Components/number-control';
 
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-masonry/settings" */ './settings'
-	)
-);
-
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/post-masonry/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -859,11 +852,7 @@ const UAGBPostMasonry = ( props ) => {
 						},
 					} }
 					min={ 0 }
-					max={
-						! hasPosts
-							? MAX_POSTS_COLUMNS
-							: Math.min( MAX_POSTS_COLUMNS, latestPosts.length )
-					}
+					max={MAX_POSTS_COLUMNS}
 					displayUnit={ false }
 					setAttributes={ setAttributes }
 				/>
@@ -2542,7 +2531,8 @@ const UAGBPostMasonry = ( props ) => {
 	}
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
+
 			<Settings
 				parentProps={ props }
 				state={ state }
@@ -2555,7 +2545,8 @@ const UAGBPostMasonry = ( props ) => {
 				setState={ setState }
 				togglePreview={ togglePreview }
 			/>
-		</Suspense>
+			</>
+
 	);
 };
 

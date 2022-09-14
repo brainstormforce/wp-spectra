@@ -152,12 +152,14 @@ UAGBForms = { // eslint-disable-line no-undef
 					document.querySelector( '.uagb-form-reacaptcha-error-' + attr.block_id ).innerHTML = '<p style="color:red !important" class="error-captcha">Invalid Google reCAPTCHA Site Key.</p>';
 					return false;
 				}
+				
 				grecaptcha.ready( function() { // eslint-disable-line no-undef
 					grecaptcha.execute( reCaptchaSiteKeyV3, {action: 'submit'} ).then( function( token ) { // eslint-disable-line no-undef
 						if ( token ) {
 							if( document.getElementsByClassName( 'uagb-forms-recaptcha' ).length !== 0 ) {
 								document.getElementById( 'g-recaptcha-response' ).value = token;
-								window.UAGBForms._formSubmit( e, this, attr, reCaptchaSiteKeyV2, reCaptchaSiteKeyV3 );
+								
+								window.UAGBForms._formSubmit( e, form, attr, reCaptchaSiteKeyV2, reCaptchaSiteKeyV3 );
 							}else{
 								document.querySelector( '.uagb-form-reacaptcha-error-' + attr.block_id ).innerHTML = '<p style="color:red !important" class="error-captcha">Google reCAPTCHA Response not found.</p>';
 								return false;
@@ -223,29 +225,29 @@ UAGBForms = { // eslint-disable-line no-undef
 		}
 
 		const originalSerialized = window.UAGBForms._serializeIt( form );
-
+        
 		const postData = {};
 		postData.id = attr.block_id;
 		for ( let i = 0; i < originalSerialized.length; i++ ) {
 			const inputname = document.getElementById( originalSerialized[ i ].name );
+
 			if ( originalSerialized[ i ].name.endsWith( '[]' ) ) {
+				const name = originalSerialized[ i ].name.replace( /[\[\]']+/g,'' );
 				//For checkbox element
-				const name = document.getElementById( originalSerialized[ i ].name );
-				if ( ! ( name in postData ) ) {
-					postData[ name ] = [];
-				}
-				postData[ name ].push( originalSerialized[ i ].value );
-			} else if ( originalSerialized[ i ].value.startsWith( '+' ) ) {
-				//For phone element.
-				let name = originalSerialized[ i ].name;
-				name = name.substring( 0, name.length - 2 );
 				if ( ! ( name in postData ) ) {
 					postData[ name ] = [];
 				}
 				postData[ name ].push( originalSerialized[ i ].value );
 			} else if( inputname !== null ){
-					postData[ inputname.innerHTML] = originalSerialized[ i ].value;
-				}
+				postData[ inputname.innerHTML] = originalSerialized[ i ].value;
+			}
+			
+			const hiddenField = document.getElementById( 'hidden' );
+
+			if ( hiddenField !== null && hiddenField !== undefined ) {
+				postData[ hiddenField.getAttribute( 'name' ) ] = hiddenField.getAttribute( 'value' );
+			}
+
 		}
 
 		const after_submit_data = {

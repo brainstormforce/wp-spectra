@@ -115,10 +115,14 @@
 		svg {
 			width: 30px;
 			height: 30px;
+		}
 
-			path {
-				fill: $spectra-color-body;
-			}
+		&--stroke svg path {
+			stroke: $spectra-color-border-hover;
+		}
+
+		&--fill svg path {
+			fill: $spectra-color-border-hover;
 		}
 
 		& + .spectra-media-control__clickable--replace {

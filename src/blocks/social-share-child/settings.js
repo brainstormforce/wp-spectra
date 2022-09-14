@@ -15,7 +15,7 @@ import InspectorTab, {
 } from '@Components/inspector-tabs/InspectorTab.js';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGTabsControl from '@Components/tabs';
-import UAGImage from '@Components/image';
+import UAGMediaPicker from '@Components/image';
 
 
 
@@ -286,13 +286,11 @@ const Settings = ( props ) => {
 					</>
 				) }
 				{ 'image' === image_icon && (
-					<>
-						<UAGImage
-							onSelectImage={ onSelectImage }
-							backgroundImage={ image }
-							onRemoveImage={ onRemoveImage }
-						/>
-					</>
+					<UAGMediaPicker
+						onSelectImage={ onSelectImage }
+						backgroundImage={ image }
+						onRemoveImage={ onRemoveImage }
+					/>
 				) }
 			</UAGAdvancedPanelBody>
 		);

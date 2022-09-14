@@ -3,22 +3,14 @@
  */
 
 import styling from './styling';
-import React, { useEffect, Suspense, lazy } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect,   } from 'react';
+
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/marketing-button/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/marketing-button/render" */ './render'
-	)
-);
+import Settings from './settings';
+import Render from './render';
 
 const UAGBMarketingButtonEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -126,7 +118,8 @@ const UAGBMarketingButtonEdit = ( props ) => {
 				label: 'borderStyle',
 				value: borderStyle
 			},
-			props.setAttributes
+			props.setAttributes,
+			props.attributes
 			);
 		}
 	}, [] );
@@ -148,10 +141,12 @@ const UAGBMarketingButtonEdit = ( props ) => {
 	}, [deviceType] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
+					<>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 export default UAGBMarketingButtonEdit;

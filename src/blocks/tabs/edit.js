@@ -2,20 +2,16 @@
  * BLOCK: Tabs Block
  */
 import styling from './styling';
-import React, { useEffect, lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect,    } from 'react';
+
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/tabs/render" */ './render' )
-);
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/tabs/settings" */ './settings' )
-);
+import Settings from './settings';
+import Render from './render';
 
 import { compose } from '@wordpress/compose';
 
@@ -96,7 +92,9 @@ const UAGBTabsEdit = ( props ) => {
 				label: 'borderStyle',
 				value: borderStyle
 			},
-			props.setAttributes );
+			props.setAttributes,
+			props.attributes
+			);
 		}
 	}, [] );
 
@@ -138,10 +136,11 @@ const UAGBTabsEdit = ( props ) => {
 	}, [ deviceType ] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<Settings parentProps={ props } deviceType = {deviceType} />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 

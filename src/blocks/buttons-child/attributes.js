@@ -5,6 +5,9 @@ import { getBorderAttributes } from '@Controls/generateAttributes';
 
 const borderAttributes = getBorderAttributes( 'btn' );
 
+const vPaddingDefault = ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) ? 10 : '';
+const hPaddingDefault = ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) ? 14 : '';
+
 const attributes = {
 	inheritFromTheme: {
 		type: 'boolean',
@@ -68,12 +71,14 @@ const attributes = {
 	},
 	vPadding: {
 		type: 'number',
+		default: vPaddingDefault,
 		UAGCopyPaste: {
 			styleType: 'btn-vertical-padding'
 		}
 	},
 	hPadding: {
 		type: 'number',
+		default: hPaddingDefault,
 		UAGCopyPaste: {
 			styleType: 'btn-horizontal-padding'
 		}

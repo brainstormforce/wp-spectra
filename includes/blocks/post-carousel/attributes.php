@@ -194,6 +194,13 @@ return array_merge(
 		'boxShadowBlurHover'         => '',
 		'boxShadowSpreadHover'       => '',
 		'boxShadowPositionHover'     => 'outset',
+		'columns'                    => 3,
+		'tcolumns'                   => 2,
+		'mcolumns'                   => 1,
+		'dotsMarginTop'              => 20,
+		'dotsMarginTopTablet'        => '',
+		'dotsMarginTopMobile'        => '',
+		'dotsMarginTopUnit'          => 'px',
 	),
 	$btn_border_attribute,
 	$overall_border_attribute
