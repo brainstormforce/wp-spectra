@@ -57,7 +57,7 @@ return array(
 	'titleSpace'                 => 10,
 	'titleSpaceTablet'           => '',
 	'titleSpaceMobile'           => '',
-	'imgVrPadding'               => 0,
+	'imgVrPadding'               => 10,
 	'imgHrPadding'               => 10,
 	'imgTopPadding'              => 0,
 	'imgBottomPadding'           => 0,

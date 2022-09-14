@@ -62,7 +62,6 @@
 					display: block;
 					margin-bottom: 5px;
 					word-break: normal;
-					white-space: nowrap;
 				}
 
 				.uagb-rm__price {
@@ -308,9 +307,6 @@
 @media (max-width: 976px) {
 
 	.wp-block-uagb-restaurant-menu {
-		.wp-block-uagb-restaurant-menu-child.uagb-rest_menu__wrap .uagb-rm-details .uagb-rm__title {
-			white-space: normal;
-		}
 
 		.uagb-rm__image-position-left.uagb-rm-stacked-tablet {
 
