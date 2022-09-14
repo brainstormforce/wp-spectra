@@ -12,6 +12,7 @@ import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 	const {
+		blockName,
 		btnBorderHColor,
 		align,
 		titleColor,
@@ -229,9 +230,6 @@ function styling( props ) {
 		dotsMarginTopMobile,
 		dotsMarginTopUnit,
 	} = props.attributes;
-
-	// blockname
-	const blockName = props.name.replace( 'uagb/', '' );
 
 	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
 	const columnGapFallback = getFallbackNumber( columnGap, 'columnGap', blockName );
