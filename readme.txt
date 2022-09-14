@@ -166,7 +166,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 == Changelog ==
 
-= 2.0.13 - MONDAY, 12th SEPTEMBER 2022 =
+= 2.0.12 - MONDAY, 12th SEPTEMBER 2022 =
 * Fix: Post carousel/Masonry - Overlay Color is not same as front end when image set as background.
 
 = 2.0.12 - MONDAY, 12th SEPTEMBER 2022 =
