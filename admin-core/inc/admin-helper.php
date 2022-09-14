@@ -38,8 +38,6 @@ class Admin_Helper {
 	 */
 	public static function get_common_settings() {
 
-		$general_settings = self::get_settings_page_data();
-
 		$uag_versions   = self::get_rollback_versions_options();
 		$changelog_data = self::get_changelog_feed_data();
 
