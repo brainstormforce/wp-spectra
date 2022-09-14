@@ -4,6 +4,7 @@ import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
 const { enableConditionsForCoreBlocks } = uagb_blocks_info;
 import { useEffect } from 'react';
+import classnames from 'classnames';
 
 const UserConditionOptions = ( props ) => {
 
@@ -127,7 +128,6 @@ const UserResponsiveConditionOptions = ( props ) => {
 					checked={UAGHideDesktop}
 					onChange={() => setAttributes( {
 						UAGHideDesktop: ! attributes.UAGHideDesktop,
-						UAGResponsiveConditions: ! UAGResponsiveConditions
 					} )}
 				/>
 				<ToggleControl
@@ -135,7 +135,6 @@ const UserResponsiveConditionOptions = ( props ) => {
 					checked={UAGHideTab}
                     onChange={() => setAttributes( {
 						UAGHideTab: ! attributes.UAGHideTab,
-						UAGResponsiveConditions: ! UAGResponsiveConditions
 					} )}
 				/>
 				<ToggleControl
@@ -143,7 +142,6 @@ const UserResponsiveConditionOptions = ( props ) => {
 					checked={UAGHideMob}
                     onChange={() => setAttributes( {
 						UAGHideMob: ! attributes.UAGHideMob,
-						UAGResponsiveConditions: ! UAGResponsiveConditions
 					} )}
 				/>
 			</>
@@ -198,16 +196,17 @@ function ApplyExtraClassCore( extraProps, blockType, attributes ) {
     const isCore = blockType.name.match( /core/gi );
 
 	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGResponsiveConditions && isCore ) {
+
 		if ( UAGHideDesktop ) {
-			extraProps.className = extraProps.className + ' uag-hide-desktop';
+			extraProps.className = classnames( extraProps.className, 'uag-hide-desktop' );
 		}
 
 		if ( UAGHideTab ) {
-			extraProps.className = extraProps.className + ' uag-hide-tab';
+			extraProps.className = classnames( extraProps.className, 'uag-hide-tab' );
 		}
 
 		if ( UAGHideMob ) {
-			extraProps.className = extraProps.className + ' uag-hide-mob';
+			extraProps.className = classnames( extraProps.className, 'uag-hide-mob' );
 		}
 
 	}

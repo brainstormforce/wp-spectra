@@ -187,7 +187,6 @@ const ResponsiveConditionOptions = ( props ) => {
 				onChange={ () =>
 					setAttributes( {
 						UAGHideDesktop: ! attributes.UAGHideDesktop,
-						UAGResponsiveConditions: ! UAGResponsiveConditions
 					} )
 				}
 			/>
@@ -197,7 +196,6 @@ const ResponsiveConditionOptions = ( props ) => {
 				onChange={ () =>
 					setAttributes( {
 						UAGHideTab: ! attributes.UAGHideTab,
-						UAGResponsiveConditions: ! UAGResponsiveConditions
 					} )
 				}
 			/>
@@ -207,7 +205,6 @@ const ResponsiveConditionOptions = ( props ) => {
 				onChange={ () =>
 					setAttributes( {
 						UAGHideMob: ! attributes.UAGHideMob,
-						UAGResponsiveConditions: ! UAGResponsiveConditions
 					} )
 				}
 			/>
@@ -231,6 +228,7 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 	const isSpectra = blockType.name.match( /uagb/gi );
 
 	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGResponsiveConditions && isSpectra ) {
+
 		if ( UAGHideDesktop ) {
 			extraProps.className = classnames( extraProps.className, 'uag-hide-desktop' );
 		}
