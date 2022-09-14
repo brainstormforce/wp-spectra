@@ -1454,6 +1454,22 @@
 
 .wp-block-uagb-content-timeline {
 
+	.wp-block-uagb-content-timeline-child {
+
+		.uagb-timeline__events-inner--content {
+
+			.uagb-timeline__heading {
+				margin-top: unset; // remove extra spacing.
+			}
+
+			p.uagb-timeline-desc-content {
+				margin-bottom: unset; // remove extra spacing.
+			}
+
+		}
+
+	}
+
 	.uagb-timeline__content-wrap {
 
 		.uagb-timeline__field {

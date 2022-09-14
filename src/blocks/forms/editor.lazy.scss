@@ -9,6 +9,16 @@
 
 		.uagb-forms-required-wrap {
 			float: right;
+
+			.components-toggle-control {
+
+				.components-base-control__field {
+
+					.components-toggle-control__label {
+						margin-right: 5px;
+					}
+				}
+			}
 		}
 
 		input[type="checkbox"],
