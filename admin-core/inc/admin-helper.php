@@ -54,12 +54,6 @@ class Admin_Helper {
 			'recaptcha_secret_key_v3'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v3', '' ),
 		);
 
-		$setting_data = get_option( 'spectra_settings_data' );
-
-		if ( ! $setting_data ) {
-			update_option( 'spectra_settings_data', $options );
-		}
-
 		return $options;
 	}
 
