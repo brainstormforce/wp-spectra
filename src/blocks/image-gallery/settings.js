@@ -1280,7 +1280,7 @@ const Settings = ( props ) => {
 		<UAGAdvancedPanelBody title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<SpacingControl
 				{ ...props }
-				label={ __( 'Margin', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
 				valueTop={ {
 					value: feedMarginTop,
 					label: 'feedMarginTop',

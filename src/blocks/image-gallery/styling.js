@@ -197,16 +197,7 @@ function styling( props ) {
 
 		// Feed Selectors
 
-		' .spectra-image-gallery': {
-			'margin': generateSpacing(
-				feedMarginUnit,
-				feedMarginTop,
-				feedMarginRight,
-				feedMarginBottom,
-				feedMarginLeft
-			),
-		},
-		' .spectra-image-gallery__layout--carousel .uagb-slick-carousel': {
+		'.wp-block-uagb-image-gallery': {
 			'padding': generateSpacing(
 				feedMarginUnit,
 				feedMarginTop,
@@ -235,9 +226,6 @@ function styling( props ) {
 		},		
 		' .spectra-image-gallery__control-arrows--carousel.slick-next': {
 			'right': generateCSSUnit( paginateArrowDistanceFallback, paginateArrowDistanceUnit ),
-		},
-		' .spectra-image-gallery__layout--carousel ul.slick-dots': {
-			'margin-bottom': generateCSSUnit( feedMarginBottom, feedMarginUnit ),
 		},
 		' .spectra-image-gallery__layout--carousel ul.slick-dots li button:before': {
 			'color': paginateColor,
@@ -509,16 +497,7 @@ function styling( props ) {
 	};
 
 	const tabletSelectors = {
-		' .spectra-image-gallery': {
-			'margin': generateSpacing(
-				feedMarginUnitTab,
-				feedMarginTopTab,
-				feedMarginRightTab,
-				feedMarginBottomTab,
-				feedMarginLeftTab
-			),
-		},
-		' .spectra-image-gallery__layout--carousel .uagb-slick-carousel': {
+		'.wp-block-uagb-image-gallery': {
 			'padding': generateSpacing(
 				feedMarginUnitTab,
 				feedMarginTopTab,
@@ -526,9 +505,6 @@ function styling( props ) {
 				feedMarginBottomTab,
 				feedMarginLeftTab
 			),
-		},
-		' .spectra-image-gallery__layout--carousel ul.slick-dots': {
-			'margin-bottom': generateCSSUnit( feedMarginBottomTab, feedMarginUnitTab ),
 		},
 		' .spectra-image-gallery__control-arrows--carousel': {
 			...arrowBorderCSSTablet,
@@ -635,16 +611,7 @@ function styling( props ) {
 	};
 
 	const mobileSelectors = {
-		' .spectra-image-gallery': {
-			'margin': generateSpacing(
-				feedMarginUnitMob,
-				feedMarginTopMob,
-				feedMarginRightMob,
-				feedMarginBottomMob,
-				feedMarginLeftMob
-			),
-		},
-		' .spectra-image-gallery__layout--carousel .uagb-slick-carousel': {
+		'.wp-block-uagb-image-gallery': {
 			'padding': generateSpacing(
 				feedMarginUnitMob,
 				feedMarginTopMob,
@@ -652,9 +619,6 @@ function styling( props ) {
 				feedMarginBottomMob,
 				feedMarginLeftMob
 			),
-		},
-		' .spectra-image-gallery__layout--carousel ul.slick-dots': {
-			'margin-bottom': generateCSSUnit( feedMarginBottomMob, feedMarginUnitMob ),
 		},
 		' .spectra-image-gallery__control-arrows--carousel': {
 			...arrowBorderCSSMobile,
