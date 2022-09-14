@@ -21,7 +21,7 @@ const Render = ( props ) => {
 
 	const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace } = props;
 
-	const { 
+	const {
 		block_id,
 		name,
 		description,
@@ -105,15 +105,23 @@ const Render = ( props ) => {
 				onRemove={ () => onReplace( [] ) }
 			/>
 			{'text' === urlType && (
-				<a
-					href={url}
-					target={target}
-					className="uagb-step-link"
-				>
-					<span className="uagb-step-link-text">
-						{urlText}
-					</span>
-				</a>
+				<>
+					{ '' !== url?
+						<a
+							href={url}
+							target={target}
+							className="uagb-step-link"
+						>
+							<span className="uagb-step-link-text">
+							{urlText}
+							</span>
+						</a>
+						:
+						<span className="uagb-step-link-text">
+							{urlText}
+						</span>
+					}
+				</>
 			)}
 		</div>
 	);
@@ -125,14 +133,16 @@ const Render = ( props ) => {
 				`uagb-block-${ block_id }`
 			) }
 		>
-			{'all' === urlType && (
+			{ ( 'all' === urlType || 'none' === urlType ) && (
 					<>
-						<a // eslint-disable-line jsx-a11y/anchor-has-content, jsx-a11y/anchor-is-valid 
+						{ ( '' !== url && 'all' === urlType ) &&
+							<a // eslint-disable-line jsx-a11y/anchor-has-content, jsx-a11y/anchor-is-valid
 							className="uagb-step-link"
 							aria-label={'Step Link'}
 							rel="noopener noreferrer"
 							target={target}
-						></a>
+							></a>
+						}
 						<div className={`uagb-step-image-content-wrap uag-image-position-${imgPosition}`}>
 							{ imageUrl && imageMarkup }
 
