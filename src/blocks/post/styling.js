@@ -12,7 +12,6 @@ import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 	const {
-		blockName,
 		btnBorderHColor,
 		align,
 		titleColor,
@@ -231,6 +230,9 @@ function styling( props ) {
 		dotsMarginTopUnit,
 	} = props.attributes;
 
+	// blockname
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
 	const columnGapFallback = getFallbackNumber( columnGap, 'columnGap', blockName );
 	const rowGapFallback = getFallbackNumber( rowGap, 'rowGap', blockName );
@@ -263,9 +265,10 @@ function styling( props ) {
 	const paginationMasonryBorderCSSMobile = generateBorderCSS( props.attributes, 'paginationMasonry', 'mobile' );
 
 	// post carousal margin top for dots
-	const dotsMarginTopFallback = getFallbackNumber( dotsMarginTop, 'dotsMarginTop', blockName );
-	const dotsMarginTopTabletFallback = getFallbackNumber( dotsMarginTopTablet, 'dotsMarginTopTablet', blockName );
-	const dotsMarginTopMobileFallback = getFallbackNumber( dotsMarginTopMobile, 'dotsMarginTopMobile', blockName );
+
+	const dotsMarginTopFallback = getFallbackNumber( dotsMarginTop, 'dotsMarginTop', 'post-carousel' );
+	const dotsMarginTopTabletFallback = getFallbackNumber( dotsMarginTopTablet, 'dotsMarginTopTablet', 'post-carousel' );
+	const dotsMarginTopMobileFallback = getFallbackNumber( dotsMarginTopMobile, 'dotsMarginTopMobile', 'post-carousel' );
 
 	let mobileSelectors = {};
 	let tabletSelectors = {};

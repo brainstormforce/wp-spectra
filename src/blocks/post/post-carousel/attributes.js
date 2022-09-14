@@ -1203,12 +1203,14 @@ const attributes = {
 	},
 	dotsMarginTopTablet                  : {
 		type    : 'number',
+		default : 20,
 		UAGCopyPaste: {
 			styleType: 'dots-margin-top'
 		},
 	},
 	dotsMarginTopMobile                  : {
 		type    : 'number',
+		default : 20,
 		UAGCopyPaste: {
 			styleType: 'dots-margin-top'
 		},
