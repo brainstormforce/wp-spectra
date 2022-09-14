@@ -193,7 +193,7 @@ function ApplyExtraClassCore( extraProps, blockType, attributes ) {
         UAGResponsiveConditions
 	} = attributes;
 
-    const isCore = blockType.name.match( /core/gi );
+    const isCore = blockType.name.includes( 'core/' );
 
 	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGResponsiveConditions && isCore ) {
 

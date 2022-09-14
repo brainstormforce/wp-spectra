@@ -225,7 +225,7 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		UAGResponsiveConditions
 	} = attributes;
 
-	const isSpectra = blockType.name.match( /uagb/gi );
+	const isSpectra = blockType.name.includes( 'uagb/' );
 
 	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGResponsiveConditions && isSpectra ) {
 
