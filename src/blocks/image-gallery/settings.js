@@ -568,7 +568,7 @@ const Settings = ( props ) => {
 
 	const initialSettings = () => (
 		<p style={ { padding: '16px' } }>
-			{ __( 'Create a gallery to enable settings.', 'ultimate-addons-for-gutenberg' ) }
+			{ __( 'Upload images to enable settings', 'ultimate-addons-for-gutenberg' ) }
 		</p>
 	);
 
@@ -939,7 +939,7 @@ const Settings = ( props ) => {
 					{ feedPagination && (
 						<>
 							<Range
-								label={ __( `Page Limit`, 'ultimate-addons-for-gutenberg' ) }
+								label={ __( 'Images Per Page', 'ultimate-addons-for-gutenberg' ) }
 								setAttributes={ setAttributes }
 								value={ paginateLimit }
 								data={ {

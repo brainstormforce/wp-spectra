@@ -52,7 +52,7 @@ return array_merge(
 		// Gallery Settings.
 		'mediaGallery'                       => array(),
 		'mediaIDs'                           => array(),
-		'feedLayout'                         => 'tiled',
+		'feedLayout'                         => 'grid',
 		'imageDisplayCaption'                => true,
 		// Caption Settings.
 		'imageCaptionLength'                 => 30,
@@ -81,9 +81,9 @@ return array_merge(
 		'captionGap'                         => 4,
 		'captionGapUnit'                     => 'px',
 		// Layout Settings.
-		'columnsDesk'                        => 6,
-		'columnsTab'                         => 4,
-		'columnsMob'                         => 3,
+		'columnsDesk'                        => 3,
+		'columnsTab'                         => 3,
+		'columnsMob'                         => 2,
 		'gridImageGap'                       => 8,
 		'gridImageGapTab'                    => '',
 		'gridImageGapMob'                    => '',

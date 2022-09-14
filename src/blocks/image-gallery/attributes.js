@@ -67,7 +67,7 @@ const attributes = {
 	},
 	feedLayout: {
 		type: 'string',
-		default: 'tiled',
+		default: 'grid',
 		UAGCopyPaste: {
 			styleType: 'gallery-layout'
 		},
@@ -256,15 +256,15 @@ const attributes = {
 
 	columnsDesk: {
 		type: 'number',
-		default: 6,
+		default: 3,
 	},
 	columnsTab: {
 		type: 'number',
-		default: 4,
+		default: 3,
 	},
 	columnsMob: {
 		type: 'number',
-		default: 3,
+		default: 2,
 	},
 	gridImageGap: {
 		type: 'number',

@@ -150,7 +150,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 							),
 							'feedLayout'          => array(
 								'type'    => 'string',
-								'default' => 'tiled',
+								'default' => 'grid',
 							),
 							'imageDisplayCaption' => array(
 								'type'    => 'boolean',
@@ -264,15 +264,15 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 						array(
 							'columnsDesk'         => array(
 								'type'    => 'number',
-								'default' => 6,
+								'default' => 3,
 							),
 							'columnsTab'          => array(
 								'type'    => 'number',
-								'default' => 4,
+								'default' => 3,
 							),
 							'columnsMob'          => array(
 								'type'    => 'number',
-								'default' => 3,
+								'default' => 2,
 							),
 							'gridImageGap'        => array(
 								'type'    => 'number',
