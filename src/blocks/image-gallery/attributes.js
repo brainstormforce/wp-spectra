@@ -268,21 +268,19 @@ const attributes = {
 	},
 	gridImageGap: {
 		type: 'number',
-		default: 2,
+		default: 8,
 		UAGCopyPaste: {
 			styleType: 'image-left-margin'
 		},
 	},
 	gridImageGapTab: {
 		type: 'number',
-		default: 2,
 		UAGCopyPaste: {
 			styleType: 'image-left-margin-tablet'
 		},
 	},
 	gridImageGapMob: {
 		type: 'number',
-		default: 2,
 		UAGCopyPaste: {
 			styleType: 'image-left-margin-mobile'
 		},
@@ -310,84 +308,72 @@ const attributes = {
 	},
 	feedMarginTop: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'image-top-padding'
 		},
 	},
 	feedMarginRight: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'image-right-padding'
 		},
 	},
 	feedMarginBottom: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'image-bottom-padding'
 		},
 	},
 	feedMarginLeft: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'image-left-padding'
 		},
 	},
 	feedMarginTopTab: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'image-top-padding-tablet'
 		},
 	},
 	feedMarginRightTab: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'image-right-padding-tablet'
 		},
 	},
 	feedMarginBottomTab: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'image-bottom-padding-tablet'
 		},
 	},
 	feedMarginLeftTab: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'image-left-padding-tablet'
 		},
 	},
 	feedMarginTopMob: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'image-top-padding-mobile'
 		},
 	},
 	feedMarginRightMob: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'image-right-padding-mobile'
 		},
 	},
 	feedMarginBottomMob: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'image-bottom-padding-mobile'
 		},
 	},
 	feedMarginLeftMob: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'image-left-padding-mobile'
 		},

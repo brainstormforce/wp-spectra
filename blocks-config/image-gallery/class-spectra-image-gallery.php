@@ -276,15 +276,13 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 							),
 							'gridImageGap'        => array(
 								'type'    => 'number',
-								'default' => 2,
+								'default' => 8,
 							),
 							'gridImageGapTab'     => array(
 								'type'    => 'number',
-								'default' => 2,
 							),
 							'gridImageGapMob'     => array(
 								'type'    => 'number',
-								'default' => 2,
 							),
 							'gridImageGapUnit'    => array(
 								'type'    => 'string',
@@ -300,51 +298,39 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 							),
 							'feedMarginTop'       => array(
 								'type'    => 'number',
-								'default' => 0,
 							),
 							'feedMarginRight'     => array(
 								'type'    => 'number',
-								'default' => 0,
 							),
 							'feedMarginBottom'    => array(
 								'type'    => 'number',
-								'default' => 0,
 							),
 							'feedMarginLeft'      => array(
 								'type'    => 'number',
-								'default' => 0,
 							),
 							'feedMarginTopTab'    => array(
 								'type'    => 'number',
-								'default' => 0,
 							),
 							'feedMarginRightTab'  => array(
 								'type'    => 'number',
-								'default' => 0,
 							),
 							'feedMarginBottomTab' => array(
 								'type'    => 'number',
-								'default' => 0,
 							),
 							'feedMarginLeftTab'   => array(
 								'type'    => 'number',
-								'default' => 0,
 							),
 							'feedMarginTopMob'    => array(
 								'type'    => 'number',
-								'default' => 0,
 							),
 							'feedMarginRightMob'  => array(
 								'type'    => 'number',
-								'default' => 0,
 							),
 							'feedMarginBottomMob' => array(
 								'type'    => 'number',
-								'default' => 0,
 							),
 							'feedMarginLeftMob'   => array(
 								'type'    => 'number',
-								'default' => 0,
 							),
 							'feedMarginUnit'      => array(
 								'type'    => 'string',
