@@ -83,7 +83,7 @@ const attributes = {
 	},
 	imgVrPadding: {
 		type: 'number',
-		default: 0,
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'image-vertical-padding'
 		},

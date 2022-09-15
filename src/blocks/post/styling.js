@@ -223,6 +223,12 @@ function styling( props ) {
 		columns,
 		tcolumns,
 		mcolumns,
+
+		// row spacing controls between content and dots
+		dotsMarginTop,
+		dotsMarginTopTablet,
+		dotsMarginTopMobile,
+		dotsMarginTopUnit,
 	} = props.attributes;
 
 	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
@@ -256,6 +262,12 @@ function styling( props ) {
 	const paginationMasonryBorderCSSTablet = generateBorderCSS( props.attributes, 'paginationMasonry', 'tablet' );
 	const paginationMasonryBorderCSSMobile = generateBorderCSS( props.attributes, 'paginationMasonry', 'mobile' );
 
+	// post carousal margin top for dots
+
+	const dotsMarginTopFallback = getFallbackNumber( dotsMarginTop, 'dotsMarginTop', 'post-carousel' );
+	const dotsMarginTopTabletFallback = getFallbackNumber( dotsMarginTopTablet, 'dotsMarginTopTablet', 'post-carousel' );
+	const dotsMarginTopMobileFallback = getFallbackNumber( dotsMarginTopMobile, 'dotsMarginTopMobile', 'post-carousel' );
+
 	let mobileSelectors = {};
 	let tabletSelectors = {};
 
@@ -272,7 +284,7 @@ function styling( props ) {
 	}
 	const selectors = {
 		'.wp-block-uagb-post-grid' : {
-			'grid-template-columns': 'repeat(' + columns + ' , minmax(0, 1fr))', 
+			'grid-template-columns': 'repeat(' + columns + ' , minmax(0, 1fr))',
 		},
 		'.wp-block-uagb-post-grid.uagb-post__items': {
 			'column-gap': generateCSSUnit( columnGapFallback , columnGapUnit ),
@@ -708,7 +720,7 @@ function styling( props ) {
 
 	mobileSelectors = {
 		'.wp-block-uagb-post-grid' : {
-			'grid-template-columns': 'repeat(' + mcolumns + ' , minmax(0, 1fr))', 
+			'grid-template-columns': 'repeat(' + mcolumns + ' , minmax(0, 1fr))',
 		},
 		'.uagb-post__arrow-outside.uagb-post-grid .slick-prev': {
 			'left': generateCSSUnit( arrowDistanceMobile, 'px' ),
@@ -873,7 +885,7 @@ function styling( props ) {
 	}
 	tabletSelectors = {
 		'.wp-block-uagb-post-grid' : {
-			'grid-template-columns': 'repeat(' + tcolumns + ' , minmax(0, 1fr))', 
+			'grid-template-columns': 'repeat(' + tcolumns + ' , minmax(0, 1fr))',
 		},
 		'.uagb-post__arrow-outside.uagb-post-grid .slick-prev': {
 			'left': generateCSSUnit( arrowDistanceTablet, 'px' ),
@@ -1164,6 +1176,17 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( - paddingLeftTablet, tabletPaddingUnit ),
 			'margin-right': generateCSSUnit( - paddingRightTablet, tabletPaddingUnit ),
 		}
+	}
+
+	// post carousal margin top for dots
+	selectors[ ' .slick-dots'] = {
+		'margin-top' : generateCSSUnit( dotsMarginTopFallback , dotsMarginTopUnit ) + '!important'
+	}
+	tabletSelectors[ ' .slick-dots'] = {
+		'margin-top' : generateCSSUnit( dotsMarginTopTabletFallback , dotsMarginTopUnit ) + '!important'
+	}
+	mobileSelectors[ ' .slick-dots'] = {
+		'margin-top' : generateCSSUnit( dotsMarginTopMobileFallback , dotsMarginTopUnit ) + '!important'
 	}
 
 	let stylingCss = '';
