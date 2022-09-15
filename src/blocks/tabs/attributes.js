@@ -74,15 +74,18 @@ const attributes = {
 	},
 	borderStyle: {
 		type: 'string',
+		default: 'solid'
 	},
 	borderWidth: {
 		type: 'number',
+		default: 1,
 	},
 	borderRadius: {
 		type: 'number',
 	},
 	borderColor: {
 		type: 'string',
+		default: '#e0e0e0',
 	},
 	borderHoverColor: {
 		type: 'string',
@@ -712,31 +715,6 @@ const attributes = {
 			styleType: 'main-title-letter-spacing-type'
 		}
 	},
-	tabBorderStyle: {
-		type: 'string',
-		default: 'solid',
-	},
-	tabBorderTopWidth: {
-		type: 'number',
-		default: 1,
-	},
-	tabBorderRightWidth: {
-		type: 'number',
-		default: 1,
-	},
-	tabBorderBottomWidth: {
-		type: 'number',
-		default: 1,
-	},
-	tabBorderLeftWidth: {
-		type: 'number',
-		default: 1,
-	},
-	tabBorderColor: {
-		type: 'string',
-		default: '#e0e0e0',
-	}
-
 
 };
 
