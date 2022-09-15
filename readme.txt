@@ -191,6 +191,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Responsive condition - Setting does not save when hide on multiple devices is selected.
 * Fix: How-To - Alignment for time and cost not working in editor as well as on frontend.
 * Fix: Post Carousel and Masonry - Background Image overlay color is not same as frontend.
+* Fix: Icon List - Text Alignment not working properly on front-end.
 
 = 2.0.11 - THURSDAY, 8th SEPTEMBER 2022 =
 * Improvement: Media Picker - Added Optional Label Display and Improved UI.
