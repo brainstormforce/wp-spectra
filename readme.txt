@@ -188,6 +188,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Responsive Border - Border width occasionally misbehaves when set to zero.
 * Fix: Price List - Columns settings are not working in mobile editor.
 * Fix: Container - Shape divider background color issue on editor.
+* Fix: Responsive condition - Setting does not save when hide on multiple devices is selected.
 * Fix: How-To - Alignment for time and cost not working in editor as well as on frontend.
 * Fix: Post Carousel and Masonry - Background Image overlay color is not same as frontend.
 
