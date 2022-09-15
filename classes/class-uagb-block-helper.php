@@ -1709,7 +1709,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $value  Alignment Matrix value.
 		 * @param int    $pos    Human readable position.
 		 * @param string $format Response format.
-		 * @since 2.0.0
+		 * @since 2.1.0
 		 */
 		public static function get_matrix_alignment( $value, $pos, $format = '' ) {
 			$alignment_property = explode( ' ', esc_attr( $value ) )[ $pos - 1 ];
@@ -1746,14 +1746,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param int    $topRight  Top Right Value.
 		 * @param int    $bottomRight  Bottom Right Value.
 		 * @param int    $bottomLeft  Bottom Left Value.
-		 * @since 2.0.0
+		 * @since 2.1.0
 		 */
-		public static function generate_border_radius( $unit, $topLeft, $topRight = NAN, $bottomRight = NAN, $bottomLeft = NAN ) {
-			$borderRadius = ! is_nan( $topRight )
+		public static function generate_border_radius( $unit, $topLeft, $topRight = null, $bottomRight = null, $bottomLeft = null ) {
+			$borderRadius = ! is_null( $topRight )
 				? (
-					! is_nan( $bottomRight )
+					! is_null( $bottomRight )
 					? (
-						! is_nan( $bottomLeft )
+						! is_null( $bottomLeft )
 						? UAGB_Helper::get_css_value( $topLeft, $unit ) . ' ' . UAGB_Helper::get_css_value( $topRight, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottomRight, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottomLeft, $unit )
 						: UAGB_Helper::get_css_value( $topLeft, $unit ) . ' ' . UAGB_Helper::get_css_value( $topRight, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottomRight, $unit )
 					)
@@ -1779,14 +1779,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param int    $right  Right Value.
 		 * @param int    $bottom Bottom Value.
 		 * @param int    $left   Left Value.
-		 * @since 2.0.0
+		 * @since 2.1.0
 		 */
-		public static function generate_spacing( $unit, $top, $right = NAN, $bottom = NAN, $left = NAN ) {
-			$spacing = ! is_nan( $right )
+		public static function generate_spacing( $unit, $top, $right = null, $bottom = null, $left = null ) {
+			$spacing = ! is_null( $right )
 				? (
-					! is_nan( $bottom )
+					! is_null( $bottom )
 					? (
-						! is_nan( $left )
+						! is_null( $left )
 						? UAGB_Helper::get_css_value( $top, $unit ) . ' ' . UAGB_Helper::get_css_value( $right, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottom, $unit ) . ' ' . UAGB_Helper::get_css_value( $left, $unit )
 						: UAGB_Helper::get_css_value( $top, $unit ) . ' ' . UAGB_Helper::get_css_value( $right, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottom, $unit )
 					)
