@@ -55,7 +55,6 @@ return array_merge(
 		'feedLayout'                         => 'grid',
 		'imageDisplayCaption'                => true,
 		// Caption Settings.
-		'imageCaptionLength'                 => 30,
 		'captionVisibility'                  => 'hover',
 		'captionDisplayType'                 => 'overlay',
 		'imageCaptionAlignment'              => 'center center',

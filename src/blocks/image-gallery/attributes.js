@@ -82,10 +82,6 @@ const attributes = {
 
 	// Caption Settings
 	
-	imageCaptionLength: {
-		type: 'number',
-		default: 30,
-	},
 	captionVisibility: {
 		type: 'string',
 		default: 'hover',

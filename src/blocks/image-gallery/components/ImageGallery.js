@@ -44,7 +44,6 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		gridImageGapUnitTab,
 		gridImageGapUnitMob,
 
-		imageCaptionLength,
 		captionDisplayType,
 		imageCaptionAlignment,
 		imageDefaultCaption,
@@ -71,7 +70,6 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	} = attributes;
 
 	// Range Fallback.
-	const imageCaptionLengthFallback = getFallbackNumber( imageCaptionLength, 'imageCaptionLength', blockName );
 	const carouselStartAtFallback = getFallbackNumber( carouselStartAt, 'carouselStartAt', blockName );
 	const carouselTransitionSpeedFallback = getFallbackNumber( carouselTransitionSpeed, 'carouselTransitionSpeed', blockName );
 	const carouselAutoplaySpeedFallback = getFallbackNumber( carouselAutoplaySpeed, 'carouselAutoplaySpeed', blockName );
@@ -563,78 +561,37 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		</>
 	);
 
-	const renderCaption = ( mediaObject ) => {
-		// Utilizing Constant instead of Attribute for always active state.
-		const imageCaptionOnlyWords = true;
-		let needsEllipsis = mediaObject.caption ? true : false;
-		let limitedCaption = mediaObject.caption ? (
-			mediaObject.caption
+	const renderCaption = ( mediaObject ) => (
+		mediaObject.caption ? (
+			<RichText
+				tagName="div"
+				placeholder={ imageDefaultCaption }
+				value={ mediaObject.caption }
+				onChange={ ( value ) => ( mediaObject.caption = value ) }
+				className={ classNames(
+					'spectra-image-gallery__media-thumbnail-caption',
+					`spectra-image-gallery__media-thumbnail-caption--${ captionDisplayType }`
+				) }
+				multiline={ false }
+			/>
 		) : (
 			mediaObject.url ? (
-				imageDefaultCaption
-			): (
-				'Unable to load image'
+				<RichText
+					tagName="div"
+					placeholder={ __( 'No Caption', 'ultimate-addons-for-gutenberg' ) }
+					value={ imageDefaultCaption }
+					onChange={ ( value ) => ( setAttributes( { imageDefaultCaption: value } ) ) }
+					className={ classNames(
+						'spectra-image-gallery__media-thumbnail-caption',
+						`spectra-image-gallery__media-thumbnail-caption--${ captionDisplayType }`
+					) }
+					multiline={ false }
+				/>
+			) : (
+				__( 'Unable to load image', 'ultimate-addons-for-gutenberg' )
 			)
-		);
-		if ( needsEllipsis && mediaObject.caption.length <= imageCaptionLengthFallback ) {
-			// The caption is already below the limiter.
-			needsEllipsis = false;
-		} else if ( needsEllipsis ) {
-			limitedCaption = limitedCaption.substr( 0, imageCaptionLengthFallback );
-			if ( imageCaptionOnlyWords ) {
-				if ( -1 === limitedCaption.lastIndexOf( ' ' ) ) {
-					// There's only 1 word.
-					if ( -1 === mediaObject.caption.lastIndexOf( ' ' ) ) {
-						// There's only 1 word in the original caption.
-						if ( limitedCaption.length === mediaObject.caption.split( ' ' )[ 0 ].length ) {
-							// The limited caption is the same as the original.
-							needsEllipsis = false;
-						} else {
-							// The limited caption differs from the original.
-							limitedCaption = '';
-						}
-					} else if ( limitedCaption.length !== mediaObject.caption.split( ' ' )[ 0 ].length ) {
-						// There's more than 1 word in the original caption, and...
-						// The limited caption is smaller than 1 word in the original.
-						limitedCaption = '';
-					}
-				} else if ( limitedCaption.length === mediaObject.caption.length ) {
-					// There is a space, and...
-					// The limited caption is the same as the original.
-					needsEllipsis = false;
-				} else if ( ' ' !== mediaObject.caption.charAt( limitedCaption.length ) ) {
-					// The limited caption differs from the original, and...
-					// The end of the limited text is not a word.
-					limitedCaption = limitedCaption.substr(
-						0,
-						Math.min(
-							limitedCaption.length,
-							limitedCaption.lastIndexOf( ' ' )
-						)
-					);
-				}
-			}
-			// Remove Trailing Characters
-			switch ( limitedCaption.charAt( limitedCaption.length - 1 ) ) {
-				case ',':
-				case '.':
-				case ' ':
-				case "'":
-					limitedCaption = limitedCaption.slice(
-						0,
-						limitedCaption.length - 1
-					);
-			}
-		}
-		return (
-			<div className={ classNames(
-				'spectra-image-gallery__media-thumbnail-caption',
-				`spectra-image-gallery__media-thumbnail-caption--${ captionDisplayType }`
-			) } >
-				{ `${ limitedCaption }${ needsEllipsis ? ' …' : '' }` }
-			</div>
-		);
-	};
+		)
+	);
 
 	const renderEmpty = () => (
 		<div className="spectra-image-gallery-init-wrapper">

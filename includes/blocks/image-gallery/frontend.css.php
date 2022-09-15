@@ -39,7 +39,7 @@ $selectors = array(
 
 	// Feed Selectors.
 
-	'.wp-block-uagb-image-gallery' => array(
+	'.wp-block-uagb-image-gallery'                      => array(
 		'padding' => UAGB_Block_Helper::generate_spacing(
 			$attr['feedMarginUnit'],
 			$attr['feedMarginTop'],
@@ -269,7 +269,7 @@ $selectors = array(
 );
 
 $t_selectors = array(
-	'.wp-block-uagb-image-gallery' => array(
+	'.wp-block-uagb-image-gallery'                      => array(
 		'padding' => UAGB_Block_Helper::generate_spacing(
 			$attr['feedMarginUnitTab'],
 			$attr['feedMarginTopTab'],
@@ -375,7 +375,7 @@ $t_selectors = array(
 );
 
 $m_selectors = array(
-	'.wp-block-uagb-image-gallery' => array(
+	'.wp-block-uagb-image-gallery'                      => array(
 		'padding' => UAGB_Block_Helper::generate_spacing(
 			$attr['feedMarginUnitMob'],
 			$attr['feedMarginTopMob'],

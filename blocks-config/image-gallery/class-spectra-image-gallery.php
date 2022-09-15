@@ -159,10 +159,6 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 						),
 						// Caption Settings.
 						array(
-							'imageCaptionLength'      => array(
-								'type'    => 'number',
-								'default' => 30,
-							),
 							'captionVisibility'       => array(
 								'type'    => 'string',
 								'default' => 'hover',
@@ -279,10 +275,10 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 								'default' => 8,
 							),
 							'gridImageGapTab'     => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'gridImageGapMob'     => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'gridImageGapUnit'    => array(
 								'type'    => 'string',
@@ -297,40 +293,40 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 								'default' => 'px',
 							),
 							'feedMarginTop'       => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'feedMarginRight'     => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'feedMarginBottom'    => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'feedMarginLeft'      => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'feedMarginTopTab'    => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'feedMarginRightTab'  => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'feedMarginBottomTab' => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'feedMarginLeftTab'   => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'feedMarginTopMob'    => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'feedMarginRightMob'  => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'feedMarginBottomMob' => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'feedMarginLeftMob'   => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'feedMarginUnit'      => array(
 								'type'    => 'string',
@@ -1036,63 +1032,18 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 		 * @since 2.1
 		 */
 		private function render_media_caption( $mediaArray, $atts ) {
-			$needsEllipsis  = isset( $mediaArray['caption'] ) ? true : false;
-			$capSpacePos    = isset( $mediaArray['caption'] ) ? strpos( $mediaArray['caption'], ' ' ) : false;
-			$limitedCaption = ( isset( $mediaArray['caption'] ) && $mediaArray['caption'] )
-				? $mediaArray['caption']
-				: (
-					$mediaArray['url']
-					? $atts['imageDefaultCaption']
-					: 'Unable to load image'
-				);
-			if ( $needsEllipsis && strlen( $mediaArray['caption'] ) <= $atts['imageCaptionLength'] ) {
-				// The caption is already below the limiter.
-				$needsEllipsis = false;
-			} elseif ( $needsEllipsis ) {
-				$limitedCaption  = substr( $limitedCaption, 0, $atts['imageCaptionLength'] );
-				$limitedSpacePos = strpos( $limitedCaption, ' ' );
-				$limitedEnd      = substr( $limitedCaption, -1 );
-				if ( ! $limitedSpacePos ) {
-					// There's only 1 word.
-					if ( ! $capSpacePos ) {
-						// There's only 1 word in the original caption.
-						if ( strlen( $limitedCaption ) === strlen( explode( ' ', $mediaArray['caption'] )[0] ) ) {
-							// The limited caption is the same as the original.
-							$needsEllipsis = false;
-						} else {
-							// The limited caption differs from the original.
-							$limitedCaption = '';
-						}
-					} else {
-						// There's more than 1 word in the original caption.
-						if ( strlen( $limitedCaption ) !== strlen( explode( ' ', $mediaArray['caption'] )[0] ) ) {
-							// The limited caption is smaller than 1 word in the original.
-							$limitedCaption = '';
-						}
-					}
-				} else {
-					// There is a space.
-					if ( strlen( $limitedCaption ) === strlen( $mediaArray['caption'] ) ) {
-						// The limited caption is the same as the original.
-						$needsEllipsis = false;
-					} else {
-						// The limited caption differs from the original.
-						if ( substr( $limitedCaption, -1 ) !== ' ' ) {
-							$limitedCaption = substr( $limitedCaption, 0, min( strlen( $limitedCaption ), strrpos( $limitedCaption, ' ' ) ) );
-						}
-					}
-				}
-				switch ( substr( $limitedCaption, -1 ) ) {
-					case ',':
-					case '.':
-					case ' ':
-					case '\'':
-						$limitedCaption = substr( $limitedCaption, 0, -1 );
-				}
-			}
+			$limitedCaption = ( isset( $mediaArray['caption'] ) && $mediaArray['caption'] ) ? (
+				$mediaArray['caption']
+			) : (
+				$mediaArray['url'] ? (
+					$atts['imageDefaultCaption']
+				) : (
+					__( 'Unable to load image', 'ultimate-addons-for-gutenberg' )
+				)
+			);
 			?>
 				<div class="spectra-image-gallery__media-thumbnail-caption spectra-image-gallery__media-thumbnail-caption--<?php echo esc_html( $atts['captionDisplayType'] ); ?>">
-					<?php echo esc_html( $limitedCaption ); ?><?php echo $needsEllipsis ? ' &#8230;' : ''; ?>
+					<?php echo esc_html( $limitedCaption ); ?>
 				</div>
 			<?php
 		}

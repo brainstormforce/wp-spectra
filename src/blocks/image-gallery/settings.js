@@ -54,7 +54,6 @@ const Settings = ( props ) => {
 		gridImageGapUnitTab,
 		gridImageGapUnitMob,
 
-		imageCaptionLength,
 		captionVisibility,
 		captionDisplayType,
 		imageCaptionAlignment,
@@ -726,18 +725,6 @@ const Settings = ( props ) => {
 						) }
 						value={ imageDefaultCaption }
 						onChange={ ( value ) => setAttributes( { imageDefaultCaption: value } ) }
-					/>
-					<Range
-						label={ __( 'Max Caption Length (Characters)', 'ultimate-addons-for-gutenberg' ) }
-						setAttributes={ setAttributes }
-						value={ imageCaptionLength }
-						data={ {
-							value: imageCaptionLength,
-							label: 'imageCaptionLength',
-						} }
-						min={ 1 }
-						max={ 100 }
-						displayUnit={ false }
 					/>
 				</>
 			) }
