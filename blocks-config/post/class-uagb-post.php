@@ -260,9 +260,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							),
 							'dotsMarginTopTablet'  => array(
 								'type'    => 'number',
+								'default' => '20',
 							),
 							'dotsMarginTopMobile'   => array(
 								'type'    => 'number',
+								'default' => '20',
 							),
 							'dotsMarginTopUnit'     => array(
 								'type'    => 'string',
