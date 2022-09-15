@@ -86,7 +86,7 @@ class UAGB_Init_Blocks {
 	/**
 	 * Calculate Spectra blocks count.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.12
 	 * @return void
 	 */
 	public function blocks_count_logic() {

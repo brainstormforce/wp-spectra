@@ -205,7 +205,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		/**
 		 * Pass Spectra specific stats to BSF analytics.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.12
 		 * @param array $default_stats Default stats array.
 		 * @return array $default_stats Default stats with Spectra specific stats array.
 		 */
