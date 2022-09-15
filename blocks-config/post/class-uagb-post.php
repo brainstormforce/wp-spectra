@@ -258,13 +258,13 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'number',
 								'default' => '20',
 							),
-							'dotsMarginTopTablet'  => array(
-								'type'    => 'number',
+							'dotsMarginTopTablet' => array(
+								'type' => 'number',
 							),
-							'dotsMarginTopMobile'   => array(
-								'type'    => 'number',
+							'dotsMarginTopMobile' => array(
+								'type' => 'number',
 							),
-							'dotsMarginTopUnit'     => array(
+							'dotsMarginTopUnit'   => array(
 								'type'    => 'string',
 								'default' => 'px',
 							),
