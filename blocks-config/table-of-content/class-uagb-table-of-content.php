@@ -148,21 +148,20 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 			$xpath = new DOMXPath( $doc );
 
-			
 			// Delete div.uagb-toc-hide-heading from doc.
-			foreach($xpath->query('//div[contains(attribute::class, "uagb-toc-hide-heading")]') as $e ) {
+			foreach ( $xpath->query( '//div[contains(attribute::class, "uagb-toc-hide-heading")]' ) as $e ) {
 				// Delete this node from doc.
-				$e->parentNode->removeChild($e);
+				$e->parentNode->removeChild( $e );
 
-			}	
+			}
 
 			// Get all non-empty heading elements in the post content.
 			$headings = iterator_to_array(
 				$xpath->query(
 					'//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]'
 				)
-			);
-
+			); 
+			
 			return array_map(
 				function ( $heading ) {
 
