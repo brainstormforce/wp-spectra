@@ -107,17 +107,17 @@ if ( isset( $attr['backgroundVideoOpacity'] ) && '' !== $attr['backgroundVideoOp
 }
 
 $selectors = array(
-	'.uagb-section__wrap'           => $style,
-	' > .uagb-section__video-wrap'  => array(
+	'.uagb-section__wrap'          => $style,
+	' > .uagb-section__video-wrap' => array(
 		'opacity' => $video_opacity,
 	),
-	' > .uagb-section__inner-wrap'  => array(
+	' > .uagb-section__inner-wrap' => array(
 		'max-width' => $inner_width,
 	),
-	'.wp-block-uagb-section'        => array(
+	'.wp-block-uagb-section'       => array(
 		'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
 	),
-	' .uagb-section__overlay:hover' => array(
+	'.uagb-section__wrap:hover'    => array(
 		'border-color' => $attr['overallBorderHColor'],
 	),
 );
