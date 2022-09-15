@@ -111,6 +111,7 @@ const Render = ( props ) => {
 							href={url}
 							target={target}
 							className="uagb-step-link"
+							rel="noopener noreferrer"
 						>
 							<span className="uagb-step-link-text">
 							{urlText}
