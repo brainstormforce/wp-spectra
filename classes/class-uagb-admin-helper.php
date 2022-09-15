@@ -46,7 +46,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			$content_width = self::get_global_content_width();
 
-			return array(
+			$options = array(
 				'uagb_beta'                         => self::get_admin_settings_option( 'uagb_beta', 'no' ),
 				'uag_enable_legacy_blocks'          => self::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' ),
 				'_uagb_allow_file_generation'       => self::get_admin_settings_option( '_uagb_allow_file_generation', 'enabled' ),
@@ -68,6 +68,14 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 				'uag_auto_block_recovery'           => self::get_admin_settings_option( 'uag_auto_block_recovery', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
 				'uag_content_width'                 => $content_width,
 			);
+
+			$setting_data = get_option( 'spectra_settings_data' );
+
+			if ( ! $setting_data ) {
+				update_option( 'spectra_settings_data', $options );
+			}
+
+			return $options;
 		}
 
 		/**
