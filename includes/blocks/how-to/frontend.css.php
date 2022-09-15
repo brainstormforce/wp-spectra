@@ -40,11 +40,13 @@ $selectors = array(
 	),
 
 	'.uagb-how-to-main-wrap span.uagb-howto__time-wrap'    => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'margin-bottom'   => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'justify-content' => $attr['overallAlignment'],
 	),
 
 	'.uagb-how-to-main-wrap span.uagb-howto__cost-wrap'    => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'margin-bottom'   => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'justify-content' => $attr['overallAlignment'],
 	),
 
 	' h4.uagb-howto-req-steps-text'                        => array(
