@@ -37,6 +37,7 @@ class Admin_Helper {
 	 * @return array.
 	 */
 	public static function get_common_settings() {
+
 		$uag_versions   = self::get_rollback_versions_options();
 		$changelog_data = self::get_changelog_feed_data();
 
