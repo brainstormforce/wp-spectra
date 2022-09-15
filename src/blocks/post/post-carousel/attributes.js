@@ -420,7 +420,7 @@ const attributes = {
 	// Meta attributes.
 	metaColor               : {
 		type    : 'string',
-		default : '#777777',
+		default : '',
 		UAGCopyPaste: {
 			styleType: 'prefix-color'
 		},
@@ -1203,12 +1203,14 @@ const attributes = {
 	},
 	dotsMarginTopTablet                  : {
 		type    : 'number',
+		default : 20,
 		UAGCopyPaste: {
 			styleType: 'dots-margin-top'
 		},
 	},
 	dotsMarginTopMobile                  : {
 		type    : 'number',
+		default : 20,
 		UAGCopyPaste: {
 			styleType: 'dots-margin-top'
 		},
