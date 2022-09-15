@@ -176,6 +176,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Content Timeline - Changed default description.
 * Improvement: Media Picker - Updated Video Icon.
 * Improvement: Post Carousel - Gap between Content & Dots functionality.
+* Fix: Price list - Heading are causing overlap on mobile on front-end.
+* Fix: Forms Toggle - Changed default label from 'Name' to 'Toggle'.
 * Fix: Forms - Fixed alignment for required toggle button in Phone block and added spacing between toggle and the 'Required' label.
 * Fix: Content Timeline - Removed extra margin added to title and description by theme and core WordPress in editor and frontend.
 * Fix: Info Box - Images looked enlarged after upgrading to Spectra.
@@ -184,6 +186,11 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Advanced Row - Border not visible for backward user.
 * Fix: Price List - Changed default padding for images so that the image aligns with the title.
 * Fix: Responsive Border - Border width occasionally misbehaves when set to zero.
+* Fix: Price List - Columns settings are not working in mobile editor.
+* Fix: Container - Shape divider background color issue on editor.
+* Fix: How-To - Alignment for time and cost not working in editor as well as on frontend.
+* Fix: Post Carousel and Masonry - Background Image overlay color is not same as frontend.
+
 
 = 2.0.11 - THURSDAY, 8th SEPTEMBER 2022 =
 * Improvement: Media Picker - Added Optional Label Display and Improved UI.
