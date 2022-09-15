@@ -184,6 +184,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 * Fix: Responsive Border - Border width occasionally misbehaves when set to zero.
 * Fix: Price List - Columns settings are not working in mobile editor.
 * Fix: Container - Shape divider background color issue on editor.
+* Fix: How-To - Alignment for time and cost not working in editor as well as on frontend.
 * Fix: Post Carousel and Masonry - Background Image overlay color is not same as frontend.
 
 
