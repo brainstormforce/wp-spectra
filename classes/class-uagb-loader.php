@@ -75,7 +75,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.0.11' );
+			define( 'UAGB_VER', '2.0.12' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'spectra' );
@@ -205,7 +205,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		/**
 		 * Pass Spectra specific stats to BSF analytics.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.12
 		 * @param array $default_stats Default stats array.
 		 * @return array $default_stats Default stats with Spectra specific stats array.
 		 */

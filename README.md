@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.0  
-**Stable tag:** 2.0.11  
+**Stable tag:** 2.0.12  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -166,7 +166,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 ## Changelog ##
 
-### 2.0.12 - MONDAY, 12th SEPTEMBER 2022 ###
+### 2.0.12 - THURSDAY, 15th SEPTEMBER 2022 ###
 * Improvement: How to block - Option to disable step links.
 * Improvement: Forms - Added 'Required' toggle for Accept field/sub-block.
 * Improvement: Content Timeline - Changed default description.
@@ -186,7 +186,6 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 * Fix: Container - Shape divider background color issue on editor.
 * Fix: How-To - Alignment for time and cost not working in editor as well as on frontend.
 * Fix: Post Carousel and Masonry - Background Image overlay color is not same as frontend.
-
 
 ### 2.0.11 - THURSDAY, 8th SEPTEMBER 2022 ###
 * Improvement: Media Picker - Added Optional Label Display and Improved UI.
