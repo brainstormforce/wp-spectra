@@ -170,8 +170,11 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### 2.0.12 - THURSDAY, 8th SEPTEMBER 2022 ###
+### 2.0.13 - THURSDAY, 8th SEPTEMBER 2022 ###
 * Fix: Fix: Post carousel - Row gap does not working as expected as v1.25.6. Image take full size of post.
+* Fix: Fix: Post Masonry - Row gap and Column Gap Label Changed.
+* Fix: Fix: Post Masonry - Column Gap will now onlu change post masonry post.
+
 ### 2.0.12 - FRIDAY, 16th SEPTEMBER 2022 ###
 * Improvement: How to block - Option to disable step links.
 * Improvement: Forms - Added 'Required' toggle for Accept field/sub-block.
