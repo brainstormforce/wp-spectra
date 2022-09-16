@@ -9,56 +9,39 @@ import { Button, Dashicon } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import MultiButtonsControl from '../multi-buttons-control/index';
 import React, { useLayoutEffect } from 'react';
-import { select } from '@wordpress/data';
+import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 
-const BoxShadowControl = (props) => {
-	const [showAdvancedControls, toggleAdvancedControls] = useState(false);
+const BoxShadowControl = ( props ) => {
 
-	useLayoutEffect(() => {
-		window.addEventListener('click', function (e) {
-			const popupButton = document.querySelector(
-				`.active.popup-${blockId} .spectra-control-popup__options--action-button`
-			);
-			const popupWrap = document.querySelector(
-				`.active.popup-${blockId} .spectra-control-popup`
-			);
+	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
 
-			if (
-				popupButton &&
-				!popupButton?.contains(e.target) &&
-				popupWrap &&
-				!popupWrap?.contains(e.target) &&
-				!e.target?.classList?.contains(
-					'uagb-advanced-color-indicate'
-				) &&
-				!e.target?.parentElement?.closest('.uagb-popover-color') &&
-				!e.target?.parentElement?.closest('.uagb-reset')
-			) {
-				toggleAdvancedControls(false);
+	useLayoutEffect( () => {
+		window.addEventListener( 'click', function( e ){
+			const popupButton = document.querySelector( `.active.popup-${blockId} .spectra-control-popup__options--action-button` );
+			const popupWrap = document.querySelector( `.active.popup-${blockId} .spectra-control-popup` );
+
+			if ( popupButton && ! popupButton?.contains( e.target ) && popupWrap && ! popupWrap?.contains( e.target ) && ! e.target?.classList?.contains( 'uagb-advanced-color-indicate' ) && ! e.target?.parentElement?.closest( '.uagb-popover-color' ) && ! e.target?.parentElement?.closest( '.uagb-reset' ) ) {
+				toggleAdvancedControls( false )
 				const blockName = getSelectedBlock()?.name;
-				const uagSettingState =
-					getUAGEditorStateLocalStorage('uagSettingState');
+				const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
 
 				const data = {
 					...uagSettingState,
-					[blockName]: {
+					[blockName] : {
 						...uagSettingState?.[blockName],
-						selectedSetting: false,
-					},
-				};
+						selectedSetting : false
+					}
+				}
 
 				const uagLocalStorage = getUAGEditorStateLocalStorage();
-				if (uagLocalStorage) {
-					uagLocalStorage.setItem(
-						'uagSettingState',
-						JSON.stringify(data)
-					);
+				if ( uagLocalStorage ) {
+					uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
 				}
 			}
-		});
-	}, []);
+		  } );
+	}, [] );
 
 	const {
 		setAttributes,
@@ -68,9 +51,9 @@ const BoxShadowControl = (props) => {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
-		label = __('Box Shadow', 'ultimate-addons-for-gutenberg'),
+		label = __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ),
 		popup = false,
-		blockId,
+		blockId
 	} = props;
 
 	let advancedControls;
@@ -86,48 +69,37 @@ const BoxShadowControl = (props) => {
 		boxShadowPosition.label,
 	];
 
-	const { getSelectedBlock } = select('core/block-editor');
+	const { getSelectedBlock } = select( 'core/block-editor' );
 
 	// Function to get the Block's default Box Shadow Values.
 	const getBlockBoxShadowValue = () => {
-		const selectedBlockName = getSelectedBlock()?.name.split('/').pop();
+		const selectedBlockName = getSelectedBlock()?.name.split( '/' ).pop();
 
 		let defaultValues = false;
-		if ('undefined' !== typeof blocksAttributes[selectedBlockName]) {
-			attributeNames.forEach((attributeName) => {
-				if (attributeName) {
-					const blockDefaultAttributeValue =
-						'undefined' !==
-						typeof blocksAttributes[selectedBlockName][
-							attributeName
-						]?.default
-							? blocksAttributes[selectedBlockName][attributeName]
-									?.default
-							: '';
+		if ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ] ) {
+			attributeNames.forEach( ( attributeName ) => {
+				if ( attributeName ) {
+					const blockDefaultAttributeValue = ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ][ attributeName ]?.default ) ? blocksAttributes[ selectedBlockName ][ attributeName ]?.default : '';
 					defaultValues = {
 						...defaultValues,
-						[attributeName]: blockDefaultAttributeValue,
-					};
+						[ attributeName ] : blockDefaultAttributeValue,
+					}
 				}
-			});
+			} );
 		}
 		return defaultValues;
-	};
+	}
 
 	// Function to check if any Box Shadow Setting has changed.
 	const getUpdateState = () => {
 		const defaultValues = getBlockBoxShadowValue();
 		const selectedBlockAttributes = getSelectedBlock()?.attributes;
 		let isBoxShadowUpdated = false;
-		attributeNames.forEach((attributeName) => {
-			if (
-				selectedBlockAttributes?.[attributeName] &&
-				selectedBlockAttributes?.[attributeName] !==
-					defaultValues?.[attributeName]
-			) {
+		attributeNames.forEach( ( attributeName ) => {
+			if ( selectedBlockAttributes?.[ attributeName ] && ( selectedBlockAttributes?.[ attributeName ] !== defaultValues?.[ attributeName ] ) ) {
 				isBoxShadowUpdated = true;
 			}
-		});
+		} );
 		return isBoxShadowUpdated;
 	};
 
@@ -136,100 +108,109 @@ const BoxShadowControl = (props) => {
 
 	const overallControls = (
 		<>
-			{/* Shadow Color */}
+			{ /* Shadow Color */ }
 			<AdvancedPopColorControl
-				label={boxShadowColor.title}
-				colorValue={boxShadowColor.value}
-				data={{
+				label={ boxShadowColor.title }
+				colorValue={ boxShadowColor.value }
+				data={ {
 					value: boxShadowColor.value,
 					label: boxShadowColor.label,
-				}}
-				setAttributes={setAttributes}
+				} }
+				setAttributes={ setAttributes }
 			/>
-			{/* Horizontal Positioning */}
+			{ /* Horizontal Positioning */ }
 			<Range
-				label={boxShadowHOffset.title}
-				value={boxShadowHOffset.value}
-				min={-100}
-				max={100}
-				displayUnit={false}
+				label={ boxShadowHOffset.title }
+				value={ boxShadowHOffset.value }
+				min={ -100 }
+				max={ 100 }
+				displayUnit={ false }
 				setAttributes={setAttributes}
-				data={{
+				data={ {
 					value: boxShadowHOffset.value,
 					label: boxShadowHOffset.label,
-				}}
+				} }
 			/>
-			{/* Vertical Positioning */}
+			{ /* Vertical Positioning */ }
 			<Range
-				label={boxShadowVOffset.title}
-				value={boxShadowVOffset.value}
-				min={-100}
-				max={100}
-				displayUnit={false}
+				label={ boxShadowVOffset.title }
+				value={ boxShadowVOffset.value }
+				min={ -100 }
+				max={ 100 }
+				displayUnit={ false }
 				setAttributes={setAttributes}
-				data={{
+				data={ {
 					value: boxShadowVOffset.value,
 					label: boxShadowVOffset.label,
-				}}
+				} }
 			/>
-			{/* Blur */}
+			{ /* Blur */ }
 			<Range
-				label={boxShadowBlur.title}
-				value={boxShadowBlur.value}
-				min={0}
-				max={100}
-				displayUnit={false}
+				label={ boxShadowBlur.title }
+				value={ boxShadowBlur.value }
+				min={ 0 }
+				max={ 100 }
+				displayUnit={ false }
 				setAttributes={setAttributes}
-				data={{
+				data={ {
 					value: boxShadowBlur.value,
 					label: boxShadowBlur.label,
-				}}
+				} }
 			/>
-			{/* Spread */}
+			{ /* Spread */ }
 			<Range
-				label={boxShadowSpread.title}
-				value={boxShadowSpread.value}
-				min={-100}
-				max={100}
-				displayUnit={false}
+				label={ boxShadowSpread.title }
+				value={ boxShadowSpread.value }
+				min={ -100 }
+				max={ 100 }
+				displayUnit={ false }
 				setAttributes={setAttributes}
-				data={{
+				data={ {
 					value: boxShadowSpread.value,
 					label: boxShadowSpread.label,
-				}}
+				} }
 			/>
-			{/* Shadow Position */}
+			{ /* Shadow Position */ }
 			<MultiButtonsControl
-				setAttributes={setAttributes}
-				label={boxShadowPosition.title}
-				data={{
+				setAttributes={ setAttributes }
+				label={ boxShadowPosition.title }
+				data={ {
 					value: boxShadowPosition.value,
 					label: boxShadowPosition.label,
-				}}
-				options={[
+				} }
+				options={ [
 					{
 						value: 'outset',
-						label: __('Outset', 'ultimate-addons-for-gutenberg'),
-						tooltip: __('Outset', 'ultimate-addons-for-gutenberg'),
+						label: __(
+							'Outset',
+							'ultimate-addons-for-gutenberg'
+						),
+						tooltip: __(
+							'Outset',
+							'ultimate-addons-for-gutenberg'
+						),
 					},
 					{
 						value: 'inset',
-						label: __('Inset', 'ultimate-addons-for-gutenberg'),
+						label: __(
+							'Inset',
+							'ultimate-addons-for-gutenberg'
+						),
 						tooltip: __(
 							'Inset (10px)',
 							'ultimate-addons-for-gutenberg'
 						),
 					},
-				]}
-				showIcons={false}
+				] }
+				showIcons={ false }
 			/>
 		</>
 	);
 
-	if (showAdvancedControls) {
+	if ( showAdvancedControls ) {
 		advancedControls = (
 			<div className="uagb-box-shadow-advanced spectra-control-popup">
-				{overallControls}
+				{ overallControls }
 			</div>
 		);
 	}
@@ -237,56 +218,49 @@ const BoxShadowControl = (props) => {
 	const boxShadowAdvancedControls = (
 		<div className="spectra-control-popup__options--action-wrapper">
 			<span className="uag-control-label">
-				{label}
-				{isBoxShadowUpdated && (
-					<div className="spectra__change-indicator--dot-right" />
-				)}
+				{ label }
+				{ isBoxShadowUpdated && (
+					<div className="spectra__change-indicator--dot-right"/>
+				) }
 			</span>
 			<Button
 				className="uag-box-shadow-button spectra-control-popup__options--action-button"
-				aria-pressed={showAdvancedControls}
-				onClick={() => {
-					const allPopups = document.querySelectorAll(
-						'.spectra-control-popup__options'
-					);
-					if (allPopups && 0 < allPopups.length) {
-						for (let i = 0; i < allPopups.length; i++) {
-							const popupButton = allPopups[i]?.querySelector(
-								'.spectra-control-popup__options.active .spectra-control-popup__options--action-button'
-							);
-							popupButton?.click();
+				aria-pressed={ showAdvancedControls }
+				onClick={ () => {
+						const allPopups = document.querySelectorAll( '.spectra-control-popup__options' );
+						if ( allPopups && 0 < allPopups.length ) {
+							for ( let i = 0; i < allPopups.length; i++ ) {
+								const popupButton = allPopups[i]?.querySelector( '.spectra-control-popup__options.active .spectra-control-popup__options--action-button' );
+								popupButton?.click();
+							}
+						}
+						toggleAdvancedControls( ! showAdvancedControls )
+
+						const blockName = getSelectedBlock()?.name;
+						const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+						let data = {
+							...uagSettingState,
+							[blockName] : {
+								...uagSettingState?.[blockName],
+								selectedSetting : '.uag-box-shadow-options'
+							}
+						}
+
+						if ( showAdvancedControls ) {
+							data = {
+								...uagSettingState,
+								[blockName] : {
+									...uagSettingState?.[blockName],
+									selectedSetting : false
+								}
+							}
+						}
+						const uagLocalStorage = getUAGEditorStateLocalStorage();
+						if ( uagLocalStorage ) {
+							uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
 						}
 					}
-					toggleAdvancedControls(!showAdvancedControls);
-
-					const blockName = getSelectedBlock()?.name;
-					const uagSettingState =
-						getUAGEditorStateLocalStorage('uagSettingState');
-					let data = {
-						...uagSettingState,
-						[blockName]: {
-							...uagSettingState?.[blockName],
-							selectedSetting: '.uag-box-shadow-options',
-						},
-					};
-
-					if (showAdvancedControls) {
-						data = {
-							...uagSettingState,
-							[blockName]: {
-								...uagSettingState?.[blockName],
-								selectedSetting: false,
-							},
-						};
-					}
-					const uagLocalStorage = getUAGEditorStateLocalStorage();
-					if (uagLocalStorage) {
-						uagLocalStorage.setItem(
-							'uagSettingState',
-							JSON.stringify(data)
-						);
-					}
-				}}
+				}
 			>
 				<Dashicon icon="edit" />
 			</Button>
@@ -295,13 +269,15 @@ const BoxShadowControl = (props) => {
 
 	return popup ? (
 		<div
-			className={`components-base-control uag-box-shadow-options spectra-control-popup__options popup-${blockId} ${activeClass}`}
+			className={ `components-base-control uag-box-shadow-options spectra-control-popup__options popup-${blockId} ${ activeClass }` }
 		>
-			{boxShadowAdvancedControls}
-			{showAdvancedControls && advancedControls}
+			{ boxShadowAdvancedControls }
+			{ showAdvancedControls && advancedControls }
 		</div>
 	) : (
-		<>{overallControls}</>
+		<>
+			{ overallControls }
+		</>
 	);
 };
 
