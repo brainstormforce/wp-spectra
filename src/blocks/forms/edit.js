@@ -51,12 +51,12 @@ const UAGBFormsEdit = ( props ) => {
 			reCaptchaSecretKeyV3,
 			reCaptchaEnable,
 			toggleColor,
-			inputColor
+			bgColor
 		} = props.attributes;
 
-		if( inputColor ) {
+		if( bgColor ) {
 			if ( undefined === toggleColor ) {
-				setAttributes( { toggleColor: inputColor } );
+				setAttributes( { toggleColor: bgColor } );
 			}
 		}
 
