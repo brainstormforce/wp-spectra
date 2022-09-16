@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.0
-Stable tag: 2.0.11
+Stable tag: 2.0.12
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -160,11 +160,38 @@ Absolutely no! The Spectra is built with ease and performance in mind. Its modul
 
 When you use the Spectra along with the free Astra theme, you get a huge library of ready-to-use starter sites that can be imported and used to build your own. Read an article about the <a href="https://wpspectra.com/ready-websites-for-gutenberg/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Starter Sites with Gutenberg</a> to know more.
 
+== Credits ==
+
+The awesome React FontIconPicker is developed by [Alessandro Benoit](http://codeb.it/) & [Swashata](https://github.com/swashata). Our external packages uses [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT, [Action Scheduler - Job Queue for WordPress](https://github.com/woocommerce/action-scheduler/) is distributed under the terms of the GNU General Public License v3.0.
+
 == Screenshots ==
 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 2.0.12 - FRIDAY, 16th SEPTEMBER 2022 =
+* Improvement: How to block - Option to disable step links.
+* Improvement: Forms - Added 'Required' toggle for Accept field/sub-block.
+* Improvement: Content Timeline - Changed default description.
+* Improvement: Media Picker - Updated Video Icon.
+* Improvement: Post Carousel - Gap between Content & Dots functionality.
+* Fix: Price list - Heading are causing overlap on mobile on front-end.
+* Fix: Forms Toggle - Changed default label from 'Name' to 'Toggle'.
+* Fix: Forms - Fixed alignment for required toggle button in Phone block and added spacing between toggle and the 'Required' label.
+* Fix: Content Timeline - Removed extra margin added to title and description by theme and core WordPress in editor and frontend.
+* Fix: Info Box - Images looked enlarged after upgrading to Spectra.
+* Fix: Form - Form is sending empty data after adding keys for ReCaptcha V3 .
+* Fix: Forms - Required Toggle for Checkbox field was not clickable in editor.
+* Fix: Advanced Row - Border not visible for backward user.
+* Fix: Price List - Changed default padding for images so that the image aligns with the title.
+* Fix: Responsive Border - Border width occasionally misbehaves when set to zero.
+* Fix: Price List - Columns settings are not working in mobile editor.
+* Fix: Container - Shape divider background color issue on editor.
+* Fix: Responsive condition - Setting does not save when hide on multiple devices is selected.
+* Fix: How-To - Alignment for time and cost not working in editor as well as on frontend.
+* Fix: Post Carousel and Masonry - Background Image overlay color is not same as frontend.
+* Fix: Advanced Row - Border hover color not working on front end.
 
 = 2.0.11 - THURSDAY, 8th SEPTEMBER 2022 =
 * Improvement: Media Picker - Added Optional Label Display and Improved UI.
