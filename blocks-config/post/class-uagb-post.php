@@ -1596,7 +1596,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								window.addEventListener( 'resize', function() {	isotope	});
 							}
 							// This CSS is for Post BG Image Spacing
-							let articles = document.querySelectorAll( '.uagb-post__image-position-background .uagb-post__inner-wrap' );
+							let articles = document.querySelectorAll( '.wp-block-uagb-post-masonry.uagb-post__image-position-background .uagb-post__inner-wrap' );
 
 							for( let article of articles ) {
 								let articleWidth = article.offsetWidth;
@@ -1606,7 +1606,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								if ( image[0] ) {
 									image[0].style.width = imageWidth + '%';
 									image[0].style.marginLeft = rowGap / 2 + 'px';
-
 								}
 
 							}
