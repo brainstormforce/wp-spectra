@@ -20,9 +20,6 @@ const UAGMediaPicker = ( props ) => {
 	// This is used to render an icon in place of the background image when needed.
 	let placeholderIcon;
 
-	// This is used to determine the way the icon is colored.
-	let iconColorType = 'stroke';
-
 	// These are the localized texts that will show on the Select / Change Button and Popup.
 	let selectMediaLabel, replaceMediaLabel;
 
@@ -37,7 +34,6 @@ const UAGMediaPicker = ( props ) => {
 				'ultimate-addons-for-gutenberg'
 			);
 			placeholderIcon = UAGB_Block_Icons.video_placeholder;
-			iconColorType = 'fill';
 			break;
 		case 'lottie':
 			selectMediaLabel = __(
@@ -125,7 +121,7 @@ const UAGMediaPicker = ( props ) => {
 				} }
 			>
 				{ ( placeholderIcon && backgroundImage?.url ) && (
-					<div className={ `spectra-media-control__icon spectra-media-control__icon--${ iconColorType }` }>
+					<div className="spectra-media-control__icon spectra-media-control__icon--stroke">
 						{ placeholderIcon }
 					</div>
 				) }

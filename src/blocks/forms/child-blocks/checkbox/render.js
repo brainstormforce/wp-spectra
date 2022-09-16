@@ -138,6 +138,22 @@ const Render = ( props ) => {
 
 	return (
 		<>
+			{ isSelected && (
+				<div className="uagb-forms-required-wrap">
+					<ToggleControl
+						label={ __(
+							'Required',
+							'ultimate-addons-for-gutenberg'
+						) }
+						checked={ checkboxRequired }
+						onChange={ () =>
+							setAttributes( {
+								checkboxRequired: ! checkboxRequired,
+							} )
+						}
+					/>
+				</div>
+			) }
 			<div
 				className={ classnames(
 					'uagb-forms-checkbox-wrap',
@@ -145,22 +161,6 @@ const Render = ( props ) => {
 					`uagb-block-${ block_id }`
 				) }
 			>
-				{ isSelected && (
-					<div className="uagb-forms-required-wrap">
-						<ToggleControl
-							label={ __(
-								'Required',
-								'ultimate-addons-for-gutenberg'
-							) }
-							checked={ checkboxRequired }
-							onChange={ () =>
-								setAttributes( {
-									checkboxRequired: ! checkboxRequired,
-								} )
-							}
-						/>
-					</div>
-				) }
 				<RichText
 					tagName="div"
 					placeholder={ __(
