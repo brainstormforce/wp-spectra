@@ -8,12 +8,12 @@ import AdvancedPopColorControl from '../color-control/advanced-pop-color-control
 import { Button, Dashicon } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import React, { useLayoutEffect } from 'react';
-import { select } from '@wordpress/data'
+import { select } from '@wordpress/data';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
-import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
+import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 
-const TextShadowControl = ( props ) => {
-	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
+const TextShadowControl = (props) => {
+	const [showAdvancedControls, toggleAdvancedControls] = useState(false);
 
 	const {
 		setAttributes,
@@ -21,39 +21,57 @@ const TextShadowControl = ( props ) => {
 		textShadowHOffset,
 		textShadowVOffset,
 		textShadowBlur,
-		label = __( 'Text Shadow', 'ultimate-addons-for-gutenberg' ),
+		label = __('Text Shadow', 'ultimate-addons-for-gutenberg'),
 		popup = false,
-		blockId
+		blockId,
 	} = props;
 
 	let advancedControls;
 	const activeClass = showAdvancedControls ? 'active' : '';
 
-	useLayoutEffect( () => {
-		window.addEventListener( 'click', function( e ){
-			const popupButton = document.querySelector( `.active.popup-${blockId} .spectra-control-popup__options--action-button` );
-			const popupWrap = document.querySelector( `.active.popup-${blockId} .spectra-control-popup` );
+	useLayoutEffect(() => {
+		window.addEventListener('click', function (e) {
+			const popupButton = document.querySelector(
+				`.active.popup-${blockId} .spectra-control-popup__options--action-button`
+			);
+			const popupWrap = document.querySelector(
+				`.active.popup-${blockId} .spectra-control-popup`
+			);
 
-			if ( popupButton && ! popupButton?.contains( e.target ) && ! e.target?.classList?.contains( 'uagb-advanced-color-indicate' ) && ! e.target?.parentElement?.closest( '.uagb-popover-color' ) && popupWrap && ! popupWrap?.contains( e.target ) && ! e.target?.parentElement?.closest( '.uagb-reset' ) ) {
-				toggleAdvancedControls( false )
+			if (
+				popupButton &&
+				!popupButton?.contains(e.target) &&
+				!e.target?.classList?.contains(
+					'uagb-advanced-color-indicate'
+				) &&
+				!e.target?.parentElement?.closest('.uagb-popover-color') &&
+				popupWrap &&
+				!popupWrap?.contains(e.target) &&
+				!e.target?.parentElement?.closest('.uagb-reset')
+			) {
+				toggleAdvancedControls(false);
 				const blockName = getSelectedBlock()?.name;
-				const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+				const uagSettingState =
+					getUAGEditorStateLocalStorage('uagSettingState');
 
 				const data = {
 					...uagSettingState,
-					[blockName] : {
+					[blockName]: {
 						...uagSettingState?.[blockName],
-						selectedSetting : false
-					}
-				}
+						selectedSetting: false,
+					},
+				};
 
 				const uagLocalStorage = getUAGEditorStateLocalStorage();
-				if ( uagLocalStorage ) {
-					uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
+				if (uagLocalStorage) {
+					uagLocalStorage.setItem(
+						'uagSettingState',
+						JSON.stringify(data)
+					);
 				}
 			}
-		  } );
-	}, [] );
+		});
+	}, []);
 
 	// Array of all the current Typography Control's Labels.
 	const attributeNames = [
@@ -63,36 +81,47 @@ const TextShadowControl = ( props ) => {
 		textShadowBlur.label,
 	];
 
-	const { getSelectedBlock } = select( 'core/block-editor' );
+	const { getSelectedBlock } = select('core/block-editor');
 
 	// Function to get the Block's default Text Shadow Values.
 	const getBlockTextShadowValue = () => {
-		const selectedBlockName = getSelectedBlock()?.name.split( '/' ).pop();
+		const selectedBlockName = getSelectedBlock()?.name.split('/').pop();
 		let defaultValues = false;
-		if ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ] ) {
-			attributeNames.forEach( ( attributeName ) => {
-				if ( attributeName ) {
-					const blockDefaultAttributeValue = ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ][ attributeName ]?.default ) ? blocksAttributes[ selectedBlockName ][ attributeName ]?.default : '';
+		if ('undefined' !== typeof blocksAttributes[selectedBlockName]) {
+			attributeNames.forEach((attributeName) => {
+				if (attributeName) {
+					const blockDefaultAttributeValue =
+						'undefined' !==
+						typeof blocksAttributes[selectedBlockName][
+							attributeName
+						]?.default
+							? blocksAttributes[selectedBlockName][attributeName]
+									?.default
+							: '';
 					defaultValues = {
 						...defaultValues,
-						[ attributeName ] : blockDefaultAttributeValue,
-					}
+						[attributeName]: blockDefaultAttributeValue,
+					};
 				}
-			} );
+			});
 		}
 		return defaultValues;
-	}
+	};
 
 	// Function to check if any Text Shadow Setting has changed.
 	const getUpdateState = () => {
 		const defaultValues = getBlockTextShadowValue();
 		const selectedBlockAttributes = getSelectedBlock()?.attributes;
 		let isTextShadowUpdated = false;
-		attributeNames.forEach( ( attributeName ) => {
-			if ( selectedBlockAttributes?.[ attributeName ] && ( selectedBlockAttributes?.[ attributeName ] !== defaultValues?.[ attributeName ] ) ) {
+		attributeNames.forEach((attributeName) => {
+			if (
+				selectedBlockAttributes?.[attributeName] &&
+				selectedBlockAttributes?.[attributeName] !==
+					defaultValues?.[attributeName]
+			) {
 				isTextShadowUpdated = true;
 			}
-		} );
+		});
 		return isTextShadowUpdated;
 	};
 
@@ -101,62 +130,62 @@ const TextShadowControl = ( props ) => {
 
 	const overallControls = (
 		<>
-			{ /* Shadow Color */ }
+			{/* Shadow Color */}
 			<AdvancedPopColorControl
-				label={ textShadowColor.title }
-				colorValue={ textShadowColor.value }
-				data={ {
+				label={textShadowColor.title}
+				colorValue={textShadowColor.value}
+				data={{
 					value: textShadowColor.value,
 					label: textShadowColor.label,
-				} }
-				setAttributes={ setAttributes }
-			/>
-			{ /* Horizontal */ }
-			<Range
-				label={ textShadowHOffset.title }
-				value={ textShadowHOffset.value }
-				min={ -100 }
-				max={ 100 }
-				displayUnit={ false }
+				}}
 				setAttributes={setAttributes}
-				data={ {
+			/>
+			{/* Horizontal */}
+			<Range
+				label={textShadowHOffset.title}
+				value={textShadowHOffset.value}
+				min={-100}
+				max={100}
+				displayUnit={false}
+				setAttributes={setAttributes}
+				data={{
 					value: textShadowHOffset.value,
 					label: textShadowHOffset.label,
-				} }
+				}}
 			/>
-			{ /* Vertical */ }
+			{/* Vertical */}
 			<Range
-				label={ textShadowVOffset.title }
-				value={ textShadowVOffset.value }
-				min={ -100 }
-				max={ 100 }
-				displayUnit={ false }
+				label={textShadowVOffset.title}
+				value={textShadowVOffset.value}
+				min={-100}
+				max={100}
+				displayUnit={false}
 				setAttributes={setAttributes}
-				data={ {
+				data={{
 					value: textShadowVOffset.value,
 					label: textShadowVOffset.label,
-				} }
+				}}
 			/>
-			{ /* Blur */ }
+			{/* Blur */}
 			<Range
-				label={ textShadowBlur.title }
-				value={ textShadowBlur.value }
-				min={ 0 }
-				max={ 100 }
-				displayUnit={ false }
+				label={textShadowBlur.title}
+				value={textShadowBlur.value}
+				min={0}
+				max={100}
+				displayUnit={false}
 				setAttributes={setAttributes}
-				data={ {
+				data={{
 					value: textShadowBlur.value,
 					label: textShadowBlur.label,
-				} }
+				}}
 			/>
 		</>
 	);
 
-	if ( showAdvancedControls ) {
+	if (showAdvancedControls) {
 		advancedControls = (
 			<div className="uagb-text-shadow-advanced spectra-control-popup">
-				{ overallControls }
+				{overallControls}
 			</div>
 		);
 	}
@@ -164,50 +193,56 @@ const TextShadowControl = ( props ) => {
 	const textShadowAdvancedControls = (
 		<div className="spectra-control-popup__options--action-wrapper">
 			<span className="uag-control-label">
-				{ label }
-				{ isTextShadowUpdated && (
-					<div className="spectra__change-indicator--dot-right"/>
-				) }
+				{label}
+				{isTextShadowUpdated && (
+					<div className="spectra__change-indicator--dot-right" />
+				)}
 			</span>
 			<Button
 				className="uag-text-shadow-button spectra-control-popup__options--action-button"
-				aria-pressed={ showAdvancedControls }
-				onClick={ () => {
-						const allPopups = document.querySelectorAll( '.spectra-control-popup__options' );
-						if ( allPopups && 0 < allPopups.length ) {
-							for ( let i = 0; i < allPopups.length; i++ ) {
-								const popupButton = allPopups[i]?.querySelector( '.spectra-control-popup__options.active .spectra-control-popup__options--action-button' );
-								popupButton?.click();
-							}
+				aria-pressed={showAdvancedControls}
+				onClick={() => {
+					const allPopups = document.querySelectorAll(
+						'.spectra-control-popup__options'
+					);
+					if (allPopups && 0 < allPopups.length) {
+						for (let i = 0; i < allPopups.length; i++) {
+							const popupButton = allPopups[i]?.querySelector(
+								'.spectra-control-popup__options.active .spectra-control-popup__options--action-button'
+							);
+							popupButton?.click();
 						}
-						toggleAdvancedControls( ! showAdvancedControls )
-
-						const blockName = getSelectedBlock()?.name;
-						const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
-						let data = {
-							...uagSettingState,
-							[blockName] : {
-								...uagSettingState?.[blockName],
-								selectedSetting : '.uag-text-shadow-options'
-							}
-						}
-
-						if ( showAdvancedControls ) {
-							data = {
-								...uagSettingState,
-								[blockName] : {
-									...uagSettingState?.[blockName],
-									selectedSetting : false
-								}
-							}
-						}
-						const uagLocalStorage = getUAGEditorStateLocalStorage();
-						if ( uagLocalStorage ) {
-							uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
-						}
-
 					}
-				}
+					toggleAdvancedControls(!showAdvancedControls);
+
+					const blockName = getSelectedBlock()?.name;
+					const uagSettingState =
+						getUAGEditorStateLocalStorage('uagSettingState');
+					let data = {
+						...uagSettingState,
+						[blockName]: {
+							...uagSettingState?.[blockName],
+							selectedSetting: '.uag-text-shadow-options',
+						},
+					};
+
+					if (showAdvancedControls) {
+						data = {
+							...uagSettingState,
+							[blockName]: {
+								...uagSettingState?.[blockName],
+								selectedSetting: false,
+							},
+						};
+					}
+					const uagLocalStorage = getUAGEditorStateLocalStorage();
+					if (uagLocalStorage) {
+						uagLocalStorage.setItem(
+							'uagSettingState',
+							JSON.stringify(data)
+						);
+					}
+				}}
 			>
 				<Dashicon icon="edit" />
 			</Button>
@@ -216,15 +251,13 @@ const TextShadowControl = ( props ) => {
 
 	return popup ? (
 		<div
-			className={ `components-base-control uag-text-shadow-options spectra-control-popup__options popup-${blockId} ${ activeClass }` }
+			className={`components-base-control uag-text-shadow-options spectra-control-popup__options popup-${blockId} ${activeClass}`}
 		>
-			{ textShadowAdvancedControls }
-			{ showAdvancedControls && advancedControls }
+			{textShadowAdvancedControls}
+			{showAdvancedControls && advancedControls}
 		</div>
 	) : (
-		<>
-			{ overallControls }
-		</>
+		<>{overallControls}</>
 	);
 };
 
