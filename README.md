@@ -172,7 +172,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 
 ### 2.0.13 - THURSDAY, 8th SEPTEMBER 2022 ###
-* Fix: Advanced Column: Paragraph will not wrap inside column
+* Fix: Advanced Column: Paragraph will not wrap inside column for text and image.
 
 ### 2.0.12 - FRIDAY, 16th SEPTEMBER 2022 ###
 * Improvement: How to block - Option to disable step links.
