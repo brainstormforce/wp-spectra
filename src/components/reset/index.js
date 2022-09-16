@@ -17,7 +17,7 @@ const UAGReset = ( props ) => {
 	const { getSelectedBlock } = select( 'core/block-editor' );
 
 	const getBlockResetValue = () => {
-		const selectedBlockName = getSelectedBlock()?.name.replace( 'uagb/', '' );
+		const selectedBlockName = getSelectedBlock()?.name.split( '/' ).pop();
 		let defaultValues = false;
 
 		if ( attributeNames && 'undefined' !== typeof blocksAttributes[selectedBlockName] ) {

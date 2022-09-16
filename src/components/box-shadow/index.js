@@ -73,7 +73,8 @@ const BoxShadowControl = ( props ) => {
 
 	// Function to get the Block's default Box Shadow Values.
 	const getBlockBoxShadowValue = () => {
-		const selectedBlockName = getSelectedBlock()?.name.replace( 'uagb/', '' );
+		const selectedBlockName = getSelectedBlock()?.name.split( '/' ).pop();
+
 		let defaultValues = false;
 		if ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ] ) {
 			attributeNames.forEach( ( attributeName ) => {
