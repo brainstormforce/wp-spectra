@@ -428,6 +428,15 @@ class UAGB_Init_Blocks {
 
 		$js_ext = ( SCRIPT_DEBUG ) ? '.js' : '.min.js';
 
+		// Enqueue CodeMirror for Custom CSS.
+		wp_enqueue_code_editor( array(
+			'type' => 'text/css', // @see https://developer.wordpress.org/reference/functions/wp_get_code_editor_settings/
+			'codemirror' => array(
+				'indentUnit' => 2,
+				'tabSize' => 2,
+			),
+		) );
+
 		// Scripts.
 		wp_enqueue_script(
 			'uagb-block-editor-js', // Handle.

@@ -892,6 +892,12 @@ class UAGB_Post_Assets {
 		$blocks            = $this->parse_blocks( $post_content );
 		$this->page_blocks = $blocks;
 
+		$custom_css = get_post_meta($this->post_id, '_uag_custom_page_level_css', true);
+
+		if ( isset( $custom_css ) && is_string($custom_css) ) {
+			$this->stylesheet .= $custom_css;
+		}
+
 		if ( ! is_array( $blocks ) || empty( $blocks ) ) {
 			return;
 		}
