@@ -734,8 +734,9 @@
 	},
 	ctaBorderColor: {
 		type: 'string',
+		default: '#333',
 	},
-	ctaBorderhoverColor: {
+	ctaBorderhoverColor:{
 		type: 'string',
 	},
 	ctaBorderStyle: {
@@ -756,11 +757,13 @@
 			styleType: 'btn-horizontal-padding'
 		}
 	},
-	ctaBorderWidth: {
+	ctaBorderWidth :{
 		type: 'number',
+		default: 1,
 	},
-	ctaBorderRadius: {
+	ctaBorderRadius :{
 		type: 'number',
+		default: 0,
 	},
 	iconLeftMargin: {
 		type: 'number',

@@ -19,7 +19,6 @@ $border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
 	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
 	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' ),
-	( isset( $attr['borderHColor'] ) ? $attr['borderHColor'] : '' )
 );
 $border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'column', 'tablet' );
 $border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'column', 'mobile' );
@@ -58,7 +57,7 @@ $selectors = array(
 );
 
 $selectors['.uagb-column__wrap:hover'] = array(
-	'border-color' => $attr['columnBorderHColor'],
+	'border-color' => ! empty( $attr['columnBorderHColor'] ) ? $attr['columnBorderHColor'] : $attr['borderHColor'],
 );
 
 
