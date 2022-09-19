@@ -254,6 +254,22 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => 'carousel',
 							),
+							'dotsMarginTop'       => array(
+								'type'    => 'number',
+								'default' => '20',
+							),
+							'dotsMarginTopTablet'  => array(
+								'type'    => 'number',
+								'default' => '20',
+							),
+							'dotsMarginTopMobile'   => array(
+								'type'    => 'number',
+								'default' => '20',
+							),
+							'dotsMarginTopUnit'     => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
 						)
 					),
 					'render_callback' => array( $this, 'post_carousel_callback' ),

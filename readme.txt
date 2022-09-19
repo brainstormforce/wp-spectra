@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.0
-Stable tag: 2.0.7
+Stable tag: 2.0.12
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -160,11 +160,73 @@ Absolutely no! The Spectra is built with ease and performance in mind. Its modul
 
 When you use the Spectra along with the free Astra theme, you get a huge library of ready-to-use starter sites that can be imported and used to build your own. Read an article about the <a href="https://wpspectra.com/ready-websites-for-gutenberg/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Starter Sites with Gutenberg</a> to know more.
 
+== Credits ==
+
+The awesome React FontIconPicker is developed by [Alessandro Benoit](http://codeb.it/) & [Swashata](https://github.com/swashata). Our external packages uses [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT, [Action Scheduler - Job Queue for WordPress](https://github.com/woocommerce/action-scheduler/) is distributed under the terms of the GNU General Public License v3.0.
+
 == Screenshots ==
 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 2.0.12 - FRIDAY, 16th SEPTEMBER 2022 =
+* Improvement: How to block - Option to disable step links.
+* Improvement: Forms - Added 'Required' toggle for Accept field/sub-block.
+* Improvement: Content Timeline - Changed default description.
+* Improvement: Media Picker - Updated Video Icon.
+* Improvement: Post Carousel - Gap between Content & Dots functionality.
+* Fix: Price list - Heading are causing overlap on mobile on front-end.
+* Fix: Forms Toggle - Changed default label from 'Name' to 'Toggle'.
+* Fix: Forms - Fixed alignment for required toggle button in Phone block and added spacing between toggle and the 'Required' label.
+* Fix: Content Timeline - Removed extra margin added to title and description by theme and core WordPress in editor and frontend.
+* Fix: Info Box - Images looked enlarged after upgrading to Spectra.
+* Fix: Form - Form is sending empty data after adding keys for ReCaptcha V3 .
+* Fix: Forms - Required Toggle for Checkbox field was not clickable in editor.
+* Fix: Advanced Row - Border not visible for backward user.
+* Fix: Price List - Changed default padding for images so that the image aligns with the title.
+* Fix: Responsive Border - Border width occasionally misbehaves when set to zero.
+* Fix: Price List - Columns settings are not working in mobile editor.
+* Fix: Container - Shape divider background color issue on editor.
+* Fix: Responsive condition - Setting does not save when hide on multiple devices is selected.
+* Fix: How-To - Alignment for time and cost not working in editor as well as on frontend.
+* Fix: Post Carousel and Masonry - Background Image overlay color is not same as frontend.
+* Fix: Advanced Row - Border hover color not working on front end.
+
+= 2.0.11 - THURSDAY, 8th SEPTEMBER 2022 =
+* Improvement: Media Picker - Added Optional Label Display and Improved UI.
+* Improvement: Updated copy-paste functionality logic for parent-child blocks.
+* Fix: Container - Child block's margin & padding gets removed in editor.
+* Fix: Info Box - Description margin considers values for desktop, even for tablet and mobile devices (on frontend).
+* Fix: Table of content - When disable marker is enabled List style tab not visible.
+* Fix: Star Rating - Padding/Margin were not working when the star position is set to “Before”.
+* Fix: Image: Image Size not working as expected for images when drag and drop.
+* Fix: Table of Contents - Collapse table icon/button not working in the editor.
+* Fix: Advanced Columns - Border radius does not apply properly to the column and inner-column elements.
+* Fix: Forms - Phone field label is null on the email template.
+
+= 2.0.10 - FRIDAY, 2nd SEPTEMBER 2022 =
+* Fix: Responsive condition - Conflicting with plugin using REST API block preview.
+
+= 2.0.9 - THURSDAY, 1st SEPTEMBER 2022 =
+* Fix: Post Blocks - PHP notice if the number of columns are not set.
+
+= 2.0.8 - THURSDAY, 1st SEPTEMBER 2022 =
+* Improvement: Added Responsive and Display conditions settings to core blocks.
+* Improvement: Updated admin dashboard UI.
+* Fix: Price List - Inside container price list not aligned properly on editor.
+* Fix: Image - Box shadow not applying to a valid element.
+* Fix: Section - Inner section block border not working properly on front-end.
+* Fix: Post Carousel/Grid/Masonry - Inaccurate font size for 'Read More' link was displayed in the editor for tablet preview (when mobile and tablet font sizes were set).
+* Fix: PHP notice for new users when they activate Astra theme.
+* Fix: Table of Content - Fixed collapsible icon alignment for frontend.
+* Fix: Heading - Set sub heading as enabled by default for old users.
+* Fix: Heading - Set default alignment of heading & sub heading as center for old users.
+* Fix: Footer Widgets - CSS was not loading for empty archive/category and 404 pages.
+* Fix: Media Picker - Updated Lottie and Video Icon Colors.
+* Fix: Advanced Columns - Column reverse functionality not working as expected on frontend for old user.
+* Fix: Post Blocks - Max Number of columns should not be dependent on number of posts.
+* Fix: Post Grid - Post overflows its proper column size.
 
 = 2.0.7 - FRIDAY, 26th AUGUST 2022 =
 * Improvement: Added Legacy Labels in the Editor Block Inserter.

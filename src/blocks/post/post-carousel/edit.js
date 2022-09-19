@@ -484,7 +484,13 @@ const UAGBPostCarousel = ( props ) => {
 		ctaLetterSpacingTablet,
 		ctaLetterSpacingMobile,
 		ctaLetterSpacingType,
-		enableOffset
+		enableOffset,
+
+		// row spacing controls between content and dots
+		dotsMarginTop,
+		dotsMarginTopTablet,
+		dotsMarginTopMobile,
+		dotsMarginTopUnit
 	} = attributes;
 
 	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
@@ -770,11 +776,7 @@ const UAGBPostCarousel = ( props ) => {
 						},
 					} }
 					min={ 1 }
-					max={
-						! hasPosts
-							? MAX_POSTS_COLUMNS
-							: Math.min( MAX_POSTS_COLUMNS, latestPosts.length )
-					}
+					max={MAX_POSTS_COLUMNS}
 					displayUnit={ false }
 					setAttributes={ setAttributes }
 				/>
@@ -2224,6 +2226,33 @@ const UAGBPostCarousel = ( props ) => {
 					min={ -50 }
 					max={ 50 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
+				/>
+				<ResponsiveSlider
+					label={ __(
+						'Top Margin for Dots',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: dotsMarginTop,
+							label: 'dotsMarginTop',
+						},
+						tablet: {
+							value: dotsMarginTopTablet,
+							label: 'dotsMarginTopTablet',
+						},
+						mobile: {
+							value: dotsMarginTopMobile,
+							label: 'dotsMarginTopMobile',
+						},
+					} }
+					min={ 1 }
+					max={ 50 }
+					unit={ {
+						value: dotsMarginTopUnit,
+						label: 'dotsMarginTopUnit',
+					} }
 					setAttributes={ setAttributes }
 				/>
 				</>

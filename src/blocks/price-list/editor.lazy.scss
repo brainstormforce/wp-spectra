@@ -94,19 +94,19 @@
 				display: contents;
 			}
 
-			&.uagb-rm__mcolumn-1 .block-editor-block-list__layout {
+			&.uagb-rm__mobile-column-1 .block-editor-block-list__layout {
 				grid-template-columns: auto;
 			}
 
-			&.uagb-rm__mcolumn-2 .block-editor-block-list__layout {
+			&.uagb-rm__mobile-column-2 .block-editor-block-list__layout {
 				grid-template-columns: auto auto;
 			}
 
-			&.uagb-rm__mcolumn-3 .block-editor-block-list__layout {
+			&.uagb-rm__mobile-column-3 .block-editor-block-list__layout {
 				grid-template-columns: auto auto auto;
 			}
 
-			&.uagb-rm__mcolumn-4 .block-editor-block-list__layout {
+			&.uagb-rm__mobile-column-4 .block-editor-block-list__layout {
 				grid-template-columns: auto auto auto auto;
 			}
 		}
