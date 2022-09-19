@@ -49,7 +49,7 @@ $selectors = array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['prefixRightDistance'], 'px' ),
 	),
 	'.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-suffix' => array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['suffixLeftDistance'], 'px' ),
+		'margin-left' => UAGB_Helper::get_css_value( $attr['suffixLeftDistance'], 'px' ),
 	),
 	'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container' => array(
 		'width'  => UAGB_Helper::get_css_value( $attr['circleSize'], 'px' ),
