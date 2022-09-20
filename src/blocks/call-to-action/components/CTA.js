@@ -30,7 +30,6 @@ const CTA = ( props ) => {
 	if ( setAttributes === 'not_set' ) {
 		link = attributes.ctaLink;
 	}
-
 	return (
 		<div className="uagb-cta__link-wrapper uagb-cta__block-link-style">
 			{ ( attributes.ctaType === 'button' ||
@@ -56,7 +55,7 @@ const CTA = ( props ) => {
 								: null,
 							attributes.inheritFromTheme &&
 								attributes.ctaType === 'button'
-								? 'wp-block-button__link '
+								? 'wp-block-button__link'
 								: null
 						) }
 						target={ target }
