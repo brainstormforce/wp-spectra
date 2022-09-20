@@ -34,6 +34,7 @@ function Blog( props ) {
 	const tcolumnsFallback = getFallbackNumber( tcolumns, 'tcolumns', blockName );
 	const mcolumnsFallback = getFallbackNumber( mcolumns, 'mcolumns', blockName );
 	const rowGapFallback = getFallbackNumber( rowGap, 'rowGap', blockName );
+	const isImageEnabled = ( attributes.displayPostImage === true ) ? 'uagb-post__image-enabled' : 'uagb-post__image-disabled';
 
 	const updateImageBgWidth = () => {
 
@@ -122,6 +123,7 @@ function Blog( props ) {
 						`uagb-post__columns-mobile-${ mcolumnsFallback }`,
 						'uagb-post__items',
 						className,
+						isImageEnabled,
 						'uagb-post-grid',
 						'uagb-post__arrow-outside',
 						`uagb-post__image-position-${ imgPosition }`,

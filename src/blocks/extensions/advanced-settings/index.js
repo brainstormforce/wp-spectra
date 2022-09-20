@@ -187,7 +187,7 @@ const ResponsiveConditionOptions = ( props ) => {
 				onChange={ () =>
 					setAttributes( {
 						UAGHideDesktop: ! attributes.UAGHideDesktop,
-						UAGResponsiveConditions: ! UAGResponsiveConditions
+						UAGResponsiveConditions: true,
 					} )
 				}
 			/>
@@ -197,7 +197,7 @@ const ResponsiveConditionOptions = ( props ) => {
 				onChange={ () =>
 					setAttributes( {
 						UAGHideTab: ! attributes.UAGHideTab,
-						UAGResponsiveConditions: ! UAGResponsiveConditions
+						UAGResponsiveConditions: true,
 					} )
 				}
 			/>
@@ -207,7 +207,7 @@ const ResponsiveConditionOptions = ( props ) => {
 				onChange={ () =>
 					setAttributes( {
 						UAGHideMob: ! attributes.UAGHideMob,
-						UAGResponsiveConditions: ! UAGResponsiveConditions
+						UAGResponsiveConditions: true,
 					} )
 				}
 			/>
@@ -228,7 +228,10 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		UAGResponsiveConditions
 	} = attributes;
 
-	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGResponsiveConditions ) {
+	const isSpectra = blockType.name.includes( 'uagb/' );
+
+	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGResponsiveConditions && isSpectra ) {
+
 		if ( UAGHideDesktop ) {
 			extraProps.className = classnames( extraProps.className, 'uag-hide-desktop' );
 		}
@@ -247,7 +250,7 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		extraProps.className = classnames( extraProps.className, 'uag-blocks-common-selector' );
 		extraProps.style = {'--z-index-desktop': zIndex + ';', '--z-index-tablet': zIndexTablet + ';', '--z-index-mobile': zIndexMobile + ';'}
 	}
-	
+
 	return extraProps;
 }
 
