@@ -258,13 +258,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'number',
 								'default' => '20',
 							),
-<<<<<<< HEAD
-							'dotsMarginTopTablet' => array(
-								'type' => 'number',
-							),
-							'dotsMarginTopMobile' => array(
-								'type' => 'number',
-=======
 							'dotsMarginTopTablet'  => array(
 								'type'    => 'number',
 								'default' => '20',
@@ -272,7 +265,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							'dotsMarginTopMobile'   => array(
 								'type'    => 'number',
 								'default' => '20',
->>>>>>> 2a98f816f937617777b101c322b5f2a4b42b218b
 							),
 							'dotsMarginTopUnit'   => array(
 								'type'    => 'string',
