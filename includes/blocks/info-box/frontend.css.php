@@ -568,10 +568,10 @@ if ( 'button' === $attr['ctaType'] ) {
 	$selectors[' .uagb-ifb-button-wrapper.wp-block-button:not(.is-style-outline) .wp-block-button__link:not(.has-background):hover'] = array(
 		'color'            => $attr['ctaLinkHoverColor'],
 		'background-color' => $attr['ctaBgHoverColor'],
-		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ?  $attr['btnBorderHColor'] : $attr['ctaBorderHColor'],
+		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['ctaBorderHColor'],
 	);
 	$selectors[' .uagb-infobox-cta-link:hover']                              = array(
-		'border-color' => ! empty( $attr['btnBorderHColor'] ) ?  $attr['btnBorderHColor'] : $attr['ctaBorderHColor'],
+		'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['ctaBorderHColor'],
 	);
 	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg'] = array(
 		'fill' => $attr['ctaLinkHoverColor'],

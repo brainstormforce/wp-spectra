@@ -169,7 +169,7 @@ $selectors = array(
 	),
 	' .uagb-forms-main-form .uagb-forms-input:focus'       => array(
 		'outline'          => ' none !important',
-		'border-color'     => ! empty ( $attr['fieldBorderHColor'] ) ? $attr['fieldBorderHColor'] : $attr['inputborderHoverColor'],
+		'border-color'     => ! empty( $attr['fieldBorderHColor'] ) ? $attr['fieldBorderHColor'] : $attr['inputborderHoverColor'],
 		'background-color' => $attr['bgActiveColor'] . ' !important',
 	),
 	' .uagb-forms-main-form .uagb-forms-input:focus::placeholder' => array(
@@ -370,7 +370,7 @@ if ( 'boxed' === $attr['formStyle'] ) {
 	);
 
 	$selectors[' .uagb-forms-input:hover']        = array(
-		'border-color' => ! empty ( $attr['fieldBorderHColor'] ) ? $attr['fieldBorderHColor'] : $attr['inputborderHoverColor'],
+		'border-color' => ! empty( $attr['fieldBorderHColor'] ) ? $attr['fieldBorderHColor'] : $attr['inputborderHoverColor'],
 	);
 	$selectors[' .uagb-forms-input::placeholder'] = array(
 		'color' => $attr['inputplaceholderColor'],
@@ -467,7 +467,7 @@ if ( 'underlined' === $attr['formStyle'] ) {
 		'border-bottom-width' => $input_underline_border,
 	);
 	$selectors[' .uagb-forms-input:hover']        = array(
-		'border-color' => ! empty ( $attr['fieldBorderHColor'] ) ? $attr['fieldBorderHColor'] : $attr['inputborderHoverColor'],
+		'border-color' => ! empty( $attr['fieldBorderHColor'] ) ? $attr['fieldBorderHColor'] : $attr['inputborderHoverColor'],
 	);
 	$selectors[' .uagb-forms-input::placeholder'] = array(
 		'color' => $attr['inputplaceholderColor'],

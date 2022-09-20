@@ -77,10 +77,10 @@ return array_merge(
 		'buttonWidthType'         => 'px',
 		'inputFontStyle'          => '',
 		'buttonFontStyle'         => '',
-		'borderStyle' => 'none',
-		'borderWidth' => '',
-		'borderRadius' => 3,
-		'borderColor' => '',
+		'borderStyle'             => 'none',
+		'borderWidth'             => '',
+		'borderRadius'            => 3,
+		'borderColor'             => '',
 	),
 	$inputBorderAttributes
 );

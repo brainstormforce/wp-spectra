@@ -84,10 +84,10 @@ return array_merge(
 		'boxShadowPosition'        => 'outset',
 		'gradientValue'            => '',
 		'backgroundOpacity'        => 0,
-		'borderStyle' => "none",
-		'borderWidth' =>  1,
-		'borderRadius' =>	'',
-		'borderColor' =>	'',
+		'borderStyle'              => 'none',
+		'borderWidth'              => 1,
+		'borderRadius'             => '',
+		'borderColor'              => '',
 	),
 	$overall_border_attributes
 );
