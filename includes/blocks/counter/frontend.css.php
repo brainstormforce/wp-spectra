@@ -63,14 +63,17 @@ $selectors = array(
 		'stroke' => $attr['circleBackground'],
 	),
 	'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container' => array(
-		'background' => $attr['barForeground'],
+		'background'    => $attr['barForeground'],
+		'margin-top'    => UAGB_Helper::get_css_value( $attr['numberTopMargin'], $attr['numberMarginUnit'] ),
+		'margin-right'  => UAGB_Helper::get_css_value( $attr['numberRightMargin'], $attr['numberMarginUnit'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['numberBottomMargin'], $attr['numberMarginUnit'] ),
+		'margin-left'   => UAGB_Helper::get_css_value( $attr['numberLeftMargin'], $attr['numberMarginUnit'] ),
 	),
 	'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container .wp-block-uagb-counter__number' => array(
 		'height'     => UAGB_Helper::get_css_value( $attr['barSize'], 'px' ),
 		'background' => $attr['barBackground'],
 	),
 );
-
 
 // tablet.
 $t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__title']  = array(
@@ -94,6 +97,12 @@ $t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counte
 );
 $t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-suffix'] = array(
 	'margin-left' => UAGB_Helper::get_css_value( $attr['suffixLeftDistanceTablet'], 'px' ),
+);
+$t_selectors['.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container'] = array(
+	'margin-top'    => UAGB_Helper::get_css_value( $attr['numberTopMarginTablet'], $attr['numberMarginUnitTablet'] ),
+	'margin-right'  => UAGB_Helper::get_css_value( $attr['numberRightMarginTablet'], $attr['numberMarginUnitTablet'] ),
+	'margin-bottom' => UAGB_Helper::get_css_value( $attr['numberBottomMarginTablet'], $attr['numberMarginUnitTablet'] ),
+	'margin-left'   => UAGB_Helper::get_css_value( $attr['numberLeftMarginTablet'], $attr['numberMarginUnitTablet'] ),
 );
 
 // mobile.
@@ -119,6 +128,34 @@ $m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counte
 $m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-suffix'] = array(
 	'margin-left' => UAGB_Helper::get_css_value( $attr['suffixLeftDistanceMobile'], 'px' ),
 );
+$m_selectors['.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container'] = array(
+	'margin-top'    => UAGB_Helper::get_css_value( $attr['numberTopMarginMobile'], $attr['numberMarginUnitMobile'] ),
+	'margin-right'  => UAGB_Helper::get_css_value( $attr['numberRightMarginMobile'], $attr['numberMarginUnitMobile'] ),
+	'margin-bottom' => UAGB_Helper::get_css_value( $attr['numberBottomMarginMobile'], $attr['numberMarginUnitMobile'] ),
+	'margin-left'   => UAGB_Helper::get_css_value( $attr['numberLeftMarginMobile'], $attr['numberMarginUnitMobile'] ),
+);
+
+// In case of 'Bar' layout, we need to add margin to '.wp-block-uagb-counter-bars-container' element and remove the margin from the inner-element.
+if ( 'bars' === $attr['layout'] ) {
+
+	$num_container = '.wp-block-uagb-counter .wp-block-uagb-counter__number';
+
+	$selectors[ $num_container ]['margin-top']    = 'unset';
+	$selectors[ $num_container ]['margin-bottom'] = 'unset';
+	$selectors[ $num_container ]['margin-left']   = 'unset';
+	$selectors[ $num_container ]['margin-right']  = 'unset';
+
+	$t_selectors[ $num_container ]['margin-top']    = 'unset';
+	$t_selectors[ $num_container ]['margin-bottom'] = 'unset';
+	$t_selectors[ $num_container ]['margin-left']   = 'unset';
+	$t_selectors[ $num_container ]['margin-right']  = 'unset';
+
+	$m_selectors[ $num_container ]['margin-top']    = 'unset';
+	$m_selectors[ $num_container ]['margin-bottom'] = 'unset';
+	$m_selectors[ $num_container ]['margin-left']   = 'unset';
+	$m_selectors[ $num_container ]['margin-right']  = 'unset';
+
+}
 
 $combined_selectors = array(
 	'desktop' => $selectors,
