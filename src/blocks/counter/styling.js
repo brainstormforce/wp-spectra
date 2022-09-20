@@ -9,6 +9,7 @@ export default function styling( props ) {
 	const {attributes} = props
 	const {
 		align,
+		layout,
 		headingFontFamily,
 		headingFontWeight,
 		headingFontStyle,
@@ -179,6 +180,10 @@ export default function styling( props ) {
 		},
 		'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container': {
 			'background': barForeground,
+			'margin-top'   : generateCSSUnit( numberTopMargin, numberMarginUnit ),
+			'margin-right' : generateCSSUnit( numberRightMargin, numberMarginUnit ),
+			'margin-bottom': generateCSSUnit( numberBottomMargin, numberMarginUnit ),
+			'margin-left'  : generateCSSUnit( numberLeftMargin, numberMarginUnit ),
 		},
 		'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container .wp-block-uagb-counter__number': {
 			'height': generateCSSUnit( barSize, 'px' ),
@@ -264,6 +269,13 @@ export default function styling( props ) {
 		)
 	}
 
+	tablet_selectors['.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container'] = {
+		'margin-top'   : generateCSSUnit( numberTopMarginTablet, numberMarginUnitTablet ),
+		'margin-right' : generateCSSUnit( numberRightMarginTablet, numberMarginUnitTablet ),
+		'margin-bottom': generateCSSUnit( numberBottomMarginTablet, numberMarginUnitTablet ),
+		'margin-left'  : generateCSSUnit( numberLeftMarginTablet, numberMarginUnitTablet ),
+	}
+
 
 
 	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__title'] = {
@@ -332,6 +344,35 @@ export default function styling( props ) {
 			suffixLeftDistanceMobile,
 			'px'
 		)
+	}
+
+	mobile_selectors['.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container'] = {
+		'margin-top'   : generateCSSUnit( numberTopMarginMobile, numberMarginUnitMobile ),
+		'margin-right' : generateCSSUnit( numberRightMarginMobile, numberMarginUnitMobile ),
+		'margin-bottom': generateCSSUnit( numberBottomMarginMobile, numberMarginUnitMobile ),
+		'margin-left'  : generateCSSUnit( numberLeftMarginMobile, numberMarginUnitMobile ),
+	}
+
+	// In case of 'Bar' layout, we need to add margin to '.wp-block-uagb-counter-bars-container' element and remove the margin from the inner-element.
+	if ( layout === 'bars' ) {
+
+		const num_container = '.wp-block-uagb-counter .wp-block-uagb-counter__number';
+
+		selectors[ num_container ]['margin-top']    = 'unset';
+		selectors[ num_container ]['margin-bottom'] = 'unset';
+		selectors[ num_container ]['margin-left']   = 'unset';
+		selectors[ num_container ]['margin-right']  = 'unset';
+
+		tablet_selectors[ num_container ]['margin-top']    = 'unset';
+		tablet_selectors[ num_container ]['margin-bottom'] = 'unset';
+		tablet_selectors[ num_container ]['margin-left']   = 'unset';
+		tablet_selectors[ num_container ]['margin-right']  = 'unset';
+
+		mobile_selectors[ num_container ]['margin-top']    = 'unset';
+		mobile_selectors[ num_container ]['margin-bottom'] = 'unset';
+		mobile_selectors[ num_container ]['margin-left']   = 'unset';
+		mobile_selectors[ num_container ]['margin-right']  = 'unset';
+
 	}
 
 
