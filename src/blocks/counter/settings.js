@@ -644,8 +644,8 @@ export default function Settings( props ) {
 						{generalPanel}
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-						{headlineStylePanel}
 						{numberStylePanel}
+						{headlineStylePanel}
 						{layout === 'circle' && circleStylePanel}
 						{layout === 'bars' && barStylePanel}
 					</InspectorTab>
