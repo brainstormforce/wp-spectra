@@ -124,7 +124,7 @@ function SchemaNotices( props ) {
 	}
 	if ( true === steps_empty_item_flag ) {
 		emptyItems.push(
-			'The Heading, Description, Image & Link are required for each Step. '
+			'The Heading, Description, Image & Link may required for each Step. '
 		);
 	}
 	const listItems = emptyItems.map( ( item ) => (

@@ -13,7 +13,7 @@ import InspectorTab, {
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
-import UAGImage from '@Components/image';
+import UAGMediaPicker from '@Components/image';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
 import UAGTabsControl from '@Components/tabs';
@@ -588,7 +588,7 @@ const Settings = ( props ) => {
 				) }
 				{ false !== showIcon && source_type === 'image' && (
 					<>
-						<UAGImage
+						<UAGMediaPicker
 							onSelectImage={ onSelectImage }
 							backgroundImage={ iconImage }
 							onRemoveImage={ onRemoveImage }
