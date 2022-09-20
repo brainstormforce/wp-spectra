@@ -2,6 +2,7 @@
 import classnames from 'classnames';
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import shapes from './shapes';
+import attributes from './attributes';
 
 const deprecated = [
 	{
