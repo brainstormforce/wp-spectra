@@ -31,8 +31,6 @@ const CTA = ( props ) => {
 		link = attributes.ctaLink;
 	}
 
-	const hasButtonBackgroundClass = attributes.ctaBgColor || attributes.ctaBgHoverColor ? 'has-background' : '';
-
 	return (
 		<div className="uagb-cta__link-wrapper uagb-cta__block-link-style">
 			{ ( attributes.ctaType === 'button' ||
@@ -58,7 +56,7 @@ const CTA = ( props ) => {
 								: null,
 							attributes.inheritFromTheme &&
 								attributes.ctaType === 'button'
-								? 'wp-block-button__link ' + hasButtonBackgroundClass
+								? 'wp-block-button__link '
 								: null
 						) }
 						target={ target }
