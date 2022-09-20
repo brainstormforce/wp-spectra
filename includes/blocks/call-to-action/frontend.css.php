@@ -139,7 +139,7 @@ $selectors['.wp-block-uagb-call-to-action.wp-block-button a.uagb-cta-second__but
 );
 $selectors['.wp-block-uagb-call-to-action.wp-block-button a.uagb-cta-second__button:hover'] = array(
 	'color'            => $attr['secondCtaHoverColor'],
-	'background-color' => $attr['secondCtaHoverBackground'].'!important',
+	'background-color' => $attr['secondCtaHoverBackground'] . '!important',
 	'border-color'     => $attr['secondCtaBorderHColor'],
 );
 
@@ -159,7 +159,7 @@ if ( 'text' === $attr['ctaType'] ) {
 }
 
 if ( 'button' === $attr['ctaType'] ) {
-	$selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-button']                 = array_merge(
+	$selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-button'] = array_merge(
 		array(
 			'color'            => $attr['ctaBtnLinkColor'] ? $attr['ctaBtnLinkColor'] : '#333',
 			'background-color' => $attr['ctaBgColor'],
@@ -170,12 +170,12 @@ if ( 'button' === $attr['ctaType'] ) {
 		),
 		$cta_border
 	);
-	$selectors['.wp-block-uagb-call-to-action.wp-block-button .uagb-cta__button-wrapper a.uagb-cta-typeof-button:hover']           = array(
+	$selectors['.wp-block-uagb-call-to-action.wp-block-button .uagb-cta__button-wrapper a.uagb-cta-typeof-button:hover'] = array(
 		'color'            => $attr['ctaLinkHoverColor'],
 		'background-color' => $attr['ctaBgHoverColor'],
 		'border-color'     => $attr['btnBorderHColor'],
 	);
-	$selectors['.wp-block-uagb-call-to-action.wp-block-button a.uagb-cta__button-link-wrapper']       = array_merge(
+	$selectors['.wp-block-uagb-call-to-action.wp-block-button a.uagb-cta__button-link-wrapper']                          = array_merge(
 		array(
 			'color'            => $attr['ctaBtnLinkColor'],
 			'background-color' => $attr['ctaBgColor'],
@@ -186,7 +186,7 @@ if ( 'button' === $attr['ctaType'] ) {
 		),
 		$cta_border
 	);
-	$selectors['.wp-block-uagb-call-to-action.wp-block-button a.uagb-cta__button-link-wrapper:hover'] = array(
+	$selectors['.wp-block-uagb-call-to-action.wp-block-button a.uagb-cta__button-link-wrapper:hover']                    = array(
 		'color'            => $attr['ctaLinkHoverColor'],
 		'background-color' => $attr['ctaBgHoverColor'],
 		'border-color'     => $attr['btnBorderHColor'],

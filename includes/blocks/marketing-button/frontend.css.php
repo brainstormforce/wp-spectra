@@ -77,7 +77,7 @@ $selectors = array(
 	' .uagb-marketing-btn__link:focus svg' => array(
 		'fill' => $icon_hover_color,
 	),
-	'.wp-block-uagb-marketing-button.wp-block-button .uagb-marketing-btn__link.wp-block-button__link'           => array_merge(
+	'.wp-block-uagb-marketing-button.wp-block-button .uagb-marketing-btn__link.wp-block-button__link' => array_merge(
 		array(
 			'padding-left'   => UAGB_Helper::get_css_value( $btn_padding_left, $attr['paddingBtnUnit'] ),
 			'padding-right'  => UAGB_Helper::get_css_value( $btn_padding_right, $attr['paddingBtnUnit'] ),
@@ -149,7 +149,7 @@ $m_selectors = array(
 		'width'  => UAGB_Helper::get_css_value( $attr['iconFontSizeMobile'], $attr['iconFontSizeType'] ),
 		'height' => UAGB_Helper::get_css_value( $attr['iconFontSizeMobile'], $attr['iconFontSizeType'] ),
 	),
-	'.wp-block-uagb-marketing-button.wp-block-button .uagb-marketing-btn__link'   => array_merge(
+	'.wp-block-uagb-marketing-button.wp-block-button .uagb-marketing-btn__link' => array_merge(
 		array(
 			'padding-left'   => UAGB_Helper::get_css_value( $btn_padding_left_mobile, $attr['mobilePaddingBtnUnit'] ),
 			'padding-right'  => UAGB_Helper::get_css_value( $btn_padding_right_mobile, $attr['mobilePaddingBtnUnit'] ),
