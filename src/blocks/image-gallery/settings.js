@@ -1638,58 +1638,61 @@ const Settings = ( props ) => {
 				/>
 			) }
 			{/* Carousel Pagination */}
-			{ ( paginateUseArrows && feedLayout === 'carousel' ) && (
-				<>
-					<Range
-						label={ __( 'Arrow Distance from Edge', 'ultimate-addons-for-gutenberg' ) }
-						setAttributes={ setAttributes }
-						value={ paginateArrowDistance }
-						data={ {
-							value: paginateArrowDistance,
-							label: 'paginateArrowDistance',
-						} }
-						min={ -50 }
-						max={ 50 }
-						unit={ {
-							value: paginateArrowDistanceUnit,
-							label: 'paginateArrowDistanceUnit',
-						} }
-						units={ [
-							{
-								name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
-								unitValue: 'px',
-							},
-							{
-								name: __( '%', 'ultimate-addons-for-gutenberg' ),
-								unitValue: '%',
-							},
-						] }
-					/>
-					<UAGTabsControl
-						tabs={ [
-							{
-								name: 'normal',
-								title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
-							},
-							{
-								name: 'hover',
-								title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
-							},
-						] }
-						normal={ renderPaginationColors( false ) }
-						hover={ renderPaginationColors( true ) }
-					/>
-					<ResponsiveBorder
-						setAttributes={ setAttributes }
-						prefix={ 'arrow' }
-						attributes={ attributes }
-						deviceType={ deviceType }
-						disableBottomSeparator={ true }
-					/>
-				</>
+			{ ( paginateUseArrows && 'carousel' === feedLayout ) && (
+				<Range
+					label={ __( 'Arrow Distance from Edge', 'ultimate-addons-for-gutenberg' ) }
+					setAttributes={ setAttributes }
+					value={ paginateArrowDistance }
+					data={ {
+						value: paginateArrowDistance,
+						label: 'paginateArrowDistance',
+					} }
+					min={ -50 }
+					max={ 50 }
+					unit={ {
+						value: paginateArrowDistanceUnit,
+						label: 'paginateArrowDistanceUnit',
+					} }
+					units={ [
+						{
+							name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+							unitValue: 'px',
+						},
+						{
+							name: __( '%', 'ultimate-addons-for-gutenberg' ),
+							unitValue: '%',
+						},
+					] }
+				/>
+			) }
+			{ ( ( paginateUseArrows || paginateUseDots ) && 'carousel' === feedLayout ) && (
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							name: 'hover',
+							title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
+						},
+					] }
+					normal={ renderPaginationColors( false ) }
+					hover={ renderPaginationColors( true ) }
+					disableBottomSeparator={ ! paginateUseArrows }
+				/>
+			) }
+			{ ( paginateUseArrows && 'carousel' === feedLayout ) && (
+				<ResponsiveBorder
+					setAttributes={ setAttributes }
+					prefix={ 'arrow' }
+					attributes={ attributes }
+					deviceType={ deviceType }
+					disableBottomSeparator={ true }
+				/>
 			) }			
 			{/* Masonry Pagination */}
-			{ ( feedLayout === 'masonry' ) && (
+			{ ( 'masonry' === feedLayout ) && (
 				<>
 					{ paginateUseLoader
 						? (
@@ -1818,7 +1821,18 @@ const Settings = ( props ) => {
 						{ ! readyToRender && initialSettings() }
 						{ readyToRender && imageStyling() }
 						{ ( readyToRender && imageDisplayCaption ) && captionStyling() }
-						{ ( readyToRender && ( feedPagination || 'carousel' === feedLayout ) ) && paginationStyling() }
+						{/* This Condition Below Renders the Arrows and Dots Panel ONLY if:
+						1. Images are readyToRender AND
+							1.1. feedPagination is needed OR
+							1.2. The feedLayout is a carousel AND
+								1.2.1 the carousel either has Arrows OR Dots. */}
+						{ ( readyToRender && (
+							feedPagination || (
+								'carousel' === feedLayout && (
+									paginateUseArrows || paginateUseDots
+								)
+							)
+						) ) && paginationStyling() }
 						{ readyToRender && spacing() }
 					</InspectorTab>
 					<InspectorTab
