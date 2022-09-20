@@ -4,6 +4,7 @@ import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
 const { enableConditionsForCoreBlocks } = uagb_blocks_info;
 import { useEffect } from 'react';
+import classnames from 'classnames';
 
 const UserConditionOptions = ( props ) => {
 
@@ -127,7 +128,7 @@ const UserResponsiveConditionOptions = ( props ) => {
 					checked={UAGHideDesktop}
 					onChange={() => setAttributes( {
 						UAGHideDesktop: ! attributes.UAGHideDesktop,
-						UAGResponsiveConditions: ! UAGResponsiveConditions
+						UAGResponsiveConditions: true,
 					} )}
 				/>
 				<ToggleControl
@@ -135,7 +136,7 @@ const UserResponsiveConditionOptions = ( props ) => {
 					checked={UAGHideTab}
                     onChange={() => setAttributes( {
 						UAGHideTab: ! attributes.UAGHideTab,
-						UAGResponsiveConditions: ! UAGResponsiveConditions
+						UAGResponsiveConditions: true,
 					} )}
 				/>
 				<ToggleControl
@@ -143,7 +144,7 @@ const UserResponsiveConditionOptions = ( props ) => {
 					checked={UAGHideMob}
                     onChange={() => setAttributes( {
 						UAGHideMob: ! attributes.UAGHideMob,
-						UAGResponsiveConditions: ! UAGResponsiveConditions
+						UAGResponsiveConditions: true,
 					} )}
 				/>
 			</>
@@ -158,7 +159,7 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 		const { InspectorAdvancedControls } = wp.blockEditor;
 
 		const blockName = props.name;
-		const isCore = blockName.match( /core/gi );
+		const isCore = blockName.includes( 'core/' );
 
 		const blockType = [ 'uagb/*','wpforms/form-selector','formidable/simple-form','formidable/calculator','llms/lesson-navigation','llms/pricing-table','llms/course-syllabus','llms/instructors','core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss','real-media-library/gallery' ];
 
@@ -195,17 +196,20 @@ function ApplyExtraClassCore( extraProps, blockType, attributes ) {
         UAGResponsiveConditions
 	} = attributes;
 
-	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGResponsiveConditions ) {
+    const isCore = blockType.name.includes( 'core/' );
+
+	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGResponsiveConditions && isCore ) {
+
 		if ( UAGHideDesktop ) {
-			extraProps.className = extraProps.className + ' uag-hide-desktop';
+			extraProps.className = classnames( extraProps.className, 'uag-hide-desktop' );
 		}
 
 		if ( UAGHideTab ) {
-			extraProps.className = extraProps.className + ' uag-hide-tab';
+			extraProps.className = classnames( extraProps.className, 'uag-hide-tab' );
 		}
 
 		if ( UAGHideMob ) {
-			extraProps.className = extraProps.className + ' uag-hide-mob';
+			extraProps.className = classnames( extraProps.className, 'uag-hide-mob' );
 		}
 
 	}
