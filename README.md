@@ -170,6 +170,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+### 2.0.13 - FRIDAY, 16th SEPTEMBER 2022 ###
+* Fix: TOC - Adding 'uagb-toc-hide-heading' class to exclude heading from TOC list not working on front-end. 
+
 ### 2.0.12 - FRIDAY, 16th SEPTEMBER 2022 ###
 * Improvement: How to block - Option to disable step links.
 * Improvement: Forms - Added 'Required' toggle for Accept field/sub-block.
