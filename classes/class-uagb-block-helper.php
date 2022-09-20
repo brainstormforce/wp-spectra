@@ -140,7 +140,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$box_shadow_position_css,
 				);
 			}
-			$selectors[ $wrapper ]                           = $border_css;
+			$selectors[ $wrapper.'.wp-block-button__link']                           = $border_css;
 			$m_selectors[ $wrapper ]                         = $border_css_mobile;
 			$t_selectors[ $wrapper ]                         = $border_css_tablet;
 			$selectors[ $wrapper . ':hover' ]                = array(
