@@ -172,7 +172,7 @@ if ( 'button' === $attr['ctaType'] ) {
 	);
 	$selectors['.wp-block-uagb-call-to-action.wp-block-button .uagb-cta__button-wrapper a.uagb-cta-typeof-button:hover']           = array(
 		'color'            => $attr['ctaLinkHoverColor'],
-		'background-color' => $attr['ctaBgHoverColor'].'!important',
+		'background-color' => $attr['ctaBgHoverColor'],
 		'border-color'     => $attr['btnBorderHColor'],
 	);
 	$selectors['.wp-block-uagb-call-to-action.wp-block-button a.uagb-cta__button-link-wrapper']       = array_merge(
@@ -188,7 +188,7 @@ if ( 'button' === $attr['ctaType'] ) {
 	);
 	$selectors['.wp-block-uagb-call-to-action.wp-block-button a.uagb-cta__button-link-wrapper:hover'] = array(
 		'color'            => $attr['ctaLinkHoverColor'],
-		'background-color' => $attr['ctaBgHoverColor'].'!important',
+		'background-color' => $attr['ctaBgHoverColor'],
 		'border-color'     => $attr['btnBorderHColor'],
 	);
 }

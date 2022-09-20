@@ -31,7 +31,7 @@ const SecondCTAButton = ( props ) => {
 				href={ link }
 				className={ classnames(
 					'uagb-cta-second__button',
-					`wp-block-button__link`,
+					'wp-block-button__link',
 				) }
 				target={ target }
 				rel={ rel }
