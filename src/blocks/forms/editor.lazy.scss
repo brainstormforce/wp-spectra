@@ -90,3 +90,10 @@ select.uagb-forms-select-box.uagb-forms-input {
 .uagb-forms-main-submit-button {
 	border-width: 0;
 }
+
+//
+.uagb-forms-input{
+	.components-input-control__backdrop{
+		box-shadow: none !important;
+	}
+}
