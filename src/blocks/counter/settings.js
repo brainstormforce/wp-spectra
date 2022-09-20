@@ -10,6 +10,7 @@ import { __ } from '@wordpress/i18n';
 import {AlignmentToolbar, BlockControls, InspectorControls} from '@wordpress/block-editor';
 import { TextControl, SelectControl } from '@wordpress/components';
 import Range from '@Components/range/Range.js';
+import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -92,7 +93,12 @@ export default function Settings( props ) {
 		numberMarginLink,
 		// prefix
 		prefixRightDistance,
+		prefixRightDistanceTablet,
+		prefixRightDistanceMobile,
+		// suffix
 		suffixLeftDistance,
+		suffixLeftDistanceTablet,
+		suffixLeftDistanceMobile,
 		// circle
 		circleSize,
 		circleStokeSize,
@@ -501,32 +507,50 @@ export default function Settings( props ) {
 					label: 'numberMarginLink',
 				} }
 			/>
-			<Range
+			<ResponsiveSlider
 				label={ __(
 					'Prefix Right Distance',
 					'ultimate-addons-for-gutenberg'
 				) }
 				setAttributes={ setAttributes }
-				value={ prefixRightDistance }
 				data={ {
-					value: prefixRightDistance,
-					label: 'prefixRightDistance',
+					desktop: {
+						value: prefixRightDistance,
+						label: 'prefixRightDistance',
+					},
+					tablet: {
+						value: prefixRightDistanceTablet,
+						label: 'prefixRightDistanceTablet',
+					},
+					mobile: {
+						value: prefixRightDistanceMobile,
+						label: 'prefixRightDistanceMobile',
+					},
 				} }
 				min={ 0 }
 				step={ 1 }
 				max={ 100 }
 				displayUnit={ false }
 			/>
-			<Range
+			<ResponsiveSlider
 				label={ __(
 					'Suffix Left Distance',
 					'ultimate-addons-for-gutenberg'
 				) }
 				setAttributes={ setAttributes }
-				value={ suffixLeftDistance }
 				data={ {
-					value: suffixLeftDistance,
-					label: 'suffixLeftDistance',
+					desktop: {
+						value: suffixLeftDistance,
+						label: 'suffixLeftDistance',
+					},
+					tablet: {
+						value: suffixLeftDistanceTablet,
+						label: 'suffixLeftDistanceTablet',
+					},
+					mobile: {
+						value: suffixLeftDistanceMobile,
+						label: 'suffixLeftDistanceMobile',
+					},
 				} }
 				min={ 0 }
 				step={ 1 }
