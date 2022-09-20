@@ -160,8 +160,8 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				$xpath->query(
 					'//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]'
 				)
-			); 
-			
+			);
+
 			return array_map(
 				function ( $heading ) {
 
