@@ -5,7 +5,14 @@
 
 		.components-input-control__backdrop {
 			border: none;
+			// gutenberg unwanted border remove from select tag
+			box-shadow: none !important;
 		}
+	}
+
+	.uagb-form-phone-country {
+		border: 1px solid #8c8f94;
+		border-radius: 4px;
 	}
 
 	.uagb-forms-phone-wrap {
