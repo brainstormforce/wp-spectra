@@ -583,7 +583,7 @@ export default function Settings( props ) {
 			/>
 			<Range
 				label={ __(
-					'Stoke Size',
+					'Stroke Size',
 					'ultimate-addons-for-gutenberg'
 				) }
 				setAttributes={ setAttributes }
