@@ -114,7 +114,7 @@ $selectors = array(
 	' .spectra-image-gallery__control-button:hover'     => array(
 		'color'            => $attr['paginateButtonTextColorHover'],
 		'background-color' => $attr['paginateColorHover'],
-		'border-color'     => $attr['buttonBorderHColor'],
+		'border-color'     => $attr['btnBorderHColor'],
 	),
 
 	// Media Wrapper Selectors.

@@ -863,7 +863,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 			} else {
 				?>
 					<div class="spectra-image-gallery__control-wrapper">
-						<div class="spectra-image-gallery__control-button" aria-label="<?php echo esc_html( array( 'paginateButtonText' ) ); ?>" tabIndex=0>
+						<div class="spectra-image-gallery__control-button" aria-label="<?php echo esc_html( $attributes['paginateButtonText'] ); ?>" tabIndex=0>
 							<?php echo esc_html( $attributes['paginateButtonText'] ); ?>
 						</div>
 					</div>
