@@ -89,6 +89,12 @@ $t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number'] = array(
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['numberBottomMarginTablet'], $attr['numberMarginUnitTablet'] ),
 	'margin-left'   => UAGB_Helper::get_css_value( $attr['numberLeftMarginTablet'], $attr['numberMarginUnitTablet'] ),
 );
+$t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-prefix'] = array(
+	'margin-right' => UAGB_Helper::get_css_value( $attr['prefixRightDistanceTablet'], 'px' ),
+);
+$t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-suffix'] = array(
+	'margin-left' => UAGB_Helper::get_css_value( $attr['suffixLeftDistanceTablet'], 'px' ),
+);
 
 // mobile.
 $m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__title']  = array(
@@ -107,7 +113,12 @@ $m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number'] = array(
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['numberBottomMarginMobile'], $attr['numberMarginUnitMobile'] ),
 	'margin-left'   => UAGB_Helper::get_css_value( $attr['numberLeftMarginMobile'], $attr['numberMarginUnitMobile'] ),
 );
-
+$m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-prefix'] = array(
+	'margin-right' => UAGB_Helper::get_css_value( $attr['prefixRightDistanceMobile'], 'px' ),
+);
+$m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-suffix'] = array(
+	'margin-left' => UAGB_Helper::get_css_value( $attr['suffixLeftDistanceMobile'], 'px' ),
+);
 
 $combined_selectors = array(
 	'desktop' => $selectors,

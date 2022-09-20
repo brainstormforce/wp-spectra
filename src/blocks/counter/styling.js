@@ -5,9 +5,6 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
-
-
-
 export default function styling( props ) {
 	const {attributes} = props
 	const {
@@ -73,7 +70,11 @@ export default function styling( props ) {
 		numberMarginUnitMobile,
 		// prefix
 		prefixRightDistance,
+		prefixRightDistanceTablet,
+		prefixRightDistanceMobile,
 		suffixLeftDistance,
+		suffixLeftDistanceTablet,
+		suffixLeftDistanceMobile,
 		// circle
 		circleSize,
 		circleStokeSize,
@@ -249,6 +250,20 @@ export default function styling( props ) {
 		),
 	}
 
+	tablet_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-prefix'] = {
+		'margin-right': generateCSSUnit(
+			prefixRightDistanceTablet,
+			'px'
+		)
+	}
+
+	tablet_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-suffix'] = {
+		'margin-left': generateCSSUnit(
+			suffixLeftDistanceTablet,
+			'px'
+		)
+	}
+
 
 
 	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__title'] = {
@@ -304,6 +319,21 @@ export default function styling( props ) {
 			numberMarginUnitMobile
 		),
 	}
+
+	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-prefix'] = {
+		'margin-right': generateCSSUnit(
+			prefixRightDistanceMobile,
+			'px'
+		)
+	}
+
+	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-suffix'] = {
+		'margin-left': generateCSSUnit(
+			suffixLeftDistanceMobile,
+			'px'
+		)
+	}
+
 
 	let styling_css = generateCSS( selectors, base_selector );
 
