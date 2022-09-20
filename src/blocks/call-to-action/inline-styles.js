@@ -294,13 +294,13 @@ function CtaStyle( props ) {
 	};
 	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button:hover'] = {
 		'color': secondCtaHoverColor,
-		'background-color': secondCtaHoverBackground +'!important',
+		'background-color': secondCtaHoverBackground,
 		'border-color': secondCtaBorderHColor,
 	};
 
 	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper:hover'] = {
 		'color': ctaLinkHoverColor,
-		'background-color': ctaBgHoverColor+'!important',
+		'background-color': ctaBgHoverColor,
 		'border-color': btnBorderHColor,
 	};
 
