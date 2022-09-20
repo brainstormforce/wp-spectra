@@ -83,8 +83,12 @@ return array(
 	'numberMarginUnitMobile'    => 'px',
 	// Prefix.
 	'prefixRightDistance'       => 5,
+	'prefixRightDistanceTablet' => '',
+	'prefixRightDistanceMobile' => '',
 	// Suffix.
 	'suffixLeftDistance'        => 5,
+	'suffixLeftDistanceTablet'  => '',
+	'suffixLeftDistanceMobile'  => '',
 	// circle.
 	'circleSize'                => 300,
 	'circleStokeSize'           => 10,

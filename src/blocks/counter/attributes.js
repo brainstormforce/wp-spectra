@@ -319,10 +319,22 @@ const attributes = {
 		type: 'number',
 		default: 5,
 	},
+	prefixRightDistanceTablet: {
+		type: 'number',
+	},
+	prefixRightDistanceMobile: {
+		type: 'number',
+	},
 	// Suffix
 	suffixLeftDistance: {
 		type: 'number',
 		default: 5,
+	},
+	suffixLeftDistanceTablet: {
+		type: 'number',
+	},
+	suffixLeftDistanceMobile: {
+		type: 'number',
 	},
 	// circle
 	circleSize: {
