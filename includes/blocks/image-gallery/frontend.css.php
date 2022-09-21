@@ -417,7 +417,7 @@ $m_selectors = array(
 			$attr['gridImageGapUnitMob']
 		),
 	),
-	' .spectra-image-gallery__layout--isogrid .spectra-image-gallery__media-wrapper' => array(
+	' .spectra-image-gallery__layout--isogrid'          => array(
 		'margin' => '-' . UAGB_Helper::get_css_value(
 			$grid_image_gap_mobile_fallback / 2,
 			$attr['gridImageGapUnitMob']
