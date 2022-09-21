@@ -9,7 +9,10 @@
 
 $selector = '.uagb-block-' . $id;
 
-$animation_duration_fallback = UAGB_Block_Helper::get_fallback_number( $attr['animationDuration'], 'animationDuration', 'counter' );
+$block_name = 'counter';
+
+$animation_duration_fallback = UAGB_Block_Helper::get_fallback_number( $attr['animationDuration'], 'animationDuration', $block_name );
+$circle_size_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['circleSize'], 'circleSize', $block_name );
 
 $counter_options = apply_filters(
 	'uagb_counter_options',
@@ -23,6 +26,7 @@ $counter_options = apply_filters(
 		'totalNumber'       => $attr['totalNumber'],
 		'animationDuration' => $animation_duration_fallback,
 		'thousandSeparator' => $attr['thousandSeparator'],
+		'circleSize'        => $circle_size_fallback,
 	),
 	$id
 );
