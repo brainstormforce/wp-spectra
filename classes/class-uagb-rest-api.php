@@ -67,9 +67,11 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 
 			$assets = $UAGB_Post_Assets->get_block_css_and_js( $block );
 
-			$block_css_style = $assets['css']['desktop'] . $assets['css']['tablet'] . $assets['css']['mobile'];
-
-			$style = '<style class="uagb-widgets-style-renderer">' . $block_css_style . '</style>';
+			$desktop_css     = isset( $assets['css']['desktop'] ) ? $assets['css']['desktop'] : '';
+			$tablet_css      = isset( $assets['css']['tablet'] ) ? $assets['css']['tablet'] : '';
+			$mobile_css      = isset( $assets['css']['mobile'] ) ? $assets['css']['mobile'] : '';
+			$block_css_style = $desktop_css . $tablet_css . $mobile_css;
+			$style           = ! empty( $block_css_style ) ? '<style class="uagb-widgets-style-renderer">' . $block_css_style . '</style>' : '';
 			array_push( $block['innerContent'], $style );
 			return $block;
 		}
