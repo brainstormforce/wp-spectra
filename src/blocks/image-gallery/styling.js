@@ -161,7 +161,7 @@ function styling( props ) {
 		paginateColorHover,
 
 		// Border Hover Colors.
-		buttonBorderHColor,
+		btnBorderHColor,
 		arrowBorderHColor,
 		mainTitleBorderColor,
 		mainTitleBorderHColor,
@@ -280,7 +280,7 @@ function styling( props ) {
 		' .spectra-image-gallery__control-button:hover': {
 			'color': paginateButtonTextColorHover,
 			'background-color': paginateColorHover,
-			'border-color': buttonBorderHColor,
+			'border-color': btnBorderHColor,
 		},
 		' .spectra-image-gallery__control-lightbox': {
 			'top': `calc( ${
