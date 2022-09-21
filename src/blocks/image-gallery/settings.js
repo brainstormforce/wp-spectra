@@ -574,7 +574,7 @@ const Settings = ( props ) => {
 	const captionSettings = () => (
 		<UAGAdvancedPanelBody title={ __( 'Caption', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<ToggleControl
-				label={ __( 'Display Captions', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Enable Captions', 'ultimate-addons-for-gutenberg' ) }
 				checked={ imageDisplayCaption }
 				onChange={ () =>
 					setAttributes( { imageDisplayCaption: ! imageDisplayCaption } )
@@ -583,7 +583,7 @@ const Settings = ( props ) => {
 			{ imageDisplayCaption && (
 				<>
 					<UAGSelectControl
-						label={ __( 'Caption Type', 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: captionDisplayType,
 							label: 'captionDisplayType',
@@ -608,10 +608,10 @@ const Settings = ( props ) => {
 										<option value="always">Always Visible</option>
 									</UAGSelectControl>
 									<span className='uag-control-label'>
-										{ __( 'Caption Alignment', 'ultimate-addons-for-gutenberg' ) }
+										{ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
 									</span>
 									<AlignmentMatrixControl
-										label={ __( 'Caption Alignment', 'ultimate-addons-for-gutenberg' ) }
+										label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
 										value={ imageCaptionAlignment }
 										onChange={ ( value ) => updateSplitAlignments( value ) }
 									/>
@@ -647,7 +647,7 @@ const Settings = ( props ) => {
 									/>
 									{ ( ( captionDisplayType === 'bar-outside' ) && ( getMatrixAlignment( imageCaptionAlignment, 1 ) === 'center' ) ) && (
 										<Range
-											label={ __( 'Caption Gap', 'ultimate-addons-for-gutenberg' ) }
+											label={ __( 'Gap', 'ultimate-addons-for-gutenberg' ) }
 											setAttributes={ setAttributes }
 											value={ captionGap }
 											data={ {
@@ -675,7 +675,7 @@ const Settings = ( props ) => {
 									<MultiButtonsControl
 										setAttributes={ setAttributes }
 										label={ __(
-											'Caption Alignment',
+											'Alignment',
 											'ultimate-addons-for-gutenberg'
 										) }
 										data={ {
@@ -720,7 +720,7 @@ const Settings = ( props ) => {
 					<TextControl
 						autoComplete="off"
 						label={ __(
-							`Default Caption`,
+							'Default',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ imageDefaultCaption }
@@ -745,7 +745,7 @@ const Settings = ( props ) => {
 				createGallery={ true }
 			/>
 			<UAGSelectControl
-				label={ __( 'Layout Type', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
 					value: feedLayout,
 					label: 'feedLayout',
@@ -1549,7 +1549,7 @@ const Settings = ( props ) => {
 			{ captionVisibility === 'always' && (
 				<ToggleControl
 					label={ __(
-						'Separate Hover Colors',
+						'Hover Colors',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ captionSeparateColors }
