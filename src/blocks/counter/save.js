@@ -21,6 +21,7 @@ export default function Save( props ) {
 
 	const blockName = 'counter'; // Since props.name property isn't available, we need to hard-code the block's name.
 	const circleSizeFallback = getFallbackNumber( circleSize, 'circleSize', blockName );
+	console.log(circleSizeFallback);
 	const animationDurationFallback = getFallbackNumber( animationDuration, 'animationDuration', blockName );
 
 	const circlePos    = ( circleSizeFallback / 2 );
@@ -63,7 +64,7 @@ export default function Save( props ) {
 				{number}
 				{title}
 			</div>
-			<svg viewPort={`0 0 ${circleSize} ${circleSize}`} version="1.1" xmlns="http://www.w3.org/2000/svg">
+			<svg viewPort={`0 0 ${circleSizeFallback} ${circleSizeFallback}`} version="1.1" xmlns="http://www.w3.org/2000/svg">
 				<circle r={circleRadius} cx={circlePos} cy={circlePos} fill="transparent" strokeDasharray={circleDash} strokeDashoffset="0"></circle>
 				<circle id="bar" r={circleRadius} cx={circlePos} cy={circlePos} fill="transparent" strokeDasharray={circleDash} strokeDashoffset={circleDash}></circle>
 			</svg>
