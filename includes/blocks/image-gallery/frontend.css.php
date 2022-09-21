@@ -125,6 +125,12 @@ $selectors = array(
 			$attr['gridImageGapUnit']
 		),
 	),
+	' .spectra-image-gallery__layout--isogrid'          => array(
+		'margin' => '-' . UAGB_Helper::get_css_value(
+			$grid_image_gap_fallback / 2,
+			$attr['gridImageGapUnit']
+		),
+	),
 	' .spectra-image-gallery__layout--isogrid .spectra-image-gallery__media-wrapper' => array(
 		'padding' => UAGB_Helper::get_css_value(
 			$grid_image_gap_fallback / 2,
@@ -299,6 +305,12 @@ $t_selectors = array(
 			$attr['gridImageGapUnitTab']
 		),
 	),
+	' .spectra-image-gallery__layout--isogrid'          => array(
+		'margin' => '-' . UAGB_Helper::get_css_value(
+			$grid_image_gap_tablet_fallback / 2,
+			$attr['gridImageGapUnitTab']
+		),
+	),
 	' .spectra-image-gallery__layout--isogrid .spectra-image-gallery__media-wrapper' => array(
 		'padding' => UAGB_Helper::get_css_value(
 			$grid_image_gap_tablet_fallback / 2,
@@ -402,6 +414,12 @@ $m_selectors = array(
 	' .spectra-image-gallery__layout--grid'             => array(
 		'grid-gap' => UAGB_Helper::get_css_value(
 			$grid_image_gap_mobile_fallback,
+			$attr['gridImageGapUnitMob']
+		),
+	),
+	' .spectra-image-gallery__layout--isogrid .spectra-image-gallery__media-wrapper' => array(
+		'margin' => '-' . UAGB_Helper::get_css_value(
+			$grid_image_gap_mobile_fallback / 2,
 			$attr['gridImageGapUnitMob']
 		),
 	),
