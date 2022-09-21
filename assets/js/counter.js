@@ -91,14 +91,23 @@ UAGBCounter = { // eslint-disable-line no-undef
 	_triggerCircle( el, data ){
 		const that = this
 		const circleWrap = el.querySelector( '.wp-block-uagb-counter-circle-container svg #bar' );
-		const totalWidth = data.totalNumber;
-		const r = 90;
-		const circle = Math.PI*( r*2 );
-		const startPct = data.startNumber < totalWidth ? ( 1 - ( data.startNumber / totalWidth ) ) * circle : 0;
-		const endPct = data.endNumber < totalWidth ? ( 1 - ( data.endNumber / totalWidth ) ) * circle : 100;
+
+		const diameter = data.circleSize - 20;
+		const circumference = Math.PI * diameter;
+		const totalNumber = data.totalNumber;
+		
+		let startPoint = 100 * ( data.startNumber / totalNumber );
+		startPoint = ( startPoint < 100 ) ? startPoint : 100;
+		startPoint = ( startPoint / 100 ) * circumference;
+
+		let endPoint = 100 * ( data.endNumber / totalNumber );
+		endPoint = ( endPoint < 100 ) ? endPoint : 100;
+		endPoint = 100 - endPoint;
+		endPoint = ( endPoint / 100 ) * circumference;
+
 		const duration = that._getAnimationDuration( data );
-		jQuery( circleWrap ).css( 'strokeDashoffset', startPct ).animate( {
-			strokeDashoffset: endPct
+		jQuery( circleWrap ).css( 'strokeDashoffset', startPoint ).animate( {
+			strokeDashoffset: endPoint
 		}, {
 			duration,
 			easing: 'linear',
