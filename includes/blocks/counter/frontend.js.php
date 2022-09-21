@@ -7,7 +7,10 @@
  * @package UAG_PRO
  */
 
-$selector        = '.uagb-block-' . $id;
+$selector = '.uagb-block-' . $id;
+
+$animation_duration_fallback = UAGB_Block_Helper::get_fallback_number( $attr['animationDuration'], 'animationDuration', 'counter' );
+
 $counter_options = apply_filters(
 	'uagb_counter_options',
 	array(
@@ -18,7 +21,7 @@ $counter_options = apply_filters(
 		'startNumber'       => $attr['startNumber'],
 		'endNumber'         => $attr['endNumber'],
 		'totalNumber'       => $attr['totalNumber'],
-		'animationDuration' => $attr['animationDuration'],
+		'animationDuration' => $animation_duration_fallback,
 		'thousandSeparator' => $attr['thousandSeparator'],
 	),
 	$id

@@ -10,6 +10,25 @@
 // Add fonts.
 UAGB_Block_JS::blocks_advanced_heading_gfont( $attr );
 
+$block_name = 'counter';
+
+// <-------------- FALLBACKS -------------->.
+
+// Circle, circle stroke and bar size.
+$circle_size_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['circleSize'], 'circleSize', $block_name );
+$circle_stroke_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['circleStokeSize'], 'circleStokeSize', $block_name );
+$bar_size_fallback           = UAGB_Block_Helper::get_fallback_number( $attr['barSize'], 'barSize', $block_name );
+
+// Prefix spacing fallbacks.
+$prefix_right_distance_fallback    = UAGB_Block_Helper::get_fallback_number( $attr['prefixRightDistance'], 'prefixRightDistance', $block_name );
+$attr['prefixRightDistanceTablet'] = is_numeric( $attr['prefixRightDistanceTablet'] ) ? $attr['prefixRightDistanceTablet'] : $prefix_right_distance_fallback;
+$attr['prefixRightDistanceMobile'] = is_numeric( $attr['prefixRightDistanceMobile'] ) ? $attr['prefixRightDistanceMobile'] : $attr['prefixRightDistanceTablet'];
+
+// Suffix spacing fallbacks.
+$suffix_left_distance_fallback    = UAGB_Block_Helper::get_fallback_number( $attr['suffixLeftDistance'], 'suffixLeftDistance', $block_name );
+$attr['suffixLeftDistanceTablet'] = is_numeric( $attr['suffixLeftDistanceTablet'] ) ? $attr['suffixLeftDistanceTablet'] : $suffix_left_distance_fallback;
+$attr['suffixLeftDistanceMobile'] = is_numeric( $attr['suffixLeftDistanceMobile'] ) ? $attr['suffixLeftDistanceMobile'] : $attr['suffixLeftDistanceTablet'];
+
 $m_selectors = array();
 $t_selectors = array();
 
@@ -46,17 +65,17 @@ $selectors = array(
 		'margin-left'     => UAGB_Helper::get_css_value( $attr['numberLeftMargin'], $attr['numberMarginUnit'] ),
 	),
 	'.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-prefix' => array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['prefixRightDistance'], 'px' ),
+		'margin-right' => UAGB_Helper::get_css_value( $prefix_right_distance_fallback, 'px' ),
 	),
 	'.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-suffix' => array(
-		'margin-left' => UAGB_Helper::get_css_value( $attr['suffixLeftDistance'], 'px' ),
+		'margin-left' => UAGB_Helper::get_css_value( $suffix_left_distance_fallback, 'px' ),
 	),
 	'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container' => array(
-		'width'  => UAGB_Helper::get_css_value( $attr['circleSize'], 'px' ),
-		'height' => UAGB_Helper::get_css_value( $attr['circleSize'], 'px' ),
+		'width'  => UAGB_Helper::get_css_value( $circle_size_fallback, 'px' ),
+		'height' => UAGB_Helper::get_css_value( $circle_size_fallback, 'px' ),
 	),
 	'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg circle' => array(
-		'stroke-width' => UAGB_Helper::get_css_value( $attr['circleStokeSize'], 'px' ),
+		'stroke-width' => UAGB_Helper::get_css_value( $circle_stroke_size_fallback, 'px' ),
 		'stroke'       => $attr['circleForeground'],
 	),
 	'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg #bar' => array(
@@ -70,7 +89,7 @@ $selectors = array(
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['numberLeftMargin'], $attr['numberMarginUnit'] ),
 	),
 	'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container .wp-block-uagb-counter__number' => array(
-		'height'     => UAGB_Helper::get_css_value( $attr['barSize'], 'px' ),
+		'height'     => UAGB_Helper::get_css_value( $bar_size_fallback, 'px' ),
 		'background' => $attr['barBackground'],
 	),
 );
