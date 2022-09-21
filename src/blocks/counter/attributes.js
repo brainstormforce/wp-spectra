@@ -11,7 +11,7 @@ const attributes = {
 		default: 'left',
 	},
 	animationDuration: {
-		type: 'float',
+		type: 'number',
 		default: 25,
 	},
 	thousandSeparator: {
