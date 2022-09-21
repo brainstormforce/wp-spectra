@@ -21,7 +21,6 @@ export default function Save( props ) {
 
 	const blockName = 'counter'; // Since props.name property isn't available, we need to hard-code the block's name.
 	const circleSizeFallback = getFallbackNumber( circleSize, 'circleSize', blockName );
-	console.log(circleSizeFallback);
 	const animationDurationFallback = getFallbackNumber( animationDuration, 'animationDuration', blockName );
 
 	const circlePos    = ( circleSizeFallback / 2 );
