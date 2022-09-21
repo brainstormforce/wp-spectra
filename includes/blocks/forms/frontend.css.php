@@ -254,6 +254,10 @@ $t_selectors = array(
 	),
 	' .uagb-forms-success-message'                   => $success_message_border_tablet,
 	' .uagb-forms-failed-message'                    => $failed_message_border_tablet,
+	// Drop icon position css.
+	' .uagb-form-phone-country'                                  => array(
+		'background-position' => ' top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRight'], $attr['paddingFieldUnitTablet'] ),
+	),
 );
 $m_selectors = array(
 	'.uagb-forms__outer-wrap'                        => array(
@@ -286,6 +290,10 @@ $m_selectors = array(
 	),
 	' .uagb-forms-success-message'                   => $success_message_border_mobile,
 	' .uagb-forms-failed-message'                    => $failed_message_border_mobile,
+	// Drop icon position css.
+	' .uagb-form-phone-country'                                  => array(
+		'background-position' => ' top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRight'], $attr['paddingFieldUnitmobile'] ),
+	),
 );
 // Checkbox Field css.
 $selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = array(
