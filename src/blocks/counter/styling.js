@@ -4,6 +4,7 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 export default function styling( props ) {
 	const {attributes} = props
@@ -87,6 +88,25 @@ export default function styling( props ) {
 		barBackground
 	} = attributes;
 
+	const blockName = props.name.replace( 'uagb/', '' );
+
+	// <---------- FALLBACKS ---------->
+
+	// Circle, circle stroke and bar size.
+	const circleSizeFallback        = getFallbackNumber( circleSize, 'circleSize', blockName );
+	const circleStrokeSizeFallback  = getFallbackNumber( circleStokeSize, 'circleStokeSize', blockName );
+	const barSizeFallback           = getFallbackNumber( barSize, 'barSize', blockName );
+
+	// Prefix spacing fallbacks.
+	const prefixRightDistanceFallback       = getFallbackNumber( prefixRightDistance, 'prefixRightDistance', blockName );
+	const prefixRightDistanceFallbackTablet = isNaN( prefixRightDistanceTablet ) ? prefixRightDistance : prefixRightDistanceTablet;
+	const prefixRightDistanceFallbackMobile = isNaN( prefixRightDistanceMobile ) ? prefixRightDistanceTablet : prefixRightDistanceMobile;
+
+	// Suffix spacing fallbacks.
+	const suffixLeftDistanceFallback       = getFallbackNumber( suffixLeftDistance, 'suffixLeftDistance', blockName );
+	const suffixLeftDistanceFallbackTablet = isNaN( suffixLeftDistanceTablet ) ? suffixLeftDistance : suffixLeftDistanceTablet;
+	const suffixLeftDistanceFallbackMobile = isNaN( suffixLeftDistanceMobile ) ? suffixLeftDistanceTablet : suffixLeftDistanceMobile;	
+
 	const selectors = {
 		'.wp-block-uagb-counter':{
 			'text-align': align
@@ -157,22 +177,22 @@ export default function styling( props ) {
 		},
 		'.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-prefix': {
 			'margin-right': generateCSSUnit(
-				prefixRightDistance,
+				prefixRightDistanceFallback,
 				'px'
 			)
 		},
 		'.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-suffix': {
 			'margin-left': generateCSSUnit(
-				suffixLeftDistance,
+				suffixLeftDistanceFallback,
 				'px'
 			)
 		},
 		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container': {
-			'width': generateCSSUnit( circleSize, 'px' ),
-			'height': generateCSSUnit( circleSize, 'px' )
+			'width': generateCSSUnit( circleSizeFallback, 'px' ),
+			'height': generateCSSUnit( circleSizeFallback, 'px' )
 		},
 		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg circle': {
-			'stroke-width': generateCSSUnit( circleStokeSize, 'px' ),
+			'stroke-width': generateCSSUnit( circleStrokeSizeFallback, 'px' ),
 			'stroke': circleForeground,
 		},
 		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg #bar': {
@@ -186,7 +206,7 @@ export default function styling( props ) {
 			'margin-left'  : generateCSSUnit( numberLeftMargin, numberMarginUnit ),
 		},
 		'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container .wp-block-uagb-counter__number': {
-			'height': generateCSSUnit( barSize, 'px' ),
+			'height': generateCSSUnit( barSizeFallback, 'px' ),
 			'background': barBackground,
 		}
 	}
@@ -257,14 +277,14 @@ export default function styling( props ) {
 
 	tablet_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-prefix'] = {
 		'margin-right': generateCSSUnit(
-			prefixRightDistanceTablet,
+			prefixRightDistanceFallbackTablet,
 			'px'
 		)
 	}
 
 	tablet_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-suffix'] = {
 		'margin-left': generateCSSUnit(
-			suffixLeftDistanceTablet,
+			suffixLeftDistanceFallbackTablet,
 			'px'
 		)
 	}
@@ -334,14 +354,14 @@ export default function styling( props ) {
 
 	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-prefix'] = {
 		'margin-right': generateCSSUnit(
-			prefixRightDistanceMobile,
+			prefixRightDistanceFallbackMobile,
 			'px'
 		)
 	}
 
 	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-suffix'] = {
 		'margin-left': generateCSSUnit(
-			suffixLeftDistanceMobile,
+			suffixLeftDistanceFallbackMobile,
 			'px'
 		)
 	}

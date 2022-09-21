@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { RichText } from '@wordpress/block-editor';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 export default function Save( props ) {
 	const {attributes} = props;
@@ -18,7 +19,11 @@ export default function Save( props ) {
 		circleSize
 	} = attributes
 
-	const circlePos    = ( circleSize / 2 );
+	const blockName = 'counter'; // Since props.name property isn't available, we need to hard-code the block's name.
+	const circleSizeFallback = getFallbackNumber( circleSize, 'circleSize', blockName );
+	const animationDurationFallback = getFallbackNumber( animationDuration, 'animationDuration', blockName );
+
+	const circlePos    = ( circleSizeFallback / 2 );
 	const circleRadius = circlePos - 10;
 	const circleDash   = parseFloat( 2 * Math.PI * circleRadius ).toFixed( 2 );
 	const percentLayout = ['bars', 'circle'];
@@ -36,7 +41,7 @@ export default function Save( props ) {
 			{
 				numberPrefix && ( <span className="uagb-counter-block-prefix">{numberPrefix}</span> )
 			}
-			<span className="uagb-counter-block-number" data-duration={animationDuration} data-to-value={endNumber} data-from-value={startNumber} data-delimiter={thousandSeparator}></span>
+			<span className="uagb-counter-block-number" data-duration={animationDurationFallback} data-to-value={endNumber} data-from-value={startNumber} data-delimiter={thousandSeparator}></span>
 			{
 				percentLayout.includes( layout ) && ( <span className='uagb-counter-block-number-type'>%</span> )
 			}
