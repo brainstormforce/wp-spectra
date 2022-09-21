@@ -57,7 +57,7 @@ $selectors = array(
 );
 
 $selectors['.uagb-column__wrap:hover'] = array(
-	'border-color' => ! empty( $attr['columnBorderHColor'] ) ? $attr['columnBorderHColor'] : $attr['borderHColor'],
+	'border-color' => $attr['columnBorderHColor'],
 );
 
 

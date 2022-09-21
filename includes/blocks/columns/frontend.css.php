@@ -209,7 +209,7 @@ $t_selectors                      = array(
 	),
 );
 $selectors['.uagb-columns__wrap'] = $border;
-$selectors['.uagb-columns__wrap:hover']['border-color'] = ! empty( $attr['columnsBorderHColor'] ) ? $attr['columnsBorderHColor'] : $attr['borderHColor'];
+$selectors['.uagb-columns__wrap:hover']['border-color'] = $attr['columnsBorderHColor'];
 $t_selectors['.uagb-columns__wrap']                     = $border_tablet;
 $m_selectors['.uagb-columns__wrap']                     = $border_mobile;
 

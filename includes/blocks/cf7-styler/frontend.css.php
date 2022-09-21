@@ -120,13 +120,13 @@ $selectors = array(
 
 	// Focus.
 	' .wpcf7 form input:not([type=submit]):focus'         => array(
-		'border-color' => ! empty( $attr['inputBorderHColor'] ) ? $attr['inputBorderHColor'] : $attr['fieldBorderHColor'],
+		'border-color' => ! empty( $attr['inputBorderHColor'] ) ? $attr['inputBorderHColor'] : $attr['fieldBorderFocusColor'],
 	),
 	' .wpcf7 form select:focus'                           => array(
-		'border-color' => ! empty( $attr['inputBorderHColor'] ) ? $attr['inputBorderHColor'] : $attr['fieldBorderHColor'],
+		'border-color' => ! empty( $attr['inputBorderHColor'] ) ? $attr['inputBorderHColor'] : $attr['fieldBorderFocusColor'],
 	),
 	' .wpcf7 textarea:focus'                              => array(
-		'border-color' => ! empty( $attr['inputBorderHColor'] ) ? $attr['inputBorderHColor'] : $attr['fieldBorderHColor'],
+		'border-color' => ! empty( $attr['inputBorderHColor'] ) ? $attr['inputBorderHColor'] : $attr['fieldBorderFocusColor'],
 	),
 
 	// Submit button.
@@ -144,7 +144,7 @@ $selectors = array(
 	' .wpcf7 input.wpcf7-form-control.wpcf7-submit:hover' => array(
 		'color'            => $attr['buttonTextHoverColor'],
 		'background-color' => $attr['buttonBgHoverColor'],
-		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['buttonBorderHColor'],
+		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['buttonBorderHoverColor'],
 	),
 
 	// Check box Radio.

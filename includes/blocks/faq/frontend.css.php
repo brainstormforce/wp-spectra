@@ -90,7 +90,7 @@ $selectors = array(
 	),
 	' .uagb-faq-item:hover'                               => array(
 		'background-color' => $attr['boxBgHoverColor'],
-		'border-color'     => ! empty( $attr['overallBorderHColor'] ) ? $attr['overallBorderHColor'] : $attr['borderHColor'],
+		'border-color'     => ! empty( $attr['overallBorderHColor'] ) ? $attr['overallBorderHColor'] : $attr['borderHoverColor'],
 	),
 	' .uagb-faq-item .uagb-question'                      => array(
 		'color' => $attr['questionTextColor'],
@@ -270,7 +270,7 @@ if ( true === $attr['enableSeparator'] ) {
 		'border-left-width'   => '0px',
 	);
 	$selectors[' .uagb-faq-child__outer-wrap .uagb-faq-content:hover '] = array(
-		'border-top-color' => ! empty( $attr['overallBorderHColor'] ) ? $attr['overallBorderHColor'] : $attr['borderHColor'],
+		'border-top-color' => ! empty( $attr['overallBorderHColor'] ) ? $attr['overallBorderHColor'] : $attr['borderHoverColor'],
 	);
 }
 if ( 'grid' === $attr['layout'] ) {
