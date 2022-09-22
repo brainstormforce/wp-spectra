@@ -92,6 +92,76 @@ const attributes = {
 		type: 'number',
 		isUAGStyle: true,
 	},
+	// Block Margin.
+	blockTopMargin : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockRightMargin : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockLeftMargin : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockBottomMargin : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockTopMarginTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockRightMarginTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockLeftMarginTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockBottomMarginTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockTopMarginMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockRightMarginMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockLeftMarginMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockBottomMarginMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockMarginUnit : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	blockMarginUnitTablet: {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	blockMarginUnitMobile : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	blockMarginLink: {
+		type: 'boolean',
+		default: false,
+		isUAGStyle: true,
+	},
+	// Heading Margin.
 	headingTopMargin : {
 		type: 'number',
 		isUAGStyle: true,
