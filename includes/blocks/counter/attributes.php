@@ -26,7 +26,7 @@ return array(
 	'headingFontStyle'          => 'normal',
 	'headingTransform'          => '',
 	'headingFontSize'           => '',
-	'headingColor'              => '#fff',
+	'headingColor'              => '#333',
 	'headingTransform'          => '',
 	'headingDecoration'         => '',
 	'headingFontSizeType'       => 'px',
