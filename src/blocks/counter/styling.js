@@ -102,6 +102,22 @@ export default function styling( props ) {
 		blockMarginUnit,
 		blockMarginUnitTablet,
 		blockMarginUnitMobile,
+		// Block Padding
+		blockTopPadding,
+		blockRightPadding,
+		blockLeftPadding,
+		blockBottomPadding,
+		blockTopPaddingTablet,
+		blockRightPaddingTablet,
+		blockLeftPaddingTablet,
+		blockBottomPaddingTablet,
+		blockTopPaddingMobile,
+		blockRightPaddingMobile,
+		blockLeftPaddingMobile,
+		blockBottomPaddingMobile,
+		blockPaddingUnit,
+		blockPaddingUnitTablet,
+		blockPaddingUnitMobile,
 	} = attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -141,6 +157,22 @@ export default function styling( props ) {
 			'margin-left': generateCSSUnit(
 				blockLeftMargin,
 				blockMarginUnit
+			),
+			'padding-top': generateCSSUnit(
+				blockTopPadding,
+				blockPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				blockRightPadding,
+				blockPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				blockBottomPadding,
+				blockPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				blockLeftPadding,
+				blockPaddingUnit
 			),
 		},
 		'.wp-block-uagb-counter .wp-block-uagb-counter__title':{
@@ -270,6 +302,22 @@ export default function styling( props ) {
 			blockLeftMarginTablet,
 			blockMarginUnitTablet
 		),
+		'padding-top': generateCSSUnit(
+			blockTopPaddingTablet,
+			blockPaddingUnitTablet
+		),
+		'padding-right': generateCSSUnit(
+			blockRightPaddingTablet,
+			blockPaddingUnitTablet
+		),
+		'padding-bottom': generateCSSUnit(
+			blockBottomPaddingTablet,
+			blockPaddingUnitTablet
+		),
+		'padding-left': generateCSSUnit(
+			blockLeftPaddingTablet,
+			blockPaddingUnitTablet
+		),
     }
 
 	tablet_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__title'] = {
@@ -365,6 +413,22 @@ export default function styling( props ) {
 		'margin-left': generateCSSUnit(
 			blockLeftMarginMobile,
 			blockMarginUnitMobile
+		),
+		'padding-top': generateCSSUnit(
+			blockTopPaddingMobile,
+			blockPaddingUnitMobile
+		),
+		'padding-right': generateCSSUnit(
+			blockRightPaddingMobile,
+			blockPaddingUnitMobile
+		),
+		'padding-bottom': generateCSSUnit(
+			blockBottomPaddingMobile,
+			blockPaddingUnitTablet
+		),
+		'padding-left': generateCSSUnit(
+			blockLeftPaddingMobile,
+			blockPaddingUnitMobile
 		),
     }
 
