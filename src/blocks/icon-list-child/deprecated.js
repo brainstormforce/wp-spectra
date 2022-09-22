@@ -226,7 +226,7 @@ const deprecated = [
 			);
 		},
 	},
-	{
+	{ // Deprecated for 2.0.12.
 		attributes,
 		save( props ) {
 			const { attributes, className } = props;

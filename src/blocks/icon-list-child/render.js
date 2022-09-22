@@ -66,7 +66,7 @@ const Render = ( props ) => {
 				<a
 					target={ targetVal }
 					rel="noopener noreferrer"
-					aria-label={ label.replace( /(<([^>]+)>)/ig, '' )}
+					aria-label={ label.replace( /(<([^>]+)>)/ig, '' ) }
 					href={ linkUrl }
 				>
 					{ ' ' }
