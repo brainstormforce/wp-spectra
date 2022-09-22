@@ -161,6 +161,75 @@ const attributes = {
 		default: false,
 		isUAGStyle: true,
 	},
+	// Block Padding.
+	blockTopPadding : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockRightPadding : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockLeftPadding : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockBottomPadding : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockTopPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockRightPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockLeftPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockBottomPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockTopPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockRightPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockLeftPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockBottomPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	blockPaddingUnit : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	blockPaddingUnitTablet: {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	blockPaddingUnitMobile : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	blockPaddingLink: {
+		type: 'boolean',
+		default: false,
+		isUAGStyle: true,
+	},
 	// Heading Margin.
 	headingTopMargin : {
 		type: 'number',
