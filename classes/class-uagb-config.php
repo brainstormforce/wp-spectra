@@ -156,7 +156,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb-counter-js'        => array(
 						'src' => UAGB_Scripts_Utils::get_js_url( 'counter' ),
-						'dep' => array( 'jquery', 'uagb-countUp-js' ),
+						'dep' => array( 'uagb-countUp-js' ),
 					),
 					'uagb-container-js'      => array(
 						'src'        => UAGB_Scripts_Utils::get_js_url( 'container' ),
