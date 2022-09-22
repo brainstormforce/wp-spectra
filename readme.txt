@@ -171,7 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 2.0.13 - FRIDAY, 23rd SEPTEMBER 2022 =
-* Fix: Container - Z-index were not apply on frontend.
+* Fix: Container - Z-index were not applied on frontend.
 
 = 2.0.12 - FRIDAY, 16th SEPTEMBER 2022 =
 * Improvement: How to block - Option to disable step links.
