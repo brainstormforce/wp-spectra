@@ -604,8 +604,7 @@ if ( 20 <= $attr['paddingFieldRightMobile'] ) {
 	$m_selectors[' .uagb-form-phone-country']                           = array(
 		'background-position' => ' top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'], $attr['paddingFieldUnitmobile'] ),
 	);
-}
-else {
+} else {
 	$m_selectors[' .uagb-form-phone-country']                           = array(
 		'background-position' => ' top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'], $attr['paddingFieldUnitmobile'] ),
 		'padding-right' => ' 20px !important',
