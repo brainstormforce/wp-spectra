@@ -170,6 +170,13 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 2.0.13 - FRIDAY, 16th SEPTEMBER 2022 =
+* Fix: Forms - Country code border fix in phone option.
+* Fix: Forms - phone option (Country code) dropdown arrow position is responsive.
+* Fix: Forms - phone option spacing fixed.
+* Fix: Forms - text overlapping fixed in (country code) phone option.
+* Fix: Forms - height and size issue fixed for country code.
+
 = 2.0.12 - FRIDAY, 16th SEPTEMBER 2022 =
 * Improvement: How to block - Option to disable step links.
 * Improvement: Forms - Added 'Required' toggle for Accept field/sub-block.
