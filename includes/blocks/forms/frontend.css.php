@@ -256,7 +256,7 @@ $t_selectors = array(
 	' .uagb-forms-failed-message'                    => $failed_message_border_tablet,
 	// Drop icon position css.
 	' .uagb-form-phone-country'                                  => array(
-		'background-position' => ' top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRight'], $attr['paddingFieldUnitTablet'] ),
+		'background-position' => ' top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightTablet'], $attr['paddingFieldUnitTablet'] ),
 	),
 );
 $m_selectors = array(
@@ -291,9 +291,7 @@ $m_selectors = array(
 	' .uagb-forms-success-message'                   => $success_message_border_mobile,
 	' .uagb-forms-failed-message'                    => $failed_message_border_mobile,
 	// Drop icon position css.
-	' .uagb-form-phone-country'                                  => array(
-		'background-position' => ' top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRight'], $attr['paddingFieldUnitmobile'] ),
-	),
+
 );
 // Checkbox Field css.
 $selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = array(
@@ -601,6 +599,19 @@ $m_selectors[' .uagb-forms-main-form .uagb-slider:before']                      
 	'left'          => UAGB_Helper::get_css_value( (int) ( ( 20 + $toggle_width_size_number_mobile ) / 6 ), 'px' ),
 	'border-radius' => $toggle_border_radius_tl_mobile_fallback . ' ' . $toggle_border_radius_tr_mobile_fallback . ' ' . $toggle_border_radius_br_mobile_fallback . ' ' . $toggle_border_radius_bl_mobile_fallback,
 );
+
+if( 20 <= $attr['paddingFieldRightMobile'] ){
+	$m_selectors[' .uagb-form-phone-country']                           = array(
+		'background-position' => ' top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'], $attr['paddingFieldUnitmobile'] ),
+	);
+}
+else{
+	$m_selectors[' .uagb-form-phone-country']                           = array(
+		'background-position' => ' top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'], $attr['paddingFieldUnitmobile'] ),
+		'padding-right' => '20px !important',
+	);
+
+}
 
 $combined_selectors = array(
 	'desktop' => $selectors,

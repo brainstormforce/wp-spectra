@@ -27,3 +27,23 @@
 		}
 	}
 }
+
+.uagb-editor-preview-mode-tablet {
+	.uagb-forms-phone-flex {
+		height: unset !important;
+		.uagb-form-phone-country {
+			// height: unset;
+			height: calc(100% - 4px);
+		}
+	}
+}
+
+.uagb-editor-preview-mode-mobile {
+	.uagb-forms-phone-flex {
+		height: unset !important;
+		.uagb-form-phone-country {
+			height: unset;
+			// height: calc(100% - 8px);
+		}
+	}
+}
