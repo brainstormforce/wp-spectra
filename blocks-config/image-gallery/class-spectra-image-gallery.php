@@ -85,15 +85,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 						'borderBottomRightRadius' => 50,
 					)
 				);
-				$btn_border_attributes        = UAGB_Block_Helper::uag_generate_php_border_attribute(
-					'btn',
-					array(
-						'borderTopLeftRadius'     => 50,
-						'borderTopRightRadius'    => 50,
-						'borderBottomLeftRadius'  => 50,
-						'borderBottomRightRadius' => 50,
-					)
-				);
+				$btn_border_attributes        = UAGB_Block_Helper::uag_generate_php_border_attribute( 'btn' );
 				$main_title_border_attributes = UAGB_Block_Helper::uag_generate_php_border_attribute(
 					'mainTitle',
 					array(
@@ -416,51 +408,39 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 							),
 							'paginateButtonPaddingTop'     => array(
 								'type'    => 'number',
-								'default' => 8,
 							),
 							'paginateButtonPaddingRight'   => array(
 								'type'    => 'number',
-								'default' => 16,
 							),
 							'paginateButtonPaddingBottom'  => array(
 								'type'    => 'number',
-								'default' => 8,
 							),
 							'paginateButtonPaddingLeft'    => array(
 								'type'    => 'number',
-								'default' => 16,
 							),
 							'paginateButtonPaddingTopTab'  => array(
 								'type'    => 'number',
-								'default' => 8,
 							),
 							'paginateButtonPaddingRightTab' => array(
 								'type'    => 'number',
-								'default' => 16,
 							),
 							'paginateButtonPaddingBottomTab' => array(
 								'type'    => 'number',
-								'default' => 8,
 							),
 							'paginateButtonPaddingLeftTab' => array(
 								'type'    => 'number',
-								'default' => 16,
 							),
 							'paginateButtonPaddingTopMob'  => array(
 								'type'    => 'number',
-								'default' => 8,
 							),
 							'paginateButtonPaddingRightMob' => array(
 								'type'    => 'number',
-								'default' => 16,
 							),
 							'paginateButtonPaddingBottomMob' => array(
 								'type'    => 'number',
-								'default' => 8,
 							),
 							'paginateButtonPaddingLeftMob' => array(
 								'type'    => 'number',
-								'default' => 16,
 							),
 							'paginateButtonPaddingUnit'    => array(
 								'type'    => 'string',
@@ -476,7 +456,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 							),
 							'paginateButtonPaddingUnitLink' => array(
 								'type'    => 'boolean',
-								'default' => false,
+								'default' => true,
 							),
 						),
 						// Image Styling.
@@ -679,19 +659,15 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 							),
 							'paginateButtonTextColor'      => array(
 								'type'    => 'string',
-								'default' => '#ffffff',
 							),
 							'paginateButtonTextColorHover' => array(
 								'type'    => 'string',
-								'default' => '#4A01E0',
 							),
 							'paginateColor'                => array(
 								'type'    => 'string',
-								'default' => '#4A01E0',
 							),
 							'paginateColorHover'           => array(
 								'type'    => 'string',
-								'default' => '#de99ec',
 							),
 						),
 						// Responsive Borders.
@@ -854,16 +830,16 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 			ob_start();
 			if ( $attributes['paginateUseLoader'] ) {
 				?>
-					<div class="spectra-image-gallery__control-loader">
-						<div class="spectra-image-gallery__control-loader--1"></div>
-						<div class="spectra-image-gallery__control-loader--2"></div>
-						<div class="spectra-image-gallery__control-loader--3"></div>
+					<div class="spectra-image-gallery__control-loader wp-block-button">
+						<div class="wp-block-button__link spectra-image-gallery__control-loader--1"></div>
+						<div class="wp-block-button__link spectra-image-gallery__control-loader--2"></div>
+						<div class="wp-block-button__link spectra-image-gallery__control-loader--3"></div>
 					</div>
 				<?php
 			} else {
 				?>
-					<div class="spectra-image-gallery__control-wrapper">
-						<div class="spectra-image-gallery__control-button" aria-label="<?php echo esc_html( $attributes['paginateButtonText'] ); ?>" tabIndex=0>
+					<div class="spectra-image-gallery__control-wrapper wp-block-button">
+						<div class="spectra-image-gallery__control-button wp-block-button__link" aria-label="<?php echo esc_html( $attributes['paginateButtonText'] ); ?>" tabIndex=0>
 							<?php echo esc_html( $attributes['paginateButtonText'] ); ?>
 						</div>
 					</div>

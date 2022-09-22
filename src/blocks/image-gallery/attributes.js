@@ -12,12 +12,7 @@ const arrowBorderAttributes = getBorderAttributes( 'arrow', {
 	borderBottomLeftRadius: 50,
 	borderBottomRightRadius: 50,
 } );
-const btnBorderAttributes = getBorderAttributes( 'btn', {
-	borderTopLeftRadius: 50,
-	borderTopRightRadius: 50,
-	borderBottomLeftRadius: 50,
-	borderBottomRightRadius: 50,
-} );
+const btnBorderAttributes = getBorderAttributes( 'btn' );
 const mainTitleBorderAttributes = getBorderAttributes( 'mainTitle', {
 	borderTopWidth: 2,
 	borderRightWidth: 0,
@@ -492,84 +487,72 @@ const attributes = {
 	},
 	paginateButtonPaddingTop: {
 		type: 'number',
-		default: 8,
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding'
 		},
 	},
 	paginateButtonPaddingRight: {
 		type: 'number',
-		default: 16,
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding'
 		},
 	},
 	paginateButtonPaddingBottom: {
 		type: 'number',
-		default: 8,
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding'
 		},
 	},
 	paginateButtonPaddingLeft: {
 		type: 'number',
-		default: 16,
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding'
 		},
 	},
 	paginateButtonPaddingTopTab: {
 		type: 'number',
-		default: 8,
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding-tablet'
 		},
 	},
 	paginateButtonPaddingRightTab: {
 		type: 'number',
-		default: 16,
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding-tablet'
 		},
 	},
 	paginateButtonPaddingBottomTab: {
 		type: 'number',
-		default: 8,
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding-tablet'
 		},
 	},
 	paginateButtonPaddingLeftTab: {
 		type: 'number',
-		default: 16,
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding-tablet'
 		},
 	},
 	paginateButtonPaddingTopMob: {
 		type: 'number',
-		default: 8,
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding-mobile'
 		},
 	},
 	paginateButtonPaddingRightMob: {
 		type: 'number',
-		default: 16,
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding-mobile'
 		},
 	},
 	paginateButtonPaddingBottomMob: {
 		type: 'number',
-		default: 8,
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding-mobile'
 		},
 	},
 	paginateButtonPaddingLeftMob: {
 		type: 'number',
-		default: 16,
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding-mobile'
 		},
@@ -597,7 +580,7 @@ const attributes = {
 	},
 	paginateButtonPaddingUnitLink: {
 		type: 'boolean',
-		default: false,
+		default: true,
 		UAGCopyPaste: {
 			styleType: 'btn-padding-spacing-link'
 		},
@@ -1039,28 +1022,24 @@ const attributes = {
 	},
 	paginateButtonTextColor: {
 		type: 'string',
-		default: '#ffffff',
 		UAGCopyPaste: {
 			styleType: 'btn-color'
 		},
 	},
 	paginateButtonTextColorHover: {
 		type: 'string',
-		default: '#4A01E0',
 		UAGCopyPaste: {
 			styleType: 'btn-hover-color'
 		},
 	},
 	paginateColor: {
 		type: 'string',
-		default: '#4A01E0',
 		UAGCopyPaste: {
 			styleType: 'btn-bg-color'
 		},
 	},
 	paginateColorHover: {
 		type: 'string',
-		default: '#de99ec',
 		UAGCopyPaste: {
 			styleType: 'btn-bg-hover-color'
 		},

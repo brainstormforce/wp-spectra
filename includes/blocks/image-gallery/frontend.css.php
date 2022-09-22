@@ -89,6 +89,8 @@ $selectors = array(
 		'background-color' => $attr['paginateColor'],
 		'width'            => UAGB_Helper::get_css_value( $paginate_loader_size_fallback, 'px' ),
 		'height'           => UAGB_Helper::get_css_value( $paginate_loader_size_fallback, 'px' ),
+		'border-radius'    => '100%',
+		'padding'          => 0,
 	),
 	' .spectra-image-gallery__control-button'           => array_merge(
 		array(

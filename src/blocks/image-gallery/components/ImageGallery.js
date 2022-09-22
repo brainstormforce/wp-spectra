@@ -376,13 +376,13 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	const renderMasonryPagintion = () => (
 		<>
 			{ paginateUseLoader ? (
-				<div className="spectra-image-gallery__control-loader">
-					<div className="spectra-image-gallery__control-loader--1"></div>
-					<div className="spectra-image-gallery__control-loader--2"></div>
-					<div className="spectra-image-gallery__control-loader--3"></div>
+				<div className="spectra-image-gallery__control-loader wp-block-button">
+					<div className="wp-block-button__link spectra-image-gallery__control-loader--1"></div>
+					<div className="wp-block-button__link spectra-image-gallery__control-loader--2"></div>
+					<div className="wp-block-button__link spectra-image-gallery__control-loader--3"></div>
 				</div>
 			) : (
-				<div className="spectra-image-gallery__control-wrapper">
+				<div className="spectra-image-gallery__control-wrapper wp-block-button">
 					<RichText
 						tagName="div"
 						placeholder={ __(
@@ -395,7 +395,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 								paginateButtonText: value,
 							} )
 						}
-						className="spectra-image-gallery__control-button"
+						className="spectra-image-gallery__control-button wp-block-button__link"
 						multiline={ false }
 						allowedFormats={ [
 							'core/bold',

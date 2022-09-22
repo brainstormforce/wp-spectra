@@ -239,10 +239,10 @@ const Settings = ( props ) => {
 	let labelForBgEffectAmount;
 	let labelForHoverBgEffectAmount;
 	let labelForLayoutPanel;
-	const labelForPaginationColor = paginateUseLoader ? (
-		__( 'Color', 'ultimate-addons-for-gutenberg' )
-	) : (
+	const labelForPaginationColor = ( 'masonry' === feedLayout && ! paginateUseLoader ) ? (
 		__( 'Background Color', 'ultimate-addons-for-gutenberg' )
+	) : (
+		__( 'Color', 'ultimate-addons-for-gutenberg' )
 	);
 
 	// Assigning Internationilized Dynamic Label.
@@ -381,16 +381,16 @@ const Settings = ( props ) => {
 					isHover
 					? captionColorHover
 						? captionColorHover
-						: 'rgba(0,0,0,0)'
+						: ''
 					: captionColor
 						? captionColor
-						: 'rgba(0,0,0,0)'
+						: ''
 				}
-				onColorChange={ ( value ) =>
-					isHover
-					? setAttributes( { captionColorHover: value } )
-					: setAttributes( { captionColor: value } )
-				}
+				data={ {
+					value: isHover ? captionColorHover : captionColor,
+					label: isHover ? 'captionColorHover' : 'captionColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<AdvancedPopColorControl
 				label={ labelForCaptionBgColor }
@@ -398,16 +398,16 @@ const Settings = ( props ) => {
 					isHover
 					? captionBackgroundColorHover
 						? captionBackgroundColorHover
-						: 'rgba(0,0,0,0)'
+						: ''
 					: captionBackgroundColor
 						? captionBackgroundColor
-						: 'rgba(0,0,0,0)'
+						: ''
 				}
-				onColorChange={ ( value ) =>
-					isHover
-					? setAttributes( { captionBackgroundColorHover: value } )
-					: setAttributes( { captionBackgroundColor: value } )
-				}
+				data={ {
+					value: isHover ? captionBackgroundColorHover : captionBackgroundColor,
+					label: isHover ? 'captionBackgroundColorHover' : 'captionBackgroundColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 		</>
 	);
@@ -454,16 +454,16 @@ const Settings = ( props ) => {
 						isHover
 						? overlayColorHover
 							? overlayColorHover
-							: 'rgba(0,0,0,0)'
+							: ''
 						: overlayColor
 							? overlayColor
-							: 'rgba(0,0,0,0)'
+							: ''
 					}
-					onColorChange={ ( value ) =>
-						isHover
-						? setAttributes( { overlayColorHover: value } )
-						: setAttributes( { overlayColor: value } )
-					}
+					data={ {
+						value: isHover ? overlayColorHover : overlayColor,
+						label: isHover ? 'overlayColorHover' : 'overlayColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			) }
 			{ captionBackgroundEnableBlur && (
@@ -528,18 +528,18 @@ const Settings = ( props ) => {
 					isHover
 					? paginateColorHover
 						? paginateColorHover
-						: 'rgba(0,0,0,0)'
+						: ''
 					: paginateColor
 						? paginateColor
-						: 'rgba(0,0,0,0)'
+						: ''
 				}
-				onColorChange={ ( value ) =>
-					isHover
-					? setAttributes( { paginateColorHover: value } )
-					: setAttributes( { paginateColor: value } )
-				}
+				data={ {
+					value: isHover ? paginateColorHover : paginateColor,
+					label: isHover ? 'paginateColorHover' : 'paginateColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
-			{ ! paginateUseLoader && (
+			{ ( 'masonry' === feedLayout && ! paginateUseLoader ) && (
 				<>
 					<AdvancedPopColorControl
 						label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
@@ -547,16 +547,16 @@ const Settings = ( props ) => {
 							isHover
 							? paginateButtonTextColorHover
 								? paginateButtonTextColorHover
-								: 'rgba(0,0,0,0)'
+								: ''
 							: paginateButtonTextColor
 								? paginateButtonTextColor
-								: 'rgba(0,0,0,0)'
+								: ''
 						}
-						onColorChange={ ( value ) =>
-							isHover
-							? setAttributes( { paginateButtonTextColorHover: value } )
-							: setAttributes( { paginateButtonTextColor: value } )
-						}
+						data={ {
+							value: isHover ? paginateButtonTextColorHover : paginateButtonTextColor,
+							label: isHover ? 'paginateButtonTextColorHover' : 'paginateButtonTextColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			) }
@@ -1578,21 +1578,21 @@ const Settings = ( props ) => {
 					<>
 						<AdvancedPopColorControl
 							label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
-							colorValue={
-								captionColor
-								? captionColor
-								: 'rgba(0,0,0,0)'
-							}
-							onColorChange={ ( value ) => setAttributes( { captionColor: value } ) }
+							colorValue={ captionColor ? captionColor : '' }
+							data={ {
+								value: captionColor,
+								label: 'captionColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<AdvancedPopColorControl
 							label={ labelForCaptionBgColor }
-							colorValue={
-								captionBackgroundColor
-								? captionBackgroundColor
-								: 'rgba(0,0,0,0)'
-							}
-							onColorChange={ ( value ) => setAttributes( { captionBackgroundColor: value } ) }
+							colorValue={ captionBackgroundColor ? captionBackgroundColor : '' }
+							data={ {
+								value: captionBackgroundColor,
+								label: 'captionBackgroundColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					</>
 				)

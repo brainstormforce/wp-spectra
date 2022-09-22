@@ -21,15 +21,7 @@ $arrow_border_attributes      = UAGB_Block_Helper::uag_generate_border_attribute
 		'borderBottomRightRadius' => 50,
 	)
 );
-$btn_border_attributes        = UAGB_Block_Helper::uag_generate_border_attribute(
-	'btn',
-	array(
-		'borderTopLeftRadius'     => 50,
-		'borderTopRightRadius'    => 50,
-		'borderBottomLeftRadius'  => 50,
-		'borderBottomRightRadius' => 50,
-	)
-);
+$btn_border_attributes        = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 $main_title_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute(
 	'mainTitle',
 	array(
@@ -123,22 +115,22 @@ return array_merge(
 		'paginateLimit'                      => 9,
 		'paginateButtonAlign'                => 'center',
 		'paginateButtonText'                 => __( 'Load More Images', 'ultimate-addons-for-gutenberg' ),
-		'paginateButtonPaddingTop'           => 8,
-		'paginateButtonPaddingRight'         => 16,
-		'paginateButtonPaddingBottom'        => 8,
-		'paginateButtonPaddingLeft'          => 16,
-		'paginateButtonPaddingTopTab'        => 8,
-		'paginateButtonPaddingRightTab'      => 16,
-		'paginateButtonPaddingBottomTab'     => 8,
-		'paginateButtonPaddingLeftTab'       => 16,
-		'paginateButtonPaddingTopMob'        => 8,
-		'paginateButtonPaddingRightMob'      => 16,
-		'paginateButtonPaddingBottomMob'     => 8,
-		'paginateButtonPaddingLeftMob'       => 16,
+		'paginateButtonPaddingTop'           => '',
+		'paginateButtonPaddingRight'         => '',
+		'paginateButtonPaddingBottom'        => '',
+		'paginateButtonPaddingLeft'          => '',
+		'paginateButtonPaddingTopTab'        => '',
+		'paginateButtonPaddingRightTab'      => '',
+		'paginateButtonPaddingBottomTab'     => '',
+		'paginateButtonPaddingLeftTab'       => '',
+		'paginateButtonPaddingTopMob'        => '',
+		'paginateButtonPaddingRightMob'      => '',
+		'paginateButtonPaddingBottomMob'     => '',
+		'paginateButtonPaddingLeftMob'       => '',
 		'paginateButtonPaddingUnit'          => 'px',
 		'paginateButtonPaddingUnitTab'       => 'px',
 		'paginateButtonPaddingUnitMob'       => 'px',
-		'paginateButtonPaddingUnitLink'      => false,
+		'paginateButtonPaddingUnitLink'      => true,
 		// Image Styling.
 		'imageBorderTopLeftRadius'           => '',
 		'imageBorderTopRightRadius'          => '',
@@ -208,10 +200,10 @@ return array_merge(
 		'paginateArrowDistance'              => -24,
 		'paginateArrowDistanceUnit'          => 'px',
 		'paginateLoaderSize'                 => 18,
-		'paginateButtonTextColor'            => '#ffffff',
-		'paginateButtonTextColorHover'       => '#4a01e0',
-		'paginateColor'                      => '#4a01e0',
-		'paginateColorHover'                 => '#de99ec',
+		'paginateButtonTextColor'            => '',
+		'paginateButtonTextColorHover'       => '',
+		'paginateColor'                      => '',
+		'paginateColorHover'                 => '',
 	),
 	$arrow_border_attributes,
 	$btn_border_attributes,

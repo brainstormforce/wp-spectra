@@ -257,6 +257,8 @@ function styling( props ) {
 			'background-color': paginateColor,
 			'width': generateCSSUnit( paginateLoaderSizeFallback, 'px' ),
 			'height': generateCSSUnit( paginateLoaderSizeFallback, 'px' ),
+			'border-radius': '100%',
+			'padding': 0,
 		},
 		' .spectra-image-gallery__control-button': {
 			'padding': generateSpacing(
