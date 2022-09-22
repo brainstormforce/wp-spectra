@@ -5,6 +5,7 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/deprecatedRenderIcon';
 import { RichText } from '@wordpress/block-editor';
+import newrenderSVG from '@Controls/renderIcon';
 
 const attributes = {
 	block_id: {
@@ -242,14 +243,14 @@ const deprecated = [
 				hideLabel,
 				fromParentIcon
 			} = attributes;
-		
+
 			const defaultedAlt = ( image && image?.alt ) ? image?.alt : '';
-		
+
 			let imageIconHtml = '';
-		
+
 			if ( image_icon === 'icon' ) {
 				if( icon || fromParentIcon ){
-					imageIconHtml = icon ? renderSVG( icon ) : renderSVG( fromParentIcon );
+					imageIconHtml = icon ? newrenderSVG( icon ) : newrenderSVG( fromParentIcon );
 				}
 			} else if ( image && image.url && image_icon !== 'none' ) {
 				imageIconHtml = (
@@ -260,7 +261,7 @@ const deprecated = [
 					/>
 				);
 			}
-		
+
 			const targetVal = target ? '_blank' : '_self';
 			const linkUrl = disableLink ? link : '/';
 
