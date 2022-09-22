@@ -685,7 +685,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 		public function render_initial_grid( $attributes ) {
 			$allMedia = '';
 			if ( $attributes['readyToRender'] ) {
-				$media = ( ( 'carousel' !== $attributes['feedLayout'] ) && $attributes['feedPagination'] )
+				$media = ( ( 'carousel' !== $attributes['feedLayout'] && 'tiled' !== $attributes['feedLayout'] ) && $attributes['feedPagination'] )
 					? $this->get_gallery_images( $attributes, 'paginated' )
 					: $this->get_gallery_images( $attributes, 'full' );
 
