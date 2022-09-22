@@ -68,6 +68,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 
 			$arrow_border_attributes      = array();
 			$btn_border_attributes        = array();
+			$image_border_attributes      = array();
 			$main_title_border_attributes = array();
 
 			if ( method_exists( 'UAGB_Block_Helper', 'uag_generate_php_border_attribute' ) ) {
@@ -86,6 +87,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 					)
 				);
 				$btn_border_attributes        = UAGB_Block_Helper::uag_generate_php_border_attribute( 'btn' );
+				$image_border_attributes      = UAGB_Block_Helper::uag_generate_php_border_attribute( 'image' );
 				$main_title_border_attributes = UAGB_Block_Helper::uag_generate_php_border_attribute(
 					'mainTitle',
 					array(
@@ -461,14 +463,6 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 						),
 						// Image Styling.
 						array(
-							'imageBorderRadius'            => array(
-								'type'    => 'number',
-								'default' => 0,
-							),
-							'imageBorderRadiusUnit'        => array(
-								'type'    => 'string',
-								'default' => 'px',
-							),
 							'imageEnableZoom'              => array(
 								'type'    => 'boolean',
 								'default' => true,
@@ -673,6 +667,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 						// Responsive Borders.
 						$arrow_border_attributes,
 						$btn_border_attributes,
+						$image_border_attributes,
 						$main_title_border_attributes
 					),
 					'render_callback' => array( $this, 'render_initial_grid' ),
