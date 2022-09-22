@@ -12,6 +12,10 @@ UAGB_Block_JS::blocks_image_gallery_gfont( $attr );
 
 $block_name = 'image-gallery';
 
+// Arrow & Dots Default Color Fallback ( Not from Theme ).
+$arrow_dot_color = $attr['paginateColor'] ? $attr['paginateColor'] : '#007cba';
+
+// Range Fallback.
 $caption_background_blur_opacity_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['captionBackgroundBlurOpacity'], 'captionBackgroundBlurOpacity', $block_name );
 $caption_background_blur_opacity_hover_fallback  = UAGB_Block_Helper::get_fallback_number( $attr['captionBackgroundBlurOpacityHover'], 'captionBackgroundBlurOpacityHover', $block_name );
 $caption_background_effect_amount_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['captionBackgroundEffectAmount'], 'captionBackgroundEffectAmount', $block_name );
@@ -22,9 +26,11 @@ $paginate_arrow_distance_fallback                = UAGB_Block_Helper::get_fallba
 $paginate_loader_size_fallback                   = UAGB_Block_Helper::get_fallback_number( $attr['paginateLoaderSize'], 'paginateLoaderSize', $block_name );
 $grid_image_gap_fallback                         = UAGB_Block_Helper::get_fallback_number( $attr['gridImageGap'], 'gridImageGap', $block_name );
 
+// Responsive Slider Fallback.
 $grid_image_gap_tablet_fallback = is_numeric( $attr['gridImageGapTab'] ) ? $attr['gridImageGapTab'] : $grid_image_gap_fallback;
 $grid_image_gap_mobile_fallback = is_numeric( $attr['gridImageGapMob'] ) ? $attr['gridImageGapMob'] : $grid_image_gap_tablet_fallback;
 
+// Border Attributes.
 $arrow_border_css             = UAGB_Block_Helper::uag_generate_border_css( $attr, 'arrow' );
 $arrow_border_css_tablet      = UAGB_Block_Helper::uag_generate_border_css( $attr, 'arrow', 'tablet' );
 $arrow_border_css_mobile      = UAGB_Block_Helper::uag_generate_border_css( $attr, 'arrow', 'mobile' );
@@ -52,7 +58,7 @@ $selectors = array(
 	// Control Settings.
 
 	' .spectra-image-gallery__control-arrows svg'       => array(
-		'fill' => $attr['paginateColor'],
+		'fill' => $arrow_dot_color,
 	),
 	' .spectra-image-gallery__control-arrows svg:hover' => array(
 		'fill' => $attr['paginateColorHover'],
@@ -74,13 +80,13 @@ $selectors = array(
 		),
 	),
 	' .spectra-image-gallery__layout--carousel ul.slick-dots li button:before' => array(
-		'color' => $attr['paginateColor'],
+		'color' => $arrow_dot_color,
 	),
 	' .spectra-image-gallery__layout--carousel ul.slick-dots li button:hover:before' => array(
 		'color' => $attr['paginateColorHover'],
 	),
 	' .spectra-image-gallery__control-dots li button::before' => array(
-		'color' => $attr['paginateColor'],
+		'color' => $arrow_dot_color,
 	),
 	' .spectra-image-gallery__control-dots li button:hover::before' => array(
 		'color' => $attr['paginateColorHover'],

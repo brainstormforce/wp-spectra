@@ -167,6 +167,9 @@ function styling( props ) {
 		mainTitleBorderHColor,
 	} = props.attributes;
 
+	// Arrow & Dots Default Color Fallback ( Not from Theme ).
+	const arrowDotColor = paginateColor ? paginateColor : '#007cba';
+
 	// Range Fallback.
 	const captionBackgroundBlurOpacityFallback = getFallbackNumber( captionBackgroundBlurOpacity, 'captionBackgroundBlurOpacity', blockName );
 	const captionBackgroundBlurOpacityHoverFallback = getFallbackNumber( captionBackgroundBlurOpacityHover, 'captionBackgroundBlurOpacityHover', blockName );
@@ -178,7 +181,7 @@ function styling( props ) {
 	const paginateLoaderSizeFallback = getFallbackNumber( paginateLoaderSize, 'paginateLoaderSize', blockName );
 	const gridImageGapFallback = getFallbackNumber( gridImageGap, 'gridImageGap', blockName );
 
-	// Spacing Fallback
+	// Spacing Fallback - Needed for Carousel Editor.
 	const feedMarginTopFallback = isNaN( feedMarginTop ) ? 0 : feedMarginTop;
 	const feedMarginRightFallback = isNaN( feedMarginRight ) ? 0 : feedMarginRight;
 	const feedMarginBottomFallback = isNaN( feedMarginBottom ) ? 0 : feedMarginBottom;
@@ -224,7 +227,7 @@ function styling( props ) {
 		// Control Settings
 
 		' .spectra-image-gallery__control-arrows svg': {
-			'fill': paginateColor,
+			'fill': arrowDotColor,
 		},
 		' .spectra-image-gallery__control-arrows:hover svg': {
 			'fill': paginateColorHover,
@@ -242,13 +245,13 @@ function styling( props ) {
 			'right': generateCSSUnit( paginateArrowDistanceFallback, paginateArrowDistanceUnit ),
 		},
 		' .spectra-image-gallery__layout--carousel ul.slick-dots li button:before': {
-			'color': paginateColor,
+			'color': arrowDotColor,
 		},
 		' .spectra-image-gallery__layout--carousel ul.slick-dots li button:hover:before': {
 			'color': paginateColorHover,
 		},
 		' .spectra-image-gallery__control-dots li button::before': {
-			'color': paginateColor,
+			'color': arrowDotColor,
 		},
 		' .spectra-image-gallery__control-dots li button:hover::before': {
 			'color': paginateColorHover,
