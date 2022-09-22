@@ -34,7 +34,11 @@ $t_selectors = array();
 
 $selectors = array(
 	'.wp-block-uagb-counter'                               => array(
-		'text-align' => $attr['align'],
+		'text-align'    => $attr['align'],
+		'margin-top'    => UAGB_Helper::get_css_value( $attr['blockTopMargin'], $attr['blockMarginUnit'] ),
+		'margin-right'  => UAGB_Helper::get_css_value( $attr['blockRightMargin'], $attr['blockMarginUnit'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['blockBottomMargin'], $attr['blockMarginUnit'] ),
+		'margin-left'   => UAGB_Helper::get_css_value( $attr['blockLeftMargin'], $attr['blockMarginUnit'] ),
 	),
 	'.wp-block-uagb-counter .wp-block-uagb-counter__title' => array(
 		'font-family'     => $attr['headingFontFamily'],
@@ -95,6 +99,13 @@ $selectors = array(
 );
 
 // tablet.
+$t_selectors['.wp-block-uagb-counter'] = array(
+	'margin-top'    => UAGB_Helper::get_css_value( $attr['blockTopMarginTablet'], $attr['blockMarginUnitTablet'] ),
+	'margin-right'  => UAGB_Helper::get_css_value( $attr['blockRightMarginTablet'], $attr['blockMarginUnitTablet'] ),
+	'margin-bottom' => UAGB_Helper::get_css_value( $attr['blockBottomMarginTablet'], $attr['blockMarginUnitTablet'] ),
+	'margin-left'   => UAGB_Helper::get_css_value( $attr['blockLeftMarginTablet'], $attr['blockMarginUnitTablet'] ),
+);
+
 $t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__title']                             = array(
 	'font-size'     => UAGB_Helper::get_css_value( $attr['headingFontSizeTablet'], $attr['headingFontSizeType'] ),
 	'line-height'   => UAGB_Helper::get_css_value( $attr['headingLineHeightTablet'], $attr['headingLineHeightType'] ),
@@ -125,6 +136,13 @@ $t_selectors['.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container
 );
 
 // mobile.
+$m_selectors['.wp-block-uagb-counter'] = array(
+	'margin-top'    => UAGB_Helper::get_css_value( $attr['blockTopMarginMobile'], $attr['blockMarginUnitMobile'] ),
+	'margin-right'  => UAGB_Helper::get_css_value( $attr['blockRightMarginMobile'], $attr['blockMarginUnitMobile'] ),
+	'margin-bottom' => UAGB_Helper::get_css_value( $attr['blockBottomMarginMobile'], $attr['blockMarginUnitMobile'] ),
+	'margin-left'   => UAGB_Helper::get_css_value( $attr['blockLeftMarginMobile'], $attr['blockMarginUnitMobile'] ),
+);
+
 $m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__title']                             = array(
 	'font-size'     => UAGB_Helper::get_css_value( $attr['headingFontSizeMobile'], $attr['headingFontSizeType'] ),
 	'line-height'   => UAGB_Helper::get_css_value( $attr['headingLineHeightMobile'], $attr['headingLineHeightType'] ),
