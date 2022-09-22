@@ -80,12 +80,19 @@ UAGBCounter = { // eslint-disable-line no-undef
 		const duration = that._getAnimationDuration( data );
 		const startWidth = data.startNumber < data.totalNumber ? Math.ceil( ( data.startNumber / data.totalNumber ) * 100 ) : 0;
 		const endWidth = data.endNumber < data.totalNumber ? Math.ceil( ( data.endNumber / data.totalNumber ) * 100 ) : 100;
-		jQuery( numberWrap ).css( 'width', startWidth + '%' ).animate( {
-			width: endWidth + '%'
-		}, {
+
+		const animationKeyframes = [
+			{ width: startWidth + '%' },
+			{ width: endWidth + '%' },
+		];
+
+		const animationProperties = {
 			duration,
-			easing: 'linear',
-		} );
+			fill: 'forwards',
+		};
+
+		numberWrap.animate( animationKeyframes, animationProperties );
+
 	},
 
 	_triggerCircle( el, data ){
@@ -106,21 +113,23 @@ UAGBCounter = { // eslint-disable-line no-undef
 		endPoint = ( endPoint / 100 ) * circumference;
 
 		const duration = that._getAnimationDuration( data );
-		jQuery( circleWrap ).css( 'strokeDashoffset', startPoint ).animate( {
-			strokeDashoffset: endPoint
-		}, {
-			duration,
-			easing: 'linear',
-			complete() {
 
-			}
-		} );
+		const animationKeyframes = [
+			{ strokeDashoffset: startPoint + 'px' },
+			{ strokeDashoffset: endPoint + 'px' },
+		];
+
+		const animationProperties = {
+			duration,
+			fill: 'forwards',
+		};
+
+		circleWrap.animate( animationKeyframes, animationProperties );
+
 	},
 
 	_getAnimationDuration( data ){
-		const that = this
-		const countAbleNumber = that._getEndNumber( data ) - that._getStartNumber( data )
-		return ( countAbleNumber * data.animationDuration ) * 10
+		return data.animationDuration * 1000
 	},
 
 	_getStartNumber( data ){
