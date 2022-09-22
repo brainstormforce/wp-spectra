@@ -59,6 +59,23 @@ export default function Settings( props ) {
 		headingMarginUnitTablet,
 		headingMarginUnitMobile,
 		headingMarginLink,
+		// Block Margin
+		blockTopMargin,
+		blockRightMargin,
+		blockLeftMargin,
+		blockBottomMargin,
+		blockTopMarginTablet,
+		blockRightMarginTablet,
+		blockLeftMarginTablet,
+		blockBottomMarginTablet,
+		blockTopMarginMobile,
+		blockRightMarginMobile,
+		blockLeftMarginMobile,
+		blockBottomMarginMobile,
+		blockMarginUnit,
+		blockMarginUnitTablet,
+		blockMarginUnitMobile,
+		blockMarginLink,
 		// Number
 		numberLoadGoogleFonts,
 		numberFontFamily,
@@ -652,6 +669,87 @@ export default function Settings( props ) {
 		</UAGAdvancedPanelBody>
 	)
 
+	const spacingPanel = (
+		<UAGAdvancedPanelBody
+			title={__( 'Spacing', 'ultimate-addons-for-gutenberg' )}
+			initialOpen={ false }
+		>
+			<SpacingControl
+				label={ __(
+					'Margin',
+					'ultimate-addons-for-gutenberg'
+				) }
+				valueTop={ {
+					value: blockTopMargin,
+					label: 'blockTopMargin',
+				} }
+				valueRight={ {
+					value: blockRightMargin,
+					label: 'blockRightMargin',
+				} }
+				valueBottom={ {
+					value: blockBottomMargin,
+					label: 'blockBottomMargin',
+				} }
+				valueLeft={ {
+					value: blockLeftMargin,
+					label: 'blockLeftMargin',
+				} }
+				valueTopTablet={ {
+					value: blockTopMarginTablet,
+					label: 'blockTopMarginTablet',
+				} }
+				valueRightTablet={ {
+					value: blockRightMarginTablet,
+					label: 'blockRightMarginTablet',
+				} }
+				valueBottomTablet={ {
+					value: blockBottomMarginTablet,
+					label: 'blockBottomMarginTablet',
+				} }
+				valueLeftTablet={ {
+					value: blockLeftMarginTablet,
+					label: 'blockLeftMarginTablet',
+				} }
+				valueTopMobile={ {
+					value: blockTopMarginMobile,
+					label: 'blockTopMarginMobile',
+				} }
+				valueRightMobile={ {
+					value: blockRightMarginMobile,
+					label: 'blockRightMarginMobile',
+				} }
+				valueBottomMobile={ {
+					value: blockBottomMarginMobile,
+					label: 'blockBottomMarginMobile',
+				} }
+				valueLeftMobile={ {
+					value: blockLeftMarginMobile,
+					label: 'blockLeftMarginMobile',
+				} }
+				unit={ {
+					value: blockMarginUnit,
+					label: 'blockMarginUnit',
+				} }
+				mUnit={ {
+					value: blockMarginUnitMobile,
+					label: 'blockMarginUnitMobile',
+				} }
+				tUnit={ {
+					value: blockMarginUnitTablet,
+					label: 'blockMarginUnitTablet',
+				} }
+				deviceType={ deviceType }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				link={ {
+					value: blockMarginLink,
+					label: 'blockMarginLink',
+				} }
+			/>
+		</UAGAdvancedPanelBody>
+	);
+
 	return (
 		<React.Fragment>
 			<BlockControls key="controls">
@@ -672,6 +770,7 @@ export default function Settings( props ) {
 						{headlineStylePanel}
 						{layout === 'circle' && circleStylePanel}
 						{layout === 'bars' && barStylePanel}
+						{spacingPanel}
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
