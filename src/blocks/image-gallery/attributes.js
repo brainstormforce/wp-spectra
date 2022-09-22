@@ -13,6 +13,7 @@ const arrowBorderAttributes = getBorderAttributes( 'arrow', {
 	borderBottomRightRadius: 50,
 } );
 const btnBorderAttributes = getBorderAttributes( 'btn' );
+const imageBorderAttributes = getBorderAttributes( 'image' );
 const mainTitleBorderAttributes = getBorderAttributes( 'mainTitle', {
 	borderTopWidth: 2,
 	borderRightWidth: 0,
@@ -588,106 +589,6 @@ const attributes = {
 
 	// Image Styling
 
-	imageBorderTopLeftRadius: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'image-border-top-left-radius'
-		},
-	},
-	imageBorderTopRightRadius: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'image-border-top-right-radius'
-		},
-	},
-	imageBorderBottomRightRadius: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'image-border-bottom-right-radius'
-		},
-	},
-	imageBorderBottomLeftRadius: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'image-border-bottom-left-radius'
-		},
-	},
-	imageBorderTopLeftRadiusTablet: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'image-border-top-left-radius-tablet'
-		},
-	},
-	imageBorderTopRightRadiusTablet: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'image-border-top-right-radius-tablet'
-		},
-	},
-	imageBorderBottomRightRadiusTablet: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'image-border-bottom-right-radius-tablet'
-		},
-	},
-	imageBorderBottomLeftRadiusTablet: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'image-border-bottom-left-radius-tablet'
-		},
-	},
-	imageBorderTopLeftRadiusMobile: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'image-border-top-left-radius-mobile'
-		},
-	},
-	imageBorderTopRightRadiusMobile: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'image-border-top-right-radius-mobile'
-		},
-	},
-	imageBorderBottomRightRadiusMobile: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'image-border-bottom-right-radius-mobile'
-		},
-	},
-	imageBorderBottomLeftRadiusMobile: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'image-border-bottom-left-radius-mobile'
-		},
-	},
-	imageBorderRadiusUnit: {
-		type: 'string',
-		default: 'px',
-		UAGCopyPaste: {
-			styleType: 'image-border-radius-unit'
-		},
-	},
-	imageBorderRadiusUnitTablet: {
-		type: 'string',
-		default: 'px',
-		UAGCopyPaste: {
-			styleType: 'image-border-radius-unit-tablet'
-		},
-	},
-	imageBorderRadiusUnitMobile: {
-		type: 'string',
-		default: 'px',
-		UAGCopyPaste: {
-			styleType: 'image-border-radius-unit-mobile'
-		},
-	},
-	imageBorderRadiusUnitLink: {
-		type: 'boolean',
-		default: true,
-		UAGCopyPaste: {
-			styleType: 'image-border-radius-link'
-		},
-	},
 	imageEnableZoom: {
 		type: 'boolean',
 		default: true,
@@ -1048,6 +949,7 @@ const attributes = {
 	// Border Attributes
 	...arrowBorderAttributes,
 	...btnBorderAttributes,
+	...imageBorderAttributes,
 	...mainTitleBorderAttributes,
 };
 

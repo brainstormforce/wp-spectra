@@ -37,6 +37,9 @@ $arrow_border_css_mobile      = UAGB_Block_Helper::uag_generate_border_css( $att
 $btn_border_css               = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
 $btn_border_css_tablet        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
 $btn_border_css_mobile        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
+$image_border_css             = UAGB_Block_Helper::uag_generate_border_css( $attr, 'image' );
+$image_border_css_tablet      = UAGB_Block_Helper::uag_generate_border_css( $attr, 'image', 'tablet' );
+$image_border_css_mobile      = UAGB_Block_Helper::uag_generate_border_css( $attr, 'image', 'mobile' );
 $main_title_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'mainTitle' );
 $main_title_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'mainTitle', 'tablet' );
 $main_title_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'mainTitle', 'mobile' );
@@ -166,26 +169,11 @@ $selectors = array(
 			$attr['gridImageGapUnit']
 		),
 	),
-	' .spectra-image-gallery__media'                    => array(
-		'border-radius' => UAGB_Block_Helper::generate_border_radius(
-			$attr['imageBorderRadiusUnit'],
-			$attr['imageBorderTopLeftRadius'],
-			$attr['imageBorderTopRightRadius'],
-			$attr['imageBorderBottomRightRadius'],
-			$attr['imageBorderBottomLeftRadius']
-		),
-	),
+	' .spectra-image-gallery__media'                    => $image_border_css,
 
 	// Thumbnail Selectors.
 
 	' .spectra-image-gallery__media-thumbnail-blurrer'  => array(
-		'border-radius'           => UAGB_Block_Helper::generate_border_radius(
-			$attr['imageBorderRadiusUnit'],
-			$attr['imageBorderTopLeftRadius'],
-			$attr['imageBorderTopRightRadius'],
-			$attr['imageBorderBottomRightRadius'],
-			$attr['imageBorderBottomLeftRadius']
-		),
 		'-webkit-backdrop-filter' => 'blur(' . UAGB_Helper::get_css_value(
 			$caption_background_blur_amount_fallback,
 			'px'
@@ -242,13 +230,6 @@ $selectors = array(
 		),
 	),
 	' .spectra-image-gallery__media-thumbnail-caption--overlay' => array(
-		'border-radius'           => UAGB_Block_Helper::generate_border_radius(
-			$attr['imageBorderRadiusUnit'],
-			$attr['imageBorderTopLeftRadius'],
-			$attr['imageBorderTopRightRadius'],
-			$attr['imageBorderBottomRightRadius'],
-			$attr['imageBorderBottomLeftRadius']
-		),
 		'-webkit-align-items'     => UAGB_Block_Helper::get_matrix_alignment( $attr['imageCaptionAlignment'], 1, 'flex' ),
 		'align-items'             => UAGB_Block_Helper::get_matrix_alignment( $attr['imageCaptionAlignment'], 1, 'flex' ),
 		'-webkit-justify-content' => UAGB_Block_Helper::get_matrix_alignment( $attr['imageCaptionAlignment'], 2, 'flex' ),
@@ -343,42 +324,7 @@ $t_selectors = array(
 			$attr['gridImageGapUnitTab']
 		),
 	),
-	' .spectra-image-gallery__media'                    => array(
-		'border-radius' => UAGB_Block_Helper::generate_border_radius(
-			$attr['imageBorderRadiusUnitTablet'],
-			$attr['imageBorderTopLeftRadiusTablet'],
-			$attr['imageBorderTopRightRadiusTablet'],
-			$attr['imageBorderBottomRightRadiusTablet'],
-			$attr['imageBorderBottomLeftRadiusTablet']
-		),
-	),
-	' .spectra-image-gallery__media-thumbnail-blurrer'  => array(
-		'border-radius' => UAGB_Block_Helper::generate_border_radius(
-			$attr['imageBorderRadiusUnitTablet'],
-			$attr['imageBorderTopLeftRadiusTablet'],
-			$attr['imageBorderTopRightRadiusTablet'],
-			$attr['imageBorderBottomRightRadiusTablet'],
-			$attr['imageBorderBottomLeftRadiusTablet']
-		),
-	),
-	' .spectra-image-gallery__media-thumbnail-caption-wrapper' => array(
-		'border-radius' => UAGB_Block_Helper::generate_border_radius(
-			$attr['imageBorderRadiusUnitTablet'],
-			$attr['imageBorderTopLeftRadiusTablet'],
-			$attr['imageBorderTopRightRadiusTablet'],
-			$attr['imageBorderBottomRightRadiusTablet'],
-			$attr['imageBorderBottomLeftRadiusTablet']
-		),
-	),
-	' .spectra-image-gallery__media-thumbnail-caption--overlay' => array(
-		'border-radius' => UAGB_Block_Helper::generate_border_radius(
-			$attr['imageBorderRadiusUnitTablet'],
-			$attr['imageBorderTopLeftRadiusTablet'],
-			$attr['imageBorderTopRightRadiusTablet'],
-			$attr['imageBorderBottomRightRadiusTablet'],
-			$attr['imageBorderBottomLeftRadiusTablet']
-		),
-	),
+	' .spectra-image-gallery__media'                    => $image_border_css_tablet,
 	' .spectra-image-gallery__media-thumbnail-caption'  => array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['captionFontSizeTab'], $attr['captionFontSizeType'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['captionLineHeightTab'], $attr['captionLineHeightType'] ),
@@ -455,42 +401,7 @@ $m_selectors = array(
 			$attr['gridImageGapUnitMob']
 		),
 	),
-	' .spectra-image-gallery__media'                    => array(
-		'border-radius' => UAGB_Block_Helper::generate_border_radius(
-			$attr['imageBorderRadiusUnitMobile'],
-			$attr['imageBorderTopLeftRadiusMobile'],
-			$attr['imageBorderTopRightRadiusMobile'],
-			$attr['imageBorderBottomRightRadiusMobile'],
-			$attr['imageBorderBottomLeftRadiusMobile']
-		),
-	),
-	' .spectra-image-gallery__media-thumbnail-blurrer'  => array(
-		'border-radius' => UAGB_Block_Helper::generate_border_radius(
-			$attr['imageBorderRadiusUnitMobile'],
-			$attr['imageBorderTopLeftRadiusMobile'],
-			$attr['imageBorderTopRightRadiusMobile'],
-			$attr['imageBorderBottomRightRadiusMobile'],
-			$attr['imageBorderBottomLeftRadiusMobile']
-		),
-	),
-	' .spectra-image-gallery__media-thumbnail-caption-wrapper' => array(
-		'border-radius' => UAGB_Block_Helper::generate_border_radius(
-			$attr['imageBorderRadiusUnitMobile'],
-			$attr['imageBorderTopLeftRadiusMobile'],
-			$attr['imageBorderTopRightRadiusMobile'],
-			$attr['imageBorderBottomRightRadiusMobile'],
-			$attr['imageBorderBottomLeftRadiusMobile']
-		),
-	),
-	' .spectra-image-gallery__media-thumbnail-caption--overlay' => array(
-		'border-radius' => UAGB_Block_Helper::generate_border_radius(
-			$attr['imageBorderRadiusUnitMobile'],
-			$attr['imageBorderTopLeftRadiusMobile'],
-			$attr['imageBorderTopRightRadiusMobile'],
-			$attr['imageBorderBottomRightRadiusMobile'],
-			$attr['imageBorderBottomLeftRadiusMobile']
-		),
-	),
+	' .spectra-image-gallery__media'                    => $image_border_css_mobile,
 	' .spectra-image-gallery__media-thumbnail-caption'  => array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['captionFontSizeMob'], $attr['captionFontSizeType'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['captionLineHeightMob'], $attr['captionLineHeightType'] ),
@@ -581,14 +492,14 @@ if ( 'masonry' === $attr['feedLayout'] && $attr['feedPagination'] && ! $attr['pa
 switch ( $attr['imageZoomType'] ) {
 	case 'zoom-in':
 		if ( $attr['imageEnableZoom'] ) {
-			$selectors[' .spectra-image-gallery__media-thumbnail']['transform'] = 'scale3d(1.005, 1.005, 1.005)';
+			$selectors[' .spectra-image-gallery__media-thumbnail']['transform'] = 'scale3d(1, 1, 1)';
 			$selectors[' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail']['transform'] = 'scale3d(1.1, 1.1, 1.1)';
 		}
 		break;
 	case 'zoom-out':
 		if ( $attr['imageEnableZoom'] ) {
 			$selectors[' .spectra-image-gallery__media-thumbnail']['transform'] = 'scale3d(1.1, 1.1, 1.1)';
-			$selectors[' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail']['transform'] = 'scale3d(1.005, 1.005, 1.005)';
+			$selectors[' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail']['transform'] = 'scale3d(1, 1, 1)';
 		}
 		break;
 }

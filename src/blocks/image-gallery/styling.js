@@ -86,21 +86,6 @@ function styling( props ) {
 		paginateButtonPaddingUnitMob,
 		
 		// Image Styling.
-		imageBorderTopLeftRadius,
-		imageBorderTopRightRadius,
-		imageBorderBottomRightRadius,
-		imageBorderBottomLeftRadius,
-		imageBorderTopLeftRadiusTablet,
-		imageBorderTopRightRadiusTablet,
-		imageBorderBottomRightRadiusTablet,
-		imageBorderBottomLeftRadiusTablet,
-		imageBorderTopLeftRadiusMobile,
-		imageBorderTopRightRadiusMobile,
-		imageBorderBottomRightRadiusMobile,
-		imageBorderBottomLeftRadiusMobile,
-		imageBorderRadiusUnit,
-		imageBorderRadiusUnitTablet,
-		imageBorderRadiusUnitMobile,
 		imageEnableZoom,
 		imageZoomType,
 		captionBackgroundEnableBlur,
@@ -160,7 +145,7 @@ function styling( props ) {
 		paginateColor,
 		paginateColorHover,
 
-		// Border Hover Colors.
+		// Border Extracted Attributes.
 		btnBorderHColor,
 		arrowBorderHColor,
 		mainTitleBorderColor,
@@ -206,6 +191,9 @@ function styling( props ) {
 	const btnBorderCSS = generateBorderCSS( props.attributes, 'btn' );
 	const btnBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
 	const btnBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+	const imageBorderCSS = generateBorderCSS( props.attributes, 'image' );
+	const imageBorderCSSTablet = generateBorderCSS( props.attributes, 'image', 'tablet' );
+	const imageBorderCSSMobile = generateBorderCSS( props.attributes, 'image', 'mobile' );
 	const mainTitleBorderCSS = generateBorderCSS( props.attributes, 'mainTitle' );
 	const mainTitleBorderCSSTablet = generateBorderCSS( props.attributes, 'mainTitle', 'tablet' );
 	const mainTitleBorderCSSMobile = generateBorderCSS( props.attributes, 'mainTitle', 'mobile' );
@@ -344,25 +332,12 @@ function styling( props ) {
 			'grid-auto-rows': generateCSSUnit( tileSize, 'px' ),
 		},
 		' .spectra-image-gallery__media': {
-			'border-radius': generateBorderRadius(
-				imageBorderRadiusUnit,
-				imageBorderTopLeftRadius,
-				imageBorderTopRightRadius,
-				imageBorderBottomRightRadius,
-				imageBorderBottomLeftRadius,
-			),
+			...imageBorderCSS,
 		},
 
 
 		// Thumbnail Selectors
 		' .spectra-image-gallery__media-thumbnail-blurrer': {
-			'border-radius': generateBorderRadius(
-				imageBorderRadiusUnit,
-				imageBorderTopLeftRadius,
-				imageBorderTopRightRadius,
-				imageBorderBottomRightRadius,
-				imageBorderBottomLeftRadius,
-			),
 			'-webkit-backdrop-filter': `blur( ${ generateCSSUnit(
 				captionBackgroundBlurAmountFallback,
 				'px'
@@ -451,13 +426,6 @@ function styling( props ) {
 			),
 		},
 		' .spectra-image-gallery__media-thumbnail-caption--overlay': {
-			'border-radius': generateBorderRadius(
-				imageBorderRadiusUnit,
-				imageBorderTopLeftRadius,
-				imageBorderTopRightRadius,
-				imageBorderBottomRightRadius,
-				imageBorderBottomLeftRadius,
-			),
 			'-webkit-align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
 			'align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
 			'-webkit-justify-content': getMatrixAlignment( imageCaptionAlignment, 2, 'flex' ),
@@ -565,40 +533,7 @@ function styling( props ) {
 			),
 		},
 		' .spectra-image-gallery__media': {
-			'border-radius': generateBorderRadius(
-				imageBorderRadiusUnitTablet,
-				imageBorderTopLeftRadiusTablet,
-				imageBorderTopRightRadiusTablet,
-				imageBorderBottomRightRadiusTablet,
-				imageBorderBottomLeftRadiusTablet,
-			),
-		},
-		' .spectra-image-gallery__media-thumbnail-blurrer': {
-			'border-radius': generateBorderRadius(
-				imageBorderRadiusUnitTablet,
-				imageBorderTopLeftRadiusTablet,
-				imageBorderTopRightRadiusTablet,
-				imageBorderBottomRightRadiusTablet,
-				imageBorderBottomLeftRadiusTablet,
-			),
-		},
-		' .spectra-image-gallery__media-thumbnail-caption-wrapper': {
-			'border-radius': generateBorderRadius(
-				imageBorderRadiusUnitTablet,
-				imageBorderTopLeftRadiusTablet,
-				imageBorderTopRightRadiusTablet,
-				imageBorderBottomRightRadiusTablet,
-				imageBorderBottomLeftRadiusTablet,
-			),
-		},
-		' .spectra-image-gallery__media-thumbnail-caption--overlay': {
-			'border-radius': generateBorderRadius(
-				imageBorderRadiusUnitTablet,
-				imageBorderTopLeftRadiusTablet,
-				imageBorderTopRightRadiusTablet,
-				imageBorderBottomRightRadiusTablet,
-				imageBorderBottomLeftRadiusTablet,
-			),
+			...imageBorderCSSTablet,
 		},
 		' .spectra-image-gallery__media-thumbnail-caption': {
 			'font-size': generateCSSUnit( captionFontSizeTab, captionFontSizeType ),
@@ -676,42 +611,6 @@ function styling( props ) {
 			'grid-gap': generateCSSUnit(
 				gridImageGapMobFallback,
 				gridImageGapUnitMob
-			),
-		},
-		' .spectra-image-gallery__media': {
-			'border-radius': generateBorderRadius(
-				imageBorderRadiusUnitMobile,
-				imageBorderTopLeftRadiusMobile,
-				imageBorderTopRightRadiusMobile,
-				imageBorderBottomRightRadiusMobile,
-				imageBorderBottomLeftRadiusMobile,
-			),
-		},
-		' .spectra-image-gallery__media-thumbnail-blurrer': {
-			'border-radius': generateBorderRadius(
-				imageBorderRadiusUnitMobile,
-				imageBorderTopLeftRadiusMobile,
-				imageBorderTopRightRadiusMobile,
-				imageBorderBottomRightRadiusMobile,
-				imageBorderBottomLeftRadiusMobile,
-			),
-		},
-		' .spectra-image-gallery__media-thumbnail-caption-wrapper': {
-			'border-radius': generateBorderRadius(
-				imageBorderRadiusUnitMobile,
-				imageBorderTopLeftRadiusMobile,
-				imageBorderTopRightRadiusMobile,
-				imageBorderBottomRightRadiusMobile,
-				imageBorderBottomLeftRadiusMobile,
-			),
-		},
-		' .spectra-image-gallery__media-thumbnail-caption--overlay': {
-			'border-radius': generateBorderRadius(
-				imageBorderRadiusUnitMobile,
-				imageBorderTopLeftRadiusMobile,
-				imageBorderTopRightRadiusMobile,
-				imageBorderBottomRightRadiusMobile,
-				imageBorderBottomLeftRadiusMobile,
 			),
 		},
 		' .spectra-image-gallery__media-thumbnail-caption': {
@@ -839,7 +738,7 @@ function styling( props ) {
 			if( imageEnableZoom ){
 				selectors[ ' .spectra-image-gallery__media-thumbnail' ] = {
 					...selectors[ ' .spectra-image-gallery__media-thumbnail' ],
-					'transform': 'scale3d(1.005, 1.005, 1.005)',
+					'transform': 'scale3d(1, 1, 1)',
 				};
 				selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ] = {
 					...selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ],
@@ -855,7 +754,7 @@ function styling( props ) {
 				};
 				selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ] = {
 					...selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ],
-					'transform': 'scale3d(1.005, 1.005, 1.005)',
+					'transform': 'scale3d(1, 1, 1)',
 				};
 			}
 			break;

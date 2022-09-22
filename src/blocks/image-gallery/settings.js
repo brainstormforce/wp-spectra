@@ -1135,17 +1135,6 @@ const Settings = ( props ) => {
 					`Enable Blur Overlay`,
 					'ultimate-addons-for-gutenberg'
 				) }
-				help={
-					captionBackgroundEnableBlur
-					? __(
-						'Blur Overlay may not be visible on some browsers',
-						'ultimate-addons-for-gutenberg'
-					)
-					: __(
-						'Blur Opacity can be edited for Normal and Hover.',
-						'ultimate-addons-for-gutenberg'
-					)
-				}
 				checked={ captionBackgroundEnableBlur }
 				onChange={ () => 
 					setAttributes( { captionBackgroundEnableBlur: ! captionBackgroundEnableBlur } )
@@ -1165,86 +1154,6 @@ const Settings = ( props ) => {
 					displayUnit={ false }
 				/>
 			) }
-			<SpacingControl
-				{ ...props }
-				label={ __( 'Border Radius', 'ultimate-addons-for-gutenberg' ) }
-				valueTop={ {
-					value: imageBorderTopLeftRadius,
-					label: 'imageBorderTopLeftRadius',
-				} }
-				valueRight={ {
-					value: imageBorderTopRightRadius,
-					label: 'imageBorderTopRightRadius',
-				} }
-				valueBottom={ {
-					value: imageBorderBottomRightRadius,
-					label: 'imageBorderBottomRightRadius',
-				} }
-				valueLeft={ {
-					value: imageBorderBottomLeftRadius,
-					label: 'imageBorderBottomLeftRadius',
-				} }
-				valueTopTablet={ {
-					value: imageBorderTopLeftRadiusTablet,
-					label: 'imageBorderTopLeftRadiusTablet',
-				} }
-				valueRightTablet={ {
-					value: imageBorderTopRightRadiusTablet,
-					label: 'imageBorderTopRightRadiusTablet',
-				} }
-				valueBottomTablet={ {
-					value: imageBorderBottomRightRadiusTablet,
-					label: 'imageBorderBottomRightRadiusTablet',
-				} }
-				valueLeftTablet={ {
-					value: imageBorderBottomLeftRadiusTablet,
-					label: 'imageBorderBottomLeftRadiusTablet',
-				} }
-				valueTopMobile={ {
-					value: imageBorderTopLeftRadiusMobile,
-					label: 'imageBorderTopLeftRadiusMobile',
-				} }
-				valueRightMobile={ {
-					value: imageBorderTopRightRadiusMobile,
-					label: 'imageBorderTopRightRadiusMobile',
-				} }
-				valueBottomMobile={ {
-					value: imageBorderBottomRightRadiusMobile,
-					label: 'imageBorderBottomRightRadiusMobile',
-				} }
-				valueLeftMobile={ {
-					value: imageBorderBottomLeftRadiusMobile,
-					label: 'imageBorderBottomLeftRadiusMobile',
-				} }
-				unit={ {
-					value: imageBorderRadiusUnit,
-					label: 'imageBorderRadiusUnit',
-				} }
-				tUnit={ {
-					value: imageBorderRadiusUnitTablet,
-					label: 'imageBorderRadiusUnitTablet',
-				} }
-				mUnit={ {
-					value: imageBorderRadiusUnitMobile,
-					label: 'imageBorderRadiusUnitMobile',
-				} }
-				attributes={ attributes }
-				setAttributes={ setAttributes }
-				link={ {
-					value: imageBorderRadiusUnitLink,
-					label: 'imageBorderRadiusUnitLink',
-				} }
-				units={ [
-					{
-						name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
-						unitValue: 'px',
-					},
-					{
-						name: __( '%', 'ultimate-addons-for-gutenberg' ),
-						unitValue: '%',
-					},
-				] }
-			/>
 			<UAGTabsControl
 				tabs={ [
 					{
@@ -1258,6 +1167,13 @@ const Settings = ( props ) => {
 				] }
 				normal={ renderOverlayDisplay( false ) }
 				hover={ renderOverlayDisplay( true ) }
+				// disableBottomSeparator={ false }
+			/>
+			<ResponsiveBorder
+				setAttributes={ setAttributes }
+				prefix={ 'image' }
+				attributes={ attributes }
+				deviceType={ deviceType }
 				disableBottomSeparator={ true }
 			/>
 		</UAGAdvancedPanelBody>

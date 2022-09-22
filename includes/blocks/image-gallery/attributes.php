@@ -22,6 +22,7 @@ $arrow_border_attributes      = UAGB_Block_Helper::uag_generate_border_attribute
 	)
 );
 $btn_border_attributes        = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
+$image_border_attributes      = UAGB_Block_Helper::uag_generate_border_attribute( 'image' );
 $main_title_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute(
 	'mainTitle',
 	array(
@@ -132,22 +133,6 @@ return array_merge(
 		'paginateButtonPaddingUnitMob'       => 'px',
 		'paginateButtonPaddingUnitLink'      => true,
 		// Image Styling.
-		'imageBorderTopLeftRadius'           => '',
-		'imageBorderTopRightRadius'          => '',
-		'imageBorderBottomRightRadius'       => '',
-		'imageBorderBottomLeftRadius'        => '',
-		'imageBorderTopLeftRadiusTablet'     => '',
-		'imageBorderTopRightRadiusTablet'    => '',
-		'imageBorderBottomRightRadiusTablet' => '',
-		'imageBorderBottomLeftRadiusTablet'  => '',
-		'imageBorderTopLeftRadiusMobile'     => '',
-		'imageBorderTopRightRadiusMobile'    => '',
-		'imageBorderBottomRightRadiusMobile' => '',
-		'imageBorderBottomLeftRadiusMobile'  => '',
-		'imageBorderRadiusUnit'              => 'px',
-		'imageBorderRadiusUnitTablet'        => 'px',
-		'imageBorderRadiusUnitMobile'        => 'px',
-		'imageBorderRadiusUnitLink'          => true,
 		'imageEnableZoom'                    => true,
 		'imageZoomType'                      => 'zoom-in',
 		'captionBackgroundEnableBlur'        => false,
@@ -207,5 +192,6 @@ return array_merge(
 	),
 	$arrow_border_attributes,
 	$btn_border_attributes,
+	$image_border_attributes,
 	$main_title_border_attributes
 );
