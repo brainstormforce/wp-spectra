@@ -32,8 +32,7 @@
 	.uagb-forms-phone-flex {
 		height: unset !important;
 		.uagb-form-phone-country {
-			// height: unset;
-			height: calc(100% - 4px);
+			height: unset;
 		}
 	}
 }
@@ -43,7 +42,6 @@
 		height: unset !important;
 		.uagb-form-phone-country {
 			height: unset;
-			// height: calc(100% - 8px);
 		}
 	}
 }
