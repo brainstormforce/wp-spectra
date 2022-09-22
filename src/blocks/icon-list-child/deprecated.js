@@ -274,7 +274,7 @@ const deprecated = [
 					{ disableLink && (
 						<a
 							target={ targetVal }
-							aria-label={ label.replace( /(<([^>]+)>)/ig, '' ) }
+							aria-label={ label }
 							rel="noopener noreferrer"
 							href={ linkUrl }
 						>
