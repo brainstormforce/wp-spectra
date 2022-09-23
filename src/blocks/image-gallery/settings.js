@@ -135,6 +135,7 @@ const Settings = ( props ) => {
 		imageZoomType,
 		captionBackgroundEnableBlur,
 		captionBackgroundBlurAmount,
+		captionBackgroundBlurAmountHover,
 
 		captionLoadGoogleFonts,
 		captionFontFamily,
@@ -166,8 +167,6 @@ const Settings = ( props ) => {
 		loadMoreLineHeightMob,
 		loadMoreLineHeightTab,
 
-		captionBackgroundBlurOpacity,
-		captionBackgroundBlurOpacityHover,
 		captionBackgroundEffect,
 		captionBackgroundEffectHover,
 		captionBackgroundEffectAmount,
@@ -469,23 +468,23 @@ const Settings = ( props ) => {
 			) }
 			{ captionBackgroundEnableBlur && (
 				<Range
-					label={ __( `Blur Opacity`, 'ultimate-addons-for-gutenberg' ) }
+					label={ __( `Blur Amount`, 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ 
 						isHover
-						? captionBackgroundBlurOpacityHover
-						: captionBackgroundBlurOpacity
+						? captionBackgroundBlurAmountHover
+						: captionBackgroundBlurAmount
 					}
 					data={ {
 						value: isHover
-							? captionBackgroundBlurOpacityHover
-							: captionBackgroundBlurOpacity,
+							? captionBackgroundBlurAmountHover
+							: captionBackgroundBlurAmount,
 						label: isHover
-							? 'captionBackgroundBlurOpacityHover'
-							: 'captionBackgroundBlurOpacity',
+							? 'captionBackgroundBlurAmountHover'
+							: 'captionBackgroundBlurAmount',
 					} }
 					min={ 0 }
-					max={ 100 }
+					max={ 10 }
 					displayUnit={ false }
 				/>
 			) }
@@ -1141,20 +1140,6 @@ const Settings = ( props ) => {
 					setAttributes( { captionBackgroundEnableBlur: ! captionBackgroundEnableBlur } )
 				}
 			/>
-			{ captionBackgroundEnableBlur && (
-				<Range
-					label={ __( `Blur Amount`, 'ultimate-addons-for-gutenberg' ) }
-					setAttributes={ setAttributes }
-					value={ captionBackgroundBlurAmount }
-					data={ {
-						value: captionBackgroundBlurAmount,
-						label: 'captionBackgroundBlurAmount',
-					} }
-					min={ 0 }
-					max={ 50 }
-					displayUnit={ false }
-				/>
-			) }
 			<UAGTabsControl
 				tabs={ [
 					{

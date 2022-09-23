@@ -8,10 +8,10 @@
 
 // This Mixin contains Common Transition Speeds.
 @mixin transitionSpeeds {
-	-webkit-transition-duration: 0.2s;
-	-moz-transition-duration: 0.2s;
-	-o-transition-duration: 0.2s;
-	transition-duration: 0.2s;
+	-webkit-transition-duration: 0.1s;
+	-moz-transition-duration: 0.1s;
+	-o-transition-duration: 0.1s;
+	transition-duration: 0.1s;
 }
 
 // This Mixin Handles Special Tiles
@@ -273,6 +273,10 @@
 		position: relative;
 		overflow: hidden;
 		background-color: #000;
+		-webkit-transition: box-shadow 0.1s;
+		-moz-transition: box-shadow 0.1s;
+		-o-transition: box-shadow 0.1s;
+		transition: box-shadow 0.1s;
 
 		&--flagged {
 			cursor: not-allowed;
@@ -313,10 +317,10 @@
 		}
 
 		&-thumbnail {
-			-webkit-transition: filter 0.2s, transform 0.5s;
-			-moz-transition: filter 0.2s, transform 0.5s;
-			-o-transition: filter 0.2s, transform 0.5s;
-			transition: filter 0.2s, transform 0.5s;
+			-webkit-transition: filter 0.1s, transform 0.25s;
+			-moz-transition: filter 0.1s, transform 0.25s;
+			-o-transition: filter 0.1s, transform 0.25s;
+			transition: filter 0.1s, transform 0.25s;
 
 			&--grid {
 				width: 100% !important;
@@ -344,20 +348,19 @@
 				position: absolute;
 				top: 0;
 				left: 0;
-				opacity: 1;
 				width: 100% !important;
 				height: 100% !important;
-				-webkit-transition: opacity 0.2s;
-				-moz-transition: opacity 0.2s;
-				-o-transition: opacity 0.2s;
-				transition: opacity 0.2s;
+				-webkit-transition: box-shadow 0.1s, -webkit-backdrop-filter 0.1s;
+				-moz-transition: box-shadow 0.1s, backdrop-filter 0.1s;
+				-o-transition: box-shadow 0.1s, backdrop-filter 0.1s;
+				transition: box-shadow 0.1s, backdrop-filter 0.1s;
 			}
 
 			&-caption {
-				-webkit-transition-duration: 0.2s;
-				-moz-transition-duration: 0.2s;
-				-o-transition-duration: 0.2s;
-				transition-duration: 0.2s;
+				-webkit-transition-duration: 0.1s;
+				-moz-transition-duration: 0.1s;
+				-o-transition-duration: 0.1s;
+				transition-duration: 0.1s;
 				-webkit-transition-property: color, background-color, border-color;
 				-moz-transition-property: color, background-color, border-color;
 				-o-transition-property: color, background-color, border-color;
@@ -391,10 +394,10 @@
 				}
 
 				&-wrapper {
-					-webkit-transition: background-color 0.2s;
-					-moz-transition: background-color 0.2s;
-					-o-transition: background-color 0.2s;
-					transition: background-color 0.2s;
+					-webkit-transition: background-color 0.1s;
+					-moz-transition: background-color 0.1s;
+					-o-transition: background-color 0.1s;
+					transition: background-color 0.1s;
 
 					&--overlay {
 						position: absolute;
@@ -591,24 +594,6 @@
 				opacity: 1 !important;
 			}
 		}
-
-		&-lightbox {
-			position: fixed;
-			left: 0;
-			-webkit-backdrop-filter: blur(10px);
-			backdrop-filter: blur(10px);
-			background-color: #000;
-			opacity: 0.5;
-			z-index: 9001;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			pointer-events: none;
-
-			&--preview {
-				flex: 1;
-			}
-		}
 	}
 
 	&__iso-ref-wrapper {
@@ -618,25 +603,6 @@
 		&::-webkit-scrollbar {
 			display: none;
 		}
-	}
-}
-
-.doof {
-
-	&Top {
-		position: absolute;
-		top: 0;
-		left: 0;
-		margin: 0;
-		padding: 0;
-	}
-
-	&Bottom {
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		margin: 0;
-		padding: 0;
 	}
 }
 

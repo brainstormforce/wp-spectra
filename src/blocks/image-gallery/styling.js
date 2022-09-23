@@ -90,6 +90,7 @@ function styling( props ) {
 		imageZoomType,
 		captionBackgroundEnableBlur,
 		captionBackgroundBlurAmount,
+		captionBackgroundBlurAmountHover,
 
 		// Caption Font.
 		captionFontFamily,
@@ -122,8 +123,6 @@ function styling( props ) {
 		loadMoreLineHeightMob,
 
 		// Caption Styling.
-		captionBackgroundBlurOpacity,
-		captionBackgroundBlurOpacityHover,
 		captionBackgroundEffect,
 		captionBackgroundEffectHover,
 		captionBackgroundEffectAmount,
@@ -170,12 +169,11 @@ function styling( props ) {
 	const arrowDotColor = paginateColor ? paginateColor : '#007cba';
 
 	// Range Fallback.
-	const captionBackgroundBlurOpacityFallback = getFallbackNumber( captionBackgroundBlurOpacity, 'captionBackgroundBlurOpacity', blockName );
-	const captionBackgroundBlurOpacityHoverFallback = getFallbackNumber( captionBackgroundBlurOpacityHover, 'captionBackgroundBlurOpacityHover', blockName );
+	const captionBackgroundBlurAmountFallback = getFallbackNumber( captionBackgroundBlurAmount, 'captionBackgroundBlurAmount', blockName );
+	const captionBackgroundBlurAmountHoverFallback = getFallbackNumber( captionBackgroundBlurAmountHover, 'captionBackgroundBlurAmountHover', blockName );
 	const captionBackgroundEffectAmountFallback = getFallbackNumber( captionBackgroundEffectAmount, 'captionBackgroundEffectAmount', blockName );
 	const captionBackgroundEffectAmountHoverFallback = getFallbackNumber( captionBackgroundEffectAmountHover, 'captionBackgroundEffectAmountHover', blockName );
 	const captionGapFallback = getFallbackNumber( captionGap, 'captionGap', blockName );
-	const captionBackgroundBlurAmountFallback = getFallbackNumber( captionBackgroundBlurAmount, 'captionBackgroundBlurAmount', blockName );
 	const paginateArrowDistanceFallback = getFallbackNumber( paginateArrowDistance, 'paginateArrowDistance', blockName );
 	const paginateLoaderSizeFallback = getFallbackNumber( paginateLoaderSize, 'paginateLoaderSize', blockName );
 	const gridImageGapFallback = getFallbackNumber( gridImageGap, 'gridImageGap', blockName );
@@ -375,10 +373,6 @@ function styling( props ) {
 		},
 		' .spectra-image-gallery__media': {
 			...imageBorderCSS,
-			'box-shadow': imageBoxShadowCSS,
-		},
-		' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media': {
-			'box-shadow': imageBoxShadowHoverCSS,
 		},
 
 		// Thumbnail Selectors
@@ -391,16 +385,16 @@ function styling( props ) {
 				captionBackgroundBlurAmountFallback,
 				'px'
 			) } )`,
-			'opacity': generateCSSUnit(
-				captionBackgroundBlurOpacityFallback,
-				'%'
-			),
 		},
 		' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer': {
-			'opacity': generateCSSUnit(
-				captionBackgroundBlurOpacityHoverFallback,
-				'%'
-			),
+			'-webkit-backdrop-filter': `blur( ${ generateCSSUnit(
+				captionBackgroundBlurAmountHoverFallback,
+				'px'
+			) } )`,
+			'backdrop-filter': `blur( ${ generateCSSUnit(
+				captionBackgroundBlurAmountHoverFallback,
+				'px'
+			) } )`,
 		},
 
 		// Caption Wrapper Selectors
@@ -741,6 +735,10 @@ function styling( props ) {
 			'-webkit-backdrop-filter': 'none',
 			'backdrop-filter': 'none',
 		};
+		selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer' ] = {
+			'-webkit-backdrop-filter': 'none',
+			'backdrop-filter': 'none',
+		};
 	}
 
 	// Caption Type based styling.
@@ -795,7 +793,7 @@ function styling( props ) {
 			}
 			break;
 		case 'zoom-out':
-			if( imageEnableZoom ){
+			if ( imageEnableZoom ){
 				selectors[ ' .spectra-image-gallery__media-thumbnail' ] = {
 					...selectors[ ' .spectra-image-gallery__media-thumbnail' ],
 					'transform': 'scale3d(1.1, 1.1, 1.1)',
@@ -806,6 +804,47 @@ function styling( props ) {
 				};
 			}
 			break;
+	}
+
+	// Box Shadow Application Based on Type.
+	if ( 'outset' === imageBoxShadowPosition ) {
+		selectors[ ' .spectra-image-gallery__media' ] = {
+			...selectors[ ' .spectra-image-gallery__media' ],
+			'box-shadow': imageBoxShadowCSS,
+		};
+		selectors[ ' .spectra-image-gallery__media-thumbnail-blurrer' ] = {
+			...selectors[ ' .spectra-image-gallery__media-thumbnail-blurrer' ],
+			'box-shadow': `0 0 transparent${ 'inset' === imageBoxShadowPositionHover ? ` ${ imageBoxShadowPositionHover }` : '' }`,
+		};
+	}
+	else {
+		selectors[ ' .spectra-image-gallery__media-thumbnail-blurrer' ] = {
+			...selectors[ ' .spectra-image-gallery__media-thumbnail-blurrer' ],
+			'box-shadow': imageBoxShadowCSS,
+		};
+		selectors[ ' .spectra-image-gallery__media' ] = {
+			...selectors[ ' .spectra-image-gallery__media' ],
+			'box-shadow': `0 0 transparent${ 'inset' === imageBoxShadowPositionHover ? ` ${ imageBoxShadowPositionHover }` : '' }`,
+		};
+	}
+
+	if ( 'outset' === imageBoxShadowPositionHover ) {
+		selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media' ] = {
+			'box-shadow': imageBoxShadowHoverCSS,
+		};
+		selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer' ] = {
+			...selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer' ],
+			'box-shadow': `0 0 transparent${ 'inset' === imageBoxShadowPosition ? ` ${ imageBoxShadowPosition }` : '' }`,
+		};
+	}
+	else {
+		selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer' ] = {
+			...selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer' ],
+			'box-shadow': imageBoxShadowHoverCSS,
+		};
+		selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media' ] = {
+			'box-shadow': `0 0 transparent${ 'inset' === imageBoxShadowPosition ? ` ${ imageBoxShadowPosition }` : '' }`,
+		};
 	}
 
 	const baseSelector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;

@@ -136,9 +136,8 @@ return array_merge(
 		'imageEnableZoom'                    => true,
 		'imageZoomType'                      => 'zoom-in',
 		'captionBackgroundEnableBlur'        => false,
-		'captionBackgroundBlurAmount'        => 10,
-		'captionBackgroundBlurOpacity'       => 0,
-		'captionBackgroundBlurOpacityHover'  => 0,
+		'captionBackgroundBlurAmount'        => 0,
+		'captionBackgroundBlurAmountHover'   => 5,
 		// Caption Typography Styling.
 		'captionLoadGoogleFonts'             => false,
 		'captionFontFamily'                  => 'Default',

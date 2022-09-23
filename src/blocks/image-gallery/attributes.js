@@ -613,23 +613,16 @@ const attributes = {
 	},
 	captionBackgroundBlurAmount: {
 		type: 'number',
-		default: 10,
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'gallery-background-blur-amount'
 		},
 	},
-	captionBackgroundBlurOpacity: {
+	captionBackgroundBlurAmountHover: {
 		type: 'number',
-		default: 0,
+		default: 5,
 		UAGCopyPaste: {
-			styleType: 'gallery-background-blur-opacity'
-		},
-	},
-	captionBackgroundBlurOpacityHover: {
-		type: 'number',
-		default: 0,
-		UAGCopyPaste: {
-			styleType: 'gallery-background-blur-hover-opacity'
+			styleType: 'gallery-background-blur-amount'
 		},
 	},
 

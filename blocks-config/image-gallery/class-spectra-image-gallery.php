@@ -477,15 +477,11 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 							),
 							'captionBackgroundBlurAmount'  => array(
 								'type'    => 'number',
-								'default' => 10,
-							),
-							'captionBackgroundBlurOpacity' => array(
-								'type'    => 'number',
 								'default' => 0,
 							),
-							'captionBackgroundBlurOpacityHover' => array(
+							'captionBackgroundBlurAmountHover'  => array(
 								'type'    => 'number',
-								'default' => 0,
+								'default' => 5,
 							),
 						),
 						// Caption Typography Styling.
