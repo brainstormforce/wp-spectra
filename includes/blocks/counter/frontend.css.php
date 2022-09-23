@@ -29,6 +29,18 @@ $suffix_left_distance_fallback    = UAGB_Block_Helper::get_fallback_number( $att
 $attr['suffixLeftDistanceTablet'] = is_numeric( $attr['suffixLeftDistanceTablet'] ) ? $attr['suffixLeftDistanceTablet'] : $suffix_left_distance_fallback;
 $attr['suffixLeftDistanceMobile'] = is_numeric( $attr['suffixLeftDistanceMobile'] ) ? $attr['suffixLeftDistanceMobile'] : $attr['suffixLeftDistanceTablet'];
 
+$box_shadow_position_css = $attr['boxShadowPosition'];
+
+if ( 'outset' === $attr['boxShadowPosition'] ) {
+	$box_shadow_position_css = '';
+}
+
+$box_shadow_position_css_hover = $attr['boxShadowPositionHover'];
+
+if ( 'outset' === $attr['boxShadowPositionHover'] ) {
+	$box_shadow_position_css_hover = '';
+}
+
 $m_selectors = array();
 $t_selectors = array();
 
@@ -204,6 +216,37 @@ if ( 'bars' === $attr['layout'] ) {
 	$m_selectors[ $num_container ]['margin-left']   = 'unset';
 	$m_selectors[ $num_container ]['margin-right']  = 'unset';
 
+	$bar_container       = '.wp-block-uagb-counter .wp-block-uagb-counter-bars-container';
+	$bar_container_hover = '.wp-block-uagb-counter:hover .wp-block-uagb-counter-bars-container';
+
+	$selectors[ $bar_container ]['box-shadow'] = UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
+													' ' .
+													UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) .
+													' ' .
+													UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) .
+													' ' .
+													UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) .
+													' ' .
+													$attr['boxShadowColor'] .
+													' ' .
+													$box_shadow_position_css;
+
+	// If hover blur or hover color are set, show the hover shadow.
+	if ( ( ( '' !== $attr['boxShadowBlurHover'] ) && ( null !== $attr['boxShadowBlurHover'] ) ) || '' !== $attr['boxShadowColorHover'] ) {
+
+		$selectors[ $bar_container_hover ]['box-shadow'] = UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
+																	' ' .
+															UAGB_Helper::get_css_value( $attr['boxShadowVOffsetHover'], 'px' ) .
+															' ' .
+															UAGB_Helper::get_css_value( $attr['boxShadowBlurHover'], 'px' ) .
+															' ' .
+															UAGB_Helper::get_css_value( $attr['boxShadowSpreadHover'], 'px' ) .
+															' ' .
+															$attr['boxShadowColorHover'] .
+															' ' .
+															$box_shadow_position_css_hover;
+
+	}
 }
 
 $combined_selectors = array(

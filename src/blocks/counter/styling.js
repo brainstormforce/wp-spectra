@@ -118,6 +118,19 @@ export default function styling( props ) {
 		blockPaddingUnit,
 		blockPaddingUnitTablet,
 		blockPaddingUnitMobile,
+		// Box Shadow
+		boxShadowColor,
+		boxShadowHOffset,
+		boxShadowVOffset,
+		boxShadowBlur,
+		boxShadowSpread,
+		boxShadowPosition,
+		boxShadowColorHover,
+		boxShadowHOffsetHover,
+		boxShadowVOffsetHover,
+		boxShadowBlurHover,
+		boxShadowSpreadHover,
+		boxShadowPositionHover,
 	} = attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -138,6 +151,19 @@ export default function styling( props ) {
 	const suffixLeftDistanceFallback       = getFallbackNumber( suffixLeftDistance, 'suffixLeftDistance', blockName );
 	const suffixLeftDistanceFallbackTablet = isNaN( suffixLeftDistanceTablet ) ? suffixLeftDistance : suffixLeftDistanceTablet;
 	const suffixLeftDistanceFallbackMobile = isNaN( suffixLeftDistanceMobile ) ? suffixLeftDistanceTablet : suffixLeftDistanceMobile;	
+
+
+	let boxShadowPositionCSS = boxShadowPosition;
+
+	if ( 'outset' === boxShadowPosition ) {
+		boxShadowPositionCSS = '';
+	}
+
+	let boxShadowPositionCSSHover = boxShadowPositionHover;
+
+	if ( 'outset' === boxShadowPositionHover ) {
+		boxShadowPositionCSSHover = '';
+	}
 
 	const selectors = {
 		'.wp-block-uagb-counter':{
@@ -526,6 +552,31 @@ export default function styling( props ) {
 		mobile_selectors[ num_container ]['margin-bottom'] = 'unset';
 		mobile_selectors[ num_container ]['margin-left']   = 'unset';
 		mobile_selectors[ num_container ]['margin-right']  = 'unset';
+
+		const bar_container = '.wp-block-uagb-counter .wp-block-uagb-counter-bars-container';
+		const bar_container_hover = '.wp-block-uagb-counter:hover .wp-block-uagb-counter-bars-container';
+
+		selectors[ bar_container ] = {
+			'box-shadow': generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
+			generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
+			boxShadowColor + ' ' +	boxShadowPositionCSS,
+		};
+
+		selectors[ bar_container_hover ] = {
+			'box-shadow': '',
+		};
+
+		const boxShadowBlurHoverTemp = isNaN( boxShadowBlurHover ) ? '' : boxShadowBlurHover;
+		const boxShadowColorHoverTemp = boxShadowColorHover ? boxShadowColorHover : '';
+
+		if( '' !== boxShadowColorHoverTemp || '' !== boxShadowBlurHoverTemp ) {
+
+			const boxShadowBlurHoverCSSUnit = ( '' === boxShadowBlurHoverTemp ) ? '' : generateCSSUnit( boxShadowBlurHoverTemp, 'px' );
+	
+			selectors[ bar_container_hover ]['box-shadow'] = generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
+														boxShadowBlurHoverCSSUnit + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
+														boxShadowColorHoverTemp + ' ' +	boxShadowPositionCSSHover;
+		}
 
 	}
 
