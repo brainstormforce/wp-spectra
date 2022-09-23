@@ -792,6 +792,30 @@ function styling( props ) {
 			'-webkit-align-items': 'center',
 			'align-items': 'center',
 		};
+		if ( 'flex-start' === paginateButtonAlign ) {
+			selectors[ ' .spectra-image-gallery__control-wrapper' ] = {
+				...selectors[ ' .spectra-image-gallery__control-wrapper' ],
+				'padding-left': generateCSSUnit( gridImageGapFallback, gridImageGapUnit ),
+			}
+			tabletSelectors[ ' .spectra-image-gallery__control-wrapper' ] = {
+				'padding-left': generateCSSUnit( gridImageGapTabFallback, gridImageGapUnitTab ),
+			}
+			mobileSelectors[ ' .spectra-image-gallery__control-wrapper' ] = {
+				'padding-left': generateCSSUnit( gridImageGapMobFallback, gridImageGapUnitMob ),
+			}
+		}
+		if ( 'flex-end' === paginateButtonAlign ) {
+			selectors[ ' .spectra-image-gallery__control-wrapper' ] = {
+				...selectors[ ' .spectra-image-gallery__control-wrapper' ],
+				'padding-right': generateCSSUnit( gridImageGapFallback, gridImageGapUnit ),
+			}
+			tabletSelectors[ ' .spectra-image-gallery__control-wrapper' ] = {
+				'padding-right': generateCSSUnit( gridImageGapTabFallback, gridImageGapUnitTab ),
+			}
+			mobileSelectors[ ' .spectra-image-gallery__control-wrapper' ] = {
+				'padding-right': generateCSSUnit( gridImageGapMobFallback, gridImageGapUnitMob ),
+			}
+		}
 	}
 
 	// New Zoom Effect on Hover.

@@ -532,6 +532,16 @@ if ( 'masonry' === $attr['feedLayout'] && $attr['feedPagination'] && ! $attr['pa
 	$selectors[' .spectra-image-gallery__control-wrapper']['justify-content']         = $attr['paginateButtonAlign'];
 	$selectors[' .spectra-image-gallery__control-wrapper']['-webkit-align-items']     = 'center';
 	$selectors[' .spectra-image-gallery__control-wrapper']['align-items']             = 'center';
+	if ( 'flex-start' === $attr['paginateButtonAlign'] ) {
+		$selectors[' .spectra-image-gallery__control-wrapper']['padding-left']   = UAGB_Helper::get_css_value( $grid_image_gap_fallback, $attr['gridImageGapUnit'] );
+		$t_selectors[' .spectra-image-gallery__control-wrapper']['padding-left'] = UAGB_Helper::get_css_value( $grid_image_gap_tablet_fallback, $attr['gridImageGapUnitTab'] );
+		$m_selectors[' .spectra-image-gallery__control-wrapper']['padding-left'] = UAGB_Helper::get_css_value( $grid_image_gap_mobile_fallback, $attr['gridImageGapUnitMob'] );
+	}
+	if ( 'flex-end' === $attr['paginateButtonAlign'] ) {
+		$selectors[' .spectra-image-gallery__control-wrapper']['padding-right']   = UAGB_Helper::get_css_value( $grid_image_gap_fallback, $attr['gridImageGapUnit'] );
+		$t_selectors[' .spectra-image-gallery__control-wrapper']['padding-right'] = UAGB_Helper::get_css_value( $grid_image_gap_tablet_fallback, $attr['gridImageGapUnitTab'] );
+		$m_selectors[' .spectra-image-gallery__control-wrapper']['padding-right'] = UAGB_Helper::get_css_value( $grid_image_gap_mobile_fallback, $attr['gridImageGapUnitMob'] );
+	}
 }
 
 // New Zoom Effect on Hover.
