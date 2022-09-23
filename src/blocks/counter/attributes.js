@@ -505,6 +505,87 @@ const attributes = {
 		type: 'string',
 		default: '#f7951e',
 	},
+	// Box Shadow.
+	boxShadowColor: {
+		type: 'string',
+		default: '#00000070',
+		UAGCopyPaste: {
+			styleType: 'counter-box-shadow-color'
+		},
+	},
+	boxShadowHOffset: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'counter-box-shadow-hoffset'
+		},
+	},
+	boxShadowVOffset: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'counter-box-shadow-voffset'
+		},
+	},
+	boxShadowBlur: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'counter-box-shadow-blur'
+		},
+	},
+	boxShadowSpread: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'counter-box-shadow-spread'
+		},
+	},
+	boxShadowPosition: {
+		type: 'string',
+		default: 'outset',
+		UAGCopyPaste: {
+			styleType: 'counter-box-shadow-position'
+		},
+	},
+
+	boxShadowColorHover: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'counter-box-shadow-color-hover'
+		},
+	},
+	boxShadowHOffsetHover: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'counter-box-shadow-hoffset-hover'
+		},
+	},
+	boxShadowVOffsetHover: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'counter-box-shadow-voffset-hover'
+		},
+	},
+	boxShadowBlurHover: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'counter-box-shadow-blur-hover'
+		},
+	},
+	boxShadowSpreadHover: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'counter-box-shadow-spread-hover'
+		},
+	},
+	boxShadowPositionHover: {
+		type: 'string',
+		default: 'outset',
+		UAGCopyPaste: {
+			styleType: 'counter-box-shadow-position-hover'
+		},
+	},
 };
 
 export default attributes;

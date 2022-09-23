@@ -131,4 +131,17 @@ return array(
 	'barSize'                   => 25,
 	'barForeground'             => '#eaeaea',
 	'barBackground'             => '#f7951e',
+	// Box Shadow.
+	'boxShadowColor'            => '#00000070',
+	'boxShadowHOffset'          => 0,
+	'boxShadowVOffset'          => 0,
+	'boxShadowBlur'             => '',
+	'boxShadowSpread'           => '',
+	'boxShadowPosition'         => '',
+	'boxShadowColorHover'       => '',
+	'boxShadowHOffsetHover'     => 0,
+	'boxShadowVOffsetHover'     => 0,
+	'boxShadowBlurHover'        => '',
+	'boxShadowSpreadHover'      => '',
+	'boxShadowPositionHover'    => '',
 );
