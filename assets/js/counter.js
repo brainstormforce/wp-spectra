@@ -105,6 +105,7 @@ UAGBCounter = { // eslint-disable-line no-undef
 		
 		let startPoint = 100 * ( data.startNumber / totalNumber );
 		startPoint = ( startPoint < 100 ) ? startPoint : 100;
+		startPoint = 100 - startPoint;
 		startPoint = ( startPoint / 100 ) * circumference;
 
 		let endPoint = 100 * ( data.endNumber / totalNumber );
