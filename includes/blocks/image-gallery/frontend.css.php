@@ -44,6 +44,34 @@ $main_title_border_css        = UAGB_Block_Helper::uag_generate_border_css( $att
 $main_title_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'mainTitle', 'tablet' );
 $main_title_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'mainTitle', 'mobile' );
 
+// Box Shadow CSS.
+$image_box_shadow_css = (
+	UAGB_Helper::get_css_value( $attr['imageBoxShadowHOffset'], 'px' )
+) . ' ' . (
+	UAGB_Helper::get_css_value( $attr['imageBoxShadowVOffset'], 'px' )
+) . ' ' . (
+	UAGB_Helper::get_css_value( $attr['imageBoxShadowBlur'], 'px' )
+) . ' ' . (
+	UAGB_Helper::get_css_value( $attr['imageBoxShadowSpread'], 'px' )
+) . (
+	$attr['imageBoxShadowColor'] ? ( ' ' . $attr['imageBoxShadowColor'] ) : ''
+) . ' ' . (
+	( 'inset' === $attr['imageBoxShadowPosition'] ) ? ( ' ' . $attr['imageBoxShadowPosition'] ) : ''
+);
+$image_box_shadow_hover_css = (
+	UAGB_Helper::get_css_value( $attr['imageBoxShadowHOffsetHover'], 'px' )
+) . ' ' . (
+	UAGB_Helper::get_css_value( $attr['imageBoxShadowVOffsetHover'], 'px' )
+) . ' ' . (
+	UAGB_Helper::get_css_value( $attr['imageBoxShadowBlurHover'], 'px' )
+) . ' ' . (
+	UAGB_Helper::get_css_value( $attr['imageBoxShadowSpreadHover'], 'px' )
+) . (
+	$attr['imageBoxShadowColorHover'] ? ( ' ' . $attr['imageBoxShadowColorHover'] ) : ''
+) . ' ' . (
+	( 'inset' === $attr['imageBoxShadowPositionHover'] ) ? ( ' ' . $attr['imageBoxShadowPositionHover'] ) : ''
+);
+
 $selectors = array(
 
 	// Feed Selectors.
@@ -169,7 +197,15 @@ $selectors = array(
 			$attr['gridImageGapUnit']
 		),
 	),
-	' .spectra-image-gallery__media'                    => $image_border_css,
+	' .spectra-image-gallery__media'                    => array_merge(
+		$image_border_css,
+		array(
+			'box-shadow' => $image_box_shadow_css
+		)
+	),
+	' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media' => array(
+		'box-shadow' => $image_box_shadow_hover_css
+	),
 
 	// Thumbnail Selectors.
 

@@ -145,6 +145,20 @@ function styling( props ) {
 		paginateColor,
 		paginateColorHover,
 
+		// Box Shadow Styling.
+		imageBoxShadowColor,
+		imageBoxShadowHOffset,
+		imageBoxShadowVOffset,
+		imageBoxShadowBlur,
+		imageBoxShadowSpread,
+		imageBoxShadowPosition,		
+		imageBoxShadowColorHover,
+		imageBoxShadowHOffsetHover,
+		imageBoxShadowVOffsetHover,
+		imageBoxShadowBlurHover,
+		imageBoxShadowSpreadHover,
+		imageBoxShadowPositionHover,
+
 		// Border Extracted Attributes.
 		btnBorderHColor,
 		arrowBorderHColor,
@@ -197,7 +211,35 @@ function styling( props ) {
 	const mainTitleBorderCSS = generateBorderCSS( props.attributes, 'mainTitle' );
 	const mainTitleBorderCSSTablet = generateBorderCSS( props.attributes, 'mainTitle', 'tablet' );
 	const mainTitleBorderCSSMobile = generateBorderCSS( props.attributes, 'mainTitle', 'mobile' );
-	
+
+	// Box Shadow CSS.
+	const imageBoxShadowCSS = `${
+		generateCSSUnit( imageBoxShadowHOffset, 'px' )
+	} ${
+		generateCSSUnit( imageBoxShadowVOffset, 'px' )
+	} ${
+		generateCSSUnit( imageBoxShadowBlur, 'px' )
+	} ${
+		generateCSSUnit( imageBoxShadowSpread, 'px' )
+	}${
+		imageBoxShadowColor ? ( ` ${ imageBoxShadowColor }` ) : ''
+	}${
+		( 'inset' === imageBoxShadowPosition ) ? ( ` ${ imageBoxShadowPosition }` ) : ''
+	}`;
+	const imageBoxShadowHoverCSS = `${
+		generateCSSUnit( imageBoxShadowHOffsetHover, 'px' )
+	} ${
+		generateCSSUnit( imageBoxShadowVOffsetHover, 'px' )
+	} ${
+		generateCSSUnit( imageBoxShadowBlurHover, 'px' )
+	} ${
+		generateCSSUnit( imageBoxShadowSpreadHover, 'px' )
+	}${
+		imageBoxShadowColorHover ? ( ` ${ imageBoxShadowColorHover }` ) : ''
+	}${
+		( 'inset' === imageBoxShadowPositionHover ) ? ( ` ${ imageBoxShadowPositionHover }` ) : ''
+	}`;
+
 	const selectors = {
 
 		// Feed Selectors
@@ -333,8 +375,11 @@ function styling( props ) {
 		},
 		' .spectra-image-gallery__media': {
 			...imageBorderCSS,
+			'box-shadow': imageBoxShadowCSS,
 		},
-
+		' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media': {
+			'box-shadow': imageBoxShadowHoverCSS,
+		},
 
 		// Thumbnail Selectors
 		' .spectra-image-gallery__media-thumbnail-blurrer': {
@@ -612,6 +657,9 @@ function styling( props ) {
 				gridImageGapMobFallback,
 				gridImageGapUnitMob
 			),
+		},
+		' .spectra-image-gallery__media': {
+			...imageBorderCSSMobile,
 		},
 		' .spectra-image-gallery__media-thumbnail-caption': {
 			'font-size': generateCSSUnit( captionFontSizeMob, captionFontSizeType ),

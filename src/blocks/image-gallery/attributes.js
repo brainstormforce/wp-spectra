@@ -38,6 +38,7 @@ const attributes = {
 	},
 
 	// Editor Requirements
+
 	readyToRender: {
 		type: 'boolean',
 		default: false,
@@ -943,6 +944,87 @@ const attributes = {
 		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'btn-bg-hover-color'
+		},
+	},
+
+	// Box Shadow Styling
+
+	imageBoxShadowColor: {
+		type : 'string',
+		UAGCopyPaste: {
+			styleType: 'box-shadow-color'
+		},
+	},
+	imageBoxShadowHOffset: {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'box-shadow-hoffset'
+		},
+	},
+	imageBoxShadowVOffset: {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'box-shadow-voffset'
+		},
+	},
+	imageBoxShadowBlur: {
+		type : 'number',
+		UAGCopyPaste: {
+			styleType: 'box-shadow-blur'
+		},
+	},
+	imageBoxShadowSpread: {
+		type : 'number',
+		UAGCopyPaste: {
+			styleType: 'box-shadow-spread'
+		},
+	},
+	imageBoxShadowPosition: {
+		type    : 'string',
+		default : 'outset',
+		UAGCopyPaste: {
+			styleType: 'box-shadow-position'
+		},
+	},
+	imageBoxShadowColorHover: {
+		type : 'string',
+		UAGCopyPaste: {
+			styleType: 'box-shadow-color'
+		},
+	},
+	imageBoxShadowHOffsetHover: {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'box-shadow-hoffset'
+		},
+	},
+	imageBoxShadowVOffsetHover: {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'box-shadow-voffset'
+		},
+	},
+	imageBoxShadowBlurHover: {
+		type : 'number',
+		UAGCopyPaste: {
+			styleType: 'box-shadow-blur'
+		},
+	},
+	imageBoxShadowSpreadHover: {
+		type : 'number',
+		UAGCopyPaste: {
+			styleType: 'box-shadow-spread'
+		},
+	},
+	imageBoxShadowPositionHover: {
+		type    : 'string',
+		default : 'outset',
+		UAGCopyPaste: {
+			styleType: 'box-shadow-position'
 		},
 	},
 

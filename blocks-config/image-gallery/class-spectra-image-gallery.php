@@ -644,7 +644,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 								'default' => -24,
 							),
 							'paginateArrowDistanceUnit'    => array(
-								'type'    => 'number',
+								'type'    => 'string',
 								'default' => 'px',
 							),
 							'paginateLoaderSize'           => array(
@@ -662,6 +662,51 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 							),
 							'paginateColorHover'           => array(
 								'type'    => 'string',
+							),
+						),
+						// Box Shadow Styling.
+						array(
+							'imageBoxShadowColor'    => array(
+								'type'    => 'string',
+							),
+							'imageBoxShadowHOffset'  => array(
+								'type'    => 'number',
+								'default' => 0,
+							),
+							'imageBoxShadowVOffset'  => array(
+								'type'    => 'number',
+								'default' => 0,
+							),
+							'imageBoxShadowBlur'     => array(
+								'type'    => 'number',
+							),
+							'imageBoxShadowSpread'   => array(
+								'type'    => 'number',
+							),
+							'imageBoxShadowPosition' => array(
+								'type'    => 'string',
+								'default' => 'outset',
+							),
+							'imageBoxShadowColorHover'    => array(
+								'type'    => 'string',
+							),
+							'imageBoxShadowHOffsetHover'  => array(
+								'type'    => 'number',
+								'default' => 0,
+							),
+							'imageBoxShadowVOffsetHover'  => array(
+								'type'    => 'number',
+								'default' => 0,
+							),
+							'imageBoxShadowBlurHover'     => array(
+								'type'    => 'number',
+							),
+							'imageBoxShadowSpreadHover'   => array(
+								'type'    => 'number',
+							),
+							'imageBoxShadowPositionHover' => array(
+								'type'    => 'string',
+								'default' => 'outset',
 							),
 						),
 						// Responsive Borders.

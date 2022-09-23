@@ -19,6 +19,8 @@ import MultiMediaSelector from '@Components/multimedia-select';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGTabsControl from '@Components/tabs';
 import UAGSelectControl from '@Components/select-control';
+import BoxShadowControl from '@Components/box-shadow';
+import UAGPresets from '@Components/presets';
 import {
 	InspectorControls,
 } from '@wordpress/block-editor';
@@ -29,6 +31,7 @@ import {
 	Icon,
 } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import { boxShadowPresets, boxShadowHoverPresets } from './presets';
 
 const MAX_IMAGE_COLUMNS = 8;
 
@@ -37,6 +40,7 @@ const Settings = ( props ) => {
 	props = props.parentProps;
 	const { attributes, setAttributes } = props;
 	const {
+		block_id,
 		readyToRender,
 
 		mediaGallery,
@@ -127,22 +131,6 @@ const Settings = ( props ) => {
 		paginateButtonPaddingUnitMob,
 		paginateButtonPaddingUnitLink,
 		
-		imageBorderTopLeftRadius,
-		imageBorderTopRightRadius,
-		imageBorderBottomRightRadius,
-		imageBorderBottomLeftRadius,
-		imageBorderTopLeftRadiusTablet,
-		imageBorderTopRightRadiusTablet,
-		imageBorderBottomRightRadiusTablet,
-		imageBorderBottomLeftRadiusTablet,
-		imageBorderTopLeftRadiusMobile,
-		imageBorderTopRightRadiusMobile,
-		imageBorderBottomRightRadiusMobile,
-		imageBorderBottomLeftRadiusMobile,
-		imageBorderRadiusUnit,
-		imageBorderRadiusUnitTablet,
-		imageBorderRadiusUnitMobile,
-		imageBorderRadiusUnitLink,
 		imageEnableZoom,
 		imageZoomType,
 		captionBackgroundEnableBlur,
@@ -199,6 +187,19 @@ const Settings = ( props ) => {
 		paginateButtonTextColorHover,
 		paginateColor,
 		paginateColorHover,
+		
+		imageBoxShadowColor,
+		imageBoxShadowHOffset,
+		imageBoxShadowVOffset,
+		imageBoxShadowBlur,
+		imageBoxShadowSpread,
+		imageBoxShadowPosition,		
+		imageBoxShadowColorHover,
+		imageBoxShadowHOffsetHover,
+		imageBoxShadowVOffsetHover,
+		imageBoxShadowBlurHover,
+		imageBoxShadowSpreadHover,
+		imageBoxShadowPositionHover,
 	} = attributes;
 	
 	// Loading Google Fonts.
@@ -1179,6 +1180,143 @@ const Settings = ( props ) => {
 		</UAGAdvancedPanelBody>
 	);
 
+	
+	const boxShadow = () => (
+		<UAGAdvancedPanelBody title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+			<UAGTabsControl
+				tabs={ [
+					{
+						name: 'normal',
+						title: __(
+							'Normal',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						name: 'hover',
+						title: __(
+							'Hover',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+				] }
+				normal={
+					<>
+						<UAGPresets
+							setAttributes = { setAttributes }
+							presets = { boxShadowPresets }
+							presetInputType = 'radioImage'
+						/>
+						<BoxShadowControl
+							blockId={ block_id }
+							setAttributes={ setAttributes }
+							label={ __(
+								'Box Shadow',
+								'ultimate-addons-for-gutenberg'
+							) }
+							boxShadowColor={ {
+								value: imageBoxShadowColor,
+								label: 'imageBoxShadowColor',
+								title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+							} }
+							boxShadowHOffset={ {
+								value: imageBoxShadowHOffset,
+								label: 'imageBoxShadowHOffset',
+								title: __(
+									'Horizontal',
+									'ultimate-addons-for-gutenberg'
+								),
+							} }
+							boxShadowVOffset={ {
+								value: imageBoxShadowVOffset,
+								label: 'imageBoxShadowVOffset',
+								title: __(
+									'Vertical',
+									'ultimate-addons-for-gutenberg'
+								),
+							} }
+							boxShadowBlur={ {
+								value: imageBoxShadowBlur,
+								label: 'imageBoxShadowBlur',
+								title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+							} }
+							boxShadowSpread={ {
+								value: imageBoxShadowSpread,
+								label: 'imageBoxShadowSpread',
+								title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+							} }
+							boxShadowPosition={ {
+								value: imageBoxShadowPosition,
+								label: 'imageBoxShadowPosition',
+								title: __(
+									'Position',
+									'ultimate-addons-for-gutenberg'
+								),
+							} }
+						/>
+					</>
+				}
+				hover={
+					<>
+						<UAGPresets
+							setAttributes = { setAttributes }
+							presets = { boxShadowHoverPresets }
+							presetInputType = 'radioImage'
+						/>
+						<BoxShadowControl
+							blockId={ block_id }
+							setAttributes={ setAttributes }
+							label={ __(
+								'Box Shadow',
+								'ultimate-addons-for-gutenberg'
+							) }
+							boxShadowColor={ {
+								value: imageBoxShadowColorHover,
+								label: 'imageBoxShadowColorHover',
+								title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+							} }
+							boxShadowHOffset={ {
+								value: imageBoxShadowHOffsetHover,
+								label: 'imageBoxShadowHOffsetHover',
+								title: __(
+									'Horizontal',
+									'ultimate-addons-for-gutenberg'
+								),
+							} }
+							boxShadowVOffset={ {
+								value: imageBoxShadowVOffsetHover,
+								label: 'imageBoxShadowVOffsetHover',
+								title: __(
+									'Vertical',
+									'ultimate-addons-for-gutenberg'
+								),
+							} }
+							boxShadowBlur={ {
+								value: imageBoxShadowBlurHover,
+								label: 'imageBoxShadowBlurHover',
+								title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+							} }
+							boxShadowSpread={ {
+								value: imageBoxShadowSpreadHover,
+								label: 'imageBoxShadowSpreadHover',
+								title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+							} }
+							boxShadowPosition={ {
+								value: imageBoxShadowPositionHover,
+								label: 'imageBoxShadowPositionHover',
+								title: __(
+									'Position',
+									'ultimate-addons-for-gutenberg'
+								),
+							} }
+						/>
+					</>
+				}
+				disableBottomSeparator={ true }
+			/>
+		</UAGAdvancedPanelBody>
+	);
+
 	const spacing = () => (
 		<UAGAdvancedPanelBody title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<SpacingControl
@@ -1749,6 +1887,7 @@ const Settings = ( props ) => {
 								)
 							)
 						) ) && paginationStyling() }
+						{ readyToRender && boxShadow() }
 						{ readyToRender && spacing() }
 					</InspectorTab>
 					<InspectorTab
