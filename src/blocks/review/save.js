@@ -19,7 +19,6 @@ export default function save( props ) {
 		rAuthor,
 		headingTag,
 		starCount,
-		ID,
 		parts,
 		summaryTitle,
 		summaryDescription,
@@ -148,7 +147,7 @@ export default function save( props ) {
 									} }
 								>
 									<Stars
-										id={ `${ i }` }
+										id={ `${ block_id.substr( 0, 8 ) }-${ i }` }
 										key={ i }
 										value={ j.value }
 										limit={ starCount }
@@ -178,7 +177,7 @@ export default function save( props ) {
 								{ Math.round( newAverage * 10 ) / 10 }
 							</span>
 							<Stars
-								id={ `${ ID }-average` }
+								id={ `${ block_id.substr( 0, 8 ) }-average` }
 								className="uagb_review_average_stars"
 								onHover={ () => null }
 								onClick={ () => null }
