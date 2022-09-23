@@ -166,6 +166,8 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 ## Changelog ##
 
+### 2.0.13 - THURSDAY, 15th SEPTEMBER 2022 ###
+* Fix: Icon List - Text Alignment not working properly on front-end.
 ### 2.0.12 - THURSDAY, 15th SEPTEMBER 2022 ###
 * Improvement: How to block - Option to disable step links.
 * Improvement: Forms - Added 'Required' toggle for Accept field/sub-block.
@@ -187,7 +189,6 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 * Fix: Responsive condition - Setting does not save when hide on multiple devices is selected.
 * Fix: How-To - Alignment for time and cost not working in editor as well as on frontend.
 * Fix: Post Carousel and Masonry - Background Image overlay color is not same as frontend.
-* Fix: Icon List - Text Alignment not working properly on front-end.
 * Fix: Advanced Row - Border hover color not working on front end.
 
 ### 2.0.11 - THURSDAY, 8th SEPTEMBER 2022 ###
