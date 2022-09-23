@@ -1866,7 +1866,7 @@ const Settings = ( props ) => {
 							1.2. The feedLayout is a carousel AND
 								1.2.1 the carousel either has Arrows OR Dots. */}
 						{ ( readyToRender && (
-							feedPagination || (
+							( 'tiled' !== feedLayout && feedPagination ) || (
 								'carousel' === feedLayout && (
 									paginateUseArrows || paginateUseDots
 								)

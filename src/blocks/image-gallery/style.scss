@@ -8,10 +8,10 @@
 
 // This Mixin contains Common Transition Speeds.
 @mixin transitionSpeeds {
-	-webkit-transition-duration: 0.1s;
-	-moz-transition-duration: 0.1s;
-	-o-transition-duration: 0.1s;
-	transition-duration: 0.1s;
+	-webkit-transition-duration: 0.25s;
+	-moz-transition-duration: 0.25s;
+	-o-transition-duration: 0.25s;
+	transition-duration: 0.25s;
 }
 
 // This Mixin Handles Special Tiles
@@ -273,10 +273,10 @@
 		position: relative;
 		overflow: hidden;
 		background-color: #000;
-		-webkit-transition: box-shadow 0.1s;
-		-moz-transition: box-shadow 0.1s;
-		-o-transition: box-shadow 0.1s;
-		transition: box-shadow 0.1s;
+		-webkit-transition: box-shadow 0.25s;
+		-moz-transition: box-shadow 0.25s;
+		-o-transition: box-shadow 0.25s;
+		transition: box-shadow 0.25s;
 
 		&--flagged {
 			cursor: not-allowed;
@@ -317,10 +317,10 @@
 		}
 
 		&-thumbnail {
-			-webkit-transition: filter 0.1s, transform 0.25s;
-			-moz-transition: filter 0.1s, transform 0.25s;
-			-o-transition: filter 0.1s, transform 0.25s;
-			transition: filter 0.1s, transform 0.25s;
+			-webkit-transition: filter 0.5s, transform 0.5s;
+			-moz-transition: filter 0.5s, transform 0.5s;
+			-o-transition: filter 0.5s, transform 0.5s;
+			transition: filter 0.5s, transform 0.5s;
 
 			&--grid {
 				width: 100% !important;
@@ -350,17 +350,17 @@
 				left: 0;
 				width: 100% !important;
 				height: 100% !important;
-				-webkit-transition: box-shadow 0.1s, -webkit-backdrop-filter 0.1s;
-				-moz-transition: box-shadow 0.1s, backdrop-filter 0.1s;
-				-o-transition: box-shadow 0.1s, backdrop-filter 0.1s;
-				transition: box-shadow 0.1s, backdrop-filter 0.1s;
+				-webkit-transition: box-shadow 0.25s, -webkit-backdrop-filter 0.5s;
+				-moz-transition: box-shadow 0.25s, backdrop-filter 0.5s;
+				-o-transition: box-shadow 0.25s, backdrop-filter 0.5s;
+				transition: box-shadow 0.25s, backdrop-filter 0.5s;
 			}
 
 			&-caption {
-				-webkit-transition-duration: 0.1s;
-				-moz-transition-duration: 0.1s;
-				-o-transition-duration: 0.1s;
-				transition-duration: 0.1s;
+				-webkit-transition-duration: 0.25s;
+				-moz-transition-duration: 0.25s;
+				-o-transition-duration: 0.25s;
+				transition-duration: 0.25s;
 				-webkit-transition-property: color, background-color, border-color;
 				-moz-transition-property: color, background-color, border-color;
 				-o-transition-property: color, background-color, border-color;
@@ -394,10 +394,10 @@
 				}
 
 				&-wrapper {
-					-webkit-transition: background-color 0.1s;
-					-moz-transition: background-color 0.1s;
-					-o-transition: background-color 0.1s;
-					transition: background-color 0.1s;
+					-webkit-transition: background-color 0.25s;
+					-moz-transition: background-color 0.25s;
+					-o-transition: background-color 0.25s;
+					transition: background-color 0.25s;
 
 					&--overlay {
 						position: absolute;
