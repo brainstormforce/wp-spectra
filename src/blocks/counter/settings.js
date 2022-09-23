@@ -13,11 +13,16 @@ import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import BoxShadowControl from '@Components/box-shadow';
+import UAGTabsControl from '@Components/tabs';
+import { boxShadowPresets, boxShadowHoverPresets } from './presets';
+import UAGPresets from '@Components/presets';
 
 
 export default function Settings( props ) {
 	const { attributes, deviceType, setAttributes } = props.parentProps;
 	const {
+		block_id,
 		startNumber,
 		endNumber,
 		align,
@@ -141,7 +146,20 @@ export default function Settings( props ) {
 		// bar
 		barSize,
 		barForeground,
-		barBackground
+		barBackground,
+		// box shadow
+		boxShadowColor,
+		boxShadowHOffset,
+		boxShadowVOffset,
+		boxShadowBlur,
+		boxShadowSpread,
+		boxShadowPosition,
+		boxShadowColorHover,
+		boxShadowHOffsetHover,
+		boxShadowVOffsetHover,
+		boxShadowBlurHover,
+		boxShadowSpreadHover,
+		boxShadowPositionHover,
 	} = attributes;
 
 
@@ -840,6 +858,147 @@ export default function Settings( props ) {
 		</UAGAdvancedPanelBody>
 	);
 
+	const boxShadowSettings = (
+		<UAGAdvancedPanelBody
+			title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
+		>
+
+			<UAGTabsControl
+				tabs={ [
+					{
+						name: 'normal',
+						title: __(
+							'Normal',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						name: 'hover',
+						title: __(
+							'Hover',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+				] }
+				normal={
+					<>
+						<UAGPresets
+							setAttributes = { setAttributes }
+							presets = { boxShadowPresets }
+							presetInputType = 'radioImage'
+						/>
+						<BoxShadowControl
+							blockId={ block_id }
+							setAttributes={ setAttributes }
+							label={ __(
+								'Box Shadow',
+								'ultimate-addons-for-gutenberg'
+							) }
+							boxShadowColor={ {
+								value: boxShadowColor,
+								label: 'boxShadowColor',
+								title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+							} }
+							boxShadowHOffset={ {
+								value: boxShadowHOffset,
+								label: 'boxShadowHOffset',
+								title: __(
+									'Horizontal',
+									'ultimate-addons-for-gutenberg'
+								),
+							} }
+							boxShadowVOffset={ {
+								value: boxShadowVOffset,
+								label: 'boxShadowVOffset',
+								title: __(
+									'Vertical',
+									'ultimate-addons-for-gutenberg'
+								),
+							} }
+							boxShadowBlur={ {
+								value: boxShadowBlur,
+								label: 'boxShadowBlur',
+								title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+							} }
+							boxShadowSpread={ {
+								value: boxShadowSpread,
+								label: 'boxShadowSpread',
+								title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+							} }
+							boxShadowPosition={ {
+								value: boxShadowPosition,
+								label: 'boxShadowPosition',
+								title: __(
+									'Position',
+									'ultimate-addons-for-gutenberg'
+								),
+							} }
+						/>
+					</>
+				}
+				hover={
+					<>
+						<UAGPresets
+							setAttributes = { setAttributes }
+							presets = { boxShadowHoverPresets }
+							presetInputType = 'radioImage'
+						/>
+						<BoxShadowControl
+							blockId={ block_id }
+							setAttributes={ setAttributes }
+							label={ __(
+								'Box Shadow',
+								'ultimate-addons-for-gutenberg'
+							) }
+							boxShadowColor={ {
+								value: boxShadowColorHover,
+								label: 'boxShadowColorHover',
+								title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+							} }
+							boxShadowHOffset={ {
+								value: boxShadowHOffsetHover,
+								label: 'boxShadowHOffsetHover',
+								title: __(
+									'Horizontal',
+									'ultimate-addons-for-gutenberg'
+								),
+							} }
+							boxShadowVOffset={ {
+								value: boxShadowVOffsetHover,
+								label: 'boxShadowVOffsetHover',
+								title: __(
+									'Vertical',
+									'ultimate-addons-for-gutenberg'
+								),
+							} }
+							boxShadowBlur={ {
+								value: boxShadowBlurHover,
+								label: 'boxShadowBlurHover',
+								title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+							} }
+							boxShadowSpread={ {
+								value: boxShadowSpreadHover,
+								label: 'boxShadowSpreadHover',
+								title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+							} }
+							boxShadowPosition={ {
+								value: boxShadowPositionHover,
+								label: 'boxShadowPositionHover',
+								title: __(
+									'Position',
+									'ultimate-addons-for-gutenberg'
+								),
+							} }
+						/>
+					</>
+				}
+				disableBottomSeparator={ true }
+			/>
+		</UAGAdvancedPanelBody>
+	);
+
+
 	return (
 		<React.Fragment>
 			<BlockControls key="controls">
@@ -861,11 +1020,13 @@ export default function Settings( props ) {
 						{layout === 'circle' && circleStylePanel}
 						{layout === 'bars' && barStylePanel}
 						{spacingPanel}
+						{layout === 'bars' && boxShadowSettings}
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
 						parentProps={ props }
-					></InspectorTab>
+					>
+					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 		</React.Fragment>
