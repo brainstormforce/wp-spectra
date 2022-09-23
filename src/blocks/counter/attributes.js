@@ -10,6 +10,14 @@ const attributes = {
 		type: 'string',
 		default: 'left',
 	},
+	alignTablet: {
+		type: 'string',
+		default: 'left',
+	},
+	alignMobile: {
+		type: 'string',
+		default: 'left',
+	},
 	animationDuration: {
 		type: 'number',
 		default: 25,

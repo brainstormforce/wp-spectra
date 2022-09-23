@@ -11,6 +11,8 @@ return array(
 	'block_id'                  => '',
 	'layout'                    => '',
 	'align'                     => 'left',
+	'alignTablet'               => 'left',
+	'alignMobile'               => 'left',
 	'startNumber'               => 0,
 	'endNumber'                 => 80,
 	'totalNumber'               => 100,
