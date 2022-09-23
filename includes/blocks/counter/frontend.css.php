@@ -116,6 +116,7 @@ $selectors = array(
 
 // tablet.
 $t_selectors['.wp-block-uagb-counter'] = array(
+	'text-align'     => $attr['alignTablet'],
 	'margin-top'     => UAGB_Helper::get_css_value( $attr['blockTopMarginTablet'], $attr['blockMarginUnitTablet'] ),
 	'margin-right'   => UAGB_Helper::get_css_value( $attr['blockRightMarginTablet'], $attr['blockMarginUnitTablet'] ),
 	'margin-bottom'  => UAGB_Helper::get_css_value( $attr['blockBottomMarginTablet'], $attr['blockMarginUnitTablet'] ),
@@ -157,6 +158,7 @@ $t_selectors['.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container
 
 // mobile.
 $m_selectors['.wp-block-uagb-counter'] = array(
+	'text-align'     => $attr['alignMobile'],
 	'margin-top'     => UAGB_Helper::get_css_value( $attr['blockTopMarginMobile'], $attr['blockMarginUnitMobile'] ),
 	'margin-right'   => UAGB_Helper::get_css_value( $attr['blockRightMarginMobile'], $attr['blockMarginUnitMobile'] ),
 	'margin-bottom'  => UAGB_Helper::get_css_value( $attr['blockBottomMarginMobile'], $attr['blockMarginUnitMobile'] ),

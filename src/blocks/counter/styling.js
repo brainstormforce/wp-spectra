@@ -10,6 +10,8 @@ export default function styling( props ) {
 	const {attributes} = props
 	const {
 		align,
+		alignTablet,
+		alignMobile,
 		layout,
 		headingFontFamily,
 		headingFontWeight,
@@ -312,6 +314,7 @@ export default function styling( props ) {
 	const mobile_selectors = {};
 
 	tablet_selectors['.wp-block-uagb-counter'] = {
+		'text-align': alignTablet,
 		'margin-top': generateCSSUnit(
 			blockTopMarginTablet,
 			blockMarginUnitTablet
@@ -424,6 +427,7 @@ export default function styling( props ) {
 
 
 	mobile_selectors['.wp-block-uagb-counter'] = {
+		'text-align': alignMobile,
 		'margin-top': generateCSSUnit(
 			blockTopMarginMobile,
 			blockMarginUnitMobile
