@@ -183,6 +183,7 @@ const Settings = ( props ) => {
 		paginateArrowDistanceUnit,
 		paginateArrowSize,
 		paginateDotDistance,
+		paginateDotDistanceUnit,
 		paginateLoaderSize,
 		paginateButtonTextColor,
 		paginateButtonTextColorHover,
@@ -1655,21 +1656,48 @@ const Settings = ( props ) => {
 			initialOpen={ false }>
 			{/* Grid Pagination */}
 			{ 'grid' === feedLayout && (
-				<UAGTabsControl
-				tabs={ [
-					{
-						name: 'normal',
-						title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						name: 'hover',
-						title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
-					},
-				] }
-				normal={ renderPaginationColors( false ) }
-				hover={ renderPaginationColors( true ) }
-				disableBottomSeparator={ true }
-				/>
+				<>
+					<Range
+						label={ __( 'Pagination Top Margin', 'ultimate-addons-for-gutenberg' ) }
+						setAttributes={ setAttributes }
+						value={ paginateDotDistance }
+						data={ {
+							value: paginateDotDistance,
+							label: 'paginateDotDistance',
+						} }
+						min={ 0 }
+						max={ 100 }
+						unit={ {
+							value: paginateDotDistanceUnit,
+							label: 'paginateDotDistanceUnit',
+						} }
+						units={ [
+							{
+								name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+								unitValue: 'px',
+							},
+							{
+								name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
+								unitValue: 'em',
+							},
+						] }
+					/>
+					<UAGTabsControl
+						tabs={ [
+							{
+								name: 'normal',
+								title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								name: 'hover',
+								title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
+							},
+						] }
+						normal={ renderPaginationColors( false ) }
+						hover={ renderPaginationColors( true ) }
+						disableBottomSeparator={ true }
+					/>
+				</>
 			) }
 			{/* Carousel Pagination */}
 			{ ( paginateUseArrows && 'carousel' === feedLayout ) && (
@@ -1722,7 +1750,7 @@ const Settings = ( props ) => {
 							value: paginateDotDistance,
 							label: 'paginateDotDistance',
 						} }
-						min={ -100 }
+						min={ 0 }
 						max={ 100 }
 						displayUnit={ false }
 					/>

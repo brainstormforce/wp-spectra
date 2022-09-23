@@ -518,6 +518,13 @@ if ( $attr['imageDisplayCaption'] && ( 'bar-outside' === $attr['captionDisplayTy
 	}
 }
 
+// Grid based styling.
+if ( 'grid' === $attr['feedLayout'] && $attr['feedPagination'] ) {
+	$selectors[' .spectra-image-gallery__control-wrapper']['margin-top'] = UAGB_Helper::get_css_value(
+		$paginate_dot_distance_fallback,
+		$attr['paginateDotDistanceUnit']
+	);
+}
 
 // Carousel based styling.
 if ( 'carousel' === $attr['feedLayout'] ) {

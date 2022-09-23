@@ -921,6 +921,13 @@ const attributes = {
 			styleType: 'dot-distance'
 		},
 	},
+	paginateDotDistanceUnit: {
+		type: 'number',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'dot-distance-unit'
+		},
+	},
 	paginateLoaderSize: {
 		type: 'number',
 		default: 18,

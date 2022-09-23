@@ -141,6 +141,7 @@ function styling( props ) {
 		paginateArrowDistanceUnit,
 		paginateArrowSize,
 		paginateDotDistance,
+		paginateDotDistanceUnit,
 		paginateLoaderSize,
 		paginateButtonTextColor,
 		paginateButtonTextColorHover,
@@ -773,6 +774,12 @@ function styling( props ) {
 					captionGapUnit
 				),
 			};
+		}
+	}
+	// Grid based styling.
+	if ( 'grid' === feedLayout && feedPagination ){ 
+		selectors[ ' .spectra-image-gallery__control-wrapper' ] = {
+			'margin-top': generateCSSUnit( paginateDotDistanceFallback, paginateDotDistanceUnit ),
 		}
 	}
 
