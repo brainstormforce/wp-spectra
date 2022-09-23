@@ -183,6 +183,7 @@ return array_merge(
 		// Pagination Styling.
 		'paginateArrowDistance'              => -24,
 		'paginateArrowDistanceUnit'          => 'px',
+		'paginateArrowSize'                  => 24,
 		'paginateLoaderSize'                 => 18,
 		'paginateButtonTextColor'            => '',
 		'paginateButtonTextColorHover'       => '',

@@ -181,6 +181,7 @@ const Settings = ( props ) => {
 
 		paginateArrowDistance,
 		paginateArrowDistanceUnit,
+		paginateArrowSize,
 		paginateLoaderSize,
 		paginateButtonTextColor,
 		paginateButtonTextColorHover,
@@ -1678,31 +1679,45 @@ const Settings = ( props ) => {
 			) }
 			{/* Carousel Pagination */}
 			{ ( paginateUseArrows && 'carousel' === feedLayout ) && (
-				<Range
-					label={ __( 'Arrow Distance from Edge', 'ultimate-addons-for-gutenberg' ) }
-					setAttributes={ setAttributes }
-					value={ paginateArrowDistance }
-					data={ {
-						value: paginateArrowDistance,
-						label: 'paginateArrowDistance',
-					} }
-					min={ -50 }
-					max={ 50 }
-					unit={ {
-						value: paginateArrowDistanceUnit,
-						label: 'paginateArrowDistanceUnit',
-					} }
-					units={ [
-						{
-							name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
-							unitValue: 'px',
-						},
-						{
-							name: __( '%', 'ultimate-addons-for-gutenberg' ),
-							unitValue: '%',
-						},
-					] }
-				/>
+				<>
+					<Range
+						label={ __( 'Arrow Distance from Edge', 'ultimate-addons-for-gutenberg' ) }
+						setAttributes={ setAttributes }
+						value={ paginateArrowDistance }
+						data={ {
+							value: paginateArrowDistance,
+							label: 'paginateArrowDistance',
+						} }
+						min={ -100 }
+						max={ 100 }
+						unit={ {
+							value: paginateArrowDistanceUnit,
+							label: 'paginateArrowDistanceUnit',
+						} }
+						units={ [
+							{
+								name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+								unitValue: 'px',
+							},
+							{
+								name: __( '%', 'ultimate-addons-for-gutenberg' ),
+								unitValue: '%',
+							},
+						] }
+					/>
+					<Range
+						label={ __( 'Arrow Size', 'ultimate-addons-for-gutenberg' ) }
+						setAttributes={ setAttributes }
+						value={ paginateArrowSize }
+						data={ {
+							value: paginateArrowSize,
+							label: 'paginateArrowSize',
+						} }
+						min={ 0 }
+						max={ 50 }
+						displayUnit={ false }
+					/>
+				</>
 			) }
 			{ ( ( paginateUseArrows || paginateUseDots ) && 'carousel' === feedLayout ) && (
 				<UAGTabsControl

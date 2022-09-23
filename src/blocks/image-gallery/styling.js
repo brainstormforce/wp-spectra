@@ -138,6 +138,7 @@ function styling( props ) {
 		// Pagination Styling.
 		paginateArrowDistance,
 		paginateArrowDistanceUnit,
+		paginateArrowSize,
 		paginateLoaderSize,
 		paginateButtonTextColor,
 		paginateButtonTextColorHover,
@@ -175,6 +176,7 @@ function styling( props ) {
 	const captionBackgroundEffectAmountHoverFallback = getFallbackNumber( captionBackgroundEffectAmountHover, 'captionBackgroundEffectAmountHover', blockName );
 	const captionGapFallback = getFallbackNumber( captionGap, 'captionGap', blockName );
 	const paginateArrowDistanceFallback = getFallbackNumber( paginateArrowDistance, 'paginateArrowDistance', blockName );
+	const paginateArrowSizeFallback = getFallbackNumber( paginateArrowSize, 'paginateArrowSize', blockName );
 	const paginateLoaderSizeFallback = getFallbackNumber( paginateLoaderSize, 'paginateLoaderSize', blockName );
 	const gridImageGapFallback = getFallbackNumber( gridImageGap, 'gridImageGap', blockName );
 
@@ -262,6 +264,10 @@ function styling( props ) {
 		},
 		' .spectra-image-gallery__control-arrows--carousel': {
 			...arrowBorderCSS,
+		},
+		' .spectra-image-gallery__control-arrows--carousel svg': {
+			'width': `${ paginateArrowSizeFallback }px`,
+			'height': `${ paginateArrowSizeFallback }px`,
 		},
 		' .spectra-image-gallery__control-arrows--carousel:hover': {
 			'border-color': arrowBorderHColor,

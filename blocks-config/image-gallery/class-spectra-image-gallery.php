@@ -643,6 +643,10 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 								'type'    => 'string',
 								'default' => 'px',
 							),
+							'paginateArrowSize'            => array(
+								'type'    => 'number',
+								'default' => 24,
+							),
 							'paginateLoaderSize'           => array(
 								'type'    => 'number',
 								'default' => 18,
