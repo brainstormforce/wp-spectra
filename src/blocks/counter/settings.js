@@ -927,6 +927,8 @@ export default function Settings( props ) {
 		</UAGAdvancedPanelBody>
 	);
 
+	// We shall release the box-shadow feature later due to some technical challenges with the circle layout.
+	// eslint-disable-next-line no-unused-vars
 	const boxShadowSettings = (
 		<UAGAdvancedPanelBody
 			title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
@@ -1089,7 +1091,8 @@ export default function Settings( props ) {
 						{layout === 'circle' && circleStylePanel}
 						{layout === 'bars' && barStylePanel}
 						{spacingPanel}
-						{layout === 'bars' && boxShadowSettings}
+						{/* We will be releasing the box-shadow feature later due to some technical challenges with circle layout*/}
+						{/* {layout !== 'number' && boxShadowSettings} */}
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
