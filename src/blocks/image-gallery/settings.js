@@ -334,9 +334,21 @@ const Settings = ( props ) => {
 	};
 
 	// Switch from Bar Outside to Bar Inside for Unsupported Layouts.
+	// Update the Min Column Values for Tiled Layout.
 	useEffect( () => {
 		if ( 'bar-outside' === captionDisplayType && ( 'tiled' === feedLayout || 'grid' === feedLayout ) ) {
 			setAttributes( { captionDisplayType: 'bar-inside' } ) 
+		}
+		if ( 'tiled' === feedLayout ) {
+			if ( columnsDesk < 4 ) {
+				setAttributes( { columnsDesk: 4 } );
+			}
+			if ( columnsTab < 4 ) {
+				setAttributes( { columnsTab: 4 } );
+			}
+			if ( columnsMob < 4 ) {
+				setAttributes( { columnsMob: 4 } );
+			}
 		}
 	}, [ feedLayout ] );
 
@@ -782,8 +794,8 @@ const Settings = ( props ) => {
 						label: 'columnsMob',
 					},
 				} }
-				min={ 1 }
-				max={ Math.min( MAX_IMAGE_COLUMNS, mediaGallery.length ) }
+				min={ ( 'tiled' === feedLayout ) ? 4 : 1 }
+				max={ ( 'tiled' === feedLayout && Math.min( MAX_IMAGE_COLUMNS, mediaGallery.length ) < 4 ) ? 4 : Math.min( MAX_IMAGE_COLUMNS, mediaGallery.length ) }
 				displayUnit={ false }
 				setAttributes={ setAttributes }
 			/>
