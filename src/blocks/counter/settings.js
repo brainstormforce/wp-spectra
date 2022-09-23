@@ -21,7 +21,10 @@ import UAGPresets from '@Components/presets';
 
 
 export default function Settings( props ) {
-	const { attributes, deviceType, setAttributes } = props.parentProps;
+
+	props = props.parentProps;
+	const { setAttributes, attributes, deviceType } = props;
+
 	const {
 		block_id,
 		startNumber,
