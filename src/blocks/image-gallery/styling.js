@@ -44,6 +44,7 @@ function styling( props ) {
 		captionVisibility,
 		captionDisplayType,
 		imageCaptionAlignment,
+		imageCaptionAlignment01,
 		captionPaddingTop,
 		captionPaddingRight,
 		captionPaddingBottom,
@@ -748,33 +749,42 @@ function styling( props ) {
 	}
 
 	// Caption Type based styling.
-	if ( imageDisplayCaption && ( 'bar-outside' === captionDisplayType && 'center' === getMatrixAlignment( imageCaptionAlignment, 1 ) ) ) {
-		selectors[ '.uag-image-gallery-media__thumbnail-caption-wrapper' ] = {
-			...selectors[ '.uag-image-gallery-media__thumbnail-caption-wrapper' ],
-			'margin-top': generateCSSUnit(
-				captionGapFallback,
-				captionGapUnit
-			),
-		};
-	}
-
-	// Carousel based styling.
-	if ( feedLayout === 'carousel' ) {
-		if ( carouselSquares ){
-			selectors[ ' .spectra-image-gallery__media--carousel' ] = {
-				'aspect-ratio': 1,
+	if ( imageDisplayCaption && ( 'bar-outside' === captionDisplayType ) ) {
+		if ( 'top' === imageCaptionAlignment01 ) {
+			selectors[ ' .spectra-image-gallery__media-thumbnail-caption-wrapper' ] = {
+				...selectors[ ' .spectra-image-gallery__media-thumbnail-caption-wrapper' ],
+				'margin-bottom': generateCSSUnit(
+					captionGapFallback,
+					captionGapUnit
+				),
 			};
-			selectors[ ' .spectra-image-gallery__media-thumbnail--carousel' ] = {
-				'height': '100%',
-				'width': '100%',
-				'-o-object-fit': 'cover',
-				'object-fit': 'cover',
+		}
+		else {
+			selectors[ ' .spectra-image-gallery__media-thumbnail-caption-wrapper' ] = {
+				...selectors[ ' .spectra-image-gallery__media-thumbnail-caption-wrapper' ],
+				'margin-top': generateCSSUnit(
+					captionGapFallback,
+					captionGapUnit
+				),
 			};
 		}
 	}
 
+	// Carousel based styling.
+	if ( 'carousel' === feedLayout && carouselSquares ){
+		selectors[ ' .spectra-image-gallery__media--carousel' ] = {
+			'aspect-ratio': 1,
+		};
+		selectors[ ' .spectra-image-gallery__media-thumbnail--carousel' ] = {
+			'height': '100%',
+			'width': '100%',
+			'-o-object-fit': 'cover',
+			'object-fit': 'cover',
+		};
+	}
+
 	// Masonry based styling.
-	if ( feedLayout === 'masonry' && feedPagination && ! paginateUseLoader ){ 
+	if ( 'masonry' === feedLayout && feedPagination && ! paginateUseLoader ){ 
 		selectors[ ' .spectra-image-gallery__control-wrapper' ] = {
 			'min-height': '58px',
 			'-webkit-justify-content': paginateButtonAlign,

@@ -333,15 +333,18 @@ const Settings = ( props ) => {
 
 	// Switch from Bar Outside to Bar Inside for Unsupported Layouts.
 	useEffect( () => {
-		if ( captionDisplayType === 'bar-outside' && ( feedLayout === 'tiled' || feedLayout === 'grid' ) ) {
+		if ( 'bar-outside' === captionDisplayType && ( 'tiled' === feedLayout || 'grid' === feedLayout ) ) {
 			setAttributes( { captionDisplayType: 'bar-inside' } ) 
 		}
 	}, [ feedLayout ] );
 
-	// Update Caption Visibility when Bar is Outside.
+	// Update Caption Visibility and Position when Bar is Outside.
 	useEffect( () => {
-		if ( captionDisplayType === 'bar-outside' ) {
+		if ( 'bar-outside' === captionDisplayType ) {
 			setAttributes( { captionVisibility: 'always' } );
+			if ( 'center' === imageCaptionAlignment01 ) {
+				setAttributes( { imageCaptionAlignment01: 'bottom' } );
+			}
 		}
 	}, [ captionDisplayType ] );
 
@@ -592,132 +595,122 @@ const Settings = ( props ) => {
 						setAttributes={ setAttributes }
 						options={ generateBarOptions() }
 					/>
-					{
-						captionDisplayType !== 'bar-outside'
-							? (
-								<>
-									<UAGSelectControl
-										label={ __( 'Visibility', 'ultimate-addons-for-gutenberg' ) }
-										data={ {
-											value: captionVisibility,
-											label: 'captionVisibility',
-										} }
-										setAttributes={ setAttributes }
-									>
-										<option value="hover">Show on hover</option>
-										<option value="antiHover">Hide on hover</option>
-										<option value="always">Always Visible</option>
-									</UAGSelectControl>
-									<span className='uag-control-label'>
-										{ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
-									</span>
-									<AlignmentMatrixControl
-										label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
-										value={ imageCaptionAlignment }
-										onChange={ ( value ) => updateSplitAlignments( value ) }
-									/>
-								</>
-							) 
-							: (
-								<>
-									<MultiButtonsControl
-										setAttributes={ setAttributes }
-										label={ __(
-											'Bar Position',
-											'ultimate-addons-for-gutenberg'
-										) }
-										data={ {
-											value: imageCaptionAlignment01,
-											label: 'imageCaptionAlignment01',
-										} }
-										options={ [
-											{
-												value: 'top',
-												label: __( 'Above', 'ultimate-addons-for-gutenberg' ),
-											},
-											{
-												value: 'bottom',
-												label: __( 'Below', 'ultimate-addons-for-gutenberg' ),
-											},
-											{
-												value: 'center',
-												label: __( 'Separated', 'ultimate-addons-for-gutenberg' ),
-											},
-										] }
-										showIcons={ false }
-									/>
-									{ ( ( captionDisplayType === 'bar-outside' ) && ( getMatrixAlignment( imageCaptionAlignment, 1 ) === 'center' ) ) && (
-										<Range
-											label={ __( 'Gap', 'ultimate-addons-for-gutenberg' ) }
-											setAttributes={ setAttributes }
-											value={ captionGap }
-											data={ {
-												value: captionGap,
-												label: 'captionGap',
-											} }
-											min={ 0 }
-											max={ 100 }
-											unit={ {
-												value: captionGapUnit,
-												label: 'captionGapUnit',
-											} }
-											units={ [
-												{
-													name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
-													unitValue: 'em',
-												},
-												{
-													name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
-													unitValue: 'px',
-												},
-											] }
-										/>
-									) }
-									<MultiButtonsControl
-										setAttributes={ setAttributes }
-										label={ __(
-											'Alignment',
-											'ultimate-addons-for-gutenberg'
-										) }
-										data={ {
-											value: imageCaptionAlignment02,
-											label: 'imageCaptionAlignment02',
-										} }
-										className="uagb-multi-button-alignment-control"
-										options={ [
-											{
-												value: 'left',
-												icon: (
-													<Icon
-														icon={ renderSVG( 'fa fa-align-left' ) }
-													/>
-												),
-												tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
-											},
-											{
-												value: 'center',
-												icon: (
-													<Icon
-														icon={ renderSVG( 'fa fa-align-center' ) }
-													/>
-												),
-												tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
-											},
-											{
-												value: 'right',
-												icon: (
-													<Icon
-														icon={ renderSVG( 'fa fa-align-right' ) }
-													/>
-												),
-												tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
-											},
-										] }
-										showIcons={ true }
-									/>
-								</>
-							)
-					}
+					{ captionDisplayType !== 'bar-outside' ? (
+						<>
+							<UAGSelectControl
+								label={ __( 'Visibility', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: captionVisibility,
+									label: 'captionVisibility',
+								} }
+								setAttributes={ setAttributes }
+							>
+								<option value="hover">Show on hover</option>
+								<option value="antiHover">Hide on hover</option>
+								<option value="always">Always Visible</option>
+							</UAGSelectControl>
+							<span className='uag-control-label'>
+								{ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
+							</span>
+							<AlignmentMatrixControl
+								label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
+								value={ imageCaptionAlignment }
+								onChange={ ( value ) => updateSplitAlignments( value ) }
+							/>
+						</>
+					) : (
+						<>
+							<MultiButtonsControl
+								setAttributes={ setAttributes }
+								label={ __(
+									'Bar Position',
+									'ultimate-addons-for-gutenberg'
+								) }
+								data={ {
+									value: imageCaptionAlignment01,
+									label: 'imageCaptionAlignment01',
+								} }
+								options={ [
+									{
+										value: 'top',
+										label: __( 'Above', 'ultimate-addons-for-gutenberg' ),
+									},
+									{
+										value: 'bottom',
+										label: __( 'Below', 'ultimate-addons-for-gutenberg' ),
+									},
+								] }
+								showIcons={ false }
+							/>
+							<MultiButtonsControl
+								setAttributes={ setAttributes }
+								label={ __(
+									'Alignment',
+									'ultimate-addons-for-gutenberg'
+								) }
+								data={ {
+									value: imageCaptionAlignment02,
+									label: 'imageCaptionAlignment02',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ [
+									{
+										value: 'left',
+										icon: (
+											<Icon
+												icon={ renderSVG( 'fa fa-align-left' ) }
+											/>
+										),
+										tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
+									},
+									{
+										value: 'center',
+										icon: (
+											<Icon
+												icon={ renderSVG( 'fa fa-align-center' ) }
+											/>
+										),
+										tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
+									},
+									{
+										value: 'right',
+										icon: (
+											<Icon
+												icon={ renderSVG( 'fa fa-align-right' ) }
+											/>
+										),
+										tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
+									},
+								] }
+								showIcons={ true }
+							/>
+							<Range
+								label={ __( 'Gap', 'ultimate-addons-for-gutenberg' ) }
+								setAttributes={ setAttributes }
+								value={ captionGap }
+								data={ {
+									value: captionGap,
+									label: 'captionGap',
+								} }
+								min={ 0 }
+								max={ 100 }
+								unit={ {
+									value: captionGapUnit,
+									label: 'captionGapUnit',
+								} }
+								units={ [
+									{
+										name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
+										unitValue: 'em',
+									},
+									{
+										name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+										unitValue: 'px',
+									},
+								] }
+							/>
+						</>
+					) }
 					<TextControl
 						autoComplete="off"
 						label={ __(

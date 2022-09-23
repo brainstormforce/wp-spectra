@@ -44,6 +44,7 @@ $main_title_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $att
 $main_title_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'mainTitle', 'mobile' );
 
 // Box Shadow CSS.
+
 $image_box_shadow_css = (
 	UAGB_Helper::get_css_value( $attr['imageBoxShadowHOffset'], 'px' )
 ) . ' ' . (
@@ -495,11 +496,19 @@ if ( ! $attr['captionBackgroundEnableBlur'] ) {
 }
 
 // Caption Type based styling.
-if ( $attr['imageDisplayCaption'] && ( 'bar-outside' === $attr['captionDisplayType'] && 'center' === UAGB_Block_Helper::get_matrix_alignment( $attr['imageCaptionAlignment'], 1 ) ) ) {
-	$selectors['.uag-image-gallery-media__thumbnail-caption-wrapper']['margin-top'] = UAGB_Helper::get_css_value(
-		$caption_gap_fallback,
-		$attr['captionGapUnit']
-	);
+if ( $attr['imageDisplayCaption'] && ( 'bar-outside' === $attr['captionDisplayType'] ) ) {
+	if ( 'top' === $attr['imageCaptionAlignment01'] ) {
+		$selectors[' .spectra-image-gallery__media-thumbnail-caption-wrapper']['margin-bottom'] = UAGB_Helper::get_css_value(
+			$caption_gap_fallback,
+			$attr['captionGapUnit']
+		);
+	}
+	else {
+		$selectors[' .spectra-image-gallery__media-thumbnail-caption-wrapper']['margin-top'] = UAGB_Helper::get_css_value(
+			$caption_gap_fallback,
+			$attr['captionGapUnit']
+		);
+	}
 }
 
 
