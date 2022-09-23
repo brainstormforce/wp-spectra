@@ -915,6 +915,12 @@ const attributes = {
 			styleType: 'arrow-size'
 		},
 	},
+	paginateDotDistance: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'dot-distance'
+		},
+	},
 	paginateLoaderSize: {
 		type: 'number',
 		default: 18,

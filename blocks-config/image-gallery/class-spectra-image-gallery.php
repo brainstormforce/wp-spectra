@@ -1173,23 +1173,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 		 * @since 2.1
 		 */
 		public static function render_frontend_carousel_layout( $id, $settings, $selector ) {
-			ob_start();
-			?>
-				jQuery( document ).ready( function() {
-					const scope = document.querySelector( '.uagb-block-<?php echo esc_html( $id ); ?>' );
-					if ( scope ){
-						if ( scope.children[0].classList.contains( 'spectra-image-gallery__layout--carousel' ) ) {
-							const carousel = scope.children[0];
-							const dots = carousel.children[0].querySelector( '.slick-dots' );
-							if( dots ){
-								carousel.style.marginBottom = jQuery( ".slick-dots" ).height() + "px";
-							}
-						}
-					}
-				} );
-			<?php
-			$buffer = ob_get_clean();
-			return 'jQuery( document ).ready( function() { if( jQuery( "' . $selector . '" ).length > 0 ){ jQuery( "' . $selector . '" ).find( ".uagb-slick-carousel" ).slick( ' . $settings . ' ); } } );' . $buffer;
+			return 'jQuery( document ).ready( function() { if( jQuery( "' . $selector . '" ).length > 0 ){ jQuery( "' . $selector . '" ).find( ".uagb-slick-carousel" ).slick( ' . $settings . ' ); } } );';
 		}
 
 		/**

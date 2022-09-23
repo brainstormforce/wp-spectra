@@ -140,6 +140,7 @@ function styling( props ) {
 		paginateArrowDistance,
 		paginateArrowDistanceUnit,
 		paginateArrowSize,
+		paginateDotDistance,
 		paginateLoaderSize,
 		paginateButtonTextColor,
 		paginateButtonTextColorHover,
@@ -177,6 +178,7 @@ function styling( props ) {
 	const captionBackgroundEffectAmountHoverFallback = getFallbackNumber( captionBackgroundEffectAmountHover, 'captionBackgroundEffectAmountHover', blockName );
 	const captionGapFallback = getFallbackNumber( captionGap, 'captionGap', blockName );
 	const paginateArrowDistanceFallback = getFallbackNumber( paginateArrowDistance, 'paginateArrowDistance', blockName );
+	const paginateDotDistanceFallback = isNaN( paginateDotDistance ) ? 0 : paginateDotDistance;
 	const paginateArrowSizeFallback = getFallbackNumber( paginateArrowSize, 'paginateArrowSize', blockName );
 	const paginateLoaderSizeFallback = getFallbackNumber( paginateLoaderSize, 'paginateLoaderSize', blockName );
 	const gridImageGapFallback = getFallbackNumber( gridImageGap, 'gridImageGap', blockName );
@@ -279,6 +281,9 @@ function styling( props ) {
 		' .spectra-image-gallery__control-arrows--carousel.slick-next': {
 			'right': generateCSSUnit( paginateArrowDistanceFallback, paginateArrowDistanceUnit ),
 		},
+		' .spectra-image-gallery__layout--carousel ul.slick-dots': {
+			'top': generateCSSUnit( paginateDotDistanceFallback, 'px' ),
+		},
 		' .spectra-image-gallery__layout--carousel ul.slick-dots li button:before': {
 			'color': arrowDotColor,
 		},
@@ -363,7 +368,8 @@ function styling( props ) {
 			),
 		},
 		' .spectra-image-gallery__layout--carousel': {
-			'margin': '0px'
+			// Override Slick Slider Margin and add a Base Margin Bottom for Dots with Calc.
+			'margin-bottom': `${ generateCSSUnit( paginateDotDistanceFallback, 'px' ) } !important`,
 		},
 		' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper': {
 			'padding': generateSpacing(

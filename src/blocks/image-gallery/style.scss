@@ -200,6 +200,7 @@
 
 			.slick-dots {
 				padding: 0;
+				position: relative !important; // Override Slick Slider Positioning.
 
 				li button {
 					padding: 0;

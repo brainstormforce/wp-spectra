@@ -22,6 +22,7 @@ $caption_background_effect_amount_fallback       = UAGB_Block_Helper::get_fallba
 $caption_background_effect_amount_hover_fallback = UAGB_Block_Helper::get_fallback_number( $attr['captionBackgroundEffectAmountHover'], 'captionBackgroundEffectAmountHover', $block_name );
 $caption_gap_fallback                            = UAGB_Block_Helper::get_fallback_number( $attr['captionGap'], 'captionGap', $block_name );
 $paginate_arrow_distance_fallback                = UAGB_Block_Helper::get_fallback_number( $attr['paginateArrowDistance'], 'paginateArrowDistance', $block_name );
+$paginate_dot_distance_fallback                  = is_numeric( $attr['paginateDotDistance'] ) ? $attr['paginateDotDistance'] : 0;
 $paginate_loader_size_fallback                   = UAGB_Block_Helper::get_fallback_number( $attr['paginateLoaderSize'], 'paginateLoaderSize', $block_name );
 $grid_image_gap_fallback                         = UAGB_Block_Helper::get_fallback_number( $attr['gridImageGap'], 'gridImageGap', $block_name );
 
@@ -110,6 +111,9 @@ $selectors = array(
 			$attr['paginateArrowDistanceUnit']
 		),
 	),
+	' .spectra-image-gallery__layout--carousel ul.slick-dots' => array(
+		'top' => UAGB_Helper::get_css_value( $paginate_dot_distance_fallback, 'px' ),
+	),
 	' .spectra-image-gallery__layout--carousel ul.slick-dots li button:before' => array(
 		'color' => $arrow_dot_color,
 	),
@@ -183,7 +187,10 @@ $selectors = array(
 		),
 	),
 	' .spectra-image-gallery__layout--carousel'         => array(
-		'margin' => '0px',
+		// Override Slick Slider Margin.
+		'margin-bottom' => UAGB_Helper::get_css_value(
+			$paginate_dot_distance_fallback, 'px'
+		) . ' !important'
 	),
 	' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper' => array(
 		'padding' => UAGB_Helper::get_css_value(

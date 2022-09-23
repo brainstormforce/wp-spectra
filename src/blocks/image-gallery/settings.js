@@ -182,6 +182,7 @@ const Settings = ( props ) => {
 		paginateArrowDistance,
 		paginateArrowDistanceUnit,
 		paginateArrowSize,
+		paginateDotDistance,
 		paginateLoaderSize,
 		paginateButtonTextColor,
 		paginateButtonTextColorHover,
@@ -1674,7 +1675,7 @@ const Settings = ( props ) => {
 			{ ( paginateUseArrows && 'carousel' === feedLayout ) && (
 				<>
 					<Range
-						label={ __( 'Arrow Distance from Edge', 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Arrow Position', 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }
 						value={ paginateArrowDistance }
 						data={ {
@@ -1711,6 +1712,20 @@ const Settings = ( props ) => {
 						displayUnit={ false }
 					/>
 				</>
+			) }
+			{ ( paginateUseDots && 'carousel' === feedLayout ) && (
+					<Range
+						label={ __( 'Dot Position', 'ultimate-addons-for-gutenberg' ) }
+						setAttributes={ setAttributes }
+						value={ paginateDotDistance }
+						data={ {
+							value: paginateDotDistance,
+							label: 'paginateDotDistance',
+						} }
+						min={ -100 }
+						max={ 100 }
+						displayUnit={ false }
+					/>
 			) }
 			{ ( ( paginateUseArrows || paginateUseDots ) && 'carousel' === feedLayout ) && (
 				<UAGTabsControl
@@ -1873,8 +1888,8 @@ const Settings = ( props ) => {
 							1.1. feedPagination is needed OR
 							1.2. The feedLayout is a carousel AND
 								1.2.1 the carousel either has Arrows OR Dots. */}
-						{ ( readyToRender && (
-							( 'tiled' !== feedLayout && feedPagination ) || (
+						{ ( ( readyToRender && 'tiled' !== feedLayout ) && (
+							( feedPagination && 'carousel' !== feedLayout ) || (
 								'carousel' === feedLayout && (
 									paginateUseArrows || paginateUseDots
 								)
