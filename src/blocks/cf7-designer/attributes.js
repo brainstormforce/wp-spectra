@@ -74,20 +74,25 @@
 			styleType: 'input-color'
 		},
 	},
-	fieldBorderStyle              : {
-		type    : 'string',
+	fieldBorderStyle             : {
+		type   :'string',
+		default : 'solid',
 	},
-	fieldBorderWidth              : {
-		type    : 'number',
+	fieldBorderWidth             : {
+		type   :'number',
+		default : 1,
 	},
-	fieldBorderRadius             : {
-		type    : 'number',
+	fieldBorderRadius            : {
+		type   :'number',
+		default : 0,
 	},
-	fieldBorderColor              : {
-		type    : 'string',
+	fieldBorderColor             : {
+		type   :'string',
+		default : '#eeeeee',
 	},
-	fieldBorderFocusColor         : {
-		type    : 'string',
+	fieldBorderFocusColor        : {
+		type   :'string',
+		default : '',
 	},
 	buttonAlignment               : {
 		type    : 'string',
@@ -126,15 +131,19 @@
 	},
 	buttonBorderStyle             : {
 		type    : 'string',
+		default: 'solid',
 	},
 	buttonBorderWidth             : {
 		type    : 'number',
+		default: 1
 	},
 	buttonBorderRadius            : {
 		type    : 'number',
+		default: 0
 	},
 	buttonBorderColor             : {
 		type    : 'string',
+		default: '#333',
 	},
 	buttonTextColor               : {
 		type    : 'string',

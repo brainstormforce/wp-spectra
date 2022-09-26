@@ -1,5 +1,5 @@
 
-export const getBorderAttributes = ( prefix, defaultArgs = {} ) => {
+export const getBorderAttributes = ( prefix ) => {
 	const defaults = {
 		// Width
 		borderTopWidth: '',
@@ -34,8 +34,7 @@ export const getBorderAttributes = ( prefix, defaultArgs = {} ) => {
 		// common
 		borderStyle: '',
 		borderColor:  '',
-		borderHColor: '',
-		...defaultArgs
+		borderHColor: ''
 	};
 	const attributes = {};
 	const devices = [
