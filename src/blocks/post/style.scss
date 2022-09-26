@@ -14,7 +14,7 @@
 	.uagb-post__inner-wrap {
 
 		.uagb-post__taxonomy {
-			display: contents;
+			display: inline-block;
 
 			&.default {
 				margin: 5px 5px 5px 0;
@@ -29,7 +29,6 @@
 				align-items: flex-end;
 				padding: 6px 8px;
 				line-height: 1;
-				display: inline-block;
 
 				a {
 					color: #fff;
