@@ -172,7 +172,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ### 2.0.13 - Monday, 26th SEPTEMBER 2022 ###
 * Fix: Review Schema - Star ratings does not reflect on the frontend same as editor when multiple review block used.
-* Fix: Review Schema - Star ratings appear different on front end and in editor.
+* Fix: Review Schema - Stars appear left in editor and right on frontend issue when clicked.
 
 ### 2.0.12 - FRIDAY, 16th SEPTEMBER 2022 ###
 * Improvement: How to block - Option to disable step links.

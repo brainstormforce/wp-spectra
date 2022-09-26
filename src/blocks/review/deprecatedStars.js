@@ -30,7 +30,7 @@ const DeprecatedStars = ( props ) => {
 		value,
 		activeStarColor,
 	} = props;
-console.log(`uagb_review_star_filter-${ id }-${ i }`)
+
 	return (
 		<div
 			className={ className }

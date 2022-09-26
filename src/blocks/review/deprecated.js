@@ -5,12 +5,10 @@
  import classnames from "classnames"
  import { Stars } from "./deprecatedComponent";
  import { __ } from '@wordpress/i18n';
- import { DeprecatedStars } from "./deprecatedStars";
+ import DeprecatedStars from "./deprecatedStars";
  import attributes from './attributes';
 
- const {
-     RichText,
- } = wp.blockEditor
+ import { RichText } from '@wordpress/block-editor';
 
  const blockAttributes = {
 		ID: {
@@ -660,7 +658,7 @@
      },
 	 {
 		attributes,
-		save( props ) {
+		save: function save( props ) {
 			const { attributes, className } = props;
 
 			const {
@@ -740,7 +738,7 @@
 			if ( ctaTarget ) {
 				target = '_blank';
 			}
-console.log('dep')
+
 			return (
 				<div
 					className={ classnames(
