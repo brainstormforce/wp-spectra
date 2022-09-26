@@ -172,7 +172,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ### 2.0.13 - FRIDAY, 16th SEPTEMBER 2022 ###
 * Fix: Form - Backward Compatibility Stylings Issue on the editor.
-* Fix: Post carousel - Taxonomy layout is breaking on both the sides.
+* Fix: Post Carousel/Masonry- Taxonomy stylings not working as expected in different layouts.
 ### 2.0.12 - FRIDAY, 16th SEPTEMBER 2022 ###
 * Improvement: How to block - Option to disable step links.
 * Improvement: Forms - Added 'Required' toggle for Accept field/sub-block.
