@@ -458,17 +458,6 @@ const attributes = {
 			styleType: 'btn-bg-hover-color'
 		},
 	},
-	ctaBorderColor: {
-		type: 'string',
-	},
-	ctaBorderhoverColor: {
-		type: 'string',
-		default: '',
-	},
-	ctaBorderStyle: {
-		type: 'string',
-		default: 'solid',
-	},
 	ctaBtnVertPadding: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -482,13 +471,6 @@ const attributes = {
 			styleType: 'btn-horizontal-padding'
 		},
 		default: '',
-	},
-	ctaBorderWidth: {
-		type: 'number',
-		default: 1,
-	},
-	ctaBorderRadius: {
-		type: 'number',
 	},
 	stack: {
 		type: 'string',
@@ -1098,6 +1080,26 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'main-button-unit-type'
 		},
+	},
+	ctaBorderWidth :{
+		type: 'number',
+		default: 1,
+	},
+	ctaBorderRadius :{
+		type: 'number',
+		default: 0,
+	},
+	ctaBorderColor: {
+		type: 'string',
+		default: '#333',
+	},
+	ctaBorderhoverColor:{
+		type: 'string',
+		default: '',
+	},
+	ctaBorderStyle: {
+		type: 'string',
+		default: 'solid',
 	},
 	...borderAttributes,
 	...secondCtaBorderAttribute,
