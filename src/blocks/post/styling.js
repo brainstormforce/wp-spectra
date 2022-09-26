@@ -314,13 +314,12 @@ function styling( props ) {
 			'padding-bottom': generateCSSUnit( paddingBottom, contentPaddingUnit ),
 			'padding-right': generateCSSUnit( paddingRight, contentPaddingUnit ),
 		},
-		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)': {
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap > .uagb-post__text': {
 			'margin-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
 			'margin-right': generateCSSUnit( paddingRight, contentPaddingUnit ),
 		},
-		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text.highlighted:first-child': {
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:first-child': {
 			'margin-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
-			'margin-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
 		},
 		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:last-child': {
 			'margin-bottom': generateCSSUnit( paddingBottom, contentPaddingUnit ),
@@ -345,13 +344,15 @@ function styling( props ) {
 				titleBottomSpaceFallback,
 				titleBottomSpaceUnit
 			),
-			'margin-top': generateCSSUnit(
-				paddingTop,
-				contentPaddingUnit
-			),
 		},
 		' .uagb-post__inner-wrap .uagb-post-grid-byline': {
 			'padding-bottom': generateCSSUnit(
+				metaBottomSpaceFallback,
+				metaBottomSpaceUnit
+			),
+		},
+		' .uagb-post__inner-wrap > .uagb-post__taxonomy': {
+			'margin-bottom': generateCSSUnit(
 				metaBottomSpaceFallback,
 				metaBottomSpaceUnit
 			),
@@ -854,11 +855,11 @@ function styling( props ) {
 		' .is-masonry': {
 			'height': 'initial !important',
 		},
-		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)': {
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text': {
 			'margin-left': generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
 			'margin-right': generateCSSUnit( paddingRightMobile, mobilePaddingUnit ),
 		},
-		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text.highlighted:first-child': {
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:first-child': {
 			'margin-top': generateCSSUnit( paddingTopMobile, mobilePaddingUnit ),
 			'margin-left': generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
 		},
@@ -1020,13 +1021,12 @@ function styling( props ) {
 		' .is-masonry': {
 			'height': 'initial !important',
 		},
-		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)': {
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text': {
 			'margin-left': generateCSSUnit( paddingLeftTablet, tabletPaddingUnit ),
 			'margin-right': generateCSSUnit( paddingRightTablet, tabletPaddingUnit ),
 		},
-		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text.highlighted:first-child': {
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:first-child': {
 			'margin-top': generateCSSUnit( paddingTopTablet, tabletPaddingUnit ),
-			'margin-left': generateCSSUnit( paddingLeftTablet, tabletPaddingUnit ),
 		},
 		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:last-child': {
 			'margin-bottom': generateCSSUnit( paddingBottomTablet, tabletPaddingUnit ),
