@@ -170,10 +170,12 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 2.0.13 - FRIDAY, 16th SEPTEMBER 2022 =
+= 2.0.13 - MONDAY, 26th SEPTEMBER 2022 =
+* Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
 * Fix: Icon List - Text Alignment not working properly on front-end.
 * Fix: Form - Backward Compatibility Stylings Issue on the editor.
 * Fix: Call To Action - Button css conflict with Newspaper theme.
+* Fix: Customizer was frozen when theme blog settings were changed.
 
 = 2.0.12 - FRIDAY, 16th SEPTEMBER 2022 =
 * Improvement: How to block - Option to disable step links.
