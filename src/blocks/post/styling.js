@@ -861,7 +861,6 @@ function styling( props ) {
 		},
 		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:first-child': {
 			'margin-top': generateCSSUnit( paddingTopMobile, mobilePaddingUnit ),
-			'margin-left': generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
 		},
 		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:last-child': {
 			'margin-bottom': generateCSSUnit( paddingBottomMobile, mobilePaddingUnit ),
