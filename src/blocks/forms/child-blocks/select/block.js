@@ -8,6 +8,7 @@ import edit from './edit';
 import save from './save';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
+import deprecated from './deprecated'
 
 registerBlockType( 'uagb/forms-select', {
 	title: __( 'Select', 'ultimate-addons-for-gutenberg' ),
@@ -23,4 +24,5 @@ registerBlockType( 'uagb/forms-select', {
 		}
 	},
 	save,
+	deprecated,
 } );
