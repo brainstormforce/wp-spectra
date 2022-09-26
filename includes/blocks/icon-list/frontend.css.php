@@ -179,6 +179,9 @@ $selectors = array(
 		'background'   => $attr['iconBgHoverColor'],
 		'border-color' => $attr['iconBorderHoverColor'],
 	),
+	' .uagb-icon-list__label'        => array(
+		'text-align' => $attr['align'],
+	),
 );
 
 
@@ -248,12 +251,18 @@ $t_selectors = array(
 			$attr['blockPaddingUnitTablet']
 		),
 	),
+	' .uagb-icon-list__label'        => array(
+		'text-align' => $attr['alignTablet'],
+	),
 );
 
 
 $m_selectors = array(
 	' .uagb-icon-list__source-image' => array(
 		'width' => $m_icon_size,
+	),
+	' .uagb-icon-list__label'        => array(
+		'text-align' => $attr['alignMobile'],
 	),
 	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap svg' => array(
 		'width'     => $m_icon_size,

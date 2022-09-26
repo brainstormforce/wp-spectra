@@ -190,9 +190,9 @@ const UAGBTableOfContentsEdit = ( props ) => {
 				setAttributes( { leftMarginTablet: hMarginTablet } );
 			}
 		}
-		const {borderStyle,borderWidth,borderRadius,borderColor,borderHColor} = props.attributes;
+		const {borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor} = props.attributes;
 		// Backward Border Migration
-		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
 			migrateBorderAttributes( 'overall', {
 				label: 'borderWidth',
 				value: borderWidth,
@@ -203,8 +203,8 @@ const UAGBTableOfContentsEdit = ( props ) => {
 				label: 'borderColor',
 				value: borderColor
 			}, {
-				label: 'borderHColor',
-				value: borderHColor
+				label: 'borderHoverColor',
+				value: borderHoverColor
 			},{
 				label: 'borderStyle',
 				value: borderStyle
