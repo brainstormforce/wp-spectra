@@ -594,6 +594,40 @@ const attributes = {
 			styleType: 'counter-box-shadow-position-hover'
 		},
 	},
+	showIcon: {
+		type: 'boolean',
+		default: true,
+		isUAGStyle: true,
+	},
+	icon: {
+		type: 'string',
+		default: 'circle-check',
+	},
+	iconSize: {
+		type: 'number',
+		default: 30,
+		UAGCopyPaste: {
+			styleType: 'icon-size'
+		}
+	},
+	iconSizeType: {
+		type: 'String',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'icon-size-type'
+		}
+	},
+	iconImgPosition: {
+		type: 'string',
+		default: 'top',
+		UAGCopyPaste: {
+			styleType: 'icon-img-position'
+		}
+	},
+	sourceType: {
+		type: 'string',
+		default: 'icon',
+	},
 };
 
 export default attributes;

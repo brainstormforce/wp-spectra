@@ -146,4 +146,10 @@ return array(
 	'boxShadowBlurHover'        => '',
 	'boxShadowSpreadHover'      => '',
 	'boxShadowPositionHover'    => '',
+	'showIcon'                  => true,
+	'sourceType'                => 'icon',
+	'icon'                      => 'circle-check',
+	'iconSize'                  => 30,
+	'iconSizeType'              => 'px',
+	'iconImgPosition'           => 'top',
 );
