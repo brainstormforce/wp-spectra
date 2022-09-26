@@ -175,6 +175,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Icon List - Text Alignment not working properly on front-end.
 * Fix: Form - Backward Compatibility Stylings Issue on the editor.
 * Fix: Customizer was frozen when theme blog settings were changed.
+* Fix: Post Carousel - Column gap was not same on the front-end after upgrading from v1.25.6 when image is set as background.
+* Fix: Post Masonry - Row gap and column gap lable changd.
+* Fix: Post Masonry - Column Gap was impacting other post masonry, post grid, post carousel blocks.
 
 ### 2.0.12 - FRIDAY, 16th SEPTEMBER 2022 ###
 * Improvement: How to block - Option to disable step links.
