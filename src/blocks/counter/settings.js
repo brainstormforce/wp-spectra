@@ -8,7 +8,7 @@ import AdvancedPopColorControl from '@Components/color-control/advanced-pop-colo
 import SpacingControl from '@Components/spacing-control';
 import { __ } from '@wordpress/i18n';
 import {AlignmentToolbar, BlockControls, InspectorControls} from '@wordpress/block-editor';
-import { TextControl, SelectControl, Icon } from '@wordpress/components';
+import { TextControl, SelectControl, Icon, ToggleControl } from '@wordpress/components';
 import renderSVG from '@Controls/renderIcon';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
@@ -17,8 +17,20 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import BoxShadowControl from '@Components/box-shadow';
 import UAGTabsControl from '@Components/tabs';
 import { boxShadowPresets, boxShadowHoverPresets } from './presets';
+import UAGSelectControl from '@Components/select-control';
+import UAGIconPicker from '@Components/icon-picker';
+import UAGMediaPicker from '@Components/image';
+import { getImageSize } from '@Utils/Helpers';
 import UAGPresets from '@Components/presets';
 
+let imageSizeOptions = [
+	{
+		value: 'thumbnail',
+		label: __( 'Thumbnail', 'ultimate-addons-for-gutenberg' ),
+	},
+	{ value: 'medium', label: __( 'Medium', 'ultimate-addons-for-gutenberg' ) },
+	{ value: 'full', label: __( 'Large', 'ultimate-addons-for-gutenberg' ) },
+];
 
 export default function Settings( props ) {
 
@@ -166,8 +178,107 @@ export default function Settings( props ) {
 		boxShadowBlurHover,
 		boxShadowSpreadHover,
 		boxShadowPositionHover,
+		// Icon/Image
+		showIcon,
+		icon,
+		iconImgPosition,
+		iconImage,
+		imageSize,
+		sourceType,
 	} = attributes;
 
+	const numberIconPositionOptions = [
+		{
+			value: 'top',
+			label: __(
+				'Top',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'bottom',
+			label: __(
+				'Bottom',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'left-number',
+			label: __(
+				'Left of Number',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'right-number',
+			label: __(
+				'Right of Number',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'left',
+			label: __(
+				'Left of Number and Title',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'right',
+			label: __(
+				'Right of Number and Title',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+	];
+
+	const circleIconPositionOptions = [
+		{
+			value: 'top',
+			label: __(
+				'Top',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'bottom',
+			label: __(
+				'Bottom',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+	]
+
+	/*
+	 * Event to set Image as while adding.
+	 */
+	const onSelectImage = ( media ) => {
+		if ( ! media || ! media.url ) {
+			setAttributes( { iconImage: null } );
+			return;
+		}
+
+		if ( ! media.type || 'image' !== media.type ) {
+			setAttributes( { iconImage: null } );
+			return;
+		}
+		if ( media.sizes ) {
+			const new_img = getImageSize( media.sizes );
+			imageSizeOptions = new_img;
+		}
+		setAttributes( { iconImage: media } );
+	};
+
+	/*
+	 * Event to set Image as null while removing.
+	 */
+	const onRemoveImage = () => {
+		setAttributes( { iconImage: '' } );
+	};
+
+	if ( iconImage && iconImage.sizes ) {
+		imageSizeOptions = getImageSize( iconImage.sizes );
+	}
 
 	const generalPanel = (
 		<UAGAdvancedPanelBody
@@ -329,6 +440,106 @@ export default function Settings( props ) {
 					{ value: '.', label: '.' },
 				] }
 			/>
+		</UAGAdvancedPanelBody>
+	)
+
+	const iconImagePanel = (
+		<UAGAdvancedPanelBody
+			title={ __( 'Image/Icon', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
+		>
+			<ToggleControl
+				checked={ showIcon }
+				onChange={ () =>
+					setAttributes( { showIcon: ! showIcon } )
+				}
+				label={ __(
+					'Enable Icon/Image',
+					'ultimate-addons-for-gutenberg'
+				) }
+			/>
+			{ showIcon && ( layout === 'circle' || layout === 'number' ) && (
+				<UAGSelectControl
+					label={ __(
+						'Select Position',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: iconImgPosition,
+						label: 'iconImgPosition',
+					} }
+					setAttributes={ setAttributes }
+					options={ ( layout === 'circle' ) ? circleIconPositionOptions : numberIconPositionOptions }
+				/>
+			)}
+			{ showIcon &&
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __(
+						'Select Source',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: sourceType,
+						label: 'sourceType',
+					} }
+					options={ [
+						{
+							value: 'icon',
+							label: __(
+								'Icon',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'image',
+							label: __(
+								'Image',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+				/>
+			}
+			{ false !== showIcon && sourceType === 'icon' && (
+				<>
+					<UAGIconPicker
+						label={ __(
+							'Icon',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ icon }
+						onChange={ ( value ) =>
+							setAttributes( { icon: value } )
+						}
+					/>
+				</>
+			) }
+			{ false !== showIcon && sourceType === 'image' && (
+				<>
+					<UAGMediaPicker
+						onSelectImage={ onSelectImage }
+						backgroundImage={ iconImage }
+						onRemoveImage={ onRemoveImage }
+					/>
+					{ iconImage &&
+						iconImage.url !== 'null' &&
+						iconImage.url !== '' && (
+						<UAGSelectControl
+							label={ __(
+								'Image Size',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: imageSize,
+								label: 'imageSize',
+							} }
+							setAttributes={ setAttributes }
+							options={ imageSizeOptions }
+						/>
+					) }
+				</>
+			) }
 		</UAGAdvancedPanelBody>
 	)
 
@@ -1087,6 +1298,8 @@ export default function Settings( props ) {
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
 						{generalPanel}
+						{/* No icons necessary for bar layout */}
+						{layout !== 'bars' && iconImagePanel}
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{numberStylePanel}
