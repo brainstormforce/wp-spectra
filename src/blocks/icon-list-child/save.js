@@ -55,7 +55,7 @@ export default function save( props ) {
 			{ disableLink && (
 				<a
 					target={ targetVal }
-					aria-label={ label }
+					aria-label={ label.replace( /(<([^>]+)>)/ig, '' ) }
 					rel="noopener noreferrer"
 					href={ linkUrl }
 				>
