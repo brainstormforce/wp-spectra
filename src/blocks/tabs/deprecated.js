@@ -78,7 +78,7 @@ const attributes = {
 	},
 	borderStyle: {
 		type: 'string',
-		default: 'solid'
+		default:'solid'
 	},
 	borderWidth: {
 		type: 'number',

@@ -15,8 +15,7 @@ $overall_border_css        = UAGB_Block_Helper::uag_generate_deprecated_border_c
 	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
 	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
 	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
-	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' ),
-	( isset( $attr['borderHColor'] ) ? $attr['borderHColor'] : '' )
+	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
 );
 $overall_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'tablet' );
 $overall_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'mobile' );
@@ -107,17 +106,17 @@ if ( isset( $attr['backgroundVideoOpacity'] ) && '' !== $attr['backgroundVideoOp
 }
 
 $selectors = array(
-	'.uagb-section__wrap'           => $style,
-	' > .uagb-section__video-wrap'  => array(
+	'.uagb-section__wrap'          => $style,
+	' > .uagb-section__video-wrap' => array(
 		'opacity' => $video_opacity,
 	),
-	' > .uagb-section__inner-wrap'  => array(
+	' > .uagb-section__inner-wrap' => array(
 		'max-width' => $inner_width,
 	),
-	'.wp-block-uagb-section'        => array(
+	'.wp-block-uagb-section'       => array(
 		'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
 	),
-	' .uagb-section__overlay:hover' => array(
+	'.uagb-section__wrap:hover'    => array(
 		'border-color' => $attr['overallBorderHColor'],
 	),
 );

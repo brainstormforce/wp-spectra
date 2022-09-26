@@ -47,13 +47,35 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 			add_action( 'save_post', array( $this, 'delete_page_assets' ), 10, 1 );
 			global $wp_customize;
 			if ( $wp_customize ) { // Check whether the $wp_customize is set.
-				// Show customizer style preview for Spectra block inside customizer widget editor.
-				add_action( 'customize_partial_render', array( $this, 'after_widget_save_action' ) );
+				add_filter( 'render_block_data', array( $this, 'content_pre_render' ) ); // Add a inline style for block when it rendered in customizer.
+				add_action( 'customize_save', array( $this, 'after_widget_save_action' ) ); // Update the assets on customizer save/publish.
 			} else {
-				// Show block style for Spectra block on frontend when used inside widget editor.
-				add_action( 'rest_after_save_widget', array( $this, 'after_widget_save_action' ) );
+				add_action( 'rest_after_save_widget', array( $this, 'after_widget_save_action' ) ); // Update the assets on widget save.
 			}
 
+		}
+
+		/**
+		 * Function to load assets for post/page in customizer before gutenberg rendering.
+		 *
+		 * @param array $block Block data.
+		 *
+		 * @since 2.0.13
+		 *
+		 * @return array New block data.
+		 */
+		public function content_pre_render( $block ) {
+			$UAGB_Post_Assets = new UAGB_Post_Assets( get_the_ID() );
+
+			$assets = $UAGB_Post_Assets->get_block_css_and_js( $block );
+
+			$desktop_css     = isset( $assets['css']['desktop'] ) ? $assets['css']['desktop'] : '';
+			$tablet_css      = isset( $assets['css']['tablet'] ) ? $assets['css']['tablet'] : '';
+			$mobile_css      = isset( $assets['css']['mobile'] ) ? $assets['css']['mobile'] : '';
+			$block_css_style = $desktop_css . $tablet_css . $mobile_css;
+			$style           = ! empty( $block_css_style ) ? '<style class="uagb-widgets-style-renderer">' . $block_css_style . '</style>' : '';
+			array_push( $block['innerContent'], $style );
+			return $block;
 		}
 
 		/**
