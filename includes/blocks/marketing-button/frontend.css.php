@@ -46,8 +46,7 @@ $btn_border_css        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
 	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
 	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
-	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' ),
-	( isset( $attr['borderHColor'] ) ? $attr['borderHColor'] : '' )
+	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
 );
 $btn_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
 $btn_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
@@ -87,10 +86,10 @@ $selectors = array(
 		$btn_border_css
 	),
 	' .uagb-marketing-btn__link:hover'     => array(
-		'border-color' => isset( $attr['borderHoverColor'] ) && ! empty( $attr['borderHoverColor'] ) ? $attr['borderHoverColor'] : $attr['btnBorderHColor'],
+		'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHoverColor'],
 	),
 	' .uagb-marketing-btn__link:focus'     => array(
-		'border-color' => isset( $attr['borderHoverColor'] ) && ! empty( $attr['borderHoverColor'] ) ? $attr['borderHoverColor'] : $attr['btnBorderHColor'],
+		'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHoverColor'],
 	),
 	'.uagb-marketing-btn__icon-after .uagb-marketing-btn__link svg' => array(
 		'margin-left' => UAGB_Helper::get_css_value( $icon_space_fallback, 'px' ),
