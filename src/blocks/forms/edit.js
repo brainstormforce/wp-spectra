@@ -51,12 +51,12 @@ const UAGBFormsEdit = ( props ) => {
 			reCaptchaSecretKeyV3,
 			reCaptchaEnable,
 			toggleColor,
-			inputColor
+			bgColor
 		} = props.attributes;
 
-		if( inputColor ) {
+		if( bgColor ) {
 			if ( undefined === toggleColor ) {
-				setAttributes( { toggleColor: inputColor } );
+				setAttributes( { toggleColor: bgColor } );
 			}
 		}
 
@@ -136,7 +136,7 @@ const UAGBFormsEdit = ( props ) => {
 			submitborderWidth,
 			submitborderRadius,
 			submitborderColor,
-			submitborderHColor,
+			submitborderHoverColor,
 			submitborderStyle,
 		} = props.attributes;
 
@@ -181,7 +181,7 @@ const UAGBFormsEdit = ( props ) => {
 			props.attributes
 			);
 		}
-		if( submitborderWidth || submitborderRadius || submitborderColor || submitborderHColor || submitborderStyle ){
+		if( submitborderWidth || submitborderRadius || submitborderColor || submitborderHoverColor || submitborderStyle ){
 			migrateBorderAttributes( 'btn', {
 				label: 'submitborderWidth',
 				value: submitborderWidth,
@@ -192,8 +192,8 @@ const UAGBFormsEdit = ( props ) => {
 				label: 'submitborderColor',
 				value: submitborderColor
 			}, {
-				label: 'submitborderHColor',
-				value: submitborderHColor
+				label: 'submitborderHoverColor',
+				value: submitborderHoverColor
 			},{
 				label: 'submitborderStyle',
 				value: submitborderStyle

@@ -4,6 +4,7 @@ import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 const inputBorderAttributes = getBorderAttributes( 'field' );
 const submitBorderAttributes = getBorderAttributes( 'btn' );
+const toggleBorderAttributes = getBorderAttributes( 'checkBoxToggle' );
 
 const attributes = {
 	block_id : {
@@ -422,7 +423,8 @@ const attributes = {
 		default: 'px',
 	},
 	...inputBorderAttributes,
-	...submitBorderAttributes
+	...submitBorderAttributes,
+	...toggleBorderAttributes
 }
 
 const deprecated = [
