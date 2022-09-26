@@ -295,10 +295,10 @@ export default compose(
 			headerArray = document.body.getElementsByClassName( 'is-root-container' )[0]?.querySelectorAll( 'h1, h2, h3, h4, h5, h6' );
 		}
 		const excludeBlock = document.querySelectorAll( '.uagb-toc-hide-heading' );
-		if ( excludeBlock !== 'undefined' ) {
+		if ( excludeBlock ) {
 			excludeBlock.forEach( function ( heading ) {
 				const innerHeading = heading.querySelectorAll(  'h1, h2, h3, h4, h5, h6' );
-				if ( innerHeading !== 'undefined' ) {
+				if ( innerHeading ) {
 					innerHeading.forEach( function( head ){
 						head.classList.add( 'uagb-toc-hide-heading' );
 					} )
