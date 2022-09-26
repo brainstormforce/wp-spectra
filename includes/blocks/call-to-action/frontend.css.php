@@ -13,8 +13,7 @@ $cta_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	( isset( $attr['ctaBorderWidth'] ) ? $attr['ctaBorderWidth'] : '' ),
 	( isset( $attr['ctaBorderRadius'] ) ? $attr['ctaBorderRadius'] : '' ),
 	( isset( $attr['ctaBorderColor'] ) ? $attr['ctaBorderColor'] : '' ),
-	( isset( $attr['ctaBorderStyle'] ) ? $attr['ctaBorderStyle'] : '' ),
-	( isset( $attr['ctaBorderHColor'] ) ? $attr['ctaBorderHColor'] : '' )
+	( isset( $attr['ctaBorderStyle'] ) ? $attr['ctaBorderStyle'] : '' )
 );
 $cta_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
 $cta_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
@@ -173,7 +172,7 @@ if ( 'button' === $attr['ctaType'] ) {
 	$selectors['.wp-block-uagb-call-to-action.wp-block-button .uagb-cta__button-wrapper a.uagb-cta-typeof-button:hover'] = array(
 		'color'            => $attr['ctaLinkHoverColor'],
 		'background-color' => $attr['ctaBgHoverColor'],
-		'border-color'     => $attr['btnBorderHColor'],
+		'border-color'     => $attr['btnBorderHColor'] ? $attr['btnBorderHColor'] : $attr['ctaBorderhoverColor'],
 	);
 	$selectors['.wp-block-uagb-call-to-action.wp-block-button a.uagb-cta__button-link-wrapper']                          = array_merge(
 		array(
@@ -189,7 +188,7 @@ if ( 'button' === $attr['ctaType'] ) {
 	$selectors['.wp-block-uagb-call-to-action.wp-block-button a.uagb-cta__button-link-wrapper:hover']                    = array(
 		'color'            => $attr['ctaLinkHoverColor'],
 		'background-color' => $attr['ctaBgHoverColor'],
-		'border-color'     => $attr['btnBorderHColor'],
+		'border-color'     => $attr['btnBorderHColor'] ? $attr['btnBorderHColor'] : $attr['ctaBorderhoverColor'],
 	);
 }
 
