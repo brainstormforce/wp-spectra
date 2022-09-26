@@ -231,12 +231,14 @@ const UAGBPostCarousel = ( props ) => {
 			}
 		}
 
-		if( columnGap && columnGap !== 20){
+		if( columnGap && columnGap !== 20 ){
 			props.setAttributes( { dotsMarginTop : columnGap} );
 		}
+
 		if( columnGapTablet ){
 			props.setAttributes( { dotsMarginTopTablet : columnGapTablet} );
 		}
+
 		if( columnGapMobile ){
 			props.setAttributes( { dotsMarginTopMobile : columnGapMobile} );
 		}

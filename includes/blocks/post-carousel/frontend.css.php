@@ -29,7 +29,7 @@ if ( 'background' === $attr['imgPosition'] && 3 >= $attr['postsToShow'] ) {
 	);
 	$selectors[' .uagb-post__image'] = array(
 		'width'     => '100% !important',
-		'margin-left' => 'unset !important'
+		'margin-left' => 'unset !important',
 	);
 }
 
