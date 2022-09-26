@@ -82,7 +82,7 @@ function setupFAQ() {
 			elementToOpen
 				.setAttribute( 'aria-expanded', true );
 			const faqContent =  elementToOpen.getElementsByClassName( 'uagb-faq-content' )[0];
-			if( faqContent !== undefined ){
+			if( faqContent ){
 				slideDown( faqContent, 500 );
 			}
 		}
