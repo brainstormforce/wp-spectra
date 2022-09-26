@@ -173,6 +173,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 = 2.0.13 - FRIDAY, 16th SEPTEMBER 2022 =
 * Fix: Icon List - Text Alignment not working properly on front-end.
 * Fix: Form - Backward Compatibility Stylings Issue on the editor.
+* Fix: Call To Action - Button css conflict with Newspaper theme.
 
 = 2.0.12 - FRIDAY, 16th SEPTEMBER 2022 =
 * Improvement: How to block - Option to disable step links.
@@ -202,7 +203,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Updated copy-paste functionality logic for parent-child blocks.
 * Fix: Container - Child block's margin & padding gets removed in editor.
 * Fix: Info Box - Description margin considers values for desktop, even for tablet and mobile devices (on frontend).
-* Fix: Call To Action - Button css conflict with newspaper theme.
 * Fix: Table of content - When disable marker is enabled List style tab not visible.
 * Fix: Star Rating - Padding/Margin were not working when the star position is set to “Before”.
 * Fix: Image: Image Size not working as expected for images when drag and drop.
