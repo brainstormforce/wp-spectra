@@ -87,7 +87,7 @@ export default function save( props ) {
 	if ( ctaTarget ) {
 		target = '_blank';
 	}
-
+console.log('save')
 	return (
 		<div
 			className={ classnames(
