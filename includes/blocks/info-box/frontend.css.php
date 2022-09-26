@@ -552,7 +552,7 @@ if ( 'button' === $attr['ctaType'] ) {
 		'width'       => $cta_icon_size,
 		'line-height' => $cta_icon_size,
 	);
-	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link']     =
+	$selectors['.wp-block-uagb-info-box .wp-block-button.uagb-ifb-button-wrapper .uagb-infobox-cta-link'] =
 		array(
 			'color'            => $attr['ctaBtnLinkColor'],
 			'background-color' => $attr['ctaBgColor'],
