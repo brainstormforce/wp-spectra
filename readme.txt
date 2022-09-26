@@ -171,6 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 2.0.13 - Monday, 26th SEPTEMBER 2022 =
+* Fix: Form - Backward Compatibility Stylings Issue on the editor.
 * Fix: Review Schema - Star ratings does not reflect on the frontend same as editor when multiple review block used.
 * Fix: Review Schema - Stars appear left in editor and right on frontend issue when clicked.
 
