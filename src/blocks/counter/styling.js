@@ -133,6 +133,9 @@ export default function styling( props ) {
 		boxShadowBlurHover,
 		boxShadowSpreadHover,
 		boxShadowPositionHover,
+		// Icon
+		iconSize,
+		iconSizeType,
 	} = attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -202,6 +205,10 @@ export default function styling( props ) {
 				blockLeftPadding,
 				blockPaddingUnit
 			),
+		},
+		'.wp-block-uagb-counter .wp-block-uagb-counter__icon svg':{
+			'width': generateCSSUnit( iconSize, iconSizeType ),
+			'height': generateCSSUnit( iconSize, iconSizeType ),
 		},
 		'.wp-block-uagb-counter .wp-block-uagb-counter__title':{
 			'font-family': headingFontFamily,
