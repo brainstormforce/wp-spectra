@@ -60,6 +60,8 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 		 *
 		 * @param array $block Block data.
 		 *
+		 * @since 2.0.13
+		 *
 		 * @return array New block data.
 		 */
 		public function content_pre_render( $block ) {
