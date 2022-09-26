@@ -4,6 +4,7 @@ import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import CounterIcon from './component/CounterIcon';
 
 const propTypes = {};
 
@@ -25,7 +26,11 @@ const Render = ( props ) => {
 		endNumber,
 		animationDuration,
 		thousandSeparator,
-		circleSize
+		circleSize,
+		icon,
+		showIcon,
+		iconImgPosition,
+		sourceType,
 	} = attributes
 
 	const deviceType = useDeviceType();
@@ -42,6 +47,14 @@ const Render = ( props ) => {
 	const circleRadius = circlePos - 10;
 	const circleDash   = parseFloat( 2 * Math.PI * circleRadius ).toFixed( 2 );
 	const percentLayout = ['bars', 'circle'];
+
+	const iconCheck = ( showIcon && icon !== '' && sourceType === 'icon' ); // Reusable const to check if icon is set and enabled.
+
+	let iconComponent = '';
+
+	if ( icon !== '' ) {
+		iconComponent = <CounterIcon attributes={attributes} />
+	}
 
 	const title = (
 		<RichText
@@ -77,8 +90,10 @@ const Render = ( props ) => {
 	const circle = (
 		<div className="wp-block-uagb-counter-circle-container">
 			<div className='wp-block-uagb-counter-circle-container__content'>
+				{ ( iconCheck && iconImgPosition === 'top' ) && iconComponent }
 				{number}
 				{title}
+				{ ( iconCheck && iconImgPosition === 'bottom' ) && iconComponent }
 			</div>
 			<svg viewPort={`0 0 ${circleSizeFallback} ${circleSizeFallback}`} version="1.1" xmlns="http://www.w3.org/2000/svg">
 				<circle r={circleRadius} cx={circlePos} cy={circlePos} fill="transparent" strokeDasharray={circleDash} strokeDashoffset="0"></circle>

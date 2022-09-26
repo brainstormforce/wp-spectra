@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import { RichText } from '@wordpress/block-editor';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import CounterIcon from './component/CounterIcon';
 
 export default function Save( props ) {
 	const {attributes} = props;
@@ -16,7 +17,11 @@ export default function Save( props ) {
 		endNumber,
 		animationDuration,
 		thousandSeparator,
-		circleSize
+		circleSize,
+		icon,
+		showIcon,
+		iconImgPosition,
+		sourceType,
 	} = attributes
 
 	const blockName = 'counter'; // Since props.name property isn't available, we need to hard-code the block's name.
@@ -27,6 +32,14 @@ export default function Save( props ) {
 	const circleRadius = circlePos - 10;
 	const circleDash   = parseFloat( 2 * Math.PI * circleRadius ).toFixed( 2 );
 	const percentLayout = ['bars', 'circle'];
+
+	const iconCheck = ( showIcon && icon !== '' && sourceType === 'icon' ); // Reusable const to check if icon is set and enabled.
+
+	let iconComponent = '';
+
+	if ( icon !== '' ) {
+		iconComponent = <CounterIcon attributes={attributes} />
+	}
 
 	const title = (
 		<RichText.Content
@@ -60,8 +73,10 @@ export default function Save( props ) {
 	const circle = (
 		<div className="wp-block-uagb-counter-circle-container">
 			<div className='wp-block-uagb-counter-circle-container__content'>
+				{ ( iconCheck && iconImgPosition === 'top' ) && iconComponent }
 				{number}
 				{title}
+				{ ( iconCheck && iconImgPosition === 'bottom' ) && iconComponent }
 			</div>
 			<svg viewPort={`0 0 ${circleSizeFallback} ${circleSizeFallback}`} version="1.1" xmlns="http://www.w3.org/2000/svg">
 				<circle r={circleRadius} cx={circlePos} cy={circlePos} fill="transparent" strokeDasharray={circleDash} strokeDashoffset="0"></circle>
