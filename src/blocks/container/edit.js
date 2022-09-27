@@ -88,12 +88,12 @@ const UAGBContainer = ( props ) => {
 			borderStyle,
 			borderWidth,
 			borderColor,
-			borderHColor,
+			borderHoverColor,
 			borderRadius
 		} = props.attributes;
 
 		// border
-		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
 			migrateBorderAttributes( 'container', {
 				label: 'borderWidth',
 				value: borderWidth,
@@ -104,8 +104,8 @@ const UAGBContainer = ( props ) => {
 				label: 'borderColor',
 				value: borderColor
 			}, {
-				label: 'borderHColor',
-				value: borderHColor
+				label: 'borderHoverColor',
+				value: borderHoverColor
 			},{
 				label: 'borderStyle',
 				value: borderStyle

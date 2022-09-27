@@ -41,8 +41,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
 				( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
 				( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
-				( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' ),
-				( isset( $attr['borderHColor'] ) ? $attr['borderHColor'] : '' )
+				( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
 			);
 			$border_css_tablet = self::uag_generate_border_css( $attr, 'btn', 'tablet' );
 			$border_css_mobile = self::uag_generate_border_css( $attr, 'btn', 'mobile' );
@@ -140,13 +139,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$box_shadow_position_css,
 				);
 			}
-			$selectors[ $wrapper ]                           = $border_css;
-			$m_selectors[ $wrapper ]                         = $border_css_mobile;
-			$t_selectors[ $wrapper ]                         = $border_css_tablet;
+			$selectors[ $wrapper . '.wp-block-button__link' ] = $border_css;
+			$m_selectors[ $wrapper ]                          = $border_css_mobile;
+			$t_selectors[ $wrapper ]                          = $border_css_tablet;
 			$selectors[ $wrapper . ':hover' ]                = array(
-				'border-color' => $attr['btnBorderHColor'],
+				'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
 			);
-			$selectors[ $wrapper . ' .uagb-button__link' ]   = array(
+			$selectors[ $wrapper . ' .uagb-button__link' ]    = array(
 				'color'           => $attr['color'],
 				'font-family'     => $attr['fontFamily'],
 				'font-weight'     => $attr['fontWeight'],
@@ -156,11 +155,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'font-size'       => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
 				'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 			);
-			$m_selectors[ $wrapper . ' .uagb-button__link' ] = array(
+			$m_selectors[ $wrapper . ' .uagb-button__link' ]  = array(
 				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
 				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
 			);
-			$t_selectors[ $wrapper . ' .uagb-button__link' ] = array(
+			$t_selectors[ $wrapper . ' .uagb-button__link' ]  = array(
 				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
 				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 			);
@@ -451,8 +450,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
 				( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
 				( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
-				( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' ),
-				( isset( $attr['borderHColor'] ) ? $attr['borderHColor'] : '' )
+				( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
 			);
 
 			$overall_border_css = self::uag_generate_border_css( $attr, 'overall' );
@@ -603,14 +601,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'color' => $attr['metaColor'],
 			);
 			$selectors[' .uagb-post__text.uagb-post__excerpt']['color']                          = $attr['excerptColor'];
-			$selectors[' .uagb-post__text.uagb-post__cta .uagb-text-link']                       = array_merge(
+			$selectors['.uagb-post-grid .wp-block-button.uagb-post__text.uagb-post__cta .uagb-text-link']          = array_merge(
 				array(
 					'color'      => $attr['ctaColor'],
 					'background' => $attr['ctaBgColor'],
 				),
 				$border_css
 			);
-			$selectors[' .uagb-post__text.uagb-post__cta a']                                     = array(
+			$selectors['.uagb-post-grid .uagb-post__inner-wrap .wp-block-button.uagb-post__text.uagb-post__cta a'] = array(
 				'color'          => $attr['ctaColor'],
 				'padding-top'    => UAGB_Helper::get_css_value( $paddingBtnTop, $attr['paddingBtnUnit'] ),
 				'padding-bottom' => UAGB_Helper::get_css_value( $paddingBtnBottom, $attr['paddingBtnUnit'] ),
