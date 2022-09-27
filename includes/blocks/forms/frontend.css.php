@@ -285,13 +285,17 @@ $m_selectors = array(
 		'text-align' => $attr['buttonAlignMobile'],
 	),
 	' .uagb-slider.round'                            => array(
-		// Important is added to override the usual border radius we set with a completely round one.
-		'border-radius' => UAGB_Helper::get_css_value( 20 + $toggle_width_size_number_mobile, 'px' ) . ' !important',
+	// Important is added to override the usual border radius we set with a completely round one.
+	'border-radius' => UAGB_Helper::get_css_value( 20 + $toggle_width_size_number_mobile, 'px' ) . ' !important',
 	),
 	' .uagb-forms-success-message'                   => $success_message_border_mobile,
 	' .uagb-forms-failed-message'                    => $failed_message_border_mobile,
-	// Drop icon position css.
 
+	// Drop icon position css.
+	' .uagb-form-phone-country'                         => array(
+		'background-position' => ' top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'], $attr['paddingFieldUnitmobile'] ),
+		'padding-right' =>  UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'] + 30 , $attr['paddingFieldUnitmobile'] ) . ' !important',
+	),
 );
 // Checkbox Field css.
 $selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = array(
@@ -599,17 +603,6 @@ $m_selectors[' .uagb-forms-main-form .uagb-slider:before']                      
 	'left'          => UAGB_Helper::get_css_value( (int) ( ( 20 + $toggle_width_size_number_mobile ) / 6 ), 'px' ),
 	'border-radius' => $toggle_border_radius_tl_mobile_fallback . ' ' . $toggle_border_radius_tr_mobile_fallback . ' ' . $toggle_border_radius_br_mobile_fallback . ' ' . $toggle_border_radius_bl_mobile_fallback,
 );
-
-if ( 20 <= $attr['paddingFieldRightMobile'] ) {
-	$m_selectors[' .uagb-form-phone-country']                           = array(
-		'background-position' => ' top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'], $attr['paddingFieldUnitmobile'] ),
-	);
-} else {
-	$m_selectors[' .uagb-form-phone-country']                           = array(
-		'background-position' => ' top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'], $attr['paddingFieldUnitmobile'] ),
-		'padding-right' => ' 20px !important',
-	);
-}
 
 $combined_selectors = array(
 	'desktop' => $selectors,
