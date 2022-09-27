@@ -1,5 +1,9 @@
 .wp-block-uagb-counter {
 
+	.wp-block-uagb-counter__icon {
+		display: inline-block;
+	}
+
 	&--number {
 
 		.wp-block-uagb-counter__number {

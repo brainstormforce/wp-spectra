@@ -140,6 +140,22 @@ export default function styling( props ) {
 		iconSizeType,
 		iconSizeTypeTablet,
 		iconSizeTypeMobile,
+		// Icon Padding
+		iconTopPadding,
+		iconRightPadding,
+		iconLeftPadding,
+		iconBottomPadding,
+		iconTopPaddingTablet,
+		iconRightPaddingTablet,
+		iconLeftPaddingTablet,
+		iconBottomPaddingTablet,
+		iconTopPaddingMobile,
+		iconRightPaddingMobile,
+		iconLeftPaddingMobile,
+		iconBottomPaddingMobile,
+		iconPaddingUnit,
+		iconPaddingUnitTablet,
+		iconPaddingUnitMobile,
 	} = attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -213,6 +229,24 @@ export default function styling( props ) {
 			'padding-left': generateCSSUnit(
 				blockLeftPadding,
 				blockPaddingUnit
+			),
+		},
+		'.wp-block-uagb-counter .wp-block-uagb-counter__icon':{
+			'padding-top': generateCSSUnit(
+				iconTopPadding,
+				iconPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				iconRightPadding,
+				iconPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				iconBottomPadding,
+				iconPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				iconLeftPadding,
+				iconPaddingUnit
 			),
 		},
 		'.wp-block-uagb-counter .wp-block-uagb-counter__icon svg':{
@@ -365,10 +399,29 @@ export default function styling( props ) {
 		),
     }
 
+	tablet_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon'] = {
+		'padding-top': generateCSSUnit(
+			iconTopPaddingTablet,
+			iconPaddingUnitTablet
+		),
+		'padding-right': generateCSSUnit(
+			iconRightPaddingTablet,
+			iconPaddingUnitTablet
+		),
+		'padding-bottom': generateCSSUnit(
+			iconBottomPaddingTablet,
+			iconPaddingUnitTablet
+		),
+		'padding-left': generateCSSUnit(
+			iconLeftPaddingTablet,
+			iconPaddingUnitTablet
+		),
+	}
+
 	tablet_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon svg'] = {
 		'width': generateCSSUnit( iconSizeFallbackTablet, iconSizeTypeTablet ),
 		'height': generateCSSUnit( iconSizeFallbackTablet, iconSizeTypeTablet ),
-	},
+	}
 
 	tablet_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__title'] = {
         'font-size': generateCSSUnit(
@@ -483,10 +536,29 @@ export default function styling( props ) {
 		),
     }
 
+	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon'] = {
+		'padding-top': generateCSSUnit(
+			iconTopPaddingMobile,
+			iconPaddingUnitMobile
+		),
+		'padding-right': generateCSSUnit(
+			iconRightPaddingMobile,
+			iconPaddingUnitMobile
+		),
+		'padding-bottom': generateCSSUnit(
+			iconBottomPaddingMobile,
+			iconPaddingUnitMobile
+		),
+		'padding-left': generateCSSUnit(
+			iconLeftPaddingMobile,
+			iconPaddingUnitMobile
+		),
+	}
+
 	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon svg'] = {
 		'width': generateCSSUnit( iconSizeFallbackMobile, iconSizeTypeMobile ),
 		'height': generateCSSUnit( iconSizeFallbackMobile, iconSizeTypeMobile ),
-	},
+	}
 
 	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__title'] = {
         'font-size': generateCSSUnit(

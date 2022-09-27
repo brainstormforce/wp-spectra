@@ -61,6 +61,12 @@ $selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['blockBottomPadding'], $attr['blockPaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPadding'], $attr['blockPaddingUnit'] ),
 	),
+	'.wp-block-uagb-counter .wp-block-uagb-counter__icon'  => array(
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopPadding'], $attr['iconPaddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['iconRightPadding'], $attr['iconPaddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomPadding'], $attr['iconPaddingUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['iconLeftPadding'], $attr['iconPaddingUnit'] ),
+	),
 	'.wp-block-uagb-counter .wp-block-uagb-counter__icon svg' => array(
 		'width'  => UAGB_Helper::get_css_value( $icon_size_fallback, $attr['iconSizeType'] ),
 		'height' => UAGB_Helper::get_css_value( $icon_size_fallback, $attr['iconSizeType'] ),
@@ -136,6 +142,13 @@ $t_selectors['.wp-block-uagb-counter'] = array(
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
 );
 
+$t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon'] = array(
+	'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopPaddingTablet'], $attr['iconPaddingUnitTablet'] ),
+	'padding-right'  => UAGB_Helper::get_css_value( $attr['iconRightPaddingTablet'], $attr['iconPaddingUnitTablet'] ),
+	'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomPaddingTablet'], $attr['iconPaddingUnitTablet'] ),
+	'padding-left'   => UAGB_Helper::get_css_value( $attr['iconLeftPaddingTablet'], $attr['iconPaddingUnitTablet'] ),
+);
+
 $t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon svg'] = array(
 	'width'  => UAGB_Helper::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeTypeTablet'] ),
 	'height' => UAGB_Helper::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeTypeTablet'] ),
@@ -181,6 +194,13 @@ $m_selectors['.wp-block-uagb-counter'] = array(
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['blockRightPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['blockBottomPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
+);
+
+$m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon'] = array(
+	'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopPaddingMobile'], $attr['iconPaddingUnitMobile'] ),
+	'padding-right'  => UAGB_Helper::get_css_value( $attr['iconRightPaddingMobile'], $attr['iconPaddingUnitMobile'] ),
+	'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomPaddingMobile'], $attr['iconPaddingUnitMobile'] ),
+	'padding-left'   => UAGB_Helper::get_css_value( $attr['iconLeftPaddingMobile'], $attr['iconPaddingUnitMobile'] ),
 );
 
 $m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon svg'] = array(
