@@ -455,10 +455,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$overall_border_css = self::uag_generate_border_css( $attr, 'overall' );
 
-			$paddingTop    = isset( $attr['paddingTop'] ) ? $attr['paddingTop'] : $attr['contentPadding'];
-			$paddingBottom = isset( $attr['paddingBottom'] ) ? $attr['paddingBottom'] : $attr['contentPadding'];
-			$paddingLeft   = isset( $attr['paddingLeft'] ) ? $attr['paddingLeft'] : $attr['contentPadding'];
-			$paddingRight  = isset( $attr['paddingRight'] ) ? $attr['paddingRight'] : $attr['contentPadding'];
+			$paddingTop    = is_numeric( $attr['paddingTop'] ) ? $attr['paddingTop'] : $attr['contentPadding'];
+			$paddingBottom = is_numeric( $attr['paddingBottom'] ) ? $attr['paddingBottom'] : $attr['contentPadding'];
+			$paddingLeft   = is_numeric( $attr['paddingLeft'] ) ? $attr['paddingLeft'] : $attr['contentPadding'];
+			$paddingRight  = is_numeric( $attr['paddingRight'] ) ? $attr['paddingRight'] : $attr['contentPadding'];
 
 			$paddingBtnTop    = isset( $attr['paddingBtnTop'] ) ? $attr['paddingBtnTop'] : $attr['btnVPadding'];
 			$paddingBtnBottom = isset( $attr['paddingBtnBottom'] ) ? $attr['paddingBtnBottom'] : $attr['btnVPadding'];
@@ -547,9 +547,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-post-grid-byline'                 => array(
 					'padding-bottom' => UAGB_Helper::get_css_value( $meta_bottom_space_fallback, $attr['metaBottomSpaceUnit'] ),
-				),
-				' .uagb-post__inner-wrap > .uagb-post__taxonomy' => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $meta_bottom_space_fallback, $attr['metaBottomSpaceUnit'] ),
 				),
 				' .uagb-post__excerpt'                    => array(
 					'padding-bottom' => UAGB_Helper::get_css_value( $excerpt_bottom_space_fallback, $attr['excerptBottomSpaceUnit'] ),

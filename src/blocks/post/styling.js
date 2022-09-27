@@ -351,12 +351,6 @@ function styling( props ) {
 				metaBottomSpaceUnit
 			),
 		},
-		' .uagb-post__inner-wrap > .uagb-post__taxonomy': {
-			'margin-bottom': generateCSSUnit(
-				metaBottomSpaceFallback,
-				metaBottomSpaceUnit
-			),
-		},
 		' .uagb-post__inner-wrap .uagb-post__excerpt': {
 			'padding-bottom': generateCSSUnit(
 				excerptBottomSpaceFallback,
