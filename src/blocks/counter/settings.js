@@ -17,6 +17,7 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import BoxShadowControl from '@Components/box-shadow';
 import UAGTabsControl from '@Components/tabs';
 import { boxShadowPresets, boxShadowHoverPresets } from './presets';
+import ResponsiveBorder from '@Components/responsive-border';
 import UAGSelectControl from '@Components/select-control';
 import UAGIconPicker from '@Components/icon-picker';
 import UAGMediaPicker from '@Components/image';
@@ -563,6 +564,14 @@ export default function Settings( props ) {
 			title={ __( 'Image/Icon', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
+			<ResponsiveBorder
+				disabledBorderTitle= {false}
+				setAttributes={ setAttributes }
+				prefix={'iconWrap'}
+				attributes={ attributes }
+				deviceType={deviceType}
+				disableBottomSeparator={ false }
+			/>
 			<UAGTabsControl
 				tabs={ [
 					{
