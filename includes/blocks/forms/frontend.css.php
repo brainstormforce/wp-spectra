@@ -289,7 +289,7 @@ $m_selectors = array(
 	// Drop icon position css.
 	' .uagb-form-phone-country'                         => array(
 		'background-position' => ' top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'], $attr['paddingFieldUnitmobile'] ),
-		'padding-right' =>  UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'] + 30 , $attr['paddingFieldUnitmobile'] ) . ' !important',
+		'padding-right' =>  UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'] + 30, $attr['paddingFieldUnitmobile'] ) . ' !important',
 	),
 );
 // Checkbox Field css.
