@@ -69,6 +69,8 @@ const Render = ( props ) => {
 
 	let urlChk = '';
 	let title = '';
+	let defaultedAlt = '';
+
 	if (
 		'undefined' !== typeof props.attributes.mainimage &&
 		null !== props.attributes.mainimage &&
@@ -76,6 +78,7 @@ const Render = ( props ) => {
 	) {
 		urlChk = props.attributes.mainimage.url;
 		title = props.attributes.mainimage.title;
+		defaultedAlt = ( props.attributes.mainimage?.alt ) ? props.attributes.mainimage?.alt : '';
 	}
 
 	let url = '';
@@ -105,10 +108,10 @@ const Render = ( props ) => {
 				className="uagb-review__source-image"
 				src={ url }
 				title={ title }
-				alt=""
 				width={ imgTagWidth}
 				height={ imgTagHeight}
 				loading="lazy"
+				alt={ defaultedAlt }
 			/>
 		);
 	}

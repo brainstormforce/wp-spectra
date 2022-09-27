@@ -1,5 +1,4 @@
-import React, { Suspense, useEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect } from 'react';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
@@ -1387,11 +1386,11 @@ const Settings = ( props ) => {
 	return (
 		<>
 			{ inspectControl() }
-			<Suspense fallback={ lazyLoader() }>
+
 				{ loadTitleGoogleFonts }
 				{ loadDescGoogleFonts }
 				{ loadPriceGoogleFonts }
-			</Suspense>
+
 		</>
 	);
 };

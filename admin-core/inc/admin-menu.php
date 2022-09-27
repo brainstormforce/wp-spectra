@@ -74,6 +74,13 @@ class Admin_Menu {
 		/* Render admin content view */
 		add_action( 'uag_render_admin_page_content', array( $this, 'render_content' ), 10, 2 );
 
+		/* Action to get total blocks count */
+		if ( function_exists( 'as_enqueue_async_action' ) && 'done' !== get_option( 'spectra_blocks_count_status' ) ) {
+
+			as_enqueue_async_action( 'spectra_total_blocks_count_action' );
+			update_option( 'spectra_blocks_count_status', 'processing' );
+		}
+
 	}
 
 	/**
@@ -94,15 +101,25 @@ class Admin_Menu {
 	}
 
 	/**
-	 *  Initialize after Cartflows pro get loaded.
+	 *  Initialize after Spectra gets loaded.
 	 */
 	public function settings_admin_scripts() {
+
 		// Enqueue admin scripts.
 		if ( ! empty( $_GET['page'] ) && ( $this->menu_slug === $_GET['page'] || false !== strpos( $_GET['page'], $this->menu_slug . '_' ) ) ) { //phpcs:ignore
 
 			add_action( 'admin_enqueue_scripts', array( $this, 'styles_scripts' ) );
 
 			add_filter( 'admin_footer_text', array( $this, 'add_footer_link' ), 99 );
+		}
+
+		if ( 'done' === get_option( 'spectra_blocks_count_status' ) ) {
+
+			if ( function_exists( 'as_next_scheduled_action' ) && false === \as_next_scheduled_action( 'spectra_analytics_count_actions' ) ) {
+
+				// It will automatically reschedule the action once initiated.
+				as_schedule_recurring_action( strtotime( 'now' ), 2 * WEEK_IN_SECONDS, 'spectra_analytics_count_actions' );
+			}
 		}
 	}
 
@@ -189,7 +206,7 @@ class Admin_Menu {
 				'uag_base_url'             => admin_url( 'options-general.php?page=' . $this->menu_slug ),
 				'plugin_dir'               => UAGB_URL,
 				'plugin_ver'               => UAGB_VER,
-				'logo_url'                 => UAGB_URL . 'admin-core/assets/images/uag-logo.svg',
+				'logo_url'                 => UAGB_URL . 'admin-core/assets/images/dashboard-uag-logo.svg',
 				'admin_url'                => admin_url( 'admin.php' ),
 				'ajax_url'                 => admin_url( 'admin-ajax.php' ),
 				'wp_pages_url'             => admin_url( 'post-new.php?post_type=page' ),
@@ -274,7 +291,9 @@ class Admin_Menu {
 					$exclude_blocks[] = $addon;
 				}
 
-				if ( 'yes' !== get_option( 'uagb-old-user-less-than-2' ) ) {
+				$enable_legacy_blocks = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' );
+
+				if ( 'yes' !== $enable_legacy_blocks ) {
 					$exclude_blocks[] = 'wp-search';
 					$exclude_blocks[] = 'columns';
 					$exclude_blocks[] = 'section';

@@ -2,17 +2,11 @@
  * BLOCK: Forms - Textarea - Edit
  */
 
-import React, { Suspense, useEffect, lazy } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {  useEffect,  } from 'react';
 
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/form/textarea-settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form/textarea-render" */ './render' )
-);
+
+import Settings from './settings';
+import Render from './render';
 
 const UAGBFormsTextareaEdit = ( props ) => {
 	useEffect( () => {
@@ -35,10 +29,12 @@ const UAGBFormsTextareaEdit = ( props ) => {
 	return (
 		<>
 			{ props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-				<Suspense fallback={ lazyLoader() }>
-					<Settings parentProps={ props } />
+
+							<>
+			<Settings parentProps={ props } />
 					<Render parentProps={ props } />
-				</Suspense>
+			</>
+
 			) }
 		</>
 	);

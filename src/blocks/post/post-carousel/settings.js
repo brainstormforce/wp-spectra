@@ -1,6 +1,6 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
-import lazyLoader from '@Controls/lazy-loader';
+
 import WebfontLoader from '@Components/typography/fontloader';
 import { BlockControls } from '@wordpress/block-editor';
 import { ToolbarGroup } from '@wordpress/components';
@@ -111,7 +111,7 @@ const Settings = ( props ) => {
 	}
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			{ inspectorControls }
 			<BlockControls>
 				{ getBlockControls() }
@@ -120,7 +120,8 @@ const Settings = ( props ) => {
 			{ loadMetaGoogleFonts }
 			{ loadExcerptGoogleFonts }
 			{ loadCtaGoogleFonts }
-		</Suspense>
+			</>
+
 	);
 };
 

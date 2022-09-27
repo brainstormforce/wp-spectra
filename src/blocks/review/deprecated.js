@@ -471,8 +471,13 @@
 		deviceType: {
 			type: "string",
 			default: 'Desktop'
+		},
+		paddingUnit: {
+			type: 'string',
+			default: 'px',
 		}
  }
+
  const deprecated = [
      {
          attributes,

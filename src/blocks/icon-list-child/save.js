@@ -25,6 +25,8 @@ export default function save( props ) {
 		sizeChild
 	} = attributes;
 
+	const defaultedAlt = ( image && image?.alt ) ? image?.alt : '';
+
 	let imageIconHtml = '';
 
 	if ( image_icon === 'icon' ) {
@@ -36,9 +38,9 @@ export default function save( props ) {
 			<img
 				className="uagb-icon-list__source-image"
 				src={ image.url }
-				alt={ image.alt }
 				width={sizeChild}
 				loading="lazy"
+				alt={ defaultedAlt }
 			/>
 		);
 	}
@@ -56,7 +58,7 @@ export default function save( props ) {
 			{ disableLink && (
 				<a
 					target={ targetVal }
-					aria-label={ label }
+					aria-label={ label.replace( /(<([^>]+)>)/ig, '' ) }
 					rel="noopener noreferrer"
 					href={ linkUrl }
 				>

@@ -13,6 +13,13 @@ $bg_type      = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] :
 $overlay_type = ( isset( $attr['overlayType'] ) ) ? $attr['overlayType'] : 'none';
 
 $border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'column' );
+$border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$border,
+	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
+	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
+	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
+	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
+);
 $border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'column', 'tablet' );
 $border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'column', 'mobile' );
 
@@ -61,14 +68,18 @@ if ( 'image' === $bg_type ) {
 			'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '',
 		);
 	} else {
-		$selectors[' > .uagb-column__overlay']['background-color'] = 'transparent';
-		$selectors[' > .uagb-column__overlay']['opacity']          = ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '';
-		if ( 'linear' === $attr['gradientOverlayType'] ) {
-
-			$selectors[' > .uagb-column__overlay']['background-image'] = 'linear-gradient(' . $attr['gradientOverlayAngle'] . 'deg, ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
+		if ( $attr['gradientValue'] ) {
+			$selectors[' > .uagb-column__overlay']['background-image'] = $attr['gradientValue'];
 		} else {
+			$selectors[' > .uagb-column__overlay']['background-color'] = 'transparent';
+			$selectors[' > .uagb-column__overlay']['opacity']          = ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '';
+			if ( 'linear' === $attr['gradientOverlayType'] ) {
 
-			$selectors[' > .uagb-column__overlay']['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
+				$selectors[' > .uagb-column__overlay']['background-image'] = 'linear-gradient(' . $attr['gradientOverlayAngle'] . 'deg, ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
+			} else {
+
+				$selectors[' > .uagb-column__overlay']['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
+			}
 		}
 	}
 } elseif ( 'color' === $bg_type ) {
@@ -89,6 +100,8 @@ if ( 'image' === $bg_type ) {
 		}
 	}
 }
+
+$selectors[' > .uagb-column__overlay']['border-radius'] = $border['border-top-left-radius'] . ' ' . $border['border-top-right-radius'] . ' ' . $border['border-bottom-left-radius'] . ' ' . $border['border-bottom-right-radius'];
 
 if ( '' !== $attr['colWidth'] && 0 !== $attr['colWidth'] ) {
 

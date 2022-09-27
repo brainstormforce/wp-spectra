@@ -14,6 +14,8 @@ export default function save( props ) {
 
 	const url = links[ type ];
 
+	const defaultedAlt = ( image && image?.alt ) ? image?.alt : '';
+
 	let imageIconHtml = '';
 
 	if ( image_icon === 'icon' ) {
@@ -26,7 +28,7 @@ export default function save( props ) {
 		}
 	} else if ( image && image.url ) {
 		imageIconHtml = (
-			<img className="uagb-ss__source-image" src={ image.url } alt="" width="640" height="360" loading="lazy"/>
+			<img className="uagb-ss__source-image" src={ image.url } alt={ defaultedAlt } width="640" height="360" loading="lazy"/>
 		);
 	}
 

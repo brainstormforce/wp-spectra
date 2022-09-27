@@ -2,8 +2,8 @@
  * BLOCK: Post Grid - Settings.
  */
 
-import React, { Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React from 'react';
+
 import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
 import { __ } from '@wordpress/i18n';
@@ -660,11 +660,7 @@ const Settings = ( props ) => {
 						},
 					} }
 					min={ 0 }
-					max={
-						! hasPosts
-							? MAX_POSTS_COLUMNS
-							: Math.min( MAX_POSTS_COLUMNS, latestPosts.length )
-					}
+					max={MAX_POSTS_COLUMNS}
 					displayUnit={ false }
 					setAttributes={ setAttributes }
 				/>
@@ -2473,14 +2469,14 @@ const Settings = ( props ) => {
 	}
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			{ blockControlsSettings() }
 			{ inspectorControlsSettings() }
 			{ loadTitleGoogleFonts }
 			{ loadMetaGoogleFonts }
 			{ loadExcerptGoogleFonts }
 			{ loadCtaGoogleFonts }
-		</Suspense>
+			</>
 	);
 };
 

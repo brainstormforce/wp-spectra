@@ -734,30 +734,36 @@
 	},
 	ctaBorderColor: {
 		type: 'string',
+		default: '#333',
 	},
-	ctaBorderhoverColor: {
+	ctaBorderhoverColor:{
 		type: 'string',
 	},
 	ctaBorderStyle: {
 		type: 'string',
+		default: 'solid',
 	},
 	ctaBtnVertPadding: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'btn-vertical-padding'
 		}
 	},
 	ctaBtnHrPadding: {
 		type: 'number',
+		default: 14,
 		UAGCopyPaste: {
 			styleType: 'btn-horizontal-padding'
 		}
 	},
-	ctaBorderWidth: {
+	ctaBorderWidth :{
 		type: 'number',
+		default: 1,
 	},
-	ctaBorderRadius: {
+	ctaBorderRadius :{
 		type: 'number',
+		default: 0,
 	},
 	iconLeftMargin: {
 		type: 'number',
@@ -802,7 +808,7 @@
 		UAGCopyPaste: {
 			styleType: 'image-width'
 		},
-		default: '',
+		default: 120,
 	},
 	imageWidthMobile: {
 		type: 'number',
