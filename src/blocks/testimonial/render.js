@@ -3,7 +3,6 @@ import PositionClasses from './classes';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import TestimonialImage from './components/newImage';
 import React, { useLayoutEffect, useRef } from 'react';
-import TestimonialImage from './components/Image';
 import AuthorName from './components/AuthorName';
 import Company from './components/Company';
 import Description from './components/Description';

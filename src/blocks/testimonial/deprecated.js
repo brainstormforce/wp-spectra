@@ -9,7 +9,6 @@ import Description from './components/Description';
 import PositionClasses from './classes';
 import TestimonialImage from './components/TestimonialImage';
 import TestimonialImages from './components/oldImage';
-import TestimonialImages from './components/Image';
 import React from 'react';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 const overallBorderAttributes = getBorderAttributes( 'overall' );
