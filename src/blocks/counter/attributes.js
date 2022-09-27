@@ -654,6 +654,75 @@ const attributes = {
 		type: 'string',
 		default: 'icon',
 	},
+	// Icon Padding.
+	iconTopPadding : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconRightPadding : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconLeftPadding : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconBottomPadding : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconTopPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconRightPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconLeftPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconBottomPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconTopPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconRightPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconLeftPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconBottomPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconPaddingUnit : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	iconPaddingUnitTablet: {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	iconPaddingUnitMobile : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	iconPaddingLink: {
+		type: 'boolean',
+		default: false,
+		isUAGStyle: true,
+	},
 };
 
 export default attributes;

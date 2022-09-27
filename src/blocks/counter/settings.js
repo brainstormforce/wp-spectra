@@ -191,6 +191,23 @@ export default function Settings( props ) {
 		iconImage,
 		imageSize,
 		sourceType,
+		// Icon Padding
+		iconTopPadding,
+		iconRightPadding,
+		iconLeftPadding,
+		iconBottomPadding,
+		iconTopPaddingTablet,
+		iconRightPaddingTablet,
+		iconLeftPaddingTablet,
+		iconBottomPaddingTablet,
+		iconTopPaddingMobile,
+		iconRightPaddingMobile,
+		iconLeftPaddingMobile,
+		iconBottomPaddingMobile,
+		iconPaddingUnit,
+		iconPaddingUnitTablet,
+		iconPaddingUnitMobile,
+		iconPaddingLink,
 	} = attributes;
 
 	const numberIconPositionOptions = [
@@ -603,6 +620,79 @@ export default function Settings( props ) {
 						unitValue: 'em',
 					},
 				] }
+			/>
+			<SpacingControl
+				label={ __(
+					'Padding',
+					'ultimate-addons-for-gutenberg'
+				) }
+				valueTop={ {
+					value: iconTopPadding,
+					label: 'iconTopPadding',
+				} }
+				valueRight={ {
+					value: iconRightPadding,
+					label: 'iconRightPadding',
+				} }
+				valueBottom={ {
+					value: iconBottomPadding,
+					label: 'iconBottomPadding',
+				} }
+				valueLeft={ {
+					value: iconLeftPadding,
+					label: 'iconLeftPadding',
+				} }
+				valueTopTablet={ {
+					value: iconTopPaddingTablet,
+					label: 'iconTopPaddingTablet',
+				} }
+				valueRightTablet={ {
+					value: iconRightPaddingTablet,
+					label: 'iconRightPaddingTablet',
+				} }
+				valueBottomTablet={ {
+					value: iconBottomPaddingTablet,
+					label: 'iconBottomPaddingTablet',
+				} }
+				valueLeftTablet={ {
+					value: iconLeftPaddingTablet,
+					label: 'iconLeftPaddingTablet',
+				} }
+				valueTopMobile={ {
+					value: iconTopPaddingMobile,
+					label: 'iconTopPaddingMobile',
+				} }
+				valueRightMobile={ {
+					value: iconRightPaddingMobile,
+					label: 'iconRightPaddingMobile',
+				} }
+				valueBottomMobile={ {
+					value: iconBottomPaddingMobile,
+					label: 'iconBottomPaddingMobile',
+				} }
+				valueLeftMobile={ {
+					value: iconLeftPaddingMobile,
+					label: 'iconLeftPaddingMobile',
+				} }
+				unit={ {
+					value: iconPaddingUnit,
+					label: 'iconPaddingUnit',
+				} }
+				mUnit={ {
+					value: iconPaddingUnitMobile,
+					label: 'iconPaddingUnitMobile',
+				} }
+				tUnit={ {
+					value: iconPaddingUnitTablet,
+					label: 'iconPaddingUnitTablet',
+				} }
+				deviceType={ deviceType }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				link={ {
+					value: iconPaddingLink,
+					label: 'iconPaddingLink',
+				} }
 			/>
 		</UAGAdvancedPanelBody>
 	)
