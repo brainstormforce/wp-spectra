@@ -67,7 +67,10 @@ const Render = ( props ) => {
 	)
 
 	const number = (
+		<>
+		{iconCheck && layout==='number' && iconImgPosition === 'top' && iconComponent}
 		<div className="wp-block-uagb-counter__number">
+			{iconCheck && layout==='number' && iconImgPosition === 'left-number' && iconComponent}
 			{
 				numberPrefix && ( <span className="uagb-counter-block-prefix">{numberPrefix}</span> )
 			}
@@ -78,7 +81,11 @@ const Render = ( props ) => {
 			{
 				numberSuffix && ( <span className="uagb-counter-block-suffix">{numberSuffix}</span> )
 			}
+			{iconCheck && layout==='number' && iconImgPosition === 'right-number' && iconComponent}
 		</div>
+		{layout === 'number' && title}
+		{iconCheck && layout==='number' && iconImgPosition === 'bottom' && iconComponent}
+		</>
 	);
 
 	const bars = (
@@ -121,7 +128,7 @@ const Render = ( props ) => {
 					layout === 'circle' && circle
 				}
 				{
-					layout !== 'circle' && title
+					layout !== 'circle' && layout !== 'number' && title
 				}
 			</div>
 		</React.Fragment>
