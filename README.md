@@ -180,6 +180,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Customizer was frozen when theme blog settings were changed.
 * Fix: Container - Z-index were not applied on the frontend.
 * Fix: FAQ - Throwing an undefined style issue in console when html anchor is used.
+* Fix: Tabs - Tabs border is inconsistent inside the editor as well as on the frontend.
 
 ### 2.0.12 - FRIDAY, 16th SEPTEMBER 2022 ###
 * Improvement: How to block - Option to disable step links.
@@ -202,7 +203,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Responsive condition - Setting does not save when hide on multiple devices is selected.
 * Fix: How-To - Alignment for time and cost not working in editor as well as on frontend.
 * Fix: Post Carousel and Masonry - Background Image overlay color is not same as frontend.
-* Fix: Tabs - Tabs border inconsistence on editor as well as on frontend.
 * Fix: Advanced Row - Border hover color not working on front end.
 
 ### 2.0.11 - THURSDAY, 8th SEPTEMBER 2022 ###
