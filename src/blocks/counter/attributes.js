@@ -1,3 +1,10 @@
+/**
+ * BLOCK: Counter - Attributes
+ */
+ import { getBorderAttributes } from '@Controls/generateAttributes';
+
+ const iconWrapBorderAttributes = getBorderAttributes( 'iconWrap' );
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -749,6 +756,7 @@ const attributes = {
 		default: false,
 		isUAGStyle: true,
 	},
+	...iconWrapBorderAttributes,
 };
 
 export default attributes;
