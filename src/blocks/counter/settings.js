@@ -438,6 +438,8 @@ export default function Settings( props ) {
 					{ value: 'none', label: 'None' },
 					{ value: ',', label: ',' },
 					{ value: '.', label: '.' },
+					{ value: ' ', label: 'Whitespace' },
+					{ value: "'", label: "'" },
 				] }
 			/>
 		</UAGAdvancedPanelBody>
@@ -542,6 +544,15 @@ export default function Settings( props ) {
 			) }
 		</UAGAdvancedPanelBody>
 	)
+
+	// const iconImageStylePanel = (
+	// 	<UAGAdvancedPanelBody
+	// 		title={ __( 'Image/Icon', 'ultimate-addons-for-gutenberg' ) }
+	// 		initialOpen={ false }
+	// 	>
+			
+	// 	</UAGAdvancedPanelBody>
+	// )
 
 	const headlineStylePanel =  (
 		<UAGAdvancedPanelBody
@@ -1306,6 +1317,7 @@ export default function Settings( props ) {
 						{headlineStylePanel}
 						{layout === 'circle' && circleStylePanel}
 						{layout === 'bars' && barStylePanel}
+						{/* {layout !== 'bars' && iconImageStylePanel} */}
 						{spacingPanel}
 						{/* We will be releasing the box-shadow feature later due to some technical challenges with circle layout*/}
 						{/* {layout !== 'number' && boxShadowSettings} */}
