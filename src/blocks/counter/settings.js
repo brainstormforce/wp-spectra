@@ -181,6 +181,12 @@ export default function Settings( props ) {
 		// Icon/Image
 		showIcon,
 		icon,
+		iconSize,
+		iconSizeTablet,
+		iconSizeMobile,
+		iconSizeType,
+		iconSizeTypeTablet,
+		iconSizeTypeMobile,
 		iconImgPosition,
 		iconImage,
 		imageSize,
@@ -536,7 +542,68 @@ export default function Settings( props ) {
 			title={ __( 'Image/Icon', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
-			
+			<ResponsiveSlider
+				label={ __(
+					'Width',
+					'ultimate-addons-for-gutenberg'
+				) }
+				setAttributes={ setAttributes }
+				data={ {
+					desktop: {
+						value: iconSize,
+						label: 'iconSize',
+						unit: {
+							value: iconSizeType,
+							label: 'iconSizeType',
+						},
+					},
+					tablet: {
+						value: iconSizeTablet,
+						label: 'iconSizeTablet',
+						unit: {
+							value: iconSizeTypeTablet,
+							label: 'iconSizeTypeTablet',
+						},
+					},
+					mobile: {
+						value: iconSizeMobile,
+						label: 'iconSizeMobile',
+						unit: {
+							value: iconSizeTypeMobile,
+							label: 'iconSizeTypeMobile',
+						},
+					},
+				} }
+				limitMin={ { 'px': 0, '%': 0, 'em': 0 } } // eslint-disable-line quote-props
+				limitMax={ { 'px': 500, '%': 100, 'em': 100 } } // eslint-disable-line quote-props
+				unit={ {
+					value: iconSizeType,
+					label: 'iconSizeType',
+				} }
+				units={ [
+					{
+						name: __(
+							'Pixel',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: 'px',
+					},
+					{
+						name: __(
+							'%',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: '%',
+					},
+					{
+						name: __(
+							'EM',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: 'em',
+					},
+				] }
+			/>
 		</UAGAdvancedPanelBody>
 	)
 

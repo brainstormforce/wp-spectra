@@ -150,6 +150,10 @@ return array(
 	'sourceType'                => 'icon',
 	'icon'                      => 'circle-check',
 	'iconSize'                  => 30,
+	'iconSizeTablet'            => '',
+	'iconSizeMobile'            => '',
 	'iconSizeType'              => 'px',
+	'iconSizeTypeTablet'        => 'px',
+	'iconSizeTypeMobile'        => 'px',
 	'iconImgPosition'           => 'top',
 );
