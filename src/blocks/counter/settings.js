@@ -181,6 +181,10 @@ export default function Settings( props ) {
 		// Icon/Image
 		showIcon,
 		icon,
+		iconColor,
+		iconBackgroundColor,
+		iconHoverColor,
+		iconBackgroundHoverColor,
 		iconSize,
 		iconSizeTablet,
 		iconSizeMobile,
@@ -559,6 +563,92 @@ export default function Settings( props ) {
 			title={ __( 'Image/Icon', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
+			<UAGTabsControl
+				tabs={ [
+					{
+						name: 'normal',
+						title: __(
+							'Normal',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						name: 'hover',
+						title: __(
+							'Hover',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+				] }
+				normal={
+					<>
+						<AdvancedPopColorControl
+							label={ __(
+								'Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={
+								iconColor ? iconColor : ''
+							}
+							data={ {
+								value: iconColor,
+								label: 'iconColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+						<AdvancedPopColorControl
+							label={ __(
+								'Icon Background Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={
+								iconBackgroundColor ? iconBackgroundColor : ''
+							}
+							data={ {
+								value: iconBackgroundColor,
+								label: 'iconBackgroundColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					</>
+
+				}
+				hover={
+					<>
+						<AdvancedPopColorControl
+							label={ __(
+								'Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={
+								iconHoverColor ? iconHoverColor : ''
+							}
+							data={ {
+								value: iconHoverColor,
+								label: 'iconHoverColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+
+						<AdvancedPopColorControl
+							label={ __(
+								'Icon Background Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={
+								iconBackgroundHoverColor ? iconBackgroundHoverColor : ''
+							}
+							data={ {
+								value: iconBackgroundHoverColor,
+								label: 'iconBackgroundHoverColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+
+					</>
+					}
+				disableBottomSeparator={ false }
+			/>
 			<ResponsiveSlider
 				label={ __(
 					'Width',

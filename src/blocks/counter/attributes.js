@@ -603,6 +603,32 @@ const attributes = {
 		type: 'string',
 		default: 'circle-check',
 	},
+	iconColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-color'
+		}
+	},
+	iconBackgroundColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-color'
+		},
+	},
+	iconHoverColor: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'icon-hover-color'
+		}
+	},
+	iconBackgroundHoverColor: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-hover-color'
+		}
+	},
 	iconSize: {
 		type: 'number',
 		default: 30,
