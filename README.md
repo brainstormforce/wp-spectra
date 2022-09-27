@@ -175,7 +175,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Icon List - Text Alignment not working properly on front-end.
 * Fix: Form - Backward Compatibility Stylings Issue on the editor.
 * Fix: Customizer was frozen when theme blog settings were changed.
-* Fix: TOC - Adding 'uagb-toc-hide-heading' class to exclude heading from TOC list not working on front-end. 
+* Fix: Table of Contents - Adding 'uagb-toc-hide-heading' class to exclude heading from TOC list not working on front-end. 
 
 ### 2.0.12 - FRIDAY, 16th SEPTEMBER 2022 ###
 * Improvement: How to block - Option to disable step links.
