@@ -11,7 +11,7 @@ import MultiButtonsControl from '../multi-buttons-control/index';
 import React, { useLayoutEffect } from 'react';
 import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
-import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
+import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 
 const BoxShadowControl = ( props ) => {
 
@@ -73,7 +73,8 @@ const BoxShadowControl = ( props ) => {
 
 	// Function to get the Block's default Box Shadow Values.
 	const getBlockBoxShadowValue = () => {
-		const selectedBlockName = getSelectedBlock()?.name.replace( 'uagb/', '' );
+		const selectedBlockName = getSelectedBlock()?.name.split( '/' ).pop();
+
 		let defaultValues = false;
 		if ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ] ) {
 			attributeNames.forEach( ( attributeName ) => {

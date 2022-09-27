@@ -6,7 +6,6 @@ $breakpoint-mobile: 768px;
 	.uagb_review_entry div:nth-child(2) {
 		min-width: unset !important;  // !important is required to override markup/inline-styling.
 		display: flex;
-		flex-direction: row-reverse;
 	}
 
 	.rating-schema-notices {
