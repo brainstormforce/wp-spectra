@@ -435,7 +435,7 @@ export default function Settings( props ) {
 					setAttributes( {thousandSeparator: value} )
 				} }
 				options={ [
-					{ value: 'none', label: 'None' },
+					{ value: '', label: 'None' },
 					{ value: ',', label: ',' },
 					{ value: '.', label: '.' },
 					{ value: ' ', label: 'Whitespace' },
