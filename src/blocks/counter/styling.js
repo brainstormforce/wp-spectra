@@ -4,6 +4,7 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 export default function styling( props ) {
@@ -144,6 +145,7 @@ export default function styling( props ) {
 		iconSizeType,
 		iconSizeTypeTablet,
 		iconSizeTypeMobile,
+		iconWrapBorderHColor,
 		// Icon Padding
 		iconTopPadding,
 		iconRightPadding,
@@ -186,6 +188,10 @@ export default function styling( props ) {
 	const iconSizeFallbackTablet = isNaN( iconSizeTablet ) ? iconSize : iconSizeTablet;
 	const iconSizeFallbackMobile = isNaN( iconSizeMobile ) ? iconSizeTablet : iconSizeMobile;
 
+	// Border.
+	const iconWrapCSS = generateBorderCSS( props.attributes, 'iconWrap' );
+	const iconWrapCSSTablet = generateBorderCSS( props.attributes, 'iconWrap', 'tablet' );
+	const iconWrapCSSMobile = generateBorderCSS( props.attributes, 'iconWrap', 'mobile' );
 
 	let boxShadowPositionCSS = boxShadowPosition;
 
@@ -253,9 +259,11 @@ export default function styling( props ) {
 				iconLeftPadding,
 				iconPaddingUnit
 			),
+			...iconWrapCSS,
 		},
 		'.wp-block-uagb-counter:hover .wp-block-uagb-counter__icon':{
 			'background-color': iconBackgroundHoverColor,
+			'border-color': iconWrapBorderHColor,
 		},
 		'.wp-block-uagb-counter .wp-block-uagb-counter__icon svg':{
 			'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
@@ -428,6 +436,7 @@ export default function styling( props ) {
 			iconLeftPaddingTablet,
 			iconPaddingUnitTablet
 		),
+		...iconWrapCSSTablet,
 	}
 
 	tablet_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon svg'] = {
@@ -565,6 +574,7 @@ export default function styling( props ) {
 			iconLeftPaddingMobile,
 			iconPaddingUnitMobile
 		),
+		...iconWrapCSSMobile,
 	}
 
 	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon svg'] = {
