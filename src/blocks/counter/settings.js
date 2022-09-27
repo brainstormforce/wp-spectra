@@ -216,20 +216,6 @@ export default function Settings( props ) {
 				'ultimate-addons-for-gutenberg'
 			),
 		},
-		{
-			value: 'left',
-			label: __(
-				'Left of Number and Title',
-				'ultimate-addons-for-gutenberg'
-			),
-		},
-		{
-			value: 'right',
-			label: __(
-				'Right of Number and Title',
-				'ultimate-addons-for-gutenberg'
-			),
-		},
 	];
 
 	const circleIconPositionOptions = [
