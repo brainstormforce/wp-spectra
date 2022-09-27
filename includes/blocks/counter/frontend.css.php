@@ -62,14 +62,22 @@ $selectors = array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPadding'], $attr['blockPaddingUnit'] ),
 	),
 	'.wp-block-uagb-counter .wp-block-uagb-counter__icon'  => array(
-		'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopPadding'], $attr['iconPaddingUnit'] ),
-		'padding-right'  => UAGB_Helper::get_css_value( $attr['iconRightPadding'], $attr['iconPaddingUnit'] ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomPadding'], $attr['iconPaddingUnit'] ),
-		'padding-left'   => UAGB_Helper::get_css_value( $attr['iconLeftPadding'], $attr['iconPaddingUnit'] ),
+		'background-color' => $attr['iconBackgroundColor'],
+		'padding-top'      => UAGB_Helper::get_css_value( $attr['iconTopPadding'], $attr['iconPaddingUnit'] ),
+		'padding-right'    => UAGB_Helper::get_css_value( $attr['iconRightPadding'], $attr['iconPaddingUnit'] ),
+		'padding-bottom'   => UAGB_Helper::get_css_value( $attr['iconBottomPadding'], $attr['iconPaddingUnit'] ),
+		'padding-left'     => UAGB_Helper::get_css_value( $attr['iconLeftPadding'], $attr['iconPaddingUnit'] ),
+	),
+	'.wp-block-uagb-counter:hover .wp-block-uagb-counter__icon' => array(
+		'background-color' => $attr['iconBackgroundHoverColor'],
 	),
 	'.wp-block-uagb-counter .wp-block-uagb-counter__icon svg' => array(
+		'fill'   => $attr['iconColor'],
 		'width'  => UAGB_Helper::get_css_value( $icon_size_fallback, $attr['iconSizeType'] ),
 		'height' => UAGB_Helper::get_css_value( $icon_size_fallback, $attr['iconSizeType'] ),
+	),
+	'.wp-block-uagb-counter:hover .wp-block-uagb-counter__icon svg' => array(
+		'fill' => $attr['iconHoverColor'],
 	),
 	'.wp-block-uagb-counter .wp-block-uagb-counter__title' => array(
 		'font-family'     => $attr['headingFontFamily'],

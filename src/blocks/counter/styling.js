@@ -134,6 +134,10 @@ export default function styling( props ) {
 		boxShadowSpreadHover,
 		boxShadowPositionHover,
 		// Icon
+		iconColor,
+		iconBackgroundColor,
+		iconHoverColor,
+		iconBackgroundHoverColor,
 		iconSize,
 		iconSizeTablet,
 		iconSizeMobile,
@@ -232,6 +236,7 @@ export default function styling( props ) {
 			),
 		},
 		'.wp-block-uagb-counter .wp-block-uagb-counter__icon':{
+			'background-color': iconBackgroundColor,
 			'padding-top': generateCSSUnit(
 				iconTopPadding,
 				iconPaddingUnit
@@ -249,9 +254,16 @@ export default function styling( props ) {
 				iconPaddingUnit
 			),
 		},
+		'.wp-block-uagb-counter:hover .wp-block-uagb-counter__icon':{
+			'background-color': iconBackgroundHoverColor,
+		},
 		'.wp-block-uagb-counter .wp-block-uagb-counter__icon svg':{
 			'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'height': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'fill': iconColor,
+		},
+		'.wp-block-uagb-counter:hover .wp-block-uagb-counter__icon svg':{
+			'fill': iconHoverColor,
 		},
 		'.wp-block-uagb-counter .wp-block-uagb-counter__title':{
 			'font-family': headingFontFamily,
