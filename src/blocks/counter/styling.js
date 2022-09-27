@@ -135,7 +135,11 @@ export default function styling( props ) {
 		boxShadowPositionHover,
 		// Icon
 		iconSize,
+		iconSizeTablet,
+		iconSizeMobile,
 		iconSizeType,
+		iconSizeTypeTablet,
+		iconSizeTypeMobile,
 	} = attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -155,7 +159,12 @@ export default function styling( props ) {
 	// Suffix spacing fallbacks.
 	const suffixLeftDistanceFallback       = getFallbackNumber( suffixLeftDistance, 'suffixLeftDistance', blockName );
 	const suffixLeftDistanceFallbackTablet = isNaN( suffixLeftDistanceTablet ) ? suffixLeftDistance : suffixLeftDistanceTablet;
-	const suffixLeftDistanceFallbackMobile = isNaN( suffixLeftDistanceMobile ) ? suffixLeftDistanceTablet : suffixLeftDistanceMobile;	
+	const suffixLeftDistanceFallbackMobile = isNaN( suffixLeftDistanceMobile ) ? suffixLeftDistanceTablet : suffixLeftDistanceMobile;
+	
+	// Icon size fallbacks.
+	const iconSizeFallback       = getFallbackNumber( iconSize, 'iconSize', blockName );
+	const iconSizeFallbackTablet = isNaN( iconSizeTablet ) ? iconSize : iconSizeTablet;
+	const iconSizeFallbackMobile = isNaN( iconSizeMobile ) ? iconSizeTablet : iconSizeMobile;
 
 
 	let boxShadowPositionCSS = boxShadowPosition;
@@ -207,8 +216,8 @@ export default function styling( props ) {
 			),
 		},
 		'.wp-block-uagb-counter .wp-block-uagb-counter__icon svg':{
-			'width': generateCSSUnit( iconSize, iconSizeType ),
-			'height': generateCSSUnit( iconSize, iconSizeType ),
+			'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'height': generateCSSUnit( iconSizeFallback, iconSizeType ),
 		},
 		'.wp-block-uagb-counter .wp-block-uagb-counter__title':{
 			'font-family': headingFontFamily,
@@ -356,6 +365,11 @@ export default function styling( props ) {
 		),
     }
 
+	tablet_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon svg'] = {
+		'width': generateCSSUnit( iconSizeFallbackTablet, iconSizeTypeTablet ),
+		'height': generateCSSUnit( iconSizeFallbackTablet, iconSizeTypeTablet ),
+	},
+
 	tablet_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__title'] = {
         'font-size': generateCSSUnit(
             headingFontSizeTablet,
@@ -468,6 +482,11 @@ export default function styling( props ) {
 			blockPaddingUnitMobile
 		),
     }
+
+	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon svg'] = {
+		'width': generateCSSUnit( iconSizeFallbackMobile, iconSizeTypeMobile ),
+		'height': generateCSSUnit( iconSizeFallbackMobile, iconSizeTypeMobile ),
+	},
 
 	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__title'] = {
         'font-size': generateCSSUnit(

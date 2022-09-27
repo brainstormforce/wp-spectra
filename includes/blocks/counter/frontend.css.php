@@ -29,6 +29,11 @@ $suffix_left_distance_fallback    = UAGB_Block_Helper::get_fallback_number( $att
 $attr['suffixLeftDistanceTablet'] = is_numeric( $attr['suffixLeftDistanceTablet'] ) ? $attr['suffixLeftDistanceTablet'] : $suffix_left_distance_fallback;
 $attr['suffixLeftDistanceMobile'] = is_numeric( $attr['suffixLeftDistanceMobile'] ) ? $attr['suffixLeftDistanceMobile'] : $attr['suffixLeftDistanceTablet'];
 
+// Icon size fallbacks.
+$icon_size_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name );
+$attr['iconSizeTablet'] = is_numeric( $attr['iconSizeTablet'] ) ? $attr['iconSizeTablet'] : $icon_size_fallback;
+$attr['iconSizeMobile'] = is_numeric( $attr['iconSizeMobile'] ) ? $attr['iconSizeMobile'] : $attr['iconSizeTablet'];
+
 $box_shadow_position_css = $attr['boxShadowPosition'];
 
 if ( 'outset' === $attr['boxShadowPosition'] ) {
@@ -57,8 +62,8 @@ $selectors = array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPadding'], $attr['blockPaddingUnit'] ),
 	),
 	'.wp-block-uagb-counter .wp-block-uagb-counter__icon svg' => array(
-		'width'  => UAGB_Helper::get_css_value( $attr['iconSize'], $attr['iconSizeType'] ),
-		'height' => UAGB_Helper::get_css_value( $attr['iconSize'], $attr['iconSizeType'] ),
+		'width'  => UAGB_Helper::get_css_value( $icon_size_fallback, $attr['iconSizeType'] ),
+		'height' => UAGB_Helper::get_css_value( $icon_size_fallback, $attr['iconSizeType'] ),
 	),
 	'.wp-block-uagb-counter .wp-block-uagb-counter__title' => array(
 		'font-family'     => $attr['headingFontFamily'],
@@ -131,6 +136,11 @@ $t_selectors['.wp-block-uagb-counter'] = array(
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
 );
 
+$t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon svg'] = array(
+	'width'  => UAGB_Helper::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeTypeTablet'] ),
+	'height' => UAGB_Helper::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeTypeTablet'] ),
+);
+
 $t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__title']                             = array(
 	'font-size'     => UAGB_Helper::get_css_value( $attr['headingFontSizeTablet'], $attr['headingFontSizeType'] ),
 	'line-height'   => UAGB_Helper::get_css_value( $attr['headingLineHeightTablet'], $attr['headingLineHeightType'] ),
@@ -171,6 +181,11 @@ $m_selectors['.wp-block-uagb-counter'] = array(
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['blockRightPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['blockBottomPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
+);
+
+$m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon svg'] = array(
+	'width'  => UAGB_Helper::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeTypeMobile'] ),
+	'height' => UAGB_Helper::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeTypeMobile'] ),
 );
 
 $m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__title']                             = array(
