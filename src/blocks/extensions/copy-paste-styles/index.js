@@ -3,7 +3,7 @@ import { select, dispatch, useDispatch } from '@wordpress/data';
 import { store as keyboardShortcutsStore, useShortcut } from '@wordpress/keyboard-shortcuts';
 import { createHigherOrderComponent } from '@wordpress/compose';
 // Import Blocks Attributes.
-import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
+import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 
 import {
 	BlockControls,
@@ -241,7 +241,7 @@ const UAGCopyPasteStyles = () => {
 
 						const childName = childBlock.name.replace( 'uagb/', '' );
 						const blockAttributes = blocksAttributes[childName];
-						
+
 						if( pasteStyle.innerblocks[index].name === 'uagb/' + childName ) {
 							Object.keys( blockAttributes ).map( ( attribute ) => {
 

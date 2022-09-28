@@ -178,6 +178,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Advanced Column: Image was not getting aligned center on the frontend and the editor.
 * Fix: Call To Action - Button css conflict with Newspaper theme.
 * Fix: Customizer was frozen when theme blog settings were changed.
+* Fix: Review Schema - Star ratings do not reflect on the frontend like the editor when multiple review blocks are used.
+* Fix: Review Schema - Stars appear left in the editor and right on the frontend when clicked.
+* Fix: Table of Contents - Adding `uagb-toc-hide-heading` class to exclude heading from TOC list not working on front-end.
 * Fix: Container - Z-index were not applied on the frontend.
 * Fix: FAQ - Throwing an undefined style issue in console when html anchor is used.
 
