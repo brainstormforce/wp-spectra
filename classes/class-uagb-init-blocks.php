@@ -65,8 +65,6 @@ class UAGB_Init_Blocks {
 			add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
 		}
 
-		add_action( 'spectra_total_blocks_count_action', array( $this, 'blocks_count_logic' ) );
-
 	}
 
 	/**

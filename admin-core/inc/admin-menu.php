@@ -74,13 +74,6 @@ class Admin_Menu {
 		/* Render admin content view */
 		add_action( 'uag_render_admin_page_content', array( $this, 'render_content' ), 10, 2 );
 
-		/* Action to get total blocks count */
-		if ( function_exists( 'as_enqueue_async_action' ) && 'done' !== get_option( 'spectra_blocks_count_status' ) ) {
-
-			as_enqueue_async_action( 'spectra_total_blocks_count_action' );
-			update_option( 'spectra_blocks_count_status', 'processing' );
-		}
-
 	}
 
 	/**
