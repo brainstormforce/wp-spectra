@@ -38,7 +38,7 @@ export default function DynamicContent(props) {
 							{__( 'Dynamic Content', 'ultimate-addons-for-gutenberg' )}
 						</h3>
 						<p className="mt-[0.6rem] text-sm ">
-							{ __( 'Set Dynamic Content Showing Position', 'ultimate-addons-for-gutenberg' ) }
+							{ __( 'Choose how you want to display dynamic content settings', 'ultimate-addons-for-gutenberg' ) }
 						</p>
 					</div>
 					<div>
