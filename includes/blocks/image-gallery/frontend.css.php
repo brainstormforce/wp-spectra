@@ -210,6 +210,9 @@ $selectors = array(
 			'box-shadow' => $image_box_shadow_css
 		)
 	),
+	' .spectra-image-gallery__media:hover'              => array(
+		'border-color' => $attr['imageBorderHColor'],
+	),
 	' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media' => array(
 		'box-shadow' => $image_box_shadow_hover_css
 	),

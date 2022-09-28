@@ -167,6 +167,7 @@ function styling( props ) {
 		arrowBorderHColor,
 		mainTitleBorderColor,
 		mainTitleBorderHColor,
+		imageBorderHColor,
 	} = props.attributes;
 
 	// Arrow & Dots Default Color Fallback ( Not from Theme ).
@@ -387,6 +388,9 @@ function styling( props ) {
 		},
 		' .spectra-image-gallery__media': {
 			...imageBorderCSS,
+		},
+		' .spectra-image-gallery__media:hover': {
+			'border-color': imageBorderHColor,
 		},
 
 		// Thumbnail Selectors
