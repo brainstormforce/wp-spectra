@@ -70,7 +70,7 @@ return array_merge(
 		'captionPaddingUnitTab'              => 'px',
 		'captionPaddingUnitMob'              => 'px',
 		'captionPaddingUnitLink'             => true,
-		'captionGap'                         => 4,
+		'captionGap'                         => 0,
 		'captionGapUnit'                     => 'px',
 		// Layout Settings.
 		'columnsDesk'                        => 3,

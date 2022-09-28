@@ -232,7 +232,7 @@ const attributes = {
 	},
 	captionGap: {
 		type: 'number',
-		default: 4,
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'gallery-caption-gap'
 		},
