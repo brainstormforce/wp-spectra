@@ -2,7 +2,6 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import getMatrixAlignment from '@Controls/getMatrixAlignment';
-import generateBorderRadius from '@Controls/generateBorderRadius';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateSpacing from '@Controls/generateSpacing';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
