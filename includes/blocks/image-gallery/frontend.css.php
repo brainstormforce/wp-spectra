@@ -46,7 +46,7 @@ $main_title_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $att
 
 // Box Shadow CSS.
 
-$image_box_shadow_css = (
+$image_box_shadow_css       = (
 	UAGB_Helper::get_css_value( $attr['imageBoxShadowHOffset'], 'px' )
 ) . ' ' . (
 	UAGB_Helper::get_css_value( $attr['imageBoxShadowVOffset'], 'px' )
@@ -189,8 +189,9 @@ $selectors = array(
 	' .spectra-image-gallery__layout--carousel'         => array(
 		// Override Slick Slider Margin.
 		'margin-bottom' => UAGB_Helper::get_css_value(
-			$paginate_dot_distance_fallback, 'px'
-		) . ' !important'
+			$paginate_dot_distance_fallback,
+			'px'
+		) . ' !important',
 	),
 	' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper' => array(
 		'padding' => UAGB_Helper::get_css_value(
@@ -207,14 +208,14 @@ $selectors = array(
 	' .spectra-image-gallery__media'                    => array_merge(
 		$image_border_css,
 		array(
-			'box-shadow' => $image_box_shadow_css
+			'box-shadow' => $image_box_shadow_css,
 		)
 	),
 	' .spectra-image-gallery__media:hover'              => array(
 		'border-color' => $attr['imageBorderHColor'],
 	),
 	' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media' => array(
-		'box-shadow' => $image_box_shadow_hover_css
+		'box-shadow' => $image_box_shadow_hover_css,
 	),
 
 	// Thumbnail Selectors.
@@ -499,8 +500,8 @@ switch ( $attr['captionBackgroundEffectHover'] ) {
 		break;
 };
 if ( ! $attr['captionBackgroundEnableBlur'] ) {
-	$selectors[' .spectra-image-gallery__media-thumbnail-blurrer']['-webkit-backdrop-filter']                                             = 'none';
-	$selectors[' .spectra-image-gallery__media-thumbnail-blurrer']['backdrop-filter']                                                     = 'none';
+	$selectors[' .spectra-image-gallery__media-thumbnail-blurrer']['-webkit-backdrop-filter'] = 'none';
+	$selectors[' .spectra-image-gallery__media-thumbnail-blurrer']['backdrop-filter']         = 'none';
 	$selectors[' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer']['-webkit-backdrop-filter'] = 'none';
 	$selectors[' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer']['backdrop-filter']         = 'none';
 }
@@ -512,8 +513,7 @@ if ( $attr['imageDisplayCaption'] && ( 'bar-outside' === $attr['captionDisplayTy
 			$caption_gap_fallback,
 			$attr['captionGapUnit']
 		);
-	}
-	else {
+	} else {
 		$selectors[' .spectra-image-gallery__media-thumbnail-caption-wrapper']['margin-top'] = UAGB_Helper::get_css_value(
 			$caption_gap_fallback,
 			$attr['captionGapUnit']
@@ -580,27 +580,25 @@ switch ( $attr['imageZoomType'] ) {
 
 // Box Shadow Application Based on Type.
 if ( 'outset' === $attr['imageBoxShadowPosition'] ) {
-	$selectors[' .spectra-image-gallery__media']['box-shadow'] = $image_box_shadow_css;
+	$selectors[' .spectra-image-gallery__media']['box-shadow']                   = $image_box_shadow_css;
 	$selectors[' .spectra-image-gallery__media-thumbnail-blurrer']['box-shadow'] = '0 0 transparent' . (
 		( 'inset' === $attr['imageBoxShadowPositionHover'] ) ? ( ' ' . $attr['imageBoxShadowPositionHover'] ) : ''
 	);
-}
-else {
+} else {
 	$selectors[' .spectra-image-gallery__media-thumbnail-blurrer']['box-shadow'] = $image_box_shadow_css;
-	$selectors[' .spectra-image-gallery__media']['box-shadow'] = '0 0 transparent' . (
+	$selectors[' .spectra-image-gallery__media']['box-shadow']                   = '0 0 transparent' . (
 		( 'inset' === $attr['imageBoxShadowPositionHover'] ) ? ( ' ' . $attr['imageBoxShadowPositionHover'] ) : ''
 	);
 }
 
 if ( 'outset' === $attr['imageBoxShadowPositionHover'] ) {
-	$selectors[' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media']['box-shadow'] = $image_box_shadow_hover_css;
+	$selectors[' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media']['box-shadow']                   = $image_box_shadow_hover_css;
 	$selectors[' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer']['box-shadow'] = '0 0 transparent' . (
 		( 'inset' === $attr['imageBoxShadowPosition'] ) ? ( ' ' . $attr['imageBoxShadowPosition'] ) : ''
 	);
-}
-else {
-	$selectors[' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer']['box-shadow'] =  $image_box_shadow_hover_css;
-	$selectors[' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media']['box-shadow'] = '0 0 transparent' . (
+} else {
+	$selectors[' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer']['box-shadow'] = $image_box_shadow_hover_css;
+	$selectors[' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media']['box-shadow']                   = '0 0 transparent' . (
 		( 'inset' === $attr['imageBoxShadowPosition'] ) ? ( ' ' . $attr['imageBoxShadowPosition'] ) : ''
 	);
 }
