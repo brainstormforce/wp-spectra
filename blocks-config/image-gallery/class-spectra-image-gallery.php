@@ -753,6 +753,54 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 					$attributes[ $key ] = ( 'false' === $attribute ) ? false : ( ( 'true' === $attribute ) ? true : $attribute );
 				}
 
+				$desktop_class = '';
+				$tab_class     = '';
+				$mob_class     = '';
+
+				$uagb_common_selector_class = ''; // Required for z-index.
+
+				if ( array_key_exists( 'UAGHideDesktop', $attributes ) || array_key_exists( 'UAGHideTab', $attributes ) || array_key_exists( 'UAGHideMob', $attributes ) ) {
+
+					$desktop_class = ( isset( $attributes['UAGHideDesktop'] ) ) ? 'uag-hide-desktop' : '';
+
+					$tab_class = ( isset( $attributes['UAGHideTab'] ) ) ? 'uag-hide-tab' : '';
+
+					$mob_class = ( isset( $attributes['UAGHideMob'] ) ) ? 'uag-hide-mob' : '';
+				}
+
+				$zindex_desktop = '';
+				$zindex_tablet  = '';
+				$zindex_mobile  = '';
+				$zindex_wrap    = array();
+
+				if ( array_key_exists( 'zIndex', $attributes ) || array_key_exists( 'zIndexTablet', $attributes ) || array_key_exists( 'zIndexMobile', $attributes ) ) {
+					$uagb_common_selector_class = 'uag-blocks-common-selector';
+					$zindex_desktop             = array_key_exists( 'zIndex', $attributes ) && ( '' !== $attributes['zIndex'] ) ? '--z-index-desktop:' . $attributes['zIndex'] . ';' : false;
+					$zindex_tablet              = array_key_exists( 'zIndexTablet', $attributes ) && ( '' !== $attributes['zIndexTablet'] ) ? '--z-index-tablet:' . $attributes['zIndexTablet'] . ';' : false;
+					$zindex_mobile              = array_key_exists( 'zIndexMobile', $attributes ) && ( '' !== $attributes['zIndexMobile'] ) ? '--z-index-mobile:' . $attributes['zIndexMobile'] . ';' : false;
+
+					if ( $zindex_desktop ) {
+						array_push( $zindex_wrap, $zindex_desktop );
+					}
+
+					if ( $zindex_tablet ) {
+						array_push( $zindex_wrap, $zindex_tablet );
+					}
+
+					if ( $zindex_mobile ) {
+						array_push( $zindex_wrap, $zindex_mobile );
+					}
+				}
+
+				$wrap = array(
+					'wp-block-uagb-image-gallery',
+					'uagb-block-' . $attributes['block_id'],
+					$desktop_class,
+					$tab_class,
+					$mob_class,
+					$uagb_common_selector_class,
+				);
+
 				$allMedia               = $this->render_media_markup( $media, $attributes );
 				$grid_page_kses         = wp_kses_allowed_html( 'post' );
 				$grid_page_args         = array(
@@ -782,7 +830,10 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 
 				ob_start();
 				?>
-					<div class="wp-block-uagb-image-gallery uagb-block-<?php echo esc_html( $attributes['block_id'] ); ?>">
+					<div
+						class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>"
+						style="<?php echo esc_html( implode( '', $zindex_wrap ) ); ?>"
+					>
 				<?php
 				switch ( $attributes['feedLayout'] ) {
 					case 'grid':
