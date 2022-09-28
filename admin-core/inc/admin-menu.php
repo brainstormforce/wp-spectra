@@ -115,11 +115,11 @@ class Admin_Menu {
 
 		if ( 'done' === get_option( 'spectra_blocks_count_status' ) ) {
 
-			if ( function_exists( 'as_next_scheduled_action' ) && false === \as_next_scheduled_action( 'spectra_analytics_count_actions' ) ) {
+			// if ( function_exists( 'as_next_scheduled_action' ) && false === \as_next_scheduled_action( 'spectra_analytics_count_actions' ) ) {
 
-				// It will automatically reschedule the action once initiated.
-				as_schedule_recurring_action( strtotime( 'now' ), 2 * WEEK_IN_SECONDS, 'spectra_analytics_count_actions' );
-			}
+			// 	// It will automatically reschedule the action once initiated.
+			// 	as_schedule_recurring_action( strtotime( 'now' ), 2 * WEEK_IN_SECONDS, 'spectra_analytics_count_actions' );
+			// }
 		}
 	}
 

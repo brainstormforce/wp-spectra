@@ -117,7 +117,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		public function loader() {
 
 			// Need to add library before the plugin loaded. https://actionscheduler.org/usage/.
-			require_once UAGB_DIR . 'lib/action-scheduler/action-scheduler.php';
+			// require_once UAGB_DIR . 'lib/action-scheduler/action-scheduler.php';
 
 			require_once UAGB_DIR . 'classes/utils.php';
 			require_once UAGB_DIR . 'classes/class-uagb-install.php';
