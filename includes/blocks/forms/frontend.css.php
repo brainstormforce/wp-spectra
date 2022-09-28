@@ -123,6 +123,9 @@ $btn_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 $btn_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
 $btn_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
 
+// fallback for
+$forms_padding_right_mobile_fallback = (int) UAGB_Block_Helper::get_fallback_number( $attr['paddingFieldRightMobile'], 'paddingFieldRightMobile', $block_name ) + 30;
+
 $selectors = array(
 	'.uagb-forms__outer-wrap'                              => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['formPaddingTop'], $attr['formPaddingUnit'] ),
@@ -295,7 +298,7 @@ $m_selectors = array(
 	// Drop icon position css.
 	' .uagb-form-phone-country'                         => array(
 		'background-position' => 'top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'], $attr['paddingFieldUnitmobile'] ),
-		'padding-right'       => UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'] + 30, $attr['paddingFieldUnitmobile'] ) . ' !important',
+		'padding-right'       => UAGB_Helper::get_css_value( $forms_padding_right_mobile_fallback , $attr['paddingFieldUnitmobile'] ) . ' !important',
 	),
 );
 // Checkbox Field css.
