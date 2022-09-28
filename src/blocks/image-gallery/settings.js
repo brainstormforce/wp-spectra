@@ -1012,86 +1012,6 @@ const Settings = ( props ) => {
 												] }
 												showIcons={ true }
 											/>
-											<SpacingControl
-												{ ...props }
-												label={ __( 'Button Padding', 'ultimate-addons-for-gutenberg' ) }
-												valueTop={ {
-													value: paginateButtonPaddingTop,
-													label: 'paginateButtonPaddingTop',
-												} }
-												valueRight={ {
-													value: paginateButtonPaddingRight,
-													label: 'paginateButtonPaddingRight',
-												} }
-												valueBottom={ {
-													value: paginateButtonPaddingBottom,
-													label: 'paginateButtonPaddingBottom',
-												} }
-												valueLeft={ {
-													value: paginateButtonPaddingLeft,
-													label: 'paginateButtonPaddingLeft',
-												} }
-												valueTopTablet={ {
-													value: paginateButtonPaddingTopTab,
-													label: 'paginateButtonPaddingTopTab',
-												} }
-												valueRightTablet={ {
-													value: paginateButtonPaddingRightTab,
-													label: 'paginateButtonPaddingRightTab',
-												} }
-												valueBottomTablet={ {
-													value: paginateButtonPaddingBottomTab,
-													label: 'paginateButtonPaddingBottomTab',
-												} }
-												valueLeftTablet={ {
-													value: paginateButtonPaddingLeftTab,
-													label: 'paginateButtonPaddingLeftTab',
-												} }
-												valueTopMobile={ {
-													value: paginateButtonPaddingTopMob,
-													label: 'paginateButtonPaddingTopMob',
-												} }
-												valueRightMobile={ {
-													value: paginateButtonPaddingRightMob,
-													label: 'paginateButtonPaddingRightMob',
-												} }
-												valueBottomMobile={ {
-													value: paginateButtonPaddingBottomMob,
-													label: 'paginateButtonPaddingBottomMob',
-												} }
-												valueLeftMobile={ {
-													value: paginateButtonPaddingLeftMob,
-													label: 'paginateButtonPaddingLeftMob',
-												} }
-												unit={ {
-													value: paginateButtonPaddingUnit,
-													label: 'paginateButtonPaddingUnit',
-												} }
-												tUnit={ {
-													value: paginateButtonPaddingUnitTab,
-													label: 'paginateButtonPaddingUnitTab',
-												} }
-												mUnit={ {
-													value: paginateButtonPaddingUnitMob,
-													label: 'paginateButtonPaddingUnitMob',
-												} }
-												attributes={ attributes }
-												setAttributes={ setAttributes }
-												link={ {
-													value: paginateButtonPaddingUnitLink,
-													label: 'paginateButtonPaddingUnitLink',
-												} }
-												units={ [
-													{
-														name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
-														unitValue: 'em',
-													},
-													{
-														name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
-														unitValue: 'px',
-													},
-												] }
-											/>
 										</>
 									) }
 								</>
@@ -1899,13 +1819,97 @@ const Settings = ( props ) => {
 									prefix={ 'btn' }
 									attributes={ attributes }
 									deviceType={ deviceType }
-									disableBottomSeparator={ true }
+									disableBottomSeparator={ ! paginateUseLoader ? false : true }
 								/>
 							</>
 						) 
 					}
 				</>
 			) }
+			{ ! paginateUseLoader &&
+				<>
+				<SpacingControl
+					{ ...props }
+					label={ __( 'Button Padding', 'ultimate-addons-for-gutenberg' ) }
+					valueTop={ {
+						value: paginateButtonPaddingTop,
+						label: 'paginateButtonPaddingTop',
+					} }
+					valueRight={ {
+						value: paginateButtonPaddingRight,
+						label: 'paginateButtonPaddingRight',
+					} }
+					valueBottom={ {
+						value: paginateButtonPaddingBottom,
+						label: 'paginateButtonPaddingBottom',
+					} }
+					valueLeft={ {
+						value: paginateButtonPaddingLeft,
+						label: 'paginateButtonPaddingLeft',
+					} }
+					valueTopTablet={ {
+						value: paginateButtonPaddingTopTab,
+						label: 'paginateButtonPaddingTopTab',
+					} }
+					valueRightTablet={ {
+						value: paginateButtonPaddingRightTab,
+						label: 'paginateButtonPaddingRightTab',
+					} }
+					valueBottomTablet={ {
+						value: paginateButtonPaddingBottomTab,
+						label: 'paginateButtonPaddingBottomTab',
+					} }
+					valueLeftTablet={ {
+						value: paginateButtonPaddingLeftTab,
+						label: 'paginateButtonPaddingLeftTab',
+					} }
+					valueTopMobile={ {
+						value: paginateButtonPaddingTopMob,
+						label: 'paginateButtonPaddingTopMob',
+					} }
+					valueRightMobile={ {
+						value: paginateButtonPaddingRightMob,
+						label: 'paginateButtonPaddingRightMob',
+					} }
+					valueBottomMobile={ {
+						value: paginateButtonPaddingBottomMob,
+						label: 'paginateButtonPaddingBottomMob',
+					} }
+					valueLeftMobile={ {
+						value: paginateButtonPaddingLeftMob,
+						label: 'paginateButtonPaddingLeftMob',
+					} }
+					unit={ {
+						value: paginateButtonPaddingUnit,
+						label: 'paginateButtonPaddingUnit',
+					} }
+					tUnit={ {
+						value: paginateButtonPaddingUnitTab,
+						label: 'paginateButtonPaddingUnitTab',
+					} }
+					mUnit={ {
+						value: paginateButtonPaddingUnitMob,
+						label: 'paginateButtonPaddingUnitMob',
+					} }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: paginateButtonPaddingUnitLink,
+						label: 'paginateButtonPaddingUnitLink',
+					} }
+					units={ [
+						{
+							name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
+							unitValue: 'em',
+						},
+						{
+							name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+							unitValue: 'px',
+						},
+					] }
+				/>
+				</>
+			}
 		</UAGAdvancedPanelBody>
 	);
 
