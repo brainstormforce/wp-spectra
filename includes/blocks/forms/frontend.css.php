@@ -216,7 +216,13 @@ $selectors = array(
 		'appearance' => 'none !important',
 	),
 
-
+	// select control color.
+	' .uagb-form-phone-country'    => array(
+		'color' => $attr['inputplaceholderColor'],
+	),
+	' .uagb-forms-field-set:hover .uagb-form-phone-country'    => array(
+		'color' => $attr['inputplaceholderHoverColor'],
+	),
 );
 $t_selectors = array(
 	'.uagb-forms__outer-wrap'                        => array(

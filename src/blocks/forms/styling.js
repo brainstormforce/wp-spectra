@@ -267,6 +267,9 @@ function styling( props ) {
 			'color': inputplaceholderColor,
 			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
 		},
+		' .components-input-control__container': {
+			'background-color': bgColor,
+		},
 		' .uagb-forms-main-form textarea': {
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 			'line-height': generateCSSUnit(
@@ -440,6 +443,9 @@ function styling( props ) {
 			'border-color': fieldBorderHColor,
 		},
 		' .uagb-forms-field-set:hover .uagb-forms-input::placeholder': {
+			'color': inputplaceholderHoverColor,
+		},
+		' .uagb-forms-field-set:hover .uagb-forms-input select': {
 			'color': inputplaceholderHoverColor,
 		},
 	};
