@@ -637,28 +637,6 @@ const Settings = ( props ) => {
 							<MultiButtonsControl
 								setAttributes={ setAttributes }
 								label={ __(
-									'Bar Position',
-									'ultimate-addons-for-gutenberg'
-								) }
-								data={ {
-									value: imageCaptionAlignment01,
-									label: 'imageCaptionAlignment01',
-								} }
-								options={ [
-									{
-										value: 'top',
-										label: __( 'Above', 'ultimate-addons-for-gutenberg' ),
-									},
-									{
-										value: 'bottom',
-										label: __( 'Below', 'ultimate-addons-for-gutenberg' ),
-									},
-								] }
-								showIcons={ false }
-							/>
-							<MultiButtonsControl
-								setAttributes={ setAttributes }
-								label={ __(
 									'Alignment',
 									'ultimate-addons-for-gutenberg'
 								) }
@@ -697,6 +675,28 @@ const Settings = ( props ) => {
 									},
 								] }
 								showIcons={ true }
+							/>
+							<MultiButtonsControl
+								setAttributes={ setAttributes }
+								label={ __(
+									'Bar Position',
+									'ultimate-addons-for-gutenberg'
+								) }
+								data={ {
+									value: imageCaptionAlignment01,
+									label: 'imageCaptionAlignment01',
+								} }
+								options={ [
+									{
+										value: 'top',
+										label: __( 'Above', 'ultimate-addons-for-gutenberg' ),
+									},
+									{
+										value: 'bottom',
+										label: __( 'Below', 'ultimate-addons-for-gutenberg' ),
+									},
+								] }
+								showIcons={ false }
 							/>
 							<Range
 								label={ __( 'Gap', 'ultimate-addons-for-gutenberg' ) }
