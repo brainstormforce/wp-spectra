@@ -314,9 +314,12 @@ function styling( props ) {
 			'padding-bottom': generateCSSUnit( paddingBottom, contentPaddingUnit ),
 			'padding-right': generateCSSUnit( paddingRight, contentPaddingUnit ),
 		},
-		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap > .uagb-post__text': {
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap > .uagb-post__text:not(.highlighted)': {
 			'margin-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
 			'margin-right': generateCSSUnit( paddingRight, contentPaddingUnit ),
+		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text.highlighted': {
+			'margin-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
 		},
 		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:first-child': {
 			'margin-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
@@ -849,9 +852,12 @@ function styling( props ) {
 		' .is-masonry': {
 			'height': 'initial !important',
 		},
-		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text': {
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)': {
 			'margin-left': generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
 			'margin-right': generateCSSUnit( paddingRightMobile, mobilePaddingUnit ),
+		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text.highlighted': {
+			'margin-left': generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
 		},
 		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:first-child': {
 			'margin-top': generateCSSUnit( paddingTopMobile, mobilePaddingUnit ),
@@ -1014,9 +1020,12 @@ function styling( props ) {
 		' .is-masonry': {
 			'height': 'initial !important',
 		},
-		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text': {
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)': {
 			'margin-left': generateCSSUnit( paddingLeftTablet, tabletPaddingUnit ),
 			'margin-right': generateCSSUnit( paddingRightTablet, tabletPaddingUnit ),
+		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text.highlighted': {
+			'margin-left': generateCSSUnit( paddingLeftTablet, tabletPaddingUnit ),
 		},
 		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:first-child': {
 			'margin-top': generateCSSUnit( paddingTopTablet, tabletPaddingUnit ),
