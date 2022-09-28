@@ -142,9 +142,6 @@ class UAGB_Init_Blocks {
 			}
 			$page++;
 			update_option( 'spectra_blocks_pages_counted', $page );
-			if ( function_exists( 'as_enqueue_async_action' ) ) {
-				as_enqueue_async_action( 'spectra_total_blocks_count_action' );
-			}
 		} else {
 			update_option( 'spectra_blocks_count_status', 'done' );
 		}
