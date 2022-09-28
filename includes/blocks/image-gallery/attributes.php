@@ -208,5 +208,22 @@ return array_merge(
 	$arrow_border_attributes,
 	$btn_border_attributes,
 	$image_border_attributes,
-	$main_title_border_attributes
+	$main_title_border_attributes,
+	array(
+		'arrowBorderStyle'             => 'none',
+		'arrowBorderTopWidth'          => 4,
+		'arrowBorderRightWidth'        => 4,
+		'arrowBorderBottomWidth'       => 4,
+		'arrowBorderLeftWidth'         => 4,
+		'arrowBorderTopLeftRadius'     => 50,
+		'arrowBorderTopRightRadius'    => 50,
+		'arrowBorderBottomLeftRadius'  => 50,
+		'arrowBorderBottomRightRadius' => 50,
+	),
+	array(
+		'mainTitleBorderTopWidth'    => 2,
+		'mainTitleBorderRightWidth'  => 0,
+		'mainTitleBorderBottomWidth' => 2,
+		'mainTitleBorderLeftWidth'   => 0,
+	)
 );
