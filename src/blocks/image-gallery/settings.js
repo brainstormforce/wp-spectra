@@ -432,6 +432,28 @@ const Settings = ( props ) => {
 
 	const renderOverlayDisplay = ( isHover ) => (
 		<>
+			{ captionBackgroundEnableBlur && (
+				<Range
+					label={ __( `Blur Amount`, 'ultimate-addons-for-gutenberg' ) }
+					setAttributes={ setAttributes }
+					value={ 
+						isHover
+						? captionBackgroundBlurAmountHover
+						: captionBackgroundBlurAmount
+					}
+					data={ {
+						value: isHover
+							? captionBackgroundBlurAmountHover
+							: captionBackgroundBlurAmount,
+						label: isHover
+							? 'captionBackgroundBlurAmountHover'
+							: 'captionBackgroundBlurAmount',
+					} }
+					min={ 0 }
+					max={ 10 }
+					displayUnit={ false }
+				/>
+			) }
 			{/* The entire section below can be created into a component if required in the future */}
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
@@ -482,28 +504,6 @@ const Settings = ( props ) => {
 						label: isHover ? 'overlayColorHover' : 'overlayColor',
 					} }
 					setAttributes={ setAttributes }
-				/>
-			) }
-			{ captionBackgroundEnableBlur && (
-				<Range
-					label={ __( `Blur Amount`, 'ultimate-addons-for-gutenberg' ) }
-					setAttributes={ setAttributes }
-					value={ 
-						isHover
-						? captionBackgroundBlurAmountHover
-						: captionBackgroundBlurAmount
-					}
-					data={ {
-						value: isHover
-							? captionBackgroundBlurAmountHover
-							: captionBackgroundBlurAmount,
-						label: isHover
-							? 'captionBackgroundBlurAmountHover'
-							: 'captionBackgroundBlurAmount',
-					} }
-					min={ 0 }
-					max={ 10 }
-					displayUnit={ false }
 				/>
 			) }
 		</>
