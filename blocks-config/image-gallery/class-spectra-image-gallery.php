@@ -409,40 +409,40 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 								'default' => __( 'Load More Images', 'ultimate-addons-for-gutenberg' ),
 							),
 							'paginateButtonPaddingTop'     => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'paginateButtonPaddingRight'   => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'paginateButtonPaddingBottom'  => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'paginateButtonPaddingLeft'    => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'paginateButtonPaddingTopTab'  => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'paginateButtonPaddingRightTab' => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'paginateButtonPaddingBottomTab' => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'paginateButtonPaddingLeftTab' => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'paginateButtonPaddingTopMob'  => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'paginateButtonPaddingRightMob' => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'paginateButtonPaddingBottomMob' => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'paginateButtonPaddingLeftMob' => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'paginateButtonPaddingUnit'    => array(
 								'type'    => 'string',
@@ -463,23 +463,23 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 						),
 						// Image Styling.
 						array(
-							'imageEnableZoom'              => array(
+							'imageEnableZoom'             => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'imageZoomType'                => array(
+							'imageZoomType'               => array(
 								'type'    => 'string',
 								'default' => 'zoom-in',
 							),
-							'captionBackgroundEnableBlur'  => array(
+							'captionBackgroundEnableBlur' => array(
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'captionBackgroundBlurAmount'  => array(
+							'captionBackgroundBlurAmount' => array(
 								'type'    => 'number',
 								'default' => 0,
 							),
-							'captionBackgroundBlurAmountHover'  => array(
+							'captionBackgroundBlurAmountHover' => array(
 								'type'    => 'number',
 								'default' => 5,
 							),
@@ -648,7 +648,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 								'default' => 24,
 							),
 							'paginateDotDistance'          => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'paginateDotDistanceUnit'      => array(
 								'type'    => 'string',
@@ -659,43 +659,43 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 								'default' => 18,
 							),
 							'paginateButtonTextColor'      => array(
-								'type'    => 'string',
+								'type' => 'string',
 							),
 							'paginateButtonTextColorHover' => array(
-								'type'    => 'string',
+								'type' => 'string',
 							),
 							'paginateColor'                => array(
-								'type'    => 'string',
+								'type' => 'string',
 							),
 							'paginateColorHover'           => array(
-								'type'    => 'string',
+								'type' => 'string',
 							),
 						),
 						// Box Shadow Styling.
 						array(
-							'imageBoxShadowColor'    => array(
-								'type'    => 'string',
+							'imageBoxShadowColor'         => array(
+								'type' => 'string',
 							),
-							'imageBoxShadowHOffset'  => array(
+							'imageBoxShadowHOffset'       => array(
 								'type'    => 'number',
 								'default' => 0,
 							),
-							'imageBoxShadowVOffset'  => array(
+							'imageBoxShadowVOffset'       => array(
 								'type'    => 'number',
 								'default' => 0,
 							),
-							'imageBoxShadowBlur'     => array(
-								'type'    => 'number',
+							'imageBoxShadowBlur'          => array(
+								'type' => 'number',
 							),
-							'imageBoxShadowSpread'   => array(
-								'type'    => 'number',
+							'imageBoxShadowSpread'        => array(
+								'type' => 'number',
 							),
-							'imageBoxShadowPosition' => array(
+							'imageBoxShadowPosition'      => array(
 								'type'    => 'string',
 								'default' => 'outset',
 							),
 							'imageBoxShadowColorHover'    => array(
-								'type'    => 'string',
+								'type' => 'string',
 							),
 							'imageBoxShadowHOffsetHover'  => array(
 								'type'    => 'number',
@@ -706,10 +706,10 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 								'default' => 0,
 							),
 							'imageBoxShadowBlurHover'     => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'imageBoxShadowSpreadHover'   => array(
-								'type'    => 'number',
+								'type' => 'number',
 							),
 							'imageBoxShadowPositionHover' => array(
 								'type'    => 'string',
