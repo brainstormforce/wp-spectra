@@ -7,14 +7,7 @@
  * @package uagb
  */
 
-$border_defaults  = array(
-	'borderStyle'       => 'none',
-	'borderTopWidth'    => 1,
-	'borderRightWidth'  => 1,
-	'borderBottomWidth' => 1,
-	'borderLeftWidth'   => 1,
-);
-$border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'columns', $border_defaults );
+$border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'columns' );
 
 return array_merge(
 	array(
@@ -94,5 +87,5 @@ return array_merge(
 		'gradientValue'          => 'linear-gradient(90deg, rgb(6, 147, 227, 0.5) 0%, rgb(155, 81, 224, 0.5) 100%)',
 		'overlayType'            => 'color',
 	),
-	$border_attribute,
+	$border_attribute
 );

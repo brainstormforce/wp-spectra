@@ -2,22 +2,15 @@
  * BLOCK: Container
  */
 import styling from './styling';
-import React, { lazy, Suspense, useEffect, useLayoutEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {    useEffect, useLayoutEffect } from 'react';
+
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/container/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/container/render" */ './render'
-	)
-);
+import Settings from './settings';
+import Render from './render';
 
 //  Import CSS.
 import './style.scss';
@@ -95,13 +88,13 @@ const UAGBContainer = ( props ) => {
 			borderStyle,
 			borderWidth,
 			borderColor,
-			borderHColor,
+			borderHoverColor,
 			borderRadius
 		} = props.attributes;
 
 		// border
-		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'container', {
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
+			migrateBorderAttributes( 'container', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -111,14 +104,15 @@ const UAGBContainer = ( props ) => {
 				label: 'borderColor',
 				value: borderColor
 			}, {
-				label: 'borderHColor',
-				value: borderHColor
+				label: 'borderHoverColor',
+				value: borderHoverColor
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			}
+			},
+			props.setAttributes,
+			props.attributes
 			);
-			props.setAttributes( migrationAttributes )
 		}
 
 		if( 0 !== select( 'core/block-editor' ).getBlockParents(  props.clientId ).length ){ // if there is no parent for container when child container moved outside root then do not show variations.
@@ -146,6 +140,8 @@ const UAGBContainer = ( props ) => {
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-container-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 
 	}, [ deviceType ] );
 
@@ -206,10 +202,12 @@ const UAGBContainer = ( props ) => {
 
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
+
+						<>
+			<Settings parentProps={ props } />
 				<Render parentProps={ props } />
-			</Suspense>
+			</>
+
 		</>
 	);
 };

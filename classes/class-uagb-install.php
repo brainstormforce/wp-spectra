@@ -91,7 +91,7 @@ UAGB_Install::get_instance();
 /**
  * Install class
  *
- * @since 2.0.0-beta.3
+ * @since 2.0.0
  *
  * @return object
  */

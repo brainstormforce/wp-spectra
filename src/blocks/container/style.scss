@@ -58,7 +58,7 @@
 
 body .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > *:not(.wp-block-uagb-container):not(.wp-block-uagb-column):not(.wp-block-uagb-container):not(.wp-block-uagb-section):not(.uagb-container__shape):not(.uagb-container__video-wrap),
 body .wp-block-uagb-container > .uagb-container-inner-blocks-wrap,
-body .wp-block-uagb-container > *:not(.wp-block-uagb-container):not(.wp-block-uagb-column):not(.wp-block-uagb-container):not(.wp-block-uagb-section):not(.uagb-container__shape):not(.uagb-container__video-wrap):not(.wp-block-uagb-advanced-heading):not(.wp-block-uagb-info-box):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(p) {
+body .wp-block-uagb-container > *:not(.wp-block-uagb-container):not(.wp-block-uagb-column):not(.wp-block-uagb-container):not(.wp-block-uagb-section):not(.uagb-container__shape):not(.uagb-container__video-wrap) {
 	min-width: unset !important;
 	width: 100%;
 }
@@ -105,7 +105,6 @@ body .wp-block-uagb-container > *:not(.wp-block-uagb-container):not(.wp-block-ua
 }
 
 .uagb-container__shape .uagb-container__shape-fill {
-	fill: #333;
 	-webkit-transform-origin: center;
 	-ms-transform-origin: center;
 	transform-origin: center;

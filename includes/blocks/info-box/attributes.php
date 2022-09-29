@@ -7,7 +7,12 @@
  * @package uagb
  */
 
-$cta_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
+$cta_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
+	'btn'
+);
+
+$image_width_default = ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 120 : '';
+
 return array_merge(
 	array(
 		'classMigrate'               => false,
@@ -95,8 +100,8 @@ return array_merge(
 		'ctaLoadGoogleFonts'         => false,
 		'ctaBtnLinkColor'            => '',
 		'ctaBgColor'                 => '',
-		'ctaBtnVertPadding'          => '',
-		'ctaBtnHrPadding'            => '',
+		'ctaBtnVertPadding'          => 10,
+		'ctaBtnHrPadding'            => 14,
 		'paddingBtnUnit'             => 'px',
 		'mobilePaddingBtnUnit'       => 'px',
 		'tabletPaddingBtnUnit'       => 'px',
@@ -124,7 +129,7 @@ return array_merge(
 		'iconTabletMarginUnit'       => 'px',
 		'iconMobileMarginUnit'       => 'px',
 		'imageSize'                  => 'thumbnail',
-		'imageWidth'                 => '',
+		'imageWidth'                 => $image_width_default,
 		'ctaLinkHoverColor'          => '',
 		'ctaBgHoverColor'            => '',
 		'ctaIconSpace'               => '5',
@@ -247,6 +252,11 @@ return array_merge(
 		'blockPaddingUnitTablet'     => 'px',
 		'blockPaddingUnitMobile'     => 'px',
 		'blockPaddingLink'           => '',
+		'ctaBorderStyle'             => 'solid',
+		'ctaBorderColor'             => '',
+		'ctaBorderWidth'             => 1,
+		'ctaBorderRadius'            => 0,
+		'ctaBorderhoverColor'        => '',
 	),
 	$cta_border_attribute
 );

@@ -336,7 +336,7 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 				)
 			);
 
-			$demo_api_uri = add_query_arg( $request_params, $api_uri );
+			$demo_api_uri = esc_url_raw( add_query_arg( $request_params, $api_uri ) );
 
 			// API Call.
 			$response = wp_remote_get( $demo_api_uri, $api_args );
@@ -400,10 +400,10 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 						'wpforms_status'          => $this->get_plugin_status( 'wpforms-lite/wpforms.php' ),
 						'gutenberg_status'        => $this->get_plugin_status( 'gutenberg/gutenberg.php' ),
 						'_ajax_nonce'             => wp_create_nonce( 'ast-block-templates-ajax-nonce' ),
-						'button_text'             => esc_html__( 'Starter Templates', 'ast-block-templates' ),
+						'button_text'             => esc_html__( 'Template Kits', 'ast-block-templates' ),
 						'display_button_logo'     => true,
-						'popup_logo_uri'          => AST_BLOCK_TEMPLATES_URI . 'dist/logo.svg',
-						'button_logo'             => AST_BLOCK_TEMPLATES_URI . 'dist/starter-template-logo.svg',
+						'popup_logo_uri'          => AST_BLOCK_TEMPLATES_URI . 'dist/spectra-logo.svg',
+						'button_logo'             => AST_BLOCK_TEMPLATES_URI . 'dist/spectra.svg',
 						'button_class'            => '',
 						'display_suggestion_link' => true,
 						'suggestion_link'         => 'https://wpastra.com/sites-suggestions/?utm_source=demo-import-panel&utm_campaign=astra-sites&utm_medium=suggestions',

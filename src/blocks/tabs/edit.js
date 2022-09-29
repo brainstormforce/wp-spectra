@@ -2,19 +2,16 @@
  * BLOCK: Tabs Block
  */
 import styling from './styling';
-import React, { useEffect, lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect,    } from 'react';
+
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/tabs/render" */ './render' )
-);
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/tabs/settings" */ './settings' )
-);
+import Settings from './settings';
+import Render from './render';
 
 import { compose } from '@wordpress/compose';
 
@@ -79,7 +76,7 @@ const UAGBTabsEdit = ( props ) => {
 		const { borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor } = props.attributes;
 		// Backward Border Migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'tab', {
+			migrateBorderAttributes( 'tab', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -94,8 +91,10 @@ const UAGBTabsEdit = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			} );
-			props.setAttributes( migrationAttributes )
+			},
+			props.setAttributes,
+			props.attributes
+			);
 		}
 	}, [] );
 
@@ -132,22 +131,27 @@ const UAGBTabsEdit = ( props ) => {
 
 		addBlockEditorDynamicStyles( 'uagb-style-tab-' + props.clientId.substr( 0, 8 ), blockStyling );
 
+		scrollBlockToView();
+
 	}, [ deviceType ] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<Settings parentProps={ props } deviceType = {deviceType} />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 
 export default compose(
+
 	withDispatch( ( dispatch, { clientId }, { select } ) => { // eslint-disable-line no-shadow
 		const { getBlock } = select( 'core/block-editor' );
 		const { updateBlockAttributes, moveBlockToPosition } = dispatch(
 			'core/block-editor'
 		);
+
 		const block = getBlock( clientId );
 
 		return {

@@ -6,7 +6,9 @@
 import classnames from 'classnames';
 
 import { InnerBlocks } from '@wordpress/block-editor';
+import { getBorderAttributes } from '@Controls/generateAttributes';
 
+const overallBorderAttributes = getBorderAttributes( 'overall' );
 const attributes = {
 	classMigrate: {
 		type: "boolean",
@@ -301,6 +303,7 @@ const attributes = {
 		type: "string",
 		default: "",
 	},
+	...overallBorderAttributes
 };
 
 const deprecated = [

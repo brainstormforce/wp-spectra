@@ -1,16 +1,13 @@
 import styling from './styling';
-import React, { lazy, useEffect, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {   useEffect,  } from 'react';
+
 import apiFetch from '@wordpress/api-fetch';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/cf7-styler/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/cf7-styler/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 import { withSelect } from '@wordpress/data';
 
@@ -254,13 +251,16 @@ const UAGBCF7 = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-cf7-styler-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<Settings parentProps={ props } deviceType = { deviceType }/>
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 

@@ -4,15 +4,7 @@
 import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const borderDefault = {
-	borderStyle: 'solid',
-	borderTopWidth: 1,
-	borderRightWidth: 1,
-	borderBottomWidth: 1,
-	borderLeftWidth: 1,
-	borderColor: '#e0e0e0',
-}
-const borderAttributes = getBorderAttributes( 'tab', borderDefault );
+const borderAttributes = getBorderAttributes( 'tab' );
 
 const attributes = {
 	block_id: {
@@ -50,7 +42,7 @@ const attributes = {
 	},
 	tabsStyleM: {
 		type: 'string',
-		default: 'vstyle6',
+		default: 'stack1',
 		UAGCopyPaste: {
 			styleType: 'tabs-style-mobile'
 		},
@@ -82,15 +74,18 @@ const attributes = {
 	},
 	borderStyle: {
 		type: 'string',
+		default:'solid'
 	},
 	borderWidth: {
 		type: 'number',
+		default:1
 	},
 	borderRadius: {
 		type: 'number',
 	},
 	borderColor: {
 		type: 'string',
+		default:'#e0e0e0'
 	},
 	borderHoverColor: {
 		type: 'string',

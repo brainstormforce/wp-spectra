@@ -19,7 +19,6 @@ export default function save( props ) {
 		rAuthor,
 		headingTag,
 		starCount,
-		ID,
 		parts,
 		summaryTitle,
 		summaryDescription,
@@ -43,6 +42,8 @@ export default function save( props ) {
 
 	let urlChk = '';
 	let title = '';
+	let defaultedAlt = '';
+
 	if (
 		'undefined' !== typeof attributes.mainimage &&
 		null !== attributes.mainimage &&
@@ -50,6 +51,7 @@ export default function save( props ) {
 	) {
 		urlChk = attributes.mainimage.url;
 		title = attributes.mainimage.title;
+		defaultedAlt = ( props.attributes.mainimage?.alt ) ? props.attributes.mainimage?.alt : '';
 	}
 
 	let url = '';
@@ -75,7 +77,7 @@ export default function save( props ) {
 				className="uagb-howto__source-image"
 				src={ url }
 				title={ title }
-				alt=""
+				alt={ defaultedAlt }
 			/>
 		);
 	}
@@ -145,7 +147,7 @@ export default function save( props ) {
 									} }
 								>
 									<Stars
-										id={ `${ i }` }
+										id={ `${ block_id.substr( 0, 8 ) }-${ i }` }
 										key={ i }
 										value={ j.value }
 										limit={ starCount }
@@ -175,7 +177,7 @@ export default function save( props ) {
 								{ Math.round( newAverage * 10 ) / 10 }
 							</span>
 							<Stars
-								id={ `${ ID }-average` }
+								id={ `${ block_id.substr( 0, 8 ) }-average` }
 								className="uagb_review_average_stars"
 								onHover={ () => null }
 								onClick={ () => null }

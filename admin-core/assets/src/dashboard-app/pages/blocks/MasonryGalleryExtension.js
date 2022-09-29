@@ -43,6 +43,7 @@ const MasonryGalleryExtension = () => {
 		}
 
         dispatch( {type: 'UPDATE_ENABLE_MASONRY_EXTENSION', payload: assetStatus } );
+        dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
     };
 
     return (

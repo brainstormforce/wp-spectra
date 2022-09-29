@@ -151,8 +151,6 @@
 	& > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout {
 
 		& > .wp-block {
-			margin: 0;
-			padding: 0;
 			width: 100%;
 		}
 	}
@@ -168,6 +166,10 @@
 		display: flex;
 		width: 100%;
 		height: 100%;
+	}
+
+	& > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+		width: 100%;
 	}
 
 	.block-editor-block-list__layout {

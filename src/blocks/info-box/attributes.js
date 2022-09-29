@@ -3,6 +3,8 @@
  */
  import { getBorderAttributes } from '@Controls/generateAttributes';
 
+ const imageWidthDefault = ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) ? 120 : '';
+
  const borderAttributes = getBorderAttributes( 'btn' );
 
  const attributes = {
@@ -734,30 +736,36 @@
 	},
 	ctaBorderColor: {
 		type: 'string',
+		default: '#333',
 	},
-	ctaBorderhoverColor: {
+	ctaBorderhoverColor:{
 		type: 'string',
 	},
 	ctaBorderStyle: {
 		type: 'string',
+		default: 'solid',
 	},
 	ctaBtnVertPadding: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'btn-vertical-padding'
 		}
 	},
 	ctaBtnHrPadding: {
 		type: 'number',
+		default: 14,
 		UAGCopyPaste: {
 			styleType: 'btn-horizontal-padding'
 		}
 	},
-	ctaBorderWidth: {
+	ctaBorderWidth :{
 		type: 'number',
+		default: 1,
 	},
-	ctaBorderRadius: {
+	ctaBorderRadius :{
 		type: 'number',
+		default: 0,
 	},
 	iconLeftMargin: {
 		type: 'number',
@@ -802,7 +810,7 @@
 		UAGCopyPaste: {
 			styleType: 'image-width'
 		},
-		default: '',
+		default: imageWidthDefault,
 	},
 	imageWidthMobile: {
 		type: 'number',
