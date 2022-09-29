@@ -515,7 +515,7 @@ const Settings = ( props ) => {
 			case 'sepia':
 				return (
 					<Range
-						label={ isHover ? labelForBgEffectAmount : labelForHoverBgEffectAmount }
+						label={ isHover ? labelForHoverBgEffectAmount : labelForBgEffectAmount }
 						setAttributes={ setAttributes }
 						value={ 
 							isHover
