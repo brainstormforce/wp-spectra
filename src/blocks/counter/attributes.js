@@ -723,18 +723,25 @@ const attributes = {
 			styleType: 'image-width-type'
 		}
 	},
-	imageWidthTypeTablet: {
-		type: 'boolean',
-		default: true,
+	imageWidthUnit: {
+		type: 'string',
+		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'image-width-type-tablet'
+			styleType: 'image-width-unit'
 		}
 	},
-	imageWidthTypeMobile: {
-		type: 'boolean',
-		default: true,
+	imageWidthUnitTablet: {
+		type: 'string',
+		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'image-width-type-mobile'
+			styleType: 'image-width-unit-tablet'
+		}
+	},
+	imageWidthUnitMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'image-width-unit-mobile'
 		}
 	},
 	sourceType: {
