@@ -203,6 +203,25 @@ function styling( props ) {
 	const toggleBorderRadiusBRMobileFallback = ( undefined !== toggleBorderMobile['border-bottom-right-radius'] ) ? toggleBorderMobile['border-bottom-right-radius'] : toggleBorderRadiusBRTabletFallback;
 	const toggleBorderRadiusBLMobileFallback = ( undefined !== toggleBorderMobile['border-bottom-left-radius'] ) ? toggleBorderMobile['border-bottom-left-radius'] : toggleBorderRadiusBLTabletFallback;
 
+	// Individual Toggle Border Radius Fallback for Inner Dot.
+	let toggleBorderTFallback = getAttributeFallback( toggleBorder['border-top-width'], 'checkBoxToggleBorderTopWidth', blockName );
+	let toggleBorderLFallback = getAttributeFallback( toggleBorder['border-left-width'], 'checkBoxToggleBorderLeftWidth', blockName );
+	let toggleBorderBFallback = getAttributeFallback( toggleBorder['border-bottom-width'], 'checkBoxToggleBorderBottomWidth', blockName );
+	let toggleBorderRFallback = getAttributeFallback( toggleBorder['border-right-width'], 'checkBoxToggleBorderBottomRight', blockName );
+
+	toggleBorderTFallback = isNaN( toggleBorderTFallback ) ? toggleBorderTFallback : `${ toggleBorderTFallback }px`;
+	toggleBorderRFallback = isNaN( toggleBorderRFallback ) ? toggleBorderRFallback : `${ toggleBorderRFallback }px`;
+	toggleBorderBFallback = isNaN( toggleBorderBFallback ) ? toggleBorderBFallback : `${ toggleBorderBFallback }px`;
+	toggleBorderLFallback = isNaN( toggleBorderLFallback ) ? toggleBorderLFallback : `${ toggleBorderLFallback }px`;
+	const toggleBorderTTabletFallback = ( undefined !== toggleBorderTablet['border-top-width'] ) ? toggleBorderTablet['border-top-width'] : toggleBorderTFallback;
+	const toggleBorderRTabletFallback = ( undefined !== toggleBorderTablet['border-right-width'] ) ? toggleBorderTablet['border-right-width'] : toggleBorderRFallback;
+	const toggleBorderBTabletFallback = ( undefined !== toggleBorderTablet['border-bottom-width'] ) ? toggleBorderTablet['border-bottom-width'] : toggleBorderBFallback;
+	const toggleBorderLTabletFallback = ( undefined !== toggleBorderTablet['border-left-width'] ) ? toggleBorderTablet['border-left-width'] : toggleBorderLFallback;
+	const toggleBorderTMobileFallback = ( undefined !== toggleBorderMobile['border-top-width'] ) ? toggleBorderMobile['border-top-width'] : toggleBorderTTabletFallback;
+	const toggleBorderRMobileFallback = ( undefined !== toggleBorderMobile['border-right-width'] ) ? toggleBorderMobile['border-right-width'] : toggleBorderRTabletFallback;
+	const toggleBorderBMobileFallback = ( undefined !== toggleBorderMobile['border-bottom-width'] ) ? toggleBorderMobile['border-bottom-width'] : toggleBorderBTabletFallback;
+	const toggleBorderLMobileFallback = ( undefined !== toggleBorderMobile['border-left-width'] ) ? toggleBorderMobile['border-left-width'] : toggleBorderLTabletFallback;
+
 	const submitBorder = generateBorderCSS( props.attributes, 'btn' );
 	const submitBorderTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
 	const submitBorderMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
