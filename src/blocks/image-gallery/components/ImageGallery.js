@@ -128,7 +128,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	useEffect( () => {
 		if ( 'tiled' === feedLayout ) {
 			tileSizer.current.style.display = 'initial';
-			setAttributes( { tileSize: Math.round( tileSizer.current.getBoundingClientRect().width ) } );
+			setAttributes( { tileSize: Math.round( tileSizer?.current.getBoundingClientRect().width ) } );
 			setTileResizeTrigger( false );
 		}
 	}, [
@@ -186,9 +186,11 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 
 	// Remove the Tile Sizer when the size is acquired.
 	useEffect( () => {
-		setTimeout( () => {
-			tileSizer.current.style.display = 'none';
-		}, 1000 );
+		if( tileSizer && tileSizer.current ) {  // Check if typeSizer and current is null or not to avoid console errors.
+			setTimeout( () => {
+				tileSizer.current.style.display = 'none';
+			}, 1000 );
+		}
 	}, [ tileSize ] );
 
 	// Update the Focused Images based on the Focus List.
