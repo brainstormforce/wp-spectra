@@ -723,6 +723,20 @@ const attributes = {
 			styleType: 'image-width-type'
 		}
 	},
+	imageWidthTypeTablet: {
+		type: 'boolean',
+		default: true,
+		UAGCopyPaste: {
+			styleType: 'image-width-type-tablet'
+		}
+	},
+	imageWidthTypeMobile: {
+		type: 'boolean',
+		default: true,
+		UAGCopyPaste: {
+			styleType: 'image-width-type-mobile'
+		}
+	},
 	sourceType: {
 		type: 'string',
 		default: 'icon',
