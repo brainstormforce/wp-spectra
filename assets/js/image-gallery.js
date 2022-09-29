@@ -6,11 +6,11 @@ const UAGBImageGalleryMasonry = {
 		let count = 2;
 		const windowHeight50 = window.innerHeight / 1.25;
 		const $scope = document.querySelector( $selector );
-		const loader = $scope.querySelector( '.spectra-image-gallery__control-loader' );
-		const loadButton = $scope.querySelector( '.spectra-image-gallery__control-button' );
+		const loader = $scope?.querySelector( '.spectra-image-gallery__control-loader' );
+		const loadButton = $scope?.querySelector( '.spectra-image-gallery__control-button' );
 		if ( $attr.feedPagination && $attr.paginateUseLoader ) {
 			window.addEventListener( 'scroll', function() {
-				let mediaItem = $scope.querySelector( '.spectra-image-gallery__media-wrapper' );
+				let mediaItem = $scope?.querySelector( '.spectra-image-gallery__media-wrapper' );
 				if ( ! mediaItem ) {
 					mediaItem = $scope
 				}
@@ -85,7 +85,7 @@ const UAGBImageGalleryMasonry = {
 		} )
 		.then( ( resp ) => resp.json() )
 		.then( function( data ) {
-			let element = $scope.querySelector( '.spectra-image-gallery__layout--masonry' );
+			let element = $scope?.querySelector( '.spectra-image-gallery__layout--masonry' );
 			if ( ! element ) {
 				element = $scope;
 			}
@@ -99,7 +99,7 @@ const UAGBImageGalleryMasonry = {
 			} );
 			spectraImageGalleryLoadStatus = true;
 			if ( true === append ) {
-				$scope.querySelector( '.spectra-image-gallery__control-button' ).classList.toggle( 'disabled' );
+				$scope?.querySelector( '.spectra-image-gallery__control-button' ).classList.toggle( 'disabled' );
 			}
 			if ( count === parseInt( $obj.total ) ) {
 				$scope.querySelector( '.spectra-image-gallery__control-button' ).style.opacity = 0;
@@ -115,8 +115,8 @@ const UAGBImageGalleryPagedGrid = {
 	init( $attr, $selector ) {
 		let count = 1;
 		const $scope = document.querySelector( $selector );
-		const arrows = $scope.querySelectorAll( '.spectra-image-gallery__control-arrows--grid' );
-		const dots = $scope.querySelectorAll( '.spectra-image-gallery__control-dot' );
+		const arrows = $scope?.querySelectorAll( '.spectra-image-gallery__control-arrows--grid' );
+		const dots = $scope?.querySelectorAll( '.spectra-image-gallery__control-dot' );
 		for ( let i = 0; i < arrows.length; i++ ) {
 			arrows[ i ].addEventListener( 'click', ( event ) => {
 				const thisArrow = event.currentTarget;
@@ -129,7 +129,7 @@ const UAGBImageGalleryPagedGrid = {
 						++page;
 						break;
 				}
-				let mediaItem = $scope.querySelector( '.spectra-image-gallery__media-wrapper' );
+				let mediaItem = $scope?.querySelector( '.spectra-image-gallery__media-wrapper' );
 				if ( ! mediaItem ) {
 					mediaItem = $scope;
 				}
@@ -161,7 +161,7 @@ const UAGBImageGalleryPagedGrid = {
 			dots[ i ].addEventListener( 'click', ( event ) => {
 				const thisDot = event.currentTarget;
 				const page = thisDot.getAttribute( 'data-go-to' );
-				let mediaItem = $scope.querySelector( '.spectra-image-gallery__media-wrapper' );
+				let mediaItem = $scope?.querySelector( '.spectra-image-gallery__media-wrapper' );
 				if ( ! mediaItem ) {
 					mediaItem = $scope
 				}
@@ -203,7 +203,7 @@ const UAGBImageGalleryPagedGrid = {
 			if ( data.success === false ){
 				return;
 			}
-			let element = $scope.querySelector( '.spectra-image-gallery__layout--isogrid' );
+			let element = $scope?.querySelector( '.spectra-image-gallery__layout--isogrid' );
 			if ( ! element ) {
 				element = $scope;
 			};
@@ -235,8 +235,8 @@ const UAGBImageGalleryPagedGrid = {
 					arrow.disabled = false;
 				} );
 			}
-			$scope.querySelector( '.spectra-image-gallery__control-dot--active' ).classList.toggle( 'spectra-image-gallery__control-dot--active' );
-			const $activeDot = $scope.querySelectorAll( '.spectra-image-gallery__control-dot' );
+			$scope?.querySelector( '.spectra-image-gallery__control-dot--active' ).classList.toggle( 'spectra-image-gallery__control-dot--active' );
+			const $activeDot = $scope?.querySelectorAll( '.spectra-image-gallery__control-dot' );
 			$activeDot[ parseInt( $obj.page_number ) - 1 ].classList.toggle( 'spectra-image-gallery__control-dot--active' );
 		} );
 	}
