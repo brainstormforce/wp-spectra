@@ -3,7 +3,7 @@
  */
  import { getBorderAttributes } from '@Controls/generateAttributes';
 
- const imageWidthDefault = ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) ? 120 : undefined;
+ const imageWidthDefault = ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) ? 120 : '';
 
  const borderAttributes = getBorderAttributes( 'btn' );
 
