@@ -683,6 +683,47 @@ const attributes = {
 			styleType: 'icon-img-position'
 		}
 	},
+	// Image Attributes.
+	iconImage: {
+		type: 'object',
+		default: {
+			url: '',
+			alt: 'Counter placeholder img',
+		},
+	},
+	imageSize: {
+		type: 'string',
+		default: 'thumbnail',
+		UAGCopyPaste: {
+			styleType: 'image-size'
+		}
+	},
+	imageWidth: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'image-width'
+		},
+		default: 120,
+	},
+	imageWidthMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'image-width-mobile'
+		}
+	},
+	imageWidthTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'image-width-tablet'
+		}
+	},
+	imageWidthType: {
+		type: 'boolean',
+		default: true,
+		UAGCopyPaste: {
+			styleType: 'image-width-type'
+		}
+	},
 	sourceType: {
 		type: 'string',
 		default: 'icon',
