@@ -30,7 +30,6 @@ const Render = ( props ) => {
 		icon,
 		showIcon,
 		iconImgPosition,
-		sourceType,
 	} = attributes
 
 	const deviceType = useDeviceType();
@@ -48,7 +47,7 @@ const Render = ( props ) => {
 	const circleDash   = parseFloat( 2 * Math.PI * circleRadius ).toFixed( 2 );
 	const percentLayout = ['bars', 'circle'];
 
-	const iconCheck = ( showIcon && icon !== '' && sourceType === 'icon' ); // Reusable const to check if icon is set and enabled.
+	const iconCheck = ( showIcon && icon !== '' ); // Reusable const to check if icon is set and enabled.
 
 	let iconComponent = '';
 

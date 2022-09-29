@@ -21,7 +21,6 @@ export default function Save( props ) {
 		icon,
 		showIcon,
 		iconImgPosition,
-		sourceType,
 	} = attributes
 
 	const blockName = 'counter'; // Since props.name property isn't available, we need to hard-code the block's name.
@@ -33,7 +32,7 @@ export default function Save( props ) {
 	const circleDash   = parseFloat( 2 * Math.PI * circleRadius ).toFixed( 2 );
 	const percentLayout = ['bars', 'circle'];
 
-	const iconCheck = ( showIcon && icon !== '' && sourceType === 'icon' ); // Reusable const to check if icon is set and enabled.
+	const iconCheck = ( showIcon && icon !== '' ); // Reusable const to check if icon is set and enabled.
 
 	let iconComponent = '';
 
