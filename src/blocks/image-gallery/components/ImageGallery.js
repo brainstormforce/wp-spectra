@@ -263,6 +263,22 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		</button>
 	);
 
+	// To dynamically update slides to show based on the current selected device.
+
+	let howManySlides = columnsDeskFallback;
+
+	switch( deviceType ) {
+		case 'Tablet':
+			howManySlides = columnsTabFallback;
+			break;
+		case 'Mobile':
+			howManySlides = columnsMobFallback;
+			break;
+		default:
+			howManySlides = columnsDeskFallback;
+			break;
+	}
+
 	const carouselSettings = {
 		arrows: paginateUseArrows,
 		dots: paginateUseDots,
@@ -272,7 +288,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		autoplaySpeed: carouselAutoplaySpeedFallback,
 		pauseOnHover: carouselPauseOnHover,
 		speed: carouselTransitionSpeedFallback,
-		slidesToShow: columnsDeskFallback,
+		slidesToShow: howManySlides,
 		nextArrow: <SlickNextArrow />,
 		prevArrow: <SlickPrevArrow />,
 		responsive: [
