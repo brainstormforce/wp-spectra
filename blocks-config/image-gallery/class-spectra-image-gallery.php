@@ -1251,7 +1251,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 							const element = scope.querySelector( '.spectra-image-gallery__layout--tiled' );
 							const tileSizer = scope.querySelector( '.spectra-image-gallery__media-sizer' );
 							element.style.gridAutoRows = `${ tileSizer.getBoundingClientRect().width }px`;
-							console.log( element.style );
+
 							imagesLoaded( element ).on( 'progress', ( theInstance, theImage ) => {
 								if ( theImage.isLoaded ){
 									const imageElement = theImage.img;
