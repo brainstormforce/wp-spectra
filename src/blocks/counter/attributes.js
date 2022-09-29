@@ -703,7 +703,6 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'image-width'
 		},
-		default: 120,
 	},
 	imageWidthMobile: {
 		type: 'number',
