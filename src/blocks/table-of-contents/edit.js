@@ -190,9 +190,9 @@ const UAGBTableOfContentsEdit = ( props ) => {
 				setAttributes( { leftMarginTablet: hMarginTablet } );
 			}
 		}
-		const {borderStyle,borderWidth,borderRadius,borderColor,borderHColor} = props.attributes;
+		const {borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor} = props.attributes;
 		// Backward Border Migration
-		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
 			migrateBorderAttributes( 'overall', {
 				label: 'borderWidth',
 				value: borderWidth,
@@ -203,8 +203,8 @@ const UAGBTableOfContentsEdit = ( props ) => {
 				label: 'borderColor',
 				value: borderColor
 			}, {
-				label: 'borderHColor',
-				value: borderHColor
+				label: 'borderHoverColor',
+				value: borderHoverColor
 			},{
 				label: 'borderStyle',
 				value: borderStyle
@@ -294,7 +294,17 @@ export default compose(
 		} else {
 			headerArray = document.body.getElementsByClassName( 'is-root-container' )[0]?.querySelectorAll( 'h1, h2, h3, h4, h5, h6' );
 		}
-
+		const excludeBlock = document.querySelectorAll( '.uagb-toc-hide-heading' );
+		if ( excludeBlock ) {
+			excludeBlock.forEach( function ( heading ) {
+				const innerHeading = heading.querySelectorAll(  'h1, h2, h3, h4, h5, h6' );
+				if ( innerHeading ) {
+					innerHeading.forEach( function( head ){
+						head.classList.add( 'uagb-toc-hide-heading' );
+					} )
+				}
+			} )
+		}
 		const headers = [];
 
 		if ( headerArray !== 'undefined' ) {

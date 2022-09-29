@@ -5,8 +5,6 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
-import hexToRgba from '@Controls/hexToRgba';
-import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
@@ -240,14 +238,14 @@ function styling( props ) {
 			'height': generateCSSUnit( topHeight, 'px' )
 		},
 		' > .uagb-container__shape-top .uagb-container__shape-fill' : {
-			'fill': hexToRgba( maybeGetColorForVariable( topColor ), 100 ),
+			'fill': topColor,
 		},
 		' > .uagb-container__shape-bottom svg' : {
 			'width': 'calc( ' + bottomWidth + '% + 1.3px )',
 			'height': generateCSSUnit( bottomHeight, 'px' )
 		},
 		' > .uagb-container__shape-bottom .uagb-container__shape-fill' : {
-			'fill': hexToRgba( maybeGetColorForVariable( bottomColor ), 100 ),
+			'fill': bottomColor,
 		},
 		' .uagb-container__video-wrap' : {
 			...videoBackgroundCSS

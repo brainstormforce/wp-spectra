@@ -23,6 +23,20 @@
 		position: relative;
 	}
 
+	.aligncenter {
+		display: block;
+		text-align: center;
+	}
+
+	.alignright {
+		display: block;
+		text-align: right;
+	}
+
+	.wp-block-image {
+		width: 100%;
+	}
+
 	&.uagb-column__align-left {
 		margin-left: 0;
 		margin-right: auto;

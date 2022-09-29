@@ -41,8 +41,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
 				( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
 				( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
-				( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' ),
-				( isset( $attr['borderHColor'] ) ? $attr['borderHColor'] : '' )
+				( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
 			);
 			$border_css_tablet = self::uag_generate_border_css( $attr, 'btn', 'tablet' );
 			$border_css_mobile = self::uag_generate_border_css( $attr, 'btn', 'mobile' );
@@ -140,13 +139,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$box_shadow_position_css,
 				);
 			}
-			$selectors[ $wrapper ]                           = $border_css;
-			$m_selectors[ $wrapper ]                         = $border_css_mobile;
-			$t_selectors[ $wrapper ]                         = $border_css_tablet;
+			$selectors[ $wrapper . '.wp-block-button__link' ] = $border_css;
+			$m_selectors[ $wrapper ]                          = $border_css_mobile;
+			$t_selectors[ $wrapper ]                          = $border_css_tablet;
 			$selectors[ $wrapper . ':hover' ]                = array(
-				'border-color' => $attr['btnBorderHColor'],
+				'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
 			);
-			$selectors[ $wrapper . ' .uagb-button__link' ]   = array(
+			$selectors[ $wrapper . ' .uagb-button__link' ]    = array(
 				'color'           => $attr['color'],
 				'font-family'     => $attr['fontFamily'],
 				'font-weight'     => $attr['fontWeight'],
@@ -156,11 +155,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'font-size'       => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
 				'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 			);
-			$m_selectors[ $wrapper . ' .uagb-button__link' ] = array(
+			$m_selectors[ $wrapper . ' .uagb-button__link' ]  = array(
 				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
 				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
 			);
-			$t_selectors[ $wrapper . ' .uagb-button__link' ] = array(
+			$t_selectors[ $wrapper . ' .uagb-button__link' ]  = array(
 				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
 				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 			);
@@ -451,8 +450,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
 				( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
 				( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
-				( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' ),
-				( isset( $attr['borderHColor'] ) ? $attr['borderHColor'] : '' )
+				( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
 			);
 
 			$overall_border_css = self::uag_generate_border_css( $attr, 'overall' );
@@ -603,14 +601,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'color' => $attr['metaColor'],
 			);
 			$selectors[' .uagb-post__text.uagb-post__excerpt']['color']                          = $attr['excerptColor'];
-			$selectors[' .uagb-post__text.uagb-post__cta .uagb-text-link']                       = array_merge(
+			$selectors['.uagb-post-grid .wp-block-button.uagb-post__text.uagb-post__cta .uagb-text-link']          = array_merge(
 				array(
 					'color'      => $attr['ctaColor'],
 					'background' => $attr['ctaBgColor'],
 				),
 				$border_css
 			);
-			$selectors[' .uagb-post__text.uagb-post__cta a']                                     = array(
+			$selectors['.uagb-post-grid .uagb-post__inner-wrap .wp-block-button.uagb-post__text.uagb-post__cta a'] = array(
 				'color'          => $attr['ctaColor'],
 				'padding-top'    => UAGB_Helper::get_css_value( $paddingBtnTop, $attr['paddingBtnUnit'] ),
 				'padding-bottom' => UAGB_Helper::get_css_value( $paddingBtnBottom, $attr['paddingBtnUnit'] ),
@@ -1622,20 +1620,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$border_width  = is_numeric( $border_width ) ? $border_width : '';
 			$border_radius = is_numeric( $border_radius ) ? $border_radius : '';
 
-			$gen_border_css['border-top-width']    = ( isset( $current_css['border-top-width'] ) && ! empty( $current_css['border-top-width'] ) ) ? $current_css['border-top-width'] : UAGB_Helper::get_css_value( $border_width, 'px' );
-			$gen_border_css['border-left-width']   = ( isset( $current_css['border-left-width'] ) && ! empty( $current_css['border-left-width'] ) ) ? $current_css['border-left-width'] : UAGB_Helper::get_css_value( $border_width, 'px' );
-			$gen_border_css['border-right-width']  = ( isset( $current_css['border-right-width'] ) && ! empty( $current_css['border-right-width'] ) ) ? $current_css['border-right-width'] : UAGB_Helper::get_css_value( $border_width, 'px' );
-			$gen_border_css['border-bottom-width'] = ( isset( $current_css['border-bottom-width'] ) && ! empty( $current_css['border-bottom-width'] ) ) ? $current_css['border-bottom-width'] : UAGB_Helper::get_css_value( $border_width, 'px' );
+			// These would either be in the format of '1px', '0', or '-1px'.
+			$gen_border_css['border-top-width']    = ( isset( $current_css['border-top-width'] ) && ( ! empty( $current_css['border-top-width'] ) || 0 === $current_css['border-top-width'] ) ) ? $current_css['border-top-width'] : UAGB_Helper::get_css_value( $border_width, 'px' );
+			$gen_border_css['border-left-width']   = ( isset( $current_css['border-left-width'] ) && ( ! empty( $current_css['border-left-width'] ) || 0 === $current_css['border-left-width'] ) ) ? $current_css['border-left-width'] : UAGB_Helper::get_css_value( $border_width, 'px' );
+			$gen_border_css['border-right-width']  = ( isset( $current_css['border-right-width'] ) && ( ! empty( $current_css['border-right-width'] ) || 0 === $current_css['border-right-width'] ) ) ? $current_css['border-right-width'] : UAGB_Helper::get_css_value( $border_width, 'px' );
+			$gen_border_css['border-bottom-width'] = ( isset( $current_css['border-bottom-width'] ) && ( ! empty( $current_css['border-bottom-width'] ) || 0 === $current_css['border-bottom-width'] ) ) ? $current_css['border-bottom-width'] : UAGB_Helper::get_css_value( $border_width, 'px' );
 
-			$gen_border_css['border-top-left-radius']     = ( isset( $current_css['border-top-left-radius'] ) && ! empty( $current_css['border-top-left-radius'] ) ) ? $current_css['border-top-left-radius'] : UAGB_Helper::get_css_value( $border_radius, 'px' );
-			$gen_border_css['border-top-right-radius']    = ( isset( $current_css['border-top-right-radius'] ) && ! empty( $current_css['border-top-right-radius'] ) ) ? $current_css['border-top-right-radius'] : UAGB_Helper::get_css_value( $border_radius, 'px' );
-			$gen_border_css['border-bottom-left-radius']  = ( isset( $current_css['border-bottom-left-radius'] ) && ! empty( $current_css['border-bottom-left-radius'] ) ) ? $current_css['border-bottom-left-radius'] : UAGB_Helper::get_css_value( $border_radius, 'px' );
-			$gen_border_css['border-bottom-right-radius'] = ( isset( $current_css['border-bottom-right-radius'] ) && ! empty( $current_css['border-bottom-right-radius'] ) ) ? $current_css['border-bottom-right-radius'] : UAGB_Helper::get_css_value( $border_radius, 'px' );
+			$gen_border_css['border-top-left-radius']     = ( isset( $current_css['border-top-left-radius'] ) && ( ! empty( $current_css['border-top-left-radius'] ) || 0 === $current_css['border-top-left-radius'] ) ) ? $current_css['border-top-left-radius'] : UAGB_Helper::get_css_value( $border_radius, 'px' );
+			$gen_border_css['border-top-right-radius']    = ( isset( $current_css['border-top-right-radius'] ) && ( ! empty( $current_css['border-top-right-radius'] ) || 0 === $current_css['border-top-right-radius'] ) ) ? $current_css['border-top-right-radius'] : UAGB_Helper::get_css_value( $border_radius, 'px' );
+			$gen_border_css['border-bottom-left-radius']  = ( isset( $current_css['border-bottom-left-radius'] ) && ( ! empty( $current_css['border-bottom-left-radius'] ) || 0 === $current_css['border-bottom-left-radius'] ) ) ? $current_css['border-bottom-left-radius'] : UAGB_Helper::get_css_value( $border_radius, 'px' );
+			$gen_border_css['border-bottom-right-radius'] = ( isset( $current_css['border-bottom-right-radius'] ) && ( ! empty( $current_css['border-bottom-right-radius'] ) || 0 === $current_css['border-bottom-right-radius'] ) ) ? $current_css['border-bottom-right-radius'] : UAGB_Helper::get_css_value( $border_radius, 'px' );
 
 			$gen_border_css['border-color'] = ( isset( $current_css['border-color'] ) && ! empty( $current_css['border-color'] ) ) ? $current_css['border-color'] : $border_color;
 
 			$gen_border_css['border-style'] = ( isset( $current_css['border-style'] ) && ! empty( $current_css['border-style'] ) ) ? $current_css['border-style'] : $border_style;
-
 			return $gen_border_css;
 		}
 
