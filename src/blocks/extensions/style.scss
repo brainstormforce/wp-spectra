@@ -5,20 +5,20 @@
  */
 
 .uag-blocks-common-selector {
-	z-index: var(--z-index-desktop);
+	z-index: var(--z-index-desktop) !important;
 }
 
 @media (max-width: 976px) {
 
 	.uag-blocks-common-selector {
-		z-index: var(--z-index-tablet);
+		z-index: var(--z-index-tablet) !important;
 	}
 }
 
 @media (max-width: 767px) {
 
 	.uag-blocks-common-selector {
-		z-index: var(--z-index-mobile);
+		z-index: var(--z-index-mobile) !important;
 	}
 
 }
