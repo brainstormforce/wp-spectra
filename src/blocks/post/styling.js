@@ -758,7 +758,7 @@ function styling( props ) {
 			),
 			'letter-spacing': generateCSSUnit( metaLetterSpacingMobile, metaLetterSpacingType ),
 		},
-		' span.uagb-post__text.uagb-post__taxonomy.default': {
+		' span.uagb-post__taxonomy.default': {
 			'font-size': generateCSSUnit(
 				metaFontSizeMobile,
 				metaFontSizeType
@@ -924,7 +924,7 @@ function styling( props ) {
 			),
 			'letter-spacing': generateCSSUnit( metaLetterSpacingTablet, metaLetterSpacingType ),
 		},
-		' span.uagb-post__text.uagb-post__taxonomy.default': {
+		' span.uagb-post__taxonomy.default': {
 			'font-size': generateCSSUnit(
 				metaFontSizeTablet,
 				metaFontSizeType
