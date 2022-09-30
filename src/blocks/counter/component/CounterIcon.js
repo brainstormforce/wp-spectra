@@ -39,9 +39,9 @@ const CounterIcon = ( props ) => {
                 url = urlCheck;
             }
             return (
-                <span className='wp-block-uagb-counter__image'>
+                <span className='wp-block-uagb-counter__image-wrap'>
                     <img
-                        className=""
+                        className='wp-block-uagb-counter__image'
                         src={ url }
                         alt={ attributes.iconImage.alt }
                     />
