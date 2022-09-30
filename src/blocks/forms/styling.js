@@ -204,10 +204,10 @@ function styling( props ) {
 	const toggleBorderRadiusBLMobileFallback = ( '' !== toggleBorderMobile['border-bottom-left-radius'] && 'px' !== toggleBorderMobile['border-bottom-left-radius'] ) ? toggleBorderMobile['border-bottom-left-radius'] : toggleBorderRadiusBLTabletFallback;
 
 	// Individual Toggle Border Radius Fallback for Inner Dot.
-	let toggleBorderTFallback = getAttributeFallback( toggleBorder['border-top-width'], 'checkBoxToggleBorderTopWidth', blockName );
-	let toggleBorderLFallback = getAttributeFallback( toggleBorder['border-left-width'], 'checkBoxToggleBorderLeftWidth', blockName );
-	let toggleBorderBFallback = getAttributeFallback( toggleBorder['border-bottom-width'], 'checkBoxToggleBorderBottomWidth', blockName );
-	let toggleBorderRFallback = getAttributeFallback( toggleBorder['border-right-width'], 'checkBoxToggleBorderBottomRight', blockName );
+	let toggleBorderTFallback = undefined !== toggleBorder['border-top-width'] ? getAttributeFallback( toggleBorder['border-top-width'], 'checkBoxToggleBorderTopWidth', blockName ) : '';
+	let toggleBorderLFallback = undefined !== toggleBorder['border-left-width'] ? getAttributeFallback( toggleBorder['border-left-width'], 'checkBoxToggleBorderLeftWidth', blockName ) : '';
+	let toggleBorderBFallback = undefined !== toggleBorder['border-bottom-width'] ? getAttributeFallback( toggleBorder['border-bottom-width'], 'checkBoxToggleBorderBottomWidth', blockName ) : '';
+	let toggleBorderRFallback = undefined !== toggleBorder['border-right-width'] ? getAttributeFallback( toggleBorder['border-right-width'], 'checkBoxToggleBorderBottomRight', blockName ) : '';
 
 	toggleBorderTFallback = isNaN( toggleBorderTFallback ) ? toggleBorderTFallback : `${ toggleBorderTFallback }px`;
 	toggleBorderRFallback = isNaN( toggleBorderRFallback ) ? toggleBorderRFallback : `${ toggleBorderRFallback }px`;
