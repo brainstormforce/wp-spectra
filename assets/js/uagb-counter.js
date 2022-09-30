@@ -42,8 +42,9 @@ UAGBCounter = { // eslint-disable-line no-undef
 		const callback = entries => {
 			entries.forEach( entry => {
 				const el = entry.target
+				const hasPlayed = el.hasAttribute( 'played' );  // Check if an animation has played; If played already, do mot re-trigger it.
 				// entry.isIntersecting && ! el.classList.contains( 'is-visible' )
-				if ( entry.isIntersecting ) {
+				if ( entry.isIntersecting && !hasPlayed ) {
 					if ( !countUp.error ) {
 						if( data.layout === 'bars' ){
 							that._triggerBar( el, data );
@@ -93,6 +94,8 @@ UAGBCounter = { // eslint-disable-line no-undef
 
 		numberWrap.animate( animationKeyframes, animationProperties );
 
+		el.setAttribute( 'played', true );  // Set: animation has played once.
+
 	},
 
 	_triggerCircle( el, data ){
@@ -126,6 +129,8 @@ UAGBCounter = { // eslint-disable-line no-undef
 		};
 
 		circleWrap.animate( animationKeyframes, animationProperties );
+
+		el.setAttribute( 'played', true );  // Set: animation has played once.
 
 	},
 
