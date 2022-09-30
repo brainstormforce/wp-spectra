@@ -11,6 +11,8 @@ $cta_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
 	'btn'
 );
 
+$image_width_default = ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 120 : '';
+
 return array_merge(
 	array(
 		'classMigrate'               => false,
@@ -127,7 +129,7 @@ return array_merge(
 		'iconTabletMarginUnit'       => 'px',
 		'iconMobileMarginUnit'       => 'px',
 		'imageSize'                  => 'thumbnail',
-		'imageWidth'                 => 120,
+		'imageWidth'                 => $image_width_default,
 		'ctaLinkHoverColor'          => '',
 		'ctaBgHoverColor'            => '',
 		'ctaIconSpace'               => '5',
