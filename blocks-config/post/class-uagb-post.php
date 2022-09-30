@@ -1886,7 +1886,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			}
 			if ( 'highlighted' === $attributes['taxStyle'] && 'aboveTitle' === $attributes['displayPostTaxonomyAboveTitle'] ) {
 				$terms_list = array();
-				echo sprintf('<div class="uagb-post__text">');
+				echo sprintf( '<div class="uagb-post__text">' );
 				foreach ( $terms as $key => $value ) {
 					// Get the URL of this category.
 					$category_link = get_category_link( $value->term_id );
@@ -1898,7 +1898,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						esc_html( $value->name )
 					);
 				}
-				echo sprintf('</div>');
+				echo sprintf( '</div>' );
 			}
 		}
 
