@@ -134,7 +134,7 @@ export default function styling( props ) {
 		boxShadowBlurHover,
 		boxShadowSpreadHover,
 		boxShadowPositionHover,
-		// Icon
+		// Icon, Image
 		iconColor,
 		iconBackgroundColor,
 		iconHoverColor,
@@ -146,6 +146,13 @@ export default function styling( props ) {
 		iconSizeTypeTablet,
 		iconSizeTypeMobile,
 		iconWrapBorderHColor,
+		imageWidthType,
+		imageWidth,
+		imageWidthTablet,
+		imageWidthMobile,
+		imageWidthUnit,
+		imageWidthUnitTablet,
+		imageWidthUnitMobile,
 		// Icon Padding
 		iconTopPadding,
 		iconRightPadding,
@@ -188,10 +195,73 @@ export default function styling( props ) {
 	const iconSizeFallbackTablet = isNaN( iconSizeTablet ) ? iconSize : iconSizeTablet;
 	const iconSizeFallbackMobile = isNaN( iconSizeMobile ) ? iconSizeTablet : iconSizeMobile;
 
+	// Image size fallbacks.
+	const imageWidthFallback = getFallbackNumber( imageWidth, 'imageWidth', blockName );
+	const imageWidthFallbackTablet = isNaN( imageWidthTablet ) ? imageWidthFallback : imageWidthTablet;
+	const imageWidthFallbackMobile = isNaN( imageWidthMobile ) ? imageWidthFallbackTablet : imageWidthMobile;
+
 	// Border.
 	const iconWrapCSS = generateBorderCSS( props.attributes, 'iconWrap' );
 	const iconWrapCSSTablet = generateBorderCSS( props.attributes, 'iconWrap', 'tablet' );
 	const iconWrapCSSMobile = generateBorderCSS( props.attributes, 'iconWrap', 'mobile' );
+
+	// Icon-Image Common Padding.
+	const iconAndImagePadding = {
+		'padding-top': generateCSSUnit(
+			iconTopPadding,
+			iconPaddingUnit
+		),
+		'padding-right': generateCSSUnit(
+			iconRightPadding,
+			iconPaddingUnit
+		),
+		'padding-bottom': generateCSSUnit(
+			iconBottomPadding,
+			iconPaddingUnit
+		),
+		'padding-left': generateCSSUnit(
+			iconLeftPadding,
+			iconPaddingUnit
+		),
+	};
+
+	const iconAndImagePaddingTablet = {
+		'padding-top': generateCSSUnit(
+			iconTopPaddingTablet,
+			iconPaddingUnitTablet
+		),
+		'padding-right': generateCSSUnit(
+			iconRightPaddingTablet,
+			iconPaddingUnitTablet
+		),
+		'padding-bottom': generateCSSUnit(
+			iconBottomPaddingTablet,
+			iconPaddingUnitTablet
+		),
+		'padding-left': generateCSSUnit(
+			iconLeftPaddingTablet,
+			iconPaddingUnitTablet
+		),
+	};
+
+	const iconAndImagePaddingMobile = {
+		'padding-top': generateCSSUnit(
+			iconTopPaddingMobile,
+			iconPaddingUnitMobile
+		),
+		'padding-right': generateCSSUnit(
+			iconRightPaddingMobile,
+			iconPaddingUnitMobile
+		),
+		'padding-bottom': generateCSSUnit(
+			iconBottomPaddingMobile,
+			iconPaddingUnitMobile
+		),
+		'padding-left': generateCSSUnit(
+			iconLeftPaddingMobile,
+			iconPaddingUnitMobile
+		),
+	};
 
 	let boxShadowPositionCSS = boxShadowPosition;
 
@@ -243,23 +313,17 @@ export default function styling( props ) {
 		},
 		'.wp-block-uagb-counter .wp-block-uagb-counter__icon':{
 			'background-color': iconBackgroundColor,
-			'padding-top': generateCSSUnit(
-				iconTopPadding,
-				iconPaddingUnit
-			),
-			'padding-right': generateCSSUnit(
-				iconRightPadding,
-				iconPaddingUnit
-			),
-			'padding-bottom': generateCSSUnit(
-				iconBottomPadding,
-				iconPaddingUnit
-			),
-			'padding-left': generateCSSUnit(
-				iconLeftPadding,
-				iconPaddingUnit
-			),
+			...iconAndImagePadding,
 			...iconWrapCSS,
+		},
+		'.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap':{
+			...iconAndImagePadding,
+		},
+		'.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img':{
+			...iconWrapCSS,
+		},
+		'.wp-block-uagb-counter:hover .wp-block-uagb-counter__image-wrap img':{
+			'border-color': iconWrapBorderHColor,
 		},
 		'.wp-block-uagb-counter:hover .wp-block-uagb-counter__icon':{
 			'background-color': iconBackgroundHoverColor,
@@ -420,22 +484,15 @@ export default function styling( props ) {
     }
 
 	tablet_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon'] = {
-		'padding-top': generateCSSUnit(
-			iconTopPaddingTablet,
-			iconPaddingUnitTablet
-		),
-		'padding-right': generateCSSUnit(
-			iconRightPaddingTablet,
-			iconPaddingUnitTablet
-		),
-		'padding-bottom': generateCSSUnit(
-			iconBottomPaddingTablet,
-			iconPaddingUnitTablet
-		),
-		'padding-left': generateCSSUnit(
-			iconLeftPaddingTablet,
-			iconPaddingUnitTablet
-		),
+		...iconAndImagePaddingTablet,
+		...iconWrapCSSTablet,
+	}
+
+	tablet_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap'] = {
+		...iconAndImagePaddingTablet,
+	}
+
+	tablet_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img'] = {
 		...iconWrapCSSTablet,
 	}
 
@@ -558,22 +615,15 @@ export default function styling( props ) {
     }
 
 	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon'] = {
-		'padding-top': generateCSSUnit(
-			iconTopPaddingMobile,
-			iconPaddingUnitMobile
-		),
-		'padding-right': generateCSSUnit(
-			iconRightPaddingMobile,
-			iconPaddingUnitMobile
-		),
-		'padding-bottom': generateCSSUnit(
-			iconBottomPaddingMobile,
-			iconPaddingUnitMobile
-		),
-		'padding-left': generateCSSUnit(
-			iconLeftPaddingMobile,
-			iconPaddingUnitMobile
-		),
+		...iconAndImagePaddingMobile,
+		...iconWrapCSSMobile,
+	}
+
+	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap'] = {
+		...iconAndImagePaddingMobile,
+	}
+
+	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img'] = {
 		...iconWrapCSSMobile,
 	}
 
@@ -655,6 +705,22 @@ export default function styling( props ) {
 		'margin-right' : generateCSSUnit( numberRightMarginMobile, numberMarginUnitMobile ),
 		'margin-bottom': generateCSSUnit( numberBottomMarginMobile, numberMarginUnitMobile ),
 		'margin-left'  : generateCSSUnit( numberLeftMarginMobile, numberMarginUnitMobile ),
+	}
+
+	if ( imageWidthType ) {
+
+		// Image
+		selectors[ ' .wp-block-uagb-counter__image-wrap .wp-block-uagb-counter__image' ] = {
+			'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
+		};
+
+		tablet_selectors[ ' .wp-block-uagb-counter__image-wrap .wp-block-uagb-counter__image' ] = {
+			'width': generateCSSUnit( imageWidthFallbackTablet, imageWidthUnitTablet ),
+		};
+
+		mobile_selectors[ ' .wp-block-uagb-counter__image-wrap .wp-block-uagb-counter__image' ] = {
+			'width': generateCSSUnit( imageWidthFallbackMobile, imageWidthUnitMobile ),
+		};
 	}
 
 	// In case of 'Bar' layout, we need to add margin to '.wp-block-uagb-counter-bars-container' element and remove the margin from the inner-element.

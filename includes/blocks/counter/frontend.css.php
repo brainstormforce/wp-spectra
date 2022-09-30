@@ -34,9 +34,37 @@ $icon_size_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['iconSiz
 $attr['iconSizeTablet'] = is_numeric( $attr['iconSizeTablet'] ) ? $attr['iconSizeTablet'] : $icon_size_fallback;
 $attr['iconSizeMobile'] = is_numeric( $attr['iconSizeMobile'] ) ? $attr['iconSizeMobile'] : $attr['iconSizeTablet'];
 
+// Image size fallbacks.
+$image_width_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['imageWidth'], 'imageWidth', $block_name );
+$attr['imageWidthTablet'] = is_numeric( $attr['imageWidthTablet'] ) ? $attr['imageWidthTablet'] : $image_width_fallback;
+$attr['imageWidthMobile'] = is_numeric( $attr['imageWidthMobile'] ) ? $attr['imageWidthMobile'] : $attr['imageWidthTablet'];
+
+// Icon, Image Border CSS.
 $icon_wrap_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'iconWrap' );
 $icon_wrap_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'iconWrap', 'tablet' );
 $icon_wrap_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'iconWrap', 'mobile' );
+
+// Icon and Image Common Padding.
+$icon_and_image_padding = array(
+	'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopPadding'], $attr['iconPaddingUnit'] ),
+	'padding-right'  => UAGB_Helper::get_css_value( $attr['iconRightPadding'], $attr['iconPaddingUnit'] ),
+	'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomPadding'], $attr['iconPaddingUnit'] ),
+	'padding-left'   => UAGB_Helper::get_css_value( $attr['iconLeftPadding'], $attr['iconPaddingUnit'] ),
+);
+
+$icon_and_image_padding_tablet = array(
+	'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopPaddingTablet'], $attr['iconPaddingUnitTablet'] ),
+	'padding-right'  => UAGB_Helper::get_css_value( $attr['iconRightPaddingTablet'], $attr['iconPaddingUnitTablet'] ),
+	'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomPaddingTablet'], $attr['iconPaddingUnitTablet'] ),
+	'padding-left'   => UAGB_Helper::get_css_value( $attr['iconLeftPaddingTablet'], $attr['iconPaddingUnitTablet'] ),
+);
+
+$icon_and_image_padding_mobile = array(
+	'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopPaddingMobile'], $attr['iconPaddingUnitMobile'] ),
+	'padding-right'  => UAGB_Helper::get_css_value( $attr['iconRightPaddingMobile'], $attr['iconPaddingUnitMobile'] ),
+	'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomPaddingMobile'], $attr['iconPaddingUnitMobile'] ),
+	'padding-left'   => UAGB_Helper::get_css_value( $attr['iconLeftPaddingMobile'], $attr['iconPaddingUnitMobile'] ),
+);
 
 $box_shadow_position_css = $attr['boxShadowPosition'];
 
@@ -64,6 +92,15 @@ $selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['blockRightPadding'], $attr['blockPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['blockBottomPadding'], $attr['blockPaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPadding'], $attr['blockPaddingUnit'] ),
+	),
+	'.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap' => array_merge(
+		$icon_and_image_padding
+	),
+	'.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img' => array_merge(
+		$icon_wrap_border_css
+	),
+	'.wp-block-uagb-counter:hover .wp-block-uagb-counter__image-wrap img' => array(
+		'border-color' => $attr['iconWrapBorderHColor'],
 	),
 	'.wp-block-uagb-counter .wp-block-uagb-counter__icon'  => array_merge(
 		array(
@@ -158,6 +195,14 @@ $t_selectors['.wp-block-uagb-counter'] = array(
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
 );
 
+$t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap'] = array_merge(
+	$icon_and_image_padding_tablet
+);
+
+$t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img'] = array_merge(
+	$icon_wrap_border_css_tablet
+);
+
 $t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon'] = array_merge(
 	array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopPaddingTablet'], $attr['iconPaddingUnitTablet'] ),
@@ -215,6 +260,14 @@ $m_selectors['.wp-block-uagb-counter'] = array(
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
 );
 
+$m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap'] = array_merge(
+	$icon_and_image_padding_mobile
+);
+
+$m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img'] = array_merge(
+	$icon_wrap_border_css_mobile
+);
+
 $m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon'] = array_merge(
 	array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopPaddingMobile'], $attr['iconPaddingUnitMobile'] ),
@@ -258,6 +311,21 @@ $m_selectors['.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['numberBottomMarginMobile'], $attr['numberMarginUnitMobile'] ),
 	'margin-left'   => UAGB_Helper::get_css_value( $attr['numberLeftMarginMobile'], $attr['numberMarginUnitMobile'] ),
 );
+
+if ( $attr['imageWidthType'] ) {
+	// Image.
+	$selectors[' .wp-block-uagb-counter__image-wrap .wp-block-uagb-counter__image'] = array(
+		'width' => UAGB_Helper::get_css_value( $image_width_fallback, $attr['imageWidthUnit'] ),
+	);
+
+	$t_selectors[' .wp-block-uagb-counter__image-wrap .wp-block-uagb-counter__image'] = array(
+		'width' => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnitTablet'] ),
+	);
+
+	$m_selectors[' .wp-block-uagb-counter__image-wrap .wp-block-uagb-counter__image'] = array(
+		'width' => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnitMobile'] ),
+	);
+}
 
 // In case of 'Bar' layout, we need to add margin to '.wp-block-uagb-counter-bars-container' element and remove the margin from the inner-element.
 if ( 'bars' === $attr['layout'] ) {
