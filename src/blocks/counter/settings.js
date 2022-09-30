@@ -196,6 +196,13 @@ export default function Settings( props ) {
 		iconImage,
 		imageSize,
 		sourceType,
+		imageWidthType,
+		imageWidth,
+		imageWidthTablet,
+		imageWidthMobile,
+		imageWidthUnit,
+		imageWidthUnitTablet,
+		imageWidthUnitMobile,
 		// Icon Padding
 		iconTopPadding,
 		iconRightPadding,
@@ -564,6 +571,86 @@ export default function Settings( props ) {
 			title={ __( 'Image/Icon', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
+			<ToggleControl
+				checked={ imageWidthType }
+				onChange={ () =>
+					setAttributes( {
+						imageWidthType: ! imageWidthType,
+					} )
+				}
+				label={ __(
+					'Custom Width',
+					'ultimate-addons-for-gutenberg'
+				) }
+				help={ __(
+					'Turn this off to inherit the natural width of Image.',
+					'ultimate-addons-for-gutenberg'
+				) }
+			/>
+			{ ( sourceType === 'image' && imageWidthType ) && (
+				<ResponsiveSlider
+					label={ __(
+						'Image Width',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					data={ {
+						desktop: {
+							value: imageWidth,
+							label: 'imageWidth',
+							unit: {
+								value: imageWidthUnit,
+								label: 'imageWidthUnit',
+							},
+						},
+						tablet: {
+							value: imageWidthTablet,
+							label: 'imageWidthTablet',
+							unit: {
+								value: imageWidthUnitTablet,
+								label: 'imageWidthUnitTablet',
+							},
+						},
+						mobile: {
+							value: imageWidthMobile,
+							label: 'imageWidthMobile',
+							unit: {
+								value: imageWidthUnitMobile,
+								label: 'imageWidthUnitMobile',
+							},
+						},
+					} }
+					limitMin={ { 'px': 0, '%': 0, 'em': 0 } } // eslint-disable-line quote-props
+					limitMax={ { 'px': 500, '%': 100, 'em': 100 } } // eslint-disable-line quote-props
+					unit={ {
+						value: imageWidthUnit,
+						label: 'imageWidthUnit',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+						{
+							name: __(
+								'%',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: '%',
+						},
+						{
+							name: __(
+								'EM',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'em',
+						},
+					] }
+				/>
+			) }
 			<ResponsiveBorder
 				disabledBorderTitle= {false}
 				setAttributes={ setAttributes }
@@ -572,154 +659,158 @@ export default function Settings( props ) {
 				deviceType={deviceType}
 				disableBottomSeparator={ false }
 			/>
-			<UAGTabsControl
-				tabs={ [
-					{
-						name: 'normal',
-						title: __(
-							'Normal',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						name: 'hover',
-						title: __(
-							'Hover',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-				] }
-				normal={
-					<>
-						<AdvancedPopColorControl
-							label={ __(
-								'Color',
+			{ ( sourceType === 'icon' ) && (
+				<>
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
 								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={
-								iconColor ? iconColor : ''
-							}
-							data={ {
-								value: iconColor,
-								label: 'iconColor',
-							} }
-							setAttributes={ setAttributes }
-						/>
-						<AdvancedPopColorControl
-							label={ __(
-								'Icon Background Color',
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
 								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={
-								iconBackgroundColor ? iconBackgroundColor : ''
-							}
-							data={ {
-								value: iconBackgroundColor,
-								label: 'iconBackgroundColor',
-							} }
-							setAttributes={ setAttributes }
-						/>
-					</>
+							),
+						},
+					] }
+					normal={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={
+									iconColor ? iconColor : ''
+								}
+								data={ {
+									value: iconColor,
+									label: 'iconColor',
+								} }
+								setAttributes={ setAttributes }
+							/>
+							<AdvancedPopColorControl
+								label={ __(
+									'Icon Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={
+									iconBackgroundColor ? iconBackgroundColor : ''
+								}
+								data={ {
+									value: iconBackgroundColor,
+									label: 'iconBackgroundColor',
+								} }
+								setAttributes={ setAttributes }
+							/>
+						</>
 
-				}
-				hover={
-					<>
-						<AdvancedPopColorControl
-							label={ __(
-								'Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={
-								iconHoverColor ? iconHoverColor : ''
-							}
-							data={ {
-								value: iconHoverColor,
-								label: 'iconHoverColor',
-							} }
-							setAttributes={ setAttributes }
-						/>
-
-						<AdvancedPopColorControl
-							label={ __(
-								'Icon Background Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={
-								iconBackgroundHoverColor ? iconBackgroundHoverColor : ''
-							}
-							data={ {
-								value: iconBackgroundHoverColor,
-								label: 'iconBackgroundHoverColor',
-							} }
-							setAttributes={ setAttributes }
-						/>
-
-					</>
 					}
-				disableBottomSeparator={ false }
-			/>
-			<ResponsiveSlider
-				label={ __(
-					'Width',
-					'ultimate-addons-for-gutenberg'
-				) }
-				setAttributes={ setAttributes }
-				data={ {
-					desktop: {
-						value: iconSize,
-						label: 'iconSize',
-						unit: {
-							value: iconSizeType,
-							label: 'iconSizeType',
+					hover={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={
+									iconHoverColor ? iconHoverColor : ''
+								}
+								data={ {
+									value: iconHoverColor,
+									label: 'iconHoverColor',
+								} }
+								setAttributes={ setAttributes }
+							/>
+
+							<AdvancedPopColorControl
+								label={ __(
+									'Icon Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={
+									iconBackgroundHoverColor ? iconBackgroundHoverColor : ''
+								}
+								data={ {
+									value: iconBackgroundHoverColor,
+									label: 'iconBackgroundHoverColor',
+								} }
+								setAttributes={ setAttributes }
+							/>
+
+						</>
+						}
+					disableBottomSeparator={ false }
+				/>
+				<ResponsiveSlider
+					label={ __(
+						'Width',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					data={ {
+						desktop: {
+							value: iconSize,
+							label: 'iconSize',
+							unit: {
+								value: iconSizeType,
+								label: 'iconSizeType',
+							},
 						},
-					},
-					tablet: {
-						value: iconSizeTablet,
-						label: 'iconSizeTablet',
-						unit: {
-							value: iconSizeTypeTablet,
-							label: 'iconSizeTypeTablet',
+						tablet: {
+							value: iconSizeTablet,
+							label: 'iconSizeTablet',
+							unit: {
+								value: iconSizeTypeTablet,
+								label: 'iconSizeTypeTablet',
+							},
 						},
-					},
-					mobile: {
-						value: iconSizeMobile,
-						label: 'iconSizeMobile',
-						unit: {
-							value: iconSizeTypeMobile,
-							label: 'iconSizeTypeMobile',
+						mobile: {
+							value: iconSizeMobile,
+							label: 'iconSizeMobile',
+							unit: {
+								value: iconSizeTypeMobile,
+								label: 'iconSizeTypeMobile',
+							},
 						},
-					},
-				} }
-				limitMin={ { 'px': 0, '%': 0, 'em': 0 } } // eslint-disable-line quote-props
-				limitMax={ { 'px': 500, '%': 100, 'em': 100 } } // eslint-disable-line quote-props
-				unit={ {
-					value: iconSizeType,
-					label: 'iconSizeType',
-				} }
-				units={ [
-					{
-						name: __(
-							'Pixel',
-							'ultimate-addons-for-gutenberg'
-						),
-						unitValue: 'px',
-					},
-					{
-						name: __(
-							'%',
-							'ultimate-addons-for-gutenberg'
-						),
-						unitValue: '%',
-					},
-					{
-						name: __(
-							'EM',
-							'ultimate-addons-for-gutenberg'
-						),
-						unitValue: 'em',
-					},
-				] }
-			/>
+					} }
+					limitMin={ { 'px': 0, '%': 0, 'em': 0 } } // eslint-disable-line quote-props
+					limitMax={ { 'px': 500, '%': 100, 'em': 100 } } // eslint-disable-line quote-props
+					unit={ {
+						value: iconSizeType,
+						label: 'iconSizeType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+						{
+							name: __(
+								'%',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: '%',
+						},
+						{
+							name: __(
+								'EM',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'em',
+						},
+					] }
+				/>
+				</>
+			) }
 			<SpacingControl
 				label={ __(
 					'Padding',
