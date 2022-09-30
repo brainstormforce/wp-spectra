@@ -234,7 +234,6 @@ const attributes = {
 	},
 	backgroundType: {
 		type: 'string',
-		default: 'none',
 		UAGCopyPaste: {
 			styleType: 'column-background-type'
 		}
@@ -337,6 +336,7 @@ const attributes = {
 	},
 	borderWidth: {
 		type: 'number',
+		default: 1
 	},
 	borderRadius: {
 		type: 'number',

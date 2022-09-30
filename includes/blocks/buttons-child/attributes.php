@@ -9,6 +9,12 @@
 
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 
+$enable_legacy_blocks = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' );
+
+$v_padding_default = ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) || 'yes' === $enable_legacy_blocks ) ? 10 : '';
+
+$h_padding_default = ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) || 'yes' === $enable_legacy_blocks ) ? 14 : '';
+
 return array_merge(
 	array(
 		'inheritFromTheme'       => false,
@@ -18,8 +24,9 @@ return array_merge(
 		'opensInNewTab'          => false,
 		'target'                 => '',
 		'size'                   => '',
-		'vPadding'               => '',
-		'hPadding'               => '',
+		// If the paddings aren't set, the button child will fallback to the following vPadding and hPadding.
+		'vPadding'               => $v_padding_default,
+		'hPadding'               => $h_padding_default,
 		'topTabletPadding'       => '',
 		'rightTabletPadding'     => '',
 		'bottomTabletPadding'    => '',
@@ -93,6 +100,11 @@ return array_merge(
 		'letterSpacingTablet'    => '',
 		'letterSpacingMobile'    => '',
 		'letterSpacingType'      => 'px',
+		'borderWidth'            => '',
+		'borderRadius'           => '',
+		'borderStyle'            => 'solid',
+		'borderColor'            => '#000',
+		'borderHColor'           => '',
 	),
 	$border_attribute
 );

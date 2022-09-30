@@ -14,10 +14,10 @@ $block_data = array(
 	'admin_categories' => array( 'content' ),
 	'link'             => 'info-box',
 	'title'            => __( 'Info Box', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block allows you to place an image or icon along with a heading, description, separator and CTA within a single block.', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Add image/icon, seperator and text description using a single block.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 7,
+	'priority'         => 5,
 	'dynamic_assets'   => array(
 		'dir' => 'info-box',
 	),

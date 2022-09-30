@@ -5,8 +5,8 @@
 // Import classes
 import UAGIconPicker from '@Components/icon-picker';
 import { __ } from '@wordpress/i18n';
-import lazyLoader from '@Controls/lazy-loader';
-import React, { Suspense } from 'react';
+
+import React from 'react';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import ResponsiveBorder from '@Components/responsive-border';
 import SpacingControl from '@Components/spacing-control';
@@ -126,6 +126,8 @@ const Settings = ( props ) => {
 		letterSpacingMobile,
 		letterSpacingType,
 
+		showIcon,
+
 	} = attributes;
 
 	const presetSettings = () => {
@@ -147,38 +149,52 @@ const Settings = ( props ) => {
 				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<UAGIconPicker
-					label={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
-					value={ icon }
-					onChange={ ( value ) => setAttributes( { icon: value } ) }
+				<ToggleControl
+					label={ __(
+						'Enable Icon',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ showIcon }
+					onChange={ () =>
+						setAttributes( { showIcon : ! showIcon } )
+					}
 				/>
-				{ '' !== icon && !removeText && (
+				{ showIcon &&
 					<>
-						<MultiButtonsControl
-							setAttributes={ setAttributes }
-							label={ __(
-								'Icon Position',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								value: iconPosition,
-								label: 'iconPosition',
-							} }
-							className="uagb-multi-button-alignment-control"
-							options={ [
-								{
-									value: 'before',
-									label: 'Before Text',
-								},
-								{
-									value: 'after',
-									label: 'After Text',
-								},
-							] }
-							showIcons={ false }
-						/>
+					<UAGIconPicker
+						label={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
+						value={ icon }
+						onChange={ ( value ) => setAttributes( { icon: value } ) }
+					/>
+					{ '' !== icon && !removeText && (
+						<>
+							<MultiButtonsControl
+								setAttributes={ setAttributes }
+								label={ __(
+									'Icon Position',
+									'ultimate-addons-for-gutenberg'
+								) }
+								data={ {
+									value: iconPosition,
+									label: 'iconPosition',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ [
+									{
+										value: 'before',
+										label: 'Before Text',
+									},
+									{
+										value: 'after',
+										label: 'After Text',
+									},
+								] }
+								showIcons={ false }
+							/>
+						</>
+					) }
 					</>
-				) }
+				}
 				<TextControl
 					label={ __(
 						'Link',
@@ -876,7 +892,7 @@ const Settings = ( props ) => {
 	};
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+		<>
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
@@ -898,7 +914,7 @@ const Settings = ( props ) => {
 				</InspectorTabs>
 			</InspectorControls>
 			{loadBtnGoogleFonts}
-		</Suspense>
+			</>
 	);
 };
 

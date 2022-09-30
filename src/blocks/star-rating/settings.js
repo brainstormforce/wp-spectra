@@ -17,6 +17,7 @@ import React from 'react';
 import ResponsiveSlider from '@Components/responsive-slider';
 import SpacingControl from '@Components/spacing-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -104,7 +105,6 @@ const Settings = ( props ) => {
 			starPositionTablet,
 			starPositionMobile
 		},
-		deviceType,
 	} = props;
 
 	let loadTitleGoogleFonts;
@@ -158,7 +158,10 @@ const Settings = ( props ) => {
 			),
 		},
 	];
-	if ( 'stack' === layout ) {
+
+	const deviceType = useDeviceType();
+
+	if ( 'stack' === layout || ( 'stack' === layoutTablet && 'Tablet' === deviceType ) || ( 'stack' === layoutMobile && 'Mobile' === deviceType ) ) {
 		alignmentOptions = [
 			{
 				value: 'left',

@@ -8,36 +8,8 @@
  */
 
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
-	'overall',
-	array(
-		'borderColor'             => '#E0E0E0',
-		'borderTopWidth'          => 1,
-		'borderRightWidth'        => 1,
-		'borderBottomWidth'       => 1,
-		'borderLeftWidth'         => 1,
-		'borderTopLeftRadius'     => 3,
-		'borderTopRightRadius'    => 3,
-		'borderBottomLeftRadius'  => 3,
-		'borderBottomRightRadius' => 3,
-		'borderStyle'             => 'solid',
-		'borderHoverColor'        => '#E0E0E0',
-	)
+	'overall'
 );
-
-$sepearator_border_defaults = array(
-	'borderStyle'             => 'none',
-	'borderTopWidth'          => 100,
-	'borderRightWidth'        => 100,
-	'borderBottomWidth'       => 100,
-	'borderLeftWidth'         => 100,
-	'borderTopLeftRadius'     => 0,
-	'borderTopRightRadius'    => 0,
-	'borderBottomLeftRadius'  => 0,
-	'borderBottomRightRadius' => 0,
-	'borderColor'             => '#b2b4b5',
-	'borderHColor'            => '#b2b4b5',
-);
-$separator_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'seperator', $sepearator_border_defaults );
 
 return array_merge(
 	array(
@@ -145,7 +117,15 @@ return array_merge(
 		'listLetterSpacingTablet'  => '',
 		'listLetterSpacingMobile'  => '',
 		'listLetterSpacingType'    => 'px',
+		'seperatorStyle'           => 'none',
+		'seperatorWidth'           => 100,
+		'seperatorThickness'       => 1,
+		'seperatorColor'           => '#b2b4b5',
+		'seperatorHoverColor'      => '#b2b4b5',
+		'borderStyle'              => 'solid',
+		'borderWidth'              => 1,
+		'borderRadius'             => 0,
+		'borderColor'              => '#E0E0E0',
 	),
-	$separator_border_attribute,
 	$border_attribute
 );

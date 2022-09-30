@@ -43,6 +43,7 @@ const DisplayConditionsExtension = () => {
 		}
 
         dispatch( {type: 'UPDATE_ENABLE_DISPLAY_CONDITIONS', payload: assetStatus } );
+        dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
     };
 
     return (
@@ -65,7 +66,7 @@ const DisplayConditionsExtension = () => {
                         { __( 'Extension', 'ultimate-addons-for-gutenberg' ) }
                     </div>
                 </p>
-                <a className="focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate" href='https://ultimategutenberg.com/docs/display-conditions-blocks/' target="_blank"rel="noreferrer">{__( 'Documentation', 'ultimate-addons-for-gutenberg' )}</a>
+                <a className="focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate" href='https://wpspectra.com/docs/display-conditions-blocks/' target="_blank"rel="noreferrer">{__( 'Documentation', 'ultimate-addons-for-gutenberg' )}</a>
             </div>
             <Switch
                 checked={displayConditionsStatus}

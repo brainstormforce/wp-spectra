@@ -573,12 +573,10 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'default' => 15,
 						),
 						'ctaColor'                   => array(
-							'type'    => 'string',
-							'default' => '#fff',
+							'type' => 'string',
 						),
 						'ctaBackground'              => array(
-							'type'    => 'string',
-							'default' => '#333',
+							'type' => 'string',
 						),
 						'stack'                      => array(
 							'type'    => 'string',
@@ -1019,8 +1017,8 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			$target = ( isset( $attributes['linkTarget'] ) && ( true === $attributes['linkTarget'] ) ) ? '_blank' : '_self';
 			do_action( "uagb_single_post_before_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
 			?>
-			<div class="uagb-timeline__link_parent">
-				<a class="uagb-timeline__link" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel=" noopener noreferrer"><?php echo esc_html( $attributes['readMoreText'] ); ?></a>
+			<div class="uagb-timeline__link_parent wp-block-button">
+				<a class="uagb-timeline__link wp-block-button__link" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel=" noopener noreferrer"><?php echo esc_html( $attributes['readMoreText'] ); ?></a>
 			</div>
 			<?php
 			do_action( "uagb_single_post_after_cta_{$attributes['post_type']}", get_the_ID(), $attributes );

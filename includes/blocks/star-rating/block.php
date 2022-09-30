@@ -14,11 +14,12 @@ $block_data = array(
 	'admin_categories' => array( 'creative' ),
 	'link'             => 'star-rating',
 	'title'            => __( 'Star Ratings', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block helps you add Star Ratings and customize it as required.', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Display customizable star ratings on your page.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
-	'priority'         => 21,
+	'priority'         => 26,
 	'dynamic_assets'   => array(
 		'dir' => 'star-rating',
 	),
+	'js_assets'        => array(),
 	'deprecated'       => false,
 );

@@ -1,5 +1,5 @@
-import React, { Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React from 'react';
+
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -403,23 +403,7 @@ const Settings = ( props ) => {
 				title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				<ColorSwitchControl
-					label={__( 'Text Color', 'ultimate-addons-for-gutenberg' )}
-					type={{
-						value: headingColorType,
-						label: 'headingColorType'
-					}}
-					classic={{
-						value: headingColor,
-						label: 'headingColor'
-					}}
-					gradient={{
-						value: headingGradientColor,
-						label: 'headingGradientColor'
-					}}
-					setAttributes={ setAttributes }
-				/>
-				<Suspense fallback={ lazyLoader() }>
+
 					<TypographyControl
 						label={ __(
 							'Typography',
@@ -500,7 +484,23 @@ const Settings = ( props ) => {
 							label: 'headLetterSpacingType',
 						} }
 					/>
-				</Suspense>
+
+				<ColorSwitchControl
+					label={__( 'Text Color', 'ultimate-addons-for-gutenberg' )}
+					type={{
+						value: headingColorType,
+						label: 'headingColorType'
+					}}
+					classic={{
+						value: headingColor,
+						label: 'headingColor'
+					}}
+					gradient={{
+						value: headingGradientColor,
+						label: 'headingGradientColor'
+					}}
+					setAttributes={ setAttributes }
+				/>
 				<TextShadowControl
 					blockId={ block_id }
 					setAttributes={ setAttributes }
@@ -582,7 +582,7 @@ const Settings = ( props ) => {
 				title={ __( 'Sub Heading', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Suspense fallback={ lazyLoader() }>
+
 					<TypographyControl
 						label={ __(
 							'Typography',
@@ -663,7 +663,7 @@ const Settings = ( props ) => {
 							label: 'subHeadLetterSpacingType',
 						} }
 					/>
-				</Suspense>
+
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ subHeadingColor ? subHeadingColor : '' }
@@ -1071,25 +1071,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>
-				<AdvancedPopColorControl
-					label={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ highLightBackground }
-					data={ {
-						value: highLightBackground,
-						label: 'highLightBackground',
-					} }
-					setAttributes={ setAttributes }
-				/>
-				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ highLightColor }
-					data={ {
-						value: highLightColor,
-						label: 'highLightColor',
-					} }
-					setAttributes={ setAttributes }
-				/>
-				<Suspense fallback={ lazyLoader() }>
+
 					<TypographyControl
 						label={ __(
 							'Typography',
@@ -1170,7 +1152,25 @@ const Settings = ( props ) => {
 							label: 'highLightLetterSpacingType',
 						} }
 					/>
-				</Suspense>
+
+				<AdvancedPopColorControl
+					label={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ highLightBackground }
+					data={ {
+						value: highLightBackground,
+						label: 'highLightBackground',
+					} }
+					setAttributes={ setAttributes }
+				/>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ highLightColor }
+					data={ {
+						value: highLightColor,
+						label: 'highLightColor',
+					} }
+					setAttributes={ setAttributes }
+				/>
 				<SpacingControl
 					label={ __(
 						'Padding',
@@ -1277,10 +1277,10 @@ const Settings = ( props ) => {
 					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			<Suspense fallback={ lazyLoader() }>
+
 				{ loadHeadingGoogleFonts }
 				{ loadSubHeadingGoogleFonts }
-			</Suspense>
+
 		</div>
 	);
 };

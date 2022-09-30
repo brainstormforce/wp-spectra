@@ -7,14 +7,7 @@
  * @package uagb
  */
 
-$inputBorderDefaults = array(
-	'borderTopLeftRadius'     => 3,
-	'borderTopRightRadius'    => 3,
-	'borderBottomLeftRadius'  => 3,
-	'borderBottomRightRadius' => 3,
-);
-
-$inputBorderAttributes = UAGB_Block_Helper::uag_generate_border_attribute( 'input', $inputBorderDefaults );
+$inputBorderAttributes = UAGB_Block_Helper::uag_generate_border_attribute( 'input' );
 
 return array_merge(
 	array(
@@ -84,6 +77,10 @@ return array_merge(
 		'buttonWidthType'         => 'px',
 		'inputFontStyle'          => '',
 		'buttonFontStyle'         => '',
+		'borderStyle'             => 'none',
+		'borderWidth'             => '',
+		'borderRadius'            => 3,
+		'borderColor'             => '',
 	),
-	$inputBorderAttributes,
+	$inputBorderAttributes
 );

@@ -5,6 +5,9 @@
 // Import block dependencies and components.
 import classnames from 'classnames';
 import { InnerBlocks } from '@wordpress/block-editor';
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const borderAttributes = getBorderAttributes( 'overall' );
 
 const attributes = {
 	block_id: {
@@ -178,11 +181,11 @@ const attributes = {
 	},
 	questionloadGoogleFonts: {
 		type: "boolean",
-		default: false	
+		default: false
 	},
 	answerloadGoogleFonts: {
 		type: "boolean",
-		default: false	
+		default: false
 	},
 	questionFontFamily: {
 		type: "string",
@@ -302,11 +305,11 @@ const attributes = {
 	},
 	enableToggle: {
 		type: "boolean",
-		default: true	
+		default: true
 	},
 	equalHeight: {
 		type: "boolean",
-		default: true	
+		default: true
 	},
 	questionLeftPaddingTablet: {
 		type: "number",
@@ -336,7 +339,12 @@ const attributes = {
 		type: "html",
 		selector: "span,p,h1,h2,h3,h4,h5,h6",
 		default: "span"
-	}
+	},
+	rowsGapUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	...borderAttributes
 }
 
 const deprecated = [
@@ -388,7 +396,7 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-	
+
 			const { className } = props
 			const {
 				block_id,
@@ -396,23 +404,23 @@ const deprecated = [
 				enableSchemaSupport,
 				equalHeight
 			} = props.attributes
-		
+
 			const renderSchema = () => {
-		
+
 				if ( true === enableSchemaSupport ) {
-		
+
 					return (
 						<script type="application/ld+json">
 							{ schema }
 						</script>
 					)
 				}
-		
+
 				return '';
 			}
-		
+
 			const equalHeightClass = equalHeight ? "uagb-faq-equal-height" : "";
-			
+
 			return (
 				<div className={ classnames(
 					className,
@@ -438,7 +446,7 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-	
+
 			const { className } = props
 			const {
 				block_id,
@@ -446,23 +454,23 @@ const deprecated = [
 				enableSchemaSupport,
 				equalHeight
 			} = props.attributes
-		
+
 			const renderSchema = () => {
-		
+
 				if ( true === enableSchemaSupport ) {
-		
+
 					return (
 						<script type="application/ld+json">
 							{ schema }
 						</script>
 					)
 				}
-		
+
 				return '';
 			}
-		
+
 			const equalHeightClass = equalHeight ? "uagb-faq-equal-height" : "";
-			
+
 			return (
 				<div className={ classnames(
 					className,

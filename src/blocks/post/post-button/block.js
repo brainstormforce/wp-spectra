@@ -16,7 +16,7 @@ import { registerBlockType } from '@wordpress/blocks';
 // Register the block
 registerBlockType( 'uagb/post-button', {
 	title: __( 'Post Button', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'This block display\'s a call to action button which links to the blogs page.', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'Customize this post button.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.post_grid,
 	category: uagb_blocks_info.category,
 	parent: [ 'uagb/post-grid', 'uagb/post-masonry', 'uagb/post-carousel' ],

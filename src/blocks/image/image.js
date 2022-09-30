@@ -106,7 +106,7 @@ export default function Image( {
 
 	// Get naturalWidth and naturalHeight from image ref, and fall back to loaded natural
 	// width and height. This resolves an issue in Safari where the loaded natural
-	// witdth and height is otherwise lost when switching between alignments.
+	// width and height is otherwise lost when switching between alignments.
 	const { naturalWidth, naturalHeight } = useMemo( () => {
 		// eslint-disable-next-line
 		const naturalWidth = imageRef.current?.naturalWidth || loadedNaturalWidth || undefined;
@@ -144,7 +144,7 @@ export default function Image( {
 		// should direct focus to block.
 		<>
 			<img
-				srcSet={`${temporaryURL || url} 1024w${urlTablet ? ',' + urlTablet + ' 780w' : ''}${urlMobile ? ', ' + urlMobile + ' 360w' : ''}`}
+				srcSet={`${temporaryURL || url} ${urlTablet ? ',' + urlTablet + ' 780w' : ''}${urlMobile ? ', ' + urlMobile + ' 360w' : ''}`}
 				src={ temporaryURL || url }
 				alt={ defaultedAlt }
 				onLoad={ ( event ) => {

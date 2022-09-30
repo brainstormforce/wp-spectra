@@ -30,23 +30,10 @@ $overall_border_css       = UAGB_Block_Helper::uag_generate_deprecated_border_cs
 	( isset( $attr['borderThickness'] ) ? $attr['borderThickness'] : '' ),
 	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
 	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
-	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' ),
-	( isset( $attr['borderHColor'] ) ? $attr['borderHColor'] : '' )
+	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
 );
 $overall_border_cssTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'tablet' );
 $overall_border_cssMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'mobile' );
-
-$seperator_border_css       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'seperator' );
-$seperator_border_css       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
-	$seperator_border_css,
-	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
-	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
-	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
-	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' ),
-	( isset( $attr['borderHColor'] ) ? $attr['borderHColor'] : '' )
-);
-$seperator_border_cssTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'seperator', 'tablet' );
-$seperator_border_cssMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'seperator', 'mobile' );
 
 $top_padding    = isset( $attr['contentTopPadding'] ) ? $attr['contentTopPadding'] : $attr['contentPadding'];
 $bottom_padding = isset( $attr['contentBottomPadding'] ) ? $attr['contentBottomPadding'] : $attr['contentPadding'];
@@ -163,10 +150,28 @@ $selectors = array(
 	/* End Backword */
 
 );
-
-$selectors['.uagb-layout-list .uagb-tax-separator']       = $seperator_border_css;
+if ( 'none' !== $attr['seperatorStyle'] ) {
+	$selectors['.uagb-layout-list .uagb-tax-separator']        = array(
+		'border-top-color' => $attr['seperatorColor'],
+		'border-top-style' => $attr['seperatorStyle'],
+		'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], 'px' ),
+		'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], '%' ),
+	);
+	$selectors['.uagb-layout-list .uagb-tax-separator:hover']  = array(
+		'border-top-color' => $attr['seperatorHoverColor'],
+	);
+	$selectors[' .uagb-layout-list .uagb-tax-separator']       = array(
+		'border-top-color' => $attr['seperatorColor'],
+		'border-top-style' => $attr['seperatorStyle'],
+		'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], 'px' ),
+		'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], '%' ),
+	);
+	$selectors[' .uagb-layout-list .uagb-tax-separator:hover'] = array(
+		'border-top-color' => $attr['seperatorHoverColor'],
+	);
+}
 $selectors['.uagb-layout-list .uagb-tax-separator:hover'] = array(
-	'border-top-color' => $attr['seperatorBorderHColor'],
+	'border-top-color' => $attr['seperatorHoverColor'],
 );
 $selectors[' .uagb-taxomony-box']                         = $overall_border_css;
 $selectors[' .uagb-taxomony-box:hover']                   = array(
@@ -216,9 +221,6 @@ $m_selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpaceMobile'], 'px' ),
 	),
 );
-
-$t_selectors['.uagb-layout-list .uagb-tax-separator'] = $seperator_border_cssTablet;
-$m_selectors['.uagb-layout-list .uagb-tax-separator'] = $seperator_border_cssMobile;
 
 $t_selectors[' .uagb-taxomony-box'] = $overall_border_cssTablet;
 $m_selectors[' .uagb-taxomony-box'] = $overall_border_cssMobile;
