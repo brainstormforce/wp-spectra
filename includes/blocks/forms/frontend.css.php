@@ -45,8 +45,7 @@ $input_overall_border        = UAGB_Block_Helper::uag_generate_deprecated_border
 	( isset( $attr['inputborderWidth'] ) ? $attr['inputborderWidth'] : '' ),
 	( isset( $attr['inputborderRadius'] ) ? $attr['inputborderRadius'] : '' ),
 	( isset( $attr['inputborderColor'] ) ? $attr['inputborderColor'] : '' ),
-	( isset( $attr['inputborderStyle'] ) ? $attr['inputborderStyle'] : '' ),
-	( isset( $attr['inputborderHColor'] ) ? $attr['inputborderHColor'] : '' )
+	( isset( $attr['inputborderStyle'] ) ? $attr['inputborderStyle'] : '' )
 );
 $input_overall_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'tablet' );
 $input_overall_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'mobile' );
@@ -58,8 +57,7 @@ $success_message_border        = UAGB_Block_Helper::uag_generate_deprecated_bord
 	( isset( $attr['successMessageBorderWidth'] ) ? $attr['successMessageBorderWidth'] : '' ),
 	( isset( $attr['successMessageBorderRadius'] ) ? $attr['successMessageBorderRadius'] : '' ),
 	( isset( $attr['successMessageBorderColor'] ) ? $attr['successMessageBorderColor'] : '' ),
-	( isset( $attr['successMessageBorderStyle'] ) ? $attr['successMessageBorderStyle'] : '' ),
-	( isset( $attr['successMessageBorderHColor'] ) ? $attr['successMessageBorderHColor'] : '' )
+	( isset( $attr['successMessageBorderStyle'] ) ? $attr['successMessageBorderStyle'] : '' )
 );
 $success_message_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMsg', 'tablet' );
 $success_message_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMsg', 'mobile' );
@@ -70,8 +68,7 @@ $failed_message_border        = UAGB_Block_Helper::uag_generate_deprecated_borde
 	( isset( $attr['failedMessageBorderWidth'] ) ? $attr['failedMessageBorderWidth'] : '' ),
 	( isset( $attr['failedMessageBorderRadius'] ) ? $attr['failedMessageBorderRadius'] : '' ),
 	( isset( $attr['failedMessageBorderColor'] ) ? $attr['failedMessageBorderColor'] : '' ),
-	( isset( $attr['failedMessageBorderStyle'] ) ? $attr['failedMessageBorderStyle'] : '' ),
-	( isset( $attr['failedMessageBorderHColor'] ) ? $attr['failedMessageBorderHColor'] : '' )
+	( isset( $attr['failedMessageBorderStyle'] ) ? $attr['failedMessageBorderStyle'] : '' )
 );
 $failed_message_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'errorMsg', 'tablet' );
 $failed_message_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'errorMsg', 'mobile' );
@@ -82,8 +79,7 @@ $toggle_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	( isset( $attr['inputborderWidth'] ) ? $attr['inputborderWidth'] : '' ),
 	( isset( $attr['inputborderRadius'] ) ? $attr['inputborderRadius'] : '' ),
 	( isset( $attr['inputborderColor'] ) ? $attr['inputborderColor'] : '' ),
-	( isset( $attr['inputborderStyle'] ) ? $attr['inputborderStyle'] : '' ),
-	( isset( $attr['inputborderHColor'] ) ? $attr['inputborderHColor'] : '' )
+	( isset( $attr['inputborderStyle'] ) ? $attr['inputborderStyle'] : '' )
 );
 $toggle_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'checkBoxToggle', 'tablet' );
 $toggle_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'checkBoxToggle', 'mobile' );
@@ -92,7 +88,7 @@ $toggle_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'chec
 $toggle_border_top_fallback           = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-top-width'], 'checkBoxToggleBorderTopWidth', $block_name );
 $toggle_border_left_fallback          = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-left-width'], 'checkBoxToggleBorderLeftWidth', $block_name );
 $toggle_border_right_fallback         = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-right-width'], 'checkBoxToggleBorderRightWidth', $block_name );
-$toggle_border_bottom_fallback        = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-bottom-width'], 'checkBoxcheckBoxToggleBorderBottomWidth', $block_name );
+$toggle_border_bottom_fallback        = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-bottom-width'], 'checkBoxToggleBorderBottomWidth', $block_name );
 $toggle_border_top_tablet_fallback    = isset( $toggle_border_tablet['border-top-width'] ) ? ( ! empty( $toggle_border_tablet['border-top-width'] ) ? $toggle_border_tablet['border-top-width'] : $toggle_border_top_fallback ) : $toggle_border_top_fallback;
 $toggle_border_left_tablet_fallback   = isset( $toggle_border_tablet['border-left-width'] ) ? ( ! empty( $toggle_border_tablet['border-left-width'] ) ? $toggle_border_tablet['border-left-width'] : $toggle_border_left_fallback ) : $toggle_border_left_fallback;
 $toggle_border_right_tablet_fallback  = isset( $toggle_border_tablet['border-right-width'] ) ? ( ! empty( $toggle_border_tablet['border-right-width'] ) ? $toggle_border_tablet['border-right-width'] : $toggle_border_right_fallback ) : $toggle_border_right_fallback;
@@ -122,8 +118,7 @@ $btn_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	( isset( $attr['submitborderWidth'] ) ? $attr['submitborderWidth'] : '' ),
 	( isset( $attr['submitborderRadius'] ) ? $attr['submitborderRadius'] : '' ),
 	( isset( $attr['submitborderColor'] ) ? $attr['submitborderColor'] : '' ),
-	( isset( $attr['submitborderStyle'] ) ? $attr['submitborderStyle'] : '' ),
-	( isset( $attr['submitborderHColor'] ) ? $attr['submitborderHColor'] : '' )
+	( isset( $attr['submitborderStyle'] ) ? $attr['submitborderStyle'] : '' )
 );
 $btn_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
 $btn_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
@@ -174,7 +169,7 @@ $selectors = array(
 	),
 	' .uagb-forms-main-form .uagb-forms-input:focus'       => array(
 		'outline'          => ' none !important',
-		'border-color'     => $attr['fieldBorderHColor'] . ' !important',
+		'border-color'     => ! empty( $attr['fieldBorderHColor'] ) ? $attr['fieldBorderHColor'] : $attr['inputborderHoverColor'],
 		'background-color' => $attr['bgActiveColor'] . ' !important',
 	),
 	' .uagb-forms-main-form .uagb-forms-input:focus::placeholder' => array(
@@ -195,7 +190,7 @@ $selectors = array(
 	' .uagb-forms-main-form .uagb-forms-main-submit-button:hover' => array(
 		'color'            => $attr['submitColorHover'],
 		'background-color' => $attr['submitBgColorHover'],
-		'border-color'     => $attr['btnBorderHColor'],
+		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],
 	),
 	// Hover Colors.
 	' .uagb-forms-field-set:hover .uagb-forms-input-label' => array(
@@ -203,7 +198,7 @@ $selectors = array(
 	),
 	' .uagb-forms-field-set:hover .uagb-forms-input'       => array(
 		'background-color' => $attr['bgHoverColor'],
-		'border-color'     => $attr['fieldBorderHColor'],
+		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],
 	),
 	' .uagb-forms-field-set:hover .uagb-forms-input::placeholder' => array(
 		'color' => $attr['inputplaceholderHoverColor'],
@@ -323,7 +318,7 @@ $selectors[' .uagb-forms-main-form .uagb-slider:before']        = array(
 );
 $selectors[' .uagb-switch input:checked + .uagb-slider']        = array(
 	'background-color' => $attr['toggleActiveColor'],
-	'border-color'     => $attr['checkBoxToggleBorderHColor'],
+	'border-color'     => ! empty( $attr['checkBoxToggleBorderHColor'] ) ? $attr['checkBoxToggleBorderHColor'] : $attr['inputborderHoverColor'],
 );
 $selectors[' .uagb-switch input:checked + .uagb-slider:before'] = array(
 	'transform'        => 'translateX(' . UAGB_Helper::get_css_value(
@@ -375,7 +370,7 @@ if ( 'boxed' === $attr['formStyle'] ) {
 	);
 
 	$selectors[' .uagb-forms-input:hover']        = array(
-		'border-color' => $attr['fieldBorderHColor'],
+		'border-color' => ! empty( $attr['fieldBorderHColor'] ) ? $attr['fieldBorderHColor'] : $attr['inputborderHoverColor'],
 	);
 	$selectors[' .uagb-forms-input::placeholder'] = array(
 		'color' => $attr['inputplaceholderColor'],
@@ -472,7 +467,7 @@ if ( 'underlined' === $attr['formStyle'] ) {
 		'border-bottom-width' => $input_underline_border,
 	);
 	$selectors[' .uagb-forms-input:hover']        = array(
-		'border-color' => $attr['fieldBorderHColor'],
+		'border-color' => ! empty( $attr['fieldBorderHColor'] ) ? $attr['fieldBorderHColor'] : $attr['inputborderHoverColor'],
 	);
 	$selectors[' .uagb-forms-input::placeholder'] = array(
 		'color' => $attr['inputplaceholderColor'],

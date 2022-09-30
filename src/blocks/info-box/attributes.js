@@ -3,6 +3,8 @@
  */
  import { getBorderAttributes } from '@Controls/generateAttributes';
 
+ const imageWidthDefault = ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) ? 120 : '';
+
  const borderAttributes = getBorderAttributes( 'btn' );
 
  const attributes = {
@@ -734,8 +736,9 @@
 	},
 	ctaBorderColor: {
 		type: 'string',
+		default: '#333',
 	},
-	ctaBorderhoverColor: {
+	ctaBorderhoverColor:{
 		type: 'string',
 	},
 	ctaBorderStyle: {
@@ -756,11 +759,13 @@
 			styleType: 'btn-horizontal-padding'
 		}
 	},
-	ctaBorderWidth: {
+	ctaBorderWidth :{
 		type: 'number',
+		default: 1,
 	},
-	ctaBorderRadius: {
+	ctaBorderRadius :{
 		type: 'number',
+		default: 0,
 	},
 	iconLeftMargin: {
 		type: 'number',
@@ -805,7 +810,7 @@
 		UAGCopyPaste: {
 			styleType: 'image-width'
 		},
-		default: 120,
+		default: imageWidthDefault,
 	},
 	imageWidthMobile: {
 		type: 'number',
