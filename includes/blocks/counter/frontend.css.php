@@ -105,11 +105,8 @@ $selectors = array(
 	'.wp-block-uagb-counter .wp-block-uagb-counter__icon'  => array_merge(
 		array(
 			'background-color' => $attr['iconBackgroundColor'],
-			'padding-top'      => UAGB_Helper::get_css_value( $attr['iconTopPadding'], $attr['iconPaddingUnit'] ),
-			'padding-right'    => UAGB_Helper::get_css_value( $attr['iconRightPadding'], $attr['iconPaddingUnit'] ),
-			'padding-bottom'   => UAGB_Helper::get_css_value( $attr['iconBottomPadding'], $attr['iconPaddingUnit'] ),
-			'padding-left'     => UAGB_Helper::get_css_value( $attr['iconLeftPadding'], $attr['iconPaddingUnit'] ),
 		),
+		$icon_and_image_padding,
 		$icon_wrap_border_css
 	),
 	'.wp-block-uagb-counter:hover .wp-block-uagb-counter__icon' => array(
@@ -204,12 +201,7 @@ $t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img'] = 
 );
 
 $t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon'] = array_merge(
-	array(
-		'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopPaddingTablet'], $attr['iconPaddingUnitTablet'] ),
-		'padding-right'  => UAGB_Helper::get_css_value( $attr['iconRightPaddingTablet'], $attr['iconPaddingUnitTablet'] ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomPaddingTablet'], $attr['iconPaddingUnitTablet'] ),
-		'padding-left'   => UAGB_Helper::get_css_value( $attr['iconLeftPaddingTablet'], $attr['iconPaddingUnitTablet'] ),
-	),
+	$icon_and_image_padding_tablet,
 	$icon_wrap_border_css_tablet
 );
 
@@ -269,12 +261,7 @@ $m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img'] = 
 );
 
 $m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon'] = array_merge(
-	array(
-		'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopPaddingMobile'], $attr['iconPaddingUnitMobile'] ),
-		'padding-right'  => UAGB_Helper::get_css_value( $attr['iconRightPaddingMobile'], $attr['iconPaddingUnitMobile'] ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomPaddingMobile'], $attr['iconPaddingUnitMobile'] ),
-		'padding-left'   => UAGB_Helper::get_css_value( $attr['iconLeftPaddingMobile'], $attr['iconPaddingUnitMobile'] ),
-	),
+	$icon_and_image_padding_mobile,
 	$icon_wrap_border_css_mobile
 );
 
