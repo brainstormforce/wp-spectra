@@ -150,6 +150,7 @@ return array_merge(
 		'boxShadowSpreadHover'      => '',
 		'boxShadowPositionHover'    => '',
 		'showIcon'                  => true,
+		// Icon and Image.
 		'sourceType'                => 'icon',
 		'icon'                      => 'circle-check',
 		'iconColor'                 => '',
@@ -163,6 +164,13 @@ return array_merge(
 		'iconSizeTypeTablet'        => 'px',
 		'iconSizeTypeMobile'        => 'px',
 		'iconImgPosition'           => 'top',
+		'imageWidthType'            => true,
+		'imageWidth'                => '',
+		'imageWidthTablet'          => '',
+		'imageWidthMobile'          => '',
+		'imageWidthUnit'            => 'px',
+		'imageWidthUnitTablet'      => 'px',
+		'imageWidthUnitMobile'      => 'px',
 		// Icon Padding.
 		'iconTopPadding'            => '',
 		'iconRightPadding'          => '',
