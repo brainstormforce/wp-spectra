@@ -1046,6 +1046,98 @@ const attributes = {
 	...btnBorderAttributes,
 	...imageBorderAttributes,
 	...mainTitleBorderAttributes,
+
+	arrowBorderStyle: {
+		type: 'string',
+		default: 'none',
+		UAGCopyPaste: {
+			styleType: 'arrow-border-style',
+		},
+	},
+	arrowBorderTopWidth: {
+		type: 'number',
+		default: 4,
+		UAGCopyPaste: {
+			styleType: 'arrow-border-top-width',
+		},
+	},
+	arrowBorderBottomWidth: {
+		type: 'number',
+		default: 4,
+		UAGCopyPaste: {
+			styleType: 'arrow-border-bottom-width',
+		},
+	},
+	arrowBorderLeftWidth: {
+		type: 'number',
+		default: 4,
+		UAGCopyPaste: {
+			styleType: 'arrow-border-left-width',
+		},
+	},
+	arrowBorderRightWidth: {
+		type: 'number',
+		default: 4,
+		UAGCopyPaste: {
+			styleType: 'arrow-border-right-width',
+		},
+	},
+	arrowBorderTopLeftRadius: {
+		type: 'number',
+		default: 50,
+		UAGCopyPaste: {
+			styleType: 'arrow-border-top-left-width',
+		},
+	},
+	arrowBorderTopRightRadius: {
+		type: 'number',
+		default: 50,
+		UAGCopyPaste: {
+			styleType: 'arrow-border-top-right-width',
+		},
+	},
+	arrowBorderBottomLeftRadius: {
+		type: 'number',
+		default: 50,
+		UAGCopyPaste: {
+			styleType: 'arrow-border-bottom-left-width',
+		},
+	},
+	arrowBorderBottomRightRadius: {
+		type: 'number',
+		default: 50,
+		UAGCopyPaste: {
+			styleType: 'arrow-border-bottom-right-width',
+		},
+	},
+	mainTitleBorderTopWidth: {
+		type: 'number',
+		default: 2,
+		UAGCopyPaste: {
+			styleType: 'arrow-border-top-width',
+		},
+	},
+	mainTitleBorderBottomWidth: {
+		type: 'number',
+		default: 2,
+		UAGCopyPaste: {
+			styleType: 'arrow-border-bottom-width',
+		},
+	},
+	mainTitleBorderLeftWidth: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'arrow-border-left-width',
+		},
+	},
+	mainTitleBorderRightWidth: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'arrow-border-right-width',
+		},
+	},
 };
 
 export default attributes;
