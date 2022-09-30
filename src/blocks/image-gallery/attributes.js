@@ -1,25 +1,10 @@
 import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const arrowBorderAttributes = getBorderAttributes( 'arrow', {
-	borderStyle: 'none',
-	borderTopWidth: 4,
-	borderRightWidth: 4,
-	borderBottomWidth: 4,
-	borderLeftWidth: 4,
-	borderTopLeftRadius: 50,
-	borderTopRightRadius: 50,
-	borderBottomLeftRadius: 50,
-	borderBottomRightRadius: 50,
-} );
+const arrowBorderAttributes = getBorderAttributes( 'arrow' );
 const btnBorderAttributes = getBorderAttributes( 'btn' );
 const imageBorderAttributes = getBorderAttributes( 'image' );
-const mainTitleBorderAttributes = getBorderAttributes( 'mainTitle', {
-	borderTopWidth: 2,
-	borderRightWidth: 0,
-	borderBottomWidth: 2,
-	borderLeftWidth: 0,
-} );
+const mainTitleBorderAttributes = getBorderAttributes( 'mainTitle' );
 
 const attributes = {
 
