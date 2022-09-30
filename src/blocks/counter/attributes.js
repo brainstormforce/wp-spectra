@@ -2,6 +2,7 @@
  * BLOCK: Counter - Attributes
  */
  import { getBorderAttributes } from '@Controls/generateAttributes';
+ import { __ } from '@wordpress/i18n';
 
  const iconWrapBorderAttributes = getBorderAttributes( 'iconWrap' );
 
@@ -688,7 +689,7 @@ const attributes = {
 		type: 'object',
 		default: {
 			url: '',
-			alt: 'Counter placeholder img',
+			alt: __( 'Counter placeholder img' ),
 		},
 	},
 	imageSize: {
