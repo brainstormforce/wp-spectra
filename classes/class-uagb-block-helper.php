@@ -124,7 +124,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'color' => $attr['hColor'],
 			);
 			if ( 0 !== $attr['boxShadowHOffset'] || 0 !== $attr['boxShadowVOffset'] ) {
-				$selectors[ $wrapper . '.wp-block-button__link' ] = array(
+				$selectors[' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
 					'box-shadow' =>
 					UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
 					' ' .
@@ -139,7 +139,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$box_shadow_position_css,
 				);
 			}
-			$selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = $border_css;
+			$selectors[  $wrapper . '.wp-block-button__link' ] = $border_css;
 			$m_selectors[ $wrapper ]                          = $border_css_mobile;
 			$t_selectors[ $wrapper ]                          = $border_css_tablet;
 			$selectors[ $wrapper . ':hover' ]                = array(
