@@ -56,7 +56,7 @@
 .uagb-editor-preview-mode-tablet,
 .uagb-editor-preview-mode-mobile {
 
-	&.spectra-image-gallery__layout--masonry {
+	.spectra-image-gallery__layout--masonry {
 		height: initial !important;
 		display: grid;
 
@@ -77,7 +77,7 @@
 
 .uagb-editor-preview-mode-tablet {
 
-	&.spectra-image-gallery__layout--masonry-col-tab {
+	.spectra-image-gallery__layout--masonry-col-tab {
 
 		&-1 {
 			grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -115,7 +115,7 @@
 
 .uagb-editor-preview-mode-mobile {
 
-	&.spectra-image-gallery__layout--masonry-col-mob {
+	.spectra-image-gallery__layout--masonry-col-mob {
 
 		&-1 {
 			grid-template-columns: repeat(1, minmax(0, 1fr));

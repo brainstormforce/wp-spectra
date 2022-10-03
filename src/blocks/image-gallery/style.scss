@@ -273,7 +273,6 @@
 	&__media {
 		position: relative;
 		overflow: hidden;
-		background-color: #000;
 		-webkit-transition: box-shadow 0.25s;
 		-moz-transition: box-shadow 0.25s;
 		-o-transition: box-shadow 0.25s;
@@ -584,20 +583,15 @@
 			width: 1.5em;
 			height: 1.5em;
 			padding: 0.5em;
-			background-color: transparent;
-			border: none;
-			opacity: 0;			
+			opacity: 0;
+			fill: #fff;
+			filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
 			transition-property: opacity;
 
 			@include transitionSpeeds();
 
 			&:hover {
 				opacity: 1 !important;
-			}
-
-			svg {
-				fill: #fff;
-				filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
 			}
 		}
 	}
