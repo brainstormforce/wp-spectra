@@ -311,12 +311,12 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		const updatedFocusPairs = focusList;
 		updatedFocusPairs[ imageId ] = needsFocus;
 		if( needsFocus ) {
-			setAttributes( { imageId: true } )
+			setAttributes( { imageId: true } );
 		} else {
-			setAttributes( { imageId: false } )
+			setAttributes( { imageId: false } );
 		}
-		setAttributes( { focusList: updatedFocusPairs } );
 		setFocusUpdate( true );
+		setAttributes( { focusList: updatedFocusPairs } );
 	}
 
 	const svgFocus = ( imageId ) => (
