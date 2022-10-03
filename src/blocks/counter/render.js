@@ -61,7 +61,7 @@ const Render = ( props ) => {
 			className="wp-block-uagb-counter__title"
 			value={ heading }
 			onChange={ ( value ) => setAttributes( { heading: value } ) }
-			placeholder={ __( 'Title…' ) }
+			placeholder={ __( 'Title…', 'ultimate-addons-for-gutenberg' ) }
 		/>
 	)
 
