@@ -307,10 +307,22 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		],
 	};
 
+	const alterFocus = ( imageId, needsFocus ) => {
+		const updatedFocusPairs = focusList;
+		updatedFocusPairs[ imageId ] = needsFocus;
+		if( needsFocus ) {
+			setAttributes( { imageId: true } )
+		} else {
+			setAttributes( { imageId: false } )
+		}
+		setAttributes( { focusList: updatedFocusPairs } );
+		setFocusUpdate( true );
+	}
+
 	const svgFocus = ( imageId ) => (
 		<button
 			className="spectra-image-gallery__control-focus"
-			onClick={ () => { alterFocus( imageId, true ); } }
+			onClick={ () => { alterFocus( imageId, true ) } }
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -329,7 +341,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	const svgUnfocus = ( imageId ) => (
 		<button
 			className="spectra-image-gallery__control-focus"
-			onClick={ () => { alterFocus( imageId, false ); } }
+			onClick={ () => { alterFocus( imageId, false ) } }
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -350,19 +362,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		gridPageNumber * paginateLimitFallback
 	);
 
-	const alterFocus = ( imageId, needsFocus ) => {
-		const updatedFocusPairs = focusList;
-		updatedFocusPairs[ imageId ] = needsFocus;
-		// console.log( '\n\n\n' );
-		console.log( imageId );
-		console.log( needsFocus );
-		console.log( focusList );
-		console.log( updatedFocusPairs );
-		setAttributes( { focusList: updatedFocusPairs } );
-		console.log( '---------------------' );
-		console.log( focusList );
-		setFocusUpdate( true );
-	}
+
 
 	const createSpecialTile = ( instance, image ) => {
 		if ( image && image.isLoaded ){
@@ -439,9 +439,6 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		</>
 	);
 
-	const renderFocusControl = ( mediaObject ) => (
-		focusList[ mediaObject.id ] ? svgUnfocus( mediaObject.id ) : svgFocus( mediaObject.id )
-	);
 
 	const renderGallery = () => {
 		switch ( feedLayout ) {
@@ -528,6 +525,11 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			: mediaGallery;
 		return paginatedMedia.map( ( media ) => renderImage( media ) );
 	};
+
+	const renderFocusControl = ( mediaObject ) => (
+		focusList[ mediaObject.id ] ? svgUnfocus( mediaObject.id ) : svgFocus( mediaObject.id )
+	);
+
 
 	const renderImage = ( mediaObject ) => (
 		<div
