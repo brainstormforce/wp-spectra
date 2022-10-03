@@ -1,12 +1,14 @@
 import { select, dispatch } from '@wordpress/data';
-import { useRef, useEffect } from '@wordpress/element';
+import { useRef, useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import editorStyles from './editor.lazy.scss';
 import { useLayoutEffect } from 'react';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 
 const PageCustomCSS = () => {
 
 	const tabRef = useRef( null );
+	const [ customCSS, setCustomCSS ] = useState( select( 'core/editor' ).getEditedPostAttribute( 'meta' )._uag_custom_page_level_css );
 
 	useLayoutEffect( () => {
 		editorStyles.use();
@@ -14,6 +16,10 @@ const PageCustomCSS = () => {
 			editorStyles.unuse();
 		};
 	}, [] );
+
+	useEffect( () => {
+		addBlockEditorDynamicStyles( 'uagb-blocks-editor-spacing-style', customCSS );
+	}, [customCSS] );
 
 	useEffect( () => {
 		return () => {
@@ -46,6 +52,7 @@ const PageCustomCSS = () => {
 			codeMirrorEditor?.addEventListener( 'keyup', function () {
 				editor?.codemirror?.save();
 				const value = editor?.codemirror?.getValue();
+				setCustomCSS(value);
 				dispatch( 'core/editor' ).editPost( {meta: {_uag_custom_page_level_css: value}} )
 
 			} );
@@ -56,10 +63,10 @@ const PageCustomCSS = () => {
 		<>
 		<p className='spectra-custom-css-notice'>
 			{
-				__( 'You can use this area to further customize any block. Any custom CSS added here will load on the frontend' )
+				__( 'You can use this area to further customize any block by adding custom CSS.' )
 			}
 		</p>
-		<textarea value={select( 'core/editor' ).getEditedPostAttribute( 'meta' )._uag_custom_page_level_css} ref={tabRef}></textarea>
+		<textarea value={customCSS} ref={tabRef}></textarea>
 		</>
 	);
 }
