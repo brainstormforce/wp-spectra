@@ -1,10 +1,19 @@
 import { select, dispatch } from '@wordpress/data';
 import { useRef, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import editorStyles from './editor.lazy.scss';
+import { useLayoutEffect } from 'react';
 
 const PageCustomCSS = () => {
 
 	const tabRef = useRef( null );
+
+	useLayoutEffect( () => {
+		editorStyles.use();
+		return () => {
+			editorStyles.unuse();
+		};
+	}, [] );
 
 	useEffect( () => {
 		return () => {

@@ -1,0 +1,23 @@
+.spectra-custom-css-panel.components-panel__body.is-opened {
+	padding: 0;
+	overflow: hidden;
+
+	.components-panel__body-title {
+		padding: 16px 16px 0 16px;
+	}
+
+	.CodeMirror-wrap {
+		border-top: 1px solid #ddd6d6;
+		padding-top: 16px;
+		height: 500px;
+
+		.CodeMirror-scroll {
+			width: 100%;
+		}
+	}
+
+	.spectra-custom-css-notice {
+		font-style: italic;
+		padding: 0 16px;
+	}
+}

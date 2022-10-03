@@ -63,27 +63,3 @@
 	background: repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05) 1px, transparent 2px, transparent 9px);
 	border: 1px solid rgba(0, 0, 0, 0.02);
 }
-
-.spectra-custom-css-panel.components-panel__body.is-opened {
-	padding: 0;
-	overflow: hidden;
-
-	.components-panel__body-title {
-		padding: 16px 16px 0 16px;
-	}
-
-	.CodeMirror-wrap {
-		border-top: 1px solid #ddd6d6;
-		padding-top: 16px;
-		height: 500px;
-
-		.CodeMirror-scroll {
-			width: 100%;
-		}
-	}
-
-	.spectra-custom-css-notice {
-		font-style: italic;
-		padding: 0 16px;
-	}
-}
