@@ -189,7 +189,7 @@ select::before {
 .uagb-forms-radio-wrap input[type="radio"],
 .uagb-forms-checkbox-wrap input[type="checkbox"],
 .uagb-forms-accept-wrap input[type="checkbox"] {
-	display: none;
+	opacity: 0;
 }
 
 .uagb-forms-checkbox-wrap input[type="checkbox"]:checked + label::before,
@@ -208,6 +208,7 @@ select::before {
 	text-align: center;
 	line-height: 1.2;
 	content: " ";
+	// visibility: hidden;
 }
 
 .uagb-forms__small-btn .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button {

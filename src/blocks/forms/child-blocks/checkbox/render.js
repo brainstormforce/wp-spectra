@@ -24,6 +24,10 @@ const Render = ( props ) => {
 
 	const { block_id, checkboxRequired, options, checkboxName } = attributes;
 
+	const isRequired = checkboxRequired
+	? __( 'required', 'ultimate-addons-for-gutenberg' )
+	: '';
+
 	const addOption = () => {
 		const newOption = {
 			optiontitle:
@@ -48,6 +52,7 @@ const Render = ( props ) => {
 					name={ `checkbox-${ block_id }` }
 					value={ option.optiontitle }
 					id={ option.optiontitle }
+					required={ checkboxRequired }
 				/>
 				<label htmlFor={ option.optiontitle }> </label>
 				<input
@@ -64,6 +69,7 @@ const Render = ( props ) => {
 					}
 					type="text"
 					value={ option.optiontitle }
+					required={ checkboxRequired }
 				/>
 				<input
 					className="uagb-inner-input-view"
@@ -73,6 +79,7 @@ const Render = ( props ) => {
 					}
 					type="text"
 					value={ option.optionvalue }
+					required={ checkboxRequired }
 				/>
 				<Button
 					className="uagb-form-checkbox-option-delete"
@@ -131,10 +138,6 @@ const Render = ( props ) => {
 		setState( { optionsstate: deleteOptions } );
 		setAttributes( { deleteOptions } );
 	};
-
-	const isRequired = checkboxRequired
-		? __( 'required', 'ultimate-addons-for-gutenberg' )
-		: '';
 
 	return (
 		<>
