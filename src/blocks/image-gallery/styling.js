@@ -840,7 +840,7 @@ function styling( props ) {
 			if( imageEnableZoom ){
 				selectors[ ' .spectra-image-gallery__media-thumbnail' ] = {
 					...selectors[ ' .spectra-image-gallery__media-thumbnail' ],
-					'transform': 'scale3d(1, 1, 1)',
+					'transform': 'scale3d(1.005, 1.005, 1.005)',
 				};
 				selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ] = {
 					...selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ],
@@ -856,7 +856,7 @@ function styling( props ) {
 				};
 				selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ] = {
 					...selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ],
-					'transform': 'scale3d(1, 1, 1)',
+					'transform': 'scale3d(1.005, 1.005, 1.005)',
 				};
 			}
 			break;

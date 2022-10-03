@@ -565,14 +565,14 @@ if ( 'masonry' === $attr['feedLayout'] && $attr['feedPagination'] && ! $attr['pa
 switch ( $attr['imageZoomType'] ) {
 	case 'zoom-in':
 		if ( $attr['imageEnableZoom'] ) {
-			$selectors[' .spectra-image-gallery__media-thumbnail']['transform'] = 'scale3d(1, 1, 1)';
+			$selectors[' .spectra-image-gallery__media-thumbnail']['transform'] = 'scale3d(1.005, 1.005, 1.005)';
 			$selectors[' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail']['transform'] = 'scale3d(1.1, 1.1, 1.1)';
 		}
 		break;
 	case 'zoom-out':
 		if ( $attr['imageEnableZoom'] ) {
 			$selectors[' .spectra-image-gallery__media-thumbnail']['transform'] = 'scale3d(1.1, 1.1, 1.1)';
-			$selectors[' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail']['transform'] = 'scale3d(1, 1, 1)';
+			$selectors[' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail']['transform'] = 'scale3d(1.005, 1.005, 1.005)';
 		}
 		break;
 }
