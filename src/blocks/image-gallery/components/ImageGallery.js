@@ -307,36 +307,42 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		],
 	};
 
-	const svgFocus = ( image ) => (
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="24px"
-			height="24px"
-			viewBox="0 0 24 24"
+	const svgFocus = ( imageId ) => (
+		<button
 			className="spectra-image-gallery__control-focus"
-			onClick={ () => alterFocus( image, true ) }
+			onClick={ () => { alterFocus( imageId, true ); } }
 		>
-			<path d="M6,4C4.9,4,4,4.9,4,6v4.375h1.5V6c0-0.3,0.2-0.5,0.5-0.5h4.376V4H6z"/>
-			<path d="M20,6c0-1.1-0.9-2-2-2h-4.375v1.5H18c0.299,0,0.5,0.2,0.5,0.5v4.376H20V6z"/>
-			<path d="M6,20c-1.1,0-2-0.9-2-2v-4.375h1.5V18c0,0.3,0.2,0.5,0.5,0.5h4.376V20H6z"/>
-			<path d="M20,18c0,1.1-0.9,2-2,2h-4.375v-1.5H18c0.299,0,0.5-0.199,0.5-0.5v-4.375H20V18z"/>
-		</svg>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="24px"
+				height="24px"
+				viewBox="0 0 24 24"
+			>
+				<path d="M6,4C4.9,4,4,4.9,4,6v4.375h1.5V6c0-0.3,0.2-0.5,0.5-0.5h4.376V4H6z"/>
+				<path d="M20,6c0-1.1-0.9-2-2-2h-4.375v1.5H18c0.299,0,0.5,0.2,0.5,0.5v4.376H20V6z"/>
+				<path d="M6,20c-1.1,0-2-0.9-2-2v-4.375h1.5V18c0,0.3,0.2,0.5,0.5,0.5h4.376V20H6z"/>
+				<path d="M20,18c0,1.1-0.9,2-2,2h-4.375v-1.5H18c0.299,0,0.5-0.199,0.5-0.5v-4.375H20V18z"/>
+			</svg>
+		</button>
 	);
 
-	const svgUnfocus = ( image ) => (
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="24px"
-			height="24px"
-			viewBox="37 0.083 24 24"
+	const svgUnfocus = ( imageId ) => (
+		<button
 			className="spectra-image-gallery__control-focus"
-			onClick={ () => alterFocus( image, false ) }
+			onClick={ () => { alterFocus( imageId, false ); } }
 		>
-			<path d="M45.791,10.375c1.1,0,2-0.9,2-2V4h-1.5v4.375c0,0.3-0.2,0.5-0.5,0.5h-4.376v1.5H45.791z"/>
-			<path d="M51.041,8.376c0,1.1,0.9,2,2,2h4.375v-1.5h-4.375c-0.299,0-0.5-0.2-0.5-0.5V4h-1.5V8.376z"/>
-			<path d="M45.791,13.625c1.1,0,2,0.9,2,2V20h-1.5v-4.375c0-0.3-0.2-0.5-0.5-0.5h-4.376v-1.5H45.791z"/>
-			<path d="M51.041,15.625c0-1.1,0.9-2,2-2h4.375v1.5h-4.375c-0.299,0-0.5,0.199-0.5,0.5V20h-1.5V15.625z"/>
-		</svg>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="24px"
+				height="24px"
+				viewBox="37 0.083 24 24"
+			>
+				<path d="M45.791,10.375c1.1,0,2-0.9,2-2V4h-1.5v4.375c0,0.3-0.2,0.5-0.5,0.5h-4.376v1.5H45.791z"/>
+				<path d="M51.041,8.376c0,1.1,0.9,2,2,2h4.375v-1.5h-4.375c-0.299,0-0.5-0.2-0.5-0.5V4h-1.5V8.376z"/>
+				<path d="M45.791,13.625c1.1,0,2,0.9,2,2V20h-1.5v-4.375c0-0.3-0.2-0.5-0.5-0.5h-4.376v-1.5H45.791z"/>
+				<path d="M51.041,15.625c0-1.1,0.9-2,2-2h4.375v1.5h-4.375c-0.299,0-0.5,0.199-0.5,0.5V20h-1.5V15.625z"/>
+			</svg>
+		</button>
 	);
 
 	const getGridPageChunk = ( allMedia ) => allMedia.slice(
@@ -344,10 +350,17 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		gridPageNumber * paginateLimitFallback
 	);
 
-	const alterFocus = ( image, needsFocus ) => {
+	const alterFocus = ( imageId, needsFocus ) => {
 		const updatedFocusPairs = focusList;
-		updatedFocusPairs[ image.id ] = needsFocus;
+		updatedFocusPairs[ imageId ] = needsFocus;
+		// console.log( '\n\n\n' );
+		console.log( imageId );
+		console.log( needsFocus );
+		console.log( focusList );
+		console.log( updatedFocusPairs );
 		setAttributes( { focusList: updatedFocusPairs } );
+		console.log( '---------------------' );
+		console.log( focusList );
 		setFocusUpdate( true );
 	}
 
@@ -427,7 +440,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	);
 
 	const renderFocusControl = ( mediaObject ) => (
-		focusList[ mediaObject.id ] ? svgUnfocus( mediaObject ) : svgFocus( mediaObject )
+		focusList[ mediaObject.id ] ? svgUnfocus( mediaObject.id ) : svgFocus( mediaObject.id )
 	);
 
 	const renderGallery = () => {
