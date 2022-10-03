@@ -28,6 +28,14 @@ class UAGB_Init_Blocks {
 	private static $instance;
 
 	/**
+	 * Holds the state for the add sites background process.
+	 *
+	 * @access   private
+	 * @var      UAGB_Background_Process    $collect_spectra_blocks_count    State of the background process.
+	 */
+	private $collect_spectra_blocks_count;
+
+	/**
 	 *  Initiator
 	 */
 	public static function get_instance() {
@@ -69,6 +77,47 @@ class UAGB_Init_Blocks {
 
 		add_action( 'spectra_analytics_count_actions', array( $this, 'send_spectra_specific_stats' ) );
 
+
+		/* Action to get total blocks count */
+		if ( 'done' !== get_option( 'spectra_blocks_count_status' ) ) {
+
+			error_log( "Step 1 - Collect block count" );
+
+			$this->collect_spectra_blocks_count = new \UAGB_Background_Process();
+
+			if( ! $this->collect_spectra_blocks_count->is_queue_empty() ) {
+				error_log( "-----Step 1 - queue is not empty" );
+				return false;
+			}
+
+			$posts_ids = get_posts(
+				array(
+					'post_type'      	=> 'any',
+					'numberposts' 		=> -1,
+					'post_status'    	=> 'publish',
+					'fields'      		=> 'ids',
+				)
+			);
+
+			foreach ( $posts_ids as $post_id ) {
+				$this->collect_spectra_blocks_count->push_to_queue(
+					array(
+						'data' => $post_id,
+						'list_blocks' => UAGB_Helper::$block_list
+					)
+				);
+			}
+
+			$this->collect_spectra_blocks_count->save()->dispatch();
+
+			if ( $this->collect_spectra_blocks_count->is_queue_empty() ) {
+				$this->collect_spectra_blocks_count->complete();
+				update_option( 'spectra_blocks_count_status', 'done' );
+				error_log( "Step 1 - Completed" );
+			}
+
+		}
+
 	}
 
 	/**
@@ -80,84 +129,6 @@ class UAGB_Init_Blocks {
 		delete_option( 'spectra_blocks_count_status' );
 		delete_option( 'get_spectra_block_count' );
 		delete_option( 'spectra_settings_data' );
-
-	}
-
-	/**
-	 * Calculate Spectra blocks count.
-	 *
-	 * @since 2.0.12
-	 * @return void
-	 */
-	public function blocks_count_logic() {
-
-		// Number of posts to parse at a time.
-		$batch_size = 10;
-
-		$list_blocks         = UAGB_Helper::$block_list;
-		$spectra_block_count = 0;
-		$blocks_count        = array();
-		$all_blocks_data     = array();
-
-		$page = get_option( 'spectra_blocks_pages_counted', 1 );
-
-		$saved_block_count = get_option( 'get_spectra_block_count', 0 );
-
-		$count_status = get_option( 'spectra_blocks_count_status' );
-
-		if ( ! $saved_block_count ) {
-			// Update block list count.
-			foreach ( $list_blocks as $slug => $value ) {
-				$_slug                                       = str_replace( 'uagb/', '', $slug );
-				$all_blocks_data[ '<!-- wp:' . $slug . ' ' ] = array(
-					'name' => $_slug,
-				);
-				$blocks_count[ $_slug ]                      = array(
-					'name'  => $_slug,
-					'count' => 0,
-				);
-			}
-		} elseif ( is_array( $saved_block_count ) && count( $saved_block_count ) !== 0 ) {
-			$blocks_count = $saved_block_count;
-		}
-
-		$query_args = array(
-			'post_type'      => 'any',
-			'post_status'    => 'publish',
-			'posts_per_page' => $batch_size,
-			'paged'          => $page,
-		);
-
-		$query = new WP_Query( $query_args );
-
-		if ( $query->have_posts() && $query->max_num_pages >= $page ) {
-			foreach ( $query->posts as $key => $post ) {
-				foreach ( $all_blocks_data as $block_key => $block ) {
-					if ( false !== strpos( $post->post_content, $block_key ) ) {
-						$block_slug = str_replace( '<!-- wp:uagb/', '', $block_key );
-						$block_slug = str_replace( ' ', '', $block_slug );
-
-						$usage_count                          = $blocks_count[ $block_slug ]['count'];
-						$latest_count                         = substr_count( $post->post_content, $block_key );
-						$blocks_count[ $block_slug ]['count'] = $usage_count + $latest_count;
-						$spectra_block_count++;
-					}
-				}
-			}
-			$page++;
-			update_option( 'spectra_blocks_pages_counted', $page );
-
-			// if ( function_exists( 'as_enqueue_async_action' ) ) {
-			// 	as_enqueue_async_action( 'spectra_total_blocks_count_action' );
-			// }
-
-		} else {
-			update_option( 'spectra_blocks_count_status', 'done' );
-		}
-
-		if ( $spectra_block_count > 0 ) {
-			update_option( 'get_spectra_block_count', $blocks_count );
-		}
 
 	}
 

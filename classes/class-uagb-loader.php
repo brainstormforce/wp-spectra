@@ -116,8 +116,10 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 */
 		public function loader() {
 
-			// Need to add library before the plugin loaded. https://actionscheduler.org/usage/.
-			// require_once UAGB_DIR . 'lib/action-scheduler/action-scheduler.php';
+			// Load background processing class.
+			if ( ! class_exists( 'UAGB_Background_Process' ) ) {
+				require_once UAGB_DIR . 'classes/class-uagb-background-process.php';
+			}
 
 			require_once UAGB_DIR . 'classes/utils.php';
 			require_once UAGB_DIR . 'classes/class-uagb-install.php';
@@ -133,19 +135,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 				require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics-loader.php';
 			}
 
-			$spectra_bsf_analytics = BSF_Analytics_Loader::get_instance();
-
-			$spectra_bsf_analytics->set_entity(
-				array(
-					'bsf' => array(
-						'product_name'    => 'Spectra',
-						'path'            => UAGB_DIR . 'admin/bsf-analytics',
-						'author'          => 'Brainstorm Force',
-						'time_to_display' => '+24 hours',
-					),
-				)
-			);
-
 			$enable_templates_button = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' );
 
 			if ( 'yes' === $enable_templates_button ) {
@@ -158,6 +147,19 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 				require_once UAGB_DIR . 'classes/class-uagb-beta-updates.php';
 				require_once UAGB_DIR . 'classes/class-uagb-rollback.php';
 			}
+
+			$spectra_bsf_analytics = BSF_Analytics_Loader::get_instance();
+
+			$spectra_bsf_analytics->set_entity(
+				array(
+					'bsf' => array(
+						'product_name'    => 'Spectra',
+						'path'            => UAGB_DIR . 'admin/bsf-analytics',
+						'author'          => 'Brainstorm Force',
+						'time_to_display' => '+24 hours',
+					),
+				)
+			);
 
 		}
 
@@ -194,6 +196,21 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			add_filter( 'rest_pre_dispatch', array( $this, 'rest_pre_dispatch' ), 10, 3 );
 
 			if ( 'done' === get_option( 'spectra_blocks_count_status' ) && get_option( 'spectra_settings_data' ) && get_option( 'get_spectra_block_count' ) ) {
+
+				error_log( "Step 2 - When status done send stats" );
+
+				$settings_data = get_option( 'spectra_settings_data' );
+				$blocks_count  = get_option( 'get_spectra_block_count' );
+				$blocks_status = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks' );
+
+				$default_stats['spectra_settings'] = array(
+					'spectra_version'          => UAGB_VER,
+					'settings_page_data'       => $settings_data,
+					'blocks_count'             => $blocks_count,
+					'blocks_activation_status' => $blocks_status,
+				);
+
+				error_log( print_r( $default_stats, true ) );
 
 				// Active widgets data to analytics.
 				add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
