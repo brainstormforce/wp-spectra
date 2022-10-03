@@ -8,7 +8,7 @@ import { __ } from '@wordpress/i18n';
 import SettingsIcons from './icons.js';
 import PageCustomCSS from '../custom-page-css';
 
-const SpectraPageSettingsPopup = props => {
+const SpectraPageSettingsPopup = () => {
 
 	return (
 		<>
@@ -17,7 +17,7 @@ const SpectraPageSettingsPopup = props => {
 				target="spectra-page-settings-panel"
 				icon={ SettingsIcons.logo }
 			>
-				{ __('Spectra Page Settings') }
+				{ __( 'Spectra Page Settings' ) }
 			</PluginSidebarMoreMenuItem>
 
 			{/* Page Settings Area. */}
@@ -25,7 +25,7 @@ const SpectraPageSettingsPopup = props => {
 				isPinnable={ true }
 				icon={ SettingsIcons.logo }
 				name="spectra-page-settings-panel"
-				title={ __('Spectra Page Settings') }
+				title={ __( 'Spectra Page Settings' ) }
 			>
 				<PageCustomCSS/>
 			</PluginSidebar>
