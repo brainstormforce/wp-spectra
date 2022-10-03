@@ -4,7 +4,7 @@
 
 import { createElement as el } from '@wordpress/element';
 
-// This is the color that will be visible on the drag and drop of the blocks. Use this as the primary fill / stroke color. 
+// This is the color that will be visible on the drag and drop of the blocks. Use this as the primary fill / stroke color.
 const iconColor = '#fff';
 // This is the color used for non-block icons.
 const spectraDarkColor = '#1d2327';
@@ -1179,6 +1179,14 @@ const UAGB_Block_Icons = {
 		el( 'path', {
 			fill: iconColor,
 			d: 'M14 21H4C4 17.134 7.13401 14 11 14C12.0736 14 13.0907 14.2417 14 14.6736M17 15V18M17 18V21M17 18H14M17 18H20M15 7C15 9.20914 13.2091 11 11 11C8.79086 11 7 9.20914 7 7C7 4.79086 8.79086 3 11 3C13.2091 3 15 4.79086 15 7Z',
+		} ),
+	),
+	login: el(
+		'svg',
+		{ width: 18, height: 18, viewBox: '0 0 18 18', className: 'uagb-editor-icons' },
+		el( 'path', {
+			fill: iconColor,
+			d: 'M9 13L13 9M13 9L9 5M13 9L1 9M4 13V14C4 15.6569 5.34315 17 7 17H14C15.6569 17 17 15.6569 17 14V4C17 2.34315 15.6569 1 14 1H7C5.34315 1 4 2.34315 4 4V5',
 		} ),
 	),
 

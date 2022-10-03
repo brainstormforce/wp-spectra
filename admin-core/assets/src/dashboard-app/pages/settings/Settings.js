@@ -66,6 +66,7 @@ const Settings = () => {
 		return <SettingsSkeleton/>;
 	}
 
+    // Parent Div is Required to add Padding to the Entire Structure for Smaller Windows.
     return (
         <div className="px-6 w-full">
             <div className="mx-auto mt-10 mb-8 font-semibold text-2xl lg:max-w-[80rem]">Settings</div>
