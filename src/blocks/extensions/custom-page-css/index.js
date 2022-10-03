@@ -52,7 +52,7 @@ const PageCustomCSS = () => {
 			codeMirrorEditor?.addEventListener( 'keyup', function () {
 				editor?.codemirror?.save();
 				const value = editor?.codemirror?.getValue();
-				setCustomCSS(value);
+				setCustomCSS( value );
 				dispatch( 'core/editor' ).editPost( {meta: {_uag_custom_page_level_css: value}} )
 
 			} );
