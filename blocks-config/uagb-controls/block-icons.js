@@ -819,6 +819,30 @@ const UAGB_Block_Icons = {
 			strokeWidth: 1.4,
 		} ),
 	),
+	login: el(
+		'svg',
+		{ width: 24, height: 24, viewBox: '0 0 24 24', fill: 'none', className: 'uagb-editor-icons' },
+		el( 'path', {
+			d: 'M12 16L16 12M16 12L12 8M16 12L4 12M7 16V17C7 18.6569 8.34315 20 10 20H17C18.6569 20 20 18.6569 20 17V7C20 5.34315 18.6569 4 17 4H10C8.34315 4 7 5.34315 7 7V8',
+			fill: noColor,
+			stroke: iconColor,
+			strokeWidth: 1.4,
+			strokeLinecap: 'round',
+			strokeLinejoin: 'round',
+		} ),
+	),
+	register: el(
+		'svg',
+		{ width: 24, height: 24, viewBox: '0 0 24 24', fill: 'none', className: 'uagb-editor-icons' },
+		el( 'path', {
+			d: 'M14 21H4C4 17.134 7.13401 14 11 14C12.0736 14 13.0907 14.2417 14 14.6736M17 15V18M17 18V21M17 18H14M17 18H20M15 7C15 9.20914 13.2091 11 11 11C8.79086 11 7 9.20914 7 7C7 4.79086 8.79086 3 11 3C13.2091 3 15 4.79086 15 7Z',
+			fill: noColor,
+			stroke: iconColor,
+			strokeWidth: 1.4,
+			strokeLinecap: 'round',
+			strokeLinejoin: 'round',
+		} ),
+	),
 
 	// ------------------------.
 	// All Miscellaneous Icons .
@@ -1173,23 +1197,6 @@ const UAGB_Block_Icons = {
 			d: 'M8.4002 6.1V1.9C8.4002 1.13 7.7702 0.5 7.0002 0.5H2.1002C1.3302 0.5 0.700195 1.13 0.700195 1.9V6.1C0.700195 6.87 1.3302 7.5 2.1002 7.5H7.0002C7.7702 7.5 8.4002 6.87 8.4002 6.1ZM9.1002 4.35L13.3002 7.5V0.5L9.1002 3.65V4.35Z',
 		} ),
 	),
-	register: el(
-		'svg',
-		{ width: 14, height: 8, viewBox: '0 0 24 24', className: 'uagb-editor-icons' },
-		el( 'path', {
-			fill: iconColor,
-			d: 'M14 21H4C4 17.134 7.13401 14 11 14C12.0736 14 13.0907 14.2417 14 14.6736M17 15V18M17 18V21M17 18H14M17 18H20M15 7C15 9.20914 13.2091 11 11 11C8.79086 11 7 9.20914 7 7C7 4.79086 8.79086 3 11 3C13.2091 3 15 4.79086 15 7Z',
-		} ),
-	),
-	login: el(
-		'svg',
-		{ width: 18, height: 18, viewBox: '0 0 18 18', className: 'uagb-editor-icons' },
-		el( 'path', {
-			fill: iconColor,
-			d: 'M9 13L13 9M13 9L9 5M13 9L1 9M4 13V14C4 15.6569 5.34315 17 7 17H14C15.6569 17 17 15.6569 17 14V4C17 2.34315 15.6569 1 14 1H7C5.34315 1 4 2.34315 4 4V5',
-		} ),
-	),
-
 };
 
 export const renderLegacyBlockEditorIcon = ( blockName ) => (
