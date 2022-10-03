@@ -77,18 +77,26 @@ class UAGB_Init_Blocks {
 
 		add_action( 'spectra_analytics_count_actions', array( $this, 'send_spectra_specific_stats' ) );
 
+		// delete_option( 'spectra_blocks_pages_counted' );
+		// delete_option( 'spectra_blocks_count_status' );
+		// delete_option( 'get_spectra_block_count' );
+		// delete_option( 'spectra_settings_data' );
+
 
 		/* Action to get total blocks count */
 		if ( 'done' !== get_option( 'spectra_blocks_count_status' ) ) {
 
-			error_log( "Step 1 - Collect block count" );
+			// error_log( "Step 1 - Collect block count" );
 
 			$this->collect_spectra_blocks_count = new \UAGB_Background_Process();
 
-			if( ! $this->collect_spectra_blocks_count->is_queue_empty() ) {
-				error_log( "-----Step 1 - queue is not empty" );
+			if( 'processing' === get_option( 'spectra_blocks_count_status' ) ) {
+				error_log( $this->collect_spectra_blocks_count->is_queue_empty() );
+				error_log( "-----Step 1 - still processing" );
 				return false;
 			}
+
+			update_option( 'spectra_blocks_count_status', 'processing' );
 
 			$posts_ids = get_posts(
 				array(
