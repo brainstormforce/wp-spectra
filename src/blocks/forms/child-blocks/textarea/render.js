@@ -11,7 +11,7 @@ const Render = ( props ) => {
 	
 	const blockName = props.name.replace( 'uagb/', '' );
 
-	const { attributes, setAttributes, isSelected } = props;
+	const { attributes, setAttributes } = props;
 
 	const {
 		block_id,

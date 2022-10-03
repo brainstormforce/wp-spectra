@@ -16,7 +16,7 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes, setAttributes, isSelected } = props;
+	const { attributes, setAttributes } = props;
 
 	const {
 		block_id,

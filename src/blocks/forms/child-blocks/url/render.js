@@ -7,7 +7,7 @@ import { RichText } from '@wordpress/block-editor';
 const Render = ( props ) => {
 	props = props.parentProps;
 
-	const { attributes, setAttributes, isSelected } = props;
+	const { attributes, setAttributes } = props;
 
 	const { block_id, required, name, placeholder } = attributes;
 
