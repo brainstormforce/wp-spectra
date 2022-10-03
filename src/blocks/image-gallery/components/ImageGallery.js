@@ -353,14 +353,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	const alterFocus = ( imageId, needsFocus ) => {
 		const updatedFocusPairs = focusList;
 		updatedFocusPairs[ imageId ] = needsFocus;
-		// console.log( '\n\n\n' );
-		console.log( imageId );
-		console.log( needsFocus );
-		console.log( focusList );
-		console.log( updatedFocusPairs );
 		setAttributes( { focusList: updatedFocusPairs } );
-		console.log( '---------------------' );
-		console.log( focusList );
 		setFocusUpdate( true );
 	}
 
