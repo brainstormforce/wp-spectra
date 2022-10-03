@@ -1,8 +1,9 @@
 import { isBlobURL } from '@wordpress/blob';
 
 export const pickRelevantMediaFiles = ( image, size ) => {
-	const { alt, id, link, caption,url} = image
-	const imageProps = {alt, id, link, caption,url};
+	const { alt, id, link, caption} = image
+	const imageProps = {alt, id, link, caption};
+
 	if( image?.sizes && image?.sizes[size] ){
 		return {
 			...imageProps,
@@ -57,7 +58,9 @@ export const isExternalImage = ( id, url ) => url && ! id && ! isBlobURL( url );
  * @return {boolean} Whether or not it has default image size.
  */
 export const hasDefaultSize = ( image, defaultSize ) => {
-	return image.hasOwnProperty( 'sizes' ) || image.hasOwnProperty( 'url' ) || image.hasOwnProperty( 'media_details' ) || image.hasOwnProperty( 'source_url' ) || image[defaultSize] !== undefined
+
+	return ( image?.sizes?.[ defaultSize ] || image?.media_details?.sizes?.[ defaultSize ] ) ? true : false;
+
 }
 
 /**

@@ -1,3 +1,17 @@
 .uagb-forms-editor-privacy-link .components-base-control__help {
 	color: #f00;
 }
+
+[data-type="uagb/forms-accept"] {
+
+	.uagb-forms-required-wrap {
+		width: 100%;
+
+		.components-base-control.components-toggle-control {
+
+			.components-base-control__field {
+				justify-content: flex-start;
+			}
+		}
+	}
+}
