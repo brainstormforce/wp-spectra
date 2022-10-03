@@ -7,6 +7,7 @@ import { withSelect, withDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import SettingsIcons from './icons.js';
 import PageCustomCSS from '../custom-page-css';
+import { PanelBody } from '@wordpress/components';
 
 const SpectraPageSettingsPopup = () => {
 
@@ -27,7 +28,13 @@ const SpectraPageSettingsPopup = () => {
 				name="spectra-page-settings-panel"
 				title={ __( 'Spectra Page Settings' ) }
 			>
-				<PageCustomCSS/>
+				<PanelBody
+					title={ __( 'Custom CSS' ) }
+					initialOpen={ true }
+					className={'spectra-custom-css-panel'}
+				>
+					<PageCustomCSS/>
+				</PanelBody>
 			</PluginSidebar>
 		</>
 	);

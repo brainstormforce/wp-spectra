@@ -428,19 +428,9 @@ class UAGB_Init_Blocks {
 
 		$js_ext = ( SCRIPT_DEBUG ) ? '.js' : '.min.js';
 
-		// // Enqueue CodeMirror for Custom CSS.
-		// wp_enqueue_code_editor( array(
-		// 	'type' => 'text/css', // @see https://developer.wordpress.org/reference/functions/wp_get_code_editor_settings/
-		// 	'codemirror' => array(
-		// 		'indentUnit' => 2,
-		// 		'tabSize' => 2,
-		// 	),
-		// ) );
-
-		$cm_settings['codeEditor'] = wp_enqueue_code_editor(array('type' => 'text/css'));
-  wp_localize_script('jquery', 'cm_settings', $cm_settings);
-		wp_enqueue_script('wp-theme-plugin-editor');
-  wp_enqueue_style('wp-codemirror');
+		wp_enqueue_code_editor( array( 'type' => 'text/css' ) );
+		wp_enqueue_script( 'wp-theme-plugin-editor' );
+		wp_enqueue_style( 'wp-codemirror' );
 
 		// Scripts.
 		wp_enqueue_script(
