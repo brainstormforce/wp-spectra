@@ -184,10 +184,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Table of Contents - Adding `uagb-toc-hide-heading` class to exclude heading from TOC list not working on front-end.
 * Fix: Container - Z-index were not applied on the frontend.
 * Fix: FAQ - Throwing an undefined style issue in console when html anchor is used.
-<<<<<<< HEAD
-=======
 * Fix: Info Box - Removed default image width for new users while maintaining a default width of 120px for old users only.
->>>>>>> 1bc57bfb4392bdd966086f7039346a7b82ae2870
 
 = 2.0.12 - FRIDAY, 16th SEPTEMBER 2022 =
 * Improvement: How to block - Option to disable step links.
