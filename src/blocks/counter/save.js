@@ -92,7 +92,6 @@ export default function Save( props ) {
 	)
 
 	return (
-		<>
 			<div className={ classnames(
 				props.className,
 				`uagb-block-${ block_id }`,
@@ -112,6 +111,5 @@ export default function Save( props ) {
 					layout !== 'circle' && layout !== 'number' && title
 				}
 			</div>
-		</>
 	);
 }
