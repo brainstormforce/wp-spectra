@@ -2,7 +2,6 @@ import classnames from 'classnames';
 import React, { useLayoutEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
-import { ToggleControl } from '@wordpress/components';
 
 import { RichText } from '@wordpress/block-editor';
 

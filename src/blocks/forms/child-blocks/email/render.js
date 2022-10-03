@@ -5,7 +5,6 @@ import styles from './editor.lazy.scss';
 
 import { RichText } from '@wordpress/block-editor';
 
-import { ToggleControl } from '@wordpress/components';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -18,7 +17,7 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes, setAttributes, isSelected } = props;
+	const { attributes, setAttributes } = props;
 
 	const { block_id, name, required, placeholder } = attributes;
 

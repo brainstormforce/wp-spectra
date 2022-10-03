@@ -4,7 +4,7 @@ import React, { useLayoutEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 
-import { SelectControl, ToggleControl } from '@wordpress/components';
+import { SelectControl } from '@wordpress/components';
 
 import { RichText } from '@wordpress/block-editor';
 
@@ -19,7 +19,7 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes, setAttributes, isSelected } = props;
+	const { attributes, setAttributes } = props;
 
 	const { block_id, phoneRequired, phoneName, pattern, selectPhoneCode, autocomplete } = attributes;
 
