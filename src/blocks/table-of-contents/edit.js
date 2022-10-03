@@ -3,22 +3,15 @@
  */
 
 import styling from './styling';
-import React, { lazy, useEffect, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {   useEffect,  } from 'react';
+
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/table-of-contents/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/table-of-contents/render" */ './render'
-	)
-);
+import Settings from './settings';
+import Render from './render';
 
 import { withSelect } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
@@ -28,6 +21,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 	const deviceType = useDeviceType();
 
 	useEffect( () => {
+
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
@@ -196,10 +190,10 @@ const UAGBTableOfContentsEdit = ( props ) => {
 				setAttributes( { leftMarginTablet: hMarginTablet } );
 			}
 		}
-		const {borderStyle,borderWidth,borderRadius,borderColor,borderHColor} = props.attributes;
+		const {borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor} = props.attributes;
 		// Backward Border Migration
-		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'overall', {
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
+			migrateBorderAttributes( 'overall', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -209,14 +203,15 @@ const UAGBTableOfContentsEdit = ( props ) => {
 				label: 'borderColor',
 				value: borderColor
 			}, {
-				label: 'borderHColor',
-				value: borderHColor
+				label: 'borderHoverColor',
+				value: borderHoverColor
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			}
+			},
+			props.setAttributes,
+			props.attributes
 			);
-			props.setAttributes( migrationAttributes )
 		}
 	}, [] );
 
@@ -234,6 +229,8 @@ const UAGBTableOfContentsEdit = ( props ) => {
 
 		addBlockEditorDynamicStyles( 'uagb-style-toc-' + props.clientId.substr( 0, 8 ), blockStyling );
 
+		scrollBlockToView();
+
 	}, [ deviceType ] );
 
 	const { scrollToTop } = props.attributes;
@@ -250,10 +247,12 @@ const UAGBTableOfContentsEdit = ( props ) => {
 	/* eslint-enable no-undef */
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
+					<>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 
@@ -295,7 +294,17 @@ export default compose(
 		} else {
 			headerArray = document.body.getElementsByClassName( 'is-root-container' )[0]?.querySelectorAll( 'h1, h2, h3, h4, h5, h6' );
 		}
-
+		const excludeBlock = document.querySelectorAll( '.uagb-toc-hide-heading' );
+		if ( excludeBlock ) {
+			excludeBlock.forEach( function ( heading ) {
+				const innerHeading = heading.querySelectorAll(  'h1, h2, h3, h4, h5, h6' );
+				if ( innerHeading ) {
+					innerHeading.forEach( function( head ){
+						head.classList.add( 'uagb-toc-hide-heading' );
+					} )
+				}
+			} )
+		}
 		const headers = [];
 
 		if ( headerArray !== 'undefined' ) {

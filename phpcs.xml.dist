@@ -8,7 +8,8 @@
 	<rule ref="WordPress-Docs" />
 	<rule ref="WordPress-Extra" />
 	<rule ref="WordPress.Security.EscapeOutput" />
-
+	<!-- PHP 5.6 and higher. -->
+	<config name="testVersion" value="5.6-"/>
 	<!-- Check all PHP files in directory tree by default. -->
 	<arg name="extensions" value="php"/>
 	<file>.</file>
@@ -38,6 +39,7 @@
 	<exclude-pattern>*/admin/bsf-analytics/*</exclude-pattern>
 	<exclude-pattern>/blocks-config/uagb-controls/spectra-icons-v6.php</exclude-pattern>
 	<exclude-pattern>/blocks-config/uagb-controls/uagb-icons.php</exclude-pattern>
+	<exclude-pattern>/tests/bootstrap.php</exclude-pattern>
 
 </ruleset>
 

@@ -8,14 +8,7 @@
  */
 
 $overall_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute(
-	'overall',
-	array(
-		'borderTopWidth'    => 1,
-		'borderRightWidth'  => 1,
-		'borderLeftWidth'   => 1,
-		'borderBottomWidth' => 1,
-		'borderStyle'       => 'none',
-	)
+	'overall'
 );
 
 
@@ -68,7 +61,6 @@ return array_merge(
 		'backgroundVideoOpacity'   => '50',
 		'backgroundImageColor'     => '',
 		'align'                    => 'center',
-		'borderHoverColor'         => '',
 		'themeWidth'               => false,
 		'mobileMarginType'         => 'px',
 		'tabletMarginType'         => 'px',
@@ -92,6 +84,10 @@ return array_merge(
 		'boxShadowPosition'        => 'outset',
 		'gradientValue'            => '',
 		'backgroundOpacity'        => 0,
+		'borderStyle'              => 'none',
+		'borderWidth'              => 1,
+		'borderRadius'             => '',
+		'borderColor'              => '',
 	),
 	$overall_border_attributes
 );

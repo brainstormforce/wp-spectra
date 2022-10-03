@@ -9,7 +9,7 @@ import InspectorTab, {
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGTabsControl from '@Components/tabs';
-import UAGImage from '@Components/image';
+import UAGMediaPicker from '@Components/image';
 import SpacingControl from '@Components/spacing-control';
 
 import { TextControl, ToggleControl } from '@wordpress/components';
@@ -19,7 +19,6 @@ import { TextControl, ToggleControl } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
-	const hideLabel = props.hideLabel;
 	props = props.parentProps;
 
 	const { attributes, setAttributes, deviceType } = props;
@@ -72,6 +71,7 @@ const Settings = ( props ) => {
 		childPaddingUnitTablet,
 		childPaddingUnitMobile,
 		childPaddingLink,
+		hideLabel,
 	} = attributes;
 
 	/*
@@ -328,7 +328,7 @@ const Settings = ( props ) => {
 				) }
 				{ 'image' === image_icon && (
 					<>
-						<UAGImage
+						<UAGMediaPicker
 							onSelectImage={ onSelectImage }
 							backgroundImage={ image }
 							onRemoveImage={ onRemoveImage }

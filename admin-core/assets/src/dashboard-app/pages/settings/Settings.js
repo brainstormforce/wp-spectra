@@ -8,6 +8,7 @@ import RegenerateAssets from '@DashboardApp/pages/settings/RegenerateAssets';
 import TemplatesButton from '@DashboardApp/pages/settings/TemplatesButton';
 import RollBack from '@DashboardApp/pages/settings/RollBack';
 import BetaUpdates from '@DashboardApp/pages/settings/BetaUpdates';
+import LegacyBlocks from '@DashboardApp/pages/settings/LegacyBlocks';
 import SelectedFontFamilies from '@DashboardApp/pages/settings/SelectedFontFamilies';
 import LoadFontsLocally from '@DashboardApp/pages/settings/LoadFontsLocally';
 import PreloadLocalFonts from '@DashboardApp/pages/settings/PreloadLocalFonts';
@@ -21,6 +22,8 @@ import SettingsSkeleton from '@DashboardApp/pages/settings/SettingsSkeleton';
 import BlockSettings from '@DashboardApp/pages/settings/BlockSettings';
 import LoadFontAwesome5 from '@DashboardApp/pages/settings/LoadFontAwesome5';
 import AutoBlockRecovery from '@DashboardApp/pages/settings/AutoBlockRecovery';
+import ContainerGlobalPadding from '@DashboardApp/pages/settings/ContainerGlobalPadding';
+import ContainerGlobalElementsGap from '@DashboardApp/pages/settings/ContainerGlobalElementsGap';
 import { Link, useLocation } from 'react-router-dom';
 import{ useEffect } from 'react';
 
@@ -63,11 +66,10 @@ const Settings = () => {
 		return <SettingsSkeleton/>;
 	}
 
-
     return (
-        <>
-            <div className="max-w-3xl mx-auto lg:max-w-[77rem] mt-10 mb-8 font-semibold text-2xl">Settings</div>
-            <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-md shadow overflow-hidden min-h-[36rem]">
+        <div className="px-6 w-full">
+            <div className="mx-auto mt-10 mb-8 font-semibold text-2xl lg:max-w-[80rem]">Settings</div>
+            <main className="mx-auto my-[2.43rem] bg-white rounded-md shadow overflow-hidden min-h-[36rem] lg:max-w-[80rem]">
                 <div className="lg:grid lg:grid-cols-12 min-h-[36rem] h-full">
                     <aside className="py-6 sm:px-6 lg:py-6 lg:px-0 lg:col-span-3">
                         <nav className="space-y-1">
@@ -98,11 +100,15 @@ const Settings = () => {
                         { 'global-settings' === activeSettingsNavigationTab &&
                             <>
                                 <ContentWidth/>
+								<ContainerGlobalPadding/>
+								<ContainerGlobalElementsGap/>
                                 <BlocksEditorSpacing/>
                                 <CollapsePanels/>
                                 <CopyPasteStyles/>
                                 <AutoBlockRecovery/>
-                                <LoadFontAwesome5/>
+                                {  'yes' === uag_react.global_data.uagb_old_user_less_than_2 &&
+                                    <LoadFontAwesome5/>
+                                }
                             </>
                         }
                         { 'asset-generation' === activeSettingsNavigationTab &&
@@ -118,13 +124,16 @@ const Settings = () => {
                             <>
                                 <RollBack/>
                                 <BetaUpdates/>
+								{  'yes' !== uag_react.global_data.uagb_old_user_less_than_2 &&
+                                    <LegacyBlocks/>
+                                }
                             </>
                         }
                         { 'fonts-performance' === activeSettingsNavigationTab &&
                             <>
-                                <SelectedFontFamilies/>
                                 <LoadFontsLocally/>
                                 <PreloadLocalFonts/>
+                                <SelectedFontFamilies/>
                             </>
                         }
                         { 'block-settings' === activeSettingsNavigationTab &&
@@ -144,7 +153,7 @@ const Settings = () => {
                     </div>
                 </div>
             </main>
-        </>
+        </div>
     );
 };
 

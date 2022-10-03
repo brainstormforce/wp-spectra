@@ -3,17 +3,15 @@
  */
 
 import styling from './styling';
-import React, { lazy, Suspense, useEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {    useEffect } from 'react';
+
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
+import { select, dispatch } from '@wordpress/data';
 
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/icon-list/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/icon-list/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 const UAGBIconList = ( props ) => {
 
@@ -32,7 +30,7 @@ const UAGBIconList = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-icon-list-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
 	}, [ props ] );
 
 	useEffect( () => {
@@ -40,14 +38,35 @@ const UAGBIconList = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-icon-list-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
+		scrollBlockToView();
+
 	}, [ deviceType ] );
 
+	useEffect( () => {
+
+		select( 'core/block-editor' )
+            .getBlocksByClientId( props.clientId )[0]
+            ?.innerBlocks.forEach( function( block ) {
+
+                dispatch( 'core/block-editor' ).updateBlockAttributes(
+                    block.clientId, {
+                        fromParentIcon: props.attributes.parentIcon,
+						hideLabel: props.attributes.hideLabel,
+                    }
+                );
+
+            } );
+
+	}, [ props.attributes.parentIcon, props.attributes.hideLabel ] );
+
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
+					<>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 

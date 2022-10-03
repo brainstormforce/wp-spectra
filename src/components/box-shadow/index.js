@@ -11,9 +11,7 @@ import MultiButtonsControl from '../multi-buttons-control/index';
 import React, { useLayoutEffect } from 'react';
 import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
-import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
-
-const classNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
+import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 
 const BoxShadowControl = ( props ) => {
 
@@ -75,7 +73,8 @@ const BoxShadowControl = ( props ) => {
 
 	// Function to get the Block's default Box Shadow Values.
 	const getBlockBoxShadowValue = () => {
-		const selectedBlockName = getSelectedBlock()?.name.replace( 'uagb/', '' );
+		const selectedBlockName = getSelectedBlock()?.name.split( '/' ).pop();
+
 		let defaultValues = false;
 		if ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ] ) {
 			attributeNames.forEach( ( attributeName ) => {
@@ -220,12 +219,12 @@ const BoxShadowControl = ( props ) => {
 		<div className="spectra-control-popup__options--action-wrapper">
 			<span className="uag-control-label">
 				{ label }
+				{ isBoxShadowUpdated && (
+					<div className="spectra__change-indicator--dot-right"/>
+				) }
 			</span>
 			<Button
-				className={ classNames(
-					'uag-box-shadow-button spectra-control-popup__options--action-button',
-					isBoxShadowUpdated ? 'spectra-control-popup__status--updated' : '',
-				) }
+				className="uag-box-shadow-button spectra-control-popup__options--action-button"
 				aria-pressed={ showAdvancedControls }
 				onClick={ () => {
 						const allPopups = document.querySelectorAll( '.spectra-control-popup__options' );

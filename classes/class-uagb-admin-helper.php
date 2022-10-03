@@ -37,6 +37,62 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		}
 
 		/**
+		 * Get all data from the admin settings page.
+		 *
+		 * @return mixed
+		 * @since 2.0.8
+		 */
+		public static function get_admin_settings_shareable_data() {
+
+			$content_width = self::get_global_content_width();
+
+			$options = array(
+				'uagb_beta'                         => self::get_admin_settings_option( 'uagb_beta', 'no' ),
+				'uag_enable_legacy_blocks'          => self::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' ),
+				'_uagb_allow_file_generation'       => self::get_admin_settings_option( '_uagb_allow_file_generation', 'enabled' ),
+				'uag_enable_templates_button'       => self::get_admin_settings_option( 'uag_enable_templates_button', 'yes' ),
+				'uag_enable_block_condition'        => self::get_admin_settings_option( 'uag_enable_block_condition', 'disabled' ),
+				'uag_enable_masonry_gallery'        => self::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ),
+				'uag_enable_block_responsive'       => self::get_admin_settings_option( 'uag_enable_block_responsive', 'enabled' ),
+				'uag_select_font_globally'          => self::get_admin_settings_option( 'uag_select_font_globally', array() ),
+				'uag_load_select_font_globally'     => self::get_admin_settings_option( 'uag_load_select_font_globally', 'disabled' ),
+				'uag_load_gfonts_locally'           => self::get_admin_settings_option( 'uag_load_gfonts_locally', 'disabled' ),
+				'uag_collapse_panels'               => self::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
+				'uag_copy_paste'                    => self::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
+				'uag_preload_local_fonts'           => self::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
+				'uag_enable_coming_soon_mode'       => self::get_admin_settings_option( 'uag_enable_coming_soon_mode', 'disabled' ),
+				'uag_container_global_padding'      => self::get_admin_settings_option( 'uag_container_global_padding', 'default' ),
+				'uag_container_global_elements_gap' => self::get_admin_settings_option( 'uag_container_global_elements_gap', 20 ),
+				'uag_blocks_editor_spacing'         => self::get_admin_settings_option( 'uag_blocks_editor_spacing', 0 ),
+				'uag_load_font_awesome_5'           => self::get_admin_settings_option( 'uag_load_font_awesome_5', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
+				'uag_auto_block_recovery'           => self::get_admin_settings_option( 'uag_auto_block_recovery', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
+				'uag_content_width'                 => $content_width,
+			);
+
+			$setting_data = get_option( 'spectra_settings_data' );
+
+			if ( ! $setting_data ) {
+				update_option( 'spectra_settings_data', $options );
+			}
+
+			return $options;
+		}
+
+		/**
+		 * Update all data from the admin settings page.
+		 *
+		 * @param array $data All settings of Admin.
+		 * @return mixed
+		 * @since 2.0.8
+		 */
+		public static function update_admin_settings_shareable_data( $data = array() ) {
+
+			foreach ( $data as $key => $value ) {
+				self::update_admin_settings_option( $key, $value );
+			}
+		}
+
+		/**
 		 * Returns an option from the database for
 		 * the admin settings page.
 		 *
@@ -106,38 +162,6 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			} else {
 				update_option( $key, $value );
 			}
-		}
-
-		/**
-		 * Is Knowledgebase.
-		 *
-		 * @return string
-		 * @since 0.0.1
-		 */
-		public static function knowledgebase_data() {
-
-			$knowledgebase = array(
-				'enable_knowledgebase' => true,
-				'knowledgebase_url'    => 'https://www.ultimategutenberg.com/docs/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard',
-			);
-
-			return $knowledgebase;
-		}
-
-		/**
-		 * Is Knowledgebase.
-		 *
-		 * @return string
-		 * @since 0.0.1
-		 */
-		public static function support_data() {
-
-			$support = array(
-				'enable_support' => true,
-				'support_url'    => 'https://www.ultimategutenberg.com/support/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard',
-			);
-
-			return $support;
 		}
 
 		/**
@@ -344,7 +368,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		/**
 		 * Get Global Content Width
 		 *
-		 * @since 2.0.0-beta.3
+		 * @since 2.0.0
 		 * @return int
 		 * @access public
 		 */
