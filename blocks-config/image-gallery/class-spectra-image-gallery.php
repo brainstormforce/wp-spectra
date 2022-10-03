@@ -1069,7 +1069,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 			}
 			?>
 			<div class="spectra-image-gallery__media spectra-image-gallery__media--<?php echo esc_html( $atts['feedLayout'] ); ?>">
-				<img class="spectra-image-gallery__media-thumbnail spectra-image-gallery__media-thumbnail--<?php echo esc_html( $atts['feedLayout'] ); ?>" src="<?php echo esc_html( $mediaArray['url'] ); ?>" alt="<?php echo esc_html( $mediaArray['alt'] ); ?>"/>
+				<img class="spectra-image-gallery__media-thumbnail spectra-image-gallery__media-thumbnail--<?php echo esc_html( $atts['feedLayout'] ); ?>" src="<?php echo esc_html( $mediaArray['url'] ); ?>" alt="<?php echo esc_html( $mediaArray['alt'] ); ?>" loading="lazy"/>
 				<div class="spectra-image-gallery__media-thumbnail-blurrer"></div>
 				<?php
 				if ( $atts['imageDisplayCaption'] ) {

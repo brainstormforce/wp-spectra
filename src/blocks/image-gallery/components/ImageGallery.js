@@ -561,6 +561,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 					) }
 					src={ mediaObject.url }
 					alt={ mediaObject.alt }
+					loading="lazy"
 				/>
 				<div className="spectra-image-gallery__media-thumbnail-blurrer" />
 				{ imageDisplayCaption ? (
