@@ -35,22 +35,6 @@ const Render = ( props ) => {
 					`uagb-block-${ block_id }`
 				) }
 			>
-				{ isSelected && (
-					<div className="uagb-forms-required-wrap">
-						<ToggleControl
-							label={ __(
-								'Required',
-								'ultimate-addons-for-gutenberg'
-							) }
-							checked={ nameRequired }
-							onChange={ () =>
-								setAttributes( {
-									nameRequired: ! nameRequired,
-								} )
-							}
-						/>
-					</div>
-				) }
 				<RichText
 					tagName="div"
 					placeholder={ __(

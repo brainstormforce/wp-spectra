@@ -35,22 +35,6 @@ const Render = ( props ) => {
 
 	return (
 		<>
-			{ isSelected && (
-				<div className="uagb-forms-required-wrap">
-					<ToggleControl
-						label={ __(
-							'Required',
-							'ultimate-addons-for-gutenberg'
-						) }
-						checked={ acceptRequired }
-						onChange={ () =>
-							setAttributes( {
-								acceptRequired: ! acceptRequired,
-							} )
-						}
-					/>
-				</div>
-			) }
 			<div
 				className={ classnames(
 					'uagb-forms-accept-wrap',
