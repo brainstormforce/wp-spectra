@@ -578,22 +578,24 @@ export default function Settings( props ) {
 			title={ __( 'Image/Icon', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
-			<ToggleControl
-				checked={ imageWidthType }
-				onChange={ () =>
-					setAttributes( {
-						imageWidthType: ! imageWidthType,
-					} )
-				}
-				label={ __(
-					'Custom Width',
-					'ultimate-addons-for-gutenberg'
-				) }
-				help={ __(
-					'Turn this off to inherit the natural width of Image.',
-					'ultimate-addons-for-gutenberg'
-				) }
-			/>
+			{ sourceType === 'image' &&
+				<ToggleControl
+					checked={ imageWidthType }
+					onChange={ () =>
+						setAttributes( {
+							imageWidthType: ! imageWidthType,
+						} )
+					}
+					label={ __(
+						'Custom Width',
+						'ultimate-addons-for-gutenberg'
+					) }
+					help={ __(
+						'Turn this off to inherit the natural width of Image.',
+						'ultimate-addons-for-gutenberg'
+					) }
+				/>
+			}
 			{ ( sourceType === 'image' && imageWidthType ) && (
 				<ResponsiveSlider
 					label={ __(
