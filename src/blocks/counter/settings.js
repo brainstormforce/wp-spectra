@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import TypographyControl from '@Components/typography';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -221,6 +221,13 @@ export default function Settings( props ) {
 		iconPaddingUnitMobile,
 		iconPaddingLink,
 	} = attributes;
+
+	useEffect( () => {
+		// Since circle layout doesn't support other image positions.
+		if ( layout === 'circle' && ( iconImgPosition !== 'top' || iconImgPosition !== 'bottom' ) ) {
+			setAttributes( { iconImgPosition: 'top' } );
+		}
+	}, [layout] );
 
 	const numberIconPositionOptions = [
 		{
@@ -1629,7 +1636,7 @@ export default function Settings( props ) {
 
 
 	return (
-		<React.Fragment>
+		<>
 			<BlockControls key="controls">
 				<AlignmentToolbar
 					value={ align }
@@ -1662,6 +1669,6 @@ export default function Settings( props ) {
 					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-		</React.Fragment>
+		</>
 	);
 }
