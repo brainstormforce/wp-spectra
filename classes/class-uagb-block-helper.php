@@ -455,10 +455,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$overall_border_css = self::uag_generate_border_css( $attr, 'overall' );
 
-			$paddingTop    = is_numeric( $attr['paddingTop'] ) ? $attr['paddingTop'] : $attr['contentPadding'];
-			$paddingBottom = is_numeric( $attr['paddingBottom'] ) ? $attr['paddingBottom'] : $attr['contentPadding'];
-			$paddingLeft   = is_numeric( $attr['paddingLeft'] ) ? $attr['paddingLeft'] : $attr['contentPadding'];
-			$paddingRight  = is_numeric( $attr['paddingRight'] ) ? $attr['paddingRight'] : $attr['contentPadding'];
+			$paddingTop    = isset( $attr['paddingTop'] ) ? $attr['paddingTop'] : $attr['contentPadding'];
+			$paddingBottom = isset( $attr['paddingBottom'] ) ? $attr['paddingBottom'] : $attr['contentPadding'];
+			$paddingLeft   = isset( $attr['paddingLeft'] ) ? $attr['paddingLeft'] : $attr['contentPadding'];
+			$paddingRight  = isset( $attr['paddingRight'] ) ? $attr['paddingRight'] : $attr['contentPadding'];
 
 			$paddingBtnTop    = isset( $attr['paddingBtnTop'] ) ? $attr['paddingBtnTop'] : $attr['btnVPadding'];
 			$paddingBtnBottom = isset( $attr['paddingBtnBottom'] ) ? $attr['paddingBtnBottom'] : $attr['btnVPadding'];
@@ -503,9 +503,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$overall_border_css
 				),
 				'.is-grid .uagb-post__inner-wrap .uagb-post__image:first-child' => array(
-					'margin-left'  => UAGB_Helper::get_css_value( - $paddingLeft, $attr['contentPaddingUnit'] ),
-					'margin-right' => UAGB_Helper::get_css_value( - $paddingRight, $attr['contentPaddingUnit'] ),
-					'margin-top'   => UAGB_Helper::get_css_value( - $paddingTop, $attr['contentPaddingUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( (int) ( - $paddingLeft ), $attr['contentPaddingUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( (int) ( - $paddingRight ), $attr['contentPaddingUnit'] ),
+					'margin-top'   => UAGB_Helper::get_css_value( (int) ( - $paddingTop ), $attr['contentPaddingUnit'] ),
 				),
 				':not(.is-grid) .uagb-post__inner-wrap > .uagb-post__text:last-child' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $paddingBottom, $attr['contentPaddingUnit'] ),
