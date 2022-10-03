@@ -603,6 +603,9 @@ if ( 'outset' === $attr['imageBoxShadowPositionHover'] ) {
 	);
 }
 
+// Slick Dot Positioning in the Editor.
+$selectors[' .spectra-image-gallery__layout--carousel .slick-dots']['margin-bottom'] = '30px !important';
+
 $combined_selectors = array(
 	'desktop' => $selectors,
 	'tablet'  => $t_selectors,
