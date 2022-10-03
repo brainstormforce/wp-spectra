@@ -362,8 +362,6 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		gridPageNumber * paginateLimitFallback
 	);
 
-
-
 	const createSpecialTile = ( instance, image ) => {
 		if ( image && image.isLoaded ){
 			const imageElement = image.img;
