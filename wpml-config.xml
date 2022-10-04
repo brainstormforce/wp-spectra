@@ -108,7 +108,6 @@
 			<key name="headingTitle" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/counter" translate="1">
-			<xpath>//*[@class="wp-block-uagb-counter__number"]</xpath>
 			<xpath>//*[@class="uagb-counter-block-prefix"]</xpath>
 			<xpath>//*[@class="uagb-counter-block-suffix"]</xpath>
 			<key name="numberPrefix" />
