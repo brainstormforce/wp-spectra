@@ -2,6 +2,9 @@ UAGBCounter = { // eslint-disable-line no-undef
 	elements: {},
 	init( mainSelector, data = {} ) {
 		this.elements = this.getDefaultElements( mainSelector );
+		if( !data.isFrontend ){
+			this.elements.counterWrapper.removeAttribute( 'played' );
+		}
 		if( typeof this.elements.counterWrapper !== 'undefined' && this.elements.counterWrapper ){
 			const numberCount = this._numberCount( data );
 			this._inViewInit( numberCount, data );

@@ -12,6 +12,7 @@ $icon_wrap_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 
 return array_merge(
 	array(
 		'block_id'                  => '',
+		'isFrontend'                => true,
 		'layout'                    => '',
 		'align'                     => 'left',
 		'alignTablet'               => 'left',

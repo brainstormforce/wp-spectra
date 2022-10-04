@@ -27,6 +27,7 @@ $counter_options = apply_filters(
 		'animationDuration' => $animation_duration_fallback,
 		'thousandSeparator' => $attr['thousandSeparator'],
 		'circleSize'        => $circle_size_fallback,
+		'isFrontend'        => $attr['isFrontend'],
 	),
 	$id
 );
