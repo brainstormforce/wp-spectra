@@ -72,7 +72,8 @@ UAGBCounter = { // eslint-disable-line no-undef
 			const countUp = new window.countUp.CountUp( el, that._getEndNumber( data ), {
 				startVal: that._getStartNumber( data ),
 				duration: data.animationDuration,
-				separator: data.thousandSeparator
+				separator: data.thousandSeparator,
+				useEasing: false,
 			} );
 			return countUp;
 		}
