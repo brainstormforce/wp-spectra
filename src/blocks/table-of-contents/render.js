@@ -24,7 +24,6 @@ const Render = ( props ) => {
 
 	const {
 		classMigrate,
-		block_id,
 		align,
 		makeCollapsible,
 		initialCollapse,
@@ -39,7 +38,7 @@ const Render = ( props ) => {
 	useEffect( () => {
 		if ( UAGBTableOfContents ) {
 			const baseSelector = classMigrate ? '.uagb-block-' : '#uagb-toc-';
-			const selector      = baseSelector + block_id;
+			const selector      = baseSelector + props.clientId.substr( 0, 8 );
 			UAGBTableOfContents.init( selector );
 		}
 	}, [] );
