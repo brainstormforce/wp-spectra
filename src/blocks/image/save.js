@@ -43,7 +43,7 @@ export default function Save( props ) {
 	// block validation issue fixing - ImageURLInputUI components automatic provide "noopener"
 	const getRel = () => {
 		if( rel ){
-			return rel + ' noopener';
+			return rel;
 		}
 		return 'noopener';
 	}
@@ -54,7 +54,7 @@ export default function Save( props ) {
 					className={ linkClass }
 					href={ href }
 					target={ linkTarget }
-					rel={getRel()}
+					rel={rel.trim()}
 				>
 					{ image }
 				</a>
