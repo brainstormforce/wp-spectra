@@ -27,13 +27,20 @@ class UAGB_Init_Blocks {
 	 */
 	private static $instance;
 
+	// /**
+	//  * Holds the state for the add sites background process.
+	//  *
+	//  * @access   private
+	//  * @var      UAGB_Background_Process    $collect_spectra_blocks_count    State of the background process.
+	//  */
+	// private $collect_spectra_blocks_count;
+
 	/**
-	 * Holds the state for the add sites background process.
+	 * Member Variable
 	 *
-	 * @access   private
-	 * @var      UAGB_Background_Process    $collect_spectra_blocks_count    State of the background process.
+	 * @var block activation
 	 */
-	private $collect_spectra_blocks_count;
+	private $active_blocks;
 
 	/**
 	 *  Initiator
@@ -73,30 +80,54 @@ class UAGB_Init_Blocks {
 			add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
 		}
 
-		add_action( 'spectra_total_blocks_count_action', array( $this, 'blocks_count_logic' ) );
+		// add_action( 'spectra_total_blocks_count_action', array( $this, 'trigger_background_processing' ) );
 
 		add_action( 'spectra_analytics_count_actions', array( $this, 'send_spectra_specific_stats' ) );
+
+		// $action_transient = (bool) get_transient( 'spectra_event_for_count_transientss' );
+
+		// // error_log( $action_transient );
+
+		// if ( 'done' !== get_option( 'spectra_blocks_count_status' ) && false === $action_transient ) {
+
+		// 	add_action( 'spectra_event_for_count_action', array( $this, 'trigger_background_processing' ) );
+
+		// 	set_transient( 'spectra_event_for_count_transientss', get_option( 'spectra_blocks_count_status' ), 2 * WEEK_IN_SECONDS );
+			
+		// 	error_log( "Testsssssssssssss" );
+		// 	error_log( (bool) get_transient( 'spectra_event_for_count_transientss' ) );
+
+		// 	// do_action( 'spectra_event_for_count_action' );
+		// }
+
+		// if ( 'done' !== get_option( 'spectra_blocks_count_status' ) && ! wp_next_scheduled ( 'spectra_event_for_count' )) {
+
+		// 	error_log( "Test" );
+		// 	wp_schedule_event( time(), 'hourly', 'spectra_event_for_count' );
+		// }
 
 		// delete_option( 'spectra_blocks_pages_counted' );
 		// delete_option( 'spectra_blocks_count_status' );
 		// delete_option( 'get_spectra_block_count' );
 		// delete_option( 'spectra_settings_data' );
+		// wp_clear_scheduled_hook( 'spectra_event_for_count' );
 
+	}
+
+	/**
+	 * Render background processing for block count.
+	 *
+	 * @since x.x.x
+	 * @return mixed Returns the block count.
+	 */
+	public function trigger_background_processing() {
 
 		/* Action to get total blocks count */
 		if ( 'done' !== get_option( 'spectra_blocks_count_status' ) ) {
 
-			// error_log( "Step 1 - Collect block count" );
-
 			$this->collect_spectra_blocks_count = new \UAGB_Background_Process();
 
-			if( 'processing' === get_option( 'spectra_blocks_count_status' ) ) {
-				error_log( $this->collect_spectra_blocks_count->is_queue_empty() );
-				error_log( "-----Step 1 - still processing" );
-				return false;
-			}
-
-			update_option( 'spectra_blocks_count_status', 'processing' );
+			error_log( "Step 1 - Collect block count" );
 
 			$posts_ids = get_posts(
 				array(
@@ -111,10 +142,12 @@ class UAGB_Init_Blocks {
 				$this->collect_spectra_blocks_count->push_to_queue(
 					array(
 						'data' => $post_id,
-						'list_blocks' => UAGB_Helper::$block_list
+						// 'list_blocks' => UAGB_Helper::$block_list
 					)
 				);
 			}
+
+			error_log( print_r( $posts_ids, true ) );
 
 			$this->collect_spectra_blocks_count->save()->dispatch();
 
@@ -124,7 +157,11 @@ class UAGB_Init_Blocks {
 				error_log( "Step 1 - Completed" );
 			}
 
+			// error_log( "Done" );
+
 		}
+
+		// $blocks_status = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks' );
 
 	}
 
@@ -137,6 +174,7 @@ class UAGB_Init_Blocks {
 		delete_option( 'spectra_blocks_count_status' );
 		delete_option( 'get_spectra_block_count' );
 		delete_option( 'spectra_settings_data' );
+		wp_clear_scheduled_hook( 'spectra_event_for_count' );
 
 	}
 

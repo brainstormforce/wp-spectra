@@ -31,6 +31,14 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		public $post_assets_objs = array();
 
 		/**
+		 * Holds the state for the add sites background process.
+		 *
+		 * @access   private
+		 * @var      UAGB_Background_Process    $collect_spectra_blocks_count    State of the background process.
+		 */
+		private $collect_spectra_blocks_count;
+
+		/**
 		 *  Initiator
 		 */
 		public static function get_instance() {
@@ -116,11 +124,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 */
 		public function loader() {
 
-			// Load background processing class.
-			if ( ! class_exists( 'UAGB_Background_Process' ) ) {
-				require_once UAGB_DIR . 'classes/class-uagb-background-process.php';
-			}
-
 			require_once UAGB_DIR . 'classes/utils.php';
 			require_once UAGB_DIR . 'classes/class-uagb-install.php';
 			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
@@ -205,6 +208,75 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 				add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
 
 			}
+
+			// Load background processing class.
+			if ( ! class_exists( 'UAGB_Background_Process' ) ) {
+				require_once UAGB_DIR . 'lib/wp-background-processing/class-spectra-wp-async-request.php';
+				require_once UAGB_DIR . 'lib/wp-background-processing/class-spectra-wp-background-process.php';
+				require_once UAGB_DIR . 'classes/class-uagb-background-process.php';
+			}
+
+			$this->collect_spectra_blocks_count = new \UAGB_Background_Process();
+
+			// delete_option( 'spectra_blocks_pages_counted' );
+			// delete_option( 'spectra_blocks_count_status' );
+			// delete_option( 'get_spectra_block_count' );
+			// delete_option( 'spectra_settings_data' );
+
+			add_action( 'spectra_total_blocks_count_action', array( $this, 'trigger_background_processing' ) );
+
+			// error_log( print_r( get_option( 'get_spectra_block_count' ), true ) );
+
+		}
+
+		/**
+		 * Render background processing for block count.
+		 *
+		 * @since x.x.x
+		 * @return mixed Returns the block count.
+		 */
+		public function trigger_background_processing() {
+
+			/* Action to get total blocks count */
+			if ( 'done' !== get_option( 'spectra_blocks_count_status' ) ) {
+
+				error_log( "Step 1 - Collect block count" );
+
+				$posts_ids = get_posts(
+					array(
+						'post_type'      	=> 'any',
+						'numberposts' 		=> -1,
+						'post_status'    	=> 'publish',
+						'fields'      		=> 'ids',
+					)
+				);
+
+				foreach ( $posts_ids as $post_id ) {
+					$this->collect_spectra_blocks_count->push_to_queue(
+						array(
+							'data' => $post_id,
+							'list_blocks' => UAGB_Helper::$block_list
+						)
+					);
+				}
+
+				error_log( print_r( $posts_ids, true ) );
+
+				$this->collect_spectra_blocks_count->save()->dispatch();
+
+				error_log( $this->collect_spectra_blocks_count->is_process_running() );
+
+				if ( $this->collect_spectra_blocks_count->is_queue_empty() ) {
+					update_option( 'spectra_blocks_count_status', 'done' );
+					error_log( "Step 1 - Completed" );
+					$this->collect_spectra_blocks_count->complete();
+				}
+
+				error_log( "Done" );
+
+			}
+
+			// $blocks_status = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks' );
 
 		}
 

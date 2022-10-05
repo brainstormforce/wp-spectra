@@ -106,14 +106,28 @@ class Admin_Menu {
 			add_filter( 'admin_footer_text', array( $this, 'add_footer_link' ), 99 );
 		}
 
+		$action_transient = (bool) get_transient( 'spectra_analytics_action' );
+
+		// error_log( $action_transient );
+
 		if ( 'done' === get_option( 'spectra_blocks_count_status' ) ) {
-			error_log( "Step 3 - Set transient to delete data" );
+			// error_log( "Step 3 - Set transient to delete data" );
 			$action_transient = (bool) get_transient( 'spectra_analytics_action' );
 
 			if ( false === $action_transient ) {
 				set_transient( 'spectra_analytics_action', get_option( 'spectra_blocks_count_status' ), 2 * WEEK_IN_SECONDS );
 				do_action( 'spectra_analytics_count_actions' );
 			}
+
+		}
+
+		$count_transient = (bool) get_transient( 'spectra_transient_for_count' );
+
+		if ( 'done' !== get_option( 'spectra_blocks_count_status' ) && false === $count_transient ) {
+
+			do_action( 'spectra_total_blocks_count_action' );
+
+			set_transient( 'spectra_transient_for_count', 'done', 2 * WEEK_IN_SECONDS );
 
 		}
 

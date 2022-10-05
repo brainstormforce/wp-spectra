@@ -5,7 +5,7 @@
  * @package WP-Background-Processing
  */
 
-require_once plugin_dir_path( __FILE__ ) . 'class-spectra-wp-async-request.php';
+// require_once plugin_dir_path( __FILE__ ) . 'class-spectra-wp-async-request.php';
 
 /**
  * Abstract Spectra_WP_Background_Process class.
@@ -185,6 +185,7 @@ abstract class Spectra_WP_Background_Process extends Spectra_WP_Async_Request {
 	 * @return bool
 	 */
 	protected function is_queue_empty() {
+
 		global $wpdb;
 
 		$table  = $wpdb->options;

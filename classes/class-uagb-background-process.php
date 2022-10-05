@@ -1,6 +1,6 @@
 <?php
 
-require_once plugin_dir_path( __DIR__ ) . 'lib/wp-background-processing/class-spectra-wp-background-process.php';
+// require_once plugin_dir_path( __DIR__ ) . 'lib/wp-background-processing/class-spectra-wp-background-process.php';
 
 class UAGB_Background_Process extends \Spectra_WP_Background_Process {
 
@@ -23,7 +23,7 @@ class UAGB_Background_Process extends \Spectra_WP_Background_Process {
 	 *
 	 * @return mixed
 	 */
-	protected function task( $item ) {
+	public function task( $item ) {
 
 		error_log( "This is task function" );
 		error_log( $item['data'] );
