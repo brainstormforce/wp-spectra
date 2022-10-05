@@ -63,9 +63,16 @@ const PageCustomCSS = () => {
 		<>
 		<p className='spectra-custom-css-notice'>
 			{
-				__( 'You can use this area to further customize any block by adding custom CSS.' )
+				__( 'Add your own CSS code here to customize the page as per your expectations.' )
 			}
 		</p>
+		<hr></hr>
+		<p className='spectra-custom-css-example spectra-custom-css-notice'>
+			{
+				uagb_blocks_info.spectra_custom_css_example
+			}
+		</p>
+			
 		<textarea value={customCSS} ref={tabRef}></textarea>
 		</>
 	);
