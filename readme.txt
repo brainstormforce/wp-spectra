@@ -170,6 +170,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 2.0.14 - THURSDAY, 29th SEPTEMBER 2022 =
+* Fix: Tabs - Plus button height was not the same as other tab buttons on the editor.
+
 = 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 =
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
 * Fix: Icon List - Text Alignment not working properly on front-end.
