@@ -218,7 +218,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			if ( 'done' !== $count_status && 'processing' === $count_status && $this->collect_spectra_blocks_count->is_queue_empty() ) {
 				update_option( 'spectra_blocks_count_status', 'done' );
-				error_log( "Step 1 - Completed" );
+				error_log( 'Step 1 - Completed' );
 				$this->collect_spectra_blocks_count->complete();
 			}
 
@@ -234,7 +234,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 					'blocks_count'             => $blocks_count,
 					'blocks_activation_status' => $blocks_status,
 				);
-				
+
 				error_log( print_r( $default_stats, true ) );
 
 				// Active widgets data to analytics.
@@ -255,24 +255,24 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			/* Action to get total blocks count */
 			if ( 'done' !== get_option( 'spectra_blocks_count_status' ) ) {
 
-				error_log( "Step 1 - Collect block count" );
+				error_log( 'Step 1 - Collect block count' );
 
 				update_option( 'spectra_blocks_count_status', 'processing' );
 
 				$posts_ids = get_posts(
 					array(
-						'post_type'      	=> 'any',
-						'numberposts' 		=> -1,
-						'post_status'    	=> 'publish',
-						'fields'      		=> 'ids',
+						'post_type'   => 'any',
+						'numberposts' => -1,
+						'post_status' => 'publish',
+						'fields'      => 'ids',
 					)
 				);
 
 				foreach ( $posts_ids as $post_id ) {
 					$this->collect_spectra_blocks_count->push_to_queue(
 						array(
-							'data' => $post_id,
-							'list_blocks' => UAGB_Helper::$block_list
+							'data'        => $post_id,
+							'list_blocks' => UAGB_Helper::$block_list,
 						)
 					);
 				}
