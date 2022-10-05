@@ -50,7 +50,7 @@
 
 		> span {
 			width: auto;
-			height: auto;
+			height: 39.852px;
 			padding: 6px 12px;
 		}
 	}
@@ -70,11 +70,11 @@
 
 		> span {
 			width: auto;
-			height: auto;
+			height: 39.852px;
 			padding: 6px 12px;
 		}
 
-		.dashicon {
+		.dashicon::before {
 			vertical-align: middle;
 		}
 	}
