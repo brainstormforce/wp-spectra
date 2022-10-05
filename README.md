@@ -174,7 +174,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
 * Fix: Icon List - Text Alignment not working properly on front-end.
 * Fix: Form - Backward Compatibility Stylings Issue on the editor.
-* Fix: Form - Proper spacing between required string and toggle button.
+* Fix: Form - Removed the required string and toggle button from the form block.
 * Fix: Advanced Column - Paragraph block wrapping with image when image size and position is changed.
 * Fix: Advanced Column: Image was not getting aligned center on the frontend and the editor.
 * Fix: Call To Action - Button css conflict with Newspaper theme.
@@ -185,7 +185,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Container - Z-index were not applied on the frontend.
 * Fix: FAQ - Throwing an undefined style issue in console when html anchor is used.
 * Fix: Info Box - Removed default image width for new users while maintaining a default width of 120px for old users only.
-
 
 ### 2.0.12 - FRIDAY, 16th SEPTEMBER 2022 ###
 * Improvement: How to block - Option to disable step links.
