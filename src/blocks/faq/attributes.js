@@ -88,12 +88,26 @@ const attributes = {
 			styleType: 'column-gap-type'
 		},
 	},
+	boxBgType: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'faq-bg-type'
+		},
+		default: 'transparent'
+	},
+	boxBgHoverType: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'faq-bg-hover-type'
+		},
+		default: 'transparent'
+	},
 	boxBgColor: {
 		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'faq-bg-color'
 		},
-		default: ''
+		default: '#F5F5F5'
 	},
 	boxBgHoverColor: {
 		type: 'string',

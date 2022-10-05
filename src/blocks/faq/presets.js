@@ -28,7 +28,7 @@ const presets = [
 			{ label: 'overallBorderRightRadius', value: 4},
 			{ label: 'overallBorderBottomRadius', value: 4},
 			{ label: 'overallBorderLeftRadius', value: 4},
-			{ label: 'boxBgColor' , value: 'transparent'},
+			{ label: 'boxBgType' , value: 'transparent'},
 			{ label: 'layout' , value: 'accordion'},
 			{ label: 'enableSeparator' , value: false}
         ],
@@ -56,7 +56,8 @@ const presets = [
 			{ label: 'overallBorderRightRadius', value: 4},
 			{ label: 'overallBorderBottomRadius', value: 4},
 			{ label: 'overallBorderLeftRadius', value: 4},
-			{ label: 'boxBgColor' , value: '#F2F5F7'},
+			{ label: 'boxBgType' , value: 'color'},
+			{ label: 'boxBgHoverType' , value: 'color'},
 			{ label: 'layout' , value: 'accordion'},
 			{ label: 'enableSeparator' , value: false}
         ],
@@ -84,7 +85,7 @@ const presets = [
 			{ label: 'overallBorderRightRadius', value: 5},
 			{ label: 'overallBorderBottomRadius', value: 5},
 			{ label: 'overallBorderLeftRadius', value: 5},
-			{ label: 'boxBgColor' , value: 'transparent'},
+			{ label: 'boxBgType' , value: 'transparent'},
 			{ label: 'layout' , value: 'grid'},
 			{ label: 'enableSeparator' , value: true}
         ],
@@ -112,7 +113,8 @@ const presets = [
 			{ label: 'overallBorderRightRadius', value: 5},
 			{ label: 'overallBorderBottomRadius', value: 5},
 			{ label: 'overallBorderLeftRadius', value: 5},
-			{ label: 'boxBgColor' , value: '#F5F5F5'},
+			{ label: 'boxBgType' , value: 'color'},
+			{ label: 'boxBgHoverType' , value: 'color'},
 			{ label: 'layout' , value: 'grid'},
 			{ label: 'enableSeparator' , value: true}
         ],

@@ -25,6 +25,8 @@ function styling( props ) {
 		columnsGapMobile,
 		align,
 		enableSeparator,
+		boxBgType,
+		boxBgHoverType,
 		boxBgColor,
 		boxBgHoverColor,
 		overallBorderHColor,
@@ -155,11 +157,11 @@ function styling( props ) {
 			'grid-row-gap': generateCSSUnit( getFallbackNumber( rowsGap, 'rowsGap', blockName ), rowsGapUnit ),
 		},
 		' .uagb-faq-item': {
-			'background-color': boxBgColor,
+			'background-color': ( boxBgType === 'color' ) ? boxBgColor : 'transparent',
 			...borderCSS
 		},
 		' .uagb-faq-item:hover': {
-			'background-color': boxBgHoverColor,
+			'background-color': ( boxBgHoverType === 'color' ) ? boxBgHoverColor : 'transparent',
 			'border-color': overallBorderHColor,
 		},
 		' .uagb-faq-item .uagb-question': {

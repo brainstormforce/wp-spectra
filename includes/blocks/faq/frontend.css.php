@@ -84,12 +84,12 @@ $selectors = array(
 	),
 	' .uagb-faq-item'                                     => array_merge(
 		array(
-			'background-color' => $attr['boxBgColor'],
+			'background-color' => ( 'color' === $attr['boxBgType'] ) ? $attr['boxBgColor'] : 'transparent',
 		),
 		$border
 	),
 	' .uagb-faq-item:hover'                               => array(
-		'background-color' => $attr['boxBgHoverColor'],
+		'background-color' => ( 'color' === $attr['boxBgHoverType'] ) ? $attr['boxBgHoverColor'] : 'transparent',
 		'border-color'     => ! empty( $attr['overallBorderHColor'] ) ? $attr['overallBorderHColor'] : $attr['borderHoverColor'],
 	),
 	' .uagb-faq-item .uagb-question'                      => array(
