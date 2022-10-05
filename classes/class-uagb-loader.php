@@ -222,7 +222,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 				$this->collect_spectra_blocks_count->complete();
 			}
 
-			if ( 'done' === $count_status && get_option( 'spectra_settings_data' ) && get_option( 'get_spectra_block_count' ) ) {
+			if ( 'done' === $count_status && get_option( 'spectra_settings_data' ) && get_option( 'get_spectra_block_count' ) && get_option( 'spectra_saved_blocks_settings' ) ) {
 
 				$settings_data = get_option( 'spectra_settings_data' );
 				$blocks_count  = get_option( 'get_spectra_block_count' );
