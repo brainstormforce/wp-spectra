@@ -115,6 +115,8 @@ const Settings = ( props ) => {
 		seperatorThickness,
 		thicknessUnit,
 		ctaType,
+		ctaBgType,
+		ctaBgHoverType,
 		ctaLink,
 		ctaTarget,
 		ctaIcon,
@@ -2320,20 +2322,49 @@ const Settings = ( props ) => {
 														} }
 														setAttributes={ setAttributes }
 													/>
-													<AdvancedPopColorControl
-														label={ __(
-															'Background Color',
-															'ultimate-addons-for-gutenberg'
-														) }
-														colorValue={
-															ctaBgColor ? ctaBgColor : ''
-														}
-														data={ {
-															value: ctaBgColor,
-															label: 'ctaBgColor',
-														} }
+													<MultiButtonsControl
 														setAttributes={ setAttributes }
+														label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
+														data={ {
+															value: ctaBgType,
+															label: 'ctaBgType',
+														} }
+														className="uagb-multi-button-alignment-control"
+														options={ [
+															{
+																value: 'transparent',
+																label: __(
+																	'Transparent',
+																	'ultimate-addons-for-gutenberg'
+																),
+															},
+															{
+																value: 'color',
+																label: __(
+																	'Color',
+																	'ultimate-addons-for-gutenberg'
+																),
+															},
+														] }
 													/>
+													{ 'color' === ctaBgType && (
+														<>
+															<AdvancedPopColorControl
+																label={ __(
+																	'Background Color',
+																	'ultimate-addons-for-gutenberg'
+																) }
+																colorValue={
+																	ctaBgColor ? ctaBgColor : ''
+																}
+																data={ {
+																	value: ctaBgColor,
+																	label: 'ctaBgColor',
+																} }
+																setAttributes={ setAttributes }
+															/>
+														</>
+													) }
 												</>
 											}
 											hover={
@@ -2354,22 +2385,49 @@ const Settings = ( props ) => {
 														} }
 														setAttributes={ setAttributes }
 													/>
-													<AdvancedPopColorControl
-														label={ __(
-															'Background Color',
-															'ultimate-addons-for-gutenberg'
-														) }
-														colorValue={
-															ctaBgHoverColor
-																? ctaBgHoverColor
-																: ''
-														}
-														data={ {
-															value: ctaBgHoverColor,
-															label: 'ctaBgHoverColor',
-														} }
+													<MultiButtonsControl
 														setAttributes={ setAttributes }
+														label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
+														data={ {
+															value: ctaBgHoverType,
+															label: 'ctaBgHoverType',
+														} }
+														className="uagb-multi-button-alignment-control"
+														options={ [
+															{
+																value: 'transparent',
+																label: __(
+																	'Transparent',
+																	'ultimate-addons-for-gutenberg'
+																),
+															},
+															{
+																value: 'color',
+																label: __(
+																	'Color',
+																	'ultimate-addons-for-gutenberg'
+																),
+															},
+														] }
 													/>
+													{ 'color' === ctaBgHoverType && (
+														<>
+															<AdvancedPopColorControl
+																label={ __(
+																	'Background Color',
+																	'ultimate-addons-for-gutenberg'
+																) }
+																colorValue={
+																	ctaBgHoverColor ? ctaBgHoverColor : ''
+																}
+																data={ {
+																	value: ctaBgHoverColor,
+																	label: 'ctaBgHoverColor',
+																} }
+																setAttributes={ setAttributes }
+															/>
+														</>
+													) }
 												</>
 											}
 										/>

@@ -582,6 +582,20 @@
 		type: 'string',
 		default: 'none',
 	},
+	ctaBgType:{
+		type:'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-background-type'
+		}
+	},
+	ctaBgHoverType:{
+		type:'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-hbackground-type'
+		}
+	},
 	ctaText: {
 		type: 'html',
 		default: 'Read More',

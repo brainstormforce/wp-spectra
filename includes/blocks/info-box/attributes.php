@@ -80,6 +80,8 @@ return array_merge(
 		'seperatorThickness'         => '2',
 		'thicknessUnit'              => 'px',
 		'ctaType'                    => 'none',
+		'ctaBgType'                  => 'color',
+		'ctaBgHoverType'             => 'color',
 		'ctaLinkColor'               => '',
 		'ctaFontSize'                => '',
 		'ctaFontSizeType'            => 'px',
