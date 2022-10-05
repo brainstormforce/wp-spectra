@@ -218,7 +218,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			if ( 'done' !== $count_status && 'processing' === $count_status && $this->collect_spectra_blocks_count->is_queue_empty() ) {
 				update_option( 'spectra_blocks_count_status', 'done' );
-				error_log( 'Step 1 - Completed' );
 				$this->collect_spectra_blocks_count->complete();
 			}
 
@@ -255,7 +254,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			/* Action to get total blocks count */
 			if ( 'done' !== get_option( 'spectra_blocks_count_status' ) ) {
 
-				error_log( 'Step 1 - Collect block count' );
+				delete_option( 'get_spectra_block_count' );
 
 				update_option( 'spectra_blocks_count_status', 'processing' );
 
