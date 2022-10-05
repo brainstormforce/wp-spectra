@@ -207,10 +207,10 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$this->collect_spectra_blocks_count = new \UAGB_Background_Process();
 
-			// delete_option( 'spectra_blocks_pages_counted' );
 			// delete_option( 'spectra_blocks_count_status' );
 			// delete_option( 'get_spectra_block_count' );
 			// delete_option( 'spectra_settings_data' );
+			// delete_option( 'spectra_saved_blocks_settings' );
 
 			add_action( 'spectra_total_blocks_count_action', array( $this, 'trigger_background_processing' ) );
 
@@ -222,14 +222,20 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 				$this->collect_spectra_blocks_count->complete();
 			}
 
-			error_log( $count_status );
-			error_log( print_r( get_option( 'spectra_settings_data' ), true ) );
-			error_log( print_r( get_option( 'get_spectra_block_count' ), true ) );
-
 			if ( 'done' === $count_status && get_option( 'spectra_settings_data' ) && get_option( 'get_spectra_block_count' ) ) {
 
-				error_log( "Step 2 - When status done send stats" );
-				error_log( print_r( get_option( 'get_spectra_block_count' ), true ) );
+				$settings_data = get_option( 'spectra_settings_data' );
+				$blocks_count  = get_option( 'get_spectra_block_count' );
+				$blocks_status = get_option( 'spectra_saved_blocks_settings' );
+
+				$default_stats['spectra_settings'] = array(
+					'spectra_version'          => UAGB_VER,
+					'settings_page_data'       => $settings_data,
+					'blocks_count'             => $blocks_count,
+					'blocks_activation_status' => $blocks_status,
+				);
+				
+				error_log( print_r( $default_stats, true ) );
 
 				// Active widgets data to analytics.
 				add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
@@ -288,7 +294,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$settings_data = get_option( 'spectra_settings_data' );
 			$blocks_count  = get_option( 'get_spectra_block_count' );
-			$blocks_status = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks' );
+			$blocks_status = get_option( 'spectra_saved_blocks_settings' );
 
 			$default_stats['spectra_settings'] = array(
 				'spectra_version'          => UAGB_VER,

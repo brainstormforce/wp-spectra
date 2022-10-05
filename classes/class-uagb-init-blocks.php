@@ -81,10 +81,10 @@ class UAGB_Init_Blocks {
 	 */
 	public function regenerate_analytics_data() {
 
-		delete_option( 'spectra_blocks_pages_counted' );
 		delete_option( 'spectra_blocks_count_status' );
 		delete_option( 'get_spectra_block_count' );
 		delete_option( 'spectra_settings_data' );
+		delete_option( 'spectra_saved_blocks_settings' );
 		delete_transient( 'spectra_background_process_action' );
 
 	}

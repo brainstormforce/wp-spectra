@@ -124,6 +124,9 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			$blocks       = UAGB_Helper::$block_list;
 			$saved_blocks = self::get_admin_settings_option( '_uagb_blocks' );
+
+			update_option( 'spectra_saved_blocks_settings', $saved_blocks );
+
 			if ( is_array( $blocks ) ) {
 				foreach ( $blocks as $slug => $data ) {
 					$_slug = str_replace( 'uagb/', '', $slug );
