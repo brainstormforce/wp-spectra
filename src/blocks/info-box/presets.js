@@ -82,7 +82,7 @@ const buttonsPresets = [
 			{ label: 'btnBorderRightWidthDesktop' },
 			{ label: 'ctaIcon' },
 			{ label: 'ctaIconSpace' },
-			{ label: 'ctaBgColor' },
+			{ label: 'ctaBgType' },
 			{ label: 'ctaBgHoverColor' },
 			{ label: 'ctaBtnLinkColor' },
 			{ label: 'ctaLinkHoverColor' },
@@ -92,6 +92,7 @@ const buttonsPresets = [
         value: 'preset-1',
         label: __( 'Preset 1', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'ctaBgType', value: 'color' },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 0 },
             { label: 'btnBorderTopRightRadius', value: 0 },
@@ -105,6 +106,7 @@ const buttonsPresets = [
         value: 'preset-2',
         label: __( 'Preset 2', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'ctaBgType', value: 'color' },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 5 },
             { label: 'btnBorderTopRightRadius', value: 5 },
@@ -117,6 +119,7 @@ const buttonsPresets = [
         value: 'preset-3',
         label: __( 'Preset 3', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'ctaBgType', value: 'color' },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 30 },
             { label: 'btnBorderTopRightRadius', value: 30 },
@@ -129,6 +132,7 @@ const buttonsPresets = [
         value: 'preset-4',
         label: __( 'Preset 4', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'ctaBgType', value: 'color' },
 			{ label: 'ctaIcon',  value: 'right-long' },
 			{ label: 'ctaIconSpace', value: 12 },
             { label: 'btnBorderStyle', value: 'none' },
@@ -143,8 +147,8 @@ const buttonsPresets = [
         value: 'preset-5',
         label: __( 'Preset 5', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'ctaBgColor', value: '#00000000' },
-			{ label: 'ctaBgHoverColor', value: '#3a3a3a' },
+			{ label: 'ctaBgType', value: 'transparent' },
+			{ label: 'ctaBgHoverType', value: 'color' },
 			{ label: 'ctaBtnLinkColor', value: '#0170b9' },
 			{ label: 'ctaLinkHoverColor', value: '#ffffff' },
 			{ label: 'btnBorderStyle', value: 'solid' },
@@ -164,8 +168,8 @@ const buttonsPresets = [
         value: 'preset-6',
         label: __( 'Preset 6', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'ctaBgColor', value: '#00000000' },
-			{ label: 'ctaBgHoverColor', value: '#3a3a3a' },
+			{ label: 'ctaBgType', value: 'transparent' },
+			{ label: 'ctaBgHoverType', value: 'color' },
 			{ label: 'ctaBtnLinkColor', value: '#0170b9' },
 			{ label: 'ctaLinkHoverColor', value: '#ffffff' },
 			{ label: 'btnBorderStyle', value: 'solid' },
@@ -185,8 +189,8 @@ const buttonsPresets = [
         value: 'preset-7',
         label: __( 'Preset 7', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'ctaBgColor', value: '#00000000' },
-			{ label: 'ctaBgHoverColor', value: '#3a3a3a' },
+			{ label: 'ctaBgType', value: 'transparent' },
+			{ label: 'ctaBgHoverType', value: 'color' },
 			{ label: 'ctaBtnLinkColor', value: '#0170b9' },
 			{ label: 'ctaLinkHoverColor', value: '#ffffff' },
 			{ label: 'btnBorderStyle', value: 'solid' },
@@ -206,8 +210,8 @@ const buttonsPresets = [
         value: 'preset-8',
         label: __( 'Preset 8', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'ctaBgColor', value: '#00000000' },
-			{ label: 'ctaBgHoverColor', value: '#3a3a3a' },
+			{ label: 'ctaBgType', value: 'transparent' },
+			{ label: 'ctaBgHoverType', value: 'color' },
 			{ label: 'ctaBtnLinkColor', value: '#0170b9' },
 			{ label: 'ctaLinkHoverColor', value: '#ffffff' },
 			{ label: 'ctaIcon',  value: 'right-long' },
