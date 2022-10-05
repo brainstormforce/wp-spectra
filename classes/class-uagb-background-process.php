@@ -1,8 +1,6 @@
 <?php
 
-// require_once plugin_dir_path( __DIR__ ) . 'lib/wp-background-processing/class-spectra-wp-background-process.php';
-
-class UAGB_Background_Process extends \Spectra_WP_Background_Process {
+class UAGB_Background_Process extends \UAGB_WP_Background_Process {
 
 	/**
 	 * @var string
@@ -25,15 +23,12 @@ class UAGB_Background_Process extends \Spectra_WP_Background_Process {
 	 */
 	public function task( $item ) {
 
-		error_log( "This is task function" );
-		error_log( $item['data'] );
-
 		$post_id = $item['data'];
 		$list_blocks = $item['list_blocks'];
 
 		$spectra_block_count = 0;
 		$blocks_count        = array();
-		$new_blocks_count        = array();
+		$new_blocks_count    = array();
 		$all_blocks_data     = array();
 
 		$saved_block_count = get_option( 'get_spectra_block_count', 0 );

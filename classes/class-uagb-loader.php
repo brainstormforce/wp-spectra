@@ -198,21 +198,10 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			add_filter( 'rest_pre_dispatch', array( $this, 'rest_pre_dispatch' ), 10, 3 );
 
-			if ( 'done' === get_option( 'spectra_blocks_count_status' ) && get_option( 'spectra_settings_data' ) && get_option( 'get_spectra_block_count' ) ) {
-
-				error_log( "Step 2 - When status done send stats" );
-
-				error_log( print_r( get_option( 'get_spectra_block_count' ), true ) );
-
-				// Active widgets data to analytics.
-				add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
-
-			}
-
 			// Load background processing class.
 			if ( ! class_exists( 'UAGB_Background_Process' ) ) {
-				require_once UAGB_DIR . 'lib/wp-background-processing/class-spectra-wp-async-request.php';
-				require_once UAGB_DIR . 'lib/wp-background-processing/class-spectra-wp-background-process.php';
+				require_once UAGB_DIR . 'lib/wp-background-processing/class-uagb-wp-async-request.php';
+				require_once UAGB_DIR . 'lib/wp-background-processing/class-uagb-wp-background-process.php';
 				require_once UAGB_DIR . 'classes/class-uagb-background-process.php';
 			}
 
@@ -225,7 +214,27 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			add_action( 'spectra_total_blocks_count_action', array( $this, 'trigger_background_processing' ) );
 
-			// error_log( print_r( get_option( 'get_spectra_block_count' ), true ) );
+			$count_status = get_option( 'spectra_blocks_count_status' );
+
+			if ( 'done' !== $count_status && 'processing' === $count_status && $this->collect_spectra_blocks_count->is_queue_empty() ) {
+				update_option( 'spectra_blocks_count_status', 'done' );
+				error_log( "Step 1 - Completed" );
+				$this->collect_spectra_blocks_count->complete();
+			}
+
+			error_log( $count_status );
+			error_log( print_r( get_option( 'spectra_settings_data' ), true ) );
+			error_log( print_r( get_option( 'get_spectra_block_count' ), true ) );
+
+			if ( 'done' === $count_status && get_option( 'spectra_settings_data' ) && get_option( 'get_spectra_block_count' ) ) {
+
+				error_log( "Step 2 - When status done send stats" );
+				error_log( print_r( get_option( 'get_spectra_block_count' ), true ) );
+
+				// Active widgets data to analytics.
+				add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
+
+			}
 
 		}
 
@@ -241,6 +250,8 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			if ( 'done' !== get_option( 'spectra_blocks_count_status' ) ) {
 
 				error_log( "Step 1 - Collect block count" );
+
+				update_option( 'spectra_blocks_count_status', 'processing' );
 
 				$posts_ids = get_posts(
 					array(
@@ -260,23 +271,9 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 					);
 				}
 
-				error_log( print_r( $posts_ids, true ) );
-
 				$this->collect_spectra_blocks_count->save()->dispatch();
 
-				error_log( $this->collect_spectra_blocks_count->is_process_running() );
-
-				if ( $this->collect_spectra_blocks_count->is_queue_empty() ) {
-					update_option( 'spectra_blocks_count_status', 'done' );
-					error_log( "Step 1 - Completed" );
-					$this->collect_spectra_blocks_count->complete();
-				}
-
-				error_log( "Done" );
-
 			}
-
-			// $blocks_status = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks' );
 
 		}
 

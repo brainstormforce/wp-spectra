@@ -106,29 +106,23 @@ class Admin_Menu {
 			add_filter( 'admin_footer_text', array( $this, 'add_footer_link' ), 99 );
 		}
 
+		$count_status = get_option( 'spectra_blocks_count_status' );
+
+		// Set transient for triggering analytics action.
 		$action_transient = (bool) get_transient( 'spectra_analytics_action' );
-
-		// error_log( $action_transient );
-
-		if ( 'done' === get_option( 'spectra_blocks_count_status' ) ) {
-			// error_log( "Step 3 - Set transient to delete data" );
+		if ( 'done' === $count_status ) {
 			$action_transient = (bool) get_transient( 'spectra_analytics_action' );
-
 			if ( false === $action_transient ) {
-				set_transient( 'spectra_analytics_action', get_option( 'spectra_blocks_count_status' ), 2 * WEEK_IN_SECONDS );
-				do_action( 'spectra_analytics_count_actions' );
+				set_transient( 'spectra_analytics_action', $count_status, 2 * WEEK_IN_SECONDS );
+				do_action( 'spectra_analytics_complete_action' );
 			}
-
 		}
 
-		$count_transient = (bool) get_transient( 'spectra_transient_for_count' );
-
-		if ( 'done' !== get_option( 'spectra_blocks_count_status' ) && false === $count_transient ) {
-
+		// Set transient for triggering the block count action.
+		$count_transient = (bool) get_transient( 'spectra_background_process_action' );
+		if ( 'done' !== $count_status && false === $count_transient ) {
 			do_action( 'spectra_total_blocks_count_action' );
-
-			set_transient( 'spectra_transient_for_count', 'done', 2 * WEEK_IN_SECONDS );
-
+			set_transient( 'spectra_background_process_action', 'done', 4 * WEEK_IN_SECONDS );
 		}
 
 	}
