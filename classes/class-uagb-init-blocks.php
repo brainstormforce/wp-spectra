@@ -65,10 +65,6 @@ class UAGB_Init_Blocks {
 			add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
 		}
 
-		add_action( 'spectra_total_blocks_count_action', array( $this, 'blocks_count_logic' ) );
-
-		add_action( 'spectra_analytics_count_actions', array( $this, 'send_spectra_specific_stats' ) );
-
 	}
 
 	/**
@@ -146,9 +142,6 @@ class UAGB_Init_Blocks {
 			}
 			$page++;
 			update_option( 'spectra_blocks_pages_counted', $page );
-			if ( function_exists( 'as_enqueue_async_action' ) ) {
-				as_enqueue_async_action( 'spectra_total_blocks_count_action' );
-			}
 		} else {
 			update_option( 'spectra_blocks_count_status', 'done' );
 		}

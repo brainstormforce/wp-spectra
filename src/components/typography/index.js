@@ -16,7 +16,7 @@ import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
-import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
+import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 
 // Export for ease of importing in individual blocks.
 export { TypographyStyles };
@@ -139,7 +139,7 @@ const TypographyControl = ( props ) => {
 
 	// Function to get the Block's default Typography Values.
 	const getBlockTypographyValue = () => {
-		const selectedBlockName = getSelectedBlock()?.name.replace( 'uagb/', '' );
+		const selectedBlockName = getSelectedBlock()?.name.split( '/' ).pop();
 		let defaultValues = false;
 		if ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ] ) {
 			attributeNames.forEach( ( attributeName ) => {

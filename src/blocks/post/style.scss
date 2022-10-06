@@ -14,6 +14,7 @@
 	.uagb-post__inner-wrap {
 
 		.uagb-post__taxonomy {
+			display: inline-block;
 
 			&.default {
 				margin: 5px 5px 5px 0;
@@ -298,7 +299,6 @@
 			&.default {
 				position: relative;
 				z-index: 999;
-				margin-top: 20px;
 			}
 		}
 	}
