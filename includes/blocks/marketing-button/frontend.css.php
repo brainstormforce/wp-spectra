@@ -103,13 +103,17 @@ $selectors = array(
 	'.uagb-marketing-btn__icon-before .uagb-marketing-btn__icon-wrap svg' => array( // For backword compatibility.
 		'margin-right' => UAGB_Helper::get_css_value( $icon_space_fallback, 'px' ),
 	),
+	' .uagb-marketing-btn__title-wrap' => array( // For backword compatibility.
+		'align-items' => 'center',
+	),
+	' .uagb-marketing-btn__title-wrap .uagb-marketing-btn__icon-wrap svg' => array( // For backword compatibility.
+		'vertical-align' => 'sub',
+	),
 );
 
 $selectors[ ' .uagb-marketing-btn__link .uagb-marketing-btn__title' ] = array(
 	'color' => $attr['titleColor'],
 );
-
-
 
 $selectors[ ' .uagb-marketing-btn__link:hover .uagb-marketing-btn__title' ] = array(
 	'color' => $attr['titleHoverColor'],
