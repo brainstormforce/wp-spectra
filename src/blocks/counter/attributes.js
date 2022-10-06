@@ -16,15 +16,15 @@ const attributes = {
 	},
 	align: {
 		type: 'string',
-		default: 'left',
+		default: 'center',
 	},
 	alignTablet: {
 		type: 'string',
-		default: 'left',
+		default: '',
 	},
 	alignMobile: {
 		type: 'string',
-		default: 'left',
+		default: '',
 	},
 	animationDuration: {
 		type: 'number',
