@@ -65,6 +65,8 @@ return array_merge(
 		'ctaFontWeight'                   => '',
 		'ctaLoadGoogleFonts'              => false,
 		'ctaBtnLinkColor'                 => '',
+		'ctaBgType'                       => 'color',
+		'ctaBgHoverType'                  => 'color',
 		'ctaBgColor'                      => '',
 		'ctaBgHoverColor'                 => '',
 		'ctaBtnVertPadding'               => '',
