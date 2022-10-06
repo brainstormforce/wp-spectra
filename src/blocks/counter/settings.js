@@ -338,7 +338,7 @@ export default function Settings( props ) {
 					{
 						value: 'bars',
 						label: __(
-							'Bars',
+							'Bar',
 							'ultimate-addons-for-gutenberg'
 						),
 					},
@@ -1304,7 +1304,7 @@ export default function Settings( props ) {
 
 	const barStylePanel = (
 		<UAGAdvancedPanelBody
-			title={__( 'Bars', 'ultimate-addons-for-gutenberg' )}
+			title={__( 'Bar', 'ultimate-addons-for-gutenberg' )}
 			initialOpen={ false }
 		>
 			<Range
