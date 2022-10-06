@@ -181,6 +181,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Carousel - Column gap was not same on the front-end after upgrading from v1.25.6 when image is set as background.
 * Fix: Post Masonry - Row gap and column gap lable changd.
 * Fix: Post Masonry - Column Gap was impacting other post masonry, post grid, post carousel blocks.
+* Fix: Forms - Settings uneven spacing issue and Hide border colors when style set to default.
 
 ### 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 ###
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
