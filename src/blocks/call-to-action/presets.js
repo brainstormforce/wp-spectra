@@ -64,7 +64,7 @@ const buttonsPresetsCTA = [
 		defaultPresetAttributes: [
 			{ label: 'showIcon' },
 			{ label: 'ctaIconSpace' },
-			{ label: 'ctaBgColor' },
+			{ label: 'ctaBgType' },
 			{ label: 'ctaBgHoverColor' },
 			{ label: 'ctaBtnLinkColor' },
 			{ label: 'ctaLinkHoverColor' },
@@ -134,7 +134,7 @@ const buttonsPresetsCTA = [
         value: 'preset-5',
         label: __( 'Preset 5', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'ctaBgColor', value: '#00000000' },
+			{ label: 'ctaBgType', value: 'transparent' },
 			{ label: 'ctaBgHoverColor', value: '#3a3a3a' },
 			{ label: 'ctaBtnLinkColor', value: '#0170b9' },
 			{ label: 'ctaLinkHoverColor', value: '#ffffff' },
@@ -155,7 +155,7 @@ const buttonsPresetsCTA = [
         value: 'preset-6',
         label: __( 'Preset 6', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'ctaBgColor', value: '#00000000' },
+			{ label: 'ctaBgType', value: 'transparent' },
 			{ label: 'ctaBgHoverColor', value: '#3a3a3a' },
 			{ label: 'ctaBtnLinkColor', value: '#0170b9' },
 			{ label: 'ctaLinkHoverColor', value: '#ffffff' },
@@ -176,7 +176,7 @@ const buttonsPresetsCTA = [
         value: 'preset-7',
         label: __( 'Preset 7', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'ctaBgColor', value: '#00000000' },
+			{ label: 'ctaBgType', value: 'transparent' },
 			{ label: 'ctaBgHoverColor', value: '#3a3a3a' },
 			{ label: 'ctaBtnLinkColor', value: '#0170b9' },
 			{ label: 'ctaLinkHoverColor', value: '#ffffff' },
@@ -197,7 +197,7 @@ const buttonsPresetsCTA = [
         value: 'preset-8',
         label: __( 'Preset 8', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'ctaBgColor', value: '#00000000' },
+			{ label: 'ctaBgType', value: 'transparent' },
 			{ label: 'ctaBgHoverColor', value: '#3a3a3a' },
 			{ label: 'ctaBtnLinkColor', value: '#0170b9' },
 			{ label: 'ctaLinkHoverColor', value: '#ffffff' },
@@ -237,7 +237,7 @@ const buttonsPresetsAdditionalButton = [
 			{ label: 'secondCtaBorderRightWidthDesktop' },
 			{ label: 'showSecondIcon' },
 			{ label: 'secondCtaIconSpace' },
-			{ label: 'secondCtaBackground' },
+			{ label: 'secondCtaBgType' },
 			{ label: 'secondCtaHoverBackground' },
 			{ label: 'secondCtaColor' },
 			{ label: 'secondCtaHoverColor' },
@@ -298,7 +298,7 @@ const buttonsPresetsAdditionalButton = [
         value: 'preset-5',
         label: __( 'Preset 5', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'secondCtaBackground', value: '#00000000' },
+			{ label: 'secondCtaBgType', value: 'transparent' },
 			{ label: 'secondCtaHoverBackground', value: '#3a3a3a' },
 			{ label: 'secondCtaColor', value: '#0170b9' },
 			{ label: 'secondCtaHoverColor', value: '#ffffff' },
@@ -319,7 +319,7 @@ const buttonsPresetsAdditionalButton = [
         value: 'preset-6',
         label: __( 'Preset 6', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'secondCtaBackground', value: '#00000000' },
+			{ label: 'secondCtaBgType', value: 'transparent' },
 			{ label: 'secondCtaHoverBackground', value: '#3a3a3a' },
 			{ label: 'secondCtaColor', value: '#0170b9' },
 			{ label: 'secondCtaHoverColor', value: '#ffffff' },
@@ -341,7 +341,7 @@ const buttonsPresetsAdditionalButton = [
         value: 'preset-7',
         label: __( 'Preset 7', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'secondCtaBackground', value: '#00000000' },
+			{ label: 'secondCtaBgType', value: 'transparent' },
 			{ label: 'secondCtaHoverBackground', value: '#3a3a3a' },
 			{ label: 'secondCtaColor', value: '#0170b9' },
 			{ label: 'secondCtaHoverColor', value: '#ffffff' },
@@ -362,7 +362,7 @@ const buttonsPresetsAdditionalButton = [
         value: 'preset-8',
         label: __( 'Preset 8', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'secondCtaBackground', value: '#00000000' },
+			{ label: 'secondCtaBgType', value: 'transparent' },
 			{ label: 'secondCtaHoverBackground', value: '#3a3a3a' },
 			{ label: 'secondCtaColor', value: '#0170b9' },
 			{ label: 'secondCtaHoverColor', value: '#ffffff' },
