@@ -178,6 +178,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Forms - Phone height and size enlarged issue on the editor.
 * Fix: Forms - Fixed phone dropdown icon position on the frontend.
 * Fix: Forms - Translation of select field text on frontend.
+* Fix: Forms - Removed the required string and toggle button from the form block.
 * Fix: Post Carousel - Column gap was not same on the front-end after upgrading from v1.25.6 when image is set as background.
 * Fix: Post Masonry - Row gap and column gap lable changd.
 * Fix: Post Masonry - Column Gap was impacting other post masonry, post grid, post carousel blocks.
