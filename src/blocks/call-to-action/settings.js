@@ -215,6 +215,8 @@ const Settings = ( props ) => {
 		secondCtaLetterSpacingTablet,
 		secondCtaLetterSpacingMobile,
 		secondCtaLetterSpacingType,
+		showIcon,
+		showSecondIcon,
 	} = attributes;
 
 	let loadCtaGoogleFonts;
@@ -402,7 +404,17 @@ const Settings = ( props ) => {
 						setAttributes( { secondCtaTarget: ! secondCtaTarget } )
 					}
 				/>
-				<UAGIconPicker
+				<ToggleControl
+					label={ __(
+						'Show Icon',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ showSecondIcon }
+					onChange={ () =>
+						setAttributes( { showSecondIcon: ! showSecondIcon } )
+					}
+				/>
+				{ showSecondIcon && <UAGIconPicker
 					label={ __(
 						'Icon',
 						'ultimate-addons-for-gutenberg'
@@ -411,8 +423,8 @@ const Settings = ( props ) => {
 					onChange={ ( value ) =>
 						setAttributes( { secondCtaIcon: value } )
 					}
-				/>
-				{ secondCtaIcon !== '' && (
+				/> }
+				{ showSecondIcon && secondCtaIcon !== '' && (
 				<>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -878,9 +890,19 @@ const Settings = ( props ) => {
 								setAttributes( { ctaTarget: ! ctaTarget } )
 							}
 						/>
+						<ToggleControl
+							label={ __(
+								'Show Icon',
+								'ultimate-addons-for-gutenberg'
+							) }
+							checked={ showIcon }
+							onChange={ () =>
+								setAttributes( { showIcon: ! showIcon } )
+							}
+						/>
 					</>
 				) }
-				{ ctaType !== 'all' && ctaType !== 'none' && (
+				{ showIcon && ctaType !== 'all' && ctaType !== 'none' && (
 					<>
 						<UAGIconPicker
 							label={ __(

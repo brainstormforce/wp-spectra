@@ -301,6 +301,20 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	showIcon: {
+		type: 'boolean',
+		default: true,
+		UAGCopyPaste: {
+			styleType: 'btn-show-icon'
+		},
+	},
+	showSecondIcon: {
+		type: 'boolean',
+		default: true,
+		UAGCopyPaste: {
+			styleType: 'btn-second-show-icon'
+		},
+	},
 	ctaIcon: {
 		type: 'string',
 		default: '',

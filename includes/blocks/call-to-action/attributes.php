@@ -51,6 +51,8 @@ return array_merge(
 		'descSpaceType'                   => 'px',
 		'buttonAlign'                     => '',
 		'ctaTarget'                       => false,
+		'showIcon'                        => true,
+		'showSecondIcon'                  => true,
 		'ctaIconPosition'                 => 'after',
 		'ctaIconSpace'                    => 5,
 		'ctaIconSpaceTablet'              => '',
