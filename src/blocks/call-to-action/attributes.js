@@ -303,21 +303,21 @@ const attributes = {
 	},
 	showIcon: {
 		type: 'boolean',
-		default: true,
+		default: false,
 		UAGCopyPaste: {
 			styleType: 'btn-show-icon'
 		},
 	},
 	showSecondIcon: {
 		type: 'boolean',
-		default: true,
+		default: false,
 		UAGCopyPaste: {
 			styleType: 'btn-second-show-icon'
 		},
 	},
 	ctaIcon: {
 		type: 'string',
-		default: '',
+		default: 'right-long',
 	},
 	ctaIconPosition: {
 		type: 'string',
@@ -852,7 +852,7 @@ const attributes = {
 	},
 	secondCtaIcon: {
 		type: 'string',
-		default: '',
+		default: 'right-long',
 	},
 	secondCtaIconPosition: {
 		type: 'string',

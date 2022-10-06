@@ -62,7 +62,7 @@ const buttonsPresetsCTA = [
 	},
 	{
 		defaultPresetAttributes: [
-			{ label: 'ctaIcon' },
+			{ label: 'showIcon' },
 			{ label: 'ctaIconSpace' },
 			{ label: 'ctaBgColor' },
 			{ label: 'ctaBgHoverColor' },
@@ -120,7 +120,7 @@ const buttonsPresetsCTA = [
         value: 'preset-4',
         label: __( 'Preset 4', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'ctaIcon',  value: 'right-long' },
+			{ label: 'showIcon',  value: true },
 			{ label: 'ctaIconSpace', value: 12 },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 5 },
@@ -201,7 +201,7 @@ const buttonsPresetsCTA = [
 			{ label: 'ctaBgHoverColor', value: '#3a3a3a' },
 			{ label: 'ctaBtnLinkColor', value: '#0170b9' },
 			{ label: 'ctaLinkHoverColor', value: '#ffffff' },
-			{ label: 'ctaIcon',  value: 'right-long' },
+			{ label: 'showIcon',  value: true },
 			{ label: 'ctaIconSpace', value: 12 },
 			{ label: 'btnBorderStyle', value: 'solid' },
             { label: 'btnBorderTopLeftRadius', value: 5 },
@@ -235,7 +235,7 @@ const buttonsPresetsAdditionalButton = [
 			{ label: 'secondCtaBorderTopWidthDesktop' },
 			{ label: 'secondCtaBorderLeftWidthDesktop' },
 			{ label: 'secondCtaBorderRightWidthDesktop' },
-			{ label: 'secondCtaIcon' },
+			{ label: 'showSecondIcon' },
 			{ label: 'secondCtaIconSpace' },
 			{ label: 'secondCtaBackground' },
 			{ label: 'secondCtaHoverBackground' },
@@ -284,7 +284,7 @@ const buttonsPresetsAdditionalButton = [
         value: 'preset-4',
         label: __( 'Preset 4', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'secondCtaIcon',  value: 'right-long' },
+			{ label: 'showSecondIcon',  value: true },
 			{ label: 'secondCtaIconSpace', value: 12 },
             { label: 'secondCtaBorderStyle', value: 'none' },
             { label: 'secondCtaBorderTopLeftRadius', value: 5 },
@@ -366,7 +366,7 @@ const buttonsPresetsAdditionalButton = [
 			{ label: 'secondCtaHoverBackground', value: '#3a3a3a' },
 			{ label: 'secondCtaColor', value: '#0170b9' },
 			{ label: 'secondCtaHoverColor', value: '#ffffff' },
-			{ label: 'secondCtaIcon',  value: 'right-long' },
+			{ label: 'showSecondIcon',  value: true },
 			{ label: 'secondCtaIconSpace', value: 12 },
 			{ label: 'secondCtaBorderStyle', value: 'solid' },
             { label: 'secondCtaBorderTopLeftRadius', value: 5 },
