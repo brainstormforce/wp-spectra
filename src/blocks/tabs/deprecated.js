@@ -82,14 +82,14 @@ const attributes = {
 	},
 	borderWidth: {
 		type: 'number',
-		default:1
+		default: 1,
 	},
 	borderRadius: {
 		type: 'number',
 	},
 	borderColor: {
 		type: 'string',
-		default:'#e0e0e0'
+		default: '#e0e0e0',
 	},
 	borderHoverColor: {
 		type: 'string',
