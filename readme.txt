@@ -172,6 +172,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 = 2.0.14 - THURSDAY, 29th SEPTEMBER 2022 =
 * Fix: Tabs - Tabs border is inconsistent inside the editor as well as on the frontend.
+* FIx: Marketing Button - Backward Compatibility title color and hover issue on the frontend.
 
 = 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 =
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
