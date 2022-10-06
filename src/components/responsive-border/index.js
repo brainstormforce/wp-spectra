@@ -329,7 +329,7 @@ const ResponsiveBorder = ( props ) => {
 				} }
 				help={ borderRadiusHelp ? borderRadiusHelp : false }
 			/>
-			{ 'none' !== borderStyle && (
+			{ 'none' !== borderStyle && '' !== borderStyle && (
 				<UAGTabsControl
 					tabs={ tabsToUse }
 					normal={ tabOutputNormal }
