@@ -37,7 +37,7 @@ const attributes = {
 	// heading.
 	heading: {
 		type: 'string',
-		default: '',
+		default: __( 'Add Your Title Here…', 'ultimate-addons-for-gutenberg' ),
 	},
 	headingTag: {
 		type: 'string',

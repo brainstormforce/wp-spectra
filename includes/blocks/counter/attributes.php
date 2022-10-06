@@ -25,7 +25,7 @@ return array_merge(
 		'animationDuration'         => 25,
 		'thousandSeparator'         => '',
 		// heading.
-		'heading'                   => '',
+		'heading'                   => __( 'Add Your Title Here…', 'ultimate-addons-for-gutenberg' ),
 		'headingTag'                => '',
 		'headingFontFamily'         => 'Default',
 		'headingFontWeight'         => '',
