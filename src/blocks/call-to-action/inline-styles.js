@@ -549,6 +549,8 @@ function CtaStyle( props ) {
 	if ( ctaType === 'text' ) {
 		selectors[' a.uagb-cta__button-link-wrapper']        = {
 			'color' : ctaBtnLinkColor,
+			'border-style' : 'none !important',
+			'text-decoration' : 'underline'
 		};
 		selectors[' a.uagb-cta__button-link-wrapper:hover '] = {
 			'color' : ctaLinkHoverColor,
