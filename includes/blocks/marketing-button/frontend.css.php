@@ -105,16 +105,16 @@ $selectors = array(
 	),
 );
 
-$selectors[ ' ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
+$selectors[ ' .uagb-marketing-btn__link .uagb-marketing-btn__title' ] = array(
 	'color' => $attr['titleColor'],
 );
 
 
 
-$selectors[ ' .uagb-marketing-btn__link:hover ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
+$selectors[ ' .uagb-marketing-btn__link:hover .uagb-marketing-btn__title' ] = array(
 	'color' => $attr['titleHoverColor'],
 );
-$selectors[ ' .uagb-marketing-btn__link:focus ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
+$selectors[ ' .uagb-marketing-btn__link:focus .uagb-marketing-btn__title' ] = array(
 	'color' => $attr['titleHoverColor'],
 );
 
