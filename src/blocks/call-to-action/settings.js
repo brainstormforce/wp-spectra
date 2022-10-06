@@ -1259,18 +1259,20 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ ctaBgHoverColor ? ctaBgHoverColor : '' }
-					data={ {
-						value: ctaBgHoverColor,
-						label: 'ctaBgHoverColor',
-					} }
-					setAttributes={ setAttributes }
-				/>
+				{ ( ctaBgHoverType === 'color' )  &&
+					<AdvancedPopColorControl
+						label={ __(
+							'Background Color',
+							'ultimate-addons-for-gutenberg'
+						) }
+						colorValue={ ctaBgHoverColor ? ctaBgHoverColor : '' }
+						data={ {
+							value: ctaBgHoverColor,
+							label: 'ctaBgHoverColor',
+						} }
+						setAttributes={ setAttributes }
+					/>
+				}
 			</>
 		);
 	};
