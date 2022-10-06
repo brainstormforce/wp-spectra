@@ -444,6 +444,34 @@ const attributes = {
 			styleType: 'btn-hover-color'
 		},
 	},
+	ctaBgType: {
+		type: 'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-bg-type'
+		},
+	},
+	ctaBgHoverType: {
+		type: 'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-bg-hover-type'
+		},
+	},
+	secondCtaBgType: {
+		type: 'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'second-btn-bg-type'
+		}
+	},
+	secondCtaBgHoverType: {
+		type: 'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'second-btn-bg-type'
+		}
+	},
 	ctaBgColor: {
 		type: 'string',
 		default: '',
