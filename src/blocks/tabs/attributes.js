@@ -715,6 +715,7 @@ const attributes = {
 			styleType: 'main-title-letter-spacing-type'
 		}
 	},
+
 };
 
 export default attributes;
