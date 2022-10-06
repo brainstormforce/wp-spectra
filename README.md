@@ -170,6 +170,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+### 2.0.14 - THURSDAY, 29th SEPTEMBER 2022 ###
+* Fix: Tabs - Tabs border is inconsistent inside the editor as well as on the frontend.
+
 ### 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 ###
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
 * Fix: Icon List - Text Alignment not working properly on front-end.
@@ -184,7 +187,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Container - Z-index were not applied on the frontend.
 * Fix: FAQ - Throwing an undefined style issue in console when html anchor is used.
 * Fix: Info Box - Removed default image width for new users while maintaining a default width of 120px for old users only.
-
 
 ### 2.0.12 - FRIDAY, 16th SEPTEMBER 2022 ###
 * Improvement: How to block - Option to disable step links.
