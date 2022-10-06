@@ -55,6 +55,10 @@
 				height: 100%;
 			}
 
+			& > svg {
+				transform: rotate(-90deg);
+			}
+
 			svg circle {
 				stroke-dashoffset: 0;
 				stroke: #eaeaea;
