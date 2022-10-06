@@ -92,6 +92,8 @@ function CtaStyle( props ) {
 		ctaFontStyle,
 		buttonAlign,
 		ctaIconPosition,
+		secondCtaBgType,
+		secondCtaBgHoverType,
 		secondCtaIconSpace,
 		secondCtaIconPosition,
 		secondCtaFontSize,
@@ -284,7 +286,7 @@ function CtaStyle( props ) {
 		'text-transform': secondCtaFontTransform,
 		'font-weight': secondCtaFontWeight,
 		'color': secondCtaColor,
-		'background-color': secondCtaBackground,
+		'background-color': ( secondCtaBgType === 'color' ) ? secondCtaBackground : 'transparent',
 		'padding-top': generateCSSUnit( secondCtaTopPadding, secondCtaPaddingUnit ),
 		'padding-bottom': generateCSSUnit( secondCtaBottomPadding, secondCtaPaddingUnit ),
 		'padding-left': generateCSSUnit( secondCtaLeftPadding, secondCtaPaddingUnit ),
@@ -296,7 +298,7 @@ function CtaStyle( props ) {
 	};
 	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button:hover'] = {
 		'color': secondCtaHoverColor,
-		'background-color': secondCtaHoverBackground,
+		'background-color': ( secondCtaBgHoverType === 'color' ) ? secondCtaHoverBackground : 'transparent',
 		'border-color': secondCtaBorderHColor,
 	};
 

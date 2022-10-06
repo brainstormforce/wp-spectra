@@ -577,18 +577,45 @@ const Settings = ( props ) => {
 								} }
 								setAttributes={ setAttributes }
 							/>
-							<AdvancedPopColorControl
-								label={ __(
-									'Background Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ secondCtaBackground ? secondCtaBackground : '' }
-								data={ {
-									value: secondCtaBackground,
-									label: 'secondCtaBackground',
-								} }
+							<MultiButtonsControl
 								setAttributes={ setAttributes }
+								label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: secondCtaBgType,
+									label: 'secondCtaBgType',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ [
+									{
+										value: 'transparent',
+										label: __(
+											'Transparent',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'color',
+										label: __(
+											'Color',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+								] }
 							/>
+							{ ( secondCtaBgType === 'color' ) &&
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ secondCtaBackground ? secondCtaBackground : '' }
+									data={ {
+										value: secondCtaBackground,
+										label: 'secondCtaBackground',
+									} }
+									setAttributes={ setAttributes }
+								/>
+							}
 						</>
 					 }
 					hover={
@@ -605,18 +632,45 @@ const Settings = ( props ) => {
 								} }
 								setAttributes={ setAttributes }
 							/>
-							<AdvancedPopColorControl
-								label={ __(
-									'Background Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ secondCtaHoverBackground ? secondCtaHoverBackground : '' }
-								data={ {
-									value: secondCtaHoverBackground,
-									label: 'secondCtaHoverBackground',
-								} }
+							<MultiButtonsControl
 								setAttributes={ setAttributes }
+								label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: secondCtaBgHoverType,
+									label: 'secondCtaBgHoverType',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ [
+									{
+										value: 'transparent',
+										label: __(
+											'Transparent',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'color',
+										label: __(
+											'Color',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+								] }
 							/>
+							{ ( secondCtaBgHoverType === 'color' ) &&
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ secondCtaHoverBackground ? secondCtaHoverBackground : '' }
+									data={ {
+										value: secondCtaHoverBackground,
+										label: 'secondCtaHoverBackground',
+									} }
+									setAttributes={ setAttributes }
+								/>
+							}
 						</>
 					}
 					disableBottomSeparator={ false }
@@ -1146,13 +1200,6 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							),
 						},
-						{
-							value: 'gradient',
-							label: __(
-								'Gradient',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
 					] }
 				/>
 				{ ctaBgType === 'color' &&
@@ -1207,13 +1254,6 @@ const Settings = ( props ) => {
 							value: 'color',
 							label: __(
 								'Color',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'gradient',
-							label: __(
-								'Gradient',
 								'ultimate-addons-for-gutenberg'
 							),
 						},

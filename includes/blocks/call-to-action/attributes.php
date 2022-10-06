@@ -109,6 +109,8 @@ return array_merge(
 		'titleFontStyle'                  => '',
 		'descFontStyle'                   => '',
 		'ctaFontStyle'                    => '',
+		'secondCtaBgType'                 => 'color',
+		'secondCtaBgHoverType'            => 'color',
 		'secondCtaFontFamily'             => '',
 		'secondCtaLoadGoogleFonts'        => false,
 		'secondCtaFontWeight'             => '',
