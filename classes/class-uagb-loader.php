@@ -207,11 +207,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$this->collect_spectra_blocks_count = new \UAGB_Background_Process();
 
-			// delete_option( 'spectra_blocks_count_status' );
-			// delete_option( 'get_spectra_block_count' );
-			// delete_option( 'spectra_settings_data' );
-			// delete_option( 'spectra_saved_blocks_settings' );
-
 			add_action( 'spectra_total_blocks_count_action', array( $this, 'trigger_background_processing' ) );
 
 			$count_status = get_option( 'spectra_blocks_count_status' );
@@ -233,8 +228,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 					'blocks_count'             => $blocks_count,
 					'blocks_activation_status' => $blocks_status,
 				);
-
-				error_log( print_r( $default_stats, true ) );
 
 				// Active widgets data to analytics.
 				add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );

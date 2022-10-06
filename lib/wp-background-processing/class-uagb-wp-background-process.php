@@ -5,8 +5,6 @@
  * @package WP-Background-Processing
  */
 
-// require_once plugin_dir_path( __FILE__ ) . 'class-uagb-wp-async-request.php';
-
 /**
  * Abstract UAGB_WP_Background_Process class.
  *
