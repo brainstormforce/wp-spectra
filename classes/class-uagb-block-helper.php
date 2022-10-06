@@ -142,7 +142,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[ $wrapper . '.wp-block-button__link' ] = $border_css;
 			$m_selectors[ $wrapper ]                          = $border_css_mobile;
 			$t_selectors[ $wrapper ]                          = $border_css_tablet;
-			$selectors[ $wrapper . ':hover' ]                = array(
+			$selectors[ $wrapper . ':hover' ]                 = array(
 				'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
 			);
 			$selectors[ $wrapper . ' .uagb-button__link' ]    = array(
