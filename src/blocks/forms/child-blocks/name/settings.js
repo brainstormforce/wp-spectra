@@ -30,26 +30,106 @@ const Settings = ( props ) => {
 					} }
 					setAttributes={ setAttributes }
 				>
-					<option value="off">Off</option>
-					<option value="name">Full Name</option>
+					<option value="off">
+						{ __(
+						'Off',
+						'ultimate-addons-for-gutenberg'
+						) }
+					</option>
+					<option value="name">
+						{ __(
+						'Full Name',
+						'ultimate-addons-for-gutenberg'
+						) }
+					</option>
 					<optgroup label="Name Breakdown">
-						<option value="honorific-prefix">Prefix</option>
-						<option value="given-name">First Name</option>
-						<option value="additional-name">Middle Name</option>
-						<option value="family-name">Last Name</option>
-						<option value="honorific-suffix">Suffix</option>
+						<option value="honorific-prefix">
+							{ __(
+							'Prefix',
+							'ultimate-addons-for-gutenberg'
+							) }
+						</option>
+						<option value="given-name">
+							{ __(
+							'First Name',
+							'ultimate-addons-for-gutenberg'
+							) }
+						</option>
+						<option value="additional-name">
+							{ __(
+							'Middle Name',
+							'ultimate-addons-for-gutenberg'
+							) }
+						</option>
+						<option value="family-name">
+							{ __(
+							'Last Name',
+							'ultimate-addons-for-gutenberg'
+							) }
+						</option>
+						<option value="honorific-suffix">
+							{ __(
+							'Suffix',
+							'ultimate-addons-for-gutenberg'
+							) }
+						</option>
 					</optgroup>
-					<option value="username">Username</option>
-					<option value="nickname">Nickname</option>
-					<option value="organization">Company Name</option>
-					<option value="organization-title">Job Title</option>
+					<option value="username">
+						{ __(
+						'Username',
+						'ultimate-addons-for-gutenberg'
+						) }
+						</option>
+					<option value="nickname">
+						{ __(
+						'Nickname',
+						'ultimate-addons-for-gutenberg'
+						) }
+					</option>
+					<option value="organization">
+						{ __(
+						'Company Name',
+						'ultimate-addons-for-gutenberg'
+						) }
+					</option>
+					<option value="organization-title">
+						{ __(
+						'Job Title',
+						'ultimate-addons-for-gutenberg'
+						) }
+					</option>
 					<optgroup label="Address Lines">
-						<option value="address-line1">Address Line 1</option>
-						<option value="address-line2">Address Line 2</option>
-						<option value="address-line3">Address Line 3</option>
+						<option value="address-line1">
+							{ __(
+							'Address Line 1',
+							'ultimate-addons-for-gutenberg'
+							) }
+						</option>
+						<option value="address-line2">
+							{ __(
+							'Address Line 2',
+							'ultimate-addons-for-gutenberg'
+							) }
+						</option>
+						<option value="address-line3">
+							{ __(
+							'Address Line 3',
+							'ultimate-addons-for-gutenberg'
+							) }
+						</option>
 					</optgroup>
-					<option value="country-name">Country</option>
-					<option value="postal-code">Postal / ZIP Code</option>
+					<option value="country-name">
+						{ __(
+						'Country',
+						'ultimate-addons-for-gutenberg'
+						) }
+					</option>
+					<option value="postal-code">
+						{ __(
+						'Postal / ZIP Code',
+						'ultimate-addons-for-gutenberg'
+						) }
+					</option>
 				</UAGSelectControl>
 				<TextControl
 					label="Placeholder"
