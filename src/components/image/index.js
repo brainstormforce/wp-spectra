@@ -5,6 +5,9 @@ import { useSelect } from '@wordpress/data';
 import UAGB_Block_Icons from '@Controls/block-icons';
 
 const UAGMediaPicker = ( props ) => {
+	const selectedBlock = useSelect( ( select ) => {
+		return select( 'core/block-editor' ).getSelectedBlock();
+	}, [] );
 
 	const {
 		onSelectImage,
