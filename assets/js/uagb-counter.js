@@ -81,6 +81,7 @@ UAGBCounter = { // eslint-disable-line no-undef
 
 	_triggerBar( el, data ){
 		const that = this
+		const parentWrapClass = 'wp-block-uagb-counter--bars';
 		const numberWrap = el.querySelector( '.wp-block-uagb-counter__number' );
 		const duration = that._getAnimationDuration( data );
 		const startWidth = data.startNumber < data.totalNumber ? Math.ceil( ( data.startNumber / data.totalNumber ) * 100 ) : 0;
@@ -96,7 +97,10 @@ UAGBCounter = { // eslint-disable-line no-undef
 			fill: 'forwards',
 		};
 
-		numberWrap.animate( animationKeyframes, animationProperties );
+		// Condition to prevent an edge case bug where number layout gets animated like bar layout.
+		if( el.classList.contains( parentWrapClass ) ){
+			numberWrap.animate( animationKeyframes, animationProperties );
+		}
 
 		el.setAttribute( 'played', true );  // Set: animation has played once.
 
