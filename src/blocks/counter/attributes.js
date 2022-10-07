@@ -343,7 +343,7 @@ const attributes = {
 	},
 	numberColor: {
 		type: 'string',
-		default: '#333'
+		isUAGStyle: true,
 	},
 	numberFontFamily: {
 		type: 'string',
