@@ -21,7 +21,7 @@ return array_merge(
 		'endNumber'                 => 80,
 		'totalNumber'               => 100,
 		'numberPrefix'              => '',
-		'numberSuffix'              => '',
+		'numberSuffix'              => '%',
 		'animationDuration'         => 25,
 		'thousandSeparator'         => '',
 		// heading.

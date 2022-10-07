@@ -334,7 +334,7 @@ const attributes = {
 	},
 	numberSuffix: {
 		type: 'string',
-		default: '',
+		default: '%',
 	},
 	numberLoadGoogleFonts: {
 		type: 'boolean',

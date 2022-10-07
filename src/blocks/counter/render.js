@@ -45,7 +45,6 @@ const Render = ( props ) => {
 	const circlePos    = ( circleSizeFallback / 2 );
 	const circleRadius = circlePos - 10;
 	const circleDash   = parseFloat( 2 * Math.PI * circleRadius ).toFixed( 2 );
-	const percentLayout = ['bars', 'circle'];
 
 	const iconCheck = ( showIcon && icon !== '' ); // Reusable const to check if icon is set and enabled.
 
@@ -74,9 +73,6 @@ const Render = ( props ) => {
 				numberPrefix && ( <span className="uagb-counter-block-prefix">{numberPrefix}</span> )
 			}
 			<span className="uagb-counter-block-number" data-duration={animationDurationFallback} data-to-value={endNumber} data-from-value={startNumber} data-delimiter={thousandSeparator}></span>
-			{
-				percentLayout.includes( layout ) && ( <span className='uagb-counter-block-number-type'>%</span> )
-			}
 			{
 				numberSuffix && ( <span className="uagb-counter-block-suffix">{numberSuffix}</span> )
 			}
