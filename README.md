@@ -185,6 +185,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Masonry - Column Gap was impacting other post masonry, post grid, post carousel blocks.
 * Fix: Copy Paste Styles - Removed hover color for disable paste style text.
 * Fix: Call To Action - Button was not same as frontend when it is selected as text.
+* Fix: Call To Action - Editor preset looks different after refreshing in page.
 
 ### 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 ###
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
