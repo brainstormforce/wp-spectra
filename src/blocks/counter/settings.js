@@ -1201,7 +1201,7 @@ export default function Settings( props ) {
 			/>
 			<ResponsiveSlider
 				label={ __(
-					'Prefix Right Distance',
+					'Prefix Right Margin',
 					'ultimate-addons-for-gutenberg'
 				) }
 				setAttributes={ setAttributes }
@@ -1226,7 +1226,7 @@ export default function Settings( props ) {
 			/>
 			<ResponsiveSlider
 				label={ __(
-					'Suffix Left Distance',
+					'Suffix Left Margin',
 					'ultimate-addons-for-gutenberg'
 				) }
 				setAttributes={ setAttributes }
