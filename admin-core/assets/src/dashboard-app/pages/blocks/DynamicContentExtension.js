@@ -43,6 +43,7 @@ const DynamicContentExtension = () => {
 		}
 
         dispatch( {type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: assetStatus } );
+		dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
     };
 
     return (
@@ -51,7 +52,7 @@ const DynamicContentExtension = () => {
         className={ classNames(
             dynamicContentStatus
                 ? 'border-white bg-white shadow hover:shadow-hover hover:z-50'
-                : 'border-slate-200',
+                : 'border-slate-200 spectra-disabled-icon',
             'box-border relative border rounded-md h-20 p-4 flex items-center gap-x-4 snap-start transition spectra-icon-transition'
         ) }
         >
