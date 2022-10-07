@@ -967,9 +967,11 @@ export default function Settings( props ) {
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ headingColor ? headingColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { headingColor: value } )
-				}
+				data={ {
+					value: headingColor,
+					label: 'headingColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<SpacingControl
 				label={ __(
@@ -1118,9 +1120,11 @@ export default function Settings( props ) {
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ numberColor ? numberColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { numberColor: value } )
-				}
+				data={ {
+					value: numberColor,
+					label: 'numberColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<SpacingControl
 				label={ __(
@@ -1288,16 +1292,20 @@ export default function Settings( props ) {
 			<AdvancedPopColorControl
 				label={ __( 'Foreground', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ circleForeground ? circleForeground : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { circleForeground: value } )
-				}
+				data={ {
+					value: circleForeground,
+					label: 'circleForeground',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<AdvancedPopColorControl
 				label={ __( 'background', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ circleBackground ? circleBackground : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { circleBackground: value } )
-				}
+				data={ {
+					value: circleBackground,
+					label: 'circleBackground',
+				} }
+				setAttributes={ setAttributes }
 			/>
 		</UAGAdvancedPanelBody>
 	)
@@ -1325,17 +1333,21 @@ export default function Settings( props ) {
 			/>
 			<AdvancedPopColorControl
 				label={ __( 'Foreground', 'ultimate-addons-for-gutenberg' ) }
-				colorValue={ barForeground ? circleForeground : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { barForeground: value } )
-				}
+				colorValue={ barForeground ? barForeground : '' }
+				data={ {
+					value: barForeground,
+					label: 'barForeground',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<AdvancedPopColorControl
 				label={ __( 'background', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ barBackground ? barBackground : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { barBackground: value } )
-				}
+				data={ {
+					value: barBackground,
+					label: 'barBackground',
+				} }
+				setAttributes={ setAttributes }
 			/>
 		</UAGAdvancedPanelBody>
 	)
