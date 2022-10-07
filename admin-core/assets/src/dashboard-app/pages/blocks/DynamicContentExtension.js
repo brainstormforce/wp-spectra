@@ -51,7 +51,7 @@ const DynamicContentExtension = () => {
         className={ classNames(
             dynamicContentStatus
                 ? 'border-white bg-white shadow hover:shadow-hover hover:z-50'
-                : 'border-slate-200 spectra-disabled-icon',
+                : 'border-slate-200',
             'box-border relative border rounded-md h-20 p-4 flex items-center gap-x-4 snap-start transition spectra-icon-transition'
         ) }
         >
