@@ -73,16 +73,29 @@ const UAGMediaPicker = ( props ) => {
 	const renderMediaUploader = ( open ) => {
 		const uploadType = backgroundImage?.url ? 'replace' : 'add';
 		return(
-			<button
-				className={ `spectra-media-control__clickable spectra-media-control__clickable--${ uploadType }` }
-				onClick={ open }
-			>
-				{ ( 'add' === uploadType ) ? (
-					renderButton( uploadType )
-				) : (
-					<div className='uag-control-label'>{ replaceMediaLabel }</div>
-				) }
-			</button>
+			<>
+				{ 'add' === uploadType  && (
+					<button
+						className={ `spectra-media-control__clickable spectra-media-control__clickable--${ uploadType }` }
+						onClick={ open }
+					>
+						{
+							renderButton( uploadType )
+						}
+					</button>
+				)}
+				<div className='spectra-media-control__footer'>
+					<button
+						className="uag-control-label"
+						onClick={ open }
+					>
+						{ replaceMediaLabel }
+					</button>
+					{
+						registerImageExtender
+					}
+				</div>
+			</>
 		)
 	};
 
@@ -126,7 +139,7 @@ const UAGMediaPicker = ( props ) => {
 			hideLabelFromVision={ disableLabel }
 		>
 			{
-				isShowImageUploader() && (
+				isShowImageUploader() ? (
 					<>
 						<div
 							className="spectra-media-control__wrapper"
@@ -161,10 +174,9 @@ const UAGMediaPicker = ( props ) => {
 							<p className="uag-control-help-notice">{ props.help }</p>
 						) }
 					</>
+				) : (
+					registerImageExtender
 				)
-			}
-			{
-				registerImageExtender
 			}
 		</BaseControl>
 	);

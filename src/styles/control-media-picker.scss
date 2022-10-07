@@ -130,24 +130,40 @@
 		}
 	}
 
-	// dynamic image extender
-	.spectra-btn-image-extender {
-		position: absolute;
-		top: 10px;
-		right: 10px;
-		border: 1px solid #E6E7E9;
-		padding: 0;
+	.spectra-media-control__footer {
+		background: #F0F0F1;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 32px;
-		height: 32px;
-		color: #E6E7E9;
-		svg {
-			width: 16px;
-			stroke: #808285;
-			stroke-width: 1.4;
-			fill: none;
+		.uag-control-label {
+			flex-grow: 1;
+			height: 26px;
+			margin-bottom: 0;
+			border: 0;
+			padding: 0;
+			cursor: pointer;
+			font-size: 12px;
+		}
+		// dynamic image extender
+		.spectra-btn-image-extender {
+			border-top: 0;
+			border-bottom: 0;
+			border-right: 0;
+			border-left: 1px solid #E6E7E9;
+			padding: 0;
+			width: 40px;
+			height: 26px;
+			color: #E6E7E9;
+			display: flex;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			svg {
+				width: 16px;
+				stroke: #808285;;
+				stroke-width: 1.4;
+				fill: none;
+			}
 		}
 	}
 }
