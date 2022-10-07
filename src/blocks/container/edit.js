@@ -52,7 +52,7 @@ const UAGBContainer = ( props ) => {
 
 		const parentBlockName = select( 'core/block-editor' ).getBlocksByClientId( isBlockRootParentID );
 		
-		if ( 'uagb/container' !== parentBlockName[0].name ) {
+		if ( parentBlockName[0] && 'uagb/container' !== parentBlockName[0].name ) {
 			props.setAttributes( { isBlockRootParent: true } );
 		}
 
