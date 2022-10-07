@@ -48,9 +48,11 @@ const UAGBContainer = ( props ) => {
 	}
 
 	useEffect( () => {
-		const isBlockRootParent = 0 === select( 'core/block-editor' ).getBlockParents( props.clientId ).length;
+		const isBlockRootParentID = select( 'core/block-editor' ).getBlockParents( props.clientId );
 
-		if ( isBlockRootParent ) {
+		const parentBlockName = select( 'core/block-editor' ).getBlocksByClientId( isBlockRootParentID );
+		
+		if ( 'uagb/container' !== parentBlockName[0].name ) {
 			props.setAttributes( { isBlockRootParent: true } );
 		}
 
