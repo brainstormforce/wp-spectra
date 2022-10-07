@@ -1299,7 +1299,7 @@ export default function Settings( props ) {
 				setAttributes={ setAttributes }
 			/>
 			<AdvancedPopColorControl
-				label={ __( 'background', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ circleBackground ? circleBackground : '' }
 				data={ {
 					value: circleBackground,
@@ -1341,7 +1341,7 @@ export default function Settings( props ) {
 				setAttributes={ setAttributes }
 			/>
 			<AdvancedPopColorControl
-				label={ __( 'background', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ barBackground ? barBackground : '' }
 				data={ {
 					value: barBackground,
