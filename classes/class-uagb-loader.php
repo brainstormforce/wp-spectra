@@ -75,11 +75,11 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.0.0-beta.3' );
+			define( 'UAGB_VER', '2.0.13' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'spectra' );
-			define( 'UAGB_URI', trailingslashit( 'https://ultimategutenberg.com/' ) );
+			define( 'UAGB_URI', trailingslashit( 'https://wpspectra.com/' ) );
 
 			if ( ! defined( 'UAGB_TABLET_BREAKPOINT' ) ) {
 				define( 'UAGB_TABLET_BREAKPOINT', '976' );
@@ -120,13 +120,31 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/class-uagb-install.php';
 			require_once UAGB_DIR . 'classes/class-uagb-filesystem.php';
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
-			require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics.php';
 			require_once UAGB_DIR . 'classes/class-uagb-block.php';
+
+			// BSF Analytics.
+			if ( ! class_exists( 'BSF_Analytics_Loader' ) ) {
+				require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics-loader.php';
+			}
+
+			$spectra_bsf_analytics = BSF_Analytics_Loader::get_instance();
+
+			$spectra_bsf_analytics->set_entity(
+				array(
+					'bsf' => array(
+						'product_name'    => 'Spectra',
+						'path'            => UAGB_DIR . 'admin/bsf-analytics',
+						'author'          => 'Brainstorm Force',
+						'time_to_display' => '+24 hours',
+					),
+				)
+			);
 
 			if ( is_admin() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-beta-updates.php';
 				require_once UAGB_DIR . 'classes/class-uagb-rollback.php';
 			}
+
 		}
 
 		/**
@@ -175,6 +193,38 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			} else {
 				add_filter( 'ast_block_templates_disable', '__return_true' );
 			}
+
+			if ( 'done' === get_option( 'spectra_blocks_count_status' ) && get_option( 'spectra_settings_data' ) && get_option( 'get_spectra_block_count' ) ) {
+
+				// Active widgets data to analytics.
+				add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
+
+			}
+
+		}
+
+		/**
+		 * Pass Spectra specific stats to BSF analytics.
+		 *
+		 * @since 2.0.12
+		 * @param array $default_stats Default stats array.
+		 * @return array $default_stats Default stats with Spectra specific stats array.
+		 */
+		public function spectra_specific_stats( $default_stats ) {
+
+			$settings_data = get_option( 'spectra_settings_data' );
+			$blocks_count  = get_option( 'get_spectra_block_count' );
+			$blocks_status = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks' );
+
+			$default_stats['spectra_settings'] = array(
+				'spectra_version'          => UAGB_VER,
+				'settings_page_data'       => $settings_data,
+				'blocks_count'             => $blocks_count,
+				'blocks_activation_status' => $blocks_status,
+			);
+
+			return $default_stats;
+
 		}
 
 		/**
@@ -232,6 +282,10 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 				if ( isset( $attributes['zIndex'] ) ) {
 					unset( $attributes['zIndex'] );
+				}
+
+				if ( isset( $attributes['UAGResponsiveConditions'] ) ) {
+					unset( $attributes['UAGResponsiveConditions'] );
 				}
 
 					$request['attributes'] = $attributes;
@@ -319,7 +373,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		/**
 		 * Init actions
 		 *
-		 * @since 2.0.0-beta.3
+		 * @since 2.0.0
 		 *
 		 * @return void
 		 */
@@ -349,7 +403,7 @@ UAGB_Loader::get_instance();
 /**
  * Load main object
  *
- * @since 2.0.0-beta.3
+ * @since 2.0.0
  *
  * @return object
  */

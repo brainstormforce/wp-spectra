@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Get post assets object.
  *
  * @param int $post_id current step ID.
- * @since 2.0.0-beta.3
+ * @since 2.0.0
  */
 function uagb_get_post_assets( $post_id ) {
 

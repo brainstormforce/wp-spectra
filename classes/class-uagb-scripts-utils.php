@@ -151,7 +151,7 @@ final class UAGB_Scripts_Utils {
 	 * Get folder name by post id.
 	 *
 	 * @param int $post_id post id.
-	 * @since 2.0.0-beta.3
+	 * @since 2.0.0
 	 */
 	public static function get_asset_folder_name( $post_id ) {
 

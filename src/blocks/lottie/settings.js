@@ -9,7 +9,7 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import Range from '@Components/range/Range.js';
-import UAGImage from '@Components/image';
+import UAGMediaPicker from '@Components/image';
 import UAGTabsControl from '@Components/tabs';
 
 import {
@@ -99,21 +99,23 @@ const Settings = ( props ) => {
 					] }
 				/>
 				{ lottieSource === 'upload' && (
-					<UAGImage
-						label={ 'Lottie Animation' }
+					<UAGMediaPicker
 						backgroundImage={ jsonLottie }
 						onSelectImage={ onSelectLottieJSON }
-						disableRemove={ true }
+						slug={ 'lottie' }
+						label={ __( 'Lottie Animation', 'ultimate-addons-for-gutenberg' ) }
 						allow={ [ 'application/json' ] }
+						disableRemove={ true }
 					/>
 				) }
 				{ lottieSource === 'library' && (
-					<UAGImage
-						label={ 'Lottie Animation' }
+					<UAGMediaPicker
 						backgroundImage={ jsonLottie }
 						onSelectImage={ onSelectLottieJSON }
-						disableRemove={ true }
+						slug={ 'lottie' }
+						label={ __( 'Lottie Animation', 'ultimate-addons-for-gutenberg' ) }
 						allow={ [ 'application/json' ] }
+						disableRemove={ true }
 					/>
 				) }
 				{ lottieSource === 'url' && (

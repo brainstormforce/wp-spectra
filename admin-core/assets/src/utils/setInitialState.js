@@ -8,7 +8,7 @@ const setInitialState = ( store ) => {
             initialStateSetFlag : true,
             activeBlocksFilterTab : 'all',
             activeSettingsNavigationTab : 'global-settings',
-			settingsSavedNotification: false,
+			settingsSavedNotification: '',
             blocksStatuses : data.blocks_activation_and_deactivation,
             enableFileGeneration : data.enable_file_generation,
             enableTemplates : data.enable_templates_button,
@@ -29,12 +29,13 @@ const setInitialState = ( store ) => {
 			secretKeyV2: data.recaptcha_secret_key_v2,
 			siteKeyV3: data.recaptcha_site_key_v3,
 			secretKeyV3: data.recaptcha_secret_key_v3,
-			enableComingSoonMode: data.enable_coming_soon_mode,
+			enableComingSoonMode: data.uag_enable_coming_soon_mode,
 			comingSoonPage: data.coming_soon_page,
-			blocksEditorSpacing: data.blocks_editor_spacing,
-			containerGlobalPadding: data.container_global_padding,
-			enableFontAwesome5: data.load_font_awesome_5,
-			enableAutoBlockRecovery: data.auto_block_recovery,
+			blocksEditorSpacing: data.uag_blocks_editor_spacing,
+			containerGlobalPadding: data.uag_container_global_padding,
+			containerGlobalElementsGap: data.uag_container_global_elements_gap,
+			enableFontAwesome5: data.uag_load_font_awesome_5,
+			enableAutoBlockRecovery: data.uag_auto_block_recovery,
         };
 
         store.dispatch( {type: 'UPDATE_INITIAL_STATE', payload: initialState} );

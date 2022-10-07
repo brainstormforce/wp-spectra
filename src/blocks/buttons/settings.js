@@ -1,5 +1,5 @@
-import lazyLoader from '@Controls/lazy-loader';
-import React, { Suspense } from 'react';
+
+import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls, BlockControls, Inserter } from '@wordpress/block-editor';
 import TypographyControl from '@Components/typography';
@@ -562,7 +562,7 @@ const Settings = ( props ) => {
 	};
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
@@ -580,7 +580,7 @@ const Settings = ( props ) => {
 				</InspectorTabs>
 			</InspectorControls>
 			{ loadBtnGoogleFonts }
-		</Suspense>
+			</>
 	);
 };
 

@@ -43,6 +43,7 @@ const DisplayConditionsExtension = () => {
 		}
 
         dispatch( {type: 'UPDATE_ENABLE_DISPLAY_CONDITIONS', payload: assetStatus } );
+        dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
     };
 
     return (

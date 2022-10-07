@@ -1,5 +1,5 @@
-import React, {Suspense, useEffect} from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect} from 'react';
+
 import TypographyControl from '@Components/typography';
 import { useViewportMatch } from '@wordpress/compose';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -10,7 +10,7 @@ import InspectorTab, {
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
-import UAGImage from '@Components/image';
+import UAGMediaPicker from '@Components/image';
 import BoxShadowControl from '@Components/box-shadow';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
@@ -464,13 +464,11 @@ export default function Settings( props ) {
 			title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
-			<UAGImage
-				label={' '}
-				onSelectImage={onSelectImage}
-				backgroundImage={{
-					url
-				}}
-				onRemoveImage={onRemoveImage}
+			<UAGMediaPicker
+				onSelectImage={ onSelectImage }
+				backgroundImage={ { url } }
+				onRemoveImage={ onRemoveImage }
+				disableLabel={ true }
 			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
@@ -867,11 +865,12 @@ export default function Settings( props ) {
 			/>
 			{
 				maskShape === 'custom' && (
-					<UAGImage
-						label={ __( 'Custom Mask Image', 'ultimate-addons-for-gutenberg' ) }
+					<UAGMediaPicker
 						onSelectImage={ onSelectCustomMaskShape }
 						backgroundImage={ maskCustomShape }
 						onRemoveImage={ onRemoveMaskCustomShape }
+						label={ __( 'Custom Mask Image', 'ultimate-addons-for-gutenberg' ) }
+						slug={ 'custom-mask-image' }
 					/>
 				)
 			}
@@ -1280,7 +1279,7 @@ export default function Settings( props ) {
 					},
 				] }
 			/>
-			<Suspense fallback={ lazyLoader() }>
+
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -1360,7 +1359,7 @@ export default function Settings( props ) {
 						label: 'headingLetterSpacingType',
 					} }
 				/>
-			</Suspense>
+
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ headingColor ? headingColor : '' }
@@ -1451,7 +1450,7 @@ export default function Settings( props ) {
 			title={ layout === 'overlay' ?  __( 'Description', 'ultimate-addons-for-gutenberg' ) : __( 'Caption', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
-			<Suspense fallback={ lazyLoader() }>
+
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -1531,7 +1530,7 @@ export default function Settings( props ) {
 						label: 'captionLetterSpacingType',
 					} }
 				/>
-			</Suspense>
+
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ captionColor ? captionColor : '' }

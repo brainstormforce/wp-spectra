@@ -10,7 +10,7 @@
       }
     ],
     "require": {
-      "composer/installers": "^1.11"
+      "composer/installers": "^2"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "0.7.0",
@@ -22,5 +22,14 @@
     "scripts": {
         "format": "phpcbf --standard=phpcs.xml.dist --report-summary --report-source",
         "lint": "phpcs --standard=phpcs.xml.dist --report-summary --report-source"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "platform": {
+          "php": "7.2"
+        }
     }
 }

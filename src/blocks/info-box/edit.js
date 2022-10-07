@@ -1,19 +1,16 @@
 /**
  * BLOCK: Info Box - Edit Class
  */
-import React, { lazy, Suspense, useEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {    useEffect } from 'react';
+
 import styling from './styling';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/info-box/render" */ './render' )
-);
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/info-box/settings" */ './settings' )
-);
+import Settings from './settings';
+import Render from './render';
 
 const UAGBInfoBox = ( props ) => {
 	const deviceType = useDeviceType();
@@ -25,7 +22,7 @@ const UAGBInfoBox = ( props ) => {
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
 		setAttributes( { classMigrate: true } );
-		
+
 		const {
 			ctaBtnVertPadding,
 			ctaBtnHrPadding,
@@ -37,7 +34,7 @@ const UAGBInfoBox = ( props ) => {
 			ctaBorderWidth,
 			ctaBorderRadius,
 			ctaBorderColor,
-			ctaBorderhoverColor 
+			ctaBorderhoverColor
 		} = props.attributes;
 
 		if ( ctaBtnVertPadding ) {
@@ -58,8 +55,8 @@ const UAGBInfoBox = ( props ) => {
 		}
 		// Backward Border Migration
 		if( ctaBorderWidth || ctaBorderRadius || ctaBorderColor || ctaBorderhoverColor || ctaBorderStyle ){
-			
-			const migrationAttributes = migrateBorderAttributes( 'btn', {
+
+			migrateBorderAttributes( 'btn', {
 				label: 'ctaBorderWidth',
 				value: ctaBorderWidth,
 			}, {
@@ -74,13 +71,15 @@ const UAGBInfoBox = ( props ) => {
 			},{
 				label: 'ctaBorderStyle',
 				value: ctaBorderStyle
-			} );
-			props.setAttributes( migrationAttributes )
+			},
+			props.setAttributes,
+			props.attributes
+		);
 		}
 	}, [] );
 
 	useEffect( () => {
-	
+
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
@@ -88,6 +87,7 @@ const UAGBInfoBox = ( props ) => {
 
 	}, [ props ] );
 
+
 	useEffect( () => {
 
 		// Replacement for componentDidUpdate.
@@ -95,14 +95,18 @@ const UAGBInfoBox = ( props ) => {
 
 		addBlockEditorDynamicStyles( 'uagb-info-box-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 
+		scrollBlockToView();
+
 	}, [ deviceType ] );
 
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
+
+						<>
+			<Settings parentProps={ props } />
 				<Render parentProps={ props } />
-			</Suspense>
+			</>
+
 		</>
 	);
 };

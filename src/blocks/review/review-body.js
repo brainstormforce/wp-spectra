@@ -1,6 +1,6 @@
 import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
-import Stars from './star';
+import EditorStars from './editorStars';
 
 const ReviewBody = ( props ) => {
 	const {
@@ -122,32 +122,7 @@ const ReviewBody = ( props ) => {
 									minWidth: items.length > 1 ? 120 : 100,
 								} }
 							>
-								{ items.length > 1 && (
-									<div // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-										className="dashicons dashicons-trash"
-										onClick={ () => {
-											const newItems = items
-												.slice( 0, i )
-												.concat(
-													items.slice(
-														i + 1,
-														items.length
-													)
-												);
-											setItems( newItems );
-											props.setStateValue( {
-												average:
-													newItems
-														.map( ( k ) => k.value )
-														.reduce(
-															( total, v ) =>
-																total + v
-														) / newItems.length,
-											} );
-										} }
-									/>
-								) }
-								<Stars
+								<EditorStars
 									id={ `${ ID }-${ i }` }
 									key={ i }
 									value={ j.value }
@@ -177,6 +152,31 @@ const ReviewBody = ( props ) => {
 									state={ props.starState }
 									setStateValue={ props.starSetStateValue }
 								/>
+								{ items.length > 1 && (
+									<div // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+										className="dashicons dashicons-trash"
+										onClick={ () => {
+											const newItems = items
+												.slice( 0, i )
+												.concat(
+													items.slice(
+														i + 1,
+														items.length
+													)
+												);
+											setItems( newItems );
+											props.setStateValue( {
+												average:
+													newItems
+														.map( ( k ) => k.value )
+														.reduce(
+															( total, v ) =>
+																total + v
+														) / newItems.length,
+											} );
+										} }
+									/>
+								) }
 							</div>
 						</div>
 					)
@@ -217,7 +217,7 @@ const ReviewBody = ( props ) => {
 						<span className="uagb_review_rating">
 							{ Math.round( average * 10 ) / 10 }
 						</span>
-						<Stars
+						<EditorStars
 							id={ `${ ID }-average` }
 							className="uagb_review_average_stars"
 							onHover={ () => null }

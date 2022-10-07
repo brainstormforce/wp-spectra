@@ -2,26 +2,10 @@
  * BLOCK: UAGB CF7 Attributes
  */
  import { getBorderAttributes } from '@Controls/generateAttributes';
- const fieldDefaults = {
-	borderStyle             :  'solid',
-	borderTopWidth: 1,
-	borderRightWidth: 1,
-	borderBottomWidth: 1,
-	borderLeftWidth: 1,
-	borderColor              :  '#eeeeee',
-	borderHColor         :  '',
- }
- const fieldBorderAttributes = getBorderAttributes( 'input', fieldDefaults );
- const buttonDefaults = {
-	borderStyle         : 'solid',
-	borderTopWidth: 1,
-	borderRightWidth: 1,
-	borderBottomWidth: 1,
-	borderLeftWidth: 1,
-	borderColor         : '#333',
-	borderHColor        : '#333',
- }
- const buttonBorderAttributes = getBorderAttributes( 'btn', buttonDefaults );
+
+ const fieldBorderAttributes = getBorderAttributes( 'input' );
+
+ const buttonBorderAttributes = getBorderAttributes( 'btn' );
 
  const attributes = { // eslint-disable-line no-unused-vars
 	block_id                      : {
@@ -90,20 +74,25 @@
 			styleType: 'input-color'
 		},
 	},
-	fieldBorderStyle              : {
-		type    : 'string',
+	fieldBorderStyle             : {
+		type   :'string',
+		default : 'solid',
 	},
-	fieldBorderWidth              : {
-		type    : 'number',
+	fieldBorderWidth             : {
+		type   :'number',
+		default : 1,
 	},
-	fieldBorderRadius             : {
-		type    : 'number',
+	fieldBorderRadius            : {
+		type   :'number',
+		default : 0,
 	},
-	fieldBorderColor              : {
-		type    : 'string',
+	fieldBorderColor             : {
+		type   :'string',
+		default : '#eeeeee',
 	},
-	fieldBorderFocusColor         : {
-		type    : 'string',
+	fieldBorderFocusColor        : {
+		type   :'string',
+		default : '',
 	},
 	buttonAlignment               : {
 		type    : 'string',
@@ -142,15 +131,19 @@
 	},
 	buttonBorderStyle             : {
 		type    : 'string',
+		default: 'solid',
 	},
 	buttonBorderWidth             : {
 		type    : 'number',
+		default: 1
 	},
 	buttonBorderRadius            : {
 		type    : 'number',
+		default: 0
 	},
 	buttonBorderColor             : {
 		type    : 'string',
+		default: '#333',
 	},
 	buttonTextColor               : {
 		type    : 'string',

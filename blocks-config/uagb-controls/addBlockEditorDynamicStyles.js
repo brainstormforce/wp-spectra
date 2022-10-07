@@ -1,3 +1,4 @@
+
 const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 
 	setTimeout( () => {
@@ -36,6 +37,7 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 
 		// Static CSS Ends.
 
+
 		// Slick CSS.
 		const slickStaticCSSStylesTag = document.getElementById( 'uagb-slick-css-css' );
 		let cloneSlickStaticCSSStylesTag = false;
@@ -63,6 +65,7 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 			styleTagId
 		);
 
+
 		if ( null === element || undefined === element ) {
 
 			const $style = document.createElement( 'style' );
@@ -70,6 +73,7 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 				'id',
 				styleTagId
 			);
+
 			$style.innerHTML = styling;
 			document.head.appendChild( $style );
 		}
@@ -173,3 +177,4 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 }
 
 export default addBlockEditorDynamicStyles;
+

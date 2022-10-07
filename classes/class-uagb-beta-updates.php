@@ -127,7 +127,7 @@ if ( ! class_exists( 'UAGB_Beta_Updates' ) ) {
 				$response->plugin      = $plugin_slug;
 				$response->slug        = $plugin_slug;
 				$response->new_version = $beta_version;
-				$response->url         = 'https://ultimategutenberg.com/';
+				$response->url         = 'https://wpspectra.com/';
 				$response->package     = sprintf( 'https://downloads.wordpress.org/plugin/ultimate-addons-for-gutenberg.%s.zip', $beta_version );
 
 				$transient->response[ UAGB_BASE ] = $response;

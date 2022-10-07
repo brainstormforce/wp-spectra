@@ -94,9 +94,10 @@ class Admin_Menu {
 	}
 
 	/**
-	 *  Initialize after Cartflows pro get loaded.
+	 *  Initialize after Spectra gets loaded.
 	 */
 	public function settings_admin_scripts() {
+
 		// Enqueue admin scripts.
 		if ( ! empty( $_GET['page'] ) && ( $this->menu_slug === $_GET['page'] || false !== strpos( $_GET['page'], $this->menu_slug . '_' ) ) ) { //phpcs:ignore
 
@@ -104,6 +105,7 @@ class Admin_Menu {
 
 			add_filter( 'admin_footer_text', array( $this, 'add_footer_link' ), 99 );
 		}
+
 	}
 
 	/**
@@ -189,7 +191,7 @@ class Admin_Menu {
 				'uag_base_url'             => admin_url( 'options-general.php?page=' . $this->menu_slug ),
 				'plugin_dir'               => UAGB_URL,
 				'plugin_ver'               => UAGB_VER,
-				'logo_url'                 => UAGB_URL . 'admin-core/assets/images/uag-logo.svg',
+				'logo_url'                 => UAGB_URL . 'admin-core/assets/images/dashboard-uag-logo.svg',
 				'admin_url'                => admin_url( 'admin.php' ),
 				'ajax_url'                 => admin_url( 'admin-ajax.php' ),
 				'wp_pages_url'             => admin_url( 'post-new.php?post_type=page' ),
@@ -275,7 +277,9 @@ class Admin_Menu {
 					$exclude_blocks[] = $addon;
 				}
 
-				if ( 'yes' !== get_option( 'uagb-old-user-less-than-2' ) ) {
+				$enable_legacy_blocks = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' );
+
+				if ( 'yes' !== $enable_legacy_blocks ) {
 					$exclude_blocks[] = 'wp-search';
 					$exclude_blocks[] = 'columns';
 					$exclude_blocks[] = 'section';
@@ -306,7 +310,7 @@ class Admin_Menu {
 	/**
 	 * Get plugin status
 	 *
-	 * @since 2.0.0-beta.3
+	 * @since 2.0.0
 	 *
 	 * @param  string $plugin_init_file Plguin init file.
 	 * @return mixed

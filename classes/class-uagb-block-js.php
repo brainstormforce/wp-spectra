@@ -63,7 +63,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		/**
 		 * Adds Google fonts for How To Step block.
 		 *
-		 * @since 2.0.0-beta.3
+		 * @since 2.0.0
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_how_to_step_gfont( $attr ) {

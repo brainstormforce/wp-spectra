@@ -92,7 +92,7 @@ const attributes = {
 	},
 	disableLink: {
 		type: 'boolean',
-		default: true,
+		default: false,
 	},
 	fromParentIcon: {
 		type: 'string',

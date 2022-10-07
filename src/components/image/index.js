@@ -4,18 +4,15 @@ import { MediaUpload } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 import UAGB_Block_Icons from '@Controls/block-icons';
 
-
-const UAGImage = ( props ) => {
-	const selectedBlock = useSelect( ( select ) => {
-		return select( 'core/block-editor' ).getSelectedBlock();
-	}, [] );
+const UAGMediaPicker = ( props ) => {
 
 	const {
 		onSelectImage,
 		backgroundImage,
 		onRemoveImage,
-		showVideoInput,
-		label,
+		slug = 'image',
+		label = __( 'Image', 'ultimate-addons-for-gutenberg' ),
+		disableLabel = false,
 		disableRemove = false,
 		allow = [ 'image' ],
 	} = props;
@@ -23,34 +20,42 @@ const UAGImage = ( props ) => {
 	// This is used to render an icon in place of the background image when needed.
 	let placeholderIcon;
 
-	// Need to refactor this code as per multi-image select for more diversity.
-	let labelText = __( 'Image', 'ultimate-addons-for-gutenberg' );
-	let selectImageLabel = __(
-		'Select Image',
-		'ultimate-addons-for-gutenberg'
-	);
-	let replaceImageLabel = __(
-		'Change Image',
-		'ultimate-addons-for-gutenberg'
-	);
-	let allowedTypes = [ 'image' ];
+	// These are the localized texts that will show on the Select / Change Button and Popup.
+	let selectMediaLabel, replaceMediaLabel;
 
-	if ( showVideoInput ) {
-		labelText = __( 'Video', 'ultimate-addons-for-gutenberg' );
-		selectImageLabel = __(
-			'Select Video',
-			'ultimate-addons-for-gutenberg'
-		);
-		replaceImageLabel = __(
-			'Change Video',
-			'ultimate-addons-for-gutenberg'
-		);
-		allowedTypes = [ 'video' ];
-		placeholderIcon = UAGB_Block_Icons.video_placeholder;
+	switch ( slug ) {
+		case 'video':
+			selectMediaLabel = __(
+				'Select Video',
+				'ultimate-addons-for-gutenberg'
+			);
+			replaceMediaLabel = __(
+				'Change Video',
+				'ultimate-addons-for-gutenberg'
+			);
+			placeholderIcon = UAGB_Block_Icons.video_placeholder;
+			break;
+		case 'lottie':
+			selectMediaLabel = __(
+				'Select Lottie Animation',
+				'ultimate-addons-for-gutenberg'
+			);
+			replaceMediaLabel = __(
+				'Change Lottie Animation',
+				'ultimate-addons-for-gutenberg'
+			);
+			placeholderIcon = UAGB_Block_Icons.lottie;
+			break;
+		default:
+			selectMediaLabel = __(
+				'Select Image',
+				'ultimate-addons-for-gutenberg'
+			);
+			replaceMediaLabel = __(
+				'Change Image',
+				'ultimate-addons-for-gutenberg'
+			);
 	}
-
-	labelText = label ? label : labelText;
-	labelText = false === label ? label : labelText;
 
 	let registerImageExtender = wp.hooks.applyFilters('uagb.registerImageExtender', '', selectedBlock?.name, onSelectImage)
 
@@ -60,23 +65,6 @@ const UAGImage = ( props ) => {
 			return false
 		}
 		return true;
-	}
-
-
-	// Newer Dynamic Code here ( Currently used in Lottie Block )
-
-	if ( label === 'Lottie Animation' ){
-		// No Template Literals due to @wordpress/i18n-no-variables
-		selectImageLabel = __(
-			'Select Lottie Animation',
-			'ultimate-addons-for-gutenberg'
-		);
-		replaceImageLabel = __(
-			'Change Lottie Animation',
-			'ultimate-addons-for-gutenberg'
-		);
-		allowedTypes = allow;
-		placeholderIcon = UAGB_Block_Icons.lottie;
 	}
 
 	const renderMediaUploader = ( open ) => {
@@ -89,7 +77,7 @@ const UAGImage = ( props ) => {
 				{ ( 'add' === uploadType ) ? (
 					renderButton( uploadType )
 				) : (
-					<div className='uag-control-label'>{ replaceImageLabel }</div>
+					<div className='uag-control-label'>{ replaceMediaLabel }</div>
 				) }
 			</button>
 		)
@@ -130,8 +118,9 @@ const UAGImage = ( props ) => {
 	return (
 		<BaseControl
 			className="spectra-media-control"
-			id={ `uagb-option-selector-${ label }` }
-			label={ labelText }
+			id={ `uagb-option-selector-${ slug }` }
+			label={ label }
+			hideLabelFromVision={ disableLabel }
 		>
 			{
 				isShowImageUploader() && (
@@ -145,14 +134,14 @@ const UAGImage = ( props ) => {
 							} }
 						>
 							{ ( placeholderIcon && backgroundImage?.url ) && (
-								<div className="spectra-media-control__icon">
+								<div className="spectra-media-control__icon spectra-media-control__icon--stroke">
 									{ placeholderIcon }
 								</div>
 							) }
 							<MediaUpload
-								title={ selectImageLabel }
+								title={ selectMediaLabel }
 								onSelect={ onSelectImage }
-								allowedTypes={ allowedTypes }
+								allowedTypes={ allow }
 								value={ backgroundImage }
 								render={ ( { open } ) => renderMediaUploader( open ) }
 							/>
@@ -178,4 +167,4 @@ const UAGImage = ( props ) => {
 	);
 };
 
-export default UAGImage;
+export default UAGMediaPicker;

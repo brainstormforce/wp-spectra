@@ -265,7 +265,6 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'main-title-font-size'
 		},
-		default: 16,
 	},
 	fontSizeType: {
 		type: 'string',
@@ -330,7 +329,6 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'main-title-line-height'
 		},
-		default: 1.8,
 	},
 	lineHeightTablet: {
 		type: 'number',

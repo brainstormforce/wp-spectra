@@ -72,6 +72,7 @@ function setupFAQ() {
 		pattern.test( hashval )
 	) {
 		const elementToOpen = document.getElementById( hashval );
+		
 		if (
 			elementToOpen !==
 			undefined
@@ -80,10 +81,10 @@ function setupFAQ() {
 				.classList.add( 'uagb-faq-item-active' );
 			elementToOpen
 				.setAttribute( 'aria-expanded', true );
-			slideDown(
-				elementToOpen.getElementsByClassName( 'uagb-faq-content' )[ 0 ],
-				500
-			);
+			const faqContent =  elementToOpen.getElementsByClassName( 'uagb-faq-content' )[0];
+			if( faqContent ){
+				slideDown( faqContent, 500 );
+			}
 		}
 	} else {
 		for ( let item = 0; item < expandFirstelements.length; item++ ) {

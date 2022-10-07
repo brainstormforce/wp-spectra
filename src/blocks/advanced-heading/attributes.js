@@ -3,6 +3,9 @@ import { __ } from '@wordpress/i18n';
 
 const highLightBorderAttributes = getBorderAttributes( 'highLight' )
 
+const headingAlignmentDefault = ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) ? 'center' : 'left';
+const headingDescToggleDefault = ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) ? true : false;
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -45,7 +48,7 @@ const attributes = {
 	},
 	headingDescToggle: {
 		type: 'boolean',
-		default: false,
+		default: headingDescToggleDefault,
 	},
 	headingDesc: {
 		source: 'html',
@@ -53,7 +56,7 @@ const attributes = {
 	},
 	headingAlign: {
 		type: 'string',
-		default: 'left',
+		default: headingAlignmentDefault,
 		UAGCopyPaste: {
 			styleType: 'overall-alignment'
 		}
@@ -703,14 +706,12 @@ const attributes = {
 	// link
 	linkColor: {
 		type: 'string',
-		default: '#007cba',
 		UAGCopyPaste: {
 			styleType: 'link-color'
 		}
 	},
 	linkHColor: {
 		type: 'string',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'link-hover-color'
 		}

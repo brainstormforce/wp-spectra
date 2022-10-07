@@ -6,6 +6,7 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
 import edit from './edit';
 import save from './save';
+import deprecated from './deprecated';
 import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/how-to-step', {
@@ -21,4 +22,5 @@ registerBlockType( 'uagb/how-to-step', {
 	},
 	example: {},
 	save,
+	deprecated,
 } );

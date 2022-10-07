@@ -7,34 +7,8 @@
  * @package uagb
  */
 
-$field_border_defaults   = array(
-	'borderStyle'             => 'solid',
-	'borderTopWidth'          => 1,
-	'borderRightWidth'        => 1,
-	'borderBottomWidth'       => 1,
-	'borderLeftWidth'         => 1,
-	'borderTopLeftRadius'     => 0,
-	'borderTopRightRadius'    => 0,
-	'borderBottomLeftRadius'  => 0,
-	'borderBottomRightRadius' => 0,
-	'borderColor'             => '#eeeeee',
-	'borderHColor'            => '',
-);
-$field_border_attribute  = UAGB_Block_Helper::uag_generate_border_attribute( 'input', $field_border_defaults );
-$button_border_defaults  = array(
-	'borderStyle'             => 'solid',
-	'borderTopWidth'          => 1,
-	'borderRightWidth'        => 1,
-	'borderBottomWidth'       => 1,
-	'borderLeftWidth'         => 1,
-	'borderTopLeftRadius'     => 0,
-	'borderTopRightRadius'    => 0,
-	'borderBottomLeftRadius'  => 0,
-	'borderBottomRightRadius' => 0,
-	'borderColor'             => '#333',
-	'borderHoverColor'        => '',
-);
-$button_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn', $button_border_defaults );
+$field_border_attribute  = UAGB_Block_Helper::uag_generate_border_attribute( 'input' );
+$button_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 
 return array_merge(
 	array(
@@ -239,6 +213,16 @@ return array_merge(
 		'msgLetterSpacingTablet'           => '',
 		'msgLetterSpacingMobile'           => '',
 		'msgLetterSpacingType'             => 'px',
+		'fieldBorderStyle'                 => 'solid',
+		'fieldBorderWidth'                 => 1,
+		'fieldBorderRadius'                => 0,
+		'fieldBorderColor'                 => '#eeeeee',
+		'fieldBorderFocusColor'            => '',
+		'buttonBorderStyle'                => 'solid',
+		'buttonBorderWidth'                => 1,
+		'buttonBorderRadius'               => 0,
+		'buttonBorderColor'                => '#333',
+		'buttonBorderHoverColor'           => '#333',
 	),
 	$field_border_attribute,
 	$button_border_attribute

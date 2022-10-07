@@ -1,6 +1,6 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
-import lazyLoader from '@Controls/lazy-loader';
+
 import WebfontLoader from '@Components/typography/fontloader';
 import renderSVG from '@Controls/renderIcon';
 import TypographyControl from '@Components/typography';
@@ -1376,12 +1376,12 @@ const Settings = ( props ) => {
 
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
+
 				{ inspectorControlsSettings }
 				{ loadTitleGoogleFonts }
 				{ loadCountGoogleFonts }
 				{ loadListGoogleFonts }
-			</Suspense>
+
 		</>
 	);
 };

@@ -4,7 +4,7 @@ import { SelectControl } from '@wordpress/components';
 import styles from './editor.lazy.scss';
 import GradientSettings from '@Components/gradient-settings';
 import React, { useLayoutEffect } from 'react';
-import UAGImage from '@Components/image';
+import UAGMediaPicker from '@Components/image';
 import ResponsiveSlider from '@Components/responsive-slider';
 import ResponsiveSelectControl from '@Components/responsive-select';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -56,6 +56,7 @@ const Background = ( props ) => {
 		yPositionType,
 		yPositionTypeTablet,
 		yPositionTypeMobile,
+		backgroundVideoOpacity
 	} = props;
 
 	const onRemoveImage = () => {
@@ -256,10 +257,11 @@ const Background = ( props ) => {
 			{ 'image' === backgroundType.value && (
 				<div className="uag-background-image">
 					{ ! imageResponsive &&
-						<UAGImage
+						<UAGMediaPicker
 							onSelectImage={ onSelectImage }
 							backgroundImage={ backgroundImage.value }
 							onRemoveImage={ onRemoveImage }
+							disableLabel={ true }
 						/>
 					}
 					{ ! imageResponsive && backgroundImage.value && (
@@ -820,11 +822,13 @@ const Background = ( props ) => {
 			) }
 			{ 'video' === backgroundType.value && backgroundVideoType.value && (
 				<div className="uag-background-video">
-					<UAGImage
+					<UAGMediaPicker
 						onSelectImage={ onSelectVideo }
 						backgroundImage={ backgroundVideo.value }
 						onRemoveImage={ onRemoveVideo }
-						showVideoInput={ true }
+						slug={ 'video' }
+						label={ __( 'Video', 'ultimate-addons-for-gutenberg' ) }
+						allow={ [ 'video' ] }
 					/>
 				</div>
 			) }
@@ -866,6 +870,10 @@ const Background = ( props ) => {
 											} }
 											setAttributes={ setAttributes }
 											onOpacityChange={onOpacityChange}
+											backgroundVideoOpacity={ {
+												value: backgroundVideoOpacity.value,
+												label: backgroundVideoOpacity.label,
+											} }
 										/>
 									</div>
 								) }

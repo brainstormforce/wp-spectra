@@ -1,12 +1,10 @@
 /**
  * BLOCK: Post Grid - Editor Render.
  */
-import React, { lazy, Suspense, useLayoutEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {    useLayoutEffect } from 'react';
 
-const Blog = lazy( () =>
-	import( /* webpackChunkName: "chunks/post-grid/blog" */ './blog' )
-);
+
+import Blog from './blog';
 
 import {
 	InnerBlockLayoutContextProvider,
@@ -132,7 +130,7 @@ const Render = ( props ) => {
 	const renderViewMode = () => {
 		return (
 			<Disabled>
-				<Suspense fallback={ lazyLoader() }>
+
 					<Blog
 						attributes={ attributes }
 						className={ props.parentProps.className }
@@ -142,7 +140,7 @@ const Render = ( props ) => {
 						deviceType={ deviceType }
 						name={ name }
 					/>
-				</Suspense>
+
 			</Disabled>
 		);
 	};

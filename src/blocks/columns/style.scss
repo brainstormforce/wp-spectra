@@ -11,6 +11,7 @@
 	z-index: 2;
 	display: flex;
 	flex-wrap: nowrap;
+	width: 100%;
 }
 
 .uagb-columns__wrap {
@@ -157,27 +158,27 @@
 	width: 16.66%;
 }
 
-.uagb-columns__gap-nogap > .wp-block[data-type="uagb/column"] {
+.uagb-columns__gap-nogap > .uagb-columns__inner-wrap > .wp-block[data-type="uagb/column"] {
 	padding: 0;
 }
 
-.uagb-columns__gap-default > .wp-block[data-type="uagb/column"] {
+.uagb-columns__gap-default > .uagb-columns__inner-wrap > .wp-block[data-type="uagb/column"] {
 	padding: 10px;
 }
 
-.uagb-columns__gap-narrow > .wp-block[data-type="uagb/column"] {
+.uagb-columns__gap-narrow > .uagb-columns__inner-wrap > .wp-block[data-type="uagb/column"] {
 	padding: 5px;
 }
 
-.uagb-columns__gap-extended > .wp-block[data-type="uagb/column"] {
+.uagb-columns__gap-extended > .uagb-columns__inner-wrap > .wp-block[data-type="uagb/column"] {
 	padding: 15px;
 }
 
-.uagb-columns__gap-wide > .wp-block[data-type="uagb/column"] {
+.uagb-columns__gap-wide > .uagb-columns__inner-wrap > .wp-block[data-type="uagb/column"] {
 	padding: 20px;
 }
 
-.uagb-columns__gap-wider > .wp-block[data-type="uagb/column"] {
+.uagb-columns__gap-wider > .uagb-columns__inner-wrap > .wp-block[data-type="uagb/column"] {
 	padding: 30px;
 }
 
@@ -198,14 +199,15 @@
 		> .uagb-columns__inner-wrap { // For Backword.
 			display: block;
 		}
+
+		&.uagb-columns__reverse-tablet .uagb-columns__inner-wrap {
+			display: flex;
+			flex-direction: column-reverse;
+		}
+
 	}
 
-	.uagb-columns__stack-tablet.uagb-columns__reverse-tablet {
-		display: flex;
-		flex-direction: column-reverse;
-	}
-
-	.uagb-columns__reverse-tablet {
+	.uagb-columns__reverse-tablet .uagb-columns__inner-wrap {
 		display: flex;
 		flex-direction: row-reverse;
 	}
@@ -228,14 +230,23 @@
 		> .uagb-columns__inner-wrap { // For Backword.
 			display: block;
 		}
+
+		&.uagb-columns__reverse-mobile,
+		&.uagb-columns__reverse-tablet {
+
+			.uagb-columns__inner-wrap {
+				display: flex;
+				flex-direction: column-reverse;
+			}
+		}
 	}
 
-	.uagb-columns__stack-mobile.uagb-columns__reverse-mobile {
+	.uagb-columns__stack-tablet.uagb-columns__reverse-mobile .uagb-columns__inner-wrap {
 		display: flex;
 		flex-direction: column-reverse;
 	}
 
-	.uagb-columns__reverse-mobile {
+	.uagb-columns__reverse-mobile .uagb-columns__inner-wrap {
 		display: flex;
 		flex-direction: row-reverse;
 	}

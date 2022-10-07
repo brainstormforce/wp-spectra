@@ -1,7 +1,7 @@
 import UAGIconPicker from '@Components/icon-picker';
 import { __ } from '@wordpress/i18n';
-import React, { Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React from 'react';
+
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import ResponsiveBorder from '@Components/responsive-border';
@@ -13,7 +13,7 @@ import InspectorTab, {
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
-import UAGImage from '@Components/image';
+import UAGMediaPicker from '@Components/image';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
 import UAGTabsControl from '@Components/tabs';
@@ -280,7 +280,7 @@ const Settings = ( props ) => {
 		iconBackgroundColor,
 		iconBackgroundHoverColor,
 		iconBorderWidth,
-		
+
 		// padding
 		blockTopPadding,
 		blockRightPadding,
@@ -588,7 +588,7 @@ const Settings = ( props ) => {
 				) }
 				{ false !== showIcon && source_type === 'image' && (
 					<>
-						<UAGImage
+						<UAGMediaPicker
 							onSelectImage={ onSelectImage }
 							backgroundImage={ iconImage }
 							onRemoveImage={ onRemoveImage }
@@ -2582,12 +2582,12 @@ const Settings = ( props ) => {
 					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			<Suspense fallback={ lazyLoader() }>
+
 				{ loadPrefixGoogleFonts }
 				{ loadSubHeadGoogleFonts }
 				{ loadCtaGoogleFonts }
 				{ loadHeadGoogleFonts }
-			</Suspense>
+
 		</>
 	);
 };

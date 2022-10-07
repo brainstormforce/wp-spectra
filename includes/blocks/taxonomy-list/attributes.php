@@ -8,20 +8,7 @@
  */
 
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
-	'overall',
-	array(
-		'borderColor'             => '#E0E0E0',
-		'borderTopWidth'          => 1,
-		'borderRightWidth'        => 1,
-		'borderBottomWidth'       => 1,
-		'borderLeftWidth'         => 1,
-		'borderTopLeftRadius'     => 3,
-		'borderTopRightRadius'    => 3,
-		'borderBottomLeftRadius'  => 3,
-		'borderBottomRightRadius' => 3,
-		'borderStyle'             => 'solid',
-		'borderHoverColor'        => '#E0E0E0',
-	)
+	'overall'
 );
 
 return array_merge(
@@ -135,6 +122,10 @@ return array_merge(
 		'seperatorThickness'       => 1,
 		'seperatorColor'           => '#b2b4b5',
 		'seperatorHoverColor'      => '#b2b4b5',
+		'borderStyle'              => 'solid',
+		'borderWidth'              => 1,
+		'borderRadius'             => 0,
+		'borderColor'              => '#E0E0E0',
 	),
 	$border_attribute
 );

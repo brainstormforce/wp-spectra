@@ -2,7 +2,7 @@
  * BLOCK: Columns
  */
 
-import UAGB_Block_Icons from '@Controls/block-icons';
+import { renderLegacyBlockEditorIcon } from '@Controls/block-icons';
 import attributes from './attributes';
 import edit from './edit';
 import deprecated from './deprecated';
@@ -14,11 +14,11 @@ import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
 
-if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) {
+if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
 	registerBlockType( 'uagb/columns', {
 		title: __( 'Advanced Columns', 'ultimate-addons-for-gutenberg' ),
 		description:  __( 'Insert a number of columns within a single row.', 'ultimate-addons-for-gutenberg' ),
-		icon: UAGB_Block_Icons.columns,
+		icon: renderLegacyBlockEditorIcon( 'columns' ),
 		category: uagb_blocks_info.category,
 		keywords: [
 			__( 'columns', 'ultimate-addons-for-gutenberg' ),

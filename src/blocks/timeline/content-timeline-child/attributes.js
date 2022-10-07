@@ -18,7 +18,7 @@ const attributes = {
 	time_desc: {
 		type: 'string',
 		default: __(
-			'This is Timeline description, you can change me anytime click here ',
+			'This is timeline description. Please click here to change this description.',
 			'ultimate-addons-for-gutenberg'
 		),
 	},

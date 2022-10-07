@@ -1,7 +1,7 @@
 name: Build a zip, Comment on PR & Delete a zip on closed
 on:
   pull_request:
-    types: [opened, synchronize, ready_for_review, closed]
+    types: [opened, synchronize, ready_for_review, closed, labeled]
     branches:
       - master
       - dev
@@ -23,7 +23,7 @@ env:
 jobs:
   build-zip:
     name: "Build a zip and upload to server"
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ github.event.action != 'closed' && github.event.label.name == 'create zip' }}
     runs-on: ubuntu-latest
     outputs:
       branch_name: ${{ steps.get_current_branch.outputs.branch_name }}
@@ -78,7 +78,7 @@ jobs:
 
   comment-on-pr:
     name: Comment on PR with links to plugin ZIPs
-    if: ${{ github.event.action != 'closed' && github.head_ref && github.head_ref != null }}
+    if: ${{ github.event.action != 'closed' && github.head_ref && github.head_ref != null && github.event.label.name == 'create zip' }}
     runs-on: ubuntu-latest
     needs: build-zip
     env:

@@ -37,9 +37,9 @@ class Admin_Helper {
 	 * @return array.
 	 */
 	public static function get_common_settings() {
+
 		$uag_versions   = self::get_rollback_versions_options();
 		$changelog_data = self::get_changelog_feed_data();
-		$content_width  = \UAGB_Admin_Helper::get_global_content_width();
 
 		$options = array(
 			'rollback_to_previous_version'       => isset( $uag_versions[0]['value'] ) ? $uag_versions[0]['value'] : '',
@@ -62,16 +62,11 @@ class Admin_Helper {
 			'coming_soon_page'                   => self::get_coming_soon_page(),
 			'uag_previous_versions'              => $uag_versions,
 			'changelog_data'                     => $changelog_data,
-			'content_width'                      => $content_width,
-			'container_global_padding'           => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_container_global_padding', 'default' ),
+			'uagb_old_user_less_than_2'          => get_option( 'uagb-old-user-less-than-2' ),
 			'recaptcha_site_key_v2'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
 			'recaptcha_secret_key_v2'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ),
 			'recaptcha_site_key_v3'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),
 			'recaptcha_secret_key_v3'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v3', '' ),
-			'blocks_editor_spacing'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_blocks_editor_spacing', 0 ),
-			'load_font_awesome_5'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
-			'auto_block_recovery'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_auto_block_recovery', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
-			'uagb_old_user_less_than_2'          => get_option( 'uagb-old-user-less-than-2' ),
 		);
 
 		return $options;
@@ -97,11 +92,11 @@ class Admin_Helper {
 	/**
 	 * Get Changelogs from API.
 	 *
-	 * @since 2.0.0-beta.3
+	 * @since 2.0.0
 	 * @return array $changelog_data Changelog Data.
 	 */
 	public static function get_changelog_feed_data() {
-		$posts          = json_decode( wp_remote_retrieve_body( wp_remote_get( 'https://ultimategutenberg.com/wp-json/wp/v2/changelog?per_page=3' ) ) );
+		$posts          = json_decode( wp_remote_retrieve_body( wp_remote_get( 'https://wpspectra.com/wp-json/wp/v2/changelog?per_page=3' ) ) );
 		$changelog_data = array();
 
 		if ( isset( $posts ) && is_array( $posts ) ) {
@@ -145,9 +140,9 @@ class Admin_Helper {
 	 */
 	public static function get_options() {
 
-		$general_settings = self::get_common_settings();
-
-		$options = $general_settings;
+		$general_settings          = self::get_common_settings();
+		$shareable_common_settings = \UAGB_Admin_Helper::get_admin_settings_shareable_data();
+		$options                   = array_merge( $general_settings, $shareable_common_settings );
 
 		$options = apply_filters( 'uag_global_data_options', $options );
 

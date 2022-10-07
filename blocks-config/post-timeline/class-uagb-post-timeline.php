@@ -573,10 +573,10 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'default' => 15,
 						),
 						'ctaColor'                   => array(
-							'type'    => 'string',
+							'type' => 'string',
 						),
 						'ctaBackground'              => array(
-							'type'    => 'string',
+							'type' => 'string',
 						),
 						'stack'                      => array(
 							'type'    => 'string',
