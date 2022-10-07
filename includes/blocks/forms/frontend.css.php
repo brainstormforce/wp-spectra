@@ -179,7 +179,7 @@ $selectors = array(
 		array(
 			'font-size'        => UAGB_Helper::get_css_value( $attr['submitTextFontSize'], $attr['submitTextFontSizeType'] ),
 			'color'            => $attr['submitColor'],
-			'background-color' => $attr['submitBgColor'],
+			'background-color' => ( 'color' === $attr['submitBgType'] ) ? $attr['submitBgColor'] : 'transparent',
 			'padding-top'      => UAGB_Helper::get_css_value( $btnPaddingTop, $attr['paddingBtnUnit'] ),
 			'padding-bottom'   => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['paddingBtnUnit'] ),
 			'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['paddingBtnUnit'] ),
@@ -189,7 +189,7 @@ $selectors = array(
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button:hover' => array(
 		'color'            => $attr['submitColorHover'],
-		'background-color' => $attr['submitBgColorHover'],
+		'background-color' => ( 'color' === $attr['submitBgHoverType'] ) ? $attr['submitBgColorHover'] : 'transparent',
 		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],
 	),
 	// Hover Colors.
