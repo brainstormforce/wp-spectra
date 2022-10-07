@@ -550,7 +550,8 @@ function CtaStyle( props ) {
 		selectors[' a.uagb-cta__button-link-wrapper']        = {
 			'color' : ctaBtnLinkColor,
 			'border-style' : 'none !important',
-			'text-decoration' : 'underline'
+			'text-decoration' : 'underline',
+			'padding' : 'unset !important'
 		};
 		selectors[' a.uagb-cta__button-link-wrapper:hover '] = {
 			'color' : ctaLinkHoverColor,
