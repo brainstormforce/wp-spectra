@@ -171,7 +171,20 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 2.0.14 - THURSDAY, 29th SEPTEMBER 2022 ###
+* Fix: Button - Box shadow stylings not working as expected on front-end.
 * Fix: Tabs - Plus button height was not the same as other tab buttons on the editor.
+* Fix: Tabs - Tabs border is inconsistent inside the editor as well as on the frontend.
+* Fix: Post Carousel/Masonry- Taxonomy stylings not working as expected in different layouts.
+* Fix: Forms - Phone country code text overlapping for mobile view in frontend.
+* Fix: Forms - Phone height and size enlarged issue on the editor.
+* Fix: Forms - Fixed phone dropdown icon position on the frontend.
+* Fix: Forms - Translation of select field text on frontend.
+* Fix: Forms - Removed the required string and toggle button from the form block.
+* Fix: Forms - Toggle field size not working on responsive devices
+* Fix: Post Carousel - Column gap was not same on the front-end after upgrading from v1.25.6 when image is set as background.
+* Fix: Post Masonry - Row gap and column gap lable changd.
+* Fix: Post Masonry - Column Gap was impacting other post masonry, post grid, post carousel blocks.
+* Fix: Copy Paste Styles - Removed hover color for disable paste style text.
 
 ### 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 ###
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
