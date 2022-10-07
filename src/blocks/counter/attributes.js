@@ -472,7 +472,7 @@ const attributes = {
 	// Prefix
 	prefixRightDistance: {
 		type: 'number',
-		default: 5,
+		default: 0,
 	},
 	prefixRightDistanceTablet: {
 		type: 'number',
@@ -483,7 +483,7 @@ const attributes = {
 	// Suffix
 	suffixLeftDistance: {
 		type: 'number',
-		default: 5,
+		default: 0,
 	},
 	suffixLeftDistanceTablet: {
 		type: 'number',

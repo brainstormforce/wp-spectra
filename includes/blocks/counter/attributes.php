@@ -121,11 +121,11 @@ return array_merge(
 		'numberMarginUnitTablet'    => 'px',
 		'numberMarginUnitMobile'    => 'px',
 		// Prefix.
-		'prefixRightDistance'       => 5,
+		'prefixRightDistance'       => 0,
 		'prefixRightDistanceTablet' => '',
 		'prefixRightDistanceMobile' => '',
 		// Suffix.
-		'suffixLeftDistance'        => 5,
+		'suffixLeftDistance'        => 0,
 		'suffixLeftDistanceTablet'  => '',
 		'suffixLeftDistanceMobile'  => '',
 		// circle.
