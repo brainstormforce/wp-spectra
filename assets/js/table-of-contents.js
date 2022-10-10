@@ -256,7 +256,7 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 
 				let headerText = parseTocSlug( divsArr[i].innerText );
 
-				if ( headerText.length < 1 ) {
+				if ( headerText.length < 0 ) {
 					const aTags = tocListWrap.getElementsByTagName( 'a' );
 					const searchText = divsArr[i].innerText;
 					for ( let j = 0; j < aTags.length; j++ ) {
