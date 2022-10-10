@@ -149,13 +149,13 @@ UAGBCounter = { // eslint-disable-line no-undef
 
 	_getStartNumber( data ){
 		if( data.layout === 'bars' || data.layout === 'circle' ){
-			return Math.ceil( ( parseInt( data.startNumber ) / parseInt( data.totalNumber ) ) * 100 );
+			return ( ( parseFloat( data.startNumber ) / parseFloat( data.totalNumber ) ) * 100 );
 		}
 		return data.startNumber;
 	},
 	_getEndNumber( data ){
 		if( data.layout === 'bars' || data.layout === 'circle' ){
-			return Math.ceil( ( parseInt( data.endNumber ) / parseInt( data.totalNumber ) ) * 100 );
+			return ( ( parseFloat( data.endNumber ) / parseFloat( data.totalNumber ) ) * 100 );
 		}
 		return data.endNumber;
 	}
