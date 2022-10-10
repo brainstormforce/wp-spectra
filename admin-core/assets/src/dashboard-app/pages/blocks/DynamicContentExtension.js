@@ -43,7 +43,8 @@ const DynamicContentExtension = () => {
 		}
 
         dispatch( {type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: assetStatus } );
-		dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
+		dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
+
     };
 
     return (
