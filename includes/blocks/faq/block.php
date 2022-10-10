@@ -18,6 +18,6 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-faq-js' ),
-	'priority'         => 12,
+	'priority'         => 13,
 	'deprecated'       => false,
 );

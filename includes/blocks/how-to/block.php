@@ -17,6 +17,6 @@ $block_data = array(
 	'description'      => __( 'Add instructions/steps on processes using how to block.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 15,
+	'priority'         => 16,
 	'deprecated'       => false,
 );

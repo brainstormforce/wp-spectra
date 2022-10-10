@@ -18,5 +18,5 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-countUp-js', 'uagb-counter-js' ),
-	'priority'         => 1,
+	'priority'         => 12,
 );

@@ -17,6 +17,6 @@ $block_data = array(
 	'description'      => __( 'Add a marketing call to action button with a short description.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 19,
+	'priority'         => 20,
 	'deprecated'       => false,
 );

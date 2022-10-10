@@ -17,6 +17,6 @@ $block_data = array(
 	'description'      => __( 'Showcase your team by displaying info and social media profiles.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 30,
+	'priority'         => 31,
 	'deprecated'       => false,
 );

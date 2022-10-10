@@ -17,6 +17,6 @@ $block_data = array(
 	'description'      => __( 'Display your posts in a grid layout.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 21,
+	'priority'         => 22,
 	'deprecated'       => false,
 );

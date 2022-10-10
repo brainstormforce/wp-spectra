@@ -18,6 +18,6 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-table-of-contents' ),
-	'priority'         => 27,
+	'priority'         => 28,
 	'deprecated'       => false,
 );

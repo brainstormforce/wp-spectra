@@ -17,6 +17,6 @@ $block_data = array(
 	'description'      => __( 'Create a list highlighted with icons/images.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 16,
+	'priority'         => 17,
 	'deprecated'       => false,
 );

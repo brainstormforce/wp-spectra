@@ -17,6 +17,6 @@ $block_data = array(
 	'description'      => __( 'Show a Google Map location on your website.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 14,
+	'priority'         => 15,
 	'deprecated'       => false,
 );
