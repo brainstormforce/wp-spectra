@@ -10,7 +10,7 @@ import InfoBoxDesc from './components/InfoBoxDesc';
 import Icon from './components/Icons';
 import InfoBoxPositionClasses from './style-classes';
 import InfoBoxSeparator from './components/Separator';
-import CallToAction from './components/CTA';
+import CallToAction from './components/CTAV2-0-14';
 import InfoBoxIconImage from './components/IconImages';
 
 export default function save( props ) {
