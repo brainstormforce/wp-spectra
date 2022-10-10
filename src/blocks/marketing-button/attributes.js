@@ -247,12 +247,12 @@ const attributes = {
 
 	// Label and Sub Label
 	heading: {
-		source: 'string',
+		source: 'html',
 		selector: 'h1,h2,h3,h4,h5,h6,span,p',
 		default: 'Subscribe Now'
 	},
 	prefix: {
-		source: 'string',
+		source: 'html',
 		selector: '.uagb-marketing-btn__prefix',
 		default: 'Get access to Premium Features for FREE for a year!'
 	},

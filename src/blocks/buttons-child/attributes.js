@@ -52,7 +52,7 @@ const attributes = {
 		}
 	},
 	label: {
-		type: 'string',
+		type: 'html',
 		default: 'Click Here',
 	},
 	link: {
