@@ -431,6 +431,7 @@ export default function Settings( props ) {
 						type= 'number'
 						value={ totalNumber }
 						onChange={ ( value ) => setAttributes( {totalNumber: value} )}
+						help={ __( 'Note: Total Number should be more than or equal to the Ending Number.', 'ultimate-addons-for-gutenberg' ) }
 					/>
 				)
 			}
