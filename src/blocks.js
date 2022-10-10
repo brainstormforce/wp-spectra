@@ -37,6 +37,7 @@ import './blocks/call-to-action/block.js'; // P6.
 import './blocks/blockquote/block.js'; // P10.
 import './blocks/timeline/content-timeline/block.js'; // P11.
 import './blocks/timeline/content-timeline-child/block.js'; // Child Block.
+import './blocks/counter/block.js';
 import './blocks/faq/block.js'; // P12.
 import './blocks/faq-child/block.js'; // Child Block.
 import './blocks/forms/block.js'; // P13.
@@ -74,7 +75,6 @@ import './blocks/tabs-child/block.js'; // Child Block.
 import './blocks/taxonomy-list/block.js'; // P29.
 import './blocks/team/block.js'; // P30.
 import './blocks/testimonial/block.js'; // P31.
-import './blocks/counter/block.js';
 // Extensions.
 import './blocks/extensions/attributes.js';
 import './blocks/extensions/block.js';
