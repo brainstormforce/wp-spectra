@@ -37,10 +37,10 @@ import './blocks/call-to-action/block.js'; // P6.
 import './blocks/blockquote/block.js'; // P10.
 import './blocks/timeline/content-timeline/block.js'; // P11.
 import './blocks/timeline/content-timeline-child/block.js'; // Child Block.
-import './blocks/counter/block.js';
-import './blocks/faq/block.js'; // P12.
+import './blocks/counter/block.js'; // P12.
+import './blocks/faq/block.js'; // P13.
 import './blocks/faq-child/block.js'; // Child Block.
-import './blocks/forms/block.js'; // P13.
+import './blocks/forms/block.js'; // P14.
 import './blocks/forms/child-blocks/name/block.js'; // Child Block.
 import './blocks/forms/child-blocks/email/block.js'; // Child Block.
 import './blocks/forms/child-blocks/hidden/block.js'; // Child Block.
@@ -53,28 +53,28 @@ import './blocks/forms/child-blocks/select/block.js'; // Child Block.
 import './blocks/forms/child-blocks/toggle/block.js'; // Child Block.
 import './blocks/forms/child-blocks/date/block.js'; // Child Block.
 import './blocks/forms/child-blocks/accept/block.js'; // Child Block.
-import './blocks/google-map/block.js'; // P14.
-import './blocks/how-to/block.js'; // P15.
+import './blocks/google-map/block.js'; // P15.
+import './blocks/how-to/block.js'; // P16.
 import './blocks/how-to/child-blocks/step/block.js'; // Child Block.
-import './blocks/icon-list/block.js'; // P16.
+import './blocks/icon-list/block.js'; // P17.
 import './blocks/icon-list-child/block.js'; // Child Block.
-import './blocks/inline-notice/block.js'; // P17.
-import './blocks/lottie/block.js'; // P18.
-import './blocks/marketing-button/block.js'; // P19.
-import './blocks/post/block.js'; // Carousel P20 | Grid P21.
-import './blocks/timeline/post-timeline/block.js'; // P22.
-import './blocks/price-list/block.js'; // P23.
+import './blocks/inline-notice/block.js'; // P18.
+import './blocks/lottie/block.js'; // P19.
+import './blocks/marketing-button/block.js'; // P20.
+import './blocks/post/block.js'; // Carousel P21 | Grid P22.
+import './blocks/timeline/post-timeline/block.js'; // P23.
+import './blocks/price-list/block.js'; // P24.
 import './blocks/price-list-child/block.js'; // Child Block.
-import './blocks/review/block.js'; // P24.
-import './blocks/social-share/block.js'; // P25.
+import './blocks/review/block.js'; // P25.
+import './blocks/social-share/block.js'; // P26.
 import './blocks/social-share-child/block.js'; // Child Block.
-import './blocks/star-rating/block.js'; // P26.
-import './blocks/table-of-contents/block.js'; // P27.
-import './blocks/tabs/block.js'; // P28.
+import './blocks/star-rating/block.js'; // P27.
+import './blocks/table-of-contents/block.js'; // P28.
+import './blocks/tabs/block.js'; // P29.
 import './blocks/tabs-child/block.js'; // Child Block.
-import './blocks/taxonomy-list/block.js'; // P29.
-import './blocks/team/block.js'; // P30.
-import './blocks/testimonial/block.js'; // P31.
+import './blocks/taxonomy-list/block.js'; // P30.
+import './blocks/team/block.js'; // P31.
+import './blocks/testimonial/block.js'; // P32.
 // Extensions.
 import './blocks/extensions/attributes.js';
 import './blocks/extensions/block.js';
