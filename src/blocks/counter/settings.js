@@ -23,6 +23,7 @@ import UAGIconPicker from '@Components/icon-picker';
 import UAGMediaPicker from '@Components/image';
 import { getImageSize } from '@Utils/Helpers';
 import UAGPresets from '@Components/presets';
+import UAGNumberControl from '@Components/number-control';
 
 let imageSizeOptions = [
 	{
@@ -42,6 +43,7 @@ export default function Settings( props ) {
 		block_id,
 		startNumber,
 		endNumber,
+		decimalPlaces,
 		align,
 		alignTablet,
 		alignMobile,
@@ -430,6 +432,20 @@ export default function Settings( props ) {
 					/>
 				)
 			}
+			<UAGNumberControl
+				label={ __(
+					'Decimal Places',
+					'ultimate-addons-for-gutenberg'
+				) }
+				setAttributes={ setAttributes }
+				value={ decimalPlaces }
+				data={ {
+					value: decimalPlaces,
+					label: 'decimalPlaces',
+				} }
+				min={ 0 }
+				displayUnit={ false }
+			/>
 			<TextControl
 				label={ __( 'Number Prefix', 'ultimate-addons-for-gutenberg' ) }
 				value={ numberPrefix }

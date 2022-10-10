@@ -74,6 +74,7 @@ UAGBCounter = { // eslint-disable-line no-undef
 				duration: data.animationDuration,
 				separator: data.thousandSeparator,
 				useEasing: false,
+				decimalPlaces: data.decimalPlaces,
 			} );
 			return countUp;
 		}

@@ -20,6 +20,7 @@ return array_merge(
 		'startNumber'               => 0,
 		'endNumber'                 => 80,
 		'totalNumber'               => 100,
+		'decimalPlaces'             => 0,
 		'numberPrefix'              => '',
 		'numberSuffix'              => '%',
 		'animationDuration'         => 25,

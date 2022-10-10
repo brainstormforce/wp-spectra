@@ -328,6 +328,10 @@ const attributes = {
 		type: 'string',
 		default: 100,
 	},
+	decimalPlaces: {
+		type: 'number',
+		default: 0,
+	},
 	numberPrefix: {
 		type: 'string',
 		default: '',

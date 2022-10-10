@@ -24,6 +24,7 @@ const Render = ( props ) => {
 		numberSuffix,
 		startNumber,
 		endNumber,
+		decimalPlaces,
 		animationDuration,
 		thousandSeparator,
 		circleSize,
@@ -36,7 +37,7 @@ const Render = ( props ) => {
 
 	useEffect( () => {
 		UAGBCounter.init( '.uagb-block-' + block_id, attributes ) // eslint-disable-line no-undef
-	}, [layout, animationDuration, startNumber, endNumber, thousandSeparator] )
+	}, [layout, animationDuration, startNumber, endNumber, thousandSeparator, decimalPlaces] )
 
 	const blockName = props.parentProps.name.replace( 'uagb/', '' );
 	const circleSizeFallback = getFallbackNumber( circleSize, 'circleSize', blockName );

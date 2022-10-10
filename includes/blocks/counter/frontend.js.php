@@ -24,6 +24,7 @@ $counter_options = apply_filters(
 		'startNumber'       => $attr['startNumber'],
 		'endNumber'         => $attr['endNumber'],
 		'totalNumber'       => $attr['totalNumber'],
+		'decimalPlaces'     => $attr['decimalPlaces'],
 		'animationDuration' => $animation_duration_fallback,
 		'thousandSeparator' => $attr['thousandSeparator'],
 		'circleSize'        => $circle_size_fallback,
