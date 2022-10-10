@@ -23,7 +23,6 @@ import UAGIconPicker from '@Components/icon-picker';
 import UAGMediaPicker from '@Components/image';
 import { getImageSize } from '@Utils/Helpers';
 import UAGPresets from '@Components/presets';
-import UAGNumberControl from '@Components/number-control';
 
 let imageSizeOptions = [
 	{
@@ -435,7 +434,7 @@ export default function Settings( props ) {
 					/>
 				)
 			}
-			<UAGNumberControl
+			<Range
 				label={ __(
 					'Decimal Places',
 					'ultimate-addons-for-gutenberg'
@@ -447,6 +446,8 @@ export default function Settings( props ) {
 					label: 'decimalPlaces',
 				} }
 				min={ 0 }
+				step={ 1 }
+				max={ 10 }
 				displayUnit={ false }
 			/>
 			<TextControl
