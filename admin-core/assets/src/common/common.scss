@@ -411,8 +411,20 @@
 	.uag-radio-input {
 		width: 20px !important;
 		height: 20px !important;
-		&::before {
+		border: 1px solid #CBD5E1;
+		box-shadow: none !important;
+		&:checked {
+			border-color: #6104FF;
+			box-shadow: none !important;
+			color: #6104FF;
+		}
+		&:before {
 			display: none !important;
+		}
+		&:active,
+		&:focus {
+			border-color: #6104FF;
+			color: #6104FF;
 		}
 		&:hover {
 			color: #6104FF;
