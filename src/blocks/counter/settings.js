@@ -680,16 +680,70 @@ export default function Settings( props ) {
 					] }
 				/>
 			) }
-			<ResponsiveBorder
-				disabledBorderTitle= {false}
-				setAttributes={ setAttributes }
-				prefix={'iconWrap'}
-				attributes={ attributes }
-				deviceType={deviceType}
-				disableBottomSeparator={ false }
-			/>
 			{ ( sourceType === 'icon' ) && (
 				<>
+				<ResponsiveSlider
+					label={ __(
+						'Width',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					data={ {
+						desktop: {
+							value: iconSize,
+							label: 'iconSize',
+							unit: {
+								value: iconSizeType,
+								label: 'iconSizeType',
+							},
+						},
+						tablet: {
+							value: iconSizeTablet,
+							label: 'iconSizeTablet',
+							unit: {
+								value: iconSizeTypeTablet,
+								label: 'iconSizeTypeTablet',
+							},
+						},
+						mobile: {
+							value: iconSizeMobile,
+							label: 'iconSizeMobile',
+							unit: {
+								value: iconSizeTypeMobile,
+								label: 'iconSizeTypeMobile',
+							},
+						},
+					} }
+					limitMin={ { 'px': 0, '%': 0, 'em': 0 } } // eslint-disable-line quote-props
+					limitMax={ { 'px': 500, '%': 100, 'em': 100 } } // eslint-disable-line quote-props
+					unit={ {
+						value: iconSizeType,
+						label: 'iconSizeType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+						{
+							name: __(
+								'%',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: '%',
+						},
+						{
+							name: __(
+								'EM',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'em',
+						},
+					] }
+				/>
 				<UAGTabsControl
 					tabs={ [
 						{
@@ -776,70 +830,16 @@ export default function Settings( props ) {
 						}
 					disableBottomSeparator={ false }
 				/>
-				<ResponsiveSlider
-					label={ __(
-						'Width',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					data={ {
-						desktop: {
-							value: iconSize,
-							label: 'iconSize',
-							unit: {
-								value: iconSizeType,
-								label: 'iconSizeType',
-							},
-						},
-						tablet: {
-							value: iconSizeTablet,
-							label: 'iconSizeTablet',
-							unit: {
-								value: iconSizeTypeTablet,
-								label: 'iconSizeTypeTablet',
-							},
-						},
-						mobile: {
-							value: iconSizeMobile,
-							label: 'iconSizeMobile',
-							unit: {
-								value: iconSizeTypeMobile,
-								label: 'iconSizeTypeMobile',
-							},
-						},
-					} }
-					limitMin={ { 'px': 0, '%': 0, 'em': 0 } } // eslint-disable-line quote-props
-					limitMax={ { 'px': 500, '%': 100, 'em': 100 } } // eslint-disable-line quote-props
-					unit={ {
-						value: iconSizeType,
-						label: 'iconSizeType',
-					} }
-					units={ [
-						{
-							name: __(
-								'Pixel',
-								'ultimate-addons-for-gutenberg'
-							),
-							unitValue: 'px',
-						},
-						{
-							name: __(
-								'%',
-								'ultimate-addons-for-gutenberg'
-							),
-							unitValue: '%',
-						},
-						{
-							name: __(
-								'EM',
-								'ultimate-addons-for-gutenberg'
-							),
-							unitValue: 'em',
-						},
-					] }
-				/>
 				</>
 			) }
+			<ResponsiveBorder
+				disabledBorderTitle= {false}
+				setAttributes={ setAttributes }
+				prefix={'iconWrap'}
+				attributes={ attributes }
+				deviceType={deviceType}
+				disableBottomSeparator={ false }
+			/>
 			<SpacingControl
 				label={ __(
 					'Padding',
