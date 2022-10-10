@@ -583,7 +583,7 @@
 		default: 'none',
 	},
 	ctaText: {
-		type: 'html',
+		type: 'string',
 		default: 'Read More',
 	},
 	ctaLink: {
