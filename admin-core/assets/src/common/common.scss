@@ -406,3 +406,16 @@
 		}
 	}
 }
+
+.uag-dashboard-app {
+	.uag-radio-input {
+		width: 20px !important;
+		height: 20px !important;
+		&::before {
+			display: none !important;
+		}
+		&:hover {
+			color: #6104FF;
+		}
+	}
+}
