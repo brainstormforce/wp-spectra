@@ -317,15 +317,15 @@ const attributes = {
 	},
 	// Number.
 	startNumber: {
-		type: 'string',
+		type: 'number',
 		default: 0,
 	},
 	endNumber: {
-		type: 'string',
+		type: 'number',
 		default: 80,
 	},
 	totalNumber: {
-		type: 'string',
+		type: 'number',
 		default: 100,
 	},
 	decimalPlaces: {

@@ -415,11 +415,13 @@ export default function Settings( props ) {
 			/>
 			<TextControl
 				label={ __( 'Starting Number', 'ultimate-addons-for-gutenberg' ) }
+				type= 'number'
 				value={ startNumber }
 				onChange={ ( value ) => setAttributes( {startNumber: value} )}
 			/>
 			<TextControl
 				label={ __( 'Ending Number', 'ultimate-addons-for-gutenberg' ) }
+				type= 'number'
 				value={ endNumber }
 				onChange={ ( value ) => setAttributes( {endNumber: value} )}
 			/>
@@ -427,6 +429,7 @@ export default function Settings( props ) {
 				layout !== 'number' && (
 					<TextControl
 						label={ __( 'Total Number', 'ultimate-addons-for-gutenberg' ) }
+						type= 'number'
 						value={ totalNumber }
 						onChange={ ( value ) => setAttributes( {totalNumber: value} )}
 					/>
