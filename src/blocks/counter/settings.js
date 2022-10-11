@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import TypographyControl from '@Components/typography';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -8,7 +8,7 @@ import AdvancedPopColorControl from '@Components/color-control/advanced-pop-colo
 import SpacingControl from '@Components/spacing-control';
 import { __ } from '@wordpress/i18n';
 import {AlignmentToolbar, BlockControls, InspectorControls} from '@wordpress/block-editor';
-import { TextControl, SelectControl, Icon, ToggleControl } from '@wordpress/components';
+import { TextControl, SelectControl, Icon, ToggleControl, __experimentalNumberControl as NumberControl } from '@wordpress/components';
 import renderSVG from '@Controls/renderIcon';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
@@ -23,6 +23,7 @@ import UAGIconPicker from '@Components/icon-picker';
 import UAGMediaPicker from '@Components/image';
 import { getImageSize } from '@Utils/Helpers';
 import UAGPresets from '@Components/presets';
+import { defaultFallbacks } from './fallbacks';
 
 let imageSizeOptions = [
 	{
@@ -230,6 +231,21 @@ export default function Settings( props ) {
 		}
 	}, [layout] );
 
+	const [minTotal, setMinTotal] = useState( defaultFallbacks.endNumberDefault );
+
+	const startFallback = startNumber ? startNumber : defaultFallbacks.startNumberDefault;
+	const endFallback = endNumber ? endNumber : defaultFallbacks.endNumberDefault;
+
+	useEffect( () => {
+		if( startFallback < endFallback ) {
+			setMinTotal( endFallback );
+		} else if ( startFallback > endFallback ) {
+			setMinTotal( startFallback );
+		} else {
+			setMinTotal( endFallback );
+		}
+	}, [ startNumber, endNumber ] );
+
 	const numberIconPositionOptions = [
 		{
 			value: 'top',
@@ -412,14 +428,14 @@ export default function Settings( props ) {
 				] }
 				showIcons={ true }
 			/>
-			<TextControl
+			<NumberControl
 				label={ __( 'Starting Number', 'ultimate-addons-for-gutenberg' ) }
 				type= 'number'
 				value={ startNumber }
 				onChange={ ( value ) => setAttributes( {startNumber: value} )}
 				help={ ( layout !== 'number' ) ? __( 'Note: Please use positive values for Circle and Bar layouts.', 'ultimate-addons-for-gutenberg' ) : false }
 			/>
-			<TextControl
+			<NumberControl
 				label={ __( 'Ending Number', 'ultimate-addons-for-gutenberg' ) }
 				type= 'number'
 				value={ endNumber }
@@ -428,11 +444,13 @@ export default function Settings( props ) {
 			/>
 			{
 				layout !== 'number' && (
-					<TextControl
+					<NumberControl
 						label={ __( 'Total Number', 'ultimate-addons-for-gutenberg' ) }
 						type= 'number'
 						value={ totalNumber }
 						onChange={ ( value ) => setAttributes( {totalNumber: value} )}
+						min={ minTotal }
+						required={ true }
 						help={ __( 'Note: Total Number should be more than or equal to the Ending Number (or the Starting number in case you want to animate the Counter in reverse direction).', 'ultimate-addons-for-gutenberg' ) }
 					/>
 				)

@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { RichText } from '@wordpress/block-editor';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import CounterIcon from './component/CounterIcon';
+import { defaultFallbacks } from './fallbacks';
 
 export default function Save( props ) {
 	const {attributes} = props;
@@ -24,6 +25,10 @@ export default function Save( props ) {
 	} = attributes
 
 	const blockName = 'counter'; // Since props.name property isn't available, we need to hard-code the block's name.
+
+	const startFallback = startNumber ? startNumber : defaultFallbacks.startNumberDefault;
+	const endFallback = endNumber ? endNumber : defaultFallbacks.endNumberDefault;
+
 	const circleSizeFallback = getFallbackNumber( circleSize, 'circleSize', blockName );
 	const animationDurationFallback = getFallbackNumber( animationDuration, 'animationDuration', blockName );
 
@@ -55,7 +60,7 @@ export default function Save( props ) {
 			{
 				numberPrefix && ( <span className="uagb-counter-block-prefix">{numberPrefix}</span> )
 			}
-			<span className="uagb-counter-block-number" data-duration={animationDurationFallback} data-to-value={endNumber} data-from-value={startNumber} data-delimiter={thousandSeparator}></span>
+			<span className="uagb-counter-block-number" data-duration={animationDurationFallback} data-to-value={endFallback} data-from-value={startFallback} data-delimiter={thousandSeparator}></span>
 			{
 				numberSuffix && ( <span className="uagb-counter-block-suffix">{numberSuffix}</span> )
 			}

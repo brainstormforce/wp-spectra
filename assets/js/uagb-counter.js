@@ -85,8 +85,8 @@ UAGBCounter = { // eslint-disable-line no-undef
 		const parentWrapClass = 'wp-block-uagb-counter--bars';
 		const numberWrap = el.querySelector( '.wp-block-uagb-counter__number' );
 		const duration = that._getAnimationDuration( data );
-		const startWidth = data.startNumber < data.totalNumber ? Math.ceil( ( data.startNumber / data.totalNumber ) * 100 ) : 100;
-		const endWidth = data.endNumber <= data.totalNumber ? Math.ceil( ( data.endNumber / data.totalNumber ) * 100 ) : 100;
+		const startWidth = that._getStartNumber( data ) < that._getTotalNumber( data ) ? Math.ceil( ( that._getStartNumber( data ) / that._getTotalNumber( data ) ) * 100 ) : 100;
+		const endWidth = that._getEndNumber( data ) <= that._getTotalNumber( data ) ? Math.ceil( ( that._getEndNumber( data ) / that._getTotalNumber( data ) ) * 100 ) : 100;
 
 		const animationKeyframes = [
 			{ width: startWidth + '%' },
@@ -113,14 +113,14 @@ UAGBCounter = { // eslint-disable-line no-undef
 
 		const diameter = data.circleSize - 20;
 		const circumference = Math.PI * diameter;
-		const totalNumber = data.totalNumber;
+		const totalNumber = that._getTotalNumber( data );
 		
-		let startPoint = 100 * ( data.startNumber / totalNumber );
+		let startPoint = 100 * ( that._getStartNumber( data ) / totalNumber );
 		startPoint = ( startPoint < 100 ) ? startPoint : 100;
 		startPoint = 100 - startPoint;
 		startPoint = ( startPoint / 100 ) * circumference;
 
-		let endPoint = 100 * ( data.endNumber / totalNumber );
+		let endPoint = 100 * ( that._getEndNumber( data ) / totalNumber );
 		endPoint = ( endPoint < 100 ) ? endPoint : 100;
 		endPoint = 100 - endPoint;
 		endPoint = ( endPoint / 100 ) * circumference;
@@ -148,9 +148,12 @@ UAGBCounter = { // eslint-disable-line no-undef
 	},
 
 	_getStartNumber( data ){
-		return data.startNumber;
+		return data.startNumber ? parseFloat( data.startNumber ) : parseFloat( 0 );
 	},
 	_getEndNumber( data ){
-		return data.endNumber;
+		return data.endNumber ? parseFloat( data.endNumber ) : parseFloat( 80 );
+	},
+	_getTotalNumber( data ){
+		return data.totalNumber ? parseFloat( data.totalNumber ) : parseFloat( 100 );
 	}
 };

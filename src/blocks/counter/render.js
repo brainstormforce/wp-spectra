@@ -5,6 +5,7 @@ import { RichText } from '@wordpress/block-editor';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import CounterIcon from './component/CounterIcon';
+import { defaultFallbacks } from './fallbacks';
 
 const propTypes = {};
 
@@ -38,6 +39,9 @@ const Render = ( props ) => {
 	useEffect( () => {
 		UAGBCounter.init( '.uagb-block-' + block_id, attributes ) // eslint-disable-line no-undef
 	}, [layout, animationDuration, startNumber, endNumber, thousandSeparator, decimalPlaces, block_id] )
+
+	const startFallback = startNumber ? startNumber : defaultFallbacks.startNumberDefault;
+	const endFallback = endNumber ? endNumber : defaultFallbacks.endNumberDefault;
 
 	const blockName = props.parentProps.name.replace( 'uagb/', '' );
 	const circleSizeFallback = getFallbackNumber( circleSize, 'circleSize', blockName );
@@ -73,7 +77,7 @@ const Render = ( props ) => {
 			{
 				numberPrefix && ( <span className="uagb-counter-block-prefix">{numberPrefix}</span> )
 			}
-			<span className="uagb-counter-block-number" data-duration={animationDurationFallback} data-to-value={endNumber} data-from-value={startNumber} data-delimiter={thousandSeparator}></span>
+			<span className="uagb-counter-block-number" data-duration={animationDurationFallback} data-to-value={endFallback} data-from-value={startFallback} data-delimiter={thousandSeparator}></span>
 			{
 				numberSuffix && ( <span className="uagb-counter-block-suffix">{numberSuffix}</span> )
 			}
