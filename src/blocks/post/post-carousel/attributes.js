@@ -600,6 +600,20 @@ const attributes = {
 			styleType: 'btn-color'
 		},
 	},
+	ctaBgType               : {
+		type : 'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-bg-type'
+		},
+	},
+	ctaBgHType              : {
+		type : 'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-bg-hover-type'
+		},
+	},
 	ctaBgColor              : {
 		type : 'string',
 		UAGCopyPaste: {
