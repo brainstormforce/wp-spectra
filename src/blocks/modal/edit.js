@@ -1,17 +1,8 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import styling from './styling';
-
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/image/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/image/render" */ './render'
-	)
-);
+import Settings from './settings';
+import Render from './render';
 
 //  Import CSS.
 import './style.scss';
