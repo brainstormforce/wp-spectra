@@ -21,7 +21,6 @@ const Render = ( props ) => {
 	return (
 		<React.Fragment>
 			<div className={ classnames(
-				props.className,
 				`uagb-block-${ block_id }`,
 				'wp-block-uagb-modal'
 			) }>
