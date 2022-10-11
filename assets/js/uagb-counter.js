@@ -85,8 +85,8 @@ UAGBCounter = { // eslint-disable-line no-undef
 		const parentWrapClass = 'wp-block-uagb-counter--bars';
 		const numberWrap = el.querySelector( '.wp-block-uagb-counter__number' );
 		const duration = that._getAnimationDuration( data );
-		const startWidth = data.startNumber < data.totalNumber ? Math.ceil( ( data.startNumber / data.totalNumber ) * 100 ) : 0;
-		const endWidth = data.endNumber < data.totalNumber ? Math.ceil( ( data.endNumber / data.totalNumber ) * 100 ) : 100;
+		const startWidth = data.startNumber < data.totalNumber ? Math.ceil( ( data.startNumber / data.totalNumber ) * 100 ) : 100;
+		const endWidth = data.endNumber <= data.totalNumber ? Math.ceil( ( data.endNumber / data.totalNumber ) * 100 ) : 100;
 
 		const animationKeyframes = [
 			{ width: startWidth + '%' },
@@ -148,15 +148,9 @@ UAGBCounter = { // eslint-disable-line no-undef
 	},
 
 	_getStartNumber( data ){
-		if( data.layout === 'bars' || data.layout === 'circle' ){
-			return ( ( parseFloat( data.startNumber ) / parseFloat( data.totalNumber ) ) * 100 );
-		}
 		return data.startNumber;
 	},
 	_getEndNumber( data ){
-		if( data.layout === 'bars' || data.layout === 'circle' ){
-			return ( ( parseFloat( data.endNumber ) / parseFloat( data.totalNumber ) ) * 100 );
-		}
 		return data.endNumber;
 	}
 };
