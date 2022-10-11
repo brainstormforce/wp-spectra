@@ -5,7 +5,6 @@ import { RichText } from '@wordpress/block-editor';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import CounterIcon from './component/CounterIcon';
-import { defaultFallbacks } from './fallbacks';
 
 const propTypes = {};
 
@@ -40,8 +39,8 @@ const Render = ( props ) => {
 		UAGBCounter.init( '.uagb-block-' + block_id, attributes ) // eslint-disable-line no-undef
 	}, [layout, animationDuration, startNumber, endNumber, thousandSeparator, decimalPlaces, block_id] )
 
-	const startFallback = startNumber ? startNumber : defaultFallbacks.startNumberDefault;
-	const endFallback = endNumber ? endNumber : defaultFallbacks.endNumberDefault;
+	const startFallback = getFallbackNumber( startNumber, 'startNumber', 'counter' );
+	const endFallback = getFallbackNumber( endNumber, 'endNumber', 'counter' );
 
 	const blockName = props.parentProps.name.replace( 'uagb/', '' );
 	const circleSizeFallback = getFallbackNumber( circleSize, 'circleSize', blockName );

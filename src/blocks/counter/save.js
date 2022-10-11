@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import { RichText } from '@wordpress/block-editor';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import CounterIcon from './component/CounterIcon';
-import { defaultFallbacks } from './fallbacks';
 
 export default function Save( props ) {
 	const {attributes} = props;
@@ -26,8 +25,8 @@ export default function Save( props ) {
 
 	const blockName = 'counter'; // Since props.name property isn't available, we need to hard-code the block's name.
 
-	const startFallback = startNumber ? startNumber : defaultFallbacks.startNumberDefault;
-	const endFallback = endNumber ? endNumber : defaultFallbacks.endNumberDefault;
+	const startFallback = getFallbackNumber( startNumber, 'startNumber', 'counter' );
+	const endFallback = getFallbackNumber( endNumber, 'endNumber', 'counter' );
 
 	const circleSizeFallback = getFallbackNumber( circleSize, 'circleSize', blockName );
 	const animationDurationFallback = getFallbackNumber( animationDuration, 'animationDuration', blockName );

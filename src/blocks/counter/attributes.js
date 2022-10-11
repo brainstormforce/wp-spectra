@@ -3,7 +3,6 @@
  */
  import { getBorderAttributes } from '@Controls/generateAttributes';
  import { __ } from '@wordpress/i18n';
- import { defaultFallbacks } from './fallbacks';
  const iconWrapBorderAttributes = getBorderAttributes( 'iconWrap' );
 
 const attributes = {
@@ -318,15 +317,15 @@ const attributes = {
 	// Number.
 	startNumber: {
 		type: 'number',
-		default: defaultFallbacks.startNumberDefault,
+		default: 0,
 	},
 	endNumber: {
 		type: 'number',
-		default: defaultFallbacks.endNumberDefault,
+		default: 80,
 	},
 	totalNumber: {
 		type: 'number',
-		default: defaultFallbacks.totalNumberDefault,
+		default: 100,
 	},
 	decimalPlaces: {
 		type: 'number',

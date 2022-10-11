@@ -24,7 +24,7 @@ import UAGMediaPicker from '@Components/image';
 import UAGNumberControl from '@Components/number-control';
 import { getImageSize } from '@Utils/Helpers';
 import UAGPresets from '@Components/presets';
-import { defaultFallbacks } from './fallbacks';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 let imageSizeOptions = [
 	{
@@ -232,10 +232,10 @@ export default function Settings( props ) {
 		}
 	}, [layout] );
 
-	const [minTotal, setMinTotal] = useState( defaultFallbacks.endNumberDefault );
+	const [minTotal, setMinTotal] = useState( 80 ); // Default for endNumber.
 
-	const startFallback = startNumber ? startNumber : defaultFallbacks.startNumberDefault;
-	const endFallback = endNumber ? endNumber : defaultFallbacks.endNumberDefault;
+	const startFallback = getFallbackNumber( startNumber, 'startNumber', 'counter' );
+	const endFallback = getFallbackNumber( endNumber, 'endNumber', 'counter' );
 
 	useEffect( () => {
 		if( startFallback < endFallback ) {
