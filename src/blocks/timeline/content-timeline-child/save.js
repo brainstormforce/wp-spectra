@@ -22,6 +22,7 @@ export default function save( props ) {
 	} = props.attributes;
 
 	const displayInnerDate = true;
+	const icon_class ='uagb-timeline__icon-new out-view-uagb-timeline__icon ';
 	let postDate = t_date;
 	if ( 'custom' !== dateFormat ) {
 		postDate = format( dateFormat, t_date );
@@ -48,8 +49,10 @@ export default function save( props ) {
 				contentClass
 			)}
 		>
-				<div className={ classnames( 'uagb-timeline__marker out-view-uagb-timeline__icon' ) } >
-				 	{ renderSVG( icon ) ? renderSVG( icon ) : <svg xmlns="" viewBox="0 0 256 512"></svg> }
+				<div className="uagb-timeline__marker out-view-uagb-timeline__icon">
+					<span className={ icon_class }>
+						{ renderSVG( icon ) }
+					</span>
 				</div>
 
 				<div className={ classnames( dayalignClass, 'uagb-timeline__events-inner-new' ) }>
