@@ -40,7 +40,7 @@ export default function Settings( props ) {
 			title={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
-			style settings
+			Style settings
 		</UAGAdvancedPanelBody>
 	)
 

@@ -4,6 +4,9 @@ const attributes = {
 	},
 	modalTrigger: {
 		type: 'string',
+	},
+	triggerText: {
+		type: 'string',
 	}
 };
 

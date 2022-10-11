@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
-import { useDeviceType } from '@Controls/getPreviewType';
 
 const propTypes = {};
 
@@ -12,16 +11,12 @@ const Render = ( props ) => {
 	const {
 		attributes,
 		setAttributes,
-		className,
-		isSelected,
-		clientId
 	} = props.parentProps;
 
 	const {
 		block_id,
-		heading
+		triggerText
 	} = attributes
-
 
 	return (
 		<React.Fragment>
@@ -30,7 +25,16 @@ const Render = ( props ) => {
 				`uagb-block-${ block_id }`,
 				'wp-block-uagb-modal'
 			) }>
-				<span className="uagb-modal-block-prefix">Hello</span>
+				<RichText
+					tagName="p"
+					placeholder={ __(
+						'Click here',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ triggerText }
+					className="uagb-modal-text"
+					onChange={ ( value ) => setAttributes( { triggerText: value } ) }
+				/>
 			</div>
 		</React.Fragment>
 	);
