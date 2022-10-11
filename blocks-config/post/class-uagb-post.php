@@ -750,6 +750,14 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'ctaColor'                      => array(
 						'type' => 'string',
 					),
+					'ctaBgType'                     => array(
+						'type'    => 'string',
+						'default' => 'color',
+					),
+					'ctaBgHType'                    => array(
+						'type'    => 'string',
+						'default' => 'color',
+					),
 					'ctaBgColor'                    => array(
 						'type' => 'string',
 					),
