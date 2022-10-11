@@ -36,8 +36,8 @@ export default function UAGBModalEdit( props ) {
 
 	return (
 		<React.Fragment>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } />
+			<Settings parentProps={ props } />
+			<Render parentProps={ props } />
 		</React.Fragment>
 	);
 }

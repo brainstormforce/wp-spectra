@@ -6,16 +6,12 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
 
-
-
 export default function styling( props ) {
 	// const {} = props.attributes;
 
 	const selectors = {
 		'':{},
 	}
-
-
 
 	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
@@ -29,8 +25,6 @@ export default function styling( props ) {
 
 	}
 
-
-
 	mobile_selectors[''] = {
 
 	}
@@ -43,7 +37,6 @@ export default function styling( props ) {
 		true,
 		'tablet'
 	);
-
 
 	styling_css += generateCSS(
 		mobile_selectors,

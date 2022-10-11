@@ -30,18 +30,7 @@ const Render = ( props ) => {
 				`uagb-block-${ block_id }`,
 				'wp-block-uagb-modal'
 			) }>
-				<div className="wp-block-uagb-modal__number">
-					<span className="uagb-modal-block-prefix">Hello</span>
-					<span className="uagb-modal-block-number" data-duration="2000" data-to-value="10000" data-from-value="0" data-delimiter=".">10.000</span>
-					<span className="uagb-modal-block-suffix">World</span>
-				</div>
-				<RichText
-					tagName="div"
-					className="wp-block-uagb-modal__title"
-					value={ heading }
-					onChange={ ( value ) => setAttributes( { heading: value } ) }
-					placeholder={ __( 'Heading...' ) }
-				/>
+				<span className="uagb-modal-block-prefix">Hello</span>
 			</div>
 		</React.Fragment>
 	);

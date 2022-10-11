@@ -140,6 +140,9 @@ class UAGB_Block_Module {
 		'google-map'         => array(
 			'dir' => 'google-map',
 		),
+		'modal'              => array(
+			'dir' => 'modal',
+		),
 	);
 
 	/**

@@ -82,16 +82,11 @@ export default function Settings( props ) {
 		<React.Fragment>
 			<InspectorControls>
 				<InspectorTabs>
-					<InspectorTab { ...UAGTabs.general }>
-						{generalPanel}
-					</InspectorTab>
+					
 					<InspectorTab { ...UAGTabs.style }>
 						{stylePanel}
 					</InspectorTab>
-					<InspectorTab
-						{ ...UAGTabs.advance }
-						parentProps={ props }
-					></InspectorTab>
+					
 				</InspectorTabs>
 			</InspectorControls>
 		</React.Fragment>

@@ -297,6 +297,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/image'                  => array(
 						'name' => 'image',
 					),
+					'uagb/modal'                  => array(
+						'name' => 'modal',
+					),
 				);
 			}
 			return self::$block_assets_css;
