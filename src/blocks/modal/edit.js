@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import styling from './styling';
 import Settings from './settings';
