@@ -417,12 +417,14 @@ export default function Settings( props ) {
 				type= 'number'
 				value={ startNumber }
 				onChange={ ( value ) => setAttributes( {startNumber: value} )}
+				help={ ( layout !== 'number' ) ? __( 'Note: Please use positive values for Circle and Bar layouts.', 'ultimate-addons-for-gutenberg' ) : false }
 			/>
 			<TextControl
 				label={ __( 'Ending Number', 'ultimate-addons-for-gutenberg' ) }
 				type= 'number'
 				value={ endNumber }
 				onChange={ ( value ) => setAttributes( {endNumber: value} )}
+				help={ ( layout !== 'number' ) ? __( 'Note: Please use positive values for Circle and Bar layouts.', 'ultimate-addons-for-gutenberg' ) : false }
 			/>
 			{
 				layout !== 'number' && (
@@ -431,7 +433,7 @@ export default function Settings( props ) {
 						type= 'number'
 						value={ totalNumber }
 						onChange={ ( value ) => setAttributes( {totalNumber: value} )}
-						help={ __( 'Note: Total Number should be more than or equal to the Ending Number.', 'ultimate-addons-for-gutenberg' ) }
+						help={ __( 'Note: Total Number should be more than or equal to the Ending Number (or the Starting number in case you want to animate the Counter in reverse direction).', 'ultimate-addons-for-gutenberg' ) }
 					/>
 				)
 			}
