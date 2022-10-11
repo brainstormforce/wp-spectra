@@ -13,7 +13,8 @@ $block_data = array(
 
 	'link'        => '',
 	'title'       => __( 'Post Excerpt', 'ultimate-addons-for-gutenberg' ),
-	'description' => __( 'This block fetches short description about a post.', 'ultimate-addons-for-gutenberg' ),
+	'description' => __( 'Show your post\'s excerpt ', 'ultimate-addons-for-gutenberg' ),
 	'default'     => true,
 	'is_child'    => true,
+	'deprecated'  => false,
 );

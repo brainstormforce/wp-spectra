@@ -3,16 +3,16 @@
  */
 
 import styling from './styling';
-import React, { useState, useEffect, lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useState, useEffect,    } from 'react';
+
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/wp-search/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/wp-search/render" */ './render' )
-);
+import scrollBlockToView from '@Controls/scrollBlockToView';
+
+import {migrateBorderAttributes} from '@Controls/generateAttributes';
+
+import Settings from './settings';
+import Render from './render';
 
 const UAGBWpSearchEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -25,24 +25,10 @@ const UAGBWpSearchEdit = ( props ) => {
 	// componentDidMount.
 	useEffect( () => {
 		// Assigning block_id in the attribute.
+
 		props.setAttributes( {
 			block_id: props.clientId.substr( 0, 8 ),
 		} );
-
-	}, [] );
-
-	// componentDidUpdate.
-	useEffect( () => {
-		if ( ! props.isSelected && state.isFocused ) {
-			setState( {
-				isFocused: 'false',
-			} );
-		}
-		if ( props.isSelected ) {
-			setState( {
-				isFocused: true,
-			} );
-		}
 
 		const {
 			vinputPaddingMobile,
@@ -63,83 +49,123 @@ const UAGBWpSearchEdit = ( props ) => {
 			paddingInputRightMobile,
 			paddingInputBottomMobile,
 			paddingInputLeftMobile,
+			borderStyle,
+			borderWidth,
+			borderColor,
+			borderHColor,
+			borderRadius,
 		} = props.attributes;
 
 		if ( vinputPaddingDesktop ) {
-			if ( ! paddingInputTop ) {
+			if ( undefined === paddingInputTop ) {
 				props.setAttributes( {
 					paddingInputTop: vinputPaddingDesktop,
 				} );
 			}
-			if ( ! paddingInputBottom ) {
+			if ( undefined ===paddingInputBottom ) {
 				props.setAttributes( {
 					paddingInputBottom: vinputPaddingDesktop,
 				} );
 			}
 		}
 		if ( hinputPaddingDesktop ) {
-			if ( ! paddingInputRight ) {
+			if ( undefined === paddingInputRight ) {
 				props.setAttributes( {
 					paddingInputRight: hinputPaddingDesktop,
 				} );
 			}
-			if ( ! paddingInputLeft ) {
+			if ( undefined === paddingInputLeft ) {
 				props.setAttributes( {
 					paddingInputLeft: hinputPaddingDesktop,
 				} );
 			}
 		}
 		if ( vinputPaddingTablet ) {
-			if ( ! paddingInputTopTablet ) {
+			if ( undefined === paddingInputTopTablet ) {
 				props.setAttributes( {
 					paddingInputTopTablet: vinputPaddingTablet,
 				} );
 			}
-			if ( ! paddingInputBottomTablet ) {
+			if ( undefined === paddingInputBottomTablet ) {
 				props.setAttributes( {
 					paddingInputBottomTablet: vinputPaddingTablet,
 				} );
 			}
 		}
 		if ( hinputPaddingTablet ) {
-			if ( ! paddingInputRightTablet ) {
+			if ( undefined === paddingInputRightTablet ) {
 				props.setAttributes( {
 					paddingInputRightTablet: hinputPaddingTablet,
 				} );
 			}
-			if ( ! paddingInputLeftTablet ) {
+			if ( undefined === paddingInputLeftTablet ) {
 				props.setAttributes( {
 					paddingInputLeftTablet: hinputPaddingTablet,
 				} );
 			}
 		}
 		if ( vinputPaddingMobile ) {
-			if ( ! paddingInputTopMobile ) {
+			if ( undefined === paddingInputTopMobile ) {
 				props.setAttributes( {
 					paddingInputTopMobile: vinputPaddingMobile,
 				} );
 			}
-			if ( ! paddingInputBottomMobile ) {
+			if ( undefined === paddingInputBottomMobile ) {
 				props.setAttributes( {
 					paddingInputBottomMobile: vinputPaddingMobile,
 				} );
 			}
 		}
 		if ( hinputPaddingMobile ) {
-			if ( ! paddingInputRightMobile ) {
+			if ( undefined === paddingInputRightMobile ) {
 				props.setAttributes( {
 					paddingInputRightMobile: hinputPaddingMobile,
 				} );
 			}
-			if ( ! paddingInputLeftMobile ) {
+			if ( undefined === paddingInputLeftMobile ) {
 				props.setAttributes( {
 					paddingInputLeftMobile: hinputPaddingMobile,
 				} );
 			}
 		}
+		// border
+		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+			migrateBorderAttributes( 'input', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHColor',
+				value: borderHColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			},
+			props.setAttributes,
+			props.attributes
+			);
+		}
+	}, [] );
+
+	// componentDidUpdate.
+	useEffect( () => {
+		if ( ! props.isSelected && state.isFocused ) {
+			setState( {
+				isFocused: 'false',
+			} );
+		}
+		if ( props.isSelected ) {
+			setState( {
+				isFocused: true,
+			} );
+        }
 
 		const blockStyling = styling( props );
-
 		addBlockEditorDynamicStyles( 'uagb-style-wp-search-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
 
@@ -148,13 +174,17 @@ const UAGBWpSearchEdit = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-wp-search-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
+					<>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 

@@ -28,6 +28,7 @@ const Render = ( props ) => {
 	} = props;
 
 	const {
+		isPreview,
 		align,
 		tag,
 		title,
@@ -190,9 +191,10 @@ const Render = ( props ) => {
 				/>
 		);
 	}
-
+		const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/team.png`;
 	return (
 		<>
+		{ isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 			<div
 				className={ classnames(
 					className,
@@ -217,6 +219,7 @@ const Render = ( props ) => {
 
 					{ imgPosition === 'right' && imageHtml }
 			</div>
+}
 		</>
 	);
 };

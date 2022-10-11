@@ -1,93 +1,151 @@
 import { __ } from '@wordpress/i18n';
-import { BaseControl, Button } from '@wordpress/components';
+import { BaseControl } from '@wordpress/components';
 import { MediaUpload } from '@wordpress/block-editor';
-import React, { useLayoutEffect } from 'react';
-import styles from './editor.lazy.scss';
+import React from 'react';
+import UAGB_Block_Icons from '@Controls/block-icons';
 
-const UAGImage = ( props ) => {
-	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect( () => {
-		styles.use();
-		return () => {
-			styles.unuse();
-		};
-	}, [] );
+const UAGMediaPicker = ( props ) => {
 
 	const {
 		onSelectImage,
 		backgroundImage,
 		onRemoveImage,
-		showVideoInput,
-		label,
+		slug = 'image',
+		label = __( 'Image', 'ultimate-addons-for-gutenberg' ),
+		disableLabel = false,
+		disableRemove = false,
+		allow = [ 'image' ],
 	} = props;
-	let labelText = __( 'Image', 'ultimate-addons-for-gutenberg' );
-	let selectImageLabel = __(
-		'Select Image',
-		'ultimate-addons-for-gutenberg'
-	);
-	let replaceImageLabel = __(
-		'Replace Image',
-		'ultimate-addons-for-gutenberg'
-	);
-	let removeImageLabel = __(
-		'Remove Image',
-		'ultimate-addons-for-gutenberg'
-	);
-	let allowedTypes = [ 'image' ];
 
-	if ( showVideoInput ) {
-		labelText = __( 'Video', 'ultimate-addons-for-gutenberg' );
-		selectImageLabel = __(
-			'Select Video',
-			'ultimate-addons-for-gutenberg'
-		);
-		replaceImageLabel = __(
-			'Replace Video',
-			'ultimate-addons-for-gutenberg'
-		);
-		removeImageLabel = __(
-			'Remove Video',
-			'ultimate-addons-for-gutenberg'
-		);
-		allowedTypes = [ 'video' ];
+	// This is used to render an icon in place of the background image when needed.
+	let placeholderIcon;
+
+	// These are the localized texts that will show on the Select / Change Button and Popup.
+	let selectMediaLabel, replaceMediaLabel;
+
+	switch ( slug ) {
+		case 'video':
+			selectMediaLabel = __(
+				'Select Video',
+				'ultimate-addons-for-gutenberg'
+			);
+			replaceMediaLabel = __(
+				'Change Video',
+				'ultimate-addons-for-gutenberg'
+			);
+			placeholderIcon = UAGB_Block_Icons.video_placeholder;
+			break;
+		case 'lottie':
+			selectMediaLabel = __(
+				'Select Lottie Animation',
+				'ultimate-addons-for-gutenberg'
+			);
+			replaceMediaLabel = __(
+				'Change Lottie Animation',
+				'ultimate-addons-for-gutenberg'
+			);
+			placeholderIcon = UAGB_Block_Icons.lottie;
+			break;
+		default:
+			selectMediaLabel = __(
+				'Select Image',
+				'ultimate-addons-for-gutenberg'
+			);
+			replaceMediaLabel = __(
+				'Change Image',
+				'ultimate-addons-for-gutenberg'
+			);
 	}
-	labelText = label ? label : labelText;
+
+	const renderMediaUploader = ( open ) => {
+		const uploadType = backgroundImage?.url ? 'replace' : 'add';
+		return(
+			<button
+				className={ `spectra-media-control__clickable spectra-media-control__clickable--${ uploadType }` }
+				onClick={ open }
+			>
+				{ ( 'add' === uploadType ) ? (
+					renderButton( uploadType )
+				) : (
+					<div className='uag-control-label'>{ replaceMediaLabel }</div>
+				) }
+			</button>
+		)
+	};
+
+	const renderButton = ( buttonType ) => (
+		<div className={ `spectra-media-control__button spectra-media-control__button--${ buttonType }` }>
+			{ UAGB_Block_Icons[ buttonType ] }
+		</div>
+	);
+
+	// This Can Be Deprecated.
+	const generateBackground = ( media ) => {
+		const regex = /(?:\.([^.]+))?$/;
+		let mediaURL = media;
+		switch ( regex.exec( String( mediaURL ) )[1] ){
+			// For Lottie JSON Files.
+			case 'json':
+				mediaURL = '';
+				break;
+			// For Videos.
+			case 'avi':
+			case 'mpg':
+			case 'mp4':
+			case 'm4v':
+			case 'mov':
+			case 'ogv':
+			case 'vtt':
+			case 'wmv':
+			case '3gp':
+			case '3g2':
+				mediaURL = '';
+				break;
+		}
+		return mediaURL;
+	}
+
 	return (
 		<BaseControl
-			className="editor-bg-image-control"
-			id={ `uagb-option-selector-${ label }` }
-			label={ labelText }
+			className="spectra-media-control"
+			id={ `uagb-option-selector-${ slug }` }
+			label={ label }
+			hideLabelFromVision={ disableLabel }
 		>
-			<div className="uagb-bg-image">
+			<div
+				className="spectra-media-control__wrapper"
+				style={ {
+					backgroundImage: ( ! placeholderIcon && backgroundImage?.url ) && (
+						`url("${ generateBackground( backgroundImage?.url ) }")`
+					),
+				} }
+			>
+				{ ( placeholderIcon && backgroundImage?.url ) && (
+					<div className="spectra-media-control__icon spectra-media-control__icon--stroke">
+						{ placeholderIcon }
+					</div>
+				) }
 				<MediaUpload
-					title={ selectImageLabel }
+					title={ selectMediaLabel }
 					onSelect={ onSelectImage }
-					allowedTypes={ allowedTypes }
+					allowedTypes={ allow }
 					value={ backgroundImage }
-					render={ ( { open } ) => (
-						<Button isSecondary onClick={ open }>
-							{ ! backgroundImage?.url
-								? selectImageLabel
-								: replaceImageLabel }
-						</Button>
-					) }
+					render={ ( { open } ) => renderMediaUploader( open ) }
 				/>
-				{ backgroundImage?.url && (
-					<Button
-						className="uagb-rm-btn"
+	 			{ ( ! disableRemove && backgroundImage?.url ) && (
+					<button
+						className='spectra-media-control__clickable spectra-media-control__clickable--close'
 						onClick={ onRemoveImage }
-						isLink
-						isDestructive
 					>
-						{ removeImageLabel }
-					</Button>
-				) }
-				{ props.help && (
-					<p className="uag-control-help-notice">{ props.help }</p>
-				) }
+	 					{ renderButton( 'close' ) }
+	 				</button>
+	 			) }
 			</div>
+			{ props.help && (
+				<p className="uag-control-help-notice">{ props.help }</p>
+			) }
 		</BaseControl>
 	);
 };
 
-export default UAGImage;
+export default UAGMediaPicker;

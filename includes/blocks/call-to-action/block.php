@@ -14,8 +14,9 @@ $block_data = array(
 	'admin_categories' => array( 'content' ),
 	'link'             => 'call-to-action',
 	'title'            => __( 'Call To Action', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block allows you to place an CTA along with a heading and description within a single block.', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Add a button along with heading and description.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 3,
+	'priority'         => 6,
+	'deprecated'       => false,
 );

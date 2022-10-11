@@ -37,6 +37,62 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		}
 
 		/**
+		 * Get all data from the admin settings page.
+		 *
+		 * @return mixed
+		 * @since 2.0.8
+		 */
+		public static function get_admin_settings_shareable_data() {
+
+			$content_width = self::get_global_content_width();
+
+			$options = array(
+				'uagb_beta'                         => self::get_admin_settings_option( 'uagb_beta', 'no' ),
+				'uag_enable_legacy_blocks'          => self::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' ),
+				'_uagb_allow_file_generation'       => self::get_admin_settings_option( '_uagb_allow_file_generation', 'enabled' ),
+				'uag_enable_templates_button'       => self::get_admin_settings_option( 'uag_enable_templates_button', 'yes' ),
+				'uag_enable_block_condition'        => self::get_admin_settings_option( 'uag_enable_block_condition', 'disabled' ),
+				'uag_enable_masonry_gallery'        => self::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ),
+				'uag_enable_block_responsive'       => self::get_admin_settings_option( 'uag_enable_block_responsive', 'enabled' ),
+				'uag_select_font_globally'          => self::get_admin_settings_option( 'uag_select_font_globally', array() ),
+				'uag_load_select_font_globally'     => self::get_admin_settings_option( 'uag_load_select_font_globally', 'disabled' ),
+				'uag_load_gfonts_locally'           => self::get_admin_settings_option( 'uag_load_gfonts_locally', 'disabled' ),
+				'uag_collapse_panels'               => self::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
+				'uag_copy_paste'                    => self::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
+				'uag_preload_local_fonts'           => self::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
+				'uag_enable_coming_soon_mode'       => self::get_admin_settings_option( 'uag_enable_coming_soon_mode', 'disabled' ),
+				'uag_container_global_padding'      => self::get_admin_settings_option( 'uag_container_global_padding', 'default' ),
+				'uag_container_global_elements_gap' => self::get_admin_settings_option( 'uag_container_global_elements_gap', 20 ),
+				'uag_blocks_editor_spacing'         => self::get_admin_settings_option( 'uag_blocks_editor_spacing', 0 ),
+				'uag_load_font_awesome_5'           => self::get_admin_settings_option( 'uag_load_font_awesome_5', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
+				'uag_auto_block_recovery'           => self::get_admin_settings_option( 'uag_auto_block_recovery', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
+				'uag_content_width'                 => $content_width,
+			);
+
+			$setting_data = get_option( 'spectra_settings_data' );
+
+			if ( ! $setting_data ) {
+				update_option( 'spectra_settings_data', $options );
+			}
+
+			return $options;
+		}
+
+		/**
+		 * Update all data from the admin settings page.
+		 *
+		 * @param array $data All settings of Admin.
+		 * @return mixed
+		 * @since 2.0.8
+		 */
+		public static function update_admin_settings_shareable_data( $data = array() ) {
+
+			foreach ( $data as $key => $value ) {
+				self::update_admin_settings_option( $key, $value );
+			}
+		}
+
+		/**
 		 * Returns an option from the database for
 		 * the admin settings page.
 		 *
@@ -106,81 +162,6 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			} else {
 				update_option( $key, $value );
 			}
-		}
-
-		/**
-		 * Is Knowledgebase.
-		 *
-		 * @return string
-		 * @since 0.0.1
-		 */
-		public static function knowledgebase_data() {
-
-			$knowledgebase = array(
-				'enable_knowledgebase' => true,
-				'knowledgebase_url'    => 'https://www.ultimategutenberg.com/docs/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard',
-			);
-
-			return $knowledgebase;
-		}
-
-		/**
-		 * Is Knowledgebase.
-		 *
-		 * @return string
-		 * @since 0.0.1
-		 */
-		public static function support_data() {
-
-			$support = array(
-				'enable_support' => true,
-				'support_url'    => 'https://www.ultimategutenberg.com/support/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard',
-			);
-
-			return $support;
-		}
-
-		/**
-		 * Get flag if more than 5 pages are build using UAG.
-		 *
-		 * @since  1.10.0
-		 * @return boolean true/false Flag if more than 5 pages are build using UAG.
-		 */
-		public static function show_rating_notice() {
-
-			$posts_created_with_uag = get_option( 'posts-created-with-uagb' );
-
-			if ( false === $posts_created_with_uag ) {
-				$query_args = array(
-					'posts_per_page' => 100,
-					'post_status'    => 'publish',
-					'post_type'      => 'any',
-				);
-
-				$query = new WP_Query( $query_args );
-
-				$uag_post_count = 0;
-
-				if ( isset( $query->post_count ) && $query->post_count > 0 ) {
-					foreach ( $query->posts as $key => $post ) {
-						if ( $uag_post_count >= 5 ) {
-							break;
-						}
-
-						if ( false !== strpos( $post->post_content, '<!-- wp:uagb/' ) ) {
-							$uag_post_count++;
-						}
-					}
-				}
-
-				if ( $uag_post_count >= 5 ) {
-					update_option( 'posts-created-with-uagb', $uag_post_count );
-
-					$posts_created_with_uag = $uag_post_count;
-				}
-			}
-
-			return ( $posts_created_with_uag >= 5 );
 		}
 
 		/**
@@ -275,6 +256,9 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 						break;
 				}
 			}
+
+			// Load common CSS for all the blocks.
+			$combined[] = 'extensions';
 
 			$wp_upload_dir = UAGB_Helper::get_uag_upload_dir_path();
 			$combined_path = $wp_upload_dir . 'custom-style-blocks.css';
@@ -380,6 +364,36 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			return 1;
 		}
 
+		/**
+		 * Get Global Content Width
+		 *
+		 * @since 2.0.0
+		 * @return int
+		 * @access public
+		 */
+		public static function get_global_content_width() {
+
+			$content_width             = self::get_admin_settings_option( 'uag_content_width', '' );
+			$content_width_third_party = apply_filters( 'spectra_global_content_width', 'default' );
+			$astra_content_width       = false;
+			self::update_admin_settings_option( 'uag_content_width_set_by', __( 'Spectra', 'ultimate-addons-for-gutenberg' ) );
+			if ( function_exists( 'astra_get_option' ) ) {
+				$astra_content_width = astra_get_option( 'site-content-width' );
+			}
+
+			if ( '' === $content_width ) {
+				if ( $astra_content_width ) {
+					$content_width = intval( $astra_content_width );
+					self::update_admin_settings_option( 'uag_content_width_set_by', __( 'Astra Theme', 'ultimate-addons-for-gutenberg' ) );
+				}
+				if ( 'default' !== $content_width_third_party ) {
+					$content_width = intval( $content_width_third_party );
+					self::update_admin_settings_option( 'uag_content_width_set_by', __( 'Filter added through any 3rd Party Theme/Plugin.', 'ultimate-addons-for-gutenberg' ) );
+				}
+			}
+
+			return $content_width;
+		}
 	}
 
 	/**

@@ -15,6 +15,9 @@ import InfoBoxCta from './components/InfoBoxCta';
 import CallToAction from './components/CallToAction';
 import InfoBoxIconImage from './components/InfoBoxIconImage';
 import IconImage from './components/IconImage';
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const borderAttributes = getBorderAttributes( 'btn' );
 
 const attributes = {
 	inheritFromTheme: {
@@ -479,6 +482,10 @@ const attributes = {
 		type: "string",
 		default: "tablet"
 	},
+	showIcon: {
+		type: 'boolean',
+		default: true,
+	},
 	showPrefix: {
 		type: "boolean",
 		default: true,
@@ -491,6 +498,11 @@ const attributes = {
 		type: "boolean",
 		default: true,
 	},
+	iconView: {
+		type: 'string',
+		default: 'none',
+	},
+	...borderAttributes
 }
 
 const deprecated = [

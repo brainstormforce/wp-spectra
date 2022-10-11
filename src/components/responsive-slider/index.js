@@ -12,19 +12,24 @@ const ResponsiveSlider = ( props ) => {
 	const minDesk =	limitMin( props.data.desktop.unit?.value, props, true );
 	const minTab = limitMin( props.data.tablet.unit?.value, props, true );
 	const minMob = limitMin( props.data.mobile.unit?.value, props, true );
-	
+
 
 	output.Desktop = (
 		<>
 			<Range
 				{ ...props }
 				label={ props.label }
-				value={ props.data.desktop.value || '' }
-				onChange={ ( value ) =>
-					props.setAttributes( {
-						[ props.data.desktop.label ]: value,
-					} )
-				}
+				value={ isNaN( props.data.desktop.value ) ? '' : props.data.desktop.value }
+				data={ {
+					value: props.data.desktop.value,
+					label: props.data.desktop.label,
+				} }
+				onChange={ props?.onChange ? ( value ) => {
+					if ( props?.onChange ) {
+						props.onChange( value )
+					}
+				} : false }
+
 				min={ minDesk }
 				max={ maxDesk }
 				unit={ props.data.desktop.unit || props.unit }
@@ -38,12 +43,16 @@ const ResponsiveSlider = ( props ) => {
 			<Range
 				{ ...props }
 				label={ props.label }
-				value={ props.data.tablet.value }
-				onChange={ ( value ) =>
-					props.setAttributes( {
-						[ props.data.tablet.label ]: value,
-					} )
-				}
+				value={ isNaN( props.data.tablet.value ) ? '' : props.data.tablet.value }
+				data={ {
+					value: props.data.tablet.value,
+					label: props.data.tablet.label,
+				} }
+				onChange={ props?.onChange ? ( value ) => {
+					if ( props?.onChange ) {
+						props.onChange( value )
+					}
+				} : false }
 				min={ minTab }
 				max={ maxTab }
 				unit={ props.data.tablet.unit || props.unit }
@@ -57,12 +66,16 @@ const ResponsiveSlider = ( props ) => {
 			<Range
 				{ ...props }
 				label={ props.label }
-				value={ props.data.mobile.value }
-				onChange={ ( value ) =>
-					props.setAttributes( {
-						[ props.data.mobile.label ]: value,
-					} )
-				}
+				value={ isNaN( props.data.mobile.value ) ? '' : props.data.mobile.value }
+				data={ {
+					value: props.data.mobile.value,
+					label: props.data.mobile.label,
+				} }
+				onChange={ props?.onChange ? ( value ) => {
+					if ( props?.onChange ) {
+						props.onChange( value )
+					}
+				} : false }
 				min={ minMob }
 				max={ maxMob }
 				unit={ props.data.mobile.unit || props.unit }

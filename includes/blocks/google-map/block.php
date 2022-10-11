@@ -11,11 +11,12 @@ $block_slug = 'uagb/google-map';
 $block_data = array(
 	'doc'              => 'google-map',
 	'slug'             => '',
-	'admin_categories' => array( 'social' ),
+	'admin_categories' => array( 'content' ),
 	'link'             => 'google-maps',
-	'title'            => __( 'Google Map', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block allows you to place a Google Map Location.', 'ultimate-addons-for-gutenberg' ),
+	'title'            => __( 'Google Maps', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Show a Google Map location on your website.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 5,
+	'priority'         => 14,
+	'deprecated'       => false,
 );

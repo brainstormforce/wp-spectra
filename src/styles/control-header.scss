@@ -1,0 +1,108 @@
+/* --------- Common Heading Used for the Device Switcher, Reset, and Unit Selection --------- */
+
+.uagb-control__header {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: $spectra-control-label-bottom-margin;
+
+	.uag-control-label,
+	.uagb-inspector-tab .components-base-control__label,
+	.uagb-inspector-tab .components-panel__body label,
+	.uagb-extention-tab label {
+		margin-bottom: 0;
+	}
+
+	.uagb-control__inputs {
+		display: flex;
+	}
+
+	.uagb-control__label {
+		margin-bottom: 0;
+	}
+
+	.uagb-control__actions {
+		position: relative;
+		top: 0;
+		display: flex;
+
+		.uagb-reset {
+			padding: 0;
+			margin-right: 10px;
+
+			&:only-child,
+			&:disabled {
+				margin-right: 0;
+			}
+		}
+
+		.disabled-element-wrapper {
+			padding: 0;
+			margin-right: 10px;
+
+			&:only-child {
+				margin-right: 0;
+			}
+		}
+
+		.uagb-control__units {
+			display: flex;
+			align-items: center;
+
+			.components-button {
+				font-size: 10px;
+				justify-content: center;
+				padding: 0;
+				text-align: center;
+				text-shadow: none;
+				text-transform: uppercase;
+				width: 100%;
+				cursor: pointer;
+				padding-right: 5px;
+
+				&.is-primary.is-small,
+				&.is-secondary.is-small {
+					box-shadow: unset;
+				}
+
+				&.is-primary {
+					background: unset;
+					background-color: unset;
+					color: $spectra-color-primary;
+					box-shadow: unset;
+				}
+
+				&.is-secondary,
+				&.is-tertiary {
+					background: unset;
+					background-color: unset;
+					color: $spectra-color-body;
+
+					&:hover:not(:disabled) {
+						color: $spectra-color-primary;
+					}
+				}
+			}
+
+			.components-button:last-child {
+				padding: 0;
+			}
+		}
+
+		.components-button.is-secondary:hover:not(:disabled) {
+			background: 0 0;
+			box-shadow: 0 0;
+		}
+
+		.components-button.is-secondary:disabled {
+			background: 0 0;
+			color: $spectra-color-icon-disabled;
+		}
+
+		.components-button.is-secondary {
+			color: $spectra-color-primary;
+			box-shadow: 0 0;
+		}
+	}
+}

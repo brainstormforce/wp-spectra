@@ -42,33 +42,46 @@ class Admin_Helper {
 		$changelog_data = self::get_changelog_feed_data();
 
 		$options = array(
-			'rollback_to_previous_version'       => isset( $uag_versions[0]['value'] ) ? $uag_versions[0]['value'] : '',
-			'enable_beta_updates'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uagb_beta', 'no' ),
-			'enable_file_generation'             => \UAGB_Admin_Helper::get_admin_settings_option( '_uagb_allow_file_generation', 'enabled' ),
-			'blocks_activation_and_deactivation' => self::get_blocks(),
-			'enable_templates_button'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' ),
-			'enable_block_condition'             => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_condition', 'enabled' ),
-			'enable_masonry_gallery'             => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ),
-			'select_font_globally'               => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_select_font_globally', array() ),
-			'load_select_font_globally'          => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_select_font_globally', 'disabled' ),
-			'load_gfonts_locally'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_gfonts_locally', 'disabled' ),
-			'collapse_panels'                    => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
-			'copy_paste'                         => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
-			'preload_local_fonts'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
+			'coming_soon_page'                   => self::get_coming_soon_page(),
 			'uag_previous_versions'              => $uag_versions,
 			'changelog_data'                     => $changelog_data,
+			'blocks_activation_and_deactivation' => self::get_blocks(),
+			'rollback_to_previous_version'       => isset( $uag_versions[0]['value'] ) ? $uag_versions[0]['value'] : '',
+			'uagb_old_user_less_than_2'          => get_option( 'uagb-old-user-less-than-2' ),
+			'recaptcha_site_key_v2'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
+			'recaptcha_secret_key_v2'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ),
+			'recaptcha_site_key_v3'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),
+			'recaptcha_secret_key_v3'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v3', '' ),
 		);
 
 		return $options;
 	}
+
+	/**
+	 * Get Coming Soon Page
+	 *
+	 * @since 2.0.0
+	 * @return boolean|array
+	 */
+	public static function get_coming_soon_page() {
+		$page_id = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_coming_soon_page', '' );
+		if ( $page_id ) {
+			return array(
+				'value' => $page_id,
+				'label' => \get_the_title( $page_id ),
+			);
+		}
+		return false;
+	}
+
 	/**
 	 * Get Changelogs from API.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 * @return array $changelog_data Changelog Data.
 	 */
 	public static function get_changelog_feed_data() {
-		$posts          = json_decode( wp_remote_retrieve_body( wp_remote_get( 'https://ultimategutenberg.com/wp-json/wp/v2/changelog?per_page=3' ) ) );
+		$posts          = json_decode( wp_remote_retrieve_body( wp_remote_get( 'https://wpspectra.com/wp-json/wp/v2/changelog?per_page=3' ) ) );
 		$changelog_data = array();
 
 		if ( isset( $posts ) && is_array( $posts ) ) {
@@ -112,9 +125,9 @@ class Admin_Helper {
 	 */
 	public static function get_options() {
 
-		$general_settings = self::get_common_settings();
-
-		$options = $general_settings;
+		$general_settings          = self::get_common_settings();
+		$shareable_common_settings = \UAGB_Admin_Helper::get_admin_settings_shareable_data();
+		$options                   = array_merge( $general_settings, $shareable_common_settings );
 
 		$options = apply_filters( 'uag_global_data_options', $options );
 

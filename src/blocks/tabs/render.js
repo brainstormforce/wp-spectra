@@ -30,6 +30,7 @@ const Render = ( props ) => {
 		clientId,
 	} = props;
 	const {
+		isPreview,
 		tabsStyleD,
 		tabsStyleM,
 		tabsStyleT,
@@ -129,8 +130,11 @@ const Render = ( props ) => {
 			updateBlockAttributes( childBlockId, attrs )
 		);
 	};
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/tabs.png`;
+
 	return (
 		<>
+		{ isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 			<div
 				className={ classnames(
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
@@ -157,7 +161,7 @@ const Render = ( props ) => {
 									{ index !== 0 && (
 										<Tooltip
 											text={ __(
-												'Move Item Back',
+												'Move item back',
 												'ultimate-addons-for-gutenberg'
 											) }
 										>
@@ -179,14 +183,18 @@ const Render = ( props ) => {
 													index === tabHeaders.length
 												}
 											>
-												<Dashicon icon="arrow-left" />
+												{ ( tabsStyleD.includes( 'vstyle' ) && deviceType === 'Desktop' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Tablet' ) || ( ( tabsStyleM.includes( 'vstyle' ) || tabsStyleM.includes( 'stack' ) ) && deviceType === 'Mobile' ) ? (
+													<Dashicon icon="arrow-up" />
+												) :
+													<Dashicon icon="arrow-left" />
+												}
 											</span>
 										</Tooltip>
 									) }
 									{ index + 1 !== tabHeaders.length && (
 										<Tooltip
 											text={ __(
-												'Move Item Forward',
+												'Move item forward',
 												'ultimate-addons-for-gutenberg'
 											) }
 										>
@@ -208,7 +216,11 @@ const Render = ( props ) => {
 													index === tabHeaders.length
 												}
 											>
-												<Dashicon icon="arrow-right" />
+												{ ( tabsStyleD.includes( 'vstyle' ) && deviceType === 'Desktop' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Tablet' ) || ( ( tabsStyleM.includes( 'vstyle' ) || tabsStyleM.includes( 'stack' ) ) && deviceType === 'Mobile' ) ? (
+													<Dashicon icon="arrow-down" />
+												) :
+													<Dashicon icon="arrow-right" />
+												}
 											</span>
 										</Tooltip>
 									) }
@@ -269,22 +281,19 @@ const Render = ( props ) => {
 							</a>
 						</li>
 					) ) }
-					<li className="uagb-tab uagb-tabs__add-tab">
+					<li className="uagb-tab uagb-tabs__add-tab" // eslint-disable-line jsx-a11y/click-events-have-key-events
+						role='button' // eslint-disable-line jsx-a11y/no-noninteractive-element-to-interactive-role
+						tabIndex='0'
+						onClick={ () => addTab() }>
 						<Tooltip
 							text={ __(
 								'Add tab',
 								'ultimate-addons-for-gutenberg'
 							) }
 						>
-							<span // eslint-disable-line jsx-a11y/click-events-have-key-events
-								role='button'
-								tabIndex='0'
-								onClick={ () => addTab() }
-							>
 								<Dashicon icon="plus" />
-							</span>
 						</Tooltip>
-					</li>
+						</li>
 				</ul>
 				<div className="uagb-tabs__body-wrap">
 					<InnerBlocks
@@ -298,6 +307,7 @@ const Render = ( props ) => {
 					/>
 				</div>
 			</div>
+}
 		</>
 	);
 };

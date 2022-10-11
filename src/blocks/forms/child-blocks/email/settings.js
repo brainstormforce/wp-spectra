@@ -4,13 +4,9 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
-
+import UAGSelectControl from '@Components/select-control';
 import { InspectorControls } from '@wordpress/block-editor';
-
 import { ToggleControl, TextControl } from '@wordpress/components';
-
-
-
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -18,15 +14,25 @@ const Settings = ( props ) => {
 
 	const { attributes, setAttributes } = props;
 
-	const { required, placeholder } = attributes;
+	const { required, placeholder, autocomplete } = attributes;
 
 	const nameInspectorControls = () => {
 		return (
 			<UAGAdvancedPanelBody initialOpen={ true }>
-				<ToggleControl
-					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
-					checked={ required }
-					onChange={ () => setAttributes( { required: ! required } ) }
+				<UAGSelectControl
+					label={ __(
+						'Autocomplete',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: autocomplete,
+						label: 'autocomplete',
+					} }
+					setAttributes={ setAttributes }
+					options={ [
+						{ label: __( 'Off', 'ultimate-addons-for-gutenberg' ), value: 'off' },
+						{ label: __( 'email', 'ultimate-addons-for-gutenberg' ), value: 'email' },
+					] }
 				/>
 				<TextControl
 					label="Placeholder"
@@ -38,6 +44,11 @@ const Settings = ( props ) => {
 						'Placeholder',
 						'ultimate-addons-for-gutenberg'
 					) }
+				/>
+				<ToggleControl
+					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
+					checked={ required }
+					onChange={ () => setAttributes( { required: ! required } ) }
 				/>
 			</UAGAdvancedPanelBody>
 		);

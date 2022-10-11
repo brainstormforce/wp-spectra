@@ -1,0 +1,90 @@
+/** Text Shadow Popup CSS*/
+.uag-text-shadow-options {
+
+	margin-bottom: 24px;
+	position: relative;
+
+	.uag-text-shadow-option-actions {
+		display: flex;
+		justify-content: space-between;
+		margin: 0;
+		align-items: center;
+
+		.uag-text-shadow-button {
+			margin: 0;
+			height: 28px;
+			width: 28px;
+			padding: 5px;
+			border: 1px solid #d3d3d3;
+			border-radius: 14px;
+
+			.dashicons-edit {
+				font-size: 15px;
+				line-height: 20px;
+			}
+
+			&:focus:not(:disabled) {
+				box-shadow: none;
+				outline: none;
+			}
+		}
+	}
+
+	.uagb-text-shadow-advanced {
+		border: 1px solid #d3d3d3;
+		border-radius: 3px;
+		padding: 15px;
+		margin: 10px 0;
+		box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+		position: absolute;
+		top: 25;
+		right: 0;
+		background: #fff;
+		z-index: 99;
+		width: 100%;
+
+		> .components-base-control {
+			margin-top: 0;
+		}
+
+		&::after,
+		&::before {
+			bottom: 100%;
+			right: 8px;
+			border: solid transparent;
+			content: "";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+		}
+
+		&::after {
+			right: 9px;
+			border-color: rgba(255, 255, 255, 0);
+			border-bottom-color: #fff;
+			border-width: 5px;
+			margin-left: -5px;
+		}
+
+		&::before {
+			border-color: rgba(211, 211, 211, 0);
+			border-bottom-color: #d3d3d3;
+			border-width: 6px;
+			margin-left: -6px;
+		}
+
+		.uagb-shadow-color,
+		.uagb-horizontal-wrap,
+		.uagb-vertical-wrap,
+		.uagb-blur-wrap,
+		.uagb-spread-wrap {
+			margin-bottom: 16px;
+		}
+	}
+}
+
+.block-editor-block-inspector .components-base-control:last-child {
+	margin-bottom: 0;
+}
+

@@ -23,3 +23,16 @@
 .uagb-lottie__left {
 	margin-right: auto;
 }
+// CSS to resolve Edit URL Button overflows outside the container, When the Replace BlockControl is opened.
+.block-editor .block-editor__container {
+
+	.block-editor-media-flow__url-input .block-editor-link-control {
+		width: auto;
+	}
+}
+
+// In the zip, the pointer events were set to 'none' and so the lottie website link is not accessible.
+// Hence to fix the issue which is specific to the final build/zip, we use '!important'.
+.uagb-lottie-instructions__lottie-url {
+	pointer-events: auto !important;
+}

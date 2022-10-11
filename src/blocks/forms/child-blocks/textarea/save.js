@@ -3,11 +3,14 @@
  */
 
 import classnames from 'classnames';
-
 import { __ } from '@wordpress/i18n';
-
 import { RichText } from '@wordpress/block-editor';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+
 export default function save( props ) {
+
+	const blockName = 'forms-textarea';
+
 	const { attributes } = props;
 
 	const {
@@ -16,6 +19,7 @@ export default function save( props ) {
 		textareaName,
 		rows,
 		placeholder,
+		autocomplete,
 	} = attributes;
 
 	const isRequired = textareaRequired
@@ -39,9 +43,10 @@ export default function save( props ) {
 			<textarea
 				required={ textareaRequired }
 				className="uagb-forms-textarea-input uagb-forms-input"
-				rows={ rows }
+				rows={ getFallbackNumber( rows, 'rows', blockName ) }
 				placeholder={ placeholder }
 				name={ block_id }
+				autoComplete={ autocomplete }
 			></textarea>
 		</div>
 	);

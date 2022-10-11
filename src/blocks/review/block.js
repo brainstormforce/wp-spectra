@@ -12,7 +12,7 @@ import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/review', {
 	title: __( 'Review', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'This block helps you to add a review for various items with schema support.', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'Add reviews to items with Schema support.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.review,
 	category: uagb_blocks_info.category,
 	keywords: [
@@ -21,7 +21,11 @@ registerBlockType( 'uagb/review', {
 		__( 'schema', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	supports: {
 		anchor: true,
 	},

@@ -11,11 +11,12 @@ $block_slug = 'uagb/buttons';
 $block_data = array(
 	'doc'              => 'multi-buttons',
 	'slug'             => '',
-	'admin_categories' => array( 'creative' ),
+	'admin_categories' => array( 'creative', 'core' ),
 	'link'             => 'multi-buttons',
-	'title'            => __( 'Multi Buttons', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block allows you to add multiple buttons with a single block.', 'ultimate-addons-for-gutenberg' ),
+	'title'            => __( 'Buttons', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Add multiple buttons to redirect user to different webpages.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 5,
+	'priority'         => 4,
+	'deprecated'       => false,
 );

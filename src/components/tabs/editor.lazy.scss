@@ -1,12 +1,11 @@
 /* Normal & Hover Tabs CSS*/
-.uag-control-tabs {
-	width: 100%;
 
-	&.uag-control-tabs-bottom-separator {
-		margin-bottom: 24px;
-		padding-bottom: 12px;
-		border-bottom: 1px solid #ddd;
-	}
+@import "../../styles/variables";
+
+.uag-control-tabs {
+	// width: 100%;
+	margin: 0 (-$spectra-panel-body-padding);
+	padding: 0 $spectra-panel-body-padding;
 
 	&.uag-control-tabs-three-tabs {
 
@@ -18,33 +17,47 @@
 		}
 	}
 
-	.components-tab-panel__tabs {
+	& > .components-tab-panel__tabs {
 		justify-content: space-between;
-		margin-bottom: 24px;
-		margin-left: -16px;
-		margin-right: -16px;
-		padding: 0 16px;
-		border-bottom: 1px solid #ddd;
+		margin: 0 (-$spectra-panel-body-padding) $spectra-control-vertical-gap;
+		padding: 0 $spectra-panel-body-padding;
+		border-bottom: 1px solid $spectra-color-border;
 
 		& > .components-button {
 			width: 47%;
 			text-align: center;
 			justify-content: center;
-			border: 1px solid #ddd;
-			color: #3a3a3a;
+			border: 1px solid $spectra-color-border;
+			border-radius: $spectra-control-border-radius $spectra-control-border-radius 0 0;
+			color: $spectra-color-body;
+			background-color: $spectra-color-light-background;
 			max-height: 30px;
-			font-size: 13px;
+			font-size: $spectra-font-size-button;
 			border-bottom: 0;
 			margin-bottom: -1px;
+
+			&.active-tab {
+				color: $spectra-color-primary;
+				background: $spectra-color-plain-background;
+			}
+
+			&:focus:not(:disabled) {
+				box-shadow: none;
+			}
+		}
+	}
+
+	& .components-base-control {
+		margin-bottom: $spectra-control-vertical-gap;
+
+		.components-base-control,
+		.components-base-control__field {
+			padding-top: 0;
+			margin-bottom: 0;
 		}
 
-		& > .components-button:focus:not(:disabled) {
-			box-shadow: none;
-		}
-
-		& > .components-button.active-tab {
-			color: #007cba;
-			background: #fff;
+		&:last-child {
+			margin-bottom: 0;
 		}
 	}
 }

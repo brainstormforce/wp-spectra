@@ -9,7 +9,19 @@
 
 global $content_width;
 
-$bg_type = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
+$bg_type      = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
+$overlay_type = ( isset( $attr['overlayType'] ) ) ? $attr['overlayType'] : 'color';
+$border       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'columns' );
+$border       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$border,
+	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
+	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
+	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
+	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
+);
+
+$border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'columns', 'tablet' );
+$border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'columns', 'mobile' );
 
 $top_margin    = isset( $attr['topMarginDesktop'] ) ? $attr['topMarginDesktop'] : $attr['topMargin'];
 $bottom_margin = isset( $attr['bottomMarginDesktop'] ) ? $attr['bottomMarginDesktop'] : $attr['bottomMargin'];
@@ -65,44 +77,42 @@ if ( isset( $attr['contentWidth'] ) ) {
 	}
 }
 
-$style['max-width'] = $inner_width;
-
 $video_opacity = 0.5;
 if ( isset( $attr['backgroundVideoOpacity'] ) && '' !== $attr['backgroundVideoOpacity'] ) {
 	$video_opacity = ( 1 < $attr['backgroundVideoOpacity'] ) ? ( ( 100 - $attr['backgroundVideoOpacity'] ) / 100 ) : ( ( 1 - $attr['backgroundVideoOpacity'] ) );
 }
 
 $selectors = array(
-	'.uagb-columns__wrap'              => $style,
-	' .uagb-columns__video-wrap'       => array(
+	'.wp-block-uagb-columns.uagb-columns__wrap' => $style,
+	' .uagb-columns__video-wrap'                => array(
 		'opacity' => $video_opacity,
 	),
-	' .uagb-column__wrap'              => array(
+	' > .uagb-columns__inner-wrap'              => array( // For backward user.
+		'max-width' => $inner_width,
+	),
+	' .uagb-column__inner-wrap'                 => array( // For backward user.
 		'padding' => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
 	),
-	' .uagb-columns__shape-top svg'    => array(
+	' .uagb-column__wrap'                       => array(
+		'padding' => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
+	),
+	' .uagb-columns__shape-top svg'             => array(
 		'height' => UAGB_Helper::get_css_value( $attr['topHeight'], 'px' ),
 	),
 	' .uagb-columns__shape.uagb-columns__shape-top .uagb-columns__shape-fill' => array(
 		'fill' => UAGB_Helper::hex2rgba( $attr['topColor'], ( isset( $attr['topDividerOpacity'] ) && '' !== $attr['topDividerOpacity'] ) ? $attr['topDividerOpacity'] : 100 ),
 	),
-	' .uagb-columns__shape-bottom svg' => array(
+	' .uagb-columns__shape-bottom svg'          => array(
 		'height' => UAGB_Helper::get_css_value( $attr['bottomHeight'], 'px' ),
 	),
 	' .uagb-columns__shape.uagb-columns__shape-bottom .uagb-columns__shape-fill' => array(
 		'fill' => UAGB_Helper::hex2rgba( $attr['bottomColor'], ( isset( $attr['bottomDividerOpacity'] ) && '' !== $attr['bottomDividerOpacity'] ) ? $attr['bottomDividerOpacity'] : 100 ),
 	),
-	'.wp-block-uagb-columns'           => array(
+	'.wp-block-uagb-columns'                    => array(
 		'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
 	),
 );
-if ( 'none' !== $attr['borderStyle'] ) {
-	$selectors['.uagb-columns__wrap']['border-style']       = $attr['borderStyle'];
-	$selectors['.uagb-columns__wrap']['border-width']       = UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' );
-	$selectors['.uagb-columns__wrap']['border-color']       = $attr['borderColor'];
-	$selectors['.uagb-columns__wrap']['border-radius']      = UAGB_Helper::get_css_value( $attr['borderRadius'], $attr['desktopMarginType'] );
-	$selectors['.uagb-columns__wrap:hover']['border-color'] = $attr['borderHoverColor'];
-}
+
 if ( '' !== $attr['topWidth'] ) {
 	$selectors[' .uagb-columns__shape-top svg']['width'] = 'calc( ' . $attr['topWidth'] . '% + 1.3px )';
 }
@@ -112,21 +122,42 @@ if ( '' !== $attr['bottomWidth'] ) {
 }
 
 if ( 'video' === $bg_type ) {
-	$selectors[' > .uagb-columns__overlay'] = array(
-		'opacity'          => 1,
-		'background-color' => $attr['backgroundVideoColor'],
-	);
+	if ( 'color' === $overlay_type ) {
+		$selectors[' > .uagb-columns__overlay'] = array(
+			'background-color' => $attr['backgroundVideoColor'],
+		);
+	} else {
+		$selectors[' > .uagb-columns__overlay']['background-image'] = $attr['gradientValue'];
+	}
 } elseif ( 'image' === $bg_type ) {
-	$selectors[' > .uagb-columns__overlay'] = array(
-		'background-color' => $attr['backgroundImageColor'],
-		'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '',
-	);
+	if ( 'color' === $overlay_type ) {
+		$selectors[' > .uagb-columns__overlay'] = array(
+			'background-color' => $attr['backgroundImageColor'],
+			'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] && 0 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '',
+		);
+	} else {
+		if ( $attr['gradientValue'] ) {
+			$selectors[' > .uagb-columns__overlay']['background-image'] = $attr['gradientValue'];
+		} else {
+			$selectors[' > .uagb-columns__overlay']['background-color'] = 'transparent';
+			$selectors[' > .uagb-columns__overlay']['opacity']          = ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] && 0 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '';
+			if ( 'linear' === $attr['gradientOverlayType'] ) {
+
+				$selectors[' > .uagb-columns__overlay']['background-image'] = 'linear-gradient(' . $attr['gradientOverlayAngle'] . 'deg, ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
+			} else {
+
+				$selectors[' > .uagb-columns__overlay']['background-image'] = 'radial-gradient( at ' . $gradientOverlayPosition . ', ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
+			}
+		}
+	}
 } elseif ( 'color' === $bg_type ) {
 	$selectors[' > .uagb-columns__overlay'] = array(
 		'background-color' => $attr['backgroundColor'],
+		'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] && 0 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '',
 	);
 } elseif ( 'gradient' === $bg_type ) {
 	$selectors[' > .uagb-columns__overlay']['background-color'] = 'transparent';
+	$selectors[' > .uagb-columns__overlay']['opacity']          = ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 0 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '';
 	if ( $attr['gradientValue'] ) {
 		$selectors[' > .uagb-columns__overlay']['background-image'] = $attr['gradientValue'];
 	} else {
@@ -138,10 +169,10 @@ if ( 'video' === $bg_type ) {
 	}
 }
 
-$selectors[' > .uagb-columns__overlay']['border-radius'] = UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' );
+$selectors[' > .uagb-columns__overlay']['border-radius'] = $border['border-top-left-radius'] . ' ' . $border['border-top-right-radius'] . ' ' . $border['border-bottom-left-radius'] . ' ' . $border['border-bottom-right-radius'];
 
 $m_selectors = array(
-	'.uagb-columns__wrap'              => array(
+	'.wp-block-uagb-columns.uagb-columns__wrap' => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingMobile'], $attr['mobilePaddingType'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingMobile'], $attr['mobilePaddingType'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingMobile'], $attr['mobilePaddingType'] ),
@@ -151,16 +182,16 @@ $m_selectors = array(
 		'margin-left'    => UAGB_Helper::get_css_value( $mobile_left_margin, $attr['mobileMarginType'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $mobile_right_margin, $attr['mobileMarginType'] ),
 	),
-	' .uagb-columns__shape-bottom svg' => array(
+	' .uagb-columns__shape-bottom svg'          => array(
 		'height' => UAGB_Helper::get_css_value( $attr['bottomHeightMobile'], 'px' ),
 	),
-	' .uagb-columns__shape-top svg'    => array(
+	' .uagb-columns__shape-top svg'             => array(
 		'height' => UAGB_Helper::get_css_value( $attr['topHeightMobile'], 'px' ),
 	),
 );
 
-$t_selectors = array(
-	'.uagb-columns__wrap'              => array(
+$t_selectors                      = array(
+	'.wp-block-uagb-columns.uagb-columns__wrap' => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingTablet'], $attr['tabletPaddingType'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingTablet'], $attr['tabletPaddingType'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingTablet'], $attr['tabletPaddingType'] ),
@@ -170,13 +201,17 @@ $t_selectors = array(
 		'margin-left'    => UAGB_Helper::get_css_value( $tablet_left_margin, $attr['tabletMarginType'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $tablet_right_margin, $attr['tabletMarginType'] ),
 	),
-	' .uagb-columns__shape-bottom svg' => array(
+	' .uagb-columns__shape-bottom svg'          => array(
 		'height' => UAGB_Helper::get_css_value( $attr['bottomHeightTablet'], 'px' ),
 	),
-	' .uagb-columns__shape-top svg'    => array(
+	' .uagb-columns__shape-top svg'             => array(
 		'height' => UAGB_Helper::get_css_value( $attr['topHeightTablet'], 'px' ),
 	),
 );
+$selectors['.uagb-columns__wrap'] = $border;
+$selectors['.uagb-columns__wrap:hover']['border-color'] = $attr['columnsBorderHColor'];
+$t_selectors['.uagb-columns__wrap']                     = $border_tablet;
+$m_selectors['.uagb-columns__wrap']                     = $border_mobile;
 
 $combined_selectors = array(
 	'desktop' => $selectors,

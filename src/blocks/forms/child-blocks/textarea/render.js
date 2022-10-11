@@ -1,14 +1,17 @@
 import classnames from 'classnames';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { ToggleControl } from '@wordpress/components';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 import { RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
+	
 	props = props.parentProps;
+	
+	const blockName = props.name.replace( 'uagb/', '' );
 
-	const { attributes, setAttributes, isSelected } = props;
+	const { attributes, setAttributes } = props;
 
 	const {
 		block_id,
@@ -31,22 +34,6 @@ const Render = ( props ) => {
 					`uagb-block-${ block_id }`
 				) }
 			>
-				{ isSelected && (
-					<div className="uagb-forms-required-wrap">
-						<ToggleControl
-							label={ __(
-								'Required',
-								'ultimate-addons-for-gutenberg'
-							) }
-							checked={ textareaRequired }
-							onChange={ () =>
-								setAttributes( {
-									textareaRequired: ! textareaRequired,
-								} )
-							}
-						/>
-					</div>
-				) }
 				<RichText
 					tagName="div"
 					placeholder={ __(
@@ -64,7 +51,7 @@ const Render = ( props ) => {
 				<textarea
 					required={ textareaRequired }
 					className="uagb-forms-textarea-input uagb-forms-input"
-					rows={ rows }
+					rows={ getFallbackNumber( rows, 'rows', blockName ) }
 					placeholder={ placeholder }
 					name={ block_id }
 				></textarea>

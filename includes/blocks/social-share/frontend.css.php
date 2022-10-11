@@ -7,34 +7,99 @@
  * @package uagb
  */
 
-$alignment = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );
+$block_name = 'social-share';
+
+$bg_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['bgSize'], 'bgSize', $block_name );
+$size_fallback    = UAGB_Block_Helper::get_fallback_number( $attr['size'], 'size', $block_name );
+$gap_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['gap'], 'gap', $block_name );
+
+$gap_tablet_fallback = is_numeric( $attr['gapTablet'] ) ? $attr['gapTablet'] : $gap_fallback;
+$gap_mobile_fallback = is_numeric( $attr['gapMobile'] ) ? $attr['gapMobile'] : $gap_tablet_fallback;
+
+$alignment   = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );
+$t_alignment = ( 'left' === $attr['alignTablet'] ) ? 'flex-start' : ( ( 'right' === $attr['alignTablet'] ) ? 'flex-end' : 'center' );
+$m_alignment = ( 'left' === $attr['alignMobile'] ) ? 'flex-start' : ( ( 'right' === $attr['alignMobile'] ) ? 'flex-end' : 'center' );
 
 $m_selectors = array();
 $t_selectors = array();
 
-$image_size   = UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] );
+$image_size   = UAGB_Helper::get_css_value( $size_fallback, $attr['sizeType'] );
 $m_image_size = UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] );
 $t_image_size = UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] );
 
-$selectors['.uagb-social-share__outer-wrap .block-editor-inner-blocks'] = array(
+$selectors = array(
+	' .uagb-ss-repeater a.uagb-ss__link'           => array(
+		'color' => $attr['iconColor'],
+	),
+	' .uagb-ss-repeater a.uagb-ss__link svg'       => array(
+		'fill' => $attr['iconColor'],
+	),
+	' .uagb-ss-repeater:hover a.uagb-ss__link'     => array(
+		'color' => $attr['iconHoverColor'],
+	),
+	' .uagb-ss-repeater:hover a.uagb-ss__link svg' => array(
+		'fill' => $attr['iconHoverColor'],
+	),
+	' .uagb-ss-repeater.uagb-ss__wrapper'          => array(
+		'background' => $attr['iconBgColor'],
+	),
+	' .uagb-ss-repeater.uagb-ss__wrapper:hover'    => array(
+		'background' => $attr['iconBgHoverColor'],
+	),
+);
+
+$selectors['.uagb-social-share__outer-wrap .block-editor-inner-blocks']   = array(
 	'text-align' => UAGB_Helper::get_css_value( $attr['align'] ),
 );
+$t_selectors['.uagb-social-share__outer-wrap .block-editor-inner-blocks'] = array(
+	'text-align' => UAGB_Helper::get_css_value( $attr['alignTablet'] ),
+);
+$m_selectors['.uagb-social-share__outer-wrap .block-editor-inner-blocks'] = array(
+	'text-align' => UAGB_Helper::get_css_value( $attr['alignMobile'] ),
+);
 
-$selectors['.uagb-social-share__layout-vertical .uagb-ss__wrapper'] = array(
-	'padding'       => UAGB_Helper::get_css_value( $attr['bgSize'], 'px' ),
+$selectors['.uagb-social-share__layout-vertical .uagb-ss__wrapper']     = array(
 	'margin-left'   => 0,
 	'margin-right'  => 0,
-	'margin-bottom' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+	'margin-bottom' => UAGB_Helper::get_css_value( $gap_fallback, 'px' ),
+);
+$selectors['.uagb-social-share__layout-vertical .uagb-ss__link']        = array(
+	'padding' => UAGB_Helper::get_css_value( $bg_size_fallback, 'px' ),
+);
+$m_selectors['.uagb-social-share__layout-vertical .uagb-ss__wrapper']   = array(
+	'margin-left'   => 0,
+	'margin-right'  => 0,
+	'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
+);
+$t_selectors['.uagb-social-share__layout-vertical .uagb-ss__wrapper']   = array(
+	'margin-left'   => 0,
+	'margin-right'  => 0,
+	'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
+);
+$selectors['.uagb-social-share__layout-horizontal .uagb-ss__link']      = array(
+	'padding' => UAGB_Helper::get_css_value( $bg_size_fallback, 'px' ),
+);
+$selectors['.uagb-social-share__layout-horizontal .uagb-ss__wrapper']   = array(
+	'margin-left'  => UAGB_Helper::get_css_value( ( $gap_fallback / 2 ), 'px' ),
+	'margin-right' => UAGB_Helper::get_css_value( ( $gap_fallback / 2 ), 'px' ),
+);
+$m_selectors['.uagb-social-share__layout-horizontal .uagb-ss__wrapper'] = array(
+	'margin-left'  => UAGB_Helper::get_css_value( ( $gap_mobile_fallback / 2 ), 'px' ),
+	'margin-right' => UAGB_Helper::get_css_value( ( $gap_mobile_fallback / 2 ), 'px' ),
+);
+$t_selectors['.uagb-social-share__layout-horizontal .uagb-ss__wrapper'] = array(
+	'margin-left'  => UAGB_Helper::get_css_value( ( $gap_tablet_fallback / 2 ), 'px' ),
+	'margin-right' => UAGB_Helper::get_css_value( ( $gap_tablet_fallback / 2 ), 'px' ),
 );
 
-$selectors['.uagb-social-share__layout-horizontal .uagb-ss__wrapper'] = array(
-	'padding'      => UAGB_Helper::get_css_value( $attr['bgSize'], 'px' ),
-	'margin-left'  => UAGB_Helper::get_css_value( ( $attr['gap'] / 2 ), 'px' ),
-	'margin-right' => UAGB_Helper::get_css_value( ( $attr['gap'] / 2 ), 'px' ),
-);
-
-$selectors[' .uagb-ss__wrapper'] = array(
+$selectors[' .wp-block-uagb-social-share-child ']   = array(
 	'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
+);
+$m_selectors[' .wp-block-uagb-social-share-child '] = array(
+	'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadiusMobile'], 'px' ),
+);
+$t_selectors[' .wp-block-uagb-social-share-child '] = array(
+	'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadiusTablet'], 'px' ),
 );
 
 $selectors[' .uagb-ss__source-wrap'] = array(
@@ -51,10 +116,9 @@ $selectors[' .uagb-ss__source-image'] = array(
 );
 
 $selectors[' .uagb-ss__source-icon'] = array(
-	'width'       => $image_size,
-	'height'      => $image_size,
-	'font-size'   => $image_size,
-	'line-height' => $image_size,
+	'width'     => $image_size,
+	'height'    => $image_size,
+	'font-size' => $image_size,
 );
 
 $t_selectors[' .uagb-ss__source-wrap'] = array(
@@ -94,16 +158,13 @@ $m_selectors[' .uagb-ss__source-image'] = array(
 	'width' => $m_image_size,
 );
 
-$m_selectors[' .uagb-ss__source-icon']                                  = array(
+$m_selectors[' .uagb-ss__source-icon'] = array(
 	'width'       => $m_image_size,
 	'height'      => $m_image_size,
 	'font-size'   => $m_image_size,
 	'line-height' => $m_image_size,
 );
-$m_selectors['.uagb-social-share__layout-horizontal .uagb-ss__wrapper'] = array(
-	'margin-left'  => 0,
-	'margin-right' => 0,
-);
+
 
 $selectors['.uagb-social-share__outer-wrap'] = array(
 	'justify-content'   => $alignment,
@@ -113,6 +174,26 @@ $selectors['.uagb-social-share__outer-wrap'] = array(
 	'-webkit-box-align' => $alignment,
 	'-ms-flex-align'    => $alignment,
 	'align-items'       => $alignment,
+);
+
+$t_selectors['.uagb-social-share__outer-wrap'] = array(
+	'justify-content'   => $t_alignment,
+	'-webkit-box-pack'  => $t_alignment,
+	'-ms-flex-pack'     => $t_alignment,
+	'justify-content'   => $t_alignment,
+	'-webkit-box-align' => $t_alignment,
+	'-ms-flex-align'    => $t_alignment,
+	'align-items'       => $t_alignment,
+);
+
+$m_selectors['.uagb-social-share__outer-wrap'] = array(
+	'justify-content'   => $m_alignment,
+	'-webkit-box-pack'  => $m_alignment,
+	'-ms-flex-pack'     => $m_alignment,
+	'justify-content'   => $m_alignment,
+	'-webkit-box-align' => $m_alignment,
+	'-ms-flex-align'    => $m_alignment,
+	'align-items'       => $m_alignment,
 );
 
 if ( ! $attr['childMigrate'] ) {
@@ -140,10 +221,20 @@ if ( 'horizontal' === $attr['social_layout'] ) {
 
 	if ( 'desktop' === $attr['stack'] ) {
 
-		$selectors[' .uagb-ss__wrapper'] = array(
+		$selectors[' .uagb-ss__wrapper']   = array(
 			'margin-left'   => 0,
 			'margin-right'  => 0,
-			'margin-bottom' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+			'margin-bottom' => UAGB_Helper::get_css_value( $gap_fallback, 'px' ),
+		);
+		$t_selectors[' .uagb-ss__wrapper'] = array(
+			'margin-left'   => 0,
+			'margin-right'  => 0,
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
+		);
+		$m_selectors[' .uagb-ss__wrapper'] = array(
+			'margin-left'   => 0,
+			'margin-right'  => 0,
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
 		);
 
 		$selectors['.uagb-social-share__outer-wrap'] = array(
@@ -157,23 +248,45 @@ if ( 'horizontal' === $attr['social_layout'] ) {
 			'align-items'       => $alignment,
 		);
 
+		$t_selectors['.uagb-social-share__outer-wrap'] = array(
+			'flex-direction'    => 'column',
+			'justify-content'   => $t_alignment,
+			'-webkit-box-pack'  => $t_alignment,
+			'-ms-flex-pack'     => $t_alignment,
+			'justify-content'   => $t_alignment,
+			'-webkit-box-align' => $t_alignment,
+			'-ms-flex-align'    => $t_alignment,
+			'align-items'       => $t_alignment,
+		);
+
+		$m_selectors['.uagb-social-share__outer-wrap'] = array(
+			'flex-direction'    => 'column',
+			'justify-content'   => $m_alignment,
+			'-webkit-box-pack'  => $m_alignment,
+			'-ms-flex-pack'     => $m_alignment,
+			'justify-content'   => $m_alignment,
+			'-webkit-box-align' => $m_alignment,
+			'-ms-flex-align'    => $m_alignment,
+			'align-items'       => $m_alignment,
+		);
+
 	} elseif ( 'tablet' === $attr['stack'] ) {
 
 		$t_selectors[' .uagb-ss__wrapper'] = array(
 			'margin-left'   => 0,
 			'margin-right'  => 0,
-			'margin-bottom' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
 		);
 
 		$t_selectors['.uagb-social-share__outer-wrap'] = array(
 			'flex-direction'    => 'column',
-			'justify-content'   => $alignment,
-			'-webkit-box-pack'  => $alignment,
-			'-ms-flex-pack'     => $alignment,
-			'justify-content'   => $alignment,
-			'-webkit-box-align' => $alignment,
-			'-ms-flex-align'    => $alignment,
-			'align-items'       => $alignment,
+			'justify-content'   => $t_alignment,
+			'-webkit-box-pack'  => $t_alignment,
+			'-ms-flex-pack'     => $t_alignment,
+			'justify-content'   => $t_alignment,
+			'-webkit-box-align' => $t_alignment,
+			'-ms-flex-align'    => $t_alignment,
+			'align-items'       => $t_alignment,
 		);
 
 	} elseif ( 'mobile' === $attr['stack'] ) {
@@ -181,18 +294,18 @@ if ( 'horizontal' === $attr['social_layout'] ) {
 		$m_selectors[' .uagb-ss__wrapper'] = array(
 			'margin-left'   => 0,
 			'margin-right'  => 0,
-			'margin-bottom' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
 		);
 
 		$m_selectors['.uagb-social-share__outer-wrap'] = array(
 			'flex-direction'    => 'column',
-			'justify-content'   => $alignment,
-			'-webkit-box-pack'  => $alignment,
-			'-ms-flex-pack'     => $alignment,
-			'justify-content'   => $alignment,
-			'-webkit-box-align' => $alignment,
-			'-ms-flex-align'    => $alignment,
-			'align-items'       => $alignment,
+			'justify-content'   => $m_alignment,
+			'-webkit-box-pack'  => $m_alignment,
+			'-ms-flex-pack'     => $m_alignment,
+			'justify-content'   => $m_alignment,
+			'-webkit-box-align' => $m_alignment,
+			'-ms-flex-align'    => $m_alignment,
+			'align-items'       => $m_alignment,
 		);
 	}
 }

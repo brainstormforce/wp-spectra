@@ -39,6 +39,11 @@ const globalDataReducer = ( state = {}, action ) => {
                 ...state,
                 enableBeta: action.payload,
             };
+		case 'UPDATE_LEGACY_BLOCKS':
+			return {
+				...state,
+				enableLegacyBlocks: action.payload,
+			};
         case 'UPDATE_ENABLE_SELECTED_FONT_FAMILIES':
             return {
                 ...state,
@@ -79,6 +84,76 @@ const globalDataReducer = ( state = {}, action ) => {
                 ...state,
                 enableMasonryExtension: action.payload,
             };
+		case 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS':
+			return {
+				...state,
+				enableResponsiveConditions: action.payload,
+			};
+		case 'UPDATE_CONTENT_WIDTH':
+			return {
+				...state,
+				contentWidth: action.payload,
+				};
+		case 'UPDATE_RECAPTCHA_SITE_KEY_V2':
+			return {
+					...state,
+					siteKeyV2: action.payload,
+				};
+		case 'UPDATE_RECAPTCHA_SITE_KEY_V3':
+			return {
+				...state,
+				siteKeyV3: action.payload,
+			};
+		case 'UPDATE_RECAPTCHA_SECRET_KEY_V2':
+			return {
+				...state,
+				secretKeyV2: action.payload,
+			};
+		case 'UPDATE_RECAPTCHA_SECRET_KEY_V3':
+			return {
+				...state,
+				secretKeyV3: action.payload,
+			};
+		case 'UPDATE_SETTINGS_SAVED_NOTIFICATION':
+			return {
+				...state,
+				settingsSavedNotification: action.payload,
+			};
+		case 'UPDATE_ENABLE_COMING_SOON':
+			return {
+				...state,
+				enableComingSoonMode: action.payload,
+			};
+		case 'UPDATE_COMING_SOON_PAGE':
+			return {
+				...state,
+				comingSoonPage: action.payload,
+			};
+		case 'UPDATE_BLOCKS_EDITOR_SPACING':
+			return {
+				...state,
+				blocksEditorSpacing: action.payload,
+				};
+        case 'UPDATE_ENABLE_FONT_AWESOME_5':
+            return {
+                ...state,
+                enableFontAwesome5: action.payload,
+            };
+        case 'UPDATE_ENABLE_AUTO_BLOCK_RECOVERY':
+            return {
+                ...state,
+                enableAutoBlockRecovery: action.payload,
+            };
+		case 'UPDATE_CONTAINER_GLOBAL_PADDING':
+			return {
+				...state,
+				containerGlobalPadding: action.payload,
+				};
+		case 'UPDATE_CONTAINER_GLOBAL_ELEMENTS_GAP':
+			return {
+				...state,
+				containerGlobalElementsGap: action.payload,
+				};
         default:
             return state;
     }

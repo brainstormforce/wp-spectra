@@ -3,46 +3,8 @@ import { select, dispatch, useDispatch } from '@wordpress/data';
 import { store as keyboardShortcutsStore, useShortcut } from '@wordpress/keyboard-shortcuts';
 import { createHigherOrderComponent } from '@wordpress/compose';
 // Import Blocks Attributes.
-import advancedHeadingAttribute from './../../advanced-heading/attributes';
-import postGridAttribute from './../../post/post-grid/attributes';
-import postCarouselAttribute from './../../post/post-carousel/attributes';
-import postMasonryAttribute from './../../post/post-masonry/attributes';
-import sectionAttribute from './../../section/attributes';
-import buttonsAttribute from './../../buttons/attributes';
-import buttonsChildAttribute from './../../buttons-child/attributes';
-import infoboxAttribute from './../../info-box/attributes';
-import testimonialAttribute from './../../testimonial/attributes';
-import teamAttribute from './../../team/attributes';
-import socialAttribute from './../../social-share/attributes';
-import socialChildAttribute from './../../social-share-child/attributes';
-import googleMapAttribute from './../../google-map/attributes';
-import iconListAttribute from './../../icon-list/attributes';
-import iconListChildAttribute from './../../icon-list-child/attributes';
-import priceListAttribute from './../../price-list/attributes';
-import priceListChildAttribute from './../../price-list-child/attributes';
-import contentAttribute from './../../timeline/content-timeline/attributes';
-import contentChildAttribute from './../../timeline/content-timeline-child/attributes';
-import postTimelineAttribute from './../../timeline/post-timeline/attributes';
-import callToActionAttribute from './../../call-to-action/attributes';
-import columnAttribute from './../../column/attributes';
-import columnsAttribute from './../../columns/attributes';
-import gfAttribute from './../../gf-designer/attributes';
-import cf7Attribute from './../../cf7-designer/attributes';
-import blockquoteAttribute from './../../blockquote/attributes';
-import marketingBtnAttribute from './../../marketing-button/attributes';
-import tableofContentAttribute from './../../table-of-contents/attributes';
-import howToAttribute from './../../how-to/attributes';
-import howToStepAttribute from './../../how-to/child-blocks/step/attributes';
-import faqAttribute from './../../faq/attributes';
-import faqChildAttribute from './../../faq-child/attributes';
-import inlineNoticeAttribute from './../../inline-notice/attributes';
-import taxonomyListAttribute from './../../taxonomy-list/attributes';
-import reviewAttribute from './../../review/attributes';
-import wpSearchAttribute from './../../wp-search/attributes';
-import formsAttribute from './../../forms/attributes';
-import tabsAttribute from './../../tabs/attributes';
-import lottieAttribute from './../../lottie/attributes';
-import starRatingAttribute from './../../star-rating/attributes';
+import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
+
 import {
 	BlockControls,
 } from '@wordpress/block-editor';
@@ -51,49 +13,8 @@ import { useState, useEffect } from '@wordpress/element';
 import editorStyles from './../editor.lazy.scss';
 import { useLayoutEffect } from 'react';
 import { addFilter } from '@wordpress/hooks';
-
-const blocksAttributes = {
-	'advanced-heading' : advancedHeadingAttribute,
-	'post-grid' : postGridAttribute,
-	'post-carousel' : postCarouselAttribute,
-	'post-masonry' : postMasonryAttribute,
-	'section' : sectionAttribute,
-	'buttons' : buttonsAttribute,
-	'buttons-child' : buttonsChildAttribute,
-	'info-box' : infoboxAttribute,
-	'testimonial' : testimonialAttribute,
-	'team' : teamAttribute,
-	'social-share' : socialAttribute,
-	'social-share-child' : socialChildAttribute,
-	'google-map' : googleMapAttribute,
-	'icon-list' : iconListAttribute,
-	'icon-list-child' : iconListChildAttribute,
-	'restaurant-menu' : priceListAttribute,
-	'restaurant-menu-child' : priceListChildAttribute,
-	'call-to-action' : callToActionAttribute,
-	'column' : columnAttribute,
-	'columns' : columnsAttribute,
-	'gf-styler' : gfAttribute,
-	'cf7-styler' : cf7Attribute,
-	'blockquote' : blockquoteAttribute,
-	'marketing-button' : marketingBtnAttribute,
-	'table-of-contents' : tableofContentAttribute,
-	'how-to' : howToAttribute,
-	'faq' : faqAttribute,
-	'faq-child' : faqChildAttribute,
-	'inline-notice' : inlineNoticeAttribute,
-	'taxonomy-list' : taxonomyListAttribute,
-	'review' : reviewAttribute,
-	'wp-search' : wpSearchAttribute,
-	'forms' : formsAttribute,
-	'tabs' : tabsAttribute,
-	'lottie' : lottieAttribute,
-	'star-rating' : starRatingAttribute,
-	'content-timeline' : contentAttribute,
-	'content-timeline-child' : contentChildAttribute,
-    'post-timeline' : postTimelineAttribute,
-    'how-to-step' : howToStepAttribute,
-};
+import SettingsIcons from './icons.js';
+import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 
 const UAGCopyPasteStyles = () => {
 
@@ -103,6 +24,7 @@ const UAGCopyPasteStyles = () => {
     const [ showPopup, setshowPopup ] = useState( false );
     const [ disablePaste, setdisablePaste ] = useState( false );
     const { hasMultiSelection } = select( 'core/block-editor' );
+	const spectraCopyPasteStylesSetter = getUAGEditorStateLocalStorage();
 
 	useLayoutEffect( () => {
 		editorStyles.use();
@@ -112,36 +34,25 @@ const UAGCopyPasteStyles = () => {
 	}, [] );
 
     useEffect( () => {
-        /* eslint-disable no-undef */
-        xsLocalStorage.init(
-            {
-                iframeUrl: 'https://brainstormforce.github.io/uag-cp/updated-index.html',
-                initCallback () {
 
-                    xsLocalStorage.getItem( 'uag-copy-paste-styles', function ( loop_element ) {
+		const spectraCopyPasteStyles = getUAGEditorStateLocalStorage( 'spectraCopyPasteStyles' );
 
-                        const uagLocalStorageObject = JSON.parse( loop_element.value );
+		if ( ! spectraCopyPasteStyles ) {
+			spectraCopyPasteStylesSetter.setItem( 'spectraCopyPasteStyles', JSON.stringify( {} ) );
+		}
 
-                        if ( ! uagLocalStorageObject ) {
-                            xsLocalStorage.setItem( 'uag-copy-paste-styles', JSON.stringify( {} ) );
-                        }
+		if ( spectraCopyPasteStyles ) {
+			for ( const block in spectraCopyPasteStyles ) {
 
-                        if ( uagLocalStorageObject ) {
-                            for ( const block in uagLocalStorageObject ) {
+				const hoursSinceStylesSaved = Math.abs( Date.now() - spectraCopyPasteStyles[block].stylesSavedTimeStamp ) / 36e5;
 
-                                const hoursSinceStylesSaved = Math.abs( Date.now() - uagLocalStorageObject[block].stylesSavedTimeStamp ) / 36e5;
+				if ( hoursSinceStylesSaved >= 8 ) {
+					delete spectraCopyPasteStyles[block];
+				}
+			}
 
-                                if ( hoursSinceStylesSaved >= 8 ) {
-                                    delete uagLocalStorageObject[block];
-                                }
-                            }
-
-                            xsLocalStorage.setItem( 'uag-copy-paste-styles', JSON.stringify( uagLocalStorageObject ) );
-                        }
-                    } );
-                }
-            }
-        );
+			spectraCopyPasteStylesSetter.setItem( 'spectraCopyPasteStyles', JSON.stringify( spectraCopyPasteStyles ) );
+		}
 
         registerShortcut( {
 			name: 'uagb/copy',
@@ -169,10 +80,12 @@ const UAGCopyPasteStyles = () => {
     const copyStylesHandler = () => {
 
         setshowPopup( false );
+
         /* eslint-disable no-shadow */
         const { getSelectedBlock, hasMultiSelection, getMultiSelectedBlocks } = select( 'core/block-editor' );
 
-        if ( hasMultiSelection() ) {
+        if ( hasMultiSelection()
+		) {
             const multiSelectedBlocksData = getMultiSelectedBlocks();
             multiSelectedBlocksData.map( ( block ) => {
 
@@ -216,106 +129,178 @@ const UAGCopyPasteStyles = () => {
         const selectedBlockData = getSelectedBlock();
 
         if ( selectedBlockData ) {
+
             pasteBlockStyles( selectedBlockData );
         }
     };
 
     const storeBlockStyles = ( blockData ) => {
+		const spectraCopyPasteStyles = getUAGEditorStateLocalStorage( 'spectraCopyPasteStyles' );
+		spectraCopyPasteStylesSetter.setItem( 'spectraCopyPasteStyles', JSON.stringify( {} ) );
 
         const {
             attributes,
-            name
+            name,
+			innerBlocks
         } = blockData;
 
-        xsLocalStorage.getItem( 'uag-copy-paste-styles', function ( loop_element ) {
+		if ( spectraCopyPasteStyles ) {
+			spectraCopyPasteStylesSetter.setItem( 'spectraCopyPasteStyles', JSON.stringify( {} ) );
+		}
 
-            const uagLocalStorageObject = JSON.parse( loop_element.value );
-            let styles = {};
+		let styles = {};
+		const parentStyle = {};
 
-            if ( name.includes( 'uagb/' ) ) {
-                const blockName = name.replace( 'uagb/', '' );
-                const blockAttributes = blocksAttributes[blockName];
+		if ( name.includes( 'uagb/' ) ) {
 
-                if ( blockAttributes && uagLocalStorageObject ) {
+			const blockName = name.replace( 'uagb/', '' );
+			const blockAttributes = blocksAttributes[blockName];
 
-                    Object.keys( blockAttributes ).map( ( attribute ) => {
-                        if ( blockAttributes[attribute].isUAGStyle ) {
+			spectraCopyPasteStyles[`${blockName}-styles`] = {};
+			spectraCopyPasteStyles[`global-style`] = {};
 
-                            styles[attribute] = '';
+			if ( blockAttributes && spectraCopyPasteStyles ) {
 
-                            if ( attributes[attribute] ) {
-                                styles[attribute] = attributes[attribute];
-                            }
-                        }
+				Object.keys( blockAttributes ).map( ( attribute ) => {
 
-                        return attribute;
-                    } );
+					if ( blockAttributes[attribute].UAGCopyPaste ) {
 
-                    styles.stylesSavedTimeStamp = Date.now();
+						const key = blockAttributes[attribute].UAGCopyPaste.styleType;
 
-                    uagLocalStorageObject[`uag-${blockName}-styles`] = styles;
+						if ( undefined !== attributes[attribute] && null !== attributes[attribute] ) {
 
-                    xsLocalStorage.setItem( 'uag-copy-paste-styles', JSON.stringify( uagLocalStorageObject ) );
-                }
-            }
+							styles[key] = attributes[attribute];
+							parentStyle[attribute] = attributes[attribute];
 
-            if ( name.includes( 'core/' ) ) {
-                const blockName = name.replace( 'core/', '' );
-                styles = attributes;
+						}
+					}
 
-                styles.stylesSavedTimeStamp = Date.now();
+					return attribute;
 
-                uagLocalStorageObject[`core-${blockName}-styles`] = styles;
+				} );
 
-                xsLocalStorage.setItem( 'uag-copy-paste-styles', JSON.stringify( uagLocalStorageObject ) );
-            }
-        } );
+			}
+			if( innerBlocks ) {
+
+				parentStyle.innerblocks = innerBlocks;
+
+			}
+
+			styles.stylesSavedTimeStamp = Date.now();
+
+			spectraCopyPasteStyles[`${blockName}-styles`] = parentStyle;
+			spectraCopyPasteStyles[`global-style`] = styles;
+
+			spectraCopyPasteStylesSetter.setItem( 'spectraCopyPasteStyles', JSON.stringify( spectraCopyPasteStyles ) );
+		}
+
+		if ( name.includes( 'core/' ) ) {
+			const blockName = name.replace( 'core/', '' );
+			styles = attributes;
+
+			styles.stylesSavedTimeStamp = Date.now();
+
+			spectraCopyPasteStyles[`core-${blockName}-styles`] = styles;
+
+			spectraCopyPasteStylesSetter.setItem( 'spectraCopyPasteStyles', JSON.stringify( spectraCopyPasteStyles ) );
+		}
     };
 
     const pasteBlockStyles = ( blockData ) => {
 
         const {
             name,
-            clientId
+            clientId,
+			innerBlocks
         } = blockData
 
         let styles;
-        let uagLocalStorageObject = {};
-        xsLocalStorage.getItem( 'uag-copy-paste-styles', function ( loop_element ) {
+		let pasteStyle;
+		const parentAttr = {};
 
-            uagLocalStorageObject = JSON.parse( loop_element.value );
+		const spectraCopyPasteStyles = getUAGEditorStateLocalStorage( 'spectraCopyPasteStyles' );
 
-            if ( name.includes( 'uagb/' ) ) {
+		if ( name.includes( 'uagb/' ) ) {
 
-                const selectedBlockName = name.replace( 'uagb/', '' );
+			styles = spectraCopyPasteStyles[`global-style`];
 
-                styles = uagLocalStorageObject[`uag-${selectedBlockName}-styles`];
-            }
+			const blockName = name.replace( 'uagb/', '' );
+			const blockAttributes = blocksAttributes[blockName];
 
-            if ( name.includes( 'core/' ) ) {
+			pasteStyle = spectraCopyPasteStyles[`${blockName}-styles`];
 
-                const selectedBlockName = name.replace( 'core/', '' );
+			if(  blockAttributes && pasteStyle ) {
 
-                const unwantedAttributes = ['content', 'values', 'value', 'citation', 'body', 'caption', 'foot', 'head', 'url', 'alt', 'id', 'linkDestination'];
+				updateBlockStyles( clientId, pasteStyle );
 
-                styles= uagLocalStorageObject[`core-${selectedBlockName}-styles`];
+				if( innerBlocks  ) {
 
-                unwantedAttributes.map( ( attr ) => {
-                    if( styles[attr] ) {
-                        delete styles[attr];
-                    }
-                    return attr;
-                } );
-            }
+					const childAttr = {};
 
-            if ( ! styles ) {
-                return;
-            }
+					innerBlocks.map( ( childBlock , index ) => {
 
-            updateBlockStyles( clientId, styles );
-        } );
+						const childName = childBlock.name.replace( 'uagb/', '' );
+						const blockAttributes = blocksAttributes[childName];
 
+						if( pasteStyle.innerblocks[index].name === 'uagb/' + childName ) {
+							Object.keys( blockAttributes ).map( ( attribute ) => {
 
+								if ( blockAttributes[attribute].UAGCopyPaste ) {
+
+									childAttr[attribute] = pasteStyle.innerblocks[index].attributes[attribute];
+								}
+								return childAttr;
+							} );
+						}
+						updateBlockStyles( childBlock.clientId,  childAttr );
+
+						return childBlock;
+					} );
+
+				}
+
+			}else if ( blockAttributes && styles ) {
+
+				Object.keys( blockAttributes ).map( ( attribute ) => {
+
+					if ( blockAttributes[attribute].UAGCopyPaste ) {
+
+						const key = blockAttributes[attribute].UAGCopyPaste.styleType;
+
+						Object.keys( styles ).map( ( item ) => {
+
+							if( item === key ){
+
+								parentAttr[attribute] = styles[key];
+
+							}
+							return parentAttr;
+						} )
+
+					}
+					return parentAttr;
+				} );
+
+				updateBlockStyles( clientId, parentAttr );
+			}
+		}
+
+		if ( name.includes( 'core/' ) ) {
+
+			const selectedBlockName = name.replace( 'core/', '' );
+
+			const unwantedAttributes = ['content', 'values', 'value', 'citation', 'body', 'caption', 'foot', 'head', 'url', 'alt', 'id', 'linkDestination'];
+
+			pasteStyle= spectraCopyPasteStyles[`core-${selectedBlockName}-styles`];
+
+			unwantedAttributes.map( ( attr ) => {
+				if( pasteStyle[attr] ) {
+					delete pasteStyle[attr];
+				}
+				return attr;
+			} );
+			updateBlockStyles( clientId, pasteStyle );
+		}
     };
 
     const updateBlockStyles = ( clientId, styles ) => {
@@ -333,19 +318,16 @@ const UAGCopyPasteStyles = () => {
 
     const openPopup = () => {
 
-        xsLocalStorage.getItem( 'uag-copy-paste-styles', function ( loop_element ) {
+		const spectraCopyPasteStyles = getUAGEditorStateLocalStorage( 'spectraCopyPasteStyles' );
 
-            const uagLocalStorageObject = JSON.parse( loop_element.value );
-            setshowPopup( true );
+		setshowPopup( !showPopup );
 
-            if( 0 === Object.keys( uagLocalStorageObject ).length ) {
-                setdisablePaste( true );
-                return;
-            }
+		if( 0 === Object.keys( spectraCopyPasteStyles ).length ) {
+			setdisablePaste( true );
+			return;
+		}
 
-            setdisablePaste( false );
-
-        } );
+		setdisablePaste( false );
 
     };
 
@@ -360,7 +342,7 @@ const UAGCopyPasteStyles = () => {
             <ToolbarGroup className="uag-copy-paste-styles">
                 <ToolbarButton
                     icon="admin-appearance"
-                    label={ __( 'UAG Copy/Paste', 'ultimate-addons-for-gutenberg' ) }
+                    label={ __( 'Spectra Copy/Paste', 'ultimate-addons-for-gutenberg' ) }
                     onClick={ () => {
                         openPopup();
                     }}
@@ -371,21 +353,23 @@ const UAGCopyPasteStyles = () => {
                     position="bottom center"
                     className="uag-copy-paste-styles-popover"
                     focusOnMount="container"
-                    onClickOutside={ () => {
+					onFocusOutside={ () => {
                         setshowPopup( false );
                     } }
                 >
-
                     <MenuItem
-                        onClick={copyStylesHandler}
+                        onClick={ copyStylesHandler }
                     >
+						{ SettingsIcons.copy }
                         { __( 'Copy ', 'ultimate-addons-for-gutenberg' ) + stylesText }
                     </MenuItem>
                     <MenuItem
+						icon={ 'paste' }
                         onClick={pasteStylesHandler}
                         disabled = {disablePaste}
                     >
-                        { __( 'Paste ', 'ultimate-addons-for-gutenberg' ) + stylesText }
+					   { SettingsIcons.paste }
+					   { __( 'Paste ', 'ultimate-addons-for-gutenberg' ) + stylesText }
                     </MenuItem>
                 </Popover>
             )}
@@ -397,7 +381,7 @@ const displayUAGCopyPasteSettingConditionally = createHigherOrderComponent( ( Bl
 	return ( props ) => {
 
         const { getSelectedBlock, getMultiSelectedBlocks } = select( 'core/block-editor' );
-        const excludeBlocks = [ 'core/missing', 'uagb/faq-child', 'uagb/restaurant-menu-child', 'uagb/google-map', 'uagb/content-timeline-child' ];
+        const excludeBlocks = [ 'core/missing', 'uagb/faq-child', 'uagb/restaurant-menu-child', 'uagb/google-map', 'uagb/content-timeline-child', 'uagb/tabs-child' ];
         const selectedBlock = getSelectedBlock();
         const multiSelectedBlock = getMultiSelectedBlocks();
         let singleSelectBlockFlag = false;
@@ -425,7 +409,7 @@ const displayUAGCopyPasteSettingConditionally = createHigherOrderComponent( ( Bl
             } );
         }
 
-        if ( singleSelectBlockFlag || multiSelectBlockFlag ) {
+		if ( singleSelectBlockFlag || multiSelectBlockFlag ) {
             return (
                 <>
                     <BlockEdit { ...props } />
@@ -441,6 +425,7 @@ const displayUAGCopyPasteSettingConditionally = createHigherOrderComponent( ( Bl
                 </>
             );
         }
+
 	};
 }, 'displayUAGCopyPasteSettingConditionally' );
 

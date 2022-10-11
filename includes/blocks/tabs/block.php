@@ -14,9 +14,10 @@ $block_data = array(
 	'link'             => 'tabs',
 	'doc'              => 'tabs-block',
 	'title'            => __( 'Tabs', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block allows you to display your content in tabs layout.', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Display your content under different tabs.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-tabs-js' ),
-	'priority'         => 2,
+	'priority'         => 28,
+	'deprecated'       => false,
 );

@@ -14,8 +14,9 @@ $block_data = array(
 	'admin_categories' => array( 'content' ),
 	'link'             => 'wp-search',
 	'title'            => __( 'Search', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block helps you add a Search field.', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Add a search widget to let users search posts from your website.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 5,
+	'priority'         => 95,
+	'deprecated'       => true,
 );

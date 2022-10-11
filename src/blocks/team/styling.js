@@ -4,8 +4,12 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		tag,
 		align,
@@ -20,6 +24,8 @@ function styling( props ) {
 		titleFontSizeTablet,
 		titleLineHeightType,
 		titleLineHeight,
+		titleLineHeightTablet,
+		titleLineHeightMobile,
 		prefixFontFamily,
 		prefixFontWeight,
 		prefixFontSizeType,
@@ -28,6 +34,8 @@ function styling( props ) {
 		prefixFontSizeTablet,
 		prefixLineHeightType,
 		prefixLineHeight,
+		prefixLineHeightTablet,
+		prefixLineHeightMobile,
 		descFontFamily,
 		descFontWeight,
 		descFontSizeType,
@@ -36,16 +44,28 @@ function styling( props ) {
 		descFontSizeTablet,
 		descLineHeightType,
 		descLineHeight,
+		descLineHeightTablet,
+		descLineHeightMobile,
 		socialFontSize,
 		socialFontSizeType,
 		socialFontSizeMobile,
 		socialFontSizeTablet,
+		socialSpaceTablet,
+		socialSpaceMobile,
 		imgAlign,
 		imgWidth,
+		imgWidthTablet,
+		imgWidthMobile,
 		imgPosition,
 		titleSpace,
+		titleSpaceTablet,
+		titleSpaceMobile,
 		descSpace,
+		descSpaceTablet,
+		descSpaceMobile,
 		prefixSpace,
+		prefixSpaceTablet,
+		prefixSpaceMobile,
 		socialColor,
 		socialHoverColor,
 		socialSpace,
@@ -73,7 +93,30 @@ function styling( props ) {
 		titleFontStyle,
 		descFontStyle,
 		prefixFontStyle,
+		// letter spacing
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		prefixLetterSpacing,
+		prefixLetterSpacingTablet,
+		prefixLetterSpacingMobile,
+		prefixLetterSpacingType,
+		descLetterSpacing,
+		descLetterSpacingTablet,
+		descLetterSpacingMobile,
+		descLetterSpacingType,
 	} = props.attributes;
+
+	const imgWidthFallback = getFallbackNumber( imgWidth, 'imgWidth', blockName );
+	const titleSpaceFallback = getFallbackNumber( titleSpace, 'titleSpace', blockName );
+	const prefixSpaceFallback = getFallbackNumber( prefixSpace, 'prefixSpace', blockName );
+	const descSpaceFallback = getFallbackNumber( descSpace, 'descSpace', blockName );
+	const socialFontSizeFallback = getFallbackNumber( socialFontSize, 'socialFontSize', blockName );
+	const socialSpaceFallback = getFallbackNumber( socialSpace, 'socialSpace', blockName );
+
+	const socialSpaceTabletFallback = isNaN( socialSpaceTablet ) ? socialSpaceFallback : socialSpaceTablet;
+	const socialSpaceMobileFallback = isNaN( socialSpaceMobile ) ? socialSpaceTabletFallback : socialSpaceMobile;
 
 	let tabletSelectors = {};
 	let mobileSelectors = {};
@@ -91,8 +134,9 @@ function styling( props ) {
 			'text-transform': descTransform,
 			'font-weight': descFontWeight,
 			'color': descColor,
-			'margin-bottom': generateCSSUnit( descSpace, 'px' ),
-			'margin-top': generateCSSUnit( prefixSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( descSpaceFallback, 'px' ),
+			'margin-top': generateCSSUnit( prefixSpaceFallback, 'px' ),
+			'letter-spacing': generateCSSUnit( descLetterSpacing, descLetterSpacingType ),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-team__prefix': {
 			'font-family': prefixFontFamily,
@@ -106,21 +150,22 @@ function styling( props ) {
 				prefixLineHeightType
 			),
 			'color': prefixColor,
+			'letter-spacing': generateCSSUnit( prefixLetterSpacing, prefixLetterSpacingType ),
 		},
 		' .uagb-team__social-icon a': {
 			'color': socialColor,
-			'font-size': generateCSSUnit( socialFontSize, socialFontSizeType ),
-			'width': generateCSSUnit( socialFontSize, socialFontSizeType ),
-			'height': generateCSSUnit( socialFontSize, socialFontSizeType ),
+			'font-size': generateCSSUnit( socialFontSizeFallback, socialFontSizeType ),
+			'width': generateCSSUnit( socialFontSizeFallback, socialFontSizeType ),
+			'height': generateCSSUnit( socialFontSizeFallback, socialFontSizeType ),
 			'line-height': generateCSSUnit(
-				socialFontSize,
+				socialFontSizeFallback,
 				socialFontSizeType
 			),
 		},
 		' .uagb-team__social-icon svg': {
 			'fill': socialColor,
-			'width': generateCSSUnit( socialFontSize, socialFontSizeType ),
-			'height': generateCSSUnit( socialFontSize, socialFontSizeType ),
+			'width': generateCSSUnit( socialFontSizeFallback, socialFontSizeType ),
+			'height': generateCSSUnit( socialFontSizeFallback, socialFontSizeType ),
 		},
 		' .uagb-team__social-icon:hover a': {
 			'color': socialHoverColor,
@@ -129,23 +174,23 @@ function styling( props ) {
 			'fill': socialHoverColor,
 		},
 		'.uagb-team__image-position-left .uagb-team__social-icon': {
-			'margin-right': generateCSSUnit( socialSpace, 'px' ),
+			'margin-right': generateCSSUnit( socialSpaceFallback, 'px' ),
 			'margin-left': '0',
 		},
 		'.uagb-team__image-position-right .uagb-team__social-icon': {
-			'margin-left': generateCSSUnit( socialSpace, 'px' ),
+			'margin-left': generateCSSUnit( socialSpaceFallback, 'px' ),
 			'margin-right': '0',
 		},
 		'.uagb-team__image-position-above.uagb-team__align-center .uagb-team__social-icon': {
-			'margin-right': generateCSSUnit( socialSpace / 2, 'px' ),
-			'margin-left': generateCSSUnit( socialSpace / 2, 'px' ),
+			'margin-right': generateCSSUnit( socialSpaceFallback / 2, 'px' ),
+			'margin-left': generateCSSUnit( socialSpaceFallback / 2, 'px' ),
 		},
 		'.uagb-team__image-position-above.uagb-team__align-left .uagb-team__social-icon': {
-			'margin-right': generateCSSUnit( socialSpace, 'px' ),
+			'margin-right': generateCSSUnit( socialSpaceFallback, 'px' ),
 			'margin-left': '0',
 		},
 		'.uagb-team__image-position-above.uagb-team__align-right .uagb-team__social-icon': {
-			'margin-left': generateCSSUnit( socialSpace, 'px' ),
+			'margin-left': generateCSSUnit( socialSpaceFallback, 'px' ),
 			'margin-right': '0',
 		},
 		' .uagb-team__image-wrap': { // For Backword.
@@ -156,9 +201,9 @@ function styling( props ) {
 			),
 			'margin-left': generateCSSUnit( imageLeftMargin, imageMarginUnit ),
 			'margin-right': generateCSSUnit( imageRightMargin, imageMarginUnit ),
-			'width': generateCSSUnit( imgWidth, 'px' ),
+			'width': generateCSSUnit( imgWidthFallback, 'px' ),
 		},
-		' img': { 
+		' img': {
 			'margin-top': generateCSSUnit( imageTopMargin, imageMarginUnit ),
 			'margin-bottom': generateCSSUnit(
 				imageBottomMargin,
@@ -166,7 +211,8 @@ function styling( props ) {
 			),
 			'margin-left': generateCSSUnit( imageLeftMargin, imageMarginUnit ),
 			'margin-right': generateCSSUnit( imageRightMargin, imageMarginUnit ),
-			'width': generateCSSUnit( imgWidth, 'px' ),
+			'width': generateCSSUnit( imgWidthFallback, 'px' ),
+			'height': generateCSSUnit( imgWidthFallback, 'px' ),
 		},
 	};
 
@@ -174,9 +220,18 @@ function styling( props ) {
 		if ( 'center' === align ) {
 			selectors[' img']['margin-left'] = 'auto';
 			selectors[' img']['margin-right'] = 'auto';
+			selectors[ ' .uagb-team__social-list' ] = {
+				'justify-content': 'center',
+			};
 		} else if ( 'left' === align ) {
 			selectors[' img']['margin-right'] = 'auto';
+			selectors[ ' .uagb-team__social-list' ] = {
+				'justify-content': 'flex-start',
+			};
 		} else if ( 'right' === align ) {
+			selectors[ ' .uagb-team__social-list' ] = {
+				'justify-content': 'flex-end',
+			};
 			selectors[' img']['margin-left'] = 'auto';
 		}
 	}
@@ -184,6 +239,7 @@ function styling( props ) {
 	if ( 'above' !== imgPosition ) {
 		if ( 'middle' === imgAlign ) {
 			selectors[ ' img' ][ 'align-self' ] = 'center';
+			selectors[ ' .uagb-team__content'] = { 'align-self': 'center', };
 		} else {
 			selectors[ ' img' ][ 'align-self' ] = 'flex-start';
 		}
@@ -202,20 +258,37 @@ function styling( props ) {
 		'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
 		'line-height': generateCSSUnit( titleLineHeight, titleLineHeightType ),
 		'color': titleColor,
-		'margin-bottom': generateCSSUnit( titleSpace, 'px' ),
+		'margin-bottom': generateCSSUnit( titleSpaceFallback, 'px' ),
+		'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 	};
 
 	mobileSelectors = {
+		' img': {
+			'width': generateCSSUnit( imgWidthMobile, 'px' ),
+			'height': generateCSSUnit( imgWidthMobile, 'px' ),
+		},
 		' p.uagb-team__desc.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
 				descFontSizeMobile,
 				descFontSizeType
+			),
+			'margin-top': generateCSSUnit( prefixSpaceMobile, 'px' ),
+			'margin-bottom': generateCSSUnit( descSpaceMobile, 'px' ),
+			'letter-spacing': generateCSSUnit( descLetterSpacingMobile, descLetterSpacingType ),
+			'line-height': generateCSSUnit(
+				descLineHeightMobile,
+				descLineHeightType
 			),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-team__prefix': {
 			'font-size': generateCSSUnit(
 				prefixFontSizeMobile,
 				prefixFontSizeType
+			),
+			'letter-spacing': generateCSSUnit( prefixLetterSpacingMobile, prefixLetterSpacingType ),
+			'line-height': generateCSSUnit(
+				prefixLineHeightMobile,
+				prefixLineHeightType
 			),
 		},
 		' .uagb-team__social-icon a': {
@@ -246,19 +319,55 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( imageMarginLeftMobile, mobileImageMarginUnit ),
 			'margin-right': generateCSSUnit( imageMarginRightMobile, mobileImageMarginUnit ),
 		},
+		'.uagb-team__image-position-left .uagb-team__social-icon': {
+			'margin-right': generateCSSUnit( socialSpaceMobile, 'px' ),
+			'margin-left': '0',
+		},
+		'.uagb-team__image-position-right .uagb-team__social-icon': {
+			'margin-left': generateCSSUnit( socialSpaceMobile, 'px' ),
+			'margin-right': '0',
+		},
+		'.uagb-team__image-position-above.uagb-team__align-center .uagb-team__social-icon': {
+			'margin-right': generateCSSUnit( socialSpaceMobileFallback / 2, 'px' ),
+			'margin-left': generateCSSUnit( socialSpaceMobileFallback / 2, 'px' ),
+		},
 	};
-
+	mobileSelectors[
+		' ' +
+			tag +
+			'.rich-text.block-editor-rich-text__editable.uagb-team__title'
+	] = {
+		'margin-bottom': generateCSSUnit( titleSpaceMobile, 'px' ),
+		'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
+		'line-height': generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
+	};
 	tabletSelectors = {
+		' img': {
+			'width': generateCSSUnit( imgWidthTablet, 'px' ),
+			'height': generateCSSUnit( imgWidthTablet, 'px' ),
+		},
 		' p.uagb-team__desc.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
 				descFontSizeTablet,
 				descFontSizeType
+			),
+			'margin-top': generateCSSUnit( prefixSpaceTablet, 'px' ),
+			'margin-bottom': generateCSSUnit( descSpaceTablet, 'px' ),
+			'letter-spacing': generateCSSUnit( descLetterSpacingTablet, descLetterSpacingType ),
+			'line-height': generateCSSUnit(
+				descLineHeightTablet,
+				descLineHeightType
 			),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-team__prefix': {
 			'font-size': generateCSSUnit(
 				prefixFontSizeTablet,
 				prefixFontSizeType
+			),
+			'letter-spacing': generateCSSUnit( prefixLetterSpacingTablet, prefixLetterSpacingType ),
+			'line-height': generateCSSUnit(
+				prefixLineHeightTablet,
+				prefixLineHeightType
 			),
 		},
 		' .uagb-team__social-icon a': {
@@ -289,8 +398,28 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( imageMarginLeftTablet, tabletImageMarginUnit ),
 			'margin-right': generateCSSUnit( imageMarginRightTablet, tabletImageMarginUnit ),
 		},
+		'.uagb-team__image-position-left .uagb-team__social-icon': {
+			'margin-right': generateCSSUnit( socialSpaceTablet, 'px' ),
+			'margin-left': '0',
+		},
+		'.uagb-team__image-position-right .uagb-team__social-icon': {
+			'margin-left': generateCSSUnit( socialSpaceTablet, 'px' ),
+			'margin-right': '0',
+		},
+		'.uagb-team__image-position-above.uagb-team__align-center .uagb-team__social-icon': {
+			'margin-right': generateCSSUnit( socialSpaceTabletFallback / 2, 'px' ),
+			'margin-left': generateCSSUnit( socialSpaceTabletFallback / 2, 'px' ),
+		},
 	};
-
+	tabletSelectors[
+		' ' +
+			tag +
+			'.rich-text.block-editor-rich-text__editable.uagb-team__title'
+	] = {
+		'margin-bottom': generateCSSUnit( titleSpaceTablet, 'px' ),
+		'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
+		'line-height': generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
+	};
 	mobileSelectors[ ' ' + tag + '.uagb-team__title' ] = {
 		'font-size': generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
 	};

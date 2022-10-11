@@ -10,10 +10,9 @@ import InspectorTab, {
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
+import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import {
-	AlignmentToolbar,
-	BlockControls,
 	InspectorControls,
 } from '@wordpress/block-editor';
 
@@ -27,6 +26,10 @@ const Settings = ( props ) => {
 	const { attributes, setAttributes } = props;
 	const {
 		icon,
+		iconSize,
+		iconSizeTab,
+		iconSizeMob,
+		iconSizeUnit,
 		noticeDismiss,
 		cookies,
 		close_cookie_days,
@@ -77,6 +80,8 @@ const Settings = ( props ) => {
 		headingTag,
 		layout,
 		highlightWidth,
+		highlightWidthTablet,
+		highlightWidthMobile,
 		contentTopPadding,
 		contentRightPadding,
 		contentBottomPadding,
@@ -99,6 +104,15 @@ const Settings = ( props ) => {
 		descDecoration,
 		titleFontStyle,
 		descFontStyle,
+		// letter spacing
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		descLetterSpacing,
+		descLetterSpacingTablet,
+		descLetterSpacingMobile,
+		descLetterSpacingType,
 	} = attributes;
 	let loadTitleGoogleFonts;
 	let loadDescriptionGoogleFonts;
@@ -134,7 +148,7 @@ const Settings = ( props ) => {
 	}
 
 	const updateCookieId = ( value ) => {
-		const { getCurrentPostId } = select( 'core/block-editor' );
+		const { getCurrentPostId } = select( 'core/editor' );
 		const post_id = getCurrentPostId().toString();
 		const timestamp = new Date().getTime();
 
@@ -142,18 +156,6 @@ const Settings = ( props ) => {
 		setAttributes( { cookies: value } );
 	};
 
-	const blockControls = () => {
-		return (
-			<BlockControls key="controls">
-				<AlignmentToolbar
-					value={ noticeAlignment }
-					onChange={ ( value ) =>
-						setAttributes( { noticeAlignment: value } )
-					}
-				/>
-			</BlockControls>
-		);
-	};
 
 	// Notice dismiss options
 	const noticeDismissOptions = [
@@ -182,18 +184,10 @@ const Settings = ( props ) => {
 						{
 							value: 'modern',
 							label: 'Modern',
-							tooltip: __(
-								'Modern',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'simple',
-							label: 'Classic',
-							tooltip: __(
-								'Classic',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: 'Border',
 						},
 					] }
 					showIcons={ false }
@@ -255,18 +249,29 @@ const Settings = ( props ) => {
 				/>
 
 				{ 'simple' === layout && (
-					<Range
+					<ResponsiveSlider
 						label={ __(
 							'Border Width',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ highlightWidth }
-						onChange={ ( value ) =>
-							setAttributes( { highlightWidth: value } )
-						}
+						data={ {
+							desktop: {
+								value: highlightWidth,
+								label: 'highlightWidth',
+							},
+							tablet: {
+								value: highlightWidthTablet,
+								label: 'highlightWidthTablet',
+							},
+							mobile: {
+								value: highlightWidthMobile,
+								label: 'highlightWidthMobile',
+							},
+						} }
 						min={ 0 }
 						max={ 50 }
 						displayUnit={ false }
+						setAttributes={ setAttributes }
 					/>
 				) }
 				<MultiButtonsControl
@@ -338,6 +343,33 @@ const Settings = ( props ) => {
 								setAttributes( { icon: value } )
 							}
 						/>
+						<ResponsiveSlider
+							label={ __(
+								'Button Size',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								desktop: {
+									value: iconSize,
+									label: 'iconSize',
+								},
+								tablet: {
+									value: iconSizeTab,
+									label: 'iconSizeTab',
+								},
+								mobile: {
+									value: iconSizeMob,
+									label: 'iconSizeMob',
+								},
+							} }
+							min={ 0 }
+							max={ 100 }
+							unit={ {
+								value: iconSizeUnit,
+								label: 'iconSizeUnit',
+							} }
+							setAttributes={ setAttributes }
+						/>
 					</>
 				) }
 				{ noticeDismiss && (
@@ -350,19 +382,21 @@ const Settings = ( props ) => {
 						onChange={ updateCookieId }
 					/>
 				) }
-				{ cookies && (
+				{ ( cookies && noticeDismiss ) && (
 					<Range
 						label={ __(
 							'Show Closed Notice After (Days)',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ close_cookie_days }
-						onChange={ ( value ) =>
-							setAttributes( { close_cookie_days: value } )
-						}
+						data={ {
+							value: close_cookie_days,
+							label: 'close_cookie_days',
+						} }
 						min={ 0 }
 						max={ 50 }
 						displayUnit={ false }
+						setAttributes={ setAttributes }
 					/>
 				) }
 			</UAGAdvancedPanelBody>
@@ -373,14 +407,16 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { titleColor: value } )
-					}
+					data={ {
+						value: titleColor,
+						label: 'titleColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -388,9 +424,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ noticeColor ? noticeColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { noticeColor: value } )
-					}
+					data={ {
+						value: noticeColor,
+						label: 'noticeColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				{ noticeDismiss && (
 					<AdvancedPopColorControl
@@ -401,9 +439,11 @@ const Settings = ( props ) => {
 						colorValue={
 							noticeDismissColor ? noticeDismissColor : ''
 						}
-						onColorChange={ ( value ) =>
-							setAttributes( { noticeDismissColor: value } )
-						}
+						data={ {
+							value: noticeDismissColor,
+							label: 'noticeDismissColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				) }
 				<TypographyControl
@@ -469,6 +509,22 @@ const Settings = ( props ) => {
 						value: titleLineHeightTablet,
 						label: 'titleLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: titleLetterSpacing,
+						label: 'titleLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: titleLetterSpacingTablet,
+						label: 'titleLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: titleLetterSpacingMobile,
+						label: 'titleLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: titleLetterSpacingType,
+						label: 'titleLetterSpacingType',
+					} }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -527,11 +583,11 @@ const Settings = ( props ) => {
 					} }
 					mUnit={ {
 						value: mobileTitlePaddingUnit,
-						label: 'mobiletitlePaddingUnit',
+						label: 'mobileTitlePaddingUnit',
 					} }
 					tUnit={ {
 						value: tabletTitlePaddingUnit,
-						label: 'tablettitlePaddingUnit',
+						label: 'tabletTitlePaddingUnit',
 					} }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
@@ -553,9 +609,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ textColor ? textColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { textColor: value } )
-					}
+					data={ {
+						value: textColor,
+						label: 'textColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -563,9 +621,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ contentBgColor ? contentBgColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { contentBgColor: value } )
-					}
+					data={ {
+						value: contentBgColor,
+						label: 'contentBgColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -629,6 +689,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: descLineHeightTablet,
 						label: 'descLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: descLetterSpacing,
+						label: 'descLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: descLetterSpacingTablet,
+						label: 'descLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: descLetterSpacingMobile,
+						label: 'descLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: descLetterSpacingType,
+						label: 'descLetterSpacingType',
 					} }
 				/>
 				<SpacingControl
@@ -707,7 +783,6 @@ const Settings = ( props ) => {
 
 	return (
 		<>
-			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs tabs={ [ 'general', 'style', 'advance' ] }>
 					<InspectorTab { ...UAGTabs.general }>

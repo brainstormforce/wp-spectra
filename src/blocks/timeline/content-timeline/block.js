@@ -45,7 +45,7 @@ const enhance = compose(
 registerBlockType( 'uagb/content-timeline', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'Content Timeline', 'ultimate-addons-for-gutenberg' ), // Block title.
-	description: __( 'The Timeline block lets you create beautiful timelines on your website.', 'ultimate-addons-for-gutenberg' ), // Block description.
+	description: __( 'Create a timeline displaying contents of your site.', 'ultimate-addons-for-gutenberg' ), // Block description.
 	icon: UAGB_Block_Icons.content_timeline, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: uagb_blocks_info.category,
 	keywords: [
@@ -60,78 +60,9 @@ registerBlockType( 'uagb/content-timeline', {
 	edit,
 	save,
 	example: {
-		innerBlocks: [
-			{
-				name: 'uagb/content-timeline-child',
-				innerBlocks: [
-					{
-						name: 'uagb/content-timeline-child',
-						attributes: {
-							time_heading: 'Timeline Heading ',
-							time_desc:
-								'This is Timeline description, you can change me anytime click here ',
-							t_date: '1/1/2019',
-						},
-					},
-				],
-			},
-			{
-				name: 'uagb/content-timeline-child',
-				innerBlocks: [
-					{
-						name: 'uagb/content-timeline-child',
-						attributes: {
-							time_heading: 'Timeline Heading ',
-							time_desc:
-								'This is Timeline description, you can change me anytime click here ',
-							t_date: '1/1/2019',
-						},
-					},
-				],
-			},
-			{
-				name: 'uagb/content-timeline-child',
-				innerBlocks: [
-					{
-						name: 'uagb/content-timeline-child',
-						attributes: {
-							time_heading: 'Timeline Heading ',
-							time_desc:
-								'This is Timeline description, you can change me anytime click here ',
-							t_date: '1/1/2019',
-						},
-					},
-				],
-			},
-			{
-				name: 'uagb/content-timeline-child',
-				innerBlocks: [
-					{
-						name: 'uagb/content-timeline-child',
-						attributes: {
-							time_heading: 'Timeline Heading ',
-							time_desc:
-								'This is Timeline description, you can change me anytime click here ',
-							t_date: '1/1/2019',
-						},
-					},
-				],
-			},
-			{
-				name: 'uagb/content-timeline-child',
-				innerBlocks: [
-					{
-						name: 'uagb/content-timeline-child',
-						attributes: {
-							time_heading: 'Timeline Heading ',
-							time_desc:
-								'This is Timeline description, you can change me anytime click here ',
-							t_date: '1/1/2019',
-						},
-					},
-				],
-			},
-		],
+		attributes: {
+			isPreview: true,
+		}
 	},
 	deprecated,
 } );

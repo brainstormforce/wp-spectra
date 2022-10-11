@@ -9,6 +9,7 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import Range from '@Components/range/Range.js';
+import UAGMediaPicker from '@Components/image';
 import UAGTabsControl from '@Components/tabs';
 
 import {
@@ -16,16 +17,14 @@ import {
 	MediaPlaceholder,
 	BlockControls,
 	MediaReplaceFlow,
-	AlignmentToolbar
 } from '@wordpress/block-editor';
 
 import {
 	ToggleControl,
 	ToolbarGroup,
 	Icon,
+	TextControl,
 } from '@wordpress/components';
-
-
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -37,6 +36,7 @@ const Settings = ( props ) => {
 	const { setAttributes, attributes } = props;
 
 	const {
+		lottieSource,
 		align,
 		height,
 		heightTablet,
@@ -52,130 +52,197 @@ const Settings = ( props ) => {
 		lottieURl,
 		playOn,
 		backgroundHColor,
+		isPreview,
 	} = attributes;
 
+	const onSelectLottieJSON = ( media ) => {
+		if ( ! media || ! media.url ) {
+			setAttributes( { jsonLottie: null } );
+			return;
+		}
+
+		setAttributes( { jsonLottie: media, lottieURl: media.url, lottieSource: 'library' } );
+	};
+
+	const onSelectLottieURL = ( mediaURL ) => {
+		setAttributes( { lottieURl: mediaURL, lottieSource: 'url' } );
+	};
+
 	const controlsSettings = (
-		<UAGAdvancedPanelBody 
-			title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ true }
-		>
-			<MultiButtonsControl
-				setAttributes={ setAttributes }
-				label={ __( 'Play On', 'ultimate-addons-for-gutenberg' ) }
-				data={ {
-					value: playOn,
-					label: 'playOn',
-				} }
-				className="uagb-multi-button-alignment-control"
-				options={ [
-					{
-						value: 'none',
-						label: __( 'Default', 'ultimate-addons-for-gutenberg' ),
-						tooltip: __(
-							'Default',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: 'hover',
-						label: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
-						tooltip: __(
-							'On Hover',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: 'click',
-						label: __( 'Click', 'ultimate-addons-for-gutenberg' ),
-						tooltip: __(
-							'On Click',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: 'scroll',
-						label: __(
-							'Viewport',
-							'ultimate-addons-for-gutenberg'
-						),
-						tooltip: __(
-							'Viewport',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-				] }
-				help={
-					'scroll' === playOn
-						? __(
-								"This setting will only take effect once you are on the live page, and not while you're editing.",
+		<>
+			<UAGAdvancedPanelBody
+				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
+			>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'File Source', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: lottieSource,
+						label: 'lottieSource',
+					} }
+					options={ [
+						{
+							value: 'library',
+							label: __(
+								'Library',
 								'ultimate-addons-for-gutenberg'
-						  )
-						: ''
-				}
-			/>
-			<MultiButtonsControl
-				setAttributes={ setAttributes }
-				label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
-				data={ {
-					value: align,
-					label: 'align',
-				} }
-				className="uagb-multi-button-alignment-control"
-				options={ [
-					{
-						value: 'left',
-						icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
-						tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'center',
-						icon: (
-							<Icon icon={ renderSVG( 'fa fa-align-center' ) } />
-						),
-						tooltip: __(
-							'Center',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: 'right',
-						icon: (
-							<Icon icon={ renderSVG( 'fa fa-align-right' ) } />
-						),
-						tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
-					},
-				] }
-				showIcons={ true }
-			/>
-			<ToggleControl
-				label={ __( 'Loop', 'ultimate-addons-for-gutenberg' ) }
-				checked={ loop }
-				onChange={ loopLottie }
-				help={ __(
-					"Enabling this will show the animation in the loop. This setting will only take effect once you are on the live page, and not while you're editing."
+							),
+						},
+						{
+							value: 'url',
+							label: __(
+								'URL',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+				/>
+				{ lottieSource === 'upload' && (
+					<UAGMediaPicker
+						backgroundImage={ jsonLottie }
+						onSelectImage={ onSelectLottieJSON }
+						slug={ 'lottie' }
+						label={ __( 'Lottie Animation', 'ultimate-addons-for-gutenberg' ) }
+						allow={ [ 'application/json' ] }
+						disableRemove={ true }
+					/>
 				) }
-			/>
-			<Range
-				label={ __( 'Speed', 'ultimate-addons-for-gutenberg' ) }
-				setAttributes={ setAttributes }
-				value={ speed }
-				onChange={ ( value ) => setAttributes( { speed: value } ) }
-				min={ 1 }
-				max={ 50 }
-				displayUnit={ false }
-			/>
-			{ loop && (
+				{ lottieSource === 'library' && (
+					<UAGMediaPicker
+						backgroundImage={ jsonLottie }
+						onSelectImage={ onSelectLottieJSON }
+						slug={ 'lottie' }
+						label={ __( 'Lottie Animation', 'ultimate-addons-for-gutenberg' ) }
+						allow={ [ 'application/json' ] }
+						disableRemove={ true }
+					/>
+				) }
+				{ lottieSource === 'url' && (
+					<TextControl
+						label={ __(
+							'Lottie Animation URL',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ lottieURl }
+						onChange={ ( value ) => setAttributes( { lottieURl: value } ) }
+					/>
+				) }
+			</UAGAdvancedPanelBody>
+			<UAGAdvancedPanelBody
+				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Play On', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: playOn,
+						label: 'playOn',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'none',
+							label: __( 'Default', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'hover',
+							label: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'click',
+							label: __( 'Click', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'scroll',
+							label: __(
+								'Viewport',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					help={
+						( 'scroll' === playOn || 'none' === playOn )
+							? __(
+									"This setting will only take effect once you are on the live page, and not while you're editing.",
+									'ultimate-addons-for-gutenberg'
+							)
+							: ''
+					}
+				/>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: align,
+						label: 'align',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'left',
+							icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+							tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'center',
+							icon: (
+								<Icon icon={ renderSVG( 'fa fa-align-center' ) } />
+							),
+							tooltip: __(
+								'Center',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'right',
+							icon: (
+								<Icon icon={ renderSVG( 'fa fa-align-right' ) } />
+							),
+							tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
+						},
+					] }
+					showIcons={ true }
+				/>
 				<ToggleControl
-					label={ __( 'Reverse', 'ultimate-addons-for-gutenberg' ) }
-					checked={ reverse }
-					onChange={ reverseDirection }
+					label={ __( 'Loop', 'ultimate-addons-for-gutenberg' ) }
+					checked={ loop }
+					onChange={ loopLottie }
 					help={ __(
-						'Direction of animation.',
+						"Enabling this will show the animation in the loop. This setting will only take effect once you are on the live page, and not while you're editing.",
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
-			) }
-		</UAGAdvancedPanelBody>
+				<Range
+					label={ __( 'Speed', 'ultimate-addons-for-gutenberg' ) }
+					setAttributes={ setAttributes }
+					value={ speed }
+					data={ {
+						value: speed,
+						label: 'speed',
+					} }
+					min={ 1 }
+					max={ 50 }
+					displayUnit={ false }
+					help={ __(
+						'This setting will only take effect once you refresh the editor page.',
+						'ultimate-addons-for-gutenberg'
+					) }
+				/>
+				{ loop && (
+					<ToggleControl
+						label={ __( 'Reverse', 'ultimate-addons-for-gutenberg' ) }
+						checked={ reverse }
+						onChange={ reverseDirection }
+						help={ __(
+							'Direction of animation.',
+							'ultimate-addons-for-gutenberg'
+						) }
+					/>
+				) }
+			</UAGAdvancedPanelBody>
+		</>
 	);
 
 	const styleSettings = (
@@ -238,36 +305,30 @@ const Settings = ( props ) => {
 				] }
 				normal={
 					<AdvancedPopColorControl
-						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ backgroundColor ? backgroundColor : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { backgroundColor: value } )
-						}
+						data={ {
+							value: backgroundColor,
+							label: 'backgroundColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				}
 				hover={
 					<AdvancedPopColorControl
-						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ backgroundHColor ? backgroundHColor : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { backgroundHColor: value } )
-						}
+						data={ {
+							value: backgroundHColor,
+							label: 'backgroundHColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				}
 				disableBottomSeparator={ true }
 			/>
 		</UAGAdvancedPanelBody>
 	);
-
-	const onSelectLottieJSON = ( media ) => {
-		if ( ! media || ! media.url ) {
-			setAttributes( { jsonLottie: null } );
-			return;
-		}
-
-		setAttributes( { jsonLottie: media } );
-		setAttributes( { lottieURl: media.url } );
-	};
 
 	//Check if given url is valid or not for json extension.
 	let validJsonPath = 'invalid';
@@ -297,21 +358,23 @@ const Settings = ( props ) => {
 
 	if ( validJsonPath === 'invalid' ) {
 		const lottie_url = (
-			<span>
+			<span className="uagb-lottie-instructions">
 				{ ' ' }
 				{ __(
 					'Allows you to add fancy animation i.e Lottie to your website. You can see sample Lottie animations',
 					'ultimate-addons-for-gutenberg'
 				) }
-				<a href="https://lottiefiles.com/" target="__blank">
+				<a className="uagb-lottie-instructions__lottie-url" href="https://lottiefiles.com/" target="__blank">
 					{ ' ' }
 					{ __( 'here on this' ) }{ ' ' }
 				</a>
 				{ __( 'website.' ) }
 			</span>
 		);
-
+		const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/lottie-animation.png`;
 		return (
+			isPreview ? <img width='100%' src={previewImageData} alt=''/> :
+			<>
 			<div className="uagb-lottie_upload_wrap">
 				<MediaPlaceholder
 					labels={ {
@@ -321,12 +384,11 @@ const Settings = ( props ) => {
 					allowedTypes={ [ 'application/json' ] }
 					accept={ [ 'application/json' ] }
 					value={ jsonLottie }
-					onSelectURL={ ( value ) =>
-						setAttributes( { lottieURl: value } )
-					}
+					onSelectURL={ ( value ) => onSelectLottieURL( value ) }
 					onSelect={ onSelectLottieJSON }
 				/>
 			</div>
+			</>
 		);
 	}
 
@@ -338,18 +400,10 @@ const Settings = ( props ) => {
 						mediaURL={ lottieURl }
 						allowedTypes={ [ 'application/json' ] }
 						accept={ [ 'application/json' ] }
-						onSelectURL={ ( value ) =>
-							setAttributes( { lottieURl: value } )
-						}
+						onSelectURL={ ( value ) => onSelectLottieURL( value ) }
 						onSelect={ onSelectLottieJSON }
 					/>
 				</ToolbarGroup>
-				<AlignmentToolbar
-					value={ align }
-					onChange={ ( value ) =>
-						setAttributes( { align: value } )
-					}
-				/>
 			</BlockControls>
 		);
 	};

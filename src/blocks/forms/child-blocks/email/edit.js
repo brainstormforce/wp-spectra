@@ -2,15 +2,11 @@
  * BLOCK: Forms - Email - Edit
  */
 
-import React, { Suspense, useEffect, lazy } from 'react';
+import React, {  useEffect,  } from 'react';
 
-import lazyLoader from '@Controls/lazy-loader';
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/form/email-settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form/email-render" */ './render' )
-);
+
+import Settings from './settings';
+import Render from './render';
 
 const UAGBFormsEmailEdit = ( props ) => {
 	useEffect( () => {
@@ -28,12 +24,18 @@ const UAGBFormsEmailEdit = ( props ) => {
 		document.head.appendChild( $style );
 	}, [] );
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/form-email.svg`;
+
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } />
-			</Suspense>
+			{ props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+
+							<>
+			<Settings parentProps={ props } />
+					<Render parentProps={ props } />
+			</>
+
+			) }
 		</>
 	);
 };

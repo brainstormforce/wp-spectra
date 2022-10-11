@@ -36,17 +36,14 @@ const attributes = {
 	imagePosition: {
 		type: 'string',
 		default: 'top',
-		isUAGStyle: true,
 	},
 	imageAlignment: {
 		type: 'string',
 		default: 'top',
-		isUAGStyle: true,
 	},
 	imageSize: {
 		type: 'string',
 		default: 'medium',
-		isUAGStyle: true,
 	},
 	headingTag: {
 		type: 'string',
@@ -55,22 +52,18 @@ const attributes = {
 	columns: {
 		type: 'number',
 		default: 2,
-		isUAGStyle: true,
 	},
 	tcolumns: {
 		type: 'number',
 		default: 2,
-		isUAGStyle: true,
 	},
 	mcolumns: {
 		type: 'number',
 		default: 1,
-		isUAGStyle: true,
 	},
 	headingAlign: {
 		type: 'string',
 		default: 'left',
-		isUAGStyle: true,
 	},
 };
 
@@ -157,87 +150,6 @@ const deprecated = [
 				</>
 			);
 		},
-	},
-	{
-		attributes,
-		save( props ) {
-			const { imagePosition, headingAlign } = props.attributes;
-
-			return (
-				<>
-					<div
-						className={ classnames(
-							'uagb-rest_menu__wrap',
-							...PositionClasses( props.attributes )
-						) }
-					>
-						<div className="uagb-rm__content">
-							{ ( imagePosition === 'top' || imagePosition === 'left' ) && (
-								<RestMenuImage attributes={ props.attributes } />
-							) }
-								{
-									<>
-									<div className="uagb-rm-details">
-									{ imagePosition === 'right' && (
-										<>
-										<Price
-											attributes={ props.attributes }
-											setAttributes="not_set"
-											props={ props }
-										/>
-										<Title
-											attributes={ props.attributes }
-											setAttributes="not_set"
-											props={ props }
-										/>
-										<Description
-											attributes={ props.attributes }
-											setAttributes="not_set"
-											props={ props }
-										/>
-										</>
-									) }
-									{ ( imagePosition === 'top' || imagePosition === 'left' ) && (
-										<>
-										{ ( headingAlign === 'right' ) && (
-										<Price
-											attributes={ props.attributes }
-											setAttributes="not_set"
-											props={ props }
-										/>
-										)}
-										<Title
-											attributes={ props.attributes }
-											setAttributes="not_set"
-											props={ props }
-										/>
-										<Description
-											attributes={ props.attributes }
-											setAttributes="not_set"
-											props={ props }
-										/>
-										{ ( headingAlign !== 'right' ) && (
-										<Price
-											attributes={ props.attributes }
-											setAttributes="not_set"
-											props={ props }
-										/>
-										)}
-										</>
-									)}
-									</div>
-
-									</>
-								}
-							{ imagePosition === 'right' && (
-								<RestMenuImage attributes={ props.attributes } />
-							) }
-						</div>
-							<div className="uagb-rm__separator"></div>
-					</div>
-				</>
-			);
-		},
-	},
+	}
 ];
 export default deprecated;

@@ -14,7 +14,8 @@ $block_data = array(
 	'admin_categories' => array( 'content' ),
 	'link'             => 'taxonomy',
 	'title'            => __( 'Taxonomy List', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block helps you to display content categorization for various post types', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Display your content categorized as per post type.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
-	'priority'         => 4,
+	'priority'         => 29,
+	'deprecated'       => false,
 );

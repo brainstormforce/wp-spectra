@@ -7,6 +7,8 @@ import attributes from './attributes';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 
+import { InnerBlocks } from '@wordpress/block-editor';
+
 const deprecated = [
 	{
 		attributes,
@@ -153,6 +155,28 @@ const deprecated = [
 					</div>
 				</div>
 			);
+		},
+	},
+	{
+		attributes,
+		save: ( props ) => {
+			const { className } = props
+			const {
+				block_id
+			} = props.attributes
+
+			return (
+				<div className={ classnames(
+					className,
+					"uagb-buttons__outer-wrap",
+					`uagb-block-${ block_id }`
+				) }
+				>
+					<div className="uagb-buttons__wrap uagb-buttons-layout-wrap">
+						<InnerBlocks.Content />
+					</div>
+				</div>
+			)
 		},
 	},
 ];

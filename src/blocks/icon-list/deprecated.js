@@ -12,7 +12,7 @@ import attributes from './attributes';
 
 import { __ } from '@wordpress/i18n';
 
-const { RichText } = '@wordpress/block-editor';
+import { RichText } from '@wordpress/block-editor';
 
 const deprecated = [
 	{

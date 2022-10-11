@@ -7,11 +7,11 @@ const BlockCardsGroup = () => {
     const activeBlocksFilterTab = useSelector( ( state ) => state.activeBlocksFilterTab );
 
     const blocksInfo = uag_react.blocks_info;
-    
+
     const renderBlockCards = blocksInfo.map( ( block, index ) => {
 
         const blockCategories = block.admin_categories;
-        const showBlockCard = blockCategories.includes( activeBlocksFilterTab ) || 'all' === activeBlocksFilterTab;
+        const showBlockCard = blockCategories?.includes( activeBlocksFilterTab ) || 'all' === activeBlocksFilterTab;
 
         if ( ! showBlockCard ) {
             return '';
@@ -21,10 +21,10 @@ const BlockCardsGroup = () => {
     } );
 
     return (
-        <div className="lg:max-w-[80rem] mx-auto grid grid-cols-2 gap-4 sm:grid-cols-3 p-6 pt-0">
+        <div className="lg:max-w-[80rem] mx-auto grid grid-flow-row auto-rows-min grid-cols-2 gap-6 sm:grid-cols-3 px-6 py-4">
             { renderBlockCards }
-            { 
-                ( 'extensions' === activeBlocksFilterTab || 'all' === activeBlocksFilterTab ) && <Extensions/> 
+            {
+                ( 'extensions' === activeBlocksFilterTab || 'all' === activeBlocksFilterTab ) && <Extensions/>
             }
         </div>
     );

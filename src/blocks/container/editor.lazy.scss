@@ -1,6 +1,23 @@
 .uagb-container-variation-picker {
 
+	.uagb-variation-close {
+		font-size: 35px;
+		background: none;
+		color: #d5dadf;
+		cursor: pointer;
+		border: none;
+		box-shadow: none;
+		display: flex;
+		align-self: flex-end;
+		position: absolute;
+		top: 3px;
+		z-index: 999999;
+		outline: none;
+	}
+
 	.components-button,
+	.components-button.is-secondary,
+	.components-button.is-tertiary,
 	.components-button:hover:not(:disabled) {
 		box-shadow: none;
 		outline: none;
@@ -13,8 +30,8 @@
 		}
 	}
 
-	.components-button:hover:not(:disabled) {
-		color: #9eaab5;
+	.components-button:hover:not(:disabled) svg {
+		color: #bcc0c4;
 	}
 
 	.block-editor-block-variation-picker__skip {
@@ -26,10 +43,20 @@
 
 	.components-placeholder {
 		align-items: center;
+		border: 1px dashed #d5dadf;
+		box-shadow: none;
 
+		&.components-placeholder { // Keeps placeholder in center for all device.
+			align-items: center;
+		}
+
+		&.is-large .components-placeholder__label,
 		.components-placeholder__label {
-			font-size: 22px;
-			font-weight: 500;
+			font-size: 18px;
+			font-weight: 400;
+			margin-bottom: 0;
+			color: #556068;
+
 		}
 	}
 
@@ -42,47 +69,126 @@
 	}
 
 	.block-editor-block-variation-picker__variations {
-		justify-content: center;
 		width: 70%;
+		justify-content: center;
+
 
 		> li {
 			margin: 8px 30px 0 0;
+			flex-basis: content;
 			width: 80px;
 		}
 	}
 }
 
+.uagb-editor-preview-mode-tablet,
+.uagb-editor-preview-mode-mobile {
+
+	.components-button.is-secondary:hover:not(:disabled) { // Disabled boxShadow and outline on responsive.
+		box-shadow: none;
+		outline: none;
+		color: #d5dadf;
+	}
+
+	.components-placeholder__fieldset {
+		max-width: 100% !important;
+
+		.block-editor-block-variation-picker__variations {
+			justify-content: center !important;
+		}
+	}
+}
+
+// Container select layout view CSS for Astra customizer.
+#customize-theme-controls {
+
+	.uagb-container-variation-picker {
+
+		.block-editor-block-variation-picker__variations {
+			width: 300px;
+		}
+
+		.uagb-variation-close {
+			right: 0;
+			top: -8px;
+		}
+
+		.components-placeholder__label {
+
+			.dashicon {
+				display: none;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+
+	.is-root-container {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+
+}
 
 .wp-block-uagb-container::before {
 	content: "";
 	position: absolute;
-	border: 1px dashed #035cff;
+	border: 1px dashed #d5dadf;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
 }
 
+.uagb-container-has-children.wp-block-uagb-container::before {
+	border: 0;
+}
+
+.is-root-container > .uagb-container-has-children.wp-block-uagb-container {
+
+	& > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks,
+	& > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout {
+
+		& > .wp-block {
+			width: 100%;
+		}
+	}
+}
+
 .wp-block-uagb-container {
 	display: flex;
 
-	.block-editor-inner-blocks,
-	.block-editor-block-list__layout {
+	& > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks,
+	& > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout,
+	& > .block-editor-inner-blocks,
+	& > .block-editor-inner-blocks > .block-editor-block-list__layout {
 		display: flex;
 		width: 100%;
-		max-width: 100%;
 		height: 100%;
-
-		.block-list-appender {
-
-			.block-editor-inserter {
-				display: none;
-			}
-		}
 	}
 
-	.wp-block-paragraph {
+	& > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
 		width: 100%;
+	}
+
+	.block-editor-block-list__layout {
+
+		.block-list-appender.wp-block {
+			width: auto;
+
+			button {
+				color: #a0a7ac;
+				font-size: 62px;
+				border: none;
+				box-shadow: none;
+
+				svg {
+					width: 36px;
+					height: 36px;
+				}
+			}
+		}
 	}
 }
 
@@ -90,15 +196,14 @@
 	right: -35px;
 }
 
-.editor-styles-wrapper .wp-block[data-type="uagb/container"] {
-	margin: 0;
-	max-width: none;
-}
-
-.block-editor-block-list__layout.is-root-container > .wp-block[data-type="uagb/container"] {
-	margin: 0 !important;
-}
-
 .uag-container-block-inserter .components-button {
-	color: #4a01e0;
+	color: #1e1e1e;
+}
+
+.wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks {
+	z-index: 2;
+}
+
+.wp-block-uagb-container > .uagb-container-inner-blocks-wrap {
+	width: 100%;
 }

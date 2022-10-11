@@ -2,20 +2,19 @@
 /**
  * BLOCK: Post Grid - Edit
  */
+
 import styling from '.././styling';
-import React, { useEffect, useState, lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect, useState,    } from 'react';
+
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/post-grid/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/post-grid/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 import { withSelect, withDispatch } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
@@ -57,62 +56,131 @@ const PostGridComponent = ( props ) => {
 		} = props.attributes;
 
 		if ( btnVPadding ) {
-			if ( ! paddingBtnTop ) {
+			if ( undefined === paddingBtnTop ) {
 				props.setAttributes( { paddingBtnTop: btnVPadding } );
 			}
-			if ( ! paddingBtnBottom ) {
+			if ( undefined === paddingBtnBottom ) {
 				props.setAttributes( { paddingBtnBottom: btnVPadding } );
 			}
 		}
 		if ( btnHPadding ) {
-			if ( ! paddingBtnRight ) {
+			if ( undefined === paddingBtnRight ) {
 				props.setAttributes( { paddingBtnRight: btnHPadding } );
 			}
-			if ( ! paddingBtnLeft ) {
+			if ( undefined === paddingBtnLeft ) {
 				props.setAttributes( { paddingBtnLeft: btnHPadding } );
 			}
 		}
 		if ( contentPadding ) {
-			if ( ! paddingTop ) {
+			if ( undefined === paddingTop ) {
 				props.setAttributes( { paddingTop: contentPadding } );
 			}
-			if ( ! paddingBottom ) {
+			if ( undefined === paddingBottom ) {
 				props.setAttributes( { paddingBottom: contentPadding } );
 			}
-			if ( ! paddingRight ) {
+			if ( undefined === paddingRight ) {
 				props.setAttributes( { paddingRight: contentPadding } );
 			}
-			if ( ! paddingLeft ) {
+			if ( undefined === paddingLeft ) {
 				props.setAttributes( { paddingLeft: contentPadding } );
 			}
 		}
 
 		if ( contentPaddingMobile ) {
-			if ( ! paddingTopMobile ) {
+			if ( undefined === paddingTopMobile ) {
 				props.setAttributes( {
 					paddingTopMobile: contentPaddingMobile,
 				} );
 			}
-			if ( ! paddingBottomMobile ) {
+			if ( undefined === paddingBottomMobile ) {
 				props.setAttributes( {
 					paddingBottomMobile: contentPaddingMobile,
 				} );
 			}
-			if ( ! paddingRightMobile ) {
+			if ( undefined === paddingRightMobile ) {
 				props.setAttributes( {
 					paddingRightMobile: contentPaddingMobile,
 				} );
 			}
-			if ( ! paddingLeftMobile ) {
+			if ( undefined === paddingLeftMobile ) {
 				props.setAttributes( {
 					paddingLeftMobile: contentPaddingMobile,
 				} );
 			}
 		}
+		const {
+			borderStyle,
+			borderWidth,
+			borderRadius,
+			borderColor,
+			borderHColor,
+			btnBorderTopWidth,
+			btnBorderLeftWidth,
+			btnBorderRightWidth,
+			btnBorderBottomWidth,
+			btnBorderTopLeftRadius,
+			btnBorderTopRightRadius,
+			btnBorderBottomLeftRadius,
+			btnBorderBottomRightRadius,
+			btnBorderColor,
+			btnBorderHColor,
+			btnBorderStyle,
+		} = props.attributes;
 
+		if( borderWidth ){
+			if( undefined === btnBorderTopWidth ) {
+				props.setAttributes( {
+					btnBorderTopWidth: borderWidth,
+				} );
+			}
+			if( undefined === btnBorderLeftWidth ) {
+				props.setAttributes( { btnBorderLeftWidth : borderWidth} );
+			}
+			if( undefined === btnBorderRightWidth ) {
+				props.setAttributes( { btnBorderRightWidth : borderWidth} );
+			}
+			if( undefined === btnBorderBottomWidth ) {
+				props.setAttributes( { btnBorderBottomWidth : borderWidth} );
+			}
+		}
+
+		if( borderRadius ){
+
+			if( undefined === btnBorderTopLeftRadius ) {
+				props.setAttributes( { btnBorderTopLeftRadius : borderRadius} );
+			}
+			if( undefined === btnBorderTopRightRadius ) {
+				props.setAttributes( { btnBorderTopRightRadius : borderRadius} );
+			}
+			if( undefined === btnBorderBottomLeftRadius ) {
+				props.setAttributes( { btnBorderBottomLeftRadius : borderRadius} );
+			}
+			if( undefined === btnBorderBottomRightRadius ) {
+				props.setAttributes( { btnBorderBottomRightRadius : borderRadius} );
+			}
+		}
+
+		if( borderColor ){
+			if( undefined === btnBorderColor ) {
+				props.setAttributes( { btnBorderColor : borderColor} );
+			}
+		}
+
+		if( borderHColor ){
+			if( undefined === btnBorderHColor ) {
+				props.setAttributes( { btnBorderHColor : borderHColor} );
+			}
+		}
+
+		if( borderStyle ){
+			if( undefined === btnBorderStyle ) {
+				props.setAttributes( { btnBorderStyle : borderStyle} );
+			}
+		}
 	}, [] );
 
 	useEffect( () => {
+
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
@@ -125,6 +193,8 @@ const PostGridComponent = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-post-grid-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 
 	}, [ deviceType ] );
 
@@ -145,13 +215,13 @@ const PostGridComponent = ( props ) => {
 	if ( ! hasPosts ) {
 		return (
 			<>
-				<Suspense fallback={ lazyLoader() }>
+
 					<Settings
 						parentProps={ props }
 						state={ state }
 						setStateValue={ setStateValue }
 					/>
-				</Suspense>
+
 
 				<Placeholder
 					icon="admin-post"
@@ -168,7 +238,7 @@ const PostGridComponent = ( props ) => {
 	}
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<Settings
 				parentProps={ props }
 				state={ state }
@@ -181,18 +251,21 @@ const PostGridComponent = ( props ) => {
 				setStateValue={ setStateValue }
 				togglePreview={ togglePreview }
 			/>
-		</Suspense>
+			</>
+
 	);
 };
 
 export default compose(
 	withSelect( ( select, props ) => {
 		const {
+			blockName,
 			categories,
 			postsToShow,
 			order,
 			orderBy,
 			postType,
+			postsOffset,
 			taxonomyType,
 			paginationMarkup,
 			postPagination,
@@ -243,7 +316,8 @@ export default compose(
 		const latestPostsQuery = {
 			order,
 			orderby: orderBy,
-			per_page: postsToShow,
+			per_page: getFallbackNumber( postsToShow, 'postsToShow', blockName ),
+			offset: getFallbackNumber( postsOffset, 'postsOffset', blockName ),
 		};
 		if ( excludeCurrentPost ) {
 			latestPostsQuery.exclude = select(

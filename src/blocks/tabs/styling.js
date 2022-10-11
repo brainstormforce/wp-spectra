@@ -4,8 +4,13 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		headerBgColor,
 		titleAlign,
@@ -35,21 +40,18 @@ function styling( props ) {
 		titleTransform,
 		titleDecoration,
 		//Border
-		borderWidth,
-		borderColor,
-		borderStyle,
-		borderRadius,
-		borderHoverColor,
+		tabBorderHColor,
 		iconColor,
 		iconSize,
+		iconSizeTablet,
+		iconSizeMobile,
 		tabBodyLeftMargin,
 		tabBodyRightMargin,
 		tabBodyTopMargin,
 		tabBodyBottomMargin,
 		iconSpacing,
-		tabsStyleD,
-		tabsStyleM,
-		tabsStyleT,
+		iconSpacingTablet,
+		iconSpacingMobile,
 		activeiconColor,
 		tabTitlePaddingUnit,
 		tabTitleMarginUnit,
@@ -100,16 +102,155 @@ function styling( props ) {
 		mobiletabBodyPaddingUnit,
 		mobiletabBodyMarginUnit,
 		titleFontStyle,
-		tabAlign
+		tabAlign,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
 	} = props.attributes;
+
+	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
+	const iconSpacingFallback = getFallbackNumber( iconSpacing, 'iconSpacing', blockName );
+
+	const borderCSS = generateBorderCSS( props.attributes, 'tab', '' );
+	const borderCSSTablet = generateBorderCSS( props.attributes,'tab', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes,'tab', 'mobile' );
 
 	let selectors = {};
 	let tabletSelectors = {};
 	let mobileSelectors = {};
 	selectors = {
+		'.uagb-tabs__hstyle1-desktop > .uagb-tabs__panel .uagb-tab': borderCSS,
+		'.uagb-tabs__hstyle1-desktop > .uagb-tabs__body-wrap': borderCSS,
+		'.uagb-tabs__hstyle2-desktop > .uagb-tabs__panel .uagb-tab': {
+			'border-width': '0px',
+			'border-style': 'none',
+		},
+		'.uagb-tabs__hstyle2-desktop ul.uagb-tabs__panel': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSS
+		},
+		'.uagb-tabs__hstyle2-desktop > .uagb-tabs__body-wrap': {
+			'border-width': '0px',
+			'border-style': 'none',
+		},
+		'.uagb-tabs__hstyle3-desktop .uagb-tab': {
+			'border-bottom-width': '0px',
+			'border-bottom': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSS
+		},
+		'.uagb-tabs__hstyle3-desktop > .uagb-tabs__body-wrap': borderCSS,
+		'.uagb-tabs__hstyle4-desktop .uagb-tab': {
+			'border-radius': '30px',
+			...borderCSS
+		},
+		'.uagb-tabs__hstyle4-desktop > .uagb-tabs__body-wrap': borderCSS,
+		'.uagb-tabs__hstyle5-desktop': {
+			...borderCSS
+		},
+		'.uagb-tabs__hstyle5-desktop .uagb-tab': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-bottom-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'border-bottom': 0,
+			'outline': 0,
+			'border-radius': 0,
+		},
+		'.uagb-tabs__hstyle5-desktop .uagb-tab.uagb-tabs__active': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSS
+		},
+		'.uagb-tabs__vstyle6-desktop .uagb-tab': borderCSS,
+		'.uagb-tabs__vstyle6-desktop .uagb-tabs__body-wrap': borderCSS,
+		'.uagb-tabs__vstyle7-desktop .uagb-tab': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSS
+		},
+		'.uagb-tabs__vstyle7-desktop > .uagb-tabs__body-wrap': {
+			'border-width': '0px',
+			'border-style': 'none',
+		},
+		'.uagb-tabs__vstyle8-desktop .uagb-tab': {
+			'border-right-width': '0px',
+			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSS
+		},
+		'.uagb-tabs__vstyle8-desktop > .uagb-tabs__body-wrap': borderCSS,
+		'.uagb-tabs__vstyle9-desktop .uagb-tab': {
+			'border-radius': '30px',
+			...borderCSS
+		},
+		'.uagb-tabs__vstyle9-desktop > .uagb-tabs__body-wrap': borderCSS,
+		'.uagb-tabs__vstyle10-desktop':{
+			...borderCSS
+		},
+		'.uagb-tabs__vstyle10-desktop ul.uagb-tabs__panel .uagb-tab': {
+			'border-width': '0px',
+			'border-style': 'none',
+		},
+		'.uagb-tabs__vstyle10-desktop .uagb-tabs__body-wrap': {
+			'border-width': '0px',
+			'border-style': 'none',
+		},
+		'.uagb-tabs__vstyle10-desktop ul.uagb-tabs__panel .uagb-tab.uagb-tabs__active':{
+			'border-top-width': '0px',
+			'border-bottom-width': '0px',
+			'border-left-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-bottom': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSS
+		},
 		' > .uagb-tabs__panel .uagb-tab': {
 			'background': headerBgColor,
 			'text-align': titleAlign,
+			'margin-top': generateCSSUnit(
+				tabTitleTopMargin,
+				tabTitleMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				tabTitleLeftMargin,
+				tabTitleMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				tabTitleRightMargin,
+				tabTitleMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				tabTitleBottomMargin,
+				tabTitleMarginUnit
+			),
 		},
 		' > .uagb-tabs__panel .uagb-tab a': {
 			'padding-top': generateCSSUnit(
@@ -128,22 +269,6 @@ function styling( props ) {
 				tabTitleRightPadding,
 				tabTitlePaddingUnit
 			),
-			'margin-top': generateCSSUnit(
-				tabTitleTopMargin,
-				tabTitleMarginUnit
-			),
-			'margin-left': generateCSSUnit(
-				tabTitleLeftMargin,
-				tabTitleMarginUnit
-			),
-			'margin-right': generateCSSUnit(
-				tabTitleRightMargin,
-				tabTitleMarginUnit
-			),
-			'margin-bottom': generateCSSUnit(
-				tabTitleBottomMargin,
-				tabTitleMarginUnit
-			),
 		},
 		' > .uagb-tabs__panel .uagb-tab a > p': {
 			'color': headerTextColor,
@@ -154,6 +279,7 @@ function styling( props ) {
 				titleLineHeight,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 			'text-transform': titleTransform,
 			'text-decoration': titleDecoration,
 			'font-style' : titleFontStyle,
@@ -206,39 +332,27 @@ function styling( props ) {
 			'color': bodyTextColor,
 		},
 		' .uagb-tabs__icon svg': {
-			'height': generateCSSUnit( iconSize, 'px' ),
-			'width': generateCSSUnit( iconSize, 'px' ),
+			'height': generateCSSUnit( iconSizeFallback, 'px' ),
+			'width': generateCSSUnit( iconSizeFallback, 'px' ),
 			'fill': iconColor,
 		},
-		'.uagb-tabs__wrap > .uagb-tabs__panel .uagb-tab': {
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-			'border-color': borderColor,
-		},
 		'.uagb-tabs__wrap > .uagb-tabs__panel .uagb-tab:hover': {
-			'border-color': borderHoverColor,
-		},
-		'.uagb-tabs__wrap > .uagb-tabs__body-wrap': {
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-			'border-color': borderColor,
+			'border-color': tabBorderHColor,
 		},
 		'.uagb-tabs__wrap > .uagb-tabs__body-wrap:hover': {
-			'border-color': borderHoverColor,
+			'border-color': tabBorderHColor,
 		},
 		' .uagb-tabs__icon-position-left  .uagb-tabs__icon ': {
-			'margin-right': generateCSSUnit( iconSpacing, 'px' ),
+			'margin-right': generateCSSUnit( iconSpacingFallback, 'px' ),
 		},
 		' .uagb-tabs__icon-position-right  .uagb-tabs__icon ': {
-			'margin-left': generateCSSUnit( iconSpacing, 'px' ),
+			'margin-left': generateCSSUnit( iconSpacingFallback, 'px' ),
 		},
 		' .uagb-tabs__icon-position-top  .uagb-tabs__icon ': {
-			'margin-bottom': generateCSSUnit( iconSpacing, 'px' ),
+			'margin-bottom': generateCSSUnit( iconSpacingFallback, 'px' ),
 		},
 		' .uagb-tabs__icon-position-bottom  .uagb-tabs__icon ': {
-			'margin-top': generateCSSUnit( iconSpacing, 'px' ),
+			'margin-top': generateCSSUnit( iconSpacingFallback, 'px' ),
 		},
 	};
 
@@ -259,6 +373,122 @@ function styling( props ) {
 	}
 
 	tabletSelectors = {
+		'.uagb-tabs__hstyle1-tablet > .uagb-tabs__panel .uagb-tab': borderCSSTablet,
+		'.uagb-tabs__hstyle1-tablet > .uagb-tabs__body-wrap': borderCSSTablet,
+		'.uagb-tabs__hstyle2-tablet > .uagb-tabs__panel .uagb-tab': {
+			'border-width': '0px',
+			'border-style': 'none',
+		},
+		'.uagb-tabs__hstyle2-tablet ul.uagb-tabs__panel': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSSTablet
+		},
+		'.uagb-tabs__hstyle2-tablet > .uagb-tabs__body-wrap': {
+			'border-width': '0px',
+			'border-style': 'none',
+		},
+		'.uagb-tabs__hstyle3-tablet .uagb-tab': {
+			'border-bottom-width': '0px',
+			'border-bottom': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSSTablet
+		},
+		'.uagb-tabs__hstyle3-tablet > .uagb-tabs__body-wrap': borderCSSTablet,
+		'.uagb-tabs__hstyle4-tablet .uagb-tab': {
+			'border-radius': '30px',
+			...borderCSSTablet
+		},
+		'.uagb-tabs__hstyle4-tablet > .uagb-tabs__body-wrap': borderCSSTablet,
+		'.uagb-tabs__hstyle5-tablet': {
+			...borderCSSTablet
+		},
+		'.uagb-tabs__hstyle5-tablet .uagb-tab': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-bottom-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'border-bottom': 0,
+			'outline': 0,
+			'border-radius': 0,
+		},
+		'.uagb-tabs__hstyle5-tablet .uagb-tab.uagb-tabs__active': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSSTablet
+		},
+		'.uagb-tabs__vstyle6-tablet .uagb-tab': borderCSSTablet,
+		'.uagb-tabs__vstyle6-tablet .uagb-tabs__body-wrap': borderCSSTablet,
+		'.uagb-tabs__vstyle7-tablet .uagb-tab': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSSTablet
+		},
+		'.uagb-tabs__vstyle7-tablet > .uagb-tabs__body-wrap': {
+			'border-width': '0px',
+			'border-style': 'none',
+		},
+		'.uagb-tabs__vstyle8-tablet .uagb-tab': {
+			'border-right-width': '0px',
+			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSSTablet
+		},
+		'.uagb-tabs__vstyle8-tablet > .uagb-tabs__body-wrap': borderCSSTablet,
+		'.uagb-tabs__vstyle9-tablet .uagb-tab': {
+			'border-radius': '30px',
+			...borderCSSTablet
+		},
+		'.uagb-tabs__vstyle9-tablet > .uagb-tabs__body-wrap': borderCSSTablet,
+		'.uagb-tabs__vstyle10-tablet':{
+			...borderCSSTablet
+		},
+		'.uagb-tabs__vstyle10-tablet ul.uagb-tabs__panel .uagb-tab': {
+			'border-width': '0px',
+			'border-style': 'none',
+		},
+		'.uagb-tabs__vstyle10-tablet .uagb-tabs__body-wrap': {
+			'border-width': '0px',
+			'border-style': 'none',
+		},
+		'.uagb-tabs__vstyle10-tablet ul.uagb-tabs__panel .uagb-tab.uagb-tabs__active':{
+			'border-top-width': '0px',
+			'border-bottom-width': '0px',
+			'border-left-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-bottom': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSSTablet
+		},
+		' .uagb-tabs__icon svg': {
+			'height': generateCSSUnit( iconSizeTablet, 'px' ),
+			'width': generateCSSUnit( iconSizeTablet, 'px' ),
+		},
 		' > .uagb-tabs__panel .uagb-tab p': {
 			'font-size': generateCSSUnit(
 				titleFontSizeTablet,
@@ -268,6 +498,7 @@ function styling( props ) {
 				titleLineHeightTablet,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		},
 		' > .uagb-tabs__panel .uagb-tab a': {
 			'padding-top': generateCSSUnit(
@@ -286,6 +517,8 @@ function styling( props ) {
 				tabTitleRightPaddingTablet,
 				tablettabTitlePaddingUnit
 			),
+		},
+		' > .uagb-tabs__panel .uagb-tab':{
 			'margin-top': generateCSSUnit(
 				tabTitleTopMarginTablet,
 				tablettabTitleMarginUnit
@@ -302,6 +535,7 @@ function styling( props ) {
 				tabTitleBottomMarginTablet,
 				tablettabTitleMarginUnit
 			),
+			...borderCSSTablet
 		},
 		' > .uagb-tabs__body-wrap ': {
 			'padding-top': generateCSSUnit(
@@ -336,9 +570,178 @@ function styling( props ) {
 				tabBodyBottomMarginTablet,
 				tablettabBodyMarginUnit
 			),
+			...borderCSSTablet
+		},
+		' .uagb-tabs__icon-position-left  .uagb-tabs__icon ': {
+			'margin-right': generateCSSUnit( iconSpacingTablet, 'px' ),
+		},
+		' .uagb-tabs__icon-position-right  .uagb-tabs__icon ': {
+			'margin-left': generateCSSUnit( iconSpacingTablet, 'px' ),
+		},
+		' .uagb-tabs__icon-position-top  .uagb-tabs__icon ': {
+			'margin-bottom': generateCSSUnit( iconSpacingTablet, 'px' ),
+		},
+		' .uagb-tabs__icon-position-bottom  .uagb-tabs__icon ': {
+			'margin-top': generateCSSUnit( iconSpacingTablet, 'px' ),
 		},
 	};
 	mobileSelectors = {
+		'.uagb-tabs__hstyle1-mobile > .uagb-tabs__panel .uagb-tab': borderCSSMobile,
+		'.uagb-tabs__hstyle1-mobile > .uagb-tabs__body-wrap': borderCSSMobile,
+		'.uagb-tabs__hstyle2-mobile > .uagb-tabs__panel .uagb-tab': {
+			'border-width': '0px',
+			'border-style': 'none',
+		},
+		'.uagb-tabs__hstyle2-mobile ul.uagb-tabs__panel': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSSMobile
+		},
+		'.uagb-tabs__hstyle2-mobile > .uagb-tabs__body-wrap': {
+			'border-width': '0px',
+			'border-style': 'none',
+		},
+		'.uagb-tabs__hstyle3-mobile .uagb-tab': {
+			'border-bottom-width': '0px',
+			'border-bottom': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSSMobile
+		},
+		'.uagb-tabs__hstyle3-mobile > .uagb-tabs__body-wrap': borderCSSMobile,
+		'.uagb-tabs__hstyle4-mobile .uagb-tab': {
+			'border-radius': '30px',
+			...borderCSSMobile
+		},
+		'.uagb-tabs__hstyle4-mobile > .uagb-tabs__body-wrap': borderCSSMobile,
+		'.uagb-tabs__hstyle5-mobile': {
+			...borderCSSMobile
+		},
+		'.uagb-tabs__hstyle5-mobile .uagb-tab': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-bottom-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'border-bottom': 0,
+			'outline': 0,
+			'border-radius': 0,
+		},
+		'.uagb-tabs__hstyle5-mobile .uagb-tab.uagb-tabs__active': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSSMobile
+		},
+		'.uagb-tabs__vstyle6-mobile .uagb-tab': borderCSSMobile,
+		'.uagb-tabs__vstyle6-mobile .uagb-tabs__body-wrap': borderCSSMobile,
+		'.uagb-tabs__vstyle7-mobile .uagb-tab': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSSMobile
+		},
+		'.uagb-tabs__vstyle7-mobile > .uagb-tabs__body-wrap': {
+			'border-width': '0px',
+			'border-style': 'none',
+		},
+		'.uagb-tabs__vstyle8-mobile .uagb-tab': {
+			'border-right-width': '0px',
+			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSSMobile
+		},
+		'.uagb-tabs__vstyle8-mobile > .uagb-tabs__body-wrap': borderCSSMobile,
+		'.uagb-tabs__vstyle9-mobile .uagb-tab': {
+			'border-radius': '30px',
+			...borderCSSMobile
+		},
+		'.uagb-tabs__vstyle9-mobile > .uagb-tabs__body-wrap': borderCSSMobile,
+		'.uagb-tabs__vstyle10-mobile':{
+			...borderCSSMobile
+		},
+		'.uagb-tabs__vstyle10-mobile ul.uagb-tabs__panel .uagb-tab': {
+			'border-width': '0px',
+			'border-style': 'none',
+		},
+		'.uagb-tabs__vstyle10-mobile .uagb-tabs__body-wrap': {
+			'border-width': '0px',
+			'border-style': 'none',
+		},
+		'.uagb-tabs__vstyle10-mobile ul.uagb-tabs__panel .uagb-tab.uagb-tabs__active':{
+			'border-top-width': '0px',
+			'border-bottom-width': '0px',
+			'border-left-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-bottom': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSSMobile
+		},
+		'.uagb-tabs__stack11-mobile > .uagb-tabs__panel .uagb-tab' : borderCSSMobile,
+		'.uagb-tabs__stack11-mobile > .uagb-tabs__body-wrap': borderCSSMobile,
+		'.uagb-tabs__stack12-mobile .uagb-tab': { 
+				'border-bottom-width': '0px',
+				'border-bottom': 0,
+				'outline': 0,
+				'border-radius': 0,
+			 ...borderCSSMobile
+		},
+		'.uagb-tabs__stack12-mobile > .uagb-tabs__body-wrap': borderCSSMobile,
+		'.uagb-tabs__stack13-mobile .uagb-tab': { 
+			'border-radius': '30px',
+			...borderCSSMobile
+		},
+		'.uagb-tabs__stack13-mobile > .uagb-tabs__body-wrap': borderCSSMobile,
+		'.uagb-tabs__stack14-mobile': borderCSSMobile,
+		'.uagb-tabs__stack14-mobile .uagb-tab': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-bottom-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'border-bottom': 0,
+			'outline': 0,
+			'border-radius': 0,
+		},
+		'.uagb-tabs__stack14-mobile .uagb-tab.uagb-tabs__active': {
+			'border-top-width': '0px',
+			'border-right-width': '0px',
+			'border-left-width': '0px',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			...borderCSSMobile
+		},
+		
+		' .uagb-tabs__icon svg': {
+			'height': generateCSSUnit( iconSizeMobile, 'px' ),
+			'width': generateCSSUnit( iconSizeMobile, 'px' ),
+		},
 		' > .uagb-tabs__panel .uagb-tab p': {
 			'font-size': generateCSSUnit(
 				titleFontSizeMobile,
@@ -348,6 +751,26 @@ function styling( props ) {
 				titleLineHeightMobile,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
+		},
+		' > .uagb-tabs__panel .uagb-tab' :{
+			'margin-top': generateCSSUnit(
+				tabTitleTopMarginMobile,
+				mobiletabTitleMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				tabTitleLeftMarginMobile,
+				mobiletabTitleMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				tabTitleRightMarginMobile,
+				mobiletabTitleMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				tabTitleBottomMarginMobile,
+				mobiletabTitleMarginUnit
+			),
+			...borderCSSMobile
 		},
 		' > .uagb-tabs__panel .uagb-tab a': {
 			'padding-top': generateCSSUnit(
@@ -365,22 +788,6 @@ function styling( props ) {
 			'padding-right': generateCSSUnit(
 				tabTitleRightPaddingMobile,
 				mobiletabTitlePaddingUnit
-			),
-			'margin-top': generateCSSUnit(
-				tabTitleTopMarginMobile,
-				mobiletabTitleMarginUnit
-			),
-			'margin-left': generateCSSUnit(
-				tabTitleLeftMarginMobile,
-				mobiletabTitleMarginUnit
-			),
-			'margin-right': generateCSSUnit(
-				tabTitleRightMarginMobile,
-				mobiletabTitleMarginUnit
-			),
-			'margin-bottom': generateCSSUnit(
-				tabTitleBottomMarginMobile,
-				mobiletabTitleMarginUnit
 			),
 		},
 		' > .uagb-tabs__body-wrap ': {
@@ -416,101 +823,22 @@ function styling( props ) {
 				tabBodyBottomMarginMobile,
 				mobiletabBodyMarginUnit
 			),
+			...borderCSSMobile
+		},
+		' .uagb-tabs__icon-position-left  .uagb-tabs__icon ': {
+			'margin-right': generateCSSUnit( iconSpacingMobile, 'px' ),
+		},
+		' .uagb-tabs__icon-position-right  .uagb-tabs__icon ': {
+			'margin-left': generateCSSUnit( iconSpacingMobile, 'px' ),
+		},
+		' .uagb-tabs__icon-position-top  .uagb-tabs__icon ': {
+			'margin-bottom': generateCSSUnit( iconSpacingMobile, 'px' ),
+		},
+		' .uagb-tabs__icon-position-bottom  .uagb-tabs__icon ': {
+			'margin-top': generateCSSUnit( iconSpacingMobile, 'px' ),
 		},
 	};
 
-	if ( tabsStyleD === 'hstyle5' ) {
-		selectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop ' ] = {
-			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-		};
-		selectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop:hover' ] = {
-			'border-color': borderHoverColor,
-		};
-	}
-	if ( tabsStyleD === 'vstyle10' ) {
-		selectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop ' ] = {
-			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-		};
-		selectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop:hover' ] = {
-			'border-color': borderHoverColor,
-		};
-	}
-	if ( tabsStyleT === 'hstyle5' ) {
-		tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet' ] = {
-			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-		};
-		tabletSelectors[
-			'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet:hover'
-		] = {
-			'border-color': borderHoverColor,
-		};
-	}
-	if ( tabsStyleT === 'vstyle10' ) {
-		tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet' ] = {
-			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-		};
-		tabletSelectors[
-			'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet:hover'
-		] = {
-			'border-color': borderHoverColor,
-		};
-	}
-	if ( tabsStyleM === 'hstyle5' ) {
-		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile ' ] = {
-			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-		};
-		mobileSelectors[
-			'.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile:hover'
-		] = {
-			'border-color': borderHoverColor,
-		};
-	}
-	if ( tabsStyleM === 'vstyle10' ) {
-		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile ' ] = {
-			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-		};
-		mobileSelectors[
-			'.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile:hover'
-		] = {
-			'border-color': borderHoverColor,
-		};
-	}
-	if ( tabsStyleM === 'stack4' ) {
-		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__stack4-mobile' ] = {
-			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-		};
-		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__stack4-mobile:hover' ] = {
-			'border-color': borderHoverColor,
-		};
-	}
 	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
 		8

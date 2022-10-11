@@ -1,14 +1,17 @@
 import React from 'react';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 const Excerpt = ( props ) => {
 	const { post, attributes } = props;
+	const contentSpaceFallback = getFallbackNumber( attributes.contentSpace, 'contentSpace', 'post-timeline' );
+	const exerptLengthFallback = getFallbackNumber( attributes.exerptLength, 'exerptLength', 'post-timeline' );
 	let trimmed_excerpt;
 	if ( attributes.displayPostExcerpt && post.uagb_excerpt ) {
 		
-		trimmed_excerpt = post.uagb_excerpt.split( /\s+/ ).slice( 0, attributes.exerptLength ).join( ' ' );
+		trimmed_excerpt = post.uagb_excerpt.split( /\s+/ ).slice( 0, exerptLengthFallback ).join( ' ' );
 
 		let margin_var = '';
 		if ( attributes.displayPostLink ) {
-			margin_var = attributes.contentSpace + 'px';
+			margin_var = contentSpaceFallback + 'px';
 		}
 		return (
 			<div

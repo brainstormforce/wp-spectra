@@ -300,7 +300,7 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 
 			$query_args = array();
 
-			$api_url = add_query_arg( $query_args, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL ) . 'wp-json/astra-sites/v1/get-last-export-checksums/' );
+			$api_url = esc_url_raw( add_query_arg( $query_args, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL ) . 'wp-json/astra-sites/v1/get-last-export-checksums/' ) );
 
 			$response = wp_remote_get( $api_url, $api_args );
 
@@ -502,7 +502,7 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 				)
 			);
 
-			$api_url = add_query_arg( $query_args, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL ) . 'wp-json/astra-sites/v1/get-total-pages/' );
+			$api_url = esc_url_raw( add_query_arg( $query_args, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL ) . 'wp-json/astra-sites/v1/get-total-pages/' ) );
 
 			ast_block_templates_log( 'SITE: ' . $api_url );
 
@@ -546,7 +546,7 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 				)
 			);
 
-			$api_url = add_query_arg( $query_args, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL ) . 'wp-json/astra-blocks/v1/get-blocks-count/' );
+			$api_url = esc_url_raw( add_query_arg( $query_args, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL ) . 'wp-json/astra-blocks/v1/get-blocks-count/' ) );
 
 			ast_block_templates_log( 'BLOCK: ' . $api_url );
 
@@ -591,7 +591,7 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 				)
 			);
 
-			$api_url = add_query_arg( $query_args, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL ) . 'wp-json/astra-sites/v1/sites-and-pages/' );
+			$api_url = esc_url_raw( add_query_arg( $query_args, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL ) . 'wp-json/astra-sites/v1/sites-and-pages/' ) );
 
 			ast_block_templates_log( 'SITE: ' . $api_url );
 
@@ -649,7 +649,7 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 				)
 			);
 
-			$api_url = add_query_arg( $query_args, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL ) . 'wp-json/wp/v2/blocks-category/' );
+			$api_url = esc_url_raw( add_query_arg( $query_args, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL ) . 'wp-json/wp/v2/blocks-category/' ) );
 
 			$response = wp_remote_get( $api_url, $api_args );
 
@@ -708,7 +708,7 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 				)
 			);
 
-			$api_url = add_query_arg( $query_args, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL ) . 'wp-json/astra-blocks/v1/blocks/' );
+			$api_url = esc_url_raw( add_query_arg( $query_args, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL ) . 'wp-json/astra-blocks/v1/blocks/' ) );
 
 			ast_block_templates_log( 'BLOCK: ' . $api_url );
 

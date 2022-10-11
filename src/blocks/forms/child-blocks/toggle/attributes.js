@@ -3,6 +3,10 @@
  */
 import { __ } from '@wordpress/i18n';
 const attributes = {
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 	block_id: {
 		type: 'string',
 	},
@@ -12,7 +16,7 @@ const attributes = {
 	},
 	name: {
 		type: 'string',
-		default: __( 'Name', 'ultimate-addons-for-gutenberg' ),
+		default: __( 'Toggle', 'ultimate-addons-for-gutenberg' ),
 	},
 	toggleStatus: {
 		type: 'boolean',

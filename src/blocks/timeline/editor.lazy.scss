@@ -10,7 +10,6 @@
 		margin: 0;
 
 		a {
-			color: inherit;
 			text-decoration: none;
 			font-size: inherit;
 			margin: 0;
@@ -22,3 +21,10 @@
 	}
 }
 
+.uagb-editor-preview-mode-tablet.uagb-timeline,
+.uagb-editor-preview-mode-mobile.uagb-timeline {
+
+	.uagb-timeline__image img {
+		max-width: 100%;
+	}
+}

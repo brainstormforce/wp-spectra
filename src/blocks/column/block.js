@@ -2,7 +2,7 @@
  * BLOCK: Column
  */
 
-import UAGB_Block_Icons from '@Controls/block-icons';
+import { renderLegacyBlockEditorIcon } from '@Controls/block-icons';
 import edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
@@ -13,8 +13,8 @@ import { __ } from '@wordpress/i18n';
 
 registerBlockType( 'uagb/column', {
 	title: __( 'Column', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'This block is an immediate child of Advanced Columns.', 'ultimate-addons-for-gutenberg' ),
-	icon: UAGB_Block_Icons.column,
+	description: __( 'Immediate child of Advanced Columns', 'ultimate-addons-for-gutenberg' ),
+	icon: renderLegacyBlockEditorIcon ( 'column' ),
 	category: uagb_blocks_info.category,
 	parent: [ 'uagb/columns' ],
 	supports: {
@@ -27,3 +27,4 @@ registerBlockType( 'uagb/column', {
 	save,
 	deprecated,
 } );
+

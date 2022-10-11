@@ -11,7 +11,7 @@ import { RichText } from '@wordpress/block-editor';
 export default function save( props ) {
 	const { attributes } = props;
 
-	const { block_id, radioRequired, options, radioName } = attributes;
+	const { block_id, radioRequired, options, radioName, layout } = attributes;
 
 	const isRequired = radioRequired
 		? __( 'required', 'ultimate-addons-for-gutenberg' )
@@ -43,6 +43,7 @@ export default function save( props ) {
 							name={ block_id }
 							value={ optionvalue }
 							required={ radioRequired }
+							className={ layout }
 						/>
 						<label htmlFor={ `radio-${ value }-${ block_id }` }>
 							{ o.optiontitle }

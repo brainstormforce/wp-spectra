@@ -12,7 +12,8 @@ $block_data = array(
 	'slug'        => '',
 	'link'        => '',
 	'title'       => __( 'Post Button', 'ultimate-addons-for-gutenberg' ),
-	'description' => __( 'This block display\'s a call to action button which links to the blogs page.', 'ultimate-addons-for-gutenberg' ),
+	'description' => __( 'Customize this post button.', 'ultimate-addons-for-gutenberg' ),
 	'default'     => true,
 	'is_child'    => true,
+	'deprecated'  => false,
 );

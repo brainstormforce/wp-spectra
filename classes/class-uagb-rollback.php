@@ -139,7 +139,7 @@ class UAGB_Rollback {
 		$plugin_info->new_version = $this->version;
 		$plugin_info->slug        = $this->plugin_slug;
 		$plugin_info->package     = $this->package_url;
-		$plugin_info->url         = 'https://ultimategutenberg.com/';
+		$plugin_info->url         = 'https://wpspectra.com/';
 
 		$update_plugins->response[ $this->plugin_name ] = $plugin_info;
 
@@ -162,7 +162,7 @@ class UAGB_Rollback {
 			'url'    => 'update.php?action=upgrade-plugin&plugin=' . rawurlencode( $this->plugin_name ),
 			'plugin' => $this->plugin_name,
 			'nonce'  => 'upgrade-plugin_' . $this->plugin_name,
-			'title'  => __( 'Ultimate Addons for Gutenberg <p>Rollback to Previous Version</p>', 'ultimate-addons-for-gutenberg' ),
+			'title'  => __( 'Spectra <p>Rollback to Previous Version</p>', 'ultimate-addons-for-gutenberg' ),
 		);
 
 		$this->print_inline_style();

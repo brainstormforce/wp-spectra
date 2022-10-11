@@ -4,8 +4,12 @@
 
 import classnames from 'classnames';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 export default function save( props ) {
+
+	const blockName = 'how-to';
+
 	const { attributes, className } = props;
 
 	const {
@@ -62,6 +66,8 @@ export default function save( props ) {
 		}
 	}
 
+	const defaultedAlt = ( mainimage && mainimage?.alt ) ? mainimage?.alt : '';
+
 	let imageIconHtml = '';
 
 	if ( mainimage && mainimage.url ) {
@@ -70,18 +76,18 @@ export default function save( props ) {
 				className="uagb-howto__source-image"
 				src={ url }
 				title={ title }
-				alt=""
+				alt= { defaultedAlt }
 			/>
 		);
 	}
 
 	//Time Labels
-	const yearlabel = timeInYears > 1 ? ' Years ' : ' Year ';
-	const monthlabel = timeInMonths > 1 ? ' Months ' : ' Month ';
-	const daylabel = timeInDays > 1 ? ' Days ' : ' Day ';
-	const hourlabel = timeInHours > 1 ? 'Hours ' : ' Hour ';
+	const yearlabel = getFallbackNumber( timeInYears, 'timeInYears', blockName ) > 1 ? ' Years ' : ' Year ';
+	const monthlabel = getFallbackNumber( timeInMonths, 'timeInMonths', blockName ) > 1 ? ' Months ' : ' Month ';
+	const daylabel = getFallbackNumber( timeInDays, 'timeInDays', blockName ) > 1 ? ' Days ' : ' Day ';
+	const hourlabel = getFallbackNumber( timeInHours, 'timeInHours', blockName ) > 1 ? 'Hours ' : ' Hour ';
 
-	const minsValue = timeInMins ? timeInMins : time;
+	const minsValue = getFallbackNumber( timeInMins, 'timeInMins', blockName ) ? getFallbackNumber( timeInMins, 'timeInMins', blockName ) : time;
 	const minslabel = minsValue > 1 ? ' Minutes ' : ' Minute ';
 
 	return (
@@ -112,11 +118,11 @@ export default function save( props ) {
 						className="uagb-howto-timeNeeded-text"
 					/>
 					<>
-						{ timeInYears && (
+						{ getFallbackNumber( timeInYears, 'timeInYears', blockName ) && (
 							<>
 								<p className="uagb-howto-timeNeeded-value">
 									{ ' ' }
-									{ timeInYears }
+									{ getFallbackNumber( timeInYears, 'timeInYears', blockName ) }
 								</p>
 								<p className="uagb-howto-timeINmin-text">
 									{ ' ' }
@@ -124,30 +130,30 @@ export default function save( props ) {
 								</p>
 							</>
 						) }
-						{ timeInMonths && (
+						{ getFallbackNumber( timeInMonths, 'timeInMonths', blockName ) && (
 							<>
 								<p className="uagb-howto-timeNeeded-value">
-									{ timeInMonths }
+									{ getFallbackNumber( timeInMonths, 'timeInMonths', blockName ) }
 								</p>
 								<p className="uagb-howto-timeINmin-text">
 									{ monthlabel }
 								</p>
 							</>
 						) }
-						{ timeInDays && (
+						{ getFallbackNumber( timeInDays, 'timeInDays', blockName ) && (
 							<>
 								<p className="uagb-howto-timeNeeded-value">
-									{ timeInDays }
+									{ getFallbackNumber( timeInDays, 'timeInDays', blockName ) }
 								</p>
 								<p className="uagb-howto-timeINmin-text">
 									{ daylabel }
 								</p>
 							</>
 						) }
-						{ timeInHours && (
+						{ getFallbackNumber( timeInHours, 'timeInHours', blockName ) && (
 							<>
 								<p className="uagb-howto-timeNeeded-value">
-									{ timeInHours }
+									{ getFallbackNumber( timeInHours, 'timeInHours', blockName ) }
 								</p>
 								<p className="uagb-howto-timeINmin-text">
 									{ hourlabel }

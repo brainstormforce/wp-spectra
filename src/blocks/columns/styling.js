@@ -6,6 +6,8 @@ import inlineStyles from './inline-styles'
 import generateCSS from '@Controls/generateCSS'
 import hexToRgba from '@Controls/hexToRgba'
 import generateCSSUnit from '@Controls/generateCSSUnit'
+import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 
@@ -16,7 +18,6 @@ function styling( props ) {
 		backgroundOpacity,
 		backgroundColor,
 		backgroundVideoOpacity,
-		borderHoverColor,
 		contentWidth,
 		width,
 		widthType,
@@ -31,13 +32,6 @@ function styling( props ) {
 		bottomHeightTablet,
 		bottomHeightMobile,
 		bottomWidth,
-		gradientColor1,
-		gradientColor2,
-		gradientLocation1,
-		gradientLocation2,
-		gradientType,
-		gradientAngle,
-		gradientPosition,
 		topPaddingTablet,
 		bottomPaddingTablet,
 		leftPaddingTablet,
@@ -62,7 +56,9 @@ function styling( props ) {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
-		gradientValue
+		gradientValue,
+		columnsBorderHColor,
+		overlayType
 	} = props.attributes
 
 	let max_width = '100%'
@@ -82,20 +78,25 @@ function styling( props ) {
 	let mobile_selectors = {}
 
 	let videoOpacity = 0.5;
+
 	if ( typeof backgroundVideoOpacity !== 'undefined' ) {
 		videoOpacity = ( 1 < backgroundVideoOpacity ) ? ( ( 100 - backgroundVideoOpacity ) / 100 ) : ( ( 1 - backgroundVideoOpacity ) );
 	}
+
+	const borderCSS = generateBorderCSS( props.attributes, 'columns' );
+	const borderCSSTablet = generateBorderCSS( props.attributes, 'columns', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes, 'columns', 'mobile' );
 
 	const selectors = {
 		'.uagb-columns__wrap' : inlineStyles( props ),
 		' .uagb-columns__video-wrap': {
 			'opacity' : videoOpacity
 		},
-		' > .block-editor-inner-blocks > .block-editor-block-list__layout': {
+		' > .uagb-columns__inner-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout': {
 
 			'max-width' : max_width
 		},
-		' > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="uagb/column"]' : {
+		' > .uagb-columns__inner-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="uagb/column"]' : {
 			'padding' : generateCSSUnit( columnGap, 'px' )
 		},
 		' .uagb-columns__shape-top svg' : {
@@ -103,56 +104,56 @@ function styling( props ) {
 			'height': generateCSSUnit( topHeight, 'px' )
 		},
 		' .uagb-columns__shape-top .uagb-columns__shape-fill' : {
-			'fill': hexToRgba( topColor, ( typeof topDividerOpacity !== 'undefined' ) ? topDividerOpacity : 100 ),
+			'fill': hexToRgba( maybeGetColorForVariable( topColor ), ( typeof topDividerOpacity !== 'undefined' ) ? topDividerOpacity : 100 ),
 		},
 		' .uagb-columns__shape-bottom svg' : {
 			'width': 'calc( ' + bottomWidth + '% + 1.3px )',
 			'height': generateCSSUnit( bottomHeight, 'px' )
 		},
 		' .uagb-columns__shape-bottom .uagb-columns__shape-fill' : {
-			'fill': hexToRgba( bottomColor, ( typeof bottomDividerOpacity !== 'undefined' ) ? bottomDividerOpacity : 100 ),
+			'fill': hexToRgba( maybeGetColorForVariable( bottomColor ), ( typeof bottomDividerOpacity !== 'undefined' ) ? bottomDividerOpacity : 100 ),
 		},
 		'.wp-block-uagb-columns': {
 			'box-shadow': generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowBlur, 'px' ) + ' ' + generateCSSUnit( boxShadowSpread, 'px' ) + ' ' + boxShadowColor + ' ' + boxShadowPositionCSS
 		},
 		'.uagb-columns__wrap:hover': {
-			'border-color': borderHoverColor,
+			'border-color': columnsBorderHColor,
 		}
 	}
 
 	selectors[' > .uagb-columns__overlay'] = {}
 
 	if ( 'video' === backgroundType ) {
-		selectors[' > .uagb-columns__overlay'] = {
-			'opacity' : 1,
-			'background-color': backgroundVideoColor
+		if ( 'color' === overlayType ) {
+			selectors[' > .uagb-columns__overlay'] = {
+				'background-color': backgroundVideoColor
+			}
+		} else {
+			selectors[' > .uagb-columns__overlay']['background-image'] = gradientValue
 		}
 	} else if( 'image' === backgroundType ) {
-		selectors[' > .uagb-columns__overlay'] = {
-			'opacity' : ( typeof backgroundOpacity !== 'undefined' ) ? backgroundOpacity/100 : '',
-			'background-color': backgroundImageColor
+		if ( 'color' === overlayType ) {
+			selectors[' > .uagb-columns__overlay'] = {
+				'opacity' : ( typeof backgroundOpacity !== 'undefined' && 0 !== backgroundOpacity ) ? backgroundOpacity/100 : '',
+				'background-color': backgroundImageColor
+			}
+		} else {
+			selectors[' > .uagb-columns__overlay']['background-image'] = gradientValue
 		}
 	} else if( 'color' === backgroundType ) {
+
 		selectors[' > .uagb-columns__overlay'] = {
-			'opacity' : ( typeof backgroundOpacity !== 'undefined' ) ? backgroundOpacity/100 : '',
+			'opacity' : ( typeof backgroundOpacity !== 'undefined' && 0 !== backgroundOpacity ) ? backgroundOpacity/100 : '',
 			'background-color' : backgroundColor
 		}
 	} else if ( 'gradient' === backgroundType ) {
 
-		selectors[' > .uagb-columns__overlay']['background-color'] = 'transparent'
-		selectors[' > .uagb-columns__overlay'].opacity = ( typeof backgroundOpacity !== 'undefined' ) ? backgroundOpacity/100 : ''
-		if( gradientValue ) {
-			selectors[' > .uagb-columns__overlay']['background-image'] = gradientValue
-
-		} else if ( 'linear' === gradientType ) {
-
-				selectors[' > .uagb-columns__overlay']['background-image'] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
-			} else {
-
-				selectors[' > .uagb-columns__overlay']['background-image'] = `radial-gradient( at ${ gradientPosition }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
-			}
+		selectors[' > .uagb-columns__overlay']['background-image'] = gradientValue
+		selectors[' > .uagb-columns__overlay'].opacity =  backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : '';
 
 	}
+
+	selectors[' > .uagb-columns__overlay']['border-radius'] = `${borderCSS['border-top-left-radius']} ${borderCSS['border-top-right-radius']} ${borderCSS['border-bottom-right-radius']} ${ borderCSS['border-bottom-left-radius']}`
 
 	tablet_selectors = {
 		'.uagb-columns__wrap' : {
@@ -162,6 +163,7 @@ function styling( props ) {
 			'padding-right': generateCSSUnit( rightPaddingTablet, tabletPaddingType ),
 			'margin-top': generateCSSUnit( topMarginTablet, tabletMarginType ),
 			'margin-bottom': generateCSSUnit( bottomMarginTablet, tabletMarginType ),
+			...borderCSSTablet
 		},
 		' .uagb-columns__shape-top svg' : {
 			'height': generateCSSUnit( topHeightTablet, 'px' )
@@ -179,6 +181,7 @@ function styling( props ) {
 			'padding-right': generateCSSUnit( rightPaddingMobile, mobilePaddingType ),
 			'margin-top': generateCSSUnit( topMarginMobile, mobileMarginType ),
 			'margin-bottom': generateCSSUnit( bottomMarginMobile, mobileMarginType ),
+			...borderCSSMobile
 		},
 		' .uagb-columns__shape-top svg' : {
 			'height': generateCSSUnit( topHeightMobile, 'px' )

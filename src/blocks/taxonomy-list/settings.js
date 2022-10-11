@@ -1,11 +1,11 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
-import lazyLoader from '@Controls/lazy-loader';
+
 import WebfontLoader from '@Components/typography/fontloader';
 import renderSVG from '@Controls/renderIcon';
 import TypographyControl from '@Components/typography';
 import BoxShadowControl from '@Components/box-shadow';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -15,16 +15,18 @@ import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
+import UAGSelectControl from '@Components/select-control';
 import UAGTabsControl from '@Components/tabs';
 import {
-	SelectControl,
 	TextControl,
 	Icon,
 	ToggleControl,
 } from '@wordpress/components';
-import { InspectorControls, AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
+import { InspectorControls } from '@wordpress/block-editor';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import boxShadowPresets from './presets';
+import UAGPresets from '@Components/presets';
 
 import apiFetch from '@wordpress/api-fetch';
 const Settings = ( props ) => {
@@ -41,6 +43,7 @@ const Settings = ( props ) => {
 
 	// Caching all attributes.
 	const {
+		block_id,
 		postType,
 		taxonomyType,
 		layout,
@@ -51,7 +54,11 @@ const Settings = ( props ) => {
 		titleColor,
 		countColor,
 		rowGap,
+		rowGapTablet,
+		rowGapMobile,
 		columnGap,
+		columnGapTablet,
+		columnGapMobile,
 		contentTopPadding,
 		contentRightPadding,
 		contentBottomPadding,
@@ -69,13 +76,10 @@ const Settings = ( props ) => {
 		tabletContentPaddingUnit,
 		contentPaddingLink,
 		titleBottomSpace,
+		titleBottomSpaceTablet,
+		titleBottomSpaceMobile,
 		alignment,
 		listStyle,
-		seperatorStyle,
-		seperatorWidth,
-		seperatorThickness,
-		seperatorColor,
-		seperatorHoverColor,
 		listTextColor,
 		hoverlistTextColor,
 		listBottomMargin,
@@ -126,11 +130,6 @@ const Settings = ( props ) => {
 		listLineHeightMobile,
 		listLoadGoogleFonts,
 		showEmptyTaxonomy,
-		borderStyle,
-		borderThickness,
-		borderColor,
-		borderRadius,
-		borderHoverColor,
 		listDisplayStyle,
 		showhierarchy,
 		titleTag,
@@ -140,6 +139,24 @@ const Settings = ( props ) => {
 		titleDecoration,
 		countDecoration,
 		listDecoration,
+		// letter spacing
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		countLetterSpacing,
+		countLetterSpacingTablet,
+		countLetterSpacingMobile,
+		countLetterSpacingType,
+		listLetterSpacing,
+		listLetterSpacingTablet,
+		listLetterSpacingMobile,
+		listLetterSpacingType,
+		seperatorStyle,
+		seperatorWidth,
+		seperatorThickness,
+		seperatorColor,
+		seperatorHoverColor
 	} = attributes;
 
 	const taxonomy_list_setting = showEmptyTaxonomy ? taxonomyList : termsList;
@@ -214,9 +231,11 @@ const Settings = ( props ) => {
 			<AdvancedPopColorControl
 				label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ listTextColor ? listTextColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { listTextColor: value } )
-				}
+				data={ {
+					value: listTextColor,
+					label: 'listTextColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<br />
 
@@ -228,9 +247,11 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						colorValue={ listStyleColor ? listStyleColor : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { listStyleColor: value } )
-						}
+						data={ {
+							value: listStyleColor,
+							label: 'listStyleColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			) }
@@ -241,9 +262,11 @@ const Settings = ( props ) => {
 			<AdvancedPopColorControl
 				label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ hoverlistTextColor ? hoverlistTextColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { hoverlistTextColor: value } )
-				}
+				data={ {
+					value: hoverlistTextColor,
+					label: 'hoverlistTextColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<br />
 			{ 'none' !== listStyle && (
@@ -256,9 +279,11 @@ const Settings = ( props ) => {
 						colorValue={
 							hoverlistStyleColor ? hoverlistStyleColor : ''
 						}
-						onColorChange={ ( value ) =>
-							setAttributes( { hoverlistStyleColor: value } )
-						}
+						data={ {
+							value: hoverlistStyleColor,
+							label: 'hoverlistStyleColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			) }
@@ -357,18 +382,10 @@ const Settings = ( props ) => {
 						{
 							value: 'grid',
 							label: 'Grid',
-							tooltip: __(
-								'Grid',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'list',
 							label: 'List',
-							tooltip: __(
-								'List',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 					] }
 					showIcons={ false }
@@ -422,18 +439,10 @@ const Settings = ( props ) => {
 								{
 									value: 'list',
 									label: 'List',
-									tooltip: __(
-										'List',
-										'ultimate-addons-for-gutenberg'
-									),
 								},
 								{
 									value: 'dropdown',
 									label: 'Dropdown',
-									tooltip: __(
-										'Dropdown',
-										'ultimate-addons-for-gutenberg'
-									),
 								},
 							] }
 							showIcons={ false }
@@ -569,20 +578,27 @@ const Settings = ( props ) => {
 				title={ __( 'Query', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				<SelectControl
-					label={ __( 'Post Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ postType }
-					onChange={ ( value ) => onSelectPostType( value ) }
+				<UAGSelectControl
+					label={ __(
+						'Post Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: postType,
+					} }
+					onChange={ onSelectPostType }
 					options={ uagb_blocks_info.post_types }
 				/>
 				{ '' !== taxonomyList && (
-					<SelectControl
+					<UAGSelectControl
 						label={ __(
 							'Taxonomy',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ taxonomyType }
-						onChange={ ( value ) => onSelectTaxonomyType( value ) }
+						data={ {
+							value: taxonomyType,
+						} }
+						onChange={ onSelectTaxonomyType }
 						options={ taxonomyListOptions }
 					/>
 				) }
@@ -615,7 +631,6 @@ const Settings = ( props ) => {
 							showEmptyTaxonomy: ! showEmptyTaxonomy,
 						} )
 					}
-					help={ __( 'Show empty taxonomy in list ' ) }
 				/>
 				<ToggleControl
 					label={ __(
@@ -626,10 +641,6 @@ const Settings = ( props ) => {
 					onChange={ () =>
 						setAttributes( { showCount: ! showCount } )
 					}
-					help={ __(
-						'Show count of taxonomy ',
-						'ultimate-addons-for-gutenberg'
-					) }
 				/>
 				{ 'list' === layout &&
 					'list' === listDisplayStyle &&
@@ -645,10 +656,6 @@ const Settings = ( props ) => {
 									showhierarchy: ! showhierarchy,
 								} )
 							}
-							help={ __(
-								'Show hierarchy of taxonomy ',
-								'ultimate-addons-for-gutenberg'
-							) }
 						/>
 					) }
 			</UAGAdvancedPanelBody>
@@ -658,7 +665,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<TypographyControl
 					label={ __(
@@ -723,29 +730,57 @@ const Settings = ( props ) => {
 						value: titleDecoration,
 						label: 'titleDecoration',
 					} }
+					letterSpacing={ {
+						value: titleLetterSpacing,
+						label: 'titleLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: titleLetterSpacingTablet,
+						label: 'titleLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: titleLetterSpacingMobile,
+						label: 'titleLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: titleLetterSpacingType,
+						label: 'titleLetterSpacingType',
+					} }
 				/>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { titleColor: value } )
-					}
+					data={ {
+						value: titleColor,
+						label: 'titleColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				{ showCount && (
-					<Range
-						label={ __(
-							'Bottom Spacing',
-							'ultimate-addons-for-gutenberg'
-						) }
-						setAttributes={ setAttributes }
-						value={ titleBottomSpace }
-						onChange={ ( value ) =>
-							setAttributes( { titleBottomSpace: value } )
-						}
-						min={ 0 }
-						max={ 50 }
-						displayUnit={ false }
-					/>
+					<ResponsiveSlider
+							label={ __(
+								'Bottom Spacing',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								desktop: {
+									value: titleBottomSpace,
+									label: 'titleBottomSpace',
+								},
+								tablet: {
+									value: titleBottomSpaceTablet,
+									label: 'titleBottomSpaceTablet',
+								},
+								mobile: {
+									value: titleBottomSpaceMobile,
+									label: 'titleBottomSpaceMobile',
+								},
+							} }
+							min={ 0 }
+							max={ 50 }
+							displayUnit={ false }
+							setAttributes={ setAttributes }
+						/>
 				) }
 			</UAGAdvancedPanelBody>
 		);
@@ -759,9 +794,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ countColor ? countColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { countColor: value } )
-					}
+					data={ {
+						value: countColor,
+						label: 'countColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -826,6 +863,22 @@ const Settings = ( props ) => {
 						value: countDecoration,
 						label: 'countDecoration',
 					} }
+					letterSpacing={ {
+						value: countLetterSpacing,
+						label: 'countLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: countLetterSpacingTablet,
+						label: 'countLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: countLetterSpacingMobile,
+						label: 'countLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: countLetterSpacingType,
+						label: 'countLetterSpacingType',
+					} }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -839,9 +892,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ bgColor ? bgColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { bgColor: value } )
-					}
+					data={ {
+						value: bgColor,
+						label: 'bgColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -854,33 +909,53 @@ const Settings = ( props ) => {
 			>
 				{ 'grid' === layout && (
 					<>
-						<Range
+						<ResponsiveSlider
 							label={ __(
 								'Row Gap',
 								'ultimate-addons-for-gutenberg'
 							) }
-							setAttributes={ setAttributes }
-							value={ rowGap }
-							onChange={ ( value ) =>
-								setAttributes( { rowGap: value } )
-							}
-							min={ 0 }
+							data={ {
+								desktop: {
+									value: rowGap,
+									label: 'rowGap',
+								},
+								tablet: {
+									value: rowGapTablet,
+									label: 'rowGapTablet',
+								},
+								mobile: {
+									value: rowGapMobile,
+									label: 'rowGapMobile',
+								},
+							} }
+							min={ 1 }
 							max={ 50 }
 							displayUnit={ false }
+							setAttributes={ setAttributes }
 						/>
-						<Range
+						<ResponsiveSlider
 							label={ __(
 								'Column Gap',
 								'ultimate-addons-for-gutenberg'
 							) }
-							setAttributes={ setAttributes }
-							value={ columnGap }
-							onChange={ ( value ) =>
-								setAttributes( { columnGap: value } )
-							}
-							min={ 0 }
+							data={ {
+								desktop: {
+									value: columnGap,
+									label: 'columnGap',
+								},
+								tablet: {
+									value: columnGapTablet,
+									label: 'columnGapTablet',
+								},
+								mobile: {
+									value: columnGapMobile,
+									label: 'columnGapMobile',
+								},
+							} }
+							min={ 1 }
 							max={ 50 }
 							displayUnit={ false }
+							setAttributes={ setAttributes }
 						/>
 						<SpacingControl
 							{ ...props }
@@ -966,9 +1041,10 @@ const Settings = ( props ) => {
 						) }
 						setAttributes={ setAttributes }
 						value={ listBottomMargin }
-						onChange={ ( value ) =>
-							setAttributes( { listBottomMargin: value } )
-						}
+						data={ {
+							value: listBottomMargin,
+							label: 'listBottomMargin',
+						} }
 						min={ 0 }
 						max={ 100 }
 						displayUnit={ false }
@@ -983,37 +1059,13 @@ const Settings = ( props ) => {
 				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Border
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: borderStyle,
-						label: 'borderStyle',
-						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderWidth={ {
-						value: borderThickness,
-						label: 'borderThickness',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderRadius={ {
-						value: borderRadius,
-						label: 'borderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderColor={ {
-						value: borderColor,
-						label: 'borderColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ {
-						value: borderHoverColor,
-						label: 'borderHoverColor',
-						title: __(
-							'Hover Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+					prefix={ 'overall' }
+					attributes={ attributes }
+					deviceType={ deviceType }
 					disableBottomSeparator={ true }
+					disabledBorderTitle= { true }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1087,6 +1139,22 @@ const Settings = ( props ) => {
 						value: listDecoration,
 						label: 'listDecoration',
 					} }
+					letterSpacing={ {
+						value: listLetterSpacing,
+						label: 'listLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: listLetterSpacingTablet,
+						label: 'listLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: listLetterSpacingMobile,
+						label: 'listLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: listLetterSpacingType,
+						label: 'listLetterSpacingType',
+					} }
 				/>
 				<UAGTabsControl
 					tabs={ [
@@ -1118,41 +1186,81 @@ const Settings = ( props ) => {
 				title={ __( 'Separator', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Border
-					setAttributes={ setAttributes }
-					borderStyle={ {
+				<UAGSelectControl
+					label={ __( 'Separator Style','ultimate-addons-for-gutenberg' ) }
+					data={ {
 						value: seperatorStyle,
 						label: 'seperatorStyle',
-						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
 					} }
-					borderWidth={ {
-						value: seperatorWidth,
-						label: 'seperatorWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderRadius={ {
-						value: seperatorThickness,
-						label: 'seperatorThickness',
-						title: __(
-							'Thickness',
+					setAttributes={ setAttributes }
+					options={ [
+						{ value: 'none', label: __( 'None','ultimate-addons-for-gutenberg' ) },
+						{ value: 'solid', label: __( 'Solid','ultimate-addons-for-gutenberg' ) },
+						{ value: 'dotted', label: __( 'Dotted','ultimate-addons-for-gutenberg' ) },
+						{ value: 'dashed', label: __( 'Dashed','ultimate-addons-for-gutenberg' ) },
+						{ value: 'double', label: __( 'Double','ultimate-addons-for-gutenberg' ) },
+						{ value: 'groove', label: __( 'Groove','ultimate-addons-for-gutenberg' ) },
+						{ value: 'inset', label: __( 'Inset','ultimate-addons-for-gutenberg' ) },
+						{ value: 'outset', label: __( 'Outset','ultimate-addons-for-gutenberg' ) },
+						{ value: 'ridge', label: __( 'Ridge','ultimate-addons-for-gutenberg' ) },
+					] }
+				/>
+				{ 'none' !== seperatorStyle && (
+				<>
+					<Range
+						label={ __( 'Separator Width (%)','ultimate-addons-for-gutenberg' ) }
+						value={ seperatorWidth }
+						min={ 0 }
+						max={ 100 }
+						setAttributes={ setAttributes }
+						data={ {
+							value: seperatorWidth,
+							label: 'seperatorWidth',
+						} }
+						displayUnit={ false }
+					/>
+					<Range
+						label={ __( 'Separator Thickness','ultimate-addons-for-gutenberg' ) }
+						value={ seperatorThickness }
+						min={ 0 }
+						max={ 20 }
+						setAttributes={ setAttributes }
+						data={ {
+							value: seperatorThickness,
+							label: 'seperatorThickness',
+						} }
+						displayUnit={ false }
+					/>
+					<AdvancedPopColorControl
+						label={ __(
+							'Color',
 							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderColor={ {
-						value: seperatorColor,
-						label: 'seperatorColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ {
-						value: seperatorHoverColor,
-						label: 'seperatorHoverColor',
-						title: __(
+						) }
+						colorValue={
+							seperatorColor ? seperatorColor : ''
+						}
+						data={ {
+							value: seperatorColor,
+							label: 'seperatorColor',
+						} }
+						setAttributes={ setAttributes }
+					/>
+					<AdvancedPopColorControl
+						label={ __(
 							'Hover Color',
 							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					disableBottomSeparator={ true }
-				/>
+						) }
+						colorValue={
+							seperatorHoverColor ? seperatorHoverColor : ''
+						}
+						data={ {
+							value: seperatorHoverColor,
+							label: 'seperatorHoverColor',
+						} }
+						setAttributes={ setAttributes }
+					/>
+				</>
+				)}
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -1162,7 +1270,13 @@ const Settings = ( props ) => {
 				title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				<UAGPresets
+					setAttributes = { setAttributes }
+					presets = { boxShadowPresets }
+					presetInputType = 'radioImage'
+				/>
 				<BoxShadowControl
+					blockId={ block_id }
 					setAttributes={ setAttributes }
 					label={ __(
 						'Box Shadow',
@@ -1232,10 +1346,10 @@ const Settings = ( props ) => {
 						bgColorPanel() }
 					{ 'grid' === layout &&
 						'dropdown' !== listDisplayStyle &&
-						boxShadowPanel() }
+						borderPanel() }
 					{ 'grid' === layout &&
 						'dropdown' !== listDisplayStyle &&
-						borderPanel() }
+						boxShadowPanel() }
 					{ 'list' === layout &&
 						'dropdown' !== listDisplayStyle &&
 						listPanel() }
@@ -1262,20 +1376,12 @@ const Settings = ( props ) => {
 
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<BlockControls key="controls">
-					<AlignmentToolbar
-						value={ alignment }
-						onChange={ ( value ) =>
-							setAttributes( { alignment: value } )
-						}
-					/>
-				</BlockControls>
+
 				{ inspectorControlsSettings }
 				{ loadTitleGoogleFonts }
 				{ loadCountGoogleFonts }
 				{ loadListGoogleFonts }
-			</Suspense>
+
 		</>
 	);
 };

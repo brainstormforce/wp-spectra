@@ -10,7 +10,18 @@ import parseSVG from './parseIcon';
 function renderSVG( svg ) {
 	svg = parseSVG( svg );
 
-	const fontAwesome = uagb_blocks_info.uagb_svg_icons[ svg ];
+	let fontAwesome;
+
+	// Load Polyfiller Array if needed.
+	if ( 'disabled' !== uagb_blocks_info.load_font_awesome_5 ) {
+		fontAwesome = uagb_blocks_info.uagb_svg_icons[ uagb_blocks_info.font_awesome_5_polyfill[ svg ] ];
+		if ( ! fontAwesome ) {
+			fontAwesome = uagb_blocks_info.uagb_svg_icons[ svg ];
+		}
+	}
+	else {
+		fontAwesome = uagb_blocks_info.uagb_svg_icons[ svg ];
+	}
 
 	if ( 'undefined' !== typeof fontAwesome ) {
 		const viewbox_array = fontAwesome.svg.hasOwnProperty( 'brands' )
@@ -50,6 +61,12 @@ function renderSVG( svg ) {
 							clipRule="evenodd"
 							d="M8 2H18V0H8V2ZM0 7H18V5H0V7ZM8 12H18V10H8V12Z"
 						/>
+					</svg>
+				);
+			case 'align-justify':
+				return (
+					<svg width="18" height="12" viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0 0H18V2H0V0ZM0 5.00001H18V7.00001H0V5.00001ZM0 10H18V12H0V10Z"/>
 					</svg>
 				);
 		}

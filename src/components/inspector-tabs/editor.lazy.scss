@@ -239,39 +239,6 @@ $border-color: #d6d9dd;
 	top: -3px;
 	z-index: 9;
 	border-top: calc(0.1em + 1px) solid #f2f4f5;
-
-	&.uagb-is-sticky {
-
-		.uagb-inspector-tabs {
-
-			&::before,
-			&::after {
-				display: none;
-			}
-			border-bottom: 1px solid #e2e4e7;
-
-			button {
-				border-radius: 0;
-
-				&::before {
-					display: none;
-				}
-
-				&::after {
-					border-radius: 0;
-					background: #0085ba;
-					height: 4px;
-					top: auto;
-					bottom: -1px;
-					opacity: 0;
-				}
-
-				&.uagb-active::after {
-					opacity: 1;
-				}
-			}
-		}
-	}
 }
 
 .uagb-inspector-tab .components-panel__body:first-child,

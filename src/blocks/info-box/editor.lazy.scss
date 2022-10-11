@@ -20,3 +20,17 @@
 		margin-top: 0;
 	}
 }
+
+.uagb-infobox-icon-left,
+.uagb-infobox-icon-right {
+	// This is added since the editor Desktop View applies a default Border Box for all elements.
+	svg {
+		box-sizing: content-box;
+	}
+}
+
+.uagb-infobox-link-wrap {
+
+	pointer-events: none;
+
+}

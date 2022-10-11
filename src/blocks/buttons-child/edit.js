@@ -4,18 +4,15 @@
 
 // Import classes
 import styling from './styling';
-import lazyLoader from '@Controls/lazy-loader';
-import React, { useEffect, useState, lazy, Suspense } from 'react';
+
+import React, { useEffect, useState,    } from 'react';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/buttons-child/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/buttons-child/render" */ './render' )
-);
+import scrollBlockToView from '@Controls/scrollBlockToView';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
+
+import Settings from './settings';
+import Render from './render';
 
 const ButtonsChildComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -58,6 +55,30 @@ const ButtonsChildComponent = ( props ) => {
 				setAttributes( { leftPadding: hPadding } );
 			}
 		}
+		const { borderStyle, borderWidth, borderRadius, borderColor, borderHColor } = props.attributes
+		// border migration
+		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+			migrateBorderAttributes( 'btn', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHColor',
+				value: borderHColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			},
+			props.setAttributes,
+			props.attributes
+			);
+
+		}
 	}, [] );
 
 	useEffect( () => {
@@ -72,17 +93,21 @@ const ButtonsChildComponent = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-button-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<Settings
 				parentProps={ props }
 				state={ state }
 				setStateValue={ setStateValue }
+				deviceType = { deviceType }
 			/>
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 export default ButtonsChildComponent;

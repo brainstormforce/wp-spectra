@@ -62,10 +62,10 @@ if ( ! class_exists( 'UAGB_Ast_Block_Templates' ) ) :
 				return $vars;
 			}
 
-			$vars['button_text']         = 'Templates';
+			$vars['button_text']         = __( 'Template Kits', 'ultimate-addons-for-gutenberg' );
 			$vars['display_button_logo'] = true;
-			$vars['popup_logo_uri']      = UAGB_URL . 'admin/assets/images/uagb_notice.svg';
-			$vars['button_logo']         = UAGB_URL . 'admin/assets/images/uag-white-logo.svg';
+			$vars['popup_logo_uri']      = UAGB_URL . 'admin-core/assets/images/uag-logo.svg';
+			$vars['button_logo']         = UAGB_URL . 'admin-core/assets/images/btn-spectra.svg';
 			$vars['button_class']        = 'uagb-template-button-logo';
 			return $vars;
 		}
@@ -87,6 +87,10 @@ if ( ! class_exists( 'UAGB_Ast_Block_Templates' ) ) :
 				global $ast_block_templates_version, $ast_block_templates_init;
 				$path    = realpath( dirname( __FILE__ ) . '/gutenberg-templates/ast-block-templates.php' );
 				$version = isset( $file_data['ast-block-templates'] ) ? $file_data['ast-block-templates'] : 0;
+
+				if ( null === $ast_block_templates_version ) {
+					$ast_block_templates_version = '1.0.0';
+				}
 
 				// Compare versions.
 				if ( version_compare( $version, $ast_block_templates_version, '>' ) ) {

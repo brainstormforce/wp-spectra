@@ -22,6 +22,7 @@ export default function save( props ) {
 		maxYear,
 		maxMonth,
 		maxDay,
+		autocomplete,
 	} = attributes;
 
 	let validation_min_value = '';
@@ -45,6 +46,7 @@ export default function save( props ) {
 				min={ validation_min_value }
 				max={ validation_max_value }
 				name={ block_id }
+				autoComplete={ autocomplete }
 			/>
 		);
 	} else {
@@ -54,6 +56,7 @@ export default function save( props ) {
 				className="uagb-forms-date-input uagb-forms-input"
 				required={ dateRequired }
 				name={ block_id }
+				autoComplete={ autocomplete }
 			/>
 		);
 	}

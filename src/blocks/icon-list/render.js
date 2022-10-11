@@ -21,6 +21,7 @@ const Render = ( props ) => {
 	const { attributes } = props;
 
 	const {
+		isPreview,
 		className,
 		icon_count,
 		block_id,
@@ -36,7 +37,10 @@ const Render = ( props ) => {
 		return childIconList;
 	}, [ icon_count ] );
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/icon-list.png`;
+
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				className,

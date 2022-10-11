@@ -1,0 +1,17 @@
+.uagb-gradient-picker {
+
+	.components-custom-gradient-picker__gradient-bar {
+		border-radius: 5px;
+		height: 30px;
+
+		.components-custom-gradient-picker__control-point-button {
+			top: 9px;
+			width: 12px;
+			height: 12px;
+		}
+
+		.components-custom-gradient-picker__insert-point {
+			top: 7px;
+		}
+	}
+}

@@ -1,5 +1,4 @@
 import { decodeEntities } from '@wordpress/html-entities';
-import { __ } from '@wordpress/i18n';
 import React from 'react';
 const Title = ( props ) => {
 	const Tag = props.attributes.headingTag;
@@ -17,8 +16,7 @@ const Title = ( props ) => {
 				target={ target }
 				rel="noopener noreferrer"
 			>
-				{ decodeEntities( post.title.rendered.trim() ) ||
-					__( '(Untitled)' ) }
+				{ decodeEntities( post.title.rendered.trim() ) }
 			</a>
 		</Tag>
 	);

@@ -14,9 +14,9 @@ $block_data = array(
 	'admin_categories' => array(),
 	'link'             => 'sections',
 	'title'            => __( 'Advanced Row', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block is an outer wrap section that allows you to add other blocks within it.', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Outer wrap section that allows you to add other blocks within it.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 2,
-
+	'priority'         => 91,
+	'deprecated'       => true,
 );

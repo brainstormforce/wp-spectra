@@ -1,0 +1,136 @@
+// All Variables Required for Spectra are listed here.
+
+// Only the variables defined here will be used throughout Spectra based on their category.
+// Certain Variables will have the same value. This is for Consistency during usage, and will not affect perfomance as Sass is a preprocessor for CSS.
+
+/* stylelint-disable color-hex-case, color-hex-length */
+
+// -------------------------------------------
+// All General CSS Variables Below This Point.
+// -------------------------------------------
+
+// Spectra Colors.
+
+$spectra-color-primary          : #007CBA;
+$spectra-color-secondary        : #0063A1;
+$spectra-color-heading          : #1D2327;
+$spectra-color-body             : #50575E;
+$spectra-color-light-background : #F0F0F1;
+$spectra-color-plain-background : #FFFFFF;
+$spectra-color-border           : #E6E7E9;
+$spectra-color-border-hover     : #959595;
+$spectra-color-icon             : #555D66;
+$spectra-color-icon-disabled    : #CCCCCC;
+$spectra-color-tab-background   : #DCF2FF;
+$spectra-color-tab-border       : #CDE9F9;
+
+// Spectra Font Sizes.
+
+$spectra-font-size-title-large       : 32px;
+$spectra-font-size-title-medium      : 24px;
+$spectra-font-size-title-small       : 20px;
+$spectra-font-size-subtitle          : 16px;
+$spectra-font-size-subtitle-small    : 14px;
+$spectra-font-size-body              : 13px;
+$spectra-font-size-button            : 13px;
+$spectra-font-size-label             : 13px;
+$spectra-font-size-label-semibold    : 13px;
+$spectra-font-size-link-text         : 13px;
+$spectra-font-size-placeholder       : 13px;
+$spectra-font-size-body-small        : 12px;
+$spectra-font-size-helper-text       : 12px;
+$spectra-font-size-small-button-text : 11px;
+$spectra-font-size-section-heading   : 11px;
+
+// Spectra Font Weights.
+
+$spectra-font-weight-title-large       : 400;
+$spectra-font-weight-title-medium      : 400;
+$spectra-font-weight-title-small       : 400;
+$spectra-font-weight-subtitle          : 600;
+$spectra-font-weight-subtitle-small    : 600;
+$spectra-font-weight-body              : 400;
+$spectra-font-weight-button            : 400;
+$spectra-font-weight-label             : 400;
+$spectra-font-weight-label-semibold    : 600;
+$spectra-font-weight-link-text         : 400;
+$spectra-font-weight-placeholder       : 400;
+$spectra-font-weight-body-small        : 400;
+$spectra-font-weight-helper-text       : 400;
+$spectra-font-weight-small-button-text : 400;
+$spectra-font-weight-section-heading   : 500;
+
+// Spectra Line Heights.
+
+$spectra-line-height-title-large       : 40px;
+$spectra-line-height-title-medium      : 32px;
+$spectra-line-height-title-small       : 28px;
+$spectra-line-height-subtitle          : 24px;
+$spectra-line-height-subtitle-small    : 20px;
+$spectra-line-height-body              : 1.4em;
+$spectra-line-height-button            : 13px;
+$spectra-line-height-label             : 1.4em;
+$spectra-line-height-label-semibold    : 1.4em;
+$spectra-line-height-link-text         : 1.4em;
+$spectra-line-height-placeholder       : 1em;
+$spectra-line-height-body-small        : 1.4em;
+$spectra-line-height-helper-text       : 1.4em;
+$spectra-line-height-small-button-text : 22px;
+$spectra-line-height-section-heading   : 1.4em;
+
+// Spectra Text Transforms.
+
+$spectra-text-transform-title-large       : none;
+$spectra-text-transform-title-medium      : none;
+$spectra-text-transform-title-small       : none;
+$spectra-text-transform-subtitle          : none;
+$spectra-text-transform-subtitle-small    : none;
+$spectra-text-transform-body              : none;
+$spectra-text-transform-button            : none;
+$spectra-text-transform-label             : none;
+$spectra-text-transform-label-semibold    : none;
+$spectra-text-transform-link-text         : none;
+$spectra-text-transform-placeholder       : none;
+$spectra-text-transform-body-small        : none;
+$spectra-text-transform-helper-text       : none;
+$spectra-text-transform-small-button-text : uppercase;
+$spectra-text-transform-section-heading   : uppercase;
+
+// Spectra Letter Spacing.
+
+$spectra-letter-spacing : 0;
+
+// --------------------------------------------
+// All Specific CSS Variables Below This Point.
+// --------------------------------------------
+
+// Spectra Panel UI.
+
+$spectra-panel-heading-padding : 16px 48px 16px 16px;
+$spectra-panel-body-padding    : 16px;
+
+// Spectra Control UI.
+
+$spectra-control-vertical-gap             : 25px;
+$spectra-control-label-bottom-margin      : 10px;
+$spectra-control-border-radius            : 3px;
+$spectra-control-input-padding            : 7px 12px;
+$spectra-control-input-height             : 30px;
+$spectra-control-circle-indicator         : 28px;
+$spectra-control-mediapicker-height       : 130px;
+$spectra-control-mediapicker-height-small : 96px;
+
+// Spectra Control Popup UI.
+
+$spectra-control-popup-padding       : 16px;
+$spectra-control-popup-vertical-gap  : 15px;
+$spectra-control-popup-border-radius : 2px;
+$spectra-control-popup-box-shadow    : 0 2px 8px rgba(0, 0, 0, 0.2);
+
+// Spectra Fullscreen Popup UI.
+
+$spectra-popup-heading-padding : 18px 66px 18px 30px;
+$spectra-popup-content-padding : 18px 30px;
+$spectra-popup-vertical-gap    : 30px;
+$spectra-popup-border-radius   : 2px;
+$spectra-popup-box-shadow      : 0 4px 4px rgba(0, 0, 0, 0.25);

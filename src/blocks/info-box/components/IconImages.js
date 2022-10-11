@@ -25,12 +25,16 @@ const InfoBoxIconImage = ( props ) => {
 		}
 
 		return (
+			<>
+			{ ( attributes.showIcon ) && (
 			<div className="uagb-ifb-image-content">
 			<img
 				src={ url }
 				alt={ attributes.iconImage.alt }
 			/>
 			</div>
+			)}
+			</>
 		);
 	}
 	return null;

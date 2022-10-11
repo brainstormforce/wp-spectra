@@ -2,15 +2,11 @@
  * BLOCK: Forms - hidden - Edit
  */
 
-import React, { lazy, useEffect, Suspense } from 'react';
+import React, {   useEffect,  } from 'react';
 
-import lazyLoader from '@Controls/lazy-loader';
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/form/hidden-settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form/hidden-render" */ './render' )
-);
+
+import Settings from './settings';
+import Render from './render';
 
 const UAGBFormsHiddenEdit = ( props ) => {
 	useEffect( () => {
@@ -28,12 +24,18 @@ const UAGBFormsHiddenEdit = ( props ) => {
 		document.head.appendChild( $style );
 	}, [] );
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/form-hidden.svg`;
+
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } />
-			</Suspense>
+			{ props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+
+							<>
+			<Settings parentProps={ props } />
+					<Render parentProps={ props } />
+			</>
+
+			) }
 		</>
 	);
 };

@@ -22,10 +22,17 @@ const Render = ( props ) => {
 		label,
 		icon,
 		iconPosition,
+		removeText,
+		noFollow,
+		backgroundType,
+		borderStyle,
+		background,
+		color,
+		showIcon,
 	} = attributes;
 
 	const iconHtml = ( curr_position ) => {
-		if ( '' !== icon && curr_position === iconPosition ) {
+		if ( showIcon && '' !== icon && curr_position === iconPosition ) {
 			return (
 				<span
 					className={ classnames(
@@ -39,7 +46,26 @@ const Render = ( props ) => {
 		}
 		return null;
 	};
+	const btnText = () => {
+		if( ! removeText ){
+			return <RichText
+						placeholder={ __( 'Add text…' ) }
+						value={ label }
+						tagName="div"
+						onChange={ ( value ) => {
+							setAttributes( { label: value } );
+						} }
+						allowedFormats={ [ 'core/bold', 'core/italic', 'core/strikethrough' ] }
+						className="uagb-button__link"
+						rel= { noFollow ? 'nofollow noopener' : 'follow noopener' }
+						keepPlaceholderOnFocus
+					/>
+		}
+			return '';
 
+	}
+
+	const hasBackground = background !== '' || backgroundType === 'transparent' || 'gradient' === backgroundType  ? 'has-background' : '';
 	return (
 		<div
 			className={ classnames(
@@ -47,29 +73,21 @@ const Render = ( props ) => {
 				'uagb-buttons__outer-wrap',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-				'wp-block-button'
+				'wp-block-button',
+				borderStyle !== 'none' ? 'is-style-outline' : '',
 			) }
 		>
 			<div className="uagb-button__wrapper">
 				<div
 					className={ classnames(
 						'uagb-buttons-repeater',
-						'wp-block-button__link'
+						'wp-block-button__link',
+						hasBackground,
+						color !== '' ? 'has-text-color' : '',
 					) }
 				>
 					{ iconHtml( 'before' ) }
-					<RichText
-						placeholder={ __( 'Add text…' ) }
-						value={ label }
-						tagName="div"
-						onChange={ ( value ) => {
-							setAttributes( { label: value } );
-						} }
-						allowedFormats={ [ 'bold', 'italic', 'strikethrough' ] }
-						className="uagb-button__link"
-						rel="noopener noreferrer"
-						keepPlaceholderOnFocus
-					/>
+					{ btnText() }
 					{ iconHtml( 'after' ) }
 				</div>
 			</div>

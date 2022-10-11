@@ -46,7 +46,7 @@ module.exports = function ( grunt ) {
 			main: {
 				options: {
 					archive:
-						'ultimate-addons-for-gutenberg-<%= pkg.version %>.zip',
+						'spectra-<%= pkg.version %>.zip',
 					mode: 'zip',
 				},
 				files: [
@@ -221,6 +221,28 @@ module.exports = function ( grunt ) {
 				],
 			},
 		},
+
+		json2php: {
+			options: {
+				// Task-specific options go here.
+				compress: true,
+				cover ( phpArrayString, destFilePath ) { // eslint-disable-line no-unused-vars
+					return (
+						'<?php\n/**\n * Font awesome icons array array file.\n *\n * @package     Spectra\n * @author      Spectra\n * @link        https://wpspectra.com/\n */\n\n/**\n * Returns font awesome icons array \n */\nreturn ' +
+						phpArrayString +
+						';\n'
+					);
+				},
+			},
+			your_target: {
+				files: {
+					'blocks-config/uagb-controls/uagb-icons.php':
+						'blocks-config/uagb-controls/UAGBIcon.json',
+					'blocks-config/uagb-controls/spectra-icons-v6.php':
+						'blocks-config/uagb-controls/SpectraIconsV6.json',
+				},
+			},
+		},
 	} );
 
 	/* Load Tasks */
@@ -239,6 +261,7 @@ module.exports = function ( grunt ) {
 	/* Read File Generation task */
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
 	grunt.loadNpmTasks( 'grunt-rtlcss' );
+	grunt.loadNpmTasks( 'grunt-json2php' );
 
 	/* Register task started */
 	grunt.registerTask( 'release', [
@@ -279,6 +302,18 @@ module.exports = function ( grunt ) {
 					console.log( 'Fonts successfully fetched!' ); // eslint-disable-line
 
 					const fonts = JSON.parse( body );
+					Object.keys( fonts ).map( ( key ) => {
+
+						delete fonts[key].changes;
+						delete fonts[key].ligatures;
+						delete fonts[key].search;
+						delete fonts[key].styles;
+						delete fonts[key].unicode;
+						delete fonts[key].label;
+						delete fonts[key].voted;
+						delete fonts[key].free;
+						return key;
+					} );
 
 					fs.writeFile(
 						'blocks-config/uagb-controls/UAGBIcon.json',
@@ -294,6 +329,47 @@ module.exports = function ( grunt ) {
 		);
 	} );
 
+	// Update Font Awesome v6 library.
+	grunt.registerTask( 'font-awesome-v6', function () {
+		this.async();
+		const request = require( 'request' );
+		const fs = require( 'fs' );
+
+		request(
+			'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/metadata/icons.json',
+			function ( error, response, body ) {
+				if ( response && response.statusCode === 200 ) {
+					console.log( 'V6 Fonts successfully fetched!' ); // eslint-disable-line
+
+					const fonts = JSON.parse( body );
+					Object.keys( fonts ).map( ( key ) => {
+
+						delete fonts[key].changes;
+						delete fonts[key].ligatures;
+						delete fonts[key].search;
+						delete fonts[key].styles;
+						delete fonts[key].unicode;
+						delete fonts[key].label;
+						delete fonts[key].voted;
+						delete fonts[key].free;
+						delete fonts[key].aliases;
+						return key;
+					} );
+
+					fs.writeFile(
+						'blocks-config/uagb-controls/SpectraIconsV6.json',
+						JSON.stringify( fonts, null, 4 ),
+						function ( err ) {
+							if ( ! err ) {
+								console.log( 'Font-Awesome v6 library updated!' ); // eslint-disable-line
+							}
+						}
+					);
+				}
+			}
+		);
+	} );
+
 	// Generate Read me file
 	grunt.registerTask( 'readme', [ 'wp_readme_to_markdown' ] );
 
@@ -301,4 +377,6 @@ module.exports = function ( grunt ) {
 	grunt.registerTask( 'rtl', ['rtlcss'] );
 
 	grunt.registerTask( 'minify', [ 'rtlcss', 'cssmin', 'uglify' ] );
+
+	grunt.registerTask( 'font-awesome-php-array-update', [ 'json2php' ] );
 };

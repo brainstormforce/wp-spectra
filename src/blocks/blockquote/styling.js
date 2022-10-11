@@ -7,8 +7,12 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		skinStyle,
 		align,
@@ -35,12 +39,20 @@ function styling( props ) {
 		authorLineHeightTablet,
 		authorLineHeightMobile,
 		descSpace,
+		descSpaceTablet,
+		descSpaceMobile,
 		authorSpace,
+		authorSpaceTablet,
+		authorSpaceMobile,
 		borderColor,
 		borderStyle,
 		borderWidth,
 		borderGap,
+		borderGapTablet,
+		borderGapMobile,
 		verticalPadding,
+		verticalPaddingTablet,
+		verticalPaddingMobile,
 		verticalPaddingUnit,
 		quoteColor,
 		quoteSize,
@@ -67,8 +79,16 @@ function styling( props ) {
 		tweetIconSpacing,
 		tweetIconSpacingUnit,
 		authorImageWidth,
+		authorImageWidthTablet,
+		authorImageWidthMobile,
 		authorImageWidthUnit,
+		authorImageGap,
+		authorImageGapTablet,
+		authorImageGapMobile,
+		authorImageGapUnit,
 		authorImgBorderRadius,
+		authorImgBorderRadiusTablet,
+		authorImgBorderRadiusMobile,
 		quoteBorderRadius,
 		quoteTopMargin,
 		quoteBottomMargin,
@@ -121,14 +141,53 @@ function styling( props ) {
 		quotetabletUnit,
 		descFontStyle,
 		authorFontStyle,
-		tweetBtnFontStyle
+		tweetBtnFontStyle,
+		stack,
+		descLetterSpacing,
+descLetterSpacingTablet,
+descLetterSpacingMobile,
+descLetterSpacingType,
+authorLetterSpacing,
+authorLetterSpacingTablet,
+authorLetterSpacingMobile,
+authorLetterSpacingType,
+tweetBtnLetterSpacing,
+tweetBtnLetterSpacingTablet,
+tweetBtnLetterSpacingMobile,
+tweetBtnLetterSpacingType,
 	} = props.attributes;
 
 	let tmpAuthorSpace = authorSpace;
+	let tmpAuthorSpaceTablet = authorSpaceTablet;
+	let tmpAuthorSpaceMobile = authorSpaceMobile;
 
 	if ( align !== 'center' || skinStyle === 'border' ) {
 		tmpAuthorSpace = 0;
+		tmpAuthorSpaceTablet = 0;
+		tmpAuthorSpaceMobile = 0;
 	}
+
+	const descSpaceFallback = getFallbackNumber( descSpace, 'descSpace', blockName );
+	const descSpaceTabletFallback = getFallbackNumber( descSpaceTablet, 'descSpaceTablet', blockName );
+	const descSpaceMobileFallback = getFallbackNumber( descSpaceMobile, 'descSpaceMobile', blockName );
+	const borderWidthFallback = getFallbackNumber( borderWidth, 'borderWidth', blockName );
+	const borderGapFallback = getFallbackNumber( borderGap, 'borderGap', blockName );
+	const borderGapTabletFallback = getFallbackNumber( borderGapTablet, 'borderGapTablet', blockName );
+	const borderGapMobileFallback = getFallbackNumber( borderGapMobile, 'borderGapMobile', blockName );
+	const quoteBorderRadiusFallback = getFallbackNumber( quoteBorderRadius, 'quoteBorderRadius', blockName );
+	const quoteSizeFallback = getFallbackNumber( quoteSize, 'quoteSize', blockName );
+	const quoteSizeTabletFallback = getFallbackNumber( quoteSizeTablet, 'quoteSizeTablet', blockName );
+	const quoteSizeMobileFallback = getFallbackNumber( quoteSizeMobile, 'quoteSizeMobile', blockName );
+	const tmpAuthorSpaceFallback = getFallbackNumber( tmpAuthorSpace, 'authorSpace', blockName );
+	const tmpAuthorSpaceTabletFallback = getFallbackNumber( tmpAuthorSpaceTablet, 'authorSpaceTablet', blockName );
+	const tmpAuthorSpaceMobileFallback = getFallbackNumber( tmpAuthorSpaceMobile, 'authorSpaceMobile', blockName );
+	const authorImageWidthFallback = getFallbackNumber( authorImageWidth, 'authorImageWidth', blockName );
+	const authorImageWidthTabletFallback = getFallbackNumber( authorImageWidthTablet, 'authorImageWidthTablet', blockName );
+	const authorImageWidthMobileFallback = getFallbackNumber( authorImageWidthMobile, 'authorImageWidthMobile', blockName );
+	const authorImageGapFallback = getFallbackNumber( authorImageGap, 'authorImageGap', blockName );
+	const authorImageGapTabletFallback = getFallbackNumber( authorImageGapTablet, 'authorImageGapTablet', blockName );
+	const authorImageGapMobileFallback = getFallbackNumber( authorImageGapMobile, 'authorImageGapMobile', blockName );
+	const tweetIconSpacingFallback = getFallbackNumber( tweetIconSpacing, 'tweetIconSpacing', blockName );
 	//Set align to left for border style
 	let textAlign = align;
 
@@ -149,8 +208,9 @@ function styling( props ) {
 			'text-decoration': descDecoration,
 			'text-transform': descTransform,
 			'color': descColor,
-			'margin-bottom': generateCSSUnit( descSpace, descSpaceUnit ),
+			'margin-bottom': generateCSSUnit( descSpaceFallback, descSpaceUnit ),
 			'text-align': textAlign,
+			'letter-spacing': generateCSSUnit( descLetterSpacing, descLetterSpacingType ),
 		},
 		' .uagb-blockquote__author.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit( authorFontSize, authorFontSizeType ),
@@ -165,15 +225,13 @@ function styling( props ) {
 			'text-transform': authorTransform,
 			'color': authorColor,
 			'text-align': textAlign,
+			'letter-spacing': generateCSSUnit( authorLetterSpacing, authorLetterSpacingType ),
 		},
 		'.uagb-blockquote__skin-border blockquote.uagb-blockquote': {
 			'border-color': borderColor,
 			'border-left-style': borderStyle,
-			'border-left-width': generateCSSUnit(
-				borderWidth,
-				borderWidthUnit
-			),
-			'padding-left': generateCSSUnit( borderGap, borderGapUnit ),
+			'border-left-width': generateCSSUnit( borderWidthFallback, borderWidthUnit ),
+			'padding-left': generateCSSUnit( borderGapFallback, borderGapUnit ),
 			'padding-top': generateCSSUnit(
 				verticalPadding,
 				verticalPaddingUnit
@@ -188,10 +246,7 @@ function styling( props ) {
 		},
 		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon': {
 			'background': quoteBgColor,
-			'border-radius': generateCSSUnit(
-				quoteBorderRadius,
-				quoteBorderRadiusUnit
-			),
+			'border-radius': generateCSSUnit( quoteBorderRadiusFallback, quoteBorderRadiusUnit ),
 			'margin-top': generateCSSUnit( quoteTopMargin, quoteUnit ),
 			'margin-bottom': generateCSSUnit( quoteBottomMargin, quoteUnit ),
 			'margin-left': generateCSSUnit( quoteLeftMargin, quoteUnit ),
@@ -199,29 +254,38 @@ function styling( props ) {
 			'padding': generateCSSUnit( quotePadding, quotePaddingType ),
 		},
 		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon svg': {
-			'width': generateCSSUnit( quoteSize, quoteSizeType ),
-			'height': generateCSSUnit( quoteSize, quoteSizeType ),
+			'width': generateCSSUnit( quoteSizeFallback, quoteSizeType ),
+			'height': generateCSSUnit( quoteSizeFallback, quoteSizeType ),
 			'fill': quoteColor,
 		},
 		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon:hover': {
 			'background': quoteBgHoverColor,
 		},
-		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon:hover .uagb-blockquote__icon svg': {
+		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon:hover svg': {
 			'fill': quoteHoverColor,
 		},
 		'.uagb-blockquote__style-style_1 .uagb-blockquote': {
 			'text-align': align,
 		},
 		' .uagb-blockquote__author-wrap': {
-			'margin-bottom': generateCSSUnit( tmpAuthorSpace, authorSpaceUnit ),
+			'margin-bottom': generateCSSUnit( tmpAuthorSpaceFallback, authorSpaceUnit ),
 		},
 		' .uagb-blockquote__author-wrap img': {
-			'width': generateCSSUnit( authorImageWidth, authorImageWidthUnit ),
-			'height': generateCSSUnit( authorImageWidth, authorImageWidthUnit ),
+			'width': generateCSSUnit( authorImageWidthFallback, authorImageWidthUnit ),
+			'height': generateCSSUnit( authorImageWidthFallback, authorImageWidthUnit ),
 			'border-radius': generateCSSUnit(
 				authorImgBorderRadius,
 				authorImgBorderRadiusUnit
 			),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img': {
+			'margin-left': generateCSSUnit( authorImageGapFallback, authorImageGapUnit ),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top img': {
+			'margin-bottom': generateCSSUnit( authorImageGapFallback, authorImageGapUnit ),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img': {
+			'margin-right': generateCSSUnit( authorImageGapFallback, authorImageGapUnit ),
 		},
 	};
 	if ( enableTweet ) {
@@ -239,6 +303,7 @@ function styling( props ) {
 			'font-style': tweetBtnFontStyle,
 			'text-decoration': tweetBtnDecoration,
 			'text-transform': tweetBtnTransform,
+			'letter-spacing': generateCSSUnit( tweetBtnLetterSpacing, tweetBtnLetterSpacingType ),
 		};
 		selectors[
 			'.uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button'
@@ -288,7 +353,6 @@ function styling( props ) {
 		] = {
 			'fill': tweetBtnColor,
 		};
-
 		selectors[
 			'.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:before'
 		] = {
@@ -303,10 +367,7 @@ function styling( props ) {
 		selectors[
 			'.uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg'
 		] = {
-			'margin-right': generateCSSUnit(
-				tweetIconSpacing,
-				tweetIconSpacingUnit
-			),
+			'margin-right': generateCSSUnit( tweetIconSpacingFallback, tweetIconSpacingUnit ),
 		};
 
 		// Hover CSS
@@ -385,6 +446,8 @@ function styling( props ) {
 				descLineHeightTablet,
 				descLineHeightType
 			),
+			'margin-bottom': generateCSSUnit( descSpaceTabletFallback, descSpaceUnit ),
+			'letter-spacing': generateCSSUnit( descLetterSpacingTablet, descLetterSpacingType ),
 		},
 		' .uagb-blockquote__author.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
@@ -395,6 +458,7 @@ function styling( props ) {
 				authorLineHeightTablet,
 				authorLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( authorLetterSpacingTablet, authorLetterSpacingType ),
 		},
 		' a.uagb-blockquote__tweet-button': {
 			'font-size': generateCSSUnit(
@@ -405,6 +469,7 @@ function styling( props ) {
 				tweetBtnLineHeightTablet,
 				tweetBtnLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( tweetBtnLetterSpacingTablet, tweetBtnLetterSpacingType ),
 		},
 		' a.uagb-blockquote__tweet-button svg': {
 			'width': generateCSSUnit(
@@ -417,8 +482,8 @@ function styling( props ) {
 			),
 		},
 		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon svg': {
-			'width': generateCSSUnit( quoteSizeTablet, quoteSizeType ),
-			'height': generateCSSUnit( quoteSizeTablet, quoteSizeType ),
+			'width': generateCSSUnit( quoteSizeTabletFallback, quoteSizeType ),
+			'height': generateCSSUnit( quoteSizeTabletFallback, quoteSizeType ),
 		},
 		'.uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button': {
 			'padding-left': generateCSSUnit(
@@ -437,6 +502,54 @@ function styling( props ) {
 				paddingBtnBottomTablet,
 				tabletPaddingBtnUnit
 			),
+		},
+		'.uagb-blockquote__skin-border blockquote.uagb-blockquote': {
+			'padding-top': generateCSSUnit(
+				verticalPaddingTablet,
+				verticalPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				verticalPaddingTablet,
+				verticalPaddingUnit
+			),
+			'padding-left': generateCSSUnit( borderGapTabletFallback, borderGapUnit ),
+		},
+		' .uagb-blockquote__author-wrap': {
+			'margin-bottom': generateCSSUnit( tmpAuthorSpaceTabletFallback, authorSpaceUnit ),
+		},
+		' .uagb-blockquote__author-wrap img': {
+			'width': generateCSSUnit( authorImageWidthTabletFallback, authorImageWidthUnit ),
+			'height': generateCSSUnit( authorImageWidthTabletFallback, authorImageWidthUnit ),
+			'border-radius': generateCSSUnit(
+				authorImgBorderRadiusTablet,
+				authorImgBorderRadiusUnit
+			),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img': {
+			'margin-left': ( stack === 'tablet' ) ? '0px' : generateCSSUnit(
+				authorImageGapTabletFallback,
+				authorImageGapUnit
+			),
+			'margin-bottom': ( stack === 'tablet' ) ? generateCSSUnit(
+				authorImageGapTabletFallback,
+				authorImageGapUnit
+			) : '0px',
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top img': {
+			'margin-bottom': generateCSSUnit(
+				authorImageGapTabletFallback,
+				authorImageGapUnit
+			),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img': {
+			'margin-right': ( stack === 'tablet' ) ? '0px' : generateCSSUnit(
+				authorImageGapTabletFallback,
+				authorImageGapUnit
+			),
+			'margin-bottom': ( stack === 'tablet' ) ? generateCSSUnit(
+				authorImageGapTabletFallback,
+				authorImageGapUnit
+			) : '0px',
 		},
 	};
 	const mobileSelectors = {
@@ -468,6 +581,8 @@ function styling( props ) {
 				descLineHeightMobile,
 				descLineHeightType
 			),
+			'margin-bottom': generateCSSUnit( descSpaceMobileFallback, descSpaceUnit ),
+			'letter-spacing': generateCSSUnit( descLetterSpacingMobile, descLetterSpacingType ),
 		},
 		' .uagb-blockquote__author.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
@@ -478,6 +593,7 @@ function styling( props ) {
 				authorLineHeightMobile,
 				authorLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( authorLetterSpacingMobile, authorLetterSpacingType ),
 		},
 		' a.uagb-blockquote__tweet-button': {
 			'font-size': generateCSSUnit(
@@ -488,6 +604,7 @@ function styling( props ) {
 				tweetBtnLineHeightMobile,
 				tweetBtnLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( tweetBtnLetterSpacingMobile, tweetBtnLetterSpacingType ),
 		},
 		' a.uagb-blockquote__tweet-button svg': {
 			'width': generateCSSUnit(
@@ -500,8 +617,8 @@ function styling( props ) {
 			),
 		},
 		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon svg': {
-			'width': generateCSSUnit( quoteSizeMobile, quoteSizeType ),
-			'height': generateCSSUnit( quoteSizeMobile, quoteSizeType ),
+			'width': generateCSSUnit( quoteSizeMobileFallback, quoteSizeType ),
+			'height': generateCSSUnit( quoteSizeMobileFallback, quoteSizeType ),
 		},
 		'.uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button': {
 			'padding-left': generateCSSUnit(
@@ -521,7 +638,56 @@ function styling( props ) {
 				mobilePaddingBtnUnit
 			),
 		},
+		'.uagb-blockquote__skin-border blockquote.uagb-blockquote': {
+			'padding-top': generateCSSUnit(
+				verticalPaddingMobile,
+				verticalPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				verticalPaddingMobile,
+				verticalPaddingUnit
+			),
+			'padding-left': generateCSSUnit( borderGapMobileFallback, borderGapUnit ),
+		},
+		' .uagb-blockquote__author-wrap': {
+			'margin-bottom': generateCSSUnit( tmpAuthorSpaceMobileFallback, authorSpaceUnit ),
+		},
+		' .uagb-blockquote__author-wrap img': {
+			'width': generateCSSUnit( authorImageWidthMobileFallback, authorImageWidthUnit ),
+			'height': generateCSSUnit( authorImageWidthMobileFallback, authorImageWidthUnit ),
+			'border-radius': generateCSSUnit(
+				authorImgBorderRadiusMobile,
+				authorImgBorderRadiusUnit
+			),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img': {
+			'margin-left': ( stack !== 'none' ) ? '0px' : generateCSSUnit(
+				authorImageGapMobileFallback,
+				authorImageGapUnit
+			),
+			'margin-bottom': ( stack !== 'none' ) ? generateCSSUnit(
+				authorImageGapMobileFallback,
+				authorImageGapUnit
+			) : '0px',
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top img': {
+			'margin-bottom': generateCSSUnit(
+				authorImageGapMobileFallback,
+				authorImageGapUnit
+			),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img': {
+			'margin-right': ( stack !== 'none' ) ? '0px' : generateCSSUnit(
+				authorImageGapMobileFallback,
+				authorImageGapUnit
+			),
+			'margin-bottom': ( stack !== 'none' ) ? generateCSSUnit(
+				authorImageGapMobileFallback,
+				authorImageGapUnit
+			) : '0px',
+		},
 	};
+
 	const baseSelector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
 		8

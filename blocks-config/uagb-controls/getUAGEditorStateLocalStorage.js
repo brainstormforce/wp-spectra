@@ -7,11 +7,11 @@ const getUAGEditorStateLocalStorage = ( key = false ) => {
 		return localStorage;
 	}
 
-	const uagLastOpenedState = localStorage.getItem( 'uagLastOpenedState' );
+	const uagLastOpenedSettingState = localStorage.getItem( key );
 
-	if ( uagLastOpenedState ) {
+	if ( uagLastOpenedSettingState ) {
 
-		return JSON.parse( uagLastOpenedState )
+		return JSON.parse( uagLastOpenedSettingState )
 	}
 
 	return null;

@@ -1,20 +1,17 @@
 import classnames from 'classnames';
 import PositionClasses from './classes';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import React, { lazy, Suspense, useLayoutEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {    useLayoutEffect, useRef } from 'react';
+
 import TestimonialImage from './components/Image';
 import AuthorName from './components/AuthorName';
 import Company from './components/Company';
 import Description from './components/Description';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import Slider from 'react-slick';
 
-const Slider = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/testimonial/react-slick" */ 'react-slick'
-	)
-);
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -26,15 +23,19 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 	const deviceType = useDeviceType();
+	const blockName = props.name.replace( 'uagb/', '' );
 	const { className, setAttributes, attributes } = props;
 
 	// Setup the attributes.
 	const {
+		block_id,
+		isPreview,
 		test_block,
 		imagePosition,
 		columns,
 		tcolumns,
 		mcolumns,
+		test_item_count,
 		pauseOnHover,
 		infiniteLoop,
 		transitionSpeed,
@@ -45,9 +46,12 @@ const Render = ( props ) => {
 		autoplay,
 		autoplaySpeed,
 		arrowColor,
+		equalHeight
 	} = attributes;
 
-	const NextArrow = () => {
+	const sliderRef = useRef();
+
+	const NextArrow = ( { onClick } ) => {
 		return (
 			<button
 				type="button"
@@ -58,15 +62,16 @@ const Render = ( props ) => {
 				style={ {
 					borderColor: arrowColor,
 					borderRadius: arrowBorderRadius,
-					borderWidth: arrowBorderSize,
+					borderWidth: getFallbackNumber( arrowBorderSize, 'arrowBorderSize', blockName ),
 				} }
+				onClick = { onClick }
 			>
 				{ UAGB_Block_Icons.carousel_right }
 			</button>
 		);
 	};
 
-	const PrevArrow = () => {
+	const PrevArrow = ( { onClick } ) => {
 		return (
 			<button
 				type="button"
@@ -77,8 +82,9 @@ const Render = ( props ) => {
 				style={ {
 					borderColor: arrowColor,
 					borderRadius: arrowBorderRadius,
-					borderWidth: arrowBorderSize,
+					borderWidth: getFallbackNumber( arrowBorderSize, 'arrowBorderSize', blockName ),
 				} }
+				onClick= { onClick }
 			>
 				{ UAGB_Block_Icons.carousel_left }
 			</button>
@@ -90,55 +96,60 @@ const Render = ( props ) => {
 	const arrows =
 		'arrows' === arrowDots || 'arrows_dots' === arrowDots ? true : false;
 
+		const equalHeightClass = equalHeight
+		? 'uagb-post__carousel_equal-height'
+		: '';
+
 	const settings = {
-		slidesToShow: columns,
+		accessibility: false,
+		slidesToShow: ( deviceType === 'Desktop' ? getFallbackNumber( columns, 'columns', blockName ) : deviceType === 'Tablet' ? getFallbackNumber( tcolumns, 'columns', blockName ): getFallbackNumber( mcolumns, 'columns', blockName ) ), // eslint-disable-line no-nested-ternary
 		slidesToScroll: 1,
-		autoplaySpeed,
+		autoplaySpeed: getFallbackNumber( autoplaySpeed, 'autoplaySpeed', blockName ),
 		autoplay,
 		infinite: infiniteLoop,
 		pauseOnHover,
-		speed: transitionSpeed,
+		speed: getFallbackNumber( transitionSpeed, 'transitionSpeed', blockName ),
 		arrows,
 		dots,
 		rtl: false,
+		afterChange: () => {
+			if ( equalHeight ) {
+				uagb_carousel_height( block_id ); // eslint-disable-line no-undef
+			}
+		},
 		draggable: false,
-		nextArrow: <NextArrow arrowSize={ arrowSize } />,
-		prevArrow: <PrevArrow arrowSize={ arrowSize } />,
-		responsive: [
-			{
-				breakpoint: 1024,
-				settings: {
-					slidesToShow: tcolumns,
-					slidesToScroll: 1,
-				},
-			},
-			{
-				breakpoint: 767,
-				settings: {
-					slidesToShow: mcolumns,
-					slidesToScroll: 1,
-				},
-			},
-		],
+		nextArrow: <NextArrow arrowSize={ arrowSize } onClick={sliderRef.slickNext} />,
+		prevArrow: <PrevArrow arrowSize={ arrowSize } onClick={sliderRef.slickPrev} />,
 	};
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/testimonials.png`;
+	const isGridLayout = test_item_count === columns ? 'uagb-post__carousel_notset' : '';
+	const isGridLayoutTablet = test_item_count === tcolumns ? 'uagb-post__carousel_notset-tablet' : '';
+	const isGridLayoutMobile = test_item_count === mcolumns ? 'uagb-post__carousel_notset-mobile' : '';
+
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				className,
 				'uagb-slick-carousel uagb-tm__arrow-outside',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
+				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
+				`${ equalHeightClass }`,
+				isGridLayout,
+				isGridLayoutTablet,
+				isGridLayoutMobile
 			) }
 		>
-			<Suspense fallback={ lazyLoader() }>
+
 				<Slider
 					className={ classnames(
 						'is-carousel',
-						`uagb-tm__columns-${ columns }`,
-						'uagb-tm__items'
+						`uagb-tm__columns-${ getFallbackNumber( columns, 'columns', blockName ) }`,
+						'uagb-tm__items',
 					) }
 					{ ...settings }
+					ref={ sliderRef }
 				>
 					{ test_block.map( ( test, index ) => (
 						<div
@@ -222,7 +233,7 @@ const Render = ( props ) => {
 						</div>
 					) ) }
 				</Slider>
-			</Suspense>
+
 		</div>
 	);
 };

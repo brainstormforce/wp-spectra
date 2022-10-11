@@ -2,17 +2,16 @@
  * BLOCK: Tabs Block
  */
 import styling from './styling';
-import React, { useEffect, lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect,    } from 'react';
+
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/tabs/render" */ './render' )
-);
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/tabs/settings" */ './settings' )
-);
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
+
+import Settings from './settings';
+import Render from './render';
 
 import { compose } from '@wordpress/compose';
 
@@ -74,6 +73,29 @@ const UAGBTabsEdit = ( props ) => {
 				setAttributes( { tabBodyLeftPadding: tabBodyHrPadding } );
 			}
 		}
+		const { borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor } = props.attributes;
+		// Backward Border Migration
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
+			migrateBorderAttributes( 'tab', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHoverColor',
+				value: borderHoverColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			},
+			props.setAttributes,
+			props.attributes
+			);
+		}
 	}, [] );
 
 	const updateTabTitle = () => {
@@ -92,7 +114,7 @@ const UAGBTabsEdit = ( props ) => {
 	};
 
 	useEffect( () => {
-		
+
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
@@ -100,6 +122,7 @@ const UAGBTabsEdit = ( props ) => {
 
 		updateTabTitle();
 		props.resetTabOrder();
+
 	}, [ props ] );
 
 	useEffect( () => {
@@ -107,23 +130,28 @@ const UAGBTabsEdit = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-tab-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
+		scrollBlockToView();
+
 	}, [ deviceType ] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
-			<Settings parentProps={ props } />
+			<>
+			<Settings parentProps={ props } deviceType = {deviceType} />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 
 export default compose(
+
 	withDispatch( ( dispatch, { clientId }, { select } ) => { // eslint-disable-line no-shadow
 		const { getBlock } = select( 'core/block-editor' );
 		const { updateBlockAttributes, moveBlockToPosition } = dispatch(
 			'core/block-editor'
 		);
+
 		const block = getBlock( clientId );
 
 		return {

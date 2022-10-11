@@ -4,9 +4,7 @@ import apiFetch from '@wordpress/api-fetch';
 import { useSelector, useDispatch } from 'react-redux';
 import { __ } from '@wordpress/i18n';
 
-function classNames( ...classes ) {
-    return classes.filter( Boolean ).join( ' ' )
-}
+const classNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
 
 const BlockCard = ( props ) => {
 
@@ -14,6 +12,7 @@ const BlockCard = ( props ) => {
         link,
         slug,
         title,
+        deprecated,
     } = props.blockInfo;
 
     const dispatch = useDispatch();
@@ -52,26 +51,39 @@ const BlockCard = ( props ) => {
             method: 'POST',
             body: formData,
         } ).then( () => {
+			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
         } );
     };
 
     return (
         <div
         key={slug}
-        className="relative rounded-[0.2rem] shadow bg-white px-6 py-5 flex items-center space-x-4"
+        className={ classNames(
+            blockActivationStatus
+                ? 'border-white bg-white shadow hover:shadow-hover hover:z-50'
+                : 'border-slate-200 spectra-disabled-icon',
+            'box-border relative border rounded-md h-20 p-4 flex items-center gap-x-4 snap-start transition spectra-icon-transition'
+        ) }
         >
             <div className="flex-shrink-0 opacity-80">
                 { UAGB_Block_Icons[slug] }
             </div>
-            <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 mb-[0.1875rem]">{title}</p>
-                <a className="text-sm underline text-gray-900 hover:text-gray-700 truncate" href={ `https://ultimategutenberg.com/blocks/${ link }` } target="_blank"rel="noreferrer">{__( 'Live Demo', 'ultimate-addons-for-gutenberg' )}</a>
+            <div className="uagb-admin-block-card__title flex-1 min-w-0">
+                <p className="text-base font-medium text-slate-800">
+                    { title }
+                    { deprecated && (
+                        <div className="inline-block align-top max-h-4 px-1.5 py-1 ml-1.5 text-[10px] leading-[10px] border border-slate-200 text-slate-400 rounded spectra-admin__block-label">
+                            { __( 'Legacy', 'ultimate-addons-for-gutenberg' ) }
+                        </div>
+                    ) }
+                </p>
+                <a className="focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate" href={ `https://wpspectra.com/blocks/${ link }` } target="_blank"rel="noreferrer">{__( 'Live Demo', 'ultimate-addons-for-gutenberg' )}</a>
             </div>
             <Switch
                 checked={blockActivationStatus}
                 onChange={updateBlockStatus}
                 className={classNames(
-                    blockActivationStatus ? 'bg-wpcolor' : 'bg-gray-200',
+                    blockActivationStatus ? 'bg-spectra' : 'bg-slate-200',
                     'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                 )}
                 >

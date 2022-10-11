@@ -3,9 +3,9 @@
  */
 
 import generateCSS from '@Controls/generateCSS';
-import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function styling( props ) {
+
 	const {
 		width,
 		widthTablet,
@@ -17,31 +17,46 @@ function styling( props ) {
 		backgroundHColor,
 	} = props.attributes;
 
-	const tablet_selectors = {};
-	const mobile_selectors = {};
+	const widthFallback = isNaN( width ) ? 'auto' : `${ width }px`;
+	const heightFallback = isNaN( height ) ? 'auto' : `${ height }px`;
+
+	const widthTabletFallback = isNaN( widthTablet ) ? widthFallback : `${ widthTablet }px`;
+	const widthMobFallback = isNaN( widthMob ) ? widthTabletFallback : `${ widthMob }px`;
+	const heightTabletFallback = isNaN( heightTablet ) ? heightFallback : `${ heightTablet }px`;
+	const heightMobFallback = isNaN( heightMob ) ? heightTabletFallback : `${ heightMob }px`;
 
 	const selectors = {
 		'.uagb-lottie__outer-wrap': {
-			'width': generateCSSUnit( width, 'px' ),
-			'height': generateCSSUnit( height, 'px' ),
+			'width': widthFallback,
+			'height': heightFallback,
 			'background': backgroundColor,
 		},
 		'.uagb-lottie__outer-wrap:hover': {
 			'background': backgroundHColor,
 		},
 		' .lf-player-container #lottie': {
-			'height': generateCSSUnit( height, 'px' ),
+			'height': heightFallback,
 		},
 	};
 
-	tablet_selectors[ '.uagb-lottie__outer-wrap' ] = {
-		'width': generateCSSUnit( widthTablet, 'px' ),
-		'height': generateCSSUnit( heightTablet, 'px' ),
+	const tablet_selectors = {
+		'.uagb-lottie__outer-wrap': {
+			'width': widthTabletFallback,
+			'height': heightTabletFallback,
+		},
+		' .lf-player-container #lottie': {
+			'height': heightTabletFallback,
+		},
 	};
 
-	mobile_selectors[ '.uagb-lottie__outer-wrap' ] = {
-		'width': generateCSSUnit( widthMob, 'px' ),
-		'height': generateCSSUnit( heightMob, 'px' ),
+	const mobile_selectors = {
+		'.uagb-lottie__outer-wrap': {
+			'width': widthMobFallback,
+			'height': heightMobFallback,
+		},
+		' .lf-player-container #lottie': {
+			'height': heightMobFallback,
+		},
 	};
 
 	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
@@ -53,14 +68,14 @@ function styling( props ) {
 
 	styling_css += generateCSS(
 		tablet_selectors,
-		base_selector,
+		`${ base_selector }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
 	styling_css += generateCSS(
 		mobile_selectors,
-		base_selector,
+		`${ base_selector }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);

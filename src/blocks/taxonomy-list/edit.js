@@ -3,19 +3,15 @@
  */
 
 import styling from './styling';
-import React, { lazy, Suspense, useEffect } from 'react';
+import React, {    useEffect } from 'react';
 import apiFetch from '@wordpress/api-fetch';
-import lazyLoader from '@Controls/lazy-loader';
+
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/taxonomy-list/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/taxonomy-list/render" */ './render' )
-);
+import scrollBlockToView from '@Controls/scrollBlockToView';
+
+import Settings from './settings';
+import Render from './render';
 
 import { withSelect } from '@wordpress/data';
 
@@ -115,10 +111,79 @@ const UAGBTaxonomyList = ( props ) => {
 		} ).then( ( data ) => {
 			props.setAttributes( { listInJson: data } );
 		} );
+		const {
+			borderStyle,
+			borderThickness,
+			borderRadius,
+			borderColor,
+			borderHoverColor,
+			overallBorderTopWidth,
+			overallBorderLeftWidth,
+			overallBorderRightWidth,
+			overallBorderBottomWidth,
+			overallBorderTopLeftRadius,
+			overallBorderTopRightRadius,
+			overallBorderBottomLeftRadius,
+			overallBorderBottomRightRadius,
+			overallBorderColor,
+			overallBorderHColor,
+			overallBorderStyle,
+		} = props.attributes;
 
+		if( borderThickness ){
+			if( undefined === overallBorderTopWidth ) {
+				props.setAttributes( {
+					overallBorderTopWidth: borderThickness,
+				} );
+			}
+			if( undefined === overallBorderLeftWidth ) {
+				props.setAttributes( { overallBorderLeftWidth : borderThickness} );
+			}
+			if( undefined === overallBorderRightWidth ) {
+				props.setAttributes( { overallBorderRightWidth : borderThickness} );
+			}
+			if( undefined === overallBorderBottomWidth ) {
+				props.setAttributes( { overallBorderBottomWidth : borderThickness} );
+			}
+		}
+
+		if( borderRadius ){
+
+			if( undefined === overallBorderTopLeftRadius ) {
+				props.setAttributes( { overallBorderTopLeftRadius : borderRadius} );
+			}
+			if( undefined === overallBorderTopRightRadius ) {
+				props.setAttributes( { overallBorderTopRightRadius : borderRadius} );
+			}
+			if( undefined === overallBorderBottomLeftRadius ) {
+				props.setAttributes( { overallBorderBottomLeftRadius : borderRadius} );
+			}
+			if( undefined === overallBorderBottomRightRadius ) {
+				props.setAttributes( { overallBorderBottomRightRadius : borderRadius} );
+			}
+		}
+
+		if( borderColor ){
+			if( undefined === overallBorderColor ) {
+				props.setAttributes( { overallBorderColor : borderColor} );
+			}
+		}
+
+		if( borderHoverColor ){
+			if( undefined === overallBorderHColor ) {
+				props.setAttributes( { overallBorderHColor : borderHoverColor} );
+			}
+		}
+
+		if( borderStyle ){
+			if( undefined === overallBorderStyle ) {
+				props.setAttributes( { overallBorderStyle : borderStyle} );
+			}
+		}
 	}, [] );
 
 	useEffect( () => {
+
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-taxonomy-list-' + props.clientId.substr( 0, 8 ), blockStyling );
@@ -130,14 +195,18 @@ const UAGBTaxonomyList = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-taxonomy-list-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
+
+						<>
+			<Settings parentProps={ props } />
 				<Render parentProps={ props } />
-			</Suspense>
+			</>
+
 		</>
 	);
 };

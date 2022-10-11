@@ -5,16 +5,14 @@
 import styling from './styling';
 import { __ } from '@wordpress/i18n';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
-import React, { useEffect, lazy, Suspense, useLayoutEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect,    useLayoutEffect } from 'react';
 
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/columns/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/columns/render" */ './render' )
-);
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
+
+import Settings from './settings';
+import Render from './render';
 
 import { withSelect, useDispatch } from '@wordpress/data';
 
@@ -56,7 +54,18 @@ const ColumnsComponent = ( props ) => {
 			backgroundOpacity,
 			align,
 			vAlign,
-			backgroundImageColor
+			backgroundImageColor,
+			backgroundType,
+			gradientOverlayColor1,
+			gradientOverlayColor2,
+			overlayType,
+			gradientOverlayAngle,
+			gradientOverlayLocation1,
+			gradientOverlayPosition,
+			gradientOverlayLocation2,
+			gradientOverlayType,
+			backgroundVideoOpacity,
+			backgroundVideoColor
 		} = attributes
 
 		if ( 'middle' === vAlign ) {
@@ -64,11 +73,23 @@ const ColumnsComponent = ( props ) => {
 		}
 
 		if ( undefined === align ){
-			setAttributes( { align: 'wide' } );
+			setAttributes( { align: '' } );
 		}
 
 		if ( undefined === vAlign ){
-			setAttributes( { vAlign: 'top' } );
+			setAttributes( { vAlign: '' } );
+		}
+
+		if( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ){
+			const color1 = hexToRGBA( maybeGetColorForVariable( gradientOverlayColor1 ), backgroundOpacity );
+			const color2 = hexToRGBA( maybeGetColorForVariable( gradientOverlayColor2 ), backgroundOpacity );
+			let gradientVal;
+			if ( 'linear' === gradientOverlayType ) {
+				gradientVal = `linear-gradient(${ gradientOverlayAngle }deg, ${ color1 } ${ gradientOverlayLocation1 }%, ${ color2 } ${ gradientOverlayLocation2 }%)`;
+			} else {
+				gradientVal = `radial-gradient( at ${ gradientOverlayPosition }, ${ color1 } ${ gradientOverlayLocation1 }%, ${ color2 } ${ gradientOverlayLocation2 }%)`;
+			}
+			setAttributes( { gradientValue: gradientVal } );
 		}
 
 		// Replacement for componentDidMount.
@@ -91,12 +112,44 @@ const ColumnsComponent = ( props ) => {
 			}
 		}
 
-		if ( 101 !== backgroundOpacity ) {
-			const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
-			setAttributes( { backgroundImageColor: color } );
-			setAttributes( { backgroundOpacity: 101 } );
+		if ( 'image' === backgroundType ) {
+			if ( 101 !== backgroundOpacity ) {
+				const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
+				setAttributes( { backgroundImageColor: color } );
+				setAttributes( { backgroundOpacity: 101 } );
+			}
 		}
 
+		if ( 'video' === backgroundType ) {
+			if ( 101 !== backgroundVideoOpacity ) {
+				const color = hexToRGBA( maybeGetColorForVariable( backgroundVideoColor ), backgroundVideoOpacity );
+				setAttributes( { backgroundVideoColor: color } );
+			}
+		}
+		const { borderStyle, borderWidth, borderRadius, borderColor, borderHoverColor } = props.attributes
+		// border migration
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
+			migrateBorderAttributes( 'columns', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHoverColor',
+				value: borderHoverColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			},
+			props.setAttributes,
+			props.attributes
+			);
+
+		}
 	}, [] );
 
 	useEffect( () => {
@@ -113,6 +166,8 @@ const ColumnsComponent = ( props ) => {
 	    const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-columns-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	const blockVariationPickerOnSelect = (
@@ -142,10 +197,12 @@ const ColumnsComponent = ( props ) => {
 	};
 
 	const { variations, hasInnerBlocks } = props;
-
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/advanced-columns.png`;
 	if ( ! hasInnerBlocks ) {
-		
+
 		return (
+			props.attributes.isPreview ? <img width='100%' src={previewImageData} alt=''/> :
+			<>
 			<div className='uagb-columns-variation-picker'>
 				<BlockVariationPicker
 					icon={ '' }
@@ -160,14 +217,16 @@ const ColumnsComponent = ( props ) => {
 					}
 				/>
 			</div>
+			</>
 		);
 	}
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
-			<Settings parentProps={ props } />
+			<>
+			<Settings parentProps={ props } deviceType = { deviceType } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 

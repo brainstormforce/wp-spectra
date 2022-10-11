@@ -2,11 +2,9 @@ import { __ } from '@wordpress/i18n';
 
 import React from 'react';
 import {
-	AlignmentToolbar,
-	BlockControls,
 	InspectorControls,
 } from '@wordpress/block-editor';
-import UAGImage from '@Components/image';
+import UAGMediaPicker from '@Components/image';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -19,7 +17,10 @@ const Settings = ( props ) => {
 	const { setAttributes, attributes } = props;
 
 	// Setup the attributes.
-	const { headingAlign, imagePosition, image } = attributes;
+	const {
+		image,
+		showImage,
+	} = attributes;
 
 	const onSelectRestImage = ( media ) => {
 		let imageUrl = null;
@@ -47,40 +48,31 @@ const Settings = ( props ) => {
 		} );
 	};
 
-	const blockControls = () => {
-		return (
-			<>
-				{ imagePosition === 'top' && (
-					<BlockControls key="controls">
-						<AlignmentToolbar
-							value={ headingAlign }
-							onChange={ ( value ) =>
-								setAttributes( { headingAlign: value } )
-							}
-						/>
-					</BlockControls>
-				) }
-			</>
-		);
-	};
-
 	return (
 		<>
-			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs tabs={ [ 'general', 'advance' ] }>
 					<InspectorTab { ...UAGTabs.general }>
 						<UAGAdvancedPanelBody initialOpen={ true }>
 							<p className="uagb-settings-notice">
-								{ __(
-									'For the common styling options please select the Parent Block of this Price List Item.'
+								{ showImage ? __(
+									'For the common styling options please select the Parent Block of this Price List Item.',
+									'ultimate-addons-for-gutenberg'
+								) :
+								__(
+									'For the common styling options and enabling images, please select the Parent Block of this Price List Item.',
+									'ultimate-addons-for-gutenberg'
 								) }
 							</p>
-							<UAGImage
-								onSelectImage={ onSelectRestImage }
-								backgroundImage={ image }
-								onRemoveImage={ onRemoveRestImage }
-							/>
+							{ showImage && (
+								<>
+									<UAGMediaPicker
+										onSelectImage={ onSelectRestImage }
+										backgroundImage={ image }
+										onRemoveImage={ onRemoveRestImage }
+									/>
+								</>
+							) }
 						</UAGAdvancedPanelBody>
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.advance }></InspectorTab>

@@ -17,7 +17,7 @@ const Title = ( props ) => {
 		return (
 			<RichText
 				tagName={ attributes.headingTag }
-				placeholder={ __( 'Write a Heading' ) }
+				placeholder={ __( 'Write a Title' ) }
 				value={ attributes.infoBoxTitle }
 				className="uagb-ifb-title"
 				onChange={ ( value ) =>

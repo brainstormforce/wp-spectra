@@ -11,7 +11,7 @@ import { RichText } from '@wordpress/block-editor';
 export default function save( props ) {
 	const { attributes } = props;
 
-	const { block_id, nameRequired, name, placeholder } = attributes;
+	const { block_id, nameRequired, name, placeholder, autocomplete } = attributes;
 
 	const isRequired = nameRequired
 		? __( 'required', 'ultimate-addons-for-gutenberg' )
@@ -37,6 +37,7 @@ export default function save( props ) {
 				required={ nameRequired }
 				className="uagb-forms-name-input uagb-forms-input"
 				name={ block_id }
+				autoComplete={ autocomplete }
 			/>
 		</div>
 	);

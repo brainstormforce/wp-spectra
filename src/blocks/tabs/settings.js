@@ -5,20 +5,19 @@ import ResponsiveSelectControl from '@Components/responsive-select';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
-import Range from '@Components/range/Range.js';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
+import UAGSelectControl from '@Components/select-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import UAGTabsControl from '@Components/tabs';
-
+import ResponsiveSlider from '@Components/responsive-slider';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { InspectorControls, BlockAlignmentToolbar, AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
+import { InspectorControls } from '@wordpress/block-editor';
 
 import {
-	SelectControl,
 	ToggleControl,
 	Icon,
 } from '@wordpress/components';
@@ -29,7 +28,7 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
-	const { attributes, setAttributes } = props;
+	const { attributes, setAttributes , deviceType} = props;
 
 	const {
 		tabsStyleD,
@@ -38,11 +37,6 @@ const Settings = ( props ) => {
 		tabActiveFrontend,
 		tabHeaders,
 		headerBgColor,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
-		borderHoverColor,
 		headerTextColor,
 		activeTabBgColor,
 		activeTabTextColor,
@@ -123,6 +117,10 @@ const Settings = ( props ) => {
 		titleLineHeight,
 		titleLineHeightMobile,
 		titleLineHeightTablet,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
 		titleTransform,
 		titleDecoration,
 		titleAlign,
@@ -132,10 +130,20 @@ const Settings = ( props ) => {
 		iconColor,
 		iconPosition,
 		iconSpacing,
+		iconSpacingTablet,
+		iconSpacingMobile,
 		iconSize,
+		iconSizeTablet,
+		iconSizeMobile,
 		activeiconColor,
 		titleFontStyle
 	} = attributes;
+
+	const onInitialTabChange = ( value ) => {
+		setAttributes( {
+			tabActiveFrontend: parseInt( value ),
+		} )
+	};
 
 	const tabStyleSettings = () => {
 		const tabsStyleOptions = {
@@ -285,100 +293,30 @@ const Settings = ( props ) => {
 			],
 			mobile: [
 				{
-					value: 'hstyle1',
-					label: __(
-						'Horizontal Style 1',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
-					value: 'hstyle2',
-					label: __(
-						'Horizontal Style 2',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
-					value: 'hstyle3',
-					label: __(
-						'Horizontal Style 3',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
-					value: 'hstyle4',
-					label: __(
-						'Horizontal Style 4',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
-					value: 'hstyle5',
-					label: __(
-						'Horizontal Style 5',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
-					value: 'vstyle6',
-					label: __(
-						'Vertical Style 6',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
-					value: 'vstyle7',
-					label: __(
-						'Vertical Style 7',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
-					value: 'vstyle8',
-					label: __(
-						'Vertical Style 8',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
-					value: 'vstyle9',
-					label: __(
-						'Vertical Style 9',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
-					value: 'vstyle10',
-					label: __(
-						'Vertical Style 10',
-						'ultimate-addons-for-gutenberg'
-					),
-				},
-				{
 					value: 'stack1',
 					label: __(
-						'Stack Style 11',
+						'Stack Style 1',
 						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
 					value: 'stack2',
 					label: __(
-						'Stack Style 12',
+						'Stack Style 2',
 						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
 					value: 'stack3',
 					label: __(
-						'Stack Style 13',
+						'Stack Style 3',
 						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
 					value: 'stack4',
 					label: __(
-						'Stack Style 14',
+						'Stack Style 4',
 						'ultimate-addons-for-gutenberg'
 					),
 				},
@@ -387,7 +325,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 				<ResponsiveSelectControl
 					label={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
@@ -417,20 +355,18 @@ const Settings = ( props ) => {
 				title={ __( 'Tabs Title', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<SelectControl
+				<UAGSelectControl
 					label={ __(
 						'Initial Open Tab',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ tabActiveFrontend }
+					data={ {
+						value: tabActiveFrontend,
+					} }
+					onChange={ onInitialTabChange }
 					options={ tabHeaders.map( ( tab, index ) => {
 						return { value: index, label: tab };
 					} ) }
-					onChange={ ( value ) =>
-						setAttributes( {
-							tabActiveFrontend: parseInt( value ),
-						} )
-					}
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -607,37 +543,13 @@ const Settings = ( props ) => {
 				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Border
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: borderStyle,
-						label: 'borderStyle',
-						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderWidth={ {
-						value: borderWidth,
-						label: 'borderWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderRadius={ {
-						value: borderRadius,
-						label: 'borderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderColor={ {
-						value: borderColor,
-						label: 'borderColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ {
-						value: borderHoverColor,
-						label: 'borderHoverColor',
-						title: __(
-							'Hover Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+					prefix={'tab'}
+					attributes={ attributes }
+					deviceType={deviceType}
 					disableBottomSeparator={ true }
+					disabledBorderTitle= {true}
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -650,23 +562,27 @@ const Settings = ( props ) => {
 			>
 				<AdvancedPopColorControl
 					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ bodyBgColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { bodyBgColor: value } )
-					}
-				/>
-				<AdvancedPopColorControl
-					label={ __(
 						'Text Color',
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ bodyTextColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { bodyTextColor: value } )
-					}
+					data={ {
+						value: bodyTextColor,
+						label: 'bodyTextColor',
+					} }
+					setAttributes={ setAttributes }
+				/>
+					<AdvancedPopColorControl
+					label={ __(
+						'Background Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ bodyBgColor }
+					data={ {
+						value: bodyBgColor,
+						label: 'bodyBgColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -832,9 +748,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ headerTextColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { headerTextColor: value } )
-					}
+					data={ {
+						value: headerTextColor,
+						label: 'headerTextColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -842,9 +760,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ headerBgColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { headerBgColor: value } )
-					}
+					data={ {
+						value: headerBgColor,
+						label: 'headerBgColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</>
 		);
@@ -856,9 +776,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ activeTabTextColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { activeTabTextColor: value } )
-					}
+					data={ {
+						value: activeTabTextColor,
+						label: 'activeTabTextColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -866,16 +788,18 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ activeTabBgColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { activeTabBgColor: value } )
-					}
+					data={ {
+						value: activeTabBgColor,
+						label: 'activeTabBgColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</>
 		);
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<UAGTabsControl
 					tabs={ [
@@ -951,6 +875,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: titleLineHeightTablet,
 						label: 'titleLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: titleLetterSpacing,
+						label: 'titleLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: titleLetterSpacingTablet,
+						label: 'titleLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: titleLetterSpacingMobile,
+						label: 'titleLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: titleLetterSpacingType,
+						label: 'titleLetterSpacingType',
 					} }
 					transform={ {
 						value: titleTransform,
@@ -1113,18 +1053,22 @@ const Settings = ( props ) => {
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ iconColor }
-				onColorChange={ ( value ) =>
-					setAttributes( { iconColor: value } )
-				}
+				data={ {
+					value: iconColor,
+					label: 'iconColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 		);
 		const tabOutputActive = (
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ activeiconColor }
-				onColorChange={ ( value ) =>
-					setAttributes( { activeiconColor: value } )
-				}
+				data={ {
+					value: activeiconColor,
+					label: 'activeiconColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 		);
 		return (
@@ -1132,16 +1076,29 @@ const Settings = ( props ) => {
 				title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Range
-					label={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
-					setAttributes={ setAttributes }
-					value={ iconSpacing }
-					onChange={ ( value ) =>
-						setAttributes( { iconSpacing: value } )
-					}
+				<ResponsiveSlider
+					label={ __(
+						'Size',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: iconSize,
+							label: 'iconSize',
+						},
+						tablet: {
+							value: iconSizeTablet,
+							label: 'iconSizeTablet',
+						},
+						mobile: {
+							value: iconSizeMobile,
+							label: 'iconSizeMobile',
+						},
+					} }
 					min={ 0 }
-					max={ 500 }
+					max={ 100 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 				<UAGTabsControl
 					tabs={ [
@@ -1163,38 +1120,35 @@ const Settings = ( props ) => {
 					normal={ tabOutputNormal }
 					active={ tabOutputActive }
 				/>
-				<Range
-					label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
-					setAttributes={ setAttributes }
-					value={ iconSize }
-					onChange={ ( value ) =>
-						setAttributes( { iconSize: value } )
-					}
+				<ResponsiveSlider
+					label={ __(
+						'Spacing',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: iconSpacing,
+							label: 'iconSpacing',
+						},
+						tablet: {
+							value: iconSpacingTablet,
+							label: 'iconSpacingTablet',
+						},
+						mobile: {
+							value: iconSpacingMobile,
+							label: 'iconSpacingMobile',
+						},
+					} }
 					min={ 0 }
-					max={ 500 }
+					max={ 100 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
 	return (
 		<InspectorControls>
-			<BlockControls key="controls">
-				<BlockAlignmentToolbar
-					value={ tabAlign }
-					onChange={ ( value ) =>
-						setAttributes( { tabAlign: value } )
-					}
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-				<AlignmentToolbar
-					value={ titleAlign }
-					onChange={ ( value ) =>
-						setAttributes( { titleAlign: value } )
-					}
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-			</BlockControls>
 			<InspectorTabs>
 				<InspectorTab { ...UAGTabs.general }>
 					{ presetSettings() }

@@ -3,7 +3,7 @@ const countryOptions = [
 		UK (+44)
 	</option>,
 	<option key="" data-countryCode="US" value="+1">
-		USA (+1)
+		USA / Canada (+1)
 	</option>,
 	<option key="" data-countryCode="DZ" value="+213">
 		Algeria (+213)
@@ -97,9 +97,6 @@ const countryOptions = [
 	</option>,
 	<option key="" data-countryCode="CM" value="+237">
 		Cameroon (+237)
-	</option>,
-	<option key="" data-countryCode="CA" value="+1">
-		Canada (+1)
 	</option>,
 	<option key="" data-countryCode="CV" value="+238">
 		Cape Verde Islands (+238)

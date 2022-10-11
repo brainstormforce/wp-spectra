@@ -5,6 +5,30 @@
  */
 .wp-block-uagb-cf7-styler {
 
+	// We need this particular block to maintain consistent input field height across WP Editor and Frontend.
+	// And also because the min-height and line-height in the WP Editor were inherited from core WordPress directory: wp-admin/forms.css.
+	// All the selectors here are also copied from wp-admin/forms.css.
+	input[type="text"],
+	input[type="password"],
+	input[type="date"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="email"],
+	input[type="month"],
+	input[type="number"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="time"],
+	input[type="url"],
+	input[type="week"] {
+		min-height: 30px;
+		line-height: 30px;
+	}
+
+	textarea {
+		resize: vertical;
+	}
+
 	.wpcf7 *,
 	.wpcf7 ::after,
 	.wpcf7 ::before {
@@ -88,30 +112,6 @@
 		-js-display: flex;
 	}
 
-	.uagb-cf7-styler__btn-align-right input.wpcf7-form-control.wpcf7-submit {
-		margin-right: 0;
-		margin-left: auto;
-	}
-
-	.uagb-cf7-styler__btn-align-left input.wpcf7-form-control.wpcf7-submit {
-		margin-right: auto;
-		margin-left: 0;
-	}
-
-	.uagb-cf7-styler__btn-align-center input.wpcf7-form-control.wpcf7-submit {
-		margin-right: auto;
-		margin-left: auto;
-	}
-
-	.uagb-cf7-styler__btn-align-justify input.wpcf7-form-control.wpcf7-submit {
-		-webkit-box-pack: center;
-		-ms-flex-pack: center;
-		-webkit-justify-content: center;
-		-moz-box-pack: center;
-		justify-content: center;
-		width: 100%;
-	}
-
 	.wpcf7 input[type="checkbox"],
 	.wpcf7 input[type="radio"] {
 		display: none;
@@ -134,17 +134,15 @@
 
 	/* Form validation */
 	.uagb-cf7-styler__highlight-style-bottom_right span.wpcf7-not-valid-tip {
-		top: 100%;
-		right: 0;
-		display: inline-block;
-		float: right;
-		padding: 5px 10px;
+		display: block;
+		padding: 0.1em 0.5em;
 		margin-top: 5px;
-		background-color: rgba(255, 0, 0, 0.6);
 		border-radius: 2px;
-		color: #fff;
-		font-size: 15px;
+		font-size: 0.9em;
 		-webkit-border-radius: 2px;
+		width: fit-content;
+		margin-left: auto;
+		margin-right: 0;
 	}
 
 	.wpcf7 input[type="number"] {
@@ -153,6 +151,10 @@
 
 	.wpcf7 input.wpcf7-date {
 		-webkit-appearance: none;
+	}
+
+	.wpcf7-spinner {
+		margin-top: 25px;
 	}
 }
 
@@ -200,5 +202,89 @@
 		.wpcf7 .uagb-cf7_styler-col select {
 			height: 100%;
 		}
+	}
+}
+
+@media (min-width: 780px) {
+
+	.uagb-cf7-styler__btn-align-right input.wpcf7-form-control.wpcf7-submit {
+		margin-right: 0;
+		margin-left: auto;
+	}
+
+	.uagb-cf7-styler__btn-align-left input.wpcf7-form-control.wpcf7-submit {
+		margin-right: auto;
+		margin-left: 0;
+	}
+
+	.uagb-cf7-styler__btn-align-center input.wpcf7-form-control.wpcf7-submit {
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.uagb-cf7-styler__btn-align-justify input.wpcf7-form-control.wpcf7-submit {
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		-webkit-justify-content: center;
+		-moz-box-pack: center;
+		justify-content: center;
+		width: 100% !important;
+	}
+}
+
+@media (max-width: 780px) {
+
+	.uagb-cf7-styler__btn-align-tablet-right input.wpcf7-form-control.wpcf7-submit {
+		margin-right: 0;
+		margin-left: auto;
+	}
+
+	.uagb-cf7-styler__btn-align-tablet-left input.wpcf7-form-control.wpcf7-submit {
+		margin-right: auto;
+		margin-left: 0;
+	}
+
+	.uagb-cf7-styler__btn-align-tablet-center input.wpcf7-form-control.wpcf7-submit {
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+
+@media (min-width: 641px) and (max-width: 780px) {
+
+	.uagb-cf7-styler__btn-align-tablet-justify input.wpcf7-form-control.wpcf7-submit {
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		-webkit-justify-content: center;
+		-moz-box-pack: center;
+		justify-content: center;
+		width: 100% !important;
+	}
+}
+
+@media (max-width: 641px) {
+
+	.uagb-cf7-styler__btn-align-mobile-right input.wpcf7-form-control.wpcf7-submit {
+		margin-right: 0;
+		margin-left: auto;
+	}
+
+	.uagb-cf7-styler__btn-align-mobile-left input.wpcf7-form-control.wpcf7-submit {
+		margin-right: auto;
+		margin-left: 0;
+	}
+
+	.uagb-cf7-styler__btn-align-mobile-center input.wpcf7-form-control.wpcf7-submit {
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.uagb-cf7-styler__btn-align-mobile-justify input.wpcf7-form-control.wpcf7-submit {
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		-webkit-justify-content: center;
+		-moz-box-pack: center;
+		justify-content: center;
+		width: 100% !important;
 	}
 }

@@ -1,0 +1,98 @@
+/* --------- Common Popup Used In The Settings Panel --------- */
+
+.spectra-control-popup {
+	position: relative;
+	top: $spectra-control-popup-vertical-gap;
+	// z-index: 99;
+	width: 100%;
+	border-radius: $spectra-control-popup-border-radius;
+	padding: $spectra-control-popup-padding;
+	margin-bottom: $spectra-control-popup-vertical-gap + $spectra-control-vertical-gap;
+	box-shadow: $spectra-control-popup-box-shadow;
+	background: $spectra-color-plain-background;
+
+	// Important Required to override the common panel margins.
+
+	& > .components-base-control {
+		margin-bottom: $spectra-control-popup-vertical-gap !important;
+
+		&:last-child {
+			margin-bottom: 0 !important;
+		}
+	}
+
+	& > .uagb-size-type-field-tabs {
+
+		margin-bottom: $spectra-control-popup-vertical-gap !important;
+
+		.components-base-control {
+			margin-bottom: 0 !important;
+		}
+
+		&:last-child {
+			margin-bottom: 0 !important;
+		}
+	}
+
+	& .uagb-select-control--layout-inline .components-select-control {
+		margin-bottom: $spectra-control-popup-vertical-gap !important;
+	}
+
+	// The Popup Option
+	&__options {
+		margin-bottom: $spectra-control-popup-vertical-gap;
+		position: relative;
+
+		&--action {
+
+			&-wrapper {
+				display: flex;
+				justify-content: space-between;
+				margin: 0;
+				align-items: center;
+
+				& > .uag-control-label {
+					margin-bottom: 0;
+				}
+			}
+
+			&-button {
+				margin: 0;
+				height: $spectra-control-circle-indicator;
+				width: $spectra-control-circle-indicator;
+				padding: 5px;
+				border: 1px solid $spectra-color-border;
+				border-radius: 14px;
+				color: $spectra-color-body;
+
+				.dashicons-edit {
+					font-size: 15px;
+					line-height: 20px;
+				}
+
+				&:focus:not(:disabled) {
+					box-shadow: none;
+					outline: none;
+				}
+
+				&:hover {
+					color: $spectra-color-primary;
+				}
+			}
+		}
+
+		&.active {
+
+			.spectra-control-popup__options--action-button {
+				color: $spectra-color-primary;
+			}
+		}
+	}
+}
+
+.components-base-control:last-child {
+
+	.spectra-control-popup {
+		margin-bottom: $spectra-panel-body-padding;
+	}
+}

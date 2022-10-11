@@ -5,7 +5,7 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 
-import { dateI18n } from '@wordpress/date';
+import { format } from '@wordpress/date';
 
 import { RichText } from '@wordpress/block-editor';
 
@@ -24,8 +24,8 @@ export default function save( props ) {
 	const displayInnerDate = true;
 	let postDate = t_date;
 	if ( 'custom' !== dateFormat ) {
-		postDate = dateI18n( dateFormat, t_date );
-		if ( postDate === 'Invalid date' ) {
+		postDate = format( dateFormat, t_date );
+		if ( format( dateFormat, postDate ) === 'Invalid date' ) {
 			postDate = t_date;
 		}
 	}
@@ -53,35 +53,39 @@ export default function save( props ) {
 				</div>
 
 				<div className={ classnames( dayalignClass, 'uagb-timeline__events-inner-new' ) }>
-								{ displayPostDate !== true && t_date && (
-									<div
-										className={
-											'uagb-timeline__date-hide uagb-timeline__inner-date-new'
-										}
-									>
-										{ postDate }
-									</div>
-								) }
-									<RichText.Content
-										tagName={ headingTag }
-										value={ time_heading }
-										className="uagb-timeline__heading"
-									/>
+					<div className='uagb-timeline__events-inner--content'>
+						{ displayPostDate !== true && t_date && (
+							<div
+								className={
+									'uagb-timeline__date-hide uagb-timeline__inner-date-new'
+								}
+							>
+								{ ( 'custom' !== dateFormat &&
+										format( dateFormat, postDate ) ) ||
+										postDate }
+							</div>
+						) }
+							<RichText.Content
+								tagName={ headingTag }
+								value={ time_heading }
+								className="uagb-timeline__heading"
+							/>
 
-								<RichText.Content
-									tagName="p"
-									value={ time_desc }
-									className="uagb-timeline-desc-content"
-								/>
+						<RichText.Content
+							tagName="p"
+							value={ time_desc }
+							className="uagb-timeline-desc-content"
+						/>
 
-								<div className="uagb-timeline__arrow"></div>
+						<div className="uagb-timeline__arrow"></div>
+					</div>
 				</div>
 				{ displayInnerDate && (
 					<div className="uagb-timeline__date-new">
 						{ displayPostDate !== true && t_date && (	
 							<>
 							{ ( 'custom' !== dateFormat &&
-								dateI18n( dateFormat, postDate ) ) ||
+								format( dateFormat, postDate ) ) ||
 								postDate }
 							</>
 						) }

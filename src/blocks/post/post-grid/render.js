@@ -1,12 +1,10 @@
 /**
  * BLOCK: Post Grid - Editor Render.
  */
-import React, { lazy, Suspense, useLayoutEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {    useLayoutEffect } from 'react';
 
-const Blog = lazy( () =>
-	import( /* webpackChunkName: "chunks/post-grid/blog" */ './blog' )
-);
+
+import Blog from './blog';
 
 import {
 	InnerBlockLayoutContextProvider,
@@ -40,6 +38,7 @@ const Render = ( props ) => {
 		latestPosts,
 		categoriesList,
 		deviceType,
+		name,
 	} = props.parentProps;
 
 	const renderEditMode = () => {
@@ -62,7 +61,7 @@ const Render = ( props ) => {
 		const onReset = () => {
 			const { block, replaceInnerBlocks } = props.parentProps;
 			const newBlocks = [];
-			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attribute ] ) => {
+			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attribute ] ) => { // eslint-disable-line no-shadow
 				newBlocks.push( createBlock( name, attribute ) );
 				return true;
 			} );
@@ -81,7 +80,7 @@ const Render = ( props ) => {
 		}
 		return (
 			<Placeholder label="Post Grid Layout">
-				<div className="uagb-block-all-post-grid-item-template">
+				<div className="uagb-post-grid uagb-block-all-post-grid-item-template">
 					<Tip>
 						{ __(
 							'Edit the blocks inside the preview below to change the content displayed for each post within the post grid.'
@@ -131,7 +130,7 @@ const Render = ( props ) => {
 	const renderViewMode = () => {
 		return (
 			<Disabled>
-				<Suspense fallback={ lazyLoader() }>
+
 					<Blog
 						attributes={ attributes }
 						className={ props.parentProps.className }
@@ -139,8 +138,9 @@ const Render = ( props ) => {
 						block_id={ props.parentProps.clientId.substr( 0, 8 ) }
 						categoriesList={ categoriesList }
 						deviceType={ deviceType }
+						name={ name }
 					/>
-				</Suspense>
+
 			</Disabled>
 		);
 	};

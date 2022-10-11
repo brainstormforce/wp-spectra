@@ -13,7 +13,7 @@ import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/how-to', {
 	title: __( 'How-to', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'This block allows you to design attractive How-to pages or articles with automatically adding How-to to your page.', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'Add instructions/steps on processes using how to block.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.how_to,
 	category: uagb_blocks_info.category,
 	keywords: [
@@ -25,29 +25,9 @@ registerBlockType( 'uagb/how-to', {
 		anchor: true,
 	},
 	example: {
-		innerBlocks: [
-			{
-				name: 'uagb/how-to-step',
-				attributes: {
-					name: 'Step 1',
-					imgPosition: 'left'
-				},
-			},
-			{
-				name: 'uagb/how-to-step',
-				attributes: {
-					name: 'Step 2',
-					imgPosition: 'left'
-				},
-			},
-			{
-				name: 'uagb/how-to-step',
-				attributes: {
-					name: 'Step 3',
-					imgPosition: 'left'
-				},
-			},
-		],
+		attributes: {
+			isPreview: true,
+		}
 	},
 	attributes,
 	edit,

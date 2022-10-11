@@ -26,6 +26,7 @@ module.exports = {
 	],
 	globals: {
 		uagb_blocks_info: true,
+		uag_admin_react: true,
 		UAGB_Block_Icons: true,
 		__webpack_public_path__: true,
 		jQuery: true,
@@ -37,6 +38,7 @@ module.exports = {
 		define: true,
 		Cookies: true,
 		UAGBTableOfContents: true,
-		localStorage: true
+		localStorage: true,
+		uagb_timeline_data: true
 	},
 };

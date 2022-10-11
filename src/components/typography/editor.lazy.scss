@@ -1,170 +1,71 @@
 /* Reset Gutenberg Css */
-.block-editor-block-inspector .uag-typography-options {
 
-	.components-base-control,
-	.components-base-control__field {
-		margin: 0;
-	}
+@import "../../styles/variables";
 
-	.components-base-control {
-		padding: 0;
+.spectra-control-popup__options .spectra-control-popup {
+
+	.uag-font-family-searchable-select {
+		display: flex;
 		width: 100%;
-	}
-}
+		flex-direction: column;
 
-.uag-typography-options {
+		// Note, the wrapper is used outside the actual component in the DOM.
+		&__wrapper {
+			align-items: center;
+			display: grid;
+			grid-template-columns: 50% 50%;
+			height: $spectra-control-input-height;
 
-	margin-bottom: 24px;
-
-	/* Label & actions */
-	.uag-typography-option-actions {
-
-		/** Typography & Box Shadow Popup CSS*/
-		display: flex;
-		justify-content: space-between;
-		margin: 0;
-		align-items: center;
-
-		.uag-typography-main-label {
-			font-size: 13px;
-		}
-
-		.uag-typography-button {
-			margin: 0;
-			height: 28px;
-			width: 28px;
-			padding: 5px;
-			border: 1px solid #d3d3d3;
-			border-radius: 3px;
-
-			.dashicons-edit {
-				font-size: 15px;
-				line-height: 20px;
-			}
-
-			&:focus:not(:disabled) {
-				box-shadow: none;
-				outline: none;
-			}
-		}
-	}
-
-	/* Advanced panel */
-	.uagb-typography-advanced {
-		border: 1px solid #d3d3d3;
-		border-radius: 3px;
-		padding: 15px;
-		margin: 10px 0;
-		position: relative;
-		box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-
-		/* Common component control css */
-		.components-select-control {
-			height: auto;
-		}
-
-		&::after,
-		&::before {
-			bottom: 100%;
-			right: 8px;
-			border: solid transparent;
-			content: "";
-			height: 0;
-			width: 0;
-			position: absolute;
-			pointer-events: none;
-		}
-
-		&::after {
-			right: 9px;
-			border-color: rgba(255, 255, 255, 0);
-			border-bottom-color: #fff;
-			border-width: 5px;
-			margin-left: -5px;
-		}
-
-		&::before {
-			border-color: rgba(211, 211, 211, 0);
-			border-bottom-color: #d3d3d3;
-			border-width: 6px;
-			margin-left: -6px;
-		}
-	}
-
-
-	/* Font options common */
-	.uag-typography-weight-style-wrap,
-	.uag-typography-transform-decoration-wrap {
-		display: flex;
-		justify-content: space-between;
-	}
-
-	/* Font options - family width subset */
-	.uag-typography-font-family-options {
-
-		margin: 0 0 20px;
-
-		.uag-typography-font-family {
-			display: flex;
-			width: 100%;
-			flex-direction: column;
-
-			& > label {
-				padding-bottom: 4px;
-			}
-
-			.uag-font-family-select__input input {
-				box-shadow: none;
-				border: none;
-				min-height: 22px;
-			}
-
-			.uag-font-family-select__control:hover {
-				border: 1px solid #757575;
-			}
-
-			.uag-font-family-select__menu {
-				z-index: 99999;
-			}
-
-			.uag-font-family-select__indicators {
-				height: 30px;
-			}
-
-			.uag-font-family-select__dropdown-indicator {
-
-				svg {
-					height: 14px;
-					width: 14px;
-				}
-			}
-
-			.uag-font-family-select__dropdown-indicator:hover {
-				color: #000;
+			label {
+				margin-bottom: 0;
 			}
 		}
 
-		.uag-typography-font-family-subset {
-			display: flex;
+		.uag-font-family-select__input input {
+			box-shadow: none;
+			border: none;
+			min-height: $spectra-control-input-height;
 		}
 
-		.uag-typography-font-family,
-		.uag-typography-weight-style-wrap {
-			margin: 0 0 16px;
+		.uag-font-family-select__control {
+			cursor: pointer;
+
+			&:hover {
+				border: 1px solid $spectra-color-border;
+			}
 		}
-	}
 
-	/* Range options */
-	.uag-typography-range-options {
+		.uag-font-family-select__menu {
+			z-index: 99999;
+		}
 
-		margin-bottom: 16px;
-	}
+		.uag-font-family-select__indicators {
+			height: $spectra-control-input-height;
+		}
 
-	.uag-typography-transform,
-	.uag-typography-decoration,
-	.uag-typography-font-family-weight,
-	.uag-typography-style {
-		display: flex;
-		width: 48%;
+		.uag-font-family-select__dropdown-indicator {
+
+			padding-left: 6px;
+
+			svg {
+				fill: $spectra-color-body;
+				height: 14px;
+				width: 14px;
+			}
+		}
+
+		.uag-font-family-select__dropdown-indicator:hover {
+			color: $spectra-color-body;
+		}
+
+		.uag-font-family-select__value-container {
+
+			top: 0;
+
+			> div {
+				margin: 0;
+				padding: 0;
+			}
+		}
 	}
 }

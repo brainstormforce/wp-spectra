@@ -1,15 +1,17 @@
-import React, { lazy, Suspense, useEffect } from 'react';
+import React, {    useEffect } from 'react';
+import styling from './styling';
 
-import lazyLoader from '@Controls/lazy-loader';
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/google-map/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/google-map/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 const UAGBGoogleMap = ( props ) => {
+
+	const deviceType = useDeviceType();
+
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		props.setAttributes( {
@@ -17,11 +19,24 @@ const UAGBGoogleMap = ( props ) => {
 		} );
 	}, [] );
 
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-google-map-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [ props, deviceType ] );
+
+	useEffect( () => {
+		scrollBlockToView();
+	}, [ deviceType ] );
+
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
+					<>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 

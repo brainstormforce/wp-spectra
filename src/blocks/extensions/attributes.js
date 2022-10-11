@@ -17,9 +17,6 @@ function addAttributes( settings ) {
 				UAGSystem: {
 					type: 'string',
 				},
-				UAGDisplayConditions: {
-					type: 'string',
-				},
 				UAGHideDesktop: {
 					type: 'boolean',
 					default: false,
@@ -37,6 +34,22 @@ function addAttributes( settings ) {
 					default: false,
 				},
 				UAGLoggedOut: {
+					type: 'boolean',
+					default: false,
+				},
+				UAGDisplayConditions: {
+					type: 'string',
+				},
+				zIndex: {
+					type: 'number',
+				},
+				zIndexTablet: {
+					type: 'number',
+				},
+				zIndexMobile: {
+					type: 'number',
+				},
+				UAGResponsiveConditions: {
 					type: 'boolean',
 					default: false,
 				},

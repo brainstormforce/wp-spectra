@@ -1,6 +1,7 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { ToggleControl, TextControl } from '@wordpress/components';
+import UAGSelectControl from '@Components/select-control';
 import Range from '@Components/range/Range.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -18,19 +19,25 @@ const Settings = ( props ) => {
 
 	const { attributes, setAttributes } = props;
 
-	const { textareaRequired, rows, placeholder } = attributes;
+	const { textareaRequired, rows, placeholder, autocomplete } = attributes;
 
 	const textareaInspectorControls = () => {
 		return (
 			<UAGAdvancedPanelBody initialOpen={ true }>
-				<ToggleControl
-					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
-					checked={ textareaRequired }
-					onChange={ () =>
-						setAttributes( {
-							textareaRequired: ! textareaRequired,
-						} )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Autocomplete',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: autocomplete,
+						label: 'autocomplete',
+					} }
+					setAttributes={ setAttributes }
+					options={ [
+						{ label: __( 'Off', 'ultimate-addons-for-gutenberg' ), value: 'off' },
+						{ label: __( 'Address', 'ultimate-addons-for-gutenberg' ), value: 'street-address' },
+					] }
 				/>
 				<TextControl
 					label={ __(
@@ -49,10 +56,22 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ rows }
-					onChange={ ( value ) => setAttributes( { rows: value } ) }
+					data={ {
+						value: rows,
+						label: 'rows',
+					} }
 					min={ 2 }
 					max={ 10 }
 					displayUnit={ false }
+				/>
+				<ToggleControl
+					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
+					checked={ textareaRequired }
+					onChange={ () =>
+						setAttributes( {
+							textareaRequired: ! textareaRequired,
+						} )
+					}
 				/>
 			</UAGAdvancedPanelBody>
 		);

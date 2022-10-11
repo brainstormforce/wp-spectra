@@ -32,6 +32,8 @@ module.exports = {
 			),
 			'@Components': path.resolve( __dirname, 'src/components/' ),
 			'@Utils': path.resolve( __dirname, 'blocks-config/utils/' ),
+			'@Blocks': path.resolve( __dirname, 'src/blocks/' ),
+			'@Attributes': path.resolve( __dirname, 'blocks-config/blocks-attributes/' ),
 		},
 	},
 	module: {

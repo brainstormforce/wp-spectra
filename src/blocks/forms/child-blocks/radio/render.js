@@ -3,7 +3,7 @@ import React, { useLayoutEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 
-import { Button, ToggleControl } from '@wordpress/components';
+import { Button } from '@wordpress/components';
 
 import { RichText } from '@wordpress/block-editor';
 
@@ -22,7 +22,7 @@ const Render = ( props ) => {
 
 	const { attributes, setAttributes, isSelected } = props;
 
-	const { block_id, radioRequired, options, radioName } = attributes;
+	const { block_id, radioRequired, options, radioName, layout } = attributes;
 
 	const addOption = () => {
 		const newOption = {
@@ -48,6 +48,7 @@ const Render = ( props ) => {
 					name={ `radio-${ block_id }` }
 					value={ option.optiontitle }
 					id={ option.optiontitle }
+					className={ layout }
 				/>
 				<label // eslint-disable-line jsx-a11y/label-has-associated-control
 					htmlFor={ option.optiontitle }
@@ -99,6 +100,7 @@ const Render = ( props ) => {
 						name={ block_id }
 						value={ optionvalue }
 						required={ radioRequired }
+						className={ layout }
 					/>
 					<label htmlFor={ value }>{ option.optiontitle }</label>
 					<br />
@@ -145,22 +147,6 @@ const Render = ( props ) => {
 					`uagb-block-${ block_id }`
 				) }
 			>
-				{ isSelected && (
-					<div className="uagb-forms-required-wrap">
-						<ToggleControl
-							label={ __(
-								'Required',
-								'ultimate-addons-for-gutenberg'
-							) }
-							checked={ radioRequired }
-							onChange={ () =>
-								setAttributes( {
-									radioRequired: ! radioRequired,
-								} )
-							}
-						/>
-					</div>
-				) }
 				<RichText
 					tagName="div"
 					placeholder={ __(
