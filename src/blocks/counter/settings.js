@@ -8,7 +8,7 @@ import AdvancedPopColorControl from '@Components/color-control/advanced-pop-colo
 import SpacingControl from '@Components/spacing-control';
 import { __ } from '@wordpress/i18n';
 import {AlignmentToolbar, BlockControls, InspectorControls} from '@wordpress/block-editor';
-import { TextControl, SelectControl, Icon, ToggleControl, __experimentalNumberControl as NumberControl } from '@wordpress/components';
+import { TextControl, SelectControl, Icon, ToggleControl } from '@wordpress/components';
 import renderSVG from '@Controls/renderIcon';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
@@ -21,6 +21,7 @@ import ResponsiveBorder from '@Components/responsive-border';
 import UAGSelectControl from '@Components/select-control';
 import UAGIconPicker from '@Components/icon-picker';
 import UAGMediaPicker from '@Components/image';
+import UAGNumberControl from '@Components/number-control';
 import { getImageSize } from '@Utils/Helpers';
 import UAGPresets from '@Components/presets';
 import { defaultFallbacks } from './fallbacks';
@@ -428,27 +429,39 @@ export default function Settings( props ) {
 				] }
 				showIcons={ true }
 			/>
-			<NumberControl
+			<UAGNumberControl
 				label={ __( 'Starting Number', 'ultimate-addons-for-gutenberg' ) }
-				type= 'number'
 				value={ startNumber }
-				onChange={ ( value ) => setAttributes( {startNumber: value} )}
+				data={ {
+					value: startNumber,
+					label: 'startNumber',
+				} }
+				displayUnit={ false }
+				setAttributes={ setAttributes }
 				help={ ( layout !== 'number' ) ? __( 'Note: Please use positive values for Circle and Bar layouts.', 'ultimate-addons-for-gutenberg' ) : false }
 			/>
-			<NumberControl
+			<UAGNumberControl
 				label={ __( 'Ending Number', 'ultimate-addons-for-gutenberg' ) }
-				type= 'number'
 				value={ endNumber }
-				onChange={ ( value ) => setAttributes( {endNumber: value} )}
+				data={ {
+					value: endNumber,
+					label: 'endNumber',
+				} }
+				displayUnit={ false }
+				setAttributes={ setAttributes }
 				help={ ( layout !== 'number' ) ? __( 'Note: Please use positive values for Circle and Bar layouts.', 'ultimate-addons-for-gutenberg' ) : false }
 			/>
 			{
 				layout !== 'number' && (
-					<NumberControl
+					<UAGNumberControl
 						label={ __( 'Total Number', 'ultimate-addons-for-gutenberg' ) }
-						type= 'number'
 						value={ totalNumber }
-						onChange={ ( value ) => setAttributes( {totalNumber: value} )}
+						data={ {
+							value: totalNumber,
+							label: 'totalNumber',
+						} }
+						displayUnit={ false }
+						setAttributes={ setAttributes }
 						min={ minTotal }
 						required={ true }
 						help={ __( 'Note: Total Number should be more than or equal to the Ending Number (or the Starting number in case you want to animate the Counter in reverse direction).', 'ultimate-addons-for-gutenberg' ) }
