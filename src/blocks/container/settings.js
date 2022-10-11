@@ -202,7 +202,8 @@ const Settings = ( props ) => {
 		topDividerWidthType,
 		bottomDividerWidthType,
 		topDividerHeightType,
-		bottomDividerHeightType
+		bottomDividerHeightType,
+		equalHeight
 	} = attributes;
 
 	let currentDirection = directionDesktop?.split( '-' )?.[0];
@@ -590,6 +591,16 @@ const Settings = ( props ) => {
 									}
 								</>
 							}
+							<ToggleControl
+								label={ __(
+									'Equal Height',
+									'ultimate-addons-for-gutenberg'
+								) }
+								checked={ equalHeight }
+								onChange={ () =>
+									setAttributes( { equalHeight: ! equalHeight } )
+								}
+							/>
 						</>
 					}
 					{ ( ( isBlockRootParent && 'default' === contentWidth ) || ( ! isBlockRootParent ) ) &&

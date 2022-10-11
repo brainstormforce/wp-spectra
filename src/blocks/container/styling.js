@@ -164,7 +164,8 @@ function styling( props ) {
 		isBlockRootParent,
 
 		widthTypeTablet,
-		widthTypeMobile
+		widthTypeMobile,
+		equalHeight
 	} = attributes;
 
 	const innerContentCustomWidthDesktopFallback = getFallbackNumber( innerContentCustomWidthDesktop, 'innerContentCustomWidthDesktop', blockName );
@@ -255,6 +256,12 @@ function styling( props ) {
 		}
 	};
 
+	if( equalHeight ) {
+		selectors[' .block-editor-block-list__layout .wp-block-uagb-container.block-editor-block-list__block'] = {
+			'height': '100%',
+			'min-height': 'inherit'
+		};
+	}
 	const backgroundAttributesDesktop = {
         'backgroundType': backgroundType,
         'backgroundImage': backgroundImageDesktop,
