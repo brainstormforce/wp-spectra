@@ -57,6 +57,7 @@
 				overflow: visible;
 				width: 100%;
 				height: 100%;
+				pointer-events: none; // To make title editable/clickable, since it is behind the circle.
 			}
 
 			& > svg {
