@@ -439,6 +439,8 @@ export default function Settings( props ) {
 				} }
 				displayUnit={ false }
 				setAttributes={ setAttributes }
+				min={ ( layout !== 'number' ) ? 0 : false }
+				required={ ( layout !== 'number' ) ? true : false }
 				help={ ( layout !== 'number' ) ? __( 'Note: Please use positive values for Circle and Bar layouts.', 'ultimate-addons-for-gutenberg' ) : false }
 			/>
 			<UAGNumberControl
@@ -450,6 +452,8 @@ export default function Settings( props ) {
 				} }
 				displayUnit={ false }
 				setAttributes={ setAttributes }
+				min={ ( layout !== 'number' ) ? 0 : false }
+				required={ ( layout !== 'number' ) ? true : false }
 				help={ ( layout !== 'number' ) ? __( 'Note: Please use positive values for Circle and Bar layouts.', 'ultimate-addons-for-gutenberg' ) : false }
 			/>
 			{
