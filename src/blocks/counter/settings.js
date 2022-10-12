@@ -1737,7 +1737,7 @@ export default function Settings( props ) {
 						{headlineStylePanel}
 						{layout === 'circle' && circleStylePanel}
 						{layout === 'bars' && barStylePanel}
-						{layout !== 'bars' && iconImageStylePanel}
+						{layout !== 'bars' && showIcon && iconImageStylePanel}
 						{spacingPanel}
 						{/* We will be releasing the box-shadow feature later due to some technical challenges with circle layout*/}
 						{/* {layout !== 'number' && boxShadowSettings} */}
