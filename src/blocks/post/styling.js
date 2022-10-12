@@ -88,6 +88,8 @@ function styling( props ) {
 		ctaBottomSpace,
 		ctaBottomSpaceTablet,
 		ctaBottomSpaceMobile,
+		ctaBgType,
+		ctaBgHType,
 		ctaBgColor,
 		ctaHColor,
 		ctaBgHColor,
@@ -526,7 +528,7 @@ function styling( props ) {
 		'font-weight': ctaFontWeight,
 		'font-style': ctaFontStyle,
 		'line-height': generateCSSUnit( ctaLineHeight, ctaLineHeightType ),
-		'background': ctaBgColor,
+		'background': ( ctaBgType === 'color' ) ? ctaBgColor : 'transparent',
 		'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
 		'padding-bottom': generateCSSUnit(
 			paddingBtnBottom,
@@ -541,12 +543,12 @@ function styling( props ) {
 	};
 	selectors[ ' .uagb-post__text .uagb-post__cta:hover' ] = {
 		'color': ctaHColor,
-		'background': ctaBgHColor,
+		'background': ( ctaBgHType === 'color' ) ? ctaBgHColor : 'transparent',
 		'border-color': btnBorderHColor,
 	};
 	selectors[ ' .uagb-post__text .uagb-post__cta:hover a' ] = {
 		'color': ctaHColor,
-		'background': ctaBgHColor,
+		'background': ( ctaBgHType === 'color' ) ? ctaBgHColor : 'transparent',
 		'border-color': btnBorderHColor,
 	};
 
