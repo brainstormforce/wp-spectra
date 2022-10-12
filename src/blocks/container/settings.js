@@ -233,6 +233,15 @@ const Settings = ( props ) => {
 		}
 	}, [backgroundType] );
 
+	const onChangeHeight = ( value ) => {
+		setAttributes( { equalHeight: value } );
+		if( value ) {
+			setAttributes( { alignItemsDesktop: 'stretch' } );
+		} else {
+			setAttributes( { alignItemsDesktop: 'center' } );
+		}
+	};
+
 	const generalSettings = () => {
 
 		const directionOptions = [
@@ -2059,12 +2068,6 @@ const Settings = ( props ) => {
 						presetInputType = 'radioImage'
 					/>
 				</UAGAdvancedPanelBody>
-	};
-
-	const onChangeHeight = ( value ) => {
-		if( value ) {
-			setAttributes( { alignItemsDesktop: 'stretch' } );
-		}
 	};
 
 	return (
