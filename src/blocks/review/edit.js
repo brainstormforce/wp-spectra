@@ -54,7 +54,7 @@ const ReviewComponent = ( props ) => {
 				.map( ( i ) => i.value )
 				.reduce( ( total, v ) => total + v ) /
 			parts.length;
-		 const newAverageCount = parts.length;
+		const newAverageCount = parts.length;
 		let itemtype = '';
 
 		if (
@@ -269,8 +269,6 @@ const ReviewComponent = ( props ) => {
 		sku,
 		identifier,
 		aggregateType,
-		aggregateValue,
-		aggregateCount,
 		offerType,
 		offerCurrency,
 		offerPrice,
@@ -336,8 +334,6 @@ const ReviewComponent = ( props ) => {
 				rAuthor={ rAuthor }
 				showfeature={ showFeature }
 				aggregateType={ aggregateType }
-				aggregateValue={ aggregateValue }
-				aggregateCount={ aggregateCount }
 				offerType={ offerType }
 				datepublish={ datepublish }
 				offerCurrency={ offerCurrency }
