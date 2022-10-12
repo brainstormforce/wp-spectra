@@ -432,6 +432,19 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 								$uagb_toc_reusable_mix_array = array_merge( $uagb_toc_heading_content, $uagb_toc_reusable_heading );
 							}
 						}
+					} else {
+						/* Logic for innerblocks */
+						foreach ( $blocks[ $key ]['innerBlocks'] as $key => $inner_block ) {
+							if ( 'core/block' === $inner_block['innerBlocks'][ $key ]['blockName'] ) {
+								$reusable_block   = get_post( $inner_block['innerBlocks'][ $key ]['attrs']['ref'] );
+								$reusable_heading = $this->table_of_contents_get_headings_from_content( $reusable_block->post_content );
+								if ( isset( $reusable_heading[0] ) ) {
+									array_push( $uagb_toc_reusable_heading, $reusable_heading[0] );
+									$uagb_toc_reusable_mix_array = array_merge( $uagb_toc_heading_content, $uagb_toc_reusable_heading );
+								}
+							}
+						}
+						/* Logic for innerblocks end here */
 					}
 				}
 				/* Logic for reusable end here */
