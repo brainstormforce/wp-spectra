@@ -25,9 +25,8 @@
 			background-color: #eaeaea;
 
 			.wp-block-uagb-counter__number {
-				width: 5%;
+				width: 0%;
 				min-height: 5px;
-				padding: 5px;
 				text-align: right;
 				line-height: 1;
 				white-space: nowrap;
@@ -36,6 +35,10 @@
 				display: flex;
 				justify-content: flex-end;
 				align-items: center;
+
+				& > :last-child {
+					margin-right: 5px;
+				}
 			}
 		}
 
