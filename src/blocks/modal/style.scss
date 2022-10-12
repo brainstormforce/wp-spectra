@@ -1,3 +1,9 @@
+.uagb-modal-popup {
+    display: none;
+}
+.uagb-modal-trigger {
+    cursor: pointer;
+}
 .uagb-modal-popup.active {
     top: 0;
     bottom: 0;
@@ -28,6 +34,9 @@
     color: #333;
     position: relative;
     z-index: 99999;
+}
+.uagb-modal-popup-close {
+   display: none;
 }
 .uagb-modal-popup.active .uagb-modal-popup-close {
     right: 0%;

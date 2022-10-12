@@ -107,7 +107,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb-bodymovin-js'      => array(
 						'src'        => UAGB_URL . 'assets/js/uagb-bodymovin.min.js',
 						'dep'        => array(),
-						'skipEditor' => true,
+						'skipEditor' => false,
 					),
 
 					// Blocks.

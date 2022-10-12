@@ -1,20 +1,41 @@
 
 window.UAGBModal = {
-    elements: {},
+    
 	init( mainSelector ) {
 
-		this.elements = this.getDefaultElements( mainSelector );
+		var modalWrapper = document.querySelector(
+            mainSelector
+        );
         console.log( "===============================================" );
 
-        if( typeof this.elements.modalWrapper !== 'undefined' && this.elements.modalWrapper ) {
-			console.log( modalWrapper );
+        if( typeof modalWrapper !== 'undefined' && modalWrapper ) {
+            var modalTrigger = document.querySelector( '.uagb-modal-trigger' );
+
+            if( typeof modalTrigger !== 'undefined' && modalTrigger ) {
+
+			    var innerModal = document.querySelector( '.uagb-modal-popup' );
+
+                modalTrigger.addEventListener(
+                    'click',
+                    function ( e ) {
+                        if ( ! innerModal.classList.contains( 'active' ) ) {
+                            innerModal.classList.add( 'active' );
+                        }
+                    }
+                );
+
+			    var closeModal = document.querySelector( '.uagb-modal-popup-close' );
+
+                closeModal.addEventListener(
+                    'click',
+                    function ( e ) {
+                        if ( innerModal.classList.contains( 'active' ) ) {
+                            innerModal.classList.remove( 'active' );
+                        }
+                    }
+                );
+            }
 		}
 
-	},
-    getDefaultElements( mainSelector ) {
-		const modalWrapper = this.getElement( mainSelector );
-		return {
-			modalWrapper
-		};
 	},
 };

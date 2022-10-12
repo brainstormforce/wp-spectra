@@ -7,6 +7,7 @@ const attributes = {
 	},
 	triggerText: {
 		type: 'string',
+		default: 'Click here'
 	}
 };
 
