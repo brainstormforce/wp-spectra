@@ -597,9 +597,7 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								checked={ equalHeight }
-								onChange={ () =>
-									setAttributes( { equalHeight: ! equalHeight } )
-								}
+								onChange={ ( value ) => onChangeHeight( value )								}
 							/>
 						</>
 					}
@@ -2061,6 +2059,12 @@ const Settings = ( props ) => {
 						presetInputType = 'radioImage'
 					/>
 				</UAGAdvancedPanelBody>
+	};
+
+	const onChangeHeight = ( value ) => {
+		if( value ) {
+			setAttributes( { alignItemsDesktop: 'stretch' } );
+		}
 	};
 
 	return (
