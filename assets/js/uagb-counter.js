@@ -46,7 +46,6 @@ UAGBCounter = { // eslint-disable-line no-undef
 			entries.forEach( entry => {
 				const el = entry.target
 				const hasPlayed = el.hasAttribute( 'played' );  // Check if an animation has played; If played already, do mot re-trigger it.
-				// entry.isIntersecting && ! el.classList.contains( 'is-visible' )
 				if ( entry.isIntersecting && !hasPlayed ) {
 					if ( !countUp.error ) {
 						if( data.layout === 'bars' ){
@@ -58,7 +57,6 @@ UAGBCounter = { // eslint-disable-line no-undef
 					} else {
 						console.error( countUp.error ); // eslint-disable-line no-console
 					}
-					// el.classList.add( 'is-visible' )
 				}
 			} )
 		}
