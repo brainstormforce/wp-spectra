@@ -147,10 +147,10 @@ const ReviewComponent = ( props ) => {
 					'name': rTitle,
 					'applicationCategory': appCategory,
 					operatingSystem,
-					"aggregateRating": {
-						"@type": aggregateType,
-						"ratingValue": newAverage,
-						"ratingCount": newAverageCount,
+					'aggregateRating': {
+						'@type': aggregateType,
+						'ratingValue': newAverage,
+						'ratingCount': newAverageCount,
 					},
 					'offers': {
 						'@type': offerType,
