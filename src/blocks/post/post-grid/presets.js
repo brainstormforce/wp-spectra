@@ -166,7 +166,6 @@ const buttonsPresets = [
 	},
 	{
 		defaultPresetAttributes: [
-			{ label: 'ctaBgColor' },
 			{ label: 'ctaBgHColor' },
 			{ label: 'ctaColor' },
 			{ label: 'ctaHColor' },
@@ -185,6 +184,7 @@ const buttonsPresets = [
         value: 'preset-1',
         label: __( 'Preset 1', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'ctaBgType', value: 'color' },
 			{ label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 0 },
             { label: 'btnBorderTopRightRadius', value: 0 },
@@ -198,6 +198,7 @@ const buttonsPresets = [
         value: 'preset-2',
         label: __( 'Preset 2', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'ctaBgType', value: 'color' },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 5 },
             { label: 'btnBorderTopRightRadius', value: 5 },
@@ -210,6 +211,7 @@ const buttonsPresets = [
         value: 'preset-3',
         label: __( 'Preset 3', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'ctaBgType', value: 'color' },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 30 },
             { label: 'btnBorderTopRightRadius', value: 30 },
@@ -222,7 +224,7 @@ const buttonsPresets = [
         value: 'preset-4',
         label: __( 'Preset 4', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'ctaBgColor', value: '#00000000' },
+			{ label: 'ctaBgType', value: 'transparent' },
 			{ label: 'ctaBgHColor', value: '#3a3a3a' },
 			{ label: 'ctaColor', value: '#0170b9' },
 			{ label: 'ctaHColor', value: '#ffffff' },
@@ -243,7 +245,7 @@ const buttonsPresets = [
         value: 'preset-5',
         label: __( 'Preset 5', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'ctaBgColor', value: '#00000000' },
+			{ label: 'ctaBgType', value: 'transparent' },
 			{ label: 'ctaBgHColor', value: '#3a3a3a' },
 			{ label: 'ctaColor', value: '#0170b9' },
 			{ label: 'ctaHColor', value: '#ffffff' },
@@ -264,7 +266,7 @@ const buttonsPresets = [
         value: 'preset-6',
         label: __( 'Preset 6', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'ctaBgColor', value: '#00000000' },
+			{ label: 'ctaBgType', value: 'transparent' },
 			{ label: 'ctaBgHColor', value: '#3a3a3a' },
 			{ label: 'ctaColor', value: '#0170b9' },
 			{ label: 'ctaHColor', value: '#ffffff' },
