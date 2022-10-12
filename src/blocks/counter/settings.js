@@ -25,6 +25,7 @@ import UAGNumberControl from '@Components/number-control';
 import { getImageSize } from '@Utils/Helpers';
 import UAGPresets from '@Components/presets';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import defaultAttributes from './attributes';
 
 let imageSizeOptions = [
 	{
@@ -232,7 +233,7 @@ export default function Settings( props ) {
 		}
 	}, [layout] );
 
-	const [minTotal, setMinTotal] = useState( 80 ); // Default for endNumber.
+	const [minTotal, setMinTotal] = useState( defaultAttributes.endNumber.default ); // Default for endNumber.
 
 	const startFallback = getFallbackNumber( startNumber, 'startNumber', 'counter' );
 	const endFallback = getFallbackNumber( endNumber, 'endNumber', 'counter' );
