@@ -17,6 +17,7 @@ $block_data = array(
 	'description'      => __( 'Add modal popup.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 3,
+	'priority'         => 32,
 	'deprecated'       => false,
+	'js_assets'        => array( 'uagb-modal-js' ),
 );

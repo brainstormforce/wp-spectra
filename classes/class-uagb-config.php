@@ -155,6 +155,10 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'skipEditor' => true,
 						'dep'        => array(),
 					),
+					'uagb-modal-js'           => array(
+						'src' => UAGB_Scripts_Utils::get_js_url( 'modal' ),
+						'dep' => array(),
+					),
 				);
 			}
 			return self::$block_assets;

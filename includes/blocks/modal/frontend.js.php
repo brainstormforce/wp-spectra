@@ -2,15 +2,18 @@
 /**
  * Frontend JS File.
  *
- * @since 2.0.0
+ * @since x.x.x
  *
  * @package uagb
  */
 
-$selector = '.uagb-block-' . $id;
+// $selector = '.uagb-block-' . $id;
+$selector = '.wp-block-uagb-modal';
+
 ob_start();
 ?>
 window.addEventListener( 'load', function() {
+	console.log( "88888888888888888888888888888888888888888888888888888888888888" );
 	UAGBModal.init( '<?php echo esc_attr( $selector ); ?>' );
 });
 <?php
