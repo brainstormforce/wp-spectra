@@ -6,7 +6,6 @@ window.UAGBModal = {
 		var modalWrapper = document.querySelector(
             mainSelector
         );
-        console.log( "===============================================" );
 
         if( typeof modalWrapper !== 'undefined' && modalWrapper ) {
             var modalTrigger = document.querySelector( '.uagb-modal-trigger' );
@@ -28,7 +27,7 @@ window.UAGBModal = {
                             }
                         }
                     }
-                );
+                )
 
 			    var closeModal = document.querySelector( '.uagb-modal-popup-close' );
 
