@@ -258,6 +258,18 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	aggregateType: {
+		type: 'string',
+		default: 'AggregateRating',
+	},
+	aggregateValue: {
+		type: 'string',
+		default: 0,
+	},
+	aggregateCount: {
+		type: 'string',
+		default: 0,
+	},
 	offerType: {
 		type: 'string',
 		default: 'Offer',
