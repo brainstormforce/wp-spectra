@@ -148,12 +148,12 @@ UAGBCounter = { // eslint-disable-line no-undef
 	},
 
 	_getStartNumber( data ){
-		return ( data.startNumber || parseFloat( data.startNumber ) === 0 ) ? parseFloat( data.startNumber ) : parseFloat( 0 );
+		return ( data.startNumber || parseFloat( data.startNumber ) === parseFloat( 0 ) ) ? parseFloat( data.startNumber ) : parseFloat( 0 );
 	},
 	_getEndNumber( data ){
-		return ( data.endNumber || parseFloat( data.startNumber ) === 0 ) ? parseFloat( data.endNumber ) : parseFloat( 80 );
+		return ( data.endNumber || parseFloat( data.startNumber ) === parseFloat( 0 ) ) ? parseFloat( data.endNumber ) : parseFloat( 80 );
 	},
 	_getTotalNumber( data ){
-		return ( data.totalNumber || parseFloat( data.startNumber ) === 0 ) ? parseFloat( data.totalNumber ) : parseFloat( 100 );
+		return ( data.totalNumber || parseFloat( data.startNumber ) === parseFloat( 0 ) ) ? parseFloat( data.totalNumber ) : parseFloat( 100 );
 	}
 };
