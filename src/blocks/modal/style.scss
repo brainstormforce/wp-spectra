@@ -1,3 +1,6 @@
+body.hide-scroll {
+    overflow: hidden;
+}
 .uagb-modal-popup {
     display: none;
 }
@@ -7,7 +10,6 @@
 .uagb-modal-popup.active {
     top: 0;
     bottom: 0;
-    padding: 60px 280px 0 0;
     justify-content: center;
     align-items: center;
     overflow-x: auto;
@@ -17,7 +19,7 @@
     left: 0;
     right: 0;
     display: flex;
-    z-index: 999;
+    z-index: 99999;
 }
 .uagb-modal-popup-wrap {
     display: flex;
@@ -52,3 +54,8 @@
     text-align: center;
     cursor: pointer;
 }
+// @media ( min-width: 992px ) {
+//     .uagb-modal-popup {
+//         padding: 60px 280px 0 0;
+//     }
+// }

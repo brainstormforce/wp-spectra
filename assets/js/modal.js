@@ -20,6 +20,12 @@ window.UAGBModal = {
                     function ( e ) {
                         if ( ! innerModal.classList.contains( 'active' ) ) {
                             innerModal.classList.add( 'active' );
+
+                            var bodyWrap = document.querySelector( 'body' );
+                            
+                            if ( ! bodyWrap.classList.contains( 'hide-scroll' ) ) {
+                                bodyWrap.classList.add( 'hide-scroll' );
+                            }
                         }
                     }
                 );
