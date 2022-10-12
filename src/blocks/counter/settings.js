@@ -248,6 +248,13 @@ export default function Settings( props ) {
 		}
 	}, [ startNumber, endNumber ] );
 
+	// If total number is more than minTotal, set it to minTotal.
+	useEffect( () => {
+		if( totalNumber < minTotal ) {
+			setAttributes( { totalNumber: minTotal } );
+		}
+	}, [ minTotal ] );
+
 	const numberIconPositionOptions = [
 		{
 			value: 'top',
