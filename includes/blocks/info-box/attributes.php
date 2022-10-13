@@ -135,6 +135,7 @@ return array_merge(
 		'ctaLinkHoverColor'          => '',
 		'ctaBgHoverColor'            => '',
 		'showCtaIcon'                => false,
+		'ctaIcon'                    => 'right-long',
 		'ctaIconSpace'               => '5',
 		'ctaIconSpaceTablet'         => '',
 		'ctaIconSpaceMobile'         => '',

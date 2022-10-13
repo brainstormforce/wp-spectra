@@ -492,7 +492,7 @@
 	},
 	ctaIcon: {
 		type: 'string',
-		default: '',
+		default: 'right-long',
 	},
 	ctaIconPosition: {
 		type: 'string',
