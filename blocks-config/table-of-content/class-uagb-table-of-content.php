@@ -408,8 +408,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		public function render_table_of_contents( $attributes, $content, $block ) {
 
 			global $post;
-			$uagb_toc_reusable_mix_array = array();
-			$uagb_toc_reusable_heading   = array();
+
 			if ( ! isset( $post->ID ) ) {
 				return '';
 			}
@@ -428,8 +427,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 							$reusable_block   = get_post( $blocks[ $key ]['attrs']['ref'] );
 							$reusable_heading = $this->table_of_contents_get_headings_from_content( $reusable_block->post_content );
 							if ( isset( $reusable_heading[0] ) ) {
-								array_push( $uagb_toc_reusable_heading, $reusable_heading[0] );
-								$uagb_toc_reusable_mix_array = array_merge( $uagb_toc_heading_content, $uagb_toc_reusable_heading );
+								array_push( $uagb_toc_heading_content, $reusable_heading[0] );
 							}
 						}
 					} else {
@@ -439,8 +437,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 								$reusable_block   = get_post( $inner_block['innerBlocks'][ $key ]['attrs']['ref'] );
 								$reusable_heading = $this->table_of_contents_get_headings_from_content( $reusable_block->post_content );
 								if ( isset( $reusable_heading[0] ) ) {
-									array_push( $uagb_toc_reusable_heading, $reusable_heading[0] );
-									$uagb_toc_reusable_mix_array = array_merge( $uagb_toc_heading_content, $uagb_toc_reusable_heading );
+									array_push( $uagb_toc_heading_content, $reusable_heading[0] );
 								}
 							}
 						}
@@ -450,14 +447,14 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				/* Logic for reusable end here */
 				$meta_array = array(
 					'_uagb_toc_version'  => UAGB_ASSET_VER,
-					'_uagb_toc_headings' => $uagb_toc_reusable_mix_array,
+					'_uagb_toc_headings' => $uagb_toc_heading_content,
 				);
 
 				update_post_meta( $post->ID, '_uagb_toc_options', $meta_array );
 
 			}
 
-			$uagb_toc_heading_content = $this->filter_headings_by_mapping_headers( $uagb_toc_reusable_mix_array, $attributes['mappingHeaders'] );
+			$uagb_toc_heading_content = $this->filter_headings_by_mapping_headers( $uagb_toc_heading_content, $attributes['mappingHeaders'] );
 
 			$mapping_header_func = function( $value ) {
 				return $value;
