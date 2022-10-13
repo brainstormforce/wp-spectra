@@ -53,10 +53,10 @@ export default function Login(props) {
 			<section className='flex border-b border-solid border-slate-200 px-12 py-8 justify-between'>
 				<div className='pr-16 w-[78%]'>
 					<h3 className="p-0 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900">
-						{__( 'Social Login/Register', 'ultimate-addons-for-gutenberg' )}
+						{__( 'Social Login Auto Register', 'ultimate-addons-for-gutenberg' )}
 					</h3>
 					<p className="mt-2 text-sm text-slate-500">
-						{ __( 'Enable Social Login Auto Register if user not registered.', 'ultimate-addons-for-gutenberg' ) }
+						{ __( 'Enabling this setting will automatically register the users via Google/Facebook.', 'ultimate-addons-for-gutenberg' ) }
 					</p>
 				</div>
 				<div>
@@ -84,7 +84,7 @@ export default function Login(props) {
 						{ __( 'Social Login/Register - Google Client ID', 'ultimate-addons-for-gutenberg' ) }
 					</h3>
 					<p className='mt-2 text-sm text-slate-500'>
-						{ __( 'Note: This setting is required if you wish to use Login with Google in your website. Read', 'ultimate-addons-for-gutenberg' ) }
+						{ __( 'Note: This setting is required if you wish to use Login with Google on your website. Read', 'ultimate-addons-for-gutenberg' ) }
 						{' '}
 						<a href=''>{__('this article', 'ultimate-addons-for-gutenberg')}</a>.
 					</p>
@@ -109,10 +109,10 @@ export default function Login(props) {
 			<section className='block border-b border-solid border-slate-200 px-12 py-8'>
 				<div className='pb-4'>
 					<h3 className='p-0 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900'>
-						{ __( 'Login Login/Register - Facebook App Details', 'ultimate-addons-for-gutenberg' ) }
+						{ __( 'Social Login/Register - Facebook App Details', 'ultimate-addons-for-gutenberg' ) }
 					</h3>
 					<p className='mt-2 text-sm text-slate-500'>
-						{ __( 'Note: This setting is required if you wish to use Login with Facebook in your website. Need help to get Facebook App Details? Read', 'ultimate-addons-for-gutenberg' ) }
+						{ __( 'Note: This setting is required if you wish to use Login with Facebook on your website. Need help to get Facebook App Details? Read', 'ultimate-addons-for-gutenberg' ) }
 						{' '}
 						<a href='https://ultimateelementor.com/docs/create-facebook-app-id-for-login-form-widget/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin'>{__('this article', 'ultimate-addons-for-gutenberg')}</a>.
 					</p>
