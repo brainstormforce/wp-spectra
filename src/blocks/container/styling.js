@@ -375,7 +375,7 @@ function styling( props ) {
 
 	if ( 'alignfull' === contentWidth && 'alignwide' === innerContentWidth ) {
 
-		widthSelectorsDesktop[`.is-root-container .uagb-is-root-container.block-editor-block-list__block.wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
+		widthSelectorsDesktop[`.is-root-container > .block-editor-block-list__block.wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
 			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthType })`,
 			'max-width' : 'var(--inner-content-custom-width)',
 			'width' : '100%',
@@ -383,7 +383,7 @@ function styling( props ) {
 			'margin-right': 'auto'
 		};
 
-		widthSelectorsTablet[`.is-root-container .uagb-is-root-container.block-editor-block-list__block.uagb-editor-preview-mode-table.wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
+		widthSelectorsTablet[`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-table.wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
 			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthTablet || innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthTypeTablet })`,
 			'max-width' : 'var(--inner-content-custom-width)',
 			'width' :'100%',
