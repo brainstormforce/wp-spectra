@@ -585,6 +585,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'columnGapMobile'               => array(
 						'type' => 'number',
 					),
+					'bgType'                        => array(
+						'type'    => 'string',
+						'default' => 'color',
+					),
 					'bgColor'                       => array(
 						'type'    => 'string',
 						'default' => '#f6f6f6',

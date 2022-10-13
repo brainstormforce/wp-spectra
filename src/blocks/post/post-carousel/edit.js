@@ -320,6 +320,7 @@ const UAGBPostCarousel = ( props ) => {
 		rowGap,
 		rowGapTablet,
 		rowGapMobile,
+		bgType,
 		bgColor,
 		titleColor,
 		titleTag,
@@ -1272,18 +1273,31 @@ const UAGBPostCarousel = ( props ) => {
 				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ bgColor }
-					data={ {
-						value: bgColor,
-						label: 'bgColor',
-					} }
+				<MultiButtonsControl
 					setAttributes={ setAttributes }
+					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
+					value={ bgType }
+					data={ {
+						value: bgType,
+						label: 'bgType',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ bgTypeOptions }
 				/>
+				{ ( bgType === 'color' ) &&
+					<AdvancedPopColorControl
+						label={ __(
+							'Background Color',
+							'ultimate-addons-for-gutenberg'
+						) }
+						colorValue={ bgColor }
+						data={ {
+							value: bgColor,
+							label: 'bgColor',
+						} }
+						setAttributes={ setAttributes }
+					/>
+				}
 				<ResponsiveSlider
 					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {

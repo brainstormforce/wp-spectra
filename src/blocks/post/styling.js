@@ -113,6 +113,7 @@ function styling( props ) {
 		columnGap,
 		columnGapTablet,
 		columnGapMobile,
+		bgType,
 		bgColor,
 
 		paginationColor,
@@ -304,6 +305,9 @@ function styling( props ) {
 		' .uagb-post__inner-wrap': {
 			'background': bgColor,
 			'text-align': align,
+		},
+		'.is_carousel .uagb-post__inner-wrap': {
+			'background': bgType ? bgColor : 'transparent',
 		},
 		'.wp-block-uagb-post-grid .uagb-post__inner-wrap': {
 			'box-shadow':

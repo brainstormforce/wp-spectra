@@ -319,6 +319,13 @@ const attributes = {
 			styleType: 'post-bottom-padding'
 		},
 	},
+	bgType                  : {
+		type    : 'string',
+		default : 'color',
+		UAGCopyPaste: {
+			styleType: 'post-bg-type'
+		},
+	},
 	bgColor                 : {
 		type    : 'string',
 		default : '#f6f6f6',
