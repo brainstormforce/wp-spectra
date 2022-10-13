@@ -134,6 +134,7 @@ return array_merge(
 		'imageWidth'                 => $image_width_default,
 		'ctaLinkHoverColor'          => '',
 		'ctaBgHoverColor'            => '',
+		'showCtaIcon'                => false,
 		'ctaIconSpace'               => '5',
 		'ctaIconSpaceTablet'         => '',
 		'ctaIconSpaceMobile'         => '',

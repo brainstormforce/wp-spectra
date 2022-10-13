@@ -483,6 +483,13 @@
 		type: 'boolean',
 		default: false,
 	},
+	showCtaIcon: {
+		type: 'string',
+		default: false,
+		UAGCopyPaste: {
+			styleType: 'btn-show-icon'
+		}
+	},
 	ctaIcon: {
 		type: 'string',
 		default: '',

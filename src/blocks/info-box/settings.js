@@ -119,6 +119,7 @@ const Settings = ( props ) => {
 		ctaBgHoverType,
 		ctaLink,
 		ctaTarget,
+		showCtaIcon,
 		ctaIcon,
 		ctaIconPosition,
 		ctaIconSpace,
@@ -930,19 +931,31 @@ const Settings = ( props ) => {
 				) }
 				{ ctaType !== 'all' && ctaType !== 'none' && (
 					<>
-						<UAGIconPicker
+						<ToggleControl
 							label={ __(
-								'Button Icon',
+								'Show Icon',
 								'ultimate-addons-for-gutenberg'
 							) }
-							value={ ctaIcon }
-							onChange={ ( value ) =>
-								setAttributes( { ctaIcon: value } )
+							checked={ showCtaIcon }
+							onChange={ () =>
+								setAttributes( { showCtaIcon: ! showCtaIcon } )
 							}
 						/>
+						{ showCtaIcon &&
+							<UAGIconPicker
+								label={ __(
+									'Button Icon',
+									'ultimate-addons-for-gutenberg'
+								) }
+								value={ ctaIcon }
+								onChange={ ( value ) =>
+									setAttributes( { ctaIcon: value } )
+								}
+							/>
+						}
 					</>
 				) }
-				{ ctaIcon !== '' && ctaType !== 'all' && ctaType !== 'none' && (
+				{ showCtaIcon && ctaIcon !== '' && ctaType !== 'all' && ctaType !== 'none' && (
 					<>
 						<UAGSelectControl
 							label={ __(
