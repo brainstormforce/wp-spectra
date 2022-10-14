@@ -39,7 +39,7 @@ const RestMenuImage = ( props ) => {
 			}
 
 			return (
-				<img className="" src={ url } alt={ image.alt } width={imageWidth} loading="lazy"/>
+				<img className="" src={ url } alt={ image.alt } width={ imageWidth } loading="lazy"/>
 			);
 		}
 		return null;
