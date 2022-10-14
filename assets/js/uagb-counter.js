@@ -69,7 +69,7 @@ UAGBCounter = { // eslint-disable-line no-undef
 		if( typeof el !== 'undefined' && el ){
 			const countUp = new window.countUp.CountUp( el, that._getEndNumber( data ), {
 				startVal: that._getStartNumber( data ),
-				duration: data.animationDuration,
+				duration: that._getAnimationDuration( data ),
 				separator: data.thousandSeparator,
 				useEasing: false,
 				decimalPlaces: data.decimalPlaces,
@@ -142,7 +142,7 @@ UAGBCounter = { // eslint-disable-line no-undef
 	},
 
 	_getAnimationDuration( data ){
-		return data.animationDuration * 1000
+		return data.animationDuration / 1000
 	},
 
 	_getStartNumber( data ){
