@@ -60,27 +60,32 @@ body.hide-scroll {
 //     }
 // }
 .uagb-modal-popup-content {
-    padding: 35px 30px;
+    padding: 45px 35px;
 }
 // Below css is to add block inserter styling. Not working correctly so commented out.
-// body .uagb-modal-popup-wrap .wp-block {
-//     max-width: none !important;
-//     margin: 0 !important;
-// }
-
-// body .uagb-modal-popup-wrap .block-list-appender button {
-//     background-color: #dbf9e4 !important;
-//     box-shadow: none !important;
-//     padding: 0 !important;
-//     width: 100%;
-// }
-
-// body .uagb-modal-popup-wrap .block-list-appender:only-child button {
-//     padding: 6px 12px !important;
-// }
-
-// .uagb-modal-popup-wrap .block-list-appender svg {
-//     fill: rgba(0,165,79,.9);
-//     width: 30px;
-//     height: 30px
-// }
+body .uagb-modal-popup-wrap .wp-block {
+    max-width: none !important;
+    margin: 0 !important;
+}
+body .uagb-modal-popup-wrap .block-list-appender:only-child .block-editor-default-block-appender__content {
+    display: none;
+}
+body .uagb-modal-popup-wrap .block-list-appender button {
+    background-color: #dbf9e4 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    width: 100%;
+}
+body .uagb-modal-popup-wrap .block-list-appender:only-child .block-editor-inserter__toggle.components-button.has-icon {
+    height: auto;
+    padding: 8px 12px!important;
+}
+body .uagb-modal-popup-wrap .components-dropdown.block-editor-inserter,
+body .uagb-modal-popup-wrap .block-list-appender .block-editor-inserter__toggle.components-button.has-icon {
+    width: 100%;
+}
+.uagb-modal-popup-wrap .block-list-appender svg {
+    fill: rgba(0,165,79,.9);
+    width: 30px;
+    height: 30px
+}

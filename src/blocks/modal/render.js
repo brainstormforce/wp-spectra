@@ -34,7 +34,7 @@ const Render = ( props ) => {
 					className="uagb-modal-text uagb-modal-trigger"
 					onChange={ ( value ) => setAttributes( { triggerText: value } ) }
 				/>
-				<div class="uagb-modal-popup active">
+				<div class="uagb-modal-popup">
 					<div class="uagb-modal-popup-wrap">
 						<div class="uagb-modal-popup-content">
 							<InnerBlocks />

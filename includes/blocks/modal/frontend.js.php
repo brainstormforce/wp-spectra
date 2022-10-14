@@ -8,8 +8,6 @@
  */
 
 $selector = '.uagb-block-' . $id;
-// error_log( '.uagb-block-' . $id );
-// $selector = '.wp-block-uagb-modal';
 
 ob_start();
 ?>
