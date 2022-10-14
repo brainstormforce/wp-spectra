@@ -25,7 +25,10 @@ export default function UAGBCounterEdit( props ) {
         addBlockEditorDynamicStyles( 'uagb-counter-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/counter.svg`;
+
 	return (
+		props.attributes.isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<React.Fragment>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />

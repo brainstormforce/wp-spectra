@@ -29,5 +29,9 @@ registerBlockType( 'uagb/counter', {
 	attributes,
 	edit,
 	save,
-	example: {}
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 } );
