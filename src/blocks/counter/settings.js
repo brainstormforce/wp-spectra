@@ -8,7 +8,7 @@ import AdvancedPopColorControl from '@Components/color-control/advanced-pop-colo
 import SpacingControl from '@Components/spacing-control';
 import { __ } from '@wordpress/i18n';
 import {AlignmentToolbar, BlockControls, InspectorControls} from '@wordpress/block-editor';
-import { TextControl, SelectControl, Icon, ToggleControl } from '@wordpress/components';
+import { TextControl, Icon, ToggleControl } from '@wordpress/components';
 import renderSVG from '@Controls/renderIcon';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
@@ -519,12 +519,13 @@ export default function Settings( props ) {
 				step={ 100 }
 				required={ true }
 			/>
-			<SelectControl
-				label={ __( 'Thousand Separator', 'ultimate-addons-for-gutenberg' ) }
-				value={ thousandSeparator }
-				onChange={ ( value ) => {
-					setAttributes( {thousandSeparator: value} )
+			<UAGSelectControl
+				label={ __( 'Thousand(s)', 'ultimate-addons-for-gutenberg' ) }
+				data={ {
+					value: thousandSeparator,
+					label: 'thousandSeparator',
 				} }
+				setAttributes={ setAttributes }
 				options={ [
 					{ value: '', label: 'None' },
 					{ value: ',', label: ',' },
