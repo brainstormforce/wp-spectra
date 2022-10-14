@@ -5,8 +5,7 @@ import { RichText, InnerBlocks } from '@wordpress/block-editor';
 export default function Save( props ) {
 	const {
 		block_id,
-		triggerText,
-		previewModal
+		triggerText
 	} = props.attributes;
 
 	return (
@@ -19,12 +18,7 @@ export default function Save( props ) {
 			<RichText.Content
 				value={ triggerText }
 				tagName="p"
-				className={ classnames(
-					'uagb-modal-text',
-					previewModal
-						? 'uagb-modal-trigger'
-						: '',
-				) }
+				className="uagb-modal-text uagb-modal-trigger"
 			/>
 			<div class="uagb-modal-popup">
 				<div class="uagb-modal-popup-wrap">

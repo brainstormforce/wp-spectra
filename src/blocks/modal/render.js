@@ -15,8 +15,7 @@ const Render = ( props ) => {
 
 	const {
 		block_id,
-		triggerText,
-		previewModal
+		triggerText
 	} = attributes
 
 	return (
@@ -32,12 +31,7 @@ const Render = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ triggerText }
-					className={ classnames(
-						'uagb-modal-text',
-						previewModal
-							? 'uagb-modal-trigger'
-							: '',
-					) }
+					className="uagb-modal-text uagb-modal-trigger"
 					onChange={ ( value ) => setAttributes( { triggerText: value } ) }
 				/>
 				<div class="uagb-modal-popup">
