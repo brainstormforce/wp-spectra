@@ -11,8 +11,13 @@
 		z-index: -1;
 		color: inherit;
 	}
-}
 
+}
+.block-editor-block-list__block .uagb-infobox__content-wrap {
+	.uagb-ifb-icon-wrap svg{
+		height: 30px;
+	}
+}
 .uagb-ifb-title-wrap {
 
 	.block-editor-rich-text__editable.uagb-ifb-title.rich-text {
