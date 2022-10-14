@@ -23,7 +23,7 @@ return array_merge(
 		'decimalPlaces'             => 0,
 		'numberPrefix'              => '',
 		'numberSuffix'              => '%',
-		'animationDuration'         => 25,
+		'animationDuration'         => 2000,
 		'thousandSeparator'         => '',
 		// heading.
 		'heading'                   => __( 'Add Your Title Here…', 'ultimate-addons-for-gutenberg' ),
