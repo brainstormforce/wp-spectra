@@ -123,6 +123,9 @@ $btn_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 $btn_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
 $btn_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
 
+// fallback for forms select field.
+$forms_padding_right_mobile_fallback = (int) UAGB_Block_Helper::get_fallback_number( $attr['paddingFieldRightMobile'], 'paddingFieldRightMobile', $block_name ) + 30;
+
 $selectors = array(
 	'.uagb-forms__outer-wrap'                              => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['formPaddingTop'], $attr['formPaddingUnit'] ),
@@ -207,7 +210,22 @@ $selectors = array(
 		// Important is added to override the usual border radius we set with a completely round one.
 		'border-radius' => UAGB_Helper::get_css_value( 20 + $toggle_width_size_number, 'px' ) . ' !important',
 	),
+	// Drop icon position css.
+	' .uagb-form-phone-country'                                  => array(
+		'background' => 'url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9JzE4cHgnIGhlaWdodD0nMThweCcgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIj48cGF0aCBkPSJtMzk2LjYgMTYwIDE5LjQgMjAuN0wyNTYgMzUyIDk2IDE4MC43bDE5LjMtMjAuN0wyNTYgMzEwLjV6IiBmaWxsPSIjMWQyMzI3IiBjbGFzcz0iZmlsbC0wMDAwMDAiPjwvcGF0aD48L3N2Zz4=) no-repeat',
+		'-moz-appearance' => 'none !important',
+		'-webkit-appearance' => ' none !important',
+		'background-position' => ' top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRight'], $attr['paddingFieldUnit'] ),
+		'appearance' => 'none !important',
+	),
 
+	// select control color.
+	' .uagb-form-phone-country'    => array(
+		'color' => $attr['inputplaceholderColor'],
+	),
+	' .uagb-forms-field-set:hover .uagb-form-phone-country'    => array(
+		'color' => $attr['inputplaceholderHoverColor'],
+	),
 );
 $t_selectors = array(
 	'.uagb-forms__outer-wrap'                        => array(
@@ -240,6 +258,10 @@ $t_selectors = array(
 	),
 	' .uagb-forms-success-message'                   => $success_message_border_tablet,
 	' .uagb-forms-failed-message'                    => $failed_message_border_tablet,
+	// Drop icon position css.
+	' .uagb-form-phone-country'                                  => array(
+		'background-position' => ' top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightTablet'], $attr['paddingFieldUnitTablet'] ),
+	),
 );
 $m_selectors = array(
 	'.uagb-forms__outer-wrap'                        => array(
@@ -272,6 +294,12 @@ $m_selectors = array(
 	),
 	' .uagb-forms-success-message'                   => $success_message_border_mobile,
 	' .uagb-forms-failed-message'                    => $failed_message_border_mobile,
+
+	// Drop icon position css.
+	' .uagb-form-phone-country'                         => array(
+		'background-position' => 'top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'], $attr['paddingFieldUnitmobile'] ),
+		'padding-right'       => UAGB_Helper::get_css_value( $forms_padding_right_mobile_fallback, $attr['paddingFieldUnitmobile'] ) . ' !important',
+	),
 );
 // Checkbox Field css.
 $selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = array(
