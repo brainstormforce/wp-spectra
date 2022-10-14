@@ -615,7 +615,7 @@ const Settings = ( props ) => {
 								) }
 								checked={ equalHeight }
 								onChange={ ( value ) => onChangeHeight( value )	}	
-								help={ __( 'Enabling this equal height toggle will change align items setting to stretch.', 'ultimate-addons-for-gutenberg' ) }
+								help={ __( 'Enabling this will change the Align Items value to Stretch.', 'ultimate-addons-for-gutenberg' ) }
 							/>
 						</>
 					}
