@@ -10,7 +10,6 @@ const presets = [
         value: 'preset-1',
         label: __( 'Preset 1', 'ultimate-addons-for-gutenberg' ),
 		attributes: [
-			{ label: 'backgroundColor', value: '#0170B9' },
             { label: 'paddingBtnLeft', value: 35 },
             { label: 'paddingBtnRight', value: 35 },
             { label: 'paddingBtnTop', value: 10 },
@@ -32,7 +31,6 @@ const presets = [
         value: 'preset-2',
         label: __( 'Preset 2', 'ultimate-addons-for-gutenberg' ),
 		attributes: [
-            { label: 'backgroundColor', value: '#0170B9' },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 5 },
             { label: 'btnBorderTopRightRadius', value: 5 },
@@ -79,7 +77,6 @@ const presets = [
         value: 'preset-4',
         label: __( 'Preset 4', 'ultimate-addons-for-gutenberg' ),
 		attributes: [
-			{ label: 'backgroundColor', value: 'transparent' },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 5 },
             { label: 'btnBorderTopRightRadius', value: 5 },
@@ -105,7 +102,6 @@ const presets = [
         value: 'preset-5',
         label: __( 'Preset 5', 'ultimate-addons-for-gutenberg' ),
 		attributes: [
-			{ label: 'backgroundColor', value: 'transparent' },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 100 },
             { label: 'btnBorderTopRightRadius', value: 100 },
