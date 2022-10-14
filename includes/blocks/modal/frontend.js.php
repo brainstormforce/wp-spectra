@@ -13,7 +13,6 @@ $selector = '.wp-block-uagb-modal';
 ob_start();
 ?>
 window.addEventListener( 'DOMContentLoaded', function() {
-	console.log( "88888888888888888888888888888888888888888888888888888888888888" );
 	UAGBModal.init( '<?php echo esc_attr( $selector ); ?>' );
 });
 <?php

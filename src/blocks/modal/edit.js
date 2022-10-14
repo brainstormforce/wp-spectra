@@ -7,8 +7,10 @@ import Render from './render';
 //  Import CSS.
 import './style.scss';
 
+import { withSelect } from '@wordpress/data';
+import { compose } from '@wordpress/compose';
 
-export default function UAGBModalEdit( props ) {
+const UAGBModalEdit = ( props ) => {
 	useEffect( () => {
 
 		const { setAttributes } = props;
@@ -32,3 +34,55 @@ export default function UAGBModalEdit( props ) {
 		</React.Fragment>
 	);
 }
+
+export default compose(
+	withSelect( () => {
+
+		let modalWrapper = document.querySelectorAll( '.wp-block-uagb-modal' );
+
+		if ( modalWrapper.length === 0 ) {
+			return;
+		}
+
+		for ( const content of modalWrapper ) {
+
+			const modalTrigger = content.querySelector( '.uagb-modal-trigger' );
+	
+			if( typeof modalTrigger !== 'undefined' && modalTrigger ) {
+	
+				var innerModal = content.querySelector( '.uagb-modal-popup' );
+	
+				modalTrigger.addEventListener(
+					'click',
+					function ( e ) {
+						if ( ! innerModal.classList.contains( 'active' ) ) {
+							innerModal.classList.add( 'active' );
+	
+							var bodyWrap = content.querySelector( 'body' );
+							
+							if ( ! bodyWrap.classList.contains( 'hide-scroll' ) ) {
+								bodyWrap.classList.add( 'hide-scroll' );
+							}
+						}
+					}
+				)
+	
+				var closeModal = content.querySelector( '.uagb-modal-popup-close' );
+	
+				closeModal.addEventListener(
+					'click',
+					function ( e ) {
+						if ( innerModal.classList.contains( 'active' ) ) {
+							innerModal.classList.remove( 'active' );
+						}
+					}
+				);
+	
+			}
+		}
+
+		return {
+			modalWrapper,
+		};
+	} )
+)( UAGBModalEdit );
