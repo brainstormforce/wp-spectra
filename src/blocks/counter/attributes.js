@@ -35,7 +35,7 @@ const attributes = {
 	},
 	thousandSeparator: {
 		type: 'string',
-		default: '',
+		default: ',',
 	},
 	// heading.
 	heading: {

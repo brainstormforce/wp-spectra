@@ -24,7 +24,7 @@ return array_merge(
 		'numberPrefix'              => '',
 		'numberSuffix'              => '%',
 		'animationDuration'         => 2000,
-		'thousandSeparator'         => '',
+		'thousandSeparator'         => ',',
 		// heading.
 		'heading'                   => __( 'Add Your Title Here…', 'ultimate-addons-for-gutenberg' ),
 		'headingTag'                => '',
