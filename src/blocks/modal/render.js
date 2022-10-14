@@ -15,8 +15,39 @@ const Render = ( props ) => {
 
 	const {
 		block_id,
-		triggerText
+		triggerText,
+		icon,
+		iconImage
 	} = attributes
+
+	const textHTML = (
+		<RichText
+			tagName="p"
+			placeholder={ __(
+				'Click here',
+				'ultimate-addons-for-gutenberg'
+			) }
+			value={ triggerText }
+			className="uagb-modal-text uagb-modal-trigger"
+			onChange={ ( value ) => setAttributes( { triggerText: value } ) }
+		/>
+	);
+
+	const iconHTML = (
+		renderSVG( icon )
+	);
+
+	const defaultedAlt = ( iconImage && iconImage?.alt ) ? iconImage?.alt : '';
+	let imageIconHtml = '';
+
+	if ( iconImage && iconImage.url ) {
+		imageIconHtml = (
+			<img
+				src={ image.url }
+				alt={ defaultedAlt }
+			/>
+		);
+	}
 
 	return (
 		<React.Fragment>
@@ -24,16 +55,23 @@ const Render = ( props ) => {
 				`uagb-block-${ block_id }`,
 				'wp-block-uagb-modal'
 			) }>
-				<RichText
-					tagName="p"
-					placeholder={ __(
-						'Click here',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ triggerText }
-					className="uagb-modal-text uagb-modal-trigger"
-					onChange={ ( value ) => setAttributes( { triggerText: value } ) }
-				/>
+				{ 'text' === modalTrigger &&
+					<>
+						{ textHTML }
+					</>
+				}
+				{ 'icon' === modalTrigger &&
+					<>
+						{ iconHTML }
+					</>
+				}
+				{ 'image' === modalTrigger && 
+					<>
+						<span className="uagb-modal-image-wrap">
+							{ imageIconHtml }
+						</span>
+					</>
+				}
 				<div class="uagb-modal-popup">
 					<div class="uagb-modal-popup-wrap">
 						<div class="uagb-modal-popup-content">

@@ -1,12 +1,40 @@
 import React from 'react';
 import classnames from 'classnames';
+import renderSVG from '@Controls/renderIcon';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
 
 export default function Save( props ) {
 	const {
 		block_id,
-		triggerText
+		modalTrigger,
+		triggerText,
+		icon,
+		iconImage
 	} = props.attributes;
+
+	const textHTML = (
+		<RichText.Content
+			value={ triggerText }
+			tagName="p"
+			className="uagb-modal-text uagb-modal-trigger"
+		/>
+	);
+
+	const iconHTML = (
+		renderSVG( icon )
+	);
+
+	const defaultedAlt = ( iconImage && iconImage?.alt ) ? iconImage?.alt : '';
+	let imageIconHtml = '';
+
+	if ( iconImage && iconImage.url ) {
+		imageIconHtml = (
+			<img
+				src={ image.url }
+				alt={ defaultedAlt }
+			/>
+		);
+	}
 
 	return (
 		<div
@@ -15,11 +43,24 @@ export default function Save( props ) {
 				'wp-block-modal'
 			) }
 		>
-			<RichText.Content
-				value={ triggerText }
-				tagName="p"
-				className="uagb-modal-text uagb-modal-trigger"
-			/>
+			{ 'text' === modalTrigger &&
+				<>
+					{ textHTML }
+				</>
+			}
+			{ 'icon' === modalTrigger &&
+				<>
+					{ iconHTML }
+				</>
+			}
+			{ 'image' === modalTrigger && 
+				<>
+					<span className="uagb-modal-image-wrap">
+						{ imageIconHtml }
+					</span>
+				</>
+			}
+			
 			<div class="uagb-modal-popup">
 				<div class="uagb-modal-popup-wrap">
 					<div class="uagb-modal-popup-content">

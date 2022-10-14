@@ -6,14 +6,42 @@ import InspectorTab, {
 
 import { __ } from '@wordpress/i18n';
 import {InspectorControls} from '@wordpress/block-editor';
-import { TextControl, SelectControl, ToggleControl } from '@wordpress/components';
-import Range from '@Components/range/Range.js';
+import { SelectControl, ToggleControl } from '@wordpress/components';
+import UAGMediaPicker from '@Components/image';
+import UAGIconPicker from '@Components/icon-picker';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-
+// import { buttonsPresets } from './presets';
 
 export default function Settings( props ) {
 	const { attributes, setAttributes } = props.parentProps;
-	const { modalTrigger, previewModal } = attributes;
+	const { modalTrigger, previewModal, iconImage, icon, ctaText } = attributes;
+
+	/*
+	 * Event to set Image as while adding.
+	 */
+	const onSelectImage = ( media ) => {
+		if ( ! media || ! media.url ) {
+			setAttributes( { iconImage: null } );
+			return;
+		}
+
+		if ( ! media.type || 'image' !== media.type ) {
+			setAttributes( { iconImage: null } );
+			return;
+		}
+		if ( media.sizes ) {
+			const new_img = getImageSize( media.sizes );
+			imageSizeOptions = new_img;
+		}
+		setAttributes( { iconImage: media } );
+	};
+
+	/*
+	 * Event to set Image as null while removing.
+	 */
+	const onRemoveImage = () => {
+		setAttributes( { iconImage: '' } );
+	};
 	
 	const generalPanel = (
 		<UAGAdvancedPanelBody
@@ -38,10 +66,35 @@ export default function Settings( props ) {
 				} }
 				options={ [
 					{ value: 'text', label: 'Text' },
-					{ value: 'image', label: 'Image' },
 					{ value: 'icon', label: 'Icon' },
+					{ value: 'image', label: 'Image' },
+					{ value: 'button', label: 'Button' },
 				] }
 			/>
+				{ modalTrigger === 'icon' && (
+					<>
+						<UAGIconPicker
+							label={ __(
+								'Icon',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ icon }
+							onChange={ ( value ) =>
+								setAttributes( { icon: value } )
+							}
+						/>
+					</>
+				) }
+				{ modalTrigger === 'image' && (
+					<>
+						<UAGMediaPicker
+							onSelectImage={ onSelectImage }
+							backgroundImage={ iconImage }
+							onRemoveImage={ onRemoveImage }
+						/>
+					</>
+				) }
+				
 		</UAGAdvancedPanelBody>
 	)
 
