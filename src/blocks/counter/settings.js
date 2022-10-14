@@ -506,21 +506,18 @@ export default function Settings( props ) {
 				value={ numberSuffix }
 				onChange={ ( value ) => setAttributes( {numberSuffix: value} )}
 			/>
-			<Range
-				label={ __(
-					'Animation Duration',
-					'ultimate-addons-for-gutenberg'
-				) }
-				setAttributes={ setAttributes }
+			<UAGNumberControl
+				label={ __( 'Animation Duration', 'ultimate-addons-for-gutenberg' ) }
 				value={ animationDuration }
 				data={ {
 					value: animationDuration,
 					label: 'animationDuration',
 				} }
-				min={ 0.1 }
-				step={ 0.1 }
-				max={ 25 }
 				displayUnit={ false }
+				setAttributes={ setAttributes }
+				min={ 1 }
+				step={ 100 }
+				required={ true }
 			/>
 			<SelectControl
 				label={ __( 'Thousand Separator', 'ultimate-addons-for-gutenberg' ) }
