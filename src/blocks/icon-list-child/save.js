@@ -22,7 +22,7 @@ export default function save( props ) {
 		disableLink,
 		hideLabel,
 		fromParentIcon,
-		sizeChild
+		imageSizeChild
 	} = attributes;
 
 	const defaultedAlt = ( image && image?.alt ) ? image?.alt : '';
@@ -38,7 +38,7 @@ export default function save( props ) {
 			<img
 				className="uagb-icon-list__source-image"
 				src={ image.url }
-				width={sizeChild}
+				width={imageSizeChild}
 				loading="lazy"
 				alt={ defaultedAlt }
 			/>

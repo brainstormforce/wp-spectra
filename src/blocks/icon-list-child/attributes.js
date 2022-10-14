@@ -326,7 +326,7 @@ const attributes = {
 		default: true,
 		isUAGStyle: true,
 	},
-	sizeChild: {
+	imageSizeChild: {
 		type: 'number',
 		default: 16,
 	},
