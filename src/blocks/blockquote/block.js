@@ -9,7 +9,15 @@ import './style.scss';
 import deprecated from './deprecated';
 import attributes from './attributes';
 import { __ } from '@wordpress/i18n';
+import {
+	split,
+	create,
+	toHTMLString,
+	LINE_SEPARATOR,
+	__UNSTABLE_LINE_SEPARATOR,
+} from '@wordpress/rich-text';
 
+const lineSep = LINE_SEPARATOR ? LINE_SEPARATOR : __UNSTABLE_LINE_SEPARATOR;
 import { registerBlockType, createBlock } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/blockquote', {
@@ -60,6 +68,42 @@ registerBlockType( 'uagb/blockquote', {
 					} );
 				},
 			},
+			{
+				type: 'block',
+				blocks: [ 'core/paragraph' ],
+				transform: ( attribute ) => {
+					return createBlock( 'uagb/blockquote', {
+						descriptionText: attribute.content,
+						align: attribute.align,
+					} );
+				},
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/list' ],
+				transform: ( { values } ) => {
+					const listArray = split( create( {
+						html: values,
+						multilineTag: 'li',
+						multilineWrapperTags: [ 'ul', 'ol' ],
+					} ), lineSep );
+					const newitems = [ {
+						text: toHTMLString( { value: listArray[ 0 ] } ),
+					} ];
+					listArray.forEach( ( item, i ) => {
+						if ( i !== 0 ) {
+							newitems.push( {
+								text: listArray[i].text
+							} )
+						}
+					  } );
+					return newitems.map( ( text ) =>
+						createBlock( 'uagb/blockquote', {
+							descriptionText: text.text,
+						} )
+					);
+				},
+			},
 		],
 		to: [
 			{
@@ -78,6 +122,16 @@ registerBlockType( 'uagb/blockquote', {
 				blocks: [ 'core/heading' ],
 				transform: ( attribute ) => {
 					return createBlock( 'core/heading', {
+						content: attribute.descriptionText,
+						align: attribute.align,
+					} );
+				},
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/paragraph' ],
+				transform: ( attribute ) => {
+					return createBlock( 'core/paragraph', {
 						content: attribute.descriptionText,
 						align: attribute.align,
 					} );
