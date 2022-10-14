@@ -484,7 +484,7 @@
 		default: false,
 	},
 	showCtaIcon: {
-		type: 'string',
+		type: 'boolean',
 		default: false,
 		UAGCopyPaste: {
 			styleType: 'btn-show-icon'
