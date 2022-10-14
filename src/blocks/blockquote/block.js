@@ -16,7 +16,7 @@ import {
 	LINE_SEPARATOR,
 	__UNSTABLE_LINE_SEPARATOR,
 } from '@wordpress/rich-text';
-
+import colourNameToHex from '@Controls/changeColorNameToHex';
 const lineSep = LINE_SEPARATOR ? LINE_SEPARATOR : __UNSTABLE_LINE_SEPARATOR;
 import { registerBlockType, createBlock } from '@wordpress/blocks';
 
@@ -55,6 +55,8 @@ registerBlockType( 'uagb/blockquote', {
 						descriptionText: attribute.value,
 						author: attribute.citation,
 						align: attribute.align,
+						descColor: colourNameToHex( attribute.textColor ),
+						borderColor: colourNameToHex( attribute.backgroundColor )
 					} );
 				},
 			},
@@ -65,6 +67,8 @@ registerBlockType( 'uagb/blockquote', {
 					return createBlock( 'uagb/blockquote', {
 						descriptionText: attribute.content,
 						align: attribute.align,
+						descColor: colourNameToHex( attribute.textColor ),
+						borderColor: colourNameToHex( attribute.backgroundColor )
 					} );
 				},
 			},
@@ -75,13 +79,15 @@ registerBlockType( 'uagb/blockquote', {
 					return createBlock( 'uagb/blockquote', {
 						descriptionText: attribute.content,
 						align: attribute.align,
+						descColor: colourNameToHex( attribute.textColor ),
+						borderColor: colourNameToHex( attribute.backgroundColor )
 					} );
 				},
 			},
 			{
 				type: 'block',
 				blocks: [ 'core/list' ],
-				transform: ( { values } ) => {
+				transform: ( { values, textColor, backgroundColor } ) => {
 					const listArray = split( create( {
 						html: values,
 						multilineTag: 'li',
@@ -100,6 +106,8 @@ registerBlockType( 'uagb/blockquote', {
 					return newitems.map( ( text ) =>
 						createBlock( 'uagb/blockquote', {
 							descriptionText: text.text,
+							descColor: colourNameToHex( textColor ),
+							borderColor: colourNameToHex( backgroundColor )
 						} )
 					);
 				},

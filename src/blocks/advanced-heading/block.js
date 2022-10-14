@@ -18,6 +18,7 @@ import {
 	LINE_SEPARATOR,
 	__UNSTABLE_LINE_SEPARATOR,
 } from '@wordpress/rich-text';
+import colourNameToHex from '@Controls/changeColorNameToHex';
 
 const lineSep = LINE_SEPARATOR ? LINE_SEPARATOR : __UNSTABLE_LINE_SEPARATOR;
 
@@ -55,6 +56,8 @@ registerBlockType( 'uagb/advanced-heading', {
 					return createBlock( 'uagb/advanced-heading', {
 						headingTitle: attribute.content,
 						headingAlign: attribute.align,
+						headingColor: colourNameToHex( attribute.textColor ),
+						blockBackground: colourNameToHex( attribute.backgroundColor )
 					} );
 				},
 			},
@@ -65,6 +68,9 @@ registerBlockType( 'uagb/advanced-heading', {
 					return createBlock( 'uagb/advanced-heading', {
 						headingTitle: attribute.value,
 						headingDesc: attribute.citation,
+						headingAlign: attribute.align,
+						headingColor: colourNameToHex( attribute.textColor ),
+						blockBackground: colourNameToHex( attribute.backgroundColor )
 					} );
 				},
 			},
@@ -74,13 +80,16 @@ registerBlockType( 'uagb/advanced-heading', {
 				transform: ( attribute ) => {
 					return createBlock( 'uagb/advanced-heading', {
 						headingTitle: attribute.content,
+						headingAlign: attribute.align,
+						headingColor: colourNameToHex( attribute.textColor ),
+						blockBackground: colourNameToHex( attribute.backgroundColor )
 					} );
 				},
 			},
 			{
 				type: 'block',
 				blocks: [ 'core/list' ],
-				transform: ( { values } ) => {
+				transform: ( { values, textColor, backgroundColor } ) => {
 					const listArray = split( create( {
 						html: values,
 						multilineTag: 'li',
@@ -99,6 +108,8 @@ registerBlockType( 'uagb/advanced-heading', {
 					return newitems.map( ( text ) =>
 						createBlock( 'uagb/advanced-heading', {
 							headingTitle: text.text,
+							headingColor: colourNameToHex( textColor ),
+							blockBackground: colourNameToHex( backgroundColor )
 						} )
 					);
 				},
