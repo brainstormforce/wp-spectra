@@ -36,7 +36,7 @@ const UAGBModalEdit = ( props ) => {
 }
 
 export default compose(
-	withSelect( () => {
+	withSelect( ( select, ownProps ) => {
 
 		let modalWrapper = document.querySelectorAll( '.wp-block-uagb-modal' );
 
@@ -52,31 +52,33 @@ export default compose(
 	
 				var innerModal = content.querySelector( '.uagb-modal-popup' );
 	
-				modalTrigger.addEventListener(
-					'click',
-					function ( e ) {
-						if ( ! innerModal.classList.contains( 'active' ) ) {
-							innerModal.classList.add( 'active' );
-	
-							var bodyWrap = content.querySelector( 'body' );
-							
-							if ( ! bodyWrap.classList.contains( 'hide-scroll' ) ) {
-								bodyWrap.classList.add( 'hide-scroll' );
+				if( ownProps.attributes.previewModal ) {
+					modalTrigger.addEventListener(
+						'click',
+						function ( e ) {
+							if ( ! innerModal.classList.contains( 'active' ) ) {
+								innerModal.classList.add( 'active' );
+		
+								var bodyWrap = content.querySelector( 'body' );
+								
+								if ( ! bodyWrap.classList.contains( 'hide-scroll' ) ) {
+									bodyWrap.classList.add( 'hide-scroll' );
+								}
 							}
 						}
-					}
-				)
-	
-				var closeModal = content.querySelector( '.uagb-modal-popup-close' );
-	
-				closeModal.addEventListener(
-					'click',
-					function ( e ) {
-						if ( innerModal.classList.contains( 'active' ) ) {
-							innerModal.classList.remove( 'active' );
+					)
+		
+					var closeModal = content.querySelector( '.uagb-modal-popup-close' );
+		
+					closeModal.addEventListener(
+						'click',
+						function ( e ) {
+							if ( innerModal.classList.contains( 'active' ) ) {
+								innerModal.classList.remove( 'active' );
+							}
 						}
-					}
-				);
+					);
+				}
 	
 			}
 		}

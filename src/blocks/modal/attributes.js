@@ -8,6 +8,10 @@ const attributes = {
 	triggerText: {
 		type: 'string',
 		default: 'Click here'
+	},
+	previewModal: {
+		type: 'boolean',
+		default: false,
 	}
 };
 

@@ -6,20 +6,30 @@ import InspectorTab, {
 
 import { __ } from '@wordpress/i18n';
 import {InspectorControls} from '@wordpress/block-editor';
-import { TextControl, SelectControl } from '@wordpress/components';
+import { TextControl, SelectControl, ToggleControl } from '@wordpress/components';
 import Range from '@Components/range/Range.js';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 
 export default function Settings( props ) {
 	const { attributes, setAttributes } = props.parentProps;
-	const { modalTrigger } = attributes;
+	const { modalTrigger, previewModal } = attributes;
 	
 	const generalPanel = (
 		<UAGAdvancedPanelBody
 			title={ __( 'Modal Trigger', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
+			<ToggleControl
+				label={ __(
+					'Preview Modal',
+					'ultimate-addons-for-gutenberg'
+				) }
+				checked={ previewModal }
+				onChange={ () =>
+					setAttributes( { previewModal: ! previewModal } )
+				}
+			/>
 			<SelectControl
 				label={ __( 'Display Modal On', 'ultimate-addons-for-gutenberg' ) }
 				value={ modalTrigger }
