@@ -56,7 +56,7 @@ registerBlockType( 'uagb/blockquote', {
 						author: attribute.citation,
 						align: attribute.align,
 						descColor: colourNameToHex( attribute.textColor ),
-						borderColor: colourNameToHex( attribute.backgroundColor )
+						authorColor: colourNameToHex( attribute.backgroundColor )
 					} );
 				},
 			},
@@ -68,7 +68,7 @@ registerBlockType( 'uagb/blockquote', {
 						descriptionText: attribute.content,
 						align: attribute.align,
 						descColor: colourNameToHex( attribute.textColor ),
-						borderColor: colourNameToHex( attribute.backgroundColor )
+						authorColor: colourNameToHex( attribute.backgroundColor )
 					} );
 				},
 			},
@@ -80,7 +80,7 @@ registerBlockType( 'uagb/blockquote', {
 						descriptionText: attribute.content,
 						align: attribute.align,
 						descColor: colourNameToHex( attribute.textColor ),
-						borderColor: colourNameToHex( attribute.backgroundColor )
+						authorColor: colourNameToHex( attribute.backgroundColor )
 					} );
 				},
 			},
@@ -107,7 +107,7 @@ registerBlockType( 'uagb/blockquote', {
 						createBlock( 'uagb/blockquote', {
 							descriptionText: text.text,
 							descColor: colourNameToHex( textColor ),
-							borderColor: colourNameToHex( backgroundColor )
+							authorColor: colourNameToHex( backgroundColor )
 						} )
 					);
 				},
