@@ -192,6 +192,7 @@ const buttonsPresets = [
         attributes: [
 			{ label: 'showIcon',  value: false },
             { label: 'backgroundType', value: 'transparent' },
+            { label: 'color', value: '#0170b9' },
             { label: 'hoverbackgroundType', value: 'color' },
 			{ label: 'hBackground', value: '#3a3a3a' },
 			{ label: 'hColor', value: '#ffffff' },
@@ -215,6 +216,7 @@ const buttonsPresets = [
         attributes: [
 			{ label: 'showIcon',  value: false },
             { label: 'backgroundType', value: 'transparent' },
+            { label: 'color', value: '#0170b9' },
             { label: 'hoverbackgroundType', value: 'color' },
 			{ label: 'hBackground', value: '#3a3a3a' },
 			{ label: 'hColor', value: '#ffffff' },
@@ -238,6 +240,7 @@ const buttonsPresets = [
         attributes: [
 			{ label: 'showIcon',  value: false },
             { label: 'backgroundType', value: 'transparent' },
+            { label: 'color', value: '#0170b9' },
             { label: 'hoverbackgroundType', value: 'color' },
 			{ label: 'hBackground', value: '#3a3a3a' },
 			{ label: 'hColor', value: '#ffffff' },
@@ -260,6 +263,7 @@ const buttonsPresets = [
         label: __( 'Preset 8', 'ultimate-addons-for-gutenberg' ),
         attributes: [
             { label: 'backgroundType', value: 'transparent' },
+            { label: 'color', value: '#0170b9' },
             { label: 'hoverbackgroundType', value: 'color' },
 			{ label: 'hBackground', value: '#3a3a3a' },
 			{ label: 'hColor', value: '#ffffff' },
