@@ -51,8 +51,6 @@ export default compose(
 			if( typeof modalTrigger !== 'undefined' && modalTrigger ) {
 	
 				var innerModal = content.querySelector( '.uagb-modal-popup' );
-
-				console.log( ownProps.attributes.previewModal );
 	
 				if( ownProps.attributes.previewModal ) {
 					modalTrigger.addEventListener(
