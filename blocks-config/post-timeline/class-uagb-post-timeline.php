@@ -938,7 +938,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 		public function get_icon( $attributes ) {
 			?>
 			<div class = "uagb-timeline__marker uagb-timeline__out-view-icon" >
-				<?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?>
+				<span class = "uagb-timeline__icon-new uagb-timeline__out-view-icon" ><?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?></span>
 			</div>
 			<?php
 		}

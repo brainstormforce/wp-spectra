@@ -258,6 +258,10 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	aggregateType: {
+		type: 'string',
+		default: 'AggregateRating',
+	},
 	offerType: {
 		type: 'string',
 		default: 'Offer',
