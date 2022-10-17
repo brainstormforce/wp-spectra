@@ -171,6 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 2.0.14 - THURSDAY, 29th SEPTEMBER 2022 ###
+* Improvement: Container - Equal height setting in Parent container.
 * Fix: Button - Box shadow stylings not working as expected on front-end.
 * Fix: Tabs - Tabs border is inconsistent inside the editor as well as on the frontend.
 * Fix: Post Carousel/Masonry- Taxonomy stylings not working as expected in different layouts.
