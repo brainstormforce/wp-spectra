@@ -513,7 +513,7 @@ const attributes = {
 	},
 	circleBackground : {
 		type: 'string',
-		default: '#f7951e',
+		default: '#007CBA',
 	},
 	// bar
 	barSize: {
@@ -526,7 +526,7 @@ const attributes = {
 	},
 	barBackground : {
 		type: 'string',
-		default: '#f7951e',
+		default: '#007CBA',
 	},
 	// Box Shadow.
 	boxShadowColor: {

@@ -133,11 +133,11 @@ return array_merge(
 		'circleSize'                => 300,
 		'circleStokeSize'           => 10,
 		'circleForeground'          => '#eaeaea',
-		'circleBackground'          => '#f7951e',
+		'circleBackground'          => '#007CBA',
 		// bar.
 		'barSize'                   => 25,
 		'barForeground'             => '#eaeaea',
-		'barBackground'             => '#f7951e',
+		'barBackground'             => '#007CBA',
 		// Box Shadow.
 		'boxShadowColor'            => '#00000070',
 		'boxShadowHOffset'          => 0,
