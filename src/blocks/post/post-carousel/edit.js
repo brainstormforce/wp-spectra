@@ -80,6 +80,11 @@ const UAGBPostCarousel = ( props ) => {
 			paddingRightMobile,
 			paddingBottomMobile,
 			paddingLeftMobile,
+
+			// backward compatability added
+			columnGap,
+			columnGapTablet,
+			columnGapMobile
 		} = props.attributes;
 
 		if ( btnVPadding ) {
@@ -224,6 +229,18 @@ const UAGBPostCarousel = ( props ) => {
 			if( undefined === btnBorderStyle ) {
 				props.setAttributes( { btnBorderStyle : borderStyle} );
 			}
+		}
+
+		if( columnGap && columnGap !== 20 ){
+			props.setAttributes( { dotsMarginTop : columnGap} );
+		}
+
+		if( columnGapTablet ){
+			props.setAttributes( { dotsMarginTopTablet : columnGapTablet} );
+		}
+
+		if( columnGapMobile ){
+			props.setAttributes( { dotsMarginTopMobile : columnGapMobile} );
 		}
 	}, [] );
 
@@ -495,13 +512,18 @@ const UAGBPostCarousel = ( props ) => {
 
 	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
 
-	const taxonomyListOptions = [];
+	const taxonomyListOptions = [
+		{
+			value: '',
+			label: __( 'All', 'ultimate-addons-for-gutenberg' ),
+		},
+	];
 
 	const categoryListOptions = [
 		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
 	];
 
-	if ( '' !== taxonomyList ) {
+	if ( '' !== taxonomyList && undefined !== taxonomyList ) {
 		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,

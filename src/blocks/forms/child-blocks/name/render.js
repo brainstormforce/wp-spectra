@@ -3,7 +3,6 @@ import React, { useLayoutEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 
-import { ToggleControl } from '@wordpress/components';
 
 import { RichText } from '@wordpress/block-editor';
 
@@ -18,7 +17,7 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes, setAttributes, isSelected } = props;
+	const { attributes, setAttributes } = props;
 
 	const { block_id, nameRequired, name, placeholder } = attributes;
 
@@ -35,22 +34,6 @@ const Render = ( props ) => {
 					`uagb-block-${ block_id }`
 				) }
 			>
-				{ isSelected && (
-					<div className="uagb-forms-required-wrap">
-						<ToggleControl
-							label={ __(
-								'Required',
-								'ultimate-addons-for-gutenberg'
-							) }
-							checked={ nameRequired }
-							onChange={ () =>
-								setAttributes( {
-									nameRequired: ! nameRequired,
-								} )
-							}
-						/>
-					</div>
-				) }
 				<RichText
 					tagName="div"
 					placeholder={ __(
