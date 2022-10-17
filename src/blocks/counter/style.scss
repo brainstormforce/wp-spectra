@@ -97,6 +97,10 @@
 	}
 }
 
+.wp-block-uagb-counter__icon svg {
+	width: 30px;  // To reduce jerk while loading SVG (SVG appears oversized for a moment, without this).
+}
+
 // These fixes are specific to the Astra theme.
 // Astra theme adds line-height on frontend which interferes with the WYSIWYG experience.
 body[class*="astra"] {
