@@ -516,7 +516,7 @@ function styling( props ) {
 		'text-decoration': excerptDecoration,
 		'letter-spacing': generateCSSUnit( excerptLetterSpacing, excerptLetterSpacingType ),
 	};
-	selectors[ ' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta .uagb-text-link.wp-block-button__link' ] = {
+	selectors[ ' .uagb-post__cta .uagb-text-link' ] = {
 		'pointer-events': 'visible',
 		'color': ctaColor,
 		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
@@ -537,12 +537,33 @@ function styling( props ) {
 		...borderCSS,
 		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
 	};
-	selectors[ ' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta .uagb-text-link.wp-block-button__link:hover' ] = {
+	selectors[ ' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta:not(.is-style-outline) .uagb-text-link.wp-block-button__link:not(.has-background) ' ] = {
+		'pointer-events': 'visible',
+		'color': ctaColor,
+		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+		'font-family': ctaFontFamily,
+		'font-weight': ctaFontWeight,
+		'font-style': ctaFontStyle,
+		'line-height': generateCSSUnit( ctaLineHeight, ctaLineHeightType ),
+		'background': ctaBgColor,
+		'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
+		'padding-bottom': generateCSSUnit(
+			paddingBtnBottom,
+			paddingBtnUnit
+		),
+		'text-transform': ctaTransform,
+		'text-decoration': ctaDecoration,
+		'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
+		'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
+		...borderCSS,
+		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
+	};
+	selectors[ ' .uagb-post__text .uagb-post__cta:hover' ] = {
 		'color': ctaHColor,
 		'background': ctaBgHColor,
 		'border-color': btnBorderHColor,
 	};
-	selectors[ ' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta:hover a' ] = {
+	selectors[ ' .uagb-post__text .uagb-post__cta:hover a' ] = {
 		'color': ctaHColor,
 		'background': ctaBgHColor,
 		'border-color': btnBorderHColor,

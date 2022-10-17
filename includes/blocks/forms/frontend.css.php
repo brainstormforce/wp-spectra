@@ -178,6 +178,18 @@ $selectors = array(
 	' .uagb-forms-main-form .uagb-forms-input:focus::placeholder' => array(
 		'color' => $attr['inputplaceholderActiveColor'] . ' !important',
 	),
+	' .uagb-forms-main-form .uagb-forms-main-submit-button ' => array_merge(
+		array(
+			'font-size'        => UAGB_Helper::get_css_value( $attr['submitTextFontSize'], $attr['submitTextFontSizeType'] ),
+			'color'            => $attr['submitColor'],
+			'background-color' => $attr['submitBgColor'],
+			'padding-top'      => UAGB_Helper::get_css_value( $btnPaddingTop, $attr['paddingBtnUnit'] ),
+			'padding-bottom'   => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['paddingBtnUnit'] ),
+			'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['paddingBtnUnit'] ),
+			'padding-right'    => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['paddingBtnUnit'] ),
+		),
+		$btn_border
+	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link ' => array_merge(
 		array(
 			'font-size'        => UAGB_Helper::get_css_value( $attr['submitTextFontSize'], $attr['submitTextFontSizeType'] ),
@@ -190,7 +202,7 @@ $selectors = array(
 		),
 		$btn_border
 	),
-	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button .uagb-forms-main-submit-button.wp-block-button__link:hover' => array(
+	' .uagb-forms-main-form .uagb-forms-main-submit-button:hover' => array(
 		'color'            => $attr['submitColorHover'],
 		'background-color' => $attr['submitBgColorHover'],
 		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],

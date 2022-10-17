@@ -256,7 +256,7 @@ function CtaStyle( props ) {
 	}
 
 	// CTA style.
-	selectors['.uagb-cta__outer-wrap.wp-block-button .uagb-cta__buttons a.uagb-cta__button-link-wrapper.wp-block-button__link'] = {
+	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper'] = {
 		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 		'font-family': ctaFontFamily,
 		'font-style' : ctaFontStyle,
@@ -273,6 +273,22 @@ function CtaStyle( props ) {
 		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
 	};
 
+	// Core Theme CSS
+	selectors['.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background)'] = {
+		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+		'font-family': ctaFontFamily,
+		'font-style' : ctaFontStyle,
+		'text-decoration': ctaDecoration,
+		'text-transform': ctaTransform,
+		'font-weight': ctaFontWeight,
+		'color': ctaBtnLinkColor,
+		'background-color': ctaBgColor,
+		'padding-top': generateCSSUnit( ctaTopPadding, ctaPaddingUnit ),
+		'padding-bottom': generateCSSUnit( ctaBottomPadding, ctaPaddingUnit ),
+		'padding-left': generateCSSUnit( ctaLeftPadding, ctaPaddingUnit ),
+		'padding-right': generateCSSUnit( ctaRightPadding, ctaPaddingUnit ),
+		...ctaBorderCSS,
+	};
 
 	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button'] = {
 		'font-size': generateCSSUnit( secondCtaFontSize, secondCtaFontSizeType ),
@@ -298,7 +314,7 @@ function CtaStyle( props ) {
 		'border-color': secondCtaBorderHColor,
 	};
 
-	selectors['.uagb-cta__outer-wrap.wp-block-button .uagb-cta__buttons a.uagb-cta__button-link-wrapper.wp-block-button__link:hover'] = {
+	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper:hover'] = {
 		'color': ctaLinkHoverColor,
 		'background-color': ctaBgHoverColor,
 		'border-color': btnBorderHColor,
