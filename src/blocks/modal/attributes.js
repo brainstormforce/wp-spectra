@@ -17,6 +17,9 @@ const attributes = {
 	icon: {
 		type: 'string',
 		default: 'up-right-from-square',
+	},
+	iconImage: {
+		type: 'object',
 	}
 };
 

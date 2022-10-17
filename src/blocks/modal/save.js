@@ -34,7 +34,7 @@ export default function Save( props ) {
 	// if ( iconImage && iconImage.url ) {
 	// 	imageIconHtml = (
 	// 		<img
-	// 			src={ image.url }
+	// 			src={ iconImage.url }
 	// 			alt={ defaultedAlt }
 	// 		/>
 	// 	);

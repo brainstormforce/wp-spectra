@@ -10,6 +10,7 @@ import { SelectControl, ToggleControl } from '@wordpress/components';
 import UAGMediaPicker from '@Components/image';
 import UAGIconPicker from '@Components/icon-picker';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import { getImageSize } from '@Utils/Helpers';
 
 export default function Settings( props ) {
 	const { attributes, setAttributes } = props.parentProps;
@@ -19,6 +20,7 @@ export default function Settings( props ) {
 	 * Event to set Image as while adding.
 	 */
 	const onSelectImage = ( media ) => {
+		
 		if ( ! media || ! media.url ) {
 			setAttributes( { iconImage: null } );
 			return;
@@ -28,10 +30,7 @@ export default function Settings( props ) {
 			setAttributes( { iconImage: null } );
 			return;
 		}
-		if ( media.sizes ) {
-			const new_img = getImageSize( media.sizes );
-			imageSizeOptions = new_img;
-		}
+		
 		setAttributes( { iconImage: media } );
 	};
 
