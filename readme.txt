@@ -201,6 +201,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix:- Timeline - Connector does not show color without icon when scrolling.
 * Fix: Resolved Buttons should consider button text as a string instead of html in multiple blocks.
 * Fix: Container - Does not work properly when it is used inside cover block.
+* Fix: Post Carousel - On reducing or increasing Post per page all items sticks to each other in editor.
 
 = 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 =
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
