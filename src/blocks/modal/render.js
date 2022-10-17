@@ -43,6 +43,18 @@ const Render = ( props ) => {
 		</>
 	);
 
+	const defaultedAlt = ( iconImage && iconImage?.alt ) ? iconImage?.alt : '';
+	let imageIconHtml = '';
+
+	if ( iconImage && iconImage.url ) {
+		imageIconHtml = (
+			<img
+				src={ iconImage.url }
+				alt={ defaultedAlt }
+			/>
+		);
+	}
+
 	return (
 		<React.Fragment>
 			<div className={ classnames(
@@ -56,7 +68,11 @@ const Render = ( props ) => {
 				{
 					'icon' === modalTrigger &&
 					iconHTML
-				}			
+				}
+				{
+					'image' === modalTrigger &&
+					imageIconHtml
+				}		
 				<div class="uagb-modal-popup">
 					<div class="uagb-modal-popup-wrap">
 						<div class="uagb-modal-popup-content">

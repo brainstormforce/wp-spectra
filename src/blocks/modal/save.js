@@ -28,17 +28,17 @@ export default function Save( props ) {
 		</>
 	);
 
-	// const defaultedAlt = ( iconImage && iconImage?.alt ) ? iconImage?.alt : '';
-	// let imageIconHtml = '';
+	const defaultedAlt = ( iconImage && iconImage?.alt ) ? iconImage?.alt : '';
+	let imageIconHtml = '';
 
-	// if ( iconImage && iconImage.url ) {
-	// 	imageIconHtml = (
-	// 		<img
-	// 			src={ iconImage.url }
-	// 			alt={ defaultedAlt }
-	// 		/>
-	// 	);
-	// }
+	if ( iconImage && iconImage.url ) {
+		imageIconHtml = (
+			<img
+				src={ iconImage.url }
+				alt={ defaultedAlt }
+			/>
+		);
+	}
 
 	return (
 		<div
@@ -54,6 +54,10 @@ export default function Save( props ) {
 			{
 				'icon' === modalTrigger &&
 				iconHTML
+			}
+			{
+				'image' === modalTrigger &&
+				imageIconHtml
 			}
 			<div class="uagb-modal-popup">
 				<div class="uagb-modal-popup-wrap">
