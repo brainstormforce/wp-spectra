@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
+import renderSVG from '@Controls/renderIcon';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
 
 const propTypes = {};
@@ -17,37 +18,11 @@ const Render = ( props ) => {
 		block_id,
 		triggerText,
 		icon,
-		iconImage
+		iconImage,
+		modalTrigger
 	} = attributes
 
-	const textHTML = (
-		<RichText
-			tagName="p"
-			placeholder={ __(
-				'Click here',
-				'ultimate-addons-for-gutenberg'
-			) }
-			value={ triggerText }
-			className="uagb-modal-text uagb-modal-trigger"
-			onChange={ ( value ) => setAttributes( { triggerText: value } ) }
-		/>
-	);
 
-	const iconHTML = (
-		renderSVG( icon )
-	);
-
-	const defaultedAlt = ( iconImage && iconImage?.alt ) ? iconImage?.alt : '';
-	let imageIconHtml = '';
-
-	if ( iconImage && iconImage.url ) {
-		imageIconHtml = (
-			<img
-				src={ image.url }
-				alt={ defaultedAlt }
-			/>
-		);
-	}
 
 	return (
 		<React.Fragment>
@@ -55,23 +30,20 @@ const Render = ( props ) => {
 				`uagb-block-${ block_id }`,
 				'wp-block-uagb-modal'
 			) }>
-				{ 'text' === modalTrigger &&
-					<>
-						{ textHTML }
-					</>
+				{
+					'text' === modalTrigger &&
+					<RichText
+						tagName="p"
+						placeholder={ __(
+							'Click here',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ triggerText }
+						className="uagb-modal-text uagb-modal-trigger"
+						onChange={ ( value ) => setAttributes( { triggerText: value } ) }
+					/>
 				}
-				{ 'icon' === modalTrigger &&
-					<>
-						{ iconHTML }
-					</>
-				}
-				{ 'image' === modalTrigger && 
-					<>
-						<span className="uagb-modal-image-wrap">
-							{ imageIconHtml }
-						</span>
-					</>
-				}
+				
 				<div class="uagb-modal-popup">
 					<div class="uagb-modal-popup-wrap">
 						<div class="uagb-modal-popup-content">

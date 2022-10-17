@@ -10,7 +10,6 @@ import { SelectControl, ToggleControl } from '@wordpress/components';
 import UAGMediaPicker from '@Components/image';
 import UAGIconPicker from '@Components/icon-picker';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-// import { buttonsPresets } from './presets';
 
 export default function Settings( props ) {
 	const { attributes, setAttributes } = props.parentProps;

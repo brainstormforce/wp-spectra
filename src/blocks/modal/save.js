@@ -20,21 +20,19 @@ export default function Save( props ) {
 		/>
 	);
 
-	const iconHTML = (
-		renderSVG( icon )
-	);
+	
 
-	const defaultedAlt = ( iconImage && iconImage?.alt ) ? iconImage?.alt : '';
-	let imageIconHtml = '';
+	// const defaultedAlt = ( iconImage && iconImage?.alt ) ? iconImage?.alt : '';
+	// let imageIconHtml = '';
 
-	if ( iconImage && iconImage.url ) {
-		imageIconHtml = (
-			<img
-				src={ image.url }
-				alt={ defaultedAlt }
-			/>
-		);
-	}
+	// if ( iconImage && iconImage.url ) {
+	// 	imageIconHtml = (
+	// 		<img
+	// 			src={ image.url }
+	// 			alt={ defaultedAlt }
+	// 		/>
+	// 	);
+	// }
 
 	return (
 		<div
@@ -43,24 +41,16 @@ export default function Save( props ) {
 				'wp-block-modal'
 			) }
 		>
-			{ 'text' === modalTrigger &&
-				<>
-					{ textHTML }
-				</>
-			}
-			{ 'icon' === modalTrigger &&
-				<>
-					{ iconHTML }
-				</>
-			}
-			{ 'image' === modalTrigger && 
-				<>
-					<span className="uagb-modal-image-wrap">
-						{ imageIconHtml }
-					</span>
-				</>
-			}
 			
+			{
+				'text' === modalTrigger &&
+				<RichText.Content
+					value={ triggerText }
+					tagName="p"
+					className="uagb-modal-text uagb-modal-trigger"
+				/>
+			}
+
 			<div class="uagb-modal-popup">
 				<div class="uagb-modal-popup-wrap">
 					<div class="uagb-modal-popup-content">
