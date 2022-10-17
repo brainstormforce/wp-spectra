@@ -399,9 +399,9 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @since x.x.x
 		 * @access public
 		 *
-		 * @param  array $blocks_array.
+		 * @param  array $blocks_array Block Array.
 		 *
-		 * @return array $final_reusable_array.
+		 * @return array $final_reusable_array Heading Array.
 		 */
 		public function toc_recursive_reusable_heading( $blocks_array ) {
 			$final_reusable_array = array();
