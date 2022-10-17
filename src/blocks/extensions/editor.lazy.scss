@@ -50,6 +50,10 @@
 	.components-button {
 		padding: 10px;
 		justify-content: center;
+
+		&[disabled]:hover {
+			color: unset;
+		}
 	}
 }
 

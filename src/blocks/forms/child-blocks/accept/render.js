@@ -2,7 +2,6 @@ import classnames from 'classnames';
 import React, { useLayoutEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
-import { ToggleControl } from '@wordpress/components';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -14,7 +13,7 @@ const Render = ( props ) => {
 	}, [] );
 	props = props.parentProps;
 
-	const { attributes, setAttributes, isSelected } = props;
+	const { attributes } = props;
 
 	const {
 		block_id,
@@ -35,22 +34,6 @@ const Render = ( props ) => {
 
 	return (
 		<>
-			{ isSelected && (
-				<div className="uagb-forms-required-wrap">
-					<ToggleControl
-						label={ __(
-							'Required',
-							'ultimate-addons-for-gutenberg'
-						) }
-						checked={ acceptRequired }
-						onChange={ () =>
-							setAttributes( {
-								acceptRequired: ! acceptRequired,
-							} )
-						}
-					/>
-				</div>
-			) }
 			<div
 				className={ classnames(
 					'uagb-forms-accept-wrap',
