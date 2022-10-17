@@ -76,19 +76,7 @@ export default function Save( props ) {
 				target='_self'
 				rel='noopener noreferrer'
 			>
-				<RichText
-					tagName="span"
-					placeholder={ __(
-						'Click Here',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ buttonText }
-					className="uagb-inline-editing"
-					multiline={ false }
-					onChange={ ( value ) => {
-						setAttributes( { buttonText: value } );
-					} }
-				/>
+				
 			</a>
 		</div>
 	)
