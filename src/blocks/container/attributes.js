@@ -1064,6 +1064,10 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 	},
+	equalHeight: {
+		type: 'boolean',
+		default: false,
+	},
 	...inputBorderAttributes
 };
 

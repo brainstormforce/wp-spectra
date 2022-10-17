@@ -82,7 +82,7 @@ const Render = ( props ) => {
 			)}
 		>
 				<div className="uagb-timeline__marker uagb-timeline__out-view-icon">
-						{ renderSVG( icon ) }
+						{ renderSVG( icon ) ? renderSVG( icon ) : <svg xmlns="" viewBox="0 0 256 512"></svg> }
 				</div>
 				<div className={ classnames( props.attributes.dayalign_class, 'uagb-timeline__events-inner-new' ) } >
 					<div className='uagb-timeline__events-inner--content'>

@@ -174,6 +174,7 @@ return array_merge(
 		'widthTypeTablet'                   => '%',
 		'widthTypeMobile'                   => '%',
 		'overflow'                          => 'visible',
+		'equalHeight'                       => false,
 	),
 	$border_attribute
 );
