@@ -191,6 +191,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Forms - Settings uneven spacing issue and Hide border colors when style set to default.
 * Fix: Copy Paste Styles - Removed hover color for disable paste style text.
 * Fix: Forms - Checkbox throws an issue in console when required toggle is ON.
+* Fix: Resolved undefined PHP issue for block attribute.
 * Fix: Info Box - After drag and drop block SVG looks bigger for a second.
 * Fix: Icon List - Disable link not working properly on front-end for old users.
 * Fix: Table Of Contents - Empty heading list, throwing a console error on the front end.
@@ -199,7 +200,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Call To Action - Selected preset looks different after refreshing in page on the editor.
 * Fix: Testimonial - Slider does not slide the content when returning from last slide to first slide.
 * Fix: Table Of Contents - Reusable headings are not listed in TOC on the frontend.
-* Fix:- Timeline - Connector does not show color without icon when scrolling.
+* Fix: Timeline - Connector does not show color without icon when scrolling.
 * Fix: Resolved Buttons should consider button text as a string instead of html in multiple blocks.
 * Fix: Container - Does not work properly when it is used inside cover block.
 
