@@ -12,13 +12,13 @@ export default function Save( props ) {
 		iconImage
 	} = props.attributes;
 
-	const textHTML = (
-		<RichText.Content
-			value={ triggerText }
-			tagName="p"
-			className="uagb-modal-text uagb-modal-trigger"
-		/>
-	);
+	// const textHTML = (
+	// 	<RichText.Content
+	// 		value={ triggerText }
+	// 		tagName="p"
+	// 		className="uagb-modal-text uagb-modal-trigger"
+	// 	/>
+	// );
 
 	
 
@@ -50,7 +50,7 @@ export default function Save( props ) {
 					className="uagb-modal-text uagb-modal-trigger"
 				/>
 			}
-
+			
 			<div class="uagb-modal-popup">
 				<div class="uagb-modal-popup-wrap">
 					<div class="uagb-modal-popup-content">

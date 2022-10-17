@@ -22,8 +22,6 @@ const Render = ( props ) => {
 		modalTrigger
 	} = attributes
 
-
-
 	return (
 		<React.Fragment>
 			<div className={ classnames(
