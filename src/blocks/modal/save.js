@@ -9,7 +9,8 @@ export default function Save( props ) {
 		modalTrigger,
 		triggerText,
 		icon,
-		iconImage
+		iconImage,
+		imageSize
 	} = props.attributes;
 
 	const textHTML = (
@@ -32,9 +33,21 @@ export default function Save( props ) {
 	let imageIconHtml = '';
 
 	if ( iconImage && iconImage.url ) {
+
+		let url = iconImage.url;
+		const size = iconImage.sizes;
+		const imageSizes = imageSize;
+
+		if (
+			typeof size !== 'undefined' &&
+			typeof size[ imageSizes ] !== 'undefined'
+		) {
+			url = size[ imageSizes ].url;
+		}
+
 		imageIconHtml = (
 			<img
-				src={ iconImage.url }
+				src={ url }
 				alt={ defaultedAlt }
 			/>
 		);

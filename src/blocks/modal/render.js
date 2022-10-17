@@ -19,7 +19,8 @@ const Render = ( props ) => {
 		triggerText,
 		icon,
 		iconImage,
-		modalTrigger
+		modalTrigger,
+		imageSize
 	} = attributes
 
 	const textHTML = (
@@ -47,9 +48,21 @@ const Render = ( props ) => {
 	let imageIconHtml = '';
 
 	if ( iconImage && iconImage.url ) {
+
+		let url = iconImage.url;
+		const size = iconImage.sizes;
+		const imageSizes = imageSize;
+
+		if (
+			typeof size !== 'undefined' &&
+			typeof size[ imageSizes ] !== 'undefined'
+		) {
+			url = size[ imageSizes ].url;
+		}
+
 		imageIconHtml = (
 			<img
-				src={ iconImage.url }
+				src={ url }
 				alt={ defaultedAlt }
 			/>
 		);

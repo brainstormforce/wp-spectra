@@ -20,7 +20,11 @@ const attributes = {
 	},
 	iconImage: {
 		type: 'object',
-	}
+	},
+	imageSize: {
+		type: 'string',
+		default: 'thumbnail',
+	},
 };
 
 export default attributes;

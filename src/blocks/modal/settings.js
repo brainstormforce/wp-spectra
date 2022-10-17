@@ -11,10 +11,20 @@ import UAGMediaPicker from '@Components/image';
 import UAGIconPicker from '@Components/icon-picker';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { getImageSize } from '@Utils/Helpers';
+import UAGSelectControl from '@Components/select-control';
+
+let imageSizeOptions = [
+	{
+		value: 'thumbnail',
+		label: __( 'Thumbnail', 'ultimate-addons-for-gutenberg' ),
+	},
+	{ value: 'medium', label: __( 'Medium', 'ultimate-addons-for-gutenberg' ) },
+	{ value: 'full', label: __( 'Large', 'ultimate-addons-for-gutenberg' ) },
+];
 
 export default function Settings( props ) {
 	const { attributes, setAttributes } = props.parentProps;
-	const { modalTrigger, previewModal, iconImage, icon, ctaText } = attributes;
+	const { modalTrigger, previewModal, iconImage, icon, imageSize } = attributes;
 
 	/*
 	 * Event to set Image as while adding.
@@ -30,6 +40,11 @@ export default function Settings( props ) {
 			setAttributes( { iconImage: null } );
 			return;
 		}
+
+		if ( media.sizes ) {
+			const new_img = getImageSize( media.sizes );
+			imageSizeOptions = new_img;
+		}
 		
 		setAttributes( { iconImage: media } );
 	};
@@ -40,6 +55,10 @@ export default function Settings( props ) {
 	const onRemoveImage = () => {
 		setAttributes( { iconImage: '' } );
 	};
+
+	if ( iconImage && iconImage.sizes ) {
+		imageSizeOptions = getImageSize( iconImage.sizes );
+	}
 	
 	const generalPanel = (
 		<UAGAdvancedPanelBody
@@ -90,6 +109,22 @@ export default function Settings( props ) {
 							backgroundImage={ iconImage }
 							onRemoveImage={ onRemoveImage }
 						/>
+						{ iconImage &&
+							iconImage.url !== 'null' &&
+							iconImage.url !== '' && (
+								<UAGSelectControl
+									label={ __(
+										'Image Size',
+										'ultimate-addons-for-gutenberg'
+									) }
+									data={ {
+										value: imageSize,
+										label: 'imageSize',
+									} }
+									setAttributes={ setAttributes }
+									options={ imageSizeOptions }
+								/>
+							) }
 					</>
 				) }
 				
