@@ -597,7 +597,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'color' => $attr['metaColor'],
 			);
 			$selectors[' .uagb-post__text.uagb-post__excerpt']['color']                          = $attr['excerptColor'];
-			$selectors['.uagb-post-grid .wp-block-button.uagb-post__text.uagb-post__cta .uagb-text-link']          = array_merge(
+			$selectors['.uagb-post-grid .wp-block-button.uagb-post__text.uagb-post__cta .uagb-text-link.wp-block-button__link ']          = array_merge(
 				array(
 					'color'      => $attr['ctaColor'],
 					'background' => $attr['ctaBgColor'],
