@@ -82,7 +82,7 @@ UAGBCounter = { // eslint-disable-line no-undef
 		const that = this
 		const parentWrapClass = 'wp-block-uagb-counter--bars';
 		const numberWrap = el.querySelector( '.wp-block-uagb-counter__number' );
-		const duration = that._getAnimationDuration( data );
+		const duration = that._getAnimationDurationForCSS( data );
 		const startWidth = that._getStartNumber( data ) < that._getTotalNumber( data ) ? Math.ceil( ( that._getStartNumber( data ) / that._getTotalNumber( data ) ) * 100 ) : 100;
 		const endWidth = that._getEndNumber( data ) <= that._getTotalNumber( data ) ? Math.ceil( ( that._getEndNumber( data ) / that._getTotalNumber( data ) ) * 100 ) : 100;
 
@@ -123,7 +123,7 @@ UAGBCounter = { // eslint-disable-line no-undef
 		endPoint = 100 - endPoint;
 		endPoint = ( endPoint / 100 ) * circumference;
 
-		const duration = that._getAnimationDuration( data );
+		const duration = that._getAnimationDurationForCSS( data );
 
 		const animationKeyframes = [
 			{ strokeDashoffset: startPoint + 'px' },
@@ -143,6 +143,10 @@ UAGBCounter = { // eslint-disable-line no-undef
 
 	_getAnimationDuration( data ){
 		return data.animationDuration / 1000
+	},
+
+	_getAnimationDurationForCSS( data ){
+		return data.animationDuration
 	},
 
 	_getStartNumber( data ){
