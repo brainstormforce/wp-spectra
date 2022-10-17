@@ -204,7 +204,7 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 			}
 
 			register_rest_route(
-				'spectra/v1/',
+				'spectra/v1',
 				'all_taxonomy',
 				array(
 					array(
