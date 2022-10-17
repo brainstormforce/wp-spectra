@@ -53,6 +53,10 @@
 			position: relative;
 			display: inline-block;
 
+			.wp-block-uagb-counter__icon svg {
+				width: 30px;
+			}
+
 			svg {
 				overflow: visible;
 				width: 100%;
