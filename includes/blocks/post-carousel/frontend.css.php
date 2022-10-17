@@ -20,15 +20,15 @@ $t_selectors = UAGB_Block_Helper::get_post_tablet_selectors( $attr );
 
 if ( 'background' === $attr['imgPosition'] && 3 >= $attr['postsToShow'] ) {
 	$selectors['.uagb-post__image-position-background'] = array(
-		'flex-wrap'     => 'nowrap !important',
-		'gap'           => $attr['rowGap'] . 'px !important',
+		'flex-wrap' => 'nowrap !important',
+		'gap'       => $attr['rowGap'] . 'px !important',
 	);
-	$selectors[' .uagb-post__inner-wrap'] = array(
-		'padding-left'     => '0px !important',
-		'padding-right'     => '0px !important',
+	$selectors[' .uagb-post__inner-wrap']               = array(
+		'padding-left'  => '0px !important',
+		'padding-right' => '0px !important',
 	);
-	$selectors[' .uagb-post__image'] = array(
-		'width'     => '100% !important',
+	$selectors[' .uagb-post__image']                    = array(
+		'width'       => '100% !important',
 		'margin-left' => 'unset !important',
 	);
 }
