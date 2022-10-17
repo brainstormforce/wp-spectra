@@ -256,7 +256,7 @@ function CtaStyle( props ) {
 	}
 
 	// CTA style.
-	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper'] = {
+	selectors['.uagb-cta__outer-wrap.wp-block-button .uagb-cta__buttons a.uagb-cta__button-link-wrapper.wp-block-button__link'] = {
 		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 		'font-family': ctaFontFamily,
 		'font-style' : ctaFontStyle,
@@ -298,7 +298,7 @@ function CtaStyle( props ) {
 		'border-color': secondCtaBorderHColor,
 	};
 
-	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper:hover'] = {
+	selectors['.uagb-cta__outer-wrap.wp-block-button .uagb-cta__buttons a.uagb-cta__button-link-wrapper.wp-block-button__link:hover'] = {
 		'color': ctaLinkHoverColor,
 		'background-color': ctaBgHoverColor,
 		'border-color': btnBorderHColor,

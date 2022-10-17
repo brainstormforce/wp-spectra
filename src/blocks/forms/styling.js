@@ -337,7 +337,7 @@ function styling( props ) {
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
 			'text-align': buttonAlign,
 		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button': {
+		'.uagb-forms__outer-wrap .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button > .uagb-forms-main-submit-button.wp-block-button__link': {
 			'color': submitColor,
 			'font-size': generateCSSUnit(
 				submitTextFontSize,
@@ -363,7 +363,7 @@ function styling( props ) {
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 			'letter-spacing': generateCSSUnit( submitTextLetterSpacing, submitTextLetterSpacingType ),
 		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button:hover': {
+		'.uagb-forms__outer-wrap .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button > .uagb-forms-main-submit-button.wp-block-button__link:hover': {
 			'color': submitColorHover,
 			'background-color': submitBgColorHover,
 			'border-color': btnBorderHColor,

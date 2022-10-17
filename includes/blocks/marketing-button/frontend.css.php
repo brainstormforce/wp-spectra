@@ -124,7 +124,7 @@ if ( 'transparent' === $attr['backgroundType'] ) {
 
 } elseif ( 'color' === $attr['backgroundType'] ) {
 
-	$selectors['.wp-block-uagb-marketing-button.wp-block-button .wp-block-button__link.uagb-marketing-btn__link']['background'] = UAGB_Helper::hex2rgba( $attr['backgroundColor'], $attr['backgroundOpacity'] );
+	$selectors['.wp-block-uagb-marketing-button.wp-block-button > a.wp-block-button__link']['background-color'] = UAGB_Helper::hex2rgba( $attr['backgroundColor'], $attr['backgroundOpacity'] );
 
 	// Hover Background.
 	$selectors['.wp-block-uagb-marketing-button.wp-block-button .wp-block-button__link.uagb-marketing-btn__link:hover']['background'] = UAGB_Helper::hex2rgba( $attr['backgroundHoverColor'], $attr['backgroundHoverOpacity'] );

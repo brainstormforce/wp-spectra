@@ -516,7 +516,7 @@ function styling( props ) {
 		'text-decoration': excerptDecoration,
 		'letter-spacing': generateCSSUnit( excerptLetterSpacing, excerptLetterSpacingType ),
 	};
-	selectors[ ' .uagb-post__cta .uagb-text-link' ] = {
+	selectors[ ' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta .uagb-text-link.wp-block-button__link' ] = {
 		'pointer-events': 'visible',
 		'color': ctaColor,
 		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
@@ -537,12 +537,12 @@ function styling( props ) {
 		...borderCSS,
 		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
 	};
-	selectors[ ' .uagb-post__text .uagb-post__cta:hover' ] = {
+	selectors[ ' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta .uagb-text-link.wp-block-button__link:hover' ] = {
 		'color': ctaHColor,
 		'background': ctaBgHColor,
 		'border-color': btnBorderHColor,
 	};
-	selectors[ ' .uagb-post__text .uagb-post__cta:hover a' ] = {
+	selectors[ ' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta:hover a' ] = {
 		'color': ctaHColor,
 		'background': ctaBgHColor,
 		'border-color': btnBorderHColor,
