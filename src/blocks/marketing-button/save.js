@@ -36,7 +36,7 @@ export default function save( props ) {
 	const titleHTML = (
 		<>
 			<RichText.Content
-				value={ heading }
+				value={ heading.replace( /(<([^>]+)>)/ig, '' ) }
 				tagName={ titleTag }
 				className="uagb-marketing-btn__title"
 			/>
