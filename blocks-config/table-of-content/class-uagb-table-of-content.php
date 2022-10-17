@@ -394,6 +394,38 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 		}
 		/**
+		 * Get the Reusable Headings Array.
+		 *
+		 * @since x.x.x
+		 * @access public
+		 *
+		 * @param  array $blocks_array Block Array.
+		 *
+		 * @return array $final_reusable_array Heading Array.
+		 */
+		public function toc_recursive_reusable_heading( $blocks_array ) {
+			$final_reusable_array = array();
+			foreach ( $blocks_array as $key => $block ) {
+
+				if ( 'core/block' === $blocks_array[ $key ]['blockName'] ) {
+					if ( $blocks_array[ $key ]['attrs'] ) {
+						$reusable_block   = get_post( $blocks_array[ $key ]['attrs']['ref'] );
+						$reusable_heading = $this->table_of_contents_get_headings_from_content( $reusable_block->post_content );
+						if ( isset( $reusable_heading[0] ) ) {
+							$final_reusable_array = array_merge( $final_reusable_array, $reusable_heading );
+						}
+					}
+				} else {
+					if ( 'core/block' !== $blocks_array[ $key ]['blockName'] ) {
+						$inner_block_reusable_array = $this->toc_recursive_reusable_heading( $blocks_array[ $key ]['innerBlocks'] );
+						$final_reusable_array       = array_merge( $final_reusable_array, $inner_block_reusable_array );
+					}
+				}
+			}
+
+			return $final_reusable_array;
+		}
+		/**
 		 * Renders the UAGB Table Of Contents block.
 		 *
 		 * @since 1.23.0
@@ -408,7 +440,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		public function render_table_of_contents( $attributes, $content, $block ) {
 
 			global $post;
-
+			$result = array();
 			if ( ! isset( $post->ID ) ) {
 				return '';
 			}
@@ -418,8 +450,10 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			$uagb_toc_heading_content = ! empty( $uagb_toc_options['_uagb_toc_headings'] ) ? $uagb_toc_options['_uagb_toc_headings'] : '';
 
 			if ( empty( $uagb_toc_heading_content ) || UAGB_ASSET_VER !== $uagb_toc_version ) {
-
-				$uagb_toc_heading_content = $this->table_of_contents_get_headings_from_content( get_post( $post->ID )->post_content );
+				$uagb_toc_heading_content          = $this->table_of_contents_get_headings_from_content( get_post( $post->ID )->post_content );
+				$blocks                            = parse_blocks( get_post( $post->ID )->post_content );
+				$uagb_toc_reusable_heading_content = $this->toc_recursive_reusable_heading( $blocks );
+				$uagb_toc_heading_content          = array_merge( $uagb_toc_heading_content, $uagb_toc_reusable_heading_content );
 
 				$meta_array = array(
 					'_uagb_toc_version'  => UAGB_ASSET_VER,
