@@ -12,7 +12,7 @@ const attributes = {
 	},
 	previewModal: {
 		type: 'boolean',
-		default: false,
+		default: true,
 	},
 	icon: {
 		type: 'string',
@@ -24,6 +24,44 @@ const attributes = {
 	imageSize: {
 		type: 'string',
 		default: 'thumbnail',
+	},
+	buttonText: {
+		type: 'html',
+		default: 'Click Here',
+	},
+	buttonIcon: {
+		type: 'string',
+		default: '',
+	},
+	buttonIconPosition: {
+		type: 'string',
+		default: 'after',
+	},
+	buttonIconSpace: {
+		type: 'number',
+		default: 5,
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space'
+		}
+	},
+	buttonIconSpaceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space'
+		}
+	},
+	buttonIconSpaceMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space'
+		}
+	},
+	buttonIconSpaceType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space-type'
+		}
 	},
 };
 

@@ -100,3 +100,37 @@ body .uagb-modal-popup-wrap .block-list-appender .block-editor-inserter__toggle.
 .wp-block-uagb-modal img {
     width: 100px;
 }
+div.uagb-spectra-button-wrapper a.uagb-modal-button-link,
+.entry .entry-content a.uagb-modal-button-link {
+	text-decoration: none;
+	align-items: center;
+}
+a.uagb-modal-button-link:hover,
+.entry .entry-content a.uagb-modal-button-link:hover {
+	color: inherit;
+}
+.uagb-spectra-button-wrapper {
+	line-height: 1;
+
+	.uagb-modal-button-link {
+		cursor: pointer;
+	}
+
+	.wp-block-button__link svg {
+		fill: currentColor;
+	}
+}
+.uagb-modal-button-link > svg {
+	vertical-align: middle;
+	width: 15px;
+	height: 15px;
+	font-size: 15px;
+}
+.uagb-modal-button-link {
+	display: inline-flex;
+
+}
+.block-editor-page #wpwrap .uagb-modal-button-link svg,
+.uagb-modal-button-link svg {
+	font-style: normal;
+}

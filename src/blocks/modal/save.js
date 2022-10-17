@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
 
 export default function Save( props ) {
 	const {
@@ -10,7 +11,10 @@ export default function Save( props ) {
 		triggerText,
 		icon,
 		iconImage,
-		imageSize
+		imageSize,
+		buttonText,
+		buttonIcon,
+		buttonIconPosition
 	} = props.attributes;
 
 	const textHTML = (
@@ -53,6 +57,42 @@ export default function Save( props ) {
 		);
 	}
 
+	// let buttonIconOutput = '';
+	// if ( buttonIcon !== '' ) {
+	// 	buttonIconOutput = renderSVG( buttonIcon );
+	// }
+
+	const buttonClasses = 'uagb-modal-button-link wp-block-button__link';
+
+	const buttonHTML = (
+		<div
+			className={ classnames(
+				'uagb-spectra-button-wrapper',
+				'wp-block-button'
+			) }
+		>
+			<a // eslint-disable-line jsx-a11y/anchor-is-valid
+				className={ buttonClasses }
+				target='_self'
+				rel='noopener noreferrer'
+			>
+				<RichText
+					tagName="span"
+					placeholder={ __(
+						'Click Here',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ buttonText }
+					className="uagb-inline-editing"
+					multiline={ false }
+					onChange={ ( value ) => {
+						setAttributes( { buttonText: value } );
+					} }
+				/>
+			</a>
+		</div>
+	)
+
 	return (
 		<div
 			className={ classnames(
@@ -71,6 +111,10 @@ export default function Save( props ) {
 			{
 				'image' === modalTrigger &&
 				imageIconHtml
+			}
+			{
+				'button' === modalTrigger &&
+				buttonHTML
 			}
 			<div class="uagb-modal-popup">
 				<div class="uagb-modal-popup-wrap">

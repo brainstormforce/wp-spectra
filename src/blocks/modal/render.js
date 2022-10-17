@@ -20,7 +20,10 @@ const Render = ( props ) => {
 		icon,
 		iconImage,
 		modalTrigger,
-		imageSize
+		imageSize,
+		buttonText,
+		buttonIcon,
+		buttonIconPosition
 	} = attributes
 
 	const textHTML = (
@@ -68,6 +71,41 @@ const Render = ( props ) => {
 		);
 	}
 
+	// let buttonIconOutput = '';
+	// if ( buttonIcon !== '' ) {
+	// 	buttonIconOutput = renderSVG( buttonIcon );
+	// }
+	const buttonClasses = 'uagb-modal-button-link wp-block-button__link';
+
+	const buttonHTML = (
+		<div
+			className={ classnames(
+				'uagb-spectra-button-wrapper',
+				'wp-block-button'
+			) }
+		>
+			<a // eslint-disable-line jsx-a11y/anchor-is-valid
+				className={ buttonClasses }
+				target='_self'
+				rel='noopener noreferrer'
+			>
+				<RichText
+					tagName="span"
+					placeholder={ __(
+						'Click Here',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ buttonText }
+					className="uagb-inline-editing"
+					multiline={ false }
+					onChange={ ( value ) => {
+						setAttributes( { buttonText: value } );
+					} }
+				/>
+			</a>
+		</div>
+	)
+
 	return (
 		<React.Fragment>
 			<div className={ classnames(
@@ -85,7 +123,11 @@ const Render = ( props ) => {
 				{
 					'image' === modalTrigger &&
 					imageIconHtml
-				}		
+				}
+				{
+					'button' === modalTrigger &&
+					buttonHTML
+				}
 				<div class="uagb-modal-popup">
 					<div class="uagb-modal-popup-wrap">
 						<div class="uagb-modal-popup-content">

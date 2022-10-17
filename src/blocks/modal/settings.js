@@ -12,6 +12,7 @@ import UAGIconPicker from '@Components/icon-picker';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { getImageSize } from '@Utils/Helpers';
 import UAGSelectControl from '@Components/select-control';
+import ResponsiveSlider from '@Components/responsive-slider';
 
 let imageSizeOptions = [
 	{
@@ -24,7 +25,19 @@ let imageSizeOptions = [
 
 export default function Settings( props ) {
 	const { attributes, setAttributes } = props.parentProps;
-	const { modalTrigger, previewModal, iconImage, icon, imageSize } = attributes;
+	const { 
+		modalTrigger, 
+		previewModal, 
+		iconImage, 
+		icon, 
+		imageSize,
+		buttonIcon,
+		buttonIconPosition,
+		buttonIconSpace,
+		buttonIconSpaceTablet,
+		buttonIconSpaceMobile,
+		buttonIconSpaceType 
+	} = attributes;
 
 	/*
 	 * Event to set Image as while adding.
@@ -127,7 +140,90 @@ export default function Settings( props ) {
 							) }
 					</>
 				) }
-				
+				{ modalTrigger === 'button' && (
+					<>
+						<UAGIconPicker
+							label={ __(
+								'Button Icon',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ buttonIcon }
+							onChange={ ( value ) =>
+								setAttributes( { buttonIcon: value } )
+							}
+						/>
+						<UAGSelectControl
+							label={ __(
+								'Icon Position',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: buttonIconPosition,
+								label: 'buttonIconPosition',
+							} }
+							setAttributes={ setAttributes }
+							options={ [
+								{
+									value: 'before',
+									label: __(
+										'Before Text',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'after',
+									label: __(
+										'After Text',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
+						/>
+						<ResponsiveSlider
+							label={ __(
+								'Icon Spacing',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								desktop: {
+									value: buttonIconSpace,
+									label: 'buttonIconSpace',
+								},
+								tablet: {
+									value: buttonIconSpaceTablet,
+									label: 'buttonIconSpaceTablet',
+								},
+								mobile: {
+									value: buttonIconSpaceMobile,
+									label: 'buttonIconSpaceMobile',
+								},
+							} }
+							min={ -50 }
+							max={ 50 }
+							unit={ {
+								value: buttonIconSpaceType,
+								label: 'buttonIconSpaceType',
+							} }
+							units={ [
+								{
+									name: __(
+										'Pixel',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+								{
+									name: __(
+										'EM',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'em',
+								},
+							] }
+							setAttributes={ setAttributes }
+						/>
+					</>
+				) }
 		</UAGAdvancedPanelBody>
 	)
 
