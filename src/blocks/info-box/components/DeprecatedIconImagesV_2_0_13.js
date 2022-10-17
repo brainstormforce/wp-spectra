@@ -1,4 +1,4 @@
-const InfoBoxIconImage = ( props ) => {
+const DeprecatedIconImagesV_2_0_13 = ( props ) => {
 	const { attributes } = props;
 
 	let urlCheck = '';
@@ -25,19 +25,19 @@ const InfoBoxIconImage = ( props ) => {
 		}
 
 		return (
-			<div className="uagb-ifb-image-icon-content uagb-ifb-imgicon-wrap">
-				<div className="uagb-ifb-image">
-					<div className="uagb-ifb-image-content">
-						<img
-							className=""
-							src={ url }
-							alt={ attributes.iconImage.alt }
-						/>
-					</div>
-				</div>
+			<>
+			{ ( attributes.showIcon ) && (
+			<div className="uagb-ifb-image-content">
+			<img
+				src={ url }
+				alt={ attributes.iconImage.alt }
+			/>
 			</div>
+			)}
+			</>
 		);
 	}
 	return null;
 };
-export default InfoBoxIconImage;
+
+export default DeprecatedIconImagesV_2_0_13;
