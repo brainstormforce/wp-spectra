@@ -7,7 +7,7 @@
  import { __ } from '@wordpress/i18n';
  import DeprecatedStars from "./deprecatedStars";
  import attributes from './attributes';
- import NewStars from './star';
+ import DeprecatedStarsV_2_0_13 from './deprecatedStarsV_2_0_13';
 
  import { RichText } from '@wordpress/block-editor';
 
@@ -988,7 +988,7 @@
 												minWidth: parts.length > 1 ? 120 : 100,
 											} }
 										>
-											<NewStars
+											<DeprecatedStarsV_2_0_13
 												id={ `${ block_id.substr( 0, 8 ) }-${ i }` }
 												key={ i }
 												value={ j.value }
@@ -1018,7 +1018,7 @@
 									<span className="uagb_review_rating">
 										{ Math.round( newAverage * 10 ) / 10 }
 									</span>
-									<NewStars
+									<DeprecatedStarsV_2_0_13
 										id={ `${ block_id.substr( 0, 8 ) }-average` }
 										className="uagb_review_average_stars"
 										onHover={ () => null }
