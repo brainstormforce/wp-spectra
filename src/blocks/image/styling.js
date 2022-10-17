@@ -203,19 +203,13 @@ export default function styling( props ) {
 			),
 			'text-align': align
 		},
-		'.wp-block-uagb-image--layout-default figure':{
+		'.wp-block-uagb-image--layout-default figure img':{
 			'width': 'inherit',
 			'height': 'inherit',
 			'box-shadow': generateCSSUnit( imageBoxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( imageBoxShadowVOffset, 'px' ) +	' ' + generateCSSUnit( imageBoxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( imageBoxShadowSpread, 'px' ) + ' ' + imageBoxShadowColor + ' ' + getImageShadowPosition,
 			...imageBorderCSS
 		},
-		'.wp-block-uagb-image--layout-overlay figure':{
-			'width': 'inherit',
-			'height': 'inherit',
-			'box-shadow': generateCSSUnit( imageBoxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( imageBoxShadowVOffset, 'px' ) +	' ' + generateCSSUnit( imageBoxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( imageBoxShadowSpread, 'px' ) + ' ' + imageBoxShadowColor + ' ' + getImageShadowPosition,
-			...imageBorderCSS
-		},
-		'.wp-block-uagb-image .wp-block-uagb-image__figure img:hover':{
+		'.wp-block-uagb-image .wp-block-uagb-image__figure:hover':{
 			'border-color': imageBorderHColor
 		},
 		'.wp-block-uagb-image .wp-block-uagb-image__figure figcaption': {
@@ -256,9 +250,16 @@ export default function styling( props ) {
 			'color': captionColor,
 		},
 		// overlay
+		'.wp-block-uagb-image--layout-overlay figure img':{
+			'width': 'inherit',
+			'height': 'inherit',
+			'box-shadow': generateCSSUnit( imageBoxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( imageBoxShadowVOffset, 'px' ) +	' ' + generateCSSUnit( imageBoxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( imageBoxShadowSpread, 'px' ) + ' ' + imageBoxShadowColor + ' ' + getImageShadowPosition,
+			...imageBorderCSS
+		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper': {
 			'background': overlayBackground,
 			'opacity': overlayOpacityFallback,
+			...imageBorderCSS
 		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner': {
 			'left': generateCSSUnit( overlayPositionFromEdgeFallback, overlayPositionFromEdgeUnit ),

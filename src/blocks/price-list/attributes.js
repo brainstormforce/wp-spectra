@@ -83,7 +83,6 @@ const attributes = {
 	},
 	imgVrPadding: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'image-vertical-padding'
 		},
@@ -97,7 +96,6 @@ const attributes = {
 	},
 	imgPaddingTop: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'image-top-padding'
 		},
@@ -111,7 +109,6 @@ const attributes = {
 	},
 	imgPaddingBottom: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'image-bottom-padding'
 		},
@@ -200,15 +197,13 @@ const attributes = {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'desc-vertical-padding'
-		},
-		default: 5,
+		}
 	},
 	contentHrPadding: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'desc-horizontal-padding'
-		},
-		default: 5,
+		}
 	},
 
 	stack: {
@@ -681,6 +676,7 @@ const attributes = {
 	},
 	imgPaddingBottomTablet: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'image-bottom-padding-tablet'
 		},
@@ -705,6 +701,7 @@ const attributes = {
 	},
 	imgPaddingBottomMobile: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'image-bottom-padding-mobile'
 		},
@@ -861,6 +858,10 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'title-letter-spacing-type'
 		}
+	},
+	showImage: {
+		type: 'boolean',
+		default: true,
 	},
 };
 

@@ -1,14 +1,9 @@
 import classnames from 'classnames';
-import lazyLoader from '@Controls/lazy-loader';
-import { useDeviceType } from '@Controls/getPreviewType';
-import React, { useRef, useEffect, lazy, Suspense } from 'react';
-import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-const Masonry = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-masonry/react-masonry-component" */ 'react-masonry-component'
-	)
-);
+import { useDeviceType } from '@Controls/getPreviewType';
+import React, { useRef, useEffect,    } from 'react';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import Masonry from 'react-masonry-component';
 
 import {
 	InnerBlockLayoutContextProvider,
@@ -39,6 +34,7 @@ function Blog( props ) {
 	const tcolumnsFallback = getFallbackNumber( tcolumns, 'tcolumns', blockName );
 	const mcolumnsFallback = getFallbackNumber( mcolumns, 'mcolumns', blockName );
 	const rowGapFallback = getFallbackNumber( rowGap, 'rowGap', blockName );
+	const isImageEnabled = ( attributes.displayPostImage === true ) ? 'uagb-post__image-enabled' : 'uagb-post__image-disabled';
 
 	const updateImageBgWidth = () => {
 
@@ -118,7 +114,7 @@ function Blog( props ) {
 			) }
 			data-blog-id={ block_id }
 		>
-			<Suspense fallback={ lazyLoader() }>
+
 				<Masonry
 					className={ classnames(
 						'is-masonry',
@@ -127,6 +123,7 @@ function Blog( props ) {
 						`uagb-post__columns-mobile-${ mcolumnsFallback }`,
 						'uagb-post__items',
 						className,
+						isImageEnabled,
 						'uagb-post-grid',
 						'uagb-post__arrow-outside',
 						`uagb-post__image-position-${ imgPosition }`,
@@ -152,7 +149,7 @@ function Blog( props ) {
 						) ) }
 					</InnerBlockLayoutContextProvider>
 				</Masonry>
-			</Suspense>
+
 			{ paginationRender() }
 		</div>
 	);

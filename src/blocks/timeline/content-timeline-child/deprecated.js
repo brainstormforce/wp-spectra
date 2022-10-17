@@ -6,6 +6,13 @@ import { dateI18n, __experimentalGetSettings } from '@wordpress/date';
 
 import { RichText } from '@wordpress/block-editor';
 
+import { __ } from '@wordpress/i18n';
+
+// Since the default description has been changed, we add the old description here.
+attributes.time_desc.default = __( 'This is Timeline description, you can change me anytime click here ',
+									'ultimate-addons-for-gutenberg'
+								);
+
 const deprecated = [
 	{
 		attributes,

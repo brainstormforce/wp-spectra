@@ -328,7 +328,6 @@ const attributes = {
 
 	borderStyle: {
 		type: 'string',
-		default: 'none',
 	},
 	borderWidth: {
 		type: 'number',
@@ -428,72 +427,84 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'container-top-padding-desktop'
 		},
+		default: uagb_blocks_info.container_global_padding
 	},
 	bottomPaddingDesktop: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-bottom-padding-desktop'
 		},
+		default: uagb_blocks_info.container_global_padding
 	},
 	leftPaddingDesktop: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-left-padding-desktop'
 		},
+		default: uagb_blocks_info.container_global_padding
 	},
 	rightPaddingDesktop: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-right-padding-desktop'
 		},
+		default: uagb_blocks_info.container_global_padding
 	},
 	topPaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-top-padding-tablet'
 		},
+		default: uagb_blocks_info.container_global_padding
 	},
 	bottomPaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-bottom-padding-tablet'
 		},
+		default: uagb_blocks_info.container_global_padding
 	},
 	leftPaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-left-padding-tablet'
 		},
+		default: uagb_blocks_info.container_global_padding
 	},
 	rightPaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-right-padding-tablet'
 		},
+		default: uagb_blocks_info.container_global_padding
 	},
 	topPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-top-padding-mobile'
 		},
+		default: uagb_blocks_info.container_global_padding
 	},
 	bottomPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-bottom-padding-mobile'
 		},
+		default: uagb_blocks_info.container_global_padding
 	},
 	leftPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-left-padding-mobile'
 		},
+		default: uagb_blocks_info.container_global_padding
 	},
 	rightPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-right-padding-mobile'
 		},
+		default: uagb_blocks_info.container_global_padding
 	},
 	paddingType: {
 		type: 'string',
@@ -627,7 +638,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'container-row-gap-desktop'
 		},
-		default: 20
+		default: uagb_blocks_info.container_elements_gap
 	},
 	rowGapTablet: {
 		type: 'number',
@@ -667,7 +678,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'container-column-gap-desktop'
 		},
-		default: 20
+		default: uagb_blocks_info.container_elements_gap
 	},
 	columnGapTablet: {
 		type: 'number',
@@ -910,7 +921,7 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 	},
-	
+
 	yPositionDesktop: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -1052,6 +1063,10 @@ const attributes = {
 	bottomDividerHeightType: {
 		type: 'string',
 		default: 'px',
+	},
+	equalHeight: {
+		type: 'boolean',
+		default: false,
 	},
 	...inputBorderAttributes
 };

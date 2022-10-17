@@ -111,10 +111,9 @@
 	}
 
 	.uagb-tab {
-		border-style: solid;
+
 		margin: 10px 10px 10px 0;
 		padding: 6px 12px;
-		border-radius: 4px;
 	}
 
 	p {
@@ -139,17 +138,12 @@
 	.uagb-tab {
 		margin: 10px 10px -1px 0;
 		padding: 6px 12px;
-		border-top-left-radius: 4px;
-		border-top-right-radius: 4px;
 	}
 
 	p {
 		margin: 0;
 	}
 
-	.uagb-tabs__active {
-		border-bottom-style: solid;
-	}
 }
 
 .uagb-editor-preview-mode-tablet.uagb-tabs__wrap.uagb-tabs__hstyle3-tablet {
@@ -163,11 +157,7 @@
 	}
 
 	.uagb-tab {
-		border-top-right-radius: 7px;
-		border-top-left-radius: 7px;
-		border-top-style: solid;
-		border-left-style: solid;
-		border-right-style: solid;
+
 		margin: 10px 10px 0 0;
 		padding: 6px 12px;
 
@@ -189,8 +179,7 @@
 	}
 
 	.uagb-tab {
-		border-radius: 30px;
-		border-style: solid;
+
 		margin: 10px 10px 10px 0;
 		padding: 6px 12px 6px 12px;
 
@@ -203,7 +192,7 @@
 
 .uagb-editor-preview-mode-tablet.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet {
 	flex-direction: column;
-	border-style: solid;
+
 
 	ul.uagb-tabs__panel {
 		display: flex;
@@ -223,10 +212,6 @@
 			margin: 0;
 		}
 	}
-
-	.uagb-tab.uagb-tabs__active {
-		border-bottom: 1px solid;
-	}
 }
 
 //Vertical Styles
@@ -244,10 +229,9 @@
 	}
 
 	.uagb-tab {
-		border-style: solid;
+
 		margin: 0 10px 10px 0;
 		padding: 6px 12px;
-		border-radius: 4px;
 
 		p {
 			margin: 0;
@@ -272,9 +256,6 @@
 		margin: 0;
 		padding: 0;
 
-		.uagb-tabs__active {
-			border-bottom-style: solid;
-		}
 	}
 
 	.uagb-tab {
@@ -306,19 +287,13 @@
 		justify-content: normal;
 
 		.uagb-tab {
-			border-top-style: solid;
-			border-left-style: solid;
 			padding: 6px 12px;
-			border-top-left-radius: 4px;
 
 			p {
 				margin: 0;
 			}
 		}
 
-		.uagb-tab:last-child {
-			border-bottom-style: solid;
-		}
 	}
 
 	.uagb-tabs__body-wrap {
@@ -341,8 +316,6 @@
 		max-width: 24%;
 
 		.uagb-tab {
-			border-radius: 30px;
-			border-style: solid;
 			margin: 0 10px 10px 0;
 			padding: 6px 12px 6px 12px;
 
@@ -359,7 +332,7 @@
 }
 
 .uagb-editor-preview-mode-tablet.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet {
-	border-style: solid;
+
 	flex-direction: row;
 
 	ul.uagb-tabs__panel {
@@ -381,9 +354,6 @@
 			}
 		}
 
-		.uagb-tab.uagb-tabs__active {
-			border-right-style: solid;
-		}
 	}
 
 	.uagb-tabs__body-wrap {
@@ -405,10 +375,9 @@
 	}
 
 	.uagb-tab {
-		border-style: solid;
+
 		margin: 10px 10px 10px 0;
 		padding: 6px 12px;
-		border-radius: 4px;
 	}
 
 	p {
@@ -435,20 +404,13 @@
 	.uagb-tab {
 		margin: 10px 10px -1px 0;
 		padding: 6px 12px;
-		border-top-left-radius: 4px;
-		border-top-right-radius: 4px;
 	}
 
 	p {
 		margin: 0;
 	}
 
-	.uagb-tabs__active {
-		border-bottom-style: solid;
-	}
-
 	.uagb-tabs__body-wrap {
-		border: none;
 		flex-direction: row;
 	}
 }
@@ -465,11 +427,6 @@
 	}
 
 	.uagb-tab {
-		border-top-right-radius: 7px;
-		border-top-left-radius: 7px;
-		border-top-style: solid;
-		border-left-style: solid;
-		border-right-style: solid;
 		margin: 10px 10px 0 0;
 		padding: 6px 12px;
 
@@ -495,8 +452,7 @@
 	}
 
 	.uagb-tab {
-		border-radius: 30px;
-		border-style: solid;
+
 		margin: 10px 10px 10px 0;
 		padding: 6px 12px 6px 12px;
 
@@ -512,7 +468,7 @@
 
 .uagb-editor-preview-mode-mobile.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile {
 	flex-direction: column;
-	border-style: solid;
+
 
 	ul.uagb-tabs__panel {
 		display: flex;
@@ -532,10 +488,6 @@
 		p {
 			margin: 0;
 		}
-	}
-
-	.uagb-tab.uagb-tabs__active {
-		border-bottom-style: solid;
 	}
 
 	.uagb-tabs__body-wrap {
@@ -559,10 +511,9 @@
 	}
 
 	.uagb-tab {
-		border-style: solid;
+
 		margin: 0 10px 10px 0;
 		padding: 6px 12px;
-		border-radius: 4px;
 
 		p {
 			margin: -9px;
@@ -579,10 +530,6 @@
 	flex-direction: row;
 
 	.uagb-tab {
-		border-top-style: none;
-		border-left-style: none;
-		border-right-style: none;
-		border-bottom-style: solid;
 		margin: 10px 10px 0 0;
 		padding: 6px 12px;
 
@@ -600,13 +547,9 @@
 		margin: 0;
 		padding: 0;
 
-		.uagb-tabs__active {
-			border-bottom-style: solid;
-		}
 	}
 
 	.uagb-tabs__body-wrap {
-		border: none;
 		flex-grow: 3;
 		max-width: 75%;
 	}
@@ -626,8 +569,6 @@
 		max-width: 24%;
 
 		.uagb-tab {
-			border-radius: 30px;
-			border-style: solid;
 			margin: 0 10px 10px 0;
 			padding: 6px 12px 6px 12px;
 
@@ -644,7 +585,7 @@
 }
 
 .uagb-editor-preview-mode-mobile.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile {
-	border-style: solid;
+
 
 	.uagb-tab {
 		padding: 6px 12px;
@@ -664,10 +605,6 @@
 		max-width: 35%;
 		margin: 0;
 		padding: 0;
-
-		.uagb-tab.uagb-tabs__active {
-			border-right-style: solid;
-		}
 	}
 
 	.uagb-tabs__body-wrap {
@@ -677,8 +614,7 @@
 }
 
 .uagb-editor-preview-mode-mobile.uagb-tabs__wrap.uagb-tabs__stack1-mobile {
-	border-style: none;
-	display: grid;
+
 
 	ul.uagb-tabs__panel {
 		margin: 0;
@@ -689,7 +625,8 @@
 		flex-grow: unset;
 
 		.uagb-tab {
-			border-style: solid;
+
+			width: -webkit-fill-available;
 			margin: 0 0 10px 0;
 			padding: 6px 12px;
 
@@ -705,30 +642,24 @@
 }
 
 .uagb-editor-preview-mode-mobile.uagb-tabs__wrap.uagb-tabs__stack2-mobile {
-	border-style: none;
-	display: grid;
 
 	ul.uagb-tabs__panel {
 		display: flex;
 		flex-direction: column;
-		max-width: 100%;
 		flex-grow: unset;
-		width: 100%;
 		margin: 0;
 		padding: 0;
 
 		.uagb-tab {
 			margin: 0 0 10px 0;
 			padding: 6px 12px;
+			width: -webkit-fill-available;
 
 			p {
 				margin: 0;
 			}
 		}
 
-		.uagb-tabs__active {
-			border-bottom-style: solid;
-		}
 	}
 
 	.uagb-tabs__body-wrap {
@@ -737,8 +668,6 @@
 }
 
 .uagb-editor-preview-mode-mobile.uagb-tabs__wrap.uagb-tabs__stack3-mobile {
-	border-style: none;
-	display: grid;
 
 	ul.uagb-tabs__panel {
 		margin: 0;
@@ -750,8 +679,8 @@
 		width: 100%;
 
 		.uagb-tab {
-			border-radius: 30px;
-			border-style: solid;
+
+			width: -webkit-fill-available;
 			margin: 0 0 10px 0;
 			padding: 6px 12px 6px 12px;
 
@@ -767,8 +696,8 @@
 }
 
 .uagb-editor-preview-mode-mobile.uagb-tabs__wrap.uagb-tabs__stack4-mobile {
-	display: grid;
-	border-style: solid;
+
+
 	margin: auto;
 
 	ul.uagb-tabs__panel {
@@ -781,6 +710,8 @@
 		padding: 0;
 
 		.uagb-tab {
+
+			width: -webkit-fill-available;
 			padding: 6px 12px;
 			margin: 0 0 10px 0;
 			text-align: center;
@@ -788,10 +719,6 @@
 			p {
 				margin: 0;
 			}
-		}
-
-		.uagb-tab.uagb-tabs__active {
-			border-right-style: solid;
 		}
 	}
 

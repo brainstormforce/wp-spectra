@@ -14,10 +14,11 @@ $block_data = array(
 	'admin_categories' => array( 'social' ),
 	'link'             => 'testimonials',
 	'title'            => __( 'Testimonials', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block helps your display some amazing client feedback within your website.', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Display customer testimonials with customizable layouts.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-slick-js', 'uagb-imagesloaded', 'uagb-testimonial-js' ),
 	'css_assets'       => array( 'uagb-slick-css' ),
-	'priority'         => 26,
+	'priority'         => 31,
+	'deprecated'       => false,
 );

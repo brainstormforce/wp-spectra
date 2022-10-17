@@ -468,7 +468,7 @@ function RestMenuStyle( props ) {
 			selectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__separator'] = {
 				'margin-left': 'auto'
 			}
-		} 
+		}
 	}
 
 	if( imgAlign === 'top' ) {
@@ -479,7 +479,7 @@ function RestMenuStyle( props ) {
 		selectors[ ' .wp-block-uagb-restaurant-menu-child .uagb-rm__content' ] = {
 			'text-align' : headingAlign,
 		};
-			
+
 		if ( 'center' === headingAlign ) {
 			selectors[ ' .uagb-rm__content ' ] = {
 				'display' : 'block'

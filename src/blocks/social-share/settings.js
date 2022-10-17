@@ -2,8 +2,8 @@
  * BLOCK: Social Share - Settings.
  */
 
-import lazyLoader from '@Controls/lazy-loader';
-import React, { Suspense } from 'react';
+
+import React from 'react';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -210,6 +210,52 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 			>
 				<ResponsiveSlider
+					label={ __(
+						'Gap between Items',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: gap,
+							label: 'gap',
+						},
+						tablet: {
+							value: gapTablet,
+							label: 'gapTablet',
+						},
+						mobile: {
+							value: gapMobile,
+							label: 'gapMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 100 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+	const presetSettings = () => {
+		return <UAGAdvancedPanelBody
+					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
+				>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { presets }
+						presetInputType = 'radioImage'
+					/>
+				</UAGAdvancedPanelBody>
+	};
+
+	const iconSettings = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
+			>
+								<ResponsiveSlider
 					label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
@@ -280,52 +326,6 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 				/>
-				<ResponsiveSlider
-					label={ __(
-						'Gap between Items',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						desktop: {
-							value: gap,
-							label: 'gap',
-						},
-						tablet: {
-							value: gapTablet,
-							label: 'gapTablet',
-						},
-						mobile: {
-							value: gapMobile,
-							label: 'gapMobile',
-						},
-					} }
-					min={ 0 }
-					max={ 100 }
-					displayUnit={ false }
-					setAttributes={ setAttributes }
-				/>
-			</UAGAdvancedPanelBody>
-		);
-	};
-	const presetSettings = () => {
-		return <UAGAdvancedPanelBody
-					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
-					initialOpen={ true }
-				>
-					<UAGPresets
-						setAttributes = { setAttributes }
-						presets = { presets }
-						presetInputType = 'radioImage'
-					/>
-				</UAGAdvancedPanelBody>
-	};
-
-	const iconColorSettings = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
 				<UAGTabsControl
 					tabs={ [
 						{
@@ -402,7 +402,7 @@ const Settings = ( props ) => {
 	};
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
@@ -410,7 +410,7 @@ const Settings = ( props ) => {
 						{ generalSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-						{iconColorSettings()}
+						{iconSettings()}
 						{ spacingSettings() }
 					</InspectorTab>
 					<InspectorTab
@@ -419,7 +419,7 @@ const Settings = ( props ) => {
 					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-		</Suspense>
+
 	);
 };
 

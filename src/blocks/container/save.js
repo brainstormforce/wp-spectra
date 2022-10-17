@@ -3,7 +3,7 @@
  */
 
 import classnames from 'classnames';
-import { InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import shapes from './shapes';
 
 export default function save( props ) {
@@ -76,10 +76,13 @@ export default function save( props ) {
 		}
 	}
 
+	const blockProps = useBlockProps.save();
+
 	return (
 		<CustomTag
+			id={ blockProps.id }
 			className={ classnames(
-				props.className,
+				blockProps.className,
 				`uagb-block-${ block_id }`,
 				isBlockRootParent ?  `${contentWidth} uagb-is-root-container` : '',
 			) }

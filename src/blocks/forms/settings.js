@@ -1,6 +1,6 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
-import lazyLoader from '@Controls/lazy-loader';
+
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import ResponsiveBorder from '@Components/responsive-border';
@@ -1122,6 +1122,12 @@ const Settings = ( props ) => {
 				displayUnit={ false }
 				setAttributes={ setAttributes }
 			/>
+			<p className="uagb-form-notice">
+					{ __(
+						'Note: It is required to set border style and border width for toggle. Else you will not able to resize the toggle.',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</p>
 			<UAGTabsControl
 				tabs={ [
 					{
@@ -1890,11 +1896,11 @@ const Settings = ( props ) => {
 					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			<Suspense fallback={ lazyLoader() }>
+
 				{ loadsubmittextGoogleFonts }
 				{ loadlabelGoogleFonts }
 				{ loadinputGoogleFonts }
-			</Suspense>
+
 		</>
 	);
 };

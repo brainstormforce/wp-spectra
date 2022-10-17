@@ -16,12 +16,10 @@ import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
-import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
+import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 
 // Export for ease of importing in individual blocks.
 export { TypographyStyles };
-
-const classNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
 
 const TypographyControl = ( props ) => {
 
@@ -141,7 +139,7 @@ const TypographyControl = ( props ) => {
 
 	// Function to get the Block's default Typography Values.
 	const getBlockTypographyValue = () => {
-		const selectedBlockName = getSelectedBlock()?.name.replace( 'uagb/', '' );
+		const selectedBlockName = getSelectedBlock()?.name.split( '/' ).pop();
 		let defaultValues = false;
 		if ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ] ) {
 			attributeNames.forEach( ( attributeName ) => {
@@ -340,10 +338,7 @@ const TypographyControl = ( props ) => {
 	if ( true !== disableFontFamily && true !== disableFontSize ) {
 		fontAdvancedControls = (
 			<Button
-				className={ classNames(
-					'uag-typography-button spectra-control-popup__options--action-button',
-					isTypographyUpdated ? 'spectra-control-popup__status--updated' : '',
-				) }
+				className="uag-typography-button spectra-control-popup__options--action-button"
 				aria-pressed={ showAdvancedControls }
 				onClick={ () => {
 
@@ -414,7 +409,12 @@ const TypographyControl = ( props ) => {
 	if ( true !== disableFontFamily && true !== disableFontSize ) {
 		fontTypoAdvancedControls = (
 			<div className="spectra-control-popup__options--action-wrapper">
-				<span className="uag-control-label">{ props.label }</span>
+				<span className="uag-control-label">
+					{ props.label }
+					{ isTypographyUpdated && (
+						<div className="spectra__change-indicator--dot-right"/>
+					) }
+				</span>
 				{ fontAdvancedControls }
 			</div>
 		);

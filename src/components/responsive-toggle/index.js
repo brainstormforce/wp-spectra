@@ -58,16 +58,19 @@ const devicesSvgs = {
 const devices = [
 	{
 		name: __( 'Desktop', 'ultimate-addons-for-gutenberg' ),
+		staticName: 'Desktop',
 		title: devicesSvgs.desktop,
 		itemClass: 'uagb-desktop-tab uagb-responsive-tabs',
 	},
 	{
 		name: __( 'Tablet', 'ultimate-addons-for-gutenberg' ),
+		staticName: 'Tablet',
 		title: devicesSvgs.tablet,
 		itemClass: 'uagb-tablet-tab uagb-responsive-tabs',
 	},
 	{
 		name: __( 'Mobile', 'ultimate-addons-for-gutenberg' ),
+		staticName: 'Mobile',
 		key: 'mobile',
 		title: devicesSvgs.mobile,
 		itemClass: 'uagb-mobile-tab uagb-responsive-tabs',
@@ -161,7 +164,7 @@ const devices = [
 				) }
 			>
 				{ devices.map(
-					( { name, key, title, itemClass } ) => (
+					( { name, staticName, key, title, itemClass } ) => (
 						<Tooltip
 							text={ sprintf(
 								/* translators: abbreviation for units */
@@ -173,14 +176,14 @@ const devices = [
 						<Button
 							key={ key }
 							className={ `components-button components-tab-panel__tabs-item ${ itemClass }${
-								name === deviceType
+								staticName === deviceType
 									? ' active-tab'
 									: ''
 							}` }
-							aria-pressed={ deviceType === name }
+							aria-pressed={ deviceType === staticName }
 							onClick={ () =>
 								customSetPreviewDeviceType(
-									name
+									staticName
 								)
 							}
 						>

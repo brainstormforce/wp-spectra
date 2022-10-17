@@ -85,6 +85,8 @@ if ( ! class_exists( 'BSF_Analytics_Stats' ) ) {
 
 				'wp_version'             => get_bloginfo( 'version' ),
 				'user_count'             => $this->get_user_count(),
+				'posts_count'            => wp_count_posts()->publish,
+				'page_count'             => wp_count_posts( 'page' )->publish,
 				'site_language'          => get_locale(),
 				'timezone'               => wp_timezone_string(),
 				'is_ssl'                 => is_ssl(),

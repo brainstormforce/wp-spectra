@@ -48,7 +48,11 @@ function addAttributes( settings ) {
 				},
 				zIndexMobile: {
 					type: 'number',
-				}
+				},
+				UAGResponsiveConditions: {
+					type: 'boolean',
+					default: false,
+				},
 			} );
 		}
 	}

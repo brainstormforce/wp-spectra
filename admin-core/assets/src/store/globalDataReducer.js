@@ -39,6 +39,11 @@ const globalDataReducer = ( state = {}, action ) => {
                 ...state,
                 enableBeta: action.payload,
             };
+		case 'UPDATE_LEGACY_BLOCKS':
+			return {
+				...state,
+				enableLegacyBlocks: action.payload,
+			};
         case 'UPDATE_ENABLE_SELECTED_FONT_FAMILIES':
             return {
                 ...state,
@@ -139,6 +144,16 @@ const globalDataReducer = ( state = {}, action ) => {
                 ...state,
                 enableAutoBlockRecovery: action.payload,
             };
+		case 'UPDATE_CONTAINER_GLOBAL_PADDING':
+			return {
+				...state,
+				containerGlobalPadding: action.payload,
+				};
+		case 'UPDATE_CONTAINER_GLOBAL_ELEMENTS_GAP':
+			return {
+				...state,
+				containerGlobalElementsGap: action.payload,
+				};
         default:
             return state;
     }

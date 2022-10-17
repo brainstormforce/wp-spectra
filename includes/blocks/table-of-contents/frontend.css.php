@@ -76,11 +76,11 @@ $selectors = array(
 	' .uagb-toc__list-wrap li a'                          => array(
 		'color' => $attr['linkColor'],
 	),
-	' .uagb-toc__title-wrap'                              => array(
+	' .uagb-toc__wrap .uagb-toc__title-wrap'              => array(
 		'justify-content' => $attr['align'],
 		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
 	),
-	' .uagb-toc__title'                                   => array(
+	' .uagb-toc__wrap .uagb-toc__title'                   => array(
 		'color'           => $attr['headingColor'],
 		'justify-content' => $attr['headingAlignment'],
 		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
@@ -93,7 +93,7 @@ $selectors = array(
 			'padding-top'    => UAGB_Helper::get_css_value( $top_padding, $attr['paddingTypeDesktop'] ),
 			'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding, $attr['paddingTypeDesktop'] ),
 			'background'     => $attr['backgroundColor'],
-		),
+		)
 	),
 	' .uagb-toc__wrap:hover'                              => array(
 		'border-color' => $attr['overallBorderHColor'],
@@ -145,7 +145,7 @@ if ( $attr['customWidth'] ) {
 }
 
 if ( $attr['customWidth'] && $attr['makeCollapsible'] ) {
-	$selectors[' .uagb-toc__title']['justify-content'] = 'space-between';
+	$selectors[' .uagb-toc__wrap .uagb-toc__title']['justify-content'] = 'space-between';
 }
 
 if ( $attr['disableBullets'] ) {
@@ -179,7 +179,7 @@ $m_selectors = array(
 			'padding-right'  => UAGB_Helper::get_css_value( $mobile_right_padding, $attr['paddingTypeMobile'] ),
 			'padding-top'    => UAGB_Helper::get_css_value( $mobile_top_padding, $attr['paddingTypeMobile'] ),
 			'padding-bottom' => UAGB_Helper::get_css_value( $mobile_bottom_padding, $attr['paddingTypeMobile'] ),
-		),
+		)
 	),
 	' .uagb-toc__list-wrap ol.uagb-toc__list:first-child' => array(
 		'margin-left'   => UAGB_Helper::get_css_value( $mobile_left_margin, $attr['marginTypeMobile'] ),
@@ -218,7 +218,7 @@ $t_selectors = array(
 			'padding-right'  => UAGB_Helper::get_css_value( $tablet_right_padding, $attr['paddingTypeTablet'] ),
 			'padding-top'    => UAGB_Helper::get_css_value( $tablet_top_padding, $attr['paddingTypeTablet'] ),
 			'padding-bottom' => UAGB_Helper::get_css_value( $tablet_bottom_padding, $attr['paddingTypeTablet'] ),
-		),
+		)
 	),
 	' .uagb-toc__list-wrap ol.uagb-toc__list:first-child' => array(
 		'margin-left'   => UAGB_Helper::get_css_value( $tablet_left_margin, $attr['marginTypeTablet'] ),

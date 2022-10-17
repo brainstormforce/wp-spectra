@@ -53,7 +53,10 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 			if ( ! function_exists( 'register_block_type' ) ) {
 				return;
 			}
-			if ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) {
+
+			$enable_legacy_blocks = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' );
+
+			if ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) || 'yes' === $enable_legacy_blocks ) {
 				register_block_type(
 					'uagb/gf-styler',
 					array(
@@ -987,6 +990,7 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 					)
 				);
 			}
+
 		}
 
 		/**

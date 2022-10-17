@@ -1,4 +1,4 @@
-import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
+import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 
 // Parameters for these methods:
 // currentValue - The variable/attribute that is altered by settings.

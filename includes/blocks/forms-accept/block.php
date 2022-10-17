@@ -12,6 +12,7 @@ $block_data = array(
 	'slug'        => '',
 	'link'        => '',
 	'title'       => __( 'Accept', 'ultimate-addons-for-gutenberg' ),
-	'description' => __( 'This block helps to add Accept field.', 'ultimate-addons-for-gutenberg' ),
+	'description' => __( 'Add a consent statement with a checkbox in your form.', 'ultimate-addons-for-gutenberg' ),
 	'default'     => true,
+	'deprecated'  => false,
 );

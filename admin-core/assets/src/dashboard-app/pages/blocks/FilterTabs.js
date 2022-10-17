@@ -3,9 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-function classNames( ...classes ) {
-return classes.filter( Boolean ).join( ' ' )
-}
+const classNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
 
 const FilterTabs = () => {
 
@@ -97,7 +95,7 @@ const FilterTabs = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
-			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
+			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
 		} );
 	};
 
@@ -136,29 +134,32 @@ const FilterTabs = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
-			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
+			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
 		} );
 	};
 
     return (
-        <div className="max-w-3xl mx-auto p-[1.3rem] lg:max-w-[77rem] bg-white mt-[2.43rem] mb-[2.43rem] rounded-[0.2rem] shadow">
-            <div className="sm:hidden">
-            <label htmlFor="tabs" className="sr-only">
-                Select a tab
-            </label>
-            {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
-            <select
-                id="tabs"
-                name="tabs"
-                className="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-[0.2rem]"
-            >
-                {tabs.map( ( tab ) => (
-                <option key={tab.name}>{tab.name}</option>
-                ) )}
-            </select>
+        <div className="mx-auto mb-6 px-6 lg:max-w-[80rem]">
+            <div className="w-full sm:hidden">
+                <label htmlFor="tabs" className="sr-only">
+                    Select a tab
+                </label>
+                {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
+                <select
+                    id="tabs"
+                    name="tabs"
+                    className="w-full spectra-admin__input-field spectra-admin__dropdown"
+                    style={ {
+                        maxWidth: '100%',
+                    } }
+                >
+                    {tabs.map( ( tab ) => (
+                    <option key={tab.name}>{tab.name}</option>
+                    ) )}
+                </select>
             </div>
-            <div className="hidden justify-between sm:flex">
-                <nav className="flex space-x-4" aria-label="Tabs">
+            <div className="hidden justify-between items-center space-y-4 sm:flex sm:flex-col lg:space-y-0 lg:flex-row">
+                <nav className="flex -ml-4 flex-wrap justify-center lg:justify-start" aria-label="Tabs">
                     {tabs.map( ( tab ) => (
                     <Link // eslint-disable-line
 						to={ {
@@ -166,10 +167,12 @@ const FilterTabs = () => {
 							search: `?page=spectra&path=blocks&filterTab=${tab.slug}`,
 						} }
                         key={tab.name}
-                        className={classNames(
-                        tab.slug === activeBlocksFilterTab ? 'bg-wphoverbgcolor text-wpcolor focus:text-wphovercolor hover:text-wphovercolor active:text-wpcolor' : ' focus:text-wphovercolor active:text-wpcolor hover:text-wphovercolor',
-                        'px-3 py-2 font-medium text-sm rounded-[0.2rem] cursor-pointer'
-                        )}
+                        className={ classNames(
+                            ( tab.slug === activeBlocksFilterTab )
+                                ? 'bg-white border-transparent text-slate-800 active:text-slate-800 focus:text-slate-800 hover:text-slate-800 shadow shadow-focused'
+                                : 'text-slate-500 border-slate-200 focus:text-slate-500 focus-visible:bg-white active:text-slate-500 hover:text-slate-500 hover:bg-white',
+                            'px-4 py-1 ml-4 my-1 font-medium text-sm rounded-2xl cursor-pointer border transition'
+                        ) }
                         onClick={ () => {
 							dispatch( {type:'UPDATE_BLOCKS_ACTIVE_FILTER_TAB', payload: tab.slug} )
 						}}
@@ -181,14 +184,14 @@ const FilterTabs = () => {
                 <span className="z-0 flex shadow-sm rounded-[0.2rem] justify-center">
                     <button
                         type="button"
-                        className="focus:bg-wphoverbgcolor focus:text-wpcolor hover:bg-wphoverbgcolor hover:text-wpcolor -ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-70 focus:z-10 focus:outline-none rounded-l-md"
+                        className="focus:bg-indigo-50 focus:text-slate-500 focus-visible:text-spectra hover:bg-indigo-50 hover:text-spectra -ml-px relative inline-flex items-center px-4 py-2 border border-slate-200 bg-white text-sm font-medium text-slate-500 focus:z-10 focus:outline-none rounded-l-md transition"
                         onClick={activateAllBlocks}
                     >
                         Activate all
                     </button>
                     <button
                         type="button"
-                        className="focus:bg-wphoverbgcolor focus:text-wpcolor hover:bg-wphoverbgcolor hover:text-wpcolor -ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-70 focus:z-10 focus:outline-none rounded-r-md"
+                        className="focus:bg-indigo-50 focus:text-slate-500 focus-visible:text-spectra hover:bg-indigo-50 hover:text-spectra -ml-px relative inline-flex items-center px-4 py-2 border border-slate-200 bg-white text-sm font-medium text-slate-500 focus:z-10 focus:outline-none rounded-r-md transition"
                         onClick={deactivateAllBlocks}
                     >
                         Deactivate all

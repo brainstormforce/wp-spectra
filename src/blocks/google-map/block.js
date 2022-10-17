@@ -16,7 +16,7 @@ wp.uagb_google_api_key = 'AIzaSyAsd_d46higiozY-zNqtr7zdA81Soswje4';
 
 registerBlockType( 'uagb/google-map', {
 	title: __( 'Google Maps', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'This block allows you to place a Google Map Location.', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'Show a Google Map location on your website.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.google_map,
 	keywords: [
 		__( 'google', 'ultimate-addons-for-gutenberg' ),

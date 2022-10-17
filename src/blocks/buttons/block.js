@@ -13,7 +13,7 @@ import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/buttons', {
 	title: __( 'Buttons', 'ultimate-addons-for-gutenberg' ),
-	description:  __( 'This block allows you to add multiple buttons with a single block.', 'ultimate-addons-for-gutenberg' ),
+	description:  __( 'Add multiple buttons to redirect user to different webpages.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.buttons,
 	category: uagb_blocks_info.category,
 	keywords: [

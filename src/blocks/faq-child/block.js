@@ -13,8 +13,8 @@ import { __ } from '@wordpress/i18n';
 
 registerBlockType( 'uagb/faq-child', {
 	title: __( 'FAQ Child', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'This block helps you add single FAQ.', 'ultimate-addons-for-gutenberg' ),
-	icon: UAGB_Block_Icons.faq,
+	description: __( 'Add a frequently asked question/accordion to display information.', 'ultimate-addons-for-gutenberg' ),
+	icon: UAGB_Block_Icons.faq_child,
 	category: uagb_blocks_info.category,
 	parent: [ 'uagb/faq' ],
 	attributes,

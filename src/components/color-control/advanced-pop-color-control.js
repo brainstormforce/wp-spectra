@@ -15,7 +15,7 @@ import {
 	ColorPalette,
 } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
-import { useState } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import UAGReset from '../reset';
@@ -33,7 +33,7 @@ const AdvancedPopColorControl = ( props ) => {
 		alpha,
 		colorValue,
 		opacityValue,
-		opacityUnit,
+		backgroundVideoOpacity,
 		onOpacityChange,
 		data,
 		setAttributes,
@@ -59,30 +59,34 @@ const AdvancedPopColorControl = ( props ) => {
 	} );
 	const [ visible, setVisible ] = useState( { isVisible: false } );
 
+	useEffect( () => {
+		onChangeComplete( colorValue, '' )
+	}, [ colorValue ] );
+
 	const onChangeComplete = ( color, palette ) => {
-		let opacity = 100 === opacityUnit ? 100 : 1;
+		let opacity = backgroundVideoOpacity?.value;
 		let newColor;
 		if ( palette ) {
 			newColor = color;
-		} else if (	color.rgb && color.rgb.a && 1 !== color.rgb.a ) {
+		} else if (	color?.rgb && color?.rgb?.a && 1 !== color?.rgb?.a ) {
 
 			if ( onOpacityChange ) {
-				opacity = color.rgb.a;
+				opacity = color?.rgb?.a;
 			}
 
 			newColor =
 				'rgba(' +
-				color.rgb.r +
+				color?.rgb?.r +
 				',' +
-				color.rgb.g +
+				color?.rgb?.g +
 				',' +
-				color.rgb.b +
+				color?.rgb?.b +
 				',' +
-				color.rgb.a +
+				color?.rgb?.a +
 				')';
 
-		} else if ( color.hex ) {
-			newColor = color.hex;
+		} else if ( color?.hex ) {
+			newColor = color?.hex;
 		} else {
 			newColor = color;
 		}
@@ -95,7 +99,7 @@ const AdvancedPopColorControl = ( props ) => {
 
 		if ( true === palette ) {
 			setValue( {
-				refresh: ! value.refresh,
+				refresh: ! value?.refresh,
 			} );
 		}
 

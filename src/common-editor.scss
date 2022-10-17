@@ -654,7 +654,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .block-editor-list-view-leaf.is-selected .block-editor-list-view-block-contents svg.uagb-editor-icons {
 
 	> path {
-		fill: #fff;
+		stroke: #fff;
 	}
 }
 
@@ -662,16 +662,24 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .block-editor-block-list__block-selection-button .block-editor-block-icon.has-colors svg.uagb-editor-icons {
 
 	> path {
-		fill: #fff;
+		stroke: #fff;
+	}
+}
+
+/* Block icons turn to secondary color when they are a parent block. */
+.block-editor-block-parent-selector .block-editor-block-icon svg.uagb-editor-icons {
+
+	> path {
+		stroke: $spectra-color-heading;
 	}
 }
 
 /* Block Editor Block Icons Color*/
 .block-editor-block-icon.has-colors svg.uagb-editor-icons {
-	fill: $spectra-color-secondary;
+	stroke: $spectra-color-secondary;
 
 	path {
-		fill: $spectra-color-secondary;
+		stroke: $spectra-color-secondary;
 	}
 }
 
@@ -742,3 +750,5 @@ button.components-button.uagb-review-select-btn.is-secondary {
 @import "styles/control-header";
 @import "styles/control-popup";
 @import "styles/control-media-picker";
+@import "styles/spectra-change-indicators";
+@import "styles/spectra-legacy";

@@ -1,4 +1,4 @@
-import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
+import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 import { select } from '@wordpress/data';
 import { Button, Tooltip, Dashicon } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
@@ -17,7 +17,7 @@ const UAGReset = ( props ) => {
 	const { getSelectedBlock } = select( 'core/block-editor' );
 
 	const getBlockResetValue = () => {
-		const selectedBlockName = getSelectedBlock()?.name.replace( 'uagb/', '' );
+		const selectedBlockName = getSelectedBlock()?.name.split( '/' ).pop();
 		let defaultValues = false;
 
 		if ( attributeNames && 'undefined' !== typeof blocksAttributes[selectedBlockName] ) {

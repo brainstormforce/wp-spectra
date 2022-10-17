@@ -21,14 +21,14 @@ $highLight_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr
 
 
 $selectors = array(
-	' .uagb-heading-text'                             => array(
+	'.wp-block-uagb-advanced-heading .uagb-heading-text' => array(
 		'color'         => $attr['headingColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value(
 			UAGB_Block_Helper::get_fallback_number( $attr['headSpace'], 'headSpace', $block_name ),
 			'px'
 		),
 	),
-	'.wp-block-uagb-advanced-heading '                => array(
+	'.wp-block-uagb-advanced-heading '                   => array(
 		'background'     => 'classic' === $attr['blockBackgroundType'] ? $attr['blockBackground'] : $attr['blockGradientBackground'],
 		'text-align'     => $attr['headingAlign'],
 		'margin-top'     => UAGB_Helper::get_css_value(
@@ -64,16 +64,16 @@ $selectors = array(
 			$attr['blockPaddingUnit']
 		),
 	),
-	'.wp-block-uagb-advanced-heading a'               => array(
+	'.wp-block-uagb-advanced-heading a'                  => array(
 		'color' => $attr['linkColor'],
 	),
-	'.wp-block-uagb-advanced-heading a:hover'         => array(
+	'.wp-block-uagb-advanced-heading a:hover'            => array(
 		'color' => $attr['linkHColor'],
 	),
-	' .uagb-desc-text'                                => array(
+	'.wp-block-uagb-advanced-heading .uagb-desc-text'    => array(
 		'color' => $attr['subHeadingColor'],
 	),
-	'.wp-block-uagb-advanced-heading .uagb-highlight' => array_merge(
+	'.wp-block-uagb-advanced-heading .uagb-highlight'    => array_merge(
 		array(
 			'background'              => $attr['highLightBackground'],
 			'color'                   => $attr['highLightColor'],
@@ -113,8 +113,8 @@ $selectors = array(
 $heading_text_shadow_color = ( ! empty( $attr['headShadowColor'] ) ? UAGB_Helper::get_css_value( $attr['headShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['headShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['headShadowBlur'], 'px' ) . ' ' . $attr['headShadowColor'] : '' );
 
 if ( 'gradient' === $attr['headingColorType'] ) {
-	$selectors[' .uagb-heading-text']                     = array_merge(
-		$selectors[' .uagb-heading-text'],
+	$selectors['.wp-block-uagb-advanced-heading .uagb-heading-text'] = array_merge(
+		$selectors['.wp-block-uagb-advanced-heading .uagb-heading-text'],
 		array(
 			'background'              => $attr['headingGradientColor'],
 			'-webkit-background-clip' => 'text',
@@ -122,21 +122,21 @@ if ( 'gradient' === $attr['headingColorType'] ) {
 			'filter'                  => 'drop-shadow( ' . $heading_text_shadow_color . ' )',
 		)
 	);
-	$selectors['.wp-block-uagb-advanced-heading a']       = array_merge(
+	$selectors['.wp-block-uagb-advanced-heading a']                  = array_merge(
 		$selectors['.wp-block-uagb-advanced-heading a'],
 		array(
 			'-webkit-text-fill-color' => $attr['linkColor'],
 		)
 	);
-	$selectors['.wp-block-uagb-advanced-heading a:hover'] = array_merge(
+	$selectors['.wp-block-uagb-advanced-heading a:hover']            = array_merge(
 		$selectors['.wp-block-uagb-advanced-heading a:hover'],
 		array(
 			'-webkit-text-fill-color' => $attr['linkHColor'],
 		)
 	);
 } else {
-	$selectors[' .uagb-heading-text'] = array_merge(
-		$selectors[' .uagb-heading-text'],
+	$selectors['.wp-block-uagb-advanced-heading .uagb-heading-text'] = array_merge(
+		$selectors['.wp-block-uagb-advanced-heading .uagb-heading-text'],
 		array(
 			'text-shadow' => $heading_text_shadow_color,
 		)

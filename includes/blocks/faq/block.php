@@ -14,9 +14,10 @@ $block_data = array(
 	'admin_categories' => array( 'seo' ),
 	'link'             => 'faq-schema',
 	'title'            => __( 'FAQ', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block helps you add FAQ or Accordion with automatically adding FAQ Schema to your page.', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'Add accordions/FAQ schema to your page.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-faq-js' ),
-	'priority'         => 24,
+	'priority'         => 12,
+	'deprecated'       => false,
 );

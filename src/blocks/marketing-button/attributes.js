@@ -1,4 +1,4 @@
-import {getBorderAttributes} from '@Controls/generateAttributes';
+import { getBorderAttributes } from '@Controls/generateAttributes';
 
 const btnBorderAttributes = getBorderAttributes( 'btn' )
 
@@ -63,24 +63,23 @@ const attributes = {
 		}
 	},
 	// Border
-	borderStyle: {
+	borderStyle : {
 		type: 'string',
-		default: '',
+		default: 'solid'
 	},
-	borderWidth: {
+	borderWidth : {
 		type: 'number',
-		default: '',
+		default: 1
 	},
-	borderRadius: {
-		type: 'number',
-		default: '',
+	borderRadius : {
+		type: 'number'
 	},
-	borderColor: {
+	borderColor : {
 		type: 'string',
-		default: '',
+		default: '#333'
 	},
-	borderHoverColor: {
-		type: 'string',
+	borderHoverColor : {
+		type: 'string'
 	},
 
 	// Background
@@ -512,84 +511,72 @@ const attributes = {
 	},
 	paddingBtnTop: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding'
 		}
 	},
 	paddingBtnBottom: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding'
 		}
 	},
 	paddingBtnLeft: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding'
 		}
 	},
 	paddingBtnRight: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding'
 		}
 	},
 	paddingBtnTopTablet: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding-tablet'
 		}
 	},
 	paddingBtnRightTablet: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding-tablet'
 		}
 	},
 	paddingBtnBottomTablet: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding-tablet'
 		}
 	},
 	paddingBtnLeftTablet: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding-tablet'
 		}
 	},
 	paddingBtnTopMobile: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding-mobile'
 		}
 	},
 	paddingBtnRightMobile: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding-mobile'
 		}
 	},
 	paddingBtnBottomMobile: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding-mobile'
 		}
 	},
 	paddingBtnLeftMobile: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding-mobile'
 		}

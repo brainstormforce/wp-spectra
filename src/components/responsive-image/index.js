@@ -4,7 +4,7 @@
  import React from 'react';
  import { useDeviceType } from '@Controls/getPreviewType';
  import ResponsiveToggle from '../responsive-toggle';
- import UAGImage from '@Components/image';
+ import UAGMediaPicker from '@Components/image';
  import { __ } from '@wordpress/i18n';
 
  const ResponsiveUAGImage = ( props ) => {
@@ -42,27 +42,27 @@
 
 	 const output = {};
 	 output.Desktop = (
-		<UAGImage
+		<UAGMediaPicker
 			onSelectImage={ onSelectImage }
 			backgroundImage={ backgroundImage.desktop.value }
 			onRemoveImage={ onRemoveImage }
-			label={false}
+			disableLabel={ true }
 		/>
 	 );
 	 output.Tablet = (
-		<UAGImage
+		<UAGMediaPicker
 			onSelectImage={ onSelectImage }
 			backgroundImage={ backgroundImage.tablet.value }
 			onRemoveImage={ onRemoveImage }
-			label={false}
+			disableLabel={ true }
 		/>
 	 );
 	 output.Mobile = (
-		<UAGImage
+		<UAGMediaPicker
 			onSelectImage={ onSelectImage }
 			backgroundImage={ backgroundImage.mobile.value }
 			onRemoveImage={ onRemoveImage }
-			label={false}
+			disableLabel={ true }
 		/>
 	 );
 

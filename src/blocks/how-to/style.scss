@@ -1,5 +1,6 @@
 .uagb-howto__cost-wrap {
-	display: block;
+	display: flex;
+	align-items: center;
 
 	.uagb-howto-estcost-text,
 	.uagb-howto-estcost-value,
@@ -9,7 +10,8 @@
 }
 
 .uagb-howto__time-wrap {
-	display: block;
+	display: flex;
+	align-items: center;
 
 	.uagb-howto-timeNeeded-text,
 	.uagb-howto-timeNeeded-value,

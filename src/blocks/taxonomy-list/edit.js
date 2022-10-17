@@ -3,20 +3,15 @@
  */
 
 import styling from './styling';
-import React, { lazy, Suspense, useEffect } from 'react';
+import React, {    useEffect } from 'react';
 import apiFetch from '@wordpress/api-fetch';
-import lazyLoader from '@Controls/lazy-loader';
+
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/taxonomy-list/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/taxonomy-list/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 import { withSelect } from '@wordpress/data';
 
@@ -200,14 +195,18 @@ const UAGBTaxonomyList = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-taxonomy-list-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 	}, [deviceType] );
 
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
+
+						<>
+			<Settings parentProps={ props } />
 				<Render parentProps={ props } />
-			</Suspense>
+			</>
+
 		</>
 	);
 };

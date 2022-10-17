@@ -15,7 +15,7 @@ import { registerBlockType, createBlock } from '@wordpress/blocks';
 registerBlockType( 'uagb/blockquote', {
 	title: __( 'Blockquote', 'ultimate-addons-for-gutenberg' ),
 	description: __(
-		'This block allows you to display your Blockquote.',
+		'Display qoutes/quoted texts using blockquote.',
 		'ultimate-addons-for-gutenberg'
 	),
 	icon: UAGB_Block_Icons.blockquote,

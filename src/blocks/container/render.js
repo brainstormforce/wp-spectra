@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import React from 'react';
 import shapes from './shapes';
 import { select } from '@wordpress/data';
@@ -9,7 +9,6 @@ const Render = ( props ) => {
 	props = props.parentProps;
 	const {
 		attributes,
-		className,
 		deviceType,
 		clientId
 	} = props;
@@ -91,49 +90,53 @@ const Render = ( props ) => {
 		}
 	}
 
+	const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( clientId ).length;
+	const hasChildrenClass = hasChildren ? 'uagb-container-has-children' : '';
+	const isRootContainerClass = isBlockRootParent ? 'uagb-is-root-container' : '';
+	const blockProps = useBlockProps( {
+		className: `uagb-block-${ block_id } ${contentWidth} ${hasChildrenClass} uagb-editor-preview-mode-${ deviceType.toLowerCase() } ${isRootContainerClass}`,
+	} );
+
 	return (
 		<>
-			{ topDividerHtml }
-				<CustomTag
-					className={ classnames(
-						className,
-						`uagb-block-${ block_id }`,
-					) }
-					key = { block_id }
-					{...customTagLinkAttributes}
-				>
-					{ 'video' === backgroundType && (
-						<div className="uagb-container__video-wrap">
-							{ backgroundVideo && (
-								<video autoPlay loop muted playsinline>
-									<source
-										src={ backgroundVideo.url }
-										type="video/mp4"
-									/>
-								</video>
-							) }
-						</div>
-					) }
-					{ isBlockRootParent && 'alignfull' === contentWidth && 'alignwide' === innerContentWidth
-					?  (
-						<div className='uagb-container-inner-blocks-wrap'>
-							<InnerBlocks
-								__experimentalMoverDirection={ moverDirection }
-								renderAppender = { hasChildBlocks
-								? undefined
-								: InnerBlocks.ButtonBlockAppender }
-							/>
-						</div>
-					)
-					: <InnerBlocks
+			<CustomTag
+				{ ...blockProps }
+				key = { block_id }
+				{...customTagLinkAttributes}
+			>
+				{ topDividerHtml }
+				{ 'video' === backgroundType && (
+					<div className="uagb-container__video-wrap">
+						{ backgroundVideo && (
+							<video autoPlay loop muted playsinline>
+								<source
+									src={ backgroundVideo.url }
+									type="video/mp4"
+								/>
+							</video>
+						) }
+					</div>
+				) }
+				{ isBlockRootParent && 'alignfull' === contentWidth && 'alignwide' === innerContentWidth
+				?  (
+					<div className='uagb-container-inner-blocks-wrap'>
+						<InnerBlocks
 							__experimentalMoverDirection={ moverDirection }
 							renderAppender = { hasChildBlocks
 							? undefined
 							: InnerBlocks.ButtonBlockAppender }
 						/>
-					}
-				</CustomTag>
-			{ bottomDividerHtml }
+					</div>
+				)
+				: <InnerBlocks
+						__experimentalMoverDirection={ moverDirection }
+						renderAppender = { hasChildBlocks
+						? undefined
+						: InnerBlocks.ButtonBlockAppender }
+					/>
+				}
+				{ bottomDividerHtml }
+			</CustomTag>
 		</>
 	);
 };

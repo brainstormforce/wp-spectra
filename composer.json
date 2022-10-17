@@ -16,8 +16,8 @@
     "test": "vendor/bin/phpunit"
   },
   "require": {
-    "brainstormforce/astra-notices": "^1.1",
-    "brainstormforce/gutenberg-templates": "^1"
+    "brainstormforce/astra-notices": "~1",
+    "brainstormforce/gutenberg-templates": "~1"
   },
 	"repositories": [
 		{

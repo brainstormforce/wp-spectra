@@ -15,7 +15,7 @@ import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/forms', {
 	title: __( 'Form', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'This block allow you to create interactive contact form, newsletter, suggestion, etc easily.', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'Add easily customizable forms to gather information.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.forms,
 	category: uagb_blocks_info.category,
 	keywords: [

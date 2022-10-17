@@ -8,6 +8,7 @@ import RegenerateAssets from '@DashboardApp/pages/settings/RegenerateAssets';
 import TemplatesButton from '@DashboardApp/pages/settings/TemplatesButton';
 import RollBack from '@DashboardApp/pages/settings/RollBack';
 import BetaUpdates from '@DashboardApp/pages/settings/BetaUpdates';
+import LegacyBlocks from '@DashboardApp/pages/settings/LegacyBlocks';
 import SelectedFontFamilies from '@DashboardApp/pages/settings/SelectedFontFamilies';
 import LoadFontsLocally from '@DashboardApp/pages/settings/LoadFontsLocally';
 import PreloadLocalFonts from '@DashboardApp/pages/settings/PreloadLocalFonts';
@@ -20,6 +21,8 @@ import SettingsSkeleton from '@DashboardApp/pages/settings/SettingsSkeleton';
 import BlockSettings from '@DashboardApp/pages/settings/BlockSettings';
 import LoadFontAwesome5 from '@DashboardApp/pages/settings/LoadFontAwesome5';
 import AutoBlockRecovery from '@DashboardApp/pages/settings/AutoBlockRecovery';
+import ContainerGlobalPadding from '@DashboardApp/pages/settings/ContainerGlobalPadding';
+import ContainerGlobalElementsGap from '@DashboardApp/pages/settings/ContainerGlobalElementsGap';
 import { Link, useLocation } from 'react-router-dom';
 import{ useEffect } from 'react';
 
@@ -55,81 +58,92 @@ const Settings = () => {
 		return <SettingsSkeleton/>;
 	}
 
+    // Parent Div is Required to add Padding to the Entire Structure for Smaller Windows.
     return (
-        <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-[0.2rem] shadow overflow-hidden h-[36rem]">
-            <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 h-full">
-                <aside className="py-6 px-2 ml-8 sm:px-6 lg:py-6 lg:px-0 lg:col-span-3 border-r">
-                    <nav className="space-y-1">
-                        {navigation.map( ( item ) => (
-                        <Link // eslint-disable-line
-							to={ {
-								pathname: 'options-general.php',
-								search: `?page=spectra&path=settings&settings=${item.slug}`,
-							} }
-                            key={item.name}
-                            className={classNames(
-                            activeSettingsNavigationTab === item.slug
-                            ? 'bg-gray-50 text-wpcolor focus:text-wphovercolor active:text-wpcolor hover:text-wphovercolor fill-wpcolor'
-                            : 'text-gray-900 fill-gray-900 focus:text-gray-900 focus:bg-gray-50 hover:text-gray-900 hover:bg-gray-50',
-                            'group cursor-pointer rounded-[0.2rem] p-3 flex items-center text-sm font-medium'
-                            )}
-                            onClick={ () => {
-								dispatch( {type:'UPDATE_SETTINGS_ACTIVE_NAVIGATION_TAB', payload: item.slug} )
-							}}
-                        >
-                            { item.icon }
-                            <span className="truncate">{item.name}</span>
-                        </Link>
-                    ) )}
-                    </nav>
-                </aside>
-                <div className='space-y-8 mt-8 mb-0 mr-8 sm:px-6 lg:px-0 lg:col-span-9'>
-					{ 'global-settings' === activeSettingsNavigationTab &&
-						<>
-                            <LoadFontAwesome5/>
-                            <AutoBlockRecovery/>
-							<ContentWidth/>
-							<BlocksEditorSpacing/>
-                            <CollapsePanels/>
-                            <CopyPasteStyles/>
-                        </>
-                    }
-                    { 'asset-generation' === activeSettingsNavigationTab &&
-                        <>
-                            <AssetsGeneration/>
-                            <RegenerateAssets/>
-                        </>
-                    }
-                    { 'templates' === activeSettingsNavigationTab &&
-                        <TemplatesButton/>
-                    }
-                    { 'version-control' === activeSettingsNavigationTab &&
-                        <>
-                            <RollBack/>
-                            <BetaUpdates/>
-                        </>
-                    }
-                    { 'fonts-performance' === activeSettingsNavigationTab &&
-                        <>
-                            <SelectedFontFamilies/>
-                            <LoadFontsLocally/>
-                            <PreloadLocalFonts/>
-                        </>
-                    }
-					{ 'block-settings' === activeSettingsNavigationTab &&
-                        <>
-                            <BlockSettings/>
-                        </>
-                    }
-					{
-						'coming-soon' === activeSettingsNavigationTab &&
-						<>
-							<ComingSoon/>
-						</>
-					}
+        <div className="px-6 w-full">
+            <div className="mx-auto mt-10 mb-8 font-semibold text-2xl lg:max-w-[80rem]">Settings</div>
+            <main className="mx-auto my-[2.43rem] bg-white rounded-md shadow overflow-hidden min-h-[36rem] lg:max-w-[80rem]">
+                <div className="lg:grid lg:grid-cols-12 min-h-[36rem] h-full">
+                    <aside className="py-6 sm:px-6 lg:py-6 lg:px-0 lg:col-span-3">
+                        <nav className="space-y-1">
+                            {navigation.map( ( item ) => (
+                            <Link // eslint-disable-line
+                                to={ {
+                                    pathname: 'options-general.php',
+                                    search: `?page=spectra&path=settings&settings=${item.slug}`,
+                                } }
+                                key={item.name}
+                                className={ classNames(
+                                    activeSettingsNavigationTab === item.slug
+                                        ? 'border-spectra text-spectra focus:text-spectra-hover active:text-spectra hover:text-spectra-hover stroke-spectra fill-spectra focus:stroke-spectra focus:fill-spectra hover:stroke-spectra hover:fill-spectra'
+                                        : 'border-white text-slate-800 stroke-slate-800 fill-slate-800 focus:text-slate-900 focus:border-slate-200 focus:stroke-slate-900 focus:fill-slate-900 hover:text-slate-900 hover:border-slate-200 hover:stroke-slate-900 hover:fill-slate-900',
+                                    'border-l-4 group cursor-pointer py-3 pl-5 flex items-center text-base font-medium'
+                                ) }
+                                onClick={ () => {
+                                    dispatch( {type:'UPDATE_SETTINGS_ACTIVE_NAVIGATION_TAB', payload: item.slug} )
+                                }}
+                            >
+                                { item.icon }
+                                <span className="truncate">{item.name}</span>
+                            </Link>
+                        ) )}
+                        </nav>
+                    </aside>
+                    <div className='lg:col-span-9 border-l spectra__settings'>
+                        { 'global-settings' === activeSettingsNavigationTab &&
+                            <>
+                                <ContentWidth/>
+								<ContainerGlobalPadding/>
+								<ContainerGlobalElementsGap/>
+                                <BlocksEditorSpacing/>
+                                <CollapsePanels/>
+                                <CopyPasteStyles/>
+                                <AutoBlockRecovery/>
+                                {  'yes' === uag_react.global_data.uagb_old_user_less_than_2 &&
+                                    <LoadFontAwesome5/>
+                                }
+                            </>
+                        }
+                        { 'asset-generation' === activeSettingsNavigationTab &&
+                            <>
+                                <AssetsGeneration/>
+                                <RegenerateAssets/>
+                            </>
+                        }
+                        { 'templates' === activeSettingsNavigationTab &&
+                            <TemplatesButton/>
+                        }
+                        { 'version-control' === activeSettingsNavigationTab &&
+                            <>
+                                <RollBack/>
+                                <BetaUpdates/>
+								{  'yes' !== uag_react.global_data.uagb_old_user_less_than_2 &&
+                                    <LegacyBlocks/>
+                                }
+                            </>
+                        }
+                        { 'fonts-performance' === activeSettingsNavigationTab &&
+                            <>
+                                <LoadFontsLocally/>
+                                <PreloadLocalFonts/>
+                                <SelectedFontFamilies/>
+                            </>
+                        }
+                        { 'block-settings' === activeSettingsNavigationTab &&
+                            <>
+                                <BlockSettings/>
+                            </>
+                        }
+                        {
+                            'coming-soon' === activeSettingsNavigationTab &&
+                            <>
+                                <ComingSoon/>
+                            </>
+                        }
+                    </div>
                 </div>
-            </div>
-        </main>
+            </main>
+        </div>
     );
 };
 

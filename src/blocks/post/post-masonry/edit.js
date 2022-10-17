@@ -1,9 +1,9 @@
 /**
  * External dependencies
  */
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect,    } from 'react';
 import { __ } from '@wordpress/i18n';
-import lazyLoader from '@Controls/lazy-loader';
+
 import styling from '.././styling';
 import { compose } from '@wordpress/compose';
 import TypographyControl from '@Components/typography';
@@ -22,20 +22,15 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import scrollBlockToView from '@Controls/scrollBlockToView';
 import {buttonsPresets} from './presets';
 import UAGPresets from '@Components/presets';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import { decodeEntities } from '@wordpress/html-entities';
+import UAGNumberControl from '@Components/number-control';
 
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-masonry/settings" */ './settings'
-	)
-);
-
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/post-masonry/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -45,13 +40,13 @@ import {
 	ToggleControl,
 	TextControl,
 	Icon,
-	Notice,
 	ExternalLink
 } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
 
 import { withSelect, withDispatch } from '@wordpress/data';
+
 
 const UAGBPostMasonry = ( props ) => {
 
@@ -334,6 +329,8 @@ const UAGBPostMasonry = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		scrollBlockToView();
 
 	}, [ props.deviceType ] );
 
@@ -716,20 +713,20 @@ const UAGBPostMasonry = ( props ) => {
 						} )
 					}
 				/>
-				<Range
+				<UAGNumberControl
 					label={ __(
 						'Posts Per Page',
 						'ultimate-addons-for-gutenberg'
 					) }
+					setAttributes={ setAttributes }
 					value={ postsToShow }
 					data={ {
 						value: postsToShow,
 						label: 'postsToShow',
 					} }
-					setAttributes={ setAttributes }
-					displayUnit={ false }
 					min={ 1 }
 					max={ 100 }
+					displayUnit={ false }
 				/>
 				<ToggleControl
 					label={ __(
@@ -757,7 +754,7 @@ const UAGBPostMasonry = ( props ) => {
 					}
 				/>
 				{ enableOffset && (
-				<Range
+				<UAGNumberControl
 					label={ __(
 						'Offset By',
 						'ultimate-addons-for-gutenberg'
@@ -860,11 +857,7 @@ const UAGBPostMasonry = ( props ) => {
 						},
 					} }
 					min={ 0 }
-					max={
-						! hasPosts
-							? MAX_POSTS_COLUMNS
-							: Math.min( MAX_POSTS_COLUMNS, latestPosts.length )
-					}
+					max={MAX_POSTS_COLUMNS}
 					displayUnit={ false }
 					setAttributes={ setAttributes }
 				/>
@@ -1202,7 +1195,7 @@ const UAGBPostMasonry = ( props ) => {
 								attributes={ attributes }
 								deviceType={ deviceType }
 								disableBottomSeparator={ true }
-								disabledBorderTitle= { true }
+								disabledBorderTitle= { false }
 							/>
 						</>
 					) }
@@ -1592,30 +1585,6 @@ const UAGBPostMasonry = ( props ) => {
 					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
-							value: columnGap,
-							label: 'columnGap',
-						},
-						tablet: {
-							value: columnGapTablet,
-							label: 'columnGapTablet',
-						},
-						mobile: {
-							value: columnGapMobile,
-							label: 'columnGapMobile',
-						},
-					} }
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: columnGapUnit,
-						label: 'columnGapUnit',
-					} }
-					setAttributes={ setAttributes }
-				/>
-				<ResponsiveSlider
-					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						desktop: {
 							value: rowGap,
 							label: 'rowGap',
 						},
@@ -1633,6 +1602,30 @@ const UAGBPostMasonry = ( props ) => {
 					unit={ {
 						value: rowGapUnit,
 						label: 'rowGapUnit',
+					} }
+					setAttributes={ setAttributes }
+				/>
+				<ResponsiveSlider
+					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: columnGap,
+							label: 'columnGap',
+						},
+						tablet: {
+							value: columnGapTablet,
+							label: 'columnGapTablet',
+						},
+						mobile: {
+							value: columnGapMobile,
+							label: 'columnGapMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 50 }
+					unit={ {
+						value: columnGapUnit,
+						label: 'columnGapUnit',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -2415,7 +2408,6 @@ const UAGBPostMasonry = ( props ) => {
 					prefix={ 'btn' }
 					attributes={ attributes }
 					deviceType={ deviceType }
-					disabledBorderTitle= { true }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -2499,11 +2491,6 @@ const UAGBPostMasonry = ( props ) => {
 		<InspectorControls>
 			<InspectorTabs>
 				<InspectorTab { ...UAGTabs.general }>
-					<Notice status="warning" isDismissible={false}>
-						{
-							__( 'This block has been deprecated.', 'ultimate-addons-for-gutenberg' )
-						}
-					</Notice>
 					{ generalSettings() }
 					{ imageSettings() }
 					{ contentSettings() }
@@ -2549,7 +2536,8 @@ const UAGBPostMasonry = ( props ) => {
 	}
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
+
 			<Settings
 				parentProps={ props }
 				state={ state }
@@ -2562,7 +2550,8 @@ const UAGBPostMasonry = ( props ) => {
 				setState={ setState }
 				togglePreview={ togglePreview }
 			/>
-		</Suspense>
+			</>
+
 	);
 };
 
@@ -2637,6 +2626,7 @@ export default compose(
 					? categories
 					: category;
 		}
+
 		return {
 			latestPosts: getEntityRecords(
 				'postType',

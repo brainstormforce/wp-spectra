@@ -27,11 +27,12 @@ const Render = ( props ) => {
 		backgroundType,
 		borderStyle,
 		background,
-		color
+		color,
+		showIcon,
 	} = attributes;
 
 	const iconHtml = ( curr_position ) => {
-		if ( '' !== icon && curr_position === iconPosition ) {
+		if ( showIcon && '' !== icon && curr_position === iconPosition ) {
 			return (
 				<span
 					className={ classnames(
@@ -49,7 +50,7 @@ const Render = ( props ) => {
 		if( ! removeText ){
 			return <RichText
 						placeholder={ __( 'Add text…' ) }
-						value={ label }
+						value={ label.replace( /(<([^>]+)>)/ig, '' ) }
 						tagName="div"
 						onChange={ ( value ) => {
 							setAttributes( { label: value } );

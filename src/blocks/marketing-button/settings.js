@@ -2,8 +2,8 @@
 import UAGIconPicker from '@Components/icon-picker';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
-import React, { Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React from 'react';
+
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
@@ -1152,7 +1152,7 @@ const Settings = ( props ) => {
 				</UAGAdvancedPanelBody>
 	};
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
@@ -1176,7 +1176,7 @@ const Settings = ( props ) => {
 			</InspectorControls>
 			{ loadTitleGoogleFonts }
 			{ loadPrefixGoogleFonts }
-		</Suspense>
+			</>
 	);
 };
 

@@ -50,7 +50,6 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 		 * @return void
 		 */
 		public function init() {
-
 			// Get auto saved version number.
 			$saved_version = get_option( 'uagb-version', false );
 
@@ -72,8 +71,15 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 				return;
 			}
 
-			// Update How-To Block Old User Version.
-			$this->update_uag_old_user_less_than_2_option();
+			// If user is older than 2.0.0 then set the option.
+			if ( version_compare( $saved_version, '2.0.0', '<' ) ) {
+				update_option( 'uagb-old-user-less-than-2', 'yes' );
+			}
+
+			// Enable Legacy Blocks for users older than 2.0.5.
+			if ( version_compare( $saved_version, '2.0.5', '<' ) ) {
+				UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_legacy_blocks', 'yes' );
+			}
 
 			// Create file if not present.
 			uagb_install()->create_files();
@@ -102,18 +108,6 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 
 			if ( UAGB_Helper::is_uag_dir_has_write_permissions() ) {
 				update_option( '_uagb_allow_file_generation', 'enabled' );
-			}
-		}
-
-		/**
-		 * Update How-to old user option by checking condition.
-		 *
-		 * @since 2.0.0-beta.3
-		 * @return void
-		 */
-		public function update_uag_old_user_less_than_2_option() {
-			if ( version_compare( UAGB_VER, '2.0.0', '<' ) ) {
-				update_option( 'uagb-old-user-less-than-2', 'yes' );
 			}
 		}
 	}

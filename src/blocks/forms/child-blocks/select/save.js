@@ -37,7 +37,10 @@ export default function save( props ) {
 				name={ block_id }
 			>
 				<option value="" disabled selected>
-					Select your option
+					{ __(
+						'Select your option',
+						'ultimate-addons-for-gutenberg'
+					) }
 				</option>
 				{ options.map( ( o, index ) => {
 					return (

@@ -99,7 +99,7 @@ function styling( props ) {
 	if ( 'outset' === boxShadowPosition ) {
 		boxShadowPositionCSS = '';
 	}
-	const borderCSS = generateBorderCSS( props.attributes, 'btn' )
+	const borderCSS = generateBorderCSS( props.attributes, 'btn' );	
 	const borderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' )
 	const borderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' )
 

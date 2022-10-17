@@ -8,18 +8,7 @@
  */
 
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
-	'overall',
-	array(
-		'borderStyle'             => 'solid',
-		'borderTopWidth'          => 1,
-		'borderRightWidth'        => 1,
-		'borderBottomWidth'       => 1,
-		'borderLeftWidth'         => 1,
-		'borderTopLeftRadius'     => 6,
-		'borderTopRightRadius'    => 6,
-		'borderBottomLeftRadius'  => 6,
-		'borderBottomRightRadius' => 6,
-	)
+	'overall'
 );
 
 return array_merge(
@@ -112,7 +101,7 @@ return array_merge(
 		'columnGapType'              => 'px',
 		'descSpaceType'              => 'px',
 		'nameSpaceType'              => 'px',
-		'overlayType'                => '',
+		'overlayType'                => 'color',
 		'backgroundAttachment'       => '',
 		'gradientValue'              => '',
 		'descTransform'              => '',
@@ -166,6 +155,10 @@ return array_merge(
 		'companyLetterSpacingTablet' => '',
 		'companyLetterSpacingMobile' => '',
 		'companyLetterSpacingType'   => 'px',
+		'borderStyle'                => 'none',
+		'borderWidth'                => 1,
+		'borderRadius'               => '',
+		'borderColor'                => '',
 	),
-	$border_attribute,
+	$border_attribute
 );

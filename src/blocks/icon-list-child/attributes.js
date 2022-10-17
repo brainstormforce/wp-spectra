@@ -92,11 +92,11 @@ const attributes = {
 	},
 	disableLink: {
 		type: 'boolean',
-		default: true,
+		default: false,
 	},
 	fromParentIcon: {
 		type: 'string',
-		default: '',
+		default: 'circle-arrow-right',
 	},
 	// margin
 	childTopMargin : {

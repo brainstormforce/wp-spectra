@@ -404,7 +404,7 @@ function styling( props ) {
 		 ' .uagb-infobox-cta-link:hover svg': {
 			 'fill': ctaLinkHoverColor,
 		 },
-		 ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
+		 ' div.uagb-ifb-button-wrapper a.uagb-infobox-cta-link': {
 			 'color': ctaBtnLinkColor,
 			 'background-color': ctaBgColor,
 			 'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),

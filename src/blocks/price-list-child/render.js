@@ -11,7 +11,7 @@ const Render = ( props ) => {
 	const { className, setAttributes, attributes } = props;
 
 	// Setup the attributes.
-	const { imagePosition, headingAlign, imgAlign } = attributes;
+	const { imagePosition, headingAlign, imgAlign, showImage } = attributes;
 
 	const parentClientId = select(
 		'core/block-editor'
@@ -37,7 +37,9 @@ const Render = ( props ) => {
 		>
 			{ imgAlignment === 'top' && (
 				<>
-					<RestMenuImage attributes={ attributes } />
+					{ showImage &&
+						<RestMenuImage attributes={ attributes } />
+					}
 					<div className="uagb-rm__content">
 						{ align === 'right' && (
 							<Price
@@ -79,7 +81,7 @@ const Render = ( props ) => {
 			{ imgAlignment === 'side' && (
 				<>
 					<div className="uagb-rm__content">
-						{ position === 'left' && (
+						{ position === 'left' && showImage && (
 							<RestMenuImage attributes={ attributes } />
 						)}
 						{ position === 'right' && (
@@ -108,7 +110,7 @@ const Render = ( props ) => {
 								props={ props }
 							/>	
 						)}
-						{ position === 'right' && (
+						{ position === 'right' && showImage && (
 							<RestMenuImage attributes={ attributes } />
 						)}
 					</div>

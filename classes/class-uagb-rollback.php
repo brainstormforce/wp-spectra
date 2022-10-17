@@ -139,7 +139,7 @@ class UAGB_Rollback {
 		$plugin_info->new_version = $this->version;
 		$plugin_info->slug        = $this->plugin_slug;
 		$plugin_info->package     = $this->package_url;
-		$plugin_info->url         = 'https://ultimategutenberg.com/';
+		$plugin_info->url         = 'https://wpspectra.com/';
 
 		$update_plugins->response[ $this->plugin_name ] = $plugin_info;
 

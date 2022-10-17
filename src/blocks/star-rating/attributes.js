@@ -114,12 +114,14 @@ const attributes = {
 	},
 	titleGapTablet: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
 		},
 	},
 	titleGapMobile: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
 		},
