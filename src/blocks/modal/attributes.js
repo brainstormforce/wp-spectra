@@ -13,6 +13,10 @@ const attributes = {
 	previewModal: {
 		type: 'boolean',
 		default: false,
+	},
+	icon: {
+		type: 'string',
+		default: 'up-right-from-square',
 	}
 };
 

@@ -12,15 +12,21 @@ export default function Save( props ) {
 		iconImage
 	} = props.attributes;
 
-	// const textHTML = (
-	// 	<RichText.Content
-	// 		value={ triggerText }
-	// 		tagName="p"
-	// 		className="uagb-modal-text uagb-modal-trigger"
-	// 	/>
-	// );
+	const textHTML = (
+		<RichText.Content
+			value={ triggerText }
+			tagName="p"
+			className="uagb-modal-text uagb-modal-trigger"
+		/>
+	);
 
-	
+	const iconHTML = (
+		<>
+			{ '' !== icon && (
+				renderSVG( icon )
+			) }
+		</>
+	);
 
 	// const defaultedAlt = ( iconImage && iconImage?.alt ) ? iconImage?.alt : '';
 	// let imageIconHtml = '';
@@ -41,16 +47,14 @@ export default function Save( props ) {
 				'wp-block-modal'
 			) }
 		>
-			
 			{
 				'text' === modalTrigger &&
-				<RichText.Content
-					value={ triggerText }
-					tagName="p"
-					className="uagb-modal-text uagb-modal-trigger"
-				/>
+				textHTML
 			}
-			
+			{
+				'icon' === modalTrigger &&
+				iconHTML
+			}
 			<div class="uagb-modal-popup">
 				<div class="uagb-modal-popup-wrap">
 					<div class="uagb-modal-popup-content">

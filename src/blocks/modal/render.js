@@ -22,6 +22,27 @@ const Render = ( props ) => {
 		modalTrigger
 	} = attributes
 
+	const textHTML = (
+		<RichText
+			tagName="p"
+			placeholder={ __(
+				'Click here',
+				'ultimate-addons-for-gutenberg'
+			) }
+			value={ triggerText }
+			className="uagb-modal-text uagb-modal-trigger"
+			onChange={ ( value ) => setAttributes( { triggerText: value } ) }
+		/>
+	);
+
+	const iconHTML = (
+		<>
+			{ '' !== icon && (
+				renderSVG( icon )
+			) }
+		</>
+	);
+
 	return (
 		<React.Fragment>
 			<div className={ classnames(
@@ -30,18 +51,12 @@ const Render = ( props ) => {
 			) }>
 				{
 					'text' === modalTrigger &&
-					<RichText
-						tagName="p"
-						placeholder={ __(
-							'Click here',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ triggerText }
-						className="uagb-modal-text uagb-modal-trigger"
-						onChange={ ( value ) => setAttributes( { triggerText: value } ) }
-					/>
+					textHTML
 				}
-				
+				{
+					'icon' === modalTrigger &&
+					iconHTML
+				}			
 				<div class="uagb-modal-popup">
 					<div class="uagb-modal-popup-wrap">
 						<div class="uagb-modal-popup-content">
