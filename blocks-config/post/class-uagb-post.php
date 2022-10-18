@@ -1288,6 +1288,31 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				$mob_class = ( isset( $attributes['UAGHideMob'] ) ) ? 'uag-hide-mob' : '';
 			}
 
+			$zindex_desktop = '';
+			$zindex_tablet  = '';
+			$zindex_mobile  = '';
+			$zindex_wrap    = array();
+
+			if ( array_key_exists( 'zIndex', $attributes ) || array_key_exists( 'zIndexTablet', $attributes ) || array_key_exists( 'zIndexMobile', $attributes ) ) {
+				$uagb_common_selector_class = 'uag-blocks-common-selector';
+				$zindex_desktop             = array_key_exists( 'zIndex', $attributes ) && ( '' !== $attributes['zIndex'] ) ? '--z-index-desktop:' . $attributes['zIndex'] . ';' : false;
+				$zindex_tablet              = array_key_exists( 'zIndexTablet', $attributes ) && ( '' !== $attributes['zIndexTablet'] ) ? '--z-index-tablet:' . $attributes['zIndexTablet'] . ';' : false;
+				$zindex_mobile              = array_key_exists( 'zIndexMobile', $attributes ) && ( '' !== $attributes['zIndexMobile'] ) ? '--z-index-mobile:' . $attributes['zIndexMobile'] . ';' : false;
+
+				if ( $zindex_desktop ) {
+					array_push( $zindex_wrap, $zindex_desktop );
+				}
+
+				if ( $zindex_tablet ) {
+					array_push( $zindex_wrap, $zindex_tablet );
+				}
+
+				if ( $zindex_mobile ) {
+					array_push( $zindex_wrap, $zindex_mobile );
+				}
+			}
+
+
 			$is_image_enabled = ( true === $attributes['displayPostImage'] ) ? 'uagb-post__image-enabled' : 'uagb-post__image-disabled';
 
 			$outerwrap = array(
@@ -1300,6 +1325,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				$desktop_class,
 				$tab_class,
 				$mob_class,
+				$uagb_common_selector_class
 			);
 
 			switch ( $layout ) {
@@ -1335,7 +1361,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			?>
 
-			<div class="<?php echo esc_html( implode( ' ', $common_classes ) ); ?>" data-total="<?php echo esc_attr( $total ); ?>">
+			<div class="<?php echo esc_html( implode( ' ', $common_classes ) ); ?>"
+				data-total="<?php echo esc_attr( $total ); ?>"
+				style="<?php echo esc_html( implode( '', $zindex_wrap ) ); ?>"
+			>
 
 				<?php
 
