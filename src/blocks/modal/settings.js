@@ -43,9 +43,6 @@ export default function Settings( props ) {
 	 * Event to set Image as while adding.
 	 */
 	const onSelectImage = ( media ) => {
-
-	console.log( buttonIcon );
-
 		
 		if ( ! media || ! media.url ) {
 			setAttributes( { iconImage: null } );
