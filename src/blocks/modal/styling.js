@@ -25,6 +25,7 @@ export default function styling( props ) {
 		modalHeightTablet,
 		modalHeightMobile,
 		modalHeightType,
+		closeIconSize
 	} = props.attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -45,6 +46,12 @@ export default function styling( props ) {
 				modalHeight,
 				modalHeightType
 			),
+		},
+		' .uagb-modal-popup-close svg': {
+			'width': generateCSSUnit( closeIconSize, 'px' ),
+			'height': generateCSSUnit( closeIconSize, 'px' ),
+			'line-height': generateCSSUnit( closeIconSize, 'px' ),
+			'font-size': generateCSSUnit( closeIconSize, 'px' ),
 		}
 	};
 	const tabletSelectors = {

@@ -50,7 +50,8 @@ export default function Settings( props ) {
 		modalHeightTablet,
 		modalHeightMobile,
 		modalHeightType,
-		appearEffect
+		appearEffect,
+		closeIconSize
 	} = attributes;
 
 	/*
@@ -449,6 +450,29 @@ export default function Settings( props ) {
 		</UAGAdvancedPanelBody>
 	)
 
+	const modalClosePanel = (
+		<UAGAdvancedPanelBody
+			title={ __( 'Close Button', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
+		>
+			<Range
+				label={ __(
+					'Icon Size',
+					'ultimate-addons-for-gutenberg'
+				) }
+				setAttributes={ setAttributes }
+				value={ closeIconSize }
+				data={ {
+					value: closeIconSize,
+					label: 'closeIconSize',
+				} }
+				min={ 0 }
+				max={ 50 }
+				displayUnit={ false }
+			/>
+		</UAGAdvancedPanelBody>
+	)
+
 	const stylePanel =  (
 		<UAGAdvancedPanelBody
 			title={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
@@ -466,6 +490,7 @@ export default function Settings( props ) {
 					<InspectorTab { ...UAGTabs.general }>
 						{modalTriggerPanel}
 						{modalContentPanel}
+						{modalClosePanel}
 					</InspectorTab>
 
 					<InspectorTab { ...UAGTabs.style }>

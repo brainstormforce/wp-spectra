@@ -25,4 +25,5 @@ return array(
     'modalHeightTablet'              => '',
     'modalHeightMobile'              => '',
     'modalHeightType'                => 'px',
+    'closeIconSize'                  => 25,
 );

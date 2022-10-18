@@ -139,7 +139,11 @@ const attributes = {
 	appearEffect: {
 		type: 'string',
 		default: 'default',
-	}
+	},
+	closeIconSize: {
+		type: 'number',
+		default: 25
+	},
 };
 
 export default attributes;
