@@ -21,4 +21,8 @@ return array(
     'modalWidthTablet'              => '',
     'modalWidthMobile'              => '',
     'modalWidthType'                => 'px',
+    'modalHeight'                    => 350,
+    'modalHeightTablet'              => '',
+    'modalHeightMobile'              => '',
+    'modalHeightType'                => 'px',
 );

@@ -46,6 +46,10 @@ export default function Settings( props ) {
 		modalWidthTablet,
 		modalWidthMobile,
 		modalWidthType,
+		modalHeight,
+		modalHeightTablet,
+		modalHeightMobile,
+		modalHeightType,
 	} = attributes;
 
 	/*
@@ -324,6 +328,49 @@ export default function Settings( props ) {
 				unit={ {
 					value: modalWidthType,
 					label: 'modalWidthType',
+				} }
+				units={ [
+					{
+						name: __(
+							'Pixel',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: 'px',
+					},
+					{
+						name: __(
+							'%',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: '%',
+					},
+				] }
+				setAttributes={ setAttributes }
+			/>
+			<ResponsiveSlider
+				label={ __(
+					'Minimum Height',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: modalHeight,
+						label: 'modalHeight',
+					},
+					tablet: {
+						value: modalHeightTablet,
+						label: 'modalHeightTablet',
+					},
+					mobile: {
+						value: modalHeightMobile,
+						label: 'modalHeightMobile',
+					},
+				} }
+				min={ '%' === modalHeightType ? 10 : 300 }
+				max={ '%' === modalHeightType ? 100 : 1500 }
+				unit={ {
+					value: modalHeightType,
+					label: 'modalHeightType',
 				} }
 				units={ [
 					{

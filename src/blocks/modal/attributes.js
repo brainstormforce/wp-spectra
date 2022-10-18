@@ -110,6 +110,32 @@ const attributes = {
 			styleType: 'modal-width-type'
 		}
 	},
+	modalHeight: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'modal-height'
+		},
+		default: 350
+	},
+	modalHeightTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'modal-height'
+		},
+	},
+	modalHeightMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'modal-height'
+		},
+	},
+	modalHeightType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'modal-height-type'
+		}
+	},
 };
 
 export default attributes;

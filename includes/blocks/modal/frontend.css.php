@@ -15,6 +15,7 @@ $selectors = array(
 	),
 	' .uagb-modal-popup-wrap' => array(
 		'width'            => UAGB_Helper::get_css_value( $attr['modalWidth'], $attr['modalWidthType'] ),
+		'min-height'            => UAGB_Helper::get_css_value( $attr['modalHeight'], $attr['modalHeightType'] ),
 	)
 );
 $t_selectors = array(
@@ -23,6 +24,7 @@ $t_selectors = array(
 	),
 	' .uagb-modal-popup-wrap' => array(
 		'width'            => UAGB_Helper::get_css_value( $attr['modalWidthTablet'], $attr['modalWidthType'] ),
+		'min-height'            => UAGB_Helper::get_css_value( $attr['modalHeightTablet'], $attr['modalHeightType'] ),
 	)
 );
 $m_selectors = array(
@@ -31,6 +33,7 @@ $m_selectors = array(
 	),
 	' .uagb-modal-popup-wrap' => array(
 		'width'            => UAGB_Helper::get_css_value( $attr['modalWidthMobile'], $attr['modalWidthType'] ),
+		'min-height'       => UAGB_Helper::get_css_value( $attr['modalHeightMobile'], $attr['modalHeightType'] ),
 	)
 );
 

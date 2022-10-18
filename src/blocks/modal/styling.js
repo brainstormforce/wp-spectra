@@ -21,6 +21,10 @@ export default function styling( props ) {
 		modalWidthTablet,
 		modalWidthMobile,
 		modalWidthType,
+		modalHeight,
+		modalHeightTablet,
+		modalHeightMobile,
+		modalHeightType,
 	} = props.attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -37,6 +41,10 @@ export default function styling( props ) {
 				modalWidth,
 				modalWidthType
 			),
+			'min-height': generateCSSUnit(
+				modalHeight,
+				modalHeightType
+			),
 		}
 	};
 	const tabletSelectors = {
@@ -48,6 +56,10 @@ export default function styling( props ) {
 				modalWidthTablet,
 				modalWidthType
 			),
+			'min-height': generateCSSUnit(
+				modalHeightTablet,
+				modalHeightType
+			),
 		}
 	};
 	const mobileSelectors = {
@@ -58,6 +70,10 @@ export default function styling( props ) {
 			'width': generateCSSUnit(
 				modalWidthMobile,
 				modalWidthType
+			),
+			'min-height': generateCSSUnit(
+				modalHeightMobile,
+				modalHeightType
 			),
 		}
 	};
