@@ -173,6 +173,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ### 2.0.14 - THURSDAY, 13th OCTOMBER 2022 ###
 * Improvement: Container - Equal height setting in Parent container.
 * Improvement: Post Block - Woo Commerce Products (CPT) not getting in post Type.
+* Improvement: Post Blocks - Optimize the loading of Post Terms.
 * Fix: Image - Throws validation issue when toolbar link feature is used.
 * Fix: Button - Box shadow stylings not working as expected on front-end.
 * Fix: Tabs - Plus button height was not the same as other tab buttons on the editor.
@@ -190,7 +191,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Masonry - Column Gap was impacting other post masonry, post grid, post carousel blocks.
 * Fix: Forms - Settings uneven spacing issue and Hide border colors when style set to default.
 * Fix: Copy Paste Styles - Removed hover color for disable paste style text.
-* Fix: Post Blocks - Optimize the loading of Post Terms.
 * Fix: Resolved undefined PHP issue for block attribute.
 * Fix: Info Box - After drag and drop block SVG looks bigger for a second.
 * Fix: Icon List - Disable link not working properly on front-end for old users.
