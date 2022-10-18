@@ -56,7 +56,6 @@ export default compose(
 					modalTrigger.addEventListener(
 						'click',
 						function ( e ) {
-							console.log( "Clickeddddddddddddddddddddd" );
 							if ( typeof innerModal !== 'undefined' && ! innerModal.classList.contains( 'active' ) ) {
 								innerModal.classList.add( 'active' );
 		
