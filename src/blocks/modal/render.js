@@ -23,7 +23,8 @@ const Render = ( props ) => {
 		imageSize,
 		buttonText,
 		buttonIcon,
-		buttonIconPosition
+		buttonIconPosition,
+		appearEffect
 	} = attributes
 
 	const textHTML = (
@@ -131,7 +132,12 @@ const Render = ( props ) => {
 					'button' === modalTrigger &&
 					buttonHTML
 				}
-				<div class="uagb-modal-popup">
+				<div 
+					className={ classnames(
+						`${ appearEffect }`,
+						'uagb-modal-popup'
+					) }
+				>
 					<div class="uagb-modal-popup-wrap">
 						<div class="uagb-modal-popup-content">
 							<InnerBlocks />

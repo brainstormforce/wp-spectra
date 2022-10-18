@@ -14,7 +14,8 @@ export default function Save( props ) {
 		imageSize,
 		buttonText,
 		buttonIcon,
-		buttonIconPosition
+		buttonIconPosition,
+		appearEffect
 	} = props.attributes;
 
 	const textHTML = (
@@ -113,7 +114,11 @@ export default function Save( props ) {
 				'button' === modalTrigger &&
 				buttonHTML
 			}
-			<div class="uagb-modal-popup">
+			<div 
+				className={ classnames(
+					`${ appearEffect }`,
+					'uagb-modal-popup'
+				) } >
 				<div class="uagb-modal-popup-wrap">
 					<div class="uagb-modal-popup-content">
 						<InnerBlocks.Content />

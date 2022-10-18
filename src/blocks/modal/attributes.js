@@ -136,6 +136,10 @@ const attributes = {
 			styleType: 'modal-height-type'
 		}
 	},
+	appearEffect: {
+		type: 'string',
+		default: 'default',
+	}
 };
 
 export default attributes;
