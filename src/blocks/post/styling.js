@@ -539,7 +539,7 @@ function styling( props ) {
 	};
 	selectors[ ' .uagb-post__text .uagb-post__cta:hover' ] = {
 		'color': ctaHColor,
-		'background': ctaBgHColor,
+		// 'background': ctaBgHColor,
 		'border-color': btnBorderHColor,
 	};
 	selectors[ ' .uagb-post__text .uagb-post__cta:hover a' ] = {
