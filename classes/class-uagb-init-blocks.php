@@ -317,9 +317,9 @@ class UAGB_Init_Blocks {
 
 		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
 
-			$post_types = UAGB_Helper::get_post_types();
+		$post_types = UAGB_Helper::get_post_types();
 
-			$return_array = array();
+		$return_array = array();
 
 		foreach ( $post_types as $key => $value ) {
 			$post_type = $value['value'];
@@ -652,7 +652,6 @@ class UAGB_Init_Blocks {
 				'mobile_breakpoint'                  => UAGB_MOBILE_BREAKPOINT,
 				'image_sizes'                        => UAGB_Helper::get_image_sizes(),
 				'post_types'                         => UAGB_Helper::get_post_types(),
-				'all_taxonomy'                       => UAGB_Helper::get_related_taxonomy(),
 				'uagb_ajax_nonce'                    => $uagb_ajax_nonce,
 				'uagb_home_url'                      => home_url(),
 				'user_role'                          => $this->get_user_role(),

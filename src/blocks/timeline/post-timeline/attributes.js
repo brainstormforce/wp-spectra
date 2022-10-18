@@ -1228,6 +1228,9 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'author-letter-spacing-type'
 		}
 	},
+	allTaxonomyStore: {
+		type: 'object'
+	},
 }
 
 export default attributes;
