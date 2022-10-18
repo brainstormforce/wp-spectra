@@ -71,10 +71,11 @@ const Render = ( props ) => {
 		);
 	}
 
-	// let buttonIconOutput = '';
-	// if ( buttonIcon !== '' ) {
-	// 	buttonIconOutput = renderSVG( buttonIcon );
-	// }
+	let buttonIconOutput = '';
+	if ( buttonIcon !== '' ) {
+		buttonIconOutput = renderSVG( buttonIcon );
+	}
+	
 	const buttonClasses = 'uagb-modal-button-link wp-block-button__link';
 
 	const buttonHTML = (
@@ -89,19 +90,20 @@ const Render = ( props ) => {
 				target='_self'
 				rel='noopener noreferrer'
 			>
-				<RichText
-					tagName="span"
-					placeholder={ __(
-						'Click Here',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ buttonText }
-					className="uagb-inline-editing"
-					multiline={ false }
-					onChange={ ( value ) => {
-						setAttributes( { buttonText: value } );
-					} }
-				/>
+				<span className="uagb-modal-content-wrapper">
+					{ buttonIconPosition === 'before' && buttonIconOutput }
+						<RichText
+							tagName="span"
+							placeholder={ __(
+								'Click here',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ buttonText }
+							className="uagb-inline-editing"
+							onChange={ ( value ) => setAttributes( { buttonText: value } ) }
+						/>
+					{ buttonIconPosition === 'before' && buttonIconOutput }
+				</span>
 			</a>
 		</div>
 	)
