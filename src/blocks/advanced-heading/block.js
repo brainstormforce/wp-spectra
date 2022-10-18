@@ -55,9 +55,9 @@ registerBlockType( 'uagb/advanced-heading', {
 				transform: ( attribute ) => {
 					return createBlock( 'uagb/advanced-heading', {
 						headingTitle: attribute.content,
-						headingAlign: attribute.align,
+						headingAlign: attribute.textAlign,
 						headingColor: colourNameToHex( attribute.textColor ),
-						blockBackground: colourNameToHex( attribute.backgroundColor )
+						blockBackground: colourNameToHex( attribute.backgroundColor ),
 					} );
 				},
 			},
@@ -70,7 +70,7 @@ registerBlockType( 'uagb/advanced-heading', {
 						headingDesc: attribute.citation,
 						headingAlign: attribute.align,
 						headingColor: colourNameToHex( attribute.textColor ),
-						blockBackground: colourNameToHex( attribute.backgroundColor )
+						blockBackground: colourNameToHex( attribute.backgroundColor ),
 					} );
 				},
 			},
@@ -82,7 +82,7 @@ registerBlockType( 'uagb/advanced-heading', {
 						headingTitle: attribute.content,
 						headingAlign: attribute.align,
 						headingColor: colourNameToHex( attribute.textColor ),
-						blockBackground: colourNameToHex( attribute.backgroundColor )
+						blockBackground: colourNameToHex( attribute.backgroundColor ),
 					} );
 				},
 			},
@@ -109,7 +109,7 @@ registerBlockType( 'uagb/advanced-heading', {
 						createBlock( 'uagb/advanced-heading', {
 							headingTitle: text.text,
 							headingColor: colourNameToHex( textColor ),
-							blockBackground: colourNameToHex( backgroundColor )
+							blockBackground: colourNameToHex( backgroundColor ),
 						} )
 					);
 				},

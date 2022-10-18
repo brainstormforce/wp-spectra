@@ -66,7 +66,7 @@ registerBlockType( 'uagb/blockquote', {
 				transform: ( attribute ) => {
 					return createBlock( 'uagb/blockquote', {
 						descriptionText: attribute.content,
-						align: attribute.align,
+						align: attribute.textAlign,
 						descColor: colourNameToHex( attribute.textColor ),
 						authorColor: colourNameToHex( attribute.backgroundColor )
 					} );
@@ -78,7 +78,6 @@ registerBlockType( 'uagb/blockquote', {
 				transform: ( attribute ) => {
 					return createBlock( 'uagb/blockquote', {
 						descriptionText: attribute.content,
-						align: attribute.align,
 						descColor: colourNameToHex( attribute.textColor ),
 						authorColor: colourNameToHex( attribute.backgroundColor )
 					} );
