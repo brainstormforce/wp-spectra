@@ -316,7 +316,7 @@ const Settings = ( props ) => {
 		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
 	];
 
-	if ( '' !== taxonomyList && undefined !== taxonomyList ) {
+	if ( taxonomyList ) {
 		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
@@ -325,7 +325,7 @@ const Settings = ( props ) => {
 		} );
 	}
 
-	if ( '' !== categoriesList ) {
+	if ( categoriesList ) {
 		Object.keys( categoriesList ).map( ( item ) => {
 			return categoryListOptions.push( {
 				value: categoriesList[ item ].id,
