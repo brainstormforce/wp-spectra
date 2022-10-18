@@ -28,8 +28,6 @@ export default function Settings( props ) {
 				} }
 				options={ [
 					{ value: 'text', label: 'Text' },
-					{ value: 'image', label: 'Image' },
-					{ value: 'icon', label: 'Icon' },
 				] }
 			/>
 		</UAGAdvancedPanelBody>
