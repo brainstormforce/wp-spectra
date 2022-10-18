@@ -7,4 +7,11 @@
  * @package uagb
  */
 
-return array();
+return array(
+    'modalTrigger'               => 'text',
+    'buttonIconSpace'               => '5',
+    'buttonIconSpaceTablet'         => '',
+    'buttonIconSpaceMobile'         => '',
+    'buttonIconSpaceType'           => 'px',
+    'buttonIconPosition'            => 'after',
+);

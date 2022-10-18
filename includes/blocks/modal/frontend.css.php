@@ -12,6 +12,34 @@ $m_selectors = array();
 $t_selectors = array();
 $block_name  = 'modal';
 
+$buttonIconSpace_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['buttonIconSpace'], 'buttonIconSpace', $block_name );
+$attr['buttonIconSpaceTablet'] = is_numeric( $attr['buttonIconSpaceTablet'] ) ? $attr['buttonIconSpaceTablet'] : $buttonIconSpace_fallback;
+$attr['buttonIconSpaceMobile'] = is_numeric( $attr['buttonIconSpaceMobile'] ) ? $attr['buttonIconSpaceMobile'] : $attr['buttonIconSpaceTablet'];
+
+if( 'button' === $attr['modalTrigger'] ) {
+	if ( 'after' === $attr['buttonIconPosition'] ) {
+		$selectors[' .uagb-modal-button-link svg ']   = array(
+			'margin-left' => UAGB_Helper::get_css_value( $buttonIconSpace_fallback, $attr['buttonIconSpaceType'] ),
+		);
+		$t_selectors[' .uagb-modal-button-link svg '] = array(
+			'margin-left' => UAGB_Helper::get_css_value( $attr['buttonIconSpaceTablet'], $attr['buttonIconSpaceType'] ),
+		);
+		$m_selectors[' .uagb-modal-button-link svg '] = array(
+			'margin-left' => UAGB_Helper::get_css_value( $attr['buttonIconSpaceMobile'], $attr['buttonIconSpaceType'] ),
+		);
+	} else {
+		$selectors[' .uagb-modal-button-link svg']   = array(
+			'margin-right' => UAGB_Helper::get_css_value( $buttonIconSpace_fallback, $attr['buttonIconSpaceType'] ),
+		);
+		$t_selectors[' .uagb-modal-button-link svg'] = array(
+			'margin-right' => UAGB_Helper::get_css_value( $attr['buttonIconSpaceTablet'], $attr['buttonIconSpaceType'] ),
+		);
+		$m_selectors[' .uagb-modal-button-link svg'] = array(
+			'margin-right' => UAGB_Helper::get_css_value( $attr['buttonIconSpaceMobile'], $attr['buttonIconSpaceType'] ),
+		);
+	}
+}
+
 $combined_selectors = array(
 	'desktop' => $selectors,
 	'tablet'  => $t_selectors,

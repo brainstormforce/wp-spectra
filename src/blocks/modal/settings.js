@@ -201,7 +201,7 @@ export default function Settings( props ) {
 									label: 'buttonIconSpaceMobile',
 								},
 							} }
-							min={ -50 }
+							min={ 0 }
 							max={ 50 }
 							unit={ {
 								value: buttonIconSpaceType,
