@@ -80,6 +80,10 @@ function Blog( props ) {
 	
 	useEffect( () => {
 		updateImageBgWidth();
+    }, [ props ] );
+
+	useEffect( () => {
+		updateImageBgWidth();
     }, [article] );
 
 	useEffect( () => {
