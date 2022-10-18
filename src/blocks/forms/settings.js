@@ -1279,6 +1279,87 @@ const Settings = ( props ) => {
 					},
 				] }
 			/>
+			
+			<TypographyControl
+				label={ __(
+					'Typography',
+					'ultimate-addons-for-gutenberg'
+				) }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				loadGoogleFonts={ {
+					value: submitTextloadGoogleFonts,
+					label: 'submitTextloadGoogleFonts',
+				} }
+				fontFamily={ {
+					value: submitTextFontFamily,
+					label: 'submitTextFontFamily',
+				} }
+				fontWeight={ {
+					value: submitTextFontWeight,
+					label: 'submitTextFontWeight',
+				} }
+				fontStyle={ {
+					value: submitTextFontStyle,
+					label: 'submitTextFontStyle',
+				} }
+				fontSizeType={ {
+					value: submitTextFontSizeType,
+					label: 'submitTextFontSizeType',
+				} }
+				fontSize={ {
+					value: submitTextFontSize,
+					label: 'submitTextFontSize',
+				} }
+				fontSizeMobile={ {
+					value: submitTextFontSizeMobile,
+					label: 'submitTextFontSizeMobile',
+				} }
+				fontSizeTablet={ {
+					value: submitTextFontSizeTablet,
+					label: 'submitTextFontSizeTablet',
+				} }
+				lineHeightType={ {
+					value: submitTextLineHeightType,
+					label: 'submitTextLineHeightType',
+				} }
+				lineHeight={ {
+					value: submitTextLineHeight,
+					label: 'submitTextLineHeight',
+				} }
+				lineHeightMobile={ {
+					value: submitTextLineHeightMobile,
+					label: 'submitTextLineHeightMobile',
+				} }
+				lineHeightTablet={ {
+					value: submitTextLineHeightTablet,
+					label: 'submitTextLineHeightTablet',
+				} }
+				letterSpacing={ {
+					value: submitTextLetterSpacing,
+					label: 'submitTextLetterSpacing',
+				} }
+				letterSpacingTablet={ {
+					value: submitTextLetterSpacingTablet,
+					label: 'submitTextLetterSpacingTablet',
+				} }
+				letterSpacingMobile={ {
+					value: submitTextLetterSpacingMobile,
+					label: 'submitTextLetterSpacingMobile',
+				} }
+				letterSpacingType={ {
+					value: submitTextLetterSpacingType,
+					label: 'submitTextLetterSpacingType',
+				} }
+				transform={ {
+					value: submitTextTransform,
+					label: 'submitTextTransform',
+				} }
+				decoration={ {
+					value: submitTextDecoration,
+					label: 'submitTextDecoration',
+				} }
+			/>
 			<SpacingControl
 				{ ...props }
 				label={ __(
@@ -1439,86 +1520,7 @@ const Settings = ( props ) => {
 				disabledBorderTitle= {false}
 				attributes={ attributes }
 				deviceType={deviceType}
-			/>
-			<TypographyControl
-				label={ __(
-					'Typography',
-					'ultimate-addons-for-gutenberg'
-				) }
-				attributes={ attributes }
-				setAttributes={ setAttributes }
-				loadGoogleFonts={ {
-					value: submitTextloadGoogleFonts,
-					label: 'submitTextloadGoogleFonts',
-				} }
-				fontFamily={ {
-					value: submitTextFontFamily,
-					label: 'submitTextFontFamily',
-				} }
-				fontWeight={ {
-					value: submitTextFontWeight,
-					label: 'submitTextFontWeight',
-				} }
-				fontStyle={ {
-					value: submitTextFontStyle,
-					label: 'submitTextFontStyle',
-				} }
-				fontSizeType={ {
-					value: submitTextFontSizeType,
-					label: 'submitTextFontSizeType',
-				} }
-				fontSize={ {
-					value: submitTextFontSize,
-					label: 'submitTextFontSize',
-				} }
-				fontSizeMobile={ {
-					value: submitTextFontSizeMobile,
-					label: 'submitTextFontSizeMobile',
-				} }
-				fontSizeTablet={ {
-					value: submitTextFontSizeTablet,
-					label: 'submitTextFontSizeTablet',
-				} }
-				lineHeightType={ {
-					value: submitTextLineHeightType,
-					label: 'submitTextLineHeightType',
-				} }
-				lineHeight={ {
-					value: submitTextLineHeight,
-					label: 'submitTextLineHeight',
-				} }
-				lineHeightMobile={ {
-					value: submitTextLineHeightMobile,
-					label: 'submitTextLineHeightMobile',
-				} }
-				lineHeightTablet={ {
-					value: submitTextLineHeightTablet,
-					label: 'submitTextLineHeightTablet',
-				} }
-				letterSpacing={ {
-					value: submitTextLetterSpacing,
-					label: 'submitTextLetterSpacing',
-				} }
-				letterSpacingTablet={ {
-					value: submitTextLetterSpacingTablet,
-					label: 'submitTextLetterSpacingTablet',
-				} }
-				letterSpacingMobile={ {
-					value: submitTextLetterSpacingMobile,
-					label: 'submitTextLetterSpacingMobile',
-				} }
-				letterSpacingType={ {
-					value: submitTextLetterSpacingType,
-					label: 'submitTextLetterSpacingType',
-				} }
-				transform={ {
-					value: submitTextTransform,
-					label: 'submitTextTransform',
-				} }
-				decoration={ {
-					value: submitTextDecoration,
-					label: 'submitTextDecoration',
-				} }
+				disableBottomSeparator = { true }
 			/>
 		</UAGAdvancedPanelBody>
 	);

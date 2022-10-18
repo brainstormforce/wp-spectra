@@ -577,13 +577,18 @@ const UAGBPostMasonry = ( props ) => {
 		enableOffset
 	} = attributes;
 
-	const taxonomyListOptions = [];
+	const taxonomyListOptions = [
+		{
+			value: '',
+			label: __( 'All', 'ultimate-addons-for-gutenberg' ),
+		},
+	];
 
 	const categoryListOptions = [
 		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
 	];
 
-	if ( '' !== taxonomyList ) {
+	if ( '' !== taxonomyList && undefined !== taxonomyList ) {
 		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,

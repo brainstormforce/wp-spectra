@@ -255,15 +255,16 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 			for ( let i = 0; i < divsArr.length; i++ ) {
 
 				let headerText = parseTocSlug( divsArr[i].innerText );
-
-				if ( headerText.length < 1 ) {
-					const aTags = tocListWrap.getElementsByTagName( 'a' );
-					const searchText = divsArr[i].innerText;
-					for ( let j = 0; j < aTags.length; j++ ) {
-						if ( aTags[j].textContent === searchText ) {
-							const randomID = '#toc_' + Math.random();
-							aTags[j].setAttribute( 'href' , randomID );
-							headerText =  randomID.substring( 1 );
+				if( '' !== divsArr[i].innerText ) {
+					if ( headerText.length < 1 ) {
+						const aTags = tocListWrap.getElementsByTagName( 'a' );
+						const searchText = divsArr[i].innerText;
+						for ( let j = 0; j < aTags.length; j++ ) {
+							if ( aTags[j].textContent === searchText ) {
+								const randomID = '#toc_' + Math.random();
+								aTags[j].setAttribute( 'href' , randomID );
+								headerText =  randomID.substring( 1 );
+							}
 						}
 					}
 				}
