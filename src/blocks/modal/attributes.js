@@ -31,7 +31,7 @@ const attributes = {
 	},
 	buttonIcon: {
 		type: 'string',
-		default: '',
+		default: 'arrow-right',
 	},
 	buttonIconPosition: {
 		type: 'string',

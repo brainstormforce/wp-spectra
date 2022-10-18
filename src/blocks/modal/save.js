@@ -83,7 +83,7 @@ export default function Save( props ) {
 						value={ buttonText }
 						className="uagb-inline-editing"
 					/>
-					{ buttonIconPosition === 'before' && buttonIconOutput }
+					{ buttonIconPosition === 'after' && buttonIconOutput }
 				</span>
 			</a>
 		</div>

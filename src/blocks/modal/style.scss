@@ -91,8 +91,6 @@ body .uagb-modal-popup-wrap .block-list-appender .block-editor-inserter__toggle.
 }
 .wp-block-uagb-modal svg {
     font-size: 30px;
-    color: #333;
-    fill: #333;
     width: 30px;
     height: 30px;
     line-height: 30px;
@@ -133,4 +131,8 @@ a.uagb-modal-button-link:hover,
 .block-editor-page #wpwrap .uagb-modal-button-link svg,
 .uagb-modal-button-link svg {
 	font-style: normal;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+    font-size: 15px;
 }

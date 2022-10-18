@@ -102,7 +102,7 @@ const Render = ( props ) => {
 							className="uagb-inline-editing"
 							onChange={ ( value ) => setAttributes( { buttonText: value } ) }
 						/>
-					{ buttonIconPosition === 'before' && buttonIconOutput }
+					{ buttonIconPosition === 'after' && buttonIconOutput }
 				</span>
 			</a>
 		</div>
