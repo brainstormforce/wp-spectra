@@ -515,7 +515,12 @@ const UAGBPostCarousel = ( props ) => {
 
 	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
 
-	const taxonomyListOptions = [];
+	const taxonomyListOptions = [
+		{
+			value: '',
+			label: __( 'All', 'ultimate-addons-for-gutenberg' ),
+		},
+	];
 
 	const categoryListOptions = [
 		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
