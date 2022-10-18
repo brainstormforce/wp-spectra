@@ -22,6 +22,9 @@ $selectors = array(
 		'height'            => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
 		'line-height'            => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
 		'font-size'            => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
+	),
+	' .uagb-modal-popup.active .uagb-modal-popup-close' => array(
+		'top'            => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
 	)
 );
 $t_selectors = array(
@@ -42,6 +45,18 @@ $m_selectors = array(
 		'min-height'       => UAGB_Helper::get_css_value( $attr['modalHeightMobile'], $attr['modalHeightType'] ),
 	)
 );
+
+if( 'popup-top-left' === $attr['closeIconPosition'] ) {
+	$selectors[' .uagb-modal-popup.active .uagb-modal-popup-close']   = array(
+		'right'            => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
+	);
+}
+
+if( 'popup-top-right' === $attr['closeIconPosition'] ) {
+	$selectors[' .uagb-modal-popup.active .uagb-modal-popup-close']   = array(
+		'left'            => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
+	);
+}
 
 $buttonIconSpace_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['buttonIconSpace'], 'buttonIconSpace', $block_name );
 $attr['buttonIconSpaceTablet'] = is_numeric( $attr['buttonIconSpaceTablet'] ) ? $attr['buttonIconSpaceTablet'] : $buttonIconSpace_fallback;

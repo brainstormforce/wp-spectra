@@ -144,6 +144,10 @@ const attributes = {
 		type: 'number',
 		default: 25
 	},
+	closeIconPosition: {
+		type: 'string',
+		default: 'popup-top-right',
+	}
 };
 
 export default attributes;

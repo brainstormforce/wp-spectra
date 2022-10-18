@@ -26,4 +26,5 @@ return array(
     'modalHeightMobile'              => '',
     'modalHeightType'                => 'px',
     'closeIconSize'                  => 25,
+    'closeIconPosition'              => 'popup-top-right',
 );

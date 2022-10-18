@@ -51,7 +51,8 @@ export default function Settings( props ) {
 		modalHeightMobile,
 		modalHeightType,
 		appearEffect,
-		closeIconSize
+		closeIconSize,
+		closeIconPosition
 	} = attributes;
 
 	/*
@@ -469,6 +470,34 @@ export default function Settings( props ) {
 				min={ 0 }
 				max={ 50 }
 				displayUnit={ false }
+			/>
+
+			<UAGSelectControl
+				label={ __(
+					'Icon Position',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					value: closeIconPosition,
+					label: 'closeIconPosition',
+				} }
+				setAttributes={ setAttributes }
+				options={ [
+					{
+						value: 'popup-top-left',
+						label: __(
+							'Popup - Top Left',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'popup-top-right',
+						label: __(
+							'Popup - Top Right',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+				] }
 			/>
 		</UAGAdvancedPanelBody>
 	)

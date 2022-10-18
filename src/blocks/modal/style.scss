@@ -41,18 +41,19 @@ body.hide-scroll {
    display: none;
 }
 .uagb-modal-popup.active .uagb-modal-popup-close {
-    right: 0%;
-    transform: translateX(0%);
+    // right: -25px;
+    // transform: translateX(0%);
     opacity: 1;
     display: flex;
-    justify-content: center;
+    // justify-content: center;
     align-items: center;
-    top: 0;
+    top: -25px;
     position: absolute;
-    width: 45px;
-    height: 45px;
+    // width: 45px;
+    // height: 45px;
     text-align: center;
     cursor: pointer;
+	fill: #ffffff;
 }
 // @media ( min-width: 992px ) {
 //     .uagb-modal-popup {

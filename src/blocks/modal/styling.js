@@ -25,7 +25,8 @@ export default function styling( props ) {
 		modalHeightTablet,
 		modalHeightMobile,
 		modalHeightType,
-		closeIconSize
+		closeIconSize,
+		closeIconPosition
 	} = props.attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -52,6 +53,9 @@ export default function styling( props ) {
 			'height': generateCSSUnit( closeIconSize, 'px' ),
 			'line-height': generateCSSUnit( closeIconSize, 'px' ),
 			'font-size': generateCSSUnit( closeIconSize, 'px' ),
+		},
+		' .uagb-modal-popup.active .uagb-modal-popup-close': {
+			'top': '-' + generateCSSUnit( closeIconSize, 'px' ),
 		}
 	};
 	const tabletSelectors = {
@@ -84,6 +88,24 @@ export default function styling( props ) {
 			),
 		}
 	};
+	
+	if( 'popup-top-left' === closeIconPosition ) {
+		selectors[ ' .uagb-modal-popup.active .uagb-modal-popup-close'] = {
+			'right': '-' + generateCSSUnit( closeIconSize, 'px' ),
+		};
+	}
+	if( 'popup-top-right' === closeIconPosition ) {
+		selectors[ ' .uagb-modal-popup.active .uagb-modal-popup-close'] = {
+			'left': '-' + generateCSSUnit( closeIconSize, 'px' ),
+		};
+	}
+
+	if( 'popup-top-left' === closeIconPosition ) {
+		selectors[ ' .uagb-modal-popup.active .uagb-modal-popup-close'] = {
+			'margin-left': generateCSSUnit( buttonIconSpaceFallback, buttonIconSpaceType ),
+		};
+	}
+
 	if( 'button' === modalTrigger ) {
 		if( 'after' === buttonIconPosition ){
 			selectors[ ' .uagb-modal-button-link svg'] = {
