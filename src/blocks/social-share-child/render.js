@@ -21,7 +21,7 @@ const Render = ( props ) => {
 
 	const { attributes } = props;
 
-	const { className, image_icon, icon, image } = attributes;
+	const { className, image_icon, icon, image, parentSize } = attributes;
 
 	const defaultedAlt = ( image && image?.alt ) ? image?.alt : '';
 
@@ -37,7 +37,7 @@ const Render = ( props ) => {
 		}
 	} else if ( image && image.url ) {
 		imageIconHtml = (
-			<img className="uagb-ss__source-image" src={ image.url } alt={ defaultedAlt }  width="640" height="360" loading="lazy"/>
+			<img className="uagb-ss__source-image" src={ image.url } alt={ defaultedAlt }  width={ parentSize } loading="lazy"/>
 		);
 	}
 

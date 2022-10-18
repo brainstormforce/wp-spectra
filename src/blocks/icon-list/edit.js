@@ -3,7 +3,7 @@
  */
 
 import styling from './styling';
-import React, {    useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';

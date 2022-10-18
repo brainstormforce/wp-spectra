@@ -9,6 +9,7 @@ import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import Settings from './settings';
 import Render from './render';
+import { select, dispatch } from '@wordpress/data';
 
 const SocialShareComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -34,6 +35,25 @@ const SocialShareComponent = ( props ) => {
 
 		scrollBlockToView();
 	}, [deviceType] );
+
+	useEffect( () => {
+
+		select( 'core/block-editor' )
+            .getBlocksByClientId( props.clientId )[0]
+            ?.innerBlocks.forEach( function( block ) {
+
+                dispatch( 'core/block-editor' ).updateBlockAttributes(
+                    block.clientId, {
+                        parentSize: props.attributes.size,
+                        parentSizeMobile: props.attributes.sizeMobile,
+                        parentSizeTablet: props.attributes.sizeTablet,
+
+                    }
+                );
+
+            } );
+
+	}, [ props.attributes.size, props.attributes.sizeMobile, props.attributes.sizeTablet ] );
 
 	return (
 
