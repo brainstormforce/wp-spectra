@@ -45,25 +45,40 @@ $icon_wrap_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr
 $icon_wrap_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'iconWrap', 'mobile' );
 
 // Icon and Image Common Padding.
-$icon_and_image_padding = array(
+$icon_and_image_spacing = array(
 	'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopPadding'], $attr['iconPaddingUnit'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['iconRightPadding'], $attr['iconPaddingUnit'] ),
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomPadding'], $attr['iconPaddingUnit'] ),
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['iconLeftPadding'], $attr['iconPaddingUnit'] ),
+
+	'margin-top'     => UAGB_Helper::get_css_value( $attr['iconTopMargin'], $attr['iconMarginUnit'] ),
+	'margin-right'   => UAGB_Helper::get_css_value( $attr['iconRightMargin'], $attr['iconMarginUnit'] ),
+	'margin-bottom'  => UAGB_Helper::get_css_value( $attr['iconBottomMargin'], $attr['iconMarginUnit'] ),
+	'margin-left'    => UAGB_Helper::get_css_value( $attr['iconLeftMargin'], $attr['iconMarginUnit'] ),
 );
 
-$icon_and_image_padding_tablet = array(
+$icon_and_image_spacing_tablet = array(
 	'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopPaddingTablet'], $attr['iconPaddingUnitTablet'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['iconRightPaddingTablet'], $attr['iconPaddingUnitTablet'] ),
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomPaddingTablet'], $attr['iconPaddingUnitTablet'] ),
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['iconLeftPaddingTablet'], $attr['iconPaddingUnitTablet'] ),
+
+	'margin-top'     => UAGB_Helper::get_css_value( $attr['iconTopMarginTablet'], $attr['iconMarginUnitTablet'] ),
+	'margin-right'   => UAGB_Helper::get_css_value( $attr['iconRightMarginTablet'], $attr['iconMarginUnitTablet'] ),
+	'margin-bottom'  => UAGB_Helper::get_css_value( $attr['iconBottomMarginTablet'], $attr['iconMarginUnitTablet'] ),
+	'margin-left'    => UAGB_Helper::get_css_value( $attr['iconLeftMarginTablet'], $attr['iconMarginUnitTablet'] ),
 );
 
-$icon_and_image_padding_mobile = array(
+$icon_and_image_spacing_mobile = array(
 	'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopPaddingMobile'], $attr['iconPaddingUnitMobile'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['iconRightPaddingMobile'], $attr['iconPaddingUnitMobile'] ),
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomPaddingMobile'], $attr['iconPaddingUnitMobile'] ),
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['iconLeftPaddingMobile'], $attr['iconPaddingUnitMobile'] ),
+
+	'margin-top'     => UAGB_Helper::get_css_value( $attr['iconTopMarginMobile'], $attr['iconMarginUnitMobile'] ),
+	'margin-right'   => UAGB_Helper::get_css_value( $attr['iconRightMarginMobile'], $attr['iconMarginUnitMobile'] ),
+	'margin-bottom'  => UAGB_Helper::get_css_value( $attr['iconBottomMarginMobile'], $attr['iconMarginUnitMobile'] ),
+	'margin-left'    => UAGB_Helper::get_css_value( $attr['iconLeftMarginMobile'], $attr['iconMarginUnitMobile'] ),
 );
 
 $box_shadow_position_css = $attr['boxShadowPosition'];
@@ -94,7 +109,7 @@ $selectors = array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPadding'], $attr['blockPaddingUnit'] ),
 	),
 	'.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap' => array_merge(
-		$icon_and_image_padding
+		$icon_and_image_spacing
 	),
 	'.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img' => array_merge(
 		$icon_wrap_border_css
@@ -106,7 +121,7 @@ $selectors = array(
 		array(
 			'background-color' => $attr['iconBackgroundColor'],
 		),
-		$icon_and_image_padding,
+		$icon_and_image_spacing,
 		$icon_wrap_border_css
 	),
 	'.wp-block-uagb-counter:hover .wp-block-uagb-counter__icon' => array(
@@ -193,7 +208,7 @@ $t_selectors['.wp-block-uagb-counter'] = array(
 );
 
 $t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap'] = array_merge(
-	$icon_and_image_padding_tablet
+	$icon_and_image_spacing_tablet
 );
 
 $t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img'] = array_merge(
@@ -201,7 +216,7 @@ $t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img'] = 
 );
 
 $t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon'] = array_merge(
-	$icon_and_image_padding_tablet,
+	$icon_and_image_spacing_tablet,
 	$icon_wrap_border_css_tablet
 );
 
@@ -253,7 +268,7 @@ $m_selectors['.wp-block-uagb-counter'] = array(
 );
 
 $m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap'] = array_merge(
-	$icon_and_image_padding_mobile
+	$icon_and_image_spacing_mobile
 );
 
 $m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img'] = array_merge(
@@ -261,7 +276,7 @@ $m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img'] = 
 );
 
 $m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon'] = array_merge(
-	$icon_and_image_padding_mobile,
+	$icon_and_image_spacing_mobile,
 	$icon_wrap_border_css_mobile
 );
 
