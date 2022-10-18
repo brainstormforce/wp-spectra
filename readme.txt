@@ -170,6 +170,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+* Fix: Post grid - In the editor the Read more button border radius is not working when hover.
+
 = 2.0.14 - THURSDAY, 13th OCTOMBER 2022 =
 * Improvement: Container - Equal height setting in Parent container.
 * Improvement: Post Block - Woo Commerce Products (CPT) not getting in post Type.
