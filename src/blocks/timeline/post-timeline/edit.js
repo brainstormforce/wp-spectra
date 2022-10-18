@@ -8,6 +8,7 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import apiFetch from '@wordpress/api-fetch';
 
 // Import css for timeline.
 import contentTimelineStyle from '.././inline-styles';
@@ -133,13 +134,21 @@ export default withSelect( ( select, props ) => {
 		postType,
 		taxonomyType,
 		excludeCurrentPost,
+		allTaxonomyStore
 	} = props.attributes;
 
 	const postsToShowFallback = getFallbackNumber( postsToShow, 'postsToShow', 'post-timeline' );
 	const { getEntityRecords } = select( 'core' );
 
-	const allTaxonomy = uagb_blocks_info.all_taxonomy;
-	const currentTax = allTaxonomy[ postType ];
+	if ( ! allTaxonomyStore ) {
+		apiFetch( {
+			path: '/spectra/v1/all_taxonomy',
+		} ).then( ( data ) => {
+			props.setAttributes( { allTaxonomyStore: data } );
+		} );
+	}
+	const allTaxonomy = allTaxonomyStore;
+	const currentTax = allTaxonomy ? allTaxonomy[ postType ] : undefined;
 
 	let categoriesList = [];
 	let restBase = '';
