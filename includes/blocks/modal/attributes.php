@@ -17,4 +17,8 @@ return array(
     'modalAlign'                    => 'left',
     'modalAlignTablet'              => '',
     'modalAlignMobile'              => '',
+    'modalWidth'                    => 700,
+    'modalWidthTablet'              => '',
+    'modalWidthMobile'              => '',
+    'modalWidthType'                => 'px',
 );

@@ -13,16 +13,25 @@ $selectors = array(
 	'.wp-block-uagb-modal'      => array(
 		'text-align'       => $attr['modalAlign'],
 	),
+	' .uagb-modal-popup-wrap' => array(
+		'width'            => UAGB_Helper::get_css_value( $attr['modalWidth'], $attr['modalWidthType'] ),
+	)
 );
 $t_selectors = array(
 	'.wp-block-uagb-modal'      => array(
 		'text-align'       => $attr['modalAlignTablet'],
 	),
+	' .uagb-modal-popup-wrap' => array(
+		'width'            => UAGB_Helper::get_css_value( $attr['modalWidthTablet'], $attr['modalWidthType'] ),
+	)
 );
 $m_selectors = array(
 	'.wp-block-uagb-modal'      => array(
 		'text-align'       => $attr['modalAlignMobile'],
 	),
+	' .uagb-modal-popup-wrap' => array(
+		'width'            => UAGB_Helper::get_css_value( $attr['modalWidthMobile'], $attr['modalWidthType'] ),
+	)
 );
 
 $buttonIconSpace_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['buttonIconSpace'], 'buttonIconSpace', $block_name );

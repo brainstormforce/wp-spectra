@@ -3,7 +3,6 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
-
 import { __ } from '@wordpress/i18n';
 import {InspectorControls} from '@wordpress/block-editor';
 import { Icon, SelectControl, ToggleControl } from '@wordpress/components';
@@ -15,6 +14,7 @@ import UAGSelectControl from '@Components/select-control';
 import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
+import Range from '@Components/range/Range.js';
 
 let imageSizeOptions = [
 	{
@@ -42,6 +42,10 @@ export default function Settings( props ) {
 		modalAlign,
 		modalAlignTablet,
 		modalAlignMobile,
+		modalWidth,
+		modalWidthTablet,
+		modalWidthMobile,
+		modalWidthType,
 	} = attributes;
 
 	/*
@@ -78,21 +82,11 @@ export default function Settings( props ) {
 		imageSizeOptions = getImageSize( iconImage.sizes );
 	}
 	
-	const generalPanel = (
+	const modalTriggerPanel = (
 		<UAGAdvancedPanelBody
 			title={ __( 'Modal Trigger', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
-			<ToggleControl
-				label={ __(
-					'Preview Modal',
-					'ultimate-addons-for-gutenberg'
-				) }
-				checked={ previewModal }
-				onChange={ () =>
-					setAttributes( { previewModal: ! previewModal } )
-				}
-			/>
 			<SelectControl
 				label={ __( 'Display Modal On', 'ultimate-addons-for-gutenberg' ) }
 				value={ modalTrigger }
@@ -290,6 +284,68 @@ export default function Settings( props ) {
 		</UAGAdvancedPanelBody>
 	)
 
+	const modalContentPanel = (
+		<UAGAdvancedPanelBody
+			title={ __( 'Modal Content', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ true }
+		>
+			<ToggleControl
+				label={ __(
+					'Preview Modal',
+					'ultimate-addons-for-gutenberg'
+				) }
+				checked={ previewModal }
+				onChange={ () =>
+					setAttributes( { previewModal: ! previewModal } )
+				}
+			/>
+
+			<ResponsiveSlider
+				label={ __(
+					'Width',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: modalWidth,
+						label: 'modalWidth',
+					},
+					tablet: {
+						value: modalWidthTablet,
+						label: 'modalWidthTablet',
+					},
+					mobile: {
+						value: modalWidthMobile,
+						label: 'modalWidthMobile',
+					},
+				} }
+				min={ '%' === modalWidthType ? 10 : 300 }
+				max={ '%' === modalWidthType ? 100 : 1500 }
+				unit={ {
+					value: modalWidthType,
+					label: 'modalWidthType',
+				} }
+				units={ [
+					{
+						name: __(
+							'Pixel',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: 'px',
+					},
+					{
+						name: __(
+							'%',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: '%',
+					},
+				] }
+				setAttributes={ setAttributes }
+			/>
+		</UAGAdvancedPanelBody>
+	)
+
 	const stylePanel =  (
 		<UAGAdvancedPanelBody
 			title={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
@@ -305,7 +361,8 @@ export default function Settings( props ) {
 				<InspectorTabs>
 
 					<InspectorTab { ...UAGTabs.general }>
-						{generalPanel}
+						{modalTriggerPanel}
+						{modalContentPanel}
 					</InspectorTab>
 
 					<InspectorTab { ...UAGTabs.style }>

@@ -84,6 +84,32 @@ const attributes = {
 			styleType: 'overall-alignment-mobile'
 		}
 	},
+	modalWidth: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'modal-width'
+		},
+		default: 700
+	},
+	modalWidthTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'modal-width'
+		},
+	},
+	modalWidthMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'modal-width'
+		},
+	},
+	modalWidthType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'modal-width-type'
+		}
+	},
 };
 
 export default attributes;

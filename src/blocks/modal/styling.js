@@ -17,6 +17,10 @@ export default function styling( props ) {
 		modalAlign,
 		modalAlignTablet,
 		modalAlignMobile,
+		modalWidth,
+		modalWidthTablet,
+		modalWidthMobile,
+		modalWidthType,
 	} = props.attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -27,16 +31,34 @@ export default function styling( props ) {
 	const selectors = {
 		'.wp-block-uagb-modal' : {
 			'text-align': modalAlign,
+		},
+		' .uagb-modal-popup-wrap' : {
+			'width': generateCSSUnit(
+				modalWidth,
+				modalWidthType
+			),
 		}
 	};
 	const tabletSelectors = {
 		'.wp-block-uagb-modal' : {
 			'text-align': modalAlignTablet,
+		},
+		' .uagb-modal-popup-wrap' : {
+			'width': generateCSSUnit(
+				modalWidthTablet,
+				modalWidthType
+			),
 		}
 	};
 	const mobileSelectors = {
 		'.wp-block-uagb-modal' : {
 			'text-align': modalAlignMobile,
+		},
+		' .uagb-modal-popup-wrap' : {
+			'width': generateCSSUnit(
+				modalWidthMobile,
+				modalWidthType
+			),
 		}
 	};
 	if( 'button' === modalTrigger ) {
