@@ -16,8 +16,6 @@ const InfoBoxIconImage = ( props ) => {
 		const imageSize = attributes.imageSize;
 		const { imgTagWidth, imgTagHeight, imageWidth, imageWidthType } = attributes
 
-		console.log(imgTagWidth,imgTagHeight)
-
 		if (
 			typeof size !== 'undefined' &&
 			typeof size[ imageSize ] !== 'undefined'
