@@ -284,9 +284,6 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 			$options = array();
 
 			foreach ( $post_types as $post_type ) {
-				if ( 'product' === $post_type->name ) {
-					continue;
-				}
 
 				if ( 'attachment' === $post_type->name ) {
 					continue;
