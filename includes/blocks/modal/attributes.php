@@ -8,10 +8,13 @@
  */
 
 return array(
-    'modalTrigger'               => 'text',
+    'modalTrigger'                  => 'text',
     'buttonIconSpace'               => '5',
     'buttonIconSpaceTablet'         => '',
     'buttonIconSpaceMobile'         => '',
     'buttonIconSpaceType'           => 'px',
     'buttonIconPosition'            => 'after',
+    'modalAlign'                    => 'left',
+    'modalAlignTablet'              => '',
+    'modalAlignMobile'              => '',
 );

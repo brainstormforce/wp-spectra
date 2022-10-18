@@ -6,13 +6,15 @@ import InspectorTab, {
 
 import { __ } from '@wordpress/i18n';
 import {InspectorControls} from '@wordpress/block-editor';
-import { SelectControl, ToggleControl } from '@wordpress/components';
+import { Icon, SelectControl, ToggleControl } from '@wordpress/components';
 import UAGMediaPicker from '@Components/image';
 import UAGIconPicker from '@Components/icon-picker';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { getImageSize } from '@Utils/Helpers';
 import UAGSelectControl from '@Components/select-control';
 import ResponsiveSlider from '@Components/responsive-slider';
+import MultiButtonsControl from '@Components/multi-buttons-control';
+import renderSVG from '@Controls/renderIcon';
 
 let imageSizeOptions = [
 	{
@@ -36,7 +38,10 @@ export default function Settings( props ) {
 		buttonIconSpace,
 		buttonIconSpaceTablet,
 		buttonIconSpaceMobile,
-		buttonIconSpaceType 
+		buttonIconSpaceType,
+		modalAlign,
+		modalAlignTablet,
+		modalAlignMobile,
 	} = attributes;
 
 	/*
@@ -224,6 +229,64 @@ export default function Settings( props ) {
 						/>
 					</>
 				) }
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: modalAlign,
+							label: 'modalAlign',
+						},
+						tablet: {
+							value: modalAlignTablet,
+							label: 'modalAlignTablet',
+						},
+						mobile: {
+							value: modalAlignMobile,
+							label: 'modalAlignMobile',
+						},
+					} }
+					options={ [
+						{
+							value: 'left',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-left' ) }
+								/>
+							),
+							tooltip: __(
+								'Left',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'center',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-center' ) }
+								/>
+							),
+							tooltip: __(
+								'Center',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'right',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-right' ) }
+								/>
+							),
+							tooltip: __(
+								'Right',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ true }
+					responsive={true}
+				/>
 		</UAGAdvancedPanelBody>
 	)
 

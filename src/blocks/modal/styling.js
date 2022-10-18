@@ -13,7 +13,10 @@ export default function styling( props ) {
 		buttonIconSpace,
 		buttonIconSpaceTablet,
 		buttonIconSpaceMobile,
-		buttonIconSpaceType
+		buttonIconSpaceType,
+		modalAlign,
+		modalAlignTablet,
+		modalAlignMobile,
 	} = props.attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -21,9 +24,21 @@ export default function styling( props ) {
 	const buttonIconSpaceFallbackTablet = isNaN( buttonIconSpaceTablet ) ? buttonIconSpaceFallback : buttonIconSpaceTablet;
 	const buttonIconSpaceFallbackMobile = isNaN( buttonIconSpaceMobile ) ? buttonIconSpaceFallbackTablet : buttonIconSpaceMobile;
 
-	const selectors = {};
-	const tabletSelectors = {};
-	const mobileSelectors = {};
+	const selectors = {
+		'.wp-block-uagb-modal' : {
+			'text-align': modalAlign,
+		}
+	};
+	const tabletSelectors = {
+		'.wp-block-uagb-modal' : {
+			'text-align': modalAlignTablet,
+		}
+	};
+	const mobileSelectors = {
+		'.wp-block-uagb-modal' : {
+			'text-align': modalAlignMobile,
+		}
+	};
 	if( 'button' === modalTrigger ) {
 		if( 'after' === buttonIconPosition ){
 			selectors[ ' .uagb-modal-button-link svg'] = {

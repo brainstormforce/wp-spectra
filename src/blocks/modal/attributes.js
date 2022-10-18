@@ -63,6 +63,27 @@ const attributes = {
 			styleType: 'btn-icon-space-type'
 		}
 	},
+	modalAlign: {
+		type: 'string',
+		default: 'left',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment'
+		}
+	},
+	modalAlignTablet: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		}
+	},
+	modalAlignMobile: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
+		}
+	},
 };
 
 export default attributes;

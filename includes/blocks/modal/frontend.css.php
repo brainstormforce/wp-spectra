@@ -7,10 +7,23 @@
  * @package uagb
  */
 
-$selectors = array();
-$m_selectors = array();
-$t_selectors = array();
 $block_name  = 'modal';
+
+$selectors = array(
+	'.wp-block-uagb-modal'      => array(
+		'text-align'       => $attr['modalAlign'],
+	),
+);
+$t_selectors = array(
+	'.wp-block-uagb-modal'      => array(
+		'text-align'       => $attr['modalAlignTablet'],
+	),
+);
+$m_selectors = array(
+	'.wp-block-uagb-modal'      => array(
+		'text-align'       => $attr['modalAlignMobile'],
+	),
+);
 
 $buttonIconSpace_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['buttonIconSpace'], 'buttonIconSpace', $block_name );
 $attr['buttonIconSpaceTablet'] = is_numeric( $attr['buttonIconSpaceTablet'] ) ? $attr['buttonIconSpaceTablet'] : $buttonIconSpace_fallback;
