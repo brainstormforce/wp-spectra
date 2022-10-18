@@ -26,11 +26,11 @@ export default function Save( props ) {
 	);
 
 	const iconHTML = (
-		<>
+		<div className='uagb-modal-trigger'>
 			{ '' !== icon && (
 				renderSVG( icon )
 			) }
-		</>
+		</div>
 	);
 
 	const defaultedAlt = ( iconImage && iconImage?.alt ) ? iconImage?.alt : '';
@@ -53,6 +53,7 @@ export default function Save( props ) {
 			<img
 				src={ url }
 				alt={ defaultedAlt }
+				className='uagb-modal-trigger'
 			/>
 		);
 	}
@@ -62,13 +63,13 @@ export default function Save( props ) {
 		buttonIconOutput = renderSVG( buttonIcon );
 	}
 
-	const buttonClasses = 'uagb-modal-button-link wp-block-button__link';
+	const buttonClasses = 'uagb-modal-button-link wp-block-button__link uagb-modal-trigger';
 
 	const buttonHTML = (
 		<div
 			className={ classnames(
 				'uagb-spectra-button-wrapper',
-				'wp-block-button'
+				'wp-block-button',
 			) }
 		>
 			<a // eslint-disable-line jsx-a11y/anchor-is-valid

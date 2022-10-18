@@ -40,11 +40,11 @@ const Render = ( props ) => {
 	);
 
 	const iconHTML = (
-		<>
+		<div className='uagb-modal-trigger'>
 			{ '' !== icon && (
 				renderSVG( icon )
 			) }
-		</>
+		</div>
 	);
 
 	const defaultedAlt = ( iconImage && iconImage?.alt ) ? iconImage?.alt : '';
@@ -67,6 +67,7 @@ const Render = ( props ) => {
 			<img
 				src={ url }
 				alt={ defaultedAlt }
+				className='uagb-modal-trigger'
 			/>
 		);
 	}
@@ -76,7 +77,7 @@ const Render = ( props ) => {
 		buttonIconOutput = renderSVG( buttonIcon );
 	}
 	
-	const buttonClasses = 'uagb-modal-button-link wp-block-button__link';
+	const buttonClasses = 'uagb-modal-button-link wp-block-button__link uagb-modal-trigger';
 
 	const buttonHTML = (
 		<div

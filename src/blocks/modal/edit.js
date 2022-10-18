@@ -52,16 +52,17 @@ export default compose(
 	
 				var innerModal = content.querySelector( '.uagb-modal-popup' );
 	
-				if( ownProps.attributes.previewModal ) {
+				// if( ownProps.attributes.previewModal ) {
 					modalTrigger.addEventListener(
 						'click',
 						function ( e ) {
-							if ( ! innerModal.classList.contains( 'active' ) ) {
+							console.log( "Clickeddddddddddddddddddddd" );
+							if ( typeof innerModal !== 'undefined' && ! innerModal.classList.contains( 'active' ) ) {
 								innerModal.classList.add( 'active' );
 		
 								var bodyWrap = content.querySelector( 'body' );
 								
-								if ( ! bodyWrap.classList.contains( 'hide-scroll' ) ) {
+								if ( typeof bodyWrap !== 'undefined' &&  ! bodyWrap.classList.contains( 'hide-scroll' ) ) {
 									bodyWrap.classList.add( 'hide-scroll' );
 								}
 							}
@@ -73,12 +74,12 @@ export default compose(
 					closeModal.addEventListener(
 						'click',
 						function ( e ) {
-							if ( innerModal.classList.contains( 'active' ) ) {
+							if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
 								innerModal.classList.remove( 'active' );
 							}
 						}
 					);
-				}
+				// }
 	
 			}
 		}

@@ -16,12 +16,12 @@ window.UAGBModal = {
                 modalTrigger.addEventListener(
                     'click',
                     function ( e ) {
-                        if ( ! innerModal.classList.contains( 'active' ) ) {
+                        if ( typeof innerModal !== 'undefined' && ! innerModal.classList.contains( 'active' ) ) {
                             innerModal.classList.add( 'active' );
 
                             var bodyWrap = document.querySelector( 'body' );
                             
-                            if ( ! bodyWrap.classList.contains( 'hide-scroll' ) ) {
+                            if ( typeof bodyWrap !== 'undefined' && ! bodyWrap.classList.contains( 'hide-scroll' ) ) {
                                 bodyWrap.classList.add( 'hide-scroll' );
                             }
                         }
@@ -33,7 +33,7 @@ window.UAGBModal = {
                 closeModal.addEventListener(
                     'click',
                     function ( e ) {
-                        if ( innerModal.classList.contains( 'active' ) ) {
+                        if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
                             innerModal.classList.remove( 'active' );
                         }
                     }
