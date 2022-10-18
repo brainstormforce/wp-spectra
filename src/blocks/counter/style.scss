@@ -36,6 +36,12 @@
 				justify-content: flex-end;
 				align-items: center;
 
+				// If we have rtl class on ancestor element (aka if RTL is active).
+				.rtl & {
+					flex-direction: row-reverse;
+					justify-content: flex-start;
+				}
+
 				& > :last-child {
 					margin-right: 5px;
 				}
