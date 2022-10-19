@@ -3,7 +3,7 @@
  */
 import styling from './styling';
 import React, {    useEffect } from 'react';
-
+import slintedLines from '@Controls/slintedLines';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -17,7 +17,7 @@ const UAGBAdvancedHeading = ( props ) => {
 	useEffect( () => {
 
 		const { setAttributes } = props;
-
+		slintedLines( props );
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 		setAttributes( { classMigrate: true } )
@@ -26,6 +26,7 @@ const UAGBAdvancedHeading = ( props ) => {
 
 
 	useEffect( () => {
+		slintedLines( props );
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
