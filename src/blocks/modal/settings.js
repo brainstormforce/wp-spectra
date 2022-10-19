@@ -512,7 +512,7 @@ export default function Settings( props ) {
 	)
 
 	return (
-		<React.Fragment>
+		<>
 			<InspectorControls>
 				<InspectorTabs>
 
@@ -528,6 +528,6 @@ export default function Settings( props ) {
 					
 				</InspectorTabs>
 			</InspectorControls>
-		</React.Fragment>
+		</>
 	);
 }

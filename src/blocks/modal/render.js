@@ -112,10 +112,10 @@ const Render = ( props ) => {
 	)
 
 	return (
-		<React.Fragment>
+		<>
 			<div className={ classnames(
 				`uagb-block-${ block_id }`,
-				'wp-block-uagb-modal'
+				'uagb-modal-wrapper'
 			) }>
 				{
 					'text' === modalTrigger &&
@@ -152,7 +152,7 @@ const Render = ( props ) => {
 					</div>
 				</div>
 			</div>
-		</React.Fragment>
+		</>
 	);
 }
 

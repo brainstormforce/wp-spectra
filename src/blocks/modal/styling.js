@@ -35,7 +35,7 @@ export default function styling( props ) {
 	const buttonIconSpaceFallbackMobile = isNaN( buttonIconSpaceMobile ) ? buttonIconSpaceFallbackTablet : buttonIconSpaceMobile;
 
 	const selectors = {
-		'.wp-block-uagb-modal' : {
+		'.uagb-modal-wrapper' : {
 			'text-align': modalAlign,
 		},
 		' .uagb-modal-popup-wrap' : {
@@ -56,7 +56,7 @@ export default function styling( props ) {
 		},
 	};
 	const tabletSelectors = {
-		'.wp-block-uagb-modal' : {
+		'.uagb-modal-wrapper' : {
 			'text-align': modalAlignTablet,
 		},
 		' .uagb-modal-popup-wrap' : {
@@ -71,7 +71,7 @@ export default function styling( props ) {
 		}
 	};
 	const mobileSelectors = {
-		'.wp-block-uagb-modal' : {
+		'.uagb-modal-wrapper' : {
 			'text-align': modalAlignMobile,
 		},
 		' .uagb-modal-popup-wrap' : {

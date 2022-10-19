@@ -35,10 +35,10 @@ const UAGBModalEdit = ( props ) => {
 	}, [ props ] );
 
 	return (
-		<React.Fragment>
+		<>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
-		</React.Fragment>
+		</>
 	);
 }
 

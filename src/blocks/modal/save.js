@@ -96,7 +96,7 @@ export default function Save( props ) {
 		<div
 			className={ classnames(
 				`uagb-block-${ block_id }`,
-				'wp-block-modal'
+				'uagb-modal-wrapper'
 			) }
 		>
 			{

@@ -10,7 +10,7 @@
 $block_name  = 'modal';
 
 $selectors = array(
-	'.wp-block-uagb-modal'      => array(
+	'.uagb-modal-wrapper'      => array(
 		'text-align'       => $attr['modalAlign'],
 	),
 	' .uagb-modal-popup-wrap' => array(
@@ -25,7 +25,7 @@ $selectors = array(
 	),
 );
 $t_selectors = array(
-	'.wp-block-uagb-modal'      => array(
+	'.uagb-modal-wrapper'      => array(
 		'text-align'       => $attr['modalAlignTablet'],
 	),
 	' .uagb-modal-popup-wrap' => array(
@@ -34,7 +34,7 @@ $t_selectors = array(
 	)
 );
 $m_selectors = array(
-	'.wp-block-uagb-modal'      => array(
+	'.uagb-modal-wrapper'      => array(
 		'text-align'       => $attr['modalAlignMobile'],
 	),
 	' .uagb-modal-popup-wrap' => array(
