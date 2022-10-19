@@ -174,6 +174,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Container - Equal height setting in Parent container.
 * Improvement: Post Block - Woo Commerce Products (CPT) not getting in post Type.
 * Improvement: Block Transform - Transform from core Paragraph/List to Spectra Heading/Blockquotes.
+* Improvement: Post Blocks - Optimize the loading of Post Terms.
 * Fix: Image - Throws validation issue when toolbar link feature is used.
 * Fix: Button - Box shadow stylings not working as expected on front-end.
 * Fix: Tabs - Plus button height was not the same as other tab buttons on the editor.
@@ -191,6 +192,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Masonry - Column Gap was impacting other post masonry, post grid, post carousel blocks.
 * Fix: Forms - Settings uneven spacing issue and Hide border colors when style set to default.
 * Fix: Copy Paste Styles - Removed hover color for disable paste style text.
+* Fix: Forms - Checkbox throws an issue in console when required toggle is ON.
 * Fix: Resolved undefined PHP issue for block attribute.
 * Fix: Info Box - After drag and drop block SVG looks bigger for a second.
 * Fix: Icon List - Disable link not working properly on front-end for old users.
@@ -203,6 +205,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Timeline - Connector does not show color without icon when scrolling.
 * Fix: Resolved Buttons should consider button text as a string instead of html in multiple blocks.
 * Fix: Container - Does not work properly when it is used inside cover block.
+* Fix: Post grid - In the editor, the Read more button border-radius is not working on hover.
+* Fix: Table Of Contents - Page was not scrolling to the headings on the frontend for some edge cases.
+* Fix: Post Carousel - On reducing or increasing Post per page all items sticks to each other in editor.
 
 = 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 =
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.

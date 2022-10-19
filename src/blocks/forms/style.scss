@@ -189,7 +189,7 @@ select::before {
 .uagb-forms-radio-wrap input[type="radio"],
 .uagb-forms-checkbox-wrap input[type="checkbox"],
 .uagb-forms-accept-wrap input[type="checkbox"] {
-	display: none;
+	opacity: 0;
 }
 
 .uagb-forms-checkbox-wrap input[type="checkbox"]:checked + label::before,
