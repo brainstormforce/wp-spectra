@@ -1,5 +1,6 @@
 .uagb-modal-popup {
 	display: none;
+
 	&.active {
 		top: 0;
 		bottom: 0;
@@ -44,7 +45,7 @@
 		color: #333;
 		position: relative;
 		z-index: 99999;
-		
+
 		.uagb-modal-popup-content {
 			padding: 45px 35px;
 		}
@@ -62,34 +63,43 @@
 
 // Below css is to add block inserter styling. Not working correctly so commented out.
 body {
+
 	&.hide-scroll {
 		overflow: hidden;
 	}
+
 	.uagb-modal-popup-wrap {
+
 		.wp-block {
 			max-width: none !important;
 			margin: 0 !important;
 		}
 
 		.block-list-appender {
+
 			&:only-child {
+
 				.block-editor-default-block-appender__content {
 					display: none;
 				}
+
 				.block-editor-inserter__toggle.components-button.has-icon {
 					height: auto;
 					padding: 8px 12px !important;
 				}
 			}
+
 			button {
 				background-color: #dbf9e4 !important;
 				box-shadow: none !important;
 				padding: 0 !important;
 				width: 100%;
 			}
+
 			.block-editor-inserter__toggle.components-button.has-icon {
 				width: 100%;
 			}
+
 			svg {
 				fill: rgba(0, 165, 79, 0.9);
 				width: 30px;
@@ -102,7 +112,7 @@ body {
 		}
 
 	}
-	
+
 }
 
 .components-popover {
