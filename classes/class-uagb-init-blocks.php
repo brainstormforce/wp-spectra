@@ -61,10 +61,26 @@ class UAGB_Init_Blocks {
 
 		add_action( 'wp_ajax_uagb_forms_recaptcha', array( $this, 'forms_recaptcha' ) );
 
+		add_action( 'wp_ajax_uagb_spectra_font_awesome_polyfiller', array( $this, 'spectra_font_awesome_polyfiller' ) );
+
 		if ( ! is_admin() ) {
 			add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
 		}
 
+	}
+
+	/**
+	 * Function to get Spectra Font Awesome Polyfiller data.
+	 *
+	 * @since x.x.x
+	 */
+	public function spectra_font_awesome_polyfiller() {
+
+		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
+
+		$data = get_spectra_font_awesome_polyfiller();
+
+		wp_send_json_success( $data );
 	}
 
 	/**
@@ -301,9 +317,9 @@ class UAGB_Init_Blocks {
 
 		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
 
-			$post_types = UAGB_Helper::get_post_types();
+		$post_types = UAGB_Helper::get_post_types();
 
-			$return_array = array();
+		$return_array = array();
 
 		foreach ( $post_types as $key => $value ) {
 			$post_type = $value['value'];
@@ -636,7 +652,6 @@ class UAGB_Init_Blocks {
 				'mobile_breakpoint'                  => UAGB_MOBILE_BREAKPOINT,
 				'image_sizes'                        => UAGB_Helper::get_image_sizes(),
 				'post_types'                         => UAGB_Helper::get_post_types(),
-				'all_taxonomy'                       => UAGB_Helper::get_related_taxonomy(),
 				'uagb_ajax_nonce'                    => $uagb_ajax_nonce,
 				'uagb_home_url'                      => home_url(),
 				'user_role'                          => $this->get_user_role(),
@@ -666,7 +681,7 @@ class UAGB_Init_Blocks {
 				'blocks_editor_spacing'              => UAGB_Admin_Helper::get_admin_settings_option( 'uag_blocks_editor_spacing', 0 ),
 				'load_font_awesome_5'                => UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
 				'auto_block_recovery'                => UAGB_Admin_Helper::get_admin_settings_option( 'uag_auto_block_recovery', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
-				'font_awesome_5_polyfill'            => get_spectra_font_awesome_polyfiller(),
+				'font_awesome_5_polyfill'            => array(),
 				'spectra_custom_fonts'               => apply_filters( 'spectra_system_fonts', array() ),
 			)
 		);
