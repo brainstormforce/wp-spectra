@@ -188,6 +188,19 @@ div.uagb-spectra-button-wrapper {
 // Appear effect style.
 
 /* Effect 1: Fade in and scale up */
+.uagb-effect-default {
+	.uagb-modal-popup-wrap {
+		opacity: 0;
+	}
+
+	&.active {
+		.uagb-modal-popup-wrap {
+			opacity: 1;
+			-webkit-transition: all 0.3s;
+			transition: all 0.3s;
+		}
+	}
+}
 .uagb-effect-1 {
 
 	.uagb-modal-popup-wrap {
@@ -196,8 +209,6 @@ div.uagb-spectra-button-wrapper {
 		transform: scale(0.7);
 		opacity: 0;
 		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-		-webkit-transition: all 0.3s;
-		transition: all 0.3s;
 	}
 
 	&.active {
@@ -208,6 +219,8 @@ div.uagb-spectra-button-wrapper {
 			transform: scale(1);
 			opacity: 1;
 			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+			-webkit-transition: all 0.3s;
+			transition: all 0.3s;
 		}
 	}
 }
@@ -221,8 +234,6 @@ div.uagb-spectra-button-wrapper {
 		transform: translateX(20%);
 		opacity: 0;
 		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-		-webkit-transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
-		transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
 	}
 
 	&.active {
@@ -233,6 +244,8 @@ div.uagb-spectra-button-wrapper {
 			transform: translateX(0);
 			opacity: 1;
 			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+			-webkit-transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+			transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
 		}
 	}
 }
@@ -246,8 +259,6 @@ div.uagb-spectra-button-wrapper {
 		transform: translateY(20%);
 		opacity: 0;
 		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-		-webkit-transition: all 0.3s;
-		transition: all 0.3s;
 	}
 
 	&.active {
@@ -258,6 +269,8 @@ div.uagb-spectra-button-wrapper {
 			transform: translateY(0);
 			opacity: 1;
 			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+			-webkit-transition: all 0.3s;
+			transition: all 0.3s;
 		}
 	}
 }
@@ -271,8 +284,6 @@ div.uagb-spectra-button-wrapper {
 		transform: scale(2);
 		opacity: 0;
 		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-		-webkit-transition: all 0.3s;
-		transition: all 0.3s;
 	}
 
 	&.active {
@@ -283,6 +294,8 @@ div.uagb-spectra-button-wrapper {
 			transform: scale(1);
 			opacity: 1;
 			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+			-webkit-transition: all 0.3s;
+			transition: all 0.3s;
 		}
 	}
 }
@@ -296,60 +309,16 @@ div.uagb-spectra-button-wrapper {
 		opacity: 0;
 		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	}
-}
 
-@-webkit-keyframes OpenTop {
-
-	50% {
-		-webkit-transform: rotateX(10deg);
-		-webkit-animation-timing-function: ease-out;
+	&.active {
+		.uagb-modal-popup-wrap {
+			-webkit-transform: translateY(0);
+			-ms-transform: translateY(0);
+			transform: translateY(0);
+			opacity: 1;
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+			-webkit-transition: all 0.5s 0.1s;
+			transition: all 0.5s 0.1s;
+		}
 	}
-}
-
-@keyframes OpenTop {
-
-	50% {
-		-webkit-transform: rotateX(10deg);
-		transform: rotateX(10deg);
-		-webkit-animation-timing-function: ease-out;
-		animation-timing-function: ease-out;
-	}
-}
-
-.active {
-
-	&.uagb-effect-5 ~ .container {
-		height: 100%;
-		overflow: hidden;
-	}
-
-	&.uagb-effect-5 ~ .uael-overlay {
-		-webkit-transition: all 0.5s;
-		transition: all 0.5s;
-	}
-
-	&.uagb-effect-5 ~ .container,
-	&.uagb-effect-5 ~ .uael-overlay {
-		-webkit-transform-style: preserve-3d;
-		-webkit-transform-origin: 50% 100%;
-		-webkit-animation: opentop 0.5s forwards ease-in;
-		-moz-transform-style: preserve-3d;
-		-moz-transform-origin: 50% 100%;
-		-moz-animation: opentop 0.5s forwards ease-in;
-		transform-style: preserve-3d;
-		-ms-transform-origin: 50% 100%;
-		transform-origin: 50% 100%;
-		animation: OpenTop 0.5s forwards ease-in;
-	}
-
-	&.uagb-effect-5 .uagb-modal-popup-wrap {
-		-webkit-transform: translateY(0);
-		-ms-transform: translateY(0);
-		transform: translateY(0);
-		opacity: 1;
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-		-webkit-transition: all 0.5s 0.1s;
-		transition: all 0.5s 0.1s;
-	}
-
 }

@@ -373,7 +373,7 @@ export default function Settings( props ) {
 						label: 'modalHeightMobile',
 					},
 				} }
-				min={ '%' === modalHeightType ? 10 : 300 }
+				min={ '%' === modalHeightType ? 10 : 100 }
 				max={ '%' === modalHeightType ? 100 : 1500 }
 				unit={ {
 					value: modalHeightType,

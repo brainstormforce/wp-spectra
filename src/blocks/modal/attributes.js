@@ -138,7 +138,7 @@ const attributes = {
 	},
 	appearEffect: {
 		type: 'string',
-		default: 'default',
+		default: 'uagb-effect-default',
 	},
 	closeIconSize: {
 		type: 'number',
