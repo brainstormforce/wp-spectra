@@ -46,13 +46,13 @@ $m_selectors = array(
 	)
 );
 
-if( 'popup-top-left' === $attr['closeIconPosition'] ) {
+if( 'popup-top-right' === $attr['closeIconPosition'] ) {
 	$selectors[' .uagb-modal-popup.active .uagb-modal-popup-close']   = array(
 		'right'            => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
 	);
 }
 
-if( 'popup-top-right' === $attr['closeIconPosition'] ) {
+if( 'popup-top-left' === $attr['closeIconPosition'] ) {
 	$selectors[' .uagb-modal-popup.active .uagb-modal-popup-close']   = array(
 		'left'            => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
 	);

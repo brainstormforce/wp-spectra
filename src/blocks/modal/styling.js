@@ -89,20 +89,14 @@ export default function styling( props ) {
 		}
 	};
 	
-	if( 'popup-top-left' === closeIconPosition ) {
+	if( 'popup-top-right' === closeIconPosition ) {
 		selectors[ ' .uagb-modal-popup.active .uagb-modal-popup-close'] = {
 			'right': '-' + generateCSSUnit( closeIconSize, 'px' ),
 		};
 	}
-	if( 'popup-top-right' === closeIconPosition ) {
-		selectors[ ' .uagb-modal-popup.active .uagb-modal-popup-close'] = {
-			'left': '-' + generateCSSUnit( closeIconSize, 'px' ),
-		};
-	}
-
 	if( 'popup-top-left' === closeIconPosition ) {
 		selectors[ ' .uagb-modal-popup.active .uagb-modal-popup-close'] = {
-			'margin-left': generateCSSUnit( buttonIconSpaceFallback, buttonIconSpaceType ),
+			'left': '-' + generateCSSUnit( closeIconSize, 'px' ),
 		};
 	}
 
