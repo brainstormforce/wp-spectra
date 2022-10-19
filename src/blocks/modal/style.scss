@@ -89,3 +89,6 @@ body .uagb-modal-popup-wrap .block-list-appender .block-editor-inserter__toggle.
     width: 30px;
     height: 30px
 }
+.components-popover {
+    z-index: 1000000!important;
+}
