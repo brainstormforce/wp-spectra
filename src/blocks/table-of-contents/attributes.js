@@ -992,7 +992,7 @@ const attributes = {
 			styleType: 'separator-color-hover'
 		}
 	},
-	OverallAlign: {
+	overallAlign: {
 		type: 'string',
 		default: 'left',
 	},

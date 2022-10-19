@@ -40,7 +40,7 @@ const Settings = ( props ) => {
 	const {
 		align,
 		headingAlignment,
-		OverallAlign,
+		overallAlign,
 		disableBullets,
 		makeCollapsible,
 		initialCollapse,
@@ -555,8 +555,8 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
-						value: OverallAlign,
-						label: 'OverallAlign',
+						value: overallAlign,
+						label: 'overallAlign',
 					} }
 					className="uagb-multi-button-alignment-control"
 					options={ [

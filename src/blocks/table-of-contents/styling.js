@@ -27,7 +27,7 @@ function styling( props ) {
 		bulletColor,
 		iconSize,
 		align,
-		OverallAlign,
+		overallAlign,
 		//Color
 		backgroundColor,
 		linkColor,
@@ -144,7 +144,7 @@ function styling( props ) {
 
 	selectors = {
 		'.wp-block-uagb-table-of-contents': {
-			'text-align' : OverallAlign
+			'text-align' : overallAlign
 		},
 		' .uagb-toc__list-wrap ul li': {
 			'font-size': generateCSSUnit( fontSize, fontSizeType ),
