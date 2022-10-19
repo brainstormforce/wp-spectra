@@ -45,7 +45,10 @@ const PageCustomCSS = () => {
 			} );
 		}
 
-		const editor = wp?.codeEditor?.initialize( tabRef?.current, wp.codeEditor.defaultSettings.codemirror );
+		const editor = wp?.codeEditor?.initialize( tabRef?.current, {
+			...wp.codeEditor.defaultSettings.codemirror,
+			scrollbarStyle: null
+		} );
 		const codeMirrorEditor = document.querySelector( '.CodeMirror-code' );
 
 		if ( codeMirrorEditor ) {

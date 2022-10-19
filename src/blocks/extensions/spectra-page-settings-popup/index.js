@@ -27,6 +27,7 @@ const SpectraPageSettingsPopup = () => {
 				icon={ SettingsIcons.logo }
 				name="spectra-page-settings-panel"
 				title={ __( 'Spectra Page Settings' ) }
+				className={'spectra-sidebar'}
 			>
 				<PanelBody
 					title={ __( 'Custom CSS' ) }
