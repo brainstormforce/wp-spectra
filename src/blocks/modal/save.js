@@ -2,7 +2,6 @@ import React from 'react';
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
-import { __ } from '@wordpress/i18n';
 
 export default function Save( props ) {
 	const {

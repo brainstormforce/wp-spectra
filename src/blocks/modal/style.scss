@@ -26,7 +26,7 @@ body {
 			}
 
 			button {
-				background-color: #DCF2FF !important;
+				background-color: #dcf2ff !important;
 				box-shadow: none !important;
 				padding: 0 !important;
 				width: 100%;
@@ -37,9 +37,9 @@ body {
 			}
 
 			svg {
-				fill: #007CBA;
+				fill: #007cba;
 				width: 30px;
-				height: 30px
+				height: 30px;
 			}
 		}
 
@@ -77,7 +77,7 @@ body {
 			position: absolute;
 			text-align: center;
 			cursor: pointer;
-			fill: #ffffff;
+			fill: #fff;
 		}
 	}
 
@@ -97,9 +97,7 @@ body {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
-		// transform: scale(0.8);
 		width: 700px;
-		max-width: 92%;
 		min-height: 350px;
 		margin-top: 10px;
 		max-width: 100%;
@@ -113,23 +111,28 @@ body {
 }
 
 .uagb-modal-wrapper {
+
 	svg {
 		font-size: 30px;
 		width: 30px;
 		height: 30px;
 		line-height: 30px;
 	}
+
 	img {
 		width: 100px;
 	}
 }
 
 .entry {
+
 	.entry-content {
+
 		a.uagb-modal-button-link {
 			text-decoration: none;
 			align-items: center;
 		}
+
 		a.uagb-modal-button-link:hover {
 			color: inherit;
 		}
@@ -144,6 +147,7 @@ div.uagb-spectra-button-wrapper {
 		text-decoration: none;
 		align-items: center;
 		cursor: pointer;
+
 		&:hover {
 			color: inherit;
 		}
@@ -171,10 +175,10 @@ div.uagb-spectra-button-wrapper {
 
 .block-editor-page #wpwrap .uagb-modal-button-link svg {
 	font-style: normal;
-    vertical-align: middle;
-    width: 15px;
-    height: 15px;
-    font-size: 15px;
+	vertical-align: middle;
+	width: 15px;
+	height: 15px;
+	font-size: 15px;
 }
 
 .components-popover {
@@ -185,6 +189,7 @@ div.uagb-spectra-button-wrapper {
 
 /* Effect 1: Fade in and scale up */
 .uagb-effect-1 {
+
 	.uagb-modal-popup-wrap {
 		-webkit-transform: scale(0.7);
 		-ms-transform: scale(0.7);
@@ -194,7 +199,9 @@ div.uagb-spectra-button-wrapper {
 		-webkit-transition: all 0.3s;
 		transition: all 0.3s;
 	}
+
 	&.active {
+
 		.uagb-modal-popup-wrap {
 			-webkit-transform: scale(1);
 			-ms-transform: scale(1);
@@ -207,6 +214,7 @@ div.uagb-spectra-button-wrapper {
 
 /* Effect 2: Slide from the right */
 .uagb-effect-2 {
+
 	.uagb-modal-popup-wrap {
 		-webkit-transform: translateX(20%);
 		-ms-transform: translateX(20%);
@@ -216,7 +224,9 @@ div.uagb-spectra-button-wrapper {
 		-webkit-transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
 		transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
 	}
+
 	&.active {
+
 		.uagb-modal-popup-wrap {
 			-webkit-transform: translateX(0);
 			-ms-transform: translateX(0);
@@ -229,6 +239,7 @@ div.uagb-spectra-button-wrapper {
 
 /* Effect 3: Slide from the bottom */
 .uagb-effect-3 {
+
 	.uagb-modal-popup-wrap {
 		-webkit-transform: translateY(20%);
 		-ms-transform: translateY(20%);
@@ -238,7 +249,9 @@ div.uagb-spectra-button-wrapper {
 		-webkit-transition: all 0.3s;
 		transition: all 0.3s;
 	}
+
 	&.active {
+
 		.uagb-modal-popup-wrap {
 			-webkit-transform: translateY(0);
 			-ms-transform: translateY(0);
@@ -251,6 +264,7 @@ div.uagb-spectra-button-wrapper {
 
 /* Effect 4: Super scaled */
 .uagb-effect-4 {
+
 	.uagb-modal-popup-wrap {
 		-webkit-transform: scale(2);
 		-ms-transform: scale(2);
@@ -260,7 +274,9 @@ div.uagb-spectra-button-wrapper {
 		-webkit-transition: all 0.3s;
 		transition: all 0.3s;
 	}
+
 	&.active {
+
 		.uagb-modal-popup-wrap {
 			-webkit-transform: scale(1);
 			-ms-transform: scale(1);
@@ -272,6 +288,7 @@ div.uagb-spectra-button-wrapper {
 }
 
 .uagb-effect-5 {
+
 	.uagb-modal-popup-wrap {
 		-webkit-transform: translateY(-200%);
 		-ms-transform: translateY(-200%);
@@ -282,6 +299,7 @@ div.uagb-spectra-button-wrapper {
 }
 
 @-webkit-keyframes OpenTop {
+
 	50% {
 		-webkit-transform: rotateX(10deg);
 		-webkit-animation-timing-function: ease-out;
@@ -289,15 +307,17 @@ div.uagb-spectra-button-wrapper {
 }
 
 @keyframes OpenTop {
+
 	50% {
 		-webkit-transform: rotateX(10deg);
-				transform: rotateX(10deg);
+		transform: rotateX(10deg);
 		-webkit-animation-timing-function: ease-out;
-				animation-timing-function: ease-out;
+		animation-timing-function: ease-out;
 	}
 }
 
 .active {
+
 	&.uagb-effect-5 ~ .container {
 		height: 100%;
 		overflow: hidden;
@@ -312,10 +332,10 @@ div.uagb-spectra-button-wrapper {
 	&.uagb-effect-5 ~ .uael-overlay {
 		-webkit-transform-style: preserve-3d;
 		-webkit-transform-origin: 50% 100%;
-		-webkit-animation: OpenTop 0.5s forwards ease-in;
+		-webkit-animation: opentop 0.5s forwards ease-in;
 		-moz-transform-style: preserve-3d;
 		-moz-transform-origin: 50% 100%;
-		-moz-animation: OpenTop 0.5s forwards ease-in;
+		-moz-animation: opentop 0.5s forwards ease-in;
 		transform-style: preserve-3d;
 		-ms-transform-origin: 50% 100%;
 		transform-origin: 50% 100%;
