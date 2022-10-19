@@ -43,14 +43,14 @@ $m_selectors = array(
 	),
 );
 
-if( 'popup-top-right' === $attr['closeIconPosition'] ) {
+if ( 'popup-top-right' === $attr['closeIconPosition'] ) {
 	$selectors[' .uagb-modal-popup.active .uagb-modal-popup-close']   = array(
 		'top'            => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
 		'right'            => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
 	);
 }
 
-if( 'popup-top-left' === $attr['closeIconPosition'] ) {
+if ( 'popup-top-left' === $attr['closeIconPosition'] ) {
 	$selectors[' .uagb-modal-popup.active .uagb-modal-popup-close']   = array(
 		'top'            => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
 		'left'            => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
@@ -61,7 +61,7 @@ $buttonIconSpace_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['
 $attr['buttonIconSpaceTablet'] = is_numeric( $attr['buttonIconSpaceTablet'] ) ? $attr['buttonIconSpaceTablet'] : $buttonIconSpace_fallback;
 $attr['buttonIconSpaceMobile'] = is_numeric( $attr['buttonIconSpaceMobile'] ) ? $attr['buttonIconSpaceMobile'] : $attr['buttonIconSpaceTablet'];
 
-if( 'button' === $attr['modalTrigger'] ) {
+if ( 'button' === $attr['modalTrigger'] ) {
 	if ( 'after' === $attr['buttonIconPosition'] ) {
 		$selectors[' .uagb-modal-button-link svg ']   = array(
 			'margin-left' => UAGB_Helper::get_css_value( $buttonIconSpace_fallback, $attr['buttonIconSpaceType'] ),
