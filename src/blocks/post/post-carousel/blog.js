@@ -74,6 +74,13 @@ function Blog( props ) {
 
 		}, 100 )
 	};
+	useEffect( () => {
+		updateImageBgWidth();
+    }, [ ] );
+	
+	useEffect( () => {
+		updateImageBgWidth();
+    }, [ props ] );
 
 	useEffect( () => {
 		updateImageBgWidth();
