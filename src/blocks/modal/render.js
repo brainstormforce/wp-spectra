@@ -22,7 +22,6 @@ const Render = ( props ) => {
 		<>
 			<div className={ classnames(
 				`uagb-block-${ block_id }`,
-				'wp-block-uagb-modal'
 			) }>
 				<RichText
 					tagName="p"

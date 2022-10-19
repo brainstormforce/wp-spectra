@@ -11,8 +11,7 @@ export default function Save( props ) {
 	return (
 		<div
 			className={ classnames(
-				`uagb-block-${ block_id }`,
-				'wp-block-modal'
+				`uagb-block-${ block_id }`
 			) }
 		>
 			<RichText.Content
