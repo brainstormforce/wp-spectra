@@ -7,53 +7,53 @@
  * @package uagb
  */
 
-$block_name  = 'modal';
+$block_name = 'modal';
 
-$selectors = array(
-	'.uagb-modal-wrapper'      => array(
-		'text-align'       => $attr['modalAlign'],
+$selectors   = array(
+	'.uagb-modal-wrapper'          => array(
+		'text-align' => $attr['modalAlign'],
 	),
-	' .uagb-modal-popup-wrap' => array(
-		'width'            => UAGB_Helper::get_css_value( $attr['modalWidth'], $attr['modalWidthType'] ),
-		'min-height'            => UAGB_Helper::get_css_value( $attr['modalHeight'], $attr['modalHeightType'] ),
+	' .uagb-modal-popup-wrap'      => array(
+		'width'      => UAGB_Helper::get_css_value( $attr['modalWidth'], $attr['modalWidthType'] ),
+		'min-height' => UAGB_Helper::get_css_value( $attr['modalHeight'], $attr['modalHeightType'] ),
 	),
 	' .uagb-modal-popup-close svg' => array(
-		'width'            => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
-		'height'            => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
-		'line-height'            => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
-		'font-size'            => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
+		'width'       => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
+		'height'      => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
+		'line-height' => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
+		'font-size'   => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
 	),
 );
 $t_selectors = array(
-	'.uagb-modal-wrapper'      => array(
-		'text-align'       => $attr['modalAlignTablet'],
+	'.uagb-modal-wrapper'     => array(
+		'text-align' => $attr['modalAlignTablet'],
 	),
 	' .uagb-modal-popup-wrap' => array(
-		'width'            => UAGB_Helper::get_css_value( $attr['modalWidthTablet'], $attr['modalWidthType'] ),
-		'min-height'            => UAGB_Helper::get_css_value( $attr['modalHeightTablet'], $attr['modalHeightType'] ),
+		'width'      => UAGB_Helper::get_css_value( $attr['modalWidthTablet'], $attr['modalWidthType'] ),
+		'min-height' => UAGB_Helper::get_css_value( $attr['modalHeightTablet'], $attr['modalHeightType'] ),
 	),
 );
 $m_selectors = array(
-	'.uagb-modal-wrapper'      => array(
-		'text-align'       => $attr['modalAlignMobile'],
+	'.uagb-modal-wrapper'     => array(
+		'text-align' => $attr['modalAlignMobile'],
 	),
 	' .uagb-modal-popup-wrap' => array(
-		'width'            => UAGB_Helper::get_css_value( $attr['modalWidthMobile'], $attr['modalWidthType'] ),
-		'min-height'       => UAGB_Helper::get_css_value( $attr['modalHeightMobile'], $attr['modalHeightType'] ),
+		'width'      => UAGB_Helper::get_css_value( $attr['modalWidthMobile'], $attr['modalWidthType'] ),
+		'min-height' => UAGB_Helper::get_css_value( $attr['modalHeightMobile'], $attr['modalHeightType'] ),
 	),
 );
 
 if ( 'popup-top-right' === $attr['closeIconPosition'] ) {
-	$selectors[' .uagb-modal-popup.active .uagb-modal-popup-close']   = array(
-		'top'            => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
-		'right'            => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
+	$selectors[' .uagb-modal-popup.active .uagb-modal-popup-close'] = array(
+		'top'   => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
+		'right' => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
 	);
 }
 
 if ( 'popup-top-left' === $attr['closeIconPosition'] ) {
-	$selectors[' .uagb-modal-popup.active .uagb-modal-popup-close']   = array(
-		'top'            => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
-		'left'            => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
+	$selectors[' .uagb-modal-popup.active .uagb-modal-popup-close'] = array(
+		'top'  => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
+		'left' => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
 	);
 }
 
