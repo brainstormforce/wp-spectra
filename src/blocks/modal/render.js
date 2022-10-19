@@ -19,7 +19,7 @@ const Render = ( props ) => {
 	} = attributes
 
 	return (
-		<React.Fragment>
+		<>
 			<div className={ classnames(
 				`uagb-block-${ block_id }`,
 				'wp-block-uagb-modal'
@@ -46,7 +46,7 @@ const Render = ( props ) => {
 					</div>
 				</div>
 			</div>
-		</React.Fragment>
+		</>
 	);
 }
 
