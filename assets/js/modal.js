@@ -22,6 +22,8 @@ window.UAGBModal = {
 
             if( typeof modalTrigger !== 'undefined' && modalTrigger && 'enabled' === previewModal ) {
 
+                modalTrigger.style.pointerEvents = 'auto';
+
 			    const innerModal = modalWrapper.querySelector( '.uagb-modal-popup' );
 
                 modalTrigger.addEventListener(

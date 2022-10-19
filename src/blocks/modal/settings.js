@@ -305,6 +305,10 @@ export default function Settings( props ) {
 				onChange={ () =>
 					setAttributes( { previewModal: ! previewModal } )
 				}
+				help={ __(
+					'Note: Enable this option to open the modal inside editor on click of a trigger.',
+					'ultimate-addons-for-gutenberg'
+				) }
 			/>
 
 			<ResponsiveSlider
