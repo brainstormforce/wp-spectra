@@ -1,12 +1,37 @@
 document.addEventListener( 'UAGModalEditor', function( e ) {
-	UAGBModal.init( '.uagb-block-' + e.detail.block_id, e.detail.preview );
+    UAGBModal.init( '.uagb-block-' + e.detail.block_id, e.detail.preview, e.detail.device_type );
 } );
 
 window.UAGBModal = {
     
-	init( mainSelector, previewModal ) {
+	init( mainSelector, previewModal, deviceType = 'desktop' ) {
 
-		const modalWrapper = document.querySelector(
+        let document_element = document;
+
+        if( 'desktop' !== deviceType ) {
+            const tabletPreview = document.getElementsByClassName( 'is-tablet-preview' );
+            const mobilePreview = document.getElementsByClassName( 'is-mobile-preview' );
+
+            if ( 0 !== tabletPreview.length || 0 !== mobilePreview.length ) {
+
+                const preview = tabletPreview[0] || mobilePreview[0];
+        
+                let iframe = false;
+        
+                if ( preview ) {
+                    iframe = preview.getElementsByTagName( 'iframe' )[0];
+                }
+        
+                const iframeDocument = iframe?.contentWindow.document || iframe?.contentDocument;
+        
+                if ( iframeDocument ) {
+                    document_element = iframeDocument;
+                }
+            }
+        
+        }
+        
+        const modalWrapper = document_element.querySelector(
             mainSelector
         );
 
@@ -22,15 +47,16 @@ window.UAGBModal = {
 
                 modalTrigger.style.pointerEvents = 'auto';
 
-			    const innerModal = modalWrapper.querySelector( '.uagb-modal-popup' );
+                const innerModal = modalWrapper.querySelector( '.uagb-modal-popup' );
 
                 modalTrigger.addEventListener(
                     'click',
                     function () {
+
                         if ( typeof innerModal !== 'undefined' && ! innerModal.classList.contains( 'active' ) ) {
                             innerModal.classList.add( 'active' );
 
-                            const bodyWrap = document.querySelector( 'body' );
+                            const bodyWrap = document_element.querySelector( 'body' );
                             
                             if ( typeof bodyWrap !== 'undefined' && ! bodyWrap.classList.contains( 'hide-scroll' ) ) {
                                 bodyWrap.classList.add( 'hide-scroll' );
@@ -39,7 +65,7 @@ window.UAGBModal = {
                     }
                 )              
 
-			    const closeModal = modalWrapper.querySelector( '.uagb-modal-popup-close' );
+                const closeModal = modalWrapper.querySelector( '.uagb-modal-popup-close' );
 
                 closeModal.addEventListener(
                     'click',
@@ -50,7 +76,6 @@ window.UAGBModal = {
                     }
                 );
             }
-		}
-
+        }
 	},
 };

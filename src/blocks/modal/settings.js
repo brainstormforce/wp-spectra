@@ -490,14 +490,14 @@ export default function Settings( props ) {
 					{
 						value: 'popup-top-left',
 						label: __(
-							'Popup - Top Left',
+							'Top Left',
 							'ultimate-addons-for-gutenberg'
 						),
 					},
 					{
 						value: 'popup-top-right',
 						label: __(
-							'Popup - Top Right',
+							'Top Right',
 							'ultimate-addons-for-gutenberg'
 						),
 					},

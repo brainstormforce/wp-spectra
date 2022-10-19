@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const propTypes = {};
 
@@ -26,7 +27,9 @@ const Render = ( props ) => {
 		buttonIconPosition,
 		appearEffect,
 		closeIconPosition
-	} = attributes
+	} = attributes;
+
+	const deviceType = useDeviceType();
 
 	const textHTML = (
 		<RichText
@@ -114,6 +117,7 @@ const Render = ( props ) => {
 	return (
 		<>
 			<div className={ classnames(
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ block_id }`,
 				'uagb-modal-wrapper'
 			) }>
