@@ -3,7 +3,8 @@ body {
 		overflow: hidden;
 	}
 	.uagb-modal-popup {
-		display: none;
+		visibility: hidden;
+		position: fixed;
 	
 		&.active {
 			top: 0;
@@ -12,24 +13,19 @@ body {
 			align-items: center;
 			overflow-x: auto;
 			overflow-y: scroll;
-			position: fixed;
 			background: rgba(0, 0, 0, 0.7);
 			left: 0;
 			right: 0;
 			display: flex;
 			z-index: 99999;
+			visibility: visible;
 	
 			.uagb-modal-popup-close {
-				// right: -25px;
-				// transform: translateX(0%);
 				opacity: 1;
 				display: flex;
-				// justify-content: center;
 				align-items: center;
 				top: -25px;
 				position: absolute;
-				// width: 45px;
-				// height: 45px;
 				text-align: center;
 				cursor: pointer;
 				fill: #ffffff;
