@@ -21,7 +21,7 @@ export default function Save( props ) {
 	const textHTML = (
 		<RichText.Content
 			value={ triggerText }
-			tagName="p"
+			tagName="span"
 			className="uagb-modal-text uagb-modal-trigger"
 		/>
 	);

@@ -30,7 +30,7 @@ const Render = ( props ) => {
 
 	const textHTML = (
 		<RichText
-			tagName="p"
+			tagName="span"
 			placeholder={ __(
 				'Click Here',
 				'ultimate-addons-for-gutenberg'
