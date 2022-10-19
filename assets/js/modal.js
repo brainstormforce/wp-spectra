@@ -1,3 +1,7 @@
+document.addEventListener( 'UAGModalEditor', function( e ) {
+	UAGBModal.init( '.uagb-block-' + e.detail.block_id );
+});
+
 window.UAGBModal = {
     
 	init( mainSelector ) {
