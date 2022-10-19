@@ -25,7 +25,8 @@ const UAGBModalEdit = ( props ) => {
 
 		const loadModalBlockEditor = new CustomEvent( 'UAGModalEditor', { // eslint-disable-line no-undef
 			detail: {
-				block_id: props.clientId.substr( 0, 8 )
+				block_id: props.clientId.substr( 0, 8 ),
+				preview: props.attributes.previewModal ? 'enabled' : 'disabled'
 			},
 		} );
 
