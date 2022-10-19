@@ -1288,10 +1288,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				$mob_class = ( isset( $attributes['UAGHideMob'] ) ) ? 'uag-hide-mob' : '';
 			}
 
-			$zindex_desktop = '';
-			$zindex_tablet  = '';
-			$zindex_mobile  = '';
-			$zindex_wrap    = array();
+			$zindex_desktop             = '';
+			$zindex_tablet              = '';
+			$zindex_mobile              = '';
+			$zindex_wrap                = array();
+			$uagb_common_selector_class = '';
 
 			if ( array_key_exists( 'zIndex', $attributes ) || array_key_exists( 'zIndexTablet', $attributes ) || array_key_exists( 'zIndexMobile', $attributes ) ) {
 				$uagb_common_selector_class = 'uag-blocks-common-selector';
@@ -1312,7 +1313,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				}
 			}
 
-
 			$is_image_enabled = ( true === $attributes['displayPostImage'] ) ? 'uagb-post__image-enabled' : 'uagb-post__image-disabled';
 
 			$outerwrap = array(
@@ -1325,7 +1325,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				$desktop_class,
 				$tab_class,
 				$mob_class,
-				$uagb_common_selector_class
+				$uagb_common_selector_class,
 			);
 
 			switch ( $layout ) {
