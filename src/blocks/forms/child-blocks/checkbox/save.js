@@ -43,7 +43,6 @@ export default function save( props ) {
 							name={ `${ checkboxName }[]` }
 							value={ optionvalue }
 							required={ checkboxRequired }
-							onInvalid="this.setCustomValidity('Please check this box if you want to proceed.')"
 						/>
 						<label htmlFor={ `checkbox-${ value }-${ block_id }` }>
 							{ o.optiontitle }
