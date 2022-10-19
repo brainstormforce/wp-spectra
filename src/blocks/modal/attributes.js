@@ -4,11 +4,11 @@ const attributes = {
 	},
 	modalTrigger: {
 		type: 'string',
-		default: 'text'
+		default: 'button'
 	},
 	triggerText: {
 		type: 'string',
-		default: 'Click here'
+		default: 'Click Here'
 	},
 	previewModal: {
 		type: 'boolean',

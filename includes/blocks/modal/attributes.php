@@ -8,7 +8,7 @@
  */
 
 return array(
-    'modalTrigger'                  => 'text',
+    'modalTrigger'                  => 'button',
     'buttonIconSpace'               => '5',
     'buttonIconSpaceTablet'         => '',
     'buttonIconSpaceMobile'         => '',

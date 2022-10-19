@@ -6,8 +6,6 @@ window.UAGBModal = {
     
 	init( mainSelector, previewModal ) {
 
-        console.log( previewModal );
-
 		const modalWrapper = document.querySelector(
             mainSelector
         );
