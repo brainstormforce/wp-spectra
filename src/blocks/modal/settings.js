@@ -92,7 +92,7 @@ export default function Settings( props ) {
 	const modalTriggerPanel = (
 		<UAGAdvancedPanelBody
 			title={ __( 'Modal Trigger', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ true }
+			initialOpen={ false }
 		>
 			<SelectControl
 				label={ __( 'Display Modal On', 'ultimate-addons-for-gutenberg' ) }
@@ -294,7 +294,7 @@ export default function Settings( props ) {
 	const modalContentPanel = (
 		<UAGAdvancedPanelBody
 			title={ __( 'Modal Content', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
+			initialOpen={ true }
 		>
 			<ToggleControl
 				label={ __(
@@ -521,8 +521,8 @@ export default function Settings( props ) {
 				<InspectorTabs>
 
 					<InspectorTab { ...UAGTabs.general }>
-						{modalTriggerPanel}
 						{modalContentPanel}
+						{modalTriggerPanel}
 						{modalClosePanel}
 					</InspectorTab>
 
