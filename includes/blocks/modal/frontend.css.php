@@ -7,7 +7,7 @@
  * @package uagb
  */
 
-$selectors = array();
+$selectors   = array();
 $m_selectors = array();
 $t_selectors = array();
 $block_name  = 'modal';
