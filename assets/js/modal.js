@@ -10,8 +10,6 @@ window.UAGBModal = {
             mainSelector
         );
 
-        console.log( modalWrapper );
-
         if( typeof modalWrapper !== 'undefined' && modalWrapper ) {
             var modalTrigger = modalWrapper.querySelector( '.uagb-modal-trigger' );
 
