@@ -206,7 +206,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Container - Does not work properly when it is used inside cover block.
 * Fix: Table Of Contents - Page was not scrolling to the headings on the frontend for some edge cases.
 * Fix: Post Carousel - On reducing or increasing Post per page all items sticks to each other in editor.
-* Fix: Z-index extension - Was not working for dynamic block.
+* Fix: Z-Index extension is not working for the dynamic blocks.
 
 = 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 =
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
