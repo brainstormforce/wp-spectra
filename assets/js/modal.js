@@ -10,12 +10,14 @@ window.UAGBModal = {
             mainSelector
         );
 
+        console.log( modalWrapper );
+
         if( typeof modalWrapper !== 'undefined' && modalWrapper ) {
-            var modalTrigger = document.querySelector( '.uagb-modal-trigger' );
+            var modalTrigger = modalWrapper.querySelector( '.uagb-modal-trigger' );
 
             if( typeof modalTrigger !== 'undefined' && modalTrigger ) {
 
-			    var innerModal = document.querySelector( '.uagb-modal-popup' );
+			    var innerModal = modalWrapper.querySelector( '.uagb-modal-popup' );
 
                 modalTrigger.addEventListener(
                     'click',
@@ -32,7 +34,7 @@ window.UAGBModal = {
                     }
                 )
 
-			    var closeModal = document.querySelector( '.uagb-modal-popup-close' );
+			    var closeModal = modalWrapper.querySelector( '.uagb-modal-popup-close' );
 
                 closeModal.addEventListener(
                     'click',
