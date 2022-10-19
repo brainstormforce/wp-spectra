@@ -27,7 +27,7 @@ const Render = ( props ) => {
 				<RichText
 					tagName="p"
 					placeholder={ __(
-						'Click here',
+						'Click Here',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ triggerText }
