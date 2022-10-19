@@ -189,11 +189,13 @@ div.uagb-spectra-button-wrapper {
 
 /* Effect 1: Fade in and scale up */
 .uagb-effect-default {
+
 	.uagb-modal-popup-wrap {
 		opacity: 0;
 	}
 
 	&.active {
+
 		.uagb-modal-popup-wrap {
 			opacity: 1;
 			-webkit-transition: all 0.3s;
@@ -201,6 +203,7 @@ div.uagb-spectra-button-wrapper {
 		}
 	}
 }
+
 .uagb-effect-1 {
 
 	.uagb-modal-popup-wrap {
@@ -311,6 +314,7 @@ div.uagb-spectra-button-wrapper {
 	}
 
 	&.active {
+
 		.uagb-modal-popup-wrap {
 			-webkit-transform: translateY(0);
 			-ms-transform: translateY(0);
