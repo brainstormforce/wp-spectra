@@ -47,6 +47,7 @@ return array_merge(
 		'bulletColor'                => '',
 		'iconSize'                   => '',
 		'align'                      => 'left',
+		'OverallAlign'               => 'left',
 		'headingAlignment'           => 'left',
 		'linkColor'                  => '#54595F',
 		'leftPaddingTablet'          => '',
