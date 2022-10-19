@@ -6,10 +6,8 @@ import InspectorTab, {
 
 import { __ } from '@wordpress/i18n';
 import {InspectorControls} from '@wordpress/block-editor';
-import { TextControl, SelectControl } from '@wordpress/components';
-import Range from '@Components/range/Range.js';
+import { SelectControl } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-
 
 export default function Settings( props ) {
 	const { attributes, setAttributes } = props.parentProps;
@@ -24,7 +22,7 @@ export default function Settings( props ) {
 				label={ __( 'Display Modal On', 'ultimate-addons-for-gutenberg' ) }
 				value={ modalTrigger }
 				onChange={ ( value ) => {
-					setAttributes({ modalTrigger: value })
+					setAttributes( { modalTrigger: value } )
 				} }
 				options={ [
 					{ value: 'text', label: 'Text' },
