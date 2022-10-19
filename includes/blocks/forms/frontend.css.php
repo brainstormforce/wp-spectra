@@ -211,19 +211,19 @@ $selectors = array(
 		'border-radius' => UAGB_Helper::get_css_value( 20 + $toggle_width_size_number, 'px' ) . ' !important',
 	),
 	// Drop icon position css.
-	' .uagb-form-phone-country'                                  => array(
-		'background' => 'url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9JzE4cHgnIGhlaWdodD0nMThweCcgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIj48cGF0aCBkPSJtMzk2LjYgMTYwIDE5LjQgMjAuN0wyNTYgMzUyIDk2IDE4MC43bDE5LjMtMjAuN0wyNTYgMzEwLjV6IiBmaWxsPSIjMWQyMzI3IiBjbGFzcz0iZmlsbC0wMDAwMDAiPjwvcGF0aD48L3N2Zz4=) no-repeat',
-		'-moz-appearance' => 'none !important',
-		'-webkit-appearance' => ' none !important',
+	' .uagb-form-phone-country'                            => array(
+		'background'          => 'url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9JzE4cHgnIGhlaWdodD0nMThweCcgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIj48cGF0aCBkPSJtMzk2LjYgMTYwIDE5LjQgMjAuN0wyNTYgMzUyIDk2IDE4MC43bDE5LjMtMjAuN0wyNTYgMzEwLjV6IiBmaWxsPSIjMWQyMzI3IiBjbGFzcz0iZmlsbC0wMDAwMDAiPjwvcGF0aD48L3N2Zz4=) no-repeat',
+		'-moz-appearance'     => 'none !important',
+		'-webkit-appearance'  => ' none !important',
 		'background-position' => ' top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRight'], $attr['paddingFieldUnit'] ),
-		'appearance' => 'none !important',
+		'appearance'          => 'none !important',
 	),
 
 	// select control color.
-	' .uagb-form-phone-country'    => array(
+	' .uagb-form-phone-country'                            => array(
 		'color' => $attr['inputplaceholderColor'],
 	),
-	' .uagb-forms-field-set:hover .uagb-form-phone-country'    => array(
+	' .uagb-forms-field-set:hover .uagb-form-phone-country' => array(
 		'color' => $attr['inputplaceholderHoverColor'],
 	),
 );
@@ -259,7 +259,7 @@ $t_selectors = array(
 	' .uagb-forms-success-message'                   => $success_message_border_tablet,
 	' .uagb-forms-failed-message'                    => $failed_message_border_tablet,
 	// Drop icon position css.
-	' .uagb-form-phone-country'                                  => array(
+	' .uagb-form-phone-country'                      => array(
 		'background-position' => ' top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightTablet'], $attr['paddingFieldUnitTablet'] ),
 	),
 );
@@ -296,7 +296,7 @@ $m_selectors = array(
 	' .uagb-forms-failed-message'                    => $failed_message_border_mobile,
 
 	// Drop icon position css.
-	' .uagb-form-phone-country'                         => array(
+	' .uagb-form-phone-country'                      => array(
 		'background-position' => 'top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'], $attr['paddingFieldUnitmobile'] ),
 		'padding-right'       => UAGB_Helper::get_css_value( $forms_padding_right_mobile_fallback, $attr['paddingFieldUnitmobile'] ) . ' !important',
 	),

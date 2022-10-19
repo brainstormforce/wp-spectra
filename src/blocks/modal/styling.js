@@ -54,9 +54,6 @@ export default function styling( props ) {
 			'line-height': generateCSSUnit( closeIconSize, 'px' ),
 			'font-size': generateCSSUnit( closeIconSize, 'px' ),
 		},
-		' .uagb-modal-popup.active .uagb-modal-popup-close': {
-			'top': '-' + generateCSSUnit( closeIconSize, 'px' ),
-		}
 	};
 	const tabletSelectors = {
 		'.wp-block-uagb-modal' : {
@@ -91,11 +88,13 @@ export default function styling( props ) {
 	
 	if( 'popup-top-right' === closeIconPosition ) {
 		selectors[ ' .uagb-modal-popup.active .uagb-modal-popup-close'] = {
+			'top': '-' + generateCSSUnit( closeIconSize, 'px' ),
 			'right': '-' + generateCSSUnit( closeIconSize, 'px' ),
 		};
 	}
 	if( 'popup-top-left' === closeIconPosition ) {
 		selectors[ ' .uagb-modal-popup.active .uagb-modal-popup-close'] = {
+			'top': '-' + generateCSSUnit( closeIconSize, 'px' ),
 			'left': '-' + generateCSSUnit( closeIconSize, 'px' ),
 		};
 	}

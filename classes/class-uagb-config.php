@@ -107,7 +107,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb-bodymovin-js'      => array(
 						'src'        => UAGB_URL . 'assets/js/uagb-bodymovin.min.js',
 						'dep'        => array(),
-						'skipEditor' => false,
+						'skipEditor' => true,
 					),
 
 					// Blocks.
@@ -155,7 +155,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'skipEditor' => true,
 						'dep'        => array(),
 					),
-					'uagb-modal-js'           => array(
+					'uagb-modal-js'          => array(
 						'src' => UAGB_Scripts_Utils::get_js_url( 'modal' ),
 						'dep' => array(),
 					),

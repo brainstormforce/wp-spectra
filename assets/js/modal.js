@@ -1,25 +1,29 @@
+document.addEventListener( 'UAGModalEditor', function( e ) {
+	UAGBModal.init( '.uagb-block-' + e.detail.block_id );
+} );
+
 window.UAGBModal = {
     
 	init( mainSelector ) {
 
-		var modalWrapper = document.querySelector(
+		const modalWrapper = document.querySelector(
             mainSelector
         );
 
         if( typeof modalWrapper !== 'undefined' && modalWrapper ) {
-            var modalTrigger = document.querySelector( '.uagb-modal-trigger' );
+            const modalTrigger = modalWrapper.querySelector( '.uagb-modal-trigger' );
 
             if( typeof modalTrigger !== 'undefined' && modalTrigger ) {
 
-			    var innerModal = document.querySelector( '.uagb-modal-popup' );
+			    const innerModal = modalWrapper.querySelector( '.uagb-modal-popup' );
 
                 modalTrigger.addEventListener(
                     'click',
-                    function ( e ) {
+                    function () {
                         if ( typeof innerModal !== 'undefined' && ! innerModal.classList.contains( 'active' ) ) {
                             innerModal.classList.add( 'active' );
 
-                            var bodyWrap = document.querySelector( 'body' );
+                            const bodyWrap = document.querySelector( 'body' );
                             
                             if ( typeof bodyWrap !== 'undefined' && ! bodyWrap.classList.contains( 'hide-scroll' ) ) {
                                 bodyWrap.classList.add( 'hide-scroll' );
@@ -28,11 +32,11 @@ window.UAGBModal = {
                     }
                 )
 
-			    var closeModal = document.querySelector( '.uagb-modal-popup-close' );
+			    const closeModal = modalWrapper.querySelector( '.uagb-modal-popup-close' );
 
                 closeModal.addEventListener(
                     'click',
-                    function ( e ) {
+                    function () {
                         if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
                             innerModal.classList.remove( 'active' );
                         }

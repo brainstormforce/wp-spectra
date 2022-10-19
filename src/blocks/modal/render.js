@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';

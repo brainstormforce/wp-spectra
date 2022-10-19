@@ -1,26 +1,30 @@
 body.hide-scroll {
-    overflow: hidden;
+	overflow: hidden;
 }
+
 .uagb-modal-popup {
-    display: none;
+	display: none;
 }
+
 .uagb-modal-trigger {
-    cursor: pointer;
+	cursor: pointer;
 }
+
 .uagb-modal-popup.active {
-    top: 0;
-    bottom: 0;
-    justify-content: center;
-    align-items: center;
-    overflow-x: auto;
-    overflow-y: scroll;
-    position: fixed;
-    background: rgba(0, 0, 0, 0.7);
-    left: 0;
-    right: 0;
-    display: flex;
-    z-index: 99999;
+	top: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+	overflow-x: auto;
+	overflow-y: scroll;
+	position: fixed;
+	background: rgba(0, 0, 0, 0.7);
+	left: 0;
+	right: 0;
+	display: flex;
+	z-index: 99999;
 }
+
 .uagb-modal-popup-wrap {
     display: flex;
     flex-direction: column;
@@ -37,9 +41,11 @@ body.hide-scroll {
     position: relative;
     z-index: 99999;
 }
+
 .uagb-modal-popup-close {
-   display: none;
+	display: none;
 }
+
 .uagb-modal-popup.active .uagb-modal-popup-close {
     // right: -25px;
     // transform: translateX(0%);
@@ -61,30 +67,35 @@ body.hide-scroll {
 //     }
 // }
 .uagb-modal-popup-content {
-    padding: 45px 35px;
+	padding: 45px 35px;
 }
 // Below css is to add block inserter styling. Not working correctly so commented out.
 body .uagb-modal-popup-wrap .wp-block {
-    max-width: none !important;
-    margin: 0 !important;
+	max-width: none !important;
+	margin: 0 !important;
 }
+
 body .uagb-modal-popup-wrap .block-list-appender:only-child .block-editor-default-block-appender__content {
-    display: none;
+	display: none;
 }
+
 body .uagb-modal-popup-wrap .block-list-appender button {
     background-color: #DCF2FF !important;
     box-shadow: none !important;
     padding: 0 !important;
     width: 100%;
 }
+
 body .uagb-modal-popup-wrap .block-list-appender:only-child .block-editor-inserter__toggle.components-button.has-icon {
-    height: auto;
-    padding: 8px 12px!important;
+	height: auto;
+	padding: 8px 12px !important;
 }
+
 body .uagb-modal-popup-wrap .components-dropdown.block-editor-inserter,
 body .uagb-modal-popup-wrap .block-list-appender .block-editor-inserter__toggle.components-button.has-icon {
-    width: 100%;
+	width: 100%;
 }
+
 .uagb-modal-popup-wrap .block-list-appender svg {
     fill: #007CBA;
     width: 30px;
@@ -137,6 +148,10 @@ a.uagb-modal-button-link:hover,
     width: 15px;
     height: 15px;
     font-size: 15px;
+}
+
+.components-popover {
+	z-index: 1000000 !important;
 }
 
 // Appear effect style.

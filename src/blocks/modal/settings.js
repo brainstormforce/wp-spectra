@@ -98,7 +98,7 @@ export default function Settings( props ) {
 				label={ __( 'Display Modal On', 'ultimate-addons-for-gutenberg' ) }
 				value={ modalTrigger }
 				onChange={ ( value ) => {
-					setAttributes({ modalTrigger: value })
+					setAttributes( { modalTrigger: value } )
 				} }
 				options={ [
 					{ value: 'text', label: 'Text' },
