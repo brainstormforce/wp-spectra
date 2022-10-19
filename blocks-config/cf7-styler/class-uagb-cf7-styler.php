@@ -921,31 +921,6 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 				$mob_class = ( isset( $attributes['UAGHideMob'] ) ) ? 'uag-hide-mob' : '';
 			}
 
-			$zindex_desktop             = '';
-			$zindex_tablet              = '';
-			$zindex_mobile              = '';
-			$zindex_wrap                = array();
-			$uagb_common_selector_class = '';
-
-			if ( array_key_exists( 'zIndex', $attributes ) || array_key_exists( 'zIndexTablet', $attributes ) || array_key_exists( 'zIndexMobile', $attributes ) ) {
-				$uagb_common_selector_class = 'uag-blocks-common-selector';
-				$zindex_desktop             = array_key_exists( 'zIndex', $attributes ) && ( '' !== $attributes['zIndex'] ) ? '--z-index-desktop:' . $attributes['zIndex'] . ';' : false;
-				$zindex_tablet              = array_key_exists( 'zIndexTablet', $attributes ) && ( '' !== $attributes['zIndexTablet'] ) ? '--z-index-tablet:' . $attributes['zIndexTablet'] . ';' : false;
-				$zindex_mobile              = array_key_exists( 'zIndexMobile', $attributes ) && ( '' !== $attributes['zIndexMobile'] ) ? '--z-index-mobile:' . $attributes['zIndexMobile'] . ';' : false;
-
-				if ( $zindex_desktop ) {
-					array_push( $zindex_wrap, $zindex_desktop );
-				}
-
-				if ( $zindex_tablet ) {
-					array_push( $zindex_wrap, $zindex_tablet );
-				}
-
-				if ( $zindex_mobile ) {
-					array_push( $zindex_wrap, $zindex_mobile );
-				}
-			}
-
 			$main_classes = array(
 				'wp-block-uagb-cf7-styler',
 				'uagb-cf7-styler__outer-wrap',
@@ -953,7 +928,6 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 				$desktop_class,
 				$tab_class,
 				$mob_class,
-				$uagb_common_selector_class,
 			);
 
 			if ( isset( $attributes['className'] ) ) {
@@ -963,7 +937,7 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 			ob_start();
 			if ( $form && 0 !== $form && -1 !== $form ) {
 				?>
-				<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>" style="<?php echo esc_html( implode( '', $zindex_wrap ) ); ?>">
+				<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>">
 					<div class = "<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 					<?php echo do_shortcode( '[contact-form-7 id="' . $form . '"]' ); ?>
 					</div>
