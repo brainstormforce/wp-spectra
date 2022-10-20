@@ -52,7 +52,7 @@ $selectors = array(
 		),
 		$image_border_css
 	),
-	'.wp-block-uagb-image .wp-block-uagb-image__figure:hover' => array(
+	'.wp-block-uagb-image .wp-block-uagb-image__figure img:hover' => array(
 		'border-color' => $attr['imageBorderHColor'],
 	),
 	'.wp-block-uagb-image .wp-block-uagb-image__figure figcaption' => array(
