@@ -208,6 +208,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post grid - In the editor, the Read more button border-radius is not working on hover.
 * Fix: Table Of Contents - Page was not scrolling to the headings on the frontend for some edge cases.
 * Fix: Post Carousel - On reducing or increasing Post per page all items sticks to each other in editor.
+* Fix: Z-Index extension is not working for the dynamic blocks.
 * Fix: Content flickering in the editor when hovering over it.
 
 = 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 =
