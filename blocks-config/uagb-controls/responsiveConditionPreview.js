@@ -3,24 +3,28 @@ const responsiveConditionPreview = ( props ) => {
 		// Desktop.
 		const element = document.getElementById( 'block-' + props.clientId	);
 
+        const desktopStyle = document.getElementById( props.clientId + '-desktop-hide-block' );
+
 		if ( null !== element && undefined !== element ) {
-            const desktop = element.querySelector( '.uagb-editor-preview-mode-desktop' ); 
-            const desktopStyle = document.getElementById( props.clientId + '-desktop-hide-block' );
-            if ( null === desktopStyle || undefined === desktopStyle ) {
+            if( props.attributes.UAGHideDesktop ) {
+                if ( null === desktopStyle || undefined === desktopStyle ) {
 
-                const $style = document.createElement( 'style' );
-                $style.setAttribute(
-                    'id',
-                    props.clientId + '-desktop-hide-block'
-                );
-                document.head.appendChild( $style );
-            }
-            if ( null !== desktop && undefined !== desktop ) {
-
-                if( props.attributes.UAGHideDesktop ) {
+                    const $style = document.createElement( 'style' );
+                    $style.setAttribute(
+                        'id',
+                        props.clientId + '-desktop-hide-block'
+                    );
+                    $style.innerHTML = '#block-' + props.clientId + ' > .uagb-editor-preview-mode-desktop{ background:repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 2px, transparent 9px); border: 1px solid rgba(0, 0, 0, 0.15); } ';
+                    $style.innerHTML += '#block-' + props.clientId + ' > .uagb-editor-preview-mode-desktop:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';
+                          
+                    document.head.appendChild( $style );
+                } else {
                     desktopStyle.innerHTML = '#block-' + props.clientId + ' > .uagb-editor-preview-mode-desktop{ background:repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 2px, transparent 9px); border: 1px solid rgba(0, 0, 0, 0.15); } ';
                     desktopStyle.innerHTML += '#block-' + props.clientId + ' > .uagb-editor-preview-mode-desktop:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';
-                } 
+                
+                }
+            } else if ( null !== desktopStyle && undefined !== desktopStyle ) {
+                desktopStyle.remove();
             }
 		}
         const tabletPreview = document.getElementsByClassName( 'is-tablet-preview' );
@@ -41,33 +45,55 @@ const responsiveConditionPreview = ( props ) => {
             if ( ! iframe || ! iframeDocument ) {
                 return;
             }
-            const iframeElement = iframeDocument.getElementById(
-                props.clientId + '-hide-block'
+            const iframeTabletElement = iframeDocument.getElementById(
+                props.clientId + '-tablet-hide-block'
             );
-            if ( null === iframeElement || undefined === iframeElement ) {
-
-                const $style = document.createElement( 'style' );
-                $style.setAttribute(
-                    'id',
-                    props.clientId + '-hide-block'
-                );
-                document.head.appendChild( $style );
-            }
-           
             if( props.attributes.UAGHideTablet ) {
+                if ( null === iframeTabletElement || undefined === iframeTabletElement ) {
+    
+                    const $style = document.createElement( 'style' );
+                    $style.setAttribute(
+                        'id',
+                        props.clientId + '-tablet-hide-block'
+                    );
+                    $style.innerHTML = '#block-' + props.clientId + ' > .uagb-editor-preview-mode-tablet{ background:repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 2px, transparent 9px); border: 1px solid rgba(0, 0, 0, 0.15); } ';
+                    $style.innerHTML += '#block-' + props.clientId + ' > .uagb-editor-preview-mode-tablet:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';
                 
-                iframeElement.innerHTML += '#block-' + props.clientId + ' > .uagb-editor-preview-mode-tablet{ background:repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 2px, transparent 9px); border: 1px solid rgba(0, 0, 0, 0.15); } ';
-                iframeElement.innerHTML += '#block-' + props.clientId + ' > .uagb-editor-preview-mode-tablet:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';
-            } 
-        
+                    iframeDocument.head.appendChild( $style );
+                } else {
+                    iframeTabletElement.innerHTML = '#block-' + props.clientId + ' > .uagb-editor-preview-mode-tablet{ background:repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 2px, transparent 9px); border: 1px solid rgba(0, 0, 0, 0.15); } ';
+                    iframeTabletElement.innerHTML += '#block-' + props.clientId + ' > .uagb-editor-preview-mode-tablet:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';    
+                }
+            } else if ( null !== iframeTabletElement && undefined !== iframeTabletElement ) {
+                iframeTabletElement.remove();
+            }
+            const iframeMobileElement = iframeDocument.getElementById(
+                props.clientId + '-mobile-hide-block'
+            );
             if( props.attributes.UAGHideMobile ) {
-                iframeElement.innerHTML += '#block-' + props.clientId + ' > .uagb-editor-preview-mode-mobile{ background:repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 2px, transparent 9px); border: 1px solid rgba(0, 0, 0, 0.15); } ';
-                iframeElement.innerHTML += '#block-' + props.clientId + ' > .uagb-editor-preview-mode-mobile:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';
-         
-            } 
+                
+                if ( null === iframeMobileElement || undefined === iframeMobileElement ) {
+    
+                    const $style = document.createElement( 'style' );
+                    $style.setAttribute(
+                        'id',
+                        props.clientId + '-mobile-hide-block'
+                    );
+                    $style.innerHTML = '#block-' + props.clientId + ' > .uagb-editor-preview-mode-mobile{ background:repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 2px, transparent 9px); border: 1px solid rgba(0, 0, 0, 0.15); } ';
+                    $style.innerHTML += '#block-' + props.clientId + ' > .uagb-editor-preview-mode-mobile:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';
+             
+                    iframeDocument.head.appendChild( $style );
+                } else {
+                    iframeMobileElement.innerHTML = '#block-' + props.clientId + ' > .uagb-editor-preview-mode-mobile{ background:repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 2px, transparent 9px); border: 1px solid rgba(0, 0, 0, 0.15); } ';
+                    iframeMobileElement.innerHTML += '#block-' + props.clientId + ' > .uagb-editor-preview-mode-mobile:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';
+             
+                }
+            
+            } else if ( null !== iframeMobileElement && undefined !== iframeMobileElement ) {
+                    iframeMobileElement.remove();
+            }
             
         }
-	
 }
 
 export default responsiveConditionPreview;
