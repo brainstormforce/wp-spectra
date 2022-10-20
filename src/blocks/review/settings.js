@@ -11,7 +11,7 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
-import UAGImage from '@Components/image';
+import UAGMediaPicker from '@Components/image';
 import SpacingControl from '@Components/spacing-control';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
@@ -1238,10 +1238,11 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 			>
 				<>
-					<UAGImage
+					<UAGMediaPicker
 						onSelectImage={ onSelectImage }
 						backgroundImage={ mainimage }
 						onRemoveImage={ onRemoveImage }
+						disableLabel={ true }
 					/>
 					{ mainimage &&
 						mainimage !== 'null' &&

@@ -10,7 +10,7 @@ import { useState } from '@wordpress/element';
 import React, { useLayoutEffect } from 'react';
 import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
-import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
+import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 
 const TextShadowControl = ( props ) => {
 	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
@@ -67,7 +67,7 @@ const TextShadowControl = ( props ) => {
 
 	// Function to get the Block's default Text Shadow Values.
 	const getBlockTextShadowValue = () => {
-		const selectedBlockName = getSelectedBlock()?.name.replace( 'uagb/', '' );
+		const selectedBlockName = getSelectedBlock()?.name.split( '/' ).pop();
 		let defaultValues = false;
 		if ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ] ) {
 			attributeNames.forEach( ( attributeName ) => {

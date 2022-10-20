@@ -83,6 +83,7 @@ function styling( props ) {
 		videoOpacity = ( 1 < backgroundVideoOpacity ) ? ( ( 100 - backgroundVideoOpacity ) / 100 ) : ( ( 1 - backgroundVideoOpacity ) );
 	}
 
+	const borderCSS = generateBorderCSS( props.attributes, 'columns' );
 	const borderCSSTablet = generateBorderCSS( props.attributes, 'columns', 'tablet' );
 	const borderCSSMobile = generateBorderCSS( props.attributes, 'columns', 'mobile' );
 
@@ -120,8 +121,6 @@ function styling( props ) {
 		}
 	}
 
-
-
 	selectors[' > .uagb-columns__overlay'] = {}
 
 	if ( 'video' === backgroundType ) {
@@ -153,6 +152,8 @@ function styling( props ) {
 		selectors[' > .uagb-columns__overlay'].opacity =  backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : '';
 
 	}
+
+	selectors[' > .uagb-columns__overlay']['border-radius'] = `${borderCSS['border-top-left-radius']} ${borderCSS['border-top-right-radius']} ${borderCSS['border-bottom-right-radius']} ${ borderCSS['border-bottom-left-radius']}`
 
 	tablet_selectors = {
 		'.uagb-columns__wrap' : {

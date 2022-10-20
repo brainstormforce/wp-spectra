@@ -511,7 +511,7 @@ const attributes = {
 	// Meta attributes.
 	metaColor               : {
 		type    : 'string',
-		default : '#777777',
+		default : '',
 		UAGCopyPaste: {
 			styleType: 'prefix-color'
 		},
@@ -1281,6 +1281,9 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'cta-letter-spacing-type'
 		}
+	},
+	allTaxonomyStore: {
+		type: 'object'
 	},
 	...btnBorderAttributes,
 	...paginationMasonryBorderAttributes

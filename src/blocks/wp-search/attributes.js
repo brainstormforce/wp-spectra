@@ -30,12 +30,14 @@ const attributes = {
 	},
 	borderStyle: {
 		type: 'string',
+		default : 'none'
 	},
 	borderWidth: {
 		type: 'number',
 	},
 	borderRadius: {
 		type: 'number',
+		default : 3
 	},
 	borderColor: {
 		type: 'string',

@@ -23,7 +23,7 @@ const initialState = {
 	siteKeyV3: '',
 	secretKeyV2: '',
 	secretKeyV3: '',
-	settingsSavedNotification: false,
+	settingsSavedNotification: '',
 	enableComingSoonMode: 'disabled',
 	comingSoonPage: '',
 	blocksEditorSpacing: '',

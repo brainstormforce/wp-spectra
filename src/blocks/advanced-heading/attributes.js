@@ -3,7 +3,8 @@ import { __ } from '@wordpress/i18n';
 
 const highLightBorderAttributes = getBorderAttributes( 'highLight' )
 
-const headingAlignmentDefault = ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) ? 'center' : 'left';
+const headingAlignmentDefault = ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) ? 'center' : 'left';
+const headingDescToggleDefault = ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) ? true : false;
 
 const attributes = {
 	block_id: {
@@ -47,7 +48,7 @@ const attributes = {
 	},
 	headingDescToggle: {
 		type: 'boolean',
-		default: false,
+		default: headingDescToggleDefault,
 	},
 	headingDesc: {
 		source: 'html',

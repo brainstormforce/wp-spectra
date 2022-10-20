@@ -17,8 +17,7 @@ $border       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
 	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
 	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
-	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' ),
-	( isset( $attr['borderHColor'] ) ? $attr['borderHColor'] : '' )
+	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
 );
 
 $border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'columns', 'tablet' );
@@ -169,6 +168,8 @@ if ( 'video' === $bg_type ) {
 		}
 	}
 }
+
+$selectors[' > .uagb-columns__overlay']['border-radius'] = $border['border-top-left-radius'] . ' ' . $border['border-top-right-radius'] . ' ' . $border['border-bottom-left-radius'] . ' ' . $border['border-bottom-right-radius'];
 
 $m_selectors = array(
 	'.wp-block-uagb-columns.uagb-columns__wrap' => array(

@@ -118,10 +118,12 @@ function styling( props ) {
 		},
 		'.uagb-how-to-main-wrap span.uagb-howto__time-wrap': {
 			'margin-bottom': generateCSSUnit( getFallbackNumber( row_gap, 'row_gap' , blockName ), 'px' ),
+			'justify-content': overallAlignment,
 		},
 
 		'.uagb-how-to-main-wrap span.uagb-howto__cost-wrap': {
 			'margin-bottom': generateCSSUnit( getFallbackNumber( row_gap, 'row_gap' , blockName ), 'px' ),
+			'justify-content': overallAlignment,
 		},
 
 		' .uagb-how-to-tools .uagb-how-to-tools-child__wrapper:last-child': {

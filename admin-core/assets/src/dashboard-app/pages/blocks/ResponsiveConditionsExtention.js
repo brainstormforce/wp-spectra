@@ -43,6 +43,7 @@ const ResponsiveConditionsExtention = () => {
 		}
 
         dispatch( {type: 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS', payload: assetStatus } );
+        dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
     };
 
     return (

@@ -31,7 +31,7 @@ export default function Save( props ) {
 	} = props.attributes;
 	const image = (
 		<img
-			srcSet={`${url} 1024w${urlTablet ? ',' + urlTablet + ' 780w' : ''}${urlMobile ? ', ' + urlMobile + ' 360w' : ''}`}
+			srcSet={`${url} ${urlTablet ? ',' + urlTablet + ' 780w' : ''}${urlMobile ? ', ' + urlMobile + ' 360w' : ''}`}
 			src={ url }
 			alt={ alt }
 			className={ id ? `uag-image-${ id }` : null }
@@ -43,7 +43,7 @@ export default function Save( props ) {
 	// block validation issue fixing - ImageURLInputUI components automatic provide "noopener"
 	const getRel = () => {
 		if( rel ){
-			return rel + ' noopener';
+			return rel.trim();
 		}
 		return 'noopener';
 	}

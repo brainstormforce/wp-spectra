@@ -29,6 +29,7 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import { decodeEntities } from '@wordpress/html-entities';
 import UAGNumberControl from '@Components/number-control';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import apiFetch from '@wordpress/api-fetch';
 
 import Settings from './settings';
 import Render from './render';
@@ -246,6 +247,7 @@ const UAGBPostMasonry = ( props ) => {
 			}
 		}
 		responsiveConditionPreview( props );
+		props.setAttributes( { allTaxonomyStore : undefined} );
 	}, [] );
 
 	useEffect( () => {
@@ -579,13 +581,18 @@ const UAGBPostMasonry = ( props ) => {
 		enableOffset
 	} = attributes;
 
-	const taxonomyListOptions = [];
+	const taxonomyListOptions = [
+		{
+			value: '',
+			label: __( 'All', 'ultimate-addons-for-gutenberg' ),
+		},
+	];
 
 	const categoryListOptions = [
 		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
 	];
 
-	if ( '' !== taxonomyList ) {
+	if ( taxonomyList ) {
 		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
@@ -594,7 +601,7 @@ const UAGBPostMasonry = ( props ) => {
 		} );
 	}
 
-	if ( '' !== categoriesList ) {
+	if ( categoriesList ) {
 		Object.keys( categoriesList ).map( ( item ) => {
 			return categoryListOptions.push( {
 				value: categoriesList[ item ].id,
@@ -854,11 +861,7 @@ const UAGBPostMasonry = ( props ) => {
 						},
 					} }
 					min={ 0 }
-					max={
-						! hasPosts
-							? MAX_POSTS_COLUMNS
-							: Math.min( MAX_POSTS_COLUMNS, latestPosts.length )
-					}
+					max={MAX_POSTS_COLUMNS}
 					displayUnit={ false }
 					setAttributes={ setAttributes }
 				/>
@@ -1586,30 +1589,6 @@ const UAGBPostMasonry = ( props ) => {
 					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
-							value: columnGap,
-							label: 'columnGap',
-						},
-						tablet: {
-							value: columnGapTablet,
-							label: 'columnGapTablet',
-						},
-						mobile: {
-							value: columnGapMobile,
-							label: 'columnGapMobile',
-						},
-					} }
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: columnGapUnit,
-						label: 'columnGapUnit',
-					} }
-					setAttributes={ setAttributes }
-				/>
-				<ResponsiveSlider
-					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						desktop: {
 							value: rowGap,
 							label: 'rowGap',
 						},
@@ -1627,6 +1606,30 @@ const UAGBPostMasonry = ( props ) => {
 					unit={ {
 						value: rowGapUnit,
 						label: 'rowGapUnit',
+					} }
+					setAttributes={ setAttributes }
+				/>
+				<ResponsiveSlider
+					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: columnGap,
+							label: 'columnGap',
+						},
+						tablet: {
+							value: columnGapTablet,
+							label: 'columnGapTablet',
+						},
+						mobile: {
+							value: columnGapMobile,
+							label: 'columnGapMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 50 }
+					unit={ {
+						value: columnGapUnit,
+						label: 'columnGapUnit',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -2568,11 +2571,19 @@ export default compose(
 			postType,
 			taxonomyType,
 			excludeCurrentPost,
+			allTaxonomyStore
 		} = props.attributes;
 		const { getEntityRecords } = select( 'core' );
 
-		const allTaxonomy = uagb_blocks_info.all_taxonomy;
-		const currentTax = allTaxonomy[ postType ];
+		if ( ! allTaxonomyStore ) {
+			apiFetch( {
+				path: '/spectra/v1/all_taxonomy',
+			} ).then( ( data ) => {
+				props.setAttributes( { allTaxonomyStore: data } );
+			} );
+		}
+		const allTaxonomy = allTaxonomyStore;
+		const currentTax = allTaxonomy ? allTaxonomy[ postType ] : undefined;
 		let categoriesList = [];
 		let rest_base = '';
 

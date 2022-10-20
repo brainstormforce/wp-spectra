@@ -37,6 +37,7 @@ const ReviewComponent = ( props ) => {
 			directorname,
 			appCategory,
 			operatingSystem,
+			aggregateType,
 			offerType,
 			offerPrice,
 			itemSubtype,
@@ -54,6 +55,7 @@ const ReviewComponent = ( props ) => {
 				.map( ( i ) => i.value )
 				.reduce( ( total, v ) => total + v ) /
 			parts.length;
+		const newAverageCount = parts.length;
 		let itemtype = '';
 
 		if (
@@ -146,6 +148,11 @@ const ReviewComponent = ( props ) => {
 					'name': rTitle,
 					'applicationCategory': appCategory,
 					operatingSystem,
+					'aggregateRating': {
+						'@type': aggregateType,
+						'ratingValue': newAverage,
+						'ratingCount': newAverageCount,
+					},
 					'offers': {
 						'@type': offerType,
 						'price': offerPrice,
@@ -263,6 +270,7 @@ const ReviewComponent = ( props ) => {
 		starCount,
 		sku,
 		identifier,
+		aggregateType,
 		offerType,
 		offerCurrency,
 		offerPrice,
@@ -327,6 +335,7 @@ const ReviewComponent = ( props ) => {
 				showAuthor={ showAuthor }
 				rAuthor={ rAuthor }
 				showfeature={ showFeature }
+				aggregateType={ aggregateType }
 				offerType={ offerType }
 				datepublish={ datepublish }
 				offerCurrency={ offerCurrency }

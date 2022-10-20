@@ -10,7 +10,7 @@ import InspectorTab, {
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
-import UAGImage from '@Components/image';
+import UAGMediaPicker from '@Components/image';
 import BoxShadowControl from '@Components/box-shadow';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
@@ -464,13 +464,11 @@ export default function Settings( props ) {
 			title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
-			<UAGImage
-				label={' '}
-				onSelectImage={onSelectImage}
-				backgroundImage={{
-					url
-				}}
-				onRemoveImage={onRemoveImage}
+			<UAGMediaPicker
+				onSelectImage={ onSelectImage }
+				backgroundImage={ { url } }
+				onRemoveImage={ onRemoveImage }
+				disableLabel={ true }
 			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
@@ -867,11 +865,12 @@ export default function Settings( props ) {
 			/>
 			{
 				maskShape === 'custom' && (
-					<UAGImage
-						label={ __( 'Custom Mask Image', 'ultimate-addons-for-gutenberg' ) }
+					<UAGMediaPicker
 						onSelectImage={ onSelectCustomMaskShape }
 						backgroundImage={ maskCustomShape }
 						onRemoveImage={ onRemoveMaskCustomShape }
+						label={ __( 'Custom Mask Image', 'ultimate-addons-for-gutenberg' ) }
+						slug={ 'custom-mask-image' }
 					/>
 				)
 			}

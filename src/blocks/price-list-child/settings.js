@@ -4,7 +4,7 @@ import React from 'react';
 import {
 	InspectorControls,
 } from '@wordpress/block-editor';
-import UAGImage from '@Components/image';
+import UAGMediaPicker from '@Components/image';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -66,7 +66,7 @@ const Settings = ( props ) => {
 							</p>
 							{ showImage && (
 								<>
-									<UAGImage
+									<UAGMediaPicker
 										onSelectImage={ onSelectRestImage }
 										backgroundImage={ image }
 										onRemoveImage={ onRemoveRestImage }

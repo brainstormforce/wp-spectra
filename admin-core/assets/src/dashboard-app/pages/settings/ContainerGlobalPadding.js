@@ -9,13 +9,13 @@ const ContainerGlobalPadding = () => {
 
 	useEffect( () => {
 		if ( 'default' === containerGlobalPadding ) {
-			saveValue( 10 );
+			saveValue( 10, false );
 		}
 	}, [] );
 
 	const dispatch = useDispatch();
 
-	const saveValue = ( value ) => {
+	const saveValue = ( value, showNotice = true ) => {
 		dispatch( { type: 'UPDATE_CONTAINER_GLOBAL_PADDING', payload: value } );
 
 		const formData = new window.FormData();
@@ -29,7 +29,9 @@ const ContainerGlobalPadding = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
-			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
+			if ( showNotice ) {
+				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
+			}
 		} );
 	};
 

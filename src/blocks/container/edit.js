@@ -49,9 +49,11 @@ const UAGBContainer = ( props ) => {
 	}
 
 	useEffect( () => {
-		const isBlockRootParent = 0 === select( 'core/block-editor' ).getBlockParents( props.clientId ).length;
+		const isBlockRootParentID = select( 'core/block-editor' ).getBlockParents( props.clientId );
 
-		if ( isBlockRootParent ) {
+		const parentBlockName = select( 'core/block-editor' ).getBlocksByClientId( isBlockRootParentID );
+
+		if ( parentBlockName[0] && 'uagb/container' !== parentBlockName[0].name || undefined === parentBlockName[0] ) {
 			props.setAttributes( { isBlockRootParent: true } );
 		}
 
@@ -89,12 +91,12 @@ const UAGBContainer = ( props ) => {
 			borderStyle,
 			borderWidth,
 			borderColor,
-			borderHColor,
+			borderHoverColor,
 			borderRadius
 		} = props.attributes;
 
 		// border
-		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
 			migrateBorderAttributes( 'container', {
 				label: 'borderWidth',
 				value: borderWidth,
@@ -105,8 +107,8 @@ const UAGBContainer = ( props ) => {
 				label: 'borderColor',
 				value: borderColor
 			}, {
-				label: 'borderHColor',
-				value: borderHColor
+				label: 'borderHoverColor',
+				value: borderHoverColor
 			},{
 				label: 'borderStyle',
 				value: borderStyle

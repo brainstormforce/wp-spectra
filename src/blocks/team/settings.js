@@ -13,7 +13,7 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
 import MultiButtonsControl from '@Components/multi-buttons-control';
-import UAGImage from '@Components/image';
+import UAGMediaPicker from '@Components/image';
 import UAGTabsControl from '@Components/tabs';
 import UAGSelectControl from '@Components/select-control';
 import { getImageSize } from '@Utils/Helpers';
@@ -356,7 +356,7 @@ const Settings = ( props ) => {
 						showIcons={ true }
 					/>
 				}
-				<UAGImage
+				<UAGMediaPicker
 					onSelectImage={ onSelectImage }
 					backgroundImage={ image }
 					onRemoveImage={ onRemoveImage }

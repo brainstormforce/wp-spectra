@@ -44,13 +44,14 @@ class UAGB_Astra_Compatibility {
 
 			$astra_settings = ( defined( 'ASTRA_THEME_SETTINGS' ) ) ? get_option( ASTRA_THEME_SETTINGS ) : '';
 
-			if ( is_array( $astra_settings ) && empty( $astra_settings['load-google-fonts-locally'] ) || false === $astra_settings['load-google-fonts-locally'] ) {
+			if ( is_array( $astra_settings ) && empty( $astra_settings['load-google-fonts-locally'] ) || ( isset( $astra_settings['load-google-fonts-locally'] ) && false === $astra_settings['load-google-fonts-locally'] ) ) {
 
 				// Disabled uag fonts.
 				add_filter( 'uagb_enqueue_google_fonts', '__return_false' );
 
 				// Add uag fonts in astra.
 				add_filter( 'astra_google_fonts_selected', array( $this, 'add_google_fonts_in_astra' ) );
+
 			}
 		}
 	}

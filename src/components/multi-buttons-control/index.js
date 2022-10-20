@@ -9,7 +9,7 @@ import ResponsiveToggle from '../responsive-toggle';
  * Import Css
  */
 import styles from './editor.lazy.scss';
-import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
+import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 import React, { useLayoutEffect, useState } from 'react';
 import { select } from '@wordpress/data';
 
@@ -34,7 +34,7 @@ const MultiButtonsControl = ( props ) => {
 	} = props;
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
-	const selectedBlock = getSelectedBlock()?.name.replace( 'uagb/', '' ); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	const selectedBlock = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	const [ buttonPrimaryStateDesktop, setbuttonPrimaryStateDesktop ] = useState( true );
 	const [ buttonPrimaryStateTablet, setbuttonPrimaryStateTablet ] = useState( true );
 	const [ buttonPrimaryStateMobile, setbuttonPrimaryStateMobile ] = useState( true );

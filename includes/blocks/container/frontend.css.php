@@ -363,6 +363,16 @@ if ( 'default' === $attr['contentWidth'] ) {
 	$m_selectors[ '.uagb-block-' . $id ]['margin-right'] = ( '' !== $attr['rightMarginMobile'] ? UAGB_Helper::get_css_value( $right_margin_mobile, $attr['marginTypeMobile'] ) . ' !important' : '' );
 }
 
+$z_index        = isset( $attr['zIndex'] ) ? $attr['zIndex'] : '';
+$z_index_tablet = isset( $attr['zIndexTablet'] ) ? $attr['zIndexTablet'] : '';
+$z_index_mobile = isset( $attr['zIndexMobile'] ) ? $attr['zIndexMobile'] : '';
+
+$selectors[ '.uagb-block-' . $id . '.uag-blocks-common-selector' ] = array(
+	'--z-index-desktop' => $z_index,
+	'--z-index-tablet'  => $z_index_tablet,
+	'--z-index-mobile'  => $z_index_mobile,
+);
+
 $combined_selectors = array(
 	'desktop' => $selectors,
 	'tablet'  => $t_selectors,

@@ -413,13 +413,15 @@ const attributes = {
 	},
 	ctaBorderColor: {
 		type: "string",
+		default: "#333",
 	},
 	ctaBorderhoverColor:{
 		type: "string",
+		default: "",
 	},
 	ctaBorderStyle: {
 		type: "string",
-		default: 'solid',
+		default: "solid",
 	},
 	ctaBtnVertPadding :{
 		type: "number",
@@ -431,9 +433,11 @@ const attributes = {
 	},
 	ctaBorderWidth :{
 		type: "number",
+		default: 1,
 	},
 	ctaBorderRadius :{
 		type: "number",
+		default: 0,
 	},
 	prefixSpace :{
 		type: "number",

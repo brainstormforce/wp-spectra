@@ -1231,6 +1231,9 @@ const attributes = {
 			styleType: 'container-box-shadow-position-hover'
 		},
 	},
+	allTaxonomyStore: {
+		type: 'object'
+	},
 	...btnBorderAttributes,
 	...overallBorderAttributes
 }

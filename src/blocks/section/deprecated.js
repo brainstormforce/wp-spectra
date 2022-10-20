@@ -236,7 +236,7 @@ const attributes = {
 	},
 	borderStyle : {
 		type: "string",
-		default: ""
+		default: "none"
 	},
 	borderWidth : {
 		type: "number",

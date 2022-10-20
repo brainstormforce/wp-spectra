@@ -109,6 +109,13 @@ const ResponsiveBorder = ( props ) => {
 				setAttributes={ setAttributes }
 				options={ [
 					{
+						value: '',
+						label: __(
+							'Default',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
 						value: 'none',
 						label: __(
 							'None',
@@ -173,7 +180,7 @@ const ResponsiveBorder = ( props ) => {
 					},
 				] }
 			/>
-			{ undefined !== borderStyle && 'none' !== borderStyle && (
+			{ '' !== borderStyle && 'none' !== borderStyle && (
 				showWidth !== false &&
 					<SpacingControl
 					label={ borderWidthLabel }
@@ -322,7 +329,7 @@ const ResponsiveBorder = ( props ) => {
 				} }
 				help={ borderRadiusHelp ? borderRadiusHelp : false }
 			/>
-			{ 'none' !== borderStyle && (
+			{ 'none' !== borderStyle && '' !== borderStyle && (
 				<UAGTabsControl
 					tabs={ tabsToUse }
 					normal={ tabOutputNormal }

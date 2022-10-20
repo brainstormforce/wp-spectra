@@ -60,7 +60,7 @@ const Render = ( props ) => {
 						'Submit',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ submitButtonText }
+					value={ submitButtonText.replace( /(<([^>]+)>)/ig, '' ) }
 					onChange={ ( value ) =>
 						setAttributes( {
 							submitButtonText: value,

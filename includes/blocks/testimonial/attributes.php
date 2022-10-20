@@ -155,6 +155,10 @@ return array_merge(
 		'companyLetterSpacingTablet' => '',
 		'companyLetterSpacingMobile' => '',
 		'companyLetterSpacingType'   => 'px',
+		'borderStyle'                => 'none',
+		'borderWidth'                => 1,
+		'borderRadius'               => '',
+		'borderColor'                => '',
 	),
 	$border_attribute
 );

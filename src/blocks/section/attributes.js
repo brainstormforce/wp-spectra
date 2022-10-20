@@ -388,11 +388,13 @@ const attributes = {
 			styleType: 'column-bg-img-color'
 		},
 	},
-	borderStyle: {
+	borderStyle : {
 		type: 'string',
+		default: 'none'
 	},
-	borderWidth: {
+	borderWidth : {
 		type: 'number',
+		default: 1
 	},
 	borderRadius: {
 		type: 'number',

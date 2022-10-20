@@ -104,38 +104,6 @@
 		&:not(.wp-block-uagb-post-grid).uagb-post__columns-tablet-8 article {
 			width: 12.5%;
 		}
-
-		&.wp-block-uagb-post-grid.uagb-post__columns-tablet-1 {
-			grid-template-columns: auto;
-		}
-
-		&.wp-block-uagb-post-grid.uagb-post__columns-tablet-2 {
-			grid-template-columns: auto auto;
-		}
-
-		&.wp-block-uagb-post-grid.uagb-post__columns-tablet-3 {
-			grid-template-columns: auto auto auto;
-		}
-
-		&.wp-block-uagb-post-grid.uagb-post__columns-tablet-4 {
-			grid-template-columns: auto auto auto auto;
-		}
-
-		&.wp-block-uagb-post-grid.uagb-post__columns-tablet-5 {
-			grid-template-columns: auto auto auto auto auto;
-		}
-
-		&.wp-block-uagb-post-grid.uagb-post__columns-tablet-6 {
-			grid-template-columns: auto auto auto auto auto auto;
-		}
-
-		&.wp-block-uagb-post-grid.uagb-post__columns-tablet-7 {
-			grid-template-columns: auto auto auto auto auto auto auto;
-		}
-
-		&.wp-block-uagb-post-grid.uagb-post__columns-tablet-8 {
-			grid-template-columns: auto auto auto auto auto auto auto auto;
-		}
 	}
 
 	&.uagb-editor-preview-mode-mobile {
@@ -172,38 +140,6 @@
 			width: 12.5%;
 		}
 
-
-		&.wp-block-uagb-post-grid.uagb-post__columns-mobile-1 {
-			grid-template-columns: auto;
-		}
-
-		&.wp-block-uagb-post-grid.uagb-post__columns-mobile-2 {
-			grid-template-columns: auto auto;
-		}
-
-		&.wp-block-uagb-post-grid.uagb-post__columns-mobile-3 {
-			grid-template-columns: auto auto auto;
-		}
-
-		&.wp-block-uagb-post-grid.uagb-post__columns-mobile-4 {
-			grid-template-columns: auto auto auto auto;
-		}
-
-		&.wp-block-uagb-post-grid.uagb-post__columns-mobile-5 {
-			grid-template-columns: auto auto auto auto auto;
-		}
-
-		&.wp-block-uagb-post-grid.uagb-post__columns-mobile-6 {
-			grid-template-columns: auto auto auto auto auto auto;
-		}
-
-		&.wp-block-uagb-post-grid.uagb-post__columns-mobile-7 {
-			grid-template-columns: auto auto auto auto auto auto auto;
-		}
-
-		&.wp-block-uagb-post-grid.uagb-post__columns-mobile-8 {
-			grid-template-columns: auto auto auto auto auto auto auto auto;
-		}
 	}
 
 	&:not(.is-grid).uagb-post__items {

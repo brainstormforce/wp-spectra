@@ -23,7 +23,7 @@ const ContainerGlobalElementsGap = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
-			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
+			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
 		} );
 	};
 

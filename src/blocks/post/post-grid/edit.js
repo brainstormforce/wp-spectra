@@ -179,6 +179,9 @@ const PostGridComponent = ( props ) => {
 			}
 		}
 		responsiveConditionPreview( props );
+
+		props.setAttributes( { allTaxonomyStore : undefined} );
+
 	}, [] );
 
 	useEffect( () => {
@@ -272,11 +275,22 @@ export default compose(
 			paginationMarkup,
 			postPagination,
 			excludeCurrentPost,
+			allTaxonomyStore
 		} = props.attributes;
+
 		const { setAttributes } = props;
 		const { getEntityRecords } = select( 'core' );
-		const allTaxonomy = uagb_blocks_info.all_taxonomy;
-		const currentTax = allTaxonomy[ postType ];
+
+		if ( ! allTaxonomyStore ) {
+			apiFetch( {
+				path: '/spectra/v1/all_taxonomy',
+			} ).then( ( data ) => {
+				props.setAttributes( { allTaxonomyStore: data } );
+			} );
+		}
+
+		const allTaxonomy = allTaxonomyStore;
+		const currentTax = allTaxonomy ? allTaxonomy[ postType ] : undefined;
 		let categoriesList = [];
 		let rest_base = '';
 

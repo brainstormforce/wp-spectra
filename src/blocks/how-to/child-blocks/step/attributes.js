@@ -17,7 +17,7 @@ const attributes = {
 	},
 	url: {
 		type: 'string',
-		default: '#',
+		default: '',
 	},
 	urlType: {
 		type: 'string',

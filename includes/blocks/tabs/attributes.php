@@ -118,7 +118,6 @@ return array_merge(
 		'borderColor'                 => '#e0e0e0',
 		'borderRadius'                => '',
 		'borderStyle'                 => 'solid',
-		'borderHoverColor'            => '',
 	),
 	$border_attribute
 );
