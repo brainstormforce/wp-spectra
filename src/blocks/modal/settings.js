@@ -56,22 +56,38 @@ export default function Settings( props ) {
 		closeIconSize,
 		closeIconPosition,
 		overlayColor,
-		paddingBtnTop,
-		paddingBtnBottom,
-		paddingBtnLeft,
-		paddingBtnRight,
-		paddingBtnTopTablet,
-		paddingBtnRightTablet,
-		paddingBtnBottomTablet,
-		paddingBtnLeftTablet,
-		paddingBtnTopMobile,
-		paddingBtnRightMobile,
-		paddingBtnBottomMobile,
-		paddingBtnLeftMobile,
-		paddingBtnUnit,
-		spacingLink,
-		mobilePaddingBtnUnit,
-		tabletPaddingBtnUnit,
+		paddingModalTop,
+		paddingModalBottom,
+		paddingModalLeft,
+		paddingModalRight,
+		paddingModalTopTablet,
+		paddingModalRightTablet,
+		paddingModalBottomTablet,
+		paddingModalLeftTablet,
+		paddingModalTopMobile,
+		paddingModalRightMobile,
+		paddingModalBottomMobile,
+		paddingModalLeftMobile,
+		paddingModalUnit,
+		modalSpacingLink,
+		mobilePaddingModalUnit,
+		tabletPaddingModalUnit,
+		// paddingBtnTop,
+		// paddingBtnBottom,
+		// paddingBtnLeft,
+		// paddingBtnRight,
+		// paddingBtnTopTablet,
+		// paddingBtnRightTablet,
+		// paddingBtnBottomTablet,
+		// paddingBtnLeftTablet,
+		// paddingBtnTopMobile,
+		// paddingBtnRightMobile,
+		// paddingBtnBottomMobile,
+		// paddingBtnLeftMobile,
+		// paddingBtnUnit,
+		// btnSpacingLink,
+		// mobilePaddingBtnUnit,
+		// tabletPaddingBtnUnit,
 	} = attributes;
 
 	/*
@@ -554,6 +570,94 @@ export default function Settings( props ) {
 					'ultimate-addons-for-gutenberg'
 				) }
 				valueTop={ {
+					value: paddingModalTop,
+					label: 'paddingModalTop',
+				} }
+				valueRight={ {
+					value: paddingModalRight,
+					label: 'paddingModalRight',
+				} }
+				valueBottom={ {
+					value: paddingModalBottom,
+					label: 'paddingModalBottom',
+				} }
+				valueLeft={ {
+					value: paddingModalLeft,
+					label: 'paddingModalLeft',
+				} }
+				valueTopTablet={ {
+					value: paddingModalTopTablet,
+					label: 'paddingModalTopTablet',
+				} }
+				valueRightTablet={ {
+					value: paddingModalRightTablet,
+					label: 'paddingModalRightTablet',
+				} }
+				valueBottomTablet={ {
+					value: paddingModalBottomTablet,
+					label: 'paddingModalBottomTablet',
+				} }
+				valueLeftTablet={ {
+					value: paddingModalLeftTablet,
+					label: 'paddingModalLeftTablet',
+				} }
+				valueTopMobile={ {
+					value: paddingModalTopMobile,
+					label: 'paddingModalTopMobile',
+				} }
+				valueRightMobile={ {
+					value: paddingModalRightMobile,
+					label: 'paddingModalRightMobile',
+				} }
+				valueBottomMobile={ {
+					value: paddingModalBottomMobile,
+					label: 'paddingModalBottomMobile',
+				} }
+				valueLeftMobile={ {
+					value: paddingModalLeftMobile,
+					label: 'paddingModalLeftMobile',
+				} }
+				unit={ {
+					value: paddingModalUnit,
+					label: 'paddingModalUnit',
+				} }
+				mUnit={ {
+					value: mobilePaddingModalUnit,
+					label: 'mobilePaddingModalUnit',
+				} }
+				tUnit={ {
+					value: tabletPaddingModalUnit,
+					label: 'tabletPaddingModalUnit',
+				} }
+				deviceType={ deviceType }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				link={ {
+					value: modalSpacingLink,
+					label: 'modalSpacingLink',
+				} }
+				units={ [
+					{
+						name: __(
+							'Pixel',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: 'px',
+					},
+					{
+						name: __( '%', 'ultimate-addons-for-gutenberg' ),
+						unitValue: '%',
+					},
+				] }
+			/>
+
+			{/* <SpacingControl
+				{ ...props }
+				label={ __(
+					'Padding',
+					'ultimate-addons-for-gutenberg'
+				) }
+				valueTop={ {
 					value: paddingBtnTop,
 					label: 'paddingBtnTop',
 				} }
@@ -617,8 +721,8 @@ export default function Settings( props ) {
 				attributes={ attributes }
 				setAttributes={ setAttributes }
 				link={ {
-					value: spacingLink,
-					label: 'spacingLink',
+					value: btnSpacingLink,
+					label: 'btnSpacingLink',
 				} }
 				units={ [
 					{
@@ -633,7 +737,7 @@ export default function Settings( props ) {
 						unitValue: '%',
 					},
 				] }
-			/>
+			/> */}
 		</UAGAdvancedPanelBody>
 	)
 

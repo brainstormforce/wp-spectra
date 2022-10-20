@@ -155,103 +155,201 @@ const attributes = {
 			styleType: 'overlay-bg-color'
 		}
 	},
-	spacingLink: {
+	modalSpacingLink: {
 		type: 'boolean',
 		default: true,
 	},
-	paddingBtnUnit: {
+	paddingModalUnit: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'btn-padding-unit'
+			styleType: 'modal-padding-unit'
 		},
 		default: 'px',
 	},
-	mobilePaddingBtnUnit: {
+	mobilePaddingModalUnit: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'btn-padding-unit-mobile'
+			styleType: 'modal-padding-unit-mobile'
 		},
 		default: 'px',
 	},
-	tabletPaddingBtnUnit: {
+	tabletPaddingModalUnit: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'btn-padding-unit-tablet'
+			styleType: 'modal-padding-unit-tablet'
 		}
 	},
-	paddingBtnTop: {
+	paddingModalTop: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-top-padding'
+			styleType: 'modal-top-padding'
 		}
 	},
-	paddingBtnBottom: {
+	paddingModalBottom: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-bottom-padding'
+			styleType: 'modal-bottom-padding'
 		}
 	},
-	paddingBtnLeft: {
+	paddingModalLeft: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-left-padding'
+			styleType: 'modal-left-padding'
 		}
 	},
-	paddingBtnRight: {
+	paddingModalRight: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-right-padding'
+			styleType: 'modal-right-padding'
 		}
 	},
-	paddingBtnTopTablet: {
+	paddingModalTopTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-top-padding-tablet'
+			styleType: 'modal-top-padding-tablet'
 		}
 	},
-	paddingBtnRightTablet: {
+	paddingModalRightTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-right-padding-tablet'
+			styleType: 'modal-right-padding-tablet'
 		}
 	},
-	paddingBtnBottomTablet: {
+	paddingModalBottomTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-bottom-padding-tablet'
+			styleType: 'modal-bottom-padding-tablet'
 		}
 	},
-	paddingBtnLeftTablet: {
+	paddingModalLeftTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-left-padding-tablet'
+			styleType: 'modal-left-padding-tablet'
 		}
 	},
-	paddingBtnTopMobile: {
+	paddingModalTopMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-top-padding-mobile'
+			styleType: 'modal-top-padding-mobile'
 		}
 	},
-	paddingBtnRightMobile: {
+	paddingModalRightMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-right-padding-mobile'
+			styleType: 'modal-right-padding-mobile'
 		}
 	},
-	paddingBtnBottomMobile: {
+	paddingModalBottomMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-bottom-padding-mobile'
+			styleType: 'modal-bottom-padding-mobile'
 		}
 	},
-	paddingBtnLeftMobile: {
+	paddingModalLeftMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-left-padding-mobile'
+			styleType: 'modal-left-padding-mobile'
 		}
 	},
+	
+	// btnSpacingLink: {
+	// 	type: 'boolean',
+	// 	default: true,
+	// },
+	// paddingBtnUnit: {
+	// 	type: 'string',
+	// 	UAGCopyPaste: {
+	// 		styleType: 'btn-padding-unit'
+	// 	},
+	// 	default: 'px',
+	// },
+	// mobilePaddingBtnUnit: {
+	// 	type: 'string',
+	// 	UAGCopyPaste: {
+	// 		styleType: 'btn-padding-unit-mobile'
+	// 	},
+	// 	default: 'px',
+	// },
+	// tabletPaddingBtnUnit: {
+	// 	type: 'string',
+	// 	default: 'px',
+	// 	UAGCopyPaste: {
+	// 		styleType: 'btn-padding-unit-tablet'
+	// 	}
+	// },
+	// paddingBtnTop: {
+	// 	type: 'number',
+	// 	UAGCopyPaste: {
+	// 		styleType: 'btn-top-padding'
+	// 	}
+	// },
+	// paddingBtnBottom: {
+	// 	type: 'number',
+	// 	UAGCopyPaste: {
+	// 		styleType: 'btn-bottom-padding'
+	// 	}
+	// },
+	// paddingBtnLeft: {
+	// 	type: 'number',
+	// 	UAGCopyPaste: {
+	// 		styleType: 'btn-left-padding'
+	// 	}
+	// },
+	// paddingBtnRight: {
+	// 	type: 'number',
+	// 	UAGCopyPaste: {
+	// 		styleType: 'btn-right-padding'
+	// 	}
+	// },
+	// paddingBtnTopTablet: {
+	// 	type: 'number',
+	// 	UAGCopyPaste: {
+	// 		styleType: 'btn-top-padding-tablet'
+	// 	}
+	// },
+	// paddingBtnRightTablet: {
+	// 	type: 'number',
+	// 	UAGCopyPaste: {
+	// 		styleType: 'btn-right-padding-tablet'
+	// 	}
+	// },
+	// paddingBtnBottomTablet: {
+	// 	type: 'number',
+	// 	UAGCopyPaste: {
+	// 		styleType: 'btn-bottom-padding-tablet'
+	// 	}
+	// },
+	// paddingBtnLeftTablet: {
+	// 	type: 'number',
+	// 	UAGCopyPaste: {
+	// 		styleType: 'btn-left-padding-tablet'
+	// 	}
+	// },
+	// paddingBtnTopMobile: {
+	// 	type: 'number',
+	// 	UAGCopyPaste: {
+	// 		styleType: 'btn-top-padding-mobile'
+	// 	}
+	// },
+	// paddingBtnRightMobile: {
+	// 	type: 'number',
+	// 	UAGCopyPaste: {
+	// 		styleType: 'btn-right-padding-mobile'
+	// 	}
+	// },
+	// paddingBtnBottomMobile: {
+	// 	type: 'number',
+	// 	UAGCopyPaste: {
+	// 		styleType: 'btn-bottom-padding-mobile'
+	// 	}
+	// },
+	// paddingBtnLeftMobile: {
+	// 	type: 'number',
+	// 	UAGCopyPaste: {
+	// 		styleType: 'btn-left-padding-mobile'
+	// 	}
+	// },
 };
 
 export default attributes;

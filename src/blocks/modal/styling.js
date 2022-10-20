@@ -28,21 +28,38 @@ export default function styling( props ) {
 		closeIconSize,
 		closeIconPosition,
 		overlayColor,
-		paddingBtnUnit,
-		mobilePaddingBtnUnit,
-		tabletPaddingBtnUnit,
-		paddingBtnTop,
-		paddingBtnBottom,
-		paddingBtnLeft,
-		paddingBtnRight,
-		paddingBtnTopTablet,
-		paddingBtnRightTablet,
-		paddingBtnBottomTablet,
-		paddingBtnLeftTablet,
-		paddingBtnTopMobile,
-		paddingBtnRightMobile,
-		paddingBtnBottomMobile,
-		paddingBtnLeftMobile,
+		// Modal Padding.
+		paddingModalUnit,
+		mobilePaddingModalUnit,
+		tabletPaddingModalUnit,
+		paddingModalTop,
+		paddingModalBottom,
+		paddingModalLeft,
+		paddingModalRight,
+		paddingModalTopTablet,
+		paddingModalRightTablet,
+		paddingModalBottomTablet,
+		paddingModalLeftTablet,
+		paddingModalTopMobile,
+		paddingModalRightMobile,
+		paddingModalBottomMobile,
+		paddingModalLeftMobile,
+		// Button Padding.
+		// paddingBtnUnit,
+		// mobilePaddingBtnUnit,
+		// tabletPaddingBtnUnit,
+		// paddingBtnTop,
+		// paddingBtnBottom,
+		// paddingBtnLeft,
+		// paddingBtnRight,
+		// paddingBtnTopTablet,
+		// paddingBtnRightTablet,
+		// paddingBtnBottomTablet,
+		// paddingBtnLeftTablet,
+		// paddingBtnTopMobile,
+		// paddingBtnRightMobile,
+		// paddingBtnBottomMobile,
+		// paddingBtnLeftMobile,
 	} = props.attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -74,14 +91,23 @@ export default function styling( props ) {
 			'background': overlayColor
 		},
 		' .uagb-modal-popup-content' : {
-			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
-			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
-			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
+			'padding-left': generateCSSUnit( paddingModalLeft, paddingModalUnit ),
+			'padding-right': generateCSSUnit( paddingModalRight, paddingModalUnit ),
+			'padding-top': generateCSSUnit( paddingModalTop, paddingModalUnit ),
 			'padding-bottom': generateCSSUnit(
-				paddingBtnBottom,
-				paddingBtnUnit
+				paddingModalBottom,
+				paddingModalUnit
 			),
-		}
+		},
+		// ' .uagb-modal-popup-content' : {
+		// 	'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
+		// 	'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
+		// 	'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
+		// 	'padding-bottom': generateCSSUnit(
+		// 		paddingBtnBottom,
+		// 		paddingBtnUnit
+		// 	),
+		// }
 	};
 	const tabletSelectors = {
 		'.uagb-modal-wrapper' : {
@@ -99,22 +125,40 @@ export default function styling( props ) {
 		},
 		' .uagb-modal-popup-content' : {
 			'padding-left': generateCSSUnit(
-				paddingBtnLeftTablet,
-				tabletPaddingBtnUnit
+				paddingModalLeftTablet,
+				tabletPaddingModalUnit
 			),
 			'padding-right': generateCSSUnit(
-				paddingBtnRightTablet,
-				tabletPaddingBtnUnit
+				paddingModalRightTablet,
+				tabletPaddingModalUnit
 			),
 			'padding-top': generateCSSUnit(
-				paddingBtnTopTablet,
-				tabletPaddingBtnUnit
+				paddingModalTopTablet,
+				tabletPaddingModalUnit
 			),
 			'padding-bottom': generateCSSUnit(
-				paddingBtnBottomTablet,
-				tabletPaddingBtnUnit
+				paddingModalBottomTablet,
+				tabletPaddingModalUnit
 			),
-		}
+		},
+		// ' .uagb-modal-popup-content' : {
+		// 	'padding-left': generateCSSUnit(
+		// 		paddingBtnLeftTablet,
+		// 		tabletPaddingBtnUnit
+		// 	),
+		// 	'padding-right': generateCSSUnit(
+		// 		paddingBtnRightTablet,
+		// 		tabletPaddingBtnUnit
+		// 	),
+		// 	'padding-top': generateCSSUnit(
+		// 		paddingBtnTopTablet,
+		// 		tabletPaddingBtnUnit
+		// 	),
+		// 	'padding-bottom': generateCSSUnit(
+		// 		paddingBtnBottomTablet,
+		// 		tabletPaddingBtnUnit
+		// 	),
+		// }
 	};
 	const mobileSelectors = {
 		'.uagb-modal-wrapper' : {
@@ -132,22 +176,40 @@ export default function styling( props ) {
 		},
 		' .uagb-modal-popup-content' : {
 			'padding-left': generateCSSUnit(
-				paddingBtnLeftMobile,
-				mobilePaddingBtnUnit
+				paddingModalLeftMobile,
+				mobilePaddingModalUnit
 			),
 			'padding-right': generateCSSUnit(
-				paddingBtnRightMobile,
-				mobilePaddingBtnUnit
+				paddingModalRightMobile,
+				mobilePaddingModalUnit
 			),
 			'padding-top': generateCSSUnit(
-				paddingBtnTopMobile,
-				mobilePaddingBtnUnit
+				paddingModalTopMobile,
+				mobilePaddingModalUnit
 			),
 			'padding-bottom': generateCSSUnit(
-				paddingBtnBottomMobile,
-				mobilePaddingBtnUnit
+				paddingModalBottomMobile,
+				mobilePaddingModalUnit
 			),
-		}
+		},
+		// ' .uagb-modal-popup-content' : {
+		// 	'padding-left': generateCSSUnit(
+		// 		paddingBtnLeftMobile,
+		// 		mobilePaddingBtnUnit
+		// 	),
+		// 	'padding-right': generateCSSUnit(
+		// 		paddingBtnRightMobile,
+		// 		mobilePaddingBtnUnit
+		// 	),
+		// 	'padding-top': generateCSSUnit(
+		// 		paddingBtnTopMobile,
+		// 		mobilePaddingBtnUnit
+		// 	),
+		// 	'padding-bottom': generateCSSUnit(
+		// 		paddingBtnBottomMobile,
+		// 		mobilePaddingBtnUnit
+		// 	),
+		// }
 	};
 	
 	if( 'popup-top-right' === closeIconPosition ) {
