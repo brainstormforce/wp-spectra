@@ -37,6 +37,15 @@ export default function Settings( props ) {
 		iconImage, 
 		icon, 
 		imageSize,
+		imageWidth,
+		imageWidthMobile,
+		imageWidthTablet,
+		imageWidthType,
+		imageWidthUnit,
+		imageWidthUnitTablet,
+		imageWidthUnitMobile,
+		iconimgBorderRadius,
+		iconimgBorderRadiusUnit,
 		buttonIcon,
 		buttonIconPosition,
 		buttonIconSpace,
@@ -726,6 +735,127 @@ export default function Settings( props ) {
 					/>
 				</>
 			)}
+
+			{ modalTrigger === 'image' &&
+				iconImage &&
+				iconImage.url !== 'null' &&
+				iconImage.url !== '' && (
+				<>
+					<ToggleControl
+						checked={ imageWidthType }
+						onChange={ () =>
+							setAttributes( {
+								imageWidthType: ! imageWidthType,
+							} )
+						}
+						label={ __(
+							'Custom Width',
+							'ultimate-addons-for-gutenberg'
+						) }
+						help={ __(
+							'Turn this off to inherit the natural width of Image.',
+							'ultimate-addons-for-gutenberg'
+						) }
+					/>
+
+					{ imageWidthType && (
+						<ResponsiveSlider
+							label={ __(
+								'Width',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								desktop: {
+									value: imageWidth,
+									label: 'imageWidth',
+									unit: {
+										value: imageWidthUnit,
+										label: 'imageWidthUnit',
+									},
+								},
+								tablet: {
+									value: imageWidthTablet,
+									label: 'imageWidthTablet',
+									unit: {
+										value: imageWidthUnitTablet,
+										label: 'imageWidthUnitTablet',
+									},
+
+								},
+								mobile: {
+									value: imageWidthMobile,
+									label: 'imageWidthMobile',
+									unit: {
+										value: imageWidthUnitMobile,
+										label: 'imageWidthUnitMobile',
+									},
+								},
+							} }
+							min={ 0 }
+							limitMax={ { 'px': 500, '%': 100, 'em': 100 } } // eslint-disable-line quote-props
+							units={ [
+								{
+									name: __(
+										'Pixel',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+								{
+									name: __(
+										'%',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: '%',
+								},
+								{
+									name: __(
+										'EM',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'em',
+								},
+							] }
+							setAttributes={ setAttributes }
+						/>
+					) }
+					<Range
+						label={ __(
+							'Border Radius',
+							'ultimate-addons-for-gutenberg'
+						) }
+						setAttributes={ setAttributes }
+						value={ iconimgBorderRadius }
+						data={ {
+							value: iconimgBorderRadius,
+							label: 'iconimgBorderRadius',
+						} }
+						min={ 0 }
+						max={ 100 }
+						unit={ {
+							value: iconimgBorderRadiusUnit,
+							label:
+								'iconimgBorderRadiusUnit',
+						} }
+						units={ [
+							{
+								name: __(
+									'Pixel',
+									'ultimate-addons-for-gutenberg'
+								),
+								unitValue: 'px',
+							},
+							{
+								name: __(
+									'EM',
+									'ultimate-addons-for-gutenberg'
+								),
+								unitValue: 'em',
+							},
+						] }
+					/>
+				</>
+			) }
 
 			{/* <SpacingControl
 				{ ...props }

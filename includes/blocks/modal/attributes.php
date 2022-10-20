@@ -69,6 +69,17 @@ return array(
 	'textTransform'                => '',
 	'textDecoration'               => '',
 
+	'imageSize'         			=> 'thumbnail',
+	'imageWidthType'             => true,
+	'imageWidth'                 => '',
+	'imageWidthMobile'           => '',
+	'imageWidthTablet'           => '',	
+	'imageWidthUnit'             => 'px',
+	'imageWidthUnitTablet'       => 'px',
+	'imageWidthUnitMobile'       => 'px',
+	'iconimgBorderRadius'        => '0',
+	'iconimgBorderRadiusUnit'    => 'px',
+
 	// 'paddingBtnUnit'			=> 'px',
 	// 'mobilePaddingBtnUnit'			=> 'px',
 	// 'tabletPaddingBtnUnit'			=> 'px',

@@ -48,7 +48,10 @@ $selectors   = array(
 	),
 	' .uagb-modal-text.uagb-modal-trigger' => array(
 		'color'			=> $attr['textColor']
-	)
+	),
+	'.uagb-modal-wrapper img.uagb-modal-trigger' => array(
+		'border-radius' => UAGB_Helper::get_css_value( $attr['iconimgBorderRadius'], $attr['iconimgBorderRadiusUnit'] ),
+	),
 );
 $t_selectors = array(
 	'.uagb-modal-wrapper'     => array(
@@ -133,6 +136,20 @@ if ( 'button' === $attr['modalTrigger'] ) {
 			'margin-right' => UAGB_Helper::get_css_value( $attr['buttonIconSpaceMobile'], $attr['buttonIconSpaceType'] ),
 		);
 	}
+}
+
+if ( 'image' === $attr['modalTrigger'] && $attr['imageWidthType'] ) {
+	// Image.
+	$selectors[' img.uagb-modal-trigger']            = array(
+		'width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
+	);
+	$t_selectors[' img.uagb-modal-trigger']          = array(
+		'width' => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnitTablet'] ),
+	);
+	$m_selectors[' img.uagb-modal-trigger']          = array(
+		'width' => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnitMobile'] ),
+	);
+
 }
 
 $combined_selectors = array(

@@ -25,6 +25,67 @@ const attributes = {
 		type: 'string',
 		default: 'thumbnail',
 	},
+	imageWidth: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'image-width'
+		},
+		default: '',
+	},
+	imageWidthMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'image-width-mobile'
+		}
+	},
+	imageWidthTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'image-width-tablet'
+		}
+	},
+	imageWidthType: {
+		type: 'boolean',
+		default: true,
+		UAGCopyPaste: {
+			styleType: 'image-width-type'
+		}
+	},
+	imageWidthUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'image-width-unit'
+		}
+	},
+	imageWidthUnitTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'image-width-unit-tablet'
+		}
+	},
+	imageWidthUnitMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'image-width-unit-mobile'
+		}
+	},
+	iconimgBorderRadius: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'image-border-radius'
+		}
+	},
+	iconimgBorderRadiusUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'icon-border-radius-unit'
+		}
+	},
 	buttonText: {
 		type: 'html',
 		default: 'Click Here',

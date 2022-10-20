@@ -66,6 +66,15 @@ export default function styling( props ) {
 		textLetterSpacingType,
 		textTransform,
 		textDecoration,
+		imageWidth,
+		imageWidthMobile,
+		imageWidthTablet,
+		imageWidthType,
+		imageWidthUnit,
+		imageWidthUnitTablet,
+		imageWidthUnitMobile,
+		iconimgBorderRadius,
+		iconimgBorderRadiusUnit,
 		// Button Padding.
 		// paddingBtnUnit,
 		// mobilePaddingBtnUnit,
@@ -139,6 +148,12 @@ export default function styling( props ) {
 			'font-size': generateCSSUnit( textFontSize, textFontSizeType ),
 			'line-height': generateCSSUnit( textLineHeight, textLineHeightType ),
 			'letter-spacing': generateCSSUnit( textLetterSpacing, textLetterSpacingType ),
+		},
+		'.uagb-modal-wrapper img.uagb-modal-trigger': {
+			'border-radius': generateCSSUnit(
+				iconimgBorderRadius,
+				iconimgBorderRadiusUnit
+			),
 		}
 		// ' .uagb-modal-popup-content' : {
 		// 	'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
@@ -288,6 +303,21 @@ export default function styling( props ) {
 				'margin-right': generateCSSUnit( buttonIconSpaceFallbackMobile, buttonIconSpaceType ),
 			};
 		}
+	}
+
+	if ( 'image' === modalTrigger && imageWidthType ) {
+		// Image
+		selectors[ ' img.uagb-modal-trigger' ] = {
+			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+
+		tabletSelectors[ ' img.uagb-modal-trigger' ] = {
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
+		};
+
+		mobileSelectors[ ' img.uagb-modal-trigger' ] = {
+			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
+		};
 	}
 
 	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
