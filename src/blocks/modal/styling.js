@@ -28,6 +28,7 @@ export default function styling( props ) {
 		closeIconSize,
 		closeIconPosition,
 		overlayColor,
+		closeIconColor,
 		// Modal Padding.
 		paddingModalUnit,
 		mobilePaddingModalUnit,
@@ -86,6 +87,7 @@ export default function styling( props ) {
 			'height': generateCSSUnit( closeIconSize, 'px' ),
 			'line-height': generateCSSUnit( closeIconSize, 'px' ),
 			'font-size': generateCSSUnit( closeIconSize, 'px' ),
+			'fill': closeIconColor
 		},
 		' .uagb-modal-popup.active' : {
 			'background': overlayColor

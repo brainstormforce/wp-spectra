@@ -22,6 +22,7 @@ $selectors   = array(
 		'height'      => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
 		'font-size'   => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
+		'fill'			=> $attr['closeIconColor']
 	),
 	' .uagb-modal-popup.active'          => array(
 		'background' => $attr['overlayColor'],

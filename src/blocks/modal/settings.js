@@ -56,6 +56,7 @@ export default function Settings( props ) {
 		closeIconSize,
 		closeIconPosition,
 		overlayColor,
+		closeIconColor,
 		paddingModalTop,
 		paddingModalBottom,
 		paddingModalLeft,
@@ -408,7 +409,7 @@ export default function Settings( props ) {
 						label: 'modalHeightMobile',
 					},
 				} }
-				min={ '%' === modalHeightType ? 10 : 100 }
+				min={ '%' === modalHeightType ? 10 : 130 }
 				max={ '%' === modalHeightType ? 100 : 1500 }
 				unit={ {
 					value: modalHeightType,
@@ -741,6 +742,31 @@ export default function Settings( props ) {
 		</UAGAdvancedPanelBody>
 	)
 
+	const closeStylePanel =  (
+		<UAGAdvancedPanelBody
+			title={ __( 'Close Button', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
+		>
+			<AdvancedPopColorControl
+				label={ __(
+					'Icon Color',
+					'ultimate-addons-for-gutenberg'
+				) }
+				colorValue={
+					closeIconColor
+						? closeIconColor
+						: ''
+				}
+				data={ {
+					value: closeIconColor,
+					label: 'closeIconColor',
+				} }
+				setAttributes={ setAttributes }
+			/>
+
+		</UAGAdvancedPanelBody>
+	)
+
 	return (
 		<>
 			<InspectorControls>
@@ -754,6 +780,7 @@ export default function Settings( props ) {
 
 					<InspectorTab { ...UAGTabs.style }>
 						{contentStylePanel}
+						{closeStylePanel}
 					</InspectorTab>
 					
 				</InspectorTabs>

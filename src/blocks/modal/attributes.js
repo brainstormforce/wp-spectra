@@ -89,7 +89,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'modal-width'
 		},
-		default: 700
+		default: 650
 	},
 	modalWidthTablet: {
 		type: 'number',
@@ -115,7 +115,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'modal-height'
 		},
-		default: 350
+		default: 300
 	},
 	modalHeightTablet: {
 		type: 'number',
@@ -153,6 +153,13 @@ const attributes = {
 		default: 'rgba(0,0,0,0.75)',
 		UAGCopyPaste: {
 			styleType: 'overlay-bg-color'
+		}
+	},
+	closeIconColor: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'close-icon-color'
 		}
 	},
 	modalSpacingLink: {
