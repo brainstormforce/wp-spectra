@@ -37,7 +37,7 @@ const Render = ( props ) => {
 
 	useEffect( () => {
 		UAGBCounter.init( '.uagb-block-' + block_id, attributes ) // eslint-disable-line no-undef
-	}, [layout, animationDuration, startNumber, endNumber, thousandSeparator, decimalPlaces, block_id] )
+	}, [ layout, animationDuration, startNumber, endNumber, thousandSeparator, decimalPlaces, block_id, circleSize ] )
 
 	const startFallback = getFallbackNumber( startNumber, 'startNumber', 'counter' );
 	const endFallback = getFallbackNumber( endNumber, 'endNumber', 'counter' );
