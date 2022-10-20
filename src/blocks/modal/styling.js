@@ -197,6 +197,14 @@ export default function styling( props ) {
 				tabletPaddingModalUnit
 			),
 		},
+		' .uagb-modal-text.uagb-modal-trigger': {
+			'font-size': generateCSSUnit( textFontSizeTablet, textFontSizeType ),
+			'line-height': generateCSSUnit(
+				textLineHeightTablet,
+				textLineHeightType
+			),
+			'letter-spacing': generateCSSUnit( textLetterSpacingTablet, textLetterSpacingType ),
+		},
 		// ' .uagb-modal-popup-content' : {
 		// 	'padding-left': generateCSSUnit(
 		// 		paddingBtnLeftTablet,
@@ -247,6 +255,14 @@ export default function styling( props ) {
 				paddingModalBottomMobile,
 				mobilePaddingModalUnit
 			),
+		},
+		' .uagb-modal-text.uagb-modal-trigger': {
+			'font-size': generateCSSUnit( textFontSizeMobile, textFontSizeType ),
+			'line-height': generateCSSUnit(
+				textLineHeightMobile,
+				textLineHeightType
+			),
+			'letter-spacing': generateCSSUnit( textLetterSpacingMobile, textLetterSpacingType ),
 		},
 		// ' .uagb-modal-popup-content' : {
 		// 	'padding-left': generateCSSUnit(

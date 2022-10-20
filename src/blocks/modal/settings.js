@@ -37,15 +37,7 @@ export default function Settings( props ) {
 		iconImage, 
 		icon, 
 		imageSize,
-		imageWidth,
-		imageWidthMobile,
-		imageWidthTablet,
-		imageWidthType,
-		imageWidthUnit,
-		imageWidthUnitTablet,
-		imageWidthUnitMobile,
-		iconimgBorderRadius,
-		iconimgBorderRadiusUnit,
+		// Button.
 		buttonIcon,
 		buttonIconPosition,
 		buttonIconSpace,
@@ -84,9 +76,11 @@ export default function Settings( props ) {
 		modalSpacingLink,
 		mobilePaddingModalUnit,
 		tabletPaddingModalUnit,
-		//Trigger style controls
+		// Trigger style controls.
+		// Icon.
 		iconColor,
 		iconSize,
+		// Text.
 		textColor,
 		textFontFamily,
 		textFontWeight,
@@ -106,6 +100,16 @@ export default function Settings( props ) {
 		textTransform,
 		textDecoration,
 		textLoadGoogleFonts,
+		// Image.
+		imageWidth,
+		imageWidthMobile,
+		imageWidthTablet,
+		imageWidthType,
+		imageWidthUnit,
+		imageWidthUnitTablet,
+		imageWidthUnitMobile,
+		iconimgBorderRadius,
+		iconimgBorderRadiusUnit,
 		// paddingBtnTop,
 		// paddingBtnBottom,
 		// paddingBtnLeft,
