@@ -38,7 +38,14 @@ $selectors   = array(
 	// 	'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRight'], $attr['paddingBtnUnit'] ),
 	// 	'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTop'], $attr['paddingBtnUnit'] ),
 	// 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottom'], $attr['paddingBtnUnit'] ),
-	// )
+	// ),
+	' .uagb-modal-trigger svg' => array(
+		'width'       => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
+		'height'      => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
+		'line-height' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
+		'font-size'   => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
+		'fill'			=> $attr['iconColor']
+	),
 );
 $t_selectors = array(
 	'.uagb-modal-wrapper'     => array(

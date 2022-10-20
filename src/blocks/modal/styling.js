@@ -45,6 +45,10 @@ export default function styling( props ) {
 		paddingModalRightMobile,
 		paddingModalBottomMobile,
 		paddingModalLeftMobile,
+
+		
+		iconColor,
+		iconSize,
 		// Button Padding.
 		// paddingBtnUnit,
 		// mobilePaddingBtnUnit,
@@ -100,6 +104,13 @@ export default function styling( props ) {
 				paddingModalBottom,
 				paddingModalUnit
 			),
+		},
+		' .uagb-modal-trigger svg': {
+			'width': generateCSSUnit( iconSize, 'px' ),
+			'height': generateCSSUnit( iconSize, 'px' ),
+			'line-height': generateCSSUnit( iconSize, 'px' ),
+			'font-size': generateCSSUnit( iconSize, 'px' ),
+			'fill': iconColor
 		},
 		// ' .uagb-modal-popup-content' : {
 		// 	'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),

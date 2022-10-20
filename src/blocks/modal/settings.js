@@ -73,6 +73,9 @@ export default function Settings( props ) {
 		modalSpacingLink,
 		mobilePaddingModalUnit,
 		tabletPaddingModalUnit,
+		//Trigger style controls
+		iconColor,
+		iconSize,
 		// paddingBtnTop,
 		// paddingBtnBottom,
 		// paddingBtnLeft,
@@ -542,6 +545,138 @@ export default function Settings( props ) {
 		</UAGAdvancedPanelBody>
 	)
 
+	const triggerStylePanel =  (
+		<UAGAdvancedPanelBody
+			title={ __( 'Modal Trigger', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
+		>
+
+			{ modalTrigger === 'icon' && (
+				<>
+					<Range
+						label={ __(
+							'Icon Size',
+							'ultimate-addons-for-gutenberg'
+						) }
+						setAttributes={ setAttributes }
+						value={ iconSize }
+						data={ {
+							value: iconSize,
+							label: 'iconSize',
+						} }
+						min={ 0 }
+						max={ 150 }
+						displayUnit={ false }
+					/>
+					<AdvancedPopColorControl
+						label={ __(
+							'Icon Color',
+							'ultimate-addons-for-gutenberg'
+						) }
+						colorValue={
+							iconColor
+								? iconColor
+								: ''
+						}
+						data={ {
+							value: iconColor,
+							label: 'iconColor',
+						} }
+						setAttributes={ setAttributes }
+					/>
+				</>
+			)}
+
+			{/* <SpacingControl
+				{ ...props }
+				label={ __(
+					'Padding',
+					'ultimate-addons-for-gutenberg'
+				) }
+				valueTop={ {
+					value: paddingBtnTop,
+					label: 'paddingBtnTop',
+				} }
+				valueRight={ {
+					value: paddingBtnRight,
+					label: 'paddingBtnRight',
+				} }
+				valueBottom={ {
+					value: paddingBtnBottom,
+					label: 'paddingBtnBottom',
+				} }
+				valueLeft={ {
+					value: paddingBtnLeft,
+					label: 'paddingBtnLeft',
+				} }
+				valueTopTablet={ {
+					value: paddingBtnTopTablet,
+					label: 'paddingBtnTopTablet',
+				} }
+				valueRightTablet={ {
+					value: paddingBtnRightTablet,
+					label: 'paddingBtnRightTablet',
+				} }
+				valueBottomTablet={ {
+					value: paddingBtnBottomTablet,
+					label: 'paddingBtnBottomTablet',
+				} }
+				valueLeftTablet={ {
+					value: paddingBtnLeftTablet,
+					label: 'paddingBtnLeftTablet',
+				} }
+				valueTopMobile={ {
+					value: paddingBtnTopMobile,
+					label: 'paddingBtnTopMobile',
+				} }
+				valueRightMobile={ {
+					value: paddingBtnRightMobile,
+					label: 'paddingBtnRightMobile',
+				} }
+				valueBottomMobile={ {
+					value: paddingBtnBottomMobile,
+					label: 'paddingBtnBottomMobile',
+				} }
+				valueLeftMobile={ {
+					value: paddingBtnLeftMobile,
+					label: 'paddingBtnLeftMobile',
+				} }
+				unit={ {
+					value: paddingBtnUnit,
+					label: 'paddingBtnUnit',
+				} }
+				mUnit={ {
+					value: mobilePaddingBtnUnit,
+					label: 'mobilePaddingBtnUnit',
+				} }
+				tUnit={ {
+					value: tabletPaddingBtnUnit,
+					label: 'tabletPaddingBtnUnit',
+				} }
+				deviceType={ deviceType }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				link={ {
+					value: btnSpacingLink,
+					label: 'btnSpacingLink',
+				} }
+				units={ [
+					{
+						name: __(
+							'Pixel',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: 'px',
+					},
+					{
+						name: __( '%', 'ultimate-addons-for-gutenberg' ),
+						unitValue: '%',
+					},
+				] }
+			/> */}
+		</UAGAdvancedPanelBody>
+	)
+
 	const contentStylePanel =  (
 		<UAGAdvancedPanelBody
 			title={ __( 'Modal Content', 'ultimate-addons-for-gutenberg' ) }
@@ -780,6 +915,7 @@ export default function Settings( props ) {
 
 					<InspectorTab { ...UAGTabs.style }>
 						{contentStylePanel}
+						{triggerStylePanel}
 						{closeStylePanel}
 					</InspectorTab>
 					

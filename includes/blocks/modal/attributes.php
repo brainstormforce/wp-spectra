@@ -44,6 +44,10 @@ return array(
 	'paddingModalRightMobile'			=> '',
 	'paddingModalBottomMobile'			=> '',
 	'paddingModalLeftMobile'			=> '',
+
+	'iconSize'         			=> 30,
+	'iconColor'					=> '',
+
 	// 'paddingBtnUnit'			=> 'px',
 	// 'mobilePaddingBtnUnit'			=> 'px',
 	// 'tabletPaddingBtnUnit'			=> 'px',

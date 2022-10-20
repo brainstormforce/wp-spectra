@@ -260,6 +260,18 @@ const attributes = {
 		}
 	},
 	
+	iconSize: {
+		type: 'number',
+		default: 30
+	},
+	iconColor: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'icon-color'
+		}
+	},
+
 	// btnSpacingLink: {
 	// 	type: 'boolean',
 	// 	default: true,
