@@ -91,6 +91,23 @@ export default function styling( props ) {
 		paddingBtnRightMobile,
 		paddingBtnBottomMobile,
 		paddingBtnLeftMobile,
+		btnFontFamily,
+		btnFontWeight,
+		btnFontStyle,
+		btnFontSizeType,
+		btnFontSize,
+		btnFontSizeMobile,
+		btnFontSizeTablet,
+		btnLineHeightType,
+		btnLineHeight,
+		btnLineHeightMobile,
+		btnLineHeightTablet,
+		btnLetterSpacing,
+		btnLetterSpacingTablet,
+		btnLetterSpacingMobile,
+		btnLetterSpacingType,
+		btnTransform,
+		btnDecoration,
 	} = props.attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -163,6 +180,21 @@ export default function styling( props ) {
 				paddingBtnBottom,
 				paddingBtnUnit
 			),
+			'font-family': btnFontFamily,
+			'font-style' : btnFontStyle,
+			'text-decoration': btnDecoration,
+			'text-transform': btnTransform,
+			'font-weight': btnFontWeight,
+			'font-size': generateCSSUnit( btnFontSize, btnFontSizeType ),
+			'line-height': generateCSSUnit( btnLineHeight, btnLineHeightType ),
+			'letter-spacing': generateCSSUnit( btnLetterSpacing, btnLetterSpacingType ),
+		},
+		' .uagb-modal-button-link.uagb-modal-trigger svg' : {
+			'font-size': generateCSSUnit( btnFontSize, btnFontSizeType ),
+			'width': generateCSSUnit( btnFontSize, btnFontSizeType ),
+			'height': generateCSSUnit( btnFontSize, btnFontSizeType ),
+			'line-height': generateCSSUnit( btnFontSize, btnFontSizeType ),
+			// 'fill': iconColor
 		}
 	};
 	const tabletSelectors = {
@@ -222,6 +254,19 @@ export default function styling( props ) {
 				paddingBtnBottomTablet,
 				tabletPaddingBtnUnit
 			),
+			'font-size': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
+			'line-height': generateCSSUnit(
+				btnLineHeightTablet,
+				btnLineHeightType
+			),
+			'letter-spacing': generateCSSUnit( btnLetterSpacingTablet, btnLetterSpacingType ),
+		},
+		' .uagb-modal-button-link.uagb-modal-trigger svg' : {
+			'font-size': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
+			'width': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
+			'height': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
+			'line-height': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
+			// 'fill': iconColor
 		}
 	};
 	const mobileSelectors = {
@@ -281,6 +326,19 @@ export default function styling( props ) {
 				paddingBtnBottomMobile,
 				mobilePaddingBtnUnit
 			),
+			'font-size': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
+			'line-height': generateCSSUnit(
+				btnLineHeightMobile,
+				btnLineHeightType
+			),
+			'letter-spacing': generateCSSUnit( btnLetterSpacingMobile, btnLetterSpacingType ),
+		},
+		' .uagb-modal-button-link.uagb-modal-trigger svg' : {
+			'font-size': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
+			'width': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
+			'height': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
+			'line-height': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
+			// 'fill': iconColor
 		}
 	};
 	

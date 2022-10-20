@@ -545,6 +545,114 @@ const attributes = {
 			styleType: 'btn-left-padding-mobile'
 		}
 	},
+
+	btnFontFamily: {
+		type: 'string',
+		default: 'Default',
+		UAGCopyPaste: {
+			styleType: 'btn-font-family'
+		}
+	},
+	btnFontWeight: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-font-weight'
+		}
+	},
+	btnFontStyle: {
+		type: 'string',
+		default: 'normal',
+		UAGCopyPaste: {
+			styleType: 'btn-font-style'
+		}
+	},
+	btnTransform: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-transform'
+		}
+	},
+	btnDecoration: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-decoration'
+		}
+	},
+	btnFontSizeType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'btn-font-size-type'
+		}
+	},
+	btnLineHeightType: {
+		type: 'string',
+		default: 'em',
+		UAGCopyPaste: {
+			styleType: 'btn-line-height-type'
+		}
+	},
+	btnFontSize: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-font-size'
+		}
+	},
+	btnFontSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-font-size-tablet'
+		}
+	},
+	btnFontSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-font-size-mobile'
+		}
+	},
+	btnLineHeight: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-line-height'
+		}
+	},
+	btnLineHeightTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-line-height-tablet'
+		}
+	},
+	btnLineHeightMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-line-height-mobile'
+		}
+	},
+	btnLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-letter-spacing'
+		}
+	},
+	btnLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-letter-spacing-tablet'
+		}
+	},
+	btnLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-letter-spacing-mobile'
+		}
+	},
+	btnLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'btn-letter-spacing-type'
+		}
+	},
 };
 
 export default attributes;

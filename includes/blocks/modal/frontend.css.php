@@ -9,6 +9,10 @@
 
 $block_name = 'modal';
 
+$cta_icon_size   = UAGB_Helper::get_css_value( $attr['btnFontSize'], $attr['btnFontSizeType'] );
+$m_btn_icon_size = UAGB_Helper::get_css_value( $attr['btnFontSizeMobile'], $attr['btnFontSizeType'] );
+$t_btn_icon_size = UAGB_Helper::get_css_value( $attr['btnFontSizeTablet'], $attr['btnFontSizeType'] );
+
 $selectors   = array(
 	'.uagb-modal-wrapper'          => array(
 		'text-align' => $attr['modalAlign'],
@@ -52,6 +56,13 @@ $selectors   = array(
 	'.uagb-modal-wrapper img.uagb-modal-trigger' => array(
 		'border-radius' => UAGB_Helper::get_css_value( $attr['iconimgBorderRadius'], $attr['iconimgBorderRadiusUnit'] ),
 	),
+	' .uagb-modal-button-link.uagb-modal-trigger svg' => array(
+		'width'       => UAGB_Helper::get_css_value( $attr['btnFontSize'], $attr['btnFontSizeType'] ),
+		'height'      => UAGB_Helper::get_css_value( $attr['btnFontSize'], $attr['btnFontSizeType'] ),
+		'line-height' => UAGB_Helper::get_css_value( $attr['btnFontSize'], $attr['btnFontSizeType'] ),
+		'font-size'   => UAGB_Helper::get_css_value( $attr['btnFontSize'], $attr['btnFontSizeType'] ),
+		// 'fill'			=> $attr['iconColor']
+	),
 );
 $t_selectors = array(
 	'.uagb-modal-wrapper'     => array(
@@ -72,7 +83,14 @@ $t_selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightTablet'], $attr['tabletPaddingBtnUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopTablet'], $attr['tabletPaddingBtnUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomTablet'], $attr['tabletPaddingBtnUnit'] ),
-	)
+	),
+	' .uagb-modal-button-link.uagb-modal-trigger svg' => array(
+		'width'       => UAGB_Helper::get_css_value( $attr['btnFontSizeTablet'], $attr['btnFontSizeType'] ),
+		'height'      => UAGB_Helper::get_css_value( $attr['btnFontSizeTablet'], $attr['btnFontSizeType'] ),
+		'line-height' => UAGB_Helper::get_css_value( $attr['btnFontSizeTablet'], $attr['btnFontSizeType'] ),
+		'font-size'   => UAGB_Helper::get_css_value( $attr['btnFontSizeTablet'], $attr['btnFontSizeType'] ),
+		// 'fill'			=> $attr['iconColor']
+	),
 );
 $m_selectors = array(
 	'.uagb-modal-wrapper'     => array(
@@ -93,7 +111,14 @@ $m_selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomMobile'], $attr['mobilePaddingBtnUnit'] ),
-	)
+	),
+	' .uagb-modal-button-link.uagb-modal-trigger svg' => array(
+		'width'       => UAGB_Helper::get_css_value( $attr['btnFontSizeMobile'], $attr['btnFontSizeType'] ),
+		'height'      => UAGB_Helper::get_css_value( $attr['btnFontSizeMobile'], $attr['btnFontSizeType'] ),
+		'line-height' => UAGB_Helper::get_css_value( $attr['btnFontSizeMobile'], $attr['btnFontSizeType'] ),
+		'font-size'   => UAGB_Helper::get_css_value( $attr['btnFontSizeMobile'], $attr['btnFontSizeType'] ),
+		// 'fill'			=> $attr['iconColor']
+	),
 );
 
 if ( 'popup-top-right' === $attr['closeIconPosition'] ) {
@@ -161,5 +186,6 @@ $combined_selectors = array(
 $base_selector = '.uagb-block-';
 
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'text', ' .uagb-modal-text.uagb-modal-trigger', $combined_selectors );
+$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'btn', ' .uagb-modal-button-link.uagb-modal-trigger', $combined_selectors );
 
 return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
