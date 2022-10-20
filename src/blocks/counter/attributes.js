@@ -825,6 +825,74 @@ const attributes = {
 		default: false,
 		isUAGStyle: true,
 	},
+	iconTopMargin : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconRightMargin : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconLeftMargin : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconBottomMargin : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconTopMarginTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconRightMarginTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconLeftMarginTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconBottomMarginTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconTopMarginMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconRightMarginMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconLeftMarginMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconBottomMarginMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	iconMarginUnit : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	iconMarginUnitTablet: {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	iconMarginUnitMobile : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	iconMarginLink: {
+		type: 'boolean',
+		default: false,
+		isUAGStyle: true,
+	},
 	...iconWrapBorderAttributes,
 };
 

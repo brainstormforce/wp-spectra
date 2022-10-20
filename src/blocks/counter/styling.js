@@ -169,6 +169,22 @@ export default function styling( props ) {
 		iconPaddingUnit,
 		iconPaddingUnitTablet,
 		iconPaddingUnitMobile,
+		// Icon Margin
+		iconTopMargin,
+		iconRightMargin,
+		iconLeftMargin,
+		iconBottomMargin,
+		iconTopMarginTablet,
+		iconRightMarginTablet,
+		iconLeftMarginTablet,
+		iconBottomMarginTablet,
+		iconTopMarginMobile,
+		iconRightMarginMobile,
+		iconLeftMarginMobile,
+		iconBottomMarginMobile,
+		iconMarginUnit,
+		iconMarginUnitTablet,
+		iconMarginUnitMobile,
 	} = attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -206,7 +222,7 @@ export default function styling( props ) {
 	const iconWrapCSSMobile = generateBorderCSS( props.attributes, 'iconWrap', 'mobile' );
 
 	// Icon-Image Common Padding.
-	const iconAndImagePadding = {
+	const iconAndImageSpacing = {
 		'padding-top': generateCSSUnit(
 			iconTopPadding,
 			iconPaddingUnit
@@ -223,9 +239,13 @@ export default function styling( props ) {
 			iconLeftPadding,
 			iconPaddingUnit
 		),
+		'margin-top'   : generateCSSUnit( iconTopMargin, iconMarginUnit ),
+		'margin-right' : generateCSSUnit( iconRightMargin, iconMarginUnit ),
+		'margin-bottom': generateCSSUnit( iconBottomMargin, iconMarginUnit ),
+		'margin-left'  : generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 	};
 
-	const iconAndImagePaddingTablet = {
+	const iconAndImageSpacingTablet = {
 		'padding-top': generateCSSUnit(
 			iconTopPaddingTablet,
 			iconPaddingUnitTablet
@@ -242,9 +262,13 @@ export default function styling( props ) {
 			iconLeftPaddingTablet,
 			iconPaddingUnitTablet
 		),
+		'margin-top'   : generateCSSUnit( iconTopMarginTablet, iconMarginUnitTablet ),
+		'margin-right' : generateCSSUnit( iconRightMarginTablet, iconMarginUnitTablet ),
+		'margin-bottom': generateCSSUnit( iconBottomMarginTablet, iconMarginUnitTablet ),
+		'margin-left'  : generateCSSUnit( iconLeftMarginTablet, iconMarginUnitTablet ),
 	};
 
-	const iconAndImagePaddingMobile = {
+	const iconAndImageSpacingMobile = {
 		'padding-top': generateCSSUnit(
 			iconTopPaddingMobile,
 			iconPaddingUnitMobile
@@ -261,6 +285,10 @@ export default function styling( props ) {
 			iconLeftPaddingMobile,
 			iconPaddingUnitMobile
 		),
+		'margin-top'   : generateCSSUnit( iconTopMarginMobile, iconMarginUnitMobile ),
+		'margin-right' : generateCSSUnit( iconRightMarginMobile, iconMarginUnitMobile ),
+		'margin-bottom': generateCSSUnit( iconBottomMarginMobile, iconMarginUnitMobile ),
+		'margin-left'  : generateCSSUnit( iconLeftMarginMobile, iconMarginUnitMobile ),
 	};
 
 	let boxShadowPositionCSS = boxShadowPosition;
@@ -313,11 +341,11 @@ export default function styling( props ) {
 		},
 		'.wp-block-uagb-counter .wp-block-uagb-counter__icon':{
 			'background-color': iconBackgroundColor,
-			...iconAndImagePadding,
+			...iconAndImageSpacing,
 			...iconWrapCSS,
 		},
 		'.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap':{
-			...iconAndImagePadding,
+			...iconAndImageSpacing,
 		},
 		'.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img':{
 			...iconWrapCSS,
@@ -484,12 +512,12 @@ export default function styling( props ) {
     }
 
 	tablet_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon'] = {
-		...iconAndImagePaddingTablet,
+		...iconAndImageSpacingTablet,
 		...iconWrapCSSTablet,
 	}
 
 	tablet_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap'] = {
-		...iconAndImagePaddingTablet,
+		...iconAndImageSpacingTablet,
 	}
 
 	tablet_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img'] = {
@@ -615,12 +643,12 @@ export default function styling( props ) {
     }
 
 	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon'] = {
-		...iconAndImagePaddingMobile,
+		...iconAndImageSpacingMobile,
 		...iconWrapCSSMobile,
 	}
 
 	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap'] = {
-		...iconAndImagePaddingMobile,
+		...iconAndImageSpacingMobile,
 	}
 
 	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img'] = {
