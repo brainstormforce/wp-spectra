@@ -2,6 +2,7 @@
 	padding: 0;
 	overflow: hidden;
 	height: 100%;
+
 	.components-panel__body-title {
 		padding: 16px 16px 0 16px;
 	}
@@ -9,17 +10,22 @@
 	.CodeMirror-wrap {
 		border-top: 1px solid #ddd6d6;
 		border-bottom: 1px solid #ddd6d6;
-		height: 100%;
+		height: calc(100vh - 185px);
 
 		.CodeMirror-scroll {
 			width: 100%;
-			overflow-y: hidden;
 		}
+
 		.CodeMirror-sizer {
 			border-right: unset;
 		}
+
 		span.CodeMirror-matchingbracket {
 			color: #ffc200;
+		}
+
+		.CodeMirror-vscrollbar {
+			overflow-y: hidden;
 		}
 	}
 
@@ -37,8 +43,13 @@
 }
 
 .interface-complementary-area.edit-post-sidebar:has(.spectra-sidebar) {
-	height: 100%;
+	height: auto;
 }
+
+.interface-interface-skeleton__sidebar:has(.spectra-sidebar) {
+	height: auto;
+}
+
 .spectra-sidebar {
 	height: 100%;
 }
