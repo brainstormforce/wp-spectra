@@ -5,6 +5,7 @@
 import classnames from 'classnames';
 import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
+import newAttributesV2_0_13 from './attributes';
 
 const attributes = {
 	block_id: {
@@ -531,7 +532,7 @@ const deprecated = [
 		},
 	},
 	{
-		attributes,
+		attributes : newAttributesV2_0_13,
 		save( props ) {
 			const { attributes } = props;
 
