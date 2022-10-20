@@ -16,6 +16,7 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import Range from '@Components/range/Range.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
+import SpacingControl from '@Components/spacing-control';
 
 let imageSizeOptions = [
 	{
@@ -27,7 +28,7 @@ let imageSizeOptions = [
 ];
 
 export default function Settings( props ) {
-	const { attributes, setAttributes } = props.parentProps;
+	const { attributes, setAttributes, deviceType } = props.parentProps;
 	const { 
 		modalTrigger, 
 		previewModal, 
@@ -54,7 +55,23 @@ export default function Settings( props ) {
 		appearEffect,
 		closeIconSize,
 		closeIconPosition,
-		overlayColor
+		overlayColor,
+		paddingBtnTop,
+		paddingBtnBottom,
+		paddingBtnLeft,
+		paddingBtnRight,
+		paddingBtnTopTablet,
+		paddingBtnRightTablet,
+		paddingBtnBottomTablet,
+		paddingBtnLeftTablet,
+		paddingBtnTopMobile,
+		paddingBtnRightMobile,
+		paddingBtnBottomMobile,
+		paddingBtnLeftMobile,
+		paddingBtnUnit,
+		spacingLink,
+		mobilePaddingBtnUnit,
+		tabletPaddingBtnUnit,
 	} = attributes;
 
 	/*
@@ -528,6 +545,94 @@ export default function Settings( props ) {
 					label: 'overlayColor',
 				} }
 				setAttributes={ setAttributes }
+			/>
+
+			<SpacingControl
+				{ ...props }
+				label={ __(
+					'Padding',
+					'ultimate-addons-for-gutenberg'
+				) }
+				valueTop={ {
+					value: paddingBtnTop,
+					label: 'paddingBtnTop',
+				} }
+				valueRight={ {
+					value: paddingBtnRight,
+					label: 'paddingBtnRight',
+				} }
+				valueBottom={ {
+					value: paddingBtnBottom,
+					label: 'paddingBtnBottom',
+				} }
+				valueLeft={ {
+					value: paddingBtnLeft,
+					label: 'paddingBtnLeft',
+				} }
+				valueTopTablet={ {
+					value: paddingBtnTopTablet,
+					label: 'paddingBtnTopTablet',
+				} }
+				valueRightTablet={ {
+					value: paddingBtnRightTablet,
+					label: 'paddingBtnRightTablet',
+				} }
+				valueBottomTablet={ {
+					value: paddingBtnBottomTablet,
+					label: 'paddingBtnBottomTablet',
+				} }
+				valueLeftTablet={ {
+					value: paddingBtnLeftTablet,
+					label: 'paddingBtnLeftTablet',
+				} }
+				valueTopMobile={ {
+					value: paddingBtnTopMobile,
+					label: 'paddingBtnTopMobile',
+				} }
+				valueRightMobile={ {
+					value: paddingBtnRightMobile,
+					label: 'paddingBtnRightMobile',
+				} }
+				valueBottomMobile={ {
+					value: paddingBtnBottomMobile,
+					label: 'paddingBtnBottomMobile',
+				} }
+				valueLeftMobile={ {
+					value: paddingBtnLeftMobile,
+					label: 'paddingBtnLeftMobile',
+				} }
+				unit={ {
+					value: paddingBtnUnit,
+					label: 'paddingBtnUnit',
+				} }
+				mUnit={ {
+					value: mobilePaddingBtnUnit,
+					label: 'mobilePaddingBtnUnit',
+				} }
+				tUnit={ {
+					value: tabletPaddingBtnUnit,
+					label: 'tabletPaddingBtnUnit',
+				} }
+				deviceType={ deviceType }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				link={ {
+					value: spacingLink,
+					label: 'spacingLink',
+				} }
+				units={ [
+					{
+						name: __(
+							'Pixel',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: 'px',
+					},
+					{
+						name: __( '%', 'ultimate-addons-for-gutenberg' ),
+						unitValue: '%',
+					},
+				] }
 			/>
 		</UAGAdvancedPanelBody>
 	)

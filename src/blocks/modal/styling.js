@@ -27,7 +27,22 @@ export default function styling( props ) {
 		modalHeightType,
 		closeIconSize,
 		closeIconPosition,
-		overlayColor
+		overlayColor,
+		paddingBtnUnit,
+		mobilePaddingBtnUnit,
+		tabletPaddingBtnUnit,
+		paddingBtnTop,
+		paddingBtnBottom,
+		paddingBtnLeft,
+		paddingBtnRight,
+		paddingBtnTopTablet,
+		paddingBtnRightTablet,
+		paddingBtnBottomTablet,
+		paddingBtnLeftTablet,
+		paddingBtnTopMobile,
+		paddingBtnRightMobile,
+		paddingBtnBottomMobile,
+		paddingBtnLeftMobile,
 	} = props.attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -57,6 +72,15 @@ export default function styling( props ) {
 		},
 		' .uagb-modal-popup.active' : {
 			'background': overlayColor
+		},
+		' .uagb-modal-popup-content' : {
+			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
+			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottom,
+				paddingBtnUnit
+			),
 		}
 	};
 	const tabletSelectors = {
@@ -72,6 +96,24 @@ export default function styling( props ) {
 				modalHeightTablet,
 				modalHeightType
 			),
+		},
+		' .uagb-modal-popup-content' : {
+			'padding-left': generateCSSUnit(
+				paddingBtnLeftTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingBtnRightTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-top': generateCSSUnit(
+				paddingBtnTopTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottomTablet,
+				tabletPaddingBtnUnit
+			),
 		}
 	};
 	const mobileSelectors = {
@@ -86,6 +128,24 @@ export default function styling( props ) {
 			'min-height': generateCSSUnit(
 				modalHeightMobile,
 				modalHeightType
+			),
+		},
+		' .uagb-modal-popup-content' : {
+			'padding-left': generateCSSUnit(
+				paddingBtnLeftMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingBtnRightMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-top': generateCSSUnit(
+				paddingBtnTopMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottomMobile,
+				mobilePaddingBtnUnit
 			),
 		}
 	};
