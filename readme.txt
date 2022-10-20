@@ -209,6 +209,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Table Of Contents - Page was not scrolling to the headings on the frontend for some edge cases.
 * Fix: Post Carousel - On reducing or increasing Post per page all items sticks to each other in editor.
 * Fix: Content flickering in the editor when hovering over it.
+* Fix: Marketing Button - Block does not remain in the stack order when the Blocksy theme is active.
 
 = 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 =
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
