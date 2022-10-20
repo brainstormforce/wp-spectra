@@ -8,6 +8,7 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 import Settings from './settings';
 import Render from './render';
@@ -118,6 +119,7 @@ const UAGBContainer = ( props ) => {
 		if( 0 !== select( 'core/block-editor' ).getBlockParents(  props.clientId ).length ){ // if there is no parent for container when child container moved outside root then do not show variations.
 			props.setAttributes( { variationSelected: true } );
 		}
+		responsiveConditionPreview( props );
 
 	}, [] );
 
@@ -132,6 +134,7 @@ const UAGBContainer = ( props ) => {
 		if ( descendants.length !== props.attributes.blockDescendants.length ) {
 			props.setAttributes( { blockDescendants: descendants } );
 		}
+		responsiveConditionPreview( props );
 
 	}, [ props ] );
 

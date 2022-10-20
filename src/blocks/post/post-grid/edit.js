@@ -12,6 +12,7 @@ import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 import Settings from './settings';
 import Render from './render';
@@ -177,6 +178,7 @@ const PostGridComponent = ( props ) => {
 				props.setAttributes( { btnBorderStyle : borderStyle} );
 			}
 		}
+		responsiveConditionPreview( props );
 	}, [] );
 
 	useEffect( () => {
@@ -185,7 +187,7 @@ const PostGridComponent = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-post-grid-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
+		responsiveConditionPreview( props );
 	}, [ props ] );
 
 	useEffect( () => {

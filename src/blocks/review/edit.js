@@ -10,6 +10,7 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const ReviewComponent = ( props ) => {
 
@@ -215,6 +216,7 @@ const ReviewComponent = ( props ) => {
 		if ( postSaveButton ) {
 			postSaveButton.addEventListener( 'click', updatePageSchema );
 		}
+		responsiveConditionPreview( props );
 	}, [] );
 
 	useEffect( () => {
@@ -236,7 +238,7 @@ const ReviewComponent = ( props ) => {
 			postSaveButton.addEventListener( 'click', updatePageSchema );
 			return () => { postSaveButton?.removeEventListener( 'click', updatePageSchema ); }
 		}
-
+		responsiveConditionPreview( props );
 
 	}, [ props ] );
 

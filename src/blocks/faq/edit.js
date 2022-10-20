@@ -12,6 +12,7 @@ import {migrateBorderAttributes} from '@Controls/generateAttributes';
 import { select } from '@wordpress/data';
 import Settings from './settings';
 import Render from './render';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const FaqComponent = ( props ) => {
 
@@ -236,6 +237,7 @@ const FaqComponent = ( props ) => {
 		if ( postSaveButton ) {
 			postSaveButton.addEventListener( 'click', updatePageSchema );
 		}
+		responsiveConditionPreview( props );
 	}, [] );
 
 	useEffect( () => {
@@ -327,7 +329,7 @@ const FaqComponent = ( props ) => {
 			postSaveButton.addEventListener( 'click', updatePageSchema );
 			return () => { postSaveButton?.removeEventListener( 'click', updatePageSchema ); }
 		}
-
+		responsiveConditionPreview( props );
 	}, [ props ] );
 
 	useEffect( () => {

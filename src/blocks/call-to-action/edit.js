@@ -10,6 +10,7 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 const UAGBCallToAction = ( props ) => {
@@ -95,6 +96,7 @@ const UAGBCallToAction = ( props ) => {
 			props.attributes
 			);
 		}
+		responsiveConditionPreview( props );
 	}, [] );
 
 	useEffect( () => {
@@ -103,6 +105,7 @@ const UAGBCallToAction = ( props ) => {
 		const blockStyling = CtaStyle( props );
 
 		addBlockEditorDynamicStyles( 'uagb-cta-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		responsiveConditionPreview( props );
 	}, [ props ] );
 
 	useEffect( () => {

@@ -16,6 +16,7 @@ import Render from './render';
 import { compose } from '@wordpress/compose';
 
 import { withDispatch, dispatch, select } from '@wordpress/data';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const UAGBTabsEdit = ( props ) => {
 
@@ -96,6 +97,7 @@ const UAGBTabsEdit = ( props ) => {
 			props.attributes
 			);
 		}
+		responsiveConditionPreview( props );
 	}, [] );
 
 	const updateTabTitle = () => {
@@ -122,6 +124,7 @@ const UAGBTabsEdit = ( props ) => {
 
 		updateTabTitle();
 		props.resetTabOrder();
+		responsiveConditionPreview( props );
 
 	}, [ props ] );
 

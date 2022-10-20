@@ -28,6 +28,7 @@ import UAGPresets from '@Components/presets';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import { decodeEntities } from '@wordpress/html-entities';
 import UAGNumberControl from '@Components/number-control';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 import Settings from './settings';
 import Render from './render';
@@ -244,6 +245,7 @@ const UAGBPostMasonry = ( props ) => {
 				} );
 			}
 		}
+		responsiveConditionPreview( props );
 	}, [] );
 
 	useEffect( () => {
@@ -321,7 +323,7 @@ const UAGBPostMasonry = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
+		responsiveConditionPreview( props );
 	}, [ props ] );
 
 	useEffect( () => {

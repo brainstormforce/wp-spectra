@@ -29,6 +29,7 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import UAGNumberControl from '@Components/number-control';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -225,6 +226,7 @@ const UAGBPostCarousel = ( props ) => {
 				props.setAttributes( { btnBorderStyle : borderStyle} );
 			}
 		}
+		responsiveConditionPreview( props );
 	}, [] );
 
 	useEffect( () => {
@@ -247,7 +249,7 @@ const UAGBPostCarousel = ( props ) => {
 				'; }';
 
 		addBlockEditorDynamicStyles( 'uagb-post-carousel-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
+		responsiveConditionPreview( props );
 	}, [ props ] );
 
 	useEffect( () => {

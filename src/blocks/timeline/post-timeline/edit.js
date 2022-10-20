@@ -13,6 +13,7 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import contentTimelineStyle from '.././inline-styles';
 import Settings from './settings';
 import Render from './render';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 import { withSelect } from '@wordpress/data';
 
@@ -96,6 +97,7 @@ const PostTimelineComponent = ( props ) => {
                 }
             }
         }
+		responsiveConditionPreview( props );
 
 	}, [] );
 
@@ -108,6 +110,7 @@ const PostTimelineComponent = ( props ) => {
 			detail: {},
 		} );
 		document.dispatchEvent( loadPostTimelineEditor );
+		responsiveConditionPreview( props );
 	}, [ props, deviceType ] );
 
 

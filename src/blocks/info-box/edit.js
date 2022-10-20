@@ -8,6 +8,7 @@ import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 import Settings from './settings';
 import Render from './render';
@@ -76,6 +77,7 @@ const UAGBInfoBox = ( props ) => {
 			props.attributes
 		);
 		}
+		responsiveConditionPreview( props );
 	}, [] );
 
 	useEffect( () => {
@@ -84,7 +86,7 @@ const UAGBInfoBox = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-info-box-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
+		responsiveConditionPreview( props );
 	}, [ props ] );
 
 

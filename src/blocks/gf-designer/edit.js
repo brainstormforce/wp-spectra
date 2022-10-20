@@ -10,6 +10,7 @@ import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import { withSelect } from '@wordpress/data';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const UAGBGF = ( props ) => {
 	const deviceType = useDeviceType();
@@ -92,6 +93,7 @@ const UAGBGF = ( props ) => {
 				props.setAttributes( { fieldleftPadding: fieldHrPadding } );
 			}
 		}
+		responsiveConditionPreview( props );
 	}, [] );
 
 	useEffect( () => {
@@ -105,6 +107,7 @@ const UAGBGF = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-gf-styler-' + props.clientId.substr( 0, 8 ), blockStyling );
+		responsiveConditionPreview( props );
 	}, [ props ] );
 
 	useEffect( () => {

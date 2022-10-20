@@ -13,6 +13,7 @@ import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import hexToRGBA from '@Controls/hexToRgba';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 
@@ -126,6 +127,7 @@ const UAGBtestimonial = ( props ) => {
 			props.attributes
 			);
 		}
+		responsiveConditionPreview( props );
 
 	}, [] );
 
@@ -140,6 +142,7 @@ const UAGBtestimonial = ( props ) => {
 		const blockStyling = TestimonialStyle( props );
 
 		addBlockEditorDynamicStyles( 'uagb-testinomial-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		responsiveConditionPreview( props );
 	}, [ props ] );
 
 

@@ -13,6 +13,7 @@ import {migrateBorderAttributes} from '@Controls/generateAttributes';
 
 import Settings from './settings';
 import Render from './render';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const UAGBWpSearchEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -150,6 +151,7 @@ const UAGBWpSearchEdit = ( props ) => {
 			props.attributes
 			);
 		}
+		responsiveConditionPreview( props );
 	}, [] );
 
 	// componentDidUpdate.
@@ -167,6 +169,7 @@ const UAGBWpSearchEdit = ( props ) => {
 
 		const blockStyling = styling( props );
 		addBlockEditorDynamicStyles( 'uagb-style-wp-search-' + props.clientId.substr( 0, 8 ), blockStyling );
+		responsiveConditionPreview( props );
 	}, [ props ] );
 
 	useEffect( () => {

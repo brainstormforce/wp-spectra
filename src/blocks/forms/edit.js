@@ -8,6 +8,7 @@ import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import Settings from './settings';
 import Render from './render';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 import { withSelect, useDispatch } from '@wordpress/data';
 
@@ -202,6 +203,7 @@ const UAGBFormsEdit = ( props ) => {
 			props.attributes
 			);
 		}
+		responsiveConditionPreview( props );
 	}, [] );
 
 	useEffect( () => {
@@ -209,6 +211,7 @@ const UAGBFormsEdit = ( props ) => {
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-style-forms-' + props.clientId.substr( 0, 8 ), blockStyling );
+		responsiveConditionPreview( props );
 	}, [ props ] );
 
 	useEffect( () => {

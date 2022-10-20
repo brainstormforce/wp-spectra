@@ -11,6 +11,7 @@ import { useDeviceType } from '@Controls/getPreviewType';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import Settings from './settings';
 import Render from './render';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 import hexToRGBA from '@Controls/hexToRgba';
 
@@ -43,12 +44,14 @@ const UAGBSectionEdit = ( props ) => {
 			);
 
 		}
+		responsiveConditionPreview( props );
 	}, [ ] );
 	useEffect( () => {
 
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-section-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		responsiveConditionPreview( props );
 	}, [ props ] );
 
 	useEffect( () => {

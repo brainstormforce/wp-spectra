@@ -9,6 +9,7 @@ import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 import Settings from './settings';
 import Render from './render';
@@ -213,6 +214,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 			props.attributes
 			);
 		}
+		responsiveConditionPreview( props );
 	}, [] );
 
 	useEffect( () => {
@@ -220,7 +222,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-toc-' + props.clientId.substr( 0, 8 ), blockStyling );
-
+		responsiveConditionPreview( props );
 	}, [ props ] );
 
 	useEffect( () => {

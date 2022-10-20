@@ -5,6 +5,7 @@ import React, {   useEffect,  } from 'react';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 import Settings from './settings';
 import Render from './render';
@@ -53,9 +54,13 @@ const UAGBBlockQuote = ( props ) => {
 				props.setAttributes( { paddingBtnLeft: tweetBtnHrPadding } );
 			}
 		}
+		responsiveConditionPreview( props );
 	}, [] );
 
 	useEffect( () => {
+		
+		responsiveConditionPreview( props );
+
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 

@@ -11,6 +11,8 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+
 const UAGBRestaurantMenu = ( props ) => {
 	const deviceType = useDeviceType();
 	useEffect( () => {
@@ -90,7 +92,7 @@ const UAGBRestaurantMenu = ( props ) => {
 			pricelistChild.attributes.imageAlignment =
 				props.attributes.imageAlignment;
 		} );
-
+		responsiveConditionPreview( props );
 	}, [] );
 
 	useEffect( () => {
@@ -112,7 +114,7 @@ const UAGBRestaurantMenu = ( props ) => {
 		if( 'top' === imgAlign ){
 			props.setAttributes( { imagePosition : 'top' } );
 		}
-
+		responsiveConditionPreview( props );
 	}, [ props ] );
 
 	useEffect( () => {
