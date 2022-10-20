@@ -210,7 +210,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Carousel - On reducing or increasing Post per page all items sticks to each other in editor.
 * Fix: Z-Index extension is not working for the dynamic blocks.
 * Fix: Content flickering in the editor when hovering over it.
-* Fix: Container - Child container was shrunk and went out of the page inside the editor when the layout changed to boxed and the content box.
+* Fix: Container - Child container was shrunk and went out of the page inside the editor when the content layout changed to boxed and the content box.
 
 = 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 =
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
