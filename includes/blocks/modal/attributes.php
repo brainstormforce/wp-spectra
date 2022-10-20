@@ -47,6 +47,7 @@ return array(
 
 	'iconSize'         			=> 30,
 	'iconColor'					=> '',
+	'textColor'					=> '',
 
 	// 'paddingBtnUnit'			=> 'px',
 	// 'mobilePaddingBtnUnit'			=> 'px',

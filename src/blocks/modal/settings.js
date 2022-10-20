@@ -76,6 +76,7 @@ export default function Settings( props ) {
 		//Trigger style controls
 		iconColor,
 		iconSize,
+		textColor,
 		// paddingBtnTop,
 		// paddingBtnBottom,
 		// paddingBtnLeft,
@@ -581,6 +582,27 @@ export default function Settings( props ) {
 						data={ {
 							value: iconColor,
 							label: 'iconColor',
+						} }
+						setAttributes={ setAttributes }
+					/>
+				</>
+			)}
+
+			{ modalTrigger === 'text' && (
+				<>
+					<AdvancedPopColorControl
+						label={ __(
+							'Text Color',
+							'ultimate-addons-for-gutenberg'
+						) }
+						colorValue={
+							textColor
+								? textColor
+								: ''
+						}
+						data={ {
+							value: textColor,
+							label: 'textColor',
 						} }
 						setAttributes={ setAttributes }
 					/>

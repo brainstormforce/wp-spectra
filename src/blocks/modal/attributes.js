@@ -271,6 +271,13 @@ const attributes = {
 			styleType: 'icon-color'
 		}
 	},
+	textColor: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'text-color'
+		}
+	},
 
 	// btnSpacingLink: {
 	// 	type: 'boolean',

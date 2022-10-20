@@ -46,9 +46,9 @@ export default function styling( props ) {
 		paddingModalBottomMobile,
 		paddingModalLeftMobile,
 
-		
 		iconColor,
 		iconSize,
+		textColor,
 		// Button Padding.
 		// paddingBtnUnit,
 		// mobilePaddingBtnUnit,
@@ -112,6 +112,9 @@ export default function styling( props ) {
 			'font-size': generateCSSUnit( iconSize, 'px' ),
 			'fill': iconColor
 		},
+		' .uagb-modal-text.uagb-modal-trigger': {
+			'color': textColor
+		}
 		// ' .uagb-modal-popup-content' : {
 		// 	'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 		// 	'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),

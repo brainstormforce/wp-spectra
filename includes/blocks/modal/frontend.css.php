@@ -46,6 +46,9 @@ $selectors   = array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 		'fill'			=> $attr['iconColor']
 	),
+	' .uagb-modal-text.uagb-modal-trigger' => array(
+		'color'			=> $attr['textColor']
+	)
 );
 $t_selectors = array(
 	'.uagb-modal-wrapper'     => array(
