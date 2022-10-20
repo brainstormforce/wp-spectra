@@ -208,6 +208,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Table Of Contents - Page was not scrolling to the headings on the frontend for some edge cases.
 * Fix: Post Carousel - On reducing or increasing Post per page all items sticks to each other in editor.
 * Fix: Content flickering in the editor when hovering over it.
+* Fix: Container - Parent `contentWidth` class getting added to child container causing container out of the page when boxed and content boxed layout selected.
 
 ### 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 ###
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
