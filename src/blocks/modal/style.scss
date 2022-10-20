@@ -16,8 +16,14 @@ body {
 					height: auto;
 					padding: 8px 12px !important;
 				}
+				button.block-editor-button-block-appender {
+					background-color: #dcf2ff !important;
+					box-shadow: none !important;
+					padding: 0 !important;
+					width: 100%;
+				}
 			}
-			button {
+			button{
 				background-color: #dcf2ff !important;
 				box-shadow: none !important;
 				padding: 0 !important;
@@ -28,12 +34,15 @@ body {
 			}
 			svg {
 				fill: #007cba;
-				width: 30px;
-				height: 30px;
+				width: 20px;
+				height: 20px;
 			}
 		}
 		.components-dropdown.block-editor-inserter {
 			width: 100%;
+		}
+		.block-editor-block-list__layout {
+			
 		}
 	}
 }

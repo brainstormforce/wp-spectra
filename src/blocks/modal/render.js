@@ -5,6 +5,8 @@ import renderSVG from '@Controls/renderIcon';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import { useDeviceType } from '@Controls/getPreviewType';
 
+const ALLOWED_BLOCKS = wp.blocks.getBlockTypes().map( block => block.name ).filter(blockName => blockName !== 'uagb/modal');
+
 const propTypes = {};
 
 const defaultProps = {};
@@ -150,7 +152,7 @@ const Render = ( props ) => {
 				>
 					<div className="uagb-modal-popup-wrap">
 						<div className="uagb-modal-popup-content">
-							<InnerBlocks />
+							<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
 						</div>
 						{ ( 'popup-top-left' === closeIconPosition || 'popup-top-right' === closeIconPosition ) && (
 							<div className="uagb-modal-popup-close">
