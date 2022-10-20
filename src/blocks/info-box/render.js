@@ -52,9 +52,33 @@ const Render = ( props ) => {
 	const seperatorHtml = <InfoBoxSeparator attributes={ attributes } />;
 	let showSeperator = true;
 
+	let urlCheck = '';
+	if (
+		typeof attributes.iconImage !== 'undefined' &&
+		attributes.iconImage !== null &&
+		attributes.iconImage !== ''
+	) {
+		urlCheck = attributes.iconImage.url;
+	}
+
+	let url = '';
+	if ( urlCheck !== '' ) {
+		const size = attributes.iconImage.sizes;
+		const imageSize = attributes.imageSize;
+
+		if (
+			typeof size !== 'undefined' &&
+			typeof size[ imageSize ] !== 'undefined'
+		) {
+			url = size[ imageSize ].url;
+		} else {
+			url = urlCheck;
+		}
+	}
+
 	useEffect( ()=> {
-		getImageHeightWidth( attributes.iconImage.url, setAttributes )
-	}, [ attributes.imageSize ] )
+		getImageHeightWidth( url, setAttributes )
+	}, [ url ] )
 
 	if (
 		seperatorPos === 'after_icon' &&
