@@ -173,6 +173,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ### 2.0.14 - THURSDAY, 13th OCTOMBER 2022 ###
 * Improvement: Container - Equal height setting in Parent container.
 * Improvement: Post Block - Woo Commerce Products (CPT) not getting in post Type.
+* Improvement: Block Transform - Transform from core Paragraph/List to Spectra Heading/Blockquotes.
 * Improvement: Post Blocks - Optimize the loading of Post Terms.
 * Fix: Image - Throws validation issue when toolbar link feature is used.
 * Fix: Button - Box shadow stylings not working as expected on front-end.
