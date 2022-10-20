@@ -52,7 +52,9 @@ export default function Settings( props ) {
 		modalHeightType,
 		appearEffect,
 		closeIconSize,
-		closeIconPosition
+		closeIconPosition,
+		escPress,
+		overlayClick,
 	} = attributes;
 
 	/*
@@ -503,6 +505,28 @@ export default function Settings( props ) {
 					},
 				] }
 			/>
+
+			<ToggleControl
+				label={ __(
+					'Close on ESC Keypress',
+					'ultimate-addons-for-gutenberg'
+				) }
+				checked={ escPress }
+				onChange={ () =>
+					setAttributes( { escPress: ! escPress } )
+				}
+			/>
+			<ToggleControl
+				label={ __(
+					'Close on Overlay Click',
+					'ultimate-addons-for-gutenberg'
+				) }
+				checked={ overlayClick }
+				onChange={ () =>
+					setAttributes( { overlayClick: ! overlayClick } )
+				}
+			/>
+
 		</UAGAdvancedPanelBody>
 	)
 

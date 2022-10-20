@@ -26,7 +26,9 @@ const Render = ( props ) => {
 		buttonIcon,
 		buttonIconPosition,
 		appearEffect,
-		closeIconPosition
+		closeIconPosition,
+		escPress,
+		overlayClick
 	} = attributes;
 
 	const deviceType = useDeviceType();
@@ -120,7 +122,10 @@ const Render = ( props ) => {
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ block_id }`,
 				'uagb-modal-wrapper'
-			) }>
+				) }
+				data-escpress={ escPress ? 'enable' : 'disable' }
+				data-overlayclick={ overlayClick ? 'enable' : 'disable' }
+			>
 				{
 					'text' === modalTrigger &&
 					textHTML

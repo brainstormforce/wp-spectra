@@ -147,7 +147,15 @@ const attributes = {
 	closeIconPosition: {
 		type: 'string',
 		default: 'popup-top-right',
-	}
+	},
+	escPress: {
+		type: 'boolean',
+		default: false,
+	},
+	overlayClick: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 export default attributes;

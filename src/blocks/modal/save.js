@@ -16,6 +16,8 @@ export default function Save( props ) {
 		buttonIconPosition,
 		appearEffect,
 		closeIconPosition,
+		escPress,
+		overlayClick,
 	} = props.attributes;
 
 	const textHTML = (
@@ -97,6 +99,8 @@ export default function Save( props ) {
 				`uagb-block-${ block_id }`,
 				'uagb-modal-wrapper'
 			) }
+			data-escpress={ escPress ? 'enable' : 'disable' }
+			data-overlayclick={ overlayClick ? 'enable' : 'disable' }
 		>
 			{
 				'text' === modalTrigger &&
