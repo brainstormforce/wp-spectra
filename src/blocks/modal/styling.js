@@ -76,21 +76,21 @@ export default function styling( props ) {
 		iconimgBorderRadius,
 		iconimgBorderRadiusUnit,
 		// Button Padding.
-		// paddingBtnUnit,
-		// mobilePaddingBtnUnit,
-		// tabletPaddingBtnUnit,
-		// paddingBtnTop,
-		// paddingBtnBottom,
-		// paddingBtnLeft,
-		// paddingBtnRight,
-		// paddingBtnTopTablet,
-		// paddingBtnRightTablet,
-		// paddingBtnBottomTablet,
-		// paddingBtnLeftTablet,
-		// paddingBtnTopMobile,
-		// paddingBtnRightMobile,
-		// paddingBtnBottomMobile,
-		// paddingBtnLeftMobile,
+		paddingBtnUnit,
+		mobilePaddingBtnUnit,
+		tabletPaddingBtnUnit,
+		paddingBtnTop,
+		paddingBtnBottom,
+		paddingBtnLeft,
+		paddingBtnRight,
+		paddingBtnTopTablet,
+		paddingBtnRightTablet,
+		paddingBtnBottomTablet,
+		paddingBtnLeftTablet,
+		paddingBtnTopMobile,
+		paddingBtnRightMobile,
+		paddingBtnBottomMobile,
+		paddingBtnLeftMobile,
 	} = props.attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -154,16 +154,16 @@ export default function styling( props ) {
 				iconimgBorderRadius,
 				iconimgBorderRadiusUnit
 			),
+		},
+		' .uagb-modal-button-link.uagb-modal-trigger' : {
+			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
+			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottom,
+				paddingBtnUnit
+			),
 		}
-		// ' .uagb-modal-popup-content' : {
-		// 	'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
-		// 	'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
-		// 	'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
-		// 	'padding-bottom': generateCSSUnit(
-		// 		paddingBtnBottom,
-		// 		paddingBtnUnit
-		// 	),
-		// }
 	};
 	const tabletSelectors = {
 		'.uagb-modal-wrapper' : {
@@ -205,24 +205,24 @@ export default function styling( props ) {
 			),
 			'letter-spacing': generateCSSUnit( textLetterSpacingTablet, textLetterSpacingType ),
 		},
-		// ' .uagb-modal-popup-content' : {
-		// 	'padding-left': generateCSSUnit(
-		// 		paddingBtnLeftTablet,
-		// 		tabletPaddingBtnUnit
-		// 	),
-		// 	'padding-right': generateCSSUnit(
-		// 		paddingBtnRightTablet,
-		// 		tabletPaddingBtnUnit
-		// 	),
-		// 	'padding-top': generateCSSUnit(
-		// 		paddingBtnTopTablet,
-		// 		tabletPaddingBtnUnit
-		// 	),
-		// 	'padding-bottom': generateCSSUnit(
-		// 		paddingBtnBottomTablet,
-		// 		tabletPaddingBtnUnit
-		// 	),
-		// }
+		' .uagb-modal-button-link.uagb-modal-trigger' : {
+			'padding-left': generateCSSUnit(
+				paddingBtnLeftTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingBtnRightTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-top': generateCSSUnit(
+				paddingBtnTopTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottomTablet,
+				tabletPaddingBtnUnit
+			),
+		}
 	};
 	const mobileSelectors = {
 		'.uagb-modal-wrapper' : {
@@ -264,24 +264,24 @@ export default function styling( props ) {
 			),
 			'letter-spacing': generateCSSUnit( textLetterSpacingMobile, textLetterSpacingType ),
 		},
-		// ' .uagb-modal-popup-content' : {
-		// 	'padding-left': generateCSSUnit(
-		// 		paddingBtnLeftMobile,
-		// 		mobilePaddingBtnUnit
-		// 	),
-		// 	'padding-right': generateCSSUnit(
-		// 		paddingBtnRightMobile,
-		// 		mobilePaddingBtnUnit
-		// 	),
-		// 	'padding-top': generateCSSUnit(
-		// 		paddingBtnTopMobile,
-		// 		mobilePaddingBtnUnit
-		// 	),
-		// 	'padding-bottom': generateCSSUnit(
-		// 		paddingBtnBottomMobile,
-		// 		mobilePaddingBtnUnit
-		// 	),
-		// }
+		' .uagb-modal-button-link.uagb-modal-trigger' : {
+			'padding-left': generateCSSUnit(
+				paddingBtnLeftMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingBtnRightMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-top': generateCSSUnit(
+				paddingBtnTopMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottomMobile,
+				mobilePaddingBtnUnit
+			),
+		}
 	};
 	
 	if( 'popup-top-right' === closeIconPosition ) {
