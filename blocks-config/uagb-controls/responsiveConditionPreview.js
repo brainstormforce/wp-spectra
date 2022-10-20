@@ -44,7 +44,7 @@ const responsiveConditionPreview = ( props ) => {
             const iframeTabletElement = iframeDocument.getElementById(
                 props.clientId + '-tablet-hide-block'
             );
-            if( props.attributes.UAGHideTablet ) {
+            if( props.attributes.UAGHideTab ) {
                 if ( null === iframeTabletElement || undefined === iframeTabletElement ) {
     
                     const $style = document.createElement( 'style' );
@@ -63,7 +63,7 @@ const responsiveConditionPreview = ( props ) => {
             const iframeMobileElement = iframeDocument.getElementById(
                 props.clientId + '-mobile-hide-block'
             );
-            if( props.attributes.UAGHideMobile ) {
+            if( props.attributes.UAGHideMob ) {
                 
                 if ( null === iframeMobileElement || undefined === iframeMobileElement ) {
     
