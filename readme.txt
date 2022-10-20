@@ -162,7 +162,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 == Credits ==
 
-The awesome React FontIconPicker is developed by [Alessandro Benoit](http://codeb.it/) & [Swashata](https://github.com/swashata). Our external packages uses [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT, [Action Scheduler - Job Queue for WordPress](https://github.com/woocommerce/action-scheduler/) is distributed under the terms of the GNU General Public License v3.0.
+The awesome React FontIconPicker is developed by [Alessandro Benoit](http://codeb.it/) & [Swashata](https://github.com/swashata). Our external packages uses [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT, [WP Background Processing](https://github.com/deliciousbrains/wp-background-processing) is distributed under the terms of the GPL-2.0 license.
 
 == Screenshots ==
 
