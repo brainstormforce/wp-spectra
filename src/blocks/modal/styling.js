@@ -43,7 +43,7 @@ export default function styling( props ) {
 				modalWidth,
 				modalWidthType
 			),
-			'min-height': generateCSSUnit(
+			'height': generateCSSUnit(
 				modalHeight,
 				modalHeightType
 			),
@@ -64,7 +64,7 @@ export default function styling( props ) {
 				modalWidthTablet,
 				modalWidthType
 			),
-			'min-height': generateCSSUnit(
+			'height': generateCSSUnit(
 				modalHeightTablet,
 				modalHeightType
 			),
@@ -79,7 +79,7 @@ export default function styling( props ) {
 				modalWidthMobile,
 				modalWidthType
 			),
-			'min-height': generateCSSUnit(
+			'height': generateCSSUnit(
 				modalHeightMobile,
 				modalHeightType
 			),

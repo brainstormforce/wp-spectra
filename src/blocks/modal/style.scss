@@ -47,8 +47,8 @@ body {
 		bottom: 0;
 		justify-content: center;
 		align-items: center;
-		overflow-x: auto;
-		overflow-y: scroll;
+		// overflow-x: auto;
+		// overflow-y: scroll;
 		background: rgba(0, 0, 0, 0.7);
 		left: 0;
 		right: 0;
@@ -89,6 +89,7 @@ body {
 
 	.uagb-modal-popup-content {
 		padding: 45px 35px;
+		overflow: auto;
 	}
 
 	.uagb-modal-popup-wrap {
@@ -96,7 +97,7 @@ body {
 		flex-direction: column;
 		justify-content: flex-start;
 		width: 700px;
-		min-height: 350px;
+		height: 450px;
 		margin-top: 10px;
 		max-width: 100%;
 		box-sizing: border-box;
@@ -104,6 +105,14 @@ body {
 		color: #333;
 		position: relative;
 		z-index: 99999;
+
+		.uagb-modal-popup-content::-webkit-scrollbar {
+			width: 5px;
+		}
+		.uagb-modal-popup-content::-webkit-scrollbar-thumb {
+			box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+			border-radius: 100px;
+		}
 	}
 
 }

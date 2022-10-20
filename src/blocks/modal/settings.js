@@ -356,7 +356,7 @@ export default function Settings( props ) {
 			/>
 			<ResponsiveSlider
 				label={ __(
-					'Minimum Height',
+					'Height',
 					'ultimate-addons-for-gutenberg'
 				) }
 				data={ {
