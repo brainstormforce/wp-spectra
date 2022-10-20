@@ -189,8 +189,8 @@ const Render = ( props ) => {
 					className={`uagb-team__image-crop-${ imgStyle }`}
 					src={ imgUrl }
 					alt={ image.alt ? image.alt : '' }
-					height={imgWidth}
-					width={imgWidth}
+					height={ imgWidth }
+					width={ imgWidth }
 					loading="lazy"
 				/>
 		);
@@ -198,7 +198,7 @@ const Render = ( props ) => {
 		const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/team.png`;
 	return (
 		<>
-		{ isPreview ? <img width='100%' src={previewImageData} alt='' loading='lazy'/> :
+		{ isPreview ? <img src={previewImageData} alt='' loading='lazy' height={ imgWidth } width={ imgWidth } /> :
 			<div
 				className={ classnames(
 					className,
