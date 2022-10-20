@@ -27,4 +27,5 @@ return array(
 	'modalHeightType'       => 'px',
 	'closeIconSize'         => 25,
 	'closeIconPosition'     => 'popup-top-right',
+	'overlayColor'			=> 'rgba(0,0,0,0.75)',
 );

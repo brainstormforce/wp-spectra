@@ -147,7 +147,14 @@ const attributes = {
 	closeIconPosition: {
 		type: 'string',
 		default: 'popup-top-right',
-	}
+	},
+	overlayColor: {
+		type: 'string',
+		default: 'rgba(0,0,0,0.75)',
+		UAGCopyPaste: {
+			styleType: 'overlay-bg-color'
+		}
+	},
 };
 
 export default attributes;

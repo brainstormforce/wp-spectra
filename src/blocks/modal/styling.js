@@ -26,7 +26,8 @@ export default function styling( props ) {
 		modalHeightMobile,
 		modalHeightType,
 		closeIconSize,
-		closeIconPosition
+		closeIconPosition,
+		overlayColor
 	} = props.attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -54,6 +55,9 @@ export default function styling( props ) {
 			'line-height': generateCSSUnit( closeIconSize, 'px' ),
 			'font-size': generateCSSUnit( closeIconSize, 'px' ),
 		},
+		' .uagb-modal-popup.active' : {
+			'background': overlayColor
+		}
 	};
 	const tabletSelectors = {
 		'.uagb-modal-wrapper' : {

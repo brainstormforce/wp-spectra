@@ -15,6 +15,7 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import Range from '@Components/range/Range.js';
+import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 
 let imageSizeOptions = [
 	{
@@ -52,7 +53,8 @@ export default function Settings( props ) {
 		modalHeightType,
 		appearEffect,
 		closeIconSize,
-		closeIconPosition
+		closeIconPosition,
+		overlayColor
 	} = attributes;
 
 	/*
@@ -506,12 +508,27 @@ export default function Settings( props ) {
 		</UAGAdvancedPanelBody>
 	)
 
-	const stylePanel =  (
+	const contentStylePanel =  (
 		<UAGAdvancedPanelBody
-			title={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
+			title={ __( 'Modal Content', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
-			Style settings
+			<AdvancedPopColorControl
+				label={ __(
+					'Overlay Color',
+					'ultimate-addons-for-gutenberg'
+				) }
+				colorValue={
+					overlayColor
+						? overlayColor
+						: ''
+				}
+				data={ {
+					value: overlayColor,
+					label: 'overlayColor',
+				} }
+				setAttributes={ setAttributes }
+			/>
 		</UAGAdvancedPanelBody>
 	)
 
@@ -527,7 +544,7 @@ export default function Settings( props ) {
 					</InspectorTab>
 
 					<InspectorTab { ...UAGTabs.style }>
-						{stylePanel}
+						{contentStylePanel}
 					</InspectorTab>
 					
 				</InspectorTabs>
