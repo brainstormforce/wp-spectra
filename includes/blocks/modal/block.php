@@ -10,7 +10,7 @@
 $block_slug = 'uagb/modal';
 $block_data = array(
 	'slug'             => '',
-	'admin_categories' => array( 'content', 'core' ),
+	'admin_categories' => array( 'content' ),
 	'link'             => 'modal',
 	'doc'              => 'modal',
 	'title'            => __( 'Modal', 'ultimate-addons-for-gutenberg' ),
