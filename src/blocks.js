@@ -74,6 +74,7 @@ import './blocks/tabs-child/block.js'; // Child Block.
 import './blocks/taxonomy-list/block.js'; // P29.
 import './blocks/team/block.js'; // P30.
 import './blocks/testimonial/block.js'; // P31.
+import './blocks/modal/block.js'; // P32.
 // Extensions.
 import './blocks/extensions/attributes.js';
 import './blocks/extensions/block.js';
