@@ -278,6 +278,114 @@ const attributes = {
 			styleType: 'text-color'
 		}
 	},
+	
+	textFontFamily: {
+		type: 'string',
+		default: 'Default',
+		UAGCopyPaste: {
+			styleType: 'text-font-family'
+		}
+	},
+	textFontWeight: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'text-font-weight'
+		}
+	},
+	textFontStyle: {
+		type: 'string',
+		default: 'normal',
+		UAGCopyPaste: {
+			styleType: 'text-font-style'
+		}
+	},
+	textTransform: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'text-transform'
+		}
+	},
+	textDecoration: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'text-decoration'
+		}
+	},
+	textFontSizeType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'text-font-size-type'
+		}
+	},
+	textLineHeightType: {
+		type: 'string',
+		default: 'em',
+		UAGCopyPaste: {
+			styleType: 'text-line-height-type'
+		}
+	},
+	textFontSize: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'text-font-size'
+		}
+	},
+	textFontSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'text-font-size-tablet'
+		}
+	},
+	textFontSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'text-font-size-mobile'
+		}
+	},
+	textLineHeight: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'text-line-height'
+		}
+	},
+	textLineHeightTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'text-line-height-tablet'
+		}
+	},
+	textLineHeightMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'text-line-height-mobile'
+		}
+	},
+	textLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'text-letter-spacing'
+		}
+	},
+	textLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'text-letter-spacing-tablet'
+		}
+	},
+	textLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'text-letter-spacing-mobile'
+		}
+	},
+	textLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'text-letter-spacing-type'
+		}
+	},
 
 	// btnSpacingLink: {
 	// 	type: 'boolean',

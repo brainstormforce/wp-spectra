@@ -49,6 +49,23 @@ export default function styling( props ) {
 		iconColor,
 		iconSize,
 		textColor,
+		textFontFamily,
+		textFontWeight,
+		textFontStyle,
+		textFontSizeType,
+		textFontSize,
+		textFontSizeMobile,
+		textFontSizeTablet,
+		textLineHeightType,
+		textLineHeight,
+		textLineHeightMobile,
+		textLineHeightTablet,
+		textLetterSpacing,
+		textLetterSpacingTablet,
+		textLetterSpacingMobile,
+		textLetterSpacingType,
+		textTransform,
+		textDecoration,
 		// Button Padding.
 		// paddingBtnUnit,
 		// mobilePaddingBtnUnit,
@@ -113,7 +130,15 @@ export default function styling( props ) {
 			'fill': iconColor
 		},
 		' .uagb-modal-text.uagb-modal-trigger': {
-			'color': textColor
+			'color': textColor,
+			'font-family': textFontFamily,
+			'font-style' : textFontStyle,
+			'text-decoration': textDecoration,
+			'text-transform': textTransform,
+			'font-weight': textFontWeight,
+			'font-size': generateCSSUnit( textFontSize, textFontSizeType ),
+			'line-height': generateCSSUnit( textLineHeight, textLineHeightType ),
+			'letter-spacing': generateCSSUnit( textLetterSpacing, textLetterSpacingType ),
 		}
 		// ' .uagb-modal-popup-content' : {
 		// 	'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),

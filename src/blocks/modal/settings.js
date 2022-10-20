@@ -17,6 +17,8 @@ import renderSVG from '@Controls/renderIcon';
 import Range from '@Components/range/Range.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
+import TypographyControl from '@Components/typography';
+import WebfontLoader from '@Components/typography/fontloader';
 
 let imageSizeOptions = [
 	{
@@ -77,6 +79,24 @@ export default function Settings( props ) {
 		iconColor,
 		iconSize,
 		textColor,
+		textFontFamily,
+		textFontWeight,
+		textFontStyle,
+		textFontSizeType,
+		textFontSize,
+		textFontSizeMobile,
+		textFontSizeTablet,
+		textLineHeightType,
+		textLineHeight,
+		textLineHeightMobile,
+		textLineHeightTablet,
+		textLetterSpacing,
+		textLetterSpacingTablet,
+		textLetterSpacingMobile,
+		textLetterSpacingType,
+		textTransform,
+		textDecoration,
+		textLoadGoogleFonts,
 		// paddingBtnTop,
 		// paddingBtnBottom,
 		// paddingBtnLeft,
@@ -94,6 +114,23 @@ export default function Settings( props ) {
 		// mobilePaddingBtnUnit,
 		// tabletPaddingBtnUnit,
 	} = attributes;
+
+	let loadTextGoogleFonts;
+
+	if ( textLoadGoogleFonts === true ) {
+		const hconfig = {
+			google: {
+				families: [
+					textFontFamily +
+						( textFontWeight ? ':' + textFontWeight : '' ),
+				],
+			},
+		};
+
+		loadTextGoogleFonts = (
+			<WebfontLoader config={ hconfig }></WebfontLoader>
+		);
+	}
 
 	/*
 	 * Event to set Image as while adding.
@@ -606,6 +643,87 @@ export default function Settings( props ) {
 						} }
 						setAttributes={ setAttributes }
 					/>
+
+					<TypographyControl
+						label={ __(
+							'Typography',
+							'ultimate-addons-for-gutenberg'
+						) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: textLoadGoogleFonts,
+							label: 'textLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: textFontFamily,
+							label: 'textFontFamily',
+						} }
+						fontWeight={ {
+							value: textFontWeight,
+							label: 'textFontWeight',
+						} }
+						fontStyle={ {
+							value: textFontStyle,
+							label: 'textFontStyle',
+						} }
+						transform={ {
+							value: textTransform,
+							label: 'textTransform',
+						} }
+						decoration={ {
+							value: textDecoration,
+							label: 'textDecoration',
+						} }
+						fontSizeType={ {
+							value: textFontSizeType,
+							label: 'textFontSizeType',
+						} }
+						fontSize={ {
+							value: textFontSize,
+							label: 'textFontSize',
+						} }
+						fontSizeMobile={ {
+							value: textFontSizeMobile,
+							label: 'textFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: textFontSizeTablet,
+							label: 'textFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: textLineHeightType,
+							label: 'textLineHeightType',
+						} }
+						lineHeight={ {
+							value: textLineHeight,
+							label: 'textLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: textLineHeightMobile,
+							label: 'textLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: textLineHeightTablet,
+							label: 'textLineHeightTablet',
+						} }
+						letterSpacing={ {
+							value: textLetterSpacing,
+							label: 'textLetterSpacing',
+						} }
+						letterSpacingTablet={ {
+							value: textLetterSpacingTablet,
+							label: 'textLetterSpacingTablet',
+						} }
+						letterSpacingMobile={ {
+							value: textLetterSpacingMobile,
+							label: 'textLetterSpacingMobile',
+						} }
+						letterSpacingType={ {
+							value: textLetterSpacingType,
+							label: 'textLetterSpacingType',
+						} }
+					/>
 				</>
 			)}
 
@@ -943,6 +1061,7 @@ export default function Settings( props ) {
 					
 				</InspectorTabs>
 			</InspectorControls>
+			{ loadTextGoogleFonts }
 		</>
 	);
 }

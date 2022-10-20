@@ -143,4 +143,6 @@ $combined_selectors = array(
 
 $base_selector = '.uagb-block-';
 
+$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'text', ' .uagb-modal-text.uagb-modal-trigger', $combined_selectors );
+
 return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
