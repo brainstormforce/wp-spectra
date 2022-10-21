@@ -108,6 +108,10 @@ export default function styling( props ) {
 		btnLetterSpacingType,
 		btnTransform,
 		btnDecoration,
+		btnLinkColor,
+		btnLinkHoverColor,
+		btnBgHoverColor,
+		btnBgColor,
 	} = props.attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -124,7 +128,7 @@ export default function styling( props ) {
 				modalWidth,
 				modalWidthType
 			),
-			'min-height': generateCSSUnit(
+			'height': generateCSSUnit(
 				modalHeight,
 				modalHeightType
 			),
@@ -172,7 +176,7 @@ export default function styling( props ) {
 				iconimgBorderRadiusUnit
 			),
 		},
-		' .uagb-modal-button-link.uagb-modal-trigger' : {
+		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger' : {
 			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
@@ -187,14 +191,23 @@ export default function styling( props ) {
 			'font-weight': btnFontWeight,
 			'font-size': generateCSSUnit( btnFontSize, btnFontSizeType ),
 			'line-height': generateCSSUnit( btnLineHeight, btnLineHeightType ),
-			'letter-spacing': generateCSSUnit( btnLetterSpacing, btnLetterSpacingType ),
+			'letter-spacing': generateCSSUnit( btnLetterSpacing, btnLetterSpacingType ),			
+			'color': btnLinkColor,
+			'background-color': btnBgColor,
 		},
 		' .uagb-modal-button-link.uagb-modal-trigger svg' : {
 			'font-size': generateCSSUnit( btnFontSize, btnFontSizeType ),
 			'width': generateCSSUnit( btnFontSize, btnFontSizeType ),
 			'height': generateCSSUnit( btnFontSize, btnFontSizeType ),
 			'line-height': generateCSSUnit( btnFontSize, btnFontSizeType ),
-			// 'fill': iconColor
+			'fill': btnLinkColor
+		},
+		' .uagb-modal-button-link.uagb-modal-trigger:hover' : {
+			'color': btnLinkHoverColor,
+			'background-color': btnBgHoverColor,
+		},
+		' .uagb-modal-button-link.uagb-modal-trigger:hover svg' : {
+			'fill': btnLinkHoverColor
 		}
 	};
 	const tabletSelectors = {
@@ -206,7 +219,7 @@ export default function styling( props ) {
 				modalWidthTablet,
 				modalWidthType
 			),
-			'min-height': generateCSSUnit(
+			'height': generateCSSUnit(
 				modalHeightTablet,
 				modalHeightType
 			),
@@ -266,7 +279,6 @@ export default function styling( props ) {
 			'width': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
 			'height': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
 			'line-height': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
-			// 'fill': iconColor
 		}
 	};
 	const mobileSelectors = {
@@ -278,7 +290,7 @@ export default function styling( props ) {
 				modalWidthMobile,
 				modalWidthType
 			),
-			'min-height': generateCSSUnit(
+			'height': generateCSSUnit(
 				modalHeightMobile,
 				modalHeightType
 			),
@@ -338,8 +350,7 @@ export default function styling( props ) {
 			'width': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
 			'height': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
 			'line-height': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
-			// 'fill': iconColor
-		}
+		},
 	};
 	
 	if( 'popup-top-right' === closeIconPosition ) {

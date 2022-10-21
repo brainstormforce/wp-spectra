@@ -75,6 +75,27 @@ window.UAGBModal = {
                         }
                     }
                 );
+
+                innerModal.addEventListener(
+                    'click',
+                    function ( e ) {
+                        const closeOverlayClick = modalWrapper.dataset.overlayclick;
+
+                        if ( 'enable' == closeOverlayClick && innerModal.classList.contains( 'active' ) && ! innerModal.querySelector( '.uagb-modal-popup-wrap' ).contains( e.target ) ) {
+                            innerModal.classList.remove( 'active' );
+                        }
+                    }
+                )              
+
+
+                document.addEventListener( 'keyup', function( e ) {
+                    const closeOnEsc = modalWrapper.dataset.escpress;
+                    if ( 27 == e.keyCode && 'enable' == closeOnEsc ) {
+                        if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
+                            innerModal.classList.remove( 'active' );
+                        }
+                    }
+                });
             }
         }
 	},

@@ -19,7 +19,7 @@ $selectors   = array(
 	),
 	' .uagb-modal-popup-wrap'      => array(
 		'width'      => UAGB_Helper::get_css_value( $attr['modalWidth'], $attr['modalWidthType'] ),
-		'min-height' => UAGB_Helper::get_css_value( $attr['modalHeight'], $attr['modalHeightType'] ),
+		'height' => UAGB_Helper::get_css_value( $attr['modalHeight'], $attr['modalHeightType'] ),
 	),
 	' .uagb-modal-popup-close svg' => array(
 		'width'       => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
@@ -42,6 +42,12 @@ $selectors   = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRight'], $attr['paddingBtnUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTop'], $attr['paddingBtnUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottom'], $attr['paddingBtnUnit'] ),
+		'color'			=> $attr['btnLinkColor'],
+		'background-color'			=> $attr['btnBgColor']
+	),
+	' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:hover' => array(
+		'color'			=> $attr['btnLinkHoverColor'],
+		'background-color'			=> $attr['btnBgHoverColor']
 	),
 	' .uagb-modal-trigger svg' => array(
 		'width'       => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
@@ -61,7 +67,10 @@ $selectors   = array(
 		'height'      => UAGB_Helper::get_css_value( $attr['btnFontSize'], $attr['btnFontSizeType'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['btnFontSize'], $attr['btnFontSizeType'] ),
 		'font-size'   => UAGB_Helper::get_css_value( $attr['btnFontSize'], $attr['btnFontSizeType'] ),
-		// 'fill'			=> $attr['iconColor']
+		'fill'			=> $attr['btnLinkColor']
+	),
+	' .uagb-modal-button-link.uagb-modal-trigger:hover svg' => array(
+		'fill'			=> $attr['btnLinkHoverColor'],
 	),
 );
 $t_selectors = array(
@@ -70,7 +79,7 @@ $t_selectors = array(
 	),
 	' .uagb-modal-popup-wrap' => array(
 		'width'      => UAGB_Helper::get_css_value( $attr['modalWidthTablet'], $attr['modalWidthType'] ),
-		'min-height' => UAGB_Helper::get_css_value( $attr['modalHeightTablet'], $attr['modalHeightType'] ),
+		'height' => UAGB_Helper::get_css_value( $attr['modalHeightTablet'], $attr['modalHeightType'] ),
 	),
 	' .uagb-modal-popup-content' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingModalLeftTablet'], $attr['tabletPaddingModalUnit'] ),
@@ -98,7 +107,7 @@ $m_selectors = array(
 	),
 	' .uagb-modal-popup-wrap' => array(
 		'width'      => UAGB_Helper::get_css_value( $attr['modalWidthMobile'], $attr['modalWidthType'] ),
-		'min-height' => UAGB_Helper::get_css_value( $attr['modalHeightMobile'], $attr['modalHeightType'] ),
+		'height' => UAGB_Helper::get_css_value( $attr['modalHeightMobile'], $attr['modalHeightType'] ),
 	),
 	' .uagb-modal-popup-content' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingModalLeftMobile'], $attr['mobilePaddingModalUnit'] ),

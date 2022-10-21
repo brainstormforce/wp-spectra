@@ -257,6 +257,11 @@ return array_merge(
 		'ctaBorderWidth'             => 1,
 		'ctaBorderRadius'            => 0,
 		'ctaBorderhoverColor'        => '',
+
+		'btnLinkColor'				=> '',
+		'btnLinkHoverColor'				=> '',
+		'btnBgHoverColor'				=> '',
+		'btnBgColor'				=> '',
 	),
 	$cta_border_attribute
 );

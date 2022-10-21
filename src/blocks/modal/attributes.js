@@ -209,6 +209,14 @@ const attributes = {
 		type: 'string',
 		default: 'popup-top-right',
 	},
+	escPress: {
+		type: 'boolean',
+		default: false,
+	},
+	overlayClick: {
+		type: 'boolean',
+		default: false,
+	},
 	overlayColor: {
 		type: 'string',
 		default: 'rgba(0,0,0,0.75)',
@@ -651,6 +659,33 @@ const attributes = {
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'btn-letter-spacing-type'
+		}
+	},
+
+	
+	btnLinkColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-color'
+		}
+	},
+	btnLinkHoverColor: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'btn-hover-color'
+		}
+	},
+	btnBgColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-bg-color'
+		}
+	},
+	btnBgHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-bg-hover-color'
 		}
 	},
 };

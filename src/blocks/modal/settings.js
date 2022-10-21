@@ -19,6 +19,7 @@ import AdvancedPopColorControl from '@Components/color-control/advanced-pop-colo
 import SpacingControl from '@Components/spacing-control';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
+import UAGTabsControl from '@Components/tabs';
 
 let imageSizeOptions = [
 	{
@@ -60,6 +61,8 @@ export default function Settings( props ) {
 		closeIconPosition,
 		overlayColor,
 		closeIconColor,
+		escPress,
+		overlayClick,
 		paddingModalTop,
 		paddingModalBottom,
 		paddingModalLeft,
@@ -146,6 +149,11 @@ export default function Settings( props ) {
 		btnTransform,
 		btnDecoration,
 		btnLoadGoogleFonts,
+		btnLinkColor,
+		btnLinkHoverColor,
+		btnBgHoverColor,
+		btnBgColor,
+		
 	} = attributes;
 
 	let loadTextGoogleFonts;
@@ -483,7 +491,7 @@ export default function Settings( props ) {
 			/>
 			<ResponsiveSlider
 				label={ __(
-					'Minimum Height',
+					'Height',
 					'ultimate-addons-for-gutenberg'
 				) }
 				data={ {
@@ -630,6 +638,28 @@ export default function Settings( props ) {
 					},
 				] }
 			/>
+
+			<ToggleControl
+				label={ __(
+					'Close on ESC Keypress',
+					'ultimate-addons-for-gutenberg'
+				) }
+				checked={ escPress }
+				onChange={ () =>
+					setAttributes( { escPress: ! escPress } )
+				}
+			/>
+			<ToggleControl
+				label={ __(
+					'Close on Overlay Click',
+					'ultimate-addons-for-gutenberg'
+				) }
+				checked={ overlayClick }
+				onChange={ () =>
+					setAttributes( { overlayClick: ! overlayClick } )
+				}
+			/>
+
 		</UAGAdvancedPanelBody>
 	)
 
@@ -979,6 +1009,95 @@ export default function Settings( props ) {
 							value: btnLetterSpacingType,
 							label: 'btnLetterSpacingType',
 						} }
+					/>
+
+					<UAGTabsControl
+						tabs={ [
+							{
+								name: 'normal',
+								title: __(
+									'Normal',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								name: 'hover',
+								title: __(
+									'Hover',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+						] }
+						normal={
+							<>
+								<AdvancedPopColorControl
+									label={ __(
+										'Text Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={
+										btnLinkColor
+											? btnLinkColor
+											: ''
+									}
+									data={ {
+										value: btnLinkColor,
+										label: 'btnLinkColor',
+									} }
+									setAttributes={ setAttributes }
+								/>
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={
+										btnBgColor ? btnBgColor : ''
+									}
+									data={ {
+										value: btnBgColor,
+										label: 'btnBgColor',
+									} }
+									setAttributes={ setAttributes }
+								/>
+							</>
+						}
+						hover={
+							<>
+								<AdvancedPopColorControl
+									label={ __(
+										'Text Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={
+										btnLinkHoverColor
+											? btnLinkHoverColor
+											: ''
+									}
+									data={ {
+										value: btnLinkHoverColor,
+										label: 'btnLinkHoverColor',
+									} }
+									setAttributes={ setAttributes }
+								/>
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={
+										btnBgHoverColor
+											? btnBgHoverColor
+											: ''
+									}
+									data={ {
+										value: btnBgHoverColor,
+										label: 'btnBgHoverColor',
+									} }
+									setAttributes={ setAttributes }
+								/>
+							</>
+						}
 					/>
 
 					<SpacingControl
