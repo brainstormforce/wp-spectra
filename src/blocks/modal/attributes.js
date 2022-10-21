@@ -688,6 +688,25 @@ const attributes = {
 			styleType: 'btn-bg-hover-color'
 		}
 	},
+	ctaBorderColor: {
+		type: 'string',
+		default: '#333',
+	},
+	ctaBorderhoverColor:{
+		type: 'string',
+	},
+	ctaBorderStyle: {
+		type: 'string',
+		default: 'solid',
+	},
+	ctaBorderWidth :{
+		type: 'number',
+		default: 1,
+	},
+	ctaBorderRadius :{
+		type: 'number',
+		default: 0,
+	},
 };
 
 export default attributes;

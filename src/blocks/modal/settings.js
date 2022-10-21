@@ -20,6 +20,7 @@ import SpacingControl from '@Components/spacing-control';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import UAGTabsControl from '@Components/tabs';
+import ResponsiveBorder from '@Components/responsive-border';
 
 let imageSizeOptions = [
 	{
@@ -1186,6 +1187,15 @@ export default function Settings( props ) {
 								unitValue: '%',
 							},
 						] }
+					/>
+					<hr className="uagb-editor__separator" />
+					<ResponsiveBorder
+						disabledBorderTitle= {false}
+						setAttributes={ setAttributes }
+						prefix={'btn'}
+						attributes={ attributes }
+						deviceType={ deviceType }
+						disableBottomSeparator={ true }
 					/>
 				</>
 			) }
