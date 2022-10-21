@@ -28,6 +28,13 @@ class UAGB_Init_Blocks {
 	private static $instance;
 
 	/**
+	 * Member Variable
+	 *
+	 * @var block activation
+	 */
+	private $active_blocks;
+
+	/**
 	 *  Initiator
 	 */
 	public static function get_instance() {
@@ -67,6 +74,8 @@ class UAGB_Init_Blocks {
 			add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
 		}
 
+		add_action( 'spectra_analytics_complete_action', array( $this, 'regenerate_analytics_data' ) );
+
 	}
 
 	/**
@@ -86,85 +95,13 @@ class UAGB_Init_Blocks {
 	/**
 	 * Reset all the filters for scheduled actions to get post block count.
 	 */
-	public function send_spectra_specific_stats() {
+	public function regenerate_analytics_data() {
 
-		delete_option( 'spectra_blocks_pages_counted' );
 		delete_option( 'spectra_blocks_count_status' );
 		delete_option( 'get_spectra_block_count' );
 		delete_option( 'spectra_settings_data' );
-
-	}
-
-	/**
-	 * Calculate Spectra blocks count.
-	 *
-	 * @since 2.0.12
-	 * @return void
-	 */
-	public function blocks_count_logic() {
-
-		// Number of posts to parse at a time.
-		$batch_size = 10;
-
-		$list_blocks         = UAGB_Helper::$block_list;
-		$spectra_block_count = 0;
-		$blocks_count        = array();
-		$all_blocks_data     = array();
-
-		$page = get_option( 'spectra_blocks_pages_counted', 1 );
-
-		$saved_block_count = get_option( 'get_spectra_block_count', 0 );
-
-		$count_status = get_option( 'spectra_blocks_count_status' );
-
-		if ( ! $saved_block_count ) {
-			// Update block list count.
-			foreach ( $list_blocks as $slug => $value ) {
-				$_slug                                       = str_replace( 'uagb/', '', $slug );
-				$all_blocks_data[ '<!-- wp:' . $slug . ' ' ] = array(
-					'name' => $_slug,
-				);
-				$blocks_count[ $_slug ]                      = array(
-					'name'  => $_slug,
-					'count' => 0,
-				);
-			}
-		} elseif ( is_array( $saved_block_count ) && count( $saved_block_count ) !== 0 ) {
-			$blocks_count = $saved_block_count;
-		}
-
-		$query_args = array(
-			'post_type'      => 'any',
-			'post_status'    => 'publish',
-			'posts_per_page' => $batch_size,
-			'paged'          => $page,
-		);
-
-		$query = new WP_Query( $query_args );
-
-		if ( $query->have_posts() && $query->max_num_pages >= $page ) {
-			foreach ( $query->posts as $key => $post ) {
-				foreach ( $all_blocks_data as $block_key => $block ) {
-					if ( false !== strpos( $post->post_content, $block_key ) ) {
-						$block_slug = str_replace( '<!-- wp:uagb/', '', $block_key );
-						$block_slug = str_replace( ' ', '', $block_slug );
-
-						$usage_count                          = $blocks_count[ $block_slug ]['count'];
-						$latest_count                         = substr_count( $post->post_content, $block_key );
-						$blocks_count[ $block_slug ]['count'] = $usage_count + $latest_count;
-						$spectra_block_count++;
-					}
-				}
-			}
-			$page++;
-			update_option( 'spectra_blocks_pages_counted', $page );
-		} else {
-			update_option( 'spectra_blocks_count_status', 'done' );
-		}
-
-		if ( $spectra_block_count > 0 ) {
-			update_option( 'get_spectra_block_count', $blocks_count );
-		}
+		delete_option( 'spectra_saved_blocks_settings' );
+		delete_transient( 'spectra_background_process_action' );
 
 	}
 
