@@ -2,22 +2,22 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.0.12\n"
+"Project-Id-Version: Spectra 2.0.13\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-09-23T05:42:21+00:00\n"
+"POT-Creation-Date: 2022-10-20T05:10:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
-#: admin-core/inc/admin-menu.php:218
+#: admin-core/inc/admin-menu.php:203
 #: classes/class-uagb-admin-helper.php:379
-#: classes/class-uagb-init-blocks.php:492
+#: classes/class-uagb-init-blocks.php:501
 msgid "Spectra"
 msgstr ""
 
@@ -103,15 +103,16 @@ msgstr ""
 #: admin-core/ajax/common-settings.php:1018
 #: admin-core/ajax/common-settings.php:1076
 #: admin-core/ajax/common-settings.php:1111
-#: classes/class-uagb-init-blocks.php:455
+#: classes/class-uagb-init-blocks.php:464
 msgid "Successfully saved data!"
 msgstr ""
 
 #: admin-core/api/common-settings.php:99
+#: classes/class-uagb-rest-api.php:309
 msgid "Sorry, you cannot list resources."
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:97
+#: admin-core/inc/admin-menu.php:90
 #: admin-core/assets/build/dashboard-app.js:1
 msgid "Settings"
 msgstr ""
@@ -157,7 +158,7 @@ msgstr ""
 
 #: blocks-config/post-timeline/class-uagb-post-timeline.php:523
 #: blocks-config/post/class-uagb-post.php:528
-#: blocks-config/post/class-uagb-post.php:1995
+#: blocks-config/post/class-uagb-post.php:1998
 #: includes/blocks/post-carousel/attributes.php:113
 #: includes/blocks/post-grid/attributes.php:105
 #: includes/blocks/post-masonry/attributes.php:108
@@ -170,15 +171,15 @@ msgstr ""
 msgid "No posts found"
 msgstr ""
 
-#: blocks-config/table-of-content/class-uagb-table-of-content.php:570
-#: blocks-config/table-of-content/class-uagb-table-of-content.php:574
+#: blocks-config/table-of-content/class-uagb-table-of-content.php:611
+#: blocks-config/table-of-content/class-uagb-table-of-content.php:615
 #: includes/blocks/table-of-contents/attributes.php:18
 #: dist/blocks.js:1
 #: dist/blocks.js:17
 msgid "Table Of Contents"
 msgstr ""
 
-#: blocks-config/table-of-content/class-uagb-table-of-content.php:858
+#: blocks-config/table-of-content/class-uagb-table-of-content.php:899
 #: includes/blocks/table-of-contents/attributes.php:19
 #: dist/blocks.js:1
 msgid "Add a header to begin generating the table of contents"
@@ -242,48 +243,48 @@ msgstr ""
 msgid "Full"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:433
+#: classes/class-uagb-init-blocks.php:442
 msgid "Please select a valid Gravity Form."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:475
+#: classes/class-uagb-init-blocks.php:484
 msgid "Please select a valid Contact Form 7."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:609
+#: classes/class-uagb-init-blocks.php:618
 #: dist/blocks.js:11
 #: dist/blocks.js:13
 #: dist/blocks.js:17
 msgid "Default"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:704
+#: classes/class-uagb-init-blocks.php:712
 #: dist/blocks.js:11
 #: dist/blocks.js:13
 #: dist/blocks.js:17
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:733
-#: classes/class-uagb-init-blocks.php:766
+#: classes/class-uagb-init-blocks.php:741
+#: classes/class-uagb-init-blocks.php:774
 #: dist/blocks.js:17
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:747
+#: classes/class-uagb-init-blocks.php:755
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:780
+#: classes/class-uagb-init-blocks.php:788
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
 #. translators: %s: html tags
-#: classes/class-uagb-loader.php:343
+#: classes/class-uagb-loader.php:340
 msgid "The %1$sSpectra%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated."
 msgstr ""
 
-#: classes/class-uagb-loader.php:346
+#: classes/class-uagb-loader.php:343
 msgid "Install Gutenberg"
 msgstr ""
 
@@ -338,6 +339,7 @@ msgstr ""
 
 #: includes/blocks/call-to-action/block.php:16
 #: dist/blocks-placeholder.js:12
+#: dist/blocks.js:1
 #: dist/blocks.js:13
 msgid "Call To Action"
 msgstr ""
@@ -675,6 +677,7 @@ msgstr ""
 
 #: includes/blocks/info-box/block.php:16
 #: dist/blocks-placeholder.js:20
+#: dist/blocks.js:1
 #: dist/blocks.js:13
 msgid "Info Box"
 msgstr ""
@@ -1307,11 +1310,37 @@ msgid "Your Attractive Heading"
 msgstr ""
 
 #: dist/blocks.js:1
+msgid "Click Here"
+msgstr ""
+
+#: dist/blocks.js:1
+#: dist/blocks.js:13
+msgid "Prefix"
+msgstr ""
+
+#: dist/blocks.js:1
+#: dist/blocks.js:13
+msgid "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
+msgstr ""
+
+#: dist/blocks.js:1
+msgid "List item"
+msgstr ""
+
+#: dist/blocks.js:1
 msgid "Timeline Heading "
 msgstr ""
 
 #: dist/blocks.js:1
 msgid "This is timeline description. Please click here to change this description."
+msgstr ""
+
+#: dist/blocks.js:1
+msgid "Subscribe Now"
+msgstr ""
+
+#: dist/blocks.js:1
+msgid "Get access to Premium Features for FREE for a year!"
 msgstr ""
 
 #: dist/blocks.js:1
@@ -1361,6 +1390,11 @@ msgstr ""
 
 #: dist/blocks.js:1
 msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+msgstr ""
+
+#: dist/blocks.js:1
+#: dist/blocks.js:13
+msgid "Notice Title"
 msgstr ""
 
 #: dist/blocks.js:1
@@ -1925,6 +1959,16 @@ msgstr ""
 
 #: dist/blocks.js:11
 msgid "Content Box Width"
+msgstr ""
+
+#: dist/blocks.js:11
+#: dist/blocks.js:13
+#: dist/blocks.js:17
+msgid "Equal Height"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Enabling this will change the Align Items value to Stretch."
 msgstr ""
 
 #: dist/blocks.js:11
@@ -3298,11 +3342,6 @@ msgid "Columns Gap"
 msgstr ""
 
 #: dist/blocks.js:13
-#: dist/blocks.js:17
-msgid "Equal Height"
-msgstr ""
-
-#: dist/blocks.js:13
 msgid "Gap between Icon and Question"
 msgstr ""
 
@@ -3462,6 +3501,10 @@ msgid "Toggle Size"
 msgstr ""
 
 #: dist/blocks.js:13
+msgid "Note: It is required to set border style and border width for toggle. Else you will not able to resize the toggle."
+msgstr ""
+
+#: dist/blocks.js:13
 msgid "Element Color"
 msgstr ""
 
@@ -3583,6 +3626,59 @@ msgid "Autocomplete"
 msgstr ""
 
 #: dist/blocks.js:13
+msgid "Off"
+msgstr ""
+
+#: dist/blocks.js:13
+msgid "Full Name"
+msgstr ""
+
+#: dist/blocks.js:13
+msgid "Middle Name"
+msgstr ""
+
+#: dist/blocks.js:13
+msgid "Suffix"
+msgstr ""
+
+#: dist/blocks.js:13
+msgid "Username"
+msgstr ""
+
+#: dist/blocks.js:13
+msgid "Nickname"
+msgstr ""
+
+#: dist/blocks.js:13
+#: dist/blocks.js:17
+msgid "Company Name"
+msgstr ""
+
+#: dist/blocks.js:13
+msgid "Job Title"
+msgstr ""
+
+#: dist/blocks.js:13
+msgid "Address Line 1"
+msgstr ""
+
+#: dist/blocks.js:13
+msgid "Address Line 2"
+msgstr ""
+
+#: dist/blocks.js:13
+msgid "Address Line 3"
+msgstr ""
+
+#: dist/blocks.js:13
+msgid "Country"
+msgstr ""
+
+#: dist/blocks.js:13
+msgid "Postal / ZIP Code"
+msgstr ""
+
+#: dist/blocks.js:13
 #: dist/blocks.js:17
 msgid "Placeholder"
 msgstr ""
@@ -3601,10 +3697,6 @@ msgstr ""
 
 #: dist/blocks.js:13
 msgid "example@mail.com"
-msgstr ""
-
-#: dist/blocks.js:13
-msgid "Off"
 msgstr ""
 
 #: dist/blocks.js:13
@@ -4225,10 +4317,6 @@ msgid "Gap Between Steps"
 msgstr ""
 
 #: dist/blocks.js:13
-msgid "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
-msgstr ""
-
-#: dist/blocks.js:13
 msgid " Months "
 msgstr ""
 
@@ -4380,10 +4468,6 @@ msgstr ""
 
 #: dist/blocks.js:13
 msgid "Dismiss Icon Color"
-msgstr ""
-
-#: dist/blocks.js:13
-msgid "Notice Title"
 msgstr ""
 
 #: dist/blocks.js:13
@@ -5744,10 +5828,6 @@ msgstr ""
 
 #: dist/blocks.js:17
 msgid "Author Name"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "Company Name"
 msgstr ""
 
 #: dist/blocks.js:17
