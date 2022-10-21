@@ -13,6 +13,7 @@ import CallToAction from './components/CallToAction';
 import CTA from './components/CTA';
 import attributes from './old-attributes';
 import CTANew from './components/CallToActionNew';
+import SecondCTAButton from './components/SecondCTAButton';
 
 import { __ } from '@wordpress/i18n';
 
