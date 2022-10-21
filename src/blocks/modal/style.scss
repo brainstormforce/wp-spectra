@@ -1,67 +1,3 @@
-.uagb-modal-popup {
-	display: none;
-
-	&.active {
-		top: 0;
-		bottom: 0;
-		justify-content: center;
-		align-items: center;
-		overflow-x: auto;
-		overflow-y: scroll;
-		position: fixed;
-		background: rgba(0, 0, 0, 0.7);
-		left: 0;
-		right: 0;
-		display: flex;
-		z-index: 99999;
-
-		.uagb-modal-popup-close {
-			right: 0%;
-			transform: translateX(0%);
-			opacity: 1;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			top: 0;
-			position: absolute;
-			width: 45px;
-			height: 45px;
-			text-align: center;
-			cursor: pointer;
-		}
-	}
-
-	.uagb-modal-popup-wrap {
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		transform: scale(0.8);
-		width: 700px;
-		min-height: 350px;
-		margin-top: 10px;
-		max-width: 100%;
-		box-sizing: border-box;
-		background: #fff;
-		color: #333;
-		position: relative;
-		z-index: 99999;
-
-		.uagb-modal-popup-content {
-			padding: 45px 35px;
-		}
-	}
-
-	.uagb-modal-trigger {
-		cursor: pointer;
-	}
-
-	.uagb-modal-popup-close {
-		display: none;
-	}
-
-}
-
-// Below css is to add block inserter styling. Not working correctly so commented out.
 body {
 
 	&.hide-scroll {
@@ -87,10 +23,17 @@ body {
 					height: auto;
 					padding: 8px 12px !important;
 				}
+
+				button.block-editor-button-block-appender {
+					background-color: #dcf2ff !important;
+					box-shadow: none !important;
+					padding: 0 !important;
+					width: 100%;
+				}
 			}
 
 			button {
-				background-color: #dbf9e4 !important;
+				background-color: #dcf2ff !important;
 				box-shadow: none !important;
 				padding: 0 !important;
 				width: 100%;
@@ -101,20 +44,287 @@ body {
 			}
 
 			svg {
-				fill: rgba(0, 165, 79, 0.9);
-				width: 30px;
-				height: 30px;
+				fill: #007cba;
+				width: 20px;
+				height: 20px;
 			}
 		}
 
 		.components-dropdown.block-editor-inserter {
 			width: 100%;
 		}
+	}
+}
 
+.uagb-modal-popup {
+	visibility: hidden;
+	position: fixed;
+
+	&.active {
+		top: 0;
+		bottom: 0;
+		justify-content: center;
+		align-items: center;
+		// overflow-x: auto;
+		// overflow-y: scroll;
+		background: rgba(0, 0, 0, 0.7);
+		left: 0;
+		right: 0;
+		display: flex;
+		z-index: 99999;
+		visibility: visible;
+
+		.uagb-modal-popup-close {
+			opacity: 1;
+			display: flex;
+			align-items: center;
+			top: -25px;
+			position: absolute;
+			text-align: center;
+			cursor: pointer;
+			fill: #fff;
+		}
+	}
+
+	.uagb-modal-trigger {
+		cursor: pointer;
+
+		svg {
+			font-size: 30px;
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
+		}
+
+		&img {
+			width: 100px;
+		}
+	}
+
+	.uagb-modal-popup-close {
+		display: none;
+	}
+
+	.uagb-modal-popup-content {
+		padding: 45px 35px;
+		overflow: auto;
+	}
+
+	.uagb-modal-popup-wrap {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		width: 700px;
+		height: 450px;
+		margin-top: 10px;
+		max-width: 100%;
+		box-sizing: border-box;
+		background: #fff;
+		color: #333;
+		position: relative;
+		z-index: 99999;
+
+		.uagb-modal-popup-content::-webkit-scrollbar {
+			width: 5px;
+		}
+
+		.uagb-modal-popup-content::-webkit-scrollbar-thumb {
+			box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+			border-radius: 100px;
+		}
 	}
 
 }
 
+.entry {
+
+	.entry-content {
+
+		a.uagb-modal-button-link {
+			text-decoration: none;
+			align-items: center;
+		}
+
+		a.uagb-modal-button-link:hover {
+			color: inherit;
+		}
+	}
+}
+
+div.uagb-spectra-button-wrapper {
+	line-height: 1;
+
+	a.uagb-modal-button-link {
+		display: inline-flex;
+		text-decoration: none;
+		align-items: center;
+		cursor: pointer;
+
+		&:hover {
+			color: inherit;
+		}
+
+		svg {
+			font-style: normal;
+			vertical-align: middle;
+			width: 15px;
+			height: 15px;
+			font-size: 15px;
+		}
+	}
+
+	.uagb-modal-trigger svg {
+		fill: currentColor;
+		font-style: normal;
+		vertical-align: middle;
+		width: 15px;
+		height: 15px;
+		font-size: 15px;
+	}
+}
+
 .components-popover {
 	z-index: 1000000 !important;
+}
+
+// Appear effect style.
+
+/* Effect 1: Fade in and scale up */
+.uagb-effect-default {
+
+	.uagb-modal-popup-wrap {
+		opacity: 0;
+	}
+
+	&.active {
+
+		.uagb-modal-popup-wrap {
+			opacity: 1;
+			-webkit-transition: all 0.3s;
+			transition: all 0.3s;
+		}
+	}
+}
+
+.uagb-effect-1 {
+
+	.uagb-modal-popup-wrap {
+		-webkit-transform: scale(0.7);
+		-ms-transform: scale(0.7);
+		transform: scale(0.7);
+		opacity: 0;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	}
+
+	&.active {
+
+		.uagb-modal-popup-wrap {
+			-webkit-transform: scale(1);
+			-ms-transform: scale(1);
+			transform: scale(1);
+			opacity: 1;
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+			-webkit-transition: all 0.3s;
+			transition: all 0.3s;
+		}
+	}
+}
+
+/* Effect 2: Slide from the right */
+.uagb-effect-2 {
+
+	.uagb-modal-popup-wrap {
+		-webkit-transform: translateX(20%);
+		-ms-transform: translateX(20%);
+		transform: translateX(20%);
+		opacity: 0;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	}
+
+	&.active {
+
+		.uagb-modal-popup-wrap {
+			-webkit-transform: translateX(0);
+			-ms-transform: translateX(0);
+			transform: translateX(0);
+			opacity: 1;
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+			-webkit-transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+			transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+		}
+	}
+}
+
+/* Effect 3: Slide from the bottom */
+.uagb-effect-3 {
+
+	.uagb-modal-popup-wrap {
+		-webkit-transform: translateY(20%);
+		-ms-transform: translateY(20%);
+		transform: translateY(20%);
+		opacity: 0;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	}
+
+	&.active {
+
+		.uagb-modal-popup-wrap {
+			-webkit-transform: translateY(0);
+			-ms-transform: translateY(0);
+			transform: translateY(0);
+			opacity: 1;
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+			-webkit-transition: all 0.3s;
+			transition: all 0.3s;
+		}
+	}
+}
+
+/* Effect 4: Super scaled */
+.uagb-effect-4 {
+
+	.uagb-modal-popup-wrap {
+		-webkit-transform: scale(2);
+		-ms-transform: scale(2);
+		transform: scale(2);
+		opacity: 0;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	}
+
+	&.active {
+
+		.uagb-modal-popup-wrap {
+			-webkit-transform: scale(1);
+			-ms-transform: scale(1);
+			transform: scale(1);
+			opacity: 1;
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+			-webkit-transition: all 0.3s;
+			transition: all 0.3s;
+		}
+	}
+}
+
+.uagb-effect-5 {
+
+	.uagb-modal-popup-wrap {
+		-webkit-transform: translateY(-200%);
+		-ms-transform: translateY(-200%);
+		transform: translateY(-200%);
+		opacity: 0;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	}
+
+	&.active {
+
+		.uagb-modal-popup-wrap {
+			-webkit-transform: translateY(0);
+			-ms-transform: translateY(0);
+			transform: translateY(0);
+			opacity: 1;
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+			-webkit-transition: all 0.5s 0.1s;
+			transition: all 0.5s 0.1s;
+		}
+	}
 }
