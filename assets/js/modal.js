@@ -39,11 +39,11 @@ window.UAGBModal = {
 
             const modalTrigger = modalWrapper.querySelector( '.uagb-modal-trigger' );
 
-            // if( 'disabled' === previewModal ) {
-            //     modalTrigger.style.pointerEvents = 'none';
-            // }
+            if( 'disabled' === previewModal ) {
+                modalTrigger.style.pointerEvents = 'none';
+            }
 
-            if( typeof modalTrigger !== 'undefined' && modalTrigger ) {
+            if( typeof modalTrigger !== 'undefined' && modalTrigger && 'enabled' === previewModal ) {
 
                 modalTrigger.style.pointerEvents = 'auto';
 
@@ -53,7 +53,7 @@ window.UAGBModal = {
                     'click',
                     function () {
 
-                        if ( 'enabled' === previewModal && typeof innerModal !== 'undefined' && ! innerModal.classList.contains( 'active' ) ) {
+                        if ( typeof innerModal !== 'undefined' && ! innerModal.classList.contains( 'active' ) ) {
                             innerModal.classList.add( 'active' );
 
                             const bodyWrap = document_element.querySelector( 'body' );
