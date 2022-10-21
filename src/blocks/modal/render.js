@@ -5,7 +5,7 @@ import renderSVG from '@Controls/renderIcon';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import { useDeviceType } from '@Controls/getPreviewType';
 
-const ALLOWED_BLOCKS = wp.blocks.getBlockTypes().map( block => block.name ).filter(blockName => blockName !== 'uagb/modal');
+const ALLOWED_BLOCKS = wp.blocks.getBlockTypes().map( block => block.name ).filter( blockName => blockName !== 'uagb/modal' );
 
 const propTypes = {};
 
