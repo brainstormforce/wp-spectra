@@ -6,7 +6,39 @@
  const borderAttributes = getBorderAttributes( 'btn' );
  const secondCtaBorderAttribute = getBorderAttributes( 'secondCta' );
  
+// These attributes are significant for users till v2.0.13.
+
  const attributes = {
+	// Attributes requiring special attention.
+	ctaBgType: {
+		type: 'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-bg-type'
+		},
+	},
+	ctaBgHoverType: {
+		type: 'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-bg-hover-type'
+		},
+	},
+	secondCtaBgType: {
+		type: 'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'second-btn-bg-type'
+		}
+	},
+	secondCtaBgHoverType: {
+		type: 'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'second-btn-bg-type'
+		}
+	},
+	// Regular attributes.
 	 inheritFromTheme: {
 		 type: 'boolean',
 		 default: false,
