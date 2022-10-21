@@ -204,19 +204,19 @@ export default function styling( props ) {
 			'background-color': btnBgColor,
 			...borderCSS
 		},
-		' .uagb-modal-button-link.uagb-modal-trigger svg' : {
+		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger svg' : {
 			'font-size': generateCSSUnit( btnFontSize, btnFontSizeType ),
 			'width': generateCSSUnit( btnFontSize, btnFontSizeType ),
 			'height': generateCSSUnit( btnFontSize, btnFontSizeType ),
 			'line-height': generateCSSUnit( btnFontSize, btnFontSizeType ),
 			'fill': btnLinkColor
 		},
-		' .uagb-modal-button-link.uagb-modal-trigger:hover' : {
+		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:hover' : {
 			'color': btnLinkHoverColor,
 			'background-color': btnBgHoverColor,
 			'border-color': btnBorderHColor
 		},
-		' .uagb-modal-button-link.uagb-modal-trigger:hover svg' : {
+		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:hover svg' : {
 			'fill': btnLinkHoverColor
 		}
 	};
@@ -260,7 +260,7 @@ export default function styling( props ) {
 			),
 			'letter-spacing': generateCSSUnit( textLetterSpacingTablet, textLetterSpacingType ),
 		},
-		' .uagb-modal-button-link.uagb-modal-trigger' : {
+		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger' : {
 			'padding-left': generateCSSUnit(
 				paddingBtnLeftTablet,
 				tabletPaddingBtnUnit
@@ -285,7 +285,7 @@ export default function styling( props ) {
 			'letter-spacing': generateCSSUnit( btnLetterSpacingTablet, btnLetterSpacingType ),
 			...borderCSSTablet
 		},
-		' .uagb-modal-button-link.uagb-modal-trigger svg' : {
+		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger svg' : {
 			'font-size': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
 			'width': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
 			'height': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
@@ -332,7 +332,7 @@ export default function styling( props ) {
 			),
 			'letter-spacing': generateCSSUnit( textLetterSpacingMobile, textLetterSpacingType ),
 		},
-		' .uagb-modal-button-link.uagb-modal-trigger' : {
+		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger' : {
 			'padding-left': generateCSSUnit(
 				paddingBtnLeftMobile,
 				mobilePaddingBtnUnit
@@ -357,7 +357,7 @@ export default function styling( props ) {
 			'letter-spacing': generateCSSUnit( btnLetterSpacingMobile, btnLetterSpacingType ),			
 			...borderCSSMobile
 		},
-		' .uagb-modal-button-link.uagb-modal-trigger svg' : {
+		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger svg' : {
 			'font-size': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
 			'width': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
 			'height': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),

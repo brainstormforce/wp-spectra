@@ -42,7 +42,7 @@ $selectors   = array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingModalTop'], $attr['paddingModalUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingModalBottom'], $attr['paddingModalUnit'] ),
 	),
-	' .uagb-modal-button-link.uagb-modal-trigger'     => array(
+	'.uagb-modal-wrapper .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger'     => array(
 		'padding-left'     => UAGB_Helper::get_css_value( $attr['paddingBtnLeft'], $attr['paddingBtnUnit'] ),
 		'padding-right'    => UAGB_Helper::get_css_value( $attr['paddingBtnRight'], $attr['paddingBtnUnit'] ),
 		'padding-top'      => UAGB_Helper::get_css_value( $attr['paddingBtnTop'], $attr['paddingBtnUnit'] ),
@@ -68,14 +68,14 @@ $selectors   = array(
 	'.uagb-modal-wrapper img.uagb-modal-trigger'      => array(
 		'border-radius' => UAGB_Helper::get_css_value( $attr['iconimgBorderRadius'], $attr['iconimgBorderRadiusUnit'] ),
 	),
-	' .uagb-modal-button-link.uagb-modal-trigger svg' => array(
+	' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger svg' => array(
 		'width'       => $btn_icon_size,
 		'height'      => $btn_icon_size,
 		'line-height' => $btn_icon_size,
 		'font-size'   => $btn_icon_size,
 		'fill'        => $attr['btnLinkColor'],
 	),
-	' .uagb-modal-button-link.uagb-modal-trigger:hover svg' => array(
+	' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:hover svg' => array(
 		'fill' => $attr['btnLinkHoverColor'],
 	),
 );
@@ -93,13 +93,13 @@ $t_selectors = array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingModalTopTablet'], $attr['tabletPaddingModalUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingModalBottomTablet'], $attr['tabletPaddingModalUnit'] ),
 	),
-	' .uagb-modal-button-link.uagb-modal-trigger'     => array(
+	'.uagb-modal-wrapper .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger'     => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftTablet'], $attr['tabletPaddingBtnUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightTablet'], $attr['tabletPaddingBtnUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopTablet'], $attr['tabletPaddingBtnUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomTablet'], $attr['tabletPaddingBtnUnit'] ),
 	),
-	' .uagb-modal-button-link.uagb-modal-trigger svg' => array(
+	' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger svg' => array(
 		'width'       => $t_btn_icon_size,
 		'height'      => $t_btn_icon_size,
 		'line-height' => $t_btn_icon_size,
@@ -120,13 +120,13 @@ $m_selectors = array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingModalTopMobile'], $attr['mobilePaddingModalUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingModalBottomMobile'], $attr['mobilePaddingModalUnit'] ),
 	),
-	' .uagb-modal-button-link.uagb-modal-trigger'     => array(
+	'.uagb-modal-wrapper .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger'     => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomMobile'], $attr['mobilePaddingBtnUnit'] ),
 	),
-	' .uagb-modal-button-link.uagb-modal-trigger svg' => array(
+	' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger svg' => array(
 		'width'       => $m_btn_icon_size,
 		'height'      => $m_btn_icon_size,
 		'line-height' => $m_btn_icon_size,
@@ -190,9 +190,9 @@ if ( 'image' === $attr['modalTrigger'] && $attr['imageWidthType'] ) {
 
 }
 
-$selectors[' .uagb-modal-button-link.uagb-modal-trigger']   = $btn_border_css;
-$t_selectors[' .uagb-modal-button-link.uagb-modal-trigger'] = $btn_border_css_tablet;
-$m_selectors[' .uagb-modal-button-link.uagb-modal-trigger'] = $btn_border_css_mobile;
+$selectors[' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger']   = $btn_border_css;
+$t_selectors[' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger'] = $btn_border_css_tablet;
+$m_selectors[' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger'] = $btn_border_css_mobile;
 
 $combined_selectors = array(
 	'desktop' => $selectors,
@@ -203,6 +203,6 @@ $combined_selectors = array(
 $base_selector = '.uagb-block-';
 
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'text', ' .uagb-modal-text.uagb-modal-trigger', $combined_selectors );
-$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'btn', ' .uagb-modal-button-link.uagb-modal-trigger', $combined_selectors );
+$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'btn', ' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger', $combined_selectors );
 
 return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
