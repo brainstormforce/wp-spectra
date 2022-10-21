@@ -113,6 +113,7 @@ export default function styling( props ) {
 		btnLinkHoverColor,
 		btnBgHoverColor,
 		btnBgColor,
+		btnBorderHColor
 	} = props.attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -211,6 +212,7 @@ export default function styling( props ) {
 		' .uagb-modal-button-link.uagb-modal-trigger:hover' : {
 			'color': btnLinkHoverColor,
 			'background-color': btnBgHoverColor,
+			'border-color': btnBorderHColor
 		},
 		' .uagb-modal-button-link.uagb-modal-trigger:hover svg' : {
 			'fill': btnLinkHoverColor

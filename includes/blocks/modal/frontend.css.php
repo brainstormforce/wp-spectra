@@ -51,7 +51,8 @@ $selectors   = array(
 	),
 	' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:hover' => array(
 		'color'			=> $attr['btnLinkHoverColor'] ? $attr['btnLinkHoverColor'] : $attr['btnLinkColor'],
-		'background-color'			=> $attr['btnBgHoverColor']
+		'background-color'			=> $attr['btnBgHoverColor'],
+		'border-color'			=> $attr['btnBorderHColor']
 	),
 	' .uagb-modal-trigger svg' => array(
 		'width'       => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
@@ -188,9 +189,9 @@ if ( 'image' === $attr['modalTrigger'] && $attr['imageWidthType'] ) {
 
 }
 
-$selectors[' .uagb-modal-button-link.uagb-modal-trigger']                                    = $btn_border_css;
-$t_selectors[' .uagb-modal-button-link.uagb-modal-trigger']                                  = $btn_border_css_tablet;
-$m_selectors[' .uagb-modal-button-link.uagb-modal-trigger']                                  = $btn_border_css_mobile;
+$selectors[' .uagb-modal-button-link.uagb-modal-trigger']         = $btn_border_css;
+$t_selectors[' .uagb-modal-button-link.uagb-modal-trigger']       = $btn_border_css_tablet;
+$m_selectors[' .uagb-modal-button-link.uagb-modal-trigger']       = $btn_border_css_mobile;
 
 $combined_selectors = array(
 	'desktop' => $selectors,

@@ -1,3 +1,6 @@
+import { getBorderAttributes } from '@Controls/generateAttributes';
+const btnBorderAttributes = getBorderAttributes( 'btn' );
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -661,7 +664,6 @@ const attributes = {
 			styleType: 'btn-letter-spacing-type'
 		}
 	},
-
 	
 	btnLinkColor: {
 		type: 'string',
@@ -688,25 +690,7 @@ const attributes = {
 			styleType: 'btn-bg-hover-color'
 		}
 	},
-	btnBorderColor: {
-		type: 'string',
-		default: '#333',
-	},
-	btnBorderHoverColor:{
-		type: 'string',
-	},
-	btnBorderStyle: {
-		type: 'string',
-		default: 'solid',
-	},
-	btnBorderWidth :{
-		type: 'number',
-		default: 1,
-	},
-	btnBorderRadius :{
-		type: 'number',
-		default: 0,
-	},
+	...btnBorderAttributes,
 };
 
 export default attributes;
