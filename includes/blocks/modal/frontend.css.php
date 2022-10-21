@@ -46,7 +46,7 @@ $selectors   = array(
 		'background-color'			=> $attr['btnBgColor']
 	),
 	' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:hover' => array(
-		'color'			=> $attr['btnLinkHoverColor'],
+		'color'			=> $attr['btnLinkHoverColor'] ? $attr['btnLinkHoverColor'] : $attr['btnLinkColor'],
 		'background-color'			=> $attr['btnBgHoverColor']
 	),
 	' .uagb-modal-trigger svg' => array(
