@@ -12,6 +12,7 @@ import CtaPositionClasses from './classes';
 import CallToAction from './components/CallToAction';
 import CTA from './components/CTA';
 import attributes from './old-attributes';
+import CTANew from './components/CallToActionNew';
 
 import { __ } from '@wordpress/i18n';
 
@@ -390,7 +391,7 @@ const deprecated = [
 			} = props.attributes;
 		
 			const isCta = (
-				<CTA attributes={ props.attributes } setAttributes="not_set" />
+				<CTANew attributes={ props.attributes } setAttributes="not_set" />
 			);
 		
 			const secondCtaButton = ( 'button' === ctaType && enabledSecondCtaButton ) ? <SecondCTAButton attributes={ props.attributes } setAttributes="not_set" /> : '';
