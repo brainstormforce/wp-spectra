@@ -5,6 +5,7 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 export default function styling( props ) {
 	const {
@@ -119,6 +120,10 @@ export default function styling( props ) {
 	const buttonIconSpaceFallbackTablet = isNaN( buttonIconSpaceTablet ) ? buttonIconSpaceFallback : buttonIconSpaceTablet;
 	const buttonIconSpaceFallbackMobile = isNaN( buttonIconSpaceMobile ) ? buttonIconSpaceFallbackTablet : buttonIconSpaceMobile;
 
+	const borderCSS = generateBorderCSS( props.attributes, 'btn' );
+	const borderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+
 	const selectors = {
 		'.uagb-modal-wrapper' : {
 			'text-align': modalAlign,
@@ -194,6 +199,7 @@ export default function styling( props ) {
 			'letter-spacing': generateCSSUnit( btnLetterSpacing, btnLetterSpacingType ),			
 			'color': btnLinkColor,
 			'background-color': btnBgColor,
+			...borderCSS
 		},
 		' .uagb-modal-button-link.uagb-modal-trigger svg' : {
 			'font-size': generateCSSUnit( btnFontSize, btnFontSizeType ),
@@ -273,6 +279,7 @@ export default function styling( props ) {
 				btnLineHeightType
 			),
 			'letter-spacing': generateCSSUnit( btnLetterSpacingTablet, btnLetterSpacingType ),
+			...borderCSSTablet
 		},
 		' .uagb-modal-button-link.uagb-modal-trigger svg' : {
 			'font-size': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
@@ -343,7 +350,8 @@ export default function styling( props ) {
 				btnLineHeightMobile,
 				btnLineHeightType
 			),
-			'letter-spacing': generateCSSUnit( btnLetterSpacingMobile, btnLetterSpacingType ),
+			'letter-spacing': generateCSSUnit( btnLetterSpacingMobile, btnLetterSpacingType ),			
+			...borderCSSMobile
 		},
 		' .uagb-modal-button-link.uagb-modal-trigger svg' : {
 			'font-size': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),

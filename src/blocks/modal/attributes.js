@@ -688,22 +688,22 @@ const attributes = {
 			styleType: 'btn-bg-hover-color'
 		}
 	},
-	ctaBorderColor: {
+	btnBorderColor: {
 		type: 'string',
 		default: '#333',
 	},
-	ctaBorderhoverColor:{
+	btnBorderHoverColor:{
 		type: 'string',
 	},
-	ctaBorderStyle: {
+	btnBorderStyle: {
 		type: 'string',
 		default: 'solid',
 	},
-	ctaBorderWidth :{
+	btnBorderWidth :{
 		type: 'number',
 		default: 1,
 	},
-	ctaBorderRadius :{
+	btnBorderRadius :{
 		type: 'number',
 		default: 0,
 	},

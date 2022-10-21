@@ -9,9 +9,13 @@
 
 $block_name = 'modal';
 
-$cta_icon_size   = UAGB_Helper::get_css_value( $attr['btnFontSize'], $attr['btnFontSizeType'] );
-$m_btn_icon_size = UAGB_Helper::get_css_value( $attr['btnFontSizeMobile'], $attr['btnFontSizeType'] );
+$btn_icon_size   = UAGB_Helper::get_css_value( $attr['btnFontSize'], $attr['btnFontSizeType'] );
 $t_btn_icon_size = UAGB_Helper::get_css_value( $attr['btnFontSizeTablet'], $attr['btnFontSizeType'] );
+$m_btn_icon_size = UAGB_Helper::get_css_value( $attr['btnFontSizeMobile'], $attr['btnFontSizeType'] );
+
+$btn_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
+$btn_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
+$btn_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
 
 $selectors   = array(
 	'.uagb-modal-wrapper'          => array(
@@ -63,10 +67,10 @@ $selectors   = array(
 		'border-radius' => UAGB_Helper::get_css_value( $attr['iconimgBorderRadius'], $attr['iconimgBorderRadiusUnit'] ),
 	),
 	' .uagb-modal-button-link.uagb-modal-trigger svg' => array(
-		'width'       => UAGB_Helper::get_css_value( $attr['btnFontSize'], $attr['btnFontSizeType'] ),
-		'height'      => UAGB_Helper::get_css_value( $attr['btnFontSize'], $attr['btnFontSizeType'] ),
-		'line-height' => UAGB_Helper::get_css_value( $attr['btnFontSize'], $attr['btnFontSizeType'] ),
-		'font-size'   => UAGB_Helper::get_css_value( $attr['btnFontSize'], $attr['btnFontSizeType'] ),
+		'width'       => $btn_icon_size,
+		'height'      => $btn_icon_size,
+		'line-height' => $btn_icon_size,
+		'font-size'   => $btn_icon_size,
 		'fill'			=> $attr['btnLinkColor']
 	),
 	' .uagb-modal-button-link.uagb-modal-trigger:hover svg' => array(
@@ -94,11 +98,10 @@ $t_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomTablet'], $attr['tabletPaddingBtnUnit'] ),
 	),
 	' .uagb-modal-button-link.uagb-modal-trigger svg' => array(
-		'width'       => UAGB_Helper::get_css_value( $attr['btnFontSizeTablet'], $attr['btnFontSizeType'] ),
-		'height'      => UAGB_Helper::get_css_value( $attr['btnFontSizeTablet'], $attr['btnFontSizeType'] ),
-		'line-height' => UAGB_Helper::get_css_value( $attr['btnFontSizeTablet'], $attr['btnFontSizeType'] ),
-		'font-size'   => UAGB_Helper::get_css_value( $attr['btnFontSizeTablet'], $attr['btnFontSizeType'] ),
-		// 'fill'			=> $attr['iconColor']
+		'width'       => $t_btn_icon_size,
+		'height'      => $t_btn_icon_size,
+		'line-height' => $t_btn_icon_size,
+		'font-size'   => $t_btn_icon_size,
 	),
 );
 $m_selectors = array(
@@ -122,11 +125,10 @@ $m_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomMobile'], $attr['mobilePaddingBtnUnit'] ),
 	),
 	' .uagb-modal-button-link.uagb-modal-trigger svg' => array(
-		'width'       => UAGB_Helper::get_css_value( $attr['btnFontSizeMobile'], $attr['btnFontSizeType'] ),
-		'height'      => UAGB_Helper::get_css_value( $attr['btnFontSizeMobile'], $attr['btnFontSizeType'] ),
-		'line-height' => UAGB_Helper::get_css_value( $attr['btnFontSizeMobile'], $attr['btnFontSizeType'] ),
-		'font-size'   => UAGB_Helper::get_css_value( $attr['btnFontSizeMobile'], $attr['btnFontSizeType'] ),
-		// 'fill'			=> $attr['iconColor']
+		'width'       => $m_btn_icon_size,
+		'height'      => $m_btn_icon_size,
+		'line-height' => $m_btn_icon_size,
+		'font-size'   => $m_btn_icon_size,
 	),
 );
 
@@ -185,6 +187,10 @@ if ( 'image' === $attr['modalTrigger'] && $attr['imageWidthType'] ) {
 	);
 
 }
+
+$selectors[' .uagb-modal-button-link.uagb-modal-trigger']                                    = $btn_border_css;
+$t_selectors[' .uagb-modal-button-link.uagb-modal-trigger']                                  = $btn_border_css_tablet;
+$m_selectors[' .uagb-modal-button-link.uagb-modal-trigger']                                  = $btn_border_css_mobile;
 
 $combined_selectors = array(
 	'desktop' => $selectors,
