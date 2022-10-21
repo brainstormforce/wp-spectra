@@ -80,6 +80,9 @@ $selectors = array(
 		),
 		$image_border_css
 	),
+	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper:hover' => array(
+		'border-color' => $attr['imageBorderHColor'],
+	),
 	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner' => array_merge(
 		$overlay_border_css,
 		array(
