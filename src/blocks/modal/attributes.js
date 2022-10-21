@@ -153,7 +153,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'modal-width'
 		},
-		default: 650
+		default: 700
 	},
 	modalWidthTablet: {
 		type: 'number',
@@ -179,7 +179,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'modal-height'
 		},
-		default: 300
+		default: 350
 	},
 	modalHeightTablet: {
 		type: 'number',
