@@ -154,6 +154,7 @@ export default function Settings( props ) {
 		btnLinkHoverColor,
 		btnBgHoverColor,
 		btnBgColor,
+		modalBgColor,
 		
 	} = attributes;
 
@@ -1221,6 +1222,21 @@ export default function Settings( props ) {
 				data={ {
 					value: overlayColor,
 					label: 'overlayColor',
+				} }
+				setAttributes={ setAttributes }
+			/>
+
+			<AdvancedPopColorControl
+				label={ __(
+					'Background Color',
+					'ultimate-addons-for-gutenberg'
+				) }
+				colorValue={
+					modalBgColor ? modalBgColor : ''
+				}
+				data={ {
+					value: modalBgColor,
+					label: 'modalBgColor',
 				} }
 				setAttributes={ setAttributes }
 			/>

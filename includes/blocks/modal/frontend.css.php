@@ -24,6 +24,7 @@ $selectors   = array(
 	' .uagb-modal-popup-wrap'                         => array(
 		'width'  => UAGB_Helper::get_css_value( $attr['modalWidth'], $attr['modalWidthType'] ),
 		'height' => UAGB_Helper::get_css_value( $attr['modalHeight'], $attr['modalHeightType'] ),
+		'background-color' => $attr['modalBgColor'],
 	),
 	' .uagb-modal-popup-close svg'                    => array(
 		'width'       => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),

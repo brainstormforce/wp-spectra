@@ -690,6 +690,12 @@ const attributes = {
 			styleType: 'btn-bg-hover-color'
 		}
 	},
+	modalBgColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'modal-bg-color'
+		}
+	},
 	...btnBorderAttributes,
 };
 

@@ -113,7 +113,8 @@ export default function styling( props ) {
 		btnLinkHoverColor,
 		btnBgHoverColor,
 		btnBgColor,
-		btnBorderHColor
+		btnBorderHColor,
+		modalBgColor,
 	} = props.attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -138,6 +139,7 @@ export default function styling( props ) {
 				modalHeight,
 				modalHeightType
 			),
+			'background-color': modalBgColor,
 		},
 		' .uagb-modal-popup-close svg': {
 			'width': generateCSSUnit( closeIconSize, 'px' ),

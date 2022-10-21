@@ -124,6 +124,7 @@ return array_merge(
 		'btnBgColor'               => '',
 		'btnLinkHoverColor'        => '',
 		'btnBgHoverColor'          => '',
+		'modalBgColor'               => '',
 	),
 	$button_attribute
 );
