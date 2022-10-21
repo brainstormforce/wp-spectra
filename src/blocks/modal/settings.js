@@ -160,76 +160,81 @@ export default function Settings( props ) {
 								setAttributes( { buttonIcon: value } )
 							}
 						/>
-						<UAGSelectControl
-							label={ __(
-								'Icon Position',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								value: buttonIconPosition,
-								label: 'buttonIconPosition',
-							} }
-							setAttributes={ setAttributes }
-							options={ [
-								{
-									value: 'before',
-									label: __(
-										'Before Text',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'after',
-									label: __(
-										'After Text',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-							] }
-						/>
-						<ResponsiveSlider
-							label={ __(
-								'Icon Spacing',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								desktop: {
-									value: buttonIconSpace,
-									label: 'buttonIconSpace',
-								},
-								tablet: {
-									value: buttonIconSpaceTablet,
-									label: 'buttonIconSpaceTablet',
-								},
-								mobile: {
-									value: buttonIconSpaceMobile,
-									label: 'buttonIconSpaceMobile',
-								},
-							} }
-							min={ 0 }
-							max={ 50 }
-							unit={ {
-								value: buttonIconSpaceType,
-								label: 'buttonIconSpaceType',
-							} }
-							units={ [
-								{
-									name: __(
-										'Pixel',
-										'ultimate-addons-for-gutenberg'
-									),
-									unitValue: 'px',
-								},
-								{
-									name: __(
-										'EM',
-										'ultimate-addons-for-gutenberg'
-									),
-									unitValue: 'em',
-								},
-							] }
-							setAttributes={ setAttributes }
-						/>
+						{ '' !== buttonIcon && (
+								<>
+									<UAGSelectControl
+										label={ __(
+											'Icon Position',
+											'ultimate-addons-for-gutenberg'
+										) }
+										data={ {
+											value: buttonIconPosition,
+											label: 'buttonIconPosition',
+										} }
+										setAttributes={ setAttributes }
+										options={ [
+											{
+												value: 'before',
+												label: __(
+													'Before Text',
+													'ultimate-addons-for-gutenberg'
+												),
+											},
+											{
+												value: 'after',
+												label: __(
+													'After Text',
+													'ultimate-addons-for-gutenberg'
+												),
+											},
+										] }
+									/>
+									<ResponsiveSlider
+										label={ __(
+											'Icon Spacing',
+											'ultimate-addons-for-gutenberg'
+										) }
+										data={ {
+											desktop: {
+												value: buttonIconSpace,
+												label: 'buttonIconSpace',
+											},
+											tablet: {
+												value: buttonIconSpaceTablet,
+												label: 'buttonIconSpaceTablet',
+											},
+											mobile: {
+												value: buttonIconSpaceMobile,
+												label: 'buttonIconSpaceMobile',
+											},
+										} }
+										min={ 0 }
+										max={ 50 }
+										unit={ {
+											value: buttonIconSpaceType,
+											label: 'buttonIconSpaceType',
+										} }
+										units={ [
+											{
+												name: __(
+													'Pixel',
+													'ultimate-addons-for-gutenberg'
+												),
+												unitValue: 'px',
+											},
+											{
+												name: __(
+													'EM',
+													'ultimate-addons-for-gutenberg'
+												),
+												unitValue: 'em',
+											},
+										] }
+										setAttributes={ setAttributes }
+									/>
+								</>
+							)
+						}
 					</>
 				) }
 				<MultiButtonsControl
