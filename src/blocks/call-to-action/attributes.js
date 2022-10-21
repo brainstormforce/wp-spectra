@@ -303,14 +303,14 @@ const attributes = {
 	},
 	showIcon: {
 		type: 'boolean',
-		default: false,
+		default: true,
 		UAGCopyPaste: {
 			styleType: 'btn-show-icon'
 		},
 	},
 	showSecondIcon: {
 		type: 'boolean',
-		default: false,
+		default: true,
 		UAGCopyPaste: {
 			styleType: 'btn-second-show-icon'
 		},
