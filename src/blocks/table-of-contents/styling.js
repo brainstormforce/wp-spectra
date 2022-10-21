@@ -27,6 +27,7 @@ function styling( props ) {
 		bulletColor,
 		iconSize,
 		align,
+		overallAlign,
 		//Color
 		backgroundColor,
 		linkColor,
@@ -142,6 +143,9 @@ function styling( props ) {
 	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' )
 
 	selectors = {
+		'.wp-block-uagb-table-of-contents': {
+			'text-align' : overallAlign
+		},
 		' .uagb-toc__list-wrap ul li': {
 			'font-size': generateCSSUnit( fontSize, fontSizeType ),
 		},

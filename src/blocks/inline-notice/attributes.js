@@ -1,6 +1,7 @@
 /**
  * BLOCK: UAGB Inline Notice Block Attributes
  */
+import { __ } from '@wordpress/i18n';
 
 const attributes = {
 	block_id: {
@@ -14,7 +15,7 @@ const attributes = {
 		type: 'string',
 		source: 'html',
 		selector: '.uagb-notice-title',
-		default: 'Notice Title',
+		default: __( 'Notice Title' , 'ultimate-addons-for-gutenberg' ),
 	},
 	headingTag: {
 		type: 'string',
