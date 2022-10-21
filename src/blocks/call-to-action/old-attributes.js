@@ -10,6 +10,20 @@
 
  const attributes = {
 	// Attributes requiring special attention.
+	showIcon: {
+		type: 'boolean',
+		default: true,
+		UAGCopyPaste: {
+			styleType: 'btn-show-icon'
+		},
+	},
+	showSecondIcon: {
+		type: 'boolean',
+		default: true,
+		UAGCopyPaste: {
+			styleType: 'btn-second-show-icon'
+		},
+	},
 	ctaBgType: {
 		type: 'string',
 		default: 'color',
