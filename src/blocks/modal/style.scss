@@ -92,7 +92,8 @@ body {
 
 	.uagb-modal-popup-content {
 		padding: 35px 35px;
-		overflow: auto;
+		overflow-x: hidden;
+    	overflow-y: scroll;
 	}
 
 	.uagb-modal-popup-wrap {
