@@ -33,7 +33,7 @@ const presets = [
         value: 'preset-2',
         label: __( 'Preset 2', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'image', value: { url: ( imgUrl ? imgUrl : `${ uagb_blocks_info.uagb_url }/admin/assets/images/placeholder.png` ) } },
+			{ label: 'image', value: { url:`${ uagb_blocks_info.uagb_url }/admin/assets/images/placeholder.png`} },
             { label: 'titleSpace', value: 5 },
 			{ label: 'prefixSpace', value: 13 },
 			{ label: 'descSpace', value: 20 },
@@ -51,7 +51,7 @@ const presets = [
         value: 'preset-3',
         label: __( 'Preset 3', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'image', value: { url: ( imgUrl ? imgUrl : `${ uagb_blocks_info.uagb_url }/admin/assets/images/placeholder.png` ) } },
+			{ label: 'image', value: { url:`${ uagb_blocks_info.uagb_url }/admin/assets/images/placeholder.png`} },
             { label: 'titleSpace', value: 5 },
 			{ label: 'prefixSpace', value: 13 },
 			{ label: 'descSpace', value: 20 },
