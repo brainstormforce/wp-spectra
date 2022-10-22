@@ -340,7 +340,7 @@ const attributes = {
 	},
 	image: {
 		type: 'object',
-		default: { url:`${ uagb_blocks_info.uagb_url }/admin/assets/images/placeholder.png`},
+		default: null
 	},
 	imgStyle: {
 		type: 'string',
