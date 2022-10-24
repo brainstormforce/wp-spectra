@@ -714,12 +714,16 @@ const Settings = ( props ) => {
 								} }
 								units={ [
 									{
+										name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+										unitValue: 'px',
+									},
+									{
 										name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
 										unitValue: 'em',
 									},
 									{
-										name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
-										unitValue: 'px',
+										name: __( '%', 'ultimate-addons-for-gutenberg' ),
+										unitValue: '%',
 									},
 								] }
 							/>
@@ -1303,12 +1307,12 @@ const Settings = ( props ) => {
 				} }
 				units={ [
 					{
-						name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
-						unitValue: 'em',
-					},
-					{
 						name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
 						unitValue: 'px',
+					},
+					{
+						name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
+						unitValue: 'em',
 					},
 					{
 						name: __( '%', 'ultimate-addons-for-gutenberg' ),
@@ -1348,12 +1352,16 @@ const Settings = ( props ) => {
 				max={ 100 }
 				units={ [
 					{
+						name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+						unitValue: 'px',
+					},
+					{
 						name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
 						unitValue: 'em',
 					},
 					{
-						name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
-						unitValue: 'px',
+						name: __( '%', 'ultimate-addons-for-gutenberg' ),
+						unitValue: '%',
 					},
 				] }
 				setAttributes={ setAttributes }
@@ -1500,12 +1508,12 @@ const Settings = ( props ) => {
 				} }
 				units={ [
 					{
-						name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
-						unitValue: 'em',
-					},
-					{
 						name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
 						unitValue: 'px',
+					},
+					{
+						name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
+						unitValue: 'em',
 					},
 					{
 						name: __( '%', 'ultimate-addons-for-gutenberg' ),
@@ -1612,6 +1620,10 @@ const Settings = ( props ) => {
 								name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
 								unitValue: 'em',
 							},
+							{
+								name: __( '%', 'ultimate-addons-for-gutenberg' ),
+								unitValue: '%',
+							},
 						] }
 					/>
 					<UAGTabsControl
@@ -1652,6 +1664,10 @@ const Settings = ( props ) => {
 							{
 								name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
 								unitValue: 'px',
+							},
+							{
+								name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
+								unitValue: 'em',
 							},
 							{
 								name: __( '%', 'ultimate-addons-for-gutenberg' ),
@@ -1899,12 +1915,16 @@ const Settings = ( props ) => {
 					} }
 					units={ [
 						{
+							name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+							unitValue: 'px',
+						},
+						{
 							name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
 							unitValue: 'em',
 						},
 						{
-							name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
-							unitValue: 'px',
+							name: __( '%', 'ultimate-addons-for-gutenberg' ),
+							unitValue: '%',
 						},
 					] }
 				/>
