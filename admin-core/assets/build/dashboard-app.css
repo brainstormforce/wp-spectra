@@ -670,6 +670,10 @@ select {
   margin-top: 0.6rem;
 }.mt-1 {
   margin-top: 0.25rem;
+}.-mt-0\.5 {
+  margin-top: -0.125rem;
+}.-mt-0 {
+  margin-top: -0px;
 }.box-border {
   box-sizing: border-box;
 }.block {
