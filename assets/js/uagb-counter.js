@@ -109,7 +109,7 @@ UAGBCounter = { // eslint-disable-line no-undef
 		const that = this
 		const circleWrap = el.querySelector( '.wp-block-uagb-counter-circle-container svg #bar' );
 
-		const diameter = data.circleSize - 20;
+		const diameter = data.circleSize - data.circleStokeSize;
 		const circumference = Math.PI * diameter;
 		const totalNumber = that._getTotalNumber( data );
 		

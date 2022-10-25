@@ -28,6 +28,7 @@ const Render = ( props ) => {
 		animationDuration,
 		thousandSeparator,
 		circleSize,
+		circleStokeSize,
 		icon,
 		showIcon,
 		iconImgPosition,
@@ -44,9 +45,10 @@ const Render = ( props ) => {
 
 	const blockName = props.parentProps.name.replace( 'uagb/', '' );
 	const circleSizeFallback = getFallbackNumber( circleSize, 'circleSize', blockName );
+	const circleStokeSizeFallback = getFallbackNumber( circleStokeSize, 'circleStokeSize', blockName );
 
 	const circlePos    = ( circleSizeFallback / 2 );
-	const circleRadius = circlePos - 10;
+	const circleRadius = circlePos - ( circleStokeSizeFallback / 2 );
 	const circleDash   = parseFloat( 2 * Math.PI * circleRadius ).toFixed( 2 );
 
 	const iconCheck = ( showIcon && icon !== '' ); // Reusable const to check if icon is set and enabled.
