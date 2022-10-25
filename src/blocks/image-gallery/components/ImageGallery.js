@@ -521,13 +521,21 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		const paginatedMedia = isGridPagesNeeded
 			? getGridPageChunk( mediaGallery )
 			: mediaGallery;
-		return paginatedMedia.map( ( media ) => renderImage( media ) );
+		return paginatedMedia.map( ( media ) => ( 'masonry' === feedLayout ) ? renderMasonryHoverHandler( media ) : renderImage( media ) );
 	};
 
 	const renderFocusControl = ( mediaObject ) => (
 		focusList[ mediaObject.id ] ? svgUnfocus( mediaObject.id ) : svgFocus( mediaObject.id )
 	);
-
+	
+	const renderMasonryHoverHandler = ( mediaObject ) => (
+		<div
+			className="spectra-image-gallery__media-wrapper--isotope"
+			key={ mediaObject.id }
+		>
+			{ renderImage( mediaObject ) }
+		</div>
+	);
 
 	const renderImage = ( mediaObject ) => (
 		<div

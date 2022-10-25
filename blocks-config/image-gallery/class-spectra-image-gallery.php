@@ -1022,10 +1022,35 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 		private function render_media_markup( $media, $attributes ) {
 			$totalImages = count( $media );
 			ob_start();
-			for ( $i = 0; $i < $totalImages; $i++ ) {
-				$this->render_single_media( (array) $media[ $i ], $attributes );
+			if ( 'masonry' === $attributes['feedLayout'] || ( 'grid' === $attributes['feedLayout'] && $attributes['feedPagination'] ) ) {
+				for ( $i = 0; $i < $totalImages; $i++ ) {
+					$this->render_masonry_hover_handler( (array) $media[ $i ], $attributes );
+				}
+			}
+			else {
+				for ( $i = 0; $i < $totalImages; $i++ ) {
+					$this->render_single_media( (array) $media[ $i ], $attributes );
+				}
 			}
 			return ob_get_clean();
+		}
+
+		/**
+		 * Renders the Isotope Required Hover Handler to avoid padding triggering hover effects.
+		 *
+		 * @param array $mediaArray Array of current image's details.
+		 * @param array $atts       Array of attributes.
+		 *
+		 * @since 2.1
+		 */
+		private function render_masonry_hover_handler( $mediaArray, $atts ) {
+			?>
+			<div class='spectra-image-gallery__media-wrapper--isotope' >
+				<?php
+					$this->render_single_media( $mediaArray, $atts );
+				?>
+			</div>
+			<?php
 		}
 
 		/**
@@ -1176,7 +1201,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 						if ( scope.children[0].classList.contains( 'spectra-image-gallery__layout--masonry' ) ) {
 							const element = scope.querySelector( '.spectra-image-gallery__layout--masonry' );
 							const isotope = new Isotope( element, {
-								itemSelector: '.spectra-image-gallery__media-wrapper',
+								itemSelector: '.spectra-image-gallery__media-wrapper--isotope',
 							} );
 							imagesLoaded( element ).on( 'progress', function() {
 								isotope.layout();
@@ -1207,7 +1232,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 						if ( scope.children[0].classList.contains( 'spectra-image-gallery__layout--isogrid' ) ) {
 							const element = scope.querySelector( '.spectra-image-gallery__layout--isogrid' );
 							const isotope = new Isotope( element, {
-								itemSelector: '.spectra-image-gallery__media-wrapper',
+								itemSelector: '.spectra-image-gallery__media-wrapper--isotope',
 								layoutMode: 'fitRows',
 							} );
 							imagesLoaded( element ).on( 'progress', function() {

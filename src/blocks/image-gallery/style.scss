@@ -109,35 +109,35 @@
 
 			&-col {
 
-				&-1 .spectra-image-gallery__media-wrapper {
+				&-1 .spectra-image-gallery__media-wrapper--isotope {
 					width: 100%;
 				}
 
-				&-2 .spectra-image-gallery__media-wrapper {
+				&-2 .spectra-image-gallery__media-wrapper--isotope {
 					width: 50%;
 				}
 
-				&-3 .spectra-image-gallery__media-wrapper {
+				&-3 .spectra-image-gallery__media-wrapper--isotope {
 					width: 33.33%;
 				}
 
-				&-4 .spectra-image-gallery__media-wrapper {
+				&-4 .spectra-image-gallery__media-wrapper--isotope {
 					width: 25%;
 				}
 
-				&-5 .spectra-image-gallery__media-wrapper {
+				&-5 .spectra-image-gallery__media-wrapper--isotope {
 					width: 20%;
 				}
 
-				&-6 .spectra-image-gallery__media-wrapper {
+				&-6 .spectra-image-gallery__media-wrapper--isotope {
 					width: 16.66%;
 				}
 
-				&-7 .spectra-image-gallery__media-wrapper {
+				&-7 .spectra-image-gallery__media-wrapper--isotope {
 					width: 14.28%;
 				}
 
-				&-8 .spectra-image-gallery__media-wrapper {
+				&-8 .spectra-image-gallery__media-wrapper--isotope {
 					width: 12.5%;
 				}
 			}
@@ -152,35 +152,35 @@
 
 			&-col {
 
-				&-1 .spectra-image-gallery__media-wrapper {
+				&-1 .spectra-image-gallery__media-wrapper--isotope {
 					width: 100%;
 				}
 
-				&-2 .spectra-image-gallery__media-wrapper {
+				&-2 .spectra-image-gallery__media-wrapper--isotope {
 					width: 50%;
 				}
 
-				&-3 .spectra-image-gallery__media-wrapper {
+				&-3 .spectra-image-gallery__media-wrapper--isotope {
 					width: 33.33%;
 				}
 
-				&-4 .spectra-image-gallery__media-wrapper {
+				&-4 .spectra-image-gallery__media-wrapper--isotope {
 					width: 25%;
 				}
 
-				&-5 .spectra-image-gallery__media-wrapper {
+				&-5 .spectra-image-gallery__media-wrapper--isotope {
 					width: 20%;
 				}
 
-				&-6 .spectra-image-gallery__media-wrapper {
+				&-6 .spectra-image-gallery__media-wrapper--isotope {
 					width: 16.66%;
 				}
 
-				&-7 .spectra-image-gallery__media-wrapper {
+				&-7 .spectra-image-gallery__media-wrapper--isotope {
 					width: 14.28%;
 				}
 
-				&-8 .spectra-image-gallery__media-wrapper {
+				&-8 .spectra-image-gallery__media-wrapper--isotope {
 					width: 12.5%;
 				}
 			}
@@ -655,39 +655,77 @@
 				}
 			}
 
+			&--isogrid {
+
+				&-col-tab {
+
+					&-1 .spectra-image-gallery__media-wrapper--isotope {
+						width: 100%;
+					}
+
+					&-2 .spectra-image-gallery__media-wrapper--isotope {
+						width: 50%;
+					}
+
+					&-3 .spectra-image-gallery__media-wrapper--isotope {
+						width: 33.33%;
+					}
+
+					&-4 .spectra-image-gallery__media-wrapper--isotope {
+						width: 25%;
+					}
+
+					&-5 .spectra-image-gallery__media-wrapper--isotope {
+						width: 20%;
+					}
+
+					&-6 .spectra-image-gallery__media-wrapper--isotope {
+						width: 16.66%;
+					}
+
+					&-7 .spectra-image-gallery__media-wrapper--isotope {
+						width: 14.28%;
+					}
+
+					&-8 .spectra-image-gallery__media-wrapper--isotope {
+						width: 12.5%;
+					}
+				}
+			}
+
 			&--masonry {
 
 				&-col-tab {
 
-					&-1 .spectra-image-gallery__media-wrapper {
+					&-1 .spectra-image-gallery__media-wrapper--isotope {
 						width: 100%;
 					}
 
-					&-2 .spectra-image-gallery__media-wrapper {
+					&-2 .spectra-image-gallery__media-wrapper--isotope {
 						width: 50%;
 					}
 
-					&-3 .spectra-image-gallery__media-wrapper {
+					&-3 .spectra-image-gallery__media-wrapper--isotope {
 						width: 33.33%;
 					}
 
-					&-4 .spectra-image-gallery__media-wrapper {
+					&-4 .spectra-image-gallery__media-wrapper--isotope {
 						width: 25%;
 					}
 
-					&-5 .spectra-image-gallery__media-wrapper {
+					&-5 .spectra-image-gallery__media-wrapper--isotope {
 						width: 20%;
 					}
 
-					&-6 .spectra-image-gallery__media-wrapper {
+					&-6 .spectra-image-gallery__media-wrapper--isotope {
 						width: 16.66%;
 					}
 
-					&-7 .spectra-image-gallery__media-wrapper {
+					&-7 .spectra-image-gallery__media-wrapper--isotope {
 						width: 14.28%;
 					}
 
-					&-8 .spectra-image-gallery__media-wrapper {
+					&-8 .spectra-image-gallery__media-wrapper--isotope {
 						width: 12.5%;
 					}
 				}
@@ -792,39 +830,77 @@
 				}
 			}
 
+			&--isogrid {
+
+				&-col-mob {
+
+					&-1 .spectra-image-gallery__media-wrapper--isotope {
+						width: 100%;
+					}
+
+					&-2 .spectra-image-gallery__media-wrapper--isotope {
+						width: 50%;
+					}
+
+					&-3 .spectra-image-gallery__media-wrapper--isotope {
+						width: 33.33%;
+					}
+
+					&-4 .spectra-image-gallery__media-wrapper--isotope {
+						width: 25%;
+					}
+
+					&-5 .spectra-image-gallery__media-wrapper--isotope {
+						width: 20%;
+					}
+
+					&-6 .spectra-image-gallery__media-wrapper--isotope {
+						width: 16.66%;
+					}
+
+					&-7 .spectra-image-gallery__media-wrapper--isotope {
+						width: 14.28%;
+					}
+
+					&-8 .spectra-image-gallery__media-wrapper--isotope {
+						width: 12.5%;
+					}
+				}
+			}
+
 			&--masonry {
 
 				&-col-mob {
 
-					&-1 .spectra-image-gallery__media-wrapper {
+					&-1 .spectra-image-gallery__media-wrapper--isotope {
 						width: 100%;
 					}
 
-					&-2 .spectra-image-gallery__media-wrapper {
+					&-2 .spectra-image-gallery__media-wrapper--isotope {
 						width: 50%;
 					}
 
-					&-3 .spectra-image-gallery__media-wrapper {
+					&-3 .spectra-image-gallery__media-wrapper--isotope {
 						width: 33.33%;
 					}
 
-					&-4 .spectra-image-gallery__media-wrapper {
+					&-4 .spectra-image-gallery__media-wrapper--isotope {
 						width: 25%;
 					}
 
-					&-5 .spectra-image-gallery__media-wrapper {
+					&-5 .spectra-image-gallery__media-wrapper--isotope {
 						width: 20%;
 					}
 
-					&-6 .spectra-image-gallery__media-wrapper {
+					&-6 .spectra-image-gallery__media-wrapper--isotope {
 						width: 16.66%;
 					}
 
-					&-7 .spectra-image-gallery__media-wrapper {
+					&-7 .spectra-image-gallery__media-wrapper--isotope {
 						width: 14.28%;
 					}
 
-					&-8 .spectra-image-gallery__media-wrapper {
+					&-8 .spectra-image-gallery__media-wrapper--isotope {
 						width: 12.5%;
 					}
 				}

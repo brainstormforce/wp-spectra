@@ -90,7 +90,7 @@ const UAGBImageGalleryMasonry = {
 				element = $scope;
 			}
 			const isotope = new Isotope( element, { // eslint-disable-line no-undef
-				itemSelector: '.spectra-image-gallery__media-wrapper',
+				itemSelector: '.spectra-image-gallery__media-wrapper--isotope',
 				stagger: 10,
 			} );
 			isotope.insert( UAGBImageGalleryMasonry.createElementFromHTML( data.data ) );
@@ -209,7 +209,7 @@ const UAGBImageGalleryPagedGrid = {
 			};
 			const mediaElements = element.querySelectorAll( '.spectra-image-gallery__media-wrapper' );
 			const isotope = new Isotope( element, { // eslint-disable-line no-undef
-				itemSelector: '.spectra-image-gallery__media-wrapper',
+				itemSelector: '.spectra-image-gallery__media-wrapper--isotope',
 				layoutMode: 'fitRows',
 			} );
 			mediaElements.forEach( ( mediaEle ) => {

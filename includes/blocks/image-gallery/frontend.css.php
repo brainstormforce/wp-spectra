@@ -174,7 +174,7 @@ $selectors = array(
 			$attr['gridImageGapUnit']
 		),
 	),
-	' .spectra-image-gallery__layout--isogrid .spectra-image-gallery__media-wrapper' => array(
+	' .spectra-image-gallery__layout--isogrid .spectra-image-gallery__media-wrapper--isotope' => array(
 		'padding' => UAGB_Helper::get_css_value(
 			$grid_image_gap_fallback / 2,
 			$attr['gridImageGapUnit']
@@ -186,7 +186,7 @@ $selectors = array(
 			$attr['gridImageGapUnit']
 		),
 	),
-	' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper' => array(
+	' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper--isotope' => array(
 		'padding' => UAGB_Helper::get_css_value(
 			$grid_image_gap_fallback / 2,
 			$attr['gridImageGapUnit']
@@ -353,7 +353,7 @@ $t_selectors = array(
 			$attr['gridImageGapUnitTab']
 		),
 	),
-	' .spectra-image-gallery__layout--isogrid .spectra-image-gallery__media-wrapper' => array(
+	' .spectra-image-gallery__layout--isogrid .spectra-image-gallery__media-wrapper--isotope' => array(
 		'padding' => UAGB_Helper::get_css_value(
 			$grid_image_gap_tablet_fallback / 2,
 			$attr['gridImageGapUnitTab']
@@ -365,7 +365,7 @@ $t_selectors = array(
 			$attr['gridImageGapUnitTab']
 		),
 	),
-	' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper' => array(
+	' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper--isotope' => array(
 		'padding' => UAGB_Helper::get_css_value(
 			$grid_image_gap_tablet_fallback / 2,
 			$attr['gridImageGapUnitTab']
@@ -436,7 +436,7 @@ $m_selectors = array(
 			$attr['gridImageGapUnitMob']
 		),
 	),
-	' .spectra-image-gallery__layout--isogrid .spectra-image-gallery__media-wrapper' => array(
+	' .spectra-image-gallery__layout--isogrid .spectra-image-gallery__media-wrapper--isotope' => array(
 		'padding' => UAGB_Helper::get_css_value(
 			$grid_image_gap_mobile_fallback / 2,
 			$attr['gridImageGapUnitMob']
@@ -448,7 +448,7 @@ $m_selectors = array(
 			$attr['gridImageGapUnitMob']
 		),
 	),
-	' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper' => array(
+	' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper--isotope' => array(
 		'padding' => UAGB_Helper::get_css_value(
 			$grid_image_gap_mobile_fallback/ 2,
 			$attr['gridImageGapUnitMob']

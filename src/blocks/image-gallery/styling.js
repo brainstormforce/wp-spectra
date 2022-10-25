@@ -368,7 +368,7 @@ function styling( props ) {
 				gridImageGapUnit
 			),
 		},
-		' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper': {
+		' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper--isotope': {
 			'padding': generateSpacing(
 				gridImageGapUnit,
 				( gridImageGapFallback / 2 ),
@@ -582,7 +582,7 @@ function styling( props ) {
 				gridImageGapUnitTab
 			),
 		},
-		' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper': {
+		' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper--isotope': {
 			'padding': generateSpacing(
 				gridImageGapUnitTab,
 				( gridImageGapTabFallback / 2 ),
@@ -669,7 +669,7 @@ function styling( props ) {
 				gridImageGapUnitMob
 			),
 		},
-		' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper': {
+		' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper--isotope': {
 			'padding': generateSpacing(
 				gridImageGapUnitMob,
 				( gridImageGapMobFallback / 2 ),
