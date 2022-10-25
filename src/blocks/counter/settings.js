@@ -224,6 +224,23 @@ export default function Settings( props ) {
 		iconPaddingUnitTablet,
 		iconPaddingUnitMobile,
 		iconPaddingLink,
+		// Icon Margin
+		iconTopMargin,
+		iconRightMargin,
+		iconLeftMargin,
+		iconBottomMargin,
+		iconTopMarginTablet,
+		iconRightMarginTablet,
+		iconLeftMarginTablet,
+		iconBottomMarginTablet,
+		iconTopMarginMobile,
+		iconRightMarginMobile,
+		iconLeftMarginMobile,
+		iconBottomMarginMobile,
+		iconMarginUnit,
+		iconMarginUnitTablet,
+		iconMarginUnitMobile,
+		iconMarginLink,
 	} = attributes;
 
 	useEffect( () => {
@@ -955,6 +972,79 @@ export default function Settings( props ) {
 				link={ {
 					value: iconPaddingLink,
 					label: 'iconPaddingLink',
+				} }
+			/>
+			<SpacingControl
+				label={ __(
+					'Margin',
+					'ultimate-addons-for-gutenberg'
+				) }
+				valueTop={ {
+					value: iconTopMargin,
+					label: 'iconTopMargin',
+				} }
+				valueRight={ {
+					value: iconRightMargin,
+					label: 'iconRightMargin',
+				} }
+				valueBottom={ {
+					value: iconBottomMargin,
+					label: 'iconBottomMargin',
+				} }
+				valueLeft={ {
+					value: iconLeftMargin,
+					label: 'iconLeftMargin',
+				} }
+				valueTopTablet={ {
+					value: iconTopMarginTablet,
+					label: 'iconTopMarginTablet',
+				} }
+				valueRightTablet={ {
+					value: iconRightMarginTablet,
+					label: 'iconRightMarginTablet',
+				} }
+				valueBottomTablet={ {
+					value: iconBottomMarginTablet,
+					label: 'iconBottomMarginTablet',
+				} }
+				valueLeftTablet={ {
+					value: iconLeftMarginTablet,
+					label: 'iconLeftMarginTablet',
+				} }
+				valueTopMobile={ {
+					value: iconTopMarginMobile,
+					label: 'iconTopMarginMobile',
+				} }
+				valueRightMobile={ {
+					value: iconRightMarginMobile,
+					label: 'iconRightMarginMobile',
+				} }
+				valueBottomMobile={ {
+					value: iconBottomMarginMobile,
+					label: 'iconBottomMarginMobile',
+				} }
+				valueLeftMobile={ {
+					value: iconLeftMarginMobile,
+					label: 'iconLeftMarginMobile',
+				} }
+				unit={ {
+					value: iconMarginUnit,
+					label: 'iconMarginUnit',
+				} }
+				mUnit={ {
+					value: iconMarginUnitMobile,
+					label: 'iconMarginUnitMobile',
+				} }
+				tUnit={ {
+					value: iconMarginUnitTablet,
+					label: 'iconMarginUnitTablet',
+				} }
+				deviceType={ deviceType }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				link={ {
+					value: iconMarginLink,
+					label: 'iconMarginLink',
 				} }
 			/>
 		</UAGAdvancedPanelBody>
