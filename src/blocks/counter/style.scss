@@ -65,12 +65,11 @@
 			}
 
 			svg {
-				// overflow: visible;
 				pointer-events: none; // To make title editable/clickable, since it is behind the circle.
 			}
 
 			& > svg {
-				// transform: rotate(-90deg);
+				transform: rotate(-90deg);
 				width: 100%;
 				height: 100%;
 
