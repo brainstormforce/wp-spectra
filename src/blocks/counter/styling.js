@@ -450,18 +450,18 @@ export default function styling( props ) {
 		},
 		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg circle': {
 			'stroke-width': generateCSSUnit( circleStrokeSizeFallback, 'px' ),
-			'stroke': circleForeground,
+			'stroke': circleBackground,
 			'r': generateCSSUnit( circleRadius, 'px' ),
 			'cx': generateCSSUnit( circlePos, 'px' ),
 			'cy': generateCSSUnit( circlePos, 'px' ),
 		},
 		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg .uagb-counter-circle__progress': {
-			'stroke': circleBackground,
+			'stroke': circleForeground,
 			'stroke-dasharray': generateCSSUnit( circleDash, 'px' ),
 			'stroke-dashoffset': generateCSSUnit( circleDash, 'px' ),
 		},
 		'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container': {
-			'background': barForeground,
+			'background': barBackground,
 			'margin-top'   : generateCSSUnit( numberTopMargin, numberMarginUnit ),
 			'margin-right' : generateCSSUnit( numberRightMargin, numberMarginUnit ),
 			'margin-bottom': generateCSSUnit( numberBottomMargin, numberMarginUnit ),
@@ -469,7 +469,7 @@ export default function styling( props ) {
 		},
 		'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container .wp-block-uagb-counter__number': {
 			'height': generateCSSUnit( barSizeFallback, 'px' ),
-			'background': barBackground,
+			'background': barForeground,
 		}
 	}
 

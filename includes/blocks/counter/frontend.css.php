@@ -179,18 +179,18 @@ $selectors = array(
 	),
 	'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg circle' => array(
 		'stroke-width' => UAGB_Helper::get_css_value( $circle_stroke_size_fallback, 'px' ),
-		'stroke'       => $attr['circleForeground'],
+		'stroke'       => $attr['circleBackground'],
 		'r'            => UAGB_Helper::get_css_value( $circle_radius, 'px' ),
 		'cx'           => UAGB_Helper::get_css_value( $circle_pos, 'px' ),
 		'cy'           => UAGB_Helper::get_css_value( $circle_pos, 'px' ),
 	),
 	'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg .uagb-counter-circle__progress' => array(
-		'stroke'            => $attr['circleBackground'],
+		'stroke'            => $attr['circleForeground'],
 		'stroke-dasharray'  => UAGB_Helper::get_css_value( $circle_dash, 'px' ),
 		'stroke-dashoffset' => UAGB_Helper::get_css_value( $circle_dash, 'px' ),
 	),
 	'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container' => array(
-		'background'    => $attr['barForeground'],
+		'background'    => $attr['barBackground'],
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['numberTopMargin'], $attr['numberMarginUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['numberRightMargin'], $attr['numberMarginUnit'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['numberBottomMargin'], $attr['numberMarginUnit'] ),
@@ -198,7 +198,7 @@ $selectors = array(
 	),
 	'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container .wp-block-uagb-counter__number' => array(
 		'height'     => UAGB_Helper::get_css_value( $bar_size_fallback, 'px' ),
-		'background' => $attr['barBackground'],
+		'background' => $attr['barForeground'],
 	),
 );
 

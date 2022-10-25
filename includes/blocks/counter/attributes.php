@@ -132,12 +132,12 @@ return array_merge(
 		// circle.
 		'circleSize'                => 300,
 		'circleStokeSize'           => 10,
-		'circleForeground'          => '#eaeaea',
-		'circleBackground'          => '#007CBA',
+		'circleForeground'          => '#007cba',
+		'circleBackground'          => '#eaeaea',
 		// bar.
 		'barSize'                   => 25,
-		'barForeground'             => '#eaeaea',
-		'barBackground'             => '#007CBA',
+		'barForeground'             => '#007cba',
+		'barBackground'             => '#eaeaea',
 		// Box Shadow.
 		'boxShadowColor'            => '#00000070',
 		'boxShadowHOffset'          => 0,
