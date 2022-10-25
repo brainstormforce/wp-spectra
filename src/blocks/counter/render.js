@@ -38,17 +38,17 @@ const Render = ( props ) => {
 
 	useEffect( () => {
 		UAGBCounter.init( '.uagb-block-' + block_id, attributes ) // eslint-disable-line no-undef
-	}, [ layout, animationDuration, startNumber, endNumber, thousandSeparator, decimalPlaces, block_id, circleSize ] )
+	}, [ layout, animationDuration, startNumber, endNumber, thousandSeparator, decimalPlaces, block_id, circleSize, circleStokeSize ] )
 
 	const startFallback = getFallbackNumber( startNumber, 'startNumber', 'counter' );
 	const endFallback = getFallbackNumber( endNumber, 'endNumber', 'counter' );
 
 	const blockName = props.parentProps.name.replace( 'uagb/', '' );
 	const circleSizeFallback = getFallbackNumber( circleSize, 'circleSize', blockName );
-	const circleStokeSizeFallback = getFallbackNumber( circleStokeSize, 'circleStokeSize', blockName );
+	const circleStrokeSizeFallback = getFallbackNumber( circleStokeSize, 'circleStokeSize', blockName );
 
 	const circlePos    = ( circleSizeFallback / 2 );
-	const circleRadius = circlePos - ( circleStokeSizeFallback / 2 );
+	const circleRadius = circlePos - ( circleStrokeSizeFallback / 2 );
 	const circleDash   = parseFloat( 2 * Math.PI * circleRadius ).toFixed( 2 );
 
 	const iconCheck = ( showIcon && icon !== '' ); // Reusable const to check if icon is set and enabled.
