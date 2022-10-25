@@ -362,10 +362,16 @@ function styling( props ) {
 				gridImageGapUnit
 			),
 		},
+		' .spectra-image-gallery__layout--masonry': {
+			'margin': generateCSSUnit(
+				-Math.abs( gridImageGapFallback / 2 ),
+				gridImageGapUnit
+			),
+		},
 		' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper': {
 			'padding': generateSpacing(
 				gridImageGapUnit,
-				gridImageGapFallback,
+				( gridImageGapFallback / 2 ),
 			),
 		},
 		' .spectra-image-gallery__layout--carousel': {
@@ -570,10 +576,16 @@ function styling( props ) {
 				gridImageGapUnitTab
 			),
 		},
+		' .spectra-image-gallery__layout--masonry': {
+			'margin': generateCSSUnit(
+				-Math.abs( gridImageGapTabFallback / 2 ),
+				gridImageGapUnitTab
+			),
+		},
 		' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper': {
 			'padding': generateSpacing(
 				gridImageGapUnitTab,
-				gridImageGapTabFallback,
+				( gridImageGapTabFallback / 2 ),
 			),
 		},
 		' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper': {
@@ -651,10 +663,16 @@ function styling( props ) {
 				gridImageGapUnitMob
 			),
 		},
+		' .spectra-image-gallery__layout--masonry': {
+			'margin': generateCSSUnit(
+				-Math.abs( gridImageGapMobFallback / 2 ),
+				gridImageGapUnitMob
+			),
+		},
 		' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper': {
 			'padding': generateSpacing(
 				gridImageGapUnitMob,
-				gridImageGapMobFallback,
+				( gridImageGapMobFallback / 2 ),
 			),
 		},
 		' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper': {
@@ -800,7 +818,7 @@ function styling( props ) {
 	}
 
 	// Masonry based styling.
-	if ( 'masonry' === feedLayout && feedPagination && ! paginateUseLoader ){ 
+	if ( 'masonry' === feedLayout && feedPagination && ! paginateUseLoader ) { 
 		selectors[ ' .spectra-image-gallery__control-wrapper' ] = {
 			'min-height': '58px',
 			'-webkit-justify-content': paginateButtonAlign,
@@ -808,30 +826,6 @@ function styling( props ) {
 			'-webkit-align-items': 'center',
 			'align-items': 'center',
 		};
-		if ( 'flex-start' === paginateButtonAlign ) {
-			selectors[ ' .spectra-image-gallery__control-wrapper' ] = {
-				...selectors[ ' .spectra-image-gallery__control-wrapper' ],
-				'padding-left': generateCSSUnit( gridImageGapFallback, gridImageGapUnit ),
-			}
-			tabletSelectors[ ' .spectra-image-gallery__control-wrapper' ] = {
-				'padding-left': generateCSSUnit( gridImageGapTabFallback, gridImageGapUnitTab ),
-			}
-			mobileSelectors[ ' .spectra-image-gallery__control-wrapper' ] = {
-				'padding-left': generateCSSUnit( gridImageGapMobFallback, gridImageGapUnitMob ),
-			}
-		}
-		if ( 'flex-end' === paginateButtonAlign ) {
-			selectors[ ' .spectra-image-gallery__control-wrapper' ] = {
-				...selectors[ ' .spectra-image-gallery__control-wrapper' ],
-				'padding-right': generateCSSUnit( gridImageGapFallback, gridImageGapUnit ),
-			}
-			tabletSelectors[ ' .spectra-image-gallery__control-wrapper' ] = {
-				'padding-right': generateCSSUnit( gridImageGapTabFallback, gridImageGapUnitTab ),
-			}
-			mobileSelectors[ ' .spectra-image-gallery__control-wrapper' ] = {
-				'padding-right': generateCSSUnit( gridImageGapMobFallback, gridImageGapUnitMob ),
-			}
-		}
 	}
 
 	// New Zoom Effect on Hover.

@@ -169,8 +169,8 @@ $selectors = array(
 		),
 	),
 	' .spectra-image-gallery__layout--isogrid'          => array(
-		'margin' => '-' . UAGB_Helper::get_css_value(
-			$grid_image_gap_fallback / 2,
+		'margin' => UAGB_Helper::get_css_value(
+			-abs( $grid_image_gap_fallback / 2 ) ,
 			$attr['gridImageGapUnit']
 		),
 	),
@@ -180,9 +180,15 @@ $selectors = array(
 			$attr['gridImageGapUnit']
 		),
 	),
+	' .spectra-image-gallery__layout--masonry'          => array(
+		'margin' => UAGB_Helper::get_css_value(
+			-abs( $grid_image_gap_fallback / 2 ) ,
+			$attr['gridImageGapUnit']
+		),
+	),
 	' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper' => array(
 		'padding' => UAGB_Helper::get_css_value(
-			$grid_image_gap_fallback,
+			$grid_image_gap_fallback / 2,
 			$attr['gridImageGapUnit']
 		),
 	),
@@ -342,8 +348,8 @@ $t_selectors = array(
 		),
 	),
 	' .spectra-image-gallery__layout--isogrid'          => array(
-		'margin' => '-' . UAGB_Helper::get_css_value(
-			$grid_image_gap_tablet_fallback / 2,
+		'margin' => UAGB_Helper::get_css_value(
+			-abs( $grid_image_gap_tablet_fallback / 2 ),
 			$attr['gridImageGapUnitTab']
 		),
 	),
@@ -353,9 +359,15 @@ $t_selectors = array(
 			$attr['gridImageGapUnitTab']
 		),
 	),
+	' .spectra-image-gallery__layout--masonry'          => array(
+		'margin' => UAGB_Helper::get_css_value(
+			-abs( $grid_image_gap_tablet_fallback / 2 ) ,
+			$attr['gridImageGapUnitTab']
+		),
+	),
 	' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper' => array(
 		'padding' => UAGB_Helper::get_css_value(
-			$grid_image_gap_tablet_fallback,
+			$grid_image_gap_tablet_fallback / 2,
 			$attr['gridImageGapUnitTab']
 		),
 	),
@@ -419,8 +431,8 @@ $m_selectors = array(
 		),
 	),
 	' .spectra-image-gallery__layout--isogrid'          => array(
-		'margin' => '-' . UAGB_Helper::get_css_value(
-			$grid_image_gap_mobile_fallback / 2,
+		'margin' => UAGB_Helper::get_css_value(
+			-abs( $grid_image_gap_mobile_fallback / 2 ),
 			$attr['gridImageGapUnitMob']
 		),
 	),
@@ -430,9 +442,15 @@ $m_selectors = array(
 			$attr['gridImageGapUnitMob']
 		),
 	),
+	' .spectra-image-gallery__layout--masonry'          => array(
+		'margin' => UAGB_Helper::get_css_value(
+			-abs( $grid_image_gap_mobile_fallback / 2 ) ,
+			$attr['gridImageGapUnitMob']
+		),
+	),
 	' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper' => array(
 		'padding' => UAGB_Helper::get_css_value(
-			$grid_image_gap_mobile_fallback,
+			$grid_image_gap_mobile_fallback/ 2,
 			$attr['gridImageGapUnitMob']
 		),
 	),
@@ -549,16 +567,6 @@ if ( 'masonry' === $attr['feedLayout'] && $attr['feedPagination'] && ! $attr['pa
 	$selectors[' .spectra-image-gallery__control-wrapper']['justify-content']         = $attr['paginateButtonAlign'];
 	$selectors[' .spectra-image-gallery__control-wrapper']['-webkit-align-items']     = 'center';
 	$selectors[' .spectra-image-gallery__control-wrapper']['align-items']             = 'center';
-	if ( 'flex-start' === $attr['paginateButtonAlign'] ) {
-		$selectors[' .spectra-image-gallery__control-wrapper']['padding-left']   = UAGB_Helper::get_css_value( $grid_image_gap_fallback, $attr['gridImageGapUnit'] );
-		$t_selectors[' .spectra-image-gallery__control-wrapper']['padding-left'] = UAGB_Helper::get_css_value( $grid_image_gap_tablet_fallback, $attr['gridImageGapUnitTab'] );
-		$m_selectors[' .spectra-image-gallery__control-wrapper']['padding-left'] = UAGB_Helper::get_css_value( $grid_image_gap_mobile_fallback, $attr['gridImageGapUnitMob'] );
-	}
-	if ( 'flex-end' === $attr['paginateButtonAlign'] ) {
-		$selectors[' .spectra-image-gallery__control-wrapper']['padding-right']   = UAGB_Helper::get_css_value( $grid_image_gap_fallback, $attr['gridImageGapUnit'] );
-		$t_selectors[' .spectra-image-gallery__control-wrapper']['padding-right'] = UAGB_Helper::get_css_value( $grid_image_gap_tablet_fallback, $attr['gridImageGapUnitTab'] );
-		$m_selectors[' .spectra-image-gallery__control-wrapper']['padding-right'] = UAGB_Helper::get_css_value( $grid_image_gap_mobile_fallback, $attr['gridImageGapUnitMob'] );
-	}
 }
 
 // New Zoom Effect on Hover.
