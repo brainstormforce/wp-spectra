@@ -456,7 +456,9 @@ export default function styling( props ) {
 			'cy': generateCSSUnit( circlePos, 'px' ),
 		},
 		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg .uagb-counter-circle__progress': {
-			'stroke': circleBackground
+			'stroke': circleBackground,
+			'stroke-dasharray': generateCSSUnit( circleDash, 'px' ),
+			'stroke-dashoffset': generateCSSUnit( circleDash, 'px' ),
 		},
 		'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container': {
 			'background': barForeground,

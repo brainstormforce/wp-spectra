@@ -105,7 +105,7 @@ const Render = ( props ) => {
 			{/* <div className='wp-block-uagb-counter-circle-container__svg-container'> */}
 				<svg preserveAspectRatio="xMinYMin meet" viewBox={`0 0 ${circleSizeFallback} ${circleSizeFallback}`} version="1.1" xmlns="http://www.w3.org/2000/svg">
 					<circle className="uagb-counter-circle__background"></circle>
-					<circle className="uagb-counter-circle__progress" strokeDasharray={circleDash} strokeDashoffset={circleDash}></circle>
+					<circle className="uagb-counter-circle__progress"></circle>
 				</svg>
 			{/* </div> */}
 		</div>
