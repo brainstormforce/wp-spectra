@@ -65,6 +65,14 @@ const attributes = {
 		type: 'number',
 		default: '',
 	},
+	imgTagHeight: {
+		type: 'number',
+		default: 0,
+	},
+	imgTagWidth: {
+		type: 'number',
+		default: 0,
+	},
 };
 
 export default attributes;

@@ -10,7 +10,7 @@ import links from './links';
 export default function save( props ) {
 	const { className } = props;
 
-	const { type, image_icon, icon, image, block_id, parentSize } = props.attributes;
+	const { type, image_icon, icon, image, block_id, parentSize, imgTagHeight } = props.attributes;
 
 	const url = links[ type ];
 
@@ -28,7 +28,7 @@ export default function save( props ) {
 		}
 	} else if ( image && image.url ) {
 		imageIconHtml = (
-			<img className="uagb-ss__source-image" src={ image.url } alt={ defaultedAlt }  width={ parentSize }  height={ (parentSize/1.875).toFixed(2) } loading="lazy"/>
+			<img className="uagb-ss__source-image" src={ image.url } alt={ defaultedAlt }  width={ parentSize }  height={ imgTagHeight } loading="lazy"/>
 		);
 	}
 

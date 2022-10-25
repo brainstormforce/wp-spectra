@@ -2,7 +2,7 @@ const RestMenuImage = ( props ) => {
 	const { attributes, index_value } = props;
 	let urlCheck = '';
 	let imageArr = '';
-	const { imageWidth } = attributes
+	const { imageWidth, imgTagHeight } = attributes
 
 	if ( typeof index_value !== 'undefined' ) {
 		const imageArray = attributes.rest_menu_item_arr[ index_value ];
@@ -39,7 +39,7 @@ const RestMenuImage = ( props ) => {
 			}
 
 			return (
-				<img className="" src={ url } alt={ image.alt } width={ imageWidth } loading="lazy"/>
+				<img className="" src={ url } alt={ image.alt } width={ imageWidth } height= { imgTagHeight } loading="lazy"/>
 			);
 		}
 		return null;

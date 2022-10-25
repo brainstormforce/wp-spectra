@@ -85,6 +85,14 @@ const attributes = {
 		type: 'boolean',
 		default: true,
 	},
+	imgTagHeight: {
+		type: 'number',
+		default: 0,
+	},
+	imgTagWidth: {
+		type: 'number',
+		default: 0,
+	},
 };
 
 export default attributes;
