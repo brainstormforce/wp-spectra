@@ -100,7 +100,7 @@ const Render = ( props ) => {
 				{title}
 				{ ( iconCheck && iconImgPosition === 'bottom' ) && iconComponent }
 			</div>
-			<svg viewPort={`0 0 ${circleSizeFallback} ${circleSizeFallback}`} version="1.1" xmlns="http://www.w3.org/2000/svg">
+			<svg preserveAspectRatio="xMinYMin meet" viewPort={`0 0 ${circleSizeFallback} ${circleSizeFallback}`} version="1.1" xmlns="http://www.w3.org/2000/svg">
 				<circle r={circleRadius} cx={circlePos} cy={circlePos} fill="transparent" strokeDasharray={circleDash} strokeDashoffset="0"></circle>
 				<circle id="bar" r={circleRadius} cx={circlePos} cy={circlePos} fill="transparent" strokeDasharray={circleDash} strokeDashoffset={circleDash}></circle>
 			</svg>
