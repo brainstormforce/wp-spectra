@@ -1598,7 +1598,7 @@ const Settings = ( props ) => {
 			{ 'grid' === feedLayout && (
 				<>
 					<Range
-						label={ __( 'Pagination Top Margin', 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Top Margin', 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }
 						value={ paginateDotDistance }
 						data={ {
@@ -1732,6 +1732,35 @@ const Settings = ( props ) => {
 			{/* Masonry Pagination */}
 			{ ( 'masonry' === feedLayout ) && (
 				<>
+					<Range
+						label={ __( 'Top Margin', 'ultimate-addons-for-gutenberg' ) }
+						setAttributes={ setAttributes }
+						value={ paginateDotDistance }
+						data={ {
+							value: paginateDotDistance,
+							label: 'paginateDotDistance',
+						} }
+						min={ 0 }
+						max={ 100 }
+						unit={ {
+							value: paginateDotDistanceUnit,
+							label: 'paginateDotDistanceUnit',
+						} }
+						units={ [
+							{
+								name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+								unitValue: 'px',
+							},
+							{
+								name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
+								unitValue: 'em',
+							},
+							{
+								name: __( '%', 'ultimate-addons-for-gutenberg' ),
+								unitValue: '%',
+							},
+						] }
+					/>
 					{ paginateUseLoader
 						? (
 							<>

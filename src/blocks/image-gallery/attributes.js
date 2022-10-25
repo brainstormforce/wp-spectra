@@ -902,6 +902,7 @@ const attributes = {
 	},
 	paginateDotDistance: {
 		type: 'number',
+		default: 8,
 		UAGCopyPaste: {
 			styleType: 'dot-distance'
 		},

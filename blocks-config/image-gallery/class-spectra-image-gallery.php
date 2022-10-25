@@ -649,6 +649,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 							),
 							'paginateDotDistance'          => array(
 								'type' => 'number',
+								'default' => 8,
 							),
 							'paginateDotDistanceUnit'      => array(
 								'type'    => 'string',

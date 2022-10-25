@@ -184,7 +184,7 @@ return array_merge(
 		'paginateArrowDistance'              => -24,
 		'paginateArrowDistanceUnit'          => 'px',
 		'paginateArrowSize'                  => 24,
-		'paginateDotDistance'                => '',
+		'paginateDotDistance'                => 8,
 		'paginateDotDistanceUnit'            => 'px',
 		'paginateLoaderSize'                 => 18,
 		'paginateButtonTextColor'            => '',

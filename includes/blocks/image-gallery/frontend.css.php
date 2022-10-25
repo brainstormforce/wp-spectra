@@ -126,6 +126,9 @@ $selectors = array(
 	' .spectra-image-gallery__control-dots li button:hover::before' => array(
 		'color' => $attr['paginateColorHover'],
 	),
+	' .spectra-image-gallery__control-loader'           => array(
+		'margin-top' => UAGB_Helper::get_css_value( $paginate_dot_distance_fallback, $attr['paginateDotDistanceUnit'] ),
+	),
 	' .spectra-image-gallery__control-loader div'       => array(
 		'background-color' => $attr['paginateColor'],
 		'width'            => UAGB_Helper::get_css_value( $paginate_loader_size_fallback, 'px' ),
@@ -135,6 +138,7 @@ $selectors = array(
 	),
 	' .spectra-image-gallery__control-button'           => array_merge(
 		array(
+			'margin-top'       => UAGB_Helper::get_css_value( $paginate_dot_distance_fallback, $attr['paginateDotDistanceUnit'] ),
 			'padding'          => UAGB_Block_Helper::generate_spacing(
 				$attr['paginateButtonPaddingUnit'],
 				$attr['paginateButtonPaddingTop'],
@@ -562,7 +566,6 @@ if ( 'carousel' === $attr['feedLayout'] ) {
 
 // Masonry based styling.
 if ( 'masonry' === $attr['feedLayout'] && $attr['feedPagination'] && ! $attr['paginateUseLoader'] ) {
-	$selectors[' .spectra-image-gallery__control-wrapper']['min-height']              = '58px';
 	$selectors[' .spectra-image-gallery__control-wrapper']['-webkit-justify-content'] = $attr['paginateButtonAlign'];
 	$selectors[' .spectra-image-gallery__control-wrapper']['justify-content']         = $attr['paginateButtonAlign'];
 	$selectors[' .spectra-image-gallery__control-wrapper']['-webkit-align-items']     = 'center';

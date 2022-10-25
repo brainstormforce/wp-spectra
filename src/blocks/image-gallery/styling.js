@@ -297,6 +297,9 @@ function styling( props ) {
 		' .spectra-image-gallery__control-dots li button:hover::before': {
 			'color': paginateColorHover,
 		},
+		' .spectra-image-gallery__control-loader': {
+			'margin-top': generateCSSUnit( paginateDotDistanceFallback, paginateDotDistanceUnit ),
+		},
 		' .spectra-image-gallery__control-loader div': {
 			'background-color': paginateColor,
 			'width': generateCSSUnit( paginateLoaderSizeFallback, 'px' ),
@@ -305,6 +308,7 @@ function styling( props ) {
 			'padding': 0,
 		},
 		' .spectra-image-gallery__control-button': {
+			'margin-top': generateCSSUnit( paginateDotDistanceFallback, paginateDotDistanceUnit ),
 			'padding': generateSpacing(
 				paginateButtonPaddingUnit,
 				paginateButtonPaddingTop,
@@ -820,7 +824,6 @@ function styling( props ) {
 	// Masonry based styling.
 	if ( 'masonry' === feedLayout && feedPagination && ! paginateUseLoader ) { 
 		selectors[ ' .spectra-image-gallery__control-wrapper' ] = {
-			'min-height': '58px',
 			'-webkit-justify-content': paginateButtonAlign,
 			'justify-content': paginateButtonAlign,
 			'-webkit-align-items': 'center',
