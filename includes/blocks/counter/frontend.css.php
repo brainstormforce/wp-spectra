@@ -171,8 +171,7 @@ $selectors = array(
 		'margin-left' => UAGB_Helper::get_css_value( $suffix_left_distance_fallback, 'px' ),
 	),
 	'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container' => array(
-		'width'  => UAGB_Helper::get_css_value( $circle_size_fallback, 'px' ),
-		'height' => UAGB_Helper::get_css_value( $circle_size_fallback, 'px' ),
+		'max-width' => UAGB_Helper::get_css_value( $circle_size_fallback, 'px' ),
 	),
 	'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg circle' => array(
 		'stroke-width' => UAGB_Helper::get_css_value( $circle_stroke_size_fallback, 'px' ),
