@@ -449,7 +449,7 @@ export default function styling( props ) {
 			'stroke-width': generateCSSUnit( circleStrokeSizeFallback, 'px' ),
 			'stroke': circleForeground,
 		},
-		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg #bar': {
+		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg .uagb-counter-circle__progress': {
 			'stroke': circleBackground
 		},
 		'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container': {

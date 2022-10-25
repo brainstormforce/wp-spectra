@@ -107,7 +107,7 @@ UAGBCounter = { // eslint-disable-line no-undef
 
 	_triggerCircle( el, data ){
 		const that = this
-		const circleWrap = el.querySelector( '.wp-block-uagb-counter-circle-container svg #bar' );
+		const circleWrap = el.querySelector( '.wp-block-uagb-counter-circle-container svg .uagb-counter-circle__progress' );
 
 		const diameter = data.circleSize - data.circleStokeSize;
 		const circumference = Math.PI * diameter;

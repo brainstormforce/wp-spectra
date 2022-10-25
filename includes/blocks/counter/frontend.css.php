@@ -178,7 +178,7 @@ $selectors = array(
 		'stroke-width' => UAGB_Helper::get_css_value( $circle_stroke_size_fallback, 'px' ),
 		'stroke'       => $attr['circleForeground'],
 	),
-	'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg #bar' => array(
+	'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg .uagb-counter-circle__progress' => array(
 		'stroke' => $attr['circleBackground'],
 	),
 	'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container' => array(
