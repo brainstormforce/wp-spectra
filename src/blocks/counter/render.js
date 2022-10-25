@@ -45,11 +45,6 @@ const Render = ( props ) => {
 
 	const blockName = props.parentProps.name.replace( 'uagb/', '' );
 	const circleSizeFallback = getFallbackNumber( circleSize, 'circleSize', blockName );
-	const circleStrokeSizeFallback = getFallbackNumber( circleStokeSize, 'circleStokeSize', blockName );
-
-	const circlePos    = ( circleSizeFallback / 2 );
-	const circleRadius = circlePos - ( circleStrokeSizeFallback / 2 );
-	const circleDash   = parseFloat( 2 * Math.PI * circleRadius ).toFixed( 2 );
 
 	const iconCheck = ( showIcon && icon !== '' ); // Reusable const to check if icon is set and enabled.
 
