@@ -66,15 +66,15 @@
 
 			& > svg {
 				// transform: rotate(-90deg);
-			}
+	
+				circle {
+					stroke: #eaeaea;
+					stroke-width: 1em;
+				}
 
-			svg circle {
-				stroke: #eaeaea;
-				stroke-width: 1em;
-			}
-
-			svg #bar {
-				stroke: #ff9f1e;
+				#bar {
+					stroke: #ff9f1e;
+				}
 			}
 
 			&__content {
