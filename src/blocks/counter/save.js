@@ -85,7 +85,7 @@ export default function Save( props ) {
 				{title}
 				{ ( iconCheck && iconImgPosition === 'bottom' ) && iconComponent }
 			</div>
-			<svg preserveAspectRatio="xMinYMin meet" viewPort={`0 0 ${circleSizeFallback} ${circleSizeFallback}`} version="1.1" xmlns="http://www.w3.org/2000/svg">
+			<svg preserveAspectRatio="xMinYMin meet" viewBox={`0 0 ${circleSizeFallback} ${circleSizeFallback}`} version="1.1" xmlns="http://www.w3.org/2000/svg">
 				<circle className="uagb-counter-circle__background" r={circleRadius} cx={circlePos} cy={circlePos} fill="transparent" strokeDasharray={circleDash} strokeDashoffset="0"></circle>
 				<circle className="uagb-counter-circle__progress" r={circleRadius} cx={circlePos} cy={circlePos} fill="transparent" strokeDasharray={circleDash} strokeDashoffset={circleDash}></circle>
 			</svg>
