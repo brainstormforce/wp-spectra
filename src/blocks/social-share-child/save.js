@@ -28,7 +28,7 @@ export default function save( props ) {
 		}
 	} else if ( image && image.url ) {
 		imageIconHtml = (
-			<img className="uagb-ss__source-image" src={ image.url } alt={ defaultedAlt }  width={ parentSize } loading="lazy"/>
+			<img className="uagb-ss__source-image" src={ image.url } alt={ defaultedAlt }  width={ parentSize }  height={ (parentSize/1.875).toFixed(2) } loading="lazy"/>
 		);
 	}
 

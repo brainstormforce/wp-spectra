@@ -53,6 +53,7 @@ const UAGBIconList = ( props ) => {
                     block.clientId, {
                         fromParentIcon: props.attributes.parentIcon,
 						hideLabel: props.attributes.hideLabel,
+						imageSizeChild: props.attributes.size,
                     }
                 );
 

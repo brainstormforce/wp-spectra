@@ -39,7 +39,8 @@ const TestimonialImage = ( props ) => {
 							className="uagb-tm-img-src"
 							src={ url }
 							alt={ image.alt }
-							width={imageWidth}
+							width={ imageWidth }
+							height={ imageWidth }
 							loading="lazy"
 						/>
 					</div>
