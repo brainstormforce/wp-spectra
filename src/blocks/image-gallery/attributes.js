@@ -1099,28 +1099,28 @@ const attributes = {
 		type: 'number',
 		default: 2,
 		UAGCopyPaste: {
-			styleType: 'arrow-border-top-width',
+			styleType: 'main-title-border-top-width',
 		},
 	},
 	mainTitleBorderBottomWidth: {
 		type: 'number',
 		default: 2,
 		UAGCopyPaste: {
-			styleType: 'arrow-border-bottom-width',
+			styleType: 'main-title-border-bottom-width',
 		},
 	},
 	mainTitleBorderLeftWidth: {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
-			styleType: 'arrow-border-left-width',
+			styleType: 'main-title-border-left-width',
 		},
 	},
 	mainTitleBorderRightWidth: {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
-			styleType: 'arrow-border-right-width',
+			styleType: 'main-title-border-right-width',
 		},
 	},
 };
