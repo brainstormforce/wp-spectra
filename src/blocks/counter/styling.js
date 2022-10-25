@@ -221,6 +221,10 @@ export default function styling( props ) {
 	const iconWrapCSSTablet = generateBorderCSS( props.attributes, 'iconWrap', 'tablet' );
 	const iconWrapCSSMobile = generateBorderCSS( props.attributes, 'iconWrap', 'mobile' );
 
+	const circlePos    = ( circleSizeFallback / 2 );
+	const circleRadius = circlePos - ( circleStrokeSizeFallback / 2 );
+	const circleDash   = parseFloat( 2 * Math.PI * circleRadius ).toFixed( 2 );
+
 	// Icon-Image Common Padding.
 	const iconAndImageSpacing = {
 		'padding-top': generateCSSUnit(
@@ -447,6 +451,9 @@ export default function styling( props ) {
 		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg circle': {
 			'stroke-width': generateCSSUnit( circleStrokeSizeFallback, 'px' ),
 			'stroke': circleForeground,
+			'r': generateCSSUnit( circleRadius, 'px' ),
+			'cx': generateCSSUnit( circlePos, 'px' ),
+			'cy': generateCSSUnit( circlePos, 'px' ),
 		},
 		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg .uagb-counter-circle__progress': {
 			'stroke': circleBackground

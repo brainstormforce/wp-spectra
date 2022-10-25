@@ -44,6 +44,10 @@ $icon_wrap_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr
 $icon_wrap_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'iconWrap', 'tablet' );
 $icon_wrap_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'iconWrap', 'mobile' );
 
+$circle_pos    = ( $circle_size_fallback / 2 );
+$circle_radius = $circle_pos - ( $circle_stroke_size_fallback / 2 );
+$circle_dash   = round( floatval( 2 * pi() * $circle_radius ), 2 );
+
 // Icon and Image Common Padding.
 $icon_and_image_spacing = array(
 	'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopPadding'], $attr['iconPaddingUnit'] ),
@@ -176,6 +180,9 @@ $selectors = array(
 	'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg circle' => array(
 		'stroke-width' => UAGB_Helper::get_css_value( $circle_stroke_size_fallback, 'px' ),
 		'stroke'       => $attr['circleForeground'],
+		'r'            => UAGB_Helper::get_css_value( $circle_radius, 'px' ),
+		'cx'           => UAGB_Helper::get_css_value( $circle_pos, 'px' ),
+		'cy'           => UAGB_Helper::get_css_value( $circle_pos, 'px' ),
 	),
 	'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg .uagb-counter-circle__progress' => array(
 		'stroke' => $attr['circleBackground'],
