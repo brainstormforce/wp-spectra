@@ -60,6 +60,12 @@
 			display: inline-block;
 			width: 100%;
 
+			&__content {
+				// Since the SVG is rotated, it's z-index is changed
+				// due to CSS's internal working mechanisms/rules and the text goes behind the circle SVG.
+				z-index: 1;
+			}
+
 			.wp-block-uagb-counter__icon svg {
 				width: 30px;
 			}
