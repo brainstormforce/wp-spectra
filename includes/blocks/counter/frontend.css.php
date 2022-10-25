@@ -185,9 +185,9 @@ $selectors = array(
 		'cy'           => UAGB_Helper::get_css_value( $circle_pos, 'px' ),
 	),
 	'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg .uagb-counter-circle__progress' => array(
-		'stroke'           => $attr['circleBackground'],
-		'stroke-dasharray' => UAGB_Helper::get_css_value( $circle_dash, 'px' ),
-		'stroke-offset'    => UAGB_Helper::get_css_value( $circle_dash, 'px' ),
+		'stroke'            => $attr['circleBackground'],
+		'stroke-dasharray'  => UAGB_Helper::get_css_value( $circle_dash, 'px' ),
+		'stroke-dashoffset' => UAGB_Helper::get_css_value( $circle_dash, 'px' ),
 	),
 	'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container' => array(
 		'background'    => $attr['barForeground'],
