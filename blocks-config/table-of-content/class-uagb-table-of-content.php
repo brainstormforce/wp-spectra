@@ -961,6 +961,11 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 										'type'    => 'string',
 										'default' => '',
 									),
+									// Overall block alignment.
+									'overallAlign'                => array(
+										'type'    => 'string',
+										'default' => 'left',
+									),
 								)
 							),
 							'render_callback' => array( $this, 'render_table_of_contents' ),

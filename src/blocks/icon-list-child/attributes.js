@@ -1,6 +1,7 @@
 /**
  * BLOCK: Icon List Child - Attributes
  */
+import { __ } from '@wordpress/i18n';
 
 const attributes = {
 	block_id: {
@@ -10,7 +11,7 @@ const attributes = {
 		type: 'html',
 		selector: '.uagb-icon-list__label',
 		// Need to Dynamically Number List Items.
-		default: 'List item',
+		default: __( 'List item' , 'ultimate-addons-for-gutenberg' ),
 	},
 	image_icon: {
 		type: 'string',
