@@ -44,7 +44,7 @@ const Render = ( props ) => {
 		if( image && image.url && image_icon !== 'none' ){
 			getImageHeightWidth( image?.url, setAttributes, { type: 'width', value: imageSizeChild} )
 		}
-	}, [ image ] )
+	}, [ image, imageSizeChild ] )
 
 	if ( image_icon === 'icon' ) {
 		if( icon || fromParentIcon ){
@@ -56,7 +56,7 @@ const Render = ( props ) => {
 				className="uagb-icon-list__source-image"
 				alt= { defaultedAlt }
 				src={ image.url }
-				width={imageSizeChild}
+				width={ imageSizeChild }
 				height={ imgTagHeight }
 				loading="lazy"
 			/>

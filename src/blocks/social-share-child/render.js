@@ -30,9 +30,9 @@ const Render = ( props ) => {
 
 	useEffect( () => {
 		if( image && image.url && image_icon !== 'none' ){
-			getImageHeightWidth( image?.url, setAttributes, { type: 'width', value: parentSize} )
+			getImageHeightWidth( image?.url, setAttributes, { type: 'width', value: parentSize } )
 		}
-	}, [ image ] )
+	}, [ image, parentSize ] )
 
 	if ( image_icon === 'icon' ) {
 		if ( icon ) {

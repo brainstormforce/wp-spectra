@@ -59,7 +59,7 @@ const UAGBIconList = ( props ) => {
 
             } );
 
-	}, [ props.attributes.parentIcon, props.attributes.hideLabel ] );
+	}, [ props.attributes.parentIcon, props.attributes.hideLabel, props.attributes.size ] );
 
 	return (
 
