@@ -14,7 +14,7 @@ import LoadFontsLocally from '@DashboardApp/pages/settings/LoadFontsLocally';
 import PreloadLocalFonts from '@DashboardApp/pages/settings/PreloadLocalFonts';
 import CollapsePanels from '@DashboardApp/pages/settings/CollapsePanels';
 import CopyPasteStyles from '@DashboardApp/pages/settings/CopyPasteStyles';
-import DynamicContent from './block-settings/dynamic-content';
+import DynamicContent from './dynamic-content';
 import ContentWidth from '@DashboardApp/pages/settings/ContentWidth';
 import BlocksEditorSpacing from '@DashboardApp/pages/settings/BlocksEditorSpacing';
 import ComingSoon from '@DashboardApp/pages/settings/ComingSoon';
@@ -106,6 +106,11 @@ const Settings = () => {
                                 <ContentWidth/>
 								<ContainerGlobalPadding/>
 								<ContainerGlobalElementsGap/>
+								{
+									dynamicContentStatus && (
+										<DynamicContent />
+									)
+								}
                                 <BlocksEditorSpacing/>
                                 <CollapsePanels/>
                                 <CopyPasteStyles/>
@@ -142,11 +147,6 @@ const Settings = () => {
                         }
                         { 'block-settings' === activeSettingsNavigationTab &&
                             <>
-								{
-									dynamicContentStatus && (
-										<DynamicContent />
-									)
-								}
 								<BlockSettings/>
                             </>
                         }

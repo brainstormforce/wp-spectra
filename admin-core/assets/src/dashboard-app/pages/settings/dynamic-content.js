@@ -33,7 +33,7 @@ export default function DynamicContent(props) {
 	return (
 		<React.Fragment>
 			<section className='block border-b border-solid border-slate-200 px-12 py-8 justify-between'>
-				<section className='flex items-center'>
+				<section className='flex items-start'>
 					<div className='pr-16 w-[78%]'>
 						<h3 className="text-lg leading-6 font-medium text-gray-900">
 							{__( 'Dynamic Content', 'ultimate-addons-for-gutenberg' )}
@@ -42,8 +42,8 @@ export default function DynamicContent(props) {
 							{ __( 'Choose how you want to display dynamic content settings', 'ultimate-addons-for-gutenberg' ) }
 						</p>
 					</div>
-					<div>
-					<div className="flex flex-row gap-[2.50rem] justify-center">
+					<div className='mt-1.5'>
+						<div className="flex flex-row gap-[2.50rem] justify-center">
 							<div className="form-check flex justify-center items-center">
 								<input className="uag-radio-input form-check-input appearance-none rounded-full h-1.25rem w-1.25rem border border-bg-spectra bg-white checked:bg-spectra checked:bg-spectra focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer" type="radio" name="dynamic_content_mode" value="popup" onChange={dynamicContentHandler} id="dynamic-content-popup" checked={dynamicContentMode === 'popup'} />
 								<label className="form-check-label inline-block text-gray-800 ml-1 -mt-0.5" htmlFor="dynamic-content-popup">
