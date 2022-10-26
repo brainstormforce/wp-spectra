@@ -2,9 +2,9 @@
 /**
  * Frontend JS File.
  *
- * @since 0.0.1
+ * @since 2.1.0
  *
- * @package UAG_PRO
+ * @package uagb
  */
 
 $selector = '.uagb-block-' . $id;
