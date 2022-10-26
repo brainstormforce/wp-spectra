@@ -18,6 +18,7 @@ const UAGMediaPicker = ( props ) => {
 		disableLabel = false,
 		disableRemove = false,
 		allow = [ 'image' ],
+		disableDynamicContent = false
 	} = props;
 
 	// This is used to render an icon in place of the background image when needed.
@@ -60,9 +61,12 @@ const UAGMediaPicker = ( props ) => {
 			);
 	}
 
-	let registerImageExtender = wp.hooks.applyFilters('uagb.registerImageExtender', '', selectedBlock?.name, onSelectImage)
+	let registerImageExtender = disableDynamicContent ? null : wp.hooks.applyFilters('uagb.registerImageExtender', '', selectedBlock?.name, onSelectImage)
 
 	const isShowImageUploader = () => {
+		if(disableDynamicContent){
+			return true;
+		}
 		const dynamicContent = selectedBlock?.attributes?.dynamicContent
 		if(dynamicContent && dynamicContent?.bgImage?.enable === true) {
 			return false
