@@ -589,7 +589,7 @@
 	},
 	ctaLink: {
 		type: 'string',
-		default: '#',
+		default: '',
 	},
 	ctaLinkColor: {
 		type: 'string',
