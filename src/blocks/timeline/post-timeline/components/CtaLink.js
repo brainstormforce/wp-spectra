@@ -1,12 +1,37 @@
 import React from 'react';
+import { RichText } from '@wordpress/block-editor';
+
 const CtaLink = ( props ) => {
-	const { post, attributes } = props;
+	const { post, attributes, setAttributes} = props;
 	let target = '_self';
 	if ( attributes.linkTarget ) {
 		target = '_blank';
 	}
+	{console.log('hekaslsa')}
 
 	if ( attributes.displayPostLink ) {
+
+		if ( setAttributes !== 'not_set' ) {
+			return (
+				<div className="uagb-timeline__link_parent wp-block-button"	>
+					<a
+						className="uagb-timeline__link wp-block-button__link"
+						href={ post.link }
+						target={ target }
+						rel="noopener noreferrer"
+					>
+						{console.log('hekaslsa 2')}
+						<RichText
+							// value={ attributes.readMoreText.replace( /(<([^>]+)>)/ig, '' ) }
+							onChange={ ( value ) => {
+								setAttributes( { readMoreText: value } );
+							} }
+						/>
+					</a>
+				</div>
+			);
+		}
+
 		return (
 			<div className="uagb-timeline__link_parent wp-block-button"	>
 				<a
@@ -15,7 +40,11 @@ const CtaLink = ( props ) => {
 					target={ target }
 					rel="noopener noreferrer"
 				>
-					{ attributes.readMoreText }
+						{console.log('hekaslsa 3')}
+
+					<RichText.Content
+						value={ attributes.readMoreText.replace( /(<([^>]+)>)/ig, '' ) }
+					/>
 				</a>
 			</div>
 		);

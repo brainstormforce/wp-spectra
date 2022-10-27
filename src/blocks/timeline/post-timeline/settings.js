@@ -222,7 +222,7 @@ const Settings = ( props ) => {
 
 	let device = deviceType;
 
-	// For desktop, attribute name does not have `desktop` suffix to support backward compatibility. 
+	// For desktop, attribute name does not have `desktop` suffix to support backward compatibility.
 	if( 'Desktop' === deviceType ) {
 		device = '';
 	}
