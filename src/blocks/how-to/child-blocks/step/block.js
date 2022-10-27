@@ -20,7 +20,11 @@ registerBlockType( 'uagb/how-to-step', {
 	supports: {
 		anchor: true,
 	},
-	example: {},
 	save,
 	deprecated,
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 } );

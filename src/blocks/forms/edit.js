@@ -252,7 +252,7 @@ const UAGBFormsEdit = ( props ) => {
 			);
 		}
 	);
-	const { variations, hasInnerBlocks } = props;
+	const { variations, hasInnerBlocks, attributes: { isPreview } } = props;
 
 	const renderReadyClasses = useCallback( ( id ) => {
 		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
@@ -321,39 +321,35 @@ const UAGBFormsEdit = ( props ) => {
 			}
 		}
 	} );
-const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/form.png`;
-	if ( ! hasInnerBlocks ) {
+
+	if ( ! isPreview && ! hasInnerBlocks ) {
 		return (
-			<>
-			{ props.attributes.isPreview ? <img width='100%' src={previewImageData} alt=''/> :
-				<__experimentalBlockVariationPicker
-					icon={ UAGB_Block_Icons.forms }
-					label={ uagb_blocks_info.blocks[ 'uagb/forms' ].title }
-					instructions={ __(
-						'Select a variation to start with.',
-						'ultimate-addons-for-gutenberg'
-					) }
-					variations={ variations }
-					allowSkip
-					onSelect={ ( nextVariation ) =>
-						blockVariationPickerOnSelect( nextVariation )
-					}
-					className="uagb-forms-variations"
-				/>
-	}
-			</>
+			<__experimentalBlockVariationPicker
+				icon={ UAGB_Block_Icons.forms }
+				label={ uagb_blocks_info.blocks[ 'uagb/forms' ].title }
+				instructions={ __(
+					'Select a variation to start with.',
+					'ultimate-addons-for-gutenberg'
+				) }
+				variations={ variations }
+				allowSkip
+				onSelect={ ( nextVariation ) =>
+					blockVariationPickerOnSelect( nextVariation )
+				}
+				className="uagb-forms-variations"
+			/>
 		);
 	}
 
-	return (
-		<>
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/form.svg`;
 
-						<>
-			<Settings parentProps={ props } />
+	return (
+		isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+			<>
+				<Settings parentProps={ props } />
 				<Render parentProps={ props } />
 			</>
-
-		</>
+		)
 	);
 };
 

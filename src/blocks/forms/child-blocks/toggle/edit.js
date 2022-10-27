@@ -15,19 +15,15 @@ const UAGBFormsToggleEdit = ( props ) => {
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 	}, [] );
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/form-toggle.svg`;
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/children/form-toggle.svg`;
 
 	return (
-		<>
-			{ props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-
-							<>
-			<Settings parentProps={ props } />
-					<Render parentProps={ props } />
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+			<>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
 			</>
-
-			) }
-		</>
+		)
 	);
 };
 

@@ -2530,23 +2530,25 @@ const UAGBPostMasonry = ( props ) => {
 		);
 	}
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/post-grid.svg`;
+
 	return (
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
 			<>
-
-			<Settings
-				parentProps={ props }
-				state={ state }
-				inspectorControls={ inspectorControls }
-				togglePreview={ togglePreview }
-			/>
-			<Render
-				parentProps={ props }
-				state={ state }
-				setState={ setState }
-				togglePreview={ togglePreview }
-			/>
+				<Settings
+					parentProps={ props }
+					state={ state }
+					inspectorControls={ inspectorControls }
+					togglePreview={ togglePreview }
+				/>
+				<Render
+					parentProps={ props }
+					state={ state }
+					setState={ setState }
+					togglePreview={ togglePreview }
+				/>
 			</>
-
+		)
 	);
 };
 
