@@ -25,6 +25,9 @@ registerBlockType( 'uagb/modal', {
 	supports: {
 		anchor: true,
 	},
+	getEditWrapperProps( attribute ) {
+		return { 'data-btn-width': attribute.modalAlign };
+	},
 	category: uagb_blocks_info.category,
 	attributes,
 	edit,

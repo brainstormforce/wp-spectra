@@ -199,7 +199,7 @@ export default function styling( props ) {
 			'font-weight': btnFontWeight,
 			'font-size': generateCSSUnit( btnFontSize, btnFontSizeType ),
 			'line-height': generateCSSUnit( btnLineHeight, btnLineHeightType ),
-			'letter-spacing': generateCSSUnit( btnLetterSpacing, btnLetterSpacingType ),			
+			'letter-spacing': generateCSSUnit( btnLetterSpacing, btnLetterSpacingType ),
 			'color': btnLinkColor,
 			'background-color': btnBgColor,
 			...borderCSS
@@ -354,7 +354,7 @@ export default function styling( props ) {
 				btnLineHeightMobile,
 				btnLineHeightType
 			),
-			'letter-spacing': generateCSSUnit( btnLetterSpacingMobile, btnLetterSpacingType ),			
+			'letter-spacing': generateCSSUnit( btnLetterSpacingMobile, btnLetterSpacingType ),
 			...borderCSSMobile
 		},
 		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger svg' : {
@@ -364,7 +364,7 @@ export default function styling( props ) {
 			'line-height': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
 		},
 	};
-	
+
 	if( 'popup-top-right' === closeIconPosition ) {
 		selectors[ ' .uagb-modal-popup.active .uagb-modal-popup-close'] = {
 			'top': '-' + generateCSSUnit( closeIconSize, 'px' ),

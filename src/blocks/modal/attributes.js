@@ -21,6 +21,10 @@ const attributes = {
 		type: 'string',
 		default: 'up-right-from-square',
 	},
+	closeIcon: {
+		type: 'string',
+		default: 'xmark',
+	},
 	iconImage: {
 		type: 'object',
 	},
@@ -331,7 +335,7 @@ const attributes = {
 			styleType: 'modal-left-padding-mobile'
 		}
 	},
-	
+
 	iconSize: {
 		type: 'number',
 		default: 30
@@ -350,7 +354,7 @@ const attributes = {
 			styleType: 'text-color'
 		}
 	},
-	
+
 	textFontFamily: {
 		type: 'string',
 		default: 'Default',
@@ -664,7 +668,7 @@ const attributes = {
 			styleType: 'btn-letter-spacing-type'
 		}
 	},
-	
+
 	btnLinkColor: {
 		type: 'string',
 		UAGCopyPaste: {

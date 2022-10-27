@@ -18,6 +18,7 @@ export default function Save( props ) {
 		closeIconPosition,
 		escPress,
 		overlayClick,
+		closeIcon
 	} = props.attributes;
 
 	const textHTML = (
@@ -118,7 +119,7 @@ export default function Save( props ) {
 				'button' === modalTrigger &&
 				buttonHTML
 			}
-			<div 
+			<div
 				className={ classnames(
 					`${ appearEffect }`,
 					'uagb-modal-popup'
@@ -129,10 +130,9 @@ export default function Save( props ) {
 					</div>
 					{ ( 'popup-top-left' === closeIconPosition || 'popup-top-right' === closeIconPosition ) && (
 						<div className="uagb-modal-popup-close">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25" height="25"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path>
-							</svg>
+							{ '' !== closeIcon && ( renderSVG( closeIcon ) ) }
 						</div>
-					) }		
+					) }
 				</div>
 			</div>
 		</div>

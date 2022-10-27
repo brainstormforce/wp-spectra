@@ -33,11 +33,11 @@ let imageSizeOptions = [
 
 export default function Settings( props ) {
 	const { attributes, setAttributes, deviceType } = props.parentProps;
-	const { 
-		modalTrigger, 
-		previewModal, 
-		iconImage, 
-		icon, 
+	const {
+		modalTrigger,
+		previewModal,
+		iconImage,
+		icon,
 		imageSize,
 		// Button.
 		buttonIcon,
@@ -155,7 +155,7 @@ export default function Settings( props ) {
 		btnBgHoverColor,
 		btnBgColor,
 		modalBgColor,
-		
+		closeIcon
 	} = attributes;
 
 	let loadTextGoogleFonts;
@@ -196,7 +196,7 @@ export default function Settings( props ) {
 	 * Event to set Image as while adding.
 	 */
 	const onSelectImage = ( media ) => {
-		
+
 		if ( ! media || ! media.url ) {
 			setAttributes( { iconImage: null } );
 			return;
@@ -211,7 +211,7 @@ export default function Settings( props ) {
 			const new_img = getImageSize( media.sizes );
 			imageSizeOptions = new_img;
 		}
-		
+
 		setAttributes( { iconImage: media } );
 	};
 
@@ -225,7 +225,7 @@ export default function Settings( props ) {
 	if ( iconImage && iconImage.sizes ) {
 		imageSizeOptions = getImageSize( iconImage.sizes );
 	}
-	
+
 	const modalTriggerPanel = (
 		<UAGAdvancedPanelBody
 			title={ __( 'Modal Trigger', 'ultimate-addons-for-gutenberg' ) }
@@ -426,6 +426,18 @@ export default function Settings( props ) {
 								'ultimate-addons-for-gutenberg'
 							),
 						},
+						{
+							value: 'full',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-justify' ) }
+								/>
+							),
+							tooltip: __(
+								'Full Width',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
 					] }
 					showIcons={ true }
 					responsive={true}
@@ -617,7 +629,16 @@ export default function Settings( props ) {
 				max={ 50 }
 				displayUnit={ false }
 			/>
-
+			<UAGIconPicker
+				label={ __(
+					'Icon',
+					'ultimate-addons-for-gutenberg'
+				) }
+				value={ closeIcon }
+				onChange={ ( value ) =>
+					setAttributes( { closeIcon: value } )
+				}
+			/>
 			<UAGSelectControl
 				label={ __(
 					'Icon Position',
@@ -1378,7 +1399,7 @@ export default function Settings( props ) {
 						{triggerStylePanel}
 						{closeStylePanel}
 					</InspectorTab>
-					
+
 				</InspectorTabs>
 			</InspectorControls>
 			{ loadTextGoogleFonts }

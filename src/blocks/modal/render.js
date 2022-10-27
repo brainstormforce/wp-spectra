@@ -30,7 +30,8 @@ const Render = ( props ) => {
 		appearEffect,
 		closeIconPosition,
 		escPress,
-		overlayClick
+		overlayClick,
+		closeIcon
 	} = attributes;
 
 	const deviceType = useDeviceType();
@@ -85,7 +86,7 @@ const Render = ( props ) => {
 	if ( buttonIcon !== '' ) {
 		buttonIconOutput = renderSVG( buttonIcon );
 	}
-	
+
 	const buttonClasses = 'uagb-modal-button-link wp-block-button__link uagb-modal-trigger';
 
 	const buttonHTML = (
@@ -144,7 +145,7 @@ const Render = ( props ) => {
 					'button' === modalTrigger &&
 					buttonHTML
 				}
-				<div 
+				<div
 					className={ classnames(
 						`${ appearEffect }`,
 						'uagb-modal-popup'
@@ -156,10 +157,9 @@ const Render = ( props ) => {
 						</div>
 						{ ( 'popup-top-left' === closeIconPosition || 'popup-top-right' === closeIconPosition ) && (
 							<div className="uagb-modal-popup-close">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25" height="25"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path>
-								</svg>
+								{ '' !== closeIcon && ( renderSVG( closeIcon ) ) }
 							</div>
-						) }	
+						) }
 					</div>
 				</div>
 			</div>
