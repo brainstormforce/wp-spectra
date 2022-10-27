@@ -206,12 +206,15 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Timeline - Connector does not show color without icon when scrolling.
 * Fix: Resolved Buttons should consider button text as a string instead of html in multiple blocks.
 * Fix: Container - Does not work properly when it is used inside cover block.
+* Fix: Image - Hover on the border for normal image layout is not working.
 * Fix: Post grid - In the editor, the Read more button border-radius is not working on hover.
 * Fix: Table Of Contents - Page was not scrolling to the headings on the frontend for some edge cases.
 * Fix: Post Carousel - On reducing or increasing Post per page all items sticks to each other in editor.
+* Fix: Translation for default text was missing for some blocks.
 * Fix: Z-Index extension is not working for the dynamic blocks.
 * Fix: Content flickering in the editor when hovering over it.
 * Fix: Desktop icon for responsive control move to the left from their position.
+* Fix: Container - Child container gets unwanted margin applied when boxed and content boxed layout is selected in the editor when Astra theme is activated.
 
 ### 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 ###
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.

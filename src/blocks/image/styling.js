@@ -209,7 +209,7 @@ export default function styling( props ) {
 			'box-shadow': generateCSSUnit( imageBoxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( imageBoxShadowVOffset, 'px' ) +	' ' + generateCSSUnit( imageBoxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( imageBoxShadowSpread, 'px' ) + ' ' + imageBoxShadowColor + ' ' + getImageShadowPosition,
 			...imageBorderCSS
 		},
-		'.wp-block-uagb-image .wp-block-uagb-image__figure:hover':{
+		'.wp-block-uagb-image .wp-block-uagb-image__figure img:hover':{
 			'border-color': imageBorderHColor
 		},
 		'.wp-block-uagb-image .wp-block-uagb-image__figure figcaption': {
@@ -260,6 +260,9 @@ export default function styling( props ) {
 			'background': overlayBackground,
 			'opacity': overlayOpacityFallback,
 			...imageBorderCSS
+		},
+		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper:hover': {
+			'border-color': imageBorderHColor,
 		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner': {
 			'left': generateCSSUnit( overlayPositionFromEdgeFallback, overlayPositionFromEdgeUnit ),
