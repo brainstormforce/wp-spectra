@@ -127,9 +127,6 @@ export default function styling( props ) {
 	const borderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
 
 	const selectors = {
-		'.uagb-modal-wrapper' : {
-			'text-align': modalAlign,
-		},
 		' .uagb-modal-popup-wrap' : {
 			'width': generateCSSUnit(
 				modalWidth,
@@ -221,9 +218,6 @@ export default function styling( props ) {
 		}
 	};
 	const tabletSelectors = {
-		'.uagb-modal-wrapper' : {
-			'text-align': modalAlignTablet,
-		},
 		' .uagb-modal-popup-wrap' : {
 			'width': generateCSSUnit(
 				modalWidthTablet,
@@ -293,9 +287,6 @@ export default function styling( props ) {
 		}
 	};
 	const mobileSelectors = {
-		'.uagb-modal-wrapper' : {
-			'text-align': modalAlignMobile,
-		},
 		' .uagb-modal-popup-wrap' : {
 			'width': generateCSSUnit(
 				modalWidthMobile,
@@ -414,6 +405,48 @@ export default function styling( props ) {
 
 		mobileSelectors[ ' img.uagb-modal-trigger' ] = {
 			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
+		};
+	}
+
+	if ( modalAlign !== 'full' ) {
+		selectors[ '.uagb-modal-wrapper' ] = {
+			'text-align': modalAlign,
+		};
+		selectors[ ' .wp-block-button__link' ] = {
+			'width': 'unset',
+		};
+	} else {
+		selectors[ ' .wp-block-button__link' ] = {
+			'width': '100%',
+			'justify-content': 'center',
+		};
+	}
+
+	if ( modalAlignTablet !== 'full' ) {
+		tabletSelectors[ '.uagb-modal-wrapper' ] = {
+			'text-align': modalAlignTablet,
+		};
+		tabletSelectors[ ' .wp-block-button__link' ] = {
+			'width': 'unset',
+		};
+	} else {
+		tabletSelectors[ ' .wp-block-button__link' ] = {
+			'width': '100%',
+			'justify-content': 'center',
+		};
+	}
+
+	if ( modalAlignMobile !== 'full' ) {
+		mobileSelectors[ '.uagb-modal-wrapper' ] = {
+			'text-align': modalAlignMobile,
+		};
+		mobileSelectors[ ' .wp-block-button__link' ] = {
+			'width': 'unset',
+		};
+	} else {
+		mobileSelectors[ ' .wp-block-button__link' ] = {
+			'width': '100%',
+			'justify-content': 'center',
 		};
 	}
 
