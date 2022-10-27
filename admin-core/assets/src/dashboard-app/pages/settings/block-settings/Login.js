@@ -20,7 +20,7 @@ export default function Login(props) {
 	const googleClientId = social ? social.googleClientId : '';
 	const facebookAppId = social ? social.facebookAppId : '';
 	const facebookAppSecret = social ? social.facebookAppSecret : '';
-
+	
 	const savedFormData = (type, payload) => {
 		dispatch({type, payload })
 		const formData = new window.FormData();
@@ -48,9 +48,11 @@ export default function Login(props) {
 			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
 		} );
     };
+	const disabledClass = (! uag_react?.is_allow_registration) ? 'section-disabled' : false;
+
 	return (
 		<React.Fragment>
-			<section className='flex border-b border-solid border-slate-200 px-12 py-8 justify-between'>
+			<section className={`flex border-b border-solid border-slate-200 px-12 py-8 justify-between ${disabledClass}`}>
 				<div className='pr-16 w-[78%]'>
 					<h3 className="p-0 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900">
 						{__( 'Social Login Auto Register', 'ultimate-addons-for-gutenberg' )}
@@ -58,10 +60,17 @@ export default function Login(props) {
 					<p className="mt-2 text-sm text-slate-500">
 						{ __( 'Enabling this setting will automatically register the users via Google/Facebook.', 'ultimate-addons-for-gutenberg' ) }
 					</p>
+
+					{ disabledClass &&
+						<p className="mt-2 text-sm text-slate-500">
+							{ __( 'Make sure "Anyone can register" is enabled in General > Settings > Membership to use this feature.', 'ultimate-addons-for-gutenberg' ) }
+						</p>
+					}
 				</div>
 				<div>
 					<Switch
 						checked={socialRegister}
+						disabled={true}
 						onChange={(e) => savedFormData('UPDATE_SOCIAL_REGISTER', !socialRegister)}
 						className={classNames(
 							socialRegister ? 'bg-spectra' : 'bg-gray-200',

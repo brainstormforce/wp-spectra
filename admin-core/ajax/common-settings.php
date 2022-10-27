@@ -704,7 +704,7 @@ class Common_Settings extends Ajax_Base {
 		}
 
 		$social = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_social', [
-			'socialRegister'	=> true,
+			'socialRegister'	=> false,
 			'googleClientId' =>  '',
 			'facebookAppId' => '',
 			'facebookAppSecret' => ''

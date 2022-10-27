@@ -57,7 +57,7 @@ class Admin_Helper {
 			'copy_paste'                         => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
 			'preload_local_fonts'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
 			'social'                		 => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_social', [
-				'socialRegister'	=> true,
+				'socialRegister'	=> false,
 				'googleClientId' =>  '',
 				'facebookAppId' => '',
 				'facebookAppSecret' => ''

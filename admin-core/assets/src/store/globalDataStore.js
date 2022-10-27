@@ -22,7 +22,7 @@ const initialState = {
 		recaptchaSiteKey: '',
 		recaptchaSecretKey: '',
 		recaptchaBadgeHide: false,
-		socialRegister: true,
+		socialRegister: false,
 		googleClientId: '',
 		facebookAppId: '',
 		facebookAppSecret: ''
