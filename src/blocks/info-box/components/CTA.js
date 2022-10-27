@@ -25,7 +25,7 @@ const InfoBoxCta = ( props ) => {
 				{ attributes.ctaType === 'text' && (
 					<a // eslint-disable-line jsx-a11y/anchor-is-valid
 						target={ target }
-						className={ !attributes.ctaLink ? "uagb-infobox-cta-link uagb-disable-link" : "uagb-infobox-cta-link" }
+						className={ !attributes.ctaLink ? 'uagb-infobox-cta-link uagb-disable-link' : 'uagb-infobox-cta-link' }
 						rel={ rel }
 					>
 						{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
@@ -87,7 +87,7 @@ const InfoBoxCta = ( props ) => {
 						<a
 							href={ attributes.ctaLink }
 							target={ target }
-							className={ !attributes.ctaLink ? "uagb-infobox-cta-link uagb-disable-link" : "uagb-infobox-cta-link" }
+							className={ !attributes.ctaLink ? 'uagb-infobox-cta-link uagb-disable-link' : 'uagb-infobox-cta-link' }
 							rel={ rel }
 							alt=""
 						>
