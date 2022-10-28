@@ -1444,7 +1444,7 @@ export default function Settings( props ) {
 				displayUnit={ false }
 			/>
 			<AdvancedPopColorControl
-				label={ __( 'Foreground', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Progress Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ circleForeground ? circleForeground : '' }
 				data={ {
 					value: circleForeground,
@@ -1453,7 +1453,7 @@ export default function Settings( props ) {
 				setAttributes={ setAttributes }
 			/>
 			<AdvancedPopColorControl
-				label={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ circleBackground ? circleBackground : '' }
 				data={ {
 					value: circleBackground,
@@ -1486,7 +1486,7 @@ export default function Settings( props ) {
 				displayUnit={ false }
 			/>
 			<AdvancedPopColorControl
-				label={ __( 'Foreground', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Progress Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ barForeground ? barForeground : '' }
 				data={ {
 					value: barForeground,
@@ -1495,7 +1495,7 @@ export default function Settings( props ) {
 				setAttributes={ setAttributes }
 			/>
 			<AdvancedPopColorControl
-				label={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ barBackground ? barBackground : '' }
 				data={ {
 					value: barBackground,
