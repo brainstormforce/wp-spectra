@@ -580,7 +580,6 @@ class UAGB_Init_Blocks {
 			'uagb-block-editor-js',
 			'uagb_blocks_info',
 			array(
-				'blocks'                             => UAGB_Config::get_block_attributes(),
 				'category'                           => 'uagb',
 				'ajax_url'                           => admin_url( 'admin-ajax.php' ),
 				'cf7_forms'                          => $this->get_cf7_forms(),

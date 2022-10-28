@@ -328,7 +328,7 @@ const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-im
 			{ props.attributes.isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 				<__experimentalBlockVariationPicker
 					icon={ UAGB_Block_Icons.forms }
-					label={ uagb_blocks_info.blocks[ 'uagb/forms' ].title }
+					label={ __( 'Forms', 'ultimate-addons-for-gutenberg' ) }
 					instructions={ __(
 						'Select a variation to start with.',
 						'ultimate-addons-for-gutenberg'
