@@ -544,11 +544,11 @@ export default function Settings( props ) {
 				} }
 				setAttributes={ setAttributes }
 				options={ [
-					{ value: '', label: 'None' },
-					{ value: ',', label: ',' },
-					{ value: '.', label: '.' },
-					{ value: ' ', label: 'Whitespace' },
-					{ value: "'", label: "'" },
+					{ value: '', label: __( 'None', 'ultimate-addons-for-gutenberg' ) },
+					{ value: ',', label: __( 'Comma', 'ultimate-addons-for-gutenberg' ) },
+					{ value: '.', label: __( 'Dot', 'ultimate-addons-for-gutenberg' ) },
+					{ value: ' ', label: __( 'Whitespace', 'ultimate-addons-for-gutenberg' ) },
+					{ value: "'", label: __( 'Apostrophe', 'ultimate-addons-for-gutenberg' ) },
 				] }
 			/>
 		</UAGAdvancedPanelBody>
