@@ -580,6 +580,8 @@ class UAGB_Init_Blocks {
 			'uagb-block-editor-js',
 			'uagb_blocks_info',
 			array(
+				'cf7_is_active'                      => class_exists( 'WPCF7_ContactForm' ),
+				'gf_is_active'                       => class_exists( 'GFForms' ),
 				'category'                           => 'uagb',
 				'ajax_url'                           => admin_url( 'admin-ajax.php' ),
 				'cf7_forms'                          => $this->get_cf7_forms(),
