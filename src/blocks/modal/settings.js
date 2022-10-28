@@ -32,7 +32,8 @@ let imageSizeOptions = [
 ];
 
 export default function Settings( props ) {
-	const { attributes, setAttributes, deviceType } = props.parentProps;
+	props = props.parentProps;
+	const { attributes, setAttributes, deviceType } = props;
 	const {
 		modalTrigger,
 		previewModal,
@@ -1399,7 +1400,10 @@ export default function Settings( props ) {
 						{triggerStylePanel}
 						{closeStylePanel}
 					</InspectorTab>
-
+					<InspectorTab
+						{ ...UAGTabs.advance }
+						parentProps={ props }
+					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			{ loadTextGoogleFonts }
