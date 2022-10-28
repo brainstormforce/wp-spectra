@@ -76,6 +76,7 @@ const Settings = ( props ) => {
 		backgroundSizeTablet,
 		backgroundSizeMobile,
 		backgroundImageColor,
+		backgroundVideoOpacity,
 		gradientValue,
 		boxShadowColor,
 		boxShadowHOffset,
@@ -614,7 +615,7 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								checked={ equalHeight }
-								onChange={ ( value ) => onChangeHeight( value )	}	
+								onChange={ ( value ) => onChangeHeight( value )	}
 								help={ __( 'Enabling this will change the Align Items value to Stretch.', 'ultimate-addons-for-gutenberg' ) }
 							/>
 						</>
@@ -1170,6 +1171,10 @@ const Settings = ( props ) => {
 					backgroundVideoColor={ {
 						value: backgroundVideoColor,
 						label: 'backgroundVideoColor',
+					} }
+					backgroundVideoOpacity={ {
+						value: backgroundVideoOpacity,
+						label: 'backgroundVideoOpacity',
 					} }
 					onOpacityChange = { ( opacity ) => setAttributes( { backgroundVideoOpacity: opacity } ) }
 					{ ...props }

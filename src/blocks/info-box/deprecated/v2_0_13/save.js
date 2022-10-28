@@ -4,14 +4,14 @@
 
 // Import block dependencies and components.
 import classnames from 'classnames';
-import Prefix from './components/Prefix';
-import Title from './components/Title';
-import InfoBoxDesc from './components/InfoBoxDesc';
-import Icon from './components/Icons';
-import InfoBoxPositionClasses from './style-classes';
-import InfoBoxSeparator from './components/Separator';
-import CallToAction from './components/CTA';
-import InfoBoxIconImage from './components/IconImages';
+import Prefix from '../.././components/Prefix';
+import Title from '../.././components/Title';
+import InfoBoxDesc from '../.././components/InfoBoxDesc';
+import Icon from '../.././components/Icons';
+import InfoBoxPositionClasses from '../.././style-classes';
+import InfoBoxSeparator from '../.././components/Separator';
+import CallToAction from './CTAV2_0_13'; // deprecated file
+import InfoBoxIconImage from '../.././components/IconImages';
 
 export default function save( props ) {
 	const {
@@ -184,7 +184,7 @@ export default function save( props ) {
 			{ ctaType === 'all' && (
 				<a // eslint-disable-line jsx-a11y/anchor-has-content
 					href={ ctaLink }
-					className={ !ctaLink ? 'uagb-infobox-link-wrap uagb-infbox__link-to-all uagb-disable-link' : 'uagb-infobox-link-wrap uagb-infbox__link-to-all' }
+					className="uagb-infobox-link-wrap uagb-infbox__link-to-all"
 					target={ target }
 					aria-label={ 'Infobox Link' }
 					rel="noopener noreferrer"
