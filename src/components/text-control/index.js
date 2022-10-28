@@ -6,12 +6,12 @@ import { useSelect } from '@wordpress/data';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-	type: PropTypes.string,
+	dynamicContentType: PropTypes.string,
 	disableDynamicContent: PropTypes.bool
 };
 
 const defaultProps = {
-	type: 'url',
+	dynamicContentType: 'url',
 	disableDynamicContent: false
 };
 
@@ -24,12 +24,12 @@ export default function UAGTextControl(props) {
 		};
 	}, [] );
 
-	const {label, name, type, value, setAttributes, disableDynamicContent} = props
+	const {label, name, dynamicContentType, value, setAttributes, disableDynamicContent} = props
 	const selectedBlock = useSelect( ( select ) => {
 		return select( 'core/block-editor' ).getSelectedBlock();
 	}, [] );
 
-	let registerTextExtender = disableDynamicContent ? null : wp.hooks.applyFilters('uagb.registerTextExtender', '', selectedBlock?.name, name, type)
+	let registerTextExtender = disableDynamicContent ? null : wp.hooks.applyFilters('uagb.registerTextExtender', '', selectedBlock?.name, name, dynamicContentType)
 
 	const isEnableDynamicContent = () => {
 		if(disableDynamicContent){
