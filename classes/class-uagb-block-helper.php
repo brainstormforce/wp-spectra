@@ -142,6 +142,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[ $wrapper . '.wp-block-button__link' ]                               = $border_css;
 			$m_selectors[ $wrapper . '.wp-block-button__link' ]                             = $border_css_mobile;
 			$t_selectors[ $wrapper . '.wp-block-button__link' ]                             = $border_css_tablet;
+			//twenty twenty theme
+			$selectors[ '.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater' ]                               = $border_css;
+			$m_selectors[ '.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater' ]                             = $border_css_mobile;
+			$t_selectors[ '.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater' ]                             = $border_css_tablet;
 			$selectors[ $wrapper . '.wp-block-button__link:hover' ]                         = array(
 				'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
 			);
