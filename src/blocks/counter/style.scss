@@ -51,6 +51,11 @@
 		.wp-block-uagb-counter__title {
 			margin-top: 15px;
 		}
+
+		// Placed outside for lower specificity.
+		.wp-block-uagb-counter__number {
+			padding: 8px;
+		}
 	}
 
 	&--circle {
