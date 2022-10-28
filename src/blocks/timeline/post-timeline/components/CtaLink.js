@@ -13,16 +13,16 @@ const CtaLink = ( props ) => {
 		if ( setAttributes !== 'not_set' ) {
 			return (
 				<div className="uagb-timeline__link_parent wp-block-button"	>
-						<RichText
-							value={ attributes.readMoreText.replace( /(<([^>]+)>)/ig, '' ) }
-							onChange={ ( value ) => {
-								setAttributes( { readMoreText: value } );
-							} }
-							tagName='a'
-							className="uagb-timeline__link wp-block-button__link"
-							href={ post.link }
-							target={ target }
-							rel="noopener noreferrer"
+					<RichText
+						value={ attributes.readMoreText.replace( /(<([^>]+)>)/ig, '' ) }
+						onChange={ ( value ) => {
+							setAttributes( { readMoreText: value } );
+						} }
+						tagName='a'
+						className="uagb-timeline__link wp-block-button__link"
+						href={ post.link }
+						target={ target }
+						rel="noopener noreferrer"
 					/>
 				</div>
 			);

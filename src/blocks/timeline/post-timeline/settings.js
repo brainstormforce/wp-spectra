@@ -111,7 +111,6 @@ const Settings = ( props ) => {
 		categories,
 		postsToShow,
 		imageSize,
-		readMoreText,
 		ctaBackground,
 		icon,
 		iconColor,
@@ -866,20 +865,6 @@ const Settings = ( props ) => {
 						setAttributes( { displayPostLink: ! displayPostLink } )
 					}
 				/>
-				{ displayPostLink && (
-					<>
-						<TextControl
-							label={ __(
-								'CTA Text',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ readMoreText }
-							onChange={ ( value ) =>
-								setAttributes( { readMoreText: value } )
-							}
-						/>
-					</>
-				) }
 				<ToggleControl
 					label={ __(
 						'Open link in New Tab',

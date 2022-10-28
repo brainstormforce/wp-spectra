@@ -784,7 +784,7 @@ const Settings = ( props ) => {
 					showIcons={ false }
 				/>
 				) }
-				{ ( ctaType === 'text' || ctaType === 'button' ) && (
+				{ ( ctaType === 'text' ) && (
 					<>
 						<TextControl
 							label={ __(
