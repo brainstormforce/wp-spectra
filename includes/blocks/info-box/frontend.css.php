@@ -553,15 +553,25 @@ if ( 'button' === $attr['ctaType'] ) {
 		'line-height' => $cta_icon_size,
 	);
 	$selectors['.wp-block-uagb-info-box .wp-block-button.uagb-ifb-button-wrapper .uagb-infobox-cta-link'] =
-		array(
-			'color'            => $attr['ctaBtnLinkColor'],
-			'background-color' => $attr['ctaBgColor'],
-			'padding-top'      => UAGB_Helper::get_css_value( $btn_padding_top, $attr['paddingBtnUnit'] ),
-			'padding-bottom'   => UAGB_Helper::get_css_value( $btn_padding_bottom, $attr['paddingBtnUnit'] ),
-			'padding-left'     => UAGB_Helper::get_css_value( $btn_padding_left, $attr['paddingBtnUnit'] ),
-			'padding-right'    => UAGB_Helper::get_css_value( $btn_padding_right, $attr['paddingBtnUnit'] ),
+	array(
+		'color'            => $attr['ctaBtnLinkColor'],
+		'background-color' => $attr['ctaBgColor'],
+		'padding-top'      => UAGB_Helper::get_css_value( $btn_padding_top, $attr['paddingBtnUnit'] ),
+		'padding-bottom'   => UAGB_Helper::get_css_value( $btn_padding_bottom, $attr['paddingBtnUnit'] ),
+		'padding-left'     => UAGB_Helper::get_css_value( $btn_padding_left, $attr['paddingBtnUnit'] ),
+		'padding-right'    => UAGB_Helper::get_css_value( $btn_padding_right, $attr['paddingBtnUnit'] ),
 
-		);
+	);
+	$selectors['.wp-block-uagb-info-box.uagb-infobox__content-wrap .wp-block-button.uagb-ifb-button-wrapper .uagb-infobox-cta-link.wp-block-button__link'] =
+	array(
+		'color'            => $attr['ctaBtnLinkColor'],
+		'background-color' => $attr['ctaBgColor'],
+		'padding-top'      => UAGB_Helper::get_css_value( $btn_padding_top, $attr['paddingBtnUnit'] ),
+		'padding-bottom'   => UAGB_Helper::get_css_value( $btn_padding_bottom, $attr['paddingBtnUnit'] ),
+		'padding-left'     => UAGB_Helper::get_css_value( $btn_padding_left, $attr['paddingBtnUnit'] ),
+		'padding-right'    => UAGB_Helper::get_css_value( $btn_padding_right, $attr['paddingBtnUnit'] ),
+
+	);
 	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link svg'] = array(
 		'fill' => $attr['ctaBtnLinkColor'],
 	);
