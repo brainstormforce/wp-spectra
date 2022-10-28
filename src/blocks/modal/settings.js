@@ -228,7 +228,7 @@ export default function Settings( props ) {
 
 	const modalTriggerPanel = (
 		<UAGAdvancedPanelBody
-			title={ __( 'Modal Trigger', 'ultimate-addons-for-gutenberg' ) }
+			title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
 			<SelectControl
@@ -447,7 +447,7 @@ export default function Settings( props ) {
 
 	const modalContentPanel = (
 		<UAGAdvancedPanelBody
-			title={ __( 'Modal Content', 'ultimate-addons-for-gutenberg' ) }
+			title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
 			<ToggleControl
@@ -693,7 +693,7 @@ export default function Settings( props ) {
 
 	const triggerStylePanel =  (
 		<UAGAdvancedPanelBody
-			title={ __( 'Modal Trigger', 'ultimate-addons-for-gutenberg' ) }
+			title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
 
@@ -1232,7 +1232,7 @@ export default function Settings( props ) {
 
 	const contentStylePanel =  (
 		<UAGAdvancedPanelBody
-			title={ __( 'Modal Content', 'ultimate-addons-for-gutenberg' ) }
+			title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
 			<AdvancedPopColorControl
