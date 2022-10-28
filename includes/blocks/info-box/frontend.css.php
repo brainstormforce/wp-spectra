@@ -562,7 +562,7 @@ if ( 'button' === $attr['ctaType'] ) {
 		'padding-right'    => UAGB_Helper::get_css_value( $btn_padding_right, $attr['paddingBtnUnit'] ),
 
 	);
-	$selectors['.wp-block-uagb-info-box.uagb-infobox__content-wrap .wp-block-button.uagb-ifb-button-wrapper .uagb-infobox-cta-link.wp-block-button__link'] = array_merge( 
+	$selectors['.wp-block-uagb-info-box.uagb-infobox__content-wrap .wp-block-button.uagb-ifb-button-wrapper .uagb-infobox-cta-link.wp-block-button__link'] = array_merge(
 		array(
 			'color'            => $attr['ctaBtnLinkColor'],
 			'background-color' => $attr['ctaBgColor'],
@@ -570,7 +570,8 @@ if ( 'button' === $attr['ctaType'] ) {
 			'padding-bottom'   => UAGB_Helper::get_css_value( $btn_padding_bottom, $attr['paddingBtnUnit'] ),
 			'padding-left'     => UAGB_Helper::get_css_value( $btn_padding_left, $attr['paddingBtnUnit'] ),
 			'padding-right'    => UAGB_Helper::get_css_value( $btn_padding_right, $attr['paddingBtnUnit'] ),
-		), $cta_border_css
+		),
+		$cta_border_css
 	);
 	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link svg'] = array(
 		'fill' => $attr['ctaBtnLinkColor'],
