@@ -2,7 +2,7 @@
 /**
  * Block Information.
  *
- * @since 2.0.0
+ * @since x.x.x
  *
  * @package uagb
  */
@@ -14,5 +14,6 @@ $block_data = array(
 	'title'       => __( 'Upload', 'ultimate-addons-for-gutenberg' ),
 	'description' => __( 'Add a attachment in your form.', 'ultimate-addons-for-gutenberg' ),
 	'default'     => true,
+	'is_child'    => true,
 	'deprecated'  => false,
 );
