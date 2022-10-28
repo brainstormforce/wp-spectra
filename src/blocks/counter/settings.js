@@ -1281,10 +1281,11 @@ export default function Settings( props ) {
 				setAttributes={ setAttributes }
 			/>
 			<SpacingControl
-				label={ __(
-					'Margin',
-					'ultimate-addons-for-gutenberg'
-				) }
+				label= {
+					( layout !== 'bars' ) ?
+						__( 'Margin', 'ultimate-addons-for-gutenberg' ) :
+						__( 'Padding', 'ultimate-addons-for-gutenberg' )
+				}
 				valueTop={ {
 					value: numberTopMargin,
 					label: 'numberTopMargin',

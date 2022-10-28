@@ -190,15 +190,15 @@ $selectors = array(
 		'stroke-dashoffset' => UAGB_Helper::get_css_value( $circle_dash, 'px' ),
 	),
 	'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container' => array(
-		'background'    => $attr['barBackground'],
-		'margin-top'    => UAGB_Helper::get_css_value( $attr['numberTopMargin'], $attr['numberMarginUnit'] ),
-		'margin-right'  => UAGB_Helper::get_css_value( $attr['numberRightMargin'], $attr['numberMarginUnit'] ),
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['numberBottomMargin'], $attr['numberMarginUnit'] ),
-		'margin-left'   => UAGB_Helper::get_css_value( $attr['numberLeftMargin'], $attr['numberMarginUnit'] ),
+		'background' => $attr['barBackground'],
 	),
 	'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container .wp-block-uagb-counter__number' => array(
-		'height'     => UAGB_Helper::get_css_value( $bar_size_fallback, 'px' ),
-		'background' => $attr['barForeground'],
+		'height'         => UAGB_Helper::get_css_value( $bar_size_fallback, 'px' ),
+		'background'     => $attr['barForeground'],
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['numberTopMargin'], $attr['numberMarginUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['numberRightMargin'], $attr['numberMarginUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['numberBottomMargin'], $attr['numberMarginUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['numberLeftMargin'], $attr['numberMarginUnit'] ),
 	),
 );
 
@@ -255,11 +255,11 @@ $t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counte
 $t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-suffix'] = array(
 	'margin-left' => UAGB_Helper::get_css_value( $attr['suffixLeftDistanceTablet'], 'px' ),
 );
-$t_selectors['.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container']               = array(
-	'margin-top'    => UAGB_Helper::get_css_value( $attr['numberTopMarginTablet'], $attr['numberMarginUnitTablet'] ),
-	'margin-right'  => UAGB_Helper::get_css_value( $attr['numberRightMarginTablet'], $attr['numberMarginUnitTablet'] ),
-	'margin-bottom' => UAGB_Helper::get_css_value( $attr['numberBottomMarginTablet'], $attr['numberMarginUnitTablet'] ),
-	'margin-left'   => UAGB_Helper::get_css_value( $attr['numberLeftMarginTablet'], $attr['numberMarginUnitTablet'] ),
+$t_selectors['.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container .wp-block-uagb-counter__number'] = array(
+	'padding-top'    => UAGB_Helper::get_css_value( $attr['numberTopMarginTablet'], $attr['numberMarginUnitTablet'] ),
+	'padding-right'  => UAGB_Helper::get_css_value( $attr['numberRightMarginTablet'], $attr['numberMarginUnitTablet'] ),
+	'padding-bottom' => UAGB_Helper::get_css_value( $attr['numberBottomMarginTablet'], $attr['numberMarginUnitTablet'] ),
+	'padding-left'   => UAGB_Helper::get_css_value( $attr['numberLeftMarginTablet'], $attr['numberMarginUnitTablet'] ),
 );
 
 // mobile.
@@ -315,11 +315,11 @@ $m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counte
 $m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-suffix'] = array(
 	'margin-left' => UAGB_Helper::get_css_value( $attr['suffixLeftDistanceMobile'], 'px' ),
 );
-$m_selectors['.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container']               = array(
-	'margin-top'    => UAGB_Helper::get_css_value( $attr['numberTopMarginMobile'], $attr['numberMarginUnitMobile'] ),
-	'margin-right'  => UAGB_Helper::get_css_value( $attr['numberRightMarginMobile'], $attr['numberMarginUnitMobile'] ),
-	'margin-bottom' => UAGB_Helper::get_css_value( $attr['numberBottomMarginMobile'], $attr['numberMarginUnitMobile'] ),
-	'margin-left'   => UAGB_Helper::get_css_value( $attr['numberLeftMarginMobile'], $attr['numberMarginUnitMobile'] ),
+$m_selectors['.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container .wp-block-uagb-counter__number'] = array(
+	'padding-top'    => UAGB_Helper::get_css_value( $attr['numberTopMarginMobile'], $attr['numberMarginUnitMobile'] ),
+	'padding-right'  => UAGB_Helper::get_css_value( $attr['numberRightMarginMobile'], $attr['numberMarginUnitMobile'] ),
+	'padding-bottom' => UAGB_Helper::get_css_value( $attr['numberBottomMarginMobile'], $attr['numberMarginUnitMobile'] ),
+	'padding-left'   => UAGB_Helper::get_css_value( $attr['numberLeftMarginMobile'], $attr['numberMarginUnitMobile'] ),
 );
 
 if ( $attr['imageWidthType'] ) {
@@ -354,7 +354,7 @@ if ( 'number' === $attr['layout'] && ( 'left-number' === $attr['iconImgPosition'
 	);
 }
 
-// In case of 'Bar' layout, we need to add margin to '.wp-block-uagb-counter-bars-container' element and remove the margin from the inner-element.
+// In case of 'Bar' layout, we need to add padding to the number element and remove the margin.
 if ( 'bars' === $attr['layout'] ) {
 
 	$num_container = '.wp-block-uagb-counter .wp-block-uagb-counter__number';

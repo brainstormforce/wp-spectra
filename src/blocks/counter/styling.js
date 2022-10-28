@@ -463,14 +463,14 @@ export default function styling( props ) {
 		},
 		'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container': {
 			'background': barBackground,
-			'margin-top'   : generateCSSUnit( numberTopMargin, numberMarginUnit ),
-			'margin-right' : generateCSSUnit( numberRightMargin, numberMarginUnit ),
-			'margin-bottom': generateCSSUnit( numberBottomMargin, numberMarginUnit ),
-			'margin-left'  : generateCSSUnit( numberLeftMargin, numberMarginUnit ),
 		},
 		'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container .wp-block-uagb-counter__number': {
 			'height': generateCSSUnit( barSizeFallback, 'px' ),
 			'background': barForeground,
+			'padding-top'   : generateCSSUnit( numberTopMargin, numberMarginUnit ),
+			'padding-right' : generateCSSUnit( numberRightMargin, numberMarginUnit ),
+			'padding-bottom': generateCSSUnit( numberBottomMargin, numberMarginUnit ),
+			'padding-left'  : generateCSSUnit( numberLeftMargin, numberMarginUnit ),
 		}
 	}
 
@@ -607,10 +607,10 @@ export default function styling( props ) {
 	}
 
 	tablet_selectors['.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container'] = {
-		'margin-top'   : generateCSSUnit( numberTopMarginTablet, numberMarginUnitTablet ),
-		'margin-right' : generateCSSUnit( numberRightMarginTablet, numberMarginUnitTablet ),
-		'margin-bottom': generateCSSUnit( numberBottomMarginTablet, numberMarginUnitTablet ),
-		'margin-left'  : generateCSSUnit( numberLeftMarginTablet, numberMarginUnitTablet ),
+		'padding-top'   : generateCSSUnit( numberTopMarginTablet, numberMarginUnitTablet ),
+		'padding-right' : generateCSSUnit( numberRightMarginTablet, numberMarginUnitTablet ),
+		'padding-bottom': generateCSSUnit( numberBottomMarginTablet, numberMarginUnitTablet ),
+		'padding-left'  : generateCSSUnit( numberLeftMarginTablet, numberMarginUnitTablet ),
 	}
 
 
@@ -738,10 +738,10 @@ export default function styling( props ) {
 	}
 
 	mobile_selectors['.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container'] = {
-		'margin-top'   : generateCSSUnit( numberTopMarginMobile, numberMarginUnitMobile ),
-		'margin-right' : generateCSSUnit( numberRightMarginMobile, numberMarginUnitMobile ),
-		'margin-bottom': generateCSSUnit( numberBottomMarginMobile, numberMarginUnitMobile ),
-		'margin-left'  : generateCSSUnit( numberLeftMarginMobile, numberMarginUnitMobile ),
+		'padding-top'   : generateCSSUnit( numberTopMarginMobile, numberMarginUnitMobile ),
+		'padding-right' : generateCSSUnit( numberRightMarginMobile, numberMarginUnitMobile ),
+		'padding-bottom': generateCSSUnit( numberBottomMarginMobile, numberMarginUnitMobile ),
+		'padding-left'  : generateCSSUnit( numberLeftMarginMobile, numberMarginUnitMobile ),
 	}
 
 	if ( imageWidthType ) {
@@ -779,7 +779,7 @@ export default function styling( props ) {
 		};
 	}
 
-	// In case of 'Bar' layout, we need to add margin to '.wp-block-uagb-counter-bars-container' element and remove the margin from the inner-element.
+	// In case of 'Bar' layout, we need to add padding to number element and remove the margin.
 	if ( layout === 'bars' ) {
 
 		const num_container = '.wp-block-uagb-counter .wp-block-uagb-counter__number';

@@ -135,7 +135,7 @@ return array_merge(
 		'circleForeground'          => '#007cba',
 		'circleBackground'          => '#eaeaea',
 		// bar.
-		'barSize'                   => 25,
+		'barSize'                   => '',
 		'barForeground'             => '#007cba',
 		'barBackground'             => '#eaeaea',
 		// Box Shadow.
