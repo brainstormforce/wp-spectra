@@ -135,6 +135,7 @@ export default function styling( props ) {
 		boxShadowSpreadHover,
 		boxShadowPositionHover,
 		// Icon, Image
+		iconImgPosition,
 		iconColor,
 		iconBackgroundColor,
 		iconHoverColor,
@@ -756,6 +757,25 @@ export default function styling( props ) {
 
 		mobile_selectors[ ' .wp-block-uagb-counter__image-wrap .wp-block-uagb-counter__image' ] = {
 			'width': generateCSSUnit( imageWidthFallbackMobile, imageWidthUnitMobile ),
+		};
+	}
+
+	// Special styling.
+
+	if( layout === 'number' && ( iconImgPosition === 'left-number' || iconImgPosition === 'right-number' ) ) {
+
+		selectors[ ' .wp-block-uagb-counter__number' ] = {
+			'display': 'flex',
+			'align-items': 'center',
+			'justify-content': align,
+		};
+
+		tablet_selectors[ ' .wp-block-uagb-counter__number' ] = {
+			'justify-content': alignTablet,
+		};
+
+		mobile_selectors[ ' .wp-block-uagb-counter__number' ] = {
+			'justify-content': alignMobile,
 		};
 	}
 

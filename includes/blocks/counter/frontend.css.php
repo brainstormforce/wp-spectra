@@ -337,6 +337,23 @@ if ( $attr['imageWidthType'] ) {
 	);
 }
 
+if ( 'number' === $attr['layout'] && ( 'left-number' === $attr['iconImgPosition'] || 'right-number' === $attr['iconImgPosition'] ) ) {
+
+	$selectors[' .wp-block-uagb-counter__number'] = array(
+		'display'         => 'flex',
+		'align-items'     => 'center',
+		'justify-content' => $attr['align'],
+	);
+
+	$t_selectors[' .wp-block-uagb-counter__number'] = array(
+		'justify-content' => $attr['alignTablet'],
+	);
+
+	$m_selectors[' .wp-block-uagb-counter__number'] = array(
+		'justify-content' => $attr['alignMobile'],
+	);
+}
+
 // In case of 'Bar' layout, we need to add margin to '.wp-block-uagb-counter-bars-container' element and remove the margin from the inner-element.
 if ( 'bars' === $attr['layout'] ) {
 

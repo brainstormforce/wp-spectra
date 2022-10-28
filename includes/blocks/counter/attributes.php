@@ -13,7 +13,7 @@ return array_merge(
 	array(
 		'block_id'                  => '',
 		'isFrontend'                => true,
-		'layout'                    => '',
+		'layout'                    => 'number',
 		'align'                     => 'center',
 		'alignTablet'               => '',
 		'alignMobile'               => '',
