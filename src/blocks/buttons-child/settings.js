@@ -14,6 +14,7 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
+import UAGTextControl from '@Components/text-control';
 import TypographyControl from '@Components/typography';
 import UAGTabsControl from '@Components/tabs';
 import MultiButtonsControl from '@Components/multi-buttons-control';
@@ -195,15 +196,14 @@ const Settings = ( props ) => {
 					) }
 					</>
 				}
-				<TextControl
+				<UAGTextControl
 					label={ __(
 						'Link',
 						'ultimate-addons-for-gutenberg'
 					) }
+					name={'link'}
 					value={ link }
-					onChange={ ( value ) =>
-						setAttributes( { link: value } )
-					}
+					setAttributes={setAttributes}
 				/>
 				<ToggleControl
 					label={ __(
