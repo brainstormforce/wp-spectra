@@ -49,7 +49,7 @@ export default function save( props ) {
 			)}
 		>
 				<div className={ classnames( 'uagb-timeline__marker out-view-uagb-timeline__icon' ) } >
-						{ renderSVG( icon ) }
+					{ renderSVG( icon ) ? renderSVG( icon ) : <svg xmlns="" viewBox="0 0 256 512"></svg> }
 				</div>
 
 				<div className={ classnames( dayalignClass, 'uagb-timeline__events-inner-new' ) }>
