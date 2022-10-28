@@ -214,6 +214,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Translation for default text was missing for some blocks.
 * Fix: Z-Index extension is not working for the dynamic blocks.
 * Fix: Content flickering in the editor when hovering over it.
+* Fix: Container - Page freezes when we select and move multiple blocks at once to the container.
 * Fix: Advanced Column - Core image block caption alignment issue.
 * Fix: Admin Dashboard - Toggle not working properly in RTL mode.
 * Fix: Mobile CSS overrides desktop CSS inside the customizer.
