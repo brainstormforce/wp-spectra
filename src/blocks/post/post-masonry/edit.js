@@ -2530,7 +2530,7 @@ const UAGBPostMasonry = ( props ) => {
 		);
 	}
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/post-grid.svg`;
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/post-masonry.svg`;
 
 	return (
 		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
