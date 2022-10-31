@@ -19,7 +19,6 @@ import { dateI18n } from '@wordpress/date';
 import {
 	QueryControls,
 	ToggleControl,
-	TextControl,
 	Icon,
 } from '@wordpress/components';
 import {
