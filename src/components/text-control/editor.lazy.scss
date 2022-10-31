@@ -1,8 +1,27 @@
 .uagb-text-control {
-	display: flex;
-	align-items: center;
+	position: relative;
 	&--open-dynamic-content {
 		flex-direction: column;
 		align-items: unset;
+	}
+	.components-base-control__field {
+		margin-bottom: 0;
+	}
+	.components-text-control__input {
+		padding-right: 30px;
+	}
+	.components-button {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		padding: 0 8px;
+		border-radius: 2px;
+		height: 30px;
+		svg {
+			width: 18px;
+			stroke: #808285;
+			stroke-width: 1.4;
+			fill: none;
+		}
 	}
 }
