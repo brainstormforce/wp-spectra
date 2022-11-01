@@ -2,7 +2,6 @@
  * BLOCK: Info Box - Attributes
  */
  import { getBorderAttributes } from '@Controls/generateAttributes';
- import { __ } from '@wordpress/i18n';
 
  const imageWidthDefault = ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) ? 120 : '';
 
@@ -16,7 +15,7 @@
 	prefixTitle: {
 		source: 'html',
 		selector: 'span.uagb-ifb-title-prefix',
-		default: __( 'Prefix' , 'ultimate-addons-for-gutenberg' ),
+		default: 'Prefix',
 	},
 	classMigrate: {
 		type: 'boolean',
@@ -25,13 +24,13 @@
 	infoBoxTitle: {
 		source: 'html',
 		selector: 'h1,h2,h3,h4,h5,h6',
-		default: __( 'Info Box' , 'ultimate-addons-for-gutenberg' ),
+		default: 'Info Box',
 	},
 	headingDesc: {
 		source: 'html',
 		selector: 'p',
 		default:
-			__( 'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.' , 'ultimate-addons-for-gutenberg' ),
+			'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
 	},
 	headingAlign: {
 		type: 'string',
@@ -585,11 +584,11 @@
 	},
 	ctaText: {
 		type: 'html',
-		default: __( 'Read More' , 'ultimate-addons-for-gutenberg' ),
+		default: 'Read More',
 	},
 	ctaLink: {
 		type: 'string',
-		default: '',
+		default: '#',
 	},
 	ctaLinkColor: {
 		type: 'string',
@@ -1582,15 +1581,6 @@
 		UAGCopyPaste: {
 			styleType: 'icon-border-width'
 		},
-	},
-	imgTagHeight: {
-		type: 'number',
-		default: 0,
-	},
-	imgTagWidth: {
-		type: 'number',
-		default: 0,
-
 	},
 	...borderAttributes
 };
