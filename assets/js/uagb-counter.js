@@ -150,12 +150,27 @@ UAGBCounter = { // eslint-disable-line no-undef
 	},
 
 	_getStartNumber( data ){
+
+		if( isNaN( data.startNumber ) ) {
+			return parseFloat( 0 );
+		}
+
 		return ( data.startNumber || parseFloat( data.startNumber ) === parseFloat( 0 ) ) ? parseFloat( data.startNumber ) : parseFloat( 0 );
 	},
 	_getEndNumber( data ){
+
+		if( isNaN( data.endNumber ) ) {
+			return parseFloat( 80 );
+		}
+
 		return ( data.endNumber || parseFloat( data.startNumber ) === parseFloat( 0 ) ) ? parseFloat( data.endNumber ) : parseFloat( 80 );
 	},
 	_getTotalNumber( data ){
+
+		if( isNaN( data.startNumber ) ) {
+			return parseFloat( 0 );
+		}
+
 		return ( data.totalNumber || parseFloat( data.startNumber ) === parseFloat( 0 ) ) ? parseFloat( data.totalNumber ) : parseFloat( 100 );
 	}
 };
