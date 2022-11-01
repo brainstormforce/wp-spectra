@@ -92,9 +92,9 @@ const Render = ( props ) => {
 
 	const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( clientId ).length;
 	const hasChildrenClass = hasChildren ? 'uagb-container-has-children' : '';
-	const isRootContainerClass = isBlockRootParent ? 'uagb-is-root-container' : '';
+	const isRootContainerClass = isBlockRootParent ? `${contentWidth} uagb-is-root-container` : '';
 	const blockProps = useBlockProps( {
-		className: `uagb-block-${ block_id } ${contentWidth} ${hasChildrenClass} uagb-editor-preview-mode-${ deviceType.toLowerCase() } ${isRootContainerClass}`,
+		className: `uagb-block-${ block_id } ${hasChildrenClass} uagb-editor-preview-mode-${ deviceType.toLowerCase() } ${isRootContainerClass}`,
 	} );
 
 	return (
