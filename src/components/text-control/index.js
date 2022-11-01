@@ -11,7 +11,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-	dynamicContentType: 'url',
+	dynamicContentType: 'url', // url / text
 	disableDynamicContent: false
 };
 
