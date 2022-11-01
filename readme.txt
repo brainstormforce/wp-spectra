@@ -214,9 +214,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Translation for default text was missing for some blocks.
 * Fix: Z-Index extension is not working for the dynamic blocks.
 * Fix: Content flickering in the editor when hovering over it.
-<<<<<<< HEAD
 * Fix: Marketing Button - Block does not remain in the stack order when the Blocksy theme is active.
-=======
 * Fix: Container - Page freezes when we select and move multiple blocks at once to the container.
 * Fix: Advanced Column - Core image block caption alignment issue.
 * Fix: Admin Dashboard - Toggle not working properly in RTL mode.
@@ -225,7 +223,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Desktop icon for responsive control move to the left from their position.
 * Fix: Container - Child container gets unwanted margin applied when boxed and content boxed layout is selected in the editor when Astra theme is activated.
 * Fix: Container - Breaks when the background is a video and classic overlay is selected.
->>>>>>> ea75e59f6dce7f5f2ab8fb29a06a9b9e4201c712
 
 = 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 =
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
