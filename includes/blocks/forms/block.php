@@ -9,15 +9,15 @@
 
 $block_slug = 'uagb/forms';
 $block_data = array(
-	'slug'             => '',
-	'admin_categories' => array( 'form' ),
-	'link'             => 'forms',
-	'doc'              => 'uag-forms-block',
-	'title'            => __( 'Form', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'Add easily customizable forms to gather information.', 'ultimate-addons-for-gutenberg' ),
-	'default'          => true,
-	'js_assets'        => array( 'uagb-forms-js' ),
-	'priority'         => 13,
+	'slug'                => '',
+	'admin_categories'    => array( 'form' ),
+	'link'                => 'forms',
+	'doc'                 => 'uag-forms-block',
+	'title'               => __( 'Form', 'ultimate-addons-for-gutenberg' ),
+	'description'         => __( 'Add easily customizable forms to gather information.', 'ultimate-addons-for-gutenberg' ),
+	'default'             => true,
+	'js_assets'           => array( 'uagb-forms-js' ),
+	'priority'            => 13,
 	'static_dependencies' => array(
 		'uagb-forms-js' => array(
 			'src'  => UAGB_Scripts_Utils::get_js_url( 'forms' ),
@@ -28,5 +28,5 @@ $block_data = array(
 	'dynamic_assets'      => array(
 		'dir' => 'forms',
 	),
-	'deprecated'       => false,
+	'deprecated'          => false,
 );

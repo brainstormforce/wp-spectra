@@ -21,5 +21,5 @@ $block_data = array(
 	'dynamic_assets'   => array(
 		'dir' => 'marketing-button',
 	),
-	'deprecated'       => false
+	'deprecated'       => false,
 );
