@@ -3,7 +3,7 @@ document.addEventListener( 'UAGModalEditor', function( e ) {
 } );
 
 window.UAGBModal = {
-    
+
 	init( mainSelector, previewModal, deviceType = 'desktop' ) {
 
         let document_element = document;
@@ -15,22 +15,22 @@ window.UAGBModal = {
             if ( 0 !== tabletPreview.length || 0 !== mobilePreview.length ) {
 
                 const preview = tabletPreview[0] || mobilePreview[0];
-        
+
                 let iframe = false;
-        
+
                 if ( preview ) {
                     iframe = preview.getElementsByTagName( 'iframe' )[0];
                 }
-        
+
                 const iframeDocument = iframe?.contentWindow.document || iframe?.contentDocument;
-        
+
                 if ( iframeDocument ) {
                     document_element = iframeDocument;
                 }
             }
-        
+
         }
-        
+
         const modalWrapper = document_element.querySelector(
             mainSelector
         );
@@ -48,22 +48,19 @@ window.UAGBModal = {
                 modalTrigger.style.pointerEvents = 'auto';
 
                 const innerModal = modalWrapper.querySelector( '.uagb-modal-popup' );
-
+				const bodyWrap = document_element.querySelector( 'body' );
                 modalTrigger.addEventListener(
                     'click',
                     function () {
 
                         if ( typeof innerModal !== 'undefined' && ! innerModal.classList.contains( 'active' ) ) {
                             innerModal.classList.add( 'active' );
-
-                            const bodyWrap = document_element.querySelector( 'body' );
-                            
                             if ( typeof bodyWrap !== 'undefined' && ! bodyWrap.classList.contains( 'hide-scroll' ) ) {
                                 bodyWrap.classList.add( 'hide-scroll' );
                             }
                         }
                     }
-                )              
+                )
 
                 const closeModal = modalWrapper.querySelector( '.uagb-modal-popup-close' );
 
@@ -73,6 +70,9 @@ window.UAGBModal = {
                         if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
                             innerModal.classList.remove( 'active' );
                         }
+						if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+							bodyWrap.classList.remove( 'hide-scroll' );
+						}
                     }
                 );
 
@@ -84,8 +84,11 @@ window.UAGBModal = {
                         if ( 'enable' === closeOverlayClick && innerModal.classList.contains( 'active' ) && ! innerModal.querySelector( '.uagb-modal-popup-wrap' ).contains( e.target ) ) {
                             innerModal.classList.remove( 'active' );
                         }
+						if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+							bodyWrap.classList.remove( 'hide-scroll' );
+						}
                     }
-                )              
+                )
 
                 document.addEventListener( 'keyup', function( e ) {
                     const closeOnEsc = modalWrapper.dataset.escpress;
@@ -93,6 +96,9 @@ window.UAGBModal = {
                         if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
                             innerModal.classList.remove( 'active' );
                         }
+						if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+							bodyWrap.classList.remove( 'hide-scroll' );
+						}
                     }
                 } );
             }
