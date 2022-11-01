@@ -326,7 +326,7 @@ function styling( props ) {
 		marginType
 	] = generateCSSUnit( iconSpaceMobile, 'px' );
 
-	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }.wp-block-button:not(.is-style-outline)`;
 
 	let stylingCss = generateCSS( selectors, id );
 
