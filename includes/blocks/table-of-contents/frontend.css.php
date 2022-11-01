@@ -64,7 +64,7 @@ $overallBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'ov
 
 
 $selectors = array(
-	'.wp-block-uagb-table-of-contents'                         => array(
+	'.wp-block-uagb-table-of-contents'                    => array(
 		'text-align' => $attr['overallAlign'],
 	),
 	' .uagb-toc__list-wrap ul li'                         => array(
