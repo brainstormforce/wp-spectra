@@ -14,6 +14,9 @@ $block_name = 'counter';
 
 // <-------------- FALLBACKS -------------->.
 
+// Number fallbacks.
+$end_number_fallback = UAGB_Block_Helper::get_fallback_number( $attr['endNumber'], 'endNumber', $block_name );
+
 // Circle, circle stroke and bar size.
 $circle_size_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['circleSize'], 'circleSize', $block_name );
 $circle_stroke_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['circleStokeSize'], 'circleStokeSize', $block_name );
@@ -373,6 +376,19 @@ if ( 'bars' === $attr['layout'] ) {
 	$m_selectors[ $num_container ]['margin-bottom'] = 'unset';
 	$m_selectors[ $num_container ]['margin-left']   = 'unset';
 	$m_selectors[ $num_container ]['margin-right']  = 'unset';
+
+	if ( 0 === $end_number_fallback ) {
+
+		$selectors[ $num_container ]['padding-left']  = 'unset';
+		$selectors[ $num_container ]['padding-right'] = 'unset';
+
+		$t_selectors[ $num_container ]['padding-left']  = 'unset';
+		$t_selectors[ $num_container ]['padding-right'] = 'unset';
+
+		$m_selectors[ $num_container ]['padding-left']  = 'unset';
+		$m_selectors[ $num_container ]['padding-right'] = 'unset';
+
+	}
 
 	$bar_container       = '.wp-block-uagb-counter .wp-block-uagb-counter-bars-container';
 	$bar_container_hover = '.wp-block-uagb-counter:hover .wp-block-uagb-counter-bars-container';

@@ -14,6 +14,7 @@ export default function styling( props ) {
 		alignTablet,
 		alignMobile,
 		layout,
+		endNumber,
 		headingFontFamily,
 		headingFontWeight,
 		headingFontStyle,
@@ -191,6 +192,9 @@ export default function styling( props ) {
 	const blockName = props.name.replace( 'uagb/', '' );
 
 	// <---------- FALLBACKS ---------->
+
+	// Numbers.
+	const endFallback = getFallbackNumber( endNumber, 'endNumber', 'counter' );
 
 	// Circle, circle stroke and bar size.
 	const circleSizeFallback        = getFallbackNumber( circleSize, 'circleSize', blockName );
@@ -798,6 +802,19 @@ export default function styling( props ) {
 		mobile_selectors[ num_container ]['margin-bottom'] = 'unset';
 		mobile_selectors[ num_container ]['margin-left']   = 'unset';
 		mobile_selectors[ num_container ]['margin-right']  = 'unset';
+
+		if( endFallback === 0 ){
+
+			selectors[ num_container ]['padding-left']  = 'unset';
+			selectors[ num_container ]['padding-right'] = 'unset';
+
+			tablet_selectors[ num_container ]['padding-left']  = 'unset';
+			tablet_selectors[ num_container ]['padding-right'] = 'unset';
+
+			mobile_selectors[ num_container ]['padding-left']  = 'unset';
+			mobile_selectors[ num_container ]['padding-right'] = 'unset';
+
+		}
 
 		const bar_container = '.wp-block-uagb-counter .wp-block-uagb-counter-bars-container';
 		const bar_container_hover = '.wp-block-uagb-counter:hover .wp-block-uagb-counter-bars-container';
