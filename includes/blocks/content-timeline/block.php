@@ -20,8 +20,8 @@ $block_data = array(
 	'js_assets'        => array( 'uagb-timeline-js' ),
 	'priority'         => 11,
 	'deprecated'       => false,
-	'static_css'          => 'timeline',
-	'dynamic_assets'      => array(
+	'static_css'       => 'timeline',
+	'dynamic_assets'   => array(
 		'dir' => 'content-timeline',
 	),
 	'js_assets'        => array( 'uagb-timeline-js' ),

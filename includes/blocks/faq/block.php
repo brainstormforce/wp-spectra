@@ -19,7 +19,7 @@ $block_data = array(
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-faq-js' ),
 	'priority'         => 12,
-	'dynamic_assets'      => array(
+	'dynamic_assets'   => array(
 		'dir' => 'faq',
 	),
 	'js_assets'        => array( 'uagb-faq-js' ),
