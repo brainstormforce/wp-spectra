@@ -36,6 +36,7 @@ const UAGBInfoBox = ( props ) => {
 			ctaBorderColor,
 			ctaBorderhoverColor,
 			ctaBgType,
+			ctaBgHoverType,
 			showCtaIcon,
 		} = props.attributes;
 
@@ -81,6 +82,10 @@ const UAGBInfoBox = ( props ) => {
 
 		if( ctaBgType === undefined ) {
 			props.setAttributes( { ctaBgType: 'color' } );
+		}
+
+		if( ctaBgHoverType === undefined ) {
+			props.setAttributes( { ctaBgHoverType: 'color' } );
 		}
 
 		if( showCtaIcon === undefined ) {
