@@ -34,7 +34,9 @@ const UAGBInfoBox = ( props ) => {
 			ctaBorderWidth,
 			ctaBorderRadius,
 			ctaBorderColor,
-			ctaBorderhoverColor
+			ctaBorderhoverColor,
+			ctaBgType,
+			showCtaIcon,
 		} = props.attributes;
 
 		if ( ctaBtnVertPadding ) {
@@ -75,6 +77,14 @@ const UAGBInfoBox = ( props ) => {
 			props.setAttributes,
 			props.attributes
 		);
+		}
+
+		if( ctaBgType === undefined ) {
+			props.setAttributes( { ctaBgType: 'color' } );
+		}
+
+		if( showCtaIcon === undefined ) {
+			props.setAttributes( { showCtaIcon: true } );
 		}
 	}, [] );
 

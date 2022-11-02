@@ -8,6 +8,13 @@
  const borderAttributes = getBorderAttributes( 'btn' );
 
  const attributes = {
+	ctaBgType:{
+		type:'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-background-type'
+		}
+	},
 	inheritFromTheme: {
 		type: 'boolean',
 		default: true,
