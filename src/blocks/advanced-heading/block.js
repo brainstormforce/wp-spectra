@@ -10,7 +10,17 @@ import deprecated from './deprecated';
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType, createBlock } from '@wordpress/blocks';
-import './format'
+import './format';
+import {
+	split,
+	create,
+	toHTMLString,
+	LINE_SEPARATOR,
+	__UNSTABLE_LINE_SEPARATOR,
+} from '@wordpress/rich-text';
+import colourNameToHex from '@Controls/changeColorNameToHex';
+
+const lineSep = LINE_SEPARATOR ? LINE_SEPARATOR : __UNSTABLE_LINE_SEPARATOR;
 
 registerBlockType( 'uagb/advanced-heading', {
 	title: __( 'Heading', 'ultimate-addons-for-gutenberg' ),
@@ -45,7 +55,9 @@ registerBlockType( 'uagb/advanced-heading', {
 				transform: ( attribute ) => {
 					return createBlock( 'uagb/advanced-heading', {
 						headingTitle: attribute.content,
-						headingAlign: attribute.align,
+						headingAlign: attribute.textAlign,
+						headingColor: colourNameToHex( attribute.textColor ),
+						blockBackground: colourNameToHex( attribute.backgroundColor ),
 					} );
 				},
 			},
@@ -56,7 +68,50 @@ registerBlockType( 'uagb/advanced-heading', {
 					return createBlock( 'uagb/advanced-heading', {
 						headingTitle: attribute.value,
 						headingDesc: attribute.citation,
+						headingAlign: attribute.align,
+						headingColor: colourNameToHex( attribute.textColor ),
+						blockBackground: colourNameToHex( attribute.backgroundColor ),
 					} );
+				},
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/paragraph' ],
+				transform: ( attribute ) => {
+					return createBlock( 'uagb/advanced-heading', {
+						headingTitle: attribute.content,
+						headingAlign: attribute.align,
+						headingColor: colourNameToHex( attribute.textColor ),
+						blockBackground: colourNameToHex( attribute.backgroundColor ),
+					} );
+				},
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/list' ],
+				transform: ( { values, textColor, backgroundColor } ) => {
+					const listArray = split( create( {
+						html: values,
+						multilineTag: 'li',
+						multilineWrapperTags: [ 'ul', 'ol' ],
+					} ), lineSep );
+					const newitems = [ {
+						text: toHTMLString( { value: listArray[ 0 ] } ),
+					} ];
+					listArray.forEach( ( item, i ) => {
+						if ( i !== 0 ) {
+							newitems.push( {
+								text: listArray[i].text
+							} )
+						}
+					  } );
+					return newitems.map( ( text ) =>
+						createBlock( 'uagb/advanced-heading', {
+							headingTitle: text.text,
+							headingColor: colourNameToHex( textColor ),
+							blockBackground: colourNameToHex( backgroundColor ),
+						} )
+					);
 				},
 			},
 		],
@@ -78,6 +133,15 @@ registerBlockType( 'uagb/advanced-heading', {
 					return createBlock( 'core/quote', {
 						value: attribute.headingTitle,
 						citation: attribute.headingDesc,
+					} );
+				},
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/paragraph' ],
+				transform: ( attribute ) => {
+					return createBlock( 'core/paragraph', {
+						content: attribute.headingTitle,
 					} );
 				},
 			},

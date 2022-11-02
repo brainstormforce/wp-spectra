@@ -2,6 +2,7 @@
  * BLOCK: Buttons Child - Attributes
  */
 import { getBorderAttributes } from '@Controls/generateAttributes';
+import { __ } from '@wordpress/i18n';
 
 const borderAttributes = getBorderAttributes( 'btn' );
 
@@ -53,7 +54,7 @@ const attributes = {
 	},
 	label: {
 		type: 'html',
-		default: 'Click Here',
+		default: __( 'Click Here' , 'ultimate-addons-for-gutenberg' ),
 	},
 	link: {
 		type: 'string',

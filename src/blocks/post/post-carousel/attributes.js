@@ -1243,6 +1243,9 @@ const attributes = {
 			styleType: 'dots-margin-top-unit'
 		},
 	},
+	allTaxonomyStore: {
+		type: 'object'
+	},
 }
 
 export default attributes;

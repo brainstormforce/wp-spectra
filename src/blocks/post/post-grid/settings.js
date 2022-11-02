@@ -307,7 +307,12 @@ const Settings = ( props ) => {
 		setAttributes( { paginationMarkup: 'empty' } );
 	};
 
-	const taxonomyListOptions = [];
+	const taxonomyListOptions = [
+		{
+			value: '',
+			label: __( 'All', 'ultimate-addons-for-gutenberg' ),
+		},
+	];
 
 	const categoryListOptions = [
 		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
@@ -324,7 +329,7 @@ const Settings = ( props ) => {
 		},
 	];
 
-	if ( '' !== taxonomyList ) {
+	if ( taxonomyList ) {
 		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
@@ -333,7 +338,7 @@ const Settings = ( props ) => {
 		} );
 	}
 
-	if ( '' !== categoriesList ) {
+	if ( categoriesList ) {
 		Object.keys( categoriesList ).map( ( item ) => {
 			return categoryListOptions.push( {
 				value: categoriesList[ item ].id,

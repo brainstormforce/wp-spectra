@@ -76,6 +76,7 @@ const Settings = ( props ) => {
 		backgroundSizeTablet,
 		backgroundSizeMobile,
 		backgroundImageColor,
+		backgroundVideoOpacity,
 		gradientValue,
 		boxShadowColor,
 		boxShadowHOffset,
@@ -202,7 +203,8 @@ const Settings = ( props ) => {
 		topDividerWidthType,
 		bottomDividerWidthType,
 		topDividerHeightType,
-		bottomDividerHeightType
+		bottomDividerHeightType,
+		equalHeight
 	} = attributes;
 
 	let currentDirection = directionDesktop?.split( '-' )?.[0];
@@ -232,6 +234,23 @@ const Settings = ( props ) => {
 		}
 	}, [backgroundType] );
 
+	const onChangeHeight = ( value ) => {
+		setAttributes( { equalHeight: value } );
+		if( value ) {
+			setAttributes( { alignItemsDesktop: 'stretch' } );
+			setAttributes( { alignItemsTablet: 'stretch' } );
+			setAttributes( { alignItemsMobile: 'stretch' } );
+		} else {
+			setAttributes( { alignItemsDesktop: 'center' } );
+			setAttributes( { alignItemsTablet: 'center' } );
+			setAttributes( { alignItemsMobile: 'center' } );
+		}
+	};
+	const onChangeAlign = ( value ) => {
+		if( 'stretch' !== value ) {
+			props.setAttributes( { equalHeight: false } );
+		}
+	};
 	const generalSettings = () => {
 
 		const directionOptions = [
@@ -590,6 +609,15 @@ const Settings = ( props ) => {
 									}
 								</>
 							}
+							<ToggleControl
+								label={ __(
+									'Equal Height',
+									'ultimate-addons-for-gutenberg'
+								) }
+								checked={ equalHeight }
+								onChange={ ( value ) => onChangeHeight( value )	}
+								help={ __( 'Enabling this will change the Align Items value to Stretch.', 'ultimate-addons-for-gutenberg' ) }
+							/>
 						</>
 					}
 					{ ( ( isBlockRootParent && 'default' === contentWidth ) || ( ! isBlockRootParent ) ) &&
@@ -884,6 +912,7 @@ const Settings = ( props ) => {
 						} }
 						options={ alignItemsOptions }
 						showIcons={ true }
+						onChange = { onChangeAlign( alignItemsDesktop ) }
 						responsive={ true }
 						help={ ( 'row' === currentOppAxisDirection ) ? horizontalAlignmentHint : verticalAlignmentHint }
 					/>
@@ -1142,6 +1171,10 @@ const Settings = ( props ) => {
 					backgroundVideoColor={ {
 						value: backgroundVideoColor,
 						label: 'backgroundVideoColor',
+					} }
+					backgroundVideoOpacity={ {
+						value: backgroundVideoOpacity,
+						label: 'backgroundVideoOpacity',
 					} }
 					onOpacityChange = { ( opacity ) => setAttributes( { backgroundVideoOpacity: opacity } ) }
 					{ ...props }

@@ -162,7 +162,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 ## Credits ##
 
-The awesome React FontIconPicker is developed by [Alessandro Benoit](http://codeb.it/) & [Swashata](https://github.com/swashata). Our external packages uses [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT, [Action Scheduler - Job Queue for WordPress](https://github.com/woocommerce/action-scheduler/) is distributed under the terms of the GNU General Public License v3.0.
+The awesome React FontIconPicker is developed by [Alessandro Benoit](http://codeb.it/) & [Swashata](https://github.com/swashata). Our external packages uses [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT, [WP Background Processing](https://github.com/deliciousbrains/wp-background-processing) is distributed under the terms of the GPL-2.0 license.
 
 ## Screenshots ##
 
@@ -170,9 +170,18 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### 2.0.14 - THURSDAY, 29th SEPTEMBER 2022 ###
+### 2.0.14 - THURSDAY, 13th OCTOBER 2022 ###
+* Improvement: Container - Equal height setting in Parent container.
+* Improvement: Post Block - Woo Commerce Products (CPT) not getting in post Type.
+* Improvement: Block Transform - Transform from core Paragraph/List to Spectra Heading/Blockquotes.
+* Improvement: Post Blocks - Optimize the loading of Post Terms.
+* Improvement: Table of content - Added overall block alignment option.
+* Improvement: Info Box - Option to disable step links.
+* Fix: Image - Throws validation issue when toolbar link feature is used.
 * Fix: Button - Box shadow stylings not working as expected on front-end.
+* Fix: Tabs - Plus button height was not the same as other tab buttons on the editor.
 * Fix: Tabs - Tabs border is inconsistent inside the editor as well as on the frontend.
+* Fix: Marketing Button - Backward Compatibility title color and hover issue on the frontend.
 * Fix: Post Carousel/Masonry- Taxonomy stylings not working as expected in different layouts.
 * Fix: Forms - Phone country code text overlapping for mobile view in frontend.
 * Fix: Forms - Phone height and size enlarged issue on the editor.
@@ -181,9 +190,38 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Forms - Removed the required string and toggle button from the form block.
 * Fix: Forms - Toggle field size not working on responsive devices
 * Fix: Post Carousel - Column gap was not same on the front-end after upgrading from v1.25.6 when image is set as background.
-* Fix: Post Masonry - Row gap and column gap lable changd.
+* Fix: Post Masonry - Row gap and column gap lable changed.
 * Fix: Post Masonry - Column Gap was impacting other post masonry, post grid, post carousel blocks.
+* Fix: Forms - Settings uneven spacing issue and Hide border colors when style set to default.
 * Fix: Copy Paste Styles - Removed hover color for disable paste style text.
+* Fix: Forms - Checkbox throws an issue in console when required toggle is ON.
+* Fix: Resolved undefined PHP issue for block attribute.
+* Fix: Info Box - After drag and drop block SVG looks bigger for a second.
+* Fix: Icon List - Disable link not working properly on front-end for old users.
+* Fix: Table Of Contents - Empty heading list, throwing a console error on the front end.
+* Fix: Review Schema - Added an aggregate rating in Type Software Application type.
+* Fix: Call To Action - Button was not same as frontend when it is selected as text.
+* Fix: Call To Action - Selected preset looks different after refreshing in page on the editor.
+* Fix: Testimonial - Slider does not slide the content when returning from last slide to first slide.
+* Fix: Table Of Contents - Reusable headings are not listed in TOC on the frontend.
+* Fix: Timeline - Connector does not show color without icon when scrolling.
+* Fix: Resolved Buttons should consider button text as a string instead of html in multiple blocks.
+* Fix: Container - Does not work properly when it is used inside cover block.
+* Fix: Image - Hover on the border for normal image layout is not working.
+* Fix: Post grid - In the editor, the Read more button border-radius is not working on hover.
+* Fix: Table Of Contents - Page was not scrolling to the headings on the frontend for some edge cases.
+* Fix: Post Carousel - On reducing or increasing Post per page all items sticks to each other in editor.
+* Fix: Translation for default text was missing for some blocks.
+* Fix: Z-Index extension is not working for the dynamic blocks.
+* Fix: Content flickering in the editor when hovering over it.
+* Fix: Container - Page freezes when we select and move multiple blocks at once to the container.
+* Fix: Advanced Column - Core image block caption alignment issue.
+* Fix: Admin Dashboard - Toggle not working properly in RTL mode.
+* Fix: Mobile CSS overrides desktop CSS inside the customizer.
+* Fix: Spectra block editor CSS conflict with other plugins
+* Fix: Desktop icon for responsive control move to the left from their position.
+* Fix: Container - Child container gets unwanted margin applied when boxed and content boxed layout is selected in the editor when Astra theme is activated.
+* Fix: Container - Breaks when the background is a video and classic overlay is selected.
 
 ### 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 ###
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.

@@ -16,6 +16,8 @@ import CallToAction from './components/CallToAction';
 import InfoBoxIconImage from './components/InfoBoxIconImage';
 import IconImage from './components/IconImage';
 import { getBorderAttributes } from '@Controls/generateAttributes';
+import newAttributesV2_0_13 from './deprecated/v2_0_13/attributes';
+import newSaveV2_0_13 from './deprecated/v2_0_13/save';
 
 // For users migrating from v2.0.13 to presets fixes.
 import oldSpectraAttributes from './old-spectra-attributes';
@@ -2014,6 +2016,10 @@ const deprecated = [
 				</div>
 			);
 		}
+	},
+	{
+		attributes: newAttributesV2_0_13,
+		save : newSaveV2_0_13,
 	},
 	{
 		oldSpectraAttributes,

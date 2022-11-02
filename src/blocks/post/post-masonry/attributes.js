@@ -1296,6 +1296,9 @@ const attributes = {
 			styleType: 'cta-letter-spacing-type'
 		}
 	},
+	allTaxonomyStore: {
+		type: 'object'
+	},
 	...btnBorderAttributes,
 	...paginationMasonryBorderAttributes
 }
