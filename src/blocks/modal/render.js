@@ -150,6 +150,7 @@ const Render = ( props ) => {
 						`${ appearEffect }`,
 						'uagb-modal-popup'
 					) }
+					id={ `uagb-block-${ block_id }` }
 				>
 					<div className="uagb-modal-popup-wrap">
 						<div className="uagb-modal-popup-content">

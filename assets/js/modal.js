@@ -4,7 +4,9 @@ document.addEventListener( 'UAGModalEditor', function( e ) {
 
 window.UAGBModal = {
 
-	init( mainSelector, previewModal, deviceType = 'desktop' ) {
+	init( mainSelector, previewModal, isAdmin, deviceType = 'desktop' ) {
+
+
 
         let document_element = document;
 
@@ -48,59 +50,61 @@ window.UAGBModal = {
                 modalTrigger.style.pointerEvents = 'auto';
 
                 const innerModal = modalWrapper.querySelector( '.uagb-modal-popup' );
-				const bodyWrap = document_element.querySelector( 'body' );
-                modalTrigger.addEventListener(
-                    'click',
-                    function () {
-
-                        if ( typeof innerModal !== 'undefined' && ! innerModal.classList.contains( 'active' ) ) {
-                            innerModal.classList.add( 'active' );
-                            if ( typeof bodyWrap !== 'undefined' && ! bodyWrap.classList.contains( 'hide-scroll' ) ) {
-                                bodyWrap.classList.add( 'hide-scroll' );
-                            }
-                        }
-                    }
-                )
-
-                const closeModal = modalWrapper.querySelector( '.uagb-modal-popup-close' );
-
-                closeModal.addEventListener(
-                    'click',
-                    function () {
-                        if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
-                            innerModal.classList.remove( 'active' );
-                        }
-						if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
-							bodyWrap.classList.remove( 'hide-scroll' );
+				if( null !== innerModal ){
+					document.body?.appendChild( innerModal );
+					const bodyWrap = document_element.querySelector( 'body' );
+					modalTrigger.addEventListener(
+						'click',
+						function () {
+							if ( typeof innerModal !== 'undefined' && ! innerModal.classList.contains( 'active' ) ) {
+								innerModal.classList.add( 'active' );
+								if ( typeof bodyWrap !== 'undefined' && ! bodyWrap.classList.contains( 'hide-scroll' ) ) {
+									bodyWrap.classList.add( 'hide-scroll' );
+								}
+							}
 						}
-                    }
-                );
+					)
 
-                innerModal.addEventListener(
-                    'click',
-                    function ( e ) {
-                        const closeOverlayClick = modalWrapper.dataset.overlayclick;
+					const closeModal = document_element.querySelector( '.uagb-modal-popup-close' );
 
-                        if ( 'enable' === closeOverlayClick && innerModal.classList.contains( 'active' ) && ! innerModal.querySelector( '.uagb-modal-popup-wrap' ).contains( e.target ) ) {
-                            innerModal.classList.remove( 'active' );
-                        }
-						if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
-							bodyWrap.classList.remove( 'hide-scroll' );
+					closeModal.addEventListener(
+						'click',
+						function () {
+							if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
+								innerModal.classList.remove( 'active' );
+							}
+							if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+								bodyWrap.classList.remove( 'hide-scroll' );
+							}
 						}
-                    }
-                )
+					);
 
-                document.addEventListener( 'keyup', function( e ) {
-                    const closeOnEsc = modalWrapper.dataset.escpress;
-                    if ( 27 === e.keyCode && 'enable' === closeOnEsc ) {
-                        if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
-                            innerModal.classList.remove( 'active' );
-                        }
-						if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
-							bodyWrap.classList.remove( 'hide-scroll' );
+					innerModal.addEventListener(
+						'click',
+						function ( e ) {
+							const closeOverlayClick = modalWrapper.dataset.overlayclick;
+
+							if ( 'enable' === closeOverlayClick && innerModal.classList.contains( 'active' ) && ! innerModal.querySelector( '.uagb-modal-popup-wrap' ).contains( e.target ) ) {
+								innerModal.classList.remove( 'active' );
+							}
+							if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+								bodyWrap.classList.remove( 'hide-scroll' );
+							}
 						}
-                    }
-                } );
+					)
+
+					document.addEventListener( 'keyup', function( e ) {
+						const closeOnEsc = modalWrapper.dataset.escpress;
+						if ( 27 === e.keyCode && 'enable' === closeOnEsc ) {
+							if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
+								innerModal.classList.remove( 'active' );
+							}
+							if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+								bodyWrap.classList.remove( 'hide-scroll' );
+							}
+						}
+					} );
+				}
             }
         }
 	},

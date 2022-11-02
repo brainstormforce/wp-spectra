@@ -123,7 +123,9 @@ export default function Save( props ) {
 				className={ classnames(
 					`${ appearEffect }`,
 					'uagb-modal-popup'
-				) } >
+				) }
+				id={ `uagb-block-${ block_id }` }
+			>
 				<div className="uagb-modal-popup-wrap">
 					<div className="uagb-modal-popup-content">
 						<InnerBlocks.Content />
