@@ -222,6 +222,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Desktop icon for responsive control move to the left from their position.
 * Fix: Container - Child container gets unwanted margin applied when boxed and content boxed layout is selected in the editor when Astra theme is activated.
 * Fix: Container - Breaks when the background is a video and classic overlay is selected.
+* Fix: CTA: Second button CSS style issue on the frontend.
 
 ### 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 ###
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
