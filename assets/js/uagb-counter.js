@@ -98,7 +98,7 @@ UAGBCounter = { // eslint-disable-line no-undef
 
 		// Condition to prevent an edge case bug where number layout gets animated like bar layout.
 		if( el.classList.contains( parentWrapClass ) ){
-			numberWrap.animate( animationKeyframes, animationProperties );
+			numberWrap?.animate( animationKeyframes, animationProperties );
 		}
 
 		el.setAttribute( 'played', true );  // Set: animation has played once.
@@ -135,7 +135,7 @@ UAGBCounter = { // eslint-disable-line no-undef
 			fill: 'forwards',
 		};
 
-		circleWrap.animate( animationKeyframes, animationProperties );
+		circleWrap?.animate( animationKeyframes, animationProperties );
 
 		el.setAttribute( 'played', true );  // Set: animation has played once.
 
