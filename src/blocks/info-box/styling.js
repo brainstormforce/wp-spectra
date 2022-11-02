@@ -57,6 +57,8 @@ function styling( props ) {
 		iconColor,
 		iconSize,
 		iconSizeType,
+		iconSizeTablet,
+		iconSizeMobile,
 		iconimgPosition,
 		iconHover,
 		iconimgBorderRadius,
@@ -240,6 +242,8 @@ function styling( props ) {
 	 //Range
 	 const seperatorThicknessFallback = getFallbackNumber( seperatorThickness, 'seperatorThickness', blockName );
 	 const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
+	 const iconSizeFallbackTablet = isNaN( iconSizeTablet ) ? iconSizeFallback : iconSizeTablet;
+	 const iconSizeFallbackMobile = isNaN( iconSizeMobile ) ? iconSizeFallbackTablet : iconSizeMobile;
 	 const iconimgBorderRadiusFallback = getFallbackNumber( iconimgBorderRadius, 'iconimgBorderRadius', blockName );
 	 // Responsive Slider
 	 const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
@@ -546,6 +550,10 @@ function styling( props ) {
 			'padding-bottom': generateCSSUnit( iconMarginBottomTablet, iconTabletMarginUnit ),
 			'padding-left': generateCSSUnit( iconMarginLeftTablet, iconTabletMarginUnit ),
 		},
+		' .uagb-ifb-content .uagb-ifb-icon-wrap svg': {
+			'font-size': generateCSSUnit( iconSizeFallbackTablet, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallbackTablet, iconSizeType ),
+		},
 		 ' .block-editor-rich-text__editable.uagb-ifb-desc': {
 			 'margin-bottom': generateCSSUnit( subHeadTabletSpace, subHeadTabletMarginUnit ),
 			 'margin-top': generateCSSUnit( subHeadMarginTopTablet, subHeadTabletMarginUnit ),
@@ -682,6 +690,10 @@ function styling( props ) {
 			'padding-right': generateCSSUnit( iconMarginRightMobile, iconMobileMarginUnit ),
 			'padding-bottom': generateCSSUnit( iconMarginBottomMobile, iconMobileMarginUnit ),
 			'padding-left': generateCSSUnit( iconMarginLeftMobile, iconMobileMarginUnit ),
+		},
+		' .uagb-ifb-content .uagb-ifb-icon-wrap svg': {
+			'font-size': generateCSSUnit( iconSizeFallbackMobile, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallbackMobile, iconSizeType ),
 		},
 		 ' .block-editor-rich-text__editable.uagb-ifb-desc': {
 			 'font-size': generateCSSUnit(
