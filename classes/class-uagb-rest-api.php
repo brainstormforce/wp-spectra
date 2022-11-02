@@ -65,15 +65,31 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 		 * @return array New block data.
 		 */
 		public function content_pre_render( $block ) {
+			$tab_styling_css  = '';
+			$mob_styling_css  = '';
 			$UAGB_Post_Assets = new UAGB_Post_Assets( get_the_ID() );
 
 			$assets = $UAGB_Post_Assets->get_block_css_and_js( $block );
 
-			$desktop_css     = isset( $assets['css']['desktop'] ) ? $assets['css']['desktop'] : '';
-			$tablet_css      = isset( $assets['css']['tablet'] ) ? $assets['css']['tablet'] : '';
-			$mobile_css      = isset( $assets['css']['mobile'] ) ? $assets['css']['mobile'] : '';
-			$block_css_style = $desktop_css . $tablet_css . $mobile_css;
-			$style           = ! empty( $block_css_style ) ? '<style class="uagb-widgets-style-renderer">' . $block_css_style . '</style>' : '';
+			$desktop_css = isset( $assets['css']['desktop'] ) ? $assets['css']['desktop'] : '';
+			$tablet_css  = isset( $assets['css']['tablet'] ) ? $assets['css']['tablet'] : '';
+			$mobile_css  = isset( $assets['css']['mobile'] ) ? $assets['css']['mobile'] : '';
+
+			if ( ! empty( $tablet_css ) ) {
+				$tab_styling_css .= '@media only screen and (max-width: ' . UAGB_TABLET_BREAKPOINT . 'px) {';
+				$tab_styling_css .= $tablet_css;
+				$tab_styling_css .= '}';
+			}
+
+			if ( ! empty( $mobile_css ) ) {
+				$mob_styling_css .= '@media only screen and (max-width: ' . UAGB_MOBILE_BREAKPOINT . 'px) {';
+				$mob_styling_css .= $mobile_css;
+				$mob_styling_css .= '}';
+			}
+
+			$block_css_style = $desktop_css . $tab_styling_css . $mob_styling_css;
+
+			$style = ! empty( $block_css_style ) ? '<style class="uagb-widgets-style-renderer">' . $block_css_style . '</style>' : '';
 			array_push( $block['innerContent'], $style );
 			return $block;
 		}
