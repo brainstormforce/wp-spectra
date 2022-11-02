@@ -962,7 +962,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 										'default' => '',
 									),
 									// Overall block alignment.
-									'overallAlign'                => array(
+									'overallAlign'         => array(
 										'type'    => 'string',
 										'default' => 'left',
 									),
