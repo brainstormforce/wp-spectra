@@ -26,7 +26,7 @@ export default function save( props ) {
 			<button className="uagb-forms-main-submit-button wp-block-button__link">
 				<RichText.Content
 					tagName="div"
-					value={ submitButtonText }
+					value={ submitButtonText.replace( /(<([^>]+)>)/ig, '' ) }
 					className="uagb-forms-main-submit-button-text"
 				/>
 			</button>

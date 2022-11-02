@@ -40,7 +40,7 @@
 		.uagb-forms-phone-wrap {
 
 			.uagb-form-phone-country {
-				width: 23%;
+				width: 25%;
 				margin-right: 5px;
 			}
 
@@ -55,7 +55,7 @@
 			justify-content: space-between;
 
 			.uagb-form-phone-country {
-				width: 23%;
+				width: 25%;
 				margin-right: 5px;
 			}
 
@@ -189,7 +189,7 @@ select::before {
 .uagb-forms-radio-wrap input[type="radio"],
 .uagb-forms-checkbox-wrap input[type="checkbox"],
 .uagb-forms-accept-wrap input[type="checkbox"] {
-	display: none;
+	opacity: 0;
 }
 
 .uagb-forms-checkbox-wrap input[type="checkbox"]:checked + label::before,
