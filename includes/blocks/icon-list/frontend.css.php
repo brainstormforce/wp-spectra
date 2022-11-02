@@ -64,7 +64,7 @@ $tablet_position = '';
 $mobile_position = '';
 
 if ( 'top' === $attr['iconPositionTablet'] ) {
-	$tablet_position             = 'flex-start';
+	$tablet_position = 'flex-start';
 } elseif ( 'middle' === $attr['iconPositionTablet'] ) {
 	$tablet_position = 'center';
 } else {
@@ -72,7 +72,7 @@ if ( 'top' === $attr['iconPositionTablet'] ) {
 }
 
 if ( 'top' === $attr['iconPositionMobile'] ) {
-	$mobile_position             = 'flex-start';
+	$mobile_position = 'flex-start';
 } elseif ( 'middle' === $attr['iconPositionMobile'] ) {
 	$mobile_position = 'center';
 } else {

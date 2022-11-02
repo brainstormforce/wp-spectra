@@ -221,11 +221,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Spectra block editor CSS conflict with other plugins
 * Fix: Desktop icon for responsive control move to the left from their position.
 * Fix: Container - Child container gets unwanted margin applied when boxed and content boxed layout is selected in the editor when Astra theme is activated.
-<<<<<<< HEAD
 * Fix: Icon list - Icon Alignment top and middle not working as expected if we increase font size. 
-=======
 * Fix: Container - Breaks when the background is a video and classic overlay is selected.
->>>>>>> da4f1093bec1db6a1961f237ff0b3441932d5808
 
 = 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 =
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
