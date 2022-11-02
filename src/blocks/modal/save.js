@@ -122,9 +122,9 @@ export default function Save( props ) {
 			<div
 				className={ classnames(
 					`${ appearEffect }`,
-					'uagb-modal-popup'
+					'uagb-modal-popup',
+					`uagb-block-${ block_id }`
 				) }
-				id={ `uagb-block-${ block_id }` }
 			>
 				<div className="uagb-modal-popup-wrap">
 					<div className="uagb-modal-popup-content">

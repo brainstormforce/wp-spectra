@@ -32,10 +32,10 @@ $selectors   = array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
 		'fill'        => $attr['closeIconColor'],
 	),
-	' .uagb-modal-popup.active'                  => array(
+	'.uagb-modal-popup.active'                   => array(
 		'background' => $attr['overlayColor'],
 	),
-	' .uagb-modal-popup-content'                 => array(
+	'.uagb-modal-popup-content'                  => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingModalLeft'], $attr['paddingModalUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingModalRight'], $attr['paddingModalUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingModalTop'], $attr['paddingModalUnit'] ),
@@ -79,11 +79,11 @@ $selectors   = array(
 	),
 );
 $t_selectors = array(
-	' .uagb-modal-popup-wrap'    => array(
+	' .uagb-modal-popup-wrap'   => array(
 		'width'  => UAGB_Helper::get_css_value( $attr['modalWidthTablet'], $attr['modalWidthType'] ),
 		'height' => UAGB_Helper::get_css_value( $attr['modalHeightTablet'], $attr['modalHeightType'] ),
 	),
-	' .uagb-modal-popup-content' => array(
+	'.uagb-modal-popup-content' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingModalLeftTablet'], $attr['tabletPaddingModalUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingModalRightTablet'], $attr['tabletPaddingModalUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingModalTopTablet'], $attr['tabletPaddingModalUnit'] ),
@@ -103,11 +103,11 @@ $t_selectors = array(
 	),
 );
 $m_selectors = array(
-	' .uagb-modal-popup-wrap'    => array(
+	' .uagb-modal-popup-wrap'   => array(
 		'width'  => UAGB_Helper::get_css_value( $attr['modalWidthMobile'], $attr['modalWidthType'] ),
 		'height' => UAGB_Helper::get_css_value( $attr['modalHeightMobile'], $attr['modalHeightType'] ),
 	),
-	' .uagb-modal-popup-content' => array(
+	'.uagb-modal-popup-content' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingModalLeftMobile'], $attr['mobilePaddingModalUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingModalRightMobile'], $attr['mobilePaddingModalUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingModalTopMobile'], $attr['mobilePaddingModalUnit'] ),
@@ -128,14 +128,14 @@ $m_selectors = array(
 );
 
 if ( 'popup-top-right' === $attr['closeIconPosition'] ) {
-	$selectors[' .uagb-modal-popup.active .uagb-modal-popup-close'] = array(
+	$selectors['.uagb-modal-popup.active .uagb-modal-popup-close'] = array(
 		'top'   => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
 		'right' => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
 	);
 }
 
 if ( 'popup-top-left' === $attr['closeIconPosition'] ) {
-	$selectors[' .uagb-modal-popup.active .uagb-modal-popup-close'] = array(
+	$selectors['.uagb-modal-popup.active .uagb-modal-popup-close'] = array(
 		'top'  => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
 		'left' => '-' . UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
 	);

@@ -50,8 +50,9 @@ window.UAGBModal = {
                 modalTrigger.style.pointerEvents = 'auto';
 
                 const innerModal = modalWrapper.querySelector( '.uagb-modal-popup' );
-				if( null !== innerModal ){
+				if( null !== innerModal && !isAdmin ){
 					document.body?.appendChild( innerModal );
+				}
 					const bodyWrap = document_element.querySelector( 'body' );
 					modalTrigger.addEventListener(
 						'click',
@@ -104,7 +105,7 @@ window.UAGBModal = {
 							}
 						}
 					} );
-				}
+				// }
             }
         }
 	},
