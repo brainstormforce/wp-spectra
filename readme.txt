@@ -194,6 +194,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Masonry - Column Gap was impacting other post masonry, post grid, post carousel blocks.
 * Fix: Forms - Settings uneven spacing issue and Hide border colors when style set to default.
 * Fix: Copy Paste Styles - Removed hover color for disable paste style text.
+* Fix: Twenty Twenty-One Theme Issues - Button styling not working properly on both sides.
 * Fix: Forms - Checkbox throws an issue in console when required toggle is ON.
 * Fix: Resolved undefined PHP issue for block attribute.
 * Fix: Info Box - After drag and drop block SVG looks bigger for a second.
