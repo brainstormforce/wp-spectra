@@ -23,7 +23,6 @@ import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 import {
-	TextControl,
 	__experimentalAlignmentMatrixControl as AlignmentMatrixControl,
 	Icon,
 	ToggleControl

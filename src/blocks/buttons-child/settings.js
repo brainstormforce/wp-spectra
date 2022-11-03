@@ -28,8 +28,7 @@ import {
 } from '@wordpress/block-editor';
 
 import {
-	ToggleControl,
-	TextControl
+	ToggleControl
 } from '@wordpress/components';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';

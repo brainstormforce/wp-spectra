@@ -61,14 +61,14 @@ const UAGMediaPicker = ( props ) => {
 			);
 	}
 
-	let registerImageExtender = disableDynamicContent ? null : wp.hooks.applyFilters('uagb.registerImageExtender', '', selectedBlock?.name, onSelectImage)
+	const registerImageExtender = disableDynamicContent ? null : wp.hooks.applyFilters( 'uagb.registerImageExtender', '', selectedBlock?.name, onSelectImage )
 
 	const isShowImageUploader = () => {
-		if(disableDynamicContent){
+		if( disableDynamicContent ){
 			return true;
 		}
 		const dynamicContent = selectedBlock?.attributes?.dynamicContent
-		if(dynamicContent && dynamicContent?.bgImage?.enable === true) {
+		if( dynamicContent && dynamicContent?.bgImage?.enable === true ) {
 			return false
 		}
 		return true;

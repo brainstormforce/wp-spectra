@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-for */
 import React, {useLayoutEffect} from 'react';
 import styles from './editor.lazy.scss';
 import { TextControl } from '@wordpress/components';
@@ -15,7 +16,7 @@ const defaultProps = {
 	disableDynamicContent: false
 };
 
-export default function UAGTextControl(props) {
+export default function UAGTextControl( props ) {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -29,14 +30,14 @@ export default function UAGTextControl(props) {
 		return select( 'core/block-editor' ).getSelectedBlock();
 	}, [] );
 
-	let registerTextExtender = disableDynamicContent ? null : wp.hooks.applyFilters('uagb.registerTextExtender', '', selectedBlock?.name, name, dynamicContentType)
+	const registerTextExtender = disableDynamicContent ? null : wp.hooks.applyFilters( 'uagb.registerTextExtender', '', selectedBlock?.name, name, dynamicContentType )
 
 	const isEnableDynamicContent = () => {
-		if(disableDynamicContent){
+		if( disableDynamicContent ){
 			return false;
 		}
 		const dynamicContent = selectedBlock?.attributes?.dynamicContent
-		if(dynamicContent && dynamicContent?.[name]?.enable === true) {
+		if( dynamicContent && dynamicContent?.[name]?.enable === true ) {
 			return true
 		}
 		return false;
@@ -50,15 +51,15 @@ export default function UAGTextControl(props) {
 						<TextControl
 							label={label}
 							value={ value }
-							onChange={ ( value ) =>
-								setAttributes( { [name]: value } )
+							onChange={ ( inputValue ) =>
+								setAttributes( { [name]: inputValue } )
 							}
 							readOnly={isEnableDynamicContent()}
 						/>
 					) : (
 						<div className="components-base-control">
 							<div className="components-base-control__field">
-								<label class="components-base-control__label">{label}</label>
+								<label className="components-base-control__label">{label}</label>
 							</div>
 						</div>
 					)

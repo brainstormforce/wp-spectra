@@ -1,23 +1,18 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import apiFetch from '@wordpress/api-fetch';
-import PropTypes from 'prop-types';
-
-function classNames( ...classes ) {
-    return classes.filter( Boolean ).join( ' ' )
-}
 
 const propTypes = {};
 
 const defaultProps = {};
 
-export default function DynamicContent(props) {
+export default function DynamicContent() {
 	const dispatch = useDispatch();
 	const dynamicContentMode = useSelector( ( state ) => state.dynamicContentMode );
 
-	const dynamicContentHandler = (e) => {
-		dispatch({type: 'UPDATE_DYNAMIC_CONTENT_MODE', payload: e.target.value })
+	const dynamicContentHandler = ( e ) => {
+		dispatch( {type: 'UPDATE_DYNAMIC_CONTENT_MODE', payload: e.target.value } )
 		const formData = new window.FormData();
 		formData.append( 'action', 'uag_dynamic_content_mode' );
 		formData.append( 'security', uag_react.dynamic_content_mode_nonce );
@@ -47,13 +42,13 @@ export default function DynamicContent(props) {
 							<div className="form-check flex justify-center items-center">
 								<input className="uag-radio-input form-check-input appearance-none rounded-full h-1.25rem w-1.25rem border border-bg-spectra bg-white checked:bg-spectra checked:bg-spectra focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer" type="radio" name="dynamic_content_mode" value="popup" onChange={dynamicContentHandler} id="dynamic-content-popup" checked={dynamicContentMode === 'popup'} />
 								<label className="form-check-label inline-block text-gray-800 ml-1 -mt-0.5" htmlFor="dynamic-content-popup">
-									{__('Popup', 'ultimate-addons-for-gutenberg')}
+									{__( 'Popup', 'ultimate-addons-for-gutenberg' )}
 								</label>
 							</div>
 							<div className="form-check flex justify-center items-center">
 								<input className="uag-radio-input form-check-input appearance-none rounded-full h-1.25rem w-1.25rem border border-bg-spectra bg-white checked:bg-spectra checked:bg-spectra focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer" type="radio" name="dynamic_content_mode" value="sidebar" onChange={dynamicContentHandler} id="dynamic-content-sidebar" checked={dynamicContentMode === 'sidebar'} />
 								<label className="form-check-label inline-block text-gray-800 ml-1 -mt-0.5" htmlFor="dynamic-content-sidebar">
-									{__('Sidebar', 'ultimate-addons-for-gutenberg')}
+									{__( 'Sidebar', 'ultimate-addons-for-gutenberg' )}
 								</label>
 							</div>
 						</div>
