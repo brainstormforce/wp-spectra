@@ -19,6 +19,7 @@ import UAGTabsControl from '@Components/tabs';
 import ctaPresets, {buttonsPresetsCTA, buttonsPresetsAdditionalButton} from './presets';
 import UAGPresets from '@Components/presets';
 import renderSVG from '@Controls/renderIcon';
+import UAGTextControl from '@Components/text-control';
 import { ToggleControl, TextControl, Icon } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import ResponsiveSlider from '@Components/responsive-slider';
@@ -378,15 +379,14 @@ const Settings = ( props ) => {
 						setAttributes( { secondCtaLabel: value } )
 					}
 				/>
-				<TextControl
+				<UAGTextControl
 					label={ __(
 						'Link',
 						'ultimate-addons-for-gutenberg'
 					) }
+					name="secondCtaLink"
 					value={ secondCtaLink }
-					onChange={ ( value ) =>
-						setAttributes( { secondCtaLink: value } )
-					}
+					setAttributes={setAttributes}
 				/>
 				<ToggleControl
 					label={ __(
@@ -800,15 +800,14 @@ const Settings = ( props ) => {
 				) }
 				{ ctaType !== 'none' && (
 					<>
-						<TextControl
+						<UAGTextControl
 							label={ __(
 								'Link',
 								'ultimate-addons-for-gutenberg'
 							) }
+							name="ctaLink"
 							value={ ctaLink }
-							onChange={ ( value ) =>
-								setAttributes( { ctaLink: value } )
-							}
+							setAttributes={setAttributes}
 						/>
 						<ToggleControl
 							label={ __(

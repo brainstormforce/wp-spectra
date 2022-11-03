@@ -16,6 +16,7 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
+import UAGTextControl from '@Components/text-control';
 import { useDeviceType } from '@Controls/getPreviewType';
 import {
 	store as blockEditorStore,
@@ -624,10 +625,12 @@ export default function Settings( props ) {
 							imageWidth={ naturalWidth }
 							imageHeight={ naturalHeight }
 						/>
-						<TextControl
+						<UAGTextControl
 							label={ __( 'Alt Text', 'ultimate-addons-for-gutenberg' ) }
+							dynamicContentType="text"
 							value={ alt }
-							onChange={ ( value ) => setAttributes( { alt: value } ) }
+							name='alt'
+							setAttributes={setAttributes}
 						/>
 					</>
 				)
