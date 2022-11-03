@@ -130,8 +130,8 @@ return array_merge(
 		'suffixLeftDistanceTablet'  => '',
 		'suffixLeftDistanceMobile'  => '',
 		// circle.
-		'circleSize'                => 300,
-		'circleStokeSize'           => 10,
+		'circleSize'                => 230,
+		'circleStokeSize'           => 8,
 		'circleForeground'          => '#007cba',
 		'circleBackground'          => '#eaeaea',
 		// bar.

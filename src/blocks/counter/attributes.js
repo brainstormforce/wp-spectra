@@ -501,11 +501,11 @@ const attributes = {
 	// circle
 	circleSize: {
 		type: 'number',
-		default: 300,
+		default: 230,
 	},
 	circleStokeSize: {
 		type: 'number',
-		default: 10,
+		default: 8,
 	},
 	circleForeground : {
 		type: 'string',
