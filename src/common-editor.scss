@@ -736,10 +736,12 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .uagb-inspector-tab {
 
 	.components-toggle-control .components-base-control__field {
-		display: flex;
-		flex-direction: row-reverse;
-		justify-content: space-between;
-		align-items: center;
+		.components-flex { // WP6.1 compatibility.
+			display: flex;
+			flex-direction: row-reverse;
+			justify-content: space-between;
+			align-items: center;
+		}
 	}
 }
 
