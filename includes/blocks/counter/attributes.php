@@ -33,7 +33,7 @@ return array_merge(
 		'headingFontStyle'          => 'normal',
 		'headingTransform'          => '',
 		'headingFontSize'           => '',
-		'headingColor'              => '#333',
+		'headingColor'              => '#4B4F58',
 		'headingTransform'          => '',
 		'headingDecoration'         => '',
 		'headingFontSizeType'       => 'px',
@@ -92,7 +92,7 @@ return array_merge(
 		'blockPaddingUnitTablet'    => 'px',
 		'blockPaddingUnitMobile'    => 'px',
 		// number.
-		'numberColor'               => '',
+		'numberColor'               => '#3A3A3A',
 		'numberFontFamily'          => '',
 		'numberFontStyle'           => 'normal',
 		'numberTransform'           => '',
@@ -155,7 +155,7 @@ return array_merge(
 		// Icon and Image.
 		'sourceType'                => 'icon',
 		'icon'                      => 'star',
-		'iconColor'                 => '',
+		'iconColor'                 => '#4B4F58',
 		'iconBackgroundColor'       => '',
 		'iconHoverColor'            => '',
 		'iconBackgroundHoverColor'  => '',

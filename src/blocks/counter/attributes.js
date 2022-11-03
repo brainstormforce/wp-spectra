@@ -53,7 +53,7 @@ const attributes = {
 	},
 	headingColor: {
 		type: 'string',
-		default: '#333'
+		default: '#4B4F58'
 	},
 	headingFontFamily: {
 		type: 'string',
@@ -350,6 +350,7 @@ const attributes = {
 	},
 	numberColor: {
 		type: 'string',
+		default: '#3A3A3A',
 		isUAGStyle: true,
 	},
 	numberFontFamily: {
@@ -619,6 +620,7 @@ const attributes = {
 	},
 	iconColor: {
 		type: 'string',
+		default: '#4B4F58',
 		UAGCopyPaste: {
 			styleType: 'icon-color'
 		}
