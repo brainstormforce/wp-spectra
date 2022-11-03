@@ -27,6 +27,8 @@ $block_name = 'info-box';
 
 $seperator_thickness_fallback   = UAGB_Block_Helper::get_fallback_number( $attr['seperatorThickness'], 'seperatorThickness', $block_name );
 $iconSize_fallback              = UAGB_Block_Helper::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name );
+$attr['iconSizeTablet'] = is_numeric( $attr['iconSizeTablet'] ) ? $attr['iconSizeTablet'] : $iconSize_fallback;
+$attr['iconSizeMobile'] = is_numeric( $attr['iconSizeMobile'] ) ? $attr['iconSizeMobile'] : $attr['iconSizeTablet'];
 $iconimg_border_radius_fallback = UAGB_Block_Helper::get_fallback_number( $attr['iconimgBorderRadius'], 'iconimgBorderRadius', $block_name );
 
 $seperator_width_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidth'], 'seperatorWidth', $block_name );
@@ -45,6 +47,8 @@ $cta_icon_size   = UAGB_Helper::get_css_value( $attr['ctaFontSize'], $attr['ctaF
 $m_cta_icon_size = UAGB_Helper::get_css_value( $attr['ctaFontSizeMobile'], $attr['ctaFontSizeType'] );
 $t_cta_icon_size = UAGB_Helper::get_css_value( $attr['ctaFontSizeTablet'], $attr['ctaFontSizeType'] );
 $icon_size       = UAGB_Helper::get_css_value( $iconSize_fallback, $attr['iconSizeType'] );
+$icon_size_tablet       = UAGB_Helper::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeType'] );
+$icon_size_mobile       = UAGB_Helper::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] );
 
 $btn_padding_top         = isset( $attr['paddingBtnTop'] ) ? $attr['paddingBtnTop'] : $attr['ctaBtnVertPadding'];
 $btn_padding_bottom      = isset( $attr['paddingBtnBottom'] ) ? $attr['paddingBtnBottom'] : $attr['ctaBtnVertPadding'];

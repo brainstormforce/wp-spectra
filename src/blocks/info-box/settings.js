@@ -1243,8 +1243,8 @@ const Settings = ( props ) => {
 												label: 'iconSizeMobile',
 											},
 										} }
-										min={ { 'px': 0, '%': 0, 'em': 0 } } // eslint-disable-line quote-props
-										max={ { 'px': 500, '%': 100, 'em': 100 } } // eslint-disable-line quote-props
+										min={ 0 } // eslint-disable-line quote-props
+										max={  100  } // eslint-disable-line quote-props
 										unit={ {
 											value: iconSizeType,
 											label: 'iconSizeType',
