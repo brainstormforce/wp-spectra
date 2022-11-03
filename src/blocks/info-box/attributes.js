@@ -24,7 +24,7 @@
 	},
 	infoBoxTitle: {
 		source: 'html',
-		selector: 'h1,h2,h3,h4,h5,h6',
+		selector: 'h1,h2,h3,h4,h5,h6,p',
 		default: __( 'Info Box' , 'ultimate-addons-for-gutenberg' ),
 	},
 	headingDesc: {
@@ -88,6 +88,18 @@
 		default: 30,
 		UAGCopyPaste: {
 			styleType: 'icon-size'
+		}
+	},
+	iconSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size-tablet'
+		}
+	},
+	iconSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size-mobile'
 		}
 	},
 	iconSizeType: {
