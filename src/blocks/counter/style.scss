@@ -12,6 +12,10 @@
 			font-size: 52px;
 		}
 
+		.wp-block-uagb-counter__icon {
+			margin-bottom: 10px;
+		}
+
 	}
 
 	&--bars {
@@ -120,6 +124,7 @@
 }
 
 .wp-block-uagb-counter__title {
+	margin-top: 10px;
 	margin-bottom: 17px;
 	font-size: 16px;
 }
