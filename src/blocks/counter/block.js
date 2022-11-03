@@ -1,5 +1,5 @@
 /**
- * BLOCK: Container
+ * BLOCK: Counter
  */
 
 import UAGB_Block_Icons from '@Controls/block-icons';
