@@ -36,7 +36,6 @@ export default function Settings( props ) {
 	const { attributes, setAttributes, deviceType } = props;
 	const {
 		modalTrigger,
-		previewModal,
 		iconImage,
 		icon,
 		imageSize,
@@ -451,21 +450,6 @@ export default function Settings( props ) {
 			title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
-			<ToggleControl
-				label={ __(
-					'Preview Modal',
-					'ultimate-addons-for-gutenberg'
-				) }
-				checked={ previewModal }
-				onChange={ () =>
-					setAttributes( { previewModal: ! previewModal } )
-				}
-				help={ __(
-					'Note: Enable this option to open the modal inside editor on click of a trigger.',
-					'ultimate-addons-for-gutenberg'
-				) }
-			/>
-
 			<ResponsiveSlider
 				label={ __(
 					'Width',

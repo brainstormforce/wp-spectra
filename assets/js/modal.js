@@ -1,12 +1,10 @@
 document.addEventListener( 'UAGModalEditor', function( e ) {
-    UAGBModal.init( '.uagb-block-' + e.detail.block_id, e.detail.preview, e.detail.device_type );
+    UAGBModal.init( '.uagb-block-' + e.detail.block_id, e.detail.device_type );
 } );
 
 window.UAGBModal = {
 
-	init( mainSelector, previewModal, isAdmin, deviceType = 'desktop' ) {
-
-
+	init( mainSelector, isAdmin, deviceType = 'desktop' ) {
 
         let document_element = document;
 
@@ -41,15 +39,12 @@ window.UAGBModal = {
 
             const modalTrigger = modalWrapper.querySelector( '.uagb-modal-trigger' );
 
-            if( 'disabled' === previewModal ) {
-                modalTrigger.style.pointerEvents = 'none';
-            }
-
-            if( typeof modalTrigger !== 'undefined' && modalTrigger && 'enabled' === previewModal ) {
+            if( typeof modalTrigger !== 'undefined' && modalTrigger ) {
 
                 modalTrigger.style.pointerEvents = 'auto';
 
                 const innerModal = modalWrapper.querySelector( '.uagb-modal-popup' );
+
 				if( null !== innerModal && !isAdmin ){
 					document.body?.appendChild( innerModal );
 				}
@@ -71,12 +66,13 @@ window.UAGBModal = {
 					closeModal.addEventListener(
 						'click',
 						function () {
-							if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
-								innerModal.classList.remove( 'active' );
+							const modalPopup = document.querySelector( '.uagb-modal-popup' );
+							if ( typeof modalPopup !== 'undefined' && modalPopup.classList.contains( 'active' ) ) {
+								modalPopup.classList.remove( 'active' );
 							}
-							if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
-								bodyWrap.classList.remove( 'hide-scroll' );
-							}
+							// if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+							// 	bodyWrap.classList.remove( 'hide-scroll' );
+							// }
 						}
 					);
 
@@ -88,9 +84,9 @@ window.UAGBModal = {
 							if ( 'enable' === closeOverlayClick && innerModal.classList.contains( 'active' ) && ! innerModal.querySelector( '.uagb-modal-popup-wrap' ).contains( e.target ) ) {
 								innerModal.classList.remove( 'active' );
 							}
-							if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
-								bodyWrap.classList.remove( 'hide-scroll' );
-							}
+							// if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+							// 	bodyWrap.classList.remove( 'hide-scroll' );
+							// }
 						}
 					)
 
@@ -100,9 +96,9 @@ window.UAGBModal = {
 							if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
 								innerModal.classList.remove( 'active' );
 							}
-							if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
-								bodyWrap.classList.remove( 'hide-scroll' );
-							}
+							// if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+							// 	bodyWrap.classList.remove( 'hide-scroll' );
+							// }
 						}
 					} );
 				// }

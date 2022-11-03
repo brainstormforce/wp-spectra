@@ -1,0 +1,21 @@
+.editor-styles-wrapper {
+
+	.uagb-modal-wrapper {
+
+		.uagb-modal-popup {
+
+			.uagb-modal-popup-wrap {
+				margin: 30px;
+			}
+
+			&.active {
+				background: rgba(0, 0, 0, 0.6);
+				border: 2px dashed #ddd;
+				display: flex;
+				margin-top: 20px;
+				padding: 30px;
+				position: relative;
+			}
+		}
+	}
+}

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import { useDeviceType } from '@Controls/getPreviewType';
+import styles from './editor.lazy.scss';
 
 const ALLOWED_BLOCKS = wp.blocks.getBlockTypes().map( block => block.name ).filter( blockName => blockName !== 'uagb/modal' );
 
@@ -12,6 +13,15 @@ const propTypes = {};
 const defaultProps = {};
 
 const Render = ( props ) => {
+
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect( () => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, [] );
+
 	const {
 		attributes,
 		setAttributes,
