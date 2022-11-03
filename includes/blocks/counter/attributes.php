@@ -154,7 +154,7 @@ return array_merge(
 		'showIcon'                  => true,
 		// Icon and Image.
 		'sourceType'                => 'icon',
-		'icon'                      => 'circle-check',
+		'icon'                      => 'star',
 		'iconColor'                 => '',
 		'iconBackgroundColor'       => '',
 		'iconHoverColor'            => '',

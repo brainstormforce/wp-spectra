@@ -615,7 +615,7 @@ const attributes = {
 	},
 	icon: {
 		type: 'string',
-		default: 'circle-check',
+		default: 'star',
 	},
 	iconColor: {
 		type: 'string',
