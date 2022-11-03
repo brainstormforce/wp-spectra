@@ -45,14 +45,24 @@ export default function UAGTextControl(props) {
 	return (
 		<React.Fragment>
 			<div className={`uagb-text-control${isEnableDynamicContent() ? ' uagb-text-control--open-dynamic-content' : ''}`}>
-				<TextControl
-					label={label}
-					value={ value }
-					onChange={ ( value ) =>
-						setAttributes( { [name]: value } )
-					}
-					readOnly={isEnableDynamicContent()}
-				/>
+				{
+					!isEnableDynamicContent() ? (
+						<TextControl
+							label={label}
+							value={ value }
+							onChange={ ( value ) =>
+								setAttributes( { [name]: value } )
+							}
+							readOnly={isEnableDynamicContent()}
+						/>
+					) : (
+						<div className="components-base-control">
+							<div className="components-base-control__field">
+								<label class="components-base-control__label">{label}</label>
+							</div>
+						</div>
+					)
+				}
 				{
 					registerTextExtender
 				}
