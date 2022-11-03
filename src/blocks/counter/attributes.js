@@ -350,7 +350,6 @@ const attributes = {
 	},
 	numberColor: {
 		type: 'string',
-		default: '#3A3A3A',
 		isUAGStyle: true,
 	},
 	numberFontFamily: {

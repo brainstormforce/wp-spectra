@@ -92,7 +92,7 @@ return array_merge(
 		'blockPaddingUnitTablet'    => 'px',
 		'blockPaddingUnitMobile'    => 'px',
 		// number.
-		'numberColor'               => '#3A3A3A',
+		'numberColor'               => '',
 		'numberFontFamily'          => '',
 		'numberFontStyle'           => 'normal',
 		'numberTransform'           => '',
