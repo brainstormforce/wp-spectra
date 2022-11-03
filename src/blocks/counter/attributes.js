@@ -518,6 +518,7 @@ const attributes = {
 	// bar
 	barSize: {
 		type: 'number',
+		default: 25,
 	},
 	barForeground : {
 		type: 'string',
