@@ -31,7 +31,7 @@ const attributes = {
 	},
 	animationDuration: {
 		type: 'number',
-		default: 2000,
+		default: 1500,
 	},
 	thousandSeparator: {
 		type: 'string',
