@@ -81,7 +81,7 @@ class UAGB_Init_Blocks {
 	/**
 	 * Function to get Spectra Font Awesome Polyfiller data.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.14
 	 */
 	public function spectra_font_awesome_polyfiller() {
 

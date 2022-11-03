@@ -396,7 +396,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		/**
 		 * Get the Reusable Headings Array.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.14
 		 * @access public
 		 *
 		 * @param  array $blocks_array Block Array.
