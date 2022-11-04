@@ -170,6 +170,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 2.0.15	 - TUESDAY, 15th NOVEMBER 2022 =
+* Improvement: Highlight selected text on editor in Spectra blocks.
+
 = 2.0.14 - TUESDAY, 15th NOVEMBER 2022 =
 * Improvement: Compatibility with WordPress 6.1.
 * Improvement: Container - Equal height setting in the Parent container.
