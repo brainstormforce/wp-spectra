@@ -89,10 +89,10 @@ registerBlockType( 'uagb/advanced-heading', {
 					} );
 
 					return newitems.map( ( text ) =>
-						createBlock( 'uagb/blockquote', {
-							descriptionText: text.text,
-							descColor: colourNameToHex( _attributes.textColor ),
-							authorColor: colourNameToHex( _attributes.backgroundColor )
+						createBlock( 'uagb/advanced-heading', {
+							headingTitle: text.text,
+							headingColor: colourNameToHex( _attributes.textColor ),
+							blockBackground: colourNameToHex( _attributes.backgroundColor )
 						} )
 					);
 				},
