@@ -20,7 +20,7 @@ const defaultProps = {
 
 export default function UAGMultiSelectControl({options, data, setAttributes}) {
 	return (
-		<React.Fragment>
+		<div className="components-base-control">
 			<Select
 				options={options}
 				defaultValue={options.filter((item) => data.value.includes(item.value))}
@@ -30,7 +30,7 @@ export default function UAGMultiSelectControl({options, data, setAttributes}) {
 				}, [])})}
 				isMulti
 			/>
-		</React.Fragment>
+		</div>
 	);
 }
 
