@@ -61,12 +61,12 @@ window.UAGBModal = {
 						}
 					)
 
-					const closeModal = document_element.querySelector( '.uagb-modal-popup-close' );
+					const closeModal = document.querySelector( `${mainSelector} .uagb-modal-popup-close` );
 
 					closeModal.addEventListener(
 						'click',
 						function () {
-							const modalPopup = document.querySelector( '.uagb-modal-popup' );
+							const modalPopup = document.querySelector( `${mainSelector}.uagb-modal-popup` );
 							if ( typeof modalPopup !== 'undefined' && modalPopup.classList.contains( 'active' ) ) {
 								modalPopup.classList.remove( 'active' );
 							}
