@@ -67,6 +67,7 @@ window.UAGBModal = {
 						'click',
 						function () {
 							const modalPopup = document.querySelector( '.uagb-modal-popup' );
+							console.log(innerModal)
 							if ( typeof modalPopup !== 'undefined' && modalPopup.classList.contains( 'active' ) ) {
 								modalPopup.classList.remove( 'active' );
 							}

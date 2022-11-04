@@ -11,6 +11,7 @@ $block_name      = 'modal';
 $m_selectors     = array();
 $t_selectors     = array();
 $selectors       = array();
+$is_rtl          = is_rtl();
 $btn_icon_size   = UAGB_Helper::get_css_value( $attr['btnFontSize'], $attr['btnFontSizeType'] );
 $t_btn_icon_size = UAGB_Helper::get_css_value( $attr['btnFontSizeTablet'], $attr['btnFontSizeType'] );
 $m_btn_icon_size = UAGB_Helper::get_css_value( $attr['btnFontSizeMobile'], $attr['btnFontSizeType'] );
@@ -166,6 +167,32 @@ if ( 'button' === $attr['modalTrigger'] ) {
 		$m_selectors[' .uagb-modal-button-link svg'] = array(
 			'margin-right' => UAGB_Helper::get_css_value( $attr['buttonIconSpaceMobile'], $attr['buttonIconSpaceType'] ),
 		);
+	}
+}
+
+if ( $is_rtl ) {
+	if ( 'button' === $attr['modalTrigger'] ) {
+		if ( 'after' === $attr['buttonIconPosition'] ) {
+			$selectors[' .uagb-modal-button-link svg ']   = array(
+				'margin-right' => UAGB_Helper::get_css_value( $buttonIconSpace_fallback, $attr['buttonIconSpaceType'] ),
+			);
+			$t_selectors[' .uagb-modal-button-link svg '] = array(
+				'margin-right' => UAGB_Helper::get_css_value( $attr['buttonIconSpaceTablet'], $attr['buttonIconSpaceType'] ),
+			);
+			$m_selectors[' .uagb-modal-button-link svg '] = array(
+				'margin-right' => UAGB_Helper::get_css_value( $attr['buttonIconSpaceMobile'], $attr['buttonIconSpaceType'] ),
+			);
+		} else {
+			$selectors[' .uagb-modal-button-link svg']   = array(
+				'margin-left' => UAGB_Helper::get_css_value( $buttonIconSpace_fallback, $attr['buttonIconSpaceType'] ),
+			);
+			$t_selectors[' .uagb-modal-button-link svg'] = array(
+				'margin-left' => UAGB_Helper::get_css_value( $attr['buttonIconSpaceTablet'], $attr['buttonIconSpaceType'] ),
+			);
+			$m_selectors[' .uagb-modal-button-link svg'] = array(
+				'margin-left' => UAGB_Helper::get_css_value( $attr['buttonIconSpaceMobile'], $attr['buttonIconSpaceType'] ),
+			);
+		}
 	}
 }
 
