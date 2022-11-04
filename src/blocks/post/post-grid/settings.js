@@ -1891,7 +1891,7 @@ const Settings = ( props ) => {
 							/>
 							<MultiButtonsControl
 								setAttributes={ setAttributes }
-								label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
+								label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
 								data={ {
 									value: ctaBgType,
 									label: 'ctaBgType',
@@ -1931,7 +1931,7 @@ const Settings = ( props ) => {
 							/>
 							<MultiButtonsControl
 								setAttributes={ setAttributes }
-								label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
+								label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
 								data={ {
 									value: ctaBgHType,
 									label: 'ctaBgHType',
