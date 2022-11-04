@@ -171,6 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 2.0.14 - THURSDAY, 13th OCTOBER 2022 =
+* Improvement: Compatibility with WordPress 6.1.
 * Improvement: Container - Equal height setting in Parent container.
 * Improvement: Post Block - Woo Commerce Products (CPT) not getting in post Type.
 * Improvement: Block Transform - Transform from core Paragraph/List to Spectra Heading/Blockquotes.
@@ -194,6 +195,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Masonry - Column Gap was impacting other post masonry, post grid, post carousel blocks.
 * Fix: Forms - Settings uneven spacing issue and Hide border colors when style set to default.
 * Fix: Copy Paste Styles - Removed hover color for disable paste style text.
+* Fix: Twenty Twenty-One Theme Issues - Button styling not working properly on both sides.
 * Fix: Forms - Checkbox throws an issue in console when required toggle is ON.
 * Fix: Resolved undefined PHP issue for block attribute.
 * Fix: Info Box - After drag and drop block SVG looks bigger for a second.
@@ -221,6 +223,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Spectra block editor CSS conflict with other plugins
 * Fix: Desktop icon for responsive control move to the left from their position.
 * Fix: Container - Child container gets unwanted margin applied when boxed and content boxed layout is selected in the editor when Astra theme is activated.
+* Fix: Spectra CSS conflict due to which date picker of post scheduler does not show the navigation.
+* Fix: Icon list - Icon Alignment top and middle not working as expected if we increase font size.
 * Fix: Container - Breaks when the background is a video and classic overlay is selected.
 
 = 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 =
