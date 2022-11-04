@@ -90,31 +90,31 @@ const attributes = {
 	},
 	boxBgType: {
 		type: 'string',
+		default: 'color',
 		UAGCopyPaste: {
 			styleType: 'faq-bg-type'
 		},
-		default: 'transparent'
 	},
 	boxBgHoverType: {
 		type: 'string',
+		default: 'color',
 		UAGCopyPaste: {
 			styleType: 'faq-bg-hover-type'
 		},
-		default: 'transparent'
 	},
 	boxBgColor: {
 		type: 'string',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'faq-bg-color'
 		},
-		default: '#F5F5F5'
 	},
 	boxBgHoverColor: {
 		type: 'string',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'faq-bg-hover-color'
 		},
-		default: ''
 	},
 	boxPaddingTypeMobile: {
 		type: 'string',
