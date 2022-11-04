@@ -135,14 +135,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 				require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics-loader.php';
 			}
 
-			$enable_templates_button = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' );
-
-			if ( 'yes' === $enable_templates_button ) {
-				require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
-			} else {
-				add_filter( 'ast_block_templates_disable', '__return_true' );
-			}
-
 			if ( is_admin() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-beta-updates.php';
 				require_once UAGB_DIR . 'classes/class-uagb-rollback.php';
@@ -202,6 +194,14 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			add_filter( 'rest_pre_dispatch', array( $this, 'rest_pre_dispatch' ), 10, 3 );
 
+			$enable_templates_button = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' );
+
+			if ( 'yes' === $enable_templates_button ) {
+				require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
+			} else {
+				add_filter( 'ast_block_templates_disable', '__return_true' );
+			}
+			
 			// Load background processing class.
 			if ( ! class_exists( 'UAGB_Background_Process' ) ) {
 				require_once UAGB_DIR . 'lib/wp-background-processing/class-uagb-wp-async-request.php';
