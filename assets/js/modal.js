@@ -70,6 +70,9 @@ window.UAGBModal = {
 							if ( typeof modalPopup !== 'undefined' && modalPopup.classList.contains( 'active' ) ) {
 								modalPopup.classList.remove( 'active' );
 							}
+							if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+								bodyWrap.classList.remove( 'hide-scroll' );
+							}
 						}
 					);
 
@@ -81,6 +84,9 @@ window.UAGBModal = {
 							if ( 'enable' === closeOverlayClick && innerModal.classList.contains( 'active' ) && ! innerModal.querySelector( '.uagb-modal-popup-wrap' ).contains( e.target ) ) {
 								innerModal.classList.remove( 'active' );
 							}
+							if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+								bodyWrap.classList.remove( 'hide-scroll' );
+							}
 						}
 					)
 
@@ -89,6 +95,9 @@ window.UAGBModal = {
 						if ( 27 === e.keyCode && 'enable' === closeOnEsc ) {
 							if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
 								innerModal.classList.remove( 'active' );
+							}
+							if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+								bodyWrap.classList.remove( 'hide-scroll' );
 							}
 						}
 					} );
