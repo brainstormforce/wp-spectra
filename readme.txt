@@ -170,6 +170,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 2.0.15 =
+* Fix: Info Box - The title is disabled on the editor if we set P tag. 
+
 = 2.0.14 - THURSDAY, 13th OCTOBER 2022 =
 * Improvement: Container - Equal height setting in Parent container.
 * Improvement: Post Block - Woo Commerce Products (CPT) not getting in post Type.
