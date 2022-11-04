@@ -29,6 +29,7 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import UAGNumberControl from '@Components/number-control';
+import apiFetch from '@wordpress/api-fetch';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -80,6 +81,11 @@ const UAGBPostCarousel = ( props ) => {
 			paddingRightMobile,
 			paddingBottomMobile,
 			paddingLeftMobile,
+
+			// backward compatability added
+			columnGap,
+			columnGapTablet,
+			columnGapMobile
 		} = props.attributes;
 
 		if ( btnVPadding ) {
@@ -225,6 +231,20 @@ const UAGBPostCarousel = ( props ) => {
 				props.setAttributes( { btnBorderStyle : borderStyle} );
 			}
 		}
+
+		if( columnGap && columnGap !== 20 ){
+			props.setAttributes( { dotsMarginTop : columnGap} );
+		}
+
+		if( columnGapTablet ){
+			props.setAttributes( { dotsMarginTopTablet : columnGapTablet} );
+		}
+
+		if( columnGapMobile ){
+			props.setAttributes( { dotsMarginTopMobile : columnGapMobile} );
+		}
+
+		props.setAttributes( { allTaxonomyStore : undefined} );
 	}, [] );
 
 	useEffect( () => {
@@ -495,13 +515,18 @@ const UAGBPostCarousel = ( props ) => {
 
 	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
 
-	const taxonomyListOptions = [];
+	const taxonomyListOptions = [
+		{
+			value: '',
+			label: __( 'All', 'ultimate-addons-for-gutenberg' ),
+		},
+	];
 
 	const categoryListOptions = [
 		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
 	];
 
-	if ( '' !== taxonomyList ) {
+	if ( taxonomyList ) {
 		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
@@ -510,7 +535,7 @@ const UAGBPostCarousel = ( props ) => {
 		} );
 	}
 
-	if ( '' !== categoriesList ) {
+	if ( categoriesList ) {
 		Object.keys( categoriesList ).map( ( item ) => {
 			return categoryListOptions.push( {
 				value: categoriesList[ item ].id,
@@ -2297,7 +2322,7 @@ const UAGBPostCarousel = ( props ) => {
 				<Placeholder
 					icon="admin-post"
 					label={
-						uagb_blocks_info.blocks[ 'uagb/post-carousel' ].title
+						__( 'Post Carousel', 'ultimate-addons-for-gutenberg' )
 					}
 				>
 					{ ! Array.isArray( latestPosts ) ? (
@@ -2342,10 +2367,19 @@ export default compose(
 			postType,
 			taxonomyType,
 			excludeCurrentPost,
+			allTaxonomyStore
 		} = props.attributes;
 		const { getEntityRecords } = select( 'core' );
-		const allTaxonomy = uagb_blocks_info.all_taxonomy;
-		const currentTax = allTaxonomy[ postType ];
+
+		if ( ! allTaxonomyStore ) {
+			apiFetch( {
+				path: '/spectra/v1/all_taxonomy',
+			} ).then( ( data ) => {
+				props.setAttributes( { allTaxonomyStore: data } );
+			} );
+		}
+		const allTaxonomy = allTaxonomyStore;
+		const currentTax = allTaxonomy ? allTaxonomy[ postType ] : undefined;
 
 		let categoriesList = [];
 		let rest_base = '';

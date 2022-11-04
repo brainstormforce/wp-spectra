@@ -18,6 +18,21 @@ $m_selectors = UAGB_Block_Helper::get_post_mobile_selectors( $attr );
 
 $t_selectors = UAGB_Block_Helper::get_post_tablet_selectors( $attr );
 
+if ( 'background' === $attr['imgPosition'] && 3 >= $attr['postsToShow'] ) {
+	$selectors['.uagb-post__image-position-background'] = array(
+		'flex-wrap' => 'nowrap !important',
+		'gap'       => $attr['rowGap'] . 'px !important',
+	);
+	$selectors[' .uagb-post__inner-wrap']               = array(
+		'padding-left'  => '0px !important',
+		'padding-right' => '0px !important',
+	);
+	$selectors[' .uagb-post__image']                    = array(
+		'width'       => '100% !important',
+		'margin-left' => 'unset !important',
+	);
+}
+
 $dots_margin_top_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['dotsMarginTop'], 'dotsMarginTop', $attr['blockName'] );
 $dots_margin_top_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['dotsMarginTopTablet'], 'dotsMarginTopTablet', $attr['blockName'] );
 $dots_margin_top_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['dotsMarginTopMobile'], 'dotsMarginTopMobile', $attr['blockName'] );

@@ -415,6 +415,17 @@ function styling( props ) {
 			 'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 			 'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 		 },
+		 '.uagb-infobox__content-wrap .uagb-ifb-cta .uagb-ifb-button-wrapper.wp-block-button a.uagb-infobox-cta-link.wp-block-button__link': {
+			'color': ctaBtnLinkColor,
+			'background-color': ctaBgColor,
+			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottom,
+				paddingBtnUnit
+			),
+			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
+		},
 		 ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover': {
 			 'color': ctaLinkHoverColor,
 			 'background-color': ctaBgHoverColor,

@@ -17,7 +17,7 @@ $attrs_needed_in_js = array(
 
 ob_start();
 ?>
-window.addEventListener( 'DOMContentLoaded', function(){
+window.addEventListener( 'load', function(){
 	UAGBTableOfContents._run( <?php echo wp_json_encode( $attrs_needed_in_js ); ?>, '<?php echo esc_attr( $selector ); ?>' );
 } );
 <?php
