@@ -334,7 +334,10 @@ const attributes = {
 
 	iconSize: {
 		type: 'number',
-		default: 30
+		default: 30,
+		UAGCopyPaste: {
+			styleType: 'icon-size'
+		}
 	},
 	iconColor: {
 		type: 'string',
