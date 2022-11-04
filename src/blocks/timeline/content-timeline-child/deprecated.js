@@ -1,11 +1,11 @@
 import classnames from 'classnames';
 import attributes from './attributes';
 import renderSVG from '@Controls/deprecatedRenderIcon';
-
+import renderSVG13 from '@Controls/renderIcon';
 import { dateI18n, __experimentalGetSettings } from '@wordpress/date';
 
 import { RichText } from '@wordpress/block-editor';
-
+import { format } from '@wordpress/date';
 import { __ } from '@wordpress/i18n';
 
 // Since the default description has been changed, we add the old description here.
@@ -111,6 +111,94 @@ const deprecated = [
 				</article>
 			);
 		},
+	},
+	{
+		attributes,
+		save( props ) {
+			const {
+				block_id,
+				headingTag,
+				displayPostDate,
+				icon,
+				t_date,
+				dateFormat,
+				time_heading,
+				time_desc,
+			} = props.attributes;
+		
+			const displayInnerDate = true;
+			let postDate = t_date;
+			if ( 'custom' !== dateFormat ) {
+				postDate = format( dateFormat, t_date );
+				if ( format( dateFormat, postDate ) === 'Invalid date' ) {
+					postDate = t_date;
+				}
+			}
+		
+			let contentClass = '';
+			let dayalignClass = '';
+		
+			if (
+				props.attributes.dayalign_class !== 'undefined' &&
+				props.attributes.content_class !== 'undefined'
+			) {
+				contentClass = props.attributes.content_class;
+				dayalignClass = props.attributes.dayalign_class;
+			}
+			return (
+				<article
+					className={ classnames( 
+						'uagb-timeline__field',
+						`uagb-timeline-child-${ block_id }`,
+						contentClass
+					)}
+				>
+						<div className={ classnames( 'uagb-timeline__marker out-view-uagb-timeline__icon' ) } >
+								{ renderSVG13( icon ) }
+						</div>
+		
+						<div className={ classnames( dayalignClass, 'uagb-timeline__events-inner-new' ) }>
+							<div className='uagb-timeline__events-inner--content'>
+								{ displayPostDate !== true && t_date && (
+									<div
+										className={
+											'uagb-timeline__date-hide uagb-timeline__inner-date-new'
+										}
+									>
+										{ ( 'custom' !== dateFormat &&
+												format( dateFormat, postDate ) ) ||
+												postDate }
+									</div>
+								) }
+									<RichText.Content
+										tagName={ headingTag }
+										value={ time_heading }
+										className="uagb-timeline__heading"
+									/>
+		
+								<RichText.Content
+									tagName="p"
+									value={ time_desc }
+									className="uagb-timeline-desc-content"
+								/>
+		
+								<div className="uagb-timeline__arrow"></div>
+							</div>
+						</div>
+						{ displayInnerDate && (
+							<div className="uagb-timeline__date-new">
+								{ displayPostDate !== true && t_date && (	
+									<>
+									{ ( 'custom' !== dateFormat &&
+										format( dateFormat, postDate ) ) ||
+										postDate }
+									</>
+								) }
+							</div>
+						) }
+				</article>
+			);
+		}
 	},
 ];
 

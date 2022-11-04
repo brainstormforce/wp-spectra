@@ -206,7 +206,7 @@ const ColumnsComponent = ( props ) => {
 			<div className='uagb-columns-variation-picker'>
 				<BlockVariationPicker
 					icon={ '' }
-					label={ uagb_blocks_info.blocks[ 'uagb/columns' ].title }
+					label={ __( 'Advanced Columns', 'ultimate-addons-for-gutenberg' ) }
 					instructions={ __(
 						'Select a variation to start with.',
 						'ultimate-addons-for-gutenberg'
