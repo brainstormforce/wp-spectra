@@ -1,10 +1,10 @@
 document.addEventListener( 'UAGModalEditor', function( e ) {
-    UAGBModal.init( '.uagb-block-' + e.detail.block_id, e.detail.device_type );
+    UAGBModal.init( '.uagb-block-' + e.detail.block_id, e.detail.device_type, true );
 } );
 
 window.UAGBModal = {
 
-	init( mainSelector, isAdmin, deviceType = 'desktop' ) {
+	init( mainSelector, deviceType, isAdmin ) {
 
         let document_element = document;
 
@@ -61,7 +61,7 @@ window.UAGBModal = {
 						}
 					)
 
-					const closeModal = document.querySelector( `${mainSelector} .uagb-modal-popup-close` );
+					const closeModal = document_element.querySelector( `${mainSelector} .uagb-modal-popup-close` );
 
 					closeModal.addEventListener(
 						'click',
