@@ -228,7 +228,7 @@ const PostGridComponent = ( props ) => {
 
 				<Placeholder
 					icon="admin-post"
-					label={ uagb_blocks_info.blocks[ 'uagb/post-grid' ].title }
+					label={ __( 'Post Grid', 'ultimate-addons-for-gutenberg' ) }
 				>
 					{ ! Array.isArray( latestPosts ) ? (
 						<Spinner />
