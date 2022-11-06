@@ -76,7 +76,7 @@ $selectors = array(
 	' .uagb-marketing-btn__link:focus svg' => array(
 		'fill' => $icon_hover_color,
 	),
-	'.wp-block-uagb-marketing-button.wp-block-button .uagb-marketing-btn__link.wp-block-button__link' => array_merge(
+	' .uagb-marketing-btn__link.wp-block-button__link' => array_merge(
 		array(
 			'padding-left'   => UAGB_Helper::get_css_value( $btn_padding_left, $attr['paddingBtnUnit'] ),
 			'padding-right'  => UAGB_Helper::get_css_value( $btn_padding_right, $attr['paddingBtnUnit'] ),
