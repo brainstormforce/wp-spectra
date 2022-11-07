@@ -1554,10 +1554,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				$post_class_enabled = apply_filters( 'uagb_enable_post_class', false, $attributes );
 
 				do_action( "uagb_post_before_article_{$attributes['post_type']}", get_the_ID(), $attributes );
+				$article_class = ( $post_class_enabled ) ? post_class( 'uagb-post__inner-wrap' ) : '<article class="uagb-post__inner-wrap">';
 
 				?>
 				<?php do_action( "uagb_post_before_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
-				<article <?php ( $post_class_enabled ) ? post_class( 'uagb-post__inner-wrap' ) : esc_html_e( 'class=uagb-post__inner-wrap' ); ?>>
+				<?php echo wp_kses_post( $article_class ); ?>
 					<?php $this->render_innerblocks( $attributes ); ?>
 					<?php $this->render_complete_box_link( $attributes ); ?>
 				</article>
