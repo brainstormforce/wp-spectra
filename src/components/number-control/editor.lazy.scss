@@ -24,7 +24,7 @@
 
 			align-items: center;
 			display: grid;
-			grid-template-columns: 75% 25%;
+			grid-template-columns: repeat(3, 1fr);
 			color: $spectra-color-body;
 
 			.uag-control-label {
@@ -43,9 +43,6 @@
 
 			.components-number-control {
 				display: grid;
-				width: 88%;
-				margin-left: 5px;
-
 			}
 
 		}
@@ -57,6 +54,10 @@
 		grid-template-columns: 100%;
 		justify-items: end;
 		justify-content: end;
+	}
+
+	.uag-responsive-label-wrap {
+		grid-column: 1 / span 2;
 	}
 
 }
