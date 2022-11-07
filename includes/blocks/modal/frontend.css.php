@@ -222,7 +222,7 @@ if ( 'full' !== $attr['modalAlign'] ) {
 		'width' => 'unset',
 	);
 } else {
-	$selectors[' .wp-block-button__link'] = array(
+	$selectors[' .wp-block-button__link.uagb-modal-trigger'] = array(
 		'width'           => '100%',
 		'justify-content' => 'center',
 	);
@@ -236,7 +236,7 @@ if ( 'full' !== $attr['modalAlignMobile'] ) {
 		'width' => 'unset',
 	);
 } else {
-	$m_selectors[' .wp-block-button__link'] = array(
+	$m_selectors[' .wp-block-button__link.uagb-modal-trigger'] = array(
 		'width'           => '100%',
 		'justify-content' => 'center',
 	);
@@ -247,7 +247,7 @@ if ( 'full' !== $attr['modalAlignTablet'] ) {
 		'text-align' => $attr['modalAlignTablet'],
 	);
 } else {
-	$t_selectors[' .wp-block-button__link'] = array(
+	$t_selectors[' .wp-block-button__link.uagb-modal-trigger'] = array(
 		'width'           => '100%',
 		'justify-content' => 'center',
 	);

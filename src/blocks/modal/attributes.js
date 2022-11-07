@@ -160,12 +160,14 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'modal-width'
 		},
+		default: 700
 	},
 	modalWidthMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'modal-width'
 		},
+		default: 260
 	},
 	modalWidthType: {
 		type: 'string',
@@ -186,12 +188,14 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'modal-height'
 		},
+		default: 350
 	},
 	modalHeightMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'modal-height'
 		},
+		default: 300
 	},
 	modalHeightType: {
 		type: 'string',

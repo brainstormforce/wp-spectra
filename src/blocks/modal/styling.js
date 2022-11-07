@@ -416,7 +416,7 @@ export default function styling( props ) {
 			'width': 'unset',
 		};
 	} else {
-		selectors[ ' .wp-block-button__link' ] = {
+		selectors[ ' .wp-block-button__link.uagb-modal-trigger' ] = {
 			'width': '100%',
 			'justify-content': 'center',
 		};
@@ -430,7 +430,7 @@ export default function styling( props ) {
 			'width': 'unset',
 		};
 	} else {
-		tabletSelectors[ ' .wp-block-button__link' ] = {
+		tabletSelectors[ ' .wp-block-button__link.uagb-modal-trigger' ] = {
 			'width': '100%',
 			'justify-content': 'center',
 		};
@@ -444,7 +444,7 @@ export default function styling( props ) {
 			'width': 'unset',
 		};
 	} else {
-		mobileSelectors[ ' .wp-block-button__link' ] = {
+		mobileSelectors[ ' .wp-block-button__link.uagb-modal-trigger' ] = {
 			'width': '100%',
 			'justify-content': 'center',
 		};
