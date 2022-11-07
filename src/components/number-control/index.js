@@ -114,8 +114,9 @@ const UAGNumberControl = ( props ) => {
 		return items;
 	};
 
-	return (
-		<div className="components-base-control uag-number-control uagb-size-type-field-tabs">
+	const ControlHeader = () => {
+
+		return(
 			<div className="uagb-control__header">
 				<div className="uagb-number-control__actions uagb-control__actions">
 					<UAGReset
@@ -139,6 +140,14 @@ const UAGNumberControl = ( props ) => {
 					) }
 				</div>
 			</div>
+		);
+	}
+
+	return (
+		<div className="components-base-control uag-number-control uagb-size-type-field-tabs">
+			{ props.showControlHeader &&
+				<ControlHeader />
+			}
 			<div className="uagb-number-control__mobile-controls">
 				<ResponsiveToggle
 					label= { props.label }
@@ -174,6 +183,7 @@ UAGNumberControl.defaultProps = {
 	unit: [ 'px', 'em' ],
 	displayUnit: true,
 	responsive: false,
+	showControlHeader: true,
 };
 
 export default UAGNumberControl;
