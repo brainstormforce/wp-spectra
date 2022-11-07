@@ -170,7 +170,7 @@ function styling( props ) {
 		' .uagb-marketing-btn__link:focus svg': {
 			'fill': setIconHoverColor,
 		},
-		' .uagb-marketing-btn__link': {
+		' .uagb-marketing-btn__link:not(.has-background)': {
 			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
@@ -191,10 +191,16 @@ function styling( props ) {
 	if ( 'transparent' === backgroundType ) {
 		selectors[ ' .uagb-marketing-btn__link' ].background = 'transparent';
 	} else if ( 'color' === backgroundType ) {
-		selectors[ ' .uagb-marketing-btn__link' ].background = backgroundColor;
+		// selectors[ ' .uagb-marketing-btn__link' ].background = backgroundColor;
+		selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background)' ]  = {
+			'background-color' : backgroundColor
+		}
 
 		// Hover Background
-		selectors[ ' .uagb-marketing-btn__link:hover' ].background = backgroundHoverColor;
+		// selectors[ ' .uagb-marketing-btn__link:hover' ].background = backgroundHoverColor;
+		selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background):hover' ]  = {
+			'background-color' : backgroundHoverColor
+		}
 	} else if ( 'gradient' === backgroundType ) {
 		selectors[ ' .uagb-marketing-btn__link' ][ 'background-color' ] =
 			'transparent';
@@ -326,7 +332,7 @@ function styling( props ) {
 		marginType
 	] = generateCSSUnit( iconSpaceMobile, 'px' );
 
-	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }.wp-block-button:not(.is-style-outline)`;
+	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
 	let stylingCss = generateCSS( selectors, id );
 
