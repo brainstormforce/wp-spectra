@@ -9,6 +9,7 @@ import { __, sprintf } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import { limitMax, limitMin } from '@Controls/unitWiseMinMaxOption';
+import classnames from 'classnames';
 import UAGReset from '../reset';
 
 const UAGNumberControl = ( props ) => {
@@ -143,12 +144,18 @@ const UAGNumberControl = ( props ) => {
 		);
 	}
 
+	const variant = props.inlineControl ? 'inline' : 'full-width';
+
 	return (
 		<div className="components-base-control uag-number-control uagb-size-type-field-tabs">
 			{ props.showControlHeader &&
 				<ControlHeader />
 			}
-			<div className="uagb-number-control__mobile-controls">
+			<div className={ classnames(
+					'uagb-number-control__mobile-controls',
+					'uag-number-control__' + variant,
+				) }
+			>
 				<ResponsiveToggle
 					label= { props.label }
 					responsive= { props.responsive }
@@ -184,6 +191,7 @@ UAGNumberControl.defaultProps = {
 	displayUnit: true,
 	responsive: false,
 	showControlHeader: true,
+	inlineControl: true,
 };
 
 export default UAGNumberControl;
