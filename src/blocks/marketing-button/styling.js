@@ -191,13 +191,11 @@ function styling( props ) {
 	if ( 'transparent' === backgroundType ) {
 		selectors[ ' .uagb-marketing-btn__link' ].background = 'transparent';
 	} else if ( 'color' === backgroundType ) {
-		// selectors[ ' .uagb-marketing-btn__link' ].background = backgroundColor;
 		selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background)' ]  = {
 			'background-color' : backgroundColor
 		}
 
 		// Hover Background
-		// selectors[ ' .uagb-marketing-btn__link:hover' ].background = backgroundHoverColor;
 		selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background):hover' ]  = {
 			'background-color' : backgroundHoverColor
 		}
