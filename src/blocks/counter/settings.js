@@ -466,6 +466,7 @@ export default function Settings( props ) {
 				min={ ( layout !== 'number' ) ? 0 : false }
 				required={ ( layout !== 'number' ) ? true : false }
 				help={ ( layout !== 'number' ) ? __( 'Note: Please use positive values for Circle and Bar layouts.', 'ultimate-addons-for-gutenberg' ) : false }
+				showControlHeader={ false }
 			/>
 			<UAGNumberControl
 				label={ __( 'Ending Number', 'ultimate-addons-for-gutenberg' ) }
@@ -479,6 +480,7 @@ export default function Settings( props ) {
 				min={ ( layout !== 'number' ) ? 0 : false }
 				required={ ( layout !== 'number' ) ? true : false }
 				help={ ( layout !== 'number' ) ? __( 'Note: Please use positive values for Circle and Bar layouts.', 'ultimate-addons-for-gutenberg' ) : false }
+				showControlHeader={ false }
 			/>
 			{
 				layout !== 'number' && (
@@ -494,6 +496,7 @@ export default function Settings( props ) {
 						min={ minTotal }
 						required={ true }
 						help={ __( 'Note: Total Number should be more than or equal to the Ending Number (or the Starting number in case you want to animate the Counter in reverse direction).', 'ultimate-addons-for-gutenberg' ) }
+						showControlHeader={ false }
 					/>
 				)
 			}
@@ -535,6 +538,7 @@ export default function Settings( props ) {
 				min={ 1 }
 				step={ 100 }
 				required={ true }
+				showControlHeader={ false }
 			/>
 			<UAGSelectControl
 				label={ __( 'Thousand(s)', 'ultimate-addons-for-gutenberg' ) }
