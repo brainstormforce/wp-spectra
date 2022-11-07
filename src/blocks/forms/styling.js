@@ -363,6 +363,31 @@ function styling( props ) {
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 			'letter-spacing': generateCSSUnit( submitTextLetterSpacing, submitTextLetterSpacingType ),
 		},
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background)': {
+			'color': submitColor,
+			'font-size': generateCSSUnit(
+				submitTextFontSize,
+				submitTextFontSizeType
+			),
+			'line-height': generateCSSUnit(
+				submitTextLineHeight,
+				submitTextLineHeightType
+			),
+			'font-family': submitTextFontFamily,
+			'font-style': submitTextFontStyle,
+			'text-transform': submitTextTransform,
+			'text-decoration': submitTextDecoration,
+			'font-weight': submitTextFontWeight,
+			'background-color': submitBgColor,
+			...submitBorder,
+			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottom,
+				paddingBtnUnit
+			),
+			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
+		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button:hover': {
 			'color': submitColorHover,
 			'background-color': submitBgColorHover,
