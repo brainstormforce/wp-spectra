@@ -1554,10 +1554,15 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				$post_class_enabled = apply_filters( 'uagb_enable_post_class', false, $attributes );
 
 				do_action( "uagb_post_before_article_{$attributes['post_type']}", get_the_ID(), $attributes );
-				$post_classes = implode( ' ', get_post_class( 'uagb-post__inner-wrap' ) );
+				$post_classes = ( $post_class_enabled ) ? implode( ' ', get_post_class( 'uagb-post__inner-wrap' ) ) : 'uagb-post__inner-wrap';
 				?>
 				<?php do_action( "uagb_post_before_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
-				<article class="<?php ( $post_class_enabled ) ? esc_html_e( $post_classes ) : esc_html_e( 'uagb-post__inner-wrap' ); ?>">
+				<?php
+				echo sprintf(
+					'<article class="%1$s">',
+					esc_attr( $post_classes )
+				);
+				?>
 					<?php $this->render_innerblocks( $attributes ); ?>
 					<?php $this->render_complete_box_link( $attributes ); ?>
 				</article>
