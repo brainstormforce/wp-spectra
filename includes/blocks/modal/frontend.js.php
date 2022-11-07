@@ -8,11 +8,10 @@
  */
 
 $selector = '.uagb-block-' . $id;
-$is_admin = is_admin() ? 'true' : 'false';
 ob_start();
 ?>
 	window.addEventListener( 'DOMContentLoaded', function() {
-		UAGBModal.init( '<?php echo esc_attr( $selector ); ?>', <?php echo $is_admin; ?> );
+		UAGBModal.init( '<?php echo esc_attr( $selector ); ?>' );
 	});
 <?php
 return ob_get_clean();
