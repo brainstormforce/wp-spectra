@@ -5,6 +5,7 @@ import ResponsiveToggle from '../responsive-toggle';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
+import classnames from 'classnames';
 import UAGReset from '../reset';
 
 const UAGTextControl = ( props ) => {
@@ -59,12 +60,21 @@ const UAGTextControl = ( props ) => {
     return(
         <>
             <div className="components-base-control uagb-text-control uagb-size-type-field-tabs">
-                <HeaderControls />
-                <div className="uagb-text-control__controls">
-                    <TextControl
-                        value= { props?.value }
-                        onChange={ handleOnChange }
-                    />
+                { props?.variant !== 'inline' &&
+                    <HeaderControls />
+                }
+                <div
+                    className={ classnames(
+                        'uagb-text-control__controls',
+                        'uagb-text-control__controls-' + props?.variant,
+                    ) }>
+                    { ( props?.variant !== 'textarea' ) &&
+                        <TextControl
+                            label = { props?.variant === 'inline' ? ( props?.label ) : false }
+                            value = { props?.value }
+                            onChange = { handleOnChange }
+                        />
+                    }
                 </div>
                 { props?.help && (
                     <p className="uag-control-help-notice">{ props?.help }</p>
@@ -80,6 +90,7 @@ UAGTextControl.defaultProps = {
 	allowReset: true,
 	resetFallbackValue: '',
 	placeholder: null,
+    variant: 'inline',
 };
 
 export default UAGTextControl;
