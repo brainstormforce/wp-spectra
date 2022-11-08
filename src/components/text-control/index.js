@@ -1,5 +1,6 @@
 import {
     TextControl,
+    TextareaControl,
 } from '@wordpress/components';
 import ResponsiveToggle from '../responsive-toggle';
 import { __ } from '@wordpress/i18n';
@@ -71,6 +72,12 @@ const UAGTextControl = ( props ) => {
                     { ( props?.variant !== 'textarea' ) &&
                         <TextControl
                             label = { props?.variant === 'inline' ? ( props?.label ) : false }
+                            value = { props?.value }
+                            onChange = { handleOnChange }
+                        />
+                    }
+                    { ( props?.variant === 'textarea' ) &&
+                        <TextareaControl
                             value = { props?.value }
                             onChange = { handleOnChange }
                         />
