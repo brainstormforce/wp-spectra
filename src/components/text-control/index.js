@@ -97,7 +97,7 @@ UAGTextControl.defaultProps = {
 	allowReset: true,
 	resetFallbackValue: '',
 	placeholder: null,
-    variant: 'inline',
+    variant: 'full-width',
 };
 
 export default UAGTextControl;
