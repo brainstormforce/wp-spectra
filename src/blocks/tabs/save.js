@@ -42,8 +42,7 @@ export default function save( props ) {
 								? 'uagb-tabs__active'
 								: ''
 						}` }
-						role='tablist'
-						tabindex={ index }
+						role='tablist' // eslint-disable-line jsx-a11y/no-noninteractive-element-to-interactive-role
 					>
 						<a
 							href={ `#uagb-tabs__tab${ index }` }

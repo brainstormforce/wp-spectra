@@ -23,7 +23,7 @@
 			}
 		}
 
-		li.uagb-tab a {
+		ul.uagb-tab a {
 			position: relative;
 			padding: 6px 12px;
 			display: inline-flex;
@@ -82,8 +82,8 @@
 
 // Hide add new tab button on mobile and tablet.
 
-.editor-styles-wrapper .uagb-editor-preview-mode-tablet.uagb-tabs__wrap li.uagb-tab.uagb-tabs__add-tab,
-.editor-styles-wrapper .uagb-editor-preview-mode-mobile.uagb-tabs__wrap li.uagb-tab.uagb-tabs__add-tab {
+.editor-styles-wrapper .uagb-editor-preview-mode-tablet.uagb-tabs__wrap ul.uagb-tab.uagb-tabs__add-tab,
+.editor-styles-wrapper .uagb-editor-preview-mode-mobile.uagb-tabs__wrap ul.uagb-tab.uagb-tabs__add-tab {
 	display: none;
 }
 
