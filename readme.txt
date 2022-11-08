@@ -170,6 +170,16 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 2.0.15 =
+* Fix: Presets - Most presets used to override background color, box-shadow color, text content and even selected icons; This has been fixed where ever possible.
+* Improvement: Call to Action: Added show icon toggle.
+* Improvement: FAQ: Added background type selector for the question-answer container.
+* Improvement: Forms: Added background type selector for submit button.
+* Improvement: Info Box: Added background type selector for CTA.
+* Improvement: Info Box: Added show icon toggle for CTA.
+* Improvement: Post Carousel: Added background type selector.
+* Improvement: Post (Grid/Masonry/Carousel): Added background type selector for CTA.
+
 = 2.0.14 - THURSDAY, 13th OCTOBER 2022 =
 * Improvement: Container - Equal height setting in Parent container.
 * Improvement: Post Block - Woo Commerce Products (CPT) not getting in post Type.
