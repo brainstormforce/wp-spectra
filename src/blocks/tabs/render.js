@@ -242,7 +242,7 @@ const Render = ( props ) => {
 								</div>
 							) }
 							<a // eslint-disable-line jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events
-								role='button'
+								role='tab'
 								tabIndex={ index }
 								className={ `uagb-tabs__icon-position-${ iconPosition } uagb-tabs-list` }
 								onClick={ () => {
