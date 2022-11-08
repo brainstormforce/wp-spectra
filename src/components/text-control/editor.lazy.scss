@@ -1,10 +1,28 @@
 .uagb-text-control {
 
-    &__controls {
-        
-    }
+	&__controls {
 
-    .components-text-control__input {
-        margin-left: 0;
-    }
+		&-inline {
+
+			.components-base-control__field {
+
+				display: flex;
+				align-items: center;
+
+				& > label {
+					flex: 50%;
+					margin-bottom: unset;
+				}
+
+				& > input {
+					flex: 50%;
+				}
+			}
+		}
+	}
+
+	.components-text-control__input {
+		margin-left: 0;
+		margin-right: 0;
+	}
 }
