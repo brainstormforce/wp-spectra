@@ -9,15 +9,7 @@ import './style.scss';
 import deprecated from './deprecated';
 import attributes from './attributes';
 import { __ } from '@wordpress/i18n';
-import {
-	split,
-	create,
-	toHTMLString,
-	LINE_SEPARATOR,
-	__UNSTABLE_LINE_SEPARATOR,
-} from '@wordpress/rich-text';
 import colourNameToHex from '@Controls/changeColorNameToHex';
-const lineSep = LINE_SEPARATOR ? LINE_SEPARATOR : __UNSTABLE_LINE_SEPARATOR;
 import { registerBlockType, createBlock } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/blockquote', {
@@ -86,27 +78,19 @@ registerBlockType( 'uagb/blockquote', {
 			{
 				type: 'block',
 				blocks: [ 'core/list' ],
-				transform: ( { values, textColor, backgroundColor } ) => {
-					const listArray = split( create( {
-						html: values,
-						multilineTag: 'li',
-						multilineWrapperTags: [ 'ul', 'ol' ],
-					} ), lineSep );
-					const newitems = [ {
-						text: toHTMLString( { value: listArray[ 0 ] } ),
-					} ];
-					listArray.forEach( ( item, i ) => {
-						if ( i !== 0 ) {
-							newitems.push( {
-								text: listArray[i].text
-							} )
-						}
-					  } );
+				transform: ( _attributes, childBlocks ) => {
+					const newitems = [];
+					childBlocks.forEach( ( item, i ) => {
+						newitems.push( {
+							text: childBlocks[i].attributes.content
+						} )
+					} );
+
 					return newitems.map( ( text ) =>
 						createBlock( 'uagb/blockquote', {
 							descriptionText: text.text,
-							descColor: colourNameToHex( textColor ),
-							authorColor: colourNameToHex( backgroundColor )
+							descColor: colourNameToHex( _attributes.textColor ),
+							authorColor: colourNameToHex( _attributes.backgroundColor )
 						} )
 					);
 				},

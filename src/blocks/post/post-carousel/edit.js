@@ -2373,7 +2373,7 @@ const UAGBPostCarousel = ( props ) => {
 				<Placeholder
 					icon="admin-post"
 					label={
-						uagb_blocks_info.blocks[ 'uagb/post-carousel' ].title
+						__( 'Post Carousel', 'ultimate-addons-for-gutenberg' )
 					}
 				>
 					{ ! Array.isArray( latestPosts ) ? (
