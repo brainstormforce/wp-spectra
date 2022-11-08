@@ -21,11 +21,11 @@ const UAGTextControl = ( props ) => {
 
 		if ( props?.setAttributes ) {
 			props?.setAttributes( {
-				[ props.data.label ]: newValue,
+				[ props?.data?.label ]: newValue,
 			} )
 		}
 		if ( props?.onChange ) {
-			props.onChange( newValue );
+			props?.onChange( newValue );
 		}
 	};
 
@@ -41,15 +41,15 @@ const UAGTextControl = ( props ) => {
         return(
             <div className="uagb-control__header">
                 <ResponsiveToggle
-					label= { props.label }
+					label= { props?.label }
 				/>
 				<div className="uagb-number-control__actions uagb-control__actions">
 					<UAGReset
 						onReset={resetValues}
 						attributeNames = {[
-							props.data.label
+							props?.data?.label
 						]}
-						setAttributes={ props.setAttributes }
+						setAttributes={ props?.setAttributes }
 					/>
 				</div>
 			</div>
@@ -66,8 +66,8 @@ const UAGTextControl = ( props ) => {
                         onChange={ handleOnChange }
                     />
                 </div>
-                { props.help && (
-                    <p className="uag-control-help-notice">{ props.help }</p>
+                { props?.help && (
+                    <p className="uag-control-help-notice">{ props?.help }</p>
                 ) }
             </div>
         </>
