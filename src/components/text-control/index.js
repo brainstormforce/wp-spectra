@@ -24,12 +24,39 @@ const UAGTextControl = ( props ) => {
 		}
 	};
 
+    const resetValues = ( defaultValues ) => {
+
+		if ( props?.onChange ) {
+			props?.onChange( defaultValues[props?.data?.label] )
+		}
+	};
+
+    const HeaderControls = () => {
+
+        return(
+            <div className="uagb-control__header">
+                <ResponsiveToggle
+					label= { props.label }
+				/>
+				<div className="uagb-number-control__actions uagb-control__actions">
+					<UAGReset
+						onReset={resetValues}
+						attributeNames = {[
+							props.data.label
+						]}
+						setAttributes={ props.setAttributes }
+					/>
+				</div>
+			</div>
+        );
+    };
+
     return(
         <>
             <div className="components-base-control uagb-text-control uagb-size-type-field-tabs">
+                <HeaderControls />
                 <div className="uagb-text-control__controls">
                     <TextControl
-                        label= { props?.label }
                         value= { props?.value }
                         onChange={ handleOnChange }
                     />
