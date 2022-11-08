@@ -43,6 +43,7 @@ export default function save( props ) {
 								: ''
 						}` }
 						role='tablist'
+						tabindex={ index }
 					>
 						<a
 							href={ `#uagb-tabs__tab${ index }` }
