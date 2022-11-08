@@ -28,6 +28,8 @@ export default function UAGMultiSelectControl({options, data, setAttributes}) {
 					acc.push(current.value);
 					return acc;
 				}, [])})}
+				classNamePrefix={"spectra-multi-select"}
+				className={"spectra-multi-select"}
 				isMulti
 			/>
 		</div>
