@@ -11,12 +11,27 @@ import React, { useLayoutEffect } from 'react';
 import UAGReset from '../reset';
 
 const UAGTextControl = ( props ) => {
+
+    const handleOnChange = ( newValue ) => {
+
+		if ( props.setAttributes ) {
+			props.setAttributes( {
+				[ props.data.label ]: newValue,
+			} )
+		}
+		if ( props?.onChange ) {
+			props.onChange( newValue );
+		}
+	};
+
     return(
         <>
             <div className="components-base-control uagb-text-control uagb-size-type-field-tabs">
                 <div className="uagb-text-control__controls">
                     <TextControl
-                        label= { props.label }
+                        label= { props?.label }
+                        value= { props?.value }
+                        onChange={ handleOnChange }
                     />
                 </div>
                 { props.help && (
