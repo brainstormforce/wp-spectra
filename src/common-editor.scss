@@ -770,6 +770,21 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	}
 }
 
+/* Spectra Multiselect Control */
+.spectra-multi-select__control {
+	box-shadow: none !important;
+	border-color: #E6E7E9 !important;
+	border-radius: 3px !important;
+	.spectra-multi-select__input input {
+		box-shadow: none !important;
+	}
+	.spectra-multi-select__multi-value__label {
+		font-size: 13px !important;
+	}
+	.spectra-multi-select__menu .spectra-multi-select__option {
+		font-size: 13px !important;
+	}
+}
 @import "styles/gutenberg-override";
 @import "styles/control-responsive";
 @import "styles/control-header";
