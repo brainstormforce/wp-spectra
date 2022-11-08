@@ -14,7 +14,7 @@ $selectors   = array(
 		'text-align' => $attr['modalAlign'],
 	),
 	' .uagb-modal-popup-wrap'      => array(
-		'width'      => UAGB_Helper::get_css_value( $attr['modalWidth'], $attr['modalWidthType'] ),
+		'width'  => UAGB_Helper::get_css_value( $attr['modalWidth'], $attr['modalWidthType'] ),
 		'height' => UAGB_Helper::get_css_value( $attr['modalHeight'], $attr['modalHeightType'] ),
 	),
 	' .uagb-modal-popup-close svg' => array(
@@ -29,7 +29,7 @@ $t_selectors = array(
 		'text-align' => $attr['modalAlignTablet'],
 	),
 	' .uagb-modal-popup-wrap' => array(
-		'width'      => UAGB_Helper::get_css_value( $attr['modalWidthTablet'], $attr['modalWidthType'] ),
+		'width'  => UAGB_Helper::get_css_value( $attr['modalWidthTablet'], $attr['modalWidthType'] ),
 		'height' => UAGB_Helper::get_css_value( $attr['modalHeightTablet'], $attr['modalHeightType'] ),
 	),
 );
@@ -38,7 +38,7 @@ $m_selectors = array(
 		'text-align' => $attr['modalAlignMobile'],
 	),
 	' .uagb-modal-popup-wrap' => array(
-		'width'      => UAGB_Helper::get_css_value( $attr['modalWidthMobile'], $attr['modalWidthType'] ),
+		'width'  => UAGB_Helper::get_css_value( $attr['modalWidthMobile'], $attr['modalWidthType'] ),
 		'height' => UAGB_Helper::get_css_value( $attr['modalHeightMobile'], $attr['modalHeightType'] ),
 	),
 );
