@@ -946,7 +946,7 @@ class UAGB_Post_Assets {
 
 			if ( is_array( $block ) ) {
 
-				if ( '' === $block['blockName'] ) {
+				if ( '' === $block['blockName'] || ! isset( $block['attrs'] ) ) {
 					continue;
 				}
 

@@ -40,6 +40,7 @@ const Settings = ( props ) => {
 	const {
 		align,
 		headingAlignment,
+		overallAlign,
 		disableBullets,
 		makeCollapsible,
 		initialCollapse,
@@ -547,6 +548,61 @@ const Settings = ( props ) => {
 				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __(
+						'Overall Alignment',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: overallAlign,
+						label: 'overallAlign',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'left',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-left' ) }
+								/>
+							),
+							tooltip: __(
+								'Left',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'center',
+							icon: (
+								<Icon
+									icon={ renderSVG(
+										'fa fa-align-center'
+									) }
+								/>
+							),
+							tooltip: __(
+								'Center',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'right',
+							icon: (
+								<Icon
+									icon={ renderSVG(
+										'fa fa-align-right'
+									) }
+								/>
+							),
+							tooltip: __(
+								'Right',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ true }
+				/>
 				{ ! makeCollapsible  && (
 					<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -607,7 +663,7 @@ const Settings = ( props ) => {
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
-						'Alignment',
+						'List Alignment',
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {

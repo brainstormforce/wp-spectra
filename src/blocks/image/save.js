@@ -43,7 +43,7 @@ export default function Save( props ) {
 	// block validation issue fixing - ImageURLInputUI components automatic provide "noopener"
 	const getRel = () => {
 		if( rel ){
-			return rel + ' noopener';
+			return rel.trim();
 		}
 		return 'noopener';
 	}

@@ -194,14 +194,33 @@ function styling( props ) {
 	toggleBorderRadiusTRFallback = isNaN( toggleBorderRadiusTRFallback ) ? toggleBorderRadiusTRFallback : `${ toggleBorderRadiusTRFallback }px`;
 	toggleBorderRadiusBRFallback = isNaN( toggleBorderRadiusBRFallback ) ? toggleBorderRadiusBRFallback : `${ toggleBorderRadiusBRFallback }px`;
 	toggleBorderRadiusBLFallback = isNaN( toggleBorderRadiusBLFallback ) ? toggleBorderRadiusBLFallback : `${ toggleBorderRadiusBLFallback }px`;
-	const toggleBorderRadiusTLTabletFallback = ( undefined !== toggleBorderTablet['border-top-left-radius'] ) ? toggleBorderTablet['border-top-left-radius'] : toggleBorderRadiusTLFallback;
-	const toggleBorderRadiusTRTabletFallback = ( undefined !== toggleBorderTablet['border-top-right-radius'] ) ? toggleBorderTablet['border-top-right-radius'] : toggleBorderRadiusTRFallback;
-	const toggleBorderRadiusBRTabletFallback = ( undefined !== toggleBorderTablet['border-bottom-right-radius'] ) ? toggleBorderTablet['border-bottom-right-radius'] : toggleBorderRadiusBRFallback;
-	const toggleBorderRadiusBLTabletFallback = ( undefined !== toggleBorderTablet['border-bottom-left-radius'] ) ? toggleBorderTablet['border-bottom-left-radius'] : toggleBorderRadiusBLFallback;
-	const toggleBorderRadiusTLMobileFallback = ( undefined !== toggleBorderMobile['border-top-left-radius'] ) ? toggleBorderMobile['border-top-left-radius'] : toggleBorderRadiusTLTabletFallback;
-	const toggleBorderRadiusTRMobileFallback = ( undefined !== toggleBorderMobile['border-top-right-radius'] ) ? toggleBorderMobile['border-top-right-radius'] : toggleBorderRadiusTRTabletFallback;
-	const toggleBorderRadiusBRMobileFallback = ( undefined !== toggleBorderMobile['border-bottom-right-radius'] ) ? toggleBorderMobile['border-bottom-right-radius'] : toggleBorderRadiusBRTabletFallback;
-	const toggleBorderRadiusBLMobileFallback = ( undefined !== toggleBorderMobile['border-bottom-left-radius'] ) ? toggleBorderMobile['border-bottom-left-radius'] : toggleBorderRadiusBLTabletFallback;
+	const toggleBorderRadiusTLTabletFallback = ( '' !== toggleBorderTablet['border-top-left-radius'] && 'px' !== toggleBorderTablet['border-top-left-radius'] ) ? toggleBorderTablet['border-top-left-radius'] : toggleBorderRadiusTLFallback;
+	const toggleBorderRadiusTRTabletFallback = ( '' !== toggleBorderTablet['border-top-right-radius'] && 'px' !== toggleBorderTablet['border-top-right-radius'] ) ? toggleBorderTablet['border-top-right-radius'] : toggleBorderRadiusTRFallback;
+	const toggleBorderRadiusBRTabletFallback = ( '' !== toggleBorderTablet['border-bottom-right-radius'] && 'px' !== toggleBorderTablet['border-bottom-right-radius'] ) ? toggleBorderTablet['border-bottom-right-radius'] : toggleBorderRadiusBRFallback;
+	const toggleBorderRadiusBLTabletFallback = ( '' !== toggleBorderTablet['border-bottom-left-radius'] && 'px' !== toggleBorderTablet['border-bottom-left-radius'] ) ? toggleBorderTablet['border-bottom-left-radius'] : toggleBorderRadiusBLFallback;
+	const toggleBorderRadiusTLMobileFallback = ( '' !== toggleBorderMobile['border-top-left-radius'] && 'px' !== toggleBorderMobile['border-top-left-radius'] ) ? toggleBorderMobile['border-top-left-radius'] : toggleBorderRadiusTLTabletFallback;
+	const toggleBorderRadiusTRMobileFallback = ( '' !== toggleBorderMobile['border-top-right-radius'] && 'px' !== toggleBorderMobile['border-top-right-radius'] ) ? toggleBorderMobile['border-top-right-radius'] : toggleBorderRadiusTRTabletFallback;
+	const toggleBorderRadiusBRMobileFallback = ( '' !== toggleBorderMobile['border-bottom-right-radius'] && 'px' !== toggleBorderMobile['border-bottom-right-radius'] ) ? toggleBorderMobile['border-bottom-right-radius'] : toggleBorderRadiusBRTabletFallback;
+	const toggleBorderRadiusBLMobileFallback = ( '' !== toggleBorderMobile['border-bottom-left-radius'] && 'px' !== toggleBorderMobile['border-bottom-left-radius'] ) ? toggleBorderMobile['border-bottom-left-radius'] : toggleBorderRadiusBLTabletFallback;
+
+	// Individual Toggle Border Radius Fallback for Inner Dot.
+	let toggleBorderTFallback = undefined !== toggleBorder['border-top-width'] ? getAttributeFallback( toggleBorder['border-top-width'], 'checkBoxToggleBorderTopWidth', blockName ) : '';
+	let toggleBorderLFallback = undefined !== toggleBorder['border-left-width'] ? getAttributeFallback( toggleBorder['border-left-width'], 'checkBoxToggleBorderLeftWidth', blockName ) : '';
+	let toggleBorderBFallback = undefined !== toggleBorder['border-bottom-width'] ? getAttributeFallback( toggleBorder['border-bottom-width'], 'checkBoxToggleBorderBottomWidth', blockName ) : '';
+	let toggleBorderRFallback = undefined !== toggleBorder['border-right-width'] ? getAttributeFallback( toggleBorder['border-right-width'], 'checkBoxToggleBorderBottomRight', blockName ) : '';
+
+	toggleBorderTFallback = isNaN( toggleBorderTFallback ) ? toggleBorderTFallback : `${ toggleBorderTFallback }px`;
+	toggleBorderRFallback = isNaN( toggleBorderRFallback ) ? toggleBorderRFallback : `${ toggleBorderRFallback }px`;
+	toggleBorderBFallback = isNaN( toggleBorderBFallback ) ? toggleBorderBFallback : `${ toggleBorderBFallback }px`;
+	toggleBorderLFallback = isNaN( toggleBorderLFallback ) ? toggleBorderLFallback : `${ toggleBorderLFallback }px`;
+	const toggleBorderTTabletFallback = ( 'px' !== toggleBorderTablet['border-top-width'] && '' !== toggleBorderTablet['border-top-width'] ) ? toggleBorderTablet['border-top-width'] : toggleBorderTFallback;
+	const toggleBorderRTabletFallback = ( 'px' !== toggleBorderTablet['border-right-width'] && '' !== toggleBorderTablet['border-right-width'] ) ? toggleBorderTablet['border-right-width'] : toggleBorderRFallback;
+	const toggleBorderBTabletFallback = ( 'px' !== toggleBorderTablet['border-bottom-width'] && '' !== toggleBorderTablet['border-bottom-width'] ) ? toggleBorderTablet['border-bottom-width'] : toggleBorderBFallback;
+	const toggleBorderLTabletFallback = ( 'px' !== toggleBorderTablet['border-left-width'] && '' !== toggleBorderTablet['border-left-width'] ) ? toggleBorderTablet['border-left-width'] : toggleBorderLFallback;
+	const toggleBorderTMobileFallback = ( 'px' !== toggleBorderMobile['border-top-width'] && '' !== toggleBorderMobile['border-top-width'] ) ? toggleBorderMobile['border-top-width'] : toggleBorderTTabletFallback;
+	const toggleBorderRMobileFallback = ( 'px' !== toggleBorderMobile['border-right-width'] && '' !== toggleBorderMobile['border-right-width'] ) ? toggleBorderMobile['border-right-width'] : toggleBorderRTabletFallback;
+	const toggleBorderBMobileFallback = ( 'px' !== toggleBorderMobile['border-bottom-width'] && '' !== toggleBorderMobile['border-bottom-width'] ) ? toggleBorderMobile['border-bottom-width'] : toggleBorderBTabletFallback;
+	const toggleBorderLMobileFallback = ( 'px' !== toggleBorderMobile['border-left-width'] && '' !== toggleBorderMobile['border-left-width'] ) ? toggleBorderMobile['border-left-width'] : toggleBorderLTabletFallback;
 
 	const submitBorder = generateBorderCSS( props.attributes, 'btn' );
 	const submitBorderTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
@@ -266,6 +285,9 @@ function styling( props ) {
 			'font-weight': inputFontWeight,
 			'color': inputplaceholderColor,
 			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
+		},
+		' .components-input-control__container': {
+			'background-color': bgColor,
 		},
 		' .uagb-forms-main-form textarea': {
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
@@ -340,6 +362,31 @@ function styling( props ) {
 			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 			'letter-spacing': generateCSSUnit( submitTextLetterSpacing, submitTextLetterSpacingType ),
+		},
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background)': {
+			'color': submitColor,
+			'font-size': generateCSSUnit(
+				submitTextFontSize,
+				submitTextFontSizeType
+			),
+			'line-height': generateCSSUnit(
+				submitTextLineHeight,
+				submitTextLineHeightType
+			),
+			'font-family': submitTextFontFamily,
+			'font-style': submitTextFontStyle,
+			'text-transform': submitTextTransform,
+			'text-decoration': submitTextDecoration,
+			'font-weight': submitTextFontWeight,
+			'background-color': submitBgColor,
+			...submitBorder,
+			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottom,
+				paddingBtnUnit
+			),
+			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button:hover': {
 			'color': submitColorHover,
@@ -442,6 +489,9 @@ function styling( props ) {
 		' .uagb-forms-field-set:hover .uagb-forms-input::placeholder': {
 			'color': inputplaceholderHoverColor,
 		},
+		' .uagb-forms-field-set:hover .uagb-forms-input select': {
+			'color': inputplaceholderHoverColor,
+		},
 	};
 
 	tabletSelectors = {
@@ -476,11 +526,11 @@ function styling( props ) {
 			'height': generateCSSUnit( toggleSizeTabletFallback, 'px' ),
 		},
 		' .uagb-switch' : {
-			'height': `calc(${ toggleBorderTablet['border-top-width'] } + ${ toggleBorderTablet['border-bottom-width'] } + ${ generateCSSUnit(
+			'height': `calc(${ toggleBorderTTabletFallback} + ${ toggleBorderBTabletFallback } + ${ generateCSSUnit(
 				parseInt( 20 + toggleWidthSizeNumberTablet + ( ( 20 + toggleWidthSizeNumberTablet ) / 3 ) ),
 				'px'
 			) })`,
-			'width': `calc(${ toggleBorderTablet['border-left-width'] } + ${ toggleBorderTablet['border-right-width'] } + ${ generateCSSUnit(
+			'width': `calc(${ toggleBorderLTabletFallback } + ${ toggleBorderRTabletFallback } + ${ generateCSSUnit(
 				parseInt( ( ( 20 + toggleWidthSizeNumberTablet ) * 2.5 ) + ( ( 20 + toggleWidthSizeNumberTablet ) / 3 ) ),
 				'px'
 			) })`,
@@ -594,11 +644,11 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( fieldGapMobile, fieldGapType ),
 		},
 		' .uagb-switch' : {
-			'height': `calc(${ toggleBorderMobile['border-top-width'] } + ${ toggleBorderMobile['border-bottom-width'] } + ${ generateCSSUnit(
+			'height': `calc(${ toggleBorderTMobileFallback } + ${ toggleBorderBMobileFallback } + ${ generateCSSUnit(
 				parseInt(  20 + toggleWidthSizeNumberMobile + ( ( 20 + toggleWidthSizeNumberMobile ) / 3 ) ),
 				'px'
 			) })`,
-			'width': `calc(${ toggleBorderMobile['border-left-width'] } + ${ toggleBorderMobile['border-right-width'] } + ${ generateCSSUnit(
+			'width': `calc(${ toggleBorderLMobileFallback } + ${ toggleBorderRMobileFallback } + ${ generateCSSUnit(
 				parseInt(  ( ( 20 + toggleWidthSizeNumberMobile ) * 2.5 ) + ( ( 20 + toggleWidthSizeNumberMobile ) / 3 ) ),
 				'px'
 			) })`,
