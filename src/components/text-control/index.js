@@ -9,6 +9,14 @@ import UAGReset from '../reset';
 
 const UAGTextControl = ( props ) => {
 
+    // Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect( () => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, [] );
+
     const handleOnChange = ( newValue ) => {
 
 		if ( props?.setAttributes ) {
