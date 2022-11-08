@@ -14,8 +14,8 @@ const UAGTextControl = ( props ) => {
 
     const handleOnChange = ( newValue ) => {
 
-		if ( props.setAttributes ) {
-			props.setAttributes( {
+		if ( props?.setAttributes ) {
+			props?.setAttributes( {
 				[ props.data.label ]: newValue,
 			} )
 		}
