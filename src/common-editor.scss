@@ -34,7 +34,12 @@
 			> .components-base-control:last-child {
 				margin-bottom: 0;
 			}
-
+			.spectra-panel__body-sub-heading {
+				font-size: 13px;
+				font-weight: 400;
+				line-height: 16px;
+				color: #50575E;
+			}
 			/* Gutenberg DatePicker CSS */
 			.components-datetime {
 
