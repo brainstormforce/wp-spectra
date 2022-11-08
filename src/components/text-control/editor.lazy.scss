@@ -19,6 +19,19 @@
 				}
 			}
 		}
+
+		&-textarea {
+
+			textarea {
+
+				border-color: #e6e7e9;
+
+				&:focus {
+					border-color: #959595;
+					box-shadow: unset;
+				}
+			}
+		}
 	}
 
 	.components-text-control__input {
