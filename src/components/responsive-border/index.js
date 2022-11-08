@@ -34,7 +34,7 @@ const ResponsiveBorder = ( props ) => {
 		attributes,
 		setAttributes,
 		disabledBorderTitle,
-		disableBottomSeparator = false,
+		disableBottomSeparator,
 		deviceType,
 
 		prefix,
