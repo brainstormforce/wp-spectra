@@ -9,7 +9,17 @@
 		border-color: $spectra-color-border;
 		border-radius: $spectra-control-border-radius;
 		padding: $spectra-control-input-padding;
+		&::-webkit-input-placeholder { /* Edge */
+			color: #aaaaaa;
+		}
 
+		&:-ms-input-placeholder { /* Internet Explorer 10-11 */
+			color: #aaaaaa;
+		}
+
+		&::placeholder {
+			color: #aaaaaa;
+		}
 		&:focus {
 			border-color: $spectra-color-border-hover;
 			box-shadow: unset;
