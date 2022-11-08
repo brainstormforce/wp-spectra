@@ -226,6 +226,103 @@ export default function Settings( props ) {
 		imageSizeOptions = getImageSize( iconImage.sizes );
 	}
 
+	let alignmentOptions = [
+		{
+			value: 'left',
+			icon: (
+				<Icon
+					icon={ renderSVG( 'fa fa-align-left' ) }
+				/>
+			),
+			tooltip: __(
+				'Left',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'center',
+			icon: (
+				<Icon
+					icon={ renderSVG( 'fa fa-align-center' ) }
+				/>
+			),
+			tooltip: __(
+				'Center',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'right',
+			icon: (
+				<Icon
+					icon={ renderSVG( 'fa fa-align-right' ) }
+				/>
+			),
+			tooltip: __(
+				'Right',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'full',
+			icon: (
+				<Icon
+					icon={ renderSVG( 'fa fa-align-justify' ) }
+				/>
+			),
+			tooltip: __(
+				'Full Width',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+	];
+
+	if ( modalTrigger !== 'button' ) {
+		alignmentOptions = [
+			{
+				value: 'left',
+				icon: (
+					<Icon
+						icon={ renderSVG( 'fa fa-align-left' ) }
+					/>
+				),
+				tooltip: __(
+					'Left',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'center',
+				icon: (
+					<Icon
+						icon={ renderSVG( 'fa fa-align-center' ) }
+					/>
+				),
+				tooltip: __(
+					'Center',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'right',
+				icon: (
+					<Icon
+						icon={ renderSVG( 'fa fa-align-right' ) }
+					/>
+				),
+				tooltip: __(
+					'Right',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+		];
+		if ( 'full' === modalAlign ) {
+			setAttributes( {
+				modalAlign: 'left',
+			} );
+		}
+	}
+
 	const modalTriggerPanel = (
 		<UAGAdvancedPanelBody
 			title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) }
@@ -389,56 +486,7 @@ export default function Settings( props ) {
 							label: 'modalAlignMobile',
 						},
 					} }
-					options={ [
-						{
-							value: 'left',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-left' ) }
-								/>
-							),
-							tooltip: __(
-								'Left',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'center',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-center' ) }
-								/>
-							),
-							tooltip: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'right',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-right' ) }
-								/>
-							),
-							tooltip: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'full',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-justify' ) }
-								/>
-							),
-							tooltip: __(
-								'Full Width',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
+					options={ alignmentOptions }
 					showIcons={ true }
 					responsive={true}
 				/>
