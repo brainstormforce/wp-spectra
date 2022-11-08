@@ -81,7 +81,7 @@ class UAGB_Init_Blocks {
 	/**
 	 * Function to get Spectra Font Awesome Polyfiller data.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.14
 	 */
 	public function spectra_font_awesome_polyfiller() {
 
@@ -580,7 +580,8 @@ class UAGB_Init_Blocks {
 			'uagb-block-editor-js',
 			'uagb_blocks_info',
 			array(
-				'blocks'                             => UAGB_Config::get_block_attributes(),
+				'cf7_is_active'                      => class_exists( 'WPCF7_ContactForm' ),
+				'gf_is_active'                       => class_exists( 'GFForms' ),
 				'category'                           => 'uagb',
 				'ajax_url'                           => admin_url( 'admin-ajax.php' ),
 				'cf7_forms'                          => $this->get_cf7_forms(),
