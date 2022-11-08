@@ -1,11 +1,8 @@
 import {
-	ButtonGroup,
-	Button,
-	Tooltip,
     TextControl,
 } from '@wordpress/components';
 import ResponsiveToggle from '../responsive-toggle';
-import { __, sprintf } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import UAGReset from '../reset';
