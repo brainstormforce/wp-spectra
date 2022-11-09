@@ -26,10 +26,10 @@ import {
 import {
 	Icon,
 	ToggleControl,
-	TextControl
 } from '@wordpress/components';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import UAGTextControl from '@Components/text-control';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -286,12 +286,17 @@ const Settings = ( props ) => {
 							setAttributes( { showDescription: ! showDescription } )
 						}
 					/>
-					<TextControl
+					<UAGTextControl
 						label={ __(
 							'Link',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ link }
+						data={{
+							value: link,
+							label: 'link',
+						}}
+						setAttributes={ setAttributes }
 						onChange={ ( value ) =>
 							setAttributes( { link: value } )
 						}
