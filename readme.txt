@@ -226,6 +226,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Spectra CSS conflict due to which date picker of post scheduler does not show the navigation.
 * Fix: Icon list - Icon Alignment top and middle not working as expected if we increase font size.
 * Fix: Container - Breaks when the background is a video and classic overlay is selected.
+* Fix: legacy blocks - Responsive condition does not save when we use the legacy blocks.
 
 = 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 =
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
