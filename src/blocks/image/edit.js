@@ -41,7 +41,7 @@ export default function UAGBImageEdit( props ) {
 
 		responsiveConditionPreview( props );
 
-	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	return (
 		<React.Fragment>

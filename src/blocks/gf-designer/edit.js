@@ -100,7 +100,7 @@ const UAGBGF = ( props ) => {
 
 		responsiveConditionPreview( props );
 
-	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
 		const submitButton = document.querySelector( '.wpgf-submit' );

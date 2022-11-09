@@ -69,7 +69,7 @@ const ButtonsComponent = ( props ) => {
 
 		responsiveConditionPreview( props );
 
-	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 	return (
 
 					<>

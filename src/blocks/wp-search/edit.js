@@ -177,7 +177,7 @@ const UAGBWpSearchEdit = ( props ) => {
 
 		responsiveConditionPreview( props );
 
-	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.

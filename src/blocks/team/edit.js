@@ -20,7 +20,7 @@ const UAGBTeam = ( props ) => {
 
 		responsiveConditionPreview( props );
 
-	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 	useEffect( () => {
 
 		const blockStyling = styling( props );

@@ -4,9 +4,9 @@ const responsiveConditionPreview = ( props ) => {
 		const element = document.getElementById( 'block-' + props.clientId	);
 
         const desktopStyle = document.getElementById( props.clientId + '-desktop-hide-block' );
-
-		if ( null !== element && undefined !== element ) {
-            if( props.attributes.UAGHideDesktop ) {
+        if( props.attributes.UAGHideDesktop ) {
+		    if ( null !== element && undefined !== element ) {
+            
                 if ( null === desktopStyle || undefined === desktopStyle ) {
 
                     const $style = document.createElement( 'style' );
@@ -19,10 +19,10 @@ const responsiveConditionPreview = ( props ) => {
                           
                     document.head.appendChild( $style );
                 }
-            } else if ( null !== desktopStyle && undefined !== desktopStyle ) {
-                desktopStyle.remove();
-            }
-		}
+            } 
+		}else if ( null !== desktopStyle && undefined !== desktopStyle ) {
+            desktopStyle.remove();
+        }
         const tabletPreview = document.getElementsByClassName( 'is-tablet-preview' );
         const mobilePreview = document.getElementsByClassName( 'is-mobile-preview' );
     

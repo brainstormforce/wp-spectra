@@ -242,7 +242,7 @@ const UAGBFormsEdit = ( props ) => {
 
 		responsiveConditionPreview( props );
 
-	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	const blockVariationPickerOnSelect = useCallback(
 		( nextVariation = props.defaultVariation ) => {

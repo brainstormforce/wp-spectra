@@ -131,7 +131,7 @@ const UAGBRestaurantMenu = ( props ) => {
 
 		responsiveConditionPreview( props );
 
-	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
 		// Set showImage attribute in child blocks based on current parent block's value.

@@ -343,7 +343,7 @@ const UAGBPostMasonry = ( props ) => {
 
 		responsiveConditionPreview( props );
 
-	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, props.deviceType ] );
 
 	const togglePreview = () => {
 		setState( { isEditing: ! state.isEditing } );

@@ -295,7 +295,7 @@ const UAGBPostCarousel = ( props ) => {
 
 		responsiveConditionPreview( props );
 
-	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, props.deviceType ] );
 
 	const onSelectPostType = ( value ) => {
 		const { setAttributes } = props;
