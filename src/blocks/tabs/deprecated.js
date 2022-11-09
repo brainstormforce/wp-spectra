@@ -4,10 +4,11 @@
 
 import classnames from 'classnames';
 import renderSVG from '@Controls/deprecatedRenderIcon';
-import renderSVGicon from '@Controls/renderIcon';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
+import newAttributesV2_0_14 from './deprecated/v2_0_14/attributes';
+import newSaveV2_0_14 from './deprecated/v2_0_14/save';
 
 const borderAttributes = getBorderAttributes( 'tab' );
 
@@ -862,77 +863,8 @@ const deprecated = [
 		}
 	},
 	{
-		attributes,
-		save( props ) {
-			const { attributes, className } = props;
-			const {
-				block_id,
-				tabHeaders,
-				tabActiveFrontend,
-				tabsStyleD,
-				tabsStyleT,
-				tabsStyleM,
-				icon,
-				showIcon,
-				iconPosition,
-				tabAlign,
-			} = attributes;
-		
-			return (
-				<div
-					className={ classnames(
-						className,
-						`uagb-block-${ block_id }`,
-						'uagb-tabs__wrap',
-						`uagb-tabs__${ tabsStyleD }-desktop`,
-						`uagb-tabs__${ tabsStyleT }-tablet`,
-						`uagb-tabs__${ tabsStyleM }-mobile`
-					) }
-					data-tab-active={ tabActiveFrontend }
-				>
-					<ul className={ `uagb-tabs__panel uagb-tabs__align-${ tabAlign }` }>
-						{ tabHeaders.map( ( header, index ) => (
-							<li
-								key={ index }
-								className={ `uagb-tab ${
-									tabActiveFrontend === index
-										? 'uagb-tabs__active'
-										: ''
-								}` }
-							>
-								<a
-									href={ `#uagb-tabs__tab${ index }` }
-									className={ `uagb-tabs-list uagb-tabs__icon-position-${ iconPosition }` }
-									data-tab={ index }
-								>
-									{ showIcon &&
-										( iconPosition === 'left' ||
-											iconPosition === 'top' ) && (
-											<span className="uagb-tabs__icon">
-												{ renderSVGicon( icon ) }
-											</span>
-										) }
-									<RichText.Content
-										value={ header }
-									/>
-									{ showIcon &&
-										( iconPosition === 'right' ||
-											iconPosition === 'bottom' ) && (
-											<span className="uagb-tabs__icon">
-												{ renderSVGicon( icon ) }
-											</span>
-										) }
-								</a>
-							</li>
-						) ) }
-					</ul>
-					<div className="uagb-tabs__body-wrap">
-						<InnerBlocks.Content />
-					</div>
-				</div>
-			);
-		}
-		
+		attributes: newAttributesV2_0_14,
+		save : newSaveV2_0_14,
 	}
 ];
 
