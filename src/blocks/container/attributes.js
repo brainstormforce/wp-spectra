@@ -841,10 +841,6 @@ const attributes = {
 			styleType: 'container-bottom-content-above-shape'
 		},
 	},
-	blockDescendants: {
-		type: 'array',
-		default: []
-	},
 	widthSetByUser: {
 		type: 'boolean',
 		default: false,

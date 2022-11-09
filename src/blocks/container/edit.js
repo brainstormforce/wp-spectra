@@ -82,11 +82,6 @@ const UAGBContainer = ( props ) => {
 			variationPicker.insertBefore( closeButton,variationPickerLabel );
 		}
 
-		const descendants = select( 'core/block-editor' ).getBlocks( props.clientId );
-
-		if ( descendants.length !== props.attributes.blockDescendants.length ) {
-			props.setAttributes( { blockDescendants: descendants } );
-		}
 		const {
 			borderStyle,
 			borderWidth,
@@ -130,13 +125,6 @@ const UAGBContainer = ( props ) => {
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-container-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
-		const descendants = select( 'core/block-editor' ).getBlocks( props.clientId );
-
-		if ( descendants.length !== props.attributes.blockDescendants.length ) {
-			props.setAttributes( { blockDescendants: descendants } );
-		}
-		
 
 	}, [ props ] );
 

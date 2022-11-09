@@ -1,4 +1,5 @@
 import { getBorderAttributes } from '@Controls/generateAttributes';
+import { __ } from '@wordpress/i18n';
 
 const btnBorderAttributes = getBorderAttributes( 'btn' )
 
@@ -249,12 +250,12 @@ const attributes = {
 	heading: {
 		source: 'html',
 		selector: 'h1,h2,h3,h4,h5,h6,span,p',
-		default: 'Subscribe Now'
+		default: __( 'Subscribe Now' , 'ultimate-addons-for-gutenberg' )
 	},
 	prefix: {
 		source: 'html',
 		selector: '.uagb-marketing-btn__prefix',
-		default: 'Get access to Premium Features for FREE for a year!'
+		default: __( 'Get access to Premium Features for FREE for a year!' , 'ultimate-addons-for-gutenberg' )
 	},
 
 	// Icon attributes

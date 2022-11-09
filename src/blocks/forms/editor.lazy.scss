@@ -62,13 +62,24 @@ select.uagb-forms-select-box.uagb-forms-input {
 	margin-bottom: 15px;
 }
 
-[data-type="uagb/forms"] .block-editor-block-variation-picker__variations {
-	display: flex;
-	justify-content: center;
-}
+.uagb-forms-variations {
 
-[data-type="uagb/forms"] .block-editor-block-variation-picker__variation.components-button.has-icon {
-	width: 90px;
+	.components-button,
+	.components-button.is-secondary,
+	.components-button.is-tertiary,
+	.components-button:hover:not(:disabled) {
+		box-shadow: none;
+		outline: none;
+	}
+
+	.block-editor-block-variation-picker__variations {
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	.block-editor-block-variation-picker__variation.components-button.has-icon {
+		width: 34px;
+	}
 }
 
 .uagb-forms-phone-wrap {

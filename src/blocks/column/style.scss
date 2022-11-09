@@ -26,11 +26,21 @@
 	.aligncenter {
 		display: block;
 		text-align: center;
+
+		figcaption {
+			display: block;
+			text-align: center;
+		}
 	}
 
 	.alignright {
 		display: block;
 		text-align: right;
+
+		figcaption {
+			display: block;
+			text-align: right;
+		}
 	}
 
 	.wp-block-image {
