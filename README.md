@@ -188,6 +188,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Info Box: Added show icon toggle for CTA.
 * Improvement: Post Carousel: Added background type selector.
 * Improvement: Post (Grid/Masonry/Carousel): Added background type selector for CTA.
+* Improvement: Spectra Text Control: New text component in settings for a more consistent styling.
 
 ### 2.0.14 - TUESDAY, 08th NOVEMBER 2022 ###
 * Improvement: Compatibility with WordPress 6.1.
