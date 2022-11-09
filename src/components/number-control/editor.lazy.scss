@@ -3,31 +3,48 @@
 .uag-number-control {
 
 	.uagb-number-control__mobile-controls {
-		align-items: center;
-		display: grid;
-		grid-template-columns: 75% 25%;
-		color: $spectra-color-body;
 
-		.uag-control-label {
-			margin-bottom: 0;
+		// Full-width Control.
+		&.uag-number-control__full-width {
+
+			color: $spectra-color-body;
+
+			.uag-control-label {
+				margin-bottom: 11px;
+			}
+
+			.components-number-control .components-input-control__input {
+				padding: 0 7px 0 12px !important;
+			}
+
 		}
 
-		.components-number-control .components-input-control__input {
-			padding: 0 4px !important;
-			text-align: center;
-		}
+		// Inline Control.
+		&.uag-number-control__inline {
 
-		.components-input-control__container {
-			flex: 0 0 0%;
-			width: 100%;
-		}
-
-		.components-number-control {
+			align-items: center;
 			display: grid;
-			width: 88%;
-			margin-left: 5px;
+			grid-template-columns: repeat(3, 1fr);
+			color: $spectra-color-body;
+
+			.uag-control-label {
+				margin-bottom: 0;
+			}
+
+			.components-number-control .components-input-control__input {
+				padding: 0 7px 0 12px !important;
+			}
+
+			.components-input-control__container {
+				width: 100%;
+			}
+
+			.components-number-control {
+				display: grid;
+			}
 
 		}
+
 	}
 
 	.uagb-control__header {
@@ -35,6 +52,10 @@
 		grid-template-columns: 100%;
 		justify-items: end;
 		justify-content: end;
+	}
+
+	.uag-responsive-label-wrap {
+		grid-column: 1 / span 2;
 	}
 
 }
