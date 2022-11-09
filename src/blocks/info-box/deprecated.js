@@ -2012,7 +2012,7 @@ const deprecated = [
 	{
 		attributes: newAttributesV2_0_13,
 		save : newSaveV2_0_13,
-	}
+	},
 ];
 
 export default deprecated;

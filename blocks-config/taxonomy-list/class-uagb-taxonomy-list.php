@@ -125,7 +125,8 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 								'default' => __( 'Taxonomy Not Available.', 'ultimate-addons-for-gutenberg' ),
 							),
 							'boxShadowColor'             => array(
-								'type' => 'string',
+								'type'    => 'string',
+								'default' => '#00000070',
 							),
 							'boxShadowHOffset'           => array(
 								'type'    => 'number',
