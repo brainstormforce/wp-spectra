@@ -25,13 +25,13 @@ import UAGPresets from '@Components/presets';
 import BoxShadowControl from '@Components/box-shadow';
 import { decodeEntities } from '@wordpress/html-entities';
 import UAGNumberControl from '@Components/number-control';
+import UAGTextControl from '@Components/text-control';
 
 const MAX_POSTS_COLUMNS = 8;
 
 import {
 	ToggleControl,
 	ToolbarGroup,
-	TextControl,
 	Icon,
 	ExternalLink
 } from '@wordpress/components';
@@ -713,13 +713,18 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				</h2>
-				<TextControl
+				<UAGTextControl
 					autoComplete="off"
 					label={ __(
 						'Display Message',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ postDisplaytext }
+					data={{
+						value: postDisplaytext,
+						label: 'postDisplaytext',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( { postDisplaytext: value } )
 					}
@@ -811,17 +816,27 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
-				<TextControl
+				<UAGTextControl
 					label={ __(
 						'Previous Text',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ paginationPrevText }
+					data={{
+						value: paginationPrevText,
+						label: 'paginationPrevText',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ onChangePrevText }
 				/>
-				<TextControl
+				<UAGTextControl
 					label={ __( 'Next Text', 'ultimate-addons-for-gutenberg' ) }
 					value={ paginationNextText }
+					data={{
+						value: paginationNextText,
+						label: 'paginationNextText',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ onChangeNextText }
 				/>
 			</UAGAdvancedPanelBody>
@@ -1094,9 +1109,14 @@ const Settings = ( props ) => {
 						] }
 					/>
 				{ 'default' === taxStyle && (
-					<TextControl
+					<UAGTextControl
 						label={ __( 'Taxonomy Divider', 'ultimate-addons-for-gutenberg' ) }
 						value={ taxDivider }
+						data={{
+							value: taxDivider,
+							label: 'taxDivider',
+						}}
+						setAttributes={ setAttributes }
 						onChange={ ( value ) =>
 							setAttributes( {
 								taxDivider: value,
@@ -1213,12 +1233,17 @@ const Settings = ( props ) => {
 								setAttributes( { newTab: ! newTab } )
 							}
 						/>
-						<TextControl
+						<UAGTextControl
 							label={ __(
 								'Text',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ ctaText }
+							data={{
+								value: ctaText,
+								label: 'ctaText',
+							}}
+							setAttributes={ setAttributes }
 							onChange={ ( value ) =>
 								setAttributes( { ctaText: value } )
 							}
