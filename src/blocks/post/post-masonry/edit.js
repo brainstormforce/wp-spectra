@@ -2524,7 +2524,7 @@ const UAGBPostMasonry = ( props ) => {
 				<Placeholder
 					icon="admin-post"
 					label={
-						uagb_blocks_info.blocks[ 'uagb/post-masonry' ].title
+						__( 'Post Masonry', 'ultimate-addons-for-gutenberg' )
 					}
 				>
 					{ ! Array.isArray( latestPosts ) ? (
