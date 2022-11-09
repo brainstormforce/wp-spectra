@@ -19,7 +19,6 @@ import { dateI18n } from '@wordpress/date';
 import {
 	QueryControls,
 	ToggleControl,
-	TextControl,
 	Icon,
 } from '@wordpress/components';
 import {
@@ -111,7 +110,6 @@ const Settings = ( props ) => {
 		categories,
 		postsToShow,
 		imageSize,
-		readMoreText,
 		ctaBackground,
 		icon,
 		iconColor,
@@ -222,7 +220,7 @@ const Settings = ( props ) => {
 
 	let device = deviceType;
 
-	// For desktop, attribute name does not have `desktop` suffix to support backward compatibility. 
+	// For desktop, attribute name does not have `desktop` suffix to support backward compatibility.
 	if( 'Desktop' === deviceType ) {
 		device = '';
 	}
@@ -866,20 +864,6 @@ const Settings = ( props ) => {
 						setAttributes( { displayPostLink: ! displayPostLink } )
 					}
 				/>
-				{ displayPostLink && (
-					<>
-						<TextControl
-							label={ __(
-								'CTA Text',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ readMoreText }
-							onChange={ ( value ) =>
-								setAttributes( { readMoreText: value } )
-							}
-						/>
-					</>
-				) }
 				<ToggleControl
 					label={ __(
 						'Open link in New Tab',
