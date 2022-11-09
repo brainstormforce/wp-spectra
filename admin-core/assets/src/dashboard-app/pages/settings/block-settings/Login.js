@@ -20,7 +20,7 @@ export default function Login(props) {
 	const googleClientId = social ? social.googleClientId : '';
 	const facebookAppId = social ? social.facebookAppId : '';
 	const facebookAppSecret = social ? social.facebookAppSecret : '';
-	
+
 	const savedFormData = (type, payload) => {
 		dispatch({type, payload })
 		const formData = new window.FormData();
@@ -69,11 +69,10 @@ export default function Login(props) {
 				</div>
 				<div>
 					<Switch
-						checked={socialRegister}
-						disabled={true}
+						checked={uag_react?.is_allow_registration ? socialRegister : false}
 						onChange={(e) => savedFormData('UPDATE_SOCIAL_REGISTER', !socialRegister)}
 						className={classNames(
-							socialRegister ? 'bg-spectra' : 'bg-gray-200',
+							uag_react?.is_allow_registration && socialRegister ? 'bg-spectra' : 'bg-gray-200',
 							'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
 						)}
 						>
