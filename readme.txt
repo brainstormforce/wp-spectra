@@ -170,6 +170,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 2.0.15 - TUESDAY, 08th NOVEMBER 2022 =
+* Improvement: Post Carousel/Masonry/Grid - Button text is now editable inside the editor.
+
 = 2.0.14 - TUESDAY, 08th NOVEMBER 2022 =
 * Improvement: Compatibility with WordPress 6.1.
 * Improvement: Container - Equal height setting in the Parent container.
