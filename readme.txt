@@ -176,6 +176,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Info-Box - Add responsive feature in Info Box Icon width.
 * Fix: Admin Dashboard - Font dropdown control was going under the section.
 * Fix: Table Of Contents - Alignment issue of marker's view.
+* Fix: Marketing Button - Block does not remain in the stack order when the Blocksy theme is active.
 
 = 2.0.14 - TUESDAY, 08th NOVEMBER 2022 =
 * Improvement: Compatibility with WordPress 6.1.
