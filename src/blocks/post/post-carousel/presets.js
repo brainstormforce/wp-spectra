@@ -31,7 +31,7 @@ const presets = [
 			{ label: 'overlayOpacity', value: '' },
 			{ label: 'rowGap', value: 20 },
 			{ label: 'columnGap', value: 20 },
-			{ label: 'bgColor', value: '#f6f6f6' },
+			{ label: 'bgType', value: 'color' },
 			{ label: 'displayPostImage', value: true }
         ],
         icon: '<svg xmlns="http://www.w3.org/2000/svg" width="325" height="245" viewBox="0 0 325 245" fill="none"> <path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M82 159.295C82 157.647 83.6714 156.312 85.7331 156.312H239.528C241.59 156.312 243.261 157.647 243.261 159.295C243.261 160.942 241.59 162.277 239.528 162.277H85.7331C83.6714 162.277 82 160.942 82 159.295Z" fill="#D2D2D2"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M105.861 173.214C105.861 171.566 107.523 170.231 109.573 170.231H216.364C218.414 170.231 220.076 171.566 220.076 173.214C220.076 174.861 218.414 176.196 216.364 176.196H109.573C107.523 176.196 105.861 174.861 105.861 173.214Z" fill="#D2D2D2"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M96 137.597C96 135.78 97.6008 134.306 99.5754 134.306H226.26C228.235 134.306 229.836 135.78 229.836 137.597C229.836 139.415 228.235 140.888 226.26 140.888H99.5754C97.6008 140.888 96 139.415 96 137.597Z" fill="#B6B6B6"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M80 89.0935V117.067H152.131H245.381V89.0935V61.1196H152.131H80V89.0935ZM135.837 68.5082C139.711 69.321 142.651 72.9417 142.651 76.8998C142.651 81.5414 138.688 85.5021 134.043 85.5021C130.082 85.5021 126.459 82.5641 125.645 78.693C125.032 75.7729 125.868 72.9926 128 70.8616C130.134 68.7294 132.913 67.8948 135.837 68.5082ZM178.436 80.8801L181.505 83.9461L184.574 87.0121L212.381 112.764H184.574H152.131H119.687V111.221V109.679L128.659 100.714L137.631 91.7487L142.01 96.123L146.389 100.497L159.273 87.6227C166.359 80.5415 172.188 74.7479 172.228 74.7479C172.267 74.7479 175.061 77.5074 178.436 80.8801Z" fill="#B6B6B6"/> <path d="M134 194.575C134 193.4 134.978 192.448 136.184 192.448H189.958C191.164 192.448 192.142 193.4 192.142 194.575V207.872C192.142 209.047 191.164 210 189.958 210H136.184C134.978 210 134 209.047 134 207.872V194.575Z" fill="#B6B6B6"/> </svg>',
@@ -61,7 +61,7 @@ const presets = [
 			{ label: 'overlayOpacity', value: 40 },
 			{ label: 'rowGap', value: 20 },
 			{ label: 'columnGap', value: 20 },
-			{ label: 'bgColor', value: '#000000' },
+			{ label: 'bgType', value: 'color' },
 			{ label: 'displayPostImage', value: true },
         ],
         icon: '<svg xmlns="http://www.w3.org/2000/svg" width="325" height="245" viewBox="0 0 325 245" fill="none"> <path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"/> <path opacity="0.2" fill-rule="evenodd" clip-rule="evenodd" d="M43 136.5V228H163.5H284V136.5V45H163.5H43V136.5ZM110.075 69.1673C122.777 71.8259 132.417 83.6688 132.417 96.6154C132.417 111.798 119.421 124.753 104.191 124.753C91.2042 124.753 79.3242 115.143 76.6572 102.481C74.6458 92.9296 77.3872 83.8354 84.379 76.865C91.3751 69.8908 100.488 67.1608 110.075 69.1673ZM249.754 109.635L269.879 129.692V171.808V213.923H163.5H57.1211V208.877V203.832L86.5391 174.509L115.958 145.185L130.316 159.493L144.674 173.801L186.918 131.689C210.153 108.527 229.268 89.5769 229.396 89.5769C229.525 89.5769 238.686 98.603 249.754 109.635Z" fill="#B6B6B6"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M73 123.989C73 122.341 74.6714 121.006 76.7331 121.006H230.528C232.59 121.006 234.261 122.341 234.261 123.989C234.261 125.636 232.59 126.971 230.528 126.971H76.7331C74.6714 126.971 73 125.636 73 123.989Z" fill="#D2D2D2"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M73 137.908C73 136.261 74.662 134.925 76.7123 134.925H183.503C185.553 134.925 187.215 136.261 187.215 137.908C187.215 139.555 185.553 140.891 183.503 140.891H76.7123C74.662 140.891 73 139.555 73 137.908Z" fill="#D2D2D2"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M73 102.291C73 100.473 74.6008 99 76.5754 99H203.26C205.235 99 206.836 100.473 206.836 102.291C206.836 104.109 205.235 105.582 203.26 105.582H76.5754C74.6008 105.582 73 104.109 73 102.291Z" fill="#B6B6B6"/> <path d="M73 159.269C73 158.094 73.9777 157.142 75.1837 157.142H128.958C130.164 157.142 131.142 158.094 131.142 159.269V172.566C131.142 173.741 130.164 174.694 128.958 174.694H75.1837C73.9777 174.694 73 173.741 73 172.566V159.269Z" fill="#B6B6B6"/> </svg>',
@@ -91,7 +91,7 @@ const presets = [
 			{ label: 'overlayOpacity', value: 60 },
 			{ label: 'rowGap', value: 20 },
 			{ label: 'columnGap', value: 20 },
-			{ label: 'bgColor', value: '#f6f6f6' },
+			{ label: 'bgType', value: 'color' },
 			{ label: 'autoplaySpeed', value: '' },
 			{ label: 'arrowSize', value: 16 },
 			{ label: 'arrowBorderSize', value: 2 },
@@ -124,7 +124,7 @@ const presets = [
 			{ label: 'overlayOpacity', value: 60 },
 			{ label: 'rowGap', value: 20 },
 			{ label: 'columnGap', value: 20 },
-			{ label: 'bgColor', value: '#F6F6F6' },
+			{ label: 'bgType', value: 'color' },
 			{ label: 'autoplaySpeed', value: '' },
 			{ label: 'arrowSize', value: 16 },
 			{ label: 'arrowBorderSize', value: 2 },
@@ -148,7 +148,6 @@ const buttonsPresets = [
 	},
 	{
 		defaultPresetAttributes: [
-			{ label: 'ctaBgColor' },
 			{ label: 'ctaBgHColor' },
 			{ label: 'ctaColor' },
 			{ label: 'ctaHColor' },
@@ -167,6 +166,7 @@ const buttonsPresets = [
         value: 'preset-1',
         label: __( 'Preset 1', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'ctaBgType', value: 'color' },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 0 },
             { label: 'btnBorderTopRightRadius', value: 0 },
@@ -180,6 +180,7 @@ const buttonsPresets = [
         value: 'preset-2',
         label: __( 'Preset 2', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'ctaBgType', value: 'color' },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 5 },
             { label: 'btnBorderTopRightRadius', value: 5 },
@@ -192,6 +193,7 @@ const buttonsPresets = [
         value: 'preset-3',
         label: __( 'Preset 3', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'ctaBgType', value: 'color' },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 30 },
             { label: 'btnBorderTopRightRadius', value: 30 },
@@ -204,7 +206,7 @@ const buttonsPresets = [
         value: 'preset-4',
         label: __( 'Preset 4', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'ctaBgColor', value: '#00000000' },
+			{ label: 'ctaBgType', value: 'transparent' },
 			{ label: 'ctaBgHColor', value: '#3a3a3a' },
 			{ label: 'ctaColor', value: '#0170b9' },
 			{ label: 'ctaHColor', value: '#ffffff' },
@@ -225,7 +227,7 @@ const buttonsPresets = [
         value: 'preset-5',
         label: __( 'Preset 5', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'ctaBgColor', value: '#00000000' },
+			{ label: 'ctaBgType', value: 'transparent' },
 			{ label: 'ctaBgHColor', value: '#3a3a3a' },
 			{ label: 'ctaColor', value: '#0170b9' },
 			{ label: 'ctaHColor', value: '#ffffff' },
@@ -246,7 +248,7 @@ const buttonsPresets = [
         value: 'preset-6',
         label: __( 'Preset 6', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-			{ label: 'ctaBgColor', value: '#00000000' },
+			{ label: 'ctaBgType', value: 'transparent' },
 			{ label: 'ctaBgHColor', value: '#3a3a3a' },
 			{ label: 'ctaColor', value: '#0170b9' },
 			{ label: 'ctaHColor', value: '#ffffff' },

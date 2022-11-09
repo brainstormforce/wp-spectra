@@ -12,7 +12,7 @@ const SecondCTAButton = ( props ) => {
 	}
 
 	let secondCtaIconOutput = '';
-	if ( attributes.secondCtaIcon !== '' ) {
+	if ( attributes.showSecondIcon && attributes.secondCtaIcon !== '' ) {
 		secondCtaIconOutput = renderSVG( attributes.secondCtaIcon );
 	}
 
