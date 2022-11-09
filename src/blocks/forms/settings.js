@@ -19,13 +19,13 @@ import UAGSelectControl from '@Components/select-control';
 import {
 	TextControl,
 	ToggleControl,
-	TextareaControl,
 	Icon,
 } from '@wordpress/components';
 
 import formsPresets, {buttonsPresets} from './presets';
 import UAGPresets from '@Components/presets';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import UAGTextControl from '@Components/text-control';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -397,26 +397,38 @@ const Settings = ( props ) => {
 				/>
 				{ 'message' === confirmationType && (
 					<>
-						<TextareaControl
-							label="Success Message Text"
+						<UAGTextControl
+							variant='textarea'
+							setAttributes={ setAttributes }
+							label={ __( 'Success Message Text', 'ultimate-addons-for-gutenberg' ) }
 							help={ __(
 								'Enter a message you want to display after successfull form submission',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ confirmationMessage }
+							data={ {
+								value: confirmationMessage,
+								label: 'confirmationMessage'
+							} }
 							onChange={ ( value ) =>
 								setAttributes( {
 									confirmationMessage: value,
 								} )
 							}
 						/>
-						<TextareaControl
-							label="Error Message Text"
+						<UAGTextControl
+							variant='textarea'
+							setAttributes={ setAttributes }
+							label={ __( 'Error Message Text', 'ultimate-addons-for-gutenberg' )}
 							help={ __(
 								'Enter a message you want to display after unsuccessfull form submission',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ failedMessage }
+							data={ {
+								value: failedMessage,
+								label: 'failedMessage'
+							} }
 							onChange={ ( value ) =>
 								setAttributes( {
 									failedMessage: value,
