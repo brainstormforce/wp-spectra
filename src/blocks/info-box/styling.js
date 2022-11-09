@@ -57,6 +57,8 @@ function styling( props ) {
 		iconColor,
 		iconSize,
 		iconSizeType,
+		iconSizeTablet,
+		iconSizeMobile,
 		iconimgPosition,
 		iconHover,
 		iconimgBorderRadius,
@@ -242,6 +244,8 @@ function styling( props ) {
 	 //Range
 	 const seperatorThicknessFallback = getFallbackNumber( seperatorThickness, 'seperatorThickness', blockName );
 	 const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
+	 const iconSizeFallbackTablet = isNaN( iconSizeTablet ) ? iconSizeFallback : iconSizeTablet;
+	 const iconSizeFallbackMobile = isNaN( iconSizeMobile ) ? iconSizeFallbackTablet : iconSizeMobile;
 	 const iconimgBorderRadiusFallback = getFallbackNumber( iconimgBorderRadius, 'iconimgBorderRadius', blockName );
 	 // Responsive Slider
 	 const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
@@ -558,6 +562,9 @@ function styling( props ) {
 			'padding-right': generateCSSUnit( iconMarginRightTablet, iconTabletMarginUnit ),
 			'padding-bottom': generateCSSUnit( iconMarginBottomTablet, iconTabletMarginUnit ),
 			'padding-left': generateCSSUnit( iconMarginLeftTablet, iconTabletMarginUnit ),
+			'width': generateCSSUnit( iconSizeFallbackTablet, iconSizeType ),
+			'height': generateCSSUnit( iconSizeFallbackTablet, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallbackTablet, iconSizeType ),
 		},
 		 ' .block-editor-rich-text__editable.uagb-ifb-desc': {
 			 'margin-bottom': generateCSSUnit( subHeadTabletSpace, subHeadTabletMarginUnit ),
@@ -687,6 +694,27 @@ function styling( props ) {
 		 '.uagb-infobox__content-wrap  .uagb-ifb-content img': {
 			 'box-sizing' : `${boxSizingImageTablet}`,
 		 },
+		// Icon css
+		  ' .uagb-ifb-content .uagb-ifb-icon-wrap svg': {
+			'font-size': generateCSSUnit( iconSizeFallbackTablet, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallbackTablet, iconSizeType ),
+		},
+		' .uagb-ifb-content .uagb-ifb-left-title-image svg': {
+			'font-size': generateCSSUnit( iconSizeFallbackTablet, iconSizeType ),
+			'width': generateCSSUnit( iconSizeFallbackTablet, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallbackTablet, iconSizeType ),
+		},
+		' .uagb-ifb-content .uagb-ifb-right-title-image svg': {
+			'font-size': generateCSSUnit( iconSizeFallbackTablet, iconSizeType ),
+			'width': generateCSSUnit( iconSizeFallbackTablet, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallbackTablet, iconSizeType ),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap svg': {
+			'font-size': generateCSSUnit( iconSizeFallbackTablet, iconSizeType ),
+			'width': generateCSSUnit( iconSizeFallbackTablet, iconSizeType ),
+			'height': generateCSSUnit( iconSizeFallbackTablet, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallbackTablet, iconSizeType ),
+		},
 	 };
 
 	 const mobileSelectors = {
@@ -822,6 +850,26 @@ function styling( props ) {
 			 ),
 			 'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 		 },
+		 ' .uagb-ifb-content .uagb-ifb-icon-wrap svg': {
+			'font-size': generateCSSUnit( iconSizeFallbackMobile, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallbackMobile, iconSizeType ),
+		},
+		' .uagb-ifb-content .uagb-ifb-left-title-image svg': {
+			'font-size': generateCSSUnit( iconSizeFallbackMobile, iconSizeType ),
+			'width': generateCSSUnit( iconSizeFallbackMobile, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallbackMobile, iconSizeType ),
+		},
+		' .uagb-ifb-content .uagb-ifb-right-title-image svg': {
+			'font-size': generateCSSUnit( iconSizeFallbackMobile, iconSizeType ),
+			'width': generateCSSUnit( iconSizeFallbackMobile, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallbackMobile, iconSizeType ),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap svg': {
+			'font-size': generateCSSUnit( iconSizeFallbackMobile, iconSizeType ),
+			'width': generateCSSUnit( iconSizeFallbackMobile, iconSizeType ),
+			'height': generateCSSUnit( iconSizeFallbackMobile, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallbackMobile, iconSizeType ),
+		},
 	 };
 
 	if (

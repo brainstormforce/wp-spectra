@@ -119,7 +119,6 @@ const Settings = ( props ) => {
 		descFontStyle,
 		ctaFontStyle,
 		enabledSecondCtaButton,
-		secondCtaLabel,
 		secondCtaLink,
 		secondCtaTarget,
 		secondCtaLoadGoogleFonts,
@@ -373,16 +372,6 @@ const Settings = ( props ) => {
 					max={ 200 }
 					displayUnit={ false }
 					setAttributes={ setAttributes }
-				/>
-				<TextControl
-					label={ __(
-						'Text',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ secondCtaLabel }
-					onChange={ ( value ) =>
-						setAttributes( { secondCtaLabel: value } )
-					}
 				/>
 				<TextControl
 					label={ __(
@@ -854,7 +843,7 @@ const Settings = ( props ) => {
 					showIcons={ false }
 				/>
 				) }
-				{ ( ctaType === 'text' || ctaType === 'button' ) && (
+				{ ( ctaType === 'text' ) && (
 					<>
 						<TextControl
 							label={ __(

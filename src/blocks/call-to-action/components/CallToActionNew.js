@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-
+import { RichText } from '@wordpress/block-editor';
 import renderSVG from '@Controls/renderIcon';
 
 const CTA = ( props ) => {
@@ -25,6 +25,35 @@ const CTA = ( props ) => {
 		preventDefaultFunc = false;  // Ensures click events for links aren't disabled for frontend.
 	}
 
+	if ( setAttributes !== 'not_set' ) {
+		return (
+			<>
+				{ ( attributes.ctaType === 'button' ||
+					attributes.ctaType === 'text' ) && (
+					<a
+						href={ link }
+						className={ classnames(
+							'uagb-cta__button-link-wrapper',
+							'button' === attributes.ctaType ? 'wp-block-button__link' : ''
+						) }
+						target={ target }
+						rel={ rel }
+						onClick={ preventDefaultFunc }
+					>
+						{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
+						<RichText
+							value={ attributes.ctaText.replace( /(<([^>]+)>)/ig, '' ) }
+							onChange={ ( value ) => {
+								setAttributes( { ctaText: value } );
+							} }
+						/>
+						{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
+					</a>
+				) }
+			</>
+		)
+	}
+
 	return (
 		<>
 			{ ( attributes.ctaType === 'button' ||
@@ -40,7 +69,9 @@ const CTA = ( props ) => {
 					onClick={ preventDefaultFunc }
 				>
 					{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
-					{ attributes.ctaText }
+					<RichText.Content
+						value={ attributes.ctaText.replace( /(<([^>]+)>)/ig, '' ) }
+					/>
 					{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 				</a>
 			) }

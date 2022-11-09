@@ -100,6 +100,8 @@ const Settings = ( props ) => {
 		iconColor,
 		iconSize,
 		iconSizeType,
+		iconSizeTablet,
+		iconSizeMobile,
 		iconimgPosition,
 		iconHover,
 		iconimgBorderRadius,
@@ -1237,19 +1239,27 @@ const Settings = ( props ) => {
 										 }
 										disableBottomSeparator={ false }
 									/>
-									<Range
+									<ResponsiveSlider
 										label={ __(
 											'Width',
 											'ultimate-addons-for-gutenberg'
 										) }
-										setAttributes={ setAttributes }
-										value={ iconSize }
 										data={ {
-											value: iconSize,
-											label: 'iconSize',
+											desktop: {
+												value: iconSize,
+												label: 'iconSize',
+											},
+											tablet: {
+												value: iconSizeTablet,
+												label: 'iconSizeTablet',
+											},
+											mobile: {
+												value: iconSizeMobile,
+												label: 'iconSizeMobile',
+											},
 										} }
-										limitMin={ { 'px': 0, '%': 0, 'em': 0 } } // eslint-disable-line quote-props
-										limitMax={ { 'px': 500, '%': 100, 'em': 100 } } // eslint-disable-line quote-props
+										min={ 0 } // eslint-disable-line quote-props
+										max={  100  } // eslint-disable-line quote-props
 										unit={ {
 											value: iconSizeType,
 											label: 'iconSizeType',
@@ -1277,6 +1287,7 @@ const Settings = ( props ) => {
 												unitValue: 'em',
 											},
 										] }
+										setAttributes={ setAttributes }
 									/>
 								</>
 							) }

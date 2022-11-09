@@ -90,6 +90,18 @@
 			styleType: 'icon-size'
 		}
 	},
+	iconSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size-tablet'
+		}
+	},
+	iconSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size-mobile'
+		}
+	},
 	iconSizeType: {
 		type: 'String',
 		default: 'px',
