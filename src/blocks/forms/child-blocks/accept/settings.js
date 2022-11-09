@@ -41,10 +41,6 @@ const Settings = ( props ) => {
 					) }
 					help="Label to display as acceptance message."
 					value={ acceptText }
-					data={ {
-						value: acceptText,
-						label: 'acceptText'
-					} }
 					onChange={ ( value ) =>
 						setAttributes( { acceptText: value } )
 					}
