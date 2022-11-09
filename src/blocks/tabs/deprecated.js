@@ -863,7 +863,7 @@ const deprecated = [
 	},
 	{
 		attributes,
-		 save( props ) {
+		save( props ) {
 			const { attributes, className } = props;
 			const {
 				block_id,
@@ -890,7 +890,7 @@ const deprecated = [
 					) }
 					data-tab-active={ tabActiveFrontend }
 				>
-					<div className={ `uagb-tabs__panel uagb-tabs__align-${ tabAlign }` }>
+					<ul className={ `uagb-tabs__panel uagb-tabs__align-${ tabAlign }` }>
 						{ tabHeaders.map( ( header, index ) => (
 							<li
 								key={ index }
@@ -899,13 +899,11 @@ const deprecated = [
 										? 'uagb-tabs__active'
 										: ''
 								}` }
-								role='tablist' // eslint-disable-line jsx-a11y/no-noninteractive-element-to-interactive-role
 							>
 								<a
 									href={ `#uagb-tabs__tab${ index }` }
 									className={ `uagb-tabs-list uagb-tabs__icon-position-${ iconPosition }` }
 									data-tab={ index }
-									role='tab'
 								>
 									{ showIcon &&
 										( iconPosition === 'left' ||
@@ -927,7 +925,7 @@ const deprecated = [
 								</a>
 							</li>
 						) ) }
-					</div>
+					</ul>
 					<div className="uagb-tabs__body-wrap">
 						<InnerBlocks.Content />
 					</div>
