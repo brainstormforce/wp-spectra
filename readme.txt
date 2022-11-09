@@ -170,6 +170,12 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 2.0.15 - TUESDAY, 08th NOVEMBER 2022 =
+* Improvement: Call To Action - CTA button text is now editable inside the editor.
+* Improvement: Post Timeline - Button text is now editable inside the editor.
+* Improvement: Info-Box - Add responsive feature in Info Box Icon width.
+* Fix: Admin Dashboard - Font dropdown control was going under the section.
+
 = 2.0.14 - TUESDAY, 08th NOVEMBER 2022 =
 * Improvement: Compatibility with WordPress 6.1.
 * Improvement: Container - Equal height setting in the Parent container.
