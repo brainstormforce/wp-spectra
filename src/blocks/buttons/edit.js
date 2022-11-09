@@ -36,7 +36,7 @@ const ButtonsComponent = ( props ) => {
 		props.setAttributes( { childMigrate: true } );
 
 		prevState = props.isSelected;
-		responsiveConditionPreview( props );
+		
 	}, [] );
 
 	useEffect( () => {
@@ -52,7 +52,7 @@ const ButtonsComponent = ( props ) => {
 		addBlockEditorDynamicStyles( 'uagb-style-buttons-' + props.clientId.substr( 0, 8 ), blockStyling );
 
 		prevState = props.isSelected;
-		responsiveConditionPreview( props );
+		
 	}, [ props ] );
 
 	useEffect( () => {
@@ -64,7 +64,12 @@ const ButtonsComponent = ( props ) => {
 		scrollBlockToView();
 
 	}, [deviceType] );
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
 
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 	return (
 
 					<>

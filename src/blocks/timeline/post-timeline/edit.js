@@ -97,10 +97,16 @@ const PostTimelineComponent = ( props ) => {
                     props.setAttributes( { timelinAlignmentTablet: timelinAlignment } );
                 }
             }
-        }
-		responsiveConditionPreview( props );
+        }	
 
 	}, [] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
@@ -111,7 +117,7 @@ const PostTimelineComponent = ( props ) => {
 			detail: {},
 		} );
 		document.dispatchEvent( loadPostTimelineEditor );
-		responsiveConditionPreview( props );
+		
 	}, [ props, deviceType ] );
 
 

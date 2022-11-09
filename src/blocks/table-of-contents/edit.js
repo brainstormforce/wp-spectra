@@ -214,7 +214,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 			props.attributes
 			);
 		}
-		responsiveConditionPreview( props );
+		
 	}, [] );
 
 	useEffect( () => {
@@ -222,8 +222,15 @@ const UAGBTableOfContentsEdit = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-toc-' + props.clientId.substr( 0, 8 ), blockStyling );
-		responsiveConditionPreview( props );
+		
 	}, [ props ] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.

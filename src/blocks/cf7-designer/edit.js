@@ -232,7 +232,7 @@ const UAGBCF7 = ( props ) => {
 				props.setAttributes( { btnBorderStyle : buttonBorderStyle} );
 			}
 		}
-		responsiveConditionPreview( props );
+		
 	}, [] );
 
 	useEffect( () => {
@@ -246,7 +246,7 @@ const UAGBCF7 = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-cf7-styler-' + props.clientId.substr( 0, 8 ), blockStyling );
-		responsiveConditionPreview( props );
+		
 	}, [ props ] );
 
 	useEffect( () => {
@@ -257,6 +257,13 @@ const UAGBCF7 = ( props ) => {
 
 		scrollBlockToView();
 	}, [deviceType] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
 	return (
 			<>

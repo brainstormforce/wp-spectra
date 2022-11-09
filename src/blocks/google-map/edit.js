@@ -18,7 +18,7 @@ const UAGBGoogleMap = ( props ) => {
 		props.setAttributes( {
 			block_id: props.clientId.substr( 0, 8 ),
 		} );
-		responsiveConditionPreview( props );
+		
 	}, [] );
 
 	useEffect( () => {
@@ -26,12 +26,19 @@ const UAGBGoogleMap = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-google-map-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		responsiveConditionPreview( props );
+		
 	}, [ props, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
 	return (
 

@@ -68,14 +68,14 @@ const UAGBInlineNoticeEdit = ( props ) => {
 				setAttributes( { contentLeftPadding: contentHrPadding } );
 			}
 		}
-		responsiveConditionPreview( props );
+		
 	}, [] );
 
 	useEffect( () => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-inline-notice-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		responsiveConditionPreview( props );
+		
 	}, [ props ] );
 
 	useEffect( () => {
@@ -86,6 +86,13 @@ const UAGBInlineNoticeEdit = ( props ) => {
 
 		scrollBlockToView();
 	}, [deviceType] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
 	return (
 

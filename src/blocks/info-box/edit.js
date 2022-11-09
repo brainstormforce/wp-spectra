@@ -77,7 +77,7 @@ const UAGBInfoBox = ( props ) => {
 			props.attributes
 		);
 		}
-		responsiveConditionPreview( props );
+		
 	}, [] );
 
 	useEffect( () => {
@@ -86,9 +86,15 @@ const UAGBInfoBox = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-info-box-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		responsiveConditionPreview( props );
+		
 	}, [ props ] );
 
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
 	useEffect( () => {
 

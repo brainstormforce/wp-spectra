@@ -97,7 +97,7 @@ const UAGBTabsEdit = ( props ) => {
 			props.attributes
 			);
 		}
-		responsiveConditionPreview( props );
+		
 	}, [] );
 
 	const updateTabTitle = () => {
@@ -124,7 +124,7 @@ const UAGBTabsEdit = ( props ) => {
 
 		updateTabTitle();
 		props.resetTabOrder();
-		responsiveConditionPreview( props );
+		
 
 	}, [ props ] );
 
@@ -137,6 +137,13 @@ const UAGBTabsEdit = ( props ) => {
 		scrollBlockToView();
 
 	}, [ deviceType ] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
 	return (
 			<>

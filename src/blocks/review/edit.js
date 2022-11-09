@@ -223,7 +223,7 @@ const ReviewComponent = ( props ) => {
 		if ( postSaveButton ) {
 			postSaveButton.addEventListener( 'click', updatePageSchema );
 		}
-		responsiveConditionPreview( props );
+		
 	}, [] );
 
 	useEffect( () => {
@@ -245,7 +245,7 @@ const ReviewComponent = ( props ) => {
 			postSaveButton.addEventListener( 'click', updatePageSchema );
 			return () => { postSaveButton?.removeEventListener( 'click', updatePageSchema ); }
 		}
-		responsiveConditionPreview( props );
+		
 
 	}, [ props ] );
 
@@ -257,6 +257,13 @@ const ReviewComponent = ( props ) => {
 
 		scrollBlockToView();
 	}, [deviceType] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
 	// Setup the attributes
 	const { attributes, setAttributes } = props;

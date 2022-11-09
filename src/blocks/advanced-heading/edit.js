@@ -14,19 +14,24 @@ import './style.scss';
 
 const UAGBAdvancedHeading = ( props ) => {
 	const deviceType = useDeviceType();
+	
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
+
 	useEffect( () => {
 
 		const { setAttributes } = props;
-		responsiveConditionPreview( props );
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 		setAttributes( { classMigrate: true } )
 
 	}, [] );
 
-
 	useEffect( () => {
-		responsiveConditionPreview( props );
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 

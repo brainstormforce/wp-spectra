@@ -121,7 +121,7 @@ const UAGBContainer = ( props ) => {
 		if( 0 !== select( 'core/block-editor' ).getBlockParents(  props.clientId ).length ){ // if there is no parent for container when child container moved outside root then do not show variations.
 			props.setAttributes( { variationSelected: true } );
 		}
-		responsiveConditionPreview( props );
+		
 
 	}, [] );
 
@@ -136,7 +136,7 @@ const UAGBContainer = ( props ) => {
 		if ( descendants.length !== props.attributes.blockDescendants.length ) {
 			props.setAttributes( { blockDescendants: descendants } );
 		}
-		responsiveConditionPreview( props );
+		
 
 	}, [ props ] );
 
@@ -149,6 +149,13 @@ const UAGBContainer = ( props ) => {
 		scrollBlockToView();
 
 	}, [ deviceType ] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
 	const blockVariationPickerOnSelect = (
 		nextVariation = props.defaultVariation

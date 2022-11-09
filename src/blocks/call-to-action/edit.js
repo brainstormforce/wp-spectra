@@ -96,7 +96,7 @@ const UAGBCallToAction = ( props ) => {
 			props.attributes
 			);
 		}
-		responsiveConditionPreview( props );
+		
 	}, [] );
 
 	useEffect( () => {
@@ -105,7 +105,7 @@ const UAGBCallToAction = ( props ) => {
 		const blockStyling = CtaStyle( props );
 
 		addBlockEditorDynamicStyles( 'uagb-cta-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		responsiveConditionPreview( props );
+		
 	}, [ props ] );
 
 	useEffect( () => {
@@ -116,6 +116,13 @@ const UAGBCallToAction = ( props ) => {
 
 		scrollBlockToView();
 	}, [deviceType] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
 	return (
 

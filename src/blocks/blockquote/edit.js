@@ -54,12 +54,9 @@ const UAGBBlockQuote = ( props ) => {
 				props.setAttributes( { paddingBtnLeft: tweetBtnHrPadding } );
 			}
 		}
-		responsiveConditionPreview( props );
 	}, [] );
 
 	useEffect( () => {
-		
-		responsiveConditionPreview( props );
 
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
@@ -76,6 +73,13 @@ const UAGBBlockQuote = ( props ) => {
 
 		scrollBlockToView();
 	}, [ deviceType ] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
 	return (
 

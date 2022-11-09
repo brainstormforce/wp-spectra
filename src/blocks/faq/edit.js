@@ -237,7 +237,7 @@ const FaqComponent = ( props ) => {
 		if ( postSaveButton ) {
 			postSaveButton.addEventListener( 'click', updatePageSchema );
 		}
-		responsiveConditionPreview( props );
+		
 	}, [] );
 
 	useEffect( () => {
@@ -329,7 +329,7 @@ const FaqComponent = ( props ) => {
 			postSaveButton.addEventListener( 'click', updatePageSchema );
 			return () => { postSaveButton?.removeEventListener( 'click', updatePageSchema ); }
 		}
-		responsiveConditionPreview( props );
+		
 	}, [ props ] );
 
 	useEffect( () => {
@@ -340,6 +340,13 @@ const FaqComponent = ( props ) => {
 
 		scrollBlockToView();
 	}, [deviceType] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
 	return (
 			<>

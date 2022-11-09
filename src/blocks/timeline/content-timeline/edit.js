@@ -71,7 +71,7 @@ const ContentTimelineComponent = ( props ) => {
                 }
             }
         }
-		responsiveConditionPreview( props );
+		
 
     }, [] );
 
@@ -153,9 +153,14 @@ const ContentTimelineComponent = ( props ) => {
             ctChild.attributes.headingTag = props.attributes.headingTag;
             ctChild.attributes.dateFormat = props.attributes.dateFormat;
         } );
-		responsiveConditionPreview( props );
+		
     }, [props] );
+    const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
 
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
     useEffect( () => {
 		// Replacement for componentDidUpdate.

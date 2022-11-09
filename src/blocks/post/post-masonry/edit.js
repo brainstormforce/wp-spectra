@@ -246,7 +246,7 @@ const UAGBPostMasonry = ( props ) => {
 				} );
 			}
 		}
-		responsiveConditionPreview( props );
+		
 		props.setAttributes( { allTaxonomyStore : undefined} );
 	}, [] );
 
@@ -325,7 +325,7 @@ const UAGBPostMasonry = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		responsiveConditionPreview( props );
+		
 	}, [ props ] );
 
 	useEffect( () => {
@@ -337,6 +337,13 @@ const UAGBPostMasonry = ( props ) => {
 		scrollBlockToView();
 
 	}, [ props.deviceType ] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
 	const togglePreview = () => {
 		setState( { isEditing: ! state.isEditing } );

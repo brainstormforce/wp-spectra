@@ -92,7 +92,7 @@ const UAGBRestaurantMenu = ( props ) => {
 			pricelistChild.attributes.imageAlignment =
 				props.attributes.imageAlignment;
 		} );
-		responsiveConditionPreview( props );
+		
 	}, [] );
 
 	useEffect( () => {
@@ -114,7 +114,7 @@ const UAGBRestaurantMenu = ( props ) => {
 		if( 'top' === imgAlign ){
 			props.setAttributes( { imagePosition : 'top' } );
 		}
-		responsiveConditionPreview( props );
+		
 	}, [ props ] );
 
 	useEffect( () => {
@@ -126,6 +126,12 @@ const UAGBRestaurantMenu = ( props ) => {
 		scrollBlockToView();
 	}, [deviceType] );
 
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
 	useEffect( () => {
 		// Set showImage attribute in child blocks based on current parent block's value.

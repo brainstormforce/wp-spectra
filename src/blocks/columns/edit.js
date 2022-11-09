@@ -149,7 +149,7 @@ const ColumnsComponent = ( props ) => {
 			props.setAttributes,
 			props.attributes
 			);
-			responsiveConditionPreview( props );
+			
 
 		}
 	}, [] );
@@ -160,7 +160,7 @@ const ColumnsComponent = ( props ) => {
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-columns-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		responsiveConditionPreview( props );
+		
 
 	}, [ props ] );
 
@@ -172,6 +172,13 @@ const ColumnsComponent = ( props ) => {
 
 		scrollBlockToView();
 	}, [deviceType] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
 	const blockVariationPickerOnSelect = (
 		nextVariation = props.defaultVariation

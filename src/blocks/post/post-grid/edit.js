@@ -178,7 +178,7 @@ const PostGridComponent = ( props ) => {
 				props.setAttributes( { btnBorderStyle : borderStyle} );
 			}
 		}
-		responsiveConditionPreview( props );
+		
 
 		props.setAttributes( { allTaxonomyStore : undefined} );
 
@@ -190,8 +190,15 @@ const PostGridComponent = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-post-grid-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		responsiveConditionPreview( props );
+		
 	}, [ props ] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.

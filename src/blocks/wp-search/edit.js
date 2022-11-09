@@ -151,7 +151,7 @@ const UAGBWpSearchEdit = ( props ) => {
 			props.attributes
 			);
 		}
-		responsiveConditionPreview( props );
+		
 	}, [] );
 
 	// componentDidUpdate.
@@ -169,8 +169,15 @@ const UAGBWpSearchEdit = ( props ) => {
 
 		const blockStyling = styling( props );
 		addBlockEditorDynamicStyles( 'uagb-style-wp-search-' + props.clientId.substr( 0, 8 ), blockStyling );
-		responsiveConditionPreview( props );
+		
 	}, [ props ] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.

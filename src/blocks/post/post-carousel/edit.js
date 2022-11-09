@@ -232,7 +232,7 @@ const UAGBPostCarousel = ( props ) => {
 				props.setAttributes( { btnBorderStyle : borderStyle} );
 			}
 		}
-		responsiveConditionPreview( props );
+		
 
 		if( columnGap && columnGap !== 20 ){
 			props.setAttributes( { dotsMarginTop : columnGap} );
@@ -269,7 +269,7 @@ const UAGBPostCarousel = ( props ) => {
 				'; }';
 
 		addBlockEditorDynamicStyles( 'uagb-post-carousel-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		responsiveConditionPreview( props );
+		
 	}, [ props ] );
 
 	useEffect( () => {
@@ -289,6 +289,13 @@ const UAGBPostCarousel = ( props ) => {
 		scrollBlockToView();
 
 	}, [ props.deviceType ] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
 	const onSelectPostType = ( value ) => {
 		const { setAttributes } = props;

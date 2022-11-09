@@ -203,7 +203,7 @@ const UAGBFormsEdit = ( props ) => {
 			props.attributes
 			);
 		}
-		responsiveConditionPreview( props );
+		
 	}, [] );
 
 	useEffect( () => {
@@ -211,7 +211,7 @@ const UAGBFormsEdit = ( props ) => {
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-style-forms-' + props.clientId.substr( 0, 8 ), blockStyling );
-		responsiveConditionPreview( props );
+		
 	}, [ props ] );
 
 	useEffect( () => {
@@ -226,6 +226,13 @@ const UAGBFormsEdit = ( props ) => {
 		window.addEventListener( 'load', renderReadyClasses( id ) )
 
 	}, [deviceType] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob ] );
 
 	const blockVariationPickerOnSelect = useCallback(
 		( nextVariation = props.defaultVariation ) => {
