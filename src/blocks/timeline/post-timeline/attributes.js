@@ -5,10 +5,6 @@ const attributes = { // eslint-disable-line no-unused-vars
 		type    : 'string',
 		default : 'post-timeline',
 	},
-	readMoreText            : {
-		type    : 'string',
-		default : __( 'Read More', 'ultimate-addons-for-gutenberg' ),
-	},
 	align                   : {
 		type    : 'string',
 		default : '',
