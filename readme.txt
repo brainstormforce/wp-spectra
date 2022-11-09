@@ -175,6 +175,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Post Timeline - Button text is now editable inside the editor.
 * Improvement: Info-Box - Add responsive feature in Info Box Icon width.
 * Fix: Admin Dashboard - Font dropdown control was going under the section.
+* Fix: Table Of Contents - Alignment issue of marker's view.
 
 = 2.0.14 - TUESDAY, 08th NOVEMBER 2022 =
 * Improvement: Compatibility with WordPress 6.1.
@@ -232,7 +233,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Spectra CSS conflict due to which date picker of post scheduler does not show the navigation.
 * Fix: Icon list - Icon Alignment top and middle not working as expected if we increase font size.
 * Fix: Container - Breaks when the background is a video and classic overlay is selected.
-* Fix: Table Of Contents - Alignment issue of marker's view.
 
 = 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 =
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
