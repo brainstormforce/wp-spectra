@@ -33,7 +33,7 @@ const InfoBoxIconImage = ( props ) => {
 				src={ url }
 				alt={ attributes.iconImage.alt }
 				width={ imageWidthType ? imageWidth : imgTagWidth }
-				height={ imageWidthType ? imageWidth : imgTagHeight }
+				height={ imgTagHeight }
 				loading="lazy"
 			/>
 			</div>
