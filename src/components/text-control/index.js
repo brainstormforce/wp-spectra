@@ -74,12 +74,14 @@ const UAGTextControl = ( props ) => {
                             label = { props?.variant === 'inline' ? ( props?.label ) : false }
                             value = { props?.value }
                             onChange = { handleOnChange }
+                            autoComplete = { props?.autoComplete }
                         />
                     }
                     { ( props?.variant === 'textarea' ) &&
                         <TextareaControl
                             value = { props?.value }
                             onChange = { handleOnChange }
+                            autoComplete = { props?.autoComplete }
                         />
                     }
                 </div>
@@ -98,6 +100,7 @@ UAGTextControl.defaultProps = {
 	resetFallbackValue: '',
 	placeholder: null,
     variant: 'full-width',
+    autoComplete: 'off',
 };
 
 export default UAGTextControl;
