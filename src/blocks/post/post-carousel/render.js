@@ -28,7 +28,7 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes, categoriesList, latestPosts, deviceType, name } = props;
+	const { attributes, categoriesList, latestPosts, deviceType, name, setAttributes } = props;
 
 	const renderEditMode = () => {
 		const onDone = () => {
@@ -112,17 +112,16 @@ const Render = ( props ) => {
 	};
 
 	const renderViewMode = (
-		<Disabled>
-			<Blog
-				attributes={ attributes }
-				className={ props.className }
-				latestPosts={ latestPosts }
-				block_id={ props.clientId.substr( 0, 8 ) }
-				categoriesList={ categoriesList }
-				deviceType={ deviceType }
-				name={ name }
-			/>
-		</Disabled>
+		<Blog
+			attributes={ attributes }
+			className={ props.className }
+			latestPosts={ latestPosts }
+			block_id={ props.clientId.substr( 0, 8 ) }
+			categoriesList={ categoriesList }
+			deviceType={ deviceType }
+			name={ name }
+			setAttributes ={ setAttributes }
+		/>
 	);
 
 	return <>{ state.isEditing ? renderEditMode() : renderViewMode }</>;
