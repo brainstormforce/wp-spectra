@@ -585,6 +585,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'columnGapMobile'               => array(
 						'type' => 'number',
 					),
+					'bgType'                        => array(
+						'type'    => 'string',
+						'default' => 'color',
+					),
 					'bgColor'                       => array(
 						'type'    => 'string',
 						'default' => '#f6f6f6',
@@ -749,6 +753,14 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					// CTA attributes.
 					'ctaColor'                      => array(
 						'type' => 'string',
+					),
+					'ctaBgType'                     => array(
+						'type'    => 'string',
+						'default' => 'color',
+					),
+					'ctaBgHType'                    => array(
+						'type'    => 'string',
+						'default' => 'color',
 					),
 					'ctaBgColor'                    => array(
 						'type' => 'string',

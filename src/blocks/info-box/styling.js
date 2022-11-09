@@ -86,6 +86,8 @@ function styling( props ) {
 		ctaFontFamily,
 		ctaFontWeight,
 		ctaBtnLinkColor,
+		ctaBgType,
+		ctaBgHoverType,
 		ctaBgColor,
 		paddingBtnUnit,
 		mobilePaddingBtnUnit,
@@ -410,7 +412,7 @@ function styling( props ) {
 		 },
 		 ' div.uagb-ifb-button-wrapper a.uagb-infobox-cta-link': {
 			 'color': ctaBtnLinkColor,
-			 'background-color': ctaBgColor,
+			 'background-color': ( ctaBgType === 'color' ) ? ctaBgColor : 'transparent', // Since the only other case we currently have is 'transparent'.
 			 'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
 			 'padding-bottom': generateCSSUnit(
 				 paddingBtnBottom,
@@ -432,7 +434,7 @@ function styling( props ) {
 		},
 		 ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover': {
 			 'color': ctaLinkHoverColor,
-			 'background-color': ctaBgHoverColor,
+			 'background-color': ( ctaBgHoverType === 'color' ) ? ctaBgHoverColor : 'transparent',
 			 'border-color': btnBorderHColor,
 		 },
 		 ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link svg': {

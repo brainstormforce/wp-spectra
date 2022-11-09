@@ -12,7 +12,7 @@ const CTA = ( props ) => {
 	}
 
 	let ctaIconOutput = '';
-	if ( attributes.ctaIcon !== '' ) {
+	if ( attributes.showIcon && attributes.ctaIcon !== '' ) {
 		ctaIconOutput = renderSVG( attributes.ctaIcon );
 	}
 

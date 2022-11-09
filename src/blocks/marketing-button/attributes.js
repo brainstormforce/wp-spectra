@@ -151,14 +151,14 @@ const attributes = {
 	},
 	gradientColor1: {
 		type: 'string',
-		default: '#0170b9',
+		default: '#06558a',
 		UAGCopyPaste: {
 			styleType: 'btn-gradient-color-1'
 		}
 	},
 	gradientColor2: {
 		type: 'string',
-		default: '#06558a',
+		default: '#0170b9',
 		UAGCopyPaste: {
 			styleType: 'btn-gradient-color-2'
 		}
