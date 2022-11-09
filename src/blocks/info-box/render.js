@@ -38,7 +38,9 @@ const Render = ( props ) => {
 		showTitle,
 		showDesc,
 		block_id,
-		ctaLink
+		ctaLink,
+		imageWidthType,
+		imageWidth
 	} = attributes;
 	// Get icon/Image components.
 	let isImage = '';
@@ -78,8 +80,13 @@ const Render = ( props ) => {
 	}
 
 	useEffect( ()=> {
-		getImageHeightWidth( url, setAttributes )
-	}, [ url ] )
+		if( imageWidthType ){
+			getImageHeightWidth( url, setAttributes, { type: 'width', value: imageWidth } )
+		}
+		else{
+			getImageHeightWidth( url, setAttributes )
+		}
+	}, [ url, imageWidth, imageWidthType ] )
 
 	if (
 		seperatorPos === 'after_icon' &&
