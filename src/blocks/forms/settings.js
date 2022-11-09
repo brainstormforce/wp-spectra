@@ -62,6 +62,8 @@ const Settings = ( props ) => {
 		afterSubmitEmailSubject,
 		submitColor,
 		submitColorHover,
+		submitBgType,
+		submitBgHoverType,
 		submitBgColor,
 		submitBgColorHover,
 		submitTextloadGoogleFonts,
@@ -268,6 +270,11 @@ const Settings = ( props ) => {
 				] }
 				showIcons={ true }
 				responsive={true}
+			/>
+			<UAGPresets
+				setAttributes = { setAttributes }
+				presets = { buttonsPresets }
+				presetInputType = 'radioImage'
 			/>
 		</UAGAdvancedPanelBody>
 	);
@@ -1267,11 +1274,6 @@ const Settings = ( props ) => {
 			initialOpen={ false }
 			// className="uagb__url-panel-body"
 		>
-			<UAGPresets
-				setAttributes = { setAttributes }
-				presets = { buttonsPresets }
-				presetInputType = 'radioImage'
-			/>
 			<UAGSelectControl
 				label={ __(
 					'Button Size',
@@ -1506,20 +1508,47 @@ const Settings = ( props ) => {
 							} }
 							setAttributes={ setAttributes }
 						/>
-						<AdvancedPopColorControl
-							label={ __(
-								'Background Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={
-								submitBgColor ? submitBgColor : ''
-							}
-							data={ {
-								value: submitBgColor,
-								label: 'submitBgColor',
-							} }
+						<MultiButtonsControl
 							setAttributes={ setAttributes }
+							label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+							data={ {
+								value: submitBgType,
+								label: 'submitBgType',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'transparent',
+									label: __(
+										'Transparent',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'color',
+									label: __(
+										'Color',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
 						/>
+						{ submitBgType === 'color' &&
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={
+									submitBgColor ? submitBgColor : ''
+								}
+								data={ {
+									value: submitBgColor,
+									label: 'submitBgColor',
+								} }
+								setAttributes={ setAttributes }
+							/>
+						}
 					</>
 				}
 				hover={
@@ -1538,20 +1567,47 @@ const Settings = ( props ) => {
 							} }
 							setAttributes={ setAttributes }
 						/>
-						<AdvancedPopColorControl
-							label={ __(
-								'Background Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={
-								submitBgColorHover ? submitBgColorHover : ''
-							}
-							data={ {
-								value: submitBgColorHover,
-								label: 'submitBgColorHover',
-							} }
+						<MultiButtonsControl
 							setAttributes={ setAttributes }
+							label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+							data={ {
+								value: submitBgHoverType,
+								label: 'submitBgHoverType',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'transparent',
+									label: __(
+										'Transparent',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'color',
+									label: __(
+										'Color',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
 						/>
+						{ submitBgHoverType === 'color' &&
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={
+									submitBgColorHover ? submitBgColorHover : ''
+								}
+								data={ {
+									value: submitBgColorHover,
+									label: 'submitBgColorHover',
+								} }
+								setAttributes={ setAttributes }
+							/>
+						}
 					</>
 				}
 			/>

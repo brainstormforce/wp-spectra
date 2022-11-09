@@ -23,6 +23,10 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'overall-alignment-tablet'
 		},
 	},
+	readMoreText          : {
+		type    : 'string',
+		default : __( 'Read More', 'ultimate-addons-for-gutenberg' ),
+	},
 	alignMobile                 : {
 		type    : 'string',
 		default : '',

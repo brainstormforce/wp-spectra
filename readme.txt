@@ -170,7 +170,26 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 2.0.14 - TUESDAY, 15th NOVEMBER 2022 =
+= 2.0.15 - TUESDAY, 08th NOVEMBER 2022 =
+* Improvement: Call To Action - CTA button text is now editable inside the editor.
+* Improvement: Post Timeline - Button text is now editable inside the editor.
+* Improvement: Info-Box - Add responsive feature in Info Box Icon width.
+* Fix: Admin Dashboard - Font dropdown control was going under the section.
+* Fix: Table Of Contents - Alignment issue of marker's view.
+* Fix: Marketing Button - Block does not remain in the stack order when the Blocksy theme is active.
+* Fix: Call To Action - Second button CSS style issue on the frontend.
+* Fix: Scroll to specific block not working when switch from desktop/tablet/mobile.
+* Fix: Post Block - Article tag class conflicting with TranslatePress plugin.
+* Fix: Presets - Most presets used to override background color, box-shadow color, text content and even selected icons; This has been fixed where ever possible.
+* Improvement: Call to Action: Added show icon toggle.
+* Improvement: FAQ: Added background type selector for the question-answer container.
+* Improvement: Forms: Added background type selector for submit button.
+* Improvement: Info Box: Added background type selector for CTA.
+* Improvement: Info Box: Added show icon toggle for CTA.
+* Improvement: Post Carousel: Added background type selector.
+* Improvement: Post (Grid/Masonry/Carousel): Added background type selector for CTA.
+
+= 2.0.14 - TUESDAY, 08th NOVEMBER 2022 =
 * Improvement: Compatibility with WordPress 6.1.
 * Improvement: Container - Equal height setting in the Parent container.
 * Improvement: Post Block - Woo Commerce Products (CPT) not getting in Post Type.

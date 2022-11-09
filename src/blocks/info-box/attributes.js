@@ -90,6 +90,18 @@
 			styleType: 'icon-size'
 		}
 	},
+	iconSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size-tablet'
+		}
+	},
+	iconSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size-mobile'
+		}
+	},
 	iconSizeType: {
 		type: 'String',
 		default: 'px',
@@ -484,9 +496,16 @@
 		type: 'boolean',
 		default: false,
 	},
+	showCtaIcon: {
+		type: 'boolean',
+		default: true,
+		UAGCopyPaste: {
+			styleType: 'btn-show-icon'
+		}
+	},
 	ctaIcon: {
 		type: 'string',
-		default: '',
+		default: 'right-long',
 	},
 	ctaIconPosition: {
 		type: 'string',
@@ -582,6 +601,20 @@
 	ctaType: {
 		type: 'string',
 		default: 'none',
+	},
+	ctaBgType:{
+		type:'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-background-type'
+		}
+	},
+	ctaBgHoverType:{
+		type:'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-hbackground-type'
+		}
 	},
 	ctaText: {
 		type: 'html',
