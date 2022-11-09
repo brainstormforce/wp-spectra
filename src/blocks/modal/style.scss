@@ -78,26 +78,10 @@ body {
 			opacity: 1;
 			display: flex;
 			align-items: center;
-			top: -25px;
 			position: absolute;
 			text-align: center;
 			cursor: pointer;
 			fill: #fff;
-		}
-	}
-
-	.uagb-modal-trigger {
-		cursor: pointer;
-
-		svg {
-			font-size: 30px;
-			width: 30px;
-			height: 30px;
-			line-height: 30px;
-		}
-
-		&img {
-			width: 100px;
 		}
 	}
 
@@ -106,8 +90,9 @@ body {
 	}
 
 	.uagb-modal-popup-content {
-		padding: 45px 35px;
-		overflow: auto;
+		padding: 35px 35px;
+		overflow-x: hidden;
+		overflow-y: scroll;
 	}
 
 	.uagb-modal-popup-wrap {
@@ -151,10 +136,25 @@ body {
 	}
 }
 
+.uagb-modal-trigger {
+	cursor: pointer;
+
+	svg {
+		font-size: 30px;
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+	}
+
+	&img {
+		width: 100px;
+	}
+}
+
 div.uagb-spectra-button-wrapper {
 	line-height: 1;
 
-	a.uagb-modal-button-link {
+	a.uagb-modal-button-link.uagb-modal-trigger {
 		display: inline-flex;
 		text-decoration: none;
 		align-items: center;
@@ -165,21 +165,13 @@ div.uagb-spectra-button-wrapper {
 		}
 
 		svg {
+			fill: currentColor;
 			font-style: normal;
-			vertical-align: middle;
+			vertical-align: top;
 			width: 15px;
 			height: 15px;
 			font-size: 15px;
 		}
-	}
-
-	.uagb-modal-trigger svg {
-		fill: currentColor;
-		font-style: normal;
-		vertical-align: middle;
-		width: 15px;
-		height: 15px;
-		font-size: 15px;
 	}
 }
 

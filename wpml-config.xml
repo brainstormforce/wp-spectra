@@ -107,5 +107,9 @@
 		<gutenberg-block type="uagb/taxonomy-list" translate="1">
 			<key name="headingTitle" />
 		</gutenberg-block>
+		<gutenberg-block type="uagb/modal" translate="1">
+			<key name="triggerText" />
+			<key name="buttonText" />
+		</gutenberg-block>
 	</gutenberg-blocks>
 </wpml-config>

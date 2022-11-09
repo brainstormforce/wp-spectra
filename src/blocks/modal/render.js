@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import { useDeviceType } from '@Controls/getPreviewType';
+import styles from './editor.lazy.scss';
 
 const ALLOWED_BLOCKS = wp.blocks.getBlockTypes().map( block => block.name ).filter( blockName => blockName !== 'uagb/modal' );
 
@@ -12,6 +13,15 @@ const propTypes = {};
 const defaultProps = {};
 
 const Render = ( props ) => {
+
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect( () => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, [] );
+
 	const {
 		attributes,
 		setAttributes,
@@ -30,7 +40,8 @@ const Render = ( props ) => {
 		appearEffect,
 		closeIconPosition,
 		escPress,
-		overlayClick
+		overlayClick,
+		closeIcon
 	} = attributes;
 
 	const deviceType = useDeviceType();
@@ -85,7 +96,7 @@ const Render = ( props ) => {
 	if ( buttonIcon !== '' ) {
 		buttonIconOutput = renderSVG( buttonIcon );
 	}
-	
+
 	const buttonClasses = 'uagb-modal-button-link wp-block-button__link uagb-modal-trigger';
 
 	const buttonHTML = (
@@ -144,10 +155,11 @@ const Render = ( props ) => {
 					'button' === modalTrigger &&
 					buttonHTML
 				}
-				<div 
+				<div
 					className={ classnames(
 						`${ appearEffect }`,
-						'uagb-modal-popup'
+						'uagb-modal-popup',
+						`uagb-block-${ block_id }`
 					) }
 				>
 					<div className="uagb-modal-popup-wrap">
@@ -156,10 +168,9 @@ const Render = ( props ) => {
 						</div>
 						{ ( 'popup-top-left' === closeIconPosition || 'popup-top-right' === closeIconPosition ) && (
 							<div className="uagb-modal-popup-close">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25" height="25"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path>
-								</svg>
+								{ '' !== closeIcon && ( renderSVG( closeIcon ) ) }
 							</div>
-						) }	
+						) }
 					</div>
 				</div>
 			</div>

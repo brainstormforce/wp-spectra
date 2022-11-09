@@ -1,10 +1,10 @@
 document.addEventListener( 'UAGModalEditor', function( e ) {
-    UAGBModal.init( '.uagb-block-' + e.detail.block_id, e.detail.preview, e.detail.device_type );
+    UAGBModal.init( '.uagb-block-' + e.detail.block_id, e.detail.device_type, true );
 } );
 
 window.UAGBModal = {
-    
-	init( mainSelector, previewModal, deviceType = 'desktop' ) {
+
+	init( mainSelector, deviceType, isAdmin ) {
 
         let document_element = document;
 
@@ -15,22 +15,22 @@ window.UAGBModal = {
             if ( 0 !== tabletPreview.length || 0 !== mobilePreview.length ) {
 
                 const preview = tabletPreview[0] || mobilePreview[0];
-        
+
                 let iframe = false;
-        
+
                 if ( preview ) {
                     iframe = preview.getElementsByTagName( 'iframe' )[0];
                 }
-        
+
                 const iframeDocument = iframe?.contentWindow.document || iframe?.contentDocument;
-        
+
                 if ( iframeDocument ) {
                     document_element = iframeDocument;
                 }
             }
-        
+
         }
-        
+
         const modalWrapper = document_element.querySelector(
             mainSelector
         );
@@ -39,62 +39,68 @@ window.UAGBModal = {
 
             const modalTrigger = modalWrapper.querySelector( '.uagb-modal-trigger' );
 
-            if( 'disabled' === previewModal ) {
-                modalTrigger.style.pointerEvents = 'none';
-            }
-
-            if( typeof modalTrigger !== 'undefined' && modalTrigger && 'enabled' === previewModal ) {
+            if( typeof modalTrigger !== 'undefined' && modalTrigger ) {
 
                 modalTrigger.style.pointerEvents = 'auto';
 
                 const innerModal = modalWrapper.querySelector( '.uagb-modal-popup' );
 
-                modalTrigger.addEventListener(
-                    'click',
-                    function () {
+				if( null !== innerModal && !isAdmin ){
+					document.body?.appendChild( innerModal );
+				}
+					const bodyWrap = document_element.querySelector( 'body' );
+					modalTrigger.addEventListener(
+						'click',
+						function () {
+							if ( typeof innerModal !== 'undefined' && ! innerModal.classList.contains( 'active' ) ) {
+								innerModal.classList.add( 'active' );
+								if ( typeof bodyWrap !== 'undefined' && ! bodyWrap.classList.contains( 'hide-scroll' ) ) {
+									bodyWrap.classList.add( 'hide-scroll' );
+								}
+							}
+						}
+					)
 
-                        if ( typeof innerModal !== 'undefined' && ! innerModal.classList.contains( 'active' ) ) {
-                            innerModal.classList.add( 'active' );
+					const closeModal = document_element.querySelector( `${mainSelector} .uagb-modal-popup-close` );
 
-                            const bodyWrap = document_element.querySelector( 'body' );
-                            
-                            if ( typeof bodyWrap !== 'undefined' && ! bodyWrap.classList.contains( 'hide-scroll' ) ) {
-                                bodyWrap.classList.add( 'hide-scroll' );
-                            }
-                        }
-                    }
-                )              
+					closeModal.addEventListener(
+						'click',
+						function () {
+							const modalPopup = document_element.querySelector( `${mainSelector}.uagb-modal-popup` );
+							if ( typeof modalPopup !== 'undefined' && modalPopup.classList.contains( 'active' ) ) {
+								modalPopup.classList.remove( 'active' );
+							}
+							if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+								bodyWrap.classList.remove( 'hide-scroll' );
+							}
+						}
+					);
 
-                const closeModal = modalWrapper.querySelector( '.uagb-modal-popup-close' );
+					innerModal.addEventListener(
+						'click',
+						function ( e ) {
+							const closeOverlayClick = modalWrapper.dataset.overlayclick;
 
-                closeModal.addEventListener(
-                    'click',
-                    function () {
-                        if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
-                            innerModal.classList.remove( 'active' );
-                        }
-                    }
-                );
+							if ( 'enable' === closeOverlayClick && innerModal.classList.contains( 'active' ) && ! innerModal.querySelector( '.uagb-modal-popup-wrap' ).contains( e.target ) ) {
+								innerModal.classList.remove( 'active' );
+							}
+							if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+								bodyWrap.classList.remove( 'hide-scroll' );
+							}
+						}
+					)
 
-                innerModal.addEventListener(
-                    'click',
-                    function ( e ) {
-                        const closeOverlayClick = modalWrapper.dataset.overlayclick;
-
-                        if ( 'enable' === closeOverlayClick && innerModal.classList.contains( 'active' ) && ! innerModal.querySelector( '.uagb-modal-popup-wrap' ).contains( e.target ) ) {
-                            innerModal.classList.remove( 'active' );
-                        }
-                    }
-                )              
-
-                document.addEventListener( 'keyup', function( e ) {
-                    const closeOnEsc = modalWrapper.dataset.escpress;
-                    if ( 27 === e.keyCode && 'enable' === closeOnEsc ) {
-                        if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
-                            innerModal.classList.remove( 'active' );
-                        }
-                    }
-                } );
+					document.addEventListener( 'keyup', function( e ) {
+						const closeOnEsc = modalWrapper.dataset.escpress;
+						if ( 27 === e.keyCode && 'enable' === closeOnEsc ) {
+							if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
+								innerModal.classList.remove( 'active' );
+							}
+							if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+								bodyWrap.classList.remove( 'hide-scroll' );
+							}
+						}
+					} );
             }
         }
 	},
