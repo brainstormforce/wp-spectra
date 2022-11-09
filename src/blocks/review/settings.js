@@ -1246,6 +1246,7 @@ const Settings = ( props ) => {
 				<h2>{ __( 'Link' ) }</h2>
 				<UAGTextControl
 					label={false}
+					showHeaderControls={false}
 					value={ ctaLink }
 					data={{
 						value: ctaLink,
