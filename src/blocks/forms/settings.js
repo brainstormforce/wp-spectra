@@ -17,7 +17,6 @@ import renderSVG from '@Controls/renderIcon';
 import UAGTabsControl from '@Components/tabs';
 import UAGSelectControl from '@Components/select-control';
 import {
-	TextControl,
 	ToggleControl,
 	Icon,
 } from '@wordpress/components';
@@ -289,12 +288,17 @@ const Settings = ( props ) => {
 						setAttributes( { displayLabels : ! displayLabels } )
 					}
 				/>
-				<TextControl
+				<UAGTextControl
 					label={ __(
 						'Hidden Field Label',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ formLabel }
+					data={{
+						value: formLabel,
+						label: 'formLabel',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( {
 							formLabel: value,
@@ -438,7 +442,7 @@ const Settings = ( props ) => {
 					</>
 				) }
 				{ 'url' === confirmationType && (
-					<TextControl
+					<UAGTextControl
 						label={ __(
 							'Success Redirect URL',
 							'ultimate-addons-for-gutenberg'
@@ -448,6 +452,11 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ confirmationUrl }
+						data={{
+							value: confirmationUrl,
+							label: 'confirmationUrl',
+						}}
+						setAttributes={ setAttributes }
 						onChange={ ( value ) =>
 							setAttributes( {
 								confirmationUrl: value,
@@ -583,12 +592,17 @@ const Settings = ( props ) => {
 						},
 					] }
 					to={
-						<TextControl
+						<UAGTextControl
 							placeholder={ __(
 								'Email',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ afterSubmitToEmail }
+							data={{
+								value: afterSubmitToEmail,
+								label: 'afterSubmitToEmail',
+							}}
+							setAttributes={ setAttributes }
 							onChange={ ( value ) =>
 								setAttributes( {
 									afterSubmitToEmail: value,
@@ -597,12 +611,17 @@ const Settings = ( props ) => {
 						/>
 					}
 					cc={
-						<TextControl
+						<UAGTextControl
 							placeholder={ __(
 								'Email',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ afterSubmitCcEmail }
+							data={{
+								value: afterSubmitCcEmail,
+								label: 'afterSubmitCcEmail',
+							}}
+							setAttributes={ setAttributes }
 							onChange={ ( value ) =>
 								setAttributes( {
 									afterSubmitCcEmail: value,
@@ -611,12 +630,17 @@ const Settings = ( props ) => {
 						/>
 					}
 					bcc={
-						<TextControl
+						<UAGTextControl
 							placeholder={ __(
 								'Email',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ afterSubmitBccEmail }
+							data={{
+								value: afterSubmitBccEmail,
+								label: 'afterSubmitBccEmail',
+							}}
+							setAttributes={ setAttributes }
 							onChange={ ( value ) =>
 								setAttributes( {
 									afterSubmitBccEmail: value,
@@ -626,7 +650,7 @@ const Settings = ( props ) => {
 					}
 					disableBottomSeparator={ false }
 				/>
-				<TextControl
+				<UAGTextControl
 					label={ __(
 						'Subject',
 						'ultimate-addons-for-gutenberg'
@@ -636,6 +660,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ afterSubmitEmailSubject }
+					data={{
+						value: afterSubmitEmailSubject,
+						label: 'afterSubmitEmailSubject',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( {
 							afterSubmitEmailSubject: value,
