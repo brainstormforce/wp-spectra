@@ -58,7 +58,7 @@ class Spectra_Block_Prioritization {
 		'cf7-styler',
 		'gf-styler',
 		'post-masonry',
-		'wp-search'
+		'wp-search',
 	);
 
 	/**
@@ -80,11 +80,12 @@ class Spectra_Block_Prioritization {
 
 	/**
 	 * Get the Block Priority of a Specific Block.
-	 * 
+	 *
 	 * @since 2.1.0
+	 * @param string $block_name The slug of the required block.
 	 */
 	public static function get_block_priority( $block_name ) {
-		return ( array_search( $block_name, self::$blocks ) + 1 );
+		return ( array_search( $block_name, self::$blocks, true ) + 1 );
 	}
 }
 
@@ -93,4 +94,3 @@ class Spectra_Block_Prioritization {
  *  Kicking this off by calling 'get_instance()' method
  */
 Spectra_Block_Prioritization::get_instance();
-
