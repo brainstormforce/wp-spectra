@@ -249,6 +249,8 @@ const Settings = ( props ) => {
 	const onChangeAlign = ( value ) => {
 		if( 'stretch' !== value ) {
 			props.setAttributes( { equalHeight: false } );
+		}else {
+			props.setAttributes( { equalHeight: true } );
 		}
 	};
 	const generalSettings = () => {
