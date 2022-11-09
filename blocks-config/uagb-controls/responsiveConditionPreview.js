@@ -25,7 +25,7 @@ const responsiveConditionPreview = ( props ) => {
         }
         const tabletPreview = document.getElementsByClassName( 'is-tablet-preview' );
         const mobilePreview = document.getElementsByClassName( 'is-mobile-preview' );
-    
+
         if ( 0 !== tabletPreview.length || 0 !== mobilePreview.length ) {
 
             const preview = tabletPreview[0] || mobilePreview[0];
@@ -44,6 +44,7 @@ const responsiveConditionPreview = ( props ) => {
             const iframeTabletElement = iframeDocument.getElementById(
                 props.clientId + '-tablet-hide-block'
             );
+
             if( props.attributes.UAGHideTab ) {
                 if ( null === iframeTabletElement || undefined === iframeTabletElement ) {
     
@@ -55,7 +56,9 @@ const responsiveConditionPreview = ( props ) => {
                     $style.innerHTML = '#block-' + props.clientId + ' > .uagb-editor-preview-mode-tablet{ background:repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 2px, transparent 9px); border: 1px solid rgba(0, 0, 0, 0.15); } ';
                     $style.innerHTML += '#block-' + props.clientId + ' > .uagb-editor-preview-mode-tablet:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';
                 
-                    iframeDocument.head.appendChild( $style );
+                    setTimeout( ()=> {
+                        iframeDocument.head.appendChild( $style );
+                    }, 500 )
                 } 
             } else if ( null !== iframeTabletElement && undefined !== iframeTabletElement ) {
                 iframeTabletElement.remove();
@@ -75,11 +78,13 @@ const responsiveConditionPreview = ( props ) => {
                     $style.innerHTML = '#block-' + props.clientId + ' > .uagb-editor-preview-mode-mobile{ background:repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 2px, transparent 9px); border: 1px solid rgba(0, 0, 0, 0.15); } ';
                     $style.innerHTML += '#block-' + props.clientId + ' > .uagb-editor-preview-mode-mobile:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';
              
-                    iframeDocument.head.appendChild( $style );
+                    setTimeout( ()=> {
+                        iframeDocument.head.appendChild( $style );
+                    }, 500 )
                 }
             
             } else if ( null !== iframeMobileElement && undefined !== iframeMobileElement ) {
-                    iframeMobileElement.remove();
+                iframeMobileElement.remove();
             }
             
         }
