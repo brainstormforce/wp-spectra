@@ -144,7 +144,12 @@ function styling( props ) {
 	selectors[' .wp-block-button__link.uagb-buttons-repeater:hover'] = {
 		'border-color': btnBorderHColor,
 	};
-
+	
+	//Twenty Twenty theme
+	selectors['.uagb-buttons__outer-wrap.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'] = borderCSS;
+	selectors['.uagb-buttons__outer-wrap.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater:hover'] = {
+		'border-color': btnBorderHColor,
+	};
 	mobileSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater' ] = {
 		'font-size': generateCSSUnit( sizeMobile, sizeType ),
 		'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),

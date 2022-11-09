@@ -49,7 +49,7 @@ const Render = ( props ) => {
 				<Placeholder
 					icon="admin-post"
 					label={
-						uagb_blocks_info.blocks[ 'uagb/post-timeline' ].title
+						__( 'Post Timeline', 'ultimate-addons-for-gutenberg' )
 					}
 				>
 					{ ! Array.isArray( latestPosts ) ? (
