@@ -1,7 +1,13 @@
+import { __ } from '@wordpress/i18n';
+
 const attributes = { // eslint-disable-line no-unused-vars
 	blockName               : {
 		type    : 'string',
 		default : 'post-timeline',
+	},
+	readMoreText            : {
+		type    : 'string',
+		default : __( 'Read More', 'ultimate-addons-for-gutenberg' ),
 	},
 	align                   : {
 		type    : 'string',
