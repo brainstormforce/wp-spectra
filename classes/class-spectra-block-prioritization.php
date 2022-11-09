@@ -58,7 +58,7 @@ class Spectra_Block_Prioritization {
 		'cf7-styler',
 		'gf-styler',
 		'post-masonry',
-		'wp-search',
+		'wp-search'
 	);
 
 	/**
@@ -93,17 +93,4 @@ class Spectra_Block_Prioritization {
  *  Kicking this off by calling 'get_instance()' method
  */
 Spectra_Block_Prioritization::get_instance();
-
-
-/**
- * Install class
- *
- * @since 2.1.0
- *
- * @return object
- */
-// function spectra_block_prioritization() {
-// 	return Spectra_Block_Prioritization::get_instance();
-
-// }
 
