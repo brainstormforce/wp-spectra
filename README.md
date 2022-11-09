@@ -179,6 +179,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Marketing Button - Block does not remain in the stack order when the Blocksy theme is active.
 * Fix: Call To Action - Second button CSS style issue on the frontend.
 * Fix: Scroll to specific block not working when switch from desktop/tablet/mobile.
+* Fix: Post Block - Article tag class conflicting with TranslatePress plugin.
 
 ### 2.0.14 - TUESDAY, 08th NOVEMBER 2022 ###
 * Improvement: Compatibility with WordPress 6.1.
