@@ -68,7 +68,6 @@ const Settings = ( props ) => {
 		imgPosition,
 		displayPostLink,
 		newTab,
-		ctaText,
 		align,
 		columns,
 		tcolumns,

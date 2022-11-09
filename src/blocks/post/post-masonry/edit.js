@@ -385,7 +385,6 @@ const UAGBPostMasonry = ( props ) => {
 		imgPosition,
 		displayPostLink,
 		newTab,
-		ctaText,
 		columns,
 		tcolumns,
 		mcolumns,

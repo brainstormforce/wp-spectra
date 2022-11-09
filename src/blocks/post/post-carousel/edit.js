@@ -329,7 +329,6 @@ const UAGBPostCarousel = ( props ) => {
 		imgPosition,
 		displayPostLink,
 		newTab,
-		ctaText,
 		columns,
 		tcolumns,
 		mcolumns,

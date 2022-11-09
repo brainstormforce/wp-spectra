@@ -30,7 +30,7 @@ export const PostButton = ( props ) => {
 				>
 					<RichText
 						value={ attributes.ctaText ? attributes.ctaText : __( 'Read More' ) }
-						onChange={value=> setAttributes({ctaText: value})}
+						onChange={ value=> setAttributes( {ctaText: value} ) }
 						className={ classnames(
 							'uagb-text-link',
 							'wp-block-button__link'
