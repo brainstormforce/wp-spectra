@@ -88,6 +88,8 @@ function styling( props ) {
 		ctaBottomSpace,
 		ctaBottomSpaceTablet,
 		ctaBottomSpaceMobile,
+		ctaBgType,
+		ctaBgHType,
 		ctaBgColor,
 		ctaHColor,
 		ctaBgHColor,
@@ -111,6 +113,7 @@ function styling( props ) {
 		columnGap,
 		columnGapTablet,
 		columnGapMobile,
+		bgType,
 		bgColor,
 
 		paginationColor,
@@ -302,6 +305,9 @@ function styling( props ) {
 		' .uagb-post__inner-wrap': {
 			'background': bgColor,
 			'text-align': align,
+		},
+		'.is_carousel .uagb-post__inner-wrap': {
+			'background': bgType ? bgColor : 'transparent',
 		},
 		'.wp-block-uagb-post-grid .uagb-post__inner-wrap': {
 			'box-shadow':
@@ -524,7 +530,7 @@ function styling( props ) {
 		'font-weight': ctaFontWeight,
 		'font-style': ctaFontStyle,
 		'line-height': generateCSSUnit( ctaLineHeight, ctaLineHeightType ),
-		'background': ctaBgColor,
+		'background': ( ctaBgType === 'color' ) ? ctaBgColor : 'transparent',
 		'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
 		'padding-bottom': generateCSSUnit(
 			paddingBtnBottom,
@@ -560,11 +566,12 @@ function styling( props ) {
 	};
 	selectors[ ' .uagb-post__text .uagb-post__cta:hover' ] = {
 		'color': ctaHColor,
+		'background': ( ctaBgHType === 'color' ) ? ctaBgHColor : 'transparent',
 		'border-color': btnBorderHColor,
 	};
 	selectors[ ' .uagb-post__text .uagb-post__cta:hover a' ] = {
 		'color': ctaHColor,
-		'background': ctaBgHColor,
+		'background': ( ctaBgHType === 'color' ) ? ctaBgHColor : 'transparent',
 		'border-color': btnBorderHColor,
 	};
 

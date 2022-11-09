@@ -50,6 +50,8 @@ const Settings = ( props ) => {
 		columnsGapUnit,
 		align,
 		enableSeparator,
+		boxBgType,
+		boxBgHoverType,
 		boxBgColor,
 		questionTextColor,
 		questionTextBgColor,
@@ -975,34 +977,88 @@ const Settings = ( props ) => {
 					] }
 					normal={
 						<>
-							<AdvancedPopColorControl
-								label={ __(
-									'Background Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ boxBgColor }
-								data={ {
-									value: boxBgColor,
-									label: 'boxBgColor',
-								} }
+							<MultiButtonsControl
 								setAttributes={ setAttributes }
+								label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: boxBgType,
+									label: 'boxBgType',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ [
+									{
+										value: 'transparent',
+										label: __(
+											'Transparent',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'color',
+										label: __(
+											'Color',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+								] }
 							/>
+							{ boxBgType === 'color' &&
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ boxBgColor }
+									data={ {
+										value: boxBgColor,
+										label: 'boxBgColor',
+									} }
+									setAttributes={ setAttributes }
+								/>
+							}
 						</>
 					}
 					hover={
 						<>
-							<AdvancedPopColorControl
-								label={ __(
-									'Background Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ boxBgHoverColor }
-								data={ {
-									value: boxBgHoverColor,
-									label: 'boxBgHoverColor',
-								} }
+							<MultiButtonsControl
 								setAttributes={ setAttributes }
+								label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: boxBgHoverType,
+									label: 'boxBgHoverType',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ [
+									{
+										value: 'transparent',
+										label: __(
+											'Transparent',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'color',
+										label: __(
+											'Color',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+								] }
 							/>
+							{ boxBgHoverType === 'color' &&
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ boxBgHoverColor }
+									data={ {
+										value: boxBgHoverColor,
+										label: 'boxBgHoverColor',
+									} }
+									setAttributes={ setAttributes }
+								/>
+							}
 						</>
 					}
 				/>
