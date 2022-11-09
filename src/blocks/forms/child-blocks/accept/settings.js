@@ -8,6 +8,7 @@ import InspectorTab, {
 import {
 	ToggleControl,
 	TextControl,
+	TextareaControl,
 } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
@@ -15,7 +16,6 @@ import { InspectorControls } from '@wordpress/block-editor';
 
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-import UAGTextControl from '@Components/text-control';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -34,14 +34,12 @@ const Settings = ( props ) => {
 	const acceptInspectorControls = () => {
 		return (
 			<UAGAdvancedPanelBody initialOpen={ true }>
-				<UAGTextControl
-					variant='textarea'
-					setAttributes={ setAttributes }
+				<TextareaControl
 					label={ __(
 						'Acceptance Text',
 						'ultimate-addons-for-gutenberg'
 					) }
-					help={ __( 'Label to display as acceptance message.', 'ultimate-addons-for-gutenberg' ) }
+					help="Label to display as acceptance message."
 					value={ acceptText }
 					data={ {
 						value: acceptText,
