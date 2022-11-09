@@ -61,7 +61,7 @@ const UAGTextControl = ( props ) => {
     return(
         <>
             <div className="components-base-control uagb-text-control uagb-size-type-field-tabs">
-                { props?.variant !== 'inline' &&
+                { props?.variant !== 'inline' && props?.showHeaderControls &&
                     <HeaderControls />
                 }
                 <div
@@ -101,6 +101,7 @@ UAGTextControl.defaultProps = {
 	placeholder: null,
     variant: 'full-width',
     autoComplete: 'off',
+    showHeaderControls: true,
 };
 
 export default UAGTextControl;
