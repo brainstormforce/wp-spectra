@@ -170,7 +170,15 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### 2.0.14 - TUESDAY, 15th NOVEMBER 2022 ###
+### 2.0.15 - TUESDAY, 08th NOVEMBER 2022 ###
+* Improvement: Call To Action - CTA button text is now editable inside the editor.
+* Improvement: Post Timeline - Button text is now editable inside the editor.
+* Improvement: Info-Box - Add responsive feature in Info Box Icon width.
+* Fix: Admin Dashboard - Font dropdown control was going under the section.
+* Fix: Table Of Contents - Alignment issue of marker's view.
+* Fix: Marketing Button - Block does not remain in the stack order when the Blocksy theme is active.
+
+### 2.0.14 - TUESDAY, 08th NOVEMBER 2022 ###
 * Improvement: Compatibility with WordPress 6.1.
 * Improvement: Container - Equal height setting in the Parent container.
 * Improvement: Post Block - Woo Commerce Products (CPT) not getting in Post Type.
@@ -216,7 +224,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Translation for default text was missing for some blocks.
 * Fix: Z-Index extension is not working for the dynamic blocks.
 * Fix: Content flickering in the editor when hovering over it.
-* Fix: Marketing Button - Block does not remain in the stack order when the Blocksy theme is active.
 * Fix: Container - Page freezes when we select and move multiple blocks at once to the container.
 * Fix: Advanced Column - Core image block caption alignment issue.
 * Fix: Admin Dashboard - Toggle not working properly in RTL mode.
