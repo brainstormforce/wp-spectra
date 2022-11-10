@@ -79,7 +79,7 @@
 		}
 	}
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		margin-top: 12px;
 
 		p {
@@ -103,7 +103,7 @@
 .uagb-editor-preview-mode-tablet.uagb-tabs__wrap.uagb-tabs__hstyle1-tablet {
 	flex-direction: column;
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		margin-bottom: 0;
 		padding: 0;
 		display: flex;
@@ -128,7 +128,7 @@
 .uagb-editor-preview-mode-tablet.uagb-tabs__wrap.uagb-tabs__hstyle2-tablet {
 	flex-direction: column;
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		display: flex;
 		flex-direction: row;
 		margin-bottom: 0;
@@ -149,7 +149,7 @@
 .uagb-editor-preview-mode-tablet.uagb-tabs__wrap.uagb-tabs__hstyle3-tablet {
 	flex-direction: column;
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		display: flex;
 		flex-direction: row;
 		margin-bottom: 0;
@@ -171,7 +171,7 @@
 .uagb-editor-preview-mode-tablet.uagb-tabs__wrap.uagb-tabs__hstyle4-tablet {
 	flex-direction: column;
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		display: flex;
 		flex-direction: row;
 		margin-bottom: 0;
@@ -194,7 +194,7 @@
 	flex-direction: column;
 
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
@@ -218,7 +218,7 @@
 .uagb-editor-preview-mode-tablet.uagb-tabs__wrap.uagb-tabs__vstyle6-tablet {
 	flex-direction: row;
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		margin-bottom: 0;
 		padding: 0;
 		display: flex;
@@ -247,7 +247,7 @@
 .uagb-editor-preview-mode-tablet.uagb-tabs__wrap.uagb-tabs__vstyle7-tablet {
 	flex-direction: row;
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		display: flex;
 		flex-direction: column;
 		flex-grow: 1;
@@ -277,7 +277,7 @@
 	flex-direction: row;
 	display: flex;
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		margin-bottom: 0;
 		padding: 0;
 		display: grid;
@@ -306,7 +306,7 @@
 	flex-direction: row;
 	display: flex;
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		margin-bottom: 0;
 		padding: 0;
 		display: flex;
@@ -335,7 +335,7 @@
 
 	flex-direction: row;
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		display: flex;
 		flex-direction: column;
 		flex-grow: 1;
@@ -366,7 +366,7 @@
 .uagb-editor-preview-mode-mobile.uagb-tabs__wrap.uagb-tabs__hstyle1-mobile {
 	flex-direction: column;
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		margin-bottom: 0;
 		padding: 0;
 		display: flex;
@@ -392,7 +392,7 @@
 .uagb-editor-preview-mode-mobile.uagb-tabs__wrap.uagb-tabs__hstyle2-mobile {
 	flex-direction: column;
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		margin-bottom: 0;
 		padding: 0;
 		display: flex;
@@ -418,7 +418,7 @@
 .uagb-editor-preview-mode-mobile.uagb-tabs__wrap.uagb-tabs__hstyle3-mobile {
 	flex-direction: column;
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		display: flex;
 		flex-grow: 1;
 		margin-bottom: 0;
@@ -443,7 +443,7 @@
 .uagb-editor-preview-mode-mobile.uagb-tabs__wrap.uagb-tabs__hstyle4-mobile {
 	flex-direction: column;
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		margin-bottom: 0;
 		padding: 0;
 		flex-direction: row;
@@ -470,7 +470,7 @@
 	flex-direction: column;
 
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		display: flex;
 		flex-grow: 1;
 		flex-direction: row;
@@ -500,7 +500,7 @@
 .uagb-editor-preview-mode-mobile.uagb-tabs__wrap.uagb-tabs__vstyle8-mobile {
 	flex-direction: row;
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		margin-bottom: 0;
 		padding: 0;
 		display: flex;
@@ -538,7 +538,7 @@
 		}
 	}
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		display: flex;
 		flex-direction: column;
 		flex-grow: 1;
@@ -559,7 +559,7 @@
 	flex-direction: row;
 	display: flex;
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		margin-bottom: 0;
 		padding: 0;
 		display: flex;
@@ -597,7 +597,7 @@
 		}
 	}
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		display: flex;
 		flex-direction: column;
 		flex-grow: 1;
@@ -616,7 +616,7 @@
 .uagb-editor-preview-mode-mobile.uagb-tabs__wrap.uagb-tabs__stack1-mobile {
 
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		margin: 0;
 		padding: 0;
 		display: flex;
@@ -643,7 +643,7 @@
 
 .uagb-editor-preview-mode-mobile.uagb-tabs__wrap.uagb-tabs__stack2-mobile {
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		display: flex;
 		flex-direction: column;
 		flex-grow: unset;
@@ -669,7 +669,7 @@
 
 .uagb-editor-preview-mode-mobile.uagb-tabs__wrap.uagb-tabs__stack3-mobile {
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		margin: 0;
 		padding: 0;
 		display: flex;
@@ -700,7 +700,7 @@
 
 	margin: auto;
 
-	ul.uagb-tabs__panel {
+	div.uagb-tabs__panel {
 		display: flex;
 		flex-direction: column;
 		max-width: 100%;

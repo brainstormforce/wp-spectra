@@ -7,7 +7,7 @@ import {
 
 import { createBlock } from '@wordpress/blocks';
 import { InnerBlocks } from '@wordpress/block-editor';
-import { Placeholder, Button, Disabled, Tip } from '@wordpress/components';
+import { Placeholder, Button, Tip } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import React, {    useLayoutEffect } from 'react';
 
@@ -28,11 +28,11 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { categoriesList, latestPosts, attributes, deviceType, name } = props;
+	const { categoriesList, latestPosts, attributes, deviceType, name, setAttributes } = props;
 
 	const renderEditMode = () => {
 		const onDone = () => {
-			const { block, setAttributes } = props;
+			const { block } = props;
 			setAttributes( {
 				layoutConfig: getPostLayoutConfig( block ),
 			} );
@@ -112,19 +112,17 @@ const Render = ( props ) => {
 	};
 
 	const renderViewMode = (
-		<Disabled>
+		<Blog
+			attributes={ attributes }
+			className={ props.className }
+			latestPosts={ latestPosts }
+			block_id={ props.clientId.substr( 0, 8 ) }
+			categoriesList={ categoriesList }
+			deviceType={ deviceType }
+			name={ name }
+			setAttributes = { setAttributes }
+		/>
 
-				<Blog
-					attributes={ attributes }
-					className={ props.className }
-					latestPosts={ latestPosts }
-					block_id={ props.clientId.substr( 0, 8 ) }
-					categoriesList={ categoriesList }
-					deviceType={ deviceType }
-					name={ name }
-				/>
-
-		</Disabled>
 	);
 
 	return <>{ state.isEditing ? renderEditMode() : renderViewMode }</>;

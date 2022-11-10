@@ -35,7 +35,10 @@ const UAGBInfoBox = ( props ) => {
 			ctaBorderWidth,
 			ctaBorderRadius,
 			ctaBorderColor,
-			ctaBorderhoverColor
+			ctaBorderhoverColor,
+			ctaBgType,
+			ctaBgHoverType,
+			showCtaIcon,
 		} = props.attributes;
 
 		if ( ctaBtnVertPadding ) {
@@ -77,7 +80,18 @@ const UAGBInfoBox = ( props ) => {
 			props.attributes
 		);
 		}
-		
+
+		if( ctaBgType === undefined ) {
+			props.setAttributes( { ctaBgType: 'color' } );
+		}
+
+		if( ctaBgHoverType === undefined ) {
+			props.setAttributes( { ctaBgHoverType: 'color' } );
+		}
+
+		if( showCtaIcon === undefined ) {
+			props.setAttributes( { showCtaIcon: true } );
+		}
 	}, [] );
 
 	useEffect( () => {

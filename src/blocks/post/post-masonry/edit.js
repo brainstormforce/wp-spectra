@@ -394,7 +394,6 @@ const UAGBPostMasonry = ( props ) => {
 		imgPosition,
 		displayPostLink,
 		newTab,
-		ctaText,
 		columns,
 		tcolumns,
 		mcolumns,
@@ -462,6 +461,8 @@ const UAGBPostMasonry = ( props ) => {
 		metaColor,
 		excerptColor,
 		ctaColor,
+		ctaBgType,
+		ctaBgHType,
 		ctaBgColor,
 		ctaHColor,
 		ctaBgHColor,
@@ -597,6 +598,17 @@ const UAGBPostMasonry = ( props ) => {
 
 	const categoryListOptions = [
 		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
+	];
+
+	const bgTypeOptions = [
+		{
+			value: 'transparent',
+			label: __( 'Transparent', 'ultimate-addons-for-gutenberg' ),
+		},
+		{
+			value: 'color',
+			label: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+		},
 	];
 
 	if ( taxonomyList ) {
@@ -1559,15 +1571,10 @@ const UAGBPostMasonry = ( props ) => {
 								setAttributes( { newTab: ! newTab } )
 							}
 						/>
-						<TextControl
-							label={ __(
-								'Text',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ ctaText }
-							onChange={ ( value ) =>
-								setAttributes( { ctaText: value } )
-							}
+						<UAGPresets
+							setAttributes = { setAttributes }
+							presets = { buttonsPresets }
+							presetInputType = 'radioImage'
 						/>
 					</>
 				) }
@@ -2230,11 +2237,6 @@ const UAGBPostMasonry = ( props ) => {
 				) }
 				initialOpen={ false }
 			>
-				<UAGPresets
-					setAttributes = { setAttributes }
-					presets = { buttonsPresets }
-					presetInputType = 'radioImage'
-				/>
 				<UAGTabsControl
 					tabs={ [
 						{
@@ -2266,18 +2268,30 @@ const UAGBPostMasonry = ( props ) => {
 								} }
 								setAttributes={ setAttributes }
 							/>
-							<AdvancedPopColorControl
-								label={ __(
-									'Background Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ ctaBgColor }
-								data={ {
-									value: ctaBgColor,
-									label: 'ctaBgColor',
-								} }
+							<MultiButtonsControl
 								setAttributes={ setAttributes }
+								label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: ctaBgType,
+									label: 'ctaBgType',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ bgTypeOptions }
 							/>
+							{ ctaBgType === 'color' &&
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ ctaBgColor }
+									data={ {
+										value: ctaBgColor,
+										label: 'ctaBgColor',
+									} }
+									setAttributes={ setAttributes }
+								/>
+							}
 						</>
 					}
 					hover={
@@ -2294,18 +2308,30 @@ const UAGBPostMasonry = ( props ) => {
 								} }
 								setAttributes={ setAttributes }
 							/>
-							<AdvancedPopColorControl
-								label={ __(
-									'Background Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ ctaBgHColor }
-								data={ {
-									value: ctaBgHColor,
-									label: 'ctaBgHColor',
-								} }
+							<MultiButtonsControl
 								setAttributes={ setAttributes }
+								label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: ctaBgHType,
+									label: 'ctaBgHType',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ bgTypeOptions }
 							/>
+							{ ctaBgHType === 'color' &&
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ ctaBgHColor }
+									data={ {
+										value: ctaBgHColor,
+										label: 'ctaBgHColor',
+									} }
+									setAttributes={ setAttributes }
+								/>
+							}
 						</>
 					}
 					disableBottomSeparator={ false }
