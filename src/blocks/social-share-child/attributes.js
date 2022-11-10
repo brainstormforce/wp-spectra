@@ -55,7 +55,7 @@ const attributes = {
 	},
 	parentSize: {
 		type: 'number',
-		default: '',
+		default: 30,
 	},
 	parentSizeMobile: {
 		type: 'number',

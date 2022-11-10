@@ -57,7 +57,7 @@ const SocialShareComponent = ( props ) => {
 
 	return (
 
-					<>
+			<>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
 			</>
