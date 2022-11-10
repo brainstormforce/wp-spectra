@@ -173,6 +173,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 = 2.1 =
 * New: Image Gallery Block.
 * Improvement: Code - Added Automatic Block Prioritization and Organization.
+* Improvement: Global - Updated Block Previews for All Spectra Blocks in the Editor.
 
 = 2.0.14 - TUESDAY, 08th NOVEMBER 2022 =
 * Improvement: Compatibility with WordPress 6.1.

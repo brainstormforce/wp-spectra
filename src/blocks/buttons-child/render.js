@@ -66,6 +66,7 @@ const Render = ( props ) => {
 	}
 
 	const hasBackground = background !== '' || backgroundType === 'transparent' || 'gradient' === backgroundType  ? 'has-background' : '';
+
 	return (
 		<div
 			className={ classnames(
