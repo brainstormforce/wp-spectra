@@ -1288,6 +1288,30 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				$mob_class = ( isset( $attributes['UAGHideMob'] ) ) ? 'uag-hide-mob' : '';
 			}
 
+			$zindex_desktop           = '';
+			$zindex_tablet            = '';
+			$zindex_mobile            = '';
+			$zindex_wrap              = array();
+			$zindex_extention_enabled = ( isset( $attributes['zIndex'] ) || isset( $attributes['zIndexTablet'] ) || isset( $attributes['zIndexMobile'] ) );
+
+			if ( $zindex_extention_enabled ) {
+				$zindex_desktop = ( isset( $attributes['zIndex'] ) ) ? '--z-index-desktop:' . $attributes['zIndex'] . ';' : false;
+				$zindex_tablet  = ( isset( $attributes['zIndexTablet'] ) ) ? '--z-index-tablet:' . $attributes['zIndexTablet'] . ';' : false;
+				$zindex_mobile  = ( isset( $attributes['zIndexMobile'] ) ) ? '--z-index-mobile:' . $attributes['zIndexMobile'] . ';' : false;
+
+				if ( $zindex_desktop ) {
+					array_push( $zindex_wrap, $zindex_desktop );
+				}
+
+				if ( $zindex_tablet ) {
+					array_push( $zindex_wrap, $zindex_tablet );
+				}
+
+				if ( $zindex_mobile ) {
+					array_push( $zindex_wrap, $zindex_mobile );
+				}
+			}
+
 			$is_image_enabled = ( true === $attributes['displayPostImage'] ) ? 'uagb-post__image-enabled' : 'uagb-post__image-disabled';
 
 			$outerwrap = array(
@@ -1300,6 +1324,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				$desktop_class,
 				$tab_class,
 				$mob_class,
+				$zindex_extention_enabled ? 'uag-blocks-common-selector' : '',
 			);
 
 			switch ( $layout ) {
@@ -1335,7 +1360,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			?>
 
-			<div class="<?php echo esc_html( implode( ' ', $common_classes ) ); ?>" data-total="<?php echo esc_attr( $total ); ?>">
+			<div class="<?php echo esc_html( implode( ' ', $common_classes ) ); ?>"
+				data-total="<?php echo esc_attr( $total ); ?>"
+				style="<?php echo esc_html( implode( '', $zindex_wrap ) ); ?>"
+			>
 
 				<?php
 
@@ -1612,7 +1640,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								window.addEventListener( 'resize', function() {	isotope	});
 							}
 							// This CSS is for Post BG Image Spacing
-							let articles = document.querySelectorAll( '.uagb-post__image-position-background .uagb-post__inner-wrap' );
+							let articles = document.querySelectorAll( '.wp-block-uagb-post-masonry.uagb-post__image-position-background .uagb-post__inner-wrap' );
 
 							for( let article of articles ) {
 								let articleWidth = article.offsetWidth;
@@ -1622,7 +1650,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								if ( image[0] ) {
 									image[0].style.width = imageWidth + '%';
 									image[0].style.marginLeft = rowGap / 2 + 'px';
-
 								}
 
 							}
@@ -1862,28 +1889,31 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				return;
 			}
 			$wrap = ( 'aboveTitle' === $attributes['displayPostTaxonomyAboveTitle'] ) ? array(
-				'uagb-post__taxonomy uagb-post__text',
+				'uagb-post__taxonomy',
 				$attributes['taxStyle'],
-			) : array( 'uagb-post__taxonomy uagb-post__text' );
+			) : array( 'uagb-post__taxonomy' );
 
 			if ( ( 'default' === $attributes['taxStyle'] && 'aboveTitle' === $attributes['displayPostTaxonomyAboveTitle'] ) || 'withMeta' === $attributes['displayPostTaxonomyAboveTitle'] ) {
 				?>
-				<span class='<?php echo esc_html( implode( ' ', $wrap ) ); ?>'>
-					<?php echo ( true === $attributes['hideTaxonomyIcon'] ) ? '<span class="dashicons-tag dashicons"></span>' : ''; ?>
-					<?php
-					$terms_list = array();
-					foreach ( $terms as $key => $value ) {
-						// Get the URL of this category.
-						$category_link = get_category_link( $value->term_id );
-						array_push( $terms_list, '<a href="' . esc_url( $category_link ) . '">' . esc_html( $value->name ) . '</a>' );
-					}
-					echo esc_attr( ( 'aboveTitle' === $attributes['displayPostTaxonomyAboveTitle'] ) && 'default' === $attributes['taxStyle'] ) ? wp_kses_post( implode( esc_html( $attributes['taxDivider'] ) . '&nbsp;', $terms_list ) ) : wp_kses_post( implode( ',&nbsp;', $terms_list ) );
-					?>
-				</span>
+				<div class="uagb-post__text">
+					<span class='<?php echo esc_html( implode( ' ', $wrap ) ); ?>'>
+						<?php echo ( true === $attributes['hideTaxonomyIcon'] ) ? '<span class="dashicons-tag dashicons"></span>' : ''; ?>
+						<?php
+						$terms_list = array();
+						foreach ( $terms as $key => $value ) {
+							// Get the URL of this category.
+							$category_link = get_category_link( $value->term_id );
+							array_push( $terms_list, '<a href="' . esc_url( $category_link ) . '">' . esc_html( $value->name ) . '</a>' );
+						}
+						echo esc_attr( ( 'aboveTitle' === $attributes['displayPostTaxonomyAboveTitle'] ) && 'default' === $attributes['taxStyle'] ) ? wp_kses_post( implode( esc_html( $attributes['taxDivider'] ) . '&nbsp;', $terms_list ) ) : wp_kses_post( implode( ',&nbsp;', $terms_list ) );
+						?>
+					</span>
+				</div>
 				<?php
 			}
 			if ( 'highlighted' === $attributes['taxStyle'] && 'aboveTitle' === $attributes['displayPostTaxonomyAboveTitle'] ) {
 				$terms_list = array();
+				echo sprintf( '<div class="uagb-post__text">' );
 				foreach ( $terms as $key => $value ) {
 					// Get the URL of this category.
 					$category_link = get_category_link( $value->term_id );
@@ -1895,6 +1925,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						esc_html( $value->name )
 					);
 				}
+				echo sprintf( '</div>' );
 			}
 		}
 

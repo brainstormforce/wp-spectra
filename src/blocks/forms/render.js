@@ -1,7 +1,6 @@
 import classnames from 'classnames';
-import React, { useCallback, useLayoutEffect } from 'react';
+import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
-import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
 
 const ALLOWED_BLOCKS = [
@@ -22,13 +21,6 @@ const ALLOWED_BLOCKS = [
 import { InnerBlocks, RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
-	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect( () => {
-		styles.use();
-		return () => {
-			styles.unuse();
-		};
-	}, [] );
 
 	props = props.parentProps;
 
@@ -60,7 +52,7 @@ const Render = ( props ) => {
 						'Submit',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ submitButtonText }
+					value={ submitButtonText.replace( /(<([^>]+)>)/ig, '' ) }
 					onChange={ ( value ) =>
 						setAttributes( {
 							submitButtonText: value,

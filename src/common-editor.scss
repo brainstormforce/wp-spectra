@@ -75,10 +75,6 @@
 		z-index: 1;
 	}
 
-
-	.block-editor-block-list__block:hover {
-		z-index: 1;
-	}
 }
 
 .block-editor-block-list__layout .block-editor-block-list__block.is-selected { // Added CSS for better clarity to the users to indicates which block is selected & being edited.
@@ -100,9 +96,11 @@
 .uagb-inspector-tab .components-panel__body label,
 .uagb-extention-tab label {
 	color: $spectra-color-body;
-	font-size: $spectra-font-size-label;
-	line-height: $spectra-line-height-label;
+	font-size: $spectra-font-size-label !important;
+	line-height: $spectra-line-height-label !important;
 	margin-bottom: $spectra-control-label-bottom-margin;
+	text-transform: $spectra-text-transform-label !important;
+	font-weight: $spectra-font-weight-label !important;
 }
 
 .uagb-inspector-tab label.components-toggle-control__label {
@@ -230,8 +228,6 @@ hr.uagb-editor__separator {
 	width: 50%;
 }
 
-.DayPickerNavigation,
-.DayPicker_weekHeader,
 .components-button-group .components-button.is-primary,
 .components-button-group .components-button:focus,
 .components-toolbar .components-button,
@@ -603,7 +599,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	align-items: center;
 	padding: 0;
 	margin: 0;
-	margin-left: 5px;
+	margin-left: 10px;
 }
 
 .components-panel__body .components-base-control {
@@ -644,9 +640,21 @@ button.components-button.uagb-review-select-btn.is-secondary {
 
 	margin-bottom: 10px;
 
-	.components-panel[data-uagb-tab="advance"] .block-editor-block-inspector__advanced.uagb-extention-tab {
-		border: none;
-		border-bottom: 1px solid #e0e0e0;
+	.components-panel[data-uagb-tab="advance"] {
+
+		.block-editor-block-inspector__advanced.uagb-extention-tab {
+			border: none;
+			border-bottom: 1px solid #e0e0e0;
+		}
+
+		.components-base-control .components-base-control__label {
+			color: $spectra-color-body;
+			font-size: $spectra-font-size-label;
+			line-height: $spectra-line-height-label;
+			margin-bottom: $spectra-control-label-bottom-margin;
+			text-transform: $spectra-text-transform-label;
+			font-weight: $spectra-font-weight-label;
+		}
 	}
 }
 
@@ -738,10 +746,13 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .uagb-inspector-tab {
 
 	.components-toggle-control .components-base-control__field {
-		display: flex;
-		flex-direction: row-reverse;
-		justify-content: space-between;
-		align-items: center;
+
+		.components-flex { // WP6.1 compatibility.
+			display: flex;
+			flex-direction: row-reverse;
+			justify-content: space-between;
+			align-items: center;
+		}
 	}
 }
 

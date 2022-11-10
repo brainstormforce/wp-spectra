@@ -4,7 +4,7 @@
 
 import { createElement as el } from '@wordpress/element';
 
-// This is the color that will be visible on the drag and drop of the blocks. Use this as the primary fill / stroke color. 
+// This is the color that will be visible on the drag and drop of the blocks. Use this as the primary fill / stroke color.
 const iconColor = '#fff';
 // This is the color used for non-block icons.
 const spectraDarkColor = '#1d2327';

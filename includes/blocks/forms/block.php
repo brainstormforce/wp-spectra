@@ -17,6 +17,6 @@ $block_data = array(
 	'description'      => __( 'Add easily customizable forms to gather information.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'js_assets'        => array( 'uagb-forms-js' ),
-	'priority'         => 13,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'forms' ),
 	'deprecated'       => false,
 );

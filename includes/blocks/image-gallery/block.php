@@ -17,7 +17,7 @@ $block_data = array(
 	'description'      => __( 'Create a highly customizable image gallery', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 17,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'image-gallery' ),
 	'js_assets'        => array( 'uagb-slick-js', 'uagb-masonry', 'uagb-imagesloaded', 'uagb-image-gallery-js' ),
 	'css_assets'       => array( 'uagb-slick-css' ),
 );
