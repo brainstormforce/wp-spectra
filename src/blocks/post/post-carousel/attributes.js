@@ -319,6 +319,13 @@ const attributes = {
 			styleType: 'post-bottom-padding'
 		},
 	},
+	bgType                  : {
+		type    : 'string',
+		default : 'color',
+		UAGCopyPaste: {
+			styleType: 'post-bg-type'
+		},
+	},
 	bgColor                 : {
 		type    : 'string',
 		default : '#f6f6f6',
@@ -598,6 +605,20 @@ const attributes = {
 		type : 'string',
 		UAGCopyPaste: {
 			styleType: 'btn-color'
+		},
+	},
+	ctaBgType               : {
+		type : 'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-bg-type'
+		},
+	},
+	ctaBgHType              : {
+		type : 'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-bg-hover-type'
 		},
 	},
 	ctaBgColor              : {

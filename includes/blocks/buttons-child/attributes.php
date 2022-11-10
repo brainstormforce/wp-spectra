@@ -81,7 +81,7 @@ return array_merge(
 		'leftMarginMobile'       => '',
 		'marginType'             => 'px',
 		'marginLink'             => '',
-		'boxShadowColor'         => '#000',
+		'boxShadowColor'         => '#00000026',
 		'boxShadowHOffset'       => 0,
 		'boxShadowVOffset'       => 0,
 		'boxShadowBlur'          => '',
