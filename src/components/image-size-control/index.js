@@ -38,11 +38,14 @@ export default function ImageSizeControl( {
 	const deviceType = useDeviceType();
 	const responsive = true;
 
+	const devicehight = ( deviceType === 'Tablet' ) ? heightTablet : ( deviceType === 'Mobile' ) ? heightMobile : height;
+	const devicewidth = ( deviceType === 'Tablet' ) ? widthTablet : ( deviceType === 'Mobile' ) ? widthMobile : width;
+
 	const {
 		currentHeight,
 		currentWidth,
 		updateDimension,
-	} = useDimensionHandler( height, width, imageHeight, imageWidth, onChange );
+	} = useDimensionHandler( devicehight, devicewidth, imageHeight, imageWidth, onChange );
 
 	const output = {}
 	output.Desktop = (
@@ -81,20 +84,20 @@ export default function ImageSizeControl( {
 				type="number"
 				className="block-editor-image-size-control__width"
 				label={ __( 'Width' ) }
-				value={ widthTablet }
+				value={ currentWidth }
 				min={ 1 }
 				onChange={ ( value ) =>
-					setAttributes( { widthTablet: value} )
+					updateDimension( 'widthTablet', value )
 				}
 			/>
 			<TextControl
 				type="number"
 				className="block-editor-image-size-control__height"
 				label={ __( 'Height' ) }
-				value={ heightTablet }
+				value={ currentHeight }
 				min={ 1 }
 				onChange={ ( value ) => {
-					setAttributes( { heightTablet: value} );
+					updateDimension( 'heightTablet', value )
 					if ( ! isNaN( value ) && '' !== value ) {
 						setAttributes( { customHeightSetTablet: true } );
 					} else {
@@ -111,20 +114,20 @@ export default function ImageSizeControl( {
 				type="number"
 				className="block-editor-image-size-control__width"
 				label={ __( 'Width' ) }
-				value={ widthMobile }
+				value={ currentWidth }
 				min={ 1 }
 				onChange={ ( value ) =>
-					setAttributes( { widthMobile: value} )
+					updateDimension( 'widthMobile', value )
 				}
 			/>
 			<TextControl
 				type="number"
 				className="block-editor-image-size-control__height"
 				label={ __( 'Height' ) }
-				value={ heightMobile }
+				value={ currentHeight }
 				min={ 1 }
 				onChange={ ( value ) => {
-					setAttributes( { heightMobile: value} );
+					updateDimension( 'heightMobile', value )
 					if ( ! isNaN( value ) && '' !== value ) {
 						setAttributes( { customHeightSetMobile: true } );
 					} else {
