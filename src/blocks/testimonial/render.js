@@ -133,7 +133,7 @@ const Render = ( props ) => {
 	let url = '';
 	let urlCheck = '';
 
-	if ( imageArray && typeof imageArray !== null ) {
+	if ( imageArray ) {
 		const image = imageArray;
 
 		if ( typeof image !== 'undefined' && image !== null && image !== '' ) {
@@ -154,9 +154,9 @@ const Render = ( props ) => {
 		}
 	}
 
-	useEffect(() => {
+	useEffect( () => {
 		getImageHeightWidth( url, setAttributes, { type: 'width', value: imageWidth } )
-	}, [ imageWidth, url ])
+	}, [ imageWidth, url ] )
 
 	return (
 		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
