@@ -17,6 +17,8 @@ $cta_border_css        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 );
 $cta_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
 $cta_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
+
+
 // Adds Fonts.
 UAGB_Block_JS::blocks_info_box_gfont( $attr );
 

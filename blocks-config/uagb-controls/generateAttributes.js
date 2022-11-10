@@ -159,65 +159,66 @@ export const getBorderAttributes = ( prefix ) => {
 
 
 export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, color = {}, hoverColor = {}, borderStyle = {}, setAttributes, attributes = {} ) => {
+	if( 'default' !== attributes[ prefix + 'BorderStyle' ] ) {
+		if( ! isNaN( borderWidth.value ) ){
 
-	if( ! isNaN( borderWidth.value ) ){
+			if( '' === attributes[ prefix + 'BorderTopWidth' ] ) {
+				setAttributes( { [ prefix + 'BorderTopWidth'] : borderWidth.value } );
+			}
+			if( '' === attributes[ prefix + 'BorderLeftWidth' ] ) {
+				setAttributes( { [ prefix + 'BorderLeftWidth' ]: borderWidth.value } );
+			}
+			if( '' === attributes[ prefix + 'BorderRightWidth' ] ) {
+				setAttributes( { [ prefix + 'BorderRightWidth' ]: borderWidth.value } );
+			}
+			if( '' === attributes[ prefix + 'BorderBottomWidth' ] ) {
+				setAttributes( { [ prefix + 'BorderBottomWidth' ] : borderWidth.value } );
+			}
+			// reset
+			attributes[borderWidth.label] = '';
+		}
 
-		if( '' === attributes[ prefix + 'BorderTopWidth' ] ) {
-			setAttributes( { [ prefix + 'BorderTopWidth'] : borderWidth.value } );
-		}
-		if( '' === attributes[ prefix + 'BorderLeftWidth' ] ) {
-			setAttributes( { [ prefix + 'BorderLeftWidth' ]: borderWidth.value } );
-		}
-		if( '' === attributes[ prefix + 'BorderRightWidth' ] ) {
-			setAttributes( { [ prefix + 'BorderRightWidth' ]: borderWidth.value } );
-		}
-		if( '' === attributes[ prefix + 'BorderBottomWidth' ] ) {
-			setAttributes( { [ prefix + 'BorderBottomWidth' ] : borderWidth.value } );
-		}
-		// reset
-		attributes[borderWidth.label] = '';
-	}
+		if( ! isNaN ( borderRadius.value ) ){
 
-	if( ! isNaN ( borderRadius.value ) ){
+			if( '' === attributes[ prefix + 'BorderTopLeftRadius' ] ) {
+				setAttributes( { [ prefix + 'BorderTopLeftRadius' ] : borderRadius.value } );
+			}
+			if( '' === attributes[ prefix + 'BorderTopRightRadius' ] ) {
+				setAttributes( { [ prefix + 'BorderTopRightRadius' ] : borderRadius.value } );
+			}
+			if( '' === attributes[ prefix + 'BorderBottomLeftRadius' ] ) {
+				setAttributes( { [ prefix + 'BorderBottomLeftRadius' ] : borderRadius.value } );
+			}
+			if( '' === attributes[ prefix + 'BorderBottomRightRadius' ] ) {
+				setAttributes( { [ prefix + 'BorderBottomRightRadius' ] : borderRadius.value } );
+			}
+			// reset
+			attributes[ borderRadius.label ] = '';
+		}
 
-		if( '' === attributes[ prefix + 'BorderTopLeftRadius' ] ) {
-			setAttributes( { [ prefix + 'BorderTopLeftRadius' ] : borderRadius.value } );
+		if( color.value ){
+			if( '' === attributes[ prefix + 'BorderColor' ] ) {
+				setAttributes( { [ prefix + 'BorderColor' ] : color.value } );
+			}
+			// reset
+			attributes[ color.label ] = '';
 		}
-		if( '' === attributes[ prefix + 'BorderTopRightRadius' ] ) {
-			setAttributes( { [ prefix + 'BorderTopRightRadius' ] : borderRadius.value } );
-		}
-		if( '' === attributes[ prefix + 'BorderBottomLeftRadius' ] ) {
-			setAttributes( { [ prefix + 'BorderBottomLeftRadius' ] : borderRadius.value } );
-		}
-		if( '' === attributes[ prefix + 'BorderBottomRightRadius' ] ) {
-			setAttributes( { [ prefix + 'BorderBottomRightRadius' ] : borderRadius.value } );
-		}
-		// reset
-		attributes[ borderRadius.label ] = '';
-	}
 
-	if( color.value ){
-		if( '' === attributes[ prefix + 'BorderColor' ] ) {
-			setAttributes( { [ prefix + 'BorderColor' ] : color.value } );
+		if( hoverColor.value ){
+			if( '' === attributes[ prefix + 'BorderHColor' ] ) {
+				setAttributes( { [ prefix + 'BorderHColor' ] : hoverColor.value } );
+			}
+			// reset
+			attributes[ hoverColor.label ] = '';
 		}
-		// reset
-		attributes[ color.label ] = '';
-	}
 
-	if( hoverColor.value ){
-		if( '' === attributes[ prefix + 'BorderHColor' ] ) {
-			setAttributes( { [ prefix + 'BorderHColor' ] : hoverColor.value } );
+		if( borderStyle.value ){
+			if( '' === attributes[ prefix + 'BorderStyle' ] ) {
+				setAttributes( { [ prefix + 'BorderStyle' ] : borderStyle.value } );
+			}
+			// reset
+			attributes[ borderStyle.label ] = '';
 		}
-		// reset
-		attributes[ hoverColor.label ] = '';
-	}
-
-	if( borderStyle.value ){
-		if( '' === attributes[ prefix + 'BorderStyle' ] ) {
-			setAttributes( { [ prefix + 'BorderStyle' ] : borderStyle.value } );
-		}
-		// reset
-		attributes[ borderStyle.label ] = '';
 	}
 	return attributes;
 }
