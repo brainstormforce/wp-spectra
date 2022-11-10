@@ -8,6 +8,9 @@ import classnames from 'classnames';
 import { InnerBlocks } from '@wordpress/block-editor';
 
 import { __ } from '@wordpress/i18n';
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const borderAttributes = getBorderAttributes( 'column' );
 
 const attributes = {
 	block_id: {
@@ -259,6 +262,7 @@ const attributes = {
 		type: "string",
 		default: "",
 	},
+	...borderAttributes
 };
 
 const deprecated = [

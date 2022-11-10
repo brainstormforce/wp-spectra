@@ -80,6 +80,7 @@ export default function save( props ) {
 
 	return (
 		<CustomTag
+			id={ blockProps.id }
 			className={ classnames(
 				blockProps.className,
 				`uagb-block-${ block_id }`,

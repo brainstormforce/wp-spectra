@@ -4,6 +4,8 @@ import { addFilter } from '@wordpress/hooks';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import classnames from 'classnames';
+import { useEffect } from 'react';
+
 const { enableConditions, enableResponsiveConditions } = uagb_blocks_info;
 
 const UserConditionOptions = ( props ) => {
@@ -65,7 +67,7 @@ const UserConditionOptions = ( props ) => {
 						}
 						options={ [
 							{ value: '', label: __( 'None' ) },
-							{ value: 'iphone', label: __( 'IOS' ) },
+							{ value: 'iphone', label: __( 'iOS' ) },
 							{ value: 'android', label: __( 'Android' ) },
 							{ value: 'windows', label: __( 'Windows' ) },
 							{ value: 'open_bsd', label: __( 'OpenBSD' ) },
@@ -86,7 +88,6 @@ const UserConditionOptions = ( props ) => {
 						}
 						options={ [
 							{ value: '', label: __( 'None' ) },
-							{ value: 'ie', label: __( 'Internet Explorer' ) },
 							{
 								value: 'firefox',
 								label: __( 'Mozilla Firefox' ),
@@ -162,7 +163,20 @@ const ResponsiveConditionOptions = ( props ) => {
 		UAGHideDesktop,
 		UAGHideMob,
 		UAGHideTab,
+		UAGResponsiveConditions,
+		UAGDisplayConditions
 	} = attributes;
+
+	useEffect( () => {
+
+		if ( 'responsiveVisibility' !== UAGDisplayConditions && ! UAGResponsiveConditions ) {
+			setAttributes( {
+				UAGHideDesktop: false,
+				UAGHideTab: false,
+				UAGHideMob: false
+			} )
+		}
+	}, [] );
 
 	return (
 		<>
@@ -173,6 +187,7 @@ const ResponsiveConditionOptions = ( props ) => {
 				onChange={ () =>
 					setAttributes( {
 						UAGHideDesktop: ! attributes.UAGHideDesktop,
+						UAGResponsiveConditions: true,
 					} )
 				}
 			/>
@@ -182,6 +197,7 @@ const ResponsiveConditionOptions = ( props ) => {
 				onChange={ () =>
 					setAttributes( {
 						UAGHideTab: ! attributes.UAGHideTab,
+						UAGResponsiveConditions: true,
 					} )
 				}
 			/>
@@ -191,6 +207,7 @@ const ResponsiveConditionOptions = ( props ) => {
 				onChange={ () =>
 					setAttributes( {
 						UAGHideMob: ! attributes.UAGHideMob,
+						UAGResponsiveConditions: true,
 					} )
 				}
 			/>
@@ -207,7 +224,13 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		zIndex,
 		zIndexTablet,
 		zIndexMobile,
+		UAGDisplayConditions,
+		UAGResponsiveConditions
 	} = attributes;
+
+	const isSpectra = blockType.name.includes( 'uagb/' );
+
+	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGResponsiveConditions && isSpectra ) {
 
 		if ( UAGHideDesktop ) {
 			extraProps.className = classnames( extraProps.className, 'uag-hide-desktop' );
@@ -220,12 +243,13 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		if ( UAGHideMob ) {
 			extraProps.className = classnames( extraProps.className, 'uag-hide-mob' );
 		}
+	}
 
-		if ( zIndex || zIndexTablet || zIndexMobile ) {
-			//Adding a common selector for blocks where z-index is applied.
-			extraProps.className = classnames( extraProps.className, 'uag-blocks-common-selector' );
-			extraProps.style = {'--z-index-desktop': zIndex + ';', '--z-index-tablet': zIndexTablet + ';', '--z-index-mobile': zIndexMobile + ';'}
-		}
+	if ( zIndex || zIndexTablet || zIndexMobile ) {
+		//Adding a common selector for blocks where z-index is applied.
+		extraProps.className = classnames( extraProps.className, 'uag-blocks-common-selector' );
+		extraProps.style = {'--z-index-desktop': zIndex + ';', '--z-index-tablet': zIndexTablet + ';', '--z-index-mobile': zIndexMobile + ';'}
+	}
 
 	return extraProps;
 }

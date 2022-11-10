@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
+import { useDispatch } from 'react-redux';
 
 const RegenerateAssets = () => {
-
+    const dispatch = useDispatch();
     const [ regenerateAssetsState, setRegenerateAssetsState ] = useState( false );
 
     const regenerateAssets = () => {
@@ -19,10 +20,8 @@ const RegenerateAssets = () => {
 			body: formData,
 		} ).then( ( data ) => {
             if ( data.success ) {
-                setTimeout( function () {
-					setRegenerateAssetsState( false );
-				}, 2000 );
-				setRegenerateAssetsState( true );
+				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Assets Regenerated!' } );
+                setRegenerateAssetsState( false );
 			}
 		} );
     };
@@ -34,11 +33,6 @@ const RegenerateAssets = () => {
                     { __( 'Asset Regeneration', 'ultimate-addons-for-gutenberg' ) }
                 </h3>
                 <div className='flex justify-right items-center'>
-                    { true === regenerateAssetsState && (
-                        <p className='text-sm text-lime-600 pr-2'>
-                            { __( 'Assets Regenerated!', 'ultimate-addons-for-gutenberg' ) }
-                        </p>
-                    ) }
                     <button
                         type="button"
                         className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-spectra transition focus:bg-spectra-hover hover:bg-spectra-hover focus:outline-none"

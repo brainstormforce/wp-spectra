@@ -113,9 +113,7 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle1-desktop {
 
 	.uagb-tab {
-		border-style: solid;
 		margin: 10px 10px 10px 0;
-		border-radius: 4px;
 	}
 
 }
@@ -124,8 +122,6 @@
 
 	.uagb-tab {
 		margin: 10px 10px -1px 0;
-		border-top-left-radius: 4px;
-		border-top-right-radius: 4px;
 	}
 
 	.uagb-tabs__body-wrap {
@@ -136,11 +132,6 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle3-desktop {
 
 	.uagb-tab {
-		border-top-right-radius: 7px;
-		border-top-left-radius: 7px;
-		border-top-style: solid;
-		border-left-style: solid;
-		border-right-style: solid;
 		margin: 10px 10px 0 0;
 	}
 
@@ -149,7 +140,6 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle4-desktop {
 
 	.uagb-tab {
-		border-style: solid;
 		margin: 10px 10px 10px 0;
 	}
 
@@ -167,9 +157,6 @@
 		text-align: center;
 	}
 
-	.uagb-tab.uagb-tabs__active {
-		border-bottom-style: solid;
-	}
 }
 
 //Vertical Styles
@@ -212,33 +199,17 @@
 .uagb-tabs__wrap.uagb-tabs__vstyle6-desktop {
 
 	.uagb-tab {
-		border-style: solid;
 		margin: 0 10px 10px 0;
-		border-radius: 4px;
 	}
 
 }
 
 .uagb-tabs__wrap.uagb-tabs__vstyle7-desktop {
 
-	ul.uagb-tabs__panel {
-
-		.uagb-tabs__active {
-			border-bottom-style: solid;
-		}
-	}
-
 	.uagb-tab {
 		margin: 10px 10px 0 0;
-		border-top-style: none;
-		border-left-style: none;
-		border-right-style: none;
-		border-bottom-style: solid;
 	}
 
-	.uagb-tabs__body-wrap {
-		border: none;
-	}
 }
 
 .uagb-tabs__wrap.uagb-tabs__vstyle8-desktop {
@@ -246,11 +217,6 @@
 	ul.uagb-tabs__panel {
 		min-width: 25%;
 		max-width: 25%;
-
-		.uagb-tab {
-			border-top-style: solid;
-			border-left-style: solid;
-		}
 
 	}
 
@@ -262,7 +228,6 @@
 .uagb-tabs__wrap.uagb-tabs__vstyle9-desktop {
 
 	.uagb-tab {
-		border-style: solid;
 		margin: 0 10px 10px 0;
 	}
 
@@ -270,49 +235,9 @@
 
 .uagb-tabs__wrap.uagb-tabs__vstyle10-desktop {
 
-	ul.uagb-tabs__panel {
-
-		.uagb-tab.uagb-tabs__active {
-			border-right-style: solid;
-		}
-	}
-
 	.uagb-tab {
 		margin: 10px 10px 10px 10px;
 		text-align: center;
-	}
-}
-
-@media (min-width: 1024px) {
-
-	.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop,
-	.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop {
-		border-style: solid;
-	}
-
-	.uagb-tabs__wrap.uagb-tabs__hstyle2-desktop {
-
-		ul.uagb-tabs__panel {
-			border-bottom: 1px solid #b3b6b9;
-		}
-	}
-
-	.uagb-tabs__wrap.uagb-tabs__hstyle4-desktop,
-	.uagb-tabs__wrap.uagb-tabs__vstyle9-desktop {
-
-		.uagb-tab {
-			border-radius: 30px;
-		}
-	}
-
-	.uagb-tabs__wrap.uagb-tabs__vstyle8-desktop {
-
-		ul.uagb-tabs__panel {
-
-			.uagb-tab {
-				border-top-left-radius: 4px;
-			}
-		}
 	}
 }
 

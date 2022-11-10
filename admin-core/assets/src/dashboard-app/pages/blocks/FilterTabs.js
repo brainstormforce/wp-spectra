@@ -95,7 +95,7 @@ const FilterTabs = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
-			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
+			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
 		} );
 	};
 
@@ -134,7 +134,7 @@ const FilterTabs = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
-			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
+			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
 		} );
 	};
 
@@ -169,9 +169,9 @@ const FilterTabs = () => {
                         key={tab.name}
                         className={ classNames(
                             ( tab.slug === activeBlocksFilterTab )
-                                ? 'bg-white text-slate-800 active:text-slate-800 focus:text-slate-800 hover:text-slate-800 shadow shadow-focused'
-                                : 'text-slate-500 focus:text-slate-500 focus-visible:border-slate-200 active:text-slate-500 hover:text-slate-500 hover:border-slate-200',
-                            'px-4 py-1 ml-4 my-1 font-medium text-sm rounded-2xl cursor-pointer border border-transparent transition'
+                                ? 'bg-white border-transparent text-slate-800 active:text-slate-800 focus:text-slate-800 hover:text-slate-800 shadow shadow-focused'
+                                : 'text-slate-500 border-slate-200 focus:text-slate-500 focus-visible:bg-white active:text-slate-500 hover:text-slate-500 hover:bg-white',
+                            'px-4 py-1 ml-4 my-1 font-medium text-sm rounded-2xl cursor-pointer border transition'
                         ) }
                         onClick={ () => {
 							dispatch( {type:'UPDATE_BLOCKS_ACTIVE_FILTER_TAB', payload: tab.slug} )

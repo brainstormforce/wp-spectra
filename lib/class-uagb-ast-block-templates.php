@@ -88,6 +88,10 @@ if ( ! class_exists( 'UAGB_Ast_Block_Templates' ) ) :
 				$path    = realpath( dirname( __FILE__ ) . '/gutenberg-templates/ast-block-templates.php' );
 				$version = isset( $file_data['ast-block-templates'] ) ? $file_data['ast-block-templates'] : 0;
 
+				if ( null === $ast_block_templates_version ) {
+					$ast_block_templates_version = '1.0.0';
+				}
+
 				// Compare versions.
 				if ( version_compare( $version, $ast_block_templates_version, '>' ) ) {
 					$ast_block_templates_version = $version;

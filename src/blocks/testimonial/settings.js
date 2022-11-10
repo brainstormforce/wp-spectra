@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
-import React, { Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React from 'react';
+
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import Range from '@Components/range/Range.js';
@@ -10,7 +10,7 @@ import ResponsiveBorder from '@Components/responsive-border';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
-import UAGImage from '@Components/image';
+import UAGMediaPicker from '@Components/image';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import UAGSelectControl from '@Components/select-control';
@@ -1163,12 +1163,14 @@ const Settings = ( props ) => {
 			imageVal = test_block[ index ].image;
 		}
 		const labelIndex = index + 1;
+		const imageLabel = __( 'Image', 'ultimate-addons-for-gutenberg' );
 		return (
-			<UAGImage
-				label={ 'Image ' + labelIndex }
+			<UAGMediaPicker
 				onSelectImage={ ( media ) => onSelectTestImage( media, index ) }
 				backgroundImage={ imageVal }
 				onRemoveImage={ () => onRemoveTestImage( index ) }
+				slug={ `image-${ labelIndex }` }
+				label={ `${ imageLabel } ${ labelIndex }` }
 			/>
 		);
 	};
@@ -1571,12 +1573,13 @@ const Settings = ( props ) => {
 
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			{ inspectControl() }
 			{ loadNameGoogleFonts }
 			{ loadCompanyGoogleFonts }
 			{ loadDescGoogleFonts }
-		</Suspense>
+			</>
+
 	);
 };
 export default React.memo( Settings );

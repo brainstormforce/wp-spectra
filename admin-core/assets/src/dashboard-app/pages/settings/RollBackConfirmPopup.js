@@ -32,10 +32,10 @@ const RollBackConfirmPopup = ( props ) => {
 		setconfirmPopup( true );
 		window.location.href = rollbackUrl;
 	};
-
+	
 	return (
 		<Transition.Root show={ open } as={ Fragment }>
-			<Dialog as="div" className="fixed backdrop-blur-sm z-10 inset-0 overflow-y-auto" initialFocus={ cancelButtonRef } onClose={ setOpen }>
+			<Dialog as="div" className="uag-rollback__dialog fixed backdrop-blur-sm inset-0 overflow-y-auto" initialFocus={ cancelButtonRef } onClose={ setOpen }>
 				<div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
 					<Transition.Child
 						as={ Fragment }
@@ -46,7 +46,7 @@ const RollBackConfirmPopup = ( props ) => {
 						leaveFrom="opacity-100"
 						leaveTo="opacity-0"
 					>
-						<Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+						<div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
 					</Transition.Child>
 
 					{/* This element is to trick the browser into centering the modal contents. */}

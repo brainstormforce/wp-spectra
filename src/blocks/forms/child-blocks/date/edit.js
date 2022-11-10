@@ -2,15 +2,11 @@
  * BLOCK: Forms - Date - Edit
  */
 
-import React, { useEffect, Suspense, lazy } from 'react';
+import React, { useEffect,   } from 'react';
 
-import lazyLoader from '@Controls/lazy-loader';
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/form/date-settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form/date-render" */ './render' )
-);
+
+import Settings from './settings';
+import Render from './render';
 
 const UAGBFormsDateEdit = ( props ) => {
 	useEffect( () => {
@@ -27,16 +23,18 @@ const UAGBFormsDateEdit = ( props ) => {
 		);
 		document.head.appendChild( $style );
 	}, [] );
-	
+
 	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/form-date.svg`;
 
 	return (
 		<>
 			{ props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-				<Suspense fallback={ lazyLoader() }>
-					<Settings parentProps={ props } />
+
+							<>
+			<Settings parentProps={ props } />
 					<Render parentProps={ props } />
-				</Suspense>
+			</>
+
 			) }
 		</>
 	);

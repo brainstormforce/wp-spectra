@@ -2,8 +2,12 @@
  * BLOCK: Buttons Child - Attributes
  */
 import { getBorderAttributes } from '@Controls/generateAttributes';
+import { __ } from '@wordpress/i18n';
 
 const borderAttributes = getBorderAttributes( 'btn' );
+
+const vPaddingDefault = ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) ? 10 : '';
+const hPaddingDefault = ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) ? 14 : '';
 
 const attributes = {
 	inheritFromTheme: {
@@ -50,7 +54,7 @@ const attributes = {
 	},
 	label: {
 		type: 'html',
-		default: 'Click Here',
+		default: __( 'Click Here' , 'ultimate-addons-for-gutenberg' ),
 	},
 	link: {
 		type: 'string',
@@ -68,12 +72,14 @@ const attributes = {
 	},
 	vPadding: {
 		type: 'number',
+		default: vPaddingDefault,
 		UAGCopyPaste: {
 			styleType: 'btn-vertical-padding'
 		}
 	},
 	hPadding: {
 		type: 'number',
+		default: hPaddingDefault,
 		UAGCopyPaste: {
 			styleType: 'btn-horizontal-padding'
 		}
@@ -492,23 +498,24 @@ const attributes = {
 	},
 	borderWidth: {
 		type: 'number',
-		default: '',
-	},
+		default:1
+	} ,
 	borderRadius: {
 		type: 'number',
-	},
+		default:2
+	} ,
 	borderStyle: {
 		type: 'string',
-		default: 'none',
-	},
+		default:'solid'
+	} ,
 	borderColor: {
 		type: 'string',
-		default: '#000',
-	},
+		default:'#333'
+	} ,
 	borderHColor: {
 		type: 'string',
-		default: '',
-	},
+		default:'#333'
+	} ,
 	...borderAttributes,
 	// letter spacing.
 	letterSpacing: {

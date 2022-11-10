@@ -1,17 +1,13 @@
 import styling from './styling';
 
-import React, { lazy, useEffect, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {   useEffect,  } from 'react';
+
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/blockquote/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/blockquote/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 const UAGBBlockQuote = ( props ) => {
 
@@ -77,10 +73,12 @@ const UAGBBlockQuote = ( props ) => {
 	}, [ deviceType ] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
+					<>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 

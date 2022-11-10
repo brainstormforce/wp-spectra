@@ -142,6 +142,8 @@ const Render = ( props ) => {
 		}
 	}
 
+	const defaultedAlt = ( mainimage && mainimage?.alt ) ? mainimage?.alt : '';
+
 	let imageIconHtml = '';
 
 	if ( mainimage && mainimage.url ) {
@@ -150,7 +152,7 @@ const Render = ( props ) => {
 				className="uagb-howto__source-image"
 				src={ url }
 				title={ title }
-				alt=""
+				alt={ defaultedAlt }
 			/>
 		);
 	}

@@ -4,8 +4,8 @@
  */
 
 import styling from '.././styling';
-import React, { useEffect, useState, lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect, useState,    } from 'react';
+
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -13,12 +13,8 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/post-grid/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/post-grid/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 import { withSelect, withDispatch } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
@@ -181,6 +177,9 @@ const PostGridComponent = ( props ) => {
 				props.setAttributes( { btnBorderStyle : borderStyle} );
 			}
 		}
+
+		props.setAttributes( { allTaxonomyStore : undefined} );
+
 	}, [] );
 
 	useEffect( () => {
@@ -219,17 +218,17 @@ const PostGridComponent = ( props ) => {
 	if ( ! hasPosts ) {
 		return (
 			<>
-				<Suspense fallback={ lazyLoader() }>
+
 					<Settings
 						parentProps={ props }
 						state={ state }
 						setStateValue={ setStateValue }
 					/>
-				</Suspense>
+
 
 				<Placeholder
 					icon="admin-post"
-					label={ uagb_blocks_info.blocks[ 'uagb/post-grid' ].title }
+					label={ __( 'Post Grid', 'ultimate-addons-for-gutenberg' ) }
 				>
 					{ ! Array.isArray( latestPosts ) ? (
 						<Spinner />
@@ -242,7 +241,7 @@ const PostGridComponent = ( props ) => {
 	}
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<Settings
 				parentProps={ props }
 				state={ state }
@@ -255,7 +254,8 @@ const PostGridComponent = ( props ) => {
 				setStateValue={ setStateValue }
 				togglePreview={ togglePreview }
 			/>
-		</Suspense>
+			</>
+
 	);
 };
 
@@ -273,11 +273,22 @@ export default compose(
 			paginationMarkup,
 			postPagination,
 			excludeCurrentPost,
+			allTaxonomyStore
 		} = props.attributes;
+
 		const { setAttributes } = props;
 		const { getEntityRecords } = select( 'core' );
-		const allTaxonomy = uagb_blocks_info.all_taxonomy;
-		const currentTax = allTaxonomy[ postType ];
+
+		if ( ! allTaxonomyStore ) {
+			apiFetch( {
+				path: '/spectra/v1/all_taxonomy',
+			} ).then( ( data ) => {
+				props.setAttributes( { allTaxonomyStore: data } );
+			} );
+		}
+
+		const allTaxonomy = allTaxonomyStore;
+		const currentTax = allTaxonomy ? allTaxonomy[ postType ] : undefined;
 		let categoriesList = [];
 		let rest_base = '';
 

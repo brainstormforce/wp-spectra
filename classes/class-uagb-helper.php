@@ -286,22 +286,26 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$view = null;
 
 			// Load Polyfiller Array if needed.
-			if ( 'disabled' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', 'disabled' ) ) {
+			$load_font_awesome_5 = UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' );
+
+			if ( 'disabled' !== $load_font_awesome_5 ) {
 				// If Icon doesn't need Polyfilling, use the Original.
 				$font_awesome_5_polyfiller = get_spectra_font_awesome_polyfiller();
 				$polyfilled_icon           = isset( $font_awesome_5_polyfiller[ $icon ] ) ? $font_awesome_5_polyfiller[ $icon ] : $icon;
-				$path                      = isset( $json[ $polyfilled_icon ]['svg']['brands'] ) ? $json[ $polyfilled_icon ]['svg']['brands']['path'] : $json[ $polyfilled_icon ]['svg']['solid']['path'];
-				$view                      = isset( $json[ $polyfilled_icon ]['svg']['brands'] ) ? $json[ $polyfilled_icon ]['svg']['brands']['viewBox'] : $json[ $polyfilled_icon ]['svg']['solid']['viewBox'];
+				$path                      = isset( $json[ $polyfilled_icon ]['svg']['brands'] ) ? $json[ $polyfilled_icon ]['svg']['brands']['path'] : ( isset( $json[ $polyfilled_icon ]['svg']['solid']['path'] ) ? $json[ $polyfilled_icon ]['svg']['solid']['path'] : '' );
+				$view                      = isset( $json[ $polyfilled_icon ]['svg']['brands'] ) ? $json[ $polyfilled_icon ]['svg']['brands']['viewBox'] : ( isset( $json[ $polyfilled_icon ]['svg']['solid']['viewBox'] ) ? $json[ $polyfilled_icon ]['svg']['solid']['viewBox'] : null );
 			} else {
-				$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : $json[ $icon ]['svg']['solid']['path'];
-				$view = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['viewBox'] : $json[ $icon ]['svg']['solid']['viewBox'];
+				$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : ( isset( $json[ $icon ]['svg']['solid']['path'] ) ? $json[ $icon ]['svg']['solid']['path'] : '' );
+				$view = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['viewBox'] : ( isset( $json[ $icon ]['svg']['solid']['viewBox'] ) ? $json[ $icon ]['svg']['solid']['viewBox'] : null );
 			}
 			if ( $view ) {
 				$view = implode( ' ', $view );
 			}
-			?>
-			<svg xmlns="https://www.w3.org/2000/svg" viewBox= "<?php echo esc_html( $view ); ?>"><path d="<?php echo esc_html( $path ); ?>"></path></svg>
-			<?php
+			if ( '' !== $path && null !== $view ) {
+				?>
+				<svg xmlns="https://www.w3.org/2000/svg" viewBox= "<?php echo esc_html( $view ); ?>"><path d="<?php echo esc_html( $path ); ?>"></path></svg>
+				<?php
+			}
 		}
 
 		/**
@@ -450,9 +454,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$options = array();
 
 			foreach ( $post_types as $post_type ) {
-				if ( 'product' === $post_type->name ) {
-					continue;
-				}
 
 				if ( 'attachment' === $post_type->name ) {
 					continue;
@@ -465,54 +466,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			return apply_filters( 'uagb_loop_post_types', $options );
-		}
-
-		/**
-		 * Get all taxonomies.
-		 *
-		 * @since 1.11.0
-		 * @access public
-		 */
-		public static function get_related_taxonomy() {
-
-			$post_types = self::get_post_types();
-
-			$return_array = array();
-
-			foreach ( $post_types as $key => $value ) {
-				$post_type = $value['value'];
-
-				$taxonomies = get_object_taxonomies( $post_type, 'objects' );
-				$data       = array();
-
-				foreach ( $taxonomies as $tax_slug => $tax ) {
-					if ( ! $tax->public || ! $tax->show_ui || ! $tax->show_in_rest ) {
-						continue;
-					}
-
-					$data[ $tax_slug ] = $tax;
-
-					$terms = get_terms( $tax_slug );
-
-					$related_tax = array();
-
-					if ( ! empty( $terms ) ) {
-						foreach ( $terms as $t_index => $t_obj ) {
-							$related_tax[] = array(
-								'id'    => $t_obj->term_id,
-								'name'  => $t_obj->name,
-								'child' => get_term_children( $t_obj->term_id, $tax_slug ),
-							);
-						}
-						$return_array[ $post_type ]['terms'][ $tax_slug ] = $related_tax;
-					}
-				}
-
-				$return_array[ $post_type ]['taxonomy'] = $data;
-
-			}
-
-			return apply_filters( 'uagb_post_loop_taxonomies', $return_array );
 		}
 
 		/**
@@ -1340,6 +1293,30 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			return empty( $excerpt ) ? '' : $excerpt;
+		}
+
+		/**
+		 * Get User Browser name
+		 *
+		 * @param string $user_agent Browser names.
+		 * @return string
+		 * @since 2.0.8
+		 */
+		public static function get_browser_name( $user_agent ) {
+
+			if ( strpos( $user_agent, 'Opera' ) || strpos( $user_agent, 'OPR/' ) ) {
+				return 'opera';
+			} elseif ( strpos( $user_agent, 'Edg' ) || strpos( $user_agent, 'Edge' ) ) {
+				return 'edge';
+			} elseif ( strpos( $user_agent, 'Chrome' ) ) {
+				return 'chrome';
+			} elseif ( strpos( $user_agent, 'Safari' ) ) {
+				return 'safari';
+			} elseif ( strpos( $user_agent, 'Firefox' ) ) {
+				return 'firefox';
+			} elseif ( strpos( $user_agent, 'MSIE' ) || strpos( $user_agent, 'Trident/7' ) ) {
+				return 'ie';
+			}
 		}
 	}
 

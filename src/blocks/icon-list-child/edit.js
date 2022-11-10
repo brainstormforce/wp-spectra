@@ -5,20 +5,14 @@
 // Import classes
 
 import styling from './styling';
-import React, { lazy, Suspense, useEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {    useEffect } from 'react';
+
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/icon-list-child/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/icon-list-child/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 let hideLabel;
 
@@ -27,6 +21,17 @@ const UAGBIconListChild = ( props ) => {
 	const deviceType = useDeviceType();
 
 	useEffect( () => {
+		const {
+			disableLink
+		} = props.attributes;
+		if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) {
+			if( ! disableLink ) {
+				props.setAttributes( { disableLink: true } );
+			} else {
+				props.setAttributes( { disableLink: false } );
+			}
+
+		}
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
@@ -49,10 +54,11 @@ const UAGBIconListChild = ( props ) => {
 	}, [ deviceType ] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<Settings parentProps={ props } hideLabel={ hideLabel } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 

@@ -7,16 +7,12 @@ import { __ } from '@wordpress/i18n';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
-import React, { useEffect, lazy, Suspense, useLayoutEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect,    useLayoutEffect } from 'react';
+
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/columns/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/columns/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 import { withSelect, useDispatch } from '@wordpress/data';
 
@@ -59,7 +55,17 @@ const ColumnsComponent = ( props ) => {
 			align,
 			vAlign,
 			backgroundImageColor,
-			backgroundType
+			backgroundType,
+			gradientOverlayColor1,
+			gradientOverlayColor2,
+			overlayType,
+			gradientOverlayAngle,
+			gradientOverlayLocation1,
+			gradientOverlayPosition,
+			gradientOverlayLocation2,
+			gradientOverlayType,
+			backgroundVideoOpacity,
+			backgroundVideoColor
 		} = attributes
 
 		if ( 'middle' === vAlign ) {
@@ -72,6 +78,18 @@ const ColumnsComponent = ( props ) => {
 
 		if ( undefined === vAlign ){
 			setAttributes( { vAlign: '' } );
+		}
+
+		if( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ){
+			const color1 = hexToRGBA( maybeGetColorForVariable( gradientOverlayColor1 ), backgroundOpacity );
+			const color2 = hexToRGBA( maybeGetColorForVariable( gradientOverlayColor2 ), backgroundOpacity );
+			let gradientVal;
+			if ( 'linear' === gradientOverlayType ) {
+				gradientVal = `linear-gradient(${ gradientOverlayAngle }deg, ${ color1 } ${ gradientOverlayLocation1 }%, ${ color2 } ${ gradientOverlayLocation2 }%)`;
+			} else {
+				gradientVal = `radial-gradient( at ${ gradientOverlayPosition }, ${ color1 } ${ gradientOverlayLocation1 }%, ${ color2 } ${ gradientOverlayLocation2 }%)`;
+			}
+			setAttributes( { gradientValue: gradientVal } );
 		}
 
 		// Replacement for componentDidMount.
@@ -101,10 +119,17 @@ const ColumnsComponent = ( props ) => {
 				setAttributes( { backgroundOpacity: 101 } );
 			}
 		}
+
+		if ( 'video' === backgroundType ) {
+			if ( 101 !== backgroundVideoOpacity ) {
+				const color = hexToRGBA( maybeGetColorForVariable( backgroundVideoColor ), backgroundVideoOpacity );
+				setAttributes( { backgroundVideoColor: color } );
+			}
+		}
 		const { borderStyle, borderWidth, borderRadius, borderColor, borderHoverColor } = props.attributes
 		// border migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'columns', {
+			migrateBorderAttributes( 'columns', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -119,9 +144,11 @@ const ColumnsComponent = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			}
+			},
+			props.setAttributes,
+			props.attributes
 			);
-			props.setAttributes( migrationAttributes )
+
 		}
 	}, [] );
 
@@ -179,7 +206,7 @@ const ColumnsComponent = ( props ) => {
 			<div className='uagb-columns-variation-picker'>
 				<BlockVariationPicker
 					icon={ '' }
-					label={ uagb_blocks_info.blocks[ 'uagb/columns' ].title }
+					label={ __( 'Advanced Columns', 'ultimate-addons-for-gutenberg' ) }
 					instructions={ __(
 						'Select a variation to start with.',
 						'ultimate-addons-for-gutenberg'
@@ -195,10 +222,11 @@ const ColumnsComponent = ( props ) => {
 	}
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			<Settings parentProps={ props } deviceType = { deviceType } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 

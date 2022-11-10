@@ -1,4 +1,5 @@
-import {getBorderAttributes} from '@Controls/generateAttributes';
+import { getBorderAttributes } from '@Controls/generateAttributes';
+import { __ } from '@wordpress/i18n';
 
 const btnBorderAttributes = getBorderAttributes( 'btn' )
 
@@ -63,24 +64,23 @@ const attributes = {
 		}
 	},
 	// Border
-	borderStyle: {
+	borderStyle : {
 		type: 'string',
-		default: '',
+		default: 'solid'
 	},
-	borderWidth: {
+	borderWidth : {
 		type: 'number',
-		default: '',
+		default: 1
 	},
-	borderRadius: {
-		type: 'number',
-		default: '',
+	borderRadius : {
+		type: 'number'
 	},
-	borderColor: {
+	borderColor : {
 		type: 'string',
-		default: '',
+		default: '#333'
 	},
-	borderHoverColor: {
-		type: 'string',
+	borderHoverColor : {
+		type: 'string'
 	},
 
 	// Background
@@ -250,12 +250,12 @@ const attributes = {
 	heading: {
 		source: 'html',
 		selector: 'h1,h2,h3,h4,h5,h6,span,p',
-		default: 'Subscribe Now'
+		default: __( 'Subscribe Now' , 'ultimate-addons-for-gutenberg' )
 	},
 	prefix: {
 		source: 'html',
 		selector: '.uagb-marketing-btn__prefix',
-		default: 'Get access to Premium Features for FREE for a year!'
+		default: __( 'Get access to Premium Features for FREE for a year!' , 'ultimate-addons-for-gutenberg' )
 	},
 
 	// Icon attributes
@@ -512,84 +512,72 @@ const attributes = {
 	},
 	paddingBtnTop: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding'
 		}
 	},
 	paddingBtnBottom: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding'
 		}
 	},
 	paddingBtnLeft: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding'
 		}
 	},
 	paddingBtnRight: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding'
 		}
 	},
 	paddingBtnTopTablet: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding-tablet'
 		}
 	},
 	paddingBtnRightTablet: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding-tablet'
 		}
 	},
 	paddingBtnBottomTablet: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding-tablet'
 		}
 	},
 	paddingBtnLeftTablet: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding-tablet'
 		}
 	},
 	paddingBtnTopMobile: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding-mobile'
 		}
 	},
 	paddingBtnRightMobile: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding-mobile'
 		}
 	},
 	paddingBtnBottomMobile: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding-mobile'
 		}
 	},
 	paddingBtnLeftMobile: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding-mobile'
 		}

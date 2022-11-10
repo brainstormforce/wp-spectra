@@ -39,7 +39,7 @@ const generateBorderCSS = ( attributes, prefix, deviceType = 'desktop' ) => {
 	const borderBottomLeftRadiusTablet = ! isNaN( attributes[prefix + 'BorderBottomLeftRadiusTablet'] ) ? attributes[prefix + 'BorderBottomLeftRadiusTablet']+borderRadiusUnitTablet : '' ;
 
 	if( 'tablet' === deviceType ) {
-		if( 'none' !== attributes[prefix + 'BorderStyle'] ){
+		if( 'none' !== attributes[prefix + 'BorderStyle'] && '' !== attributes[prefix + 'BorderStyle'] ){
 			borderCSS['border-top-width'] =  borderTopWidthTablet ? borderTopWidthTablet : borderTopWidth;
 			borderCSS['border-right-width'] =  borderRightWidthTablet ? borderRightWidthTablet : borderRightWidth;
 			borderCSS['border-bottom-width'] =  borderBottomWidthTablet ? borderBottomWidthTablet : borderBottomWidth;
@@ -51,7 +51,7 @@ const generateBorderCSS = ( attributes, prefix, deviceType = 'desktop' ) => {
 		borderCSS['border-bottom-left-radius'] = borderBottomLeftRadiusTablet ? borderBottomLeftRadiusTablet : borderBottomLeftRadius;
 
 	} else if( 'mobile' === deviceType ) {
-		if( 'none' !== attributes[prefix + 'BorderStyle'] ){
+		if( 'none' !== attributes[prefix + 'BorderStyle'] && '' !== attributes[prefix + 'BorderStyle'] ){
 			borderCSS['border-top-width'] = borderTopWidthMobile ? borderTopWidthMobile : borderTopWidthTablet;
 			borderCSS['border-right-width'] = borderRightWidthMobile ? borderRightWidthMobile : borderRightWidthTablet;
 			borderCSS['border-bottom-width'] = borderBottomWidthMobile ? borderBottomWidthMobile : borderBottomWidthTablet;
@@ -63,7 +63,7 @@ const generateBorderCSS = ( attributes, prefix, deviceType = 'desktop' ) => {
 		borderCSS['border-bottom-left-radius'] = borderBottomLeftRadiusMobile ? borderBottomLeftRadiusMobile : borderBottomLeftRadiusTablet;
 
 	} else {
-		if( 'none' !== attributes[prefix + 'BorderStyle'] ){
+		if( 'none' !== attributes[prefix + 'BorderStyle'] && '' !== attributes[prefix + 'BorderStyle'] ){
 			borderCSS['border-top-width'] = borderTopWidth;
 			borderCSS['border-right-width'] = borderRightWidth;
 			borderCSS['border-bottom-width'] = borderBottomWidth;

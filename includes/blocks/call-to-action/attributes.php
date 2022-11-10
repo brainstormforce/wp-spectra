@@ -200,7 +200,12 @@ return array_merge(
 		'secondCtaLetterSpacingTablet'    => '',
 		'secondCtaLetterSpacingMobile'    => '',
 		'secondCtaLetterSpacingType'      => 'px',
+		'ctaBorderColor'                  => '',
+		'ctaBorderhoverColor'             => '',
+		'ctaBorderStyle'                  => 'solid',
+		'ctaBorderWidth'                  => '',
+		'ctaBorderRadius'                 => '',
 	),
 	$second_cta_border_attribute,
-	$cta_border_attribute,
+	$cta_border_attribute
 );

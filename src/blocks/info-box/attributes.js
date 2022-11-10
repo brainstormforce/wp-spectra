@@ -2,6 +2,9 @@
  * BLOCK: Info Box - Attributes
  */
  import { getBorderAttributes } from '@Controls/generateAttributes';
+ import { __ } from '@wordpress/i18n';
+
+ const imageWidthDefault = ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) ? 120 : '';
 
  const borderAttributes = getBorderAttributes( 'btn' );
 
@@ -13,7 +16,7 @@
 	prefixTitle: {
 		source: 'html',
 		selector: 'span.uagb-ifb-title-prefix',
-		default: 'Prefix',
+		default: __( 'Prefix' , 'ultimate-addons-for-gutenberg' ),
 	},
 	classMigrate: {
 		type: 'boolean',
@@ -22,13 +25,13 @@
 	infoBoxTitle: {
 		source: 'html',
 		selector: 'h1,h2,h3,h4,h5,h6',
-		default: 'Info Box',
+		default: __( 'Info Box' , 'ultimate-addons-for-gutenberg' ),
 	},
 	headingDesc: {
 		source: 'html',
 		selector: 'p',
 		default:
-			'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
+			__( 'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.' , 'ultimate-addons-for-gutenberg' ),
 	},
 	headingAlign: {
 		type: 'string',
@@ -582,11 +585,11 @@
 	},
 	ctaText: {
 		type: 'html',
-		default: 'Read More',
+		default: __( 'Read More' , 'ultimate-addons-for-gutenberg' ),
 	},
 	ctaLink: {
 		type: 'string',
-		default: '#',
+		default: '',
 	},
 	ctaLinkColor: {
 		type: 'string',
@@ -734,30 +737,36 @@
 	},
 	ctaBorderColor: {
 		type: 'string',
+		default: '#333',
 	},
-	ctaBorderhoverColor: {
+	ctaBorderhoverColor:{
 		type: 'string',
 	},
 	ctaBorderStyle: {
 		type: 'string',
+		default: 'solid',
 	},
 	ctaBtnVertPadding: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'btn-vertical-padding'
 		}
 	},
 	ctaBtnHrPadding: {
 		type: 'number',
+		default: 14,
 		UAGCopyPaste: {
 			styleType: 'btn-horizontal-padding'
 		}
 	},
-	ctaBorderWidth: {
+	ctaBorderWidth :{
 		type: 'number',
+		default: 1,
 	},
-	ctaBorderRadius: {
+	ctaBorderRadius :{
 		type: 'number',
+		default: 0,
 	},
 	iconLeftMargin: {
 		type: 'number',
@@ -802,7 +811,7 @@
 		UAGCopyPaste: {
 			styleType: 'image-width'
 		},
-		default: '',
+		default: imageWidthDefault,
 	},
 	imageWidthMobile: {
 		type: 'number',

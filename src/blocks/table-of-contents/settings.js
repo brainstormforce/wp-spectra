@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
-import React, { Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React from 'react';
+
 import TypographyControl from '@Components/typography';
 import UAGIconPicker from '@Components/icon-picker';
 import WebfontLoader from '@Components/typography/fontloader';
@@ -40,6 +40,7 @@ const Settings = ( props ) => {
 	const {
 		align,
 		headingAlignment,
+		overallAlign,
 		disableBullets,
 		makeCollapsible,
 		initialCollapse,
@@ -547,6 +548,61 @@ const Settings = ( props ) => {
 				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __(
+						'Overall Alignment',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: overallAlign,
+						label: 'overallAlign',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'left',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-left' ) }
+								/>
+							),
+							tooltip: __(
+								'Left',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'center',
+							icon: (
+								<Icon
+									icon={ renderSVG(
+										'fa fa-align-center'
+									) }
+								/>
+							),
+							tooltip: __(
+								'Center',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'right',
+							icon: (
+								<Icon
+									icon={ renderSVG(
+										'fa fa-align-right'
+									) }
+								/>
+							),
+							tooltip: __(
+								'Right',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ true }
+				/>
 				{ ! makeCollapsible  && (
 					<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -607,7 +663,7 @@ const Settings = ( props ) => {
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
-						'Alignment',
+						'List Alignment',
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
@@ -1334,7 +1390,7 @@ const Settings = ( props ) => {
 	const maxMob = '%' === widthTypeMobile ? 100 : 1000;
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			{ ! customWidth && (
 				<BlockControls>
 					<AlignmentToolbar
@@ -1356,7 +1412,7 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.style }>
 						{ getGeneral() }
 						{ getTitle() }
-						{ ! disableBullets && getBulletStyle() }
+						{ getBulletStyle() }
 						{ scrollToTop && getScrollToTop() }
 						{ 'none' !== separatorStyle &&
 							separatorSettings()
@@ -1370,7 +1426,7 @@ const Settings = ( props ) => {
 			</InspectorControls>
 			{ loadGFonts }
 			{ headingloadGFonts }
-		</Suspense>
+			</>
 	);
 };
 

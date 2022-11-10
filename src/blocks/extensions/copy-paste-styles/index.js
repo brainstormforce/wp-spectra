@@ -3,7 +3,7 @@ import { select, dispatch, useDispatch } from '@wordpress/data';
 import { store as keyboardShortcutsStore, useShortcut } from '@wordpress/keyboard-shortcuts';
 import { createHigherOrderComponent } from '@wordpress/compose';
 // Import Blocks Attributes.
-import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
+import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 
 import {
 	BlockControls,
@@ -14,6 +14,7 @@ import editorStyles from './../editor.lazy.scss';
 import { useLayoutEffect } from 'react';
 import { addFilter } from '@wordpress/hooks';
 import SettingsIcons from './icons.js';
+import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 
 const UAGCopyPasteStyles = () => {
 
@@ -23,6 +24,7 @@ const UAGCopyPasteStyles = () => {
     const [ showPopup, setshowPopup ] = useState( false );
     const [ disablePaste, setdisablePaste ] = useState( false );
     const { hasMultiSelection } = select( 'core/block-editor' );
+	const spectraCopyPasteStylesSetter = getUAGEditorStateLocalStorage();
 
 	useLayoutEffect( () => {
 		editorStyles.use();
@@ -32,36 +34,25 @@ const UAGCopyPasteStyles = () => {
 	}, [] );
 
     useEffect( () => {
-        /* eslint-disable no-undef */
-        xsLocalStorage.init(
-            {
-                iframeUrl: 'https://brainstormforce.github.io/uag-cp/updated-index.html',
-                initCallback () {
 
-                    xsLocalStorage.getItem( 'uag-copy-paste-styles', function ( loop_element ) {
+		const spectraCopyPasteStyles = getUAGEditorStateLocalStorage( 'spectraCopyPasteStyles' );
 
-                        const uagLocalStorageObject = JSON.parse( loop_element.value );
+		if ( ! spectraCopyPasteStyles ) {
+			spectraCopyPasteStylesSetter.setItem( 'spectraCopyPasteStyles', JSON.stringify( {} ) );
+		}
 
-                        if ( ! uagLocalStorageObject ) {
-                            xsLocalStorage.setItem( 'uag-copy-paste-styles', JSON.stringify( {} ) );
-                        }
+		if ( spectraCopyPasteStyles ) {
+			for ( const block in spectraCopyPasteStyles ) {
 
-                        if ( uagLocalStorageObject ) {
-                            for ( const block in uagLocalStorageObject ) {
+				const hoursSinceStylesSaved = Math.abs( Date.now() - spectraCopyPasteStyles[block].stylesSavedTimeStamp ) / 36e5;
 
-                                const hoursSinceStylesSaved = Math.abs( Date.now() - uagLocalStorageObject[block].stylesSavedTimeStamp ) / 36e5;
+				if ( hoursSinceStylesSaved >= 8 ) {
+					delete spectraCopyPasteStyles[block];
+				}
+			}
 
-                                if ( hoursSinceStylesSaved >= 8 ) {
-                                    delete uagLocalStorageObject[block];
-                                }
-                            }
-
-                            xsLocalStorage.setItem( 'uag-copy-paste-styles', JSON.stringify( uagLocalStorageObject ) );
-                        }
-                    } );
-                }
-            }
-        );
+			spectraCopyPasteStylesSetter.setItem( 'spectraCopyPasteStyles', JSON.stringify( spectraCopyPasteStyles ) );
+		}
 
         registerShortcut( {
 			name: 'uagb/copy',
@@ -144,8 +135,8 @@ const UAGCopyPasteStyles = () => {
     };
 
     const storeBlockStyles = ( blockData ) => {
-
-		xsLocalStorage.setItem( 'uag-copy-paste-styles', JSON.stringify( {} ) );
+		const spectraCopyPasteStyles = getUAGEditorStateLocalStorage( 'spectraCopyPasteStyles' );
+		spectraCopyPasteStylesSetter.setItem( 'spectraCopyPasteStyles', JSON.stringify( {} ) );
 
         const {
             attributes,
@@ -153,71 +144,66 @@ const UAGCopyPasteStyles = () => {
 			innerBlocks
         } = blockData;
 
-        xsLocalStorage.getItem( 'uag-copy-paste-styles', function ( loop_element ) {
+		if ( spectraCopyPasteStyles ) {
+			spectraCopyPasteStylesSetter.setItem( 'spectraCopyPasteStyles', JSON.stringify( {} ) );
+		}
 
-            const uagLocalStorageObject = JSON.parse( loop_element.value );
+		let styles = {};
+		const parentStyle = {};
 
-			if ( uagLocalStorageObject ) {
-				xsLocalStorage.setItem( 'uag-copy-paste-styles', JSON.stringify( {} ) );
+		if ( name.includes( 'uagb/' ) ) {
+
+			const blockName = name.replace( 'uagb/', '' );
+			const blockAttributes = blocksAttributes[blockName];
+
+			spectraCopyPasteStyles[`${blockName}-styles`] = {};
+			spectraCopyPasteStyles[`global-style`] = {};
+
+			if ( blockAttributes && spectraCopyPasteStyles ) {
+
+				Object.keys( blockAttributes ).map( ( attribute ) => {
+
+					if ( blockAttributes[attribute].UAGCopyPaste ) {
+
+						const key = blockAttributes[attribute].UAGCopyPaste.styleType;
+
+						if ( undefined !== attributes[attribute] && null !== attributes[attribute] ) {
+
+							styles[key] = attributes[attribute];
+							parentStyle[attribute] = attributes[attribute];
+
+						}
+					}
+
+					return attribute;
+
+				} );
+
+			}
+			if( innerBlocks ) {
+
+				parentStyle.innerblocks = innerBlocks;
+
 			}
 
-            let styles = {};
-			const parentStyle = {};
+			styles.stylesSavedTimeStamp = Date.now();
 
-            if ( name.includes( 'uagb/' ) ) {
+			spectraCopyPasteStyles[`${blockName}-styles`] = parentStyle;
+			spectraCopyPasteStyles[`global-style`] = styles;
 
-                const blockName = name.replace( 'uagb/', '' );
-                const blockAttributes = blocksAttributes[blockName];
+			spectraCopyPasteStylesSetter.setItem( 'spectraCopyPasteStyles', JSON.stringify( spectraCopyPasteStyles ) );
+		}
 
-				uagLocalStorageObject[`${blockName}-styles`] = {};
-				uagLocalStorageObject[`global-style`] = {};
+		if ( name.includes( 'core/' ) ) {
+			const blockName = name.replace( 'core/', '' );
+			styles = attributes;
 
-                if ( blockAttributes && uagLocalStorageObject ) {
+			styles.stylesSavedTimeStamp = Date.now();
 
-                    Object.keys( blockAttributes ).map( ( attribute ) => {
+			spectraCopyPasteStyles[`core-${blockName}-styles`] = styles;
 
-                        if ( blockAttributes[attribute].UAGCopyPaste ) {
-
-							const key = blockAttributes[attribute].UAGCopyPaste.styleType;
-
-							if ( undefined !== attributes[attribute] && null !== attributes[attribute] ) {
-
-                                styles[key] = attributes[attribute];
-                                parentStyle[attribute] = attributes[attribute];
-
-                            }
-                        }
-
-                        return attribute;
-
-                    } );
-
-                }
-				if( innerBlocks ) {
-
-					parentStyle.innerblocks = innerBlocks;
-
-				}
-
-				styles.stylesSavedTimeStamp = Date.now();
-
-				uagLocalStorageObject[`${blockName}-styles`] = parentStyle;
-				uagLocalStorageObject[`global-style`] = styles;
-
-				xsLocalStorage.setItem( 'uag-copy-paste-styles', JSON.stringify( uagLocalStorageObject ) );
-            }
-
-            if ( name.includes( 'core/' ) ) {
-                const blockName = name.replace( 'core/', '' );
-                styles = attributes;
-
-                styles.stylesSavedTimeStamp = Date.now();
-
-                uagLocalStorageObject[`core-${blockName}-styles`] = styles;
-
-                xsLocalStorage.setItem( 'uag-copy-paste-styles', JSON.stringify( uagLocalStorageObject ) );
-            }
-        } );
+			spectraCopyPasteStylesSetter.setItem( 'spectraCopyPasteStyles', JSON.stringify( spectraCopyPasteStyles ) );
+		}
     };
 
     const pasteBlockStyles = ( blockData ) => {
@@ -231,34 +217,32 @@ const UAGCopyPasteStyles = () => {
         let styles;
 		let pasteStyle;
 		const parentAttr = {};
-        let uagLocalStorageObject = {};
 
-        xsLocalStorage.getItem( 'uag-copy-paste-styles', function ( loop_element ) {
+		const spectraCopyPasteStyles = getUAGEditorStateLocalStorage( 'spectraCopyPasteStyles' );
 
-			uagLocalStorageObject = JSON.parse( loop_element.value );
+		if ( name.includes( 'uagb/' ) ) {
 
-            if ( name.includes( 'uagb/' ) ) {
+			styles = spectraCopyPasteStyles[`global-style`];
 
-				styles = uagLocalStorageObject[`global-style`];
+			const blockName = name.replace( 'uagb/', '' );
+			const blockAttributes = blocksAttributes[blockName];
 
-				const blockName = name.replace( 'uagb/', '' );
-				const blockAttributes = blocksAttributes[blockName];
+			pasteStyle = spectraCopyPasteStyles[`${blockName}-styles`];
 
-				pasteStyle = uagLocalStorageObject[`${blockName}-styles`];
+			if(  blockAttributes && pasteStyle ) {
 
-				if(  blockAttributes && pasteStyle ) {
+				updateBlockStyles( clientId, pasteStyle );
 
-                    updateBlockStyles( clientId, pasteStyle );
+				if( innerBlocks  ) {
 
-					if( innerBlocks  ) {
+					const childAttr = {};
 
-						const childAttr = {};
+					innerBlocks.map( ( childBlock , index ) => {
 
-						innerBlocks.map( ( childBlock , index ) => {
+						const childName = childBlock.name.replace( 'uagb/', '' );
+						const blockAttributes = blocksAttributes[childName];
 
-							const childName = childBlock.name.replace( 'uagb/', '' );
-							const blockAttributes = blocksAttributes[childName];
-
+						if( pasteStyle.innerblocks[index].name === 'uagb/' + childName ) {
 							Object.keys( blockAttributes ).map( ( attribute ) => {
 
 								if ( blockAttributes[attribute].UAGCopyPaste ) {
@@ -267,59 +251,56 @@ const UAGCopyPasteStyles = () => {
 								}
 								return childAttr;
 							} );
-
-							updateBlockStyles( childBlock.clientId,  childAttr );
-
-							return childBlock;
-						} );
-
-					}
-
-				}else if ( blockAttributes && styles ) {
-
-					Object.keys( blockAttributes ).map( ( attribute ) => {
-
-						if ( blockAttributes[attribute].UAGCopyPaste ) {
-
-							const key = blockAttributes[attribute].UAGCopyPaste.styleType;
-
-							Object.keys( styles ).map( ( item ) => {
-
-								if( item === key ){
-
-									parentAttr[attribute] = styles[key];
-
-								}
-								return parentAttr;
-							} )
-
 						}
-						return parentAttr;
+						updateBlockStyles( childBlock.clientId,  childAttr );
+
+						return childBlock;
 					} );
 
-					updateBlockStyles( clientId, parentAttr );
 				}
-            }
 
-            if ( name.includes( 'core/' ) ) {
+			}else if ( blockAttributes && styles ) {
 
-                const selectedBlockName = name.replace( 'core/', '' );
+				Object.keys( blockAttributes ).map( ( attribute ) => {
 
-                const unwantedAttributes = ['content', 'values', 'value', 'citation', 'body', 'caption', 'foot', 'head', 'url', 'alt', 'id', 'linkDestination'];
+					if ( blockAttributes[attribute].UAGCopyPaste ) {
 
-                pasteStyle= uagLocalStorageObject[`core-${selectedBlockName}-styles`];
+						const key = blockAttributes[attribute].UAGCopyPaste.styleType;
 
-                unwantedAttributes.map( ( attr ) => {
-                    if( pasteStyle[attr] ) {
-                        delete pasteStyle[attr];
-                    }
-                    return attr;
-                } );
-				updateBlockStyles( clientId, pasteStyle );
-            }
-        } );
+						Object.keys( styles ).map( ( item ) => {
 
+							if( item === key ){
 
+								parentAttr[attribute] = styles[key];
+
+							}
+							return parentAttr;
+						} )
+
+					}
+					return parentAttr;
+				} );
+
+				updateBlockStyles( clientId, parentAttr );
+			}
+		}
+
+		if ( name.includes( 'core/' ) ) {
+
+			const selectedBlockName = name.replace( 'core/', '' );
+
+			const unwantedAttributes = ['content', 'values', 'value', 'citation', 'body', 'caption', 'foot', 'head', 'url', 'alt', 'id', 'linkDestination'];
+
+			pasteStyle= spectraCopyPasteStyles[`core-${selectedBlockName}-styles`];
+
+			unwantedAttributes.map( ( attr ) => {
+				if( pasteStyle[attr] ) {
+					delete pasteStyle[attr];
+				}
+				return attr;
+			} );
+			updateBlockStyles( clientId, pasteStyle );
+		}
     };
 
     const updateBlockStyles = ( clientId, styles ) => {
@@ -337,19 +318,16 @@ const UAGCopyPasteStyles = () => {
 
     const openPopup = () => {
 
-        xsLocalStorage.getItem( 'uag-copy-paste-styles', function ( loop_element ) {
+		const spectraCopyPasteStyles = getUAGEditorStateLocalStorage( 'spectraCopyPasteStyles' );
 
-            const uagLocalStorageObject = JSON.parse( loop_element.value );
-            setshowPopup( !showPopup );
+		setshowPopup( !showPopup );
 
-            if( 0 === Object.keys( uagLocalStorageObject ).length ) {
-                setdisablePaste( true );
-                return;
-            }
+		if( 0 === Object.keys( spectraCopyPasteStyles ).length ) {
+			setdisablePaste( true );
+			return;
+		}
 
-            setdisablePaste( false );
-
-        } );
+		setdisablePaste( false );
 
     };
 

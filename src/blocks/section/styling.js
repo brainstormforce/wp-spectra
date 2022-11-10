@@ -6,7 +6,6 @@ import inlineStyles from './inline-styles';
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
-
 function styling( props ) {
 	const {
 		backgroundType,
@@ -16,13 +15,6 @@ function styling( props ) {
 		innerWidth,
 		innerWidthType,
 		contentWidth,
-		gradientColor1,
-		gradientColor2,
-		gradientLocation1,
-		gradientLocation2,
-		gradientType,
-		gradientAngle,
-		gradientPosition,
 		topPaddingTablet,
 		bottomPaddingTablet,
 		leftPaddingTablet,
@@ -41,13 +33,6 @@ function styling( props ) {
 		rightMarginMobile,
 		align,
 		overlayType,
-		gradientOverlayColor1,
-		gradientOverlayColor2,
-		gradientOverlayType,
-		gradientOverlayLocation1,
-		gradientOverlayLocation2,
-		gradientOverlayAngle,
-		gradientOverlayPosition,
 		mobileMarginType,
 		tabletMarginType,
 		mobilePaddingType,
@@ -118,52 +103,36 @@ function styling( props ) {
 	};
 
 	let backgroundTypeCSS = {}
+
 	if ( 'video' === backgroundType ) {
-		backgroundTypeCSS = {
-			'opacity' : 1,
-			'background-color': backgroundVideoColor,
-		};
+		if ( 'color' === overlayType ) {
+			backgroundTypeCSS = {
+				'background-color': backgroundVideoColor,
+			};
+		} else {
+			backgroundTypeCSS[
+				'background-image'
+			] = gradientValue;
+		}
 	} else if ( 'image' === backgroundType ) {
 		if ( 'color' === overlayType ) {
 			backgroundTypeCSS = {
 				'background-color': backgroundImageColor,
-				'opacity' : backgroundOpacity ? backgroundOpacity / 100 : 0
+				'opacity' : backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : ''
 			};
 		} else {
-			backgroundTypeCSS[ 'background-color' ] =
-				'transparent';
-
-			if ( 'linear' === gradientOverlayType ) {
-				backgroundTypeCSS[
-					'background-image'
-				] = `linear-gradient(${ gradientOverlayAngle }deg, ${ gradientOverlayColor1 } ${ gradientOverlayLocation1 }%, ${ gradientOverlayColor2 } ${ gradientOverlayLocation2 }%)`;
-			} else {
-				backgroundTypeCSS[
-					'background-image'
-				] = `radial-gradient( at ${ gradientOverlayPosition }, ${ gradientOverlayColor1 } ${ gradientOverlayLocation1 }%, ${ gradientOverlayColor2 } ${ gradientOverlayLocation2 }%)`;
-			}
+			backgroundTypeCSS[
+				'background-image'
+			] = gradientValue;
 		}
 	} else if ( 'color' === backgroundType ) {
 		backgroundTypeCSS = {
 			'background-color': backgroundColor,
+			'opacity' : backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : '',
 		};
 	} else if ( 'gradient' === backgroundType ) {
-		backgroundTypeCSS[ 'background-color' ] =
-			'transparent';
-
-		if ( gradientValue ) {
-			backgroundTypeCSS[
-				'background-image'
-			] = gradientValue;
-		} else if ( 'linear' === gradientType ) {
-			backgroundTypeCSS[
-				'background-image'
-			] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
-		} else {
-			backgroundTypeCSS[
-				'background-image'
-			] = `radial-gradient( at ${ gradientPosition }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
-		}
+		backgroundTypeCSS.opacity =  backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : '';
+		backgroundTypeCSS['background-image'] = gradientValue
 	}
 
 	selectors[ ' > .uagb-section__overlay' ] = {

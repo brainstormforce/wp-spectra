@@ -2,8 +2,8 @@
  * BLOCK: Column - Settings.
  */
 
-import React, { Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React from 'react';
+
 import Background from '@Components/background';
 import ResponsiveBorder from '@Components/responsive-border';
 import SpacingControl from '@Components/spacing-control';
@@ -15,8 +15,6 @@ import InspectorTab, {
 import ResponsiveSlider from '@Components/responsive-slider';
 
 import { InspectorControls } from '@wordpress/block-editor';
-
-import { Notice } from '@wordpress/components';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -336,21 +334,10 @@ const Settings = ( props ) => {
 	};
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
-						<Notice status="warning" isDismissible={false}>
-							{
-								__( 'This block has been deprecated. We recommend using the new', 'ultimate-addons-for-gutenberg' )
-							}
-							{' '}
-							<strong>{__( 'Container', 'ultimate-addons-for-gutenberg' )}</strong>
-							{' '}
-							{
-								__( 'block instead for more flexibility, and better code markup.', 'ultimate-addons-for-gutenberg' )
-							}
-						</Notice>
 						{ layoutSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
@@ -364,7 +351,7 @@ const Settings = ( props ) => {
 					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-		</Suspense>
+
 	);
 };
 

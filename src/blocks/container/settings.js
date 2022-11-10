@@ -1,5 +1,5 @@
-import React, { Suspense, useEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {  useEffect } from 'react';
+
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -76,6 +76,7 @@ const Settings = ( props ) => {
 		backgroundSizeTablet,
 		backgroundSizeMobile,
 		backgroundImageColor,
+		backgroundVideoOpacity,
 		gradientValue,
 		boxShadowColor,
 		boxShadowHOffset,
@@ -202,10 +203,11 @@ const Settings = ( props ) => {
 		topDividerWidthType,
 		bottomDividerWidthType,
 		topDividerHeightType,
-		bottomDividerHeightType
+		bottomDividerHeightType,
+		equalHeight
 	} = attributes;
 
-	let currentDirection = directionDesktop;
+	let currentDirection = directionDesktop?.split( '-' )?.[0];
 
 	if ( attributes[ 'direction' + deviceType ] && attributes[ 'direction' + deviceType ].split( '-' )[0] ) {
 
@@ -232,6 +234,25 @@ const Settings = ( props ) => {
 		}
 	}, [backgroundType] );
 
+	const onChangeHeight = ( value ) => {
+		setAttributes( { equalHeight: value } );
+		if( value ) {
+			setAttributes( { alignItemsDesktop: 'stretch' } );
+			setAttributes( { alignItemsTablet: 'stretch' } );
+			setAttributes( { alignItemsMobile: 'stretch' } );
+		} else {
+			setAttributes( { alignItemsDesktop: 'center' } );
+			setAttributes( { alignItemsTablet: 'center' } );
+			setAttributes( { alignItemsMobile: 'center' } );
+		}
+	};
+	const onChangeAlign = ( value ) => {
+		if( 'stretch' !== value ) {
+			props.setAttributes( { equalHeight: false } );
+		}else {
+			props.setAttributes( { equalHeight: true } );
+		}
+	};
 	const generalSettings = () => {
 
 		const directionOptions = [
@@ -590,6 +611,15 @@ const Settings = ( props ) => {
 									}
 								</>
 							}
+							<ToggleControl
+								label={ __(
+									'Equal Height',
+									'ultimate-addons-for-gutenberg'
+								) }
+								checked={ equalHeight }
+								onChange={ ( value ) => onChangeHeight( value )	}
+								help={ __( 'Enabling this will change the Align Items value to Stretch.', 'ultimate-addons-for-gutenberg' ) }
+							/>
 						</>
 					}
 					{ ( ( isBlockRootParent && 'default' === contentWidth ) || ( ! isBlockRootParent ) ) &&
@@ -884,6 +914,7 @@ const Settings = ( props ) => {
 						} }
 						options={ alignItemsOptions }
 						showIcons={ true }
+						onChange = { onChangeAlign( alignItemsDesktop ) }
 						responsive={ true }
 						help={ ( 'row' === currentOppAxisDirection ) ? horizontalAlignmentHint : verticalAlignmentHint }
 					/>
@@ -1142,6 +1173,10 @@ const Settings = ( props ) => {
 					backgroundVideoColor={ {
 						value: backgroundVideoColor,
 						label: 'backgroundVideoColor',
+					} }
+					backgroundVideoOpacity={ {
+						value: backgroundVideoOpacity,
+						label: 'backgroundVideoOpacity',
 					} }
 					onOpacityChange = { ( opacity ) => setAttributes( { backgroundVideoOpacity: opacity } ) }
 					{ ...props }
@@ -2053,7 +2088,7 @@ const Settings = ( props ) => {
 	};
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
@@ -2074,7 +2109,7 @@ const Settings = ( props ) => {
 					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-		</Suspense>
+
 	);
 };
 export default React.memo( Settings );

@@ -4,19 +4,13 @@
 
 // Import block dependencies and components.
 import styling from './styling';
-import lazyLoader from '@Controls/lazy-loader';
-import React, { useEffect, Suspense, lazy } from 'react';
+
+import React, { useEffect,   } from 'react';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/inline-notice/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/inline-notice/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 const UAGBInlineNoticeEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -91,10 +85,12 @@ const UAGBInlineNoticeEdit = ( props ) => {
 	}, [deviceType] );
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+
+					<>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
-		</Suspense>
+			</>
+
 	);
 };
 

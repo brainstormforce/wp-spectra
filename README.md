@@ -4,8 +4,8 @@
 **Tags:** gutenberg, blocks, gutenberg blocks, editor, block  
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
-**Tested up to:** 6.0  
-**Stable tag:** 2.0.0  
+**Tested up to:** 6.1  
+**Stable tag:** 2.0.14  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -71,34 +71,30 @@ We also have an informative and detailed article that will help you to <a href="
 <strong>Spectra WordPress Blocks Library</strong>
 
 <ul>
+	<li><a href="https://wpspectra.com/container-layout/" target="_blank">Container </a>: The Container block allows you to create beautiful layouts with flexbox powered container.</li>
+	<li><a href="https://wpspectra.com/blocks/image-block/" target="_blank">Image </a>: The Image block add a images on your webpage and provide multiple customization options.</li>
 	<li><a href="https://wpspectra.com/blocks/star-rating/" target="_blank">Star Ratings </a>: The Star Ratings block on a webpage can build trust and attract more customers. It allows you to add and completely customize star ratings anywhere on the Gutenberg page.</li>
 	<li><a href="https://wpspectra.com/blocks/forms/" target="_blank">Forms </a>: The Forms block allow you to create interactive contact form, newsletter, suggestion, etc easily. You can add various fields like name, email, message box, phone number, checkboxes to your form and get more leads.</li>
 	<li><a href="https://wpspectra.com/blocks/tabs/" target="_blank">Tabs </a>: The Tabs block offers an easy way to display tabbed content and enables you to add long content in a smaller place to enhances the user experience.</li>
-	<li><a href="https://wpspectra.com/blocks/lottie/" target="_blank">Lottie </a>: Add attractive animation to your page design. Get a total control with advanced options like animation speed,  animation trigger etc, You can reverse the animation, manage the size and do much more.</li>
-	<li><a href="https://wpspectra.com/blocks/review-schema/" target="_blank">Review Schema </a>: Add a review for a book, movie, course, software application, or product with star ratings. Enable review schema support just with a click to get higher rankings for your page/post in search results.</li>
+	<li><a href="https://wpspectra.com/blocks/lottie/" target="_blank">Lottie Animation </a>: Add attractive animation to your page design. Get a total control with advanced options like animation speed,  animation trigger etc, You can reverse the animation, manage the size and do much more.</li>
+	<li><a href="https://wpspectra.com/blocks/review-schema/" target="_blank">Review </a>: Add a review for a book, movie, course, software application, or product with star ratings. Enable review schema support just with a click to get higher rankings for your page/post in search results.</li>
 	<li><a href="https://wpspectra.com/blocks/taxonomy/" target="_blank">Taxonomy List </a>: With this block, you can easily display categories for post/pages or custom post types. Further, you can style it with a grid, list, or dropdown layout and set color, typography.</li>
-	<li><a href="https://wpspectra.com/blocks/how-to-schema/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">How-to Schema </a>: This block allows you to design attractive How-to pages or articles that can describe the step-by-step procedure to achieve certain goals. The best thing is this block will automatically add How-to Schema to your page that can boost ranking in search results.</li>
- 	<li><a href="https://wpspectra.com/blocks/faq-schema/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">FAQ Schema </a>: This block helps you answering user's common queries in an easy and attractive way.  You also get a one-click option to apply FAQ Schema on the page. That helps to display content in a rich snippet that can pull more traffic to your website.</li>
- 	<li><a href="https://wpspectra.com/blocks/wp-search/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">WP - Search </a>: Search bars quickly bring information users are looking for and deliver a great user experience. You can display the WordPress search field anywhere on your page easily with the WP - Search block.</li>
+	<li><a href="https://wpspectra.com/blocks/how-to-schema/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">How-to </a>: This block allows you to design attractive How-to pages or articles that can describe the step-by-step procedure to achieve certain goals. The best thing is this block will automatically add How-to Schema to your page that can boost ranking in search results.</li>
+ 	<li><a href="https://wpspectra.com/blocks/faq-schema/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">FAQ </a>: This block helps you answering user's common queries in an easy and attractive way.  You also get a one-click option to apply FAQ Schema on the page. That helps to display content in a rich snippet that can pull more traffic to your website.</li>
  	<li><a href="https://wpspectra.com/blocks/inline-notice/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Inline Notice </a>: Sometimes while writing a procedure or steps to achieve some end results, you might need users to pay attention to a few important notes. Inline Notice block provides a nice ready-to-use box where you can quickly add text to highlight it.</li>
-	<li><a href="https://wpspectra.com/blocks/heading/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Advanced Heading </a>: The Advanced Heading block lets you add a combination of a heading and a sub-heading with a separator in between. You can select the heading tag for the heading and manage other settings and customizations too.</li>
- 	<li><a href="https://wpspectra.com/blocks/advanced-columns/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Advanced Columns </a>: This Advanced Columns block gives you advanced options to insert a number of columns within a single row. You get various customization options to manage the look and feel of the entire block and individual columns on the page with advanced shape dividers, variable widths, etc.</li>
+	<li><a href="https://wpspectra.com/blocks/heading/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Heading </a>: The Advanced Heading block lets you add a combination of a heading and a sub-heading with a separator in between. You can select the heading tag for the heading and manage other settings and customizations too.</li>
  	<li><a href="https://wpspectra.com/blocks/blockquote/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Blockquote </a>: This Blockquote block lets you display quoted tweetable text in a trendy and designer format with lots of customization options.</li>
  	<li><a href="https://wpspectra.com/blocks/call-to-action/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Call To Action </a>: The Call To Action block helps you to create attractive call-to-action with a trendy title, description and a catchy button that boosts conversions on your website.</li>
- 	<li><a href="https://wpspectra.com/blocks/contact-form-7-styler/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Contact Form 7 Styler </a>: The Contact Form 7 Styler is an easy to use Gutenberg block that allows to fully customize and design the existing Contact Form 7 forms on your website.</li>
  	<li><a href="https://wpspectra.com/blocks/content-timeline/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Content Timeline </a>: The Timeline block lets you create beautiful timelines on your website. This could be useful for displaying company history or progress, list down your personal achievements, roadmap or release cycle for products etc.</li>
  	<li><a href="https://wpspectra.com/blocks/google-maps/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Google Map </a>: The Google Maps block allows you to display locations with zooming options you'll love to try.</li>
-	<li><a href="https://wpspectra.com/blocks/gravity-form-styler/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Gravity Forms Styler</a>: Customize your default Gravity Form with the Gravity Form Styler to display more appealing forms that convert.</li>
  	<li><a href="https://wpspectra.com/blocks/icon-list/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Icon List </a>: The Icon List block allows you to place an image or icon in a list format. You can pick your favorite icon or image that suits a list to act as a bullet for each list item.</li>
  	<li><a href="https://wpspectra.com/blocks/info-box/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Info Box </a>: The Infobox allows you to place an image or icon along with a heading and description within a single block. You can select the image or icon and customize the content within the block.</li>
  	<li><a href="https://wpspectra.com/blocks/marketing-button/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Marketing Button </a>: The Marketing Button block allows you to create trendy CTA that aim at attracting the audience with conversion oriented text and a stunning button with lots of customization.</li>
- 	<li><a href="https://wpspectra.com/blocks/multi-buttons/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Multi Buttons </a>: This Gutenberg block allows you to add multiple buttons within a single block. You can add as many as 1 to 5 buttons with a Multi-Button block. Furthermore, it gives you additional settings for every button and allows you to manage spacing and responsive settings too.</li>
+ 	<li><a href="https://wpspectra.com/blocks/multi-buttons/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Buttons </a>: This Gutenberg block allows you to add multiple buttons within a single block. You can add as many as 1 to 5 buttons with a Multi-Button block. Furthermore, it gives you additional settings for every button and allows you to manage spacing and responsive settings too.</li>
  	<li><a href="https://wpspectra.com/blocks/post-layouts/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme#post-carousel" target="_blank">Post Carousel </a>: Wish to create a post slider in which your blog posts appear within a carousel? The Post Carousel block allows you to display posts in a carousel and manage their settings and the content you wish to display within them.</li>
  	<li><a href="https://wpspectra.com/blocks/post-layouts/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme#post-grid" target="_blank">Post Grid </a>: The Post Grid block fetches the blog posts you may have on your website and displays them in a grid layout. You can customize the order of your posts, and manage settings like the featured image, content, etc.</li>
- 	<li><a href="https://wpspectra.com/blocks/post-layouts/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme#post-masonary" target="_blank">Post Masonry </a>: The Post Masonry block fetches the blog posts on your website and displays them in a masonry layout. You can customize the way your posts look and manage settings like the featured image, the content you want to display, etc.</li>
  	<li><a href="https://wpspectra.com/blocks/post-timeline/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Post Timeline </a>: The Post Timeline block helps you display the blog posts on your website in an ordered list according to the dates they are published on. You can customize the content seen for each blog post and manage the date, featured image etc.</li>
  	<li><a href="https://wpspectra.com/blocks/price-list/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Price List </a>: This block allows you to design a nice-looking, easy to manage, Price List for your website.</li>
- 	<li><a href="https://wpspectra.com/blocks/sections/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Section </a>: This is an outer wrap section that allows you to add other blocks within it. You can manage the layout of this section and customize it using options like spacing, background, border and the advanced settings.</li>
  	<li><a href="https://wpspectra.com/blocks/social-share/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Social Share </a>: The Social Share block allows you to let users share your content across various social networking sites.</li>
  	<li><a href="https://wpspectra.com/blocks/table-of-contents/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Table Of Contents </a>: The Table of Contents Block lets you display an index or a list of headings included within a long post or page. This gives users an overview of the content and links to the specific sections on the page or post.</li>
  	<li><a href="https://wpspectra.com/blocks/team/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Team </a>: The Team block allows you to display your team. Add their picture, name, what they do and links to their social profiles.</li>
@@ -123,7 +119,7 @@ You may now contribute to the plugin on Github: <a href="https://github.com/brai
 
 <strong>CREDITS</strong>
 
-The awesome React FontIconPicker is developed by <a href="http://codeb.it/" target="_blank" rel="">Alessandro Benoit</a> & <a href="https://github.com/swashata" target="_blank" rel="">Swashata</a>. Our external packages use <a href="https://github.com/n49/react-stars" target="_blank" rel="">Star Ratings Components</a> that are distributed under the terms of the ISC. While <a href="https://github.com/akiran/react-slick" target="_blank" rel="">Slick</a>, <a href="https://github.com/chenqingspring/react-lottie" target="_blank" rel="">Lottie</a> and <a href="https://github.com/ericnorris/striptags" target="_blank" rel="">Striptags</a> is distributed under the terms of the MIT.
+The awesome React FontIconPicker is developed by <a href="http://codeb.it/" target="_blank" rel="">Alessandro Benoit</a> & <a href="https://github.com/swashata" target="_blank" rel="">Swashata</a>. Our external packages use <a href="https://github.com/n49/react-stars" target="_blank" rel="">Star Ratings Component</a> that are distributed under the terms of the ISC. While <a href="https://github.com/akiran/react-slick" target="_blank" rel="">Slick</a>, <a href="https://github.com/chenqingspring/react-lottie" target="_blank" rel="">Lottie</a> and <a href="https://github.com/ericnorris/striptags" target="_blank" rel="">Striptags</a> is distributed under the terms of the MIT.
 
 ## Installation ##
 
@@ -166,7 +162,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 ## Credits ##
 
-The awesome React FontIconPicker is developed by [Alessandro Benoit](http://codeb.it/) & [Swashata](https://github.com/swashata). Our external packages uses [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
+The awesome React FontIconPicker is developed by [Alessandro Benoit](http://codeb.it/) & [Swashata](https://github.com/swashata). Our external packages uses [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT, [WP Background Processing](https://github.com/deliciousbrains/wp-background-processing) is distributed under the terms of the GPL-2.0 license.
 
 ## Screenshots ##
 
@@ -174,22 +170,225 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### 2.0.0 - TUESDAY, 16TH AUGUST 2022 ###
+### 2.0.14 - TUESDAY, 08th NOVEMBER 2022 ###
+* Improvement: Compatibility with WordPress 6.1.
+* Improvement: Container - Equal height setting in the Parent container.
+* Improvement: Post Block - Woo Commerce Products (CPT) not getting in Post Type.
+* Improvement: Block Transform - Transform from core Paragraph/List to Spectra Heading/Blockquotes.
+* Improvement: Post Blocks - Optimize the loading of Post Terms.
+* Improvement: Table of content - Added overall block alignment option.
+* Improvement: Info Box - Option to disable step links.
+* Fix: Image - Throws validation issue when toolbar link feature is used.
+* Fix: Button - Box shadow stylings are not working as expected on frontend.
+* Fix: Tabs - Plus button height was not the same as other tab buttons on the editor.
+* Fix: Tabs - Tabs border is inconsistent inside the editor and on the frontend.
+* Fix: Marketing Button - Backward Compatibility title color and hover issue on the frontend.
+* Fix: Post Carousel/Masonry- Taxonomy stylings are not working as expected in different layouts.
+* Fix: Post Masonry - Row gap and column gap label changed.
+* Fix: Post Masonry - Column Gap was impacting another post masonry, post grid, post carousel blocks.
+* Fix: Post Carousel - Column gap was not identical on the frontend after upgrading from v1.25.6 when an image is set as background.
+* Fix: Post Carousel - On reducing or increasing Post per page all items sticks to each other in editor.
+* Fix: Post grid - In the editor, the Read more button border-radius is not working on hover.
+* Fix: Forms - Phone country code text overlapping for mobile view in frontend.
+* Fix: Forms - Phone height and size enlarged issue on the editor.
+* Fix: Forms - Fixed phone dropdown icon position on the frontend.
+* Fix: Forms - Translation of select field text on the frontend.
+* Fix: Forms - Removed the required string and toggle button from the form block.
+* Fix: Forms - Toggle field size not working on responsive devices.
+* Fix: Forms - Settings uneven spacing issue and Hide border colors when style set to default.
+* Fix: Forms - Checkbox throws an issue in the console when the required toggle is ON.
+* Fix: Copy Paste Styles - Removed hover color for disabling paste style text.
+* Fix: Twenty Twenty-One Theme Issues - Button styling is not working correctly on both sides.
+* Fix: Resolved undefined PHP issue for block attribute.
+* Fix: Info Box - After drag and drop, block SVG looks bigger for a second.
+* Fix: Icon List - Disable link not working properly on frontend for old users.
+* Fix: Table Of Contents - Empty heading list, throwing a console error on the front end.
+* Fix: Review Schema - Added an aggregate rating in Type Software Application type.
+* Fix: Call To Action - Button was not the same as frontend when it is selected as text.
+* Fix: Call To Action - Selected preset looks different after refreshing in page on the editor.
+* Fix: Testimonial - Slider does not slide the content when returning from last slide to first slide.
+* Fix: Table Of Contents - Reusable headings are not listed in TOC on the frontend.
+* Fix: Timeline - Connector does not show color without an icon when scrolling.
+* Fix: Resolved Buttons should consider button text as a string instead of HTML in multiple blocks.
+* Fix: Container - Does not work properly when it is used inside the cover block.
+* Fix: Image - Hover on the border for normal image layout is not working.
+* Fix: Table Of Contents - Page was not scrolling to the headings on the frontend for some edge cases.
+* Fix: Translation for default text was missing for some blocks.
+* Fix: Z-Index extension is not working for the dynamic blocks.
+* Fix: Content flickering in the editor when hovering over it.
+* Fix: Container - Page freezes when we select and move multiple blocks at once to the container.
+* Fix: Advanced Column - Core image block caption alignment issue.
+* Fix: Admin Dashboard - Toggle not working properly in RTL mode.
+* Fix: Mobile CSS overrides desktop CSS inside the customizer.
+* Fix: Spectra block editor CSS conflict with other plugins
+* Fix: Desktop icon for responsive control move to the left from their position.
+* Fix: Container - Child container gets unwanted margin applied when boxed and content boxed layout is selected in the editor when Astra theme is activated.
+* Fix: Spectra CSS conflict due to which date picker of post scheduler does not show the navigation.
+* Fix: Icon list - Icon Alignment top and middle not working as expected if we increase font size.
+* Fix: Container - Breaks when the background is a video and classic overlay is selected.
+
+### 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 ###
+* Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
+* Fix: Icon List - Text Alignment not working properly on front-end.
+* Fix: Form - Backward Compatibility Stylings Issue on the editor.
+* Fix: Advanced Column - Paragraph block wrapping with image when image size and position is changed.
+* Fix: Advanced Column: Image was not getting aligned center on the frontend and the editor.
+* Fix: Call To Action - Button css conflict with Newspaper theme.
+* Fix: Customizer was frozen when theme blog settings were changed.
+* Fix: Review Schema - Star ratings do not reflect on the frontend like the editor when multiple review blocks are used.
+* Fix: Review Schema - Stars appear left in the editor and right on the frontend when clicked.
+* Fix: Table of Contents - Adding `uagb-toc-hide-heading` class to exclude heading from TOC list not working on front-end.
+* Fix: Container - Z-index were not applied on the frontend.
+* Fix: FAQ - Throwing an undefined style issue in console when html anchor is used.
+* Fix: Info Box - Removed default image width for new users while maintaining a default width of 120px for old users only.
+
+### 2.0.12 - FRIDAY, 16th SEPTEMBER 2022 ###
+* Improvement: How to block - Option to disable step links.
+* Improvement: Forms - Added 'Required' toggle for Accept field/sub-block.
+* Improvement: Content Timeline - Changed default description.
+* Improvement: Media Picker - Updated Video Icon.
+* Improvement: Post Carousel - Gap between Content & Dots functionality.
+* Fix: Price list - Heading are causing overlap on mobile on front-end.
+* Fix: Forms Toggle - Changed default label from 'Name' to 'Toggle'.
+* Fix: Forms - Fixed alignment for required toggle button in Phone block and added spacing between toggle and the 'Required' label.
+* Fix: Content Timeline - Removed extra margin added to title and description by theme and core WordPress in editor and frontend.
+* Fix: Info Box - Images looked enlarged after upgrading to Spectra.
+* Fix: Form - Form is sending empty data after adding keys for ReCaptcha V3 .
+* Fix: Forms - Required Toggle for Checkbox field was not clickable in editor.
+* Fix: Advanced Row - Border not visible for backward user.
+* Fix: Price List - Changed default padding for images so that the image aligns with the title.
+* Fix: Responsive Border - Border width occasionally misbehaves when set to zero.
+* Fix: Price List - Columns settings are not working in mobile editor.
+* Fix: Container - Shape divider background color issue on editor.
+* Fix: Responsive condition - Setting does not save when hide on multiple devices is selected.
+* Fix: How-To - Alignment for time and cost not working in editor as well as on frontend.
+* Fix: Post Carousel and Masonry - Background Image overlay color is not same as frontend.
+* Fix: Advanced Row - Border hover color not working on front end.
+
+### 2.0.11 - THURSDAY, 8th SEPTEMBER 2022 ###
+* Improvement: Media Picker - Added Optional Label Display and Improved UI.
+* Improvement: Updated copy-paste functionality logic for parent-child blocks.
+* Fix: Container - Child block's margin & padding gets removed in editor.
+* Fix: Info Box - Description margin considers values for desktop, even for tablet and mobile devices (on frontend).
+* Fix: Table of content - When disable marker is enabled List style tab not visible.
+* Fix: Star Rating - Padding/Margin were not working when the star position is set to “Before”.
+* Fix: Image: Image Size not working as expected for images when drag and drop.
+* Fix: Table of Contents - Collapse table icon/button not working in the editor.
+* Fix: Advanced Columns - Border radius does not apply properly to the column and inner-column elements.
+* Fix: Forms - Phone field label is null on the email template.
+
+### 2.0.10 - FRIDAY, 2nd SEPTEMBER 2022 ###
+* Fix: Responsive condition - Conflicting with plugin using REST API block preview.
+
+### 2.0.9 - THURSDAY, 1st SEPTEMBER 2022 ###
+* Fix: Post Blocks - PHP notice if the number of columns are not set.
+
+### 2.0.8 - THURSDAY, 1st SEPTEMBER 2022 ###
+* Improvement: Added Responsive and Display conditions settings to core blocks.
+* Improvement: Updated admin dashboard UI.
+* Fix: Price List - Inside container price list not aligned properly on editor.
+* Fix: Image - Box shadow not applying to a valid element.
+* Fix: Section - Inner section block border not working properly on front-end.
+* Fix: Post Carousel/Grid/Masonry - Inaccurate font size for 'Read More' link was displayed in the editor for tablet preview (when mobile and tablet font sizes were set).
+* Fix: PHP notice for new users when they activate Astra theme.
+* Fix: Table of Content - Fixed collapsible icon alignment for frontend.
+* Fix: Heading - Set sub heading as enabled by default for old users.
+* Fix: Heading - Set default alignment of heading & sub heading as center for old users.
+* Fix: Footer Widgets - CSS was not loading for empty archive/category and 404 pages.
+* Fix: Media Picker - Updated Lottie and Video Icon Colors.
+* Fix: Advanced Columns - Column reverse functionality not working as expected on frontend for old user.
+* Fix: Post Blocks - Max Number of columns should not be dependent on number of posts.
+* Fix: Post Grid - Post overflows its proper column size.
+
+### 2.0.7 - FRIDAY, 26th AUGUST 2022 ###
+* Improvement: Added Legacy Labels in the Editor Block Inserter.
+* Improvement: Updated the design of inactive block/extension tabs in the admin dashboard.
+* Improvement: Social Share Child, Icon List Child, How to, Review Blocks - Added missing alt attributes for img tags.
+* Fix: Table of Content - Updated Font Awesome 6 migration on front-end refresh.
+* Fix: Borders - Borders styling not saving for multiple blocks for new block case.
+* Fix: CTA - Disabled CTA links in editor.
+* Fix: Post Carousel - Slider dots overlapping on below blocks.
+* Fix: Container - Flex properties do not work when Container Width & Content Width both are set as full width.
+* Fix: Legacy block not visible on Blocks/Extension page after enabling setting.
+* Fix: Review - Enabling schema support does not give valid schema JSON on frontend.
+* Fix: InfoBox - Default btn padding issue on front-end for old users.
+* Fix: Container - Inner Container overflow if the custom widths is set in pixels.
+* Fix: Post carousel - Broken and throwing console issue on shop page.
+
+### 2.0.6 - WEDNESDAY, 24th AUGUST 2022 ###
+* Fix: Testimonial - Bottom padding and gradient color not working on frontend.
+* Fix: Responsive preview in editor - Editor preview for mobile and tablets was not working across different languages.
+* Fix: Post Grid/Masonry/Carousel - Fixed hover color background leaking out of border radius.
+* Fix: Review - Fixed star size changing in editor, when text labels were long; Also reduced excess spacing between stars and delete icon for responsive preview.
+* Fix: Icon List - Font size and line height was not inherited from site/customizer settings.
+* Fix: Column-child - Migrate Border stylings on editor
+* Fix: Button - Default padding is not retained for old users on frontend.
+* Fix: Disabled Lazy Loading of Blocks Components in Editor to fix the chunkLoading error.
+* Fix: Copy Paste Styles - Updated logic to work using site's local storage.
+
+
+### 2.0.5 - TUESDAY, 23rd AUGUST 2022 ###
+* Fix: Inherit Heading Block Link Color from theme.
+* Fix: Post Grid - Pagination alignment not working on frontend.
+* Fix: Post Layout - Title content not visible after title HTML tag set to P.
+* Fix: Heading - Set default alignment for heading as center for old users.
+* Fix: Call to Action - Buttons Text not wrapping on smaller devices.
+* Fix: Updated Border styling on front-end in multiple blocks for old users.
+* Fix: Advanced Row (Section) & Advanced Columns - Background color and Video opacity issue for old users.
+
+### 2.0.4 - SUNDAY, 21st AUGUST 2022 ###
+* Feature: Added Enable Legacy Blocks option in Admin Dashboard.
+* Fix: Buttons - Text inside button not wrapping on small devices.
+* Fix: Automatic Block Recovery not working and block displays blank in editor when reusable block is present on the page.
+* Fix: FAQ - Enabling schema support does not give valid schema JSON on frontend.
+* Fix: Container - Fixed anchor bug (anchor wasn't working and the anchor value wasn't saved)
+* Fix: Advanced Row (Section) & Advanced Columns - Opacity not working for background image when image overlay type was set as gradient for old user.
+* Fix: Post Masonry & Post Carousel - When image position is set to background then content bottom padding is not applicable.
+* Fix: Tabs Child - Border not visible in editor for old users.
+* Fix: Tabs - Layout styles not displaying as they should for responsive devices.
+* Fix: Border backward compatibility issues on frontend in multiple blocks.
+
+### 2.0.3 - FRIDAY, 19TH AUGUST 2022 ###
+* Decision: Instead of deprecating some blocks, we decided to call them "legacy" blocks. Legacy blocks work fine and will get support/bug fixes.
+* Improvement: Removed deprecation notices from the settings of the blocks.
+* Improvement: Added a setting to set default values for "column gap" & "row gap" in the container.
+* Fix: Advance Columns - Full-width layout not getting full width on the frontend.
+* Fix: Padding in some blocks were not visible in the editor for old user.
+* Fix: Post Grid - Content padding getting applied to post image.
+* Fix: Icon List - Fixed word wrapping and breaking behavior.
+* Fix: Info Box, Heading, Call to Action - overridden text color on frontend when used in the Cover Block.
+* Fix: Post Carousel, Grid, and Masonry - Disabled 'Read More' links in the editor and ensured pointer is shown on button hover.
+* Fix: Post layout - Title color turns white when background image position is set.
+* Fix: Table of contents - Headings not scroll when Cyrillic and English combination is used.
+* Fix: Backward Compatibility border issues on front-end in multiple blocks
+
+### 2.0.2 - WEDNESDAY, 17TH AUGUST 2022 ###
+* Fix: Compatibility issues with PHP version 7.2 and older.
+* Fix: Forms - Throws an error on drag and drop.
+* Fix: Icon List - Throws an undefined innerBlocks when drag and drop from block inserter.
+* Fix: Icon List - Throws an PHP Notice for old users.
+
+### 2.0.1 - WEDNESDAY, 17TH AUGUST 2022 ###
+* Improvement: Updated the link to the intro video in Spectra's admin dashboard.
+* Fix: Updated disabled block icon colors in the Spectra dashboard.
+* Fix: Deprecated blocks were not working for old users.
+
+### 2.0.0 - WEDNESDAY, 17TH AUGUST 2022 ###
 * New: Redesigned UI/UX controls of Spectra blocks.
-* New: Introduced new, beautiful & fast Spectra admin dashboard powered by React.
+* New: Introduced a new, beautiful & fast Spectra admin dashboard powered by React.
 * New: Introducing Coming Soon mode feature.
 * New: Introducing Allow only Selected fonts, Load fonts locally & Preload fonts feature.
-* New: Introducing new border control which allow user to set border to Top/Bottom/Left/Right in all direction.
+* New: Introducing new border control allows users to set a border to Top/Bottom/Left/Right in all directions.
 * New: Introducing Automatic Block Recovery.
 * New: Introducing Font Awesome 6 Support.
 * New: Introducing Collapse Panels.
 * New: Introducing Blocks Editor Spacing.
-* New: Block Presets - Introducing Preset for most used block.
-* New: Control Presets - Added Preset for Box-Shadow, Button and Inner container.
+* New: Block Presets - Introducing Preset for a most used block.
+* New: Control Presets - Added Preset for Box-Shadow, Button, and Inner container.
 * New: Copy Paste Styles - Added Copy/Paste styling feature for Core Gutenberg blocks & Spectra blocks.
 * New: Added global Container Padding option on admin dashboard.
 * New: Added global default Content Width for container on admin dashboard.
-* New: Added support for block based widget editor.
+* New: Added support for block-based widget editor.
 * New: Container - Introducing container block with advanced flex property feature.
 * New: How-To - Separate child "Step" for how-to instead of info-box.
 * New: Image - Introducing image block with advanced feature.
@@ -197,23 +396,23 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Global Improvement: Responsive setting wherever needed.
 * Global Improvement: Refactored the Spectra blocks code & improved editor performance drastically.
 * Global Improvement: Typography control - Added text-transform, text-decoration, letter-spacing and font-style options.
-* Global Improvement: 4 way border control.
-* Global Improvement: 4 way spacing control for padding/margin.
-* Improvement: Buttons - Multiple Typography option for Text in parent.
+* Global Improvement: 4-way border control.
+* Global Improvement: 4-way spacing control for padding/margin.
+* Improvement: Buttons - Multiple Typography option for text in a parent.
 * Improvement: Buttons-child - Enable/disable Icon option.
-* Improvement: Buttons-child - Add "nofollow" to link option.
+* Improvement: Buttons-child - Add "nofollow" to the link option.
 * Improvement: Buttons-child - Remove Text option.
-* Improvement: Buttons-child - Separate Typography option for child.
+* Improvement: Buttons-child - Separate Typography option for a child.
 * Improvement: Buttons-child - Background transparent/color/gradient option.
 * Improvement: Buttons-child - Box-Shadow option.
 * Improvement: Blockquote - Moved Twitter Username field inside Tweeter Icon Tab.
-* Improvement: Call To Action - Enable Additional Button option.
+* Improvement: Call To Action - Enable the Additional Button option.
 * Improvement: Display Condition & Responsive Visibility – Enable/Disable option for Spectra extensions on admin dashboard.
 * Improvement: Forms - Global reCAPTCHA setting option on admin dashboard.
 * Improvement: Heading - Hide option for heading text and description.
 * Improvement: Heading - Text shadow, gradient color option for Title
 * Improvement: Heading - Color option when link added to heading text.
-* Improvement: Heading - Highlight heading text feature.
+* Improvement: Heading - Highlight the heading text feature.
 * Improvement: Heading - Background color option classic and gradient.
 * Improvement: Info-box - Enable/disable Icon/Image option.
 * Improvement: Info-box - Allow P tag in Title.
@@ -235,8 +434,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Table of content - Added Title below Separator Style.
 * Improvement: Template - Enable Templates Button on admin dashboard.
 * Fix: Multiple issues in multiple blocks.
-* Deprecated: Advanced Columns, Section, WP-Search, Post Masonry, Contact Form 7 Designer and Gravity Form Designer block.
-* Deprecated: Removed Spectra extention i.e responsive condition,display condition from core block.
+* Deprecated: Advanced Columns, Section, WP-Search, Post Masonry, Contact Form 7 Designer, and Gravity Form Designer block.
+* Deprecated: Removed Spectra extension, i.e., responsive condition, display condition from the core block.
 * Deprecated: Table of content - Removed Scroll Animation Delay.
 
 ### 1.25.6 - TUESDAY, 31ST MAY 2022 ###

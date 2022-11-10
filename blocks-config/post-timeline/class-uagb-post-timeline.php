@@ -832,6 +832,30 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 				$mob_class = ( isset( $attributes['UAGHideMob'] ) ) ? 'uag-hide-mob' : '';
 			}
 
+			$zindex_desktop           = '';
+			$zindex_tablet            = '';
+			$zindex_mobile            = '';
+			$zindex_wrap              = array();
+			$zindex_extention_enabled = ( isset( $attributes['zIndex'] ) || isset( $attributes['zIndexTablet'] ) || isset( $attributes['zIndexMobile'] ) );
+
+			if ( $zindex_extention_enabled ) {
+				$zindex_desktop = ( isset( $attributes['zIndex'] ) ) ? '--z-index-desktop:' . $attributes['zIndex'] . ';' : false;
+				$zindex_tablet  = ( isset( $attributes['zIndexTablet'] ) ) ? '--z-index-tablet:' . $attributes['zIndexTablet'] . ';' : false;
+				$zindex_mobile  = ( isset( $attributes['zIndexMobile'] ) ) ? '--z-index-mobile:' . $attributes['zIndexMobile'] . ';' : false;
+
+				if ( $zindex_desktop ) {
+					array_push( $zindex_wrap, $zindex_desktop );
+				}
+
+				if ( $zindex_tablet ) {
+					array_push( $zindex_wrap, $zindex_tablet );
+				}
+
+				if ( $zindex_mobile ) {
+					array_push( $zindex_wrap, $zindex_mobile );
+				}
+			}
+
 			$outer_class = 'uagb-timeline__outer-wrap';
 
 			$main_classes = array(
@@ -841,6 +865,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 				$desktop_class,
 				$tab_class,
 				$mob_class,
+				$zindex_extention_enabled ? 'uag-blocks-common-selector' : '',
 			);
 
 			ob_start();
@@ -853,7 +878,8 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			<?php
 			echo esc_html( $this->get_classes( $attributes ) );
 			?>
-			" >
+			"
+			style="<?php echo esc_html( implode( '', $zindex_wrap ) ); ?>" >
 				<?php
 				if ( empty( $recent_posts ) ) {
 					esc_html_e( 'No posts found', 'ultimate-addons-for-gutenberg' );
@@ -938,7 +964,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 		public function get_icon( $attributes ) {
 			?>
 			<div class = "uagb-timeline__marker uagb-timeline__out-view-icon" >
-				<?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?>
+				<span class = "uagb-timeline__icon-new uagb-timeline__out-view-icon" ><?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?></span>
 			</div>
 			<?php
 		}

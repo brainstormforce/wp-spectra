@@ -2,6 +2,7 @@
  * BLOCK: Call To Action - Attributes
  */
 import { getBorderAttributes } from '@Controls/generateAttributes';
+import { __ } from '@wordpress/i18n';
 
 const borderAttributes = getBorderAttributes( 'btn' );
 const secondCtaBorderAttribute = getBorderAttributes( 'secondCta' );
@@ -14,7 +15,7 @@ const attributes = {
 	ctaTitle: {
 		source: 'html',
 		selector: 'h1,h2,h3,h4,h5,h6',
-		default: 'Call To Action',
+		default: __( 'Call To Action' , 'ultimate-addons-for-gutenberg' ),
 	},
 	classMigrate: {
 		type: 'boolean',
@@ -24,7 +25,7 @@ const attributes = {
 		source: 'html',
 		selector: 'p',
 		default:
-			'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
+			__( 'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.' , 'ultimate-addons-for-gutenberg' ),
 	},
 	textAlign: {
 		type: 'string',
@@ -334,7 +335,7 @@ const attributes = {
 	},
 	ctaText: {
 		type: 'html',
-		default: 'Read More',
+		default: __( 'Read More' , 'ultimate-addons-for-gutenberg' ),
 	},
 	ctaLink: {
 		type: 'string',
@@ -458,16 +459,6 @@ const attributes = {
 			styleType: 'btn-bg-hover-color'
 		},
 	},
-	ctaBorderColor: {
-		type: 'string',
-	},
-	ctaBorderhoverColor: {
-		type: 'string',
-		default: '',
-	},
-	ctaBorderStyle: {
-		type: 'string',
-	},
 	ctaBtnVertPadding: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -481,12 +472,6 @@ const attributes = {
 			styleType: 'btn-horizontal-padding'
 		},
 		default: '',
-	},
-	ctaBorderWidth: {
-		type: 'number',
-	},
-	ctaBorderRadius: {
-		type: 'number',
 	},
 	stack: {
 		type: 'string',
@@ -602,7 +587,7 @@ const attributes = {
 	},
 	secondCtaLabel: {
 		type: 'html',
-		default: 'Click Here',
+		default: __( 'Click Here' , 'ultimate-addons-for-gutenberg' ),
 	},
 	secondCtaLink: {
 		type: 'string',
@@ -1096,6 +1081,26 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'main-button-unit-type'
 		},
+	},
+	ctaBorderWidth :{
+		type: 'number',
+		default: 1,
+	},
+	ctaBorderRadius :{
+		type: 'number',
+		default: 0,
+	},
+	ctaBorderColor: {
+		type: 'string',
+		default: '#333',
+	},
+	ctaBorderhoverColor:{
+		type: 'string',
+		default: '',
+	},
+	ctaBorderStyle: {
+		type: 'string',
+		default: 'solid',
 	},
 	...borderAttributes,
 	...secondCtaBorderAttribute,

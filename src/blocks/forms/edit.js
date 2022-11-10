@@ -1,17 +1,13 @@
 /**
  * BLOCK: Forms - Edit
- */import React, { useEffect, useCallback, Suspense, lazy } from 'react';
+ */import React, { useEffect, useCallback, useLayoutEffect } from 'react';
 import styling from './styling';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
-const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/form/settings" */ './settings' )
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form/render" */ './render' )
-);
+import Settings from './settings';
+import Render from './render';
 
 import { withSelect, useDispatch } from '@wordpress/data';
 
@@ -24,13 +20,23 @@ import { __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { withNotices } from '@wordpress/components';
 
 import { __ } from '@wordpress/i18n';
-import lazyLoader from '@Controls/lazy-loader';
+
 import apiFetch from '@wordpress/api-fetch';
 
 import {migrateBorderAttributes} from '@Controls/generateAttributes';
 
+import styles from './editor.lazy.scss';
+
 const UAGBFormsEdit = ( props ) => {
 	const deviceType = useDeviceType();
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect( () => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, [] );
+
 	useEffect( () => {
 		const { setAttributes } = props;
 
@@ -55,12 +61,12 @@ const UAGBFormsEdit = ( props ) => {
 			reCaptchaSecretKeyV3,
 			reCaptchaEnable,
 			toggleColor,
-			inputColor
+			bgColor
 		} = props.attributes;
 
-		if( inputColor ) {
+		if( bgColor ) {
 			if ( undefined === toggleColor ) {
-				setAttributes( { toggleColor: inputColor } );
+				setAttributes( { toggleColor: bgColor } );
 			}
 		}
 
@@ -135,18 +141,18 @@ const UAGBFormsEdit = ( props ) => {
 			inputborderStyle,
 			inputborderWidth,
 			inputborderColor,
-			inputborderHColor,
+			inputborderHoverColor,
 			inputborderRadius,
 			submitborderWidth,
 			submitborderRadius,
 			submitborderColor,
-			submitborderHColor,
+			submitborderHoverColor,
 			submitborderStyle,
 		} = props.attributes;
 
 		// inputborder
-		if( inputborderWidth || inputborderRadius || inputborderColor || inputborderHColor || inputborderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'field', {
+		if( inputborderWidth || inputborderRadius || inputborderColor || inputborderHoverColor || inputborderStyle ){
+			migrateBorderAttributes( 'field', {
 				label: 'inputborderWidth',
 				value: inputborderWidth,
 			}, {
@@ -156,15 +162,16 @@ const UAGBFormsEdit = ( props ) => {
 				label: 'inputborderColor',
 				value: inputborderColor
 			}, {
-				label: 'inputborderHColor',
-				value: inputborderHColor
+				label: 'inputborderHoverColor',
+				value: inputborderHoverColor
 			},{
 				label: 'inputborderStyle',
 				value: inputborderStyle
-			}
+			},
+			props.setAttributes,
+			props.attributes
 			);
-			props.setAttributes( migrationAttributes );
-			const toggleMigrationAttributes = migrateBorderAttributes( 'checkBoxToggle', {
+			migrateBorderAttributes( 'checkBoxToggle', {
 				label: 'inputborderWidth',
 				value: inputborderWidth,
 			}, {
@@ -174,17 +181,18 @@ const UAGBFormsEdit = ( props ) => {
 				label: 'inputborderColor',
 				value: inputborderColor
 			}, {
-				label: 'inputborderHColor',
-				value: inputborderHColor
+				label: 'inputborderHoverColor',
+				value: inputborderHoverColor
 			},{
 				label: 'inputborderStyle',
 				value: inputborderStyle
-			}
+			},
+			props.setAttributes,
+			props.attributes
 			);
-			props.setAttributes( toggleMigrationAttributes );
 		}
-		if( submitborderWidth || submitborderRadius || submitborderColor || submitborderHColor || submitborderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'btn', {
+		if( submitborderWidth || submitborderRadius || submitborderColor || submitborderHoverColor || submitborderStyle ){
+			migrateBorderAttributes( 'btn', {
 				label: 'submitborderWidth',
 				value: submitborderWidth,
 			}, {
@@ -194,14 +202,15 @@ const UAGBFormsEdit = ( props ) => {
 				label: 'submitborderColor',
 				value: submitborderColor
 			}, {
-				label: 'submitborderHColor',
-				value: submitborderHColor
+				label: 'submitborderHoverColor',
+				value: submitborderHoverColor
 			},{
 				label: 'submitborderStyle',
 				value: submitborderStyle
-			}
+			},
+			props.setAttributes,
+			props.attributes
 			);
-			props.setAttributes( migrationAttributes );
 		}
 	}, [] );
 
@@ -220,9 +229,8 @@ const UAGBFormsEdit = ( props ) => {
 
 		scrollBlockToView();
 
-
-		const id = this.props.clientId
-		window.addEventListener( 'load', this.renderReadyClasses( id ) )
+		const id = props.clientId
+		window.addEventListener( 'load', renderReadyClasses( id ) )
 
 	}, [deviceType] );
 
@@ -328,9 +336,11 @@ const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-im
 		return (
 			<>
 			{ props.attributes.isPreview ? <img width='100%' src={previewImageData} alt=''/> :
+			<>
+			<div className='uagb-forms-variations'>
 				<__experimentalBlockVariationPicker
 					icon={ UAGB_Block_Icons.forms }
-					label={ uagb_blocks_info.blocks[ 'uagb/forms' ].title }
+					label={ __( 'Forms', 'ultimate-addons-for-gutenberg' ) }
 					instructions={ __(
 						'Select a variation to start with.',
 						'ultimate-addons-for-gutenberg'
@@ -340,19 +350,22 @@ const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-im
 					onSelect={ ( nextVariation ) =>
 						blockVariationPickerOnSelect( nextVariation )
 					}
-					className="uagb-forms-variations"
 				/>
-	}
+			</div>
+			</>
+			}
 			</>
 		);
 	}
 
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
+
+						<>
+			<Settings parentProps={ props } />
 				<Render parentProps={ props } />
-			</Suspense>
+			</>
+
 		</>
 	);
 };

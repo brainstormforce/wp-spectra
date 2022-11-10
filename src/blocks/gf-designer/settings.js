@@ -1,5 +1,5 @@
-import React, { Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React from 'react';
+
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
@@ -24,7 +24,6 @@ import {
 import {
 	ToggleControl,
 	Icon,
-	Notice,
 } from '@wordpress/components';
 
 
@@ -2507,16 +2506,11 @@ successMsgLetterSpacingType,
 	};
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+			<>
 			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
-						<Notice status="warning" isDismissible={false}>
-							{
-								__( 'This block has been deprecated.', 'ultimate-addons-for-gutenberg' )
-							}
-						</Notice>
 						{ fieldSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
@@ -2540,7 +2534,7 @@ successMsgLetterSpacingType,
 			{ loadRadioGoogleFonts }
 			{ loadValidationGoogleFonts }
 			{ loadMsgGoogleFonts }
-		</Suspense>
+			</>
 	);
 };
 export default React.memo( Settings );

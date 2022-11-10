@@ -30,7 +30,10 @@ const registerBlocks = glob
 		const blockSlug = getBlockSlug( content );
 		const blockTitle = getBlockTitle( content );
 
-		if ( ! blockSlug || ! blockTitle || -1 !== file.indexOf( 'child' ) || './src/blocks/column/block.js' === file ) {
+		const excludedBlocks = ['./src/blocks/post/post-button/block.js', './src/blocks/post/post-excerpt/block.js', './src/blocks/post/post-image/block.js', './src/blocks/post/post-masonry/block.js', './src/blocks/post/post-meta/block.js',
+		'./src/blocks/post/post-taxonomy/block.js', './src/blocks/post/post-title/block.js', './src/blocks/wp-search/block.js','./src/blocks/gf-designer/block.js', './src/blocks/cf7-designer/block.js', './src/blocks/columns/block.js', './src/blocks/column/block.js', './src/blocks/section/block.js'];
+
+		if ( ! blockSlug || ! blockTitle || -1 !== file.indexOf( 'child' ) || excludedBlocks.includes( file ) ) {
 			return code;
 		}
 

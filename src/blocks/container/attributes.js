@@ -638,7 +638,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'container-row-gap-desktop'
 		},
-		default: 20
+		default: uagb_blocks_info.container_elements_gap
 	},
 	rowGapTablet: {
 		type: 'number',
@@ -678,7 +678,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'container-column-gap-desktop'
 		},
-		default: 20
+		default: uagb_blocks_info.container_elements_gap
 	},
 	columnGapTablet: {
 		type: 'number',
@@ -840,10 +840,6 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'container-bottom-content-above-shape'
 		},
-	},
-	blockDescendants: {
-		type: 'array',
-		default: []
 	},
 	widthSetByUser: {
 		type: 'boolean',
@@ -1063,6 +1059,10 @@ const attributes = {
 	bottomDividerHeightType: {
 		type: 'string',
 		default: 'px',
+	},
+	equalHeight: {
+		type: 'boolean',
+		default: false,
 	},
 	...inputBorderAttributes
 };

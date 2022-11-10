@@ -3,7 +3,7 @@ import React, { useLayoutEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 
-import { Button, ToggleControl } from '@wordpress/components';
+import { Button } from '@wordpress/components';
 
 import { RichText } from '@wordpress/block-editor';
 
@@ -23,6 +23,10 @@ const Render = ( props ) => {
 	const { attributes, setAttributes, isSelected } = props;
 
 	const { block_id, checkboxRequired, options, checkboxName } = attributes;
+
+	const isRequired = checkboxRequired
+	? __( 'required', 'ultimate-addons-for-gutenberg' )
+	: '';
 
 	const addOption = () => {
 		const newOption = {
@@ -48,6 +52,7 @@ const Render = ( props ) => {
 					name={ `checkbox-${ block_id }` }
 					value={ option.optiontitle }
 					id={ option.optiontitle }
+					required={ checkboxRequired }
 				/>
 				<label htmlFor={ option.optiontitle }> </label>
 				<input
@@ -64,6 +69,7 @@ const Render = ( props ) => {
 					}
 					type="text"
 					value={ option.optiontitle }
+					required={ checkboxRequired }
 				/>
 				<input
 					className="uagb-inner-input-view"
@@ -73,6 +79,7 @@ const Render = ( props ) => {
 					}
 					type="text"
 					value={ option.optionvalue }
+					required={ checkboxRequired }
 				/>
 				<Button
 					className="uagb-form-checkbox-option-delete"
@@ -132,10 +139,6 @@ const Render = ( props ) => {
 		setAttributes( { deleteOptions } );
 	};
 
-	const isRequired = checkboxRequired
-		? __( 'required', 'ultimate-addons-for-gutenberg' )
-		: '';
-
 	return (
 		<>
 			<div
@@ -145,22 +148,6 @@ const Render = ( props ) => {
 					`uagb-block-${ block_id }`
 				) }
 			>
-				{ isSelected && (
-					<div className="uagb-forms-required-wrap">
-						<ToggleControl
-							label={ __(
-								'Required',
-								'ultimate-addons-for-gutenberg'
-							) }
-							checked={ checkboxRequired }
-							onChange={ () =>
-								setAttributes( {
-									checkboxRequired: ! checkboxRequired,
-								} )
-							}
-						/>
-					</div>
-				) }
 				<RichText
 					tagName="div"
 					placeholder={ __(
