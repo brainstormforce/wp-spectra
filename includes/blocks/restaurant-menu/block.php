@@ -17,6 +17,6 @@ $block_data = array(
 	'description'      => __( 'Create an attractive price list for your products.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 23,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'price-list' ),
 	'deprecated'       => false,
 );

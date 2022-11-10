@@ -1,6 +1,6 @@
 /**
  * BLOCK: Forms - Edit
- */import React, { useEffect, useCallback } from 'react';
+ */import React, { useEffect, useCallback, useLayoutEffect } from 'react';
 import styling from './styling';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
@@ -25,8 +25,18 @@ import apiFetch from '@wordpress/api-fetch';
 
 import {migrateBorderAttributes} from '@Controls/generateAttributes';
 
+import styles from './editor.lazy.scss';
+
 const UAGBFormsEdit = ( props ) => {
 	const deviceType = useDeviceType();
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect( () => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, [] );
+
 	useEffect( () => {
 		const { setAttributes } = props;
 
@@ -324,20 +334,23 @@ const UAGBFormsEdit = ( props ) => {
 
 	if ( ! isPreview && ! hasInnerBlocks ) {
 		return (
-			<__experimentalBlockVariationPicker
-				icon={ UAGB_Block_Icons.forms }
-				label={ uagb_blocks_info.blocks[ 'uagb/forms' ].title }
-				instructions={ __(
-					'Select a variation to start with.',
-					'ultimate-addons-for-gutenberg'
-				) }
-				variations={ variations }
-				allowSkip
-				onSelect={ ( nextVariation ) =>
-					blockVariationPickerOnSelect( nextVariation )
-				}
-				className="uagb-forms-variations"
-			/>
+			props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+				<div className='uagb-forms-variations'>
+					<__experimentalBlockVariationPicker
+						icon={ UAGB_Block_Icons.forms }
+						label={ __( 'Forms', 'ultimate-addons-for-gutenberg' ) }
+						instructions={ __(
+							'Select a variation to start with.',
+							'ultimate-addons-for-gutenberg'
+						) }
+						variations={ variations }
+						allowSkip
+						onSelect={ ( nextVariation ) =>
+							blockVariationPickerOnSelect( nextVariation )
+						}
+					/>
+				</div>
+			)
 		);
 	}
 

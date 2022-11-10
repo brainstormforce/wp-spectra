@@ -49,7 +49,7 @@ const Render = ( props ) => {
 				<Placeholder
 					icon="admin-post"
 					label={
-						uagb_blocks_info.blocks[ 'uagb/post-timeline' ].title
+						__( 'Post Timeline', 'ultimate-addons-for-gutenberg' )
 					}
 				>
 					{ ! Array.isArray( latestPosts ) ? (
@@ -101,7 +101,7 @@ const Render = ( props ) => {
 										attributes={ attributes }
 										dateClass="uagb-timeline__date-hide uagb-timeline__inner-date-new"
 									/>
-									{	
+									{
 										<FeaturedImage
 											post={ post }
 											attributes={ attributes }

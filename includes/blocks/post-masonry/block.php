@@ -18,6 +18,6 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-masonry', 'uagb-imagesloaded', 'uagb-post-js' ),
-	'priority'         => 94,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'post-masonry' ),
 	'deprecated'       => true,
 );

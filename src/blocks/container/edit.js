@@ -48,9 +48,11 @@ const UAGBContainer = ( props ) => {
 	}
 
 	useEffect( () => {
-		const isBlockRootParent = 0 === select( 'core/block-editor' ).getBlockParents( props.clientId ).length;
+		const isBlockRootParentID = select( 'core/block-editor' ).getBlockParents( props.clientId );
 
-		if ( isBlockRootParent ) {
+		const parentBlockName = select( 'core/block-editor' ).getBlocksByClientId( isBlockRootParentID );
+
+		if ( parentBlockName[0] && 'uagb/container' !== parentBlockName[0].name || undefined === parentBlockName[0] ) {
 			props.setAttributes( { isBlockRootParent: true } );
 		}
 
@@ -79,11 +81,6 @@ const UAGBContainer = ( props ) => {
 			variationPicker.insertBefore( closeButton,variationPickerLabel );
 		}
 
-		const descendants = select( 'core/block-editor' ).getBlocks( props.clientId );
-
-		if ( descendants.length !== props.attributes.blockDescendants.length ) {
-			props.setAttributes( { blockDescendants: descendants } );
-		}
 		const {
 			borderStyle,
 			borderWidth,
@@ -126,12 +123,6 @@ const UAGBContainer = ( props ) => {
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-container-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
-		const descendants = select( 'core/block-editor' ).getBlocks( props.clientId );
-
-		if ( descendants.length !== props.attributes.blockDescendants.length ) {
-			props.setAttributes( { blockDescendants: descendants } );
-		}
 
 	}, [ props ] );
 

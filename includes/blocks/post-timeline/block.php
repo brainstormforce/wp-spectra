@@ -18,6 +18,6 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-timeline-js' ),
-	'priority'         => 22,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'post-timeline' ),
 	'deprecated'       => false,
 );

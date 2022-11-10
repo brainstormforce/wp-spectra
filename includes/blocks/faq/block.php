@@ -18,6 +18,6 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-faq-js' ),
-	'priority'         => 12,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'faq' ),
 	'deprecated'       => false,
 );

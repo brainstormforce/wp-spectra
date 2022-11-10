@@ -406,3 +406,11 @@
 		}
 	}
 }
+
+[dir="rtl"] .uag-dashboard-app button.bg-spectra[aria-checked="false"] span {
+	right: 0;
+}
+
+[dir="rtl"] .uag-dashboard-app button.bg-spectra[aria-checked="true"] span {
+	transform: translateX(20px);
+}

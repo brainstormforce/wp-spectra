@@ -53,7 +53,7 @@ const Render = ( props ) => {
 					'Add Button Title…',
 					'ultimate-addons-for-gutenberg'
 				) }
-				value={ heading }
+				value={ heading.replace( /(<([^>]+)>)/ig, '' ) }
 				tagName={ titleTag }
 				onChange={ ( value ) =>
 					setAttributes( { heading: value } )
