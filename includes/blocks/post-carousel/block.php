@@ -19,6 +19,6 @@ $block_data = array(
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-slick-js', 'uagb-post-js', 'uagb-imagesloaded' ),
 	'css_assets'       => array( 'uagb-slick-css' ),
-	'priority'         => 20,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'post-carousel' ),
 	'deprecated'       => false,
 );

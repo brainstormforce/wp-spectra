@@ -2,6 +2,7 @@
  * BLOCK: Buttons Child - Attributes
  */
 import { getBorderAttributes } from '@Controls/generateAttributes';
+import { __ } from '@wordpress/i18n';
 
 const borderAttributes = getBorderAttributes( 'btn' );
 
@@ -9,6 +10,10 @@ const vPaddingDefault = ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 |
 const hPaddingDefault = ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) ? 14 : '';
 
 const attributes = {
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 	inheritFromTheme: {
 		type: 'boolean',
 		default: false,
@@ -53,7 +58,7 @@ const attributes = {
 	},
 	label: {
 		type: 'html',
-		default: 'Click Here',
+		default: __( 'Click Here' , 'ultimate-addons-for-gutenberg' ),
 	},
 	link: {
 		type: 'string',

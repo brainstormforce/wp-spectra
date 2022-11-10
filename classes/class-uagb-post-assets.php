@@ -519,6 +519,15 @@ class UAGB_Post_Assets {
 				'mobile_breakpoint' => UAGB_MOBILE_BREAKPOINT,
 			)
 		);
+
+		wp_localize_script(
+			'uagb-container-js',
+			'uagb_container_data',
+			array(
+				'tablet_breakpoint' => UAGB_TABLET_BREAKPOINT,
+				'mobile_breakpoint' => UAGB_MOBILE_BREAKPOINT,
+			)
+		);
 	}
 
 	/**

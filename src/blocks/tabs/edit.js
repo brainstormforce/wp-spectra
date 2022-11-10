@@ -135,12 +135,15 @@ const UAGBTabsEdit = ( props ) => {
 
 	}, [ deviceType ] );
 
-	return (
-			<>
-			<Settings parentProps={ props } deviceType = {deviceType} />
-			<Render parentProps={ props } />
-			</>
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/tabs.svg`;
 
+	return (
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+			<>
+				<Settings parentProps={ props } deviceType = {deviceType} />
+				<Render parentProps={ props } />
+			</>
+		)
 	);
 };
 

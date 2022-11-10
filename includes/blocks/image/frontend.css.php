@@ -52,7 +52,7 @@ $selectors = array(
 		),
 		$image_border_css
 	),
-	'.wp-block-uagb-image .wp-block-uagb-image__figure:hover' => array(
+	'.wp-block-uagb-image .wp-block-uagb-image__figure img:hover' => array(
 		'border-color' => $attr['imageBorderHColor'],
 	),
 	'.wp-block-uagb-image .wp-block-uagb-image__figure figcaption' => array(
@@ -79,6 +79,9 @@ $selectors = array(
 			'opacity'    => $overlay_opacity_fallback,
 		),
 		$image_border_css
+	),
+	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper:hover' => array(
+		'border-color' => $attr['imageBorderHColor'],
 	),
 	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner' => array_merge(
 		$overlay_border_css,

@@ -18,6 +18,6 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-tabs-js' ),
-	'priority'         => 28,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'tabs' ),
 	'deprecated'       => false,
 );

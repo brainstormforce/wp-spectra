@@ -136,7 +136,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * Constructor
 		 */
 		public function __construct() {
-
 			require UAGB_DIR . 'classes/class-uagb-config.php';
 			require UAGB_DIR . 'classes/class-uagb-block-helper.php';
 			require UAGB_DIR . 'classes/class-uagb-block-js.php';

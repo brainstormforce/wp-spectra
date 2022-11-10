@@ -17,6 +17,6 @@ $block_data = array(
 	'description'      => __( 'Add customizable lottie animation on your page.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'js_assets'        => array( 'uagb-lottie-js', 'uagb-bodymovin-js' ),
-	'priority'         => 18,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'lottie' ),
 	'deprecated'       => false,
 );

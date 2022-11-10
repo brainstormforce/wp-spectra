@@ -9,7 +9,7 @@ import './style.scss';
 import deprecated from './deprecated';
 import attributes from './attributes';
 import { __ } from '@wordpress/i18n';
-
+import colourNameToHex from '@Controls/changeColorNameToHex';
 import { registerBlockType, createBlock } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/blockquote', {
@@ -47,6 +47,8 @@ registerBlockType( 'uagb/blockquote', {
 						descriptionText: attribute.value,
 						author: attribute.citation,
 						align: attribute.align,
+						descColor: colourNameToHex( attribute.textColor ),
+						authorColor: colourNameToHex( attribute.backgroundColor )
 					} );
 				},
 			},
@@ -56,8 +58,41 @@ registerBlockType( 'uagb/blockquote', {
 				transform: ( attribute ) => {
 					return createBlock( 'uagb/blockquote', {
 						descriptionText: attribute.content,
-						align: attribute.align,
+						align: attribute.textAlign,
+						descColor: colourNameToHex( attribute.textColor ),
+						authorColor: colourNameToHex( attribute.backgroundColor )
 					} );
+				},
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/paragraph' ],
+				transform: ( attribute ) => {
+					return createBlock( 'uagb/blockquote', {
+						descriptionText: attribute.content,
+						descColor: colourNameToHex( attribute.textColor ),
+						authorColor: colourNameToHex( attribute.backgroundColor )
+					} );
+				},
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/list' ],
+				transform: ( _attributes, childBlocks ) => {
+					const newitems = [];
+					childBlocks.forEach( ( item, i ) => {
+						newitems.push( {
+							text: childBlocks[i].attributes.content
+						} )
+					} );
+
+					return newitems.map( ( text ) =>
+						createBlock( 'uagb/blockquote', {
+							descriptionText: text.text,
+							descColor: colourNameToHex( _attributes.textColor ),
+							authorColor: colourNameToHex( _attributes.backgroundColor )
+						} )
+					);
 				},
 			},
 		],
@@ -78,6 +113,16 @@ registerBlockType( 'uagb/blockquote', {
 				blocks: [ 'core/heading' ],
 				transform: ( attribute ) => {
 					return createBlock( 'core/heading', {
+						content: attribute.descriptionText,
+						align: attribute.align,
+					} );
+				},
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/paragraph' ],
+				transform: ( attribute ) => {
+					return createBlock( 'core/paragraph', {
 						content: attribute.descriptionText,
 						align: attribute.align,
 					} );

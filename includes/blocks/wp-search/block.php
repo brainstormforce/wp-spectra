@@ -17,6 +17,6 @@ $block_data = array(
 	'description'      => __( 'Add a search widget to let users search posts from your website.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 95,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'wp-search' ),
 	'deprecated'       => true,
 );

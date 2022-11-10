@@ -228,7 +228,7 @@ const PostGridComponent = ( props ) => {
 
 				<Placeholder
 					icon="admin-post"
-					label={ uagb_blocks_info.blocks[ 'uagb/post-grid' ].title }
+					label={ __( 'Post Grid', 'ultimate-addons-for-gutenberg' ) }
 				>
 					{ ! Array.isArray( latestPosts ) ? (
 						<Spinner />
@@ -240,22 +240,25 @@ const PostGridComponent = ( props ) => {
 		);
 	}
 
-	return (
-			<>
-			<Settings
-				parentProps={ props }
-				state={ state }
-				setStateValue={ setStateValue }
-				togglePreview={ togglePreview }
-			/>
-			<Render
-				parentProps={ props }
-				state={ state }
-				setStateValue={ setStateValue }
-				togglePreview={ togglePreview }
-			/>
-			</>
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/post-grid.svg`;
 
+	return (
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+			<>
+				<Settings
+					parentProps={ props }
+					state={ state }
+					setStateValue={ setStateValue }
+					togglePreview={ togglePreview }
+				/>
+				<Render
+					parentProps={ props }
+					state={ state }
+					setStateValue={ setStateValue }
+					togglePreview={ togglePreview }
+				/>
+			</>
+		)
 	);
 };
 

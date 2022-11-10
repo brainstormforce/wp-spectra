@@ -29,7 +29,6 @@ const Render = ( props ) => {
 	// Setup the attributes.
 	const {
 		block_id,
-		isPreview,
 		test_block,
 		imagePosition,
 		columns,
@@ -122,13 +121,11 @@ const Render = ( props ) => {
 		prevArrow: <PrevArrow arrowSize={ arrowSize } onClick={sliderRef.slickPrev} />,
 	};
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/testimonials.png`;
 	const isGridLayout = test_item_count === columns ? 'uagb-post__carousel_notset' : '';
 	const isGridLayoutTablet = test_item_count === tcolumns ? 'uagb-post__carousel_notset-tablet' : '';
 	const isGridLayoutMobile = test_item_count === mcolumns ? 'uagb-post__carousel_notset-mobile' : '';
 
 	return (
-		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				className,

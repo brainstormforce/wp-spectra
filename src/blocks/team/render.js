@@ -28,7 +28,6 @@ const Render = ( props ) => {
 	} = props;
 
 	const {
-		isPreview,
 		align,
 		tag,
 		title,
@@ -191,36 +190,32 @@ const Render = ( props ) => {
 				/>
 		);
 	}
-		const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/team.png`;
+
 	return (
-		<>
-		{ isPreview ? <img width='100%' src={previewImageData} alt=''/> :
-			<div
-				className={ classnames(
-					className,
-					`uagb-team__image-position-${ imgPosition }`,
-					`uagb-team__align-${ align }`,
-					`uagb-team__stack-${ stack }`,
-					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-					`uagb-block-${ props.clientId.substr( 0, 8 ) }`
-				) }
-			>
-					{ imgPosition === 'left' && imageHtml }
+		<div
+			className={ classnames(
+				className,
+				`uagb-team__image-position-${ imgPosition }`,
+				`uagb-team__align-${ align }`,
+				`uagb-team__stack-${ stack }`,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
+			) }
+		>
+				{ imgPosition === 'left' && imageHtml }
 
-					<div className="uagb-team__content">
-						{ imgPosition === 'above' && imageHtml }
+				<div className="uagb-team__content">
+					{ imgPosition === 'above' && imageHtml }
 
-						{ titleHtml }
+					{ titleHtml }
 
-						{ descHtml }
+					{ descHtml }
 
-						{ socialEnable && socialLinks }
-					</div>
+					{ socialEnable && socialLinks }
+				</div>
 
-					{ imgPosition === 'right' && imageHtml }
-			</div>
-}
-		</>
+				{ imgPosition === 'right' && imageHtml }
+		</div>
 	);
 };
 
