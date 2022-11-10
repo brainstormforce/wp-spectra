@@ -57,6 +57,7 @@ import './blocks/how-to/block.js';
 import './blocks/how-to/child-blocks/step/block.js'; // Child Block.
 import './blocks/icon-list/block.js';
 import './blocks/icon-list-child/block.js'; // Child Block.
+import './blocks/image-gallery/block.js';
 import './blocks/inline-notice/block.js';
 import './blocks/lottie/block.js';
 import './blocks/marketing-button/block.js';

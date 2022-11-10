@@ -37,6 +37,7 @@ class Spectra_Block_Prioritization {
 		'google-map',
 		'how-to',
 		'icon-list',
+		'image-gallery',
 		'inline-notice',
 		'lottie',
 		'marketing-button',

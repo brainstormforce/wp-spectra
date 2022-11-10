@@ -643,5 +643,25 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			UAGB_Helper::blocks_google_font( $heading_load_google_font, $heading_font_family, $heading_font_weight );
 			UAGB_Helper::blocks_google_font( $caption_load_google_font, $caption_font_family, $caption_font_weight );
 		}
+
+		/**
+		 * Adds Google fonts for Image Gallery block.
+		 *
+		 * @since 2.0.0
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_image_gallery_gfont( $attr ) {
+
+			$caption_load_google_font = isset( $attr['captionLoadGoogleFonts'] ) ? $attr['captionLoadGoogleFonts'] : '';
+			$caption_font_family      = isset( $attr['captionFontFamily'] ) ? $attr['captionFontFamily'] : '';
+			$caption_font_weight      = isset( $attr['captionFontWeight'] ) ? $attr['captionFontWeight'] : '';
+
+			$load_more_load_google_font = isset( $attr['loadMoreLoadGoogleFonts'] ) ? $attr['loadMoreLoadGoogleFonts'] : '';
+			$load_more_font_family      = isset( $attr['loadMoreFontFamily'] ) ? $attr['loadMoreFontFamily'] : '';
+			$load_more_font_weight      = isset( $attr['loadMoreFontWeight'] ) ? $attr['loadMoreFontWeight'] : '';
+
+			UAGB_Helper::blocks_google_font( $caption_load_google_font, $caption_font_family, $caption_font_weight );
+			UAGB_Helper::blocks_google_font( $load_more_load_google_font, $load_more_font_family, $load_more_font_weight );
+		}
 	}
 }
