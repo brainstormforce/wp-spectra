@@ -756,6 +756,11 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	}
 }
 
+/* Spectra Page Level Settings */
+.is-pressed .spectra-page-settings-button path {
+	fill: #fff;
+}
+
 @import "styles/gutenberg-override";
 @import "styles/control-responsive";
 @import "styles/control-header";
