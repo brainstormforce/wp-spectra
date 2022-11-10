@@ -2,6 +2,8 @@ import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 import { useLayoutEffect } from 'react';
 import styles from './editor.lazy.scss';
+import { RichText } from '@wordpress/block-editor';
+
 
 export const PostButton = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -12,14 +14,11 @@ export const PostButton = ( props ) => {
 		};
 	}, [] );
 
-	const { attributes, post } = props;
+	const { attributes, post, setAttributes } = props;
 
 	const target = attributes.newTab ? '_blank' : '_self';
 
 	if ( attributes.displayPostLink ) {
-		const cta_text = attributes.ctaText
-			? attributes.ctaText
-			: __( 'Read More' );
 
 		return (
 			<div className="uagb-post__text">
@@ -29,7 +28,9 @@ export const PostButton = ( props ) => {
 						'wp-block-button'
 					) }
 				>
-					<a
+					<RichText
+						value={ attributes.ctaText ? attributes.ctaText : __( 'Read More' ) }
+						onChange={ value=> setAttributes( {ctaText: value} ) }
 						className={ classnames(
 							'uagb-text-link',
 							'wp-block-button__link'
@@ -37,10 +38,7 @@ export const PostButton = ( props ) => {
 						href={ post.link }
 						target={ target }
 						rel="noopener noreferrer"
-						onClick={ ( e ) => e.preventDefault() }
-					>
-						{ cta_text }
-					</a>
+					/>
 				</div>
 			</div>
 		);

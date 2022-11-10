@@ -16,7 +16,7 @@ import {
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 
-import { Placeholder, Button, Tip, Disabled } from '@wordpress/components';
+import { Placeholder, Button, Tip } from '@wordpress/components';
 
 import { InnerBlocks } from '@wordpress/block-editor';
 import styles from '.././editor.lazy.scss';
@@ -39,11 +39,12 @@ const Render = ( props ) => {
 		categoriesList,
 		deviceType,
 		name,
+		setAttributes
 	} = props.parentProps;
 
 	const renderEditMode = () => {
 		const onDone = () => {
-			const { block, setAttributes } = props.parentProps;
+			const { block } = props.parentProps;
 			setAttributes( {
 				layoutConfig: getPostLayoutConfig( block ),
 			} );
@@ -129,20 +130,17 @@ const Render = ( props ) => {
 
 	const renderViewMode = () => {
 		return (
-			<Disabled>
-
-					<Blog
-						attributes={ attributes }
-						className={ props.parentProps.className }
-						latestPosts={ latestPosts }
-						block_id={ props.parentProps.clientId.substr( 0, 8 ) }
-						categoriesList={ categoriesList }
-						deviceType={ deviceType }
-						name={ name }
-					/>
-
-			</Disabled>
-		);
+				<Blog
+					attributes={ attributes }
+					className={ props.parentProps.className }
+					latestPosts={ latestPosts }
+					block_id={ props.parentProps.clientId.substr( 0, 8 ) }
+					categoriesList={ categoriesList }
+					deviceType={ deviceType }
+					name={ name }
+					setAttributes = { setAttributes }
+				/>
+			);
 	};
 
 	return <>{ renderViewMode() }</>;
