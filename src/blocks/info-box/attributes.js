@@ -24,12 +24,12 @@
 	},
 	infoBoxTitle: {
 		source: 'html',
-		selector: 'h1,h2,h3,h4,h5,h6',
+		selector: '.uagb-ifb-title',
 		default: __( 'Info Box' , 'ultimate-addons-for-gutenberg' ),
 	},
 	headingDesc: {
 		source: 'html',
-		selector: 'p',
+		selector: '.uagb-ifb-desc',
 		default:
 			__( 'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.' , 'ultimate-addons-for-gutenberg' ),
 	},
