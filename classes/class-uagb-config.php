@@ -163,6 +163,10 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'skipEditor' => true,
 						'dep'        => array(),
 					),
+					'uagb-image-gallery-js'  => array(
+						'src' => UAGB_Scripts_Utils::get_js_url( 'image-gallery' ),
+						'dep' => array(),
+					),
 				);
 			}
 			return self::$block_assets;
@@ -307,6 +311,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb/counter'                => array(
 						'name' => 'counter',
+					),
+					'uagb/image-gallery'          => array(
+						'name' => 'image-gallery',
 					),
 				);
 			}

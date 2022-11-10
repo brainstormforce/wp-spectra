@@ -17,6 +17,7 @@ registerBlockType( 'uagb/forms', { title: __( 'Form', 'ultimate-addons-for-guten
 registerBlockType( 'uagb/google-map', { title: __( 'Google Maps', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/how-to', { title: __( 'How-to', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/icon-list', { title: __( 'Icon List', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/image-gallery', { title: __( 'Image Gallery', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/image', { title: __( 'Image', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/info-box', { title: __( 'Info Box', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/inline-notice', { title: __( 'Inline Notice', 'ultimate-addons-for-gutenberg' ) } );

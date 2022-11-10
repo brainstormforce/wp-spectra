@@ -13,7 +13,6 @@ const Blog = ( props ) => {
 	const { attributes, className, latestPosts, block_id } = props;
 	const deviceType = useDeviceType();
 	const {
-		isPreview,
 		columns,
 		tcolumns,
 		mcolumns,
@@ -36,11 +35,9 @@ const Blog = ( props ) => {
 		latestPosts.length > postsToShowFallback
 			? latestPosts.slice( 0, postsToShowFallback )
 			: latestPosts;
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/post-grid.png`;
 	const isImageEnabled = ( attributes.displayPostImage === true ) ? 'uagb-post__image-enabled' : 'uagb-post__image-disabled';
 
 	return (
-		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				'is-grid',

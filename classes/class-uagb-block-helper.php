@@ -1696,5 +1696,126 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$default = self::get_block_default_attributes( $block_name );
 			return is_numeric( $current_value ) ? $current_value : $default[ $key ];
 		}
+
+		/**
+		 * Get Matrix Alignment Value
+		 *
+		 * Syntax:
+		 *
+		 *  get_matrix_alignment( VALUE, POSITION, FORMAT );
+		 *
+		 * E.g.
+		 *
+		 *  get_matrix_alignment( VALUE, 2, 'flex' );
+		 *
+		 * @param string $value  Alignment Matrix value.
+		 * @param int    $pos    Human readable position.
+		 * @param string $format Response format.
+		 * @since 2.1.0
+		 */
+		public static function get_matrix_alignment( $value, $pos, $format = '' ) {
+			$alignment_property = explode( ' ', esc_attr( $value ) )[ $pos - 1 ];
+			switch ( $format ) {
+				case 'flex':
+					switch ( $alignment_property ) {
+						case 'top':
+						case 'left':
+							$alignment_property = 'flex-start';
+							break;
+						case 'bottom':
+						case 'right':
+							$alignment_property = 'flex-end';
+							break;
+					}
+					break;
+			}
+			return $alignment_property;
+		}
+
+		/**
+		 * Generate Border Radius
+		 *
+		 * Syntax:
+		 *
+		 *  generate_border_radius( UNIT, TOP_LEFT, TOP_RIGHT, BOTTOM_RIGHT, BOTTOM_LEFT );
+		 *
+		 * E.g.
+		 *
+		 *  generate_border_radius( 'em', 9, 7, 5, 3 );
+		 *
+		 * @param string $unit  Alignment Matrix value.
+		 * @param int    $topLeft  Top Left Value.
+		 * @param int    $topRight  Top Right Value.
+		 * @param int    $bottomRight  Bottom Right Value.
+		 * @param int    $bottomLeft  Bottom Left Value.
+		 * @since 2.1.0
+		 */
+		public static function generate_border_radius( $unit, $topLeft, $topRight = null, $bottomRight = null, $bottomLeft = null ) {
+			$borderRadius = ! is_null( $topRight )
+				? (
+					! is_null( $bottomRight )
+					? (
+						! is_null( $bottomLeft )
+						? UAGB_Helper::get_css_value( $topLeft, $unit ) . ' ' . UAGB_Helper::get_css_value( $topRight, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottomRight, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottomLeft, $unit )
+						: UAGB_Helper::get_css_value( $topLeft, $unit ) . ' ' . UAGB_Helper::get_css_value( $topRight, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottomRight, $unit )
+					)
+					: UAGB_Helper::get_css_value( $topLeft, $unit ) . ' ' . UAGB_Helper::get_css_value( $topRight, $unit )
+				)
+				: UAGB_Helper::get_css_value( $topLeft, $unit );
+			return $borderRadius;
+		}
+
+		/**
+		 * Generate Spacing
+		 *
+		 * Syntax:
+		 *
+		 *  generate_spacing( UNIT, TOP, RIGHT, BOTTOM, LEFT );
+		 *
+		 * E.g.
+		 *
+		 *  generate_spacing( 'em', 9, 7, 5, 3 );
+		 *
+		 * @param string $unit   Alignment Matrix value.
+		 * @param int    $top    Top Value.
+		 * @param int    $right  Right Value.
+		 * @param int    $bottom Bottom Value.
+		 * @param int    $left   Left Value.
+		 * @since 2.1.0
+		 */
+		public static function generate_spacing( $unit, $top, $right = null, $bottom = null, $left = null ) {
+			$spacing = ! is_null( $right )
+				? (
+					! is_null( $bottom )
+					? (
+						! is_null( $left )
+						? UAGB_Helper::get_css_value( $top, $unit ) . ' ' . UAGB_Helper::get_css_value( $right, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottom, $unit ) . ' ' . UAGB_Helper::get_css_value( $left, $unit )
+						: UAGB_Helper::get_css_value( $top, $unit ) . ' ' . UAGB_Helper::get_css_value( $right, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottom, $unit )
+					)
+					: UAGB_Helper::get_css_value( $top, $unit ) . ' ' . UAGB_Helper::get_css_value( $right, $unit )
+				)
+				: UAGB_Helper::get_css_value( $top, $unit );
+			return $spacing;
+		}
+
+		/**
+		 * Get the Precise 2-Floating Point Percentage, Rounded to Floor for Precision.
+		 *
+		 * Syntax:
+		 *
+		 *  get_precise_percentage( DIVISIONS );
+		 *
+		 * E.g.
+		 *
+		 *  get_precise_percentage( 7 );
+		 *
+		 * @param int $divisions The number of divisions.
+		 * @since 2.0.0
+		 */
+		public static function get_precise_percentage( $divisions ) {
+			$matches = array();
+			preg_match( '/^-?\d+(?:\.\d{0,2})?/', strval( 100 / $divisions ), $matches );
+			return floatval( $matches[0] ) . '%';
+		}
 	}
 }

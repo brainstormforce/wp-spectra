@@ -52,7 +52,6 @@ const Settings = ( props ) => {
 		lottieURl,
 		playOn,
 		backgroundHColor,
-		isPreview,
 	} = attributes;
 
 	const onSelectLottieJSON = ( media ) => {
@@ -371,10 +370,7 @@ const Settings = ( props ) => {
 				{ __( 'website.' ) }
 			</span>
 		);
-		const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/lottie-animation.png`;
 		return (
-			isPreview ? <img width='100%' src={previewImageData} alt=''/> :
-			<>
 			<div className="uagb-lottie_upload_wrap">
 				<MediaPlaceholder
 					labels={ {
@@ -388,7 +384,6 @@ const Settings = ( props ) => {
 					onSelect={ onSelectLottieJSON }
 				/>
 			</div>
-			</>
 		);
 	}
 

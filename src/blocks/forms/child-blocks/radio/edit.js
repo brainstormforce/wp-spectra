@@ -34,18 +34,15 @@ const UAGBFormsRadioEdit = ( props ) => {
 		document.head.appendChild( $style );
 	}, [] );
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/form-radio.svg`;
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/children/form-radio.svg`;
 
 	return (
-		<>
-			{ props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-
-							<>
-			<Settings parentProps={ props } />
-					<Render parentProps={ props } setState={ setState } />
-				</>
-			) }
-		</>
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+			<>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } setState={ setState } />
+			</>
+		)
 	);
 };
 

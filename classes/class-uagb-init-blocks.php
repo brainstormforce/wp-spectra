@@ -81,7 +81,7 @@ class UAGB_Init_Blocks {
 	/**
 	 * Function to get Spectra Font Awesome Polyfiller data.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.14
 	 */
 	public function spectra_font_awesome_polyfiller() {
 
@@ -468,6 +468,10 @@ class UAGB_Init_Blocks {
 
 		$js_ext = ( SCRIPT_DEBUG ) ? '.js' : '.min.js';
 
+		wp_enqueue_code_editor( array( 'type' => 'text/css' ) );
+		wp_enqueue_script( 'wp-theme-plugin-editor' );
+		wp_enqueue_style( 'wp-codemirror' );
+
 		// Scripts.
 		wp_enqueue_script(
 			'uagb-block-editor-js', // Handle.
@@ -580,7 +584,8 @@ class UAGB_Init_Blocks {
 			'uagb-block-editor-js',
 			'uagb_blocks_info',
 			array(
-				'blocks'                             => UAGB_Config::get_block_attributes(),
+				'cf7_is_active'                      => class_exists( 'WPCF7_ContactForm' ),
+				'gf_is_active'                       => class_exists( 'GFForms' ),
 				'category'                           => 'uagb',
 				'ajax_url'                           => admin_url( 'admin-ajax.php' ),
 				'cf7_forms'                          => $this->get_cf7_forms(),
@@ -620,6 +625,10 @@ class UAGB_Init_Blocks {
 				'auto_block_recovery'                => UAGB_Admin_Helper::get_admin_settings_option( 'uag_auto_block_recovery', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
 				'font_awesome_5_polyfill'            => array(),
 				'spectra_custom_fonts'               => apply_filters( 'spectra_system_fonts', array() ),
+				'spectra_custom_css_example'         => __(
+					'Use custom class added in block\'s advanced settings to target your desired block. Examples:
+				.my-class {text-align: center;} // my-class is a custom selector'
+				),
 			)
 		);
 		// To match the editor with frontend.

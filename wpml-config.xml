@@ -114,5 +114,10 @@
 			<key name="numberSuffix" />
 			<key name="heading" />
 		</gutenberg-block>
+		<gutenberg-block type="uagb/image-gallery" translate="1">
+			<key name="paginateButtonText" />
+			<key name="imageDefaultCaption" />
+			<xpath>//div[@class="spectra-image-gallery__media-thumbnail-caption"]</xpath>
+		</gutenberg-block>
 	</gutenberg-blocks>
 </wpml-config>

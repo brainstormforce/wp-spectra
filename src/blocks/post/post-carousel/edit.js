@@ -2322,7 +2322,7 @@ const UAGBPostCarousel = ( props ) => {
 				<Placeholder
 					icon="admin-post"
 					label={
-						uagb_blocks_info.blocks[ 'uagb/post-carousel' ].title
+						__( 'Post Carousel', 'ultimate-addons-for-gutenberg' )
 					}
 				>
 					{ ! Array.isArray( latestPosts ) ? (
@@ -2335,23 +2335,25 @@ const UAGBPostCarousel = ( props ) => {
 		);
 	}
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/post-carousel.svg`;
+
 	return (
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
 			<>
-
-			<Settings
-				state={ state }
-				togglePreview={ togglePreview }
-				inspectorControls={ inspectorControls }
-				parentProps={ props }
-			/>
-			<Render
-				parentProps={ props }
-				state={ state }
-				setState={ setState }
-				togglePreview={ togglePreview }
-			/>
+				<Settings
+					state={ state }
+					togglePreview={ togglePreview }
+					inspectorControls={ inspectorControls }
+					parentProps={ props }
+				/>
+				<Render
+					parentProps={ props }
+					state={ state }
+					setState={ setState }
+					togglePreview={ togglePreview }
+				/>
 			</>
-
+		)
 	);
 };
 

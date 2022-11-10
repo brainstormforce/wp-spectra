@@ -143,6 +143,9 @@ class UAGB_Block_Module {
 		'counter'            => array(
 			'dir' => 'counter',
 		),
+		'image-gallery'      => array(
+			'dir' => 'image-gallery',
+		),
 	);
 
 	/**

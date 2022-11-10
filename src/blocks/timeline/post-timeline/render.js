@@ -32,7 +32,6 @@ const Render = ( props ) => {
 	const { attributes, className, latestPosts } = props;
 
 	const {
-		isPreview,
 		displayPostLink,
 		postsToShow,
 	} = attributes;
@@ -50,7 +49,7 @@ const Render = ( props ) => {
 				<Placeholder
 					icon="admin-post"
 					label={
-						uagb_blocks_info.blocks[ 'uagb/post-timeline' ].title
+						__( 'Post Timeline', 'ultimate-addons-for-gutenberg' )
 					}
 				>
 					{ ! Array.isArray( latestPosts ) ? (
@@ -71,9 +70,8 @@ const Render = ( props ) => {
 		let dayAlignClass = DayAlignClass( props.attributes, 0, deviceType ); // Get classname for day alignment.
 
 		let displayInnerDate = false;
-		const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/post-timeline.png`;
+
 		return (
-			isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 			<>
 				{ displayPosts.map( ( post, index ) => {
 					if ( timelinAlignment === 'center' ) {
@@ -103,7 +101,7 @@ const Render = ( props ) => {
 										attributes={ attributes }
 										dateClass="uagb-timeline__date-hide uagb-timeline__inner-date-new"
 									/>
-									{	
+									{
 										<FeaturedImage
 											post={ post }
 											attributes={ attributes }
