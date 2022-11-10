@@ -71,7 +71,7 @@ const UAGTextControl = ( props ) => {
                     ) }>
                     { ( props?.variant !== 'textarea' ) &&
                         <TextControl
-                            label = { props?.variant === 'inline' ? ( props?.label ) : false }
+                            label = { ( props?.variant === 'inline' ) || ( props?.variant !== 'inline' && ! props?.showHeaderControls ) ? ( props?.label ) : false }
                             value = { props?.value }
                             onChange = { handleOnChange }
                             autoComplete = { props?.autoComplete }
@@ -79,6 +79,7 @@ const UAGTextControl = ( props ) => {
                     }
                     { ( props?.variant === 'textarea' ) &&
                         <TextareaControl
+                            label = { ( ! props?.showHeaderControls ) ? ( props?.label ) : false }
                             value = { props?.value }
                             onChange = { handleOnChange }
                             autoComplete = { props?.autoComplete }
