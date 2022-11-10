@@ -7,7 +7,6 @@ import InspectorTab, {
 
 import {
 	ToggleControl,
-	TextControl,
 } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
@@ -68,23 +67,33 @@ const Settings = ( props ) => {
 
 				{ showLink && (
 					<>
-						<TextControl
+						<UAGTextControl
 							label={ __(
 								'Link Label',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ linkLabel }
+							data={{
+								value: linkLabel,
+								label: 'linkLabel',
+							}}
+							setAttributes={ setAttributes }
 							onChange={ ( value ) =>
 								setAttributes( { linkLabel: value } )
 							}
 						/>
-						<TextControl
+						<UAGTextControl
 							className="uagb-forms-editor-privacy-link"
 							label={ __(
 								'Link',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ link }
+							data={{
+								value: link,
+								label: 'link',
+							}}
+							setAttributes={ setAttributes }
 							onChange={ ( value ) =>
 								setAttributes( { link: value } )
 							}
