@@ -12,10 +12,10 @@ const scrollBlockToView = () => {
 
 	setTimeout( ()=> {
 		const currentDocument = getCurrentDocument();
-		const selectedBlockElementToScroll = currentDocument.getElementById	( selectedBlockID );
+		const selectedBlockElementToScroll = currentDocument.getElementById( selectedBlockID );
 
 		if ( selectedBlockElementToScroll ) {
-			selectedBlockElementToScroll.scrollIntoView( {behavior: 'smooth'} );
+			selectedBlockElementToScroll.scrollIntoView( {behavior: 'smooth', block: 'center', inline: 'center'} );
 		}
 	}, 500 )
 }
@@ -35,7 +35,6 @@ const getCurrentDocument = () => {
 		}
 
 		const iframeDocument = iframe?.contentWindow.document || iframe?.contentDocument;
-
 		if ( iframeDocument ) {
 			return iframeDocument;
 		}

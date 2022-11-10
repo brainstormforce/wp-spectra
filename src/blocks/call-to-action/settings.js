@@ -85,6 +85,10 @@ const Settings = ( props ) => {
 		contentWidthMobile,
 		contentWidthType,
 		ctaBtnLinkColor,
+		ctaBgType,
+		ctaBgHoverType,
+		secondCtaBgType,
+		secondCtaBgHoverType,
 		ctaBgHoverColor,
 		ctaBgColor,
 		ctaTopPadding,
@@ -115,7 +119,6 @@ const Settings = ( props ) => {
 		descFontStyle,
 		ctaFontStyle,
 		enabledSecondCtaButton,
-		secondCtaLabel,
 		secondCtaLink,
 		secondCtaTarget,
 		secondCtaLoadGoogleFonts,
@@ -211,6 +214,8 @@ const Settings = ( props ) => {
 		secondCtaLetterSpacingTablet,
 		secondCtaLetterSpacingMobile,
 		secondCtaLetterSpacingType,
+		showIcon,
+		showSecondIcon,
 	} = attributes;
 
 	let loadCtaGoogleFonts;
@@ -370,16 +375,6 @@ const Settings = ( props ) => {
 				/>
 				<TextControl
 					label={ __(
-						'Text',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ secondCtaLabel }
-					onChange={ ( value ) =>
-						setAttributes( { secondCtaLabel: value } )
-					}
-				/>
-				<TextControl
-					label={ __(
 						'Link',
 						'ultimate-addons-for-gutenberg'
 					) }
@@ -398,7 +393,17 @@ const Settings = ( props ) => {
 						setAttributes( { secondCtaTarget: ! secondCtaTarget } )
 					}
 				/>
-				<UAGIconPicker
+				<ToggleControl
+					label={ __(
+						'Show Icon',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ showSecondIcon }
+					onChange={ () =>
+						setAttributes( { showSecondIcon: ! showSecondIcon } )
+					}
+				/>
+				{ showSecondIcon && <UAGIconPicker
 					label={ __(
 						'Icon',
 						'ultimate-addons-for-gutenberg'
@@ -407,8 +412,8 @@ const Settings = ( props ) => {
 					onChange={ ( value ) =>
 						setAttributes( { secondCtaIcon: value } )
 					}
-				/>
-				{ secondCtaIcon !== '' && (
+				/> }
+				{ showSecondIcon && secondCtaIcon !== '' && (
 				<>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -573,18 +578,45 @@ const Settings = ( props ) => {
 								} }
 								setAttributes={ setAttributes }
 							/>
-							<AdvancedPopColorControl
-								label={ __(
-									'Background Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ secondCtaBackground ? secondCtaBackground : '' }
-								data={ {
-									value: secondCtaBackground,
-									label: 'secondCtaBackground',
-								} }
+							<MultiButtonsControl
 								setAttributes={ setAttributes }
+								label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: secondCtaBgType,
+									label: 'secondCtaBgType',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ [
+									{
+										value: 'transparent',
+										label: __(
+											'Transparent',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'color',
+										label: __(
+											'Color',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+								] }
 							/>
+							{ ( secondCtaBgType === 'color' ) &&
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ secondCtaBackground ? secondCtaBackground : '' }
+									data={ {
+										value: secondCtaBackground,
+										label: 'secondCtaBackground',
+									} }
+									setAttributes={ setAttributes }
+								/>
+							}
 						</>
 					 }
 					hover={
@@ -601,18 +633,45 @@ const Settings = ( props ) => {
 								} }
 								setAttributes={ setAttributes }
 							/>
-							<AdvancedPopColorControl
-								label={ __(
-									'Background Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ secondCtaHoverBackground ? secondCtaHoverBackground : '' }
-								data={ {
-									value: secondCtaHoverBackground,
-									label: 'secondCtaHoverBackground',
-								} }
+							<MultiButtonsControl
 								setAttributes={ setAttributes }
+								label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: secondCtaBgHoverType,
+									label: 'secondCtaBgHoverType',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ [
+									{
+										value: 'transparent',
+										label: __(
+											'Transparent',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'color',
+										label: __(
+											'Color',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+								] }
 							/>
+							{ ( secondCtaBgHoverType === 'color' ) &&
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ secondCtaHoverBackground ? secondCtaHoverBackground : '' }
+									data={ {
+										value: secondCtaHoverBackground,
+										label: 'secondCtaHoverBackground',
+									} }
+									setAttributes={ setAttributes }
+								/>
+							}
 						</>
 					}
 					disableBottomSeparator={ false }
@@ -784,7 +843,7 @@ const Settings = ( props ) => {
 					showIcons={ false }
 				/>
 				) }
-				{ ( ctaType === 'text' || ctaType === 'button' ) && (
+				{ ( ctaType === 'text' ) && (
 					<>
 						<TextControl
 							label={ __(
@@ -820,9 +879,19 @@ const Settings = ( props ) => {
 								setAttributes( { ctaTarget: ! ctaTarget } )
 							}
 						/>
+						<ToggleControl
+							label={ __(
+								'Show Icon',
+								'ultimate-addons-for-gutenberg'
+							) }
+							checked={ showIcon }
+							onChange={ () =>
+								setAttributes( { showIcon: ! showIcon } )
+							}
+						/>
 					</>
 				) }
-				{ ctaType !== 'all' && ctaType !== 'none' && (
+				{ showIcon && ctaType !== 'all' && ctaType !== 'none' && (
 					<>
 						<UAGIconPicker
 							label={ __(
@@ -1119,18 +1188,45 @@ const Settings = ( props ) => {
 					} }
 					setAttributes={ setAttributes }
 				/>
-				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ ctaBgColor ? ctaBgColor : '' }
-					data={ {
-						value: ctaBgColor,
-						label: 'ctaBgColor',
-					} }
+				<MultiButtonsControl
 					setAttributes={ setAttributes }
+					label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: ctaBgType,
+						label: 'ctaBgType',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'transparent',
+							label: __(
+								'Transparent',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'color',
+							label: __(
+								'Color',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
 				/>
+				{ ctaBgType === 'color' &&
+					<AdvancedPopColorControl
+						label={ __(
+							'Background Color',
+							'ultimate-addons-for-gutenberg'
+						) }
+						colorValue={ ctaBgColor ? ctaBgColor : '' }
+						data={ {
+							value: ctaBgColor,
+							label: 'ctaBgColor',
+						} }
+						setAttributes={ setAttributes }
+					/>
+				}
 			</>
 		);
 	};
@@ -1149,18 +1245,45 @@ const Settings = ( props ) => {
 					} }
 					setAttributes={ setAttributes }
 				/>
-				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ ctaBgHoverColor ? ctaBgHoverColor : '' }
-					data={ {
-						value: ctaBgHoverColor,
-						label: 'ctaBgHoverColor',
-					} }
+				<MultiButtonsControl
 					setAttributes={ setAttributes }
+					label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: ctaBgHoverType,
+						label: 'ctaBgHoverType',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'transparent',
+							label: __(
+								'Transparent',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'color',
+							label: __(
+								'Color',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
 				/>
+				{ ( ctaBgHoverType === 'color' )  &&
+					<AdvancedPopColorControl
+						label={ __(
+							'Background Color',
+							'ultimate-addons-for-gutenberg'
+						) }
+						colorValue={ ctaBgHoverColor ? ctaBgHoverColor : '' }
+						data={ {
+							value: ctaBgHoverColor,
+							label: 'ctaBgHoverColor',
+						} }
+						setAttributes={ setAttributes }
+					/>
+				}
 			</>
 		);
 	};
