@@ -33,7 +33,7 @@ const Render = ( props ) => {
 		if( image && image.url ){
 			getImageHeightWidth( image?.url, setAttributes, { type: 'width', value: imageWidth} )
 		}
-	}, [ image, imageWidth, image?.url ] )
+	}, [ image, imageWidth ] )
 
 	return (
 		<div
