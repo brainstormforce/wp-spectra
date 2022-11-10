@@ -38,7 +38,7 @@ const Settings = ( props ) => {
 						'Acceptance Text',
 						'ultimate-addons-for-gutenberg'
 					) }
-					help="Label to display as acceptance message."
+					help={ __( 'Label to display as acceptance message.', 'ultimate-addons-for-gutenberg' ) }
 					value={ acceptText }
 					data={{
 						value: acceptText,
