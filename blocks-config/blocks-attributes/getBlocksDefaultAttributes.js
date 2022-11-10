@@ -37,6 +37,8 @@ import wpSearchAttribute from '@Blocks/wp-search/attributes';
 import formsAttribute from '@Blocks/forms/attributes';
 import formsAcceptAttribute from '@Blocks/forms/child-blocks/accept/attributes';
 import formsEmailAttribute from '@Blocks/forms/child-blocks/email/attributes';
+import formsHiddenAttribute from '@Blocks/forms/child-blocks/hidden/attributes';
+import formsNameAttribute from '@Blocks/forms/child-blocks/name/attributes';
 import formsTextareaAttribute from '@Blocks/forms/child-blocks/textarea/attributes';
 import tabsAttribute from '@Blocks/tabs/attributes';
 import lottieAttribute from '@Blocks/lottie/attributes';
@@ -80,6 +82,8 @@ export const blocksAttributes = {
 	'forms' : formsAttribute,
 	'forms-accept' : formsAcceptAttribute,
 	'forms-email' : formsEmailAttribute,
+	'forms-hidden' : formsHiddenAttribute,
+	'forms-name' : formsNameAttribute,
 	'forms-textarea' : formsTextareaAttribute, 
 	'tabs' : tabsAttribute,
 	'lottie' : lottieAttribute,
