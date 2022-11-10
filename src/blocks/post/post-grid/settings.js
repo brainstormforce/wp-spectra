@@ -68,7 +68,6 @@ const Settings = ( props ) => {
 		imgPosition,
 		displayPostLink,
 		newTab,
-		ctaText,
 		align,
 		columns,
 		tcolumns,
@@ -1224,16 +1223,6 @@ const Settings = ( props ) => {
 							checked={ newTab }
 							onChange={ () =>
 								setAttributes( { newTab: ! newTab } )
-							}
-						/>
-						<TextControl
-							label={ __(
-								'Text',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ ctaText }
-							onChange={ ( value ) =>
-								setAttributes( { ctaText: value } )
 							}
 						/>
 						<UAGPresets
