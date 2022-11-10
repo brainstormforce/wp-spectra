@@ -39,6 +39,8 @@ import formsAcceptAttribute from '@Blocks/forms/child-blocks/accept/attributes';
 import formsEmailAttribute from '@Blocks/forms/child-blocks/email/attributes';
 import formsHiddenAttribute from '@Blocks/forms/child-blocks/hidden/attributes';
 import formsNameAttribute from '@Blocks/forms/child-blocks/name/attributes';
+import formsToggleAttribute from '@Blocks/forms/child-blocks/toggle/attributes';
+import formsUrlAttribute from '@Blocks/forms/child-blocks/url/attributes';
 import formsTextareaAttribute from '@Blocks/forms/child-blocks/textarea/attributes';
 import tabsAttribute from '@Blocks/tabs/attributes';
 import lottieAttribute from '@Blocks/lottie/attributes';
@@ -84,6 +86,8 @@ export const blocksAttributes = {
 	'forms-email' : formsEmailAttribute,
 	'forms-hidden' : formsHiddenAttribute,
 	'forms-name' : formsNameAttribute,
+	'forms-toggle' : formsToggleAttribute,
+	'forms-url' : formsUrlAttribute,
 	'forms-textarea' : formsTextareaAttribute, 
 	'tabs' : tabsAttribute,
 	'lottie' : lottieAttribute,
