@@ -22,7 +22,7 @@ const Render = ( props ) => {
 		className,
 		name,
 	} = props;
-	const { block_id, readyToRender, isPreview } = attributes;
+	const { block_id, readyToRender } = attributes;
 	const deviceType = useDeviceType();
 	
 	return (
