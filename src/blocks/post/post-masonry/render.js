@@ -7,7 +7,7 @@ import {
 
 import { createBlock } from '@wordpress/blocks';
 import { InnerBlocks } from '@wordpress/block-editor';
-import { Placeholder, Button, Disabled, Tip } from '@wordpress/components';
+import { Placeholder, Button, Tip } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import React, {    useLayoutEffect } from 'react';
 
@@ -32,7 +32,7 @@ const Render = ( props ) => {
 
 	const renderEditMode = () => {
 		const onDone = () => {
-			const { block, setAttributes } = props;
+			const { block } = props;
 			setAttributes( {
 				layoutConfig: getPostLayoutConfig( block ),
 			} );

@@ -10,7 +10,7 @@ import { __ } from '@wordpress/i18n';
 
 import { createBlock } from '@wordpress/blocks';
 
-import { Placeholder, Button, Tip, Disabled } from '@wordpress/components';
+import { Placeholder, Button, Tip } from '@wordpress/components';
 
 import { InnerBlocks } from '@wordpress/block-editor';
 import styles from '.././editor.lazy.scss';
@@ -32,7 +32,7 @@ const Render = ( props ) => {
 
 	const renderEditMode = () => {
 		const onDone = () => {
-			const { block, setAttributes } = props;
+			const { block } = props;
 			setAttributes( {
 				layoutConfig: getPostLayoutConfig( block ),
 			} );
