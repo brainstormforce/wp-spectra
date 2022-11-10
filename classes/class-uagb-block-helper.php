@@ -1620,7 +1620,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function uag_generate_deprecated_border_css( $current_css, $border_width, $border_radius, $border_color = '', $border_style = '' ) {
 			$gen_border_css = array();
-			if( 'default' !== $current_css['border-style'] ) {
+			if ( 'default' !== $current_css['border-style'] ) {
 				$border_width  = is_numeric( $border_width ) ? $border_width : '';
 				$border_radius = is_numeric( $border_radius ) ? $border_radius : '';
 
