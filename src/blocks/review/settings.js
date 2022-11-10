@@ -1243,10 +1243,8 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
-				<h2>{ __( 'Link' ) }</h2>
 				<UAGTextControl
-					label={false}
-					showHeaderControls={false}
+					label={ __( 'Link', 'ultimate-addons-for-gutenberg' ) }
 					value={ ctaLink }
 					data={{
 						value: ctaLink,
