@@ -6,7 +6,7 @@ const TestimonialImage = ( props ) => {
 
 	if ( imageArray && typeof imageArray !== 'undefined' ) {
 		const image = imageArray.image;
-		const { imageWidth } = attributes;
+		const { imageWidth, imgTagHeight } = attributes;
 
 		let url = '';
 
@@ -40,7 +40,7 @@ const TestimonialImage = ( props ) => {
 							src={ url }
 							alt={ image.alt }
 							width={ imageWidth }
-							height={ imageWidth }
+							height={ imgTagHeight }
 							loading="lazy"
 						/>
 					</div>

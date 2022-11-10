@@ -1590,7 +1590,6 @@
 	imgTagWidth: {
 		type: 'number',
 		default: 0,
-
 	},
 	...borderAttributes
 };
