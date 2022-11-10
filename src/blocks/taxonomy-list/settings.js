@@ -27,17 +27,35 @@ import { InspectorControls } from '@wordpress/block-editor';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import boxShadowPresets from './presets';
 import UAGPresets from '@Components/presets';
-
+import { useSelect } from '@wordpress/data';
 import apiFetch from '@wordpress/api-fetch';
 const Settings = ( props ) => {
 	props = props.parentProps;
+
+	const {
+		taxonomyList,
+		termsList,
+	} = useSelect(
+		( select ) => { // eslint-disable-line  no-unused-vars
+			const {
+				postType,
+				listInJson
+			} = props.attributes;
+			const allTaxonomy = ( null !== listInJson ) ? listInJson.data : '';
+			const currentTax = ( '' !== allTaxonomy ) ? allTaxonomy[ postType ] : 'undefined';
+
+			return {
+				taxonomyList:
+					'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
+				termsList: 'undefined' !== typeof currentTax ? currentTax.terms : [],
+			};
+		},
+	);
 
 	// Caching all Props.
 	const {
 		attributes,
 		setAttributes,
-		taxonomyList,
-		termsList,
 		deviceType,
 	} = props;
 

@@ -9,7 +9,7 @@ import { useDeviceType } from '@Controls/getPreviewType';
 import Settings from './settings';
 import Render from './render';
 
-import { withSelect, useDispatch } from '@wordpress/data';
+import { useSelect, useDispatch } from '@wordpress/data';
 
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
@@ -29,6 +29,42 @@ import styles from './editor.lazy.scss';
 
 const UAGBFormsEdit = ( props ) => {
 	const deviceType = useDeviceType();
+
+	const {
+		innerBlocks,
+		blockType,
+		variations,
+		replaceInnerBlocks,
+		hasInnerBlocks
+	} = useSelect(
+		( select ) => {
+			const { getBlocks } = select( 'core/block-editor' );
+			const {
+				getBlockType,
+				getBlockVariations,
+				getDefaultBlockVariation,
+			} = select( 'core/blocks' );
+			const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
+			return {
+				innerBlocks: getBlocks( props.clientId ),
+				hasInnerBlocks:
+					select( 'core/block-editor' ).getBlocks( props.clientId ).length >
+					0,
+
+				blockType: getBlockType( props.name ),
+				defaultVariation:
+					typeof getDefaultBlockVariation === 'undefined'
+						? null
+						: getDefaultBlockVariation( props.name ),
+				variations:
+					typeof getBlockVariations === 'undefined'
+						? null
+						: getBlockVariations( props.name ),
+				replaceInnerBlocks,
+			};
+		},
+	);
+
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -235,13 +271,13 @@ const UAGBFormsEdit = ( props ) => {
 	}, [deviceType] );
 
 	const blockVariationPickerOnSelect = useCallback(
-		( nextVariation = props.defaultVariation ) => {
+		( nextVariation = defaultVariation ) => {
 			if ( nextVariation.attributes ) {
 				props.setAttributes( nextVariation.attributes );
 			}
 
 			if ( nextVariation.innerBlocks ) {
-				props.replaceInnerBlocks(
+				replaceInnerBlocks(
 					props.clientId,
 					createBlocksFromInnerBlocksTemplate(
 						nextVariation.innerBlocks
@@ -262,7 +298,6 @@ const UAGBFormsEdit = ( props ) => {
 			);
 		}
 	);
-	const { variations, hasInnerBlocks } = props;
 
 	const renderReadyClasses = useCallback( ( id ) => {
 		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
@@ -370,37 +405,6 @@ const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-im
 	);
 };
 
-const applyWithSelect = withSelect( ( select, props ) => {
-	const { getBlocks } = select( 'core/block-editor' );
-	const {
-		getBlockType,
-		getBlockVariations,
-		getDefaultBlockVariation,
-	} = select( 'core/blocks' );
-
-	const innerBlocks = getBlocks( props.clientId );
-	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
-
-	return {
-		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
-		innerBlocks,
-		hasInnerBlocks:
-			select( 'core/block-editor' ).getBlocks( props.clientId ).length >
-			0,
-
-		blockType: getBlockType( props.name ),
-		defaultVariation:
-			typeof getDefaultBlockVariation === 'undefined'
-				? null
-				: getDefaultBlockVariation( props.name ),
-		variations:
-			typeof getBlockVariations === 'undefined'
-				? null
-				: getBlockVariations( props.name ),
-		replaceInnerBlocks,
-	};
-} );
-
 const addAdvancedClasses = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 		return (
@@ -416,6 +420,5 @@ wp.hooks.addFilter( 'editor.BlockListBlock', 'uagb/forms', addAdvancedClasses );
 
 export default compose(
 	withNotices,
-	applyWithSelect,
 	addAdvancedClasses
 )( UAGBFormsEdit );

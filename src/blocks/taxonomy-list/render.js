@@ -3,7 +3,7 @@ import React, { useLayoutEffect } from 'react';
 import styles from './editor.lazy.scss';
 import { decodeEntities } from '@wordpress/html-entities';
 import { useDeviceType } from '@Controls/getPreviewType';
-
+import { useSelect } from '@wordpress/data';
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -15,8 +15,40 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 	const deviceType = useDeviceType();
+	let categoriesList = [];
+	useSelect(
+		( select ) => { // eslint-disable-line  no-unused-vars
+			const {
+				postType,
+				taxonomyType,
+				showEmptyTaxonomy,
+				listInJson
+			} = props.attributes;
+
+			const allTaxonomy = ( null !== listInJson ) ? listInJson.data : '';
+			const currentTax = ( '' !== allTaxonomy ) ? allTaxonomy[ postType ] : 'undefined';
+
+			const listToShowTaxonomy = showEmptyTaxonomy
+				? 'with_empty_taxonomy'
+				: 'without_empty_taxonomy';
+
+			if ( 'undefined' !== typeof currentTax ) {
+				if (
+					'undefined' !== typeof currentTax[ listToShowTaxonomy ] &&
+					'undefined' !==
+						typeof currentTax[ listToShowTaxonomy ][ taxonomyType ]
+				) {
+					categoriesList = currentTax[ listToShowTaxonomy ][ taxonomyType ];
+				}
+			}
+
+			return {
+				categoriesList,
+			};
+		},
+	);
 	// Caching all Props.
-	const { attributes, categoriesList } = props;
+	const { attributes } = props;
 
 	// Caching all attributes.
 	const {
