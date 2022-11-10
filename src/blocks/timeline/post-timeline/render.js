@@ -1,5 +1,4 @@
 import classnames from 'classnames';
-
 import ContentTmClasses from '.././classes';
 import AlignClass from '.././align-classes';
 import DayAlignClass from '.././day-align-classes';
@@ -29,7 +28,7 @@ const Render = ( props ) => {
 	props = props.parentProps;
 	const blockName = props.name.replace( 'uagb/', '' );
 	const deviceType = useDeviceType();
-	const { attributes, className, latestPosts } = props;
+	const { attributes, className, latestPosts, setAttributes } = props;
 
 	const {
 		isPreview,
@@ -50,7 +49,7 @@ const Render = ( props ) => {
 				<Placeholder
 					icon="admin-post"
 					label={
-						uagb_blocks_info.blocks[ 'uagb/post-timeline' ].title
+						__( 'Post Timeline', 'ultimate-addons-for-gutenberg' )
 					}
 				>
 					{ ! Array.isArray( latestPosts ) ? (
@@ -103,7 +102,7 @@ const Render = ( props ) => {
 										attributes={ attributes }
 										dateClass="uagb-timeline__date-hide uagb-timeline__inner-date-new"
 									/>
-									{	
+									{
 										<FeaturedImage
 											post={ post }
 											attributes={ attributes }
@@ -131,6 +130,7 @@ const Render = ( props ) => {
 											<CtaLink
 												post={ post }
 												attributes={ attributes }
+												setAttributes ={ setAttributes }
 											/>
 										}
 

@@ -966,6 +966,7 @@ const attributes = {
 	},
 	imageBoxShadowColor: {
 		type: 'string',
+		default: '#00000070',
 		isUAGStyle: true,
 		UAGCopyPaste: {
 			styleType: 'image-shadow-color'

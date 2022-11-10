@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-
+import { RichText } from '@wordpress/block-editor';
 import renderSVG from '@Controls/renderIcon';
 
 const SecondCTAButton = ( props ) => {
@@ -12,7 +12,7 @@ const SecondCTAButton = ( props ) => {
 	}
 
 	let secondCtaIconOutput = '';
-	if ( attributes.secondCtaIcon !== '' ) {
+	if ( attributes.showSecondIcon && attributes.secondCtaIcon !== '' ) {
 		secondCtaIconOutput = renderSVG( attributes.secondCtaIcon );
 	}
 
@@ -23,6 +23,32 @@ const SecondCTAButton = ( props ) => {
 	if ( setAttributes === 'not_set' ) {
 		link = attributes.secondCtaLink;
 		preventDefaultFunc = false;  // Ensures click events for links aren't disabled for frontend.
+	}
+
+	if ( setAttributes !== 'not_set' ) {
+		return (
+			<>
+				<a
+					href={ link }
+					className={ classnames(
+						'uagb-cta-second__button',
+						'wp-block-button__link',
+					) }
+					target={ target }
+					rel={ rel }
+					onClick={ preventDefaultFunc }
+				>
+					{ attributes.secondCtaIconPosition === 'before' && secondCtaIconOutput }
+					<RichText
+						value={ attributes.secondCtaLabel.replace( /(<([^>]+)>)/ig, '' ) }
+						onChange={ ( value ) => {
+							setAttributes( { secondCtaLabel: value } );
+						} }
+					/>
+					{ attributes.secondCtaIconPosition === 'after' && secondCtaIconOutput }
+				</a>
+			</>
+		);
 	}
 
 	return (
@@ -38,7 +64,10 @@ const SecondCTAButton = ( props ) => {
 				onClick={ preventDefaultFunc }
 			>
 				{ attributes.secondCtaIconPosition === 'before' && secondCtaIconOutput }
-				{ attributes.secondCtaLabel }
+				<RichText.Content
+					value={ attributes.secondCtaLabel.replace( /(<([^>]+)>)/ig, '' ) }
+				/>
+				{/* { attributes.secondCtaLabel } */}
 				{ attributes.secondCtaIconPosition === 'after' && secondCtaIconOutput }
 			</a>
 		</>

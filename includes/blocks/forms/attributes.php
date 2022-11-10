@@ -41,6 +41,8 @@ return array_merge(
 		'confirmationUrl'                => '',
 		'buttonSize'                     => 'medium',
 		'submitColor'                    => '',
+		'submitBgType'                   => 'color',
+		'submitBgHoverType'              => 'color',
 		'submitColorHover'               => '',
 		'submitBgColor'                  => '',
 		'submitBgColorHover'             => '',
