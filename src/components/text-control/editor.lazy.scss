@@ -1,5 +1,15 @@
 .uagb-text-control {
 
+	.uagb-control__header {
+
+		.uagb-number-control__actions {
+
+			.uagb-reset {
+				height: fit-content;
+			}
+		}
+	}
+
 	&__controls {
 
 		&-inline {
