@@ -97,17 +97,20 @@ const ButtonsChildComponent = ( props ) => {
 		scrollBlockToView();
 	}, [deviceType] );
 
-	return (
-			<>
-			<Settings
-				parentProps={ props }
-				state={ state }
-				setStateValue={ setStateValue }
-				deviceType = { deviceType }
-			/>
-			<Render parentProps={ props } />
-			</>
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/children/buttons-child.svg`;
 
+	return (
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+			<>
+				<Settings
+					parentProps={ props }
+					state={ state }
+					setStateValue={ setStateValue }
+					deviceType = { deviceType }
+				/>
+				<Render parentProps={ props } />
+			</>
+		)
 	);
 };
 export default ButtonsChildComponent;

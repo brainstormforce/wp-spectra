@@ -21,7 +21,7 @@ const Render = ( props ) => {
 	const deviceType = useDeviceType();
 
 	// Setup the attributes.
-	const { isPreview, block_id, ctaType, enabledSecondCtaButton  } = attributes;
+	const { block_id, ctaType, enabledSecondCtaButton  } = attributes;
 
 	const isCta = <CTA attributes={ attributes } setAttributes={ setAttributes } />;
 
@@ -60,32 +60,30 @@ const Render = ( props ) => {
 		);
 	};
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/call-to-action.png`;
 	return (
-		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
-			<div
-				className={ classnames(
-					`uagb-block-${ block_id }`,
-					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-					'uagb-cta__outer-wrap',
-					'button' === ctaType ? 'wp-block-button' : '',
-				) }
-			>
-				{ ctaType === 'all' && (
-					<>
-					<a
-						href="/"
-						className="uagb-cta__link-to-all"
-						rel="noopener noreferrer"
-						onClick={ ( e ) => e.preventDefault() }
-					>
-						{ ' ' }
-					</a>
-					{ output() }
-					</>
-				) }
-				{ ctaType !== 'all' && output() }
-			</div>
+		<div
+			className={ classnames(
+				`uagb-block-${ block_id }`,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+				'uagb-cta__outer-wrap',
+				'button' === ctaType ? 'wp-block-button' : '',
+			) }
+		>
+			{ ctaType === 'all' && (
+				<>
+				<a
+					href="/"
+					className="uagb-cta__link-to-all"
+					rel="noopener noreferrer"
+					onClick={ ( e ) => e.preventDefault() }
+				>
+					{ ' ' }
+				</a>
+				{ output() }
+				</>
+			) }
+			{ ctaType !== 'all' && output() }
+		</div>
 	);
 };
 

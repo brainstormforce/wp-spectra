@@ -27,4 +27,9 @@ registerBlockType( 'uagb/restaurant-menu-child', {
 	edit,
 	save,
 	deprecated,
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 } );
