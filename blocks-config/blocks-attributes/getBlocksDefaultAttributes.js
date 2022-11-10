@@ -35,6 +35,7 @@ import taxonomyListAttribute from '@Blocks/taxonomy-list/attributes';
 import reviewAttribute from '@Blocks/review/attributes';
 import wpSearchAttribute from '@Blocks/wp-search/attributes';
 import formsAttribute from '@Blocks/forms/attributes';
+import formsAcceptAttribute from '@Blocks/forms/child-blocks/accept/attributes';
 import formsTextareaAttribute from '@Blocks/forms/child-blocks/textarea/attributes';
 import tabsAttribute from '@Blocks/tabs/attributes';
 import lottieAttribute from '@Blocks/lottie/attributes';
@@ -76,6 +77,7 @@ export const blocksAttributes = {
 	'review' : reviewAttribute,
 	'wp-search' : wpSearchAttribute,
 	'forms' : formsAttribute,
+	'forms-accept' : formsAcceptAttribute,
 	'forms-textarea' : formsTextareaAttribute, 
 	'tabs' : tabsAttribute,
 	'lottie' : lottieAttribute,
