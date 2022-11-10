@@ -24,37 +24,32 @@ const Render = ( props ) => {
 	} = props;
 	const { block_id, readyToRender, isPreview } = attributes;
 	const deviceType = useDeviceType();
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/image-gallery.svg`;
 	
 	return (
-		<>
-			{ isPreview ? ( <img width='100%' src={ previewImageData } alt=''/> ) : (
-				<div
-					className={ classnames(
-						className,
-						`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-						`uagb-block-${ block_id }`
-					) }
-				>
-					{
-						readyToRender
-						? (
-							<ImageGallery
-								attributes={ attributes }
-								setAttributes={ setAttributes }
-								name={ name }
-							/>
-						)
-						: (
-							<InitialSelector
-								attributes={ attributes }
-								setAttributes={ setAttributes }
-							/>
-						)
-					}
-				</div>
+		<div
+			className={ classnames(
+				className,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+				`uagb-block-${ block_id }`
 			) }
-		</>
+		>
+			{
+				readyToRender
+				? (
+					<ImageGallery
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						name={ name }
+					/>
+				)
+				: (
+					<InitialSelector
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+					/>
+				)
+			}
+		</div>
 	);
 };
 

@@ -25,13 +25,15 @@ const UAGBImageGallery = ( props ) => {
         addBlockEditorDynamicStyles( 'uagb-image-gallery-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props, deviceType ] );
 
-	//'uagb-style-image-gallery-'
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/image-gallery.svg`;
 
 	return (
-		<>
-			<Settings parentProps={ props } />
-			<Render parentProps={ props } />
-		</>
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+			<>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
+			</>
+		)
 	);
 };
 

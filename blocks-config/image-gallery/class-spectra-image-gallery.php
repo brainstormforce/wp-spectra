@@ -648,7 +648,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 								'default' => 24,
 							),
 							'paginateDotDistance'          => array(
-								'type' => 'number',
+								'type'    => 'number',
 								'default' => 8,
 							),
 							'paginateDotDistanceUnit'      => array(
@@ -1027,8 +1027,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 				for ( $i = 0; $i < $totalImages; $i++ ) {
 					$this->render_masonry_hover_handler( (array) $media[ $i ], $attributes );
 				}
-			}
-			else {
+			} else {
 				for ( $i = 0; $i < $totalImages; $i++ ) {
 					$this->render_single_media( (array) $media[ $i ], $attributes );
 				}
