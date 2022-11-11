@@ -12,11 +12,12 @@ import UAGTabsControl from '@Components/tabs';
 import UAGMediaPicker from '@Components/image';
 import SpacingControl from '@Components/spacing-control';
 
-import { TextControl, ToggleControl } from '@wordpress/components';
+import { ToggleControl } from '@wordpress/components';
 
 
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import UAGTextControl from '@Components/text-control';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -344,11 +345,14 @@ const Settings = ( props ) => {
 				/>
 				{ disableLink && (
 					<>
-						<p className="components-base-control__label">
-							{ __( 'URL', 'ultimate-addons-for-gutenberg' ) }
-						</p>
-						<TextControl
+						<UAGTextControl
+							label={__( 'URL', 'ultimate-addons-for-gutenberg' )}
 							value={ link }
+							data={{
+								value: link,
+								label: 'link',
+							}}
+							setAttributes={ setAttributes }
 							onChange={ ( value ) =>
 								setAttributes( { link: value } )
 							}

@@ -14,6 +14,7 @@ import apiFetch from '@wordpress/api-fetch';
 import contentTimelineStyle from '.././inline-styles';
 import Settings from './settings';
 import Render from './render';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 import { withSelect } from '@wordpress/data';
 
@@ -96,9 +97,16 @@ const PostTimelineComponent = ( props ) => {
                     props.setAttributes( { timelinAlignmentTablet: timelinAlignment } );
                 }
             }
-        }
+        }	
 
 	}, [] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
@@ -109,6 +117,7 @@ const PostTimelineComponent = ( props ) => {
 			detail: {},
 		} );
 		document.dispatchEvent( loadPostTimelineEditor );
+		
 	}, [ props, deviceType ] );
 
 

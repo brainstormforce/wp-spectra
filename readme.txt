@@ -171,16 +171,11 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 2.0.15 - TUESDAY, 08th NOVEMBER 2022 =
+* Improvement: Responsive Conditions - Slanted lines are not visible in the editor.
+* Improvement: Post Carousel/Masonry/Grid - Button text is now editable inside the editor.
 * Improvement: Call To Action - CTA button text is now editable inside the editor.
 * Improvement: Post Timeline - Button text is now editable inside the editor.
 * Improvement: Info-Box - Add responsive feature in Info Box Icon width.
-* Fix: Admin Dashboard - Font dropdown control was going under the section.
-* Fix: Table Of Contents - Alignment issue of marker's view.
-* Fix: Marketing Button - Block does not remain in the stack order when the Blocksy theme is active.
-* Fix: Call To Action - Second button CSS style issue on the frontend.
-* Fix: Scroll to specific block not working when switch from desktop/tablet/mobile.
-* Fix: Post Block - Article tag class conflicting with TranslatePress plugin.
-* Fix: Presets - Most presets used to override background color, box-shadow color, text content and even selected icons; This has been fixed where ever possible.
 * Improvement: Call to Action: Added show icon toggle.
 * Improvement: FAQ: Added background type selector for the question-answer container.
 * Improvement: Forms: Added background type selector for submit button.
@@ -188,6 +183,18 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Info Box: Added show icon toggle for CTA.
 * Improvement: Post Carousel: Added background type selector.
 * Improvement: Post (Grid/Masonry/Carousel): Added background type selector for CTA.
+* Improvement: Spectra Text Control: New text component in settings for a more consistent styling.
+* Fix: Admin Dashboard - Font dropdown control was going under the section.
+* Fix: Table Of Contents - Alignment issue of marker's view.
+* Fix: Marketing Button - Block does not remain in the stack order when the Blocksy theme is active.
+* Fix: Call To Action - Second button CSS style issue on the frontend.
+* Fix: Scroll to specific block not working when switch from desktop/tablet/mobile.
+* Fix: Post Block - Article tag class conflicting with TranslatePress plugin.
+* Fix: Presets - Most presets used to override background color, box-shadow color, text content and even selected icons; This has been fixed where ever possible.
+* Fix: Info Box - The title is disabled on the editor if we set P tag. 
+* Fix: Tabs block - Aria mismatch issue on the lighthouse.
+* Fix: Image block - Negative margin is not working inside container.
+* Fix: Responsive condition does not save when we use the Legacy Widget.
 
 = 2.0.14 - TUESDAY, 08th NOVEMBER 2022 =
 * Improvement: Compatibility with WordPress 6.1.
@@ -245,7 +252,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Spectra CSS conflict due to which date picker of post scheduler does not show the navigation.
 * Fix: Icon list - Icon Alignment top and middle not working as expected if we increase font size.
 * Fix: Container - Breaks when the background is a video and classic overlay is selected.
-* Fix: Responsive condition does not save when we use the Legacy Widget.
 
 = 2.0.13 - THURSDAY, 29th SEPTEMBER 2022 =
 * Fix: Icon List - Bold/Italic style tag visible in aria-label attribute.
