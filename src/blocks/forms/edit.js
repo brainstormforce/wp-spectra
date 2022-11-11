@@ -31,11 +31,11 @@ const UAGBFormsEdit = ( props ) => {
 	const deviceType = useDeviceType();
 
 	const {
-		innerBlocks,
-		blockType,
+		innerBlocks, // eslint-disable-line no-unused-vars
+		blockType, // eslint-disable-line no-unused-vars
 		variations,
-		replaceInnerBlocks,
-		hasInnerBlocks
+		hasInnerBlocks,
+		defaultVariation
 	} = useSelect(
 		( select ) => {
 			const { getBlocks } = select( 'core/block-editor' );
@@ -44,7 +44,7 @@ const UAGBFormsEdit = ( props ) => {
 				getBlockVariations,
 				getDefaultBlockVariation,
 			} = select( 'core/blocks' );
-			const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
+
 			return {
 				innerBlocks: getBlocks( props.clientId ),
 				hasInnerBlocks:
@@ -60,11 +60,10 @@ const UAGBFormsEdit = ( props ) => {
 					typeof getBlockVariations === 'undefined'
 						? null
 						: getBlockVariations( props.name ),
-				replaceInnerBlocks,
 			};
 		},
 	);
-
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -289,7 +288,7 @@ const UAGBFormsEdit = ( props ) => {
 	const createBlocksFromInnerBlocksTemplate = useCallback(
 		( innerBlocksTemplate ) => {
 			return innerBlocksTemplate.map(
-				( [ name, attributes, innerBlocks = [] ] ) =>
+				( [ name, attributes, innerBlocks = [] ] ) => // eslint-disable-line no-shadow
 					createBlock(
 						name,
 						attributes,

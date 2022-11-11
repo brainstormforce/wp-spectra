@@ -211,8 +211,8 @@ const PostGridComponent = ( props ) => {
 	const { attributes } = props;
 
 	let categoriesList = [];
-	const { latestPosts, taxonomyList, block } = useSelect(
-		( select ) => { // eslint-disable-line  no-unused-vars
+	const { latestPosts, taxonomyList, block } = useSelect( // eslint-disable-line no-unused-vars
+		( select ) => {
 			const {
 				blockName,
 				categories,

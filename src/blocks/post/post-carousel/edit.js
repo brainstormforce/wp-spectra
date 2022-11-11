@@ -307,8 +307,8 @@ const UAGBPostCarousel = ( props ) => {
 		setAttributes( { enableOffset: value } );
 	};
 let categoriesList = [];
-	const { latestPosts, taxonomyList, block } = useSelect(
-		( select ) => { // eslint-disable-line  no-unused-vars
+	const { latestPosts, taxonomyList, block } = useSelect( // eslint-disable-line no-unused-vars
+		( select ) => {
 			const {
 				blockName,
 				categories,
@@ -333,7 +333,6 @@ let categoriesList = [];
 			const allTaxonomy = allTaxonomyStore;
 			const currentTax = allTaxonomy ? allTaxonomy[ postType ] : undefined;
 
-			// let categoriesList = [];
 			let rest_base = '';
 
 			if ( 'undefined' !== typeof currentTax ) {
