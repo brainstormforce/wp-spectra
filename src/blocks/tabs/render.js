@@ -282,7 +282,7 @@ const Render = ( props ) => {
 						</li>
 					) ) }
 					<li className="uagb-tab uagb-tabs__add-tab" // eslint-disable-line jsx-a11y/click-events-have-key-events
-						role='button' // eslint-disable-line jsx-a11y/no-noninteractive-element-to-interactive-role
+						role='presentation' 
 						tabIndex='0'
 						onClick={ () => addTab() }>
 						<Tooltip

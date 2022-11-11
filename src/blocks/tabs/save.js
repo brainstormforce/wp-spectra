@@ -42,7 +42,7 @@ export default function save( props ) {
 								? 'uagb-tabs__active'
 								: ''
 						}` }
-						role='list' 
+						role='presentation' 
 					>
 						<a
 							href={ `#uagb-tabs__tab${ index }` }
