@@ -198,7 +198,7 @@ const Render = ( props ) => {
 		const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/team.png`;
 	return (
 		<>
-		{ isPreview ? <img src={previewImageData} alt='' loading='lazy' height={ imgWidth } width={ imgWidth } /> :
+		{ isPreview ? <img src={previewImageData} alt='' /> :
 			<div
 				className={ classnames(
 					className,
