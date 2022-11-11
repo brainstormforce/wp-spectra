@@ -32,6 +32,8 @@ function styling( props ) {
 		buttonAlignMobile,
 		submitColor,
 		submitColorHover,
+		submitBgType,
+		submitBgHoverType,
 		submitBgColor,
 		submitBgColorHover,
 		toggleWidthSize,
@@ -352,7 +354,7 @@ function styling( props ) {
 			'text-transform': submitTextTransform,
 			'text-decoration': submitTextDecoration,
 			'font-weight': submitTextFontWeight,
-			'background-color': submitBgColor,
+			'background-color': ( submitBgType === 'color' ) ? submitBgColor : 'transparent',
 			...submitBorder,
 			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
 			'padding-bottom': generateCSSUnit(
@@ -390,7 +392,7 @@ function styling( props ) {
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button:hover': {
 			'color': submitColorHover,
-			'background-color': submitBgColorHover,
+			'background-color': ( submitBgHoverType === 'color' ) ? submitBgColorHover : 'transparent',
 			'border-color': btnBorderHColor,
 		},
 		' .uagb-switch': {

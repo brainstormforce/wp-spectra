@@ -3,7 +3,7 @@
  */
 import styling from './styling';
 import React, {    useEffect } from 'react';
-
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -14,16 +14,22 @@ import './style.scss';
 
 const UAGBAdvancedHeading = ( props ) => {
 	const deviceType = useDeviceType();
+	
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
+
 	useEffect( () => {
 
 		const { setAttributes } = props;
-
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 		setAttributes( { classMigrate: true } )
 
 	}, [] );
-
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.

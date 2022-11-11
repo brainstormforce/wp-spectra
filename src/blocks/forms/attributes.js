@@ -221,6 +221,20 @@ const attributes = {
 		},
 		default: '',
 	},
+	submitBgType: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-bg-type'
+		},
+		default: 'color',
+	},
+	submitBgHoverType: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-bg-hover-type'
+		},
+		default: 'color',
+	},
 	submitBgColor: {
 		type: 'string',
 		UAGCopyPaste: {

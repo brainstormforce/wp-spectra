@@ -12,11 +12,11 @@ import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
-import { TextControl } from '@wordpress/components';
 import ResponsiveBorder from '@Components/responsive-border';
 import { InspectorControls } from '@wordpress/block-editor';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import UAGTextControl from '@Components/text-control';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -122,12 +122,17 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
-				<TextControl
+				<UAGTextControl
 					label={ __(
 						'Placeholder',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ placeholder }
+					data={{
+						value: placeholder,
+						label: 'placeholder',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( {
 							placeholder: value,
@@ -196,9 +201,14 @@ const Settings = ( props ) => {
 				) }
 				{ layout === 'input-button' && 'text' === buttonType && (
 					<>
-						<TextControl
-							label="Text"
+						<UAGTextControl
+							label={ __( 'Text', 'ultimate-addons-for-gutenberg' ) }
 							value={ buttonText }
+							data={{
+								value: buttonText,
+								label: 'buttonText',
+							}}
+							setAttributes={ setAttributes }
 							onChange={ ( value ) => {
 								setAttributes( {
 									buttonText: value,
