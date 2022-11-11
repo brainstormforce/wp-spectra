@@ -1248,6 +1248,10 @@ const attributes = {
 	allTaxonomyStore: {
 		type: 'object'
 	},
+	taxDivider: {
+		type    : 'string',
+		default : ' , ',
+	},
 	...btnBorderAttributes,
 	...overallBorderAttributes
 }

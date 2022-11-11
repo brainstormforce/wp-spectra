@@ -192,6 +192,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Presets - Most presets used to override background color, box-shadow color, text content and even selected icons; This has been fixed where ever possible.
 * Fix: Info Box - The title is disabled on the editor if we set P tag. 
 * Fix: Tabs block - Aria mismatch issue on the lighthouse.
+* Improvement: Spectra Text Control: New text component in settings for a more consistent styling.
 
 ### 2.0.14 - TUESDAY, 08th NOVEMBER 2022 ###
 * Improvement: Compatibility with WordPress 6.1.

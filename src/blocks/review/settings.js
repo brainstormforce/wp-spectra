@@ -19,10 +19,10 @@ import { getImageSize } from '@Utils/Helpers';
 import renderSVG from '@Controls/renderIcon';
 import {
 	ToggleControl,
-	TextControl,
 	DateTimePicker,
 	Icon
 } from '@wordpress/components';
+import UAGTextControl from '@Components/text-control';
 
 let imageSizeOptions = [
 	{
@@ -726,12 +726,17 @@ const Settings = ( props ) => {
 					) }
 
 					{ itemTypeExtras }
-					<TextControl
+					<UAGTextControl
 						label={ __(
 							'Review Publisher',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ reviewPublisher }
+						data={{
+							value: reviewPublisher,
+							label: 'reviewPublisher',
+						}}
+						setAttributes={ setAttributes }
 						onChange={ ( value ) =>
 							setAttributes( { reviewPublisher: value } )
 						}
@@ -760,32 +765,47 @@ const Settings = ( props ) => {
 						<>
 							{ [ 'Product' ].includes( itemType ) && (
 								<>
-									<TextControl
+									<UAGTextControl
 										label={ __(
 											'Brand',
 											'ultimate-addons-for-gutenberg'
 										) }
 										value={ brand }
+										data={{
+											value: brand,
+											label: 'brand',
+										}}
+										setAttributes={ setAttributes }
 										onChange={ ( value ) =>
 											setAttributes( { brand: value } )
 										}
 									/>
-									<TextControl
+									<UAGTextControl
 										label={ __(
 											'SKU',
 											'ultimate-addons-for-gutenberg'
 										) }
 										value={ sku }
+										data={{
+											value: sku,
+											label: 'sku',
+										}}
+										setAttributes={ setAttributes }
 										onChange={ ( value ) =>
 											setAttributes( { sku: value } )
 										}
 									/>
-									<TextControl
+									<UAGTextControl
 										label={ __(
 											'Identifier',
 											'ultimate-addons-for-gutenberg'
 										) }
 										value={ identifier }
+										data={{
+											value: identifier,
+											label: 'identifier',
+										}}
+										setAttributes={ setAttributes }
 										onChange={ ( value ) =>
 											setAttributes( {
 												identifier: value,
@@ -821,12 +841,17 @@ const Settings = ( props ) => {
 								itemType
 							) && (
 								<>
-									<TextControl
+									<UAGTextControl
 										label={ __(
 											'Offer Currency',
 											'ultimate-addons-for-gutenberg'
 										) }
 										value={ offerCurrency }
+										data={{
+											value: offerCurrency,
+											label: 'offerCurrency',
+										}}
+										setAttributes={ setAttributes }
 										onChange={ ( value ) =>
 											setAttributes( {
 												offerCurrency: value,
@@ -837,12 +862,17 @@ const Settings = ( props ) => {
 							) }
 							{ offerType === 'Offer' && (
 								<>
-									<TextControl
+									<UAGTextControl
 										label={ __(
 											'Offer Price',
 											'ultimate-addons-for-gutenberg'
 										) }
 										value={ offerPrice }
+										data={{
+											value: offerPrice,
+											label: 'offerPrice',
+										}}
+										setAttributes={ setAttributes }
 										onChange={ ( value ) =>
 											setAttributes( {
 												offerPrice: value,
@@ -1213,9 +1243,14 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
-				<h2>{ __( 'Link' ) }</h2>
-				<TextControl
+				<UAGTextControl
+					label={ __( 'Link', 'ultimate-addons-for-gutenberg' ) }
 					value={ ctaLink }
+					data={{
+						value: ctaLink,
+						label: 'ctaLink',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( { ctaLink: value } )
 					}
@@ -1333,9 +1368,14 @@ const Settings = ( props ) => {
 		case 'Book':
 			itemTypeExtras = (
 				<>
-					<TextControl
+					<UAGTextControl
 						label={ __( 'ISBN', 'ultimate-addons-for-gutenberg' ) }
 						value={ isbn }
+						data={{
+							value: isbn,
+							label: 'isbn',
+						}}
+						setAttributes={ setAttributes }
 						onChange={ ( value ) =>
 							setAttributes( { isbn: value } )
 						}
@@ -1344,12 +1384,17 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 					/>
-					<TextControl
+					<UAGTextControl
 						label={ __(
 							'Book author name',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ bookAuthorName }
+						data={{
+							value: bookAuthorName,
+							label: 'bookAuthorName',
+						}}
+						setAttributes={ setAttributes }
 						onChange={ ( value ) =>
 							setAttributes( { bookAuthorName: value } )
 						}
@@ -1365,12 +1410,17 @@ const Settings = ( props ) => {
 		case 'Course':
 			itemTypeExtras = (
 				<>
-					<TextControl
+					<UAGTextControl
 						label={ __(
 							'Provider',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ provider }
+						data={{
+							value: provider,
+							label: 'provider',
+						}}
+						setAttributes={ setAttributes }
 						onChange={ ( value ) =>
 							setAttributes( { provider: value } )
 						}
@@ -1383,22 +1433,32 @@ const Settings = ( props ) => {
 		case 'SoftwareApplication':
 			itemTypeExtras = (
 				<>
-					<TextControl
+					<UAGTextControl
 						label={ __(
 							'Application Category',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ appCategory }
+						data={{
+							value: appCategory,
+							label: 'appCategory',
+						}}
+						setAttributes={ setAttributes }
 						onChange={ ( value ) =>
 							setAttributes( { appCategory: value } )
 						}
 					/>
-					<TextControl
+					<UAGTextControl
 						label={ __(
 							'Operating System',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ operatingSystem }
+						data={{
+							value: operatingSystem,
+							label: 'operatingSystem',
+						}}
+						setAttributes={ setAttributes }
 						onChange={ ( value ) =>
 							setAttributes( { operatingSystem: value } )
 						}
@@ -1410,12 +1470,17 @@ const Settings = ( props ) => {
 		case 'Movie':
 			itemTypeExtras = (
 				<>
-					<TextControl
+					<UAGTextControl
 						label={ __(
 							'Director Name',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ directorname }
+						data={{
+							value: directorname,
+							label: 'directorname',
+						}}
+						setAttributes={ setAttributes }
 						onChange={ ( value ) =>
 							setAttributes( { directorname: value } )
 						}
