@@ -170,6 +170,10 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+### 2.0.15 - TUESDAY, 15th NOVEMBER 2022 ###
+* Fix: Removed deprecated __experimentalGetSettings and used getSettings for Date.
+* Fix: Block encounter an issue with react hook withSelect.
+
 ### 2.0.14 - TUESDAY, 08th NOVEMBER 2022 ###
 * Improvement: Compatibility with WordPress 6.1.
 * Improvement: Container - Equal height setting in the Parent container.
