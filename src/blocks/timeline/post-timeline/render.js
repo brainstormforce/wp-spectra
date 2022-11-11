@@ -25,11 +25,11 @@ const Render = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
-
+	const { latestPosts } = props;
 	props = props.parentProps;
 	const blockName = props.name.replace( 'uagb/', '' );
 	const deviceType = useDeviceType();
-	const { attributes, className, latestPosts } = props;
+	const { attributes, className } = props;
 
 	const {
 		isPreview,

@@ -9,12 +9,52 @@ import apiFetch from '@wordpress/api-fetch';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
-
+import { useSelect } from '@wordpress/data';
 import Settings from './settings';
 import Render from './render';
 
 const UAGBTaxonomyList = ( props ) => {
 	const deviceType = useDeviceType();
+	let categoriesList = [];
+
+	const {
+		taxonomyList,
+		termsList,
+	} = useSelect(
+		( select ) => { // eslint-disable-line  no-unused-vars
+			const {
+				postType,
+				taxonomyType,
+				showEmptyTaxonomy,
+				listInJson
+			} = props.attributes;
+
+			const allTaxonomy = ( null !== listInJson ) ? listInJson.data : '';
+			const currentTax = ( '' !== allTaxonomy ) ? allTaxonomy[ postType ] : 'undefined';
+
+			const listToShowTaxonomy = showEmptyTaxonomy
+				? 'with_empty_taxonomy'
+				: 'without_empty_taxonomy';
+
+			if ( 'undefined' !== typeof currentTax ) {
+				if (
+					'undefined' !== typeof currentTax[ listToShowTaxonomy ] &&
+					'undefined' !==
+						typeof currentTax[ listToShowTaxonomy ][ taxonomyType ]
+				) {
+					categoriesList = currentTax[ listToShowTaxonomy ][ taxonomyType ];
+				}
+			}
+
+			return {
+				categoriesList,
+				taxonomyList:
+					'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
+				termsList: 'undefined' !== typeof currentTax ? currentTax.terms : [],
+			};
+		},
+	);
+
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
@@ -200,9 +240,9 @@ const UAGBTaxonomyList = ( props ) => {
 	return (
 		<>
 
-						<>
-			<Settings parentProps={ props } />
-				<Render parentProps={ props } />
+			<>
+			<Settings parentProps={ props } taxonomyList={ taxonomyList } termsList={ termsList } />
+			<Render parentProps={ props } categoriesList={ categoriesList } />
 			</>
 
 		</>

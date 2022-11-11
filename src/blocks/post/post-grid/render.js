@@ -12,7 +12,6 @@ import {
 	getPostLayoutConfig,
 	getBlockMap,
 } from '.././function';
-
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 
@@ -30,13 +29,12 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
+	const { categoriesList, latestPosts } = props;
 	const { isEditing } = props.state;
 
 	// Caching all Props.
 	const {
 		attributes,
-		latestPosts,
-		categoriesList,
 		deviceType,
 		name,
 	} = props.parentProps;

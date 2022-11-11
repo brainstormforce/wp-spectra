@@ -30,9 +30,10 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { useDeviceType } from '@Controls/getPreviewType';
 
 const Settings = ( props ) => {
+	const { categoriesList, taxonomyList } = props;
 	props = props.parentProps;
 
-	const { attributes, categoriesList, setAttributes, taxonomyList } = props;
+	const { attributes, setAttributes } = props;
 	const deviceType = useDeviceType();
 
 	const {
@@ -222,7 +223,7 @@ const Settings = ( props ) => {
 
 	let device = deviceType;
 
-	// For desktop, attribute name does not have `desktop` suffix to support backward compatibility. 
+	// For desktop, attribute name does not have `desktop` suffix to support backward compatibility.
 	if( 'Desktop' === deviceType ) {
 		device = '';
 	}

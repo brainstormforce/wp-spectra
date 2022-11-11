@@ -44,14 +44,12 @@ import {
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
+	const { categoriesList, latestPosts, taxonomyList } = props;
 	// Caching all Props
 	const {
 		attributes,
 		setAttributes,
-		latestPosts,
-		categoriesList,
 		deviceType,
-		taxonomyList,
 	} = props.parentProps;
 
 	// Caching all attributes.
@@ -417,6 +415,7 @@ const Settings = ( props ) => {
 			<WebfontLoader config={ ctaconfig }></WebfontLoader>
 		);
 	}
+
 	const generalSettings = () => {
 		return (
 			<UAGAdvancedPanelBody

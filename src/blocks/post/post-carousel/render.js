@@ -24,11 +24,11 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { state, setState, togglePreview } = props;
+	const { state, setState, togglePreview, categoriesList, latestPosts } = props;
 
 	props = props.parentProps;
 
-	const { attributes, categoriesList, latestPosts, deviceType, name } = props;
+	const { attributes, deviceType, name } = props;
 
 	const renderEditMode = () => {
 		const onDone = () => {

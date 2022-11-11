@@ -13,7 +13,7 @@ import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import Settings from './settings';
 import Render from './render';
 
-import { withSelect } from '@wordpress/data';
+import { useSelect } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 
 const UAGBTableOfContentsEdit = ( props ) => {
@@ -232,6 +232,109 @@ const UAGBTableOfContentsEdit = ( props ) => {
 		scrollBlockToView();
 
 	}, [ deviceType ] );
+	const headers = [];
+	useSelect(
+		( select ) => { // eslint-disable-line  no-unused-vars
+			const parseTocSlug = ( slug ) => {
+				// If not have the element then return false!
+				if ( ! slug ) {
+					return slug;
+				}
+
+				const parsedSlug = slug
+					.toString()
+					.toLowerCase()
+					.replace( /\…+/g, '' ) // Remove multiple …
+					.replace( /&(amp;)/g, '' ) // Remove &
+					.replace( /&(mdash;)/g, '' ) // Remove long dash
+					.replace( /\u2013|\u2014/g, '' ) // Remove long dash
+					.replace( /[&]nbsp[;]/gi, '-' ) // Replace inseccable spaces
+					.replace( /\s+/g, '-' ) // Replace spaces with -
+					.replace( /[&\/\\#,^!+()$~%.\[\]'":*?<>{}@‘’”“|]/g, '' ) // Remove special chars
+					.replace( /\-\-+/g, '-' ) // Replace multiple - with single -
+					.replace( /^-+/, '' ) // Trim - from start of text
+					.replace( /-+$/, '' ); // Trim - from end of text
+
+				return decodeURI( encodeURIComponent( parsedSlug ) );
+			};
+
+			let level = 0;
+
+			let headerArray = [];
+
+			const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
+			let locateRootContainerInsideIframe;
+			if( iframeEl ){
+				locateRootContainerInsideIframe = iframeEl.contentDocument.getElementsByClassName( 'is-root-container' )
+				headerArray = locateRootContainerInsideIframe[0]?.querySelectorAll( 'h1, h2, h3, h4, h5, h6' );
+			} else {
+				headerArray = document.body.getElementsByClassName( 'is-root-container' )[0]?.querySelectorAll( 'h1, h2, h3, h4, h5, h6' );
+			}
+			const excludeBlock = document.querySelectorAll( '.uagb-toc-hide-heading' );
+			if ( excludeBlock ) {
+				excludeBlock.forEach( function ( heading ) {
+					const innerHeading = heading.querySelectorAll(  'h1, h2, h3, h4, h5, h6' );
+					if ( innerHeading ) {
+						innerHeading.forEach( function( head ){
+							head.classList.add( 'uagb-toc-hide-heading' );
+						} )
+					}
+				} )
+			}
+
+
+			if ( headerArray !== 'undefined' ) {
+				headerArray.forEach( // eslint-disable-next-line
+					function ( index, value ) {
+						const header = index;
+						let excludeHeading;
+						if ( index.className.includes( 'uagb-toc-hide-heading' ) ) {
+							excludeHeading = true;
+						} else {
+							excludeHeading = false;
+						}
+
+						const headerText = parseTocSlug( header.textContent );
+						const openLevel = header.nodeName.replace( /^H+/, '' );
+						const titleText = header.textContent;
+
+						level = parseInt( openLevel );
+						if ( ! excludeHeading ) {
+							headers.push( {
+								tag: level,
+								text: titleText,
+								link: headerText,
+								content: header.textContent,
+							} );
+						}
+					}
+				);
+			}
+
+			if ( headers !== undefined ) {
+				headers.forEach( function ( heading, index ) {
+					heading.level = 0;
+
+					for ( let i = index - 1; i >= 0; i-- ) {
+						const currentOrderedItem = headers[ i ];
+
+						if ( currentOrderedItem.tag <= heading.tag ) {
+							heading.level = currentOrderedItem.level;
+
+							if ( currentOrderedItem.tag < heading.tag ) {
+								heading.level++;
+							}
+							break;
+						}
+					}
+				} );
+			}
+
+			return {
+				headers,
+			};
+		},
+	);
 
 	const { scrollToTop } = props.attributes;
 	/* eslint-disable no-undef */
@@ -250,112 +353,10 @@ const UAGBTableOfContentsEdit = ( props ) => {
 
 					<>
 			<Settings parentProps={ props } />
-			<Render parentProps={ props } />
+			<Render parentProps={ props } headers={ headers } />
 			</>
 
 	);
 };
 
-export default compose(
-	withSelect( () => {
-
-		const parseTocSlug = ( slug ) => {
-			// If not have the element then return false!
-			if ( ! slug ) {
-				return slug;
-			}
-
-			const parsedSlug = slug
-				.toString()
-				.toLowerCase()
-				.replace( /\…+/g, '' ) // Remove multiple …
-				.replace( /&(amp;)/g, '' ) // Remove &
-				.replace( /&(mdash;)/g, '' ) // Remove long dash
-				.replace( /\u2013|\u2014/g, '' ) // Remove long dash
-				.replace( /[&]nbsp[;]/gi, '-' ) // Replace inseccable spaces
-				.replace( /\s+/g, '-' ) // Replace spaces with -
-				.replace( /[&\/\\#,^!+()$~%.\[\]'":*?<>{}@‘’”“|]/g, '' ) // Remove special chars
-				.replace( /\-\-+/g, '-' ) // Replace multiple - with single -
-				.replace( /^-+/, '' ) // Trim - from start of text
-				.replace( /-+$/, '' ); // Trim - from end of text
-
-			return decodeURI( encodeURIComponent( parsedSlug ) );
-		};
-
-		let level = 0;
-
-		let headerArray = [];
-
-		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
-		let locateRootContainerInsideIframe;
-		if( iframeEl ){
-			locateRootContainerInsideIframe = iframeEl.contentDocument.getElementsByClassName( 'is-root-container' )
-			headerArray = locateRootContainerInsideIframe[0]?.querySelectorAll( 'h1, h2, h3, h4, h5, h6' );
-		} else {
-			headerArray = document.body.getElementsByClassName( 'is-root-container' )[0]?.querySelectorAll( 'h1, h2, h3, h4, h5, h6' );
-		}
-		const excludeBlock = document.querySelectorAll( '.uagb-toc-hide-heading' );
-		if ( excludeBlock ) {
-			excludeBlock.forEach( function ( heading ) {
-				const innerHeading = heading.querySelectorAll(  'h1, h2, h3, h4, h5, h6' );
-				if ( innerHeading ) {
-					innerHeading.forEach( function( head ){
-						head.classList.add( 'uagb-toc-hide-heading' );
-					} )
-				}
-			} )
-		}
-		const headers = [];
-
-		if ( headerArray !== 'undefined' ) {
-			headerArray.forEach( // eslint-disable-next-line
-				function ( index, value ) {
-					const header = index;
-					let excludeHeading;
-					if ( index.className.includes( 'uagb-toc-hide-heading' ) ) {
-						excludeHeading = true;
-					} else {
-						excludeHeading = false;
-					}
-
-					const headerText = parseTocSlug( header.textContent );
-					const openLevel = header.nodeName.replace( /^H+/, '' );
-					const titleText = header.textContent;
-
-					level = parseInt( openLevel );
-					if ( ! excludeHeading ) {
-						headers.push( {
-							tag: level,
-							text: titleText,
-							link: headerText,
-							content: header.textContent,
-						} );
-					}
-				}
-			);
-		}
-
-		if ( headers !== undefined ) {
-			headers.forEach( function ( heading, index ) {
-				heading.level = 0;
-
-				for ( let i = index - 1; i >= 0; i-- ) {
-					const currentOrderedItem = headers[ i ];
-
-					if ( currentOrderedItem.tag <= heading.tag ) {
-						heading.level = currentOrderedItem.level;
-
-						if ( currentOrderedItem.tag < heading.tag ) {
-							heading.level++;
-						}
-						break;
-					}
-				}
-			} );
-		}
-
-		return {
-			headers,
-		};
-	} )
-)( UAGBTableOfContentsEdit );
+export default compose()( UAGBTableOfContentsEdit );
