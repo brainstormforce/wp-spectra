@@ -326,7 +326,6 @@ const Settings = ( props ) => {
 
 	// Split Up Alignment Matrix.
 	const updateSplitAlignments = ( matrixValue ) => {
-		console.log( matrixValue );
 		setAttributes( {
 			// imageCaptionAlignment: matrixValue,
 			imageCaptionAlignment01: getMatrixAlignment( matrixValue, 1 ),

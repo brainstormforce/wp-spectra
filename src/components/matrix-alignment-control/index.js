@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
+import styles from './editor.lazy.scss';
 import { __ } from '@wordpress/i18n';
 import PropTypes from 'prop-types';
 import {
@@ -21,6 +22,14 @@ const defaultProps = {
 // Create the Spectra Control.
 const SpectraMatrixControl = ( props ) => {
 
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect( () => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, [] );
+
 	// Extract all props.
 	const {
 		label, 
@@ -41,16 +50,17 @@ const SpectraMatrixControl = ( props ) => {
 
 	// Render the Alignment Matrix Control.
 	return (
-		<>
-			<span className='uag-control-label'>
+		<div className="components-base-control spectra__matrix-control">
+			<div className='uag-control-label'>
 				{ label }
-			</span>
+			</div>
 			<AlignmentMatrixControl
+				className={ 'spectra__matrix-control--box'}
 				label={ label }
 				value={ data?.value }
 				onChange={ ( onChange || setAttributes ) ? ( newValue ) => onChangeHandler( newValue ) : false }
 			/>
-		</>
+		</div>
 	);
 }
 
