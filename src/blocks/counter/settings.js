@@ -8,7 +8,7 @@ import AdvancedPopColorControl from '@Components/color-control/advanced-pop-colo
 import SpacingControl from '@Components/spacing-control';
 import { __ } from '@wordpress/i18n';
 import {AlignmentToolbar, BlockControls, InspectorControls} from '@wordpress/block-editor';
-import { TextControl, Icon, ToggleControl } from '@wordpress/components';
+import { Icon, ToggleControl } from '@wordpress/components';
 import renderSVG from '@Controls/renderIcon';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
@@ -22,6 +22,7 @@ import UAGSelectControl from '@Components/select-control';
 import UAGIconPicker from '@Components/icon-picker';
 import UAGMediaPicker from '@Components/image';
 import UAGNumberControl from '@Components/number-control';
+import UAGTextControl from '@Components/text-control';
 import { getImageSize } from '@Utils/Helpers';
 import UAGPresets from '@Components/presets';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
@@ -516,14 +517,26 @@ export default function Settings( props ) {
 				max={ 10 }
 				displayUnit={ false }
 			/>
-			<TextControl
+			<UAGTextControl
+				variant='inline'
 				label={ __( 'Number Prefix', 'ultimate-addons-for-gutenberg' ) }
 				value={ numberPrefix }
+				data={ {
+					value: numberPrefix,
+					label: 'numberPrefix',
+				} }
+				setAttributes={ setAttributes }
 				onChange={ ( value ) => setAttributes( {numberPrefix: value} )}
 			/>
-			<TextControl
+			<UAGTextControl
+				variant='inline'
 				label={ __( 'Number Suffix', 'ultimate-addons-for-gutenberg' ) }
 				value={ numberSuffix }
+				data={ {
+					value: numberSuffix,
+					label: 'numberSuffix',
+				} }
+				setAttributes={ setAttributes }
 				onChange={ ( value ) => setAttributes( {numberSuffix: value} )}
 			/>
 			<UAGNumberControl
