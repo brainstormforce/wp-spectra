@@ -7,10 +7,10 @@ import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import UAGSelectControl from '@Components/select-control';
-import { TextControl } from '@wordpress/components';
 import ResponsiveSlider from '@Components/responsive-slider';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import UAGTextControl from '@Components/text-control';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -38,11 +38,15 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>
-						<p className="components-base-control__label">
-							{ __( 'Address', 'ultimate-addons-for-gutenberg' ) }
-						</p>
-						<TextControl
+
+						<UAGTextControl
+							label={ __( 'Address', 'ultimate-addons-for-gutenberg' ) }
 							value={ address }
+							data={{
+								value: address,
+								label: 'address',
+							}}
+							setAttributes={ setAttributes }
 							onChange={ ( value ) =>
 								setAttributes( {
 									address: value,

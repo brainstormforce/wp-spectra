@@ -47,7 +47,7 @@ return array_merge(
 		'listBottomMargin'         => 10,
 		'alignment'                => 'center',
 		'listStyle'                => 'disc',
-		'boxShadowColor'           => '',
+		'boxShadowColor'           => '#00000070',
 		'boxShadowHOffset'         => 0,
 		'boxShadowVOffset'         => 0,
 		'boxShadowBlur'            => '',

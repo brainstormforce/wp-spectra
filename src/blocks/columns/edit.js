@@ -8,6 +8,7 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import React, { useEffect,    useLayoutEffect } from 'react';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
@@ -148,6 +149,7 @@ const ColumnsComponent = ( props ) => {
 			props.setAttributes,
 			props.attributes
 			);
+			
 
 		}
 	}, [] );
@@ -158,6 +160,7 @@ const ColumnsComponent = ( props ) => {
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-columns-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		
 
 	}, [ props ] );
 
@@ -169,6 +172,13 @@ const ColumnsComponent = ( props ) => {
 
 		scrollBlockToView();
 	}, [deviceType] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	const blockVariationPickerOnSelect = (
 		nextVariation = props.defaultVariation

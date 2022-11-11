@@ -141,7 +141,7 @@ const Render = ( props ) => {
 				`uagb-tabs__${ tabsStyleM }-mobile`
 			) }
 		>
-			<ul
+			<div
 				className={ `uagb-tabs__panel uagb-tabs__align-${ tabAlign }` }
 			>
 				{ tabHeaders.map( ( header, index ) => (
@@ -238,7 +238,7 @@ const Render = ( props ) => {
 							</div>
 						) }
 						<a // eslint-disable-line jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events
-							role='button'
+							role='tab'
 							tabIndex={ index }
 							className={ `uagb-tabs__icon-position-${ iconPosition } uagb-tabs-list` }
 							onClick={ () => {
@@ -290,7 +290,7 @@ const Render = ( props ) => {
 							<Dashicon icon="plus" />
 					</Tooltip>
 					</li>
-			</ul>
+			</div>
 			<div className="uagb-tabs__body-wrap">
 				<InnerBlocks
 					template={ [
