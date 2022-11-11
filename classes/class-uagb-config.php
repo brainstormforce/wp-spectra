@@ -109,6 +109,10 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'dep'        => array(),
 						'skipEditor' => true,
 					),
+					'uagb-countUp-js'        => array(
+						'src' => UAGB_URL . 'assets/js/countUp.min.js',
+						'dep' => array(),
+					),
 
 					// Blocks.
 					'uagb-timeline-js'       => array(
@@ -149,6 +153,10 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'src'        => UAGB_Scripts_Utils::get_js_url( 'lottie' ),
 						'dep'        => array( 'uagb-bodymovin-js' ),
 						'skipEditor' => true,
+					),
+					'uagb-counter-js'        => array(
+						'src' => UAGB_Scripts_Utils::get_js_url( 'uagb-counter' ),
+						'dep' => array( 'uagb-countUp-js' ),
 					),
 					'uagb-container-js'      => array(
 						'src'        => UAGB_Scripts_Utils::get_js_url( 'container' ),
@@ -300,6 +308,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb/image'                  => array(
 						'name' => 'image',
+					),
+					'uagb/counter'                => array(
+						'name' => 'counter',
 					),
 					'uagb/image-gallery'          => array(
 						'name' => 'image-gallery',

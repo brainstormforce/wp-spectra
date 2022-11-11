@@ -171,6 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 2.1 ###
+* New: Counter Block.
 * New: Image Gallery Block.
 * Feature: Ability to add Custom CSS at page level.
 * Improvement: Code - Added Automatic Block Prioritization and Organization.

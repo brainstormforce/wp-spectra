@@ -37,6 +37,7 @@ import './blocks/call-to-action/block.js';
 import './blocks/blockquote/block.js';
 import './blocks/timeline/content-timeline/block.js';
 import './blocks/timeline/content-timeline-child/block.js'; // Child Block.
+import './blocks/counter/block.js';
 import './blocks/faq/block.js';
 import './blocks/faq-child/block.js'; // Child Block.
 import './blocks/forms/block.js';
