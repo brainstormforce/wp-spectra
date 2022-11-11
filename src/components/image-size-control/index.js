@@ -38,14 +38,28 @@ export default function ImageSizeControl( {
 	const deviceType = useDeviceType();
 	const responsive = true;
 
-	const devicehight = ( deviceType === 'Tablet' ) ? heightTablet : ( deviceType === 'Mobile' ) ? heightMobile : height;
-	const devicewidth = ( deviceType === 'Tablet' ) ? widthTablet : ( deviceType === 'Mobile' ) ? widthMobile : width;
+	let deviceHeight;
+	let deviceWidth;
+
+	switch ( deviceType ) {
+		case 'Tablet':
+			deviceHeight = heightTablet;
+			deviceWidth = widthTablet;
+			break;
+		case 'Mobile':
+			deviceHeight = heightMobile;
+			deviceWidth = widthMobile;
+			break;
+		default:
+			deviceHeight = height;
+			deviceWidth = width;
+	}
 
 	const {
 		currentHeight,
 		currentWidth,
 		updateDimension,
-	} = useDimensionHandler( devicehight, devicewidth, imageHeight, imageWidth, onChange );
+	} = useDimensionHandler( deviceHeight, deviceWidth, imageHeight, imageWidth, onChange );
 
 	const output = {}
 	output.Desktop = (
