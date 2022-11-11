@@ -1,0 +1,19 @@
+@import "../../styles/variables";
+
+.uagb-inspector-tab .spectra {
+
+	&__matrix-control {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+
+		&--box {
+			border: 1px solid $spectra-color-border;
+			border-radius: $spectra-control-border-radius;
+		}
+
+		.uag-control-label {
+			margin: 0;
+		}
+	}
+}

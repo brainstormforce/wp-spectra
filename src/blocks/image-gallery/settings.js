@@ -17,6 +17,7 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import ResponsiveBorder from '@Components/responsive-border';
 import MultiMediaSelector from '@Components/multimedia-select';
 import MultiButtonsControl from '@Components/multi-buttons-control';
+import SpectraMatrixControl from '@Components/matrix-alignment-control';
 import UAGTabsControl from '@Components/tabs';
 import UAGSelectControl from '@Components/select-control';
 import BoxShadowControl from '@Components/box-shadow';
@@ -26,7 +27,6 @@ import {
 } from '@wordpress/block-editor';
 import {
 	ToggleControl,
-	__experimentalAlignmentMatrixControl as AlignmentMatrixControl,
 	TextControl,
 	Icon,
 } from '@wordpress/components';
@@ -623,12 +623,11 @@ const Settings = ( props ) => {
 								<option value="antiHover">Hide on hover</option>
 								<option value="always">Always Visible</option>
 							</UAGSelectControl>
-							<span className='uag-control-label'>
-								{ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
-							</span>
-							<AlignmentMatrixControl
-								label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
-								value={ imageCaptionAlignment }
+							<SpectraMatrixControl
+								data={ {
+									label: 'imageCaptionAlignment',
+									value: imageCaptionAlignment,
+								} }
 								onChange={ ( value ) => updateSplitAlignments( value ) }
 							/>
 						</>

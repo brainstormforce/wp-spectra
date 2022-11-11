@@ -22,13 +22,13 @@ import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 import {
-	__experimentalAlignmentMatrixControl as AlignmentMatrixControl,
 	Icon,
 	ToggleControl
 } from '@wordpress/components';
 import renderSVG from '@Controls/renderIcon';
 import ImageSizeControl from '@Components/image-size-control'
 import ResponsiveBorder from '@Components/responsive-border'
+import SpectraMatrixControl from '@Components/matrix-alignment-control';
 import { store as coreStore } from '@wordpress/core-data';
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -568,13 +568,13 @@ export default function Settings( props ) {
 
 			{layout === 'overlay' && (
 				<>
-					<label htmlFor='overlayContentAlign'>
-						{__( 'Content Position', 'ultimate-addons-for-gutenberg' )}
-					</label>
-					<AlignmentMatrixControl
-						id="overlayContentAlign"
-						value={ overlayContentPosition }
-						onChange={ ( newAlignment ) =>  setAttributes( {overlayContentPosition: newAlignment} ) }
+					<SpectraMatrixControl
+						label={ __( 'Content Position', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							label: 'overlayContentPosition',
+							value: overlayContentPosition,
+						} }
+						setAttributes={ setAttributes }
 					/>
 					<ResponsiveBorder
 						setAttributes={ setAttributes }
