@@ -11,6 +11,8 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+
 const UAGBRestaurantMenu = ( props ) => {
 	const deviceType = useDeviceType();
 	useEffect( () => {
@@ -90,7 +92,7 @@ const UAGBRestaurantMenu = ( props ) => {
 			pricelistChild.attributes.imageAlignment =
 				props.attributes.imageAlignment;
 		} );
-
+		
 	}, [] );
 
 	useEffect( () => {
@@ -112,7 +114,7 @@ const UAGBRestaurantMenu = ( props ) => {
 		if( 'top' === imgAlign ){
 			props.setAttributes( { imagePosition : 'top' } );
 		}
-
+		
 	}, [ props ] );
 
 	useEffect( () => {
@@ -124,6 +126,12 @@ const UAGBRestaurantMenu = ( props ) => {
 		scrollBlockToView();
 	}, [deviceType] );
 
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
 		// Set showImage attribute in child blocks based on current parent block's value.

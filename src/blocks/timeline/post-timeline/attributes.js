@@ -1,3 +1,5 @@
+import { __ } from '@wordpress/i18n';
+
 const attributes = { // eslint-disable-line no-unused-vars
 	blockName               : {
 		type    : 'string',
@@ -16,6 +18,10 @@ const attributes = { // eslint-disable-line no-unused-vars
 		UAGCopyPaste: {
 			styleType: 'overall-alignment-tablet'
 		},
+	},
+	readMoreText          : {
+		type    : 'string',
+		default : __( 'Read More', 'ultimate-addons-for-gutenberg' ),
 	},
 	alignMobile                 : {
 		type    : 'string',

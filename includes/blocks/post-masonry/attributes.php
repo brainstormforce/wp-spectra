@@ -81,6 +81,8 @@ return array_merge(
 		'highlightedTextBgColor'            => '#3182ce',
 		'excerptColor'                      => '',
 		'ctaColor'                          => '',
+		'ctaBgType'                         => 'color',
+		'ctaBgHType'                        => 'color',
 		'ctaBgColor'                        => '',
 		'ctaHColor'                         => '',
 		'ctaBgHColor'                       => '',

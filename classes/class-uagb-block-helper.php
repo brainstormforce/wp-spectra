@@ -604,7 +604,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors['.uagb-post-grid .wp-block-button.uagb-post__text.uagb-post__cta .uagb-text-link.wp-block-button__link '] = array_merge(
 				array(
 					'color'      => $attr['ctaColor'],
-					'background' => $attr['ctaBgColor'],
+					'background' => ( 'color' === $attr['ctaBgType'] ) ? $attr['ctaBgColor'] : 'transparent',
 				),
 				$border_css
 			);
@@ -621,7 +621,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			$selectors[' .uagb-post__text.uagb-post__cta:hover a.uagb-text-link'] = array(
 				'color'        => $attr['ctaHColor'],
-				'background'   => $attr['ctaBgHColor'],
+				'background'   => ( 'color' === $attr['ctaBgHType'] ) ? $attr['ctaBgHColor'] : 'transparent',
 				'border-color' => $attr['btnBorderHColor'],
 			);
 

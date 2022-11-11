@@ -52,6 +52,7 @@ function CtaStyle( props ) {
 		ctaFontFamily,
 		ctaFontWeight,
 		ctaBtnLinkColor,
+		ctaBgType,
 		ctaBgColor,
 		ctaTopPadding,
 		ctaRightPadding,
@@ -69,6 +70,7 @@ function CtaStyle( props ) {
 		mobileCTAPaddingUnit,
 		tabletCTAPaddingUnit,
 		ctaLinkHoverColor,
+		ctaBgHoverType,
 		ctaBgHoverColor,
 		btnBorderHColor,
 		ctaIconSpace,
@@ -90,6 +92,8 @@ function CtaStyle( props ) {
 		ctaFontStyle,
 		buttonAlign,
 		ctaIconPosition,
+		secondCtaBgType,
+		secondCtaBgHoverType,
 		secondCtaIconSpace,
 		secondCtaIconPosition,
 		secondCtaFontSize,
@@ -264,7 +268,7 @@ function CtaStyle( props ) {
 		'text-transform': ctaTransform,
 		'font-weight': ctaFontWeight,
 		'color': ctaBtnLinkColor,
-		'background-color': ctaBgColor,
+		'background-color': ( ctaBgType === 'color' ) ? ctaBgColor : 'transparent',
 		'padding-top': generateCSSUnit( ctaTopPadding, ctaPaddingUnit ),
 		'padding-bottom': generateCSSUnit( ctaBottomPadding, ctaPaddingUnit ),
 		'padding-left': generateCSSUnit( ctaLeftPadding, ctaPaddingUnit ),
@@ -298,7 +302,7 @@ function CtaStyle( props ) {
 		'text-transform': secondCtaFontTransform,
 		'font-weight': secondCtaFontWeight,
 		'color': secondCtaColor,
-		'background-color': secondCtaBackground,
+		'background-color': ( secondCtaBgType === 'color' ) ? secondCtaBackground : 'transparent',
 		'padding-top': generateCSSUnit( secondCtaTopPadding, secondCtaPaddingUnit ),
 		'padding-bottom': generateCSSUnit( secondCtaBottomPadding, secondCtaPaddingUnit ),
 		'padding-left': generateCSSUnit( secondCtaLeftPadding, secondCtaPaddingUnit ),
@@ -310,13 +314,13 @@ function CtaStyle( props ) {
 	};
 	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button:hover'] = {
 		'color': secondCtaHoverColor,
-		'background-color': secondCtaHoverBackground,
+		'background-color': ( secondCtaBgHoverType === 'color' ) ? secondCtaHoverBackground : 'transparent',
 		'border-color': secondCtaBorderHColor,
 	};
 
 	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper:hover'] = {
 		'color': ctaLinkHoverColor,
-		'background-color': ctaBgHoverColor,
+		'background-color': ( ctaBgHoverType === 'color' ) ? ctaBgHoverColor : 'transparent',
 		'border-color': btnBorderHColor,
 	};
 

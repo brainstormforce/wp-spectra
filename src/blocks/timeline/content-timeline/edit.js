@@ -11,6 +11,7 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const ContentTimelineComponent = ( props ) => {
     const deviceType = useDeviceType();
@@ -70,7 +71,7 @@ const ContentTimelineComponent = ( props ) => {
                 }
             }
         }
-
+		
 
     }, [] );
 
@@ -152,8 +153,14 @@ const ContentTimelineComponent = ( props ) => {
             ctChild.attributes.headingTag = props.attributes.headingTag;
             ctChild.attributes.dateFormat = props.attributes.dateFormat;
         } );
+		
     }, [props] );
+    const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
 
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
     useEffect( () => {
 		// Replacement for componentDidUpdate.

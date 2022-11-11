@@ -7,6 +7,8 @@ import renderSVG from '@Controls/deprecatedRenderIcon';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
+import newAttributesV2_0_14 from './deprecated/v2_0_14/attributes';
+import newSaveV2_0_14 from './deprecated/v2_0_14/save';
 
 const borderAttributes = getBorderAttributes( 'tab' );
 
@@ -859,6 +861,10 @@ const deprecated = [
 				</div>
 			);
 		}
+	},
+	{
+		attributes: newAttributesV2_0_14,
+		save : newSaveV2_0_14,
 	}
 ];
 
