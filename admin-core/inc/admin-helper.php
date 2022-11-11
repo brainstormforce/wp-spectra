@@ -56,12 +56,15 @@ class Admin_Helper {
 			'collapse_panels'                    => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
 			'copy_paste'                         => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
 			'preload_local_fonts'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
-			'social'                		 => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_social', [
-				'socialRegister'	=> false,
-				'googleClientId' =>  '',
-				'facebookAppId' => '',
-				'facebookAppSecret' => ''
-			] ),
+			'social'                             => \UAGB_Admin_Helper::get_admin_settings_option(
+				'uag_social',
+				array(
+					'socialRegister'    => false,
+					'googleClientId'    => '',
+					'facebookAppId'     => '',
+					'facebookAppSecret' => '',
+				)
+			),
 			'enable_coming_soon_mode'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_coming_soon_mode', 'disabled' ),
 			'coming_soon_page'                   => self::get_coming_soon_page(),
 			'uag_previous_versions'              => $uag_versions,

@@ -703,22 +703,25 @@ class Common_Settings extends Ajax_Base {
 			wp_send_json_error( $response_data );
 		}
 
-		$social = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_social', [
-			'socialRegister'	=> false,
-			'googleClientId' =>  '',
-			'facebookAppId' => '',
-			'facebookAppSecret' => ''
-		] );
-		if(isset($_POST['socialRegister'])){
+		$social = \UAGB_Admin_Helper::get_admin_settings_option(
+			'uag_social',
+			array(
+				'socialRegister'    => false,
+				'googleClientId'    => '',
+				'facebookAppId'     => '',
+				'facebookAppSecret' => '',
+			)
+		);
+		if ( isset( $_POST['socialRegister'] ) ) {
 			$social['socialRegister'] = (bool) rest_sanitize_boolean( $_POST['socialRegister'] );
 		}
-		if(isset($_POST['googleClientId'])){
+		if ( isset( $_POST['googleClientId'] ) ) {
 			$social['googleClientId'] = sanitize_text_field( $_POST['googleClientId'] );
 		}
-		if(isset($_POST['facebookAppId'])){
+		if ( isset( $_POST['facebookAppId'] ) ) {
 			$social['facebookAppId'] = sanitize_text_field( $_POST['facebookAppId'] );
 		}
-		if(isset($_POST['facebookAppSecret'])){
+		if ( isset( $_POST['facebookAppSecret'] ) ) {
 			$social['facebookAppSecret'] = sanitize_text_field( $_POST['facebookAppSecret'] );
 		}
 
