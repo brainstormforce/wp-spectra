@@ -24,7 +24,6 @@ const setInitialState = ( store ) => {
             enableMasonryExtension: data.uag_enable_masonry_gallery,
 			enableResponsiveConditions: data.uag_enable_block_responsive,
 			contentWidth: data.uag_content_width,
-			social: data.social,
 			siteKeyV2: data.recaptcha_site_key_v2,
 			secretKeyV2: data.recaptcha_secret_key_v2,
 			siteKeyV3: data.recaptcha_site_key_v3,

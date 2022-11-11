@@ -3,17 +3,12 @@ import { __ } from '@wordpress/i18n';
 import { Switch } from '@headlessui/react'
 import { useSelector, useDispatch } from 'react-redux';
 import apiFetch from '@wordpress/api-fetch';
-import PropTypes from 'prop-types';
 
 function classNames( ...classes ) {
     return classes.filter( Boolean ).join( ' ' )
 }
 
-const propTypes = {};
-
-const defaultProps = {};
-
-export default function Login(props) {
+export default function Login() {
 	const dispatch = useDispatch();
 	const social = useSelector( ( state ) => state.social );
 	const socialRegister = social ? social.socialRegister : false;
@@ -21,12 +16,12 @@ export default function Login(props) {
 	const facebookAppId = social ? social.facebookAppId : '';
 	const facebookAppSecret = social ? social.facebookAppSecret : '';
 
-	const savedFormData = (type, payload) => {
-		dispatch({type, payload })
+	const savedFormData = ( type, payload ) => {
+		dispatch( {type, payload } )
 		const formData = new window.FormData();
 		formData.append( 'action', 'uag_social' );
 		formData.append( 'security', uag_react.social_nonce );
-		switch(type) {
+		switch( type ) {
 			case 'UPDATE_SOCIAL_REGISTER':
 				formData.append( 'socialRegister', payload );
 				break;
@@ -48,7 +43,7 @@ export default function Login(props) {
 			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
 		} );
     };
-	const disabledClass = (! uag_react?.is_allow_registration) ? 'section-disabled' : false;
+	const disabledClass = ( ! uag_react?.is_allow_registration ) ? 'section-disabled' : false;
 
 	return (
 		<React.Fragment>
@@ -70,7 +65,7 @@ export default function Login(props) {
 				<div>
 					<Switch
 						checked={uag_react?.is_allow_registration ? socialRegister : false}
-						onChange={(e) => savedFormData('UPDATE_SOCIAL_REGISTER', !socialRegister)}
+						onChange={() => savedFormData( 'UPDATE_SOCIAL_REGISTER', !socialRegister )}
 						className={classNames(
 							uag_react?.is_allow_registration && socialRegister ? 'bg-spectra' : 'bg-gray-200',
 							'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
@@ -94,7 +89,7 @@ export default function Login(props) {
 					<p className='mt-2 text-sm text-slate-500'>
 						{ __( 'Note: This setting is required if you wish to use Login with Google on your website. Read', 'ultimate-addons-for-gutenberg' ) }
 						{' '}
-						<a href=''>{__('this article', 'ultimate-addons-for-gutenberg')}</a>.
+						<a href='https://wpspectra.com/'>{__( 'this article', 'ultimate-addons-for-gutenberg' )}</a>.
 					</p>
 					<p className="mt-2 w-9/12 text-sm">
 						<a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href="https://ultimateelementor.com/docs/create-google-client-id-for-login-form-widget/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin" target="_blank" rel="noreferrer">
@@ -110,8 +105,8 @@ export default function Login(props) {
 					</p>
 				</div>
 				<div>
-					<label className='block text-gray-900 text-sm font-medium'>{__('Google Client ID', 'ultimate-addons-for-gutenberg')}</label>
-					<input className='mt-3 w-9/12 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field' type="text" name="google-client-id" value={googleClientId || ''} onChange={(e) => savedFormData('UPDATE_GOOGLE_CLIENT_ID', e.target.value)} />
+					<label htmlFor='google-client-id' className='block text-gray-900 text-sm font-medium'>{__( 'Google Client ID', 'ultimate-addons-for-gutenberg' )}</label>
+					<input id='google-client-id' className='mt-3 w-9/12 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field' type="text" name="google-client-id" value={googleClientId || ''} onChange={( e ) => savedFormData( 'UPDATE_GOOGLE_CLIENT_ID', e.target.value )} />
 				</div>
 			</section>
 			<section className='block border-b border-solid border-slate-200 px-12 py-8'>
@@ -122,7 +117,7 @@ export default function Login(props) {
 					<p className='mt-2 text-sm text-slate-500'>
 						{ __( 'Note: This setting is required if you wish to use Login with Facebook on your website. Need help to get Facebook App Details? Read', 'ultimate-addons-for-gutenberg' ) }
 						{' '}
-						<a href='https://ultimateelementor.com/docs/create-facebook-app-id-for-login-form-widget/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin'>{__('this article', 'ultimate-addons-for-gutenberg')}</a>.
+						<a href='https://ultimateelementor.com/docs/create-facebook-app-id-for-login-form-widget/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin'>{__( 'this article', 'ultimate-addons-for-gutenberg' )}</a>.
 					</p>
 					<p className="mt-2 w-9/12 text-sm">
 						<a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href="https://ultimateelementor.com/docs/create-facebook-app-id-for-login-form-widget/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin" target="_blank" rel="noreferrer">
@@ -138,17 +133,14 @@ export default function Login(props) {
 					</p>
 				</div>
 				<div className='pb-4'>
-					<label className='block text-gray-900 text-sm font-medium'>{__('Facebook App Details', 'ultimate-addons-for-gutenberg')}</label>
-					<input className='mt-3 w-9/12 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field' type="text" name="facebook-app-id" value={facebookAppId || ''} onChange={(e) => savedFormData('UPDATE_FACEBOOK_APP_ID', e.target.value)} />
+					<label htmlFor='facebook-app-id' className='block text-gray-900 text-sm font-medium'>{__( 'Facebook App Details', 'ultimate-addons-for-gutenberg' )}</label>
+					<input id='facebook-app-id' className='mt-3 w-9/12 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field' type="text" name="facebook-app-id" value={facebookAppId || ''} onChange={( e ) => savedFormData( 'UPDATE_FACEBOOK_APP_ID', e.target.value )} />
 				</div>
 				<div className='pb-4'>
-					<label className='block text-gray-900 text-sm font-medium'>{__('Facebook App Secret Key', 'ultimate-addons-for-gutenberg')}</label>
-					<input className='mt-3 w-9/12 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field' type="text" name="facebook-app-secret" value={facebookAppSecret || ''} onChange={(e) => savedFormData('UPDATE_FACEBOOK_APP_SECRET', e.target.value)} />
+					<label htmlFor='facebook-app-id' className='block text-gray-900 text-sm font-medium'>{__( 'Facebook App Secret Key', 'ultimate-addons-for-gutenberg' )}</label>
+					<input id='facebook-app-id' className='mt-3 w-9/12 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field' type="text" name="facebook-app-secret" value={facebookAppSecret || ''} onChange={( e ) => savedFormData( 'UPDATE_FACEBOOK_APP_SECRET', e.target.value )} />
 				</div>
 			</section>
 		</React.Fragment>
 	);
 }
-
-Login.propTypes = propTypes;
-Login.defaultProps = defaultProps;

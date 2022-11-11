@@ -12,7 +12,7 @@ const propTypes = {
 const defaultProps = {
 	disabledTopSpace: false
 };
-export default function Separator ({ disabledTopSpace }) {
+export default function Separator ( { disabledTopSpace } ) {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
