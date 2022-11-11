@@ -31,6 +31,7 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import UAGNumberControl from '@Components/number-control';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import apiFetch from '@wordpress/api-fetch';
+import UAGTextControl from '@Components/text-control';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -41,7 +42,6 @@ import {
 	Placeholder,
 	Spinner,
 	ToggleControl,
-	TextControl,
 	Icon
 } from '@wordpress/components';
 
@@ -338,6 +338,7 @@ const UAGBPostCarousel = ( props ) => {
 		imgPosition,
 		displayPostLink,
 		newTab,
+		ctaText,
 		columns,
 		tcolumns,
 		mcolumns,
@@ -849,13 +850,18 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				</h2>
-				<TextControl
+				<UAGTextControl
 					autoComplete="off"
 					label={ __(
 						'Display Message',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ postDisplaytext }
+					data={{
+						value: postDisplaytext,
+						label: 'postDisplaytext',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( { postDisplaytext: value } )
 					}
@@ -1162,9 +1168,14 @@ const UAGBPostCarousel = ( props ) => {
 						] }
 					/>
 				{ 'default' === taxStyle && (
-					<TextControl
+					<UAGTextControl
 						label={ __( 'Taxonomy Divider', 'ultimate-addons-for-gutenberg' ) }
 						value={ taxDivider }
+						data={{
+							value: taxDivider,
+							label: 'taxDivider',
+						}}
+						setAttributes={ setAttributes }
 						onChange={ ( value ) =>
 							setAttributes( {
 								taxDivider: value,
@@ -1277,6 +1288,21 @@ const UAGBPostCarousel = ( props ) => {
 							checked={ newTab }
 							onChange={ () =>
 								setAttributes( { newTab: ! newTab } )
+							}
+						/>
+						<UAGTextControl
+							label={ __(
+								'Text',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ ctaText }
+							data={{
+								value: ctaText,
+								label: 'ctaText',
+							}}
+							setAttributes={ setAttributes }
+							onChange={ ( value ) =>
+								setAttributes( { ctaText: value } )
 							}
 						/>
 						<UAGPresets

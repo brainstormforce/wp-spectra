@@ -1,0 +1,56 @@
+.uagb-text-control {
+
+	.uagb-control__header {
+
+		.uagb-number-control__actions {
+
+			.uagb-reset {
+				height: fit-content;
+			}
+		}
+	}
+
+	&__controls {
+
+		&-inline {
+
+			.components-base-control__field {
+
+				display: flex;
+				align-items: center;
+
+				& > label {
+					flex: 50%;
+					margin-bottom: unset;
+				}
+
+				& > input {
+					flex: 50%;
+				}
+			}
+		}
+
+		&-textarea {
+
+			textarea {
+
+				border-color: #e6e7e9;
+
+				&:focus {
+					border-color: #959595;
+					box-shadow: unset;
+				}
+			}
+		}
+	}
+
+	.components-text-control__input {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	&.components-base-control > .uag-control-help-notice {
+		margin-top: 10px;
+	}
+
+}

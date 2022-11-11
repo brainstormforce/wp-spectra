@@ -183,6 +183,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Info Box: Added show icon toggle for CTA.
 * Improvement: Post Carousel: Added background type selector.
 * Improvement: Post (Grid/Masonry/Carousel): Added background type selector for CTA.
+* Improvement: Spectra Text Control: New text component in settings for a more consistent styling.
 * Fix: Admin Dashboard - Font dropdown control was going under the section.
 * Fix: Table Of Contents - Alignment issue of marker's view.
 * Fix: Marketing Button - Block does not remain in the stack order when the Blocksy theme is active.
