@@ -5,7 +5,7 @@ import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 
-import { TextControl } from '@wordpress/components';
+import UAGTextControl from '@Components/text-control';
 
 import { InspectorControls } from '@wordpress/block-editor';
 
@@ -23,9 +23,14 @@ const Settings = ( props ) => {
 	const hiddenFieldSettings = () => {
 		return (
 			<UAGAdvancedPanelBody initialOpen={ true }>
-				<TextControl
+				<UAGTextControl
 					label={ __( 'Value', 'ultimate-addons-for-gutenberg' ) }
 					value={ hidden_field_value }
+					data={{
+						value: hidden_field_value,
+						label: 'hidden_field_value',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( { hidden_field_value: value } )
 					}

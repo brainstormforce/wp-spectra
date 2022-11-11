@@ -46,7 +46,8 @@ export const renderPostLayout = (
 	post,
 	layoutConfig,
 	attributes,
-	categoriesList
+	categoriesList,
+	setAttributes
 ) => {
 	if ( ! layoutConfig ) {
 		return;
@@ -61,7 +62,8 @@ export const renderPostLayout = (
 				post,
 				props.children,
 				attributes,
-				categoriesList
+				categoriesList,
+				setAttributes
 			);
 		}
 
@@ -77,6 +79,7 @@ export const renderPostLayout = (
 					post={ post }
 					attributes={ attributes }
 					categoriesList={ categoriesList }
+					setAttributes = { setAttributes }
 				/>
 			</Suspense>
 		);

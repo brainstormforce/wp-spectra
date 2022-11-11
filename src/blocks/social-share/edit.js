@@ -10,6 +10,7 @@ import { useDeviceType } from '@Controls/getPreviewType';
 import Settings from './settings';
 import Render from './render';
 import { select, dispatch } from '@wordpress/data';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const SocialShareComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -18,13 +19,22 @@ const SocialShareComponent = ( props ) => {
 		props.setAttributes( { classMigrate: true } );
 		props.setAttributes( { childMigrate: true } );
 
+
 	}, [] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-style-social-share-' + props.clientId.substr( 0, 8 ), blockStyling );
+
 	}, [ props ] );
 
 	useEffect( () => {
