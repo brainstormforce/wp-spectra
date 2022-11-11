@@ -36,10 +36,9 @@ const ColumnsComponent = ( props ) => {
 	const deviceType = useDeviceType();
 
 	const {
-		innerBlocks,
-		blockType,
+		innerBlocks, // eslint-disable-line no-unused-vars
+		blockType, // eslint-disable-line no-unused-vars
 		variations,
-		replaceInnerBlocks,
 		hasInnerBlocks,
 		defaultVariation
 	} = useSelect(
@@ -50,7 +49,6 @@ const ColumnsComponent = ( props ) => {
 					getBlockVariations,
 					getDefaultBlockVariation,
 				} = select( 'core/blocks' );
-				const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 
 				return {
 					// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
@@ -68,11 +66,10 @@ const ColumnsComponent = ( props ) => {
 						typeof getBlockVariations === 'undefined'
 							? null
 							: getBlockVariations( props.name ),
-					replaceInnerBlocks,
 				};
 		},
 	);
-
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -226,7 +223,7 @@ const ColumnsComponent = ( props ) => {
 
 	const createBlocksFromInnerBlocksTemplate = ( innerBlocksTemplate ) => {
 		return innerBlocksTemplate.map(
-			( [ name, attributes, innerBlocks = [] ] ) =>
+			( [ name, attributes, innerBlocks = [] ] ) => // eslint-disable-line no-shadow
 				createBlock(
 					name,
 					attributes,

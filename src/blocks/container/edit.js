@@ -33,20 +33,20 @@ const UAGBContainer = ( props ) => {
 	const deviceType = useDeviceType();
 
 	const {
-		innerBlocks,
-		blockType,
+		innerBlocks, // eslint-disable-line no-unused-vars
+		blockType, // eslint-disable-line no-unused-vars
 		isParentOfSelectedBlock,
 		variations,
-		replaceInnerBlocks
+		defaultVariation
 	} = useSelect(
-		( select ) => {
+		( select ) => { // eslint-disable-line no-shadow
 			const { getBlocks } = select( 'core/block-editor' );
 			const {
 				getBlockType,
 				getBlockVariations,
 				getDefaultBlockVariation,
 			} = select( 'core/blocks' );
-			const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
+
 			return {
 				innerBlocks: getBlocks( props.clientId ),
 				blockType: getBlockType( props.name ),
@@ -58,12 +58,11 @@ const UAGBContainer = ( props ) => {
 				typeof getBlockVariations === 'undefined'
 					? null
 					: getBlockVariations( props.name ),
-				replaceInnerBlocks,
 				isParentOfSelectedBlock: select( 'core/block-editor' ).hasSelectedInnerBlock( props.clientId, true )
 			};
 		},
 	);
-
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -185,7 +184,7 @@ const UAGBContainer = ( props ) => {
 
 	const createBlocksFromInnerBlocksTemplate = ( innerBlocksTemplate ) => {
 		return innerBlocksTemplate.map(
-			( [ name, attributes, innerBlocks = [] ] ) =>
+			( [ name, attributes, innerBlocks = [] ] ) => // eslint-disable-line no-shadow
 				createBlock(
 					name,
 					attributes,

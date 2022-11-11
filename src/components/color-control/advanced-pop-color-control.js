@@ -32,8 +32,7 @@ const AdvancedPopColorControl = ( props ) => {
 	const { colors } = useSelect(
 		( select ) => { // eslint-disable-line  no-unused-vars
 			const settings = select( 'core/block-editor' ).getSettings();
-			const colors = settings.colors;
-			return { colors };
+			return { colors: settings.colors };
 		},
 	);
 
