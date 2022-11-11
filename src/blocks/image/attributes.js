@@ -90,7 +90,7 @@ const attributes = {
 	},
 	width: {
 		type: 'integer',
-		default: 460,
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'image-width'
 		}
@@ -111,7 +111,7 @@ const attributes = {
 	},
 	height: {
 		type: 'integer',
-		default: 382,
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'image-height'
 		}
