@@ -1,9 +1,8 @@
 import classnames from 'classnames';
 import PositionClasses from './classes';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import React, {    useLayoutEffect, useRef } from 'react';
-
-import TestimonialImage from './components/Image';
+import TestimonialImage from './components/newImage';
+import React, { useLayoutEffect, useRef, useEffect } from 'react';
 import AuthorName from './components/AuthorName';
 import Company from './components/Company';
 import Description from './components/Description';
@@ -11,6 +10,7 @@ import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import Slider from 'react-slick';
+import getImageHeightWidth from '@Controls/getImageHeightWidth';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -46,7 +46,8 @@ const Render = ( props ) => {
 		autoplay,
 		autoplaySpeed,
 		arrowColor,
-		equalHeight
+		equalHeight,
+		imageWidth
 	} = attributes;
 
 	const sliderRef = useRef();
@@ -126,6 +127,36 @@ const Render = ( props ) => {
 	const isGridLayout = test_item_count === columns ? 'uagb-post__carousel_notset' : '';
 	const isGridLayoutTablet = test_item_count === tcolumns ? 'uagb-post__carousel_notset-tablet' : '';
 	const isGridLayoutMobile = test_item_count === mcolumns ? 'uagb-post__carousel_notset-mobile' : '';
+
+	// image size.
+	const imageArray = attributes.test_block[ 0 ].image || attributes.test_block[ 1 ].image || attributes.test_block[ 2 ].image;
+	let url = '';
+	let urlCheck = '';
+
+	if ( imageArray ) {
+		const image = imageArray;
+
+		if ( typeof image !== 'undefined' && image !== null && image !== '' ) {
+			urlCheck = image.url;
+		}
+
+		if ( urlCheck !== '' ) {
+			const size = image.sizes;
+			const imageSize = attributes.imageSize;
+			if (
+				typeof size !== 'undefined' &&
+				typeof size[ imageSize ] !== 'undefined'
+			) {
+				url = size[ imageSize ].url;
+			} else {
+				url = urlCheck;
+			}
+		}
+	}
+
+	useEffect( () => {
+		getImageHeightWidth( url, setAttributes, { type: 'width', value: imageWidth } )
+	}, [ imageWidth, url ] )
 
 	return (
 		isPreview ? <img width='100%' src={previewImageData} alt=''/> :

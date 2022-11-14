@@ -1,4 +1,4 @@
-const RestMenuImageOld = ( props ) => {
+const RestMenuImagev2_0_14 = ( props ) => {
 	const { attributes, index_value } = props;
 	let urlCheck = '';
 	let imageArr = '';
@@ -38,11 +38,7 @@ const RestMenuImageOld = ( props ) => {
 			}
 
 			return (
-				<div className="uagb-rm__image-content">
-					<div className="uagb-rm__image">
-						<img className="" src={ url } alt={ image.alt } />
-					</div>
-				</div>
+				<img className="" src={ url } alt={ image.alt } />
 			);
 		}
 		return null;
@@ -50,4 +46,4 @@ const RestMenuImageOld = ( props ) => {
 	return null;
 };
 
-export default RestMenuImageOld;
+export default RestMenuImagev2_0_14;
