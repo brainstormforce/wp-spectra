@@ -28,7 +28,9 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import UAGNumberControl from '@Components/number-control';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import apiFetch from '@wordpress/api-fetch';
+import UAGTextControl from '@Components/text-control';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -39,7 +41,6 @@ import {
 	Placeholder,
 	Spinner,
 	ToggleControl,
-	TextControl,
 	Icon
 } from '@wordpress/components';
 
@@ -230,6 +231,7 @@ const UAGBPostCarousel = ( props ) => {
 				props.setAttributes( { btnBorderStyle : borderStyle} );
 			}
 		}
+		
 
 		if( columnGap && columnGap !== 20 ){
 			props.setAttributes( { dotsMarginTop : columnGap} );
@@ -266,7 +268,7 @@ const UAGBPostCarousel = ( props ) => {
 				'; }';
 
 		addBlockEditorDynamicStyles( 'uagb-post-carousel-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
+		
 	}, [ props ] );
 
 	useEffect( () => {
@@ -286,6 +288,13 @@ const UAGBPostCarousel = ( props ) => {
 		scrollBlockToView();
 
 	}, [ props.deviceType ] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, props.deviceType ] );
 
 	const onSelectPostType = ( value ) => {
 		const { setAttributes } = props;
@@ -432,6 +441,7 @@ let categoriesList = [];
 		rowGap,
 		rowGapTablet,
 		rowGapMobile,
+		bgType,
 		bgColor,
 		titleColor,
 		titleTag,
@@ -486,6 +496,8 @@ let categoriesList = [];
 		metaColor,
 		excerptColor,
 		ctaColor,
+		ctaBgType,
+		ctaBgHType,
 		ctaBgColor,
 		ctaHColor,
 		ctaBgHColor,
@@ -616,6 +628,17 @@ let categoriesList = [];
 
 	const categoryListOptions = [
 		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
+	];
+
+	const bgTypeOptions = [
+		{
+			value: 'transparent',
+			label: __( 'Transparent', 'ultimate-addons-for-gutenberg' ),
+		},
+		{
+			value: 'color',
+			label: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+		},
 	];
 
 	if ( taxonomyList ) {
@@ -919,13 +942,18 @@ let categoriesList = [];
 						'ultimate-addons-for-gutenberg'
 					) }
 				</h2>
-				<TextControl
+				<UAGTextControl
 					autoComplete="off"
 					label={ __(
 						'Display Message',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ postDisplaytext }
+					data={{
+						value: postDisplaytext,
+						label: 'postDisplaytext',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( { postDisplaytext: value } )
 					}
@@ -1232,9 +1260,14 @@ let categoriesList = [];
 						] }
 					/>
 				{ 'default' === taxStyle && (
-					<TextControl
+					<UAGTextControl
 						label={ __( 'Taxonomy Divider', 'ultimate-addons-for-gutenberg' ) }
 						value={ taxDivider }
+						data={{
+							value: taxDivider,
+							label: 'taxDivider',
+						}}
+						setAttributes={ setAttributes }
 						onChange={ ( value ) =>
 							setAttributes( {
 								taxDivider: value,
@@ -1349,15 +1382,25 @@ let categoriesList = [];
 								setAttributes( { newTab: ! newTab } )
 							}
 						/>
-						<TextControl
+						<UAGTextControl
 							label={ __(
 								'Text',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ ctaText }
+							data={{
+								value: ctaText,
+								label: 'ctaText',
+							}}
+							setAttributes={ setAttributes }
 							onChange={ ( value ) =>
 								setAttributes( { ctaText: value } )
 							}
+						/>
+						<UAGPresets
+							setAttributes = { setAttributes }
+							presets = { buttonsPresets }
+							presetInputType = 'radioImage'
 						/>
 					</>
 				) }
@@ -1371,18 +1414,31 @@ let categoriesList = [];
 				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ bgColor }
-					data={ {
-						value: bgColor,
-						label: 'bgColor',
-					} }
+				<MultiButtonsControl
 					setAttributes={ setAttributes }
+					label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+					value={ bgType }
+					data={ {
+						value: bgType,
+						label: 'bgType',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ bgTypeOptions }
 				/>
+				{ ( bgType === 'color' ) &&
+					<AdvancedPopColorControl
+						label={ __(
+							'Background Color',
+							'ultimate-addons-for-gutenberg'
+						) }
+						colorValue={ bgColor }
+						data={ {
+							value: bgColor,
+							label: 'bgColor',
+						} }
+						setAttributes={ setAttributes }
+					/>
+				}
 				<ResponsiveSlider
 					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -1997,11 +2053,6 @@ let categoriesList = [];
 				) }
 				initialOpen={ false }
 			>
-				<UAGPresets
-					setAttributes = { setAttributes }
-					presets = { buttonsPresets }
-					presetInputType = 'radioImage'
-				/>
 				<UAGTabsControl
 					tabs={ [
 						{
@@ -2033,18 +2084,30 @@ let categoriesList = [];
 								} }
 								setAttributes={ setAttributes }
 							/>
-							<AdvancedPopColorControl
-								label={ __(
-									'Background Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ ctaBgColor }
-								data={ {
-									value: ctaBgColor,
-									label: 'ctaBgColor',
-								} }
+							<MultiButtonsControl
 								setAttributes={ setAttributes }
+								label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: ctaBgType,
+									label: 'ctaBgType',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ bgTypeOptions }
 							/>
+							{ ctaBgType === 'color' &&
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ ctaBgColor }
+									data={ {
+										value: ctaBgColor,
+										label: 'ctaBgColor',
+									} }
+									setAttributes={ setAttributes }
+								/>
+							}
 						</>
 					}
 					hover={
@@ -2061,18 +2124,30 @@ let categoriesList = [];
 								} }
 								setAttributes={ setAttributes }
 							/>
-							<AdvancedPopColorControl
-								label={ __(
-									'Background Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ ctaBgHColor }
-								data={ {
-									value: ctaBgHColor,
-									label: 'ctaBgHColor',
-								} }
+							<MultiButtonsControl
 								setAttributes={ setAttributes }
+								label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: ctaBgHType,
+									label: 'ctaBgHType',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ bgTypeOptions }
 							/>
+							{ ctaBgHType === 'color' &&
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ ctaBgHColor }
+									data={ {
+										value: ctaBgHColor,
+										label: 'ctaBgHColor',
+									} }
+									setAttributes={ setAttributes }
+								/>
+							}
 						</>
 					}
 					disableBottomSeparator={ false }

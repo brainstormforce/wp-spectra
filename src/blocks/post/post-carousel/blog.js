@@ -14,7 +14,7 @@ import Slider from 'react-slick';
 function Blog( props ) {
 	const blockName = props.name.replace( 'uagb/', '' );
 	const article = useRef();
-	const { attributes, className, latestPosts, block_id } = props;
+	const { attributes, className, latestPosts, block_id, setAttributes } = props;
 	const deviceType = useDeviceType();
 
 	const {
@@ -186,7 +186,8 @@ function Blog( props ) {
 				post,
 				layoutConfig,
 				props.attributes,
-				props.categoriesList
+				props.categoriesList,
+				setAttributes
 			) }
 		</article>
 	) );

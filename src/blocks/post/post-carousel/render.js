@@ -10,7 +10,7 @@ import { __ } from '@wordpress/i18n';
 
 import { createBlock } from '@wordpress/blocks';
 
-import { Placeholder, Button, Tip, Disabled } from '@wordpress/components';
+import { Placeholder, Button, Tip } from '@wordpress/components';
 
 import { InnerBlocks } from '@wordpress/block-editor';
 import styles from '.././editor.lazy.scss';
@@ -110,17 +110,16 @@ const Render = ( props ) => {
 	};
 
 	const renderViewMode = (
-		<Disabled>
-			<Blog
-				attributes={ attributes }
-				className={ props.className }
-				latestPosts={ latestPosts }
-				block_id={ props.clientId.substr( 0, 8 ) }
-				categoriesList={ categoriesList }
-				deviceType={ deviceType }
-				name={ name }
-			/>
-		</Disabled>
+		<Blog
+			attributes={ attributes }
+			className={ props.className }
+			latestPosts={ latestPosts }
+			block_id={ props.clientId.substr( 0, 8 ) }
+			categoriesList={ categoriesList }
+			deviceType={ deviceType }
+			name={ name }
+			setAttributes ={ setAttributes }
+		/>
 	);
 
 	return <>{ state.isEditing ? renderEditMode() : renderViewMode }</>;

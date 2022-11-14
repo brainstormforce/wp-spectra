@@ -19,7 +19,6 @@ import { dateI18n } from '@wordpress/date';
 import {
 	QueryControls,
 	ToggleControl,
-	TextControl,
 	Icon,
 } from '@wordpress/components';
 import {
@@ -28,6 +27,7 @@ import {
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { useDeviceType } from '@Controls/getPreviewType';
+import UAGTextControl from '@Components/text-control';
 
 const Settings = ( props ) => {
 	const { categoriesList, taxonomyList } = props;
@@ -104,6 +104,7 @@ const Settings = ( props ) => {
 		displayPostAuthor,
 		displayPostImage,
 		displayPostLink,
+		readMoreText,
 		align,
 		alignTablet,
 		alignMobile,
@@ -112,7 +113,6 @@ const Settings = ( props ) => {
 		categories,
 		postsToShow,
 		imageSize,
-		readMoreText,
 		ctaBackground,
 		icon,
 		iconColor,
@@ -869,12 +869,17 @@ const Settings = ( props ) => {
 				/>
 				{ displayPostLink && (
 					<>
-						<TextControl
+						<UAGTextControl
 							label={ __(
 								'CTA Text',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ readMoreText }
+							data={{
+								value: readMoreText,
+								label: 'readMoreText',
+							}}
+							setAttributes={ setAttributes }
 							onChange={ ( value ) =>
 								setAttributes( { readMoreText: value } )
 							}

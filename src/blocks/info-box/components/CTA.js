@@ -15,7 +15,7 @@ const InfoBoxCta = ( props ) => {
 	}
 
 	let ctaIconOutput = '';
-	if ( attributes.ctaIcon !== '' ) {
+	if ( attributes.showCtaIcon && attributes.ctaIcon !== '' ) {
 		ctaIconOutput = renderSVG( attributes.ctaIcon );
 	}
 

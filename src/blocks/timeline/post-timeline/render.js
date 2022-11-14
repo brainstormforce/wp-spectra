@@ -1,5 +1,4 @@
 import classnames from 'classnames';
-
 import ContentTmClasses from '.././classes';
 import AlignClass from '.././align-classes';
 import DayAlignClass from '.././day-align-classes';
@@ -131,6 +130,7 @@ const Render = ( props ) => {
 											<CtaLink
 												post={ post }
 												attributes={ attributes }
+												setAttributes ={ setAttributes }
 											/>
 										}
 

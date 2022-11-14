@@ -10,6 +10,7 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 let prevState;
 
@@ -35,6 +36,7 @@ const ButtonsComponent = ( props ) => {
 		props.setAttributes( { childMigrate: true } );
 
 		prevState = props.isSelected;
+		
 	}, [] );
 
 	useEffect( () => {
@@ -50,6 +52,7 @@ const ButtonsComponent = ( props ) => {
 		addBlockEditorDynamicStyles( 'uagb-style-buttons-' + props.clientId.substr( 0, 8 ), blockStyling );
 
 		prevState = props.isSelected;
+		
 	}, [ props ] );
 
 	useEffect( () => {
@@ -61,7 +64,12 @@ const ButtonsComponent = ( props ) => {
 		scrollBlockToView();
 
 	}, [deviceType] );
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
 
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 	return (
 
 					<>

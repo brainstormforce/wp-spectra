@@ -33,7 +33,7 @@ export default function save( props ) {
 			) }
 			data-tab-active={ tabActiveFrontend }
 		>
-			<ul className={ `uagb-tabs__panel uagb-tabs__align-${ tabAlign }` }>
+			<ul className={ `uagb-tabs__panel uagb-tabs__align-${ tabAlign }` } role="tablist">
 				{ tabHeaders.map( ( header, index ) => (
 					<li
 						key={ index }
@@ -42,11 +42,13 @@ export default function save( props ) {
 								? 'uagb-tabs__active'
 								: ''
 						}` }
+						role='none' 
 					>
 						<a
 							href={ `#uagb-tabs__tab${ index }` }
 							className={ `uagb-tabs-list uagb-tabs__icon-position-${ iconPosition }` }
 							data-tab={ index }
+							role='tab'
 						>
 							{ showIcon &&
 								( iconPosition === 'left' ||

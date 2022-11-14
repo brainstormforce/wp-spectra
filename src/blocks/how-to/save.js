@@ -38,6 +38,8 @@ export default function save( props ) {
 		timeInDays,
 		timeInMonths,
 		timeInYears,
+		imgTagHeight,
+		imgTagWidth,
 	} = attributes;
 
 	let urlChk = '';
@@ -76,6 +78,8 @@ export default function save( props ) {
 				className="uagb-howto__source-image"
 				src={ url }
 				title={ title }
+				width={imgTagWidth} height={imgTagHeight}
+				loading="lazy"
 				alt= { defaultedAlt }
 			/>
 		);
@@ -108,7 +112,7 @@ export default function save( props ) {
 				value={ headingDesc }
 				tagName="p"
 				className="uagb-howto-desc-text"
-			/>		
+			/>
 					{ imageIconHtml }
 			{ showTotaltime && (
 				<span className="uagb-howto__time-wrap">
@@ -193,7 +197,7 @@ export default function save( props ) {
 				</span>
 			) }
 			{ showTools && (
-				
+
 					<RichText.Content
 						value={ toolsTitle }
 						tagName="h4"

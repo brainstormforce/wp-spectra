@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
@@ -243,6 +242,19 @@ const Settings = ( props ) => {
 		} );
 		setAttributes( { stack: value } )
 	}
+
+	const setWidth = () => {
+
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.imageWidth = imageWidth
+		} );
+	}
+
+	useEffect( () => {
+		setWidth()
+	}, [ imageWidth ] )
 
 	const setHeadingAlign = ( value ) => {
 
