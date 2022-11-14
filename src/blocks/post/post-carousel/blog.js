@@ -74,6 +74,13 @@ function Blog( props ) {
 
 		}, 100 )
 	};
+	useEffect( () => {
+		updateImageBgWidth();
+    }, [ ] );
+	
+	useEffect( () => {
+		updateImageBgWidth();
+    }, [ props ] );
 
 	useEffect( () => {
 		updateImageBgWidth();
@@ -198,6 +205,7 @@ function Blog( props ) {
 					'uagb-post__arrow-outside',
 					`uagb-post__image-position-${ imgPosition }`,
 					`${ equalHeightClass }`,
+					isImageEnabled,
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ block_id }`
 				) }

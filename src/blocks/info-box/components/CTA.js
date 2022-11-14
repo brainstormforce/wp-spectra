@@ -25,7 +25,7 @@ const InfoBoxCta = ( props ) => {
 				{ attributes.ctaType === 'text' && (
 					<a // eslint-disable-line jsx-a11y/anchor-is-valid
 						target={ target }
-						className="uagb-infobox-cta-link"
+						className={ !attributes.ctaLink ? 'uagb-infobox-cta-link uagb-disable-link' : 'uagb-infobox-cta-link' }
 						rel={ rel }
 					>
 						{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
@@ -35,7 +35,7 @@ const InfoBoxCta = ( props ) => {
 									'Read More',
 									'ultimate-addons-for-gutenberg'
 								) }
-								value={ attributes.ctaText }
+								value={ attributes.ctaText.replace( /(<([^>]+)>)/ig, '' ) }
 								className="uagb-inline-editing"
 								multiline={ false }
 								onChange={ ( value ) => {
@@ -54,7 +54,7 @@ const InfoBoxCta = ( props ) => {
 						) }
 					>
 						<a // eslint-disable-line jsx-a11y/anchor-is-valid
-							className={ ctaBtnClass }
+							className={ !attributes.ctaLink ? `${ctaBtnClass}  uagb-disable-link` : ctaBtnClass }
 							target={ target }
 							rel={ rel }
 						>
@@ -66,7 +66,7 @@ const InfoBoxCta = ( props ) => {
 									'Read More',
 									'ultimate-addons-for-gutenberg'
 								) }
-								value={ attributes.ctaText }
+								value={ attributes.ctaText.replace( /(<([^>]+)>)/ig, '' ) }
 								className="uagb-inline-editing"
 								multiline={ false }
 								onChange={ ( value ) => {
@@ -87,14 +87,14 @@ const InfoBoxCta = ( props ) => {
 						<a
 							href={ attributes.ctaLink }
 							target={ target }
-							className="uagb-infobox-cta-link"
+							className={ !attributes.ctaLink ? 'uagb-infobox-cta-link uagb-disable-link' : 'uagb-infobox-cta-link' }
 							rel={ rel }
 							alt=""
 						>
 							{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
 							<RichText.Content
 								tagName="span"
-								value={ attributes.ctaText }
+								value={ attributes.ctaText.replace( /(<([^>]+)>)/ig, '' ) }
 								className="uagb-inline-editing"
 							/>
 							{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
@@ -103,7 +103,7 @@ const InfoBoxCta = ( props ) => {
 					{ attributes.ctaType === 'button' && (
 						<a
 							href={ attributes.ctaLink }
-							className={ ctaBtnClass }
+							className={ !attributes.ctaLink ? `${ctaBtnClass}  uagb-disable-link` : ctaBtnClass }
 							target={ target }
 							rel={ rel }
 							alt=""
@@ -111,7 +111,7 @@ const InfoBoxCta = ( props ) => {
 							{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
 							<RichText.Content
 								tagName="span"
-								value={ attributes.ctaText }
+								value={ attributes.ctaText.replace( /(<([^>]+)>)/ig, '' ) }
 								className="uagb-inline-editing"
 							/>
 							{ attributes.ctaIconPosition === 'after' && ctaIconOutput }

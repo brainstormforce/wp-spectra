@@ -19,4 +19,7 @@ $block_data = array(
 	'extension'        => false,
 	'priority'         => 14,
 	'deprecated'       => false,
+	'dynamic_assets'   => array(
+		'dir' => 'google-map',
+	),
 );

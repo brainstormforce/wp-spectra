@@ -22,4 +22,7 @@ $block_data = array(
 		'dir' => 'container',
 	),
 	'deprecated'       => false,
+	'dynamic_assets'   => array(
+		'dir' => 'container',
+	),
 );
