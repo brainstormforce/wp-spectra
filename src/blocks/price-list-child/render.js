@@ -1,17 +1,18 @@
 import classnames from 'classnames';
-import React from 'react';
+import React, { useEffect } from 'react';
 import RestMenuImage from './components/RestMenuImage';
 import Title from './components/Title';
 import Price from './components/Price';
 import Description from './components/Description';
 import { select } from '@wordpress/data';
+import getImageHeightWidth from '@Controls/getImageHeightWidth';
 
 const Render = ( props ) => {
 	props = props.parentProps;
 	const { className, setAttributes, attributes } = props;
 
 	// Setup the attributes.
-	const { imagePosition, headingAlign, imgAlign, showImage } = attributes;
+	const { imagePosition, headingAlign, imgAlign, showImage, image, imageWidth } = attributes;
 
 	const parentClientId = select(
 		'core/block-editor'
@@ -23,10 +24,17 @@ const Render = ( props ) => {
 	const position = ( parentAttributes ) ? ( ( parentAttributes.imagePosition ) ?  parentAttributes.imagePosition : imagePosition ) : imagePosition; // eslint-disable-line no-nested-ternary
 	const align = ( parentAttributes ) ? ( ( parentAttributes.headingAlign ) ?  parentAttributes.headingAlign : headingAlign ) : headingAlign; // eslint-disable-line no-nested-ternary
 	const imgAlignment = ( parentAttributes ) ? ( ( parentAttributes.imgAlign ) ?  parentAttributes.imgAlign : imgAlign ) : imgAlign; // eslint-disable-line no-nested-ternary
-	
+
 	setAttributes ( { imagePosition : position } );
 	setAttributes ( { headingAlign : align } );
 	setAttributes ( { imgAlign : imgAlignment } );
+
+	useEffect( () => {
+		if( image && image.url ){
+			getImageHeightWidth( image?.url, setAttributes, { type: 'width', value: imageWidth} )
+		}
+	}, [ image, imageWidth ] )
+
 	return (
 		<div
 			className={ classnames(
@@ -46,9 +54,9 @@ const Render = ( props ) => {
 								attributes={ attributes }
 								setAttributes={ setAttributes }
 								props={ props }
-							/>	
+							/>
 						)}
-						<div className="uagb-rm-details">	
+						<div className="uagb-rm-details">
 							<Title
 								attributes={ attributes }
 								setAttributes={ setAttributes }
@@ -64,7 +72,7 @@ const Render = ( props ) => {
 								attributes={ attributes }
 								setAttributes={ setAttributes }
 								props={ props }
-							/>	
+							/>
 						)}
 						</div>
 						{ align === 'left' && (
@@ -72,7 +80,7 @@ const Render = ( props ) => {
 								attributes={ attributes }
 								setAttributes={ setAttributes }
 								props={ props }
-							/>	
+							/>
 						)}
 					</div>
 					<div className="uagb-rm__separator"></div>
@@ -89,9 +97,9 @@ const Render = ( props ) => {
 								attributes={ attributes }
 								setAttributes={ setAttributes }
 								props={ props }
-							/>	
+							/>
 						)}
-						<div className="uagb-rm-details">	
+						<div className="uagb-rm-details">
 							<Title
 								attributes={ attributes }
 								setAttributes={ setAttributes }
@@ -108,7 +116,7 @@ const Render = ( props ) => {
 								attributes={ attributes }
 								setAttributes={ setAttributes }
 								props={ props }
-							/>	
+							/>
 						)}
 						{ position === 'right' && showImage && (
 							<RestMenuImage attributes={ attributes } />

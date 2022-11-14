@@ -6,11 +6,11 @@ import { ToolbarGroup } from '@wordpress/components';
 import { decodeEntities } from '@wordpress/html-entities';
 
 const Settings = ( props ) => {
-	const { state, togglePreview, inspectorControls } = props;
+	const { state, togglePreview, inspectorControls, categoriesList, taxonomyList } = props;
 
 	props = props.parentProps;
 
-	const { attributes, categoriesList, taxonomyList } = props;
+	const { attributes } = props;
 
 	const {
 		titleFontFamily,
