@@ -1,6 +1,6 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { ToggleControl, TextControl } from '@wordpress/components';
+import { ToggleControl } from '@wordpress/components';
 import UAGSelectControl from '@Components/select-control';
 import Range from '@Components/range/Range.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -9,7 +9,7 @@ import InspectorTab, {
 } from '@Components/inspector-tabs/InspectorTab.js';
 
 import { InspectorControls } from '@wordpress/block-editor';
-
+import UAGTextControl from '@Components/text-control';
 
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -39,12 +39,17 @@ const Settings = ( props ) => {
 						{ label: __( 'Address', 'ultimate-addons-for-gutenberg' ), value: 'street-address' },
 					] }
 				/>
-				<TextControl
+				<UAGTextControl
 					label={ __(
 						'Placeholder',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ placeholder }
+					data={{
+						value: placeholder,
+						label: 'placeholder',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( { placeholder: value } )
 					}

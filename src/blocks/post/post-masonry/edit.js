@@ -30,6 +30,7 @@ import { decodeEntities } from '@wordpress/html-entities';
 import UAGNumberControl from '@Components/number-control';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import apiFetch from '@wordpress/api-fetch';
+import UAGTextControl from '@Components/text-control';
 
 import Settings from './settings';
 import Render from './render';
@@ -40,7 +41,6 @@ import {
 	Placeholder,
 	Spinner,
 	ToggleControl,
-	TextControl,
 	Icon,
 	ExternalLink
 } from '@wordpress/components';
@@ -394,6 +394,7 @@ const UAGBPostMasonry = ( props ) => {
 		imgPosition,
 		displayPostLink,
 		newTab,
+		ctaText,
 		columns,
 		tcolumns,
 		mcolumns,
@@ -937,13 +938,18 @@ const UAGBPostMasonry = ( props ) => {
 				{ 'infinite' === paginationType &&
 					'button' === paginationEventType && (
 						<>
-						<TextControl
+						<UAGTextControl
 							autoComplete="off"
 							label={ __(
 								'Button Text',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ buttonText }
+							data={{
+								value: buttonText,
+								label: 'buttonText',
+							}}
+							setAttributes={ setAttributes }
 							onChange={ ( value ) =>
 								setAttributes( { buttonText: value } )
 							}
@@ -1013,13 +1019,18 @@ const UAGBPostMasonry = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				</h2>
-				<TextControl
+				<UAGTextControl
 					autoComplete="off"
 					label={ __(
 						'Display Message',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ postDisplaytext }
+					data={{
+						value: postDisplaytext,
+						label: 'postDisplaytext',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( { postDisplaytext: value } )
 					}
@@ -1455,9 +1466,14 @@ const UAGBPostMasonry = ( props ) => {
 						] }
 					/>
 				{ 'default' === taxStyle && (
-					<TextControl
+					<UAGTextControl
 						label={ __( 'Taxonomy Divider', 'ultimate-addons-for-gutenberg' ) }
 						value={ taxDivider }
+						data={{
+							value: taxDivider,
+							label: 'taxDivider',
+						}}
+						setAttributes={ setAttributes }
 						onChange={ ( value ) =>
 							setAttributes( {
 								taxDivider: value,
@@ -1569,6 +1585,21 @@ const UAGBPostMasonry = ( props ) => {
 							checked={ newTab }
 							onChange={ () =>
 								setAttributes( { newTab: ! newTab } )
+							}
+						/>
+						<UAGTextControl
+							label={ __(
+								'Text',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ ctaText }
+							data={{
+								value: ctaText,
+								label: 'ctaText',
+							}}
+							setAttributes={ setAttributes }
+							onChange={ ( value ) =>
+								setAttributes( { ctaText: value } )
 							}
 						/>
 						<UAGPresets
