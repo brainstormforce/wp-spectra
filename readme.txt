@@ -183,6 +183,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Info Box: Added show icon toggle for CTA.
 * Improvement: Post Carousel: Added background type selector.
 * Improvement: Post (Grid/Masonry/Carousel): Added background type selector for CTA.
+* Improvement: Implemented CLS for all the blocks which have image tag.
 * Improvement: Spectra Text Control: New text component in settings for a more consistent styling.
 * Fix: Admin Dashboard - Font dropdown control was going under the section.
 * Fix: Table Of Contents - Alignment issue of marker's view.
@@ -191,7 +192,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Scroll to specific block not working when switch from desktop/tablet/mobile.
 * Fix: Post Block - Article tag class conflicting with TranslatePress plugin.
 * Fix: Presets - Most presets used to override background color, box-shadow color, text content and even selected icons; This has been fixed where ever possible.
-* Fix: Info Box - The title is disabled on the editor if we set P tag. 
+* Fix: Info Box - The title is disabled on the editor if we set P tag.
 * Fix: Tabs block - Aria mismatch issue on the lighthouse.
 * Fix: Image block - Negative margin is not working inside container.
 * Fix: Responsive condition does not save when we use the Legacy Widget.
@@ -237,7 +238,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Timeline - Connector does not show color without an icon when scrolling.
 * Fix: Resolved Buttons should consider button text as a string instead of HTML in multiple blocks.
 * Fix: Container - Does not work properly when it is used inside the cover block.
-* Improvement: Implemented CLS for all the blocks which have image tag.
 * Fix: Image - Hover on the border for normal image layout is not working.
 * Fix: Table Of Contents - Page was not scrolling to the headings on the frontend for some edge cases.
 * Fix: Translation for default text was missing for some blocks.
