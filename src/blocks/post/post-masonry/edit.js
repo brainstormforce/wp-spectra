@@ -5,7 +5,6 @@ import React, { useState, useEffect,    } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import styling from '.././styling';
-import { compose } from '@wordpress/compose';
 import TypographyControl from '@Components/typography';
 import ResponsiveBorder from '@Components/responsive-border';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
@@ -46,7 +45,7 @@ import {
 
 import { InspectorControls } from '@wordpress/block-editor';
 
-import { useSelect, withDispatch } from '@wordpress/data';
+import { useSelect, useDispatch } from '@wordpress/data';
 
 const UAGBPostMasonry = ( props ) => {
 
@@ -463,7 +462,7 @@ const UAGBPostMasonry = ( props ) => {
 			};
 		},
 	);
-
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 	const {
 		align,
 		displayPostTitle,
@@ -2647,17 +2646,12 @@ const UAGBPostMasonry = ( props ) => {
 				togglePreview={ togglePreview }
 				latestPosts={ latestPosts }
 				categoriesList={ categoriesList }
+				replaceInnerBlocks={ replaceInnerBlocks }
+				block={ block }
 			/>
 			</>
 
 	);
 };
 
-export default compose(
-	withDispatch( ( dispatch ) => {
-		const { replaceInnerBlocks } = dispatch( 'core/block-editor' );
-		return {
-			replaceInnerBlocks,
-		};
-	} )
-)( UAGBPostMasonry );
+export default UAGBPostMasonry;

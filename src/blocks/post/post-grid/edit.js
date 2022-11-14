@@ -16,8 +16,7 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import Settings from './settings';
 import Render from './render';
 
-import { useSelect, withDispatch } from '@wordpress/data';
-import { compose } from '@wordpress/compose';
+import { useSelect, useDispatch } from '@wordpress/data';
 import { Placeholder, Spinner } from '@wordpress/components';
 
 const PostGridComponent = ( props ) => {
@@ -305,6 +304,7 @@ const PostGridComponent = ( props ) => {
 			};
 		},
 	);
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 	const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
 	// Caching all attributes.
@@ -355,18 +355,13 @@ const PostGridComponent = ( props ) => {
 				setStateValue={ setStateValue }
 				togglePreview={ togglePreview }
 				latestPosts={ latestPosts }
+				replaceInnerBlocks={ replaceInnerBlocks }
+				block={ block }
 			/>
 			</>
 
 	);
 };
 
-export default compose(
-	withDispatch( ( dispatch ) => {
-		const { replaceInnerBlocks } = dispatch( 'core/block-editor' );
-		return {
-			replaceInnerBlocks,
-		};
-	} )
-)( PostGridComponent );
+export default PostGridComponent;
 

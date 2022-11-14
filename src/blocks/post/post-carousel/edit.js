@@ -3,7 +3,6 @@
  */
 
 import styling from '.././styling';
-import { compose } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
 import React, { useState, useEffect,   } from 'react';
 
@@ -46,7 +45,7 @@ import {
 
 import { InspectorControls } from '@wordpress/block-editor';
 
-import { useSelect, withDispatch } from '@wordpress/data';
+import { useSelect, useDispatch } from '@wordpress/data';
 
 const UAGBPostCarousel = ( props ) => {
 
@@ -400,6 +399,8 @@ let categoriesList = [];
 			};
 		},
 	);
+
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 
 	const {
 		attributes,
@@ -2442,17 +2443,12 @@ let categoriesList = [];
 				togglePreview={ togglePreview }
 				latestPosts={ latestPosts }
 				categoriesList={ categoriesList }
+				replaceInnerBlocks={ replaceInnerBlocks }
+				block={ block }
 			/>
 			</>
 
 	);
 };
 
-export default compose(
-	withDispatch( ( dispatch ) => {
-		const { replaceInnerBlocks } = dispatch( 'core/block-editor' );
-		return {
-			replaceInnerBlocks,
-		};
-	} )
-)( UAGBPostCarousel );
+export default UAGBPostCarousel
