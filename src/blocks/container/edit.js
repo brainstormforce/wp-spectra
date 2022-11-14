@@ -18,8 +18,6 @@ import { __ } from '@wordpress/i18n';
 
 import { useSelect, useDispatch, select } from '@wordpress/data';
 
-import { compose } from '@wordpress/compose';
-
 import {
 	__experimentalBlockVariationPicker as BlockVariationPicker,
 } from '@wordpress/block-editor';
@@ -232,4 +230,4 @@ const UAGBContainer = ( props ) => {
 	);
 };
 
-export default compose()( UAGBContainer );
+export default UAGBContainer;

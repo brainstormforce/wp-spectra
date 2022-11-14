@@ -14,7 +14,6 @@ import Settings from './settings';
 import Render from './render';
 
 import { useSelect } from '@wordpress/data';
-import { compose } from '@wordpress/compose';
 
 const UAGBTableOfContentsEdit = ( props ) => {
 
@@ -359,4 +358,4 @@ const UAGBTableOfContentsEdit = ( props ) => {
 	);
 };
 
-export default compose()( UAGBTableOfContentsEdit );
+export default UAGBTableOfContentsEdit;

@@ -5,7 +5,6 @@
 import SchemaNotices from './schema-notices';
 import styling from './styling';
 import './style.scss';
-import { compose } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
 
 import React from 'react';
@@ -223,4 +222,4 @@ const HowToComponent = ( props ) => {
 	);
 };
 
-export default compose()( HowToComponent );
+export default HowToComponent;
