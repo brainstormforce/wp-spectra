@@ -3,10 +3,11 @@ import './style.scss';
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect } from 'react';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import getImageHeightWidth from '@Controls/getImageHeightWidth';
 
 var ALLOWED_BLOCKS = [ 'uagb/how-to-step' ]; // eslint-disable-line no-var
 
@@ -62,6 +63,8 @@ const Render = ( props ) => {
 			timeInDays,
 			timeInMonths,
 			timeInYears,
+			imgTagHeight,
+			imgTagWidth,
 		},
 	} = props;
 
@@ -146,12 +149,18 @@ const Render = ( props ) => {
 
 	let imageIconHtml = '';
 
+	useEffect( () => {
+		getImageHeightWidth( url, setAttributes )
+	},[ attributes.imgSize ] )
+
 	if ( mainimage && mainimage.url ) {
 		imageIconHtml = (
 			<img
 				className="uagb-howto__source-image"
 				src={ url }
 				title={ title }
+				width={imgTagWidth} height={imgTagHeight}
+				loading="lazy"
 				alt={ defaultedAlt }
 			/>
 		);

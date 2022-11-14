@@ -24,7 +24,7 @@ const Render = ( props ) => {
 
 	const {
 		className,
-		attributes: { zoom, address, language },
+		attributes: { zoom, address, language, height },
 	} = props;
 
 	const encoded_address = encodeURI( address );
@@ -47,6 +47,8 @@ const Render = ( props ) => {
 					address
 				}
 				src={ url }
+				width="640" height={ height }
+				loading="lazy"
 			></iframe>
 		</div>
 	);

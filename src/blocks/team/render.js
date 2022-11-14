@@ -48,6 +48,7 @@ const Render = ( props ) => {
 		socialTarget,
 		socialEnable,
 		stack,
+		imgWidth,
 	} = attributes;
 
 	const titleHtml = (
@@ -187,6 +188,9 @@ const Render = ( props ) => {
 					className={`uagb-team__image-crop-${ imgStyle }`}
 					src={ imgUrl }
 					alt={ image.alt ? image.alt : '' }
+					height={ imgWidth }
+					width={ imgWidth }
+					loading="lazy"
 				/>
 		);
 	}

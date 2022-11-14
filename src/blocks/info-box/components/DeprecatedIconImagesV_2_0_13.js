@@ -1,4 +1,4 @@
-const InfoBoxIconImage = ( props ) => {
+const DeprecatedIconImagesV_2_0_13 = ( props ) => {
 	const { attributes } = props;
 
 	let urlCheck = '';
@@ -14,7 +14,6 @@ const InfoBoxIconImage = ( props ) => {
 	if ( urlCheck !== '' ) {
 		const size = attributes.iconImage.sizes;
 		const imageSize = attributes.imageSize;
-		const { imgTagWidth, imgTagHeight, imageWidth, imageWidthType } = attributes
 
 		if (
 			typeof size !== 'undefined' &&
@@ -32,9 +31,6 @@ const InfoBoxIconImage = ( props ) => {
 			<img
 				src={ url }
 				alt={ attributes.iconImage.alt }
-				width={ imageWidthType ? imageWidth : imgTagWidth }
-				height={ imgTagHeight }
-				loading="lazy"
 			/>
 			</div>
 			)}
@@ -44,4 +40,4 @@ const InfoBoxIconImage = ( props ) => {
 	return null;
 };
 
-export default InfoBoxIconImage;
+export default DeprecatedIconImagesV_2_0_13;
