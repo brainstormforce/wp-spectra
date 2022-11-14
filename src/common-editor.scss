@@ -34,12 +34,14 @@
 			> .components-base-control:last-child {
 				margin-bottom: 0;
 			}
+
 			.spectra-panel__body-sub-heading {
 				font-size: 13px;
 				font-weight: 500;
 				line-height: 16px;
-				color: #50575E;
+				color: #50575e;
 			}
+
 			/* Gutenberg DatePicker CSS */
 			.components-datetime {
 
@@ -765,6 +767,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 /* Spectra Sidebar Settings Notice */
 .spectra-sidebar-settings-notice {
 	margin: 0;
+
 	&.is-error {
 		background-color: #f5d9d9;
 	}
@@ -773,18 +776,22 @@ button.components-button.uagb-review-select-btn.is-secondary {
 /* Spectra Multiselect Control */
 .spectra-multi-select__control {
 	box-shadow: none !important;
-	border-color: #E6E7E9 !important;
+	border-color: #e6e7e9 !important;
 	border-radius: 3px !important;
+
 	.spectra-multi-select__input input {
 		box-shadow: none !important;
 	}
+
 	.spectra-multi-select__multi-value__label {
 		font-size: 13px !important;
 	}
+
 	.spectra-multi-select__menu .spectra-multi-select__option {
 		font-size: 13px !important;
 	}
 }
+
 @import "styles/gutenberg-override";
 @import "styles/control-responsive";
 @import "styles/control-header";

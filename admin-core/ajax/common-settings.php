@@ -734,6 +734,11 @@ class Common_Settings extends Ajax_Base {
 		);
 		wp_send_json_success( $response_data );
 	}
+	/**
+	 * Save settings.
+	 *
+	 * @return void
+	 */
 	public function dynamic_content_mode() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
@@ -758,6 +763,7 @@ class Common_Settings extends Ajax_Base {
 		wp_send_json_success( $response_data );
 
 	}
+
 	/**
 	 * Save settings.
 	 *

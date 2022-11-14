@@ -51,12 +51,6 @@ const Settings = () => {
 		{ name: __( 'Coming Soon', 'ultimate-addons-for-gutenberg' ), slug: 'coming-soon', icon: SettingsIcons['coming-soon'] },
     ];
 
-	if ( uag_react.spectra_pro_status ) {
-		navigation.push(
-			{ name: __( 'Block Settings', 'ultimate-addons-for-gutenberg' ), slug: 'block-settings', icon: SettingsIcons['global-settings'] }
-		);
-	}
-
 	useEffect( () => {
 		// Activate Setting Active Tab from "settingsTab" Hash in the URl is present.
 		const activePath = query.get( 'path' );
@@ -147,7 +141,11 @@ const Settings = () => {
                         }
                         { 'block-settings' === activeSettingsNavigationTab &&
 							<>
-								<Login />
+								{
+									uag_react.spectra_pro_status && (
+										<Login />
+									)
+								}
 								<CollapsePanels/>
 								<CopyPasteStyles/>
 								<BlockSettings/>

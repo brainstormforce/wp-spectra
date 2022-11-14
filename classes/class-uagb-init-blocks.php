@@ -114,7 +114,7 @@ class UAGB_Init_Blocks {
 	 * @return mixed Returns the new block content.
 	 */
 	public function render_block( $block_content, $block ) {
-		if(isset($block['attrs'])){
+		if ( isset( $block['attrs'] ) ) {
 			$block_attributes = $block['attrs'];
 
 			if ( isset( $block_attributes['UAGDisplayConditions'] ) && array_key_exists( 'UAGDisplayConditions', $block_attributes ) ) {
