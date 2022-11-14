@@ -125,6 +125,7 @@ $btn_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', '
 
 // fallback for forms select field.
 $forms_padding_right_mobile_fallback = (int) UAGB_Block_Helper::get_fallback_number( $attr['paddingFieldRightMobile'], 'paddingFieldRightMobile', $block_name ) + 30;
+$forms_padding_right_tablet_fallback = (int) UAGB_Block_Helper::get_fallback_number( $attr['paddingFieldRightTablet'], 'paddingFieldRightTablet', $block_name ) + 30;
 
 $selectors = array(
 	'.uagb-forms__outer-wrap'                              => array(
@@ -194,7 +195,7 @@ $selectors = array(
 		array(
 			'font-size'        => UAGB_Helper::get_css_value( $attr['submitTextFontSize'], $attr['submitTextFontSizeType'] ),
 			'color'            => $attr['submitColor'],
-			'background-color' => $attr['submitBgColor'],
+			'background-color' => ( 'color' === $attr['submitBgType'] ) ? $attr['submitBgColor'] : 'transparent',
 			'padding-top'      => UAGB_Helper::get_css_value( $btnPaddingTop, $attr['paddingBtnUnit'] ),
 			'padding-bottom'   => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['paddingBtnUnit'] ),
 			'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['paddingBtnUnit'] ),
@@ -204,7 +205,7 @@ $selectors = array(
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button:hover' => array(
 		'color'            => $attr['submitColorHover'],
-		'background-color' => $attr['submitBgColorHover'],
+		'background-color' => ( 'color' === $attr['submitBgHoverType'] ) ? $attr['submitBgColorHover'] : 'transparent',
 		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],
 	),
 	// Hover Colors.
@@ -223,18 +224,16 @@ $selectors = array(
 		'border-radius' => UAGB_Helper::get_css_value( 20 + $toggle_width_size_number, 'px' ) . ' !important',
 	),
 	// Drop icon position css.
+	// select control color.
 	' .uagb-form-phone-country'                            => array(
 		'background'          => 'url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9JzE4cHgnIGhlaWdodD0nMThweCcgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIj48cGF0aCBkPSJtMzk2LjYgMTYwIDE5LjQgMjAuN0wyNTYgMzUyIDk2IDE4MC43bDE5LjMtMjAuN0wyNTYgMzEwLjV6IiBmaWxsPSIjMWQyMzI3IiBjbGFzcz0iZmlsbC0wMDAwMDAiPjwvcGF0aD48L3N2Zz4=) no-repeat',
 		'-moz-appearance'     => 'none !important',
 		'-webkit-appearance'  => ' none !important',
 		'background-position' => ' top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRight'], $attr['paddingFieldUnit'] ),
 		'appearance'          => 'none !important',
+		'color'               => $attr['inputplaceholderColor'],
 	),
 
-	// select control color.
-	' .uagb-form-phone-country'                            => array(
-		'color' => $attr['inputplaceholderColor'],
-	),
 	' .uagb-forms-field-set:hover .uagb-form-phone-country' => array(
 		'color' => $attr['inputplaceholderHoverColor'],
 	),
@@ -272,7 +271,8 @@ $t_selectors = array(
 	' .uagb-forms-failed-message'                    => $failed_message_border_tablet,
 	// Drop icon position css.
 	' .uagb-form-phone-country'                      => array(
-		'background-position' => ' top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightTablet'], $attr['paddingFieldUnitTablet'] ),
+		'background-position' => 'top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightTablet'] ? $attr['paddingFieldRightTablet'] : 12, $attr['paddingFieldUnitTablet'] ),
+		'padding-right'       => UAGB_Helper::get_css_value( $forms_padding_right_tablet_fallback, $attr['paddingFieldUnitTablet'] ) . ' !important',
 	),
 );
 $m_selectors = array(
@@ -309,7 +309,7 @@ $m_selectors = array(
 
 	// Drop icon position css.
 	' .uagb-form-phone-country'                      => array(
-		'background-position' => 'top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'], $attr['paddingFieldUnitmobile'] ),
+		'background-position' => 'top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'] ? $attr['paddingFieldRightMobile'] : 6, $attr['paddingFieldUnitmobile'] ),
 		'padding-right'       => UAGB_Helper::get_css_value( $forms_padding_right_mobile_fallback, $attr['paddingFieldUnitmobile'] ) . ' !important',
 	),
 );

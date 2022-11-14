@@ -53,15 +53,15 @@ $btn_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn
 
 
 $selectors = array(
-	' .uagb-marketing-btn__prefix'         => array(
+	' .uagb-marketing-btn__prefix'                     => array(
 		'margin-top' => UAGB_Helper::get_css_value( $title_space_fallback, $attr['titleSpaceUnit'] ),
 	),
-	' svg'                                 => array(
+	' svg'                                             => array(
 		'fill'   => $icon_color,
 		'width'  => UAGB_Helper::get_css_value( $icon_font_size_fallback, $attr['iconFontSizeType'] ),
 		'height' => UAGB_Helper::get_css_value( $icon_font_size_fallback, $attr['iconFontSizeType'] ),
 	),
-	' p.uagb-marketing-btn__prefix'        => array(
+	' p.uagb-marketing-btn__prefix'                    => array(
 		'color' => $attr['prefixColor'],
 	),
 	' .uagb-marketing-btn__link:hover p.uagb-marketing-btn__prefix' => array(
@@ -70,13 +70,13 @@ $selectors = array(
 	' .uagb-marketing-btn__link:focus p.uagb-marketing-btn__prefix' => array(
 		'color' => $attr['prefixHoverColor'],
 	),
-	' .uagb-marketing-btn__link:hover svg' => array(
+	' .uagb-marketing-btn__link:hover svg'             => array(
 		'fill' => $icon_hover_color,
 	),
-	' .uagb-marketing-btn__link:focus svg' => array(
+	' .uagb-marketing-btn__link:focus svg'             => array(
 		'fill' => $icon_hover_color,
 	),
-	'.wp-block-uagb-marketing-button.wp-block-button .uagb-marketing-btn__link.wp-block-button__link' => array_merge(
+	' .uagb-marketing-btn__link.wp-block-button__link' => array_merge(
 		array(
 			'padding-left'   => UAGB_Helper::get_css_value( $btn_padding_left, $attr['paddingBtnUnit'] ),
 			'padding-right'  => UAGB_Helper::get_css_value( $btn_padding_right, $attr['paddingBtnUnit'] ),
@@ -85,10 +85,10 @@ $selectors = array(
 		),
 		$btn_border_css
 	),
-	' .uagb-marketing-btn__link:hover'     => array(
+	' .uagb-marketing-btn__link:hover'                 => array(
 		'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHoverColor'],
 	),
-	' .uagb-marketing-btn__link:focus'     => array(
+	' .uagb-marketing-btn__link:focus'                 => array(
 		'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHoverColor'],
 	),
 	'.uagb-marketing-btn__icon-after .uagb-marketing-btn__link svg' => array(
@@ -103,7 +103,7 @@ $selectors = array(
 	'.uagb-marketing-btn__icon-before .uagb-marketing-btn__icon-wrap svg' => array( // For backword compatibility.
 		'margin-right' => UAGB_Helper::get_css_value( $icon_space_fallback, 'px' ),
 	),
-	' .uagb-marketing-btn__title-wrap'     => array( // For backword compatibility.
+	' .uagb-marketing-btn__title-wrap'                 => array( // For backword compatibility.
 		'align-items' => 'center',
 	),
 	' .uagb-marketing-btn__title-wrap .uagb-marketing-btn__icon-wrap svg' => array( // For backword compatibility.
@@ -135,8 +135,9 @@ if ( 'transparent' === $attr['backgroundType'] ) {
 	$selectors['.wp-block-uagb-marketing-button.wp-block-button:not(.is-style-outline) a.wp-block-button__link:not(.has-background)']['background-color'] = UAGB_Helper::hex2rgba( $attr['backgroundColor'], $attr['backgroundOpacity'] );
 
 	// Hover Background.
-	$selectors['.wp-block-uagb-marketing-button.wp-block-button .wp-block-button__link.uagb-marketing-btn__link:hover']['background'] = UAGB_Helper::hex2rgba( $attr['backgroundHoverColor'], $attr['backgroundHoverOpacity'] );
-	$selectors['.wp-block-uagb-marketing-button.wp-block-button .wp-block-button__link.uagb-marketing-btn__link:focus']['background'] = UAGB_Helper::hex2rgba( $attr['backgroundHoverColor'], $attr['backgroundHoverOpacity'] );
+	$selectors['.wp-block-uagb-marketing-button.wp-block-button:not(.is-style-outline) .wp-block-button__link.uagb-marketing-btn__link:hover']['background']   = UAGB_Helper::hex2rgba( $attr['backgroundHoverColor'], $attr['backgroundHoverOpacity'] );
+	$selectors['.wp-block-uagb-marketing-button.wp-block-button:not(.is-style-outline) .wp-block-button__link.uagb-marketing-btn__link:focus']['background']   = UAGB_Helper::hex2rgba( $attr['backgroundHoverColor'], $attr['backgroundHoverOpacity'] );
+	$selectors['.wp-block-uagb-marketing-button.wp-block-button:not(.is-style-outline) .wp-block-button__link.uagb-marketing-btn__link:hover']['border-color'] = UAGB_Helper::hex2rgba( $attr['btnBorderHColor'] );
 
 } elseif ( 'gradient' === $attr['backgroundType'] ) {
 

@@ -17,7 +17,6 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import UAGSelectControl from '@Components/select-control';
 import {
-	TextControl,
 	ToggleControl,
 	Icon,
 } from '@wordpress/components';
@@ -26,6 +25,7 @@ import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import UAGTextControl from '@Components/text-control';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -820,11 +820,16 @@ tweetBtnLetterSpacingType,
 			/>
 			{ enableTweet && (
 				<>
-					<TextControl
+					<UAGTextControl
 						label={ __(
 							'Twitter Username',
 							'ultimate-addons-for-gutenberg'
 						) }
+						data={{
+							value: iconShareVia,
+							label: 'iconShareVia',
+						}}
+						setAttributes={ setAttributes }
 						value={ iconShareVia }
 						onChange={ ( value ) =>
 							setAttributes( {
@@ -934,12 +939,17 @@ tweetBtnLetterSpacingType,
 						showIcons={ false }
 					/>
 					{ iconTargetUrl === 'custom' && (
-						<TextControl
+						<UAGTextControl
 							label={ __(
 								'URL',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ customUrl }
+							data={{
+								value: customUrl,
+								label: 'customUrl',
+							}}
+							setAttributes={ setAttributes }
 							onChange={ ( value ) =>
 								setAttributes( { customUrl: value } )
 							}
@@ -949,9 +959,14 @@ tweetBtnLetterSpacingType,
 			) }
 			{ enableTweet && iconView !== 'icon' && (
 				<>
-					<TextControl
+					<UAGTextControl
 						label={ __( 'Label', 'ultimate-addons-for-gutenberg' ) }
 						value={ iconLabel }
+						data={{
+							value: iconLabel,
+							label: 'iconLabel',
+						}}
+						setAttributes={ setAttributes }
 						onChange={ ( value ) =>
 							setAttributes( { iconLabel: value } )
 						}

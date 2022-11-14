@@ -423,7 +423,7 @@ const attributes = {
 	},
 	boxShadowColor:{
 		type:'string',
-		default: '#000',
+		default: '#00000026',
 		UAGCopyPaste: {
 			styleType: 'btn-box-shadow-color'
 		}

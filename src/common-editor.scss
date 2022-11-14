@@ -96,11 +96,11 @@
 .uagb-inspector-tab .components-panel__body label,
 .uagb-extention-tab label {
 	color: $spectra-color-body;
-	font-size: $spectra-font-size-label;
-	line-height: $spectra-line-height-label;
+	font-size: $spectra-font-size-label !important;
+	line-height: $spectra-line-height-label !important;
 	margin-bottom: $spectra-control-label-bottom-margin;
-	text-transform: $spectra-text-transform-label;
-	font-weight: $spectra-font-weight-label;
+	text-transform: $spectra-text-transform-label !important;
+	font-weight: $spectra-font-weight-label !important;
 }
 
 .uagb-inspector-tab label.components-toggle-control__label {
