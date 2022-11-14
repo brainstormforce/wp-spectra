@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.1
-Stable tag: 2.0.14
+Stable tag: 2.0.15
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -170,7 +170,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 2.0.15 - TUESDAY, 08th NOVEMBER 2022 =
+= 2.0.15 - TUESDAY, 15th NOVEMBER 2022 =
 * Improvement: Highlight selected text on editor in Spectra blocks.
 * Improvement: Responsive Conditions - Slanted lines are not visible in the editor.
 * Improvement: Post Carousel/Masonry/Grid - Button text is now editable inside the editor.
