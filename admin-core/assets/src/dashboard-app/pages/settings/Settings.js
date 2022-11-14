@@ -38,8 +38,6 @@ const Settings = () => {
 	const dispatch = useDispatch();
 	const activeSettingsNavigationTab = useSelector( ( state ) => state.activeSettingsNavigationTab );
     const initialStateSetFlag = useSelector( ( state ) => state.initialStateSetFlag );
-	const enableDynamicContentExtension = useSelector( ( state ) => state.enableDynamicContentExtension );
-    const dynamicContentStatus = 'disabled' === enableDynamicContentExtension ? false : true;
 
 	const navigation = [
 		{ name: __( 'Editor Options', 'ultimate-addons-for-gutenberg' ), slug: 'global-settings', icon: SettingsIcons['global-settings'] },
@@ -107,7 +105,7 @@ const Settings = () => {
 								<ContainerGlobalPadding/>
 								<ContainerGlobalElementsGap/>
 								{
-									dynamicContentStatus && (
+									uag_react.spectra_pro_status && (
 										<DynamicContent />
 									)
 								}
