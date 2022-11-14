@@ -197,6 +197,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Tabs block - Aria mismatch issue on the lighthouse.
 * Fix: Image block - Negative margin is not working inside container.
 * Fix: Responsive condition does not save when we use the Legacy Widget.
+* Fix: Removed deprecated __experimentalGetSettings and used getSettings for Date.
+* Fix: Block encounter an issue with react hook withSelect.
 
 = 2.0.14 - TUESDAY, 08th NOVEMBER 2022 =
 * Improvement: Compatibility with WordPress 6.1.

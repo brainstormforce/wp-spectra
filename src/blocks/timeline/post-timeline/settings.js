@@ -30,9 +30,10 @@ import { useDeviceType } from '@Controls/getPreviewType';
 import UAGTextControl from '@Components/text-control';
 
 const Settings = ( props ) => {
+	const { categoriesList, taxonomyList } = props;
 	props = props.parentProps;
 
-	const { attributes, categoriesList, setAttributes, taxonomyList } = props;
+	const { attributes, setAttributes } = props;
 	const deviceType = useDeviceType();
 
 	const {

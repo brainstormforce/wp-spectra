@@ -12,7 +12,6 @@ import {
 	getPostLayoutConfig,
 	getBlockMap,
 } from '.././function';
-
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 
@@ -30,13 +29,12 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
+	const { categoriesList, latestPosts, replaceInnerBlocks, block } = props;
 	const { isEditing } = props.state;
 
 	// Caching all Props.
 	const {
 		attributes,
-		latestPosts,
-		categoriesList,
 		deviceType,
 		name,
 		setAttributes
@@ -44,7 +42,6 @@ const Render = ( props ) => {
 
 	const renderEditMode = () => {
 		const onDone = () => {
-			const { block } = props.parentProps;
 			setAttributes( {
 				layoutConfig: getPostLayoutConfig( block ),
 			} );
@@ -53,14 +50,12 @@ const Render = ( props ) => {
 		};
 
 		const onCancel = () => {
-			const { replaceInnerBlocks } = props.parentProps;
 			const { innerBlocks } = props.state;
 			replaceInnerBlocks( props.parentProps.clientId, innerBlocks );
 			props.togglePreview();
 		};
 
 		const onReset = () => {
-			const { block, replaceInnerBlocks } = props.parentProps;
 			const newBlocks = [];
 			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attribute ] ) => { // eslint-disable-line no-shadow
 				newBlocks.push( createBlock( name, attribute ) );

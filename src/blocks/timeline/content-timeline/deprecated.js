@@ -9,7 +9,7 @@ import AlignClass from '.././align-classes';
 import DayAlignClass from '.././day-align-classes';
 import renderSVG from '@Controls/deprecatedRenderIcon';
 import { InnerBlocks, RichText } from '@wordpress/block-editor';
-import { dateI18n, __experimentalGetSettings } from '@wordpress/date';
+import { dateI18n, getSettings } from '@wordpress/date';
 
 function DeprecatedContentTmClasses( attributes ) {
 	/* Arrow position */
@@ -53,7 +53,7 @@ const deprecated = [
 
 			const hasItems = Array.isArray( tm_content ) && tm_content.length;
 
-			const dateFormat = __experimentalGetSettings().formats.date;
+			const dateFormat = getSettings().formats.date;
 
 			let content_align_class = AlignClass( props.attributes, 0 ); // Get classname for layout alignment
 			let day_align_class = DayAlignClass( props.attributes, 0 ); //
@@ -223,7 +223,7 @@ const deprecated = [
 
 			const hasItems = Array.isArray( tm_content ) && tm_content.length;
 
-			const dateFormat = __experimentalGetSettings().formats.date;
+			const dateFormat = getSettings().formats.date;
 
 			let content_align_class = AlignClass( props.attributes, 0 ); // Get classname for layout alignment
 			let day_align_class = DayAlignClass( props.attributes, 0 ); //
@@ -392,7 +392,7 @@ const deprecated = [
 
 			const hasItems = Array.isArray( tm_content ) && tm_content.length;
 
-			const dateFormat = __experimentalGetSettings().formats.date;
+			const dateFormat = getSettings().formats.date;
 
 			let content_align_class = AlignClass( props.attributes, 0 ); // Get classname for layout alignment
 			let day_align_class = DayAlignClass( props.attributes, 0 ); //

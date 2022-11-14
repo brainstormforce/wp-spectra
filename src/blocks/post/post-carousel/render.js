@@ -24,15 +24,14 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { state, setState, togglePreview } = props;
+	const { state, setState, togglePreview, categoriesList, latestPosts, replaceInnerBlocks, block } = props;
 
 	props = props.parentProps;
 
-	const { attributes, categoriesList, latestPosts, deviceType, name, setAttributes } = props;
+	const { attributes, deviceType, name, setAttributes } = props;
 
 	const renderEditMode = () => {
 		const onDone = () => {
-			const { block } = props;
 			setAttributes( {
 				layoutConfig: getPostLayoutConfig( block ),
 			} );
@@ -41,14 +40,12 @@ const Render = ( props ) => {
 		};
 
 		const onCancel = () => {
-			const { replaceInnerBlocks } = props;
 			const { innerBlocks } = state;
 			replaceInnerBlocks( props.clientId, innerBlocks );
 			togglePreview();
 		};
 
 		const onReset = () => {
-			const { block, replaceInnerBlocks } = props;
 			const newBlocks = [];
 			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attribute ] ) => { // eslint-disable-line no-shadow
 				newBlocks.push( createBlock( name, attribute ) );
