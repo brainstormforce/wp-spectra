@@ -3,7 +3,7 @@
  */
 
 import styling from './styling';
-import React, {    useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
@@ -61,12 +61,13 @@ const UAGBIconList = ( props ) => {
                     block.clientId, {
                         fromParentIcon: props.attributes.parentIcon,
 						hideLabel: props.attributes.hideLabel,
+						imageSizeChild: props.attributes.size,
                     }
                 );
 
             } );
 
-	}, [ props.attributes.parentIcon, props.attributes.hideLabel ] );
+	}, [ props.attributes.parentIcon, props.attributes.hideLabel, props.attributes.size ] );
 
 	return (
 

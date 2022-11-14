@@ -3,6 +3,8 @@ import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 import classnames from 'classnames';
 import React from 'react';
+import attributesV2_0_13 from './deprecated/v2_0_13/attribute';
+import saveV2_0_13 from './deprecated/v2_0_13/save';
 
 const deprecated = [
 	{
@@ -262,6 +264,10 @@ const deprecated = [
 				</div>
 			);
 		}
+	},
+	{
+		attributes : attributesV2_0_13,
+		save : saveV2_0_13,
 	}
 ];
 
