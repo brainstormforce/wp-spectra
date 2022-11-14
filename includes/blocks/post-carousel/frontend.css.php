@@ -37,7 +37,12 @@ $dots_margin_top_fallback        = UAGB_Block_Helper::get_fallback_number( $attr
 $dots_margin_top_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['dotsMarginTopTablet'], 'dotsMarginTopTablet', $attr['blockName'] );
 $dots_margin_top_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['dotsMarginTopMobile'], 'dotsMarginTopMobile', $attr['blockName'] );
 
-$arrow_size                 = UAGB_Helper::get_css_value( $arrow_size_fallback, 'px' );
+$arrow_size = UAGB_Helper::get_css_value( $arrow_size_fallback, 'px' );
+
+$selectors['.is_carousel .uagb-post__inner-wrap'] = array(
+	'background-color' => $attr['bgType'] ? $attr['bgColor'] : 'transparent',
+);
+
 $selectors[' .slick-arrow'] = array(
 	'border-color' => $attr['arrowColor'],
 );

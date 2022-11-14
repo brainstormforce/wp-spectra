@@ -25,13 +25,13 @@ import UAGPresets from '@Components/presets';
 import BoxShadowControl from '@Components/box-shadow';
 import { decodeEntities } from '@wordpress/html-entities';
 import UAGNumberControl from '@Components/number-control';
+import UAGTextControl from '@Components/text-control';
 
 const MAX_POSTS_COLUMNS = 8;
 
 import {
 	ToggleControl,
 	ToolbarGroup,
-	TextControl,
 	Icon,
 	ExternalLink
 } from '@wordpress/components';
@@ -138,6 +138,8 @@ const Settings = ( props ) => {
 		metaColor,
 		excerptColor,
 		ctaColor,
+		ctaBgType,
+		ctaBgHType,
 		ctaBgColor,
 		ctaHColor,
 		ctaBgHColor,
@@ -314,6 +316,17 @@ const Settings = ( props ) => {
 
 	const categoryListOptions = [
 		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
+	];
+
+	const bgTypeOptions = [
+		{
+			value: 'transparent',
+			label: __( 'Transparent', 'ultimate-addons-for-gutenberg' ),
+		},
+		{
+			value: 'color',
+			label: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+		},
 	];
 
 	if ( taxonomyList ) {
@@ -713,13 +726,18 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				</h2>
-				<TextControl
+				<UAGTextControl
 					autoComplete="off"
 					label={ __(
 						'Display Message',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ postDisplaytext }
+					data={{
+						value: postDisplaytext,
+						label: 'postDisplaytext',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( { postDisplaytext: value } )
 					}
@@ -811,17 +829,27 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
-				<TextControl
+				<UAGTextControl
 					label={ __(
 						'Previous Text',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ paginationPrevText }
+					data={{
+						value: paginationPrevText,
+						label: 'paginationPrevText',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ onChangePrevText }
 				/>
-				<TextControl
+				<UAGTextControl
 					label={ __( 'Next Text', 'ultimate-addons-for-gutenberg' ) }
 					value={ paginationNextText }
+					data={{
+						value: paginationNextText,
+						label: 'paginationNextText',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ onChangeNextText }
 				/>
 			</UAGAdvancedPanelBody>
@@ -1094,9 +1122,14 @@ const Settings = ( props ) => {
 						] }
 					/>
 				{ 'default' === taxStyle && (
-					<TextControl
+					<UAGTextControl
 						label={ __( 'Taxonomy Divider', 'ultimate-addons-for-gutenberg' ) }
 						value={ taxDivider }
+						data={{
+							value: taxDivider,
+							label: 'taxDivider',
+						}}
+						setAttributes={ setAttributes }
 						onChange={ ( value ) =>
 							setAttributes( {
 								taxDivider: value,
@@ -1213,15 +1246,25 @@ const Settings = ( props ) => {
 								setAttributes( { newTab: ! newTab } )
 							}
 						/>
-						<TextControl
+						<UAGTextControl
 							label={ __(
 								'Text',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ ctaText }
+							data={{
+								value: ctaText,
+								label: 'ctaText',
+							}}
+							setAttributes={ setAttributes }
 							onChange={ ( value ) =>
 								setAttributes( { ctaText: value } )
 							}
+						/>
+						<UAGPresets
+							setAttributes = { setAttributes }
+							presets = { buttonsPresets }
+							presetInputType = 'radioImage'
 						/>
 					</>
 				) }
@@ -1840,11 +1883,6 @@ const Settings = ( props ) => {
 				) }
 				initialOpen={ false }
 			>
-				<UAGPresets
-					setAttributes = { setAttributes }
-					presets = { buttonsPresets }
-					presetInputType = 'radioImage'
-				/>
 				<UAGTabsControl
 					tabs={ [
 						{
@@ -1876,18 +1914,30 @@ const Settings = ( props ) => {
 								} }
 								setAttributes={ setAttributes }
 							/>
-							<AdvancedPopColorControl
-								label={ __(
-									'Background Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ ctaBgColor }
-								data={ {
-									value: ctaBgColor,
-									label: 'ctaBgColor',
-								} }
+							<MultiButtonsControl
 								setAttributes={ setAttributes }
+								label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: ctaBgType,
+									label: 'ctaBgType',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ bgTypeOptions }
 							/>
+							{ ctaBgType === 'color' &&
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ ctaBgColor }
+									data={ {
+										value: ctaBgColor,
+										label: 'ctaBgColor',
+									} }
+									setAttributes={ setAttributes }
+								/>
+							}
 						</>
 					}
 					hover={
@@ -1904,18 +1954,30 @@ const Settings = ( props ) => {
 								} }
 								setAttributes={ setAttributes }
 							/>
-							<AdvancedPopColorControl
-								label={ __(
-									'Background Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ ctaBgHColor }
-								data={ {
-									value: ctaBgHColor,
-									label: 'ctaBgHColor',
-								} }
+							<MultiButtonsControl
 								setAttributes={ setAttributes }
+								label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: ctaBgHType,
+									label: 'ctaBgHType',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ bgTypeOptions }
 							/>
+							{ ctaBgHType === 'color' &&
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ ctaBgHColor }
+									data={ {
+										value: ctaBgHColor,
+										label: 'ctaBgHColor',
+									} }
+									setAttributes={ setAttributes }
+								/>
+							}
 						</>
 					}
 				/>

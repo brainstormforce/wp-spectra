@@ -16,6 +16,8 @@ import { useDeviceType } from '@Controls/getPreviewType';
 import Settings from './settings';
 import Render from './render';
 
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+
 const HowToComponent = ( props ) => {
 	const deviceType = useDeviceType();
 	const [ prevState, setPrevState ] = useState( '' );
@@ -31,6 +33,7 @@ const HowToComponent = ( props ) => {
 		} );
 
 		setPrevState( props.schemaJsonData );
+		
 	}, [] );
 
 	useEffect( () => {
@@ -48,6 +51,7 @@ const HowToComponent = ( props ) => {
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-how-to-schema-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		
 	}, [ props ] );
 
 
@@ -59,6 +63,13 @@ const HowToComponent = ( props ) => {
 
 		scrollBlockToView();
 	}, [deviceType] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	// Setup the attributes
 	const {

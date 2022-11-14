@@ -16,6 +16,7 @@ import Render from './render';
 import { compose } from '@wordpress/compose';
 
 import { withDispatch, dispatch, select } from '@wordpress/data';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const UAGBTabsEdit = ( props ) => {
 
@@ -96,6 +97,7 @@ const UAGBTabsEdit = ( props ) => {
 			props.attributes
 			);
 		}
+		
 	}, [] );
 
 	const updateTabTitle = () => {
@@ -122,6 +124,7 @@ const UAGBTabsEdit = ( props ) => {
 
 		updateTabTitle();
 		props.resetTabOrder();
+		
 
 	}, [ props ] );
 
@@ -134,6 +137,13 @@ const UAGBTabsEdit = ( props ) => {
 		scrollBlockToView();
 
 	}, [ deviceType ] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	return (
 			<>
