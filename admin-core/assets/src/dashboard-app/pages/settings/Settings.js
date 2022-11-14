@@ -23,6 +23,7 @@ import LoadFontAwesome5 from '@DashboardApp/pages/settings/LoadFontAwesome5';
 import AutoBlockRecovery from '@DashboardApp/pages/settings/AutoBlockRecovery';
 import ContainerGlobalPadding from '@DashboardApp/pages/settings/ContainerGlobalPadding';
 import ContainerGlobalElementsGap from '@DashboardApp/pages/settings/ContainerGlobalElementsGap';
+import MyAccount from '@DashboardApp/pages/settings/MyAccount';
 import { Link, useLocation } from 'react-router-dom';
 import{ useEffect } from 'react';
 
@@ -44,6 +45,7 @@ const Settings = () => {
         { name: __( 'Performance', 'ultimate-addons-for-gutenberg' ), slug: 'fonts-performance', icon: SettingsIcons['fonts-performance'] },
 		{ name: __( 'Block Settings', 'ultimate-addons-for-gutenberg' ), slug: 'block-settings', icon: SettingsIcons['block-settings'] },
 		{ name: __( 'Coming Soon', 'ultimate-addons-for-gutenberg' ), slug: 'coming-soon', icon: SettingsIcons['coming-soon'] },
+		{ name: __( 'My Account', 'ultimate-addons-for-gutenberg' ), slug: 'my-account', icon: SettingsIcons['global-settings'] },
     ];
 
 	if ( uag_react.spectra_pro_status ) {
@@ -144,6 +146,12 @@ const Settings = () => {
                             'coming-soon' === activeSettingsNavigationTab &&
                             <>
                                 <ComingSoon/>
+                            </>
+                        }
+                        {
+                            'my-account' === activeSettingsNavigationTab &&
+                            <>
+                                <MyAccount />
                             </>
                         }
                     </div>
