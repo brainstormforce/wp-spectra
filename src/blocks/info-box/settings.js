@@ -25,9 +25,9 @@ import {
 import { getImageSize } from '@Utils/Helpers';
 import {
 	ToggleControl,
-	TextControl,
 	Icon
 } from '@wordpress/components';
+import UAGTextControl from '@Components/text-control';
 import renderSVG from '@Controls/renderIcon';
 let imageSizeOptions = [
 	{
@@ -914,15 +914,14 @@ const Settings = ( props ) => {
 				}
 				{ ctaType !== 'none' && (
 					<>
-						<TextControl
+						<UAGTextControl
 							label={ __(
 								'Link',
 								'ultimate-addons-for-gutenberg'
 							) }
+							name="ctaLink"
 							value={ ctaLink }
-							onChange={ ( value ) =>
-								setAttributes( { ctaLink: value } )
-							}
+							setAttributes={setAttributes}
 						/>
 					</>
 				) }

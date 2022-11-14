@@ -14,6 +14,7 @@ import LoadFontsLocally from '@DashboardApp/pages/settings/LoadFontsLocally';
 import PreloadLocalFonts from '@DashboardApp/pages/settings/PreloadLocalFonts';
 import CollapsePanels from '@DashboardApp/pages/settings/CollapsePanels';
 import CopyPasteStyles from '@DashboardApp/pages/settings/CopyPasteStyles';
+import DynamicContent from './dynamic-content';
 import ContentWidth from '@DashboardApp/pages/settings/ContentWidth';
 import BlocksEditorSpacing from '@DashboardApp/pages/settings/BlocksEditorSpacing';
 import ComingSoon from '@DashboardApp/pages/settings/ComingSoon';
@@ -32,10 +33,12 @@ function classNames( ...classes ) {
 
 const Settings = () => {
 
+
 	const query = new URLSearchParams( useLocation()?.search );
 	const dispatch = useDispatch();
 	const activeSettingsNavigationTab = useSelector( ( state ) => state.activeSettingsNavigationTab );
     const initialStateSetFlag = useSelector( ( state ) => state.initialStateSetFlag );
+
 	const navigation = [
 		{ name: __( 'Editor Options', 'ultimate-addons-for-gutenberg' ), slug: 'global-settings', icon: SettingsIcons['global-settings'] },
         { name: __( 'Asset Generation', 'ultimate-addons-for-gutenberg' ), slug: 'asset-generation', icon: SettingsIcons['asset-generation'] },
@@ -101,6 +104,11 @@ const Settings = () => {
                                 <ContentWidth/>
 								<ContainerGlobalPadding/>
 								<ContainerGlobalElementsGap/>
+								{
+									uag_react.spectra_pro_status && (
+										<DynamicContent />
+									)
+								}
                                 <BlocksEditorSpacing/>
                                 <CollapsePanels/>
                                 <CopyPasteStyles/>
@@ -137,7 +145,7 @@ const Settings = () => {
                         }
                         { 'block-settings' === activeSettingsNavigationTab &&
                             <>
-                                <BlockSettings/>
+								<BlockSettings/>
                             </>
                         }
                         {

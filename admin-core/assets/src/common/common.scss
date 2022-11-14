@@ -407,6 +407,36 @@
 	}
 }
 
+.uag-dashboard-app {
+
+	.uag-radio-input {
+		width: 20px !important;
+		height: 20px !important;
+		border: 1px solid #cbd5e1;
+		box-shadow: none !important;
+
+		&:checked {
+			border-color: #6104ff;
+			box-shadow: none !important;
+			color: #6104ff;
+		}
+
+		&::before {
+			display: none !important;
+		}
+
+		&:active,
+		&:focus {
+			border-color: #6104ff;
+			color: #6104ff;
+		}
+
+		&:hover {
+			color: #6104ff;
+		}
+	}
+}
+
 [dir="rtl"] .uag-dashboard-app button.bg-spectra[aria-checked="false"] span {
 	right: 0;
 }

@@ -17,6 +17,8 @@ const initialState = {
     enableCopyPasteStyles : '',
     enableDisplayConditions : '',
     enableMasonryExtension : '',
+	enableDynamicContentExtension: '',
+	dynamicContentMode: 'popup',
 	enableResponsiveConditions : '',
 	contentWidth: '',
 	siteKeyV2: '',
