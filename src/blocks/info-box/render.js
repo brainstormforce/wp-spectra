@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import InfoBoxPositionClasses from './style-classes';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect } from 'react';
 import Title from './components/Title';
 import InfoBoxDesc from './components/InfoBoxDesc';
 import CallToAction from './components/CTA';
@@ -10,6 +10,7 @@ import InfoBoxIconImage from './components/IconImages';
 import Prefix from './components/Prefix';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
+import getImageHeightWidth from '@Controls/getImageHeightWidth';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -37,7 +38,9 @@ const Render = ( props ) => {
 		showTitle,
 		showDesc,
 		block_id,
-		ctaLink
+		ctaLink,
+		imageWidthType,
+		imageWidth
 	} = attributes;
 	// Get icon/Image components.
 	let isImage = '';
@@ -51,6 +54,39 @@ const Render = ( props ) => {
 	let seperatorPos = seperatorPosition;
 	const seperatorHtml = <InfoBoxSeparator attributes={ attributes } />;
 	let showSeperator = true;
+
+	let urlCheck = '';
+	if (
+		typeof attributes.iconImage !== 'undefined' &&
+		attributes.iconImage !== null &&
+		attributes.iconImage !== ''
+	) {
+		urlCheck = attributes.iconImage.url;
+	}
+
+	let url = '';
+	if ( urlCheck !== '' ) {
+		const size = attributes.iconImage.sizes;
+		const imageSize = attributes.imageSize;
+
+		if (
+			typeof size !== 'undefined' &&
+			typeof size[ imageSize ] !== 'undefined'
+		) {
+			url = size[ imageSize ].url;
+		} else {
+			url = urlCheck;
+		}
+	}
+
+	useEffect( ()=> {
+		if( imageWidthType ){
+			getImageHeightWidth( url, setAttributes, { type: 'width', value: imageWidth } )
+		}
+		else{
+			getImageHeightWidth( url, setAttributes )
+		}
+	}, [ url, imageWidth, imageWidthType ] )
 
 	if (
 		seperatorPos === 'after_icon' &&

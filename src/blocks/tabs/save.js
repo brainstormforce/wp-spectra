@@ -33,7 +33,7 @@ export default function save( props ) {
 			) }
 			data-tab-active={ tabActiveFrontend }
 		>
-			<div className={ `uagb-tabs__panel uagb-tabs__align-${ tabAlign }` }>
+			<ul className={ `uagb-tabs__panel uagb-tabs__align-${ tabAlign }` } role="tablist">
 				{ tabHeaders.map( ( header, index ) => (
 					<li
 						key={ index }
@@ -42,7 +42,7 @@ export default function save( props ) {
 								? 'uagb-tabs__active'
 								: ''
 						}` }
-						role='tablist' // eslint-disable-line jsx-a11y/no-noninteractive-element-to-interactive-role
+						role='none' 
 					>
 						<a
 							href={ `#uagb-tabs__tab${ index }` }
@@ -70,7 +70,7 @@ export default function save( props ) {
 						</a>
 					</li>
 				) ) }
-			</div>
+			</ul>
 			<div className="uagb-tabs__body-wrap">
 				<InnerBlocks.Content />
 			</div>

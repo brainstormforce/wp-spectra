@@ -53,6 +53,26 @@ const attributes = {
 		},
 		default: '',
 	},
+	parentSize: {
+		type: 'number',
+		default: 30,
+	},
+	parentSizeMobile: {
+		type: 'number',
+		default: '',
+	},
+	parentSizeTablet: {
+		type: 'number',
+		default: '',
+	},
+	imgTagHeight: {
+		type: 'number',
+		default: 0,
+	},
+	imgTagWidth: {
+		type: 'number',
+		default: 0,
+	},
 };
 
 export default attributes;
