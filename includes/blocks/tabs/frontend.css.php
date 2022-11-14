@@ -43,14 +43,14 @@ $selectors = array(
 		),
 		$overall_border_css
 	),
-	'.uagb-tabs__wrap div.uagb-tabs__panel li.uagb-tab a ' => array(
+	'.uagb-tabs__wrap ul.uagb-tabs__panel li.uagb-tab a '  => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $tab_title_top_padding, $attr['tabTitlePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $tab_title_bottom_padding, $attr['tabTitlePaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $tab_title_left_padding, $attr['tabTitlePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $tab_title_right_padding, $attr['tabTitlePaddingUnit'] ),
 		'color'          => $attr['headerTextColor'],
 	),
-	'.uagb-tabs__wrap div.uagb-tabs__panel li.uagb-tab'    => array(
+	'.uagb-tabs__wrap ul.uagb-tabs__panel li.uagb-tab'     => array(
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['tabTitleTopMargin'], $attr['tabTitleMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['tabTitleLeftMargin'], $attr['tabTitleMarginUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['tabTitleRightMargin'], $attr['tabTitleMarginUnit'] ),
@@ -62,7 +62,7 @@ $selectors = array(
 	' .uagb-tabs__panel .uagb-tab.uagb-tabs__active'       => array(
 		'background' => $attr['activeTabBgColor'],
 	),
-	'.uagb-tabs__wrap div.uagb-tabs__panel li.uagb-tab.uagb-tabs__active a' => array(
+	'.uagb-tabs__wrap ul.uagb-tabs__panel li.uagb-tab.uagb-tabs__active a' => array(
 		'color' => $attr['activeTabTextColor'],
 	),
 	' .uagb-tabs__panel .uagb-tab.uagb-tabs__active .uagb-tabs__icon svg' => array(
@@ -109,7 +109,7 @@ $selectors = array(
 		'border-width' => '0px',
 		'border-style' => 'none',
 	),
-	'.uagb-tabs__hstyle2-desktop div.uagb-tabs__panel'     => array_merge(
+	'.uagb-tabs__hstyle2-desktop ul.uagb-tabs__panel'      => array_merge(
 		array(
 			'border-top-width'   => '0px',
 			'border-right-width' => '0px',
@@ -206,7 +206,7 @@ $selectors = array(
 	),
 	'.uagb-tabs__vstyle9-desktop > .uagb-tabs__body-wrap'  => $overall_border_css,
 	'.uagb-tabs__vstyle10-desktop'                         => $overall_border_css,
-	'.uagb-tabs__vstyle10-desktop div.uagb-tabs__panel .uagb-tab' => array(
+	'.uagb-tabs__vstyle10-desktop ul.uagb-tabs__panel .uagb-tab' => array(
 		'border-width' => '0px',
 		'border-style' => 'none',
 	),
@@ -214,7 +214,7 @@ $selectors = array(
 		'border-width' => '0px',
 		'border-style' => 'none',
 	),
-	'.uagb-tabs__vstyle10-desktop div.uagb-tabs__panel .uagb-tab.uagb-tabs__active' => array_merge(
+	'.uagb-tabs__vstyle10-desktop ul.uagb-tabs__panel .uagb-tab.uagb-tabs__active' => array_merge(
 		array(
 			'border-top-width'    => '0px',
 			'border-bottom-width' => '0px',
@@ -229,17 +229,17 @@ $selectors = array(
 	),
 );
 if ( 'left' === $attr['tabAlign'] ) {
-	$selectors[' div.uagb-tabs__panel'] = array(
+	$selectors[' ul.uagb-tabs__panel'] = array(
 		'margin-right' => 'auto',
 		'margin-left'  => 0,
 	);
 } elseif ( 'right' === $attr['tabAlign'] ) {
-	$selectors[' div.uagb-tabs__panel'] = array(
+	$selectors[' ul.uagb-tabs__panel'] = array(
 		'margin-left'  => 'auto',
 		'margin-right' => 0,
 	);
 } else {
-	$selectors[' div.uagb-tabs__panel'] = array(
+	$selectors[' ul.uagb-tabs__panel'] = array(
 		'margin' => 'auto',
 	);
 }
@@ -248,13 +248,13 @@ $m_selectors = array(
 		'height' => UAGB_Helper::get_css_value( $attr['iconSizeMobile'], 'px' ),
 		'width'  => UAGB_Helper::get_css_value( $attr['iconSizeMobile'], 'px' ),
 	),
-	'.uagb-tabs__wrap div.uagb-tabs__panel li.uagb-tab a ' => array(
+	'.uagb-tabs__wrap ul.uagb-tabs__panel li.uagb-tab a '  => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['tabTitleTopPaddingMobile'], $attr['mobiletabTitlePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['tabTitleBottomPaddingMobile'], $attr['mobiletabTitlePaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['tabTitleLeftPaddingMobile'], $attr['mobiletabTitlePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['tabTitleRightPaddingMobile'], $attr['mobiletabTitlePaddingUnit'] ),
 	),
-	'.uagb-tabs__wrap div.uagb-tabs__panel li.uagb-tab'    => array(
+	'.uagb-tabs__wrap ul.uagb-tabs__panel li.uagb-tab'     => array(
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['tabTitleTopMarginMobile'], $attr['mobiletabTitleMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['tabTitleLeftMarginMobile'], $attr['mobiletabTitleMarginUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['tabTitleRightMarginMobile'], $attr['mobiletabTitleMarginUnit'] ),
@@ -288,7 +288,7 @@ $m_selectors = array(
 		'border-width' => '0px',
 		'border-style' => 'none',
 	),
-	'.uagb-tabs__hstyle2-mobile div.uagb-tabs__panel'      => array_merge(
+	'.uagb-tabs__hstyle2-mobile ul.uagb-tabs__panel'       => array_merge(
 		array(
 			'border-top-width'   => '0px',
 			'border-right-width' => '0px',
@@ -385,7 +385,7 @@ $m_selectors = array(
 	),
 	'.uagb-tabs__vstyle9-mobile > .uagb-tabs__body-wrap'   => $overall_border_mobile,
 	'.uagb-tabs__vstyle10-mobile'                          => $overall_border_mobile,
-	'.uagb-tabs__vstyle10-mobile div.uagb-tabs__panel .uagb-tab' => array(
+	'.uagb-tabs__vstyle10-mobile ul.uagb-tabs__panel .uagb-tab' => array(
 		'border-width' => '0px',
 		'border-style' => 'none',
 	),
@@ -393,7 +393,7 @@ $m_selectors = array(
 		'border-width' => '0px',
 		'border-style' => 'none',
 	),
-	'.uagb-tabs__vstyle10-mobile div.uagb-tabs__panel .uagb-tab.uagb-tabs__active' => array_merge(
+	'.uagb-tabs__vstyle10-mobile ul.uagb-tabs__panel .uagb-tab.uagb-tabs__active' => array_merge(
 		array(
 			'border-top-width'    => '0px',
 			'border-bottom-width' => '0px',
@@ -459,13 +459,13 @@ $t_selectors = array(
 		'height' => UAGB_Helper::get_css_value( $attr['iconSizeTablet'], 'px' ),
 		'width'  => UAGB_Helper::get_css_value( $attr['iconSizeTablet'], 'px' ),
 	),
-	'.uagb-tabs__wrap div.uagb-tabs__panel li.uagb-tab a ' => array(
+	'.uagb-tabs__wrap ul.uagb-tabs__panel li.uagb-tab a '  => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['tabTitleTopPaddingTablet'], $attr['tablettabTitlePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['tabTitleBottomPaddingTablet'], $attr['tablettabTitlePaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['tabTitleLeftPaddingTablet'], $attr['tablettabTitlePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['tabTitleRightPaddingTablet'], $attr['tablettabTitlePaddingUnit'] ),
 	),
-	'.uagb-tabs__wrap div.uagb-tabs__panel li.uagb-tab '   => array(
+	'.uagb-tabs__wrap ul.uagb-tabs__panel li.uagb-tab '    => array(
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['tabTitleTopMarginTablet'], $attr['tablettabTitleMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['tabTitleLeftMarginTablet'], $attr['tablettabTitleMarginUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['tabTitleRightMarginTablet'], $attr['tablettabTitleMarginUnit'] ),
@@ -499,7 +499,7 @@ $t_selectors = array(
 		'border-width' => '0px',
 		'border-style' => 'none',
 	),
-	'.uagb-tabs__hstyle2-tablet div.uagb-tabs__panel'      => array_merge(
+	'.uagb-tabs__hstyle2-tablet ul.uagb-tabs__panel'       => array_merge(
 		array(
 			'border-top-width'   => '0px',
 			'border-right-width' => '0px',
@@ -596,7 +596,7 @@ $t_selectors = array(
 	),
 	'.uagb-tabs__vstyle9-tablet > .uagb-tabs__body-wrap'   => $overall_border_tablet,
 	'.uagb-tabs__vstyle10-tablet'                          => $overall_border_tablet,
-	'.uagb-tabs__vstyle10-tablet div.uagb-tabs__panel .uagb-tab' => array(
+	'.uagb-tabs__vstyle10-tablet ul.uagb-tabs__panel .uagb-tab' => array(
 		'border-width' => '0px',
 		'border-style' => 'none',
 	),
@@ -604,7 +604,7 @@ $t_selectors = array(
 		'border-width' => '0px',
 		'border-style' => 'none',
 	),
-	'.uagb-tabs__vstyle10-tablet div.uagb-tabs__panel .uagb-tab.uagb-tabs__active' => array_merge(
+	'.uagb-tabs__vstyle10-tablet ul.uagb-tabs__panel .uagb-tab.uagb-tabs__active' => array_merge(
 		array(
 			'border-top-width'    => '0px',
 			'border-bottom-width' => '0px',
