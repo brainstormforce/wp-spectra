@@ -65,6 +65,7 @@ class Common_Settings extends Ajax_Base {
 			'preload_local_fonts',
 			'collapse_panels',
 			'copy_paste',
+			'social',
 			'dynamic_content_mode',
 			'content_width',
 			'container_global_padding',
@@ -684,6 +685,60 @@ class Common_Settings extends Ajax_Base {
 	 *
 	 * @return void
 	 */
+	public function social() {
+		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_social', 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		if ( empty( $_POST ) ) {
+			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		$social = \UAGB_Admin_Helper::get_admin_settings_option(
+			'uag_social',
+			array(
+				'socialRegister'    => false,
+				'googleClientId'    => '',
+				'facebookAppId'     => '',
+				'facebookAppSecret' => '',
+			)
+		);
+		if ( isset( $_POST['socialRegister'] ) ) {
+			$social['socialRegister'] = (bool) rest_sanitize_boolean( $_POST['socialRegister'] );
+		}
+		if ( isset( $_POST['googleClientId'] ) ) {
+			$social['googleClientId'] = sanitize_text_field( $_POST['googleClientId'] );
+		}
+		if ( isset( $_POST['facebookAppId'] ) ) {
+			$social['facebookAppId'] = sanitize_text_field( $_POST['facebookAppId'] );
+		}
+		if ( isset( $_POST['facebookAppSecret'] ) ) {
+			$social['facebookAppSecret'] = sanitize_text_field( $_POST['facebookAppSecret'] );
+		}
+
+		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_social', $social );
+
+		$response_data = array(
+			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
+		);
+		wp_send_json_success( $response_data );
+	}
+	/**
+	 * Save settings.
+	 *
+	 * @return void
+	 */
 	public function dynamic_content_mode() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
@@ -700,11 +755,6 @@ class Common_Settings extends Ajax_Base {
 			wp_send_json_error( $response_data );
 		}
 
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
 		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_dynamic_content_mode', sanitize_text_field( $_POST['value'] ) );
 
 		$response_data = array(
@@ -713,6 +763,7 @@ class Common_Settings extends Ajax_Base {
 		wp_send_json_success( $response_data );
 
 	}
+
 	/**
 	 * Save settings.
 	 *

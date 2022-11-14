@@ -36,6 +36,7 @@ const setInitialState = ( store ) => {
 			containerGlobalElementsGap: data.uag_container_global_elements_gap,
 			enableFontAwesome5: data.uag_load_font_awesome_5,
 			enableAutoBlockRecovery: data.uag_auto_block_recovery,
+			social: data.social
         };
 
         store.dispatch( {type: 'UPDATE_INITIAL_STATE', payload: initialState} );

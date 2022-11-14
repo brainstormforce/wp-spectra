@@ -496,6 +496,26 @@ const UAGB_Block_Icons = {
 			strokeWidth: 1.4,
 		} ),
 	),
+	'login': el(
+		'svg',
+		{ width: 40, height: 40, viewBox: '0 0 24 24', fill: 'none' },
+		el( 'path', {
+			d: 'M12 16L16 12M16 12L12 8M16 12L4 12M7 16V17C7 18.6569 8.34315 20 10 20H17C18.6569 20 20 18.6569 20 17V7C20 5.34315 18.6569 4 17 4H10C8.34315 4 7 5.34315 7 7V8',
+			stroke: iconColor,
+			strokeWidth: 1.4,
+			strokeLinecap: 'round',
+			strokeLinejoin: 'round',
+		} ),
+	),
+	'register': el(
+		'svg',
+		{ width: 40, height: 40, viewBox: '0 0 24 24', fill: 'none' },
+		el( 'path', {
+			d: 'M11 19H1C1 15.134 4.13401 12 8 12C9.0736 12 10.0907 12.2417 11 12.6736M14 13V16M14 16V19M14 16H11M14 16H17M12 5C12 7.20914 10.2091 9 8 9C5.79086 9 4 7.20914 4 5C4 2.79086 5.79086 1 8 1C10.2091 1 12 2.79086 12 5Z',
+			stroke: iconColor,
+			strokeWidth: 1.4,
+		} ),
+	),
 	'dynamic-content': el(
 		'svg',
 		{ width: 40, height: 40, viewBox: '0 0 24 24', fill: 'none' },

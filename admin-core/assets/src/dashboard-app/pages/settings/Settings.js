@@ -14,6 +14,7 @@ import LoadFontsLocally from '@DashboardApp/pages/settings/LoadFontsLocally';
 import PreloadLocalFonts from '@DashboardApp/pages/settings/PreloadLocalFonts';
 import CollapsePanels from '@DashboardApp/pages/settings/CollapsePanels';
 import CopyPasteStyles from '@DashboardApp/pages/settings/CopyPasteStyles';
+import Login from '@DashboardApp/pages/settings/block-settings/Login';
 import DynamicContent from './dynamic-content';
 import ContentWidth from '@DashboardApp/pages/settings/ContentWidth';
 import BlocksEditorSpacing from '@DashboardApp/pages/settings/BlocksEditorSpacing';
@@ -26,6 +27,7 @@ import ContainerGlobalPadding from '@DashboardApp/pages/settings/ContainerGlobal
 import ContainerGlobalElementsGap from '@DashboardApp/pages/settings/ContainerGlobalElementsGap';
 import { Link, useLocation } from 'react-router-dom';
 import{ useEffect } from 'react';
+
 
 function classNames( ...classes ) {
     return classes.filter( Boolean ).join( ' ' )
@@ -48,12 +50,6 @@ const Settings = () => {
 		{ name: __( 'Block Settings', 'ultimate-addons-for-gutenberg' ), slug: 'block-settings', icon: SettingsIcons['block-settings'] },
 		{ name: __( 'Coming Soon', 'ultimate-addons-for-gutenberg' ), slug: 'coming-soon', icon: SettingsIcons['coming-soon'] },
     ];
-
-	if ( uag_react.spectra_pro_status ) {
-		navigation.push(
-			{ name: __( 'Block Settings', 'ultimate-addons-for-gutenberg' ), slug: 'block-settings', icon: SettingsIcons['global-settings'] }
-		);
-	}
 
 	useEffect( () => {
 		// Activate Setting Active Tab from "settingsTab" Hash in the URl is present.
@@ -144,9 +140,16 @@ const Settings = () => {
                             </>
                         }
                         { 'block-settings' === activeSettingsNavigationTab &&
-                            <>
+							<>
+								{
+									uag_react.spectra_pro_status && (
+										<Login />
+									)
+								}
+								<CollapsePanels/>
+								<CopyPasteStyles/>
 								<BlockSettings/>
-                            </>
+							</>
                         }
                         {
                             'coming-soon' === activeSettingsNavigationTab &&
