@@ -1,7 +1,7 @@
 /* --------- Common Image and Icon Picker Styles --------- */
 
 .spectra-media-control {
-
+	position: relative;
 	// The Overall Wrapper.
 	&__wrapper {
 		height: $spectra-control-mediapicker-height;
@@ -127,6 +127,45 @@
 
 		& + .spectra-media-control__clickable--replace {
 			position: relative;
+		}
+	}
+
+	.spectra-media-control__footer {
+		background: #f0f0f1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.uag-control-label {
+			flex-grow: 1;
+			height: 26px;
+			margin-bottom: 0;
+			border: 0;
+			padding: 0;
+			cursor: pointer;
+			font-size: 12px;
+		}
+		// dynamic image extender
+		.spectra-btn-image-extender {
+			border-top: 0;
+			border-bottom: 0;
+			border-right: 0;
+			border-left: 1px solid #e6e7e9;
+			padding: 0;
+			width: 40px;
+			height: 26px;
+			color: #e6e7e9;
+			display: flex;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+
+			svg {
+				width: 16px;
+				stroke: #808285;
+				stroke-width: 1.4;
+				fill: none;
+			}
 		}
 	}
 }

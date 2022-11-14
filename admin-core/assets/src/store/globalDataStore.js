@@ -27,6 +27,8 @@ const initialState = {
 		facebookAppId: '',
 		facebookAppSecret: ''
 	},
+	enableDynamicContentExtension: '',
+	dynamicContentMode: 'popup',
 	enableResponsiveConditions : '',
 	contentWidth: '',
 	siteKeyV2: '',
