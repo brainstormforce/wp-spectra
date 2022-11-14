@@ -42,7 +42,6 @@ const Render = ( props ) => {
 
 	const renderEditMode = () => {
 		const onDone = () => {
-			const { setAttributes } = props.parentProps;
 			setAttributes( {
 				layoutConfig: getPostLayoutConfig( block ),
 			} );

@@ -28,11 +28,10 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes, deviceType, name } = props;
+	const { attributes, deviceType, name, setAttributes } = props;
 
 	const renderEditMode = () => {
 		const onDone = () => {
-			const { setAttributes } = props;
 			setAttributes( {
 				layoutConfig: getPostLayoutConfig( block ),
 			} );

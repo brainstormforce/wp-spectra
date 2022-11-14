@@ -97,7 +97,7 @@ const PostTimelineComponent = ( props ) => {
                     props.setAttributes( { timelinAlignmentTablet: timelinAlignment } );
                 }
             }
-        }	
+        }
 
 	}, [] );
 
@@ -117,7 +117,7 @@ const PostTimelineComponent = ( props ) => {
 			detail: {},
 		} );
 		document.dispatchEvent( loadPostTimelineEditor );
-		
+
 	}, [ props, deviceType ] );
 
 
@@ -126,8 +126,7 @@ const PostTimelineComponent = ( props ) => {
 	}, [deviceType] );
 
 	let categoriesList = [];
-	// let latestPosts = [];
-	// let taxonomyList = [];
+
 	const { latestPosts, taxonomyList, block } = useSelect( // eslint-disable-line no-unused-vars
 		( select ) => {
 			const {

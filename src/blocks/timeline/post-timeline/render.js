@@ -28,7 +28,7 @@ const Render = ( props ) => {
 	props = props.parentProps;
 	const blockName = props.name.replace( 'uagb/', '' );
 	const deviceType = useDeviceType();
-	const { attributes, className } = props;
+	const { attributes, className, setAttributes } = props;
 
 	const {
 		isPreview,
