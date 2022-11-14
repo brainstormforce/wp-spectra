@@ -131,10 +131,11 @@
 	}
 
 	.spectra-media-control__footer {
-		background: #F0F0F1;
+		background: #f0f0f1;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+
 		.uag-control-label {
 			flex-grow: 1;
 			height: 26px;
@@ -149,18 +150,19 @@
 			border-top: 0;
 			border-bottom: 0;
 			border-right: 0;
-			border-left: 1px solid #E6E7E9;
+			border-left: 1px solid #e6e7e9;
 			padding: 0;
 			width: 40px;
 			height: 26px;
-			color: #E6E7E9;
+			color: #e6e7e9;
 			display: flex;
 			text-align: center;
 			justify-content: center;
 			align-items: center;
+
 			svg {
 				width: 16px;
-				stroke: #808285;;
+				stroke: #808285;
 				stroke-width: 1.4;
 				fill: none;
 			}
