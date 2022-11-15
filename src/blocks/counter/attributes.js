@@ -828,65 +828,110 @@ const attributes = {
 	iconTopMargin : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-top-margin'
+		},
 	},
 	iconRightMargin : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-right-margin'
+		},
 	},
 	iconLeftMargin : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-left-margin'
+		},
 	},
 	iconBottomMargin : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-bottom-margin'
+		},
 	},
 	iconTopMarginTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-top-margin-tablet'
+		},
 	},
 	iconRightMarginTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-right-margin-tablet'
+		},
 	},
 	iconLeftMarginTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-left-margin-tablet'
+		},
 	},
 	iconBottomMarginTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-bottom-margin-tablet'
+		},
 	},
 	iconTopMarginMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-top-margin-mobile'
+		},
 	},
 	iconRightMarginMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-right-margin-mobile'
+		},
 	},
 	iconLeftMarginMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-left-margin-mobile'
+		},
 	},
 	iconBottomMarginMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-bottom-margin-mobile'
+		},
 	},
 	iconMarginUnit : {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-margin-unit'
+		}
 	},
 	iconMarginUnitTablet: {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-margin-unit-tablet'
+		}
 	},
 	iconMarginUnitMobile : {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-margin-unit-mobile'
+		}
 	},
 	iconMarginLink: {
 		type: 'boolean',
