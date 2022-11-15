@@ -85,6 +85,7 @@ const buttonsPresetsCTA = [
         value: 'preset-1',
         label: __( 'Preset 1', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'showIcon',  value: false },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 0 },
             { label: 'btnBorderTopRightRadius', value: 0 },
@@ -98,6 +99,7 @@ const buttonsPresetsCTA = [
         value: 'preset-2',
         label: __( 'Preset 2', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'showIcon',  value: false },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 5 },
             { label: 'btnBorderTopRightRadius', value: 5 },
@@ -110,6 +112,7 @@ const buttonsPresetsCTA = [
         value: 'preset-3',
         label: __( 'Preset 3', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'showIcon',  value: false },
             { label: 'btnBorderStyle', value: 'none' },
             { label: 'btnBorderTopLeftRadius', value: 30 },
             { label: 'btnBorderTopRightRadius', value: 30 },
@@ -136,6 +139,7 @@ const buttonsPresetsCTA = [
         value: 'preset-5',
         label: __( 'Preset 5', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'showIcon',  value: false },
 			{ label: 'ctaBgType', value: 'transparent' },
 			{ label: 'ctaBgHoverColor', value: '#3a3a3a' },
 			{ label: 'ctaBtnLinkColor', value: '#0170b9' },
@@ -157,6 +161,7 @@ const buttonsPresetsCTA = [
         value: 'preset-6',
         label: __( 'Preset 6', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'showIcon',  value: false },
 			{ label: 'ctaBgType', value: 'transparent' },
 			{ label: 'ctaBgHoverColor', value: '#3a3a3a' },
 			{ label: 'ctaBtnLinkColor', value: '#0170b9' },
@@ -178,6 +183,7 @@ const buttonsPresetsCTA = [
         value: 'preset-7',
         label: __( 'Preset 7', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'showIcon',  value: false },
 			{ label: 'ctaBgType', value: 'transparent' },
 			{ label: 'ctaBgHoverColor', value: '#3a3a3a' },
 			{ label: 'ctaBtnLinkColor', value: '#0170b9' },
@@ -249,6 +255,7 @@ const buttonsPresetsAdditionalButton = [
         value: 'preset-1',
         label: __( 'Preset 1', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'showSecondIcon',  value: false },
             { label: 'secondCtaBorderStyle', value: 'none' },
             { label: 'secondCtaBorderTopLeftRadius', value: 0 },
             { label: 'secondCtaBorderTopRightRadius', value: 0 },
@@ -262,6 +269,7 @@ const buttonsPresetsAdditionalButton = [
         value: 'preset-2',
         label: __( 'Preset 2', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'showSecondIcon',  value: false },
             { label: 'secondCtaBorderStyle', value: 'none' },
             { label: 'secondCtaBorderTopLeftRadius', value: 5 },
             { label: 'secondCtaBorderTopRightRadius', value: 5 },
@@ -274,6 +282,7 @@ const buttonsPresetsAdditionalButton = [
         value: 'preset-3',
         label: __( 'Preset 3', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'showSecondIcon',  value: false },
             { label: 'secondCtaBorderStyle', value: 'none' },
             { label: 'secondCtaBorderTopLeftRadius', value: 30 },
             { label: 'secondCtaBorderTopRightRadius', value: 30 },
@@ -300,6 +309,7 @@ const buttonsPresetsAdditionalButton = [
         value: 'preset-5',
         label: __( 'Preset 5', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'showSecondIcon',  value: false },
 			{ label: 'secondCtaBgType', value: 'transparent' },
 			{ label: 'secondCtaHoverBackground', value: '#3a3a3a' },
 			{ label: 'secondCtaColor', value: '#0170b9' },
@@ -321,6 +331,7 @@ const buttonsPresetsAdditionalButton = [
         value: 'preset-6',
         label: __( 'Preset 6', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'showSecondIcon',  value: false },
 			{ label: 'secondCtaBgType', value: 'transparent' },
 			{ label: 'secondCtaHoverBackground', value: '#3a3a3a' },
 			{ label: 'secondCtaColor', value: '#0170b9' },
@@ -343,6 +354,7 @@ const buttonsPresetsAdditionalButton = [
         value: 'preset-7',
         label: __( 'Preset 7', 'ultimate-addons-for-gutenberg' ),
         attributes: [
+			{ label: 'showSecondIcon',  value: false },
 			{ label: 'secondCtaBgType', value: 'transparent' },
 			{ label: 'secondCtaHoverBackground', value: '#3a3a3a' },
 			{ label: 'secondCtaColor', value: '#0170b9' },
