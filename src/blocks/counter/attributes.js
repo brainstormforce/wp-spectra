@@ -760,65 +760,110 @@ const attributes = {
 	iconTopPadding : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-top-padding'
+		},
 	},
 	iconRightPadding : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-right-padding'
+		},
 	},
 	iconLeftPadding : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-left-padding'
+		},
 	},
 	iconBottomPadding : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-bottom-padding'
+		},
 	},
 	iconTopPaddingTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-top-padding-tablet'
+		},
 	},
 	iconRightPaddingTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-right-padding-tablet'
+		},
 	},
 	iconLeftPaddingTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-left-padding-tablet'
+		},
 	},
 	iconBottomPaddingTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-bottom-padding-tablet'
+		},
 	},
 	iconTopPaddingMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-top-padding-mobile'
+		},
 	},
 	iconRightPaddingMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-right-padding-mobile'
+		},
 	},
 	iconLeftPaddingMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-left-padding-mobile'
+		},
 	},
 	iconBottomPaddingMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-bottom-padding-mobile'
+		},
 	},
 	iconPaddingUnit : {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-padding-unit'
+		},
 	},
 	iconPaddingUnitTablet: {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-padding-unit-tablet'
+		},
 	},
 	iconPaddingUnitMobile : {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-padding-unit-mobile'
+		},
 	},
 	iconPaddingLink: {
 		type: 'boolean',
