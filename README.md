@@ -171,34 +171,34 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 2.0.15 - TUESDAY, 15th NOVEMBER 2022 ###
-* Improvement: Highlight selected text on editor in Spectra blocks.
-* Improvement: Responsive Conditions - Slanted lines are not visible in the editor.
-* Improvement: Post Carousel/Masonry/Grid - Button text is now editable inside the editor.
-* Improvement: Call To Action - CTA button text is now editable inside the editor.
-* Improvement: Post Timeline - Button text is now editable inside the editor.
-* Improvement: Info-Box - Add responsive feature in Info Box Icon width.
-* Improvement: Call to Action: Added show icon toggle.
-* Improvement: FAQ: Added background type selector for the question-answer container.
-* Improvement: Forms: Added background type selector for submit button.
-* Improvement: Info Box: Added background type selector for CTA.
-* Improvement: Info Box: Added show icon toggle for CTA.
-* Improvement: Post Carousel: Added background type selector.
-* Improvement: Post (Grid/Masonry/Carousel): Added background type selector for CTA.
-* Improvement: Implemented CLS for all the blocks which have image tag.
-* Improvement: Spectra Text Control: New text component in settings for a more consistent styling.
-* Fix: Admin Dashboard - Font dropdown control was going under the section.
-* Fix: Table Of Contents - Alignment issue of marker's view.
-* Fix: Marketing Button - Block does not remain in the stack order when the Blocksy theme is active.
-* Fix: Call To Action - Second button CSS style issue on the frontend.
-* Fix: Scroll to specific block not working when switch from desktop/tablet/mobile.
-* Fix: Post Block - Article tag class conflicting with TranslatePress plugin.
-* Fix: Presets - Most presets used to override background color, box-shadow color, text content and even selected icons; This has been fixed where ever possible.
-* Fix: Info Box - The title is disabled on the editor if we set P tag.
-* Fix: Tabs block - Aria mismatch issue on the lighthouse.
-* Fix: Image block - Negative margin is not working inside container.
-* Fix: Responsive condition does not save when we use the Legacy Widget.
-* Fix: Removed deprecated __experimentalGetSettings and used getSettings for Date.
-* Fix: Block encounter an issue with react hook withSelect.
+* Improvement: Info Box - Added Responsive feature to the Info Box icon width setting.
+* Improvement: Info Box - Added a background type selector for the call-to-action.
+* Improvement: Info Box - Added a toggle to show/hide the call-to-action icons.
+* Improvement: Call To Action - Added support to edit the button labels directly in the editor.
+* Improvement: Call To Action - Added a toggle to show/hide the button icon.
+* Improvement: FAQ - Added a background type selector for the question-answer container.
+* Improvement: Forms - Added a background type selector for the submit button.
+* Improvement: Post Carousel/Grid/Masonry - Added support to edit the button labels directly in the editor.
+* Improvement: Post Carousel/Grid/Masonry - Added a background type selector for the call-to-action.
+* Improvement: Post Carousel - Added a background type selector.
+* Improvement: Post Timeline - Added support to edit the button labels directly in the editor.
+* Improvement: Responsive Conditions - Added slanted lines to identify hidden blocks for each device type in the editor.
+* Improvement: Text Control - Updated and Implemented a new and improved Text Control across Spectra settings for a more consistent user interface.
+* Improvement: Global - Implemented CLS for all the blocks which have an image tag.
+* Improvement: Global - Updated the highlighter color for Spectra blocks.
+* Fix: Image - Resolved the issue where the negative margins are ineffective inside a Container.
+* Fix: Info Box - Resolved an issue with the title being disabled in the editor when the paragraph tag is used.
+* Fix: Call To Action - Resolved the second button CSS style issue on the front end.
+* Fix: Marketing Button - Resolved the issue with the Blocksy Theme where the block does not remain in the stacked order.
+* Fix: Post Carousel/Grid/Masonry - Resolved the article tag class conflict with the TranslatePress plugin.
+* Fix: Table Of Contents - Resolved an issue regarding the marker alignments.
+* Fix: Tabs - Resolved the aria mismatch issue with Lighthouse.
+* Fix: Presets - Updated presets to remove the override for background color, box-shadow color, text content and even selected icons.
+* Fix: Responsive Conditions - Resolved an issue where the responsive conditions do not save when using a Legacy Block.
+* Fix: Global - Removed the deprecated "__experimentalGetSettings" and used "getSettings" for date controls.
+* Fix: Global - Resolved the scroll-to-specific-block feature not working when switching between desktop/tablet/mobile.
+* Fix: Global - Prevented most blocks from encountering an issue with the react hook "withSelect".
+* Fix: Admin Dashboard - Prevented the font selection dropdown from getting cut off when expanded.
 
 ### 2.0.14 - TUESDAY, 08th NOVEMBER 2022 ###
 * Improvement: Compatibility with WordPress 6.1.
