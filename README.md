@@ -199,6 +199,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Responsive condition does not save when we use the Legacy Widget.
 * Fix: Removed deprecated __experimentalGetSettings and used getSettings for Date.
 * Fix: Block encounter an issue with react hook withSelect.
+* Fix: Border - Misaligned reset control button issue.
 
 ### 2.0.14 - TUESDAY, 08th NOVEMBER 2022 ###
 * Improvement: Compatibility with WordPress 6.1.
