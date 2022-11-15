@@ -44,6 +44,15 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
 				self::$instance = new self();
+
+				/**
+				 * Spectra loaded.
+				 *
+				 * Fires when Spectra was fully loaded and instantiated.
+				 *
+				 * @since 2.1.0
+				 */
+				do_action( 'spectra_core_loaded' );
 			}
 			return self::$instance;
 		}
