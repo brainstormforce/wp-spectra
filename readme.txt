@@ -200,6 +200,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Global - Resolved the scroll-to-specific-block feature not working when switching between desktop/tablet/mobile.
 * Fix: Global - Prevented most blocks from encountering an issue with the react hook "withSelect".
 * Fix: Admin Dashboard - Prevented the font selection dropdown from getting cut off when expanded.
+* Fix: Tabs - Layout fixed when preset is selected.
 
 = 2.0.14 - TUESDAY, 08th NOVEMBER 2022 =
 * Improvement: Compatibility with WordPress 6.1.
