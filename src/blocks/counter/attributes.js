@@ -785,18 +785,30 @@ const attributes = {
 	circleSize: {
 		type: 'number',
 		default: 230,
+		UAGCopyPaste: {
+			styleType: 'circle-size'
+		},
 	},
 	circleStokeSize: {
 		type: 'number',
 		default: 8,
+		UAGCopyPaste: {
+			styleType: 'circle-stroke-size'
+		},
 	},
 	circleForeground : {
 		type: 'string',
 		default: '#007cba',
+		UAGCopyPaste: {
+			styleType: 'circle-foreground'
+		},
 	},
 	circleBackground : {
 		type: 'string',
 		default: '#eaeaea',
+		UAGCopyPaste: {
+			styleType: 'circle-background'
+		},
 	},
 	// bar
 	barSize: {
