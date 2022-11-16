@@ -1,6 +1,5 @@
 import React from 'react';
-import Select from 'react-select'
-import { __ } from '@wordpress/i18n';
+import Select from 'react-select';
 import PropTypes from 'prop-types';
 
 const propTypes = {
@@ -18,19 +17,21 @@ const defaultProps = {
 	setAttributes: () => {}
 };
 
-export default function UAGMultiSelectControl({options, data, setAttributes}) {
+export default function UAGMultiSelectControl( {options, data, setAttributes} ) {
 	return (
-		<React.Fragment>
+		<div className="components-base-control">
 			<Select
 				options={options}
-				defaultValue={options.filter((item) => data.value.includes(item.value))}
-				onChange={(option) => setAttributes({[data.label]: option.reduce((acc, current) => {
-					acc.push(current.value);
+				defaultValue={options.filter( ( item ) => data.value.includes( item.value ) )}
+				onChange={( option ) => setAttributes( {[data.label]: option.reduce( ( acc, current ) => {
+					acc.push( current.value );
 					return acc;
-				}, [])})}
+				}, [] )} )}
+				classNamePrefix={'spectra-multi-select'}
+				className={'spectra-multi-select'}
 				isMulti
 			/>
-		</React.Fragment>
+		</div>
 	);
 }
 

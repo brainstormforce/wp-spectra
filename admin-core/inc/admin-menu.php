@@ -220,8 +220,9 @@ class Admin_Menu {
 				'reusable_url'             => esc_url( admin_url( 'edit.php?post_type=wp_block' ) ),
 				'global_data'              => Admin_Helper::get_options(),
 				'uag_content_width_set_by' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_content_width_set_by', __( 'Spectra', 'ultimate-addons-for-gutenberg' ) ),
-				'spectra_pro_status'       => is_plugin_active( 'uag-pro/uag-pro.php' ),
+				'spectra_pro_status'       => is_plugin_active( 'uag-pro/spectra-pro.php' ),
 				'spectra_custom_fonts'     => apply_filters( 'spectra_system_fonts', array() ),
+				'is_allow_registration'    => (bool) get_option( 'users_can_register' ),
 			)
 		);
 

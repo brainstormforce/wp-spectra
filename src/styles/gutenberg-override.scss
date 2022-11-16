@@ -1,5 +1,7 @@
 /* --------- Overwriting All Gutenberg Components Inside Spectra Panels --------- */
 
+.block-editor-block-popover__dynamic-content,
+.components-panel .uagb-dynamic-content-wrap,
 .components-panel .uagb-inspector-tab {
 
 	// Text and Number Controls.
@@ -9,6 +11,18 @@
 		border-color: $spectra-color-border;
 		border-radius: $spectra-control-border-radius;
 		padding: $spectra-control-input-padding;
+
+		&::-webkit-input-placeholder { /* Edge */
+			color: #aaa;
+		}
+
+		&:-ms-input-placeholder { /* Internet Explorer 10-11 */
+			color: #aaa;
+		}
+
+		&::placeholder {
+			color: #aaa;
+		}
 
 		&:focus {
 			border-color: $spectra-color-border-hover;
@@ -135,8 +149,8 @@
 		}
 
 		.components-input-control__backdrop {
-			border-color: $spectra-color-border;
-			border-radius: $spectra-control-border-radius;
+			border-color: $spectra-color-border !important;
+			border-radius: $spectra-control-border-radius !important;
 			box-shadow: unset;
 		}
 

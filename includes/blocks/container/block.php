@@ -18,6 +18,9 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'priority'         => 1,
+	'dynamic_assets'   => array(
+		'dir' => 'container',
+	),
 	'deprecated'       => false,
 	'dynamic_assets'   => array(
 		'dir' => 'container',
