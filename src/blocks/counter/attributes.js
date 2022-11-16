@@ -184,65 +184,110 @@ const attributes = {
 	blockTopPadding : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-top-padding'
+		}
 	},
 	blockRightPadding : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-right-padding'
+		}
 	},
 	blockLeftPadding : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-left-padding'
+		}
 	},
 	blockBottomPadding : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-bottom-padding'
+		}
 	},
 	blockTopPaddingTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-top-padding-tablet'
+		}
 	},
 	blockRightPaddingTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-right-padding-tablet'
+		}
 	},
 	blockLeftPaddingTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-left-padding-tablet'
+		}
 	},
 	blockBottomPaddingTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-bottom-padding-tablet'
+		}
 	},
 	blockTopPaddingMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-top-padding-mobile'
+		}
 	},
 	blockRightPaddingMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-right-padding-mobile'
+		}
 	},
 	blockLeftPaddingMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-left-padding-mobile'
+		}
 	},
 	blockBottomPaddingMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-bottom-padding-mobile'
+		}
 	},
 	blockPaddingUnit : {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-padding-unit'
+		}
 	},
 	blockPaddingUnitTablet: {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-padding-unit-tablet'
+		}
 	},
 	blockPaddingUnitMobile : {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-padding-unit-mobile'
+		}
 	},
 	blockPaddingLink: {
 		type: 'boolean',
