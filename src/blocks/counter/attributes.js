@@ -745,23 +745,41 @@ const attributes = {
 	prefixRightDistance: {
 		type: 'number',
 		default: 0,
+		UAGCopyPaste: {
+			styleType: 'prefix-right-margin'
+		},
 	},
 	prefixRightDistanceTablet: {
 		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'prefix-right-margi-tablet'
+		},
 	},
 	prefixRightDistanceMobile: {
 		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'prefix-right-margin-mobile'
+		},
 	},
 	// Suffix
 	suffixLeftDistance: {
 		type: 'number',
 		default: 0,
+		UAGCopyPaste: {
+			styleType: 'suffix-right-margin'
+		},
 	},
 	suffixLeftDistanceTablet: {
 		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'suffix-right-margin-tablet'
+		},
 	},
 	suffixLeftDistanceMobile: {
 		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'suffix-right-margin-mobile'
+		},
 	},
 	// circle
 	circleSize: {
