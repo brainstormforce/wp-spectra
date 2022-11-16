@@ -49,7 +49,6 @@ export default function save( props ) {
 
 	const targetVal = target ? '_blank' : '_self';
 	const linkUrl = disableLink ? link : '/';
-	let disableLinks = disableLink;
 
 	return (
 		<div
@@ -58,7 +57,7 @@ export default function save( props ) {
 				`uagb-block-${ block_id }`
 			) }
 		>
-			{ disableLinks && (
+			{ !disableLink && (
 				<a
 					target={ targetVal }
 					aria-label={ label.replace( /(<([^>]+)>)/ig, '' ) }

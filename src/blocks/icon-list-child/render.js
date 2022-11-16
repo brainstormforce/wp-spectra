@@ -66,8 +66,6 @@ const Render = ( props ) => {
 	const targetVal = target ? '_blank' : '_self';
 	const linkUrl = disableLink ? link : '/';
 
-	let disableLinks = disableLink;
-
 	return (
 		<div
 			className={ classnames(
@@ -76,7 +74,7 @@ const Render = ( props ) => {
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 			) }
 		>
-			{ disableLinks && (
+			{ !disableLink && (
 				<a
 					target={ targetVal }
 					rel="noopener noreferrer"
