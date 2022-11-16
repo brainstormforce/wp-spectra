@@ -343,7 +343,7 @@ const Settings = ( props ) => {
 						setAttributes( { disableLink: ! disableLink } )
 					}
 				/>
-				{ disableLink && (
+				{ !disableLink && (
 					<>
 						<UAGTextControl
 							label={__( 'URL', 'ultimate-addons-for-gutenberg' )}
