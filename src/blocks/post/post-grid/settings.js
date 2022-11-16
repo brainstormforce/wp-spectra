@@ -264,7 +264,8 @@ const Settings = ( props ) => {
 		boxShadowBlurHover,
 		boxShadowSpreadHover,
 		boxShadowPositionHover,
-		enableOffset
+		enableOffset,
+		equalHeightInlineButtons
 	} = attributes;
 
 	const onSelectPostType = ( value ) => {
@@ -1235,6 +1236,16 @@ const Settings = ( props ) => {
 				/>
 				{ displayPostLink && (
 					<>
+						<ToggleControl
+							label={ __(
+								'Show buttons on same height/level',
+								'ultimate-addons-for-gutenberg'
+							) }
+							checked={ equalHeightInlineButtons }
+							onChange={ () =>
+								setAttributes( { equalHeightInlineButtons: ! equalHeightInlineButtons } )
+							}
+						/>
 						<ToggleControl
 							label={ __(
 								'Open links in New Tab',

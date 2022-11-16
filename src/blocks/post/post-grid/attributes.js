@@ -1252,6 +1252,10 @@ const attributes = {
 		type    : 'string',
 		default : ' , ',
 	},
+	equalHeightInlineButtons        : {
+		type    : 'boolean',
+		default : true,
+	},
 	...btnBorderAttributes,
 	...overallBorderAttributes
 }

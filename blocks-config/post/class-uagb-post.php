@@ -170,6 +170,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => 'grid',
 							),
+							'equalHeightInlineButtons'    => array(
+								'type'    => 'boolean',
+								'default' => true,
+							),
 						)
 					),
 					'render_callback' => array( $this, 'post_grid_callback' ),
@@ -1346,6 +1350,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				case 'grid':
 					if ( $attributes['equalHeight'] ) {
 						array_push( $wrap, 'uagb-post__equal-height' );
+					}
+					if ( $attributes['equalHeightInlineButtons'] ) {
+						array_push( $wrap, 'uagb-equal_height_inline-read-more-buttons' );
 					}
 					break;
 
