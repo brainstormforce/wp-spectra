@@ -55,6 +55,8 @@ const UAGBPostMasonry = ( props ) => {
 		innerBlocks: [],
 	} );
 
+	const [ isTaxonomyLoading, setIsTaxonomyLoading] = useState( false );
+
 	useEffect( () => {
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 		const {
@@ -393,11 +395,13 @@ const UAGBPostMasonry = ( props ) => {
 			} = props.attributes;
 			const { getEntityRecords } = select( 'core' );
 
-			if ( ! allTaxonomyStore ) {
+			if ( ! allTaxonomyStore && ! isTaxonomyLoading ) {
+				setIsTaxonomyLoading( true );
 				apiFetch( {
 					path: '/spectra/v1/all_taxonomy',
 				} ).then( ( data ) => {
 					props.setAttributes( { allTaxonomyStore: data } );
+					setIsTaxonomyLoading( false );
 				} );
 			}
 			const allTaxonomy = allTaxonomyStore;
