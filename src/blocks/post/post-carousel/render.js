@@ -10,7 +10,7 @@ import { __ } from '@wordpress/i18n';
 
 import { createBlock } from '@wordpress/blocks';
 
-import { Placeholder, Button, Tip, Disabled } from '@wordpress/components';
+import { Placeholder, Button, Tip } from '@wordpress/components';
 
 import { InnerBlocks } from '@wordpress/block-editor';
 import styles from '.././editor.lazy.scss';
@@ -24,15 +24,14 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { state, setState, togglePreview } = props;
+	const { state, setState, togglePreview, categoriesList, latestPosts, replaceInnerBlocks, block } = props;
 
 	props = props.parentProps;
 
-	const { attributes, categoriesList, latestPosts, deviceType, name } = props;
+	const { attributes, deviceType, name, setAttributes } = props;
 
 	const renderEditMode = () => {
 		const onDone = () => {
-			const { block, setAttributes } = props;
 			setAttributes( {
 				layoutConfig: getPostLayoutConfig( block ),
 			} );
@@ -41,14 +40,12 @@ const Render = ( props ) => {
 		};
 
 		const onCancel = () => {
-			const { replaceInnerBlocks } = props;
 			const { innerBlocks } = state;
 			replaceInnerBlocks( props.clientId, innerBlocks );
 			togglePreview();
 		};
 
 		const onReset = () => {
-			const { block, replaceInnerBlocks } = props;
 			const newBlocks = [];
 			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attribute ] ) => { // eslint-disable-line no-shadow
 				newBlocks.push( createBlock( name, attribute ) );
@@ -112,17 +109,16 @@ const Render = ( props ) => {
 	};
 
 	const renderViewMode = (
-		<Disabled>
-			<Blog
-				attributes={ attributes }
-				className={ props.className }
-				latestPosts={ latestPosts }
-				block_id={ props.clientId.substr( 0, 8 ) }
-				categoriesList={ categoriesList }
-				deviceType={ deviceType }
-				name={ name }
-			/>
-		</Disabled>
+		<Blog
+			attributes={ attributes }
+			className={ props.className }
+			latestPosts={ latestPosts }
+			block_id={ props.clientId.substr( 0, 8 ) }
+			categoriesList={ categoriesList }
+			deviceType={ deviceType }
+			name={ name }
+			setAttributes ={ setAttributes }
+		/>
 	);
 
 	return <>{ state.isEditing ? renderEditMode() : renderViewMode }</>;

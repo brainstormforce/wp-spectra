@@ -22,6 +22,8 @@ return array_merge(
 		'rowsGapTablet'                => '',
 		'rowsGapMobile'                => '',
 		'rowsGapUnit'                  => 'px',
+		'boxBgType'                    => 'color',
+		'boxBgHoverType'               => 'color',
 		'boxBgColor'                   => '',
 		'boxBgHoverColor'              => '',
 		'boxPaddingTypeMobile'         => 'px',

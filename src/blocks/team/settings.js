@@ -33,11 +33,11 @@ import {
 } from '@wordpress/block-editor';
 
 import {
-	TextControl,
 	ToggleControl,
 	Icon,
 } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import UAGTextControl from '@Components/text-control';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -612,14 +612,14 @@ const Settings = ( props ) => {
 						/>
 						{ twitterIcon && (
 							<>
-								<p className="components-base-control__label">
-									{ __(
-										'URL',
-										'ultimate-addons-for-gutenberg'
-									) }
-								</p>
-								<TextControl
+								<UAGTextControl
+									label={ __( 'URL', 'ultimate-addons-for-gutenberg' ) }
 									value={ twitterLink }
+									data={{
+										value: twitterLink,
+										label: 'twitterLink',
+									}}
+									setAttributes={ setAttributes }
 									onChange={ ( value ) =>
 										setAttributes( { twitterLink: value } )
 									}
@@ -648,14 +648,14 @@ const Settings = ( props ) => {
 						/>
 						{ fbIcon && (
 							<>
-								<p className="components-base-control__label">
-									{ __(
-										'URL',
-										'ultimate-addons-for-gutenberg'
-									) }
-								</p>
-								<TextControl
+								<UAGTextControl
+									label={ __( 'URL', 'ultimate-addons-for-gutenberg' ) }
 									value={ fbLink }
+									data={{
+										value: fbLink,
+										label: 'fbLink',
+									}}
+									setAttributes={ setAttributes }
 									onChange={ ( value ) =>
 										setAttributes( { fbLink: value } )
 									}
@@ -684,14 +684,14 @@ const Settings = ( props ) => {
 						/>
 						{ linkedinIcon && (
 							<>
-								<p className="components-base-control__label">
-									{ __(
-										'URL',
-										'ultimate-addons-for-gutenberg'
-									) }
-								</p>
-								<TextControl
+								<UAGTextControl
+									label={ __( 'URL', 'ultimate-addons-for-gutenberg' ) }
 									value={ linkedinLink }
+									data={{
+										value: linkedinLink,
+										label: 'linkedinLink',
+									}}
+									setAttributes={ setAttributes }
 									onChange={ ( value ) =>
 										setAttributes( { linkedinLink: value } )
 									}
@@ -720,14 +720,14 @@ const Settings = ( props ) => {
 						/>
 						{ pinIcon && (
 							<>
-								<p className="components-base-control__label">
-									{ __(
-										'URL',
-										'ultimate-addons-for-gutenberg'
-									) }
-								</p>
-								<TextControl
+								<UAGTextControl
+									label={ __( 'URL', 'ultimate-addons-for-gutenberg' ) }
 									value={ pinLink }
+									data={{
+										value: pinLink,
+										label: 'pinLink',
+									}}
+									setAttributes={ setAttributes }
 									onChange={ ( value ) =>
 										setAttributes( { pinLink: value } )
 									}

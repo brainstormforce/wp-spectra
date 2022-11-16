@@ -24,12 +24,12 @@
 	},
 	infoBoxTitle: {
 		source: 'html',
-		selector: 'h1,h2,h3,h4,h5,h6',
+		selector: '.uagb-ifb-title',
 		default: __( 'Info Box' , 'ultimate-addons-for-gutenberg' ),
 	},
 	headingDesc: {
 		source: 'html',
-		selector: 'p',
+		selector: '.uagb-ifb-desc',
 		default:
 			__( 'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.' , 'ultimate-addons-for-gutenberg' ),
 	},
@@ -88,6 +88,18 @@
 		default: 30,
 		UAGCopyPaste: {
 			styleType: 'icon-size'
+		}
+	},
+	iconSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size-tablet'
+		}
+	},
+	iconSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size-mobile'
 		}
 	},
 	iconSizeType: {
@@ -484,9 +496,16 @@
 		type: 'boolean',
 		default: false,
 	},
+	showCtaIcon: {
+		type: 'boolean',
+		default: true,
+		UAGCopyPaste: {
+			styleType: 'btn-show-icon'
+		}
+	},
 	ctaIcon: {
 		type: 'string',
-		default: '',
+		default: 'right-long',
 	},
 	ctaIconPosition: {
 		type: 'string',
@@ -582,6 +601,20 @@
 	ctaType: {
 		type: 'string',
 		default: 'none',
+	},
+	ctaBgType:{
+		type:'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-background-type'
+		}
+	},
+	ctaBgHoverType:{
+		type:'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-hbackground-type'
+		}
 	},
 	ctaText: {
 		type: 'html',
@@ -1582,6 +1615,14 @@
 		UAGCopyPaste: {
 			styleType: 'icon-border-width'
 		},
+	},
+	imgTagHeight: {
+		type: 'number',
+		default: 0,
+	},
+	imgTagWidth: {
+		type: 'number',
+		default: 0,
 	},
 	...borderAttributes
 };

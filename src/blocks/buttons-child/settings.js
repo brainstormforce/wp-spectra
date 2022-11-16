@@ -21,6 +21,7 @@ import BoxShadowControl from '@Components/box-shadow';
 import WebfontLoader from '@Components/typography/fontloader';
 import ResponsiveSlider from '@Components/responsive-slider';
 import GradientSettings from '@Components/gradient-settings';
+import UAGTextControl from '@Components/text-control';
 
 import {
 	InspectorControls
@@ -28,7 +29,6 @@ import {
 
 import {
 	ToggleControl,
-	TextControl
 } from '@wordpress/components';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -195,12 +195,17 @@ const Settings = ( props ) => {
 					) }
 					</>
 				}
-				<TextControl
+				<UAGTextControl
 					label={ __(
 						'Link',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ link }
+					data={{
+						value: link,
+						label: 'link',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( { link: value } )
 					}

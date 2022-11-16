@@ -11,7 +11,6 @@ import UAGSelectControl from '@Components/select-control';
 import { getImageSize } from '@Utils/Helpers';
 import {
 	ToggleControl,
-	TextControl,
 } from '@wordpress/components';
 let imageSizeOptions = [
 	{
@@ -25,6 +24,7 @@ let imageSizeOptions = [
 
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import UAGTextControl from '@Components/text-control';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -254,9 +254,14 @@ const Settings = ( props ) => {
 				/>
 				{urlType === 'text' && (
 					<>
-						<TextControl
+						<UAGTextControl
 							label={__( 'Text' )}
 							value={urlText}
+							data={{
+								value: urlText,
+								label: 'urlText',
+							}}
+							setAttributes={ setAttributes }
 							onChange={( value ) =>
 								setAttributes( { urlText: value } )
 							}
@@ -265,9 +270,14 @@ const Settings = ( props ) => {
 				)}
 				{urlType !== 'none' && (
 					<>
-						<TextControl
+						<UAGTextControl
 							label={__( 'Link' )}
 							value={url}
+							data={{
+								value: url,
+								label: 'url',
+							}}
+							setAttributes={ setAttributes }
 							onChange={( value ) =>
 								setAttributes( { url: value } )
 							}

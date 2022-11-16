@@ -34,6 +34,8 @@ export default function save( props ) {
 		enableImage,
 		ctaTarget,
 		ctaLink,
+		imgTagHeight,
+		imgTagWidth,
 	} = attributes;
 
 	const newAverage =
@@ -77,6 +79,9 @@ export default function save( props ) {
 				className="uagb-howto__source-image"
 				src={ url }
 				title={ title }
+				width={ imgTagWidth}
+				height={ imgTagHeight}
+				loading="lazy"
 				alt={ defaultedAlt }
 			/>
 		);
