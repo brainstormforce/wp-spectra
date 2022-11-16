@@ -813,14 +813,23 @@ const attributes = {
 	// bar
 	barSize: {
 		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'bar-size'
+		},
 	},
 	barForeground : {
 		type: 'string',
 		default: '#007cba',
+		UAGCopyPaste: {
+			styleType: 'bar-foreground'
+		},
 	},
 	barBackground : {
 		type: 'string',
 		default: '#eaeaea',
+		UAGCopyPaste: {
+			styleType: 'bar-background'
+		},
 	},
 	// Box Shadow.
 	boxShadowColor: {
