@@ -22,7 +22,6 @@ import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 import {
-	TextControl,
 	__experimentalAlignmentMatrixControl as AlignmentMatrixControl,
 	Icon,
 	ToggleControl
@@ -36,6 +35,7 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import boxShadowPresets from './presets';
 import UAGPresets from '@Components/presets';
 import {pickRelevantMediaFiles } from './utils'
+import UAGTextControl from '@Components/text-control';
 
 export default function Settings( props ) {
 	const deviceType = useDeviceType();
@@ -624,9 +624,14 @@ export default function Settings( props ) {
 							imageWidth={ naturalWidth }
 							imageHeight={ naturalHeight }
 						/>
-						<TextControl
+						<UAGTextControl
 							label={ __( 'Alt Text', 'ultimate-addons-for-gutenberg' ) }
 							value={ alt }
+							data={{
+								value: alt,
+								label: 'alt',
+							}}
+							setAttributes={ setAttributes }
 							onChange={ ( value ) => setAttributes( { alt: value } ) }
 						/>
 					</>

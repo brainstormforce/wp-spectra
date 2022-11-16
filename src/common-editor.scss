@@ -756,6 +756,14 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	}
 }
 
+.editor-styles-wrapper .block-editor-block-list__block.wp-block[data-type*="uagb"] {
+
+	::selection {
+		color: #fff;
+		background: #2f86dd;
+	}
+}
+
 @import "styles/gutenberg-override";
 @import "styles/control-responsive";
 @import "styles/control-header";

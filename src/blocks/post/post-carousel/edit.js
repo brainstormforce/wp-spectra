@@ -3,7 +3,6 @@
  */
 
 import styling from '.././styling';
-import { compose } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
 import React, { useState, useEffect,   } from 'react';
 
@@ -29,7 +28,9 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import UAGNumberControl from '@Components/number-control';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import apiFetch from '@wordpress/api-fetch';
+import UAGTextControl from '@Components/text-control';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -40,13 +41,12 @@ import {
 	Placeholder,
 	Spinner,
 	ToggleControl,
-	TextControl,
 	Icon
 } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
 
-import { withSelect, withDispatch } from '@wordpress/data';
+import { useSelect, useDispatch } from '@wordpress/data';
 
 const UAGBPostCarousel = ( props ) => {
 
@@ -231,6 +231,7 @@ const UAGBPostCarousel = ( props ) => {
 				props.setAttributes( { btnBorderStyle : borderStyle} );
 			}
 		}
+		
 
 		if( columnGap && columnGap !== 20 ){
 			props.setAttributes( { dotsMarginTop : columnGap} );
@@ -267,7 +268,7 @@ const UAGBPostCarousel = ( props ) => {
 				'; }';
 
 		addBlockEditorDynamicStyles( 'uagb-post-carousel-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
+		
 	}, [ props ] );
 
 	useEffect( () => {
@@ -288,6 +289,13 @@ const UAGBPostCarousel = ( props ) => {
 
 	}, [ props.deviceType ] );
 
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, props.deviceType ] );
+
 	const onSelectPostType = ( value ) => {
 		const { setAttributes } = props;
 
@@ -306,14 +314,107 @@ const UAGBPostCarousel = ( props ) => {
 	const onSelectOffset = ( value ) => {
 		setAttributes( { enableOffset: value } );
 	};
+let categoriesList = [];
+	const { latestPosts, taxonomyList, block } = useSelect( // eslint-disable-line no-unused-vars
+		( select ) => {
+			const {
+				blockName,
+				categories,
+				postsToShow,
+				postsOffset,
+				order,
+				orderBy,
+				postType,
+				taxonomyType,
+				excludeCurrentPost,
+				allTaxonomyStore
+			} = props.attributes;
+			const { getEntityRecords } = select( 'core' );
+
+			if ( ! allTaxonomyStore ) {
+				apiFetch( {
+					path: '/spectra/v1/all_taxonomy',
+				} ).then( ( data ) => {
+					props.setAttributes( { allTaxonomyStore: data } );
+				} );
+			}
+			const allTaxonomy = allTaxonomyStore;
+			const currentTax = allTaxonomy ? allTaxonomy[ postType ] : undefined;
+
+			let rest_base = '';
+
+			if ( 'undefined' !== typeof currentTax ) {
+				if ( 'undefined' !== typeof currentTax.taxonomy[ taxonomyType ] ) {
+					rest_base =
+						currentTax.taxonomy[ taxonomyType ].rest_base === false ||
+						currentTax.taxonomy[ taxonomyType ].rest_base === null
+							? currentTax.taxonomy[ taxonomyType ].name
+							: currentTax.taxonomy[ taxonomyType ].rest_base;
+				}
+
+				if ( '' !== taxonomyType ) {
+					if (
+						'undefined' !== typeof currentTax.terms &&
+						'undefined' !== typeof currentTax.terms[ taxonomyType ]
+					) {
+						categoriesList = currentTax.terms[ taxonomyType ];
+					}
+				}
+			}
+
+			const latestPostsQuery = {
+				order,
+				orderby: orderBy,
+				per_page: getFallbackNumber( postsToShow, 'postsToShow', blockName ),
+				offset: getFallbackNumber( postsOffset, 'postsOffset', blockName ),
+			};
+
+			if ( excludeCurrentPost ) {
+				latestPostsQuery.exclude = select(
+					'core/editor'
+				).getCurrentPostId();
+			}
+
+			const category = [];
+			const temp = parseInt( categories );
+			category.push( temp );
+			const catlenght = categoriesList.length;
+			for ( let i = 0; i < catlenght; i++ ) {
+				if ( categoriesList[ i ].id === temp ) {
+					if ( categoriesList[ i ].child.length !== 0 ) {
+						categoriesList[ i ].child.forEach( ( element ) => {
+							category.push( element );
+						} );
+					}
+				}
+			}
+			const { getBlocks } = select( 'core/block-editor' );
+			if ( undefined !== categories && '' !== categories ) {
+				latestPostsQuery[ rest_base ] =
+					undefined === categories || '' === categories
+						? categories
+						: category;
+			}
+			return {
+				latestPosts: getEntityRecords(
+					'postType',
+					postType,
+					latestPostsQuery
+				),
+				categoriesList,
+				taxonomyList:
+					'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
+				block: getBlocks( props.clientId ),
+			};
+		},
+	);
+
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 
 	const {
 		attributes,
-		categoriesList,
 		setAttributes,
-		latestPosts,
 		deviceType,
-		taxonomyList,
 	} = props;
 	const {
 		blockName,
@@ -340,6 +441,7 @@ const UAGBPostCarousel = ( props ) => {
 		rowGap,
 		rowGapTablet,
 		rowGapMobile,
+		bgType,
 		bgColor,
 		titleColor,
 		titleTag,
@@ -394,6 +496,8 @@ const UAGBPostCarousel = ( props ) => {
 		metaColor,
 		excerptColor,
 		ctaColor,
+		ctaBgType,
+		ctaBgHType,
 		ctaBgColor,
 		ctaHColor,
 		ctaBgHColor,
@@ -524,6 +628,17 @@ const UAGBPostCarousel = ( props ) => {
 
 	const categoryListOptions = [
 		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
+	];
+
+	const bgTypeOptions = [
+		{
+			value: 'transparent',
+			label: __( 'Transparent', 'ultimate-addons-for-gutenberg' ),
+		},
+		{
+			value: 'color',
+			label: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+		},
 	];
 
 	if ( taxonomyList ) {
@@ -827,13 +942,18 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				</h2>
-				<TextControl
+				<UAGTextControl
 					autoComplete="off"
 					label={ __(
 						'Display Message',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ postDisplaytext }
+					data={{
+						value: postDisplaytext,
+						label: 'postDisplaytext',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( { postDisplaytext: value } )
 					}
@@ -1140,9 +1260,14 @@ const UAGBPostCarousel = ( props ) => {
 						] }
 					/>
 				{ 'default' === taxStyle && (
-					<TextControl
+					<UAGTextControl
 						label={ __( 'Taxonomy Divider', 'ultimate-addons-for-gutenberg' ) }
 						value={ taxDivider }
+						data={{
+							value: taxDivider,
+							label: 'taxDivider',
+						}}
+						setAttributes={ setAttributes }
 						onChange={ ( value ) =>
 							setAttributes( {
 								taxDivider: value,
@@ -1257,15 +1382,25 @@ const UAGBPostCarousel = ( props ) => {
 								setAttributes( { newTab: ! newTab } )
 							}
 						/>
-						<TextControl
+						<UAGTextControl
 							label={ __(
 								'Text',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ ctaText }
+							data={{
+								value: ctaText,
+								label: 'ctaText',
+							}}
+							setAttributes={ setAttributes }
 							onChange={ ( value ) =>
 								setAttributes( { ctaText: value } )
 							}
+						/>
+						<UAGPresets
+							setAttributes = { setAttributes }
+							presets = { buttonsPresets }
+							presetInputType = 'radioImage'
 						/>
 					</>
 				) }
@@ -1279,18 +1414,31 @@ const UAGBPostCarousel = ( props ) => {
 				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ bgColor }
-					data={ {
-						value: bgColor,
-						label: 'bgColor',
-					} }
+				<MultiButtonsControl
 					setAttributes={ setAttributes }
+					label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+					value={ bgType }
+					data={ {
+						value: bgType,
+						label: 'bgType',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ bgTypeOptions }
 				/>
+				{ ( bgType === 'color' ) &&
+					<AdvancedPopColorControl
+						label={ __(
+							'Background Color',
+							'ultimate-addons-for-gutenberg'
+						) }
+						colorValue={ bgColor }
+						data={ {
+							value: bgColor,
+							label: 'bgColor',
+						} }
+						setAttributes={ setAttributes }
+					/>
+				}
 				<ResponsiveSlider
 					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -1905,11 +2053,6 @@ const UAGBPostCarousel = ( props ) => {
 				) }
 				initialOpen={ false }
 			>
-				<UAGPresets
-					setAttributes = { setAttributes }
-					presets = { buttonsPresets }
-					presetInputType = 'radioImage'
-				/>
 				<UAGTabsControl
 					tabs={ [
 						{
@@ -1941,18 +2084,30 @@ const UAGBPostCarousel = ( props ) => {
 								} }
 								setAttributes={ setAttributes }
 							/>
-							<AdvancedPopColorControl
-								label={ __(
-									'Background Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ ctaBgColor }
-								data={ {
-									value: ctaBgColor,
-									label: 'ctaBgColor',
-								} }
+							<MultiButtonsControl
 								setAttributes={ setAttributes }
+								label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: ctaBgType,
+									label: 'ctaBgType',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ bgTypeOptions }
 							/>
+							{ ctaBgType === 'color' &&
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ ctaBgColor }
+									data={ {
+										value: ctaBgColor,
+										label: 'ctaBgColor',
+									} }
+									setAttributes={ setAttributes }
+								/>
+							}
 						</>
 					}
 					hover={
@@ -1969,18 +2124,30 @@ const UAGBPostCarousel = ( props ) => {
 								} }
 								setAttributes={ setAttributes }
 							/>
-							<AdvancedPopColorControl
-								label={ __(
-									'Background Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ ctaBgHColor }
-								data={ {
-									value: ctaBgHColor,
-									label: 'ctaBgHColor',
-								} }
+							<MultiButtonsControl
 								setAttributes={ setAttributes }
+								label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: ctaBgHType,
+									label: 'ctaBgHType',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ bgTypeOptions }
 							/>
+							{ ctaBgHType === 'color' &&
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ ctaBgHColor }
+									data={ {
+										value: ctaBgHColor,
+										label: 'ctaBgHColor',
+									} }
+									setAttributes={ setAttributes }
+								/>
+							}
 						</>
 					}
 					disableBottomSeparator={ false }
@@ -2349,109 +2516,14 @@ const UAGBPostCarousel = ( props ) => {
 				state={ state }
 				setState={ setState }
 				togglePreview={ togglePreview }
+				latestPosts={ latestPosts }
+				categoriesList={ categoriesList }
+				replaceInnerBlocks={ replaceInnerBlocks }
+				block={ block }
 			/>
 			</>
 
 	);
 };
 
-export default compose(
-	withSelect( ( select, props ) => {
-		const {
-			blockName,
-			categories,
-			postsToShow,
-			postsOffset,
-			order,
-			orderBy,
-			postType,
-			taxonomyType,
-			excludeCurrentPost,
-			allTaxonomyStore
-		} = props.attributes;
-		const { getEntityRecords } = select( 'core' );
-
-		if ( ! allTaxonomyStore ) {
-			apiFetch( {
-				path: '/spectra/v1/all_taxonomy',
-			} ).then( ( data ) => {
-				props.setAttributes( { allTaxonomyStore: data } );
-			} );
-		}
-		const allTaxonomy = allTaxonomyStore;
-		const currentTax = allTaxonomy ? allTaxonomy[ postType ] : undefined;
-
-		let categoriesList = [];
-		let rest_base = '';
-
-		if ( 'undefined' !== typeof currentTax ) {
-			if ( 'undefined' !== typeof currentTax.taxonomy[ taxonomyType ] ) {
-				rest_base =
-					currentTax.taxonomy[ taxonomyType ].rest_base === false ||
-					currentTax.taxonomy[ taxonomyType ].rest_base === null
-						? currentTax.taxonomy[ taxonomyType ].name
-						: currentTax.taxonomy[ taxonomyType ].rest_base;
-			}
-
-			if ( '' !== taxonomyType ) {
-				if (
-					'undefined' !== typeof currentTax.terms &&
-					'undefined' !== typeof currentTax.terms[ taxonomyType ]
-				) {
-					categoriesList = currentTax.terms[ taxonomyType ];
-				}
-			}
-		}
-
-		const latestPostsQuery = {
-			order,
-			orderby: orderBy,
-			per_page: getFallbackNumber( postsToShow, 'postsToShow', blockName ),
-			offset: getFallbackNumber( postsOffset, 'postsOffset', blockName ),
-		};
-
-		if ( excludeCurrentPost ) {
-			latestPostsQuery.exclude = select(
-				'core/editor'
-			).getCurrentPostId();
-		}
-
-		const category = [];
-		const temp = parseInt( categories );
-		category.push( temp );
-		const catlenght = categoriesList.length;
-		for ( let i = 0; i < catlenght; i++ ) {
-			if ( categoriesList[ i ].id === temp ) {
-				if ( categoriesList[ i ].child.length !== 0 ) {
-					categoriesList[ i ].child.forEach( ( element ) => {
-						category.push( element );
-					} );
-				}
-			}
-		}
-		const { getBlocks } = select( 'core/block-editor' );
-		if ( undefined !== categories && '' !== categories ) {
-			latestPostsQuery[ rest_base ] =
-				undefined === categories || '' === categories
-					? categories
-					: category;
-		}
-		return {
-			latestPosts: getEntityRecords(
-				'postType',
-				postType,
-				latestPostsQuery
-			),
-			categoriesList,
-			taxonomyList:
-				'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
-			block: getBlocks( props.clientId ),
-		};
-	} ),
-	withDispatch( ( dispatch ) => {
-		const { replaceInnerBlocks } = dispatch( 'core/block-editor' );
-		return {
-			replaceInnerBlocks,
-		};
-	} )
-)( UAGBPostCarousel );
+export default UAGBPostCarousel

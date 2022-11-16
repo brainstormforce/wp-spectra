@@ -1,9 +1,10 @@
 // Import block dependencies and components
 import classnames from 'classnames';
 import ReviewBody from './review-body';
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useState, useEffect } from 'react';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
+import getImageHeightWidth from '@Controls/getImageHeightWidth';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -41,11 +42,14 @@ const Render = ( props ) => {
 			starOutlineColor,
 			enableDescription,
 			enableImage,
+			imgTagHeight,
+			imgTagWidth,
 		},
 		setAttributes,
 		isSelected,
 		className,
 	} = props;
+
 	const bodyInitialState = {
 		average:
 			props.attributes.parts
@@ -92,6 +96,10 @@ const Render = ( props ) => {
 		}
 	}
 
+	useEffect( () => {
+		getImageHeightWidth( url, setAttributes )
+	}, [ url ] )
+
 	let imageIconHtml = '';
 
 	if ( mainimage && mainimage.url ) {
@@ -100,6 +108,9 @@ const Render = ( props ) => {
 				className="uagb-review__source-image"
 				src={ url }
 				title={ title }
+				width={ imgTagWidth}
+				height={ imgTagHeight}
+				loading="lazy"
 				alt={ defaultedAlt }
 			/>
 		);
