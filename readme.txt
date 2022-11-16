@@ -187,6 +187,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Global - Implemented CLS for all the blocks which have an image tag.
 * Improvement: Global - Updated the highlighter color for Spectra blocks.
 * Improvement: Global - Updated How To and Table Of Content block labels in the editor and the admin dashboard.
+* Improvement: Responsive Conditions - Added `uag_reponsive_conditions_compatible_blocks` js filter to add the responsive conditions compatibility for third-party blocks.
 * Fix: Image - Resolved the issue where the negative margins are ineffective inside a Container.
 * Fix: Info Box - Resolved an issue with the title being disabled in the editor when the paragraph tag is used.
 * Fix: Call To Action - Resolved the second button CSS style issue on the front end.
