@@ -171,6 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 2.0.15 - TUESDAY, 16th NOVEMBER 2022 ###
+* New: Added `uag_reponsive_conditions_compatible_blocks` js filter to add the responsive conditions compatibility for third-party blocks.
 * Improvement: Info Box - Added Responsive feature to the Info Box icon width setting.
 * Improvement: Info Box - Added a background type selector for the call-to-action.
 * Improvement: Info Box - Added a toggle to show/hide the call-to-action icons.
