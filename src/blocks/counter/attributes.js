@@ -343,65 +343,110 @@ const attributes = {
 	headingTopMargin : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-top-margin'
+		}
 	},
 	headingRightMargin : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-right-margin'
+		}
 	},
 	headingLeftMargin : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-left-margin'
+		}
 	},
 	headingBottomMargin : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		}
 	},
 	headingTopMarginTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-top-margin-tablet'
+		}
 	},
 	headingRightMarginTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-right-margin-tablet'
+		}
 	},
 	headingLeftMarginTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-left-margin-tablet'
+		}
 	},
 	headingBottomMarginTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin-tablet'
+		}
 	},
 	headingTopMarginMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-top-margin-mobile'
+		}
 	},
 	headingRightMarginMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-right-margin-mobile'
+		}
 	},
 	headingLeftMarginMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-left-margin-mobile'
+		}
 	},
 	headingBottomMarginMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin-mobile'
+		}
 	},
 	headingMarginUnit : {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-margin-unit'
+		},
 	},
 	headingMarginUnitTablet: {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-margin-unit-tablet'
+		},
 	},
 	headingMarginUnitMobile : {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-margin-unit-mobile'
+		},
 	},
 	headingMarginLink: {
 		type: 'boolean',
