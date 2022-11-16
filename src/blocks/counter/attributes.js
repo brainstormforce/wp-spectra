@@ -893,6 +893,15 @@ const attributes = {
 		default: false,
 		isUAGStyle: true,
 	},
+	// Image CLS.
+	imgTagHeight: {
+		type: 'number',
+		default: 0,
+	},
+	imgTagWidth: {
+		type: 'number',
+		default: 0,
+	},
 	...iconWrapBorderAttributes,
 };
 
