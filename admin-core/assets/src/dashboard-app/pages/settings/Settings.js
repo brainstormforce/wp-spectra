@@ -26,7 +26,7 @@ import AutoBlockRecovery from '@DashboardApp/pages/settings/AutoBlockRecovery';
 import ContainerGlobalPadding from '@DashboardApp/pages/settings/ContainerGlobalPadding';
 import ContainerGlobalElementsGap from '@DashboardApp/pages/settings/ContainerGlobalElementsGap';
 import MyAccount from '@DashboardApp/pages/settings/MyAccount';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import{ useEffect } from 'react';
 
 
@@ -39,10 +39,12 @@ const Settings = () => {
 
 	const query = new URLSearchParams( useLocation()?.search );
 	const dispatch = useDispatch();
+	const history = useHistory();
+
 	const activeSettingsNavigationTab = useSelector( ( state ) => state.activeSettingsNavigationTab );
     const initialStateSetFlag = useSelector( ( state ) => state.initialStateSetFlag );
 
-	const navigation = [
+	let navigation = [
 		{ name: __( 'Editor Options', 'ultimate-addons-for-gutenberg' ), slug: 'global-settings', icon: SettingsIcons['global-settings'] },
         { name: __( 'Asset Generation', 'ultimate-addons-for-gutenberg' ), slug: 'asset-generation', icon: SettingsIcons['asset-generation'] },
         { name: __( 'Templates', 'ultimate-addons-for-gutenberg' ), slug: 'templates', icon: SettingsIcons.templates },
@@ -50,14 +52,24 @@ const Settings = () => {
         { name: __( 'Performance', 'ultimate-addons-for-gutenberg' ), slug: 'fonts-performance', icon: SettingsIcons['fonts-performance'] },
 		{ name: __( 'Block Settings', 'ultimate-addons-for-gutenberg' ), slug: 'block-settings', icon: SettingsIcons['block-settings'] },
 		{ name: __( 'Coming Soon', 'ultimate-addons-for-gutenberg' ), slug: 'coming-soon', icon: SettingsIcons['coming-soon'] },
-		{ name: __( 'My Account', 'ultimate-addons-for-gutenberg' ), slug: 'my-account', icon: SettingsIcons['global-settings'] },
     ];
+
+	if(uag_react.spectra_pro_status){
+		navigation.push({ name: __( 'My Account', 'ultimate-addons-for-gutenberg' ), slug: 'my-account', icon: SettingsIcons['global-settings'] })
+	}
 
 	useEffect( () => {
 		// Activate Setting Active Tab from "settingsTab" Hash in the URl is present.
 		const activePath = query.get( 'path' );
 		const activeHash = query.get( 'settings' );
-		const activeSettingsTabFromHash = ( activeHash && 'settings' === activePath ) ? activeHash : 'global-settings';
+		let activeSettingsTabFromHash = ( activeHash && 'settings' === activePath ) ? activeHash : 'global-settings';
+		if(uag_react.spectra_pro_status && !uag_react.license_status){
+			activeSettingsTabFromHash = ( activeHash && 'settings' === activePath ) ? activeHash : 'my-account';
+			history.push({
+				pathname: 'options-general.php',
+				search: `?page=spectra&path=settings&settings=${activeSettingsTabFromHash}`,
+			})
+		}
 		dispatch( {type:'UPDATE_SETTINGS_ACTIVE_NAVIGATION_TAB', payload: activeSettingsTabFromHash} )
 	}, [initialStateSetFlag] );
 
@@ -160,7 +172,7 @@ const Settings = () => {
                             </>
                         }
                         {
-                            'my-account' === activeSettingsNavigationTab &&
+                        	uag_react.spectra_pro_status &&  'my-account' === activeSettingsNavigationTab &&
                             <>
                                 <MyAccount />
                             </>
