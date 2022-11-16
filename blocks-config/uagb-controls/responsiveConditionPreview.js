@@ -14,9 +14,13 @@ const responsiveConditionPreview = ( props ) => {
                         'id',
                         props.clientId + '-desktop-hide-block'
                     );
-                    $style.innerHTML = '#block-' + props.clientId + ' > .uagb-editor-preview-mode-desktop{ background:repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 2px, transparent 9px); border: 1px solid rgba(0, 0, 0, 0.15); } ';
-                    $style.innerHTML += '#block-' + props.clientId + ' > .uagb-editor-preview-mode-desktop:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';
-                          
+                    if( props.name === 'uagb/container' ) {
+                        $style.innerHTML = '#block-' + props.clientId + '.uagb-editor-preview-mode-desktop{ background:repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 2px, transparent 9px); border: 1px solid rgba(0, 0, 0, 0.15); } ';
+                        $style.innerHTML += '#block-' + props.clientId + '.uagb-editor-preview-mode-desktop:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';
+                    }else { 
+                        $style.innerHTML = '#block-' + props.clientId + ' > .uagb-editor-preview-mode-desktop{ background:repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 2px, transparent 9px); border: 1px solid rgba(0, 0, 0, 0.15); } ';
+                        $style.innerHTML += '#block-' + props.clientId + ' > .uagb-editor-preview-mode-desktop:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';
+                    }
                     document.head.appendChild( $style );
                 }
             } 
@@ -53,9 +57,13 @@ const responsiveConditionPreview = ( props ) => {
                         'id',
                         props.clientId + '-tablet-hide-block'
                     );
-                    $style.innerHTML = '#block-' + props.clientId + ' > .uagb-editor-preview-mode-tablet{ background:repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 2px, transparent 9px); border: 1px solid rgba(0, 0, 0, 0.15); } ';
-                    $style.innerHTML += '#block-' + props.clientId + ' > .uagb-editor-preview-mode-tablet:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';
-                
+                    if( props.name === 'uagb/container' ) {
+                        $style.innerHTML = '#block-' + props.clientId + '.uagb-editor-preview-mode-tablet{ background:repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 2px, transparent 9px); border: 1px solid rgba(0, 0, 0, 0.15); } ';
+                        $style.innerHTML += '#block-' + props.clientId + '.uagb-editor-preview-mode-tablet:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';
+                    }else { 
+                        $style.innerHTML = '#block-' + props.clientId + ' > .uagb-editor-preview-mode-tablet{ background:repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 2px, transparent 9px); border: 1px solid rgba(0, 0, 0, 0.15); } ';
+                        $style.innerHTML += '#block-' + props.clientId + ' > .uagb-editor-preview-mode-tablet:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';
+                    }
                     setTimeout( ()=> {
                         iframeDocument.head.appendChild( $style );
                     }, 500 )
@@ -75,9 +83,13 @@ const responsiveConditionPreview = ( props ) => {
                         'id',
                         props.clientId + '-mobile-hide-block'
                     );
-                    $style.innerHTML = '#block-' + props.clientId + ' > .uagb-editor-preview-mode-mobile{ background:repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 2px, transparent 9px); border: 1px solid rgba(0, 0, 0, 0.15); } ';
-                    $style.innerHTML += '#block-' + props.clientId + ' > .uagb-editor-preview-mode-mobile:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';
-             
+                    if( props.name === 'uagb/container' ) {
+                        $style.innerHTML = '#block-' + props.clientId + '.uagb-editor-preview-mode-mobile{ background:repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 2px, transparent 9px); border: 1px solid rgba(0, 0, 0, 0.15); } ';
+                        $style.innerHTML += '#block-' + props.clientId + '.uagb-editor-preview-mode-mobile:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';
+                      }else { 
+                        $style.innerHTML = '#block-' + props.clientId + ' > .uagb-editor-preview-mode-mobile{ background:repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 2px, transparent 9px); border: 1px solid rgba(0, 0, 0, 0.15); } ';
+                        $style.innerHTML += '#block-' + props.clientId + ' > .uagb-editor-preview-mode-mobile:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';
+                    }
                     setTimeout( ()=> {
                         iframeDocument.head.appendChild( $style );
                     }, 500 )
