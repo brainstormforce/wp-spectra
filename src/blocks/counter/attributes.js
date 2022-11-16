@@ -627,68 +627,114 @@ const attributes = {
 			styleType: 'number-line-height-mobile'
 		},
 	},
+	// Number margin.
 	numberTopMargin : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'number-top-margin'
+		},
 	},
 	numberRightMargin : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'number-right-margin'
+		},
 	},
 	numberLeftMargin : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'number-left-margin'
+		},
 	},
 	numberBottomMargin : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'number-bottom-margin'
+		},
 	},
 	numberTopMarginTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'number-top-margin-tablet'
+		},
 	},
 	numberRightMarginTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'number-right-margin-tablet'
+		},
 	},
 	numberLeftMarginTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'number-left-margin-tablet'
+		},
 	},
 	numberBottomMarginTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'number-bottom-margin-tablet'
+		},
 	},
 	numberTopMarginMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'number-top-margin-mobile'
+		},
 	},
 	numberRightMarginMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'number-right-margin-mobile'
+		},
 	},
 	numberLeftMarginMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'number-left-margin-mobile'
+		},
 	},
 	numberBottomMarginMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'number-bottom-margin-mobile'
+		},
 	},
 	numberMarginUnit : {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'number-margin-unit'
+		},
 	},
 	numberMarginUnitTablet: {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'number-margin-unit-tablet'
+		},
 	},
 	numberMarginUnitMobile : {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'number-margin-unit-mobile'
+		},
 	},
 	numberMarginLink: {
 		type: 'boolean',
