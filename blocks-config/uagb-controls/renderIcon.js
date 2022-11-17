@@ -6,28 +6,9 @@
  */
 
 import parseSVG from './parseIcon';
-import apiFetch from '@wordpress/api-fetch';
 function renderSVG( svg ) {
 	svg = parseSVG( svg );
-
-	if( 0 === uagb_blocks_info.font_awesome_5_polyfill.length  ) {
-		const formData = new window.FormData();
-		formData.append( 'action', 'uagb_spectra_font_awesome_polyfiller' );
-		formData.append(
-			'nonce',
-			uagb_blocks_info.uagb_ajax_nonce
-		);
-		apiFetch( {
-			url: uagb_blocks_info.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( ( data ) => {
-			uagb_blocks_info.font_awesome_5_polyfill = data;
-		} );
-	}
-
 	let fontAwesome;
-
 	// Load Polyfiller Array if needed.
 	if ( 'disabled' !== uagb_blocks_info.load_font_awesome_5 && 0 !== uagb_blocks_info.font_awesome_5_polyfill.length ) {
 		fontAwesome = uagb_blocks_info.uagb_svg_icons[ uagb_blocks_info.font_awesome_5_polyfill?.data[ svg ] ];
