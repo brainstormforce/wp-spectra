@@ -1,6 +1,9 @@
 /* --------- Overwriting All Gutenberg Components Inside Spectra Panels --------- */
 
-.components-panel .uagb-inspector-tab {
+.components-panel,
+#customize-theme-controls
+{
+	.uagb-inspector-tab {
 
 	// Text and Number Controls.
 	.components-text-control__input,
@@ -196,5 +199,6 @@
 		&:active:not(:disabled) {
 			background-color: $spectra-color-light-background;
 		}
+	}
 	}
 }
