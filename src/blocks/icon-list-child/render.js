@@ -74,7 +74,7 @@ const Render = ( props ) => {
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 			) }
 		>
-			{ !disableLink && (
+			{ disableLink && (
 				<a
 					target={ targetVal }
 					rel="noopener noreferrer"

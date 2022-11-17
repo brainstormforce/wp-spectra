@@ -57,7 +57,7 @@ export default function save( props ) {
 				`uagb-block-${ block_id }`
 			) }
 		>
-			{ !disableLink && (
+			{ disableLink && (
 				<a
 					target={ targetVal }
 					aria-label={ label.replace( /(<([^>]+)>)/ig, '' ) }
