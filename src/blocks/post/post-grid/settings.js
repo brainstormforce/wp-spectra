@@ -265,7 +265,8 @@ const Settings = ( props ) => {
 		boxShadowSpreadHover,
 		boxShadowPositionHover,
 		enableOffset,
-		equalHeightInlineButtons
+		equalHeightInlineButtons,
+		imageRatio
 	} = attributes;
 
 	const onSelectPostType = ( value ) => {
@@ -873,6 +874,38 @@ const Settings = ( props ) => {
 						} )
 					}
 				/>
+				{ displayPostImage === true && imgPosition !== 'background' && (
+					<UAGSelectControl
+					label={__( 'Image Ratio', 'ultimate-addons-for-gutenberg' )}
+					options={[
+						{
+							label: __( 'Inherit', 'ultimate-addons-for-gutenberg' ),
+							value: 'inherit',
+						},
+						{
+							label: __( '1:1', 'ultimate-addons-for-gutenberg' ),
+							value: '1-1',
+						},
+						{
+							label: __( '3:2', 'ultimate-addons-for-gutenberg' ),
+							value: '2-3',
+						},
+						{
+							label: __( '16:9', 'ultimate-addons-for-gutenberg' ),
+							value: '9-16',
+						},
+						{
+							label: __( '2:1', 'ultimate-addons-for-gutenberg' ),
+							value: '1-2',
+						},
+					]}
+					data={ {
+						value: imageRatio,
+						label: 'imageRatio',
+					} }
+					setAttributes={ setAttributes }
+				/>
+				) }
 				{ displayPostImage === true && (
 					<UAGSelectControl
 						label={ __(
@@ -1238,7 +1271,7 @@ const Settings = ( props ) => {
 					<>
 						<ToggleControl
 							label={ __(
-								'Show buttons on same height/level',
+								'Buttons on equal height',
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ equalHeightInlineButtons }

@@ -39,7 +39,7 @@ const Blog = ( props ) => {
 			: latestPosts;
 	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/post-grid.png`;
 	const isImageEnabled = ( attributes.displayPostImage === true ) ? 'uagb-post__image-enabled' : 'uagb-post__image-disabled';
-	const equalHeightInlineReadMoreButtonsClass = equalHeightInlineButtons ? `uagb-equal_height_inline-read-more-buttons` : '';
+	const equalHeightInlineReadMoreButtonsClass = equalHeightInlineButtons ? `uagb-equal_height_inline-read-more-buttons-in-editor` : '';
 	return (
 		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div

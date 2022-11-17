@@ -1256,6 +1256,10 @@ const attributes = {
 		type    : 'boolean',
 		default : true,
 	},
+	imageRatio: {
+		type: 'string',
+		default: 'inherit'
+	},
 	...btnBorderAttributes,
 	...overallBorderAttributes
 }

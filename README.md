@@ -170,6 +170,10 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+### 2.0.16 - TUESDAY, 22th NOVEMBER 2022 ###
+* Improvement: Post Grid - Added Setting to show buttons on equal height.
+* Improvement: Post Grid - Added Setting for image aspect ratio.
+
 ### 2.0.15 - TUESDAY, 16th NOVEMBER 2022 ###
 * Improvement: Info Box - Added Responsive feature to the Info Box icon width setting.
 * Improvement: Info Box - Added a background type selector for the call-to-action.
