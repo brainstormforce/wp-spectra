@@ -170,6 +170,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 2.0.16 - TUESDAY, 16th NOVEMBER 2022 =
+* Fix: Spectra component styling gets overridden in the Customizer block editor.
+
 = 2.0.15 - TUESDAY, 16th NOVEMBER 2022 =
 * Improvement: Info Box - Added Responsive feature to the Info Box icon width setting.
 * Improvement: Info Box - Added a background type selector for the call-to-action.
