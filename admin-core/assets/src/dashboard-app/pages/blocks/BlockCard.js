@@ -73,7 +73,7 @@ const BlockCard = ( props ) => {
                 : 'border-slate-200 spectra-disabled-icon',
             'box-border relative border rounded-md h-20 p-4 flex items-center gap-x-4 snap-start transition spectra-icon-transition'
         ) }
-        title= { __( 'This is a Core Spectra block & cannot be disabled.', 'ultimate-addons-for-gutenberg' ) }
+        title= { coreBlocks.includes( slug ) ? __( 'This is a Core Spectra block & cannot be disabled.', 'ultimate-addons-for-gutenberg' ) : '' }
 
         >
             <div className="flex-shrink-0 opacity-80">
