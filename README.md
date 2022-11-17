@@ -170,6 +170,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+### 2.0.16 - THURSDAY, 17th NOVEMBER 2022 ###
+* Fix: The "uagb_spectra_font_awesome_polyfiller" AJAX gets called multiple times.
+
 ### 2.0.15 - WEDNESDAY, 16th NOVEMBER 2022 ###
 * Improvement: Info Box - Added Responsive feature to the Info Box icon width setting.
 * Improvement: Info Box - Added a background type selector for the call-to-action.
