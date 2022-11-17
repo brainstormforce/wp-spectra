@@ -3,8 +3,6 @@
  */
 import { __ } from '@wordpress/i18n';
 
-const disableLinkForAllUser = ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) ? true : false
-
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -95,7 +93,7 @@ const attributes = {
 	},
 	disableLink: {
 		type: 'boolean',
-		default: disableLinkForAllUser,
+		default: false,
 	},
 	fromParentIcon: {
 		type: 'string',
