@@ -31,6 +31,10 @@
 }
 // Overriding Core Block Card CSS.
 .core-block-card {
-	background: #64748b;
+	background: #64748ba1;
 	pointer-events: none;
+}
+
+.core-block-card-wrap {
+	cursor: not-allowed;
 }
