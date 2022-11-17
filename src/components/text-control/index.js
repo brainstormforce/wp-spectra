@@ -1,11 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-for */
 import React, {useLayoutEffect} from 'react';
-import styles from './editor.lazy.scss';
-import { TextControl } from '@wordpress/components';
 import Separator from '@Components/separator';
 import { useSelect } from '@wordpress/data';
-
-
 import {
     TextControl,
     TextareaControl,
@@ -13,7 +9,6 @@ import {
 import ResponsiveToggle from '../responsive-toggle';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect } from 'react';
 import classnames from 'classnames';
 import UAGReset from '../reset';
 
@@ -31,7 +26,7 @@ const UAGTextControl = ( props ) => {
 		return select( 'core/block-editor' ).getSelectedBlock();
 	}, [] );
 
-	const registerTextExtender = props.disableDynamicContent && props.name ? null : wp.hooks.applyFilters( 'uagb.registerTextExtender', '', selectedBlock?.name, props.name, props.dynamicContentType )
+	const registerTextExtender = props.disableDynamicContent && !props.name ? null : wp.hooks.applyFilters( 'uagb.registerTextExtender', '', selectedBlock?.name, props.name, props.dynamicContentType )
 
 	const isEnableDynamicContent = () => {
 		if( props.disableDynamicContent || ! props.name ){

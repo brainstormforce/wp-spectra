@@ -36,7 +36,6 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import boxShadowPresets from './presets';
 import UAGPresets from '@Components/presets';
 import {pickRelevantMediaFiles } from './utils'
-import UAGTextControl from '@Components/text-control';
 
 export default function Settings( props ) {
 	const deviceType = useDeviceType();

@@ -24,7 +24,6 @@ import { ToggleControl, Icon } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import ResponsiveSlider from '@Components/responsive-slider';
 import { useDeviceType } from '@Controls/getPreviewType';
-import UAGTextControl from '@Components/text-control';
 
 const Settings = ( props ) => {
 	props = props.parentProps;

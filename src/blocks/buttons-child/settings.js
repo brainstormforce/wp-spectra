@@ -22,7 +22,6 @@ import BoxShadowControl from '@Components/box-shadow';
 import WebfontLoader from '@Components/typography/fontloader';
 import ResponsiveSlider from '@Components/responsive-slider';
 import GradientSettings from '@Components/gradient-settings';
-import UAGTextControl from '@Components/text-control';
 
 import {
 	InspectorControls
