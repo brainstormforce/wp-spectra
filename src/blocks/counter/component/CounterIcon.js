@@ -44,7 +44,7 @@ const CounterIcon = ( props ) => {
                         className='wp-block-uagb-counter__image'
                         src={ url }
                         alt={ attributes.iconImage.alt }
-                        width={ attributes.imageWidthType ? attributes.imageWidth : attributes.imgTagWidth }
+                        width={ ( attributes.imageWidthType && attributes.imageWidth ) ? attributes.imageWidth : attributes.imgTagWidth }
                         height={ attributes.imgTagHeight }
                         loading="lazy"
                     />

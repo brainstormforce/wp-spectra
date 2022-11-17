@@ -69,7 +69,7 @@ const Render = ( props ) => {
 	}
 
 	useEffect( ()=> {
-		if( imageWidthType ){
+		if( imageWidthType && imageWidth ){
 			getImageHeightWidth( url, setAttributes, { type: 'width', value: imageWidth } )
 		}
 		else{
