@@ -29,3 +29,8 @@
 		box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05) !important;
 	}
 }
+// Overriding Core Block Card CSS.
+.core-block-card {
+	background: #64748B;
+	pointer-events: none;
+}
