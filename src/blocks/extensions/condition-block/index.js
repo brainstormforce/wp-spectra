@@ -161,7 +161,7 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 		const blockName = props.name;
 		const isCore = blockName.includes( 'core/' );
 
-		const blockType = [ 'uagb/*','wpforms/form-selector','formidable/simple-form','formidable/calculator','llms/lesson-navigation','llms/pricing-table','llms/course-syllabus','llms/instructors','core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss','real-media-library/gallery' ];
+		const blockType = [ 'uagb/*','wpforms/form-selector','formidable/simple-form','formidable/calculator','llms/lesson-navigation','llms/pricing-table','llms/course-syllabus','llms/instructors','core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss','real-media-library/gallery','core/legacy-widget' ];
 
 		return (
 			<>

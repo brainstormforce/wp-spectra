@@ -22,6 +22,7 @@ import BoxShadowControl from '@Components/box-shadow';
 import WebfontLoader from '@Components/typography/fontloader';
 import ResponsiveSlider from '@Components/responsive-slider';
 import GradientSettings from '@Components/gradient-settings';
+import UAGTextControl from '@Components/text-control';
 
 import {
 	InspectorControls
@@ -203,6 +204,10 @@ const Settings = ( props ) => {
 					name={'link'}
 					value={ link }
 					setAttributes={setAttributes}
+					data={{
+						value: link,
+						label: 'link',
+					}}
 				/>
 				<ToggleControl
 					label={ __(

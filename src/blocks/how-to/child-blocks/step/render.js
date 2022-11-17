@@ -1,10 +1,11 @@
 import classnames from 'classnames';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import { RichText } from '@wordpress/block-editor';
 import { createBlock } from '@wordpress/blocks';
 import { useDeviceType } from '@Controls/getPreviewType';
+import getImageHeightWidth from '@Controls/getImageHeightWidth';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -31,7 +32,9 @@ const Render = ( props ) => {
 		imageSize,
 		urlText,
 		urlTarget,
-		imgPosition
+		imgPosition,
+		imgTagHeight,
+		imgTagWidth,
 	} = attributes;
 
 	let urlCheck = '';
@@ -60,11 +63,18 @@ const Render = ( props ) => {
 	if ( urlTarget ) {
 		target = '_blank';
 	}
+
+	useEffect( () => {
+		getImageHeightWidth( imageUrl, setAttributes )
+	}, [ imageUrl ] )
+
 	const imageMarkup = (
 		<img
 			className="uagb-how-to-step-image"
 			src={ imageUrl }
 			alt={ image.alt }
+			width={imgTagWidth} height={imgTagHeight}
+			loading="lazy"
 		/>
 	);
 	const contentMarkup = (

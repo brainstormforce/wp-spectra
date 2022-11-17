@@ -136,7 +136,7 @@ return array_merge(
 		'seperatorMarginUnitTablet'   => 'px',
 		'seperatorMarginUnitMobile'   => 'px',
 		// image shadow.
-		'imageBoxShadowColor'         => '',
+		'imageBoxShadowColor'         => '#00000070',
 		'imageBoxShadowHOffset'       => 0,
 		'imageBoxShadowVOffset'       => 0,
 		'imageBoxShadowBlur'          => '',

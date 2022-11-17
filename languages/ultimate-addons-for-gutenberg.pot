@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.0.14\n"
+"Project-Id-Version: Spectra 2.0.15\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-11-04T04:49:59+00:00\n"
+"POT-Creation-Date: 2022-11-16T04:19:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -158,10 +158,10 @@ msgstr ""
 
 #: blocks-config/post-timeline/class-uagb-post-timeline.php:523
 #: blocks-config/post/class-uagb-post.php:528
-#: blocks-config/post/class-uagb-post.php:2026
-#: includes/blocks/post-carousel/attributes.php:113
-#: includes/blocks/post-grid/attributes.php:105
-#: includes/blocks/post-masonry/attributes.php:108
+#: blocks-config/post/class-uagb-post.php:2043
+#: includes/blocks/post-carousel/attributes.php:116
+#: includes/blocks/post-grid/attributes.php:107
+#: includes/blocks/post-masonry/attributes.php:110
 #: dist/blocks.js:1
 #: dist/blocks.js:13
 msgid "Read More"
@@ -174,6 +174,8 @@ msgstr ""
 #: blocks-config/table-of-content/class-uagb-table-of-content.php:637
 #: blocks-config/table-of-content/class-uagb-table-of-content.php:641
 #: includes/blocks/table-of-contents/attributes.php:18
+#: includes/blocks/table-of-contents/block.php:16
+#: dist/blocks-placeholder.js:30
 #: dist/blocks.js:1
 #: dist/blocks.js:17
 msgid "Table Of Contents"
@@ -460,6 +462,7 @@ msgid "Add a calendar based date picker in your form."
 msgstr ""
 
 #: includes/blocks/forms-email/block.php:14
+#: dist/blocks.js:1
 #: dist/blocks.js:13
 #: dist/blocks.js:17
 msgid "Email"
@@ -480,6 +483,7 @@ msgid "Add a hidden field in your form to pass data"
 msgstr ""
 
 #: includes/blocks/forms-name/block.php:14
+#: dist/blocks.js:1
 #: dist/blocks.js:13
 #: dist/blocks.js:17
 msgid "Name"
@@ -528,6 +532,7 @@ msgid "Add a text field in your form"
 msgstr ""
 
 #: includes/blocks/forms-toggle/block.php:14
+#: dist/blocks.js:1
 #: dist/blocks.js:13
 msgid "Toggle"
 msgstr ""
@@ -546,6 +551,7 @@ msgid "Add a attachment in your form."
 msgstr ""
 
 #: includes/blocks/forms-url/block.php:15
+#: dist/blocks.js:1
 #: dist/blocks.js:13
 #: dist/blocks.js:17
 msgid "URL"
@@ -571,19 +577,19 @@ msgstr ""
 msgid "The form has been submitted Successfully!"
 msgstr ""
 
-#: includes/blocks/forms/attributes.php:67
+#: includes/blocks/forms/attributes.php:69
 #: dist/blocks.js:1
 #: dist/blocks.js:13
 msgid "Form Submission"
 msgstr ""
 
-#: includes/blocks/forms/attributes.php:119
+#: includes/blocks/forms/attributes.php:121
 #: dist/blocks.js:1
 #: dist/blocks.js:13
 msgid "There has been some error while submitting the form. Please verify all form fields again."
 msgstr ""
 
-#: includes/blocks/forms/attributes.php:166
+#: includes/blocks/forms/attributes.php:168
 #: dist/blocks.js:1
 #: dist/blocks.js:13
 msgid "Please fill up the above captcha."
@@ -636,7 +642,7 @@ msgstr ""
 #: includes/blocks/how-to/block.php:16
 #: dist/blocks-placeholder.js:17
 #: dist/blocks.js:13
-msgid "How-to"
+msgid "How To"
 msgstr ""
 
 #: includes/blocks/how-to/block.php:17
@@ -910,12 +916,6 @@ msgstr ""
 #: includes/blocks/star-rating/block.php:17
 #: dist/blocks.js:17
 msgid "Display customizable star ratings on your page."
-msgstr ""
-
-#: includes/blocks/table-of-contents/block.php:16
-#: dist/blocks-placeholder.js:30
-#: dist/blocks.js:17
-msgid "Table of Contents"
 msgstr ""
 
 #: includes/blocks/table-of-contents/block.php:17
@@ -1333,6 +1333,7 @@ msgid "Click here to change this text. Lorem ipsum dolor sit amet, consectetur a
 msgstr ""
 
 #: dist/blocks.js:1
+#: dist/blocks.js:13
 msgid "List item"
 msgstr ""
 
@@ -1409,6 +1410,33 @@ msgstr ""
 #: dist/blocks.js:1
 #: dist/blocks.js:13
 msgid "The form has been submitted successfully!"
+msgstr ""
+
+#: dist/blocks.js:1
+msgid "I have read and agree to the Privacy Policy."
+msgstr ""
+
+#: dist/blocks.js:1
+msgid "Privacy Policy"
+msgstr ""
+
+#: dist/blocks.js:1
+#: dist/blocks.js:13
+msgid "example@mail.com"
+msgstr ""
+
+#: dist/blocks.js:1
+msgid "Hidden Field Name"
+msgstr ""
+
+#: dist/blocks.js:1
+#: dist/blocks.js:13
+msgid "John Doe"
+msgstr ""
+
+#: dist/blocks.js:1
+#: dist/blocks.js:13
+msgid "https://example.com"
 msgstr ""
 
 #: dist/blocks.js:1
@@ -2281,10 +2309,6 @@ msgid "Padding"
 msgstr ""
 
 #: dist/blocks.js:11
-msgid "Select a Layout"
-msgstr ""
-
-#: dist/blocks.js:11
 msgid "container"
 msgstr ""
 
@@ -2296,6 +2320,10 @@ msgstr ""
 
 #: dist/blocks.js:11
 msgid "flex"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Select a Layout"
 msgstr ""
 
 #: dist/blocks.js:11
@@ -2460,6 +2488,7 @@ msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:13
+#: dist/blocks.js:17
 msgid "Link"
 msgstr ""
 
@@ -2508,6 +2537,10 @@ msgstr ""
 #: dist/blocks.js:13
 #: dist/blocks.js:17
 msgid "Image Size"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Spectra Text Control"
 msgstr ""
 
 #: dist/blocks.js:11
@@ -2803,6 +2836,7 @@ msgid "Icon Spacing"
 msgstr ""
 
 #: dist/blocks.js:13
+#: dist/blocks.js:17
 msgid "Transparent"
 msgstr ""
 
@@ -2910,6 +2944,10 @@ msgid "Complete Box"
 msgstr ""
 
 #: dist/blocks.js:13
+msgid "Show Icon"
+msgstr ""
+
+#: dist/blocks.js:13
 msgid "Button Icon"
 msgstr ""
 
@@ -2962,6 +3000,11 @@ msgstr ""
 
 #: dist/blocks.js:13
 msgid "Button Text Color"
+msgstr ""
+
+#: dist/blocks.js:13
+#: dist/blocks.js:17
+msgid "Background Type"
 msgstr ""
 
 #: dist/blocks.js:13
@@ -3402,7 +3445,15 @@ msgid "Confirmation Type"
 msgstr ""
 
 #: dist/blocks.js:13
+msgid "Success Message Text"
+msgstr ""
+
+#: dist/blocks.js:13
 msgid "Enter a message you want to display after successfull form submission"
+msgstr ""
+
+#: dist/blocks.js:13
+msgid "Error Message Text"
 msgstr ""
 
 #: dist/blocks.js:13
@@ -3632,10 +3683,6 @@ msgid "forms"
 msgstr ""
 
 #: dist/blocks.js:13
-msgid "John Doe"
-msgstr ""
-
-#: dist/blocks.js:13
 msgid "Autocomplete"
 msgstr ""
 
@@ -3710,19 +3757,11 @@ msgid "Add a name field in your form."
 msgstr ""
 
 #: dist/blocks.js:13
-msgid "example@mail.com"
-msgstr ""
-
-#: dist/blocks.js:13
 msgid "email"
 msgstr ""
 
 #: dist/blocks.js:13
 msgid "Add an email address field in your form."
-msgstr ""
-
-#: dist/blocks.js:13
-msgid "Hidden Field Name"
 msgstr ""
 
 #: dist/blocks.js:13
@@ -3822,10 +3861,6 @@ msgid "Radio Title"
 msgstr ""
 
 #: dist/blocks.js:13
-msgid "https://example.com"
-msgstr ""
-
-#: dist/blocks.js:13
 msgid "URL Name"
 msgstr ""
 
@@ -3882,15 +3917,11 @@ msgid "Month"
 msgstr ""
 
 #: dist/blocks.js:13
-msgid "I have read and agree to the Privacy Policy."
-msgstr ""
-
-#: dist/blocks.js:13
-msgid "Privacy Policy"
-msgstr ""
-
-#: dist/blocks.js:13
 msgid "Acceptance Text"
+msgstr ""
+
+#: dist/blocks.js:13
+msgid "Label to display as acceptance message."
 msgstr ""
 
 #: dist/blocks.js:13
@@ -4617,6 +4648,14 @@ msgid "marketing button"
 msgstr ""
 
 #: dist/blocks.js:17
+msgid "post"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "carousel"
+msgstr ""
+
+#: dist/blocks.js:17
 msgid "All"
 msgstr ""
 
@@ -4846,14 +4885,6 @@ msgstr ""
 
 #: dist/blocks.js:17
 msgid "Top Margin for Dots"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "post"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "carousel"
 msgstr ""
 
 #: dist/blocks.js:17
@@ -6229,6 +6260,10 @@ msgid "gravity form styler"
 msgstr ""
 
 #: dist/blocks.js:17
+msgid "masonry"
+msgstr ""
+
+#: dist/blocks.js:17
 msgid "Infinite Load Event"
 msgstr ""
 
@@ -6246,10 +6281,6 @@ msgstr ""
 
 #: dist/blocks.js:17
 msgid "Loader Size"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "masonry"
 msgstr ""
 
 #: dist/blocks.js:17

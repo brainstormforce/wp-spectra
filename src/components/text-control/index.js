@@ -4,20 +4,22 @@ import styles from './editor.lazy.scss';
 import { TextControl } from '@wordpress/components';
 import Separator from '@Components/separator';
 import { useSelect } from '@wordpress/data';
-import PropTypes from 'prop-types';
 
-const propTypes = {
-	dynamicContentType: PropTypes.string,
-	disableDynamicContent: PropTypes.bool
-};
 
-const defaultProps = {
-	dynamicContentType: 'url', // url / text
-	disableDynamicContent: false
-};
+import {
+    TextControl,
+    TextareaControl,
+} from '@wordpress/components';
+import ResponsiveToggle from '../responsive-toggle';
+import { __ } from '@wordpress/i18n';
+import styles from './editor.lazy.scss';
+import React, { useLayoutEffect } from 'react';
+import classnames from 'classnames';
+import UAGReset from '../reset';
 
-export default function UAGTextControl( props ) {
-	// Add and remove the CSS on the drop and remove of the component.
+const UAGTextControl = ( props ) => {
+
+    // Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
 		return () => {
@@ -25,57 +27,134 @@ export default function UAGTextControl( props ) {
 		};
 	}, [] );
 
-	const {label, name, dynamicContentType, value, setAttributes, disableDynamicContent} = props
 	const selectedBlock = useSelect( ( select ) => {
 		return select( 'core/block-editor' ).getSelectedBlock();
 	}, [] );
 
-	const registerTextExtender = disableDynamicContent ? null : wp.hooks.applyFilters( 'uagb.registerTextExtender', '', selectedBlock?.name, name, dynamicContentType )
+	const registerTextExtender = props.disableDynamicContent && props.name ? null : wp.hooks.applyFilters( 'uagb.registerTextExtender', '', selectedBlock?.name, props.name, props.dynamicContentType )
 
 	const isEnableDynamicContent = () => {
-		if( disableDynamicContent ){
+		if( props.disableDynamicContent || ! props.name ){
 			return false;
 		}
 		const dynamicContent = selectedBlock?.attributes?.dynamicContent
-		if( dynamicContent && dynamicContent?.[name]?.enable === true ) {
+		if( dynamicContent && dynamicContent?.[props.name]?.enable === true ) {
 			return true
 		}
 		return false;
 	}
 
-	return (
-		<React.Fragment>
-			<div className={`uagb-text-control${isEnableDynamicContent() ? ' uagb-text-control--open-dynamic-content' : ''}`}>
-				{
-					!isEnableDynamicContent() ? (
-						<TextControl
-							label={label}
-							value={ value }
-							onChange={ ( inputValue ) =>
-								setAttributes( { [name]: inputValue } )
-							}
-							readOnly={isEnableDynamicContent()}
-						/>
-					) : (
-						<div className="components-base-control">
-							<div className="components-base-control__field">
-								<label className="components-base-control__label">{label}</label>
+
+    const handleOnChange = ( newValue ) => {
+
+		if(props.name){
+			setAttributes( { [props.name]: inputValue } )
+		}else if ( props?.setAttributes ) {
+			props?.setAttributes( {
+				[ props?.data?.label ]: newValue,
+			} )
+		}
+		if ( props?.onChange ) {
+			props?.onChange( newValue );
+		}
+	};
+
+    const resetValues = ( defaultValues ) => {
+
+		if ( props?.onChange ) {
+			props?.onChange( defaultValues[props?.data?.label] )
+		}
+	};
+
+    const HeaderControls = () => {
+
+        return(
+            <div className="uagb-control__header">
+                <ResponsiveToggle
+					label= { props?.label }
+				/>
+				<div className="uagb-number-control__actions uagb-control__actions">
+					<UAGReset
+						onReset={resetValues}
+						attributeNames = {[
+							props?.data?.label
+						]}
+						setAttributes={ props?.setAttributes }
+					/>
+				</div>
+			</div>
+        );
+    };
+
+    return(
+        <>
+            <div className={`components-base-control uagb-text-control uagb-size-type-field-tabs${isEnableDynamicContent() ? ' uagb-text-control--open-dynamic-content' : ''}`}>
+                { props?.variant !== 'inline' && props?.showHeaderControls &&
+                    <HeaderControls />
+                }
+                <div
+                    className={ classnames(
+                        'uagb-text-control__controls',
+                        'uagb-text-control__controls-' + props?.variant,
+                    ) }>
+                    {
+						!isEnableDynamicContent() ? (
+							<>
+								{ ( props?.variant !== 'textarea' ) &&
+									<TextControl
+										label = { ( props?.variant === 'inline' ) || ( props?.variant !== 'inline' && ! props?.showHeaderControls ) ? ( props?.label ) : false }
+										value = { props?.value }
+										onChange = { handleOnChange }
+										autoComplete = { props?.autoComplete }
+										readOnly={isEnableDynamicContent()}
+									/>
+								}
+								{ ( props?.variant === 'textarea' ) &&
+									<TextareaControl
+										label = { ( ! props?.showHeaderControls ) ? ( props?.label ) : false }
+										value = { props?.value }
+										onChange = { handleOnChange }
+										autoComplete = { props?.autoComplete }
+										readOnly={isEnableDynamicContent()}
+									/>
+								}
+							</>
+						) : (
+							<div className="components-base-control">
+								<div className="components-base-control__field">
+									<label className="components-base-control__label">{props.label}</label>
+								</div>
 							</div>
-						</div>
-					)
-				}
+						)
+					}
+                </div>
 				{
 					registerTextExtender
 				}
+                { props?.help && (
+                    <p className="uag-control-help-notice">{ props?.help }</p>
+                ) }
 				{
 					isEnableDynamicContent() && (
 						<Separator />
 					)
 				}
-			</div>
-		</React.Fragment>
-	);
-}
+            </div>
+        </>
+    );
+};
 
-UAGTextControl.propTypes = propTypes;
-UAGTextControl.defaultProps = defaultProps;
+UAGTextControl.defaultProps = {
+	label: __( 'Spectra Text Control', 'ultimate-addons-for-gutenberg' ),
+	className: '',
+	allowReset: true,
+	resetFallbackValue: '',
+	placeholder: null,
+    variant: 'full-width',
+    autoComplete: 'off',
+    showHeaderControls: true,
+	dynamicContentType: 'url', // url / text
+	disableDynamicContent: false
+};
+
+export default UAGTextControl;

@@ -117,6 +117,10 @@ class UAGB_Init_Blocks {
 		if ( isset( $block['attrs'] ) ) {
 			$block_attributes = $block['attrs'];
 
+		if ( isset( $block['attrs'] ) ) {
+
+			$block_attributes = $block['attrs'];
+
 			if ( isset( $block_attributes['UAGDisplayConditions'] ) && array_key_exists( 'UAGDisplayConditions', $block_attributes ) ) {
 
 				switch ( $block_attributes['UAGDisplayConditions'] ) {
