@@ -1,6 +1,6 @@
 import { ToggleControl, SelectControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { addFilter } from '@wordpress/hooks';
+import { addFilter, applyFilters } from '@wordpress/hooks';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import classnames from 'classnames';
@@ -228,9 +228,21 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		UAGResponsiveConditions
 	} = attributes;
 
-	const isSpectra = blockType.name.includes( 'uagb/' );
+	//Filter to add responsive condition compatibility for third party blocks.
+	const blockTypes = applyFilters(
+		'uag_reponsive_conditions_compatible_blocks',
+		[ 'uagb/' ]
+	);
 
-	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGResponsiveConditions && isSpectra ) {
+	let isResponsiveCompatibleBlock = false;
+	for( const type of blockTypes ){
+		if( blockType.name.includes( type ) ){
+			isResponsiveCompatibleBlock = true;
+			break;
+		}
+	}
+
+	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGResponsiveConditions && isResponsiveCompatibleBlock ) {
 
 		if ( UAGHideDesktop ) {
 			extraProps.className = classnames( extraProps.className, 'uag-hide-desktop' );
