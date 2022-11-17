@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.1  
-**Stable tag:** 2.0.15  
+**Stable tag:** 2.0.16  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -169,6 +169,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+### 2.0.16 - TUESDAY, 22th NOVEMBER 2022 ###
 
 ### 2.0.16 - TUESDAY, 16th NOVEMBER 2022 ###
 * Fix: Icon List - Resolved an issue as the link was getting disabled for the icon list child.
