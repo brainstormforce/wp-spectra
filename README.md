@@ -169,7 +169,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+
 ### 2.0.16 - TUESDAY, 22th NOVEMBER 2022 ###
+* Improvement: Spectra Core Blocks - Keep core blocks always enabled & prevent them for being disabled.
 
 ### 2.0.15 - WEDNESDAY, 16th NOVEMBER 2022 ###
 * Improvement: Info Box - Added Responsive feature to the Info Box icon width setting.
