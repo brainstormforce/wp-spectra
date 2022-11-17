@@ -169,10 +169,10 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 ## Changelog ##
-### 2.0.16 - TUESDAY, 22th NOVEMBER 2022 ###
 
-### 2.0.16 - TUESDAY, 16th NOVEMBER 2022 ###
+### 2.0.16 - TUESDAY, 22th NOVEMBER 2022 ###
 * Fix: Icon List - Resolved an issue as the link was getting disabled for the icon list child.
+
 
 ### 2.0.15 - WEDNESDAY, 16th NOVEMBER 2022 ###
 * Improvement: Info Box - Added Responsive feature to the Info Box icon width setting.
