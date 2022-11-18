@@ -14,22 +14,6 @@
 		padding-right: 30px;
 	}
 
-	> .components-button {
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		padding: 0 8px;
-		border-radius: 2px;
-		height: 30px;
-
-		svg {
-			width: 18px;
-			stroke: #808285;
-			stroke-width: 1.4;
-			fill: none;
-		}
-	}
-
 	.uagb-control__header {
 
 		.uagb-number-control__actions {
@@ -41,6 +25,22 @@
 	}
 
 	&__controls {
+
+		> .components-button {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			padding: 0 8px;
+			border-radius: 2px;
+			height: 30px;
+
+			svg {
+				width: 18px;
+				stroke: #808285;
+				stroke-width: 1.4;
+				fill: none;
+			}
+		}
 
 		&-inline {
 
@@ -61,7 +61,11 @@
 		}
 
 		&-textarea {
-
+			position: relative;
+			> .components-button {
+				top: 2px;
+				bottom: auto;
+			}
 			textarea {
 
 				border-color: #e6e7e9;

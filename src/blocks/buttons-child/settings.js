@@ -209,6 +209,7 @@ const Settings = ( props ) => {
 						label: 'link',
 					}}
 				/>
+
 				<ToggleControl
 					label={ __(
 						'Open in new window',

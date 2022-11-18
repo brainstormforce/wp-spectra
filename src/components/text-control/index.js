@@ -93,7 +93,7 @@ const UAGTextControl = ( props ) => {
                         'uagb-text-control__controls-' + props?.variant,
                     ) }>
                     {
-						!isEnableDynamicContent() ? (
+						!isEnableDynamicContent() && (
 							<>
 								{ ( props?.variant !== 'textarea' ) &&
 									<TextControl
@@ -114,7 +114,10 @@ const UAGTextControl = ( props ) => {
 									/>
 								}
 							</>
-						) : (
+						)
+					}
+					{
+						isEnableDynamicContent() && props?.variant === 'inline' && (
 							<div className="components-base-control">
 								<div className="components-base-control__field">
 									<label className="components-base-control__label">{props.label}</label>
@@ -122,10 +125,11 @@ const UAGTextControl = ( props ) => {
 							</div>
 						)
 					}
+					{
+						registerTextExtender
+					}
                 </div>
-				{
-					registerTextExtender
-				}
+
                 { props?.help && (
                     <p className="uag-control-help-notice">{ props?.help }</p>
                 ) }
