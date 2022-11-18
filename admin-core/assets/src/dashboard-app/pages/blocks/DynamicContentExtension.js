@@ -66,6 +66,9 @@ const DynamicContentExtension = () => {
                     <div className="inline-block align-top max-h-4 px-1.5 py-1 ml-1.5 text-[10px] leading-[10px] border border-slate-400 text-slate-500 rounded spectra-admin__block-label">
                         { __( 'Extension', 'ultimate-addons-for-gutenberg' ) }
                     </div>
+                    <div className="inline-block align-top max-h-4 px-1.5 py-1 ml-1.5 text-[10px] leading-[10px] border border-slate-800 bg-slate-800 text-white rounded spectra-admin__block-label">
+                        { __( 'Pro', 'ultimate-addons-for-gutenberg' ) }
+                    </div>
                 </p>
                 <a className="focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate" href='https://wpspectra.com/docs/dynamic-content/' target="_blank"rel="noreferrer">{__( 'Documentation', 'ultimate-addons-for-gutenberg' )}</a>
             </div>
