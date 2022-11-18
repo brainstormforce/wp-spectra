@@ -19,8 +19,9 @@ const BlockCard = ( props ) => {
 
     const blocksStatuses = useSelector( ( state ) => state.blocksStatuses );
     const coreBlocks = useSelector( ( state ) => state.coreBlocks );
+    const isCoreBlock = coreBlocks.includes( slug );
 
-    const blockActivationStatus = 'disabled' === blocksStatuses[slug] ? false : true;
+    const blockActivationStatus = ( 'disabled' === blocksStatuses[slug] && ! isCoreBlock ) ? false : true;
 
     const updateBlockStatus = () => {
 
@@ -55,7 +56,7 @@ const BlockCard = ( props ) => {
 			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
         } );
     };
-    const isCoreBlock = coreBlocks.includes( slug );
+    
     return (
         <div
         key={slug}
