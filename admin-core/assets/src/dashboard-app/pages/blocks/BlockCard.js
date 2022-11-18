@@ -15,18 +15,10 @@ const BlockCard = ( props ) => {
         deprecated,
     } = props.blockInfo;
 
-    const coreBlocks = [
-        'container',
-        'advanced-heading',
-        'image',
-        'buttons',
-        'info-box',
-        'call-to-action',
-    ];
-
     const dispatch = useDispatch();
 
     const blocksStatuses = useSelector( ( state ) => state.blocksStatuses );
+    const coreBlocks = useSelector( ( state ) => state.coreBlocks );
 
     const blockActivationStatus = 'disabled' === blocksStatuses[slug] ? false : true;
 
@@ -107,7 +99,12 @@ const BlockCard = ( props ) => {
                         blockActivationStatus ? 'translate-x-5' : 'translate-x-0',
                         'pointer-events-none inline-block h-3.5 w-3.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
                         )}
-                    />
+                    >
+                        {
+                            isCoreBlock &&
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" viewBox="0 0 10 12" fill="none"> <path d="M7.25 5.25V3.375C7.25 2.13236 6.24264 1.125 5 1.125C3.75736 1.125 2.75 2.13236 2.75 3.375V5.25M2.375 10.875H7.625C8.24632 10.875 8.75 10.3713 8.75 9.75V6.375C8.75 5.75368 8.24632 5.25 7.625 5.25H2.375C1.75368 5.25 1.25 5.75368 1.25 6.375V9.75C1.25 10.3713 1.75368 10.875 2.375 10.875Z" stroke="#6104FF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/> </svg>
+                        }
+                    </span>
                 </Switch>
             </div>
         </div>

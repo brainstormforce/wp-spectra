@@ -12,6 +12,7 @@ const FilterTabs = () => {
     const dispatch = useDispatch();
 
     const blocksStatuses = useSelector( ( state ) => state.blocksStatuses );
+    const coreBlocks = useSelector( ( state ) => state.coreBlocks );
     const activeBlocksFilterTab = useSelector( ( state ) => state.activeBlocksFilterTab );
     const [ categoriesBlocks, setcategoriesBlocks ] = useState( [] );
 
@@ -104,7 +105,7 @@ const FilterTabs = () => {
 		const value = { ...blocksStatuses };
 
 		for ( const block in blocksStatuses ) {
-            if ( 'all' !== activeBlocksFilterTab && ( ! categoriesBlocks[activeBlocksFilterTab] || ! categoriesBlocks[activeBlocksFilterTab].includes( block ) ) ) {
+            if ( coreBlocks.includes( block ) || ( 'all' !== activeBlocksFilterTab && ( ! categoriesBlocks[activeBlocksFilterTab] || ! categoriesBlocks[activeBlocksFilterTab].includes( block ) ) ) ) {
                 continue;
             }
 			value[ block ] = 'disabled';
