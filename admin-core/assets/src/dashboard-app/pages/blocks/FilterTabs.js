@@ -83,6 +83,11 @@ const FilterTabs = () => {
 			dispatch( {type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'enabled' } );
         }
 
+        if ( 'pro' === activeBlocksFilterTab ) {
+            // Update Extensions Statuses.
+			dispatch( { type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'enabled' } );            
+        }
+
 		const formData = new window.FormData();
 
 		formData.append( 'action', 'uag_blocks_activation_and_deactivation' );
@@ -121,6 +126,11 @@ const FilterTabs = () => {
             dispatch( {type: 'UPDATE_ENABLE_DISPLAY_CONDITIONS', payload: 'disabled' } );
 			dispatch( {type: 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS', payload: 'disabled' } );
 			dispatch( {type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'disabled' } );
+        }
+
+        if ( 'pro' === activeBlocksFilterTab ) {
+            // Update Extensions Statuses.
+			dispatch( { type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'disabled' } );            
         }
 
 		const formData = new window.FormData();
