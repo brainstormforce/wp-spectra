@@ -30,6 +30,8 @@ const PostGridComponent = ( props ) => {
 	};
 
 	const [ state, setStateValue ] = useState( initialState );
+	const [ isTaxonomyLoading, setIsTaxonomyLoading] = useState( false );
+
 
 	useEffect( () => {
 		// Replacement for componentDidMount.
@@ -235,11 +237,13 @@ const PostGridComponent = ( props ) => {
 			} = props.attributes;
 			const { getEntityRecords } = select( 'core' );
 
-			if ( ! allTaxonomyStore ) {
+			if ( ! allTaxonomyStore && ! isTaxonomyLoading ) {
+				setIsTaxonomyLoading( true );
 				apiFetch( {
 					path: '/spectra/v1/all_taxonomy',
 				} ).then( ( data ) => {
 					props.setAttributes( { allTaxonomyStore: data } );
+					setIsTaxonomyLoading( false );
 				} );
 			}
 			const allTaxonomy = allTaxonomyStore;

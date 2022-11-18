@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.1
-Stable tag: 2.0.15
+Stable tag: 2.0.16
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -170,8 +170,10 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 2.0.16 - TUESDAY, 16th NOVEMBER 2022 =
-* Fix: Spectra component styling gets overridden in the Customizer block editor.
+= 2.0.16 - THURSDAY, 22nd NOVEMBER 2022 =
+* Fix: The "uagb_spectra_font_awesome_polyfiller" AJAX gets called multiple times.
+* Fix: Post Blocks: The "spectra/v1/all_taxonomy" Rest API gets called multiple times inside editor.
+* Fix: Spectra component styling gets overridden in the customizer block editor.
 
 = 2.0.15 - WEDNESDAY, 16th NOVEMBER 2022 =
 * Improvement: Info Box - Added Responsive feature to the Info Box icon width setting.
