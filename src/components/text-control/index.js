@@ -1,11 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-for */
 import React, {useLayoutEffect} from 'react';
-import styles from './editor.lazy.scss';
-import { TextControl } from '@wordpress/components';
 import Separator from '@Components/separator';
 import { useSelect } from '@wordpress/data';
-
-
 import {
     TextControl,
     TextareaControl,
@@ -13,7 +9,6 @@ import {
 import ResponsiveToggle from '../responsive-toggle';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect } from 'react';
 import classnames from 'classnames';
 import UAGReset from '../reset';
 
@@ -31,10 +26,10 @@ const UAGTextControl = ( props ) => {
 		return select( 'core/block-editor' ).getSelectedBlock();
 	}, [] );
 
-	const registerTextExtender = props.disableDynamicContent && props.name ? null : wp.hooks.applyFilters( 'uagb.registerTextExtender', '', selectedBlock?.name, props.name, props.dynamicContentType )
+	const registerTextExtender = props.enableDynamicContent && props.name ? wp.hooks.applyFilters( 'uagb.registerTextExtender', '', selectedBlock?.name, props.name, props.dynamicContentType ) : null;
 
 	const isEnableDynamicContent = () => {
-		if( props.disableDynamicContent || ! props.name ){
+		if( !props.enableDynamicContent || ! props.name ){
 			return false;
 		}
 		const dynamicContent = selectedBlock?.attributes?.dynamicContent
@@ -98,7 +93,7 @@ const UAGTextControl = ( props ) => {
                         'uagb-text-control__controls-' + props?.variant,
                     ) }>
                     {
-						!isEnableDynamicContent() ? (
+						!isEnableDynamicContent() && (
 							<>
 								{ ( props?.variant !== 'textarea' ) &&
 									<TextControl
@@ -119,7 +114,10 @@ const UAGTextControl = ( props ) => {
 									/>
 								}
 							</>
-						) : (
+						)
+					}
+					{
+						isEnableDynamicContent() && props?.variant === 'inline' && (
 							<div className="components-base-control">
 								<div className="components-base-control__field">
 									<label className="components-base-control__label">{props.label}</label>
@@ -127,10 +125,11 @@ const UAGTextControl = ( props ) => {
 							</div>
 						)
 					}
+					{
+						registerTextExtender
+					}
                 </div>
-				{
-					registerTextExtender
-				}
+
                 { props?.help && (
                     <p className="uag-control-help-notice">{ props?.help }</p>
                 ) }
@@ -154,7 +153,7 @@ UAGTextControl.defaultProps = {
     autoComplete: 'off',
     showHeaderControls: true,
 	dynamicContentType: 'url', // url / text
-	disableDynamicContent: false
+	enableDynamicContent: false
 };
 
 export default UAGTextControl;

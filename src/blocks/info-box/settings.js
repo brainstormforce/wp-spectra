@@ -41,7 +41,6 @@ let imageSizeOptions = [
 
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-import UAGTextControl from '@Components/text-control';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -925,6 +924,7 @@ const Settings = ( props ) => {
 								'Link',
 								'ultimate-addons-for-gutenberg'
 							) }
+							enableDynamicContent={true}
 							name="ctaLink"
 							value={ ctaLink }
 							setAttributes={setAttributes}

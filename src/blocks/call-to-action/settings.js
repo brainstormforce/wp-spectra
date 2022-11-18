@@ -24,7 +24,6 @@ import { ToggleControl, Icon } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import ResponsiveSlider from '@Components/responsive-slider';
 import { useDeviceType } from '@Controls/getPreviewType';
-import UAGTextControl from '@Components/text-control';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -397,6 +396,7 @@ const Settings = ( props ) => {
 						'Link',
 						'ultimate-addons-for-gutenberg'
 					) }
+					enableDynamicContent={true}
 					name="secondCtaLink"
 					value={ secondCtaLink }
 					setAttributes={setAttributes}
@@ -892,6 +892,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							name="ctaLink"
+							enableDynamicContent={true}
 							value={ ctaLink }
 							setAttributes={setAttributes}
 							data={{
