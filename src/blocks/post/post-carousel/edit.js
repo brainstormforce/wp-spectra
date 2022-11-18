@@ -55,6 +55,8 @@ const UAGBPostCarousel = ( props ) => {
 		innerBlocks: [],
 	} );
 
+	const [ isTaxonomyLoading, setIsTaxonomyLoading] = useState( false );
+
 	useEffect( () => {
 		const { block } = props;
 		setState( { innerBlocks: block } );
@@ -331,11 +333,13 @@ let categoriesList = [];
 			} = props.attributes;
 			const { getEntityRecords } = select( 'core' );
 
-			if ( ! allTaxonomyStore ) {
+			if ( ! allTaxonomyStore && ! isTaxonomyLoading ) {
+				setIsTaxonomyLoading( true );
 				apiFetch( {
 					path: '/spectra/v1/all_taxonomy',
 				} ).then( ( data ) => {
 					props.setAttributes( { allTaxonomyStore: data } );
+					setIsTaxonomyLoading( false );
 				} );
 			}
 			const allTaxonomy = allTaxonomyStore;

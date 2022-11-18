@@ -2,7 +2,7 @@
  * External dependencies
  */
 
-import React, { useEffect,    } from 'react';
+import React, { useEffect,  useState  } from 'react';
 
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
@@ -20,6 +20,8 @@ import { useSelect } from '@wordpress/data';
 
 const PostTimelineComponent = ( props ) => {
 	const deviceType = useDeviceType();
+	const [ isTaxonomyLoading, setIsTaxonomyLoading] = useState( false );
+
 	useEffect( () => {
 
 		// Replacement for componentDidMount.
@@ -143,11 +145,13 @@ const PostTimelineComponent = ( props ) => {
 			const postsToShowFallback = getFallbackNumber( postsToShow, 'postsToShow', 'post-timeline' );
 			const { getEntityRecords } = select( 'core' );
 
-			if ( ! allTaxonomyStore ) {
+			if ( ! allTaxonomyStore && ! isTaxonomyLoading ) {
+				setIsTaxonomyLoading( true );
 				apiFetch( {
 					path: '/spectra/v1/all_taxonomy',
 				} ).then( ( data ) => {
 					props.setAttributes( { allTaxonomyStore: data } );
+					setIsTaxonomyLoading( false );
 				} );
 			}
 			const allTaxonomy = allTaxonomyStore;
