@@ -178,6 +178,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Info Box - The title is disabled on the editor if we set P tag.
 * Fix: Team - Social icon style option is showing when the social icon is disabled.
 * Fix: Buttons - Validation errors when we add `Add "nofollow" to link`
+* Improvement: Advanced Heading - Added Sub-heading and Separator Position Settings.
 
 ### 2.0.15 - WEDNESDAY, 16th NOVEMBER 2022 ###
 * Improvement: Info Box - Added Responsive feature to the Info Box icon width setting.

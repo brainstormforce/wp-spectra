@@ -50,6 +50,13 @@ const attributes = {
 		type: 'boolean',
 		default: headingDescToggleDefault,
 	},
+	headingDescPosition: {
+		type: 'string',
+		default: 'below-heading',
+		UAGCopyPaste: {
+			styleType: 'prefix-position'
+		}
+	},
 	headingDesc: {
 		source: 'html',
 		selector: '.uagb-desc-text',
@@ -121,6 +128,13 @@ const attributes = {
 		default: 'none',
 		UAGCopyPaste: {
 			styleType: 'separator-style'
+		}
+	},
+	seperatorPosition: {
+		type: 'string',
+		default: 'below-heading',
+		UAGCopyPaste: {
+			styleType: 'separator-position'
 		}
 	},
 	separatorHeight: {
