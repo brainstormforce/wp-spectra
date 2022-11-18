@@ -19,10 +19,12 @@ import UAGTabsControl from '@Components/tabs';
 import ctaPresets, {buttonsPresetsCTA, buttonsPresetsAdditionalButton} from './presets';
 import UAGPresets from '@Components/presets';
 import renderSVG from '@Controls/renderIcon';
-import { ToggleControl, TextControl, Icon } from '@wordpress/components';
+import { ToggleControl, Icon } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import ResponsiveSlider from '@Components/responsive-slider';
 import { useDeviceType } from '@Controls/getPreviewType';
+import UAGTextControl from '@Components/text-control';
+
 const Settings = ( props ) => {
 	props = props.parentProps;
 	const { setAttributes, attributes } = props;
@@ -120,6 +122,7 @@ const Settings = ( props ) => {
 		ctaFontStyle,
 		enabledSecondCtaButton,
 		secondCtaLink,
+		secondCtaLabel,
 		secondCtaTarget,
 		secondCtaLoadGoogleFonts,
 		secondCtaFontFamily,
@@ -373,12 +376,32 @@ const Settings = ( props ) => {
 					displayUnit={ false }
 					setAttributes={ setAttributes }
 				/>
-				<TextControl
+				<UAGTextControl
+					label={ __(
+						'Text',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ secondCtaLabel }
+					data={{
+						value: secondCtaLabel,
+						label: 'secondCtaLabel',
+					}}
+					setAttributes={ setAttributes }
+					onChange={ ( value ) =>
+						setAttributes( { secondCtaLabel: value } )
+					}
+				/>
+				<UAGTextControl
 					label={ __(
 						'Link',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ secondCtaLink }
+					data={{
+						value: secondCtaLink,
+						label: 'secondCtaLink',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( { secondCtaLink: value } )
 					}
@@ -845,12 +868,17 @@ const Settings = ( props ) => {
 				) }
 				{ ( ctaType === 'text' ) && (
 					<>
-						<TextControl
+						<UAGTextControl
 							label={ __(
 								'Text',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ ctaText }
+							data={{
+								value: ctaText,
+								label: 'ctaText',
+							}}
+							setAttributes={ setAttributes }
 							onChange={ ( value ) =>
 								setAttributes( { ctaText: value } )
 							}
@@ -859,12 +887,17 @@ const Settings = ( props ) => {
 				) }
 				{ ctaType !== 'none' && (
 					<>
-						<TextControl
+						<UAGTextControl
 							label={ __(
 								'Link',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ ctaLink }
+							data={{
+								value: ctaLink,
+								label: 'ctaLink',
+							}}
+							setAttributes={ setAttributes }
 							onChange={ ( value ) =>
 								setAttributes( { ctaLink: value } )
 							}

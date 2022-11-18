@@ -327,6 +327,18 @@ const attributes = {
 		default: true,
 		isUAGStyle: true,
 	},
+	imageSizeChild: {
+		type: 'number',
+		default: 16,
+	},
+	imgTagHeight: {
+		type: 'number',
+		default: 0,
+	},
+	imgTagWidth: {
+		type: 'number',
+		default: 0,
+	},
 };
 
 export default attributes;

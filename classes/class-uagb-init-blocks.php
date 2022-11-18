@@ -115,31 +115,34 @@ class UAGB_Init_Blocks {
 	 */
 	public function render_block( $block_content, $block ) {
 
-		$block_attributes = $block['attrs'];
+		if ( isset( $block['attrs'] ) ) {
 
-		if ( isset( $block_attributes['UAGDisplayConditions'] ) && array_key_exists( 'UAGDisplayConditions', $block_attributes ) ) {
+			$block_attributes = $block['attrs'];
 
-			switch ( $block_attributes['UAGDisplayConditions'] ) {
+			if ( isset( $block_attributes['UAGDisplayConditions'] ) && array_key_exists( 'UAGDisplayConditions', $block_attributes ) ) {
 
-				case 'userstate':
-					$block_content = $this->user_state_visibility( $block_attributes, $block_content );
-					break;
+				switch ( $block_attributes['UAGDisplayConditions'] ) {
 
-				case 'userRole':
-					$block_content = $this->user_role_visibility( $block_attributes, $block_content );
-					break;
+					case 'userstate':
+						$block_content = $this->user_state_visibility( $block_attributes, $block_content );
+						break;
 
-				case 'browser':
-					$block_content = $this->browser_visibility( $block_attributes, $block_content );
-					break;
+					case 'userRole':
+						$block_content = $this->user_role_visibility( $block_attributes, $block_content );
+						break;
 
-				case 'os':
-					$block_content = $this->os_visibility( $block_attributes, $block_content );
-					break;
+					case 'browser':
+						$block_content = $this->browser_visibility( $block_attributes, $block_content );
+						break;
 
-				default:
-					// code...
-					break;
+					case 'os':
+						$block_content = $this->os_visibility( $block_attributes, $block_content );
+						break;
+
+					default:
+						// code...
+						break;
+				}
 			}
 		}
 		return $block_content;

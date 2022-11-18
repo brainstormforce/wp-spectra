@@ -27,11 +27,13 @@ import {
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { useDeviceType } from '@Controls/getPreviewType';
+import UAGTextControl from '@Components/text-control';
 
 const Settings = ( props ) => {
+	const { categoriesList, taxonomyList } = props;
 	props = props.parentProps;
 
-	const { attributes, categoriesList, setAttributes, taxonomyList } = props;
+	const { attributes, setAttributes } = props;
 	const deviceType = useDeviceType();
 
 	const {
@@ -102,6 +104,7 @@ const Settings = ( props ) => {
 		displayPostAuthor,
 		displayPostImage,
 		displayPostLink,
+		readMoreText,
 		align,
 		alignTablet,
 		alignMobile,
@@ -864,6 +867,25 @@ const Settings = ( props ) => {
 						setAttributes( { displayPostLink: ! displayPostLink } )
 					}
 				/>
+				{ displayPostLink && (
+					<>
+						<UAGTextControl
+							label={ __(
+								'CTA Text',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ readMoreText }
+							data={{
+								value: readMoreText,
+								label: 'readMoreText',
+							}}
+							setAttributes={ setAttributes }
+							onChange={ ( value ) =>
+								setAttributes( { readMoreText: value } )
+							}
+						/>
+					</>
+				) }
 				<ToggleControl
 					label={ __(
 						'Open link in New Tab',

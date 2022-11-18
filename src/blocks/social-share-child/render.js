@@ -6,7 +6,8 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect } from 'react';
+import getImageHeightWidth from '@Controls/getImageHeightWidth';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -19,13 +20,19 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes } = props;
+	const { attributes, setAttributes } = props;
 
-	const { className, image_icon, icon, image } = attributes;
+	const { className, image_icon, icon, image, parentSize, imgTagHeight  } = attributes;
 
 	const defaultedAlt = ( image && image?.alt ) ? image?.alt : '';
 
 	let imageIconHtml = '';
+
+	useEffect( () => {
+		if( image && image.url && image_icon !== 'none' ){
+			getImageHeightWidth( image?.url, setAttributes, { type: 'width', value: parentSize } )
+		}
+	}, [ image, parentSize ] )
 
 	if ( image_icon === 'icon' ) {
 		if ( icon ) {
@@ -37,7 +44,7 @@ const Render = ( props ) => {
 		}
 	} else if ( image && image.url ) {
 		imageIconHtml = (
-			<img className="uagb-ss__source-image" src={ image.url } alt={ defaultedAlt } />
+			<img className="uagb-ss__source-image" src={ image.url } alt={ defaultedAlt }  width={ parentSize } height={ imgTagHeight } loading="lazy"/>
 		);
 	}
 

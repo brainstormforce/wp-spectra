@@ -49,6 +49,7 @@ const Render = ( props ) => {
 		socialTarget,
 		socialEnable,
 		stack,
+		imgWidth,
 	} = attributes;
 
 	const titleHtml = (
@@ -188,13 +189,16 @@ const Render = ( props ) => {
 					className={`uagb-team__image-crop-${ imgStyle }`}
 					src={ imgUrl }
 					alt={ image.alt ? image.alt : '' }
+					height={ imgWidth }
+					width={ imgWidth }
+					loading="lazy"
 				/>
 		);
 	}
 		const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/team.png`;
 	return (
 		<>
-		{ isPreview ? <img width='100%' src={previewImageData} alt=''/> :
+		{ isPreview ? <img src={previewImageData} alt='' /> :
 			<div
 				className={ classnames(
 					className,

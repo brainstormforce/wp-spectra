@@ -3,7 +3,6 @@
  */
 
 import styling from '.././styling';
-import { compose } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
 import React, { useState, useEffect,   } from 'react';
 
@@ -31,6 +30,7 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import UAGNumberControl from '@Components/number-control';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import apiFetch from '@wordpress/api-fetch';
+import UAGTextControl from '@Components/text-control';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -41,13 +41,12 @@ import {
 	Placeholder,
 	Spinner,
 	ToggleControl,
-	TextControl,
 	Icon
 } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
 
-import { withSelect, withDispatch } from '@wordpress/data';
+import { useSelect, useDispatch } from '@wordpress/data';
 
 const UAGBPostCarousel = ( props ) => {
 
@@ -55,6 +54,8 @@ const UAGBPostCarousel = ( props ) => {
 		isEditing: false,
 		innerBlocks: [],
 	} );
+
+	const [ isTaxonomyLoading, setIsTaxonomyLoading] = useState( false );
 
 	useEffect( () => {
 		const { block } = props;
@@ -315,14 +316,109 @@ const UAGBPostCarousel = ( props ) => {
 	const onSelectOffset = ( value ) => {
 		setAttributes( { enableOffset: value } );
 	};
+let categoriesList = [];
+	const { latestPosts, taxonomyList, block } = useSelect( // eslint-disable-line no-unused-vars
+		( select ) => {
+			const {
+				blockName,
+				categories,
+				postsToShow,
+				postsOffset,
+				order,
+				orderBy,
+				postType,
+				taxonomyType,
+				excludeCurrentPost,
+				allTaxonomyStore
+			} = props.attributes;
+			const { getEntityRecords } = select( 'core' );
+
+			if ( ! allTaxonomyStore && ! isTaxonomyLoading ) {
+				setIsTaxonomyLoading( true );
+				apiFetch( {
+					path: '/spectra/v1/all_taxonomy',
+				} ).then( ( data ) => {
+					props.setAttributes( { allTaxonomyStore: data } );
+					setIsTaxonomyLoading( false );
+				} );
+			}
+			const allTaxonomy = allTaxonomyStore;
+			const currentTax = allTaxonomy ? allTaxonomy[ postType ] : undefined;
+
+			let rest_base = '';
+
+			if ( 'undefined' !== typeof currentTax ) {
+				if ( 'undefined' !== typeof currentTax.taxonomy[ taxonomyType ] ) {
+					rest_base =
+						currentTax.taxonomy[ taxonomyType ].rest_base === false ||
+						currentTax.taxonomy[ taxonomyType ].rest_base === null
+							? currentTax.taxonomy[ taxonomyType ].name
+							: currentTax.taxonomy[ taxonomyType ].rest_base;
+				}
+
+				if ( '' !== taxonomyType ) {
+					if (
+						'undefined' !== typeof currentTax.terms &&
+						'undefined' !== typeof currentTax.terms[ taxonomyType ]
+					) {
+						categoriesList = currentTax.terms[ taxonomyType ];
+					}
+				}
+			}
+
+			const latestPostsQuery = {
+				order,
+				orderby: orderBy,
+				per_page: getFallbackNumber( postsToShow, 'postsToShow', blockName ),
+				offset: getFallbackNumber( postsOffset, 'postsOffset', blockName ),
+			};
+
+			if ( excludeCurrentPost ) {
+				latestPostsQuery.exclude = select(
+					'core/editor'
+				).getCurrentPostId();
+			}
+
+			const category = [];
+			const temp = parseInt( categories );
+			category.push( temp );
+			const catlenght = categoriesList.length;
+			for ( let i = 0; i < catlenght; i++ ) {
+				if ( categoriesList[ i ].id === temp ) {
+					if ( categoriesList[ i ].child.length !== 0 ) {
+						categoriesList[ i ].child.forEach( ( element ) => {
+							category.push( element );
+						} );
+					}
+				}
+			}
+			const { getBlocks } = select( 'core/block-editor' );
+			if ( undefined !== categories && '' !== categories ) {
+				latestPostsQuery[ rest_base ] =
+					undefined === categories || '' === categories
+						? categories
+						: category;
+			}
+			return {
+				latestPosts: getEntityRecords(
+					'postType',
+					postType,
+					latestPostsQuery
+				),
+				categoriesList,
+				taxonomyList:
+					'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
+				block: getBlocks( props.clientId ),
+			};
+		},
+	);
+
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 
 	const {
 		attributes,
-		categoriesList,
 		setAttributes,
-		latestPosts,
 		deviceType,
-		taxonomyList,
 	} = props;
 	const {
 		blockName,
@@ -338,6 +434,7 @@ const UAGBPostCarousel = ( props ) => {
 		imgPosition,
 		displayPostLink,
 		newTab,
+		ctaText,
 		columns,
 		tcolumns,
 		mcolumns,
@@ -849,13 +946,18 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				</h2>
-				<TextControl
+				<UAGTextControl
 					autoComplete="off"
 					label={ __(
 						'Display Message',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ postDisplaytext }
+					data={{
+						value: postDisplaytext,
+						label: 'postDisplaytext',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( { postDisplaytext: value } )
 					}
@@ -1162,9 +1264,14 @@ const UAGBPostCarousel = ( props ) => {
 						] }
 					/>
 				{ 'default' === taxStyle && (
-					<TextControl
+					<UAGTextControl
 						label={ __( 'Taxonomy Divider', 'ultimate-addons-for-gutenberg' ) }
 						value={ taxDivider }
+						data={{
+							value: taxDivider,
+							label: 'taxDivider',
+						}}
+						setAttributes={ setAttributes }
 						onChange={ ( value ) =>
 							setAttributes( {
 								taxDivider: value,
@@ -1277,6 +1384,21 @@ const UAGBPostCarousel = ( props ) => {
 							checked={ newTab }
 							onChange={ () =>
 								setAttributes( { newTab: ! newTab } )
+							}
+						/>
+						<UAGTextControl
+							label={ __(
+								'Text',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ ctaText }
+							data={{
+								value: ctaText,
+								label: 'ctaText',
+							}}
+							setAttributes={ setAttributes }
+							onChange={ ( value ) =>
+								setAttributes( { ctaText: value } )
 							}
 						/>
 						<UAGPresets
@@ -2398,109 +2520,14 @@ const UAGBPostCarousel = ( props ) => {
 				state={ state }
 				setState={ setState }
 				togglePreview={ togglePreview }
+				latestPosts={ latestPosts }
+				categoriesList={ categoriesList }
+				replaceInnerBlocks={ replaceInnerBlocks }
+				block={ block }
 			/>
 			</>
 
 	);
 };
 
-export default compose(
-	withSelect( ( select, props ) => {
-		const {
-			blockName,
-			categories,
-			postsToShow,
-			postsOffset,
-			order,
-			orderBy,
-			postType,
-			taxonomyType,
-			excludeCurrentPost,
-			allTaxonomyStore
-		} = props.attributes;
-		const { getEntityRecords } = select( 'core' );
-
-		if ( ! allTaxonomyStore ) {
-			apiFetch( {
-				path: '/spectra/v1/all_taxonomy',
-			} ).then( ( data ) => {
-				props.setAttributes( { allTaxonomyStore: data } );
-			} );
-		}
-		const allTaxonomy = allTaxonomyStore;
-		const currentTax = allTaxonomy ? allTaxonomy[ postType ] : undefined;
-
-		let categoriesList = [];
-		let rest_base = '';
-
-		if ( 'undefined' !== typeof currentTax ) {
-			if ( 'undefined' !== typeof currentTax.taxonomy[ taxonomyType ] ) {
-				rest_base =
-					currentTax.taxonomy[ taxonomyType ].rest_base === false ||
-					currentTax.taxonomy[ taxonomyType ].rest_base === null
-						? currentTax.taxonomy[ taxonomyType ].name
-						: currentTax.taxonomy[ taxonomyType ].rest_base;
-			}
-
-			if ( '' !== taxonomyType ) {
-				if (
-					'undefined' !== typeof currentTax.terms &&
-					'undefined' !== typeof currentTax.terms[ taxonomyType ]
-				) {
-					categoriesList = currentTax.terms[ taxonomyType ];
-				}
-			}
-		}
-
-		const latestPostsQuery = {
-			order,
-			orderby: orderBy,
-			per_page: getFallbackNumber( postsToShow, 'postsToShow', blockName ),
-			offset: getFallbackNumber( postsOffset, 'postsOffset', blockName ),
-		};
-
-		if ( excludeCurrentPost ) {
-			latestPostsQuery.exclude = select(
-				'core/editor'
-			).getCurrentPostId();
-		}
-
-		const category = [];
-		const temp = parseInt( categories );
-		category.push( temp );
-		const catlenght = categoriesList.length;
-		for ( let i = 0; i < catlenght; i++ ) {
-			if ( categoriesList[ i ].id === temp ) {
-				if ( categoriesList[ i ].child.length !== 0 ) {
-					categoriesList[ i ].child.forEach( ( element ) => {
-						category.push( element );
-					} );
-				}
-			}
-		}
-		const { getBlocks } = select( 'core/block-editor' );
-		if ( undefined !== categories && '' !== categories ) {
-			latestPostsQuery[ rest_base ] =
-				undefined === categories || '' === categories
-					? categories
-					: category;
-		}
-		return {
-			latestPosts: getEntityRecords(
-				'postType',
-				postType,
-				latestPostsQuery
-			),
-			categoriesList,
-			taxonomyList:
-				'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
-			block: getBlocks( props.clientId ),
-		};
-	} ),
-	withDispatch( ( dispatch ) => {
-		const { replaceInnerBlocks } = dispatch( 'core/block-editor' );
-		return {
-			replaceInnerBlocks,
-		};
-	} )
-)( UAGBPostCarousel );
+export default UAGBPostCarousel
