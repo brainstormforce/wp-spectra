@@ -13,6 +13,7 @@ const BlockCardsGroup = () => {
         const blockCategories = block.admin_categories;
         const showBlockCard = blockCategories?.includes( activeBlocksFilterTab ) || 'all' === activeBlocksFilterTab;
 
+        // Ignore this block card if it's not part of the current filter, or if it's a Pro filler block card.
         if ( ! showBlockCard || ( uag_react.spectra_pro_status && block.pro_filler ) ) {
             return '';
         }

@@ -981,6 +981,9 @@ select {
 }.bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}.bg-slate-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
 }.bg-spectra {
   --tw-bg-opacity: 1;
   background-color: rgb(97 4 255 / var(--tw-bg-opacity));

@@ -9,6 +9,7 @@ const classNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
 const BlockCard = ( props ) => {
 
     const {
+        admin_categories,
         link,
         slug,
         title,
@@ -60,7 +61,7 @@ const BlockCard = ( props ) => {
         <div
         key={slug}
         className={ classNames(
-            blockActivationStatus
+            ( blockActivationStatus && ! pro_filler )
                 ? 'border-white bg-white shadow hover:shadow-hover hover:z-50'
                 : 'border-slate-200 spectra-disabled-icon',
             'box-border relative border rounded-md h-20 p-4 flex items-center gap-x-4 snap-start transition spectra-icon-transition'
@@ -77,10 +78,19 @@ const BlockCard = ( props ) => {
                             { __( 'Legacy', 'ultimate-addons-for-gutenberg' ) }
                         </div>
                     ) }
+                    { ( ! pro_filler && admin_categories?.includes( 'pro' ) ) && (
+                        <div className="inline-block align-top max-h-4 px-1.5 py-1 ml-1.5 text-[10px] leading-[10px] bg-slate-800 text-white rounded spectra-admin__block-label">
+                            { __( 'Pro', 'ultimate-addons-for-gutenberg' ) }
+                        </div>
+                    ) }
                 </p>
                 <a className="focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate" href={ `https://wpspectra.com/blocks/${ link }` } target="_blank"rel="noreferrer">{__( 'Live Demo', 'ultimate-addons-for-gutenberg' )}</a>
             </div>
-            {/* { ( uag_react.spectra_pro_status ) && */}
+            { pro_filler ? (
+                <div className="inline-block align-top max-h-4 px-1.5 py-1 ml-1.5 text-[10px] leading-[10px] bg-slate-800 text-white rounded spectra-admin__block-label">
+                    { __( 'Pro', 'ultimate-addons-for-gutenberg' ) }
+                </div>
+            ) : (
                 <Switch
                     checked={ blockActivationStatus }
                     onChange={ updateBlockStatus }
@@ -97,7 +107,7 @@ const BlockCard = ( props ) => {
                         )}
                     />
                 </Switch>
-            {/* } */}
+            ) }
         </div>
     );
 };
