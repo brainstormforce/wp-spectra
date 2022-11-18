@@ -421,49 +421,6 @@ export default function Settings( props ) {
 											},
 										] }
 									/>
-									<ResponsiveSlider
-										label={ __(
-											'Icon Spacing',
-											'ultimate-addons-for-gutenberg'
-										) }
-										data={ {
-											desktop: {
-												value: buttonIconSpace,
-												label: 'buttonIconSpace',
-											},
-											tablet: {
-												value: buttonIconSpaceTablet,
-												label: 'buttonIconSpaceTablet',
-											},
-											mobile: {
-												value: buttonIconSpaceMobile,
-												label: 'buttonIconSpaceMobile',
-											},
-										} }
-										min={ 0 }
-										max={ 50 }
-										unit={ {
-											value: buttonIconSpaceType,
-											label: 'buttonIconSpaceType',
-										} }
-										units={ [
-											{
-												name: __(
-													'Pixel',
-													'ultimate-addons-for-gutenberg'
-												),
-												unitValue: 'px',
-											},
-											{
-												name: __(
-													'EM',
-													'ultimate-addons-for-gutenberg'
-												),
-												unitValue: 'em',
-											},
-										] }
-										setAttributes={ setAttributes }
-									/>
 								</>
 							)
 						}
@@ -647,21 +604,6 @@ export default function Settings( props ) {
 			title={ __( 'Close Button', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
-			<Range
-				label={ __(
-					'Icon Size',
-					'ultimate-addons-for-gutenberg'
-				) }
-				setAttributes={ setAttributes }
-				value={ closeIconSize }
-				data={ {
-					value: closeIconSize,
-					label: 'closeIconSize',
-				} }
-				min={ 0 }
-				max={ 50 }
-				displayUnit={ false }
-			/>
 			<UAGIconPicker
 				label={ __(
 					'Icon',
@@ -991,6 +933,49 @@ export default function Settings( props ) {
 
 			{ modalTrigger === 'button' && (
 				<>
+				<ResponsiveSlider
+						label={ __(
+							'Icon Spacing',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
+							desktop: {
+								value: buttonIconSpace,
+								label: 'buttonIconSpace',
+							},
+							tablet: {
+								value: buttonIconSpaceTablet,
+								label: 'buttonIconSpaceTablet',
+							},
+							mobile: {
+								value: buttonIconSpaceMobile,
+								label: 'buttonIconSpaceMobile',
+							},
+						} }
+						min={ 0 }
+						max={ 50 }
+						unit={ {
+							value: buttonIconSpaceType,
+							label: 'buttonIconSpaceType',
+						} }
+						units={ [
+							{
+								name: __(
+									'Pixel',
+									'ultimate-addons-for-gutenberg'
+								),
+								unitValue: 'px',
+							},
+							{
+								name: __(
+									'EM',
+									'ultimate-addons-for-gutenberg'
+								),
+								unitValue: 'em',
+							},
+						] }
+						setAttributes={ setAttributes }
+					/>
 					<TypographyControl
 						label={ __(
 							'Typography',
@@ -1396,6 +1381,21 @@ export default function Settings( props ) {
 			title={ __( 'Close Button', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
+			<Range
+				label={ __(
+					'Icon Size',
+					'ultimate-addons-for-gutenberg'
+				) }
+				setAttributes={ setAttributes }
+				value={ closeIconSize }
+				data={ {
+					value: closeIconSize,
+					label: 'closeIconSize',
+				} }
+				min={ 0 }
+				max={ 50 }
+				displayUnit={ false }
+			/>
 			<AdvancedPopColorControl
 				label={ __(
 					'Icon Color',
