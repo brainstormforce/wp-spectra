@@ -205,7 +205,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Global - Prevented most blocks from encountering an issue with the react hook "withSelect".
 * Fix: Admin Dashboard - Prevented the font selection dropdown from getting cut off when expanded.
 * Fix: Image - Dimension for desktop, tablet and mobile was removed after refresh.
->>>>>>> 71b7d3a2c02e95de8cd57549052550ce9b75cd53
 
 ### 2.0.14 - TUESDAY, 08th NOVEMBER 2022 ###
 * Improvement: Compatibility with WordPress 6.1.
