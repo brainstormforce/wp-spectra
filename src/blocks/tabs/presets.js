@@ -39,7 +39,7 @@ const presets = [
             { label: 'tabBorderBottomRightRadius', value: 0 },
 			{ label: 'tabBorderTopWidth', value: 1 },
             { label: 'tabBorderRightWidth', value: 1 },
-            { label: 'tabBorderBottomWidth', value: 0 },
+            { label: 'tabBorderBottomWidth', value: 1 },
             { label: 'tabBorderLeftWidth', value: 1 },
 			{ label: 'tabBorderStyle', value: 'solid' }
         ],
