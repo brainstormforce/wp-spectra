@@ -46,6 +46,7 @@ export default function save( props ) {
 		socialTarget,
 		socialEnable,
 		stack,
+		imgWidth
 	} = props.attributes;
 
 	let size = '';
@@ -68,6 +69,9 @@ export default function save( props ) {
 					className={`uagb-team__image-crop-${ imgStyle }`}
 					src={ img_url }
 					alt={ image.alt ? image.alt : '' }
+					height={imgWidth}
+					width={imgWidth}
+					loading="lazy"
 				/>
 		);
 	}

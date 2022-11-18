@@ -1,13 +1,13 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { ToggleControl, TextControl } from '@wordpress/components';
+import { ToggleControl } from '@wordpress/components';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import { InspectorControls } from '@wordpress/block-editor';
-
+import UAGTextControl from '@Components/text-control';
 
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -29,22 +29,32 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody initialOpen={ true }>
 				
-				<TextControl
+				<UAGTextControl
 					label={ __(
 						'True State',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ trueValue }
+					data={{
+						value: trueValue,
+						label: 'trueValue',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( { trueValue: value } )
 					}
 				/>
-				<TextControl
+				<UAGTextControl
 					label={ __(
 						'False State',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ falseValue }
+					data={{
+						value: falseValue,
+						label: 'falseValue',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( { falseValue: value } )
 					}

@@ -16,11 +16,11 @@ const Render = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
-
+	const { headers } = props;
 	props = props.parentProps;
 	const blockName = props.name.replace( 'uagb/', '' );
 	const deviceType = useDeviceType();
-	const { attributes, setAttributes, className, headers } = props;
+	const { attributes, setAttributes, className } = props;
 
 	const {
 		classMigrate,
