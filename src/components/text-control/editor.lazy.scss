@@ -12,6 +12,8 @@
 
 	.components-text-control__input {
 		padding-right: 30px;
+		margin-left: 0;
+		margin-right: 0;
 	}
 
 	.uagb-control__header {
@@ -62,10 +64,12 @@
 
 		&-textarea {
 			position: relative;
+
 			> .components-button {
 				top: 2px;
 				bottom: auto;
 			}
+
 			textarea {
 
 				border-color: #e6e7e9;
@@ -76,11 +80,6 @@
 				}
 			}
 		}
-	}
-
-	.components-text-control__input {
-		margin-left: 0;
-		margin-right: 0;
 	}
 
 	&.components-base-control > .uag-control-help-notice {
