@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { __ } from '@wordpress/i18n';
 import PropTypes from 'prop-types';
 
@@ -7,6 +7,7 @@ const propTypes = {};
 const defaultProps = {};
 
 export default function MyAccount(props) {
+	const [ regenerateAssetsState, setRegenerateAssetsState ] = useState( false );
 	const licenseStatus = uag_react.license_status;
 	const licenseTriggerName = licenseStatus ? 'bsf_deactivate_license' : 'bsf_activate_license';
 	const licenseTitle = licenseStatus ? __( 'Deactivate', 'ultimate-addons-for-gutenberg' ) : __( 'Activate', 'ultimate-addons-for-gutenberg' );
@@ -18,27 +19,25 @@ export default function MyAccount(props) {
 			<section className="block border-b border-solid border-slate-200 px-12 py-8 justify-between">
 				<div className="mr-16 w-full">
 					<form method="post" className="form-wrap bsf-license-register-astra-addon form-submited-astra-addon">
-						<h3 className="mb-4 p-0 text-xl leading-6 font-semibold text-slate-800">
-							{__("License Key", "astra")}
+						<h3 className="p-0 mb-2 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900">
+						{__("License Key", "ultimate-addons-for-gutenberg")}
 						</h3>
-
 						{
-							! licenseStatus && <p className="text-sm text-slate-600">
-								{ __( 'Activate ', 'astra-addon' ) }
-								<a href="#" className="text-astra font-medium underline" target='_blank'>
+							! licenseStatus && <p className="mt-2 text-sm text-slate-500">
+								{ __( 'Activate ', 'ultimate-addons-for-gutenberg' ) }
+								<a href="#" className="text-sm text-slate-500 underline" target='_blank'>
 									Spectra PRO
 								</a>{" "}
-								{ __( ' addon to get professional support and automatic updates from your WordPress dashboard.', 'astra-addon' ) }
+								{ __( ' addon to get professional support and automatic updates from your WordPress dashboard.', 'ultimate-addons-for-gutenberg' ) }
 							</p>
 						}
 
 						<div className="mt-2">
-							<label
-								htmlFor="bsf_license_manager[license_key]"
-								className="block mb-4 text-sm text-slate-500"
+							<p
+								className="block mt-2 mb-4 text-sm text-slate-500"
 							>
 								{ licenseMessage }
-							</label>
+							</p>
 							<div className="flex">
 								<div className="relative">
 									<input type="hidden" id="bsf_graupi_nonce" name="bsf_graupi_nonce" value={uag_react.bsf_graupi_nonce}/>
@@ -81,9 +80,16 @@ export default function MyAccount(props) {
 								<button
 									type="submit"
 									name={licenseTriggerName}
+									onClick={() => setRegenerateAssetsState(true)}
 									className="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-spectra transition focus:bg-spectra-hover hover:bg-spectra-hover focus:outline-none"
 								>
 									{ licenseTitle }
+									{ regenerateAssetsState && (
+										<svg className="animate-spin -mr-1 ml-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+											<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+											<path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+										</svg>
+									) }
 								</button>
 							</div>
 						</div>

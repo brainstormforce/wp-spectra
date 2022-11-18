@@ -656,6 +656,8 @@ select {
   margin-right: 1.25rem;
 }.mt-4 {
   margin-top: 1rem;
+}.mb-2 {
+  margin-bottom: 0.5rem;
 }.mb-4 {
   margin-bottom: 1rem;
 }.-mr-1 {
@@ -1088,11 +1090,11 @@ select {
 }.text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}.text-\[1\.8rem\] {
+  font-size: 1.8rem;
 }.text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}.text-\[1\.8rem\] {
-  font-size: 1.8rem;
 }.font-medium {
   font-weight: 500;
 }.font-semibold {
@@ -1130,9 +1132,6 @@ select {
 }.text-slate-400 {
   --tw-text-opacity: 1;
   color: rgb(148 163 184 / var(--tw-text-opacity));
-}.text-slate-600 {
-  --tw-text-opacity: 1;
-  color: rgb(71 85 105 / var(--tw-text-opacity));
 }.text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
