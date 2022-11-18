@@ -13,7 +13,7 @@ const BlockCardsGroup = () => {
         const blockCategories = block.admin_categories;
         const showBlockCard = blockCategories?.includes( activeBlocksFilterTab ) || 'all' === activeBlocksFilterTab;
 
-        if ( ! showBlockCard ) {
+        if ( ! showBlockCard || ( uag_react.spectra_pro_status && block.pro_filler ) ) {
             return '';
         }
 

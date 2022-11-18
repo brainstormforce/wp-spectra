@@ -25,6 +25,7 @@ const FilterTabs = () => {
         { name: 'Form', slug: 'form' },
         { name: 'SEO', slug: 'seo' },
         { name: 'Extensions', slug: 'extensions' },
+        { name: 'Pro', slug: 'pro' },
     ];
 
     useEffect( () => {

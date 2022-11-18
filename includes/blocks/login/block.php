@@ -13,9 +13,10 @@ $block_data = array(
 	'slug'             => '',
 	'admin_categories' => array( 'form', 'pro' ),
 	'link'             => 'login',
-	'title'            => __( 'Login Form', 'ultimate-addons-for-gutenberg' ),
+	'title'            => __( 'Login Filler', 'ultimate-addons-for-gutenberg' ),
 	'description'      => __( 'This block lets you add a user login form.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
 	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'login' ),
+	'pro_filler'       => true,
 );

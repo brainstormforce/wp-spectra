@@ -17,9 +17,9 @@ $block_data = array(
 	'description'      => __( 'Add instructions/steps on processes using how to block.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'how-to' ),
+	'deprecated'       => false,
 	'dynamic_assets'   => array(
 		'dir' => 'how-to',
 	),
-	'priority'         => 15,
-	'deprecated'       => false,
 );

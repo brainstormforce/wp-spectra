@@ -18,7 +18,8 @@ $block_data = array(
 	'default'             => true,
 	'extension'           => false,
 	'js_assets'           => array( 'uagb-inline-notice-js', 'uagb-cookie-lib' ),
-	'priority'            => 17,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'inline-notice' ),
+	'deprecated'          => false,
 	'static_dependencies' => array(
 		'uagb-inline-notice-js' => array(
 			'src'        => UAGB_Scripts_Utils::get_js_url( 'inline-notice' ),
@@ -34,5 +35,4 @@ $block_data = array(
 		'dir' => 'inline-notice',
 	),
 	'js_assets'           => array( 'uagb-inline-notice-js', 'uagb-cookie-lib' ),
-	'deprecated'          => false,
 );
