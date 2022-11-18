@@ -200,6 +200,7 @@ const Settings = ( props ) => {
 						'Link',
 						'ultimate-addons-for-gutenberg'
 					) }
+					enableDynamicContent={true}
 					name={'link'}
 					value={ link }
 					setAttributes={setAttributes}

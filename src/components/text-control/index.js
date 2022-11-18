@@ -26,10 +26,10 @@ const UAGTextControl = ( props ) => {
 		return select( 'core/block-editor' ).getSelectedBlock();
 	}, [] );
 
-	const registerTextExtender = props.disableDynamicContent && !props.name ? null : wp.hooks.applyFilters( 'uagb.registerTextExtender', '', selectedBlock?.name, props.name, props.dynamicContentType )
+	const registerTextExtender = props.enableDynamicContent && props.name ? wp.hooks.applyFilters( 'uagb.registerTextExtender', '', selectedBlock?.name, props.name, props.dynamicContentType ) : null;
 
 	const isEnableDynamicContent = () => {
-		if( props.disableDynamicContent || ! props.name ){
+		if( !props.enableDynamicContent || ! props.name ){
 			return false;
 		}
 		const dynamicContent = selectedBlock?.attributes?.dynamicContent
@@ -149,7 +149,7 @@ UAGTextControl.defaultProps = {
     autoComplete: 'off',
     showHeaderControls: true,
 	dynamicContentType: 'url', // url / text
-	disableDynamicContent: false
+	enableDynamicContent: false
 };
 
 export default UAGTextControl;

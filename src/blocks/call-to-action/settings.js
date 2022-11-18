@@ -396,6 +396,7 @@ const Settings = ( props ) => {
 						'Link',
 						'ultimate-addons-for-gutenberg'
 					) }
+					enableDynamicContent={true}
 					name="secondCtaLink"
 					value={ secondCtaLink }
 					setAttributes={setAttributes}
@@ -891,6 +892,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							name="ctaLink"
+							enableDynamicContent={true}
 							value={ ctaLink }
 							setAttributes={setAttributes}
 							data={{

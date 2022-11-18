@@ -626,6 +626,7 @@ export default function Settings( props ) {
 						/>
 						<UAGTextControl
 							label={ __( 'Alt Text', 'ultimate-addons-for-gutenberg' ) }
+							enableDynamicContent={true}
 							dynamicContentType="text"
 							value={ alt }
 							name='alt'
