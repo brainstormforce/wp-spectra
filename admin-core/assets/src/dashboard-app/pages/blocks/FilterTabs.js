@@ -141,6 +141,21 @@ const FilterTabs = () => {
 		} );
 	};
 
+    // This method concatinates all the required classes for Active and Normal states for Free and Pro Tabs.
+    const renderTabClassNames = ( tabName ) => {
+        let tabClasses = '';
+        if ( tabName === activeBlocksFilterTab ) {
+            tabClasses += ( 'pro' === tabName ) ? 'text-spectra active:text-spectra focus:text-spectra hover:text-spectra' : 'text-slate-800 active:text-slate-800 focus:text-slate-800 hover:text-slate-800';
+            tabClasses += ' bg-white border-transparent shadow shadow-focused';
+        } 
+        else {
+            tabClasses += ( 'pro' === tabName ) ? 'text-spectra border-indigo-100 bg-indigo-50 focus:text-spectra active:text-spectra hover:text-spectra' : 'text-slate-500 border-slate-200 focus:text-slate-500 active:text-slate-500 hover:text-slate-500';
+            tabClasses += ' focus-visible:bg-white hover:bg-white';
+        }
+        tabClasses += ' px-4 py-1 ml-4 my-1 font-medium text-sm rounded-2xl cursor-pointer border transition';
+        return tabClasses;
+    };
+
     return (
         <div className="mx-auto mb-6 px-6 lg:max-w-[80rem]">
             <div className="w-full sm:hidden">
@@ -170,12 +185,7 @@ const FilterTabs = () => {
 							search: `?page=spectra&path=blocks&filterTab=${tab.slug}`,
 						} }
                         key={tab.name}
-                        className={ classNames(
-                            ( tab.slug === activeBlocksFilterTab )
-                                ? 'bg-white border-transparent text-slate-800 active:text-slate-800 focus:text-slate-800 hover:text-slate-800 shadow shadow-focused'
-                                : 'text-slate-500 border-slate-200 focus:text-slate-500 focus-visible:bg-white active:text-slate-500 hover:text-slate-500 hover:bg-white',
-                            'px-4 py-1 ml-4 my-1 font-medium text-sm rounded-2xl cursor-pointer border transition'
-                        ) }
+                        className={ renderTabClassNames( tab.slug ) }
                         onClick={ () => {
 							dispatch( {type:'UPDATE_BLOCKS_ACTIVE_FILTER_TAB', payload: tab.slug} )
 						}}
