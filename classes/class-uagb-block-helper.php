@@ -616,7 +616,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'padding-right'  => UAGB_Helper::get_css_value( $paddingBtnRight, $attr['paddingBtnUnit'] ),
 
 			);
-			$selectors['.uagb-post-grid .uagb-post__inner-wrap .wp-block-button.uagb-post__text.uagb-post__cta a:hover']                  = array(
+			$selectors['.uagb-post-grid .uagb-post__inner-wrap .wp-block-button.uagb-post__text.uagb-post__cta a:hover'] = array(
 				'color'        => $attr['ctaHColor'],
 				'background'   => ( 'color' === $attr['ctaBgHType'] ) ? $attr['ctaBgHColor'] : 'transparent',
 				'border-color' => $attr['btnBorderHColor'],
