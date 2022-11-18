@@ -25,10 +25,10 @@ export default function MyAccount(props) {
 						{
 							! licenseStatus && <p className="mt-2 text-sm text-slate-500">
 								{ __( 'Activate ', 'ultimate-addons-for-gutenberg' ) }
-								<a href="#" className="text-sm text-slate-500 underline" target='_blank'>
+								<a href="https://wpspectra.com" className="text-sm text-slate-500 underline" target='_blank'>
 									Spectra PRO
 								</a>{" "}
-								{ __( ' addon to get professional support and automatic updates from your WordPress dashboard.', 'ultimate-addons-for-gutenberg' ) }
+								{ __( 'to get professional support and automatic updates from your WordPress dashboard.', 'ultimate-addons-for-gutenberg' ) }
 							</p>
 						}
 
