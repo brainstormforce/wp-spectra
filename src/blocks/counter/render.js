@@ -5,6 +5,7 @@ import { RichText } from '@wordpress/block-editor';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import CounterIcon from './component/CounterIcon';
+import getImageHeightWidth from '@Controls/getImageHeightWidth';
 
 const propTypes = {};
 
@@ -35,9 +36,50 @@ const Render = ( props ) => {
 		iconImgPosition,
 		sourceType,
 		iconImage,
+		imageSize,
+		imageWidthType,
+		imageWidth,
 	} = attributes
 
 	const deviceType = useDeviceType();
+
+	// CLS section starts.
+
+	let urlCheck = '';
+
+	if (
+		typeof attributes.iconImage !== 'undefined' &&
+		attributes.iconImage !== null &&
+		attributes.iconImage !== ''
+	) {
+		urlCheck = attributes.iconImage.url;
+	}
+
+	let url = '';
+
+	if ( urlCheck !== '' ) {
+		const size = attributes.iconImage.sizes;
+
+		if (
+			typeof size !== 'undefined' &&
+			typeof size[ imageSize ] !== 'undefined'
+		) {
+			url = size[ imageSize ].url;
+		} else {
+			url = urlCheck;
+		}
+	}
+
+	useEffect( ()=> {
+		if( imageWidthType && imageWidth ){
+			getImageHeightWidth( url, setAttributes, { type: 'width', value: imageWidth } )
+		}
+		else{
+			getImageHeightWidth( url, setAttributes )
+		}
+	}, [ url, imageWidth, imageWidthType, imageSize ] )
+
+	// CLS section ends.
 
 	useEffect( () => {
 		UAGBCounter.init( '.uagb-block-' + block_id, attributes ) // eslint-disable-line no-undef
