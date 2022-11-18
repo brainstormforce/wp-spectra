@@ -34,6 +34,8 @@ const Render = ( props ) => {
 		icon,
 		showIcon,
 		iconImgPosition,
+		sourceType,
+		iconImage,
 		imageSize,
 		imageWidthType,
 		imageWidth,
@@ -89,11 +91,12 @@ const Render = ( props ) => {
 	const blockName = props.parentProps.name.replace( 'uagb/', '' );
 	const circleSizeFallback = getFallbackNumber( circleSize, 'circleSize', blockName );
 
-	const iconCheck = ( showIcon && icon !== '' ); // Reusable const to check if icon is set and enabled.
+	// Reusable const to check if icon/image is set and enabled.
+	const iconAndImageCheck = showIcon && ( ( sourceType === 'icon' && icon !== '' ) || ( sourceType === 'image' && iconImage.url !== '' ) );
 
 	let iconComponent = '';
 
-	if ( icon !== '' ) {
+	if ( iconAndImageCheck ) {
 		iconComponent = <CounterIcon attributes={attributes} />
 	}
 
@@ -109,9 +112,9 @@ const Render = ( props ) => {
 
 	const number = (
 		<>
-		{iconCheck && layout==='number' && iconImgPosition === 'top' && iconComponent}
+		{iconAndImageCheck && layout==='number' && iconImgPosition === 'top' && iconComponent}
 		<div className="wp-block-uagb-counter__number">
-			{iconCheck && layout==='number' && iconImgPosition === 'left-number' && iconComponent}
+			{iconAndImageCheck && layout==='number' && iconImgPosition === 'left-number' && iconComponent}
 			{
 				numberPrefix && ( <span className="uagb-counter-block-prefix">{numberPrefix}</span> )
 			}
@@ -119,10 +122,10 @@ const Render = ( props ) => {
 			{
 				numberSuffix && ( <span className="uagb-counter-block-suffix">{numberSuffix}</span> )
 			}
-			{iconCheck && layout==='number' && iconImgPosition === 'right-number' && iconComponent}
+			{iconAndImageCheck && layout==='number' && iconImgPosition === 'right-number' && iconComponent}
 		</div>
 		{layout === 'number' && title}
-		{iconCheck && layout==='number' && iconImgPosition === 'bottom' && iconComponent}
+		{iconAndImageCheck && layout==='number' && iconImgPosition === 'bottom' && iconComponent}
 		</>
 	);
 
@@ -135,10 +138,10 @@ const Render = ( props ) => {
 	const circle = (
 		<div className="wp-block-uagb-counter-circle-container">
 			<div className='wp-block-uagb-counter-circle-container__content'>
-				{ ( iconCheck && iconImgPosition === 'top' ) && iconComponent }
+				{ ( iconAndImageCheck && iconImgPosition === 'top' ) && iconComponent }
 				{number}
 				{title}
-				{ ( iconCheck && iconImgPosition === 'bottom' ) && iconComponent }
+				{ ( iconAndImageCheck && iconImgPosition === 'bottom' ) && iconComponent }
 			</div>
 			{/* <div className='wp-block-uagb-counter-circle-container__svg-container'> */}
 				<svg preserveAspectRatio="xMinYMin meet" viewBox={`0 0 ${circleSizeFallback} ${circleSizeFallback}`} version="1.1" xmlns="http://www.w3.org/2000/svg">
