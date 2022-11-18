@@ -170,6 +170,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+### 2.0.16 - TUESDAY, 08th NOVEMBER 2022 ###
+* Fix: Buttons from diff blocks does not inherit the style from theme.
 ### 2.0.15 - TUESDAY, 08th NOVEMBER 2022 ###
 * Improvement: Call To Action - CTA button text is now editable inside the editor.
 * Improvement: Post Timeline - Button text is now editable inside the editor.
