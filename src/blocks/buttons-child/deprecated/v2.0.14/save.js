@@ -1,7 +1,3 @@
-/**
- * BLOCK: Buttons - Save Block
- */
-
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import { RichText } from '@wordpress/block-editor';
@@ -73,7 +69,7 @@ export default function save( props ) {
 						color !== '' ? 'has-text-color' : '',
 					) }
 					href={ link }
-					rel= { noFollow ? 'nofollow noopener' : 'follow noopener' }
+					rel= { noFollow ? 'nofollow noopener ' : 'follow noopener' }
 					target={ openNewWindow }
 				>
 					{ iconHtml( 'before' ) }
