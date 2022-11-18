@@ -49,9 +49,9 @@ export default function MyAccount(props) {
 									}
 
 									<input
-										className="h-10 block w-[28rem] shadow-sm sm:text-sm placeholder-slate-400 transition spectra-admin__input-field"
-										id={ licenseStatus ? 'astra_addon_license_key' : "bsf_license_manager[license_key]" }
-										name={ licenseStatus ? 'astra_addon_license_key' : "bsf_license_manager[license_key]" }
+										className={`h-10 block w-[28rem] shadow-sm sm:text-sm placeholder-slate-400 transition spectra-admin__input-field ${licenseStatus ? 'spectra-admin__input-field--read-only' : ''}`}
+										id={ licenseStatus ? 'spectra_license_key' : "bsf_license_manager[license_key]" }
+										name={ licenseStatus ? 'spectra_license_key' : "bsf_license_manager[license_key]" }
 										type="text"
 										placeholder={licensePlaceholder}
 										readOnly={ licenseStatus ? true : false }
