@@ -170,8 +170,10 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 2.0.16 - TUESDAY, 22th NOVEMBER 2022 =
+= 2.0.16 - THURSDAY, 22nd NOVEMBER 2022 =
 * Improvement: Spectra Core Blocks - Keep core blocks always enabled & prevent them for being disabled.
+* Fix: The "uagb_spectra_font_awesome_polyfiller" AJAX gets called multiple times.
+* Fix: Post Blocks: The "spectra/v1/all_taxonomy" Rest API gets called multiple times inside editor.
 
 = 2.0.15 - WEDNESDAY, 16th NOVEMBER 2022 =
 * Improvement: Info Box - Added Responsive feature to the Info Box icon width setting.
