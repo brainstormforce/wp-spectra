@@ -174,6 +174,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: The "uagb_spectra_font_awesome_polyfiller" AJAX gets called multiple times.
 * Fix: Post Blocks: The "spectra/v1/all_taxonomy" Rest API gets called multiple times inside editor.
 * Fix: Spectra component styling gets overridden in the customizer block editor.
+* Fix: Button Hover stylings are not working in the editor.
 
 ### 2.0.15 - WEDNESDAY, 16th NOVEMBER 2022 ###
 * Improvement: Info Box - Added Responsive feature to the Info Box icon width setting.
