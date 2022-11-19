@@ -32,7 +32,7 @@ const PluginStats = () => {
 					</div>
 				)
 			) : (
-				<div className='mr-8 text-sm text-spectra'>
+				<div className='mr-8 text-sm text-slate-500'>
 					{ __( 'Enable Spectra Pro', 'ultimate-addons-for-gutenberg' ) }
 				</div>
 			)
@@ -51,7 +51,7 @@ const PluginStats = () => {
 				{ uag_react.plugin_ver }
 			</div>
 			{ renderDivider() }
-			{ ( uag_react.spectra_pro_ver ) && (
+			{ ( uag_react.spectra_pro_status ) && (
 				<>
 					<div className='mr-2 text-sm text-slate-500'>
 						{ uag_react.spectra_pro_ver }
