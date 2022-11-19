@@ -51,6 +51,15 @@ class Admin_Menu {
 	private $menu_slug = 'spectra';
 
 	/**
+	 * Instance
+	 *
+	 * @access private
+	 * @var mixed The Spectra Pro version number.
+	 * @since 1.0.0
+	 */
+	private $spectra_pro_version = '1.0.0';
+
+	/**
 	 * Constructor
 	 *
 	 * @since 1.0.0
@@ -67,13 +76,19 @@ class Admin_Menu {
 	 * @return void
 	 */
 	public function initialize_hooks() {
+
+		/* Get the Spectra Pro version, if possible */
+		add_action( 'plugins_loaded', array(  $this, 'get_spectra_pro_version' ) );
+
+		/* Setup the Admin Menu */
 		add_action( 'admin_menu', array( $this, 'setup_menu' ) );
 		add_action( 'admin_init', array( $this, 'settings_admin_scripts' ) );
 
+		/* Add the Action Links */
 		add_filter( 'plugin_action_links_' . UAGB_BASE, array( $this, 'add_action_links' ) );
+
 		/* Render admin content view */
 		add_action( 'uag_render_admin_page_content', array( $this, 'render_content' ), 10, 2 );
-
 	}
 
 	/**
@@ -187,6 +202,14 @@ class Admin_Menu {
 	}
 
 	/**
+	 * Get the Spectra Pro version after all plugins are loaded, if possible.
+	 * @return mixed
+	 */
+	public function get_spectra_pro_version() {
+		$this->spectra_pro_version = ( is_plugin_active( 'spectra-pro/spectra-pro.php' ) && defined( SPECTRA_PRO_VER ) ) ? 'true' : 'false';
+	}
+
+	/**
 	 * Enqueues the needed CSS/JS for the builder's admin settings page.
 	 *
 	 * @since 1.0.0
@@ -220,7 +243,9 @@ class Admin_Menu {
 				'reusable_url'             => esc_url( admin_url( 'edit.php?post_type=wp_block' ) ),
 				'global_data'              => Admin_Helper::get_options(),
 				'uag_content_width_set_by' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_content_width_set_by', __( 'Spectra', 'ultimate-addons-for-gutenberg' ) ),
+				'spectra_pro_installed'    => file_exists( UAGB_DIR . '../spectra-pro/spectra-pro.php' ),
 				'spectra_pro_status'       => is_plugin_active( 'spectra-pro/spectra-pro.php' ),
+				'spectra_pro_ver'          => $this->spectra_pro_version,
 				'spectra_custom_fonts'     => apply_filters( 'spectra_system_fonts', array() ),
 				'is_allow_registration'    => (bool) get_option( 'users_can_register' ),
 			)

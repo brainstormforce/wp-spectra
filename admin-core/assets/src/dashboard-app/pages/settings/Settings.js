@@ -54,7 +54,7 @@ const Settings = () => {
 		{ name: __( 'Coming Soon', 'ultimate-addons-for-gutenberg' ), slug: 'coming-soon', icon: SettingsIcons['coming-soon'] },
     ];
 
-	if(uag_react.spectra_pro_status){
+	if( uag_react.spectra_pro_status ){
 		navigation.push({ name: __( 'My Account', 'ultimate-addons-for-gutenberg' ), slug: 'my-account', icon: SettingsIcons['account'] })
 	}
 
