@@ -160,5 +160,9 @@ return array_merge(
 		'highLightPaddingUnitTablet'   => 'px',
 		'highLightPaddingUnitMobile'   => 'px',
 		'highLightPaddingLink'         => '',
+		'subHeadSpace'                 => 15,
+		'subHeadSpaceMobile'           => '',
+		'subHeadSpaceTablet'           => '',
+		'subHeadSpaceType'             => 'px',
 	)
 );

@@ -205,6 +205,34 @@ const attributes = {
 			styleType: 'main-title-unit-type'
 		}
 	},
+	subHeadSpace: {
+		type: 'number',
+		default: 15,
+		UAGCopyPaste: {
+			styleType: 'sub-title-bottom-margin'
+		}
+	},
+	subHeadSpaceMobile: {
+		type: 'number',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'sub-title-bottom-margin-tablet'
+		}
+	},
+	subHeadSpaceTablet: {
+		type: 'number',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'sub-title-bottom-margin-mobile'
+		}
+	},
+	subHeadSpaceType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'sub-title-unit-type'
+		}
+	},
 	headFontFamily: {
 		type: 'string',
 		default: 'Default',

@@ -41,6 +41,10 @@ const Settings = ( props ) => {
 		blockBackground,
 		blockGradientBackground,
 		subHeadingColor,
+		subHeadSpace,
+		subHeadSpaceTablet,
+		subHeadSpaceMobile,
+		subHeadSpaceType,
 		separatorColor,
 		headingTag,
 		headFontFamily,
@@ -210,7 +214,72 @@ const Settings = ( props ) => {
 			<WebfontLoader config={ sconfig }></WebfontLoader>
 		);
 	}
-
+	let separatorPositionOptions = [
+		{
+			value: 'above-heading',
+			label: __(
+				'Above Heading',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'below-heading',
+			label: __(
+				'Below Heading',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'above-sub-heading',
+			label: __(
+				'Above Sub-heading',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'below-sub-heading',
+			label: __(
+				'Below Sub-heading',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+	];
+ 	if( ! headingTitleToggle ) {
+		separatorPositionOptions = [
+			{
+				value: 'above-sub-heading',
+				label: __(
+					'Above Sub-heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'below-sub-heading',
+				label: __(
+					'Below Sub-heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+		];
+	}
+	if( ! headingDescToggle ) {
+		separatorPositionOptions = [
+			{
+				value: 'above-heading',
+				label: __(
+					'Above Heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'below-heading',
+				label: __(
+					'Below Heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+		];
+	}
 	const generalPanel = () => {
 
 		return (
@@ -433,36 +502,7 @@ const Settings = ( props ) => {
 							label: 'seperatorPosition',
 						} }
 						setAttributes={ setAttributes }
-						options={ [
-							{
-								value: 'above-heading',
-								label: __(
-									'Above Heading',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'below-heading',
-								label: __(
-									'Below Heading',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'above-sub-heading',
-								label: __(
-									'Above Sub-heading',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'below-sub-heading',
-								label: __(
-									'Below Sub-heading',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-						] }
+						options={ separatorPositionOptions }
 					/> 
 				}
 			</UAGAdvancedPanelBody>
@@ -743,6 +783,42 @@ const Settings = ( props ) => {
 						value: subHeadingColor,
 						label: 'subHeadingColor',
 					} }
+					setAttributes={ setAttributes }
+				/>
+				<ResponsiveSlider
+					label={ __(
+						'Bottom Spacing',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: subHeadSpace,
+							label: 'subHeadSpace',
+						},
+						tablet: {
+							value: subHeadSpaceTablet,
+							label: 'subHeadSpaceTablet',
+						},
+						mobile: {
+							value: subHeadSpaceMobile,
+							label: 'subHeadSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 200 }
+					unit={ {
+						value: subHeadSpaceType,
+						label: 'subHeadSpaceType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+					] }
 					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
