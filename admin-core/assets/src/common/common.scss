@@ -211,13 +211,16 @@
 			font-size: 1rem;
 			//stylelint-disable-next-line declaration-property-unit-allowed-list
 			line-height: 1.25rem;
+
 			&--read-only {
 				border: 1px solid $slate-300 !important;
 				background-color: $slate-100 !important;
+
 				&:focus {
 					outline: none;
 				}
 			}
+
 			&:focus {
 				outline: none;
 				border-color: $slate-400;

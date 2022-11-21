@@ -11,8 +11,10 @@ const PluginStats = () => {
 	const dispatch = useDispatch();
 
 	const activatePro = () => {
-		uag_react.spectra_pro_activation;
-		window.location.reload();
+		const isThisNull = uag_react.spectra_pro_activation;
+		if ( null === isThisNull ){
+			window.location.reload();
+		}
 	};
 
 	const renderDivider = () => (
@@ -59,7 +61,7 @@ const PluginStats = () => {
 					</Link>
 				)
 			) : (
-				<div className='mr-8 ml-2 text-sm text-slate-500 cursor-pointer' onClick={ activatePro }>
+				<div className='mr-8 ml-2 text-sm text-slate-500 cursor-pointer' role='button' onClick={ activatePro }>
 					{ __( 'Activate Spectra Pro', 'ultimate-addons-for-gutenberg' ) }
 				</div>
 			)
