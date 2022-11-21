@@ -467,7 +467,7 @@ const Settings = ( props ) => {
 				{ headingDescToggle && 
 					<UAGSelectControl
 						label={ __(
-							'Sub Heading Position',
+							'Position',
 							'ultimate-addons-for-gutenberg'
 						) }
 						data={ {
