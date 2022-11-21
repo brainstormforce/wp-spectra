@@ -95,7 +95,7 @@ const UAGTextControl = ( props ) => {
 };
 
 UAGTextControl.defaultProps = {
-	label: __( 'Spectra Text Control', 'ultimate-addons-for-gutenberg' ),
+	label: '',
 	className: '',
 	allowReset: true,
 	resetFallbackValue: '',
