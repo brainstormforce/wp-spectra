@@ -17,9 +17,7 @@ import Render from './render';
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 
-import { withSelect, useDispatch, select } from '@wordpress/data';
-
-import { compose } from '@wordpress/compose';
+import { useSelect, useDispatch, select } from '@wordpress/data';
 
 import {
 	__experimentalBlockVariationPicker as BlockVariationPicker,
@@ -33,6 +31,37 @@ const UAGBContainer = ( props ) => {
 
 	const deviceType = useDeviceType();
 
+	const {
+		innerBlocks, // eslint-disable-line no-unused-vars
+		blockType, // eslint-disable-line no-unused-vars
+		isParentOfSelectedBlock,
+		variations,
+		defaultVariation
+	} = useSelect(
+		( select ) => { // eslint-disable-line no-shadow
+			const { getBlocks } = select( 'core/block-editor' );
+			const {
+				getBlockType,
+				getBlockVariations,
+				getDefaultBlockVariation,
+			} = select( 'core/blocks' );
+
+			return {
+				innerBlocks: getBlocks( props.clientId ),
+				blockType: getBlockType( props.name ),
+				defaultVariation:
+				typeof getDefaultBlockVariation === 'undefined'
+					? null
+					: getDefaultBlockVariation( props.name ),
+			variations:
+				typeof getBlockVariations === 'undefined'
+					? null
+					: getBlockVariations( props.name ),
+				isParentOfSelectedBlock: select( 'core/block-editor' ).hasSelectedInnerBlock( props.clientId, true )
+			};
+		},
+	);
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -41,7 +70,7 @@ const UAGBContainer = ( props ) => {
 		};
 	}, [] );
 
-	if ( props.isParentOfSelectedBlock ) {
+	if ( isParentOfSelectedBlock ) {
 		const emptyBlockInserter = document.querySelector( '.block-editor-block-list__empty-block-inserter' );
 		if ( emptyBlockInserter ) {
 			emptyBlockInserter.style.display = 'none';
@@ -71,8 +100,8 @@ const UAGBContainer = ( props ) => {
 		const variationPicker = element?.querySelector( '.uagb-container-variation-picker .block-editor-block-variation-picker' );
 		const closeButton = document.createElement( 'button' );
 		closeButton.onclick = function() {
-			if ( props.defaultVariation.attributes ) {
-				props.setAttributes( props.defaultVariation.attributes );
+			if ( defaultVariation.attributes ) {
+				props.setAttributes( defaultVariation.attributes );
 			}
 		};
 		closeButton.setAttribute( 'class', 'uagb-variation-close' );
@@ -146,14 +175,14 @@ const UAGBContainer = ( props ) => {
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	const blockVariationPickerOnSelect = (
-		nextVariation = props.defaultVariation
+		nextVariation = defaultVariation
 	) => {
 		if ( nextVariation.attributes ) {
 			props.setAttributes( nextVariation.attributes );
 		}
 
 		if ( nextVariation.innerBlocks && 'one-column' !== nextVariation.name ) {
-			props.replaceInnerBlocks(
+			replaceInnerBlocks(
 				props.clientId,
 				createBlocksFromInnerBlocksTemplate( nextVariation.innerBlocks )
 			);
@@ -162,7 +191,7 @@ const UAGBContainer = ( props ) => {
 
 	const createBlocksFromInnerBlocksTemplate = ( innerBlocksTemplate ) => {
 		return innerBlocksTemplate.map(
-			( [ name, attributes, innerBlocks = [] ] ) =>
+			( [ name, attributes, innerBlocks = [] ] ) => // eslint-disable-line no-shadow
 				createBlock(
 					name,
 					attributes,
@@ -170,8 +199,6 @@ const UAGBContainer = ( props ) => {
 				)
 		);
 	};
-
-	const { variations } = props;
 
 	const { variationSelected, isPreview } = props.attributes;
 
@@ -206,37 +233,4 @@ const UAGBContainer = ( props ) => {
 	);
 };
 
-const applyWithSelect = withSelect( ( select, props ) => { // eslint-disable-line no-shadow
-	const { __experimentalGetPreviewDeviceType = null } = select(
-		'core/edit-post'
-	);
-	const deviceType = __experimentalGetPreviewDeviceType
-		? __experimentalGetPreviewDeviceType()
-		: null;
-		const { getBlocks } = select( 'core/block-editor' );
-	const {
-		getBlockType,
-		getBlockVariations,
-		getDefaultBlockVariation,
-	} = select( 'core/blocks' );
-	const innerBlocks = getBlocks( props.clientId );
-	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
-
-	return {
-		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
-		innerBlocks,
-		blockType: getBlockType( props.name ),
-		defaultVariation:
-			typeof getDefaultBlockVariation === 'undefined'
-				? null
-				: getDefaultBlockVariation( props.name ),
-		variations:
-			typeof getBlockVariations === 'undefined'
-				? null
-				: getBlockVariations( props.name ),
-		replaceInnerBlocks,
-		deviceType,
-		isParentOfSelectedBlock: select( 'core/block-editor' ).hasSelectedInnerBlock( props.clientId, true )
-	};
-} );
-export default compose( applyWithSelect )( UAGBContainer );
+export default UAGBContainer;

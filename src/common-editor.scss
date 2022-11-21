@@ -637,7 +637,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 }
 
 .interface-interface-skeleton__sidebar {
-
+	overflow-y: overlay;
 	margin-bottom: 10px;
 
 	.components-panel[data-uagb-tab="advance"] {

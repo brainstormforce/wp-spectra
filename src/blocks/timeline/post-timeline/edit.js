@@ -2,7 +2,7 @@
  * External dependencies
  */
 
-import React, { useEffect,    } from 'react';
+import React, { useEffect,  useState  } from 'react';
 
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
@@ -16,10 +16,12 @@ import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
-import { withSelect } from '@wordpress/data';
+import { useSelect } from '@wordpress/data';
 
 const PostTimelineComponent = ( props ) => {
 	const deviceType = useDeviceType();
+	const [ isTaxonomyLoading, setIsTaxonomyLoading] = useState( false );
+
 	useEffect( () => {
 
 		// Replacement for componentDidMount.
@@ -97,7 +99,7 @@ const PostTimelineComponent = ( props ) => {
                     props.setAttributes( { timelinAlignmentTablet: timelinAlignment } );
                 }
             }
-        }	
+        }
 
 	}, [] );
 
@@ -117,7 +119,7 @@ const PostTimelineComponent = ( props ) => {
 			detail: {},
 		} );
 		document.dispatchEvent( loadPostTimelineEditor );
-		
+
 	}, [ props, deviceType ] );
 
 
@@ -125,92 +127,99 @@ const PostTimelineComponent = ( props ) => {
 		scrollBlockToView();
 	}, [deviceType] );
 
+	let categoriesList = [];
+
+	const { latestPosts, taxonomyList, block } = useSelect( // eslint-disable-line no-unused-vars
+		( select ) => {
+			const {
+				categories,
+				postsToShow,
+				order,
+				orderBy,
+				postType,
+				taxonomyType,
+				excludeCurrentPost,
+				allTaxonomyStore
+			} = props.attributes;
+
+			const postsToShowFallback = getFallbackNumber( postsToShow, 'postsToShow', 'post-timeline' );
+			const { getEntityRecords } = select( 'core' );
+
+			if ( ! allTaxonomyStore && ! isTaxonomyLoading ) {
+				setIsTaxonomyLoading( true );
+				apiFetch( {
+					path: '/spectra/v1/all_taxonomy',
+				} ).then( ( data ) => {
+					props.setAttributes( { allTaxonomyStore: data } );
+					setIsTaxonomyLoading( false );
+				} );
+			}
+			const allTaxonomy = allTaxonomyStore;
+			const currentTax = allTaxonomy ? allTaxonomy[ postType ] : undefined;
+
+			let restBase = '';
+
+			if ( 'undefined' !== typeof currentTax ) {
+				if ( 'undefined' !== typeof currentTax.taxonomy[ taxonomyType ] ) {
+					restBase = ( currentTax.taxonomy[taxonomyType].rest_base === false || currentTax.taxonomy[taxonomyType].rest_base === null ) ? currentTax.taxonomy[taxonomyType].name : currentTax.taxonomy[taxonomyType].rest_base
+				}
+
+				if ( '' !== taxonomyType ) {
+					if (
+						'undefined' !== typeof currentTax.terms &&
+						'undefined' !== typeof currentTax.terms[ taxonomyType ]
+					) {
+						categoriesList = currentTax.terms[ taxonomyType ];
+					}
+				}
+			}
+
+			const latestPostsQuery = {
+				order,
+				orderby: orderBy,
+				per_page: postsToShowFallback,
+			};
+
+			if ( excludeCurrentPost ) {
+				latestPostsQuery.exclude = select( 'core/editor' ).getCurrentPostId();
+			}
+			const category = [];
+			const temp = parseInt( categories );
+			category.push( temp );
+			const catlenght = categoriesList.length;
+			for ( let i = 0; i < catlenght; i++ ) {
+				if ( categoriesList[ i ].id === temp ) {
+					if ( categoriesList[ i ].child.length !== 0 ) {
+						categoriesList[ i ].child.forEach( ( element ) => {
+							category.push( element );
+						} );
+					}
+				}
+			}
+			if ( undefined !== categories && '' !== categories ) {
+				latestPostsQuery[ restBase ] =
+					undefined === categories || '' === categories
+						? categories
+						: category;
+			}
+			return {
+				latestPosts: getEntityRecords( 'postType', postType, latestPostsQuery ),
+				categoriesList,
+				taxonomyList:
+					'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
+			};
+		},
+	);
+
 	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/post-timeline.svg`;
 
 	return (
 		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
 			<>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } />
+				<Settings parentProps={ props } taxonomyList={ taxonomyList } categoriesList={ categoriesList } />
+				<Render parentProps={ props } latestPosts={ latestPosts } />
 			</>
 		)
 	);
 };
-export default withSelect( ( select, props ) => {
-	const {
-		categories,
-		postsToShow,
-		order,
-		orderBy,
-		postType,
-		taxonomyType,
-		excludeCurrentPost,
-		allTaxonomyStore
-	} = props.attributes;
-
-	const postsToShowFallback = getFallbackNumber( postsToShow, 'postsToShow', 'post-timeline' );
-	const { getEntityRecords } = select( 'core' );
-
-	if ( ! allTaxonomyStore ) {
-		apiFetch( {
-			path: '/spectra/v1/all_taxonomy',
-		} ).then( ( data ) => {
-			props.setAttributes( { allTaxonomyStore: data } );
-		} );
-	}
-	const allTaxonomy = allTaxonomyStore;
-	const currentTax = allTaxonomy ? allTaxonomy[ postType ] : undefined;
-
-	let categoriesList = [];
-	let restBase = '';
-
-	if ( 'undefined' !== typeof currentTax ) {
-		if ( 'undefined' !== typeof currentTax.taxonomy[ taxonomyType ] ) {
-			restBase = ( currentTax.taxonomy[taxonomyType].rest_base === false || currentTax.taxonomy[taxonomyType].rest_base === null ) ? currentTax.taxonomy[taxonomyType].name : currentTax.taxonomy[taxonomyType].rest_base
-		}
-
-		if ( '' !== taxonomyType ) {
-			if (
-				'undefined' !== typeof currentTax.terms &&
-				'undefined' !== typeof currentTax.terms[ taxonomyType ]
-			) {
-				categoriesList = currentTax.terms[ taxonomyType ];
-			}
-		}
-	}
-
-	const latestPostsQuery = {
-		order,
-		orderby: orderBy,
-		per_page: postsToShowFallback,
-	};
-
-	if ( excludeCurrentPost ) {
-		latestPostsQuery.exclude = select( 'core/editor' ).getCurrentPostId();
-	}
-	const category = [];
-	const temp = parseInt( categories );
-	category.push( temp );
-	const catlenght = categoriesList.length;
-	for ( let i = 0; i < catlenght; i++ ) {
-		if ( categoriesList[ i ].id === temp ) {
-			if ( categoriesList[ i ].child.length !== 0 ) {
-				categoriesList[ i ].child.forEach( ( element ) => {
-					category.push( element );
-				} );
-			}
-		}
-	}
-	if ( undefined !== categories && '' !== categories ) {
-		latestPostsQuery[ restBase ] =
-			undefined === categories || '' === categories
-				? categories
-				: category;
-	}
-	return {
-		latestPosts: getEntityRecords( 'postType', postType, latestPostsQuery ),
-		categoriesList,
-		taxonomyList:
-			'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
-	};
-} )( PostTimelineComponent );
+export default PostTimelineComponent

@@ -11,11 +11,13 @@
 
 import domReady from '@wordpress/dom-ready';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
-
+import apiFetch from '@wordpress/api-fetch';
 // Delete the local storage on every refresh.
 const uagLocalStorage = getUAGEditorStateLocalStorage();
 if ( uagLocalStorage ) {
 	uagLocalStorage.removeItem( 'uagSettingState' );
+	uagLocalStorage.removeItem( 'isSpectraFontAwesomeAPILoading' );
+
 }
 
 import blocksEditorSpacing from './blocks/extensions/blocks-editor-spacing';
@@ -23,7 +25,29 @@ blocksEditorSpacing();
 
 __webpack_public_path__ = uagb_blocks_info.uagb_url + 'dist/';
 
+// Add Font Awesome Polyfiller to localized variable.
+const isSpectraFontAwesomeAPILoading = uagLocalStorage?.getItem( 'isSpectraFontAwesomeAPILoading' ) || false;
+
+if( 0 === uagb_blocks_info.font_awesome_5_polyfill.length && ! isSpectraFontAwesomeAPILoading ) {
+	uagLocalStorage?.setItem( 'isSpectraFontAwesomeAPILoading', true );
+	const formData = new window.FormData();
+	formData.append( 'action', 'uagb_spectra_font_awesome_polyfiller' );
+	formData.append(
+		'nonce',
+		uagb_blocks_info.uagb_ajax_nonce
+	);
+	apiFetch( {
+		url: uagb_blocks_info.ajax_url,
+		method: 'POST',
+		body: formData,
+	} ).then( ( data ) => {
+		uagLocalStorage?.setItem( 'isSpectraFontAwesomeAPILoading', false );
+		uagb_blocks_info.font_awesome_5_polyfill = data;
+	} );
+}
+
 // The Block Slugs need to be added exactly as below into the array at: /classes/class-spectra-block-prioritization.php.
+// Priorities need to be adequately updated in the respective includes/blocks/block.php files.
 
 // Core Spectra Blocks.
 import './blocks/container/block.js';

@@ -1,6 +1,6 @@
 import { useLayoutEffect } from 'react';
 import styles from './editor.lazy.scss';
-import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
+import { dateI18n, format, getSettings } from '@wordpress/date';
 
 export const PostMeta = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -13,7 +13,7 @@ export const PostMeta = ( props ) => {
 
 	const { post, attributes, categoriesList } = props;
 
-	const dateFormat = __experimentalGetSettings().formats.date;
+	const dateFormat = getSettings().formats.date;
 
 	const list = categoriesList;
 	const cat = post.categories;

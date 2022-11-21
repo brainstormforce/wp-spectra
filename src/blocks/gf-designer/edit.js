@@ -9,11 +9,45 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
-import { withSelect } from '@wordpress/data';
+import { useSelect } from '@wordpress/data';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+
 
 const UAGBGF = ( props ) => {
 	const deviceType = useDeviceType();
+	useSelect(
+		( select ) => { // eslint-disable-line  no-unused-vars
+			const { setAttributes } = props;
+			const { formId, isHtml } = props.attributes;
+			let jsonData = '';
+
+			if ( formId && -1 !== formId && 0 !== formId && ! isHtml ) {
+
+				const formData = new window.FormData();
+
+				formData.append( 'action', 'uagb_gf_shortcode' );
+				formData.append(
+					'nonce',
+					uagb_blocks_info.uagb_ajax_nonce
+				);
+				formData.append( 'formId', formId );
+
+				apiFetch( {
+					url: uagb_blocks_info.ajax_url,
+					method: 'POST',
+					body: formData,
+				} ).then( ( data ) => {
+					setAttributes( { isHtml: true } );
+					setAttributes( { formJson: data } );
+					jsonData = data;
+				} );
+			}
+
+			return {
+				formHTML: jsonData,
+			};
+		},
+	);
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		props.setAttributes( { isHtml: false } );
@@ -93,7 +127,7 @@ const UAGBGF = ( props ) => {
 				props.setAttributes( { fieldleftPadding: fieldHrPadding } );
 			}
 		}
-		
+
 	}, [] );
 	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
 	useEffect( () => {
@@ -113,7 +147,7 @@ const UAGBGF = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-gf-styler-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
 	}, [ props ] );
 
 	useEffect( () => {
@@ -171,34 +205,4 @@ const UAGBGF = ( props ) => {
 	);
 };
 
-export default withSelect( ( select, props ) => {
-	const { setAttributes } = props;
-	const { formId, isHtml } = props.attributes;
-	let jsonData = '';
-
-	if ( formId && -1 !== formId && 0 !== formId && ! isHtml ) {
-
-		const formData = new window.FormData();
-
-		formData.append( 'action', 'uagb_gf_shortcode' );
-		formData.append(
-			'nonce',
-			uagb_blocks_info.uagb_ajax_nonce
-		);
-		formData.append( 'formId', formId );
-
-		apiFetch( {
-			url: uagb_blocks_info.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( ( data ) => {
-			setAttributes( { isHtml: true } );
-			setAttributes( { formJson: data } );
-			jsonData = data;
-		} );
-	}
-
-	return {
-		formHTML: jsonData,
-	};
-} )( UAGBGF );
+export default UAGBGF;

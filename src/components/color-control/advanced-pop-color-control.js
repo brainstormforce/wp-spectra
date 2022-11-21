@@ -14,7 +14,7 @@ import {
 	ColorPicker,
 	ColorPalette,
 } from '@wordpress/components';
-import { withSelect } from '@wordpress/data';
+import { useSelect } from '@wordpress/data';
 import { useState, useEffect } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
@@ -29,6 +29,13 @@ const AdvancedPopColorControl = ( props ) => {
 		};
 	}, [] );
 
+	const { colors } = useSelect(
+		( select ) => { // eslint-disable-line  no-unused-vars
+			const settings = select( 'core/block-editor' ).getSettings();
+			return { colors: settings.colors };
+		},
+	);
+
 	const {
 		alpha,
 		colorValue,
@@ -39,7 +46,6 @@ const AdvancedPopColorControl = ( props ) => {
 		setAttributes,
 		onColorChange,
 		label,
-		colors,
 		help
 	} = props;
 
@@ -275,8 +281,4 @@ const AdvancedPopColorControl = ( props ) => {
 	);
 };
 
-export default withSelect( ( select ) => {
-	const settings = select( 'core/block-editor' ).getSettings();
-	const colors = settings.colors;
-	return { colors };
-} )( AdvancedPopColorControl );
+export default AdvancedPopColorControl;
