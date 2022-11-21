@@ -180,6 +180,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Team - Social icon style option is showing when the social icon is disabled.
 * Fix: Tabs - Layout fixed when preset is selected.
 * Fix: Buttons - Validation errors when we add `Add "nofollow" to link`
+* Improvement: FAQ - Added background Size, Background color and Border stylings for Toggle Icon.
 
 ### 2.0.15 - WEDNESDAY, 16th NOVEMBER 2022 ###
 * Improvement: Info Box - Added Responsive feature to the Info Box icon width setting.
