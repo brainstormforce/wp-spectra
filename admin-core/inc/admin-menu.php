@@ -246,6 +246,7 @@ class Admin_Menu {
 				'spectra_pro_installed'    => file_exists( UAGB_DIR . '../spectra-pro/spectra-pro.php' ),
 				'spectra_pro_status'       => is_plugin_active( 'spectra-pro/spectra-pro.php' ),
 				'spectra_pro_ver'          => $this->spectra_pro_version,
+				'spectra_pro_activation'   => activate_plugin( 'spectra-pro/spectra-pro.php' ),
 				'spectra_custom_fonts'     => apply_filters( 'spectra_system_fonts', array() ),
 				'is_allow_registration'    => (bool) get_option( 'users_can_register' ),
 			)

@@ -3,8 +3,14 @@
 import React from 'react';
 
 import { __ } from '@wordpress/i18n';
+import { doAction } from '@wordpress/hooks';
 
 const PluginStats = () => {
+
+	const activatePro = () => {
+		uag_react.spectra_pro_activation;
+		window.location.reload();
+	};
 
 	const renderDivider = () => (
 		<svg
@@ -32,7 +38,7 @@ const PluginStats = () => {
 					</div>
 				)
 			) : (
-				<div className='mr-8 ml-2 text-sm text-slate-500'>
+				<div className='mr-8 ml-2 text-sm text-slate-500 cursor-pointer' onClick={ activatePro }>
 					{ __( 'Activate Spectra Pro', 'ultimate-addons-for-gutenberg' ) }
 				</div>
 			)
