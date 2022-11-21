@@ -22,24 +22,23 @@ export default function MyAccount(props) {
 						<h3 className="p-0 mb-2 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900">
 						{__("License Key", "ultimate-addons-for-gutenberg")}
 						</h3>
-						{
-							! licenseStatus && <p className="mt-2 text-sm text-slate-500">
-								{ __( 'Activate ', 'ultimate-addons-for-gutenberg' ) }
-								<a href="https://wpspectra.com" className="text-sm text-slate-500 underline" target='_blank'>
-									Spectra PRO
-								</a>{" "}
-								{ __( 'to get professional support and automatic updates from your WordPress dashboard.', 'ultimate-addons-for-gutenberg' ) }
-							</p>
-						}
-
-						<div className="mt-2">
+						<div className="w-9/12">
+							{
+								! licenseStatus && <p className="mt-2 text-sm text-slate-500">
+									{ __( 'Activate ', 'ultimate-addons-for-gutenberg' ) }
+									<a href="https://wpspectra.com" className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target='_blank'>
+										Spectra PRO
+									</a>{" "}
+									{ __( 'to get professional support and automatic updates from your WordPress dashboard.', 'ultimate-addons-for-gutenberg' ) }
+								</p>
+							}
 							<p
 								className="block mt-2 mb-4 text-sm text-slate-500"
 							>
 								{ licenseMessage }
 							</p>
-							<div className="flex">
-								<div className="relative">
+							<div className="mt-4 flex w-full">
+								<div className="mr-5 h-10 relative flex-1">
 									<input type="hidden" id="bsf_graupi_nonce" name="bsf_graupi_nonce" value={uag_react.bsf_graupi_nonce}/>
 									<input type="hidden" name="_wp_http_referer" value={window.location.href.replace( window.location.origin, '' )}/>
 
@@ -49,7 +48,7 @@ export default function MyAccount(props) {
 									}
 
 									<input
-										className={`h-10 block w-[28rem] shadow-sm sm:text-sm placeholder-slate-400 transition spectra-admin__input-field ${licenseStatus ? 'spectra-admin__input-field--read-only' : ''}`}
+										className={`w-full text-sm placeholder-slate-400 transition spectra-admin__input-field ${licenseStatus ? 'spectra-admin__input-field--read-only' : ''}`}
 										id={ licenseStatus ? 'spectra_license_key' : "bsf_license_manager[license_key]" }
 										name={ licenseStatus ? 'spectra_license_key' : "bsf_license_manager[license_key]" }
 										type="text"
@@ -81,7 +80,7 @@ export default function MyAccount(props) {
 									type="submit"
 									name={licenseTriggerName}
 									onClick={() => setRegenerateAssetsState(true)}
-									className="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-spectra transition focus:bg-spectra-hover hover:bg-spectra-hover focus:outline-none"
+									className="flex items-center w-auto px-4 py-2 bg-spectra text-white hover:bg-spectra-hover focus:bg-spectra-hover border border-transparent text-sm font-medium rounded-md shadow-sm focus:outline-none transition-all "
 								>
 									{ licenseTitle }
 									{ regenerateAssetsState && (
