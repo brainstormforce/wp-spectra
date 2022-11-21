@@ -64,7 +64,12 @@ const PluginStats = () => {
 				</div>
 			)
 		) : (
-			<a className='mr-8 ml-2 text-sm text-spectra active:text-spectra hover:text-spectra focus:text-spectra cursor-pointer' href='https://wpspectra.com/' rel='noreferrer noopener'>
+			<a
+				className='mr-8 ml-2 text-sm text-spectra active:text-spectra hover:text-spectra focus:text-spectra cursor-pointer'
+				href='https://wpspectra.com/'
+				rel='noreferrer noopener'
+				target='_blank'
+			>
 				{ __( 'Upgrade to Pro', 'ultimate-addons-for-gutenberg' ) }
 			</a>
 		)
@@ -77,14 +82,14 @@ const PluginStats = () => {
 			</div>
 			{ ( uag_react.spectra_pro_installed ) && (
 				<>
-					<div className='mr-2 px-1 py-0.5 text-[10px] leading-[10px] text-slate-500 border border-slate-400 rounded'>
+					<div className='mr-2 px-1.5 py-[3px] text-[10px] leading-[10px] text-slate-500 border border-slate-400 rounded'>
 						{ __( 'Core', 'ultimate-addons-for-gutenberg' ) }
 					</div>
 					{ renderDivider() }
 					<div className='mx-2 text-sm text-slate-500'>
 						{ uag_react.spectra_pro_ver }
 					</div>
-					<div className='mr-2 px-1 py-0.5 text-[10px] leading-[10px] text-slate-500 border border-slate-400 rounded'>
+					<div className='mr-2 px-1.5 py-[3px] text-[10px] leading-[10px] text-white bg-slate-800 border border-slate-800 rounded'>
 						{ __( 'Pro', 'ultimate-addons-for-gutenberg' ) }
 					</div>
 				</>
