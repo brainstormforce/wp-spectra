@@ -280,6 +280,56 @@ const Settings = ( props ) => {
 			},
 		];
 	}
+	if( headingDescToggle && 'above-heading' === headingDescPosition ) {
+		separatorPositionOptions = [
+			{
+				value: 'above-heading',
+				label: __(
+					'Above Heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'below-heading',
+				label: __(
+					'Below Heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'above-sub-heading',
+				label: __(
+					'Above Sub-heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+		];
+	}
+	if( headingDescToggle && 'below-heading' === headingDescPosition ) {
+		separatorPositionOptions = [
+			{
+				value: 'above-heading',
+				label: __(
+					'Above Heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'below-heading',
+				label: __(
+					'Below Heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'below-sub-heading',
+				label: __(
+					'Below Sub-heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+		];
+	}
 	const generalPanel = () => {
 
 		return (
