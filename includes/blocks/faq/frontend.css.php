@@ -214,7 +214,7 @@ $m_selectors = array(
 	' .uagb-faq-child__outer-wrap'        => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowsGapMobile'], $attr['rowsGapUnit'] ),
 	),
-	' .uagb-faq-item .uagb-faq-icon-wrap' => array_merge(
+	'.wp-block-uagb-faq .uagb-faq-item .uagb-faq-icon-wrap' => array_merge(
 		array(
 			'padding' => UAGB_Helper::get_css_value( $attr['iconBgSizeMobile'], $attr['iconBgSizeType'] ),
 		),
