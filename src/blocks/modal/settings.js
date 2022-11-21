@@ -672,7 +672,7 @@ export default function Settings( props ) {
 			initialOpen={ false }
 		>
 
-			{ modalTrigger === 'icon' && (
+			{ 'icon' === modalTrigger && icon !== '' && (
 				<>
 					<Range
 						label={ __(
@@ -707,6 +707,15 @@ export default function Settings( props ) {
 					/>
 				</>
 			)}
+
+			{ modalTrigger === 'icon' &&
+				icon === '' && (
+				<p className="uagb-settings-notice">
+				{ __(
+					'For the styling options please select the Icon.'
+				) }
+				</p>
+			) }
 
 			{ modalTrigger === 'text' && (
 				<>
@@ -931,9 +940,19 @@ export default function Settings( props ) {
 				</>
 			) }
 
+			{ ( modalTrigger === 'image' &&
+				iconImage === undefined ) && (
+				<p className="uagb-settings-notice">
+				{ __(
+					'For the styling options please select the Image.'
+				) }
+				</p>
+			) }
+
 			{ modalTrigger === 'button' && (
 				<>
-				<ResponsiveSlider
+				{ '' !== buttonIcon && (
+					<ResponsiveSlider
 						label={ __(
 							'Icon Spacing',
 							'ultimate-addons-for-gutenberg'
@@ -976,6 +995,7 @@ export default function Settings( props ) {
 						] }
 						setAttributes={ setAttributes }
 					/>
+				) }
 					<TypographyControl
 						label={ __(
 							'Typography',
@@ -1430,7 +1450,7 @@ export default function Settings( props ) {
 					<InspectorTab { ...UAGTabs.style }>
 						{contentStylePanel}
 						{triggerStylePanel}
-						{closeStylePanel}
+						{ '' !== closeIcon && closeStylePanel }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
