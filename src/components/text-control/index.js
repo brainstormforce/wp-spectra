@@ -3,7 +3,6 @@ import {
     TextareaControl,
 } from '@wordpress/components';
 import ResponsiveToggle from '../responsive-toggle';
-import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import classnames from 'classnames';
