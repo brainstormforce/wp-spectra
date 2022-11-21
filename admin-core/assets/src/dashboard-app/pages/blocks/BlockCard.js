@@ -74,12 +74,12 @@ const BlockCard = ( props ) => {
                 <p className="text-base font-medium text-slate-800">
                     { title }
                     { deprecated && (
-                        <div className="inline-block align-top max-h-4 px-1.5 py-1 ml-1.5 text-[10px] leading-[10px] border border-slate-200 text-slate-400 rounded spectra-admin__block-label">
+                        <div className="inline-block align-text-bottom max-h-4 px-1.5 py-[3px] ml-1.5 text-[10px] leading-[10px] border border-slate-200 text-slate-400 rounded spectra-admin__block-label">
                             { __( 'Legacy', 'ultimate-addons-for-gutenberg' ) }
                         </div>
                     ) }
                     { ( ! pro_filler && admin_categories?.includes( 'pro' ) ) && (
-                        <div className="inline-block align-top max-h-4 px-1.5 py-1 ml-1.5 text-[10px] leading-[10px] border border-slate-800 bg-slate-800 text-white rounded spectra-admin__block-label">
+                        <div className="inline-block align-text-bottom max-h-4 px-1.5 py-[3px] ml-1.5 text-[10px] leading-[10px] border border-slate-800 bg-slate-800 text-white rounded spectra-admin__block-label">
                             { __( 'Pro', 'ultimate-addons-for-gutenberg' ) }
                         </div>
                     ) }
@@ -87,7 +87,7 @@ const BlockCard = ( props ) => {
                 <a className="focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate" href={ `https://wpspectra.com/blocks/${ link }` } target="_blank"rel="noreferrer">{__( 'Live Demo', 'ultimate-addons-for-gutenberg' )}</a>
             </div>
             { pro_filler ? (
-                <div className="inline-block align-top max-h-4 px-1.5 py-1 ml-1.5 text-[10px] leading-[10px] border border-slate-800 bg-slate-800 text-white rounded spectra-admin__block-label">
+                <div className="inline-block align-text-bottom max-h-4 px-1.5 py-[3px] ml-1.5 text-[10px] leading-[10px] border border-slate-800 bg-slate-800 text-white rounded spectra-admin__block-label">
                     { __( 'Pro', 'ultimate-addons-for-gutenberg' ) }
                 </div>
             ) : (

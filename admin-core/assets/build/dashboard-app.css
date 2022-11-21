@@ -1061,12 +1061,15 @@ select {
 }.px-1\.5 {
   padding-left: 0.375rem;
   padding-right: 0.375rem;
-}.py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+}.py-\[3px\] {
+  padding-top: 3px;
+  padding-bottom: 3px;
 }.py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }.py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -1122,6 +1125,8 @@ select {
   vertical-align: top;
 }.align-bottom {
   vertical-align: bottom;
+}.align-text-bottom {
+  vertical-align: text-bottom;
 }.text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
