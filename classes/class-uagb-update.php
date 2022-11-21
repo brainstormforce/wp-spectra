@@ -80,6 +80,29 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 			if ( version_compare( $saved_version, '2.0.5', '<' ) ) {
 				UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_legacy_blocks', 'yes' );
 			}
+			// If user is older than 2.0.16 then enable all the Core Spectra Blocks, As we have removed option to disable core blocks from 2.0.16.
+			if ( version_compare( $saved_version, '2.0.16', '<' ) ) {
+				$blocks_status = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks' );
+
+				if ( isset( $blocks_status ) && is_array( $blocks_status ) ) {
+
+					$core_blocks = array(
+						'container',
+						'advanced-heading',
+						'image',
+						'buttons',
+						'info-box',
+						'call-to-action',
+					);
+
+					foreach ( $core_blocks as $block ) {
+
+						$blocks_status[ $block ] = $block;
+					}
+
+					UAGB_Admin_Helper::update_admin_settings_option( '_uagb_blocks', $blocks_status );
+				}
+			}
 
 			// Create file if not present.
 			uagb_install()->create_files();
