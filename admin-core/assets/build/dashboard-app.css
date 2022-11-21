@@ -987,15 +987,15 @@ select {
   border-color: rgb(97 4 255 / var(--tw-border-opacity));
 }.border-transparent {
   border-color: transparent;
-}.border-slate-300 {
-  --tw-border-opacity: 1;
-  border-color: rgb(203 213 225 / var(--tw-border-opacity));
 }.border-slate-400 {
   --tw-border-opacity: 1;
   border-color: rgb(148 163 184 / var(--tw-border-opacity));
 }.border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}.border-slate-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(203 213 225 / var(--tw-border-opacity));
 }.bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -1338,12 +1338,18 @@ select {
 }.hover\:text-slate-800:hover {
   --tw-text-opacity: 1;
   color: rgb(30 41 59 / var(--tw-text-opacity));
-}.hover\:text-slate-500:hover {
+}.hover\:text-emerald-500:hover {
   --tw-text-opacity: 1;
-  color: rgb(100 116 139 / var(--tw-text-opacity));
+  color: rgb(16 185 129 / var(--tw-text-opacity));
+}.hover\:text-slate-400:hover {
+  --tw-text-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-text-opacity));
 }.hover\:text-spectra:hover {
   --tw-text-opacity: 1;
   color: rgb(97 4 255 / var(--tw-text-opacity));
+}.hover\:text-slate-500:hover {
+  --tw-text-opacity: 1;
+  color: rgb(100 116 139 / var(--tw-text-opacity));
 }.hover\:text-slate-900:hover {
   --tw-text-opacity: 1;
   color: rgb(15 23 42 / var(--tw-text-opacity));
@@ -1379,6 +1385,9 @@ select {
 }.focus\:text-spectra:focus {
   --tw-text-opacity: 1;
   color: rgb(97 4 255 / var(--tw-text-opacity));
+}.focus\:text-emerald-500:focus {
+  --tw-text-opacity: 1;
+  color: rgb(16 185 129 / var(--tw-text-opacity));
 }.focus\:text-slate-400:focus {
   --tw-text-opacity: 1;
   color: rgb(148 163 184 / var(--tw-text-opacity));
@@ -1433,6 +1442,12 @@ select {
 }.active\:text-spectra:active {
   --tw-text-opacity: 1;
   color: rgb(97 4 255 / var(--tw-text-opacity));
+}.active\:text-emerald-500:active {
+  --tw-text-opacity: 1;
+  color: rgb(16 185 129 / var(--tw-text-opacity));
+}.active\:text-slate-400:active {
+  --tw-text-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-text-opacity));
 }.active\:text-slate-500:active {
   --tw-text-opacity: 1;
   color: rgb(100 116 139 / var(--tw-text-opacity));

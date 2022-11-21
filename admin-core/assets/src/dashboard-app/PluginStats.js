@@ -3,9 +3,12 @@
 import React from 'react';
 
 import { __ } from '@wordpress/i18n';
-import { doAction } from '@wordpress/hooks';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const PluginStats = () => {
+
+	const dispatch = useDispatch();
 
 	const activatePro = () => {
 		uag_react.spectra_pro_activation;
@@ -29,13 +32,31 @@ const PluginStats = () => {
 		uag_react.spectra_pro_installed ? (
 			uag_react.spectra_pro_status ? (
 				uag_react.license_status ? (
-					<div className='mr-8 ml-2 text-sm text-emerald-500'>
+                    <Link
+						className='mr-8 ml-2 text-sm text-emerald-500 active:text-emerald-500 hover:text-emerald-500 focus:text-emerald-500 cursor-pointer'
+						to={ {
+							pathname: 'options-general.php',
+							search: '?page=spectra&path=settings&settings=my-account',
+						} }
+						onClick={ () => {
+							dispatch( { type:'UPDATE_SETTINGS_ACTIVE_NAVIGATION_TAB', payload: 'my-account' } )
+						} }
+                    >
 						{ __( 'Licensed', 'ultimate-addons-for-gutenberg' ) }
-					</div>					
+					</Link>					
 				) : (
-					<div className='mr-8 ml-2 text-sm text-slate-400'>
-						{ __( 'Unlicensed', 'ultimate-addons-for-gutenberg' ) }
-					</div>
+                    <Link
+						className='mr-8 ml-2 text-sm text-slate-400 active:text-slate-400 hover:text-slate-400 focus:text-slate-400 cursor-pointer'
+						to={ {
+							pathname: 'options-general.php',
+							search: '?page=spectra&path=settings&settings=my-account',
+						} }
+						onClick={ () => {
+							dispatch( { type:'UPDATE_SETTINGS_ACTIVE_NAVIGATION_TAB', payload: 'my-account' } )
+						} }
+                    >
+                        { __( 'Unlicensed', 'ultimate-addons-for-gutenberg' ) }
+					</Link>
 				)
 			) : (
 				<div className='mr-8 ml-2 text-sm text-slate-500 cursor-pointer' onClick={ activatePro }>
@@ -43,9 +64,9 @@ const PluginStats = () => {
 				</div>
 			)
 		) : (
-			<div className='mr-8 ml-2 text-sm text-spectra'>
+			<a className='mr-8 ml-2 text-sm text-spectra active:text-spectra hover:text-spectra focus:text-spectra cursor-pointer' href='https://wpspectra.com/' rel='noreferrer noopener'>
 				{ __( 'Upgrade to Pro', 'ultimate-addons-for-gutenberg' ) }
-			</div>
+			</a>
 		)
 	);
 
@@ -56,7 +77,7 @@ const PluginStats = () => {
 			</div>
 			{ ( uag_react.spectra_pro_installed ) && (
 				<>
-					<div className='mr-2 px-1 py-0.5 text-[10px] leading-[10px] text-slate-400 border border-slate-300 rounded'>
+					<div className='mr-2 px-1 py-0.5 text-[10px] leading-[10px] text-slate-500 border border-slate-400 rounded'>
 						{ __( 'Core', 'ultimate-addons-for-gutenberg' ) }
 					</div>
 					{ renderDivider() }
