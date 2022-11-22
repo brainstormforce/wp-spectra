@@ -18,18 +18,29 @@ export default function MyAccount() {
 						{__( 'License Key', 'ultimate-addons-for-gutenberg' )}
 						</h3>
 						<div className="w-9/12">
-							{
-								! licenseStatus && <p className="mt-2 text-sm text-slate-500">
+							{ ! licenseStatus && (
+								<p
+									className="mt-2 text-sm text-slate-500"
+									style={ {
+										margin: '0.5rem 0 0', /* Replicating Tailwind mt-2 */
+									} }
+								>
 									{ __( 'Activate ', 'ultimate-addons-for-gutenberg' ) }
 									<a href="https://wpspectra.com" className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target='_blank' rel="noreferrer">
 										Spectra Pro
-									</a>{' '}
-								{ __( 'to get professional support and automatic updates from your WordPress dashboard.', 'ultimate-addons-for-gutenberg' ) }
-								&nbsp;
-								{__( 'If you don\'t have a license, you can', 'ultimate-addons-for-gutenberg' )} <a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target='_blank' href="https://wpspectra.com/pricing" rel="noreferrer">{__( 'get it here', 'ultimate-addons-for-gutenberg' )} »</a>
+									</a>
+									&nbsp;
+									{ __( 'to get professional support and automatic updates from your WordPress dashboard.', 'ultimate-addons-for-gutenberg' ) }
+									&nbsp;
+									{__( 'If you don\'t have a license, you can', 'ultimate-addons-for-gutenberg' )} <a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target='_blank' href="https://wpspectra.com/pricing" rel="noreferrer">{__( 'get it here', 'ultimate-addons-for-gutenberg' )} »</a>
 								</p>
-							}
-							<p className="mt-4 text-sm text-slate-500" >
+							) }
+							<p
+								className="text-sm text-slate-500"
+								style={ {
+									margin: '0.5rem 0 0', /* Replicating Tailwind mt-2 */
+								} }
+							>
 								{ licenseMessage }
 							</p>
 							<div className="mt-4 flex w-full">
