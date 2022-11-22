@@ -7,6 +7,8 @@ import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 import renderSVG from '@Controls/deprecatedRenderIcon';
 import { getBorderAttributes } from '@Controls/generateAttributes';
+import newAttributesV2_0_14 from './deprecated/v2.0.14/attributes';
+import newSaveV2_0_14 from './deprecated/v2.0.14/save';
 const borderAttributes = getBorderAttributes( 'btn' );
  const attributes = {
 	inheritFromTheme: {
@@ -250,7 +252,11 @@ const deprecated = [
 			);
 
 		}
-	}
+	},
+	{
+		attributes: newAttributesV2_0_14,
+		save : newSaveV2_0_14,
+	},
 ];
 
 export default deprecated;

@@ -18,7 +18,6 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
 import UAGTabsControl from '@Components/tabs';
 import {
-	TextControl,
 	Icon,
 	ToggleControl,
 } from '@wordpress/components';
@@ -28,16 +27,17 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import boxShadowPresets from './presets';
 import UAGPresets from '@Components/presets';
 
+import UAGTextControl from '@Components/text-control';
+
 import apiFetch from '@wordpress/api-fetch';
 const Settings = ( props ) => {
+	const { taxonomyList, termsList } = props;
 	props = props.parentProps;
 
 	// Caching all Props.
 	const {
 		attributes,
 		setAttributes,
-		taxonomyList,
-		termsList,
 		deviceType,
 	} = props;
 
@@ -603,13 +603,18 @@ const Settings = ( props ) => {
 					/>
 				) }
 				{ '' === taxonomyList && (
-					<TextControl
+					<UAGTextControl
 						autoComplete="off"
 						label={ __(
 							'Display Message',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ noTaxDisplaytext }
+						data={{
+							value: noTaxDisplaytext,
+							label: 'noTaxDisplaytext',
+						}}
+						setAttributes={ setAttributes }
 						onChange={ ( value ) =>
 							setAttributes( { noTaxDisplaytext: value } )
 						}

@@ -200,10 +200,16 @@ const Settings = ( props ) => {
 						'Link',
 						'ultimate-addons-for-gutenberg'
 					) }
+					enableDynamicContent={true}
 					name={'link'}
 					value={ link }
 					setAttributes={setAttributes}
+					data={{
+						value: link,
+						label: 'link',
+					}}
 				/>
+
 				<ToggleControl
 					label={ __(
 						'Open in new window',

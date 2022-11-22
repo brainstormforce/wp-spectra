@@ -5,9 +5,11 @@ import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import UAGSelectControl from '@Components/select-control';
-import { ToggleControl, TextControl } from '@wordpress/components';
+import { ToggleControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+
+import UAGTextControl from '@Components/text-control';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -131,9 +133,14 @@ const Settings = ( props ) => {
 						) }
 					</option>
 				</UAGSelectControl>
-				<TextControl
+				<UAGTextControl
 					label="Placeholder"
 					value={ placeholder }
+					data={{
+						value: placeholder,
+						label: 'placeholder',
+					}}
+					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( { placeholder: value } )
 					}

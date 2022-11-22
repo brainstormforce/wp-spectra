@@ -13,7 +13,7 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/table-of-contents', {
-	title: __( 'Table of Contents', 'ultimate-addons-for-gutenberg' ),
+	title: __( 'Table Of Contents', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add a table of contents to allow page navigation.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.table_of_contents,
 	category: uagb_blocks_info.category,
