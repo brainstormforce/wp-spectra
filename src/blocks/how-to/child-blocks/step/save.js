@@ -19,7 +19,9 @@ export default function save( props ) {
 		imageSize,
 		urlText,
 		urlTarget,
-		imgPosition
+		imgPosition,
+		imgTagHeight,
+		imgTagWidth,
 	} = attributes;
 
 	let urlCheck = '';
@@ -55,6 +57,8 @@ export default function save( props ) {
 			className="uagb-how-to-step-image"
 			src={ imageUrl }
 			alt={ image.alt }
+			width={imgTagWidth} height={imgTagHeight}
+			loading="lazy"
 		/>
 	);
 	const contentMarkup = (

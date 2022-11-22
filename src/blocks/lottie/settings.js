@@ -23,10 +23,10 @@ import {
 	ToggleControl,
 	ToolbarGroup,
 	Icon,
-	TextControl,
 } from '@wordpress/components';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import UAGTextControl from '@Components/text-control';
 
 const Settings = ( props ) => {
 	const { loopLottie, reverseDirection } = props;
@@ -119,12 +119,17 @@ const Settings = ( props ) => {
 					/>
 				) }
 				{ lottieSource === 'url' && (
-					<TextControl
+					<UAGTextControl
 						label={ __(
 							'Lottie Animation URL',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ lottieURl }
+						data={{
+							value: lottieURl,
+							label: 'lottieURl',
+						}}
+						setAttributes={ setAttributes }
 						onChange={ ( value ) => setAttributes( { lottieURl: value } ) }
 					/>
 				) }

@@ -1,4 +1,4 @@
-const RestMenuImage = ( props ) => {
+const RestMenuImageOld = ( props ) => {
 	const { attributes, index_value } = props;
 	let urlCheck = '';
 	let imageArr = '';
@@ -50,4 +50,4 @@ const RestMenuImage = ( props ) => {
 	return null;
 };
 
-export default RestMenuImage;
+export default RestMenuImageOld;

@@ -3,9 +3,10 @@ import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect } from 'react';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
+import getImageHeightWidth from '@Controls/getImageHeightWidth';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -28,7 +29,9 @@ const Render = ( props ) => {
 		target,
 		disableLink,
 		hideLabel,
-		fromParentIcon
+		fromParentIcon,
+		imageSizeChild,
+		imgTagHeight,
 	} = attributes;
 
 	const deviceType = useDeviceType();
@@ -36,6 +39,12 @@ const Render = ( props ) => {
 	const defaultedAlt = ( image && image?.alt ) ? image?.alt : '';
 
 	let imageIconHtml = '';
+
+	useEffect( () => {
+		if( image && image.url && image_icon !== 'none' ){
+			getImageHeightWidth( image?.url, setAttributes, { type: 'width', value: imageSizeChild} )
+		}
+	}, [ image, imageSizeChild ] )
 
 	if ( image_icon === 'icon' ) {
 		if( icon || fromParentIcon ){
@@ -47,6 +56,9 @@ const Render = ( props ) => {
 				className="uagb-icon-list__source-image"
 				alt= { defaultedAlt }
 				src={ image.url }
+				width={ imageSizeChild }
+				height={ imgTagHeight }
+				loading="lazy"
 			/>
 		);
 	}

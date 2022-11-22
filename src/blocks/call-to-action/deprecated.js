@@ -11,7 +11,9 @@ import Description from './components/Description';
 import CtaPositionClasses from './classes';
 import CallToAction from './components/CallToAction';
 import CTA from './components/CTA';
-import attributes from './attributes';
+import attributes from './old-attributes';
+import CTANew from './components/CallToActionNew';
+import SecondCTAButton from './components/SecondCTAButton';
 
 import { __ } from '@wordpress/i18n';
 
@@ -375,6 +377,91 @@ const deprecated = [
 				</>
 			);
 		},
+	},
+	{
+		attributes,
+		save( props ) {
+			const {
+				block_id,
+				ctaType,
+				ctaLink,
+				ctaTarget,
+				ctaTitle,
+				description,
+				enabledSecondCtaButton
+			} = props.attributes;
+		
+			const isCta = (
+				<CTANew attributes={ props.attributes } setAttributes="not_set" />
+			);
+		
+			const secondCtaButton = ( 'button' === ctaType && enabledSecondCtaButton ) ? <SecondCTAButton attributes={ props.attributes } setAttributes="not_set" /> : '';
+		
+			// Get description and seperator components.
+			const desc = (
+				<>
+					{ '' !== description && (
+						<Description
+							attributes={ props.attributes }
+							setAttributes="not_set"
+						/>
+					) }
+				</>
+			);
+		
+			// Get Title components.
+			const titleText = (
+				<>
+					{ '' !== ctaTitle && (
+						<Title
+							attributes={ props.attributes }
+							setAttributes="not_set"
+						/>
+					) }
+				</>
+			);
+		
+			const output = (
+				<>
+					<div className="uagb-cta__wrap">
+						{ titleText }
+						{ desc }
+					</div>
+					<div className='uagb-cta__buttons'>
+						{isCta}
+						{secondCtaButton}
+					</div>
+				</>
+			);
+		
+			let target = '';
+			if ( ctaTarget ) {
+				target = '_blank';
+			}
+		
+			return (
+				<div
+					className={ classnames(
+						`uagb-block-${ block_id }`,
+						'button' === ctaType ? 'wp-block-button' : '',
+					) }
+				>
+					{ ctaType === 'all' && (
+						<>
+						<a
+							href={ ctaLink }
+							className="uagb-cta__link-to-all"
+							target={ target }
+							rel="noopener noreferrer"
+						>
+						</a>
+						{ output }
+						</>
+					) }
+					{ ctaType !== 'all' && output }
+				</div>
+			);
+		}
 	},
 ];
 

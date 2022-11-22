@@ -10,7 +10,7 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 const Blog = ( props ) => {
 	const blockName = props.name.replace( 'uagb/', '' );
 	const article = useRef();
-	const { attributes, className, latestPosts, block_id } = props;
+	const { attributes, className, latestPosts, block_id, setAttributes } = props;
 	const deviceType = useDeviceType();
 	const {
 		isPreview,
@@ -69,7 +69,8 @@ const Blog = ( props ) => {
 							layoutConfig,
 							props.attributes,
 							props.categoriesList,
-							article
+							setAttributes,
+							article,
 						) }
 					</article>
 				) ) }

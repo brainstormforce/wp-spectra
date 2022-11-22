@@ -10,6 +10,7 @@ import Price from './components/Price';
 import Description from './components/Description';
 import PositionClasses from '../price-list/classes';
 import RestMenuImage from './components/RestMenuImageOld';
+import RestMenuImagev2_0_14 from './components/RestMenuImagev2_0_14';
 
 const attributes = {
 	block_id: {
@@ -150,6 +151,184 @@ const deprecated = [
 				</>
 			);
 		},
+	},
+	{ // depricated for v 2.0.14
+		attributes : {
+			block_id: {
+				type: 'string',
+			},
+			description: {
+				type: 'string',
+				default: __(
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+				),
+			},
+			title: {
+				type: 'string',
+				default: __( 'Menu Item' ),
+			},
+			price: {
+				type: 'string',
+				default: __( '$9' ),
+			},
+			image: {
+				type: 'object',
+				default: { url:`${ uagb_blocks_info.uagb_url }/admin/assets/images/uag-placeholder.svg`},
+			},
+			imagePosition: {
+				type: 'string',
+				default: 'left',
+				UAGCopyPaste: {
+					styleType: 'image-position'
+				},
+			},
+			imageAlignment: {
+				type: 'string',
+				default: 'top',
+				UAGCopyPaste: {
+					styleType: 'image-align'
+				},
+			},
+			imageSize: {
+				type: 'string',
+				default: 'medium',
+				UAGCopyPaste: {
+					styleType: 'image-size'
+				},
+			},
+			headingTag: {
+				type: 'string',
+				default: 'h4',
+			},
+			columns: {
+				type: 'number',
+				default: 2,
+			},
+			tcolumns: {
+				type: 'number',
+				default: 2,
+			},
+			mcolumns: {
+				type: 'number',
+				default: 1,
+			},
+			headingAlign: {
+				type: 'string',
+				default: 'left',
+				UAGCopyPaste: {
+					styleType: 'main-title-align'
+				},
+			},
+			stack: {
+				type: 'string',
+				default: 'tablet',
+			},
+			imgAlign: {
+				type: 'string',
+				UAGCopyPaste: {
+					styleType: 'image-align'
+				},
+				default: 'side',
+			},
+			showImage: {
+				type: 'boolean',
+				default: true,
+			},
+		},
+		save( props ) {
+			const { imagePosition, headingAlign, imgAlign, showImage } = props.attributes;
+
+			return (
+				<div
+					className={ classnames(
+						'uagb-rest_menu__wrap'
+					) }
+				>
+					{ imgAlign === 'top' && (
+						<>
+							{ showImage &&
+								<RestMenuImagev2_0_14 attributes={ props.attributes } />
+							}
+							<div className="uagb-rm__content">
+								{ headingAlign === 'right' && (
+									<Price
+										attributes={ props.attributes }
+										setAttributes= "not_set"
+										props={ props }
+									/>
+								)}
+								<div className="uagb-rm-details">
+									<Title
+										attributes={ props.attributes }
+										setAttributes= "not_set"
+										props={ props }
+									/>
+									<Description
+										attributes={ props.attributes }
+										setAttributes= "not_set"
+										props={ props }
+									/>
+									{ headingAlign === 'center' && (
+									<Price
+										attributes={ props.attributes }
+										setAttributes= "not_set"
+										props={ props }
+									/>
+								)}
+								</div>
+								{ headingAlign === 'left' && (
+									<Price
+										attributes={ props.attributes }
+										setAttributes= "not_set"
+										props={ props }
+									/>
+								)}
+							</div>
+							<div className="uagb-rm__separator"></div>
+						</>
+					)}
+					{ imgAlign === 'side' && (
+						<>
+							<div className="uagb-rm__content">
+								{ imagePosition === 'left' && showImage && (
+									<RestMenuImagev2_0_14 attributes={ props.attributes } />
+								)}
+								{ imagePosition === 'right' && (
+									<Price
+										attributes={ props.attributes }
+										setAttributes= "not_set"
+										props={ props }
+									/>
+								)}
+								<div className="uagb-rm-details">
+									<Title
+										attributes={ props.attributes }
+										setAttributes= "not_set"
+										props={ props }
+									/>
+									<Description
+										attributes={ props.attributes }
+										setAttributes= "not_set"
+										props={ props }
+									/>
+								</div>
+								{ imagePosition === 'left' && (
+									<Price
+										attributes={ props.attributes }
+										setAttributes= "not_set"
+										props={ props }
+									/>
+								)}
+								{ imagePosition === 'right' && showImage && (
+									<RestMenuImagev2_0_14 attributes={ props.attributes } />
+								)}
+							</div>
+							<div className="uagb-rm__separator"></div>
+						</>
+					)}
+				</div>
+			);
+		}
 	}
 ];
 export default deprecated;

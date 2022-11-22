@@ -44,7 +44,7 @@ const Settings = () => {
 	const activeSettingsNavigationTab = useSelector( ( state ) => state.activeSettingsNavigationTab );
     const initialStateSetFlag = useSelector( ( state ) => state.initialStateSetFlag );
 
-	let navigation = [
+	const navigation = [
 		{ name: __( 'Editor Options', 'ultimate-addons-for-gutenberg' ), slug: 'global-settings', icon: SettingsIcons['global-settings'] },
         { name: __( 'Asset Generation', 'ultimate-addons-for-gutenberg' ), slug: 'asset-generation', icon: SettingsIcons['asset-generation'] },
         { name: __( 'Templates', 'ultimate-addons-for-gutenberg' ), slug: 'templates', icon: SettingsIcons.templates },
@@ -55,7 +55,7 @@ const Settings = () => {
     ];
 
 	if( uag_react.spectra_pro_status ){
-		navigation.push({ name: __( 'My Account', 'ultimate-addons-for-gutenberg' ), slug: 'my-account', icon: SettingsIcons['account'] })
+		navigation.push( { name: __( 'My Account', 'ultimate-addons-for-gutenberg' ), slug: 'my-account', icon: SettingsIcons['account'] } );
 	}
 
 	useEffect( () => {
@@ -63,12 +63,12 @@ const Settings = () => {
 		const activePath = query.get( 'path' );
 		const activeHash = query.get( 'settings' );
 		let activeSettingsTabFromHash = ( activeHash && 'settings' === activePath ) ? activeHash : 'global-settings';
-		if(uag_react.spectra_pro_status && !uag_react.license_status){
+		if( uag_react.spectra_pro_status && !uag_react.license_status ){
 			activeSettingsTabFromHash = ( activeHash && 'settings' === activePath ) ? activeHash : 'my-account';
-			history.push({
+			history.push( {
 				pathname: 'options-general.php',
 				search: `?page=spectra&path=settings&settings=${activeSettingsTabFromHash}`,
-			})
+			} )
 		}
 		dispatch( {type:'UPDATE_SETTINGS_ACTIVE_NAVIGATION_TAB', payload: activeSettingsTabFromHash} )
 	}, [initialStateSetFlag] );
@@ -81,7 +81,7 @@ const Settings = () => {
     return (
         <div className="px-6 w-full">
             <div className="mx-auto mt-10 mb-8 font-semibold text-2xl lg:max-w-[80rem]">Settings</div>
-            <main className="mx-auto my-[2.43rem] bg-white rounded-md shadow overflow-hidden min-h-[36rem] lg:max-w-[80rem]">
+            <main className="mx-auto my-[2.43rem] bg-white rounded-md shadow min-h-[36rem] lg:max-w-[80rem]">
                 <div className="lg:grid lg:grid-cols-12 min-h-[36rem] h-full">
                     <aside className="py-6 sm:px-6 lg:py-6 lg:px-0 lg:col-span-3">
                         <nav className="space-y-1">

@@ -11,6 +11,7 @@ import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import Settings from './settings';
 import Render from './render';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const UAGBMarketingButtonEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -122,6 +123,7 @@ const UAGBMarketingButtonEdit = ( props ) => {
 			props.attributes
 			);
 		}
+		
 	}, [] );
 
 	useEffect( () => {
@@ -129,6 +131,7 @@ const UAGBMarketingButtonEdit = ( props ) => {
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 		addBlockEditorDynamicStyles( 'uagb-style-marketing-btn-' + props.clientId.substr( 0, 8 ), blockStyling );
+		
 	}, [ props ] );
 
 	useEffect( () => {
@@ -139,6 +142,13 @@ const UAGBMarketingButtonEdit = ( props ) => {
 
 		scrollBlockToView();
 	}, [deviceType] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	return (
 

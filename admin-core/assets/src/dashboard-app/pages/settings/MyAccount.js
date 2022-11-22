@@ -1,18 +1,13 @@
 import React, {useState} from 'react';
 import { __ } from '@wordpress/i18n';
-import PropTypes from 'prop-types';
 
-const propTypes = {};
-
-const defaultProps = {};
-
-export default function MyAccount(props) {
+export default function MyAccount() {
 	const [ regenerateAssetsState, setRegenerateAssetsState ] = useState( false );
 	const licenseStatus = uag_react.license_status;
 	const licenseTriggerName = licenseStatus ? 'bsf_deactivate_license' : 'bsf_activate_license';
 	const licenseTitle = licenseStatus ? __( 'Deactivate', 'ultimate-addons-for-gutenberg' ) : __( 'Activate', 'ultimate-addons-for-gutenberg' );
 	const licensePlaceholder = licenseStatus ? __( 'Your license is active.', 'ultimate-addons-for-gutenberg' ) : __( 'Paste your license key here', 'ultimate-addons-for-gutenberg' );
-	const licenseMessage = licenseStatus ? __( 'License successfully validated!', 'ultimate-addons-for-gutenberg' ) : __( `Please enter your valid license key below to activate Spectra Pro!`, "ultimate-addons-for-gutenberg" );
+	const licenseMessage = licenseStatus ? __( 'License successfully validated!', 'ultimate-addons-for-gutenberg' ) : __( `Please enter your valid license key below to activate Spectra Pro!`, 'ultimate-addons-for-gutenberg' );
 
 	return (
 		<React.Fragment>
@@ -20,21 +15,21 @@ export default function MyAccount(props) {
 				<div className="mr-16 w-full">
 					<form method="post" className="form-wrap bsf-license-register-astra-addon form-submited-astra-addon">
 						<h3 className="p-0 mb-2 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900">
-						{__("License Key", "ultimate-addons-for-gutenberg")}
+						{__( 'License Key', 'ultimate-addons-for-gutenberg' )}
 						</h3>
 						<div className="w-9/12">
 							{
 								! licenseStatus && <p className="mt-2 text-sm text-slate-500">
 									{ __( 'Activate ', 'ultimate-addons-for-gutenberg' ) }
-									<a href="https://wpspectra.com" className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target='_blank'>
-										Spectra PRO
-									</a>{" "}
-									{ __( 'to get professional support and automatic updates from your WordPress dashboard.', 'ultimate-addons-for-gutenberg' ) }
+									<a href="https://wpspectra.com" className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target='_blank' rel="noreferrer">
+										Spectra Pro
+									</a>{' '}
+								{ __( 'to get professional support and automatic updates from your WordPress dashboard.', 'ultimate-addons-for-gutenberg' ) }
+								&nbsp;
+								{__( 'If you don\'t have a license, you can', 'ultimate-addons-for-gutenberg' )} <a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target='_blank' href="https://wpspectra.com/pricing" rel="noreferrer">{__( 'get it here', 'ultimate-addons-for-gutenberg' )} »</a>
 								</p>
 							}
-							<p
-								className="block mt-2 mb-4 text-sm text-slate-500"
-							>
+							<p className="mt-4 text-sm text-slate-500" >
 								{ licenseMessage }
 							</p>
 							<div className="mt-4 flex w-full">
@@ -48,9 +43,9 @@ export default function MyAccount(props) {
 									}
 
 									<input
-										className={`w-full text-sm placeholder-slate-400 transition spectra-admin__input-field ${licenseStatus ? 'spectra-admin__input-field--read-only' : ''}`}
-										id={ licenseStatus ? 'spectra_license_key' : "bsf_license_manager[license_key]" }
-										name={ licenseStatus ? 'spectra_license_key' : "bsf_license_manager[license_key]" }
+										className={`w-full h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field ${ licenseStatus ? 'spectra-admin__input-field--read-only' : '' }`}
+										id={ licenseStatus ? 'spectra_license_key' : 'bsf_license_manager[license_key]' }
+										name={ licenseStatus ? 'spectra_license_key' : 'bsf_license_manager[license_key]' }
 										type="text"
 										placeholder={licensePlaceholder}
 										readOnly={ licenseStatus ? true : false }
@@ -75,12 +70,11 @@ export default function MyAccount(props) {
 
 									<input type="hidden" id="bsf_license_manager[product_id]" name="bsf_license_manager[product_id]" value={'spectra-pro'}/>
 								</div>
-
 								<button
 									type="submit"
-									name={licenseTriggerName}
-									onClick={() => setRegenerateAssetsState(true)}
-									className="flex items-center w-auto px-4 py-2 bg-spectra text-white hover:bg-spectra-hover focus:bg-spectra-hover border border-transparent text-sm font-medium rounded-md shadow-sm focus:outline-none transition-all "
+									name={ licenseTriggerName }
+									onClick={ () => setRegenerateAssetsState( true ) }
+									className="flex items-center w-auto px-4 py-2 bg-spectra text-white hover:bg-spectra-hover focus:bg-spectra-hover border border-transparent text-sm font-medium rounded-md shadow-sm focus:outline-none transition-all"
 								>
 									{ licenseTitle }
 									{ regenerateAssetsState && (
@@ -98,6 +92,3 @@ export default function MyAccount(props) {
 		</React.Fragment>
 	);
 }
-
-MyAccount.propTypes = propTypes;
-MyAccount.defaultProps = defaultProps;
