@@ -20,9 +20,11 @@ export default function MyAccount() {
 						<div className="w-9/12">
 							{ ! licenseStatus && (
 								<p
-									className="mt-2 text-sm text-slate-500"
 									style={ {
-										margin: '0.5rem 0 0', /* Replicating Tailwind mt-2 */
+										margin: '0.5rem 0 0', /* Replicating Tailwind: mt-2 */
+										fontSize: '0.875rem', /* Replicating Tailwind: text-sm */
+										lineHeight: '1.25rem', /* Replicating Tailwind: text-sm */
+										color: '#64748b', /* Replicating Tailwind: text-slate-500 */
 									} }
 								>
 									{ __( 'Activate ', 'ultimate-addons-for-gutenberg' ) }
@@ -36,9 +38,11 @@ export default function MyAccount() {
 								</p>
 							) }
 							<p
-								className="text-sm text-slate-500"
 								style={ {
-									margin: '0.5rem 0 0', /* Replicating Tailwind mt-2 */
+									margin: '0.5rem 0 0', /* Replicating Tailwind: mt-2 */
+									fontSize: '0.875rem', /* Replicating Tailwind: text-sm */
+									lineHeight: '1.25rem', /* Replicating Tailwind: text-sm */
+									color: '#64748b', /* Replicating Tailwind: text-slate-500 */
 								} }
 							>
 								{ licenseMessage }
