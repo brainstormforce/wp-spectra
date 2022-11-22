@@ -134,6 +134,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		public function loader() {
 
 			require_once UAGB_DIR . 'classes/utils.php';
+			require_once UAGB_DIR . 'classes/class-spectra-block-prioritization.php';
 			require_once UAGB_DIR . 'classes/class-uagb-install.php';
 			require_once UAGB_DIR . 'classes/class-uagb-filesystem.php';
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';

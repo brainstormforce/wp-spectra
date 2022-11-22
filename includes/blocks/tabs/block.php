@@ -18,7 +18,8 @@ $block_data = array(
 	'default'             => true,
 	'extension'           => false,
 	'js_assets'           => array( 'uagb-tabs-js' ),
-	'priority'            => 28,
+	'priority'            => Spectra_Block_Prioritization::get_block_priority( 'tabs' ),
+	'deprecated'          => false,
 	'static_dependencies' => array(
 		'uagb-tabs-js' => array(
 			'src'  => UAGB_Scripts_Utils::get_js_url( 'tabs' ),
@@ -29,5 +30,4 @@ $block_data = array(
 	'dynamic_assets'      => array(
 		'dir' => 'tabs',
 	),
-	'deprecated'          => false,
 );

@@ -625,6 +625,7 @@ class UAGB_Init_Blocks {
 				'auto_block_recovery'                => UAGB_Admin_Helper::get_admin_settings_option( 'uag_auto_block_recovery', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
 				'font_awesome_5_polyfill'            => array(),
 				'spectra_custom_fonts'               => apply_filters( 'spectra_system_fonts', array() ),
+				'spectra_pro_status'                 => is_plugin_active( 'spectra-pro/spectra-pro.php' ),
 			)
 		);
 		// To match the editor with frontend.
