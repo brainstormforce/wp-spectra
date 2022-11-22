@@ -454,9 +454,66 @@ const Settings = ( props ) => {
 						/>
 					)
 				}
+			</UAGAdvancedPanelBody>
+		);
+	};
+	const subHeadingPanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Sub Heading', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<ToggleControl
+					label={ __(
+						'Enable Sub Heading',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ headingDescToggle }
+					onChange={ () =>
+						setAttributes( { headingDescToggle : ! headingDescToggle } )
+					}
+				/>
+				{ headingDescToggle && 
+					<UAGSelectControl
+						label={ __(
+							'Position',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
+							value: headingDescPosition,
+							label: 'headingDescPosition',
+						} }
+						setAttributes={ setAttributes }
+						options={ [
+							{
+								value: 'above-heading',
+								label: __(
+									'Above Heading',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'below-heading',
+								label: __(
+									'Below Heading',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+						] }
+					/> 
+				}
+			</UAGAdvancedPanelBody>
+		);
+	};
+	const separatorPanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Separator', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
 				<UAGSelectControl
 					label={ __(
-						'Separator Style',
+						'Style',
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
@@ -505,7 +562,7 @@ const Settings = ( props ) => {
 				{ 'none' !== seperatorStyle && 
 					<UAGSelectControl
 						label={ __(
-							'Separator Position',
+							'Position',
 							'ultimate-addons-for-gutenberg'
 						) }
 						data={ {
@@ -514,54 +571,6 @@ const Settings = ( props ) => {
 						} }
 						setAttributes={ setAttributes }
 						options={ separatorPositionOptions }
-					/> 
-				}
-			</UAGAdvancedPanelBody>
-		);
-	};
-	const subHeadingPanel = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Sub Heading', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
-				<ToggleControl
-					label={ __(
-						'Eanble Sub Heading',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ headingDescToggle }
-					onChange={ () =>
-						setAttributes( { headingDescToggle : ! headingDescToggle } )
-					}
-				/>
-				{ headingDescToggle && 
-					<UAGSelectControl
-						label={ __(
-							'Position',
-							'ultimate-addons-for-gutenberg'
-						) }
-						data={ {
-							value: headingDescPosition,
-							label: 'headingDescPosition',
-						} }
-						setAttributes={ setAttributes }
-						options={ [
-							{
-								value: 'above-heading',
-								label: __(
-									'Above Heading',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'below-heading',
-								label: __(
-									'Below Heading',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-						] }
 					/> 
 				}
 			</UAGAdvancedPanelBody>
@@ -1455,6 +1464,7 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.general }>
 						{ generalPanel() }
 						{ subHeadingPanel() }
+						{ separatorPanel() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ headingTitleToggle && headingStylePanel() }
