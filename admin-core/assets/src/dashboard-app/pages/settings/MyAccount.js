@@ -17,25 +17,38 @@ export default function MyAccount() {
 						<h3 className="p-0 mb-2 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900">
 						{__( 'License Key', 'ultimate-addons-for-gutenberg' )}
 						</h3>
-						{
-							! licenseStatus && <p className="mt-2 text-sm text-slate-500">
-								{ __( 'Activate ', 'ultimate-addons-for-gutenberg' ) }
-								<a href="https://wpspectra.com" className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target='_blank' rel="noreferrer">
-									Spectra Pro
-								</a>{' '}
-								{ __( 'to get professional support and automatic updates from your WordPress dashboard.', 'ultimate-addons-for-gutenberg' ) }
-								{' '}{__( 'If you don\'t have a license, you can', 'ultimate-addons-for-gutenberg' )} <a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target='_blank' href="https://wpspectra.com/pricing" rel="noreferrer">{__( 'get it here', 'ultimate-addons-for-gutenberg' )} »</a>
-							</p>
-						}
-
-						<div className="mt-2">
+						<div className="w-9/12">
+							{ ! licenseStatus && (
+								<p
+									style={ {
+										margin: '0.5rem 0 0', /* Replicating Tailwind: mt-2 */
+										fontSize: '0.875rem', /* Replicating Tailwind: text-sm */
+										lineHeight: '1.25rem', /* Replicating Tailwind: text-sm */
+										color: '#64748b', /* Replicating Tailwind: text-slate-500 */
+									} }
+								>
+									{ __( 'Activate ', 'ultimate-addons-for-gutenberg' ) }
+									<a href="https://wpspectra.com" className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target='_blank' rel="noreferrer">
+										Spectra Pro
+									</a>
+									&nbsp;
+									{ __( 'to get professional support and automatic updates from your WordPress dashboard.', 'ultimate-addons-for-gutenberg' ) }
+									&nbsp;
+									{__( 'If you don\'t have a license, you can', 'ultimate-addons-for-gutenberg' )} <a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target='_blank' href="https://wpspectra.com/pricing" rel="noreferrer">{__( 'get it here', 'ultimate-addons-for-gutenberg' )} »</a>
+								</p>
+							) }
 							<p
-								className="block mt-2 mb-4 text-sm text-slate-500"
+								style={ {
+									margin: '0.5rem 0 0', /* Replicating Tailwind: mt-2 */
+									fontSize: '0.875rem', /* Replicating Tailwind: text-sm */
+									lineHeight: '1.25rem', /* Replicating Tailwind: text-sm */
+									color: '#64748b', /* Replicating Tailwind: text-slate-500 */
+								} }
 							>
 								{ licenseMessage }
 							</p>
-							<div className="flex">
-								<div className="relative">
+							<div className="mt-4 flex w-full">
+								<div className="mr-5 h-10 relative flex-1">
 									<input type="hidden" id="bsf_graupi_nonce" name="bsf_graupi_nonce" value={uag_react.bsf_graupi_nonce}/>
 									<input type="hidden" name="_wp_http_referer" value={window.location.href.replace( window.location.origin, '' )}/>
 
@@ -45,7 +58,7 @@ export default function MyAccount() {
 									}
 
 									<input
-										className={`h-10 block w-[28rem] shadow-sm sm:text-sm placeholder-slate-400 transition spectra-admin__input-field ${licenseStatus ? 'spectra-admin__input-field--read-only' : ''}`}
+										className={`w-full h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field ${ licenseStatus ? 'spectra-admin__input-field--read-only' : '' }`}
 										id={ licenseStatus ? 'spectra_license_key' : 'bsf_license_manager[license_key]' }
 										name={ licenseStatus ? 'spectra_license_key' : 'bsf_license_manager[license_key]' }
 										type="text"
@@ -72,12 +85,11 @@ export default function MyAccount() {
 
 									<input type="hidden" id="bsf_license_manager[product_id]" name="bsf_license_manager[product_id]" value={'spectra-pro'}/>
 								</div>
-
 								<button
 									type="submit"
-									name={licenseTriggerName}
-									onClick={() => setRegenerateAssetsState( true )}
-									className="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-spectra transition focus:bg-spectra-hover hover:bg-spectra-hover focus:outline-none"
+									name={ licenseTriggerName }
+									onClick={ () => setRegenerateAssetsState( true ) }
+									className="flex items-center w-auto px-4 py-2 bg-spectra text-white hover:bg-spectra-hover focus:bg-spectra-hover border border-transparent text-sm font-medium rounded-md shadow-sm focus:outline-none transition-all"
 								>
 									{ licenseTitle }
 									{ regenerateAssetsState && (
