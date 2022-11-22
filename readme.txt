@@ -171,7 +171,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 2.0.16 - TUESDAY, 22th NOVEMBER 2022 =
-
 * Improvement: Admin Dashboard - Updated Spectra Core Blocks to prevent them from being disabled.
 * Fix: Buttons - Eliminated validation errors when we add a "nofollow" to the link.
 * Fix: Info Box - Resolved an issue where the title gets disabled in the editor when setting the title tag as a paragraph tag.
