@@ -647,7 +647,7 @@ if ( 'button' === $attr['ctaType'] ) {
 	$selectors[' .uagb-infobox-cta-link:hover']                              = array(
 		'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['ctaBorderhoverColor'],
 	);
-	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg'] = array(
+	$selectors[' .wp-block-button.uagb-ifb-button-wrapper:hover .uagb-infobox-cta-link > svg'] = array(
 		'fill' => $attr['ctaLinkHoverColor'],
 	);
 	$selectors[' .uagb-infobox-cta-link']                                    = $cta_border_css;
