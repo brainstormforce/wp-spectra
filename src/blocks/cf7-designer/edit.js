@@ -10,11 +10,43 @@ import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import Settings from './settings';
 import Render from './render';
 
-import { withSelect } from '@wordpress/data';
+import { useSelect } from '@wordpress/data';
 
 const UAGBCF7 = ( props ) => {
 
 	const deviceType = useDeviceType();
+	useSelect(
+		( select ) => { // eslint-disable-line  no-unused-vars
+			const { setAttributes } = props;
+			const { formId, isHtml } = props.attributes;
+			let jsonData = '';
+
+			if ( formId && -1 !== formId && 0 !== formId && ! isHtml ) {
+				const formData = new window.FormData();
+
+				formData.append( 'action', 'uagb_cf7_shortcode' );
+				formData.append(
+					'nonce',
+					uagb_blocks_info.uagb_ajax_nonce
+				);
+				formData.append( 'formId', formId );
+
+				apiFetch( {
+					url: uagb_blocks_info.ajax_url,
+					method: 'POST',
+					body: formData,
+				} ).then( ( data ) => {
+					setAttributes( { isHtml: true } );
+					setAttributes( { formJson: data } );
+					jsonData = data;
+				} );
+			}
+
+			return {
+				formHTML: jsonData,
+			};
+		},
+	);
 
 	useEffect( () => {
 		// Assigning block_id in the attribute.
@@ -273,34 +305,4 @@ const UAGBCF7 = ( props ) => {
 
 	);
 };
-
-export default withSelect( ( select, props ) => {
-	const { setAttributes } = props;
-	const { formId, isHtml } = props.attributes;
-	let jsonData = '';
-
-	if ( formId && -1 !== formId && 0 !== formId && ! isHtml ) {
-		const formData = new window.FormData();
-
-		formData.append( 'action', 'uagb_cf7_shortcode' );
-		formData.append(
-			'nonce',
-			uagb_blocks_info.uagb_ajax_nonce
-		);
-		formData.append( 'formId', formId );
-
-		apiFetch( {
-			url: uagb_blocks_info.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( ( data ) => {
-			setAttributes( { isHtml: true } );
-			setAttributes( { formJson: data } );
-			jsonData = data;
-		} );
-	}
-
-	return {
-		formHTML: jsonData,
-	};
-} )( UAGBCF7 );
+export default UAGBCF7;

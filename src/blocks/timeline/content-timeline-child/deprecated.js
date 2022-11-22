@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import attributes from './attributes';
 import renderSVG from '@Controls/deprecatedRenderIcon';
 import renderSVG13 from '@Controls/renderIcon';
-import { dateI18n, __experimentalGetSettings } from '@wordpress/date';
+import { dateI18n, getSettings } from '@wordpress/date';
 
 import { RichText } from '@wordpress/block-editor';
 import { format } from '@wordpress/date';
@@ -125,7 +125,7 @@ const deprecated = [
 				time_heading,
 				time_desc,
 			} = props.attributes;
-		
+
 			const displayInnerDate = true;
 			let postDate = t_date;
 			if ( 'custom' !== dateFormat ) {
@@ -134,10 +134,10 @@ const deprecated = [
 					postDate = t_date;
 				}
 			}
-		
+
 			let contentClass = '';
 			let dayalignClass = '';
-		
+
 			if (
 				props.attributes.dayalign_class !== 'undefined' &&
 				props.attributes.content_class !== 'undefined'
@@ -147,7 +147,7 @@ const deprecated = [
 			}
 			return (
 				<article
-					className={ classnames( 
+					className={ classnames(
 						'uagb-timeline__field',
 						`uagb-timeline-child-${ block_id }`,
 						contentClass
@@ -156,7 +156,7 @@ const deprecated = [
 						<div className={ classnames( 'uagb-timeline__marker out-view-uagb-timeline__icon' ) } >
 								{ renderSVG13( icon ) }
 						</div>
-		
+
 						<div className={ classnames( dayalignClass, 'uagb-timeline__events-inner-new' ) }>
 							<div className='uagb-timeline__events-inner--content'>
 								{ displayPostDate !== true && t_date && (
@@ -175,19 +175,19 @@ const deprecated = [
 										value={ time_heading }
 										className="uagb-timeline__heading"
 									/>
-		
+
 								<RichText.Content
 									tagName="p"
 									value={ time_desc }
 									className="uagb-timeline-desc-content"
 								/>
-		
+
 								<div className="uagb-timeline__arrow"></div>
 							</div>
 						</div>
 						{ displayInnerDate && (
 							<div className="uagb-timeline__date-new">
-								{ displayPostDate !== true && t_date && (	
+								{ displayPostDate !== true && t_date && (
 									<>
 									{ ( 'custom' !== dateFormat &&
 										format( dateFormat, postDate ) ) ||

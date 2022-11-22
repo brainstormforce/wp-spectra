@@ -26,18 +26,18 @@ import { InspectorControls } from '@wordpress/block-editor';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import boxShadowPresets from './presets';
 import UAGPresets from '@Components/presets';
+
 import UAGTextControl from '@Components/text-control';
 
 import apiFetch from '@wordpress/api-fetch';
 const Settings = ( props ) => {
+	const { taxonomyList, termsList } = props;
 	props = props.parentProps;
 
 	// Caching all Props.
 	const {
 		attributes,
 		setAttributes,
-		taxonomyList,
-		termsList,
 		deviceType,
 	} = props;
 
