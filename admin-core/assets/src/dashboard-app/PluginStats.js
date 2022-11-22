@@ -82,7 +82,7 @@ const PluginStats = () => {
 			<div className='mr-2 text-sm text-slate-400'>
 				{ uag_react.plugin_ver }
 			</div>
-			{ ( uag_react.spectra_pro_installed ) && (
+			{ ( uag_react.spectra_pro_installed && uag_react.spectra_pro_ver ) && (
 				<>
 					<div className='mr-2 px-1.5 py-[3px] text-[10px] leading-[10px] text-slate-500 border border-slate-400 rounded'>
 						{ __( 'Core', 'ultimate-addons-for-gutenberg' ) }
