@@ -3,8 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-const classNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
-
 const FilterTabs = () => {
 
 	const query = new URLSearchParams( useLocation()?.search );
@@ -12,12 +10,13 @@ const FilterTabs = () => {
     const dispatch = useDispatch();
 
     const blocksStatuses = useSelector( ( state ) => state.blocksStatuses );
+    const coreBlocks = useSelector( ( state ) => state.coreBlocks );
     const activeBlocksFilterTab = useSelector( ( state ) => state.activeBlocksFilterTab );
     const [ categoriesBlocks, setcategoriesBlocks ] = useState( [] );
 
     const tabs = [
         { name: 'All', slug: 'all' },
-		{ name: 'Core', slug: 'core' },
+		{ name: 'Core Blocks', slug: 'core' },
         { name: 'Creative', slug: 'creative' },
         { name: 'Content', slug: 'content' },
         { name: 'Post', slug: 'post' },
@@ -111,7 +110,7 @@ const FilterTabs = () => {
 		const value = { ...blocksStatuses };
 
 		for ( const block in blocksStatuses ) {
-            if ( 'all' !== activeBlocksFilterTab && ( ! categoriesBlocks[activeBlocksFilterTab] || ! categoriesBlocks[activeBlocksFilterTab].includes( block ) ) ) {
+            if ( coreBlocks.includes( block ) || ( 'all' !== activeBlocksFilterTab && ( ! categoriesBlocks[activeBlocksFilterTab] || ! categoriesBlocks[activeBlocksFilterTab].includes( block ) ) ) ) {
                 continue;
             }
 			value[ block ] = 'disabled';

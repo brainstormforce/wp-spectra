@@ -3,12 +3,13 @@
  */
 
 import styling from './styling';
-import React, {    useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { select, dispatch } from '@wordpress/data';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 import Settings from './settings';
 import Render from './render';
@@ -22,7 +23,7 @@ const UAGBIconList = ( props ) => {
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 		props.setAttributes( { classMigrate: true } );
 		props.setAttributes( { childMigrate: true } );
-
+		
 	}, [] );
 
 	useEffect( () => {
@@ -30,7 +31,7 @@ const UAGBIconList = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-icon-list-' + props.clientId.substr( 0, 8 ), blockStyling );
-
+		
 	}, [ props ] );
 
 	useEffect( () => {
@@ -43,6 +44,13 @@ const UAGBIconList = ( props ) => {
 
 	}, [ deviceType ] );
 
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
+
 	useEffect( () => {
 
 		select( 'core/block-editor' )
@@ -53,12 +61,13 @@ const UAGBIconList = ( props ) => {
                     block.clientId, {
                         fromParentIcon: props.attributes.parentIcon,
 						hideLabel: props.attributes.hideLabel,
+						imageSizeChild: props.attributes.size,
                     }
                 );
 
             } );
 
-	}, [ props.attributes.parentIcon, props.attributes.hideLabel ] );
+	}, [ props.attributes.parentIcon, props.attributes.hideLabel, props.attributes.size ] );
 
 	return (
 

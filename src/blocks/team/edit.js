@@ -11,14 +11,22 @@ import scrollBlockToView from '@Controls/scrollBlockToView';
 
 import Settings from './settings';
 import Render from './render';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const UAGBTeam = ( props ) => {
 	const deviceType = useDeviceType();
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 	useEffect( () => {
 
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-team-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		
 	}, [ props ] );
 	useEffect( () => {
 

@@ -88,19 +88,33 @@ const attributes = {
 			styleType: 'column-gap-type'
 		},
 	},
+	boxBgType: {
+		type: 'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'faq-bg-type'
+		},
+	},
+	boxBgHoverType: {
+		type: 'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'faq-bg-hover-type'
+		},
+	},
 	boxBgColor: {
 		type: 'string',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'faq-bg-color'
 		},
-		default: ''
 	},
 	boxBgHoverColor: {
 		type: 'string',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'faq-bg-hover-color'
 		},
-		default: ''
 	},
 	boxPaddingTypeMobile: {
 		type: 'string',

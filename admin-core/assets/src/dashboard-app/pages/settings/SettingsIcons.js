@@ -47,8 +47,6 @@ const SettingsIcons = {
             <path d="M1.50098 19.1182C1.57128 15.0369 4.90171 11.75 8.99984 11.75C13.0981 11.75 16.4286 15.0371 16.4987 19.1185C14.2159 20.166 11.6762 20.75 9.00016 20.75C6.32384 20.75 3.78394 20.1659 1.50098 19.1182Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
     ),
-    
-
 };
 
 export default SettingsIcons;

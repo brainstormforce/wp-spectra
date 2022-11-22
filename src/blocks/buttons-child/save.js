@@ -73,7 +73,7 @@ export default function save( props ) {
 						color !== '' ? 'has-text-color' : '',
 					) }
 					href={ link }
-					rel= { noFollow ? 'nofollow noopener ' : 'follow noopener' }
+					rel= { noFollow ? 'nofollow noopener' : 'follow noopener' }
 					target={ openNewWindow }
 				>
 					{ iconHtml( 'before' ) }

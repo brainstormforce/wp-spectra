@@ -23,9 +23,7 @@ const Extensions = ( { currentTab } ) => {
 			</>
 		);
 	}
-	else {
-		return null;
-	}
+	return null;
 };
 
 export default Extensions;

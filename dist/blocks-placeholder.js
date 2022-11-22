@@ -14,7 +14,7 @@ registerBlockType( 'uagb/container', { title: __( 'Container', 'ultimate-addons-
 registerBlockType( 'uagb/faq', { title: __( 'FAQ', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/forms', { title: __( 'Form', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/google-map', { title: __( 'Google Maps', 'ultimate-addons-for-gutenberg' ) } );
-registerBlockType( 'uagb/how-to', { title: __( 'How-to', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/how-to', { title: __( 'How To', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/icon-list', { title: __( 'Icon List', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/image', { title: __( 'Image', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/info-box', { title: __( 'Info Box', 'ultimate-addons-for-gutenberg' ) } );
@@ -27,7 +27,7 @@ registerBlockType( 'uagb/restaurant-menu', { title: __( 'Price List', 'ultimate-
 registerBlockType( 'uagb/review', { title: __( 'Review', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/social-share', { title: __( 'Social Share', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/star-rating', { title: __( 'Star Ratings', 'ultimate-addons-for-gutenberg' ) } );
-registerBlockType( 'uagb/table-of-contents', { title: __( 'Table of Contents', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/table-of-contents', { title: __( 'Table Of Contents', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/tabs', { title: __( 'Tabs', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/taxonomy-list', { title: __( 'Taxonomy List', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/team', { title: __( 'Team', 'ultimate-addons-for-gutenberg' ) } );

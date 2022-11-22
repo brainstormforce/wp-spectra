@@ -10,6 +10,7 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const ReviewComponent = ( props ) => {
 
@@ -222,6 +223,7 @@ const ReviewComponent = ( props ) => {
 		if ( postSaveButton ) {
 			postSaveButton.addEventListener( 'click', updatePageSchema );
 		}
+		
 	}, [] );
 
 	useEffect( () => {
@@ -243,7 +245,7 @@ const ReviewComponent = ( props ) => {
 			postSaveButton.addEventListener( 'click', updatePageSchema );
 			return () => { postSaveButton?.removeEventListener( 'click', updatePageSchema ); }
 		}
-
+		
 
 	}, [ props ] );
 
@@ -255,6 +257,13 @@ const ReviewComponent = ( props ) => {
 
 		scrollBlockToView();
 	}, [deviceType] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	// Setup the attributes
 	const { attributes, setAttributes } = props;

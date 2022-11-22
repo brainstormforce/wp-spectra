@@ -20,8 +20,10 @@ const BlockCard = ( props ) => {
     const dispatch = useDispatch();
 
     const blocksStatuses = useSelector( ( state ) => state.blocksStatuses );
+    const coreBlocks = useSelector( ( state ) => state.coreBlocks );
+    const isCoreBlock = coreBlocks.includes( slug );
 
-    const blockActivationStatus = 'disabled' === blocksStatuses[slug] ? false : true;
+    const blockActivationStatus = ( 'disabled' === blocksStatuses[slug] && ! isCoreBlock ) ? false : true;
 
     const updateBlockStatus = () => {
 
@@ -56,7 +58,7 @@ const BlockCard = ( props ) => {
 			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
         } );
     };
-
+    
     return (
         <div
         key={slug}
@@ -91,22 +93,29 @@ const BlockCard = ( props ) => {
                     { __( 'Pro', 'ultimate-addons-for-gutenberg' ) }
                 </div>
             ) : (
-                <Switch
-                    checked={ blockActivationStatus }
-                    onChange={ updateBlockStatus }
-                    className={ classNames(
-                        blockActivationStatus ? 'bg-spectra' : 'bg-slate-200',
-                        'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
-                    ) }
+                <div 
+                    className={isCoreBlock ? 'core-block-card-wrap' : ''}
+                    title= { isCoreBlock ? __( 'This is a Core Spectra block & cannot be disabled.', 'ultimate-addons-for-gutenberg' ) : '' }
                 >
-                    <span
-                        aria-hidden="true"
+                    <Switch
+                        checked={blockActivationStatus}
+                        onChange={updateBlockStatus}
                         className={classNames(
-                        blockActivationStatus ? 'translate-x-5' : 'translate-x-0',
-                        'pointer-events-none inline-block h-3.5 w-3.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
+                            isCoreBlock ? 'core-block-card' : '',
+                            blockActivationStatus ? 'bg-spectra' : 'bg-slate-200',
+                            'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                         )}
-                    />
-                </Switch>
+                        >
+                        <span
+                            aria-hidden="true"
+                            className={classNames(
+                            blockActivationStatus ? 'translate-x-5' : 'translate-x-0',
+                            'pointer-events-none inline-block h-3.5 w-3.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
+                            )}
+                        >
+                        </span>
+                    </Switch>
+                </div>
             ) }
         </div>
     );
