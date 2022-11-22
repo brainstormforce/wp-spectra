@@ -61,7 +61,13 @@ const PluginStats = () => {
 					</Link>
 				)
 			) : (
-				<div className='mr-8 ml-2 text-sm text-slate-500 cursor-pointer' role='button' onClick={ activatePro }>
+				<div
+					className='mr-8 ml-2 text-sm text-slate-500 cursor-pointer'
+					role='button'
+					tabIndex={ 0 }
+					onClick={ activatePro }
+					onKeyDown={ activatePro }
+				>
 					{ __( 'Activate Spectra Pro', 'ultimate-addons-for-gutenberg' ) }
 				</div>
 			)

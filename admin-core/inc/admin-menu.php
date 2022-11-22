@@ -68,7 +68,6 @@ class Admin_Menu {
 	 */
 	public function initialize_hooks() {
 
-		
 		/* Setup the Admin Menu */
 		add_action( 'admin_menu', array( $this, 'setup_menu' ) );
 		add_action( 'admin_init', array( $this, 'settings_admin_scripts' ) );
@@ -204,7 +203,7 @@ class Admin_Menu {
 
 		wp_enqueue_style( 'wp-components' );
 
-		$theme = wp_get_theme();
+		$theme    = wp_get_theme();
 		$localize = apply_filters(
 			'uag_react_admin_localize',
 			array(
