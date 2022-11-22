@@ -614,34 +614,35 @@ export default function Settings( props ) {
 					setAttributes( { closeIcon: value } )
 				}
 			/>
-			<UAGSelectControl
-				label={ __(
-					'Icon Position',
-					'ultimate-addons-for-gutenberg'
-				) }
-				data={ {
-					value: closeIconPosition,
-					label: 'closeIconPosition',
-				} }
-				setAttributes={ setAttributes }
-				options={ [
-					{
-						value: 'popup-top-left',
-						label: __(
-							'Top Left',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: 'popup-top-right',
-						label: __(
-							'Top Right',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-				] }
-			/>
-
+			{ closeIcon !== '' && (
+				<UAGSelectControl
+					label={ __(
+						'Icon Position',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: closeIconPosition,
+						label: 'closeIconPosition',
+					} }
+					setAttributes={ setAttributes }
+					options={ [
+						{
+							value: 'popup-top-left',
+							label: __(
+								'Top Left',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'popup-top-right',
+							label: __(
+								'Top Right',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+				/>
+			)}
 			<ToggleControl
 				label={ __(
 					'Close on ESC Keypress',

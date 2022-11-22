@@ -4,7 +4,7 @@ import styling from './styling';
 import Settings from './settings';
 import Render from './render';
 import { useDeviceType } from '@Controls/getPreviewType';
-
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 //  Import CSS.
 import './style.scss';
 
@@ -36,6 +36,13 @@ const UAGBModalEdit = ( props ) => {
 		document.dispatchEvent( loadModalBlockEditor );
 
 	}, [ props, deviceType ] );
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	useEffect( () => {
+
+		responsiveConditionPreview( props );
+
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	return (
 		<>

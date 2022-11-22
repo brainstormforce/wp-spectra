@@ -6,7 +6,35 @@ import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import { useDeviceType } from '@Controls/getPreviewType';
 import styles from './editor.lazy.scss';
 
-const ALLOWED_BLOCKS = wp.blocks.getBlockTypes().map( block => block.name ).filter( blockName => blockName !== 'uagb/modal' );
+const excludeBlocks = [
+'uagb/how-to-step',
+'uagb/buttons-child',
+'uagb/faq-child',
+'uagb/content-timeline-child',
+'uagb/icon-list-child',
+'uagb/social-share-child',
+'uagb/restaurant-menu-child',
+'uagb/tabs-child',
+'uagb/post-image',
+'uagb/post-taxonomy',
+'uagb/post-title',
+'uagb/post-meta',
+'uagb/post-excerpt',
+'uagb/post-button',
+'uagb/forms-name',
+'uagb/forms-email',
+'uagb/forms-hidden',
+'uagb/forms-phone',
+'uagb/forms-textarea',
+'uagb/forms-url',
+'uagb/forms-select',
+'uagb/forms-radio',
+'uagb/forms-checkbox',
+'uagb/forms-toggle',
+'uagb/forms-date',
+'uagb/forms-accept',
+];
+const ALLOWED_BLOCKS = wp.blocks.getBlockTypes().map( block => block.name ).filter( blockName => ! excludeBlocks.includes( blockName ) );
 
 const propTypes = {};
 
@@ -164,7 +192,7 @@ const Render = ( props ) => {
 				>
 					<div className="uagb-modal-popup-wrap">
 						<div className="uagb-modal-popup-content">
-							<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
+							<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } renderAppender={ InnerBlocks.ButtonBlockAppender } />
 						</div>
 						{ ( 'popup-top-left' === closeIconPosition || 'popup-top-right' === closeIconPosition ) && (
 							<div className="uagb-modal-popup-close">
