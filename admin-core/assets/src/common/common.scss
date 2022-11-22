@@ -212,6 +212,15 @@
 			//stylelint-disable-next-line declaration-property-unit-allowed-list
 			line-height: 1.25rem;
 
+			&--read-only {
+				border: 1px solid #cbd5e1 !important;
+				background-color: #f0f0f1 !important;
+
+				&:focus {
+					outline: none;
+				}
+			}
+
 			&:focus {
 				outline: none;
 				border-color: $slate-400;
