@@ -18,7 +18,9 @@ export default function Save( props ) {
 		closeIconPosition,
 		escPress,
 		overlayClick,
-		closeIcon
+		closeIcon,
+		imgTagWidth,
+		imgTagHeight
 	} = props.attributes;
 
 	const textHTML = (
@@ -58,6 +60,9 @@ export default function Save( props ) {
 				src={ url }
 				alt={ defaultedAlt }
 				className='uagb-modal-trigger'
+				width={imgTagWidth}
+				height={imgTagHeight}
+				loading="lazy"
 			/>
 		);
 	}

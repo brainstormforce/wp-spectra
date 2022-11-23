@@ -1,11 +1,11 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect } from 'react';
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import { useDeviceType } from '@Controls/getPreviewType';
 import styles from './editor.lazy.scss';
-
+import getImageHeightWidth from '@Controls/getImageHeightWidth';
 const excludeBlocks = [
 'uagb/how-to-step',
 'uagb/buttons-child',
@@ -69,7 +69,9 @@ const Render = ( props ) => {
 		closeIconPosition,
 		escPress,
 		overlayClick,
-		closeIcon
+		closeIcon,
+		imgTagWidth,
+		imgTagHeight
 	} = attributes;
 
 	const deviceType = useDeviceType();
@@ -97,10 +99,13 @@ const Render = ( props ) => {
 
 	const defaultedAlt = ( iconImage && iconImage?.alt ) ? iconImage?.alt : '';
 	let imageIconHtml = '';
-
+	let url = '';
+	useEffect( () => {
+		getImageHeightWidth( url, setAttributes )
+	},[ imageSize ] )
 	if ( iconImage && iconImage.url ) {
 
-		let url = iconImage.url;
+		url = iconImage.url;
 		const size = iconImage.sizes;
 		const imageSizes = imageSize;
 
@@ -116,6 +121,9 @@ const Render = ( props ) => {
 				src={ url }
 				alt={ defaultedAlt }
 				className='uagb-modal-trigger'
+				width={imgTagWidth}
+				height={imgTagHeight}
+				loading="lazy"
 			/>
 		);
 	}

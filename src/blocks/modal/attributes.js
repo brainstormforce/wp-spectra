@@ -23,6 +23,9 @@ const attributes = {
 	},
 	iconImage: {
 		type: 'object',
+		default: {
+			url:`${ uagb_blocks_info.uagb_url }/admin/assets/images/placeholder.png`
+		},
 	},
 	imageSize: {
 		type: 'string',
@@ -702,6 +705,15 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'modal-bg-color'
 		}
+	},
+	imgTagHeight: {
+		type: 'number',
+		default: 0,
+	},
+	imgTagWidth: {
+		type: 'number',
+		default: 0,
+
 	},
 	...btnBorderAttributes,
 };
