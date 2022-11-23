@@ -17,12 +17,17 @@ $block_data = array(
 	'description'      => __( 'Create a timeline displaying contents of your site.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'js_assets'        => array( 'uagb-timeline-js' ),
 	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'content-timeline' ),
 	'deprecated'       => false,
+	'static_dependencies' => array(
+		'uagb-timeline-js' => array(
+			'src'  => UAGB_Scripts_Utils::get_js_url( 'timeline' ),
+			'dep'  => array(),
+			'type' => 'js',
+		),
+	),
 	'static_css'       => 'timeline',
 	'dynamic_assets'   => array(
 		'dir' => 'content-timeline',
 	),
-	'js_assets'        => array( 'uagb-timeline-js' ),
 );

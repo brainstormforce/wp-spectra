@@ -17,7 +17,7 @@ $block_data = array(
 	'description'         => __( 'Highlight important information using inline notice block.', 'ultimate-addons-for-gutenberg' ),
 	'default'             => true,
 	'extension'           => false,
-	'js_assets'           => array( 'uagb-inline-notice-js', 'uagb-cookie-lib' ),
+	// 'js_assets'           => array( 'uagb-inline-notice-js', 'uagb-cookie-lib' ),
 	'priority'            => Spectra_Block_Prioritization::get_block_priority( 'inline-notice' ),
 	'deprecated'          => false,
 	'static_dependencies' => array(
@@ -34,5 +34,4 @@ $block_data = array(
 	'dynamic_assets'      => array(
 		'dir' => 'inline-notice',
 	),
-	'js_assets'           => array( 'uagb-inline-notice-js', 'uagb-cookie-lib' ),
 );

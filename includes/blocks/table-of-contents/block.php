@@ -30,5 +30,4 @@ $block_data = array(
 	'dynamic_assets'      => array(
 		'dir' => 'table-of-contents',
 	),
-	'js_assets'           => array( 'uagb-table-of-contents' ),
 );
