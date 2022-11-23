@@ -170,6 +170,10 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+### 2.1 ###
+* Fix: Spectra Text Control - Changed default label.
+* Fix: Forms Settings - Added email address labels.
+
 ### 2.0.16 - TUESDAY, 22th NOVEMBER 2022 ###
 * Improvement: Admin Dashboard - Updated Spectra Core Blocks to prevent them from being disabled.
 * Fix: Buttons - Eliminated validation errors when we add a "nofollow" to the link.
