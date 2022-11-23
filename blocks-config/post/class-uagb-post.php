@@ -172,7 +172,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							),
 							'equalHeightInlineButtons'    => array(
 								'type'    => 'boolean',
-								'default' => true,
+								'default' => false,
 							),
 							'imageRatio'                   => array(
 								'type'    => 'string',

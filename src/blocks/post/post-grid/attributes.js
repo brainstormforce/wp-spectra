@@ -1254,7 +1254,7 @@ const attributes = {
 	},
 	equalHeightInlineButtons        : {
 		type    : 'boolean',
-		default : true,
+		default : false,
 	},
 	imageRatio: {
 		type: 'string',
