@@ -435,6 +435,9 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		/**
 		 * Sets the current post for usage in template blocks.
 		 *
+		 * @since x.x.x
+		 * @access public
+		 *
 		 * @return WP_Post|null The post if any, or null otherwise.
 		 */
 		public function get_post_from_context() {
@@ -453,6 +456,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		/**
 		 * Renders blocks to allow dynamic blocks that bring in headings to be accounted for.
 		 *
+		 * @since x.x.x
 		 * @access private
 		 *
 		 * @param string $block The page content content.
@@ -468,6 +472,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * otherwise, returns only data from headings on the current page being
 		 * rendered.
 		 *
+		 * @since x.x.x
 		 * @access private
 		 *
 		 * @param WP_Post $post The post to extract headings from.
