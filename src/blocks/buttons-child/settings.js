@@ -906,7 +906,7 @@ const Settings = ( props ) => {
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ !removeText && textSettings() }
-						{ '' !== icon && IconSettings() }
+						{ ( showIcon && '' !== icon ) && IconSettings() }
 						{ backgroundSettings() }
 						{ borderSettings() }
 						{ boxShadowSettings() }
