@@ -22,13 +22,11 @@ export default function MyAccount() {
 								<p
 									style={ {
 										margin: '0.5rem 0 0', /* Replicating Tailwind: mt-2 */
-										fontSize: '0.875rem', /* Replicating Tailwind: text-sm */
-										lineHeight: '1.25rem', /* Replicating Tailwind: text-sm */
 										color: '#64748b', /* Replicating Tailwind: text-slate-500 */
 									} }
 								>
 									{ __( 'Activate ', 'ultimate-addons-for-gutenberg' ) }
-									<a href="https://wpspectra.com" className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target='_blank' rel="noreferrer">
+									<a href="https://wpspectra.com/pro" className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target='_blank' rel="noreferrer">
 										Spectra Pro
 									</a>
 									&nbsp;
@@ -40,8 +38,6 @@ export default function MyAccount() {
 							<p
 								style={ {
 									margin: '0.5rem 0 0', /* Replicating Tailwind: mt-2 */
-									fontSize: '0.875rem', /* Replicating Tailwind: text-sm */
-									lineHeight: '1.25rem', /* Replicating Tailwind: text-sm */
 									color: '#64748b', /* Replicating Tailwind: text-slate-500 */
 								} }
 							>
