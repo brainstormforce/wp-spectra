@@ -647,7 +647,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		/**
 		 * Adds Google fonts for Counter block.
 		 *
-		 * @since 2.0.0
+		 * @since 2.1.0
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_counter_gfont( $attr ) {
