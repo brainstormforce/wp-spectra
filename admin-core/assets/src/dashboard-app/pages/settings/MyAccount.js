@@ -28,7 +28,7 @@ export default function MyAccount() {
 									} }
 								>
 									{ __( 'Activate ', 'ultimate-addons-for-gutenberg' ) }
-									<a href="https://wpspectra.com" className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target='_blank' rel="noreferrer">
+									<a href="https://wpspectra.com/pro" className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target='_blank' rel="noreferrer">
 										Spectra Pro
 									</a>
 									&nbsp;
