@@ -22,8 +22,6 @@ export default function MyAccount() {
 								<p
 									style={ {
 										margin: '0.5rem 0 0', /* Replicating Tailwind: mt-2 */
-										fontSize: '0.875rem', /* Replicating Tailwind: text-sm */
-										lineHeight: '1.25rem', /* Replicating Tailwind: text-sm */
 										color: '#64748b', /* Replicating Tailwind: text-slate-500 */
 									} }
 								>
@@ -40,8 +38,6 @@ export default function MyAccount() {
 							<p
 								style={ {
 									margin: '0.5rem 0 0', /* Replicating Tailwind: mt-2 */
-									fontSize: '0.875rem', /* Replicating Tailwind: text-sm */
-									lineHeight: '1.25rem', /* Replicating Tailwind: text-sm */
 									color: '#64748b', /* Replicating Tailwind: text-slate-500 */
 								} }
 							>
