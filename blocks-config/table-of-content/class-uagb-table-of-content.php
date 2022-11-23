@@ -29,6 +29,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		/**
 		 * Post content.
 		 *
+		 * @since x.x.x
 		 * @var string
 		 */
 		public static $output_content = '';
