@@ -180,6 +180,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Global - Resolved an issue where the editor layout shifts towards the right when clicking on any block settings.
 * Fix: Global - Resolved an issue where Spectra component stylings get overridden in the customizer block editor.
 * Fix: Code - Resolved an issue in which the "uagb_spectra_font_awesome_polyfiller" AJAX gets called multiple times.
+* Fix: Post carousel - block is broken on the front-end side, when we select background image.
 
 ### 2.0.15 - WEDNESDAY, 16th NOVEMBER 2022 ###
 * Improvement: Info Box - Added Responsive feature to the Info Box icon width setting.
