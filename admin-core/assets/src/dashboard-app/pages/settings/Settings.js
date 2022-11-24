@@ -160,8 +160,6 @@ const Settings = () => {
 										<Login />
 									)
 								}
-								<CollapsePanels/>
-								<CopyPasteStyles/>
 								<BlockSettings/>
 							</>
                         }
