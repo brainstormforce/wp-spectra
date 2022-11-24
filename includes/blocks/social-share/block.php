@@ -17,6 +17,9 @@ $block_data = array(
 	'description'      => __( 'Share your content on different social media platforms.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 25,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'social-share' ),
 	'deprecated'       => false,
+	'dynamic_assets'   => array(
+		'dir' => 'social-share',
+	),
 );
