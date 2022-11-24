@@ -274,7 +274,9 @@ const Settings = ( props ) => {
 		setAttributes( { imgEqualHeight: value } );
 		if( value ) {
 			setAttributes( { imageRatio: '2-3' } );
-		} 
+		} else {
+			setAttributes( { imageRatio: 'inherit' } );
+		}
 	}; 
 
 	const onSelectPostType = ( value ) => {
