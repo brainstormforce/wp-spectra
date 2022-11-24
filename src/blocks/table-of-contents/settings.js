@@ -551,7 +551,7 @@ const Settings = ( props ) => {
 			>
 				<ToggleControl
 					label={ __(
-						'Allow Dynamic Heading',
+						'Allow Dynamic Headings',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ allowDynamicBlock }
