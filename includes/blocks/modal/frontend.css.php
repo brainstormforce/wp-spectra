@@ -36,7 +36,7 @@ $selectors   = array(
 	'.uagb-modal-popup.active'                   => array(
 		'background' => $attr['overlayColor'],
 	),
-	' .uagb-modal-popup-content'                  => array(
+	' .uagb-modal-popup-content'                 => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingModalLeft'], $attr['paddingModalUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingModalRight'], $attr['paddingModalUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingModalTop'], $attr['paddingModalUnit'] ),
@@ -80,10 +80,10 @@ $selectors   = array(
 	),
 );
 $t_selectors = array(
-	'.uagb-modal-wrapper'       => array(
+	'.uagb-modal-wrapper'        => array(
 		'text-align' => $attr['modalAlignTablet'],
 	),
-	' .uagb-modal-popup-wrap'   => array(
+	' .uagb-modal-popup-wrap'    => array(
 		'width'  => UAGB_Helper::get_css_value( $attr['modalWidthTablet'], $attr['modalWidthType'] ),
 		'height' => UAGB_Helper::get_css_value( $attr['modalHeightTablet'], $attr['modalHeightType'] ),
 	),
@@ -107,10 +107,10 @@ $t_selectors = array(
 	),
 );
 $m_selectors = array(
-	'.uagb-modal-wrapper'       => array(
+	'.uagb-modal-wrapper'        => array(
 		'text-align' => $attr['modalAlignMobile'],
 	),
-	' .uagb-modal-popup-wrap'   => array(
+	' .uagb-modal-popup-wrap'    => array(
 		'width'  => UAGB_Helper::get_css_value( $attr['modalWidthMobile'], $attr['modalWidthType'] ),
 		'height' => UAGB_Helper::get_css_value( $attr['modalHeightMobile'], $attr['modalHeightType'] ),
 	),
