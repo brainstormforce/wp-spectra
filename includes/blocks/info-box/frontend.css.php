@@ -644,15 +644,15 @@ if ( 'button' === $attr['ctaType'] ) {
 		'background-color' => ( 'color' === $attr['ctaBgHoverType'] ) ? $attr['ctaBgHoverColor'] : 'transparent',
 		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['ctaBorderhoverColor'],
 	);
-	$selectors[' .uagb-infobox-cta-link:hover']                              = array(
+	$selectors[' .uagb-infobox-cta-link:hover'] = array(
 		'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['ctaBorderhoverColor'],
 	);
 	$selectors[' .wp-block-button.uagb-ifb-button-wrapper:hover .uagb-infobox-cta-link > svg'] = array(
 		'fill' => $attr['ctaLinkHoverColor'],
 	);
-	$selectors[' .uagb-infobox-cta-link']                                    = $cta_border_css;
-	$t_selectors[' .uagb-infobox-cta-link']                                  = $cta_border_css_tablet;
-	$m_selectors[' .uagb-infobox-cta-link']                                  = $cta_border_css_mobile;
+	$selectors[' .uagb-infobox-cta-link']   = $cta_border_css;
+	$t_selectors[' .uagb-infobox-cta-link'] = $cta_border_css_tablet;
+	$m_selectors[' .uagb-infobox-cta-link'] = $cta_border_css_mobile;
 
 }
 if ( $attr['imageWidthType'] ) {
