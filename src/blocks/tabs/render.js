@@ -264,6 +264,7 @@ const Render = ( props ) => {
 									onChange={ ( value ) =>
 										updateTabsTitle( value, index )
 									}
+									allowedFormats={ [ 'core/bold', 'core/italic' ] }
 									onSplit={ () => null }
 									placeholder={ __(
 										'Title…',
