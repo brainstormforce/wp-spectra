@@ -22,7 +22,7 @@ $block_data = array(
 	'static_dependencies' => array(
 		'uagb-timeline-js' => array(
 			'src'  => UAGB_Scripts_Utils::get_js_url( 'timeline' ),
-			'dep'  => array( 'jquery' ),
+			'dep'  => array(),
 			'type' => 'js',
 		),
 	),
