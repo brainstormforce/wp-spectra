@@ -17,6 +17,9 @@ $block_data = array(
 	'description'      => __( 'Outer wrap section that allows you to add other blocks within it.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 91,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'section' ),
 	'deprecated'       => true,
+	'dynamic_assets'   => array(
+		'dir' => 'section',
+	),
 );

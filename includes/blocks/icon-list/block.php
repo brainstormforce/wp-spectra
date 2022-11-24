@@ -17,6 +17,9 @@ $block_data = array(
 	'description'      => __( 'Create a list highlighted with icons/images.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 16,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'icon-list' ),
 	'deprecated'       => false,
+	'dynamic_assets'   => array(
+		'dir' => 'icon-list',
+	),
 );

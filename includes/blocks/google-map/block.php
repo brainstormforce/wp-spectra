@@ -17,6 +17,9 @@ $block_data = array(
 	'description'      => __( 'Show a Google Map location on your website.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 14,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'google-map' ),
 	'deprecated'       => false,
+	'dynamic_assets'   => array(
+		'dir' => 'google-map',
+	),
 );

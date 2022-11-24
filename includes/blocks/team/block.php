@@ -17,6 +17,9 @@ $block_data = array(
 	'description'      => __( 'Showcase your team by displaying info and social media profiles.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 30,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'team' ),
 	'deprecated'       => false,
+	'dynamic_assets'   => array(
+		'dir' => 'team',
+	),
 );
