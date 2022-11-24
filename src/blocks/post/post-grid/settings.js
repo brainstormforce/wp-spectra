@@ -266,7 +266,8 @@ const Settings = ( props ) => {
 		boxShadowPositionHover,
 		enableOffset,
 		equalHeightInlineButtons,
-		imageRatio
+		imageRatio,
+		imgEqualHeight
 	} = attributes;
 
 	const onSelectPostType = ( value ) => {
@@ -906,6 +907,18 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				) }
+				<ToggleControl
+					label={ __(
+						'Equal Height',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ imgEqualHeight }
+					onChange={ () =>
+						setAttributes( {
+							imgEqualHeight: ! imgEqualHeight,
+						} )
+					}
+				/>
 				{ displayPostImage === true && (
 					<UAGSelectControl
 						label={ __(

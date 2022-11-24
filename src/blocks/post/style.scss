@@ -41,6 +41,12 @@
 				color: inherit;
 			}
 		}
+		.uagb-post__image .uagb-post__image-equal-height{
+			display: block;
+			height: 0;
+			padding-bottom: 66.67%;
+			overflow: hidden;
+		}
 	}
 
 	.uagb-post__load-more-wrap {
