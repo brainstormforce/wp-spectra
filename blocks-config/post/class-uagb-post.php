@@ -174,7 +174,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'imageRatio'                   => array(
+							'imageRatio'                  => array(
 								'type'    => 'string',
 								'default' => 'inherit',
 							),
@@ -1801,14 +1801,19 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			?>
 			<div class='uagb-post__image'>
-				<?php if ( get_the_post_thumbnail_url() ) {
-					if ( 'post-grid' === $attributes['blockName'] && 'background' !== $attributes['imgPosition'] ) { ?>
-					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer" class='uagb-image-ratio-<?php echo esc_html( $attributes['imageRatio'] ) ?>'><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
+				<?php
+				if ( get_the_post_thumbnail_url() ) {
+					if ( 'post-grid' === $attributes['blockName'] && 'background' !== $attributes['imgPosition'] ) {
+						?>
+					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer" class='uagb-image-ratio-<?php echo esc_html( $attributes['imageRatio'] ); ?>'><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
 					</a>
 				<?php } else { ?>
 					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
 					</a>
-				<?php }} ?>
+						<?php
+				}
+				}
+				?>
 			</div>
 			<?php
 			do_action( "uagb_single_post_after_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
