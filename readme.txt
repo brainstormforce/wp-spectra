@@ -170,11 +170,19 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 2.0.16 - THURSDAY, 22nd NOVEMBER 2022 =
-* Fix: The "uagb_spectra_font_awesome_polyfiller" AJAX gets called multiple times.
-* Fix: Post Blocks: The "spectra/v1/all_taxonomy" Rest API gets called multiple times inside editor.
-* Fix: Spectra component styling gets overridden in the customizer block editor.
+= 2.1.0 - TUESDAY, 22th NOVEMBER 2022 =
 * Fix: Buttons from diff blocks does not inherit the style from theme.
+
+= 2.0.16 - TUESDAY, 22th NOVEMBER 2022 =
+* Improvement: Admin Dashboard - Updated Spectra Core Blocks to prevent them from being disabled.
+* Fix: Buttons - Eliminated validation errors when we add a "nofollow" to the link.
+* Fix: Info Box - Resolved an issue where the title gets disabled in the editor when setting the title tag as a paragraph tag.
+* Fix: Post Blocks - Resolved an issue in which the "spectra/v1/all_taxonomy" Rest API gets called multiple times in the editor.
+* Fix: Tabs - Updated the second preset to behave as shown in the preset preview.
+* Fix: Team - Prevented social icon styling options from being shown when the social icons are disabled.
+* Fix: Global - Resolved an issue where the editor layout shifts towards the right when clicking on any block settings.
+* Fix: Global - Resolved an issue where Spectra component stylings get overridden in the customizer block editor.
+* Fix: Code - Resolved an issue in which the "uagb_spectra_font_awesome_polyfiller" AJAX gets called multiple times.
 
 = 2.0.15 - WEDNESDAY, 16th NOVEMBER 2022 =
 * Improvement: Info Box - Added Responsive feature to the Info Box icon width setting.

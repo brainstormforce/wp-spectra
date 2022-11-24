@@ -1,7 +1,3 @@
-/**
- * BLOCK: Buttons - Save Block
- */
-
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import { RichText } from '@wordpress/block-editor';
@@ -19,7 +15,7 @@ export default function save( props ) {
 		removeText,
 		noFollow,
 		backgroundType,
-		btnBorderStyle,
+		borderStyle,
 		background,
 		color,
 		showIcon,
@@ -61,7 +57,7 @@ export default function save( props ) {
 				'uagb-buttons__outer-wrap',
 				`uagb-block-${ block_id }`,
 				'wp-block-button',
-				btnBorderStyle !== 'none' && btnBorderStyle !== 'default' ? 'is-style-outline' : '',
+				borderStyle !== 'none' ? 'is-style-outline' : '',
 			) }
 		>
 			<div className="uagb-button__wrapper">
@@ -73,7 +69,7 @@ export default function save( props ) {
 						color !== '' ? 'has-text-color' : '',
 					) }
 					href={ link }
-					rel= { noFollow ? 'nofollow noopener' : 'follow noopener' }
+					rel= { noFollow ? 'nofollow noopener ' : 'follow noopener' }
 					target={ openNewWindow }
 				>
 					{ iconHtml( 'before' ) }
