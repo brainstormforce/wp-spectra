@@ -22,7 +22,7 @@ $block_data = array(
 	'static_dependencies' => array(
 		'uagb-tabs-js' => array(
 			'src'  => UAGB_Scripts_Utils::get_js_url( 'tabs' ),
-			'dep'  => array( 'jquery' ),
+			'dep'  => array(),
 			'type' => 'js',
 		),
 	),

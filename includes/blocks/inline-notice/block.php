@@ -22,7 +22,7 @@ $block_data = array(
 	'static_dependencies' => array(
 		'uagb-inline-notice-js' => array(
 			'src'        => UAGB_Scripts_Utils::get_js_url( 'inline-notice' ),
-			'dep'        => array( 'jquery', 'uagb-cookie-lib' ),
+			'dep'        => array( 'uagb-cookie-lib' ),
 			'skipEditor' => true,
 			'type'       => 'js',
 		),

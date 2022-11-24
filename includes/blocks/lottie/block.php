@@ -21,7 +21,7 @@ $block_data = array(
 	'static_dependencies' => array(
 		'uagb-lottie-js'    => array(
 			'src'        => UAGB_Scripts_Utils::get_js_url( 'lottie' ),
-			'dep'        => array( 'jquery', 'uagb-bodymovin-js' ),
+			'dep'        => array( 'uagb-bodymovin-js' ),
 			'skipEditor' => true,
 			'type'       => 'js',
 		),

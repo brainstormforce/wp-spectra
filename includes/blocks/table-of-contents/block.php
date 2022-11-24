@@ -22,7 +22,7 @@ $block_data = array(
 	'static_dependencies' => array(
 		'uagb-table-of-contents' => array(
 			'src'  => UAGB_Scripts_Utils::get_js_url( 'table-of-contents' ),
-			'dep'  => array( 'jquery' ),
+			'dep'  => array(),
 			'type' => 'js',
 		),
 	),

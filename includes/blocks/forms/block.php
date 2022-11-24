@@ -21,7 +21,7 @@ $block_data = array(
 	'static_dependencies' => array(
 		'uagb-forms-js' => array(
 			'src'  => UAGB_Scripts_Utils::get_js_url( 'forms' ),
-			'dep'  => array( 'jquery' ),
+			'dep'  => array(),
 			'type' => 'js',
 		),
 	),
