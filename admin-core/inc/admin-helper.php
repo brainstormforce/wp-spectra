@@ -102,7 +102,6 @@ class Admin_Helper {
 	 * Get blocks.
 	 */
 	public static function get_blocks() {
-
 		// Get all blocks.
 		$list_blocks    = \UAGB_Helper::$block_list;
 		$default_blocks = array();
