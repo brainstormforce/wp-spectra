@@ -8,7 +8,7 @@
  */
 
 // Add fonts.
-UAGB_Block_JS::blocks_advanced_heading_gfont( $attr );
+UAGB_Block_JS::blocks_counter_gfont( $attr );
 
 $block_name = 'counter';
 
