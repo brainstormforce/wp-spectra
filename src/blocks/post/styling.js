@@ -1218,6 +1218,21 @@ function styling( props ) {
 		'margin-top' : generateCSSUnit( dotsMarginTopMobileFallback , dotsMarginTopUnit ) + '!important'
 	}
 
+	if ( 'post-grid' === blockName ){
+		selectors[ '.uagb-equal_height_inline-read-more-buttons-in-editor .uagb-post__inner-wrap .uagb-post__text:last-child' ] = {
+			'left': generateCSSUnit( paddingLeft, 'px' ),
+			'right': generateCSSUnit( paddingRight, 'px' ),
+		}
+		tabletSelectors[ '.uagb-equal_height_inline-read-more-buttons-in-editor .uagb-post__inner-wrap .uagb-post__text:last-child' ] = {
+			'left': generateCSSUnit( paddingLeftTablet, 'px' ),
+			'right': generateCSSUnit( paddingRightTablet, 'px' ),
+		}
+		mobileSelectors[ '.uagb-equal_height_inline-read-more-buttons-in-editor .uagb-post__inner-wrap .uagb-post__text:last-child' ] = {
+			'left': generateCSSUnit( paddingLeftMobile, 'px' ),
+			'right': generateCSSUnit( paddingRightMobile, 'px' ),
+		}
+	}
+
 	let stylingCss = '';
 
 	stylingCss = generateCSS(
