@@ -27,13 +27,13 @@ $block_data = array(
 			'dep'  => array(),
 			'type' => 'js',
 		),
-		'uagb-imagesloaded' => array(
+		'uagb-imagesloaded'   => array(
 			'type' => 'js',
 		),
-		'uagb-slick-js'     => array(
+		'uagb-slick-js'       => array(
 			'type' => 'js',
 		),
-		'uagb-slick-css'    => array(
+		'uagb-slick-css'      => array(
 			'type' => 'css',
 		),
 	),
