@@ -683,6 +683,7 @@ class Common_Settings extends Ajax_Base {
 	/**
 	 * Save settings.
 	 *
+	 * @since 2.1.0
 	 * @return void
 	 */
 	public function social() {
@@ -737,6 +738,7 @@ class Common_Settings extends Ajax_Base {
 	/**
 	 * Save settings.
 	 *
+	 * @since 2.1.0
 	 * @return void
 	 */
 	public function dynamic_content_mode() {
@@ -869,6 +871,7 @@ class Common_Settings extends Ajax_Base {
 	/**
 	 * Save settings.
 	 *
+	 * @since 2.1.0
 	 * @return void
 	 */
 	public function enable_dynamic_content() {
