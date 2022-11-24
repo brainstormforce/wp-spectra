@@ -172,9 +172,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							),
 							'equalHeightInlineButtons'    => array(
 								'type'    => 'boolean',
-								'default' => true,
+								'default' => false,
 							),
-							'imageRatio'                   => array(
+							'imageRatio'                  => array(
 								'type'    => 'string',
 								'default' => 'inherit',
 							),
@@ -1805,11 +1805,20 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$img_equal_height = ( $attributes['imgEqualheight'] ) ? 'uagb-post__image-equal-height' : '';
 			echo $attributes['imgEqualheight'];
 			?>
-			<div class='uagb-post__image '>
-				<?php if ( get_the_post_thumbnail_url() ) { ?>
-					<a class = <?php echo esc_html( $img_equal_height ); ?> href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
+			<div class='uagb-post__image'>
+				<?php
+				if ( get_the_post_thumbnail_url() ) {
+					if ( 'post-grid' === $attributes['blockName'] && 'background' !== $attributes['imgPosition'] ) {
+						?>
+					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer" class='uagb-image-ratio-<?php echo esc_html( $attributes['imageRatio'] ); ?>'><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
 					</a>
-				<?php }?>
+				<?php } else { ?>
+					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
+					</a>
+						<?php
+				}
+				}
+				?>
 			</div>
 			<?php
 			do_action( "uagb_single_post_after_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
