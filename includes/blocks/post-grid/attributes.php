@@ -203,7 +203,7 @@ return array_merge(
 		'columns'                     => 3,
 		'tcolumns'                    => 2,
 		'mcolumns'                    => 1,
-		'imgEqualheight' => false
+		'imgEqualheight'              => false,
 	),
 	$btn_border_attribute,
 	$overall_border_attribute

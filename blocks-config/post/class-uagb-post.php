@@ -1802,8 +1802,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
 			do_action( "uagb_single_post_before_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
-			$img_equal_height = ( $attributes['imgEqualheight'] ) ? 'uagb-post__image-equal-height' : '';
-			echo $attributes['imgEqualheight'];
 			?>
 			<div class='uagb-post__image'>
 				<?php
