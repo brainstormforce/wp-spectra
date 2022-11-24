@@ -17,7 +17,6 @@ $block_data = array(
 	'description'         => __( 'Display your posts in a masonary layout.', 'ultimate-addons-for-gutenberg' ),
 	'default'             => true,
 	'extension'           => false,
-	'js_assets'           => array( 'uagb-masonry', 'uagb-imagesloaded', 'uagb-post-js' ),
 	'priority'            => Spectra_Block_Prioritization::get_block_priority( 'post-masonry' ),
 	'deprecated'          => true,
 	'static_dependencies' => array(

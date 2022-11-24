@@ -16,6 +16,5 @@ $block_data = array(
 	'dynamic_assets' => array(
 		'dir' => 'how-to-step',
 	),
-	'js_assets'      => array(),
 	'deprecated'     => false,
 );

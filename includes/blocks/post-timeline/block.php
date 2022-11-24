@@ -17,7 +17,6 @@ $block_data = array(
 	'description'         => __( 'Create an attractive timeline to display your posts.', 'ultimate-addons-for-gutenberg' ),
 	'default'             => true,
 	'extension'           => false,
-	'js_assets'           => array( 'uagb-timeline-js' ),
 	'priority'            => Spectra_Block_Prioritization::get_block_priority( 'post-timeline' ),
 	'deprecated'          => false,
 	'static_dependencies' => array(

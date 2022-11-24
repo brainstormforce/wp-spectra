@@ -17,7 +17,6 @@ $block_data = array(
 	'description'         => __( 'Add accordions/FAQ schema to your page.', 'ultimate-addons-for-gutenberg' ),
 	'default'             => true,
 	'extension'           => false,
-	'js_assets'           => array( 'uagb-faq-js' ),
 	'priority'            => Spectra_Block_Prioritization::get_block_priority( 'faq' ),
 	'deprecated'          => false,
 	'dynamic_assets'      => array(

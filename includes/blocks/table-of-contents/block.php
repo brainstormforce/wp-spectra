@@ -17,7 +17,6 @@ $block_data = array(
 	'description'         => __( 'Add a table of contents to allow page navigation.', 'ultimate-addons-for-gutenberg' ),
 	'default'             => true,
 	'extension'           => false,
-	'js_assets'           => array( 'uagb-table-of-contents' ),
 	'priority'            => Spectra_Block_Prioritization::get_block_priority( 'table-of-contents' ),
 	'deprecated'          => false,
 	'static_dependencies' => array(

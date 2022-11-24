@@ -17,7 +17,6 @@ $block_data = array(
 	'description'         => __( 'Display your content under different tabs.', 'ultimate-addons-for-gutenberg' ),
 	'default'             => true,
 	'extension'           => false,
-	'js_assets'           => array( 'uagb-tabs-js' ),
 	'priority'            => Spectra_Block_Prioritization::get_block_priority( 'tabs' ),
 	'deprecated'          => false,
 	'static_dependencies' => array(

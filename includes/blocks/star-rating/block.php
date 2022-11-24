@@ -21,5 +21,4 @@ $block_data = array(
 	'dynamic_assets'   => array(
 		'dir' => 'star-rating',
 	),
-	'js_assets'        => array(),
 );
