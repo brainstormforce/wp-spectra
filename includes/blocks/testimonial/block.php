@@ -22,21 +22,19 @@ $block_data = array(
 	'priority'            => Spectra_Block_Prioritization::get_block_priority( 'testimonial' ),
 	'deprecated'          => false,
 	'static_dependencies' => array(
-		'uagb-imagesloaded'   => array(
-			'src'  => UAGB_Scripts_Utils::get_js_url( 'imagesloaded' ),
-			'dep'  => array(),
-			'type' => 'js',
-		),
 		'uagb-testimonial-js' => array(
 			'src'  => UAGB_Scripts_Utils::get_js_url( 'testimonial' ),
 			'dep'  => array(),
 			'type' => 'js',
 		),
-		'uagb-slick-js'       => array(
+		'uagb-imagesloaded' => array(
 			'type' => 'js',
 		),
-		'uagb-slick-css'      => array(
+		'uagb-slick-js'     => array(
 			'type' => 'js',
+		),
+		'uagb-slick-css'    => array(
+			'type' => 'css',
 		),
 	),
 	'dynamic_assets'      => array(
