@@ -148,7 +148,7 @@ if ( 'transparent' === $attr['backgroundType'] ) {
 	$selectors['.wp-block-uagb-marketing-button.wp-block-button:not(.is-style-outline) .wp-block-button__link.uagb-marketing-btn__link:focus']['background']   = UAGB_Helper::hex2rgba( $attr['backgroundHoverColor'], $attr['backgroundHoverOpacity'] );
 	$selectors['.wp-block-uagb-marketing-button.wp-block-button:not(.is-style-outline) .wp-block-button__link.uagb-marketing-btn__link:hover']['border-color'] = UAGB_Helper::hex2rgba( $attr['btnBorderHColor'] );
 
- 	// Deprecated for v1.2.6.
+	// Deprecated for v1.2.6.
 	$selectors[' .uagb-marketing-btn__link']['background'] = UAGB_Helper::hex2rgba( $attr['backgroundColor'], $attr['backgroundOpacity'] );
 
 	// Hover Background Deprecated for v1.2.6.
