@@ -264,13 +264,13 @@ const Render = ( props ) => {
 									onChange={ ( value ) =>
 										updateTabsTitle( value, index )
 									}
-									allowedFormats={ [ 'core/bold', 'core/italic' ] }
 									onSplit={ () => null }
 									placeholder={ __(
 										'Title…',
 										'ultimate-addons-for-gutenberg'
 									) }
 								/>
+								{ wp.richText.unregisterFormatType( 'core/link' ) }
 								{ showIcon &&
 									icon &&
 									( iconPosition === 'right' ||
