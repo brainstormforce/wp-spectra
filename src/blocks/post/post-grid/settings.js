@@ -549,6 +549,7 @@ const Settings = ( props ) => {
 					min={ 1 }
 					max={ 50 }
 					displayUnit={ false }
+					showControlHeader={ false }
 				/>
 				<ToggleControl
 					label={ __(

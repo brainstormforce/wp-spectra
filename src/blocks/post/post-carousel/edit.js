@@ -800,6 +800,7 @@ let categoriesList = [];
 					min={ 1 }
 					max={ 100 }
 					displayUnit={ false }
+					showControlHeader={ false }
 				/>
 				<ToggleControl
 					label={ __(
