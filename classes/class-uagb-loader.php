@@ -134,15 +134,11 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		public function loader() {
 
 			require_once UAGB_DIR . 'classes/utils.php';
-			require_once UAGB_DIR . 'classes/class-uagb-scripts-utils.php';
-			require_once UAGB_DIR . 'classes/class-uagb-block.php';
 			require_once UAGB_DIR . 'classes/class-spectra-block-prioritization.php';
 			require_once UAGB_DIR . 'classes/class-uagb-install.php';
 			require_once UAGB_DIR . 'classes/class-uagb-filesystem.php';
-			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
-			require_once UAGB_DIR . 'classes/class-uagb-block-module.php';
-			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
+			require_once UAGB_DIR . 'classes/class-uagb-block.php';
 
 			// BSF Analytics.
 			if ( ! class_exists( 'BSF_Analytics_Loader' ) ) {
@@ -180,6 +176,10 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$this->load_textdomain();
 
+			require_once UAGB_DIR . 'classes/class-uagb-scripts-utils.php';
+			require_once UAGB_DIR . 'classes/class-uagb-block-module.php';
+			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
+			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
 			require_once UAGB_DIR . 'blocks-config/blocks-config.php';
 			require_once UAGB_DIR . 'lib/astra-notices/class-astra-notices.php';
 
@@ -198,6 +198,9 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			}
 
 			require_once UAGB_DIR . 'admin-core/admin-loader.php';
+
+			// Register all UAG Lite Blocks.
+			uagb_block()->register_blocks();
 
 			add_filter( 'rest_pre_dispatch', array( $this, 'rest_pre_dispatch' ), 10, 3 );
 
@@ -307,6 +310,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			);
 
 			return $default_stats;
+
 		}
 
 		/**
@@ -472,19 +476,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			if ( 'astra' === $theme_folder ) {
 				require_once UAGB_DIR . 'compatibility/class-uagb-astra-compatibility.php';
 			}
-
-			register_meta(
-				'post',
-				'_uag_custom_page_level_css',
-				array(
-					'show_in_rest'  => true,
-					'type'          => 'string',
-					'single'        => true,
-					'auth_callback' => function() {
-						return current_user_can( 'edit_posts' );
-					},
-				)
-			);
 		}
 	}
 }
