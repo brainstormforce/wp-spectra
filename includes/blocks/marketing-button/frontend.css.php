@@ -117,7 +117,7 @@ $selectors = array(
 			'padding-bottom' => UAGB_Helper::get_css_value( $btn_padding_bottom ? $btn_padding_bottom : 8, $attr['paddingBtnUnit'] ),
 		),
 		$btn_border_css
-	)
+	),
 );
 
 $selectors[' .uagb-marketing-btn__link .uagb-marketing-btn__title'] = array(
@@ -205,7 +205,7 @@ $m_selectors = array(
 			'padding-bottom' => UAGB_Helper::get_css_value( $btn_padding_bottom_mobile ? $btn_padding_bottom_mobile : 8, $attr['paddingBtnUnit'] ),
 		),
 		$btn_border_css_mobile
-	)
+	),
 );
 
 $t_selectors = array(
@@ -239,7 +239,7 @@ $t_selectors = array(
 			'padding-bottom' => UAGB_Helper::get_css_value( $btn_padding_bottom_tablet ? $btn_padding_bottom_tablet : 8, $attr['paddingBtnUnit'] ),
 		),
 		$btn_border_css_tablet
-	)
+	),
 
 );
 
