@@ -109,6 +109,15 @@ $selectors = array(
 	' .uagb-marketing-btn__title-wrap .uagb-marketing-btn__icon-wrap svg' => array( // For backword compatibility.
 		'vertical-align' => 'sub',
 	),
+	' .uagb-marketing-btn__wrap .uagb-marketing-btn__link' => array_merge( // deprecated for v1.25.6 .
+		array(
+			'padding-left'   => UAGB_Helper::get_css_value( $btn_padding_left ? $btn_padding_left : 20, $attr['paddingBtnUnit'] ),
+			'padding-right'  => UAGB_Helper::get_css_value( $btn_padding_right ? $btn_padding_right : 20, $attr['paddingBtnUnit'] ),
+			'padding-top'    => UAGB_Helper::get_css_value( $btn_padding_top ? $btn_padding_top : 8, $attr['paddingBtnUnit'] ),
+			'padding-bottom' => UAGB_Helper::get_css_value( $btn_padding_bottom ? $btn_padding_bottom : 8, $attr['paddingBtnUnit'] ),
+		),
+		$btn_border_css
+	)
 );
 
 $selectors[' .uagb-marketing-btn__link .uagb-marketing-btn__title'] = array(
@@ -188,6 +197,15 @@ $m_selectors = array(
 	' .uagb-marketing-btn__prefix' => array(
 		'margin-top' => UAGB_Helper::get_css_value( $attr['titleSpaceMobile'], 'px' ),
 	),
+	' .uagb-marketing-btn__wrap .uagb-marketing-btn__link' => array_merge( // deprecated for v1.25.6 .
+		array(
+			'padding-left'   => UAGB_Helper::get_css_value( $btn_padding_left_mobile ? $btn_padding_left_mobile : 20, $attr['paddingBtnUnit'] ),
+			'padding-right'  => UAGB_Helper::get_css_value( $btn_padding_right_mobile ? $btn_padding_right_mobile : 20, $attr['paddingBtnUnit'] ),
+			'padding-top'    => UAGB_Helper::get_css_value( $btn_padding_top_mobile ? $btn_padding_top_mobile : 8, $attr['paddingBtnUnit'] ),
+			'padding-bottom' => UAGB_Helper::get_css_value( $btn_padding_bottom_mobile ? $btn_padding_bottom_mobile : 8, $attr['paddingBtnUnit'] ),
+		),
+		$btn_border_css_mobile
+	)
 );
 
 $t_selectors = array(
@@ -213,6 +231,15 @@ $t_selectors = array(
 	'.uagb-marketing-btn__icon-before .uagb-marketing-btn__link svg' => array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpaceTablet'], 'px' ),
 	),
+	' .uagb-marketing-btn__wrap .uagb-marketing-btn__link' => array_merge( // deprecated for v1.25.6 .
+		array(
+			'padding-left'   => UAGB_Helper::get_css_value( $btn_padding_left_tablet ? $btn_padding_left_tablet : 20, $attr['paddingBtnUnit'] ),
+			'padding-right'  => UAGB_Helper::get_css_value( $btn_padding_right_tablet ? $btn_padding_right_tablet : 20, $attr['paddingBtnUnit'] ),
+			'padding-top'    => UAGB_Helper::get_css_value( $btn_padding_top_tablet ? $btn_padding_top_tablet : 8, $attr['paddingBtnUnit'] ),
+			'padding-bottom' => UAGB_Helper::get_css_value( $btn_padding_bottom_tablet ? $btn_padding_bottom_tablet : 8, $attr['paddingBtnUnit'] ),
+		),
+		$btn_border_css_tablet
+	)
 
 );
 
