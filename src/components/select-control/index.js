@@ -36,35 +36,47 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 
 	const controlName = label ? label.toLowerCase().replace( /[^a-zA-Z ]/g, '' ).replace( /\s+/g, '-' ) : '';
 
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.select-control.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.select-control.${controlName}`, '', blockNameForHook );
 	const allOptions = wp.hooks.applyFilters( `spectra.${blockNameForHook}.select-control.${controlName}.options`, options, blockNameForHook );
 
 	return (
-		children ? (
-			<div className={ `uagb-select-control uagb-select-control--layout-${ layout }` }>
-				<SelectControl
-					label={ label }
-					value={ data.value }
-					onChange={ ( value ) => (
-						onChange ? onChange( value ) : setAttributes( { [data.label]: value } )
-					) }
-					help={ help }
-				>
-					{ children }
-				</SelectControl>
-			</div>
-		) : (
-			<div className={ `uagb-select-control uagb-select-control--layout-${ layout }` }>
-				<SelectControl
-					label={ label }
-					value={ data.value }
-					onChange={ ( value ) => (
-						onChange ? onChange( value ) : setAttributes( { [data.label]: value } )
-					) }
-					options={ allOptions }
-					help={ help }
-				/>
-			</div>
-		)
+		<>
+			{
+				controlBeforeDomElement
+			}
+			{
+				children ? (
+					<div className={ `uagb-select-control uagb-select-control--layout-${ layout }` }>
+						<SelectControl
+							label={ label }
+							value={ data.value }
+							onChange={ ( value ) => (
+								onChange ? onChange( value ) : setAttributes( { [data.label]: value } )
+							) }
+							help={ help }
+						>
+							{ children }
+						</SelectControl>
+					</div>
+				) : (
+					<div className={ `uagb-select-control uagb-select-control--layout-${ layout }` }>
+						<SelectControl
+							label={ label }
+							value={ data.value }
+							onChange={ ( value ) => (
+								onChange ? onChange( value ) : setAttributes( { [data.label]: value } )
+							) }
+							options={ allOptions }
+							help={ help }
+						/>
+					</div>
+				)
+			}
+			{
+				controlAfterDomElement
+			}
+		</>
 	);
 }
 
