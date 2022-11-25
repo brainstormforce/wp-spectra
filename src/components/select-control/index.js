@@ -2,6 +2,7 @@ import React, { useLayoutEffect } from 'react';
 import { SelectControl } from '@wordpress/components';
 import { select } from '@wordpress/data';
 import styles from './editor.lazy.scss';
+import { getIdFromString } from '@Utils/Helpers';
 import PropTypes from 'prop-types';
 
 // Use the onChange prop only if needed.
@@ -34,7 +35,7 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 	const { getSelectedBlock } = select( 'core/block-editor' );
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 
-	const controlName = label ? label.toLowerCase().replace( /[^a-zA-Z ]/g, '' ).replace( /\s+/g, '-' ) : '';
+	const controlName = getIdFromString(label);
 
 	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.select-control.${controlName}.before`, '', blockNameForHook );
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.select-control.${controlName}`, '', blockNameForHook );

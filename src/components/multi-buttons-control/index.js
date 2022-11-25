@@ -12,6 +12,7 @@ import styles from './editor.lazy.scss';
 import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 import React, { useLayoutEffect, useState } from 'react';
 import { select } from '@wordpress/data';
+import { getIdFromString } from '@Utils/Helpers';
 
 const MultiButtonsControl = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -197,38 +198,51 @@ const MultiButtonsControl = ( props ) => {
 			[ data.label ]: value,
 		} );
 	};
+	const controlName = getIdFromString(label);
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${selectedBlock}.multi-buttons-control.${controlName}.before`, '', selectedBlock );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${selectedBlock}.multi-buttons-control.${controlName}`, '', selectedBlock );
+	const allOptions = wp.hooks.applyFilters( `spectra.${selectedBlock}.multi-buttons-control.${controlName}.options`, options, selectedBlock );
+
 	return (
-		<div
-			className={ `components-base-control uagb-multi-buttons-control ${ iconsClass } spectra-multi-buttons__color-scheme--${ colorVariant } spectra-multi-buttons__layout--${ layoutVariant }` }
-		>
-			<div className="uagb-multi-buttons-control__label uag-control-label">
-				{ label }
-			</div>
-			<ButtonGroup
-				className={ `uagb-multi-button-button-group` }
-				aria-label={ label }
+		<>
+			{
+				controlBeforeDomElement
+			}
+			<div
+				className={ `components-base-control uagb-multi-buttons-control ${ iconsClass } spectra-multi-buttons__color-scheme--${ colorVariant } spectra-multi-buttons__layout--${ layoutVariant }` }
 			>
-				{ options.map( ( option ) => (
-					<Button
-						key={ `option-${ option.value }` }
-						className={ `uagb-multi-button` }
-						isLarge
-						isSecondary={ data.value !== option.value || ! buttonPrimaryStateDesktop }
-						isPrimary={ data.value === option.value && buttonPrimaryStateDesktop }
-						aria-pressed={ data.value === option.value }
-						onClick={ () => onClickHandler( option.value ) }
-						aria-label={ option.tooltip }
-						label={ option.tooltip }
-						showTooltip={ option.tooltip ? true : false }
-					>
-						{ showIcons ? option.icon : option.label }
-					</Button>
-				) ) }
-			</ButtonGroup>
-			{ props.help && (
-				<p className="uag-control-help-notice">{ props.help }</p>
-			) }
-		</div>
+				<div className="uagb-multi-buttons-control__label uag-control-label">
+					{ label }
+				</div>
+				<ButtonGroup
+					className={ `uagb-multi-button-button-group` }
+					aria-label={ label }
+				>
+					{ allOptions.map( ( option ) => (
+						<Button
+							key={ `option-${ option.value }` }
+							className={ `uagb-multi-button` }
+							isLarge
+							isSecondary={ data.value !== option.value || ! buttonPrimaryStateDesktop }
+							isPrimary={ data.value === option.value && buttonPrimaryStateDesktop }
+							aria-pressed={ data.value === option.value }
+							onClick={ () => onClickHandler( option.value ) }
+							aria-label={ option.tooltip }
+							label={ option.tooltip }
+							showTooltip={ option.tooltip ? true : false }
+						>
+							{ showIcons ? option.icon : option.label }
+						</Button>
+					) ) }
+				</ButtonGroup>
+				{ props.help && (
+					<p className="uag-control-help-notice">{ props.help }</p>
+				) }
+			</div>
+			{
+				controlAfterDomElement
+			}
+		</>
 	);
 };
 
