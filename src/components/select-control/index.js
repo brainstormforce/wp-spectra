@@ -1,5 +1,6 @@
 import React, { useLayoutEffect } from 'react';
 import { SelectControl } from '@wordpress/components';
+import { select } from '@wordpress/data';
 import styles from './editor.lazy.scss';
 import PropTypes from 'prop-types';
 
@@ -29,6 +30,14 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 			styles.unuse();
 		};
 	}, [] );
+
+	const { getSelectedBlock } = select( 'core/block-editor' );
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+
+	const controlName = label ? label.toLowerCase().replace( /[^a-zA-Z ]/g, '' ).replace( /\s+/g, '-' ) : '';
+
+	const allOptions = wp.hooks.applyFilters( `spectra.${blockNameForHook}.select-control.${controlName}.options`, options, blockNameForHook );
+
 	return (
 		children ? (
 			<div className={ `uagb-select-control uagb-select-control--layout-${ layout }` }>
@@ -51,7 +60,7 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 					onChange={ ( value ) => (
 						onChange ? onChange( value ) : setAttributes( { [data.label]: value } )
 					) }
-					options={ options }
+					options={ allOptions }
 					help={ help }
 				/>
 			</div>
