@@ -23,6 +23,12 @@ const UAGBIconListChild = ( props ) => {
 	useEffect( ()=>{
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		
+		if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) {	
+			props.setAttributes( { disableLink: true } );
+		} else {	
+			props.setAttributes( { disableLink: true } );
+		}
 	}, [] )
 
 	useEffect( () => {
