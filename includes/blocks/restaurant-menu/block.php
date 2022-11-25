@@ -19,4 +19,8 @@ $block_data = array(
 	'extension'        => false,
 	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'price-list' ),
 	'deprecated'       => false,
+	'static_css'       => 'price-list',
+	'dynamic_assets'   => array(
+		'dir' => 'restaurant-menu',
+	),
 );

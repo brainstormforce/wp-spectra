@@ -20,4 +20,7 @@ $block_data = array(
 	'extension'        => false,
 	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'cf7-styler' ),
 	'deprecated'       => true,
+	'dynamic_assets'   => array(
+		'dir' => 'cf7-styler',
+	),
 );

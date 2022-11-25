@@ -20,4 +20,7 @@ $block_data = array(
 	'is_active'        => class_exists( 'GFForms' ),
 	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'gf-styler' ),
 	'deprecated'       => true,
+	'dynamic_assets'   => array(
+		'dir' => 'gf-styler',
+	),
 );

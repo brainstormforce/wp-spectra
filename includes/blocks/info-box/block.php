@@ -19,4 +19,7 @@ $block_data = array(
 	'extension'        => false,
 	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'info-box' ),
 	'deprecated'       => false,
+	'dynamic_assets'   => array(
+		'dir' => 'info-box',
+	),
 );

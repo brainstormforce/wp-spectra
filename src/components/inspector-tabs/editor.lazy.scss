@@ -10,6 +10,10 @@ $border-color: #d6d9dd;
 		.block-editor-block-inspector > div > .components-panel__body {
 			display: none;
 		}
+
+		.block-editor-block-inspector > div > .components-panel__body.uagb-dynamic-content-wrap {
+			display: block;
+		}
 	}
 
 	.block-editor-block-card {

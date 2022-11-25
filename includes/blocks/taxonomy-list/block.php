@@ -18,4 +18,7 @@ $block_data = array(
 	'default'          => true,
 	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'taxonomy-list' ),
 	'deprecated'       => false,
+	'dynamic_assets'   => array(
+		'dir' => 'taxonomy-list',
+	),
 );

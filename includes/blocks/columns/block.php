@@ -19,4 +19,7 @@ $block_data = array(
 	'extension'        => false,
 	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'columns' ),
 	'deprecated'       => true,
+	'dynamic_assets'   => array(
+		'dir' => 'columns',
+	),
 );

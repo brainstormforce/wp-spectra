@@ -19,4 +19,7 @@ $block_data = array(
 	'extension'        => false,
 	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'social-share' ),
 	'deprecated'       => false,
+	'dynamic_assets'   => array(
+		'dir' => 'social-share',
+	),
 );

@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.1  
-**Stable tag:** 2.0.16  
+**Stable tag:** 2.1.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -170,10 +170,12 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### 2.1 ###
+### 2.1.0 - TUESDAY, 29th NOVEMBER 2022 ###
 * New: Counter Block.
 * New: Image Gallery Block.
 * Feature: Ability to add Custom CSS at page level.
+* Improvement: Post Grid - Added Setting to show buttons on equal height.
+* Improvement: Post Grid - Added Setting for image aspect ratio.
 * Improvement: Code - Added Automatic Block Prioritization and Organization.
 * Improvement: Global - Updated Block Previews for All Spectra Blocks in the Editor.
 

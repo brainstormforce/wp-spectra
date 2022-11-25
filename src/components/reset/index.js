@@ -16,15 +16,17 @@ const UAGReset = ( props ) => {
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
 
+	const allBlocksAttributes = wp.hooks.applyFilters( 'uagb.blocksAttributes', blocksAttributes )
+
 	const getBlockResetValue = () => {
 		const selectedBlockName = getSelectedBlock()?.name.split( '/' ).pop();
 		let defaultValues = false;
 
-		if ( attributeNames && 'undefined' !== typeof blocksAttributes[selectedBlockName] ) {
+		if ( attributeNames && 'undefined' !== typeof allBlocksAttributes[selectedBlockName] ) {
 			attributeNames.map( ( attributeName ) => {
 
 				if ( attributeName ) {
-					const blockDefaultAttributeValue = ( 'undefined' !== typeof blocksAttributes[selectedBlockName][attributeName]?.default ) ? blocksAttributes[selectedBlockName][attributeName]?.default : '';
+					const blockDefaultAttributeValue = ( 'undefined' !== typeof allBlocksAttributes[selectedBlockName][attributeName]?.default ) ? allBlocksAttributes[selectedBlockName][attributeName]?.default : '';
 					defaultValues = {
 						...defaultValues,
 						[attributeName] : blockDefaultAttributeValue,

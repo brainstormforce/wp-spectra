@@ -16,6 +16,7 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
+import UAGTextControl from '@Components/text-control';
 import { useDeviceType } from '@Controls/getPreviewType';
 import {
 	store as blockEditorStore,
@@ -35,7 +36,6 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import boxShadowPresets from './presets';
 import UAGPresets from '@Components/presets';
 import {pickRelevantMediaFiles } from './utils'
-import UAGTextControl from '@Components/text-control';
 
 export default function Settings( props ) {
 	const deviceType = useDeviceType();
@@ -626,13 +626,15 @@ export default function Settings( props ) {
 						/>
 						<UAGTextControl
 							label={ __( 'Alt Text', 'ultimate-addons-for-gutenberg' ) }
+							enableDynamicContent={true}
+							dynamicContentType="text"
 							value={ alt }
+							name='alt'
+							setAttributes={setAttributes}
 							data={{
 								value: alt,
 								label: 'alt',
 							}}
-							setAttributes={ setAttributes }
-							onChange={ ( value ) => setAttributes( { alt: value } ) }
 						/>
 					</>
 				)

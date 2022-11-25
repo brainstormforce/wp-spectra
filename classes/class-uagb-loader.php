@@ -44,6 +44,15 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
 				self::$instance = new self();
+
+				/**
+				 * Spectra loaded.
+				 *
+				 * Fires when Spectra was fully loaded and instantiated.
+				 *
+				 * @since 2.1.0
+				 */
+				do_action( 'spectra_core_loaded' );
 			}
 			return self::$instance;
 		}
@@ -83,7 +92,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.0.16' );
+			define( 'UAGB_VER', '2.1.0' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'spectra' );
@@ -125,26 +134,19 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		public function loader() {
 
 			require_once UAGB_DIR . 'classes/utils.php';
+			require_once UAGB_DIR . 'classes/class-uagb-scripts-utils.php';
+			require_once UAGB_DIR . 'classes/class-uagb-block.php';
 			require_once UAGB_DIR . 'classes/class-spectra-block-prioritization.php';
 			require_once UAGB_DIR . 'classes/class-uagb-install.php';
 			require_once UAGB_DIR . 'classes/class-uagb-filesystem.php';
 			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
 			require_once UAGB_DIR . 'classes/class-uagb-block-module.php';
 			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
-			require_once UAGB_DIR . 'classes/class-uagb-scripts-utils.php';
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
 
 			// BSF Analytics.
 			if ( ! class_exists( 'BSF_Analytics_Loader' ) ) {
 				require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics-loader.php';
-			}
-
-			$enable_templates_button = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' );
-
-			if ( 'yes' === $enable_templates_button ) {
-				require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
-			} else {
-				add_filter( 'ast_block_templates_disable', '__return_true' );
 			}
 
 			if ( is_admin() ) {
@@ -198,6 +200,14 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'admin-core/admin-loader.php';
 
 			add_filter( 'rest_pre_dispatch', array( $this, 'rest_pre_dispatch' ), 10, 3 );
+
+			$enable_templates_button = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' );
+
+			if ( 'yes' === $enable_templates_button ) {
+				require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
+			} else {
+				add_filter( 'ast_block_templates_disable', '__return_true' );
+			}
 
 			// Load background processing class.
 			if ( ! class_exists( 'UAGB_Background_Process' ) ) {
