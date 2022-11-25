@@ -171,13 +171,15 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 2.1.0 - TUESDAY, 29th NOVEMBER 2022 ###
-* New: Counter Block.
-* New: Image Gallery Block.
-* Feature: Ability to add Custom CSS at page level.
+* New: Introducing the Counter block with stuff.
+* New: Introducing the Image Gallery block with extensive customizability, as well as the all new perfecty tiled layout.
+* New: Introducing the ability to add custom CSS at the page level.
 * Improvement: Post Grid - Added Setting to show buttons on equal height.
 * Improvement: Post Grid - Added Setting for image aspect ratio.
-* Improvement: Code - Added Automatic Block Prioritization and Organization.
+* Improvement: Matrix Alignment Control - Added the new Matrix Alignment Control to match the Spectra UI.
+* Improvement: Number Control - Added the new Number Control to match the Spectra UI.
 * Improvement: Global - Updated Block Previews for All Spectra Blocks in the Editor.
+* Improvement: Code - Added Automatic Block Prioritization and Organization.
 
 ### 2.0.16 - TUESDAY, 22th NOVEMBER 2022 ###
 * Improvement: Admin Dashboard - Updated Spectra Core Blocks to prevent them from being disabled.
