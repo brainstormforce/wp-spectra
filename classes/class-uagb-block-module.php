@@ -231,10 +231,10 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 						'skipEditor' => true,
 						'type'       => 'js',
 					),
-					'uagb-countUp-js' => array(
-						'src'        => UAGB_URL . 'assets/js/countUp.min.js',
-						'dep'        => array(),
-						'type'       => 'js',
+					'uagb-countUp-js'   => array(
+						'src'  => UAGB_URL . 'assets/js/countUp.min.js',
+						'dep'  => array(),
+						'type' => 'js',
 					),
 				);
 			}
