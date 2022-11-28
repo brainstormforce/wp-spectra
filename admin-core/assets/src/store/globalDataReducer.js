@@ -84,6 +84,80 @@ const globalDataReducer = ( state = {}, action ) => {
                 ...state,
                 enableMasonryExtension: action.payload,
             };
+        case 'UPDATE_RECAPTCHA_VERSION':
+            return {
+                ...state,
+                social: {
+					...state.social,
+					recaptchaVersion: action.payload
+				},
+            };
+        case 'UPDATE_RECAPTCHA_BADGE':
+            return {
+                ...state,
+                social: {
+					...state.social,
+					recaptchaBadgeHide: action.payload
+				},
+            };
+        case 'UPDATE_RECAPTCHA_SITE_KEY':
+            return {
+                ...state,
+                social: {
+					...state.social,
+					recaptchaSiteKey: action.payload
+				},
+            };
+        case 'UPDATE_RECAPTCHA_SECRET_KEY':
+            return {
+                ...state,
+                social: {
+					...state.social,
+					recaptchaSecretKey: action.payload
+				},
+            };
+        case 'UPDATE_SOCIAL_REGISTER':
+            return {
+                ...state,
+                social: {
+					...state.social,
+					socialRegister: action.payload
+				},
+            };
+        case 'UPDATE_GOOGLE_CLIENT_ID':
+            return {
+                ...state,
+                social: {
+					...state.social,
+					googleClientId: action.payload
+				},
+            };
+        case 'UPDATE_FACEBOOK_APP_ID':
+            return {
+                ...state,
+                social: {
+					...state.social,
+					facebookAppId: action.payload
+				},
+            };
+        case 'UPDATE_FACEBOOK_APP_SECRET':
+            return {
+                ...state,
+                social: {
+					...state.social,
+					facebookAppSecret: action.payload
+				}
+			}
+        case 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION':
+            return {
+                ...state,
+                enableDynamicContentExtension: action.payload,
+            };
+        case 'UPDATE_DYNAMIC_CONTENT_MODE':
+            return {
+                ...state,
+                dynamicContentMode: action.payload,
+            };
 		case 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS':
 			return {
 				...state,

@@ -17,6 +17,9 @@ $block_data = array(
 	'description'      => __( 'Add images on your webpage with multiple customization options.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 3,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'image' ),
 	'deprecated'       => false,
+	'dynamic_assets'   => array(
+		'dir' => 'image',
+	),
 );
