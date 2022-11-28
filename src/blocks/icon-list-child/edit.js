@@ -26,9 +26,7 @@ const UAGBIconListChild = ( props ) => {
 		
 		if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) {	
 			props.setAttributes( { disableLink: true } );
-		} else {	
-			props.setAttributes( { disableLink: true } );
-		}
+		} 
 	}, [] )
 
 	useEffect( () => {
