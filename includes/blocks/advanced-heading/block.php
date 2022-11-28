@@ -17,6 +17,9 @@ $block_data = array(
 	'description'      => __( 'Add heading, sub heading and a separator using one block.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 2,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'advanced-heading' ),
 	'deprecated'       => false,
+	'dynamic_assets'   => array(
+		'dir' => 'advanced-heading',
+	),
 );

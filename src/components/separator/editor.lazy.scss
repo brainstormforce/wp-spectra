@@ -5,6 +5,10 @@
 	height: 1px;
 	margin: $spectra-control-vertical-gap 0;
 	background-color: $spectra-color-border;
+
+	&--removed-top-space {
+		margin-top: 0 !important;
+	}
 }
 
 .uagb-inspector-tab .components-panel__body .spectra-separator {
