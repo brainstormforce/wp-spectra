@@ -18,7 +18,7 @@ $m_selectors = UAGB_Block_Helper::get_post_mobile_selectors( $attr );
 
 $t_selectors = UAGB_Block_Helper::get_post_tablet_selectors( $attr );
 
-if ( 'background' === $attr['imgPosition'] && 3 >= $attr['postsToShow'] ) {
+if ( 'background' === $attr['imgPosition'] && $attr['columns'] === $attr['postsToShow'] ) {
 	$selectors['.uagb-post__image-position-background'] = array(
 		'flex-wrap' => 'nowrap !important',
 		'gap'       => $attr['rowGap'] . 'px !important',
