@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.1  
-**Stable tag:** 2.0.16  
+**Stable tag:** 2.1.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -174,6 +174,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Post Grid - Added Setting to show buttons on equal height.
 * Improvement: Post Grid - Added Setting for image aspect ratio.
 * Improvement: Post Grid - Added equal height option for featured Images.
+* Improvement: Advanced Heading - Added Sub-heading and Separator Position Settings.
 
 ### 2.0.16 - TUESDAY, 22th NOVEMBER 2022 ###
 * Improvement: Admin Dashboard - Updated Spectra Core Blocks to prevent them from being disabled.
