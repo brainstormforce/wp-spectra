@@ -67,6 +67,17 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 				'uag_load_font_awesome_5'           => self::get_admin_settings_option( 'uag_load_font_awesome_5', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
 				'uag_auto_block_recovery'           => self::get_admin_settings_option( 'uag_auto_block_recovery', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
 				'uag_content_width'                 => $content_width,
+				'spectra_core_blocks'               => apply_filters(
+					'spectra_core_blocks',
+					array(
+						'container',
+						'advanced-heading',
+						'image',
+						'buttons',
+						'info-box',
+						'call-to-action',
+					)
+				),
 			);
 
 			$setting_data = get_option( 'spectra_settings_data' );
@@ -182,8 +193,9 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			$is_already_icon_list = false;
 			$is_already_button    = false;
 			$is_already_faq       = false;
+			$blocks_info          = UAGB_Block_Module::get_blocks_info();
 
-			foreach ( UAGB_Config::$block_attributes as $key => $block ) {
+			foreach ( $blocks_info as $key => $block ) {
 
 				$block_name = str_replace( 'uagb/', '', $key );
 

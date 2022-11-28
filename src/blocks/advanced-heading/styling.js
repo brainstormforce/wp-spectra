@@ -148,6 +148,9 @@ function styling( props ) {
 		highLightPaddingUnit,
 		highLightPaddingUnitTablet,
 		highLightPaddingUnitMobile,
+		subHeadSpace,
+		subHeadSpaceTablet,
+		subHeadSpaceMobile,
 	} = props.attributes;
 
 	const tablet_selectors = {};
@@ -206,7 +209,7 @@ function styling( props ) {
 				blockPaddingUnit
 			),
 		},
-		' .uagb-desc-text': {
+		' p.uagb-desc-text': {
 			'margin': 0,
 			'font-family': subHeadFontFamily,
 			'font-style' : subHeadFontStyle,
@@ -223,6 +226,10 @@ function styling( props ) {
 			),
 			'letter-spacing': generateCSSUnit( subHeadLetterSpacing, subHeadLetterSpacingType ),
 			'color': subHeadingColor,
+			'margin-bottom': generateCSSUnit(
+				getFallbackNumber( subHeadSpace, 'subHeadSpace', blockName ),
+				'px'
+			),
 		},
 		'.wp-block-uagb-advanced-heading a': {
 			'color': linkColor,
@@ -283,10 +290,6 @@ function styling( props ) {
 		'background': highLightBackground,
 		'-webkit-text-fill-color': highLightColor
 	}
-	// selectors[ '.wp-block-uagb-advanced-heading .uagb-heading-text::-moz-selection' ] = highlightSelectionText
-	// selectors[ '.wp-block-uagb-advanced-heading .uagb-heading-text::selection' ] = highlightSelectionText
-	// selectors[ '.wp-block-uagb-advanced-heading .uagb-desc-text::-moz-selection' ] = highlightSelectionText
-	// selectors[ '.wp-block-uagb-advanced-heading .uagb-desc-text::selection' ] = highlightSelectionText
 	selectors[ '.wp-block-uagb-advanced-heading .uagb-highlight::-moz-selection' ] = highlightSelectionText
 	selectors[ '.wp-block-uagb-advanced-heading .uagb-highlight::selection' ] = highlightSelectionText
 
@@ -387,7 +390,7 @@ function styling( props ) {
 			'px'
 		),
 	};
-	tablet_selectors[ ' .uagb-desc-text' ] = {
+	tablet_selectors[ ' p.uagb-desc-text' ] = {
 		'font-size': generateCSSUnit(
 			subHeadFontSizeTablet,
 			subHeadFontSizeType
@@ -397,6 +400,10 @@ function styling( props ) {
 			subHeadLineHeightType
 		),
 		'letter-spacing': generateCSSUnit( subHeadLetterSpacingTablet, subHeadLetterSpacingType ),
+		'margin-bottom': generateCSSUnit(
+			getFallbackNumber( subHeadSpaceTablet, 'subHeadSpaceTablet', blockName ),
+			'px'
+		),
 	};
 	tablet_selectors[ '.wp-block-uagb-advanced-heading .uagb-highlight' ] = {
 		'font-size': generateCSSUnit(
@@ -485,7 +492,7 @@ function styling( props ) {
 			'px'
 		),
 	};
-	mobile_selectors[ ' .uagb-desc-text' ] = {
+	mobile_selectors[ ' p.uagb-desc-text' ] = {
 		'font-size': generateCSSUnit(
 			subHeadFontSizeMobile,
 			subHeadFontSizeType
@@ -495,6 +502,10 @@ function styling( props ) {
 			subHeadLineHeightType
 		),
 		'letter-spacing': generateCSSUnit( subHeadLetterSpacingMobile, subHeadLetterSpacingType ),
+		'margin-bottom': generateCSSUnit(
+			getFallbackNumber( subHeadSpaceMobile, 'subHeadSpaceMobile', blockName ),
+			'px'
+		),
 	};
 	mobile_selectors[ '.wp-block-uagb-advanced-heading .uagb-highlight' ] = {
 		'font-size': generateCSSUnit(

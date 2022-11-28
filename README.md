@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.1  
-**Stable tag:** 2.0.16  
+**Stable tag:** 2.1.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -170,9 +170,24 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### 2.0.16 - TUESDAY, 22th NOVEMBER 2022 ###
+### 2.1.0 - TUESDAY, 29th NOVEMBER 2022 ###
+* Improvement: Post Grid - Added Setting to show buttons on equal height.
+* Improvement: Post Grid - Added Setting for image aspect ratio.
+* Improvement: Post Grid - Added equal height option for featured Images.
+* Improvement: Advanced Heading - Added Sub-heading and Separator Position Settings.
+* Fix: Post grid - Enabling show taxonomy does not show taxonomy on post inside editor.
 * Fix: Icon List - Resolved an issue as the link was getting disabled for the icon list child.
 
+### 2.0.16 - TUESDAY, 22th NOVEMBER 2022 ###
+* Improvement: Admin Dashboard - Updated Spectra Core Blocks to prevent them from being disabled.
+* Fix: Buttons - Eliminated validation errors when we add a "nofollow" to the link.
+* Fix: Info Box - Resolved an issue where the title gets disabled in the editor when setting the title tag as a paragraph tag.
+* Fix: Post Blocks - Resolved an issue in which the "spectra/v1/all_taxonomy" Rest API gets called multiple times in the editor.
+* Fix: Tabs - Updated the second preset to behave as shown in the preset preview.
+* Fix: Team - Prevented social icon styling options from being shown when the social icons are disabled.
+* Fix: Global - Resolved an issue where the editor layout shifts towards the right when clicking on any block settings.
+* Fix: Global - Resolved an issue where Spectra component stylings get overridden in the customizer block editor.
+* Fix: Code - Resolved an issue in which the "uagb_spectra_font_awesome_polyfiller" AJAX gets called multiple times.
 
 ### 2.0.15 - WEDNESDAY, 16th NOVEMBER 2022 ###
 * Improvement: Info Box - Added Responsive feature to the Info Box icon width setting.

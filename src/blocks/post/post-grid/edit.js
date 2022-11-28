@@ -30,6 +30,8 @@ const PostGridComponent = ( props ) => {
 	};
 
 	const [ state, setStateValue ] = useState( initialState );
+	const [ isTaxonomyLoading, setIsTaxonomyLoading] = useState( false );
+
 
 	useEffect( () => {
 		// Replacement for componentDidMount.
@@ -177,7 +179,7 @@ const PostGridComponent = ( props ) => {
 				props.setAttributes( { btnBorderStyle : borderStyle} );
 			}
 		}
-		
+
 
 		props.setAttributes( { allTaxonomyStore : undefined} );
 
@@ -189,7 +191,7 @@ const PostGridComponent = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-post-grid-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
 	}, [ props ] );
 
 	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
@@ -235,11 +237,13 @@ const PostGridComponent = ( props ) => {
 			} = props.attributes;
 			const { getEntityRecords } = select( 'core' );
 
-			if ( ! allTaxonomyStore ) {
+			if ( ! allTaxonomyStore && ! isTaxonomyLoading ) {
+				setIsTaxonomyLoading( true );
 				apiFetch( {
 					path: '/spectra/v1/all_taxonomy',
 				} ).then( ( data ) => {
 					props.setAttributes( { allTaxonomyStore: data } );
+					setIsTaxonomyLoading( false );
 				} );
 			}
 			const allTaxonomy = allTaxonomyStore;
@@ -364,6 +368,7 @@ const PostGridComponent = ( props ) => {
 				setStateValue={ setStateValue }
 				togglePreview={ togglePreview }
 				latestPosts={ latestPosts }
+				categoriesList={ categoriesList }
 				replaceInnerBlocks={ replaceInnerBlocks }
 				block={ block }
 			/>
