@@ -1,9 +1,5 @@
 @import "../../styles/variables";
 
-.uagb-inspector-tab .uagb-text-control {
-	background-color: cadetblue;
-}
-
 .uagb-text-control {
 	position: relative;
 
@@ -20,6 +16,13 @@
 		padding-right: 30px;
 		margin-left: 0;
 		margin-right: 0;
+		color: $spectra-color-body;
+		border-color: $spectra-color-border;
+
+		&:focus {
+			border-color: $spectra-color-border-hover;
+			box-shadow: unset;
+		}
 	}
 
 	.uagb-control__header {
@@ -77,7 +80,7 @@
 			}
 
 			textarea {
-
+				color: $spectra-color-body;
 				border-color: $spectra-color-border;
 
 				&:focus {
