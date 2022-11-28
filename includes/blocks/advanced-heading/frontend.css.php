@@ -71,7 +71,11 @@ $selectors = array(
 		'color' => $attr['linkHColor'],
 	),
 	'.wp-block-uagb-advanced-heading .uagb-desc-text'    => array(
-		'color' => $attr['subHeadingColor'],
+		'color'         => $attr['subHeadingColor'],
+		'margin-bottom' => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['subHeadSpace'], 'subHeadSpace', $block_name ),
+			'px'
+		),
 	),
 	'.wp-block-uagb-advanced-heading .uagb-highlight'    => array_merge(
 		array(
@@ -250,7 +254,18 @@ $m_selectors['.wp-block-uagb-advanced-heading .uagb-heading-text'] = array(
 		$attr['headSpaceType']
 	),
 );
-
+$t_selectors['.wp-block-uagb-advanced-heading .uagb-desc-text']    = array(
+	'margin-bottom' => UAGB_Helper::get_css_value(
+		UAGB_Block_Helper::get_fallback_number( $attr['subHeadSpaceTablet'], 'subHeadSpaceTablet', $block_name ),
+		$attr['subHeadSpaceType']
+	),
+);
+$m_selectors['.wp-block-uagb-advanced-heading .uagb-desc-text']    = array(
+	'margin-bottom' => UAGB_Helper::get_css_value(
+		UAGB_Block_Helper::get_fallback_number( $attr['subHeadSpaceMobile'], 'subHeadSpaceMobile', $block_name ),
+		$attr['subHeadSpaceType']
+	),
+);
 
 $combined_selectors = array(
 	'desktop' => $selectors,

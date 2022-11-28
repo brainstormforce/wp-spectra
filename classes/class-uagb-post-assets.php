@@ -446,29 +446,32 @@ class UAGB_Post_Assets {
 
 		$block_list_for_assets = $this->current_block_list;
 
-		$blocks = UAGB_Config::get_block_attributes();
+		$blocks = UAGB_Block_Module::get_blocks_info();
+
+		$block_assets = UAGB_Block_Module::get_block_dependencies();
 
 		foreach ( $block_list_for_assets as $key => $curr_block_name ) {
 
-			$js_assets = ( isset( $blocks[ $curr_block_name ]['js_assets'] ) ) ? $blocks[ $curr_block_name ]['js_assets'] : array();
+			$static_dependencies = ( isset( $blocks[ $curr_block_name ]['static_dependencies'] ) ) ? $blocks[ $curr_block_name ]['static_dependencies'] : array();
 
-			$css_assets = ( isset( $blocks[ $curr_block_name ]['css_assets'] ) ) ? $blocks[ $curr_block_name ]['css_assets'] : array();
+			foreach ( $static_dependencies as $asset_handle => $asset_info ) {
 
-			foreach ( $js_assets as $asset_handle => $val ) {
-				// Scripts.
-				if ( 'uagb-faq-js' === $val ) {
-					if ( $this->uag_faq_layout ) {
-						wp_enqueue_script( 'uagb-faq-js' );
+				if ( 'js' === $asset_info['type'] ) {
+					// Scripts.
+					if ( 'uagb-faq-js' === $asset_handle ) {
+						if ( $this->uag_faq_layout ) {
+							wp_enqueue_script( 'uagb-faq-js' );
+						}
+					} else {
+
+						wp_enqueue_script( $asset_handle );
 					}
-				} else {
-
-					wp_enqueue_script( $val );
 				}
-			}
 
-			foreach ( $css_assets as $asset_handle => $val ) {
-				// Styles.
-				wp_enqueue_style( $val );
+				if ( 'css' === $asset_info['type'] ) {
+					// Styles.
+					wp_enqueue_style( $asset_handle );
+				}
 			}
 		}
 
@@ -771,11 +774,13 @@ class UAGB_Post_Assets {
 		}
 
 		// Add static css here.
-		$block_css_arr = UAGB_Config::get_block_assets_css();
+		$blocks = UAGB_Block_Module::get_blocks_info();
 
-		if ( 'enabled' === $this->file_generation && isset( $block_css_arr[ $name ] ) && ! in_array( $block_css_arr[ $name ]['name'], $this->static_css_blocks, true ) ) {
+		$block_css_file_name = ( isset( $blocks[ $name ] ) && isset( $blocks[ $name ]['static_css'] ) ) ? $blocks[ $name ]['static_css'] : str_replace( 'uagb/', '', $name );
+
+		if ( 'enabled' === $this->file_generation && ! in_array( $block_css_file_name, $this->static_css_blocks, true ) ) {
 			$common_css = array(
-				'common' => $this->get_block_static_css( $block_css_arr[ $name ]['name'] ),
+				'common' => $this->get_block_static_css( $block_css_file_name ),
 			);
 			$css       += $common_css;
 		}
@@ -783,7 +788,7 @@ class UAGB_Post_Assets {
 		if ( strpos( $name, 'uagb/' ) !== false ) {
 			$_block_slug = str_replace( 'uagb/', '', $name );
 			$_block_css  = UAGB_Block_Module::get_frontend_css( $_block_slug, $blockattr, $block_id );
-			$_block_js   = UAGB_Block_Module::get_frontend_js( $_block_slug, $blockattr, $block_id );
+			$_block_js   = UAGB_Block_Module::get_frontend_js( $_block_slug, $blockattr, $block_id, 'js' );
 			$css         = array_merge( $css, $_block_css );
 			if ( ! empty( $_block_js ) ) {
 				$js .= $_block_js;
