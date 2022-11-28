@@ -1,6 +1,7 @@
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
 const borderAttributes = getBorderAttributes( 'overall' );
+const iconBorderAttributes = getBorderAttributes( 'icon' );
 
 const attributes = {
 	block_id: {
@@ -604,6 +605,31 @@ const attributes = {
 			styleType: 'icon-size-type'
 		},
 	},
+	iconBgSize: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-size'
+		},
+	},
+	iconBgSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-size-tablet'
+		},
+	},
+	iconBgSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-size-mobile'
+		},
+	},
+	iconBgSizeType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-size-type'
+		},
+	},
 	columns: {
 		type: 'number',
 		default: 2,
@@ -823,5 +849,12 @@ const attributes = {
 			styleType: 'desc-letter-spacing-type'
 		}
 	},
+	iconBgColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-color'
+		}
+	},
+	...iconBorderAttributes
 };
 export default attributes;

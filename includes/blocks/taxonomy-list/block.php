@@ -16,6 +16,9 @@ $block_data = array(
 	'title'            => __( 'Taxonomy List', 'ultimate-addons-for-gutenberg' ),
 	'description'      => __( 'Display your content categorized as per post type.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
-	'priority'         => 29,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'taxonomy-list' ),
 	'deprecated'       => false,
+	'dynamic_assets'   => array(
+		'dir' => 'taxonomy-list',
+	),
 );

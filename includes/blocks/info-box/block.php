@@ -17,6 +17,9 @@ $block_data = array(
 	'description'      => __( 'Add image/icon, seperator and text description using a single block.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 5,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'info-box' ),
 	'deprecated'       => false,
+	'dynamic_assets'   => array(
+		'dir' => 'info-box',
+	),
 );

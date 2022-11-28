@@ -17,6 +17,9 @@ $block_data = array(
 	'description'      => __( 'Add a marketing call to action button with a short description.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 19,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'marketing-button' ),
 	'deprecated'       => false,
+	'dynamic_assets'   => array(
+		'dir' => 'marketing-button',
+	),
 );
