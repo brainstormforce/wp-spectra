@@ -12,8 +12,11 @@ import ResponsiveUAGImage from '@Components/responsive-image';
 import ResponsiveUAGFocalPointPicker from '@Components/responsive-focal-point-picker';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGB_Block_Icons from '@Controls/block-icons';
+import { select } from '@wordpress/data';
 
 const Background = ( props ) => {
+	const { getSelectedBlock } = select( 'core/block-editor' );
+
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -894,10 +897,23 @@ const Background = ( props ) => {
 		</>
 	);
 
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	const controlName = 'background'; // there is no label props that's why keep hard coded label
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.background.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.background.${controlName}`, '', blockNameForHook );
+
 	return (
-		<div className="uag-bg-select-control components-base-control">
-			{ advancedControls }
-		</div>
+		<>
+			{
+				controlBeforeDomElement
+			}
+			<div className="uag-bg-select-control components-base-control">
+				{ advancedControls }
+			</div>
+			{
+				controlAfterDomElement
+			}
+		</>
 	);
 };
 
