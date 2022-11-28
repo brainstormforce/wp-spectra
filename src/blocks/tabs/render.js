@@ -270,6 +270,7 @@ const Render = ( props ) => {
 										'ultimate-addons-for-gutenberg'
 									) }
 								/>
+								{ wp.richText.unregisterFormatType( 'core/link' ) }
 								{ showIcon &&
 									icon &&
 									( iconPosition === 'right' ||

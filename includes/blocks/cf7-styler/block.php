@@ -18,6 +18,9 @@ $block_data = array(
 	'is_active'        => class_exists( 'WPCF7_ContactForm' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 92,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'cf7-styler' ),
 	'deprecated'       => true,
+	'dynamic_assets'   => array(
+		'dir' => 'cf7-styler',
+	),
 );

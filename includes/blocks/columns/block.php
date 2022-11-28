@@ -17,6 +17,9 @@ $block_data = array(
 	'description'      => __( 'Insert a number of columns within a single row.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 90,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'columns' ),
 	'deprecated'       => true,
+	'dynamic_assets'   => array(
+		'dir' => 'columns',
+	),
 );

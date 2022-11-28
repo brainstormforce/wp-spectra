@@ -17,6 +17,9 @@ $block_data = array(
 	'description'      => __( 'Display qoutes/quoted texts using blockquote.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 10,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'blockquote' ),
 	'deprecated'       => false,
+	'dynamic_assets'   => array(
+		'dir' => 'blockquote',
+	),
 );
