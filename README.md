@@ -175,6 +175,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Post Grid - Added Setting for image aspect ratio.
 * Improvement: Post Grid - Added equal height option for featured Images.
 * Improvement: Advanced Heading - Added Sub-heading and Separator Position Settings.
+* Improvement: FAQ - Added background Size, Background color and Border stylings for Toggle Icon.
 * Fix: Post grid - Enabling show taxonomy does not show taxonomy on post inside editor.
 * Fix: Icon List - Resolved an issue as the link was getting disabled for the icon list child.
 
