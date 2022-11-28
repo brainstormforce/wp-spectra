@@ -152,7 +152,7 @@ UAGTextControl.defaultProps = {
     variant: 'full-width',
     autoComplete: 'off',
     showHeaderControls: true,
-	dynamicContentType: 'url', // url / text
+	dynamicContentType: 'url', // url | text
 	enableDynamicContent: false
 };
 

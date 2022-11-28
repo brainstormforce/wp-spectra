@@ -19,6 +19,7 @@ import MultiMediaSelector from '@Components/multimedia-select';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import SpectraMatrixControl from '@Components/matrix-alignment-control';
 import UAGTabsControl from '@Components/tabs';
+import UAGTextControl from '@Components/text-control';
 import UAGSelectControl from '@Components/select-control';
 import BoxShadowControl from '@Components/box-shadow';
 import UAGPresets from '@Components/presets';
@@ -27,7 +28,6 @@ import {
 } from '@wordpress/block-editor';
 import {
 	ToggleControl,
-	TextControl,
 	Icon,
 } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -728,14 +728,18 @@ const Settings = ( props ) => {
 							/>
 						</>
 					) }
-					<TextControl
-						autoComplete="off"
+					<UAGTextControl
 						label={ __(
 							'Default',
 							'ultimate-addons-for-gutenberg'
 						) }
+						data={ {
+							value: imageDefaultCaption,
+							label: 'imageDefaultCaption',
+						} }
+						setAttributes={ setAttributes }
 						value={ imageDefaultCaption }
-						onChange={ ( value ) => setAttributes( { imageDefaultCaption: value } ) }
+						variant={ 'inline' }
 					/>
 				</>
 			) }
