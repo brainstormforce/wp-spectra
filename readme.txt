@@ -173,6 +173,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 = 2.1.0 - TUESDAY, 29th NOVEMBER 2022 =
 * Improvement: Post Grid - Added Setting to show buttons on equal height.
 * Improvement: Post Grid - Added Setting for image aspect ratio.
+* Improvement: Post Grid - Added equal height option for featured Images.
 * Improvement: Advanced Heading - Added Sub-heading and Separator Position Settings.
 
 = 2.0.16 - TUESDAY, 22th NOVEMBER 2022 =
