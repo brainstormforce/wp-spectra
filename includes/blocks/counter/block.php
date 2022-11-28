@@ -20,7 +20,7 @@ $block_data = array(
 	'priority'            => Spectra_Block_Prioritization::get_block_priority( 'counter' ),
 	'static_dependencies' => array(
 		'uagb-counter-js' => array(
-			'src'  => UAGB_Scripts_Utils::get_js_url( 'counter' ),
+			'src'  => UAGB_Scripts_Utils::get_js_url( 'spectra-counter' ),
 			'dep'  => array(),
 			'type' => 'js',
 		),
