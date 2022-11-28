@@ -50,6 +50,13 @@ const attributes = {
 		type: 'boolean',
 		default: headingDescToggleDefault,
 	},
+	headingDescPosition: {
+		type: 'string',
+		default: 'below-heading',
+		UAGCopyPaste: {
+			styleType: 'prefix-position'
+		}
+	},
 	headingDesc: {
 		source: 'html',
 		selector: '.uagb-desc-text',
@@ -123,6 +130,13 @@ const attributes = {
 			styleType: 'separator-style'
 		}
 	},
+	seperatorPosition: {
+		type: 'string',
+		default: 'below-heading',
+		UAGCopyPaste: {
+			styleType: 'separator-position'
+		}
+	},
 	separatorHeight: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -189,6 +203,34 @@ const attributes = {
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'main-title-unit-type'
+		}
+	},
+	subHeadSpace: {
+		type: 'number',
+		default: 15,
+		UAGCopyPaste: {
+			styleType: 'sub-title-bottom-margin'
+		}
+	},
+	subHeadSpaceMobile: {
+		type: 'number',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'sub-title-bottom-margin-tablet'
+		}
+	},
+	subHeadSpaceTablet: {
+		type: 'number',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'sub-title-bottom-margin-mobile'
+		}
+	},
+	subHeadSpaceType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'sub-title-unit-type'
 		}
 	},
 	headFontFamily: {

@@ -17,6 +17,18 @@ const initialState = {
     enableCopyPasteStyles : '',
     enableDisplayConditions : '',
     enableMasonryExtension : '',
+	socialLogin: {
+		recaptchaVersion: 'v2',
+		recaptchaSiteKey: '',
+		recaptchaSecretKey: '',
+		recaptchaBadgeHide: false,
+		socialRegister: false,
+		googleClientId: '',
+		facebookAppId: '',
+		facebookAppSecret: ''
+	},
+	enableDynamicContentExtension: '',
+	dynamicContentMode: 'popup',
 	enableResponsiveConditions : '',
 	contentWidth: '',
 	siteKeyV2: '',

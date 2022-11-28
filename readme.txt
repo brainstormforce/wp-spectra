@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.1
-Stable tag: 2.0.16
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -171,6 +171,10 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 2.1.0 - TUESDAY, 29th NOVEMBER 2022 =
+* Improvement: Post Grid - Added Setting to show buttons on equal height.
+* Improvement: Post Grid - Added Setting for image aspect ratio.
+* Improvement: Post Grid - Added equal height option for featured Images.
+* Improvement: Advanced Heading - Added Sub-heading and Separator Position Settings.
 * Fix: Post grid - Enabling show taxonomy does not show taxonomy on post inside editor.
 
 = 2.0.16 - TUESDAY, 22th NOVEMBER 2022 =

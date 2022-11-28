@@ -40,7 +40,13 @@ const SettingsIcons = {
 		<svg className="flex-shrink-0 mr-4 stroke-inherit" fill="none" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path d="M10 6V10L13 13M19 10C19 14.9706 14.9706 19 10 19C5.02944 19 1 14.9706 1 10C1 5.02944 5.02944 1 10 1C14.9706 1 19 5.02944 19 10Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
-	)
+	),
+    'account' : (
+        <svg className="flex-shrink-0 mr-4 stroke-inherit" width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.7498 5C12.7498 7.07107 11.0709 8.75 8.99984 8.75C6.92877 8.75 5.24984 7.07107 5.24984 5C5.24984 2.92893 6.92877 1.25 8.99984 1.25C11.0709 1.25 12.7498 2.92893 12.7498 5Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M1.50098 19.1182C1.57128 15.0369 4.90171 11.75 8.99984 11.75C13.0981 11.75 16.4286 15.0371 16.4987 19.1185C14.2159 20.166 11.6762 20.75 9.00016 20.75C6.32384 20.75 3.78394 20.1659 1.50098 19.1182Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+    ),
 };
 
 export default SettingsIcons;
