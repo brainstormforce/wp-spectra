@@ -41,7 +41,8 @@
 				color: inherit;
 			}
 		}
-		.uagb-post__image .uagb-post__image-equal-height{
+
+		.uagb-post__image .uagb-post__image-equal-height {
 			display: block;
 			height: 0;
 			padding-bottom: 66.67%;
@@ -114,7 +115,7 @@
 					height: 0;
 					overflow: hidden;
 					position: relative;
-					
+
 					&.uagb-image-ratio-2-3 {
 						padding-bottom: 66%;
 					}
@@ -134,11 +135,13 @@
 					&.uagb-image-ratio-inherit {
 						padding-bottom: 0;
 						height: auto;
-						img{
-							position: unset!important;
+
+						img {
+							position: unset !important;
 						}
 					}
 				}
+
 				a[class^="uagb-image-ratio-"] > img {
 					position: absolute;
 					height: 100%;
