@@ -203,6 +203,11 @@ $selectors = array(
 		),
 		$btn_border
 	),
+	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:hover ' => array(
+		'color'            => $attr['submitColorHover'],
+		'background-color' => ( 'color' === $attr['submitBgHoverType'] ) ? $attr['submitBgColorHover'] : 'transparent',
+		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],
+	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button:hover' => array(
 		'color'            => $attr['submitColorHover'],
 		'background-color' => ( 'color' === $attr['submitBgHoverType'] ) ? $attr['submitBgColorHover'] : 'transparent',
