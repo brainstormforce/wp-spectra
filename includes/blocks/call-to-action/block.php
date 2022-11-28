@@ -17,6 +17,9 @@ $block_data = array(
 	'description'      => __( 'Add a button along with heading and description.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 6,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'call-to-action' ),
 	'deprecated'       => false,
+	'dynamic_assets'   => array(
+		'dir' => 'call-to-action',
+	),
 );

@@ -146,6 +146,11 @@ const Settings = ( props ) => {
 		answerLetterSpacingMobile,
 		answerLetterSpacingType,
 		boxBgHoverColor,
+		iconBgColor,
+		iconBgSize,
+		iconBgSizeTablet,
+		iconBgSizeMobile,
+		iconBgSizeType,
 	} = attributes;
 
 	const onchangeIcon = ( value ) => {
@@ -1210,6 +1215,43 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<ResponsiveSlider
+					label={ __( 'Background Size', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: iconBgSize,
+							label: 'iconBgSize',
+						},
+						tablet: {
+							value: iconBgSizeTablet,
+							label: 'iconBgSizeTablet',
+						},
+						mobile: {
+							value: iconBgSizeMobile,
+							label: 'iconBgSizeMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 100 }
+					unit={ {
+						value: iconBgSizeType,
+						label: 'iconBgSizeType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+						{
+							name: __( '%', 'ultimate-addons-for-gutenberg' ),
+							unitValue: '%',
+						},
+					] }
+					setAttributes={ setAttributes }
+				/>
+				<ResponsiveSlider
 					label={ __(
 						'Gap between Icon and Question', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -1254,6 +1296,26 @@ const Settings = ( props ) => {
 						label: 'iconActiveColor',
 					} }
 					setAttributes={ setAttributes }
+				/>
+				<AdvancedPopColorControl
+					label={ __(
+						'Background Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ iconBgColor }
+					data={ {
+						value: iconBgColor,
+						label: 'iconBgColor',
+					} }
+					setAttributes={ setAttributes }
+				/>
+				<ResponsiveBorder
+					setAttributes={ setAttributes }
+					prefix={ 'icon' }
+					disabledBorderTitle= { false }
+					attributes={ attributes }
+					deviceType={ deviceType }
+					disableBottomSeparator={ true }
 				/>
 			</UAGAdvancedPanelBody>
 		);
