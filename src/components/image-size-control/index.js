@@ -7,6 +7,7 @@ import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import useDimensionHandler from './use-dimension-handler';
 import { useDeviceType } from '@Controls/getPreviewType';
+import { select } from '@wordpress/data';
 import ResponsiveToggle from '../responsive-toggle';
 
 export default function ImageSizeControl( {
@@ -34,6 +35,8 @@ export default function ImageSizeControl( {
 			styles.unuse();
 		};
 	}, [] );
+
+	const { getSelectedBlock } = select( 'core/block-editor' );
 
 	const deviceType = useDeviceType();
 	const responsive = true;
@@ -152,8 +155,18 @@ export default function ImageSizeControl( {
 		</>
 	);
 
+
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	const controlName = 'image-size'; // This components have no label props that's why added hard coded label
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.image-size-control.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.image-size-control.${controlName}`, '', blockNameForHook );
+
+
 	return (
 		<>
+			{
+				controlBeforeDomElement
+			}
 			{ imageSizeOptions.length !== 0 && (
 				<ResponsiveSelectControl
 					label={ __( 'Image Size', 'ultimate-addons-for-gutenberg' ) }
@@ -194,6 +207,9 @@ export default function ImageSizeControl( {
 					</div>
 				</div>
 			) }
+			{
+				controlAfterDomElement
+			}
 		</>
 	);
 }
