@@ -77,23 +77,33 @@ const UAGReset = ( props ) => {
 		}
 	};
 
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	const controlName = 'reset'; // there is no label props that's why keep hard coded label
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.reset.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.reset.${controlName}`, '', blockNameForHook );
 	return (
 		<Tooltip
 			text={ __( 'Reset', 'ultimate-addons-for-gutenberg' )}
 			key={ 'reset' }
 		>
-		<Button
-			className="uagb-reset"
-			isSecondary
-			isSmall
-			onClick={ ( e ) => {
-				e.preventDefault();
-				resetHandler();
-			} }
-			disabled = {resetDisableState}
-		>
-			<Dashicon icon="image-rotate" />
-		</Button>
+			{
+				controlBeforeDomElement
+			}
+			<Button
+				className="uagb-reset"
+				isSecondary
+				isSmall
+				onClick={ ( e ) => {
+					e.preventDefault();
+					resetHandler();
+				} }
+				disabled = {resetDisableState}
+			>
+				<Dashicon icon="image-rotate" />
+			</Button>
+			{
+				controlAfterDomElement
+			}
 		</Tooltip>
 	);
 }
