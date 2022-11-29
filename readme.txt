@@ -177,6 +177,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Advanced Heading - Added Sub-heading and Separator Position Settings.
 * Improvement: FAQ - Added background Size, Background color and Border stylings for Toggle Icon.
 * Improvement: Table Of Contents - Added Allow Dynamic Heading feature.
+* Fix: Spectra Text Control - Changed default label.
+* Fix: Forms Settings - Added email address labels.
 * Fix: Buttons from diff blocks does not inherit the style from theme.
 * Fix: Post carousel - block is broken on the front-end side, when we select background image.
 * Fix: Select control - Not aligned properly with other control.
