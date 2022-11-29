@@ -5,10 +5,13 @@
  import { useDeviceType } from '@Controls/getPreviewType';
  import ResponsiveToggle from '../responsive-toggle';
  import UAGMediaPicker from '@Components/image';
+ import { select } from '@wordpress/data';
+import { getIdFromString } from '@Utils/Helpers';
  import { __ } from '@wordpress/i18n';
 
  const ResponsiveUAGImage = ( props ) => {
 	 const { backgroundImage, setAttributes } = props;
+	 const { getSelectedBlock } = select( 'core/block-editor' );
 
 	 const responsive = true;
 
@@ -66,21 +69,34 @@
 		/>
 	 );
 
+	 const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	 const controlName = 'image'; // there is no label props that's why keep hard coded label
+	 const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.responsive-image.${controlName}.before`, '', blockNameForHook );
+	 const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.responsive-image.${controlName}`, '', blockNameForHook );
+
 	 return (
-		 <div className="uag-responsive-image-select components-base-control uagb-responsive-select-control">
-			 <div className="uagb-size-type-field-tabs">
-				 <div className="uagb-control__header">
-					 <ResponsiveToggle
-						 label= { __( 'Image', 'ultimate-addons-for-gutenberg' ) }
-						 responsive= { responsive }
-					 />
-				 </div>
-				 { output[ deviceType ] ? output[ deviceType ] : output.Desktop }
-			 </div>
-			 { props.help && (
-				 <p className="uag-control-help-notice">{ props.help }</p>
-			 ) }
-		 </div>
+		<>
+			{
+				controlBeforeDomElement
+			}
+			<div className="uag-responsive-image-select components-base-control uagb-responsive-select-control">
+				<div className="uagb-size-type-field-tabs">
+					<div className="uagb-control__header">
+						<ResponsiveToggle
+							label= { __( 'Image', 'ultimate-addons-for-gutenberg' ) }
+							responsive= { responsive }
+						/>
+					</div>
+					{ output[ deviceType ] ? output[ deviceType ] : output.Desktop }
+				</div>
+				{ props.help && (
+					<p className="uag-control-help-notice">{ props.help }</p>
+				) }
+			</div>
+			{
+				controlAfterDomElement
+			}
+		</>
 	 );
  };
 
