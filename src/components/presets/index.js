@@ -5,6 +5,7 @@ import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import { select, dispatch } from '@wordpress/data';
 import classnames from 'classnames';
+import { getIdFromString } from '@Utils/Helpers';
 import UAGReset from '../reset';
 
 const UAGPresets = ( props ) => {
@@ -16,6 +17,9 @@ const UAGPresets = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
+
+	const { getSelectedBlock } = select( 'core/block-editor' );
+
 
     const {
         setAttributes,
@@ -83,8 +87,6 @@ const UAGPresets = ( props ) => {
 
     const updateChildBlockAttributes = ( preset ) => {
 
-        const { getSelectedBlock } = select( 'core/block-editor' );
-
         let childBlocks = [];
 
         if ( getSelectedBlock().innerBlocks ) {
@@ -114,7 +116,6 @@ const UAGPresets = ( props ) => {
     }
 
 	const resetChildBlockAttributes = () => {
-		const { getSelectedBlock } = select( 'core/block-editor' );
 
         let childBlocks = [];
 
@@ -186,23 +187,36 @@ const UAGPresets = ( props ) => {
         </>
     );
 
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	const controlName = getIdFromString(label);
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.presets.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.presets.${controlName}`, '', blockNameForHook );
+
     return (
-		<div className={ classnames(
-			className,
-			'uagb-presets-main-wrap',
-			'components-base-control'
-		) }>
-			<div className='uagb-presets-label-reset-wrap'>
-				<label htmlFor="uag-presets-label" className="uag-presets-label">{label}</label>
-				<UAGReset
-					attributeNames = {resetAttributes}
-					setAttributes={ setAttributes }
-					onReset={onReset}
-				/>
+		<>
+			{
+				controlBeforeDomElement
+			}
+			<div className={ classnames(
+				className,
+				'uagb-presets-main-wrap',
+				'components-base-control'
+			) }>
+				<div className='uagb-presets-label-reset-wrap'>
+					<label htmlFor="uag-presets-label" className="uag-presets-label">{label}</label>
+					<UAGReset
+						attributeNames = {resetAttributes}
+						setAttributes={ setAttributes }
+						onReset={onReset}
+					/>
+				</div>
+				{ 'dropdown' === presetInputType && presetDropdown }
+				{ 'radioImage' === presetInputType && presetRadioImage }
 			</div>
-            { 'dropdown' === presetInputType && presetDropdown }
-            { 'radioImage' === presetInputType && presetRadioImage }
-        </div>
+			{
+				controlAfterDomElement
+			}
+		</>
     );
 }
 
