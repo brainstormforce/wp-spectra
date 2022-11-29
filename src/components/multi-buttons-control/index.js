@@ -35,6 +35,7 @@ const MultiButtonsControl = ( props ) => {
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
 	const selectedBlock = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	const allBlocksAttributes = wp.hooks.applyFilters( 'uagb.blocksAttributes', blocksAttributes ); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	const [ buttonPrimaryStateDesktop, setbuttonPrimaryStateDesktop ] = useState( true );
 	const [ buttonPrimaryStateTablet, setbuttonPrimaryStateTablet ] = useState( true );
 	const [ buttonPrimaryStateMobile, setbuttonPrimaryStateMobile ] = useState( true );
@@ -70,7 +71,7 @@ const MultiButtonsControl = ( props ) => {
 							if ( option.value === data.desktop.value && buttonPrimaryStateDesktop ) {
 								setbuttonPrimaryStateDesktop( false );
 								setAttributes( {
-									[ data.desktop.label ]: blocksAttributes[selectedBlock][data.desktop.label].default,
+									[ data.desktop.label ]: allBlocksAttributes[selectedBlock][data.desktop.label].default,
 								} );
 								return;
 							}
@@ -106,7 +107,7 @@ const MultiButtonsControl = ( props ) => {
 							if ( option.value === data.tablet.value && buttonPrimaryStateTablet ) {
 								setbuttonPrimaryStateTablet( false );
 								setAttributes( {
-									[ data.tablet.label ]: blocksAttributes[selectedBlock][data.tablet.label].default,
+									[ data.tablet.label ]: allBlocksAttributes[selectedBlock][data.tablet.label].default,
 								} );
 								return;
 							}
@@ -142,7 +143,7 @@ const MultiButtonsControl = ( props ) => {
 							if ( option.value === data.mobile.value && buttonPrimaryStateMobile ) {
 								setbuttonPrimaryStateMobile( false );
 								setAttributes( {
-									[ data.mobile.label ]: blocksAttributes[selectedBlock][data.mobile.label].default,
+									[ data.mobile.label ]: allBlocksAttributes[selectedBlock][data.mobile.label].default,
 								} );
 								return;
 							}
@@ -186,7 +187,7 @@ const MultiButtonsControl = ( props ) => {
 		if ( value === data.value && buttonPrimaryStateDesktop ) {
 			setbuttonPrimaryStateDesktop( false );
 			setAttributes( {
-				[ data.label ]: blocksAttributes[selectedBlock][data.label].default,
+				[ data.label ]: allBlocksAttributes[selectedBlock][data.label].default,
 			} );
 
 			return;

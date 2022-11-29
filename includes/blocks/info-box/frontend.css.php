@@ -17,6 +17,8 @@ $cta_border_css        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 );
 $cta_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
 $cta_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
+
+
 // Adds Fonts.
 UAGB_Block_JS::blocks_info_box_gfont( $attr );
 
@@ -638,20 +640,21 @@ if ( 'button' === $attr['ctaType'] ) {
 	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link svg'] = array(
 		'fill' => $attr['ctaBtnLinkColor'],
 	);
-	$selectors[' .uagb-ifb-button-wrapper.wp-block-button:not(.is-style-outline) .wp-block-button__link:not(.has-background):hover'] = array(
+
+	$selectors['.wp-block-uagb-info-box.uagb-infobox__content-wrap .wp-block-button.uagb-ifb-button-wrapper:hover .uagb-infobox-cta-link.wp-block-button__link'] = array(
 		'color'            => $attr['ctaLinkHoverColor'],
 		'background-color' => ( 'color' === $attr['ctaBgHoverType'] ) ? $attr['ctaBgHoverColor'] : 'transparent',
 		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['ctaBorderhoverColor'],
 	);
-	$selectors[' .uagb-infobox-cta-link:hover']                              = array(
+	$selectors[' .uagb-infobox-cta-link:hover'] = array(
 		'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['ctaBorderhoverColor'],
 	);
-	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg'] = array(
+	$selectors[' .wp-block-button.uagb-ifb-button-wrapper:hover .uagb-infobox-cta-link > svg'] = array(
 		'fill' => $attr['ctaLinkHoverColor'],
 	);
-	$selectors[' .uagb-infobox-cta-link']                                    = $cta_border_css;
-	$t_selectors[' .uagb-infobox-cta-link']                                  = $cta_border_css_tablet;
-	$m_selectors[' .uagb-infobox-cta-link']                                  = $cta_border_css_mobile;
+	$selectors[' .uagb-infobox-cta-link']   = $cta_border_css;
+	$t_selectors[' .uagb-infobox-cta-link'] = $cta_border_css_tablet;
+	$m_selectors[' .uagb-infobox-cta-link'] = $cta_border_css_mobile;
 
 }
 if ( $attr['imageWidthType'] ) {

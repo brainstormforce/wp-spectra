@@ -2,6 +2,7 @@ import { Disclosure } from '@headlessui/react'
 import { Link, useLocation } from 'react-router-dom';
 import { __ } from '@wordpress/i18n';
 import ChangeLogPopup from './ChangeLogPopup';
+import PluginStats from './PluginStats';
 
 export default function MainNav() {
 
@@ -64,6 +65,7 @@ export default function MainNav() {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <PluginStats/>
             <ChangeLogPopup/>
           </div>
         </div>

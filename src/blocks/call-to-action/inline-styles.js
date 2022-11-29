@@ -293,7 +293,11 @@ function CtaStyle( props ) {
 		'padding-right': generateCSSUnit( ctaRightPadding, ctaPaddingUnit ),
 		...ctaBorderCSS,
 	};
-
+	selectors['.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background):hover'] = {
+		'color': ctaLinkHoverColor,
+		'background-color': ( ctaBgHoverType === 'color' ) ? ctaBgHoverColor : 'transparent',
+		'border-color': btnBorderHColor,
+	};
 	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button'] = {
 		'font-size': generateCSSUnit( secondCtaFontSize, secondCtaFontSizeType ),
 		'font-family': secondCtaFontFamily,
