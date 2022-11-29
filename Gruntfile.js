@@ -130,6 +130,7 @@ module.exports = function ( grunt ) {
 					'!node_modules/**',
 					'!php-tests/**',
 					'!bin/**',
+					'!vendor/**',
 				],
 				overwrite: true,
 				replacements: [
