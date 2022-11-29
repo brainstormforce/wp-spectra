@@ -6,7 +6,6 @@
  import ResponsiveToggle from '../responsive-toggle';
  import UAGMediaPicker from '@Components/image';
  import { select } from '@wordpress/data';
-import { getIdFromString } from '@Utils/Helpers';
  import { __ } from '@wordpress/i18n';
 
  const ResponsiveUAGImage = ( props ) => {

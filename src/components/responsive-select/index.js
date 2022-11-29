@@ -5,6 +5,8 @@ import React, { useLayoutEffect } from 'react';
 import { SelectControl } from '@wordpress/components';
 import { useDeviceType } from '@Controls/getPreviewType';
 import ResponsiveToggle from '../responsive-toggle';
+import { select } from '@wordpress/data';
+import { getIdFromString } from '@Utils/Helpers';
 import styles from './editor.lazy.scss';
 
 const ResponsiveSelectControl = ( props ) => {
@@ -16,6 +18,9 @@ const ResponsiveSelectControl = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
+
+	const { getSelectedBlock } = select( 'core/block-editor' );
+
 
 	const { label, data, setAttributes, options } = props;
 
@@ -52,21 +57,35 @@ const ResponsiveSelectControl = ( props ) => {
 		/>
 	);
 
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	const controlName = getIdFromString(props.label);
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.responsive-select.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.responsive-select.${controlName}`, '', blockNameForHook );
+
+
 	return (
-		<div className="components-base-control uagb-responsive-select-control">
-			<div className="uagb-size-type-field-tabs">
-				<div className="uagb-control__header">
-					<ResponsiveToggle
-						label= { label }
-						responsive= { responsive }
-					/>
+		<>
+			{
+				controlBeforeDomElement
+			}
+			<div className="components-base-control uagb-responsive-select-control">
+				<div className="uagb-size-type-field-tabs">
+					<div className="uagb-control__header">
+						<ResponsiveToggle
+							label= { label }
+							responsive= { responsive }
+						/>
+					</div>
+					{ output[ deviceType ] ? output[ deviceType ] : output.Desktop }
 				</div>
-				{ output[ deviceType ] ? output[ deviceType ] : output.Desktop }
+				{ props.help && (
+					<p className="uag-control-help-notice">{ props.help }</p>
+				) }
 			</div>
-			{ props.help && (
-				<p className="uag-control-help-notice">{ props.help }</p>
-			) }
-		</div>
+			{
+				controlAfterDomElement
+			}
+		</>
 	);
 };
 
