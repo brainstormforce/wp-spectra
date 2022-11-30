@@ -270,7 +270,6 @@ const Render = ( props ) => {
 										'ultimate-addons-for-gutenberg'
 									) }
 								/>
-								{ wp.richText.unregisterFormatType( 'core/link' ) }
 								{ showIcon &&
 									icon &&
 									( iconPosition === 'right' ||
@@ -283,7 +282,7 @@ const Render = ( props ) => {
 						</li>
 					) ) }
 					<li className="uagb-tab uagb-tabs__add-tab" // eslint-disable-line jsx-a11y/click-events-have-key-events
-						role='presentation' 
+						role='presentation'
 						tabIndex='0'
 						onClick={ () => addTab() }>
 						<Tooltip
