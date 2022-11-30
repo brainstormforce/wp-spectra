@@ -801,6 +801,8 @@ select {
   width: 1.5rem;
 }.w-auto {
   width: auto;
+}.w-4 {
+  width: 1rem;
 }.w-full {
   width: 100%;
 }.w-0 {
