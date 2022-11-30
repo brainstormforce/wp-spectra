@@ -207,7 +207,7 @@ const UAGBImageGalleryPagedGrid = {
 			if ( ! element ) {
 				element = $scope;
 			};
-			const mediaElements = element.querySelectorAll( '.spectra-image-gallery__media-wrapper' );
+			const mediaElements = element.querySelectorAll( '.spectra-image-gallery__media-wrapper--isotope' );
 			const isotope = new Isotope( element, { // eslint-disable-line no-undef
 				itemSelector: '.spectra-image-gallery__media-wrapper--isotope',
 				layoutMode: 'fitRows',
