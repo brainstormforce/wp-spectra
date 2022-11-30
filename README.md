@@ -188,7 +188,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Icon List - Resolved an issue in which the links were getting disabled for icon list children.
 * Fix: Post Carousel - Resolved an issue where the block breaks on the front end when a background image is set.
 * Fix: Post Grid - Resolved an issue where enabling the show taxonomy toggle did not show taxonomy on the posts in the editor.
-* Fix: Tabs - Removed the link option from the toolbar.
 * Fix: Responsive Border Control - Resolved an issue where buttons from multiple blocks were not inheriting the theme's style.
 * Fix: Responsive Border Control - Repositioned the misaligned reset control button in all border settings.
 * Fix: Select Control - Adjusted this control to properly align with other setting controls.
