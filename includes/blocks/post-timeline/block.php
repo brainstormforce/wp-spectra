@@ -17,13 +17,12 @@ $block_data = array(
 	'description'         => __( 'Create an attractive timeline to display your posts.', 'ultimate-addons-for-gutenberg' ),
 	'default'             => true,
 	'extension'           => false,
-	'js_assets'           => array( 'uagb-timeline-js' ),
-	'priority'            => 22,
+	'priority'            => Spectra_Block_Prioritization::get_block_priority( 'post-timeline' ),
 	'deprecated'          => false,
 	'static_dependencies' => array(
 		'uagb-timeline-js' => array(
 			'src'  => UAGB_Scripts_Utils::get_js_url( 'timeline' ),
-			'dep'  => array( 'jquery' ),
+			'dep'  => array(),
 			'type' => 'js',
 		),
 	),

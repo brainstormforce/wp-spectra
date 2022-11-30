@@ -2,7 +2,7 @@
 /**
  * UAGB Block.
  *
- * @since 2.0.0
+ * @since 2.1.0
  *
  * @package uagb
  */
@@ -46,7 +46,7 @@ if ( ! class_exists( 'UAGB_Block' ) ) {
 		/**
 		 * Register a Block.
 		 *
-		 * @since x.x.x
+		 * @since 2.1.0
 		 * @param string $block_file Block File Path.
 		 */
 		public function register( $block_file ) {
@@ -64,7 +64,7 @@ if ( ! class_exists( 'UAGB_Block' ) ) {
 		/**
 		 * Register all UAG Lite Blocks.
 		 *
-		 * @since x.x.x
+		 * @since 2.1.0
 		 */
 		public function register_blocks() {
 
@@ -82,7 +82,7 @@ if ( ! class_exists( 'UAGB_Block' ) ) {
 		/**
 		 * Gives all Blocks.
 		 *
-		 * @since x.x.x
+		 * @since 2.1.0
 		 */
 		public function get_blocks() {
 
@@ -98,7 +98,7 @@ if ( ! class_exists( 'UAGB_Block' ) ) {
 	/**
 	 * Gives UAGB_Block object
 	 *
-	 * @since x.x.x
+	 * @since 2.1.0
 	 *
 	 * @return object
 	 */

@@ -16,13 +16,12 @@ $block_data = array(
 	'title'               => __( 'Lottie Animation', 'ultimate-addons-for-gutenberg' ),
 	'description'         => __( 'Add customizable lottie animation on your page.', 'ultimate-addons-for-gutenberg' ),
 	'default'             => true,
-	'js_assets'           => array( 'uagb-lottie-js', 'uagb-bodymovin-js' ),
-	'priority'            => 18,
+	'priority'            => Spectra_Block_Prioritization::get_block_priority( 'lottie' ),
 	'deprecated'          => false,
 	'static_dependencies' => array(
 		'uagb-lottie-js'    => array(
 			'src'        => UAGB_Scripts_Utils::get_js_url( 'lottie' ),
-			'dep'        => array( 'jquery', 'uagb-bodymovin-js' ),
+			'dep'        => array( 'uagb-bodymovin-js' ),
 			'skipEditor' => true,
 			'type'       => 'js',
 		),
@@ -33,5 +32,4 @@ $block_data = array(
 	'dynamic_assets'      => array(
 		'dir' => 'lottie',
 	),
-	'js_assets'           => array( 'uagb-lottie-js', 'uagb-bodymovin-js' ),
 );

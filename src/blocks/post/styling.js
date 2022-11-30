@@ -564,12 +564,7 @@ function styling( props ) {
 		...borderCSS,
 		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
 	};
-	selectors[ ' .uagb-post__text .uagb-post__cta:hover' ] = {
-		'color': ctaHColor,
-		'background': ( ctaBgHType === 'color' ) ? ctaBgHColor : 'transparent',
-		'border-color': btnBorderHColor,
-	};
-	selectors[ ' .uagb-post__text .uagb-post__cta:hover a' ] = {
+	selectors[ ' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta:not(.is-style-outline) .uagb-text-link.wp-block-button__link:not(.has-background):hover' ] = {
 		'color': ctaHColor,
 		'background': ( ctaBgHType === 'color' ) ? ctaBgHColor : 'transparent',
 		'border-color': btnBorderHColor,
@@ -1216,6 +1211,21 @@ function styling( props ) {
 	}
 	mobileSelectors[ ' .slick-dots'] = {
 		'margin-top' : generateCSSUnit( dotsMarginTopMobileFallback , dotsMarginTopUnit ) + '!important'
+	}
+
+	if ( 'post-grid' === blockName ){
+		selectors[ '.uagb-equal_height_inline-read-more-buttons-in-editor .uagb-post__inner-wrap .uagb-post__text:last-child' ] = {
+			'left': generateCSSUnit( paddingLeft, 'px' ),
+			'right': generateCSSUnit( paddingRight, 'px' ),
+		}
+		tabletSelectors[ '.uagb-equal_height_inline-read-more-buttons-in-editor .uagb-post__inner-wrap .uagb-post__text:last-child' ] = {
+			'left': generateCSSUnit( paddingLeftTablet, 'px' ),
+			'right': generateCSSUnit( paddingRightTablet, 'px' ),
+		}
+		mobileSelectors[ '.uagb-equal_height_inline-read-more-buttons-in-editor .uagb-post__inner-wrap .uagb-post__text:last-child' ] = {
+			'left': generateCSSUnit( paddingLeftMobile, 'px' ),
+			'right': generateCSSUnit( paddingRightMobile, 'px' ),
+		}
 	}
 
 	let stylingCss = '';

@@ -17,18 +17,16 @@ $block_data = array(
 	'description'         => __( 'Add a table of contents to allow page navigation.', 'ultimate-addons-for-gutenberg' ),
 	'default'             => true,
 	'extension'           => false,
-	'js_assets'           => array( 'uagb-table-of-contents' ),
-	'priority'            => 27,
+	'priority'            => Spectra_Block_Prioritization::get_block_priority( 'table-of-contents' ),
+	'deprecated'          => false,
 	'static_dependencies' => array(
 		'uagb-table-of-contents' => array(
 			'src'  => UAGB_Scripts_Utils::get_js_url( 'table-of-contents' ),
-			'dep'  => array( 'jquery' ),
+			'dep'  => array(),
 			'type' => 'js',
 		),
 	),
 	'dynamic_assets'      => array(
 		'dir' => 'table-of-contents',
 	),
-	'js_assets'           => array( 'uagb-table-of-contents' ),
-	'deprecated'          => false,
 );

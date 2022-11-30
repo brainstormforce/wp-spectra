@@ -17,10 +17,7 @@ $block_data = array(
 	'description'      => __( 'Create beautiful layouts with flexbox powered container block.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 1,
-	'dynamic_assets'   => array(
-		'dir' => 'container',
-	),
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'container' ),
 	'deprecated'       => false,
 	'dynamic_assets'   => array(
 		'dir' => 'container',

@@ -25,7 +25,7 @@ const Render = ( props ) => {
 		removeText,
 		noFollow,
 		backgroundType,
-		borderStyle,
+		btnBorderStyle,
 		background,
 		color,
 		showIcon,
@@ -73,7 +73,7 @@ const Render = ( props ) => {
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
 				'wp-block-button',
-				borderStyle !== 'none' ? 'is-style-outline' : '',
+				btnBorderStyle !== 'none' && btnBorderStyle !== 'default' ? 'is-style-outline' : '',
 			) }
 		>
 			<div className="uagb-button__wrapper">

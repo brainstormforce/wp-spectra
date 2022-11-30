@@ -17,19 +17,25 @@ $block_data = array(
 	'description'         => __( 'Display customer testimonials with customizable layouts.', 'ultimate-addons-for-gutenberg' ),
 	'default'             => true,
 	'extension'           => false,
-	'js_assets'           => array( 'uagb-slick-js', 'uagb-imagesloaded', 'uagb-testimonial-js' ),
-	'css_assets'          => array( 'uagb-slick-css' ),
-	'priority'            => 31,
+	'priority'            => Spectra_Block_Prioritization::get_block_priority( 'testimonial' ),
+	'deprecated'          => false,
 	'static_dependencies' => array(
-		'uagb-slick-js'  => array(
+		'uagb-testimonial-js' => array(
+			'src'  => UAGB_Scripts_Utils::get_js_url( 'testimonial' ),
+			'dep'  => array(),
 			'type' => 'js',
 		),
-		'uagb-slick-css' => array(
+		'uagb-imagesloaded'   => array(
 			'type' => 'js',
+		),
+		'uagb-slick-js'       => array(
+			'type' => 'js',
+		),
+		'uagb-slick-css'      => array(
+			'type' => 'css',
 		),
 	),
 	'dynamic_assets'      => array(
 		'dir' => 'testimonial',
 	),
-	'deprecated'          => false,
 );

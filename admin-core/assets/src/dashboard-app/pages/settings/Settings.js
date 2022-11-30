@@ -55,7 +55,7 @@ const Settings = () => {
     ];
 
 	if( uag_react.spectra_pro_status ){
-		navigation.push( { name: __( 'My Account', 'ultimate-addons-for-gutenberg' ), slug: 'my-account', icon: SettingsIcons['global-settings'] } )
+		navigation.push( { name: __( 'My Account', 'ultimate-addons-for-gutenberg' ), slug: 'my-account', icon: SettingsIcons.account } );
 	}
 
 	useEffect( () => {
@@ -160,8 +160,6 @@ const Settings = () => {
 										<Login />
 									)
 								}
-								<CollapsePanels/>
-								<CopyPasteStyles/>
 								<BlockSettings/>
 							</>
                         }
