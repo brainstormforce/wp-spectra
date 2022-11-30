@@ -14,7 +14,8 @@ import RangeTypographyControl from './range-typography';
 import TypographyStyles from './inline-styles';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
-import { select } from '@wordpress/data'
+import { select } from '@wordpress/data';
+import { getIdFromString } from '@Utils/Helpers';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 
@@ -420,17 +421,32 @@ const TypographyControl = ( props ) => {
 		);
 	}
 
+
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	const controlName = getIdFromString(props.label);
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.typography.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.typography.${controlName}`, '', blockNameForHook );
+
+
 	return (
-		<div
-			className={ `components-base-control uag-typography-options spectra-control-popup__options popup-${props?.attributes?.block_id} ${ activeClass }` }
-		>
-			{ ! disableAdvancedOptions && (
-				<>
-					{ fontTypoAdvancedControls }
-					{ showAdvancedFontControls }
-				</>
-			) }
-		</div>
+		<>
+			{
+				controlBeforeDomElement
+			}
+			<div
+				className={ `components-base-control uag-typography-options spectra-control-popup__options popup-${props?.attributes?.block_id} ${ activeClass }` }
+			>
+				{ ! disableAdvancedOptions && (
+					<>
+						{ fontTypoAdvancedControls }
+						{ showAdvancedFontControls }
+					</>
+				) }
+			</div>
+			{
+				controlAfterDomElement
+			}
+		</>
 	);
 };
 
