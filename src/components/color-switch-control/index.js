@@ -20,7 +20,7 @@ export default function ColorSwitchControl( {label, type, classic, gradient, set
 	const { getSelectedBlock } = select( 'core/block-editor' );
 
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
-	const controlName = getIdFromString(label);
+	const controlName = getIdFromString( label );
 	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.color-switch-control.${controlName}.before`, '', blockNameForHook );
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.color-switch-control.${controlName}`, '', blockNameForHook );
 

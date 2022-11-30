@@ -83,7 +83,7 @@ const UAGTextControl = ( props ) => {
     };
 
 	const blockNameForHook = selectedBlock?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
-	const controlName = getIdFromString(props.label); // there is no label props that's why keep hard coded label
+	const controlName = getIdFromString( props.label ); // there is no label props that's why keep hard coded label
 	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.text-control.${controlName}.before`, '', blockNameForHook );
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.text-control.${controlName}`, '', blockNameForHook );
 

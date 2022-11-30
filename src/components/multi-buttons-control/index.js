@@ -198,7 +198,7 @@ const MultiButtonsControl = ( props ) => {
 			[ data.label ]: value,
 		} );
 	};
-	const controlName = getIdFromString(label);
+	const controlName = getIdFromString( label );
 	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${selectedBlock}.multi-buttons-control.${controlName}.before`, '', selectedBlock );
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${selectedBlock}.multi-buttons-control.${controlName}`, '', selectedBlock );
 	const allOptions = wp.hooks.applyFilters( `spectra.${selectedBlock}.multi-buttons-control.${controlName}.options`, options, selectedBlock );

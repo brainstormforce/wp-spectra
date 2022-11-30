@@ -137,7 +137,7 @@ const UAGMediaPicker = ( props ) => {
 	}
 
 	const blockNameForHook = selectedBlock?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
-	const controlName = getIdFromString(props?.label);
+	const controlName = getIdFromString( props?.label );
 	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.image.${controlName}.before`, '', blockNameForHook );
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.image.${controlName}`, '', blockNameForHook );
 

@@ -24,7 +24,7 @@ const defaultProps = {
 export default function UAGMultiSelectControl( {label, options, data, setAttributes} ) {
 	const { getSelectedBlock } = select( 'core/block-editor' );
 	const selectedBlock = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
-	const controlName = getIdFromString(label);
+	const controlName = getIdFromString( label );
 	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${selectedBlock}.multi-select-control.${controlName}.before`, '', selectedBlock );
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${selectedBlock}.multi-select-control.${controlName}`, '', selectedBlock );
 	const allOptions = wp.hooks.applyFilters( `spectra.${selectedBlock}.multi-select-control.${controlName}.options`, options, selectedBlock );

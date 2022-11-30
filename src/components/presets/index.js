@@ -188,7 +188,7 @@ const UAGPresets = ( props ) => {
     );
 
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
-	const controlName = getIdFromString(label);
+	const controlName = getIdFromString( label );
 	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.presets.${controlName}.before`, '', blockNameForHook );
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.presets.${controlName}`, '', blockNameForHook );
 

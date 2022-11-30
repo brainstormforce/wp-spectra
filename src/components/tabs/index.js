@@ -17,8 +17,6 @@ const UAGTabsControl = ( props ) => {
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
 
-
-
 	const tabRef = useRef( null );
 
 	const tabsCountClass =
@@ -59,7 +57,6 @@ const UAGTabsControl = ( props ) => {
 							} );
 						}
 
-						const { getSelectedBlock } = select( 'core/block-editor' );
 						const blockName = getSelectedBlock()?.name;
 						const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
 						const data = {
