@@ -10,6 +10,7 @@ import ResponsiveToggle from '../responsive-toggle';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import classnames from 'classnames';
+import { getIdFromString } from '@Utils/Helpers';
 import UAGReset from '../reset';
 
 const UAGTextControl = ( props ) => {
@@ -81,8 +82,17 @@ const UAGTextControl = ( props ) => {
         );
     };
 
+	const blockNameForHook = selectedBlock?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	const controlName = getIdFromString(props.label); // there is no label props that's why keep hard coded label
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.text-control.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.text-control.${controlName}`, '', blockNameForHook );
+
+
     return(
         <>
+			{
+				controlBeforeDomElement
+			}
             <div className={`components-base-control uagb-text-control uagb-size-type-field-tabs${isEnableDynamicContent() ? ' uagb-text-control--open-dynamic-content' : ''}`}>
                 { props?.variant !== 'inline' && props?.showHeaderControls &&
                     <HeaderControls />
@@ -139,6 +149,9 @@ const UAGTextControl = ( props ) => {
 					)
 				}
             </div>
+			{
+				controlAfterDomElement
+			}
         </>
     );
 };

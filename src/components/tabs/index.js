@@ -3,7 +3,7 @@ import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import Separator from '@Components/separator';
 import { useRef } from '@wordpress/element';
-import { select } from '@wordpress/data'
+import { select } from '@wordpress/data';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 
 const UAGTabsControl = ( props ) => {
@@ -15,7 +15,10 @@ const UAGTabsControl = ( props ) => {
 		};
 	}, [] );
 
-	
+	const { getSelectedBlock } = select( 'core/block-editor' );
+
+
+
 	const tabRef = useRef( null );
 
 	const tabsCountClass =
@@ -28,8 +31,17 @@ const UAGTabsControl = ( props ) => {
 		}
 	} );
 
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	const controlName = 'tabs'; // there is no label props that's why keep hard coded label
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.tabs.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.tabs.${controlName}`, '', blockNameForHook );
+
+
 	return (
 		<>
+			{
+				controlBeforeDomElement
+			}
 			<TabPanel
 				className={ `uag-control-tabs ${ tabsCountClass }` }
 				activeClass="active-tab"
@@ -74,6 +86,9 @@ const UAGTabsControl = ( props ) => {
 				} }
 			</TabPanel>
 			{ ! props?.disableBottomSeparator && <Separator/> }
+			{
+				controlAfterDomElement
+			}
 		</>
 	);
 };
