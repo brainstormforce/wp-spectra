@@ -10,8 +10,6 @@ import AdvancedPopColorControl from '@Components/color-control/advanced-pop-colo
 import Range from '@Components/range/Range.js';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import { __ } from '@wordpress/i18n';
-import presets from './presets';
-import UAGPresets from '@Components/presets';
 import {
 	InspectorControls,
 } from '@wordpress/block-editor';
@@ -43,6 +41,10 @@ const Settings = ( props ) => {
 		blockBackground,
 		blockGradientBackground,
 		subHeadingColor,
+		subHeadSpace,
+		subHeadSpaceTablet,
+		subHeadSpaceMobile,
+		subHeadSpaceType,
 		separatorColor,
 		headingTag,
 		headFontFamily,
@@ -66,6 +68,7 @@ const Settings = ( props ) => {
 		headShadowBlur,
 		// sub head
 		headingDescToggle,
+		headingDescPosition,
 		subHeadFontFamily,
 		subHeadFontWeight,
 		subHeadFontStyle,
@@ -86,6 +89,7 @@ const Settings = ( props ) => {
 		separatorWidthMobile,
 		separatorWidthType,
 		seperatorStyle,
+		seperatorPosition,
 		separatorHeight,
 		separatorHeightType,
 		headSpace,
@@ -210,7 +214,122 @@ const Settings = ( props ) => {
 			<WebfontLoader config={ sconfig }></WebfontLoader>
 		);
 	}
-
+	let separatorPositionOptions = [
+		{
+			value: 'above-heading',
+			label: __(
+				'Above Heading',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'below-heading',
+			label: __(
+				'Below Heading',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'above-sub-heading',
+			label: __(
+				'Above Sub-heading',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'below-sub-heading',
+			label: __(
+				'Below Sub-heading',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+	];
+ 	if( ! headingTitleToggle ) {
+		separatorPositionOptions = [
+			{
+				value: 'above-sub-heading',
+				label: __(
+					'Above Sub-heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'below-sub-heading',
+				label: __(
+					'Below Sub-heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+		];
+	}
+	if( ! headingDescToggle ) {
+		separatorPositionOptions = [
+			{
+				value: 'above-heading',
+				label: __(
+					'Above Heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'below-heading',
+				label: __(
+					'Below Heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+		];
+	}
+	if( headingDescToggle && 'above-heading' === headingDescPosition ) {
+		separatorPositionOptions = [
+			{
+				value: 'above-heading',
+				label: __(
+					'Above Heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'below-heading',
+				label: __(
+					'Below Heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'above-sub-heading',
+				label: __(
+					'Above Sub-heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+		];
+	}
+	if( headingDescToggle && 'below-heading' === headingDescPosition ) {
+		separatorPositionOptions = [
+			{
+				value: 'above-heading',
+				label: __(
+					'Above Heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'below-heading',
+				label: __(
+					'Below Heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'below-sub-heading',
+				label: __(
+					'Below Sub-heading',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+		];
+	}
 	const generalPanel = () => {
 
 		return (
@@ -335,9 +454,18 @@ const Settings = ( props ) => {
 						/>
 					)
 				}
+			</UAGAdvancedPanelBody>
+		);
+	};
+	const subHeadingPanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Sub Heading', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
 				<ToggleControl
 					label={ __(
-						'Sub Heading',
+						'Enable Sub Heading',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ headingDescToggle }
@@ -345,9 +473,47 @@ const Settings = ( props ) => {
 						setAttributes( { headingDescToggle : ! headingDescToggle } )
 					}
 				/>
+				{ headingDescToggle && 
+					<UAGSelectControl
+						label={ __(
+							'Position',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
+							value: headingDescPosition,
+							label: 'headingDescPosition',
+						} }
+						setAttributes={ setAttributes }
+						options={ [
+							{
+								value: 'above-heading',
+								label: __(
+									'Above Heading',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'below-heading',
+								label: __(
+									'Below Heading',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+						] }
+					/> 
+				}
+			</UAGAdvancedPanelBody>
+		);
+	};
+	const separatorPanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Separator', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
 				<UAGSelectControl
 					label={ __(
-						'Separator Style',
+						'Style',
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
@@ -393,10 +559,23 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
+				{ 'none' !== seperatorStyle && 
+					<UAGSelectControl
+						label={ __(
+							'Position',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
+							value: seperatorPosition,
+							label: 'seperatorPosition',
+						} }
+						setAttributes={ setAttributes }
+						options={ separatorPositionOptions }
+					/> 
+				}
 			</UAGAdvancedPanelBody>
 		);
-	};
-
+	}
 	const headingStylePanel = () => {
 		return (
 			<UAGAdvancedPanelBody
@@ -673,6 +852,42 @@ const Settings = ( props ) => {
 					} }
 					setAttributes={ setAttributes }
 				/>
+				<ResponsiveSlider
+					label={ __(
+						'Bottom Spacing',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: subHeadSpace,
+							label: 'subHeadSpace',
+						},
+						tablet: {
+							value: subHeadSpaceTablet,
+							label: 'subHeadSpaceTablet',
+						},
+						mobile: {
+							value: subHeadSpaceMobile,
+							label: 'subHeadSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 200 }
+					unit={ {
+						value: subHeadSpaceType,
+						label: 'subHeadSpaceType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+					] }
+					setAttributes={ setAttributes }
+				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -805,19 +1020,6 @@ const Settings = ( props ) => {
 				/>
 			</UAGAdvancedPanelBody>
 		);
-	};
-	// eslint-disable-next-line
-	const presetSettings = () => {
-		return <UAGAdvancedPanelBody
-					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
-					initialOpen={ true }
-				>
-					<UAGPresets
-						setAttributes = { setAttributes }
-						presets = { presets }
-						presetInputType = 'radioImage'
-					/>
-				</UAGAdvancedPanelBody>
 	};
 
 	const backgroundStylePanel = () => {
@@ -1261,6 +1463,8 @@ const Settings = ( props ) => {
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
 						{ generalPanel() }
+						{ subHeadingPanel() }
+						{ separatorPanel() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ headingTitleToggle && headingStylePanel() }

@@ -178,6 +178,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => 'inherit',
 							),
+							'imgEqualHeight'              => array(
+								'type'    => 'boolean',
+								'default' => false,
+							),
 						)
 					),
 					'render_callback' => array( $this, 'post_grid_callback' ),
@@ -1798,7 +1802,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
 			do_action( "uagb_single_post_before_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
-
 			?>
 			<div class='uagb-post__image'>
 				<?php

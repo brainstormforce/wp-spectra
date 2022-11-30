@@ -174,12 +174,26 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * New: Introducing the Counter block with layouts that will help you flaunt your stats in cool way!
 * New: Introducing the Image Gallery block with extensive customizability, as well as the all new perfecty tiled layout.
 * New: Introducing the ability to add custom CSS at the page level.
-* Improvement: Post Grid - Added a setting to show buttons on equal height.
-* Improvement: Post Grid - Added a setting to toggle image aspect ratio.
 * Improvement: Matrix Alignment Control - Added the new Matrix Alignment Control to match the Spectra UI.
 * Improvement: Number Control - Added the new Number Control to match the Spectra UI.
 * Improvement: Global - Updated Block Previews for All Spectra Blocks in the Editor.
 * Improvement: Code - Added Automatic Block Prioritization and Organization.
+* Improvement: Post Grid - Added Setting to show buttons on equal height.
+* Improvement: Post Grid - Added Setting for image aspect ratio.
+* Improvement: Post Grid - Added equal height option for featured Images.
+* Improvement: Advanced Heading - Added Sub-heading and Separator Position Settings.
+* Improvement: FAQ - Added background Size, Background color and Border stylings for Toggle Icon.
+* Improvement: Table Of Contents - Added Allow Dynamic Heading feature.
+* Fix: Spectra Text Control - Changed default label.
+* Fix: Forms Settings - Added email address labels.
+* Fix: Buttons from diff blocks does not inherit the style from theme.
+* Fix: Post carousel - block is broken on the front-end side, when we select background image.
+* Fix: Select control - Not aligned properly with other control.
+* Fix: Post grid - Enabling show taxonomy does not show taxonomy on post inside editor.
+* Fix: Icon List - Resolved an issue as the link was getting disabled for the icon list child.
+* Fix: Button Hover stylings are not working in the editor.
+* Fix: Tabs - Need to removed Link option in the toolbar. 
+* Fix: Border - Misaligned reset control button issue with all border settings.
 
 ### 2.0.16 - TUESDAY, 22th NOVEMBER 2022 ###
 * Improvement: Admin Dashboard - Updated Spectra Core Blocks to prevent them from being disabled.
