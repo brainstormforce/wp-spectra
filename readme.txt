@@ -185,7 +185,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post grid - Enabling show taxonomy does not show taxonomy on post inside editor.
 * Fix: Icon List - Resolved an issue as the link was getting disabled for the icon list child.
 * Fix: Button Hover stylings are not working in the editor.
-* Fix: Tabs - Need to removed Link option in the toolbar. 
 * Fix: Border - Misaligned reset control button issue with all border settings.
 
 = 2.0.16 - TUESDAY, 22th NOVEMBER 2022 =
