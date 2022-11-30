@@ -65,7 +65,7 @@ const InspectorTab = ( props ) => {
 		}
 	}, [] );
 
-	const blockNameForHook = blockName.split( '/' )[1];
+	const blockNameForHook = blockName.split( '/' ).pop();
 	const inspectorTabBefore = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${type}.before`, '', blockName );
 	const inspectorTabAfter = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${type}`, '', blockName );
 
