@@ -129,7 +129,7 @@ return array_merge(
 		'btnLinkHoverColor'        => '',
 		'btnBgHoverColor'          => '',
 		'modalBgColor'             => '',
-		'modalBoxHeight'		   => 'auto',
+		'modalBoxHeight'           => 'auto',
 	),
 	$button_attribute,
 	$content_attribute

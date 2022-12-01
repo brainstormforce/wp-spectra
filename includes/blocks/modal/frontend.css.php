@@ -27,11 +27,11 @@ $content_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 
 $selectors   = array(
 	' .uagb-modal-popup-wrap'                    => array_merge(
 		array(
-		'width'            => UAGB_Helper::get_css_value( $attr['modalWidth'], $attr['modalWidthType'] ),
-		'height'           => UAGB_Helper::get_css_value( $attr['modalHeight'], $attr['modalHeightType'] ),
-		'background-color' => $attr['modalBgColor'],
-	),
-	$content_border_css
+			'width'            => UAGB_Helper::get_css_value( $attr['modalWidth'], $attr['modalWidthType'] ),
+			'height'           => UAGB_Helper::get_css_value( $attr['modalHeight'], $attr['modalHeightType'] ),
+			'background-color' => $attr['modalBgColor'],
+		),
+		$content_border_css
 ),
 	' .uagb-modal-popup-close svg'               => array(
 		'width'       => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
@@ -92,8 +92,8 @@ $t_selectors = array(
 	),
 	' .uagb-modal-popup-wrap'    => array_merge(
 		array(
-		'width'  => UAGB_Helper::get_css_value( $attr['modalWidthTablet'], $attr['modalWidthType'] ),
-		'height' => UAGB_Helper::get_css_value( $attr['modalHeightTablet'], $attr['modalHeightType'] ),
+			'width'  => UAGB_Helper::get_css_value( $attr['modalWidthTablet'], $attr['modalWidthType'] ),
+			'height' => UAGB_Helper::get_css_value( $attr['modalHeightTablet'], $attr['modalHeightType'] ),
 		),
 		$content_border_css_tablet
 	),
@@ -122,8 +122,8 @@ $m_selectors = array(
 	),
 	' .uagb-modal-popup-wrap'    => array_merge(
 		array(
-		'width'  => UAGB_Helper::get_css_value( $attr['modalWidthMobile'], $attr['modalWidthType'] ),
-		'height' => UAGB_Helper::get_css_value( $attr['modalHeightMobile'], $attr['modalHeightType'] ),
+			'width'  => UAGB_Helper::get_css_value( $attr['modalWidthMobile'], $attr['modalWidthType'] ),
+			'height' => UAGB_Helper::get_css_value( $attr['modalHeightMobile'], $attr['modalHeightType'] ),
 		),
 		$content_border_css_mobile
 	),
@@ -233,26 +233,26 @@ $selectors[' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-tri
 $t_selectors[' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger'] = $btn_border_css_tablet;
 $m_selectors[' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger'] = $btn_border_css_mobile;
 
-if( 'custom' !== $attr['modalBoxHeight'] ){
-	$selectors[' .uagb-modal-popup-wrap'] = array_merge(
+if ( 'custom' !== $attr['modalBoxHeight'] ) {
+	$selectors[' .uagb-modal-popup-wrap']   = array_merge(
 		array(
-		'height'           => 'auto',
-		'width'  => UAGB_Helper::get_css_value( $attr['modalWidth'], $attr['modalWidthType'] ),
-		'background-color' => $attr['modalBgColor'],
+			'height'           => 'auto',
+			'width'            => UAGB_Helper::get_css_value( $attr['modalWidth'], $attr['modalWidthType'] ),
+			'background-color' => $attr['modalBgColor'],
 		),
 		$content_border_css
 	);
 	$t_selectors[' .uagb-modal-popup-wrap'] = array_merge(
 		array(
-		'height'           => 'auto',
-		'width'  => UAGB_Helper::get_css_value( $attr['modalWidthTablet'], $attr['modalWidthType'] ),
+			'height' => 'auto',
+			'width'  => UAGB_Helper::get_css_value( $attr['modalWidthTablet'], $attr['modalWidthType'] ),
 		),
 		$content_border_css_tablet
 	);
-	$m_selectors[' .uagb-modal-popup-wrap']     = array_merge(
+	$m_selectors[' .uagb-modal-popup-wrap'] = array_merge(
 		array(
-		'height'           => 'auto',
-		'width'  => UAGB_Helper::get_css_value( $attr['modalWidthMobile'], $attr['modalWidthType'] ),
+			'height' => 'auto',
+			'width'  => UAGB_Helper::get_css_value( $attr['modalWidthMobile'], $attr['modalWidthType'] ),
 		),
 		$content_border_css_mobile
 	);
