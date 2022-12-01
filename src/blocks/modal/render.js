@@ -71,7 +71,8 @@ const Render = ( props ) => {
 		overlayClick,
 		closeIcon,
 		imgTagWidth,
-		imgTagHeight
+		imgTagHeight,
+		showBtnIcon
 	} = attributes;
 
 	const deviceType = useDeviceType();
@@ -148,7 +149,7 @@ const Render = ( props ) => {
 				rel='noopener noreferrer'
 			>
 				<span className="uagb-modal-content-wrapper">
-					{ buttonIconPosition === 'before' && buttonIconOutput }
+					{ ( showBtnIcon && buttonIconPosition === 'before' ) && buttonIconOutput }
 						<RichText
 							tagName="span"
 							placeholder={ __(
@@ -159,7 +160,7 @@ const Render = ( props ) => {
 							className="uagb-inline-editing"
 							onChange={ ( value ) => setAttributes( { buttonText: value } ) }
 						/>
-					{ buttonIconPosition === 'after' && buttonIconOutput }
+					{ ( showBtnIcon && buttonIconPosition === 'after' ) && buttonIconOutput }
 				</span>
 			</a>
 		</div>

@@ -20,7 +20,8 @@ export default function Save( props ) {
 		overlayClick,
 		closeIcon,
 		imgTagWidth,
-		imgTagHeight
+		imgTagHeight,
+		showBtnIcon
 	} = props.attributes;
 
 	const textHTML = (
@@ -87,13 +88,13 @@ export default function Save( props ) {
 				rel='noopener noreferrer'
 			>
 				<span className="uagb-modal-content-wrapper">
-					{ buttonIconPosition === 'before' && buttonIconOutput }
+					{ ( showBtnIcon && buttonIconPosition === 'before' ) && buttonIconOutput }
 					<RichText.Content
 						tagName="span"
 						value={ buttonText }
 						className="uagb-inline-editing"
 					/>
-					{ buttonIconPosition === 'after' && buttonIconOutput }
+					{ ( showBtnIcon && buttonIconPosition === 'after' ) && buttonIconOutput }
 				</span>
 			</a>
 		</div>

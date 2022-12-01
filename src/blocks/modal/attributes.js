@@ -715,6 +715,10 @@ const attributes = {
 		default: 0,
 
 	},
+	showBtnIcon: {
+		type: 'boolean',
+		default: false,
+	},
 	...btnBorderAttributes,
 };
 

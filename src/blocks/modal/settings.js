@@ -155,7 +155,8 @@ export default function Settings( props ) {
 		btnBgHoverColor,
 		btnBgColor,
 		modalBgColor,
-		closeIcon
+		closeIcon,
+		showBtnIcon
 	} = attributes;
 
 	let loadTextGoogleFonts;
@@ -382,6 +383,17 @@ export default function Settings( props ) {
 				) }
 				{ modalTrigger === 'button' && (
 					<>
+						<ToggleControl
+							label={ __(
+								'Enable Icon',
+								'ultimate-addons-for-gutenberg'
+							) }
+							checked={ showBtnIcon }
+							onChange={ () =>
+								setAttributes( { showBtnIcon : ! showBtnIcon } )
+							}
+						/>
+						{ showBtnIcon &&
 						<UAGIconPicker
 							label={ __(
 								'Button Icon',
@@ -392,7 +404,8 @@ export default function Settings( props ) {
 								setAttributes( { buttonIcon: value } )
 							}
 						/>
-						{ '' !== buttonIcon && (
+						}
+						{ showBtnIcon && '' !== buttonIcon && (
 								<>
 									<UAGSelectControl
 										label={ __(
@@ -952,7 +965,7 @@ export default function Settings( props ) {
 
 			{ modalTrigger === 'button' && (
 				<>
-				{ '' !== buttonIcon && (
+				{ showBtnIcon && '' !== buttonIcon && (
 					<ResponsiveSlider
 						label={ __(
 							'Icon Spacing',
