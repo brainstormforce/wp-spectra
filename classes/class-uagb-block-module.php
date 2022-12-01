@@ -231,7 +231,7 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 						'skipEditor' => true,
 						'type'       => 'js',
 					),
-					'uagb-slider-js'   => array(
+					'uagb-slider-js'    => array(
 						'src'  => UAGB_URL . 'assets/js/swiper-bundle.min.js',
 						'dep'  => array(),
 						'type' => 'js',

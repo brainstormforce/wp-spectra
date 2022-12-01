@@ -141,10 +141,10 @@ $selectors = array(
 	'.uagb-block-' . $id . '.uagb-slider-container .swiper-button-prev' => $arrow_style,
 	'.uagb-block-' . $id . '.uagb-slider-container .swiper-button-next' => $arrow_style,
 	'.uagb-block-' . $id . '.uagb-slider-container .swiper-button-next:hover' => array(
-		'border-color' => $attr['slider-arrowBorderHColor']
+		'border-color' => $attr['slider-arrowBorderHColor'],
 	),
 	'.uagb-block-' . $id . '.uagb-slider-container .swiper-button-prev:hover' => array(
-		'border-color' => $attr['slider-arrowBorderHColor']
+		'border-color' => $attr['slider-arrowBorderHColor'],
 	),
 	'.uagb-block-' . $id . ' .swiper-button-next'         => array(
 		'right' => UAGB_Helper::get_css_value( $attr['arrowDistance'], 'px' ),
