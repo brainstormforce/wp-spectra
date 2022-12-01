@@ -88,6 +88,8 @@ import './blocks/timeline/post-timeline/block.js'; // P22.
 import './blocks/price-list/block.js'; // P23.
 import './blocks/price-list-child/block.js'; // Child Block.
 import './blocks/review/block.js'; // P24.
+import './blocks/slider/block.js';
+import './blocks/slider-child/block.js';
 import './blocks/social-share/block.js'; // P25.
 import './blocks/social-share-child/block.js'; // Child Block.
 import './blocks/star-rating/block.js'; // P26.
