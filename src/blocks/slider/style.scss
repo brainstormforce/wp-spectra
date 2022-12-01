@@ -1,0 +1,23 @@
+.uagb-swiper {
+	position: relative;
+	overflow: hidden;
+}
+
+.uagb-slider-container {
+	position: relative;
+
+	.swiper-pagination {
+		position: relative;
+	}
+
+	.swiper-button-next.swiper-button-disabled, 
+	.swiper-button-prev.swiper-button-disabled{
+		pointer-events: all;
+	}
+
+	.swiper-button-prev,
+	.swiper-button-next{
+		border-style: none;
+		background: rgb(239,239,239);
+	}
+}
