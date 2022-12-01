@@ -186,6 +186,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Icon List - Resolved an issue as the link was getting disabled for the icon list child.
 * Fix: Button Hover stylings are not working in the editor.
 * Fix: Border - Misaligned reset control button issue with all border settings.
+* Fix: Extension icon - All extension icon are same as per figma
 
 ### 2.0.16 - TUESDAY, 22th NOVEMBER 2022 ###
 * Improvement: Admin Dashboard - Updated Spectra Core Blocks to prevent them from being disabled.
