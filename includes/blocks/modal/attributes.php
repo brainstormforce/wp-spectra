@@ -11,6 +11,10 @@ $button_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
 	'btn'
 );
 
+$content_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
+	'content'
+);
+
 return array_merge(
 	array(
 		'modalTrigger'             => 'button',
@@ -125,6 +129,8 @@ return array_merge(
 		'btnLinkHoverColor'        => '',
 		'btnBgHoverColor'          => '',
 		'modalBgColor'             => '',
+		'modalBoxHeight'		   => 'auto',
 	),
-	$button_attribute
+	$button_attribute,
+	$content_attribute
 );

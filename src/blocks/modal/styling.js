@@ -115,6 +115,7 @@ export default function styling( props ) {
 		btnBgColor,
 		btnBorderHColor,
 		modalBgColor,
+		modalBoxHeight
 	} = props.attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -125,6 +126,10 @@ export default function styling( props ) {
 	const borderCSS = generateBorderCSS( props.attributes, 'btn' );
 	const borderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
 	const borderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+
+	const contentBorderCSS = generateBorderCSS( props.attributes, 'content' );
+	const contentBorderCSSTablet = generateBorderCSS( props.attributes, 'content', 'tablet' );
+	const contentBorderCSSMobile = generateBorderCSS( props.attributes, 'content', 'mobile' );
 
 	const selectors = {
 		' .uagb-modal-popup-wrap' : {
@@ -137,6 +142,7 @@ export default function styling( props ) {
 				modalHeightType
 			),
 			'background-color': modalBgColor,
+			...contentBorderCSS
 		},
 		' .uagb-modal-popup-close svg': {
 			'width': generateCSSUnit( closeIconSize, 'px' ),
@@ -227,6 +233,7 @@ export default function styling( props ) {
 				modalHeightTablet,
 				modalHeightType
 			),
+			...contentBorderCSSTablet
 		},
 		' .uagb-modal-popup-content' : {
 			'padding-left': generateCSSUnit(
@@ -296,6 +303,7 @@ export default function styling( props ) {
 				modalHeightMobile,
 				modalHeightType
 			),
+			...contentBorderCSSMobile
 		},
 		' .uagb-modal-popup-content' : {
 			'padding-left': generateCSSUnit(
@@ -355,7 +363,33 @@ export default function styling( props ) {
 			'line-height': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
 		},
 	};
-
+	if( modalBoxHeight !== 'custom' ){
+		selectors[ ' .uagb-modal-popup-wrap' ] = {
+			'height': 'auto',
+			'width': generateCSSUnit(
+				modalWidth,
+				modalWidthType
+			),
+			'background-color': modalBgColor,
+			...contentBorderCSS
+		};
+		tabletSelectors[ ' .uagb-modal-popup-wrap' ] = {
+			'height': 'auto',
+			'width': generateCSSUnit(
+				modalWidthTablet,
+				modalWidthType
+			),
+			...contentBorderCSSTablet
+		};
+		mobileSelectors[ ' .uagb-modal-popup-wrap' ] = {
+			'height': 'auto',
+			'width': generateCSSUnit(
+				modalWidthMobile,
+				modalWidthType
+			),
+			...contentBorderCSSMobile
+		};
+	}
 	if( 'popup-top-right' === closeIconPosition ) {
 		selectors[ ' .uagb-modal-popup.active .uagb-modal-popup-close'] = {
 			'top': '-' + generateCSSUnit( closeIconSize, 'px' ),

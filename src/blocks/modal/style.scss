@@ -11,48 +11,48 @@ body {
 			margin: 0 !important;
 		}
 
-		.block-list-appender {
+		// .block-list-appender {
 
-			&:only-child {
+		// 	&:only-child {
 
-				.block-editor-default-block-appender__content {
-					display: none;
-				}
+		// 		.block-editor-default-block-appender__content {
+		// 			display: none;
+		// 		}
 
-				.block-editor-inserter__toggle.components-button.has-icon {
-					height: auto;
-					padding: 8px 12px !important;
-				}
+		// 		.block-editor-inserter__toggle.components-button.has-icon {
+		// 			height: auto;
+		// 			padding: 8px 12px !important;
+		// 		}
 
-				button.block-editor-button-block-appender {
-					background-color: #dcf2ff !important;
-					box-shadow: none !important;
-					padding: 0 !important;
-					width: 100%;
-				}
-			}
+		// 		button.block-editor-button-block-appender {
+		// 			background-color: #dcf2ff !important;
+		// 			box-shadow: none !important;
+		// 			padding: 0 !important;
+		// 			width: 100%;
+		// 		}
+		// 	}
 
-			button {
-				background-color: #dcf2ff !important;
-				box-shadow: none !important;
-				padding: 0 !important;
-				width: 100%;
-			}
+		// 	button {
+		// 		background-color: #dcf2ff !important;
+		// 		box-shadow: none !important;
+		// 		padding: 0 !important;
+		// 		width: 100%;
+		// 	}
 
-			.block-editor-inserter__toggle.components-button.has-icon {
-				width: 100%;
-			}
+		// 	.block-editor-inserter__toggle.components-button.has-icon {
+		// 		width: 100%;
+		// 	}
 
-			svg {
-				fill: #007cba;
-				width: 20px;
-				height: 20px;
-			}
-		}
+		// 	svg {
+		// 		fill: #007cba;
+		// 		width: 20px;
+		// 		height: 20px;
+		// 	}
+		// }
 
-		.components-dropdown.block-editor-inserter {
-			width: 100%;
-		}
+		// .components-dropdown.block-editor-inserter {
+		// 	width: 100%;
+		// }
 	}
 }
 
@@ -137,18 +137,18 @@ body {
 }
 
 .uagb-modal-trigger {
-	cursor: pointer;
 
 	svg {
 		font-size: 30px;
 		width: 30px;
 		height: 30px;
 		line-height: 30px;
+		cursor: pointer;
 	}
+}
 
-	&img {
-		width: 100px;
-	}
+img.uagb-modal-trigger {
+	cursor: pointer;
 }
 
 div.uagb-spectra-button-wrapper {

@@ -33,6 +33,7 @@ const excludeBlocks = [
 'uagb/forms-toggle',
 'uagb/forms-date',
 'uagb/forms-accept',
+'uagb/modal',
 ];
 const ALLOWED_BLOCKS = wp.blocks.getBlockTypes().map( block => block.name ).filter( blockName => ! excludeBlocks.includes( blockName ) );
 
@@ -81,7 +82,7 @@ const Render = ( props ) => {
 		<RichText
 			tagName="span"
 			placeholder={ __(
-				'Click Here',
+				'Add Your Text Here',
 				'ultimate-addons-for-gutenberg'
 			) }
 			value={ triggerText }
@@ -166,6 +167,16 @@ const Render = ( props ) => {
 		</div>
 	)
 
+	const getStepAsChild = [
+		[
+			'uagb/advanced-heading',
+			{
+				headingTitle: 'Your Attractive Heading',
+				headingDesc:  __( 'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'ultimate-addons-for-gutenberg' ),
+			},
+		],
+	];
+
 	return (
 		<>
 			<div className={ classnames(
@@ -201,7 +212,7 @@ const Render = ( props ) => {
 				>
 					<div className="uagb-modal-popup-wrap">
 						<div className="uagb-modal-popup-content">
-							<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } renderAppender={ InnerBlocks.ButtonBlockAppender } />
+							<InnerBlocks template={ getStepAsChild } allowedBlocks={ ALLOWED_BLOCKS } renderAppender={ InnerBlocks.DefaultBlockAppender } />
 						</div>
 						{ ( 'popup-top-left' === closeIconPosition || 'popup-top-right' === closeIconPosition ) && (
 							<div className="uagb-modal-popup-close">

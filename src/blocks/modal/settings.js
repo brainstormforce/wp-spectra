@@ -156,7 +156,8 @@ export default function Settings( props ) {
 		btnBgColor,
 		modalBgColor,
 		closeIcon,
-		showBtnIcon
+		showBtnIcon,
+		modalBoxHeight
 	} = attributes;
 
 	let loadTextGoogleFonts;
@@ -326,7 +327,7 @@ export default function Settings( props ) {
 
 	const modalTriggerPanel = (
 		<UAGAdvancedPanelBody
-			title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) }
+			title={ __( 'Display Settings', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
 			<SelectControl
@@ -470,7 +471,7 @@ export default function Settings( props ) {
 		>
 			<ResponsiveSlider
 				label={ __(
-					'Width',
+					'Modal Popup Width',
 					'ultimate-addons-for-gutenberg'
 				) }
 				data={ {
@@ -511,9 +512,36 @@ export default function Settings( props ) {
 				] }
 				setAttributes={ setAttributes }
 			/>
+			<MultiButtonsControl
+				setAttributes={ setAttributes }
+				label={ __( 'Modal Box Height', 'ultimate-addons-for-gutenberg' ) }
+				data={ {
+					value: modalBoxHeight,
+					label: 'modalBoxHeight',
+				} }
+				options={ [
+					{
+						value: 'auto',
+						label: __(
+							'Auto',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'custom',
+						label: __(
+							'Custom',
+							'ultimate-addons-for-gutenberg'
+						),
+					}
+				] }
+				showIcons={ false }
+				responsive={ false }
+			/>
+			{ modalBoxHeight !== 'auto' &&
 			<ResponsiveSlider
 				label={ __(
-					'Height',
+					'Modal Popup Height',
 					'ultimate-addons-for-gutenberg'
 				) }
 				data={ {
@@ -554,6 +582,7 @@ export default function Settings( props ) {
 				] }
 				setAttributes={ setAttributes }
 			/>
+			}
 			<UAGSelectControl
 				label={ __(
 					'Appear Effect',
@@ -682,7 +711,7 @@ export default function Settings( props ) {
 
 	const triggerStylePanel =  (
 		<UAGAdvancedPanelBody
-			title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) }
+			title={ __( 'Display Settings', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
 
@@ -1406,7 +1435,15 @@ export default function Settings( props ) {
 					},
 				] }
 			/>
-
+			<hr className="uagb-editor__separator" />
+			<ResponsiveBorder
+				disabledBorderTitle= {false}
+				setAttributes={ setAttributes }
+				prefix={'content'}
+				attributes={ attributes }
+				deviceType={ deviceType }
+				disableBottomSeparator={ true }
+			/>
 		</UAGAdvancedPanelBody>
 	)
 
@@ -1457,14 +1494,14 @@ export default function Settings( props ) {
 
 					<InspectorTab { ...UAGTabs.general }>
 						{modalContentPanel}
-						{modalTriggerPanel}
 						{modalClosePanel}
+						{modalTriggerPanel}
 					</InspectorTab>
 
 					<InspectorTab { ...UAGTabs.style }>
 						{contentStylePanel}
-						{triggerStylePanel}
 						{ '' !== closeIcon && closeStylePanel }
+						{triggerStylePanel}
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }

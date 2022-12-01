@@ -6,11 +6,24 @@
 
 			.uagb-modal-popup-wrap {
 				margin: 30px;
+				// .block-editor-block-list__layout {
+				// 	.block-list-appender.wp-block button svg {
+				// 		fill: #fff;
+				// 	}
+				// 	button.components-button.block-editor-button-block-appender {
+				// 		padding: 0px;
+				// 		width: auto;
+				// 		height: auto;
+				// 		background: #1e1e1e;
+				// 		position: absolute;
+				// 		right: 0;
+				// 	}
+				// }
 			}
 
 			&.active {
 				background: rgba(0, 0, 0, 0.6);
-				border: 2px dashed #ddd;
+				border: 2px none #ddd;
 				display: flex;
 				margin-top: 20px;
 				padding: 30px;

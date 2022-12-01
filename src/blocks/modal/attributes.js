@@ -1,5 +1,6 @@
 import { getBorderAttributes } from '@Controls/generateAttributes';
 const btnBorderAttributes = getBorderAttributes( 'btn' );
+const contentBorderAttributes = getBorderAttributes( 'content' );
 
 const attributes = {
 	block_id: {
@@ -719,7 +720,12 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	modalBoxHeight: {
+		type: 'string',
+		default: 'auto',
+	},
 	...btnBorderAttributes,
+	...contentBorderAttributes,
 };
 
 export default attributes;
