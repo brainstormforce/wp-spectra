@@ -22,6 +22,8 @@ return array_merge(
 		'blockGradientBackground'      => 'linear-gradient(90deg, rgb(6, 147, 227) 0%, rgb(155, 81, 224) 100%)',
 		'headingAlign'                 => $heading_alignment_default,
 		'headingAlignTablet'           => '',
+		'headingDescPosition'          => 'below-heading',
+		'seperatorPosition'            => 'below-heading',
 		'headingAlignMobile'           => '',
 		'headingColor'                 => '',
 		'headingColorType'             => 'classic',
@@ -158,5 +160,9 @@ return array_merge(
 		'highLightPaddingUnitTablet'   => 'px',
 		'highLightPaddingUnitMobile'   => 'px',
 		'highLightPaddingLink'         => '',
+		'subHeadSpace'                 => 15,
+		'subHeadSpaceMobile'           => '',
+		'subHeadSpaceTablet'           => '',
+		'subHeadSpaceType'             => 'px',
 	)
 );

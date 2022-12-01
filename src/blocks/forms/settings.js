@@ -600,6 +600,10 @@ const Settings = ( props ) => {
 					] }
 					to={
 						<UAGTextControl
+							label={ __(
+								'Email Address',
+								'ultimate-addons-for-gutenberg'
+							) }
 							placeholder={ __(
 								'Email',
 								'ultimate-addons-for-gutenberg'
@@ -619,6 +623,10 @@ const Settings = ( props ) => {
 					}
 					cc={
 						<UAGTextControl
+							label={ __(
+								'Email Address',
+								'ultimate-addons-for-gutenberg'
+							) }
 							placeholder={ __(
 								'Email',
 								'ultimate-addons-for-gutenberg'
@@ -638,6 +646,10 @@ const Settings = ( props ) => {
 					}
 					bcc={
 						<UAGTextControl
+							label={ __(
+								'Email Address',
+								'ultimate-addons-for-gutenberg'
+							) }
 							placeholder={ __(
 								'Email',
 								'ultimate-addons-for-gutenberg'
