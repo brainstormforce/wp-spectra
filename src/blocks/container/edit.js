@@ -86,6 +86,18 @@ const UAGBContainer = ( props ) => {
 			props.setAttributes( { isBlockRootParent: true } );
 		}
 
+		let hasSliderParent = false;
+		const sliderBlocks = [ 'uagb/slider', 'uagb/slider-child' ];
+
+		for ( let index = 0; index < parentBlockName.length; index++ ) {
+			if( sliderBlocks.includes( parentBlockName[index].name ) ) {
+				hasSliderParent = true;
+				break;
+			}
+		}
+
+		props.setAttributes( { hasSliderParent } );
+
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
