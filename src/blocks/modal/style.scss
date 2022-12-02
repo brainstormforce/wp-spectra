@@ -131,3 +131,20 @@ div.uagb-spectra-button-wrapper {
 .components-popover {
 	z-index: 1000000 !important;
 }
+
+/* Effect 1: Fade in and scale up */
+.uagb-effect-default {
+
+	.uagb-modal-popup-wrap {
+		opacity: 0;
+	}
+
+	&.active {
+
+		.uagb-modal-popup-wrap {
+			opacity: 1;
+			-webkit-transition: all 0.3s;
+			transition: all 0.3s;
+		}
+	}
+}

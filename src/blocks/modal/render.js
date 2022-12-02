@@ -69,6 +69,7 @@ const Render = ( props ) => {
 		buttonText,
 		buttonIcon,
 		buttonIconPosition,
+		appearEffect,
 		closeIconPosition,
 		escPress,
 		overlayClick,
@@ -207,6 +208,7 @@ const Render = ( props ) => {
 				}
 				<div
 					className={ classnames(
+						`${ appearEffect }`,
 						'uagb-modal-popup',
 						`uagb-block-${ block_id }`
 					) }
