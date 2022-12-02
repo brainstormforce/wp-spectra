@@ -58,7 +58,6 @@ export default function Settings( props ) {
 		modalHeightTablet,
 		modalHeightMobile,
 		modalHeightType,
-		appearEffect,
 		closeIconSize,
 		closeIconPosition,
 		overlayColor,
@@ -663,61 +662,6 @@ export default function Settings( props ) {
 				setAttributes={ setAttributes }
 			/>
 			}
-			<UAGSelectControl
-				label={ __(
-					'Appear Effect',
-					'ultimate-addons-for-gutenberg'
-				) }
-				data={ {
-					value: appearEffect,
-					label: 'appearEffect',
-				} }
-				setAttributes={ setAttributes }
-				options={ [
-					{
-						value: 'uagb-effect-default',
-						label: __(
-							'Default',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: 'uagb-effect-1',
-						label: __(
-							'Fade in & Scale',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: 'uagb-effect-2',
-						label: __(
-							'Slide in (right)',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: 'uagb-effect-3',
-						label: __(
-							'Slide in (bottom)',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: 'uagb-effect-4',
-						label: __(
-							'Super Scaled',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: 'uagb-effect-5',
-						label: __(
-							'Slip from top',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-				] }
-			/>
 		</UAGAdvancedPanelBody>
 	)
 

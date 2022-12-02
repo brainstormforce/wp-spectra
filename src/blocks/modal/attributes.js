@@ -208,10 +208,6 @@ const attributes = {
 			styleType: 'modal-height-type'
 		}
 	},
-	appearEffect: {
-		type: 'string',
-		default: 'uagb-effect-default',
-	},
 	closeIconSize: {
 		type: 'number',
 		default: 25

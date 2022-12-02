@@ -14,7 +14,6 @@ export default function Save( props ) {
 		buttonText,
 		buttonIcon,
 		buttonIconPosition,
-		appearEffect,
 		closeIconPosition,
 		escPress,
 		overlayClick,
@@ -127,7 +126,6 @@ export default function Save( props ) {
 			}
 			<div
 				className={ classnames(
-					`${ appearEffect }`,
 					'uagb-modal-popup',
 					`uagb-block-${ block_id }`
 				) }
