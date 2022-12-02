@@ -6,6 +6,7 @@ import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import { useDeviceType } from '@Controls/getPreviewType';
 import styles from './editor.lazy.scss';
 import getImageHeightWidth from '@Controls/getImageHeightWidth';
+
 const excludeBlocks = [
 'uagb/how-to-step',
 'uagb/buttons-child',
@@ -35,7 +36,6 @@ const excludeBlocks = [
 'uagb/forms-accept',
 'uagb/modal',
 ];
-const ALLOWED_BLOCKS = wp.blocks.getBlockTypes().map( block => block.name ).filter( blockName => ! excludeBlocks.includes( blockName ) );
 
 const propTypes = {};
 
@@ -55,6 +55,9 @@ const Render = ( props ) => {
 		attributes,
 		setAttributes,
 	} = props.parentProps;
+
+	const ALLOWED_BLOCKS = wp.blocks.getBlockTypes().map( block => block.name ).filter( blockName => ! excludeBlocks.includes( blockName ) );
+
 
 	const {
 		block_id,
