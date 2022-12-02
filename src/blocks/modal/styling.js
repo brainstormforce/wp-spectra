@@ -6,6 +6,7 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
+import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 
 export default function styling( props ) {
 	const {
@@ -114,8 +115,48 @@ export default function styling( props ) {
 		btnBgHoverColor,
 		btnBgColor,
 		btnBorderHColor,
-		modalBgColor,
-		modalBoxHeight
+		modalBoxHeight,
+		maxHeight,
+		maxHeightTablet,
+		maxHeightMobile,
+		maxHeightType,
+		backgroundType,
+		backgroundImageDesktop,
+		backgroundImageTablet,
+		backgroundImageMobile,
+		backgroundColor,
+		backgroundPositionDesktop,
+		backgroundPositionTablet,
+		backgroundPositionMobile,
+		backgroundAttachmentDesktop,
+		backgroundAttachmentTablet,
+		backgroundAttachmentMobile,
+		backgroundRepeatDesktop,
+		backgroundRepeatTablet,
+		backgroundRepeatMobile,
+		backgroundSizeDesktop,
+		backgroundSizeTablet,
+		backgroundSizeMobile,
+		gradientValue,
+		backgroundCustomSizeDesktop,
+		backgroundCustomSizeTablet,
+		backgroundCustomSizeMobile,
+		backgroundCustomSizeType,
+		backgroundImageColor,
+		overlayType,
+		customPosition,
+		xPositionDesktop,
+		xPositionTablet,
+		xPositionMobile,
+		xPositionType,
+		xPositionTypeTablet,
+		xPositionTypeMobile,
+		yPositionDesktop,
+		yPositionTablet,
+		yPositionMobile,
+		yPositionType,
+		yPositionTypeTablet,
+		yPositionTypeMobile,
 	} = props.attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -130,7 +171,27 @@ export default function styling( props ) {
 	const contentBorderCSS = generateBorderCSS( props.attributes, 'content' );
 	const contentBorderCSSTablet = generateBorderCSS( props.attributes, 'content', 'tablet' );
 	const contentBorderCSSMobile = generateBorderCSS( props.attributes, 'content', 'mobile' );
+	const backgroundAttributesDesktop = {
+        'backgroundType': backgroundType,
+        'backgroundImage': backgroundImageDesktop,
+        'backgroundColor': backgroundColor,
+        'gradientValue': gradientValue,
+        'backgroundRepeat': backgroundRepeatDesktop,
+        'backgroundPosition': backgroundPositionDesktop,
+        'backgroundSize': backgroundSizeDesktop,
+        'backgroundAttachment': backgroundAttachmentDesktop,
+		'backgroundCustomSize' : backgroundCustomSizeDesktop,
+		'backgroundCustomSizeType' : backgroundCustomSizeType,
+		'backgroundImageColor' : backgroundImageColor,
+		'overlayType' : overlayType,
+		'customPosition': customPosition,
+		'xPosition': xPositionDesktop,
+		'xPositionType': xPositionType,
+		'yPosition': yPositionDesktop,
+		'yPositionType': yPositionType,
+    };
 
+	const modalPopupContentBackgroundCSSDesktop = generateBackgroundCSS( backgroundAttributesDesktop );
 	const selectors = {
 		' .uagb-modal-popup-wrap' : {
 			'width': generateCSSUnit(
@@ -141,7 +202,6 @@ export default function styling( props ) {
 				modalHeight,
 				modalHeightType
 			),
-			'background-color': modalBgColor,
 			...contentBorderCSS
 		},
 		' .uagb-modal-popup-close svg': {
@@ -162,6 +222,7 @@ export default function styling( props ) {
 				paddingModalBottom,
 				paddingModalUnit
 			),
+			...modalPopupContentBackgroundCSSDesktop
 		},
 		' .uagb-modal-trigger svg': {
 			'width': generateCSSUnit( iconSize, 'px' ),
@@ -223,6 +284,27 @@ export default function styling( props ) {
 			'fill': btnLinkHoverColor
 		}
 	};
+	const backgroundAttributesTablet = {
+        'backgroundType': backgroundType,
+        'backgroundImage': backgroundImageTablet,
+        'backgroundColor': backgroundColor,
+        'gradientValue': gradientValue,
+        'backgroundRepeat': backgroundRepeatTablet,
+        'backgroundPosition': backgroundPositionTablet,
+        'backgroundSize': backgroundSizeTablet,
+        'backgroundAttachment': backgroundAttachmentTablet,
+		'backgroundCustomSize' : backgroundCustomSizeTablet,
+		'backgroundCustomSizeType' : backgroundCustomSizeType,
+		'backgroundImageColor' : backgroundImageColor,
+		'overlayType' : overlayType,
+		'customPosition': customPosition,
+		'xPosition': xPositionTablet,
+		'xPositionType': xPositionTypeTablet,
+		'yPosition': yPositionTablet,
+		'yPositionType': yPositionTypeTablet,
+    };
+
+	const modalPopupContentBackgroundCSSTablet = generateBackgroundCSS( backgroundAttributesTablet );
 	const tabletSelectors = {
 		' .uagb-modal-popup-wrap' : {
 			'width': generateCSSUnit(
@@ -252,6 +334,7 @@ export default function styling( props ) {
 				paddingModalBottomTablet,
 				tabletPaddingModalUnit
 			),
+			...modalPopupContentBackgroundCSSTablet
 		},
 		' .uagb-modal-text.uagb-modal-trigger': {
 			'font-size': generateCSSUnit( textFontSizeTablet, textFontSizeType ),
@@ -293,6 +376,27 @@ export default function styling( props ) {
 			'line-height': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
 		}
 	};
+	const backgroundAttributesMobile = {
+        'backgroundType': backgroundType,
+        'backgroundImage': backgroundImageMobile,
+        'backgroundColor': backgroundColor,
+        'gradientValue': gradientValue,
+        'backgroundRepeat': backgroundRepeatMobile,
+        'backgroundPosition': backgroundPositionMobile,
+        'backgroundSize': backgroundSizeMobile,
+        'backgroundAttachment': backgroundAttachmentMobile,
+		'backgroundCustomSize' : backgroundCustomSizeMobile,
+		'backgroundCustomSizeType' : backgroundCustomSizeType,
+		'backgroundImageColor' : backgroundImageColor,
+		'overlayType' : overlayType,
+		'customPosition': customPosition,
+		'xPosition': xPositionMobile,
+		'xPositionType': xPositionTypeMobile,
+		'yPosition': yPositionMobile,
+		'yPositionType': yPositionTypeMobile,
+    };
+
+	const modalPopupContentBackgroundCSSMobile = generateBackgroundCSS( backgroundAttributesMobile );
 	const mobileSelectors = {
 		' .uagb-modal-popup-wrap' : {
 			'width': generateCSSUnit(
@@ -322,6 +426,7 @@ export default function styling( props ) {
 				paddingModalBottomMobile,
 				mobilePaddingModalUnit
 			),
+			...modalPopupContentBackgroundCSSMobile
 		},
 		' .uagb-modal-text.uagb-modal-trigger': {
 			'font-size': generateCSSUnit( textFontSizeMobile, textFontSizeType ),
@@ -363,6 +468,7 @@ export default function styling( props ) {
 			'line-height': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
 		},
 	};
+
 	if( modalBoxHeight !== 'custom' ){
 		selectors[ ' .uagb-modal-popup-wrap' ] = {
 			'height': 'auto',
@@ -370,7 +476,10 @@ export default function styling( props ) {
 				modalWidth,
 				modalWidthType
 			),
-			'background-color': modalBgColor,
+			'max-height':generateCSSUnit(
+				maxHeight,
+				maxHeightType
+			),
 			...contentBorderCSS
 		};
 		tabletSelectors[ ' .uagb-modal-popup-wrap' ] = {
@@ -379,6 +488,10 @@ export default function styling( props ) {
 				modalWidthTablet,
 				modalWidthType
 			),
+			'max-height':generateCSSUnit(
+				maxHeightTablet,
+				maxHeightType
+			),
 			...contentBorderCSSTablet
 		};
 		mobileSelectors[ ' .uagb-modal-popup-wrap' ] = {
@@ -386,6 +499,10 @@ export default function styling( props ) {
 			'width': generateCSSUnit(
 				modalWidthMobile,
 				modalWidthType
+			),
+			'max-height':generateCSSUnit(
+				maxHeightMobile,
+				maxHeightType
 			),
 			...contentBorderCSSMobile
 		};

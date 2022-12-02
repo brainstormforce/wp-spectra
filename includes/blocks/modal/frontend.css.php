@@ -24,12 +24,32 @@ $content_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 
 $content_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'content', 'tablet' );
 $content_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'content', 'mobile' );
 
-$selectors   = array(
+$bg_obj_desktop           = array(
+	'backgroundType'           => $attr['backgroundType'],
+	'backgroundImage'          => $attr['backgroundImageDesktop'],
+	'backgroundColor'          => $attr['backgroundColor'],
+	'gradientValue'            => $attr['gradientValue'],
+	'backgroundRepeat'         => $attr['backgroundRepeatDesktop'],
+	'backgroundPosition'       => $attr['backgroundPositionDesktop'],
+	'backgroundSize'           => $attr['backgroundSizeDesktop'],
+	'backgroundAttachment'     => $attr['backgroundAttachmentDesktop'],
+	'backgroundImageColor'     => $attr['backgroundImageColor'],
+	'overlayType'              => $attr['overlayType'],
+	'backgroundCustomSize'     => $attr['backgroundCustomSizeDesktop'],
+	'backgroundCustomSizeType' => $attr['backgroundCustomSizeType'],
+	'customPosition'           => $attr['customPosition'],
+	'xPosition'                => $attr['xPositionDesktop'],
+	'xPositionType'            => $attr['xPositionType'],
+	'yPosition'                => $attr['yPositionDesktop'],
+	'yPositionType'            => $attr['yPositionType'],
+);
+$container_bg_css_desktop = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_desktop );
+
+$selectors               = array(
 	' .uagb-modal-popup-wrap'                    => array_merge(
 		array(
-			'width'            => UAGB_Helper::get_css_value( $attr['modalWidth'], $attr['modalWidthType'] ),
-			'height'           => UAGB_Helper::get_css_value( $attr['modalHeight'], $attr['modalHeightType'] ),
-			'background-color' => $attr['modalBgColor'],
+			'width'  => UAGB_Helper::get_css_value( $attr['modalWidth'], $attr['modalWidthType'] ),
+			'height' => UAGB_Helper::get_css_value( $attr['modalHeight'], $attr['modalHeightType'] ),
 		),
 		$content_border_css
 ),
@@ -43,12 +63,15 @@ $selectors   = array(
 	'.uagb-modal-popup.active'                   => array(
 		'background' => $attr['overlayColor'],
 	),
-	' .uagb-modal-popup-content'                 => array(
-		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingModalLeft'], $attr['paddingModalUnit'] ),
-		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingModalRight'], $attr['paddingModalUnit'] ),
-		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingModalTop'], $attr['paddingModalUnit'] ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingModalBottom'], $attr['paddingModalUnit'] ),
-	),
+	' .uagb-modal-popup-content'                 => array_merge(
+		array(
+			'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingModalLeft'], $attr['paddingModalUnit'] ),
+			'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingModalRight'], $attr['paddingModalUnit'] ),
+			'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingModalTop'], $attr['paddingModalUnit'] ),
+			'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingModalBottom'], $attr['paddingModalUnit'] ),
+		),
+		$container_bg_css_desktop
+),
 	'.uagb-modal-wrapper .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger' => array(
 		'padding-left'     => UAGB_Helper::get_css_value( $attr['paddingBtnLeft'], $attr['paddingBtnUnit'] ),
 		'padding-right'    => UAGB_Helper::get_css_value( $attr['paddingBtnRight'], $attr['paddingBtnUnit'] ),
@@ -86,7 +109,27 @@ $selectors   = array(
 		'fill' => $attr['btnLinkHoverColor'],
 	),
 );
-$t_selectors = array(
+$bg_obj_tablet           = array(
+	'backgroundType'           => $attr['backgroundType'],
+	'backgroundImage'          => $attr['backgroundImageTablet'],
+	'backgroundColor'          => $attr['backgroundColor'],
+	'gradientValue'            => $attr['gradientValue'],
+	'backgroundRepeat'         => $attr['backgroundRepeatTablet'],
+	'backgroundPosition'       => $attr['backgroundPositionTablet'],
+	'backgroundSize'           => $attr['backgroundSizeTablet'],
+	'backgroundAttachment'     => $attr['backgroundAttachmentTablet'],
+	'backgroundImageColor'     => $attr['backgroundImageColor'],
+	'overlayType'              => $attr['overlayType'],
+	'backgroundCustomSize'     => $attr['backgroundCustomSizeTablet'],
+	'backgroundCustomSizeType' => $attr['backgroundCustomSizeType'],
+	'customPosition'           => $attr['customPosition'],
+	'xPosition'                => $attr['xPositionTablet'],
+	'xPositionType'            => $attr['xPositionTypeTablet'],
+	'yPosition'                => $attr['yPositionTablet'],
+	'yPositionType'            => $attr['yPositionTypeTablet'],
+);
+$container_bg_css_tablet = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_tablet );
+$t_selectors             = array(
 	'.uagb-modal-wrapper'        => array(
 		'text-align' => $attr['modalAlignTablet'],
 	),
@@ -97,12 +140,15 @@ $t_selectors = array(
 		),
 		$content_border_css_tablet
 	),
-	' .uagb-modal-popup-content' => array(
-		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingModalLeftTablet'], $attr['tabletPaddingModalUnit'] ),
-		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingModalRightTablet'], $attr['tabletPaddingModalUnit'] ),
-		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingModalTopTablet'], $attr['tabletPaddingModalUnit'] ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingModalBottomTablet'], $attr['tabletPaddingModalUnit'] ),
-	),
+	' .uagb-modal-popup-content' => array_merge(
+		array(
+			'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingModalLeftTablet'], $attr['tabletPaddingModalUnit'] ),
+			'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingModalRightTablet'], $attr['tabletPaddingModalUnit'] ),
+			'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingModalTopTablet'], $attr['tabletPaddingModalUnit'] ),
+			'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingModalBottomTablet'], $attr['tabletPaddingModalUnit'] ),
+		),
+		$container_bg_css_tablet
+),
 	'.uagb-modal-wrapper .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftTablet'], $attr['tabletPaddingBtnUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightTablet'], $attr['tabletPaddingBtnUnit'] ),
@@ -116,7 +162,27 @@ $t_selectors = array(
 		'font-size'   => $t_btn_icon_size,
 	),
 );
-$m_selectors = array(
+$bg_obj_mobile           = array(
+	'backgroundType'           => $attr['backgroundType'],
+	'backgroundImage'          => $attr['backgroundImageMobile'],
+	'backgroundColor'          => $attr['backgroundColor'],
+	'gradientValue'            => $attr['gradientValue'],
+	'backgroundRepeat'         => $attr['backgroundRepeatMobile'],
+	'backgroundPosition'       => $attr['backgroundPositionMobile'],
+	'backgroundSize'           => $attr['backgroundSizeMobile'],
+	'backgroundAttachment'     => $attr['backgroundAttachmentMobile'],
+	'backgroundImageColor'     => $attr['backgroundImageColor'],
+	'overlayType'              => $attr['overlayType'],
+	'backgroundCustomSize'     => $attr['backgroundCustomSizeMobile'],
+	'backgroundCustomSizeType' => $attr['backgroundCustomSizeType'],
+	'customPosition'           => $attr['customPosition'],
+	'xPosition'                => $attr['xPositionMobile'],
+	'xPositionType'            => $attr['xPositionTypeMobile'],
+	'yPosition'                => $attr['yPositionMobile'],
+	'yPositionType'            => $attr['yPositionTypeMobile'],
+);
+$container_bg_css_mobile = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_mobile );
+$m_selectors             = array(
 	'.uagb-modal-wrapper'        => array(
 		'text-align' => $attr['modalAlignMobile'],
 	),
@@ -127,12 +193,15 @@ $m_selectors = array(
 		),
 		$content_border_css_mobile
 	),
-	' .uagb-modal-popup-content' => array(
-		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingModalLeftMobile'], $attr['mobilePaddingModalUnit'] ),
-		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingModalRightMobile'], $attr['mobilePaddingModalUnit'] ),
-		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingModalTopMobile'], $attr['mobilePaddingModalUnit'] ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingModalBottomMobile'], $attr['mobilePaddingModalUnit'] ),
-	),
+	' .uagb-modal-popup-content' => array_merge(
+		array(
+			'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingModalLeftMobile'], $attr['mobilePaddingModalUnit'] ),
+			'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingModalRightMobile'], $attr['mobilePaddingModalUnit'] ),
+			'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingModalTopMobile'], $attr['mobilePaddingModalUnit'] ),
+			'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingModalBottomMobile'], $attr['mobilePaddingModalUnit'] ),
+		),
+		$container_bg_css_mobile
+),
 	'.uagb-modal-wrapper .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightMobile'], $attr['mobilePaddingBtnUnit'] ),
@@ -236,23 +305,25 @@ $m_selectors[' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-t
 if ( 'custom' !== $attr['modalBoxHeight'] ) {
 	$selectors[' .uagb-modal-popup-wrap']   = array_merge(
 		array(
-			'height'           => 'auto',
-			'width'            => UAGB_Helper::get_css_value( $attr['modalWidth'], $attr['modalWidthType'] ),
-			'background-color' => $attr['modalBgColor'],
+			'height'     => 'auto',
+			'width'      => UAGB_Helper::get_css_value( $attr['modalWidth'], $attr['modalWidthType'] ),
+			'max-height' => UAGB_Helper::get_css_value( $attr['maxHeight'], $attr['maxHeightType'] ),
 		),
 		$content_border_css
 	);
 	$t_selectors[' .uagb-modal-popup-wrap'] = array_merge(
 		array(
-			'height' => 'auto',
-			'width'  => UAGB_Helper::get_css_value( $attr['modalWidthTablet'], $attr['modalWidthType'] ),
+			'height'     => 'auto',
+			'width'      => UAGB_Helper::get_css_value( $attr['modalWidthTablet'], $attr['modalWidthType'] ),
+			'max-height' => UAGB_Helper::get_css_value( $attr['maxHeightTablet'], $attr['maxHeightType'] ),
 		),
 		$content_border_css_tablet
 	);
 	$m_selectors[' .uagb-modal-popup-wrap'] = array_merge(
 		array(
-			'height' => 'auto',
-			'width'  => UAGB_Helper::get_css_value( $attr['modalWidthMobile'], $attr['modalWidthType'] ),
+			'height'     => 'auto',
+			'width'      => UAGB_Helper::get_css_value( $attr['modalWidthMobile'], $attr['modalWidthType'] ),
+			'max-height' => UAGB_Helper::get_css_value( $attr['maxHeightMobile'], $attr['maxHeightType'] ),
 		),
 		$content_border_css_mobile
 	);

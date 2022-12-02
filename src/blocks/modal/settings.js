@@ -21,6 +21,7 @@ import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import UAGTabsControl from '@Components/tabs';
 import ResponsiveBorder from '@Components/responsive-border';
+import Background from '@Components/background';
 
 let imageSizeOptions = [
 	{
@@ -154,10 +155,50 @@ export default function Settings( props ) {
 		btnLinkHoverColor,
 		btnBgHoverColor,
 		btnBgColor,
-		modalBgColor,
 		closeIcon,
 		showBtnIcon,
-		modalBoxHeight
+		modalBoxHeight,
+		maxHeight,
+		maxHeightTablet,
+		maxHeightMobile,
+		maxHeightType,
+		backgroundType,
+		backgroundImageDesktop,
+		backgroundImageTablet,
+		backgroundImageMobile,
+		backgroundColor,
+		backgroundPositionDesktop,
+		backgroundPositionTablet,
+		backgroundPositionMobile,
+		backgroundAttachmentDesktop,
+		backgroundAttachmentTablet,
+		backgroundAttachmentMobile,
+		backgroundRepeatDesktop,
+		backgroundRepeatTablet,
+		backgroundRepeatMobile,
+		backgroundSizeDesktop,
+		backgroundSizeTablet,
+		backgroundSizeMobile,
+		backgroundImageColor,
+		gradientValue,
+		backgroundCustomSizeDesktop,
+		backgroundCustomSizeTablet,
+		backgroundCustomSizeMobile,
+		backgroundCustomSizeType,
+		overlayType,
+		customPosition,
+		xPositionDesktop,
+		xPositionTablet,
+		xPositionMobile,
+		xPositionType,
+		xPositionTypeTablet,
+		xPositionTypeMobile,
+		yPositionDesktop,
+		yPositionTablet,
+		yPositionMobile,
+		yPositionType,
+		yPositionTypeTablet,
+		yPositionTypeMobile,
 	} = attributes;
 
 	let loadTextGoogleFonts;
@@ -538,6 +579,45 @@ export default function Settings( props ) {
 				showIcons={ false }
 				responsive={ false }
 			/>
+			{
+				modalBoxHeight!== 'custom' &&
+				<ResponsiveSlider
+					label={ __(
+						'Max Height',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: maxHeight,
+							label: 'maxHeight',
+						},
+						tablet: {
+							value: maxHeightTablet,
+							label: 'maxHeightTablet',
+						},
+						mobile: {
+							value: maxHeightMobile,
+							label: 'maxHeightMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 100 }
+					unit={ {
+						value: maxHeightType,
+						label: 'maxHeightType',
+					} }
+					units={ [
+						{
+							name: __(
+								'VH',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'vh',
+						},
+					] }
+					setAttributes={ setAttributes }
+				/>
+			}
 			{ modalBoxHeight !== 'auto' &&
 			<ResponsiveSlider
 				label={ __(
@@ -1333,21 +1413,6 @@ export default function Settings( props ) {
 				setAttributes={ setAttributes }
 			/>
 
-			<AdvancedPopColorControl
-				label={ __(
-					'Background Color',
-					'ultimate-addons-for-gutenberg'
-				) }
-				colorValue={
-					modalBgColor ? modalBgColor : ''
-				}
-				data={ {
-					value: modalBgColor,
-					label: 'modalBgColor',
-				} }
-				setAttributes={ setAttributes }
-			/>
-
 			<SpacingControl
 				{ ...props }
 				label={ __(
@@ -1487,6 +1552,185 @@ export default function Settings( props ) {
 		</UAGAdvancedPanelBody>
 	)
 
+	const backgroundSettings = (
+			<UAGAdvancedPanelBody
+				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
+			>
+				<Background
+					setAttributes={ setAttributes }
+					backgroundGradient={ {
+						value: gradientValue,
+						label: 'gradientValue',
+					} }
+					backgroundImageColor={ {
+						value: backgroundImageColor,
+						label: 'backgroundImageColor',
+					} }
+					backgroundSize={{
+						desktop: {
+							value: backgroundSizeDesktop,
+							label: 'backgroundSizeDesktop',
+						},
+						tablet: {
+							value: backgroundSizeTablet,
+							label: 'backgroundSizeTablet',
+						},
+						mobile: {
+							value: backgroundSizeMobile,
+							label: 'backgroundSizeMobile',
+						},
+					}}
+					backgroundCustomSize={{
+						desktop: {
+							value: backgroundCustomSizeDesktop,
+							label: 'backgroundCustomSizeDesktop',
+						},
+						tablet: {
+							value: backgroundCustomSizeTablet,
+							label: 'backgroundCustomSizeTablet',
+						},
+						mobile: {
+							value: backgroundCustomSizeMobile,
+							label: 'backgroundCustomSizeMobile',
+						},
+					}}
+					backgroundCustomSizeType={{
+						value: backgroundCustomSizeType,
+						label: 'backgroundCustomSizeType'
+					}}
+					backgroundRepeat={{
+						desktop: {
+							value: backgroundRepeatDesktop,
+							label: 'backgroundRepeatDesktop',
+						},
+						tablet: {
+							value: backgroundRepeatTablet,
+							label: 'backgroundRepeatTablet',
+						},
+						mobile: {
+							value: backgroundRepeatMobile,
+							label: 'backgroundRepeatMobile',
+						},
+					}}
+					backgroundAttachment={{
+						desktop: {
+							value: backgroundAttachmentDesktop,
+							label: 'backgroundAttachmentDesktop',
+						},
+						tablet: {
+							value: backgroundAttachmentTablet,
+							label: 'backgroundAttachmentTablet',
+						},
+						mobile: {
+							value: backgroundAttachmentMobile,
+							label: 'backgroundAttachmentMobile',
+						},
+					}}
+					backgroundPosition={{
+						desktop: {
+							value: backgroundPositionDesktop,
+							label: 'backgroundPositionDesktop',
+						},
+						tablet: {
+							value: backgroundPositionTablet,
+							label: 'backgroundPositionTablet',
+						},
+						mobile: {
+							value: backgroundPositionMobile,
+							label: 'backgroundPositionMobile',
+						},
+					}}
+					backgroundImage={{
+						desktop: {
+							value: backgroundImageDesktop,
+							label: 'backgroundImageDesktop',
+						},
+						tablet: {
+							value: backgroundImageTablet,
+							label: 'backgroundImageTablet',
+						},
+						mobile: {
+							value: backgroundImageMobile,
+							label: 'backgroundImageMobile',
+						},
+					}}
+					imageResponsive={true}
+					backgroundColor={ {
+						value: backgroundColor,
+						label: 'backgroundColor',
+					} }
+					backgroundType={ {
+						value: backgroundType,
+						label: 'backgroundType',
+					} }
+					overlayType={{
+						value: overlayType,
+						label: 'overlayType'
+					}}
+					gradientOverlay={{
+						value: true,
+					}}
+					customPosition={{
+						value: customPosition,
+						label: 'customPosition'
+					}}
+					xPositionDesktop={{
+						value: xPositionDesktop,
+						label: 'xPositionDesktop'
+					}}
+					xPositionTablet={{
+						value: xPositionTablet,
+						label: 'xPositionTablet'
+					}}
+					xPositionMobile={{
+						value: xPositionMobile,
+						label: 'xPositionMobile'
+					}}
+					xPositionType={{
+						value: xPositionType,
+						label: 'xPositionType'
+					}}
+					xPositionTypeTablet={{
+						value: xPositionTypeTablet,
+						label: 'xPositionTypeTablet'
+					}}
+					xPositionTypeMobile={{
+						value: xPositionTypeMobile,
+						label: 'xPositionTypeMobile'
+					}}
+					yPositionDesktop={{
+						value: yPositionDesktop,
+						label: 'yPositionDesktop'
+					}}
+					yPositionTablet={{
+						value: yPositionTablet,
+						label: 'yPositionTablet'
+					}}
+					yPositionMobile={{
+						value: yPositionMobile,
+						label: 'yPositionMobile'
+					}}
+					yPositionType={{
+						value: yPositionType,
+						label: 'yPositionType'
+					}}
+					yPositionTypeTablet={{
+						value: yPositionTypeTablet,
+						label: 'yPositionTypeTablet'
+					}}
+					yPositionTypeMobile={{
+						value: yPositionTypeMobile,
+						label: 'yPositionTypeMobile'
+					}}
+					backgroundVideoType={ {
+						value: false,
+					} }
+					{ ...props }
+				/>
+			</UAGAdvancedPanelBody>
+	)
+
 	return (
 		<>
 			<InspectorControls>
@@ -1499,6 +1743,7 @@ export default function Settings( props ) {
 					</InspectorTab>
 
 					<InspectorTab { ...UAGTabs.style }>
+						{backgroundSettings}
 						{contentStylePanel}
 						{ '' !== closeIcon && closeStylePanel }
 						{triggerStylePanel}
