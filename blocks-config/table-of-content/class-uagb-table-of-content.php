@@ -424,7 +424,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 			return $final_reusable_array;
 		}
-		
+
 		/**
 		 * Renders the UAGB Table Of Contents block.
 		 *
