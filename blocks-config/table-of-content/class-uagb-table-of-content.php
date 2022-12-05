@@ -27,15 +27,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		private static $instance;
 
 		/**
-		 * Post content.
-		 *
-		 * @since x.x.x
-		 * @var string
-		 */
-		public static $output_content = '';
-
-
-		/**
 		 *  Initiator
 		 *
 		 * @since 1.23.0
@@ -433,74 +424,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 			return $final_reusable_array;
 		}
-		/**
-		 * Sets the current post for usage in template blocks.
-		 *
-		 * @since x.x.x
-		 * @access public
-		 *
-		 * @return WP_Post|null The post if any, or null otherwise.
-		 */
-		public function get_post_from_context() {
-			// TODO: Without this temporary fix, an infinite loop can occur where
-			// posts with post content blocks render themselves recursively.
-			if ( is_admin() || defined( 'REST_REQUEST' ) ) {
-				return null;
-			}
-			// Prevent an issue with the terms and conditions page in the woocommerce checkout.
-			if ( class_exists( 'woocommerce' ) && is_checkout() ) {
-				return '';
-			}
 
-			return get_post();
-		}
-		/**
-		 * Renders blocks to allow dynamic blocks that bring in headings to be accounted for.
-		 *
-		 * @since x.x.x
-		 * @access private
-		 *
-		 * @param string $block The page content content.
-		 */
-		private function uagb_get_dynamic_parse_blocks( $block ) {
-			if ( 'uagb/table-of-contents' !== $block['blockName'] ) {
-				self::$output_content .= render_block( $block );
-			}
-		}
-		/**
-		 * Gets the content, anchor, level, and page of headings from a post. Returns
-		 * data from all headings in a paginated post if $current_page_only is false;
-		 * otherwise, returns only data from headings on the current page being
-		 * rendered.
-		 *
-		 * @since x.x.x
-		 * @access private
-		 *
-		 * @param WP_Post $post The post to extract headings from.
-		 * @param array   $attributes the block attributes.
-		 *
-		 * @return array The list of headings.
-		 */
-		private function table_of_contents_get_dynamic_headings( $post, $attributes = array() ) {
-
-			$blocks = parse_blocks( $post->post_content );
-
-				self::$output_content = '';
-			foreach ( $blocks as $block ) {
-				$this->uagb_get_dynamic_parse_blocks( $block );
-			}
-
-			if ( self::$output_content ) {
-				$page_content = do_shortcode( self::$output_content );
-			} else {
-				$page_content = do_shortcode( $post->post_content );
-			}
-
-			$headings_list = $this->table_of_contents_get_headings_from_content( $page_content );
-
-			return array_values( $headings_list );
-
-		}
 		/**
 		 * Renders the UAGB Table Of Contents block.
 		 *
@@ -520,10 +444,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			if ( ! isset( $post->ID ) ) {
 				return '';
 			}
-			$the_post = $this->get_post_from_context();
-			if ( ! $the_post ) {
-				return '';
-			}
 
 			$uagb_toc_options         = get_post_meta( $post->ID, '_uagb_toc_options', true );
 			$uagb_toc_version         = ! empty( $uagb_toc_options['_uagb_toc_version'] ) ? $uagb_toc_options['_uagb_toc_version'] : '';
@@ -534,13 +454,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				$blocks                            = parse_blocks( get_post( $post->ID )->post_content );
 				$uagb_toc_reusable_heading_content = $this->toc_recursive_reusable_heading( $blocks );
 				$uagb_toc_heading_content          = array_merge( $uagb_toc_heading_content, $uagb_toc_reusable_heading_content );
-
-				if ( $attributes['allowDynamicBlock'] ) {
-					$uagb_toc_heading_content = $this->table_of_contents_get_dynamic_headings(
-						$the_post,
-						$attributes
-					);
-				}
 
 				$meta_array = array(
 					'_uagb_toc_version'  => UAGB_ASSET_VER,
@@ -1052,10 +965,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									'overallAlign'         => array(
 										'type'    => 'string',
 										'default' => 'left',
-									),
-									'allowDynamicBlock'    => array(
-										'type'    => 'boolean',
-										'default' => false,
 									),
 								)
 							),
