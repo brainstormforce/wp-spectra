@@ -179,7 +179,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Post Grid - Added a setting to show buttons on equal height.
 * Improvement: Post Grid - Added a setting to toggle image aspect ratio.
 * Improvement: Post Grid - Added an equal height option for featured images.
-* Improvement: Table Of Contents - Added a feature to allow dynamic headings.
 * Improvement: Matrix Alignment Control - Added the new Matrix Alignment Control to match the Spectra UI.
 * Improvement: Number Control - Added the new Number Control to match the Spectra UI.
 * Improvement: Global - Updated Block Previews for All Spectra Blocks in the Editor.
