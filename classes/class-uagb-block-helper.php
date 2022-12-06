@@ -139,16 +139,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$box_shadow_position_css,
 				);
 			}
-			$selectors[ $wrapper . '.wp-block-button__link' ]   = $border_css;
-			$m_selectors[ $wrapper . '.wp-block-button__link' ] = $border_css_mobile;
-			$t_selectors[ $wrapper . '.wp-block-button__link' ] = $border_css_tablet;
-			$selectors[ $wrapper . '.wp-block-button__link:hover' ]                         = array(
+			$selectors[ $wrapper . '.wp-block-button__link' ]       = $border_css;
+			$m_selectors[ $wrapper . '.wp-block-button__link' ]     = $border_css_mobile;
+			$t_selectors[ $wrapper . '.wp-block-button__link' ]     = $border_css_tablet;
+			$selectors[ $wrapper . '.wp-block-button__link:hover' ] = array(
 				'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
 			);
 			// twenty twenty theme.
-			$selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater']   = $border_css;
-			$m_selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'] = $border_css_mobile;
-			$t_selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'] = $border_css_tablet;
+			$selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater']       = $border_css;
+			$m_selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater']     = $border_css_mobile;
+			$t_selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater']     = $border_css_tablet;
 			$selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater:hover'] = array(
 				'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
 			);
