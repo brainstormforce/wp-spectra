@@ -21,7 +21,6 @@ const Render = ( props ) => {
 	// Setup the attributes
 	const {
 		attributes: {
-			isPreview,
 			block_id,
 			icon,
 			noticeTitle,
@@ -39,9 +38,8 @@ const Render = ( props ) => {
 	if ( noticeDismiss ) {
 		imageIconHtml = ( renderSVG( icon ) );
 	}
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/inline-notice.png`;
+
 	return (
-		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				className,

@@ -187,3 +187,25 @@
 .editor-styles-wrapper .block-editor-block-list__layout.is-root-container .uagb-post-grid .uagb-post__inner-wrap p {
 	margin-bottom: 0;
 }
+
+.editor-styles-wrapper .is-grid {
+
+	&.uagb-equal_height_inline-read-more-buttons-in-editor {
+
+		&.uagb-post__image-position-top article.uagb-post__inner-wrap,
+		&.uagb-post__image-position-background article.uagb-post__inner-wrap {
+			position: relative;
+
+			.uagb-post__text:nth-last-child(2) {
+				padding-bottom: 100px !important;
+			}
+
+			.uagb-post__text:last-child {
+				position: absolute;
+				bottom: 20px;
+			}
+		}
+
+	}
+
+}

@@ -19,11 +19,11 @@ import UAGTabsControl from '@Components/tabs';
 import ctaPresets, {buttonsPresetsCTA, buttonsPresetsAdditionalButton} from './presets';
 import UAGPresets from '@Components/presets';
 import renderSVG from '@Controls/renderIcon';
+import UAGTextControl from '@Components/text-control';
 import { ToggleControl, Icon } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import ResponsiveSlider from '@Components/responsive-slider';
 import { useDeviceType } from '@Controls/getPreviewType';
-import UAGTextControl from '@Components/text-control';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -396,19 +396,18 @@ const Settings = ( props ) => {
 						'Link',
 						'ultimate-addons-for-gutenberg'
 					) }
+					enableDynamicContent={true}
+					name="secondCtaLink"
 					value={ secondCtaLink }
+					setAttributes={setAttributes}
 					data={{
 						value: secondCtaLink,
 						label: 'secondCtaLink',
 					}}
-					setAttributes={ setAttributes }
-					onChange={ ( value ) =>
-						setAttributes( { secondCtaLink: value } )
-					}
 				/>
 				<ToggleControl
 					label={ __(
-						'Open in new window',
+						'Open in New Window',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ secondCtaTarget }
@@ -892,19 +891,18 @@ const Settings = ( props ) => {
 								'Link',
 								'ultimate-addons-for-gutenberg'
 							) }
+							name="ctaLink"
+							enableDynamicContent={true}
 							value={ ctaLink }
+							setAttributes={setAttributes}
 							data={{
 								value: ctaLink,
 								label: 'ctaLink',
 							}}
-							setAttributes={ setAttributes }
-							onChange={ ( value ) =>
-								setAttributes( { ctaLink: value } )
-							}
 						/>
 						<ToggleControl
 							label={ __(
-								'Open in new window',
+								'Open in New Window',
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ ctaTarget }

@@ -643,5 +643,45 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			UAGB_Helper::blocks_google_font( $heading_load_google_font, $heading_font_family, $heading_font_weight );
 			UAGB_Helper::blocks_google_font( $caption_load_google_font, $caption_font_family, $caption_font_weight );
 		}
+
+		/**
+		 * Adds Google fonts for Counter block.
+		 *
+		 * @since 2.1.0
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_counter_gfont( $attr ) {
+
+			$heading_load_google_font = isset( $attr['headingLoadGoogleFonts'] ) ? $attr['headingLoadGoogleFonts'] : '';
+			$heading_font_family      = isset( $attr['headingFontFamily'] ) ? $attr['headingFontFamily'] : '';
+			$heading_font_weight      = isset( $attr['headingFontWeight'] ) ? $attr['headingFontWeight'] : '';
+
+			$number_load_google_font = isset( $attr['numberLoadGoogleFonts'] ) ? $attr['numberLoadGoogleFonts'] : '';
+			$number_font_family      = isset( $attr['numberFontFamily'] ) ? $attr['numberFontFamily'] : '';
+			$number_font_weight      = isset( $attr['numberFontWeight'] ) ? $attr['numberFontWeight'] : '';
+
+			UAGB_Helper::blocks_google_font( $heading_load_google_font, $heading_font_family, $heading_font_weight );
+			UAGB_Helper::blocks_google_font( $number_load_google_font, $number_font_family, $number_font_weight );
+		}
+
+		/**
+		 * Adds Google fonts for Image Gallery block.
+		 *
+		 * @since 2.0.0
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_image_gallery_gfont( $attr ) {
+
+			$caption_load_google_font = isset( $attr['captionLoadGoogleFonts'] ) ? $attr['captionLoadGoogleFonts'] : '';
+			$caption_font_family      = isset( $attr['captionFontFamily'] ) ? $attr['captionFontFamily'] : '';
+			$caption_font_weight      = isset( $attr['captionFontWeight'] ) ? $attr['captionFontWeight'] : '';
+
+			$load_more_load_google_font = isset( $attr['loadMoreLoadGoogleFonts'] ) ? $attr['loadMoreLoadGoogleFonts'] : '';
+			$load_more_font_family      = isset( $attr['loadMoreFontFamily'] ) ? $attr['loadMoreFontFamily'] : '';
+			$load_more_font_weight      = isset( $attr['loadMoreFontWeight'] ) ? $attr['loadMoreFontWeight'] : '';
+
+			UAGB_Helper::blocks_google_font( $caption_load_google_font, $caption_font_family, $caption_font_weight );
+			UAGB_Helper::blocks_google_font( $load_more_load_google_font, $load_more_font_family, $load_more_font_weight );
+		}
 	}
 }

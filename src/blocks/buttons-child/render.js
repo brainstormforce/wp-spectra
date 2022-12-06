@@ -25,7 +25,7 @@ const Render = ( props ) => {
 		removeText,
 		noFollow,
 		backgroundType,
-		borderStyle,
+		btnBorderStyle,
 		background,
 		color,
 		showIcon,
@@ -55,7 +55,6 @@ const Render = ( props ) => {
 						onChange={ ( value ) => {
 							setAttributes( { label: value } );
 						} }
-						allowedFormats={ [ 'core/bold', 'core/italic', 'core/strikethrough' ] }
 						className="uagb-button__link"
 						rel= { noFollow ? 'nofollow noopener' : 'follow noopener' }
 						keepPlaceholderOnFocus
@@ -66,6 +65,7 @@ const Render = ( props ) => {
 	}
 
 	const hasBackground = background !== '' || backgroundType === 'transparent' || 'gradient' === backgroundType  ? 'has-background' : '';
+
 	return (
 		<div
 			className={ classnames(
@@ -74,7 +74,7 @@ const Render = ( props ) => {
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
 				'wp-block-button',
-				borderStyle !== 'none' ? 'is-style-outline' : '',
+				btnBorderStyle !== 'none' && btnBorderStyle !== 'default' ? 'is-style-outline' : '',
 			) }
 		>
 			<div className="uagb-button__wrapper">

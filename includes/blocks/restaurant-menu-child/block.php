@@ -16,5 +16,6 @@ $block_data = array(
 	'default'     => true,
 	'is_child'    => true,
 	'extension'   => false,
+	'static_css'  => 'price-list-child',
 	'deprecated'  => false,
 );

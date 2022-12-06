@@ -297,12 +297,15 @@ const UAGBCF7 = ( props ) => {
 
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	return (
-			<>
-			<Settings parentProps={ props } deviceType = { deviceType }/>
-			<Render parentProps={ props } />
-			</>
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/contact-form-7-styler.svg`;
 
+	return (
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+			<>
+				<Settings parentProps={ props } deviceType = { deviceType }/>
+				<Render parentProps={ props } />
+			</>
+		)
 	);
 };
 export default UAGBCF7;

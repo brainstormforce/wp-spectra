@@ -996,7 +996,6 @@ const attributes = {
 		type: 'string',
 		default: 'left',
 	},
-
 };
 
 export default attributes;

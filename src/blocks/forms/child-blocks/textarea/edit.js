@@ -24,19 +24,15 @@ const UAGBFormsTextareaEdit = ( props ) => {
 		document.head.appendChild( $style );
 	}, [] );
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/form-textarea.svg`;
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/children/form-textarea.svg`;
 
 	return (
-		<>
-			{ props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-
-							<>
-			<Settings parentProps={ props } />
-					<Render parentProps={ props } />
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+			<>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
 			</>
-
-			) }
-		</>
+		)
 	);
 };
 

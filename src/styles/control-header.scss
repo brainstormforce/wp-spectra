@@ -29,7 +29,6 @@
 
 		.uagb-reset {
 			padding: 0;
-			margin-right: 10px;
 
 			&:only-child,
 			&:disabled {
@@ -39,7 +38,6 @@
 
 		.disabled-element-wrapper {
 			padding: 0;
-			margin-right: 10px;
 
 			&:only-child {
 				margin-right: 0;
@@ -60,6 +58,10 @@
 				width: 100%;
 				cursor: pointer;
 				padding-right: 5px;
+
+				&:first-child {
+					padding-left: 10px;
+				}
 
 				&.is-primary.is-small,
 				&.is-secondary.is-small {
@@ -87,6 +89,10 @@
 
 			.components-button:last-child {
 				padding: 0;
+			}
+
+			.components-button:only-child {
+				padding-left: 10px;
 			}
 		}
 

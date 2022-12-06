@@ -26,13 +26,13 @@
 #uag-menu-page .uag-accordion {
 
 	svg {
-		fill: #e2e8f0; // Tailwind Slate-200.
+		fill: $slate-200;
 	}
 
 	&:hover {
 
 		svg {
-			fill: #475569; // Tailwind Slate-600.
+			fill: $slate-600;
 		}
 	}
 
@@ -44,7 +44,7 @@
 	&:focus-visible {
 
 		svg {
-			fill: #475569; // Tailwind Slate-600.
+			fill: $slate-600;
 		}
 	}
 }
@@ -198,19 +198,28 @@
 }
 
 #wpwrap {
-	background-color: #f8fafc; // Tailwind Slate-50.
+	background-color: $slate-50;
 
 	.spectra-admin {
 
 		&__input-field {
-			color: #64748b; // Tailwind Slate-500.
+			color: $slate-500;
 			background-color: #fff;
-			border: 1px solid #e2e8f0; // Tailwind Slate-200.
+			border: 1px solid $slate-200;
 			border-radius: 0.375rem;
 			padding: 0.5rem 0.75rem;
 			font-size: 1rem;
 			//stylelint-disable-next-line declaration-property-unit-allowed-list
 			line-height: 1.25rem;
+
+			&--read-only {
+				border: 1px solid $slate-300 !important;
+				background-color: $slate-100 !important;
+
+				&:focus {
+					outline: none;
+				}
+			}
 
 			&:focus {
 				outline: none;
@@ -251,10 +260,10 @@
 			font-size: 1rem;
 			//stylelint-disable-next-line declaration-property-unit-allowed-list
 			line-height: 1.25rem;
-			color: #64748b; // Tailwind Slate-500.
+			color: $slate-500;
 			background-color: #fff;
 			border-radius: 0 0.25rem 0.25rem 0;
-			border: 1px solid #e2e8f0; // Tailwind Slate-200.
+			border: 1px solid $slate-200;
 		}
 	}
 }
@@ -311,7 +320,7 @@
 
 	svg,
 	path {
-		stroke: #94a3b8; // Tailwind Slate-400.
+		stroke: $slate-400;
 	}
 }
 
@@ -348,11 +357,11 @@
 // Custom Scrollbar.
 .spectra__scrollable {
 	scrollbar-width: 0.5rem;
-	scrollbar-color: #cbd5e1 #f1f5f9; // Tailwind Slate-300 and Slate-100.
+	scrollbar-color: $slate-300 $slate-100;
 
 	&--blocks {
 		scrollbar-width: 0.5rem;
-		scrollbar-color: #cbd5e1 #f1f5f9; // Tailwind Slate-300 and Slate-100.
+		scrollbar-color: $slate-300 $slate-100;
 
 		&::-webkit-scrollbar {
 			width: 0.5rem;
@@ -362,12 +371,12 @@
 		&::-webkit-scrollbar-track {
 			margin: 1rem 0;
 			border-radius: 0.25rem;
-			background-color: #f1f5f9;
+			background-color: $slate-100;
 		}
 
 		&::-webkit-scrollbar-thumb {
 			border-radius: 0.25rem;
-			background-color: #cbd5e1;
+			background-color: $slate-300;
 		}
 	}
 
@@ -375,7 +384,7 @@
 		// overflow-y: auto;
 		overflow-y: scroll;
 		scrollbar-width: 0.5rem;
-		scrollbar-color: #cbd5e1 #f1f5f9; // Tailwind Slate-300 and Slate-100.
+		scrollbar-color: $slate-300 $slate-100;
 		// scrollbar-gutter: stable both-edges;
 
 		&::-webkit-scrollbar {
@@ -385,13 +394,13 @@
 
 		&::-webkit-scrollbar-track {
 			border-radius: 0 0.5rem 0.5rem 0;
-			background-color: #f1f5f9;
+			background-color: $slate-100;
 			opacity: 0.4;
 		}
 
 		&::-webkit-scrollbar-thumb {
 			border-radius: 0.25rem;
-			background-color: #cbd5e1;
+			background-color: $slate-300;
 			opacity: 0.4;
 		}
 	}
@@ -403,6 +412,41 @@
 
 		& > section:last-child {
 			border-bottom: none;
+		}
+	}
+}
+
+.section-disabled {
+	pointer-events: none;
+	opacity: 0.4;
+}
+
+.uag-dashboard-app {
+
+	.uag-radio-input {
+		width: 20px !important;
+		height: 20px !important;
+		border: 1px solid $slate-300;
+		box-shadow: none !important;
+
+		&:checked {
+			border-color: $spectra-wpcolor;
+			box-shadow: none !important;
+			color: $spectra-wpcolor;
+		}
+
+		&::before {
+			display: none !important;
+		}
+
+		&:active,
+		&:focus {
+			border-color: $spectra-wpcolor;
+			color: $spectra-wpcolor;
+		}
+
+		&:hover {
+			color: $spectra-wpcolor;
 		}
 	}
 }

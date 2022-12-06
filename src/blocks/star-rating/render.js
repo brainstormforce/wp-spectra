@@ -21,7 +21,7 @@ const Render = ( props ) => {
 	const {
 		className,
 		setAttributes,
-		attributes: { isPreview, rating, range, title, displayTitle },
+		attributes: { rating, range, title, displayTitle },
 	} = props;
 
 	const rangeValue = parseInt( range );
@@ -33,9 +33,8 @@ const Render = ( props ) => {
 			</span>
 		);
 	}
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/star-ratings.png`;
+
 	return (
-		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				className,

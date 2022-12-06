@@ -17,6 +17,9 @@ $block_data = array(
 	'description'      => __( 'Add multiple buttons to redirect user to different webpages.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 4,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'buttons' ),
 	'deprecated'       => false,
+	'dynamic_assets'   => array(
+		'dir' => 'buttons',
+	),
 );

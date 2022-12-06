@@ -21,4 +21,9 @@ registerBlockType( 'uagb/icon-list-child', {
 	edit,
 	save,
 	deprecated,
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 } );
