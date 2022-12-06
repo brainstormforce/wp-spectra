@@ -157,8 +157,7 @@ const Settings = ( props ) => {
 		separatorSpace,
 		separatorSpaceTablet,
 		separatorSpaceMobile,
-		separatorSpaceType,
-		allowDynamicBlock
+		separatorSpaceType
 	} = attributes;
 
 	let loadGFonts;
@@ -549,20 +548,6 @@ const Settings = ( props ) => {
 				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<ToggleControl
-					label={ __(
-						'Allow Dynamic Headings',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ allowDynamicBlock }
-					help={ __(
-						'This will be in action only in Front End.',
-						'ultimate-addons-for-gutenberg'
-					) }
-					onChange={ () =>
-						setAttributes( { allowDynamicBlock: ! allowDynamicBlock } )
-					}
-				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(

@@ -176,7 +176,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Post Grid - Added equal height option for featured Images.
 * Improvement: Advanced Heading - Added Sub-heading and Separator Position Settings.
 * Improvement: FAQ - Added background Size, Background color and Border stylings for Toggle Icon.
-* Improvement: Table Of Contents - Added Allow Dynamic Heading feature.
 * Fix: Spectra Text Control - Changed default label.
 * Fix: Forms Settings - Added email address labels.
 * Fix: Buttons from diff blocks does not inherit the style from theme.
@@ -186,6 +185,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Icon List - Resolved an issue as the link was getting disabled for the icon list child.
 * Fix: Button Hover stylings are not working in the editor.
 * Fix: Border - Misaligned reset control button issue with all border settings.
+* Fix: Marketing Button - Resolved an issue where setting the background type as transparent or gradient results in the block encountering an issue.
 
 ### 2.0.16 - TUESDAY, 22th NOVEMBER 2022 ###
 * Improvement: Admin Dashboard - Updated Spectra Core Blocks to prevent them from being disabled.
