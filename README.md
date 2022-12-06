@@ -192,6 +192,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Select Control - Adjusted this control to properly align with other setting controls.
 * Fix: Text Control - Changed the default label.
 * Fix: Global - Resolved an issue where the hover stylings of buttons in multiple blocks were not working in the editor.
+* Fix: Border - Border stylings not working as expected on Responsive devices.
 * Fix: Marketing Button - Resolved an issue where setting the background type as transparent or gradient results in the block encountering an issue.
 
 ### 2.0.16 - TUESDAY, 22th NOVEMBER 2022 ###
