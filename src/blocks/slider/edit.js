@@ -95,11 +95,11 @@ const uagbSlideClass = createHigherOrderComponent( ( BlockListBlock ) => {
 				...props.wrapperProps
 			};
 
-			return <SwiperSlide
+			return <div className='swiper-slide'
 			onClick={( e ) => onSwiperChildClick( e )}
 			><BlockListBlock
 			{ ...props }
-			wrapperProps={ wrapperProps } /></SwiperSlide>;
+			wrapperProps={ wrapperProps } /></div>;
 		}
 
 		return <BlockListBlock

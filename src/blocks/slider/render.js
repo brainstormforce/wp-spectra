@@ -4,9 +4,9 @@ import { select } from '@wordpress/data';
 const ALLOWED_BLOCKS = [ 'uagb/slider-child' ];
 import { useDeviceType } from '@Controls/getPreviewType';
 
-import { Navigation, Pagination, Scrollbar, Autoplay, EffectFade, Manipulation, EffectFlip } from 'swiper';
+import Swiper, { Navigation, Pagination, Autoplay, EffectFade } from 'swiper';
 
-import { Swiper } from 'swiper/react';
+// import { Swiper } from 'swiper/react';
 const Render = ( props ) => {
 
 	props = props.parentProps;
@@ -18,6 +18,10 @@ const Render = ( props ) => {
 
 	const deviceType = useDeviceType();
 	const swiperRef = useRef();
+	const sliderWrapRef = React.useRef();
+	const sliderPaginationRef = useRef();
+	const sliderNavPrevRef = useRef();
+	const sliderNavNextRef = useRef();
 
 	const {
 		isPreview,
@@ -65,6 +69,41 @@ const Render = ( props ) => {
 	}
 
 	useEffect( () => {
+
+		setTimeout( () => {
+			
+			if( sliderWrapRef.current ) {
+
+				new Swiper( sliderWrapRef.current, {
+					modules: [Navigation, Pagination,Autoplay,EffectFade],
+					speed: 400,
+					spaceBetween: 20,
+					loop: true,
+					slidesPerView: 1.1,
+					centeredSlides: true,
+					pagination: {
+						el: sliderPaginationRef.current,
+						clickable: true,
+					},
+					allowTouchMove:false,
+					navigation: {
+						nextEl: sliderNavNextRef.current,
+						prevEl: sliderNavPrevRef.current,
+					},
+					on: {
+						init ( swiperInst ) {
+							swiperRef.current = swiperInst;
+						},
+					},
+				} );
+
+			}
+
+		}, 500 );
+		
+	}, [] );
+
+	useEffect( () => {
 		
 		const { getSelectedBlock } = select( 'core/block-editor' );
         const selectedBlockData = getSelectedBlock();
@@ -75,15 +114,16 @@ const Render = ( props ) => {
 			const slideIndex = getBlockIndex( selectedBlockData.clientId ); 
 
 			if( swiperInstance ) {
-				swiperInstance.slideTo( slideIndex, transitionSpeed, false );
+				// swiperInstance.slideTo( slideIndex, transitionSpeed, false );
 			}
 		}
 
 		if( swiperInstance ) {
-			swiperInstance.update();
+			// swiperInstance.update();
 		}
 		
 	}, [ props ] );
+	
 
 	const switchToNextSlide = () => {
 		if( swiperInstance && 'Desktop' !== deviceType ) {
@@ -104,45 +144,15 @@ const Render = ( props ) => {
 			{ ...blockProps }
 			key = { block_id }
 		>
-			<Swiper
-				onSwiper={setSwiperInstance}
-				modules={[Navigation, Pagination, Scrollbar,Autoplay,EffectFade, EffectFlip, Manipulation]}
-				autoplay={false}
-				speed={transitionSpeed}
-				pagination={ 
-					! displayDots ? false : {
-						clickable: true,
-					}
-				}
-				allowTouchMove={false}
-				loop={false}
-				effect={transitionEffect}
-				navigation={ 
-					displayArrows ? {
-						nextEl: '.uagb-block-' + block_id + ' .swiper-button-next',
-						prevEl: '.uagb-block-' + block_id + ' .swiper-button-prev',
-					} : false  
-				}
-				fadeEffect={{
-					crossFade: true
-				}}
-				flipEffect={{
-					slideShadows: false,
-				}}
-				onBeforeInit={( swiper ) => {
-					swiperRef.current = swiper;
-				}}
-			>
+			<div className="swiper" ref={sliderWrapRef}>
 				<div 
 					{ ...innerBlocksProps }
 				/>
-			</Swiper>
-			{ displayArrows &&
-			<>
-				<button onClick={() => switchToPrevSlide()} className="swiper-button-prev"></button>
-				<button onClick={() => switchToNextSlide()} className="swiper-button-next"></button>
-			</>
-			}
+				<div className="swiper-pagination" ref={sliderPaginationRef}></div>
+
+				<div className="swiper-button-prev" ref={sliderNavPrevRef}></div>
+				<div className="swiper-button-next" ref={sliderNavNextRef}></div>
+			</div>
 		</div>
 	);
 };
