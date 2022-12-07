@@ -93,10 +93,10 @@ const Render = ( props ) => {
 					on: {
 						init ( swiperInst ) {
 							swiperRef.current = swiperInst;
+							setSwiperInstance( swiperInst );
 						},
 					},
 				} );
-
 			}
 
 		}, 500 );
@@ -114,28 +114,15 @@ const Render = ( props ) => {
 			const slideIndex = getBlockIndex( selectedBlockData.clientId ); 
 
 			if( swiperInstance ) {
-				// swiperInstance.slideTo( slideIndex, transitionSpeed, false );
+				swiperInstance.slideTo( slideIndex, transitionSpeed, false );
 			}
 		}
 
 		if( swiperInstance ) {
-			// swiperInstance.update();
+			swiperInstance.update();
 		}
 		
 	}, [ props ] );
-	
-
-	const switchToNextSlide = () => {
-		if( swiperInstance && 'Desktop' !== deviceType ) {
-			swiperInstance.slideNext( transitionSpeed );
-		}
-	}
-
-	const switchToPrevSlide = () => {
-		if( swiperInstance && 'Desktop' !== deviceType ) {
-			swiperInstance.slidePrev( transitionSpeed );
-		}
-	}
 
 	return (
 		isPreview ? '' :
