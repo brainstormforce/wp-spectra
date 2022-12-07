@@ -197,7 +197,7 @@ class UAGB_Post_Assets {
 	/**
 	 * Custom CSS Appended Flag
 	 *
-	 * @since x.x.x
+	 * @since 2.1.0
 	 * @var custom_css_appended
 	 */
 	public static $custom_css_appended = false;
