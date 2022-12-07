@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.1
-Stable tag: 2.0.16
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -169,6 +169,31 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 2.1.0 - WEDNESDAY, 07th DECEMBER 2022 =
+* New: Introducing the Counter block with layouts that will help you flaunt your stats in a cool way!
+* New: Introducing the Image Gallery block with extensive customizability, as well as the all-new perfectly-tiled layout!
+* New: Introducing the ability to add custom CSS directly at the page level!
+* Improvement: Heading - Added sub-heading and separator position settings.
+* Improvement: FAQ - Added background size, background color and border stylings for the toggle icon.
+* Improvement: Post Grid - Added a setting to show buttons on equal height.
+* Improvement: Post Grid - Added a setting to toggle image aspect ratio.
+* Improvement: Post Grid - Added an equal height option for featured images.
+* Improvement: Matrix Alignment Control - Added the new Matrix Alignment Control to match the Spectra UI.
+* Improvement: Number Control - Added the new Number Control to match the Spectra UI.
+* Improvement: Global - Updated Block Previews for All Spectra Blocks in the Editor.
+* Improvement: Code - Added Automatic Block Prioritization and Organization.
+* Fix: Forms - Added email address labels.
+* Fix: Icon List - Resolved an issue in which the links were getting disabled for icon list children.
+* Fix: Marketing Button - Resolved an issue where setting the background type as transparent or gradient results in the block encountering an issue.
+* Fix: Post Carousel - Resolved an issue where the block breaks on the front end when a background image is set.
+* Fix: Post Grid - Resolved an issue where enabling the show taxonomy toggle did not show taxonomy on the posts in the editor.
+* Fix: Responsive Border Control - Resolved an issue where buttons from multiple blocks were not inheriting the theme's style.
+* Fix: Responsive Border Control - Repositioned the misaligned reset control button in all border settings.
+* Fix: Responsive Border Control - Resolved an issue where the border stylings do not work as expected for responsive devices.
+* Fix: Select Control - Adjusted this control to properly align with other setting controls.
+* Fix: Text Control - Changed the default label.
+* Fix: Global - Resolved an issue where the hover stylings of buttons in multiple blocks were not working in the editor.
 
 = 2.0.16 - TUESDAY, 22th NOVEMBER 2022 =
 * Improvement: Admin Dashboard - Updated Spectra Core Blocks to prevent them from being disabled.

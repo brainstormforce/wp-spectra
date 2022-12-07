@@ -139,14 +139,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$box_shadow_position_css,
 				);
 			}
-			$selectors[ $wrapper . '.wp-block-button__link' ]   = $border_css;
-			$m_selectors[ $wrapper . '.wp-block-button__link' ] = $border_css_mobile;
-			$t_selectors[ $wrapper . '.wp-block-button__link' ] = $border_css_tablet;
+			$selectors[ $wrapper . '.wp-block-button__link' ]       = $border_css;
+			$m_selectors[ $wrapper . '.wp-block-button__link' ]     = $border_css_mobile;
+			$t_selectors[ $wrapper . '.wp-block-button__link' ]     = $border_css_tablet;
+			$selectors[ $wrapper . '.wp-block-button__link:hover' ] = array(
+				'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
+			);
 			// twenty twenty theme.
-			$selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater']   = $border_css;
-			$m_selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'] = $border_css_mobile;
-			$t_selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'] = $border_css_tablet;
-			$selectors[ $wrapper . '.wp-block-button__link:hover' ]                         = array(
+			$selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater']       = $border_css;
+			$m_selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater']     = $border_css_mobile;
+			$t_selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater']     = $border_css_tablet;
+			$selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater:hover'] = array(
 				'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
 			);
 			$selectors[ $wrapper . ' .uagb-button__link' ]                                  = array(
@@ -616,7 +619,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'padding-right'  => UAGB_Helper::get_css_value( $paddingBtnRight, $attr['paddingBtnUnit'] ),
 
 			);
-			$selectors[' .uagb-post__text.uagb-post__cta:hover']                  = array(
+			$selectors['.uagb-post-grid .wp-block-button.uagb-post__text.uagb-post__cta:hover .uagb-text-link.wp-block-button__link'] = array(
 				'border-color' => $attr['btnBorderHColor'],
 			);
 			$selectors[' .uagb-post__text.uagb-post__cta:hover a.uagb-text-link'] = array(
@@ -737,6 +740,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-left' => UAGB_Helper::get_css_value( $paddingLeftMobile, $attr['mobilePaddingUnit'] ),
 				),
 			);
+			$m_selector['.uagb-post-grid .wp-block-button.uagb-post__text.uagb-post__cta .uagb-text-link.wp-block-button__link '] = $border_css_mobile;
 
 			return $m_selector;
 		}
@@ -849,7 +853,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-left' => UAGB_Helper::get_css_value( $paddingLeftTablet, $attr['tabletPaddingUnit'] ),
 				),
 			);
-
+			$t_selector['.uagb-post-grid .wp-block-button.uagb-post__text.uagb-post__cta .uagb-text-link.wp-block-button__link '] = $border_css_tablet;
 			return $t_selector;
 		}
 
@@ -1620,24 +1624,25 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function uag_generate_deprecated_border_css( $current_css, $border_width, $border_radius, $border_color = '', $border_style = '' ) {
 			$gen_border_css = array();
+			if ( 'default' !== $current_css['border-style'] ) {
+				$border_width  = is_numeric( $border_width ) ? $border_width : '';
+				$border_radius = is_numeric( $border_radius ) ? $border_radius : '';
 
-			$border_width  = is_numeric( $border_width ) ? $border_width : '';
-			$border_radius = is_numeric( $border_radius ) ? $border_radius : '';
+				// These would either be in the format of '1px', '0', or '-1px'.
+				$gen_border_css['border-top-width']    = ( isset( $current_css['border-top-width'] ) && ( ! empty( $current_css['border-top-width'] ) || 0 === $current_css['border-top-width'] ) ) ? $current_css['border-top-width'] : UAGB_Helper::get_css_value( $border_width, 'px' );
+				$gen_border_css['border-left-width']   = ( isset( $current_css['border-left-width'] ) && ( ! empty( $current_css['border-left-width'] ) || 0 === $current_css['border-left-width'] ) ) ? $current_css['border-left-width'] : UAGB_Helper::get_css_value( $border_width, 'px' );
+				$gen_border_css['border-right-width']  = ( isset( $current_css['border-right-width'] ) && ( ! empty( $current_css['border-right-width'] ) || 0 === $current_css['border-right-width'] ) ) ? $current_css['border-right-width'] : UAGB_Helper::get_css_value( $border_width, 'px' );
+				$gen_border_css['border-bottom-width'] = ( isset( $current_css['border-bottom-width'] ) && ( ! empty( $current_css['border-bottom-width'] ) || 0 === $current_css['border-bottom-width'] ) ) ? $current_css['border-bottom-width'] : UAGB_Helper::get_css_value( $border_width, 'px' );
 
-			// These would either be in the format of '1px', '0', or '-1px'.
-			$gen_border_css['border-top-width']    = ( isset( $current_css['border-top-width'] ) && ( ! empty( $current_css['border-top-width'] ) || 0 === $current_css['border-top-width'] ) ) ? $current_css['border-top-width'] : UAGB_Helper::get_css_value( $border_width, 'px' );
-			$gen_border_css['border-left-width']   = ( isset( $current_css['border-left-width'] ) && ( ! empty( $current_css['border-left-width'] ) || 0 === $current_css['border-left-width'] ) ) ? $current_css['border-left-width'] : UAGB_Helper::get_css_value( $border_width, 'px' );
-			$gen_border_css['border-right-width']  = ( isset( $current_css['border-right-width'] ) && ( ! empty( $current_css['border-right-width'] ) || 0 === $current_css['border-right-width'] ) ) ? $current_css['border-right-width'] : UAGB_Helper::get_css_value( $border_width, 'px' );
-			$gen_border_css['border-bottom-width'] = ( isset( $current_css['border-bottom-width'] ) && ( ! empty( $current_css['border-bottom-width'] ) || 0 === $current_css['border-bottom-width'] ) ) ? $current_css['border-bottom-width'] : UAGB_Helper::get_css_value( $border_width, 'px' );
+				$gen_border_css['border-top-left-radius']     = ( isset( $current_css['border-top-left-radius'] ) && ( ! empty( $current_css['border-top-left-radius'] ) || 0 === $current_css['border-top-left-radius'] ) ) ? $current_css['border-top-left-radius'] : UAGB_Helper::get_css_value( $border_radius, 'px' );
+				$gen_border_css['border-top-right-radius']    = ( isset( $current_css['border-top-right-radius'] ) && ( ! empty( $current_css['border-top-right-radius'] ) || 0 === $current_css['border-top-right-radius'] ) ) ? $current_css['border-top-right-radius'] : UAGB_Helper::get_css_value( $border_radius, 'px' );
+				$gen_border_css['border-bottom-left-radius']  = ( isset( $current_css['border-bottom-left-radius'] ) && ( ! empty( $current_css['border-bottom-left-radius'] ) || 0 === $current_css['border-bottom-left-radius'] ) ) ? $current_css['border-bottom-left-radius'] : UAGB_Helper::get_css_value( $border_radius, 'px' );
+				$gen_border_css['border-bottom-right-radius'] = ( isset( $current_css['border-bottom-right-radius'] ) && ( ! empty( $current_css['border-bottom-right-radius'] ) || 0 === $current_css['border-bottom-right-radius'] ) ) ? $current_css['border-bottom-right-radius'] : UAGB_Helper::get_css_value( $border_radius, 'px' );
 
-			$gen_border_css['border-top-left-radius']     = ( isset( $current_css['border-top-left-radius'] ) && ( ! empty( $current_css['border-top-left-radius'] ) || 0 === $current_css['border-top-left-radius'] ) ) ? $current_css['border-top-left-radius'] : UAGB_Helper::get_css_value( $border_radius, 'px' );
-			$gen_border_css['border-top-right-radius']    = ( isset( $current_css['border-top-right-radius'] ) && ( ! empty( $current_css['border-top-right-radius'] ) || 0 === $current_css['border-top-right-radius'] ) ) ? $current_css['border-top-right-radius'] : UAGB_Helper::get_css_value( $border_radius, 'px' );
-			$gen_border_css['border-bottom-left-radius']  = ( isset( $current_css['border-bottom-left-radius'] ) && ( ! empty( $current_css['border-bottom-left-radius'] ) || 0 === $current_css['border-bottom-left-radius'] ) ) ? $current_css['border-bottom-left-radius'] : UAGB_Helper::get_css_value( $border_radius, 'px' );
-			$gen_border_css['border-bottom-right-radius'] = ( isset( $current_css['border-bottom-right-radius'] ) && ( ! empty( $current_css['border-bottom-right-radius'] ) || 0 === $current_css['border-bottom-right-radius'] ) ) ? $current_css['border-bottom-right-radius'] : UAGB_Helper::get_css_value( $border_radius, 'px' );
+				$gen_border_css['border-color'] = ( isset( $current_css['border-color'] ) && ! empty( $current_css['border-color'] ) ) ? $current_css['border-color'] : $border_color;
 
-			$gen_border_css['border-color'] = ( isset( $current_css['border-color'] ) && ! empty( $current_css['border-color'] ) ) ? $current_css['border-color'] : $border_color;
-
-			$gen_border_css['border-style'] = ( isset( $current_css['border-style'] ) && ! empty( $current_css['border-style'] ) ) ? $current_css['border-style'] : $border_style;
+				$gen_border_css['border-style'] = ( isset( $current_css['border-style'] ) && ! empty( $current_css['border-style'] ) ) ? $current_css['border-style'] : $border_style;
+			}
 			return $gen_border_css;
 		}
 
@@ -1695,6 +1700,127 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		public static function get_fallback_number( $current_value, $key, $block_name ) {
 			$default = self::get_block_default_attributes( $block_name );
 			return is_numeric( $current_value ) ? $current_value : $default[ $key ];
+		}
+
+		/**
+		 * Get Matrix Alignment Value
+		 *
+		 * Syntax:
+		 *
+		 *  get_matrix_alignment( VALUE, POSITION, FORMAT );
+		 *
+		 * E.g.
+		 *
+		 *  get_matrix_alignment( VALUE, 2, 'flex' );
+		 *
+		 * @param string $value  Alignment Matrix value.
+		 * @param int    $pos    Human readable position.
+		 * @param string $format Response format.
+		 * @since 2.1.0
+		 */
+		public static function get_matrix_alignment( $value, $pos, $format = '' ) {
+			$alignment_property = explode( ' ', esc_attr( $value ) )[ $pos - 1 ];
+			switch ( $format ) {
+				case 'flex':
+					switch ( $alignment_property ) {
+						case 'top':
+						case 'left':
+							$alignment_property = 'flex-start';
+							break;
+						case 'bottom':
+						case 'right':
+							$alignment_property = 'flex-end';
+							break;
+					}
+					break;
+			}
+			return $alignment_property;
+		}
+
+		/**
+		 * Generate Border Radius
+		 *
+		 * Syntax:
+		 *
+		 *  generate_border_radius( UNIT, TOP_LEFT, TOP_RIGHT, BOTTOM_RIGHT, BOTTOM_LEFT );
+		 *
+		 * E.g.
+		 *
+		 *  generate_border_radius( 'em', 9, 7, 5, 3 );
+		 *
+		 * @param string $unit  Alignment Matrix value.
+		 * @param int    $topLeft  Top Left Value.
+		 * @param int    $topRight  Top Right Value.
+		 * @param int    $bottomRight  Bottom Right Value.
+		 * @param int    $bottomLeft  Bottom Left Value.
+		 * @since 2.1.0
+		 */
+		public static function generate_border_radius( $unit, $topLeft, $topRight = null, $bottomRight = null, $bottomLeft = null ) {
+			$borderRadius = ! is_null( $topRight )
+				? (
+					! is_null( $bottomRight )
+					? (
+						! is_null( $bottomLeft )
+						? UAGB_Helper::get_css_value( $topLeft, $unit ) . ' ' . UAGB_Helper::get_css_value( $topRight, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottomRight, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottomLeft, $unit )
+						: UAGB_Helper::get_css_value( $topLeft, $unit ) . ' ' . UAGB_Helper::get_css_value( $topRight, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottomRight, $unit )
+					)
+					: UAGB_Helper::get_css_value( $topLeft, $unit ) . ' ' . UAGB_Helper::get_css_value( $topRight, $unit )
+				)
+				: UAGB_Helper::get_css_value( $topLeft, $unit );
+			return $borderRadius;
+		}
+
+		/**
+		 * Generate Spacing
+		 *
+		 * Syntax:
+		 *
+		 *  generate_spacing( UNIT, TOP, RIGHT, BOTTOM, LEFT );
+		 *
+		 * E.g.
+		 *
+		 *  generate_spacing( 'em', 9, 7, 5, 3 );
+		 *
+		 * @param string $unit   Alignment Matrix value.
+		 * @param int    $top    Top Value.
+		 * @param int    $right  Right Value.
+		 * @param int    $bottom Bottom Value.
+		 * @param int    $left   Left Value.
+		 * @since 2.1.0
+		 */
+		public static function generate_spacing( $unit, $top, $right = null, $bottom = null, $left = null ) {
+			$spacing = ! is_null( $right )
+				? (
+					! is_null( $bottom )
+					? (
+						! is_null( $left )
+						? UAGB_Helper::get_css_value( $top, $unit ) . ' ' . UAGB_Helper::get_css_value( $right, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottom, $unit ) . ' ' . UAGB_Helper::get_css_value( $left, $unit )
+						: UAGB_Helper::get_css_value( $top, $unit ) . ' ' . UAGB_Helper::get_css_value( $right, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottom, $unit )
+					)
+					: UAGB_Helper::get_css_value( $top, $unit ) . ' ' . UAGB_Helper::get_css_value( $right, $unit )
+				)
+				: UAGB_Helper::get_css_value( $top, $unit );
+			return $spacing;
+		}
+
+		/**
+		 * Get the Precise 2-Floating Point Percentage, Rounded to Floor for Precision.
+		 *
+		 * Syntax:
+		 *
+		 *  get_precise_percentage( DIVISIONS );
+		 *
+		 * E.g.
+		 *
+		 *  get_precise_percentage( 7 );
+		 *
+		 * @param int $divisions The number of divisions.
+		 * @since 2.0.0
+		 */
+		public static function get_precise_percentage( $divisions ) {
+			$matches = array();
+			preg_match( '/^-?\d+(?:\.\d{0,2})?/', strval( 100 / $divisions ), $matches );
+			return floatval( $matches[0] ) . '%';
 		}
 	}
 }

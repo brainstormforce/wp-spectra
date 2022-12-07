@@ -170,6 +170,18 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => 'grid',
 							),
+							'equalHeightInlineButtons'    => array(
+								'type'    => 'boolean',
+								'default' => false,
+							),
+							'imageRatio'                  => array(
+								'type'    => 'string',
+								'default' => 'inherit',
+							),
+							'imgEqualHeight'              => array(
+								'type'    => 'boolean',
+								'default' => false,
+							),
 						)
 					),
 					'render_callback' => array( $this, 'post_grid_callback' ),
@@ -1347,6 +1359,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					if ( $attributes['equalHeight'] ) {
 						array_push( $wrap, 'uagb-post__equal-height' );
 					}
+					if ( $attributes['equalHeightInlineButtons'] ) {
+						array_push( $wrap, 'uagb-equal_height_inline-read-more-buttons' );
+					}
 					break;
 
 				case 'carousel':
@@ -1787,13 +1802,21 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
 			do_action( "uagb_single_post_before_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
-
 			?>
 			<div class='uagb-post__image'>
-				<?php if ( get_the_post_thumbnail_url() ) { ?>
+				<?php
+				if ( get_the_post_thumbnail_url() ) {
+					if ( 'post-grid' === $attributes['blockName'] && 'background' !== $attributes['imgPosition'] ) {
+						?>
+					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer" class='uagb-image-ratio-<?php echo esc_html( $attributes['imageRatio'] ); ?>'><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
+					</a>
+				<?php } else { ?>
 					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
 					</a>
-				<?php } ?>
+						<?php
+				}
+				}
+				?>
 			</div>
 			<?php
 			do_action( "uagb_single_post_after_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );

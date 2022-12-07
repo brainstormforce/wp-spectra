@@ -14,6 +14,7 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
+import UAGTextControl from '@Components/text-control';
 import TypographyControl from '@Components/typography';
 import UAGTabsControl from '@Components/tabs';
 import MultiButtonsControl from '@Components/multi-buttons-control';
@@ -21,14 +22,13 @@ import BoxShadowControl from '@Components/box-shadow';
 import WebfontLoader from '@Components/typography/fontloader';
 import ResponsiveSlider from '@Components/responsive-slider';
 import GradientSettings from '@Components/gradient-settings';
-import UAGTextControl from '@Components/text-control';
 
 import {
 	InspectorControls
 } from '@wordpress/block-editor';
 
 import {
-	ToggleControl,
+	ToggleControl
 } from '@wordpress/components';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -200,16 +200,16 @@ const Settings = ( props ) => {
 						'Link',
 						'ultimate-addons-for-gutenberg'
 					) }
+					enableDynamicContent={true}
+					name={'link'}
 					value={ link }
+					setAttributes={setAttributes}
 					data={{
 						value: link,
 						label: 'link',
 					}}
-					setAttributes={ setAttributes }
-					onChange={ ( value ) =>
-						setAttributes( { link: value } )
-					}
 				/>
+
 				<ToggleControl
 					label={ __(
 						'Open in new window',
@@ -906,7 +906,7 @@ const Settings = ( props ) => {
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ !removeText && textSettings() }
-						{ '' !== icon && IconSettings() }
+						{ ( showIcon && '' !== icon ) && IconSettings() }
 						{ backgroundSettings() }
 						{ borderSettings() }
 						{ boxShadowSettings() }

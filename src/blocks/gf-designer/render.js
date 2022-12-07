@@ -18,7 +18,6 @@ const Render = ( props ) => {
 	const { className, attributes, setAttributes } = props;
 	// Setup the attributes.
 	const {
-		isPreview,
 		formId,
 		align,
 		isHtml,
@@ -51,11 +50,8 @@ const Render = ( props ) => {
 	if ( formJson && formJson.data.html ) {
 		html = formJson.data.html;
 	}
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/gf-cf-styler.png`;
 	if ( parseInt( formId ) === 0 ) {
 		return (
-			isPreview ? <img width='100%' src={previewImageData} alt=''/> :
-		<>
 			<Placeholder
 				icon="admin-post"
 				label={ __(
@@ -69,7 +65,6 @@ const Render = ( props ) => {
 					options={ uagb_blocks_info.gf_forms }
 				/>
 			</Placeholder>
-		</>
 		);
 	}
 	return (

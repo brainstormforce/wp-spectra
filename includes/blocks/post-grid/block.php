@@ -17,6 +17,10 @@ $block_data = array(
 	'description'      => __( 'Display your posts in a grid layout.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 21,
+	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'post-grid' ),
 	'deprecated'       => false,
+	'static_css'       => 'post',
+	'dynamic_assets'   => array(
+		'dir' => 'post-grid',
+	),
 );

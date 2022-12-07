@@ -17,6 +17,10 @@ const attributes = {
 		type    : 'boolean',
 		default : false,
 	},
+	imgEqualheight              : {
+		type    : 'boolean',
+		default : false,
+	},
 	enableOffset              : {
 		type    : 'boolean',
 		default : false,
@@ -1251,6 +1255,14 @@ const attributes = {
 	taxDivider: {
 		type    : 'string',
 		default : ' , ',
+	},
+	equalHeightInlineButtons        : {
+		type    : 'boolean',
+		default : false,
+	},
+	imageRatio: {
+		type: 'string',
+		default: 'inherit'
 	},
 	...btnBorderAttributes,
 	...overallBorderAttributes

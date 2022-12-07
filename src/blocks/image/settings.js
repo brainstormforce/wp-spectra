@@ -16,26 +16,26 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
+import UAGTextControl from '@Components/text-control';
 import { useDeviceType } from '@Controls/getPreviewType';
 import {
 	store as blockEditorStore,
 	InspectorControls,
 } from '@wordpress/block-editor';
 import {
-	__experimentalAlignmentMatrixControl as AlignmentMatrixControl,
 	Icon,
 	ToggleControl
 } from '@wordpress/components';
 import renderSVG from '@Controls/renderIcon';
 import ImageSizeControl from '@Components/image-size-control'
 import ResponsiveBorder from '@Components/responsive-border'
+import SpectraMatrixControl from '@Components/matrix-alignment-control';
 import { store as coreStore } from '@wordpress/core-data';
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import boxShadowPresets from './presets';
 import UAGPresets from '@Components/presets';
 import {pickRelevantMediaFiles } from './utils'
-import UAGTextControl from '@Components/text-control';
 
 export default function Settings( props ) {
 	const deviceType = useDeviceType();
@@ -568,13 +568,13 @@ export default function Settings( props ) {
 
 			{layout === 'overlay' && (
 				<>
-					<label htmlFor='overlayContentAlign'>
-						{__( 'Content Position', 'ultimate-addons-for-gutenberg' )}
-					</label>
-					<AlignmentMatrixControl
-						id="overlayContentAlign"
-						value={ overlayContentPosition }
-						onChange={ ( newAlignment ) =>  setAttributes( {overlayContentPosition: newAlignment} ) }
+					<SpectraMatrixControl
+						label={ __( 'Content Position', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							label: 'overlayContentPosition',
+							value: overlayContentPosition,
+						} }
+						setAttributes={ setAttributes }
 					/>
 					<ResponsiveBorder
 						setAttributes={ setAttributes }
@@ -626,13 +626,15 @@ export default function Settings( props ) {
 						/>
 						<UAGTextControl
 							label={ __( 'Alt Text', 'ultimate-addons-for-gutenberg' ) }
+							enableDynamicContent={true}
+							dynamicContentType="text"
 							value={ alt }
+							name='alt'
+							setAttributes={setAttributes}
 							data={{
 								value: alt,
 								label: 'alt',
 							}}
-							setAttributes={ setAttributes }
-							onChange={ ( value ) => setAttributes( { alt: value } ) }
 						/>
 					</>
 				)
