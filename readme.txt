@@ -170,7 +170,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 2.1.0 - TUESDAY, 06th DECEMBER 2022 =
+= 2.1.0 - WEDNESDAY, 07th DECEMBER 2022 =
 * New: Introducing the Counter block with layouts that will help you flaunt your stats in a cool way!
 * New: Introducing the Image Gallery block with extensive customizability, as well as the all-new perfectly-tiled layout!
 * New: Introducing the ability to add custom CSS directly at the page level!
@@ -185,15 +185,15 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Code - Added Automatic Block Prioritization and Organization.
 * Fix: Forms - Added email address labels.
 * Fix: Icon List - Resolved an issue in which the links were getting disabled for icon list children.
+* Fix: Marketing Button - Resolved an issue where setting the background type as transparent or gradient results in the block encountering an issue.
 * Fix: Post Carousel - Resolved an issue where the block breaks on the front end when a background image is set.
 * Fix: Post Grid - Resolved an issue where enabling the show taxonomy toggle did not show taxonomy on the posts in the editor.
 * Fix: Responsive Border Control - Resolved an issue where buttons from multiple blocks were not inheriting the theme's style.
 * Fix: Responsive Border Control - Repositioned the misaligned reset control button in all border settings.
+* Fix: Responsive Border Control - Resolved an issue where the border stylings do not work as expected for responsive devices.
 * Fix: Select Control - Adjusted this control to properly align with other setting controls.
 * Fix: Text Control - Changed the default label.
 * Fix: Global - Resolved an issue where the hover stylings of buttons in multiple blocks were not working in the editor.
-* Fix: Marketing Button - Resolved an issue where setting the background type as transparent or gradient results in the block encountering an issue.
-* Fix: Border - Border stylings not working as expected on Responsive devices.
 
 = 2.0.16 - TUESDAY, 22th NOVEMBER 2022 =
 * Improvement: Admin Dashboard - Updated Spectra Core Blocks to prevent them from being disabled.

@@ -2,7 +2,7 @@
 /**
  * Frontend JS File.
  *
- * @since 2.0.0
+ * @since 2.1.0
  *
  * @package uagb
  */
