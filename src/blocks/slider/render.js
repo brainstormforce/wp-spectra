@@ -4,9 +4,8 @@ import { select } from '@wordpress/data';
 const ALLOWED_BLOCKS = [ 'uagb/slider-child' ];
 import { useDeviceType } from '@Controls/getPreviewType';
 
-import Swiper, { Navigation, Pagination, Autoplay, EffectFade } from 'swiper';
+import Swiper, { Navigation, Pagination, Autoplay, EffectFade, Manipulation } from 'swiper';
 
-// import { Swiper } from 'swiper/react';
 const Render = ( props ) => {
 
 	props = props.parentProps;
@@ -74,28 +73,34 @@ const Render = ( props ) => {
 			
 			if( sliderWrapRef.current ) {
 
-				new Swiper( sliderWrapRef.current, {
-					modules: [Navigation, Pagination,Autoplay,EffectFade],
-					speed: 400,
-					spaceBetween: 20,
-					loop: true,
+				const settings = {
 					slidesPerView: 1.1,
+					autoplay: false,
+					speed: transitionSpeed,
+					loop: false,
+					spaceBetween: 20,
+					effect: transitionEffect,
 					centeredSlides: true,
-					pagination: {
+					pagination: displayDots ? {
 						el: sliderPaginationRef.current,
 						clickable: true,
-					},
+					} : false, 
 					allowTouchMove:false,
-					navigation: {
+					navigation: displayArrows ? {
 						nextEl: sliderNavNextRef.current,
 						prevEl: sliderNavPrevRef.current,
-					},
+					} : false,
 					on: {
 						init ( swiperInst ) {
 							swiperRef.current = swiperInst;
 							setSwiperInstance( swiperInst );
 						},
 					},
+				}
+
+				new Swiper( sliderWrapRef.current, {
+					...settings,
+					modules: [Navigation, Pagination,Autoplay,EffectFade, Manipulation],
 				} );
 			}
 
@@ -135,10 +140,17 @@ const Render = ( props ) => {
 				<div 
 					{ ...innerBlocksProps }
 				/>
-				<div className="swiper-pagination" ref={sliderPaginationRef}></div>
 
-				<div className="swiper-button-prev" ref={sliderNavPrevRef}></div>
-				<div className="swiper-button-next" ref={sliderNavNextRef}></div>
+				{ displayDots &&  
+					<div className="swiper-pagination" ref={sliderPaginationRef}></div>
+				}
+
+				{ displayArrows &&
+				<>
+					<div className="swiper-button-prev" ref={sliderNavPrevRef}></div>
+					<div className="swiper-button-next" ref={sliderNavNextRef}></div>
+				</>
+				}
 			</div>
 		</div>
 	);
