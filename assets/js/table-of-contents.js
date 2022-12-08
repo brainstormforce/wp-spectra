@@ -251,7 +251,6 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 			const tocListWrap = $thisScope.querySelector( '.uagb-toc__list-wrap' );
 
 			const divsArr = Array.from( allHeader );
-
 			const arrayWithDuplicateEntries = [];
 			/* Logic for Remove duplicate heading with same HTML tag and create an new array with duplicate entries start here. */
 			divsArr.reduce( ( temporaryArray, currentVal ) => {
@@ -268,9 +267,8 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 				}
 				return temporaryArray;
 			}, [] );
-			let i
 			/* Logic for Remove duplicate heading with same HTML tag and create an new array with duplicate entries ends here. */
-			for ( i = 0; i < divsArr.length; i++ ) {
+			for ( let i = 0; i < divsArr.length; i++ ) {
 
 				let headerText = parseTocSlug( divsArr[i].innerText );
 				if( '' !== divsArr[i].innerText ) {
@@ -291,11 +289,10 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 				span.className =  'uag-toc__heading-anchor';
 				divsArr[i].prepend( span );
 				/* Logic for Create an unique Id for duplicate heading start here. */
-				for ( i = 0; i < arrayWithDuplicateEntries.length; i++ ){
+				for ( let k = 0; k < arrayWithDuplicateEntries.length; k++ ){
 					const randomID = '#toc_' + Math.random();
-					arrayWithDuplicateEntries[i]?.querySelector( '.uag-toc__heading-anchor' )?.setAttribute( 'id',randomID.substring( 1 ) )
+					arrayWithDuplicateEntries[k]?.querySelector( '.uag-toc__heading-anchor' )?.setAttribute( 'id',randomID.substring( 1 ) )
 					const aTags = Array.from( tocListWrap.getElementsByTagName( 'a' ) );
-					// let aTagsAfterRemovingDuplicateEntries = [];
 					const aTagsWithDuplicateEntries = [];
 					aTags?.reduce( ( temporaryArray, currentVal ) => { // Remove duplicate heading with same HTML tag.
 						if (
@@ -312,8 +309,8 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 						return temporaryArray;
 					}, [] );
 
-					for ( let j = 0; j < aTagsWithDuplicateEntries.length; j++ ) {
-						aTagsWithDuplicateEntries[i]?.setAttribute( 'href' , randomID );
+					for ( let l = 0; l < aTagsWithDuplicateEntries.length; l++ ) {
+						aTagsWithDuplicateEntries[k]?.setAttribute( 'href' , randomID );
 					}
 				}
 				/* Logic for Create an unique Id for duplicate heading ends here. */
