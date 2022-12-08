@@ -10,7 +10,7 @@
 			color: $spectra-color-body;
 
 			.uag-control-label {
-				margin-bottom: 11px;
+				margin-bottom: $spectra-control-label-bottom-margin;
 			}
 
 			.components-number-control .components-input-control__input {
@@ -37,10 +37,6 @@
 
 			.components-input-control__container {
 				width: 100%;
-			}
-
-			.components-number-control {
-				display: grid;
 			}
 
 		}

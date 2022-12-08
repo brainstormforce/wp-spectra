@@ -170,22 +170,30 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 2.1.0 - TUESDAY, 29th NOVEMBER 2022 =
-* Improvement: Post Grid - Added Setting to show buttons on equal height.
-* Improvement: Post Grid - Added Setting for image aspect ratio.
-* Improvement: Post Grid - Added equal height option for featured Images.
-* Improvement: Advanced Heading - Added Sub-heading and Separator Position Settings.
-* Improvement: FAQ - Added background Size, Background color and Border stylings for Toggle Icon.
-* Improvement: Table Of Contents - Added Allow Dynamic Heading feature.
-* Fix: Spectra Text Control - Changed default label.
-* Fix: Forms Settings - Added email address labels.
-* Fix: Buttons from diff blocks does not inherit the style from theme.
-* Fix: Post carousel - block is broken on the front-end side, when we select background image.
-* Fix: Select control - Not aligned properly with other control.
-* Fix: Post grid - Enabling show taxonomy does not show taxonomy on post inside editor.
-* Fix: Icon List - Resolved an issue as the link was getting disabled for the icon list child.
-* Fix: Button Hover stylings are not working in the editor.
-* Fix: Border - Misaligned reset control button issue with all border settings.
+= 2.1.0 - WEDNESDAY, 07th DECEMBER 2022 =
+* New: Introducing the Counter block with layouts that will help you flaunt your stats in a cool way!
+* New: Introducing the Image Gallery block with extensive customizability, as well as the all-new perfectly-tiled layout!
+* New: Introducing the ability to add custom CSS directly at the page level!
+* Improvement: Heading - Added sub-heading and separator position settings.
+* Improvement: FAQ - Added background size, background color and border stylings for the toggle icon.
+* Improvement: Post Grid - Added a setting to show buttons on equal height.
+* Improvement: Post Grid - Added a setting to toggle image aspect ratio.
+* Improvement: Post Grid - Added an equal height option for featured images.
+* Improvement: Matrix Alignment Control - Added the new Matrix Alignment Control to match the Spectra UI.
+* Improvement: Number Control - Added the new Number Control to match the Spectra UI.
+* Improvement: Global - Updated Block Previews for All Spectra Blocks in the Editor.
+* Improvement: Code - Added Automatic Block Prioritization and Organization.
+* Fix: Forms - Added email address labels.
+* Fix: Icon List - Resolved an issue in which the links were getting disabled for icon list children.
+* Fix: Marketing Button - Resolved an issue where setting the background type as transparent or gradient results in the block encountering an issue.
+* Fix: Post Carousel - Resolved an issue where the block breaks on the front end when a background image is set.
+* Fix: Post Grid - Resolved an issue where enabling the show taxonomy toggle did not show taxonomy on the posts in the editor.
+* Fix: Responsive Border Control - Resolved an issue where buttons from multiple blocks were not inheriting the theme's style.
+* Fix: Responsive Border Control - Repositioned the misaligned reset control button in all border settings.
+* Fix: Responsive Border Control - Resolved an issue where the border stylings do not work as expected for responsive devices.
+* Fix: Select Control - Adjusted this control to properly align with other setting controls.
+* Fix: Text Control - Changed the default label.
+* Fix: Global - Resolved an issue where the hover stylings of buttons in multiple blocks were not working in the editor.
 
 = 2.0.16 - TUESDAY, 22th NOVEMBER 2022 =
 * Improvement: Admin Dashboard - Updated Spectra Core Blocks to prevent them from being disabled.

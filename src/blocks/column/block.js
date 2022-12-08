@@ -26,5 +26,10 @@ registerBlockType( 'uagb/column', {
 	edit,
 	save,
 	deprecated,
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 } );
 

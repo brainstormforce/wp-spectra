@@ -47,6 +47,8 @@ import lottieAttribute from '@Blocks/lottie/attributes';
 import starRatingAttribute from '@Blocks/star-rating/attributes';
 import containerAttribute from '@Blocks/container/attributes';
 import imageAttribute from '@Blocks/image/attributes';
+import counterAttribute from '@Blocks/counter/attributes';
+import imageGalleryAttribute from '@Blocks/image-gallery/attributes';
 
 export const blocksAttributes = {
 	'advanced-heading' : advancedHeadingAttribute,
@@ -97,5 +99,7 @@ export const blocksAttributes = {
     'post-timeline' : postTimelineAttribute,
     'how-to-step' : howToStepAttribute,
 	'container' : containerAttribute,
-	'image': imageAttribute
+	'image': imageAttribute,
+	'counter': counterAttribute,
+	'image-gallery': imageGalleryAttribute,
 };
