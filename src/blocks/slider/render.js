@@ -4,7 +4,7 @@ import { select } from '@wordpress/data';
 const ALLOWED_BLOCKS = [ 'uagb/slider-child' ];
 import { useDeviceType } from '@Controls/getPreviewType';
 
-import Swiper, { Navigation, Pagination, Autoplay, EffectFade, Manipulation } from 'swiper';
+import Swiper, { Navigation, Pagination, Autoplay, EffectFade, EffectFlip, Manipulation } from 'swiper';
 
 const Render = ( props ) => {
 
@@ -67,41 +67,44 @@ const Render = ( props ) => {
 		props.setAttributes( { swiperInstance: swiper } );
 	}
 
+	const initSlider = () => {
+
+		const settings = {
+			slidesPerView: 1,
+			autoplay: false,
+			speed: transitionSpeed,
+			loop: false,
+			effect: transitionEffect,
+			pagination: displayDots ? {
+				el: sliderPaginationRef.current,
+				clickable: true,
+			} : false, 
+			allowTouchMove:false,
+			navigation: displayArrows ? {
+				nextEl: sliderNavNextRef.current,
+				prevEl: sliderNavPrevRef.current,
+			} : false,
+			on: {
+				beforeInit ( swiperInst ) {
+					swiperRef.current = swiperInst;
+					setSwiperInstance( swiperInst );
+				},
+			},
+		}
+
+		new Swiper( sliderWrapRef.current, {
+			...settings,
+			modules: [Navigation, Pagination,Autoplay,EffectFade, Manipulation, EffectFlip],
+		} );
+	}
+
 	useEffect( () => {
 
 		setTimeout( () => {
 			
 			if( sliderWrapRef.current ) {
 
-				const settings = {
-					slidesPerView: 1.1,
-					autoplay: false,
-					speed: transitionSpeed,
-					loop: false,
-					spaceBetween: 20,
-					effect: transitionEffect,
-					centeredSlides: true,
-					pagination: displayDots ? {
-						el: sliderPaginationRef.current,
-						clickable: true,
-					} : false, 
-					allowTouchMove:false,
-					navigation: displayArrows ? {
-						nextEl: sliderNavNextRef.current,
-						prevEl: sliderNavPrevRef.current,
-					} : false,
-					on: {
-						init ( swiperInst ) {
-							swiperRef.current = swiperInst;
-							setSwiperInstance( swiperInst );
-						},
-					},
-				}
-
-				new Swiper( sliderWrapRef.current, {
-					...settings,
-					modules: [Navigation, Pagination,Autoplay,EffectFade, Manipulation],
-				} );
+				initSlider();
 			}
 
 		}, 500 );
@@ -128,6 +131,16 @@ const Render = ( props ) => {
 		}
 		
 	}, [ props ] );
+
+	useEffect( () => {
+
+		if( swiperInstance ) {
+			swiperInstance.destroy();
+			initSlider();
+		}
+
+	}, [ transitionEffect, displayArrows, displayDots, transitionSpeed ] );
+	
 
 	return (
 		isPreview ? '' :

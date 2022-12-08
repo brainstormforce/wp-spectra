@@ -43,7 +43,7 @@ $slider_options = apply_filters(
 			'prevEl' => '.uagb-block-' . $id . ' .swiper-button-prev',
 		) : false,
 	),
-	$id
+	$attr
 );
 
 $settings = wp_json_encode( $slider_options );
