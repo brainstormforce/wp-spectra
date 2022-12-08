@@ -251,22 +251,26 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 			const tocListWrap = $thisScope.querySelector( '.uagb-toc__list-wrap' );
 
 			const divsArr = Array.from( allHeader );
-			const arrayWithDuplicateEntries = [];
 			/* Logic for Remove duplicate heading with same HTML tag and create an new array with duplicate entries start here. */
-			divsArr.reduce( ( temporaryArray, currentVal ) => {
-				if (
-					!temporaryArray.some(
-						( item ) => item.innerText === currentVal.innerText
-					)
-					) {
+			const ArrayOfDuplicateElements = function ( headingArray = [] ) {
+				const arrayWithDuplicateEntries = [];
+				headingArray.reduce( ( temporaryArray, currentVal ) => {
+					if (
+						!temporaryArray.some(
+							( item ) => item.innerText === currentVal.innerText
+						)
+						) {
 
-					temporaryArray.push( currentVal );
-				} else {
-					arrayWithDuplicateEntries.push( currentVal );
+						temporaryArray.push( currentVal );
+					} else {
+						arrayWithDuplicateEntries.push( currentVal );
 
-				}
-				return temporaryArray;
-			}, [] );
+					}
+					return temporaryArray;
+				}, [] );
+				return arrayWithDuplicateEntries;
+			};
+			const arrayOfDuplicateHeadingPresentOnPage = ArrayOfDuplicateElements( divsArr );
 			/* Logic for Remove duplicate heading with same HTML tag and create an new array with duplicate entries ends here. */
 			for ( let i = 0; i < divsArr.length; i++ ) {
 
@@ -289,28 +293,13 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 				span.className =  'uag-toc__heading-anchor';
 				divsArr[i].prepend( span );
 				/* Logic for Create an unique Id for duplicate heading start here. */
-				for ( let k = 0; k < arrayWithDuplicateEntries.length; k++ ){
+				for ( let k = 0; k < arrayOfDuplicateHeadingPresentOnPage.length; k++ ){
 					const randomID = '#toc_' + Math.random();
-					arrayWithDuplicateEntries[k]?.querySelector( '.uag-toc__heading-anchor' )?.setAttribute( 'id',randomID.substring( 1 ) )
+					arrayOfDuplicateHeadingPresentOnPage[k]?.querySelector( '.uag-toc__heading-anchor' )?.setAttribute( 'id',randomID.substring( 1 ) )
 					const aTags = Array.from( tocListWrap.getElementsByTagName( 'a' ) );
-					const aTagsWithDuplicateEntries = [];
-					aTags?.reduce( ( temporaryArray, currentVal ) => { // Remove duplicate heading with same HTML tag.
-						if (
-							!temporaryArray.some(
-								( item ) => item.innerText === currentVal.innerText
-							)
-							) {
-
-							temporaryArray.push( currentVal );
-						} else {
-							aTagsWithDuplicateEntries.push( currentVal );
-
-						}
-						return temporaryArray;
-					}, [] );
-
-					for ( let l = 0; l < aTagsWithDuplicateEntries.length; l++ ) {
-						aTagsWithDuplicateEntries[k]?.setAttribute( 'href' , randomID );
+					const arrayOfDuplicateHeadingPresentInTOC = ArrayOfDuplicateElements( aTags );
+					for ( let l = 0; l < arrayOfDuplicateHeadingPresentInTOC.length; l++ ) {
+						arrayOfDuplicateHeadingPresentInTOC[k]?.setAttribute( 'href' , randomID );
 					}
 				}
 				/* Logic for Create an unique Id for duplicate heading ends here. */
