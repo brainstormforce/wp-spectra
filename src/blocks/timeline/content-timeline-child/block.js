@@ -29,4 +29,9 @@ registerBlockType( 'uagb/content-timeline-child', {
 	edit,
 	save,
 	deprecated,
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 } );

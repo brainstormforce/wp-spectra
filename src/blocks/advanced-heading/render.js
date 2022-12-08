@@ -17,7 +17,6 @@ const Render = ( props ) => {
 
 	const {
 		attributes: {
-			isPreview,
 			block_id,
 			headingTitleToggle,
 			headingTitle,
@@ -77,9 +76,8 @@ const Render = ( props ) => {
 			{ seperatorPosition === 'below-sub-heading' ? separator : '' }
 		</>
 	);
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/creative-heading.png`;
+
 	return (
-		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				className,

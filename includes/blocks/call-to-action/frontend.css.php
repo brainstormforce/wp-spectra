@@ -331,6 +331,8 @@ $m_selectors['.wp-block-uagb-call-to-action.uagb-cta__content-stacked-mobile '] 
 $m_selectors['.uagb-cta__content-stacked-mobile .uagb-cta__wrap']               = array(
 	'width' => '100%',
 );
+$t_selectors['.wp-block-uagb-call-to-action.wp-block-button .uagb-cta__buttons a.uagb-cta__button-link-wrapper.wp-block-button__link'] = $cta_border_tablet;
+$m_selectors['.wp-block-uagb-call-to-action.wp-block-button .uagb-cta__buttons a.uagb-cta__button-link-wrapper.wp-block-button__link'] = $cta_border_mobile;
 if ( 'desktop' === $attr['stackBtn'] ) {
 
 	$selectors[' .uagb-cta__buttons']    = array(
@@ -568,8 +570,8 @@ if ( 'desktop' === $attr['stack'] ) {
 		'margin-left' => UAGB_Helper::get_css_value( $attr['buttonRightSpaceMobile'], $attr['buttonRightSpaceType'] ),
 	);
 }
-$t_selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button'] = $second_cta_border_tablet;
-$m_selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button'] = $second_cta_border_mobile;
+$t_selectors['.wp-block-uagb-call-to-action.wp-block-button a.uagb-cta-second__button'] = $second_cta_border_tablet;
+$m_selectors['.wp-block-uagb-call-to-action.wp-block-button a.uagb-cta-second__button'] = $second_cta_border_mobile;
 
 
 if ( 'before' === $attr['secondCtaIconPosition'] ) {

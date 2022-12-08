@@ -35,6 +35,14 @@ const attributes = {
 	headingColor: {
 		type: "string",
 	},
+	seperatorPosition: {
+		type: 'string',
+		default: 'below-heading',
+	},
+	headingDescPosition: {
+		type: 'string',
+		default: 'below-heading',
+	},
 	subHeadingColor: {
 		type: "string",
 	},
