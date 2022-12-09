@@ -171,6 +171,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 2.1.0 - TUESDAY, 29th NOVEMBER 2022 ###
+* Fix: Forms - When we use checkbox with required condition, it restrict the user to check all the checkbox to submit the form.
+### 2.1.0 - TUESDAY, 29th NOVEMBER 2022 ###
 * Improvement: Post Grid - Added Setting to show buttons on equal height.
 * Improvement: Post Grid - Added Setting for image aspect ratio.
 * Improvement: Post Grid - Added equal height option for featured Images.
