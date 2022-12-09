@@ -1,0 +1,55 @@
+.spectra-custom-css-panel.components-panel__body.is-opened {
+	padding: 0;
+	overflow: hidden;
+	height: 100%;
+
+	.components-panel__body-title {
+		padding: 16px 16px 0 16px;
+	}
+
+	.CodeMirror-wrap {
+		border-top: 1px solid #ddd6d6;
+		border-bottom: 1px solid #ddd6d6;
+		height: calc(100vh - 185px);
+
+		.CodeMirror-scroll {
+			width: 100%;
+		}
+
+		.CodeMirror-sizer {
+			border-right: unset;
+		}
+
+		span.CodeMirror-matchingbracket {
+			color: #ffc200;
+		}
+
+		.CodeMirror-vscrollbar {
+			overflow-y: hidden;
+		}
+	}
+
+	.spectra-custom-css-notice {
+		font-style: italic;
+		padding: 0 16px;
+	}
+
+	.spectra-custom-css-example {
+		font-size: 11px;
+		font-style: italic;
+		line-height: 1.4;
+		color: #a4afb7;
+	}
+}
+
+.interface-complementary-area.edit-post-sidebar:has(.spectra-sidebar) {
+	height: auto;
+}
+
+.interface-interface-skeleton__sidebar:has(.spectra-sidebar) {
+	height: auto;
+}
+
+.spectra-sidebar {
+	height: 100%;
+}

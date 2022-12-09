@@ -265,6 +265,7 @@ $t_selectors = array(
 		),
 		$btn_border_Tablet
 	),
+	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link ' => $btn_border_Tablet,
 	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
 		'text-align' => $attr['buttonAlignTablet'],
 	),
@@ -302,6 +303,7 @@ $m_selectors = array(
 		),
 		$btn_border_Mobile
 	),
+	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link ' => $btn_border_Mobile,
 	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
 		'text-align' => $attr['buttonAlignMobile'],
 	),

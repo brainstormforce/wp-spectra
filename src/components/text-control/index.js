@@ -38,7 +38,6 @@ const UAGTextControl = ( props ) => {
 		return false;
 	}
 
-
     const handleOnChange = ( newValue ) => {
 
 		if( props.name ){
@@ -151,8 +150,8 @@ UAGTextControl.defaultProps = {
     variant: 'full-width',
     autoComplete: 'off',
     showHeaderControls: true,
-	dynamicContentType: 'url', // url / text
-	enableDynamicContent: false
+	dynamicContentType: 'url', // url | text
+	enableDynamicContent: false,
 };
 
 export default UAGTextControl;

@@ -124,15 +124,15 @@ const UAGBSectionEdit = ( props ) => {
 
 	}, [] );
 
-	return (
-		<>
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/advanced-row.svg`;
 
-						<>
-			<Settings parentProps={ props } />
+	return (
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+			<>
+				<Settings parentProps={ props } /> 
 				<Render parentProps={ props } />
 			</>
-
-		</>
+		)
 	);
 };
 
