@@ -171,6 +171,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 2.1.0 - WEDNESDAY, 07th DECEMBER 2022 =
+Fix: Container - Background Image Position control goes missing on changing the viewport.
+
+= 2.1.0 - WEDNESDAY, 07th DECEMBER 2022 =
 * New: Introducing the Counter block with layouts that will help you flaunt your stats in a cool way!
 * New: Introducing the Image Gallery block with extensive customizability, as well as the all-new perfectly-tiled layout!
 * New: Introducing the ability to add custom CSS directly at the page level!

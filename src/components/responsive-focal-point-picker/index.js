@@ -31,7 +31,7 @@
 	 );
 	 output.Tablet = (
 		<FocalPointPicker
-			url={ url }
+			url={ url ? url : backgroundImage.desktop?.value?.url }
 			value={ value }
 			onChange={ ( focalPoint ) => {
 				setAttributes( { [ backgroundPosition[device]?.label ]: focalPoint } );
@@ -40,7 +40,7 @@
 	 );
 	 output.Mobile = (
 		<FocalPointPicker
-			url={ url }
+			url={ url ? url : backgroundImage.desktop?.value?.url }
 			value={ value }
 			onChange={ ( focalPoint ) => {
 				setAttributes( { [ backgroundPosition[device]?.label ]: focalPoint } );
