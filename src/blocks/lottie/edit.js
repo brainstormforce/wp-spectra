@@ -65,17 +65,19 @@ const UAGBLottie = ( props ) => {
 		setState( { direction: direction * -1 } );
 	};
 
-	return (
-		<>
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/lottie.svg`;
 
+	return (
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+			<>
 				<Render lottieplayer={ lottieplayer } parentProps={ props } />
 				<Settings
 					parentProps={ props }
 					loopLottie={ loopLottie }
 					reverseDirection={ reverseDirection }
 				/>
-
-		</>
+			</>
+		)
 	);
 };
 

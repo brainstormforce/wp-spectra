@@ -407,7 +407,7 @@ const Settings = ( props ) => {
 				/>
 				<ToggleControl
 					label={ __(
-						'Open in new window',
+						'Open in New Window',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ secondCtaTarget }
@@ -902,7 +902,7 @@ const Settings = ( props ) => {
 						/>
 						<ToggleControl
 							label={ __(
-								'Open in new window',
+								'Open in New Window',
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ ctaTarget }
