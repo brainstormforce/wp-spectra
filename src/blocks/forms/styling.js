@@ -6,6 +6,7 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import getAttributeFallback, { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
+import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 
 function styling( props ) {
 
@@ -158,6 +159,8 @@ function styling( props ) {
 		submitTextLetterSpacingTablet,
 		submitTextLetterSpacingMobile,
 		submitTextLetterSpacingType,
+		gradientHValue,
+		gradientValue,
 	} = props.attributes;
 
 	let selectors = {};
@@ -354,7 +357,6 @@ function styling( props ) {
 			'text-transform': submitTextTransform,
 			'text-decoration': submitTextDecoration,
 			'font-weight': submitTextFontWeight,
-			'background-color': ( submitBgType === 'color' ) ? submitBgColor : 'transparent',
 			...submitBorder,
 			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
 			'padding-bottom': generateCSSUnit(
@@ -392,12 +394,10 @@ function styling( props ) {
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background):hover': {
 			'color': submitColorHover,
-			'background-color': ( submitBgHoverType === 'color' ) ? submitBgColorHover : 'transparent',
 			'border-color': btnBorderHColor,
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button:hover': {
 			'color': submitColorHover,
-			'background-color': ( submitBgHoverType === 'color' ) ? submitBgColorHover : 'transparent',
 			'border-color': btnBorderHColor,
 		},
 		' .uagb-switch': {
@@ -736,6 +736,47 @@ function styling( props ) {
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background)': submitBorderMobile,
 	};
 
+	if ( 'color' === submitBgType ) {
+		selectors[ ' .uagb-forms-main-form  .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button.wp-block-button__link' ] = {
+			'background-color': submitBgColor,
+		};
+	} else if( 'gradient' === submitBgType ) {
+
+		const backgroundAttributes = {
+			'backgroundType': 'gradient',
+			'gradientValue': gradientValue,
+		};
+
+		const btnBackground = generateBackgroundCSS( backgroundAttributes );
+
+		selectors[ ' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button.wp-block-button__link' ] = btnBackground;
+	} else if( 'transparent' === submitBgType ) {
+		selectors[ ' .uagb-forms-main-form  .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button.wp-block-button__link' ] = {
+			'background': 'transparent',
+		};
+	}
+	//Hover
+	if ( 'color' === submitBgHoverType ) {
+		selectors[ ' .uagb-forms-main-form  .uagb-forms-main-submit-button-wrap:hover .uagb-forms-main-submit-button.wp-block-button__link' ] = {
+			'background-color': submitBgColorHover,
+		};
+	} else if( 'gradient' === submitBgHoverType ) {
+
+		const hoverbackgroundAttributes = {
+			'backgroundType': 'gradient',
+			'gradientValue': gradientHValue,
+		};
+
+		const btnhBackground = generateBackgroundCSS( hoverbackgroundAttributes );
+
+		selectors[ ' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap:hover .uagb-forms-main-submit-button.wp-block-button__link' ] = btnhBackground;
+
+	} else if( 'transparent' === submitBgHoverType ) {
+		selectors[ ' .uagb-forms-main-form  .uagb-forms-main-submit-button-wrap:hover .uagb-forms-main-submit-button.wp-block-button__link' ] = {
+			'background' : 'transparent',
+		}
+	}
+	
 	if ( 'boxed' === formStyle ) {
 		selectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
 			...inputBorder,

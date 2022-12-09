@@ -183,7 +183,6 @@ $selectors = array(
 		array(
 			'font-size'        => UAGB_Helper::get_css_value( $attr['submitTextFontSize'], $attr['submitTextFontSizeType'] ),
 			'color'            => $attr['submitColor'],
-			'background-color' => $attr['submitBgColor'],
 			'padding-top'      => UAGB_Helper::get_css_value( $btnPaddingTop, $attr['paddingBtnUnit'] ),
 			'padding-bottom'   => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['paddingBtnUnit'] ),
 			'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['paddingBtnUnit'] ),
@@ -194,8 +193,7 @@ $selectors = array(
 	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link ' => array_merge(
 		array(
 			'font-size'        => UAGB_Helper::get_css_value( $attr['submitTextFontSize'], $attr['submitTextFontSizeType'] ),
-			'color'            => $attr['submitColor'],
-			'background-color' => ( 'color' === $attr['submitBgType'] ) ? $attr['submitBgColor'] : 'transparent',
+			'color'            => $attr['submitColor'],	
 			'padding-top'      => UAGB_Helper::get_css_value( $btnPaddingTop, $attr['paddingBtnUnit'] ),
 			'padding-bottom'   => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['paddingBtnUnit'] ),
 			'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['paddingBtnUnit'] ),
@@ -205,12 +203,10 @@ $selectors = array(
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:hover ' => array(
 		'color'            => $attr['submitColorHover'],
-		'background-color' => ( 'color' === $attr['submitBgHoverType'] ) ? $attr['submitBgColorHover'] : 'transparent',
 		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button:hover' => array(
 		'color'            => $attr['submitColorHover'],
-		'background-color' => ( 'color' === $attr['submitBgHoverType'] ) ? $attr['submitBgColorHover'] : 'transparent',
 		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],
 	),
 	// Hover Colors.
@@ -627,6 +623,46 @@ $m_selectors[' .uagb-forms-main-form .uagb-slider:before']                      
 	'border-radius' => $toggle_border_radius_tl_mobile_fallback . ' ' . $toggle_border_radius_tr_mobile_fallback . ' ' . $toggle_border_radius_br_mobile_fallback . ' ' . $toggle_border_radius_bl_mobile_fallback,
 );
 
+if ( 'transparent' === $attr['submitBgType'] ) {
+
+	$selectors['  .uagb-forms-main-form .wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link']['background'] = 'transparent';
+
+} elseif ( 'color' === $attr['submitBgType'] ) {
+
+	$selectors[' .uagb-forms-main-form .wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link']['background'] = $attr['submitBgColor'];
+
+} elseif ( 'gradient' === $attr['submitBgType'] ) {
+	$bg_obj = array(
+		'backgroundType' => 'gradient',
+		'gradientValue'  => $attr['gradientValue'],
+	);
+
+	$btn_bg_css = UAGB_Block_Helper::uag_get_background_obj( $bg_obj );
+	$selectors['  .uagb-forms-main-form .wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link'] = $btn_bg_css;
+}
+
+// Hover.
+if ( 'transparent' === $attr['submitBgHoverType'] ) {
+
+	$selectors['  .uagb-forms-main-form .wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:hover'] = array(
+		'background' => 'transparent',
+	);
+
+} elseif ( 'color' === $attr['submitBgHoverType'] ) {
+
+	$selectors['  .uagb-forms-main-form .wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:hover'] = array(
+		'background' => $attr['submitBgColorHover'],
+	);
+
+} elseif ( 'gradient' === $attr['submitBgHoverType'] ) {
+	$bg_hover_obj = array(
+		'backgroundType' => 'gradient',
+		'gradientValue'  => $attr['gradientHValue'],
+	);
+
+	$btn_hover_bg_css = UAGB_Block_Helper::uag_get_background_obj( $bg_hover_obj );
+	$selectors['  .uagb-forms-main-form .wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:hover'] = $btn_hover_bg_css;
+}
 $combined_selectors = array(
 	'desktop' => $selectors,
 	'tablet'  => $t_selectors,
