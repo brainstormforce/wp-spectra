@@ -85,10 +85,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors[' .wp-block-button__link:hover'] = array(
 					'background' => 'transparent',
 				);
+				$selectors[' .wp-block-button__link:focus'] = array(
+					'background' => 'transparent',
+				);
 
 			} elseif ( 'color' === $attr['hoverbackgroundType'] ) {
 
 				$selectors[' .wp-block-button__link:hover'] = array(
+					'background' => $attr['hBackground'],
+				);
+				$selectors[' .wp-block-button__link:focus'] = array(
 					'background' => $attr['hBackground'],
 				);
 
@@ -100,6 +106,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$btn_hover_bg_css                           = self::uag_get_background_obj( $bg_hover_obj );
 				$selectors[' .wp-block-button__link:hover'] = $btn_hover_bg_css;
+				$selectors[' .wp-block-button__link:focus'] = $btn_hover_bg_css;
 			}
 
 			$selectors[' .uagb-button__wrapper .uagb-buttons-repeater']                   = array(
@@ -123,6 +130,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[' .wp-block-button__link.has-text-color:hover .uagb-button__link'] = array(
 				'color' => $attr['hColor'],
 			);
+			$selectors[' .wp-block-button__link.has-text-color:focus .uagb-button__link'] = array(
+				'color' => $attr['hColor'],
+			);
 			if ( 0 !== $attr['boxShadowHOffset'] || 0 !== $attr['boxShadowVOffset'] ) {
 				$selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
 					'box-shadow' =>
@@ -143,6 +153,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors[ $wrapper . '.wp-block-button__link' ]     = $border_css_mobile;
 			$t_selectors[ $wrapper . '.wp-block-button__link' ]     = $border_css_tablet;
 			$selectors[ $wrapper . '.wp-block-button__link:hover' ] = array(
+				'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
+			);
+			$selectors[ $wrapper . '.wp-block-button__link:focus' ] = array(
 				'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
 			);
 			// twenty twenty theme.
@@ -210,6 +223,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'fill'   => $attr['iconColor'],
 			);
 			$selectors[ $wrapper . ':hover .uagb-button__icon > svg' ] = array(
+				'fill' => $attr['iconHColor'],
+			);
+			$selectors[ $wrapper . ':focus .uagb-button__icon > svg' ] = array(
 				'fill' => $attr['iconHColor'],
 			);
 			if ( ! $attr['removeText'] ) {
@@ -623,6 +639,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'border-color' => $attr['btnBorderHColor'],
 			);
 			$selectors[' .uagb-post__text.uagb-post__cta:hover a.uagb-text-link'] = array(
+				'color'        => $attr['ctaHColor'],
+				'background'   => ( 'color' === $attr['ctaBgHType'] ) ? $attr['ctaBgHColor'] : 'transparent',
+				'border-color' => $attr['btnBorderHColor'],
+			);
+			$selectors[' .uagb-post__text.uagb-post__cta a.uagb-text-link:focus'] = array(
 				'color'        => $attr['ctaHColor'],
 				'background'   => ( 'color' === $attr['ctaBgHType'] ) ? $attr['ctaBgHColor'] : 'transparent',
 				'border-color' => $attr['btnBorderHColor'],
