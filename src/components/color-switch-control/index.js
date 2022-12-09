@@ -1,14 +1,17 @@
-import React, {useLayoutEffect} from 'react';
+
 import { __ } from '@wordpress/i18n';
 import GradientSettings from '@Components/gradient-settings';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
-import { getIdFromString } from '@Utils/Helpers';
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import { select } from '@wordpress/data'
 import styles from './editor.lazy.scss';
 
 
 export default function ColorSwitchControl( {label, type, classic, gradient, setAttributes} ) {
+	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const panelRef = useRef( null );
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -20,13 +23,17 @@ export default function ColorSwitchControl( {label, type, classic, gradient, set
 	const { getSelectedBlock } = select( 'core/block-editor' );
 
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect(() => {
+		setPanelNameForHook( getPanelIdFromRef(panelRef))
+	}, [blockNameForHook])
+
 	const controlName = getIdFromString( label );
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.color-switch-control.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.color-switch-control.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 
 	return (
-		<React.Fragment>
+		<div ref={panelRef}>
 			{
 				controlBeforeDomElement
 			}
@@ -78,6 +85,6 @@ export default function ColorSwitchControl( {label, type, classic, gradient, set
 			{
 				controlAfterDomElement
 			}
-		</React.Fragment>
+		</div>
 	);
 }
