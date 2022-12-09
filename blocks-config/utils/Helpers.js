@@ -19,3 +19,13 @@ export function getImageSize( sizes ) {
 export function getIdFromString( label ){
 	return label ? label.toLowerCase().replace( /[^a-zA-Z ]/g, '' ).replace( /\s+/g, '-' ) : '';
 }
+
+export function getPanelIdFromRef(ref){
+	if(ref.current){
+		const parentElement = ref.current.parentElement.closest('.components-panel__body')
+		if(parentElement){
+			return getIdFromString(parentElement.querySelector('.components-panel__body-title').textContent);
+		}
+	}
+	return null;
+}
