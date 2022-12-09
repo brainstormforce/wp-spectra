@@ -172,6 +172,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ### 2.1.1 - TUESDAY, 13th DECEMBER 2022 ###
 * Improvement: Call to action - Width option for CTA buttons.
+* Fix: Container - Boxed container width breaks inside other block.
 
 ### 2.1.0 - WEDNESDAY, 07th DECEMBER 2022 ###
 * New: Introducing the Counter block with layouts that will help you flaunt your stats in a cool way!
