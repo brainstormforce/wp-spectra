@@ -15,13 +15,15 @@ import {
 	ColorPalette,
 } from '@wordpress/components';
 import { useSelect, select } from '@wordpress/data';
-import { useState, useEffect } from '@wordpress/element';
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect } from 'react';
-import { getIdFromString } from '@Utils/Helpers';
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGReset from '../reset';
 
 const AdvancedPopColorControl = ( props ) => {
+	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const panelRef = useRef( null );
+
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -32,6 +34,10 @@ const AdvancedPopColorControl = ( props ) => {
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
 
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect(() => {
+		setPanelNameForHook( getPanelIdFromRef(panelRef))
+	}, [blockNameForHook])
 
 	const { colors } = useSelect(
 		( select ) => { // eslint-disable-line
@@ -167,13 +173,12 @@ const AdvancedPopColorControl = ( props ) => {
 
 	const globalIndicator = ( colorVal && colorVal.includes( 'var' ) ) ? `uag-global-indicator uag-global-icon-${globalIconColor}` : '';
 
-	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	const controlName = getIdFromString( props.label );
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.color-control.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.color-control.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	return (
-		<>
+		<div ref={panelRef}>
 			{
 				controlBeforeDomElement
 			}
@@ -294,7 +299,7 @@ const AdvancedPopColorControl = ( props ) => {
 			{
 				controlAfterDomElement
 			}
-		</>
+		</div>
 	);
 };
 
