@@ -7,13 +7,13 @@ import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import { __ } from '@wordpress/i18n';
 
 const UAGIconPicker = ( props ) => {
-	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
 	const panelRef = useRef( null );
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
-	useEffect(() => {
-		setPanelNameForHook( getPanelIdFromRef(panelRef))
-	}, [blockNameForHook])
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
 
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {

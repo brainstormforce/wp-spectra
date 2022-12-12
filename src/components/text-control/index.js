@@ -13,7 +13,7 @@ import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGReset from '../reset';
 
 const UAGTextControl = ( props ) => {
-	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
 	const panelRef = useRef( null );
     // Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -28,9 +28,9 @@ const UAGTextControl = ( props ) => {
 	}, [] );
 
 	const blockNameForHook = selectedBlock?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
-	useEffect(() => {
-		setPanelNameForHook( getPanelIdFromRef(panelRef))
-	}, [blockNameForHook])
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
 
 	const registerTextExtender = props.enableDynamicContent && props.name ? wp.hooks.applyFilters( 'uagb.registerTextExtender', '', selectedBlock?.name, props.name, props.dynamicContentType ) : null;
 

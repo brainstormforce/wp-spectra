@@ -18,7 +18,7 @@ import { select } from '@wordpress/data';
 
 const Background = ( props ) => {
 	const { getSelectedBlock } = select( 'core/block-editor' );
-	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
 	const panelRef = useRef( null );
 
 	// Add and remove the CSS on the drop and remove of the component.
@@ -67,9 +67,9 @@ const Background = ( props ) => {
 	} = props;
 
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
-	useEffect(() => {
-		setPanelNameForHook( getPanelIdFromRef(panelRef))
-	}, [blockNameForHook])
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
 
 	const onRemoveImage = () => {
 		setAttributes( { [ backgroundImage.label ]: null } );

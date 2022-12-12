@@ -14,7 +14,7 @@ import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 
 const BoxShadowControl = ( props ) => {
-	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
 	const panelRef = useRef( null );
 	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
 
@@ -47,9 +47,9 @@ const BoxShadowControl = ( props ) => {
 	}, [] );
 
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
-	useEffect(() => {
-		setPanelNameForHook( getPanelIdFromRef(panelRef))
-	}, [blockNameForHook])
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
 
 	const {
 		setAttributes,

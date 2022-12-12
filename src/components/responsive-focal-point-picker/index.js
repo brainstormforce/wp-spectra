@@ -1,8 +1,8 @@
 /**
  * External dependencies
  */
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
-import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
+import React, { useEffect, useState, useRef } from 'react';
+import { getPanelIdFromRef } from '@Utils/Helpers';
  import { useDeviceType } from '@Controls/getPreviewType';
  import ResponsiveToggle from '../responsive-toggle';
  import { __ } from '@wordpress/i18n';
@@ -11,16 +11,16 @@ import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 
  const ResponsiveUAGFocalPointPicker = ( props ) => {
 
-	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
 	const panelRef = useRef( null );
 
 	const { backgroundPosition, backgroundImage, setAttributes } = props;
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
-	useEffect(() => {
-		setPanelNameForHook( getPanelIdFromRef(panelRef))
-	}, [blockNameForHook])
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
 
 	const responsive = true;
 

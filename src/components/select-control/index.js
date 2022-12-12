@@ -25,7 +25,7 @@ const defaultProps = {
 };
 
 export default function UAGSelectControl( { layout, label, options, data, setAttributes, onChange, help, children } ) {
-	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
 	const panelRef = useRef( null );
 
 	useLayoutEffect( () => {
@@ -37,9 +37,9 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
-	useEffect(() => {
-		setPanelNameForHook( getPanelIdFromRef(panelRef))
-	}, [blockNameForHook])
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
 
 	const controlName = getIdFromString( label );
 

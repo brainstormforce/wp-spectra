@@ -22,7 +22,7 @@ import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 export { TypographyStyles };
 
 const TypographyControl = ( props ) => {
-	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
 	const panelRef = useRef( null );
 
 	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
@@ -139,9 +139,9 @@ const TypographyControl = ( props ) => {
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
-	useEffect(() => {
-		setPanelNameForHook( getPanelIdFromRef(panelRef))
-	}, [blockNameForHook])
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
 
 	// Function to get the Block's default Typography Values.
 	const getBlockTypographyValue = () => {

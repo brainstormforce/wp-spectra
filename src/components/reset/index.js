@@ -1,12 +1,12 @@
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
-import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
+import React, { useEffect, useState, useRef } from 'react';
+import { getPanelIdFromRef } from '@Utils/Helpers';
 import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 import { select } from '@wordpress/data';
 import { Button, Tooltip, Dashicon } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 const UAGReset = ( props ) => {
-	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
 	const panelRef = useRef( null );
 
 	const {
@@ -20,9 +20,9 @@ const UAGReset = ( props ) => {
 	const { getSelectedBlock } = select( 'core/block-editor' );
 
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
-	useEffect(() => {
-		setPanelNameForHook( getPanelIdFromRef(panelRef))
-	}, [blockNameForHook])
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
 
 	const allBlocksAttributes = wp.hooks.applyFilters( 'uagb.blocksAttributes', blocksAttributes )
 

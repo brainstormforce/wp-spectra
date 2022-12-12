@@ -7,7 +7,7 @@ import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGB_Block_Icons from '@Controls/block-icons';
 
 const UAGMediaPicker = ( props ) => {
-	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
 	const panelRef = useRef( null );
 
 	const selectedBlock = useSelect( ( select ) => {
@@ -16,9 +16,9 @@ const UAGMediaPicker = ( props ) => {
 
 	const blockNameForHook = selectedBlock?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 
-	useEffect(() => {
-		setPanelNameForHook( getPanelIdFromRef(panelRef))
-	}, [blockNameForHook])
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
 
 	const {
 		onSelectImage,

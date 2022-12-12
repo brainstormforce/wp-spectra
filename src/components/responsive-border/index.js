@@ -7,7 +7,7 @@ import AdvancedPopColorControl from '@Components/color-control/advanced-pop-colo
 import UAGSelectControl from '@Components/select-control';
 import UAGTabsControl from '@Components/tabs';
 import SpacingControl from '@Components/spacing-control';
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { select } from '@wordpress/data';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import PropTypes from 'prop-types';
@@ -32,7 +32,7 @@ const defaultProps = {
 };
 
 const ResponsiveBorder = ( props ) => {
-	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
 	const panelRef = useRef( null );
 
 	const {
@@ -63,9 +63,9 @@ const ResponsiveBorder = ( props ) => {
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
-	useEffect(() => {
-		setPanelNameForHook( getPanelIdFromRef(panelRef))
-	}, [blockNameForHook])
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
 
 
 	const tabsToUse = [ {
