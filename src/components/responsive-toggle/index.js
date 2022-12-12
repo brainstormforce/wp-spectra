@@ -156,7 +156,9 @@ const ResponsiveToggle = props => {
 
 
 	return (
-		<>
+		<div
+			ref={panelRef}
+		>
 			{
 				controlBeforeDomElement
 			}
@@ -216,7 +218,7 @@ const ResponsiveToggle = props => {
 			{
 				controlAfterDomElement
 			}
-		</>
+		</div>
 	)
 }
 

@@ -477,7 +477,9 @@ const SpacingControl = ( props ) => {
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	return (
-		<>
+		<div
+			ref={panelRef}
+		>
 			{
 				controlBeforeDomElement
 			}
@@ -544,7 +546,7 @@ const SpacingControl = ( props ) => {
 			{
 				controlAfterDomElement
 			}
-		</>
+		</div>
 	);
 
 };
