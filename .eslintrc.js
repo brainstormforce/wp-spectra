@@ -40,6 +40,7 @@ module.exports = {
 		UAGBTableOfContents: true,
 		localStorage: true,
 		uagb_timeline_data: true,
-		UAGBModal: true
+		UAGBModal: true,
+		UAGBCounter: true,
 	},
 };
