@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
 import Select from 'react-select';
 import { select } from '@wordpress/data';
-import { getIdFromString } from '@Utils/Helpers';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import PropTypes from 'prop-types';
 
 const propTypes = {
@@ -22,15 +22,23 @@ const defaultProps = {
 };
 
 export default function UAGMultiSelectControl( {label, options, data, setAttributes} ) {
+	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const panelRef = useRef( null );
 	const { getSelectedBlock } = select( 'core/block-editor' );
 	const selectedBlock = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect(() => {
+		setPanelNameForHook( getPanelIdFromRef(panelRef))
+	}, [selectedBlock])
+
 	const controlName = getIdFromString( label );
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${selectedBlock}.multi-select-control.${controlName}.before`, '', selectedBlock );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${selectedBlock}.multi-select-control.${controlName}`, '', selectedBlock );
-	const allOptions = wp.hooks.applyFilters( `spectra.${selectedBlock}.multi-select-control.${controlName}.options`, options, selectedBlock );
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${selectedBlock}.${panelNameForHook}.${controlName}.before`, '', selectedBlock );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${selectedBlock}.${panelNameForHook}.${controlName}`, '', selectedBlock );
+	const allOptions = wp.hooks.applyFilters( `spectra.${selectedBlock}.${panelNameForHook}.${controlName}.options`, options, selectedBlock );
 
 	return (
-		<>
+		<div
+			ref={panelRef}
+		>
 			{
 				controlBeforeDomElement
 			}
@@ -50,7 +58,7 @@ export default function UAGMultiSelectControl( {label, options, data, setAttribu
 			{
 				controlAfterDomElement
 			}
-		</>
+		</div>
 	);
 }
 
