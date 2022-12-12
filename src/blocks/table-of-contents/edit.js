@@ -357,13 +357,15 @@ const UAGBTableOfContentsEdit = ( props ) => {
 	}
 	/* eslint-enable no-undef */
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/table-of-content.svg`;
+
 	return (
-
-					<>
-			<Settings parentProps={ props } />
-			<Render parentProps={ props } headers={ headers } />
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+			<>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } headers={ headers } />
 			</>
-
+		)
 	);
 };
 

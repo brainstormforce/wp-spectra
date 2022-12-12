@@ -23,7 +23,7 @@ export default function RangeTypographyControl( props ) {
 				{ ...props }
 				label={ props.sizeText }
 				value={ props.size.value || '' }
-				min={ 0 }
+				min={ -50 }
 				max={ 200 }
 				unit={ props.type }
 				responsive={ true }

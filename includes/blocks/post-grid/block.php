@@ -18,8 +18,8 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'priority'         => Spectra_Block_Prioritization::get_block_priority( 'post-grid' ),
-	'static_css'       => 'post',
 	'deprecated'       => false,
+	'static_css'       => 'post',
 	'dynamic_assets'   => array(
 		'dir' => 'post-grid',
 	),

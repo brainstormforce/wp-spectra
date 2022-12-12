@@ -24,7 +24,8 @@ const FilterTabs = () => {
         { name: 'Form', slug: 'form' },
         { name: 'SEO', slug: 'seo' },
         { name: 'Extensions', slug: 'extensions' },
-        { name: 'Pro', slug: 'pro' },
+		// This Object will be used once Spectra Pro is Released.
+        // { name: 'Pro', slug: 'pro' },
     ];
 
     useEffect( () => {
