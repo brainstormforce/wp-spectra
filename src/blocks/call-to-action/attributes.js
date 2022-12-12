@@ -326,7 +326,7 @@ const attributes = {
 	},
 	ctaIconSpace: {
 		type: 'number',
-		default: 5,
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-space'
 		},
@@ -1245,6 +1245,32 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'secondCta-letter-spacing-type'
 		}
+	},
+	btncontentWidth: {
+		type: 'number',
+		default: 30,
+		UAGCopyPaste: {
+			styleType: 'desc-width'
+		},
+	},
+	btncontentWidthTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-width'
+		},
+	},
+	btncontentWidthMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-width'
+		},
+	},
+	btncontentWidthType: {
+		type: 'string',
+		default: '%',
+		UAGCopyPaste: {
+			styleType: 'desc-width-type'
+		},
 	},
 };
 

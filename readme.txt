@@ -170,6 +170,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 2.1.1 - TUESDAY, 13th DECEMBER 2022 =
+* Improvement: Call to action - Width option for CTA buttons.
+
 = 2.1.0 - WEDNESDAY, 07th DECEMBER 2022 =
 Fix: Container - Background Image Position control goes missing on changing the viewport.
 
