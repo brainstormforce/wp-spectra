@@ -7,14 +7,16 @@ import {
 import ResponsiveToggle from '../responsive-toggle';
 import { __, sprintf } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
 import { limitMax, limitMin } from '@Controls/unitWiseMinMaxOption';
 import classnames from 'classnames';
 import { select } from '@wordpress/data';
-import { getIdFromString } from '@Utils/Helpers';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGReset from '../reset';
 
 const UAGNumberControl = ( props ) => {
+	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const panelRef = useRef( null );
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -25,6 +27,10 @@ const UAGNumberControl = ( props ) => {
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
 
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect(() => {
+		setPanelNameForHook( getPanelIdFromRef(panelRef))
+	}, [blockNameForHook])
 
 	const { isShiftStepEnabled } = props;
 
@@ -151,14 +157,15 @@ const UAGNumberControl = ( props ) => {
 
 	const variant = props.inlineControl ? 'inline' : 'full-width';
 
-	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	const controlName = getIdFromString( props?.label ); //
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.number-control.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.number-control.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 
 	return (
-		<>
+		<div
+			ref={panelRef}
+		>
 			{controlBeforeDomElement}
 			<div className="components-base-control uag-number-control uagb-size-type-field-tabs">
 				{ props.showControlHeader &&
@@ -189,7 +196,7 @@ const UAGNumberControl = ( props ) => {
 				) }
 			</div>
 			{controlAfterDomElement}
-		</>
+		</div>
 	);
 };
 
