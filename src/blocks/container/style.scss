@@ -63,6 +63,12 @@ body .wp-block-uagb-container > *:not(.wp-block-uagb-container):not(.wp-block-ua
 	width: 100%;
 }
 
+// For Astra theme boxed compatibility
+.ast-plain-container .editor-styles-wrapper .block-editor-block-list__layout.is-root-container .uagb-is-root-container.wp-block-uagb-container.alignwide {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 // Shape Divider CSS Start.
 .uagb-container__shape {
 	overflow: hidden;
