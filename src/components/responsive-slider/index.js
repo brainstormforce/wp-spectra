@@ -1,14 +1,22 @@
 
+import React, { useEffect, useState, useRef } from 'react';
 import Range from '@Components/range/Range.js';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { limitMax, limitMin } from '@Controls/unitWiseMinMaxOption';
 import { select } from '@wordpress/data';
-import { getIdFromString } from '@Utils/Helpers';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 
 const ResponsiveSlider = ( props ) => {
+	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const panelRef = useRef( null );
+
 	const deviceType = useDeviceType();
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect(() => {
+		setPanelNameForHook( getPanelIdFromRef(panelRef))
+	}, [blockNameForHook])
 
 	const output = {};
 	const maxDesk = limitMax( props.data.desktop.unit?.value, props, true );
@@ -90,7 +98,6 @@ const ResponsiveSlider = ( props ) => {
 		</>
 	);
 
-	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	const controlName = getIdFromString( props.label );
 	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
