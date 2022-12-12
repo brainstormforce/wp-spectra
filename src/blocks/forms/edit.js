@@ -36,7 +36,7 @@ const UAGBFormsEdit = ( props ) => {
 		blockType, // eslint-disable-line no-unused-vars
 		variations,
 		hasInnerBlocks,
-		defaultVariation
+		defaultVariation,
 	} = useSelect(
 		( select ) => {
 			const { getBlocks } = select( 'core/block-editor' );
@@ -375,42 +375,38 @@ const UAGBFormsEdit = ( props ) => {
 			}
 		}
 	} );
-const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/form.png`;
-	if ( ! hasInnerBlocks ) {
+
+	if ( ! props.attributes.isPreview && ! hasInnerBlocks ) {
 		return (
-			<>
-			{ props.attributes.isPreview ? <img width='100%' src={previewImageData} alt=''/> :
-			<>
-			<div className='uagb-forms-variations'>
-				<__experimentalBlockVariationPicker
-					icon={ UAGB_Block_Icons.forms }
-					label={ __( 'Forms', 'ultimate-addons-for-gutenberg' ) }
-					instructions={ __(
-						'Select a variation to start with.',
-						'ultimate-addons-for-gutenberg'
-					) }
-					variations={ variations }
-					allowSkip
-					onSelect={ ( nextVariation ) =>
-						blockVariationPickerOnSelect( nextVariation )
-					}
-				/>
-			</div>
-			</>
-			}
-			</>
+			props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+				<div className='uagb-forms-variations'>
+					<__experimentalBlockVariationPicker
+						icon={ UAGB_Block_Icons.forms }
+						label={ __( 'Forms', 'ultimate-addons-for-gutenberg' ) }
+						instructions={ __(
+							'Select a variation to start with.',
+							'ultimate-addons-for-gutenberg'
+						) }
+						variations={ variations }
+						allowSkip
+						onSelect={ ( nextVariation ) =>
+							blockVariationPickerOnSelect( nextVariation )
+						}
+					/>
+				</div>
+			)
 		);
 	}
 
-	return (
-		<>
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/form.svg`;
 
-						<>
-			<Settings parentProps={ props } />
+	return (
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+			<>
+				<Settings parentProps={ props } />
 				<Render parentProps={ props } />
 			</>
-
-		</>
+		)
 	);
 };
 

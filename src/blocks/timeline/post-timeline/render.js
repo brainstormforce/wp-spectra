@@ -31,7 +31,6 @@ const Render = ( props ) => {
 	const { attributes, className, setAttributes } = props;
 
 	const {
-		isPreview,
 		displayPostLink,
 		postsToShow,
 	} = attributes;
@@ -70,9 +69,8 @@ const Render = ( props ) => {
 		let dayAlignClass = DayAlignClass( props.attributes, 0, deviceType ); // Get classname for day alignment.
 
 		let displayInnerDate = false;
-		const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/post-timeline.png`;
+
 		return (
-			isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 			<>
 				{ displayPosts.map( ( post, index ) => {
 					if ( timelinAlignment === 'center' ) {

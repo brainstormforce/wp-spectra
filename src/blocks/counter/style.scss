@@ -1,0 +1,142 @@
+.wp-block-uagb-counter {
+
+	.wp-block-uagb-counter__icon,
+	.wp-block-uagb-counter__image-wrap {
+		display: inline-block;
+		line-height: 0;
+	}
+
+	&--number {
+
+		.wp-block-uagb-counter__number {
+			font-size: 52px;
+			color: #3a3a3a;
+		}
+
+		.wp-block-uagb-counter__icon {
+			margin-bottom: 10px;
+		}
+
+	}
+
+	&--bars {
+
+		.wp-block-uagb-counter-bars-container {
+
+			width: 100%;
+			background-color: #eaeaea;
+
+			.wp-block-uagb-counter__number {
+				width: 0%;
+				min-height: 5px;
+				text-align: right;
+				line-height: 1;
+				white-space: nowrap;
+				overflow: hidden;
+				background: #007cba;
+				display: flex;
+				justify-content: flex-end;
+				align-items: center;
+
+				// If we have rtl class on ancestor element (aka if RTL is active).
+				.rtl & {
+					flex-direction: row-reverse;
+					justify-content: flex-start;
+				}
+
+				& > :last-child {
+					margin-right: 5px;
+				}
+			}
+		}
+
+		.wp-block-uagb-counter__title {
+			margin-top: 15px;
+		}
+
+		// Placed outside for lower specificity.
+		.wp-block-uagb-counter__number {
+			color: #fff;
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+	}
+
+	&--circle {
+
+		.wp-block-uagb-counter-circle-container {
+			position: relative;
+			display: inline-block;
+			width: 100%;
+
+			.wp-block-uagb-counter__icon svg {
+				width: 30px;
+			}
+
+			svg {
+				pointer-events: none; // To make title editable/clickable, since it is behind the circle.
+			}
+
+			& > svg {
+				transform: rotate(-90deg);
+				width: 100%;
+				height: 100%;
+
+				circle {
+					stroke: #eaeaea;
+					stroke-width: 1em;
+					fill: transparent;
+				}
+
+				.uagb-counter-circle__progress {
+					stroke: #007cba;
+				}
+			}
+
+			&__content {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				// Since the SVG is rotated, it's z-index is changed
+				// due to CSS's internal working mechanisms/rules and the text goes behind the circle SVG.
+				z-index: 1;
+			}
+		}
+
+		.wp-block-uagb-counter__number {
+			margin-top: 5px;
+			font-size: 52px;
+			color: #3a3a3a;
+		}
+
+		.wp-block-uagb-counter__title {
+			margin-top: 5px;
+		}
+	}
+}
+
+.wp-block-uagb-counter__icon svg {
+	width: 30px;  // To reduce jerk while loading SVG (SVG appears oversized for a moment, without this).
+}
+
+.wp-block-uagb-counter__title {
+	margin-top: 10px;
+	margin-bottom: 17px;
+	font-size: 16px;
+}
+
+// These fixes are specific to the Astra theme.
+// Astra theme adds line-height on frontend which interferes with the WYSIWYG experience.
+body[class*="astra"] {
+
+	.wp-block-uagb-counter__title,
+	.wp-block-uagb-counter__number {
+		line-height: normal;
+	}
+}

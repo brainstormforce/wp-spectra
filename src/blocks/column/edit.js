@@ -107,12 +107,15 @@ const ColumnComponent = ( props ) => {
 		scrollBlockToView();
 	}, [deviceType] );
 
-	return (
-			<>
-			<Settings parentProps={ props } deviceType = { deviceType }/>
-			<Render parentProps={ props } />
-			</>
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/children/advanced-columns-child.svg`;
 
+	return (
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+			<>
+				<Settings parentProps={ props } deviceType = { deviceType }/>
+				<Render parentProps={ props } />
+			</>
+		)
 	);
 };
 

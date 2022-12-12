@@ -24,4 +24,9 @@ registerBlockType( 'uagb/buttons-child', {
 	supports: {
 		anchor: true,
 	},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 } );

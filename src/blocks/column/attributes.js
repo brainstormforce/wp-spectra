@@ -6,6 +6,10 @@ import { getBorderAttributes } from '@Controls/generateAttributes';
 const borderAttributes = getBorderAttributes( 'column' );
 
 const attributes = {
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 	block_id: {
 		type: 'string',
 	},

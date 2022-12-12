@@ -996,10 +996,6 @@ const attributes = {
 		type: 'string',
 		default: 'left',
 	},
-	allowDynamicBlock: {
-		type: 'boolean',
-		default: false,
-	},
 };
 
 export default attributes;

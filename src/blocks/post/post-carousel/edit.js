@@ -800,6 +800,7 @@ let categoriesList = [];
 					min={ 1 }
 					max={ 100 }
 					displayUnit={ false }
+					showControlHeader={ false }
 				/>
 				<ToggleControl
 					label={ __(
@@ -1378,7 +1379,7 @@ let categoriesList = [];
 					<>
 						<ToggleControl
 							label={ __(
-								'Open links in New Tab',
+								'Open Links in New Tab',
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ newTab }
@@ -2506,27 +2507,29 @@ let categoriesList = [];
 		);
 	}
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/post-carousel.svg`;
+
 	return (
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
 			<>
-
-			<Settings
-				state={ state }
-				togglePreview={ togglePreview }
-				inspectorControls={ inspectorControls }
-				parentProps={ props }
-			/>
-			<Render
-				parentProps={ props }
-				state={ state }
-				setState={ setState }
-				togglePreview={ togglePreview }
-				latestPosts={ latestPosts }
-				categoriesList={ categoriesList }
-				replaceInnerBlocks={ replaceInnerBlocks }
-				block={ block }
-			/>
+				<Settings
+					state={ state }
+					togglePreview={ togglePreview }
+					inspectorControls={ inspectorControls }
+					parentProps={ props }
+				/>
+				<Render
+					parentProps={ props }
+					state={ state }
+					setState={ setState }
+					togglePreview={ togglePreview }
+					latestPosts={ latestPosts }
+					categoriesList={ categoriesList }
+					replaceInnerBlocks={ replaceInnerBlocks }
+					block={ block }
+				/>
 			</>
-
+		)
 	);
 };
 

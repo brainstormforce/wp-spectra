@@ -348,12 +348,14 @@ const FaqComponent = ( props ) => {
 
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/faq.svg`;
 	return (
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
 			<>
-			<Settings parentProps={ props } deviceType = { deviceType } />
-			<Render parentProps={ props } />
+				<Settings parentProps={ props } deviceType = { deviceType } />
+				<Render parentProps={ props } />
 			</>
-
+		)
 	);
 };
 
