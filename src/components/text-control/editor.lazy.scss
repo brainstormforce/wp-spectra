@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .uagb-text-control {
 	position: relative;
 
@@ -14,6 +16,13 @@
 		padding-right: 30px;
 		margin-left: 0;
 		margin-right: 0;
+		color: $spectra-color-body;
+		border-color: $spectra-color-border;
+
+		&:focus {
+			border-color: $spectra-color-border-hover;
+			box-shadow: unset;
+		}
 	}
 
 	.uagb-control__header {
@@ -33,12 +42,12 @@
 			right: 0;
 			bottom: 0;
 			padding: 0 8px;
-			border-radius: 2px;
-			height: 30px;
+			border-radius: $spectra-popup-border-radius;
+			height: $spectra-control-input-height;
 
 			svg {
 				width: 18px;
-				stroke: #808285;
+				stroke: $spectra-color-icon;
 				stroke-width: 1.4;
 				fill: none;
 			}
@@ -71,11 +80,11 @@
 			}
 
 			textarea {
-
-				border-color: #e6e7e9;
+				color: $spectra-color-body;
+				border-color: $spectra-color-border;
 
 				&:focus {
-					border-color: #959595;
+					border-color: $spectra-color-border-hover;
 					box-shadow: unset;
 				}
 			}
@@ -83,7 +92,7 @@
 	}
 
 	&.components-base-control > .uag-control-help-notice {
-		margin-top: 10px;
+		margin-top: $spectra-control-label-bottom-margin;
 	}
 
 }

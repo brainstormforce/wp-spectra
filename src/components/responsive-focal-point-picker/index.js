@@ -3,13 +3,14 @@
  */
 import React, { useEffect, useState, useRef } from 'react';
 import { getPanelIdFromRef } from '@Utils/Helpers';
- import { useDeviceType } from '@Controls/getPreviewType';
- import ResponsiveToggle from '../responsive-toggle';
- import { __ } from '@wordpress/i18n';
- import { FocalPointPicker } from '@wordpress/components';
- import { select } from '@wordpress/data';
+import { useDeviceType } from '@Controls/getPreviewType';
+import ResponsiveToggle from '../responsive-toggle';
+import { __ } from '@wordpress/i18n';
+import { FocalPointPicker } from '@wordpress/components';
+import { select } from '@wordpress/data';
+import styles from './editor.lazy.scss';
 
- const ResponsiveUAGFocalPointPicker = ( props ) => {
+const ResponsiveUAGFocalPointPicker = ( props ) => {
 
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
 	const panelRef = useRef( null );
@@ -27,6 +28,13 @@ import { getPanelIdFromRef } from '@Utils/Helpers';
 	const deviceType = useDeviceType();
 	const device = deviceType.toLowerCase();
 
+	useLayoutEffect( () => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, [] );
+
 	const output = {};
 	const url = backgroundImage[device]?.value?.url;
 	const value = backgroundPosition[device]?.value;
@@ -42,7 +50,7 @@ import { getPanelIdFromRef } from '@Utils/Helpers';
 	 );
 	 output.Tablet = (
 		<FocalPointPicker
-			url={ url }
+			url={ url ? url : backgroundImage.desktop?.value?.url }
 			value={ value }
 			onChange={ ( focalPoint ) => {
 				setAttributes( { [ backgroundPosition[device]?.label ]: focalPoint } );
@@ -51,7 +59,7 @@ import { getPanelIdFromRef } from '@Utils/Helpers';
 	);
 	output.Mobile = (
 		<FocalPointPicker
-			url={ url }
+			url={ url ? url : backgroundImage.desktop?.value?.url }
 			value={ value }
 			onChange={ ( focalPoint ) => {
 				setAttributes( { [ backgroundPosition[device]?.label ]: focalPoint } );

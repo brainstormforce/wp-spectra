@@ -107,5 +107,17 @@
 		<gutenberg-block type="uagb/taxonomy-list" translate="1">
 			<key name="headingTitle" />
 		</gutenberg-block>
+		<gutenberg-block type="uagb/counter" translate="1">
+			<xpath>//*[@class="uagb-counter-block-prefix"]</xpath>
+			<xpath>//*[@class="uagb-counter-block-suffix"]</xpath>
+			<key name="numberPrefix" />
+			<key name="numberSuffix" />
+			<key name="heading" />
+		</gutenberg-block>
+		<gutenberg-block type="uagb/image-gallery" translate="1">
+			<key name="paginateButtonText" />
+			<key name="imageDefaultCaption" />
+			<xpath>//div[@class="spectra-image-gallery__media-thumbnail-caption"]</xpath>
+		</gutenberg-block>
 	</gutenberg-blocks>
 </wpml-config>

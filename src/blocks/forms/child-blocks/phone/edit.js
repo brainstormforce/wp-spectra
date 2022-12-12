@@ -24,19 +24,15 @@ const UAGBFormsPhoneEdit = ( props ) => {
 		document.head.appendChild( $style );
 	}, [] );
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/form-phone.svg`;
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/children/form-phone.svg`;
 
 	return (
-		<>
-			{ props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-
-							<>
-			<Settings parentProps={ props } />
-					<Render parentProps={ props } />
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+			<>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
 			</>
-
-			) }
-		</>
+		)
 	);
 };
 

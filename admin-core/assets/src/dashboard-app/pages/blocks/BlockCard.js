@@ -59,7 +59,8 @@ const BlockCard = ( props ) => {
         } );
     };
     
-    return (
+	// This ternary will be removed once Spectra Pro is Released.
+    return ( pro_filler ) ? null : (
         <div
         key={slug}
         className={ classNames(

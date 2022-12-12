@@ -73,6 +73,7 @@ const UAGMediaPicker = ( props ) => {
 	}
 
 	const registerImageExtender = disableDynamicContent ? null : wp.hooks.applyFilters( 'uagb.registerImageExtender', '', selectedBlock?.name, onSelectImage )
+	const registerImageLinkExtender = disableDynamicContent ? null : wp.hooks.applyFilters( 'uagb.registerImageLinkExtender', '', selectedBlock?.name, 'bgImageLink', 'url' )
 
 	const isShowImageUploader = () => {
 		if( disableDynamicContent ){
@@ -204,6 +205,9 @@ const UAGMediaPicker = ( props ) => {
 					)
 				}
 			</BaseControl>
+			{
+				registerImageLinkExtender
+			}
 			{
 				controlAfterDomElement
 			}

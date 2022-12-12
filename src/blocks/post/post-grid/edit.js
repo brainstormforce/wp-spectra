@@ -351,29 +351,31 @@ const PostGridComponent = ( props ) => {
 		);
 	}
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/post-grid.svg`;
 	return (
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
 			<>
-			<Settings
-				parentProps={ props }
-				state={ state }
-				setStateValue={ setStateValue }
-				togglePreview={ togglePreview }
-				latestPosts={ latestPosts }
-				taxonomyList={ taxonomyList }
-				categoriesList={ categoriesList }
-			/>
-			<Render
-				parentProps={ props }
-				state={ state }
-				setStateValue={ setStateValue }
-				togglePreview={ togglePreview }
-				latestPosts={ latestPosts }
-				categoriesList={ categoriesList }
-				replaceInnerBlocks={ replaceInnerBlocks }
-				block={ block }
-			/>
+				<Settings
+					parentProps={ props }
+					state={ state }
+					setStateValue={ setStateValue }
+					togglePreview={ togglePreview }
+					latestPosts={ latestPosts }
+					taxonomyList={ taxonomyList }
+					categoriesList={ categoriesList }
+				/>
+				<Render
+					parentProps={ props }
+					state={ state }
+					setStateValue={ setStateValue }
+					togglePreview={ togglePreview }
+					latestPosts={ latestPosts }
+					categoriesList={ categoriesList }
+					replaceInnerBlocks={ replaceInnerBlocks }
+					block={ block }
+				/>
 			</>
-
+		)
 	);
 };
 
