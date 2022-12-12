@@ -1,7 +1,8 @@
 /**
  * External dependencies
  */
- import React from 'react';
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
  import { useDeviceType } from '@Controls/getPreviewType';
  import ResponsiveToggle from '../responsive-toggle';
  import { __ } from '@wordpress/i18n';
@@ -10,9 +11,16 @@
 
  const ResponsiveUAGFocalPointPicker = ( props ) => {
 
+	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const panelRef = useRef( null );
+
 	const { backgroundPosition, backgroundImage, setAttributes } = props;
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect(() => {
+		setPanelNameForHook( getPanelIdFromRef(panelRef))
+	}, [blockNameForHook])
 
 	const responsive = true;
 
@@ -51,13 +59,14 @@
 		/>
 	);
 
-	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	const controlName = 'position'; // There is no label props that's why keep hard coded label
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.responsive-focal-point-picker.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.responsive-focal-point-picker.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	return (
-		<>
+		<div
+			ref={panelRef}
+		>
 			{controlBeforeDomElement}
 			<div className="components-base-control uagb-responsive-select-control">
 				<div className="uagb-size-type-field-tabs">
@@ -74,7 +83,7 @@
 				) }
 			</div>
 			{controlAfterDomElement}
-		</>
+		</div>
 	);
 };
 
