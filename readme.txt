@@ -172,7 +172,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 = 2.1.1 - TUESDAY, 13th DECEMBER 2022 =
 * Improvement: Call to action - Width option for CTA buttons.
-Fix: Forms - When we use checkbox with required condition, it restrict the user to check all the checkbox to submit the form.
+* Fix: Forms - When we use checkbox with required condition, it restrict the user to check all the checkbox to submit the form.
 
 = 2.1.0 - WEDNESDAY, 07th DECEMBER 2022 =
 * New: Introducing the Counter block with layouts that will help you flaunt your stats in a cool way!
