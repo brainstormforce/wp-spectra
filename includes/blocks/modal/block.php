@@ -9,15 +9,23 @@
 
 $block_slug = 'uagb/modal';
 $block_data = array(
-	'slug'             => '',
-	'admin_categories' => array( 'content' ),
-	'link'             => 'modal',
-	'doc'              => 'modal',
-	'title'            => __( 'Modal', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'Add modal popup.', 'ultimate-addons-for-gutenberg' ),
-	'default'          => true,
-	'extension'        => false,
-	'priority'         => 32,
-	'deprecated'       => false,
-	'js_assets'        => array( 'uagb-modal-js' ),
+	'doc'                 => 'modal',
+	'slug'                => '',
+	'admin_categories'    => array( 'content', 'post' ),
+	'link'                => 'modal',
+	'title'               => __( 'Modal', 'ultimate-addons-for-gutenberg' ),
+	'description'         => __( 'This block allows you to add modal popup.', 'ultimate-addons-for-gutenberg' ),
+	'default'             => true,
+	'extension'           => false,
+	'priority'            => Spectra_Block_Prioritization::get_block_priority( 'modal' ),
+	'static_dependencies' => array(
+		'uagb-counter-js' => array(
+			'src'  => UAGB_Scripts_Utils::get_js_url( 'modal' ),
+			'dep'  => array(),
+			'type' => 'js',
+		),
+	),
+	'dynamic_assets'      => array(
+		'dir' => 'modal',
+	),
 );

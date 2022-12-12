@@ -1,11 +1,12 @@
 /**
  * External dependencies
  */
- import React from 'react';
+ import React , { useLayoutEffect } from 'react';
  import { useDeviceType } from '@Controls/getPreviewType';
  import ResponsiveToggle from '../responsive-toggle';
  import { __ } from '@wordpress/i18n';
  import { FocalPointPicker } from '@wordpress/components';
+ import styles from './editor.lazy.scss';
 
  const ResponsiveUAGFocalPointPicker = ( props ) => {
 
@@ -15,6 +16,13 @@
 
 	const deviceType = useDeviceType();
 	const device = deviceType.toLowerCase();
+
+	useLayoutEffect( () => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, [] );
 
 	const output = {};
 	const url = backgroundImage[device]?.value?.url;
@@ -31,7 +39,7 @@
 	 );
 	 output.Tablet = (
 		<FocalPointPicker
-			url={ url }
+			url={ url ? url : backgroundImage.desktop?.value?.url }
 			value={ value }
 			onChange={ ( focalPoint ) => {
 				setAttributes( { [ backgroundPosition[device]?.label ]: focalPoint } );
@@ -40,7 +48,7 @@
 	 );
 	 output.Mobile = (
 		<FocalPointPicker
-			url={ url }
+			url={ url ? url : backgroundImage.desktop?.value?.url }
 			value={ value }
 			onChange={ ( focalPoint ) => {
 				setAttributes( { [ backgroundPosition[device]?.label ]: focalPoint } );

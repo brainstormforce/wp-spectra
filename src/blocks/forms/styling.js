@@ -390,6 +390,11 @@ function styling( props ) {
 			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 		},
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background):hover': {
+			'color': submitColorHover,
+			'background-color': ( submitBgHoverType === 'color' ) ? submitBgColorHover : 'transparent',
+			'border-color': btnBorderHColor,
+		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button:hover': {
 			'color': submitColorHover,
 			'background-color': ( submitBgHoverType === 'color' ) ? submitBgColorHover : 'transparent',
@@ -612,6 +617,7 @@ function styling( props ) {
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
 			'text-align': buttonAlignTablet,
 		},
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background)': submitBorderTablet,
 	};
 
 	mobileSelectors = {
@@ -727,6 +733,7 @@ function styling( props ) {
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
 			'text-align': buttonAlignMobile,
 		},
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background)': submitBorderMobile,
 	};
 
 	if ( 'boxed' === formStyle ) {

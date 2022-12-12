@@ -11,7 +11,7 @@ $highLight_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 
 
 $enable_legacy_blocks = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' );
 
-$heading_alignment_default = ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) || 'yes' === $enable_legacy_blocks ) ? 'center' : 'left';
+$heading_alignment_default = ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'center' : '';
 
 return array_merge(
 	$highLight_border_attribute,
@@ -22,6 +22,8 @@ return array_merge(
 		'blockGradientBackground'      => 'linear-gradient(90deg, rgb(6, 147, 227) 0%, rgb(155, 81, 224) 100%)',
 		'headingAlign'                 => $heading_alignment_default,
 		'headingAlignTablet'           => '',
+		'headingDescPosition'          => 'below-heading',
+		'seperatorPosition'            => 'below-heading',
 		'headingAlignMobile'           => '',
 		'headingColor'                 => '',
 		'headingColorType'             => 'classic',
@@ -158,5 +160,9 @@ return array_merge(
 		'highLightPaddingUnitTablet'   => 'px',
 		'highLightPaddingUnitMobile'   => 'px',
 		'highLightPaddingLink'         => '',
+		'subHeadSpace'                 => 15,
+		'subHeadSpaceMobile'           => '',
+		'subHeadSpaceTablet'           => '',
+		'subHeadSpaceType'             => 'px',
 	)
 );

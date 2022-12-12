@@ -37,44 +37,46 @@ const generateBorderCSS = ( attributes, prefix, deviceType = 'desktop' ) => {
 	const borderTopRightRadiusTablet = ! isNaN( attributes[prefix + 'BorderTopRightRadiusTablet'] ) ? attributes[prefix + 'BorderTopRightRadiusTablet']+borderRadiusUnitTablet : '' ;
 	const borderBottomRightRadiusTablet = ! isNaN( attributes[prefix + 'BorderBottomRightRadiusTablet'] ) ? attributes[prefix + 'BorderBottomRightRadiusTablet']+borderRadiusUnitTablet : '' ;
 	const borderBottomLeftRadiusTablet = ! isNaN( attributes[prefix + 'BorderBottomLeftRadiusTablet'] ) ? attributes[prefix + 'BorderBottomLeftRadiusTablet']+borderRadiusUnitTablet : '' ;
+	
+	if( 'default' !== attributes[ prefix + 'BorderStyle' ] ){
+		if( 'tablet' === deviceType ) {
+			if( 'none' !== attributes[prefix + 'BorderStyle'] && '' !== attributes[prefix + 'BorderStyle'] ){
+				borderCSS['border-top-width'] =  borderTopWidthTablet ? borderTopWidthTablet : borderTopWidth;
+				borderCSS['border-right-width'] =  borderRightWidthTablet ? borderRightWidthTablet : borderRightWidth;
+				borderCSS['border-bottom-width'] =  borderBottomWidthTablet ? borderBottomWidthTablet : borderBottomWidth;
+				borderCSS['border-left-width'] =  borderLeftWidthTablet ? borderLeftWidthTablet : borderLeftWidth;
+			}
+			borderCSS['border-top-left-radius'] = borderTopLeftRadiusTablet ? borderTopLeftRadiusTablet : borderTopLeftRadius;
+			borderCSS['border-top-right-radius'] = borderTopRightRadiusTablet ? borderTopRightRadiusTablet : borderTopRightRadius;
+			borderCSS['border-bottom-right-radius'] = borderBottomRightRadiusTablet ? borderBottomRightRadiusTablet : borderBottomRightRadius;
+			borderCSS['border-bottom-left-radius'] = borderBottomLeftRadiusTablet ? borderBottomLeftRadiusTablet : borderBottomLeftRadius;
 
-	if( 'tablet' === deviceType ) {
-		if( 'none' !== attributes[prefix + 'BorderStyle'] && '' !== attributes[prefix + 'BorderStyle'] ){
-			borderCSS['border-top-width'] =  borderTopWidthTablet ? borderTopWidthTablet : borderTopWidth;
-			borderCSS['border-right-width'] =  borderRightWidthTablet ? borderRightWidthTablet : borderRightWidth;
-			borderCSS['border-bottom-width'] =  borderBottomWidthTablet ? borderBottomWidthTablet : borderBottomWidth;
-			borderCSS['border-left-width'] =  borderLeftWidthTablet ? borderLeftWidthTablet : borderLeftWidth;
-		}
-		borderCSS['border-top-left-radius'] = borderTopLeftRadiusTablet ? borderTopLeftRadiusTablet : borderTopLeftRadius;
-		borderCSS['border-top-right-radius'] = borderTopRightRadiusTablet ? borderTopRightRadiusTablet : borderTopRightRadius;
-		borderCSS['border-bottom-right-radius'] = borderBottomRightRadiusTablet ? borderBottomRightRadiusTablet : borderBottomRightRadius;
-		borderCSS['border-bottom-left-radius'] = borderBottomLeftRadiusTablet ? borderBottomLeftRadiusTablet : borderBottomLeftRadius;
+		} else if( 'mobile' === deviceType ) {
+			if( 'none' !== attributes[prefix + 'BorderStyle'] && '' !== attributes[prefix + 'BorderStyle'] ){
+				borderCSS['border-top-width'] = borderTopWidthMobile ? borderTopWidthMobile : borderTopWidthTablet;
+				borderCSS['border-right-width'] = borderRightWidthMobile ? borderRightWidthMobile : borderRightWidthTablet;
+				borderCSS['border-bottom-width'] = borderBottomWidthMobile ? borderBottomWidthMobile : borderBottomWidthTablet;
+				borderCSS['border-left-width'] = borderLeftWidthMobile ? borderLeftWidthMobile : borderLeftWidthTablet;
+			}
+			borderCSS['border-top-left-radius'] = borderTopLeftRadiusMobile ? borderTopLeftRadiusMobile : borderTopLeftRadiusTablet;
+			borderCSS['border-top-right-radius'] = borderTopRightRadiusMobile ? borderTopRightRadiusMobile : borderTopRightRadiusTablet;
+			borderCSS['border-bottom-right-radius'] = borderBottomRightRadiusMobile ? borderBottomRightRadiusMobile : borderBottomRightRadiusTablet;
+			borderCSS['border-bottom-left-radius'] = borderBottomLeftRadiusMobile ? borderBottomLeftRadiusMobile : borderBottomLeftRadiusTablet;
 
-	} else if( 'mobile' === deviceType ) {
-		if( 'none' !== attributes[prefix + 'BorderStyle'] && '' !== attributes[prefix + 'BorderStyle'] ){
-			borderCSS['border-top-width'] = borderTopWidthMobile ? borderTopWidthMobile : borderTopWidthTablet;
-			borderCSS['border-right-width'] = borderRightWidthMobile ? borderRightWidthMobile : borderRightWidthTablet;
-			borderCSS['border-bottom-width'] = borderBottomWidthMobile ? borderBottomWidthMobile : borderBottomWidthTablet;
-			borderCSS['border-left-width'] = borderLeftWidthMobile ? borderLeftWidthMobile : borderLeftWidthTablet;
+		} else {
+			if( 'none' !== attributes[prefix + 'BorderStyle'] && '' !== attributes[prefix + 'BorderStyle'] ){
+				borderCSS['border-top-width'] = borderTopWidth;
+				borderCSS['border-right-width'] = borderRightWidth;
+				borderCSS['border-bottom-width'] = borderBottomWidth;
+				borderCSS['border-left-width'] = borderLeftWidth;
+				borderCSS['border-color'] = borderColor;
+			}
+			borderCSS['border-style'] = borderStyle;
+			borderCSS['border-top-left-radius'] = borderTopLeftRadius;
+			borderCSS['border-top-right-radius'] = borderTopRightRadius;
+			borderCSS['border-bottom-right-radius'] = borderBottomRightRadius;
+			borderCSS['border-bottom-left-radius'] = borderBottomLeftRadius;
 		}
-		borderCSS['border-top-left-radius'] = borderTopLeftRadiusMobile ? borderTopLeftRadiusMobile : borderTopLeftRadiusTablet;
-		borderCSS['border-top-right-radius'] = borderTopRightRadiusMobile ? borderTopRightRadiusMobile : borderTopRightRadiusTablet;
-		borderCSS['border-bottom-right-radius'] = borderBottomRightRadiusMobile ? borderBottomRightRadiusMobile : borderBottomRightRadiusTablet;
-		borderCSS['border-bottom-left-radius'] = borderBottomLeftRadiusMobile ? borderBottomLeftRadiusMobile : borderBottomLeftRadiusTablet;
-
-	} else {
-		if( 'none' !== attributes[prefix + 'BorderStyle'] && '' !== attributes[prefix + 'BorderStyle'] ){
-			borderCSS['border-top-width'] = borderTopWidth;
-			borderCSS['border-right-width'] = borderRightWidth;
-			borderCSS['border-bottom-width'] = borderBottomWidth;
-			borderCSS['border-left-width'] = borderLeftWidth;
-			borderCSS['border-color'] = borderColor;
-		}
-		borderCSS['border-style'] = borderStyle;
-		borderCSS['border-top-left-radius'] = borderTopLeftRadius;
-		borderCSS['border-top-right-radius'] = borderTopRightRadius;
-		borderCSS['border-bottom-right-radius'] = borderBottomRightRadius;
-		borderCSS['border-bottom-left-radius'] = borderBottomLeftRadius;
 	}
 	return borderCSS;
 };

@@ -169,6 +169,7 @@ const UAGNumberControl = ( props ) => {
 					onChange={ handleOnChange }
 					value={ inputValue }
 					step={ props?.step || 1 }
+					required={ props?.required }
 				/>
 			</div>
 			{ props.help && (

@@ -157,7 +157,7 @@ const Settings = ( props ) => {
 		separatorSpace,
 		separatorSpaceTablet,
 		separatorSpaceMobile,
-		separatorSpaceType,
+		separatorSpaceType
 	} = attributes;
 
 	let loadGFonts;

@@ -20,22 +20,14 @@ const UAGBIconListChild = ( props ) => {
 
 	const deviceType = useDeviceType();
 
-	useEffect( () => {
-		const {
-			disableLink
-		} = props.attributes;
-		if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) {
-			if( ! disableLink ) {
-				props.setAttributes( { disableLink: true } );
-			} else {
-				props.setAttributes( { disableLink: false } );
-			}
-
-		}
+	useEffect( ()=>{
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-
-	}, [] );
+		
+		if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) {	
+			props.setAttributes( { disableLink: true } );
+		} 
+	}, [] )
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
@@ -53,12 +45,15 @@ const UAGBIconListChild = ( props ) => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
-	return (
-			<>
-			<Settings parentProps={ props } hideLabel={ hideLabel } />
-			<Render parentProps={ props } />
-			</>
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/children/icon-list-child.svg`;
 
+	return (
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+			<>
+				<Settings parentProps={ props } hideLabel={ hideLabel } />
+				<Render parentProps={ props } />
+			</>
+		)
 	);
 };
 

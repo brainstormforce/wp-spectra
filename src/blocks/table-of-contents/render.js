@@ -31,7 +31,6 @@ const Render = ( props ) => {
 		tColumnsDesktop,
 		mappingHeaders,
 		headingTitle,
-		isPreview,
 		separatorStyle,
 	} = attributes;
 
@@ -64,49 +63,45 @@ const Render = ( props ) => {
 	if ( makeCollapsible && icon ) {
 		iconHtml = renderSVG( icon );
 	}
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/table-of-contents.png`;
+
 	return (
-		<>
-		 { isPreview ? <img width='100%' src={previewImageData} alt=''/> :
-			<div
-				className={ classnames(
-					className,
-					`uagb-toc__align-${ align }`,
-					`uagb-toc__columns-${ getFallbackNumber( tColumnsDesktop, 'tColumnsDesktop', blockName ) }`,
-					( makeCollapsible && initialCollapse ) ? 'uagb-toc__collapse' : '',
-					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-					`uagb-block-${ props.clientId.substr( 0, 8 ) }`
-				) }
-				ref={ tocRoot }
-			>
-				<div className="uagb-toc__wrap">
-					<div className="uagb-toc__title">
-						<RichText
-							placeholder={ __(
-								'Table Of Contents',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ headingTitle }
-							onChange={ ( value ) =>
-								setAttributes( { headingTitle: value } )
-							}
-							multiline={ false }
-							onRemove={ () => props.onReplace( [] ) }
-						/>
-						{ iconHtml }
-						</div>
-						{ separatorStyle !== 'none' && (
-								<div className='uagb-toc__separator'></div>
-							)
+		<div
+			className={ classnames(
+				className,
+				`uagb-toc__align-${ align }`,
+				`uagb-toc__columns-${ getFallbackNumber( tColumnsDesktop, 'tColumnsDesktop', blockName ) }`,
+				( makeCollapsible && initialCollapse ) ? 'uagb-toc__collapse' : '',
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
+			) }
+			ref={ tocRoot }
+		>
+			<div className="uagb-toc__wrap">
+				<div className="uagb-toc__title">
+					<RichText
+						placeholder={ __(
+							'Table Of Contents',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ headingTitle }
+						onChange={ ( value ) =>
+							setAttributes( { headingTitle: value } )
 						}
-					<TableOfContents
-						mappingHeaders={ mappingHeaders }
-						headers={ headers }
+						multiline={ false }
+						onRemove={ () => props.onReplace( [] ) }
 					/>
-				</div>
+					{ iconHtml }
+					</div>
+					{ separatorStyle !== 'none' && (
+							<div className='uagb-toc__separator'></div>
+						)
+					}
+				<TableOfContents
+					mappingHeaders={ mappingHeaders }
+					headers={ headers }
+				/>
 			</div>
-}
-		</>
+		</div>
 	);
 };
 

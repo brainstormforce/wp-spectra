@@ -179,7 +179,7 @@ const PostGridComponent = ( props ) => {
 				props.setAttributes( { btnBorderStyle : borderStyle} );
 			}
 		}
-		
+
 
 		props.setAttributes( { allTaxonomyStore : undefined} );
 
@@ -191,7 +191,7 @@ const PostGridComponent = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-post-grid-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
 	}, [ props ] );
 
 	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
@@ -351,28 +351,31 @@ const PostGridComponent = ( props ) => {
 		);
 	}
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/post-grid.svg`;
 	return (
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
 			<>
-			<Settings
-				parentProps={ props }
-				state={ state }
-				setStateValue={ setStateValue }
-				togglePreview={ togglePreview }
-				latestPosts={ latestPosts }
-				taxonomyList={ taxonomyList }
-				categoriesList={ categoriesList }
-			/>
-			<Render
-				parentProps={ props }
-				state={ state }
-				setStateValue={ setStateValue }
-				togglePreview={ togglePreview }
-				latestPosts={ latestPosts }
-				replaceInnerBlocks={ replaceInnerBlocks }
-				block={ block }
-			/>
+				<Settings
+					parentProps={ props }
+					state={ state }
+					setStateValue={ setStateValue }
+					togglePreview={ togglePreview }
+					latestPosts={ latestPosts }
+					taxonomyList={ taxonomyList }
+					categoriesList={ categoriesList }
+				/>
+				<Render
+					parentProps={ props }
+					state={ state }
+					setStateValue={ setStateValue }
+					togglePreview={ togglePreview }
+					latestPosts={ latestPosts }
+					categoriesList={ categoriesList }
+					replaceInnerBlocks={ replaceInnerBlocks }
+					block={ block }
+				/>
 			</>
-
+		)
 	);
 };
 

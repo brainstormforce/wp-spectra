@@ -246,15 +246,15 @@ const UAGBTaxonomyList = ( props ) => {
 		scrollBlockToView();
 	}, [deviceType] );
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/taxonomy-list.svg`;
+
 	return (
-		<>
-
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
 			<>
-			<Settings parentProps={ props } taxonomyList={ taxonomyList } termsList={ termsList } />
-			<Render parentProps={ props } categoriesList={ categoriesList } />
+				<Settings parentProps={ props } taxonomyList={ taxonomyList } termsList={ termsList } />
+				<Render parentProps={ props } categoriesList={ categoriesList } />
 			</>
-
-		</>
+		)
 	);
 };
 

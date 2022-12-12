@@ -183,6 +183,11 @@ function CtaStyle( props ) {
 		secondCtaLetterSpacingTablet,
 		secondCtaLetterSpacingMobile,
 		secondCtaLetterSpacingType,
+		btncontentWidth,
+		btncontentWidthTablet,
+		btncontentWidthMobile,
+		btncontentWidthType,
+		enabledSecondCtaButton
 	} = props.attributes;
 
 	const ctaBorderCSS = generateBorderCSS( props.attributes, 'btn' );
@@ -193,6 +198,7 @@ function CtaStyle( props ) {
 	const secondCtaIconSpaceFallback = getFallbackNumber( secondCtaIconSpace, 'secondCtaIconSpace', blockName );
 	const ctaIconSpaceFallback = getFallbackNumber( ctaIconSpace, 'ctaIconSpace', blockName );
 	const contentWidthFallback = getFallbackNumber( contentWidth, 'contentWidth', blockName );
+	const btncontentWidthFallback = getFallbackNumber( btncontentWidth, 'btncontentWidth', blockName );
 	const gapBtnFallback = getFallbackNumber( gapBtn, 'gapBtn', blockName );
 	const buttonRightSpaceFallback = getFallbackNumber( buttonRightSpace, 'buttonRightSpace', blockName );
 
@@ -293,7 +299,11 @@ function CtaStyle( props ) {
 		'padding-right': generateCSSUnit( ctaRightPadding, ctaPaddingUnit ),
 		...ctaBorderCSS,
 	};
-
+	selectors['.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background):hover'] = {
+		'color': ctaLinkHoverColor,
+		'background-color': ( ctaBgHoverType === 'color' ) ? ctaBgHoverColor : 'transparent',
+		'border-color': btnBorderHColor,
+	};
 	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button'] = {
 		'font-size': generateCSSUnit( secondCtaFontSize, secondCtaFontSizeType ),
 		'font-family': secondCtaFontFamily,
@@ -449,7 +459,7 @@ function CtaStyle( props ) {
 			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingTablet, secondCtaLetterSpacingType ),
 		},
 	};
-
+	tabletSelectors['.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background)'] = ctaBorderCSSTablet;
 	if ( ctaPosition === 'right' ) {
 		tabletSelectors[ '.uagb-cta__outer-wrap.uagb-cta__content-stacked-tablet ' ] = {
 			'display' : 'inherit',
@@ -565,7 +575,7 @@ function CtaStyle( props ) {
 			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingMobile, secondCtaLetterSpacingType ),
 		},
 	};
-
+	mobileSelectors['.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background)'] = ctaBorderCSSMobile;
 	if ( ctaType === 'text' ) {
 		selectors[' a.uagb-cta__button-link-wrapper']        = {
 			'color' : ctaBtnLinkColor,
@@ -712,6 +722,17 @@ function CtaStyle( props ) {
 		};
 		mobileSelectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtnMobile, 'px' )
+		};
+	}
+	if( ctaType === 'button' && enabledSecondCtaButton ){
+		selectors[ '.uagb-cta__outer-wrap .uagb-cta__buttons' ] = {
+			'width': generateCSSUnit( btncontentWidthFallback, btncontentWidthType ),
+		};
+		tabletSelectors[ '.uagb-cta__outer-wrap .uagb-cta__buttons' ] = {
+			'width': generateCSSUnit( btncontentWidthTablet, btncontentWidthType ),
+		};
+		mobileSelectors[ '.uagb-cta__outer-wrap .uagb-cta__buttons' ] = {
+			'width': generateCSSUnit( btncontentWidthMobile, btncontentWidthType ),
 		};
 	}
 	let alignment;

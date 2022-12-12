@@ -1,5 +1,5 @@
 /**
- * BLOCK: Container
+ * BLOCK: Modal
  */
 
 import UAGB_Block_Icons from '@Controls/block-icons';
@@ -29,5 +29,9 @@ registerBlockType( 'uagb/modal', {
 	attributes,
 	edit,
 	save,
-	example: {}
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 } );

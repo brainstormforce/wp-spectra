@@ -34,7 +34,7 @@ const ResponsiveBorder = ( props ) => {
 		attributes,
 		setAttributes,
 		disabledBorderTitle,
-		disableBottomSeparator = false,
+		disableBottomSeparator,
 		deviceType,
 
 		prefix,
@@ -98,7 +98,7 @@ const ResponsiveBorder = ( props ) => {
 	const advancedControls = (
 		<>
 			{ ! disabledBorderTitle && (
-				<h2>{ label }</h2>
+				<p className='spectra-panel__body-sub-heading'>{ label }</p>
 			) }
 			<UAGSelectControl
 				label={ borderStyleLabel }
@@ -109,7 +109,7 @@ const ResponsiveBorder = ( props ) => {
 				setAttributes={ setAttributes }
 				options={ [
 					{
-						value: '',
+						value: 'default',
 						label: __(
 							'Default',
 							'ultimate-addons-for-gutenberg'
@@ -180,7 +180,7 @@ const ResponsiveBorder = ( props ) => {
 					},
 				] }
 			/>
-			{ '' !== borderStyle && 'none' !== borderStyle && (
+			{ 'default' !== borderStyle && 'none' !== borderStyle && (
 				showWidth !== false &&
 					<SpacingControl
 					label={ borderWidthLabel }
@@ -242,94 +242,96 @@ const ResponsiveBorder = ( props ) => {
 					} }
 				/>
 			) }
-			<SpacingControl
-				label={ borderRadiusLabel }
-				valueTop={ {
-					value: attributes[prefix + 'BorderTopLeftRadius'],
-					label: prefix + 'BorderTopLeftRadius',
-				} }
-				valueRight={ {
-					value: attributes[prefix + 'BorderTopRightRadius'],
-					label: prefix + 'BorderTopRightRadius',
-				} }
-				valueBottom={ {
-					value: attributes[prefix + 'BorderBottomRightRadius'],
-					label: prefix + 'BorderBottomRightRadius',
-				} }
-				valueLeft={ {
-					value: attributes[prefix + 'BorderBottomLeftRadius'],
-					label: prefix + 'BorderBottomLeftRadius',
-				} }
-				valueTopTablet={{
-					value: attributes[prefix + 'BorderTopLeftRadiusTablet'],
-					label: prefix + 'BorderTopLeftRadiusTablet',
-				} }
-				valueRightTablet={ {
-					value: attributes[prefix + 'BorderTopRightRadiusTablet'],
-					label: prefix + 'BorderTopRightRadiusTablet',
-				} }
-				valueBottomTablet={{
-					value: attributes[prefix + 'BorderBottomRightRadiusTablet'],
-					label: prefix + 'BorderBottomRightRadiusTablet',
-				} }
-				valueLeftTablet={ {
-					value: attributes[prefix + 'BorderBottomLeftRadiusTablet'],
-					label: prefix + 'BorderBottomLeftRadiusTablet',
-				} }
-				valueTopMobile={ {
-					value: attributes[prefix + 'BorderTopLeftRadiusMobile'],
-					label: prefix + 'BorderTopLeftRadiusMobile',
-				} }
-				valueRightMobile={ {
-					value: attributes[prefix + 'BorderTopRightRadiusMobile'],
-					label: prefix + 'BorderTopRightRadiusMobile',
-				} }
-				valueBottomMobile={ {
-					value: attributes[prefix + 'BorderBottomRightRadiusMobile'],
-					label: prefix + 'BorderBottomRightRadiusMobile',
-				} }
-				valueLeftMobile={ {
-					value: attributes[prefix + 'BorderBottomLeftRadiusMobile'],
-					label: prefix + 'BorderBottomLeftRadiusMobile',
-				} }
-				units={ [
-					{
-						name: __(
-							'Pixel',
-							'ultimate-addons-for-gutenberg'
-						),
-						unitValue: 'px',
-					},
-					{
-						name: __(
-							'%',
-							'ultimate-addons-for-gutenberg'
-						),
-						unitValue: '%',
-					},
-				] }
-				unit={{
-					value: attributes[prefix + 'BorderRadiusUnit'],
-					label: prefix + 'BorderRadiusUnit',
-				}}
-				mUnit={{
-					value: attributes[prefix + 'BorderRadiusUnitMobile'],
-					label: prefix + 'BorderRadiusUnitMobile',
-				}}
-				tUnit={{
-					value: attributes[prefix + 'BorderRadiusUnitTablet'],
-					label: prefix + 'BorderRadiusUnitTablet',
-				}}
-				deviceType={ deviceType }
-				attributes={ attributes }
-				setAttributes={ setAttributes }
-				link={ {
-					value: attributes[prefix + 'BorderRadiusLink'],
-					label: prefix + 'BorderRadiusLink',
-				} }
-				help={ borderRadiusHelp ? borderRadiusHelp : false }
-			/>
-			{ 'none' !== borderStyle && '' !== borderStyle && (
+			{ 'default' !== borderStyle && (
+				<SpacingControl
+					label={ borderRadiusLabel }
+					valueTop={ {
+						value: attributes[prefix + 'BorderTopLeftRadius'],
+						label: prefix + 'BorderTopLeftRadius',
+					} }
+					valueRight={ {
+						value: attributes[prefix + 'BorderTopRightRadius'],
+						label: prefix + 'BorderTopRightRadius',
+					} }
+					valueBottom={ {
+						value: attributes[prefix + 'BorderBottomRightRadius'],
+						label: prefix + 'BorderBottomRightRadius',
+					} }
+					valueLeft={ {
+						value: attributes[prefix + 'BorderBottomLeftRadius'],
+						label: prefix + 'BorderBottomLeftRadius',
+					} }
+					valueTopTablet={{
+						value: attributes[prefix + 'BorderTopLeftRadiusTablet'],
+						label: prefix + 'BorderTopLeftRadiusTablet',
+					} }
+					valueRightTablet={ {
+						value: attributes[prefix + 'BorderTopRightRadiusTablet'],
+						label: prefix + 'BorderTopRightRadiusTablet',
+					} }
+					valueBottomTablet={{
+						value: attributes[prefix + 'BorderBottomRightRadiusTablet'],
+						label: prefix + 'BorderBottomRightRadiusTablet',
+					} }
+					valueLeftTablet={ {
+						value: attributes[prefix + 'BorderBottomLeftRadiusTablet'],
+						label: prefix + 'BorderBottomLeftRadiusTablet',
+					} }
+					valueTopMobile={ {
+						value: attributes[prefix + 'BorderTopLeftRadiusMobile'],
+						label: prefix + 'BorderTopLeftRadiusMobile',
+					} }
+					valueRightMobile={ {
+						value: attributes[prefix + 'BorderTopRightRadiusMobile'],
+						label: prefix + 'BorderTopRightRadiusMobile',
+					} }
+					valueBottomMobile={ {
+						value: attributes[prefix + 'BorderBottomRightRadiusMobile'],
+						label: prefix + 'BorderBottomRightRadiusMobile',
+					} }
+					valueLeftMobile={ {
+						value: attributes[prefix + 'BorderBottomLeftRadiusMobile'],
+						label: prefix + 'BorderBottomLeftRadiusMobile',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+						{
+							name: __(
+								'%',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: '%',
+						},
+					] }
+					unit={{
+						value: attributes[prefix + 'BorderRadiusUnit'],
+						label: prefix + 'BorderRadiusUnit',
+					}}
+					mUnit={{
+						value: attributes[prefix + 'BorderRadiusUnitMobile'],
+						label: prefix + 'BorderRadiusUnitMobile',
+					}}
+					tUnit={{
+						value: attributes[prefix + 'BorderRadiusUnitTablet'],
+						label: prefix + 'BorderRadiusUnitTablet',
+					}}
+					deviceType={ deviceType }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: attributes[prefix + 'BorderRadiusLink'],
+						label: prefix + 'BorderRadiusLink',
+					} }
+					help={ borderRadiusHelp ? borderRadiusHelp : false }
+				/> 
+			) }
+			{ 'none' !== borderStyle && 'default' !== borderStyle && (
 				<UAGTabsControl
 					tabs={ tabsToUse }
 					normal={ tabOutputNormal }

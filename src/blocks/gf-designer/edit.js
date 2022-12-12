@@ -159,7 +159,7 @@ const UAGBGF = ( props ) => {
 		scrollBlockToView();
 	}, [deviceType] );
 
-	const { formId } = props.attributes;
+	const { formId, isPreview } = props.attributes;
 	/*
 	 * Event to set Image as while adding.
 	 */
@@ -192,13 +192,16 @@ const UAGBGF = ( props ) => {
 			</Placeholder>
 		);
 	}
+	
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/gravity-form-styler.svg`;
+
 	return (
-
-					<>
-			<Settings parentProps={ props } />
-			<Render parentProps={ props } />
+		isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+			<>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
 			</>
-
+		)
 	);
 };
 
