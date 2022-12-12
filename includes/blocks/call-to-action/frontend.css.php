@@ -26,16 +26,20 @@ UAGB_Block_JS::blocks_call_to_action_gfont( $attr );
 
 $block_name = 'call-to-action';
 
-$title_space_fallback    = UAGB_Block_Helper::get_fallback_number( $attr['titleSpace'], 'titleSpace', $block_name );
-$desc_space_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['descSpace'], 'descSpace', $block_name );
-$cta_icon_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['ctaIconSpace'], 'ctaIconSpace', $block_name );
-$second_cta_icon_space   = UAGB_Block_Helper::get_fallback_number( $attr['secondCtaIconSpace'], 'secondCtaIconSpace', $block_name );
-$content_width_fallback  = UAGB_Block_Helper::get_fallback_number( $attr['contentWidth'], 'contentWidth', $block_name );
-$gap_btn_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['gapBtn'], 'gapBtn', $block_name );
-$btn_rignt_space         = UAGB_Block_Helper::get_fallback_number( $attr['buttonRightSpace'], 'buttonRightSpace', $block_name );
+$title_space_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['titleSpace'], 'titleSpace', $block_name );
+$desc_space_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['descSpace'], 'descSpace', $block_name );
+$cta_icon_space_fallback    = UAGB_Block_Helper::get_fallback_number( $attr['ctaIconSpace'], 'ctaIconSpace', $block_name );
+$second_cta_icon_space      = UAGB_Block_Helper::get_fallback_number( $attr['secondCtaIconSpace'], 'secondCtaIconSpace', $block_name );
+$content_width_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['contentWidth'], 'contentWidth', $block_name );
+$btn_content_width_fallback = UAGB_Block_Helper::get_fallback_number( $attr['btncontentWidth'], 'btncontentWidth', $block_name );
+$gap_btn_fallback           = UAGB_Block_Helper::get_fallback_number( $attr['gapBtn'], 'gapBtn', $block_name );
+$btn_rignt_space            = UAGB_Block_Helper::get_fallback_number( $attr['buttonRightSpace'], 'buttonRightSpace', $block_name );
 
 $content_width_tablet_fallback = is_numeric( $attr['contentWidthTablet'] ) ? $attr['contentWidthTablet'] : $content_width_fallback;
 $content_width_mobile_fallback = is_numeric( $attr['contentWidthMobile'] ) ? $attr['contentWidthMobile'] : $content_width_tablet_fallback;
+
+$btn_content_width_tablet_fallback = is_numeric( $attr['btncontentWidthTablet'] ) ? $attr['btncontentWidthTablet'] : $btn_content_width_fallback;
+$btn_content_width_mobile_fallback = is_numeric( $attr['btncontentWidthMobile'] ) ? $attr['btncontentWidthMobile'] : $btn_content_width_fallback;
 
 $t_selectors = array();
 $m_selectors = array();
@@ -331,6 +335,8 @@ $m_selectors['.wp-block-uagb-call-to-action.uagb-cta__content-stacked-mobile '] 
 $m_selectors['.uagb-cta__content-stacked-mobile .uagb-cta__wrap']               = array(
 	'width' => '100%',
 );
+$t_selectors['.wp-block-uagb-call-to-action.wp-block-button .uagb-cta__buttons a.uagb-cta__button-link-wrapper.wp-block-button__link'] = $cta_border_tablet;
+$m_selectors['.wp-block-uagb-call-to-action.wp-block-button .uagb-cta__buttons a.uagb-cta__button-link-wrapper.wp-block-button__link'] = $cta_border_mobile;
 if ( 'desktop' === $attr['stackBtn'] ) {
 
 	$selectors[' .uagb-cta__buttons']    = array(
@@ -380,6 +386,17 @@ if ( 'desktop' === $attr['stackBtn'] ) {
 	);
 	$m_selectors[' .uagb-cta__buttons'] = array(
 		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
+	);
+}
+if ( 'button' === $attr['ctaType'] && $attr['enabledSecondCtaButton'] ) {
+	$selectors['.wp-block-button .uagb-cta__buttons']   = array(
+		'width' => UAGB_Helper::get_css_value( $btn_content_width_fallback, $attr['btncontentWidthType'] ),
+	);
+	$t_selectors['.wp-block-button .uagb-cta__buttons'] = array(
+		'width' => UAGB_Helper::get_css_value( $btn_content_width_tablet_fallback, $attr['btncontentWidthType'] ),
+	);
+	$m_selectors['.wp-block-button .uagb-cta__buttons'] = array(
+		'width' => UAGB_Helper::get_css_value( $btn_content_width_mobile_fallback, $attr['btncontentWidthType'] ),
 	);
 }
 if ( 'before' === $attr['ctaIconPosition'] ) {
@@ -568,8 +585,8 @@ if ( 'desktop' === $attr['stack'] ) {
 		'margin-left' => UAGB_Helper::get_css_value( $attr['buttonRightSpaceMobile'], $attr['buttonRightSpaceType'] ),
 	);
 }
-$t_selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button'] = $second_cta_border_tablet;
-$m_selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button'] = $second_cta_border_mobile;
+$t_selectors['.wp-block-uagb-call-to-action.wp-block-button a.uagb-cta-second__button'] = $second_cta_border_tablet;
+$m_selectors['.wp-block-uagb-call-to-action.wp-block-button a.uagb-cta-second__button'] = $second_cta_border_mobile;
 
 
 if ( 'before' === $attr['secondCtaIconPosition'] ) {

@@ -5,15 +5,34 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import apiFetch from '@wordpress/api-fetch';
 
 const PluginStats = () => {
 
 	const dispatch = useDispatch();
 
 	const activatePro = () => {
-		const isThisNull = uag_react.spectra_pro_activation;
-		if ( null === isThisNull ){
-			window.location.reload();
+		const isThisNull = uag_react.spectra_pro_status;
+
+		if ( '' === isThisNull ){
+
+			const formData = new window.FormData();
+
+			formData.append( 'action', 'uag_pro_activate' );
+			formData.append( 'security', uag_react.pro_activate_nonce );
+			formData.append( 'value', 'spectra' );
+
+			apiFetch( {
+				url: uag_react.ajax_url,
+				method: 'POST',
+				body: formData,
+			} ).then( () => {
+				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Spectra Pro Activated!' } );
+				setTimeout( ()=>{
+					window.location.reload();
+				  }, 500 );
+
+			} );
 		}
 	};
 
@@ -72,14 +91,17 @@ const PluginStats = () => {
 				</div>
 			)
 		) : (
-			<a
-				className='mr-8 ml-2 text-sm text-spectra active:text-spectra hover:text-spectra focus:text-spectra cursor-pointer'
-				href='https://wpspectra.com/pricing'
-				rel='noreferrer noopener'
-				target='_blank'
-			>
-				{ __( 'Upgrade to Pro', 'ultimate-addons-for-gutenberg' ) }
-			</a>
+			// All commented code below this will be rendered once Spectra Pro is Released.
+			// The Placeholder Div Fixes the Spacing Issue caused by the text removal
+			// <a
+			// 	className='mr-8 ml-2 text-sm text-spectra active:text-spectra hover:text-spectra focus:text-spectra cursor-pointer'
+			// 	href='https://wpspectra.com/pricing'
+			// 	rel='noreferrer noopener'
+			// 	target='_blank'
+			// >
+			// 	{ __( 'Upgrade to Pro', 'ultimate-addons-for-gutenberg' ) }
+			// </a>
+			<div className='w-4' />
 		)
 	);
 
@@ -100,9 +122,10 @@ const PluginStats = () => {
 					<div className='mr-2 px-1.5 py-[3px] text-[10px] leading-[10px] text-white bg-slate-800 border border-slate-800 rounded'>
 						{ __( 'Pro', 'ultimate-addons-for-gutenberg' ) }
 					</div>
+					{/* All Code below this will be moved out of this conditional render once Spectra Pro is Released. */}
+					{ renderDivider() }
 				</>
 			) }
-			{ renderDivider() }
 			{ renderLicenseStatus() }
 		</>
 	);

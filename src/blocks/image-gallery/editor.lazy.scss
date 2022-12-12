@@ -1,0 +1,164 @@
+/**
+ * Editor styles for the admin
+ */
+
+/* stylelint-disable at-rule-no-unknown */
+
+.spectra-image-gallery-init {
+
+	&-wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		background-color: #f5f5f5;
+		padding: 2rem;
+		width: 100%;
+
+		& .components-input-control__container {
+			box-sizing: border-box;
+			margin: 0;
+			font-weight: var(--heading-weight-500);
+			border: 1px solid #ddd;
+			min-height: 100%;
+			font-size: 13px;
+			line-height: 1.25em;
+			border-radius: 4px;
+
+			&:focus {
+				box-shadow: none;
+				border-color: #aaa;
+				color: #444;
+			}
+
+			&:hover {
+				color: #444;
+			}
+		}
+
+		svg {
+			width: 3em;
+			height: 3em;
+
+			path {
+				stroke: #959595;
+			}
+		}
+	}
+}
+
+// Slick Dot Positioning in the Editor.
+.spectra-image-gallery__layout--carousel .slick-dots {
+	bottom: -30px !important;
+}
+
+// Applies only for the Masonry Layout in the Responsive Gutenberg Editor.
+.uagb-editor-preview-mode-tablet,
+.uagb-editor-preview-mode-mobile {
+
+	.spectra-image-gallery__layout--masonry {
+		height: initial !important;
+		display: grid;
+
+		.spectra-image-gallery__media-wrapper {
+			width: auto !important;
+			height: auto !important;
+			aspect-ratio: 1;
+
+			.spectra-image-gallery__media--masonry,
+			.spectra-image-gallery__media-thumbnail--masonry {
+				width: 100% !important;
+				height: 100% !important;
+				object-fit: cover;
+			}
+		}
+	}
+}
+
+.uagb-editor-preview-mode-tablet {
+
+	.spectra-image-gallery__layout--masonry-col-tab {
+
+		&-1 {
+			grid-template-columns: repeat(1, minmax(0, 1fr));
+		}
+
+		&-2 {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		&-3 {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+
+		&-4 {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+
+		&-5 {
+			grid-template-columns: repeat(5, minmax(0, 1fr));
+		}
+
+		&-6 {
+			grid-template-columns: repeat(6, minmax(0, 1fr));
+		}
+
+		&-7 {
+			grid-template-columns: repeat(7, minmax(0, 1fr));
+		}
+
+		&-8 {
+			grid-template-columns: repeat(8, minmax(0, 1fr));
+		}
+	}
+}
+
+.uagb-editor-preview-mode-mobile {
+
+	.spectra-image-gallery__layout--masonry-col-mob {
+
+		&-1 {
+			grid-template-columns: repeat(1, minmax(0, 1fr));
+		}
+
+		&-2 {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		&-3 {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+
+		&-4 {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+
+		&-5 {
+			grid-template-columns: repeat(5, minmax(0, 1fr));
+		}
+
+		&-6 {
+			grid-template-columns: repeat(6, minmax(0, 1fr));
+		}
+
+		&-7 {
+			grid-template-columns: repeat(7, minmax(0, 1fr));
+		}
+
+		&-8 {
+			grid-template-columns: repeat(8, minmax(0, 1fr));
+		}
+	}
+}
+
+// Applies only in theme builder 2022.
+.editor-styles-wrapper .is-root-container.edit-site-block-editor__block-list.wp-site-blocks {
+
+	.spectra-image-gallery__layout--masonry {
+		height: initial !important;
+	}
+}
+
+[data-type="uagb/image-gallery"] .slick-arrow {
+	border-width: 0;
+}

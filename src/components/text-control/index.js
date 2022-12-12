@@ -7,7 +7,6 @@ import {
     TextareaControl,
 } from '@wordpress/components';
 import ResponsiveToggle from '../responsive-toggle';
-import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import classnames from 'classnames';
 import UAGReset from '../reset';
@@ -38,7 +37,6 @@ const UAGTextControl = ( props ) => {
 		}
 		return false;
 	}
-
 
     const handleOnChange = ( newValue ) => {
 
@@ -144,7 +142,7 @@ const UAGTextControl = ( props ) => {
 };
 
 UAGTextControl.defaultProps = {
-	label: __( 'Spectra Text Control', 'ultimate-addons-for-gutenberg' ),
+	label: '',
 	className: '',
 	allowReset: true,
 	resetFallbackValue: '',
@@ -152,8 +150,8 @@ UAGTextControl.defaultProps = {
     variant: 'full-width',
     autoComplete: 'off',
     showHeaderControls: true,
-	dynamicContentType: 'url', // url / text
-	enableDynamicContent: false
+	dynamicContentType: 'url', // url | text
+	enableDynamicContent: false,
 };
 
 export default UAGTextControl;

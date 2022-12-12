@@ -147,6 +147,8 @@ function styling( props ) {
 	
 	//Twenty Twenty theme
 	selectors['.uagb-buttons__outer-wrap.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'] = borderCSS;
+	tabletSelectors['.uagb-buttons__outer-wrap.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'] = borderCSSTablet;
+	mobileSelectors['.uagb-buttons__outer-wrap.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'] = borderCSSMobile;
 	selectors['.uagb-buttons__outer-wrap.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater:hover'] = {
 		'border-color': btnBorderHColor,
 	};

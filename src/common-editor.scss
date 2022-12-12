@@ -514,6 +514,7 @@ button.components-button.uagb-reset.is-secondary.is-small {
 	box-shadow: unset;
 	background: 0 0;
 	color: $spectra-color-icon-disabled;
+	padding: 0;
 }
 
 /* Common uagb reset CSS end here */
@@ -762,6 +763,11 @@ button.components-button.uagb-review-select-btn.is-secondary {
 			align-items: center;
 		}
 	}
+}
+
+/* Spectra Page Level Settings */
+.is-pressed .spectra-page-settings-button path {
+	fill: #fff;
 }
 
 /* Spectra Sidebar Settings Notice */
