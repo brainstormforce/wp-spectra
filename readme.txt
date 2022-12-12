@@ -174,6 +174,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Call to action - Width option for CTA buttons.
 * Improvement: Forms - Added gradient background option for submit button.
 * Fix: Forms - When we use checkbox with required condition, it restrict the user to check all the checkbox to submit the form.
+* Improvement: Typography - Allow negative value for letter spacing.
 * Fix: Container - Boxed container width breaks inside other block.
 * Fix: Container - Background Image Position control goes missing on changing the viewport.
 * Fix: Marketing Button - Background and hover color will now persist for older users (V1.25.6).
