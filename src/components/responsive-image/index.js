@@ -1,7 +1,8 @@
 /**
  * External dependencies
  */
- import React from 'react';
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
  import { useDeviceType } from '@Controls/getPreviewType';
  import ResponsiveToggle from '../responsive-toggle';
  import UAGMediaPicker from '@Components/image';
@@ -9,15 +10,21 @@
  import { __ } from '@wordpress/i18n';
 
  const ResponsiveUAGImage = ( props ) => {
-	 const { backgroundImage, setAttributes } = props;
-	 const { getSelectedBlock } = select( 'core/block-editor' );
+	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const panelRef = useRef( null );
+	const { backgroundImage, setAttributes } = props;
+	const { getSelectedBlock } = select( 'core/block-editor' );
 
-	 const responsive = true;
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect(() => {
+		setPanelNameForHook( getPanelIdFromRef(panelRef))
+	}, [blockNameForHook])
 
-	 const deviceType = useDeviceType();
-	 const device = deviceType.toLowerCase();
+	const responsive = true;
+	const deviceType = useDeviceType();
+	const device = deviceType.toLowerCase();
 
-	 /*
+	/*
 	 * Event to set Image as while adding.
 	 */
 	const onSelectImage = ( media ) => {
@@ -68,13 +75,15 @@
 		/>
 	 );
 
-	 const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+
 	 const controlName = 'image'; // there is no label props that's why keep hard coded label
-	 const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.responsive-image.${controlName}.before`, '', blockNameForHook );
-	 const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.responsive-image.${controlName}`, '', blockNameForHook );
+	 const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	 const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	 return (
-		<>
+		<div
+			ref={panelRef}
+		>
 			{
 				controlBeforeDomElement
 			}
@@ -95,7 +104,7 @@
 			{
 				controlAfterDomElement
 			}
-		</>
+		</div>
 	 );
  };
 
