@@ -2,7 +2,8 @@
  * External dependencies
  */
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { getPanelIdFromRef } from '@Utils/Helpers';
 import { select } from '@wordpress/data';
 import PropTypes from 'prop-types';
 
@@ -14,6 +15,8 @@ const defaultProps = {
 	disabledTopSpace: false
 };
 export default function Separator ( { disabledTopSpace } ) {
+	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const panelRef = useRef( null );
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -24,11 +27,17 @@ export default function Separator ( { disabledTopSpace } ) {
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect(() => {
+		setPanelNameForHook( getPanelIdFromRef(panelRef))
+	}, [blockNameForHook])
+
 	const controlName = 'separator'; // there is no label props that's why keep hard coded label
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.separator.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.separator.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 	return (
-		<>
+		<div
+			ref={panelRef}
+		>
 			{
 				controlBeforeDomElement
 			}
@@ -36,7 +45,7 @@ export default function Separator ( { disabledTopSpace } ) {
 			{
 				controlAfterDomElement
 			}
-		</>
+		</div>
 	);
 };
 
