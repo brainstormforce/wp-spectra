@@ -270,7 +270,7 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 				}, [] );
 				return arrayWithDuplicateEntries;
 			};
-			const arrayOfDuplicateHeadingPresentOnPage = ArrayOfDuplicateElements( divsArr );
+			const duplicateHeadings = ArrayOfDuplicateElements( divsArr );
 			/* Logic for Remove duplicate heading with same HTML tag and create an new array with duplicate entries ends here. */
 			for ( let i = 0; i < divsArr.length; i++ ) {
 
@@ -293,13 +293,13 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 				span.className =  'uag-toc__heading-anchor';
 				divsArr[i].prepend( span );
 				/* Logic for Create an unique Id for duplicate heading start here. */
-				for ( let k = 0; k < arrayOfDuplicateHeadingPresentOnPage.length; k++ ){
+				for ( let k = 0; k < duplicateHeadings.length; k++ ){
 					const randomID = '#toc_' + Math.random();
-					arrayOfDuplicateHeadingPresentOnPage[k]?.querySelector( '.uag-toc__heading-anchor' )?.setAttribute( 'id',randomID.substring( 1 ) )
+					duplicateHeadings[k]?.querySelector( '.uag-toc__heading-anchor' )?.setAttribute( 'id',randomID.substring( 1 ) )
 					const aTags = Array.from( tocListWrap.getElementsByTagName( 'a' ) );
-					const arrayOfDuplicateHeadingPresentInTOC = ArrayOfDuplicateElements( aTags );
-					for ( let l = 0; l < arrayOfDuplicateHeadingPresentInTOC.length; l++ ) {
-						arrayOfDuplicateHeadingPresentInTOC[k]?.setAttribute( 'href' , randomID );
+					const duplicateHeadingsInTOC = ArrayOfDuplicateElements( aTags );
+					for ( let l = 0; l < duplicateHeadingsInTOC.length; l++ ) {
+						duplicateHeadingsInTOC[k]?.setAttribute( 'href' , randomID );
 					}
 				}
 				/* Logic for Create an unique Id for duplicate heading ends here. */
