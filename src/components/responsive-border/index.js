@@ -7,9 +7,9 @@ import AdvancedPopColorControl from '@Components/color-control/advanced-pop-colo
 import UAGSelectControl from '@Components/select-control';
 import UAGTabsControl from '@Components/tabs';
 import SpacingControl from '@Components/spacing-control';
-import React from 'react';
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
 import { select } from '@wordpress/data';
-import { getIdFromString } from '@Utils/Helpers';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import PropTypes from 'prop-types';
 
 const propTypes = {
@@ -32,6 +32,9 @@ const defaultProps = {
 };
 
 const ResponsiveBorder = ( props ) => {
+	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const panelRef = useRef( null );
+
 	const {
 		attributes,
 		setAttributes,
@@ -59,6 +62,10 @@ const ResponsiveBorder = ( props ) => {
 	} = props;
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect(() => {
+		setPanelNameForHook( getPanelIdFromRef(panelRef))
+	}, [blockNameForHook])
 
 
 	const tabsToUse = [ {
@@ -334,7 +341,7 @@ const ResponsiveBorder = ( props ) => {
 						label: prefix + 'BorderRadiusLink',
 					} }
 					help={ borderRadiusHelp ? borderRadiusHelp : false }
-				/> 
+				/>
 			) }
 			{ 'none' !== borderStyle && 'default' !== borderStyle && (
 				<UAGTabsControl
@@ -348,17 +355,18 @@ const ResponsiveBorder = ( props ) => {
 		</>
 	);
 
-	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	const controlName = getIdFromString( props.label );
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.responsive-border.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.responsive-border.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	return (
-		<>
+		<div
+			ref={panelRef}
+		>
 			{controlBeforeDomElement}
 			{advancedControls}
 			{controlAfterDomElement}
-		</>
+		</div>
 	);
 };
 
