@@ -1,8 +1,8 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
 import { SelectControl } from '@wordpress/components';
 import { select } from '@wordpress/data';
 import styles from './editor.lazy.scss';
-import { getIdFromString } from '@Utils/Helpers';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import PropTypes from 'prop-types';
 
 // Use the onChange prop only if needed.
@@ -25,6 +25,9 @@ const defaultProps = {
 };
 
 export default function UAGSelectControl( { layout, label, options, data, setAttributes, onChange, help, children } ) {
+	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const panelRef = useRef( null );
+
 	useLayoutEffect( () => {
 		styles.use();
 		return () => {
@@ -34,15 +37,20 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect(() => {
+		setPanelNameForHook( getPanelIdFromRef(panelRef))
+	}, [blockNameForHook])
 
 	const controlName = getIdFromString( label );
 
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.select-control.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.select-control.${controlName}`, '', blockNameForHook );
-	const allOptions = wp.hooks.applyFilters( `spectra.${blockNameForHook}.select-control.${controlName}.options`, options, blockNameForHook );
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+	const allOptions = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.options`, options, blockNameForHook );
 
 	return (
-		<>
+		<div
+			ref={panelRef}
+		>
 			{
 				controlBeforeDomElement
 			}
@@ -77,7 +85,7 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 			{
 				controlAfterDomElement
 			}
-		</>
+		</div>
 	);
 }
 
