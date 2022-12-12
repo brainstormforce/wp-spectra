@@ -15,3 +15,7 @@
     }
     return sizeArr;
 }
+
+export function getIdFromString( label ){
+	return label ? label.toLowerCase().replace( /[^a-zA-Z ]/g, '' ).replace( /\s+/g, '-' ) : '';
+}
