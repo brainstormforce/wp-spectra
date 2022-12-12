@@ -52,20 +52,14 @@ UAGBForms = { // eslint-disable-line no-undef
 							const name = checkboxes[l].getAttribute( 'name' );
 							
 							const check = document.querySelectorAll( '[name="'+name+'"]' );
+							for ( let i = 0; i < check.length; i++ ) {
 							
-							if( isChecked ) {
-							
-								for ( let i = 0; i < check.length; i++ ) {
-
+								if( isChecked ) {
 									check[i].required = false;
-								}
-							} else {
-								for ( let i = 0; i < check.length; i++ ) {
-
+								} else {
 									check[i].required = true;
 								}
 							}
-							
 
 						} );
 					}
