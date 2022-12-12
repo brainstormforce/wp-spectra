@@ -56,7 +56,6 @@ const Render = ( props ) => {
 
 	const {
 		block_id,
-		isPreview,
 		layout,
 		url,
 		alt,
@@ -390,8 +389,6 @@ const Render = ( props ) => {
 		setAttributes( props );
 	}
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/image.svg`;
-
 	const blockProps = useBlockProps( {
 		ref,
 	} );
@@ -455,7 +452,7 @@ const Render = ( props ) => {
 					/>
 				</figure>
 				) }
-				{ isPreview ? ( <img width='100%' src={ previewImageData } alt=''/> ) : ( <MediaPlaceholder
+				<MediaPlaceholder
 					icon={ <BlockIcon icon={ UAGB_Block_Icons.image } /> }
 					labels={
 						{
@@ -472,7 +469,7 @@ const Render = ( props ) => {
 					value={ { id, src } }
 					mediaPreview={ mediaPreview }
 					disableMediaButtons={ temporaryURL || url }
-				/> )}
+				/>
 			</div>
 		</React.Fragment>
 	);

@@ -211,13 +211,15 @@ const PostTimelineComponent = ( props ) => {
 		},
 	);
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/post-timeline.svg`;
+
 	return (
-
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
 			<>
-			<Settings parentProps={ props } taxonomyList={ taxonomyList } categoriesList={ categoriesList } />
-			<Render parentProps={ props } latestPosts={ latestPosts } />
+				<Settings parentProps={ props } taxonomyList={ taxonomyList } categoriesList={ categoriesList } />
+				<Render parentProps={ props } latestPosts={ latestPosts } />
 			</>
-
+		)
 	);
 };
 export default PostTimelineComponent

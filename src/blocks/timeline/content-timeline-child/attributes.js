@@ -5,6 +5,10 @@
 import { __ } from '@wordpress/i18n';
 
 const attributes = {
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 	content_class: {
 		type: 'string',
 	},

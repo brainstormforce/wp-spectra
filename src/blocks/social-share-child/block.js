@@ -26,4 +26,9 @@ registerBlockType( 'uagb/social-share-child', {
 	edit,
 	save,
 	deprecated,
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 } );

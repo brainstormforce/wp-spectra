@@ -24,4 +24,9 @@ registerBlockType( 'uagb/faq-child', {
 	},
 	save,
 	deprecated,
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 } );

@@ -32,11 +32,13 @@ class Spectra_Block_Prioritization {
 		// Alphabetically Ordered Blocks.
 		'blockquote',
 		'content-timeline',
+		'counter',
 		'faq',
 		'forms',
 		'google-map',
 		'how-to',
 		'icon-list',
+		'image-gallery',
 		'inline-notice',
 		'login',
 		'lottie',

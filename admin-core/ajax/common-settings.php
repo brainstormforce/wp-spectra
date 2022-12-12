@@ -81,10 +81,57 @@ class Common_Settings extends Ajax_Base {
 			'load_font_awesome_5',
 			'auto_block_recovery',
 			'enable_legacy_blocks',
+			'pro_activate',
 		);
 
 		$this->init_ajax_events( $ajax_events );
 	}
+	/**
+	 * Required Spectra Pro Plugin Activate
+	 *
+	 * @return void
+	 */
+	public static function pro_activate() {
+
+		wp_clean_plugins_cache();
+		$value = ( isset( $_POST['value'] ) ) ? sanitize_text_field( wp_unslash( $_POST['value'] ) ) : '';
+		if ( ! current_user_can( 'activate_plugins' ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) ); // phpcs:ignore
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_pro_activate', 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) ); // phpcs:ignore
+			wp_send_json_error( $response_data );
+		}
+
+		if ( empty( $value ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'default' ) ); // phpcs:ignore
+			wp_send_json_error( $response_data );
+		}
+
+		$activate = activate_plugin( 'spectra-pro/spectra-pro.php' );
+
+		if ( is_wp_error( $activate ) ) {
+			wp_send_json_error(
+				array(
+					'success' => false,
+					'message' => $activate->get_error_message(),
+				)
+			);
+		}
+
+		wp_send_json_success(
+			array(
+				'success' => true,
+				'message' => __( 'Plugin Successfully Activated', 'ultimate-addons-for-gutenberg' ),
+			)
+		);
+	}
+
 	/**
 	 * Save settings.
 	 *

@@ -43,14 +43,14 @@ export default function UAGBImageEdit( props ) {
 
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	return (
-		<React.Fragment>
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/image.svg`;
 
-						<>
-			<Settings parentProps={ props } />
+	return (
+		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+			<>
+				<Settings parentProps={ props } />
 				<Render parentProps={ props } />
 			</>
-
-		</React.Fragment>
+		)
 	);
 }
