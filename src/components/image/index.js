@@ -1,14 +1,24 @@
+import React, {useEffect, useState, useRef } from 'react';
 import { __ } from '@wordpress/i18n';
 import { BaseControl } from '@wordpress/components';
 import { MediaUpload } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
-import { getIdFromString } from '@Utils/Helpers';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGB_Block_Icons from '@Controls/block-icons';
 
 const UAGMediaPicker = ( props ) => {
+	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const panelRef = useRef( null );
+
 	const selectedBlock = useSelect( ( select ) => {
 		return select( 'core/block-editor' ).getSelectedBlock();
 	}, [] );
+
+	const blockNameForHook = selectedBlock?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+
+	useEffect(() => {
+		setPanelNameForHook( getPanelIdFromRef(panelRef))
+	}, [blockNameForHook])
 
 	const {
 		onSelectImage,
@@ -136,13 +146,14 @@ const UAGMediaPicker = ( props ) => {
 		return mediaURL;
 	}
 
-	const blockNameForHook = selectedBlock?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	const controlName = getIdFromString( props?.label );
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.image.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.image.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	return (
-		<>
+		<div
+			ref={panelRef}
+		>
 			{
 				controlBeforeDomElement
 			}
@@ -196,7 +207,7 @@ const UAGMediaPicker = ( props ) => {
 			{
 				controlAfterDomElement
 			}
-		</>
+		</div>
 	);
 };
 
