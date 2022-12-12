@@ -174,6 +174,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Call to action - Width option for CTA buttons.
 * Fix: Container - Boxed container width breaks inside other block.
 * Fix: Container - Background Image Position control goes missing on changing the viewport.
+* Fix: Marketing Button - Background and hover color will now persist for older users (V1.25.6).
 
 = 2.1.0 - WEDNESDAY, 07th DECEMBER 2022 =
 * New: Introducing the Counter block with layouts that will help you flaunt your stats in a cool way!
