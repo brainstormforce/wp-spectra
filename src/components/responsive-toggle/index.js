@@ -4,16 +4,24 @@
 import { ButtonGroup, Button, Tooltip } from '@wordpress/components';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { __, sprintf } from '@wordpress/i18n';
-import { useState, useCallback } from '@wordpress/element'
+import React, {useEffect, useState, useCallback, useRef } from 'react';
 import { dispatch, select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
-import { getIdFromString } from '@Utils/Helpers';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 
 const ResponsiveToggle = props => {
-const { label, responsive } = props;
+	const { label, responsive } = props;
 	const deviceType = useDeviceType()
 	const [ displayResponsive, toggleResponsive ] = useState( false );
+	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const panelRef = useRef( null );
+
 	const { getSelectedBlock } = select( 'core/block-editor' );
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect(() => {
+		setPanelNameForHook( getPanelIdFromRef(panelRef))
+	}, [blockNameForHook])
+
 	const customSetPreviewDeviceType = useCallback( device => {
 			if( null !== dispatch( 'core/edit-post' ) ){
 				const {
@@ -142,10 +150,9 @@ const { label, responsive } = props;
 	toggleResponsive( ! displayResponsive );
 };
 
-	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	const controlName = getIdFromString( props.label );
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.responsive-toggle.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.responsive-toggle.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 
 	return (
