@@ -1,15 +1,17 @@
 /**
  * External dependencies
  */
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
 import { SelectControl } from '@wordpress/components';
 import { useDeviceType } from '@Controls/getPreviewType';
 import ResponsiveToggle from '../responsive-toggle';
 import { select } from '@wordpress/data';
-import { getIdFromString } from '@Utils/Helpers';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import styles from './editor.lazy.scss';
 
 const ResponsiveSelectControl = ( props ) => {
+	const [panelNameForHook, setPanelNameForHook] = useState(null);
+	const panelRef = useRef( null );
 
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -20,6 +22,11 @@ const ResponsiveSelectControl = ( props ) => {
 	}, [] );
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
+
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect(() => {
+		setPanelNameForHook( getPanelIdFromRef(panelRef))
+	}, [blockNameForHook])
 
 
 	const { label, data, setAttributes, options } = props;
@@ -57,14 +64,15 @@ const ResponsiveSelectControl = ( props ) => {
 		/>
 	);
 
-	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	const controlName = getIdFromString( props.label );
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.responsive-select.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.responsive-select.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 
 	return (
-		<>
+		<div
+			ref={panelRef}
+		>
 			{
 				controlBeforeDomElement
 			}
@@ -85,7 +93,7 @@ const ResponsiveSelectControl = ( props ) => {
 			{
 				controlAfterDomElement
 			}
-		</>
+		</div>
 	);
 };
 

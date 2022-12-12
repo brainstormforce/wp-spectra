@@ -1,8 +1,8 @@
 /**
  * External dependencies
  */
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
-import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
+import React, {useEffect, useState, useRef } from 'react';
+import { getPanelIdFromRef } from '@Utils/Helpers';
  import { useDeviceType } from '@Controls/getPreviewType';
  import ResponsiveToggle from '../responsive-toggle';
  import UAGMediaPicker from '@Components/image';
