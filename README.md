@@ -179,6 +179,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Forms - Resolved an issue wherein settings a checkbox with a required condition would enforce the user to check all the checkboxes before submitting the form.
 * Fix: Marketing Button - Implemented support to make the background and hover colors persist for older users (V1.25.6).
 * Fix: Separator Control - Removed the unwanted space that was added when the separator is used.
+* Fix: Post Carousel - Resolved an issue where images for post were not visible after switching to v2.1.0.
+* Fix: Post Blocks - Resolved an issue in which the static CSS was not loaded on the front end.
 
 ### 2.1.0 - WEDNESDAY, 07th DECEMBER 2022 ###
 * New: Introducing the Counter block with layouts that will help you flaunt your stats in a cool way!
