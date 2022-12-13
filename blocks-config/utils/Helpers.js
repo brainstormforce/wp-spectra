@@ -23,7 +23,7 @@ export function getIdFromString( label ){
 export function getPanelIdFromRef( ref ){
 	if( ref.current ){
 		const parentElement = ref.current.parentElement.closest( '.components-panel__body' )
-		if( parentElement ){
+		if( parentElement && parentElement.querySelector( '.components-panel__body-title' ) ){
 			return getIdFromString( parentElement.querySelector( '.components-panel__body-title' ).textContent );
 		}
 	}
