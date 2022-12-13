@@ -33,7 +33,10 @@ export default function ColorSwitchControl( {label, type, classic, gradient, set
 
 
 	return (
-		<div ref={panelRef}>
+		<div
+			ref={panelRef}
+			className={`spectra-components-control spectra-components-control--${controlName}`}
+		>
 			{
 				controlBeforeDomElement
 			}

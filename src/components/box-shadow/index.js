@@ -278,7 +278,10 @@ const BoxShadowControl = ( props ) => {
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	return (
-		<div ref={panelRef}>
+		<div
+			ref={panelRef}
+			className={`spectra-components-control spectra-components-control--${controlName}`}
+		>
 			{
 				controlBeforeDomElement
 			}

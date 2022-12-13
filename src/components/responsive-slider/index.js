@@ -106,6 +106,7 @@ const ResponsiveSlider = ( props ) => {
 	return (
 		<div
 			ref={panelRef}
+			className={`spectra-components-control spectra-components-control--${controlName}`}
 		>
 			{
 				controlBeforeDomElement
