@@ -786,16 +786,6 @@ class UAGB_Post_Assets {
 
 		$block_css_file_name = ( isset( $blocks[ $name ] ) && isset( $blocks[ $name ]['static_css'] ) ) ? $blocks[ $name ]['static_css'] : str_replace( 'uagb/', '', $name );
 
-		$post_block_array = array( 'post-carousel', 'post-grid', 'post-masonry' );
-		if ( in_array( $block_css_file_name, $post_block_array, true ) ) {
-			$block_css_file_name = 'post';
-		}
-
-		$timeline_block_array = array( 'content-timeline', 'content-timeline-child', 'post-timeline' );
-		if ( in_array( $block_css_file_name, $timeline_block_array, true ) ) {
-			$block_css_file_name = 'timeline';
-		}
-
 		if ( 'enabled' === $this->file_generation && ! in_array( $block_css_file_name, $this->static_css_blocks, true ) ) {
 			$common_css = array(
 				'common' => $this->get_block_static_css( $block_css_file_name ),
