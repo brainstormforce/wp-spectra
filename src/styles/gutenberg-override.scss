@@ -187,6 +187,18 @@
 				background-color: $spectra-color-icon;
 				border-color: $spectra-color-icon;
 			}
+
+			&.is-checked {
+
+				.components-form-toggle__track {
+					background-color: $spectra-color-primary;
+					border-color: transparent;
+				}
+
+				.components-form-toggle__thumb {
+					background-color: $spectra-color-plain-background;
+				}
+			}
 		}
 	}
 
