@@ -170,13 +170,13 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 = 2.1.1 - WEDNESDAY, 14th DECEMBER 2022 =
-* Improvement: Table Of Contents - Added unique IDs for headings that have the same text.
 * Improvement: Call To Action - Added a width option for the CTA buttons.
 * Improvement: Forms - Added a gradient background option for the submit button.
-* Fix: Forms - Resolved an issue wherein settings a checkbox with a required condition would enforce the user to check all the checkboxes before submitting the form.
+* Improvement: Table Of Contents - Added unique IDs for headings that have the same text.
 * Improvement: Typography Control - Allowed negative values for letter spacing.
 * Fix: Container - Resolved an issue where the boxed container width would break when inside other blocks.
 * Fix: Container - Resolved an issue in which the background image position control goes missing when the viewport is changed.
+* Fix: Forms - Resolved an issue wherein settings a checkbox with a required condition would enforce the user to check all the checkboxes before submitting the form.
 * Fix: Marketing Button - Implemented support to make the background and hover colors persist for older users (V1.25.6).
 * Fix: Separator Control - Removed the unwanted space that was added when the separator is used.
 
