@@ -178,6 +178,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Container - Resolved an issue in which the background image position control goes missing when the viewport is changed.
 * Fix: Forms - Resolved an issue wherein settings a checkbox with a required condition would enforce the user to check all the checkboxes before submitting the form.
 * Fix: Marketing Button - Implemented support to make the background and hover colors persist for older users (V1.25.6).
+* Fix: Post Carousel/Masonry - Resolved an issue wherein the featured images for posts were not visible.
+* Fix: Post Carousel - Resolved an issue in which the static CSS was not loaded on the front end.
 * Fix: Separator Control - Removed the unwanted space that was added when the separator is used.
 
 ### 2.1.0 - WEDNESDAY, 07th DECEMBER 2022 ###
