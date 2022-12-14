@@ -53,10 +53,7 @@ export default function save( props ) {
 	};
 	const openNewWindow = opensInNewTab ? '_blank' : '_self' ;
 	const hasBackground = background !== '' || backgroundType === 'transparent' ||  'gradient' === backgroundType ? 'has-background' : '';
-	// let preventDefaultFunc = ( e ) => {  // Disables click events for link in editor.
-	// 	return e.preventDefault();
-	// }
-	// console.log(preventDefaultFunc)
+
 	return (
 		<div
 			className={ classnames(
