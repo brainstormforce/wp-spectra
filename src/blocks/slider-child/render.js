@@ -1,6 +1,6 @@
 import { useInnerBlocksProps } from '@wordpress/block-editor';
 import React from 'react';
-
+import { __ } from '@wordpress/i18n';
 
 const Render = () => {
 
@@ -10,7 +10,19 @@ const Render = () => {
 	} );
 
 	const TEMPLATE = [
-		[ 'uagb/container', { variationSelected: true }] 
+		[ 'uagb/container', { variationSelected: true }, [
+				[ 'uagb/info-box', { 
+					showIcon: false,
+					ctaType: 'button',
+					infoBoxTitle: __( 'Slide' , 'ultimate-addons-for-gutenberg' ),
+					showCtaIcon: false,
+					paddingBtnTop: 12,
+					paddingBtnRight: 24,
+					paddingBtnBottom: 12, 
+					paddingBtnLeft: 24,
+				} ],
+			]		
+		] 
 	];
 
 	// Hide slider block.
@@ -23,7 +35,6 @@ const Render = () => {
 		},
         {
 			allowedBlocks: ALLOWED_BLOCKS,
-			template: TEMPLATE 
 		}
     );
 

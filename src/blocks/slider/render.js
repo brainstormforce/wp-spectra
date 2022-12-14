@@ -3,6 +3,7 @@ import React, { useMemo, useEffect, useRef } from 'react';
 import { select } from '@wordpress/data';
 const ALLOWED_BLOCKS = [ 'uagb/slider-child' ];
 import { useDeviceType } from '@Controls/getPreviewType';
+import { __ } from '@wordpress/i18n';
 
 import Swiper, { Navigation, Pagination, Autoplay, EffectFade, EffectFlip, Manipulation } from 'swiper';
 
@@ -34,15 +35,60 @@ const Render = ( props ) => {
 	} = attributes;
 
 	const getSliderTemplate = useMemo( () => {
-		const childSlide = [];
+		
+		const sliderTemplate = [
 
-		for ( let i = 0; i < slideItem; i++ ) {
-			childSlide.push( [
-				'uagb/slider-child',
-				slide_content[ i ],
-			] );
-		}
-		return childSlide;
+			[ 'uagb/slider-child', {}, [
+				[ 'uagb/container', { variationSelected: true }, [
+						[ 'uagb/info-box', { 
+							showIcon: false,
+							ctaType: 'button',
+							infoBoxTitle: __( 'Slide 1' , 'ultimate-addons-for-gutenberg' ),
+							showCtaIcon: false,
+							paddingBtnTop: 12,
+							paddingBtnRight: 24,
+							paddingBtnBottom: 12, 
+							paddingBtnLeft: 24,
+						} ],
+					]		
+				]
+				]
+			],
+			[ 'uagb/slider-child', {}, [
+				[ 'uagb/container', { variationSelected: true }, [
+						[ 'uagb/info-box', { 
+							showIcon: false,
+							ctaType: 'button',
+							infoBoxTitle: __( 'Slide 2' , 'ultimate-addons-for-gutenberg' ),
+							showCtaIcon: false,
+							paddingBtnTop: 12,
+							paddingBtnRight: 24,
+							paddingBtnBottom: 12, 
+							paddingBtnLeft: 24,
+						} ],
+					]		
+				]
+			]
+			],
+			[ 'uagb/slider-child', {}, [
+				[ 'uagb/container', { variationSelected: true }, [
+						[ 'uagb/info-box', { 
+							showIcon: false,
+							ctaType: 'button',
+							infoBoxTitle: __( 'Slide 3' , 'ultimate-addons-for-gutenberg' ),
+							showCtaIcon: false,
+							paddingBtnTop: 12,
+							paddingBtnRight: 24,
+							paddingBtnBottom: 12, 
+							paddingBtnLeft: 24,
+						} ],
+					]		
+				]
+			]
+			]	
+		];
+
+		return sliderTemplate;
 	}, [ slideItem, slide_content ] );
 
 	const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( clientId ).length;
