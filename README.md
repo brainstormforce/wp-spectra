@@ -169,6 +169,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+### 2.1.2 - TUESDAY, 20th DECEMBER 2022 ###
+* Fix: Image Gallery - Broken link were shown in gallery on frontend when added to caption.
+
 ### 2.1.1 - WEDNESDAY, 14th DECEMBER 2022 ###
 * Improvement: Call To Action - Added a width option for the CTA buttons.
 * Improvement: Forms - Added a gradient background option for the submit button.
