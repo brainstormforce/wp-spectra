@@ -24,4 +24,9 @@ registerBlockType( 'uagb/slider-child', {
 	attributes,
 	edit,
 	save,
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 } );

@@ -20,6 +20,10 @@ const attributes = {
 	block_id: {
 		type: 'string',
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 	slide_content: {
 		type: 'array',
 		default: slideContent,
