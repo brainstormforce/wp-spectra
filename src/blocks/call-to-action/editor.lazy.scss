@@ -38,6 +38,10 @@
 		display: inline-flex;
 	}
 
+	.uagb-cta__outer-wrap a.wp-block-button__link {
+		justify-content: center;
+	}
+
 	.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper,
 	.uagb-cta__outer-wrap a.uagb-cta-second__button {
 		text-decoration: none;
