@@ -23,7 +23,7 @@ export default function RangeTypographyControl( props ) {
 				{ ...props }
 				label={ props.sizeText }
 				value={ props.size.value || '' }
-				min={ 0 }
+				min={ -50 }
 				max={ 200 }
 				unit={ props.type }
 				responsive={ true }
@@ -42,7 +42,7 @@ export default function RangeTypographyControl( props ) {
 				{ ...props }
 				label={ props.sizeTabletText }
 				value={ props.sizeTablet.value }
-				min={ 0 }
+				min={ -50 }
 				max={ 200 }
 				unit={ props.type }
 				responsive={ true }
@@ -61,7 +61,7 @@ export default function RangeTypographyControl( props ) {
 				{ ...props }
 				label={ props.sizeMobileText }
 				value={ props.sizeMobile.value }
-				min={ 0 }
+				min={ -50 }
 				max={ 200 }
 				unit={ props.type }
 				responsive={ true }

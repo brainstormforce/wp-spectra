@@ -1176,8 +1176,6 @@ select {
   opacity: 0;
 }.opacity-100 {
   opacity: 1;
-}.opacity-80 {
-  opacity: 0.8;
 }.opacity-25 {
   opacity: 0.25;
 }.opacity-75 {

@@ -1234,5 +1234,19 @@ const attributes = {
 			styleType: 'submit-letter-spacing-type'
 		}
 	},
+	gradientValue: {
+		type: 'string',
+		default: 'linear-gradient(90deg, rgba(6, 147, 227, 0.5) 0%, rgba(155, 81, 224, 0.5) 100%)',
+		UAGCopyPaste: {
+			styleType: 'btn-bg-gradient-value'
+		},
+	},
+	gradientHValue: {
+		type: 'string',
+		default: 'linear-gradient(90deg, rgba(6, 147, 227, 0.5) 0%, rgba(155, 81, 224, 0.5) 100%)',
+		UAGCopyPaste: {
+			styleType: 'btn-hbg-gradient-value'
+		},
+	},
 };
 export default attributes;

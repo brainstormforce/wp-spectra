@@ -2,6 +2,7 @@ import { useLayoutEffect } from 'react';
 import { decodeEntities } from '@wordpress/html-entities';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
+import classnames from 'classnames';
 
 export const PostImage = ( props ) => {
 
@@ -31,12 +32,11 @@ export const PostImage = ( props ) => {
 				{
 					undefined !== post.uagb_featured_image_src && undefined !== src[ 0 ] &&
 					(
-						( attributes.blockName === 'post-grid' && (
-							<a
+						<a
 								href={ post.link }
 								target={ target }
 								rel='noopener noreferrer'
-								className={`uagb-image-ratio-${attributes.imageRatio}`}
+								className={ classnames(  attributes.blockName === 'post-grid' ? `uagb-image-ratio-${attributes.imageRatio}`: '' ) }
 							>
 								<img
 									src={ src[ 0 ] }
@@ -46,7 +46,6 @@ export const PostImage = ( props ) => {
 									}
 								/>
 							</a>
-						) )
 					)
 				}
 			</div>
