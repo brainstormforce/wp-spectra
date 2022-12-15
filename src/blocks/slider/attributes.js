@@ -54,7 +54,7 @@ const attributes = {
 	},
 	'autoplaySpeed': {
 		type: 'number',
-		default: 1200,
+		default: 3000,
 	},
 	'displayArrows': {
 		type: 'boolean',

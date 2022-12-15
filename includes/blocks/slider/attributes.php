@@ -25,7 +25,7 @@ return array_merge(
 		'transitionEffect'            => 'slide',
 		'autoplay'                    => true,
 		'verticalMode'                => false,
-		'autoplaySpeed'               => 1200,
+		'autoplaySpeed'               => 3000,
 		'displayArrows'               => true,
 		'displayDots'                 => true,
 		'backgroundType'              => 'none',
