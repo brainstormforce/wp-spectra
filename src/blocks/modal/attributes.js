@@ -157,21 +157,21 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'modal-width'
 		},
-		default: 700
+		default: 600
 	},
 	modalWidthTablet: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'modal-width'
 		},
-		default: 700
+		default: 600
 	},
 	modalWidthMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'modal-width'
 		},
-		default: 260
+		default: 340
 	},
 	modalWidthType: {
 		type: 'string',
@@ -497,24 +497,28 @@ const attributes = {
 	},
 	paddingBtnTop: {
 		type: 'number',
+		default: 14,
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding'
 		}
 	},
 	paddingBtnBottom: {
 		type: 'number',
+		default: 14,
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding'
 		}
 	},
 	paddingBtnLeft: {
 		type: 'number',
+		default: 32,
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding'
 		}
 	},
 	paddingBtnRight: {
 		type: 'number',
+		default: 32,
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding'
 		}
@@ -981,7 +985,63 @@ const attributes = {
 		default: 'px',
 	},
 	...btnBorderAttributes,
+	btnBorderTopLeftRadius: {
+		type: 'number',
+		default: 3,
+		UAGCopyPaste: {
+			styleType: 'btn-border-top-left-radius',
+		},
+	},
+	btnBorderTopRightRadius: {
+		type: 'number',
+		default: 3,
+		UAGCopyPaste: {
+			styleType: 'btn-border-top-right-radius',
+		},
+	},
+	btnBorderBottomLeftRadius: {
+		type: 'number',
+		default: 3,
+		UAGCopyPaste: {
+			styleType: 'btn-border-bottom-left-radius',
+		},
+	},
+	btnBorderBottomRightRadius: {
+		type: 'number',
+		default: 3,
+		UAGCopyPaste: {
+			styleType: 'btn-border-bottom-right-radius',
+		},
+	},
 	...contentBorderAttributes,
+	contentBorderTopLeftRadius: {
+		type: 'number',
+		default: 3,
+		UAGCopyPaste: {
+			styleType: 'content-border-top-left-radius',
+		},
+	},
+	contentBorderTopRightRadius: {
+		type: 'number',
+		default: 3,
+		UAGCopyPaste: {
+			styleType: 'content-border-top-right-radius',
+		},
+	},
+	contentBorderBottomLeftRadius: {
+		type: 'number',
+		default: 3,
+		UAGCopyPaste: {
+			styleType: 'content-border-bottom-left-radius',
+		},
+	},
+	contentBorderBottomRightRadius: {
+		type: 'number',
+		default: 3,
+		UAGCopyPaste: {
+			styleType: 'content-border-bottom-right-radius',
+		},
+	},
 };
 
 export default attributes;

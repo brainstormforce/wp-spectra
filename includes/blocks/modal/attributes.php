@@ -7,12 +7,24 @@
  * @package uagb
  */
 
-$button_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
-	'btn'
+$btn_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute(
+	'btn',
+	array(
+		'borderTopLeftRadius'     => 3,
+		'borderTopRightRadius'    => 3,
+		'borderBottomLeftRadius'  => 3,
+		'borderBottomRightRadius' => 3,
+	)
 );
 
-$content_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
-	'content'
+$content_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute(
+	'content',
+	array(
+		'borderTopLeftRadius'     => 3,
+		'borderTopRightRadius'    => 3,
+		'borderBottomLeftRadius'  => 3,
+		'borderBottomRightRadius' => 3,
+	)
 );
 
 return array_merge(
@@ -26,9 +38,9 @@ return array_merge(
 		'modalAlign'                  => 'left',
 		'modalAlignTablet'            => '',
 		'modalAlignMobile'            => '',
-		'modalWidth'                  => 700,
-		'modalWidthTablet'            => 700,
-		'modalWidthMobile'            => 260,
+		'modalWidth'                  => 600,
+		'modalWidthTablet'            => 600,
+		'modalWidthMobile'            => 340,
 		'modalWidthType'              => 'px',
 		'modalHeight'                 => 350,
 		'modalHeightTablet'           => 350,
@@ -92,10 +104,10 @@ return array_merge(
 		'paddingBtnUnit'              => 'px',
 		'mobilePaddingBtnUnit'        => 'px',
 		'tabletPaddingBtnUnit'        => 'px',
-		'paddingBtnTop'               => '',
-		'paddingBtnBottom'            => '',
-		'paddingBtnLeft'              => '',
-		'paddingBtnRight'             => '',
+		'paddingBtnTop'               => 14,
+		'paddingBtnBottom'            => 14,
+		'paddingBtnLeft'              => 32,
+		'paddingBtnRight'             => 32,
 		'paddingBtnTopTablet'         => '',
 		'paddingBtnRightTablet'       => '',
 		'paddingBtnBottomTablet'      => '',
@@ -174,10 +186,19 @@ return array_merge(
 		'yPositionType'               => 'px',
 		'yPositionTypeTablet'         => 'px',
 		'yPositionTypeMobile'         => 'px',
-		'backgroundVideoColor'        => '#FFFFFF75',
-		'backgroundVideo'             => '',
-		'backgroundVideoOpacity'      => 0.5,
 	),
-	$button_attribute,
-	$content_attribute
+	$btn_border_attributes,
+	array(
+		'btnBorderTopLeftRadius'     => 3,
+		'btnBorderTopRightRadius'    => 3,
+		'btnBorderBottomLeftRadius'  => 3,
+		'btnBorderBottomRightRadius' => 3,
+	),
+	$content_border_attributes,
+	array(
+		'contentBorderTopLeftRadius'     => 3,
+		'contentBorderTopRightRadius'    => 3,
+		'contentBorderBottomLeftRadius'  => 3,
+		'contentBorderBottomRightRadius' => 3,
+	)
 );

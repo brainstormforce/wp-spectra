@@ -528,7 +528,7 @@ export default function Settings( props ) {
 						label: 'modalWidthMobile',
 					},
 				} }
-				min={ '%' === modalWidthType ? 10 : 300 }
+				min={ '%' === modalWidthType ? 10 : 0 }
 				max={ '%' === modalWidthType ? 100 : 1500 }
 				unit={ {
 					value: modalWidthType,
