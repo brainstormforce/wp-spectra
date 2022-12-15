@@ -21,19 +21,19 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 
 		/* We need the following fail-safe click listener cause an usual click-listener
 		 * will fail in case the 'Make TOC Collapsible' is not enabled right from the start/page-load.
-		*/ 
+		*/
 		document.addEventListener( 'click', collapseListener );
 
 		function collapseListener( event ){
-			
+
 			const element = event.target;
 
-			// These two conditions help us target the required element (collapsible icon beside TOC heading). 
+			// These two conditions help us target the required element (collapsible icon beside TOC heading).
 			const condition1 = ( element?.tagName === 'path' || element?.tagName === 'svg' );  // Check if the clicked element type is either path or SVG.
 			const condition2 = ( element?.parentNode?.className === 'uagb-toc__title' );  // Check if the clicked element's parent has the required class.
-			
+
 			if( condition1 && condition2 ){
-				
+
 				const $root = element?.closest( '.wp-block-uagb-table-of-contents' );
 
 				if ( $root.classList.contains( 'uagb-toc__collapse' ) ) {
@@ -122,7 +122,7 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 			return;
 		}
 		const hashId = encodeURI( hash.substring( 0 ) );
-		const selectedAnchor = document.querySelector( hashId );
+		const selectedAnchor = document?.querySelector( hashId );
 		if ( null === selectedAnchor ) {
 			return;
 		}
@@ -174,7 +174,7 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 			scrollData = node.getAttribute( 'data-scroll' );
 			scrollOffset = node.getAttribute( 'data-offset' );
 			let offset = null;
-			
+
 			hash = hash.substring( 1 );
 
 			if ( document?.querySelector( "[id='" + hash + "']" ) ) {
@@ -251,7 +251,27 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 			const tocListWrap = $thisScope.querySelector( '.uagb-toc__list-wrap' );
 
 			const divsArr = Array.from( allHeader );
+			/* Logic for Remove duplicate heading with same HTML tag and create an new array with duplicate entries start here. */
+			const ArrayOfDuplicateElements = function ( headingArray = [] ) {
+				const arrayWithDuplicateEntries = [];
+				headingArray.reduce( ( temporaryArray, currentVal ) => {
+					if (
+						!temporaryArray.some(
+							( item ) => item.innerText === currentVal.innerText
+						)
+						) {
 
+						temporaryArray.push( currentVal );
+					} else {
+						arrayWithDuplicateEntries.push( currentVal );
+
+					}
+					return temporaryArray;
+				}, [] );
+				return arrayWithDuplicateEntries;
+			};
+			const duplicateHeadings = ArrayOfDuplicateElements( divsArr );
+			/* Logic for Remove duplicate heading with same HTML tag and create an new array with duplicate entries ends here. */
 			for ( let i = 0; i < divsArr.length; i++ ) {
 
 				let headerText = parseTocSlug( divsArr[i].innerText );
@@ -272,6 +292,18 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 				span.id = headerText;
 				span.className =  'uag-toc__heading-anchor';
 				divsArr[i].prepend( span );
+				/* Logic for Create an unique Id for duplicate heading start here. */
+				for ( let k = 0; k < duplicateHeadings.length; k++ ){
+					const randomID = '#toc_' + Math.random();
+					duplicateHeadings[k]?.querySelector( '.uag-toc__heading-anchor' )?.setAttribute( 'id',randomID.substring( 1 ) )
+					const aTags = Array.from( tocListWrap.getElementsByTagName( 'a' ) );
+					const duplicateHeadingsInTOC = ArrayOfDuplicateElements( aTags );
+					for ( let l = 0; l < duplicateHeadingsInTOC.length; l++ ) {
+						duplicateHeadingsInTOC[k]?.setAttribute( 'href' , randomID );
+					}
+				}
+				/* Logic for Create an unique Id for duplicate heading ends here. */
+
 			}
 		}
 
