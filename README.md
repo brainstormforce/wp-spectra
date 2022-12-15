@@ -171,7 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 2.1.2 - TUESDAY, 20th DECEMBER 2022 ###
-* Fix: Tabs - Need to remove link option for tabs title.
+* Fix: Tabs - Need to remove the WP default Link option from the toolbar for the tabs title field.
 
 ### 2.1.1 - WEDNESDAY, 14th DECEMBER 2022 ###
 * Improvement: Call To Action - Added a width option for the CTA buttons.
