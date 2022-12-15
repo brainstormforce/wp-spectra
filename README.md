@@ -170,7 +170,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### 2.1.2 - WEDNESDAY, 14th DECEMBER 2022 ###
+### 2.1.2 - TUESDAY, 20th DECEMBER 2022 ###
 * Fix: Post Grid - Equal Height is not functional in Post Grid Block.
 ### 2.1.1 - WEDNESDAY, 14th DECEMBER 2022 ###
 * Improvement: Call To Action - Added a width option for the CTA buttons.
