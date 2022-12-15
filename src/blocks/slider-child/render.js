@@ -28,14 +28,17 @@ const Render = () => {
 	// Hide slider block.
 	const ALLOWED_BLOCKS = parentBlocks.map( block => block.name ).filter( blockName => [ 'uagb/slider', 'uagb/post-carousel', 'uagb/testimonial' ].indexOf( blockName ) === -1 );
 
+	const innerBlockOptions = {
+		allowedBlocks: ALLOWED_BLOCKS,
+		template: TEMPLATE
+	}
+
 	const innerBlocksProps = useInnerBlocksProps(
         {
 			className: `swiper-content`,
 			slot: 'container-start'
 		},
-        {
-			allowedBlocks: ALLOWED_BLOCKS,
-		}
+    	innerBlockOptions
     );
 
 	return (
