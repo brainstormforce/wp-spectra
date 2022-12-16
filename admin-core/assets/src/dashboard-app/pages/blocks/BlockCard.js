@@ -70,7 +70,7 @@ const BlockCard = ( props ) => {
             'box-border relative border rounded-md h-20 p-4 flex items-center gap-x-4 snap-start transition spectra-icon-transition'
         ) }
         >
-            <div className="flex-shrink-0 opacity-80">
+            <div className="flex-shrink-0">
                 { UAGB_Block_Icons[slug] }
             </div>
             <div className="uagb-admin-block-card__title flex-1 min-w-0">
