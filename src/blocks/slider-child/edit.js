@@ -41,13 +41,14 @@ const applyWithSelect = withSelect( ( select, props ) => { // eslint-disable-lin
 	const deviceType = __experimentalGetPreviewDeviceType
 		? __experimentalGetPreviewDeviceType()
 		: null;
-		const { getBlocks } = select( 'core/block-editor' );
+		const { getBlocks, getBlockIndex } = select( 'core/block-editor' );
 	const {
 		getBlockType,
 	} = select( 'core/blocks' );
 	const { insertBlock } = useDispatch( 'core/block-editor' );
 	const innerBlocks = getBlocks( props.clientId );
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
+	const slideIndex = getBlockIndex( props.clientId ); 
 
 	return {
 		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
@@ -56,7 +57,8 @@ const applyWithSelect = withSelect( ( select, props ) => { // eslint-disable-lin
 		blockType: getBlockType( props.name ),
 		replaceInnerBlocks,
 		deviceType,
-		isParentOfSelectedBlock: select( 'core/block-editor' ).hasSelectedInnerBlock( props.clientId, true )
+		isParentOfSelectedBlock: select( 'core/block-editor' ).hasSelectedInnerBlock( props.clientId, true ),
+		slideIndex
 	};
 } );
 export default compose( applyWithSelect )( UAGBSlide );

@@ -2,7 +2,13 @@ import { useInnerBlocksProps } from '@wordpress/block-editor';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-const Render = () => {
+const Render = ( props ) => {
+
+	props = props.parentProps;
+
+	const {
+		slideIndex
+	} = props;
 
 	// Only parent blocks.
 	const parentBlocks = wp.blocks.getBlockTypes().filter( function( item ) { 
@@ -14,7 +20,7 @@ const Render = () => {
 				[ 'uagb/info-box', { 
 					showIcon: false,
 					ctaType: 'button',
-					infoBoxTitle: __( 'Slide' , 'ultimate-addons-for-gutenberg' ),
+					infoBoxTitle: __( 'Slide ' , 'ultimate-addons-for-gutenberg' ) + ( parseInt( slideIndex + 1 ) ),
 					showCtaIcon: false,
 					paddingBtnTop: 12,
 					paddingBtnRight: 24,
