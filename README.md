@@ -170,7 +170,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### 2.1.1 - WEDNESDAY, 14th DECEMBER 2022 ###
+### 2.1.2 - WEDNESDAY, 14th DECEMBER 2022 ###
 * Fix: Container - Resolved the issue where the list items overflows inside a Container on responsive devices.
 ### 2.1.1 - WEDNESDAY, 14th DECEMBER 2022 ###
 * Improvement: Call To Action - Added a width option for the CTA buttons.
