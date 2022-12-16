@@ -16,6 +16,7 @@ import { InspectorControls } from '@wordpress/block-editor';
 import renderSVG from '@Controls/renderIcon';
 import UAGTabsControl from '@Components/tabs';
 import UAGSelectControl from '@Components/select-control';
+import GradientSettings from '@Components/gradient-settings';
 import {
 	ToggleControl,
 	Icon,
@@ -193,6 +194,8 @@ const Settings = ( props ) => {
 		submitTextLetterSpacingTablet,
 		submitTextLetterSpacingMobile,
 		submitTextLetterSpacingType,
+		gradientValue,
+		gradientHValue,
 	} = attributes;
 
 	const presetSettings = () => {
@@ -1543,6 +1546,13 @@ const Settings = ( props ) => {
 										'ultimate-addons-for-gutenberg'
 									),
 								},
+								{
+									value: 'gradient',
+									label: __(
+										'Gradient',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
 							] }
 						/>
 						{ submitBgType === 'color' &&
@@ -1561,6 +1571,15 @@ const Settings = ( props ) => {
 								setAttributes={ setAttributes }
 							/>
 						}
+						{ 'gradient' === submitBgType && (
+							<GradientSettings
+								backgroundGradient={ {
+									value: gradientValue,
+									label: 'gradientValue',
+								}}
+								setAttributes={ setAttributes }
+							/>
+						) }
 					</>
 				}
 				hover={
@@ -1602,6 +1621,13 @@ const Settings = ( props ) => {
 										'ultimate-addons-for-gutenberg'
 									),
 								},
+								{
+									value: 'gradient',
+									label: __(
+										'Gradient',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
 							] }
 						/>
 						{ submitBgHoverType === 'color' &&
@@ -1620,6 +1646,15 @@ const Settings = ( props ) => {
 								setAttributes={ setAttributes }
 							/>
 						}
+						{ 'gradient' === submitBgHoverType && (
+							<GradientSettings
+								backgroundGradient={ {
+									value: gradientHValue,
+									label: 'gradientHValue',
+								}}
+								setAttributes={ setAttributes }
+							/>
+						) }
 					</>
 				}
 			/>

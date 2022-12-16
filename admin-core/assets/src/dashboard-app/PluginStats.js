@@ -5,15 +5,34 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import apiFetch from '@wordpress/api-fetch';
 
 const PluginStats = () => {
 
 	const dispatch = useDispatch();
 
 	const activatePro = () => {
-		const isThisNull = uag_react.spectra_pro_activation;
-		if ( null === isThisNull ){
-			window.location.reload();
+		const isThisNull = uag_react.spectra_pro_status;
+
+		if ( '' === isThisNull ){
+
+			const formData = new window.FormData();
+
+			formData.append( 'action', 'uag_pro_activate' );
+			formData.append( 'security', uag_react.pro_activate_nonce );
+			formData.append( 'value', 'spectra' );
+
+			apiFetch( {
+				url: uag_react.ajax_url,
+				method: 'POST',
+				body: formData,
+			} ).then( () => {
+				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Spectra Pro Activated!' } );
+				setTimeout( ()=>{
+					window.location.reload();
+				  }, 500 );
+
+			} );
 		}
 	};
 

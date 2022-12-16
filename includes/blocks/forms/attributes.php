@@ -198,6 +198,8 @@ return array_merge(
 		'submitborderRadius'             => 3,
 		'submitborderColor'              => '',
 		'submitborderHoverColor'         => '',
+		'gradientValue'                  => 'linear-gradient(90deg, rgba(6, 147, 227, 0.5) 0%, rgba(155, 81, 224, 0.5) 100%)',
+		'gradientHValue'                 => 'linear-gradient(90deg, rgba(6, 147, 227, 0.5) 0%, rgba(155, 81, 224, 0.5) 100%)',
 	),
 	$success_message_border_attribute,
 	$failed_message_border_attribute,
