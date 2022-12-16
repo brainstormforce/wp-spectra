@@ -86,6 +86,7 @@ import './blocks/image-gallery/block.js';
 import './blocks/inline-notice/block.js';
 import './blocks/lottie/block.js';
 import './blocks/marketing-button/block.js';
+import './blocks/modal/block.js';
 import './blocks/post/block.js'; // Carousel, Grid.
 import './blocks/timeline/post-timeline/block.js';
 import './blocks/price-list/block.js';
@@ -100,7 +101,6 @@ import './blocks/tabs-child/block.js'; // Child Block.
 import './blocks/taxonomy-list/block.js'; // P29.
 import './blocks/team/block.js'; // P30.
 import './blocks/testimonial/block.js'; // P31.
-import './blocks/modal/block.js'; // P32.
 // Extensions.
 import './blocks/extensions/attributes.js';
 import './blocks/extensions/block.js';

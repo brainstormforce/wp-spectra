@@ -17,7 +17,7 @@ registerBlockType( 'uagb/modal', {
 		'This block allows you to add modal popup.',
 		'ultimate-addons-for-gutenberg'
 	),
-	icon: UAGB_Block_Icons.image,
+	icon: UAGB_Block_Icons.modal,
 	keywords: [
 		__( 'modal', 'ultimate-addons-for-gutenberg' ),
 		__( 'popup', 'ultimate-addons-for-gutenberg' ),

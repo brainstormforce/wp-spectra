@@ -6,6 +6,10 @@ const attributes = {
 	block_id: {
 		type: 'string',
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 	modalTrigger: {
 		type: 'string',
 		default: 'button'

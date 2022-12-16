@@ -841,6 +841,46 @@ const UAGB_Block_Icons = {
 			strokeLinejoin: 'round',
 		} ),
 	),
+	modal: el(
+		'svg',
+		{ width: 24, height: 24, viewBox: '0 0 24 24', fill: 'none', className: 'uagb-editor-icons' },
+		el( 'rect', {
+			x: 3,
+			y: 7.30975,
+			width: 15.033,
+			height: 11.7712,
+			rx: 2,
+			fill: noColor,
+			stroke: iconColor,
+			strokeWidth: 1.4,
+			strokeLinecap: 'round',
+			strokeLinejoin: 'round',
+		} ),
+		el( 'path', {
+			d: 'M6.86572 11.6992H14.1675',
+			fill: noColor,
+			stroke: iconColor,
+			strokeWidth: 1.4,
+			strokeLinecap: 'round',
+			strokeLinejoin: 'round',
+		} ),
+		el( 'path', {
+			d: 'M6.86572 14.6918H14.1675',
+			fill: noColor,
+			stroke: iconColor,
+			strokeWidth: 1.4,
+			strokeLinecap: 'round',
+			strokeLinejoin: 'round',
+		} ),
+		el( 'path', {
+			d: 'M19.0982 4.51694L20.1633 5.58197M20.1633 5.58197L21.2283 6.647M20.1633 5.58197L19.0982 6.647M20.1633 5.58197L21.2283 4.51694',
+			fill: noColor,
+			stroke: iconColor,
+			strokeWidth: 1.4,
+			strokeLinecap: 'round',
+			strokeLinejoin: 'round',
+		} ),
+	),
 
 	// ----------------------------.
 	// All Spectra Pro Block Icons .
