@@ -14,7 +14,7 @@ import { registerBlockType } from '@wordpress/blocks';
 registerBlockType( 'uagb/slider-child', {
 	title: __( 'Slider Child', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add and customize content of this slide.', 'ultimate-addons-for-gutenberg' ),
-	icon: UAGB_Block_Icons.slider,
+	icon: UAGB_Block_Icons.slider_child,
 	category: uagb_blocks_info.category,
 	parent: [ 'uagb/slider' ],
 	keywords: [
