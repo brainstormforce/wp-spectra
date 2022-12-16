@@ -18,7 +18,7 @@ const Render = ( props ) => {
 
 	const deviceType = useDeviceType();
 	const swiperRef = useRef();
-	const sliderWrapRef = React.useRef();
+	const sliderWrapRef = useRef();
 	const sliderPaginationRef = useRef();
 	const sliderNavPrevRef = useRef();
 	const sliderNavNextRef = useRef();
