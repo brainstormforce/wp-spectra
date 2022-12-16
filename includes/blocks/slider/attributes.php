@@ -11,10 +11,10 @@ $default_padding        = 20;
 $border_attribute       = UAGB_Block_Helper::uag_generate_border_attribute( 'slider' );
 $arrow_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'slider-arrow' );
 
-$arrow_border_attribute['slider-arrowBorderBottomLeftRadius'] = 50;
+$arrow_border_attribute['slider-arrowBorderBottomLeftRadius']  = 50;
 $arrow_border_attribute['slider-arrowBorderBottomRightRadius'] = 50;
-$arrow_border_attribute['slider-arrowBorderTopLeftRadius'] = 50;
-$arrow_border_attribute['slider-arrowBorderTopRightRadius'] = 50;
+$arrow_border_attribute['slider-arrowBorderTopLeftRadius']     = 50;
+$arrow_border_attribute['slider-arrowBorderTopRightRadius']    = 50;
 
 return array_merge(
 	array(

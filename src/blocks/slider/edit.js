@@ -12,7 +12,6 @@ import './style.scss';
 import { compose } from '@wordpress/compose';
 import { useDeviceType } from '@Controls/getPreviewType';
 import styles from './editor.lazy.scss';
-import { SwiperSlide } from 'swiper/react';
 
 const UAGBSlider = ( props ) => {
 	const deviceType = useDeviceType();
@@ -97,8 +96,9 @@ const uagbSlideClass = createHigherOrderComponent( ( BlockListBlock ) => {
 
 			return <div className='swiper-slide'
 			onClick={( e ) => onSwiperChildClick( e )}
+			aria-hidden="true"
 			><BlockListBlock
-			{ ...props }
+			{ ...props } 
 			wrapperProps={ wrapperProps } /></div>;
 		}
 
