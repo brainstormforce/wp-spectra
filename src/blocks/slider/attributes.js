@@ -24,10 +24,6 @@ const attributes = {
 		type: 'array',
 		default: slideContent,
 	},
-	'activeSlide': {
-		type: 'number',
-		default: 1,
-	},
 	'slideItem': {
 		type: 'number',
 		default: slideCount,

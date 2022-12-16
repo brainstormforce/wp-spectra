@@ -177,16 +177,7 @@ const Settings = ( props ) => {
 							);
 
 							setAttributes( { slideItem: attributes.slideItem + 1 } );
-							setAttributes( { activeSlide: attributes.slideItem + 2 } );
-
-							setTimeout( function()  {
-
-								if( swiperInstance ) {
-									swiperInstance.update();
-									swiperInstance.slideTo( attributes.slideItem, transitionSpeed, false );
-								}
-
-							}, 400 );
+							swiperInstance.activeIndex = attributes.slideItem + 1;
 						} }
 					/>
 				</ToolbarGroup>

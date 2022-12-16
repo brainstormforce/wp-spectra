@@ -168,7 +168,7 @@ const Render = ( props ) => {
 			const slideIndex = getBlockIndex( selectedBlockData.clientId ); 
 
 			if( swiperInstance ) {
-				swiperInstance.slideTo( slideIndex, transitionSpeed, false );
+				swiperInstance.activeIndex = slideIndex;
 			}
 		}
 
@@ -199,8 +199,8 @@ const Render = ( props ) => {
 				<div 
 					{ ...innerBlocksProps }
 				/>
-
-				{ displayDots &&  
+			</div>
+			{ displayDots &&  
 					<div className="swiper-pagination" ref={sliderPaginationRef}></div>
 				}
 
@@ -209,8 +209,7 @@ const Render = ( props ) => {
 					<div className="swiper-button-prev" ref={sliderNavPrevRef}></div>
 					<div className="swiper-button-next" ref={sliderNavNextRef}></div>
 				</>
-				}
-			</div>
+			}
 		</div>
 	);
 };
