@@ -27,6 +27,7 @@ export default function styling( props ) {
 		modalHeightTablet,
 		modalHeightMobile,
 		modalHeightType,
+		contentBorderHColor,
 		closeIconSize,
 		closeIconPosition,
 		overlayColor,
@@ -203,6 +204,9 @@ export default function styling( props ) {
 				modalHeightType
 			),
 			...contentBorderCSS
+		},
+		' .uagb-modal-popup-wrap:hover' : {
+			'border-color': contentBorderHColor,
 		},
 		' .uagb-modal-popup-close svg': {
 			'width': generateCSSUnit( closeIconSize, 'px' ),

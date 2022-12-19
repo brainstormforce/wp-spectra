@@ -554,7 +554,7 @@ export default function Settings( props ) {
 			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
-				label={ __( 'Modal Box Height', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Modal Popup Height', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
 					value: modalBoxHeight,
 					label: 'modalBoxHeight',

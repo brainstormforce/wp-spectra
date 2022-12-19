@@ -52,7 +52,10 @@ $selectors               = array(
 			'height' => UAGB_Helper::get_css_value( $attr['modalHeight'], $attr['modalHeightType'] ),
 		),
 		$content_border_css
-),
+	),
+	' .uagb-modal-popup-wrap:hover'              => array(
+		'border-color' => $attr['contentBorderHColor'],
+	),
 	' .uagb-modal-popup-close svg'               => array(
 		'width'       => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
 		'height'      => UAGB_Helper::get_css_value( $attr['closeIconSize'], 'px' ),
