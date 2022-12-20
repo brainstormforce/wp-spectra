@@ -192,6 +192,9 @@ $selectors = array(
 		'stroke-dasharray'  => UAGB_Helper::get_css_value( $circle_dash, 'px' ),
 		'stroke-dashoffset' => UAGB_Helper::get_css_value( $circle_dash, 'px' ),
 	),
+	'.wp-block-uagb-counter--bars'                         => array(
+		'flex-direction' => $attr['barFlip'] ? 'column-reverse' : 'column',
+	),
 	'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container' => array(
 		'background' => $attr['barBackground'],
 	),
