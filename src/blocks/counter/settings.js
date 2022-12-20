@@ -172,6 +172,7 @@ export default function Settings( props ) {
 		barSize,
 		barForeground,
 		barBackground,
+		barFlip,
 		// box shadow
 		boxShadowColor,
 		boxShadowHOffset,
@@ -489,6 +490,20 @@ export default function Settings( props ) {
 				] }
 				showIcons={ true }
 			/>
+			{ ( layout === 'bars' ) &&
+				<>
+					<ToggleControl
+						checked={ barFlip }
+						onChange={ () =>
+							setAttributes( { barFlip: ! barFlip } )
+						}
+						label={ __(
+							'Flip Title and Bar Positions',
+							'ultimate-addons-for-gutenberg'
+						) }
+					/>
+				</>
+			}
 			<UAGNumberControl
 				label={ __( 'Starting Number', 'ultimate-addons-for-gutenberg' ) }
 				value={ startNumber }

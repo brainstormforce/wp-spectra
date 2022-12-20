@@ -90,6 +90,7 @@ export default function styling( props ) {
 		barSize,
 		barForeground,
 		barBackground,
+		barFlip,
 		// Block Margin
 		blockTopMargin,
 		blockRightMargin,
@@ -464,6 +465,9 @@ export default function styling( props ) {
 			'stroke': circleForeground,
 			'stroke-dasharray': generateCSSUnit( circleDash, 'px' ),
 			'stroke-dashoffset': generateCSSUnit( circleDash, 'px' ),
+		},
+		'.wp-block-uagb-counter--bars': {
+			'flex-direction': barFlip ? 'column-reverse' : 'column',
 		},
 		'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container': {
 			'background': barBackground,
