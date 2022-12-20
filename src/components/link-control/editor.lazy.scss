@@ -23,6 +23,15 @@
 		padding-top: 0 !important;
 	}
 	.block-editor-link-control__search-actions {
-		top: 8px;
+		top: 5px;
+	}
+	.block-editor-link-control {
+		.block-editor-link-control__tools {
+			.block-editor-link-control__settings {
+				.components-base-control:last-child {
+					margin-bottom: 0 !important;
+				}
+			}
+		}
 	}
 }
