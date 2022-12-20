@@ -175,6 +175,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'font-size'       => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
 				'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 			);
+			$selectors[ $wrapper . ':hover .uagb-button__link' ]                            = array(
+				'color' => $attr['hColor'],
+			);
+			$selectors[ $wrapper . ':focus .uagb-button__link' ]                            = array(
+				'color' => $attr['hColor'],
+			);
 			$m_selectors[ $wrapper . ' .uagb-button__link' ]                                = array(
 				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
 				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
