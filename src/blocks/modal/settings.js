@@ -5,7 +5,7 @@ import InspectorTab, {
 } from '@Components/inspector-tabs/InspectorTab.js';
 import { __ } from '@wordpress/i18n';
 import {InspectorControls} from '@wordpress/block-editor';
-import { Icon, SelectControl, ToggleControl } from '@wordpress/components';
+import { Icon, ToggleControl } from '@wordpress/components';
 import UAGMediaPicker from '@Components/image';
 import UAGIconPicker from '@Components/icon-picker';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -367,20 +367,33 @@ export default function Settings( props ) {
 
 	const modalTriggerPanel = (
 		<UAGAdvancedPanelBody
-			title={ __( 'Display Settings', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
+			title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ true }
 		>
-			<SelectControl
-				label={ __( 'Display Modal On', 'ultimate-addons-for-gutenberg' ) }
-				value={ modalTrigger }
-				onChange={ ( value ) => {
-					setAttributes( { modalTrigger: value } )
+			<MultiButtonsControl
+				setAttributes={ setAttributes }
+				label={ __( 'Choose The Trigger', 'ultimate-addons-for-gutenberg' ) }
+				data={ {
+					value: modalTrigger,
+					label: 'modalTrigger',
 				} }
 				options={ [
-					{ value: 'text', label: 'Text' },
-					{ value: 'icon', label: 'Icon' },
-					{ value: 'image', label: 'Image' },
-					{ value: 'button', label: 'Button' },
+					{
+						value: 'button',
+						label: __( 'Button', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'icon',
+						label: __( 'Icon', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'image',
+						label: __( 'Image', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'text',
+						label: __( 'Text', 'ultimate-addons-for-gutenberg' ),
+					},
 				] }
 			/>
 				{ modalTrigger === 'icon' && (
@@ -448,16 +461,17 @@ export default function Settings( props ) {
 						}
 						{ showBtnIcon && '' !== buttonIcon && (
 								<>
-									<UAGSelectControl
+									<MultiButtonsControl
+										setAttributes={ setAttributes }
 										label={ __(
-											'Icon Position',
+											'Position',
 											'ultimate-addons-for-gutenberg'
 										) }
 										data={ {
 											value: buttonIconPosition,
 											label: 'buttonIconPosition',
 										} }
-										setAttributes={ setAttributes }
+										className="uagb-multi-button-alignment-control"
 										options={ [
 											{
 												value: 'before',
@@ -506,8 +520,8 @@ export default function Settings( props ) {
 
 	const modalContentPanel = (
 		<UAGAdvancedPanelBody
-			title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ true }
+			title={ __( 'Container', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
 		>
 			<ResponsiveSlider
 				label={ __(
@@ -600,7 +614,7 @@ export default function Settings( props ) {
 						},
 					} }
 					min={ 0 }
-					max={ 100 }
+					max={ 200 }
 					unit={ {
 						value: maxHeightType,
 						label: 'maxHeightType',
@@ -735,8 +749,8 @@ export default function Settings( props ) {
 
 	const triggerStylePanel =  (
 		<UAGAdvancedPanelBody
-			title={ __( 'Display Settings', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
+			title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ true }
 		>
 
 			{ 'icon' === modalTrigger && icon !== '' && (
@@ -1337,7 +1351,7 @@ export default function Settings( props ) {
 
 	const contentStylePanel =  (
 		<UAGAdvancedPanelBody
-			title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+			title={ __( 'Container', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
 			<AdvancedPopColorControl
@@ -1499,7 +1513,7 @@ export default function Settings( props ) {
 	const backgroundSettings = (
 			<UAGAdvancedPanelBody
 				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 				<Background
 					setAttributes={ setAttributes }
@@ -1681,16 +1695,16 @@ export default function Settings( props ) {
 				<InspectorTabs>
 
 					<InspectorTab { ...UAGTabs.general }>
+						{modalTriggerPanel}
 						{modalContentPanel}
 						{modalClosePanel}
-						{modalTriggerPanel}
 					</InspectorTab>
 
 					<InspectorTab { ...UAGTabs.style }>
-						{backgroundSettings}
+						{triggerStylePanel}
 						{contentStylePanel}
 						{ '' !== closeIcon && closeStylePanel }
-						{triggerStylePanel}
+						{backgroundSettings}
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }

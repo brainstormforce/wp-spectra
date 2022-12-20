@@ -564,7 +564,7 @@ export default function styling( props ) {
 	}
 
 	if ( modalAlign !== 'full' ) {
-		selectors[ '.uagb-modal-wrapper' ] = {
+		selectors[ '.uagb-modal-wrapper .uagb-spectra-editor-wrap' ] = {
 			'text-align': modalAlign,
 		};
 		selectors[ ' .wp-block-button__link' ] = {
@@ -578,7 +578,7 @@ export default function styling( props ) {
 	}
 
 	if ( modalAlignTablet !== 'full' ) {
-		tabletSelectors[ '.uagb-modal-wrapper' ] = {
+		tabletSelectors[ '.uagb-modal-wrapper .uagb-spectra-editor-wrap' ] = {
 			'text-align': modalAlignTablet,
 		};
 		tabletSelectors[ ' .wp-block-button__link' ] = {
@@ -592,7 +592,7 @@ export default function styling( props ) {
 	}
 
 	if ( modalAlignMobile !== 'full' ) {
-		mobileSelectors[ '.uagb-modal-wrapper' ] = {
+		mobileSelectors[ '.uagb-modal-wrapper .uagb-spectra-editor-wrap' ] = {
 			'text-align': modalAlignMobile,
 		};
 		mobileSelectors[ ' .wp-block-button__link' ] = {

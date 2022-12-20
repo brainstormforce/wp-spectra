@@ -5,8 +5,6 @@ import Settings from './settings';
 import Render from './render';
 import { useDeviceType } from '@Controls/getPreviewType';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-//  Import CSS.
-import './style.scss';
 
 const UAGBModalEdit = ( props ) => {
 	const deviceType = useDeviceType();

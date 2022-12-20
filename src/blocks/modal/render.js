@@ -37,12 +37,7 @@ const excludeBlocks = [
 'uagb/modal',
 ];
 
-const propTypes = {};
-
-const defaultProps = {};
-
 const Render = ( props ) => {
-
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -207,6 +202,7 @@ const Render = ( props ) => {
 				data-escpress={ escPress ? 'enable' : 'disable' }
 				data-overlayclick={ overlayClick ? 'enable' : 'disable' }
 			>
+				<div className='uagb-spectra-editor-wrap' >
 				{
 					'text' === modalTrigger &&
 					textHTML
@@ -223,6 +219,7 @@ const Render = ( props ) => {
 					'button' === modalTrigger &&
 					buttonHTML
 				}
+				</div>
 				<div
 					className={ classnames(
 						`${ appearEffect }`,
@@ -244,9 +241,5 @@ const Render = ( props ) => {
 			</div>
 		</>
 	);
-}
-
-Render.propTypes = propTypes;
-Render.defaultProps = defaultProps;
-
-export default Render
+};
+export default React.memo( Render );
