@@ -170,9 +170,12 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 2.1.2 =
-* Improvement: Call to action - Width option for CTA buttons.
-* Improvement: Global - Added hover color accessibility to Spectra block that has a button.
+= 2.1.2 - TUESDAY, 20th DECEMBER 2022 =
+* Fix: Container - Resolved the issue where the list items overflows inside a Container on responsive devices.
+* Fix: Image - Resolved the issue where the alignments are ineffective inside a Container on front-end.
+* Fix: Post Grid - Equal Height is not functional in Post Grid Block.
+* Fix: Buttons - Page scroll to top  when hash link is added and refreshes on click when hash is removed.
+* Improvement: Counter - Bar Layout - Added toggle to flip/swap the positions of bar and title.
 * Fix: Typography - Resolved google font console errors.
 
 = 2.1.1 - WEDNESDAY, 14th DECEMBER 2022 =
