@@ -138,6 +138,7 @@ return array_merge(
 		'barSize'                   => '',
 		'barForeground'             => '#007cba',
 		'barBackground'             => '#eaeaea',
+		'barFlip'                   => false,
 		// Box Shadow.
 		'boxShadowColor'            => '#00000070',
 		'boxShadowHOffset'          => 0,
