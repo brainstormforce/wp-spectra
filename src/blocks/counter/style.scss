@@ -21,6 +21,9 @@
 
 	&--bars {
 
+		display: flex;
+		flex-direction: column;
+
 		.wp-block-uagb-counter-bars-container {
 
 			width: 100%;
