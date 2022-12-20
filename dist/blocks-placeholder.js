@@ -19,6 +19,7 @@ registerBlockType( 'uagb/how-to', { title: __( 'How To', 'ultimate-addons-for-gu
 registerBlockType( 'uagb/icon-list', { title: __( 'Icon List', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/image-gallery', { title: __( 'Image Gallery', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/image', { title: __( 'Image', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/info-box-2.0', { title: __( 'Info-Box 2.0', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/info-box', { title: __( 'Info Box', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/inline-notice', { title: __( 'Inline Notice', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/lottie', { title: __( 'Lottie Animation', 'ultimate-addons-for-gutenberg' ) } );
