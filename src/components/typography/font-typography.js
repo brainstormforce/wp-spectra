@@ -17,7 +17,7 @@ function FontFamilyControl( props ) {
 		{ value: 'Helvetica', label: 'Helvetica', weight: [ 'Default', '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
 		{ value: 'Times New Roman', label: 'Times New Roman', weight: [ 'Default', '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
 		{ value: 'Georgia', label: 'Georgia', weight: [ 'Default', '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
-	]
+	];
 
 	let fontWeight = '';
 
