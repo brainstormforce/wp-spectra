@@ -17,7 +17,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-	placeholder: __( 'Search...', 'ultimate-addons-for-gutenberg' ),
+	placeholder: __( 'Search…', 'ultimate-addons-for-gutenberg' ),
 	settings: [
 		{
 			id: 'opensInNewTab',
@@ -30,7 +30,7 @@ const defaultProps = {
 	]
 };
 
-export default function UAGLinkControl({label, placeholder, settings, onChange, help, value}) {
+export default function UAGLinkControl( {label, placeholder, settings, onChange, help, value} ) {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -39,7 +39,7 @@ export default function UAGLinkControl({label, placeholder, settings, onChange, 
 		};
 	}, [] );
 
-	const ID = getIdFromString(label ? label : placeholder)
+	const ID = getIdFromString( label ? label : placeholder )
 	return (
 		<React.Fragment>
 			<div className='uagb-link-control'>
@@ -56,15 +56,7 @@ export default function UAGLinkControl({label, placeholder, settings, onChange, 
 					value={ value }
 					settings={ settings }
 					onChange={ onChange }
-					withCreateSuggestion={ true }
-					createSuggestion={ ( inputValue ) => setAttributes( { post: {
-						...attributes.post,
-						title: inputValue,
-						type: 'custom-url',
-						id: Date.now(),
-						url: inputValue
-					} } ) }
-					createSuggestionButtonText={ ( newValue ) => `${ __( 'New:', 'spectra-pro' ) } ${newValue}` }
+					withCreateSuggestion={ false }
 				/>
 				{
 					help && (
