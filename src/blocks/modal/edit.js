@@ -13,6 +13,8 @@ const UAGBModalEdit = ( props ) => {
 
 		const { setAttributes } = props;
 
+		setAttributes( { defaultTemplate:  true } );
+
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 

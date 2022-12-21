@@ -71,7 +71,8 @@ const Render = ( props ) => {
 		closeIcon,
 		imgTagWidth,
 		imgTagHeight,
-		showBtnIcon
+		showBtnIcon,
+		defaultTemplate
 	} = attributes;
 
 	const deviceType = useDeviceType();
@@ -229,7 +230,7 @@ const Render = ( props ) => {
 				>
 					<div className="uagb-modal-popup-wrap">
 						<div className="uagb-modal-popup-content">
-							<InnerBlocks template={ getStepAsChild } allowedBlocks={ ALLOWED_BLOCKS } renderAppender={ InnerBlocks.DefaultBlockAppender } />
+							<InnerBlocks template={ defaultTemplate === undefined || defaultTemplate === false ? getStepAsChild : [ [ 'core/paragraph', { placeholder: 'Type / to choose a block' } ] ] } allowedBlocks={ ALLOWED_BLOCKS } renderAppender={ InnerBlocks.DefaultBlockAppender } />
 						</div>
 						{ ( 'popup-top-left' === closeIconPosition || 'popup-top-right' === closeIconPosition ) && (
 							<div className="uagb-modal-popup-close">

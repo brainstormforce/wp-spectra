@@ -141,7 +141,7 @@ return array_merge(
 		'btnLinkHoverColor'           => '',
 		'btnBgHoverColor'             => '',
 		'modalBoxHeight'              => 'auto',
-		'maxHeight'                   => '100',
+		'maxHeight'                   => '90',
 		'maxHeightTablet'             => '',
 		'maxHeightMobile'             => '',
 		'maxHeightType'               => 'vh',

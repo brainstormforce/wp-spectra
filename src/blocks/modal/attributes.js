@@ -728,7 +728,7 @@ const attributes = {
 	},
 	maxHeight: {
 		type: 'number',
-		default: '100',
+		default: '90',
 		UAGCopyPaste: {
 			styleType: 'container-max-height-desktop'
 		},
