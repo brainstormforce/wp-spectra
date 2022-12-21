@@ -365,7 +365,13 @@ const attributes = {
 			styleType: 'main-title-color'
 		}
 	},
-
+	textLoadGoogleFonts: {
+		type: 'boolean',
+		default: false,
+		UAGCopyPaste: {
+			styleType: 'main-title-load-google-fonts'
+		}
+	},
 	textFontFamily: {
 		type: 'string',
 		default: 'Default',
@@ -575,7 +581,13 @@ const attributes = {
 			styleType: 'btn-left-padding-mobile'
 		}
 	},
-
+	btnLoadGoogleFonts: {
+		type: 'boolean',
+		default: false,
+		UAGCopyPaste: {
+			styleType: 'btn-load-google-fonts'
+		}
+	},
 	btnFontFamily: {
 		type: 'string',
 		default: 'Default',
