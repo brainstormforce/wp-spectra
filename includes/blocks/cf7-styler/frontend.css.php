@@ -146,6 +146,11 @@ $selectors = array(
 		'background-color' => $attr['buttonBgHoverColor'],
 		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['buttonBorderHoverColor'],
 	),
+	' .wpcf7 input.wpcf7-form-control.wpcf7-submit:focus' => array(
+		'color'            => $attr['buttonTextHoverColor'],
+		'background-color' => $attr['buttonBgHoverColor'],
+		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['buttonBorderHoverColor'],
+	),
 
 	// Check box Radio.
 	' .wpcf7 .wpcf7-checkbox input[type="checkbox"]:checked + span:before' => array(
