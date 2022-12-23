@@ -6,6 +6,7 @@
  *
  * @package uagb
  */
+
 // Adds Fonts.
 UAGB_Block_JS::blocks_modal_gfont( $attr );
 $block_name      = 'modal';
