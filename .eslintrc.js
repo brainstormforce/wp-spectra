@@ -41,6 +41,5 @@ module.exports = {
 		localStorage: true,
 		uagb_timeline_data: true,
 		UAGBModal: true,
-		UAGBCounter: true,
 	},
 };
