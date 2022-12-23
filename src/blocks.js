@@ -98,15 +98,15 @@ import './blocks/star-rating/block.js';
 import './blocks/table-of-contents/block.js';
 import './blocks/tabs/block.js';
 import './blocks/tabs-child/block.js'; // Child Block.
-import './blocks/taxonomy-list/block.js'; // P29.
-import './blocks/team/block.js'; // P30.
-import './blocks/testimonial/block.js'; // P31.
+import './blocks/taxonomy-list/block.js';
+import './blocks/team/block.js';
+import './blocks/testimonial/block.js';
 // Extensions.
 import './blocks/extensions/attributes.js';
 import './blocks/extensions/block.js';
 // Deprecated Blocks: P90+.
-import './blocks/columns/block.js'; // P90.
-import './blocks/section/block.js'; // P91.
+import './blocks/columns/block.js';
+import './blocks/section/block.js';
 import './blocks/column/block.js'; // Child Block.
 import './blocks/cf7-designer/block.js';
 import './blocks/gf-designer/block.js';

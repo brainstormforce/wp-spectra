@@ -2,7 +2,7 @@
 /**
  * Block Information & Attributes File.
  *
- * @since 2.0.0
+ * @since x.x.x
  *
  * @package uagb
  */
