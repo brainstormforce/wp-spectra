@@ -104,7 +104,7 @@ import './blocks/testimonial/block.js';
 // Extensions.
 import './blocks/extensions/attributes.js';
 import './blocks/extensions/block.js';
-// Deprecated Blocks: P90+.
+// Legacy Blocks.
 import './blocks/columns/block.js';
 import './blocks/section/block.js';
 import './blocks/column/block.js'; // Child Block.
