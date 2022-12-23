@@ -209,6 +209,16 @@ $selectors = array(
 		'color'        => $attr['submitColorHover'],
 		'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],
 	),
+	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:focus ' => array(
+		'color'            => $attr['submitColorHover'],
+		'background-color' => ( 'color' === $attr['submitBgHoverType'] ) ? $attr['submitBgColorHover'] : 'transparent',
+		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],
+	),
+	' .uagb-forms-main-form .uagb-forms-main-submit-button:focus' => array(
+		'color'            => $attr['submitColorHover'],
+		'background-color' => ( 'color' === $attr['submitBgHoverType'] ) ? $attr['submitBgColorHover'] : 'transparent',
+		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],
+	),
 	// Hover Colors.
 	' .uagb-forms-field-set:hover .uagb-forms-input-label' => array(
 		'color' => $attr['labelHoverColor'],

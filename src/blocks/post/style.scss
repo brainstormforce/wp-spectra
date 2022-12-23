@@ -166,7 +166,7 @@
 	}
 
 	&.is-grid .uagb-post__inner-wrap {
-		height: 100%;
+		height: max-content;
 	}
 
 	&.is-grid.uagb-post__equal-height .uagb-post__inner-wrap {
