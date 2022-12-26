@@ -447,84 +447,84 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'container-top-padding-desktop'
 		},
-		default: uagb_blocks_info.container_global_padding
+		default: 10
 	},
 	'bottomPaddingDesktop': {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-bottom-padding-desktop'
 		},
-		default: uagb_blocks_info.container_global_padding
+		default: 10
 	},
 	'leftPaddingDesktop': {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-left-padding-desktop'
 		},
-		default: uagb_blocks_info.container_global_padding
+		default: 10
 	},
 	'rightPaddingDesktop': {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-right-padding-desktop'
 		},
-		default: uagb_blocks_info.container_global_padding
+		default: 10
 	},
 	'topPaddingTablet': {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-top-padding-tablet'
 		},
-		default: uagb_blocks_info.container_global_padding
+		default: 10
 	},
 	'bottomPaddingTablet': {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-bottom-padding-tablet'
 		},
-		default: uagb_blocks_info.container_global_padding
+		default: 10
 	},
 	'leftPaddingTablet': {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-left-padding-tablet'
 		},
-		default: uagb_blocks_info.container_global_padding
+		default: 10
 	},
 	'rightPaddingTablet': {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-right-padding-tablet'
 		},
-		default: uagb_blocks_info.container_global_padding
+		default: 10
 	},
 	'topPaddingMobile': {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-top-padding-mobile'
 		},
-		default: uagb_blocks_info.container_global_padding
+		default: 10
 	},
 	'bottomPaddingMobile': {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-bottom-padding-mobile'
 		},
-		default: uagb_blocks_info.container_global_padding
+		default: 10
 	},
 	'leftPaddingMobile': {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-left-padding-mobile'
 		},
-		default: uagb_blocks_info.container_global_padding
+		default: 10
 	},
 	'rightPaddingMobile': {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-right-padding-mobile'
 		},
-		default: uagb_blocks_info.container_global_padding
+		default: 10
 	},
 	'paddingType': {
 		type: 'string',
