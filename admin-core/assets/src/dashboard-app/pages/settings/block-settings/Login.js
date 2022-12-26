@@ -89,7 +89,7 @@ export default function Login() {
 					<p className='mt-2 text-sm text-slate-500'>
 						{ __( 'Note: This setting is required if you wish to use Login with Google on your website. Read', 'ultimate-addons-for-gutenberg' ) }
 						{' '}
-						<a href='https://wpspectra.com/'>{__( 'this article', 'ultimate-addons-for-gutenberg' )}</a>.
+						<a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href='https://wpspectra.com/' target='_blank'>{__( 'this article', 'ultimate-addons-for-gutenberg' )}</a>.
 					</p>
 					<p className="mt-2 w-9/12 text-sm">
 						<a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href="https://ultimateelementor.com/docs/create-google-client-id-for-login-form-widget/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin" target="_blank" rel="noreferrer">
@@ -117,7 +117,7 @@ export default function Login() {
 					<p className='mt-2 text-sm text-slate-500'>
 						{ __( 'Note: This setting is required if you wish to use Login with Facebook on your website. Need help to get Facebook App Details? Read', 'ultimate-addons-for-gutenberg' ) }
 						{' '}
-						<a href='https://ultimateelementor.com/docs/create-facebook-app-id-for-login-form-widget/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin'>{__( 'this article', 'ultimate-addons-for-gutenberg' )}</a>.
+						<a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href='https://wpspectra.com/' target='_blank'>{__( 'this article', 'ultimate-addons-for-gutenberg' )}</a>.
 					</p>
 					<p className="mt-2 w-9/12 text-sm">
 						<a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href="https://ultimateelementor.com/docs/create-facebook-app-id-for-login-form-widget/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin" target="_blank" rel="noreferrer">
