@@ -6,14 +6,16 @@ import { __ } from '@wordpress/i18n';
 import Range from '@Components/range/Range.js';
 import AdvancedPopColorControl from '../color-control/advanced-pop-color-control';
 import { Button, Dashicon } from '@wordpress/components';
-import { useState } from '@wordpress/element';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
 import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 
 const TextShadowControl = ( props ) => {
 	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const panelRef = useRef( null );
 
 	const {
 		setAttributes,
@@ -64,6 +66,10 @@ const TextShadowControl = ( props ) => {
 	];
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
 
 	// Function to get the Block's default Text Shadow Values.
 	const getBlockTextShadowValue = () => {
@@ -214,17 +220,37 @@ const TextShadowControl = ( props ) => {
 		</div>
 	);
 
-	return popup ? (
+	const controlName = getIdFromString( props.label );
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+
+
+	return (
 		<div
-			className={ `components-base-control uag-text-shadow-options spectra-control-popup__options popup-${blockId} ${ activeClass }` }
+			ref={panelRef}
+			className={`spectra-components-control spectra-components-control--${controlName}`}
 		>
-			{ textShadowAdvancedControls }
-			{ showAdvancedControls && advancedControls }
+			{
+				controlBeforeDomElement
+			}
+			{
+				popup ? (
+					<div
+						className={ `components-base-control uag-text-shadow-options spectra-control-popup__options popup-${blockId} ${ activeClass }` }
+					>
+						{ textShadowAdvancedControls }
+						{ showAdvancedControls && advancedControls }
+					</div>
+				) : (
+					<>
+						{ overallControls }
+					</>
+				)
+			}
+			{
+				controlAfterDomElement
+			}
 		</div>
-	) : (
-		<>
-			{ overallControls }
-		</>
 	);
 };
 

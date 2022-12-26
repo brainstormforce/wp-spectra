@@ -6,6 +6,8 @@ import { select } from '@wordpress/data';
 const InspectorTab = ( props ) => {
 	const { children, isActive, type } = props;
 	const tabRef = useRef( null );
+	const { getSelectedBlock } = select( 'core/block-editor' );
+	const blockName = getSelectedBlock()?.name;
 
 	const tabContent = function () {
 		return applyFilters(
@@ -17,8 +19,7 @@ const InspectorTab = ( props ) => {
 
 	useEffect( () => {
 
-		const { getSelectedBlock } = select( 'core/block-editor' );
-		const blockName = getSelectedBlock()?.name;
+
 		const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
 
 		if ( uagSettingState ) {
@@ -64,6 +65,10 @@ const InspectorTab = ( props ) => {
 		}
 	}, [] );
 
+	const blockNameForHook = blockName.split( '/' ).pop();
+	const inspectorTabBefore = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${type}.before`, '', blockName );
+	const inspectorTabAfter = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${type}`, '', blockName );
+
 	return (
 		<div
 			style={ {
@@ -72,10 +77,14 @@ const InspectorTab = ( props ) => {
 			className={ `uagb-inspector-tab uagb-tab-content-${ type }` }
 			ref={tabRef}
 		>
+			{inspectorTabBefore}
 			{ Array.isArray( children )
 				? children.map( ( item ) => item )
 				: children }
 			{ tabContent() }
+			{
+				inspectorTabAfter
+			}
 		</div>
 	);
 };

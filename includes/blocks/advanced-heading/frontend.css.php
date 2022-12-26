@@ -268,9 +268,9 @@ $m_selectors['.wp-block-uagb-advanced-heading .uagb-desc-text']    = array(
 );
 
 $combined_selectors = array(
-	'desktop' => $selectors,
-	'tablet'  => $t_selectors,
-	'mobile'  => $m_selectors,
+	'desktop' => apply_filters('spectra.'.$block_name.'.styling', $selectors, $attr),
+	'tablet'  => apply_filters('spectra.'.$block_name.'.tablet_styling', $t_selectors, $attr),
+	'mobile'  => apply_filters('spectra.'.$block_name.'.mobile_styling', $m_selectors, $attr),
 );
 
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'head', ' .uagb-heading-text', $combined_selectors );
