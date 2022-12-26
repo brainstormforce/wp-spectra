@@ -170,7 +170,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### 2.1.2 - TUESDAY, 20th DECEMBER 2022 ###
+### 2.1.2 - WEDNESDAY, 14th DECEMBER 2022 ###
+* Fix: Testimonial - block break when we reduce the number of testimonials to 2.
 * Fix: Container - Resolved the issue where the list items overflows inside a Container on responsive devices.
 * Fix: Image - Resolved the issue where the alignments are ineffective inside a Container on front-end.
 * Fix: Tabs - Need to remove the WP default Link option from the toolbar for the tabs title field.
