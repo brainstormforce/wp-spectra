@@ -170,10 +170,12 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 2.1.2 - TUESDAY, 20th DECEMBER 2022 =
+= 2.1.2 - WEDNESDAY, 14th DECEMBER 2022 =
 * New: Introducing the Modal block that will help you to show your own customized popups on page and turn your visitors into subscribers and leads!
 * Improvement: Counter - Bar Layout - Added toggle to flip/swap the positions of bar and title.
 * Improvement: Global - Added hover color accessibility to Spectra block that has a button.
+* Fix: Block Transform - Theme pallet color for default theme does not carry forward when block transform.
+* Fix: Testimonial - block break when we reduce the number of testimonials to 2.
 * Fix: Container - Resolved the issue where the list items overflows inside a Container on responsive devices.
 * Fix: Image - Resolved the issue where the alignments are ineffective inside a Container on front-end.
 * Fix: Tabs - Need to remove the WP default Link option from the toolbar for the tabs title field.

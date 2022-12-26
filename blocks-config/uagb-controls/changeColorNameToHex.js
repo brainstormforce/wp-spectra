@@ -8,7 +8,7 @@ function colourNameToHex( colour ) {
 		if ( typeof colours[colour?.toLowerCase()] !== 'undefined' ){
 			result = colours[colour?.toLowerCase()];
 		} else {
-			const colorVal = `var(--${colour})`;
+			const colorVal = `var(--wp--preset--color--${colour})`;
 			result = maybeGetColorForVariable( colorVal );
 		}
 	return result;
