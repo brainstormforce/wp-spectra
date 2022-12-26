@@ -84,6 +84,8 @@ export default function Save( props ) {
 		>
 			<a // eslint-disable-line jsx-a11y/anchor-is-valid
 				className={ buttonClasses }
+				href={ '#' }
+				onClick={ 'return false;' }
 				target='_self'
 				rel='noopener noreferrer'
 			>

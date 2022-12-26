@@ -90,6 +90,11 @@ $selectors               = array(
 		'background-color' => $attr['btnBgHoverColor'],
 		'border-color'     => $attr['btnBorderHColor'],
 	),
+	' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:focus' => array(
+		'color'            => $attr['btnLinkHoverColor'] ? $attr['btnLinkHoverColor'] : $attr['btnLinkColor'],
+		'background-color' => $attr['btnBgHoverColor'],
+		'border-color'     => $attr['btnBorderHColor'],
+	),
 	' .uagb-modal-trigger svg'                   => array(
 		'width'       => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 		'height'      => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
@@ -111,6 +116,9 @@ $selectors               = array(
 		'fill'        => $attr['btnLinkColor'],
 	),
 	' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:hover svg' => array(
+		'fill' => $attr['btnLinkHoverColor'],
+	),
+	' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:focus svg' => array(
 		'fill' => $attr['btnLinkHoverColor'],
 	),
 );
