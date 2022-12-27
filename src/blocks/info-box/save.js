@@ -36,7 +36,7 @@ export default function save( props ) {
 	let isImage = '';
 
 	if ( source_type === 'icon' && icon !== '' ) {
-		isImage = <Icon attributes={ props.attributes } />;
+		isImage = <Icon attributes={ props.attributes } editor={ true } />;
 	} else {
 		isImage = <InfoBoxIconImage attributes={ props.attributes } />;
 	}

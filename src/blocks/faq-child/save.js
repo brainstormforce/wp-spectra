@@ -22,10 +22,10 @@ export default function save( props ) {
 		return (
 			<>
 				<span className="uagb-icon uagb-faq-icon-wrap">
-					{ renderSVG( icon ) }
+					{ renderSVG( icon, false ) }
 				</span>
 				<span className="uagb-icon-active uagb-faq-icon-wrap">
-					{ renderSVG( iconActive ) }
+					{ renderSVG( iconActive, false ) }
 				</span>
 			</>
 		);
@@ -41,7 +41,7 @@ export default function save( props ) {
 						className="uagb-question"
 					/>
 				</div>
-				<RichText.Content className="uagb-faq-content" tagName="p" value={ answer } />	
+				<RichText.Content className="uagb-faq-content" tagName="p" value={ answer } />
 			</>
 		);
 	};
