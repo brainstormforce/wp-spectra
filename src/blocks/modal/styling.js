@@ -286,6 +286,14 @@ export default function styling( props ) {
 		},
 		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:hover svg' : {
 			'fill': btnLinkHoverColor
+		},
+		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:focus' : {
+			'color': btnLinkHoverColor,
+			'background-color': btnBgHoverColor,
+			'border-color': btnBorderHColor
+		},
+		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:focus svg' : {
+			'fill': btnLinkHoverColor
 		}
 	};
 	const backgroundAttributesTablet = {
