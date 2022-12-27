@@ -47,6 +47,7 @@ import lottieAttribute from '@Blocks/lottie/attributes';
 import starRatingAttribute from '@Blocks/star-rating/attributes';
 import containerAttribute from '@Blocks/container/attributes';
 import imageAttribute from '@Blocks/image/attributes';
+import modalAttribute from '@Blocks/modal/attributes';
 import counterAttribute from '@Blocks/counter/attributes';
 import imageGalleryAttribute from '@Blocks/image-gallery/attributes';
 
@@ -90,7 +91,7 @@ export const blocksAttributes = {
 	'forms-name' : formsNameAttribute,
 	'forms-toggle' : formsToggleAttribute,
 	'forms-url' : formsUrlAttribute,
-	'forms-textarea' : formsTextareaAttribute, 
+	'forms-textarea' : formsTextareaAttribute,
 	'tabs' : tabsAttribute,
 	'lottie' : lottieAttribute,
 	'star-rating' : starRatingAttribute,
@@ -100,6 +101,7 @@ export const blocksAttributes = {
     'how-to-step' : howToStepAttribute,
 	'container' : containerAttribute,
 	'image': imageAttribute,
+	'modal': modalAttribute,
 	'counter': counterAttribute,
 	'image-gallery': imageGalleryAttribute,
 };

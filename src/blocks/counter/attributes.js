@@ -831,6 +831,13 @@ const attributes = {
 			styleType: 'bar-background'
 		},
 	},
+	barFlip : {
+		type: 'boolean',
+		default: false,
+		UAGCopyPaste: {
+			styleType: 'bar-flip'
+		},
+	},
 	// Box Shadow.
 	boxShadowColor: {
 		type: 'string',

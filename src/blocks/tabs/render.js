@@ -267,6 +267,7 @@ const Render = ( props ) => {
 										'Title…',
 										'ultimate-addons-for-gutenberg'
 									) }
+									allowedFormats={ [ 'core/bold', 'core/italic' ] }
 								/>
 								{ showIcon &&
 									icon &&

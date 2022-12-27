@@ -20,6 +20,7 @@ const GradientSettings = ( props ) => {
 
 	return (
 		<GradientPicker
+			__nextHasNoMargin = { true }
 			value={ backgroundGradient.value }
 			onChange={ onGradientChange }
 			className="uagb-gradient-picker"

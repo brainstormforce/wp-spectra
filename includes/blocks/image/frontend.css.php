@@ -38,6 +38,14 @@ $width_mobile = '' !== $attr['widthMobile'] ? $attr['widthMobile'] . 'px' : $wid
 $height_tablet = '' !== $attr['heightTablet'] ? $attr['heightTablet'] . 'px' : $attr['height'] . 'px';
 $height_mobile = '' !== $attr['heightMobile'] ? $attr['heightMobile'] . 'px' : $height_tablet;
 
+if ( 'left' === $attr['align'] ) {
+	$align = 'start';
+} elseif ( 'right' === $attr['align'] ) {
+	$align = 'end';
+} else {
+	$align = 'center';
+}
+
 $selectors = array(
 	'.wp-block-uagb-image'                            => array(
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['imageTopMargin'], $attr['imageMarginUnit'] ),
@@ -45,6 +53,7 @@ $selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageBottomMargin'], $attr['imageMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['imageLeftMargin'], $attr['imageMarginUnit'] ),
 		'text-align'    => $attr['align'],
+		'align-self'    => $align,
 	),
 	'.wp-block-uagb-image--layout-default figure img' => array_merge(
 		array(
