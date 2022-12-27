@@ -78,10 +78,15 @@ const UAGTextControl = ( props ) => {
 			</div>
         );
     };
-
     return(
         <>
-            <div className={`components-base-control uagb-text-control uagb-size-type-field-tabs${isEnableDynamicContent() ? ' uagb-text-control--open-dynamic-content' : ''}`}>
+            <div className={
+				classnames(
+					'components-base-control uagb-text-control uagb-size-type-field-tabs',
+					isEnableDynamicContent() ? ' uagb-text-control--open-dynamic-content' : '',
+					props.className
+				)
+			}>
                 { props?.variant !== 'inline' && props?.showHeaderControls &&
                     <HeaderControls />
                 }
