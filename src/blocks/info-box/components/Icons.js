@@ -1,7 +1,7 @@
 import renderSVG from '@Controls/renderIcon';
 
-const Icons = ( props, editor ) => {
-	const { attributes } = props;
+const Icons = ( props ) => {
+	const { attributes, setAttributes } = props;
 	const { iconView, iconShape } = attributes
 
 	return (
@@ -10,13 +10,13 @@ const Icons = ( props, editor ) => {
 				<div className="uagb-ifb-icon-wrap">
 					{ iconView === 'none' ?
 					<>
-						{ renderSVG( attributes.icon, editor ) }
+						{ renderSVG( attributes.icon, setAttributes ) }
 					</>
 					:
 					<>
 						<div className={ ( iconView === 'none' ) // eslint-disable-line no-nested-ternary
 						? ( 'uagb-iconbox-icon-wrap' ) : ( ( iconShape === 'Circle' ) ? ( 'uagb-iconbox-icon-wrap uagb-infobox-shape-circle' ) : ( 'uagb-iconbox-icon-wrap uagb-infobox-shape-squre' ) ) }>
-							{ renderSVG( attributes.icon, editor ) }
+							{ renderSVG( attributes.icon, setAttributes ) }
 						</div>
 					</>}
 

@@ -13,7 +13,7 @@ const SecondCTAButton = ( props ) => {
 
 	let secondCtaIconOutput = '';
 	if ( attributes.showSecondIcon && attributes.secondCtaIcon !== '' ) {
-		secondCtaIconOutput = renderSVG( attributes.secondCtaIcon );
+		secondCtaIconOutput = renderSVG( attributes.secondCtaIcon, setAttributes );
 	}
 
 	let link = '/';

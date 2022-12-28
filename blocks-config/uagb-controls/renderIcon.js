@@ -6,10 +6,9 @@
  */
 
 import parseSVG from './parseIcon';
-function renderSVG( svg, editor ) {
+function renderSVG( svg, setAttributes ) {
 	svg = parseSVG( svg );
 	let fontAwesome;
-	console.log(editor)
 	// Load Polyfiller Array if needed.
 	if ( 'disabled' !== uagb_blocks_info.load_font_awesome_5 && 0 !== uagb_blocks_info.font_awesome_5_polyfill.length ) {
 		fontAwesome = uagb_blocks_info.uagb_svg_icons[ uagb_blocks_info.font_awesome_5_polyfill?.data[ svg ] ];
@@ -70,7 +69,7 @@ function renderSVG( svg, editor ) {
 		}
 
 		return (
-			! editor ?
+			setAttributes === undefined  ?
 			<svg xmlns="https://www.w3.org/2000/svg" viewBox={ viewBox }>
 				<path d={ path }></path>
 			</svg>

@@ -22,10 +22,10 @@ export default function save( props ) {
 		return (
 			<>
 				<span className="uagb-icon uagb-faq-icon-wrap">
-					{ renderSVG( icon, false ) }
+					{ renderSVG( icon ) }
 				</span>
 				<span className="uagb-icon-active uagb-faq-icon-wrap">
-					{ renderSVG( iconActive, false ) }
+					{ renderSVG( iconActive ) }
 				</span>
 			</>
 		);

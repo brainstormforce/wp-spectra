@@ -30,10 +30,10 @@ const Render = ( props ) => {
 		return (
 			<>
 				<span className="uagb-icon uagb-faq-icon-wrap">
-					{ renderSVG( icon, true ) }
+					{ renderSVG( icon, setAttributes ) }
 				</span>
 				<span className="uagb-icon-active uagb-faq-icon-wrap">
-					{ renderSVG( iconActive, true ) }
+					{ renderSVG( iconActive, setAttributes ) }
 				</span>
 			</>
 		);

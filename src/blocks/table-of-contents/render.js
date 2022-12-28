@@ -61,7 +61,7 @@ const Render = ( props ) => {
 	let iconHtml = '';
 
 	if ( makeCollapsible && icon ) {
-		iconHtml = renderSVG( icon );
+		iconHtml = renderSVG( icon, setAttributes );
 	}
 
 	return (
