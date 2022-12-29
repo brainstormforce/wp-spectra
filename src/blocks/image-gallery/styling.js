@@ -506,30 +506,6 @@ function styling( props ) {
 		},
 		' .spectra-image-gallery__media-thumbnail-caption a': {
 			'color': ( 'hover' === captionVisibility ) ? 'rgba(0,0,0,0)' : captionColor,
-			'text-align': getMatrixAlignment( imageCaptionAlignment, 2 ),
-			'font-family': ( 'Default' === captionFontFamily ) ? '' : captionFontFamily,
-			'font-weight': captionFontWeight,
-			'font-style': captionFontStyle,
-			'text-decoration': captionDecoration,
-			'text-transform': captionTransform,
-			'font-size': generateCSSUnit( captionFontSize, captionFontSizeType ),
-			'line-height': generateCSSUnit( captionLineHeight, captionLineHeightType ),
-			'padding-top': generateCSSUnit(
-				captionPaddingTop,
-				captionPaddingUnit
-			),
-			'padding-right': generateCSSUnit(
-				captionPaddingRight,
-				captionPaddingUnit
-			),
-			'padding-bottom': generateCSSUnit(
-				captionPaddingBottom,
-				captionPaddingUnit
-			),
-			'padding-left': generateCSSUnit(
-				captionPaddingLeft,
-				captionPaddingUnit
-			),
 		},
 		' .spectra-image-gallery__media-thumbnail-caption--overlay': {
 			'-webkit-align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
@@ -680,26 +656,6 @@ function styling( props ) {
 				captionPaddingUnitTab
 			),
 		},
-		' .spectra-image-gallery__media-thumbnail-caption a': {
-			'font-size': generateCSSUnit( captionFontSizeTab, captionFontSizeType ),
-			'line-height': generateCSSUnit( captionLineHeightTab, captionLineHeightType ),
-			'padding-top': generateCSSUnit(
-				captionPaddingTopTab,
-				captionPaddingUnitTab
-			),
-			'padding-right': generateCSSUnit(
-				captionPaddingRightTab,
-				captionPaddingUnitTab
-			),
-			'padding-bottom': generateCSSUnit(
-				captionPaddingBottomTab,
-				captionPaddingUnitTab
-			),
-			'padding-left': generateCSSUnit(
-				captionPaddingLeftTab,
-				captionPaddingUnitTab
-			),
-		},
 		' .spectra-image-gallery__media-thumbnail-caption--bar-inside': {
 			...mainTitleBorderCSSTablet,
 		},
@@ -768,26 +724,6 @@ function styling( props ) {
 			...imageBorderCSSMobile,
 		},
 		' .spectra-image-gallery__media-thumbnail-caption': {
-			'font-size': generateCSSUnit( captionFontSizeMob, captionFontSizeType ),
-			'line-height': generateCSSUnit( captionLineHeightMob, captionLineHeightType ),
-			'padding-top': generateCSSUnit(
-				captionPaddingTopMob,
-				captionPaddingUnitMob
-			),
-			'padding-right': generateCSSUnit(
-				captionPaddingRightMob,
-				captionPaddingUnitMob
-			),
-			'padding-bottom': generateCSSUnit(
-				captionPaddingBottomMob,
-				captionPaddingUnitMob
-			),
-			'padding-left': generateCSSUnit(
-				captionPaddingLeftMob,
-				captionPaddingUnitMob
-			),
-		},
-		' .spectra-image-gallery__media-thumbnail-caption a': {
 			'font-size': generateCSSUnit( captionFontSizeMob, captionFontSizeType ),
 			'line-height': generateCSSUnit( captionLineHeightMob, captionLineHeightType ),
 			'padding-top': generateCSSUnit(
