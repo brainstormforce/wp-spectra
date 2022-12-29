@@ -2,8 +2,8 @@ import classnames from 'classnames';
 import React, { useLayoutEffect } from 'react';
 import Title from './components/Title';
 import Description from './components/Description';
-import CTA from './components/CallToActionNew';
-import SecondCTAButton from './components/SecondCTAButton';
+import CTA from './components/editorCTAComponent/CallToActionNew';
+import SecondCTAButton from './components/editorCTAComponent/SecondCTAButton';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
 

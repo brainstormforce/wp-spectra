@@ -13,7 +13,7 @@ const CTA = ( props ) => {
 
 	let ctaIconOutput = '';
 	if ( attributes.showIcon && attributes.ctaIcon !== '' ) {
-		ctaIconOutput = renderSVG( attributes.ctaIcon );
+		ctaIconOutput = renderSVG( attributes.ctaIcon, setAttributes );
 	}
 
 	let link = '/';
