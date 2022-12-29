@@ -1,6 +1,6 @@
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 import React, { useMemo, useEffect, useRef } from 'react';
-import { select } from '@wordpress/data';
+import { useSelect } from '@wordpress/data';
 const ALLOWED_BLOCKS = [ 'uagb/slider-child' ];
 import { useDeviceType } from '@Controls/getPreviewType';
 import { __ } from '@wordpress/i18n';
@@ -13,7 +13,7 @@ const Render = ( props ) => {
 	const {
 		attributes,
 		clientId,
-		attributes: { slide_content },
+		attributes: { slide_content }
 	} = props;
 
 	const deviceType = useDeviceType();
@@ -22,6 +22,21 @@ const Render = ( props ) => {
 	const sliderPaginationRef = useRef();
 	const sliderNavPrevRef = useRef();
 	const sliderNavNextRef = useRef();
+
+	const {
+		isListViewOpen,
+		hasChildren
+	} = useSelect( ( select ) => {
+
+		const { isListViewOpened } =
+			select( 'core/edit-post' );
+
+		return {
+			isListViewOpen: isListViewOpened(),
+			hasChildren: 0 !== select( 'core/block-editor' ).getBlocks( clientId ).length
+		}
+
+	}, [] );
 
 	const {
 		isPreview,
@@ -91,7 +106,6 @@ const Render = ( props ) => {
 		return sliderTemplate;
 	}, [ slideItem, slide_content ] );
 
-	const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( clientId ).length;
 	const hasChildrenClass = hasChildren ? 'uagb-slider-has-children' : '';
 	const blockProps = useBlockProps( {
 		className: `uagb-block-${ block_id } ${hasChildrenClass} uagb-slider-container uagb-slider-editor-wrap uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
@@ -158,25 +172,29 @@ const Render = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		
-		const { getSelectedBlock } = select( 'core/block-editor' );
-        const selectedBlockData = getSelectedBlock();
-
-		if( selectedBlockData && 'uagb/slider-child' === selectedBlockData.name ) {
-			const {getBlockIndex} = select( 'core/block-editor' );
-			
-			const slideIndex = getBlockIndex( selectedBlockData.clientId ); 
-
-			if( swiperInstance ) {
-				swiperInstance.activeIndex = slideIndex;
-			}
-		}
 
 		if( swiperInstance ) {
 			swiperInstance.update();
 		}
 		
 	}, [ props ] );
+
+	useEffect( () => {
+
+		if( swiperInstance && ! isListViewOpen ) {
+
+			const slidesCount = swiperInstance.slides.length;
+
+			// Slide to the slide index more than number of slides, this will reset slider UI.  
+			swiperInstance.slideTo( slidesCount + 1, transitionSpeed, false );
+
+			setTimeout( () => {
+				// Reset Slider to first slide to avoid UI break.
+				swiperInstance.slideTo( 0, 0, false );		
+			}, 200 );
+		}
+	
+	}, [ isListViewOpen ] );
 
 	useEffect( () => {
 
