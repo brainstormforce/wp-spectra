@@ -252,9 +252,6 @@ $selectors = array(
 	),
 
 	// Caption Wrapper Selectors.
-	' .spectra-image-gallery__media-thumbnail-caption-wrapper--overlay a' => array(
-		'background-color' => $attr['imageDisplayCaption'] ? ( ( 'hover' === $attr['captionVisibility'] ) ? 'rgba(0,0,0,0)' : $attr['captionBackgroundColor'] ) : $attr['overlayColor'],
-	),
 	' .spectra-image-gallery__media-thumbnail-caption-wrapper--overlay' => array(
 		'background-color' => $attr['imageDisplayCaption'] ? ( ( 'hover' === $attr['captionVisibility'] ) ? 'rgba(0,0,0,0)' : $attr['captionBackgroundColor'] ) : $attr['overlayColor'],
 	),
