@@ -171,7 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 2.2.1 =
-* Fix: Image Gallery - when adding any of the HTML code or adding the link, the visibility of that caption gets changed to always visible
+* Fix: Image Gallery - When adding any of the HTML code or adding the link, the visibility of that caption gets changed to always visible
 * Fix: Image Gallery - Broken link were shown in gallery on frontend when added to caption.
 
 = 2.2.0 - TUESDAY, 27th DECEMBER 2022 =
