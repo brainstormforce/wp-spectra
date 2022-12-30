@@ -107,6 +107,10 @@
 		<gutenberg-block type="uagb/taxonomy-list" translate="1">
 			<key name="headingTitle" />
 		</gutenberg-block>
+		<gutenberg-block type="uagb/modal" translate="1">
+			<key name="triggerText" />
+			<key name="buttonText" />
+		</gutenberg-block>
 		<gutenberg-block type="uagb/counter" translate="1">
 			<xpath>//*[@class="uagb-counter-block-prefix"]</xpath>
 			<xpath>//*[@class="uagb-counter-block-suffix"]</xpath>

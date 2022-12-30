@@ -671,7 +671,9 @@ button.components-button.uagb-review-select-btn.is-secondary {
 /* Block icons white when block is selected in list view. */
 .block-editor-list-view-leaf.is-selected .block-editor-list-view-block-contents svg.uagb-editor-icons {
 
-	> path {
+	path,
+	rect,
+	circle {
 		stroke: #fff;
 	}
 }
@@ -679,7 +681,9 @@ button.components-button.uagb-review-select-btn.is-secondary {
 /* Block icons white when toggle is set to select from tools. */
 .block-editor-block-list__block-selection-button .block-editor-block-icon.has-colors svg.uagb-editor-icons {
 
-	> path {
+	path,
+	rect,
+	circle {
 		stroke: #fff;
 	}
 }
@@ -687,7 +691,9 @@ button.components-button.uagb-review-select-btn.is-secondary {
 /* Block icons turn to secondary color when they are a parent block. */
 .block-editor-block-parent-selector .block-editor-block-icon svg.uagb-editor-icons {
 
-	> path {
+	path,
+	rect,
+	circle {
 		stroke: $spectra-color-heading;
 	}
 }
@@ -696,7 +702,9 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .block-editor-block-icon.has-colors svg.uagb-editor-icons {
 	stroke: $spectra-color-secondary;
 
-	path {
+	path,
+	rect,
+	circle {
 		stroke: $spectra-color-secondary;
 	}
 }
@@ -769,6 +777,10 @@ button.components-button.uagb-review-select-btn.is-secondary {
 /* Spectra Page Level Settings */
 .is-pressed .spectra-page-settings-button path {
 	fill: #fff;
+}
+
+.spectra-page-settings-button:hover path {
+	fill: #007cba;
 }
 
 /* Spectra Sidebar Settings Notice */

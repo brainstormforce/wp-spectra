@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.1.0\n"
+"Project-Id-Version: Spectra 2.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-12-07T04:12:55+00:00\n"
+"POT-Creation-Date: 2022-12-27T07:21:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -46,68 +46,72 @@ msgstr ""
 msgid "Sorry, something went wrong."
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:110
-#: admin-core/ajax/common-settings.php:144
-#: admin-core/ajax/common-settings.php:178
-#: admin-core/ajax/common-settings.php:213
-#: admin-core/ajax/common-settings.php:291
-#: admin-core/ajax/common-settings.php:326
-#: admin-core/ajax/common-settings.php:361
-#: admin-core/ajax/common-settings.php:396
-#: admin-core/ajax/common-settings.php:431
-#: admin-core/ajax/common-settings.php:466
-#: admin-core/ajax/common-settings.php:500
-#: admin-core/ajax/common-settings.php:534
-#: admin-core/ajax/common-settings.php:569
-#: admin-core/ajax/common-settings.php:603
-#: admin-core/ajax/common-settings.php:637
-#: admin-core/ajax/common-settings.php:671
-#: admin-core/ajax/common-settings.php:705
-#: admin-core/ajax/common-settings.php:791
-#: admin-core/ajax/common-settings.php:825
-#: admin-core/ajax/common-settings.php:859
-#: admin-core/ajax/common-settings.php:894
-#: admin-core/ajax/common-settings.php:929
-#: admin-core/ajax/common-settings.php:964
-#: admin-core/ajax/common-settings.php:1004
-#: admin-core/ajax/common-settings.php:1041
-#: admin-core/ajax/common-settings.php:1078
-#: admin-core/ajax/common-settings.php:1116
-#: admin-core/ajax/common-settings.php:1194
-#: admin-core/ajax/common-settings.php:1229
+#: admin-core/ajax/common-settings.php:130
+msgid "Plugin Successfully Activated"
+msgstr ""
+
+#: admin-core/ajax/common-settings.php:157
+#: admin-core/ajax/common-settings.php:191
+#: admin-core/ajax/common-settings.php:225
+#: admin-core/ajax/common-settings.php:260
+#: admin-core/ajax/common-settings.php:338
+#: admin-core/ajax/common-settings.php:373
+#: admin-core/ajax/common-settings.php:408
+#: admin-core/ajax/common-settings.php:443
+#: admin-core/ajax/common-settings.php:478
+#: admin-core/ajax/common-settings.php:513
+#: admin-core/ajax/common-settings.php:547
+#: admin-core/ajax/common-settings.php:581
+#: admin-core/ajax/common-settings.php:616
+#: admin-core/ajax/common-settings.php:650
+#: admin-core/ajax/common-settings.php:684
+#: admin-core/ajax/common-settings.php:718
+#: admin-core/ajax/common-settings.php:752
+#: admin-core/ajax/common-settings.php:838
+#: admin-core/ajax/common-settings.php:872
+#: admin-core/ajax/common-settings.php:906
+#: admin-core/ajax/common-settings.php:941
+#: admin-core/ajax/common-settings.php:976
+#: admin-core/ajax/common-settings.php:1011
+#: admin-core/ajax/common-settings.php:1051
+#: admin-core/ajax/common-settings.php:1088
+#: admin-core/ajax/common-settings.php:1125
+#: admin-core/ajax/common-settings.php:1163
+#: admin-core/ajax/common-settings.php:1241
+#: admin-core/ajax/common-settings.php:1276
 msgid "No post data found!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:117
-#: admin-core/ajax/common-settings.php:151
-#: admin-core/ajax/common-settings.php:185
-#: admin-core/ajax/common-settings.php:220
-#: admin-core/ajax/common-settings.php:298
-#: admin-core/ajax/common-settings.php:333
-#: admin-core/ajax/common-settings.php:368
-#: admin-core/ajax/common-settings.php:403
-#: admin-core/ajax/common-settings.php:438
-#: admin-core/ajax/common-settings.php:473
-#: admin-core/ajax/common-settings.php:507
-#: admin-core/ajax/common-settings.php:542
-#: admin-core/ajax/common-settings.php:576
-#: admin-core/ajax/common-settings.php:610
-#: admin-core/ajax/common-settings.php:644
-#: admin-core/ajax/common-settings.php:678
-#: admin-core/ajax/common-settings.php:734
-#: admin-core/ajax/common-settings.php:763
-#: admin-core/ajax/common-settings.php:798
-#: admin-core/ajax/common-settings.php:832
-#: admin-core/ajax/common-settings.php:866
-#: admin-core/ajax/common-settings.php:901
-#: admin-core/ajax/common-settings.php:936
-#: admin-core/ajax/common-settings.php:977
-#: admin-core/ajax/common-settings.php:1014
-#: admin-core/ajax/common-settings.php:1051
-#: admin-core/ajax/common-settings.php:1089
-#: admin-core/ajax/common-settings.php:1143
-#: admin-core/ajax/common-settings.php:1201
-#: admin-core/ajax/common-settings.php:1236
+#: admin-core/ajax/common-settings.php:164
+#: admin-core/ajax/common-settings.php:198
+#: admin-core/ajax/common-settings.php:232
+#: admin-core/ajax/common-settings.php:267
+#: admin-core/ajax/common-settings.php:345
+#: admin-core/ajax/common-settings.php:380
+#: admin-core/ajax/common-settings.php:415
+#: admin-core/ajax/common-settings.php:450
+#: admin-core/ajax/common-settings.php:485
+#: admin-core/ajax/common-settings.php:520
+#: admin-core/ajax/common-settings.php:554
+#: admin-core/ajax/common-settings.php:589
+#: admin-core/ajax/common-settings.php:623
+#: admin-core/ajax/common-settings.php:657
+#: admin-core/ajax/common-settings.php:691
+#: admin-core/ajax/common-settings.php:725
+#: admin-core/ajax/common-settings.php:781
+#: admin-core/ajax/common-settings.php:810
+#: admin-core/ajax/common-settings.php:845
+#: admin-core/ajax/common-settings.php:879
+#: admin-core/ajax/common-settings.php:913
+#: admin-core/ajax/common-settings.php:948
+#: admin-core/ajax/common-settings.php:983
+#: admin-core/ajax/common-settings.php:1024
+#: admin-core/ajax/common-settings.php:1061
+#: admin-core/ajax/common-settings.php:1098
+#: admin-core/ajax/common-settings.php:1136
+#: admin-core/ajax/common-settings.php:1190
+#: admin-core/ajax/common-settings.php:1248
+#: admin-core/ajax/common-settings.php:1283
 #: classes/class-uagb-init-blocks.php:404
 msgid "Successfully saved data!"
 msgstr ""
@@ -199,7 +203,7 @@ msgstr ""
 #: blocks-config/table-of-content/class-uagb-table-of-content.php:637
 #: blocks-config/table-of-content/class-uagb-table-of-content.php:641
 #: includes/blocks/table-of-contents/attributes.php:18
-#: dist/blocks-placeholder.js:32
+#: dist/blocks-placeholder.js:33
 #: dist/blocks.js:1
 #: dist/blocks.js:17
 msgid "Table Of Contents"
@@ -366,6 +370,7 @@ msgstr ""
 #: dist/blocks-placeholder.js:12
 #: dist/blocks.js:1
 #: dist/blocks.js:13
+#: dist/blocks.js:17
 msgid "Call To Action"
 msgstr ""
 
@@ -425,7 +430,7 @@ msgid "Add and customize displaying content of this timeline."
 msgstr ""
 
 #: includes/blocks/content-timeline/block.php:16
-#: dist/blocks-placeholder.js:37
+#: dist/blocks-placeholder.js:38
 #: dist/blocks.js:13
 msgid "Content Timeline"
 msgstr ""
@@ -799,6 +804,17 @@ msgstr ""
 msgid "Display your core gallery in a masonary layout."
 msgstr ""
 
+#: includes/blocks/modal/block.php:16
+#: dist/blocks-placeholder.js:26
+#: dist/blocks.js:17
+msgid "Modal"
+msgstr ""
+
+#: includes/blocks/modal/block.php:17
+#: dist/blocks.js:17
+msgid "This block allows you to add modal popup."
+msgstr ""
+
 #: includes/blocks/post-button/block.php:14
 #: dist/blocks.js:17
 msgid "Post Button"
@@ -810,7 +826,7 @@ msgid "Customize this post button."
 msgstr ""
 
 #: includes/blocks/post-carousel/block.php:16
-#: dist/blocks-placeholder.js:26
+#: dist/blocks-placeholder.js:27
 #: dist/blocks.js:17
 msgid "Post Carousel"
 msgstr ""
@@ -830,7 +846,7 @@ msgid "Show your post's excerpt "
 msgstr ""
 
 #: includes/blocks/post-grid/block.php:16
-#: dist/blocks-placeholder.js:27
+#: dist/blocks-placeholder.js:28
 #: dist/blocks.js:17
 msgid "Post Grid"
 msgstr ""
@@ -881,7 +897,7 @@ msgid "Show your post's under categories."
 msgstr ""
 
 #: includes/blocks/post-timeline/block.php:16
-#: dist/blocks-placeholder.js:38
+#: dist/blocks-placeholder.js:39
 #: dist/blocks.js:17
 msgid "Post Timeline"
 msgstr ""
@@ -920,7 +936,7 @@ msgid "Add information for this product."
 msgstr ""
 
 #: includes/blocks/restaurant-menu/block.php:16
-#: dist/blocks-placeholder.js:28
+#: dist/blocks-placeholder.js:29
 #: dist/blocks.js:17
 msgid "Price List"
 msgstr ""
@@ -931,7 +947,7 @@ msgid "Create an attractive price list for your products."
 msgstr ""
 
 #: includes/blocks/review/block.php:16
-#: dist/blocks-placeholder.js:29
+#: dist/blocks-placeholder.js:30
 #: dist/blocks.js:17
 msgid "Review"
 msgstr ""
@@ -961,7 +977,7 @@ msgid "Share your content on this social media platform."
 msgstr ""
 
 #: includes/blocks/social-share/block.php:16
-#: dist/blocks-placeholder.js:30
+#: dist/blocks-placeholder.js:31
 #: dist/blocks.js:17
 msgid "Social Share"
 msgstr ""
@@ -971,7 +987,7 @@ msgid "Share your content on different social media platforms."
 msgstr ""
 
 #: includes/blocks/star-rating/block.php:16
-#: dist/blocks-placeholder.js:31
+#: dist/blocks-placeholder.js:32
 #: dist/blocks.js:17
 msgid "Star Ratings"
 msgstr ""
@@ -1001,7 +1017,7 @@ msgid "Display your content in a tab."
 msgstr ""
 
 #: includes/blocks/tabs/block.php:16
-#: dist/blocks-placeholder.js:33
+#: dist/blocks-placeholder.js:34
 #: dist/blocks.js:17
 msgid "Tabs"
 msgstr ""
@@ -1012,7 +1028,7 @@ msgid "Display your content under different tabs."
 msgstr ""
 
 #: includes/blocks/taxonomy-list/block.php:16
-#: dist/blocks-placeholder.js:34
+#: dist/blocks-placeholder.js:35
 #: dist/blocks.js:17
 msgid "Taxonomy List"
 msgstr ""
@@ -1023,7 +1039,7 @@ msgid "Display your content categorized as per post type."
 msgstr ""
 
 #: includes/blocks/team/block.php:16
-#: dist/blocks-placeholder.js:35
+#: dist/blocks-placeholder.js:36
 #: dist/blocks.js:17
 msgid "Team"
 msgstr ""
@@ -1034,7 +1050,7 @@ msgid "Showcase your team by displaying info and social media profiles."
 msgstr ""
 
 #: includes/blocks/testimonial/block.php:16
-#: dist/blocks-placeholder.js:36
+#: dist/blocks-placeholder.js:37
 #: dist/blocks.js:17
 msgid "Testimonials"
 msgstr ""
@@ -1532,6 +1548,7 @@ msgstr ""
 
 #: dist/blocks.js:1
 #: dist/blocks.js:13
+#: dist/blocks.js:17
 msgid "Click Here"
 msgstr ""
 
@@ -1852,6 +1869,7 @@ msgid "Color"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:17
 msgid "Auto"
 msgstr ""
 
@@ -1884,6 +1902,7 @@ msgid "Image Position"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:17
 msgid "Top Left"
 msgstr ""
 
@@ -1892,6 +1911,7 @@ msgid "Top Center"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:17
 msgid "Top Right"
 msgstr ""
 
@@ -2103,19 +2123,19 @@ msgid "Select Preset"
 msgstr ""
 
 #: dist/blocks.js:11
-msgid "Define the vertical alignment inside this container"
+msgid "Define the vertical alignment inside this container."
 msgstr ""
 
 #: dist/blocks.js:11
-msgid "Define the horizontal alignment inside this container"
+msgid "Define the horizontal alignment inside this container."
 msgstr ""
 
 #: dist/blocks.js:11
-msgid "Define the vertical alignment of every line of blocks inside this flex container"
+msgid "Define the vertical alignment of every line of blocks inside this flex container."
 msgstr ""
 
 #: dist/blocks.js:11
-msgid "Define the horizontal alignment of every line of blocks inside this flex container"
+msgid "Define the horizontal alignment of every line of blocks inside this flex container."
 msgstr ""
 
 #: dist/blocks.js:11
@@ -2224,6 +2244,7 @@ msgid "Minimum Height"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:17
 msgid "VH"
 msgstr ""
 
@@ -2336,7 +2357,7 @@ msgid "Justify Content"
 msgstr ""
 
 #: dist/blocks.js:11
-msgid "Define whether the items are forced in a single line (No Wrap) or can be flowed into multiple lines (Wrap)"
+msgid "Define whether the items are forced in a single line (No Wrap) or can be flowed into multiple lines (Wrap)."
 msgstr ""
 
 #: dist/blocks.js:11
@@ -3268,6 +3289,10 @@ msgid "Note: Choose on what breakpoint the CTA button will stack."
 msgstr ""
 
 #: dist/blocks.js:13
+msgid "Buttons Width"
+msgstr ""
+
+#: dist/blocks.js:13
 msgid "Open in New Window"
 msgstr ""
 
@@ -3592,6 +3617,10 @@ msgstr ""
 
 #: dist/blocks.js:17
 msgid "Bar"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Flip Title and Bar Positions"
 msgstr ""
 
 #: dist/blocks.js:17
@@ -5251,6 +5280,58 @@ msgid "marketing button"
 msgstr ""
 
 #: dist/blocks.js:17
+msgid "Trigger"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Choose The Trigger"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Modal Popup Width"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Modal Popup Height"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Max Height"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Close Button"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Close on ESC Keypress"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Close on Overlay Click"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Add Your Text Here"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Engage Your Visitors!"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis pulvinar dapibus."
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "modal"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "popup"
+msgstr ""
+
+#: dist/blocks.js:17
 msgid "post"
 msgstr ""
 
@@ -6627,14 +6708,6 @@ msgid "rows"
 msgstr ""
 
 #: dist/blocks.js:17
-msgid "Content Width (%)"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "Immediate child of Advanced Columns"
-msgstr ""
-
-#: dist/blocks.js:17
 msgid "Inherit Inner Width from Theme"
 msgstr ""
 
@@ -6644,6 +6717,14 @@ msgstr ""
 
 #: dist/blocks.js:17
 msgid "wrapper"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Content Width (%)"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Immediate child of Advanced Columns"
 msgstr ""
 
 #: dist/blocks.js:17

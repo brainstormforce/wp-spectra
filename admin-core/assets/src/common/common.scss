@@ -309,7 +309,9 @@
 .spectra-icon-transition {
 
 	svg,
-	path {
+	path,
+	rect,
+	circle {
 		transition-property: stroke;
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 		transition-duration: 150ms;
@@ -319,7 +321,9 @@
 .spectra-disabled-icon {
 
 	svg,
-	path {
+	path,
+	rect,
+	circle {
 		stroke: $slate-400;
 	}
 }
