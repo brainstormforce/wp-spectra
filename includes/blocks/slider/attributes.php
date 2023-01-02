@@ -127,9 +127,9 @@ return array_merge(
 		'dotsMarginTop'               => 20,
 		'dotsMarginTopTablet'         => '',
 		'dotsMarginTopMobile'         => '',
-		'minHeight'                   => 350, 
+		'minHeight'                   => 350,
 		'minHeightTablet'             => '',
-		'minHeightMobile'             => ''
+		'minHeightMobile'             => '',
 	),
 	$border_attribute,
 	$arrow_border_attribute
