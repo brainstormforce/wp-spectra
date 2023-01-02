@@ -69,29 +69,29 @@ $t_selectors = UAGB_Block_Helper::get_post_tablet_selectors( $attr );
 
 if ( 'top' === $attr['imgPosition'] ) {
 	$selectors['.uagb-equal_height_inline-read-more-buttons .uagb-post__inner-wrap .uagb-post__text:last-child']   = array(
-		'left'  => UAGB_Helper::get_css_value( $paddingLeft, 'px' ),
-		'right' => UAGB_Helper::get_css_value( $paddingRight, 'px' ),
+		'left'  => UAGB_Helper::get_css_value( $paddingLeft, $attr['contentPaddingUnit'] ),
+		'right' => UAGB_Helper::get_css_value( $paddingRight, $attr['contentPaddingUnit'] ),
 	);
 	$m_selectors['.uagb-equal_height_inline-read-more-buttons .uagb-post__inner-wrap .uagb-post__text:last-child'] = array(
-		'left'  => UAGB_Helper::get_css_value( $paddingLeftMobile, 'px' ),
-		'right' => UAGB_Helper::get_css_value( $paddingRightMobile, 'px' ),
+		'left'  => UAGB_Helper::get_css_value( $paddingLeftMobile, $attr['mobilePaddingUnit'] ),
+		'right' => UAGB_Helper::get_css_value( $paddingRightMobile, $attr['mobilePaddingUnit'] ),
 	);
 	$m_selectors['.uagb-equal_height_inline-read-more-buttons .uagb-post__inner-wrap .uagb-post__text:last-child'] = array(
-		'left'  => UAGB_Helper::get_css_value( $paddingLeftTablet, 'px' ),
-		'right' => UAGB_Helper::get_css_value( $paddingRightTablet, 'px' ),
+		'left'  => UAGB_Helper::get_css_value( $paddingLeftTablet, $attr['tabletPaddingUnit'] ),
+		'right' => UAGB_Helper::get_css_value( $paddingRightTablet, $attr['tabletPaddingUnit'] ),
 	);
 } else {
 	$selectors['.uagb-equal_height_inline-read-more-buttons .uagb-post__inner-wrap .uagb-post__text:nth-last-child(2)']   = array(
-		'left'  => UAGB_Helper::get_css_value( $paddingLeft, 'px' ),
-		'right' => UAGB_Helper::get_css_value( $paddingRight, 'px' ),
+		'left'  => UAGB_Helper::get_css_value( $paddingLeft, $attr['contentPaddingUnit'] ),
+		'right' => UAGB_Helper::get_css_value( $paddingRight, $attr['contentPaddingUnit'] ),
 	);
 	$m_selectors['.uagb-equal_height_inline-read-more-buttons .uagb-post__inner-wrap .uagb-post__text:nth-last-child(2)'] = array(
-		'left'  => UAGB_Helper::get_css_value( $paddingLeftMobile, 'px' ),
-		'right' => UAGB_Helper::get_css_value( $paddingRightMobile, 'px' ),
+		'left'  => UAGB_Helper::get_css_value( $paddingLeftMobile, $attr['mobilePaddingUnit'] ),
+		'right' => UAGB_Helper::get_css_value( $paddingRightMobile, $attr['mobilePaddingUnit'] ),
 	);
 	$m_selectors['.uagb-equal_height_inline-read-more-buttons .uagb-post__inner-wrap .uagb-post__text:nth-last-child(2)'] = array(
-		'left'  => UAGB_Helper::get_css_value( $paddingLeftTablet, 'px' ),
-		'right' => UAGB_Helper::get_css_value( $paddingRightTablet, 'px' ),
+		'left'  => UAGB_Helper::get_css_value( $paddingLeftTablet, $attr['tabletPaddingUnit'] ),
+		'right' => UAGB_Helper::get_css_value( $paddingRightTablet, $attr['tabletPaddingUnit'] ),
 	);
 }
 
