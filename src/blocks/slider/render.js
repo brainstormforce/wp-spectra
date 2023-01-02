@@ -135,6 +135,12 @@ const Render = ( props ) => {
 			speed: transitionSpeed,
 			loop: false,
 			effect: transitionEffect,
+			flipEffect: {
+				slideShadows: false,
+			},
+			fadeEffect: {
+				crossFade: true
+			},
 			pagination: displayDots ? {
 				el: sliderPaginationRef.current,
 				clickable: true,
