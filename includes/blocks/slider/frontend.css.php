@@ -151,9 +151,10 @@ $selectors = array(
 	),
 	'.uagb-block-' . $id . ' .swiper-wrapper'             => array(
 		'align-items' => $attr['verticalAlign'],
-	),
+		'min-height'  => UAGB_Helper::get_css_value( $attr['minHeight'], 'px' ),
+ 	),
 	'.uagb-block-' . $id . ' .swiper-pagination'          => array(
-		'margin-top' => UAGB_Helper::get_css_value( $attr['dotsMarginTop'], 'px' ),
+		'bottom' => UAGB_Helper::get_css_value( $attr['dotsMarginTop'], 'px' ),
 	),
 );
 
@@ -236,6 +237,9 @@ $t_selectors = array(
 	),
 	'.uagb-block-' . $id . '.uagb-slider-container .swiper-button-prev' => $arrow_style_tablet,
 	'.uagb-block-' . $id . '.uagb-slider-container .swiper-button-next' => $arrow_style_tablet,
+	'.uagb-block-' . $id . ' .swiper-wrapper'             => array(
+		'min-height'  => UAGB_Helper::get_css_value( $attr['minHeightTablet'], 'px' ),
+ 	),
 );
 
 $bg_obj_mobile           = array(
@@ -300,6 +304,9 @@ $m_selectors = array(
 	),
 	'.uagb-block-' . $id . '.uagb-slider-container .swiper-button-prev' => $arrow_style_mobile,
 	'.uagb-block-' . $id . '.uagb-slider-container .swiper-button-next' => $arrow_style_mobile,
+	'.uagb-block-' . $id . ' .swiper-wrapper'             => array(
+		'min-height'  => UAGB_Helper::get_css_value( $attr['minHeightMobile'], 'px' ),
+ 	),
 );
 
 $z_index        = isset( $attr['zIndex'] ) ? $attr['zIndex'] : '';

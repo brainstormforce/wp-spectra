@@ -44,6 +44,16 @@ const attributes = {
 		type: 'string',
 		default: 'slide'
 	},
+	'minHeight': {
+		type: 'number',
+		default: 350,
+	},
+	'minHeightTablet': {
+		type: 'number',
+	},
+	'minHeightMobile': {
+		type: 'number',
+	},
 	'autoplay': {
 		type: 'boolean',
 		default: true,
