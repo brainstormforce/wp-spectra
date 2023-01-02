@@ -1049,8 +1049,8 @@ const Settings = ( props ) => {
 								label: 'dotsMarginTopMobile',
 							},
 						} }
-						min={ -50 }
-						max={ 50 }
+						min={ -100 }
+						max={ 100 }
 						displayUnit={ false }
 						setAttributes={ setAttributes }
 					/>

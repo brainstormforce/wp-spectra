@@ -242,7 +242,7 @@ function styling( props ) {
 			'font-size': generateCSSUnit( arrowSize, 'px' ),
 		},
 		' .swiper-pagination': {
-			'margin-top': generateCSSUnit( dotsMarginTop, 'px' ),
+			'bottom': generateCSSUnit( dotsMarginTop, 'px' ),
 		},
 		' .swiper-pagination-bullet': {
 			'background-color': ( '' === arrowBgColor || 'undefined' === typeof arrowBgColor ) ? arrowColor : arrowBgColor,
@@ -321,7 +321,7 @@ function styling( props ) {
 			...arrowBorderCSSTablet
 		},
 		' .swiper-pagination': {
-			'margin-top': generateCSSUnit( dotsMarginTopTablet, 'px' ),
+			'bottom': generateCSSUnit( dotsMarginTopTablet, 'px' ),
 		},
 		' .swiper-wrapper': {
 			'min-height' : generateCSSUnit( minHeightTablet, 'px' )
