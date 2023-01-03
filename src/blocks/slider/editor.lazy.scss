@@ -1,4 +1,10 @@
 .uagb-slider-editor-wrap {
+	&.uagb-editor-preview-mode-tablet,
+	&.uagb-editor-preview-mode-mobile {
+		box-sizing: border-box;
+		overflow: hidden;
+		max-width: 100%;
+	}
 
 	.swiper-wrapper {
 		width: 100%;
