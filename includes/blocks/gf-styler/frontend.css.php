@@ -106,6 +106,11 @@ $selectors = array(
 		'background-color' => $attr['buttonBgHoverColor'],
 		'border-color'     => $attr['buttonBorderHoverColor'],
 	),
+	' input[type=button]:focus'                            => array(
+		'color'            => $attr['buttonTextHoverColor'],
+		'background-color' => $attr['buttonBgHoverColor'],
+		'border-color'     => $attr['buttonBorderHoverColor'],
+	),
 	' .gform_wrapper select '                              => array(
 		'background-color' => $attr['fieldBgColor'],
 		'border-style'     => $attr['fieldBorderStyle'],
@@ -299,6 +304,11 @@ $selectors = array(
 	),
 
 	' input.gform_button:hover'                            => array(
+		'color'            => $attr['buttonTextHoverColor'],
+		'background-color' => $attr['buttonBgHoverColor'],
+		'border-color'     => $attr['buttonBorderHoverColor'],
+	),
+	' input.gform_button:focus'                            => array(
 		'color'            => $attr['buttonTextHoverColor'],
 		'background-color' => $attr['buttonBgHoverColor'],
 		'border-color'     => $attr['buttonBorderHoverColor'],
