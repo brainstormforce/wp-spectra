@@ -231,16 +231,6 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 						'skipEditor' => true,
 						'type'       => 'js',
 					),
-					'uagb-slider-js'    => array(
-						'src'  => UAGB_URL . 'assets/js/swiper-bundle.min.js',
-						'dep'  => array(),
-						'type' => 'js',
-					),
-					'uagb-slider-css'   => array(
-						'src'  => UAGB_URL . 'assets/css/swiper-bundle.min.css',
-						'dep'  => array(),
-						'type' => 'css',
-					),
 					'uagb-countUp-js'   => array(
 						'src'  => UAGB_URL . 'assets/js/countUp.min.js',
 						'dep'  => array(),
@@ -249,6 +239,7 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 					'uagb-swiper-js'    => array(
 						'src'  => UAGB_URL . 'assets/js/swiper-bundle.min.js',
 						'dep'  => array(),
+						'skipEditor' => true,
 						'type' => 'js',
 					),
 					'uagb-swiper-css'   => array(

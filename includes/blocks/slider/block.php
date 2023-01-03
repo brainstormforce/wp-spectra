@@ -17,15 +17,13 @@ $block_data = array(
 	'description'         => __( 'Create a Slider.', 'ultimate-addons-for-gutenberg' ),
 	'default'             => true,
 	'extension'           => false,
-	'js_assets'           => array( 'uagb-slider-js' ),
-	'css_assets'          => array( 'uagb-slider-css' ),
 	'priority'            => Spectra_Block_Prioritization::get_block_priority( 'slider' ),
 	'deprecated'          => false,
 	'static_dependencies' => array(
-		'uagb-slider-js'  => array(
-			'type' => 'js',
+		'uagb-swiper-js'  => array(
+			'type'       => 'js',
 		),
-		'uagb-slider-css' => array(
+		'uagb-swiper-css' => array(
 			'type' => 'css',
 		),
 	),
