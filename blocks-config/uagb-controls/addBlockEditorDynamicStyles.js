@@ -50,7 +50,7 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 		// Slick CSS Ends.
 		
 		// swiper CSS.
-		const swiperStaticCSSStylesTag = document.getElementById( 'uagb-slider-css-css' );
+		const swiperStaticCSSStylesTag = document.getElementById( 'uagb-swiper-css-css' );
 		let cloneSwiperStaticCSSStylesTag = false;
 
 		if ( swiperStaticCSSStylesTag ) {
@@ -152,7 +152,7 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 			}
 
 			if ( cloneSwiperStaticCSSStylesTag ) {
-				const iframeSwiperStaticCSSStylesTag = iframeDocument.getElementById( 'uagb-slider-css-css' );
+				const iframeSwiperStaticCSSStylesTag = iframeDocument.getElementById( 'uagb-swiper-css-css' );
 				if ( ! iframeSwiperStaticCSSStylesTag ) {
 					iframeDocument.head.appendChild( cloneSwiperStaticCSSStylesTag );
 				}
