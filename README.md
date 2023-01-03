@@ -172,6 +172,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ### 2.2.1 ###
 * Fix: Image Gallery - Broken link were shown in gallery on frontend when added to caption.
+* Fix: Tabs - Container get hidden inside tabs body whenever use.
 
 ### 2.2.0 - TUESDAY, 27th DECEMBER 2022 ###
 * New: Introducing the Modal block that will help you to show your own customized popups on the page and turn your visitors into subscribers and leads!
