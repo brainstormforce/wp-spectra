@@ -171,7 +171,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 
-= 2.2.0 - TUESDAY, 27th DECEMBER 2022 =
+= 2.2.1 =
+* Fix: Image Gallery - Broken link were shown in gallery on frontend when added to caption.
 * Fix: Container - Adding padding to paragraph cause uneven space and cross the boundary of container on responsive devices.
 
 = 2.2.0 - TUESDAY, 27th DECEMBER 2022 =
