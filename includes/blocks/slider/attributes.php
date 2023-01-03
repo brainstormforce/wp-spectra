@@ -11,6 +11,10 @@ $default_padding        = 20;
 $border_attribute       = UAGB_Block_Helper::uag_generate_border_attribute( 'slider' );
 $arrow_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'slider-arrow' );
 
+$arrow_border_attribute['slider-arrowBorderBottomLeftRadius']  = 50;
+$arrow_border_attribute['slider-arrowBorderBottomRightRadius'] = 50;
+$arrow_border_attribute['slider-arrowBorderTopLeftRadius']     = 50;
+$arrow_border_attribute['slider-arrowBorderTopRightRadius']    = 50;
 
 return array_merge(
 	array(
@@ -21,7 +25,7 @@ return array_merge(
 		'transitionEffect'            => 'slide',
 		'autoplay'                    => true,
 		'verticalMode'                => false,
-		'autoplaySpeed'               => 1200,
+		'autoplaySpeed'               => 3000,
 		'displayArrows'               => true,
 		'displayDots'                 => true,
 		'backgroundType'              => 'none',
@@ -108,21 +112,24 @@ return array_merge(
 		'boxShadowBlurHover'          => '',
 		'boxShadowSpreadHover'        => '',
 		'boxShadowPositionHover'      => 'outset',
-		'arrowSize'                   => 30,
+		'arrowSize'                   => 16,
 		'arrowSizeTablet'             => '',
 		'arrowSizeMobile'             => '',
 		'arrowDistance'               => '',
 		'arrowDistanceTablet'         => '',
 		'arrowDistanceMobile'         => '',
-		'arrowPadding'                => '20',
+		'arrowPadding'                => 15,
 		'arrowPaddingTablet'          => '',
 		'arrowPaddingMobile'          => '',
-		'arrowColor'                  => '#000',
+		'arrowColor'                  => '#333333',
 		'arrowBgColor'                => '',
 		'verticalAlign'               => 'center',
-		'dotsMarginTop'               => '10',
+		'dotsMarginTop'               => 20,
 		'dotsMarginTopTablet'         => '',
 		'dotsMarginTopMobile'         => '',
+		'minHeight'                   => 350,
+		'minHeightTablet'             => '',
+		'minHeightMobile'             => '',
 	),
 	$border_attribute,
 	$arrow_border_attribute

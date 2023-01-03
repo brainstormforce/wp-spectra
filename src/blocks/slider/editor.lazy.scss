@@ -1,11 +1,14 @@
 .uagb-slider-editor-wrap {
 
-	.swiper-wrapper {
-		width: 100%;
+	&.uagb-editor-preview-mode-tablet,
+	&.uagb-editor-preview-mode-mobile {
+		box-sizing: border-box;
+		overflow: hidden;
+		max-width: 100%;
 	}
 
-	.swiper-pagination {
-		position: relative;
+	.swiper-wrapper {
+		width: 100%;
 	}
 
 	.block-editor-block-list__layout .block-list-appender {

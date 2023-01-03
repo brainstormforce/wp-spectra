@@ -5,9 +5,16 @@
 
 .uagb-slider-container {
 	position: relative;
+	width: 100%;
+	min-width: 0;
 
-	.swiper-pagination {
-		position: relative;
+	.swiper-notification {
+		left: 0;
+		opacity: 0;
+		pointer-events: none;
+		position: absolute;
+		top: 0;
+		z-index: -1000;
 	}
 
 	.swiper-button-next.swiper-button-disabled,

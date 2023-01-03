@@ -108,7 +108,10 @@ function styling( props ) {
 		verticalAlign,
 		dotsMarginTop,
 		dotsMarginTopTablet,
-		dotsMarginTopMobile
+		dotsMarginTopMobile,
+		minHeight,
+		minHeightTablet,
+		minHeightMobile
 	} = attributes;
 
 	const borderCSS = generateBorderCSS( props.attributes, 'slider' );
@@ -183,7 +186,7 @@ function styling( props ) {
 		boxShadowPositionCSSHover = '';
 	}
 
-	const containerCSS = {
+	const sliderCSS = {
 		'padding-top': generateCSSUnit( topPaddingDesktop, paddingType ),
 		'padding-bottom': generateCSSUnit( bottomPaddingDesktop, paddingType ),
 		'padding-left': generateCSSUnit( leftPaddingDesktop, paddingType ),
@@ -202,7 +205,7 @@ function styling( props ) {
 
 	const selectors = {
 		'.wp-block' :{
-			...containerCSS,
+			...sliderCSS,
 		}, 
 		'.wp-block:hover' : {
 			'border-color': sliderBorderHColor,
@@ -239,13 +242,14 @@ function styling( props ) {
 			'font-size': generateCSSUnit( arrowSize, 'px' ),
 		},
 		' .swiper-pagination': {
-			'margin-top': generateCSSUnit( dotsMarginTop, 'px' ),
+			'bottom': generateCSSUnit( dotsMarginTop, 'px' ),
 		},
 		' .swiper-pagination-bullet': {
 			'background-color': ( '' === arrowBgColor || 'undefined' === typeof arrowBgColor ) ? arrowColor : arrowBgColor,
 		},
-		' .swiper-wrapper':{
+		' .swiper-wrapper': {
 			'align-items': verticalAlign,
+			'min-height' : generateCSSUnit( minHeight, 'px' )
 		},
 	};
 
@@ -317,7 +321,10 @@ function styling( props ) {
 			...arrowBorderCSSTablet
 		},
 		' .swiper-pagination': {
-			'margin-top': generateCSSUnit( dotsMarginTopTablet, 'px' ),
+			'bottom': generateCSSUnit( dotsMarginTopTablet, 'px' ),
+		},
+		' .swiper-wrapper': {
+			'min-height' : generateCSSUnit( minHeightTablet, 'px' )
 		}
 	};
 
@@ -377,7 +384,10 @@ function styling( props ) {
 			...arrowBorderCSSMobile
 		},
 		' .swiper-pagination': {
-			'margin-top': generateCSSUnit( dotsMarginTopMobile, 'px' ),
+			'bottom': generateCSSUnit( dotsMarginTopMobile, 'px' ),
+		},
+		' .swiper-wrapper': {
+			'min-height' : generateCSSUnit( minHeightMobile, 'px' )
 		}
 	};
 
