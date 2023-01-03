@@ -237,10 +237,10 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 						'type' => 'js',
 					),
 					'uagb-swiper-js'    => array(
-						'src'  => UAGB_URL . 'assets/js/swiper-bundle.min.js',
-						'dep'  => array(),
+						'src'        => UAGB_URL . 'assets/js/swiper-bundle.min.js',
+						'dep'        => array(),
 						'skipEditor' => true,
-						'type' => 'js',
+						'type'       => 'js',
 					),
 					'uagb-swiper-css'   => array(
 						'src'  => UAGB_URL . 'assets/css/swiper-bundle.min.css',

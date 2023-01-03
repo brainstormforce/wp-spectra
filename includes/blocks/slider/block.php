@@ -21,7 +21,7 @@ $block_data = array(
 	'deprecated'          => false,
 	'static_dependencies' => array(
 		'uagb-swiper-js'  => array(
-			'type'       => 'js',
+			'type' => 'js',
 		),
 		'uagb-swiper-css' => array(
 			'type' => 'css',
