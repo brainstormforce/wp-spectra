@@ -32,7 +32,7 @@ export class Stars extends Component {
 			displayValue: value === i + 1 ? i + 0.5 : i + 1,
 		} );
 	}
-	componentWillReceiveProps( newProps ) {
+	UNSAFE_componentWillReceiveProps( newProps ) {
 		const { value, activeStarColor } = newProps;
 		if ( this.props.onHover || this.state.displayValue !== value ) {
 			this.setState( {
