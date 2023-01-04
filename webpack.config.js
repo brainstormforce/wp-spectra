@@ -1,14 +1,14 @@
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 const path = require( 'path' );
-const { spawn } = require('child_process');
+const { spawn } = require( 'child_process' );
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 class UAGBRunAdditionalProcess {
-	apply(compiler) {
-		compiler.hooks.afterEmit.tapAsync('UAGBRunAdditionalProcess', (compilation, callback) => {
-			spawn('npm-run-all', ['--sequential', 'build:sass', 'build:placeholder'], { stdio: 'inherit' });
+	apply( compiler ) {
+		compiler.hooks.afterEmit.tapAsync( 'UAGBRunAdditionalProcess', ( compilation, callback ) => {
+			spawn( 'npm-run-all', ['--sequential', 'build:sass', 'build:placeholder'], { stdio: 'inherit' } );
 			callback();
-		});
+		} );
 	}
 }
 
