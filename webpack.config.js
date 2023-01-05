@@ -6,7 +6,7 @@ const { spawn } = require( 'child_process' );
 class UAGBRunAdditionalProcess {
 	apply( compiler ) {
 		compiler.hooks.afterEmit.tapAsync( 'UAGBRunAdditionalProcess', ( compilation, callback ) => {
-			spawn( /^win/.test(process.platform) ? 'npm-run-all.cmd' : 'npm-run-all', ['--sequential', 'build:sass', 'build:placeholder'], { stdio: 'inherit' } );
+			spawn( /^win/.test( process.platform ) ? 'npm-run-all.cmd' : 'npm-run-all', ['--sequential', 'build:sass', 'build:placeholder'], { stdio: 'inherit' } );
 			callback();
 		} );
 	}
