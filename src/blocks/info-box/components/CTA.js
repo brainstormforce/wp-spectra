@@ -41,6 +41,7 @@ const InfoBoxCta = ( props ) => {
 								onChange={ ( value ) => {
 									setAttributes( { ctaText: value } );
 								} }
+								allowedFormats={ [] } // Removed the WP default link/bold/italic from the toolbar for button.
 							/>
 						{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 					</a>
@@ -72,6 +73,7 @@ const InfoBoxCta = ( props ) => {
 								onChange={ ( value ) => {
 									setAttributes( { ctaText: value } );
 								} }
+								allowedFormats={ [] } // Removed the WP default link/bold/italic from the toolbar for button.
 							/>
 							{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 						</a>

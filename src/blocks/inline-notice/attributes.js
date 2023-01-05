@@ -24,6 +24,7 @@ const attributes = {
 	noticeContent: {
 		type: 'string',
 		default: '',
+		multiline: 'p',
 	},
 	noticeDismiss: {
 		type: 'string',
