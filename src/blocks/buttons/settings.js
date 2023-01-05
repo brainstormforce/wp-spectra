@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { InspectorControls, BlockControls, Inserter } from '@wordpress/block-editor';
+import { InspectorControls } from '@wordpress/block-editor';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import MultiButtonsControl from '@Components/multi-buttons-control';
@@ -10,7 +10,7 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import SpacingControl from '@Components/spacing-control';
 import ResponsiveSelectControl from '@Components/responsive-select';
 
-import { Toolbar , Icon } from '@wordpress/components';
+import { Icon } from '@wordpress/components';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -546,24 +546,9 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
-	const blockControls = () => {
-		return (
-			<BlockControls>
-				<Toolbar className="uag-container-block-inserter">
-					<Inserter
-						clientId = { props.clientId }
-						rootClientId = { props.clientId }
-						__experimentalIsQuick = {true}
-						position="bottom right"
-					/>
-				</Toolbar>
-			</BlockControls>
-		);
-	};
 
 	return (
 			<>
-			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>

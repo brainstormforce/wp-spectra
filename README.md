@@ -172,6 +172,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ### 2.2.1 ###
 * Fix: Image Gallery - Broken link were shown in gallery on frontend when added to caption.
+* Deprecated: Global - Removed deprecated toolbar and multiline for rich text.
 * Fix: Global - Buttons - Removed the WP default allowedFormats from the toolbar.
 
 ### 2.2.0 - TUESDAY, 27th DECEMBER 2022 ###
