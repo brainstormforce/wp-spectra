@@ -60,11 +60,7 @@ const Render = ( props ) => {
 					}
 					className="uagb-forms-main-submit-button-text"
 					multiline={ false }
-					allowedFormats={ [
-						'core/bold',
-						'core/italic',
-						'core/strikethrough',
-					] }
+					allowedFormats={ [] } // Removed the WP default link/bold/italic from the toolbar for button.
 				/>
 			</button>
 		);
