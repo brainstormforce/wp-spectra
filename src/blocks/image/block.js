@@ -34,6 +34,7 @@ registerBlockType( 'uagb/image', {
 			text: false,
 			background: false
 		},
+		align: true,
 	},
 	category: uagb_blocks_info.category,
 	attributes,
