@@ -5,7 +5,6 @@ import { ToolbarButton } from '@wordpress/components';
 import { useSelect, useDispatch  } from '@wordpress/data';
 import { upload } from '@wordpress/icons';
 import {
-	BlockAlignmentControl,
 	BlockControls,
 	store as blockEditorStore,
 	BlockIcon,
@@ -269,16 +268,6 @@ const Render = ( props ) => {
 		}
 	}
 
-	function updateAlignment( nextAlign ) {
-		const extraUpdatedAttributes = [ 'wide', 'full' ].includes( nextAlign )
-			? { width: undefined, height: undefined }
-			: {};
-		setAttributes( {
-			...extraUpdatedAttributes,
-			align: nextAlign,
-		} );
-	}
-
 	let isTemp = isTemporaryImage( id, url );
 
 	// Upload a temporary image on mount.
@@ -390,16 +379,12 @@ const Render = ( props ) => {
 	}
 
 	const blockProps = useBlockProps( {
-		ref,
+		ref
 	} );
 
 	return (
 		<React.Fragment>
 			<BlockControls group="block">
-				<BlockAlignmentControl
-					value={ align }
-					onChange={ updateAlignment }
-				/>
 				<ImageURLInputUI
 					url={ href || '' }
 					onChangeUrl={ onSetHref }
