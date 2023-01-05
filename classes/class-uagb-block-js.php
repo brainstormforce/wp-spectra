@@ -687,7 +687,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		/**
 		 * Adds Google fonts for Modal block.
 		 *
-		 * @since x.x.x
+		 * @since 2.2.0
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_modal_gfont( $attr ) {

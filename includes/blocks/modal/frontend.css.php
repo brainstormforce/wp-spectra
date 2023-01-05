@@ -2,7 +2,7 @@
 /**
  * Frontend CSS loading File.
  *
- * @since x.x.x
+ * @since 2.2.0
  *
  * @package uagb
  */
