@@ -1,7 +1,7 @@
 import { registerFormatType, toggleFormat } from '@wordpress/rich-text';
 import {BlockControls} from '@wordpress/block-editor';
 import {__} from '@wordpress/i18n'
-import { Toolbar, Button, Tooltip } from '@wordpress/components';
+import { ToolbarGroup, Button, Tooltip } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 
 const FORMAT_TYPE = 'uagb/advanced-heading-highlight'
@@ -15,7 +15,7 @@ function HighlightFormat( { isActive, onChange, value } ) {
 		<BlockControls>
 			{
 				selectedBlock && selectedBlock.name === 'uagb/advanced-heading' && (
-					<Toolbar className="uag-highlight-toolbar" label="Options">
+					<ToolbarGroup className="uag-highlight-toolbar" label="Options">
 						<Tooltip text={__( 'Highlight Text', 'ultimate-addons-for-gutenberg' )}>
 							<Button
 								isPrimary={isActive}
@@ -30,7 +30,7 @@ function HighlightFormat( { isActive, onChange, value } ) {
 								<span className="dashicons  dashicons-admin-customizer"></span>
 							</Button>
 						</Tooltip>
-					</Toolbar>
+					</ToolbarGroup>
 				)
 			}
 		</BlockControls>
