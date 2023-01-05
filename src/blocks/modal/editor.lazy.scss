@@ -1,0 +1,29 @@
+.editor-styles-wrapper {
+
+	.uagb-modal-wrapper {
+
+		.uagb-modal-popup {
+
+			.uagb-modal-popup-wrap {
+				margin: 30px;
+			}
+
+			&.active {
+				background: rgba(0, 0, 0, 0.6);
+				border: 2px none #ddd;
+				display: flex;
+				margin-top: 20px;
+				padding: 30px;
+				position: relative;
+			}
+		}
+	}
+}
+
+.rtl .editor-styles-wrapper {
+
+	.uagb-modal-button-link .uagb-modal-content-wrapper > svg { // Fixed 5px left/right margin when before/after button icon.
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+}

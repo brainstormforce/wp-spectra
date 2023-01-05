@@ -11,7 +11,13 @@ const { uag_select_font_globally , uag_load_select_font_globally } = uagb_blocks
 
 function FontFamilyControl( props ) {
 
-	const fonts = [];
+	const fonts = [
+		{ value: 'Default', label: __( 'Default','ultimate-addons-for-gutenberg' ), weight: [ 'Default', '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
+		{ value: 'Arial', label: 'Arial', weight: [ 'Default', '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
+		{ value: 'Helvetica', label: 'Helvetica', weight: [ 'Default', '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
+		{ value: 'Times New Roman', label: 'Times New Roman', weight: [ 'Default', '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
+		{ value: 'Georgia', label: 'Georgia', weight: [ 'Default', '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
+	];
 
 	let fontWeight = '';
 
