@@ -171,7 +171,14 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 2.2.1 ###
+* Fix: Image Gallery - When adding any of the HTML code or adding the link, the visibility of that caption gets changed to always visible
 * Fix: Image Gallery - Broken link were shown in gallery on frontend when added to caption.
+* Fix: Post Grid - Undefined array key issue.
+* Fix: How-To : Image is not visible when image selected from Image control.
+* Fix: Image - Does not wrap with paragraph.
+* Fix: Tabs - Container get hidden inside tabs body whenever use.
+* Fix: Global - Buttons - Removed the WP default allowedFormats from the toolbar.
+* Deprecated: Global - Removed deprecated toolbar and multiline for rich text.
 
 ### 2.2.0 - TUESDAY, 27th DECEMBER 2022 ###
 * New: Introducing the Modal block that will help you to show your own customized popups on the page and turn your visitors into subscribers and leads!

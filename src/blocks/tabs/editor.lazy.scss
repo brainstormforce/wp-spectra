@@ -86,6 +86,10 @@
 			margin: 0;
 		}
 	}
+
+	.uagb-container-has-children.wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+		width: 100%;
+	} // To resolve inner child with short width when container used inside tab body - https://d.pr/i/dGSoPT.
 }
 
 .uag-advance-panel-body-layout {
@@ -93,10 +97,6 @@
 	.uagb-responsive-select-control .uagb-size-type-field-tabs {
 		grid-template-columns: 40% 60%;
 	}
-}
-
-.edit-post-visual-editor .uagb-tabs__wrap .block-editor-button-block-appender {
-	display: none;
 }
 
 //Horizonatal Styles
@@ -725,4 +725,9 @@
 	.uagb-tabs__body-wrap {
 		max-width: 100%;
 	}
+}
+
+
+.uagb-tabs__body-wrap .uagb-container-has-children.wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+	width: 100%;
 }
