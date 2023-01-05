@@ -1142,7 +1142,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 			);
 			?>
 				<div class="spectra-image-gallery__media-thumbnail-caption spectra-image-gallery__media-thumbnail-caption--<?php echo esc_html( $atts['captionDisplayType'] ); ?>">
-					<?php echo esc_html( $limitedCaption ); ?>
+					<?php echo wp_kses_post( $limitedCaption ); ?>
 				</div>
 			<?php
 		}
