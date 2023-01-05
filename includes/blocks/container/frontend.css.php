@@ -129,9 +129,6 @@ if ( ( $attr['isBlockRootParent'] && ! ( 'alignwide' === $attr['innerContentWidt
 $background_video_opacity_value = ( isset( $attr['backgroundVideoOpacity'] ) && 'none' !== $attr['overlayType'] && ( ( 'color' === $attr['overlayType'] && ! empty( $attr['backgroundVideoColor'] ) ) || ( 'gradient' === $attr['overlayType'] && ! empty( $attr['gradientValue'] ) ) ) ) ? 1 - $attr['backgroundVideoOpacity'] : 1;
 
 $selectors = array(
-	'.wp-block-uagb-container.uagb-block-' . $id . ':hover' => array(
-		'border-color' => $attr['containerBorderHColor'],
-	),
 	'.uagb-block-' . $id . '.wp-block-uagb-container' => array(
 		'color'        => $attr['textColor'],
 		'border-color' => $border['border-color'] ? $border['border-color'] : '#4B4F58',
@@ -401,10 +398,17 @@ if ( 'video' === $attr['backgroundType'] ) {
 		'row-gap'        => UAGB_Helper::get_css_value( $attr['rowGapMobile'], $attr['rowGapTypeMobile'] ),
 		'column-gap'     => UAGB_Helper::get_css_value( $attr['columnGapMobile'], $attr['columnGapTypeMobile'] ),
 	);
+	$selectors[ '.wp-block-uagb-container.uagb-block-' . $id . ':hover .uagb-container__video-wrap' ] = array(
+		'border-color' => $attr['containerBorderHColor'],
+	);
+
 } else {
-	$selectors[ '.uagb-block-' . $id ]   = $container_css; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-	$t_selectors[ '.uagb-block-' . $id ] = $container_tablet_css; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-	$m_selectors[ '.uagb-block-' . $id ] = $container_mobile_css; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+	$selectors[ '.uagb-block-' . $id ]                                    = $container_css; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+	$t_selectors[ '.uagb-block-' . $id ]                                  = $container_tablet_css; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+	$m_selectors[ '.uagb-block-' . $id ]                                  = $container_mobile_css; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+	$selectors[ '.wp-block-uagb-container.uagb-block-' . $id . ':hover' ] = array(
+		'border-color' => $attr['containerBorderHColor'],
+	);
 }
 
 if ( 'default' === $attr['contentWidth'] ) {

@@ -307,10 +307,7 @@ function styling( props ) {
 		'overflow' : overflow
 	}
 
-	selectors['.wp-block:hover'] = {
-		'border-color': containerBorderHColor,
-		'box-shadow': '',
-	};
+
 
 	boxShadowBlurHover = isNaN( boxShadowBlurHover ) ? '' : boxShadowBlurHover;
 	boxShadowColorHover = boxShadowColorHover ? boxShadowColorHover : '';
@@ -547,6 +544,10 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( rightMarginMobile, marginTypeMobile ),
 			'min-height' : generateCSSUnit( minHeightMobile, minHeightTypeMobile ),
 		};
+		selectors['.wp-block:hover .uagb-container__video-wrap'] = {
+			'border-color': containerBorderHColor,
+			'box-shadow': '',
+		};
 	} else{
 		selectors['.wp-block'] = containerCSS;
 		tablet_selectors['.wp-block'] = {
@@ -574,6 +575,10 @@ function styling( props ) {
 			'min-height' : generateCSSUnit( minHeightMobile, minHeightTypeMobile ),
 			...containerBackgroundCSSMobile,
 			...borderCSSMobile
+		};
+		selectors['.wp-block:hover'] = {
+			'border-color': containerBorderHColor,
+			'box-shadow': '',
 		};
 	}
 
