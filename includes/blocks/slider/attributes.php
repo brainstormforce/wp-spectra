@@ -6,6 +6,7 @@
  *
  * @package uagb
  */
+
 $border_attribute       = UAGB_Block_Helper::uag_generate_border_attribute( 'slider' );
 $arrow_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'slider-arrow' );
 
