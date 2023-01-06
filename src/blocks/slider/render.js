@@ -29,18 +29,14 @@ const Render = ( props ) => {
 	const {
 		isListViewOpen,
 		hasChildren,
-		selectedBlockData,
 	} = useSelect( ( select ) => {
 
 		const { isListViewOpened } =
 			select( 'core/edit-post' );
 
-		const { getSelectedBlock } = select( 'core/block-editor' );
-
 		return {
 			isListViewOpen: isListViewOpened(),
-			hasChildren: 0 !== select( 'core/block-editor' ).getBlocks( clientId ).length,
-			selectedBlockData: getSelectedBlock()
+			hasChildren: 0 !== select( 'core/block-editor' ).getBlocks( clientId ).length
 		}
 
 	}, [] );

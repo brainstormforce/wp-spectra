@@ -7,10 +7,11 @@
 		max-width: 100%;
 	}
 
-	&.uagb-list-view-enabled{
+	&.uagb-list-view-enabled {
+
 		.swiper-button-prev,
 		.swiper-button-next,
-		.swiper-pagination{
+		.swiper-pagination {
 			pointer-events: none;
 		}
 	}
