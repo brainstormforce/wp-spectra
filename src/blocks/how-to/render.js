@@ -151,7 +151,7 @@ const Render = ( props ) => {
 
 	useEffect( () => {
 		getImageHeightWidth( url, setAttributes )
-	},[ attributes.imgSize ] )
+	},[ url ] )
 
 	if ( mainimage && mainimage.url ) {
 		imageIconHtml = (

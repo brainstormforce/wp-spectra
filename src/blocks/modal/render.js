@@ -161,6 +161,7 @@ const Render = ( props ) => {
 							value={ buttonText }
 							className="uagb-inline-editing"
 							onChange={ ( value ) => setAttributes( { buttonText: value } ) }
+							allowedFormats={ [] } // Removed the WP default link/bold/italic from the toolbar for button.
 						/>
 					{ ( showBtnIcon && buttonIconPosition === 'after' ) && buttonIconOutput }
 				</span>

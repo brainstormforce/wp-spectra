@@ -65,7 +65,6 @@ const Render = ( props ) => {
 			/>
 			<RichText
 				tagName="div"
-				multiline="p"
 				placeholder={ __(
 					'Add Content…',
 					'ultimate-addons-for-gutenberg'

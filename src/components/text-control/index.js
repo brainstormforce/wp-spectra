@@ -96,6 +96,7 @@ const UAGTextControl = ( props ) => {
 								{ ( props?.variant !== 'textarea' ) &&
 									<TextControl
 										label = { ( props?.variant === 'inline' ) || ( props?.variant !== 'inline' && ! props?.showHeaderControls ) ? ( props?.label ) : false }
+										type = { props?.type }
 										value = { props?.value }
 										onChange = { handleOnChange }
 										autoComplete = { props?.autoComplete }
@@ -143,6 +144,7 @@ const UAGTextControl = ( props ) => {
 
 UAGTextControl.defaultProps = {
 	label: '',
+	type: 'text',
 	className: '',
 	allowReset: true,
 	resetFallbackValue: '',
