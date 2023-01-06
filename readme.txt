@@ -171,6 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 2.2.1 =
+* Improvement: Added support for Astra's 4.0 theme menu position next to the Dashboard in admin.
 * Fix: Image Gallery - When adding any of the HTML code or adding the link, the visibility of that caption gets changed to always visible
 * Fix: Image Gallery - Broken link were shown in gallery on frontend when added to caption.
 * Fix: Icon List - Disable link for the list item, it turns on the toggle again.
