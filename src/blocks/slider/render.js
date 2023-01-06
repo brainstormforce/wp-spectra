@@ -1,6 +1,6 @@
-import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
+import { useBlockProps, useInnerBlocksProps, store as blockEditorStore } from '@wordpress/block-editor';
 import React, { useMemo, useEffect, useRef } from 'react';
-import { useSelect } from '@wordpress/data';
+import { useSelect, useDispatch } from '@wordpress/data';
 const ALLOWED_BLOCKS = [ 'uagb/slider-child' ];
 import { useDeviceType } from '@Controls/getPreviewType';
 import { __ } from '@wordpress/i18n';
@@ -13,6 +13,8 @@ const Render = ( props ) => {
 	const {
 		attributes,
 		clientId,
+		block,
+		blockParents,
 		attributes: { slide_content }
 	} = props;
 
@@ -22,18 +24,23 @@ const Render = ( props ) => {
 	const sliderPaginationRef = useRef();
 	const sliderNavPrevRef = useRef();
 	const sliderNavNextRef = useRef();
+	const { selectBlock } = useDispatch( blockEditorStore );
 
 	const {
 		isListViewOpen,
-		hasChildren
+		hasChildren,
+		selectedBlockData,
 	} = useSelect( ( select ) => {
 
 		const { isListViewOpened } =
 			select( 'core/edit-post' );
 
+		const { getSelectedBlock } = select( 'core/block-editor' );
+
 		return {
 			isListViewOpen: isListViewOpened(),
-			hasChildren: 0 !== select( 'core/block-editor' ).getBlocks( clientId ).length
+			hasChildren: 0 !== select( 'core/block-editor' ).getBlocks( clientId ).length,
+			selectedBlockData: getSelectedBlock()
 		}
 
 	}, [] );
@@ -107,8 +114,9 @@ const Render = ( props ) => {
 	}, [ slideItem, slide_content ] );
 
 	const hasChildrenClass = hasChildren ? 'uagb-slider-has-children' : '';
+	const listViewClass = isListViewOpen ? 'uagb-list-view-enabled' : '';
 	const blockProps = useBlockProps( {
-		className: `uagb-block-${ block_id } ${hasChildrenClass} uagb-slider-container uagb-slider-editor-wrap uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+		className: `uagb-block-${ block_id } ${hasChildrenClass} ${listViewClass} uagb-slider-container uagb-slider-editor-wrap uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 	} );
 
     const innerBlocksProps = useInnerBlocksProps(
@@ -187,7 +195,7 @@ const Render = ( props ) => {
 
 	useEffect( () => {
 
-		if( swiperInstance && ! isListViewOpen ) {
+		if( swiperInstance ) {
 
 			const slidesCount = swiperInstance.slides.length;
 
@@ -197,7 +205,21 @@ const Render = ( props ) => {
 			setTimeout( () => {
 				// Reset Slider to first slide to avoid UI break.
 				swiperInstance.slideTo( 0, 0, false );		
-			}, 200 );
+			}, 100 );
+
+			const sliderBlocks = [ 'uagb/slider', 'uagb/slider-child' ];
+			let hasSliderParent = false;
+
+			for ( let index = 0; index < blockParents.length; index++ ) {
+				if( sliderBlocks.includes( blockParents[index].name ) ) {
+					hasSliderParent = true;
+					break;
+				}
+			}
+
+			if( hasSliderParent ) {
+				selectBlock( block.clientId );
+			}
 		}
 	
 	}, [ isListViewOpen ] );
@@ -211,7 +233,6 @@ const Render = ( props ) => {
 
 	}, [ transitionEffect, displayArrows, displayDots, transitionSpeed ] );
 	
-
 	return (
 		isPreview ? '' :
 

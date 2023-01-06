@@ -7,6 +7,14 @@
 		max-width: 100%;
 	}
 
+	&.uagb-list-view-enabled{
+		.swiper-button-prev,
+		.swiper-button-next,
+		.swiper-pagination{
+			pointer-events: none;
+		}
+	}
+
 	.swiper-wrapper {
 		width: 100%;
 	}

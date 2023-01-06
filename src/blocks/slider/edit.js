@@ -61,11 +61,18 @@ const UAGBSlider = ( props ) => {
 const applyWithSelect = withSelect( ( select, props ) => { // eslint-disable-line no-shadow
 	const { insertBlock } = useDispatch( 'core/block-editor' );
 
+	const { getSelectedBlock, getBlockParents } = select( 'core/block-editor' );
+	const selectedBlock = getSelectedBlock();
+	const parentBlockIds = getBlockParents( selectedBlock?.clientId );
+	const blockParents = select( 'core/block-editor' ).getBlocksByClientId( parentBlockIds );
+
+
 	return {
 		insertBlock,
 		block: ( select( 'core/block-editor' ) || select( 'core/editor' ) ).getBlock(
 			props.clientId
 		),
+		blockParents
 	};
 } );
 export default compose( applyWithSelect )( UAGBSlider );
