@@ -44,6 +44,7 @@ const SecondCTAButton = ( props ) => {
 						onChange={ ( value ) => {
 							setAttributes( { secondCtaLabel: value } );
 						} }
+						allowedFormats={ [] } // Removed the WP default link/bold/italic from the toolbar for button.
 					/>
 					{ attributes.secondCtaIconPosition === 'after' && secondCtaIconOutput }
 				</a>

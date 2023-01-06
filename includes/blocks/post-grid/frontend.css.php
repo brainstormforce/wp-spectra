@@ -17,6 +17,8 @@ $paddingLeftMobile                 = isset( $attr['paddingLeftMobile'] ) ? $attr
 $paddingRightMobile                = isset( $attr['paddingRightMobile'] ) ? $attr['paddingRightMobile'] : $attr['contentPaddingMobile'];
 $paddingLeftTablet                 = isset( $attr['paddingLeftTablet'] ) ? $attr['paddingLeftTablet'] : $attr['contentPadding'];
 $paddingRightTablet                = isset( $attr['paddingRightTablet'] ) ? $attr['paddingRightTablet'] : $attr['contentPadding'];
+$paddingLeft                       = isset( $attr['paddingLeft'] ) ? $attr['paddingLeft'] : $attr['contentPadding'];
+$paddingRight                      = isset( $attr['paddingRight'] ) ? $attr['paddingRight'] : $attr['contentPadding'];
 
 $selectors = UAGB_Block_Helper::get_post_selectors( $attr );
 // Pagination CSS.
@@ -67,29 +69,29 @@ $t_selectors = UAGB_Block_Helper::get_post_tablet_selectors( $attr );
 
 if ( 'top' === $attr['imgPosition'] ) {
 	$selectors['.uagb-equal_height_inline-read-more-buttons .uagb-post__inner-wrap .uagb-post__text:last-child']   = array(
-		'left'  => UAGB_Helper::get_css_value( $attr['paddingLeft'], 'px' ),
-		'right' => UAGB_Helper::get_css_value( $attr['paddingRight'], 'px' ),
+		'left'  => UAGB_Helper::get_css_value( $paddingLeft, $attr['contentPaddingUnit'] ),
+		'right' => UAGB_Helper::get_css_value( $paddingRight, $attr['contentPaddingUnit'] ),
 	);
 	$m_selectors['.uagb-equal_height_inline-read-more-buttons .uagb-post__inner-wrap .uagb-post__text:last-child'] = array(
-		'left'  => UAGB_Helper::get_css_value( $paddingLeftMobile, 'px' ),
-		'right' => UAGB_Helper::get_css_value( $paddingLeftMobile, 'px' ),
+		'left'  => UAGB_Helper::get_css_value( $paddingLeftMobile, $attr['mobilePaddingUnit'] ),
+		'right' => UAGB_Helper::get_css_value( $paddingRightMobile, $attr['mobilePaddingUnit'] ),
 	);
 	$m_selectors['.uagb-equal_height_inline-read-more-buttons .uagb-post__inner-wrap .uagb-post__text:last-child'] = array(
-		'left'  => UAGB_Helper::get_css_value( $paddingLeftTablet, 'px' ),
-		'right' => UAGB_Helper::get_css_value( $paddingRightTablet, 'px' ),
+		'left'  => UAGB_Helper::get_css_value( $paddingLeftTablet, $attr['tabletPaddingUnit'] ),
+		'right' => UAGB_Helper::get_css_value( $paddingRightTablet, $attr['tabletPaddingUnit'] ),
 	);
 } else {
 	$selectors['.uagb-equal_height_inline-read-more-buttons .uagb-post__inner-wrap .uagb-post__text:nth-last-child(2)']   = array(
-		'left'  => UAGB_Helper::get_css_value( $attr['paddingLeft'], 'px' ),
-		'right' => UAGB_Helper::get_css_value( $attr['paddingRight'], 'px' ),
+		'left'  => UAGB_Helper::get_css_value( $paddingLeft, $attr['contentPaddingUnit'] ),
+		'right' => UAGB_Helper::get_css_value( $paddingRight, $attr['contentPaddingUnit'] ),
 	);
 	$m_selectors['.uagb-equal_height_inline-read-more-buttons .uagb-post__inner-wrap .uagb-post__text:nth-last-child(2)'] = array(
-		'left'  => UAGB_Helper::get_css_value( $paddingLeftMobile, 'px' ),
-		'right' => UAGB_Helper::get_css_value( $paddingLeftMobile, 'px' ),
+		'left'  => UAGB_Helper::get_css_value( $paddingLeftMobile, $attr['mobilePaddingUnit'] ),
+		'right' => UAGB_Helper::get_css_value( $paddingRightMobile, $attr['mobilePaddingUnit'] ),
 	);
 	$m_selectors['.uagb-equal_height_inline-read-more-buttons .uagb-post__inner-wrap .uagb-post__text:nth-last-child(2)'] = array(
-		'left'  => UAGB_Helper::get_css_value( $paddingLeftTablet, 'px' ),
-		'right' => UAGB_Helper::get_css_value( $paddingRightTablet, 'px' ),
+		'left'  => UAGB_Helper::get_css_value( $paddingLeftTablet, $attr['tabletPaddingUnit'] ),
+		'right' => UAGB_Helper::get_css_value( $paddingRightTablet, $attr['tabletPaddingUnit'] ),
 	);
 }
 
