@@ -113,7 +113,7 @@ return array_merge(
 		'arrowSize'                   => 16,
 		'arrowSizeTablet'             => '',
 		'arrowSizeMobile'             => '',
-		'arrowDistance'               => '',
+		'arrowDistance'               => -20,
 		'arrowDistanceTablet'         => '',
 		'arrowDistanceMobile'         => '',
 		'arrowPadding'                => 15,

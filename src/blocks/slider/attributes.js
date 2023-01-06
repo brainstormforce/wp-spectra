@@ -240,7 +240,6 @@ const attributes = {
 			styleType: 'container-align-content-mobile'
 		},
 	},
-
 	'backgroundType': {
 		type: 'string',
 		default: 'none',
