@@ -123,7 +123,8 @@ const Render = ( props ) => {
         {
 			allowedBlocks: ALLOWED_BLOCKS,
 			template : getSliderTemplate,
-			renderAppender: false
+			renderAppender: false,
+			orientation: 'horizontal'
 		}
     );
 
