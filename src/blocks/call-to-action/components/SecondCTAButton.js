@@ -13,7 +13,11 @@ const SecondCTAButton = ( props ) => {
 
 	let secondCtaIconOutput = '';
 	if ( attributes.showSecondIcon && attributes.secondCtaIcon !== '' ) {
-		secondCtaIconOutput = renderSVG( attributes.secondCtaIcon );
+		if ( setAttributes !== 'not_set' ) {
+			secondCtaIconOutput = renderSVG( attributes.secondCtaIcon, setAttributes );
+		} else {
+			secondCtaIconOutput = renderSVG( attributes.secondCtaIcon );
+		}
 	}
 
 	let link = '/';
@@ -44,6 +48,7 @@ const SecondCTAButton = ( props ) => {
 						onChange={ ( value ) => {
 							setAttributes( { secondCtaLabel: value } );
 						} }
+						allowedFormats={ [] } // Removed the WP default link/bold/italic from the toolbar for button.
 					/>
 					{ attributes.secondCtaIconPosition === 'after' && secondCtaIconOutput }
 				</a>
