@@ -98,7 +98,7 @@ class UAGB_Astra_Compatibility {
 	 * Update Astra's menu priority to show after Dashboard menu.
 	 *
 	 * @param int $menu_priority top level menu priority.
-	 * @since x.x.x
+	 * @since 2.3.0
 	 */
 	public function update_admin_menu_position( $menu_priority ) {
 		return 2.1;
