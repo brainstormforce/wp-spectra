@@ -1,15 +1,15 @@
-# Copyright (C) 2022 Brainstorm Force
+# Copyright (C) 2023 Brainstorm Force
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.2.0\n"
+"Project-Id-Version: Spectra 2.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-12-27T07:21:46+00:00\n"
+"POT-Creation-Date: 2023-01-10T10:51:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -203,7 +203,7 @@ msgstr ""
 #: blocks-config/table-of-content/class-uagb-table-of-content.php:637
 #: blocks-config/table-of-content/class-uagb-table-of-content.php:641
 #: includes/blocks/table-of-contents/attributes.php:18
-#: dist/blocks-placeholder.js:33
+#: dist/blocks-placeholder.js:34
 #: dist/blocks.js:1
 #: dist/blocks.js:17
 msgid "Table Of Contents"
@@ -430,7 +430,7 @@ msgid "Add and customize displaying content of this timeline."
 msgstr ""
 
 #: includes/blocks/content-timeline/block.php:16
-#: dist/blocks-placeholder.js:38
+#: dist/blocks-placeholder.js:39
 #: dist/blocks.js:13
 msgid "Content Timeline"
 msgstr ""
@@ -897,7 +897,7 @@ msgid "Show your post's under categories."
 msgstr ""
 
 #: includes/blocks/post-timeline/block.php:16
-#: dist/blocks-placeholder.js:39
+#: dist/blocks-placeholder.js:40
 #: dist/blocks.js:17
 msgid "Post Timeline"
 msgstr ""
@@ -967,6 +967,21 @@ msgstr ""
 msgid "Outer wrap section that allows you to add other blocks within it."
 msgstr ""
 
+#: includes/blocks/slider-child/block.php:14
+#: includes/blocks/slider/block.php:16
+#: dist/blocks-placeholder.js:31
+#: dist/blocks.js:17
+msgid "Slider"
+msgstr ""
+
+#: includes/blocks/slider-child/block.php:15
+msgid "Customize this slider as per your need."
+msgstr ""
+
+#: includes/blocks/slider/block.php:17
+msgid "Create a Slider."
+msgstr ""
+
 #: includes/blocks/social-share-child/block.php:14
 #: dist/blocks.js:17
 msgid "Social Share Child"
@@ -977,7 +992,7 @@ msgid "Share your content on this social media platform."
 msgstr ""
 
 #: includes/blocks/social-share/block.php:16
-#: dist/blocks-placeholder.js:31
+#: dist/blocks-placeholder.js:32
 #: dist/blocks.js:17
 msgid "Social Share"
 msgstr ""
@@ -987,7 +1002,7 @@ msgid "Share your content on different social media platforms."
 msgstr ""
 
 #: includes/blocks/star-rating/block.php:16
-#: dist/blocks-placeholder.js:32
+#: dist/blocks-placeholder.js:33
 #: dist/blocks.js:17
 msgid "Star Ratings"
 msgstr ""
@@ -1017,7 +1032,7 @@ msgid "Display your content in a tab."
 msgstr ""
 
 #: includes/blocks/tabs/block.php:16
-#: dist/blocks-placeholder.js:34
+#: dist/blocks-placeholder.js:35
 #: dist/blocks.js:17
 msgid "Tabs"
 msgstr ""
@@ -1028,7 +1043,7 @@ msgid "Display your content under different tabs."
 msgstr ""
 
 #: includes/blocks/taxonomy-list/block.php:16
-#: dist/blocks-placeholder.js:35
+#: dist/blocks-placeholder.js:36
 #: dist/blocks.js:17
 msgid "Taxonomy List"
 msgstr ""
@@ -1039,7 +1054,7 @@ msgid "Display your content categorized as per post type."
 msgstr ""
 
 #: includes/blocks/team/block.php:16
-#: dist/blocks-placeholder.js:36
+#: dist/blocks-placeholder.js:37
 #: dist/blocks.js:17
 msgid "Team"
 msgstr ""
@@ -1050,7 +1065,7 @@ msgid "Showcase your team by displaying info and social media profiles."
 msgstr ""
 
 #: includes/blocks/testimonial/block.php:16
-#: dist/blocks-placeholder.js:37
+#: dist/blocks-placeholder.js:38
 #: dist/blocks.js:17
 msgid "Testimonials"
 msgstr ""
@@ -2240,6 +2255,7 @@ msgid "Custom Width"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:17
 msgid "Minimum Height"
 msgstr ""
 
@@ -2552,6 +2568,7 @@ msgid "uag"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:17
 msgid "flex"
 msgstr ""
 
@@ -2832,6 +2849,7 @@ msgid "Zoom In"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:17
 msgid "Slide"
 msgstr ""
 
@@ -6048,6 +6066,62 @@ msgid "review"
 msgstr ""
 
 #: dist/blocks.js:17
+msgid "Above setting will only take effect once you are on the live page, and not while you're editing."
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Pause On"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Interaction"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Transition Effect"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Fade"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Arrows and Dots"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Slide 1"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Slide 2"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Slide 3"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Create beautiful sliders with slider block."
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "slider"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Slide "
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Slider Child"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Add and customize content of this slide."
+msgstr ""
+
+#: dist/blocks.js:17
 msgid "Note: Choose on what breakpoint the Icons will stack."
 msgstr ""
 
@@ -6569,10 +6643,6 @@ msgstr ""
 
 #: dist/blocks.js:17
 msgid "testimonial"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "Above setting will only take effect once you are on the live page, and not while you're editing."
 msgstr ""
 
 #: dist/blocks.js:17
