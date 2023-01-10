@@ -174,6 +174,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 = 2.2.1 =
 * Improvement: Added support for Astra's 4.0 theme menu position next to the Dashboard in admin.
 * Fix: Container - Adding padding to paragraph cause uneven space and cross the boundary of container on responsive devices.
+* Fix: Container - Background video goes out the boundary of the container if we have rounded corner.
 * Fix: Image Gallery - When adding any of the HTML code or adding the link, the visibility of that caption gets changed to always visible
 * Fix: Image Gallery - Broken links were shown in the gallery on frontend when added to caption.
 * Fix: Icon List - Disable link for the list item, it turns on the toggle again.
