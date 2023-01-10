@@ -6,7 +6,7 @@
  */
 
 import parseSVG from './parseIcon';
-function renderSVG( svg ) {
+function renderSVG( svg, setAttributes = false ) {
 	svg = parseSVG( svg );
 	let fontAwesome;
 	// Load Polyfiller Array if needed.
@@ -69,7 +69,12 @@ function renderSVG( svg ) {
 		}
 
 		return (
+			! setAttributes  ?
 			<svg xmlns="https://www.w3.org/2000/svg" viewBox={ viewBox }>
+				<path d={ path }></path>
+			</svg>
+			:
+			<svg width="20" height="20" xmlns="https://www.w3.org/2000/svg" viewBox={ viewBox }>
 				<path d={ path }></path>
 			</svg>
 		);

@@ -173,14 +173,15 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 = 2.2.1 =
 * Improvement: Added support for Astra's 4.0 theme menu position next to the Dashboard in admin.
 * Fix: Image Gallery - When adding any of the HTML code or adding the link, the visibility of that caption gets changed to always visible
-* Fix: Image Gallery - Broken link were shown in gallery on frontend when added to caption.
+* Fix: Image Gallery - Broken links were shown in the gallery on frontend when added to caption.
 * Fix: Icon List - Disable link for the list item, it turns on the toggle again.
 * Fix: Testimonial - Carousel dots overlapping on below blocks in the mobile device.
 * Fix: Post Grid - Undefined array key issue.
-* Fix: How-To : Image is not visible when image selected from Image control.
+* Fix: How-To - Image is not visible when image selected from Image control.
 * Fix: Image - Does not wrap with paragraph.
 * Fix: Tabs - Container get hidden inside tabs body whenever use.
 * Fix: Global - Buttons - Removed the WP default allowedFormats from the toolbar.
+* Fix: Global - SVG Icons for blocks look big after switching to responsive devices inside the editor.
 * Deprecated: Global - Removed deprecated toolbar and multiline for rich text.
 
 = 2.2.0 - TUESDAY, 27th DECEMBER 2022 =

@@ -93,7 +93,7 @@ const Render = ( props ) => {
 	const iconHTML = (
 		<div className='uagb-modal-trigger'>
 			{ '' !== icon && (
-				renderSVG( icon )
+				renderSVG( icon, setAttributes )
 			) }
 		</div>
 	);
@@ -131,7 +131,7 @@ const Render = ( props ) => {
 
 	let buttonIconOutput = '';
 	if ( buttonIcon !== '' ) {
-		buttonIconOutput = renderSVG( buttonIcon );
+		buttonIconOutput = renderSVG( buttonIcon, setAttributes );
 	}
 
 	const buttonClasses = 'uagb-modal-button-link wp-block-button__link uagb-modal-trigger';
@@ -237,7 +237,7 @@ const Render = ( props ) => {
 						</div>
 						{ ( 'popup-top-left' === closeIconPosition || 'popup-top-right' === closeIconPosition ) && (
 							<div className="uagb-modal-popup-close">
-								{ '' !== closeIcon && ( renderSVG( closeIcon ) ) }
+								{ '' !== closeIcon && ( renderSVG( closeIcon, setAttributes ) ) }
 							</div>
 						) }
 					</div>

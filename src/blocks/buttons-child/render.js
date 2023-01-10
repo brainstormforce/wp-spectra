@@ -40,7 +40,7 @@ const Render = ( props ) => {
 						`uagb-button__icon-position-${ iconPosition }`
 					) }
 				>
-					{ renderSVG( icon ) }
+					{ renderSVG( icon, setAttributes ) }
 				</span>
 			);
 		}
