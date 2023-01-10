@@ -42,7 +42,7 @@ const Render = ( props ) => {
 	const iconHTML = (
 		<>
 			{ '' !== icon && (
-				renderSVG( icon )
+				renderSVG( icon, setAttributes )
 			) }
 		</>
 	);
