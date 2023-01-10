@@ -75,14 +75,14 @@ const Render = ( props ) => {
 
 	return (
 		<article
-			className={ classnames( 
+			className={ classnames(
 				'wp-block-uagb-content-timeline-child uagb-timeline__field',
 				`uagb-timeline-child-${ block_id }`,
 				props.attributes.content_class
 			)}
 		>
 				<div className="uagb-timeline__marker uagb-timeline__out-view-icon">
-						{ renderSVG( icon ) ? renderSVG( icon ) : <svg xmlns="" viewBox="0 0 256 512"></svg> }
+						{ renderSVG( icon, setAttributes ) ? renderSVG( icon, setAttributes ) : <svg xmlns="" viewBox="0 0 256 512"></svg> }
 				</div>
 				<div className={ classnames( props.attributes.dayalign_class, 'uagb-timeline__events-inner-new' ) } >
 					<div className='uagb-timeline__events-inner--content'>
@@ -156,7 +156,7 @@ const Render = ( props ) => {
 						) }
 					</div>
 				) }
-		</article>	
+		</article>
 	);
 };
 

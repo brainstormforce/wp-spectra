@@ -48,7 +48,7 @@ const Render = ( props ) => {
 
 	if ( image_icon === 'icon' ) {
 		if( icon || fromParentIcon ){
-			imageIconHtml = icon ? renderSVG( icon ) : renderSVG( fromParentIcon );
+			imageIconHtml = icon ? renderSVG( icon, setAttributes ) : renderSVG( fromParentIcon, setAttributes );
 		}
 	} else if ( image && image.url && image_icon !== 'none' ) {
 		imageIconHtml = (

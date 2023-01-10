@@ -40,7 +40,7 @@ const Render = ( props ) => {
 						`uagb-button__icon-position-${ iconPosition }`
 					) }
 				>
-					{ renderSVG( icon ) }
+					{ renderSVG( icon, setAttributes ) }
 				</span>
 			);
 		}
@@ -58,6 +58,7 @@ const Render = ( props ) => {
 						className="uagb-button__link"
 						rel= { noFollow ? 'nofollow noopener' : 'follow noopener' }
 						keepPlaceholderOnFocus
+						allowedFormats={ [] } // Removed the WP default link/bold/italic from the toolbar for button.
 					/>
 		}
 			return '';

@@ -38,7 +38,7 @@ const Render = ( props ) => {
 		if ( icon ) {
 			imageIconHtml = (
 				<span className="uagb-ss__source-icon">
-					{ renderSVG( icon ) }
+					{ renderSVG( icon, setAttributes ) }
 				</span>
 			);
 		}
