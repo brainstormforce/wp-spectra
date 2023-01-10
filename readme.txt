@@ -172,7 +172,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 
 = 2.3.0 =
-* New: Slider Block.
+* New: Introducing the Slider block that allows you to make almost anything into a carousel, a good way to grab attention!
 * Improvement: Added support for Astra's 4.0 theme menu position next to the Dashboard in admin.
 * Fix: Container - Adding padding to paragraph cause uneven space and cross the boundary of container on responsive devices.
 * Fix: Container - Background video goes out the boundary of the container if we have rounded corner.
