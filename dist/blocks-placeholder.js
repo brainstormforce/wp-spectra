@@ -28,6 +28,7 @@ registerBlockType( 'uagb/post-carousel', { title: __( 'Post Carousel', 'ultimate
 registerBlockType( 'uagb/post-grid', { title: __( 'Post Grid', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/restaurant-menu', { title: __( 'Price List', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/review', { title: __( 'Review', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/slider', { title: __( 'Slider', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/social-share', { title: __( 'Social Share', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/star-rating', { title: __( 'Star Ratings', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/table-of-contents', { title: __( 'Table Of Contents', 'ultimate-addons-for-gutenberg' ) } );

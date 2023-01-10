@@ -171,7 +171,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 
-= 2.2.1 =
+= 2.3.0 =
+* New: Slider Block.
 * Improvement: Added support for Astra's 4.0 theme menu position next to the Dashboard in admin.
 * Fix: Container - Adding padding to paragraph cause uneven space and cross the boundary of container on responsive devices.
 * Fix: Container - Background video goes out the boundary of the container if we have rounded corner.

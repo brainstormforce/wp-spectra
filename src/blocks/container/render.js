@@ -29,7 +29,8 @@ const Render = ( props ) => {
 		bottomInvert,
 		isBlockRootParent,
 		contentWidth,
-		innerContentWidth
+		innerContentWidth,
+		hasSliderParent
 	} = attributes;
 
 	const direction = attributes[ 'direction' + deviceType ];
@@ -97,6 +98,22 @@ const Render = ( props ) => {
 		className: `uagb-block-${ block_id } ${hasChildrenClass} uagb-editor-preview-mode-${ deviceType.toLowerCase() } ${isRootContainerClass}`,
 	} );
 
+	const innerBlocksParams = {
+		__experimentalMoverDirection : { moverDirection },
+		renderAppender : hasChildBlocks ? undefined : InnerBlocks.ButtonBlockAppender
+	}
+
+	if( hasSliderParent ) {
+
+		const parentBlocks = wp.blocks.getBlockTypes().filter( function( item ) { 
+			return ! item.parent
+		} );
+
+		const ALLOWED_BLOCKS = parentBlocks.map( block => block.name ).filter( blockName => [ 'uagb/slider' ].indexOf( blockName ) === -1 );
+
+		innerBlocksParams.allowedBlocks = ALLOWED_BLOCKS;
+	}
+
 	return (
 		<>
 			<CustomTag
@@ -121,18 +138,12 @@ const Render = ( props ) => {
 				?  (
 					<div className='uagb-container-inner-blocks-wrap'>
 						<InnerBlocks
-							__experimentalMoverDirection={ moverDirection }
-							renderAppender = { hasChildBlocks
-							? undefined
-							: InnerBlocks.ButtonBlockAppender }
+							{ ...innerBlocksParams }
 						/>
 					</div>
 				)
 				: <InnerBlocks
-						__experimentalMoverDirection={ moverDirection }
-						renderAppender = { hasChildBlocks
-						? undefined
-						: InnerBlocks.ButtonBlockAppender }
+					{ ...innerBlocksParams }
 					/>
 				}
 				{ bottomDividerHtml }

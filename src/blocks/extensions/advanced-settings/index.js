@@ -277,7 +277,7 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 
 			const { isSelected, name } = props;
 
-			const excludeBlocks = ['uagb/buttons-child','uagb/faq-child', 'uagb/icon-list-child', 'uagb/social-share-child', 'uagb/restaurant-menu-child'];
+			const excludeBlocks = ['uagb/buttons-child','uagb/faq-child', 'uagb/icon-list-child', 'uagb/social-share-child', 'uagb/restaurant-menu-child', 'uagb/slider-child'];
 
 			const excludeDeprecatedBlocks = ['uagb/cf7-styler','uagb/wp-search', 'uagb/gf-styler', 'uagb/columns', 'uagb/section'];
 
