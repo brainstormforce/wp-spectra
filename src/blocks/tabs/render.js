@@ -303,6 +303,7 @@ const Render = ( props ) => {
 						] }
 						templateLock={ false }
 						allowedBlocks={ [ 'uagb/tabs-child' ] }
+						renderAppender={ false }
 					/>
 				</div>
 			</div>
