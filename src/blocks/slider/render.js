@@ -5,7 +5,7 @@ const ALLOWED_BLOCKS = [ 'uagb/slider-child' ];
 import { useDeviceType } from '@Controls/getPreviewType';
 import { __ } from '@wordpress/i18n';
 
-import Swiper, { Navigation, Pagination, Autoplay, EffectFade, EffectFlip, EffectCards, Manipulation } from 'swiper';
+import Swiper, { Navigation, Pagination, Autoplay, EffectFade, EffectFlip,  Manipulation } from 'swiper';
 
 const Render = ( props ) => {
 
@@ -114,6 +114,7 @@ const Render = ( props ) => {
 	const blockProps = useBlockProps( {
 		className: `uagb-block-${ block_id } ${hasChildrenClass} ${listViewClass} uagb-slider-container uagb-slider-editor-wrap uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 	} );
+	const swiperModules = [Navigation, Pagination,Autoplay,EffectFade, Manipulation, EffectFlip];
 
     const innerBlocksProps = useInnerBlocksProps(
         {
@@ -150,6 +151,9 @@ const Render = ( props ) => {
 				el: sliderPaginationRef.current,
 				clickable: true,
 			} : false, 
+			cardsEffect: {
+				slideShadows: false
+			},
 			allowTouchMove:false,
 			navigation: displayArrows ? {
 				nextEl: sliderNavNextRef.current,
@@ -165,7 +169,7 @@ const Render = ( props ) => {
 
 		new Swiper( sliderWrapRef.current, {
 			...settings,
-			modules: [Navigation, Pagination,Autoplay,EffectFade, Manipulation, EffectFlip],
+			modules: wp.hooks.applyFilters( 'spectra.slider.modules', swiperModules ),
 		} );
 	}
 
