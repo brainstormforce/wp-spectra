@@ -2,12 +2,12 @@ import renderSVG from '@Controls/renderIcon';
 
 const CounterIcon = ( props ) => {
 
-    const { attributes } = props;
+    const { attributes, setAttributes } = props;
 
     if( attributes.sourceType === 'icon' ) {
         return (
             <span className='wp-block-uagb-counter__icon'>
-                {renderSVG( attributes.icon )}
+                {renderSVG( attributes.icon, setAttributes )}
             </span>
         );
     }
@@ -29,7 +29,7 @@ const CounterIcon = ( props ) => {
         if ( urlCheck !== '' ) {
             const size = attributes.iconImage.sizes;
             const imageSize = attributes.imageSize;
-    
+
             if (
                 typeof size !== 'undefined' &&
                 typeof size[ imageSize ] !== 'undefined'

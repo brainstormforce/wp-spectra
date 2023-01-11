@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.1  
-**Stable tag:** 2.1.0  
+**Stable tag:** 2.3.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -169,11 +169,50 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 ## Changelog ##
-### 2.1.1 - TUESDAY, 13th DECEMBER 2022 ###
-* Improvement: Table Of Contents - UniqueId for duplicate heading.
-* Improvement: Call to action - Width option for CTA buttons.
-* Fix: Container - Boxed container width breaks inside other block.
-* Fix: Container - Background Image Position control goes missing on changing the viewport.
+
+
+### 2.3.0 ###
+* New: Introducing the Slider block that allows you to make almost anything into a carousel, a good way to grab attention!
+* Improvement: Added support for Astra's 4.0 theme menu position next to the Dashboard in admin.
+* Fix: Container - Adding padding to paragraph cause uneven space and cross the boundary of container on responsive devices.
+* Fix: Container - Background video goes out the boundary of the container if we have rounded corner.
+* Fix: Image Gallery - When adding any of the HTML code or adding the link, the visibility of that caption gets changed to always visible
+* Fix: Image Gallery - Broken links were shown in the gallery on frontend when added to caption.
+* Fix: Icon List - Disable link for the list item, it turns on the toggle again.
+* Fix: Testimonial - Carousel dots overlapping on below blocks in the mobile device.
+* Fix: Post Grid - Undefined array key issue.
+* Fix: How-To - Image is not visible when image selected from Image control.
+* Fix: Image - Does not wrap with paragraph.
+* Fix: Tabs - Container get hidden inside tabs body whenever use.
+* Fix: Global - Buttons - Removed the WP default allowedFormats from the toolbar.
+* Fix: Global - SVG Icons for blocks look big after switching to responsive devices inside the editor.
+* Deprecated: Global - Removed deprecated toolbar and multiline for rich text.
+
+### 2.2.0 - TUESDAY, 27th DECEMBER 2022 ###
+* New: Introducing the Modal block that will help you to show your own customized popups on the page and turn your visitors into subscribers and leads!
+* Improvement: Global - Added hover color accessibility to Spectra block with a button.
+* Improvement: Counter - Bar Layout - Added toggle to flip/swap the positions of bar and title.
+* Fix: Container - Resolved the issue where the list items overflow inside a Container on responsive devices.
+* Fix: Image - Resolved the issue where the alignments are ineffective inside a Container on the front end.
+* Fix: Buttons - Page scroll to the top when the hash link is added and refresh on click when the hash is removed.
+* Fix: Post Grid - Equal Height is not functional in Post Grid block.
+* Fix: Tabs - Removed the WP default Link option from the toolbar for the tabs title field.
+* Fix: Testimonial - Block break when we reduce the number of testimonials to 2.
+* Fix: Block Transform - Theme pallet color for default theme does not carry forward when block transform.
+* Fix: Typography - Resolved Google font console errors.
+
+### 2.1.1 - WEDNESDAY, 14th DECEMBER 2022 ###
+* Improvement: Call To Action - Added a width option for the CTA buttons.
+* Improvement: Forms - Added a gradient background option for the submit button.
+* Improvement: Table Of Contents - Added unique IDs for headings that have the same text.
+* Improvement: Typography Control - Allowed negative values for letter spacing.
+* Fix: Container - Resolved an issue where the boxed container width would break when inside other blocks.
+* Fix: Container - Resolved an issue in which the background image position control goes missing when the viewport is changed.
+* Fix: Forms - Resolved an issue wherein settings a checkbox with a required condition would enforce the user to check all the checkboxes before submitting the form.
+* Fix: Marketing Button - Implemented support to make the background and hover colors persist for older users (V1.25.6).
+* Fix: Post Carousel/Masonry - Resolved an issue wherein the featured images for posts were not visible.
+* Fix: Post Carousel - Resolved an issue in which the static CSS was not loaded on the front end.
+* Fix: Separator Control - Removed the unwanted space that was added when the separator is used.
 
 ### 2.1.0 - WEDNESDAY, 07th DECEMBER 2022 ###
 * New: Introducing the Counter block with layouts that will help you flaunt your stats in a cool way!

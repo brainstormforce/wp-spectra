@@ -295,6 +295,7 @@ class Admin_Menu {
 					'content-timeline-child',
 					'tabs-child',
 					'how-to-step',
+					'slider-child',
 				);
 
 				if ( ( 'cf7-styler' === $addon && 'active' !== $cf7_status ) || ( 'gf-styler' === $addon && 'active' !== $gf_status ) ) {

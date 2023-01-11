@@ -38,4 +38,5 @@ $block_data = array(
 			'type' => 'css',
 		),
 	),
+	'static_css'          => 'post',
 );

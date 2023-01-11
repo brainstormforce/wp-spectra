@@ -86,11 +86,14 @@ import './blocks/image-gallery/block.js';
 import './blocks/inline-notice/block.js';
 import './blocks/lottie/block.js';
 import './blocks/marketing-button/block.js';
+import './blocks/modal/block.js';
 import './blocks/post/block.js'; // Carousel, Grid.
 import './blocks/timeline/post-timeline/block.js';
 import './blocks/price-list/block.js';
 import './blocks/price-list-child/block.js'; // Child Block.
 import './blocks/review/block.js';
+import './blocks/slider/block.js';
+import './blocks/slider-child/block.js'; // Child Block.
 import './blocks/social-share/block.js';
 import './blocks/social-share-child/block.js'; // Child Block.
 import './blocks/star-rating/block.js';
@@ -105,8 +108,8 @@ import './blocks/extensions/attributes.js';
 import './blocks/extensions/block.js';
 // Legacy Blocks.
 import './blocks/columns/block.js';
-import './blocks/column/block.js'; // Child Block.
 import './blocks/section/block.js';
+import './blocks/column/block.js'; // Child Block.
 import './blocks/cf7-designer/block.js';
 import './blocks/gf-designer/block.js';
 import './blocks/post/deprecated-block.js'; // Masonry.

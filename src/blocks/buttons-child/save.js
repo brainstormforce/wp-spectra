@@ -65,21 +65,22 @@ export default function save( props ) {
 			) }
 		>
 			<div className="uagb-button__wrapper">
-				<a
-					className={ classnames(
-						'uagb-buttons-repeater',
-						'wp-block-button__link',
-						hasBackground,
-						color !== '' ? 'has-text-color' : '',
-					) }
-					href={ link }
-					rel= { noFollow ? 'nofollow noopener' : 'follow noopener' }
-					target={ openNewWindow }
-				>
-					{ iconHtml( 'before' ) }
-					{ btnText() }
-					{ iconHtml( 'after' ) }
-				</a>
+					<a
+						className={ classnames(
+							'uagb-buttons-repeater',
+							'wp-block-button__link',
+							hasBackground,
+							color !== '' ? 'has-text-color' : '',
+						) }
+						href={ ( '' === link || '#' === link ) ? '#' : link }
+						onClick={ ( '' === link || '#' === link ) ? 'return false;' : 'return true;'}
+						rel= { noFollow ? 'nofollow noopener' : 'follow noopener' }
+						target={ openNewWindow }
+					>
+						{ iconHtml( 'before' ) }
+						{ btnText() }
+						{ iconHtml( 'after' ) }
+					</a>
 			</div>
 		</div>
 	);

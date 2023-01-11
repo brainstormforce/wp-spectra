@@ -23,10 +23,12 @@ registerBlockType( 'uagb/info-box', { title: __( 'Info Box', 'ultimate-addons-fo
 registerBlockType( 'uagb/inline-notice', { title: __( 'Inline Notice', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/lottie', { title: __( 'Lottie Animation', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/marketing-button', { title: __( 'Marketing Button', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/modal', { title: __( 'Modal', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/post-carousel', { title: __( 'Post Carousel', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/post-grid', { title: __( 'Post Grid', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/restaurant-menu', { title: __( 'Price List', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/review', { title: __( 'Review', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/slider', { title: __( 'Slider', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/social-share', { title: __( 'Social Share', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/star-rating', { title: __( 'Star Ratings', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/table-of-contents', { title: __( 'Table Of Contents', 'ultimate-addons-for-gutenberg' ) } );

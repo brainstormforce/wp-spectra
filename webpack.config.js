@@ -1,6 +1,16 @@
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 const path = require( 'path' );
+const { spawn } = require( 'child_process' );
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+class UAGBRunAdditionalProcess {
+	apply( compiler ) {
+		compiler.hooks.afterEmit.tapAsync( 'UAGBRunAdditionalProcess', ( compilation, callback ) => {
+			spawn( /^win/.test( process.platform ) ? 'npm-run-all.cmd' : 'npm-run-all', ['--sequential', 'build:sass', 'build:placeholder'], { stdio: 'inherit' } );
+			callback();
+		} );
+	}
+}
 
 const wp_rules = defaultConfig.module.rules.filter( function ( item ) {
 	if ( String( item.test ) === String( /\.jsx?$/ ) ) {
@@ -19,6 +29,7 @@ module.exports = {
 	plugins: [
 		...defaultConfig.plugins,
 		// new BundleAnalyzerPlugin,
+		new UAGBRunAdditionalProcess(),
 	],
 	entry: {
 		blocks: path.resolve( __dirname, 'src/blocks.js' ),

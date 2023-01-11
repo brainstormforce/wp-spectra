@@ -38,6 +38,9 @@ class UAGB_Astra_Compatibility {
 	 */
 	public function __construct() {
 
+		// Update Astra's admin top level menu position.
+		add_filter( 'astra_menu_priority', array( $this, 'update_admin_menu_position' ) );
+
 		$uag_load_fonts_locally = UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_gfonts_locally', 'disabled' );
 
 		if ( 'disabled' === $uag_load_fonts_locally ) {
@@ -89,6 +92,16 @@ class UAGB_Astra_Compatibility {
 		}
 
 		return $astra_fonts;
+	}
+
+	/**
+	 * Update Astra's menu priority to show after Dashboard menu.
+	 *
+	 * @param int $menu_priority top level menu priority.
+	 * @since 2.3.0
+	 */
+	public function update_admin_menu_position( $menu_priority ) {
+		return 2.1;
 	}
 }
 

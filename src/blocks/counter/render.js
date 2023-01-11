@@ -97,7 +97,7 @@ const Render = ( props ) => {
 	let iconComponent = '';
 
 	if ( iconAndImageCheck ) {
-		iconComponent = <CounterIcon attributes={attributes} />
+		iconComponent = <CounterIcon attributes={attributes} setAttributes={ setAttributes }/>
 	}
 
 	const title = (
