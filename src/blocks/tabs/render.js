@@ -253,7 +253,7 @@ const Render = ( props ) => {
 									( iconPosition === 'left' ||
 										iconPosition === 'top' ) && (
 										<span className="uagb-tabs__icon">
-											{ renderSVG( icon ) }
+											{ renderSVG( icon, setAttributes ) }
 										</span>
 									) }
 								<RichText
@@ -274,7 +274,7 @@ const Render = ( props ) => {
 									( iconPosition === 'right' ||
 										iconPosition === 'bottom' ) && (
 										<span className="uagb-tabs__icon">
-											{ renderSVG( icon ) }
+											{ renderSVG( icon, setAttributes ) }
 										</span>
 									) }
 							</a>
@@ -303,6 +303,7 @@ const Render = ( props ) => {
 						] }
 						templateLock={ false }
 						allowedBlocks={ [ 'uagb/tabs-child' ] }
+						renderAppender={ false }
 					/>
 				</div>
 			</div>

@@ -557,6 +557,56 @@ const UAGB_Block_Icons = {
 			strokeLinejoin: 'round',
 		} ),
 	),
+	'slider': el(
+		'svg',
+		{ width: 40, height: 40, viewBox: '0 0 26 24', fill: 'none' },
+		el( 'rect', {
+			x: 5.4502,
+			y: 4.98621,
+			width: 15.0978,
+			height: 11.2249,
+			rx: 2,
+			stroke: iconColor,
+			strokeWidth: 1.4,
+			strokeLinecap: 'round',
+			strokeLinejoin: 'round',
+		} ),
+		el( 'path', {
+			d: 'M9.19922 9.10217H16.501',
+			stroke: iconColor,
+			strokeWidth: 1.4,
+			strokeLinecap: 'round',
+			strokeLinejoin: 'round',
+		} ),
+		el( 'path', {
+			d: 'M9.19922 12.0948H16.501',
+			stroke: iconColor,
+			strokeWidth: 1.4,
+			strokeLinecap: 'round',
+			strokeLinejoin: 'round',
+		} ),
+		el( 'path', {
+			d: 'M15.9987 19.0138H16.0054M12.9922 19.0138H12.9989M9.99219 19.0138H9.99885',
+			stroke: iconColor,
+			strokeWidth: 1.4,
+			strokeLinecap: 'round',
+			strokeLinejoin: 'round',
+		} ),
+		el( 'path', {
+			d: 'M2.49658 9.69873L1.49658 10.5987L2.49658 11.4987',
+			stroke: iconColor,
+			strokeWidth: 1.4,
+			strokeLinecap: 'round',
+			strokeLinejoin: 'round',
+		} ),
+		el( 'path', {
+			d: 'M23.5034 11.4987L24.5034 10.5987L23.5034 9.69872',
+			stroke: iconColor,
+			strokeWidth: 1.4,
+			strokeLinecap: 'round',
+			strokeLinejoin: 'round',
+		} ),
+	),
 
 	// ---------------------------------.
 	// Spectra Pro Blocks and Extensions.

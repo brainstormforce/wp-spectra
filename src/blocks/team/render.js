@@ -119,7 +119,7 @@ const Render = ( props ) => {
 					title=""
 					rel="noopener noreferrer"
 				>
-					{ renderSVG( icon ) }
+					{ renderSVG( icon, setAttributes ) }
 				</a>
 			</li>
 		);

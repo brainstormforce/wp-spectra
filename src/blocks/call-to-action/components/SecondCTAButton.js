@@ -13,7 +13,11 @@ const SecondCTAButton = ( props ) => {
 
 	let secondCtaIconOutput = '';
 	if ( attributes.showSecondIcon && attributes.secondCtaIcon !== '' ) {
-		secondCtaIconOutput = renderSVG( attributes.secondCtaIcon );
+		if ( setAttributes !== 'not_set' ) {
+			secondCtaIconOutput = renderSVG( attributes.secondCtaIcon, setAttributes );
+		} else {
+			secondCtaIconOutput = renderSVG( attributes.secondCtaIcon );
+		}
 	}
 
 	let link = '/';
