@@ -43,6 +43,7 @@ class Spectra_Block_Prioritization {
 		'login',
 		'lottie',
 		'marketing-button',
+		'modal',
 		'post-carousel',
 		'post-grid',
 		'post-timeline',

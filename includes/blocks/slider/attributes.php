@@ -7,7 +7,6 @@
  * @package uagb
  */
 
-$default_padding        = 20;
 $border_attribute       = UAGB_Block_Helper::uag_generate_border_attribute( 'slider' );
 $arrow_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'slider-arrow' );
 
@@ -69,18 +68,18 @@ return array_merge(
 		'yPositionType'               => 'px',
 		'yPositionTypeTablet'         => 'px',
 		'yPositionTypeMobile'         => 'px',
-		'topPaddingDesktop'           => $default_padding,
-		'bottomPaddingDesktop'        => $default_padding,
-		'leftPaddingDesktop'          => $default_padding,
-		'rightPaddingDesktop'         => $default_padding,
-		'topPaddingTablet'            => $default_padding,
-		'bottomPaddingTablet'         => $default_padding,
-		'leftPaddingTablet'           => $default_padding,
-		'rightPaddingTablet'          => $default_padding,
-		'topPaddingMobile'            => $default_padding,
-		'bottomPaddingMobile'         => $default_padding,
-		'leftPaddingMobile'           => $default_padding,
-		'rightPaddingMobile'          => $default_padding,
+		'topPaddingDesktop'           => 10,
+		'bottomPaddingDesktop'        => 10,
+		'leftPaddingDesktop'          => 10,
+		'rightPaddingDesktop'         => 10,
+		'topPaddingTablet'            => '',
+		'bottomPaddingTablet'         => '',
+		'leftPaddingTablet'           => '',
+		'rightPaddingTablet'          => '',
+		'topPaddingMobile'            => '',
+		'bottomPaddingMobile'         => '',
+		'leftPaddingMobile'           => '',
+		'rightPaddingMobile'          => '',
 		'paddingType'                 => 'px',
 		'paddingTypeTablet'           => 'px',
 		'paddingTypeMobile'           => 'px',
@@ -115,7 +114,7 @@ return array_merge(
 		'arrowSize'                   => 16,
 		'arrowSizeTablet'             => '',
 		'arrowSizeMobile'             => '',
-		'arrowDistance'               => '',
+		'arrowDistance'               => -20,
 		'arrowDistanceTablet'         => '',
 		'arrowDistanceMobile'         => '',
 		'arrowPadding'                => 15,
@@ -127,6 +126,9 @@ return array_merge(
 		'dotsMarginTop'               => 20,
 		'dotsMarginTopTablet'         => '',
 		'dotsMarginTopMobile'         => '',
+		'minHeight'                   => 350,
+		'minHeightTablet'             => '',
+		'minHeightMobile'             => '',
 	),
 	$border_attribute,
 	$arrow_border_attribute

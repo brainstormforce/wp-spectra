@@ -36,7 +36,7 @@ const Render = ( props ) => {
 	let imageIconHtml = '';
 
 	if ( noticeDismiss ) {
-		imageIconHtml = ( renderSVG( icon ) );
+		imageIconHtml = ( renderSVG( icon, setAttributes ) );
 	}
 
 	return (
@@ -65,7 +65,6 @@ const Render = ( props ) => {
 			/>
 			<RichText
 				tagName="div"
-				multiline="p"
 				placeholder={ __(
 					'Add Content…',
 					'ultimate-addons-for-gutenberg'

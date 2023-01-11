@@ -34,22 +34,12 @@ const GradientSettings = ( props ) => {
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	return (
-		<div
-			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
-		>
-			{
-				controlBeforeDomElement
-			}
-			<GradientPicker
-				value={ backgroundGradient.value }
-				onChange={ onGradientChange }
-				className="uagb-gradient-picker"
-			/>
-			{
-				controlAfterDomElement
-			}
-		</div>
+		<GradientPicker
+			__nextHasNoMargin = { true }
+			value={ backgroundGradient.value }
+			onChange={ onGradientChange }
+			className="uagb-gradient-picker"
+		/>
 	);
 }
 

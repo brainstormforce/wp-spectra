@@ -1,6 +1,6 @@
-import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
+import { useBlockProps, useInnerBlocksProps, store as blockEditorStore } from '@wordpress/block-editor';
 import React, { useMemo, useEffect, useRef } from 'react';
-import { select } from '@wordpress/data';
+import { useSelect, useDispatch } from '@wordpress/data';
 const ALLOWED_BLOCKS = [ 'uagb/slider-child' ];
 import { useDeviceType } from '@Controls/getPreviewType';
 import { __ } from '@wordpress/i18n';
@@ -13,7 +13,9 @@ const Render = ( props ) => {
 	const {
 		attributes,
 		clientId,
-		attributes: { slide_content },
+		block,
+		blockParents,
+		attributes: { slide_content }
 	} = props;
 
 	const deviceType = useDeviceType();
@@ -22,6 +24,22 @@ const Render = ( props ) => {
 	const sliderPaginationRef = useRef();
 	const sliderNavPrevRef = useRef();
 	const sliderNavNextRef = useRef();
+	const { selectBlock } = useDispatch( blockEditorStore );
+
+	const {
+		isListViewOpen,
+		hasChildren,
+	} = useSelect( ( select ) => {
+
+		const { isListViewOpened } =
+			select( 'core/edit-post' );
+
+		return {
+			isListViewOpen: isListViewOpened(),
+			hasChildren: 0 !== select( 'core/block-editor' ).getBlocks( clientId ).length
+		}
+
+	}, [] );
 
 	const {
 		isPreview,
@@ -91,10 +109,10 @@ const Render = ( props ) => {
 		return sliderTemplate;
 	}, [ slideItem, slide_content ] );
 
-	const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( clientId ).length;
 	const hasChildrenClass = hasChildren ? 'uagb-slider-has-children' : '';
+	const listViewClass = isListViewOpen ? 'uagb-list-view-enabled' : '';
 	const blockProps = useBlockProps( {
-		className: `uagb-block-${ block_id } ${hasChildrenClass} uagb-slider-container uagb-slider-editor-wrap uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+		className: `uagb-block-${ block_id } ${hasChildrenClass} ${listViewClass} uagb-slider-container uagb-slider-editor-wrap uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 	} );
 
     const innerBlocksProps = useInnerBlocksProps(
@@ -105,7 +123,8 @@ const Render = ( props ) => {
         {
 			allowedBlocks: ALLOWED_BLOCKS,
 			template : getSliderTemplate,
-			renderAppender: false
+			renderAppender: false,
+			orientation: 'horizontal'
 		}
     );
 
@@ -121,6 +140,12 @@ const Render = ( props ) => {
 			speed: transitionSpeed,
 			loop: false,
 			effect: transitionEffect,
+			flipEffect: {
+				slideShadows: false,
+			},
+			fadeEffect: {
+				crossFade: true
+			},
 			pagination: displayDots ? {
 				el: sliderPaginationRef.current,
 				clickable: true,
@@ -158,19 +183,6 @@ const Render = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		
-		const { getSelectedBlock } = select( 'core/block-editor' );
-        const selectedBlockData = getSelectedBlock();
-
-		if( selectedBlockData && 'uagb/slider-child' === selectedBlockData.name ) {
-			const {getBlockIndex} = select( 'core/block-editor' );
-			
-			const slideIndex = getBlockIndex( selectedBlockData.clientId ); 
-
-			if( swiperInstance ) {
-				swiperInstance.activeIndex = slideIndex;
-			}
-		}
 
 		if( swiperInstance ) {
 			swiperInstance.update();
@@ -181,13 +193,43 @@ const Render = ( props ) => {
 	useEffect( () => {
 
 		if( swiperInstance ) {
+
+			const slidesCount = swiperInstance.slides.length;
+
+			// Slide to the slide index more than number of slides, this will reset slider UI.  
+			swiperInstance.slideTo( slidesCount + 1, transitionSpeed, false );
+
+			setTimeout( () => {
+				// Reset Slider to first slide to avoid UI break.
+				swiperInstance.slideTo( 0, 0, false );		
+			}, 100 );
+
+			const sliderBlocks = [ 'uagb/slider', 'uagb/slider-child' ];
+			let hasSliderParent = false;
+
+			for ( let index = 0; index < blockParents.length; index++ ) {
+				if( sliderBlocks.includes( blockParents[index].name ) ) {
+					hasSliderParent = true;
+					break;
+				}
+			}
+
+			if( hasSliderParent ) {
+				selectBlock( block.clientId );
+			}
+		}
+	
+	}, [ isListViewOpen ] );
+
+	useEffect( () => {
+
+		if( swiperInstance ) {
 			swiperInstance.destroy();
 			initSlider();
 		}
 
 	}, [ transitionEffect, displayArrows, displayDots, transitionSpeed ] );
 	
-
 	return (
 		isPreview ? '' :
 

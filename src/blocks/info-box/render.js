@@ -44,7 +44,7 @@ const Render = ( props ) => {
 	// Get icon/Image components.
 	let isImage = '';
 	if ( source_type === 'icon' && icon !== '' ) {
-		isImage = <Icon attributes={ attributes } />;
+		isImage = <Icon attributes={ attributes } setAttributes={ setAttributes }/>;
 	} else {
 		isImage = <InfoBoxIconImage attributes={ attributes } />;
 	}

@@ -1,11 +1,23 @@
 .uagb-slider-editor-wrap {
 
-	.swiper-wrapper {
-		width: 100%;
+	&.uagb-editor-preview-mode-tablet,
+	&.uagb-editor-preview-mode-mobile {
+		box-sizing: border-box;
+		overflow: hidden;
+		max-width: 100%;
 	}
 
-	.swiper-pagination {
-		position: relative;
+	&.uagb-list-view-enabled {
+
+		.swiper-button-prev,
+		.swiper-button-next,
+		.swiper-pagination {
+			pointer-events: none;
+		}
+	}
+
+	.swiper-wrapper {
+		width: 100%;
 	}
 
 	.block-editor-block-list__layout .block-list-appender {
@@ -14,6 +26,16 @@
 		.block-editor-button-block-appender {
 			width: auto;
 			margin: 0 auto;
+		}
+	}
+}
+
+.block-editor-block-list__layout {
+
+	.uagb-slider-editor-wrap {
+
+		.block-editor-block-list__block {
+			margin: 1px;
 		}
 	}
 }

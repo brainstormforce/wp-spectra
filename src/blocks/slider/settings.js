@@ -146,7 +146,10 @@ const Settings = ( props ) => {
 		verticalAlign,
 		dotsMarginTop,
 		dotsMarginTopTablet,
-		dotsMarginTopMobile
+		dotsMarginTopMobile,
+		minHeight,
+		minHeightTablet,
+		minHeightMobile
 	} = attributes;
 
 	// This useEffect ensures that background size is set to cover, so as to ensure color takes up entire width and height,
@@ -309,6 +312,30 @@ const Settings = ( props ) => {
 						onChange={ toggleInfiniteLoop }
 						help={ __( "Above setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }
 					/>
+					<ResponsiveSlider
+						label={ __(
+							'Minimum Height',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
+							desktop: {
+								value: minHeight,
+								label: 'minHeight',
+							},
+							tablet: {
+								value: minHeightTablet,
+								label: 'minHeightTablet',
+							},
+							mobile: {
+								value: minHeightMobile,
+								label: 'minHeightMobile',
+							},
+						} }
+						min={ 100 }
+						max={ 1000 }
+						displayUnit={ false }
+						setAttributes={ setAttributes }
+					/>
 					<ToggleControl
 						label={ __(
 							'Arrows',
@@ -361,7 +388,6 @@ const Settings = ( props ) => {
 								),
 							}
 						] }
-						help={ __( "Above setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }
 					/>
 					<Range
 						label={ __(
@@ -1022,8 +1048,8 @@ const Settings = ( props ) => {
 								label: 'dotsMarginTopMobile',
 							},
 						} }
-						min={ -50 }
-						max={ 50 }
+						min={ -100 }
+						max={ 100 }
 						displayUnit={ false }
 						setAttributes={ setAttributes }
 					/>

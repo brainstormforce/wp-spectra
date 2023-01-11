@@ -42,7 +42,7 @@ const Render = ( props ) => {
 	const iconHTML = (
 		<>
 			{ '' !== icon && (
-				renderSVG( icon )
+				renderSVG( icon, setAttributes )
 			) }
 		</>
 	);
@@ -54,6 +54,7 @@ const Render = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) }
 				value={ heading.replace( /(<([^>]+)>)/ig, '' ) }
+				allowedFormats={ [] } // Removed the WP default link/bold/italic from the toolbar for button.
 				tagName={ titleTag }
 				onChange={ ( value ) =>
 					setAttributes( { heading: value } )

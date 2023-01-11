@@ -44,6 +44,16 @@ const attributes = {
 		type: 'string',
 		default: 'slide'
 	},
+	'minHeight': {
+		type: 'number',
+		default: 350,
+	},
+	'minHeightTablet': {
+		type: 'number',
+	},
+	'minHeightMobile': {
+		type: 'number',
+	},
 	'autoplay': {
 		type: 'boolean',
 		default: true,
@@ -230,7 +240,6 @@ const attributes = {
 			styleType: 'container-align-content-mobile'
 		},
 	},
-
 	'backgroundType': {
 		type: 'string',
 		default: 'none',
@@ -441,7 +450,6 @@ const attributes = {
 			styleType: 'container-box-shadow-position-hover'
 		},
 	},
-
 	'topPaddingDesktop': {
 		type: 'number',
 		UAGCopyPaste: {
@@ -475,49 +483,42 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'container-top-padding-tablet'
 		},
-		default: 10
 	},
 	'bottomPaddingTablet': {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-bottom-padding-tablet'
 		},
-		default: 10
 	},
 	'leftPaddingTablet': {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-left-padding-tablet'
 		},
-		default: 10
 	},
 	'rightPaddingTablet': {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-right-padding-tablet'
 		},
-		default: 10
 	},
 	'topPaddingMobile': {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-top-padding-mobile'
 		},
-		default: 10
 	},
 	'bottomPaddingMobile': {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-bottom-padding-mobile'
 		},
-		default: 10
 	},
 	'leftPaddingMobile': {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-left-padding-mobile'
 		},
-		default: 10
 	},
 	'rightPaddingMobile': {
 		type: 'number',
