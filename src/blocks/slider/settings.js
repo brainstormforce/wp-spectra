@@ -236,6 +236,30 @@ const Settings = ( props ) => {
 			setAttributes( { displayDots: ! displayDots } );
 		};
 
+		const transitionEffects = [
+			{
+				value: 'slide',
+				label: __(
+					'Slide',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'fade',
+				label: __(
+					'Fade',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'flip',
+				label: __(
+					'Flip',
+					'ultimate-addons-for-gutenberg'
+				),
+			}
+		];
+
 		const sliderSettings = () => {
 			return (
 				<>
@@ -365,29 +389,7 @@ const Settings = ( props ) => {
 							setAttributes( { transitionEffect: value } )
 						}
 						setAttributes={ setAttributes }
-						options={ [
-							{
-								value: 'slide',
-								label: __(
-									'Slide',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'fade',
-								label: __(
-									'Fade',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'flip',
-								label: __(
-									'Flip',
-									'ultimate-addons-for-gutenberg'
-								),
-							}
-						] }
+						options={ wp.hooks.applyFilters( 'spectra.slider.transition-options', transitionEffects, attributes ) }
 					/>
 					<Range
 						label={ __(

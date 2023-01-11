@@ -5,7 +5,7 @@ const ALLOWED_BLOCKS = [ 'uagb/slider-child' ];
 import { useDeviceType } from '@Controls/getPreviewType';
 import { __ } from '@wordpress/i18n';
 
-import Swiper, { Navigation, Pagination, Autoplay, EffectFade, EffectFlip, Manipulation } from 'swiper';
+import Swiper, { Navigation, Pagination, Autoplay, EffectFade, EffectFlip, EffectCards, Manipulation } from 'swiper';
 
 const Render = ( props ) => {
 
