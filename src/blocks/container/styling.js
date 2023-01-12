@@ -312,14 +312,14 @@ function styling( props ) {
 	boxShadowBlurHover = isNaN( boxShadowBlurHover ) ? '' : boxShadowBlurHover;
 	boxShadowColorHover = boxShadowColorHover ? boxShadowColorHover : '';
 
-	if( '' !== boxShadowColorHover || '' !== boxShadowBlurHover ) {
+	// if( '' !== boxShadowColorHover || '' !== boxShadowBlurHover ) {
 
-		const boxShadowBlurHoverCSSUnit = ( '' === boxShadowBlurHover ) ? '' : generateCSSUnit( boxShadowBlurHover, 'px' );
+	// 	const boxShadowBlurHoverCSSUnit = ( '' === boxShadowBlurHover ) ? '' : generateCSSUnit( boxShadowBlurHover, 'px' );
 
-		selectors['.wp-block:hover']['box-shadow'] = generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
-													boxShadowBlurHoverCSSUnit + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
-													boxShadowColorHover + ' ' +	boxShadowPositionCSSHover;
-	}
+	// 	selectors['.wp-block:hover']['box-shadow'] = generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
+	// 												boxShadowBlurHoverCSSUnit + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
+	// 												boxShadowColorHover + ' ' +	boxShadowPositionCSSHover;
+	// }
 
 	let containerFlexSelector = '.wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout';
 	if ( ! isBlockRootParent || 'alignfull' !== contentWidth || 'alignwide' !== innerContentWidth ) {
@@ -548,6 +548,14 @@ function styling( props ) {
 			'border-color': containerBorderHColor,
 			'box-shadow': '',
 		};
+		if( '' !== boxShadowColorHover || '' !== boxShadowBlurHover ) {
+
+			const boxShadowBlurHoverCSSUnit = ( '' === boxShadowBlurHover ) ? '' : generateCSSUnit( boxShadowBlurHover, 'px' );
+
+			selectors['.wp-block:hover .uagb-container__video-wrap']['box-shadow'] = generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
+														boxShadowBlurHoverCSSUnit + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
+														boxShadowColorHover + ' ' +	boxShadowPositionCSSHover;
+		}
 	} else{
 		selectors['.wp-block'] = containerCSS;
 		tablet_selectors['.wp-block'] = {
@@ -580,6 +588,14 @@ function styling( props ) {
 			'border-color': containerBorderHColor,
 			'box-shadow': '',
 		};
+		if( '' !== boxShadowColorHover || '' !== boxShadowBlurHover ) {
+
+			const boxShadowBlurHoverCSSUnit = ( '' === boxShadowBlurHover ) ? '' : generateCSSUnit( boxShadowBlurHover, 'px' );
+
+			selectors['.wp-block:hover']['box-shadow'] = generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
+														boxShadowBlurHoverCSSUnit + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
+														boxShadowColorHover + ' ' +	boxShadowPositionCSSHover;
+		}
 	}
 
 	if ( 'default' === contentWidth ) {
