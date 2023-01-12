@@ -29,7 +29,7 @@ export default function Save( props ) {
 		seperatorStyle,
 		seperatorPosition
 	} = props.attributes;
-	console.log(url);
+	
 	const image = (
 		<img
 			srcSet={`${url} ${urlTablet ? ',' + urlTablet + ' 780w' : ''}${urlMobile ? ', ' + urlMobile + ' 360w' : ''}`}
