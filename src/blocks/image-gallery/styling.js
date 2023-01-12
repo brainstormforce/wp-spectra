@@ -84,7 +84,7 @@ function styling( props ) {
 		paginateButtonPaddingUnit,
 		paginateButtonPaddingUnitTab,
 		paginateButtonPaddingUnitMob,
-		
+
 		// Image Styling.
 		imageEnableZoom,
 		imageZoomType,
@@ -153,7 +153,7 @@ function styling( props ) {
 		imageBoxShadowVOffset,
 		imageBoxShadowBlur,
 		imageBoxShadowSpread,
-		imageBoxShadowPosition,		
+		imageBoxShadowPosition,
 		imageBoxShadowColorHover,
 		imageBoxShadowHOffsetHover,
 		imageBoxShadowVOffsetHover,
@@ -278,7 +278,7 @@ function styling( props ) {
 		},
 		' .spectra-image-gallery__control-arrows--carousel.slick-prev': {
 			'left': generateCSSUnit( paginateArrowDistanceFallback, paginateArrowDistanceUnit ),
-		},		
+		},
 		' .spectra-image-gallery__control-arrows--carousel.slick-next': {
 			'right': generateCSSUnit( paginateArrowDistanceFallback, paginateArrowDistanceUnit ),
 		},
@@ -359,7 +359,7 @@ function styling( props ) {
 		},
 
 		// Layout and Media Wrapper Selectors
-		
+
 		' .spectra-image-gallery__layout--grid': {
 			'grid-gap': generateCSSUnit(
 				gridImageGapFallback,
@@ -438,6 +438,19 @@ function styling( props ) {
 				)
 			),
 		},
+		' .spectra-image-gallery__media-thumbnail-caption-wrapper--overlay a': { // Caption Wrapper Selectors when link is get added to caption.
+			'color': (
+				( imageDisplayCaption ) ? (
+					( 'hover' === captionVisibility ) ? (
+						'rgba(0,0,0,0)'
+					) : (
+						captionBackgroundColor
+					)
+				) : (
+					overlayColor
+				)
+			),
+		},
 		' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption-wrapper--overlay': {
 			'background-color': (
 				( imageDisplayCaption ) ? (
@@ -491,12 +504,15 @@ function styling( props ) {
 				captionPaddingUnit
 			),
 		},
+		' .spectra-image-gallery__media-thumbnail-caption a': {
+			'color': ( 'hover' === captionVisibility ) ? 'rgba(0,0,0,0)' : captionColor,
+		},
 		' .spectra-image-gallery__media-thumbnail-caption--overlay': {
 			'-webkit-align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
 			'align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
 			'-webkit-justify-content': getMatrixAlignment( imageCaptionAlignment, 2, 'flex' ),
 			'justify-content': getMatrixAlignment( imageCaptionAlignment, 2, 'flex' ),
-		},		
+		},
 		' .spectra-image-gallery__media-thumbnail-caption--bar-inside': {
 			'background-color': ( 'hover' === captionVisibility ) ? 'rgba(0,0,0,0)' : captionBackgroundColor,
 			...mainTitleBorderCSS,
@@ -535,6 +551,19 @@ function styling( props ) {
 			'border-color': captionSeparateColors ? mainTitleBorderHColor : mainTitleBorderColor,
 		},
 		' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption': {
+			'color': (
+				( 'antiHover' === captionVisibility ) ? (
+					'rgba(0,0,0,0)'
+				) : (
+					( 'always' === captionVisibility && captionSeparateColors ) ? (
+						captionColorHover
+					) : (
+						captionColor
+					)
+				)
+			),
+		},
+		' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption a': { // Caption Wrapper Selectors when link is get added to caption.
 			'color': (
 				( 'antiHover' === captionVisibility ) ? (
 					'rgba(0,0,0,0)'
@@ -746,7 +775,7 @@ function styling( props ) {
 				) } )`,
 			};
 			break;
-	};	
+	};
 	switch( captionBackgroundEffectHover ){
 		case 'none':
 			selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ] = {
@@ -802,7 +831,7 @@ function styling( props ) {
 		}
 	}
 	// Grid based styling.
-	if ( 'grid' === feedLayout && feedPagination ){ 
+	if ( 'grid' === feedLayout && feedPagination ){
 		selectors[ ' .spectra-image-gallery__control-wrapper' ] = {
 			'margin-top': generateCSSUnit( paginateDotDistanceFallback, paginateDotDistanceUnit ),
 		}
@@ -822,7 +851,7 @@ function styling( props ) {
 	}
 
 	// Masonry based styling.
-	if ( 'masonry' === feedLayout && feedPagination && ! paginateUseLoader ) { 
+	if ( 'masonry' === feedLayout && feedPagination && ! paginateUseLoader ) {
 		selectors[ ' .spectra-image-gallery__control-wrapper' ] = {
 			'-webkit-justify-content': paginateButtonAlign,
 			'justify-content': paginateButtonAlign,

@@ -129,21 +129,17 @@ if ( ( $attr['isBlockRootParent'] && ! ( 'alignwide' === $attr['innerContentWidt
 $background_video_opacity_value = ( isset( $attr['backgroundVideoOpacity'] ) && 'none' !== $attr['overlayType'] && ( ( 'color' === $attr['overlayType'] && ! empty( $attr['backgroundVideoColor'] ) ) || ( 'gradient' === $attr['overlayType'] && ! empty( $attr['gradientValue'] ) ) ) ) ? 1 - $attr['backgroundVideoOpacity'] : 1;
 
 $selectors = array(
-	'.uagb-block-' . $id                                  => $container_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-	'.wp-block-uagb-container.uagb-block-' . $id . ':hover' => array(
-		'border-color' => $attr['containerBorderHColor'],
-	),
-	'.uagb-block-' . $id . '.wp-block-uagb-container'     => array(
+	'.uagb-block-' . $id . '.wp-block-uagb-container' => array(
 		'color'        => $attr['textColor'],
 		'border-color' => $border['border-color'] ? $border['border-color'] : '#4B4F58',
 	),
-	'.uagb-block-' . $id . ' a'                           => array(
+	'.uagb-block-' . $id . ' a'                       => array(
 		'color' => $attr['linkColor'],
 	),
-	'.uagb-block-' . $id . ' a:hover'                     => array(
+	'.uagb-block-' . $id . ' a:hover'                 => array(
 		'color' => $attr['linkHoverColor'],
 	),
-	'.uagb-is-root-container .uagb-block-' . $id          => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+	'.uagb-is-root-container .uagb-block-' . $id      => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'max-width' => UAGB_Helper::get_css_value( $width_desktop_fallback, $attr['widthType'] ),
 		'width'     => '100%',
 	),
@@ -159,28 +155,10 @@ $selectors = array(
 	'.uagb-block-' . $id . ' .uagb-container__shape.uagb-container__shape-bottom .uagb-container__shape-fill' => array(
 		'fill' => UAGB_Helper::hex2rgba( $attr['bottomColor'], ( isset( $attr['bottomDividerOpacity'] ) && '' !== $attr['bottomDividerOpacity'] ) ? $attr['bottomDividerOpacity'] : 100 ),
 	),
-	'.uagb-block-' . $id . ' .uagb-container__video-wrap' => $video_bg_css,
 	'.uagb-block-' . $id . ' .uagb-container__video-wrap video' => array(
 		'opacity' => $background_video_opacity_value,
 	),
 );
-
-// If hover blur or hover color are set, show the hover shadow.
-if ( ( ( '' !== $attr['boxShadowBlurHover'] ) && ( null !== $attr['boxShadowBlurHover'] ) ) || '' !== $attr['boxShadowColorHover'] ) {
-
-	$selectors[ '.uagb-block-' . $id . ':hover' ]['box-shadow'] = UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
-																' ' .
-																UAGB_Helper::get_css_value( $attr['boxShadowVOffsetHover'], 'px' ) .
-																' ' .
-																UAGB_Helper::get_css_value( $attr['boxShadowBlurHover'], 'px' ) .
-																' ' .
-																UAGB_Helper::get_css_value( $attr['boxShadowSpreadHover'], 'px' ) .
-																' ' .
-																$attr['boxShadowColorHover'] .
-																' ' .
-																$box_shadow_position_css_hover;
-
-}
 
 if ( '' !== $attr['topWidth'] ) {
 	$selectors[ '.uagb-block-' . $id . ' .uagb-container__shape-top svg' ]['width'] = 'calc( ' . $attr['topWidth'] . '% + 1.3px )';
@@ -242,7 +220,6 @@ if ( ( $attr['isBlockRootParent'] && ! ( 'alignwide' === $attr['innerContentWidt
 	$container_tablet_css = array_merge( $container_tablet_css, $inner_container_tablet_css );
 }
 $t_selectors = array(
-	'.uagb-block-' . $id                         => $container_tablet_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 	'.uagb-is-root-container .uagb-block-' . $id => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'max-width' => UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthTypeTablet'] ),
 		'width'     => '100%',
@@ -307,7 +284,6 @@ if ( ( $attr['isBlockRootParent'] && ! ( 'alignwide' === $attr['innerContentWidt
 	$container_mobile_css = array_merge( $container_mobile_css, $inner_container_mobile_css );
 }
 $m_selectors = array(
-	'.uagb-block-' . $id                         => $container_mobile_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 	'.uagb-is-root-container .uagb-block-' . $id => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'max-width' => UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthTypeMobile'] ),
 		'width'     => '100%',
@@ -347,6 +323,106 @@ if ( 'alignwide' === $attr['innerContentWidth'] && 'alignfull' === $attr['conten
 		),
 		$inner_container_mobile_css
 	);
+}
+
+if ( 'video' === $attr['backgroundType'] ) {
+	$selectors[ '.uagb-block-' . $id . ' .uagb-container__video-wrap' ]   = array_merge( $video_bg_css, $border );
+	$t_selectors[ '.uagb-block-' . $id . ' .uagb-container__video-wrap' ] = $border_tablet;
+	$m_selectors[ '.uagb-block-' . $id . ' .uagb-container__video-wrap' ] = $border_mobile;
+	$selectors[ '.uagb-block-' . $id ]                                    = array(
+		'min-height'     => UAGB_Helper::get_css_value( $attr['minHeightDesktop'], $attr['minHeightType'] ),
+		'box-shadow'     =>
+				UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
+				' ' .
+				UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) .
+				' ' .
+				UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) .
+				' ' .
+				UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) .
+				' ' .
+				$attr['boxShadowColor'] .
+				' ' .
+				$box_shadow_position_css,
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingDesktop'], $attr['paddingType'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingDesktop'], $attr['paddingType'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingDesktop'], $attr['paddingType'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPaddingDesktop'], $attr['paddingType'] ),
+		'margin-top'     => UAGB_Helper::get_css_value( $attr['topMarginDesktop'], $attr['marginType'] ) . ' !important',
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginDesktop'], $attr['marginType'] ) . ' !important',
+		'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginDesktop'], $attr['marginType'] ),
+		'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginDesktop'], $attr['marginType'] ),
+		'row-gap'        => UAGB_Helper::get_css_value( $row_gap_desktop_fallback, $attr['rowGapType'] ),
+		'column-gap'     => UAGB_Helper::get_css_value( $column_gap_desktop_fallback, $attr['columnGapType'] ),
+		'overflow'       => $attr['overflow'],
+	);
+	$t_selectors[ '.uagb-block-' . $id ]                                  = array(
+		'min-height'     => UAGB_Helper::get_css_value( $attr['minHeightTablet'], $attr['minHeightTypeTablet'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $top_padding_tablet, $attr['paddingTypeTablet'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding_tablet, $attr['paddingTypeTablet'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $left_padding_tablet, $attr['paddingTypeTablet'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $right_padding_tablet, $attr['paddingTypeTablet'] ),
+		'margin-top'     => UAGB_Helper::get_css_value( $top_margin_tablet, $attr['marginTypeTablet'] ) . ' !important',
+		'margin-bottom'  => UAGB_Helper::get_css_value( $bottom_margin_tablet, $attr['marginTypeTablet'] ) . ' !important',
+		'margin-left'    => UAGB_Helper::get_css_value( $left_margin_tablet, $attr['marginTypeTablet'] ),
+		'margin-right'   => UAGB_Helper::get_css_value( $right_margin_tablet, $attr['marginTypeTablet'] ),
+		'row-gap'        => UAGB_Helper::get_css_value( $attr['rowGapTablet'], $attr['rowGapTypeTablet'] ),
+		'column-gap'     => UAGB_Helper::get_css_value( $attr['columnGapTablet'], $attr['columnGapTypeTablet'] ),
+	);
+	$m_selectors[ '.uagb-block-' . $id ]                                  = array(
+		'min-height'     => UAGB_Helper::get_css_value( $attr['minHeightMobile'], $attr['minHeightTypeMobile'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $top_padding_mobile, $attr['paddingTypeMobile'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding_mobile, $attr['paddingTypeMobile'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $left_padding_mobile, $attr['paddingTypeMobile'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $right_padding_mobile, $attr['paddingTypeMobile'] ),
+		'margin-top'     => UAGB_Helper::get_css_value( $top_margin_mobile, $attr['marginTypeMobile'] ) . ' !important',
+		'margin-bottom'  => UAGB_Helper::get_css_value( $bottom_margin_mobile, $attr['marginTypeMobile'] ) . ' !important',
+		'margin-left'    => UAGB_Helper::get_css_value( $left_margin_mobile, $attr['marginTypeMobile'] ),
+		'margin-right'   => UAGB_Helper::get_css_value( $right_margin_mobile, $attr['marginTypeMobile'] ),
+		'row-gap'        => UAGB_Helper::get_css_value( $attr['rowGapMobile'], $attr['rowGapTypeMobile'] ),
+		'column-gap'     => UAGB_Helper::get_css_value( $attr['columnGapMobile'], $attr['columnGapTypeMobile'] ),
+	);
+	$selectors[ '.wp-block-uagb-container.uagb-block-' . $id . ':hover .uagb-container__video-wrap' ] = array(
+		'border-color' => $attr['containerBorderHColor'],
+	);
+	// If hover blur or hover color are set, show the hover shadow.
+	if ( ( ( '' !== $attr['boxShadowBlurHover'] ) && ( null !== $attr['boxShadowBlurHover'] ) ) || '' !== $attr['boxShadowColorHover'] ) {
+
+		$selectors[ '.uagb-block-' . $id . ':hover .uagb-container__video-wrap' ]['box-shadow'] = UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
+																	' ' .
+																	UAGB_Helper::get_css_value( $attr['boxShadowVOffsetHover'], 'px' ) .
+																	' ' .
+																	UAGB_Helper::get_css_value( $attr['boxShadowBlurHover'], 'px' ) .
+																	' ' .
+																	UAGB_Helper::get_css_value( $attr['boxShadowSpreadHover'], 'px' ) .
+																	' ' .
+																	$attr['boxShadowColorHover'] .
+																	' ' .
+																	$box_shadow_position_css_hover;
+
+	}
+} else {
+	$selectors[ '.uagb-block-' . $id ]                                    = $container_css; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+	$t_selectors[ '.uagb-block-' . $id ]                                  = $container_tablet_css; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+	$m_selectors[ '.uagb-block-' . $id ]                                  = $container_mobile_css; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+	$selectors[ '.wp-block-uagb-container.uagb-block-' . $id . ':hover' ] = array(
+		'border-color' => $attr['containerBorderHColor'],
+	);
+	// If hover blur or hover color are set, show the hover shadow.
+	if ( ( ( '' !== $attr['boxShadowBlurHover'] ) && ( null !== $attr['boxShadowBlurHover'] ) ) || '' !== $attr['boxShadowColorHover'] ) {
+
+		$selectors[ '.uagb-block-' . $id . ':hover' ]['box-shadow'] = UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
+																	' ' .
+																	UAGB_Helper::get_css_value( $attr['boxShadowVOffsetHover'], 'px' ) .
+																	' ' .
+																	UAGB_Helper::get_css_value( $attr['boxShadowBlurHover'], 'px' ) .
+																	' ' .
+																	UAGB_Helper::get_css_value( $attr['boxShadowSpreadHover'], 'px' ) .
+																	' ' .
+																	$attr['boxShadowColorHover'] .
+																	' ' .
+																	$box_shadow_position_css_hover;
+
+	}
 }
 
 if ( 'default' === $attr['contentWidth'] ) {

@@ -48,6 +48,17 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 		}
 
 		// Slick CSS Ends.
+		
+		// swiper CSS.
+		const swiperStaticCSSStylesTag = document.getElementById( 'uagb-swiper-css-css' );
+		let cloneSwiperStaticCSSStylesTag = false;
+
+		if ( swiperStaticCSSStylesTag ) {
+
+			cloneSwiperStaticCSSStylesTag = swiperStaticCSSStylesTag.cloneNode( true );
+		}
+
+		// swiper CSS Ends.
 
 		// Block Editor Spacing CSS.
 		const blockEditorSpacingCSSStylesTag = document.getElementById( 'uagb-blocks-editor-spacing-style' );
@@ -137,6 +148,13 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 				const iframeSlickStaticCSSStylesTag = iframeDocument.getElementById( 'uagb-slick-css-css' );
 				if ( ! iframeSlickStaticCSSStylesTag ) {
 					iframeDocument.head.appendChild( cloneSlickStaticCSSStylesTag );
+				}
+			}
+
+			if ( cloneSwiperStaticCSSStylesTag ) {
+				const iframeSwiperStaticCSSStylesTag = iframeDocument.getElementById( 'uagb-swiper-css-css' );
+				if ( ! iframeSwiperStaticCSSStylesTag ) {
+					iframeDocument.head.appendChild( cloneSwiperStaticCSSStylesTag );
 				}
 			}
 

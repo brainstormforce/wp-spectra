@@ -93,7 +93,7 @@ const Render = ( props ) => {
 	const iconHTML = (
 		<div className='uagb-modal-trigger'>
 			{ '' !== icon && (
-				renderSVG( icon )
+				renderSVG( icon, setAttributes )
 			) }
 		</div>
 	);
@@ -131,7 +131,7 @@ const Render = ( props ) => {
 
 	let buttonIconOutput = '';
 	if ( buttonIcon !== '' ) {
-		buttonIconOutput = renderSVG( buttonIcon );
+		buttonIconOutput = renderSVG( buttonIcon, setAttributes );
 	}
 
 	const buttonClasses = 'uagb-modal-button-link wp-block-button__link uagb-modal-trigger';
@@ -161,6 +161,7 @@ const Render = ( props ) => {
 							value={ buttonText }
 							className="uagb-inline-editing"
 							onChange={ ( value ) => setAttributes( { buttonText: value } ) }
+							allowedFormats={ [] } // Removed the WP default link/bold/italic from the toolbar for button.
 						/>
 					{ ( showBtnIcon && buttonIconPosition === 'after' ) && buttonIconOutput }
 				</span>
@@ -236,7 +237,7 @@ const Render = ( props ) => {
 						</div>
 						{ ( 'popup-top-left' === closeIconPosition || 'popup-top-right' === closeIconPosition ) && (
 							<div className="uagb-modal-popup-close">
-								{ '' !== closeIcon && ( renderSVG( closeIcon ) ) }
+								{ '' !== closeIcon && ( renderSVG( closeIcon, setAttributes ) ) }
 							</div>
 						) }
 					</div>

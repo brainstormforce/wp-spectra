@@ -92,6 +92,8 @@ import './blocks/timeline/post-timeline/block.js';
 import './blocks/price-list/block.js';
 import './blocks/price-list-child/block.js'; // Child Block.
 import './blocks/review/block.js';
+import './blocks/slider/block.js';
+import './blocks/slider-child/block.js'; // Child Block.
 import './blocks/social-share/block.js';
 import './blocks/social-share-child/block.js'; // Child Block.
 import './blocks/star-rating/block.js';

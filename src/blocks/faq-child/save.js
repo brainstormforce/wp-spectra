@@ -41,7 +41,7 @@ export default function save( props ) {
 						className="uagb-question"
 					/>
 				</div>
-				<RichText.Content className="uagb-faq-content" tagName="p" value={ answer } />	
+				<RichText.Content className="uagb-faq-content" tagName="p" value={ answer } />
 			</>
 		);
 	};
