@@ -1,5 +1,5 @@
 /**
- * BLOCK: Container
+ * BLOCK: Slider
  */
 
  import UAGB_Block_Icons from '@Controls/block-icons';
@@ -9,7 +9,7 @@
  import './style.scss';
  import { __ } from '@wordpress/i18n';
  import { registerBlockType } from '@wordpress/blocks';
- 
+
  registerBlockType( 'uagb/slider', {
      apiVersion: 2,
      title: __( 'Slider', 'ultimate-addons-for-gutenberg' ),
@@ -36,4 +36,3 @@
      edit,
      save
  } );
- 
