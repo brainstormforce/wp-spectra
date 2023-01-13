@@ -103,46 +103,50 @@ const BlockSettings = () => {
 			<h4 className="mt-8 font-medium text-sm text-slate-800 spectra-recaptcha__heading">
 				{ __( 'reCAPTCHA v2', 'ultimate-addons-for-gutenberg' ) }
 			</h4>
-			<input
-				className="mt-3 w-80 mr-5 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
-				placeholder={ __( 'Site Key v2', 'ultimate-addons-for-gutenberg' ) }
-				value={ siteKeyV2 }
-				name='site_key_v2'
-				onChange={ updateRecaptchaSiteKeyV2 }
-				id="grid-zip"
-				type="text"
-			/>
-			<input
-				className="mt-3 w-80 mr-5 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
-				placeholder={ __( 'Secret Key v2', 'ultimate-addons-for-gutenberg' ) }
-				id="grid-zip"
-				value={ secretKeyV2 }
-				name='secret_key_v2'
-				onChange={ updateRecaptchaSecretKeyV2 }
-				type="text"
-			/>
+			<div className='w-9/12 mt-3 grid grid-cols-2 gap-5'>
+				<input
+					className="h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
+					placeholder={ __( 'Site Key v2', 'ultimate-addons-for-gutenberg' ) }
+					value={ siteKeyV2 }
+					name='site_key_v2'
+					onChange={ updateRecaptchaSiteKeyV2 }
+					id="grid-zip"
+					type="text"
+				/>
+				<input
+					className="h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
+					placeholder={ __( 'Secret Key v2', 'ultimate-addons-for-gutenberg' ) }
+					id="grid-zip"
+					value={ secretKeyV2 }
+					name='secret_key_v2'
+					onChange={ updateRecaptchaSecretKeyV2 }
+					type="text"
+				/>
+			</div>
 			{/* Recaptcha V3 */}
 			<h4 className="mt-8 font-medium text-sm text-slate-800 spectra-recaptcha__heading">
 				{ __( 'reCAPTCHA v3', 'ultimate-addons-for-gutenberg' ) }
 			</h4>
-			<input
-				className="mt-3 w-80 mr-5 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
-				placeholder={ __( 'Site Key v3', 'ultimate-addons-for-gutenberg' ) }
-				id="grid-zip"
-				type="text"
-				value={ siteKeyV3 }
-				name='site_key_v3'
-				onChange={ updateRecaptchaSiteKeyV3 }
-			/>
-			<input
-				className="mt-3 w-80 mr-5 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
-				placeholder={ __( 'Secret Key v3', 'ultimate-addons-for-gutenberg' ) }
-				id="grid-zip"
-				type="text"
-				value={ secretKeyV3 }
-				name='secret_key_v3'
-				onChange={ updateRecaptchaSecretKeyV3 }
-			/>
+			<div className='w-9/12 mt-3 grid grid-cols-2 gap-5'>
+				<input
+					className="h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
+					placeholder={ __( 'Site Key v3', 'ultimate-addons-for-gutenberg' ) }
+					id="grid-zip"
+					type="text"
+					value={ siteKeyV3 }
+					name='site_key_v3'
+					onChange={ updateRecaptchaSiteKeyV3 }
+				/>
+				<input
+					className="h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
+					placeholder={ __( 'Secret Key v3', 'ultimate-addons-for-gutenberg' ) }
+					id="grid-zip"
+					type="text"
+					value={ secretKeyV3 }
+					name='secret_key_v3'
+					onChange={ updateRecaptchaSecretKeyV3 }
+				/>
+			</div>
 		</section>
 	);
 };

@@ -82,63 +82,76 @@ export default function Login() {
 				</div>
 			</section>
 			<section className='block border-b border-solid border-slate-200 px-12 py-8'>
-				<div className='pb-4'>
-					<h3 className='p-0 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900'>
-						{ __( 'Social Login/Register - Google Client ID', 'ultimate-addons-for-gutenberg' ) }
-					</h3>
-					<p className='mt-2 text-sm text-slate-500'>
-						{ __( 'Note: This setting is required if you wish to use Login with Google on your website. Read', 'ultimate-addons-for-gutenberg' ) }
-						{' '}
-						<a href='https://wpspectra.com/'>{__( 'this article', 'ultimate-addons-for-gutenberg' )}</a>.
-					</p>
-					<p className="mt-2 w-9/12 text-sm">
-						<a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href="https://ultimateelementor.com/docs/create-google-client-id-for-login-form-widget/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin" target="_blank" rel="noreferrer">
-							{ __( 'Get Keys', 'ultimate-addons-for-gutenberg' ) }
-						</a>
-						{ __( ' | ', 'ultimate-addons-for-gutenberg' ) }
-						<a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href="https://ultimateelementor.com/docs/create-google-client-id-for-login-form-widget/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin" target="_blank" rel="noreferrer">
-							{ __(
-								' Documentation',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</a>
-					</p>
-				</div>
-				<div>
-					<label htmlFor='google-client-id' className='block text-gray-900 text-sm font-medium'>{__( 'Google Client ID', 'ultimate-addons-for-gutenberg' )}</label>
-					<input id='google-client-id' className='mt-3 w-9/12 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field' type="text" name="google-client-id" value={googleClientId || ''} onChange={( e ) => savedFormData( 'UPDATE_GOOGLE_CLIENT_ID', e.target.value )} />
-				</div>
+				<h3 className='p-0 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900'>
+					{ __( 'Social Login/Register - Google Client ID', 'ultimate-addons-for-gutenberg' ) }
+				</h3>
+				<p className='mt-2 text-sm text-slate-500'>
+					{ __( 'Note: This setting is required if you wish to use Login with Google on your website. Read', 'ultimate-addons-for-gutenberg' ) }
+					{' '}
+					<a className='text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover' href='https://wpspectra.com/docs/how-to-create-a-google-client-id-for-login-register-form-block/'>{__( 'this article', 'ultimate-addons-for-gutenberg' )}</a>.
+				</p>
+				<p className="mt-2 w-9/12 text-sm">
+					<a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href="https://ultimateelementor.com/docs/create-google-client-id-for-login-form-widget/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin" target="_blank" rel="noreferrer">
+						{ __( 'Get Keys', 'ultimate-addons-for-gutenberg' ) }
+					</a>
+					{ __( ' | ', 'ultimate-addons-for-gutenberg' ) }
+					<a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href="https://wpspectra.com/docs/how-to-create-a-google-client-id-for-login-register-form-block/" target="_blank" rel="noreferrer">
+						{ __(
+							' Documentation',
+							'ultimate-addons-for-gutenberg'
+						) }
+					</a>
+				</p>
+				{/* Google Fields */}
+				<label htmlFor='google-client-id' className='block mt-8 font-medium text-sm text-slate-800'>{__( 'Google Client ID', 'ultimate-addons-for-gutenberg' )}</label>
+				<input id='google-client-id' className='mt-3 w-9/12 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field' type="text" name="google-client-id" value={googleClientId || ''} onChange={( e ) => savedFormData( 'UPDATE_GOOGLE_CLIENT_ID', e.target.value )} />
 			</section>
 			<section className='block border-b border-solid border-slate-200 px-12 py-8'>
-				<div className='pb-4'>
-					<h3 className='p-0 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900'>
-						{ __( 'Social Login/Register - Facebook App Details', 'ultimate-addons-for-gutenberg' ) }
-					</h3>
-					<p className='mt-2 text-sm text-slate-500'>
-						{ __( 'Note: This setting is required if you wish to use Login with Facebook on your website. Need help to get Facebook App Details? Read', 'ultimate-addons-for-gutenberg' ) }
-						{' '}
-						<a href='https://ultimateelementor.com/docs/create-facebook-app-id-for-login-form-widget/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin'>{__( 'this article', 'ultimate-addons-for-gutenberg' )}</a>.
-					</p>
-					<p className="mt-2 w-9/12 text-sm">
-						<a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href="https://ultimateelementor.com/docs/create-facebook-app-id-for-login-form-widget/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin" target="_blank" rel="noreferrer">
-							{ __( 'Get Keys', 'ultimate-addons-for-gutenberg' ) }
-						</a>
-						{ __( ' | ', 'ultimate-addons-for-gutenberg' ) }
-						<a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href="https://ultimateelementor.com/docs/create-facebook-app-id-for-login-form-widget/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin" target="_blank" rel="noreferrer">
-							{ __(
-								' Documentation',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</a>
-					</p>
-				</div>
-				<div className='pb-4'>
-					<label htmlFor='facebook-app-id' className='block text-gray-900 text-sm font-medium'>{__( 'Facebook App Details', 'ultimate-addons-for-gutenberg' )}</label>
-					<input id='facebook-app-id' className='mt-3 w-9/12 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field' type="text" name="facebook-app-id" value={facebookAppId || ''} onChange={( e ) => savedFormData( 'UPDATE_FACEBOOK_APP_ID', e.target.value )} />
-				</div>
-				<div className='pb-4'>
-					<label htmlFor='facebook-app-id' className='block text-gray-900 text-sm font-medium'>{__( 'Facebook App Secret Key', 'ultimate-addons-for-gutenberg' )}</label>
-					<input id='facebook-app-id' className='mt-3 w-9/12 h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field' type="text" name="facebook-app-secret" value={facebookAppSecret || ''} onChange={( e ) => savedFormData( 'UPDATE_FACEBOOK_APP_SECRET', e.target.value )} />
+				<h3 className='p-0 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900'>
+					{ __( 'Social Login/Register - Facebook App Details', 'ultimate-addons-for-gutenberg' ) }
+				</h3>
+				<p className='mt-2 text-sm text-slate-500'>
+					{ __( 'Note: This setting is required if you wish to use Login with Facebook on your website. Need help to get Facebook App Details? Read', 'ultimate-addons-for-gutenberg' ) }
+					{' '}
+					<a className='text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover' href='https://ultimateelementor.com/docs/create-facebook-app-id-for-login-form-widget/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin'>{__( 'this article', 'ultimate-addons-for-gutenberg' )}</a>.
+				</p>
+				<p className="mt-2 w-9/12 text-sm">
+					<a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href="https://ultimateelementor.com/docs/create-facebook-app-id-for-login-form-widget/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin" target="_blank" rel="noreferrer">
+						{ __( 'Get Keys', 'ultimate-addons-for-gutenberg' ) }
+					</a>
+					{ __( ' | ', 'ultimate-addons-for-gutenberg' ) }
+					<a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href="https://ultimateelementor.com/docs/create-facebook-app-id-for-login-form-widget/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin" target="_blank" rel="noreferrer">
+						{ __(
+							' Documentation',
+							'ultimate-addons-for-gutenberg'
+						) }
+					</a>
+				</p>
+				{/* Facebook Fields */}
+				<h4 className="mt-8 font-medium text-sm text-slate-800">
+					{ __( 'Facebook App Details', 'ultimate-addons-for-gutenberg' ) }
+				</h4>
+				<div className='w-9/12 mt-3 grid grid-cols-2 gap-5'>
+					<label htmlFor='facebook-app-id' hidden>{__( 'Facebook App ID', 'ultimate-addons-for-gutenberg' )}</label>
+					<input
+						id='facebook-app-id'
+						className="h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
+						placeholder={ __( 'App ID', 'ultimate-addons-for-gutenberg' ) }
+						type="text"
+						name="facebook-app-id"
+						value={facebookAppId || ''}
+						onChange={( e ) => savedFormData( 'UPDATE_FACEBOOK_APP_ID', e.target.value )}
+					/>
+					<label htmlFor='facebook-app-id' hidden>{__( 'Facebook App Secret Key', 'ultimate-addons-for-gutenberg' )}</label>
+					<input
+						id='facebook-app-id'
+						className="h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
+						placeholder={ __( 'App Secret Key', 'ultimate-addons-for-gutenberg' ) }
+						type="text"
+						name="facebook-app-secret"
+						value={facebookAppSecret || ''}
+						onChange={( e ) => savedFormData( 'UPDATE_FACEBOOK_APP_SECRET', e.target.value )}
+					/>
 				</div>
 			</section>
 		</React.Fragment>
