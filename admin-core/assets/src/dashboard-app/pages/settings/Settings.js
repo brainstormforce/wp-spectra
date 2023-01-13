@@ -55,7 +55,7 @@ const Settings = () => {
     ];
 
 	if( uag_react.spectra_pro_status ){
-		navigation.push( { name: __( 'My Account', 'ultimate-addons-for-gutenberg' ), slug: 'my-account', icon: SettingsIcons.account } );
+		navigation.push( { name: __( 'License', 'ultimate-addons-for-gutenberg' ), slug: 'license', icon: SettingsIcons.account } );
 	}
 
 	useEffect( () => {
@@ -64,7 +64,7 @@ const Settings = () => {
 		const activeHash = query.get( 'settings' );
 		let activeSettingsTabFromHash = ( activeHash && 'settings' === activePath ) ? activeHash : 'global-settings';
 		if( uag_react.spectra_pro_status && !uag_react.license_status ){
-			activeSettingsTabFromHash = ( activeHash && 'settings' === activePath ) ? activeHash : 'my-account';
+			activeSettingsTabFromHash = ( activeHash && 'settings' === activePath ) ? activeHash : 'license';
 			history.push( {
 				pathname: 'options-general.php',
 				search: `?page=spectra&path=settings&settings=${activeSettingsTabFromHash}`,
@@ -79,9 +79,9 @@ const Settings = () => {
 
     // Parent Div is Required to add Padding to the Entire Structure for Smaller Windows.
     return (
-        <div className="px-6 w-full">
-            <div className="mx-auto mt-10 mb-8 font-semibold text-2xl lg:max-w-[80rem]">Settings</div>
-            <main className="mx-auto my-[2.43rem] bg-white rounded-md shadow min-h-[36rem] lg:max-w-[80rem]">
+        <div className="px-6 mx-auto lg:max-w-[80rem]">
+            <div className="mt-10 mb-8 font-semibold text-2xl">Settings</div>
+            <main className="my-[2.43rem] bg-white rounded-md shadow min-h-[36rem]">
                 <div className="lg:grid lg:grid-cols-12 min-h-[36rem] h-full">
                     <aside className="py-6 sm:px-6 lg:py-6 lg:px-0 lg:col-span-3">
                         <nav className="space-y-1">
@@ -170,7 +170,7 @@ const Settings = () => {
                             </>
                         }
                         {
-                        	uag_react.spectra_pro_status &&  'my-account' === activeSettingsNavigationTab &&
+                        	uag_react.spectra_pro_status &&  'license' === activeSettingsNavigationTab &&
                             <>
                                 <MyAccount />
                             </>

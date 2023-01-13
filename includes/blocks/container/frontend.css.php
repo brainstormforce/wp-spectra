@@ -160,23 +160,6 @@ $selectors = array(
 	),
 );
 
-// If hover blur or hover color are set, show the hover shadow.
-if ( ( ( '' !== $attr['boxShadowBlurHover'] ) && ( null !== $attr['boxShadowBlurHover'] ) ) || '' !== $attr['boxShadowColorHover'] ) {
-
-	$selectors[ '.uagb-block-' . $id . ':hover' ]['box-shadow'] = UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
-																' ' .
-																UAGB_Helper::get_css_value( $attr['boxShadowVOffsetHover'], 'px' ) .
-																' ' .
-																UAGB_Helper::get_css_value( $attr['boxShadowBlurHover'], 'px' ) .
-																' ' .
-																UAGB_Helper::get_css_value( $attr['boxShadowSpreadHover'], 'px' ) .
-																' ' .
-																$attr['boxShadowColorHover'] .
-																' ' .
-																$box_shadow_position_css_hover;
-
-}
-
 if ( '' !== $attr['topWidth'] ) {
 	$selectors[ '.uagb-block-' . $id . ' .uagb-container__shape-top svg' ]['width'] = 'calc( ' . $attr['topWidth'] . '% + 1.3px )';
 }
@@ -401,7 +384,22 @@ if ( 'video' === $attr['backgroundType'] ) {
 	$selectors[ '.wp-block-uagb-container.uagb-block-' . $id . ':hover .uagb-container__video-wrap' ] = array(
 		'border-color' => $attr['containerBorderHColor'],
 	);
+	// If hover blur or hover color are set, show the hover shadow.
+	if ( ( ( '' !== $attr['boxShadowBlurHover'] ) && ( null !== $attr['boxShadowBlurHover'] ) ) || '' !== $attr['boxShadowColorHover'] ) {
 
+		$selectors[ '.uagb-block-' . $id . ':hover .uagb-container__video-wrap' ]['box-shadow'] = UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
+																	' ' .
+																	UAGB_Helper::get_css_value( $attr['boxShadowVOffsetHover'], 'px' ) .
+																	' ' .
+																	UAGB_Helper::get_css_value( $attr['boxShadowBlurHover'], 'px' ) .
+																	' ' .
+																	UAGB_Helper::get_css_value( $attr['boxShadowSpreadHover'], 'px' ) .
+																	' ' .
+																	$attr['boxShadowColorHover'] .
+																	' ' .
+																	$box_shadow_position_css_hover;
+
+	}
 } else {
 	$selectors[ '.uagb-block-' . $id ]                                    = $container_css; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 	$t_selectors[ '.uagb-block-' . $id ]                                  = $container_tablet_css; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
@@ -409,6 +407,22 @@ if ( 'video' === $attr['backgroundType'] ) {
 	$selectors[ '.wp-block-uagb-container.uagb-block-' . $id . ':hover' ] = array(
 		'border-color' => $attr['containerBorderHColor'],
 	);
+	// If hover blur or hover color are set, show the hover shadow.
+	if ( ( ( '' !== $attr['boxShadowBlurHover'] ) && ( null !== $attr['boxShadowBlurHover'] ) ) || '' !== $attr['boxShadowColorHover'] ) {
+
+		$selectors[ '.uagb-block-' . $id . ':hover' ]['box-shadow'] = UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
+																	' ' .
+																	UAGB_Helper::get_css_value( $attr['boxShadowVOffsetHover'], 'px' ) .
+																	' ' .
+																	UAGB_Helper::get_css_value( $attr['boxShadowBlurHover'], 'px' ) .
+																	' ' .
+																	UAGB_Helper::get_css_value( $attr['boxShadowSpreadHover'], 'px' ) .
+																	' ' .
+																	$attr['boxShadowColorHover'] .
+																	' ' .
+																	$box_shadow_position_css_hover;
+
+	}
 }
 
 if ( 'default' === $attr['contentWidth'] ) {
