@@ -171,6 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 2.3.1 =
+* Fix: Gradient Picker - block encounter an error when using gradient picker for Spectra block when Gutenberg is activated.
 * Fix: Timeline - unable to set connector Icon Background Size to zero.
 
 = 2.3.0 - THURSDAY, 12th JANUARY 2023 =
