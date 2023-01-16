@@ -171,6 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 2.3.1 =
+* Fix: Info-Box - Margin unit set to `px` after refresh in editor.
 * Fix: Gradient Picker - block encounter an error when using gradient picker for Spectra block when Gutenberg is activated.
 * Fix: Timeline - unable to set connector Icon Background Size to zero.
 

@@ -1159,21 +1159,21 @@
 		}
 	},
 	prefixSpaceUnit : {
-		type: 'number',
+		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'prefix-margin-unit'
 		}
 	},
 	prefixMobileMarginUnit : {
-		type: 'number',
+		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'prefix-margin-mobile-unit'
 		}
 	},
 	prefixTabletMarginUnit : {
-		type: 'number',
+		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'prefix-margin-tablet-unit'
@@ -1272,21 +1272,21 @@
 		}
 	},
 	headSpaceUnit : {
-		type: 'number',
+		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'main-title-margin-unit'
 		},
 		default: 'px',
 	},
 	headMobileMarginUnit : {
-		type: 'number',
+		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'main-title-margin-unit-mobile'
 		},
 		default: 'px',
 	},
 	headTabletMarginUnit : {
-		type: 'number',
+		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'main-title-margin-unit-tablet'
 		},
@@ -1474,21 +1474,21 @@
 		}
 	},
 	seperatorSpaceUnit : {
-		type: 'number',
+		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'separator-margin-unit'
 		}
 	},
 	separatorMobileMarginUnit : {
-		type: 'number',
+		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'separator-margin-unit-mobile'
 		},
 		default: 'px',
 	},
 	separatorTabletMarginUnit : {
-		type: 'number',
+		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'separator-margin-unit-tablet'
 		},
@@ -1562,21 +1562,21 @@
 		}
 	},
 	subHeadSpaceUnit : {
-		type: 'number',
+		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'desc-margin-unit'
 		},
 		default: 'px',
 	},
 	subHeadMobileMarginUnit : {
-		type: 'number',
+		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'desc-margin-unit-mobile'
 		},
 		default: 'px',
 	},
 	subHeadTabletMarginUnit : {
-		type: 'number',
+		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'desc-margin-unit-tablet'
 		},
