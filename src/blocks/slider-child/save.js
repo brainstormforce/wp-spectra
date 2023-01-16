@@ -1,5 +1,5 @@
 /**
- * BLOCK: Container - Save Block
+ * BLOCK: Slider child - Save Block
  */
 
 import classnames from 'classnames';

@@ -8,6 +8,7 @@ const GradientSettings = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
 	const panelRef = useRef( null );
 	const { getSelectedBlock } = select( 'core/block-editor' );
+
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -39,6 +40,7 @@ const GradientSettings = ( props ) => {
 			value={ backgroundGradient.value }
 			onChange={ onGradientChange }
 			className="uagb-gradient-picker"
+			gradients={[]} // Passing it an empty to resolve block encounters an error when gutenberg is activated.
 		/>
 	);
 }

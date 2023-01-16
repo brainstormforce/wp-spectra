@@ -962,7 +962,7 @@ const Settings = ( props ) => {
 						value: connectorBgsize,
 						label: 'connectorBgsize',
 					} }
-					min={ 25 }
+					min={ 0 }
 					max={ 90 }
 					displayUnit={ false }
 				/>
