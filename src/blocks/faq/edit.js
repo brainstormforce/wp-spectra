@@ -68,24 +68,6 @@ const FaqComponent = ( props ) => {
 			vquestionPaddingMobile,
 			questionLeftPaddingMobile,
 			hquestionPaddingMobile,
-			answerTopPadding,
-			answerBottomPadding,
-			answerRightPadding,
-			answerLeftPadding,
-			answerTopPaddingTablet,
-			answerBottomPaddingTablet,
-			answerRightPaddingTablet,
-			answerLeftPaddingTablet,
-			answerTopPaddingMobile,
-			answerBottomPaddingMobile,
-			answerRightPaddingMobile,
-			answerLeftPaddingMobile,
-			vanswerPaddingDesktop,
-			hanswerPaddingDesktop,
-			vanswerPaddingTablet,
-			hanswerPaddingTablet,
-			vanswerPaddingMobile,
-			hanswerPaddingMobile,
 		} = attributes;
 
 		// Assigning block_id in the attribute.
@@ -142,72 +124,6 @@ const FaqComponent = ( props ) => {
 			} );
 		}
 
-		if ( vanswerPaddingDesktop ) {
-			if ( undefined === answerTopPadding ) {
-				setAttributes( { answerTopPadding: vanswerPaddingDesktop } );
-			}
-			if ( undefined === answerBottomPadding ) {
-				setAttributes( { answerBottomPadding: vanswerPaddingDesktop } );
-			}
-		}
-		if ( hanswerPaddingDesktop ) {
-			if ( undefined === answerRightPadding ) {
-				setAttributes( { answerRightPadding: hanswerPaddingDesktop } );
-			}
-			if ( undefined === answerLeftPadding ) {
-				setAttributes( { answerLeftPadding: hanswerPaddingDesktop } );
-			}
-		}
-
-		if ( vanswerPaddingTablet ) {
-			if ( undefined === answerTopPaddingTablet ) {
-				setAttributes( {
-					answerTopPaddingTablet: vanswerPaddingTablet,
-				} );
-			}
-			if ( undefined === answerBottomPaddingTablet ) {
-				setAttributes( {
-					answerBottomPaddingTablet: vanswerPaddingTablet,
-				} );
-			}
-		}
-		if ( hanswerPaddingTablet ) {
-			if ( undefined === answerRightPaddingTablet ) {
-				setAttributes( {
-					answerRightPaddingTablet: hanswerPaddingTablet,
-				} );
-			}
-			if ( undefined === answerLeftPaddingTablet ) {
-				setAttributes( {
-					answerLeftPaddingTablet: hanswerPaddingTablet,
-				} );
-			}
-		}
-
-		if ( vanswerPaddingMobile ) {
-			if ( undefined === answerTopPaddingMobile ) {
-				setAttributes( {
-					answerTopPaddingMobile: vanswerPaddingMobile,
-				} );
-			}
-			if ( undefined === answerBottomPaddingMobile ) {
-				setAttributes( {
-					answerBottomPaddingMobile: vanswerPaddingMobile,
-				} );
-			}
-		}
-		if ( hanswerPaddingMobile ) {
-			if ( undefined === answerRightPaddingMobile ) {
-				setAttributes( {
-					answerRightPaddingMobile: hanswerPaddingMobile,
-				} );
-			}
-			if ( undefined === answerLeftPaddingMobile ) {
-				setAttributes( {
-					answerLeftPaddingMobile: hanswerPaddingMobile,
-				} );
-			}
-		}
 		const {borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor} = props.attributes
 		// border migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){

@@ -10,6 +10,7 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
+
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
@@ -24,12 +25,6 @@ const UAGBCallToAction = ( props ) => {
 		props.setAttributes( { classMigrate: true } );
 
 		const {
-			ctaBtnVertPadding,
-			ctaBtnHrPadding,
-			ctaTopPadding,
-			ctaRightPadding,
-			ctaBottomPadding,
-			ctaLeftPadding,
 			ctaPosition,
 			stack,
 			ctaLeftSpace,
@@ -52,22 +47,6 @@ const UAGBCallToAction = ( props ) => {
 			props.setAttributes( { stack: 'desktop' } );
 		}
 
-		if ( ctaBtnVertPadding ) {
-			if ( undefined === ctaTopPadding ) {
-				props.setAttributes( { ctaTopPadding: ctaBtnVertPadding } );
-			}
-			if ( undefined === ctaBottomPadding ) {
-				props.setAttributes( { ctaBottomPadding: ctaBtnVertPadding } );
-			}
-		}
-		if ( ctaBtnHrPadding ) {
-			if ( undefined === ctaRightPadding ) {
-				props.setAttributes( { ctaRightPadding: ctaBtnHrPadding } );
-			}
-			if ( undefined === ctaLeftPadding ) {
-				props.setAttributes( { ctaLeftPadding: ctaBtnHrPadding } );
-			}
-		}
 		if ( ctaLeftSpace ) {
 			if ( undefined === overallBlockLeftMargin && 'left' === textAlign && 'right' === ctaPosition ) {
 				props.setAttributes( { overallBlockLeftMargin: ctaLeftSpace } );
