@@ -9,12 +9,13 @@ import { __ } from '@wordpress/i18n';
 const UAGIconPicker = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
 	const panelRef = useRef( null );
-
 	const { getSelectedBlock } = select( 'core/block-editor' );
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+
 	useEffect( () => {
 		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
 	}, [blockNameForHook] )
-
+	
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -22,9 +23,7 @@ const UAGIconPicker = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
-
-
-	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	
 	const controlName = getIdFromString( props?.label ); //
 	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
