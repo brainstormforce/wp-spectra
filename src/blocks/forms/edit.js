@@ -84,8 +84,15 @@ const UAGBFormsEdit = ( props ) => {
 			reCaptchaSiteKeyV3,
 			reCaptchaSecretKeyV3,
 			reCaptchaEnable,
+			toggleColor,
+			bgColor
 		} = props.attributes;
 
+		if( bgColor ) {
+			if ( undefined === toggleColor ) {
+				setAttributes( { toggleColor: bgColor } );
+			}
+		}
 		
 		const id = props.clientId;
 

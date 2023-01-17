@@ -30,8 +30,23 @@ const UAGBInfoBox = ( props ) => {
 			ctaBorderRadius,
 			ctaBorderColor,
 			ctaBorderhoverColor,
+			ctaBgType,
+			ctaBgHoverType,
+			showCtaIcon,
 		} = props.attributes;
 
+		if( ctaBgType === undefined ) {
+			props.setAttributes( { ctaBgType: 'color' } );
+		}
+
+		if( ctaBgHoverType === undefined ) {
+			props.setAttributes( { ctaBgHoverType: 'color' } );
+		}
+
+		if( showCtaIcon === undefined ) {
+			props.setAttributes( { showCtaIcon: true } );
+		}
+		
 		// Backward Border Migration
 		if( ctaBorderWidth || ctaBorderRadius || ctaBorderColor || ctaBorderhoverColor || ctaBorderStyle ){
 
