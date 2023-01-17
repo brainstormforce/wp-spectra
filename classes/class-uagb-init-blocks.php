@@ -634,6 +634,7 @@ class UAGB_Init_Blocks {
 					'Use custom class added in block\'s advanced settings to target your desired block. Examples:
 				.my-class {text-align: center;} // my-class is a custom selector'
 				),
+				'is_rtl'                             => is_rtl(),
 			)
 		);
 		// To match the editor with frontend.
