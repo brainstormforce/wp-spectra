@@ -137,12 +137,6 @@ const Render = ( props ) => {
 		speed: transitionSpeed,
 		loop: false,
 		effect: 'slide',
-		flipEffect: {
-			slideShadows: false,
-		},
-		fadeEffect: {
-			crossFade: true
-		},
 		allowTouchMove:false,
 		onBeforeInit ( swiperInst ) {
 			swiperRef.current = swiperInst;
