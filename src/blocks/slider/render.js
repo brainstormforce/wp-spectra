@@ -46,7 +46,6 @@ const Render = ( props ) => {
 		transitionSpeed,
 		slideItem,
 		block_id,
-		transitionEffect,
 		swiperInstance,
 		displayArrows,
 		displayDots
@@ -137,7 +136,7 @@ const Render = ( props ) => {
 		autoplay: false,
 		speed: transitionSpeed,
 		loop: false,
-		effect: transitionEffect,
+		effect: 'slide',
 		flipEffect: {
 			slideShadows: false,
 		},
@@ -149,6 +148,31 @@ const Render = ( props ) => {
 			swiperRef.current = swiperInst;
 			setSwiperInstance( swiperInst );
 		}, 
+		onAfterInit ( swiperInst ) {
+			setTimeout( () => {
+
+				if( swiperInst?.params?.navigation ) {
+					swiperInst.params.navigation.prevEl = sliderNavPrevRef.current;
+					swiperInst.params.navigation.nextEl = sliderNavNextRef.current;
+
+					// Re-init navigation
+					swiperInst.navigation.destroy()
+					swiperInst.navigation.init()
+					swiperInst.navigation.update()
+				}
+				
+				if( swiperInst?.params?.pagination ) {
+
+					swiperInst.params.pagination.el = sliderPaginationRef.current;
+					swiperInst.params.pagination.clickable = true;
+					
+					// Re-init pagination
+					swiperInst.pagination.init()
+					swiperInst.pagination.render()
+					swiperInst.pagination.update()
+				}
+			} )
+		}
 	}
 
 	useEffect( () => {
@@ -161,7 +185,7 @@ const Render = ( props ) => {
 
 	useEffect( () => {
 
-		if( swiperInstance ) {
+		if( swiperInstance && swiperInstance.slides ) {
 
 			const slidesCount = swiperInstance.slides.length;
 
