@@ -5,7 +5,7 @@ const ALLOWED_BLOCKS = [ 'uagb/slider-child' ];
 import { useDeviceType } from '@Controls/getPreviewType';
 import { __ } from '@wordpress/i18n';
 
-import { Navigation, Pagination, Autoplay, EffectFade, EffectFlip, Manipulation } from 'swiper';
+import { Navigation, Pagination, Autoplay, Manipulation } from 'swiper';
 import { Swiper } from 'swiper/react';
 
 const Render = ( props ) => {
@@ -144,20 +144,11 @@ const Render = ( props ) => {
 		fadeEffect: {
 			crossFade: true
 		},
-		// pagination: displayDots ? {
-		// 	el: sliderPaginationRef.current,
-		// 	clickable: true,
-		// } : false, 
 		allowTouchMove:false,
-		// navigation: displayArrows ? {
-		// 	nextEl: sliderNavNextRef.current,
-		// 	prevEl: sliderNavPrevRef.current,
-		// } : false,
-		// onBeforeInit ( swiperInst ) {
-		// 	swiperRef.current = swiperInst;
-		// 	setSwiperInstance( swiperInst );
-		// },
-		modules: [Navigation, Pagination,Autoplay,EffectFade, Manipulation, EffectFlip]
+		onBeforeInit ( swiperInst ) {
+			swiperRef.current = swiperInst;
+			setSwiperInstance( swiperInst );
+		}, 
 	}
 
 	useEffect( () => {
@@ -207,15 +198,36 @@ const Render = ( props ) => {
 			key = { block_id }
 		>
 			<Swiper
+			ref={swiperRef}
 			{...settings}
-			modules={[Navigation, Pagination]}
-			navigation
-			pagination={{ clickable: true }}
+			modules={[Navigation, Pagination, Autoplay, Manipulation]}
+			navigation={ displayArrows ? {
+					nextEl: '#block-' + clientId + ' .swiper-button-next',
+					prevEl: '#block-' + clientId + ' .swiper-button-prev',
+				} : false
+			}
+			pagination={ displayDots ? {
+					el: '#block-' + clientId + ' .swiper-pagination',
+					clickable: true,
+				} : false 
+			}
 			>
 				<div 
 					{ ...innerBlocksProps }
 				/>
 			</Swiper>
+
+			{ displayDots &&  
+				<div className="swiper-pagination" ref={sliderPaginationRef}></div>
+			}
+
+			{ displayArrows &&
+			<>
+				<div className="swiper-button-prev" ref={sliderNavPrevRef} ></div>
+				<div className="swiper-button-next" ref={sliderNavNextRef} ></div>
+			</>
+			}
+
 		</div>
 	);
 };
