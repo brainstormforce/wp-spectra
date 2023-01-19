@@ -392,7 +392,7 @@ class UAGB_Init_Blocks {
 	public function forms_recaptcha() {
 
 		$response_data = array(
-			'messsage' => __( 'User not authenticated!', 'ultimate-addons-for-gutenberg' ),
+			'messsage' => __( 'User is not authenticated!', 'ultimate-addons-for-gutenberg' ),
 		);
 
 		if ( ! current_user_can( 'manage_options' ) ) {

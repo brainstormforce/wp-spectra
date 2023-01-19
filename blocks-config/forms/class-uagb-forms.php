@@ -73,23 +73,26 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				'recaptcha_secret_key_v3' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v3', '' ),
 			);
 
-			if ( ! isset( $_POST['post_id'] ) || empty( $_POST['post_id'] ) || ! isset( $_POST['block_id'] ) || empty( $_POST['block_id'] ) ) {
+			if ( empty( $_POST['post_id'] ) || empty( $_POST['block_id'] ) ) {
 				wp_send_json_error( 400 );
 			}
+
+			$post_id  = sanitize_text_field( $_POST['post_id'] );
+			$block_id = sanitize_text_field( $_POST['block_id'] );
 
 			$post_content = get_post_field( 'post_content', $_POST['post_id'] );
 
 			$blocks                   = parse_blocks( $post_content );
 			$current_block_attributes = false;
-			if ( isset( $blocks ) && is_array( $blocks ) ) {
+			if ( ! empty( $blocks ) && is_array( $blocks ) ) {
 				foreach ( $blocks as $block ) {
-					if ( isset( $block['attrs'] ) && isset( $block['attrs']['block_id'] ) && $block['attrs']['block_id'] === $_POST['block_id'] ) {
+					if ( isset( $block['attrs'] ) && isset( $block['attrs']['block_id'] ) && $block['attrs']['block_id'] === $block_id ) {
 						$current_block_attributes = $block['attrs'];
 					}
 				}
 			}
 
-			if ( ! $current_block_attributes || ! isset( $current_block_attributes['reCaptchaEnable'] ) || ! $current_block_attributes['reCaptchaEnable'] || ! isset( $current_block_attributes['reCaptchaType'] ) || empty( $current_block_attributes['reCaptchaType'] ) ) {
+			if ( empty( $current_block_attributes ) || empty( $current_block_attributes['reCaptchaEnable'] ) || empty( $current_block_attributes['reCaptchaType'] ) ) {
 				wp_send_json_error( 400 );
 			}
 
@@ -192,17 +195,16 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 *
 		 * @param object $body Email Body.
 		 * @param object $form_data Email Body Array.
-		 * @param object $current_block_attributes Block Atrributes.
+		 * @param object $args Block Atrributes.
 		 *
 		 * @since 1.22.0
 		 */
-		public function send_email( $body, $form_data, $current_block_attributes ) {
-			check_ajax_referer( 'uagb_forms_ajax_nonce', 'nonce' );
+		public function send_email( $body, $form_data, $args ) {
 
-			$to      = isset( $current_block_attributes['to'] ) ? sanitize_email( $current_block_attributes['to'] ) : sanitize_email( get_option( 'admin_email' ) );
-			$cc      = isset( $current_block_attributes['cc'] ) ? sanitize_email( $current_block_attributes['cc'] ) : '';
-			$bcc     = isset( $current_block_attributes['bcc'] ) ? sanitize_email( $current_block_attributes['bcc'] ) : '';
-			$subject = isset( $current_block_attributes['subject'] ) ? $current_block_attributes['subject'] : 'Form Submission';
+			$to      = isset( $args['to'] ) ? sanitize_email( $args['to'] ) : sanitize_email( get_option( 'admin_email' ) );
+			$cc      = isset( $args['cc'] ) ? sanitize_email( $args['cc'] ) : '';
+			$bcc     = isset( $args['bcc'] ) ? sanitize_email( $args['bcc'] ) : '';
+			$subject = isset( $args['subject'] ) ? $args['subject'] : __( 'Form Submission', 'ultimate-addons-for-gutenberg' );
 
 			$headers = array(
 				'Reply-To-: ' . get_bloginfo( 'name' ) . ' <' . $to . '>',
