@@ -8,7 +8,8 @@
     "phpcompatibility/php-compatibility": "^9.3",
     "wp-cli/wp-cli-bundle": "^2.5",
     "phpunit/phpunit": "^8",
-    "yoast/phpunit-polyfills": "^1"
+    "yoast/phpunit-polyfills": "^1",
+    "automattic/vipwpcs": "^2.3"
   },
   "scripts": {
     "format": "phpcbf",
