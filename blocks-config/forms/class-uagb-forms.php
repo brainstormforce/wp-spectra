@@ -77,10 +77,9 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				wp_send_json_error( 400 );
 			}
 
-			$post_id  = sanitize_text_field( $_POST['post_id'] );
 			$block_id = sanitize_text_field( $_POST['block_id'] );
 
-			$post_content = get_post_field( 'post_content', $_POST['post_id'] );
+			$post_content = get_post_field( 'post_content', sanitize_text_field( $_POST['post_id'] ) );
 
 			$blocks                   = parse_blocks( $post_content );
 			$current_block_attributes = false;
@@ -195,7 +194,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 *
 		 * @param object $body Email Body.
 		 * @param object $form_data Email Body Array.
-		 * @param object $args Block Atrributes.
+		 * @param object $args Extra Data.
 		 *
 		 * @since 1.22.0
 		 */
