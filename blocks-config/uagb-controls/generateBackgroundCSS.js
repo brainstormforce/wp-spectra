@@ -20,10 +20,27 @@ function generateBackgroundCSS ( backgroundAttributes ) {
 		xPositionType,
 		yPosition,
 		yPositionType,
+        gradientColor1,
+		gradientColor2,
+		gradientLocation1,
+		gradientLocation2,
+		gradientType,
+		gradientAngle,
+		gType,
     } = backgroundAttributes;
 
     const bgCSS = {};
 
+    let gradient;
+
+    if( 'default' === gType ) {
+        gradient = gradientValue;
+    } else if ( 'linear' === gradientType && 'manual' === gType ) {
+        gradient = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${	gradientColor2 } ${ gradientLocation2 }%)`;
+    } else if ( 'radial' === gradientType && 'manual' === gType ) {
+        gradient = `radial-gradient( at center center, ${ gradientColor1} ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+    }
+    
     if( undefined !== backgroundType && '' !== backgroundType ) {
 
         if ( 'color' === backgroundType ) {
@@ -39,23 +56,23 @@ function generateBackgroundCSS ( backgroundAttributes ) {
 
                 bgCSS['background-image'] = 'linear-gradient(to right, ' + backgroundImageColor + ', ' + backgroundImageColor + '), url(' + backgroundImage?.url + ');';
             }
-			if (  'gradient' === overlayType && '' !== backgroundImage && backgroundImage && gradientValue && backgroundImage?.url ) {
-                bgCSS['background-image'] = gradientValue + ', url(' + backgroundImage?.url + ');';
+			if (  'gradient' === overlayType && '' !== backgroundImage && backgroundImage && gradient && backgroundImage?.url ) {
+                bgCSS['background-image'] = gradient + ', url(' + backgroundImage?.url + ');';
             }
             if ( '' !== backgroundImage && backgroundImage && 'none' === overlayType && backgroundImage?.url ) {
                 bgCSS['background-image'] = 'url(' + backgroundImage?.url + ');';
             }
         } else if ( 'gradient' === backgroundType ) {
-            if ( '' !== gradientValue && 'unset' !== gradientValue ) {
-                bgCSS.background = gradientValue;
+            if ( '' !== gradient && 'unset' !== gradient ) {
+                bgCSS.background = gradient;
             }
         } else if ( 'video' === backgroundType ) {
 			if ( 'color' === overlayType && '' !== backgroundVideo && '' !== backgroundVideoColor && undefined !== backgroundVideoColor && 'unset' !== backgroundVideoColor ) {
 
                 bgCSS.background = backgroundVideoColor;
             }
-			if (  'gradient' === overlayType && '' !== backgroundVideo && backgroundVideo && gradientValue ) {
-                bgCSS['background-image'] = gradientValue + ';';
+			if (  'gradient' === overlayType && '' !== backgroundVideo && backgroundVideo && gradient ) {
+                bgCSS['background-image'] = gradient + ';';
             }
 		}
 

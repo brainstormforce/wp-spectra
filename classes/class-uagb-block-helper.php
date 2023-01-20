@@ -1362,6 +1362,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$bg_img              = isset( $bg_obj['backgroundImage'] ) && isset( $bg_obj['backgroundImage']['url'] ) ? $bg_obj['backgroundImage']['url'] : '';
 			$bg_color            = isset( $bg_obj['backgroundColor'] ) ? $bg_obj['backgroundColor'] : '';
 			$gradient_value      = isset( $bg_obj['gradientValue'] ) ? $bg_obj['gradientValue'] : '';
+			$gradientColor1          = isset( $bg_obj['gradientColor1'] ) ? $bg_obj['gradientColor1'] : '';
+			$gradientColor2          = isset( $bg_obj['gradientColor2'] ) ? $bg_obj['gradientColor2'] : '';
+			$gradientType            = isset( $bg_obj['gradientType'] ) ? $bg_obj['gradientType'] : '';
+			$gradientLocation1       = isset( $bg_obj['gradientLocation1'] ) ? $bg_obj['gradientLocation1'] : '';
+			$gradientLocation2       = isset( $bg_obj['gradientLocation2'] ) ? $bg_obj['gradientLocation2'] : '';
+			$gradientAngle           = isset( $bg_obj['gradientAngle'] ) ? $bg_obj['gradientAngle'] : '';
+			$gType			= isset( $bg_obj['gType'] ) ? $bg_obj['gType'] : '';
 			$repeat              = isset( $bg_obj['backgroundRepeat'] ) ? $bg_obj['backgroundRepeat'] : '';
 			$position            = isset( $bg_obj['backgroundPosition'] ) ? $bg_obj['backgroundPosition'] : '';
 			$size                = isset( $bg_obj['backgroundSize'] ) ? $bg_obj['backgroundSize'] : '';
@@ -1382,6 +1389,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( 'custom' === $size ) {
 				$size = $bg_custom_size . $bg_custom_size_type;
 			}
+			if( 'default' === $gType ) {
+				$gradient = $gradient_value;
+			} else if ( 'linear' === $gradientType && 'manual' === $gType ) {
+				$gradient = 'linear-gradient(' . $gradientAngle . 'deg, ' . $gradientColor1. ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
+			} else if ( 'radial' === $gradientType && 'manual' === $gType ) {
+				$gradient = 'radial-gradient( at center center, ' . $gradientColor1 . ' ' . $gradientLocation1 .'%, ' . $gradientColor2 .' ' . $gradientLocation2 .'%)';
+			}
 
 			if ( '' !== $bg_type ) {
 				switch ( $bg_type ) {
@@ -1397,8 +1411,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						if ( 'color' === $overlay_type && '' !== $bg_img && '' !== $bg_image_color ) {
 							$gen_bg_css['background-image'] = 'linear-gradient(to right, ' . $bg_image_color . ', ' . $bg_image_color . '), url(' . $bg_img . ');';
 						}
-						if ( 'gradient' === $overlay_type && '' !== $bg_img && '' !== $gradient_value ) {
-							$gen_bg_css['background-image'] = $gradient_value . ', url(' . $bg_img . ');';
+						if ( 'gradient' === $overlay_type && '' !== $bg_img && '' !== $gradient ) {
+							$gen_bg_css['background-image'] = $gradient . ', url(' . $bg_img . ');';
 						}
 						if ( 'none' === $overlay_type && '' !== $bg_img ) {
 							$gen_bg_css['background-image'] = 'url(' . $bg_img . ');';
@@ -1406,16 +1420,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						break;
 
 					case 'gradient':
-						if ( isset( $gradient_value ) ) {
-							$gen_bg_css['background-image'] = $gradient_value . ';';
+						if ( isset( $gradient ) ) {
+							$gen_bg_css['background-image'] = $gradient . ';';
 						}
 						break;
 					case 'video':
 						if ( 'color' === $overlay_type && '' !== $bg_video && '' !== $bg_video_color ) {
 							$gen_bg_css['background'] = $bg_video_color . ';';
 						}
-						if ( 'gradient' === $overlay_type && '' !== $bg_video && '' !== $gradient_value ) {
-							$gen_bg_css['background-image'] = $gradient_value . ';';
+						if ( 'gradient' === $overlay_type && '' !== $bg_video && '' !== $gradient ) {
+							$gen_bg_css['background-image'] = $gradient . ';';
 						}
 						break;
 

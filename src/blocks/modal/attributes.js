@@ -1058,6 +1058,34 @@ const attributes = {
 			styleType: 'content-border-bottom-right-radius',
 		},
 	},
+	gType: {
+		type: 'string',
+		default: 'default',
+		UAGCopyPaste: {
+			styleType: 'gradient-type'
+		}
+	},
+	gradientLocation1: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'gradient-location-1'
+		}
+	},
+	gradientLocation2: {
+		type: 'number',
+		default: 100,
+		UAGCopyPaste: {
+			styleType: 'gradient-location-2'
+		}
+	},
+	gradientAngle: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'gradient-angel'
+		}
+	},
 };
 
 export default attributes;

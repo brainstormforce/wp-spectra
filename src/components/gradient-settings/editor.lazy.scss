@@ -15,3 +15,15 @@
 		}
 	}
 }
+.block-editor-block-inspector .uagb-inspector-tab {
+	.uag-background-gradient {
+		.uagb-color-popover-container.components-base-control,
+		.uagb-multi-buttons-control.components-base-control,
+		.uagb-size-type-field-tabs.components-base-control {
+			margin-bottom: 24px;
+		}
+		.uagb-size-type-field-tabs {
+			display: block;
+		}
+	}
+}
