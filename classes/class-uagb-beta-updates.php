@@ -80,7 +80,7 @@ if ( ! class_exists( 'UAGB_Beta_Updates' ) ) {
 			if ( false === $beta_version ) {
 				$beta_version = 'false';
 
-				$response = wp_remote_get( 'https://plugins.svn.wordpress.org/ultimate-addons-for-gutenberg/trunk/readme.txt' );
+				$response = wp_remote_get( 'https://plugins.svn.wordpress.org/ultimate-addons-for-gutenberg/trunk/readme.txt' ); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.wp_remote_get_wp_remote_get
 
 				if ( ! is_wp_error( $response ) && ! empty( $response['body'] ) ) {
 					preg_match( '/Beta tag: (.*)/i', $response['body'], $matches );

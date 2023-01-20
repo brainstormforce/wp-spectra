@@ -133,7 +133,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				wp_send_json_error( 400 );
 			}
 
-			$form_data = isset( $_POST['form_data'] ) ? json_decode( stripslashes( $_POST['form_data'] ), true ) : array(); // phpcs:ignore
+			$form_data = isset( $_POST['form_data'] ) ? json_decode( stripslashes( $_POST['form_data'] ), true ) : array();
 
 			$body  = '';
 			$body .= '<div style="border: 50px solid #f6f6f6;">';
@@ -175,7 +175,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 */
 		public function send_email( $body, $form_data ) {
 			check_ajax_referer( 'uagb_forms_ajax_nonce', 'nonce' );
-			$after_submit_data = isset( $_POST['after_submit_data'] ) ? json_decode( stripslashes( $_POST['after_submit_data'] ), true ) : array(); // phpcs:ignore
+			$after_submit_data = isset( $_POST['after_submit_data'] ) ? json_decode( stripslashes( $_POST['after_submit_data'] ), true ) : array();
 
 			$to      = isset( $after_submit_data['to'] ) ? sanitize_email( $after_submit_data['to'] ) : sanitize_email( get_option( 'admin_email' ) );
 			$cc      = isset( $after_submit_data['cc'] ) ? sanitize_email( $after_submit_data['cc'] ) : '';
