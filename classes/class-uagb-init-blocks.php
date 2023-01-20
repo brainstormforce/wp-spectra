@@ -196,7 +196,8 @@ class UAGB_Init_Blocks {
 			'mac_os'   => '(Mac_PowerPC)|(Macintosh)',
 		);
 
-		if ( preg_match( '@' . $os[ $value ] . '@', $_SERVER['HTTP_USER_AGENT'] ) ) {
+		$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( $_SERVER['HTTP_USER_AGENT'] ) : '';
+		if ( preg_match( '@' . $os[ $value ] . '@', $user_agent ) ) {
 			return '';
 		}
 
@@ -219,7 +220,7 @@ class UAGB_Init_Blocks {
 
 		$value = $block_attributes['UAGBrowser'];
 
-		$user_agent = UAGB_Helper::get_browser_name( $_SERVER['HTTP_USER_AGENT'] );
+		$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? UAGB_Helper::get_browser_name( sanitize_text_field( $_SERVER['HTTP_USER_AGENT'] ) ) : '';
 
 		$show = ( $value === $user_agent ) ? true : false;
 
@@ -374,7 +375,7 @@ class UAGB_Init_Blocks {
 
 		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
 
-		$id = intval( $_POST['formId'] );
+		$id = isset( $_POST['formId'] ) ? intval( $_POST['formId'] ) : 0;
 
 		if ( $id && 0 !== $id && -1 !== $id ) {
 			$data['html'] = do_shortcode( '[gravityforms id="' . $id . '" ajax="true"]' );
