@@ -416,7 +416,7 @@ class UAGB_Init_Blocks {
 
 		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
 
-		$id = intval( $_POST['formId'] );
+		$id = isset( $_POST['formId'] ) ? intval( $_POST['formId'] ) : 0;
 
 		if ( $id && 0 !== $id && -1 !== $id ) {
 			$data['html'] = do_shortcode( '[contact-form-7 id="' . $id . '" ajax="true"]' );
