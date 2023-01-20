@@ -1387,10 +1387,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			?>
 
-			<div class="<?php echo esc_html( implode( ' ', $common_classes ) ); ?>"
-				data-total="<?php echo esc_attr( $total ); ?>"
-				style="<?php echo esc_html( implode( '', $zindex_wrap ) ); ?>"
-			>
+			<div class="<?php echo esc_html( implode( ' ', $common_classes ) ); ?>" data-total="<?php echo esc_attr( $total ); ?>" style="<?php echo esc_html( implode( '', $zindex_wrap ) ); ?>">
 
 				<?php
 
