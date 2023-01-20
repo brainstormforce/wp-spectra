@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.1
-Stable tag: 2.3.0
+Stable tag: 2.3.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -170,6 +170,10 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 2.3.1 - FRIDAY, 20th JANUARY 2023 =
+* Fix: Info-Box - Margin unit set to `px` after refresh in editor.
+* Fix: Post Block - First post is getting empty when post block used on shop page.
+* Fix: Background processing issue in some cases.
 
 = 2.3.0 - THURSDAY, 12th JANUARY 2023 =
 * New: Introducing the Slider block that allows you to make almost anything into a carousel, a good way to grab attention!
