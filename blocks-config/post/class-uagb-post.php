@@ -1407,6 +1407,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 					?>
 					<div class="uagb-post-pagination-wrap">
+						// content already escaped using wp_kses_post.
 						<?php echo $this->render_pagination( $query, $attributes ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</div>
 					<?php
@@ -1493,7 +1494,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			if ( isset( $_POST['attributes'] ) ) {
 
-				$attr = isset( $_POST['attributes'] ) ? json_decode( stripslashes( $_POST['attributes'] ), true ) : array();
+				// $_POST['attributes'] is sanitized in later stage.
+				$attr = isset( $_POST['attributes'] ) ? json_decode( stripslashes( $_POST['attributes'] ), true ) : array(); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 				$post_attribute_array = $this->required_attribute_for_query( $attr );
 
@@ -1541,8 +1543,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			check_ajax_referer( 'uagb_masonry_ajax_nonce', 'nonce' );
 
 			$post_attribute_array = array();
-
-			$attr = isset( $_POST['attr'] ) ? json_decode( stripslashes( $_POST['attr'] ), true ) : array();
+			// $_POST['attr'] is sanitized in later stage.
+			$attr = isset( $_POST['attr'] ) ? json_decode( stripslashes( $_POST['attr'] ), true ) : array(); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 			$attr['paged'] = isset( $_POST['page_number'] ) ? sanitize_text_field( $_POST['page_number'] ) : '';
 

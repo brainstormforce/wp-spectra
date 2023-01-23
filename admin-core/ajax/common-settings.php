@@ -604,7 +604,7 @@ class Common_Settings extends Ajax_Base {
 			wp_send_json_error( $response_data );
 		}
 
-		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore
+		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_select_font_globally', $this->sanitize_form_inputs( $value ) );
 		$response_data = array(
@@ -1054,7 +1054,8 @@ class Common_Settings extends Ajax_Base {
 			wp_send_json_error( $response_data );
 		}
 
-		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore
+		// will sanitize $value in later stage.
+		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 		\UAGB_Admin_Helper::update_admin_settings_option( '_uagb_blocks', $this->sanitize_form_inputs( $value ) );
 

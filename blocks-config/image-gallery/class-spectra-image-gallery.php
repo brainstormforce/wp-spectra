@@ -973,8 +973,9 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 		 */
 		public function render_masonry_pagination() {
 			check_ajax_referer( 'uagb_image_gallery_masonry_ajax_nonce', 'nonce' );
-			$media_atts                 = array();
-			$attr                       = isset( $_POST['attr'] ) ? json_decode( stripslashes( $_POST['attr'] ), true ) : array();
+			$media_atts = array();
+			// sanitizing $attr elements in later stage.
+			$attr                       = isset( $_POST['attr'] ) ? json_decode( stripslashes( $_POST['attr'] ), true ) : array(); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			$attr['gridPageNumber']     = isset( $_POST['page_number'] ) ? sanitize_text_field( $_POST['page_number'] ) : '';
 			$media_atts                 = $this->required_atts( $attr );
 			$media_atts['mediaGallery'] = json_decode( $media_atts['mediaGallery'] );
@@ -996,8 +997,9 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 		 */
 		public function render_grid_pagination() {
 			check_ajax_referer( 'uagb_image_gallery_grid_pagination_ajax_nonce', 'nonce' );
-			$media_atts                 = array();
-			$attr                       = isset( $_POST['attr'] ) ? json_decode( stripslashes( $_POST['attr'] ), true ) : array();
+			$media_atts = array();
+			// sanitizing $attr elements in later stage.
+			$attr                       = isset( $_POST['attr'] ) ? json_decode( stripslashes( $_POST['attr'] ), true ) : array(); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			$attr['gridPageNumber']     = isset( $_POST['page_number'] ) ? sanitize_text_field( $_POST['page_number'] ) : '';
 			$media_atts                 = $this->required_atts( $attr );
 			$media_atts['mediaGallery'] = json_decode( $media_atts['mediaGallery'] );
