@@ -21,7 +21,7 @@ const GradientSettings = ( props ) => {
 	const onGradientChange = ( value ) => {
 		setAttributes( { [ backgroundGradient.label ]: value } );
 	};
-
+	
 	return (
 		<>
 			<MultiButtonsControl

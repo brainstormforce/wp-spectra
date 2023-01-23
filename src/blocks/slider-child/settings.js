@@ -124,7 +124,7 @@ const Settings = ( props ) => {
 					} }
 					backgroundGradientColor1={{
 						value: gradientColor1,
-						label: 'gradientColor1,'
+						label: 'gradientColor1'
 					}}
 					gradientType={ {
 						value: gType,

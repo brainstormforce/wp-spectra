@@ -493,7 +493,7 @@ const attributes = {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
-			styleType: 'gradient-angel'
+			styleType: 'gradient-angle'
 		}
 	},
 };

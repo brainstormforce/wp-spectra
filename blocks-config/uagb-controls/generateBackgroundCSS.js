@@ -32,7 +32,7 @@ function generateBackgroundCSS ( backgroundAttributes ) {
     const bgCSS = {};
 
     let gradient;
-
+    
     if( 'default' === gType ) {
         gradient = gradientValue;
     } else if ( 'linear' === gradientType && 'manual' === gType ) {

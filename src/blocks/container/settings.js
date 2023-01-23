@@ -213,7 +213,7 @@ const Settings = ( props ) => {
 		gradientAngle,
 		gType
 	} = attributes;
-
+	
 	let currentDirection = directionDesktop?.split( '-' )?.[0];
 
 	if ( attributes[ 'direction' + deviceType ] && attributes[ 'direction' + deviceType ].split( '-' )[0] ) {
@@ -1012,7 +1012,7 @@ const Settings = ( props ) => {
 					} }
 					backgroundGradientColor1={{
 						value: gradientColor1,
-						label: 'gradientColor1,'
+						label: 'gradientColor1'
 					}}
 					gradientType={ {
 						value: gType,
