@@ -832,7 +832,7 @@ const Background = ( props ) => {
 						backgroundGradientType={ props.backgroundGradientType }
 						backgroundGradientLocation1={ props.backgroundGradientLocation1 }
 						backgroundGradientLocation2={ props.backgroundGradientLocation2 }
-						backgroundGradientAngle= {props.backgroundGradientAngle}
+						backgroundGradientAngle= { props.backgroundGradientAngle }
 					/>
 				</div>
 			) }

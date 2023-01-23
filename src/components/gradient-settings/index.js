@@ -155,7 +155,7 @@ const GradientSettings = ( props ) => {
 							value={ backgroundGradientAngle.value }
 							data={ {
 								value: backgroundGradientAngle.value,
-								label: backgroundGradientAngle.value,
+								label: backgroundGradientAngle.label,
 							} }
 							min={ 0 }
 							max={ 360 }
