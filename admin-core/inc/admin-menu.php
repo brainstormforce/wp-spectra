@@ -102,7 +102,7 @@ class Admin_Menu {
 	public function settings_admin_scripts() {
 
 		// Enqueue admin scripts.
-		if ( ! empty( $_GET['page'] ) && ( $this->menu_slug === $_GET['page'] || false !== strpos( $_GET['page'], $this->menu_slug . '_' ) ) ) { //phpcs:ignore
+		if ( ! empty( $_GET['page'] ) && ( $this->menu_slug === $_GET['page'] || false !== strpos( sanitize_text_field( $_GET['page'] ), $this->menu_slug . '_' ) ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 			add_action( 'admin_enqueue_scripts', array( $this, 'styles_scripts' ) );
 
@@ -162,11 +162,11 @@ class Admin_Menu {
 	 */
 	public function render() {
 
-		$menu_page_slug = ( ! empty( $_GET['page'] ) ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : $this->menu_slug; //phpcs:ignore
+		$menu_page_slug = ( ! empty( $_GET['page'] ) ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : $this->menu_slug; //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$page_action    = '';
 
-		if ( isset( $_GET['action'] ) ) { //phpcs:ignore
-			$page_action = sanitize_text_field( wp_unslash( $_GET['action'] ) ); //phpcs:ignore
+		if ( isset( $_GET['action'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$page_action = sanitize_text_field( wp_unslash( $_GET['action'] ) ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$page_action = str_replace( '_', '-', $page_action );
 		}
 
