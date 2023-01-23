@@ -54,6 +54,7 @@ return array_merge(
 		'gradientLocation2'      => '100',
 		'gradientAngle'          => '0',
 		'gradientPosition'       => 'center center',
+		'gType' => 'default',
 		'backgroundVideoOpacity' => '50',
 		'backgroundVideoColor'   => '',
 		'backgroundImageColor'   => '',
