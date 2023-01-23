@@ -171,9 +171,11 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 2.3.1 =
+* Improvement: Modal - Added presets for a button trigger.
 * Fix: Info-Box - Margin unit set to `px` after refresh in editor.
 * Fix: Gradient Picker - block encounter an error when using gradient picker for Spectra block when Gutenberg is activated.
 * Fix: Timeline - unable to set connector Icon Background Size to zero.
+* Fix: Post Block - First post is  getting empty when post block used on shop page.
 
 = 2.3.0 - THURSDAY, 12th JANUARY 2023 =
 * New: Introducing the Slider block that allows you to make almost anything into a carousel, a good way to grab attention!

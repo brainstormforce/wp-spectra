@@ -165,6 +165,8 @@ export default function styling( props ) {
 		gradientType,
 		gradientAngle,
 		gType,
+		modalTriggerBgType,
+		modalTriggerBgHoverType,
 	} = props.attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -283,7 +285,7 @@ export default function styling( props ) {
 			'line-height': generateCSSUnit( btnLineHeight, btnLineHeightType ),
 			'letter-spacing': generateCSSUnit( btnLetterSpacing, btnLetterSpacingType ),
 			'color': btnLinkColor,
-			'background-color': btnBgColor,
+			'background-color': ( modalTriggerBgType === 'color' ) ? btnBgColor : 'transparent',
 			...borderCSS
 		},
 		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger svg' : {
@@ -295,7 +297,7 @@ export default function styling( props ) {
 		},
 		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:hover' : {
 			'color': btnLinkHoverColor,
-			'background-color': btnBgHoverColor,
+			'background-color': ( modalTriggerBgHoverType === 'color' ) ? btnBgHoverColor : 'transparent',
 			'border-color': btnBorderHColor
 		},
 		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:hover svg' : {
@@ -303,7 +305,7 @@ export default function styling( props ) {
 		},
 		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:focus' : {
 			'color': btnLinkHoverColor,
-			'background-color': btnBgHoverColor,
+			'background-color': ( modalTriggerBgHoverType === 'color' ) ? btnBgHoverColor : 'transparent',
 			'border-color': btnBorderHColor
 		},
 		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:focus svg' : {

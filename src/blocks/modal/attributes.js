@@ -1107,6 +1107,20 @@ const attributes = {
 			styleType: 'gradient-angel'
 		}
 	},
+	modalTriggerBgType:{
+		type:'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-background-type'
+		}
+	},
+	modalTriggerBgHoverType:{
+		type:'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-hbackground-type'
+		}
+	},
 };
 
 export default attributes;
