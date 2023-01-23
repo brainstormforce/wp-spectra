@@ -113,6 +113,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				$google_recaptcha_secret_key = $options['recaptcha_secret_key_v3'];
 
 			}
+
 			if ( ! empty( $google_recaptcha_secret_key ) && ! empty( $google_recaptcha_site_key ) ) {
 
 				// Google recaptcha secret key verification starts.
@@ -162,7 +163,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				wp_send_json_error( 400 );
 			}
 
-			$form_data = isset( $_POST['form_data'] ) ? json_decode( stripslashes( $_POST['form_data'] ), true ) : array(); // phpcs:ignore
+			$form_data = isset( $_POST['form_data'] ) ? json_decode( stripslashes( $_POST['form_data'] ), true ) : array(); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 			$body  = '';
 			$body .= '<div style="border: 50px solid #f6f6f6;">';
@@ -243,4 +244,3 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 	 */
 	UAGB_Forms::get_instance();
 }
-
