@@ -91,7 +91,12 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				}
 			}
 
-			if ( empty( $current_block_attributes ) || empty( $current_block_attributes['reCaptchaEnable'] ) || empty( $current_block_attributes['reCaptchaType'] ) ) {
+			if ( empty( $current_block_attributes ) ) {
+				wp_send_json_error( 400 );
+			}
+
+			// bail if recaptcha is enabled and recaptchaType is not set.
+			if( ! empty( $current_block_attributes['reCaptchaEnable'] ) && empty( $current_block_attributes['reCaptchaType'] ) ) {
 				wp_send_json_error( 400 );
 			}
 
