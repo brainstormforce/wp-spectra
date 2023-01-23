@@ -57,23 +57,23 @@ const PluginStats = () => {
 						className='mr-8 ml-2 text-sm text-emerald-500 active:text-emerald-500 hover:text-emerald-500 focus:text-emerald-500 cursor-pointer'
 						to={ {
 							pathname: 'options-general.php',
-							search: '?page=spectra&path=settings&settings=my-account',
+							search: '?page=spectra&path=settings&settings=license',
 						} }
 						onClick={ () => {
-							dispatch( { type:'UPDATE_SETTINGS_ACTIVE_NAVIGATION_TAB', payload: 'my-account' } )
+							dispatch( { type:'UPDATE_SETTINGS_ACTIVE_NAVIGATION_TAB', payload: 'license' } )
 						} }
                     >
 						{ __( 'Licensed', 'ultimate-addons-for-gutenberg' ) }
 					</Link>					
 				) : (
                     <Link
-						className='mr-8 ml-2 text-sm text-slate-400 active:text-slate-400 hover:text-slate-400 focus:text-slate-400 cursor-pointer'
+						className='mr-8 ml-2 text-sm text-red-500 active:text-red-500 hover:text-red-500 focus:text-red-500 cursor-pointer'
 						to={ {
 							pathname: 'options-general.php',
-							search: '?page=spectra&path=settings&settings=my-account',
+							search: '?page=spectra&path=settings&settings=license',
 						} }
 						onClick={ () => {
-							dispatch( { type:'UPDATE_SETTINGS_ACTIVE_NAVIGATION_TAB', payload: 'my-account' } )
+							dispatch( { type:'UPDATE_SETTINGS_ACTIVE_NAVIGATION_TAB', payload: 'license' } )
 						} }
                     >
                         { __( 'Unlicensed', 'ultimate-addons-for-gutenberg' ) }

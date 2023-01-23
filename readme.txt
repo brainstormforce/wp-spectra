@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.1
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -169,6 +169,13 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 2.3.2 - MONDAY, 23rd JANUARY 2023 =
+* Improvement: Hardened the security of the plugin.
+* Improvement: Modal - Added presets for a button trigger.
+* Fix: Forms - Multiple Form Submit AJAX related issues.
+* Fix: Timeline - unable to set connector Icon Background Size to zero.
+* Fix: Gradient Picker - block encounter an error when using gradient picker for Spectra block when Gutenberg is activated.
 
 = 2.3.1 - FRIDAY, 20th JANUARY 2023 =
 * Fix: Info-Box - Margin unit set to `px` after refresh in editor.

@@ -22,6 +22,8 @@ import WebfontLoader from '@Components/typography/fontloader';
 import UAGTabsControl from '@Components/tabs';
 import ResponsiveBorder from '@Components/responsive-border';
 import Background from '@Components/background';
+import  { buttonsPresets } from './presets';
+import UAGPresets from '@Components/presets';
 
 let imageSizeOptions = [
 	{
@@ -198,6 +200,8 @@ export default function Settings( props ) {
 		yPositionType,
 		yPositionTypeTablet,
 		yPositionTypeMobile,
+		modalTriggerBgType,
+		modalTriggerBgHoverType,
 	} = attributes;
 
 	let loadTextGoogleFonts;
@@ -437,6 +441,11 @@ export default function Settings( props ) {
 				) }
 				{ modalTrigger === 'button' && (
 					<>
+						<UAGPresets
+							setAttributes = { setAttributes }
+							presets = { buttonsPresets }
+							presetInputType = 'radioImage'
+						/>
 						<ToggleControl
 							label={ __(
 								'Enable Icon',
@@ -1157,27 +1166,26 @@ export default function Settings( props ) {
 							label: 'btnLetterSpacingType',
 						} }
 					/>
-
 					<UAGTabsControl
-						tabs={ [
-							{
-								name: 'normal',
-								title: __(
-									'Normal',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								name: 'hover',
-								title: __(
-									'Hover',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-						] }
-						normal={
-							<>
-								<AdvancedPopColorControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<>
+							<AdvancedPopColorControl
 									label={ __(
 										'Text Color',
 										'ultimate-addons-for-gutenberg'
@@ -1193,60 +1201,117 @@ export default function Settings( props ) {
 									} }
 									setAttributes={ setAttributes }
 								/>
-								<AdvancedPopColorControl
-									label={ __(
-										'Background Color',
-										'ultimate-addons-for-gutenberg'
-									) }
-									colorValue={
-										btnBgColor ? btnBgColor : ''
-									}
-									data={ {
-										value: btnBgColor,
-										label: 'btnBgColor',
-									} }
-									setAttributes={ setAttributes }
-								/>
-							</>
-						}
-						hover={
-							<>
-								<AdvancedPopColorControl
-									label={ __(
-										'Text Color',
-										'ultimate-addons-for-gutenberg'
-									) }
-									colorValue={
-										btnLinkHoverColor
-											? btnLinkHoverColor
-											: ''
-									}
-									data={ {
-										value: btnLinkHoverColor,
-										label: 'btnLinkHoverColor',
-									} }
-									setAttributes={ setAttributes }
-								/>
-								<AdvancedPopColorControl
-									label={ __(
-										'Background Color',
-										'ultimate-addons-for-gutenberg'
-									) }
-									colorValue={
-										btnBgHoverColor
-											? btnBgHoverColor
-											: ''
-									}
-									data={ {
-										value: btnBgHoverColor,
-										label: 'btnBgHoverColor',
-									} }
-									setAttributes={ setAttributes }
-								/>
-							</>
-						}
-					/>
-
+							<MultiButtonsControl
+								setAttributes={ setAttributes }
+								label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: modalTriggerBgType,
+									label: 'modalTriggerBgType',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ [
+									{
+										value: 'transparent',
+										label: __(
+											'Transparent',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'color',
+										label: __(
+											'Color',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+								] }
+							/>
+							{ 'color' === modalTriggerBgType && (
+								<>
+									<AdvancedPopColorControl
+										label={ __(
+											'Background Color',
+											'ultimate-addons-for-gutenberg'
+										) }
+										colorValue={
+											btnBgColor ? btnBgColor : ''
+										}
+										data={ {
+											value: btnBgColor,
+											label: 'btnBgColor',
+										} }
+										setAttributes={ setAttributes }
+									/>
+								</>
+							) }
+						</>
+					}
+					hover={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Text Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={
+									btnLinkHoverColor
+										? btnLinkHoverColor
+										: ''
+								}
+								data={ {
+									value: btnLinkHoverColor,
+									label: 'btnLinkHoverColor',
+								} }
+								setAttributes={ setAttributes }
+							/>
+							<MultiButtonsControl
+								setAttributes={ setAttributes }
+								label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: modalTriggerBgHoverType,
+									label: 'modalTriggerBgHoverType',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ [
+									{
+										value: 'transparent',
+										label: __(
+											'Transparent',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'color',
+										label: __(
+											'Color',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+								] }
+							/>
+							{ 'color' === modalTriggerBgHoverType && (
+								<>
+									<AdvancedPopColorControl
+										label={ __(
+											'Background Color',
+											'ultimate-addons-for-gutenberg'
+										) }
+										colorValue={
+											btnBgHoverColor
+												? btnBgHoverColor
+												: ''
+										}
+										data={ {
+											value: btnBgHoverColor,
+											label: 'btnBgHoverColor',
+										} }
+										setAttributes={ setAttributes }
+									/>
+								</>
+							) }
+						</>
+					}
+				/>
 					<SpacingControl
 						{ ...props }
 						label={ __(

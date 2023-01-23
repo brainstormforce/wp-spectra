@@ -186,6 +186,8 @@ return array_merge(
 		'yPositionType'               => 'px',
 		'yPositionTypeTablet'         => 'px',
 		'yPositionTypeMobile'         => 'px',
+		'modalTriggerBgType'          => 'color',
+		'modalTriggerBgHoverType'     => 'color',
 	),
 	$btn_border_attributes,
 	array(

@@ -82,7 +82,13 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 		 */
 		public function import_wpforms( $wpforms_url = '' ) {
 
-			$wpforms_url = ( isset( $_REQUEST['wpforms_url'] ) ) ? urldecode( $_REQUEST['wpforms_url'] ) : $wpforms_url; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_send_json_error( 'You are not allowed to perform this action', 'astra-sites' );
+			}
+			// Verify Nonce.
+			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
+
+			$wpforms_url = ( isset( $_REQUEST['wpforms_url'] ) ) ? urldecode( $_REQUEST['wpforms_url'] ) : $wpforms_url;
 			$ids_mapping = array();
 
 			if ( ! empty( $wpforms_url ) && function_exists( 'wpforms_encode' ) ) {
@@ -151,13 +157,19 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 		 */
 		public function import_block() {
 
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_send_json_error( 'You are not allowed to perform this action', 'astra-sites' );
+			}
+			// Verify Nonce.
+			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
+
 			// Allow the SVG tags in batch update process.
 			add_filter( 'wp_kses_allowed_html', array( $this, 'allowed_tags_and_attributes' ), 10, 2 );
 
 			$ids_mapping = get_option( 'ast_block_templates_wpforms_ids_mapping', array() );
 
 			// Post content.
-			$content = isset( $_REQUEST['content'] ) ? stripslashes( $_REQUEST['content'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$content = isset( $_REQUEST['content'] ) ? stripslashes( $_REQUEST['content'] ) : '';
 
 			// Empty mapping? Then return.
 			if ( ! empty( $ids_mapping ) ) {
@@ -285,9 +297,16 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 		 * Activate Plugin
 		 */
 		public function activate_plugin() {
+
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_send_json_error( 'You are not allowed to perform this action', 'astra-sites' );
+			}
+			// Verify Nonce.
+			check_ajax_referer( 'ast-block-templates-ajax-nonce', 'security' );
+
 			wp_clean_plugins_cache();
 
-			$plugin_init = ( isset( $_POST['init'] ) ) ? esc_attr( $_POST['init'] ) : ''; // phpcs:ignore
+			$plugin_init = ( isset( $_POST['init'] ) ) ? esc_attr( $_POST['init'] ) : '';
 
 			$activate = activate_plugin( $plugin_init, '', false, true );
 

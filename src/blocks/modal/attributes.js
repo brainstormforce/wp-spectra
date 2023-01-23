@@ -1058,6 +1058,20 @@ const attributes = {
 			styleType: 'content-border-bottom-right-radius',
 		},
 	},
+	modalTriggerBgType:{
+		type:'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-background-type'
+		}
+	},
+	modalTriggerBgHoverType:{
+		type:'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-hbackground-type'
+		}
+	},
 };
 
 export default attributes;

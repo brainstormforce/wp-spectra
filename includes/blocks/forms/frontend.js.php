@@ -7,8 +7,9 @@
  * @package uagb
  */
 
-$selector = '.uagb-block-' . $id;
-$js_attr  = array(
+$selector        = '.uagb-block-' . $id;
+$current_post_id = get_the_ID();
+$js_attr         = array(
 	'block_id'                => $attr['block_id'],
 	'reCaptchaEnable'         => $attr['reCaptchaEnable'],
 	'reCaptchaType'           => $attr['reCaptchaType'],
@@ -29,7 +30,7 @@ $js_attr  = array(
 ob_start();
 ?>
 window.addEventListener("DOMContentLoaded", function(){
-	UAGBForms.init( <?php echo wp_json_encode( $js_attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
+	UAGBForms.init( <?php echo wp_json_encode( $js_attr ); ?>, '<?php echo esc_attr( $selector ); ?>', <?php echo wp_json_encode( $current_post_id ); ?> );
 });
 <?php
 return ob_get_clean();

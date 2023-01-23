@@ -73,17 +73,47 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				'recaptcha_secret_key_v3' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v3', '' ),
 			);
 
-			if ( 'v2' === $_POST['captcha_version'] ) {
+			if ( empty( $_POST['post_id'] ) || empty( $_POST['block_id'] ) ) {
+				wp_send_json_error( 400 );
+			}
+
+			$block_id = sanitize_text_field( $_POST['block_id'] );
+
+			$post_content = get_post_field( 'post_content', sanitize_text_field( $_POST['post_id'] ) );
+
+			$blocks                   = parse_blocks( $post_content );
+			$current_block_attributes = false;
+			if ( ! empty( $blocks ) && is_array( $blocks ) ) {
+				foreach ( $blocks as $block ) {
+					if ( isset( $block['attrs'] ) && isset( $block['attrs']['block_id'] ) && $block['attrs']['block_id'] === $block_id ) {
+						$current_block_attributes = $block['attrs'];
+					}
+				}
+			}
+
+			if ( empty( $current_block_attributes ) ) {
+				wp_send_json_error( 400 );
+			}
+			if ( ! isset( $current_block_attributes['reCaptchaType'] ) ) {
+				$current_block_attributes['reCaptchaType'] = 'v2';
+			}
+			// bail if recaptcha is enabled and recaptchaType is not set.
+			if ( ! empty( $current_block_attributes['reCaptchaEnable'] ) && empty( $current_block_attributes['reCaptchaType'] ) ) {
+				wp_send_json_error( 400 );
+			}
+
+			if ( 'v2' === $current_block_attributes['reCaptchaType'] ) {
 
 				$google_recaptcha_site_key   = $options['recaptcha_site_key_v2'];
 				$google_recaptcha_secret_key = $options['recaptcha_secret_key_v2'];
 
-			} elseif ( 'v3' === $_POST['captcha_version'] ) {
+			} elseif ( 'v3' === $current_block_attributes['reCaptchaType'] ) {
 
 				$google_recaptcha_site_key   = $options['recaptcha_site_key_v3'];
 				$google_recaptcha_secret_key = $options['recaptcha_secret_key_v3'];
 
 			}
+
 			if ( ! empty( $google_recaptcha_secret_key ) && ! empty( $google_recaptcha_site_key ) ) {
 
 				// Google recaptcha secret key verification starts.
@@ -133,7 +163,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				wp_send_json_error( 400 );
 			}
 
-			$form_data = isset( $_POST['form_data'] ) ? json_decode( stripslashes( $_POST['form_data'] ), true ) : array(); // phpcs:ignore
+			$form_data = isset( $_POST['form_data'] ) ? json_decode( stripslashes( $_POST['form_data'] ), true ) : array(); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 			$body  = '';
 			$body .= '<div style="border: 50px solid #f6f6f6;">';
@@ -142,25 +172,26 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			foreach ( $form_data as $key => $value ) {
 
 				if ( $key ) {
+
 					if ( is_array( $value ) && stripos( wp_json_encode( $value ), '+' ) !== false ) {
 
 						$val   = implode( '', $value );
-						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' . esc_html( $val ) . '</p>';
+						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( esc_html( $key ) ) ) . '</strong> - ' . esc_html( $val ) . '</p>';
 
 					} elseif ( is_array( $value ) ) {
 
 						$val   = implode( ', ', $value );
-						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' . esc_html( $val ) . '</p>';
+						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( esc_html( $key ) ) ) . '</strong> - ' . esc_html( $val ) . '</p>';
 
 					} else {
-						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' . esc_html( $value ) . '</p>';
+						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( esc_html( $key ) ) ) . '</strong> - ' . esc_html( $value ) . '</p>';
 					}
 				}
 			}
 			$body .= '<p style="text-align:center;">This e-mail was sent from a ' . get_bloginfo( 'name' ) . ' ( ' . site_url() . ' )</p>';
 			$body .= '</div>';
 			$body .= '</div>';
-			$this->send_email( $body, $form_data );
+			$this->send_email( $body, $form_data, $current_block_attributes );
 
 		}
 
@@ -171,16 +202,16 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 *
 		 * @param object $body Email Body.
 		 * @param object $form_data Email Body Array.
+		 * @param object $args Extra Data.
+		 *
 		 * @since 1.22.0
 		 */
-		public function send_email( $body, $form_data ) {
-			check_ajax_referer( 'uagb_forms_ajax_nonce', 'nonce' );
-			$after_submit_data = isset( $_POST['after_submit_data'] ) ? json_decode( stripslashes( $_POST['after_submit_data'] ), true ) : array(); // phpcs:ignore
+		public function send_email( $body, $form_data, $args ) {
 
-			$to      = isset( $after_submit_data['to'] ) ? sanitize_email( $after_submit_data['to'] ) : sanitize_email( get_option( 'admin_email' ) );
-			$cc      = isset( $after_submit_data['cc'] ) ? sanitize_email( $after_submit_data['cc'] ) : '';
-			$bcc     = isset( $after_submit_data['bcc'] ) ? sanitize_email( $after_submit_data['bcc'] ) : '';
-			$subject = isset( $after_submit_data['subject'] ) ? $after_submit_data['subject'] : 'Form Submission';
+			$to      = isset( $args['to'] ) ? sanitize_email( $args['to'] ) : sanitize_email( get_option( 'admin_email' ) );
+			$cc      = isset( $args['cc'] ) ? sanitize_email( $args['cc'] ) : '';
+			$bcc     = isset( $args['bcc'] ) ? sanitize_email( $args['bcc'] ) : '';
+			$subject = isset( $args['subject'] ) ? $args['subject'] : __( 'Form Submission', 'ultimate-addons-for-gutenberg' );
 
 			$headers = array(
 				'Reply-To-: ' . get_bloginfo( 'name' ) . ' <' . $to . '>',
@@ -191,7 +222,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			$succefull_mail = wp_mail( $to, $subject, $body, $headers );
 
 			if ( $bcc && ! empty( $bcc ) ) {
-				$bcc_emails = explode( ',', $after_submit_data['bcc'] );
+				$bcc_emails = explode( ',', $bcc );
 				foreach ( $bcc_emails as $bcc_email ) {
 					wp_mail( sanitize_email( trim( $bcc_email ) ), $subject, $body, $headers );
 				}
@@ -213,4 +244,3 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 	 */
 	UAGB_Forms::get_instance();
 }
-
