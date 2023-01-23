@@ -102,18 +102,16 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				wp_send_json_error( 400 );
 			}
 
-			if ( isset( $_POST['captcha_version'] ) ) {
-				if ( 'v2' === $_POST['captcha_version'] ) {
+			if ( 'v2' === $current_block_attributes['reCaptchaType'] ) {
 
-					$google_recaptcha_site_key   = $options['recaptcha_site_key_v2'];
-					$google_recaptcha_secret_key = $options['recaptcha_secret_key_v2'];
+				$google_recaptcha_site_key   = $options['recaptcha_site_key_v2'];
+				$google_recaptcha_secret_key = $options['recaptcha_secret_key_v2'];
 
-				} elseif ( 'v3' === $_POST['captcha_version'] ) {
+			} elseif ( 'v3' === $current_block_attributes['reCaptchaType'] ) {
 
-					$google_recaptcha_site_key   = $options['recaptcha_site_key_v3'];
-					$google_recaptcha_secret_key = $options['recaptcha_secret_key_v3'];
+				$google_recaptcha_site_key   = $options['recaptcha_site_key_v3'];
+				$google_recaptcha_secret_key = $options['recaptcha_secret_key_v3'];
 
-				}
 			}
 
 			if ( ! empty( $google_recaptcha_secret_key ) && ! empty( $google_recaptcha_site_key ) ) {
