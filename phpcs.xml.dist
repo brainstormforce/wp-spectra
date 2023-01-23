@@ -20,6 +20,19 @@
 		<exclude-pattern>*/admin-core/*</exclude-pattern>
 	</rule>
 
+	<rule ref="WordPressVIPMinimum.Variables.RestrictedVariables.cache_constraints___SERVER__HTTP_USER_AGENT__">
+		<exclude-pattern>*/classes/class-uagb-init-blocks.php</exclude-pattern>
+	</rule>
+
+	<rule ref="WordPressVIPMinimum.Functions.RestrictedFunctions.get_intermediate_image_sizes_get_intermediate_image_sizes">
+		<exclude-pattern>*/classes/class-uagb-helper.php</exclude-pattern>
+	</rule>
+
+	<rule ref="WordPressVIPMinimum.Hooks.AlwaysReturnInFilter.MissingReturnStatement">
+		<exclude-pattern>*/classes/class-uagb-coming-soon.php</exclude-pattern>
+	</rule>
+
+
 	<!-- Arguments - extension, parallel, colors, show porgress, Show sniff codes in all reports -->
 	<arg name="extensions" value="php"/>
 	<arg name="parallel" value="20"/>

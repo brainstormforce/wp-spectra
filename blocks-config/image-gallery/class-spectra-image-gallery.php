@@ -975,7 +975,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 			check_ajax_referer( 'uagb_image_gallery_masonry_ajax_nonce', 'nonce' );
 			$media_atts                 = array();
 			$attr                       = isset( $_POST['attr'] ) ? json_decode( stripslashes( $_POST['attr'] ), true ) : array();
-			$attr['gridPageNumber']     = isset( $_POST['page_number'] ) ? $_POST['page_number'] : '';
+			$attr['gridPageNumber']     = isset( $_POST['page_number'] ) ? sanitize_text_field( $_POST['page_number'] ) : '';
 			$media_atts                 = $this->required_atts( $attr );
 			$media_atts['mediaGallery'] = json_decode( $media_atts['mediaGallery'] );
 			$media                      = $this->get_gallery_images( $media_atts, 'paginated' );
