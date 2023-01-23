@@ -38,6 +38,13 @@ const Settings = ( props ) => {
 		backgroundSizeMobile,
 		backgroundImageColor,
 		gradientValue,
+		gradientColor1,
+		gradientColor2,
+		gradientLocation1,
+		gradientLocation2,
+		gradientType,
+		gradientAngle,
+		gType,
 
 		topPaddingDesktop,
 		bottomPaddingDesktop,
@@ -115,6 +122,34 @@ const Settings = ( props ) => {
 						value: gradientValue,
 						label: 'gradientValue',
 					} }
+					backgroundGradientColor1={{
+						value: gradientColor1,
+						label: 'gradientColor1,'
+					}}
+					gradientType={ {
+						value: gType,
+						label: 'gType',
+					} }
+					backgroundGradientColor2={{
+						value: 	gradientColor2,
+						label: 'gradientColor2'
+					}}
+					backgroundGradientLocation1={{
+						value: 	gradientLocation1,
+						label: 'gradientLocation1'
+					}}
+					backgroundGradientLocation2={{
+						value: 	gradientLocation2,
+						label: 'gradientLocation2'
+					}}
+					backgroundGradientType={{
+						value: 	gradientType,
+						label: 'gradientType'
+					}}
+					backgroundGradientAngle={{
+						value: 	gradientAngle,
+						label: 'gradientAngle'
+					}}
 					backgroundImageColor={ {
 						value: backgroundImageColor,
 						label: 'backgroundImageColor',

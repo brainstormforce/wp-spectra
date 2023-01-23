@@ -174,12 +174,110 @@ const attributes = {
 			styleType: 'btn-bg-gradient-value'
 		},
 	},
+	gradientColor1: {
+		type: 'string',
+		default: '#06558a',
+		UAGCopyPaste: {
+			styleType: 'gradient-color-1'
+		}
+	},
+	gradientColor2: {
+		type: 'string',
+		default: '#0170b9',
+		UAGCopyPaste: {
+			styleType: 'gradient-color-2'
+		}
+	},
+	gradientType: {
+		type: 'string',
+		default: 'linear',
+		UAGCopyPaste: {
+			styleType: 'gradient-color-type'
+		}
+	},
+	gType: {
+		type: 'string',
+		default: 'default',
+		UAGCopyPaste: {
+			styleType: 'gradient-type'
+		}
+	},
+	gradientLocation1: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'gradient-location-1'
+		}
+	},
+	gradientLocation2: {
+		type: 'number',
+		default: 100,
+		UAGCopyPaste: {
+			styleType: 'gradient-location-2'
+		}
+	},
+	gradientAngle: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'gradient-angel'
+		}
+	},
 	hovergradientValue: {
 		type: 'string',
 		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-hbg-gradient-value'
 		},
+	},
+	hovergradientColor1: {
+		type: 'string',
+		default: '#06558a',
+		UAGCopyPaste: {
+			styleType: 'gradient-color-1'
+		}
+	},
+	hovergradientColor2: {
+		type: 'string',
+		default: '#0170b9',
+		UAGCopyPaste: {
+			styleType: 'gradient-color-2'
+		}
+	},
+	hovergradientType: {
+		type: 'string',
+		default: 'linear',
+		UAGCopyPaste: {
+			styleType: 'gradient-color-type'
+		}
+	},
+	hovergType: {
+		type: 'string',
+		default: 'default',
+		UAGCopyPaste: {
+			styleType: 'gradient-type'
+		}
+	},
+	hovergradientLocation1: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'gradient-location-1'
+		}
+	},
+	hovergradientLocation2: {
+		type: 'number',
+		default: 100,
+		UAGCopyPaste: {
+			styleType: 'gradient-location-2'
+		}
+	},
+	hovergradientAngle: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'gradient-angel'
+		}
 	},
 	mobilePaddingUnit: {
 		type: 'string',

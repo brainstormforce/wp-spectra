@@ -447,6 +447,13 @@ const attributes = {
 			styleType: 'column-gradient-value'
 		}
 	},
+	gType: {
+		type: 'string',
+		default: 'default',
+		UAGCopyPaste: {
+			styleType: 'gradient-type'
+		}
+	},
 	...borderAttributes
 };
 

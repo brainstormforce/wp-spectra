@@ -1058,6 +1058,27 @@ const attributes = {
 			styleType: 'content-border-bottom-right-radius',
 		},
 	},
+	gradientColor1: {
+		type: 'string',
+		default: '#06558a',
+		UAGCopyPaste: {
+			styleType: 'gradient-color-1'
+		}
+	},
+	gradientColor2: {
+		type: 'string',
+		default: '#0170b9',
+		UAGCopyPaste: {
+			styleType: 'gradient-color-2'
+		}
+	},
+	gradientType: {
+		type: 'string',
+		default: 'linear',
+		UAGCopyPaste: {
+			styleType: 'gradient-color-type'
+		}
+	},
 	gType: {
 		type: 'string',
 		default: 'default',

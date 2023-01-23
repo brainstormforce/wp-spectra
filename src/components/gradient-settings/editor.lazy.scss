@@ -17,6 +17,8 @@
 }
 .block-editor-block-inspector .uagb-inspector-tab {
 	.uag-background-gradient {
+		margin-top:10px;
+
 		.uagb-color-popover-container.components-base-control,
 		.uagb-multi-buttons-control.components-base-control,
 		.uagb-size-type-field-tabs.components-base-control {
@@ -24,6 +26,15 @@
 		}
 		.uagb-size-type-field-tabs {
 			display: block;
+		}
+		.uagb-gradient-advanced-option{
+			width: 100%;
+			justify-content: right;
+			.dashicons-admin-settings:before {
+				fill: #959595;
+				font-size: 25px;
+				color: #959595;
+			}
 		}
 	}
 }

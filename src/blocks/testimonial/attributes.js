@@ -926,6 +926,13 @@ const attributes = {
 			styleType: 'image-padding-unit-tablet'
 		},
 	},
+	gType: {
+		type: 'string',
+		default: 'default',
+		UAGCopyPaste: {
+			styleType: 'gradient-type'
+		}
+	},
 	gradientColor1: {
 		type: 'string',
 		UAGCopyPaste: {

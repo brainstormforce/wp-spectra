@@ -290,6 +290,13 @@ const attributes = {
 			styleType: 'column-overlay-type'
 		},
 	},
+	gType: {
+		type: 'string',
+		default: 'default',
+		UAGCopyPaste: {
+			styleType: 'gradient-type'
+		}
+	},
 	gradientColor1: {
 		type: 'string',
 		UAGCopyPaste: {

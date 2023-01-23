@@ -1241,12 +1241,110 @@ const attributes = {
 			styleType: 'btn-bg-gradient-value'
 		},
 	},
+	gradientColor1: {
+		type: 'string',
+		default: '#06558a',
+		UAGCopyPaste: {
+			styleType: 'gradient-color-1'
+		}
+	},
+	gradientColor2: {
+		type: 'string',
+		default: '#0170b9',
+		UAGCopyPaste: {
+			styleType: 'gradient-color-2'
+		}
+	},
+	gradientType: {
+		type: 'string',
+		default: 'linear',
+		UAGCopyPaste: {
+			styleType: 'gradient-color-type'
+		}
+	},
+	gType: {
+		type: 'string',
+		default: 'default',
+		UAGCopyPaste: {
+			styleType: 'gradient-type'
+		}
+	},
+	gradientLocation1: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'gradient-location-1'
+		}
+	},
+	gradientLocation2: {
+		type: 'number',
+		default: 100,
+		UAGCopyPaste: {
+			styleType: 'gradient-location-2'
+		}
+	},
+	gradientAngle: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'gradient-angel'
+		}
+	},
 	gradientHValue: {
 		type: 'string',
 		default: 'linear-gradient(90deg, rgba(6, 147, 227, 0.5) 0%, rgba(155, 81, 224, 0.5) 100%)',
 		UAGCopyPaste: {
 			styleType: 'btn-hbg-gradient-value'
 		},
+	},
+	gradientHColor1: {
+		type: 'string',
+		default: '#06558a',
+		UAGCopyPaste: {
+			styleType: 'gradient-color-1'
+		}
+	},
+	gradientHColor2: {
+		type: 'string',
+		default: '#0170b9',
+		UAGCopyPaste: {
+			styleType: 'gradient-color-2'
+		}
+	},
+	gradientHType: {
+		type: 'string',
+		default: 'linear',
+		UAGCopyPaste: {
+			styleType: 'gradient-color-type'
+		}
+	},
+	gHType: {
+		type: 'string',
+		default: 'default',
+		UAGCopyPaste: {
+			styleType: 'gradient-type'
+		}
+	},
+	gradientHLocation1: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'gradient-location-1'
+		}
+	},
+	gradientHLocation2: {
+		type: 'number',
+		default: 100,
+		UAGCopyPaste: {
+			styleType: 'gradient-location-2'
+		}
+	},
+	gradientHAngle: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'gradient-angel'
+		}
 	},
 };
 export default attributes;
