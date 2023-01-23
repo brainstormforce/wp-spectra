@@ -171,8 +171,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 2.3.2 - MONDAY, 23rd JANUARY 2023 =
-* Improvement: Modal - Added presets for a button trigger.
 * Security fixes: Props to Patchstack for reporting security issues. Those are fixed in this release. Plus we’ve hardened security in other areas of the plugin.
+* Improvement: Modal - Added presets for a button trigger.
 * Fix: Forms - Multiple Form Submit AJAX related issues.
 * Fix: Timeline - unable to set connector Icon Background Size to zero.
 * Fix: Gradient Picker - block encounter an error when using gradient picker for Spectra block when Gutenberg is activated.
