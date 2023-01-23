@@ -392,6 +392,14 @@ class UAGB_Init_Blocks {
 	 */
 	public function forms_recaptcha() {
 
+		$response_data = array(
+			'messsage' => __( 'User is not authenticated!', 'ultimate-addons-for-gutenberg' ),
+		);
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
 		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
 
 		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
