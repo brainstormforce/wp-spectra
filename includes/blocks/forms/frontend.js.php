@@ -30,7 +30,7 @@ $js_attr         = array(
 ob_start();
 ?>
 window.addEventListener("DOMContentLoaded", function(){
-	UAGBForms.init( <?php echo wp_json_encode( $js_attr ); ?>, '<?php echo esc_attr( $selector ); ?>', <?php echo wp_json_encode( $post_id ); ?> );
+	UAGBForms.init( <?php echo wp_json_encode( $js_attr ); ?>, '<?php echo esc_attr( $selector ); ?>', <?php echo wp_json_encode( $current_post_id ); ?> );
 });
 <?php
 return ob_get_clean();
