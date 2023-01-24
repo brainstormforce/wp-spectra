@@ -43,6 +43,10 @@ return array_merge(
 		'headingLineHeightType'     => 'em',
 		'headingLineHeightMobile'   => '',
 		'headingLineHeightTablet'   => '',
+		'headingLetterSpacingType'   => 'em',
+		'headingLetterSpacing'       => '',
+		'headingLetterSpacingTablet' => '',
+		'headingLetterSpacingMobile' => '',
 		// Heading Margin.
 		'headingTopMargin'          => '',
 		'headingRightMargin'        => '',
@@ -121,6 +125,10 @@ return array_merge(
 		'numberMarginUnit'          => 'px',
 		'numberMarginUnitTablet'    => 'px',
 		'numberMarginUnitMobile'    => 'px',
+		'numberLetterSpacingType'   => 'em',
+		'numberLetterSpacing'       => '',
+		'numberLetterSpacingTablet' => '',
+		'numberLetterSpacingMobile' => '',
 		// Prefix.
 		'prefixRightDistance'       => 0,
 		'prefixRightDistanceTablet' => '',
