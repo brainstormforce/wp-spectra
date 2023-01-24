@@ -389,7 +389,7 @@ class Admin_Menu {
 	 *  Add footer link.
 	 */
 	public function add_footer_link() {
-		// translator: HTML entities.
+		// translators: HTML entities.
 		return '<span id="footer-thankyou">' . sprintf( __( 'Thank you for using %1$sSpectra.%2$s' ), '<a href="https://wpspectra.com/" class="focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover">', '</a>' ) . '</span>';
 	}
 
