@@ -1407,8 +1407,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 					?>
 					<div class="uagb-post-pagination-wrap">
-						// content already escaped using wp_kses_post.
-						<?php echo $this->render_pagination( $query, $attributes ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						<?php
+							// content already escaped using wp_kses_post.
+							echo $this->render_pagination( $query, $attributes ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						?>
 					</div>
 					<?php
 				}
