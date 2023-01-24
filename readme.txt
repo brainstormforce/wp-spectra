@@ -171,7 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 2.3.4 =
-* Fix: Display condition - On selecting operating System to none.
+* Fix: Display conditions - Undefined `key/index` when none is set for Operating system.
 
 = 2.3.2 - MONDAY, 23rd JANUARY 2023 =
 * Security fixes: Props to Patchstack for reporting security issues. Those are fixed in this release. Plus we’ve hardened security in other areas of the plugin.
