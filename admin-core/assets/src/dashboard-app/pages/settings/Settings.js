@@ -155,11 +155,12 @@ const Settings = () => {
                         }
                         { 'block-settings' === activeSettingsNavigationTab &&
 							<>
-								{
+                                {/* SOCIAL LOGIN MARKER */}
+								{/* {
 									uag_react.spectra_pro_status && (
 										<Login />
 									)
-								}
+								} */}
 								<BlockSettings/>
 							</>
                         }
