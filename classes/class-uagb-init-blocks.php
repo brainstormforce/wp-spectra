@@ -74,8 +74,6 @@ class UAGB_Init_Blocks {
 			add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
 		}
 
-		add_action( 'spectra_analytics_complete_action', array( $this, 'regenerate_analytics_data' ) );
-
 	}
 
 	/**
@@ -98,19 +96,6 @@ class UAGB_Init_Blocks {
 		$data = get_spectra_font_awesome_polyfiller();
 
 		wp_send_json_success( $data );
-	}
-
-	/**
-	 * Reset all the filters for scheduled actions to get post block count.
-	 */
-	public function regenerate_analytics_data() {
-
-		delete_option( 'spectra_blocks_count_status' );
-		delete_option( 'get_spectra_block_count' );
-		delete_option( 'spectra_settings_data' );
-		delete_option( 'spectra_saved_blocks_settings' );
-		delete_transient( 'spectra_background_process_action' );
-
 	}
 
 	/**
