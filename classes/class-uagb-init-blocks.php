@@ -85,6 +85,14 @@ class UAGB_Init_Blocks {
 	 */
 	public function spectra_font_awesome_polyfiller() {
 
+		$response_data = array(
+			'messsage' => __( 'User is not authenticated!', 'ultimate-addons-for-gutenberg' ),
+		);
+
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
 		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
 
 		$data = get_spectra_font_awesome_polyfiller();
@@ -255,6 +263,14 @@ class UAGB_Init_Blocks {
 	 * @since 2.0.0
 	 */
 	public function get_taxonomy() {
+
+		$response_data = array(
+			'messsage' => __( 'User is not authenticated!', 'ultimate-addons-for-gutenberg' ),
+		);
+
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( $response_data );
+		}
 
 		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
 
