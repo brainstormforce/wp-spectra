@@ -1,18 +1,12 @@
 import React, { useLayoutEffect } from 'react';
-import {
-	TextControl,
-} from '@wordpress/components';
 import ResponsiveSelectControl from '@Components/responsive-select';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
-import useDimensionHandler from './use-dimension-handler';
 import { useDeviceType } from '@Controls/getPreviewType';
 import ResponsiveToggle from '../responsive-toggle';
 import UAGNumberControl from '@Components/number-control';
 
 export default function ImageSizeControl( {
-	imageWidth,
-	imageHeight,
 	imageSizeOptions = [],
 	isResizable = true,
 	sizeSlug,
@@ -25,7 +19,6 @@ export default function ImageSizeControl( {
 	heightTablet,
 	heightMobile,
 	setAttributes,
-	onChange,
 } ) {
 
 	// Add and remove the CSS on the drop and remove of the component.
@@ -56,40 +49,9 @@ export default function ImageSizeControl( {
 			deviceWidth = width;
 	}
 
-	const {
-		currentHeight,
-		currentWidth,
-		updateDimension,
-	} = useDimensionHandler( deviceHeight, deviceWidth, imageHeight, imageWidth, onChange );
-
 	const output = {}
 	output.Desktop = (
 		<>
-			{/* <TextControl
-				type="number"
-				className="block-editor-image-size-control__width"
-				label={ __( 'Width' ) }
-				value={ currentWidth }
-				min={ 1 }
-				onChange={ ( value ) =>
-					updateDimension( 'width', value )
-				}
-			/>
-			<TextControl
-				type="number"
-				className="block-editor-image-size-control__height"
-				label={ __( 'Height' ) }
-				value={ currentHeight }
-				min={ 1 }
-				onChange={ ( value ) => {
-					updateDimension( 'height', value )
-					if ( ! isNaN( value ) && '' !== value ) {
-						setAttributes( { customHeightSetDesktop: true } );
-					} else {
-						setAttributes( { customHeightSetDesktop: false } );
-					}
-				} }
-			/> */}
 			<UAGNumberControl
 				label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
 				value={ width }
@@ -99,10 +61,11 @@ export default function ImageSizeControl( {
 				} }
 				displayUnit={ false }
 				setAttributes={ setAttributes }
-				min={ 0 }
+				min={ Infinity }
 				step={ 1 }
-				max={ -1 }
+				max={ -Infinity }
 				showControlHeader={ false }
+				inlineControl={ false }
 			/>
 			<UAGNumberControl
 				label={ __( 'Height', 'ultimate-addons-for-gutenberg' ) }
@@ -113,41 +76,17 @@ export default function ImageSizeControl( {
 				} }
 				displayUnit={ false }
 				setAttributes={ setAttributes }
-				min={ 0 }
+				min={ Infinity }
 				step={ 1 }
-				max={ -1 }
+				max={ -Infinity }
 				showControlHeader={ false }
+				inlineControl={ false }
 			/>
 		</>
 	);
 
 	output.Tablet = (
 		<>
-			{/* <TextControl
-				type="number"
-				className="block-editor-image-size-control__width"
-				label={ __( 'Width' ) }
-				value={ currentWidth }
-				min={ 1 }
-				onChange={ ( value ) =>
-					updateDimension( 'widthTablet', value )
-				}
-			/>
-			<TextControl
-				type="number"
-				className="block-editor-image-size-control__height"
-				label={ __( 'Height' ) }
-				value={ currentHeight }
-				min={ 1 }
-				onChange={ ( value ) => {
-					updateDimension( 'heightTablet', value )
-					if ( ! isNaN( value ) && '' !== value ) {
-						setAttributes( { customHeightSetTablet: true } );
-					} else {
-						setAttributes( { customHeightSetTablet: false } );
-					}
-				}}
-			/> */}
 			<UAGNumberControl
 				label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
 				value={ widthTablet }
@@ -157,9 +96,9 @@ export default function ImageSizeControl( {
 				} }
 				displayUnit={ false }
 				setAttributes={ setAttributes }
-				min={ 0 }
+				min={ Infinity }
 				step={ 1 }
-				max={ -1 }
+				max={ -Infinity }
 				showControlHeader={ false }
 			/>
 			<UAGNumberControl
@@ -171,9 +110,9 @@ export default function ImageSizeControl( {
 				} }
 				displayUnit={ false }
 				setAttributes={ setAttributes }
-				min={ 0 }
+				min={ Infinity }
 				step={ 1 }
-				max={ -1 }
+				max={ -Infinity }
 				showControlHeader={ false }
 			/>
 		</>
@@ -181,31 +120,6 @@ export default function ImageSizeControl( {
 
 	output.Mobile = (
 		<>
-			{/* <TextControl
-				type="number"
-				className="block-editor-image-size-control__width"
-				label={ __( 'Width' ) }
-				value={ currentWidth }
-				min={ 1 }
-				onChange={ ( value ) =>
-					updateDimension( 'widthMobile', value )
-				}
-			/>
-			<TextControl
-				type="number"
-				className="block-editor-image-size-control__height"
-				label={ __( 'Height' ) }
-				value={ currentHeight }
-				min={ 1 }
-				onChange={ ( value ) => {
-					updateDimension( 'heightMobile', value )
-					if ( ! isNaN( value ) && '' !== value ) {
-						setAttributes( { customHeightSetMobile: true } );
-					} else {
-						setAttributes( { customHeightSetMobile: false } );
-					}
-				}}
-			/> */}
 			<UAGNumberControl
 				label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
 				value={ widthMobile }
@@ -215,9 +129,9 @@ export default function ImageSizeControl( {
 				} }
 				displayUnit={ false }
 				setAttributes={ setAttributes }
-				min={ 0 }
+				min={ Infinity }
 				step={ 1 }
-				max={ -1 }
+				max={ -Infinity }
 				showControlHeader={ false }
 			/>
 			<UAGNumberControl
@@ -229,9 +143,9 @@ export default function ImageSizeControl( {
 				} }
 				displayUnit={ false }
 				setAttributes={ setAttributes }
-				min={ 0 }
+				min={ Infinity }
 				step={ 1 }
-				max={ -1 }
+				max={ -Infinity }
 				showControlHeader={ false }
 			/>
 		</>
