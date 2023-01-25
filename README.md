@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.1  
-**Stable tag:** 2.3.3  
+**Stable tag:** 2.3.4  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -169,6 +169,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+
+### 2.3.4 - WEDNESDAY, 25th JANUARY 2023 ###
+* Improvement: Updated Gutenberg Templates Library.
 
 ### 2.3.3 - TUESDAY, 24th JANUARY 2023 ###
 * Fix: Post Block - PHP comment appears on frontend.
