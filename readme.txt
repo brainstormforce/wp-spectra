@@ -170,6 +170,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 2.3.4 =
+* Fix: Image - Image dimensions width & height box does not follow UI guidelines.
+
 = 2.3.1 =
 * Improvement: Modal - Added presets for a button trigger.
 * Fix: Info-Box - Margin unit set to `px` after refresh in editor.

@@ -65,7 +65,6 @@ export default function ImageSizeControl( {
 				step={ 1 }
 				max={ -Infinity }
 				showControlHeader={ false }
-				inlineControl={ false }
 			/>
 			<UAGNumberControl
 				label={ __( 'Height', 'ultimate-addons-for-gutenberg' ) }
@@ -80,7 +79,6 @@ export default function ImageSizeControl( {
 				step={ 1 }
 				max={ -Infinity }
 				showControlHeader={ false }
-				inlineControl={ false }
 			/>
 		</>
 	);
