@@ -6,4 +6,9 @@ function generateCSSUnit( value, unit ) {
 	return value + unit;
 }
 
+const generateCSSUnitType( value, default='px' ) =>{
+
+}
+
 export default generateCSSUnit;
+
