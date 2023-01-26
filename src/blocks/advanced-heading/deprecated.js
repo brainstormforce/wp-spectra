@@ -416,11 +416,11 @@ const deprecated = [
 			</div>
 		);
 	},
-},
-{
-	attributes_v2_3_5,
-	save_v2_3_5,
-},
+	},
+	{
+		attributes: attributes_v2_3_5,
+		save: save_v2_3_5,
+	},
 ];
 
 export default deprecated;
