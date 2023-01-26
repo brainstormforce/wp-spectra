@@ -259,7 +259,7 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 		 * @param array $default_attr default attribute value array from attributes.php.
 		 * @param array $attr saved attributes data from database.
 		 * @return array
-		 * @since X.X.X
+		 * @since 2.3.2
 		 */
 		public static function get_fallback_values( $default_attr, $attr ) {
 			foreach ( $default_attr as $key => $value ) {

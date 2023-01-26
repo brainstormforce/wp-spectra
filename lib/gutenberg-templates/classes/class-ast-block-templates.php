@@ -306,7 +306,7 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 
 			wp_clean_plugins_cache();
 
-			$plugin_init = ( isset( $_POST['init'] ) ) ? esc_attr( $_POST['init'] ) : ''; // phpcs:ignore
+			$plugin_init = ( isset( $_POST['init'] ) ) ? esc_attr( $_POST['init'] ) : '';
 
 			$activate = activate_plugin( $plugin_init, '', false, true );
 

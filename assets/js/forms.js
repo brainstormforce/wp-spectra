@@ -1,6 +1,6 @@
 
 UAGBForms = { // eslint-disable-line no-undef
-	init( attr, id ) {
+	init( attr, id, post_id ) {
 
 		const scope = document.querySelector( id );
 
@@ -166,7 +166,7 @@ UAGBForms = { // eslint-disable-line no-undef
 							if( document.getElementsByClassName( 'uagb-forms-recaptcha' ).length !== 0 ) {
 								document.getElementById( 'g-recaptcha-response' ).value = token;
 								
-								window.UAGBForms._formSubmit( e, form, attr, reCaptchaSiteKeyV2, reCaptchaSiteKeyV3 );
+								window.UAGBForms._formSubmit( e, form, attr, reCaptchaSiteKeyV2, reCaptchaSiteKeyV3, post_id );
 							}else{
 								document.querySelector( '.uagb-form-reacaptcha-error-' + attr.block_id ).innerHTML = '<p style="color:red !important" class="error-captcha">Google reCAPTCHA Response not found.</p>';
 								return false;
@@ -175,13 +175,13 @@ UAGBForms = { // eslint-disable-line no-undef
 					} );
 				  } );
 			} else {
-				window.UAGBForms._formSubmit( e, this, attr, reCaptchaSiteKeyV2, reCaptchaSiteKeyV3 );
+				window.UAGBForms._formSubmit( e, this, attr, reCaptchaSiteKeyV2, reCaptchaSiteKeyV3, post_id );
 			}
 		} );
 	},
 	
 
-	_formSubmit( e, form, attr, reCaptchaSiteKeyV2, reCaptchaSiteKeyV3 ) {
+	_formSubmit( e, form, attr, reCaptchaSiteKeyV2, reCaptchaSiteKeyV3, post_id ) {
 		e.preventDefault();
 
 		let captcha_response;
@@ -246,14 +246,6 @@ UAGBForms = { // eslint-disable-line no-undef
 
 		}
 
-		const after_submit_data = {
-			to: attr.afterSubmitToEmail,
-			cc: attr.afterSubmitCcEmail,
-			bcc: attr.afterSubmitBccEmail,
-			subject: attr.afterSubmitEmailSubject,
-		};
-
-
 		fetch( uagb_forms_data.ajax_url, { // eslint-disable-line no-undef
 			method: 'POST',
 			headers: new Headers( {'Content-Type': 'application/x-www-form-urlencoded'} ), // eslint-disable-line no-undef
@@ -262,9 +254,10 @@ UAGBForms = { // eslint-disable-line no-undef
 				nonce: uagb_forms_data.uagb_forms_ajax_nonce,
 				form_data: JSON.stringify( postData ),
 				sendAfterSubmitEmail: attr.sendAfterSubmitEmail,
-				after_submit_data : JSON.stringify( after_submit_data ),
 				captcha_version: attr.reCaptchaType,
 				captcha_response,
+				post_id,
+				block_id: attr.block_id
 			  } ),
 		  } )
 		  .then( ( resp ) => resp.json() )
