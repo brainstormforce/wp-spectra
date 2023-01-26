@@ -3,7 +3,7 @@ function generateCSSUnit( value, unit ) {
 		return '';
 	}
 
-	return value+unit;
+	return value + unit;
 }
 
 export default generateCSSUnit;
