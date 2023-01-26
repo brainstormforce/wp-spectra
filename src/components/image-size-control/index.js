@@ -5,8 +5,11 @@ import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
 import ResponsiveToggle from '../responsive-toggle';
 import UAGNumberControl from '@Components/number-control';
+import useDimensionHandler from './use-dimension-handler';
 
 export default function ImageSizeControl( {
+	imageWidth,
+	imageHeight,
 	imageSizeOptions = [],
 	isResizable = true,
 	sizeSlug,
@@ -19,6 +22,7 @@ export default function ImageSizeControl( {
 	heightTablet,
 	heightMobile,
 	setAttributes,
+	onChange,
 } ) {
 
 	// Add and remove the CSS on the drop and remove of the component.
@@ -49,12 +53,18 @@ export default function ImageSizeControl( {
 			deviceWidth = width;
 	}
 
+	const {
+		currentHeight,
+		currentWidth,
+		updateDimension,
+	} = useDimensionHandler( deviceHeight, deviceWidth, imageHeight, imageWidth, onChange );
+
 	const output = {}
 	output.Desktop = (
 		<>
 			<UAGNumberControl
 				label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
-				value={ width }
+				value={ currentWidth }
 				data={ {
 					value: width,
 					label: 'width',
@@ -65,10 +75,13 @@ export default function ImageSizeControl( {
 				step={ 1 }
 				max={ -Infinity }
 				showControlHeader={ false }
+				onChange={ ( value ) =>
+					updateDimension( 'width', value )
+				}
 			/>
 			<UAGNumberControl
 				label={ __( 'Height', 'ultimate-addons-for-gutenberg' ) }
-				value={ height }
+				value={ currentHeight }
 				data={ {
 					value: height,
 					label: 'height',
@@ -79,6 +92,14 @@ export default function ImageSizeControl( {
 				step={ 1 }
 				max={ -Infinity }
 				showControlHeader={ false }
+				onChange={ ( value ) => {
+					updateDimension( 'height', value )
+					if ( ! isNaN( value ) && '' !== value ) {
+						setAttributes( { customHeightSetDesktop: true } );
+					} else {
+						setAttributes( { customHeightSetDesktop: false } );
+					}
+				} }
 			/>
 		</>
 	);
@@ -87,7 +108,7 @@ export default function ImageSizeControl( {
 		<>
 			<UAGNumberControl
 				label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
-				value={ widthTablet }
+				value={ currentWidth }
 				data={ {
 					value: widthTablet,
 					label: 'widthTablet',
@@ -98,10 +119,13 @@ export default function ImageSizeControl( {
 				step={ 1 }
 				max={ -Infinity }
 				showControlHeader={ false }
+				onChange={ ( value ) =>
+					updateDimension( 'widthTablet', value )
+				}
 			/>
 			<UAGNumberControl
 				label={ __( 'Height', 'ultimate-addons-for-gutenberg' ) }
-				value={ heightTablet }
+				value={ currentHeight }
 				data={ {
 					value: heightTablet,
 					label: 'heightTablet',
@@ -112,6 +136,14 @@ export default function ImageSizeControl( {
 				step={ 1 }
 				max={ -Infinity }
 				showControlHeader={ false }
+				onChange={ ( value ) => {
+					updateDimension( 'heightTablet', value )
+					if ( ! isNaN( value ) && '' !== value ) {
+						setAttributes( { customHeightSetTablet: true } );
+					} else {
+						setAttributes( { customHeightSetTablet: false } );
+					}
+				}}
 			/>
 		</>
 	);
@@ -120,7 +152,7 @@ export default function ImageSizeControl( {
 		<>
 			<UAGNumberControl
 				label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
-				value={ widthMobile }
+				value={ currentWidth }
 				data={ {
 					value: widthMobile,
 					label: 'widthMobile',
@@ -131,10 +163,13 @@ export default function ImageSizeControl( {
 				step={ 1 }
 				max={ -Infinity }
 				showControlHeader={ false }
+				onChange={ ( value ) =>
+					updateDimension( 'widthMobile', value )
+				}
 			/>
 			<UAGNumberControl
 				label={ __( 'Height', 'ultimate-addons-for-gutenberg' ) }
-				value={ heightMobile }
+				value={ currentHeight }
 				data={ {
 					value: heightMobile,
 					label: 'heightMobile',
@@ -145,6 +180,14 @@ export default function ImageSizeControl( {
 				step={ 1 }
 				max={ -Infinity }
 				showControlHeader={ false }
+				onChange={ ( value ) => {
+					updateDimension( 'heightMobile', value )
+					if ( ! isNaN( value ) && '' !== value ) {
+						setAttributes( { customHeightSetMobile: true } );
+					} else {
+						setAttributes( { customHeightSetMobile: false } );
+					}
+				}}
 			/>
 		</>
 	);
