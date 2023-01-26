@@ -65,6 +65,7 @@ export default function save( props ) {
 			{ headingDescToggle && 'above-heading' === headingDescPosition ? descText : '' }
 			{ headingTitleToggle && headingText }
 			{ headingDescToggle && 'below-heading' === headingDescPosition ? descText : '' }
+			{ ! headingDescToggle && ! headingTitleToggle ? seprator : '' }
 		</div>
 	);
 }
