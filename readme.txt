@@ -170,6 +170,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 2.3.5 =
+* Fix: Info-box - Icon misalign on tablet/mobile when padding gets added.
+
 = 2.3.3 - TUESDAY, 24th JANUARY 2023 =
 * Fix: Post Block - PHP comment appears on frontend.
 
