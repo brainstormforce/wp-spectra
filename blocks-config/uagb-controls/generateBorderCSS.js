@@ -1,4 +1,5 @@
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { generateCSSUnitType } from './generateCSSUnit';
 const generateBorderCSS = ( attributes, prefix, deviceType = 'desktop' ) => {
 	const borderCSS = {}
 	const borderStyle = attributes[prefix + 'BorderStyle'];
@@ -18,10 +19,10 @@ const generateBorderCSS = ( attributes, prefix, deviceType = 'desktop' ) => {
 	const borderRightWidthTablet = generateCSSUnit( attributes[prefix + 'BorderRightWidthTablet'], 'px' );
 	const borderBottomWidthTablet = generateCSSUnit( attributes[prefix + 'BorderBottomWidthTablet'], 'px' );
 	const borderLeftWidthTablet = generateCSSUnit( attributes[prefix + 'BorderLeftWidthTablet'], 'px' );
-
-	const borderRadiusUnit = ( attributes[prefix + 'BorderRadiusUnit'] ) ? attributes[prefix + 'BorderRadiusUnit'] : 'px';
-	const borderRadiusUnitTablet = ( attributes[prefix + 'BorderRadiusUnitTablet'] ) ? attributes[prefix + 'BorderRadiusUnitTablet'] : 'px';
-	const borderRadiusUnitMobile = ( attributes[prefix + 'BorderRadiusUnitMobile'] ) ? attributes[prefix + 'BorderRadiusUnitMobile'] : 'px';
+    
+	const borderRadiusUnit = generateCSSUnitType( attributes[prefix + 'BorderRadiusUnit'], 'px' );
+	const borderRadiusUnitTablet = generateCSSUnitType( attributes[prefix + 'BorderRadiusUnitTablet'], 'px' );
+	const borderRadiusUnitMobile = generateCSSUnitType( attributes[prefix + 'BorderRadiusUnitMobile'], 'px' );
 
 	const borderTopLeftRadius = generateCSSUnit( attributes[prefix + 'BorderTopLeftRadius'], borderRadiusUnit );
 	const borderTopRightRadius = generateCSSUnit( attributes[prefix + 'BorderTopRightRadius'], borderRadiusUnit );

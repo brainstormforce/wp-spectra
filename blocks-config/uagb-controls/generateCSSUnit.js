@@ -6,9 +6,9 @@ function generateCSSUnit( value, unit ) {
 	return value + unit;
 }
 
-const generateCSSUnitType( value, default='px' ) =>{
-
-}
+export const generateCSSUnitType = ( unit, defaultUnit = 'px' ) => (
+	( null !== unit && undefined !== unit ) ? unit : defaultUnit
+  );
 
 export default generateCSSUnit;
 
