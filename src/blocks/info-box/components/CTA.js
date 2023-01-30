@@ -35,7 +35,7 @@ const InfoBoxCta = ( props ) => {
 									'Read More',
 									'ultimate-addons-for-gutenberg'
 								) }
-								value={ attributes.ctaText.replace( /(<([^>]+)>)/ig, '' ) }
+								value={ attributes.ctaText.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
 								className="uagb-inline-editing"
 								multiline={ false }
 								onChange={ ( value ) => {
@@ -67,7 +67,7 @@ const InfoBoxCta = ( props ) => {
 									'Read More',
 									'ultimate-addons-for-gutenberg'
 								) }
-								value={ attributes.ctaText.replace( /(<([^>]+)>)/ig, '' ) }
+								value={ attributes.ctaText.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
 								className="uagb-inline-editing"
 								multiline={ false }
 								onChange={ ( value ) => {
@@ -96,7 +96,7 @@ const InfoBoxCta = ( props ) => {
 							{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
 							<RichText.Content
 								tagName="span"
-								value={ attributes.ctaText.replace( /(<([^>]+)>)/ig, '' ) }
+								value={ attributes.ctaText.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
 								className="uagb-inline-editing"
 							/>
 							{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
@@ -113,7 +113,7 @@ const InfoBoxCta = ( props ) => {
 							{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
 							<RichText.Content
 								tagName="span"
-								value={ attributes.ctaText.replace( /(<([^>]+)>)/ig, '' ) }
+								value={ attributes.ctaText.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
 								className="uagb-inline-editing"
 							/>
 							{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
