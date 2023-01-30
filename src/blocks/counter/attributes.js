@@ -497,7 +497,7 @@ const attributes = {
 	},
 	headingLetterSpacingType: {
 		type: 'string',
-		default: 'em',
+		default: 'px',
 		isUAGStyle: true,
 		UAGCopyPaste: {
 			styleType: 'heading-letter-spacing-type'
@@ -772,7 +772,7 @@ const attributes = {
 	},
 	numberLetterSpacingType: {
 		type: 'string',
-		default: 'em',
+		default: 'px',
 		isUAGStyle: true,
 		UAGCopyPaste: {
 			styleType: 'number-letter-spacing-type'

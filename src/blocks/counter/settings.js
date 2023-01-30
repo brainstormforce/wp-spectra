@@ -1205,7 +1205,7 @@ export default function Settings( props ) {
 				} }
 				letterSpacingMobile={ {
 					value: headingLetterSpacingMobile,
-					label: 'numberLetterSpacingMobile',
+					label: 'headingLetterSpacingMobile',
 				} }
 			/>
 			<AdvancedPopColorControl
