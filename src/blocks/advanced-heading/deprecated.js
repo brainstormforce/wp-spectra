@@ -415,7 +415,7 @@ const deprecated = [
 				{ descText }
 			</div>
 		);
-	},
+		},
 	},
 	{
 		attributes: attributes_v2_3_5,
