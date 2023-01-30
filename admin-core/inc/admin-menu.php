@@ -102,32 +102,12 @@ class Admin_Menu {
 	public function settings_admin_scripts() {
 
 		// Enqueue admin scripts.
-		if ( ! empty( $_GET['page'] ) && ( $this->menu_slug === $_GET['page'] || false !== strpos( $_GET['page'], $this->menu_slug . '_' ) ) ) { //phpcs:ignore
+		if ( ! empty( $_GET['page'] ) && ( $this->menu_slug === $_GET['page'] || false !== strpos( sanitize_text_field( $_GET['page'] ), $this->menu_slug . '_' ) ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 			add_action( 'admin_enqueue_scripts', array( $this, 'styles_scripts' ) );
 
 			add_filter( 'admin_footer_text', array( $this, 'add_footer_link' ), 99 );
 		}
-
-		$count_status = get_option( 'spectra_blocks_count_status' );
-
-		// Set transient for triggering analytics action.
-		$action_transient = (bool) get_transient( 'spectra_analytics_action' );
-		if ( 'done' === $count_status ) {
-			$action_transient = (bool) get_transient( 'spectra_analytics_action' );
-			if ( false === $action_transient ) {
-				set_transient( 'spectra_analytics_action', $count_status, 2 * WEEK_IN_SECONDS );
-				do_action( 'spectra_analytics_complete_action' );
-			}
-		}
-
-		// Set transient for triggering the block count action.
-		$count_transient = (bool) get_transient( 'spectra_background_process_action' );
-		if ( 'done' !== $count_status && false === $count_transient ) {
-			do_action( 'spectra_total_blocks_count_action' );
-			set_transient( 'spectra_background_process_action', 'done', 4 * WEEK_IN_SECONDS );
-		}
-
 	}
 
 	/**
@@ -162,11 +142,11 @@ class Admin_Menu {
 	 */
 	public function render() {
 
-		$menu_page_slug = ( ! empty( $_GET['page'] ) ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : $this->menu_slug; //phpcs:ignore
+		$menu_page_slug = ( ! empty( $_GET['page'] ) ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : $this->menu_slug; //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$page_action    = '';
 
-		if ( isset( $_GET['action'] ) ) { //phpcs:ignore
-			$page_action = sanitize_text_field( wp_unslash( $_GET['action'] ) ); //phpcs:ignore
+		if ( isset( $_GET['action'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$page_action = sanitize_text_field( wp_unslash( $_GET['action'] ) ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$page_action = str_replace( '_', '-', $page_action );
 		}
 
@@ -409,10 +389,8 @@ class Admin_Menu {
 	 *  Add footer link.
 	 */
 	public function add_footer_link() {
-
-		$logs_page_url = '#';
-
-		echo '<span id="footer-thankyou"> Thank you for using <a href="#" class="focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover">Spectra.</a></span>';
+		// translators: HTML entities.
+		return '<span id="footer-thankyou">' . sprintf( __( 'Thank you for using %1$sSpectra.%2$s' ), '<a href="https://wpspectra.com/" class="focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover">', '</a>' ) . '</span>';
 	}
 
 }

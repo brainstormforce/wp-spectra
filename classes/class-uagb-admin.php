@@ -108,9 +108,9 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			check_admin_referer( 'uag_rollback' );
 
 			$rollback_versions = UAGB_Admin_Helper::get_instance()->get_rollback_versions();
-			$update_version    = sanitize_text_field( $_GET['version'] );
+			$update_version    = isset( $_GET['version'] ) ? sanitize_text_field( $_GET['version'] ) : '';
 
-			if ( empty( $update_version ) || ! in_array( $update_version, $rollback_versions ) ) { //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+			if ( empty( $update_version ) || ! in_array( $update_version, $rollback_versions, true ) ) {
 				wp_die( esc_html__( 'Error occurred, The version selected is invalid. Try selecting different version.', 'ultimate-addons-for-gutenberg' ) );
 			}
 
