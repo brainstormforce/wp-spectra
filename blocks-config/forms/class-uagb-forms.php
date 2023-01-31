@@ -58,6 +58,44 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		}
 
 		/**
+		 *  Get the Inner blocks array.
+		 *
+		 * @since 2.3.5
+		 * @access public
+		 *
+		 * @param  array $blocks_array Block Array.
+		 * @param  int   $block_id of Block.
+		 *
+		 * @return array $final_inner_forms_array inner blocks Array.
+		 */
+		public function recursive_inner_forms( $blocks_array, $block_id ) {
+			foreach ( $blocks_array as $blocks ) {
+				foreach ( $blocks as $key => $block ) {
+					if ( isset( $blocks ) ) {
+						if ( 'uagb/forms' === $blocks['blockName'] ) {
+
+							if ( isset( $blocks['attrs'] ) && isset( $blocks['attrs']['block_id'] ) && $blocks['attrs']['block_id'] === $block_id ) {
+								return $blocks['attrs'];
+							}
+						} else {
+							if ( isset( $blocks['innerBlocks'] ) ) {
+								foreach ( $blocks['innerBlocks'] as $j => $inner_block ) {
+									if ( 'uagb/forms' === $inner_block['blockName'] ) {
+										if ( isset( $inner_block['attrs'] ) && isset( $inner_block['attrs']['block_id'] ) && $inner_block['attrs']['block_id'] === $block_id ) {
+											return $inner_block['attrs'];
+										}
+									} else {
+										return $this->recursive_inner_forms( $inner_block['innerBlocks'], $block_id );
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/**
 		 *
 		 * Form Process Initiated.
 		 *
@@ -84,11 +122,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			$blocks                   = parse_blocks( $post_content );
 			$current_block_attributes = false;
 			if ( ! empty( $blocks ) && is_array( $blocks ) ) {
-				foreach ( $blocks as $block ) {
-					if ( isset( $block['attrs'] ) && isset( $block['attrs']['block_id'] ) && $block['attrs']['block_id'] === $block_id ) {
-						$current_block_attributes = $block['attrs'];
-					}
-				}
+				$current_block_attributes = $this->recursive_inner_forms( $blocks, $block_id );
 			}
 
 			if ( empty( $current_block_attributes ) ) {
