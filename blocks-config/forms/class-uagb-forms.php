@@ -78,12 +78,19 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 						if ( isset( $blocks['attrs'] ) && isset( $blocks['attrs']['block_id'] ) && $blocks['attrs']['block_id'] === $block_id ) {
 							return $blocks['attrs'];
 						}
+						if ( empty( $blocks['attrs'] ) ) {
+							return false;
+						}
 					} else {
 						if ( is_array( $blocks['innerBlocks'] ) && ! empty( $blocks['innerBlocks'] ) ) {
 							foreach ( $blocks['innerBlocks'] as $j => $inner_block ) {
 								if ( isset( $inner_block['blockName'] ) && 'uagb/forms' === $inner_block['blockName'] ) {
+
 									if ( isset( $inner_block['attrs'] ) && isset( $inner_block['attrs']['block_id'] ) && $inner_block['attrs']['block_id'] === $block_id ) {
 										return $inner_block['attrs'];
+									}
+									if ( empty( $inner_block['attrs'] ) ) {
+										return false;
 									}
 								} else {
 									return $this->recursive_inner_forms( $inner_block['innerBlocks'], $block_id );
