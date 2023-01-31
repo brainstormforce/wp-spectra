@@ -59,11 +59,13 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 
 		private function forms_attributes_checks( $blocks_attrs, $block_id ){
 			if( empty( $blocks_attrs ) ) {
-				return;
+				return false;
 			}
 			if ( isset( $blocks_attrs ) && isset( $blocks_attrs['block_id'] ) && $blocks_attrs['block_id'] === $block_id ) {
 				return $blocks_attrs;
 			}
+
+			return false;
 		}
 
 		/**
@@ -82,22 +84,27 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				return;
 			}
 			foreach ( $blocks_array as $blocks ) {
-				foreach ( $blocks as $key => $block ) {
+				// foreach ( $blocks as $key => $block ) {
 					if ( ! empty( $blocks ) ) {
 						if ( isset( $blocks['blockName'] ) && 'uagb/forms' === $blocks['blockName'] ) {
-							// return $this->forms_attributes_checks( $blocks['attrs'], $block_id );
-							if ( isset( $blocks['attrs'] ) && isset( $blocks['attrs']['block_id'] ) && $blocks['attrs']['block_id'] === $block_id ) {
-								return $blocks['attrs'];
+							$response = $this->forms_attributes_checks( $blocks['attrs'], $block_id );
+							if( ! empty( $response ) ) {
+								return $response;
 							}
+							// if ( isset( $blocks['attrs'] ) && isset( $blocks['attrs']['block_id'] ) && $blocks['attrs']['block_id'] === $block_id ) {
+							// 	return $blocks['attrs'];
+							// }
 						} else {
 							if ( is_array( $blocks['innerBlocks'] ) && ! empty( $blocks['innerBlocks'] ) ) {
 								foreach ( $blocks['innerBlocks'] as $j => $inner_block ) {
 									if ( isset( $inner_block['blockName'] ) && 'uagb/forms' === $inner_block['blockName'] ) {
-										// var_dump($this->forms_attributes_checks( $inner_block['attrs'], $block_id ));
-										// return $this->forms_attributes_checks( $inner_block['attrs'], $block_id );
-										if ( isset( $inner_block['attrs'] ) && isset( $inner_block['attrs']['block_id'] ) && $inner_block['attrs']['block_id'] === $block_id ) {
-											return $inner_block['attrs'];
+										$response = $this->forms_attributes_checks( $inner_block['attrs'], $block_id );
+										if( ! empty( $response ) ) {
+											return $response;
 										}
+										// if ( isset( $inner_block['attrs'] ) && isset( $inner_block['attrs']['block_id'] ) && $inner_block['attrs']['block_id'] === $block_id ) {
+										// 	return $inner_block['attrs'];
+										// }
 									} else {
 										return $this->recursive_inner_forms( $inner_block['innerBlocks'], $block_id );
 									}
@@ -105,7 +112,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 							}
 						}
 					}
-				}
+				// }
 			}
 		}
 
