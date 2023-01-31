@@ -57,30 +57,44 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 
 		}
 
+		private function forms_attributes_checks( $blocks_attrs, $block_id ){
+			if( empty( $blocks_attrs ) ) {
+				return;
+			}
+			if ( isset( $blocks_attrs ) && isset( $blocks_attrs['block_id'] ) && $blocks_attrs['block_id'] === $block_id ) {
+				return $blocks_attrs;
+			}
+		}
+
 		/**
 		 *  Get the Inner blocks array.
 		 *
 		 * @since 2.3.5
-		 * @access public
+		 * @access private
 		 *
 		 * @param  array $blocks_array Block Array.
 		 * @param  int   $block_id of Block.
 		 *
 		 * @return array $final_inner_forms_array inner blocks Array.
 		 */
-		public function recursive_inner_forms( $blocks_array, $block_id ) {
+		private function recursive_inner_forms( $blocks_array, $block_id ) {
+			if ( empty( $blocks_array ) ) {
+				return;
+			}
 			foreach ( $blocks_array as $blocks ) {
 				foreach ( $blocks as $key => $block ) {
-					if ( isset( $blocks ) ) {
-						if ( 'uagb/forms' === $blocks['blockName'] ) {
-
+					if ( ! empty( $blocks ) ) {
+						if ( isset( $blocks['blockName'] ) && 'uagb/forms' === $blocks['blockName'] ) {
+							// return $this->forms_attributes_checks( $blocks['attrs'], $block_id );
 							if ( isset( $blocks['attrs'] ) && isset( $blocks['attrs']['block_id'] ) && $blocks['attrs']['block_id'] === $block_id ) {
 								return $blocks['attrs'];
 							}
 						} else {
-							if ( isset( $blocks['innerBlocks'] ) ) {
+							if ( is_array( $blocks['innerBlocks'] ) && ! empty( $blocks['innerBlocks'] ) ) {
 								foreach ( $blocks['innerBlocks'] as $j => $inner_block ) {
-									if ( 'uagb/forms' === $inner_block['blockName'] ) {
+									if ( isset( $inner_block['blockName'] ) && 'uagb/forms' === $inner_block['blockName'] ) {
+										// var_dump($this->forms_attributes_checks( $inner_block['attrs'], $block_id ));
+										// return $this->forms_attributes_checks( $inner_block['attrs'], $block_id );
 										if ( isset( $inner_block['attrs'] ) && isset( $inner_block['attrs']['block_id'] ) && $inner_block['attrs']['block_id'] === $block_id ) {
 											return $inner_block['attrs'];
 										}
