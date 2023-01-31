@@ -117,15 +117,7 @@ if ( ! class_exists( 'Ast_Block_Templates_Image_Importer' ) ) :
 			global $wpdb;
 
 			// 1. Is already imported in Batch Import Process?
-			$post_id = $wpdb->get_var(
-				$wpdb->prepare(
-					'SELECT `post_id` FROM `' . $wpdb->postmeta . '`
-						WHERE `meta_key` = \'_ast_block_templates_image_hash\'
-							AND `meta_value` = %s
-					;',
-					$this->get_hash_image( $attachment['url'] )
-				)
-			);
+			$post_id = $wpdb->get_var( $wpdb->prepare( 'SELECT `post_id` FROM `' . $wpdb->postmeta . '` WHERE `meta_key` = \'_ast_block_templates_image_hash\' AND `meta_value` = %s;', $this->get_hash_image( $attachment['url'] ) ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 
 			// 2. Is image already imported though XML?
 			if ( empty( $post_id ) ) {
@@ -134,15 +126,7 @@ if ( ! class_exists( 'Ast_Block_Templates_Image_Importer' ) ) :
 				// To check it exist in attachment.
 				$filename = basename( $attachment['url'] );
 
-				$post_id = $wpdb->get_var(
-					$wpdb->prepare(
-						"SELECT post_id FROM {$wpdb->postmeta}
-						WHERE meta_key = '_wp_attached_file'
-						AND meta_value LIKE %s",
-						'%/' . $filename . '%'
-					)
-				);
-
+				$post_id = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = '_wp_attached_file' AND meta_value LIKE %s", '%/' . $filename . '%' ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 				ast_block_templates_log( 'BATCH - SKIP Image {already imported from xml} - ' . $attachment['url'] );
 			}
 

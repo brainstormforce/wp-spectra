@@ -2,22 +2,22 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.3.0\n"
+"Project-Id-Version: Spectra 2.3.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-01-10T10:51:17+00:00\n"
+"POT-Creation-Date: 2023-01-25T14:22:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
-#: admin-core/inc/admin-menu.php:224
-#: classes/class-uagb-admin-helper.php:394
-#: classes/class-uagb-init-blocks.php:441
+#: admin-core/inc/admin-menu.php:204
+#: classes/class-uagb-admin-helper.php:386
+#: classes/class-uagb-init-blocks.php:451
 msgid "Spectra"
 msgstr ""
 
@@ -51,68 +51,68 @@ msgid "Plugin Successfully Activated"
 msgstr ""
 
 #: admin-core/ajax/common-settings.php:157
-#: admin-core/ajax/common-settings.php:191
-#: admin-core/ajax/common-settings.php:225
-#: admin-core/ajax/common-settings.php:260
-#: admin-core/ajax/common-settings.php:338
-#: admin-core/ajax/common-settings.php:373
-#: admin-core/ajax/common-settings.php:408
-#: admin-core/ajax/common-settings.php:443
-#: admin-core/ajax/common-settings.php:478
-#: admin-core/ajax/common-settings.php:513
-#: admin-core/ajax/common-settings.php:547
-#: admin-core/ajax/common-settings.php:581
-#: admin-core/ajax/common-settings.php:616
-#: admin-core/ajax/common-settings.php:650
-#: admin-core/ajax/common-settings.php:684
-#: admin-core/ajax/common-settings.php:718
-#: admin-core/ajax/common-settings.php:752
-#: admin-core/ajax/common-settings.php:838
-#: admin-core/ajax/common-settings.php:872
+#: admin-core/ajax/common-settings.php:193
+#: admin-core/ajax/common-settings.php:229
+#: admin-core/ajax/common-settings.php:266
+#: admin-core/ajax/common-settings.php:346
+#: admin-core/ajax/common-settings.php:383
+#: admin-core/ajax/common-settings.php:420
+#: admin-core/ajax/common-settings.php:457
+#: admin-core/ajax/common-settings.php:494
+#: admin-core/ajax/common-settings.php:531
+#: admin-core/ajax/common-settings.php:567
+#: admin-core/ajax/common-settings.php:603
+#: admin-core/ajax/common-settings.php:638
+#: admin-core/ajax/common-settings.php:674
+#: admin-core/ajax/common-settings.php:710
+#: admin-core/ajax/common-settings.php:746
+#: admin-core/ajax/common-settings.php:782
+#: admin-core/ajax/common-settings.php:870
 #: admin-core/ajax/common-settings.php:906
-#: admin-core/ajax/common-settings.php:941
-#: admin-core/ajax/common-settings.php:976
-#: admin-core/ajax/common-settings.php:1011
-#: admin-core/ajax/common-settings.php:1051
-#: admin-core/ajax/common-settings.php:1088
-#: admin-core/ajax/common-settings.php:1125
-#: admin-core/ajax/common-settings.php:1163
-#: admin-core/ajax/common-settings.php:1241
-#: admin-core/ajax/common-settings.php:1276
+#: admin-core/ajax/common-settings.php:942
+#: admin-core/ajax/common-settings.php:979
+#: admin-core/ajax/common-settings.php:1016
+#: admin-core/ajax/common-settings.php:1053
+#: admin-core/ajax/common-settings.php:1094
+#: admin-core/ajax/common-settings.php:1130
+#: admin-core/ajax/common-settings.php:1166
+#: admin-core/ajax/common-settings.php:1202
+#: admin-core/ajax/common-settings.php:1280
+#: admin-core/ajax/common-settings.php:1317
 msgid "No post data found!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:164
-#: admin-core/ajax/common-settings.php:198
-#: admin-core/ajax/common-settings.php:232
-#: admin-core/ajax/common-settings.php:267
-#: admin-core/ajax/common-settings.php:345
-#: admin-core/ajax/common-settings.php:380
-#: admin-core/ajax/common-settings.php:415
-#: admin-core/ajax/common-settings.php:450
-#: admin-core/ajax/common-settings.php:485
-#: admin-core/ajax/common-settings.php:520
-#: admin-core/ajax/common-settings.php:554
-#: admin-core/ajax/common-settings.php:589
-#: admin-core/ajax/common-settings.php:623
-#: admin-core/ajax/common-settings.php:657
-#: admin-core/ajax/common-settings.php:691
-#: admin-core/ajax/common-settings.php:725
-#: admin-core/ajax/common-settings.php:781
-#: admin-core/ajax/common-settings.php:810
-#: admin-core/ajax/common-settings.php:845
+#: admin-core/ajax/common-settings.php:166
+#: admin-core/ajax/common-settings.php:202
+#: admin-core/ajax/common-settings.php:238
+#: admin-core/ajax/common-settings.php:275
+#: admin-core/ajax/common-settings.php:355
+#: admin-core/ajax/common-settings.php:392
+#: admin-core/ajax/common-settings.php:429
+#: admin-core/ajax/common-settings.php:466
+#: admin-core/ajax/common-settings.php:503
+#: admin-core/ajax/common-settings.php:540
+#: admin-core/ajax/common-settings.php:576
+#: admin-core/ajax/common-settings.php:611
+#: admin-core/ajax/common-settings.php:647
+#: admin-core/ajax/common-settings.php:683
+#: admin-core/ajax/common-settings.php:719
+#: admin-core/ajax/common-settings.php:755
+#: admin-core/ajax/common-settings.php:811
+#: admin-core/ajax/common-settings.php:842
 #: admin-core/ajax/common-settings.php:879
-#: admin-core/ajax/common-settings.php:913
-#: admin-core/ajax/common-settings.php:948
-#: admin-core/ajax/common-settings.php:983
-#: admin-core/ajax/common-settings.php:1024
-#: admin-core/ajax/common-settings.php:1061
-#: admin-core/ajax/common-settings.php:1098
-#: admin-core/ajax/common-settings.php:1136
-#: admin-core/ajax/common-settings.php:1190
-#: admin-core/ajax/common-settings.php:1248
-#: admin-core/ajax/common-settings.php:1283
-#: classes/class-uagb-init-blocks.php:404
+#: admin-core/ajax/common-settings.php:915
+#: admin-core/ajax/common-settings.php:951
+#: admin-core/ajax/common-settings.php:988
+#: admin-core/ajax/common-settings.php:1025
+#: admin-core/ajax/common-settings.php:1067
+#: admin-core/ajax/common-settings.php:1103
+#: admin-core/ajax/common-settings.php:1139
+#: admin-core/ajax/common-settings.php:1175
+#: admin-core/ajax/common-settings.php:1229
+#: admin-core/ajax/common-settings.php:1289
+#: admin-core/ajax/common-settings.php:1326
+#: classes/class-uagb-init-blocks.php:414
 msgid "Successfully saved data!"
 msgstr ""
 
@@ -126,43 +126,11 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#. translators: %s product name
-#: admin/bsf-analytics/class-bsf-analytics.php:216
-msgid "Want to help make <strong>%1s</strong> even more awesome? Allow us to collect non-sensitive diagnostic data and usage information. "
-msgstr ""
-
-#: admin/bsf-analytics/class-bsf-analytics.php:219
-msgid "This will be applicable for all sites from the network."
-msgstr ""
-
-#. translators: %s usage doc link
-#: admin/bsf-analytics/class-bsf-analytics.php:243
-msgid " Know More."
-msgstr ""
-
-#: admin/bsf-analytics/class-bsf-analytics.php:251
-msgid "Yes! Allow it"
-msgstr ""
-
-#: admin/bsf-analytics/class-bsf-analytics.php:260
-msgid "No Thanks"
-msgstr ""
-
-#: admin/bsf-analytics/class-bsf-analytics.php:366
-msgid "Usage Tracking"
-msgstr ""
-
-#. translators: %s Product title
-#: admin/bsf-analytics/class-bsf-analytics.php:410
-msgid "Allow %s products to track non-sensitive usage tracking data."
-msgstr ""
-
-#: admin/bsf-analytics/class-bsf-analytics.php:413
-msgid " This will be applicable for all sites from the network."
-msgstr ""
-
-#: admin/bsf-analytics/class-bsf-analytics.php:418
-msgid "Learn More."
+#: blocks-config/forms/class-uagb-forms.php:214
+#: includes/blocks/forms/attributes.php:69
+#: dist/blocks.js:1
+#: dist/blocks.js:17
+msgid "Form Submission"
 msgstr ""
 
 #: blocks-config/image-gallery/class-spectra-image-gallery.php:178
@@ -179,14 +147,14 @@ msgstr ""
 msgid "Load More Images"
 msgstr ""
 
-#: blocks-config/image-gallery/class-spectra-image-gallery.php:1140
+#: blocks-config/image-gallery/class-spectra-image-gallery.php:1142
 #: dist/blocks.js:17
 msgid "Unable to load image"
 msgstr ""
 
 #: blocks-config/post-timeline/class-uagb-post-timeline.php:523
 #: blocks-config/post/class-uagb-post.php:540
-#: blocks-config/post/class-uagb-post.php:2066
+#: blocks-config/post/class-uagb-post.php:2067
 #: includes/blocks/post-carousel/attributes.php:116
 #: includes/blocks/post-grid/attributes.php:107
 #: includes/blocks/post-masonry/attributes.php:110
@@ -220,11 +188,11 @@ msgstr ""
 msgid "Taxonomy Not Available."
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:402
+#: classes/class-uagb-admin-helper.php:394
 msgid "Astra Theme"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:406
+#: classes/class-uagb-admin-helper.php:398
 msgid "Filter added through any 3rd Party Theme/Plugin."
 msgstr ""
 
@@ -272,48 +240,54 @@ msgstr ""
 msgid "Full"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:382
+#: classes/class-uagb-init-blocks.php:87
+#: classes/class-uagb-init-blocks.php:253
+#: classes/class-uagb-init-blocks.php:397
+msgid "User is not authenticated!"
+msgstr ""
+
+#: classes/class-uagb-init-blocks.php:384
 msgid "Please select a valid Gravity Form."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:424
+#: classes/class-uagb-init-blocks.php:434
 msgid "Please select a valid Contact Form 7."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:563
+#: classes/class-uagb-init-blocks.php:573
 #: dist/blocks.js:11
 #: dist/blocks.js:13
 #: dist/blocks.js:17
 msgid "Default"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:663
+#: classes/class-uagb-init-blocks.php:673
 #: dist/blocks.js:11
 #: dist/blocks.js:13
 #: dist/blocks.js:17
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:692
-#: classes/class-uagb-init-blocks.php:725
+#: classes/class-uagb-init-blocks.php:702
+#: classes/class-uagb-init-blocks.php:735
 #: dist/blocks.js:17
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:706
+#: classes/class-uagb-init-blocks.php:716
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:739
+#: classes/class-uagb-init-blocks.php:749
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
 #. translators: %s: html tags
-#: classes/class-uagb-loader.php:431
+#: classes/class-uagb-loader.php:304
 msgid "The %1$sSpectra%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated."
 msgstr ""
 
-#: classes/class-uagb-loader.php:434
+#: classes/class-uagb-loader.php:307
 msgid "Install Gutenberg"
 msgstr ""
 
@@ -617,12 +591,6 @@ msgstr ""
 
 #: includes/blocks/forms/attributes.php:40
 msgid "The form has been submitted Successfully!"
-msgstr ""
-
-#: includes/blocks/forms/attributes.php:69
-#: dist/blocks.js:1
-#: dist/blocks.js:17
-msgid "Form Submission"
 msgstr ""
 
 #: includes/blocks/forms/attributes.php:121
@@ -1361,7 +1329,19 @@ msgid "Facebook App Details"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
+msgid "Facebook App ID"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "App ID"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
 msgid "Facebook App Secret Key"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "App Secret Key"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
@@ -1554,7 +1534,7 @@ msgid "Coming Soon"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
-msgid "My Account"
+msgid "License"
 msgstr ""
 
 #: dist/blocks.js:1
@@ -3069,10 +3049,12 @@ msgid "Select Icon"
 msgstr ""
 
 #: dist/blocks.js:13
+#: dist/blocks.js:17
 msgid "Preset 7"
 msgstr ""
 
 #: dist/blocks.js:13
+#: dist/blocks.js:17
 msgid "Preset 8"
 msgstr ""
 
