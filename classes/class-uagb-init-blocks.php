@@ -68,36 +68,12 @@ class UAGB_Init_Blocks {
 
 		add_action( 'wp_ajax_uagb_forms_recaptcha', array( $this, 'forms_recaptcha' ) );
 
-		add_action( 'wp_ajax_uagb_spectra_font_awesome_polyfiller', array( $this, 'spectra_font_awesome_polyfiller' ) );
-
 		if ( ! is_admin() ) {
 			add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
 		}
 
 	}
-
-	/**
-	 * Function to get Spectra Font Awesome Polyfiller data.
-	 *
-	 * @since 2.0.14
-	 */
-	public function spectra_font_awesome_polyfiller() {
-
-		$response_data = array(
-			'messsage' => __( 'User is not authenticated!', 'ultimate-addons-for-gutenberg' ),
-		);
-
-		if ( ! current_user_can( 'edit_posts' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
-
-		$data = get_spectra_font_awesome_polyfiller();
-
-		wp_send_json_success( $data );
-	}
-
+	
 	/**
 	 * Render block.
 	 *
