@@ -175,6 +175,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Global - Updated SVG icons rendering conditions & optimized the loading.
 * Fix: Container - Full height and Fixed background Image not working properly on editor.
 * Fix: Info-Box - CTA padding not working on responsive devices.
+* Fix: Heading - Disabling heading and sub-heading hides the separator.
 * Fix: Forms - Using form inside inner blocks, it was showing an error on submit.
 * Fix: Background control - Image has wrong units for custom positioning.
 

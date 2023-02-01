@@ -38,10 +38,10 @@ const Render = ( props ) => {
 			<div className="uagb-separator"></div>
 		</div>
 	);
-	
+
 	const headingText = (
 		<>
-			
+
 			{ seperatorPosition === 'above-heading' ? separator : '' }
 			<RichText
 				tagName={ headingTag }
@@ -88,6 +88,7 @@ const Render = ( props ) => {
 			{ headingDescToggle && 'above-heading' === headingDescPosition ? descText : '' }
 			{ headingTitleToggle && headingText }
 			{ headingDescToggle && 'below-heading' === headingDescPosition ? descText : '' }
+			{ ! headingDescToggle && ! headingTitleToggle ? separator : '' }
 		</div>
 	);
 };

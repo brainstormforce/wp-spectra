@@ -2,7 +2,8 @@
  * BLOCK: Advanced Heading - Deprecated Block
  */
  import classnames from 'classnames';
-
+ import attributes_v2_3_5 from './v2.3.5/attributes';
+ import save_v2_3_5 from './v2.3.5/save';
 import { RichText } from '@wordpress/block-editor';
 const attributes = {
 	block_id: {
@@ -414,8 +415,12 @@ const deprecated = [
 				{ descText }
 			</div>
 		);
-	}
-}
+		},
+	},
+	{
+		attributes: attributes_v2_3_5,
+		save: save_v2_3_5,
+	},
 ];
 
 export default deprecated;
