@@ -66,7 +66,7 @@ function renderSVG( svg, setAttributes = false ) {
 		}
 
 		return (
-			! setAttributes  ?
+			( ! setAttributes || 'not_set' === setAttributes )  ?
 			<svg xmlns="https://www.w3.org/2000/svg" viewBox={ viewBox }>
 				<path d={ path }></path>
 			</svg>
