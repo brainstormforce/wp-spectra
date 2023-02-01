@@ -89,8 +89,8 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 								} else {
 									$temp_attrs = $this->recursive_inner_forms( $inner_block['innerBlocks'], $block_id );
 
-									if ( ! empty( $temp_attrs['attrs'] ) && isset( $temp_attrs['attrs']['block_id'] ) && $temp_attrs['attrs']['block_id'] === $block_id ) {
-										return $temp_attrs['attrs'];
+									if ( ! empty( $temp_attrs ) && isset( $temp_attrs['block_id'] ) && $temp_attrs['block_id'] === $block_id ) {
+										return $temp_attrs;
 									}                               
 								}
 							}
