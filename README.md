@@ -170,7 +170,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### 2.3.5 ###
+### 2.3.5 - THURSDAY, 2nd FEBRUARY 2023 ###
 * Global - Removed Backward compatibility of button padding for old users from multiple blocks.
 * Global - Updated SVG icons rendering conditions & optimized the loading.
 * Fix: Container - Full height and Fixed background Image not working properly on editor.
