@@ -170,6 +170,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+### 2.3.5 ###
+* Improvement: Updated Gutenberg Templates Library.
 ### 2.3.4 - WEDNESDAY, 25th JANUARY 2023 ###
 * Improvement: Updated Gutenberg Templates Library.
 
