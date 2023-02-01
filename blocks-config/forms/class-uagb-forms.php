@@ -72,6 +72,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			if ( empty( $blocks_array ) ) {
 				return;
 			}
+			
 			foreach ( $blocks_array as $blocks ) {
 				if ( ! empty( $blocks ) ) {
 					if ( isset( $blocks['blockName'] ) && 'uagb/forms' === $blocks['blockName'] ) {
@@ -86,7 +87,11 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 										return $inner_block['attrs'];
 									}
 								} else {
-									return $this->recursive_inner_forms( $inner_block['innerBlocks'], $block_id );
+									$temp_attrs = $this->recursive_inner_forms( $inner_block['innerBlocks'], $block_id );
+
+									if ( ! empty( $temp_attrs['attrs'] ) && isset( $temp_attrs['attrs']['block_id'] ) && $temp_attrs['attrs']['block_id'] === $block_id ) {
+										return $temp_attrs['attrs'];
+									}                               
 								}
 							}
 						}
