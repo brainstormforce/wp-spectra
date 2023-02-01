@@ -25,31 +25,11 @@ const ContentTimelineComponent = ( props ) => {
         setAttributes( { childMigrate: true } );
 
         const {
-            bgPadding,
-            topPadding,
-            rightPadding,
-            bottomPadding,
-            leftPadding,
             timelinAlignment,
             timelinAlignmentTablet,
             timelinAlignmentMobile,
             stack
         } = attributes;
-
-        if ( bgPadding ) {
-            if ( undefined === topPadding ) {
-                setAttributes( { topPadding: bgPadding } );
-            }
-            if ( undefined === bottomPadding ) {
-                setAttributes( { bottomPadding: bgPadding } );
-            }
-            if ( undefined === rightPadding ) {
-                setAttributes( { rightPadding: bgPadding } );
-            }
-            if ( undefined === leftPadding ) {
-                setAttributes( { leftPadding: bgPadding } );
-            }
-        }
 
         if( timelinAlignment ) {
             if( 'none' === stack ) {
