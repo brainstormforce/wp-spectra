@@ -10,13 +10,14 @@
       }
     ],
     "require": {
-      "composer/installers": "^2"
+      "composer/installers": "^2",
+      "automattic/vipwpcs": "^2.3"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "0.7.0",
         "phpcompatibility/phpcompatibility-wp": "*",
         "wp-cli/dist-archive-command": "^2.0",
-        "wp-coding-standards/wpcs": "dev-master"
+        "wp-coding-standards/wpcs": "^2.3"
     },
     "minimum-stability": "stable",
     "scripts": {
