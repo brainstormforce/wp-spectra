@@ -58,6 +58,49 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		}
 
 		/**
+		 *  Get the Inner blocks array.
+		 *
+		 * @since 2.3.5
+		 * @access private
+		 *
+		 * @param  array $blocks_array Block Array.
+		 * @param  int   $block_id of Block.
+		 *
+		 * @return array $final_inner_forms_array inner blocks Array.
+		 */
+		private function recursive_inner_forms( $blocks_array, $block_id ) {
+			if ( empty( $blocks_array ) ) {
+				return;
+			}
+			
+			foreach ( $blocks_array as $blocks ) {
+				if ( ! empty( $blocks ) ) {
+					if ( isset( $blocks['blockName'] ) && 'uagb/forms' === $blocks['blockName'] ) {
+						if ( ! empty( $blocks['attrs'] ) && isset( $blocks['attrs']['block_id'] ) && $blocks['attrs']['block_id'] === $block_id ) {
+							return $blocks['attrs'];
+						}
+					} else {
+						if ( is_array( $blocks['innerBlocks'] ) && ! empty( $blocks['innerBlocks'] ) ) {
+							foreach ( $blocks['innerBlocks'] as $j => $inner_block ) {
+								if ( isset( $inner_block['blockName'] ) && 'uagb/forms' === $inner_block['blockName'] ) {
+									if ( ! empty( $inner_block['attrs'] ) && isset( $inner_block['attrs']['block_id'] ) && $inner_block['attrs']['block_id'] === $block_id ) {
+										return $inner_block['attrs'];
+									}
+								} else {
+									$temp_attrs = $this->recursive_inner_forms( $inner_block['innerBlocks'], $block_id );
+
+									if ( ! empty( $temp_attrs ) && isset( $temp_attrs['block_id'] ) && $temp_attrs['block_id'] === $block_id ) {
+										return $temp_attrs;
+									}                               
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/**
 		 *
 		 * Form Process Initiated.
 		 *
@@ -84,11 +127,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			$blocks                   = parse_blocks( $post_content );
 			$current_block_attributes = false;
 			if ( ! empty( $blocks ) && is_array( $blocks ) ) {
-				foreach ( $blocks as $block ) {
-					if ( isset( $block['attrs'] ) && isset( $block['attrs']['block_id'] ) && $block['attrs']['block_id'] === $block_id ) {
-						$current_block_attributes = $block['attrs'];
-					}
-				}
+				$current_block_attributes = $this->recursive_inner_forms( $blocks, $block_id );
 			}
 
 			if ( empty( $current_block_attributes ) ) {

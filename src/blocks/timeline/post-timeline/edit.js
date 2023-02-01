@@ -29,56 +29,11 @@ const PostTimelineComponent = ( props ) => {
 		props.setAttributes( { block_id: props.clientId } );
 
 		const {
-			horizontalSpace,
-			rightMargin,
-			leftMargin,
-			bgPadding,
-			topPadding,
-			rightPadding,
-			bottomPadding,
-			leftPadding,
-			contentPadding,
-			ctaBottomSpacing,
-			headTopSpacing,
 			timelinAlignment,
 			stack,
 			timelinAlignmentTablet,
 			timelinAlignmentMobile
 		} = props.attributes;
-
-		if ( bgPadding ) {
-			if ( ! topPadding ) {
-				props.setAttributes( { topPadding: bgPadding } );
-			}
-			if ( ! bottomPadding ) {
-				props.setAttributes( { bottomPadding: bgPadding } );
-			}
-			if ( ! rightPadding ) {
-				props.setAttributes( { rightPadding: bgPadding } );
-			}
-			if ( ! leftPadding ) {
-				props.setAttributes( { leftPadding: bgPadding } );
-			}
-		}
-
-		if ( contentPadding ){
-			if ( isNaN( ctaBottomSpacing ) ) {
-				props.setAttributes( { ctaBottomSpacing: contentPadding } );
-			}
-
-			if ( isNaN( headTopSpacing ) ) {
-				props.setAttributes( { headTopSpacing: contentPadding } );
-			}
-		}
-		if ( horizontalSpace ) {
-			if ( ! rightMargin ) {
-				props.setAttributes( { rightMargin: horizontalSpace } );
-			}
-			if ( ! leftMargin ) {
-				props.setAttributes( { leftMargin: horizontalSpace } );
-			}
-
-		}
 
 		if( timelinAlignment ) {
             if( 'none' === stack ) {
