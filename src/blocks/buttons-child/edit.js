@@ -28,33 +28,6 @@ const ButtonsChildComponent = ( props ) => {
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
-		const { attributes, setAttributes } = props;
-		const {
-			vPadding,
-			hPadding,
-			topPadding,
-			rightPadding,
-			bottomPadding,
-			leftPadding,
-		} = attributes;
-
-		if ( vPadding ) {
-			if ( undefined === topPadding ) {
-				setAttributes( { topPadding: vPadding } );
-			}
-			if ( undefined === bottomPadding ) {
-				setAttributes( { bottomPadding: vPadding } );
-			}
-		}
-
-		if ( hPadding ) {
-			if ( undefined === rightPadding ) {
-				setAttributes( { rightPadding: hPadding } );
-			}
-			if ( undefined === leftPadding ) {
-				setAttributes( { leftPadding: hPadding } );
-			}
-		}
 		const { borderStyle, borderWidth, borderRadius, borderColor, borderHColor } = props.attributes
 		// border migration
 		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
