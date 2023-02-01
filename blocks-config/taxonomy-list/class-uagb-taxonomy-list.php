@@ -558,13 +558,13 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 
 				if ( is_array( $new_categories_list ) ) {
 					foreach ( $new_categories_list as $value ) {
-						// If $value is of type WP_Error, warnings would be displayed on frontend.
-						if ( ! is_wp_error( get_term_link( $value, $attributes['taxonomyType'] ) ) ) {
+						$link = get_term_link( $value->slug, $attributes['taxonomyType'] );
+						if ( ! is_wp_error( $link ) ) {
 							?>
 
 						<div class="uagb-taxomony-box">
-							<a class="uagb-tax-link" href= "<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>">
-								<<?php echo esc_html( $titleTag ); ?> class="uagb-tax-title"><?php echo esc_attr( $value->name ); ?>
+							<a class="uagb-tax-link" href= "<?php echo esc_url( $link ); ?>">
+								<<?php echo esc_html( $titleTag ); ?> class="uagb-tax-title"><?php echo esc_html( $value->name ); ?>
 								</<?php echo esc_html( $titleTag ); ?>>
 								<?php if ( $showCount ) { ?>
 										<?php echo esc_attr( $value->count ); ?>
@@ -631,10 +631,14 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						<?php
 						if ( is_array( $new_categories_list ) ) {
 							foreach ( $new_categories_list as $key => $value ) {
+								$link = get_term_link( $value->slug, $attributes['taxonomyType'] );
+								if ( is_wp_error( $link ) ) {
+									$link = '#';
+								}
 								?>
 							<li class="uagb-tax-list">
 								<<?php echo esc_html( $titleTag ); ?> class="uagb-tax-link-wrap">
-									<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>
+									<a class="uagb-tax-link" href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( $value->name ); ?></a>
 										<?php if ( $showCount ) { ?>
 											<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
 										<?php } ?>
@@ -642,7 +646,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 											<ul class="uagb-taxonomy-list-children">
 												<?php foreach ( $new_categories_list[ $key ]->children as $value ) { ?>
 													<li class="uagb-tax-list">
-													<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>
+													<a class="uagb-tax-link" href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( $value->name ); ?></a>
 													<?php if ( $showCount ) { ?>
 														<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
 													<?php } ?>
@@ -666,8 +670,12 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						<?php
 						if ( is_array( $new_categories_list ) ) {
 							foreach ( $new_categories_list as $key => $value ) {
+								$link = get_term_link( $value->slug, $attributes['taxonomyType'] );
+								if ( is_wp_error( $link ) ) {
+									$link = '#';
+								}
 								?>
-							<option value="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>" >
+							<option value="<?php echo esc_url( $link ); ?>" >
 								<?php echo esc_attr( $value->name ); ?>
 								<?php if ( $showCount ) { ?>
 									<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
@@ -767,12 +775,12 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 			ob_start();
 
 			?>
-				<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>" style="<?php echo esc_html( implode( '', $zindex_wrap ) ); ?>">
+				<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>" style="<?php echo esc_attr( implode( '', $zindex_wrap ) ); ?>">
 					<?php if ( ! empty( $new_categories_list ) ) { ?>
 							<?php $this->grid_html( $attributes ); ?>
 							<?php $this->list_html( $attributes ); ?>
 					<?php } else { ?>
-							<div class="uagb-tax-not-available"><?php echo esc_attr( $noTaxDisplaytext ); ?></div>
+							<div class="uagb-tax-not-available"><?php echo esc_html( $noTaxDisplaytext ); ?></div>
 					<?php } ?>
 				</div>
 

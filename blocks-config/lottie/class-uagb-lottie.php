@@ -207,7 +207,7 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 			ob_start();
 
 			?>
-				<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>" style="<?php echo esc_html( implode( '', $zindex_wrap ) ); ?>"></div>
+				<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>" style="<?php echo esc_attr( implode( '', $zindex_wrap ) ); ?>"></div>
 			<?php
 				return ob_get_clean();
 		}

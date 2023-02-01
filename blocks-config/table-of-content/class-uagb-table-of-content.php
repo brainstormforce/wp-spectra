@@ -522,10 +522,10 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 			ob_start();
 			?>
-				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>"
+				<div class="<?php echo esc_attr( implode( ' ', $wrap ) ); ?>"
 					data-scroll= "<?php echo esc_attr( $attributes['smoothScroll'] ); ?>"
 					data-offset= "<?php echo esc_attr( UAGB_Block_Helper::get_fallback_number( $attributes['smoothScrollOffset'], 'smoothScrollOffset', 'table-of-contents' ) ); ?>"
-					style="<?php echo esc_html( implode( '', $zindex_wrap ) ); ?>"
+					style="<?php echo esc_attr( implode( '', $zindex_wrap ) ); ?>"
 				>
 				<div class="uagb-toc__wrap">
 						<div class="uagb-toc__title">

@@ -74,8 +74,6 @@ class UAGB_Init_Blocks {
 			add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
 		}
 
-		add_action( 'spectra_analytics_complete_action', array( $this, 'regenerate_analytics_data' ) );
-
 	}
 
 	/**
@@ -85,24 +83,19 @@ class UAGB_Init_Blocks {
 	 */
 	public function spectra_font_awesome_polyfiller() {
 
+		$response_data = array(
+			'messsage' => __( 'User is not authenticated!', 'ultimate-addons-for-gutenberg' ),
+		);
+
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
 		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
 
 		$data = get_spectra_font_awesome_polyfiller();
 
 		wp_send_json_success( $data );
-	}
-
-	/**
-	 * Reset all the filters for scheduled actions to get post block count.
-	 */
-	public function regenerate_analytics_data() {
-
-		delete_option( 'spectra_blocks_count_status' );
-		delete_option( 'get_spectra_block_count' );
-		delete_option( 'spectra_settings_data' );
-		delete_option( 'spectra_saved_blocks_settings' );
-		delete_transient( 'spectra_background_process_action' );
-
 	}
 
 	/**
@@ -196,7 +189,8 @@ class UAGB_Init_Blocks {
 			'mac_os'   => '(Mac_PowerPC)|(Macintosh)',
 		);
 
-		if ( preg_match( '@' . $os[ $value ] . '@', $_SERVER['HTTP_USER_AGENT'] ) ) {
+		$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( $_SERVER['HTTP_USER_AGENT'] ) : '';
+		if ( preg_match( '@' . $os[ $value ] . '@', $user_agent ) ) {
 			return '';
 		}
 
@@ -219,7 +213,7 @@ class UAGB_Init_Blocks {
 
 		$value = $block_attributes['UAGBrowser'];
 
-		$user_agent = UAGB_Helper::get_browser_name( $_SERVER['HTTP_USER_AGENT'] );
+		$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? UAGB_Helper::get_browser_name( sanitize_text_field( $_SERVER['HTTP_USER_AGENT'] ) ) : '';
 
 		$show = ( $value === $user_agent ) ? true : false;
 
@@ -254,6 +248,14 @@ class UAGB_Init_Blocks {
 	 * @since 2.0.0
 	 */
 	public function get_taxonomy() {
+
+		$response_data = array(
+			'messsage' => __( 'User is not authenticated!', 'ultimate-addons-for-gutenberg' ),
+		);
+
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( $response_data );
+		}
 
 		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
 
@@ -374,7 +376,7 @@ class UAGB_Init_Blocks {
 
 		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
 
-		$id = intval( $_POST['formId'] );
+		$id = isset( $_POST['formId'] ) ? intval( $_POST['formId'] ) : 0;
 
 		if ( $id && 0 !== $id && -1 !== $id ) {
 			$data['html'] = do_shortcode( '[gravityforms id="' . $id . '" ajax="true"]' );
@@ -391,9 +393,17 @@ class UAGB_Init_Blocks {
 	 */
 	public function forms_recaptcha() {
 
+		$response_data = array(
+			'messsage' => __( 'User is not authenticated!', 'ultimate-addons-for-gutenberg' ),
+		);
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
 		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
 
-		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore
+		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_recaptcha_secret_key_v2', sanitize_text_field( $value['reCaptchaSecretKeyV2'] ) );
 		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_recaptcha_secret_key_v3', sanitize_text_field( $value['reCaptchaSecretKeyV3'] ) );
@@ -416,7 +426,7 @@ class UAGB_Init_Blocks {
 
 		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
 
-		$id = intval( $_POST['formId'] );
+		$id = isset( $_POST['formId'] ) ? intval( $_POST['formId'] ) : 0;
 
 		if ( $id && 0 !== $id && -1 !== $id ) {
 			$data['html'] = do_shortcode( '[contact-form-7 id="' . $id . '" ajax="true"]' );
