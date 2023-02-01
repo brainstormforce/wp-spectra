@@ -715,7 +715,7 @@ const Settings = ( props ) => {
 							label: 'connectorBgsizeMobile',
 						},
 					} }
-					min={ 25 }
+					min={ 0 }
 					max={ 90 }
 					displayUnit={ false }
 					setAttributes={ setAttributes }

@@ -35,13 +35,21 @@ export default function MainNav() {
       <div className="max-w-3xl mx-auto px-6 lg:max-w-7xl">
         <div className="relative flex justify-between h-16">
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-            <a href={uag_react.uag_base_url} className="flex-shrink-0 flex items-center">
-              <img
-                className="lg:block h-[2.6rem] w-auto"
-                src={ uag_react.logo_url }
-                alt="Workflow"
-              />
-            </a>
+			<Link
+				to={ {
+					pathname: 'options-general.php',
+					search: `?page=${ menus[0].slug }${
+						'' !== menus[0].path ? '&path=' + menus[0].path : ''
+					}`,
+				} }
+				className="flex-shrink-0 flex items-center justify-start"
+			>
+				<img
+					className="lg:block h-8"
+					src={ uag_react.logo_url }
+					alt="Workflow"
+				/>
+			</Link>
             <div className="sm:ml-8 sm:flex sm:space-x-8">
                 { menus.map( ( menu , key ) => (
                     <Link

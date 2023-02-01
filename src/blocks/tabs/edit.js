@@ -25,55 +25,6 @@ const UAGBTabsEdit = ( props ) => {
 	useEffect( () => {
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
-		const { attributes, setAttributes } = props;
-		const {
-			tabTitleVertPadding,
-			tabTitleHrPadding,
-			tabTitleTopPadding,
-			tabTitleBottomPadding,
-			tabTitleRightPadding,
-			tabTitleLeftPadding,
-			tabBodyVertPadding,
-			tabBodyHrPadding,
-			tabBodyTopPadding,
-			tabBodyBottomPadding,
-			tabBodyRightPadding,
-			tabBodyLeftPadding,
-		} = attributes;
-
-		if ( tabTitleVertPadding ) {
-			if ( ! tabTitleTopPadding ) {
-				setAttributes( { tabTitleTopPadding: tabTitleVertPadding } );
-			}
-			if ( ! tabTitleBottomPadding ) {
-				setAttributes( { tabTitleBottomPadding: tabTitleVertPadding } );
-			}
-		}
-		if ( tabTitleHrPadding ) {
-			if ( ! tabTitleRightPadding ) {
-				setAttributes( { tabTitleRightPadding: tabTitleHrPadding } );
-			}
-			if ( ! tabTitleLeftPadding ) {
-				setAttributes( { tabTitleLeftPadding: tabTitleHrPadding } );
-			}
-		}
-
-		if ( tabBodyVertPadding ) {
-			if ( ! tabBodyTopPadding ) {
-				setAttributes( { tabBodyTopPadding: tabBodyVertPadding } );
-			}
-			if ( ! tabBodyBottomPadding ) {
-				setAttributes( { tabBodyBottomPadding: tabBodyVertPadding } );
-			}
-		}
-		if ( tabBodyHrPadding ) {
-			if ( ! tabBodyRightPadding ) {
-				setAttributes( { tabBodyRightPadding: tabBodyHrPadding } );
-			}
-			if ( ! tabBodyLeftPadding ) {
-				setAttributes( { tabBodyLeftPadding: tabBodyHrPadding } );
-			}
-		}
 		const { borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor } = props.attributes;
 		// Backward Border Migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){

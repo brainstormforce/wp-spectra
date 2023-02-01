@@ -221,7 +221,7 @@ function styling( props ) {
 		 iconBackgroundColor,
 		 iconBackgroundHoverColor,
 		 iconBorderWidth,
-		 
+
 		// padding
 		blockTopPadding,
 		blockRightPadding,
@@ -587,10 +587,10 @@ function styling( props ) {
 			 'letter-spacing': generateCSSUnit( subHeadLetterSpacingTablet, subHeadLetterSpacingType ),
 		 },
 		 ' .block-editor-rich-text__editable.uagb-ifb-title': {
-			 'margin-top': generateCSSUnit( headMarginTopTablet, headMobileMarginUnit ),
-			 'margin-bottom': generateCSSUnit( headTabletSpace, headMobileMarginUnit ),
-			 'margin-left': generateCSSUnit( headMarginLeftTablet, headMobileMarginUnit ),
-			 'margin-right': generateCSSUnit( headMarginRightTablet, headMobileMarginUnit ),
+			 'margin-top': generateCSSUnit( headMarginTopTablet, headTabletMarginUnit ),
+			 'margin-bottom': generateCSSUnit( headTabletSpace, headTabletMarginUnit ),
+			 'margin-left': generateCSSUnit( headMarginLeftTablet, headTabletMarginUnit ),
+			 'margin-right': generateCSSUnit( headMarginRightTablet, headTabletMarginUnit ),
 			 'font-size': generateCSSUnit(
 				 headFontSizeTablet,
 				 headFontSizeType
@@ -652,7 +652,7 @@ function styling( props ) {
 			'padding-bottom': generateCSSUnit( iconMarginBottomTablet, iconTabletMarginUnit ),
 			'padding-left': generateCSSUnit( iconMarginLeftTablet, iconTabletMarginUnit ),
 		},
-		 ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
+		 '.uagb-infobox__content-wrap .uagb-ifb-cta .uagb-ifb-button-wrapper.wp-block-button a.uagb-infobox-cta-link.wp-block-button__link': {
 			 'padding-top': generateCSSUnit(
 				 paddingBtnTopTablet,
 				 tabletPaddingBtnUnit
@@ -754,10 +754,10 @@ function styling( props ) {
 				 headLineHeightType
 			 ),
 			 'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
-			 'margin-top': generateCSSUnit( headMarginTopMobile, headTabletMarginUnit ),
-			 'margin-bottom': generateCSSUnit( headMobileSpace, headTabletMarginUnit ),
-			 'margin-left': generateCSSUnit( headMarginLeftMobile, headTabletMarginUnit ),
-			 'margin-right': generateCSSUnit( headMarginRightMobile, headTabletMarginUnit ),
+			 'margin-top': generateCSSUnit( headMarginTopMobile, headMobileMarginUnit ),
+			 'margin-bottom': generateCSSUnit( headMobileSpace, headMobileMarginUnit ),
+			 'margin-left': generateCSSUnit( headMarginLeftMobile, headMobileMarginUnit ),
+			 'margin-right': generateCSSUnit( headMarginRightMobile, headMobileMarginUnit ),
 		 },
 		 ' .block-editor-rich-text__editable.uagb-ifb-title-prefix': {
 			 'font-size': generateCSSUnit(
@@ -817,7 +817,7 @@ function styling( props ) {
 			'padding-left': generateCSSUnit( iconMarginLeftMobile, iconMobileMarginUnit ),
 			'box-sizing' : `${ boxSizingImageMobile }`,
 		},
-		 ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
+		 '.uagb-infobox__content-wrap .uagb-ifb-cta .uagb-ifb-button-wrapper.wp-block-button a.uagb-infobox-cta-link.wp-block-button__link': {
 			 'padding-top': generateCSSUnit(
 				 paddingBtnTopMobile,
 				 mobilePaddingBtnUnit

@@ -83,16 +83,16 @@ $selectors               = array(
 		'padding-top'      => UAGB_Helper::get_css_value( $attr['paddingBtnTop'], $attr['paddingBtnUnit'] ),
 		'padding-bottom'   => UAGB_Helper::get_css_value( $attr['paddingBtnBottom'], $attr['paddingBtnUnit'] ),
 		'color'            => $attr['btnLinkColor'],
-		'background-color' => $attr['btnBgColor'],
+		'background-color' => ( 'color' === $attr['modalTriggerBgType'] ) ? $attr['btnBgColor'] : 'transparent',
 	),
 	' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:hover' => array(
 		'color'            => $attr['btnLinkHoverColor'] ? $attr['btnLinkHoverColor'] : $attr['btnLinkColor'],
-		'background-color' => $attr['btnBgHoverColor'],
+		'background-color' => ( 'color' === $attr['modalTriggerBgHoverType'] ) ? $attr['btnBgHoverColor'] : 'transparent',
 		'border-color'     => $attr['btnBorderHColor'],
 	),
 	' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:focus' => array(
 		'color'            => $attr['btnLinkHoverColor'] ? $attr['btnLinkHoverColor'] : $attr['btnLinkColor'],
-		'background-color' => $attr['btnBgHoverColor'],
+		'background-color' => ( 'color' === $attr['modalTriggerBgHoverType'] ) ? $attr['btnBgHoverColor'] : 'transparent',
 		'border-color'     => $attr['btnBorderHColor'],
 	),
 	' .uagb-modal-trigger svg'                   => array(
