@@ -23,7 +23,6 @@ const UAGBAdvancedHeading = ( props ) => {
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
-
 		const { setAttributes } = props;
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
