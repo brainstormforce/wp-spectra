@@ -248,10 +248,10 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 */
 		public function send_email( $body, $form_data, $args ) {
 
-			$to      = isset( $args['to'] ) ? sanitize_email( $args['to'] ) : sanitize_email( get_option( 'admin_email' ) );
-			$cc      = isset( $args['cc'] ) ? sanitize_email( $args['cc'] ) : '';
-			$bcc     = isset( $args['bcc'] ) ? sanitize_email( $args['bcc'] ) : '';
-			$subject = isset( $args['subject'] ) ? $args['subject'] : __( 'Form Submission', 'ultimate-addons-for-gutenberg' );
+			$to      = isset( $args['afterSubmitToEmail'] ) ? sanitize_email( $args['afterSubmitToEmail'] ) : sanitize_email( get_option( 'admin_email' ) );
+			$cc      = isset( $args['afterSubmitCcEmail'] ) ? sanitize_email( $args['afterSubmitCcEmail'] ) : '';
+			$bcc     = isset( $args['afterSubmitBccEmail'] ) ? sanitize_email( $args['afterSubmitBccEmail'] ) : '';
+			$subject = isset( $args['afterSubmitEmailSubject'] ) ? $args['afterSubmitEmailSubject'] : __( 'Form Submission', 'ultimate-addons-for-gutenberg' );
 
 			$headers = array(
 				'Reply-To-: ' . get_bloginfo( 'name' ) . ' <' . $to . '>',
