@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.1  
-**Stable tag:** 2.3.0  
+**Stable tag:** 2.3.5  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -170,10 +170,32 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### 2.3.1 ###
-* Fix: Info-Box - Margin unit set to `px` after refresh in editor.
-* Fix: Gradient Picker - block encounter an error when using gradient picker for Spectra block when Gutenberg is activated.
+### 2.3.5 - THURSDAY, 2nd FEBRUARY 2023 ###
+* Global - Removed Backward compatibility of button padding for old users from multiple blocks.
+* Global - Updated SVG icons rendering conditions & optimized the loading.
+* Fix: Container - Full height and Fixed background Image not working properly on editor.
+* Fix: Info-Box - CTA padding not working on responsive devices.
+* Fix: Heading - Disabling heading and sub-heading hides the separator.
+* Fix: Forms - Using form inside inner blocks, it was showing an error on submit.
+* Fix: Background control - Image has wrong units for custom positioning.
+
+### 2.3.4 - WEDNESDAY, 25th JANUARY 2023 ###
+* Improvement: Updated Gutenberg Templates Library.
+
+### 2.3.3 - TUESDAY, 24th JANUARY 2023 ###
+* Fix: Post Block - PHP comment appears on frontend.
+
+### 2.3.2 - MONDAY, 23rd JANUARY 2023 ###
+* Security fixes: Props to Patchstack for reporting security issues. Those are fixed in this release. Plus we’ve hardened security in other areas of the plugin.
+* Improvement: Modal - Added presets for a button trigger.
+* Fix: Forms - Multiple Form Submit AJAX related issues.
 * Fix: Timeline - unable to set connector Icon Background Size to zero.
+* Fix: Gradient Picker - block encounter an error when using gradient picker for Spectra block when Gutenberg is activated.
+
+### 2.3.1 - FRIDAY, 20th JANUARY 2023 ###
+* Fix: Info-Box - Margin unit set to `px` after refresh in editor.
+* Fix: Post Block - First post is getting empty when post block used on shop page.
+* Fix: Background processing issue in some cases.
 
 ### 2.3.0 - THURSDAY, 12th JANUARY 2023 ###
 * New: Introducing the Slider block that allows you to make almost anything into a carousel, a good way to grab attention!

@@ -82,7 +82,14 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 		 */
 		public function import_wpforms( $wpforms_url = '' ) {
 
-			$wpforms_url = ( isset( $_REQUEST['wpforms_url'] ) ) ? urldecode( $_REQUEST['wpforms_url'] ) : $wpforms_url; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			if ( ! current_user_can( 'edit_posts' ) ) {
+				wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
+			}
+			// Verify Nonce.
+			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
+
+			// Ingnoring PHPCS temporary, we need to check why url encoded passed from API.
+			$wpforms_url = ( isset( $_REQUEST['wpforms_url'] ) ) ? esc_url_raw( urldecode( $_REQUEST['wpforms_url'] ) ) : $wpforms_url; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			$ids_mapping = array();
 
 			if ( ! empty( $wpforms_url ) && function_exists( 'wpforms_encode' ) ) {
@@ -151,13 +158,19 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 		 */
 		public function import_block() {
 
+			if ( ! current_user_can( 'edit_posts' ) ) {
+				wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
+			}
+			// Verify Nonce.
+			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
+
 			// Allow the SVG tags in batch update process.
 			add_filter( 'wp_kses_allowed_html', array( $this, 'allowed_tags_and_attributes' ), 10, 2 );
 
 			$ids_mapping = get_option( 'ast_block_templates_wpforms_ids_mapping', array() );
 
 			// Post content.
-			$content = isset( $_REQUEST['content'] ) ? stripslashes( $_REQUEST['content'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$content = isset( $_REQUEST['content'] ) ? stripslashes( $_REQUEST['content'] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 			// Empty mapping? Then return.
 			if ( ! empty( $ids_mapping ) ) {
@@ -285,9 +298,16 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 		 * Activate Plugin
 		 */
 		public function activate_plugin() {
+
+			if ( ! current_user_can( 'edit_posts' ) ) {
+				wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
+			}
+			// Verify Nonce.
+			check_ajax_referer( 'ast-block-templates-ajax-nonce', 'security' );
+
 			wp_clean_plugins_cache();
 
-			$plugin_init = ( isset( $_POST['init'] ) ) ? esc_attr( $_POST['init'] ) : ''; // phpcs:ignore
+			$plugin_init = ( isset( $_POST['init'] ) ) ? sanitize_text_field( $_POST['init'] ) : '';
 
 			$activate = activate_plugin( $plugin_init, '', false, true );
 
@@ -314,13 +334,18 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 		 */
 		public function template_importer() {
 
-			$nonce = isset( $_REQUEST['_ajax_nonce'] ) && wp_verify_nonce( $_REQUEST['_ajax_nonce'], 'ast-block-templates-ajax-nonce' ) ? true : false;
-
-			if ( ! $nonce ) {
-				wp_send_json_error( 'Invalid nonce.' );
+			if ( ! current_user_can( 'edit_posts' ) ) {
+				wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
 			}
+			// Verify Nonce.
+			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
 
-			$api_uri = sanitize_text_field( $_REQUEST['api_uri'] );
+			$api_uri = ( isset( $_REQUEST['api_uri'] ) ) ? esc_url_raw( $_REQUEST['api_uri'] ) : '';
+
+			// Early return.
+			if ( '' == $api_uri ) {
+				wp_send_json_error( __( 'Something wrong', 'astra-sites' ) );
+			}
 
 			$api_args = apply_filters(
 				'ast_block_templates_api_args',
