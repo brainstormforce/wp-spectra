@@ -73,6 +73,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$bg_obj = array(
 					'backgroundType' => 'gradient',
 					'gradientValue'  => $attr['gradientValue'],
+					'gradientColor1'            => $attr['gradientColor1'],
+					'gradientColor2'            => $attr['gradientColor2'],
+					'gradientType'              => $attr['gradientType'],
+					'gradientLocation1'         => $attr['gradientLocation1'],
+					'gradientLocation2'         => $attr['gradientLocation2'],
+					'gradientAngle'             => $attr['gradientAngle'],
+					'gType' 					=> $attr['gType'],
 				);
 
 				$btn_bg_css                           = self::uag_get_background_obj( $bg_obj );
