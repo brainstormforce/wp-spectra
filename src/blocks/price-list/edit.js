@@ -21,57 +21,9 @@ const UAGBRestaurantMenu = ( props ) => {
 		props.setAttributes( { classMigrate: true } );
 		props.setAttributes( { childMigrate: true } );
 		const {
-			imgVrPadding,
-			imgHrPadding,
-			contentVrPadding,
-			contentHrPadding,
-			contentPaddingTop,
-			contentPaddingRight,
-			contentPaddingBottom,
-			contentPaddingLeft,
-			imgPaddingTop,
-			imgPaddingRight,
-			imgPaddingBottom,
-			imgPaddingLeft,
 			imagePosition
 		} = props.attributes;
 
-		if ( imgVrPadding ) {
-			if ( ! imgPaddingTop ) {
-				props.setAttributes( { imgPaddingTop: imgVrPadding } );
-			}
-			if ( ! imgPaddingBottom ) {
-				props.setAttributes( { imgPaddingBottom: imgVrPadding } );
-			}
-		}
-		if ( imgHrPadding ) {
-			if ( ! imgPaddingRight ) {
-				props.setAttributes( { imgPaddingRight: imgHrPadding } );
-			}
-			if ( ! imgPaddingLeft ) {
-				props.setAttributes( { imgPaddingLeft: imgHrPadding } );
-			}
-		}
-		if ( contentVrPadding ) {
-			if ( ! contentPaddingTop ) {
-				props.setAttributes( { contentPaddingTop: contentVrPadding } );
-			}
-			if ( ! contentPaddingBottom ) {
-				props.setAttributes( {
-					contentPaddingBottom: contentVrPadding,
-				} );
-			}
-		}
-		if ( contentHrPadding ) {
-			if ( ! contentPaddingRight ) {
-				props.setAttributes( {
-					contentPaddingRight: contentHrPadding,
-				} );
-			}
-			if ( ! contentPaddingLeft ) {
-				props.setAttributes( { contentPaddingLeft: contentHrPadding } );
-			}
-		}
 		if( imagePosition ){
 			if( 'left' === imagePosition ){
 				props.setAttributes( { imgAlign: 'side' } );
