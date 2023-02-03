@@ -118,7 +118,7 @@ function styling( props ) {
 		gradientLocation2,
 		gradientType,
 		gradientAngle,
-		gType,
+		selectGradient,
 	} = attributes;
 
 	const borderCSS = generateBorderCSS( props.attributes, 'slider' );
@@ -170,7 +170,7 @@ function styling( props ) {
 		'gradientLocation2': gradientLocation2,
 		'gradientType': gradientType,
 		'gradientAngle': gradientAngle,
-		'gType': gType,
+		'selectGradient': selectGradient,
         'backgroundRepeat': backgroundRepeatDesktop,
         'backgroundPosition': backgroundPositionDesktop,
         'backgroundSize': backgroundSizeDesktop,
@@ -290,7 +290,7 @@ function styling( props ) {
 		'gradientLocation2': gradientLocation2,
 		'gradientType': gradientType,
 		'gradientAngle': gradientAngle,
-		'gType': gType,
+		'selectGradient': selectGradient,
         'backgroundRepeat': backgroundRepeatTablet,
         'backgroundPosition': backgroundPositionTablet,
         'backgroundSize': backgroundSizeTablet,
@@ -360,7 +360,7 @@ function styling( props ) {
 		'gradientLocation2': gradientLocation2,
 		'gradientType': gradientType,
 		'gradientAngle': gradientAngle,
-		'gType': gType,
+		'selectGradient': selectGradient,
         'backgroundRepeat': backgroundRepeatMobile,
         'backgroundPosition': backgroundPositionMobile,
         'backgroundSize': backgroundSizeMobile,

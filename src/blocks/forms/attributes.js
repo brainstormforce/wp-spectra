@@ -1318,7 +1318,7 @@ const attributes = {
 			styleType: 'gradient-color-type'
 		}
 	},
-	gHType: {
+	selectHGradient: {
 		type: 'string',
 		default: 'default',
 		UAGCopyPaste: {

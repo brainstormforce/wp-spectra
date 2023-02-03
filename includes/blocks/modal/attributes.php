@@ -174,7 +174,7 @@ return array_merge(
 		'gradientLocation1'         => 0,
 		'gradientLocation2'         => 100,
 		'gradientAngle'             => 0,
-		'gType' => 'default',
+		'selectGradient' 			=> 'default',
 		'backgroundCustomSizeDesktop' => 100,
 		'backgroundCustomSizeTablet'  => '',
 		'backgroundCustomSizeMobile'  => '',

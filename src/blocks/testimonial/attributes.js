@@ -926,7 +926,7 @@ const attributes = {
 			styleType: 'image-padding-unit-tablet'
 		},
 	},
-	gType: {
+	selectGradient: {
 		type: 'string',
 		default: 'default',
 		UAGCopyPaste: {

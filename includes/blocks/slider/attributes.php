@@ -55,7 +55,7 @@ return array_merge(
 		'gradientLocation1'         => 0,
 		'gradientLocation2'         => 100,
 		'gradientAngle'             => 0,
-		'gType' => 'default',
+		'selectGradient' 			=> 'default',
 		'backgroundImageColor'        => '#FFFFFF75',
 		'backgroundCustomSizeDesktop' => 100,
 		'backgroundCustomSizeTablet'  => '',

@@ -167,14 +167,14 @@ function styling( props ) {
 		gradientHLocation2,
 		gradientHType,
 		gradientHAngle,
-		gHType,
+		selectHGradient,
 		gradientColor1,
 		gradientColor2,
 		gradientLocation1,
 		gradientLocation2,
 		gradientType,
 		gradientAngle,
-		gType,
+		selectGradient,
 	} = props.attributes;
 
 	let selectors = {};
@@ -764,7 +764,7 @@ function styling( props ) {
 			'gradientLocation2': gradientLocation2,
 			'gradientType': gradientType,
 			'gradientAngle': gradientAngle,
-			'gType': gType,
+			'selectGradient': selectGradient,
 		};
 
 		const btnBackground = generateBackgroundCSS( backgroundAttributes );
@@ -791,7 +791,7 @@ function styling( props ) {
 			'gradientLocation2': gradientHLocation2,
 			'gradientType': gradientHType,
 			'gradientAngle': gradientHAngle,
-			'gType': gHType,
+			'selectGradient': selectHGradient,
 		};
 
 		const btnhBackground = generateBackgroundCSS( hoverbackgroundAttributes );

@@ -61,7 +61,7 @@ const Settings = ( props ) => {
 			gradientLocation2,
 			gradientType,
 			gradientAngle,
-			gType,
+			selectGradient,
 			overlayType,
 			mobilePaddingType,
 			tabletPaddingType,
@@ -279,8 +279,8 @@ const Settings = ( props ) => {
 						label: 'gradientColor1'
 					}}
 					gradientType={ {
-						value: gType,
-						label: 'gType',
+						value: selectGradient,
+						label: 'selectGradient',
 					} }
 					backgroundGradientColor2={{
 						value: 	gradientColor2,

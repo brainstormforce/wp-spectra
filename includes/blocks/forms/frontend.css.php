@@ -651,7 +651,7 @@ if ( 'transparent' === $attr['submitBgType'] ) {
 		'gradientLocation1'         => $attr['gradientLocation1'],
 		'gradientLocation2'         => $attr['gradientLocation2'],
 		'gradientAngle'             => $attr['gradientAngle'],
-		'gType' 					=> $attr['gType'],
+		'selectGradient' 			=> $attr['selectGradient'],
 	);
 
 	$btn_bg_css = UAGB_Block_Helper::uag_get_background_obj( $bg_obj );
@@ -681,7 +681,7 @@ if ( 'transparent' === $attr['submitBgHoverType'] ) {
 		'gradientLocation1'         => $attr['gradientLocation1'],
 		'gradientLocation2'         => $attr['gradientLocation2'],
 		'gradientAngle'             => $attr['gradientAngle'],
-		'gType' 					=> $attr['gType'],
+		'selectGradient' 			=> $attr['selectHGradient'],
 	);
 
 	$btn_hover_bg_css = UAGB_Block_Helper::uag_get_background_obj( $bg_hover_obj );

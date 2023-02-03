@@ -197,7 +197,7 @@ const Settings = ( props ) => {
 		gradientValue,
 		gradientHValue,
 		gradientHColor1,
-		gHType,
+		selectHGradient,
 		gradientHColor2,
 		gradientHLocation1,
 		gradientHLocation2,
@@ -209,7 +209,7 @@ const Settings = ( props ) => {
 		gradientLocation2,
 		gradientType,
 		gradientAngle,
-		gType,
+		selectGradient,
 	} = attributes;
 
 	const presetSettings = () => {
@@ -1596,8 +1596,8 @@ const Settings = ( props ) => {
 									label: 'gradientColor1'
 								}}
 								gradientType={ {
-									value: gType,
-									label: 'gType',
+									value: selectGradient,
+									label: 'selectGradient',
 								} }
 								backgroundGradientColor2={{
 									value: 	gradientColor2,
@@ -1699,8 +1699,8 @@ const Settings = ( props ) => {
 									label: 'gradientHColor1'
 								}}
 								gradientType={ {
-									value: gHType,
-									label: 'gHType',
+									value: selectHGradient,
+									label: 'selectHGradient',
 								} }
 								backgroundGradientColor2={{
 									value: 	gradientHColor2,

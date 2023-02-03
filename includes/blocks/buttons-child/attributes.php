@@ -98,7 +98,7 @@ return array_merge(
 		'gradientLocation1'         => 0,
 		'gradientLocation2'         => 100,
 		'gradientAngle'             => 0,
-		'gType' => 'default',
+		'selectGradient' 			=> 'default',
 		'hovergradientValue'     => '',
 		'hovergradientColor1'            => '#06558a',
 		'hovergradientColor2'            => '#0170b9',
@@ -106,7 +106,7 @@ return array_merge(
 		'hovergradientLocation1'         => 0,
 		'hovergradientLocation2'         => 100,
 		'hovergradientAngle'             => 0,
-		'gType' => 'default',
+		'hoverselectGradient' 			 => 'default',
 		'backgroundOpacity'      => '',
 		'backgroundHoverOpacity' => '',
 		// letter spacing.

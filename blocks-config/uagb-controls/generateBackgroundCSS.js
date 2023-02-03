@@ -26,18 +26,18 @@ function generateBackgroundCSS ( backgroundAttributes ) {
 		gradientLocation2,
 		gradientType,
 		gradientAngle,
-		gType,
+		selectGradient,
     } = backgroundAttributes;
 
     const bgCSS = {};
 
     let gradient;
     
-    if( 'default' === gType ) {
+    if( 'default' === selectGradient ) {
         gradient = gradientValue;
-    } else if ( 'linear' === gradientType && 'manual' === gType ) {
+    } else if ( 'linear' === gradientType && 'manual' === selectGradient ) {
         gradient = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${	gradientColor2 } ${ gradientLocation2 }%)`;
-    } else if ( 'radial' === gradientType && 'manual' === gType ) {
+    } else if ( 'radial' === gradientType && 'manual' === selectGradient ) {
         gradient = `radial-gradient( at center center, ${ gradientColor1} ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
     }
     

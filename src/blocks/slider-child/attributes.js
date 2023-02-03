@@ -468,7 +468,7 @@ const attributes = {
 			styleType: 'gradient-color-type'
 		}
 	},
-	gType: {
+	selectGradient: {
 		type: 'string',
 		default: 'default',
 		UAGCopyPaste: {

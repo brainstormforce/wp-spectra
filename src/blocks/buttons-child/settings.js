@@ -93,7 +93,7 @@ const Settings = ( props ) => {
 		gradientValue,
 		hovergradientValue,
 		hovergradientColor1,
-		hovergType,
+		hoverselectGradient,
 		hovergradientColor2,
 		hovergradientLocation1,
 		hovergradientLocation2,
@@ -105,7 +105,7 @@ const Settings = ( props ) => {
 		gradientLocation2,
 		gradientType,
 		gradientAngle,
-		gType,
+		selectGradient,
 		topMargin,
 		rightMargin,
 		bottomMargin,
@@ -506,8 +506,8 @@ const Settings = ( props ) => {
 											label: 'gradientColor1'
 										}}
 										gradientType={ {
-											value: gType,
-											label: 'gType',
+											value: selectGradient,
+											label: 'selectGradient',
 										} }
 										backgroundGradientColor2={{
 											value: 	gradientColor2,
@@ -599,8 +599,8 @@ const Settings = ( props ) => {
 											label: 'hovergradientColor1'
 										}}
 										gradientType={ {
-											value: hovergType,
-											label: 'hovergType',
+											value: hoverselectGradient,
+											label: 'hoverselectGradient',
 										} }
 										backgroundGradientColor2={{
 											value: 	hovergradientColor2,
