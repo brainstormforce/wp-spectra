@@ -68,43 +68,12 @@ class UAGB_Init_Blocks {
 
 		add_action( 'wp_ajax_uagb_forms_recaptcha', array( $this, 'forms_recaptcha' ) );
 
-		add_action( 'wp_ajax_uagb_spectra_font_awesome_polyfiller', array( $this, 'spectra_font_awesome_polyfiller' ) );
-
 		if ( ! is_admin() ) {
 			add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
 		}
 
-		add_action( 'spectra_analytics_complete_action', array( $this, 'regenerate_analytics_data' ) );
-
 	}
-
-	/**
-	 * Function to get Spectra Font Awesome Polyfiller data.
-	 *
-	 * @since 2.0.14
-	 */
-	public function spectra_font_awesome_polyfiller() {
-
-		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
-
-		$data = get_spectra_font_awesome_polyfiller();
-
-		wp_send_json_success( $data );
-	}
-
-	/**
-	 * Reset all the filters for scheduled actions to get post block count.
-	 */
-	public function regenerate_analytics_data() {
-
-		delete_option( 'spectra_blocks_count_status' );
-		delete_option( 'get_spectra_block_count' );
-		delete_option( 'spectra_settings_data' );
-		delete_option( 'spectra_saved_blocks_settings' );
-		delete_transient( 'spectra_background_process_action' );
-
-	}
-
+	
 	/**
 	 * Render block.
 	 *
@@ -255,6 +224,14 @@ class UAGB_Init_Blocks {
 	 * @since 2.0.0
 	 */
 	public function get_taxonomy() {
+
+		$response_data = array(
+			'messsage' => __( 'User is not authenticated!', 'ultimate-addons-for-gutenberg' ),
+		);
+
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( $response_data );
+		}
 
 		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
 

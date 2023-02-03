@@ -652,7 +652,7 @@ function styling( props ) {
 			'padding-bottom': generateCSSUnit( iconMarginBottomTablet, iconTabletMarginUnit ),
 			'padding-left': generateCSSUnit( iconMarginLeftTablet, iconTabletMarginUnit ),
 		},
-		 ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
+		 '.uagb-infobox__content-wrap .uagb-ifb-cta .uagb-ifb-button-wrapper.wp-block-button a.uagb-infobox-cta-link.wp-block-button__link': {
 			 'padding-top': generateCSSUnit(
 				 paddingBtnTopTablet,
 				 tabletPaddingBtnUnit
@@ -817,7 +817,7 @@ function styling( props ) {
 			'padding-left': generateCSSUnit( iconMarginLeftMobile, iconMobileMarginUnit ),
 			'box-sizing' : `${ boxSizingImageMobile }`,
 		},
-		 ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
+		 '.uagb-infobox__content-wrap .uagb-ifb-cta .uagb-ifb-button-wrapper.wp-block-button a.uagb-infobox-cta-link.wp-block-button__link': {
 			 'padding-top': generateCSSUnit(
 				 paddingBtnTopMobile,
 				 mobilePaddingBtnUnit
