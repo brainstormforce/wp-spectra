@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.1
-Stable tag: 2.3.5
+Stable tag: 2.3.5.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -170,7 +170,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 2.3.6 =
+= 2.3.5.1 =
 * Fix: Global - Skip Br Tags from button's text.
 
 = 2.3.5 - THURSDAY, 2nd FEBRUARY 2023 =
