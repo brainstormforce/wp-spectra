@@ -104,14 +104,11 @@ const ResponsiveSlider = ( props ) => {
 
 
 	return (
-		<div
-			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
-		>
+		<>
 			{
 				controlBeforeDomElement
 			}
-			<div className="components-base-control uagb-responsive-range">
+			<div ref={panelRef} className="components-base-control uagb-responsive-range">
 				<div className="uagb-responsive-control-inner">
 					{ output[ deviceType ] ? output[ deviceType ] : output.Desktop }
 				</div>
@@ -119,7 +116,7 @@ const ResponsiveSlider = ( props ) => {
 			{
 				controlAfterDomElement
 			}
-		</div>
+		</>
 	);
 };
 export default ResponsiveSlider;

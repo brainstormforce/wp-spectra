@@ -156,14 +156,11 @@ const ResponsiveToggle = props => {
 
 
 	return (
-		<div
-			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
-		>
+		<>
 			{
 				controlBeforeDomElement
 			}
-			<div className="uag-responsive-label-wrap">
+			<div ref={panelRef} className="uag-responsive-label-wrap">
 				{ label && (
 					<span className="uag-control-label">{ label }</span>
 				) }
@@ -219,7 +216,7 @@ const ResponsiveToggle = props => {
 			{
 				controlAfterDomElement
 			}
-		</div>
+		</>
 	)
 }
 

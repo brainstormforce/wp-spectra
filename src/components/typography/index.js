@@ -432,15 +432,12 @@ const TypographyControl = ( props ) => {
 
 
 	return (
-		<div
-			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
-		>
+		<>
 			{
 				controlBeforeDomElement
 			}
 			<div
-				className={ `components-base-control uag-typography-options spectra-control-popup__options popup-${props?.attributes?.block_id} ${ activeClass }` }
+				ref={panelRef} className={ `components-base-control uag-typography-options spectra-control-popup__options popup-${props?.attributes?.block_id} ${ activeClass }` }
 			>
 				{ ! disableAdvancedOptions && (
 					<>
@@ -452,7 +449,7 @@ const TypographyControl = ( props ) => {
 			{
 				controlAfterDomElement
 			}
-		</div>
+		</>
 	);
 };
 

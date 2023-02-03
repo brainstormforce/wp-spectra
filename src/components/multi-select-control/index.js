@@ -36,14 +36,11 @@ export default function UAGMultiSelectControl( {label, options, data, setAttribu
 	const allOptions = wp.hooks.applyFilters( `spectra.${selectedBlock}.${panelNameForHook}.${controlName}.options`, options, selectedBlock );
 
 	return (
-		<div
-			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
-		>
+		<>
 			{
 				controlBeforeDomElement
 			}
-			<div className="components-base-control">
+			<div ref={panelRef} className="components-base-control">
 				<Select
 					options={allOptions}
 					defaultValue={allOptions.filter( ( item ) => data.value.includes( item.value ) )}
@@ -59,7 +56,7 @@ export default function UAGMultiSelectControl( {label, options, data, setAttribu
 			{
 				controlAfterDomElement
 			}
-		</div>
+		</>
 	);
 }
 

@@ -278,31 +278,31 @@ const BoxShadowControl = ( props ) => {
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	return (
+		<>
+		{
+			controlBeforeDomElement
+		}
 		<div
 			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
+			className={ `components-base-control uag-box-shadow-options spectra-control-popup__options popup-${blockId} ${ activeClass }` }
 		>
 			{
-				controlBeforeDomElement
-			}
-			{
 				popup ? (
-					<div
-						className={ `components-base-control uag-box-shadow-options spectra-control-popup__options popup-${blockId} ${ activeClass }` }
-					>
+					<>
 						{ boxShadowAdvancedControls }
 						{ showAdvancedControls && advancedControls }
-					</div>
+					</>
 				) : (
 					<>
 						{ overallControls }
 					</>
 				)
 			}
+		</div>
 			{
 				controlAfterDomElement
 			}
-		</div>
+		</>
 	);
 };
 

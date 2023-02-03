@@ -171,13 +171,13 @@ export default function ImageSizeControl( {
 
 
 	return (
+		<>
+		{
+			controlBeforeDomElement
+		}
 		<div
 			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
 		>
-			{
-				controlBeforeDomElement
-			}
 			{ imageSizeOptions.length !== 0 && (
 				<ResponsiveSelectControl
 					label={ __( 'Image Size', 'ultimate-addons-for-gutenberg' ) }
@@ -218,9 +218,10 @@ export default function ImageSizeControl( {
 					</div>
 				</div>
 			) }
+		</div>
 			{
 				controlAfterDomElement
 			}
-		</div>
+			</>
 	);
 }

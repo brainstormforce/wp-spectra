@@ -226,31 +226,31 @@ const TextShadowControl = ( props ) => {
 
 
 	return (
+		<>
+		{
+			controlBeforeDomElement
+		}
 		<div
 			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
+			className={ `components-base-control uag-text-shadow-options spectra-control-popup__options popup-${blockId} ${ activeClass }` }
 		>
 			{
-				controlBeforeDomElement
-			}
-			{
 				popup ? (
-					<div
-						className={ `components-base-control uag-text-shadow-options spectra-control-popup__options popup-${blockId} ${ activeClass }` }
-					>
+					<>
 						{ textShadowAdvancedControls }
 						{ showAdvancedControls && advancedControls }
-					</div>
+					</>
 				) : (
 					<>
 						{ overallControls }
 					</>
 				)
 			}
+		</div>
 			{
 				controlAfterDomElement
 			}
-		</div>
+		</>
 	);
 };
 

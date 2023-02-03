@@ -134,14 +134,11 @@ const Range = ( props ) => {
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	return (
-		<div
-			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
-		>
+		<>
 			{
 				controlBeforeDomElement
 			}
-			<div className="components-base-control uag-range-control uagb-size-type-field-tabs">
+			<div ref={panelRef} className="components-base-control uag-range-control uagb-size-type-field-tabs">
 				<div className="uagb-control__header">
 					<ResponsiveToggle
 						label= { props.label }
@@ -199,7 +196,7 @@ const Range = ( props ) => {
 			{
 				controlAfterDomElement
 			}
-		</div>
+		</>
 	);
 };
 

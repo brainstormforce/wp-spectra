@@ -198,14 +198,11 @@ const UAGPresets = ( props ) => {
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
     return (
-		<div
-			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
-		>
+		<>
 			{
 				controlBeforeDomElement
 			}
-			<div className={ classnames(
+			<div ref={panelRef} className={ classnames(
 				className,
 				'uagb-presets-main-wrap',
 				'components-base-control'
@@ -224,7 +221,7 @@ const UAGPresets = ( props ) => {
 			{
 				controlAfterDomElement
 			}
-		</div>
+		</>
     );
 }
 
