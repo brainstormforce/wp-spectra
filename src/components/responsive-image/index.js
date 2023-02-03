@@ -81,14 +81,11 @@ import { getPanelIdFromRef } from '@Utils/Helpers';
 	 const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	 return (
-		<div
-			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
-		>
+		<>
 			{
 				controlBeforeDomElement
 			}
-			<div className="uag-responsive-image-select components-base-control uagb-responsive-select-control">
+			<div ref={panelRef} className="uag-responsive-image-select components-base-control uagb-responsive-select-control">
 				<div className="uagb-size-type-field-tabs">
 					<div className="uagb-control__header">
 						<ResponsiveToggle
@@ -105,7 +102,7 @@ import { getPanelIdFromRef } from '@Utils/Helpers';
 			{
 				controlAfterDomElement
 			}
-		</div>
+		</>
 	 );
  };
 

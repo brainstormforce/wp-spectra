@@ -178,14 +178,11 @@ const AdvancedPopColorControl = ( props ) => {
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	return (
-		<div
-			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
-		>
+		<>
 			{
 				controlBeforeDomElement
 			}
-			<div className="uagb-color-popover-container components-base-control new-uagb-advanced-colors">
+			<div ref={panelRef} className="uagb-color-popover-container components-base-control new-uagb-advanced-colors">
 				<div className="uagb-advanced-color-settings-container">
 					{ label && (
 						<span className="uagb-beside-color-label uag-control-label">
@@ -302,7 +299,7 @@ const AdvancedPopColorControl = ( props ) => {
 			{
 				controlAfterDomElement
 			}
-		</div>
+		</>
 	);
 };
 

@@ -33,14 +33,11 @@ export default function ColorSwitchControl( {label, type, classic, gradient, set
 
 
 	return (
-		<div
-			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
-		>
+		<>
 			{
 				controlBeforeDomElement
 			}
-			<div className="uagb-color-switch-control-container components-base-control">
+			<div ref={panelRef} className="uagb-color-switch-control-container components-base-control">
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ label }
@@ -88,6 +85,6 @@ export default function ColorSwitchControl( {label, type, classic, gradient, set
 			{
 				controlAfterDomElement
 			}
-		</div>
+		</>
 	);
 }

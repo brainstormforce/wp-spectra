@@ -477,14 +477,11 @@ const SpacingControl = ( props ) => {
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	return (
-		<div
-			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
-		>
+		<>
 			{
 				controlBeforeDomElement
 			}
-			<div className="components-base-control uagb-spacing-control">
+			<div ref={panelRef} className="components-base-control uagb-spacing-control">
 				<div className="uagb-size-type-field-tabs">
 					<div className="uagb-control__header">
 					<ResponsiveToggle
@@ -547,7 +544,7 @@ const SpacingControl = ( props ) => {
 			{
 				controlAfterDomElement
 			}
-		</div>
+		</>
 	);
 
 };

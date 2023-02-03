@@ -92,14 +92,11 @@ const UAGTextControl = ( props ) => {
 
 
     return(
-        <div
-			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
-		>
+        <>
 			{
 				controlBeforeDomElement
 			}
-            <div className={`components-base-control uagb-text-control uagb-size-type-field-tabs${isEnableDynamicContent() ? ' uagb-text-control--open-dynamic-content' : ''}`}>
+            <div ref={panelRef} className={`components-base-control uagb-text-control uagb-size-type-field-tabs${isEnableDynamicContent() ? ' uagb-text-control--open-dynamic-content' : ''}`}>
                 { props?.variant !== 'inline' && props?.showHeaderControls &&
                     <HeaderControls />
                 }
@@ -159,7 +156,7 @@ const UAGTextControl = ( props ) => {
 			{
 				controlAfterDomElement
 			}
-        </div>
+        </>
     );
 };
 
