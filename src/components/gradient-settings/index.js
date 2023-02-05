@@ -1,5 +1,5 @@
 import styles from './editor.lazy.scss';
-import { GradientPicker } from '@wordpress/components';
+import { GradientPicker, Button } from '@wordpress/components';
 import React, { useLayoutEffect } from 'react';
 import Range from '@Components/range/Range.js';
 import { __ } from '@wordpress/i18n';
@@ -22,37 +22,23 @@ const GradientSettings = ( props ) => {
 		setAttributes( { [ backgroundGradient.label ]: value } );
 	};
 	
+	const advancedSetting = () => {
+		if( gradientType.value ) {
+			setAttributes( { [ gradientType.label ]: false } )
+		} else {
+			setAttributes( { [ gradientType.label ]: true } )
+		}
+	};
+
 	return (
 		<>
-			<MultiButtonsControl
-				setAttributes={ setAttributes }
-				label={ __(
-					'Select Gradient',
-					'ultimate-addons-for-gutenberg'
-				) }
-				data={ {
-					value: gradientType.value,
-					label: gradientType.label,
-				} }
-				className="uagb-multi-button-alignment-control"
-				options={ [
-					{
-						value: 'default',
-						label: __(
-							'Default',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: 'manual',
-						label: __(
-							'Manual',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-				] }
-			/>
-			{ gradientType.value === 'default' && (
+			<Button
+				className="uagb-gradient-advanced-option"
+				onClick = { () => advancedSetting() }
+			>
+				{ gradientType.value ? 'Basic Settings' : 'Advanced Settings' }
+			</Button>
+			{ ! gradientType.value && (
 				<GradientPicker
 					__nextHasNoMargin = { true }
 					value={ backgroundGradient.value }
@@ -61,7 +47,7 @@ const GradientSettings = ( props ) => {
 					gradients={[]} // Passing it an empty to resolve block encounters an error when gutenberg is activated.
 				/>
 			)}
-			{ gradientType.value === 'manual' && (
+			{ gradientType.value && (
 				<>
 					<AdvancedPopColorControl
 						label={ __(

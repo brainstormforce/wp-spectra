@@ -1080,8 +1080,8 @@ const attributes = {
 		}
 	},
 	selectGradient: {
-		type: 'string',
-		default: 'default',
+		type: 'Boolean',
+		default: false,
 		UAGCopyPaste: {
 			styleType: 'gradient-type'
 		}

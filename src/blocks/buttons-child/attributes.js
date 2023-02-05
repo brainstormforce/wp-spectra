@@ -195,9 +195,16 @@ const attributes = {
 			styleType: 'gradient-color-type'
 		}
 	},
-	gType: {
-		type: 'string',
-		default: 'default',
+	hoverselectGradient: {
+		type: 'Boolean',
+		default: false,
+		UAGCopyPaste: {
+			styleType: 'gradient-type'
+		}
+	},
+	selectGradient: {
+		type: 'Boolean',
+		default: false,
 		UAGCopyPaste: {
 			styleType: 'gradient-type'
 		}
@@ -249,13 +256,6 @@ const attributes = {
 		default: 'linear',
 		UAGCopyPaste: {
 			styleType: 'gradient-color-type'
-		}
-	},
-	hovergType: {
-		type: 'string',
-		default: 'default',
-		UAGCopyPaste: {
-			styleType: 'gradient-type'
 		}
 	},
 	hovergradientLocation1: {

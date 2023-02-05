@@ -181,7 +181,7 @@ return array_merge(
 		'gradientLocation1'         => 0,
 		'gradientLocation2'         => 100,
 		'gradientAngle'             => 0,
-		'selectGradient' 			=> 'default'
+		'selectGradient' 			=> false
 	),
 	$border_attribute
 );
