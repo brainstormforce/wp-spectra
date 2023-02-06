@@ -616,8 +616,8 @@ const Background = ( props ) => {
 													},
 												},
 											} }
-											limitMin={ { 'px': -800, '%': -100, 'em': -100, 'vw': -100 } }
-											limitMax={ { 'px': 800, '%': 100, 'em': 100, 'vw': 100 } }
+											limitMin={ { 'px': -800, '%': -100, 'em': -100, 'vh': -100 } }
+											limitMax={ { 'px': 800, '%': 100, 'em': 100, 'vh': 100 } }
 											units={ [
 												{
 													name: __(
@@ -635,8 +635,8 @@ const Background = ( props ) => {
 													unitValue: 'em',
 												},
 												{
-													name: __( 'VW', 'ultimate-addons-for-gutenberg' ),
-													unitValue: 'vw',
+													name: __( 'VH', 'ultimate-addons-for-gutenberg' ),
+													unitValue: 'vh',
 												},
 											] }
 											setAttributes={ setAttributes }
