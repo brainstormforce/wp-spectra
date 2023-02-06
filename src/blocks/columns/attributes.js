@@ -372,7 +372,7 @@ const attributes = {
 	},
 	borderRadius: {
 		type: 'number',
-		default: 1
+		default: ''
 	},
 	borderColor: {
 		type: 'string',
