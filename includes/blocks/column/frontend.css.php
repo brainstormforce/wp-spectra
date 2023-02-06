@@ -89,12 +89,12 @@ if ( 'image' === $bg_type ) {
 	);
 } elseif ( 'gradient' === $bg_type ) {
 
-	$gradientColor1      = isset( $attr['gradientColor1'] ) ? $attr['gradientColor1'] : '';
-	$gradientColor2      = isset( $attr['gradientColor2'] ) ? $attr['gradientColor2'] : '';
-	$gradientType        = isset( $attr['gradientType'] ) ? $attr['gradientType'] : '';
-	$gradientLocation1   = isset( $attr['gradientLocation1'] ) ? $attr['gradientLocation1'] : '';
-	$gradientLocation2   = isset( $attr['gradientLocation2'] ) ? $attr['gradientLocation2'] : '';
-	$gradientAngle       = isset( $attr['gradientAngle'] ) ? $attr['gradientAngle'] : '';
+	$gradientColor1    = isset( $attr['gradientColor1'] ) ? $attr['gradientColor1'] : '';
+	$gradientColor2    = isset( $attr['gradientColor2'] ) ? $attr['gradientColor2'] : '';
+	$gradientType      = isset( $attr['gradientType'] ) ? $attr['gradientType'] : '';
+	$gradientLocation1 = isset( $attr['gradientLocation1'] ) ? $attr['gradientLocation1'] : '';
+	$gradientLocation2 = isset( $attr['gradientLocation2'] ) ? $attr['gradientLocation2'] : '';
+	$gradientAngle     = isset( $attr['gradientAngle'] ) ? $attr['gradientAngle'] : '';
 
 	if ( ! $attr['selectGradient'] && $attr['gradientValue'] ) {
 		$gradient = $attr['gradientValue'];
@@ -103,7 +103,6 @@ if ( 'image' === $bg_type ) {
 	} elseif ( 'radial' === $gradientType && $attr['selectGradient'] ) {
 		$gradient = 'radial-gradient( at center center, ' . $gradientColor1 . ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
 	} 
-	echo $gradient;
 	$selectors[' > .uagb-column__overlay']['background-image'] = $gradient;
 }
 

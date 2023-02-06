@@ -111,12 +111,12 @@ $selectors = array(
 if ( 'gradient' === $attr['backgroundType'] ) {
 	$selectors[' .uagb-tm__content']['background-color'] = 'transparent';
 	
-	$gradientColor1      = isset( $attr['gradientColor1'] ) ? $attr['gradientColor1'] : '';
-	$gradientColor2      = isset( $attr['gradientColor2'] ) ? $attr['gradientColor2'] : '';
-	$gradientType        = isset( $attr['gradientType'] ) ? $attr['gradientType'] : '';
-	$gradientLocation1   = isset( $attr['gradientLocation1'] ) ? $attr['gradientLocation1'] : '';
-	$gradientLocation2   = isset( $attr['gradientLocation2'] ) ? $attr['gradientLocation2'] : '';
-	$gradientAngle       = isset( $attr['gradientAngle'] ) ? $attr['gradientAngle'] : '';
+	$gradientColor1    = isset( $attr['gradientColor1'] ) ? $attr['gradientColor1'] : '';
+	$gradientColor2    = isset( $attr['gradientColor2'] ) ? $attr['gradientColor2'] : '';
+	$gradientType      = isset( $attr['gradientType'] ) ? $attr['gradientType'] : '';
+	$gradientLocation1 = isset( $attr['gradientLocation1'] ) ? $attr['gradientLocation1'] : '';
+	$gradientLocation2 = isset( $attr['gradientLocation2'] ) ? $attr['gradientLocation2'] : '';
+	$gradientAngle     = isset( $attr['gradientAngle'] ) ? $attr['gradientAngle'] : '';
 
 	if ( ! $attr['selectGradient'] && $attr['gradientValue'] ) {
 		$gradient = $attr['gradientValue'];
