@@ -12,6 +12,8 @@ import './style.scss';
 import { compose } from '@wordpress/compose';
 import { useDeviceType } from '@Controls/getPreviewType';
 import styles from './editor.lazy.scss';
+import { SwiperSlide } from 'swiper/react';
+
 
 const UAGBSlider = ( props ) => {
 	const deviceType = useDeviceType();
@@ -66,7 +68,6 @@ const applyWithSelect = withSelect( ( select, props ) => { // eslint-disable-lin
 	const parentBlockIds = getBlockParents( selectedBlock?.clientId );
 	const blockParents = select( 'core/block-editor' ).getBlocksByClientId( parentBlockIds );
 
-
 	return {
 		insertBlock,
 		block: ( select( 'core/block-editor' ) || select( 'core/editor' ) ).getBlock(
@@ -105,12 +106,12 @@ const uagbSlideClass = createHigherOrderComponent( ( BlockListBlock ) => {
 				...props.wrapperProps
 			};
 
-			return <div className='swiper-slide'
+			return <SwiperSlide
 			onClick={( e ) => onSwiperChildClick( e )}
 			aria-hidden="true"
 			><BlockListBlock
 			{ ...props } 
-			wrapperProps={ wrapperProps } /></div>;
+			wrapperProps={ wrapperProps } /></SwiperSlide>;
 		}
 
 		return <BlockListBlock
