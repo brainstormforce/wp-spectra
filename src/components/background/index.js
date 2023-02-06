@@ -913,20 +913,20 @@ const Background = ( props ) => {
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	return (
-		<>
-		{
-			controlBeforeDomElement
-		}
 		<div
 			ref={panelRef}
-			className="uag-bg-select-control components-base-control"
+			className={`spectra-components-control spectra-components-control--${controlName}`}
 		>
-			{ advancedControls }
+			{
+				controlBeforeDomElement
+			}
+			<div className="uag-bg-select-control components-base-control">
+				{ advancedControls }
+			</div>
+			{
+				controlAfterDomElement
+			}
 		</div>
-		{
-			controlAfterDomElement
-		}
-	</>
 	);
 };
 
