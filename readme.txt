@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.1
-Stable tag: 2.3.4
+Stable tag: 2.3.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -169,6 +169,15 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 2.3.5 - THURSDAY, 2nd FEBRUARY 2023 =
+* Improvement: Global - Removed Backward compatibility of button padding for old users from multiple blocks.
+* Improvement: Global - Updated SVG icons rendering conditions & optimized the loading.
+* Fix: Container - Full height and Fixed background Image not working properly on editor.
+* Fix: Info-Box - CTA padding not working on responsive devices.
+* Fix: Heading - Disabling heading and sub-heading hides the separator.
+* Fix: Forms - Using form inside inner blocks, it was showing an error on submit.
+* Fix: Background control - Image has wrong units for custom positioning.
 
 = 2.3.4 - WEDNESDAY, 25th JANUARY 2023 =
 * Improvement: Updated Gutenberg Templates Library.

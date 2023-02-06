@@ -42,39 +42,6 @@ const UAGBTeam = ( props ) => {
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 		props.setAttributes( { classMigrate: true } );
 
-		const {
-			imgLeftMargin,
-			imgRightMargin,
-			imgTopMargin,
-			imgBottomMargin,
-			imageLeftMargin,
-			imageRightMargin,
-			imageTopMargin,
-			imageBottomMargin,
-		} = props.attributes;
-
-		if ( imgTopMargin ) {
-			if ( null === imageTopMargin || undefined === imageTopMargin ) {
-				props.setAttributes( { imageTopMargin: imgTopMargin } );
-			}
-		}
-		if ( imgBottomMargin ) {
-			if ( null === imageBottomMargin || undefined === imageBottomMargin ) {
-				props.setAttributes( { imageBottomMargin: imgBottomMargin } );
-			}
-		}
-
-		if ( imgLeftMargin ) {
-			if ( null === imageLeftMargin || undefined === imageLeftMargin ) {
-				props.setAttributes( { imageLeftMargin: imgLeftMargin } );
-			}
-		}
-		if ( imgRightMargin ) {
-			if ( null === imageRightMargin || undefined === imageRightMargin ) {
-				props.setAttributes( { imageRightMargin: imgRightMargin } );
-			}
-		}
-
 	}, [] );
 
 	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/team.svg`;
