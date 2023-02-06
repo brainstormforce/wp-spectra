@@ -212,12 +212,14 @@ const MultiButtonsControl = ( props ) => {
 	const allOptions = wp.hooks.applyFilters( `spectra.${selectedBlock}.${panelNameForHook}.${controlName}.options`, options, selectedBlock );
 
 	return (
-		<>
-		{
-			controlBeforeDomElement
-		}
+		<div
+			ref={panelRef}
+			className={`spectra-components-control spectra-components-control--${controlName}`}
+		>
+			{
+				controlBeforeDomElement
+			}
 			<div
-				ref={panelRef}
 				className={ `components-base-control uagb-multi-buttons-control ${ iconsClass } spectra-multi-buttons__color-scheme--${ colorVariant } spectra-multi-buttons__layout--${ layoutVariant }` }
 			>
 				<div className="uagb-multi-buttons-control__label uag-control-label">
@@ -251,7 +253,7 @@ const MultiButtonsControl = ( props ) => {
 			{
 				controlAfterDomElement
 			}
-		</>
+		</div>
 	);
 };
 

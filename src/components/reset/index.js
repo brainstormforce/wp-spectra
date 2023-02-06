@@ -89,15 +89,14 @@ const UAGReset = ( props ) => {
 	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 	return (
-		<>
-		{
-			controlBeforeDomElement
-		}
 		<Tooltip
 			text={ __( 'Reset', 'ultimate-addons-for-gutenberg' )}
 			key={ 'reset' }
 			ref={panelRef}
 		>
+			{
+				controlBeforeDomElement
+			}
 			<Button
 				className="uagb-reset"
 				isSecondary
@@ -110,11 +109,10 @@ const UAGReset = ( props ) => {
 			>
 				<Dashicon icon="image-rotate" />
 			</Button>
-		</Tooltip>
 			{
 				controlAfterDomElement
 			}
-			</>
+		</Tooltip>
 	);
 }
 

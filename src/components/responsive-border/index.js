@@ -360,13 +360,14 @@ const ResponsiveBorder = ( props ) => {
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	return (
-		<>
-		{controlBeforeDomElement}
-		<div ref={panelRef}>
+		<div
+			ref={panelRef}
+			className={`spectra-components-control spectra-components-control--${controlName}`}
+		>
+			{controlBeforeDomElement}
 			{advancedControls}
+			{controlAfterDomElement}
 		</div>
-		{controlAfterDomElement}
-		</>
 	);
 };
 

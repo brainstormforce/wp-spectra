@@ -35,15 +35,18 @@ export default function Separator ( { disabledTopSpace } ) {
 	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 	return (
-		<>
+		<div
+			ref={panelRef}
+			className={`spectra-components-control spectra-components-control--${controlName}`}
+		>
 			{
 				controlBeforeDomElement
 			}
-			<div ref={panelRef} className={`spectra-separator ${disabledTopSpace ? 'spectra-separator--removed-top-space' : ''}`} />
+			<div className={`spectra-separator ${disabledTopSpace ? 'spectra-separator--removed-top-space' : ''}`} />
 			{
 				controlAfterDomElement
 			}
-		</>
+		</div>
 	);
 };
 

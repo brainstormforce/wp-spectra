@@ -48,13 +48,16 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 	const allOptions = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.options`, options, blockNameForHook );
 
 	return (
-		<>
+		<div
+			ref={panelRef}
+			className={`spectra-components-control spectra-components-control--${controlName}`}
+		>
 			{
 				controlBeforeDomElement
 			}
 			{
 				children ? (
-					<div ref={panelRef} className={ `uagb-select-control uagb-select-control--layout-${ layout }` }>
+					<div className={ `uagb-select-control uagb-select-control--layout-${ layout }` }>
 						<SelectControl
 							label={ label }
 							value={ data.value }
@@ -83,7 +86,7 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 			{
 				controlAfterDomElement
 			}
-		</>
+		</div>
 	);
 }
 
