@@ -99,8 +99,12 @@
 	}
 }
 //Image Scroll issue.
-.block-editor-block-list__layout.is-root-container .uagb-is-root-container {
-	border-radius: unset;
+.block-editor-block-list__layout.is-root-container {
+
+	.uagb-is-root-container,
+	.uagb-container-has-children .wp-block-uagb-container {
+		border-radius: unset;
+	}
 }
 
 // Container select layout view CSS for Astra customizer.

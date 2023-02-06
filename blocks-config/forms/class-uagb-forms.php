@@ -74,24 +74,25 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			}
 
 			foreach ( $blocks_array as $blocks ) {
-				if ( ! empty( $blocks ) ) {
-					if ( isset( $blocks['blockName'] ) && 'uagb/forms' === $blocks['blockName'] ) {
-						if ( ! empty( $blocks['attrs'] ) && isset( $blocks['attrs']['block_id'] ) && $blocks['attrs']['block_id'] === $block_id ) {
-							return $blocks['attrs'];
-						}
-					} else {
-						if ( is_array( $blocks['innerBlocks'] ) && ! empty( $blocks['innerBlocks'] ) ) {
-							foreach ( $blocks['innerBlocks'] as $j => $inner_block ) {
-								if ( isset( $inner_block['blockName'] ) && 'uagb/forms' === $inner_block['blockName'] ) {
-									if ( ! empty( $inner_block['attrs'] ) && isset( $inner_block['attrs']['block_id'] ) && $inner_block['attrs']['block_id'] === $block_id ) {
-										return $inner_block['attrs'];
-									}
-								} else {
-									$temp_attrs = $this->recursive_inner_forms( $inner_block['innerBlocks'], $block_id );
+				if ( empty( $blocks ) ) {
+					continue;
+				}
+				if ( isset( $blocks['blockName'] ) && 'uagb/forms' === $blocks['blockName'] ) {
+					if ( ! empty( $blocks['attrs'] ) && isset( $blocks['attrs']['block_id'] ) && $blocks['attrs']['block_id'] === $block_id ) {
+						return $blocks['attrs'];
+					}
+				} else {
+					if ( is_array( $blocks['innerBlocks'] ) && ! empty( $blocks['innerBlocks'] ) ) {
+						foreach ( $blocks['innerBlocks'] as $j => $inner_block ) {
+							if ( isset( $inner_block['blockName'] ) && 'uagb/forms' === $inner_block['blockName'] ) {
+								if ( ! empty( $inner_block['attrs'] ) && isset( $inner_block['attrs']['block_id'] ) && $inner_block['attrs']['block_id'] === $block_id ) {
+									return $inner_block['attrs'];
+								}
+							} else {
+								$temp_attrs = $this->recursive_inner_forms( $inner_block['innerBlocks'], $block_id );
 
-									if ( ! empty( $temp_attrs ) && isset( $temp_attrs['block_id'] ) && $temp_attrs['block_id'] === $block_id ) {
-										return $temp_attrs;
-									}
+								if ( ! empty( $temp_attrs ) && isset( $temp_attrs['block_id'] ) && $temp_attrs['block_id'] === $block_id ) {
+									return $temp_attrs;
 								}
 							}
 						}
@@ -247,10 +248,10 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 */
 		public function send_email( $body, $form_data, $args ) {
 
-			$to      = isset( $args['to'] ) ? sanitize_email( $args['to'] ) : sanitize_email( get_option( 'admin_email' ) );
-			$cc      = isset( $args['cc'] ) ? sanitize_email( $args['cc'] ) : '';
-			$bcc     = isset( $args['bcc'] ) ? sanitize_email( $args['bcc'] ) : '';
-			$subject = isset( $args['subject'] ) ? $args['subject'] : __( 'Form Submission', 'ultimate-addons-for-gutenberg' );
+			$to      = isset( $args['afterSubmitToEmail'] ) ? sanitize_email( $args['afterSubmitToEmail'] ) : sanitize_email( get_option( 'admin_email' ) );
+			$cc      = isset( $args['afterSubmitCcEmail'] ) ? sanitize_email( $args['afterSubmitCcEmail'] ) : '';
+			$bcc     = isset( $args['afterSubmitBccEmail'] ) ? sanitize_email( $args['afterSubmitBccEmail'] ) : '';
+			$subject = isset( $args['afterSubmitEmailSubject'] ) ? $args['afterSubmitEmailSubject'] : __( 'Form Submission', 'ultimate-addons-for-gutenberg' );
 
 			$headers = array(
 				'Reply-To-: ' . get_bloginfo( 'name' ) . ' <' . $to . '>',
