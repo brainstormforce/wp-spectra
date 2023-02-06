@@ -110,17 +110,15 @@ $selectors = array(
 );
 if ( 'gradient' === $attr['backgroundType'] ) {
 	$selectors[' .uagb-tm__content']['background-color'] = 'transparent';
-
-	if ( $attr['gradientValue'] ) {
-		$selectors[' .uagb-tm__content']['background-image'] = $attr['gradientValue'];
-	} else {
-		if ( 'linear' === $attr['gradientType'] ) {
-
-			$selectors[' .uagb-tm__content']['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
-		} else {
-			$selectors[' .uagb-tm__content']['background-image'] = 'radial-gradient( at ' . $gradientPosition . ', ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
-		}
+	if ( ! $attr['selectGradient'] && $attr['gradientValue'] ) {
+		$gradient = $gradient_value;
+	} elseif ( 'linear' === $gradientType && $attr['selectGradient'] ) {
+		$gradient = 'linear-gradient(' . $gradientAngle . 'deg, ' . $gradientColor1 . ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
+	} elseif ( 'radial' === $gradientType && $attr['selectGradient'] ) {
+		$gradient = 'radial-gradient( at center center, ' . $gradientColor1 . ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
 	}
+	$selectors[' .uagb-tm__content']['background-image'] = $gradient;
+	
 }
 if ( 'image' === $attr['backgroundType'] ) {
 	if ( 'color' === $attr['overlayType'] ) {

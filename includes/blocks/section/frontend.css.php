@@ -158,16 +158,15 @@ if ( 'video' === $bg_type ) {
 } elseif ( 'gradient' === $bg_type ) {
 	$selectors[' > .uagb-section__overlay']['background-color'] = 'transparent';
 	$selectors[' > .uagb-section__overlay']['opacity']          = ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] && 0 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '';
-	if ( $attr['gradientValue'] ) {
-		$selectors[' > .uagb-section__overlay']['background-image'] = $attr['gradientValue'];
-	} else {
-		if ( 'linear' === $attr['gradientType'] ) {
 
-			$selectors[' > .uagb-section__overlay']['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
-		} else {
-			$selectors[' > .uagb-section__overlay']['background-image'] = 'radial-gradient( at ' . $gradientPosition . ', ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
-		}
-	}
+	if ( ! $attr['selectGradient'] && $attr['gradientValue'] ) {
+		$gradient = $gradient_value;
+	} elseif ( 'linear' === $gradientType && $attr['selectGradient'] ) {
+		$gradient = 'linear-gradient(' . $gradientAngle . 'deg, ' . $gradientColor1 . ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
+	} elseif ( 'radial' === $gradientType && $attr['selectGradient'] ) {
+		$gradient = 'radial-gradient( at center center, ' . $gradientColor1 . ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
+	} 
+	$selectors[' > .uagb-section__overlay']['background-image'] = $gradient;
 }
 
 $selectors[' > .uagb-section__overlay']['border-radius'] = $overall_border_css['border-top-left-radius'] . ' ' . $overall_border_css['border-top-right-radius'] . ' ' . $overall_border_css['border-bottom-left-radius'] . ' ' . $overall_border_css['border-bottom-right-radius'];
