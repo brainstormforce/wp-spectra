@@ -137,7 +137,14 @@ function testimonialStyle( props ) {
 		companyLetterSpacingTablet,
 		companyLetterSpacingMobile,
 		companyLetterSpacingType,
-		overlayType
+		overlayType,
+		gradientColor1,
+		gradientColor2,
+		gradientLocation1,
+		gradientLocation2,
+		gradientAngle,
+		selectGradient,
+		gradientType
 	} = props.attributes;
 
 	const arrowSizeFallback = getFallbackNumber( arrowSize, 'arrowSize', blockName );
@@ -458,11 +465,19 @@ function testimonialStyle( props ) {
 		},
 	};
 	if ( 'gradient' === backgroundType ) {
-		if ( gradientValue ) {
-			selectors[ ' .uagb-tm__content' ][
-				'background-image'
-			] = gradientValue;
+		let gradient;
+
+		if( ! selectGradient ) {
+			gradient = gradientValue;
+		} else if ( 'linear' === gradientType && selectGradient ) {
+			gradient = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${	gradientColor2 } ${ gradientLocation2 }%)`;
+		} else if ( 'radial' === gradientType && selectGradient ) {
+			gradient = `radial-gradient( at center center, ${ gradientColor1} ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
 		}
+		selectors[ ' .uagb-tm__content' ][
+			'background-image'
+		] = gradient;
+		
 	}
 
 	if ( 'image' === backgroundType ) {
