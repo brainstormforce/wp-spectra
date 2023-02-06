@@ -74,7 +74,7 @@ const ResponsiveUAGFocalPointPicker = ( props ) => {
 	return (
 		<div
 			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
+			
 		>
 			{controlBeforeDomElement}
 			<div className="components-base-control uagb-responsive-select-control">

@@ -50,7 +50,7 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 	return (
 		<div
 			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
+			
 		>
 			{
 				controlBeforeDomElement

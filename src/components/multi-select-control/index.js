@@ -38,7 +38,7 @@ export default function UAGMultiSelectControl( {label, options, data, setAttribu
 	return (
 		<div
 			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
+			
 		>
 			{
 				controlBeforeDomElement
