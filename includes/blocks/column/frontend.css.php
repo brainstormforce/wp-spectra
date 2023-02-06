@@ -92,7 +92,7 @@ if ( 'image' === $bg_type ) {
 	$selectors[' > .uagb-column__overlay']['opacity']          = ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '';
 
 	if ( ! $attr['selectGradient'] && $attr['gradientValue'] ) {
-		$gradient = $gradient_value;
+		$gradient = $attr['gradientValue'];
 	} elseif ( 'linear' === $gradientType && $attr['selectGradient'] ) {
 		$gradient = 'linear-gradient(' . $gradientAngle . 'deg, ' . $gradientColor1 . ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
 	} elseif ( 'radial' === $gradientType && $attr['selectGradient'] ) {
