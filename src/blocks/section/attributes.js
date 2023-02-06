@@ -516,6 +516,13 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	selectGradient: {
+		type: 'Boolean',
+		default: false,
+		UAGCopyPaste: {
+			styleType: 'gradient-type'
+		}
+	}, 
 	...overallBorderAttributes,
 };
 

@@ -447,9 +447,9 @@ const attributes = {
 			styleType: 'column-gradient-value'
 		}
 	},
-	gType: {
-		type: 'string',
-		default: 'default',
+	selectGradient: {
+		type: 'Boolean',
+		default: false,
 		UAGCopyPaste: {
 			styleType: 'gradient-type'
 		}

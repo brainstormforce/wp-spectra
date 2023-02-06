@@ -290,9 +290,9 @@ const attributes = {
 			styleType: 'column-overlay-type'
 		},
 	},
-	gType: {
-		type: 'string',
-		default: 'default',
+	selectGradient: {
+		type: 'Boolean',
+		default: false,
 		UAGCopyPaste: {
 			styleType: 'gradient-type'
 		}
