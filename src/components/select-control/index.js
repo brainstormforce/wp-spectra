@@ -50,14 +50,14 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 	return (
 		<div
 			ref={panelRef}
-			
+			className={ `uagb-select-control uagb-select-control--layout-${ layout }` }
 		>
 			{
 				controlBeforeDomElement
 			}
 			{
 				children ? (
-					<div className={ `uagb-select-control uagb-select-control--layout-${ layout }` }>
+					
 						<SelectControl
 							label={ label }
 							value={ data.value }
@@ -68,9 +68,9 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 						>
 							{ children }
 						</SelectControl>
-					</div>
+					
 				) : (
-					<div className={ `uagb-select-control uagb-select-control--layout-${ layout }` }>
+					
 						<SelectControl
 							label={ label }
 							value={ data.value }
@@ -80,7 +80,7 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 							options={ allOptions }
 							help={ help }
 						/>
-					</div>
+					
 				)
 			}
 			{

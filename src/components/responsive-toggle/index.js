@@ -158,12 +158,12 @@ const ResponsiveToggle = props => {
 	return (
 		<div
 			ref={panelRef}
-			
+			className="uag-responsive-label-wrap"
 		>
 			{
 				controlBeforeDomElement
 			}
-			<div className="uag-responsive-label-wrap">
+			<div>
 				{ label && (
 					<span className="uag-control-label">{ label }</span>
 				) }
