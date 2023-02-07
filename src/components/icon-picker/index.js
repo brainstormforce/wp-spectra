@@ -31,12 +31,12 @@ const UAGIconPicker = ( props ) => {
 	return (
 		<div
 			ref={panelRef}
-			
+			className="components-base-control"
 		>
 			{
 				controlBeforeDomElement
 			}
-			<div className="components-base-control uag-icon-picker">
+			<div className="uag-icon-picker">
 				<span className="uag-control-label">
 					{ props?.label ||
 						__( 'Icon', 'ultimate-addons-for-gutenberg' ) }

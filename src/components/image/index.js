@@ -154,7 +154,7 @@ const UAGMediaPicker = ( props ) => {
 	return (
 		<div
 			ref={panelRef}
-			
+			className="components-base-control"
 		>
 			{
 				controlBeforeDomElement

@@ -74,10 +74,11 @@ const ResponsiveUAGFocalPointPicker = ( props ) => {
 	return (
 		<div
 			ref={panelRef}
+			className="components-base-control"
 			
 		>
 			{controlBeforeDomElement}
-			<div className="components-base-control uagb-responsive-select-control">
+			<div className="uagb-responsive-select-control">
 				<div className="uagb-size-type-field-tabs">
 					<div className="uagb-control__header">
 						<ResponsiveToggle

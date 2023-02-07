@@ -94,12 +94,12 @@ const UAGTextControl = ( props ) => {
     return(
         <div
 			ref={panelRef}
-			
+			className="components-base-control"
 		>
 			{
 				controlBeforeDomElement
 			}
-            <div className={`components-base-control uagb-text-control uagb-size-type-field-tabs${isEnableDynamicContent() ? ' uagb-text-control--open-dynamic-content' : ''}`}>
+            <div className={`uagb-text-control uagb-size-type-field-tabs${isEnableDynamicContent() ? ' uagb-text-control--open-dynamic-content' : ''}`}>
                 { props?.variant !== 'inline' && props?.showHeaderControls &&
                     <HeaderControls />
                 }

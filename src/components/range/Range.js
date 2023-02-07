@@ -136,12 +136,12 @@ const Range = ( props ) => {
 	return (
 		<div
 			ref={panelRef}
-			
+			className="components-base-control"
 		>
 			{
 				controlBeforeDomElement
 			}
-			<div className="components-base-control uag-range-control uagb-size-type-field-tabs">
+			<div className="uag-range-control uagb-size-type-field-tabs">
 				<div className="uagb-control__header">
 					<ResponsiveToggle
 						label= { props.label }

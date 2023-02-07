@@ -38,24 +38,22 @@ export default function UAGMultiSelectControl( {label, options, data, setAttribu
 	return (
 		<div
 			ref={panelRef}
-			
+			className="components-base-control"
 		>
 			{
 				controlBeforeDomElement
 			}
-			<div className="components-base-control">
-				<Select
-					options={allOptions}
-					defaultValue={allOptions.filter( ( item ) => data.value.includes( item.value ) )}
-					onChange={( option ) => setAttributes( {[data.label]: option.reduce( ( acc, current ) => {
-						acc.push( current.value );
-						return acc;
-					}, [] )} )}
-					classNamePrefix={'spectra-multi-select'}
-					className={'spectra-multi-select'}
-					isMulti
-				/>
-			</div>
+			<Select
+				options={allOptions}
+				defaultValue={allOptions.filter( ( item ) => data.value.includes( item.value ) )}
+				onChange={( option ) => setAttributes( {[data.label]: option.reduce( ( acc, current ) => {
+					acc.push( current.value );
+					return acc;
+				}, [] )} )}
+				classNamePrefix={'spectra-multi-select'}
+				className={'spectra-multi-select'}
+				isMulti
+			/>
 			{
 				controlAfterDomElement
 			}

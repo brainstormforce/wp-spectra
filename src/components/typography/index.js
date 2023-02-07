@@ -434,13 +434,13 @@ const TypographyControl = ( props ) => {
 	return (
 		<div
 			ref={panelRef}
-			
+			className="components-base-control"
 		>
 			{
 				controlBeforeDomElement
 			}
 			<div
-				className={ `components-base-control uag-typography-options spectra-control-popup__options popup-${props?.attributes?.block_id} ${ activeClass }` }
+				className={ ` uag-typography-options spectra-control-popup__options popup-${props?.attributes?.block_id} ${ activeClass }` }
 			>
 				{ ! disableAdvancedOptions && (
 					<>

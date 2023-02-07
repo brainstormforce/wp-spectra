@@ -173,7 +173,7 @@ export default function ImageSizeControl( {
 	return (
 		<div
 			ref={panelRef}
-			
+			className="components-base-control"
 		>
 			{
 				controlBeforeDomElement
@@ -204,7 +204,7 @@ export default function ImageSizeControl( {
 				/>
 			) }
 			{ isResizable && (
-				<div className="components-base-control block-editor-image-size-control">
+				<div className="block-editor-image-size-control">
 					<div className='uagb-size-type-field-tabs'>
 						<div className='uagb-control__header'>
 							<ResponsiveToggle

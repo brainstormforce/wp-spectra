@@ -180,12 +180,12 @@ const AdvancedPopColorControl = ( props ) => {
 	return (
 		<div
 			ref={panelRef}
-			
+			className="components-base-control"
 		>
 			{
 				controlBeforeDomElement
 			}
-			<div className="uagb-color-popover-container components-base-control new-uagb-advanced-colors">
+			<div className="uagb-color-popover-container new-uagb-advanced-colors">
 				<div className="uagb-advanced-color-settings-container">
 					{ label && (
 						<span className="uagb-beside-color-label uag-control-label">
