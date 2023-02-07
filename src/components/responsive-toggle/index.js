@@ -163,59 +163,58 @@ const ResponsiveToggle = props => {
 			{
 				controlBeforeDomElement
 			}
-			<div>
-				{ label && (
-					<span className="uag-control-label">{ label }</span>
-				) }
-				{ ! displayResponsive && responsive && (
-					<Button
-						key="uag-responsive-common-button"
-						className="uag-responsive-common-button"
-						onClick={ commonResponsiveHandler }
-					>
-						{ devicesSvgs[ deviceType.toLowerCase() ] }
-					</Button>
-				) }
-				{ displayResponsive && responsive && (
-					<ButtonGroup
-						className="uagb-range-control-responsive components-tab-panel__tabs"
-						aria-label={ __(
-							'Device',
-							'ultimate-addons-for-gutenberg'
-						) }
-					>
-						{ devices.map(
-							( { name, staticName, key, title, itemClass } ) => (
-								<Tooltip
-									text={ sprintf(
-										/* translators: abbreviation for units */
-										'%s',
-										name
-									) }
-									key={key}
-								>
-								<Button
-									key={ key }
-									className={ `components-button components-tab-panel__tabs-item ${ itemClass }${
-										staticName === deviceType
-											? ' active-tab'
-											: ''
-									}` }
-									aria-pressed={ deviceType === staticName }
-									onClick={ () =>
-										customSetPreviewDeviceType(
-											staticName
-										)
-									}
-								>
-									{ title }
-								</Button>
-								</Tooltip>
-							)
-						) }
-					</ButtonGroup>
-				) }
-			</div>
+			
+			{ label && (
+				<span className="uag-control-label">{ label }</span>
+			) }
+			{ ! displayResponsive && responsive && (
+				<Button
+					key="uag-responsive-common-button"
+					className="uag-responsive-common-button"
+					onClick={ commonResponsiveHandler }
+				>
+					{ devicesSvgs[ deviceType.toLowerCase() ] }
+				</Button>
+			) }
+			{ displayResponsive && responsive && (
+				<ButtonGroup
+					className="uagb-range-control-responsive components-tab-panel__tabs"
+					aria-label={ __(
+						'Device',
+						'ultimate-addons-for-gutenberg'
+					) }
+				>
+					{ devices.map(
+						( { name, staticName, key, title, itemClass } ) => (
+							<Tooltip
+								text={ sprintf(
+									/* translators: abbreviation for units */
+									'%s',
+									name
+								) }
+								key={key}
+							>
+							<Button
+								key={ key }
+								className={ `components-button components-tab-panel__tabs-item ${ itemClass }${
+									staticName === deviceType
+										? ' active-tab'
+										: ''
+								}` }
+								aria-pressed={ deviceType === staticName }
+								onClick={ () =>
+									customSetPreviewDeviceType(
+										staticName
+									)
+								}
+							>
+								{ title }
+							</Button>
+							</Tooltip>
+						)
+					) }
+				</ButtonGroup>
+			) }
 			{
 				controlAfterDomElement
 			}
