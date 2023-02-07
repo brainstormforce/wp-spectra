@@ -29,6 +29,7 @@ const SpectraPageSettingsPopup = () => {
 				title={ __( 'Spectra Page Settings' ) }
 				className={'spectra-sidebar'}
 			>
+			{ 'yes' === uagb_blocks_info.enable_on_page_css_button && (
 				<PanelBody
 					title={ __( 'Custom CSS' ) }
 					initialOpen={ true }
@@ -36,6 +37,7 @@ const SpectraPageSettingsPopup = () => {
 				>
 					<PageCustomCSS/>
 				</PanelBody>
+			)}
 			</PluginSidebar>
 		</>
 	);
