@@ -280,7 +280,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			foreach ( $combined as $key => $c_block ) {
 
-				if( false !== strpos( $c_block, '-pro' ) ) {
+				if ( false !== strpos( $c_block, '-pro' ) ) {
 					$style_file = SPECTRA_PRO_DIR . 'assets/css/blocks/' . $c_block . '.css';
 				} else {
 					$style_file = UAGB_DIR . 'assets/css/blocks/' . $c_block . '.css';
