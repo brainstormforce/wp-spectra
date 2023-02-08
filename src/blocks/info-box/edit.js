@@ -25,12 +25,6 @@ const UAGBInfoBox = ( props ) => {
 		setAttributes( { classMigrate: true } );
 
 		const {
-			ctaBtnVertPadding,
-			ctaBtnHrPadding,
-			paddingBtnTop,
-			paddingBtnBottom,
-			paddingBtnRight,
-			paddingBtnLeft,
 			ctaBorderStyle,
 			ctaBorderWidth,
 			ctaBorderRadius,
@@ -41,22 +35,18 @@ const UAGBInfoBox = ( props ) => {
 			showCtaIcon,
 		} = props.attributes;
 
-		if ( ctaBtnVertPadding ) {
-			if ( undefined === paddingBtnTop ) {
-				props.setAttributes( { paddingBtnTop: ctaBtnVertPadding } );
-			}
-			if ( undefined === paddingBtnBottom ) {
-				props.setAttributes( { paddingBtnBottom: ctaBtnVertPadding } );
-			}
+		if( ctaBgType === undefined ) {
+			props.setAttributes( { ctaBgType: 'color' } );
 		}
-		if ( ctaBtnHrPadding ) {
-			if ( undefined === paddingBtnRight ) {
-				props.setAttributes( { paddingBtnRight: ctaBtnHrPadding } );
-			}
-			if ( undefined === paddingBtnLeft ) {
-				props.setAttributes( { paddingBtnLeft: ctaBtnHrPadding } );
-			}
+
+		if( ctaBgHoverType === undefined ) {
+			props.setAttributes( { ctaBgHoverType: 'color' } );
 		}
+
+		if( showCtaIcon === undefined ) {
+			props.setAttributes( { showCtaIcon: true } );
+		}
+		
 		// Backward Border Migration
 		if( ctaBorderWidth || ctaBorderRadius || ctaBorderColor || ctaBorderhoverColor || ctaBorderStyle ){
 
@@ -81,17 +71,6 @@ const UAGBInfoBox = ( props ) => {
 		);
 		}
 
-		if( ctaBgType === undefined ) {
-			props.setAttributes( { ctaBgType: 'color' } );
-		}
-
-		if( ctaBgHoverType === undefined ) {
-			props.setAttributes( { ctaBgHoverType: 'color' } );
-		}
-
-		if( showCtaIcon === undefined ) {
-			props.setAttributes( { showCtaIcon: true } );
-		}
 	}, [] );
 
 	useEffect( () => {

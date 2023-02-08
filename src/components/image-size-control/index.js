@@ -1,13 +1,13 @@
-import React, { useLayoutEffect } from 'react';
-import {
-	TextControl,
-} from '@wordpress/components';
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
 import ResponsiveSelectControl from '@Components/responsive-select';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
-import useDimensionHandler from './use-dimension-handler';
 import { useDeviceType } from '@Controls/getPreviewType';
+import { select } from '@wordpress/data';
+import { getPanelIdFromRef } from '@Utils/Helpers';
 import ResponsiveToggle from '../responsive-toggle';
+import UAGNumberControl from '@Components/number-control';
+import useDimensionHandler from './use-dimension-handler';
 
 export default function ImageSizeControl( {
 	imageWidth,
@@ -27,6 +27,9 @@ export default function ImageSizeControl( {
 	onChange,
 } ) {
 
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const panelRef = useRef( null );
+
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -34,6 +37,13 @@ export default function ImageSizeControl( {
 			styles.unuse();
 		};
 	}, [] );
+
+	const { getSelectedBlock } = select( 'core/block-editor' );
+
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
 
 	const deviceType = useDeviceType();
 	const responsive = true;
@@ -64,22 +74,36 @@ export default function ImageSizeControl( {
 	const output = {}
 	output.Desktop = (
 		<>
-			<TextControl
-				type="number"
-				className="block-editor-image-size-control__width"
-				label={ __( 'Width' ) }
+			<UAGNumberControl
+				label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
 				value={ currentWidth }
-				min={ 1 }
+				data={ {
+					value: width,
+					label: 'width',
+				} }
+				displayUnit={ false }
+				setAttributes={ setAttributes }
+				min={ Infinity }
+				step={ 1 }
+				max={ -Infinity }
+				showControlHeader={ false }
 				onChange={ ( value ) =>
 					updateDimension( 'width', value )
 				}
 			/>
-			<TextControl
-				type="number"
-				className="block-editor-image-size-control__height"
-				label={ __( 'Height' ) }
+			<UAGNumberControl
+				label={ __( 'Height', 'ultimate-addons-for-gutenberg' ) }
 				value={ currentHeight }
-				min={ 1 }
+				data={ {
+					value: height,
+					label: 'height',
+				} }
+				displayUnit={ false }
+				setAttributes={ setAttributes }
+				min={ Infinity }
+				step={ 1 }
+				max={ -Infinity }
+				showControlHeader={ false }
 				onChange={ ( value ) => {
 					updateDimension( 'height', value )
 					if ( ! isNaN( value ) && '' !== value ) {
@@ -94,22 +118,36 @@ export default function ImageSizeControl( {
 
 	output.Tablet = (
 		<>
-			<TextControl
-				type="number"
-				className="block-editor-image-size-control__width"
-				label={ __( 'Width' ) }
+			<UAGNumberControl
+				label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
 				value={ currentWidth }
-				min={ 1 }
+				data={ {
+					value: widthTablet,
+					label: 'widthTablet',
+				} }
+				displayUnit={ false }
+				setAttributes={ setAttributes }
+				min={ Infinity }
+				step={ 1 }
+				max={ -Infinity }
+				showControlHeader={ false }
 				onChange={ ( value ) =>
 					updateDimension( 'widthTablet', value )
 				}
 			/>
-			<TextControl
-				type="number"
-				className="block-editor-image-size-control__height"
-				label={ __( 'Height' ) }
+			<UAGNumberControl
+				label={ __( 'Height', 'ultimate-addons-for-gutenberg' ) }
 				value={ currentHeight }
-				min={ 1 }
+				data={ {
+					value: heightTablet,
+					label: 'heightTablet',
+				} }
+				displayUnit={ false }
+				setAttributes={ setAttributes }
+				min={ Infinity }
+				step={ 1 }
+				max={ -Infinity }
+				showControlHeader={ false }
 				onChange={ ( value ) => {
 					updateDimension( 'heightTablet', value )
 					if ( ! isNaN( value ) && '' !== value ) {
@@ -124,22 +162,36 @@ export default function ImageSizeControl( {
 
 	output.Mobile = (
 		<>
-			<TextControl
-				type="number"
-				className="block-editor-image-size-control__width"
-				label={ __( 'Width' ) }
+			<UAGNumberControl
+				label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
 				value={ currentWidth }
-				min={ 1 }
+				data={ {
+					value: widthMobile,
+					label: 'widthMobile',
+				} }
+				displayUnit={ false }
+				setAttributes={ setAttributes }
+				min={ Infinity }
+				step={ 1 }
+				max={ -Infinity }
+				showControlHeader={ false }
 				onChange={ ( value ) =>
 					updateDimension( 'widthMobile', value )
 				}
 			/>
-			<TextControl
-				type="number"
-				className="block-editor-image-size-control__height"
-				label={ __( 'Height' ) }
+			<UAGNumberControl
+				label={ __( 'Height', 'ultimate-addons-for-gutenberg' ) }
 				value={ currentHeight }
-				min={ 1 }
+				data={ {
+					value: heightMobile,
+					label: 'heightMobile',
+				} }
+				displayUnit={ false }
+				setAttributes={ setAttributes }
+				min={ Infinity }
+				step={ 1 }
+				max={ -Infinity }
+				showControlHeader={ false }
 				onChange={ ( value ) => {
 					updateDimension( 'heightMobile', value )
 					if ( ! isNaN( value ) && '' !== value ) {
@@ -152,8 +204,20 @@ export default function ImageSizeControl( {
 		</>
 	);
 
+
+	const controlName = 'image-size'; // This components have no label props that's why added hard coded label
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+
+
 	return (
-		<>
+		<div
+			ref={panelRef}
+			className="components-base-control"
+		>
+			{
+				controlBeforeDomElement
+			}
 			{ imageSizeOptions.length !== 0 && (
 				<ResponsiveSelectControl
 					label={ __( 'Image Size', 'ultimate-addons-for-gutenberg' ) }
@@ -180,7 +244,7 @@ export default function ImageSizeControl( {
 				/>
 			) }
 			{ isResizable && (
-				<div className="components-base-control block-editor-image-size-control">
+				<div className="block-editor-image-size-control">
 					<div className='uagb-size-type-field-tabs'>
 						<div className='uagb-control__header'>
 							<ResponsiveToggle
@@ -194,6 +258,9 @@ export default function ImageSizeControl( {
 					</div>
 				</div>
 			) }
-		</>
+			{
+				controlAfterDomElement
+			}
+		</div>
 	);
 }
