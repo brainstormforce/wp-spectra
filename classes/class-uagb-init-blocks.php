@@ -197,10 +197,9 @@ class UAGB_Init_Blocks {
 		);
 
 		$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( $_SERVER['HTTP_USER_AGENT'] ) : '';
-		if ( isset( $os[ $value ] ) ) {
-			if ( preg_match( '@' . $os[ $value ] . '@', $user_agent ) ) {
-				return '';
-			}
+		
+		if ( isset( $os[ $value ] ) && preg_match( '@' . $os[ $value ] . '@', $user_agent ) ) {
+			return '';
 		}
 
 		return $block_content;
