@@ -974,9 +974,6 @@ select {
 }.bg-red-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
-}.bg-gray-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }.bg-opacity-75 {
   --tw-bg-opacity: 0.75;
 }.bg-contain {
