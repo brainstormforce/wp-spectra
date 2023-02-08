@@ -479,12 +479,12 @@ const SpacingControl = ( props ) => {
 	return (
 		<div
 			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
+			className="components-base-control"
 		>
 			{
 				controlBeforeDomElement
 			}
-			<div className="components-base-control uagb-spacing-control">
+			<div className="uagb-spacing-control">
 				<div className="uagb-size-type-field-tabs">
 					<div className="uagb-control__header">
 					<ResponsiveToggle

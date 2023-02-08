@@ -165,10 +165,10 @@ const UAGNumberControl = ( props ) => {
 	return (
 		<div
 			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
+			className="components-base-control"
 		>
 			{controlBeforeDomElement}
-			<div className="components-base-control uag-number-control uagb-size-type-field-tabs">
+			<div className="uag-number-control uagb-size-type-field-tabs">
 				{ props.showControlHeader &&
 					<ControlHeader />
 				}

@@ -214,13 +214,13 @@ const MultiButtonsControl = ( props ) => {
 	return (
 		<div
 			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
+			className="components-base-control"
 		>
 			{
 				controlBeforeDomElement
 			}
 			<div
-				className={ `components-base-control uagb-multi-buttons-control ${ iconsClass } spectra-multi-buttons__color-scheme--${ colorVariant } spectra-multi-buttons__layout--${ layoutVariant }` }
+				className={ ` uagb-multi-buttons-control ${ iconsClass } spectra-multi-buttons__color-scheme--${ colorVariant } spectra-multi-buttons__layout--${ layoutVariant }` }
 			>
 				<div className="uagb-multi-buttons-control__label uag-control-label">
 					{ label }

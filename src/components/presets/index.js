@@ -200,15 +200,14 @@ const UAGPresets = ( props ) => {
     return (
 		<div
 			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
+			className="components-base-control"
 		>
 			{
 				controlBeforeDomElement
 			}
 			<div className={ classnames(
 				className,
-				'uagb-presets-main-wrap',
-				'components-base-control'
+				'uagb-presets-main-wrap'
 			) }>
 				<div className='uagb-presets-label-reset-wrap'>
 					<label htmlFor="uag-presets-label" className="uag-presets-label">{label}</label>

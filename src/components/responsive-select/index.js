@@ -72,12 +72,11 @@ const ResponsiveSelectControl = ( props ) => {
 	return (
 		<div
 			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
+			className="uagb-responsive-select-control components-base-control"
 		>
 			{
 				controlBeforeDomElement
 			}
-			<div className="components-base-control uagb-responsive-select-control">
 				<div className="uagb-size-type-field-tabs">
 					<div className="uagb-control__header">
 						<ResponsiveToggle
@@ -90,7 +89,6 @@ const ResponsiveSelectControl = ( props ) => {
 				{ props.help && (
 					<p className="uag-control-help-notice">{ props.help }</p>
 				) }
-			</div>
 			{
 				controlAfterDomElement
 			}

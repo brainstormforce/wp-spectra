@@ -83,12 +83,12 @@ import { getPanelIdFromRef } from '@Utils/Helpers';
 	 return (
 		<div
 			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
+			className="components-base-control"
 		>
 			{
 				controlBeforeDomElement
 			}
-			<div className="uag-responsive-image-select components-base-control uagb-responsive-select-control">
+			<div className="uag-responsive-image-select uagb-responsive-select-control">
 				<div className="uagb-size-type-field-tabs">
 					<div className="uagb-control__header">
 						<ResponsiveToggle

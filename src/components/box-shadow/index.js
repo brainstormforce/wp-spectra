@@ -280,7 +280,6 @@ const BoxShadowControl = ( props ) => {
 	return (
 		<div
 			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
 		>
 			{
 				controlBeforeDomElement
@@ -288,7 +287,7 @@ const BoxShadowControl = ( props ) => {
 			{
 				popup ? (
 					<div
-						className={ `components-base-control uag-box-shadow-options spectra-control-popup__options popup-${blockId} ${ activeClass }` }
+						className={ ` components-base-control uag-box-shadow-options spectra-control-popup__options popup-${blockId} ${ activeClass }` }
 					>
 						{ boxShadowAdvancedControls }
 						{ showAdvancedControls && advancedControls }

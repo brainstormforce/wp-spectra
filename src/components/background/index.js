@@ -915,12 +915,12 @@ const Background = ( props ) => {
 	return (
 		<div
 			ref={panelRef}
-			className={`spectra-components-control spectra-components-control--${controlName}`}
+			className="components-base-control"
 		>
 			{
 				controlBeforeDomElement
 			}
-			<div className="uag-bg-select-control components-base-control">
+			<div className="uag-bg-select-control">
 				{ advancedControls }
 			</div>
 			{

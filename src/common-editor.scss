@@ -21,6 +21,10 @@
 
 		.components-panel__body {
 
+			> div > .components-base-control {
+				margin-bottom: $spectra-control-vertical-gap;
+			}
+
 			> .components-base-control {
 				margin-bottom: $spectra-control-vertical-gap;
 
