@@ -3,7 +3,7 @@
 @import "../../styles/variables";
 
 .uagb-multi-button-button-group {
-	display: flex;
+	display: flex !important;
 	width: 100%;
 
 	.uagb-multi-button {

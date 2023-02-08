@@ -5,7 +5,8 @@ const ALLOWED_BLOCKS = [ 'uagb/slider-child' ];
 import { useDeviceType } from '@Controls/getPreviewType';
 import { __ } from '@wordpress/i18n';
 
-import Swiper, { Navigation, Pagination, Autoplay, EffectFade, EffectFlip, Manipulation } from 'swiper';
+import { Navigation, Pagination, Autoplay, Manipulation } from 'swiper';
+import { Swiper } from 'swiper/react';
 
 const Render = ( props ) => {
 
@@ -20,7 +21,6 @@ const Render = ( props ) => {
 
 	const deviceType = useDeviceType();
 	const swiperRef = useRef();
-	const sliderWrapRef = useRef();
 	const sliderPaginationRef = useRef();
 	const sliderNavPrevRef = useRef();
 	const sliderNavNextRef = useRef();
@@ -46,7 +46,6 @@ const Render = ( props ) => {
 		transitionSpeed,
 		slideItem,
 		block_id,
-		transitionEffect,
 		swiperInstance,
 		displayArrows,
 		displayDots
@@ -132,55 +131,43 @@ const Render = ( props ) => {
 		props.setAttributes( { swiperInstance: swiper } );
 	}
 
-	const initSlider = () => {
+	const settings = {
+		slidesPerView: 1,
+		autoplay: false,
+		speed: transitionSpeed,
+		loop: false,
+		effect: 'slide',
+		allowTouchMove:false,
+		onBeforeInit ( swiperInst ) {
+			swiperRef.current = swiperInst;
+			setSwiperInstance( swiperInst );
+		}, 
+		onAfterInit ( swiperInst ) {
+			setTimeout( () => {
 
-		const settings = {
-			slidesPerView: 1,
-			autoplay: false,
-			speed: transitionSpeed,
-			loop: false,
-			effect: transitionEffect,
-			flipEffect: {
-				slideShadows: false,
-			},
-			fadeEffect: {
-				crossFade: true
-			},
-			pagination: displayDots ? {
-				el: sliderPaginationRef.current,
-				clickable: true,
-			} : false, 
-			allowTouchMove:false,
-			navigation: displayArrows ? {
-				nextEl: sliderNavNextRef.current,
-				prevEl: sliderNavPrevRef.current,
-			} : false,
-			on: {
-				beforeInit ( swiperInst ) {
-					swiperRef.current = swiperInst;
-					setSwiperInstance( swiperInst );
-				},
-			},
+				if( swiperInst?.params?.navigation ) {
+					swiperInst.params.navigation.prevEl = sliderNavPrevRef.current;
+					swiperInst.params.navigation.nextEl = sliderNavNextRef.current;
+
+					// Re-init navigation
+					swiperInst.navigation.destroy()
+					swiperInst.navigation.init()
+					swiperInst.navigation.update()
+				}
+				
+				if( swiperInst?.params?.pagination ) {
+
+					swiperInst.params.pagination.el = sliderPaginationRef.current;
+					swiperInst.params.pagination.clickable = true;
+					
+					// Re-init pagination
+					swiperInst.pagination.init()
+					swiperInst.pagination.render()
+					swiperInst.pagination.update()
+				}
+			} )
 		}
-
-		new Swiper( sliderWrapRef.current, {
-			...settings,
-			modules: [Navigation, Pagination,Autoplay,EffectFade, Manipulation, EffectFlip],
-		} );
 	}
-
-	useEffect( () => {
-
-		setTimeout( () => {
-			
-			if( sliderWrapRef.current ) {
-
-				initSlider();
-			}
-
-		}, 500 );
-		
-	}, [] );
 
 	useEffect( () => {
 
@@ -192,7 +179,7 @@ const Render = ( props ) => {
 
 	useEffect( () => {
 
-		if( swiperInstance ) {
+		if( swiperInstance && swiperInstance.slides ) {
 
 			const slidesCount = swiperInstance.slides.length;
 
@@ -220,15 +207,6 @@ const Render = ( props ) => {
 		}
 	
 	}, [ isListViewOpen ] );
-
-	useEffect( () => {
-
-		if( swiperInstance ) {
-			swiperInstance.destroy();
-			initSlider();
-		}
-
-	}, [ transitionEffect, displayArrows, displayDots, transitionSpeed ] );
 	
 	return (
 		isPreview ? '' :
@@ -237,21 +215,37 @@ const Render = ( props ) => {
 			{ ...blockProps }
 			key = { block_id }
 		>
-			<div className="swiper" ref={sliderWrapRef}>
+			<Swiper
+			ref={swiperRef}
+			{...settings}
+			modules={[Navigation, Pagination, Autoplay, Manipulation]}
+			navigation={ displayArrows ? {
+					nextEl: '#block-' + clientId + ' .swiper-button-next',
+					prevEl: '#block-' + clientId + ' .swiper-button-prev',
+				} : false
+			}
+			pagination={ displayDots ? {
+					el: '#block-' + clientId + ' .swiper-pagination',
+					clickable: true,
+				} : false 
+			}
+			>
 				<div 
 					{ ...innerBlocksProps }
 				/>
-			</div>
-			{ displayDots &&  
-					<div className="swiper-pagination" ref={sliderPaginationRef}></div>
-				}
+			</Swiper>
 
-				{ displayArrows &&
-				<>
-					<div className="swiper-button-prev" ref={sliderNavPrevRef}></div>
-					<div className="swiper-button-next" ref={sliderNavNextRef}></div>
-				</>
+			{ displayDots &&  
+				<div className="swiper-pagination" ref={sliderPaginationRef}></div>
 			}
+
+			{ displayArrows &&
+			<>
+				<div className="swiper-button-prev" ref={sliderNavPrevRef} ></div>
+				<div className="swiper-button-next" ref={sliderNavNextRef} ></div>
+			</>
+			}
+
 		</div>
 	);
 };
