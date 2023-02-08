@@ -153,8 +153,8 @@ function styling( props ) {
 		subHeadSpaceMobile,
 	} = props.attributes;
 
-	const tablet_selectors = {};
-	const mobile_selectors = {};
+	let tablet_selectors = {};
+	let mobile_selectors = {};
 
 	let gradientLinkColor = {}
 	let gradientLinkHoverColor = {}
@@ -172,7 +172,7 @@ function styling( props ) {
 	const highLightBorderCSSMobile = generateBorderCSS( props.attributes, 'highLight', 'mobile' )
 
 
-	const selectors = {
+	let selectors = {
 		'.wp-block-uagb-advanced-heading ':{
 			'background': 	'classic' === blockBackgroundType ? blockBackground : blockGradientBackground,
 			'text-align': headingAlign,
@@ -551,6 +551,10 @@ function styling( props ) {
 		8
 	) }`;
 
+	selectors = wp.hooks.applyFilters( `spectra.${blockName}.styling`, selectors, props.attributes );
+	tablet_selectors = wp.hooks.applyFilters( `spectra.${blockName}.tabletStyling`, tablet_selectors, props.attributes );
+	mobile_selectors = wp.hooks.applyFilters( `spectra.${blockName}.mobileStyling`, mobile_selectors, props.attributes );
+
 	let styling_css = generateCSS( selectors, base_selector );
 
 	styling_css += generateCSS(
@@ -566,7 +570,6 @@ function styling( props ) {
 		true,
 		'mobile'
 	);
-
 	return styling_css;
 }
 

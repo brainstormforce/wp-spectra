@@ -21,12 +21,6 @@ const UAGBBlockQuote = ( props ) => {
 		// Assigning block_id in the attribute.
 		props.setAttributes( { classMigrate: true } );
 		const {
-			tweetBtnVrPadding,
-			tweetBtnHrPadding,
-			paddingBtnTop,
-			paddingBtnBottom,
-			paddingBtnRight,
-			paddingBtnLeft,
 			authorImageWidthUnit,
 			authorImgBorderRadiusUnit,
 		} = props.attributes;
@@ -38,22 +32,6 @@ const UAGBBlockQuote = ( props ) => {
 			props.setAttributes( { authorImgBorderRadiusUnit: '%' } );
 		}
 
-		if ( tweetBtnVrPadding ) {
-			if ( undefined === paddingBtnTop ) {
-				props.setAttributes( { paddingBtnTop: tweetBtnVrPadding } );
-			}
-			if ( undefined === paddingBtnBottom ) {
-				props.setAttributes( { paddingBtnBottom: tweetBtnVrPadding } );
-			}
-		}
-		if ( tweetBtnHrPadding ) {
-			if ( undefined === paddingBtnRight ) {
-				props.setAttributes( { paddingBtnRight: tweetBtnHrPadding } );
-			}
-			if ( undefined === paddingBtnLeft ) {
-				props.setAttributes( { paddingBtnLeft: tweetBtnHrPadding } );
-			}
-		}
 	}, [] );
 
 	useEffect( () => {

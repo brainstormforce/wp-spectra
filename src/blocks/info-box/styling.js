@@ -281,7 +281,9 @@ function styling( props ) {
 		 // Need This for All
 		 ' .uagb-iconbox-icon-wrap': {
 			 'margin' : 'auto',
-			 'display' : 'inline-block',
+			 'display' : 'flex',
+			 'align-items' : 'center',
+			 'justify-content': 'center',
 			 'box-sizing': 'content-box',
 			 'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			 'height': generateCSSUnit( iconSizeFallback, iconSizeType ),
@@ -652,7 +654,7 @@ function styling( props ) {
 			'padding-bottom': generateCSSUnit( iconMarginBottomTablet, iconTabletMarginUnit ),
 			'padding-left': generateCSSUnit( iconMarginLeftTablet, iconTabletMarginUnit ),
 		},
-		 ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
+		 '.uagb-infobox__content-wrap .uagb-ifb-cta .uagb-ifb-button-wrapper.wp-block-button a.uagb-infobox-cta-link.wp-block-button__link': {
 			 'padding-top': generateCSSUnit(
 				 paddingBtnTopTablet,
 				 tabletPaddingBtnUnit
@@ -817,7 +819,7 @@ function styling( props ) {
 			'padding-left': generateCSSUnit( iconMarginLeftMobile, iconMobileMarginUnit ),
 			'box-sizing' : `${ boxSizingImageMobile }`,
 		},
-		 ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
+		 '.uagb-infobox__content-wrap .uagb-ifb-cta .uagb-ifb-button-wrapper.wp-block-button a.uagb-infobox-cta-link.wp-block-button__link': {
 			 'padding-top': generateCSSUnit(
 				 paddingBtnTopMobile,
 				 mobilePaddingBtnUnit
