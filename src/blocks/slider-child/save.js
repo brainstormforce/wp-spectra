@@ -3,21 +3,25 @@
  */
 
 import classnames from 'classnames';
-import { InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const {
 		block_id,
 	} = props.attributes;
 
+	const blockProps = useBlockProps.save( {
+		className: classnames(
+			'uagb-slider-child-wrap',
+			'swiper-slide',
+			`uagb-block-${ block_id }`
+		)
+	} );
+
 	return (
 		<>
 			<div
-				className={ classnames(
-					'uagb-slider-child-wrap',
-					'swiper-slide',
-					`uagb-block-${ block_id }`
-				) }
+				{...blockProps}
 				key = { block_id }
 			>
 				<div className='swiper-content' >
