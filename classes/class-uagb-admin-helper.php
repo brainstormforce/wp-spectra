@@ -80,12 +80,6 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 				),
 			);
 
-			$setting_data = get_option( 'spectra_settings_data' );
-
-			if ( ! $setting_data ) {
-				update_option( 'spectra_settings_data', $options );
-			}
-
 			return $options;
 		}
 
@@ -135,8 +129,6 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			$blocks       = UAGB_Helper::$block_list;
 			$saved_blocks = self::get_admin_settings_option( '_uagb_blocks' );
-
-			update_option( 'spectra_saved_blocks_settings', $saved_blocks );
 
 			if ( is_array( $blocks ) ) {
 				foreach ( $blocks as $slug => $data ) {
@@ -288,7 +280,11 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			foreach ( $combined as $key => $c_block ) {
 
-				$style_file = UAGB_DIR . 'assets/css/blocks/' . $c_block . '.css';
+				if ( false !== strpos( $c_block, '-pro' ) ) {
+					$style_file = SPECTRA_PRO_DIR . 'assets/css/blocks/' . $c_block . '.css';
+				} else {
+					$style_file = UAGB_DIR . 'assets/css/blocks/' . $c_block . '.css';
+				}
 
 				if ( file_exists( $style_file ) ) {
 					$style .= $wp_filesystem->get_contents( $style_file );

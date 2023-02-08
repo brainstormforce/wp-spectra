@@ -434,13 +434,22 @@ const Settings = ( props ) => {
 		);
 	}
 
-	return (
+	const isPro = uagb_blocks_info.spectra_pro_status;
+	const tabs = isPro ? [ 'general', 'style', 'advance' ] :  [ 'style', 'advance' ];
+	const defaultTab = isPro ? 'general' : 'style';
 
+	return (
 			<InspectorControls>
 				<InspectorTabs
-				defaultTab='style'
-				tabs={[ 'style', 'advance' ]}
+				defaultTab={defaultTab}
+				tabs={tabs}
 				>
+					{ isPro && 
+						( 
+						<InspectorTab { ...UAGTabs.general }>
+						</InspectorTab>
+						)
+					}
 					<InspectorTab { ...UAGTabs.style }>
 						{ backgroundSettings() }
 						{ spacingSettings() }
