@@ -1,12 +1,14 @@
 import { TabPanel } from '@wordpress/components';
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { getPanelIdFromRef } from '@Utils/Helpers';
 import Separator from '@Components/separator';
-import { useRef } from '@wordpress/element';
-import { select } from '@wordpress/data'
+import { select } from '@wordpress/data';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 
 const UAGTabsControl = ( props ) => {
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const panelRef = useRef( null );
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -15,7 +17,13 @@ const UAGTabsControl = ( props ) => {
 		};
 	}, [] );
 
-	
+	const { getSelectedBlock } = select( 'core/block-editor' );
+
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
+
 	const tabRef = useRef( null );
 
 	const tabsCountClass =
@@ -28,8 +36,19 @@ const UAGTabsControl = ( props ) => {
 		}
 	} );
 
+	const controlName = 'tabs'; // there is no label props that's why keep hard coded label
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+
+
 	return (
-		<>
+		<div
+			ref={panelRef}
+			
+		>
+			{
+				controlBeforeDomElement
+			}
 			<TabPanel
 				className={ `uag-control-tabs ${ tabsCountClass }` }
 				activeClass="active-tab"
@@ -47,7 +66,6 @@ const UAGTabsControl = ( props ) => {
 							} );
 						}
 
-						const { getSelectedBlock } = select( 'core/block-editor' );
 						const blockName = getSelectedBlock()?.name;
 						const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
 						const data = {
@@ -74,7 +92,10 @@ const UAGTabsControl = ( props ) => {
 				} }
 			</TabPanel>
 			{ ! props?.disableBottomSeparator && <Separator/> }
-		</>
+			{
+				controlAfterDomElement
+			}
+		</div>
 	);
 };
 export default UAGTabsControl;
