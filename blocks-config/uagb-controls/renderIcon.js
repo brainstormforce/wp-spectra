@@ -10,14 +10,11 @@ function renderSVG( svg, setAttributes = false ) {
 	svg = parseSVG( svg );
 	let fontAwesome;
 	// Load Polyfiller Array if needed.
-	if ( 'disabled' !== uagb_blocks_info.load_font_awesome_5 && 0 !== uagb_blocks_info.font_awesome_5_polyfill.length ) {
-		fontAwesome = uagb_blocks_info.uagb_svg_icons[ uagb_blocks_info.font_awesome_5_polyfill?.data[ svg ] ];
-		if ( ! fontAwesome ) {
-			fontAwesome = uagb_blocks_info.uagb_svg_icons[ svg ];
-		}
-	}
-	else {
+	if ( 0 !== uagb_blocks_info.font_awesome_5_polyfill.length ) {
 		fontAwesome = uagb_blocks_info.uagb_svg_icons[ svg ];
+		if ( ! fontAwesome ) {
+			fontAwesome = uagb_blocks_info.uagb_svg_icons[ uagb_blocks_info.font_awesome_5_polyfill?.[ svg ] ];
+		}
 	}
 
 	if ( 'undefined' !== typeof fontAwesome ) {
@@ -69,7 +66,7 @@ function renderSVG( svg, setAttributes = false ) {
 		}
 
 		return (
-			! setAttributes  ?
+			( ! setAttributes || 'not_set' === setAttributes )  ?
 			<svg xmlns="https://www.w3.org/2000/svg" viewBox={ viewBox }>
 				<path d={ path }></path>
 			</svg>

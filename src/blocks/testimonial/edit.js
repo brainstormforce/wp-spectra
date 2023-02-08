@@ -29,17 +29,6 @@ const UAGBtestimonial = ( props ) => {
 		setAttributes( { classMigrate: true } );
 
 		const {
-			imgVrPadding,
-			imgHrPadding,
-			imgpaddingTop,
-			imgpaddingBottom,
-			imgpaddingRight,
-			imgpaddingLeft,
-			contentPadding,
-			paddingTop,
-			paddingBottom,
-			paddingLeft,
-			paddingRight,
 			backgroundOpacity,
 			backgroundImageColor,
 			backgroundType,
@@ -52,38 +41,6 @@ const UAGBtestimonial = ( props ) => {
 			gradientAngle,
 			gradientPosition,
 		} = attributes;
-
-		if ( imgVrPadding ) {
-			if ( undefined === imgpaddingTop ) {
-				setAttributes( { imgpaddingTop: imgVrPadding } );
-			}
-			if ( undefined === imgpaddingBottom ) {
-				setAttributes( { imgpaddingBottom: imgVrPadding } );
-			}
-		}
-		if ( imgHrPadding ) {
-			if ( undefined === imgpaddingRight ) {
-				setAttributes( { imgpaddingRight: imgHrPadding } );
-			}
-			if ( undefined === imgpaddingLeft ) {
-				setAttributes( { imgpaddingLeft: imgHrPadding } );
-			}
-		}
-		if ( contentPadding ) {
-			if ( undefined === paddingTop ) {
-				setAttributes( { paddingTop: contentPadding } );
-			}
-			if ( undefined === paddingBottom ) {
-				setAttributes( { paddingBottom: contentPadding } );
-			}
-			if ( undefined === paddingLeft ) {
-				setAttributes( { paddingLeft: contentPadding } );
-			}
-			if ( undefined === paddingRight ) {
-				setAttributes( { paddingRight: contentPadding } );
-			}
-		}
-
 
 		if( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ){
 			const color1 = hexToRGBA( maybeGetColorForVariable( gradientColor1 ), backgroundOpacity );

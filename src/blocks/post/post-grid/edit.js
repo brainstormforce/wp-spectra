@@ -38,78 +38,7 @@ const PostGridComponent = ( props ) => {
 		const { block } = props;
 		setStateValue( { innerBlocks: block } );
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-		const {
-			btnVPadding,
-			btnHPadding,
-			paddingBtnTop,
-			paddingBtnBottom,
-			paddingBtnRight,
-			paddingBtnLeft,
-			contentPadding,
-			contentPaddingMobile,
-			paddingTop,
-			paddingBottom,
-			paddingLeft,
-			paddingRight,
-			paddingTopMobile,
-			paddingRightMobile,
-			paddingBottomMobile,
-			paddingLeftMobile,
-		} = props.attributes;
 
-		if ( btnVPadding ) {
-			if ( undefined === paddingBtnTop ) {
-				props.setAttributes( { paddingBtnTop: btnVPadding } );
-			}
-			if ( undefined === paddingBtnBottom ) {
-				props.setAttributes( { paddingBtnBottom: btnVPadding } );
-			}
-		}
-		if ( btnHPadding ) {
-			if ( undefined === paddingBtnRight ) {
-				props.setAttributes( { paddingBtnRight: btnHPadding } );
-			}
-			if ( undefined === paddingBtnLeft ) {
-				props.setAttributes( { paddingBtnLeft: btnHPadding } );
-			}
-		}
-		if ( contentPadding ) {
-			if ( undefined === paddingTop ) {
-				props.setAttributes( { paddingTop: contentPadding } );
-			}
-			if ( undefined === paddingBottom ) {
-				props.setAttributes( { paddingBottom: contentPadding } );
-			}
-			if ( undefined === paddingRight ) {
-				props.setAttributes( { paddingRight: contentPadding } );
-			}
-			if ( undefined === paddingLeft ) {
-				props.setAttributes( { paddingLeft: contentPadding } );
-			}
-		}
-
-		if ( contentPaddingMobile ) {
-			if ( undefined === paddingTopMobile ) {
-				props.setAttributes( {
-					paddingTopMobile: contentPaddingMobile,
-				} );
-			}
-			if ( undefined === paddingBottomMobile ) {
-				props.setAttributes( {
-					paddingBottomMobile: contentPaddingMobile,
-				} );
-			}
-			if ( undefined === paddingRightMobile ) {
-				props.setAttributes( {
-					paddingRightMobile: contentPaddingMobile,
-				} );
-			}
-			if ( undefined === paddingLeftMobile ) {
-				props.setAttributes( {
-					paddingLeftMobile: contentPaddingMobile,
-				} );
-			}
-		}
 		const {
 			borderStyle,
 			borderWidth,

@@ -2,14 +2,18 @@
  * External dependencies
  */
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
 import { __, sprintf } from '@wordpress/i18n';
 import { ButtonGroup, Button, Tooltip } from '@wordpress/components';
 import { useDeviceType } from '@Controls/getPreviewType';
 import ResponsiveToggle from '../responsive-toggle';
+import { select } from '@wordpress/data';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGReset from '../reset';
 
 const SpacingControl = ( props ) => {
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const panelRef = useRef( null );
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -17,6 +21,13 @@ const SpacingControl = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
+
+	const { getSelectedBlock } = select( 'core/block-editor' );
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
+
 
 	const deviceType = useDeviceType();
 	const responsive = true;
@@ -460,66 +471,82 @@ const SpacingControl = ( props ) => {
 				break;
 		}
 	};
+
+	const controlName = getIdFromString( props.label );
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+
 	return (
-		<div className="components-base-control uagb-spacing-control">
-			<div className="uagb-size-type-field-tabs">
-				<div className="uagb-control__header">
-				<ResponsiveToggle
-					label= { label }
-					responsive= { responsive }
-				/>
-					<div className="uagb-control__actions">
-						<UAGReset
-							onReset={resetValues}
-							attributeNames = {[
-								valueTop?.label,
-								valueRight?.label,
-								valueBottom?.label,
-								valueLeft?.label,
-								valueTopTablet?.label,
-								valueRightTablet?.label,
-								valueBottomTablet?.label,
-								valueLeftTablet?.label,
-								valueTopMobile?.label,
-								valueRightMobile?.label,
-								valueBottomMobile?.label,
-								valueLeftMobile?.label,
-								unit?.label,
-								tUnit?.label,
-								mUnit?.label
-							]}
-						/>
-						<ButtonGroup
-							className="uagb-control__units"
-							aria-label={ __(
-								'Select Units',
-								'ultimate-addons-for-gutenberg'
-							) }
-						>
-							{ !disableUnits && onUnitSizeClick( unitSizes ) }
-						</ButtonGroup>
+		<div
+			ref={panelRef}
+			className="components-base-control"
+		>
+			{
+				controlBeforeDomElement
+			}
+			<div className="uagb-spacing-control">
+				<div className="uagb-size-type-field-tabs">
+					<div className="uagb-control__header">
+					<ResponsiveToggle
+						label= { label }
+						responsive= { responsive }
+					/>
+						<div className="uagb-control__actions">
+							<UAGReset
+								onReset={resetValues}
+								attributeNames = {[
+									valueTop?.label,
+									valueRight?.label,
+									valueBottom?.label,
+									valueLeft?.label,
+									valueTopTablet?.label,
+									valueRightTablet?.label,
+									valueBottomTablet?.label,
+									valueLeftTablet?.label,
+									valueTopMobile?.label,
+									valueRightMobile?.label,
+									valueBottomMobile?.label,
+									valueLeftMobile?.label,
+									unit?.label,
+									tUnit?.label,
+									mUnit?.label
+								]}
+							/>
+							<ButtonGroup
+								className="uagb-control__units"
+								aria-label={ __(
+									'Select Units',
+									'ultimate-addons-for-gutenberg'
+								) }
+							>
+								{ !disableUnits && onUnitSizeClick( unitSizes ) }
+							</ButtonGroup>
+						</div>
+					</div>
+					{ output[ deviceType ] ? output[ deviceType ] : output.Desktop }
+					<div className="uagb-spacing-control__input-labels">
+						<span className="uagb-spacing-control__number-label">
+							{ __( 'Top', 'ultimate-addons-for-gutenberg' ) }
+						</span>
+						<span className="uagb-spacing-control__number-label">
+							{ __( 'Right', 'ultimate-addons-for-gutenberg' ) }
+						</span>
+						<span className="uagb-spacing-control__number-label">
+							{ __( 'Bottom', 'ultimate-addons-for-gutenberg' ) }
+						</span>
+						<span className="uagb-spacing-control__number-label">
+							{ __( 'Left', 'ultimate-addons-for-gutenberg' ) }
+						</span>
+						<span className="uagb-spacing-control__number-label uagb-spacing-control__link-label"></span>
 					</div>
 				</div>
-				{ output[ deviceType ] ? output[ deviceType ] : output.Desktop }
-				<div className="uagb-spacing-control__input-labels">
-					<span className="uagb-spacing-control__number-label">
-						{ __( 'Top', 'ultimate-addons-for-gutenberg' ) }
-					</span>
-					<span className="uagb-spacing-control__number-label">
-						{ __( 'Right', 'ultimate-addons-for-gutenberg' ) }
-					</span>
-					<span className="uagb-spacing-control__number-label">
-						{ __( 'Bottom', 'ultimate-addons-for-gutenberg' ) }
-					</span>
-					<span className="uagb-spacing-control__number-label">
-						{ __( 'Left', 'ultimate-addons-for-gutenberg' ) }
-					</span>
-					<span className="uagb-spacing-control__number-label uagb-spacing-control__link-label"></span>
-				</div>
+				{ props.help && (
+					<p className="uag-control-help-notice">{ props.help }</p>
+				) }
 			</div>
-			{ props.help && (
-				<p className="uag-control-help-notice">{ props.help }</p>
-			) }
+			{
+				controlAfterDomElement
+			}
 		</div>
 	);
 
