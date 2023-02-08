@@ -53,7 +53,7 @@ const Render = ( props ) => {
 					'Add Button Title…',
 					'ultimate-addons-for-gutenberg'
 				) }
-				value={ heading.replace( /(<([^>]+)>)/ig, '' ) }
+				value={ heading.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
 				allowedFormats={ [] } // Removed the WP default link/bold/italic from the toolbar for button.
 				tagName={ titleTag }
 				onChange={ ( value ) =>
