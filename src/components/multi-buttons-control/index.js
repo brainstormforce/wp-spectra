@@ -1,6 +1,8 @@
 /**
  * WordPress dependencies
  */
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import { Button, ButtonGroup } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -10,10 +12,11 @@ import ResponsiveToggle from '../responsive-toggle';
  */
 import styles from './editor.lazy.scss';
 import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
-import React, { useLayoutEffect, useState } from 'react';
 import { select } from '@wordpress/data';
 
 const MultiButtonsControl = ( props ) => {
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const panelRef = useRef( null );
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -21,6 +24,13 @@ const MultiButtonsControl = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
+
+	const { getSelectedBlock } = select( 'core/block-editor' );
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
+
 	const {
 		data,
 		label,
@@ -33,7 +43,6 @@ const MultiButtonsControl = ( props ) => {
 		layoutVariant = 'full',
 	} = props;
 
-	const { getSelectedBlock } = select( 'core/block-editor' );
 	const selectedBlock = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	const allBlocksAttributes = wp.hooks.applyFilters( 'uagb.blocksAttributes', blocksAttributes ); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	const [ buttonPrimaryStateDesktop, setbuttonPrimaryStateDesktop ] = useState( true );
@@ -197,37 +206,53 @@ const MultiButtonsControl = ( props ) => {
 			[ data.label ]: value,
 		} );
 	};
+	const controlName = getIdFromString( label );
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${selectedBlock}.${panelNameForHook}.${controlName}.before`, '', selectedBlock );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${selectedBlock}.${panelNameForHook}.${controlName}`, '', selectedBlock );
+	const allOptions = wp.hooks.applyFilters( `spectra.${selectedBlock}.${panelNameForHook}.${controlName}.options`, options, selectedBlock );
+
 	return (
 		<div
-			className={ `components-base-control uagb-multi-buttons-control ${ iconsClass } spectra-multi-buttons__color-scheme--${ colorVariant } spectra-multi-buttons__layout--${ layoutVariant }` }
+			ref={panelRef}
+			className="components-base-control"
 		>
-			<div className="uagb-multi-buttons-control__label uag-control-label">
-				{ label }
-			</div>
-			<ButtonGroup
-				className={ `uagb-multi-button-button-group` }
-				aria-label={ label }
+			{
+				controlBeforeDomElement
+			}
+			<div
+				className={ ` uagb-multi-buttons-control ${ iconsClass } spectra-multi-buttons__color-scheme--${ colorVariant } spectra-multi-buttons__layout--${ layoutVariant }` }
 			>
-				{ options.map( ( option ) => (
-					<Button
-						key={ `option-${ option.value }` }
-						className={ `uagb-multi-button` }
-						isLarge
-						isSecondary={ data.value !== option.value || ! buttonPrimaryStateDesktop }
-						isPrimary={ data.value === option.value && buttonPrimaryStateDesktop }
-						aria-pressed={ data.value === option.value }
-						onClick={ () => onClickHandler( option.value ) }
-						aria-label={ option.tooltip }
-						label={ option.tooltip }
-						showTooltip={ option.tooltip ? true : false }
-					>
-						{ showIcons ? option.icon : option.label }
-					</Button>
-				) ) }
-			</ButtonGroup>
-			{ props.help && (
-				<p className="uag-control-help-notice">{ props.help }</p>
-			) }
+				<div className="uagb-multi-buttons-control__label uag-control-label">
+					{ label }
+				</div>
+				<ButtonGroup
+					className={ `uagb-multi-button-button-group` }
+					aria-label={ label }
+				>
+					{ allOptions.map( ( option ) => (
+						<Button
+							key={ `option-${ option.value }` }
+							className={ `uagb-multi-button` }
+							isLarge
+							isSecondary={ data.value !== option.value || ! buttonPrimaryStateDesktop }
+							isPrimary={ data.value === option.value && buttonPrimaryStateDesktop }
+							aria-pressed={ data.value === option.value }
+							onClick={ () => onClickHandler( option.value ) }
+							aria-label={ option.tooltip }
+							label={ option.tooltip }
+							showTooltip={ option.tooltip ? true : false }
+						>
+							{ showIcons ? option.icon : option.label }
+						</Button>
+					) ) }
+				</ButtonGroup>
+				{ props.help && (
+					<p className="uag-control-help-notice">{ props.help }</p>
+				) }
+			</div>
+			{
+				controlAfterDomElement
+			}
 		</div>
 	);
 };

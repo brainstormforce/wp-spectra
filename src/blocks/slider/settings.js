@@ -395,6 +395,7 @@ const Settings = ( props ) => {
 								),
 							}
 						] }
+						help={ __( "Above setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }
 					/>
 					<Range
 						label={ __(
