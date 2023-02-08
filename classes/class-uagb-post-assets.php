@@ -1195,6 +1195,6 @@ class UAGB_Post_Assets {
 
 		array_push( $this->static_css_blocks, $block_name );
 
-		return $css;
+		return apply_filters( 'spectra_frontend_static_style', $css, $block_name );
 	}
 }

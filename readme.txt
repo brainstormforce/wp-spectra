@@ -170,8 +170,12 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 2.3.6 =
+= 2.4.0 =
 * Improvement: Custom CSS - Disable option for on page-level CSS.
+* Improvement: Typography - Added Fahkwang and Jost Google fonts from in Font Families.
+* Fix: Info-box - Icon misaligned on tablet/mobile when padding gets added.
+* Fix: Image - Image dimensions width & height box updated as per spectra UI guidelines.
+* Fix: Display conditions - Undefined `key/index` when none is set for Operating system.
 
 = 2.3.5 - THURSDAY, 2nd FEBRUARY 2023 =
 * Improvement: Global - Removed Backward compatibility of button padding for old users from multiple blocks.

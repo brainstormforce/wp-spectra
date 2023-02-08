@@ -320,9 +320,9 @@ $selectors[ '.uagb-block-' . $id . '.uag-blocks-common-selector' ] = array(
 );
 
 $combined_selectors = array(
-	'desktop' => $selectors,
-	'tablet'  => $t_selectors,
-	'mobile'  => $m_selectors,
+	'desktop' => apply_filters( 'spectra_slider_styling', $selectors, $attr ),
+	'tablet'  => apply_filters( 'spectra_slider_tablet_styling', $t_selectors, $attr ),
+	'mobile'  => apply_filters( 'spectra_slider_mobile_styling', $m_selectors, $attr ),
 );
 
 return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-slider-container' );

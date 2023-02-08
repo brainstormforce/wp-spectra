@@ -3,7 +3,6 @@
  */
 import { __ } from '@wordpress/i18n';
 import { Button, Dashicon } from '@wordpress/components';
-import { useState } from '@wordpress/element';
 
 /**
  * Internal dependencies
@@ -13,8 +12,9 @@ import FontFamilyControl from './font-typography';
 import RangeTypographyControl from './range-typography';
 import TypographyStyles from './inline-styles';
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect } from 'react';
-import { select } from '@wordpress/data'
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
+import { select } from '@wordpress/data';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 
@@ -22,6 +22,8 @@ import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 export { TypographyStyles };
 
 const TypographyControl = ( props ) => {
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const panelRef = useRef( null );
 
 	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
 
@@ -136,6 +138,10 @@ const TypographyControl = ( props ) => {
 	}
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
 
 	// Function to get the Block's default Typography Values.
 	const getBlockTypographyValue = () => {
@@ -420,16 +426,32 @@ const TypographyControl = ( props ) => {
 		);
 	}
 
+	const controlName = getIdFromString( props.label );
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+
+
 	return (
 		<div
-			className={ `components-base-control uag-typography-options spectra-control-popup__options popup-${props?.attributes?.block_id} ${ activeClass }` }
+			ref={panelRef}
+			className="components-base-control"
 		>
-			{ ! disableAdvancedOptions && (
-				<>
-					{ fontTypoAdvancedControls }
-					{ showAdvancedFontControls }
-				</>
-			) }
+			{
+				controlBeforeDomElement
+			}
+			<div
+				className={ ` uag-typography-options spectra-control-popup__options popup-${props?.attributes?.block_id} ${ activeClass }` }
+			>
+				{ ! disableAdvancedOptions && (
+					<>
+						{ fontTypoAdvancedControls }
+						{ showAdvancedFontControls }
+					</>
+				) }
+			</div>
+			{
+				controlAfterDomElement
+			}
 		</div>
 	);
 };

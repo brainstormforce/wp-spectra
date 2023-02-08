@@ -44,6 +44,10 @@ export default function styling( props ) {
 		headingMarginUnit,
 		headingMarginUnitTablet,
 		headingMarginUnitMobile,
+		headingLetterSpacingType,
+		headingLetterSpacing,
+		headingLetterSpacingTablet,
+		headingLetterSpacingMobile,
 		// Number
 		numberFontFamily,
 		numberFontWeight,
@@ -74,6 +78,10 @@ export default function styling( props ) {
 		numberMarginUnit,
 		numberMarginUnitTablet,
 		numberMarginUnitMobile,
+		numberLetterSpacingType,
+		numberLetterSpacing,
+		numberLetterSpacingTablet,
+		numberLetterSpacingMobile,
 		// prefix
 		prefixRightDistance,
 		prefixRightDistanceTablet,
@@ -389,6 +397,9 @@ export default function styling( props ) {
 				headingLineHeight,
 				headingLineHeightType
 			),
+			'letter-Spacing': generateCSSUnit(
+				headingLetterSpacing,
+				headingLetterSpacingType ),
 			'color': headingColor,
 			'margin-top': generateCSSUnit(
 				headingTopMargin,
@@ -421,6 +432,9 @@ export default function styling( props ) {
 				numberLineHeight,
 				numberLineHeightType
 			),
+			'letter-Spacing': generateCSSUnit(
+				numberLetterSpacing,
+				numberLetterSpacingType ),
 			'color': numberColor,
 			'margin-top': generateCSSUnit(
 				numberTopMargin,
@@ -555,6 +569,9 @@ export default function styling( props ) {
             headingLineHeightTablet,
             headingLineHeightType
         ),
+		'letter-Spacing': generateCSSUnit(
+			headingLetterSpacingTablet,
+			headingLetterSpacingType ),
 		'margin-top': generateCSSUnit(
 			headingTopMarginTablet,
 			headingMarginUnitTablet
@@ -582,6 +599,9 @@ export default function styling( props ) {
 			numberLineHeightTablet,
 			numberLineHeightType
 		),
+		'letter-Spacing': generateCSSUnit(
+			numberLetterSpacingTablet, 
+			numberLetterSpacingType ),
 		'margin-top': generateCSSUnit(
 			numberTopMarginTablet,
 			numberMarginUnitTablet
@@ -686,6 +706,9 @@ export default function styling( props ) {
             headingLineHeightMobile,
             headingLineHeightType
         ),
+		'letter-Spacing': generateCSSUnit(
+			headingLetterSpacingMobile, 
+			headingLetterSpacingType ),
 		'margin-top': generateCSSUnit(
 			headingTopMarginMobile,
 			headingMarginUnitMobile
@@ -713,6 +736,7 @@ export default function styling( props ) {
 			numberLineHeightMobile,
 			numberLineHeightType
 		),
+		'letter-spacing': generateCSSUnit( numberLetterSpacingMobile, numberLetterSpacingType ),
 		'margin-top': generateCSSUnit(
 			numberTopMarginMobile,
 			numberMarginUnitMobile

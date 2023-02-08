@@ -21,6 +21,10 @@
 
 		.components-panel__body {
 
+			> div > .components-base-control {
+				margin-bottom: $spectra-control-vertical-gap;
+			}
+
 			> .components-base-control {
 				margin-bottom: $spectra-control-vertical-gap;
 
@@ -32,6 +36,20 @@
 			}
 
 			> .components-base-control:last-child {
+				margin-bottom: 0;
+			}
+
+			> .spectra-components-control .components-base-control {
+				margin-bottom: $spectra-control-vertical-gap;
+
+				.components-base-control,
+				.components-base-control__field {
+					padding-top: 0;
+					margin-bottom: 0;
+				}
+			}
+
+			> .spectra-components-control:last-child .components-base-control {
 				margin-bottom: 0;
 			}
 

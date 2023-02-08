@@ -1,11 +1,14 @@
 function generateCSSUnit( value, unit ) {
-	let css = '';
-
-	if ( typeof value !== 'undefined' ) {
-		css += value + unit;
+	if( isNaN( value ) || value === '' ){
+		return '';
 	}
 
-	return css;
+	return value + unit;
 }
 
+export const generateCSSUnitType = ( unit, defaultUnit = 'px' ) => (
+	( null !== unit && undefined !== unit ) ? unit : defaultUnit
+  );
+
 export default generateCSSUnit;
+
