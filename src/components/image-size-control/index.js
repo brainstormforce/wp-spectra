@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
 import {
 	TextControl,
 } from '@wordpress/components';
@@ -7,6 +7,8 @@ import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import useDimensionHandler from './use-dimension-handler';
 import { useDeviceType } from '@Controls/getPreviewType';
+import { select } from '@wordpress/data';
+import { getPanelIdFromRef } from '@Utils/Helpers';
 import ResponsiveToggle from '../responsive-toggle';
 
 export default function ImageSizeControl( {
@@ -27,6 +29,9 @@ export default function ImageSizeControl( {
 	onChange,
 } ) {
 
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const panelRef = useRef( null );
+
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -34,6 +39,13 @@ export default function ImageSizeControl( {
 			styles.unuse();
 		};
 	}, [] );
+
+	const { getSelectedBlock } = select( 'core/block-editor' );
+
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
 
 	const deviceType = useDeviceType();
 	const responsive = true;
@@ -152,8 +164,20 @@ export default function ImageSizeControl( {
 		</>
 	);
 
+
+	const controlName = 'image-size'; // This components have no label props that's why added hard coded label
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+
+
 	return (
-		<>
+		<div
+			ref={panelRef}
+			className="components-base-control"
+		>
+			{
+				controlBeforeDomElement
+			}
 			{ imageSizeOptions.length !== 0 && (
 				<ResponsiveSelectControl
 					label={ __( 'Image Size', 'ultimate-addons-for-gutenberg' ) }
@@ -180,7 +204,7 @@ export default function ImageSizeControl( {
 				/>
 			) }
 			{ isResizable && (
-				<div className="components-base-control block-editor-image-size-control">
+				<div className="block-editor-image-size-control">
 					<div className='uagb-size-type-field-tabs'>
 						<div className='uagb-control__header'>
 							<ResponsiveToggle
@@ -194,6 +218,9 @@ export default function ImageSizeControl( {
 					</div>
 				</div>
 			) }
-		</>
+			{
+				controlAfterDomElement
+			}
+		</div>
 	);
 }
