@@ -52,14 +52,11 @@ const GradientSettings = ( props ) => {
 			>
 				{ gradientType.value ? 'Basic Settings' : 'Advanced Settings' }
 			</Button>
-			<div
-				ref={panelRef}
-				
-			>
+			<div ref={panelRef}>
 				{
 					controlBeforeDomElement
 				}
-				{ gradientType.value && (
+				{ ! gradientType.value && (
 					<GradientPicker
 						__nextHasNoMargin = { true }
 						value={ backgroundGradient.value }
@@ -72,15 +69,6 @@ const GradientSettings = ( props ) => {
 					controlAfterDomElement
 				}
 			</div>
-			{ ! gradientType.value && (
-				<GradientPicker
-					__nextHasNoMargin = { true }
-					value={ backgroundGradient.value }
-					onChange={ onGradientChange }
-					className="uagb-gradient-picker"
-					gradients={[]} // Passing it an empty to resolve block encounters an error when gutenberg is activated.
-				/>
-			)}
 			{ gradientType.value && (
 				<>
 					<AdvancedPopColorControl
