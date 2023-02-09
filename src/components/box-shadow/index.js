@@ -18,6 +18,8 @@ const BoxShadowControl = ( props ) => {
 	const panelRef = useRef( null );
 	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
 
+	const allBlocksAttributes = wp.hooks.applyFilters( 'uagb.blocksAttributes', blocksAttributes ); // eslint-disable-line @wordpress/no-unused-vars-before-return
+
 	const { getSelectedBlock } = select( 'core/block-editor' );
 
 	useLayoutEffect( () => {
@@ -82,10 +84,10 @@ const BoxShadowControl = ( props ) => {
 		const selectedBlockName = getSelectedBlock()?.name.split( '/' ).pop();
 
 		let defaultValues = false;
-		if ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ] ) {
+		if ( 'undefined' !== typeof allBlocksAttributes[ selectedBlockName ] ) {
 			attributeNames.forEach( ( attributeName ) => {
 				if ( attributeName ) {
-					const blockDefaultAttributeValue = ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ][ attributeName ]?.default ) ? blocksAttributes[ selectedBlockName ][ attributeName ]?.default : '';
+					const blockDefaultAttributeValue = ( 'undefined' !== typeof allBlocksAttributes[ selectedBlockName ][ attributeName ]?.default ) ? allBlocksAttributes[ selectedBlockName ][ attributeName ]?.default : '';
 					defaultValues = {
 						...defaultValues,
 						[ attributeName ] : blockDefaultAttributeValue,
