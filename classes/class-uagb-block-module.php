@@ -161,7 +161,7 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 
 						$default_attr = include $attr_file;
 
-						$attr = array_merge( $default_attr, $attr );
+						$attr = self::get_fallback_values( $default_attr, $attr );
 					}
 
 					// Get Assets.
@@ -236,10 +236,40 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 						'dep'  => array(),
 						'type' => 'js',
 					),
+					'uagb-swiper-js'    => array(
+						'src'        => UAGB_URL . 'assets/js/swiper-bundle.min.js',
+						'dep'        => array(),
+						'skipEditor' => true,
+						'type'       => 'js',
+					),
+					'uagb-swiper-css'   => array(
+						'src'  => UAGB_URL . 'assets/css/swiper-bundle.min.css',
+						'dep'  => array(),
+						'type' => 'css',
+					),
 				);
 			}
 
 			return apply_filters( 'uag_register_block_static_dependencies', self::$block_assets );
+		}
+
+		/**
+		 * Returns attributes array with default value wherever required.
+		 *
+		 * @param array $default_attr default attribute value array from attributes.php.
+		 * @param array $attr saved attributes data from database.
+		 * @return array
+		 * @since 2.3.2
+		 */
+		public static function get_fallback_values( $default_attr, $attr ) {
+			foreach ( $default_attr as $key => $value ) {
+				// sets default value if key is not available in database.
+				if ( ! isset( $attr[ $key ] ) ) {
+					$attr[ $key ] = $value;
+				}
+			}
+
+			return $attr;
 		}
 	}
 }

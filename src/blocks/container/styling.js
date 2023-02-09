@@ -247,9 +247,6 @@ function styling( props ) {
 		' > .uagb-container__shape-bottom .uagb-container__shape-fill' : {
 			'fill': bottomColor,
 		},
-		' .uagb-container__video-wrap' : {
-			...videoBackgroundCSS
-		},
 		' .uagb-container__video-wrap video' : {
 			'opacity': backgroundVideoOpacityValue
 		}
@@ -310,23 +307,10 @@ function styling( props ) {
 		'overflow' : overflow
 	}
 
-	selectors['.wp-block'] = containerCSS;
-	selectors['.wp-block:hover'] = {
-		'border-color': containerBorderHColor,
-		'box-shadow': '',
-	};
+
 
 	boxShadowBlurHover = isNaN( boxShadowBlurHover ) ? '' : boxShadowBlurHover;
 	boxShadowColorHover = boxShadowColorHover ? boxShadowColorHover : '';
-
-	if( '' !== boxShadowColorHover || '' !== boxShadowBlurHover ) {
-
-		const boxShadowBlurHoverCSSUnit = ( '' === boxShadowBlurHover ) ? '' : generateCSSUnit( boxShadowBlurHover, 'px' );
-
-		selectors['.wp-block:hover']['box-shadow'] = generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
-													boxShadowBlurHoverCSSUnit + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
-													boxShadowColorHover + ' ' +	boxShadowPositionCSSHover;
-	}
 
 	let containerFlexSelector = '.wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout';
 	if ( ! isBlockRootParent || 'alignfull' !== contentWidth || 'alignwide' !== innerContentWidth ) {
@@ -425,19 +409,6 @@ function styling( props ) {
 	const containerBackgroundCSSTablet = generateBackgroundCSS( backgroundAttributesTablet );
 
 	const tablet_selectors = {
-		'.wp-block' : {
-			'padding-top': generateCSSUnit( topPaddingTablet, paddingTypeTablet ),
-			'padding-bottom': generateCSSUnit( bottomPaddingTablet, paddingTypeTablet ),
-			'padding-left': generateCSSUnit( leftPaddingTablet, paddingTypeTablet ),
-			'padding-right': generateCSSUnit( rightPaddingTablet, paddingTypeTablet ),
-			'margin-top': generateCSSUnit( topMarginTablet, marginTypeTablet )  + ' !important',
-			'margin-bottom': generateCSSUnit( bottomMarginTablet, marginTypeTablet )  + ' !important',
-			'margin-left': generateCSSUnit( leftMarginTablet, marginTypeTablet ),
-			'margin-right': generateCSSUnit( rightMarginTablet, marginTypeTablet ),
-			'min-height' : generateCSSUnit( minHeightTablet, minHeightTypeTablet ),
-			...containerBackgroundCSSTablet,
-			...borderCSSTablet
-		},
 		[containerFlexSelector] : {
 			'flex-direction' : directionTablet,
 			'align-items' : alignItemsTablet,
@@ -489,19 +460,6 @@ function styling( props ) {
 	const containerBackgroundCSSMobile = generateBackgroundCSS( backgroundAttributesMobile );
 
 	const mobile_selectors = {
-		'.wp-block' : {
-			'padding-top': generateCSSUnit( topPaddingMobile, paddingTypeMobile ),
-			'padding-bottom': generateCSSUnit( bottomPaddingMobile, paddingTypeMobile ),
-			'padding-left': generateCSSUnit( leftPaddingMobile, paddingTypeMobile ),
-			'padding-right': generateCSSUnit( rightPaddingMobile, paddingTypeMobile ),
-			'margin-top': generateCSSUnit( topMarginMobile, marginTypeMobile )  + ' !important',
-			'margin-bottom': generateCSSUnit( bottomMarginMobile, marginTypeMobile )  + ' !important',
-			'margin-left': generateCSSUnit( leftMarginMobile, marginTypeMobile ),
-			'margin-right': generateCSSUnit( rightMarginMobile, marginTypeMobile ),
-			'min-height' : generateCSSUnit( minHeightMobile, minHeightTypeMobile ),
-			...containerBackgroundCSSMobile,
-			...borderCSSMobile
-		},
 		[containerFlexSelector] : {
 			'flex-direction' : directionMobile,
 			'align-items' : alignItemsMobile,
@@ -527,6 +485,109 @@ function styling( props ) {
 			'height': generateCSSUnit( bottomHeightMobile, 'px' )
 		},
 	};
+
+	if( 'video' === backgroundType ){
+		selectors[' .uagb-container__video-wrap'] = {
+			...videoBackgroundCSS,
+			...borderCSS,
+		};
+		tablet_selectors[' .uagb-container__video-wrap'] = {
+			...borderCSSTablet,
+		};
+		mobile_selectors[' .uagb-container__video-wrap'] = {
+			...borderCSSMobile,
+		};
+		selectors['.wp-block'] = {
+			'padding-top': generateCSSUnit( topPaddingDesktop, paddingType ),
+			'padding-bottom': generateCSSUnit( bottomPaddingDesktop, paddingType ),
+			'padding-left': generateCSSUnit( leftPaddingDesktop, paddingType ),
+			'padding-right': generateCSSUnit( rightPaddingDesktop, paddingType ),
+			'margin-top': generateCSSUnit( topMarginDesktop, marginType ) +	' !important',
+			'margin-bottom': generateCSSUnit( bottomMarginDesktop, marginType ) + ' !important',
+			'margin-left': generateCSSUnit( leftMarginDesktop, marginType ),
+			'margin-right': generateCSSUnit( rightMarginDesktop, marginType ),
+			'box-shadow':
+			generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
+			generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
+			boxShadowColor + ' ' +	boxShadowPositionCSS,
+			'min-height' : generateCSSUnit( minHeightDesktop, minHeightType ),
+			'overflow' : overflow
+		};
+		tablet_selectors['.wp-block'] = {
+				'padding-top': generateCSSUnit( topPaddingTablet, paddingTypeTablet ),
+				'padding-bottom': generateCSSUnit( bottomPaddingTablet, paddingTypeTablet ),
+				'padding-left': generateCSSUnit( leftPaddingTablet, paddingTypeTablet ),
+				'padding-right': generateCSSUnit( rightPaddingTablet, paddingTypeTablet ),
+				'margin-top': generateCSSUnit( topMarginTablet, marginTypeTablet )  + ' !important',
+				'margin-bottom': generateCSSUnit( bottomMarginTablet, marginTypeTablet )  + ' !important',
+				'margin-left': generateCSSUnit( leftMarginTablet, marginTypeTablet ),
+				'margin-right': generateCSSUnit( rightMarginTablet, marginTypeTablet ),
+				'min-height' : generateCSSUnit( minHeightTablet, minHeightTypeTablet ),
+		};
+		mobile_selectors['.wp-block']= {
+			'padding-top': generateCSSUnit( topPaddingMobile, paddingTypeMobile ),
+			'padding-bottom': generateCSSUnit( bottomPaddingMobile, paddingTypeMobile ),
+			'padding-left': generateCSSUnit( leftPaddingMobile, paddingTypeMobile ),
+			'padding-right': generateCSSUnit( rightPaddingMobile, paddingTypeMobile ),
+			'margin-top': generateCSSUnit( topMarginMobile, marginTypeMobile )  + ' !important',
+			'margin-bottom': generateCSSUnit( bottomMarginMobile, marginTypeMobile )  + ' !important',
+			'margin-left': generateCSSUnit( leftMarginMobile, marginTypeMobile ),
+			'margin-right': generateCSSUnit( rightMarginMobile, marginTypeMobile ),
+			'min-height' : generateCSSUnit( minHeightMobile, minHeightTypeMobile ),
+		};
+		selectors['.wp-block:hover .uagb-container__video-wrap'] = {
+			'border-color': containerBorderHColor,
+			'box-shadow': '',
+		};
+		if( '' !== boxShadowColorHover || '' !== boxShadowBlurHover ) {
+
+			const boxShadowBlurHoverCSSUnit = ( '' === boxShadowBlurHover ) ? '' : generateCSSUnit( boxShadowBlurHover, 'px' );
+
+			selectors['.wp-block:hover .uagb-container__video-wrap']['box-shadow'] = generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
+														boxShadowBlurHoverCSSUnit + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
+														boxShadowColorHover + ' ' +	boxShadowPositionCSSHover;
+		}
+	} else{
+		selectors['.wp-block'] = containerCSS;
+		tablet_selectors['.wp-block'] = {
+				'padding-top': generateCSSUnit( topPaddingTablet, paddingTypeTablet ),
+				'padding-bottom': generateCSSUnit( bottomPaddingTablet, paddingTypeTablet ),
+				'padding-left': generateCSSUnit( leftPaddingTablet, paddingTypeTablet ),
+				'padding-right': generateCSSUnit( rightPaddingTablet, paddingTypeTablet ),
+				'margin-top': generateCSSUnit( topMarginTablet, marginTypeTablet )  + ' !important',
+				'margin-bottom': generateCSSUnit( bottomMarginTablet, marginTypeTablet )  + ' !important',
+				'margin-left': generateCSSUnit( leftMarginTablet, marginTypeTablet ),
+				'margin-right': generateCSSUnit( rightMarginTablet, marginTypeTablet ),
+				'min-height' : generateCSSUnit( minHeightTablet, minHeightTypeTablet ),
+				...containerBackgroundCSSTablet,
+				...borderCSSTablet
+		};
+		mobile_selectors['.wp-block']= {
+			'padding-top': generateCSSUnit( topPaddingMobile, paddingTypeMobile ),
+			'padding-bottom': generateCSSUnit( bottomPaddingMobile, paddingTypeMobile ),
+			'padding-left': generateCSSUnit( leftPaddingMobile, paddingTypeMobile ),
+			'padding-right': generateCSSUnit( rightPaddingMobile, paddingTypeMobile ),
+			'margin-top': generateCSSUnit( topMarginMobile, marginTypeMobile )  + ' !important',
+			'margin-bottom': generateCSSUnit( bottomMarginMobile, marginTypeMobile )  + ' !important',
+			'margin-left': generateCSSUnit( leftMarginMobile, marginTypeMobile ),
+			'margin-right': generateCSSUnit( rightMarginMobile, marginTypeMobile ),
+			'min-height' : generateCSSUnit( minHeightMobile, minHeightTypeMobile ),
+			...containerBackgroundCSSMobile,
+			...borderCSSMobile
+		};
+		selectors['.wp-block:hover'] = {
+			'border-color': containerBorderHColor,
+			'box-shadow': '',
+		};
+		if( '' !== boxShadowColorHover || '' !== boxShadowBlurHover ) {
+
+			const boxShadowBlurHoverCSSUnit = ( '' === boxShadowBlurHover ) ? '' : generateCSSUnit( boxShadowBlurHover, 'px' );
+
+			selectors['.wp-block:hover']['box-shadow'] = generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
+														boxShadowBlurHoverCSSUnit + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
+														boxShadowColorHover + ' ' +	boxShadowPositionCSSHover;
+		}
+	}
 
 	if ( 'default' === contentWidth ) {
 		selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthDesktopFallback, widthType );

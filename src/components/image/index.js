@@ -1,13 +1,24 @@
+import React, {useEffect, useState, useRef } from 'react';
 import { __ } from '@wordpress/i18n';
 import { BaseControl } from '@wordpress/components';
 import { MediaUpload } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGB_Block_Icons from '@Controls/block-icons';
 
 const UAGMediaPicker = ( props ) => {
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const panelRef = useRef( null );
+
 	const selectedBlock = useSelect( ( select ) => {
 		return select( 'core/block-editor' ).getSelectedBlock();
 	}, [] );
+
+	const blockNameForHook = selectedBlock?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
 
 	const {
 		onSelectImage,
@@ -136,58 +147,72 @@ const UAGMediaPicker = ( props ) => {
 		return mediaURL;
 	}
 
+	const controlName = getIdFromString( props?.label );
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+
 	return (
-		<BaseControl
-			className="spectra-media-control"
-			id={ `uagb-option-selector-${ slug }` }
-			label={ label }
-			hideLabelFromVision={ disableLabel }
+		<div
+			ref={panelRef}
+			className="components-base-control"
 		>
 			{
-				isShowImageUploader() ? (
-					<>
-						<div
-							className="spectra-media-control__wrapper"
-							style={ {
-								backgroundImage: ( ! placeholderIcon && backgroundImage?.url ) && (
-									`url("${ generateBackground( backgroundImage?.url ) }")`
-								),
-							} }
-						>
-							{ ( placeholderIcon && backgroundImage?.url ) && (
-								<div className="spectra-media-control__icon spectra-media-control__icon--stroke">
-									{ placeholderIcon }
-								</div>
-							) }
-							<MediaUpload
-								title={ selectMediaLabel }
-								onSelect={ onSelectImage }
-								allowedTypes={ allow }
-								value={ backgroundImage }
-								render={ ( { open } ) => renderMediaUploader( open ) }
-							/>
-							{ ( ! disableRemove && backgroundImage?.url ) && (
-								<button
-									className='spectra-media-control__clickable spectra-media-control__clickable--close'
-									onClick={ onRemoveImage }
-								>
-									{ renderButton( 'close' ) }
-								</button>
-							) }
-						</div>
-						{ props.help && (
-							<p className="uag-control-help-notice">{ props.help }</p>
-						) }
-					</>
-				) : (
-					registerImageExtender
-				)
+				controlBeforeDomElement
 			}
-
+			<BaseControl
+				className="spectra-media-control"
+				id={ `uagb-option-selector-${ slug }` }
+				label={ label }
+				hideLabelFromVision={ disableLabel }
+			>
+				{
+					isShowImageUploader() ? (
+						<>
+							<div
+								className="spectra-media-control__wrapper"
+								style={ {
+									backgroundImage: ( ! placeholderIcon && backgroundImage?.url ) && (
+										`url("${ generateBackground( backgroundImage?.url ) }")`
+									),
+								} }
+							>
+								{ ( placeholderIcon && backgroundImage?.url ) && (
+									<div className="spectra-media-control__icon spectra-media-control__icon--stroke">
+										{ placeholderIcon }
+									</div>
+								) }
+								<MediaUpload
+									title={ selectMediaLabel }
+									onSelect={ onSelectImage }
+									allowedTypes={ allow }
+									value={ backgroundImage }
+									render={ ( { open } ) => renderMediaUploader( open ) }
+								/>
+								{ ( ! disableRemove && backgroundImage?.url ) && (
+									<button
+										className='spectra-media-control__clickable spectra-media-control__clickable--close'
+										onClick={ onRemoveImage }
+									>
+										{ renderButton( 'close' ) }
+									</button>
+								) }
+							</div>
+							{ props.help && (
+								<p className="uag-control-help-notice">{ props.help }</p>
+							) }
+						</>
+					) : (
+						registerImageExtender
+					)
+				}
+			</BaseControl>
 			{
 				registerImageLinkExtender
 			}
-		</BaseControl>
+			{
+				controlAfterDomElement
+			}
+		</div>
 	);
 };
 

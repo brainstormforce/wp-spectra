@@ -95,14 +95,14 @@ const BlockCard = ( props ) => {
                 </div>
             ) : (
                 <div 
-                    className={isCoreBlock ? 'core-block-card-wrap' : ''}
+                    className={ isCoreBlock ? 'cursor-not-allowed' : '' }
                     title= { isCoreBlock ? __( 'This is a Core Spectra block & cannot be disabled.', 'ultimate-addons-for-gutenberg' ) : '' }
                 >
                     <Switch
                         checked={blockActivationStatus}
                         onChange={updateBlockStatus}
                         className={classNames(
-                            isCoreBlock ? 'core-block-card' : '',
+                            isCoreBlock ? 'pointer-events-none' : '',
                             blockActivationStatus ? 'bg-spectra' : 'bg-slate-200',
                             'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                         )}

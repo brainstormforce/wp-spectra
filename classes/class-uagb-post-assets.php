@@ -166,7 +166,7 @@ class UAGB_Post_Assets {
 	 * Post ID
 	 *
 	 * @since 1.23.0
-	 * @var array
+	 * @var integer
 	 */
 	protected $post_id;
 
@@ -551,7 +551,7 @@ class UAGB_Post_Assets {
 			return;
 		}
 
-		echo '<script type="text/javascript" id="uagb-script-frontend-' . $this->post_id . '">' . $this->script . '</script>'; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+		echo '<script type="text/javascript" id="uagb-script-frontend-' . esc_attr( $this->post_id ) . '">' . $this->script . '</script>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -562,8 +562,7 @@ class UAGB_Post_Assets {
 		if ( empty( $this->stylesheet ) ) {
 			return;
 		}
-
-		echo '<style id="uagb-style-frontend-' . $this->post_id . '">' . $this->stylesheet . '</style>'; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+		echo '<style id="uagb-style-frontend-' . esc_attr( $this->post_id ) . '">' . $this->stylesheet . '</style>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -905,11 +904,15 @@ class UAGB_Post_Assets {
 		$blocks            = $this->parse_blocks( $post_content );
 		$this->page_blocks = $blocks;
 
-		$custom_css = get_post_meta( $this->post_id, '_uag_custom_page_level_css', true );
+		$enable_on_page_css_button = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_on_page_css_button', 'yes' );
 
-		if ( isset( $custom_css ) && is_string( $custom_css ) && ! self::$custom_css_appended ) {
-			$this->stylesheet         .= $custom_css;
-			self::$custom_css_appended = true;
+		if ( 'yes' === $enable_on_page_css_button ) {
+			$custom_css = get_post_meta( $this->post_id, '_uag_custom_page_level_css', true );
+
+			if ( isset( $custom_css ) && is_string( $custom_css ) && ! self::$custom_css_appended ) {
+				$this->stylesheet         .= $custom_css;
+				self::$custom_css_appended = true;
+			}
 		}
 
 		if ( ! is_array( $blocks ) || empty( $blocks ) ) {
@@ -1192,6 +1195,6 @@ class UAGB_Post_Assets {
 
 		array_push( $this->static_css_blocks, $block_name );
 
-		return $css;
+		return apply_filters( 'spectra_frontend_static_style', $css, $block_name );
 	}
 }

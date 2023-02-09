@@ -21,6 +21,10 @@
 
 		.components-panel__body {
 
+			> div > .components-base-control {
+				margin-bottom: $spectra-control-vertical-gap;
+			}
+
 			> .components-base-control {
 				margin-bottom: $spectra-control-vertical-gap;
 
@@ -32,6 +36,20 @@
 			}
 
 			> .components-base-control:last-child {
+				margin-bottom: 0;
+			}
+
+			> .spectra-components-control .components-base-control {
+				margin-bottom: $spectra-control-vertical-gap;
+
+				.components-base-control,
+				.components-base-control__field {
+					padding-top: 0;
+					margin-bottom: 0;
+				}
+			}
+
+			> .spectra-components-control:last-child .components-base-control {
 				margin-bottom: 0;
 			}
 
@@ -671,7 +689,9 @@ button.components-button.uagb-review-select-btn.is-secondary {
 /* Block icons white when block is selected in list view. */
 .block-editor-list-view-leaf.is-selected .block-editor-list-view-block-contents svg.uagb-editor-icons {
 
-	> path {
+	path,
+	rect,
+	circle {
 		stroke: #fff;
 	}
 }
@@ -679,7 +699,9 @@ button.components-button.uagb-review-select-btn.is-secondary {
 /* Block icons white when toggle is set to select from tools. */
 .block-editor-block-list__block-selection-button .block-editor-block-icon.has-colors svg.uagb-editor-icons {
 
-	> path {
+	path,
+	rect,
+	circle {
 		stroke: #fff;
 	}
 }
@@ -687,7 +709,9 @@ button.components-button.uagb-review-select-btn.is-secondary {
 /* Block icons turn to secondary color when they are a parent block. */
 .block-editor-block-parent-selector .block-editor-block-icon svg.uagb-editor-icons {
 
-	> path {
+	path,
+	rect,
+	circle {
 		stroke: $spectra-color-heading;
 	}
 }
@@ -696,7 +720,9 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .block-editor-block-icon.has-colors svg.uagb-editor-icons {
 	stroke: $spectra-color-secondary;
 
-	path {
+	path,
+	rect,
+	circle {
 		stroke: $spectra-color-secondary;
 	}
 }
@@ -769,10 +795,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 /* Spectra Page Level Settings */
 .is-pressed .spectra-page-settings-button path {
 	fill: #fff;
-}
-
-.spectra-page-settings-button path {
-	fill: #5733ff;
 }
 
 .spectra-page-settings-button:hover path {

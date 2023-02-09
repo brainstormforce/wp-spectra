@@ -42,9 +42,9 @@ const TemplatesButton = () => {
 			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
 		} );
     };
-   
+
     return (
-        <section className='block border-b border-solid border-slate-200 px-12 py-8 justify-between'>  
+        <section className='block border-b border-solid border-slate-200 px-12 py-8 justify-between'>
             <div className='mr-16 w-full flex items-center'>
                 <h3 className="p-0 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900">
                     { __( 'Enable Templates Button', 'ultimate-addons-for-gutenberg' ) }

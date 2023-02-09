@@ -9,6 +9,9 @@ import renderSVG from '@Controls/deprecatedRenderIcon';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 import newAttributesV2_0_14 from './deprecated/v2.0.14/attributes';
 import newSaveV2_0_14 from './deprecated/v2.0.14/save';
+
+import newAttributesV2_1_1 from './deprecated/v2.1.1/attributes';
+import newSaveV2_1_1 from './deprecated/v2.1.1/save';
 const borderAttributes = getBorderAttributes( 'btn' );
  const attributes = {
 	inheritFromTheme: {
@@ -256,6 +259,10 @@ const deprecated = [
 	{
 		attributes: newAttributesV2_0_14,
 		save : newSaveV2_0_14,
+	},
+	{
+		attributes: newAttributesV2_1_1,
+		save : newSaveV2_1_1,
 	},
 ];
 

@@ -85,10 +85,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors[' .wp-block-button__link:hover'] = array(
 					'background' => 'transparent',
 				);
+				$selectors[' .wp-block-button__link:focus'] = array(
+					'background' => 'transparent',
+				);
 
 			} elseif ( 'color' === $attr['hoverbackgroundType'] ) {
 
 				$selectors[' .wp-block-button__link:hover'] = array(
+					'background' => $attr['hBackground'],
+				);
+				$selectors[' .wp-block-button__link:focus'] = array(
 					'background' => $attr['hBackground'],
 				);
 
@@ -100,6 +106,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$btn_hover_bg_css                           = self::uag_get_background_obj( $bg_hover_obj );
 				$selectors[' .wp-block-button__link:hover'] = $btn_hover_bg_css;
+				$selectors[' .wp-block-button__link:focus'] = $btn_hover_bg_css;
 			}
 
 			$selectors[' .uagb-button__wrapper .uagb-buttons-repeater']                   = array(
@@ -121,6 +128,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
 			);
 			$selectors[' .wp-block-button__link.has-text-color:hover .uagb-button__link'] = array(
+				'color' => $attr['hColor'],
+			);
+			$selectors[' .wp-block-button__link.has-text-color:focus .uagb-button__link'] = array(
 				'color' => $attr['hColor'],
 			);
 			if ( 0 !== $attr['boxShadowHOffset'] || 0 !== $attr['boxShadowVOffset'] ) {
@@ -145,6 +155,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[ $wrapper . '.wp-block-button__link:hover' ] = array(
 				'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
 			);
+			$selectors[ $wrapper . '.wp-block-button__link:focus' ] = array(
+				'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
+			);
 			// twenty twenty theme.
 			$selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater']       = $border_css;
 			$m_selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater']     = $border_css_mobile;
@@ -161,6 +174,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'text-decoration' => $attr['decoration'],
 				'font-size'       => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
 				'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
+			);
+			$selectors[ $wrapper . ':hover .uagb-button__link' ]                            = array(
+				'color' => $attr['hColor'],
+			);
+			$selectors[ $wrapper . ':focus .uagb-button__link' ]                            = array(
+				'color' => $attr['hColor'],
 			);
 			$m_selectors[ $wrapper . ' .uagb-button__link' ]                                = array(
 				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
@@ -210,6 +229,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'fill'   => $attr['iconColor'],
 			);
 			$selectors[ $wrapper . ':hover .uagb-button__icon > svg' ] = array(
+				'fill' => $attr['iconHColor'],
+			);
+			$selectors[ $wrapper . ':focus .uagb-button__icon > svg' ] = array(
 				'fill' => $attr['iconHColor'],
 			);
 			if ( ! $attr['removeText'] ) {
@@ -510,9 +532,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$overall_border_css
 				),
 				'.is-grid .uagb-post__inner-wrap .uagb-post__image:first-child' => array(
-					'margin-left'  => UAGB_Helper::get_css_value( (int) ( - $paddingLeft ), $attr['contentPaddingUnit'] ),
-					'margin-right' => UAGB_Helper::get_css_value( (int) ( - $paddingRight ), $attr['contentPaddingUnit'] ),
-					'margin-top'   => UAGB_Helper::get_css_value( (int) ( - $paddingTop ), $attr['contentPaddingUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( ( - (int) $paddingLeft ), $attr['contentPaddingUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( ( - (int) $paddingRight ), $attr['contentPaddingUnit'] ),
+					'margin-top'   => UAGB_Helper::get_css_value( ( - (int) $paddingTop ), $attr['contentPaddingUnit'] ),
 				),
 				':not(.is-grid) .uagb-post__inner-wrap > .uagb-post__text:last-child' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $paddingBottom, $attr['contentPaddingUnit'] ),
@@ -524,8 +546,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom' => UAGB_Helper::get_css_value( $paddingBottom, $attr['contentPaddingUnit'] ),
 				),
 				':not(.wp-block-uagb-post-carousel):not(.is-grid).uagb-post__items' => array(
-					'margin-right' => UAGB_Helper::get_css_value( (int) ( -$row_gap_fallback / 2 ), $attr['rowGapUnit'] ),
-					'margin-left'  => UAGB_Helper::get_css_value( (int) ( -$row_gap_fallback / 2 ), $attr['rowGapUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( ( - (int) $row_gap_fallback / 2 ), $attr['rowGapUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( ( - (int) $row_gap_fallback / 2 ), $attr['rowGapUnit'] ),
 				),
 				':not(.is-grid).uagb-post__items article' => array(
 					'padding-right' => UAGB_Helper::get_css_value( (int) ( $row_gap_fallback / 2 ), $attr['rowGapUnit'] ),
@@ -627,6 +649,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'background'   => ( 'color' === $attr['ctaBgHType'] ) ? $attr['ctaBgHColor'] : 'transparent',
 				'border-color' => $attr['btnBorderHColor'],
 			);
+			$selectors[' .uagb-post__text.uagb-post__cta a.uagb-text-link:focus'] = array(
+				'color'        => $attr['ctaHColor'],
+				'background'   => ( 'color' === $attr['ctaBgHType'] ) ? $attr['ctaBgHColor'] : 'transparent',
+				'border-color' => $attr['btnBorderHColor'],
+			);
 
 			return $selectors;
 
@@ -712,8 +739,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom' => UAGB_Helper::get_css_value( ( $columnGapMobile ), $attr['columnGapUnit'] ),
 				),
 				':not(.is-grid).uagb-post__items'         => array(
-					'margin-right' => UAGB_Helper::get_css_value( (int) ( -$rowGapMobile / 2 ), $attr['rowGapUnit'] ),
-					'margin-left'  => UAGB_Helper::get_css_value( (int) ( -$rowGapMobile / 2 ), $attr['rowGapUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( ( - (int) $rowGapMobile / 2 ), $attr['rowGapUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( ( - (int) $rowGapMobile / 2 ), $attr['rowGapUnit'] ),
 				),
 				'.is-grid .uagb-post__inner-wrap .uagb-post__image:first-child' => array(
 					'margin-left'  => UAGB_Helper::get_css_value( - (int) ( $paddingLeftMobile ), $attr['mobilePaddingUnit'] ),
@@ -825,8 +852,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom' => UAGB_Helper::get_css_value( ( $columnGapTablet ), $attr['columnGapUnit'] ),
 				),
 				':not(.is-grid).uagb-post__items'         => array(
-					'margin-right' => UAGB_Helper::get_css_value( (int) ( -$rowGapTablet / 2 ), $attr['rowGapUnit'] ),
-					'margin-left'  => UAGB_Helper::get_css_value( (int) ( -$rowGapTablet / 2 ), $attr['rowGapUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( ( - (int) $rowGapTablet / 2 ), $attr['rowGapUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( ( - (int) $rowGapTablet / 2 ), $attr['rowGapUnit'] ),
 				),
 				'.is-grid .uagb-post__inner-wrap .uagb-post__image:first-child' => array(
 					'margin-left'  => UAGB_Helper::get_css_value( - (int) ( $paddingLeftTablet ), $attr['tabletPaddingUnit'] ),
@@ -1587,7 +1614,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$gen_border_css['border-right-width']  = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderRightWidthMobile' ], 'px' );
 					$gen_border_css['border-bottom-width'] = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderBottomWidthMobile' ], 'px' );
 				}
-				$gen_border_unit_mobile                       = isset( $attr[ $prefix . 'borderRadiusUnitMobile' ] ) ? $attr[ $prefix . 'borderRadiusUnitMobile' ] : 'px';
+				$gen_border_unit_mobile                       = isset( $attr[ $prefix . 'BorderRadiusUnitMobile' ] ) ? $attr[ $prefix . 'BorderRadiusUnitMobile' ] : 'px';
 				$gen_border_css['border-top-left-radius']     = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderTopLeftRadiusMobile' ], $gen_border_unit_mobile );
 				$gen_border_css['border-top-right-radius']    = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderTopRightRadiusMobile' ], $gen_border_unit_mobile );
 				$gen_border_css['border-bottom-left-radius']  = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderBottomLeftRadiusMobile' ], $gen_border_unit_mobile );

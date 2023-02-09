@@ -125,9 +125,9 @@ const Render = ( props ) => {
 	const isGridLayout = test_item_count === columns ? 'uagb-post__carousel_notset' : '';
 	const isGridLayoutTablet = test_item_count === tcolumns ? 'uagb-post__carousel_notset-tablet' : '';
 	const isGridLayoutMobile = test_item_count === mcolumns ? 'uagb-post__carousel_notset-mobile' : '';
-
+	
 	// image size.
-	const imageArray = attributes.test_block[ 0 ].image || attributes.test_block[ 1 ].image || attributes.test_block[ 2 ].image;
+	const imageArray = attributes.test_block[ 0 ]?.image || attributes.test_block[ 1 ]?.image || attributes.test_block[ 2 ]?.image;
 	let url = '';
 	let urlCheck = '';
 

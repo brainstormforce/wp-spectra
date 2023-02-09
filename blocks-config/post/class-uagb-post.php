@@ -1387,10 +1387,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			?>
 
-			<div class="<?php echo esc_html( implode( ' ', $common_classes ) ); ?>"
-				data-total="<?php echo esc_attr( $total ); ?>"
-				style="<?php echo esc_html( implode( '', $zindex_wrap ) ); ?>"
-			>
+			<div class="<?php echo esc_attr( implode( ' ', $common_classes ) ); ?>" data-total="<?php echo esc_attr( $total ); ?>" style="<?php echo esc_attr( implode( '', $zindex_wrap ) ); ?>">
 
 				<?php
 
@@ -1410,7 +1407,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 					?>
 					<div class="uagb-post-pagination-wrap">
-						<?php echo $this->render_pagination( $query, $attributes ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						<?php
+							// content already escaped using wp_kses_post.
+							echo $this->render_pagination( $query, $attributes ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						?>
 					</div>
 					<?php
 				}
@@ -1496,7 +1496,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			if ( isset( $_POST['attributes'] ) ) {
 
-				$attr = isset( $_POST['attributes'] ) ? json_decode( stripslashes( $_POST['attributes'] ), true ) : array();
+				// $_POST['attributes'] is sanitized in later stage.
+				$attr = isset( $_POST['attributes'] ) ? json_decode( stripslashes( $_POST['attributes'] ), true ) : array(); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 				$post_attribute_array = $this->required_attribute_for_query( $attr );
 
@@ -1507,7 +1508,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				wp_send_json_success( $pagination_markup );
 			}
 
-			wp_send_json_error( ' No attributes recieved' );
+			wp_send_json_error( ' No attributes received' );
 		}
 
 		/**
@@ -1544,10 +1545,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			check_ajax_referer( 'uagb_masonry_ajax_nonce', 'nonce' );
 
 			$post_attribute_array = array();
+			// $_POST['attr'] is sanitized in later stage.
+			$attr = isset( $_POST['attr'] ) ? json_decode( stripslashes( $_POST['attr'] ), true ) : array(); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
-			$attr = isset( $_POST['attr'] ) ? json_decode( stripslashes( $_POST['attr'] ), true ) : array();
-
-			$attr['paged'] = $_POST['page_number'];
+			$attr['paged'] = isset( $_POST['page_number'] ) ? sanitize_text_field( $_POST['page_number'] ) : '';
 
 			$post_attribute_array = $this->required_attribute_for_query( $attr );
 
@@ -1706,7 +1707,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					$is_rtl       = is_rtl();
 
 					?>
-					<script type="text/javascript" id="<?php echo esc_html( $key ); ?>">
+					<script type="text/javascript" id="<?php echo esc_attr( $key ); ?>">
 						document.addEventListener("DOMContentLoaded", function(){
 							( function( $ ) {
 								var cols = parseInt( '<?php echo esc_html( $value['columns'] ); ?>' );
@@ -1808,10 +1809,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				if ( get_the_post_thumbnail_url() ) {
 					if ( 'post-grid' === $attributes['blockName'] && 'background' !== $attributes['imgPosition'] ) {
 						?>
-					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer" class='uagb-image-ratio-<?php echo esc_html( $attributes['imageRatio'] ); ?>'><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
+					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_attr( $target ); ?>" rel="bookmark noopener noreferrer" class='uagb-image-ratio-<?php echo esc_attr( $attributes['imageRatio'] ); ?>'><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
 					</a>
 				<?php } else { ?>
-					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
+					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_attr( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
 					</a>
 						<?php
 				}
@@ -1839,7 +1840,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			do_action( "uagb_single_post_before_title_{$attributes['post_type']}", get_the_ID(), $attributes );
 			?>
 			<<?php echo esc_html( $attributes['titleTag'] ); ?> class="uagb-post__title uagb-post__text">
-				<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php the_title(); ?></a>
+				<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_attr( $target ); ?>" rel="bookmark noopener noreferrer"><?php the_title(); ?></a>
 			</<?php echo esc_html( $attributes['titleTag'] ); ?>>
 			<?php
 			do_action( "uagb_single_post_after_title_{$attributes['post_type']}", get_the_ID(), $attributes );
@@ -1936,7 +1937,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			if ( ( 'default' === $attributes['taxStyle'] && 'aboveTitle' === $attributes['displayPostTaxonomyAboveTitle'] ) || 'withMeta' === $attributes['displayPostTaxonomyAboveTitle'] ) {
 				?>
 				<div class="uagb-post__text">
-					<span class='<?php echo esc_html( implode( ' ', $wrap ) ); ?>'>
+					<span class='<?php echo esc_attr( implode( ' ', $wrap ) ); ?>'>
 						<?php echo ( true === $attributes['hideTaxonomyIcon'] ) ? '<span class="dashicons-tag dashicons"></span>' : ''; ?>
 						<?php
 						$terms_list = array();
@@ -2068,8 +2069,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$wrap_classes = 'uagb-post__text uagb-post__cta wp-block-button';
 			$link_classes = 'wp-block-button__link uagb-text-link';
 			?>
-			<div class="<?php echo esc_html( $wrap_classes ); ?>">
-				<a class="<?php echo esc_html( $link_classes ); ?>" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo esc_html( $cta_text ); ?></a>
+			<div class="<?php echo esc_attr( $wrap_classes ); ?>">
+				<a class="<?php echo esc_attr( $link_classes ); ?>" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_attr( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo esc_html( $cta_text ); ?></a>
 			</div>
 			<?php
 			do_action( "uagb_single_post_after_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
@@ -2088,7 +2089,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			}
 			$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
 			?>
-			<a class="uagb-post__link-complete-box" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"></a>
+			<a class="uagb-post__link-complete-box" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_attr( $target ); ?>" rel="bookmark noopener noreferrer"></a>
 			<?php
 		}
 

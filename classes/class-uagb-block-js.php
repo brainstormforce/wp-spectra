@@ -683,5 +683,25 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			UAGB_Helper::blocks_google_font( $caption_load_google_font, $caption_font_family, $caption_font_weight );
 			UAGB_Helper::blocks_google_font( $load_more_load_google_font, $load_more_font_family, $load_more_font_weight );
 		}
+
+		/**
+		 * Adds Google fonts for Modal block.
+		 *
+		 * @since 2.2.0
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_modal_gfont( $attr ) {
+
+			$text_load_google_font = isset( $attr['textLoadGoogleFonts'] ) ? $attr['textLoadGoogleFonts'] : '';
+			$text_font_family      = isset( $attr['textFontFamily'] ) ? $attr['textFontFamily'] : '';
+			$text_font_weight      = isset( $attr['textFontWeight'] ) ? $attr['textFontWeight'] : '';
+
+			$btn_load_google_font = isset( $attr['btnLoadGoogleFonts'] ) ? $attr['btnLoadGoogleFonts'] : '';
+			$btn_font_family      = isset( $attr['btnFontFamily'] ) ? $attr['btnFontFamily'] : '';
+			$btn_font_weight      = isset( $attr['btnFontWeight'] ) ? $attr['btnFontWeight'] : '';
+
+			UAGB_Helper::blocks_google_font( $text_load_google_font, $text_font_family, $text_font_weight );
+			UAGB_Helper::blocks_google_font( $btn_load_google_font, $btn_font_family, $btn_font_weight );
+		}
 	}
 }

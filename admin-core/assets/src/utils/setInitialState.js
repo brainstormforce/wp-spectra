@@ -12,6 +12,7 @@ const setInitialState = ( store ) => {
             blocksStatuses : data.blocks_activation_and_deactivation,
             enableFileGeneration : data.enable_file_generation,
             enableTemplates : data.enable_templates_button,
+			enableOnPageCSS : data.enable_on_page_css_button,
             enableBeta : data.enable_beta_updates,
             enableSelectedFontFamilies : data.load_select_font_globally,
             selectedFontFamilies :  data.select_font_globally,
@@ -36,6 +37,7 @@ const setInitialState = ( store ) => {
 			containerGlobalElementsGap: data.uag_container_global_elements_gap,
 			enableFontAwesome5: data.uag_load_font_awesome_5,
 			enableAutoBlockRecovery: data.uag_auto_block_recovery,
+			enableLegacyBlocks: data.uag_enable_legacy_blocks,
 			social: data.social,
             coreBlocks: data.spectra_core_blocks,
         };

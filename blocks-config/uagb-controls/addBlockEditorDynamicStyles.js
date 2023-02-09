@@ -13,6 +13,14 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 			cloneEditorStaticCSSStylesTag = editorStaticCSSStylesTag.cloneNode( true );
 		}
 
+		const editorProStaticCSSStylesTag = document.getElementById( 'spectra-pro-editor-styles' );
+		let cloneEditorProStaticCSSStylesTag = false;
+
+		if ( editorProStaticCSSStylesTag ) {
+
+			cloneEditorProStaticCSSStylesTag = editorProStaticCSSStylesTag.cloneNode( true );
+		}
+
 		// Dashicons Editor CSS.
 
 		const editorDashiconsCSSStylesTag = document.getElementById( 'dashicons-css' );
@@ -48,6 +56,17 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 		}
 
 		// Slick CSS Ends.
+		
+		// swiper CSS.
+		const swiperStaticCSSStylesTag = document.getElementById( 'uagb-swiper-css-css' );
+		let cloneSwiperStaticCSSStylesTag = false;
+
+		if ( swiperStaticCSSStylesTag ) {
+
+			cloneSwiperStaticCSSStylesTag = swiperStaticCSSStylesTag.cloneNode( true );
+		}
+
+		// swiper CSS Ends.
 
 		// Block Editor Spacing CSS.
 		const blockEditorSpacingCSSStylesTag = document.getElementById( 'uagb-blocks-editor-spacing-style' );
@@ -123,6 +142,15 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 				iframeDocument.head.appendChild( cloneEditorStaticCSSStylesTag );
 			}
 
+			// Static Pro Editor CSS.
+			if ( cloneEditorProStaticCSSStylesTag ) {
+				const iframeEditorProStaticCSSStylesTag = iframeDocument.getElementById( 'spectra-pro-editor-styles' );
+				if ( iframeEditorProStaticCSSStylesTag ) {
+					iframeDocument.head.removeChild( iframeEditorProStaticCSSStylesTag );
+				}
+				iframeDocument.head.appendChild( cloneEditorProStaticCSSStylesTag );
+			}
+
 			// Dashicons CSS.
 			if ( cloneEditorDashiconsCSSStylesTag ) {
 				const iframeEditorDashiconsCSSStylesTag = iframeDocument.getElementById( 'dashicons-css' );
@@ -137,6 +165,13 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 				const iframeSlickStaticCSSStylesTag = iframeDocument.getElementById( 'uagb-slick-css-css' );
 				if ( ! iframeSlickStaticCSSStylesTag ) {
 					iframeDocument.head.appendChild( cloneSlickStaticCSSStylesTag );
+				}
+			}
+
+			if ( cloneSwiperStaticCSSStylesTag ) {
+				const iframeSwiperStaticCSSStylesTag = iframeDocument.getElementById( 'uagb-swiper-css-css' );
+				if ( ! iframeSwiperStaticCSSStylesTag ) {
+					iframeDocument.head.appendChild( cloneSwiperStaticCSSStylesTag );
 				}
 			}
 

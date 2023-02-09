@@ -11,7 +11,6 @@
 
 import domReady from '@wordpress/dom-ready';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
-import apiFetch from '@wordpress/api-fetch';
 // Delete the local storage on every refresh.
 const uagLocalStorage = getUAGEditorStateLocalStorage();
 if ( uagLocalStorage ) {
@@ -22,29 +21,12 @@ if ( uagLocalStorage ) {
 
 import blocksEditorSpacing from './blocks/extensions/blocks-editor-spacing';
 blocksEditorSpacing();
+import fontAwesomePollyfiller from './font-awesome-pollyfiller';
 
 __webpack_public_path__ = uagb_blocks_info.uagb_url + 'dist/';
 
 // Add Font Awesome Polyfiller to localized variable.
-const isSpectraFontAwesomeAPILoading = uagLocalStorage?.getItem( 'isSpectraFontAwesomeAPILoading' ) || false;
-
-if( 0 === uagb_blocks_info.font_awesome_5_polyfill.length && ! isSpectraFontAwesomeAPILoading ) {
-	uagLocalStorage?.setItem( 'isSpectraFontAwesomeAPILoading', true );
-	const formData = new window.FormData();
-	formData.append( 'action', 'uagb_spectra_font_awesome_polyfiller' );
-	formData.append(
-		'nonce',
-		uagb_blocks_info.uagb_ajax_nonce
-	);
-	apiFetch( {
-		url: uagb_blocks_info.ajax_url,
-		method: 'POST',
-		body: formData,
-	} ).then( ( data ) => {
-		uagLocalStorage?.setItem( 'isSpectraFontAwesomeAPILoading', false );
-		uagb_blocks_info.font_awesome_5_polyfill = data;
-	} );
-}
+uagb_blocks_info.font_awesome_5_polyfill = fontAwesomePollyfiller;
 
 // The Block Slugs need to be added exactly as below into the array at: /classes/class-spectra-block-prioritization.php.
 // Priorities need to be adequately updated in the respective includes/blocks/block.php files.
@@ -86,11 +68,14 @@ import './blocks/image-gallery/block.js';
 import './blocks/inline-notice/block.js';
 import './blocks/lottie/block.js';
 import './blocks/marketing-button/block.js';
+import './blocks/modal/block.js';
 import './blocks/post/block.js'; // Carousel, Grid.
 import './blocks/timeline/post-timeline/block.js';
 import './blocks/price-list/block.js';
 import './blocks/price-list-child/block.js'; // Child Block.
 import './blocks/review/block.js';
+import './blocks/slider/block.js';
+import './blocks/slider-child/block.js'; // Child Block.
 import './blocks/social-share/block.js';
 import './blocks/social-share-child/block.js'; // Child Block.
 import './blocks/star-rating/block.js';
@@ -105,8 +90,8 @@ import './blocks/extensions/attributes.js';
 import './blocks/extensions/block.js';
 // Legacy Blocks.
 import './blocks/columns/block.js';
-import './blocks/column/block.js'; // Child Block.
 import './blocks/section/block.js';
+import './blocks/column/block.js'; // Child Block.
 import './blocks/cf7-designer/block.js';
 import './blocks/gf-designer/block.js';
 import './blocks/post/deprecated-block.js'; // Masonry.

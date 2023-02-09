@@ -8,13 +8,18 @@ import {
 import ResponsiveToggle from '../responsive-toggle';
 import { __, sprintf } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { select } from '@wordpress/data';
 import { limitMax, limitMin } from '@Controls/unitWiseMinMaxOption';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGReset from '../reset';
 
 const isNumberControlSupported = !! NumberControl;
 
 const Range = ( props ) => {
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const panelRef = useRef( null );
+
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -22,6 +27,13 @@ const Range = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
+
+	const { getSelectedBlock } = select( 'core/block-editor' );
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
+
 
 	const { withInputField, isShiftStepEnabled } = props;
 
@@ -117,61 +129,76 @@ const Range = ( props ) => {
 		return items;
 	};
 
+	const controlName = getIdFromString( props.label );
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+
 	return (
-		<div className="components-base-control uag-range-control uagb-size-type-field-tabs">
-			<div className="uagb-control__header">
-				<ResponsiveToggle
-					label= { props.label }
-					responsive= { props.responsive }
-				/>
-				<div className="uagb-range-control__actions uagb-control__actions">
-					<UAGReset
-						onReset={resetValues}
-						attributeNames = {[
-							props.data.label,
-							props.displayUnit ? props.unit.label : false
-						]}
-						setAttributes={ props.setAttributes }
+		<div
+			ref={panelRef}
+			className="components-base-control"
+		>
+			{
+				controlBeforeDomElement
+			}
+			<div className="uag-range-control uagb-size-type-field-tabs">
+				<div className="uagb-control__header">
+					<ResponsiveToggle
+						label= { props.label }
+						responsive= { props.responsive }
 					/>
-					{ props.displayUnit && (
-						<ButtonGroup
-							className="uagb-control__units"
-							aria-label={ __(
-								'Select Units',
-								'ultimate-addons-for-gutenberg'
-							) }
-						>
-							{ onUnitSizeClick( unitSizes ) }
-						</ButtonGroup>
-					) }
+					<div className="uagb-range-control__actions uagb-control__actions">
+						<UAGReset
+							onReset={resetValues}
+							attributeNames = {[
+								props.data.label,
+								props.displayUnit ? props.unit.label : false
+							]}
+							setAttributes={ props.setAttributes }
+						/>
+						{ props.displayUnit && (
+							<ButtonGroup
+								className="uagb-control__units"
+								aria-label={ __(
+									'Select Units',
+									'ultimate-addons-for-gutenberg'
+								) }
+							>
+								{ onUnitSizeClick( unitSizes ) }
+							</ButtonGroup>
+						) }
+					</div>
 				</div>
-			</div>
-			<div className="uagb-range-control__mobile-controls">
-				<RangeControl
-					value={ inputValue }
-					onChange={ handleOnChange }
-					withInputField={ false }
-					allowReset={ false }
-					max={ max }
-					min={ min }
-					step={ props?.step || 1 }
-					initialPosition = {inputValue}
-				/>
-				{ withInputField && isNumberControlSupported && (
-					<NumberControl
-						disabled={ props.disabled }
-						isShiftStepEnabled={ isShiftStepEnabled }
+				<div className="uagb-range-control__mobile-controls">
+					<RangeControl
+						value={ inputValue }
+						onChange={ handleOnChange }
+						withInputField={ false }
+						allowReset={ false }
 						max={ max }
 						min={ min }
-						onChange={ handleOnChange }
-						value={ inputValue }
 						step={ props?.step || 1 }
+						initialPosition = {inputValue}
 					/>
+					{ withInputField && isNumberControlSupported && (
+						<NumberControl
+							disabled={ props.disabled }
+							isShiftStepEnabled={ isShiftStepEnabled }
+							max={ max }
+							min={ min }
+							onChange={ handleOnChange }
+							value={ inputValue }
+							step={ props?.step || 1 }
+						/>
+					) }
+				</div>
+				{ props.help && (
+					<p className="uag-control-help-notice">{ props.help }</p>
 				) }
 			</div>
-			{ props.help && (
-				<p className="uag-control-help-notice">{ props.help }</p>
-			) }
+			{
+				controlAfterDomElement
+			}
 		</div>
 	);
 };

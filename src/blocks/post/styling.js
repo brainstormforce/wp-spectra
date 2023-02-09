@@ -1204,7 +1204,7 @@ function styling( props ) {
 
 	tabletSelectors[ ' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta:not(.is-style-outline) .uagb-text-link.wp-block-button__link:not(.has-background) ' ] = borderCSSTablet;
 	mobileSelectors[ ' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta:not(.is-style-outline) .uagb-text-link.wp-block-button__link:not(.has-background) ' ] = borderCSSMobile;
-	
+
 	// post carousal margin top for dots
 	selectors[ ' .slick-dots'] = {
 		'margin-top' : generateCSSUnit( dotsMarginTopFallback , dotsMarginTopUnit ) + '!important'
@@ -1218,16 +1218,16 @@ function styling( props ) {
 
 	if ( 'post-grid' === blockName ){
 		selectors[ '.uagb-equal_height_inline-read-more-buttons-in-editor .uagb-post__inner-wrap .uagb-post__text:last-child' ] = {
-			'left': generateCSSUnit( paddingLeft, 'px' ),
-			'right': generateCSSUnit( paddingRight, 'px' ),
+			'left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
+			'right': generateCSSUnit( paddingRight, contentPaddingUnit ),
 		}
 		tabletSelectors[ '.uagb-equal_height_inline-read-more-buttons-in-editor .uagb-post__inner-wrap .uagb-post__text:last-child' ] = {
-			'left': generateCSSUnit( paddingLeftTablet, 'px' ),
-			'right': generateCSSUnit( paddingRightTablet, 'px' ),
+			'left': generateCSSUnit( paddingLeftTablet, tabletPaddingUnit ),
+			'right': generateCSSUnit( paddingRightTablet, tabletPaddingUnit ),
 		}
 		mobileSelectors[ '.uagb-equal_height_inline-read-more-buttons-in-editor .uagb-post__inner-wrap .uagb-post__text:last-child' ] = {
-			'left': generateCSSUnit( paddingLeftMobile, 'px' ),
-			'right': generateCSSUnit( paddingRightMobile, 'px' ),
+			'left': generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
+			'right': generateCSSUnit( paddingRightMobile, mobilePaddingUnit ),
 		}
 	}
 

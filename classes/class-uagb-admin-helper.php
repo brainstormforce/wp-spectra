@@ -51,6 +51,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 				'uag_enable_legacy_blocks'          => self::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' ),
 				'_uagb_allow_file_generation'       => self::get_admin_settings_option( '_uagb_allow_file_generation', 'enabled' ),
 				'uag_enable_templates_button'       => self::get_admin_settings_option( 'uag_enable_templates_button', 'yes' ),
+				'uag_enable_on_page_css_button'     => self::get_admin_settings_option( 'uag_enable_on_page_css_button', 'yes' ),
 				'uag_enable_block_condition'        => self::get_admin_settings_option( 'uag_enable_block_condition', 'disabled' ),
 				'uag_enable_masonry_gallery'        => self::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ),
 				'uag_enable_block_responsive'       => self::get_admin_settings_option( 'uag_enable_block_responsive', 'enabled' ),
@@ -79,12 +80,6 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 					)
 				),
 			);
-
-			$setting_data = get_option( 'spectra_settings_data' );
-
-			if ( ! $setting_data ) {
-				update_option( 'spectra_settings_data', $options );
-			}
 
 			return $options;
 		}
@@ -135,8 +130,6 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			$blocks       = UAGB_Helper::$block_list;
 			$saved_blocks = self::get_admin_settings_option( '_uagb_blocks' );
-
-			update_option( 'spectra_saved_blocks_settings', $saved_blocks );
 
 			if ( is_array( $blocks ) ) {
 				foreach ( $blocks as $slug => $data ) {
@@ -288,7 +281,11 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			foreach ( $combined as $key => $c_block ) {
 
-				$style_file = UAGB_DIR . 'assets/css/blocks/' . $c_block . '.css';
+				if ( false !== strpos( $c_block, '-pro' ) ) {
+					$style_file = SPECTRA_PRO_DIR . 'assets/css/blocks/' . $c_block . '.css';
+				} else {
+					$style_file = UAGB_DIR . 'assets/css/blocks/' . $c_block . '.css';
+				}
 
 				if ( file_exists( $style_file ) ) {
 					$style .= $wp_filesystem->get_contents( $style_file );
