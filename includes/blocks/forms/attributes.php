@@ -205,7 +205,7 @@ return array_merge(
 		'gradientLocation1'              => 0,
 		'gradientLocation2'              => 100,
 		'gradientAngle'                  => 0,
-		'selectGradient'                 => false,
+		'selectGradient'                 => 'basic',
 		'gradientHValue'                 => 'linear-gradient(90deg, rgba(6, 147, 227, 0.5) 0%, rgba(155, 81, 224, 0.5) 100%)',
 		'gradientHColor1'                => '#06558a',
 		'gradientHColor2'                => '#0170b9',

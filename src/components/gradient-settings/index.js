@@ -1,12 +1,12 @@
 import styles from './editor.lazy.scss';
-import { GradientPicker, Button } from '@wordpress/components';
+import { GradientPicker } from '@wordpress/components';
 import React, { useLayoutEffect, useEffect, useState, useRef  } from 'react';
 import Range from '@Components/range/Range.js';
 import { __ } from '@wordpress/i18n';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import { getPanelIdFromRef } from '@Utils/Helpers';
-import { select } from '@wordpress/data'
+import { select } from '@wordpress/data';
 
 const GradientSettings = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -31,14 +31,6 @@ const GradientSettings = ( props ) => {
 	const onGradientChange = ( value ) => {
 		setAttributes( { [ backgroundGradient.label ]: value } );
 	};
-	
-	const advancedSetting = () => {
-		if( gradientType.value ) {
-			setAttributes( { [ gradientType.label ]: false } )
-		} else {
-			setAttributes( { [ gradientType.label ]: true } )
-		}
-	};
 
 	const controlName = 'gradient-settings'; // there is no label props that's why keep hard coded label
 	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
@@ -46,17 +38,36 @@ const GradientSettings = ( props ) => {
 
 	return (
 		<>
-			<Button
-				className="uagb-gradient-advanced-option"
-				onClick = { () => advancedSetting() }
-			>
-				{ gradientType.value ? 'Basic Settings' : 'Advanced Settings' }
-			</Button>
+			<MultiButtonsControl
+				setAttributes={ setAttributes }
+				label={ gradientType.title }
+				data={ {
+					value: gradientType.value,
+					label: gradientType.label,
+				} }
+				options={ [
+					{
+						value: 'basic',
+						label: __(
+							'Basic',
+							'ultimate-addons-for-gutenberg'
+						)
+					},
+					{
+						value: 'advanced',
+						label: __(
+							'Advanced',
+							'ultimate-addons-for-gutenberg'
+						)
+					},
+				] }
+				showIcons={ false }
+			/>
 			<div ref={panelRef}>
 				{
 					controlBeforeDomElement
 				}
-				{ ! gradientType.value && (
+				{ 'basic' === gradientType.value && (
 					<GradientPicker
 						__nextHasNoMargin = { true }
 						value={ backgroundGradient.value }
@@ -69,7 +80,7 @@ const GradientSettings = ( props ) => {
 					controlAfterDomElement
 				}
 			</div>
-			{ gradientType.value && (
+			{ 'advanced' === gradientType.value && (
 				<>
 					<AdvancedPopColorControl
 						label={ __(

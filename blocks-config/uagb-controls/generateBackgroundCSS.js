@@ -33,11 +33,11 @@ function generateBackgroundCSS ( backgroundAttributes ) {
 
     let gradient;
     
-    if( ! selectGradient ) {
+    if( 'basic' === selectGradient ) {
         gradient = gradientValue;
-    } else if ( 'linear' === gradientType && selectGradient ) {
+    } else if ( 'linear' === gradientType && 'advanced' === selectGradient ) {
         gradient = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${	gradientColor2 } ${ gradientLocation2 }%)`;
-    } else if ( 'radial' === gradientType && selectGradient ) {
+    } else if ( 'radial' === gradientType && 'advanced' === selectGradient ) {
         gradient = `radial-gradient( at center center, ${ gradientColor1} ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
     }
     

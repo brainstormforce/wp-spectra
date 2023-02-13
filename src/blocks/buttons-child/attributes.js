@@ -196,15 +196,15 @@ const attributes = {
 		}
 	},
 	hoverselectGradient: {
-		type: 'Boolean',
-		default: false,
+		type: 'string',
+		default: 'basic',
 		UAGCopyPaste: {
 			styleType: 'gradient-type'
 		}
 	},
 	selectGradient: {
-		type: 'Boolean',
-		default: false,
+		type: 'string',
+		default: 'basic',
 		UAGCopyPaste: {
 			styleType: 'gradient-type'
 		}

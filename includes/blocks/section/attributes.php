@@ -71,7 +71,7 @@ return array_merge(
 		'overlayType'              => 'color',
 		'gradientOverlayColor1'    => '',
 		'gradientOverlayColor2'    => '',
-		'selectGradient'           => false,
+		'selectGradient'           => 'basic',
 		'gradientOverlayType'      => 'linear',
 		'gradientOverlayLocation1' => '0',
 		'gradientOverlayLocation2' => '100',

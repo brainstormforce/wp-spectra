@@ -39,7 +39,7 @@ return array(
 	'gradientLocation1'           => 0,
 	'gradientLocation2'           => 100,
 	'gradientAngle'               => 0,
-	'selectGradient'              => false,
+	'selectGradient'              => 'basic',
 	'backgroundImageColor'        => '#FFFFFF75',
 	'backgroundCustomSizeDesktop' => 100,
 	'backgroundCustomSizeTablet'  => '',

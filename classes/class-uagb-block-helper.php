@@ -1396,11 +1396,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( 'custom' === $size ) {
 				$size = $bg_custom_size . $bg_custom_size_type;
 			}
-			if ( ! $selectGradient ) {
+			if ( 'basic' === $selectGradient ) {
 				$gradient = $gradient_value;
-			} elseif ( 'linear' === $gradientType && $selectGradient ) {
+			} elseif ( 'linear' === $gradientType && 'advanced' === $selectGradient ) {
 				$gradient = 'linear-gradient(' . $gradientAngle . 'deg, ' . $gradientColor1 . ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
-			} elseif ( 'radial' === $gradientType && $selectGradient ) {
+			} elseif ( 'radial' === $gradientType && 'advanced' === $selectGradient ) {
 				$gradient = 'radial-gradient( at center center, ' . $gradientColor1 . ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
 			}
 
