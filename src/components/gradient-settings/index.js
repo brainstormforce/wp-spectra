@@ -40,7 +40,7 @@ const GradientSettings = ( props ) => {
 		<>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
-				label={ gradientType.title }
+				label={ 'Select Gradient'}
 				data={ {
 					value: gradientType.value,
 					label: gradientType.label,
