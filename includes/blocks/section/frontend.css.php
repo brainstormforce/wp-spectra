@@ -166,11 +166,11 @@ if ( 'video' === $bg_type ) {
 	$gradientLocation2 = isset( $attr['gradientLocation2'] ) ? $attr['gradientLocation2'] : '';
 	$gradientAngle     = isset( $attr['gradientAngle'] ) ? $attr['gradientAngle'] : '';
 	
-	if ( ! $attr['selectGradient'] && $attr['gradientValue'] ) {
+	if ( 'basic' === $attr['selectGradient'] && $attr['gradientValue'] ) {
 		$gradient = $attr['gradientValue'];
-	} elseif ( 'linear' === $gradientType && $attr['selectGradient'] ) {
+	} elseif ( 'linear' === $gradientType && 'advanced' === $attr['selectGradient'] ) {
 		$gradient = 'linear-gradient(' . $gradientAngle . 'deg, ' . $gradientColor1 . ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
-	} elseif ( 'radial' === $gradientType && $attr['selectGradient'] ) {
+	} elseif ( 'radial' === $gradientType && 'advanced' === $attr['selectGradient'] ) {
 		$gradient = 'radial-gradient( at center center, ' . $gradientColor1 . ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
 	} 
 	$selectors[' > .uagb-section__overlay']['background-image'] = $gradient;
