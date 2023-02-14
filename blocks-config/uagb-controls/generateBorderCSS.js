@@ -1,42 +1,43 @@
-
+import generateCSSUnit from '@Controls/generateCSSUnit';
+import { generateCSSUnitType } from './generateCSSUnit';
 const generateBorderCSS = ( attributes, prefix, deviceType = 'desktop' ) => {
 	const borderCSS = {}
 	const borderStyle = attributes[prefix + 'BorderStyle'];
 	const borderColor = attributes[prefix + 'BorderColor'];
 
-	const borderTopWidth = ! isNaN( attributes[prefix + 'BorderTopWidth'] ) ? attributes[prefix + 'BorderTopWidth']+'px' : '' ;
-	const borderRightWidth = ! isNaN( attributes[prefix + 'BorderRightWidth'] ) ? attributes[prefix + 'BorderRightWidth']+'px' : '' ;
-	const borderBottomWidth = ! isNaN( attributes[prefix + 'BorderBottomWidth'] ) ? attributes[prefix + 'BorderBottomWidth']+'px' : '' ;
-	const borderLeftWidth = ! isNaN( attributes[prefix + 'BorderLeftWidth'] ) ? attributes[prefix + 'BorderLeftWidth']+'px' : '' ;
+	const borderTopWidth = generateCSSUnit( attributes[prefix + 'BorderTopWidth'], 'px' );
+	const borderRightWidth = generateCSSUnit( attributes[prefix + 'BorderRightWidth'], 'px' );
+	const borderBottomWidth = generateCSSUnit( attributes[prefix + 'BorderBottomWidth'], 'px' );
+	const borderLeftWidth = generateCSSUnit( attributes[prefix + 'BorderLeftWidth'], 'px' );
 
-	const borderTopWidthMobile = ! isNaN( attributes[prefix + 'BorderTopWidthMobile'] ) ? attributes[prefix + 'BorderTopWidthMobile']+'px' : '' ;
-	const borderRightWidthMobile = ! isNaN( attributes[prefix + 'BorderRightWidthMobile'] ) ? attributes[prefix + 'BorderRightWidthMobile']+'px' : '' ;
-	const borderBottomWidthMobile = ! isNaN( attributes[prefix + 'BorderBottomWidthMobile'] ) ? attributes[prefix + 'BorderBottomWidthMobile']+'px' : '' ;
-	const borderLeftWidthMobile = ! isNaN( attributes[prefix + 'BorderLeftWidthMobile'] ) ? attributes[prefix + 'BorderLeftWidthMobile']+'px' : '' ;
+	const borderTopWidthMobile = generateCSSUnit( attributes[prefix + 'BorderTopWidthMobile'], 'px' );
+	const borderRightWidthMobile = generateCSSUnit( attributes[prefix + 'BorderRightWidthMobile'], 'px' );
+	const borderBottomWidthMobile = generateCSSUnit( attributes[prefix + 'BorderBottomWidthMobile'], 'px' );
+	const borderLeftWidthMobile = generateCSSUnit( attributes[prefix + 'BorderLeftWidthMobile'], 'px' );
 
-	const borderTopWidthTablet = ! isNaN( attributes[prefix + 'BorderTopWidthTablet'] ) ? attributes[prefix + 'BorderTopWidthTablet']+'px' : '' ;
-	const borderRightWidthTablet = ! isNaN( attributes[prefix + 'BorderRightWidthTablet'] ) ? attributes[prefix + 'BorderRightWidthTablet']+'px' : '' ;
-	const borderBottomWidthTablet = ! isNaN( attributes[prefix + 'BorderBottomWidthTablet'] ) ? attributes[prefix + 'BorderBottomWidthTablet']+'px' : '' ;
-	const borderLeftWidthTablet = ! isNaN( attributes[prefix + 'BorderLeftWidthTablet'] ) ? attributes[prefix + 'BorderLeftWidthTablet']+'px' : '' ;
+	const borderTopWidthTablet = generateCSSUnit( attributes[prefix + 'BorderTopWidthTablet'], 'px' );
+	const borderRightWidthTablet = generateCSSUnit( attributes[prefix + 'BorderRightWidthTablet'], 'px' );
+	const borderBottomWidthTablet = generateCSSUnit( attributes[prefix + 'BorderBottomWidthTablet'], 'px' );
+	const borderLeftWidthTablet = generateCSSUnit( attributes[prefix + 'BorderLeftWidthTablet'], 'px' );
+    
+	const borderRadiusUnit = generateCSSUnitType( attributes[prefix + 'BorderRadiusUnit'], 'px' );
+	const borderRadiusUnitTablet = generateCSSUnitType( attributes[prefix + 'BorderRadiusUnitTablet'], 'px' );
+	const borderRadiusUnitMobile = generateCSSUnitType( attributes[prefix + 'BorderRadiusUnitMobile'], 'px' );
 
-	const borderRadiusUnit = ( attributes[prefix + 'BorderRadiusUnit'] ) ? attributes[prefix + 'BorderRadiusUnit'] : 'px';
-	const borderRadiusUnitTablet = ( attributes[prefix + 'BorderRadiusUnitTablet'] ) ? attributes[prefix + 'BorderRadiusUnitTablet'] : 'px';
-	const borderRadiusUnitMobile = ( attributes[prefix + 'BorderRadiusUnitMobile'] ) ? attributes[prefix + 'BorderRadiusUnitMobile'] : 'px';
+	const borderTopLeftRadius = generateCSSUnit( attributes[prefix + 'BorderTopLeftRadius'], borderRadiusUnit );
+	const borderTopRightRadius = generateCSSUnit( attributes[prefix + 'BorderTopRightRadius'], borderRadiusUnit );
+	const borderBottomRightRadius = generateCSSUnit( attributes[prefix + 'BorderBottomRightRadius'], borderRadiusUnit );
+	const borderBottomLeftRadius = generateCSSUnit( attributes[prefix + 'BorderBottomLeftRadius'], borderRadiusUnit );
 
-	const borderTopLeftRadius = ! isNaN( attributes[prefix + 'BorderTopLeftRadius'] ) ? attributes[prefix + 'BorderTopLeftRadius']+borderRadiusUnit : '' ;
-	const borderTopRightRadius = ! isNaN( attributes[prefix + 'BorderTopRightRadius'] ) ? attributes[prefix + 'BorderTopRightRadius']+borderRadiusUnit : '' ;
-	const borderBottomRightRadius = ! isNaN( attributes[prefix + 'BorderBottomRightRadius'] ) ? attributes[prefix + 'BorderBottomRightRadius']+borderRadiusUnit : '' ;
-	const borderBottomLeftRadius = ! isNaN( attributes[prefix + 'BorderBottomLeftRadius'] ) ? attributes[prefix + 'BorderBottomLeftRadius']+borderRadiusUnit : '' ;
+	const borderTopLeftRadiusMobile = generateCSSUnit( attributes[prefix + 'BorderTopLeftRadiusMobile'], borderRadiusUnitMobile );
+	const borderTopRightRadiusMobile = generateCSSUnit( attributes[prefix + 'BorderTopRightRadiusMobile'], borderRadiusUnitMobile );
+	const borderBottomRightRadiusMobile = generateCSSUnit( attributes[prefix + 'BorderBottomRightRadiusMobile'], borderRadiusUnitMobile );
+	const borderBottomLeftRadiusMobile = generateCSSUnit( attributes[prefix + 'BorderBottomLeftRadiusMobile'], borderRadiusUnitMobile );
 
-	const borderTopLeftRadiusMobile = ! isNaN( attributes[prefix + 'BorderTopLeftRadiusMobile'] ) ? attributes[prefix + 'BorderTopLeftRadiusMobile']+borderRadiusUnitMobile : '' ;
-	const borderTopRightRadiusMobile = ! isNaN( attributes[prefix + 'BorderTopRightRadiusMobile'] ) ? attributes[prefix + 'BorderTopRightRadiusMobile']+borderRadiusUnitMobile : '' ;
-	const borderBottomRightRadiusMobile = ! isNaN( attributes[prefix + 'BorderBottomRightRadiusMobile'] ) ? attributes[prefix + 'BorderBottomRightRadiusMobile']+borderRadiusUnitMobile : '' ;
-	const borderBottomLeftRadiusMobile = ! isNaN( attributes[prefix + 'BorderBottomLeftRadiusMobile'] ) ? attributes[prefix + 'BorderBottomLeftRadiusMobile']+borderRadiusUnitMobile : '' ;
-
-	const borderTopLeftRadiusTablet = ! isNaN( attributes[prefix + 'BorderTopLeftRadiusTablet'] ) ? attributes[prefix + 'BorderTopLeftRadiusTablet']+borderRadiusUnitTablet : '' ;
-	const borderTopRightRadiusTablet = ! isNaN( attributes[prefix + 'BorderTopRightRadiusTablet'] ) ? attributes[prefix + 'BorderTopRightRadiusTablet']+borderRadiusUnitTablet : '' ;
-	const borderBottomRightRadiusTablet = ! isNaN( attributes[prefix + 'BorderBottomRightRadiusTablet'] ) ? attributes[prefix + 'BorderBottomRightRadiusTablet']+borderRadiusUnitTablet : '' ;
-	const borderBottomLeftRadiusTablet = ! isNaN( attributes[prefix + 'BorderBottomLeftRadiusTablet'] ) ? attributes[prefix + 'BorderBottomLeftRadiusTablet']+borderRadiusUnitTablet : '' ;
+	const borderTopLeftRadiusTablet = generateCSSUnit( attributes[prefix + 'BorderTopLeftRadiusTablet'], borderRadiusUnitTablet );
+	const borderTopRightRadiusTablet = generateCSSUnit( attributes[prefix + 'BorderTopRightRadiusTablet'], borderRadiusUnitTablet );
+	const borderBottomRightRadiusTablet = generateCSSUnit( attributes[prefix + 'BorderBottomRightRadiusTablet'], borderRadiusUnitTablet );
+	const borderBottomLeftRadiusTablet = generateCSSUnit( attributes[prefix + 'BorderBottomLeftRadiusTablet'], borderRadiusUnitTablet );
 	
 	if( 'default' !== attributes[ prefix + 'BorderStyle' ] ){
 		if( 'tablet' === deviceType ) {

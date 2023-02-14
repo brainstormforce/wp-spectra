@@ -495,6 +495,35 @@ const attributes = {
 		default: false,
 		isUAGStyle: true,
 	},
+	headingLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'heading-letter-spacing-type'
+		},
+	},
+	headingLetterSpacing: {
+		type: 'number',
+		isUAGStyle: true,
+		UAGBCopyPaste: {
+			styleType: 'heading-letter-spacing'
+		},
+	},
+	headingLetterSpacingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+		UAGBCopyPaste: {
+			styleType: 'heading-letter-spacing-tablet'
+		},
+	},
+	headingLetterSpacingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+		UAGBCopyPaste: {
+			styleType: 'heading-letter-spacing-mobile'
+		},
+	},
 	// Number.
 	startNumber: {
 		type: 'number',
@@ -741,6 +770,36 @@ const attributes = {
 		default: false,
 		isUAGStyle: true,
 	},
+	numberLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'number-letter-spacing-type'
+		},
+	},
+	numberLetterSpacing: {
+		type: 'number',
+		isUAGStyle: true,
+		UAGBCopyPaste: {
+			styleType: 'number-letter-spacing'
+		},
+	},
+	numberLetterSpacingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+		UAGBCopyPaste: {
+			styleType: 'number-letter-spacing-tablet'
+		},
+	},
+	numberLetterSpacingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+		UAGBCopyPaste: {
+			styleType: 'number-letter-spacing-mobile'
+		},
+	},
+
 	// Prefix
 	prefixRightDistance: {
 		type: 'number',

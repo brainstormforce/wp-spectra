@@ -167,7 +167,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						continue;
 					}
 
-					if ( ! empty( $val ) || 0 === $val ) {
+					if ( ! empty( $val ) || ( empty( $val ) && 'content' === $j ) || 0 === $val ) {
 						if ( 'font-family' === $j ) {
 							$css .= $j . ': "' . $val . '";';
 						} else {
@@ -1315,6 +1315,30 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			} elseif ( strpos( $user_agent, 'MSIE' ) || strpos( $user_agent, 'Trident/7' ) ) {
 				return 'ie';
 			}
+		}
+
+		/**
+		 * Get block dynamic CSS selector with filters applied for extending it.
+		 *
+		 * @param string $block_name Block name to filter.
+		 * @param array  $selectors Array of selectors to filter.
+		 * @param array  $attr Attributes.
+		 * @return array Combined selectors array.
+		 * @since X.X.X
+		 */
+		public static function get_combined_selectors( $block_name, $selectors, $attr ) {
+			if ( ! is_array( $selectors ) ) { 
+				return $selectors;
+			}
+
+			$combined_selectors = array();
+
+			foreach ( $selectors as $key => $selector ) {
+				$hook_prefix                = ( 'desktop' === $key ) ? '' : '_' . $key;
+				$combined_selectors[ $key ] = apply_filters( 'spectra_' . $block_name . $hook_prefix . '_styling', $selector, $attr );
+			}
+
+			return $combined_selectors;
 		}
 	}
 

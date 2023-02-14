@@ -197,6 +197,7 @@ const InspectorTabs = ( props ) => {
 
 			{ Array.isArray( children ) &&
 				Children.map( children, ( child, index ) => {
+					if( ! child ) return child;
 					if ( ! child.key ) {
 						throw new Error(
 							'props.key not found in <InspectorTab />, you must use `key` prop'

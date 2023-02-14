@@ -267,10 +267,17 @@ $m_selectors['.wp-block-uagb-advanced-heading .uagb-desc-text']    = array(
 	),
 );
 
-$combined_selectors = array(
-	'desktop' => apply_filters( 'spectra_' . $block_name . '_styling', $selectors, $attr ),
-	'tablet'  => apply_filters( 'spectra_' . $block_name . '_tablet_styling', $t_selectors, $attr ),
-	'mobile'  => apply_filters( 'spectra_' . $block_name . '_mobile_styling', $m_selectors, $attr ),
+/**
+ * Get Combined selectors with filters.
+ */
+$combined_selectors = UAGB_Helper::get_combined_selectors(
+	'advanced-heading', 
+	array(
+		'desktop' => $selectors,
+		'tablet'  => $t_selectors,
+		'mobile'  => $m_selectors,
+	),
+	$attr
 );
 
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'head', ' .uagb-heading-text', $combined_selectors );

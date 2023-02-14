@@ -350,18 +350,18 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 				require_once UAGB_DIR . 'compatibility/class-uagb-astra-compatibility.php';
 			}
 
-			register_meta(
-				'post',
-				'_uag_custom_page_level_css',
-				array(
-					'show_in_rest'  => true,
-					'type'          => 'string',
-					'single'        => true,
-					'auth_callback' => function() {
-						return current_user_can( 'edit_posts' );
-					},
-				)
-			);
+				register_meta(
+					'post',
+					'_uag_custom_page_level_css',
+					array(
+						'show_in_rest'  => true,
+						'type'          => 'string',
+						'single'        => true,
+						'auth_callback' => function() {
+							return current_user_can( 'edit_posts' );
+						},
+					)
+				);
 		}
 	}
 }

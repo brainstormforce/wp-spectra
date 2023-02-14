@@ -1,0 +1,46 @@
+.uagb-link-control {
+	position: relative;
+	margin-bottom: 25px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	&__label {
+		display: block;
+		color: #50575e;
+		font-size: 13px !important;
+		line-height: 1.4em !important;
+		margin-bottom: 10px;
+		text-transform: none !important;
+		font-weight: 400 !important;
+	}
+
+	&__help {
+		font-size: 12px;
+		font-style: normal;
+		color: rgb(117, 117, 117);
+		margin-top: 10px !important;
+	}
+
+	.components-base-control__field {
+		padding-top: 0 !important;
+	}
+
+	.block-editor-link-control__search-actions {
+		top: 5px;
+	}
+
+	.block-editor-link-control {
+
+		.block-editor-link-control__tools {
+
+			.block-editor-link-control__settings {
+
+				.components-base-control:last-child {
+					margin-bottom: 0 !important;
+				}
+			}
+		}
+	}
+}

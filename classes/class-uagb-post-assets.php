@@ -904,11 +904,15 @@ class UAGB_Post_Assets {
 		$blocks            = $this->parse_blocks( $post_content );
 		$this->page_blocks = $blocks;
 
-		$custom_css = get_post_meta( $this->post_id, '_uag_custom_page_level_css', true );
+		$enable_on_page_css_button = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_on_page_css_button', 'yes' );
 
-		if ( isset( $custom_css ) && is_string( $custom_css ) && ! self::$custom_css_appended ) {
-			$this->stylesheet         .= $custom_css;
-			self::$custom_css_appended = true;
+		if ( 'yes' === $enable_on_page_css_button ) {
+			$custom_css = get_post_meta( $this->post_id, '_uag_custom_page_level_css', true );
+
+			if ( isset( $custom_css ) && is_string( $custom_css ) && ! self::$custom_css_appended ) {
+				$this->stylesheet         .= $custom_css;
+				self::$custom_css_appended = true;
+			}
 		}
 
 		if ( ! is_array( $blocks ) || empty( $blocks ) ) {
@@ -1191,6 +1195,6 @@ class UAGB_Post_Assets {
 
 		array_push( $this->static_css_blocks, $block_name );
 
-		return $css;
+		return apply_filters( 'spectra_frontend_static_style', $css, $block_name );
 	}
 }

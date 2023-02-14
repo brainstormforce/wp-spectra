@@ -217,7 +217,7 @@ function styling( props ) {
 		...borderCSS
 	}
 
-	const selectors = {
+	let selectors = {
 		'.wp-block' :{
 			...sliderCSS,
 		}, 
@@ -308,7 +308,7 @@ function styling( props ) {
 
 	const sliderBackgroundCSSTablet = generateBackgroundCSS( backgroundAttributesTablet );
 
-	const tablet_selectors = {
+	let tablet_selectors = {
 		'.wp-block' : {
 			'padding-top': generateCSSUnit( topPaddingTablet, paddingTypeTablet ),
 			'padding-bottom': generateCSSUnit( bottomPaddingTablet, paddingTypeTablet ),
@@ -378,7 +378,7 @@ function styling( props ) {
 
 	const containerBackgroundCSSMobile = generateBackgroundCSS( backgroundAttributesMobile );
 
-	const mobile_selectors = {
+	let mobile_selectors = {
 		'.wp-block' : {
 			'padding-top': generateCSSUnit( topPaddingMobile, paddingTypeMobile ),
 			'padding-bottom': generateCSSUnit( bottomPaddingMobile, paddingTypeMobile ),
@@ -420,6 +420,10 @@ function styling( props ) {
 	};
 
 	const base_selector = `.editor-styles-wrapper #block-${ props.clientId }`;
+
+	selectors = wp.hooks.applyFilters( `spectra.slider.styling`, selectors, attributes );
+	tablet_selectors = wp.hooks.applyFilters( `spectra.slider.tabletStyling`, tablet_selectors, attributes );
+	mobile_selectors = wp.hooks.applyFilters( `spectra.slider.mobileStyling`, mobile_selectors, attributes );
 
 	let styling_css = generateCSS( selectors, base_selector );
 

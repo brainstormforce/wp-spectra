@@ -73,7 +73,7 @@ class UAGB_Init_Blocks {
 		}
 
 	}
-	
+
 	/**
 	 * Render block.
 	 *
@@ -166,7 +166,8 @@ class UAGB_Init_Blocks {
 		);
 
 		$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( $_SERVER['HTTP_USER_AGENT'] ) : '';
-		if ( preg_match( '@' . $os[ $value ] . '@', $user_agent ) ) {
+		
+		if ( isset( $os[ $value ] ) && preg_match( '@' . $os[ $value ] . '@', $user_agent ) ) {
 			return '';
 		}
 
@@ -603,6 +604,7 @@ class UAGB_Init_Blocks {
 				'collapse_panels'                    => UAGB_Admin_Helper::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
 				'enable_legacy_blocks'               => UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' ),
 				'copy_paste'                         => UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
+				'enable_on_page_css_button'          => UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_on_page_css_button', 'yes' ),
 				'content_width'                      => $content_width,
 				'container_global_padding'           => $container_padding,
 				'container_elements_gap'             => $container_elements_gap,
@@ -620,6 +622,7 @@ class UAGB_Init_Blocks {
 					'Use custom class added in block\'s advanced settings to target your desired block. Examples:
 				.my-class {text-align: center;} // my-class is a custom selector'
 				),
+				'is_rtl'                             => is_rtl(),
 			)
 		);
 		// To match the editor with frontend.
