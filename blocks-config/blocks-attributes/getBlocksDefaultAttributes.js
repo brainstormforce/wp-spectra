@@ -11,6 +11,7 @@ import teamAttribute from '@Blocks/team/attributes';
 import socialAttribute from '@Blocks/social-share/attributes';
 import socialChildAttribute from '@Blocks/social-share-child/attributes';
 import googleMapAttribute from '@Blocks/google-map/attributes';
+import iconAttribute from '@Blocks/icon/attributes';
 import iconListAttribute from '@Blocks/icon-list/attributes';
 import iconListChildAttribute from '@Blocks/icon-list-child/attributes';
 import priceListAttribute from '@Blocks/price-list/attributes';
@@ -62,6 +63,7 @@ export const blocksAttributes = {
 	'section' : sectionAttribute,
 	'buttons' : buttonsAttribute,
 	'buttons-child' : buttonsChildAttribute,
+	'icon' : iconAttribute,
 	'info-box' : infoboxAttribute,
 	'testimonial' : testimonialAttribute,
 	'team' : teamAttribute,
