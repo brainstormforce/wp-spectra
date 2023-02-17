@@ -796,6 +796,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 				$wrap = array(
 					'wp-block-uagb-image-gallery',
 					'uagb-block-' . $attributes['block_id'],
+					( isset( $attributes['className'] ) ) ? $attributes['className'] : '',
 					$desktop_class,
 					$tab_class,
 					$mob_class,
