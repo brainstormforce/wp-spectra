@@ -176,6 +176,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Typography - Added Fahkwang and Jost Google fonts from in Font Families.
 * Fix: Info-box - Icon misaligned on tablet/mobile when padding gets added.
 * Fix: Image - Image dimensions width & height box updated as per spectra UI guidelines.
+* Global: Display Conditions - Added day Addition options to display blocks.
 * Fix: Display conditions - Undefined `key/index` when none is set for Operating system.
 * Fix: Team - On responsive devices preset images not working as expected.
 

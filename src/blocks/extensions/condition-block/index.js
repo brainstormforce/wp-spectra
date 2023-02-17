@@ -15,8 +15,32 @@ const UserConditionOptions = ( props ) => {
         UAGDisplayConditions,
         UAGSystem,
         UAGBrowser,
-        UAGUserRole
+        UAGUserRole,
+		UAGDay
     } = attributes;
+
+    const options =  [
+		{ value: 'monday', label: __( 'Monday' ) },
+		{ value: 'tuesday', label: __( 'Tuesday' ) },
+		{ value: 'wednesday', label: __( 'Wednesday' ) },
+		{ value: 'thursday', label: __( 'Thursday' ) },
+		{ value: 'friday', label: __( 'Friday' ) },
+		{ value: 'saturday', label: __( 'Saturday' ) },
+		{ value: 'sunday', label: __( 'Sunday' ) },
+	];
+
+    const handleChange = ( e ) => {
+		// Destructuring
+		const { value, checked } = e.target;
+		
+		if ( checked ) {
+			setAttributes( { UAGDay: [...UAGDay, value] } );
+		}
+		
+		else {
+			setAttributes( { UAGDay: UAGDay.filter( ( i ) => i !== value ) } );
+		}
+	};
 
     return(
         <>
@@ -30,6 +54,7 @@ const UserConditionOptions = ( props ) => {
                     { value: 'userRole', label: __( 'User Role' ) },
                     { value: 'browser', label: __( 'Browser' ) },
                     { value: 'os', label: __( 'Operating System' ) },
+                    { value: 'day', label: __( 'Day' ) }
                 ]}
 			/>
             { UAGDisplayConditions === 'userstate' &&
@@ -93,6 +118,30 @@ const UserConditionOptions = ( props ) => {
 			        />
                 </>
             }
+            { UAGDisplayConditions === 'day' && (
+				<>
+				<p>Select days you want to disable.</p>
+					{ options.map( ( o, index ) => {  // eslint-disable-next-line array-callback-return
+						return (
+								<label
+									key = { index }
+									className="form-check-label"
+									htmlFor="flexCheckDefault"
+								>
+									<input
+										type="checkbox"
+										className="uagb-forms-checkbox"
+										name={ o.value }
+										value={ o.value } sunday
+										onChange ={ handleChange }
+										checked={ UAGDay.includes( o.value ) ? true : false}
+									/>
+									{ o.label }
+								</label>
+						);
+					} )}
+				</>
+			) }
         </>
     );
 }
