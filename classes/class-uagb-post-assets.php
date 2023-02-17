@@ -248,7 +248,7 @@ class UAGB_Post_Assets {
 			return;
 		}
 
-		foreach ( $content as $key => $value ) {
+		foreach ( $content as $value ) {
 			if ( is_array( $value ) && isset( $value['content'] ) && has_blocks( $value['content'] ) ) {
 				$this->common_function_for_assets_preparation( $value['content'] );
 			}
@@ -783,7 +783,7 @@ class UAGB_Post_Assets {
 		// Add static css here.
 		$blocks = UAGB_Block_Module::get_blocks_info();
 
-		$block_css_file_name = ( isset( $blocks[ $name ] ) && isset( $blocks[ $name ]['static_css'] ) ) ? $blocks[ $name ]['static_css'] : str_replace( 'uagb/', '', $name );
+		$block_css_file_name = isset( $blocks[ $name ]['static_css'] ) ? $blocks[ $name ]['static_css'] : str_replace( 'uagb/', '', $name );
 
 		if ( 'enabled' === $this->file_generation && ! in_array( $block_css_file_name, $this->static_css_blocks, true ) ) {
 			$common_css = array(
@@ -909,7 +909,7 @@ class UAGB_Post_Assets {
 		if ( 'yes' === $enable_on_page_css_button ) {
 			$custom_css = get_post_meta( $this->post_id, '_uag_custom_page_level_css', true );
 
-			if ( isset( $custom_css ) && is_string( $custom_css ) && ! self::$custom_css_appended ) {
+			if ( is_string( $custom_css ) && ! self::$custom_css_appended ) {
 				$this->stylesheet         .= $custom_css;
 				self::$custom_css_appended = true;
 			}

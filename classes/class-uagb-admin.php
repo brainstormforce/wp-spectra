@@ -233,7 +233,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			if ( class_exists( 'Classic_Editor' ) ) {
 				$editor_option = get_option( 'classic-editor-replace' );
-				if ( isset( $editor_option ) && 'block' !== $editor_option ) {
+				if ( 'block' !== $editor_option ) {
 					Astra_Notices::add_notice(
 						array(
 							'id'                         => 'uagb-classic-editor',

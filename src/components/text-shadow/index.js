@@ -228,7 +228,7 @@ const TextShadowControl = ( props ) => {
 	return (
 		<div
 			ref={panelRef}
-			className="components-base-control"
+			className={ popup ? 'components-base-control' : ''}
 		>
 			{
 				controlBeforeDomElement

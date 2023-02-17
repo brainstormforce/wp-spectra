@@ -59,9 +59,7 @@ final class UAGB_Scripts_Utils {
 							if ( is_admin() && false === $skip_editor ) {
 								wp_enqueue_script( $handle );
 							}
-						}
-
-						if ( 'css' === $asset['type'] ) {
+						} elseif ( 'css' === $asset['type'] ) {
 
 							// Styles.
 							wp_register_style(

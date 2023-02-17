@@ -74,6 +74,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 						'container',
 						'advanced-heading',
 						'image',
+						'icon',
 						'buttons',
 						'info-box',
 						'call-to-action',
@@ -109,15 +110,8 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		 * @since 0.0.1
 		 */
 		public static function get_admin_settings_option( $key, $default = false, $network_override = false ) {
-
 			// Get the site-wide option if we're in the network admin.
-			if ( $network_override && is_multisite() ) {
-				$value = get_site_option( $key, $default );
-			} else {
-				$value = get_option( $key, $default );
-			}
-
-			return $value;
+			return $network_override && is_multisite() ? get_site_option( $key, $default ) : get_option( $key, $default );
 		}
 
 		/**

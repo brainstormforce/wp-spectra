@@ -171,6 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 2.4.0 ###
+* New: Introducing the Icon block - Add FontAwesome icons on your website.
 * Improvement: Custom CSS - Disable option for on page-level CSS.
 * Improvement: Typography - Added Fahkwang and Jost Google fonts from in Font Families.
 * Fix: Info-box - Icon misaligned on tablet/mobile when padding gets added.
@@ -178,6 +179,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Display conditions - Undefined `key/index` when none is set for Operating system.
 * Improvement: Global - Added Advanced options in Gradient Component.
 * Fix: Info-box - Icon misalign on tablet/mobile when padding gets added.
+* Fix: Team - On responsive devices preset images not working as expected.
 
 ### 2.3.5 - THURSDAY, 2nd FEBRUARY 2023 ###
 * Improvement: Global - Removed Backward compatibility of button padding for old users from multiple blocks.
