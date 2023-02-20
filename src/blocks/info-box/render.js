@@ -37,7 +37,6 @@ const Render = ( props ) => {
 		showTitle,
 		showDesc,
 		block_id,
-		ctaLink,
 		imageWidthType,
 		imageWidth
 	} = attributes;
@@ -232,7 +231,7 @@ const Render = ( props ) => {
 		>
 			{ ctaType === 'all' && (
 				<a // eslint-disable-line jsx-a11y/anchor-has-content
-					className={ !ctaLink ? 'uagb-infobox-link-wrap uagb-infbox__link-to-all uagb-disable-link' : 'uagb-infobox-link-wrap uagb-infbox__link-to-all' }
+					className={ 'uagb-infobox-link-wrap uagb-infbox__link-to-all' }
 					aria-label={ 'Infobox Link' }
 					rel="noopener noreferrer"
 					href="/"
