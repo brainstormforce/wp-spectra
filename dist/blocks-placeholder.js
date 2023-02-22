@@ -11,6 +11,7 @@ registerBlockType( 'uagb/blockquote', { title: __( 'Blockquote', 'ultimate-addon
 registerBlockType( 'uagb/buttons', { title: __( 'Buttons', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/call-to-action', { title: __( 'Call To Action', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/container', { title: __( 'Container', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/countdown', { title: __( 'Countdown', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/counter', { title: __( 'Counter', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/faq', { title: __( 'FAQ', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/forms', { title: __( 'Form', 'ultimate-addons-for-gutenberg' ) } );
