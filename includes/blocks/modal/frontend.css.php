@@ -380,10 +380,17 @@ if ( 'full' !== $attr['modalAlignTablet'] ) {
 	);
 }
 
-$combined_selectors = array(
-	'desktop' => $selectors,
-	'tablet'  => $t_selectors,
-	'mobile'  => $m_selectors,
+/**
+ * Get Combined selectors with filters.
+ */
+$combined_selectors = UAGB_Helper::get_combined_selectors(
+	'modal', 
+	array(
+		'desktop' => $selectors,
+		'tablet'  => $t_selectors,
+		'mobile'  => $m_selectors,
+	),
+	$attr
 );
 
 $base_selector = '.uagb-block-';

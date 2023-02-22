@@ -374,9 +374,9 @@ export default function Settings( props ) {
 			title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
-			<MultiButtonsControl
+			<UAGSelectControl
 				setAttributes={ setAttributes }
-				label={ __( 'Choose The Trigger', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Modal Trigger', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
 					value: modalTrigger,
 					label: 'modalTrigger',

@@ -4,6 +4,28 @@
 
 		.uagb-modal-popup {
 
+			&.uagb-modal-type-right-off-canvas {
+
+				.uagb-modal-popup-wrap {
+					margin: 0 !important;
+				}
+
+				&.active {
+					padding: 0 !important;
+				}
+			}
+
+			&.uagb-modal-type-left-off-canvas {
+
+				.uagb-modal-popup-wrap {
+					margin: 0 !important;
+				}
+
+				&.active {
+					padding: 0 !important;
+				}
+			}
+
 			.uagb-modal-popup-wrap {
 				margin: 30px;
 			}
