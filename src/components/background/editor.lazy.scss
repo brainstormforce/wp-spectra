@@ -60,9 +60,16 @@
 		}
 	}
 
-	.uag-background-image-size .uagb-responsive-control-inner > .components-base-control {
-		display: block;
-		margin-top: $spectra-control-vertical-gap;
+	.uag-background-image-size {
+
+		.uagb-responsive-control-inner > .components-base-control {
+			display: block;
+			margin-top: $spectra-control-vertical-gap;
+		}
+
+		.uag-range-control.uagb-size-type-field-tabs {
+			display: block;
+		}
 	}
 
 	.uag-background-image-position {
