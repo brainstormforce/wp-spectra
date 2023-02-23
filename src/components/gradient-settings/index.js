@@ -36,38 +36,42 @@ const GradientSettings = ( props ) => {
 	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
 	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
+	const type = undefined !== gradientType ? gradientType.value : 'basic';
+
 	return (
 		<>
-			<MultiButtonsControl
-				setAttributes={ setAttributes }
-				label={ 'Select Gradient'}
-				data={ {
-					value: gradientType.value,
-					label: gradientType.label,
-				} }
-				options={ [
-					{
-						value: 'basic',
-						label: __(
-							'Basic',
-							'ultimate-addons-for-gutenberg'
-						)
-					},
-					{
-						value: 'advanced',
-						label: __(
-							'Advanced',
-							'ultimate-addons-for-gutenberg'
-						)
-					},
-				] }
-				showIcons={ false }
-			/>
+			{ undefined !== gradientType && (
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ 'Select Gradient'}
+					data={ {
+						value: gradientType.value,
+						label: gradientType.label,
+					} }
+					options={ [
+						{
+							value: 'basic',
+							label: __(
+								'Basic',
+								'ultimate-addons-for-gutenberg'
+							)
+						},
+						{
+							value: 'advanced',
+							label: __(
+								'Advanced',
+								'ultimate-addons-for-gutenberg'
+							)
+						},
+					] }
+					showIcons={ false }
+				/>
+			)}
 			<div ref={panelRef}>
 				{
 					controlBeforeDomElement
 				}
-				{ 'basic' === gradientType.value && (
+				{ 'basic' === type && (
 					<GradientPicker
 						__nextHasNoMargin = { true }
 						value={ backgroundGradient.value }
@@ -80,7 +84,7 @@ const GradientSettings = ( props ) => {
 					controlAfterDomElement
 				}
 			</div>
-			{ 'advanced' === gradientType.value && (
+			{ 'advanced' === type && (
 				<>
 					<AdvancedPopColorControl
 						label={ __(
