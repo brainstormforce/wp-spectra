@@ -6,7 +6,7 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import classnames from 'classnames';
 import { useEffect } from 'react';
 
-const { enableConditions, enableResponsiveConditions } = uagb_blocks_info;
+const { enableConditions, enableResponsiveConditions, enableAnimationsExtension } = uagb_blocks_info;
 
 const UserConditionOptions = ( props ) => {
 	const { attributes, setAttributes } = props;
@@ -378,6 +378,15 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 							className="block-editor-block-inspector__advanced uagb-extention-tab"
 						>
 							{ zIndexOptions( props ) }
+						</UAGAdvancedPanelBody>
+					}
+					{ 'enabled' === enableAnimationsExtension &&
+						<UAGAdvancedPanelBody
+							title={ __( 'Animations', 'ultimate-addons-for-gutenberg' ) }
+							initialOpen={ false }
+							className="block-editor-block-inspector__advanced uagb-extention-tab"
+						>
+							
 						</UAGAdvancedPanelBody>
 					}
 					</>
