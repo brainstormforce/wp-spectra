@@ -28,6 +28,9 @@ __webpack_public_path__ = uagb_blocks_info.uagb_url + 'dist/';
 // Add Font Awesome Polyfiller to localized variable.
 uagb_blocks_info.font_awesome_5_polyfill = fontAwesomePollyfiller;
 
+// Setting local storage key for svg Confirmation data.
+uagLocalStorage.setItem( 'uagSvgConfirmation', JSON.stringify( uagb_blocks_info?.svg_confirmation || false ) );
+
 // The Block Slugs need to be added exactly as below into the array at: /classes/class-spectra-block-prioritization.php.
 // Priorities need to be adequately updated in the respective includes/blocks/block.php files.
 
