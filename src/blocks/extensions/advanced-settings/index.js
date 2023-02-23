@@ -264,6 +264,14 @@ const ResponsiveConditionOptions = ( props ) => {
 	);
 };
 
+const animationOptions = ( props ) => {
+
+	return(
+		<>
+		</>
+	);
+};
+
 function ApplyExtraClass( extraProps, blockType, attributes ) {
 	const {
 		UAGHideDesktop,
@@ -386,7 +394,7 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 							initialOpen={ false }
 							className="block-editor-block-inspector__advanced uagb-extention-tab"
 						>
-							
+							{ animationOptions( props ) }
 						</UAGAdvancedPanelBody>
 					}
 					</>
