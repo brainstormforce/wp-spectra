@@ -209,7 +209,7 @@ export default function styling( props ) {
     };
 
 	const modalPopupContentBackgroundCSSDesktop = generateBackgroundCSS( backgroundAttributesDesktop );
-	const selectors = {
+	let selectors = {
 		' .uagb-modal-popup-wrap' : {
 			'width': generateCSSUnit(
 				modalWidth,
@@ -340,7 +340,7 @@ export default function styling( props ) {
     };
 
 	const modalPopupContentBackgroundCSSTablet = generateBackgroundCSS( backgroundAttributesTablet );
-	const tabletSelectors = {
+	let tabletSelectors = {
 		' .uagb-modal-popup-wrap' : {
 			'width': generateCSSUnit(
 				modalWidthTablet,
@@ -439,7 +439,7 @@ export default function styling( props ) {
     };
 
 	const modalPopupContentBackgroundCSSMobile = generateBackgroundCSS( backgroundAttributesMobile );
-	const mobileSelectors = {
+	let mobileSelectors = {
 		' .uagb-modal-popup-wrap' : {
 			'width': generateCSSUnit(
 				modalWidthMobile,
@@ -647,6 +647,10 @@ export default function styling( props ) {
 		0,
 		8
 	) }`;
+
+	selectors = wp.hooks.applyFilters( `spectra.${blockName}.styling`, selectors, props.attributes );
+	tabletSelectors = wp.hooks.applyFilters( `spectra.${blockName}.tabletStyling`, tabletSelectors, props.attributes );
+	mobileSelectors = wp.hooks.applyFilters( `spectra.${blockName}.mobileStyling`, mobileSelectors, props.attributes );
 
 	let styling_css = generateCSS( selectors, base_selector );
 

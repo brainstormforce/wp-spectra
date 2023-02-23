@@ -1,6 +1,9 @@
 UAGBTabs = { // eslint-disable-line no-undef
 	init( $selector ) {
 		const tabsWrap = document.querySelector( $selector );
+		if( ! tabsWrap ){
+			return;
+		}
 		const tabActive = tabsWrap.getAttribute( 'data-tab-active' );
 		const tabLi = tabsWrap.querySelectorAll(
 			'.uagb-tabs__panel > li.uagb-tab'

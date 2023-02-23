@@ -685,6 +685,31 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		}
 
 		/**
+		 * Adds Google fonts for Countdown block.
+		 *
+		 * @since x.x.x
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_countdown_gfont( $attr ) {
+
+			$digit_load_google_font = isset( $attr['digitLoadGoogleFonts'] ) ? $attr['digitLoadGoogleFonts'] : '';
+			$digit_font_family      = isset( $attr['digitFontFamily'] ) ? $attr['digitFontFamily'] : '';
+			$digit_font_weight      = isset( $attr['digitFontWeight'] ) ? $attr['digitFontWeight'] : '';
+
+			$label_load_google_font = isset( $attr['labelLoadGoogleFonts'] ) ? $attr['labelLoadGoogleFonts'] : '';
+			$label_font_family      = isset( $attr['labelFontFamily'] ) ? $attr['labelFontFamily'] : '';
+			$label_font_weight      = isset( $attr['labelFontWeight'] ) ? $attr['labelFontWeight'] : '';
+
+			$separator_load_google_font = isset( $attr['separatorLoadGoogleFonts'] ) ? $attr['separatorLoadGoogleFonts'] : '';
+			$separator_font_family      = isset( $attr['separatorFontFamily'] ) ? $attr['separatorFontFamily'] : '';
+			$separator_font_weight      = isset( $attr['separatorFontWeight'] ) ? $attr['separatorFontWeight'] : '';
+
+			UAGB_Helper::blocks_google_font( $digit_load_google_font, $digit_font_family, $digit_font_weight );
+			UAGB_Helper::blocks_google_font( $label_load_google_font, $label_font_family, $label_font_weight );
+			UAGB_Helper::blocks_google_font( $separator_load_google_font, $separator_font_family, $separator_font_weight );
+		}
+
+		/**
 		 * Adds Google fonts for Modal block.
 		 *
 		 * @since 2.2.0

@@ -11,7 +11,7 @@ const UAGIconPicker = ( props ) => {
 	const panelRef = useRef( null );
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
-	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop();
 	useEffect( () => {
 		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
 	}, [blockNameForHook] )

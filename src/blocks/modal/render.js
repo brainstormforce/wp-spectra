@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useEffect } from 'react';
+import { useLayoutEffect, useEffect } from '@wordpress/element';
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
@@ -72,8 +72,12 @@ const Render = ( props ) => {
 		imgTagWidth,
 		imgTagHeight,
 		showBtnIcon,
-		defaultTemplate
+		defaultTemplate,
+		openModalAs,
+		modalPosition
 	} = attributes;
+
+	const isPro = uagb_blocks_info.spectra_pro_status;
 
 	const deviceType = useDeviceType();
 
@@ -225,12 +229,21 @@ const Render = ( props ) => {
 				}
 				</div>
 				<div
-					className={ classnames(
+					className={ classnames( 
 						`${ appearEffect }`,
 						'uagb-modal-popup',
-						`uagb-block-${ block_id }`
+						`uagb-block-${ block_id }`,
+						{
+							[`uagb-modal-type-${openModalAs}`]: isPro,
+							[`uagb-modal-position-${modalPosition}`]: isPro
+						}
 					) }
 				>
+					{ isPro && ( 'window-top-left' === closeIconPosition || 'window-top-right' === closeIconPosition ) && (
+						<div className={classnames( 'uagb-modal-popup-close', closeIconPosition )}>
+							{ '' !== closeIcon && ( renderSVG( closeIcon ) ) }
+						</div>
+					) }
 					<div className="uagb-modal-popup-wrap">
 						<div className="uagb-modal-popup-content">
 							<InnerBlocks template={ defaultTemplate === undefined || defaultTemplate === false ? getStepAsChild : [ [ 'core/paragraph', { placeholder: 'Type / to choose a block' } ] ] } allowedBlocks={ ALLOWED_BLOCKS } renderAppender={ InnerBlocks.DefaultBlockAppender } />
@@ -246,4 +259,4 @@ const Render = ( props ) => {
 		</>
 	);
 };
-export default React.memo( Render );
+export default wp.element.memo( Render );

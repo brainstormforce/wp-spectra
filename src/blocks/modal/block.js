@@ -9,7 +9,7 @@ import save from './save';
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-
+import deprecated from './deprecated';
 
 registerBlockType( 'uagb/modal', {
 	title: __( 'Modal', 'ultimate-addons-for-gutenberg' ),
@@ -29,6 +29,7 @@ registerBlockType( 'uagb/modal', {
 	attributes,
 	edit,
 	save,
+	deprecated,
 	example: {
 		attributes: {
 			isPreview: true,
