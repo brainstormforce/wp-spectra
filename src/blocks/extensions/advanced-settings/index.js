@@ -392,3 +392,4 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		ApplyExtraClass
 	);
 
+console.log( uagb_blocks_info.enableAnimationsExtension );
