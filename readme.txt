@@ -183,6 +183,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Display conditions - Undefined `key/index` when none is set for Operating system.
 * Fix: Forms/Tabs/Table of contents - JS throws an error in console on blog/home page.
 * Fix: Team - On responsive devices preset images not working as expected.
+* Fix: The archive page is getting slow.
 
 = 2.3.5 - THURSDAY, 2nd FEBRUARY 2023 =
 * Improvement: Global - Removed Backward compatibility of button padding for old users from multiple blocks.
