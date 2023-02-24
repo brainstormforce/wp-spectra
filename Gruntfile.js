@@ -38,6 +38,8 @@ module.exports = function ( grunt ) {
 					'!admin-core/webpack.config.js',
 					'!admin-core/package.json',
 					'!admin-core/package-lock.json',
+					'!fontawesome-custom-shorted-category.json',
+					'!fontawesome-category.json',
 				],
 				dest: 'ultimate-addons-for-gutenberg/',
 			},
@@ -228,6 +230,8 @@ module.exports = function ( grunt ) {
 				// Task-specific options go here.
 				compress: true,
 				cover ( phpArrayString, destFilePath ) { // eslint-disable-line no-unused-vars
+					phpArrayString = phpArrayString.replace( /"%%translation_start%%/g, '__("' );
+					phpArrayString = phpArrayString.replace( /%%translation_end%%"/g, '","ultimate-addons-for-gutenberg")' );
 					return (
 						'<?php\n/**\n * Font awesome icons array array file.\n *\n * @package     Spectra\n * @author      Spectra\n * @link        https://wpspectra.com/\n */\n\n/**\n * Returns font awesome icons array \n */\nreturn ' +
 						phpArrayString +
@@ -290,10 +294,66 @@ module.exports = function ( grunt ) {
 		}
 	} );
 
+	// Keep category in each icon.
+	function keep_category( fonts, currentFont, getCategories ){
+		for( const category in getCategories ){
+			if( Array.isArray( getCategories[ category ].icons ) && getCategories[ category ].icons.includes( currentFont ) ){
+				fonts[currentFont].categories.push( category );
+			}
+		}
+	}
+
+	function keep_custom_category( fonts, currentFont, getCategoriesCustomTitle ){
+		const current_icon_category = fonts[currentFont].categories;
+		if( !current_icon_category.length ){
+			return;
+		}
+		for( const key in getCategoriesCustomTitle ){
+				const original_categories = getCategoriesCustomTitle[key].original_cate;
+				const get_common_values = original_categories.filter( ( value )=>current_icon_category.includes( value ) );
+				if( get_common_values.length ){
+					fonts[currentFont].custom_categories.push( key );
+				}
+			}
+		// return fonts;
+	}
+
+	// Keep category list in icons array.
+	function keep_category_list( fonts,customCategory ){
+		const keep_category_array = [];
+		for( const category in customCategory ){
+			if( customCategory[ category ] && customCategory[ category ] ?.title ){	
+				// we will keep count from here.
+				const put_category_with_title = { slug:category } ;
+				put_category_with_title.title = `%%translation_start%%${customCategory[ category ].title}%%translation_end%%`;
+				keep_category_array.push( put_category_with_title );
+			}
+		}
+		fonts.uagb_category_list = keep_category_array;
+		return fonts;
+	}
+
+	// keep custom category in icons.
+	function keep_custom_category_in_icons( fonts, getCustomCategoryTitle ) {
+		for ( const font in fonts ) {
+			// check in custom icons.
+			for ( const customCate in getCustomCategoryTitle ) {
+				if ( getCustomCategoryTitle[ customCate ].icons.includes( font ) ) {
+					if ( fonts[ font ]?.custom_categories ) {
+						fonts[ font ].custom_categories.push( customCate );
+					}
+				}
+			}
+		}
+		return fonts;
+	}
+
 	// Update Font Awesome library.
 	grunt.registerTask( 'font-awesome', function () {
 		this.async();
 		const request = require( 'request' );
+		const getCategories = grunt.file.readJSON( './fontawesome-category.json' );
+		const getCategoriesCustomTitle = grunt.file.readJSON( './fontawesome-custom-shorted-category.json' );
 		const fs = require( 'fs' );
 
 		request(
@@ -305,12 +365,20 @@ module.exports = function ( grunt ) {
 					const fonts = JSON.parse( body );
 					Object.keys( fonts ).map( ( key ) => {
 
+						// Put category.
+						fonts[key].categories = [];
+						fonts[key].custom_categories = [];
+						keep_category( fonts, key, getCategories );
+						keep_custom_category( fonts, key, getCategoriesCustomTitle );
+						if( isNaN( fonts[key].label ) ){
+							fonts[key].label = `%%translation_start%%${fonts[key].label}%%translation_end%%`;
+						}
+						delete fonts[key].categories;
 						delete fonts[key].changes;
 						delete fonts[key].ligatures;
 						delete fonts[key].search;
 						delete fonts[key].styles;
 						delete fonts[key].unicode;
-						delete fonts[key].label;
 						delete fonts[key].voted;
 						delete fonts[key].free;
 						return key;
@@ -329,33 +397,76 @@ module.exports = function ( grunt ) {
 			}
 		);
 	} );
+	
+	grunt.registerTask( 'font-awesome-cate-list', function () {
+		this.async();
+		// Source https://github.com/FortAwesome/Font-Awesome/blob/6.x/metadata/categories.yml.
+		const request = require( 'request' );
+		const fs = require( 'fs' );
+		request(
+			'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/metadata/categories.yml',
+			function ( error, response, body ) {
+					fs.writeFile(
+						'fontawesome-category.yml',
+						body,
+						function ( err ) {
+							if ( ! err ) {
+								console.log( 'Categories added' ); // eslint-disable-line
+								const yaml = require( 'js-yaml' );
+								const category_lists = yaml.load( fs.readFileSync( 'fontawesome-category.yml', {encoding: 'utf-8'} ) ); 
+								fs.writeFileSync( 'fontawesome-category.json', JSON.stringify( category_lists, null, 2 ) );
+								fs.unlinkSync( 'fontawesome-category.yml' );
+							}
+						}
+					);
+			}
+		);
+
+	} );
 
 	// Update Font Awesome v6 library.
 	grunt.registerTask( 'font-awesome-v6', function () {
 		this.async();
 		const request = require( 'request' );
+		const getCategories = grunt.file.readJSON( './fontawesome-category.json' );
+		const getCategoriesCustomTitle = grunt.file.readJSON( './fontawesome-custom-shorted-category.json' );
+		// This is custom category list like in our icon library brand category is not available so we put manually here.
+		const getCustomCategoryTitle = grunt.file.readJSON( './custom-icon-category.json' );
 		const fs = require( 'fs' );
-
+		
 		request(
 			'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/metadata/icons.json',
 			function ( error, response, body ) {
 				if ( response && response.statusCode === 200 ) {
 					console.log( 'V6 Fonts successfully fetched!' ); // eslint-disable-line
 
-					const fonts = JSON.parse( body );
+					let fonts = JSON.parse( body );
 					Object.keys( fonts ).map( ( key ) => {
-
+						
+						fonts[key].categories = [];
+						fonts[key].custom_categories = [];
+						keep_category( fonts, key, getCategories );
+						keep_custom_category( fonts, key, getCategoriesCustomTitle );
+						delete fonts[key].categories;
+						if( isNaN( fonts[key].label ) ){
+							fonts[key].label = `%%translation_start%%${fonts[key].label}%%translation_end%%`;
+						}
 						delete fonts[key].changes;
 						delete fonts[key].ligatures;
 						delete fonts[key].search;
 						delete fonts[key].styles;
 						delete fonts[key].unicode;
-						delete fonts[key].label;
 						delete fonts[key].voted;
 						delete fonts[key].free;
 						delete fonts[key].aliases;
 						return key;
 					} );
+
+					// keep custom category in icons 
+					fonts = keep_custom_category_in_icons( fonts, getCustomCategoryTitle ); 
+
+					// Put custom categories list.
+					fonts = keep_category_list( fonts, getCategoriesCustomTitle );
 
 					fs.writeFile(
 						'blocks-config/uagb-controls/SpectraIconsV6.json',

@@ -105,6 +105,12 @@ import './blocks/wp-search/block.js';
 // Responsive Device Icons on Editor
 import './components/responsive-icons/index.js';
 
+// Keep category list in separate variable and remove category list from icons list.
+if( uagb_blocks_info.uagb_svg_icons?.uagb_category_list ){
+	wp.uagb_icon_category_list = [ ...uagb_blocks_info.uagb_svg_icons.uagb_category_list ];
+	delete uagb_blocks_info.uagb_svg_icons.uagb_category_list;
+}
+
 wp.UAGBSvgIcons = Object.keys( uagb_blocks_info.uagb_svg_icons );
 
 import UAGB_Block_Icons from '@Controls/block-icons';
