@@ -680,8 +680,13 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			$load_more_font_family      = isset( $attr['loadMoreFontFamily'] ) ? $attr['loadMoreFontFamily'] : '';
 			$load_more_font_weight      = isset( $attr['loadMoreFontWeight'] ) ? $attr['loadMoreFontWeight'] : '';
 
+			$lightbox_load_google_font = isset( $attr['lightboxLoadGoogleFonts'] ) ? $attr['lightboxLoadGoogleFonts'] : '';
+			$lightbox_font_family      = isset( $attr['lightboxFontFamily'] ) ? $attr['lightboxFontFamily'] : '';
+			$lightbox_font_weight      = isset( $attr['lightboxFontWeight'] ) ? $attr['lightboxFontWeight'] : '';
+
 			UAGB_Helper::blocks_google_font( $caption_load_google_font, $caption_font_family, $caption_font_weight );
 			UAGB_Helper::blocks_google_font( $load_more_load_google_font, $load_more_font_family, $load_more_font_weight );
+			UAGB_Helper::blocks_google_font( $lightbox_load_google_font, $lightbox_font_family, $lightbox_font_weight );
 		}
 
 		/**

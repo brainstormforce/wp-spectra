@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import getMatrixAlignment from '@Controls/getMatrixAlignment';
@@ -9,8 +9,8 @@ import '/assets/js/imagesloaded.min';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import { RichText } from '@wordpress/block-editor';
-
-const classNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
+import { applyFilters } from '@wordpress/hooks';
+import { uagbClassNames } from '@Utils/Helpers';
 
 const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	const blockName = name.replace( 'uagb/', '' );
@@ -219,7 +219,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		<button
 			type="button"
 			data-role="none"
-			className={ classNames(
+			className={ uagbClassNames(
 				'spectra-image-gallery__control-arrows',
 				`spectra-image-gallery__control-arrows--${ feedLayout }`,
 				( 'carousel' === feedLayout ) ? 'slick-next' : '',
@@ -243,7 +243,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		<button
 			type="button"
 			data-role="none"
-			className={ classNames(
+			className={ uagbClassNames(
 				'spectra-image-gallery__control-arrows',
 				`spectra-image-gallery__control-arrows--${ feedLayout }`,
 				( 'carousel' === feedLayout ) ? 'slick-prev' : '',
@@ -388,7 +388,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				{ [ ...Array( gridPages ) ].map( ( pageData, pageIndex ) => (
 					<li
 						key={ pageIndex }
-						className={ classNames(
+						className={ uagbClassNames(
 							'spectra-image-gallery__control-dot',
 							( pageIndex === gridPageNumber - 1 ) ? 'spectra-image-gallery__control-dot--active' : '',
 						) }
@@ -445,7 +445,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				return (
 					<>
 						<div
-							className={ classNames(
+							className={ uagbClassNames(
 								'spectra-image-gallery',
 								`spectra-image-gallery__layout--${ gridLayout }`,
 								`spectra-image-gallery__layout--${ gridLayout }-col-${ columnsDeskFallback }`,
@@ -462,7 +462,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				return (
 					<>
 						<Masonry
-							className={ classNames(
+							className={ uagbClassNames(
 								'spectra-image-gallery',
 								`spectra-image-gallery__layout--${ feedLayout }`,
 								`spectra-image-gallery__layout--${ feedLayout }-col-${ columnsDeskFallback }`,
@@ -479,7 +479,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			case 'tiled':
 				return (
 					<div
-						className={ classNames(
+						className={ uagbClassNames(
 							'spectra-image-gallery',
 							`spectra-image-gallery__layout--${ feedLayout }`,
 							`spectra-image-gallery__layout--${ feedLayout }-col-${ columnsDeskFallback }`,
@@ -494,7 +494,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			case 'carousel':
 				return (
 					<div
-						className={ classNames(
+						className={ uagbClassNames(
 							'spectra-image-gallery',
 							`spectra-image-gallery__layout--${ feedLayout }`
 						) }
@@ -527,7 +527,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	const renderFocusControl = ( mediaObject ) => (
 		focusList[ mediaObject.id ] ? svgUnfocus( mediaObject.id ) : svgFocus( mediaObject.id )
 	);
-	
+
 	const renderMasonryHoverHandler = ( mediaObject ) => (
 		<div
 			className="spectra-image-gallery__media-wrapper--isotope"
@@ -545,25 +545,26 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		>
 			{ renderThumbnail( mediaObject ) }
 			{ ( 'tiled' === feedLayout ) && renderFocusControl( mediaObject ) }
+			{ applyFilters( 'spectra.image-gallery.render.customLinks', '', mediaObject, attributes, setAttributes ) }
 		</div>
 	);
 
 	const renderThumbnail = ( mediaObject ) => (
 		<>
 			{ ( imageDisplayCaption && ( 'bar-outside' === captionDisplayType && 'top' === getMatrixAlignment( imageCaptionAlignment, 1 ) ) ) && (
-				<div className={ classNames(
+				<div className={ uagbClassNames(
 					'spectra-image-gallery__media-thumbnail-caption-wrapper',
 					`spectra-image-gallery__media-thumbnail-caption-wrapper--${ captionDisplayType }`
 				) } >
 					{ renderCaption( mediaObject ) }
 				</div>
 			) }
-			<div className={ classNames(
+			<div className={ uagbClassNames(
 				'spectra-image-gallery__media',
 				`spectra-image-gallery__media--${ feedLayout }`,
 			) } >
 				<img
-					className={ classNames(
+					className={ uagbClassNames(
 						'spectra-image-gallery__media-thumbnail',
 						`spectra-image-gallery__media-thumbnail--${ feedLayout }`
 					) }
@@ -575,7 +576,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				{ imageDisplayCaption ? (
 					( 'bar-outside' !== captionDisplayType ) && (
 						<div
-							className={ classNames(
+							className={ uagbClassNames(
 								'spectra-image-gallery__media-thumbnail-caption-wrapper',
 								`spectra-image-gallery__media-thumbnail-caption-wrapper--${ captionDisplayType }`
 							) }
@@ -584,14 +585,14 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 						</div>
 					)
 				) : (
-					<div className={ classNames(
+					<div className={ uagbClassNames(
 						'spectra-image-gallery__media-thumbnail-caption-wrapper',
 						'spectra-image-gallery__media-thumbnail-caption-wrapper--overlay'
 					) } />
 				) }
 			</div>
 			{ ( imageDisplayCaption && ( 'bar-outside' === captionDisplayType && getMatrixAlignment( imageCaptionAlignment, 1 ) !== 'top' ) ) && (
-				<div className={ classNames(
+				<div className={ uagbClassNames(
 					'spectra-image-gallery__media-thumbnail-caption-wrapper',
 					`spectra-image-gallery__media-thumbnail-caption-wrapper--${ captionDisplayType }`
 				) } >
@@ -608,7 +609,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				placeholder={ imageDefaultCaption }
 				value={ mediaObject.caption }
 				onChange={ ( value ) => ( mediaObject.caption = value ) }
-				className={ classNames(
+				className={ uagbClassNames(
 					'spectra-image-gallery__media-thumbnail-caption',
 					`spectra-image-gallery__media-thumbnail-caption--${ captionDisplayType }`
 				) }
@@ -621,7 +622,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 					placeholder={ __( 'No Caption', 'ultimate-addons-for-gutenberg' ) }
 					value={ imageDefaultCaption }
 					onChange={ ( value ) => ( setAttributes( { imageDefaultCaption: value } ) ) }
-					className={ classNames(
+					className={ uagbClassNames(
 						'spectra-image-gallery__media-thumbnail-caption',
 						`spectra-image-gallery__media-thumbnail-caption--${ captionDisplayType }`
 					) }
