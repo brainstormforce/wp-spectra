@@ -188,6 +188,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Forms/Tabs/Table of contents - JS throws an error in console on blog/home page.
 * Fix: Team - On responsive devices preset images not working as expected.
 * Fix: The archive page is getting slow.
+* Fix: Cartflows templates throws an error in the editor Spectra Page Settings 
 
 = 2.3.5 - THURSDAY, 2nd FEBRUARY 2023 =
 * Improvement: Global - Removed Backward compatibility of button padding for old users from multiple blocks.

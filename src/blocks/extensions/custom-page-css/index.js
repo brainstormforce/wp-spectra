@@ -8,7 +8,7 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 const PageCustomCSS = () => {
 
 	const tabRef = useRef( null );
-	const [ customCSS, setCustomCSS ] = useState( select( 'core/editor' ).getEditedPostAttribute( 'meta' )._uag_custom_page_level_css );
+	const [ customCSS, setCustomCSS ] = useState( select( 'core/editor' ).getEditedPostAttribute( 'meta' )?._uag_custom_page_level_css );
 
 	useLayoutEffect( () => {
 		editorStyles.use();
