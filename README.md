@@ -187,6 +187,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Display conditions - Undefined `key/index` when none is set for Operating system.
 * Fix: Forms/Tabs/Table of contents - JS throws an error in console on blog/home page.
 * Fix: Team - On responsive devices preset images not working as expected.
+* Fix: Post Timeline - Left Padding not applicable on the frontend.
 * Fix: The archive page is getting slow.
 * Fix: Cartflows templates throws an error in the editor Spectra Page Settings 
 
