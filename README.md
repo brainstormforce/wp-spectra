@@ -179,8 +179,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Custom CSS - Disable option for on page-level CSS.
 * Improvement: Typography - Added Fahkwang and Jost Google fonts from in Font Families.
 * Global: Display Conditions - Added day Addition options to display blocks.
-* Fix: Container - Full width issue when adding container block inside Slider block.
 * Fix: Buttons - Stack orientation and responsive alignment not working on front-end.
+* Fix: Container - Full width issue when adding container block inside Slider block.
+* Fix: Container - When background type is video then Content not align vertically.
 * Fix: Info-box - Icon misaligned on tablet/mobile when padding gets added.
 * Fix: Info-box - CTA hover styling issue on front-end.
 * Fix: Image - Image dimensions width & height box updated as per spectra UI guidelines.
