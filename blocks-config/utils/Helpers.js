@@ -30,4 +30,4 @@ export function getPanelIdFromRef( ref ){
 	return null;
 }
 
-export const uagbClassNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
+export const uagbClassNames = ( classes ) => ( classes.filter( Boolean ).join( ' ' ) );

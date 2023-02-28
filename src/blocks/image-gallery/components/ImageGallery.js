@@ -219,12 +219,12 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		<button
 			type="button"
 			data-role="none"
-			className={ uagbClassNames(
+			className={ uagbClassNames( [
 				'spectra-image-gallery__control-arrows',
 				`spectra-image-gallery__control-arrows--${ feedLayout }`,
-				( 'carousel' === feedLayout ) ? 'slick-next' : '',
-				( 'carousel' === feedLayout ) ? 'slick-arrow' : '',
-			) }
+				( 'carousel' === feedLayout ) && 'slick-next',
+				( 'carousel' === feedLayout ) && 'slick-arrow',
+			] ) }
 			aria-label="Next"
 			tabIndex="0"
 			data-direction="Next"
@@ -243,12 +243,12 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		<button
 			type="button"
 			data-role="none"
-			className={ uagbClassNames(
+			className={uagbClassNames( [
 				'spectra-image-gallery__control-arrows',
 				`spectra-image-gallery__control-arrows--${ feedLayout }`,
-				( 'carousel' === feedLayout ) ? 'slick-prev' : '',
-				( 'carousel' === feedLayout ) ? 'slick-arrow' : '',
-			) }
+				( 'carousel' === feedLayout ) && 'slick-prev',
+				( 'carousel' === feedLayout ) && 'slick-arrow',
+			] )}
 			aria-label="Prev"
 			tabIndex="0"
 			data-direction="Prev"
@@ -388,10 +388,11 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				{ [ ...Array( gridPages ) ].map( ( pageData, pageIndex ) => (
 					<li
 						key={ pageIndex }
-						className={ uagbClassNames(
+						className={uagbClassNames( [
 							'spectra-image-gallery__control-dot',
-							( pageIndex === gridPageNumber - 1 ) ? 'spectra-image-gallery__control-dot--active' : '',
-						) }
+							pageIndex === gridPageNumber - 1 &&
+								'spectra-image-gallery__control-dot--active',
+						] )}
 						data-go-to={ pageIndex + 1 }
 					>
 						<button onClick={ () => setAttributes( { gridPageNumber: pageIndex + 1 } ) } />
@@ -445,13 +446,13 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				return (
 					<>
 						<div
-							className={ uagbClassNames(
+							className={ uagbClassNames( [
 								'spectra-image-gallery',
 								`spectra-image-gallery__layout--${ gridLayout }`,
 								`spectra-image-gallery__layout--${ gridLayout }-col-${ columnsDeskFallback }`,
 								`spectra-image-gallery__layout--${ gridLayout }-col-tab-${ columnsTabFallback }`,
 								`spectra-image-gallery__layout--${ gridLayout }-col-mob-${ columnsMobFallback }`
-							) }
+							] ) }
 						>
 							{ renderImageLooper() }
 						</div>
@@ -462,13 +463,13 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				return (
 					<>
 						<Masonry
-							className={ uagbClassNames(
+							className={ uagbClassNames( [
 								'spectra-image-gallery',
 								`spectra-image-gallery__layout--${ feedLayout }`,
 								`spectra-image-gallery__layout--${ feedLayout }-col-${ columnsDeskFallback }`,
 								`spectra-image-gallery__layout--${ feedLayout }-col-tab-${ columnsTabFallback }`,
 								`spectra-image-gallery__layout--${ feedLayout }-col-mob-${ columnsMobFallback }`
-							) }
+							] ) }
 							updateOnEachImageLoad={ true }
 						>
 							{ renderImageLooper() }
@@ -479,13 +480,13 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			case 'tiled':
 				return (
 					<div
-						className={ uagbClassNames(
+						className={ uagbClassNames( [
 							'spectra-image-gallery',
 							`spectra-image-gallery__layout--${ feedLayout }`,
 							`spectra-image-gallery__layout--${ feedLayout }-col-${ columnsDeskFallback }`,
 							`spectra-image-gallery__layout--${ feedLayout }-col-tab-${ columnsTabFallback }`,
 							`spectra-image-gallery__layout--${ feedLayout }-col-mob-${ columnsMobFallback }`
-						) }
+						] ) }
 					>
 						{ renderImageLooper() }
 						<div className="spectra-image-gallery__media-sizer" ref={ tileSizer }></div>
@@ -494,10 +495,10 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			case 'carousel':
 				return (
 					<div
-						className={ uagbClassNames(
+						className={ uagbClassNames( [
 							'spectra-image-gallery',
 							`spectra-image-gallery__layout--${ feedLayout }`
-						) }
+						] ) }
 						ref={ slickCarousel }
 						style={ { 'margin-bottom': `${ slickDotHeight }px` } }
 					>
@@ -552,22 +553,22 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	const renderThumbnail = ( mediaObject ) => (
 		<>
 			{ ( imageDisplayCaption && ( 'bar-outside' === captionDisplayType && 'top' === getMatrixAlignment( imageCaptionAlignment, 1 ) ) ) && (
-				<div className={ uagbClassNames(
+				<div className={ uagbClassNames( [
 					'spectra-image-gallery__media-thumbnail-caption-wrapper',
 					`spectra-image-gallery__media-thumbnail-caption-wrapper--${ captionDisplayType }`
-				) } >
+				] ) } >
 					{ renderCaption( mediaObject ) }
 				</div>
 			) }
-			<div className={ uagbClassNames(
+			<div className={ uagbClassNames( [
 				'spectra-image-gallery__media',
 				`spectra-image-gallery__media--${ feedLayout }`,
-			) } >
+			] ) } >
 				<img
-					className={ uagbClassNames(
+					className={ uagbClassNames( [
 						'spectra-image-gallery__media-thumbnail',
 						`spectra-image-gallery__media-thumbnail--${ feedLayout }`
-					) }
+					] ) }
 					src={ mediaObject.url }
 					alt={ mediaObject.alt }
 					loading="lazy"
@@ -576,26 +577,26 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				{ imageDisplayCaption ? (
 					( 'bar-outside' !== captionDisplayType ) && (
 						<div
-							className={ uagbClassNames(
+							className={ uagbClassNames( [
 								'spectra-image-gallery__media-thumbnail-caption-wrapper',
 								`spectra-image-gallery__media-thumbnail-caption-wrapper--${ captionDisplayType }`
-							) }
+							] ) }
 						>
 							{ renderCaption( mediaObject ) }
 						</div>
 					)
 				) : (
-					<div className={ uagbClassNames(
+					<div className={ uagbClassNames( [
 						'spectra-image-gallery__media-thumbnail-caption-wrapper',
 						'spectra-image-gallery__media-thumbnail-caption-wrapper--overlay'
-					) } />
+					] ) } />
 				) }
 			</div>
 			{ ( imageDisplayCaption && ( 'bar-outside' === captionDisplayType && getMatrixAlignment( imageCaptionAlignment, 1 ) !== 'top' ) ) && (
-				<div className={ uagbClassNames(
+				<div className={ uagbClassNames( [
 					'spectra-image-gallery__media-thumbnail-caption-wrapper',
 					`spectra-image-gallery__media-thumbnail-caption-wrapper--${ captionDisplayType }`
-				) } >
+				] ) } >
 					{ renderCaption( mediaObject ) }
 				</div>
 			) }
@@ -609,10 +610,10 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				placeholder={ imageDefaultCaption }
 				value={ mediaObject.caption }
 				onChange={ ( value ) => ( mediaObject.caption = value ) }
-				className={ uagbClassNames(
+				className={ uagbClassNames( [
 					'spectra-image-gallery__media-thumbnail-caption',
 					`spectra-image-gallery__media-thumbnail-caption--${ captionDisplayType }`
-				) }
+				] ) }
 				multiline={ false }
 			/>
 		) : (
@@ -622,10 +623,10 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 					placeholder={ __( 'No Caption', 'ultimate-addons-for-gutenberg' ) }
 					value={ imageDefaultCaption }
 					onChange={ ( value ) => ( setAttributes( { imageDefaultCaption: value } ) ) }
-					className={ uagbClassNames(
+					className={ uagbClassNames( [
 						'spectra-image-gallery__media-thumbnail-caption',
 						`spectra-image-gallery__media-thumbnail-caption--${ captionDisplayType }`
-					) }
+					] ) }
 					multiline={ false }
 				/>
 			) : (
