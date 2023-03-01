@@ -25,12 +25,15 @@ const UAGBModalEdit = ( props ) => {
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-modal-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
-		const loadModalBlockEditor = new CustomEvent( 'UAGModalEditor', { // eslint-disable-line no-undef
-			detail: {
+		const blockDetails = wp.hooks.applyFilters(
+			`spectra.modal.edit.jsdetails`,
+			{
 				block_id: props.clientId.substr( 0, 8 ),
 				device_type: deviceType
-			},
+			}, props?.attributes
+		);
+		const loadModalBlockEditor = new CustomEvent( 'UAGModalEditor', { // eslint-disable-line no-undef
+			detail: blockDetails,
 		} );
 
 		document.dispatchEvent( loadModalBlockEditor );

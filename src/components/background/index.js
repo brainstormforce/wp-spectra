@@ -1,9 +1,10 @@
 import { __ } from '@wordpress/i18n';
+import { useRef } from '@wordpress/element';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import { SelectControl } from '@wordpress/components';
 import styles from './editor.lazy.scss';
 import GradientSettings from '@Components/gradient-settings';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect, useState } from 'react';
 import UAGMediaPicker from '@Components/image';
 import ResponsiveSlider from '@Components/responsive-slider';
 import ResponsiveSelectControl from '@Components/responsive-select';
@@ -12,8 +13,15 @@ import ResponsiveUAGImage from '@Components/responsive-image';
 import ResponsiveUAGFocalPointPicker from '@Components/responsive-focal-point-picker';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGB_Block_Icons from '@Controls/block-icons';
+import {getPanelIdFromRef} from '@Utils/Helpers';
+import { select } from '@wordpress/data';
+import UAGHelpText from '@Components/help-text';
 
 const Background = ( props ) => {
+	const { getSelectedBlock } = select( 'core/block-editor' );
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const panelRef = useRef( null );
+
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -56,8 +64,14 @@ const Background = ( props ) => {
 		yPositionType,
 		yPositionTypeTablet,
 		yPositionTypeMobile,
-		backgroundVideoOpacity
+		backgroundVideoOpacity,
+		help = false
 	} = props;
+
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
 
 	const onRemoveImage = () => {
 		setAttributes( { [ backgroundImage.label ]: null } );
@@ -604,8 +618,8 @@ const Background = ( props ) => {
 													},
 												},
 											} }
-											limitMin={ { 'px': -800, '%': -100, 'em': -100, 'vw': -100 } }
-											limitMax={ { 'px': 800, '%': 100, 'em': 100, 'vw': 100 } }
+											limitMin={ { 'px': -800, '%': -100, 'em': -100, 'vh': -100 } }
+											limitMax={ { 'px': 800, '%': 100, 'em': 100, 'vh': 100 } }
 											units={ [
 												{
 													name: __(
@@ -623,8 +637,8 @@ const Background = ( props ) => {
 													unitValue: 'em',
 												},
 												{
-													name: __( 'VW', 'ultimate-addons-for-gutenberg' ),
-													unitValue: 'vw',
+													name: __( 'VH', 'ultimate-addons-for-gutenberg' ),
+													unitValue: 'vh',
 												},
 											] }
 											setAttributes={ setAttributes }
@@ -896,9 +910,25 @@ const Background = ( props ) => {
 		</>
 	);
 
+	const controlName = 'background'; // there is no label props that's why keep hard coded label
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+
 	return (
-		<div className="uag-bg-select-control components-base-control">
-			{ advancedControls }
+		<div
+			ref={panelRef}
+			className="components-base-control"
+		>
+			{
+				controlBeforeDomElement
+			}
+			<div className="uag-bg-select-control">
+				{ advancedControls }
+				<UAGHelpText text={ help } />
+			</div>
+			{
+				controlAfterDomElement
+			}
 		</div>
 	);
 };

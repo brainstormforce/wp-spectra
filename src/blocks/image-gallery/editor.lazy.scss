@@ -52,6 +52,15 @@
 	bottom: -30px !important;
 }
 
+.spectra-image-gallery__control-lightbox {
+	position: absolute;
+	opacity: 1;
+	width: 100% !important;
+	max-width: 100% !important;
+	height: 100% !important;
+	max-height: 100% !important;
+}
+
 // Applies only for the Masonry Layout in the Responsive Gutenberg Editor.
 .uagb-editor-preview-mode-tablet,
 .uagb-editor-preview-mode-mobile {

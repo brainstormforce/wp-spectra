@@ -61,6 +61,67 @@ const attributes = {
 			styleType: 'gallery-show-caption'
 		},
 	},
+	imageClickEvent: {
+		type: 'string',
+		default: 'none',
+	},
+
+	// Lightbox Settings
+
+	lightboxDisplayCaptions: {
+		type: 'boolean',
+		default: false,
+	},
+	lightboxThumbnails: {
+		type: 'boolean',
+		default: false,
+	},
+	lightboxDisplayCount: {
+		type: 'boolean',
+		default: false,
+	},
+	lightboxCloseIcon: {
+		type: 'string',
+		default: 'xmark',
+	},
+	lightboxCaptionHeight: {
+		type: 'number',
+		default: 50,
+		UAGCopyPaste: {
+			styleType: 'desc-height'
+		},
+	},
+	lightboxCaptionHeightTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-height-tablet'
+		},
+	},
+	lightboxCaptionHeightMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-height-mobile'
+		},
+	},
+	lightboxIconSize: {
+		type: 'number',
+		default: 24,
+		UAGCopyPaste: {
+			styleType: 'icon-size'
+		},
+	},
+	lightboxIconSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size-tablet'
+		},
+	},
+	lightboxIconSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size-mobile'
+		},
+	},
 
 	// Caption Settings
 	
@@ -611,6 +672,70 @@ const attributes = {
 		},
 	},
 
+	// Lightbox Styling.
+
+	lightboxEdgeDistance: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'lightbox-padding'
+		},
+	},
+	lightboxEdgeDistanceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'lightbox-padding-tablet'
+		},
+	},
+	lightboxEdgeDistanceMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'lightbox-padding-mobile'
+		},
+	},
+	lightboxBackgroundEnableBlur: {
+		type: 'boolean',
+		default: true,
+		UAGCopyPaste: {
+			styleType: 'lightbox-background-blur'
+		},
+	},
+	lightboxBackgroundBlurAmount: {
+		type: 'number',
+		default: 5,
+		UAGCopyPaste: {
+			styleType: 'lightbox-background-blur-amount'
+		},
+	},
+	lightboxBackgroundColor: {
+		type: 'string',
+		default: 'rgba(0,0,0,0.75)',
+		UAGCopyPaste: {
+			styleType: 'lightbox-background'
+		},
+	},
+	lightboxIconColor: {
+		type: 'string',
+		default: 'rgba(255,255,255,1)',
+		UAGCopyPaste: {
+			styleType: 'icon-color'
+		},
+	},
+	lightboxCaptionColor: {
+		type: 'string',
+		default: 'rgba(255,255,255,1)',
+		UAGCopyPaste: {
+			styleType: 'desc-color'
+		},
+	},
+	lightboxCaptionBackgroundColor: {
+		type: 'string',
+		default: 'rgba(0,0,0,1)',
+		UAGCopyPaste: {
+			styleType: 'desc-background'
+		},
+	},
+
 	// Caption Typography Styling
 
 	captionLoadGoogleFonts: {
@@ -688,7 +813,7 @@ const attributes = {
 	captionLineHeight: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-line-height-'
+			styleType: 'main-title-line-height'
 		},
 	},
 	captionLineHeightTab: {
@@ -794,6 +919,99 @@ const attributes = {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'btn-line-height-mob'
+		},
+	},
+
+	// Lightbox Typography Styling.
+
+	lightboxLoadGoogleFonts: {
+		type: 'boolean',
+		default: false,
+		UAGCopyPaste: {
+			styleType: 'desc-load-google-fonts'
+		},
+	},
+	lightboxFontFamily: {
+		type: 'string',
+		default: 'Default',
+		UAGCopyPaste: {
+			styleType: 'desc-font-family'
+		},
+	},
+	lightboxFontWeight: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'desc-font-weight'
+		},
+	},
+	lightboxFontStyle: {
+		type: 'string',
+		default: 'normal',
+		UAGCopyPaste: {
+			styleType: 'desc-font-style'
+		},
+	},
+	lightboxTransform: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'desc-transform'
+		},
+	},
+	lightboxDecoration: {
+		type: 'string',
+		default: 'none',
+		UAGCopyPaste: {
+			styleType: 'desc-decoration'
+		},
+	},
+	lightboxFontSizeType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-font-size-type'
+		},
+	},
+	lightboxFontSize: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-font-size'
+		},
+	},
+	lightboxFontSizeTab: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-font-size-tab'
+		},
+	},
+	lightboxFontSizeMob: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-font-size-mob'
+		},
+	},
+	lightboxLineHeightType: {
+		type: 'string',
+		default: 'em',
+		UAGCopyPaste: {
+			styleType: 'desc-line-height-type'
+		},
+	},
+	lightboxLineHeight: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-line-height'
+		},
+	},
+	lightboxLineHeightTab: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-line-height-tab'
+		},
+	},
+	lightboxLineHeightMob: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-line-height-mob'
 		},
 	},
 

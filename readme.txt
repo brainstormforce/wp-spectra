@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.1
-Stable tag: 2.3.3
+Stable tag: 2.3.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -169,6 +169,40 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= x.x.x =
+* Feature: Image Gallery - Added Lightbox.
+
+= 2.4.0 =
+* New: Introducing the Countdown block that will help you generate hype and create a sense of urgency among your audience, during product sales or releases!
+* New: Introducing the Icon block - Add FontAwesome icons on your website.
+* Improvement: Custom CSS - Disable option for on page-level CSS.
+* Improvement: Typography - Added Fahkwang and Jost Google fonts from in Font Families.
+* Global: Display Conditions - Added day Addition options to display blocks.
+* Fix: Buttons - Stack orientation and responsive alignment not working on front-end.
+* Fix: Container - Full width issue when adding container block inside Slider block.
+* Fix: Container - When background type is video then Content not align vertically.
+* Fix: Info-box - Icon misaligned on tablet/mobile when padding gets added.
+* Fix: Info-box - CTA hover styling issue on front-end.
+* Fix: Image - Image dimensions width & height box updated as per spectra UI guidelines.
+* Fix: Display conditions - Undefined `key/index` when none is set for Operating system.
+* Fix: Forms/Tabs/Table of contents - JS throws an error in console on blog/home page.
+* Fix: Team - On responsive devices preset images not working as expected.
+* Fix: Post Timeline - Left Padding not applicable on the frontend.
+* Fix: The archive page is getting slow.
+* Fix: Cartflows templates throws an error in the editor Spectra Page Settings 
+
+= 2.3.5 - THURSDAY, 2nd FEBRUARY 2023 =
+* Improvement: Global - Removed Backward compatibility of button padding for old users from multiple blocks.
+* Improvement: Global - Updated SVG icons rendering conditions & optimized the loading.
+* Fix: Container - Full height and Fixed background Image not working properly on editor.
+* Fix: Info-Box - CTA padding not working on responsive devices.
+* Fix: Heading - Disabling heading and sub-heading hides the separator.
+* Fix: Forms - Using form inside inner blocks, it was showing an error on submit.
+* Fix: Background control - Image has wrong units for custom positioning.
+
+= 2.3.4 - WEDNESDAY, 25th JANUARY 2023 =
+* Improvement: Updated Gutenberg Templates Library.
 
 = 2.3.3 - TUESDAY, 24th JANUARY 2023 =
 * Fix: Post Block - PHP comment appears on frontend.

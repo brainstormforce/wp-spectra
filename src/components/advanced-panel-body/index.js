@@ -1,5 +1,5 @@
 import { PanelBody } from '@wordpress/components';
-import { useRef } from '@wordpress/element';
+import { useRef, useState, useEffect } from '@wordpress/element';
 import React from 'react';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { select } from '@wordpress/data';
@@ -11,7 +11,27 @@ const UAGAdvancedPanelBody = ( props ) => {
     } = props;
 
     const panelRef = useRef( null );
+	// Below code is to set the setting state of Tab for each block.
+	const { getSelectedBlock } = select( 'core/block-editor' );
+	const blockName = getSelectedBlock()?.name;
 	const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+	const [ panelNameForHook, setPanelNameForHook ] = useState( 'style' );
+
+	const getInspectorTabName = () => {
+		let inspectorTabName = 'style';
+		if ( panelRef?.current?.parentElement?.classList.contains( 'uagb-tab-content-general' ) ) {
+			inspectorTabName = 'general';
+		}
+		if ( panelRef?.current?.parentElement?.classList.contains( 'uagb-tab-content-advance' ) ) {
+			inspectorTabName = 'advance';
+		}
+
+		return inspectorTabName;
+	}
+
+	useEffect( () => {
+		setPanelNameForHook( getInspectorTabName() )
+    }, [panelRef] );
 
     const onPanelToggle = () => {
 
@@ -22,10 +42,6 @@ const UAGAdvancedPanelBody = ( props ) => {
                 element.querySelector( '.components-button' ).click();
             } );
         }
-
-		// Below code is to set the setting state of Tab for each block.
-		const { getSelectedBlock } = select( 'core/block-editor' );
-		const blockName = getSelectedBlock()?.name;
 
 		let match = false;
 		panelRef?.current?.classList.forEach(
@@ -76,6 +92,10 @@ const UAGAdvancedPanelBody = ( props ) => {
 
 	const panelTitle = props?.title ? props?.title.toLowerCase().replace( /[^a-zA-Z ]/g, '' ).replace( /\s+/g, '-' ) : '';
 
+	const blockNameForHook = blockName.split( '/' ).pop();
+	const tabBodyBefore = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${panelTitle}.before`, '', blockName );
+	const tabBodyAfter = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${panelTitle}`, '', blockName );
+
     return (
         <PanelBody
             { ...props }
@@ -83,7 +103,9 @@ const UAGAdvancedPanelBody = ( props ) => {
             ref={panelRef}
 			className={`uag-advance-panel-body-${panelTitle}`}
         >
+			{tabBodyBefore}
             { children }
+			{tabBodyAfter}
         </PanelBody>
     );
 }

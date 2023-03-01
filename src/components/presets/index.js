@@ -1,13 +1,16 @@
 import { SelectControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { useState } from '@wordpress/element';
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
 import { select, dispatch } from '@wordpress/data';
 import classnames from 'classnames';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGReset from '../reset';
+import UAGHelpText from '@Components/help-text';
 
 const UAGPresets = ( props ) => {
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const panelRef = useRef( null );
 
     // Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -17,12 +20,21 @@ const UAGPresets = ( props ) => {
 		};
 	}, [] );
 
+	const { getSelectedBlock } = select( 'core/block-editor' );
+
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
+
+
     const {
         setAttributes,
         presets,
         presetInputType,
         label,
-		className
+		className,
+		help = false
     } = props;
 
 	const resetAttributes = [];
@@ -83,8 +95,6 @@ const UAGPresets = ( props ) => {
 
     const updateChildBlockAttributes = ( preset ) => {
 
-        const { getSelectedBlock } = select( 'core/block-editor' );
-
         let childBlocks = [];
 
         if ( getSelectedBlock().innerBlocks ) {
@@ -114,7 +124,6 @@ const UAGPresets = ( props ) => {
     }
 
 	const resetChildBlockAttributes = () => {
-		const { getSelectedBlock } = select( 'core/block-editor' );
 
         let childBlocks = [];
 
@@ -186,23 +195,38 @@ const UAGPresets = ( props ) => {
         </>
     );
 
+	const controlName = getIdFromString( label );
+	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+
     return (
-		<div className={ classnames(
-			className,
-			'uagb-presets-main-wrap',
-			'components-base-control'
-		) }>
-			<div className='uagb-presets-label-reset-wrap'>
-				<label htmlFor="uag-presets-label" className="uag-presets-label">{label}</label>
-				<UAGReset
-					attributeNames = {resetAttributes}
-					setAttributes={ setAttributes }
-					onReset={onReset}
-				/>
+		<div
+			ref={panelRef}
+			className="components-base-control"
+		>
+			{
+				controlBeforeDomElement
+			}
+			<div className={ classnames(
+				className,
+				'uagb-presets-main-wrap'
+			) }>
+				<div className='uagb-presets-label-reset-wrap'>
+					<label htmlFor="uag-presets-label" className="uag-presets-label">{label}</label>
+					<UAGReset
+						attributeNames = {resetAttributes}
+						setAttributes={ setAttributes }
+						onReset={onReset}
+					/>
+				</div>
+				{ 'dropdown' === presetInputType && presetDropdown }
+				{ 'radioImage' === presetInputType && presetRadioImage }
+				<UAGHelpText text={ help } />
 			</div>
-            { 'dropdown' === presetInputType && presetDropdown }
-            { 'radioImage' === presetInputType && presetRadioImage }
-        </div>
+			{
+				controlAfterDomElement
+			}
+		</div>
     );
 }
 

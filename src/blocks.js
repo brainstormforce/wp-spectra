@@ -11,7 +11,6 @@
 
 import domReady from '@wordpress/dom-ready';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
-import apiFetch from '@wordpress/api-fetch';
 // Delete the local storage on every refresh.
 const uagLocalStorage = getUAGEditorStateLocalStorage();
 if ( uagLocalStorage ) {
@@ -22,29 +21,15 @@ if ( uagLocalStorage ) {
 
 import blocksEditorSpacing from './blocks/extensions/blocks-editor-spacing';
 blocksEditorSpacing();
+import fontAwesomePollyfiller from './font-awesome-pollyfiller';
 
 __webpack_public_path__ = uagb_blocks_info.uagb_url + 'dist/';
 
 // Add Font Awesome Polyfiller to localized variable.
-const isSpectraFontAwesomeAPILoading = uagLocalStorage?.getItem( 'isSpectraFontAwesomeAPILoading' ) || false;
+uagb_blocks_info.font_awesome_5_polyfill = fontAwesomePollyfiller;
 
-if( 0 === uagb_blocks_info.font_awesome_5_polyfill.length && ! isSpectraFontAwesomeAPILoading ) {
-	uagLocalStorage?.setItem( 'isSpectraFontAwesomeAPILoading', true );
-	const formData = new window.FormData();
-	formData.append( 'action', 'uagb_spectra_font_awesome_polyfiller' );
-	formData.append(
-		'nonce',
-		uagb_blocks_info.uagb_ajax_nonce
-	);
-	apiFetch( {
-		url: uagb_blocks_info.ajax_url,
-		method: 'POST',
-		body: formData,
-	} ).then( ( data ) => {
-		uagLocalStorage?.setItem( 'isSpectraFontAwesomeAPILoading', false );
-		uagb_blocks_info.font_awesome_5_polyfill = data;
-	} );
-}
+// Setting local storage key for svg Confirmation data.
+uagLocalStorage.setItem( 'uagSvgConfirmation', JSON.stringify( uagb_blocks_info?.svg_confirmation || false ) );
 
 // The Block Slugs need to be added exactly as below into the array at: /classes/class-spectra-block-prioritization.php.
 // Priorities need to be adequately updated in the respective includes/blocks/block.php files.
@@ -57,10 +42,12 @@ import './blocks/buttons/block.js';
 import './blocks/buttons-child/block.js'; // Child Block.
 import './blocks/info-box/block.js';
 import './blocks/call-to-action/block.js';
+import './blocks/icon/block.js';
 // Alphabetically Ordered Blocks.
 import './blocks/blockquote/block.js';
 import './blocks/timeline/content-timeline/block.js';
 import './blocks/timeline/content-timeline-child/block.js'; // Child Block.
+import './blocks/countdown/block.js';
 import './blocks/counter/block.js';
 import './blocks/faq/block.js';
 import './blocks/faq-child/block.js'; // Child Block.
@@ -117,6 +104,12 @@ import './blocks/wp-search/block.js';
 
 // Responsive Device Icons on Editor
 import './components/responsive-icons/index.js';
+
+// Keep category list in separate variable and remove category list from icons list.
+if( uagb_blocks_info.uagb_svg_icons?.uagb_category_list ){
+	wp.uagb_icon_category_list = [ ...uagb_blocks_info.uagb_svg_icons.uagb_category_list ];
+	delete uagb_blocks_info.uagb_svg_icons.uagb_category_list;
+}
 
 wp.UAGBSvgIcons = Object.keys( uagb_blocks_info.uagb_svg_icons );
 

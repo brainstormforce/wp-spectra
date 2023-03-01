@@ -11,12 +11,14 @@ registerBlockType( 'uagb/blockquote', { title: __( 'Blockquote', 'ultimate-addon
 registerBlockType( 'uagb/buttons', { title: __( 'Buttons', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/call-to-action', { title: __( 'Call To Action', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/container', { title: __( 'Container', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/countdown', { title: __( 'Countdown', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/counter', { title: __( 'Counter', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/faq', { title: __( 'FAQ', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/forms', { title: __( 'Form', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/google-map', { title: __( 'Google Maps', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/how-to', { title: __( 'How To', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/icon-list', { title: __( 'Icon List', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/icon', { title: __( 'Icon', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/image-gallery', { title: __( 'Image Gallery', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/image', { title: __( 'Image', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/info-box', { title: __( 'Info Box', 'ultimate-addons-for-gutenberg' ) } );

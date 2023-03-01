@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
-import React, { useEffect } from 'react';
+import { useEffect, memo } from '@wordpress/element';
 import getMatrixAlignment from '@Controls/getMatrixAlignment';
 import { useDeviceType } from '@Controls/getPreviewType';
 import TypographyControl from '@Components/typography';
@@ -18,6 +18,7 @@ import ResponsiveBorder from '@Components/responsive-border';
 import MultiMediaSelector from '@Components/multimedia-select';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import SpectraMatrixControl from '@Components/matrix-alignment-control';
+import UAGIconPicker from '@Components/icon-picker';
 import UAGTabsControl from '@Components/tabs';
 import UAGTextControl from '@Components/text-control';
 import UAGSelectControl from '@Components/select-control';
@@ -37,8 +38,13 @@ const MAX_IMAGE_COLUMNS = 8;
 
 const Settings = ( props ) => {
 	const deviceType = useDeviceType();
-	props = props.parentProps;
-	const { attributes, setAttributes } = props;
+	const {
+		lightboxPreview,
+		setLightboxPreview,
+		attributes,
+		setAttributes
+	} = props;
+
 	const {
 		block_id,
 		readyToRender,
@@ -47,6 +53,18 @@ const Settings = ( props ) => {
 		mediaIDs,
 		feedLayout,
 		imageDisplayCaption,
+		imageClickEvent,
+
+		lightboxDisplayCaptions,
+		lightboxThumbnails,
+		lightboxDisplayCount,
+		lightboxCloseIcon,
+		lightboxCaptionHeight,
+		lightboxCaptionHeightTablet,
+		lightboxCaptionHeightMobile,
+		lightboxIconSize,
+		lightboxIconSizeTablet,
+		lightboxIconSizeMobile,
 		
 		columnsDesk,
 		columnsTab,
@@ -137,6 +155,16 @@ const Settings = ( props ) => {
 		captionBackgroundBlurAmount,
 		captionBackgroundBlurAmountHover,
 
+		lightboxEdgeDistance,
+		lightboxEdgeDistanceTablet,
+		lightboxEdgeDistanceMobile,
+		lightboxBackgroundEnableBlur,
+		lightboxBackgroundBlurAmount,
+		lightboxBackgroundColor,
+		lightboxCaptionColor,
+		lightboxCaptionBackgroundColor,
+		lightboxIconColor,
+
 		captionLoadGoogleFonts,
 		captionFontFamily,
 		captionFontWeight,
@@ -166,6 +194,21 @@ const Settings = ( props ) => {
 		loadMoreLineHeight,
 		loadMoreLineHeightMob,
 		loadMoreLineHeightTab,
+
+		lightboxLoadGoogleFonts,
+		lightboxFontFamily,
+		lightboxFontWeight,
+		lightboxFontStyle,
+		lightboxTransform,
+		lightboxDecoration,
+		lightboxFontSizeType,
+		lightboxFontSize,
+		lightboxFontSizeMob,
+		lightboxFontSizeTab,
+		lightboxLineHeightType,
+		lightboxLineHeight,
+		lightboxLineHeightMob,
+		lightboxLineHeightTab,
 
 		captionBackgroundEffect,
 		captionBackgroundEffectHover,
@@ -207,6 +250,7 @@ const Settings = ( props ) => {
 	// Loading Google Fonts.
 	let loadCaptionGoogleFonts;
 	let loadLoadMoreGoogleFonts;
+	let loadLightboxGoogleFonts;
 
 	if ( captionLoadGoogleFonts === true ) {
 		const captionConfig = {
@@ -234,6 +278,20 @@ const Settings = ( props ) => {
 
 		loadLoadMoreGoogleFonts = (
 			<WebfontLoader config={ loadMoreConfig }></WebfontLoader>
+		);
+	}
+
+	if ( lightboxLoadGoogleFonts === true ) {
+		const lightboxConfig = {
+			google: {
+				families: [
+					lightboxFontFamily + ( lightboxFontWeight ? ':' + lightboxFontWeight : '' ),
+				],
+			},
+		};
+
+		loadLightboxGoogleFonts = (
+			<WebfontLoader config={ lightboxConfig }></WebfontLoader>
 		);
 	}
 
@@ -361,6 +419,13 @@ const Settings = ( props ) => {
 			}
 		}
 	}, [ captionDisplayType ] );
+
+	// Disable the Lightbox Preview when the Image Click Event is updated.
+	useEffect( () => {
+		if ( 'lightbox' !== imageClickEvent ) {
+			setLightboxPreview( false );
+		}
+	}, [ imageClickEvent ] );
 
 	// Bar Option Generation.
 	const generateBarOptions = () => (
@@ -806,6 +871,110 @@ const Settings = ( props ) => {
 				displayUnit={ false }
 				setAttributes={ setAttributes }
 			/>
+			<UAGSelectControl
+				label={ __( 'Click Event', 'ultimate-addons-for-gutenberg' ) }
+				data={ {
+					value: imageClickEvent,
+					label: 'imageClickEvent',
+				} }
+				setAttributes={ setAttributes }
+				options = { [
+					{
+						label: __( 'None', 'ultimate-addons-for-gutenberg' ),
+						value: 'none',
+					},
+					{
+						label: __( 'Lightbox', 'ultimate-addons-for-gutenberg' ),
+						value: 'lightbox',
+					},
+					{
+						label: __( 'Open Image', 'ultimate-addons-for-gutenberg' ),
+						value: 'image',
+					},
+				] }
+			/>
+		</UAGAdvancedPanelBody>
+	);
+
+	const lightboxSettings = () => (
+		<UAGAdvancedPanelBody title={ __( 'Lightbox', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+			<ToggleControl
+				label={ __( 'Preview Lightbox (Desktop)', 'ultimate-addons-for-gutenberg' ) }
+				checked={ ( 'Desktop' === deviceType ) ? lightboxPreview : false }
+				disabled={ ( 'Desktop' === deviceType ) ? undefined : true }
+				onChange={ () => setLightboxPreview( ! lightboxPreview ) }
+				help={ ( 'Desktop' === deviceType ) ? (
+					__( 'Note: The Lightbox will be fullscreen on the front end.', 'ultimate-addons-for-gutenberg' )
+	 			) : (
+					__( 'To preview this in the editor, use Desktop mode.', 'ultimate-addons-for-gutenberg' )
+				) }
+			/>
+			<UAGIconPicker
+				label={ __( 'Close Icon', 'ultimate-addons-for-gutenberg' ) }
+				value={ lightboxCloseIcon }
+				onChange={ ( value ) => setAttributes( { lightboxCloseIcon: value } ) }
+			/>
+			<ToggleControl
+				label={ __( 'Display Image Number', 'ultimate-addons-for-gutenberg' ) }
+				checked={ lightboxDisplayCount }
+				onChange={ () => setAttributes( { lightboxDisplayCount: ! lightboxDisplayCount } ) }
+			/>
+			<ToggleControl
+				label={ __( 'Display Captions', 'ultimate-addons-for-gutenberg' ) }
+				checked={ lightboxDisplayCaptions }
+				onChange={ () => setAttributes( { lightboxDisplayCaptions: ! lightboxDisplayCaptions } ) }
+			/>
+			<ToggleControl
+				label={ __( 'Display Thumbnails', 'ultimate-addons-for-gutenberg' ) }
+				checked={ lightboxThumbnails }
+				onChange={ () => setAttributes( { lightboxThumbnails: ! lightboxThumbnails } ) }
+			/>
+			{ ( lightboxCloseIcon || lightboxDisplayCount ) && (
+				<ResponsiveSlider
+					label={ __( 'Icon/Number Size', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: lightboxIconSize,
+							label: 'lightboxIconSize',
+						},
+						tablet: {
+							value: lightboxIconSizeTablet,
+							label: 'lightboxIconSizeTablet',
+						},
+						mobile: {
+							value: lightboxIconSizeMobile,
+							label: 'lightboxIconSizeMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 100 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
+				/>
+			) }
+			{ lightboxDisplayCaptions && (
+				<ResponsiveSlider
+					label={ __( 'Caption Min Height', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: lightboxCaptionHeight,
+							label: 'lightboxCaptionHeight',
+						},
+						tablet: {
+							value: lightboxCaptionHeightTablet,
+							label: 'lightboxCaptionHeightTablet',
+						},
+						mobile: {
+							value: lightboxCaptionHeightMobile,
+							label: 'lightboxCaptionHeightMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 300 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
+				/>
+			) }
 		</UAGAdvancedPanelBody>
 	);
 
@@ -1373,6 +1542,162 @@ const Settings = ( props ) => {
 	);
 
 
+	const lightboxStyling = () => (
+		<UAGAdvancedPanelBody title={ __( 'Lightbox', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+			{ ( lightboxDisplayCaptions || lightboxDisplayCount ) && (
+				<TypographyControl
+					label={ __(
+						'Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: lightboxLoadGoogleFonts,
+						label: 'lightboxLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: lightboxFontFamily,
+						label: 'lightboxFontFamily',
+					} }
+					fontWeight={ {
+						value: lightboxFontWeight,
+						label: 'lightboxFontWeight',
+					} }
+					fontStyle={ {
+						value: lightboxFontStyle,
+						label: 'lightboxFontStyle',
+					} }
+					transform={ {
+						value: lightboxTransform,
+						label: 'lightboxTransform',
+					} }
+					decoration={ {
+						value: lightboxDecoration,
+						label: 'lightboxDecoration',
+					} }
+					fontSizeType={ {
+						value: lightboxFontSizeType,
+						label: 'lightboxFontSizeType',
+					} }
+					fontSize={ {
+						value: lightboxFontSize,
+						label: 'lightboxFontSize',
+					} }
+					fontSizeMobile={ {
+						value: lightboxFontSizeMob,
+						label: 'lightboxFontSizeMob',
+					} }
+					fontSizeTablet={ {
+						value: lightboxFontSizeTab,
+						label: 'lightboxFontSizeTab',
+					} }
+					lineHeightType={ {
+						value: lightboxLineHeightType,
+						label: 'lightboxLineHeightType',
+					} }
+					lineHeight={ {
+						value: lightboxLineHeight,
+						label: 'lightboxLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: lightboxLineHeightMob,
+						label: 'lightboxLineHeightMob',
+					} }
+					lineHeightTablet={ {
+						value: lightboxLineHeightTab,
+						label: 'lightboxLineHeightTab',
+					} }
+				/>
+			) }
+			<ToggleControl
+				label={ __(
+					`Blur Background`,
+					'ultimate-addons-for-gutenberg'
+				) }
+				checked={ lightboxBackgroundEnableBlur }
+				onChange={ () => 
+					setAttributes( { lightboxBackgroundEnableBlur: ! lightboxBackgroundEnableBlur } )
+				}
+			/>
+			<AdvancedPopColorControl
+				label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
+				colorValue={ lightboxBackgroundColor ? lightboxBackgroundColor : '' }
+				data={ {
+					value: lightboxBackgroundColor,
+					label: 'lightboxBackgroundColor',
+				} }
+				setAttributes={ setAttributes }
+			/>
+			<AdvancedPopColorControl
+				label={ __( 'Accent Color', 'ultimate-addons-for-gutenberg' ) }
+				colorValue={ lightboxIconColor ? lightboxIconColor : '' }
+				data={ {
+					value: lightboxIconColor,
+					label: 'lightboxIconColor',
+				} }
+				setAttributes={ setAttributes }
+				hint={ __( 'This color affects the Image Count, Close Button, and Arrows', 'ultimate-addons-for-gutenberg' ) }
+			/>
+			{ lightboxDisplayCaptions && (
+				<>
+					<AdvancedPopColorControl
+						label={ __( 'Caption Color', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ lightboxCaptionColor ? lightboxCaptionColor : '' }
+						data={ {
+							value: lightboxCaptionColor,
+							label: 'lightboxCaptionColor',
+						} }
+						setAttributes={ setAttributes }
+					/>
+					<AdvancedPopColorControl
+						label={ __( 'Caption Background', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ lightboxCaptionBackgroundColor ? lightboxCaptionBackgroundColor : '' }
+						data={ {
+							value: lightboxCaptionBackgroundColor,
+							label: 'lightboxCaptionBackgroundColor',
+						} }
+						setAttributes={ setAttributes }
+					/>
+				</>
+			) }
+			{ lightboxBackgroundEnableBlur && (
+				<Range
+					label={ __( `Blur Amount`, 'ultimate-addons-for-gutenberg' ) }
+					setAttributes={ setAttributes }
+					value={ lightboxBackgroundBlurAmount }
+					data={ {
+						value:lightboxBackgroundBlurAmount,
+						label: 'lightboxBackgroundBlurAmount',
+					} }
+					min={ 0 }
+					max={ 10 }
+					displayUnit={ false }
+				/>
+			) }
+			<ResponsiveSlider
+				label={ __( 'Edge Distance', 'ultimate-addons-for-gutenberg' ) }
+				data={ {
+					desktop: {
+						value: lightboxEdgeDistance,
+						label: 'lightboxEdgeDistance',
+					},
+					tablet: {
+						value: lightboxEdgeDistanceTablet,
+						label: 'lightboxEdgeDistanceTablet',
+					},
+					mobile: {
+						value: lightboxEdgeDistanceMobile,
+						label: 'lightboxEdgeDistanceMobile',
+					},
+				} }
+				min={ 0 }
+				max={ 100 }
+				displayUnit={ false }
+				setAttributes={ setAttributes }
+			/>
+		</UAGAdvancedPanelBody>
+	);
 
 	const captionStyling = () => (
 		<UAGAdvancedPanelBody title={ __( 'Caption', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
@@ -1973,11 +2298,13 @@ const Settings = ( props ) => {
 						{ ! readyToRender && initialSettings() }
 						{ readyToRender && layoutSettings() }
 						{ ( readyToRender && 'tiled' !== feedLayout ) && layoutSpecificSettings() }
+						{ ( readyToRender && 'lightbox' === imageClickEvent ) && lightboxSettings() }
 						{ readyToRender && captionSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ ! readyToRender && initialSettings() }
 						{ readyToRender && imageStyling() }
+						{ ( readyToRender && 'lightbox' === imageClickEvent ) && lightboxStyling() }
 						{ ( readyToRender && imageDisplayCaption ) && captionStyling() }
 						{/* This Condition Below Renders the Arrows and Dots Panel ONLY if:
 						1. Images are readyToRender AND
@@ -2002,8 +2329,9 @@ const Settings = ( props ) => {
 			</InspectorControls>
 			{ loadCaptionGoogleFonts }
 			{ loadLoadMoreGoogleFonts }
+			{ loadLightboxGoogleFonts }
 		</>
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

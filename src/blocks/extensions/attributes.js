@@ -40,6 +40,10 @@ function addAttributes( settings ) {
 				UAGDisplayConditions: {
 					type: 'string',
 				},
+				UAGDay: {
+					type: 'array',
+					default: []
+				},
 				zIndex: {
 					type: 'number',
 				},

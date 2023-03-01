@@ -91,6 +91,13 @@ const Settings = ( props ) => {
 		yPositionTypeMobile,
 	} = attributes;
 
+	const parentClientId = wp.data.select( 'core/block-editor' ).getBlockHierarchyRootClientId( props.clientId );
+	const parentBlokAttributes =  wp.data.select( 'core/block-editor' ).getBlockAttributes( parentClientId );
+
+	const {
+		enableHashNavigation 
+	} = parentBlokAttributes;
+
 	// This useEffect ensures that background size is set to cover, so as to ensure color takes up entire width and height,
 	// in case bg type was set to Image before and given a custom width and height.
 	useEffect( () => {
@@ -434,13 +441,22 @@ const Settings = ( props ) => {
 		);
 	}
 
-	return (
+	const isPro = uagb_blocks_info.spectra_pro_status;
+	const tabs = ( isPro && enableHashNavigation ) ? [ 'general', 'style', 'advance' ] :  [ 'style', 'advance' ];
+	const defaultTab = ( isPro && enableHashNavigation ) ? 'general' : 'style';
 
+	return (
 			<InspectorControls>
 				<InspectorTabs
-				defaultTab='style'
-				tabs={[ 'style', 'advance' ]}
+				defaultTab={defaultTab}
+				tabs={tabs}
 				>
+					{ isPro && 
+						( 
+						<InspectorTab { ...UAGTabs.general }>
+						</InspectorTab>
+						)
+					}
 					<InspectorTab { ...UAGTabs.style }>
 						{ backgroundSettings() }
 						{ spacingSettings() }

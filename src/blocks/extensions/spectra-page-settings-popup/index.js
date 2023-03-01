@@ -13,6 +13,8 @@ const SpectraPageSettingsPopup = () => {
 
 	return (
 		<>
+		{ 'yes' === uagb_blocks_info.enable_on_page_css_button && (
+			<>
 			{/* Page Settings Icon. */}
 			<PluginSidebarMoreMenuItem
 				target="spectra-page-settings-panel"
@@ -37,6 +39,8 @@ const SpectraPageSettingsPopup = () => {
 					<PageCustomCSS/>
 				</PanelBody>
 			</PluginSidebar>
+			</>
+		)}
 		</>
 	);
 }

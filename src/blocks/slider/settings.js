@@ -236,6 +236,10 @@ const Settings = ( props ) => {
 			setAttributes( { displayDots: ! displayDots } );
 		};
 
+		const afterNavigationOptions = wp.hooks.applyFilters( 'spectra.slider.tab_general.displayDots.after', '', props );
+		const afterAutoPlayOptions = wp.hooks.applyFilters( 'spectra.slider.tab_general.autoplay.after', '', props );
+		const afterTransitionOptions = wp.hooks.applyFilters( 'spectra.slider.tab_general.transitionSpeed.after', '', props );
+
 		const sliderSettings = () => {
 			return (
 				<>
@@ -303,6 +307,7 @@ const Settings = ( props ) => {
 						/>
 						</>
 					) }
+					{ afterAutoPlayOptions }
 					<ToggleControl
 						label={ __(
 							'Infinite Loop',
@@ -335,22 +340,6 @@ const Settings = ( props ) => {
 						max={ 1000 }
 						displayUnit={ false }
 						setAttributes={ setAttributes }
-					/>
-					<ToggleControl
-						label={ __(
-							'Arrows',
-							'ultimate-addons-for-gutenberg'
-						) }
-						checked={ displayArrows }
-						onChange={ toggleDisplayArrows }
-					/>
-					<ToggleControl
-						label={ __(
-							'Dots',
-							'ultimate-addons-for-gutenberg'
-						) }
-						checked={ displayDots }
-						onChange={ toggleDisplayDots }
 					/>
 					<UAGSelectControl
 						label={ __(
@@ -388,6 +377,7 @@ const Settings = ( props ) => {
 								),
 							}
 						] }
+						help={ __( "Above setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }
 					/>
 					<Range
 						label={ __(
@@ -407,6 +397,29 @@ const Settings = ( props ) => {
 						max={ 5000 }
 						displayUnit={ false }
 					/>
+					{ afterTransitionOptions }
+				</UAGAdvancedPanelBody>
+				<UAGAdvancedPanelBody
+					title={ __( 'Navigation', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ false }
+				>
+					<ToggleControl
+						label={ __(
+							'Arrows',
+							'ultimate-addons-for-gutenberg'
+						) }
+						checked={ displayArrows }
+						onChange={ toggleDisplayArrows }
+					/>
+					<ToggleControl
+						label={ __(
+							'Dots',
+							'ultimate-addons-for-gutenberg'
+						) }
+						checked={ displayDots }
+						onChange={ toggleDisplayDots }
+					/>
+					{ afterNavigationOptions }
 				</UAGAdvancedPanelBody>
 				<UAGAdvancedPanelBody
 					title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
@@ -1068,6 +1081,8 @@ const Settings = ( props ) => {
 		)
 	}
 
+	const afterNavigationStyleOptions =  wp.hooks.applyFilters( 'spectra.slider.tab_style.NavigationStyle.after', '', props );
+
 	return (
 		<>
 		{ getBlockControls() }
@@ -1082,6 +1097,7 @@ const Settings = ( props ) => {
 						{ boxShadowSettings() }
 						{ spacingSettings() }
 						{ ( displayArrows || displayDots ) && navigationSettings() }
+						{ afterNavigationStyleOptions }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }

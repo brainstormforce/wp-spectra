@@ -79,18 +79,6 @@ const UAGBFormsEdit = ( props ) => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 		const {
-			vPaddingSubmit,
-			hPaddingSubmit,
-			vPaddingField,
-			hPaddingField,
-			paddingFieldTop,
-			paddingFieldRight,
-			paddingFieldBottom,
-			paddingFieldLeft,
-			paddingBtnTop,
-			paddingBtnRight,
-			paddingBtnBottom,
-			paddingBtnLeft,
 			reCaptchaSiteKeyV2,
 			reCaptchaSecretKeyV2,
 			reCaptchaSiteKeyV3,
@@ -105,40 +93,7 @@ const UAGBFormsEdit = ( props ) => {
 				setAttributes( { toggleColor: bgColor } );
 			}
 		}
-
-		if ( vPaddingSubmit ) {
-			if ( undefined === paddingBtnTop ) {
-				setAttributes( { paddingBtnTop: vPaddingSubmit } );
-			}
-			if ( undefined === paddingBtnBottom ) {
-				setAttributes( { paddingBtnBottom: vPaddingSubmit } );
-			}
-		}
-		if ( hPaddingSubmit ) {
-			if ( undefined === paddingBtnRight ) {
-				setAttributes( { paddingBtnRight: hPaddingSubmit } );
-			}
-			if ( undefined === paddingBtnLeft ) {
-				setAttributes( { paddingBtnLeft: hPaddingSubmit } );
-			}
-		}
-		if ( vPaddingField ) {
-			if ( undefined === paddingFieldTop ) {
-				setAttributes( { paddingFieldTop: vPaddingField } );
-			}
-			if ( undefined === paddingFieldBottom ) {
-				setAttributes( { paddingFieldBottom: vPaddingField } );
-			}
-		}
-		if ( hPaddingField ) {
-			if ( undefined === paddingFieldRight ) {
-				setAttributes( { paddingFieldRight: hPaddingField } );
-			}
-			if ( undefined === paddingFieldLeft ) {
-				setAttributes( { paddingFieldLeft: hPaddingField } );
-			}
-		}
-
+		
 		const id = props.clientId;
 
 		window.addEventListener( 'load', renderReadyClasses( id ) );
