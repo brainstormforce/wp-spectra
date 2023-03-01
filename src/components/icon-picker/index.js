@@ -3,6 +3,7 @@ import styles from './editor.lazy.scss';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 import ModalContainer from './modal-container';
+import UAGHelpText from '@Components/help-text';
 
 const UAGIconPicker = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -13,7 +14,7 @@ const UAGIconPicker = ( props ) => {
 		};
 	}, [] );
 
-	const { label, value, onChange } = props;
+	const { label, value, onChange, help = false } = props;
 	const defaultIcons = [ ...wp.UAGBSvgIcons ];
 	const iconCategoryList = [ ...wp.uagb_icon_category_list ];
 	// For modal.
@@ -74,6 +75,7 @@ const UAGIconPicker = ( props ) => {
 					} }
 				/>
 			) }
+			<UAGHelpText text={ help } />
 		</div>
 	);
 };

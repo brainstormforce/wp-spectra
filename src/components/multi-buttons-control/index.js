@@ -13,6 +13,7 @@ import ResponsiveToggle from '../responsive-toggle';
 import styles from './editor.lazy.scss';
 import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 import { select } from '@wordpress/data';
+import UAGHelpText from '@Components/help-text';
 
 const MultiButtonsControl = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -41,6 +42,7 @@ const MultiButtonsControl = ( props ) => {
 		onChange,
 		colorVariant = 'primary',
 		layoutVariant = 'full',
+		help = false
 	} = props;
 
 	const selectedBlock = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
@@ -180,9 +182,7 @@ const MultiButtonsControl = ( props ) => {
 					/>
 				</div>
 				{ output[ deviceType ] ? output[ deviceType ] : output.Desktop }
-				{ props.help && (
-					<p className="uag-control-help-notice">{ props.help }</p>
-				) }
+				<UAGHelpText text={ help } />
 			</div>
 		);
 	}
@@ -246,9 +246,7 @@ const MultiButtonsControl = ( props ) => {
 						</Button>
 					) ) }
 				</ButtonGroup>
-				{ props.help && (
-					<p className="uag-control-help-notice">{ props.help }</p>
-				) }
+				<UAGHelpText text={ help } />
 			</div>
 			{
 				controlAfterDomElement

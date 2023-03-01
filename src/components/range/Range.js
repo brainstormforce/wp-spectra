@@ -13,6 +13,7 @@ import { select } from '@wordpress/data';
 import { limitMax, limitMin } from '@Controls/unitWiseMinMaxOption';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGReset from '../reset';
+import UAGHelpText from '@Components/help-text';
 
 const isNumberControlSupported = !! NumberControl;
 
@@ -192,9 +193,7 @@ const Range = ( props ) => {
 						/>
 					) }
 				</div>
-				{ props.help && (
-					<p className="uag-control-help-notice">{ props.help }</p>
-				) }
+				<UAGHelpText text={ props.help } />
 			</div>
 			{
 				controlAfterDomElement
@@ -216,6 +215,7 @@ Range.defaultProps = {
 	unit: [ 'px', 'em' ],
 	displayUnit: true,
 	responsive: false,
+	help: false
 };
 
 export default Range;

@@ -8,11 +8,12 @@ import { getPanelIdFromRef } from '@Utils/Helpers';
  import UAGMediaPicker from '@Components/image';
  import { select } from '@wordpress/data';
  import { __ } from '@wordpress/i18n';
+ import UAGHelpText from '@Components/help-text';
 
  const ResponsiveUAGImage = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
 	const panelRef = useRef( null );
-	const { backgroundImage, setAttributes } = props;
+	const { backgroundImage, setAttributes, help = false } = props;
 	const { getSelectedBlock } = select( 'core/block-editor' );
 
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
@@ -98,9 +99,7 @@ import { getPanelIdFromRef } from '@Utils/Helpers';
 					</div>
 					{ output[ deviceType ] ? output[ deviceType ] : output.Desktop }
 				</div>
-				{ props.help && (
-					<p className="uag-control-help-notice">{ props.help }</p>
-				) }
+				<UAGHelpText text={ help } />
 			</div>
 			{
 				controlAfterDomElement

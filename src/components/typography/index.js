@@ -17,6 +17,7 @@ import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import { select } from '@wordpress/data';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
+import UAGHelpText from '@Components/help-text';
 
 // Export for ease of importing in individual blocks.
 export { TypographyStyles };
@@ -80,6 +81,7 @@ const TypographyControl = ( props ) => {
 		disableTransform,
 		disableDecoration,
 		disableAdvancedOptions = false,
+		help = false
 	} = props;
 
 	if ( true !== disableFontFamily ) {
@@ -449,6 +451,7 @@ const TypographyControl = ( props ) => {
 						{ showAdvancedFontControls }
 					</>
 				) }
+				<UAGHelpText text={ help } />
 			</div>
 			{
 				controlAfterDomElement

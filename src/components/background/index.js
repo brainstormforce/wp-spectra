@@ -15,6 +15,7 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import {getPanelIdFromRef} from '@Utils/Helpers';
 import { select } from '@wordpress/data';
+import UAGHelpText from '@Components/help-text';
 
 const Background = ( props ) => {
 	const { getSelectedBlock } = select( 'core/block-editor' );
@@ -63,7 +64,8 @@ const Background = ( props ) => {
 		yPositionType,
 		yPositionTypeTablet,
 		yPositionTypeMobile,
-		backgroundVideoOpacity
+		backgroundVideoOpacity,
+		help = false
 	} = props;
 
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
@@ -922,6 +924,7 @@ const Background = ( props ) => {
 			}
 			<div className="uag-bg-select-control">
 				{ advancedControls }
+				<UAGHelpText text={ help } />
 			</div>
 			{
 				controlAfterDomElement

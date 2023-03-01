@@ -3,6 +3,7 @@ import { BaseControl } from '@wordpress/components';
 import { MediaUpload } from '@wordpress/block-editor';
 import React from 'react';
 import UAGB_Block_Icons from '@Controls/block-icons';
+import UAGHelpText from '@Components/help-text';
 
 const MultiMediaSelector = ( props ) => {
 
@@ -17,6 +18,7 @@ const MultiMediaSelector = ( props ) => {
 		onRemoveMedia,
 		allowedTypes,
 		createGallery,
+		help = false
 	} = props;
 
 	const placeholderIcon = UAGB_Block_Icons.gallery_placeholder;
@@ -90,9 +92,7 @@ const MultiMediaSelector = ( props ) => {
 					</button>
 				) }
 			</div>
-			{ props.help && (
-				<p className="uag-control-help-notice">{ props.help }</p>
-			) }
+			<UAGHelpText text={ help } />
 		</BaseControl>
 	);
 };

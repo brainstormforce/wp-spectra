@@ -11,6 +11,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { select } from '@wordpress/data';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import PropTypes from 'prop-types';
+import UAGHelpText from '@Components/help-text';
 
 const propTypes = {
 	prefix: PropTypes.string,
@@ -59,6 +60,7 @@ const ResponsiveBorder = ( props ) => {
 			'ultimate-addons-for-gutenberg'
 		),
 		borderRadiusHelp,
+		help = false
 	} = props;
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
@@ -352,6 +354,7 @@ const ResponsiveBorder = ( props ) => {
 					disableBottomSeparator={ disableBottomSeparator }
 				/>
 			) }
+			<UAGHelpText text={ help } />
 		</>
 	);
 
@@ -362,7 +365,7 @@ const ResponsiveBorder = ( props ) => {
 	return (
 		<div
 			ref={panelRef}
-			
+
 		>
 			{controlBeforeDomElement}
 			{advancedControls}

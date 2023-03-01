@@ -6,6 +6,7 @@ import { select, dispatch } from '@wordpress/data';
 import classnames from 'classnames';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGReset from '../reset';
+import UAGHelpText from '@Components/help-text';
 
 const UAGPresets = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -32,7 +33,8 @@ const UAGPresets = ( props ) => {
         presets,
         presetInputType,
         label,
-		className
+		className,
+		help = false
     } = props;
 
 	const resetAttributes = [];
@@ -219,6 +221,7 @@ const UAGPresets = ( props ) => {
 				</div>
 				{ 'dropdown' === presetInputType && presetDropdown }
 				{ 'radioImage' === presetInputType && presetRadioImage }
+				<UAGHelpText text={ help } />
 			</div>
 			{
 				controlAfterDomElement

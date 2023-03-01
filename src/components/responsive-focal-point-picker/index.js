@@ -9,6 +9,7 @@ import { __ } from '@wordpress/i18n';
 import { FocalPointPicker } from '@wordpress/components';
 import { select } from '@wordpress/data';
 import styles from './editor.lazy.scss';
+import UAGHelpText from '@Components/help-text';
 
 const ResponsiveUAGFocalPointPicker = ( props ) => {
 
@@ -75,7 +76,7 @@ const ResponsiveUAGFocalPointPicker = ( props ) => {
 		<div
 			ref={panelRef}
 			className="components-base-control"
-			
+
 		>
 			{controlBeforeDomElement}
 			<div className="uagb-responsive-select-control">
@@ -88,9 +89,7 @@ const ResponsiveUAGFocalPointPicker = ( props ) => {
 					</div>
 					{ output[ deviceType ] ? output[ deviceType ] : output.Desktop }
 				</div>
-				{ props.help && (
-					<p className="uag-control-help-notice">{ props.help }</p>
-				) }
+				<UAGHelpText text={ props.help } />
 			</div>
 			{controlAfterDomElement}
 		</div>

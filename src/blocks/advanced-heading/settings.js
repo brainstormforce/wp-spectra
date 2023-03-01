@@ -473,7 +473,7 @@ const Settings = ( props ) => {
 						setAttributes( { headingDescToggle : ! headingDescToggle } )
 					}
 				/>
-				{ headingDescToggle && 
+				{ headingDescToggle &&
 					<UAGSelectControl
 						label={ __(
 							'Position',
@@ -500,7 +500,7 @@ const Settings = ( props ) => {
 								),
 							},
 						] }
-					/> 
+					/>
 				}
 			</UAGAdvancedPanelBody>
 		);
@@ -559,7 +559,7 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-				{ 'none' !== seperatorStyle && 
+				{ 'none' !== seperatorStyle &&
 					<UAGSelectControl
 						label={ __(
 							'Position',
@@ -571,7 +571,7 @@ const Settings = ( props ) => {
 						} }
 						setAttributes={ setAttributes }
 						options={ separatorPositionOptions }
-					/> 
+					/>
 				}
 			</UAGAdvancedPanelBody>
 		);

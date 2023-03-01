@@ -8,9 +8,10 @@ import React, {useEffect, useState, useCallback, useRef } from 'react';
 import { dispatch, select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
+import UAGHelpText from '@Components/help-text';
 
 const ResponsiveToggle = props => {
-	const { label, responsive } = props;
+	const { label, responsive, help = false } = props;
 	const deviceType = useDeviceType()
 	const [ displayResponsive, toggleResponsive ] = useState( false );
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -163,7 +164,7 @@ const ResponsiveToggle = props => {
 			{
 				controlBeforeDomElement
 			}
-			
+
 			{ label && (
 				<span className="uag-control-label">{ label }</span>
 			) }
@@ -215,6 +216,7 @@ const ResponsiveToggle = props => {
 					) }
 				</ButtonGroup>
 			) }
+			<UAGHelpText text={ help } />
 			{
 				controlAfterDomElement
 			}

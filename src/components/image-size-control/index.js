@@ -25,6 +25,7 @@ export default function ImageSizeControl( {
 	heightMobile,
 	setAttributes,
 	onChange,
+	help,
 } ) {
 
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -256,6 +257,9 @@ export default function ImageSizeControl( {
 							{output[deviceType]}
 						</div>
 					</div>
+					{ help && (
+						<p className="components-base-control__help">{ help }</p>
+					) }
 				</div>
 			) }
 			{
