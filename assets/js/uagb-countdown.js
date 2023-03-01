@@ -66,6 +66,10 @@ UAGBCountdown = { // eslint-disable-line no-undef
 	},
 
     updateCountdown( mainSelector, data, isEditor = false, ref = null ) {
+		
+		if( isEditor && ! ref ){
+			return;
+		}
 
 		// If show days or show hours is true, set the further units to true ( hours, minutes ).
 		if ( data.showDays ) {
