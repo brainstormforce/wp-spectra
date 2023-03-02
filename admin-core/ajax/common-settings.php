@@ -87,6 +87,34 @@ class Common_Settings extends Ajax_Base {
 
 		$this->init_ajax_events( $ajax_events );
 	}
+
+	/**
+	 * checks value in post
+	 * 
+	 * @return void
+	 */
+	private function check_value_in_post( $arr, $key, $error_msg = false ){
+		$response_data = $error_msg ? $error_msg : array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
+		if( !isset( $arr [ $key ] ) ){
+			wp_send_json_error( $response_data );
+		}else if(empty( $arr [ $key ] ) ){
+			wp_send_json_error( $response_data );
+		}
+	}
+
+	/**
+	 * save and success response
+	 * 
+	 * @return void
+	 */
+	private function save_and_send_success_response( $admin_settings_option, $value  ){
+		\UAGB_Admin_Helper::update_admin_settings_option( $admin_settings_option, $value );
+		$response_data = array(
+			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
+		);
+		wp_send_json_success( $response_data );
+	}
+
 	/**
 	 * Required Spectra Pro Plugin Activate
 	 *
@@ -132,24 +160,7 @@ class Common_Settings extends Ajax_Base {
 			)
 		);
 	}
-
-	public function check_value_in_post( $arr, $key, $error_msg = false ){
-		$response_data = $error_msg ? $error_msg : array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-		if( !isset( $arr [ $key ] ) ){
-			wp_send_json_error( $response_data );
-		}else if(empty( $arr [ $key ] ) ){
-			wp_send_json_error( $response_data );
-		}
-	}
-
-	private function save_and_send_success_response( $admin_settings_option, $value  ){
-		\UAGB_Admin_Helper::update_admin_settings_option( $admin_settings_option, $value );
-		$response_data = array(
-			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
-		);
-		wp_send_json_success( $response_data );
-	}
-
+	
 	/**
 	 * Save settings.
 	 *
@@ -293,7 +304,6 @@ class Common_Settings extends Ajax_Base {
 
 		wp_send_json_success( $results );
 	}
-
 	/**
 	 * Save settings.
 	 *
@@ -319,7 +329,6 @@ class Common_Settings extends Ajax_Base {
 		$this->save_and_send_success_response( 'uag_coming_soon_page', intval( $_POST['value'] ) );
 
 	}
-
 	/**
 	 * Save settings.
 	 *
@@ -345,7 +354,6 @@ class Common_Settings extends Ajax_Base {
 		$this->save_and_send_success_response( 'uag_enable_coming_soon_mode', sanitize_text_field( $_POST['value'] ) );
 
 	}
-
 	/**
 	 * Save settings.
 	 *
@@ -371,7 +379,6 @@ class Common_Settings extends Ajax_Base {
 		$this->save_and_send_success_response( 'uag_content_width', sanitize_text_field( $_POST['value'] ) );
 
 	}
-
 	/**
 	 * Save settings.
 	 *
@@ -397,7 +404,6 @@ class Common_Settings extends Ajax_Base {
 		$this->save_and_send_success_response( 'uag_container_global_padding', sanitize_text_field( $_POST['value'] ) );
 
 	}
-
 	/**
 	 * Save settings.
 	 *
@@ -646,13 +652,6 @@ class Common_Settings extends Ajax_Base {
 			$social['facebookAppSecret'] = sanitize_text_field( $_POST['facebookAppSecret'] );
 		}
 
-		// \UAGB_Admin_Helper::update_admin_settings_option( 'uag_social', $social );
-
-		// $response_data = array(
-		// 	'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
-		// );
-		// wp_send_json_success( $response_data );
-
 		$this->save_and_send_success_response( 'uag_social', $social );
 	}
 	/**
@@ -680,7 +679,6 @@ class Common_Settings extends Ajax_Base {
 		$this->save_and_send_success_response( 'uag_dynamic_content_mode', sanitize_text_field( $_POST['value'] ) );
 
 	}
-
 	/**
 	 * Save settings.
 	 *
