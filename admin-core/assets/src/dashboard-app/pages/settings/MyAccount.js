@@ -8,9 +8,11 @@ export default function MyAccount() {
 	const licenseTitle = licenseStatus ? __( 'Deactivate', 'ultimate-addons-for-gutenberg' ) : __( 'Activate', 'ultimate-addons-for-gutenberg' );
 	const licensePlaceholder = licenseStatus ? __( 'Your license is active.', 'ultimate-addons-for-gutenberg' ) : __( 'Paste your license key here', 'ultimate-addons-for-gutenberg' );
 	const licenseMessage = licenseStatus ? __( 'License successfully validated!', 'ultimate-addons-for-gutenberg' ) : __( `Please enter your valid license key below to activate Spectra Pro!`, 'ultimate-addons-for-gutenberg' );
-
+	const licenseFormURL = `${uag_react.admin_base_url}options-general.php?page=spectra-pro-manage-license`
+console.log(licenseFormURL);
 	return (
 		<React.Fragment>
+			<iframe width="100%" height="100%" src={licenseFormURL}></iframe>
 			<section className="block border-b border-solid border-slate-200 px-12 py-8 justify-between">
 				<div className="mr-16 w-full">
 					<form method="post" className="form-wrap bsf-license-register-astra-addon form-submited-astra-addon">
