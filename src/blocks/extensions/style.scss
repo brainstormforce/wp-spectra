@@ -4,6 +4,8 @@
  * Common CSS for both Frontend+Backend.
  */
 
+@import 'animations.scss';
+
 .uag-blocks-common-selector {
 	z-index: var(--z-index-desktop) !important;
 }
