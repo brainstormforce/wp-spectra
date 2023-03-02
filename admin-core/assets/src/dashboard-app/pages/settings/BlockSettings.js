@@ -66,6 +66,7 @@ const BlockSettings = () => {
 		} ).then( () => {
 			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
 		} );
+		console.log(formData);
 	};
 
 	const updateRecaptchaSecretKeyV3 = ( e ) => {
