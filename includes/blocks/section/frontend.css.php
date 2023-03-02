@@ -170,7 +170,7 @@ if ( 'video' === $bg_type ) {
 	}
 }
 
-$selectors[' > .uagb-section__overlay']['border-radius'] = $overall_border_css['border-top-left-radius'] . ' ' . $overall_border_css['border-top-right-radius'] . ' ' . $overall_border_css['border-bottom-left-radius'] . ' ' . $overall_border_css['border-bottom-right-radius'];
+$selectors[' > .uagb-section__overlay']['border-radius'] = $attr['overallBorderTopLeftRadius'] . ' ' . $attr['overallBorderTopRightRadius'] . ' ' . $attr['overallBorderBottomLeftRadius'] . ' ' . $attr['overallBorderBottomRightRadius'];
 
 $m_selectors = array(
 	'.uagb-section__wrap' => array_merge(

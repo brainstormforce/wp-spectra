@@ -13,6 +13,8 @@ import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import PropTypes from 'prop-types';
 import UAGHelpText from '@Components/help-text';
 
+import Separator from '@Components/separator';
+
 const propTypes = {
 	prefix: PropTypes.string,
 	borderStyleLabel: PropTypes.string,
@@ -351,9 +353,12 @@ const ResponsiveBorder = ( props ) => {
 					normal={ tabOutputNormal }
 					hover={ tabOutputHover }
 					active={ '' }
-					disableBottomSeparator={ disableBottomSeparator }
+					disableBottomSeparator={ true }
 				/>
 			) }
+			{ ! disableBottomSeparator && (
+				<Separator/>
+			)}
 			<UAGHelpText text={ help } />
 		</>
 	);
