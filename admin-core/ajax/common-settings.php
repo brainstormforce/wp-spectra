@@ -89,26 +89,29 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * checks value in post
+	 * Check if a value is present in the POST array for the specified key
 	 *
+	 * @param array $arr The POST array to check.
+	 * @param string $key The key to check for in the POST array.
+	 * @param mixed $error_msg Optional error message to use in case of failure.
 	 * @return void
 	 */
 	private function check_value_in_post( $arr, $key, $error_msg = false ) {
 		$response_data = $error_msg ? $error_msg : array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-		if ( ! isset( $arr [ $key ] ) ) {
-			wp_send_json_error( $response_data );
-		} elseif ( empty( $arr [ $key ] ) ) {
+		if ( empty( $arr [ $key ] ) ) {
 			wp_send_json_error( $response_data );
 		}
 	}
 
 	/**
-	 * save and success response
+	 * Update an option with a new value and send a success JSON response.
 	 *
+	 * @param string $option The name of the option to update.
+	 * @param mixed $value The new value to assign to the option.
 	 * @return void
 	 */
-	private function save_and_send_success_response( $admin_settings_option, $value ) {
-		\UAGB_Admin_Helper::update_admin_settings_option( $admin_settings_option, $value );
+	private function save_and_send_success_response( $option, $value ) {
+		\UAGB_Admin_Helper::update_admin_settings_option( $option, $value );
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
 		);
