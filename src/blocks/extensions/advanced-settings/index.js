@@ -5,6 +5,7 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import classnames from 'classnames';
 import { useEffect } from 'react';
+import AnimationList from '@Blocks/extensions/animations-extension/animation-list';
 
 const { enableConditions, enableResponsiveConditions, enableAnimationsExtension } = uagb_blocks_info;
 
@@ -266,8 +267,25 @@ const ResponsiveConditionOptions = ( props ) => {
 
 const animationOptions = ( props ) => {
 
+	const {
+		attributes,
+		attributes: {
+			className,
+			UAGAnimationType,
+		},
+		setAttributes
+	} = props;
+
 	return(
 		<>
+			<SelectControl
+				label={ __( 'Animation Type' ) }
+				value={ UAGAnimationType }
+				onChange={ ( value ) =>
+					setAttributes( { UAGAnimationType: value } )
+				}
+				options={ AnimationList }
+			/>
 		</>
 	);
 };
