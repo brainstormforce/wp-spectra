@@ -90,24 +90,24 @@ class Common_Settings extends Ajax_Base {
 
 	/**
 	 * checks value in post
-	 * 
+	 *
 	 * @return void
 	 */
-	private function check_value_in_post( $arr, $key, $error_msg = false ){
+	private function check_value_in_post( $arr, $key, $error_msg = false ) {
 		$response_data = $error_msg ? $error_msg : array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-		if( !isset( $arr [ $key ] ) ){
+		if ( ! isset( $arr [ $key ] ) ) {
 			wp_send_json_error( $response_data );
-		}else if(empty( $arr [ $key ] ) ){
+		} elseif ( empty( $arr [ $key ] ) ) {
 			wp_send_json_error( $response_data );
 		}
 	}
 
 	/**
 	 * save and success response
-	 * 
+	 *
 	 * @return void
 	 */
-	private function save_and_send_success_response( $admin_settings_option, $value  ){
+	private function save_and_send_success_response( $admin_settings_option, $value ) {
 		\UAGB_Admin_Helper::update_admin_settings_option( $admin_settings_option, $value );
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
@@ -160,7 +160,7 @@ class Common_Settings extends Ajax_Base {
 			)
 		);
 	}
-	
+
 	/**
 	 * Save settings.
 	 *
@@ -349,7 +349,7 @@ class Common_Settings extends Ajax_Base {
 			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
 			wp_send_json_error( $response_data );
 		}
-		
+
 		$this->check_value_in_post( $_POST, 'value' );
 		$this->save_and_send_success_response( 'uag_enable_coming_soon_mode', sanitize_text_field( $_POST['value'] ) );
 
@@ -399,7 +399,7 @@ class Common_Settings extends Ajax_Base {
 			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
 			wp_send_json_error( $response_data );
 		}
-		
+
 		$this->check_value_in_post( $_POST, 'value' );
 		$this->save_and_send_success_response( 'uag_container_global_padding', sanitize_text_field( $_POST['value'] ) );
 
@@ -552,7 +552,7 @@ class Common_Settings extends Ajax_Base {
 			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
 			wp_send_json_error( $response_data );
 		}
-		
+
 		$this->check_value_in_post( $_POST, 'value' );
 		$this->save_and_send_success_response( 'uag_load_gfonts_locally', sanitize_text_field( $_POST['value'] ) );
 
@@ -577,7 +577,7 @@ class Common_Settings extends Ajax_Base {
 			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
 			wp_send_json_error( $response_data );
 		}
-		
+
 		$this->check_value_in_post( $_POST, 'value' );
 		$this->save_and_send_success_response( 'uag_collapse_panels', sanitize_text_field( $_POST['value'] ) );
 
@@ -602,7 +602,7 @@ class Common_Settings extends Ajax_Base {
 			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
 			wp_send_json_error( $response_data );
 		}
-		
+
 		$this->check_value_in_post( $_POST, 'value' );
 		$this->save_and_send_success_response( 'uag_copy_paste', sanitize_text_field( $_POST['value'] ) );
 
@@ -703,8 +703,6 @@ class Common_Settings extends Ajax_Base {
 		$this->check_value_in_post( $_POST, 'value' );
 		$this->save_and_send_success_response( 'uag_preload_local_fonts', sanitize_text_field( $_POST['value'] ) );
 
-		
-
 	}
 	/**
 	 * Save settings.
@@ -726,7 +724,7 @@ class Common_Settings extends Ajax_Base {
 			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
 			wp_send_json_error( $response_data );
 		}
-		
+
 		$this->check_value_in_post( $_POST, 'value' );
 		$this->save_and_send_success_response( 'uag_enable_block_condition', sanitize_text_field( $_POST['value'] ) );
 
@@ -751,7 +749,7 @@ class Common_Settings extends Ajax_Base {
 			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
 			wp_send_json_error( $response_data );
 		}
-		
+
 		$this->check_value_in_post( $_POST, 'value' );
 		$this->save_and_send_success_response( 'uag_enable_block_responsive', sanitize_text_field( $_POST['value'] ) );
 
@@ -777,7 +775,7 @@ class Common_Settings extends Ajax_Base {
 			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
 			wp_send_json_error( $response_data );
 		}
-		
+
 		$this->check_value_in_post( $_POST, 'value' );
 		$this->save_and_send_success_response( 'uag_enable_dynamic_content', sanitize_text_field( $_POST['value'] ) );
 
@@ -803,7 +801,7 @@ class Common_Settings extends Ajax_Base {
 			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
 			wp_send_json_error( $response_data );
 		}
-		
+
 		$this->check_value_in_post( $_POST, 'value' );
 		$this->save_and_send_success_response( 'uag_enable_templates_button', sanitize_text_field( $_POST['value'] ) );
 
@@ -829,7 +827,7 @@ class Common_Settings extends Ajax_Base {
 			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
 			wp_send_json_error( $response_data );
 		}
-		
+
 		$this->check_value_in_post( $_POST, 'value' );
 		$this->save_and_send_success_response( 'uag_enable_on_page_css_button', sanitize_text_field( $_POST['value'] ) );
 
@@ -856,24 +854,16 @@ class Common_Settings extends Ajax_Base {
 			wp_send_json_error( $response_data );
 		}
 
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
+		$this->check_value_in_post( $_POST, 'value' );
 
 		// will sanitize $value in later stage.
 		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-
-		\UAGB_Admin_Helper::update_admin_settings_option( '_uagb_blocks', $this->sanitize_form_inputs( $value ) );
 
 		if ( 'disabled' === \UAGB_Helper::$file_generation ) {
 			\UAGB_Admin_Helper::create_specific_stylesheet(); // Get Specific Stylesheet.
 		}
 
-		$response_data = array(
-			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
-		);
-		wp_send_json_success( $response_data );
+		$this->save_and_send_success_response( '_uagb_blocks', $this->sanitize_form_inputs( $value ) );
 	}
 
 	/**
@@ -896,7 +886,7 @@ class Common_Settings extends Ajax_Base {
 			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
 			wp_send_json_error( $response_data );
 		}
-		
+
 		$this->check_value_in_post( $_POST, 'value' );
 		$this->save_and_send_success_response( 'uagb_beta', sanitize_text_field( $_POST['value'] ) );
 	}
@@ -972,10 +962,7 @@ class Common_Settings extends Ajax_Base {
 			wp_send_json_error( $response_data );
 		}
 
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
+		$this->check_value_in_post( $_POST, 'value' );
 
 		$wp_upload_dir = \UAGB_Helper::get_uag_upload_dir_path();
 
