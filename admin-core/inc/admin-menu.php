@@ -108,7 +108,7 @@ class Admin_Menu {
 
 			add_filter( 'admin_footer_text', array( $this, 'add_footer_link' ), 99 );
 		}
-		$build_url         = UAG_ADMIN_URL . 'assets/build/';
+		$build_url = UAG_ADMIN_URL . 'assets/build/';
 
 		// To hide the Spectra License Submenu.
 		wp_enqueue_style( 'load-everywhere-admin', UAG_ADMIN_URL . 'assets/build/load-everywhere-admin.css', array(), UAGB_VER );
