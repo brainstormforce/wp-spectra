@@ -89,14 +89,30 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Check if a value is present in the POST array for the specified key
+	 * Check if a value is present in POST request data and perform nonce verification.
 	 *
-	 * @param array $arr The POST array to check.
-	 * @param string $key The key to check for in the POST array.
-	 * @param mixed $error_msg Optional error message to use in case of failure.
+	 * @param string $option The option name to use for nonce verification.
+	 * @param array $response_data The response data to send in case of error.
+	 * @param array $arr The POST request data array.
+	 * @param string $key The key to look for in the POST request data array (default: 'value').
+	 * @param mixed $error_msg The error message to send in case of error (default: false).
 	 * @return void
 	 */
-	private function check_value_in_post( $arr, $key, $error_msg = false ) {
+	private function check_value_nonce_verify( $option, $response_data, $arr, $key = 'value', $error_msg = false ) {
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+        
+		
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( $option, 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
 		$response_data = $error_msg ? $error_msg : array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
 		if ( empty( $arr [ $key ] ) ) {
 			wp_send_json_error( $response_data );
@@ -173,19 +189,7 @@ class Common_Settings extends Ajax_Base {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
 
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_recaptcha_secret_key_v3', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_recaptcha_secret_key_v3', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_recaptcha_secret_key_v3', sanitize_text_field( $_POST['value'] ) );
 	}
 	/**
@@ -196,20 +200,7 @@ class Common_Settings extends Ajax_Base {
 	public function recaptcha_secret_key_v2() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_recaptcha_secret_key_v2', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_recaptcha_secret_key_v2', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_recaptcha_secret_key_v2', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -222,19 +213,7 @@ class Common_Settings extends Ajax_Base {
 	public function recaptcha_site_key_v2() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_recaptcha_site_key_v2', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_recaptcha_site_key_v2', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_recaptcha_site_key_v2', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -247,20 +226,7 @@ class Common_Settings extends Ajax_Base {
 	public function recaptcha_site_key_v3() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_recaptcha_site_key_v3', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_recaptcha_site_key_v3', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_recaptcha_site_key_v3', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -315,20 +281,7 @@ class Common_Settings extends Ajax_Base {
 	public function coming_soon_page() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_coming_soon_page', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_coming_soon_page', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_coming_soon_page', intval( $_POST['value'] ) );
 
 	}
@@ -340,20 +293,7 @@ class Common_Settings extends Ajax_Base {
 	public function enable_coming_soon_mode() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_enable_coming_soon_mode', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_enable_coming_soon_mode', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_enable_coming_soon_mode', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -365,20 +305,7 @@ class Common_Settings extends Ajax_Base {
 	public function content_width() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_content_width', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_content_width', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_content_width', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -390,20 +317,7 @@ class Common_Settings extends Ajax_Base {
 	public function container_global_padding() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_container_global_padding', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_container_global_padding', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_container_global_padding', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -415,20 +329,7 @@ class Common_Settings extends Ajax_Base {
 	public function container_global_elements_gap() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_container_global_elements_gap', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_container_global_elements_gap', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_container_global_elements_gap', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -441,20 +342,7 @@ class Common_Settings extends Ajax_Base {
 	public function blocks_editor_spacing() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_blocks_editor_spacing', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_blocks_editor_spacing', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_blocks_editor_spacing', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -466,20 +354,7 @@ class Common_Settings extends Ajax_Base {
 	public function load_select_font_globally() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_load_select_font_globally', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_load_select_font_globally', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_load_select_font_globally', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -491,22 +366,10 @@ class Common_Settings extends Ajax_Base {
 	public function select_font_globally() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_select_font_globally', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
+        $this->check_value_nonce_verify( 'uag_select_font_globally', $response_data, $_POST );
 
 		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
-		$this->check_value_in_post( $_POST, 'value' );
 		$this->save_and_send_success_response( 'uag_select_font_globally', sanitize_text_field( $value ) );
 
 	}
@@ -518,20 +381,7 @@ class Common_Settings extends Ajax_Base {
 	public function enable_masonry_gallery() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_enable_masonry_gallery', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_enable_masonry_gallery', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_enable_masonry_gallery', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -543,20 +393,7 @@ class Common_Settings extends Ajax_Base {
 	public function load_gfonts_locally() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_load_gfonts_locally', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_load_gfonts_locally', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_load_gfonts_locally', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -568,20 +405,7 @@ class Common_Settings extends Ajax_Base {
 	public function collapse_panels() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_collapse_panels', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_collapse_panels', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_collapse_panels', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -593,20 +417,7 @@ class Common_Settings extends Ajax_Base {
 	public function copy_paste() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_copy_paste', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_copy_paste', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_copy_paste', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -618,20 +429,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function social() {
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_social', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_social', $response_data, $_POST );
 
 		$social = \UAGB_Admin_Helper::get_admin_settings_option(
 			'uag_social',
@@ -654,7 +452,6 @@ class Common_Settings extends Ajax_Base {
 		if ( isset( $_POST['facebookAppSecret'] ) ) {
 			$social['facebookAppSecret'] = sanitize_text_field( $_POST['facebookAppSecret'] );
 		}
-
 		$this->save_and_send_success_response( 'uag_social', $social );
 	}
 	/**
@@ -690,20 +487,7 @@ class Common_Settings extends Ajax_Base {
 	public function preload_local_fonts() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_preload_local_fonts', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_preload_local_fonts', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_preload_local_fonts', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -715,20 +499,7 @@ class Common_Settings extends Ajax_Base {
 	public function enable_block_condition() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_enable_block_condition', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_enable_block_condition', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_enable_block_condition', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -740,20 +511,7 @@ class Common_Settings extends Ajax_Base {
 	public function enable_block_responsive() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_enable_block_responsive', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_enable_block_responsive', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_enable_block_responsive', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -766,20 +524,7 @@ class Common_Settings extends Ajax_Base {
 	public function enable_dynamic_content() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_enable_dynamic_content', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_enable_dynamic_content', $response_data,$_POST );
 		$this->save_and_send_success_response( 'uag_enable_dynamic_content', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -792,20 +537,7 @@ class Common_Settings extends Ajax_Base {
 	public function enable_templates_button() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_enable_templates_button', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_enable_templates_button', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_enable_templates_button', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -818,20 +550,7 @@ class Common_Settings extends Ajax_Base {
 	public function enable_on_page_css_button() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_enable_on_page_css_button', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_enable_on_page_css_button', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_enable_on_page_css_button', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -844,20 +563,7 @@ class Common_Settings extends Ajax_Base {
 	public function blocks_activation_and_deactivation() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_blocks_activation_and_deactivation', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_blocks_activation_and_deactivation', $response_data, $_POST );
 
 		// will sanitize $value in later stage.
 		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
@@ -877,20 +583,7 @@ class Common_Settings extends Ajax_Base {
 	public function enable_beta_updates() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_enable_beta_updates', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uagb_beta', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uagb_beta', sanitize_text_field( $_POST['value'] ) );
 	}
 
@@ -902,20 +595,7 @@ class Common_Settings extends Ajax_Base {
 	public function enable_legacy_blocks() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_enable_legacy_blocks', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_enable_legacy_blocks', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_enable_legacy_blocks', sanitize_text_field( $_POST['value'] ) );
 	}
 
@@ -927,20 +607,7 @@ class Common_Settings extends Ajax_Base {
 	public function enable_file_generation() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_enable_file_generation', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( '_uagb_allow_file_generation', $response_data, $_POST );
 		$this->save_and_send_success_response( '_uagb_allow_file_generation', sanitize_text_field( $_POST['value'] ) );
 	}
 
@@ -952,20 +619,7 @@ class Common_Settings extends Ajax_Base {
 	public function regenerate_assets() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_regenerate_assets', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_regenerate_assets', $response_data, $_POST );
 
 		$wp_upload_dir = \UAGB_Helper::get_uag_upload_dir_path();
 
@@ -1027,20 +681,7 @@ class Common_Settings extends Ajax_Base {
 	public function load_font_awesome_5() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_load_font_awesome_5', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_load_font_awesome_5', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_load_font_awesome_5', sanitize_text_field( $_POST['value'] ) );
 
 	}
@@ -1053,22 +694,8 @@ class Common_Settings extends Ajax_Base {
 	public function auto_block_recovery() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_auto_block_recovery', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->check_value_in_post( $_POST, 'value' );
+		$this->check_value_nonce_verify( 'uag_auto_block_recovery', $response_data, $_POST );
 		$this->save_and_send_success_response( 'uag_auto_block_recovery', sanitize_text_field( $_POST['value'] ) );
 
 	}
 }
-
