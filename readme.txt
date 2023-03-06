@@ -191,6 +191,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Timeline - Left Padding not applicable on the frontend.
 * Fix: The archive page is getting slow.
 * Fix: Cartflows templates throws an error in the editor Spectra Page Settings 
+* Fix: Forms- form submit throws success message without adding To email address field.
+
 
 = 2.3.5 - THURSDAY, 2nd FEBRUARY 2023 =
 * Improvement: Global - Removed Backward compatibility of button padding for old users from multiple blocks.

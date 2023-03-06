@@ -193,9 +193,9 @@ UAGBForms = { // eslint-disable-line no-undef
 			const hideForm = document.querySelector( '[name="uagb-form-' + attr.block_id + '"]' );
 			hideForm.style.display = 'none';
 
-			const errorMsg = document.querySelector( '.uagb-forms-success-message-' + attr.block_id );
+			const errorMsg = document.querySelector( '.uagb-forms-failed-message-' + attr.block_id );
 			errorMsg.classList.remove( 'uagb-forms-submit-message-hide' );
-			errorMsg.classList.add( 'uagb-forms-success-message' );
+			errorMsg.classList.add( 'uagb-forms-failed-message' );
 			return false;
 		}
 
