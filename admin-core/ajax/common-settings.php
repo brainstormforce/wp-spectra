@@ -116,7 +116,7 @@ class Common_Settings extends Ajax_Base {
 	 * @param string $value The value to be updated.
 	 * @return void
 	 */
-	public function save_success( $option, $value = '' ) {
+	public function save_success( $option, $value ) {
 
 		if ( isset( $_POST['value'] ) ) {
 			\UAGB_Admin_Helper::update_admin_settings_option( $option, $value );
