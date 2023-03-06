@@ -26,12 +26,12 @@ export default function MyAccount() {
 			body: formData,
 		} ).then( ( data ) => {
             if ( data.success ) {
-				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'License successfully validated!' } );
-                setRegenerateAssetsState( false );
+				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'License successfully validated!', 'ultimate-addons-for-gutenberg' ) } );
 			} else {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: data?.data?.message } );
-                setRegenerateAssetsState( false );
 			}
+			setRegenerateAssetsState( false );
+			location.reload();
 		} );
 	};
 
@@ -48,12 +48,12 @@ export default function MyAccount() {
 			body: formData,
 		} ).then( ( data ) => {
             if ( data.success ) {
-				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'License successfully validated!' } );
-                setRegenerateAssetsState( false );
+				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'License successfully deactivated!', 'ultimate-addons-for-gutenberg' ) } );
 			} else {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: data?.data?.message } );
-                setRegenerateAssetsState( false );
 			}
+			setRegenerateAssetsState( false );
+			location.reload();
 		} );
 	};
 
