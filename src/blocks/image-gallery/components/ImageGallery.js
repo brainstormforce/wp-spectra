@@ -231,11 +231,6 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			aria-label="Next"
 			tabIndex="0"
 			data-direction="Next"
-			onClick={ () => (
-				( 'grid' === feedLayout )
-					? setAttributes( { gridPageNumber: gridPageNumber + 1 } )
-					: ''
-			) }
 			disabled={ ( 'grid' === feedLayout && gridPageNumber === gridPages ) }
 		>
 			{ UAGB_Block_Icons.carousel_right }
@@ -255,11 +250,6 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			aria-label="Prev"
 			tabIndex="0"
 			data-direction="Prev"
-			onClick={ () => (
-				( 'grid' === feedLayout )
-					? setAttributes( { gridPageNumber: gridPageNumber - 1 } )
-					: ''
-			) }
 			disabled={ ( 'grid' === feedLayout && 1 === gridPageNumber ) }
 		>
 			{ UAGB_Block_Icons.carousel_left }
@@ -412,7 +402,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 						] )}
 						data-go-to={ pageIndex + 1 }
 					>
-						<button onClick={ () => setAttributes( { gridPageNumber: pageIndex + 1 } ) } />
+						<button/>
 					</li>
 				) ) }
 			</ul>
@@ -563,7 +553,6 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		>
 			{ renderThumbnail( mediaObject ) }
 			{ ( 'tiled' === feedLayout ) && renderFocusControl( mediaObject ) }
-			{ applyFilters( 'spectra.image-gallery.render.customLinks', '', mediaObject, attributes, setAttributes ) }
 		</div>
 	);
 
@@ -665,7 +654,12 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	);
 
 
-	return ( mediaGallery ) ? renderGallery() : renderEmpty();
+	return ( mediaGallery ) ? (
+		<>
+			{ renderGallery() }
+			{ applyFilters( 'spectra.image-gallery.render.customLinks', null, tiledImages, attributes, setAttributes ) }
+		</>
+	) : renderEmpty();
 };
 
 export default ImageGallery;

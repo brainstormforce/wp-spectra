@@ -1567,7 +1567,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 		 * @param array  $lightbox_settings   Array of Lightbox Swiper Settings.
 		 * @param array  $thumbnail_settings  Array of Thumbnail Swiper Settings.
 		 * @param string $selector            Selector to identify the lightbox.
-		 * @return string                     The output buffer.
+		 * @return string       The Output Buffer.
 		 *
 		 * @since x.x.x
 		 */
@@ -1684,7 +1684,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 		 *
 		 * @param string $id             Block ID.
 		 * @param array  $media_gallery  The Media Gallery Attribute.
-		 * @return string                The output buffer.
+		 * @return string                The Output Buffer.
 		 *
 		 * @since x.x.x
 		 */
@@ -1697,10 +1697,10 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 			?>
 				window.addEventListener( 'DOMContentLoaded', () => {
 					const blockScope = document.querySelector( '.uagb-block-<?php echo esc_html( $id ); ?>' );
-					const mediaGallery = <?php echo wp_json_encode( $image_urls ); ?>;
 					if ( ! blockScope ) {
 						return;
 					}
+					const mediaGallery = <?php echo wp_json_encode( $image_urls ); ?>;
 					const images = blockScope.querySelectorAll( '.spectra-image-gallery__media-wrapper' );
 					for ( let i = 0; i < images.length; i++ ) {
 						const imageID = parseInt( images[ i ].getAttribute( 'data-spectra-gallery-image-id' ) );
