@@ -7,6 +7,7 @@ import { useDeviceType } from '@Controls/getPreviewType';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
+import ImageSizeControl from '@Components/image-size-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -24,7 +25,9 @@ import UAGTextControl from '@Components/text-control';
 import UAGSelectControl from '@Components/select-control';
 import BoxShadowControl from '@Components/box-shadow';
 import UAGPresets from '@Components/presets';
+import { useSelect } from '@wordpress/data';
 import {
+	store as blockEditorStore,
 	InspectorControls,
 } from '@wordpress/block-editor';
 import {
@@ -42,7 +45,8 @@ const Settings = ( props ) => {
 		lightboxPreview,
 		setLightboxPreview,
 		attributes,
-		setAttributes
+		setAttributes,
+		clientId,
 	} = props;
 
 	const {
@@ -53,6 +57,9 @@ const Settings = ( props ) => {
 		mediaIDs,
 		feedLayout,
 		imageDisplayCaption,
+		galleryImageSize,
+		galleryImageSizeTablet,
+		galleryImageSizeMobile,
 		imageClickEvent,
 
 		lightboxDisplayCaptions,
@@ -280,6 +287,21 @@ const Settings = ( props ) => {
 			<WebfontLoader config={ loadMoreConfig }></WebfontLoader>
 		);
 	}
+	
+	// Get the Image Sizes Available.
+	const { imageSizes } = useSelect( ( select ) => {
+			const { getSettings } = select( blockEditorStore );
+			// eslint-disable-next-line no-shadow
+			const { imageSizes } = getSettings();
+			return { imageSizes };
+		}, [ clientId ]
+	);
+	
+	// Set the Image Size Options.
+	const imageSizeOptions = imageSizes.reduce( ( acc, item ) => {
+		acc.push( { label: item.name, value: item.slug } );
+		return acc;
+	}, [] );
 
 	if ( lightboxLoadGoogleFonts === true ) {
 		const lightboxConfig = {
@@ -849,6 +871,25 @@ const Settings = ( props ) => {
 						value: 'tiled',
 					},
 				] }
+			/>
+			<ImageSizeControl
+				data={ {
+					sizeSlug: {
+						label: 'galleryImageSize',
+						value: galleryImageSize,
+					},
+					sizeSlugTablet: {
+						label: 'galleryImageSizeTablet',
+						value: galleryImageSizeTablet,
+					},
+					sizeSlugMobile: {
+						label: 'galleryImageSizeMobile',
+						value: galleryImageSizeMobile,
+					}
+				} }
+				setAttributes={ setAttributes }
+				imageSizeOptions={ imageSizeOptions }
+				isResizable={ false }
 			/>
 			<ResponsiveSlider
 				label={ __( 'Columns', 'ultimate-addons-for-gutenberg' ) }

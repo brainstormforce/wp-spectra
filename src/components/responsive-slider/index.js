@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from '@wordpress/element';
 import Range from '@Components/range/Range.js';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { limitMax, limitMin } from '@Controls/unitWiseMinMaxOption';

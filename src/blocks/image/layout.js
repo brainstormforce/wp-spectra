@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect,useRef } from '@wordpress/element';
 import {RichText} from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 
@@ -52,7 +52,7 @@ export default function Layout( {attributes, isSelected, setAttributes, captionR
 
 
 	return (
-		<React.Fragment>
+		<>
 			{
 				layout === 'overlay' ? (
 					<>
@@ -74,6 +74,6 @@ export default function Layout( {attributes, isSelected, setAttributes, captionR
 				)
 			}
 
-		</React.Fragment>
+		</>
 	);
 }

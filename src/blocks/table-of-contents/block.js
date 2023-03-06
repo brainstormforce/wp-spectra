@@ -4,13 +4,14 @@
 
 import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
-import edit from './edit';
+import Edit from './edit';
 import deprecated from './deprecated';
 import './style.scss';
 
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/table-of-contents', {
 	title: __( 'Table Of Contents', 'ultimate-addons-for-gutenberg' ),
@@ -26,11 +27,14 @@ registerBlockType( 'uagb/table-of-contents', {
 		anchor: true,
 	},
 	attributes,
-	edit,
+	edit: ( props ) =>
+			props.attributes.isPreview ? (
+				<PreviewImage image="table-of-content" />
+			) : (
+				<Edit { ...props } />
+			),
 	// Render via PHP
-	save() {
-		return null;
-	},
+	save: ()=> null,
 	example: {
 		attributes: {
 			isPreview: true,

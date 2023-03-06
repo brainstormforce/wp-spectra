@@ -1,7 +1,8 @@
 import { SelectControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useEffect, useState, useRef,memo } from '@wordpress/element';
+
 import { select, dispatch } from '@wordpress/data';
 import classnames from 'classnames';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
@@ -235,4 +236,4 @@ UAGPresets.defaultProps = {
     label: __( 'Select Preset', 'ultimate-addons-for-gutenberg' )
 };
 
-export default React.memo( UAGPresets );
+export default memo( UAGPresets );

@@ -7,12 +7,13 @@ import '.././style.scss';
 import './style.scss';
 import save from './save';
 import attributes from './attributes';
-import edit from './edit';
+import Edit from './edit';
 import deprecated from './deprecated';
 
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/content-timeline-child', {
 	title: __( 'Content Timeline Child', 'ultimate-addons-for-gutenberg' ),
@@ -26,7 +27,12 @@ registerBlockType( 'uagb/content-timeline-child', {
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
 	attributes,
-	edit,
+	edit: ( props ) =>
+			props.attributes.isPreview ? (
+				<PreviewImage image="content-timeline-child" isChildren={ true } />
+			) : (
+				<Edit { ...props } />
+			),
 	save,
 	deprecated,
 	example: {

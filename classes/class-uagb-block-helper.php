@@ -1609,10 +1609,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$gen_border_css['border-bottom-left-radius']  = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderBottomLeftRadius' . $device ], $gen_border_unit );
 				$gen_border_css['border-bottom-right-radius'] = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderBottomRightRadius' . $device ], $gen_border_unit );
 
-			$borderStyle                    = $attr[ $prefix . 'BorderStyle' ];
-			$borderColor                    = $attr[ $prefix . 'BorderColor' ];
-			$gen_border_css['border-style'] = $borderStyle;
-			$gen_border_css['border-color'] = $borderColor;
+			$gen_border_css['border-style'] = $attr[ $prefix . 'BorderStyle' ];
+			$gen_border_css['border-color'] = $attr[ $prefix . 'BorderColor' ];
+
+			if ( 'default' === $attr[ $prefix . 'BorderStyle' ] ) {
+				return array();
+			}
+			
 			return $gen_border_css;
 		}
 
@@ -1627,8 +1630,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $border_style Border Style.
 		 */
 		public static function uag_generate_deprecated_border_css( $current_css, $border_width, $border_radius, $border_color = '', $border_style = '' ) {
+			
 			$gen_border_css = array();
-			if ( 'default' !== $current_css['border-style'] ) {
+			
+			if ( ! empty( $current_css ) && isset( $current_css['border-style'] ) && 'default' !== $current_css['border-style'] ) {
+
 				$border_width  = is_numeric( $border_width ) ? $border_width : '';
 				$border_radius = is_numeric( $border_radius ) ? $border_radius : '';
 

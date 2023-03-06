@@ -2,28 +2,24 @@
  * BLOCK: Forms - Toggle - Edit
  */
 
-import React, {    useEffect } from 'react';
+import { useEffect } from '@wordpress/element';
 
 import Settings from './settings';
 import Render from './render';
 
 const UAGBFormsToggleEdit = ( props ) => {
-	useEffect( () => {
-		const { setAttributes } = props;
+	const { setAttributes, isSelected, clientId } = props;
 
+	useEffect( () => {
 		// Assigning block_id in the attribute.
-		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 	}, [] );
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/children/form-toggle.svg`;
-
 	return (
-		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
 			<>
-				<Settings parentProps={ props } />
+			{ isSelected && <Settings parentProps={ props } /> }
 				<Render parentProps={ props } />
 			</>
-		)
 	);
 };
 

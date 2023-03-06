@@ -4,11 +4,12 @@
 
 import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
-import edit from './edit';
+import Edit from './edit';
 import save from './save';
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
  
  
 registerBlockType( 'uagb/countdown', {
@@ -31,7 +32,12 @@ registerBlockType( 'uagb/countdown', {
 	},
 	category: uagb_blocks_info.category,
 	attributes,
-	edit,
+	edit: ( props ) =>
+		props.attributes.isPreview ? (
+			<PreviewImage image="countdown" />
+		) : (
+			<Edit { ...props } />
+		),
 	save,
 	example: {
 		attributes: {

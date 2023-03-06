@@ -3,12 +3,13 @@
  */
 import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
-import edit from './edit';
+import Edit from './edit';
 import save from './save';
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 import deprecated from './deprecated';
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/review', {
 	title: __( 'Review', 'ultimate-addons-for-gutenberg' ),
@@ -30,7 +31,12 @@ registerBlockType( 'uagb/review', {
 		anchor: true,
 	},
 	attributes,
-	edit,
+	edit: ( props ) =>
+			props.attributes.isPreview ? (
+				<PreviewImage image="review" />
+			) : (
+				<Edit { ...props } />
+			),
 	save,
 	deprecated
 } );

@@ -1,4 +1,3 @@
-import React from 'react';
 import { __ } from '@wordpress/i18n';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -7,6 +6,7 @@ import InspectorTab, {
 import UAGSelectControl from '@Components/select-control';
 import { ToggleControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
+import { memo } from '@wordpress/element';
 
 
 
@@ -94,4 +94,4 @@ const Settings = ( props ) => {
 		</InspectorControls>
 	);
 };
-export default React.memo( Settings );
+export default memo( Settings );

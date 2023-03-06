@@ -1,5 +1,4 @@
 import UAGIconPicker from '@Components/icon-picker';
-import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -13,8 +12,7 @@ import UAGMediaPicker from '@Components/image';
 import SpacingControl from '@Components/spacing-control';
 
 import { ToggleControl } from '@wordpress/components';
-
-
+import { memo } from '@wordpress/element';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import UAGTextControl from '@Components/text-control';
@@ -553,4 +551,4 @@ const Settings = ( props ) => {
 		</InspectorControls>
 	);
 };
-export default React.memo( Settings );
+export default memo( Settings );

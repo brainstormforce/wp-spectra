@@ -47,6 +47,9 @@ return array_merge(
 		'mediaIDs'                           => array(),
 		'feedLayout'                         => 'grid',
 		'imageDisplayCaption'                => true,
+		'galleryImageSize'                   => 'large',
+		'galleryImageSizeTablet'             => 'large',
+		'galleryImageSizeMobile'             => 'medium',
 		'imageClickEvent'                    => 'none',
 		// Lightbox Settings.
 		'lightboxDisplayCaptions'            => false,

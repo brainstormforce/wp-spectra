@@ -6,12 +6,13 @@
 import { renderLegacyBlockEditorIcon } from '@Controls/block-icons';
 
 // Import icon.
-import edit from './edit';
+import Edit from './edit';
 
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 if ( uagb_blocks_info.cf7_is_active && ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) ) {
 	registerBlockType( 'uagb/cf7-styler', {
@@ -27,14 +28,17 @@ if ( uagb_blocks_info.cf7_is_active && ( 'yes' === uagb_blocks_info.uagb_old_use
 			anchor: true,
 		},
 		category: uagb_blocks_info.category,
-		edit,
+		edit: ( props ) =>
+		props.attributes.isPreview ? (
+			<PreviewImage image="contact-form-7-styler" />
+		) : (
+			<Edit { ...props } />
+		),
 		example: {
 			attributes: {
 				isPreview: true,
 			}
 		},
-		save() {
-			return null;
-		},
+		save: () => null,
 	} );
 }

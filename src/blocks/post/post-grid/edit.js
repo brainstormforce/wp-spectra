@@ -4,8 +4,7 @@
  */
 
 import styling from '.././styling';
-import React, { useEffect, useState,    } from 'react';
-
+import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -13,33 +12,18 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-
 import Settings from './settings';
 import Render from './render';
-
 import { useSelect, useDispatch } from '@wordpress/data';
 import { Placeholder, Spinner } from '@wordpress/components';
 
 const PostGridComponent = ( props ) => {
 
 	const deviceType = useDeviceType();
-
-	const initialState = {
-		isEditing: false,
-		innerBlocks: [],
-	};
-
-	const [ state, setStateValue ] = useState( initialState );
-	const [ isTaxonomyLoading, setIsTaxonomyLoading] = useState( false );
-
-
-	useEffect( () => {
-		// Replacement for componentDidMount.
-		const { block } = props;
-		setStateValue( { innerBlocks: block } );
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-
-		const {
+	const {
+		isSelected,
+		attributes,
+		attributes: {
 			borderStyle,
 			borderWidth,
 			borderRadius,
@@ -56,61 +40,92 @@ const PostGridComponent = ( props ) => {
 			btnBorderColor,
 			btnBorderHColor,
 			btnBorderStyle,
-		} = props.attributes;
+			blockName,
+			categories,
+			postsToShow,
+			postsOffset,
+			order,
+			orderBy,
+			postType,
+			taxonomyType,
+			excludeCurrentPost,
+			allTaxonomyStore,
+			UAGHideDesktop,
+			UAGHideTab,
+			UAGHideMob,
+			postDisplaytext
+		},
+		setAttributes,
+	} = props;
+
+	const initialState = {
+		isEditing: false,
+		innerBlocks: [],
+	};
+
+	const [ state, setStateValue ] = useState( initialState );
+	const [ isTaxonomyLoading, setIsTaxonomyLoading] = useState( false );
+
+
+	useEffect( () => {
+		// Replacement for componentDidMount.
+		const { block } = props;
+		setStateValue( { innerBlocks: block } );
+		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
 		if( borderWidth ){
 			if( undefined === btnBorderTopWidth ) {
-				props.setAttributes( {
+				setAttributes( {
 					btnBorderTopWidth: borderWidth,
 				} );
 			}
 			if( undefined === btnBorderLeftWidth ) {
-				props.setAttributes( { btnBorderLeftWidth : borderWidth} );
+				setAttributes( { btnBorderLeftWidth : borderWidth} );
 			}
 			if( undefined === btnBorderRightWidth ) {
-				props.setAttributes( { btnBorderRightWidth : borderWidth} );
+				setAttributes( { btnBorderRightWidth : borderWidth} );
 			}
 			if( undefined === btnBorderBottomWidth ) {
-				props.setAttributes( { btnBorderBottomWidth : borderWidth} );
+				setAttributes( { btnBorderBottomWidth : borderWidth} );
 			}
 		}
 
 		if( borderRadius ){
 
 			if( undefined === btnBorderTopLeftRadius ) {
-				props.setAttributes( { btnBorderTopLeftRadius : borderRadius} );
+				setAttributes( { btnBorderTopLeftRadius : borderRadius} );
 			}
 			if( undefined === btnBorderTopRightRadius ) {
-				props.setAttributes( { btnBorderTopRightRadius : borderRadius} );
+				setAttributes( { btnBorderTopRightRadius : borderRadius} );
 			}
 			if( undefined === btnBorderBottomLeftRadius ) {
-				props.setAttributes( { btnBorderBottomLeftRadius : borderRadius} );
+				setAttributes( { btnBorderBottomLeftRadius : borderRadius} );
 			}
 			if( undefined === btnBorderBottomRightRadius ) {
-				props.setAttributes( { btnBorderBottomRightRadius : borderRadius} );
+				setAttributes( { btnBorderBottomRightRadius : borderRadius} );
 			}
 		}
 
 		if( borderColor ){
 			if( undefined === btnBorderColor ) {
-				props.setAttributes( { btnBorderColor : borderColor} );
+				setAttributes( { btnBorderColor : borderColor} );
 			}
 		}
 
 		if( borderHColor ){
 			if( undefined === btnBorderHColor ) {
-				props.setAttributes( { btnBorderHColor : borderHColor} );
+				setAttributes( { btnBorderHColor : borderHColor} );
 			}
 		}
 
 		if( borderStyle ){
 			if( undefined === btnBorderStyle ) {
-				props.setAttributes( { btnBorderStyle : borderStyle} );
+				setAttributes( { btnBorderStyle : borderStyle} );
 			}
 		}
 
 
-		props.setAttributes( { allTaxonomyStore : undefined} );
+		setAttributes( { allTaxonomyStore : undefined} );
 
 	}, [] );
 
@@ -121,9 +136,8 @@ const PostGridComponent = ( props ) => {
 
 		addBlockEditorDynamicStyles( 'uagb-post-grid-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 
-	}, [ props ] );
+	}, [ attributes, deviceType ] );
 
-	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
 	useEffect( () => {
 
 		responsiveConditionPreview( props );
@@ -131,13 +145,7 @@ const PostGridComponent = ( props ) => {
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-post-grid-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
 		scrollBlockToView();
-
 	}, [ deviceType ] );
 
 	const togglePreview = () => {
@@ -147,23 +155,9 @@ const PostGridComponent = ( props ) => {
 		}
 	};
 
-	const { attributes } = props;
-
 	let categoriesList = [];
 	const { latestPosts, taxonomyList, block } = useSelect( // eslint-disable-line no-unused-vars
 		( select ) => {
-			const {
-				blockName,
-				categories,
-				postsToShow,
-				postsOffset,
-				order,
-				orderBy,
-				postType,
-				taxonomyType,
-				excludeCurrentPost,
-				allTaxonomyStore
-			} = props.attributes;
 			const { getEntityRecords } = select( 'core' );
 
 			if ( ! allTaxonomyStore && ! isTaxonomyLoading ) {
@@ -171,7 +165,7 @@ const PostGridComponent = ( props ) => {
 				apiFetch( {
 					path: '/spectra/v1/all_taxonomy',
 				} ).then( ( data ) => {
-					props.setAttributes( { allTaxonomyStore: data } );
+					setAttributes( { allTaxonomyStore: data } );
 					setIsTaxonomyLoading( false );
 				} );
 			}
@@ -249,9 +243,6 @@ const PostGridComponent = ( props ) => {
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 	const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
-	// Caching all attributes.
-	const { postDisplaytext } = attributes;
-
 	if ( ! hasPosts ) {
 		return (
 			<>
@@ -280,10 +271,9 @@ const PostGridComponent = ( props ) => {
 		);
 	}
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/post-grid.svg`;
 	return (
-		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<>
+		<>
+			{ isSelected && (
 				<Settings
 					parentProps={ props }
 					state={ state }
@@ -293,18 +283,18 @@ const PostGridComponent = ( props ) => {
 					taxonomyList={ taxonomyList }
 					categoriesList={ categoriesList }
 				/>
-				<Render
-					parentProps={ props }
-					state={ state }
-					setStateValue={ setStateValue }
-					togglePreview={ togglePreview }
-					latestPosts={ latestPosts }
-					categoriesList={ categoriesList }
-					replaceInnerBlocks={ replaceInnerBlocks }
-					block={ block }
-				/>
-			</>
-		)
+			) }
+			<Render
+				parentProps={ props }
+				state={ state }
+				setStateValue={ setStateValue }
+				togglePreview={ togglePreview }
+				latestPosts={ latestPosts }
+				categoriesList={ categoriesList }
+				replaceInnerBlocks={ replaceInnerBlocks }
+				block={ block }
+			/>
+		</>
 	);
 };
 

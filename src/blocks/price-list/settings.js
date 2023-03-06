@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect,memo } from '@wordpress/element';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
@@ -1395,4 +1395,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

@@ -1,5 +1,5 @@
 
-import React from 'react';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
 import TypographyControl from '@Components/typography';
@@ -569,4 +569,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

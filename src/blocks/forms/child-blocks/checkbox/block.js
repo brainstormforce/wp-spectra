@@ -4,12 +4,13 @@
 
 import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
-import edit from './edit';
+import Edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
 
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/forms-checkbox', {
 	title: __( 'Checkbox', 'ultimate-addons-for-gutenberg' ),
@@ -18,7 +19,12 @@ registerBlockType( 'uagb/forms-checkbox', {
 	category: uagb_blocks_info.category,
 	parent: [ 'uagb/forms' ],
 	attributes,
-	edit,
+	edit: ( props ) =>
+		props.attributes.isPreview ? (
+			<PreviewImage image="form-checkbox" isChildren={ true } />
+		) : (
+			<Edit { ...props } />
+		),
 	supports: {
 		anchor: true,
 	},

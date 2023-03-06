@@ -3,7 +3,7 @@
  */
 
 import UAGB_Block_Icons from '@Controls/block-icons';
-import edit from './edit';
+import Edit from './edit';
 import save from './save';
 import attributes from './attributes';
 import deprecated from './deprecated';
@@ -12,6 +12,7 @@ import './style.scss';
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/info-box', {
 	title: __( 'Info Box', 'ultimate-addons-for-gutenberg' ),
@@ -26,7 +27,12 @@ registerBlockType( 'uagb/info-box', {
 	},
 	category: uagb_blocks_info.category,
 	attributes,
-	edit,
+	edit: ( props ) =>
+			props.attributes.isPreview ? (
+				<PreviewImage image="info-box" />
+			) : (
+				<Edit { ...props } />
+			),
 	save,
 	example: {
 		attributes: {

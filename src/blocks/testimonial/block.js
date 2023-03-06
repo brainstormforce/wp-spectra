@@ -3,7 +3,7 @@
  */
 
 import UAGB_Block_Icons from '@Controls/block-icons';
-import edit from './edit';
+import Edit from './edit';
 import save from './save';
 import attributes from './attributes';
 import deprecated from './deprecated';
@@ -11,6 +11,7 @@ import './style.scss';
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/testimonial', {
 	title: __( 'Testimonials', 'ultimate-addons-for-gutenberg' ), // Block title.
@@ -25,7 +26,12 @@ registerBlockType( 'uagb/testimonial', {
 	},
 	category: uagb_blocks_info.category,
 	attributes,
-	edit,
+	edit: ( props ) =>
+			props.attributes.isPreview ? (
+				<PreviewImage image="testimonial" />
+			) : (
+				<Edit { ...props } />
+			),
 	save,
 	example: {
 		attributes: {

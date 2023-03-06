@@ -1,4 +1,3 @@
-import React from 'react';
 import classnames from 'classnames';
 import { RichText } from '@wordpress/block-editor';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';

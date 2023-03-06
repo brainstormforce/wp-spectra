@@ -1,6 +1,5 @@
-import React, {  useLayoutEffect } from 'react';
+import { useLayoutEffect, memo } from '@wordpress/element';
 import classnames from 'classnames';
-
 import { Player } from '@lottiefiles/react-lottie-player';
 import styles from './editor.lazy.scss';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
@@ -82,4 +81,4 @@ const Render = ( props ) => {
 	);
 };
 
-export default React.memo( Render );
+export default memo( Render );

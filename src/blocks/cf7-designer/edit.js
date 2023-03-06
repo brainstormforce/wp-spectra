@@ -1,5 +1,5 @@
 import styling from './styling';
-import React, {   useEffect,  } from 'react';
+import { useEffect } from '@wordpress/element';
 
 import apiFetch from '@wordpress/api-fetch';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -15,46 +15,14 @@ import { useSelect } from '@wordpress/data';
 const UAGBCF7 = ( props ) => {
 
 	const deviceType = useDeviceType();
-	useSelect(
-		( select ) => { // eslint-disable-line  no-unused-vars
-			const { setAttributes } = props;
-			const { formId, isHtml } = props.attributes;
-			let jsonData = '';
-
-			if ( formId && -1 !== formId && 0 !== formId && ! isHtml ) {
-				const formData = new window.FormData();
-
-				formData.append( 'action', 'uagb_cf7_shortcode' );
-				formData.append(
-					'nonce',
-					uagb_blocks_info.uagb_ajax_nonce
-				);
-				formData.append( 'formId', formId );
-
-				apiFetch( {
-					url: uagb_blocks_info.ajax_url,
-					method: 'POST',
-					body: formData,
-				} ).then( ( data ) => {
-					setAttributes( { isHtml: true } );
-					setAttributes( { formJson: data } );
-					jsonData = data;
-				} );
-			}
-
-			return {
-				formHTML: jsonData,
-			};
-		},
-	);
-
-	useEffect( () => {
-		// Assigning block_id in the attribute.
-		props.setAttributes( { isHtml: false } );
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-
-		const { attributes, setAttributes } = props;
-		const {
+	const {
+		isSelected,
+		setAttributes,
+		clientId,
+		attributes,
+		attributes: {
+			formId,
+			isHtml,
 			msgVrPadding,
 			msgHrPadding,
 			messageTopPaddingDesktop,
@@ -107,7 +75,47 @@ const UAGBCF7 = ( props ) => {
 			btnBorderColor,
 			btnBorderHColor,
 			btnBorderStyle,
-		} = attributes;
+			UAGHideDesktop,
+			UAGHideTab,
+			UAGHideMob,
+		},
+	} = props;
+
+	useSelect(
+		( select ) => { // eslint-disable-line  no-unused-vars
+			let jsonData = '';
+
+			if ( formId && -1 !== formId && 0 !== formId && ! isHtml ) {
+				const formData = new window.FormData();
+
+				formData.append( 'action', 'uagb_cf7_shortcode' );
+				formData.append(
+					'nonce',
+					uagb_blocks_info.uagb_ajax_nonce
+				);
+				formData.append( 'formId', formId );
+
+				apiFetch( {
+					url: uagb_blocks_info.ajax_url,
+					method: 'POST',
+					body: formData,
+				} ).then( ( data ) => {
+					setAttributes( { isHtml: true } );
+					setAttributes( { formJson: data } );
+					jsonData = data;
+				} );
+			}
+
+			return {
+				formHTML: jsonData,
+			};
+		},
+	);
+
+	useEffect( () => {
+		// Assigning block_id in the attribute.
+		setAttributes( { isHtml: false } );
+		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
 		if ( msgVrPadding ) {
 			if ( ! messageTopPaddingDesktop ) {
@@ -164,104 +172,104 @@ const UAGBCF7 = ( props ) => {
 
 		if( fieldBorderWidth ){
 			if( undefined === inputBorderTopWidth ) {
-				props.setAttributes( {
+				setAttributes( {
 					inputBorderTopWidth: fieldBorderWidth,
 				} );
 			}
 			if( undefined === inputBorderLeftWidth ) {
-				props.setAttributes( { inputBorderLeftWidth : fieldBorderWidth} );
+				setAttributes( { inputBorderLeftWidth : fieldBorderWidth} );
 			}
 			if( undefined === inputBorderRightWidth ) {
-				props.setAttributes( { inputBorderRightWidth : fieldBorderWidth} );
+				setAttributes( { inputBorderRightWidth : fieldBorderWidth} );
 			}
 			if( undefined === inputBorderBottomWidth ) {
-				props.setAttributes( { inputBorderBottomWidth : fieldBorderWidth} );
+				setAttributes( { inputBorderBottomWidth : fieldBorderWidth} );
 			}
 		}
 
 		if( fieldBorderRadius ){
 
 			if( undefined === inputBorderTopLeftRadius ) {
-				props.setAttributes( { inputBorderTopLeftRadius : fieldBorderRadius} );
+				setAttributes( { inputBorderTopLeftRadius : fieldBorderRadius} );
 			}
 			if( undefined === inputBorderTopRightRadius ) {
-				props.setAttributes( { inputBorderTopRightRadius : fieldBorderRadius} );
+				setAttributes( { inputBorderTopRightRadius : fieldBorderRadius} );
 			}
 			if( undefined === inputBorderBottomLeftRadius ) {
-				props.setAttributes( { inputBorderBottomLeftRadius : fieldBorderRadius} );
+				setAttributes( { inputBorderBottomLeftRadius : fieldBorderRadius} );
 			}
 			if( undefined === inputBorderBottomRightRadius ) {
-				props.setAttributes( { inputBorderBottomRightRadius : fieldBorderRadius} );
+				setAttributes( { inputBorderBottomRightRadius : fieldBorderRadius} );
 			}
 		}
 
 		if( fieldBorderColor ){
 			if( undefined === inputBorderColor ) {
-				props.setAttributes( { inputBorderColor : fieldBorderColor} );
+				setAttributes( { inputBorderColor : fieldBorderColor} );
 			}
 		}
 
 		if( fieldBorderHColor ){
 			if( undefined === inputBorderHColor ) {
-				props.setAttributes( { inputBorderHColor : fieldBorderHColor} );
+				setAttributes( { inputBorderHColor : fieldBorderHColor} );
 			}
 		}
 
 		if( fieldBorderStyle ){
 			if( undefined === inputBorderStyle ) {
-				props.setAttributes( { inputBorderStyle : fieldBorderStyle} );
+				setAttributes( { inputBorderStyle : fieldBorderStyle} );
 			}
 		}
 
 
 		if( buttonBorderWidth ){
 			if( undefined === btnBorderTopWidth ) {
-				props.setAttributes( {
+				setAttributes( {
 					btnBorderTopWidth: buttonBorderWidth,
 				} );
 			}
 			if( undefined === btnBorderLeftWidth ) {
-				props.setAttributes( { btnBorderLeftWidth : buttonBorderWidth} );
+				setAttributes( { btnBorderLeftWidth : buttonBorderWidth} );
 			}
 			if( undefined === btnBorderRightWidth ) {
-				props.setAttributes( { btnBorderRightWidth : buttonBorderWidth} );
+				setAttributes( { btnBorderRightWidth : buttonBorderWidth} );
 			}
 			if( undefined === btnBorderBottomWidth ) {
-				props.setAttributes( { btnBorderBottomWidth : buttonBorderWidth} );
+				setAttributes( { btnBorderBottomWidth : buttonBorderWidth} );
 			}
 		}
 
 		if( buttonBorderRadius ){
 
 			if( undefined === btnBorderTopLeftRadius ) {
-				props.setAttributes( { btnBorderTopLeftRadius : buttonBorderRadius} );
+				setAttributes( { btnBorderTopLeftRadius : buttonBorderRadius} );
 			}
 			if( undefined === btnBorderTopRightRadius ) {
-				props.setAttributes( { btnBorderTopRightRadius : buttonBorderRadius} );
+				setAttributes( { btnBorderTopRightRadius : buttonBorderRadius} );
 			}
 			if( undefined === btnBorderBottomLeftRadius ) {
-				props.setAttributes( { btnBorderBottomLeftRadius : buttonBorderRadius} );
+				setAttributes( { btnBorderBottomLeftRadius : buttonBorderRadius} );
 			}
 			if( undefined === btnBorderBottomRightRadius ) {
-				props.setAttributes( { btnBorderBottomRightRadius : buttonBorderRadius} );
+				setAttributes( { btnBorderBottomRightRadius : buttonBorderRadius} );
 			}
 		}
 
 		if( buttonBorderColor ){
 			if( undefined === btnBorderColor ) {
-				props.setAttributes( { btnBorderColor : buttonBorderColor} );
+				setAttributes( { btnBorderColor : buttonBorderColor} );
 			}
 		}
 
 		if( buttonBorderHColor ){
 			if( undefined === btnBorderHColor ) {
-				props.setAttributes( { btnBorderHColor : buttonBorderHColor} );
+				setAttributes( { btnBorderHColor : buttonBorderHColor} );
 			}
 		}
 
 		if( buttonBorderStyle ){
 			if( undefined === btnBorderStyle ) {
-				props.setAttributes( { btnBorderStyle : buttonBorderStyle} );
+				setAttributes( { btnBorderStyle : buttonBorderStyle} );
 			}
 		}
 		
@@ -274,38 +282,31 @@ const UAGBCF7 = ( props ) => {
 				event.preventDefault();
 			} );
 		}
-
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-cf7-styler-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
 	}, [ props ] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
+		addBlockEditorDynamicStyles( 'uagb-cf7-styler-' + clientId.substr( 0, 8 ), blockStyling );
+	}, [ attributes, deviceType ] );
 
-		addBlockEditorDynamicStyles( 'uagb-cf7-styler-' + props.clientId.substr( 0, 8 ), blockStyling );
-
+	useEffect( () => {
 		scrollBlockToView();
 	}, [deviceType] );
 
-	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
 	useEffect( () => {
 
 		responsiveConditionPreview( props );
 
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/contact-form-7-styler.svg`;
-
 	return (
-		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<>
-				<Settings parentProps={ props } deviceType = { deviceType }/>
-				<Render parentProps={ props } />
-			</>
-		)
+		<>
+			{ isSelected && (
+				<Settings parentProps={ props } deviceType={ deviceType } />
+			) }
+			<Render parentProps={ props } />
+		</>
 	);
 };
 export default UAGBCF7;

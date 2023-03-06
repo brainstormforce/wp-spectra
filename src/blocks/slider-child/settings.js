@@ -1,5 +1,4 @@
-import React, {  useEffect } from 'react';
-
+import { useEffect,memo } from '@wordpress/element';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -470,4 +469,4 @@ const Settings = ( props ) => {
 
 	);
 };
-export default React.memo( Settings );
+export default memo( Settings );
