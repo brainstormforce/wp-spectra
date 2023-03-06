@@ -57,6 +57,10 @@ function addAttributes( settings ) {
 					type: 'boolean',
 					default: false,
 				},
+				UAGAnimationType:{
+					type: 'string',
+					default: '',
+				},
 			} );
 		}
 	}

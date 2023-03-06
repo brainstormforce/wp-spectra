@@ -299,7 +299,8 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		zIndexTablet,
 		zIndexMobile,
 		UAGDisplayConditions,
-		UAGResponsiveConditions
+		UAGResponsiveConditions,
+		UAGAnimationType,
 	} = attributes;
 
 	//Filter to add responsive condition compatibility for third party blocks.
@@ -335,6 +336,12 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		//Adding a common selector for blocks where z-index is applied.
 		extraProps.className = classnames( extraProps.className, 'uag-blocks-common-selector' );
 		extraProps.style = {'--z-index-desktop': zIndex + ';', '--z-index-tablet': zIndexTablet + ';', '--z-index-mobile': zIndexMobile + ';'}
+	}
+
+	if ( UAGAnimationType ) {
+		extraProps.className = classnames( extraProps.className, 'uagb-animate__animated uagb-animate__' + UAGAnimationType );
+	} else {
+		extraProps.className = extraProps.className;
 	}
 
 	return extraProps;
