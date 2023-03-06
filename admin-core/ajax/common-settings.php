@@ -691,7 +691,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function enable_file_generation() {
 
-		$this->check_permission_nonce( '_uagb_allow_file_generation' );
+		$this->check_permission_nonce( 'uag_enable_file_generation' );
 
 		if ( empty( $_POST ) ) {
 			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
