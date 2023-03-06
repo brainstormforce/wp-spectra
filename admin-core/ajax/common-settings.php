@@ -114,7 +114,7 @@ class Common_Settings extends Ajax_Base {
 	 * @param string $value The value to be updated.
 	 * @return void
 	 */
-	private function save_success( $option, $value ) {
+	private function save_success( $option, $value = '' ) {
 
 		if ( isset( $_POST['value'] ) ) {
 			\UAGB_Admin_Helper::update_admin_settings_option( $option, $value );
@@ -446,7 +446,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function collapse_panels() {
 
-		$this->check_permission_nonce( 'uag_collapse_panels', sanitize_text_field( $_POST['value'] ) );
+		$this->check_permission_nonce( 'uag_collapse_panels' );
 
 		if ( empty( $_POST ) ) {
 			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
@@ -657,7 +657,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function enable_beta_updates() {
 
-		$this->check_permission_nonce( 'uagb_beta' );
+		$this->check_permission_nonce( 'uag_enable_beta_updates' );
 
 		if ( empty( $_POST ) ) {
 			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
