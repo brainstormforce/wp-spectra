@@ -10,7 +10,7 @@ import { __ } from '@wordpress/i18n';
 import './style.scss';
 import { registerBlockType, createBlock } from '@wordpress/blocks';
 import deprecated from './deprecated';
-import PreviewImage from '@Controls/PreviewImage';
+import PreviewImage from '@Controls/previewImage';
 
 
 registerBlockType( 'uagb/image', {

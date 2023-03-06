@@ -12,7 +12,7 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType, createBlock } from '@wordpress/blocks';
 import './format';
 import colourNameToHex from '@Controls/changeColorNameToHex';
-import PreviewImage from '@Controls/PreviewImage';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/advanced-heading', {
 	title: __( 'Heading', 'ultimate-addons-for-gutenberg' ),

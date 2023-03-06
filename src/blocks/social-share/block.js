@@ -11,7 +11,7 @@ import save from './save';
 import deprecated from './deprecated';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-import PreviewImage from '@Controls/PreviewImage';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/social-share', {
 	title: __( 'Social Share', 'ultimate-addons-for-gutenberg' ),

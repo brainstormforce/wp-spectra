@@ -9,7 +9,7 @@ import save from './save';
 
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
-import PreviewImage from '@Controls/PreviewImage';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/forms-accept', {
 	title: __( 'Accept', 'ultimate-addons-for-gutenberg' ),

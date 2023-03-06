@@ -9,7 +9,7 @@ import save from './save';
 import { __ } from '@wordpress/i18n';
 import deprecated from './deprecated';
 import { registerBlockType } from '@wordpress/blocks';
-import PreviewImage from '@Controls/PreviewImage';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/forms-radio', {
 	title: __( 'Radio', 'ultimate-addons-for-gutenberg' ),

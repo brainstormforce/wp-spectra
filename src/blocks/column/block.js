@@ -10,7 +10,7 @@ import attributes from './attributes';
 import './style.scss';
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
-import PreviewImage from '@Controls/PreviewImage';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/column', {
 	title: __( 'Column', 'ultimate-addons-for-gutenberg' ),

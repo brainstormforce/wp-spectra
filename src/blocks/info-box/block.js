@@ -12,7 +12,7 @@ import './style.scss';
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
-import PreviewImage from '@Controls/PreviewImage';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/info-box', {
 	title: __( 'Info Box', 'ultimate-addons-for-gutenberg' ),

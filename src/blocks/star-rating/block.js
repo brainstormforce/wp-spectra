@@ -10,7 +10,7 @@ import './style.scss';
 import { __ } from '@wordpress/i18n';
 import deprecated from './deprecated';
 import { registerBlockType } from '@wordpress/blocks';
-import PreviewImage from '@Controls/PreviewImage';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/star-rating', {
 	title: __( 'Star Ratings', 'ultimate-addons-for-gutenberg' ),

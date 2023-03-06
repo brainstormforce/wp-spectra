@@ -10,7 +10,7 @@ import Edit from './edit';
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
-import PreviewImage from '@Controls/PreviewImage';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/slider-child', {
 	title: __( 'Slider Child', 'ultimate-addons-for-gutenberg' ),

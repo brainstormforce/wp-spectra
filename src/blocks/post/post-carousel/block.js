@@ -14,7 +14,7 @@ import { __ } from '@wordpress/i18n';
 
 // Register block controls
 import { registerBlockType } from '@wordpress/blocks';
-import PreviewImage from '@Controls/PreviewImage';
+import PreviewImage from '@Controls/previewImage';
 
 // Register the block
 registerBlockType( 'uagb/post-carousel', {

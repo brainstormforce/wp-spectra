@@ -10,7 +10,7 @@ import './style.scss';
 import deprecated from './deprecated';
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
-import PreviewImage from '@Controls/PreviewImage';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/faq-child', {
 	title: __( 'FAQ Child', 'ultimate-addons-for-gutenberg' ),

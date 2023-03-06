@@ -10,7 +10,7 @@ import save from './save';
 import './style.scss';
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
-import PreviewImage from '@Controls/PreviewImage';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/buttons-child', {
 	title: __( 'Button', 'ultimate-addons-for-gutenberg' ),

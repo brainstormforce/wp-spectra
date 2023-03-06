@@ -10,7 +10,7 @@ import './style.scss';
 import deprecated from './deprecated';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-import PreviewImage from '@Controls/PreviewImage';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/how-to', {
 	title: __( 'How To', 'ultimate-addons-for-gutenberg' ),

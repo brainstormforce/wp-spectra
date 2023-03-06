@@ -8,7 +8,7 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
-import PreviewImage from '@Controls/PreviewImage';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/lottie', {
 	title: __( 'Lottie Animation', 'ultimate-addons-for-gutenberg' ),

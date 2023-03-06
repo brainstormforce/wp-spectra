@@ -12,7 +12,7 @@ import save from './save';
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
-import PreviewImage from '@Controls/PreviewImage';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/tabs', {
 	title: __( 'Tabs', 'ultimate-addons-for-gutenberg' ),

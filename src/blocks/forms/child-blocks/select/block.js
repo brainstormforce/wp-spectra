@@ -9,7 +9,7 @@ import save from './save';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import deprecated from './deprecated'
-import PreviewImage from '@Controls/PreviewImage';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/forms-select', {
 	title: __( 'Select', 'ultimate-addons-for-gutenberg' ),

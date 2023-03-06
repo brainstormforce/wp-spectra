@@ -11,7 +11,7 @@ import attributes from './attributes';
 import { __ } from '@wordpress/i18n';
 import colourNameToHex from '@Controls/changeColorNameToHex';
 import { registerBlockType, createBlock } from '@wordpress/blocks';
-import PreviewImage from '@Controls/PreviewImage';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/blockquote', {
 	title: __( 'Blockquote', 'ultimate-addons-for-gutenberg' ),

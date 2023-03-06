@@ -11,7 +11,7 @@ import './style.scss';
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
-import PreviewImage from '@Controls/PreviewImage';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/testimonial', {
 	title: __( 'Testimonials', 'ultimate-addons-for-gutenberg' ), // Block title.

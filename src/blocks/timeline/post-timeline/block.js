@@ -12,7 +12,7 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 export const name = 'core/latest-posts';
-import PreviewImage from '@Controls/PreviewImage';
+import PreviewImage from '@Controls/previewImage';
 
 // Register the block.
 registerBlockType( 'uagb/post-timeline', {
