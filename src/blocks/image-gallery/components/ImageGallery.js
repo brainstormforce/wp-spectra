@@ -21,6 +21,9 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		mediaGallery,
 		feedLayout,
 		imageDisplayCaption,
+		galleryImageSize,
+		galleryImageSizeTablet,
+		galleryImageSizeMobile,
 
 		feedMarginTop,
 		feedMarginRight,
@@ -381,6 +384,20 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		}
 	};
 
+	// Set the Image URL with Size based on the Device Type.
+	const setImageURL = ( image ) => {
+		switch ( deviceType ) {
+			case 'Desktop':
+				return image.sizes[ galleryImageSize ] ? image.sizes[ galleryImageSize ].url : image.url;
+			case 'Tablet':
+				return image.sizes[ galleryImageSizeTablet ] ? image.sizes[ galleryImageSizeTablet ].url : image.url;
+			case 'Mobile':
+				return image.sizes[ galleryImageSizeMobile ] ? image.sizes[ galleryImageSizeMobile ].url : image.url;
+			default:
+				return image.url;
+		}
+	}
+
 	const renderGridPagintion = () => (
 		<div className="spectra-image-gallery__control-wrapper">
 			<SlickPrevArrow />
@@ -569,7 +586,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 						'spectra-image-gallery__media-thumbnail',
 						`spectra-image-gallery__media-thumbnail--${ feedLayout }`
 					] ) }
-					src={ mediaObject.url }
+					src={ setImageURL( mediaObject ) }
 					alt={ mediaObject.alt }
 					loading="lazy"
 				/>

@@ -14,9 +14,7 @@ export default function ImageSizeControl( {
 	imageHeight,
 	imageSizeOptions = [],
 	isResizable = true,
-	sizeSlug,
-	sizeSlugTablet,
-	sizeSlugMobile,
+	data,
 	width,
 	widthTablet,
 	widthMobile,
@@ -229,16 +227,16 @@ export default function ImageSizeControl( {
 					} }
 					data={ {
 						desktop: {
-							value: sizeSlug,
-							label: 'sizeSlug'
+							label: data.sizeSlug.label,
+							value: data.sizeSlug.value,
 						},
 						tablet: {
-							value: sizeSlugTablet,
-							label: 'sizeSlugTablet'
+							label: data.sizeSlugTablet.label,
+							value: data.sizeSlugTablet.value,
 						},
 						mobile: {
-							value: sizeSlugMobile,
-							label: 'sizeSlugMobile'
+							label: data.sizeSlugMobile.label,
+							value: data.sizeSlugMobile.value,
 						},
 					} }
 					setAttributes={ setAttributes }

@@ -173,7 +173,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 = 2.4.0 =
 * New: Introducing the Countdown block that will help you generate hype and create a sense of urgency among your audience, during product sales or releases!
 * New: Introducing the Icon block - Add FontAwesome icons on your website.
-* Feature: Image Gallery - Added Lightbox.
+* Feature: Image Gallery - Added a new lightbox feature with all the essential customizability you'll need.
+* Feature: Image Gallery - Added a dropdown to select the image size for all the images in the gallery.
 * Improvement: Custom CSS - Disable option for on page-level CSS.
 * Improvement: Typography - Added Fahkwang and Jost Google fonts from in Font Families.
 * Improvement: Global - Display Conditions - Added day Addition options to display blocks.

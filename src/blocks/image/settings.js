@@ -608,9 +608,20 @@ export default function Settings( props ) {
 						<ImageSizeControl
 							onChangeImage={ updateImage }
 							onChange={ ( value ) => setAttributes( value )}
-							sizeSlug={ sizeSlug }
-							sizeSlugTablet={ sizeSlugTablet }
-							sizeSlugMobile={ sizeSlugMobile }
+							data={ {
+								sizeSlug: {
+									label: 'sizeSlug',
+									value: sizeSlug,
+								},
+								sizeSlugTablet: {
+									label: 'sizeSlugTablet',
+									value: sizeSlugTablet,
+								},
+								sizeSlugMobile: {
+									label: 'sizeSlugMobile',
+									value: sizeSlugMobile,
+								},
+							} }
 							width={ width }
 							widthTablet={widthTablet}
 							widthMobile={widthMobile}

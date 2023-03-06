@@ -61,6 +61,18 @@ const attributes = {
 			styleType: 'gallery-show-caption'
 		},
 	},
+	galleryImageSize: {
+		type: 'string',
+		default: 'large',
+	},
+	galleryImageSizeTablet: {
+		type: 'string',
+		default: 'large',
+	},
+	galleryImageSizeMobile: {
+		type: 'string',
+		default: 'medium',
+	},
 	imageClickEvent: {
 		type: 'string',
 		default: 'none',
