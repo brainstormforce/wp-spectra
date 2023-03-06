@@ -89,49 +89,38 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Check if a value is present in POST request data and perform nonce verification.
+	 * Checks the value of a given key in the $_POST superglobal variable against a nonce, and updates the corresponding option value if the nonce is valid.
 	 *
-	 * @param string $option The option name to use for nonce verification.
-	 * @param array $response_data The response data to send in case of error.
-	 * @param array $arr The POST request data array.
-	 * @param string $key The key to look for in the POST request data array (default: 'value').
-	 * @param mixed $error_msg The error message to send in case of error (default: false).
+	 * @param string $option The name of the option to update.
+	 * @param mixed $value The new value to set for the option.
+	 * @param string $scope The user role or capability required to perform the update (default: 'manage_options').
+	 * @param string $key The key of the data to check for in $_POST (default: 'value').
+	 * @param string $error_msg The error message to send in case the required data is not found (default: '').
 	 * @return void
 	 */
-	private function check_value_nonce_verify( $option, $response_data, $arr, $key = 'value', $error_msg = false ) {
+	private function check_value_nonce_verify( $option, $value, $scope = 'manage_options', $key = 'value', $error_msg = '' ) {
 
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
+		if ( ! current_user_can( $scope ) ) {
+			wp_send_json_error( array( 'messsage' => $this->get_error_msg( 'permission' ) ) );
 		}
-        
-		
+
 		/**
 		 * Nonce verification
 		 */
 		if ( ! check_ajax_referer( $option, 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
+			wp_send_json_error( array( 'messsage' => $this->get_error_msg( 'nonce' ) ) );
 		}
 
-		$response_data = $error_msg ? $error_msg : array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-		if ( empty( $arr [ $key ] ) ) {
+		if ( ! isset( $_POST [ $key ] ) ) {
+			$response_data = array( 'messsage' => $error_msg ? $error_msg : __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
 			wp_send_json_error( $response_data );
+		} else {
+			\UAGB_Admin_Helper::update_admin_settings_option( $option, $value );
+			$response_data = array(
+				'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
+			);
+			wp_send_json_success( $response_data );
 		}
-	}
-
-	/**
-	 * Update an option with a new value and send a success JSON response.
-	 *
-	 * @param string $option The name of the option to update.
-	 * @param mixed $value The new value to assign to the option.
-	 * @return void
-	 */
-	private function save_and_send_success_response( $option, $value ) {
-		\UAGB_Admin_Helper::update_admin_settings_option( $option, $value );
-		$response_data = array(
-			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
-		);
-		wp_send_json_success( $response_data );
 	}
 
 	/**
@@ -187,10 +176,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function recaptcha_secret_key_v3() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		$this->check_value_nonce_verify( 'uag_recaptcha_secret_key_v3', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_recaptcha_secret_key_v3', sanitize_text_field( $_POST['value'] ) );
+		$this->check_value_nonce_verify( 'uag_recaptcha_secret_key_v3', sanitize_text_field( $_POST['value'] ) );
 	}
 	/**
 	 * Save settings.
@@ -199,10 +185,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function recaptcha_secret_key_v2() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_recaptcha_secret_key_v2', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_recaptcha_secret_key_v2', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_recaptcha_secret_key_v2', sanitize_text_field( $_POST['value'] ) );
 	}
 
 	/**
@@ -212,10 +195,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function recaptcha_site_key_v2() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_recaptcha_site_key_v2', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_recaptcha_site_key_v2', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_recaptcha_site_key_v2', sanitize_text_field( $_POST['value'] ) );
 	}
 
 	/**
@@ -225,10 +205,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function recaptcha_site_key_v3() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_recaptcha_site_key_v3', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_recaptcha_site_key_v3', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_recaptcha_site_key_v3', sanitize_text_field( $_POST['value'] ) );
 	}
 	/**
 	 * Save settings.
@@ -280,10 +257,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function coming_soon_page() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_coming_soon_page', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_coming_soon_page', intval( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_coming_soon_page', intval( $_POST['value'] ) );
 	}
 	/**
 	 * Save settings.
@@ -292,10 +266,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function enable_coming_soon_mode() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_enable_coming_soon_mode', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_enable_coming_soon_mode', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_enable_coming_soon_mode', sanitize_text_field( $_POST['value'] ) );
 	}
 	/**
 	 * Save settings.
@@ -304,10 +275,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function content_width() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_content_width', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_content_width', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_content_width', sanitize_text_field( $_POST['value'] ) );
 	}
 	/**
 	 * Save settings.
@@ -316,10 +284,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function container_global_padding() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_container_global_padding', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_container_global_padding', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_container_global_padding', sanitize_text_field( $_POST['value'] ) );
 	}
 	/**
 	 * Save settings.
@@ -328,10 +293,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function container_global_elements_gap() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_container_global_elements_gap', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_container_global_elements_gap', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_container_global_elements_gap', sanitize_text_field( $_POST['value'] ) );
 	}
 
 	/**
@@ -341,10 +303,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function blocks_editor_spacing() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_blocks_editor_spacing', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_blocks_editor_spacing', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_blocks_editor_spacing', sanitize_text_field( $_POST['value'] ) );
 	}
 	/**
 	 * Save settings.
@@ -353,10 +312,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function load_select_font_globally() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_load_select_font_globally', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_load_select_font_globally', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_load_select_font_globally', sanitize_text_field( $_POST['value'] ) );
 	}
 	/**
 	 * Save settings.
@@ -364,13 +320,32 @@ class Common_Settings extends Ajax_Base {
 	 * @return void
 	 */
 	public function select_font_globally() {
-
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-        $this->check_value_nonce_verify( 'uag_select_font_globally', $response_data, $_POST );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_select_font_globally', 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		if ( empty( $_POST ) ) {
+			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( $response_data );
+		}
 
 		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
-		$this->save_and_send_success_response( 'uag_select_font_globally', sanitize_text_field( $value ) );
+		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_select_font_globally', $this->sanitize_form_inputs( $value ) );
+		$response_data = array(
+			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
+		);
+		wp_send_json_success( $response_data );
 
 	}
 	/**
@@ -380,10 +355,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function enable_masonry_gallery() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_enable_masonry_gallery', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_enable_masonry_gallery', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_enable_masonry_gallery', sanitize_text_field( $_POST['value'] ) );
 	}
 	/**
 	 * Save settings.
@@ -392,10 +364,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function load_gfonts_locally() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_load_gfonts_locally', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_load_gfonts_locally', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_load_gfonts_locally', sanitize_text_field( $_POST['value'] ) );
 	}
 	/**
 	 * Save settings.
@@ -404,10 +373,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function collapse_panels() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_collapse_panels', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_collapse_panels', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_collapse_panels', sanitize_text_field( $_POST['value'] ) );
 	}
 	/**
 	 * Save settings.
@@ -416,10 +382,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function copy_paste() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_copy_paste', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_copy_paste', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_copy_paste', sanitize_text_field( $_POST['value'] ) );
 	}
 	/**
 	 * Save settings.
@@ -429,7 +392,23 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function social() {
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_social', $response_data, $_POST );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_social', 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		if ( empty( $_POST ) ) {
+			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( $response_data );
+		}
 
 		$social = \UAGB_Admin_Helper::get_admin_settings_option(
 			'uag_social',
@@ -452,7 +431,13 @@ class Common_Settings extends Ajax_Base {
 		if ( isset( $_POST['facebookAppSecret'] ) ) {
 			$social['facebookAppSecret'] = sanitize_text_field( $_POST['facebookAppSecret'] );
 		}
-		$this->save_and_send_success_response( 'uag_social', $social );
+
+		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_social', $social );
+
+		$response_data = array(
+			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
+		);
+		wp_send_json_success( $response_data );
 	}
 	/**
 	 * Save settings.
@@ -462,22 +447,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function dynamic_content_mode() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_dynamic_content_mode', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_and_send_success_response( 'uag_dynamic_content_mode', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_dynamic_content_mode', sanitize_text_field( $_POST['value'] ) );
 	}
 	/**
 	 * Save settings.
@@ -486,10 +456,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function preload_local_fonts() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_preload_local_fonts', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_preload_local_fonts', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_preload_local_fonts', sanitize_text_field( $_POST['value'] ) );
 	}
 	/**
 	 * Save settings.
@@ -498,10 +465,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function enable_block_condition() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_enable_block_condition', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_enable_block_condition', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_enable_block_condition', sanitize_text_field( $_POST['value'] ) );
 	}
 	/**
 	 * Save settings.
@@ -510,10 +474,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function enable_block_responsive() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_enable_block_responsive', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_enable_block_responsive', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_enable_block_responsive', sanitize_text_field( $_POST['value'] ) );
 	}
 	/**
 	 * Save settings.
@@ -523,10 +484,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function enable_dynamic_content() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_enable_dynamic_content', $response_data,$_POST );
-		$this->save_and_send_success_response( 'uag_enable_dynamic_content', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_enable_dynamic_content', sanitize_text_field( $_POST['value'] ) );
 	}
 
 	/**
@@ -536,10 +494,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function enable_templates_button() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_enable_templates_button', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_enable_templates_button', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_enable_templates_button', sanitize_text_field( $_POST['value'] ) );
 	}
 
 	/**
@@ -549,10 +504,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function enable_on_page_css_button() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_enable_on_page_css_button', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_enable_on_page_css_button', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_enable_on_page_css_button', sanitize_text_field( $_POST['value'] ) );
 	}
 
 	/**
@@ -563,16 +515,37 @@ class Common_Settings extends Ajax_Base {
 	public function blocks_activation_and_deactivation() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_blocks_activation_and_deactivation', $response_data, $_POST );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_blocks_activation_and_deactivation', 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		if ( empty( $_POST ) ) {
+			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( $response_data );
+		}
 
 		// will sanitize $value in later stage.
 		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
+		\UAGB_Admin_Helper::update_admin_settings_option( '_uagb_blocks', $this->sanitize_form_inputs( $value ) );
 
 		if ( 'disabled' === \UAGB_Helper::$file_generation ) {
 			\UAGB_Admin_Helper::create_specific_stylesheet(); // Get Specific Stylesheet.
 		}
 
-		$this->save_and_send_success_response( '_uagb_blocks', $this->sanitize_form_inputs( $value ) );
+		$response_data = array(
+			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
+		);
+		wp_send_json_success( $response_data );
 	}
 
 	/**
@@ -582,9 +555,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function enable_beta_updates() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uagb_beta', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uagb_beta', sanitize_text_field( $_POST['value'] ) );
+		$this->check_value_nonce_verify( 'uagb_beta', sanitize_text_field( $_POST['value'] ) );
 	}
 
 	/**
@@ -594,9 +565,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function enable_legacy_blocks() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_enable_legacy_blocks', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_enable_legacy_blocks', sanitize_text_field( $_POST['value'] ) );
+		$this->check_value_nonce_verify( 'uag_enable_legacy_blocks', sanitize_text_field( $_POST['value'] ) );
 	}
 
 	/**
@@ -606,9 +575,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function enable_file_generation() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( '_uagb_allow_file_generation', $response_data, $_POST );
-		$this->save_and_send_success_response( '_uagb_allow_file_generation', sanitize_text_field( $_POST['value'] ) );
+		$this->check_value_nonce_verify( '_uagb_allow_file_generation', sanitize_text_field( $_POST['value'] ) );
 	}
 
 	/**
@@ -619,7 +586,23 @@ class Common_Settings extends Ajax_Base {
 	public function regenerate_assets() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_regenerate_assets', $response_data, $_POST );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_regenerate_assets', 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		if ( empty( $_POST ) ) {
+			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( $response_data );
+		}
 
 		$wp_upload_dir = \UAGB_Helper::get_uag_upload_dir_path();
 
@@ -680,10 +663,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function load_font_awesome_5() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_load_font_awesome_5', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_load_font_awesome_5', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_load_font_awesome_5', sanitize_text_field( $_POST['value'] ) );
 	}
 
 	/**
@@ -693,9 +673,6 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function auto_block_recovery() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-		$this->check_value_nonce_verify( 'uag_auto_block_recovery', $response_data, $_POST );
-		$this->save_and_send_success_response( 'uag_auto_block_recovery', sanitize_text_field( $_POST['value'] ) );
-
+		$this->check_value_nonce_verify( 'uag_auto_block_recovery', sanitize_text_field( $_POST['value'] ) );
 	}
 }
