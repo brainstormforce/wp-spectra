@@ -39,14 +39,12 @@ export default function save( props ){
 	}
 
 	const blockProps = useBlockProps.save( {
-		className: `uagb-block-${ block_id }`
+		className: `uagb-block-${ block_id } uagb-icon-wrapper`
 	} );
 
 	return (
 		<div { ...blockProps }>
-			<div className='uagb-icon-wrapper'>
-				<span className='uagb-svg-wrapper' >{ iconHtml }</span>
-			</div>
+			<span className='uagb-svg-wrapper' >{ iconHtml }</span>
 		</div>
 	);
 };

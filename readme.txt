@@ -191,6 +191,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Team - On responsive devices preset images not working as expected.
 * Fix: Post Timeline - Left Padding not applicable on the frontend.
 * Fix: The archive page is getting slow.
+* Fix: Responsive Conditions Slanted lines not visible for Counter and Slider Blocks.
 * Fix: Cartflows templates throws an error in the editor Spectra Page Settings 
 * Fix: Call to Action - Additional button icon color on hover not changing in frontend 
 * Fix: Forms- Form submit throws success message without adding To email address field.
