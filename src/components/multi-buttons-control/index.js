@@ -1,7 +1,8 @@
 /**
  * WordPress dependencies
  */
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { useLayoutEffect,useEffect, useState, useRef } from '@wordpress/element';
+
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import { Button, ButtonGroup } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import { __ } from '@wordpress/i18n';
 import PropTypes from 'prop-types';

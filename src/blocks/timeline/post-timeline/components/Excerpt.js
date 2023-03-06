@@ -1,5 +1,5 @@
-import React from 'react';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import { memo } from '@wordpress/element';
 const Excerpt = ( props ) => {
 	const { post, attributes } = props;
 	const contentSpaceFallback = getFallbackNumber( attributes.contentSpace, 'contentSpace', 'post-timeline' );
@@ -26,4 +26,4 @@ const Excerpt = ( props ) => {
 	return null;
 };
 
-export default React.memo( Excerpt );
+export default memo( Excerpt );

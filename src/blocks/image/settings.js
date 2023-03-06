@@ -1,5 +1,4 @@
-import React, { useEffect} from 'react';
-
+import { useEffect } from '@wordpress/element';
 import TypographyControl from '@Components/typography';
 import { useViewportMatch } from '@wordpress/compose';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -1978,7 +1977,7 @@ export default function Settings( props ) {
 	)
 
 	return (
-		<React.Fragment>
+		<>
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
@@ -2015,6 +2014,6 @@ export default function Settings( props ) {
 					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-		</React.Fragment>
+		</>
 	);
 }

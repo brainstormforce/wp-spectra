@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 import GradientSettings from '@Components/gradient-settings';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import { select } from '@wordpress/data'
 import styles from './editor.lazy.scss';

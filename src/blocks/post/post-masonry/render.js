@@ -9,7 +9,7 @@ import { createBlock } from '@wordpress/blocks';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { Placeholder, Button, Tip } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import React, {    useLayoutEffect } from 'react';
+import { useLayoutEffect, memo } from '@wordpress/element';
 
 import styles from '.././editor.lazy.scss';
 
@@ -125,4 +125,4 @@ const Render = ( props ) => {
 	return <>{ state.isEditing ? renderEditMode() : renderViewMode }</>;
 };
 
-export default React.memo( Render );
+export default memo( Render );

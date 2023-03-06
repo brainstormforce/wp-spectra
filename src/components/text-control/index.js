@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-for */
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import Separator from '@Components/separator';
 import { useSelect } from '@wordpress/data';
 import {

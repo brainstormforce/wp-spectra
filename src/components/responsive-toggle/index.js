@@ -4,7 +4,7 @@
 import { ButtonGroup, Button, Tooltip } from '@wordpress/components';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { __, sprintf } from '@wordpress/i18n';
-import React, {useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from '@wordpress/element';
 import { dispatch, select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';

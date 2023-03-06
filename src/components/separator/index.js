@@ -2,7 +2,7 @@
  * External dependencies
  */
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import { getPanelIdFromRef } from '@Utils/Helpers';
 import { select } from '@wordpress/data';
 import PropTypes from 'prop-types';

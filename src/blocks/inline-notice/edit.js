@@ -4,8 +4,7 @@
 
 // Import block dependencies and components.
 import styling from './styling';
-
-import React, { useEffect,   } from 'react';
+import { useEffect } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
@@ -15,45 +14,40 @@ import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const UAGBInlineNoticeEdit = ( props ) => {
 	const deviceType = useDeviceType();
+	const {
+		isSelected,
+		setAttributes,
+		clientId,
+		attributes,
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
+	} = props;
+	
 	useEffect( () => {
-		const { setAttributes, clientId } = props;
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
-		
 	}, [] );
 
 	useEffect( () => {
 		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-inline-notice-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles( 'uagb-inline-notice-style-' + clientId.substr( 0, 8 ), blockStyling );
 		
-	}, [ props ] );
+	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-inline-notice-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
 		scrollBlockToView();
 	}, [deviceType] );
 
-	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
 	useEffect( () => {
 
 		responsiveConditionPreview( props );
 
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/inline-notice.svg`;
-
 	return (
-		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
 			<>
-				<Settings parentProps={ props } />
+			{ isSelected && <Settings parentProps={ props } /> }
 				<Render parentProps={ props } />
 			</>
-		)
 	);
 };
 

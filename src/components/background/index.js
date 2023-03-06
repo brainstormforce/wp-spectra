@@ -1,10 +1,9 @@
 import { __ } from '@wordpress/i18n';
-import { useRef } from '@wordpress/element';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import { SelectControl } from '@wordpress/components';
 import styles from './editor.lazy.scss';
 import GradientSettings from '@Components/gradient-settings';
-import React, { useLayoutEffect, useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useLayoutEffect } from '@wordpress/element';
 import UAGMediaPicker from '@Components/image';
 import ResponsiveSlider from '@Components/responsive-slider';
 import ResponsiveSelectControl from '@Components/responsive-select';

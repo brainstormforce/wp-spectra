@@ -1,7 +1,7 @@
 // Import block dependencies and components
 import classnames from 'classnames';
 import ReviewBody from './review-body';
-import React, { useLayoutEffect, useState, useEffect } from 'react';
+import { useEffect, useState, useLayoutEffect, memo } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
 import getImageHeightWidth from '@Controls/getImageHeightWidth';
@@ -194,4 +194,4 @@ const Render = ( props ) => {
 		</div>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );

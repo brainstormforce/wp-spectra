@@ -1,4 +1,4 @@
-import React from 'react';
+import {memo} from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import WebfontLoader from '@Components/typography/fontloader';
@@ -1856,4 +1856,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

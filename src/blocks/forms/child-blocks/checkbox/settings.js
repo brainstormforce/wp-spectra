@@ -1,6 +1,5 @@
-import React from 'react';
 import { __ } from '@wordpress/i18n';
-
+import { memo } from '@wordpress/element';
 import { ToggleControl } from '@wordpress/components';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -48,4 +47,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

@@ -107,10 +107,7 @@ const UAGBCountdownEdit = ( props ) => {
 		deviceType
 	] );
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/countdown.svg`;
-
 	return (
-		props.attributes.isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<>
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render countdownRef={ countdownRef } parentProps={ props } />

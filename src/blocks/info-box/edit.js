@@ -1,7 +1,7 @@
 /**
  * BLOCK: Info Box - Edit Class
  */
-import React, {    useEffect } from 'react';
+import { useEffect } from '@wordpress/element';
 
 import styling from './styling';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -15,16 +15,11 @@ import Render from './render';
 
 const UAGBInfoBox = ( props ) => {
 	const deviceType = useDeviceType();
-
-	useEffect( () => {
-
-		const { setAttributes } = props;
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-
-		setAttributes( { classMigrate: true } );
-
-		const {
+	const {
+		setAttributes,
+		isSelected,
+		attributes,
+		attributes: {
 			ctaBorderStyle,
 			ctaBorderWidth,
 			ctaBorderRadius,
@@ -33,18 +28,29 @@ const UAGBInfoBox = ( props ) => {
 			ctaBgType,
 			ctaBgHoverType,
 			showCtaIcon,
-		} = props.attributes;
+			UAGHideDesktop,
+			UAGHideTab,
+			UAGHideMob,
+		},
+		clientId,
+	} = props;
+
+	useEffect( () => {
+		// Assigning block_id in the attribute.
+		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
+
+		setAttributes( { classMigrate: true } );
 
 		if( ctaBgType === undefined ) {
-			props.setAttributes( { ctaBgType: 'color' } );
+			setAttributes( { ctaBgType: 'color' } );
 		}
 
 		if( ctaBgHoverType === undefined ) {
-			props.setAttributes( { ctaBgHoverType: 'color' } );
+			setAttributes( { ctaBgHoverType: 'color' } );
 		}
 
 		if( showCtaIcon === undefined ) {
-			props.setAttributes( { showCtaIcon: true } );
+			setAttributes( { showCtaIcon: true } );
 		}
 		
 		// Backward Border Migration
@@ -66,8 +72,8 @@ const UAGBInfoBox = ( props ) => {
 				label: 'ctaBorderStyle',
 				value: ctaBorderStyle
 			},
-			props.setAttributes,
-			props.attributes
+			setAttributes,
+			attributes
 		);
 		}
 
@@ -78,11 +84,10 @@ const UAGBInfoBox = ( props ) => {
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
-		addBlockEditorDynamicStyles( 'uagb-info-box-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles( 'uagb-info-box-style-' + clientId.substr( 0, 8 ), blockStyling );
 		
-	}, [ props ] );
+	}, [ attributes, deviceType ] );
 
-	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
 	useEffect( () => {
 
 		responsiveConditionPreview( props );
@@ -90,25 +95,14 @@ const UAGBInfoBox = ( props ) => {
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
-
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-info-box-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
 		scrollBlockToView();
-
 	}, [ deviceType ] );
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/info-box.svg`;
-
 	return (
-		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
 			<>
-				<Settings parentProps={ props } />
+			{ isSelected && <Settings parentProps={ props } /> }
 				<Render parentProps={ props } />
 			</>
-		)
 	);
 };
 
