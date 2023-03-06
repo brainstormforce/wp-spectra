@@ -90,11 +90,12 @@ class Common_Settings extends Ajax_Base {
 
 	/**
 	 * Checks if the user has the permission to perform the requested action and verifies the nonce.
+	 *
 	 * @param string $option The name of the option to check the nonce against.
 	 * @param string $scope The capability required to perform the action. Default is 'manage_options'.
 	 * @return void
 	 */
-	private function check_permission_nonce( $option, $scope = 'manage_options' ) {
+	public function check_permission_nonce( $option, $scope = 'manage_options' ) {
 
 		if ( ! current_user_can( $scope ) ) {
 			wp_send_json_error( array( 'messsage' => $this->get_error_msg( 'permission' ) ) );
@@ -110,11 +111,12 @@ class Common_Settings extends Ajax_Base {
 
 	/**
 	 * Saves the success message after successfully updating admin settings option.
+	 *
 	 * @param string $option The name of the option to update.
 	 * @param string $value The value to be updated.
 	 * @return void
 	 */
-	private function save_success( $option, $value = '' ) {
+	public function save_success( $option, $value = '' ) {
 
 		if ( isset( $_POST['value'] ) ) {
 			\UAGB_Admin_Helper::update_admin_settings_option( $option, $value );
