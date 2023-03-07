@@ -38,8 +38,8 @@ export default function MyAccount() {
 	const deactivateHandler = () => {
 		setRegenerateAssetsState( 'loading' );
 		const formData = new window.FormData();
-		formData.append( 'action', 'uag_license_activation' );
-		formData.append( 'security', uag_react.license_activation_nonce );
+		formData.append( 'action', 'uag_license_deactivation' );
+		formData.append( 'security', uag_react.license_deactivation_nonce );
 		formData.append( 'key', licenseKey );
 
 		apiFetch( {
