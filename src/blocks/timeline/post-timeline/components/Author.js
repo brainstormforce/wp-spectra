@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from '@wordpress/element';
 const Author = ( props ) => {
 	const { post, attributes } = props;
 
@@ -26,4 +26,4 @@ const Author = ( props ) => {
 	);
 };
 
-export default React.memo( Author );
+export default memo( Author );

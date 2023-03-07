@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
-import React from 'react';
-class TOC extends React.Component {
+import { Component } from '@wordpress/element';
+class TOC extends Component {
 	render() {
 		const { mappingHeaders, headers } = this.props;
 

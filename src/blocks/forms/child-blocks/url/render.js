@@ -1,7 +1,6 @@
 import classnames from 'classnames';
-import React from 'react';
 import { __ } from '@wordpress/i18n';
-
+import { memo } from '@wordpress/element';
 import { RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
@@ -47,4 +46,4 @@ const Render = ( props ) => {
 		</>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );

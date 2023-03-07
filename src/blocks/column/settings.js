@@ -1,9 +1,6 @@
 /**
  * BLOCK: Column - Settings.
  */
-
-import React from 'react';
-
 import Background from '@Components/background';
 import ResponsiveBorder from '@Components/responsive-border';
 import SpacingControl from '@Components/spacing-control';
@@ -13,6 +10,7 @@ import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import ResponsiveSlider from '@Components/responsive-slider';
+import { memo } from '@wordpress/element';
 
 import { InspectorControls } from '@wordpress/block-editor';
 
@@ -355,4 +353,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { useLayoutEffect, useEffect } from 'react';
+import { useLayoutEffect, memo, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import { RichText } from '@wordpress/block-editor';
@@ -172,4 +172,4 @@ const Render = ( props ) => {
 		</div>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );

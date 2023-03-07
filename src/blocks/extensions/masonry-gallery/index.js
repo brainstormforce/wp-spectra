@@ -7,7 +7,7 @@ const { enableMasonryGallery } = uagb_blocks_info;
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateCSS from '@Controls/generateCSS';
 import styles from './../editor.lazy.scss';
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect } from '@wordpress/element';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { select } from '@wordpress/data';
 

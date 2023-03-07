@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 
 import { useDeviceType } from '@Controls/getPreviewType';
-import React, { useRef, useEffect,    } from 'react';
+import { useEffect, useRef } from '@wordpress/element';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import Masonry from 'react-masonry-component';
 

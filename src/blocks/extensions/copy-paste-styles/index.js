@@ -9,9 +9,8 @@ import {
 	BlockControls,
 } from '@wordpress/block-editor';
 import { ToolbarGroup, ToolbarButton, Popover, MenuItem } from '@wordpress/components';
-import { useState, useEffect } from '@wordpress/element';
+import { useState, useEffect,useLayoutEffect } from '@wordpress/element';
 import editorStyles from './../editor.lazy.scss';
-import { useLayoutEffect } from 'react';
 import { addFilter } from '@wordpress/hooks';
 import SettingsIcons from './icons.js';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';

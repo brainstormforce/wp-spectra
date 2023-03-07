@@ -3,8 +3,7 @@
  */
 
 import contentTimelineStyle from './styling';
-import React, { useEffect,    } from 'react';
-
+import { useEffect } from '@wordpress/element';
 import { dispatch, select } from '@wordpress/data';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
@@ -15,8 +14,22 @@ import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const ContentTimelineComponent = ( props ) => {
     const deviceType = useDeviceType();
+    const {
+		setAttributes,
+		clientId,
+		attributes,
+		attributes: {
+			timelinAlignmentTablet,
+			timelinAlignmentMobile,
+			stack,
+			UAGHideDesktop,
+			UAGHideTab,
+			UAGHideMob,
+		},
+		isSelected,
+	} = props;
+
     useEffect( () => {
-        const { setAttributes, clientId, attributes } = props;
 
         // Replacement for componentDidMount.
         //Store client id.
@@ -24,20 +37,13 @@ const ContentTimelineComponent = ( props ) => {
         setAttributes( { classMigrate: true } );
         setAttributes( { childMigrate: true } );
 
-        const {
-            timelinAlignment,
-            timelinAlignmentTablet,
-            timelinAlignmentMobile,
-            stack
-        } = attributes;
-
-        if( timelinAlignment ) {
+        if( attributes.timelinAlignment ) {
             if( 'none' === stack ) {
                 if( undefined === timelinAlignmentTablet ) {
-                    setAttributes( { timelinAlignmentTablet: timelinAlignment } );
+                    setAttributes( { timelinAlignmentTablet: attributes.timelinAlignment } );
                 }
                 if( undefined === timelinAlignmentMobile ) {
-                    setAttributes( { timelinAlignmentMobile: timelinAlignment } );
+                    setAttributes( { timelinAlignmentMobile: attributes.timelinAlignment } );
                 }
             } else {
                 if( undefined === timelinAlignmentTablet && 'tablet' === stack ) {
@@ -47,7 +53,7 @@ const ContentTimelineComponent = ( props ) => {
 
                 if( undefined === timelinAlignmentMobile && 'mobile' === stack ) {
                     setAttributes( { timelinAlignmentMobile: 'left' } );
-                    setAttributes( { timelinAlignmentTablet: timelinAlignment } );
+                    setAttributes( { timelinAlignmentTablet: attributes.timelinAlignment } );
                 }
             }
         }
@@ -58,13 +64,12 @@ const ContentTimelineComponent = ( props ) => {
     useEffect( () => {
         // Replacement for componentDidUpdate.
         const blockStyling = contentTimelineStyle( props );
-        const { attributes } = props;
 
-        addBlockEditorDynamicStyles( 'uagb-content-timeline-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+        addBlockEditorDynamicStyles( 'uagb-content-timeline-style-' + clientId.substr( 0, 8 ), blockStyling );
         if (
             null ===
             select( 'core/block-editor' ).getBlocksByClientId(
-                props.clientId
+                clientId
             )[0]
         ) {
             return;
@@ -80,7 +85,7 @@ const ContentTimelineComponent = ( props ) => {
         const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + device ] ? attributes['timelinAlignment' + device ] : attributes.timelinAlignment;
 
         select( 'core/block-editor' )
-            .getBlocksByClientId( props.clientId )[0]
+            .getBlocksByClientId( clientId )[0]
             .innerBlocks.forEach( function( block, key ) {
 
                 let alignClass = '';
@@ -127,15 +132,15 @@ const ContentTimelineComponent = ( props ) => {
                 );
             } );
         const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-            props.clientId
+            clientId
         );
         getChildBlocks.forEach( ( ctChild ) => {
-            ctChild.attributes.headingTag = props.attributes.headingTag;
-            ctChild.attributes.dateFormat = props.attributes.dateFormat;
+            ctChild.attributes.headingTag = attributes.headingTag;
+            ctChild.attributes.dateFormat = attributes.dateFormat;
         } );
 		
-    }, [props] );
-    const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+    }, [ props, deviceType ] );
+    
 	useEffect( () => {
 
 		responsiveConditionPreview( props );
@@ -143,24 +148,15 @@ const ContentTimelineComponent = ( props ) => {
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
     useEffect( () => {
-		// Replacement for componentDidUpdate.
-	    const blockStyling = contentTimelineStyle( props );
-
-        addBlockEditorDynamicStyles( 'uagb-content-timeline-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
 		scrollBlockToView();
 	}, [deviceType] );
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/content-timeline.svg`;
-
     return (
-		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<>
-				<Settings parentProps = { props }/>
-				<Render parentProps = { props }/>
-			</>
-		)
-    );
+		<>
+			{ isSelected && <Settings parentProps={ props } /> }
+			<Render parentProps={ props } />
+		</>
+	);
 };
 
 export default ContentTimelineComponent;

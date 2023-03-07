@@ -10,7 +10,8 @@ import {
 	MediaReplaceFlow,
 	store as blockEditorStore,
 	__experimentalImageEditor as ImageEditor,
-	__experimentalImageEditingProvider as ImageEditingProvider,
+	__experimentalGetElementClassName,
+	RichText
 } from '@wordpress/block-editor';
 import { useMemo, useEffect, useState, useRef } from '@wordpress/element';
 import { __, sprintf, isRTL } from '@wordpress/i18n';
@@ -132,11 +133,11 @@ export default function Image( {
 	} else if ( filename ) {
 		defaultedAlt = sprintf(
 			/* translators: %s: file name */
-			__( 'This image has an empty alt attribute; its file name is %s' ),
+			__( 'This image has an empty alt attribute; its file name is %s' , 'ultimate-addons-for-gutenberg' ),
 			filename
 		);
 	} else {
-		defaultedAlt = __( 'This image has an empty alt attribute' );
+		defaultedAlt = __( 'This image has an empty alt attribute', 'ultimate-addons-for-gutenberg' );
 	}
 
 	let img = (
@@ -330,7 +331,7 @@ export default function Image( {
 					<ToolbarButton
 						onClick={ () => setIsEditingImage( true ) }
 						icon={ crop }
-						label={ __( 'Crop' ) }
+						label={ __( 'Crop' , 'ultimate-addons-for-gutenberg' ) }
 					/>
 				) }
 			</BlockControls>
@@ -353,23 +354,22 @@ export default function Image( {
 
 	return (
 		<>
-			<ImageEditingProvider
-				id={ id }
-				url={ url }
-				naturalWidth={ naturalWidth }
-				naturalHeight={ naturalHeight }
-				clientWidth={ clientWidth }
-				onSaveImage={ ( imageAttributes ) =>
-					setAttributes( imageAttributes )
+			{ /* Hide controls during upload to avoid component remount,
+			which causes duplicated image upload. */ }
+			{ ! temporaryURL && controls }
+			{ img }
+			<RichText
+				identifier="caption"
+				className={ __experimentalGetElementClassName(
+					'caption'
+				) }
+				tagName="figcaption"
+				aria-label={ __( 'Image caption text' , 'ultimate-addons-for-gutenberg' ) }
+				onChange={ ( value ) =>
+					setAttributes( { caption: value } )
 				}
-				isEditing={ isEditingImage }
-				onFinishEditing={ () => setIsEditingImage( false ) }
-			>
-				{ /* Hide controls during upload to avoid component remount,
-				which causes duplicated image upload. */ }
-				{ ! temporaryURL && controls }
-				{ img }
-			</ImageEditingProvider>
+				inlineToolbar
+			/>
 		</>
 	);
 }

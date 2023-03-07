@@ -4,13 +4,14 @@
 
 import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
-import edit from './edit';
+import Edit from './edit';
 import save from './save';
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import variations from './variations';
 import transforms from './transforms';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/container', {
 	apiVersion: 2,
@@ -36,7 +37,12 @@ registerBlockType( 'uagb/container', {
 		}
 	},
 	variations,
-	edit,
+	edit: ( props ) =>
+		props.attributes.isPreview ? (
+			<PreviewImage image="container" />
+		) : (
+			<Edit { ...props } />
+		),
 	save,
 	transforms,
 } );

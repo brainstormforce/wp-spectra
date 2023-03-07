@@ -3,9 +3,9 @@
  */
 
 import classnames from 'classnames';
-import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
+import { Fragment } from '@wordpress/element';
 
 export default function save( props ) {
 	const { attributes } = props;
@@ -35,7 +35,7 @@ export default function save( props ) {
 				const optionvalue = o.optionvalue;
 				const value = optionvalue.replace( /\s+/g, '-' ).toLowerCase();
 				return (
-					<React.Fragment key={ index }>
+					<Fragment key={ index }>
 						<input
 							type="checkbox"
 							className="uagb-forms-checkbox"
@@ -48,7 +48,7 @@ export default function save( props ) {
 							{ o.optiontitle }
 						</label>
 						<br />
-					</React.Fragment>
+					</Fragment>
 				);
 			} ) }
 		</div>

@@ -1,4 +1,4 @@
-import { useLayoutEffect } from 'react';
+import { useLayoutEffect } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import { dateI18n, format, getSettings } from '@wordpress/date';
 

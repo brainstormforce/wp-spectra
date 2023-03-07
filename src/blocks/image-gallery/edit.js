@@ -14,12 +14,13 @@ const UAGBImageGallery = ( props ) => {
 	const {
 		clientId,
 		attributes,
-		isSelected
+		attributes:{ UAGHideDesktop, UAGHideTab, UAGHideMob },
+		isSelected,
+		setAttributes
 	} = props;
 
 	const deviceType = useDeviceType();
 	useEffect( () => {
-		const { setAttributes } = props;
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 		setAttributes( { classMigrate: true } );
@@ -29,9 +30,8 @@ const UAGBImageGallery = ( props ) => {
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
         addBlockEditorDynamicStyles( 'uagb-image-gallery-style-' + clientId.substr( 0, 8 ), blockStyling );
-	}, [ props, deviceType ] );
+	}, [ attributes, deviceType ] );
 
-	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = attributes;
 
 	useEffect( () => {
 
@@ -39,25 +39,25 @@ const UAGBImageGallery = ( props ) => {
 
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	// Lightbox disabled by default for the block on every instance.
-	const [ lightboxPreview, setLightboxPreview ] = useState( false );
+		// Lightbox disabled by default for the block on every instance.
+		const [ lightboxPreview, setLightboxPreview ] = useState( false );
 
-	// Disable the Lightbox when the block isn't selected.
-	useEffect( () => {
-		if ( ! isSelected ) {
-			setLightboxPreview( false );
-		}
-	}, [ isSelected ] );
-
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/image-gallery.svg`;
+		// Disable the Lightbox when the block isn't selected.
+		useEffect( () => {
+			if ( ! isSelected ) {
+				setLightboxPreview( false );
+			}
+		}, [ isSelected ] );
 
 	return (
-		attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<>
-				<Settings { ...{ ...props, lightboxPreview, setLightboxPreview } } />
-				<Render { ...{ ...props, lightboxPreview, setLightboxPreview } } />
-			</>
-		)
+		<>
+			{isSelected && (
+				<Settings
+					{...{ ...props, lightboxPreview, setLightboxPreview }}
+				/>
+			)}
+			<Render {...{ ...props, lightboxPreview, setLightboxPreview }} />
+		</>
 	);
 };
 

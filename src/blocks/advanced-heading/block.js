@@ -4,7 +4,7 @@
 
 import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
-import edit from './edit';
+import Edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
 import './style.scss';
@@ -12,6 +12,7 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType, createBlock } from '@wordpress/blocks';
 import './format';
 import colourNameToHex from '@Controls/changeColorNameToHex';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/advanced-heading', {
 	title: __( 'Heading', 'ultimate-addons-for-gutenberg' ),
@@ -35,7 +36,12 @@ registerBlockType( 'uagb/advanced-heading', {
 	},
 	category: uagb_blocks_info.category,
 	attributes,
-	edit,
+	edit: ( props ) =>
+		props.attributes.isPreview ? (
+			<PreviewImage image="advanced-heading" />
+		) : (
+			<Edit { ...props } />
+		),
 	save,
 	deprecated,
 	transforms: {

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
 import './style.scss';
@@ -32,6 +30,7 @@ let imageSizeOptions = [
 	{ value: 'medium', label: __( 'Medium', 'ultimate-addons-for-gutenberg' ) },
 	{ value: 'full', label: __( 'Large', 'ultimate-addons-for-gutenberg' ) },
 ];
+import { memo } from '@wordpress/element';
 
 
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
@@ -1030,4 +1029,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

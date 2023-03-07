@@ -3,7 +3,7 @@
  */
 
 import styling from './styling';
-import React, {   useEffect,  } from 'react';
+import { useEffect } from '@wordpress/element';
 
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
@@ -19,13 +19,29 @@ import { useSelect } from '@wordpress/data';
 const UAGBTableOfContentsEdit = ( props ) => {
 
 	const deviceType = useDeviceType();
+	const {
+		isSelected,
+		setAttributes,
+		attributes,
+		attributes: {
+			scrollToTop,
+			UAGHideDesktop,
+			UAGHideTab,
+			UAGHideMob,
+			borderStyle,
+			borderWidth,
+			borderRadius,
+			borderColor,
+			borderHoverColor,
+		},
+	} = props;
 
 	useEffect( () => {
 
 		// Assigning block_id in the attribute.
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
-		props.setAttributes( { classMigrate: true } );
+		setAttributes( { classMigrate: true } );
 
 		const scrollElement = document.querySelector( '.uagb-toc__scroll-top' );
 
@@ -43,10 +59,9 @@ const UAGBTableOfContentsEdit = ( props ) => {
 
 		// Pushing Style tag for this block css.
 		if ( props.attributes.heading && '' !== props.attributes.heading ) {
-			props.setAttributes( { headingTitle: props.attributes.heading } );
+			setAttributes( { headingTitle: props.attributes.heading } );
 		}
 
-		const {borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor} = props.attributes;
 		// Backward Border Migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
 			migrateBorderAttributes( 'overall', {
@@ -65,8 +80,8 @@ const UAGBTableOfContentsEdit = ( props ) => {
 				label: 'borderStyle',
 				value: borderStyle
 			},
-			props.setAttributes,
-			props.attributes
+			setAttributes,
+			attributes
 			);
 		}
 		
@@ -78,9 +93,8 @@ const UAGBTableOfContentsEdit = ( props ) => {
 
 		addBlockEditorDynamicStyles( 'uagb-style-toc-' + props.clientId.substr( 0, 8 ), blockStyling );
 		
-	}, [ props ] );
+	}, [ attributes, deviceType ] );
 
-	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
 	useEffect( () => {
 
 		responsiveConditionPreview( props );
@@ -88,14 +102,10 @@ const UAGBTableOfContentsEdit = ( props ) => {
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-style-toc-' + props.clientId.substr( 0, 8 ), blockStyling );
-
 		scrollBlockToView();
 
 	}, [ deviceType ] );
+
 	const headers = [];
 	useSelect(
 		( select ) => { // eslint-disable-line  no-unused-vars
@@ -200,7 +210,6 @@ const UAGBTableOfContentsEdit = ( props ) => {
 		},
 	);
 
-	const { scrollToTop } = props.attributes;
 	/* eslint-disable no-undef */
 	scrollElement = document.querySelector( '.uagb-toc__scroll-top' );
 	if ( null !== scrollElement ) {
@@ -213,15 +222,11 @@ const UAGBTableOfContentsEdit = ( props ) => {
 	}
 	/* eslint-enable no-undef */
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/table-of-content.svg`;
-
 	return (
-		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } headers={ headers } />
-			</>
-		)
+		<>
+			{ isSelected && <Settings parentProps={ props } /> }
+			<Render parentProps={ props } headers={ headers } />
+		</>
 	);
 };
 

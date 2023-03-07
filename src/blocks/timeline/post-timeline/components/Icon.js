@@ -1,5 +1,5 @@
 import renderSVG from '@Controls/renderIcon';
-import React from 'react';
+import { memo } from '@wordpress/element';
 const Icon = ( props ) => {
 	const { attributes } = props;
 
@@ -10,4 +10,4 @@ const Icon = ( props ) => {
 	);
 };
 
-export default React.memo( Icon );
+export default memo( Icon );

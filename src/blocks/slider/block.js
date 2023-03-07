@@ -4,11 +4,12 @@
 
  import UAGB_Block_Icons from '@Controls/block-icons';
  import attributes from './attributes';
- import edit from './edit';
+ import Edit from './edit';
  import save from './save';
  import './style.scss';
  import { __ } from '@wordpress/i18n';
  import { registerBlockType } from '@wordpress/blocks';
+ import PreviewImage from '@Controls/previewImage';
 
  registerBlockType( 'uagb/slider', {
      apiVersion: 2,
@@ -33,6 +34,11 @@
              isPreview: true,
          }
      },
-     edit,
+     edit: ( props ) =>
+			props.attributes.isPreview ? (
+				<PreviewImage image="slider" />
+			) : (
+				<Edit { ...props } />
+			),
      save
  } );

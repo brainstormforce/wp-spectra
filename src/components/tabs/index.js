@@ -1,6 +1,6 @@
 import { TabPanel } from '@wordpress/components';
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import { getPanelIdFromRef } from '@Utils/Helpers';
 import Separator from '@Components/separator';
 import { select } from '@wordpress/data';

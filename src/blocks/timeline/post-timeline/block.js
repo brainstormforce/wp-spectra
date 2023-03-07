@@ -3,7 +3,7 @@
  */
 import UAGB_Block_Icons from '@Controls/block-icons';
 import '.././style.scss';
-import edit from './edit';
+import Edit from './edit';
 
 // Components.
 import { __ } from '@wordpress/i18n';
@@ -12,6 +12,7 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 export const name = 'core/latest-posts';
+import PreviewImage from '@Controls/previewImage';
 
 // Register the block.
 registerBlockType( 'uagb/post-timeline', {
@@ -29,9 +30,12 @@ registerBlockType( 'uagb/post-timeline', {
 			isPreview: true,
 		}
 	},
-	edit,
+	edit: ( props ) =>
+			props.attributes.isPreview ? (
+				<PreviewImage image="post-timeline" />
+			) : (
+				<Edit { ...props } />
+			),
 	// Render via PHP
-	save() {
-		return null;
-	},
+	save: () => null,
 } );

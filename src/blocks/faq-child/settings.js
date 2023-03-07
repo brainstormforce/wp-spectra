@@ -1,6 +1,6 @@
 import { InspectorControls } from '@wordpress/block-editor';
-import React from 'react';
 import { __ } from '@wordpress/i18n';
+import { memo } from '@wordpress/element';
 
 const Settings = () => {
 	const faqChildControls = () => {
@@ -16,4 +16,4 @@ const Settings = () => {
 	return <InspectorControls>{ faqChildControls }</InspectorControls>;
 };
 
-export default React.memo( Settings );
+export default memo( Settings );
