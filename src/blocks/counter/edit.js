@@ -3,11 +3,22 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import styling from './styling';
 import Settings from './settings';
 import Render from './render';
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import { useDeviceType } from '@Controls/getPreviewType';
+
 //  Import CSS.
 import './style.scss';
 
 export default function UAGBCounterEdit( props ) {
-	const { setAttributes, isSelected, clientId, attributes } = props;
+	const deviceType = useDeviceType();
+	const {
+		setAttributes,
+		isSelected,
+		clientId,
+		attributes,
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
+	} = props;
+	
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
@@ -20,6 +31,10 @@ export default function UAGBCounterEdit( props ) {
 
         addBlockEditorDynamicStyles( 'uagb-counter-style-' + clientId.substr( 0, 8 ), blockStyling );
 	}, [ attributes ] );
+    	
+	useEffect( () => {
+		responsiveConditionPreview( props );
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	return (
 		<>

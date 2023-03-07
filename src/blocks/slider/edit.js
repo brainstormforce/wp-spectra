@@ -13,12 +13,17 @@ import { compose } from '@wordpress/compose';
 import { useDeviceType } from '@Controls/getPreviewType';
 import styles from './editor.lazy.scss';
 import { SwiperSlide } from 'swiper/react';
-
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const UAGBSlider = ( props ) => {
 	const deviceType = useDeviceType();
-	const { isSelected, setAttributes, attributes } = props;
-
+    const {
+		isSelected,
+		setAttributes,
+		attributes,
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
+	} = props;
+	
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -40,6 +45,10 @@ const UAGBSlider = ( props ) => {
 
         addBlockEditorDynamicStyles( 'uagb-slider-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ attributes, deviceType ] );
+    	
+	useEffect( () => {
+		responsiveConditionPreview( props );
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	return (
 		<>

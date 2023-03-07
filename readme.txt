@@ -180,6 +180,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Global - Display Conditions - Added day Addition options to display blocks.
 * Improvement: Performance - Optimized the Editor Performance for all Spectra Blocks.
 * Fix: Global - If border style set to default then all Border CSS should be removed.
+* Fix: Global - If border style set to default then all Border CSS should be removed.
+* Fix: Image - Block has encountered issue when gutenberg plugin is activated
 * Fix: Buttons - Stack orientation and responsive alignment not working on front-end.
 * Fix: Container - Full width issue when adding container block inside Slider block.
 * Fix: Container - When background type is video then Content not align vertically.
@@ -191,6 +193,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Team - On responsive devices preset images not working as expected.
 * Fix: Post Timeline - Left Padding not applicable on the frontend.
 * Fix: The archive page is getting slow.
+* Fix: Responsive Conditions Slanted lines not visible for Counter and Slider Blocks.
 * Fix: Cartflows templates throws an error in the editor Spectra Page Settings 
 * Fix: Call to Action - Additional button icon color on hover not changing in frontend 
 * Fix: Forms- Form submit throws success message without adding To email address field.
