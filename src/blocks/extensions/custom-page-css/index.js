@@ -1,8 +1,7 @@
 import { select, dispatch } from '@wordpress/data';
-import { useRef, useEffect, useState } from '@wordpress/element';
+import { useRef, useEffect, useState,useLayoutEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import editorStyles from './editor.lazy.scss';
-import { useLayoutEffect } from 'react';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 
 const PageCustomCSS = () => {

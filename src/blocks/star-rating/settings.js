@@ -13,11 +13,11 @@ import AdvancedPopColorControl from '@Components/color-control/advanced-pop-colo
 import Range from '@Components/range/Range.js';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
-import React from 'react';
 import ResponsiveSlider from '@Components/responsive-slider';
 import SpacingControl from '@Components/spacing-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { useDeviceType } from '@Controls/getPreviewType';
+import { memo } from '@wordpress/element';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -675,4 +675,4 @@ const Settings = ( props ) => {
 		</>
 	);
 };
-export default React.memo( Settings );
+export default memo( Settings );

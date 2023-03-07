@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef } from 'react';
+import { useEffect, useState,useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { BaseControl } from '@wordpress/components';
 import { MediaUpload } from '@wordpress/block-editor';

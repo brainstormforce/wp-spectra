@@ -1,9 +1,7 @@
 /**
  * BLOCK: Post Grid - Editor Render.
  */
-import React, {    useLayoutEffect } from 'react';
-
-
+import { useLayoutEffect, memo } from '@wordpress/element';
 import Blog from './blog';
 
 import {
@@ -141,4 +139,4 @@ const Render = ( props ) => {
 	return <>{ renderViewMode() }</>;
 };
 
-export default React.memo( Render );
+export default memo( Render );

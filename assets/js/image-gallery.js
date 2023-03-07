@@ -72,6 +72,27 @@ const UAGBImageGalleryMasonry = {
 		return htmlElement;
 	},
 
+	getCustomURL( image, $attr ) {
+		const urlValidRegex = new RegExp( '^((http|https)://)(www.)?[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)$' );
+		const imageID = parseInt( image.getAttribute( 'data-spectra-gallery-image-id' ) );
+		return ( urlValidRegex.test( $attr?.customLinks[ imageID ] ) ? $attr.customLinks[ imageID ] : undefined );
+	},
+
+	openCustomURL( customURL ) {
+		window.open( customURL, '_blank' );
+	},
+
+	addClickEvents( element, $attr ) {
+		const imageElements = element?.querySelectorAll( '.spectra-image-gallery__media-wrapper' );
+		imageElements.forEach( ( image ) => {
+			const imageURL = UAGBImageGalleryMasonry.getCustomURL( image, $attr );
+			if ( imageURL ) {
+				image.style.cursor = 'pointer';
+				image.addEventListener( 'click', () => UAGBImageGalleryMasonry.openCustomURL( imageURL ) );
+			}
+		} );
+	},
+
 	callAjax( $scope, $obj, $attr, append = false, count ) {
 		const mediaData = new FormData(); // eslint-disable-line no-undef
 		mediaData.append( 'action', 'uag_load_image_gallery_masonry' );
@@ -97,6 +118,9 @@ const UAGBImageGalleryMasonry = {
 			imagesLoaded( element ).on( 'progress', function() { // eslint-disable-line no-undef
 				isotope.layout();
 			} );
+			if ( $attr.customLinks ) {
+				UAGBImageGalleryMasonry.addClickEvents( element, $attr );
+			}
 			spectraImageGalleryLoadStatus = true;
 			if ( true === append ) {
 				$scope?.querySelector( '.spectra-image-gallery__control-button' ).classList.toggle( 'disabled' );
@@ -187,6 +211,27 @@ const UAGBImageGalleryPagedGrid = {
 		return htmlElement;
 	},
 
+	getCustomURL( image, $attr ) {
+		const urlValidRegex = new RegExp( '^((http|https)://)(www.)?[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)$' );
+		const imageID = parseInt( image.getAttribute( 'data-spectra-gallery-image-id' ) );
+		return ( urlValidRegex.test( $attr?.customLinks[ imageID ] ) ? $attr.customLinks[ imageID ] : undefined );
+	},
+
+	openCustomURL( customURL ) {
+		window.open( customURL, '_blank' );
+	},
+
+	addClickEvents( element, $attr ) {
+		const imageElements = element?.querySelectorAll( '.spectra-image-gallery__media-wrapper' );
+		imageElements.forEach( ( image ) => {
+			const imageURL = UAGBImageGalleryPagedGrid.getCustomURL( image, $attr );
+			if ( imageURL ) {
+				image.style.cursor = 'pointer';
+				image.addEventListener( 'click', () => UAGBImageGalleryPagedGrid.openCustomURL( imageURL ) );
+			}
+		} );
+	},
+
 	callAjax( $scope, $obj, $attr, arrows ) {
 		const mediaData = new FormData(); // eslint-disable-line no-undef
 		mediaData.append( 'action', 'uag_load_image_gallery_grid_pagination' );
@@ -220,6 +265,9 @@ const UAGBImageGalleryPagedGrid = {
 			imagesLoaded( element ).on( 'progress', function() { // eslint-disable-line no-undef
 				isotope.layout();
 			} );
+			if ( $attr.customLinks ) {
+				UAGBImageGalleryPagedGrid.addClickEvents( element, $attr );
+			}
 			if ( parseInt( $obj.page_number ) === 1 ) {
 				arrows.forEach( ( arrow ) => {
 					arrow.disabled = ( arrow.getAttribute( 'data-direction' ) === 'Prev' );

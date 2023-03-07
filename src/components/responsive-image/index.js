@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import React, {useEffect, useState, useRef } from 'react';
+import { useEffect, useState,useRef } from '@wordpress/element';
 import { getPanelIdFromRef } from '@Utils/Helpers';
  import { useDeviceType } from '@Controls/getPreviewType';
  import ResponsiveToggle from '../responsive-toggle';
@@ -10,7 +10,7 @@ import { getPanelIdFromRef } from '@Utils/Helpers';
  import { __ } from '@wordpress/i18n';
  import UAGHelpText from '@Components/help-text';
 
- const ResponsiveUAGImage = ( props ) => {
+const ResponsiveUAGImage = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
 	const panelRef = useRef( null );
 	const { backgroundImage, setAttributes, help = false } = props;

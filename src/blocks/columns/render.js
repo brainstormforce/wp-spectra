@@ -4,7 +4,8 @@
 
 import classnames from 'classnames';
 import shapes from './shapes';
-import React, { useMemo } from 'react';
+import { useMemo,memo } from '@wordpress/element';
+
 import { useDeviceType } from '@Controls/getPreviewType';
 const ALLOWED_BLOCKS = [ 'uagb/column' ];
 import { InnerBlocks } from '@wordpress/block-editor';
@@ -143,4 +144,4 @@ const Render = ( props ) => {
 	);
 };
 
-export default React.memo( Render );
+export default memo( Render );

@@ -1,5 +1,4 @@
 import classnames from 'classnames';
-import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 

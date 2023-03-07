@@ -7,13 +7,14 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 
 //  Import CSS.
 import './style.scss';
-import edit from './edit';
+import Edit from './edit';
 
 // Components
 import { __ } from '@wordpress/i18n';
 
 // Register block controls
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 // Register the block
 registerBlockType( 'uagb/taxonomy-list', {
@@ -31,9 +32,12 @@ registerBlockType( 'uagb/taxonomy-list', {
 			isPreview: true,
 		}
 	},
-	edit,
+	edit: ( props ) =>
+			props.attributes.isPreview ? (
+				<PreviewImage image="taxonomy-list" />
+			) : (
+				<Edit { ...props } />
+			),
 	// Render via PHP
-	save() {
-		return null;
-	},
+	save:()=> null,
 } );

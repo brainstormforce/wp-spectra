@@ -4,7 +4,7 @@
 
 import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
-import edit from './edit';
+import Edit from './edit';
 import save from './save';
 import './style.scss';
 import deprecated from './deprecated';
@@ -13,6 +13,7 @@ import { addFilter } from '@wordpress/hooks';
 import { withSelect } from '@wordpress/data';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 /**
  * Override the default block element to add	wrapper props.
@@ -58,7 +59,12 @@ registerBlockType( 'uagb/faq', {
 	},
 	attributes,
 	deprecated,
-	edit,
+	edit: ( props ) =>
+		props.attributes.isPreview ? (
+			<PreviewImage image="faq" />
+		) : (
+			<Edit { ...props } />
+		),
 	supports: {
 		anchor: true,
 	},

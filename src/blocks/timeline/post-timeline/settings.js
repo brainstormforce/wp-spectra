@@ -1,7 +1,6 @@
 import UAGIconPicker from '@Components/icon-picker';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { decodeEntities } from '@wordpress/html-entities';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
@@ -28,6 +27,7 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { useDeviceType } from '@Controls/getPreviewType';
 import UAGTextControl from '@Components/text-control';
+import { memo } from '@wordpress/element';
 
 const Settings = ( props ) => {
 	const { categoriesList, taxonomyList } = props;
@@ -2013,4 +2013,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

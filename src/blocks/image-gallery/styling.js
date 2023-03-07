@@ -7,7 +7,13 @@ import generateSpacing from '@Controls/generateSpacing';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+	const {
+		name,
+		clientId,
+		attributes,
+	} = props;
+
+	const blockName = name.replace( 'uagb/', '' );
 	const {
 		// Tile Calcualtion
 		tileSize,
@@ -202,7 +208,7 @@ function styling( props ) {
 		mainTitleBorderColor,
 		mainTitleBorderHColor,
 		imageBorderHColor,
-	} = props.attributes;
+	} = attributes;
 
 	// Arrow & Dots Default Color Fallback ( Not from Theme ).
 	const arrowDotColor = paginateColor ? paginateColor : '#007cba';
@@ -242,18 +248,18 @@ function styling( props ) {
 	
 
 	// Border Attributes.
-	const arrowBorderCSS = generateBorderCSS( props.attributes, 'arrow' );
-	const arrowBorderCSSTablet = generateBorderCSS( props.attributes, 'arrow', 'tablet' );
-	const arrowBorderCSSMobile = generateBorderCSS( props.attributes, 'arrow', 'mobile' );
-	const btnBorderCSS = generateBorderCSS( props.attributes, 'btn' );
-	const btnBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
-	const btnBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
-	const imageBorderCSS = generateBorderCSS( props.attributes, 'image' );
-	const imageBorderCSSTablet = generateBorderCSS( props.attributes, 'image', 'tablet' );
-	const imageBorderCSSMobile = generateBorderCSS( props.attributes, 'image', 'mobile' );
-	const mainTitleBorderCSS = generateBorderCSS( props.attributes, 'mainTitle' );
-	const mainTitleBorderCSSTablet = generateBorderCSS( props.attributes, 'mainTitle', 'tablet' );
-	const mainTitleBorderCSSMobile = generateBorderCSS( props.attributes, 'mainTitle', 'mobile' );
+	const arrowBorderCSS = generateBorderCSS( attributes, 'arrow' );
+	const arrowBorderCSSTablet = generateBorderCSS( attributes, 'arrow', 'tablet' );
+	const arrowBorderCSSMobile = generateBorderCSS( attributes, 'arrow', 'mobile' );
+	const btnBorderCSS = generateBorderCSS( attributes, 'btn' );
+	const btnBorderCSSTablet = generateBorderCSS( attributes, 'btn', 'tablet' );
+	const btnBorderCSSMobile = generateBorderCSS( attributes, 'btn', 'mobile' );
+	const imageBorderCSS = generateBorderCSS( attributes, 'image' );
+	const imageBorderCSSTablet = generateBorderCSS( attributes, 'image', 'tablet' );
+	const imageBorderCSSMobile = generateBorderCSS( attributes, 'image', 'mobile' );
+	const mainTitleBorderCSS = generateBorderCSS( attributes, 'mainTitle' );
+	const mainTitleBorderCSSTablet = generateBorderCSS( attributes, 'mainTitle', 'tablet' );
+	const mainTitleBorderCSSMobile = generateBorderCSS( attributes, 'mainTitle', 'mobile' );
 
 	// Box Shadow CSS.
 	const imageBoxShadowCSS = `${
@@ -283,7 +289,7 @@ function styling( props ) {
 		( 'inset' === imageBoxShadowPositionHover ) ? ( ` ${ imageBoxShadowPositionHover }` ) : ''
 	}`;
 
-	const selectors = {
+	let selectors = {
 
 		// Feed Selectors
 
@@ -639,7 +645,7 @@ function styling( props ) {
 		},
 	};
 
-	const tabletSelectors = {
+	let tabletSelectors = {
 		'.wp-block-uagb-image-gallery': {
 			'padding': generateSpacing(
 				feedMarginUnitTab,
@@ -751,7 +757,7 @@ function styling( props ) {
 		},
 	};
 
-	const mobileSelectors = {
+	let mobileSelectors = {
 		'.wp-block-uagb-image-gallery': {
 			'padding': generateSpacing(
 				feedMarginUnitMob,
@@ -1040,7 +1046,11 @@ function styling( props ) {
 		};
 	}
 
-	const baseSelector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const baseSelector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
+
+	selectors = wp.hooks.applyFilters( `spectra.image-gallery.styling`, selectors, attributes );
+	tabletSelectors = wp.hooks.applyFilters( `spectra.image-gallery.tabletStyling`, tabletSelectors, attributes );
+	mobileSelectors = wp.hooks.applyFilters( `spectra.image-gallery.mobileStyling`, mobileSelectors, attributes );
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 

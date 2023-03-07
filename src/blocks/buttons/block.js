@@ -4,12 +4,13 @@
 
 import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
-import edit from './edit';
+import Edit from './edit';
 import deprecated from './deprecated';
 import save from './save';
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/buttons', {
 	title: __( 'Buttons', 'ultimate-addons-for-gutenberg' ),
@@ -32,7 +33,12 @@ registerBlockType( 'uagb/buttons', {
 		}
 	},
 	attributes,
-	edit,
+	edit: ( props ) =>
+		props.attributes.isPreview ? (
+			<PreviewImage image="buttons" />
+		) : (
+			<Edit { ...props } />
+		),
 	save,
 	deprecated,
 } );

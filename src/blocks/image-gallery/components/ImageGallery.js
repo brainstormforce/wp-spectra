@@ -21,6 +21,9 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		mediaGallery,
 		feedLayout,
 		imageDisplayCaption,
+		galleryImageSize,
+		galleryImageSizeTablet,
+		galleryImageSizeMobile,
 
 		feedMarginTop,
 		feedMarginRight,
@@ -228,11 +231,6 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			aria-label="Next"
 			tabIndex="0"
 			data-direction="Next"
-			onClick={ () => (
-				( 'grid' === feedLayout )
-					? setAttributes( { gridPageNumber: gridPageNumber + 1 } )
-					: ''
-			) }
 			disabled={ ( 'grid' === feedLayout && gridPageNumber === gridPages ) }
 		>
 			{ UAGB_Block_Icons.carousel_right }
@@ -252,11 +250,6 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			aria-label="Prev"
 			tabIndex="0"
 			data-direction="Prev"
-			onClick={ () => (
-				( 'grid' === feedLayout )
-					? setAttributes( { gridPageNumber: gridPageNumber - 1 } )
-					: ''
-			) }
 			disabled={ ( 'grid' === feedLayout && 1 === gridPageNumber ) }
 		>
 			{ UAGB_Block_Icons.carousel_left }
@@ -381,6 +374,20 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		}
 	};
 
+	// Set the Image URL with Size based on the Device Type.
+	const setImageURL = ( image ) => {
+		switch ( deviceType ) {
+			case 'Desktop':
+				return image.sizes[ galleryImageSize ] ? image.sizes[ galleryImageSize ].url : image.url;
+			case 'Tablet':
+				return image.sizes[ galleryImageSizeTablet ] ? image.sizes[ galleryImageSizeTablet ].url : image.url;
+			case 'Mobile':
+				return image.sizes[ galleryImageSizeMobile ] ? image.sizes[ galleryImageSizeMobile ].url : image.url;
+			default:
+				return image.url;
+		}
+	}
+
 	const renderGridPagintion = () => (
 		<div className="spectra-image-gallery__control-wrapper">
 			<SlickPrevArrow />
@@ -395,7 +402,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 						] )}
 						data-go-to={ pageIndex + 1 }
 					>
-						<button onClick={ () => setAttributes( { gridPageNumber: pageIndex + 1 } ) } />
+						<button/>
 					</li>
 				) ) }
 			</ul>
@@ -546,7 +553,6 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		>
 			{ renderThumbnail( mediaObject ) }
 			{ ( 'tiled' === feedLayout ) && renderFocusControl( mediaObject ) }
-			{ applyFilters( 'spectra.image-gallery.render.customLinks', '', mediaObject, attributes, setAttributes ) }
 		</div>
 	);
 
@@ -569,7 +575,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 						'spectra-image-gallery__media-thumbnail',
 						`spectra-image-gallery__media-thumbnail--${ feedLayout }`
 					] ) }
-					src={ mediaObject.url }
+					src={ setImageURL( mediaObject ) }
 					alt={ mediaObject.alt }
 					loading="lazy"
 				/>
@@ -648,7 +654,12 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	);
 
 
-	return ( mediaGallery ) ? renderGallery() : renderEmpty();
+	return ( mediaGallery ) ? (
+		<>
+			{ renderGallery() }
+			{ applyFilters( 'spectra.image-gallery.render.customLinks', null, tiledImages, attributes, setAttributes ) }
+		</>
+	) : renderEmpty();
 };
 
 export default ImageGallery;

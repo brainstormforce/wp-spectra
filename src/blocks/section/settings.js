@@ -1,6 +1,4 @@
-import React from 'react';
 import { __ } from '@wordpress/i18n';
-
 import BoxShadowControl from '@Components/box-shadow';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -19,9 +17,7 @@ import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 import { ToggleControl, Icon } from '@wordpress/components';
-
-
-
+import { memo } from '@wordpress/element';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -650,4 +646,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );
