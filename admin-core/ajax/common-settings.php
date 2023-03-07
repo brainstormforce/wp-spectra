@@ -116,9 +116,9 @@ class Common_Settings extends Ajax_Base {
 	 * @param string $value The value to be updated.
 	 * @return void
 	 */
-	public function save_success( $option, $value ) {
-
-		if ( isset( $_POST['value'] ) ) {
+	public function save_admin_settings( $option, $value ) {
+		// nonce verification done in function check_permission_nonce.
+		if ( isset( $_POST['value'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			\UAGB_Admin_Helper::update_admin_settings_option( $option, $value );
 		}
 
@@ -126,6 +126,21 @@ class Common_Settings extends Ajax_Base {
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
 		);
 		wp_send_json_success( $response_data );
+	}
+	
+	/**
+	 * Checks if the specified key exists in the $_POST array and returns the corresponding value.
+	 *
+	 * @param string $key The key to check in the $_POST array. Default value is 'value'.
+	 * @return mixed The value of the specified key in the $_POST array if it exists, otherwise sends a JSON error response.
+	 */
+	private function check_post_value( $key = 'value' ) {
+		// nonce verification done in function check_permission_nonce.
+		if ( ! isset( $_POST[ $key ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			wp_send_json_error( array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) ) );  
+		}
+		// security validation done as per data type in function save_admin_settings.
+		return $_POST[ $key ]; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.NonceVerification.Missing
 	}
 
 	/**
@@ -182,13 +197,8 @@ class Common_Settings extends Ajax_Base {
 	public function recaptcha_secret_key_v3() {
 
 		$this->check_permission_nonce( 'uag_recaptcha_secret_key_v3' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_recaptcha_secret_key_v3', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_recaptcha_secret_key_v3', sanitize_text_field( $value ) );
 	}
 	/**
 	 * Save settings.
@@ -198,13 +208,8 @@ class Common_Settings extends Ajax_Base {
 	public function recaptcha_secret_key_v2() {
 
 		$this->check_permission_nonce( 'uag_recaptcha_secret_key_v2' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_recaptcha_secret_key_v2', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_recaptcha_secret_key_v2', sanitize_text_field( $value ) );
 
 	}
 
@@ -216,13 +221,8 @@ class Common_Settings extends Ajax_Base {
 	public function recaptcha_site_key_v2() {
 
 		$this->check_permission_nonce( 'uag_recaptcha_site_key_v2' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_recaptcha_site_key_v2', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_recaptcha_site_key_v2', sanitize_text_field( $value ) );
 	}
 
 	/**
@@ -233,13 +233,8 @@ class Common_Settings extends Ajax_Base {
 	public function recaptcha_site_key_v3() {
 
 		$this->check_permission_nonce( 'uag_recaptcha_site_key_v3' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_recaptcha_site_key_v3', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_recaptcha_site_key_v3', sanitize_text_field( $value ) );
 	}
 	/**
 	 * Save settings.
@@ -247,8 +242,19 @@ class Common_Settings extends Ajax_Base {
 	 * @return void
 	 */
 	public function fetch_pages() {
+		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
 
-		$this->check_permission_nonce( 'uag_fetch_pages' );
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_fetch_pages', 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
 
 		$args    = array(
 			'post_type'      => 'page',
@@ -280,13 +286,8 @@ class Common_Settings extends Ajax_Base {
 	public function coming_soon_page() {
 
 		$this->check_permission_nonce( 'uag_coming_soon_page' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_coming_soon_page', intval( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_coming_soon_page', intval( $value ) );
 
 	}
 	/**
@@ -297,13 +298,8 @@ class Common_Settings extends Ajax_Base {
 	public function enable_coming_soon_mode() {
 
 		$this->check_permission_nonce( 'uag_enable_coming_soon_mode' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_enable_coming_soon_mode', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_enable_coming_soon_mode', sanitize_text_field( $value ) );
 	}
 	/**
 	 * Save settings.
@@ -313,13 +309,8 @@ class Common_Settings extends Ajax_Base {
 	public function content_width() {
 
 		$this->check_permission_nonce( 'uag_content_width' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_content_width', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_content_width', sanitize_text_field( $value ) );
 	}
 	/**
 	 * Save settings.
@@ -329,13 +320,8 @@ class Common_Settings extends Ajax_Base {
 	public function container_global_padding() {
 
 		$this->check_permission_nonce( 'uag_container_global_padding' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_container_global_padding', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_container_global_padding', sanitize_text_field( $value ) );
 	}
 	/**
 	 * Save settings.
@@ -345,13 +331,8 @@ class Common_Settings extends Ajax_Base {
 	public function container_global_elements_gap() {
 
 		$this->check_permission_nonce( 'uag_container_global_elements_gap' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_container_global_elements_gap', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_container_global_elements_gap', sanitize_text_field( $value ) );
 	}
 
 	/**
@@ -362,13 +343,8 @@ class Common_Settings extends Ajax_Base {
 	public function blocks_editor_spacing() {
 
 		$this->check_permission_nonce( 'uag_blocks_editor_spacing' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_blocks_editor_spacing', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_blocks_editor_spacing', sanitize_text_field( $value ) );
 	}
 	/**
 	 * Save settings.
@@ -378,13 +354,8 @@ class Common_Settings extends Ajax_Base {
 	public function load_select_font_globally() {
 
 		$this->check_permission_nonce( 'uag_load_select_font_globally' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_load_select_font_globally', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_load_select_font_globally', sanitize_text_field( $value ) );
 	}
 	/**
 	 * Save settings.
@@ -394,13 +365,8 @@ class Common_Settings extends Ajax_Base {
 	public function select_font_globally() {
 
 		$this->check_permission_nonce( 'uag_select_font_globally' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$value = $this->check_post_value();
+		$value = isset( $value ) ? json_decode( stripslashes( $value ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_select_font_globally', $this->sanitize_form_inputs( $value ) );
 		$response_data = array(
@@ -417,13 +383,8 @@ class Common_Settings extends Ajax_Base {
 	public function enable_masonry_gallery() {
 
 		$this->check_permission_nonce( 'uag_enable_masonry_gallery' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_enable_masonry_gallery', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_enable_masonry_gallery', sanitize_text_field( $value ) );
 	}
 	/**
 	 * Save settings.
@@ -433,13 +394,8 @@ class Common_Settings extends Ajax_Base {
 	public function load_gfonts_locally() {
 
 		$this->check_permission_nonce( 'uag_load_gfonts_locally' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_load_gfonts_locally', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_load_gfonts_locally', sanitize_text_field( $value ) );
 	}
 	/**
 	 * Save settings.
@@ -449,13 +405,8 @@ class Common_Settings extends Ajax_Base {
 	public function collapse_panels() {
 
 		$this->check_permission_nonce( 'uag_collapse_panels' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_collapse_panels', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_collapse_panels', sanitize_text_field( $value ) );
 	}
 	/**
 	 * Save settings.
@@ -465,13 +416,8 @@ class Common_Settings extends Ajax_Base {
 	public function copy_paste() {
 
 		$this->check_permission_nonce( 'uag_copy_paste' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_copy_paste', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_copy_paste', sanitize_text_field( $value ) );
 	}
 	/**
 	 * Save settings.
@@ -480,8 +426,19 @@ class Common_Settings extends Ajax_Base {
 	 * @return void
 	 */
 	public function social() {
+		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
 
-		$this->check_permission_nonce( 'uag_social' );
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_social', 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
 
 		if ( empty( $_POST ) ) {
 			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
@@ -510,7 +467,7 @@ class Common_Settings extends Ajax_Base {
 			$social['facebookAppSecret'] = sanitize_text_field( $_POST['facebookAppSecret'] );
 		}
 
-		$this->save_success( 'uag_social', $social );
+		$this->save_admin_settings( 'uag_social', $social );
 	}
 	/**
 	 * Save settings.
@@ -519,9 +476,28 @@ class Common_Settings extends Ajax_Base {
 	 * @return void
 	 */
 	public function dynamic_content_mode() {
+		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
 
-		$this->check_permission_nonce( 'uag_dynamic_content_mode' );
-		$this->save_success( 'uag_dynamic_content_mode', sanitize_text_field( $_POST['value'] ) );
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_dynamic_content_mode', 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		if ( isset( $_POST['value'] ) ) {
+			\UAGB_Admin_Helper::update_admin_settings_option( 'uag_dynamic_content_mode', sanitize_text_field( $_POST['value'] ) );
+		}
+
+		$response_data = array(
+			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
+		);
+		wp_send_json_success( $response_data );
 	}
 	/**
 	 * Save settings.
@@ -531,13 +507,8 @@ class Common_Settings extends Ajax_Base {
 	public function preload_local_fonts() {
 
 		$this->check_permission_nonce( 'uag_preload_local_fonts' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_preload_local_fonts', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_preload_local_fonts', sanitize_text_field( $value ) );
 	}
 	/**
 	 * Save settings.
@@ -547,13 +518,8 @@ class Common_Settings extends Ajax_Base {
 	public function enable_block_condition() {
 
 		$this->check_permission_nonce( 'uag_enable_block_condition' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_enable_block_condition', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_enable_block_condition', sanitize_text_field( $value ) );
 	}
 	/**
 	 * Save settings.
@@ -563,13 +529,8 @@ class Common_Settings extends Ajax_Base {
 	public function enable_block_responsive() {
 
 		$this->check_permission_nonce( 'uag_enable_block_responsive' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_enable_block_responsive', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_enable_block_responsive', sanitize_text_field( $value ) );
 	}
 	/**
 	 * Save settings.
@@ -580,13 +541,8 @@ class Common_Settings extends Ajax_Base {
 	public function enable_dynamic_content() {
 
 		$this->check_permission_nonce( 'uag_enable_dynamic_content' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_enable_dynamic_content', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_enable_dynamic_content', sanitize_text_field( $value ) );
 	}
 
 	/**
@@ -597,13 +553,8 @@ class Common_Settings extends Ajax_Base {
 	public function enable_templates_button() {
 
 		$this->check_permission_nonce( 'uag_enable_templates_button' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_enable_templates_button', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_enable_templates_button', sanitize_text_field( $value ) );
 	}
 
 	/**
@@ -614,13 +565,8 @@ class Common_Settings extends Ajax_Base {
 	public function enable_on_page_css_button() {
 
 		$this->check_permission_nonce( 'uag_enable_on_page_css_button' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_enable_on_page_css_button', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_enable_on_page_css_button', sanitize_text_field( $value ) );
 	}
 
 	/**
@@ -631,14 +577,10 @@ class Common_Settings extends Ajax_Base {
 	public function blocks_activation_and_deactivation() {
 
 		$this->check_permission_nonce( 'uag_blocks_activation_and_deactivation' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
+		$value = $this->check_post_value();
 
 		// will sanitize $value in later stage.
-		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$value = isset( $value ) ? json_decode( stripslashes( $value ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 		\UAGB_Admin_Helper::update_admin_settings_option( '_uagb_blocks', $this->sanitize_form_inputs( $value ) );
 
@@ -660,13 +602,8 @@ class Common_Settings extends Ajax_Base {
 	public function enable_beta_updates() {
 
 		$this->check_permission_nonce( 'uag_enable_beta_updates' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uagb_beta', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uagb_beta', sanitize_text_field( $value ) );
 	}
 
 	/**
@@ -677,13 +614,8 @@ class Common_Settings extends Ajax_Base {
 	public function enable_legacy_blocks() {
 
 		$this->check_permission_nonce( 'uag_enable_legacy_blocks' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_enable_legacy_blocks', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_enable_legacy_blocks', sanitize_text_field( $value ) );
 	}
 
 	/**
@@ -694,13 +626,8 @@ class Common_Settings extends Ajax_Base {
 	public function enable_file_generation() {
 
 		$this->check_permission_nonce( 'uag_enable_file_generation' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( '_uagb_allow_file_generation', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( '_uagb_allow_file_generation', sanitize_text_field( $value ) );
 	}
 
 	/**
@@ -712,10 +639,7 @@ class Common_Settings extends Ajax_Base {
 
 		$this->check_permission_nonce( 'uag_regenerate_assets' );
 
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
+		$value = $this->check_post_value();
 
 		$wp_upload_dir = \UAGB_Helper::get_uag_upload_dir_path();
 
@@ -723,7 +647,7 @@ class Common_Settings extends Ajax_Base {
 			wp_delete_file( $wp_upload_dir . 'custom-style-blocks.css' );
 		}
 
-		if ( ! empty( $_POST['value'] ) ) {
+		if ( ! empty( $value ) ) {
 
 			$file_generation = \UAGB_Helper::allow_file_generation();
 
@@ -777,13 +701,8 @@ class Common_Settings extends Ajax_Base {
 	public function load_font_awesome_5() {
 
 		$this->check_permission_nonce( 'uag_load_font_awesome_5' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_load_font_awesome_5', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_load_font_awesome_5', sanitize_text_field( $value ) );
 	}
 
 	/**
@@ -794,12 +713,7 @@ class Common_Settings extends Ajax_Base {
 	public function auto_block_recovery() {
 
 		$this->check_permission_nonce( 'uag_auto_block_recovery' );
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		$this->save_success( 'uag_auto_block_recovery', sanitize_text_field( $_POST['value'] ) );
+		$value = $this->check_post_value(); 
+		$this->save_admin_settings( 'uag_auto_block_recovery', sanitize_text_field( $value ) );
 	}
 }
