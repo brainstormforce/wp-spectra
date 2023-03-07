@@ -31,7 +31,7 @@ export default function MyAccount() {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: data?.data?.message } );
 			}
 			setRegenerateAssetsState( false );
-			location.reload();
+			location.reload(); // eslint-disable-line no-undef
 		} );
 	};
 
@@ -53,7 +53,7 @@ export default function MyAccount() {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: data?.data?.message } );
 			}
 			setRegenerateAssetsState( false );
-			location.reload();
+			location.reload(); // eslint-disable-line no-undef
 		} );
 	};
 
