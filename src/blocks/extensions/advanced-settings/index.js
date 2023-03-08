@@ -369,6 +369,20 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 	
 }, 'withAOSWrapperProps' );
 
+// This adds AOS related data attributes to Gutenberg wrapper on frontend.
+function withAOSWrapperPropsFrontend( props, block, attributes ) {
+
+	const {
+		UAGAnimationType,
+	} = attributes;
+
+	if ( UAGAnimationType && UAGAnimationType !== '' ) {
+		props['data-aos'] = UAGAnimationType;
+	}
+
+	return props;
+}
+
 	//For UAG Blocks.
 	addFilter(
 		'uag_advance_tab_content',
@@ -460,4 +474,10 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		'editor.BlockListBlock',
 		'uagb/with-aos-wrapper-props',
 		withAOSWrapperProps
+	);
+
+	addFilter(
+		'blocks.getSaveContent.extraProps',
+		'uagb/with-aos-wrapper-props-frontend',
+		withAOSWrapperPropsFrontend
 	);
