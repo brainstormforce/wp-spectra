@@ -199,7 +199,7 @@ function styling( props ) {
 	};
 
 	let stylingCss = '';
-	const id = `.uagb-block-${ block_id } `;
+	const id = `.uagb-block-${ block_id }`;
 	stylingCss = generateCSS( selectors, id );
 
 	stylingCss += generateCSS(
