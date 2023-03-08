@@ -4,28 +4,41 @@ const AnimationList = [
     // None.
     { value: '', label: __( 'None' ) },
 
-    // Bounce.
-    { value: 'bounceIn', label: __( 'Bounce In' ) },
-    { value: 'bounceInDown', label: __( 'Bounce In Down' ) },
-    { value: 'bounceInUp', label: __( 'Bounce In Up' ) },
-    { value: 'bounceInLeft', label: __( 'Bounce In Left' ) },
-    { value: 'bounceInRight', label: __( 'Bounce In Right' ) },
+    // Flip.
+    { value: 'flip-down', label: __( 'Flip Down' ) },
+    { value: 'flip-up', label: __( 'Flip Up' ) },
+    { value: 'flip-left', label: __( 'Flip Left' ) },
+    { value: 'flip-right', label: __( 'Flip Right' ) },
+
+    // Slide.
+    { value: 'slide-down', label: __( 'Slide Down' ) },
+    { value: 'slide-up', label: __( 'Slide Up' ) },
+    { value: 'slide-left', label: __( 'Slide Left' ) },
+    { value: 'slide-right', label: __( 'Slide Right' ) },
 
     // Fade.
-    { value: 'fadeInDown', label: __( 'Fade In Down' ) },
-    { value: 'fadeInUp', label: __( 'Fade In Up' ) },
-    { value: 'fadeInLeft', label: __( 'Fade In Left' ) },
-    { value: 'fadeInRight', label: __( 'Fade In Right' ) },
+    { value: 'fade', label: __( 'Fade' ) },
+    { value: 'fade-down', label: __( 'Fade Down' ) },
+    { value: 'fade-up', label: __( 'Fade Up' ) },
+    { value: 'fade-left', label: __( 'Fade Left' ) },
+    { value: 'fade-right', label: __( 'Fade Right' ) },
+    { value: 'fade-up-right', label: __( 'Fade-Up Right' ) },
+    { value: 'fade-up-left', label: __( 'Fade-Up Left' ) },
+    { value: 'fade-down-left', label: __( 'Fade-Out Left' ) },
+    { value: 'fade-down-right', label: __( 'Fade-Out Right' ) },
 
     // Zoom.
-    { value: 'zoomInDown', label: __( 'Zoom In Down' ) },
-    { value: 'zoomInUp', label: __( 'Zoom In Up' ) },
-    { value: 'zoomInLeft', label: __( 'Zoom In Left' ) },
-    { value: 'zoomInRight', label: __( 'Zoom In Right' ) },
+    { value: 'zoom-in', label: __( 'Zoom-In' ) },
+    { value: 'zoom-in-down', label: __( 'Zoom-In Down' ) },
+    { value: 'zoom-in-up', label: __( 'Zoom-In Up' ) },
+    { value: 'zoom-in-left', label: __( 'Zoom-In Left' ) },
+    { value: 'zoom-in-right', label: __( 'Zoom-In Right' ) },
+    { value: 'zoom-out', label: __( 'Zoom-Out' ) },
+    { value: 'zoom-out-down', label: __( 'Zoom-Out Down' ) },
+    { value: 'zoom-out-up', label: __( 'Zoom-Out Up' ) },
+    { value: 'zoom-out-left', label: __( 'Zoom-Out Left' ) },
+    { value: 'zoom-out-right', label: __( 'Zoom-Out Right' ) },
 
-    // Flip.
-    { value: 'flipInX', label: __( 'Flip In X' ) },
-    { value: 'flipInY', label: __( 'Flip In Y' ) },
 ];
 
 export default AnimationList;
