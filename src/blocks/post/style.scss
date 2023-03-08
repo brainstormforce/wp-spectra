@@ -333,6 +333,7 @@
 		border: none;
 		display: inline-block;
 		background: none;
+		color: #fff;
 	}
 
 	.uagb-post__excerpt p {
@@ -435,6 +436,12 @@
 	ul.slick-dots {
 		transform: unset;
 		position: relative;
+	}
+
+	.slick-prev:not(:hover):not(:active):not(.has-background),
+	.slick-next:not(:hover):not(:active):not(.has-background),
+	ul.slick-dots li button:not(:hover):not(:active):not(.has-background) {
+		background-color: unset;
 	}
 }
 
@@ -664,3 +671,4 @@
 		transform: scale(1);
 	}
 }
+
