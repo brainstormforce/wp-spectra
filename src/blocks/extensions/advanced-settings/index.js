@@ -5,7 +5,7 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import classnames from 'classnames';
 import { useEffect } from 'react';
-import AnimationList from '@Blocks/extensions/animations-extension/animation-list';
+import { AnimationList, AnimationEasingList } from '@Blocks/extensions/animations-extension/animation-list';
 const { createHigherOrderComponent } = wp.compose;
 
 const { enableConditions, enableResponsiveConditions, enableAnimationsExtension } = uagb_blocks_info;
@@ -274,6 +274,7 @@ const animationOptions = ( props ) => {
 			className,
 			UAGAnimationType,
 			UAGAnimationTime,
+			UAGAnimationEasing,
 		},
 		setAttributes
 	} = props;
@@ -314,6 +315,14 @@ const animationOptions = ( props ) => {
 						min={ 50 }
 						max={ 3000 }
 						step={ 50 }
+					/>
+					<SelectControl
+						label={ __( 'Animation Easing' ) }
+						value={ UAGAnimationEasing }
+						onChange={ ( value ) =>
+							setAttributes( { UAGAnimationEasing: value } )
+						}
+						options={ AnimationEasingList }
 					/>
 				</>
 			}
@@ -387,6 +396,7 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		const {
 			UAGAnimationType,
 			UAGAnimationTime,
+			UAGAnimationEasing,
 		} = attributes;
 
 		const wrapperProps = {
@@ -396,6 +406,7 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		if( UAGAnimationType !== '' ) {
 			wrapperProps['data-aos'] = UAGAnimationType;
 			wrapperProps['data-aos-duration'] = UAGAnimationTime;
+			wrapperProps['data-aos-easing'] = UAGAnimationEasing;
 		}
 
 		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
@@ -409,11 +420,13 @@ function withAOSWrapperPropsFrontend( props, block, attributes ) {
 	const {
 		UAGAnimationType,
 		UAGAnimationTime,
+		UAGAnimationEasing,
 	} = attributes;
 
 	if ( UAGAnimationType && UAGAnimationType !== '' ) {
 		props['data-aos'] = UAGAnimationType;
 		props['data-aos-duration'] = UAGAnimationTime;
+		props['data-aos-easing'] = UAGAnimationEasing;
 	}
 
 	return props;

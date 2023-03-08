@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 
-const AnimationList = [
+export const AnimationList = [
     // None.
     { value: '', label: __( 'None' ) },
 
@@ -41,4 +41,12 @@ const AnimationList = [
 
 ];
 
-export default AnimationList;
+export const AnimationEasingList = [
+    
+    { value: 'linear', label: __( 'Linear' ) },
+    { value: 'ease', label: __( 'Ease' ) },
+    { value: 'ease-in', label: __( 'Ease In' ) },
+    { value: 'ease-out', label: __( 'Ease Out' ) },
+    { value: 'ease-in-out', label: __( 'Ease In Out' ) },
+
+];
