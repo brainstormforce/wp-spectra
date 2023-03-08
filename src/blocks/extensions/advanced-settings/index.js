@@ -1,4 +1,4 @@
-import { ToggleControl, SelectControl } from '@wordpress/components';
+import { ToggleControl, SelectControl, RangeControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { addFilter, applyFilters } from '@wordpress/hooks';
 import ResponsiveSlider from '@Components/responsive-slider';
@@ -273,6 +273,7 @@ const animationOptions = ( props ) => {
 		attributes: {
 			className,
 			UAGAnimationType,
+			UAGAnimationTime,
 		},
 		setAttributes
 	} = props;
@@ -287,6 +288,35 @@ const animationOptions = ( props ) => {
 				}
 				options={ AnimationList }
 			/>
+			{ ( UAGAnimationType && UAGAnimationType !== '' ) &&
+				<>
+					<RangeControl
+						label="Animation Duration"
+						value={ UAGAnimationTime }
+						onChange={ ( value ) => {
+
+							// AOS library only allows time values in increments of 50 and between 50ms to 3000ms.
+
+							if( value % 50 !== 0 ) {
+								value = value - ( value % 50 )
+							}
+
+							if( value < 50 ) {
+								value = 50
+							}
+
+							if( value > 3000 ) {
+								value = 3000
+							}
+
+							setAttributes( { UAGAnimationTime: value } )
+						} }
+						min={ 50 }
+						max={ 3000 }
+						step={ 50 }
+					/>
+				</>
+			}
 		</>
 	);
 };
@@ -354,7 +384,10 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 
 		const { attributes } = props;
-		const { UAGAnimationType } = attributes;
+		const {
+			UAGAnimationType,
+			UAGAnimationTime,
+		} = attributes;
 
 		const wrapperProps = {
 			...props.wrapperProps,
@@ -362,6 +395,7 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 
 		if( UAGAnimationType !== '' ) {
 			wrapperProps['data-aos'] = UAGAnimationType;
+			wrapperProps['data-aos-duration'] = UAGAnimationTime;
 		}
 
 		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
@@ -374,10 +408,12 @@ function withAOSWrapperPropsFrontend( props, block, attributes ) {
 
 	const {
 		UAGAnimationType,
+		UAGAnimationTime,
 	} = attributes;
 
 	if ( UAGAnimationType && UAGAnimationType !== '' ) {
 		props['data-aos'] = UAGAnimationType;
+		props['data-aos-duration'] = UAGAnimationTime;
 	}
 
 	return props;

@@ -61,6 +61,10 @@ function addAttributes( settings ) {
 					type: 'string',
 					default: '',
 				},
+				UAGAnimationTime:{
+					type: 'number',
+					default: 400,
+				},
 			} );
 		}
 	}
