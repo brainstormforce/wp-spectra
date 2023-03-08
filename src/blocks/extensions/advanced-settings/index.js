@@ -6,6 +6,7 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import classnames from 'classnames';
 import { useEffect } from 'react';
 import AnimationList from '@Blocks/extensions/animations-extension/animation-list';
+const { createHigherOrderComponent } = wp.compose;
 
 const { enableConditions, enableResponsiveConditions, enableAnimationsExtension } = uagb_blocks_info;
 
@@ -347,6 +348,27 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
+// This adds AOS related data attributes to Gutenberg wrapper in editor.
+const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
+	
+	return ( props ) => {
+
+		const { attributes } = props;
+		const { UAGAnimationType } = attributes;
+
+		const wrapperProps = {
+			...props.wrapperProps,
+		};
+
+		if( UAGAnimationType !== '' ) {
+			wrapperProps['data-aos'] = UAGAnimationType;
+		}
+
+		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
+	};
+	
+}, 'withAOSWrapperProps' );
+
 	//For UAG Blocks.
 	addFilter(
 		'uag_advance_tab_content',
@@ -432,4 +454,10 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		'blocks.getSaveContent.extraProps',
 		'uagb/apply-extra-class',
 		ApplyExtraClass
+	);
+
+	addFilter(
+		'editor.BlockListBlock',
+		'uagb/with-aos-wrapper-props',
+		withAOSWrapperProps
 	);
