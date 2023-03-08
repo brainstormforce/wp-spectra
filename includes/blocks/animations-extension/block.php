@@ -17,13 +17,18 @@ $block_data = array(
 	'attributes'          => array(),
 	'deprecated'          => false,
 	'static_dependencies' => array(
-		'uagb-aos-js'  => array(
+		'uagb-aos-js'       => array(
 			'src'  => UAGB_Scripts_Utils::get_js_url( 'aos' ),
 			'dep'  => array(),
 			'type' => 'js',
 		),
-		'uagb-aos-css' => array(
+		'uagb-aos-css'      => array(
 			'type' => 'css',
+		),
+		'uagb-animation-js' => array(
+			'src'  => UAGB_Scripts_Utils::get_js_url( 'spectra-animations' ),
+			'dep'  => array( 'uagb-aos-js' ),
+			'type' => 'js',
 		),
 	),
 );
