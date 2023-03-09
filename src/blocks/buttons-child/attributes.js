@@ -178,56 +178,56 @@ const attributes = {
 		type: 'string',
 		default: '#06558a',
 		UAGCopyPaste: {
-			styleType: 'gradient-color-1'
+			styleType: 'btn-gradient-color-1'
 		}
 	},
 	gradientColor2: {
 		type: 'string',
 		default: '#0063A1',
 		UAGCopyPaste: {
-			styleType: 'gradient-color-2'
+			styleType: 'btn-gradient-color-2'
 		}
 	},
 	gradientType: {
 		type: 'string',
 		default: 'linear',
 		UAGCopyPaste: {
-			styleType: 'gradient-color-type'
+			styleType: 'btn-gradient-color-type'
 		}
 	},
 	hoverselectGradient: {
 		type: 'string',
 		default: 'basic',
 		UAGCopyPaste: {
-			styleType: 'gradient-type'
+			styleType: 'btn-gradient-type'
 		}
 	},
 	selectGradient: {
 		type: 'string',
 		default: 'basic',
 		UAGCopyPaste: {
-			styleType: 'gradient-type'
+			styleType: 'btn-gradient-type'
 		}
 	},
 	gradientLocation1: {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
-			styleType: 'gradient-location-1'
+			styleType: 'btn-gradient-location-1'
 		}
 	},
 	gradientLocation2: {
 		type: 'number',
 		default: 100,
 		UAGCopyPaste: {
-			styleType: 'gradient-location-2'
+			styleType: 'btn-gradient-location-2'
 		}
 	},
 	gradientAngle: {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
-			styleType: 'gradient-angle'
+			styleType: 'btn-gradient-angle'
 		}
 	},
 	hovergradientValue: {
@@ -241,42 +241,42 @@ const attributes = {
 		type: 'string',
 		default: '#06558a',
 		UAGCopyPaste: {
-			styleType: 'gradient-color-1'
+			styleType: 'btn-h-gradient-color-1'
 		}
 	},
 	hovergradientColor2: {
 		type: 'string',
 		default: '#0063A1',
 		UAGCopyPaste: {
-			styleType: 'gradient-color-2'
+			styleType: 'btn-h-gradient-color-2'
 		}
 	},
 	hovergradientType: {
 		type: 'string',
 		default: 'linear',
 		UAGCopyPaste: {
-			styleType: 'gradient-color-type'
+			styleType: 'btn-h-gradient-color-type'
 		}
 	},
 	hovergradientLocation1: {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
-			styleType: 'gradient-location-1'
+			styleType: 'btn-h-gradient-location-1'
 		}
 	},
 	hovergradientLocation2: {
 		type: 'number',
 		default: 100,
 		UAGCopyPaste: {
-			styleType: 'gradient-location-2'
+			styleType: 'btn-h-gradient-location-2'
 		}
 	},
 	hovergradientAngle: {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
-			styleType: 'gradient-angle'
+			styleType: 'btn-h-gradient-angle'
 		}
 	},
 	mobilePaddingUnit: {
