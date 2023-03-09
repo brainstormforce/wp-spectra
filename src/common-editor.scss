@@ -21,7 +21,7 @@
 
 		.components-panel__body {
 
-			> div > .components-base-control {
+			> div:not(.components-panel__row):not(.uagb-select-control) > .components-base-control {
 				margin-bottom: $spectra-control-vertical-gap;
 			}
 
@@ -107,13 +107,6 @@
 	border-radius: 2px;
 }
 
-/* UAG Help Notice CSS*/
-.uagb-inspector-tab .uag-control-help-notice {
-	margin-top: 10px !important;
-	font-size: 12px;
-	font-style: normal;
-	color: rgb(117, 117, 117);
-}
 
 /* UAG Control Label CSS*/
 .uag-control-label,
@@ -279,6 +272,7 @@ hr.uagb-editor__separator {
 	text-align: left;
 }
 
+/* UAG Help Notice CSS*/
 .uagb-note,
 .components-base-control__help {
 	color: #a4afb7;

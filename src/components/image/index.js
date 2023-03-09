@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef } from 'react';
+import { useEffect, useState,useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { BaseControl } from '@wordpress/components';
 import { MediaUpload } from '@wordpress/block-editor';
@@ -8,6 +8,7 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import apiFetch from '@wordpress/api-fetch';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import UAGConfirmPopup from '../popup-confirm';
+import UAGHelpText from '@Components/help-text';
 
 const UAGMediaPicker = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -35,7 +36,8 @@ const UAGMediaPicker = ( props ) => {
 		disableLabel = false,
 		disableRemove = false,
 		allow = [ 'image' ],
-		disableDynamicContent = false
+		disableDynamicContent = false,
+		help = false
 	} = props;
 
 	// This is used to render an icon in place of the background image when needed.
@@ -257,9 +259,7 @@ const UAGMediaPicker = ( props ) => {
 									</button>
 								) }
 							</div>
-							{ props.help && (
-								<p className="uag-control-help-notice">{ props.help }</p>
-							) }
+							<UAGHelpText text={ help } />
 						</>
 					) : (
 						registerImageExtender

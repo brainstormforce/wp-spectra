@@ -1,4 +1,4 @@
-import React, {useLayoutEffect} from 'react';
+import { useLayoutEffect } from '@wordpress/element';
 import {
 	__experimentalLinkControl as LinkControl
 } from '@wordpress/block-editor';
@@ -41,7 +41,7 @@ export default function UAGLinkControl( {label, placeholder, settings, onChange,
 
 	const ID = getIdFromString( label ? label : placeholder )
 	return (
-		<React.Fragment>
+		<>
 			<div className='uagb-link-control'>
 				{
 					label && (
@@ -64,7 +64,7 @@ export default function UAGLinkControl( {label, placeholder, settings, onChange,
 					)
 				}
 			</div>
-		</React.Fragment>
+		</>
 	);
 }
 

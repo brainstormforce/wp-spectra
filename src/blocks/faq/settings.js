@@ -1,10 +1,8 @@
 /**
  * BLOCK: FAQ
  */
-
+import { memo } from '@wordpress/element';
 import renderSVG from '@Controls/renderIcon';
-import React from 'react';
-
 import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
 import ResponsiveSlider from '@Components/responsive-slider';
@@ -1393,4 +1391,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

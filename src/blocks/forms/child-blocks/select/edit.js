@@ -3,13 +3,15 @@
  */
 
 import { __ } from '@wordpress/i18n';
-import React, { useState, useEffect,   } from 'react';
+import { useEffect, useState } from '@wordpress/element';
 
 
 import Settings from './settings';
 import Render from './render';
 
 const UAGBFormsSelectEdit = ( props ) => {
+	const { setAttributes, isSelected, clientId } = props;
+	
 	const [ setState ] = useState( {
 		optionsstate: [
 			{
@@ -22,29 +24,23 @@ const UAGBFormsSelectEdit = ( props ) => {
 	} );
 
 	useEffect( () => {
-		const { setAttributes } = props;
-
 		// Assigning block_id in the attribute.
-		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( 'style' );
 		$style.setAttribute(
 			'id',
-			'uagb-style-forms-select-' + props.clientId.substr( 0, 8 )
+			'uagb-style-forms-select-' + clientId.substr( 0, 8 )
 		);
 		document.head.appendChild( $style );
 	}, [] );
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/children/form-field.svg`;
-
 	return (
-		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } setState={ setState } />
-			</>
-		)
+		<>
+			{ isSelected && <Settings parentProps={ props } /> }
+			<Render parentProps={ props } setState={ setState } />
+		</>
 	);
 };
 

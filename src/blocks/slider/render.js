@@ -1,5 +1,5 @@
 import { useBlockProps, useInnerBlocksProps, store as blockEditorStore } from '@wordpress/block-editor';
-import React, { useMemo, useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo, memo } from '@wordpress/element';
 import { useSelect, useDispatch } from '@wordpress/data';
 const ALLOWED_BLOCKS = [ 'uagb/slider-child' ];
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -251,4 +251,4 @@ const Render = ( props ) => {
 		</div>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );

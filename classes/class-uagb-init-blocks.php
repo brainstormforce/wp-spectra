@@ -104,11 +104,9 @@ class UAGB_Init_Blocks {
 				case 'os':
 					$block_content = $this->os_visibility( $block['attrs'], $block_content );
 					break;
-
 				case 'day':
 					$block_content = $this->day_visibility( $block['attrs'], $block_content );
 					break;
-
 				default:
 					// code...
 					break;
@@ -218,14 +216,14 @@ class UAGB_Init_Blocks {
 	 */
 	public function day_visibility( $block_attributes, $block_content ) {
 
-			// If not set restriction.
+		// If not set restriction. 
 		if ( empty( $block_attributes['UAGDay'] ) ) {
 			return $block_content;
 		}
-
-			$current_day = strtolower( current_datetime()->format( 'l' ) );
-			// Check in restricted day.
-			return ! in_array( $current_day, $block_attributes['UAGDay'] ) ? $block_content : '';
+	
+		$current_day = strtolower( current_datetime()->format( 'l' ) );
+		// Check in restricted day.
+		return ! in_array( $current_day, $block_attributes['UAGDay'] ) ? $block_content : '';
 
 	}
 

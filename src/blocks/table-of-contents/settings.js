@@ -1,6 +1,4 @@
 import { __ } from '@wordpress/i18n';
-import React from 'react';
-
 import TypographyControl from '@Components/typography';
 import UAGIconPicker from '@Components/icon-picker';
 import WebfontLoader from '@Components/typography/fontloader';
@@ -27,6 +25,7 @@ import {
 	Icon
 } from '@wordpress/components';
 import UAGSelectControl from '@Components/select-control';
+import { memo } from '@wordpress/element';
 
 
 
@@ -1430,4 +1429,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

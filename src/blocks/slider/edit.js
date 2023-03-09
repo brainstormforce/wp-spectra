@@ -1,7 +1,7 @@
 /**
  * BLOCK: Slider
  */
-import React, { useEffect, useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect } from '@wordpress/element';
 import { withSelect, useDispatch } from '@wordpress/data';
 import styling from './styling';
 import Settings from './settings';
@@ -13,11 +13,17 @@ import { compose } from '@wordpress/compose';
 import { useDeviceType } from '@Controls/getPreviewType';
 import styles from './editor.lazy.scss';
 import { SwiperSlide } from 'swiper/react';
-
+import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const UAGBSlider = ( props ) => {
 	const deviceType = useDeviceType();
-
+    const {
+		isSelected,
+		setAttributes,
+		attributes,
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
+	} = props;
+	
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -29,7 +35,7 @@ const UAGBSlider = ( props ) => {
 	useEffect( () => {
 
 		// Assigning block_id in the attribute.
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
 	}, [] );
 
@@ -38,25 +44,17 @@ const UAGBSlider = ( props ) => {
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-slider-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-	}, [ props ] );
-
+	}, [ attributes, deviceType ] );
+    	
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-	    const blockStyling = styling( props );
-
-        addBlockEditorDynamicStyles( 'uagb-slider-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
-	}, [deviceType] );
-
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/slider.svg`;
+		responsiveConditionPreview( props );
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	return (
-		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } />
-			</>
-		)
+		<>
+			{ isSelected && <Settings parentProps={ props } /> }
+			<Render parentProps={ props } />
+		</>
 	);
 };
 

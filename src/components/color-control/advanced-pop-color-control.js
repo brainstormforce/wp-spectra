@@ -16,7 +16,7 @@ import {
 } from '@wordpress/components';
 import { useSelect, select } from '@wordpress/data';
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGReset from '../reset';
 
@@ -296,7 +296,7 @@ const AdvancedPopColorControl = ( props ) => {
 					</div>
 				</div>
 				{ help && (
-					<p className="uag-control-help-notice">{ help }</p>
+					<p className="components-base-control__help">{ help }</p>
 				) }
 			</div>
 			{

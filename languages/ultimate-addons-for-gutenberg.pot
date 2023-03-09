@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-02-01T13:20:59+00:00\n"
+"POT-Creation-Date: 2023-02-08T06:45:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -17,7 +17,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: admin-core/inc/admin-menu.php:204
 #: classes/class-uagb-admin-helper.php:386
-#: classes/class-uagb-init-blocks.php:451
+#: classes/class-uagb-init-blocks.php:427
 msgid "Spectra"
 msgstr ""
 
@@ -112,7 +112,7 @@ msgstr ""
 #: admin-core/ajax/common-settings.php:1229
 #: admin-core/ajax/common-settings.php:1289
 #: admin-core/ajax/common-settings.php:1326
-#: classes/class-uagb-init-blocks.php:414
+#: classes/class-uagb-init-blocks.php:390
 msgid "Successfully saved data!"
 msgstr ""
 
@@ -126,7 +126,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: blocks-config/forms/class-uagb-forms.php:214
+#: blocks-config/forms/class-uagb-forms.php:254
 #: includes/blocks/forms/attributes.php:69
 #: dist/blocks.js:1
 #: dist/blocks.js:17
@@ -188,6 +188,7474 @@ msgstr ""
 msgid "Taxonomy Not Available."
 msgstr ""
 
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "42.group"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "500px"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "A"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Accessible Icon"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Accusoft"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Address Book"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Address Card"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "App.net"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Adversal"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "affiliatetheme"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Airbnb"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Algolia"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "align-center"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "align-justify"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "align-left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "align-right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Alipay"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Amazon"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Amazon Pay"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Amilia"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Anchor"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Anchor Circle-check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Anchor Circle-exclamation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Anchor Circle-xmark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Anchor Lock"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Android"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "AngelList"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "angle-down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "angle-left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "angle-right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "angle-up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Angles down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Angles left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Angles right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Angles up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Angry Creative"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Angular"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ankh"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "App Store"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "iOS App Store"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Apper Systems AB"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Apple"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Apple Pay"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Apple whole"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Archway"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow down 1 9"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow down 9 1"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow down a z"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow down long"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow down short wide"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow Down-up-across-line"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow Down-up-lock"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow down wide short"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow down z a"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "arrow-left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow left long"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow pointer"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "arrow right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow Right Arrow Left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow right from bracket"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow right long"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow right to bracket"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow Right-to-city"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow Rotate Left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow Rotate Right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow trend down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow trend up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow turn down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow turn up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow up 1 9"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow up 9 1"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow up a z"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow up from bracket"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow Up-from-ground-water"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow Up-from-water-pump"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow up long"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow Up-right-dots"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow Up Right From Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow up short wide"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow up wide short"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrow up z a"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrows Down-to-line"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrows Down-to-people"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrows left right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrows Left-right-to-line"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrows rotate"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrows Spin"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrows Split-up-and-left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrows To-circle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrows To-dot"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrows To-eye"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrows Turn-right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrows Turn-to-dots"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrows up down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrows up down left right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Arrows Up-to-line"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Artstation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "asterisk"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Asymmetrik, Ltd."
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "At"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Atlassian"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Atom"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Audible"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Rectangle audio description"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Austral Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Autoprefixer"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "avianex"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Aviato"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Award"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Amazon Web Services (AWS)"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "B"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Baby"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Baby Carriage"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "backward"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Backward fast"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Backward step"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bacon"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bacteria"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bacterium"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bag shopping"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bahá'í"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Baht Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "ban"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ban smoking"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bandage"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bandcamp"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bangladeshi Taka Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "barcode"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bars"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bars progress"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bars staggered"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Baseball Ball"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Baseball bat ball"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Basket shopping"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Basketball Ball"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bath"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Battery Empty"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Battery Full"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Battery 1/2 Full"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Battery 1/4 Full"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Battery 3/4 Full"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Battle.net"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bed"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bed pulse"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Beer mug empty"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Behance"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "bell"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bell concierge"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bell Slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bezier Curve"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bicycle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bilibili"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "BIMobject"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Binoculars"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Biohazard"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bitbucket"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bitcoin"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bitcoin Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bity"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Font Awesome Black Tie"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "BlackBerry"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Blender"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Blender Phone"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Blog"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "Blogger"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Blogger B"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bluetooth"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "bold"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bolt"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Lightning Bolt"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bomb"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bone"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bong"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "book"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Book atlas"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Book bible"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Book Bookmark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Book journal whills"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Medical Book"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Book Open"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Book open reader"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Book quran"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Book skull"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Book tanakh"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "bookmark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bootstrap"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Border All"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Border None"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Border top left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bore Hole"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bots"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bottle Droplet"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bottle Water"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bowl Food"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bowl Rice"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bowling Ball"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "Box"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Box archive"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Box Open"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tissue Box"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Boxes Packing"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Boxes Stacked"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Braille"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Brain"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Brazilian Real Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bread Slice"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bridge"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bridge Circle-check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bridge Circle-exclamation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bridge Circle-xmark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bridge Lock"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bridge Water"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Briefcase"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Medical Briefcase"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Broom"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Broom and Ball"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Brush"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "BTC"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bucket"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "Buffer"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bug"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bug Slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bugs"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Building"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Building Circle-arrow-right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Building Circle-check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Building Circle-exclamation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Building Circle-xmark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Building with Columns"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Building Flag"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Building Lock"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Building Ngo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Building Shield"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Building Un"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Building User"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Building Wheat"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "bullhorn"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bullseye"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Burger"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Büromöbel-Experte GmbH & Co. KG."
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Burst"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bus simple"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Briefcase clock"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Buy n Large"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "BuySellAds"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "C"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cable Car"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cake candles"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Calculator"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Calendar"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Calendar Check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Calendar with Day Focus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Calendar Days"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Calendar Minus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Calendar Plus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Calendar with Week Focus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Calendar X Mark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "camera"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Retro Camera"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Camera Rotate"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Campground"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Canadian Maple Leaf"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Candy Cane"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cannabis"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Capsules"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Car"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Car Battery"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Car Crash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Car On"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Car rear"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Car Side"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Car Tunnel"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Caravan"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Caret Down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Caret Left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Caret Right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Caret Up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Carrot"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cart Arrow Down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cart flatbed"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cart flatbed suitcase"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cart Plus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cart Shopping"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cash Register"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cat"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Amazon Pay Credit Card"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "American Express Credit Card"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Apple Pay Credit Card"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Diner's Club Credit Card"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Discover Credit Card"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "JCB Credit Card"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "MasterCard Credit Card"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Paypal Credit Card"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Stripe Credit Card"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Visa Credit Card"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cedi Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cent Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Centercode"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Centos"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "certificate"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Chair"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Chalkboard"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Chalkboard user"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Champagne glasses"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Charging Station"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Area Chart"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Bar Chart"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Chart Column"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Chart Gantt"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Line Chart"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pie Chart"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Chart Simple"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Double Check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Check to Slot"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cheese"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Chess"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Chess Bishop"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Chess Board"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Chess King"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Chess Knight"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Chess Pawn"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Chess Queen"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Chess Rook"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "chevron-down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "chevron-left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "chevron-right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "chevron-up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Child"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Child Combatant"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Child Dress"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Child Reaching"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Children"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Chrome"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Chromecast"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Church"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:11
+#: dist/blocks.js:13
+#: dist/blocks.js:17
+msgid "Circle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle arrow down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle arrow left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle arrow right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle arrow up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle chevron down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle chevron left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle chevron right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle chevron up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle dollar to slot"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle dot"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle exclamation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle h"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle half stroke"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle info"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle minus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle Nodes"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle Notched"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle pause"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle play"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle plus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle question"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle radiation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle stop"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle user"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Circle X Mark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "City"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Clapperboard"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Clipboard"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Clipboard Check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Clipboard List"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Clipboard Question"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Clipboard User"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Clock"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Clock Rotate Left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Clone"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Closed Captioning"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cloud"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cloud arrow down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cloud arrow up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cloud bolt"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cloud with (a chance of) Meatball"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cloud with Moon"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cloud with Moon and Rain"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cloud with Rain"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cloud with Heavy Showers"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cloud Showers-water"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cloud with Sun"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cloud with Sun and Rain"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cloudflare"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "cloudscale.ch"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cloudsmith"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "cloudversify"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Clover"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cmplid"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Code"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Code Branch"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Code Commit"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Code Compare"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Code Fork"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Code Merge"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Code Pull Request"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Codepen"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Codie Pie"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Coins"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Colon Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "comment"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Comment Dollar"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Comment Dots"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Alternate Medical Chat"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Comment Slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Comment sms"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "comments"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Comments Dollar"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Compact Disc"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Compass"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Compass drafting"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Compress"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Computer"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Computer mouse"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Confluence"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Connect Develop"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Contao"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cookie"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cookie Bite"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Copy"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Copyright"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cotton Bureau"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Couch"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cow"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "cPanel"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Creative Commons"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Creative Commons Attribution"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Creative Commons Noncommercial"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Creative Commons Noncommercial (Euro Sign)"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Creative Commons Noncommercial (Yen Sign)"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Creative Commons No Derivative Works"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Creative Commons Public Domain"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Alternate Creative Commons Public Domain"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Creative Commons Remix"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Creative Commons Share Alike"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Creative Commons Sampling"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Creative Commons Sampling +"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Creative Commons Share"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Creative Commons CC0"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Credit Card"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Critical Role"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "crop"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Crop simple"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cross"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Crosshairs"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Crow"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Crown"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Crutch"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cruzeiro Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "CSS 3 Logo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Alternate CSS3 Logo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cube"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cubes"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cubes Stacked"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cuttlefish"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "D"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dungeons & Dragons"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "D&D Beyond"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "dailymotion"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "DashCube"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Database"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Deezer"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Delete left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Delicious"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Democrat"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "deploy.dog"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Deskpro"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:1
+#: dist/blocks.js:13
+#: dist/blocks.js:17
+msgid "Desktop"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "DEV"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "deviantART"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dharmachakra"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "DHL"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Diagram Next"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Diagram Predecessor"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Project Diagram"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Diagram Successor"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:11
+msgid "Diamond"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Diamond turn right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Diaspora"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dice"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dice D20"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dice D6"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dice Five"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dice Four"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dice One"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dice Six"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dice Three"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dice Two"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Digg Logo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Digital Ocean"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Discord"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Discourse"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Disease"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Display"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Divide"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "DNA"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "DocHub"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Docker"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dog"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dollar Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dolly"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dong Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Door Closed"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Door Open"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dove"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Down left and up right to center"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Down long"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Download"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Draft2digital"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dragon"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Draw Polygon"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dribbble"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dropbox"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Droplet"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Droplet Slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Drum"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Drum Steelpan"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Drumstick with Bite Taken Out"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Drupal Logo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dumbbell"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dumpster"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dumpster Fire"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dungeon"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dyalog"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "E"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ear deaf"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ear listen"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Earlybirds"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Earth Africa"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Earth americas"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Earth Asia"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Earth Europe"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Earth Oceania"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "eBay"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Edge Browser"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Edge Legacy Browser"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Egg"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "eject"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Elementor"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Elevator"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ellipsis"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ellipsis vertical"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ello"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ember"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Galactic Empire"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Envelope"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Envelope Circle Check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Envelope Open"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Envelope Open Text"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Envelopes bulk"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Envira Gallery"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Equals"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "eraser"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Erlang"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ethereum"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ethernet"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Etsy"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Euro Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Evernote"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "exclamation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Expand"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "ExpeditedSSL"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Explosion"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Eye"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Eye Dropper"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Eye low vision"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Eye Slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "F"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face angry"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face dizzy"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face flushed"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face frown"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face frown open"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face grimace"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face grin"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face grin beam"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face grin beam sweat"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face grin hearts"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face grin squint"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face grin squint tears"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face grin stars"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face grin tears"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face grin tongue"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face grin tongue squint"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face grin tongue wink"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face grin wide"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face grin wink"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face kiss"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face Kiss Beam"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face Kiss Wink Heart"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face Laugh"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face Laugh Beam"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face Laugh Squint"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face Laugh Wink"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face meh"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face Meh Blank"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face Rolling Eyes"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face Sad Cry"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face Sad Tear"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face Smile"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face Smile Beam"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face Smile Wink"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face Surprise"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face Tired"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "Facebook"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Facebook F"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Facebook Messenger"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Fan"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Fantasy Flight-games"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Faucet"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Faucet Drip"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Fax"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Feather"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Feather pointed"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "FedEx"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Fedora"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ferry"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Figma"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File arrow down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File arrow up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Audio File"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File Circle-Check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File Circle-exclamation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File Circle-minus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File Circle-plus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File Circle-question"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File Circle-xmark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Code File"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File Contract"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File CSV"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Excel File"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File Export"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Image File"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File Import"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File Invoice"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File Invoice with US Dollar"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File lines"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Medical File"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "PDF File"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File pen"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Powerpoint File"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File Prescription"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File Shield"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File Signature"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Video File"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File waveform"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Word File"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "File zipper"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:11
+msgid "Fill"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Fill Drip"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Film"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Filter"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Filter Circle Dollar"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Filter Circle X Mark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Fingerprint"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "fire"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Fire Burner"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "fire-extinguisher"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Fire flame curved"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Fire flame simple"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Firefox"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Firefox Browser"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "First Order"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Alternate First Order"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "firstdraft"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Fish"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Fish Fins"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Flag"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Flag Checkered"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Flag Usa"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Flask"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Flask and Vial"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Flickr"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Flipboard"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Floppy Disk"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Florin Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Fly"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Folder"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Folder Closed"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Folder Minus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Folder Open"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Folder Plus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Folder Tree"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "font"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Font Awesome"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Fonticons"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Fonticons Fi"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Football Ball"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Fort Awesome"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Alternate Fort Awesome"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Forumbee"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "forward"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Forward fast"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Forward step"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Foursquare"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Franc Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "freeCodeCamp"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "FreeBSD"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Frog"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Fulcrum"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Futbol ball"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "G"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Galactic Republic"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Galactic Senate"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Gamepad"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Gas Pump"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Gauge med"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Gauge"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Gauge simple med"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Gauge simple"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Gavel"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Gear"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Gears"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Gem"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Genderless"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Get Pocket"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "GG Currency"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "GG Currency Circle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ghost"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "gift"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Gifts"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Git"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Git Alt"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "GitHub"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Alternate GitHub"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "GitKraken"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "GitLab"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Gitter"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Glass Water"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Glass Water-droplet"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Glasses"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Glide"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Glide G"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Globe"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Gofore"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Go"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Golf ball tee"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Goodreads"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Goodreads G"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Google Logo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Google Drive"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Google Pay"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Google Play"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Google Plus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Google Plus G"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Google Wallet"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Gopuram"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Graduation Cap"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Gratipay (Gittip)"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Grav"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Greater Than"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Greater Than Equal To"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Grip"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Grip Lines"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Grip Lines Vertical"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Grip Vertical"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Gripfire, Inc."
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Group Arrows-rotate"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Grunt"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Guarani Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Guilded"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Guitar"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Gulp"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Gun"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "H"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hacker News"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hackerrank"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hammer"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hamsa"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Paper (Hand)"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Rock (Hand)"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hand dots"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Raised Fist"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hand Holding"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hand holding dollar"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hand holding droplet"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hand Holding-hand"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hand Holding Heart"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hand Holding Medical Cross"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Lizard (Hand)"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hand with Middle Finger Raised"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Peace (Hand)"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hand Pointing Down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hand Pointing Left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hand Pointing Right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hand Pointing Up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pointer (Hand)"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Scissors (Hand)"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hand Sparkles"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Spock (Hand)"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Handcuffs"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hands"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hands american sign language interpreting"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hands Bound"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hands bubbles"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hands Clapping"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hands holding"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hands Holding-child"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hands Holding-circle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hands praying"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Handshake"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Handshake angle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Handshake simple"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Handshake simple slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Handshake Slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hanukiah"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hard drive"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hashnode"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hashtag"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cowboy Hat"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cowboy Hat Side"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wizard's Hat"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Head Side Cough"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Head Side-cough-slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Head Side Mask"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Head Side Virus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:11
+msgid "heading"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "headphones"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Headphones simple"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Headset"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Heart"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Heart Circle-bolt"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Heart Circle-check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Heart Circle-exclamation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Heart Circle-minus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Heart Circle-plus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Heart Circle-xmark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Heart crack"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Heart pulse"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Helicopter"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Helicopter Symbol"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Helmet safety"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Helmet Un"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Highlighter"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hill Avalanche"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hill Rockslide"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hippo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hips"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "HireAHelper"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hive Blockchain Network"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hockey Puck"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Holly Berry"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hooli"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hornbill"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Horse"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Horse Head"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "hospital"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hospital with User"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hot tub person"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hot Dog"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hotel"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hotjar"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hourglass"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hourglass End"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hourglass Half"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hourglass Start"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House Chimney"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House crack"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House medical"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House User"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House with Window + Chimney"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House Circle-check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House Circle-exclamation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House Circle-xmark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House Simple Crack"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House Fire"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House Flag"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House Flood"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House Flood-circle-arrow-right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House laptop"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House Lock"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House Simple Medical"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House Medical-circle-check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House Medical-circle-exclamation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House Medical-circle-xmark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House Medical-flag"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House Signal"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "House Tsunami"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Home User"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Houzz"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hryvnia sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "HTML 5 Logo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "HubSpot"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hurricane"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "I"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "I Beam Cursor"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ice Cream"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Icicles"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Icons"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Identification Badge"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Identification Card"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Id card clip"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "iDeal"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Igloo"
+msgstr ""
+
+#. translators: %s: file name
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: includes/blocks/image/block.php:16
+#: dist/blocks-placeholder.js:21
+#: dist/blocks.js:11
+#: dist/blocks.js:13
+#: dist/blocks.js:17
+msgid "Image"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Image portrait"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Images"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "IMDB"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "inbox"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Indent"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Indian Rupee-sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Industry"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Info"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Instagram"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "InstaLOD"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Intercom"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Internet-explorer"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "InVision"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "ioxhost"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "italic"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "itch.io"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "iTunes"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Itunes Note"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "J"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Jar"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Jar Wheat"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Java"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Jedi"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Jedi Order"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Jenkis"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Jet fighter"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Jet Fighter Up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Jira"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Joget"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Joint"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Joomla Logo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "JavaScript (JS)"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "jsFiddle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Jug Detergent"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "K"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Kaaba"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Kaggle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "key"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Keybase"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Keyboard"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "KeyCDN"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Khanda"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Kickstarter"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Kickstarter K"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Kip Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Kit medical"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Kitchen Set"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Kiwi Bird"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "KORVUE"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "L"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Land Mine-on"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Landmark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Landmark dome"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Landmark Flag"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "Language"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Laptop"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Laptop Code"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Laptop File"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Laptop Medical"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Laravel"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Lari Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "last.fm"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Layer Group"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "leaf"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Leanpub"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Left long"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Left right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Lemon"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Less"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Less Than"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Less Than Equal To"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Life Ring"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Lightbulb"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Line"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Lines Leaning"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:11
+#: dist/blocks.js:13
+#: dist/blocks.js:17
+msgid "Link"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Link Slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "LinkedIn"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "LinkedIn In"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Linode"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Linux"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Lira Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "List"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "List check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "list-ol"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "list-ul"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Litecoin Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "location-arrow"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Location Crosshairs"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Location dot"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Location"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Location Pin-lock"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "lock"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Lock Open"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Locust"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Lungs"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Lungs Virus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "lyft"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "M"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Magento"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "magnet"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Magnifying glass"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Magnifying Glass-arrow-right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Magnifying Glass-chart"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Magnifying glass dollar"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Magnifying glass location"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Magnifying glass minus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Magnifying glass plus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mailchimp"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Manat Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mandalorian"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Map"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Map location"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Map location dot"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Map Pin"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Markdown"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Marker"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mars"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mars and Venus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mars and Venus Burst"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mars Double"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mars Stroke"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mars stroke right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mars stroke up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Martini glass"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Martini glass citrus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Martini glass empty"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:11
+msgid "Mask"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Face Mask"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mask Ventilator"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Masks theater"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mastodon"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mattress Pillow"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "MaxCDN"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Maximize"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Material Design for Bootstrap"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Medal"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "MedApps"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:13
+#: dist/blocks.js:17
+msgid "Medium"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "MRT"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Meetup"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Megaport"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Memory"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mendeley"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Menorah"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mercury"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:1
+#: dist/blocks.js:17
+msgid "Message"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "Meta"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Meteor"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Micro.blog"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Microchip"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "microphone"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Microphone lines"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Microphone lines slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Microphone Slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Microscope"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Microsoft"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mill Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Minimize"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "minus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mitten"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mix"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mixcloud"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mixer"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mizuni"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:1
+#: dist/blocks.js:13
+#: dist/blocks.js:17
+msgid "Mobile"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mobile button"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mobile Retro"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mobile screen"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mobile screen button"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "MODX"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Monero"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Money Bill"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Money bill 1"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Money bill 1 wave"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Money Bill-transfer"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Money Bill-trend-up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wavy Money Bill"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Money Bill-wheat"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Money Bills"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Money Check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Money check dollar"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Monument"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Moon"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mortar Pestle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mosque"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mosquito"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mosquito Net"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Motorcycle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mound"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mountain"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mountain City"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mountain Sun"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mug Hot"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Mug saucer"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Music"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "N"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Naira Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Napster"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Neos"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wired Network"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Neuter"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Newspaper"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "NFC Directional"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "NFC Simplified"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Nimblr"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Node.js"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Node.js JS"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Not Equal"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Notdef"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Note Sticky"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Notes Medical"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "npm"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "NS8"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Nutritionix"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "O"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Object Group"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Object Ungroup"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Octopus Deploy"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "Odnoklassniki"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Oil Can"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Oil Well"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Old Republic"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Om"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "OpenCart"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "OpenID"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Opera"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Optin Monster"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "ORCID"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Open Source Initiative"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Otter"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Outdent"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:11
+#: dist/blocks.js:13
+#: dist/blocks.js:17
+msgid "P"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Padlet"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "page4 Corporation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pagelines"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pager"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Paint Roller"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Paint Brush"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Palette"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Palfed"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pallet"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Panorama"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Paper Plane"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Paperclip"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Parachute Box"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "paragraph"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Passport"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Paste"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Patreon"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "pause"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Paw"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Paypal"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Peace"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pen"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pen clip"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pen Fancy"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pen Nib"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pen ruler"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pen to square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pencil"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "People arrows left right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "People carry box"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "People Group"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "People Line"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "People Pulling"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "People Robbery"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "People Roof"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hot Pepper"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "PerByte"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Percent"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Periscope"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Arrow-down-to-line"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Arrow-up-from-line"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person biking"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Entering Booth"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Breastfeeding"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Burst"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Cane"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Chalkboard"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Circle-check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Circle-exclamation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Circle-minus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Circle-plus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Circle-question"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Circle-xmark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person digging"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person dots from line"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person dress"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Dress BUrst"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Drowning"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Falling"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Falling Burst"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Half-dress"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Harassing"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person hiking"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Military-pointing"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Military-rifle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Military-to-person"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person praying"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Pregnant"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Rays"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Rifle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person running"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Shelter"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person skating"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person skiing"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person skiing nordic"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person snowboarding"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person swimming"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Through-window"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person walking"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Walking-arrow-loop-left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Walking-arrow-right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Walking-dashed-line-arrow-right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person Walking-luggage"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Person walking with cane"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Peseta Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Peso Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Phabricator"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Phoenix Framework"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Phoenix Squadron"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: includes/blocks/forms-phone/block.php:14
+#: dist/blocks.js:17
+msgid "Phone"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Phone flip"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Phone Slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Phone Volume"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Photo film"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "PHP"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pied Piper Logo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Alternate Pied Piper Logo (Old)"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pied Piper Hat (Old)"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pied Piper PP Logo (Old)"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Piggy Bank"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pills"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "Pinterest"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pinterest P"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pix"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pizza Slice"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Place of Worship"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "plane"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Plane Arrival"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Plane Circle-check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Plane Circle-exclamation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Plane Circle-xmark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Plane Departure"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Plane Lock"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Plane Slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Plane Up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Plant Wilt"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Plate Wheat"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "play"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "PlayStation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Plug"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Plug Circle-bolt"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Plug Circle-check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Plug Circle-exclamation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Plug Circle-minus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Plug Circle-plus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Plug Circle-xmark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "plus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Plus Minus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Podcast"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Poo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Poo bolt"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Poop"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Power Off"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Prescription"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Prescription Bottle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Prescription Bottle Medical"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "print"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Product Hunt"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pump Medical"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pump Soap"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pushed"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Puzzle Piece"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Python"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Q"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "QQ"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "qrcode"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "Question"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "QuinScape"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Quora"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "quote-left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "quote-right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "R"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "R Project"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Radiation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: includes/blocks/forms-radio/block.php:14
+#: dist/blocks.js:17
+msgid "Radio"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Rainbow"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ranking Star"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Raspberry Pi"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ravelry"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "React"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "ReactEurope"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "ReadMe"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Rebel Alliance"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Receipt"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Record Vinyl"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Rectangle ad"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Rectangle list"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Rectangle X Mark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Recycle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "red river"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "reddit Logo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "reddit Alien"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Redhat"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Registered Trademark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Renren"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:11
+msgid "Repeat"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Reply"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Reply All"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "replyd"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Republican"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Researchgate"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Resolving"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Restroom"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Retweet"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Rev.io"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ribbon"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Right from bracket"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Right left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Right long"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Right to bracket"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ring"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "road"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Road Barrier"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Road Bridge"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Road Circle-check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Road Circle-exclamation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Road Circle-xmark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Road Lock"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Road Spikes"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Robot"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "rocket"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Rocket.Chat"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Rockrms"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Rotate"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Rotate Left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Rotate Right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Route"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "rss"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ruble Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Rug"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ruler"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ruler Combined"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ruler Horizontal"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ruler Vertical"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Indian Rupee Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Rupiah Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Rust"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "S"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sack of Money"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sack Xmark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Safari"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sailboat"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Salesforce"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sass"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Satellite"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Satellite Dish"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Scale balanced"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Scale unbalanced"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Scale unbalanced flip"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "SCHLIX"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "School"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "School Circle Check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "School Circle Exclamation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "School Circle Xmark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "School Flag"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "School Lock"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Scissors"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Screenpal"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Screwdriver"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Screwdriver wrench"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Scribd"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:11
+#: dist/blocks.js:17
+msgid "Scroll"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Scroll torah"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sd Card"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Searchengin"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Section"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Seedling"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sellcast"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sellsy"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Server"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Servicestack"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Shapes"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Share"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Share From Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Share nodes"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sheet Plastic"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Shekel Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "shield"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Shield Cat"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Shield Dog"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Shield Halved"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Shield Heart"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Shield Virus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ship"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "T-Shirt"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Shirts in Bulk"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Shoe Prints"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Shop"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Shop Lock"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Shop slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Shopify"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Shopware"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Shower"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Shrimp"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Shuffle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Shuttle space"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sign hanging"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "signal"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Signature"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Signs post"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "SIM Card"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "SimplyBuilt"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sink"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "SISTRIX"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sitemap"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sith"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sitrox"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sketch"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Skull"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Skull & Crossbones"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "skyatlas"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "Skype"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Slack Logo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sleigh"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sliders"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Slideshare"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Smog"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Smoking"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Snapchat"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Snowflake"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Snowman"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Snowplow"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Soap"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Socks"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Solar Panel"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sort"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sort Down (Descending)"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sort Up (Ascending)"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "SoundCloud"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sourcetree"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Spa"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Space Awesome"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Spaghetti monster flying"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Speakap"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Speaker Deck"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Spell Check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Spider"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Spinner"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Splotch"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Spoon"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Spotify"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Spray Can"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Spray Can Sparkles"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:13
+#: dist/blocks.js:17
+msgid "Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square arrow up right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Behance Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square caret down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square caret left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square caret right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square caret up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Dribbble Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square envelope"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Facebook Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Font Awesome in Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Font Awesome in Square with Stroke Outline"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square Full"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Git Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "GitHub Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square Gitlab"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Google Plus Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square h"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hacker News Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Instagram Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "JavaScript (JS) Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "last.fm Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square minus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square Nfi"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Odnoklassniki Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square parking"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square pen"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square Person-confined"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square phone"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square phone flip"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pied Piper Square Logo (Old)"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Pinterest Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square plus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square poll horizontal"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square poll vertical"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "reddit Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square root variable"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square rss"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square share nodes"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Snapchat Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Steam Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tumblr Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Twitter Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square up right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Viadeo Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Vimeo Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square Virus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "What's App Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Xing Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square X Mark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "YouTube Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Squarespace"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Stack Exchange"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Stack Overflow"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Stackpath"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Staff Aesculapius"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Stairs"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Stamp"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Stapler"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "Star"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Star and Crescent"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "star-half"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Star half stroke"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Star of David"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Star of Life"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "StayLinked"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Steam"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Steam Symbol"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sterling sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Stethoscope"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sticker Mule"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "stop"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Stopwatch"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Stopwatch 20"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Store"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Store Slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Strava"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Street View"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Strikethrough"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Stripe"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Stripe S"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Stroopwafel"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Studio Vinari"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "StumbleUpon Logo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "StumbleUpon Circle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "subscript"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Suitcase"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Suitcase medical"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Suitcase Rolling"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sun"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Sun Plant-wilt"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Superpowers"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "superscript"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Supple"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Suse"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Swatchbook"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Swift"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Symfony"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Synagogue"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Syringe"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "T"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "table"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Table cells"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Table cells large"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Table columns"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Table list"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Table tennis paddle ball"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:1
+#: dist/blocks.js:13
+#: dist/blocks.js:17
+msgid "Tablet"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tablet button"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tablet screen button"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tablets"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tachograph digital"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "tag"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "tags"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tape"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tarp"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tarp Droplet"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Taxi"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "TeamSpeak"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Teeth"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Teeth Open"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "Telegram"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Temperature arrow down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Temperature arrow up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Temperature empty"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Temperature full"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Temperature half"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "High Temperature"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Low Temperature"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Temperature quarter"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Temperature three quarters"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tencent Weibo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tenge sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tent"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tent Arrow-down-to-line"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tent Arrow-left-right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tent Arrow-turn-left"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tent Arrows-down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tents"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Terminal"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "text-height"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Text slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Text Width"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "The Red Yeti"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Themeco"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "ThemeIsle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Thermometer"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Think Peaks"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "thumbs-down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "thumbs-up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Thumbtack"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ticket"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ticket simple"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "TikTok"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:13
+msgid "Timeline"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Toggle Off"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Toggle On"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Toilet"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Toilet Paper"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Toilet Paper Slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Toilet Portable"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Toilets Portable"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Toolbox"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tooth"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Torii Gate"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tornado"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tower Broadcast"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tower Cell"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tower Observation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tractor"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Trade Federation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Trademark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Traffic Light"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Trailer"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Train"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Train subway"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Train tram"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Transgender"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Trash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Trash arrow up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Trash can"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Trash can arrow up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tree"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Tree City"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Trello"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Triangle exclamation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "trophy"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Trowel"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Trowel Bricks"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "truck"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Truck Arrow-right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Truck Droplet"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Truck fast"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Truck Field"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Truck Field-un"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Truck Front"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Truck medical"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Truck Monster"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Truck Moving"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Truck Side"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Truck Plane"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Truck ramp box"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "TTY"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "Tumblr"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Turkish Lira-sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Turn down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Turn up"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Television"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Twitch"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "Twitter"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Typo3"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "U"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Uber"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Ubuntu"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "UIkit"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Umbraco"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Umbrella"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Umbrella Beach"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Uncharted Software"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:11
+#: dist/blocks.js:17
+msgid "Underline"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Uniregistry"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Unity 3D"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Universal Access"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "unlock"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Unlock keyhole"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Unsplash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Untappd"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Up down"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Up down left right"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Up long"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Up right and down left from center"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Up Right From Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: includes/blocks/forms-upload/block.php:14
+msgid "Upload"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "UPS"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "USB"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User Astronaut"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User Check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User Clock"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User doctor"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User gear"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User Graduate"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User group"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User Injured"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User large"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User large slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User Lock"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User Minus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User Ninja"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Nurse"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User pen"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User Plus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User Secret"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User Shield"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User Slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User Tag"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User Tie"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "User X Mark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Users"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Users Between-lines"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Users gear"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Users Line"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Users Rays"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Users Rectangle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Users Slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Users Viewfinder"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "United States Postal Service"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "us-Sunnah Foundation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Utensils"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "V"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Vaadin"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Van shuttle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Vault"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Vector Square"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Venus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Venus Double"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Venus Mars"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "vest"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "vest-patches"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Viacoin"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Viadeo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Vial"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Vial Circle-check"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Vial Virus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Vials"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Viber"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:11
+msgid "Video"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Video Slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Vihara"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Vimeo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Vine"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Virus"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Virus Covid"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Virus Covid-slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Virus Slash"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Viruses"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "VK"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "VNV"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Voicemail"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Volcano"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Volleyball Ball"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Volume high"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Volume low"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Volume Off"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Volume X Mark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Cardboard VR"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Vue.js"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "W"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Walkie Talkie"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wallet"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wand magic"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wand magic sparkles"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wand sparkles"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Warehouse"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Watchman Monitoring"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Water"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Water ladder"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Square Wave"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Waze"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Weebly"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Weibo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Hanging Weight"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Weight scale"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Weixin (WeChat)"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "What's App"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wheat awn"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wheat Awn-circle-exclamation"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wheelchair"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wheelchair Move"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Whiskey glass"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "WHMCS"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "WiFi"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wikipedia W"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wind"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Window Maximize"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Window Minimize"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Window Restore"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Windows"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wine Bottle"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wine Glass"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wine glass empty"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "wirsindhandwerk"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wix"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wizards of the Coast"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wodu"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wolf Pack Battalion"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Won Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "WordPress Logo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wordpress Simple"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Worm"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "WPBeginner"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "WPExplorer"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "WPForms"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "wpressr"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Wrench"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "X"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "X-Ray"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Xbox"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+#: dist/blocks.js:17
+msgid "Xing"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "X Mark"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Xmarks Lines"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Y"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Y Combinator"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Yahoo Logo"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Yammer"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Yandex"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Yandex International"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Yarn"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Yelp"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Yen Sign"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Yin Yang"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Yoast"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "YouTube"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Z"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Zhihu"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Science"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Design"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Business"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Communication"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Education"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Lifestyle and Hobbies"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Travel"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Environment"
+msgstr ""
+
+#: blocks-config/uagb-controls/spectra-icons-v6.php:13
+msgid "Social"
+msgstr ""
+
 #: classes/class-uagb-admin-helper.php:394
 msgid "Astra Theme"
 msgstr ""
@@ -240,45 +7708,44 @@ msgstr ""
 msgid "Full"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:87
-#: classes/class-uagb-init-blocks.php:253
-#: classes/class-uagb-init-blocks.php:397
+#: classes/class-uagb-init-blocks.php:229
+#: classes/class-uagb-init-blocks.php:373
 msgid "User is not authenticated!"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:384
+#: classes/class-uagb-init-blocks.php:360
 msgid "Please select a valid Gravity Form."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:434
+#: classes/class-uagb-init-blocks.php:410
 msgid "Please select a valid Contact Form 7."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:573
+#: classes/class-uagb-init-blocks.php:549
 #: dist/blocks.js:11
 #: dist/blocks.js:13
 #: dist/blocks.js:17
 msgid "Default"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:673
+#: classes/class-uagb-init-blocks.php:649
 #: dist/blocks.js:11
 #: dist/blocks.js:13
 #: dist/blocks.js:17
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:702
-#: classes/class-uagb-init-blocks.php:735
+#: classes/class-uagb-init-blocks.php:678
+#: classes/class-uagb-init-blocks.php:711
 #: dist/blocks.js:17
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:716
+#: classes/class-uagb-init-blocks.php:692
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:749
+#: classes/class-uagb-init-blocks.php:725
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
@@ -509,18 +7976,8 @@ msgstr ""
 msgid "Add a name field in your form"
 msgstr ""
 
-#: includes/blocks/forms-phone/block.php:14
-#: dist/blocks.js:17
-msgid "Phone"
-msgstr ""
-
 #: includes/blocks/forms-phone/block.php:15
 msgid "Add a phone number field in your form"
-msgstr ""
-
-#: includes/blocks/forms-radio/block.php:14
-#: dist/blocks.js:17
-msgid "Radio"
 msgstr ""
 
 #: includes/blocks/forms-radio/block.php:15
@@ -556,10 +8013,6 @@ msgstr ""
 #: includes/blocks/forms-toggle/block.php:15
 #: dist/blocks.js:17
 msgid "Add a toggle button in your form."
-msgstr ""
-
-#: includes/blocks/forms-upload/block.php:14
-msgid "Upload"
 msgstr ""
 
 #: includes/blocks/forms-upload/block.php:15
@@ -694,15 +8147,6 @@ msgstr ""
 #: includes/blocks/image-gallery/block.php:17
 #: dist/blocks.js:17
 msgid "Create a highly customizable image gallery"
-msgstr ""
-
-#. translators: %s: file name
-#: includes/blocks/image/block.php:16
-#: dist/blocks-placeholder.js:21
-#: dist/blocks.js:11
-#: dist/blocks.js:13
-#: dist/blocks.js:17
-msgid "Image"
 msgstr ""
 
 #: includes/blocks/image/block.php:17
@@ -1043,6 +8487,7 @@ msgid "Display customer testimonials with customizable layouts."
 msgstr ""
 
 #: includes/blocks/wp-search/block.php:16
+#: dist/blocks.js:13
 #: dist/blocks.js:17
 msgid "Search"
 msgstr ""
@@ -1538,6 +8983,7 @@ msgid "License"
 msgstr ""
 
 #: dist/blocks.js:1
+#: dist/blocks.js:11
 msgid "Your Attractive Heading"
 msgstr ""
 
@@ -1666,11 +9112,6 @@ msgstr ""
 
 #: dist/blocks.js:1
 #: dist/blocks.js:17
-msgid "Message"
-msgstr ""
-
-#: dist/blocks.js:1
-#: dist/blocks.js:17
 msgid "Enter your message"
 msgstr ""
 
@@ -1687,24 +9128,6 @@ msgstr ""
 #: dist/blocks.js:1
 #: dist/blocks.js:17
 msgid "Tab 3"
-msgstr ""
-
-#: dist/blocks.js:1
-#: dist/blocks.js:13
-#: dist/blocks.js:17
-msgid "Desktop"
-msgstr ""
-
-#: dist/blocks.js:1
-#: dist/blocks.js:13
-#: dist/blocks.js:17
-msgid "Tablet"
-msgstr ""
-
-#: dist/blocks.js:1
-#: dist/blocks.js:13
-#: dist/blocks.js:17
-msgid "Mobile"
 msgstr ""
 
 #: dist/blocks.js:1
@@ -1882,10 +9305,6 @@ msgid "Custom"
 msgstr ""
 
 #: dist/blocks.js:11
-msgid "Video"
-msgstr ""
-
-#: dist/blocks.js:11
 #: dist/blocks.js:13
 #: dist/blocks.js:17
 msgid "Type"
@@ -1943,15 +9362,6 @@ msgid "Fixed"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
-msgid "Scroll"
-msgstr ""
-
-#: dist/blocks.js:11
-msgid "Repeat"
-msgstr ""
-
-#: dist/blocks.js:11
 msgid "No Repeat"
 msgstr ""
 
@@ -1997,6 +9407,11 @@ msgstr ""
 
 #: dist/blocks.js:11
 msgid "Y Position"
+msgstr ""
+
+#: dist/blocks.js:11
+#: dist/blocks.js:17
+msgid "VH"
 msgstr ""
 
 #: dist/blocks.js:11
@@ -2237,11 +9652,6 @@ msgstr ""
 #: dist/blocks.js:11
 #: dist/blocks.js:17
 msgid "Minimum Height"
-msgstr ""
-
-#: dist/blocks.js:11
-#: dist/blocks.js:17
-msgid "VH"
 msgstr ""
 
 #: dist/blocks.js:11
@@ -2602,11 +10012,6 @@ msgid "Decoration"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
-msgid "Underline"
-msgstr ""
-
-#: dist/blocks.js:11
 msgid "Overline"
 msgstr ""
 
@@ -2689,12 +10094,6 @@ msgid "H6"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:13
-#: dist/blocks.js:17
-msgid "P"
-msgstr ""
-
-#: dist/blocks.js:11
 #: dist/blocks.js:17
 msgid "Div"
 msgstr ""
@@ -2729,12 +10128,6 @@ msgstr ""
 #: dist/blocks.js:13
 #: dist/blocks.js:17
 msgid "Thickness"
-msgstr ""
-
-#: dist/blocks.js:11
-#: dist/blocks.js:13
-#: dist/blocks.js:17
-msgid "Link"
 msgstr ""
 
 #: dist/blocks.js:11
@@ -2775,17 +10168,9 @@ msgid "creative heading"
 msgstr ""
 
 #: dist/blocks.js:11
-msgid "heading"
-msgstr ""
-
-#: dist/blocks.js:11
 #: dist/blocks.js:13
 #: dist/blocks.js:17
 msgid "Image Size"
-msgstr ""
-
-#: dist/blocks.js:11
-msgid "Fill"
 msgstr ""
 
 #: dist/blocks.js:11
@@ -2842,21 +10227,7 @@ msgid "Enable Caption"
 msgstr ""
 
 #: dist/blocks.js:11
-msgid "Mask"
-msgstr ""
-
-#: dist/blocks.js:11
 msgid "Mask Shape"
-msgstr ""
-
-#: dist/blocks.js:11
-#: dist/blocks.js:13
-#: dist/blocks.js:17
-msgid "Circle"
-msgstr ""
-
-#: dist/blocks.js:11
-msgid "Diamond"
 msgstr ""
 
 #: dist/blocks.js:11
@@ -3000,11 +10371,6 @@ msgstr ""
 
 #: dist/blocks.js:13
 #: dist/blocks.js:17
-msgid "Medium"
-msgstr ""
-
-#: dist/blocks.js:13
-#: dist/blocks.js:17
 msgid "Large"
 msgstr ""
 
@@ -3045,7 +10411,27 @@ msgid "buttons"
 msgstr ""
 
 #: dist/blocks.js:13
-msgid "Select Icon"
+msgid "Icon Library"
+msgstr ""
+
+#: dist/blocks.js:13
+msgid "All Icons"
+msgstr ""
+
+#: dist/blocks.js:13
+msgid "Miscellaneous/Other"
+msgstr ""
+
+#: dist/blocks.js:13
+msgid "No Icons Found"
+msgstr ""
+
+#: dist/blocks.js:13
+msgid "Insert Icon"
+msgstr ""
+
+#: dist/blocks.js:13
+msgid "Change Icon"
 msgstr ""
 
 #: dist/blocks.js:13
@@ -3231,11 +10617,6 @@ msgstr ""
 
 #: dist/blocks.js:13
 msgid "Shape"
-msgstr ""
-
-#: dist/blocks.js:13
-#: dist/blocks.js:17
-msgid "Square"
 msgstr ""
 
 #: dist/blocks.js:13
@@ -3565,10 +10946,6 @@ msgid "Timeline Item Gap"
 msgstr ""
 
 #: dist/blocks.js:13
-msgid "Timeline"
-msgstr ""
-
-#: dist/blocks.js:13
 msgid "Border radius"
 msgstr ""
 
@@ -3785,10 +11162,6 @@ msgstr ""
 
 #: dist/blocks.js:17
 msgid "Active Color"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "Question"
 msgstr ""
 
 #: dist/blocks.js:17
@@ -4333,10 +11706,6 @@ msgstr ""
 
 #: dist/blocks.js:17
 msgid "Zoom"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "Language"
 msgstr ""
 
 #: dist/blocks.js:17
@@ -5520,10 +12889,6 @@ msgid "Content Padding"
 msgstr ""
 
 #: dist/blocks.js:17
-msgid "Meta"
-msgstr ""
-
-#: dist/blocks.js:17
 msgid "Taxonomy Text Color"
 msgstr ""
 
@@ -6008,10 +13373,6 @@ msgid "Summary"
 msgstr ""
 
 #: dist/blocks.js:17
-msgid "Star"
-msgstr ""
-
-#: dist/blocks.js:17
 msgid "Inactive Color"
 msgstr ""
 
@@ -6124,31 +13485,11 @@ msgid "icon"
 msgstr ""
 
 #: dist/blocks.js:17
-msgid "Facebook"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "Twitter"
-msgstr ""
-
-#: dist/blocks.js:17
 msgid "Google Currents"
 msgstr ""
 
 #: dist/blocks.js:17
-msgid "Pinterest"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "LinkedIn"
-msgstr ""
-
-#: dist/blocks.js:17
 msgid "Digg"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "Blogger"
 msgstr ""
 
 #: dist/blocks.js:17
@@ -6160,10 +13501,6 @@ msgid "StumbleUpon"
 msgstr ""
 
 #: dist/blocks.js:17
-msgid "Tumblr"
-msgstr ""
-
-#: dist/blocks.js:17
 msgid "Myspace"
 msgstr ""
 
@@ -6172,31 +13509,7 @@ msgid "Pocket"
 msgstr ""
 
 #: dist/blocks.js:17
-msgid "VK"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "Odnoklassniki"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "Skype"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "Telegram"
-msgstr ""
-
-#: dist/blocks.js:17
 msgid "WhatsApp"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "Xing"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "Buffer"
 msgstr ""
 
 #: dist/blocks.js:17
@@ -6336,10 +13649,6 @@ msgid "This will add a scroll to top arrow at the bottom of page."
 msgstr ""
 
 #: dist/blocks.js:17
-msgid "List"
-msgstr ""
-
-#: dist/blocks.js:17
 msgid "Inner Content Spacing"
 msgstr ""
 
@@ -6353,10 +13662,6 @@ msgstr ""
 
 #: dist/blocks.js:17
 msgid "table of contents"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "table"
 msgstr ""
 
 #: dist/blocks.js:17
@@ -6676,23 +13981,11 @@ msgid "No Gap (0px)"
 msgstr ""
 
 #: dist/blocks.js:17
-msgid "S"
-msgstr ""
-
-#: dist/blocks.js:17
 msgid "Narrow (5px)"
 msgstr ""
 
 #: dist/blocks.js:17
-msgid "M"
-msgstr ""
-
-#: dist/blocks.js:17
 msgid "Extended (15px)"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "L"
 msgstr ""
 
 #: dist/blocks.js:17
@@ -6781,10 +14074,6 @@ msgstr ""
 
 #: dist/blocks.js:17
 msgid "Field"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "Box"
 msgstr ""
 
 #: dist/blocks.js:17

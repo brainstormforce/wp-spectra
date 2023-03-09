@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect, memo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
 
 const Render = ( props ) => {
@@ -60,4 +60,4 @@ const Render = ( props ) => {
 		</div>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );

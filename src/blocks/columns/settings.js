@@ -2,8 +2,7 @@
  * BLOCK: Columns - Settings.
  */
 import { __ } from '@wordpress/i18n';
-import React from 'react';
-
+import { memo } from '@wordpress/element';
 import BoxShadowControl from '@Components/box-shadow';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import SpacingControl from '@Components/spacing-control';
@@ -1101,4 +1100,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

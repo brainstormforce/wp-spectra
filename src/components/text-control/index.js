@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-for */
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import Separator from '@Components/separator';
 import { useSelect } from '@wordpress/data';
 import {
@@ -11,6 +11,7 @@ import styles from './editor.lazy.scss';
 import classnames from 'classnames';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGReset from '../reset';
+import UAGHelpText from '@Components/help-text';
 
 const UAGTextControl = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -154,9 +155,7 @@ const UAGTextControl = ( props ) => {
 					}
                 </div>
 
-                { props?.help && (
-                    <p className="uag-control-help-notice">{ props?.help }</p>
-                ) }
+                <UAGHelpText text={ props.help } />
 				{
 					isEnableDynamicContent() && (
 						<Separator />
@@ -182,6 +181,7 @@ UAGTextControl.defaultProps = {
     showHeaderControls: true,
 	dynamicContentType: 'url', // url | text
 	enableDynamicContent: false,
+	help: false
 };
 
 export default UAGTextControl;

@@ -3,7 +3,7 @@
  */
 
 import UAGB_Block_Icons from '@Controls/block-icons';
-import edit from './edit';
+import Edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
 import attributes from './attributes';
@@ -15,6 +15,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import { addFilter } from '@wordpress/hooks';
 import { withSelect } from '@wordpress/data';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
+import PreviewImage from '@Controls/previewImage';
 
 /**
  * Override the default block element to add	wrapper props.
@@ -62,7 +63,12 @@ registerBlockType( 'uagb/restaurant-menu', {
 	},
 	category: uagb_blocks_info.category,
 	attributes,
-	edit,
+	edit: ( props ) =>
+			props.attributes.isPreview ? (
+				<PreviewImage image="price-list" />
+			) : (
+				<Edit { ...props } />
+			),
 	save,
 	deprecated,
 } );

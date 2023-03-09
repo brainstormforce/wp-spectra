@@ -13,7 +13,6 @@ import InspectorTab, {
 } from '@Components/inspector-tabs/InspectorTab.js';
 import UAGTabsControl from '@Components/tabs';
 import ResponsiveSlider from '@Components/responsive-slider';
-import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
 
@@ -25,6 +24,7 @@ import {
 import presets from './presets';
 import UAGPresets from '@Components/presets';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import { memo } from '@wordpress/element';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -1169,4 +1169,4 @@ const Settings = ( props ) => {
 		</InspectorControls>
 	);
 };
-export default React.memo( Settings );
+export default memo( Settings );

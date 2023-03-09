@@ -7,10 +7,13 @@ import AdvancedPopColorControl from '@Components/color-control/advanced-pop-colo
 import UAGSelectControl from '@Components/select-control';
 import UAGTabsControl from '@Components/tabs';
 import SpacingControl from '@Components/spacing-control';
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from '@wordpress/element';
 import { select } from '@wordpress/data';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import PropTypes from 'prop-types';
+import UAGHelpText from '@Components/help-text';
+
+import Separator from '@Components/separator';
 
 const propTypes = {
 	prefix: PropTypes.string,
@@ -59,6 +62,7 @@ const ResponsiveBorder = ( props ) => {
 			'ultimate-addons-for-gutenberg'
 		),
 		borderRadiusHelp,
+		help = false
 	} = props;
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
@@ -349,9 +353,13 @@ const ResponsiveBorder = ( props ) => {
 					normal={ tabOutputNormal }
 					hover={ tabOutputHover }
 					active={ '' }
-					disableBottomSeparator={ disableBottomSeparator }
+					disableBottomSeparator={ true }
 				/>
 			) }
+			{ ! disableBottomSeparator && (
+				<Separator/>
+			)}
+			<UAGHelpText text={ help } />
 		</>
 	);
 
@@ -362,7 +370,7 @@ const ResponsiveBorder = ( props ) => {
 	return (
 		<div
 			ref={panelRef}
-			
+
 		>
 			{controlBeforeDomElement}
 			{advancedControls}

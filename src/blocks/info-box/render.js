@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import InfoBoxPositionClasses from './style-classes';
-import React, { useLayoutEffect, useEffect } from 'react';
+import { useEffect, useLayoutEffect, memo } from '@wordpress/element';
 import Title from './components/Title';
 import InfoBoxDesc from './components/InfoBoxDesc';
 import CallToAction from './components/CTA';
@@ -241,4 +241,4 @@ const Render = ( props ) => {
 		</div>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );

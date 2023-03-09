@@ -3,7 +3,7 @@
  */
 
 import UAGB_Block_Icons from '@Controls/block-icons';
-import edit from './edit';
+import Edit from './edit';
 import save from './save';
 import './style.scss';
 import deprecated from './deprecated';
@@ -11,6 +11,7 @@ import attributes from './attributes';
 import { __ } from '@wordpress/i18n';
 import colourNameToHex from '@Controls/changeColorNameToHex';
 import { registerBlockType, createBlock } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/blockquote', {
 	title: __( 'Blockquote', 'ultimate-addons-for-gutenberg' ),
@@ -29,7 +30,12 @@ registerBlockType( 'uagb/blockquote', {
 	},
 	category: uagb_blocks_info.category,
 	attributes,
-	edit,
+	edit: ( props ) =>
+		props.attributes.isPreview ? (
+			<PreviewImage image="blockquote" />
+		) : (
+			<Edit { ...props } />
+		),
 	save,
 	example: {
 		attributes: {

@@ -1,13 +1,14 @@
 /**
  * External dependencies
  */
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import { SelectControl } from '@wordpress/components';
 import { useDeviceType } from '@Controls/getPreviewType';
 import ResponsiveToggle from '../responsive-toggle';
 import { select } from '@wordpress/data';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import styles from './editor.lazy.scss';
+import UAGHelpText from '@Components/help-text';
 
 const ResponsiveSelectControl = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -29,7 +30,7 @@ const ResponsiveSelectControl = ( props ) => {
 	}, [blockNameForHook] )
 
 
-	const { label, data, setAttributes, options } = props;
+	const { label, data, setAttributes, options, help = false } = props;
 
 	const responsive = true;
 
@@ -86,9 +87,7 @@ const ResponsiveSelectControl = ( props ) => {
 					</div>
 					{ output[ deviceType ] ? output[ deviceType ] : output.Desktop }
 				</div>
-				{ props.help && (
-					<p className="uag-control-help-notice">{ props.help }</p>
-				) }
+				<UAGHelpText text={ help } />
 			{
 				controlAfterDomElement
 			}

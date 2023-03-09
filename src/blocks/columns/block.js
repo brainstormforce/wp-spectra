@@ -4,7 +4,7 @@
 
 import { renderLegacyBlockEditorIcon } from '@Controls/block-icons';
 import attributes from './attributes';
-import edit from './edit';
+import Edit from './edit';
 import deprecated from './deprecated';
 import variations from './variations';
 import './style.scss';
@@ -13,6 +13,7 @@ import save from './save';
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
 	registerBlockType( 'uagb/columns', {
@@ -27,7 +28,12 @@ if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_bloc
 		],
 		attributes,
 		variations,
-		edit,
+		edit: ( props ) =>
+		props.attributes.isPreview ? (
+			<PreviewImage image="advanced-columns" />
+		) : (
+			<Edit { ...props } />
+		),
 		getEditWrapperProps( attribute ) {
 			return {
 				'data-align': attribute.align,

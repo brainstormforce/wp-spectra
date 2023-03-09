@@ -1,21 +1,11 @@
-import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useState } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import renderSVG from '@Controls/renderIcon';
-import { select } from '@wordpress/data';
-import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import { __ } from '@wordpress/i18n';
+import ModalContainer from './modal-container';
+import UAGHelpText from '@Components/help-text';
 
 const UAGIconPicker = ( props ) => {
-	const [panelNameForHook, setPanelNameForHook] = useState( null );
-	const panelRef = useRef( null );
-
-	const { getSelectedBlock } = select( 'core/block-editor' );
-	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop();
-	useEffect( () => {
-		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
-	}, [blockNameForHook] )
-
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -24,42 +14,68 @@ const UAGIconPicker = ( props ) => {
 		};
 	}, [] );
 
-	const controlName = getIdFromString( props?.label ); //
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+	const { label, value, onChange, help = false } = props;
+	const defaultIcons = [ ...wp.UAGBSvgIcons ];
+	const iconCategoryList = [ ...wp.uagb_icon_category_list ];
+	// For modal.
+	const [ isOpen, setOpen ] = useState( false );
 
-	return (
-		<div
-			ref={panelRef}
-			className="components-base-control"
-		>
-			{
-				controlBeforeDomElement
-			}
-			<div className="uag-icon-picker">
-				<span className="uag-control-label">
-					{ props?.label ||
-						__( 'Icon', 'ultimate-addons-for-gutenberg' ) }
-				</span>
-				<FontIconPicker
-					icons={ props?.icons || wp.UAGBSvgIcons }
-					renderFunc={ renderSVG }
-					theme="default"
-					value={ props.value }
-					onChange={ props?.onChange }
-					isMulti={ props.isMulti || false }
-					noSelectedPlaceholder={
-						props.noSelectedPlaceholder ||
-						__( 'Select Icon', 'ultimate-addons-for-gutenberg' )
-					}
-				/>
-				{ props.help && (
-					<p className="uag-control-help-notice">{ props.help }</p>
+	const openModal = () => setOpen( true );
+	const closeModal = () => setOpen( false );
+
+	const isIconAvailable = value && '' !== value;
+
+	// Modal placeholder.
+	const modalPlaceHolder = (
+		<div className={ `uag-ip-placeholder-wrap` }>
+			{ /* If icon available then show remove button. */ }
+			{ isIconAvailable && (
+				<div
+					className="uag-ip-remove-icon"
+					onClick={ () => {
+						onChange( '' );
+					} }
+				>
+					{ renderSVG( 'xmark' ) }
+				</div>
+			) }
+
+			<div className="uag-ip-selected-icon" onClick={ openModal }>
+				<div className="uag-ip-selected-icon-overlay">
+					{ ! isIconAvailable && renderSVG( 'plus' ) }
+				</div>
+				{ isIconAvailable && (
+					<div className="uag-ip-selected-icon-value">
+						{ renderSVG( value ) }
+					</div>
 				) }
 			</div>
-			{
-				controlAfterDomElement
-			}
+			<div className="uag-ip-actions">
+				<span onClick={ openModal }>
+					{ isIconAvailable
+						? __( 'Change Icon', 'ultimate-addons-for-gutenberg' )
+						: __( 'Choose Icon', 'ultimate-addons-for-gutenberg' ) }
+				</span>
+			</div>
+		</div>
+	);
+	return (
+		<div className="uag-custom-ip components-base-control">
+			<span className="uag-control-label">
+				{ label || __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
+			</span>
+			{ modalPlaceHolder }
+			{ isOpen && (
+				<ModalContainer
+					{ ...{
+						...props,
+						closeModal,
+						defaultIcons,
+						iconCategoryList,
+					} }
+				/>
+			) }
+			<UAGHelpText text={ help } />
 		</div>
 	);
 };

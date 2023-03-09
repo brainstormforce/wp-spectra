@@ -5,7 +5,6 @@
 // Import classes
 import UAGIconPicker from '@Components/icon-picker';
 import { __ } from '@wordpress/i18n';
-import React from 'react';
 import { InspectorControls } from '@wordpress/block-editor';
 import UAGSelectControl from '@Components/select-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
@@ -16,9 +15,7 @@ import InspectorTab, {
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGTabsControl from '@Components/tabs';
 import UAGMediaPicker from '@Components/image';
-
-
-
+import { memo } from '@wordpress/element';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -435,4 +432,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

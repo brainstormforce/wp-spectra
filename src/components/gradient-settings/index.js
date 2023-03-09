@@ -1,10 +1,10 @@
 import styles from './editor.lazy.scss';
 import { GradientPicker } from '@wordpress/components';
-import React, { useLayoutEffect, useEffect, useState, useRef  } from 'react';
 import Range from '@Components/range/Range.js';
 import { __ } from '@wordpress/i18n';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
+import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import { getPanelIdFromRef } from '@Utils/Helpers';
 import { select } from '@wordpress/data';
 

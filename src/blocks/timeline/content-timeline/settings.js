@@ -1,9 +1,8 @@
 /**
  * BLOCK: Content Timeline.
  */
-
+import { memo } from '@wordpress/element';
 import UAGIconPicker from '@Components/icon-picker';
-import React from 'react';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -1410,4 +1409,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

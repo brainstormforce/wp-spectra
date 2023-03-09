@@ -5,17 +5,18 @@
 import Settings from './settings';
 import Render from './render';
 import styling from './styling';
-import React, { useEffect } from 'react';
+import { useEffect } from '@wordpress/element';
 
 import { withSelect, useDispatch } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 
 const UAGBSlide = ( props ) => {
-
+	const { isSelected, setAttributes, attributes, deviceType } = props;
+	
 	useEffect( () => {
 		// Assigning block_id in the attribute.
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 	}, [] );
 
 	useEffect( () => {
@@ -24,17 +25,13 @@ const UAGBSlide = ( props ) => {
 
 		addBlockEditorDynamicStyles( 'uagb-slider-child-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 
-	}, [ props ] );
-
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/children/slider-child.svg`;
+	}, [ attributes, deviceType ] );
 
 	return (
-		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } />
-			</>
-		)
+		<>
+			{ isSelected && <Settings parentProps={ props } /> }
+			<Render parentProps={ props } />
+		</>
 	);
 };
 

@@ -1,6 +1,6 @@
 import { useInnerBlocksProps } from '@wordpress/block-editor';
-import React from 'react';
 import { __ } from '@wordpress/i18n';
+import { memo } from '@wordpress/element';
 
 const Render = ( props ) => {
 
@@ -54,4 +54,4 @@ const Render = ( props ) => {
 	);
 };
 
-export default React.memo( Render );
+export default memo( Render );

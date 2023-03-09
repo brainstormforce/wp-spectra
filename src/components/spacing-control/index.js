@@ -2,7 +2,7 @@
  * External dependencies
  */
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
 import { ButtonGroup, Button, Tooltip } from '@wordpress/components';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -10,6 +10,7 @@ import ResponsiveToggle from '../responsive-toggle';
 import { select } from '@wordpress/data';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGReset from '../reset';
+import UAGHelpText from '@Components/help-text';
 
 const SpacingControl = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -52,6 +53,7 @@ const SpacingControl = ( props ) => {
 		valueTopMobile,
 		link,
 		setAttributes,
+		help = false
 	} = props;
 
 	const onChangeUnits = ( value ) => {
@@ -540,9 +542,7 @@ const SpacingControl = ( props ) => {
 						<span className="uagb-spacing-control__number-label uagb-spacing-control__link-label"></span>
 					</div>
 				</div>
-				{ props.help && (
-					<p className="uag-control-help-notice">{ props.help }</p>
-				) }
+				<UAGHelpText text={ help } />
 			</div>
 			{
 				controlAfterDomElement

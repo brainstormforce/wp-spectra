@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
 const { enableConditionsForCoreBlocks } = uagb_blocks_info;
-import { useEffect } from 'react';
+import { useEffect } from '@wordpress/element';
 import classnames from 'classnames';
 
 const UserConditionOptions = ( props ) => {

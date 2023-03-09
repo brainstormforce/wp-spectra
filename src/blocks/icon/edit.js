@@ -18,6 +18,7 @@ const UAGBIcon = ( props ) => {
 	const {
 		clientId,
 		attributes,
+		attributes:{ UAGHideDesktop, UAGHideTab, UAGHideMob },
 		isSelected,
 	} = props;
 	const blockId = clientId.substr( 0, 8 );
@@ -34,29 +35,22 @@ const UAGBIcon = ( props ) => {
 			// Replacement for componentDidUpdate.
 			const blockStyling = styling( props );
 			addBlockEditorDynamicStyles( 'uagb-style-icon-' + blockId, blockStyling );
-	}, [ attributes ] );
+	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-		addBlockEditorDynamicStyles( 'uagb-style-icon-' + blockId, blockStyling );
 		scrollBlockToView();
 	}, [ deviceType ] );
 
-	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = attributes;
 	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/icon.svg`;
 
 	return (
-		attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<>
-				{ isSelected && <Settings { ...props } /> }
-				<Render { ...props } />
-			</>
-		)
+		<>
+			{ isSelected && <Settings { ...props } /> }
+			<Render { ...props } />
+		</>
 	);
 };
 

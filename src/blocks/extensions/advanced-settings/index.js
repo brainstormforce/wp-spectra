@@ -4,7 +4,7 @@ import { addFilter, applyFilters } from '@wordpress/hooks';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import classnames from 'classnames';
-import { useEffect } from 'react';
+import { useEffect } from '@wordpress/element';
 
 const { enableConditions, enableResponsiveConditions } = uagb_blocks_info;
 

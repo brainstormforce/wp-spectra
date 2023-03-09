@@ -3,7 +3,7 @@
  */
 
 // Import block dependencies and components
-import edit from './edit';
+import Edit from './edit';
 import UAGB_Block_Icons from '@Controls/block-icons';
 
 //  Import CSS.
@@ -13,6 +13,7 @@ import { __ } from '@wordpress/i18n';
 
 // Register block controls
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 // Register the block
 registerBlockType( 'uagb/post-grid', {
@@ -25,14 +26,17 @@ registerBlockType( 'uagb/post-grid', {
 		__( 'grid', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
-	edit,
+	edit: ( props ) =>
+			props.attributes.isPreview ? (
+				<PreviewImage image="post-grid" />
+			) : (
+				<Edit { ...props } />
+			),
 	example: {
 		attributes: {
 			isPreview: true,
 		}
 	},
 	// Render via PHP
-	save() {
-		return null;
-	},
+	save : () => null,
 } );
