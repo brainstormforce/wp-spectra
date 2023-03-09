@@ -747,10 +747,14 @@ if ( 'outset' === $attr['imageBoxShadowPositionHover'] ) {
 // Slick Dot Positioning in the Editor.
 $selectors[' .spectra-image-gallery__layout--carousel .slick-dots']['margin-bottom'] = '30px !important';
 
-$combined_selectors = array(
-	'desktop' => $selectors,
-	'tablet'  => $t_selectors,
-	'mobile'  => $m_selectors,
+$combined_selectors = UAGB_Helper::get_combined_selectors(
+	'image-gallery', 
+	array(
+		'desktop' => $selectors,
+		'tablet'  => $t_selectors,
+		'mobile'  => $m_selectors,
+	),
+	$attr
 );
 
 $base_selector = '.uagb-block-';
