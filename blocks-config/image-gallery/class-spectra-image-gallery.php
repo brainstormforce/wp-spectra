@@ -1590,7 +1590,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 						counter.innerHTML = parseInt( curPage ) + 1;
 					};
 
-					const enableLightbox = ( goTo, blockScope ) => {
+					const enableLightbox = ( goTo ) => {
 						if ( ! lightboxSwiper ) {
 							return;
 						}
@@ -1609,7 +1609,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 					const images = blockScope.querySelectorAll( '.spectra-image-gallery__media-wrapper' );
 					for ( let i = 0; i < images.length; i++ ) {
 						images[ i ].style.cursor = 'pointer';
-						images[ i ].addEventListener( 'click', () => enableLightbox( i, blockScope ) );
+						images[ i ].addEventListener( 'click', () => enableLightbox( i ) );
 					}
 					<?php // First set the Thumbnail Swiper if needed. This will be used in the Lightbox Swiper. ?>
 					let lightboxSettings = <?php echo $lightbox_settings; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>;
