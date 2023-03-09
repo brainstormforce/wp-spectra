@@ -410,8 +410,6 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 			UAGAnimationRepeat,
 		} = attributes;
 
-		console.log( UAGAnimationRepeat )
-
 		const wrapperProps = {
 			...props.wrapperProps,
 		};
