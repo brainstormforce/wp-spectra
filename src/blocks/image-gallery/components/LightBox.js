@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from '@wordpress/element';
+import { applyFilters } from '@wordpress/hooks';
 import renderSVG from '@Controls/renderIcon';
 import Swiper, {
 	Lazy,
@@ -148,7 +149,7 @@ const Lightbox = ( { attributes, setAttributes, setLightboxPreview } ) => {
 						/>
 						<div className='swiper-lazy-preloader swiper-lazy-preloader-white'/>
 						{ lightboxDisplayCaptions && (
-							<div className='spectra-image-gallery__control-lightbox--caption'>
+							<div className={ applyFilters( 'spectra.image-gallery.render.lightboxCaptionClasses', 'spectra-image-gallery__control-lightbox--caption', media.id, attributes ) }>
 								{ media.caption ? media.caption : imageDefaultCaption }
 							</div>
 						) }	
