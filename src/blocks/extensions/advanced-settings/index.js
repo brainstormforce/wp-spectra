@@ -275,6 +275,7 @@ const animationOptions = ( props ) => {
 			UAGAnimationType,
 			UAGAnimationTime,
 			UAGAnimationEasing,
+			UAGAnimationRepeat,
 		},
 		setAttributes
 	} = props;
@@ -323,6 +324,15 @@ const animationOptions = ( props ) => {
 							setAttributes( { UAGAnimationEasing: value } )
 						}
 						options={ AnimationEasingList }
+					/>
+					<ToggleControl
+						label={ __( 'Play Repeatedly on Scroll' ) }
+						checked={ UAGAnimationRepeat }
+						onChange={ () =>
+							setAttributes( {
+								UAGAnimationRepeat: ! UAGAnimationRepeat,
+							} )
+						}
 					/>
 				</>
 			}
@@ -397,7 +407,10 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 			UAGAnimationType,
 			UAGAnimationTime,
 			UAGAnimationEasing,
+			UAGAnimationRepeat,
 		} = attributes;
+
+		console.log( UAGAnimationRepeat )
 
 		const wrapperProps = {
 			...props.wrapperProps,
@@ -407,6 +420,9 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 			wrapperProps['data-aos'] = UAGAnimationType;
 			wrapperProps['data-aos-duration'] = UAGAnimationTime;
 			wrapperProps['data-aos-easing'] = UAGAnimationEasing;
+			if( ! UAGAnimationRepeat ) {
+				wrapperProps['data-aos-once'] = 'true';
+			}
 		}
 
 		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
@@ -421,12 +437,16 @@ function withAOSWrapperPropsFrontend( props, block, attributes ) {
 		UAGAnimationType,
 		UAGAnimationTime,
 		UAGAnimationEasing,
+		UAGAnimationRepeat,
 	} = attributes;
 
 	if ( UAGAnimationType && UAGAnimationType !== '' ) {
 		props['data-aos'] = UAGAnimationType;
 		props['data-aos-duration'] = UAGAnimationTime;
 		props['data-aos-easing'] = UAGAnimationEasing;
+		if( ! UAGAnimationRepeat ) {
+			props['data-aos-once'] = 'true';
+		}
 	}
 
 	return props;

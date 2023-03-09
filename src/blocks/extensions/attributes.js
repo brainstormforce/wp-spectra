@@ -69,6 +69,10 @@ function addAttributes( settings ) {
 					type: 'string',
 					default: 'ease',
 				},
+				UAGAnimationRepeat:{
+					type: 'boolean',
+					default: false,
+				},
 			} );
 		}
 	}
