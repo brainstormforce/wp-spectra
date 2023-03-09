@@ -93,6 +93,7 @@ class Common_Settings extends Ajax_Base {
 	 *
 	 * @param string $option The name of the option to check the nonce against.
 	 * @param string $scope The capability required to perform the action. Default is 'manage_options'.
+	 * @since x.x.x
 	 * @return void
 	 */
 	public function check_permission_nonce( $option, $scope = 'manage_options' ) {
@@ -114,6 +115,7 @@ class Common_Settings extends Ajax_Base {
 	 *
 	 * @param string $option The name of the option to update.
 	 * @param string $value The value to be updated.
+	 * @since x.x.x
 	 * @return void
 	 */
 	public function save_admin_settings( $option, $value ) {
@@ -132,6 +134,7 @@ class Common_Settings extends Ajax_Base {
 	 * Checks if the specified key exists in the $_POST array and returns the corresponding value.
 	 *
 	 * @param string $key The key to check in the $_POST array. Default value is 'value'.
+	 * @since x.x.x
 	 * @return mixed The value of the specified key in the $_POST array if it exists, otherwise sends a JSON error response.
 	 */
 	private function check_post_value( $key = 'value' ) {
@@ -153,7 +156,7 @@ class Common_Settings extends Ajax_Base {
 		wp_clean_plugins_cache();
 		$value = ( isset( $_POST['value'] ) ) ? sanitize_text_field( wp_unslash( $_POST['value'] ) ) : '';
 		if ( ! current_user_can( 'activate_plugins' ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) ); // phpcs:ignore
+			$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) ); // phpcs:ignore PHPCompatibility.Variables.ForbiddenThisUseContexts.OutsideObjectContext
 			wp_send_json_error( $response_data );
 		}
 
@@ -161,12 +164,12 @@ class Common_Settings extends Ajax_Base {
 		 * Nonce verification
 		 */
 		if ( ! check_ajax_referer( 'uag_pro_activate', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) ); // phpcs:ignore
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) ); // phpcs:ignore PHPCompatibility.Variables.ForbiddenThisUseContexts.OutsideObjectContext
 			wp_send_json_error( $response_data );
 		}
 
 		if ( empty( $value ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'default' ) ); // phpcs:ignore
+			$response_data = array( 'messsage' => $this->get_error_msg( 'default' ) ); // phpcs:ignore PHPCompatibility.Variables.ForbiddenThisUseContexts.OutsideObjectContext
 			wp_send_json_error( $response_data );
 		}
 
