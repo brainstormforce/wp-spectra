@@ -37,12 +37,26 @@ function generateBackgroundCSS ( backgroundAttributes ) {
 
     let gradient;
     
-    if( 'basic' === selectGradient ) {
-        gradient = gradientValue;
-    } else if ( 'linear' === gradientType && 'advanced' === selectGradient ) {
-        gradient = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${	gradientColor2 } ${ gradientLocation2 }%)`;
-    } else if ( 'radial' === gradientType && 'advanced' === selectGradient ) {
-        gradient = `radial-gradient( at center center, ${ gradientColor1} ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+    switch ( selectGradient ) {
+        case 'basic':
+            gradient = gradientValue;
+            break;
+        case 'advanced':
+            switch ( gradientType ) {
+                case 'linear':
+                    gradient = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${	gradientColor2 } ${ gradientLocation2 }%)`;
+                    break;
+                case 'radial':
+                    gradient = `radial-gradient( at center center, ${ gradientColor1} ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+                    break;
+                default:
+                    gradient = '';
+                    break;
+            }
+            break;
+        default:
+            gradient = '';
+            break;
     }
     
     if( undefined !== backgroundType && '' !== backgroundType ) {

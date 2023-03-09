@@ -20,7 +20,17 @@ const GradientSettings = ( props ) => {
 		};
 	}, [] );
 
-	const { setAttributes, gradientType, backgroundGradient, backgroundGradientColor2, backgroundGradientColor1, backgroundGradientType, backgroundGradientLocation1, backgroundGradientLocation2, backgroundGradientAngle } = props;
+	const  { 	
+		setAttributes,
+		gradientType,
+		backgroundGradient,
+		backgroundGradientColor2,
+		backgroundGradientColor1,
+		backgroundGradientType,
+		backgroundGradientLocation1,
+		backgroundGradientLocation2,
+		backgroundGradientAngle 
+		} = props;
 	
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	

@@ -75,7 +75,6 @@ return array_merge(
 		'columnGapTablet'            => 10,
 		'columnGapMobile'            => 10,
 		'contentPadding'             => 5,
-		'backgroundColor'            => '',
 		'backgroundImage'            => '',
 		'backgroundPosition'         => 'center-center',
 		'backgroundSize'             => 'cover',

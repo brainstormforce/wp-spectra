@@ -505,10 +505,10 @@ const Settings = ( props ) => {
 											value: gradientColor1,
 											label: 'gradientColor1'
 										}}
-										gradientType={ {
+										gradientType={{
 											value: selectGradient,
 											label: 'selectGradient',
-										} }
+										}}
 										backgroundGradientColor2={{
 											value: 	gradientColor2,
 											label: 'gradientColor2'
@@ -598,10 +598,10 @@ const Settings = ( props ) => {
 											value: hovergradientColor1,
 											label: 'hovergradientColor1'
 										}}
-										gradientType={ {
+										gradientType={{
 											value: hoverselectGradient,
 											label: 'hoverselectGradient',
-										} }
+										}}
 										backgroundGradientColor2={{
 											value: 	hovergradientColor2,
 											label: 'hovergradientColor2'

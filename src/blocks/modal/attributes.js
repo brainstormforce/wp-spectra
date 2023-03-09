@@ -1067,7 +1067,7 @@ const attributes = {
 	},
 	gradientColor2: {
 		type: 'string',
-		default: '#0170b9',
+		default: '#0063A1',
 		UAGCopyPaste: {
 			styleType: 'gradient-color-2'
 		}
