@@ -156,7 +156,7 @@ class Common_Settings extends Ajax_Base {
 		wp_clean_plugins_cache();
 		$value = ( isset( $_POST['value'] ) ) ? sanitize_text_field( wp_unslash( $_POST['value'] ) ) : '';
 		if ( ! current_user_can( 'activate_plugins' ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) ); // phpcs:ignore PHPCompatibility.Variables.ForbiddenThisUseContexts.OutsideObjectContext
+			$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) ); // phpcs:ignore 
 			wp_send_json_error( $response_data );
 		}
 
@@ -164,12 +164,12 @@ class Common_Settings extends Ajax_Base {
 		 * Nonce verification
 		 */
 		if ( ! check_ajax_referer( 'uag_pro_activate', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) ); // phpcs:ignore PHPCompatibility.Variables.ForbiddenThisUseContexts.OutsideObjectContext
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) ); // phpcs:ignore
 			wp_send_json_error( $response_data );
 		}
 
 		if ( empty( $value ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'default' ) ); // phpcs:ignore PHPCompatibility.Variables.ForbiddenThisUseContexts.OutsideObjectContext
+			$response_data = array( 'messsage' => $this->get_error_msg( 'default' ) ); // phpcs:ignore
 			wp_send_json_error( $response_data );
 		}
 
