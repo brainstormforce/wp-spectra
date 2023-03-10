@@ -306,6 +306,7 @@ const animationOptions = ( props ) => {
 				<>
 					<RangeControl
 						label="Animation Duration"
+						className='uagb-animation__range-control'
 						value={ UAGAnimationTime }
 						onChange={ ( value ) => {
 
@@ -332,6 +333,7 @@ const animationOptions = ( props ) => {
 					/>
 					<RangeControl
 						label="Animation Delay"
+						className='uagb-animation__range-control'
 						value={ UAGAnimationDelay }
 						onChange={ ( value ) => {
 
