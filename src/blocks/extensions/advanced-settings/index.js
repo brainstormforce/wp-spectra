@@ -274,6 +274,7 @@ const animationOptions = ( props ) => {
 			className,
 			UAGAnimationType,
 			UAGAnimationTime,
+			UAGAnimationDelay,
 			UAGAnimationEasing,
 			UAGAnimationRepeat,
 		},
@@ -314,6 +315,31 @@ const animationOptions = ( props ) => {
 							setAttributes( { UAGAnimationTime: value } )
 						} }
 						min={ 50 }
+						max={ 3000 }
+						step={ 50 }
+					/>
+					<RangeControl
+						label="Animation Delay"
+						value={ UAGAnimationDelay }
+						onChange={ ( value ) => {
+
+							// AOS library only allows time values in increments of 50 and between 50ms to 3000ms.
+
+							if( value % 50 !== 0 ) {
+								value = value - ( value % 50 )
+							}
+
+							if( value < 0 ) {
+								value = 0
+							}
+
+							if( value > 3000 ) {
+								value = 3000
+							}
+
+							setAttributes( { UAGAnimationDelay: value } )
+						} }
+						min={ 0 }
 						max={ 3000 }
 						step={ 50 }
 					/>
@@ -406,6 +432,7 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		const {
 			UAGAnimationType,
 			UAGAnimationTime,
+			UAGAnimationDelay,
 			UAGAnimationEasing,
 			UAGAnimationRepeat,
 		} = attributes;
@@ -417,6 +444,7 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		if( UAGAnimationType !== '' ) {
 			wrapperProps['data-aos'] = UAGAnimationType;
 			wrapperProps['data-aos-duration'] = UAGAnimationTime;
+			wrapperProps['data-aos-delay'] = UAGAnimationDelay;
 			wrapperProps['data-aos-easing'] = UAGAnimationEasing;
 			if( ! UAGAnimationRepeat ) {
 				wrapperProps['data-aos-once'] = 'true';
@@ -434,6 +462,7 @@ function withAOSWrapperPropsFrontend( props, block, attributes ) {
 	const {
 		UAGAnimationType,
 		UAGAnimationTime,
+		UAGAnimationDelay,
 		UAGAnimationEasing,
 		UAGAnimationRepeat,
 	} = attributes;
@@ -441,6 +470,7 @@ function withAOSWrapperPropsFrontend( props, block, attributes ) {
 	if ( UAGAnimationType && UAGAnimationType !== '' ) {
 		props['data-aos'] = UAGAnimationType;
 		props['data-aos-duration'] = UAGAnimationTime;
+		props['data-aos-delay'] = UAGAnimationDelay;
 		props['data-aos-easing'] = UAGAnimationEasing;
 		if( ! UAGAnimationRepeat ) {
 			props['data-aos-once'] = 'true';
