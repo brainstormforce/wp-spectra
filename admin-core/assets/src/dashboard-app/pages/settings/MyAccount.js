@@ -1,5 +1,5 @@
 import { useState, } from '@wordpress/element';
-import { __, sprintf } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 import { useDispatch } from 'react-redux';
 
@@ -40,7 +40,7 @@ export default function MyAccount() {
 		const formData = new window.FormData();
 		formData.append( 'action', 'uag_license_deactivation' );
 		formData.append( 'security', uag_react.license_deactivation_nonce );
-		
+
 		apiFetch( {
 			url: uag_react.ajax_url,
 			method: 'POST',
