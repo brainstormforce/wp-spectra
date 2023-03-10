@@ -118,7 +118,7 @@ class UAGB_Front_Assets {
 		}
 
 		/* Archive & 404 page compatibility */
-		if ( is_archive() || ( is_home() ) || is_search() || is_404() ) {
+		if ( is_archive() || is_home() || is_search() || is_404() ) {
 
 			global $wp_query;
 			$current_object_id = $wp_query->get_queried_object_id();
