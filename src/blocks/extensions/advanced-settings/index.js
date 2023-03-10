@@ -281,6 +281,17 @@ const animationOptions = ( props ) => {
 		setAttributes
 	} = props;
 
+	const animationTimeMarks = [
+		{
+			value: 1000,
+			label: '1000'
+		},
+		{
+			value: 2000,
+			label: '2000'
+		},
+	]; 
+
 	return(
 		<>
 			<SelectControl
@@ -317,6 +328,7 @@ const animationOptions = ( props ) => {
 						min={ 50 }
 						max={ 3000 }
 						step={ 50 }
+						marks={ animationTimeMarks }
 					/>
 					<RangeControl
 						label="Animation Delay"
@@ -342,6 +354,7 @@ const animationOptions = ( props ) => {
 						min={ 0 }
 						max={ 3000 }
 						step={ 50 }
+						marks={ animationTimeMarks }
 					/>
 					<SelectControl
 						label={ __( 'Animation Easing' ) }
@@ -360,6 +373,7 @@ const animationOptions = ( props ) => {
 							} )
 						}
 					/>
+					
 				</>
 			}
 		</>
@@ -442,7 +456,7 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		};
 
 		if( UAGAnimationType !== '' ) {
-			wrapperProps['data-aos'] = UAGAnimationType;
+			// wrapperProps['data-aos'] = UAGAnimationType;
 			wrapperProps['data-aos-duration'] = UAGAnimationTime;
 			wrapperProps['data-aos-delay'] = UAGAnimationDelay;
 			wrapperProps['data-aos-easing'] = UAGAnimationEasing;
