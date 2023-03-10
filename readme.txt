@@ -179,6 +179,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Typography - Added Fahkwang and Jost Google fonts from in Font Families.
 * Improvement: Global - Display Conditions - Added day Addition options to display blocks.
 * Improvement: Performance - Optimized the Editor Performance for all Spectra Blocks.
+* Improvement: Typography - Added Zen dots Google font in Font Families. 
 * Fix: Global - If border style set to default then all Border CSS should be removed.
 * Fix: Global - If border style set to default then all Border CSS should be removed.
 * Fix: Image - Block has encountered issue when gutenberg plugin is activated
