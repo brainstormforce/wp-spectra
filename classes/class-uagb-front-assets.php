@@ -108,15 +108,17 @@ class UAGB_Front_Assets {
 	 */
 	public function enqueue_asset_files() {
 
+		global $_wp_current_template_content;
+		
 		if ( $this->post_assets ) {
+			if ( $_wp_current_template_content ) {
+				$this->post_assets->common_function_for_assets_preparation( $_wp_current_template_content );
+			}
 			$this->post_assets->enqueue_scripts();
 		}
 
-		$current_post_assets = new UAGB_Post_Assets( get_the_ID() );
-		$current_post_assets->enqueue_scripts();
-		
 		/* Archive & 404 page compatibility */
-		if ( is_archive() || is_home() || is_search() || is_404() ) {
+		if ( is_archive() || ( is_home() ) || is_search() || is_404() ) {
 
 			global $wp_query;
 			$current_object_id = $wp_query->get_queried_object_id();

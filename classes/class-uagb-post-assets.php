@@ -905,17 +905,14 @@ class UAGB_Post_Assets {
 		global $_wp_current_template_content;
 		global $wp_embed;
 
-		if ( ! $_wp_current_template_content ) {
-			if ( is_user_logged_in() ) {
-				return '<h1>' . esc_html__( 'No matching template found' ) . '</h1>';
-			}
-			return;
-		}
+		$content = '';
+		
+		if ( $_wp_current_template_content ) {
+			$content = $wp_embed->run_shortcode( $_wp_current_template_content );
+		} 
 
-		$content = $wp_embed->run_shortcode( $_wp_current_template_content );
-		
 		$blocks = $this->parse_blocks( $post_content . $content );
-		
+
 		$this->page_blocks = $blocks;
 
 		$enable_on_page_css_button = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_on_page_css_button', 'yes' );
