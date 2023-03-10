@@ -692,7 +692,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		/**
 		 * Adds Google fonts for Countdown block.
 		 *
-		 * @since x.x.x
+		 * @since 2.4.0
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_countdown_gfont( $attr ) {
