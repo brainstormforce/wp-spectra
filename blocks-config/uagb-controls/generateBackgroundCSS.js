@@ -23,6 +23,10 @@ function generateBackgroundCSS ( backgroundAttributes ) {
     } = backgroundAttributes;
 
     const bgCSS = {};
+    const xPositionValue = ( isNaN( xPosition ) || '' === xPosition ) ? 0 : xPosition;
+    const xPositionTypeValue = ( undefined !== xPositionType ) ? xPositionType : '';
+    const yPositionValue = ( isNaN( yPosition ) || '' === yPosition ) ? 0 : yPosition;
+    const yPositionTypeValue = ( undefined !== yPositionType ) ? yPositionType : '';
 
     if( undefined !== backgroundType && '' !== backgroundType ) {
 
@@ -73,9 +77,9 @@ function generateBackgroundCSS ( backgroundAttributes ) {
 
                 bgCSS['background-position'] = `${ backgroundPosition?.x * 100 }% ${ backgroundPosition?.y * 100 }%`;
 
-            } else if ( 'custom' === customPosition && xPosition && yPosition ) {
+            } else if ( 'custom' === customPosition ) {
                 
-				bgCSS['background-position'] = `${ xPosition }${ xPositionType } ${ yPosition }${ yPositionType }`;
+				bgCSS['background-position'] = `${ xPositionValue }${ xPositionTypeValue } ${ yPositionValue }${ yPositionTypeValue }`;
 			}
 
             bgCSS['background-size'] = backgroundSizeValue;

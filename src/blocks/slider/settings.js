@@ -1,5 +1,4 @@
-import React, {  useEffect } from 'react';
-
+import { useEffect,memo } from '@wordpress/element';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -238,6 +237,7 @@ const Settings = ( props ) => {
 
 		const afterNavigationOptions = wp.hooks.applyFilters( 'spectra.slider.tab_general.displayDots.after', '', props );
 		const afterAutoPlayOptions = wp.hooks.applyFilters( 'spectra.slider.tab_general.autoplay.after', '', props );
+		const afterTransitionOptions = wp.hooks.applyFilters( 'spectra.slider.tab_general.transitionSpeed.after', '', props );
 
 		const sliderSettings = () => {
 			return (
@@ -396,6 +396,7 @@ const Settings = ( props ) => {
 						max={ 5000 }
 						displayUnit={ false }
 					/>
+					{ afterTransitionOptions }
 				</UAGAdvancedPanelBody>
 				<UAGAdvancedPanelBody
 					title={ __( 'Navigation', 'ultimate-addons-for-gutenberg' ) }
@@ -1079,6 +1080,8 @@ const Settings = ( props ) => {
 		)
 	}
 
+	const afterNavigationStyleOptions =  wp.hooks.applyFilters( 'spectra.slider.tab_style.NavigationStyle.after', '', props );
+
 	return (
 		<>
 		{ getBlockControls() }
@@ -1093,6 +1096,7 @@ const Settings = ( props ) => {
 						{ boxShadowSettings() }
 						{ spacingSettings() }
 						{ ( displayArrows || displayDots ) && navigationSettings() }
+						{ afterNavigationStyleOptions }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
@@ -1103,4 +1107,4 @@ const Settings = ( props ) => {
 		</>
 	);
 };
-export default React.memo( Settings );
+export default memo( Settings );

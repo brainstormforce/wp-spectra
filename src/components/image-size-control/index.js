@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import ResponsiveSelectControl from '@Components/responsive-select';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
@@ -14,9 +14,7 @@ export default function ImageSizeControl( {
 	imageHeight,
 	imageSizeOptions = [],
 	isResizable = true,
-	sizeSlug,
-	sizeSlugTablet,
-	sizeSlugMobile,
+	data,
 	width,
 	widthTablet,
 	widthMobile,
@@ -25,6 +23,7 @@ export default function ImageSizeControl( {
 	heightMobile,
 	setAttributes,
 	onChange,
+	help,
 } ) {
 
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -228,16 +227,16 @@ export default function ImageSizeControl( {
 					} }
 					data={ {
 						desktop: {
-							value: sizeSlug,
-							label: 'sizeSlug'
+							label: data.sizeSlug.label,
+							value: data.sizeSlug.value,
 						},
 						tablet: {
-							value: sizeSlugTablet,
-							label: 'sizeSlugTablet'
+							label: data.sizeSlugTablet.label,
+							value: data.sizeSlugTablet.value,
 						},
 						mobile: {
-							value: sizeSlugMobile,
-							label: 'sizeSlugMobile'
+							label: data.sizeSlugMobile.label,
+							value: data.sizeSlugMobile.value,
 						},
 					} }
 					setAttributes={ setAttributes }
@@ -256,6 +255,9 @@ export default function ImageSizeControl( {
 							{output[deviceType]}
 						</div>
 					</div>
+					{ help && (
+						<p className="components-base-control__help">{ help }</p>
+					) }
 				</div>
 			) }
 			{

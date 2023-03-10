@@ -1,5 +1,5 @@
 import { useBlockProps, useInnerBlocksProps, store as blockEditorStore } from '@wordpress/block-editor';
-import React, { useMemo, useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo, memo } from '@wordpress/element';
 import { useSelect, useDispatch } from '@wordpress/data';
 const ALLOWED_BLOCKS = [ 'uagb/slider-child' ];
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -11,12 +11,13 @@ import { Swiper } from 'swiper/react';
 const Render = ( props ) => {
 
 	props = props.parentProps;
+
 	const {
 		attributes,
 		clientId,
 		block,
 		blockParents,
-		attributes: { slide_content }
+		attributes: { slide_content },
 	} = props;
 
 	const deviceType = useDeviceType();
@@ -48,7 +49,8 @@ const Render = ( props ) => {
 		block_id,
 		swiperInstance,
 		displayArrows,
-		displayDots
+		displayDots,
+		extraClasses
 	} = attributes;
 
 	const getSliderTemplate = useMemo( () => {
@@ -111,7 +113,7 @@ const Render = ( props ) => {
 	const hasChildrenClass = hasChildren ? 'uagb-slider-has-children' : '';
 	const listViewClass = isListViewOpen ? 'uagb-list-view-enabled' : '';
 	const blockProps = useBlockProps( {
-		className: `uagb-block-${ block_id } ${hasChildrenClass} ${listViewClass} uagb-slider-container uagb-slider-editor-wrap uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+		className: `uagb-block-${ block_id } ${hasChildrenClass} ${listViewClass} uagb-slider-container uagb-slider-editor-wrap uagb-editor-preview-mode-${ deviceType.toLowerCase() } ${extraClasses}`,
 	} );
 
     const innerBlocksProps = useInnerBlocksProps(
@@ -249,4 +251,4 @@ const Render = ( props ) => {
 		</div>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );

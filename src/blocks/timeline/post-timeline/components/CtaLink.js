@@ -1,5 +1,5 @@
-import React from 'react';
 import { RichText } from '@wordpress/block-editor';
+import { memo } from '@wordpress/element';
 
 const CtaLink = ( props ) => {
 	const { post, attributes, setAttributes } = props;
@@ -47,4 +47,4 @@ const CtaLink = ( props ) => {
 	return null;
 };
 
-export default React.memo( CtaLink );
+export default memo( CtaLink );

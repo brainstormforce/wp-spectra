@@ -1,10 +1,11 @@
 
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from '@wordpress/element';
 import Range from '@Components/range/Range.js';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { limitMax, limitMin } from '@Controls/unitWiseMinMaxOption';
 import { select } from '@wordpress/data';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
+import UAGHelpText from '@Components/help-text';
 
 const ResponsiveSlider = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -116,6 +117,7 @@ const ResponsiveSlider = ( props ) => {
 					{ output[ deviceType ] ? output[ deviceType ] : output.Desktop }
 				</div>
 			</div>
+			<UAGHelpText text={ props.help } />
 			{
 				controlAfterDomElement
 			}

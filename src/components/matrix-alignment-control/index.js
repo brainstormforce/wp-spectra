@@ -1,10 +1,11 @@
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import { __ } from '@wordpress/i18n';
 import PropTypes from 'prop-types';
 import {
 	__experimentalAlignmentMatrixControl as AlignmentMatrixControl,
 } from '@wordpress/components';
+import UAGHelpText from '@Components/help-text';
 
 // Set Prop Types for All Valid Props.
 const propTypes = {
@@ -32,10 +33,11 @@ const SpectraMatrixControl = ( props ) => {
 
 	// Extract all props.
 	const {
-		label, 
+		label,
 		data,
 		onChange,
 		setAttributes,
+		help = false
 	} = props;
 
 	// Handle the Appropriate
@@ -50,6 +52,7 @@ const SpectraMatrixControl = ( props ) => {
 
 	// Render the Alignment Matrix Control.
 	return (
+		<>
 		<div className="components-base-control spectra__matrix-control">
 			<div className='uag-control-label'>
 				{ label }
@@ -61,6 +64,8 @@ const SpectraMatrixControl = ( props ) => {
 				onChange={ ( onChange || setAttributes ) ? ( newValue ) => onChangeHandler( newValue ) : false }
 			/>
 		</div>
+		<UAGHelpText text={ help } />
+		</>
 	);
 }
 

@@ -12,7 +12,7 @@ import Icon from './components/Icon';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { __ } from '@wordpress/i18n';
 import { Placeholder, Spinner } from '@wordpress/components';
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect, memo } from '@wordpress/element';
 import styles from '../editor.lazy.scss';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
@@ -176,4 +176,4 @@ const Render = ( props ) => {
 		</div>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );

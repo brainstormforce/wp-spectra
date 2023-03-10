@@ -3,7 +3,7 @@
  */
 
 // Import block dependencies and components
-import edit from './edit';
+import Edit from './edit';
 import { renderLegacyBlockEditorIcon } from '@Controls/block-icons';
 
 //  Import CSS.
@@ -14,6 +14,7 @@ import { __ } from '@wordpress/i18n';
 
 // Register block controls
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
 // Register the block
@@ -27,15 +28,18 @@ registerBlockType( 'uagb/post-masonry', {
 		__( 'masonry', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
-	edit,
+	edit: ( props ) =>
+			props.attributes.isPreview ? (
+				<PreviewImage image="post-masonry" />
+			) : (
+				<Edit { ...props } />
+			),
 	example: {
 		attributes: {
 			isPreview: true,
 		}
 	},
 	// Render via PHP
-	save() {
-		return null;
-	},
+	save: ()=> null,
 } );
 }

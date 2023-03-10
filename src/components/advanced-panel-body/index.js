@@ -1,6 +1,5 @@
 import { PanelBody } from '@wordpress/components';
-import { useRef, useState, useEffect } from '@wordpress/element';
-import React from 'react';
+import { useRef,memo,useState, useEffect } from '@wordpress/element';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { select } from '@wordpress/data';
 
@@ -109,4 +108,4 @@ const UAGAdvancedPanelBody = ( props ) => {
         </PanelBody>
     );
 }
-export default React.memo( UAGAdvancedPanelBody );
+export default memo( UAGAdvancedPanelBody );

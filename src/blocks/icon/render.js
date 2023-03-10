@@ -19,14 +19,12 @@ const Render = ( props ) => {
 		)
 
 	const blockProps = useBlockProps( {
-		className: `uagb-block-${ block_id }`
+		className: `uagb-block-${ block_id } uagb-icon-wrapper uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 	} );
 
 	return (
 		<div { ...blockProps }>
-			<div className={`uagb-icon-wrapper uagb-editor-preview-mode-${ deviceType.toLowerCase() }` }>
-				<span className='uagb-svg-wrapper' >{ iconHtml }</span>
-			</div>
+			<span className='uagb-svg-wrapper' >{ iconHtml }</span>
 		</div>
 	);
 };

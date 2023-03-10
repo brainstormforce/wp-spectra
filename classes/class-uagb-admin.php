@@ -57,7 +57,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			add_action( 'admin_init', array( $this, 'update_old_user_option_by_url_params' ) );
 
 			add_action( 'admin_post_uag_rollback', array( $this, 'post_uagb_rollback' ) );
-
 		}
 
 		/**
@@ -273,8 +272,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			$plugins['ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php'] = 'Spectra';
 			return $plugins;
 		}
-
-
 	}
 
 	UAGB_Admin::get_instance();

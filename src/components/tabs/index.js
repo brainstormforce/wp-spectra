@@ -1,10 +1,11 @@
 import { TabPanel } from '@wordpress/components';
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import { getPanelIdFromRef } from '@Utils/Helpers';
 import Separator from '@Components/separator';
 import { select } from '@wordpress/data';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
+import UAGHelpText from '@Components/help-text';
 
 const UAGTabsControl = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -16,6 +17,7 @@ const UAGTabsControl = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
+
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
 
@@ -44,7 +46,7 @@ const UAGTabsControl = ( props ) => {
 	return (
 		<div
 			ref={panelRef}
-			
+
 		>
 			{
 				controlBeforeDomElement
@@ -92,6 +94,7 @@ const UAGTabsControl = ( props ) => {
 				} }
 			</TabPanel>
 			{ ! props?.disableBottomSeparator && <Separator/> }
+			<UAGHelpText text={ props.help } />
 			{
 				controlAfterDomElement
 			}

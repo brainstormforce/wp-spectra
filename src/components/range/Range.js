@@ -8,11 +8,13 @@ import {
 import ResponsiveToggle from '../responsive-toggle';
 import { __, sprintf } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
+
 import { select } from '@wordpress/data';
 import { limitMax, limitMin } from '@Controls/unitWiseMinMaxOption';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGReset from '../reset';
+import UAGHelpText from '@Components/help-text';
 
 const isNumberControlSupported = !! NumberControl;
 
@@ -192,9 +194,7 @@ const Range = ( props ) => {
 						/>
 					) }
 				</div>
-				{ props.help && (
-					<p className="uag-control-help-notice">{ props.help }</p>
-				) }
+				<UAGHelpText text={ props.help } />
 			</div>
 			{
 				controlAfterDomElement
@@ -216,6 +216,7 @@ Range.defaultProps = {
 	unit: [ 'px', 'em' ],
 	displayUnit: true,
 	responsive: false,
+	help: false
 };
 
 export default Range;

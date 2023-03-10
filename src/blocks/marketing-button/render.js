@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect, memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
@@ -53,7 +53,7 @@ const Render = ( props ) => {
 					'Add Button Title…',
 					'ultimate-addons-for-gutenberg'
 				) }
-				value={ heading.replace( /(<([^>]+)>)/ig, '' ) }
+				value={ heading.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
 				allowedFormats={ [] } // Removed the WP default link/bold/italic from the toolbar for button.
 				tagName={ titleTag }
 				onChange={ ( value ) =>
@@ -144,4 +144,4 @@ const Render = ( props ) => {
 		</div>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );

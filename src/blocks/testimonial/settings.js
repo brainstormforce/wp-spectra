@@ -1,6 +1,4 @@
 import { __ } from '@wordpress/i18n';
-import React from 'react';
-
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import Range from '@Components/range/Range.js';
@@ -24,6 +22,7 @@ import { ToggleControl, Icon } from '@wordpress/components';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import { memo } from '@wordpress/element';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -1582,4 +1581,4 @@ const Settings = ( props ) => {
 
 	);
 };
-export default React.memo( Settings );
+export default memo( Settings );

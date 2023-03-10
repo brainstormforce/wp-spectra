@@ -202,18 +202,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 1.13.4
 		 */
 		public static function get_css_value( $value = '', $unit = '' ) {
-
-			if ( '' == $value ) { // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
-				return $value;
+			if ( ! is_numeric( $value ) ) {
+				return '';
 			}
 
-			$css_val = '';
-
-			if ( isset( $value ) ) {
-				$css_val = esc_attr( $value ) . $unit;
-			}
-
-			return $css_val;
+			return esc_attr( $value ) . $unit;
 		}
 
 
@@ -1324,7 +1317,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param array  $selectors Array of selectors to filter.
 		 * @param array  $attr Attributes.
 		 * @return array Combined selectors array.
-		 * @since X.X.X
+		 * @since 2.4.0
 		 */
 		public static function get_combined_selectors( $block_name, $selectors, $attr ) {
 			if ( ! is_array( $selectors ) ) { 

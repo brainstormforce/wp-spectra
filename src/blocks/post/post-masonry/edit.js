@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import React, { useState, useEffect,    } from 'react';
+import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import styling from '.././styling';
@@ -49,209 +49,22 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { useSelect, useDispatch } from '@wordpress/data';
 
 const UAGBPostMasonry = ( props ) => {
-
-	const [ state, setState ] = useState( {
-		isEditing: false,
-		innerBlocks: [],
-	} );
-
-	const [ isTaxonomyLoading, setIsTaxonomyLoading] = useState( false );
-
-	useEffect( () => {
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-		const {
+	const {
+		isSelected,
+		setAttributes,
+		attributes,
+		attributes: {
 			btnVPadding,
 			btnHPadding,
-			paddingBtnTop,
-			paddingBtnBottom,
-			paddingBtnRight,
-			paddingBtnLeft,
 			contentPadding,
 			contentPaddingMobile,
 			contentPaddingTablet,
-			paddingTop,
-			paddingBottom,
-			paddingLeft,
-			paddingRight,
-			paddingTopTablet,
-			paddingRightTablet,
-			paddingBottomTablet,
-			paddingLeftTablet,
-			paddingTopMobile,
-			paddingRightMobile,
-			paddingBottomMobile,
-			paddingLeftMobile,
 			vpaginationButtonPaddingMobile,
 			vpaginationButtonPaddingTablet,
 			vpaginationButtonPaddingDesktop,
 			hpaginationButtonPaddingMobile,
 			hpaginationButtonPaddingTablet,
 			hpaginationButtonPaddingDesktop,
-			paginationButtonPaddingTopTablet,
-			paginationButtonPaddingRightTablet,
-			paginationButtonPaddingBottomTablet,
-			paginationButtonPaddingLeftTablet,
-			paginationButtonPaddingTopMobile,
-			paginationButtonPaddingRightMobile,
-			paginationButtonPaddingBottomMobile,
-			paginationButtonPaddingLeftMobile,
-			paginationButtonPaddingTop,
-			paginationButtonPaddingRight,
-			paginationButtonPaddingBottom,
-			paginationButtonPaddingLeft,
-		} = props.attributes;
-		if ( vpaginationButtonPaddingDesktop ) {
-			if ( ! paginationButtonPaddingTop ) {
-				props.setAttributes( {
-					paginationButtonPaddingTop: vpaginationButtonPaddingDesktop,
-				} );
-			}
-			if ( ! paginationButtonPaddingBottom ) {
-				props.setAttributes( {
-					paginationButtonPaddingBottom: vpaginationButtonPaddingDesktop,
-				} );
-			}
-		}
-		if ( hpaginationButtonPaddingDesktop ) {
-			if ( ! paginationButtonPaddingRight ) {
-				props.setAttributes( {
-					paginationButtonPaddingRight: hpaginationButtonPaddingDesktop,
-				} );
-			}
-			if ( ! paginationButtonPaddingLeft ) {
-				props.setAttributes( {
-					paginationButtonPaddingLeft: hpaginationButtonPaddingDesktop,
-				} );
-			}
-		}
-		if ( vpaginationButtonPaddingTablet ) {
-			if ( ! paginationButtonPaddingTopTablet ) {
-				props.setAttributes( {
-					paginationButtonPaddingTopTablet: vpaginationButtonPaddingTablet,
-				} );
-			}
-			if ( ! paginationButtonPaddingBottomTablet ) {
-				props.setAttributes( {
-					paginationButtonPaddingBottomTablet: vpaginationButtonPaddingTablet,
-				} );
-			}
-		}
-		if ( hpaginationButtonPaddingTablet ) {
-			if ( ! paginationButtonPaddingRightTablet ) {
-				props.setAttributes( {
-					paginationButtonPaddingRightTablet: hpaginationButtonPaddingTablet,
-				} );
-			}
-			if ( ! paginationButtonPaddingLeftTablet ) {
-				props.setAttributes( {
-					paginationButtonPaddingLeftTablet: hpaginationButtonPaddingTablet,
-				} );
-			}
-		}
-		if ( vpaginationButtonPaddingMobile ) {
-			if ( ! paginationButtonPaddingTopMobile ) {
-				props.setAttributes( {
-					paginationButtonPaddingTopMobile: vpaginationButtonPaddingMobile,
-				} );
-			}
-			if ( ! paginationButtonPaddingBottomMobile ) {
-				props.setAttributes( {
-					paginationButtonPaddingBottomMobile: vpaginationButtonPaddingMobile,
-				} );
-			}
-		}
-		if ( hpaginationButtonPaddingMobile ) {
-			if ( ! paginationButtonPaddingRightMobile ) {
-				props.setAttributes( {
-					paginationButtonPaddingRightMobile: hpaginationButtonPaddingMobile,
-				} );
-			}
-			if ( ! paginationButtonPaddingLeftMobile ) {
-				props.setAttributes( {
-					paginationButtonPaddingLeftMobile: hpaginationButtonPaddingMobile,
-				} );
-			}
-		}
-		if ( btnVPadding ) {
-			if ( undefined === paddingBtnTop ) {
-				props.setAttributes( { paddingBtnTop: btnVPadding } );
-			}
-			if ( undefined === paddingBtnBottom ) {
-				props.setAttributes( { paddingBtnBottom: btnVPadding } );
-			}
-		}
-		if ( btnHPadding ) {
-			if ( undefined === paddingBtnRight ) {
-				props.setAttributes( { paddingBtnRight: btnHPadding } );
-			}
-			if ( undefined === paddingBtnLeft ) {
-				props.setAttributes( { paddingBtnLeft: btnHPadding } );
-			}
-		}
-		if ( contentPadding ) {
-			if ( undefined === paddingTop ) {
-				props.setAttributes( { paddingTop: contentPadding } );
-			}
-			if ( undefined === paddingBottom ) {
-				props.setAttributes( { paddingBottom: contentPadding } );
-			}
-			if ( undefined === paddingRight ) {
-				props.setAttributes( { paddingRight: contentPadding } );
-			}
-			if ( undefined === paddingLeft ) {
-				props.setAttributes( { paddingLeft: contentPadding } );
-			}
-		}
-		if ( contentPaddingTablet ) {
-			if ( undefined === paddingTopTablet ) {
-				props.setAttributes( {
-					paddingTopTablet: contentPaddingTablet,
-				} );
-			}
-			if ( undefined === paddingBottomTablet ) {
-				props.setAttributes( {
-					paddingBottomTablet: contentPaddingTablet,
-				} );
-			}
-			if ( undefined === paddingRightTablet ) {
-				props.setAttributes( {
-					paddingRightTablet: contentPaddingTablet,
-				} );
-			}
-			if ( undefined === paddingLeftTablet ) {
-				props.setAttributes( {
-					paddingLeftTablet: contentPaddingTablet,
-				} );
-			}
-		}
-		if ( contentPaddingMobile ) {
-			if ( undefined === paddingTopMobile ) {
-				props.setAttributes( {
-					paddingTopMobile: contentPaddingMobile,
-				} );
-			}
-			if ( undefined === paddingBottomMobile ) {
-				props.setAttributes( {
-					paddingBottomMobile: contentPaddingMobile,
-				} );
-			}
-			if ( undefined === paddingRightMobile ) {
-				props.setAttributes( {
-					paddingRightMobile: contentPaddingMobile,
-				} );
-			}
-			if ( undefined === paddingLeftMobile ) {
-				props.setAttributes( {
-					paddingLeftMobile: contentPaddingMobile,
-				} );
-			}
-		}
-		
-		props.setAttributes( { allTaxonomyStore : undefined} );
-	}, [] );
-
-	useEffect( () => {
-		const {
 			borderStyle,
 			borderWidth,
 			borderRadius,
@@ -268,56 +81,431 @@ const UAGBPostMasonry = ( props ) => {
 			btnBorderColor,
 			btnBorderHColor,
 			btnBorderStyle,
-		} = props.attributes;
+			blockName,
+			allTaxonomyStore,
+			align,
+			displayPostTitle,
+			displayPostDate,
+			displayPostComment,
+			displayPostExcerpt,
+			displayPostAuthor,
+			displayPostImage,
+			displayPostTaxonomy,
+			imgSize,
+			imgPosition,
+			displayPostLink,
+			newTab,
+			ctaText,
+			columns,
+			tcolumns,
+			mcolumns,
+			order,
+			orderBy,
+			categories,
+			postsToShow,
+			rowGap,
+			rowGapTablet,
+			rowGapMobile,
+			columnGap,
+			columnGapTablet,
+			columnGapMobile,
+			bgColor,
+			titleColor,
+			titleTag,
+			titleFontSize,
+			titleFontSizeType,
+			titleFontSizeMobile,
+			titleFontSizeTablet,
+			titleFontFamily,
+			titleFontWeight,
+			titleFontStyle,
+			titleLineHeightType,
+			titleLineHeight,
+			titleLineHeightTablet,
+			titleLineHeightMobile,
+			titleLoadGoogleFonts,
+			metaFontSize,
+			metaFontSizeType,
+			metaFontSizeMobile,
+			metaFontSizeTablet,
+			metaFontFamily,
+			metaFontWeight,
+			metaFontStyle,
+			metaLineHeightType,
+			metaLineHeight,
+			metaLineHeightTablet,
+			metaLineHeightMobile,
+			metaLoadGoogleFonts,
+			excerptFontSize,
+			excerptFontSizeType,
+			excerptFontSizeTablet,
+			excerptFontSizeMobile,
+			excerptFontFamily,
+			excerptFontWeight,
+			excerptFontStyle,
+			excerptLineHeightType,
+			excerptLineHeight,
+			excerptLineHeightTablet,
+			excerptLineHeightMobile,
+			excerptLoadGoogleFonts,
+			ctaFontSize,
+			ctaFontSizeType,
+			ctaFontSizeTablet,
+			ctaFontSizeMobile,
+			ctaFontFamily,
+			ctaFontWeight,
+			ctaFontStyle,
+			ctaLineHeightType,
+			ctaLineHeight,
+			ctaLineHeightTablet,
+			ctaLineHeightMobile,
+			ctaLoadGoogleFonts,
+			metaColor,
+			excerptColor,
+			ctaColor,
+			ctaBgType,
+			ctaBgHType,
+			ctaBgColor,
+			ctaHColor,
+			ctaBgHColor,
+			imageBottomSpace,
+			imageBottomSpaceTablet,
+			imageBottomSpaceMobile,
+			titleBottomSpace,
+			titleBottomSpaceTablet,
+			titleBottomSpaceMobile,
+			metaBottomSpace,
+			metaBottomSpaceTablet,
+			metaBottomSpaceMobile,
+			excerptBottomSpace,
+			excerptBottomSpaceTablet,
+			excerptBottomSpaceMobile,
+			ctaBottomSpace,
+			ctaBottomSpaceTablet,
+			ctaBottomSpaceMobile,
+			excerptLength,
+			overlayOpacity,
+			bgOverlayColor,
+			linkBox,
+			postType,
+			taxonomyType,
+			postDisplaytext,
+			paginationType,
+			paginationEventType,
+			buttonText,
+			paginationAlign,
+			paginationTextColor,
+			paginationTextHoverColor,
+			paginationMasonryBgColor,
+			paginationBgHoverColor,
+			paginationFontSize,
+			loaderColor,
+			loaderSize,
+			paginationButtonPaddingTop,
+			paginationButtonPaddingRight,
+			paginationButtonPaddingBottom,
+			paginationButtonPaddingLeft,
+			paginationButtonPaddingTopTablet,
+			paginationButtonPaddingRightTablet,
+			paginationButtonPaddingBottomTablet,
+			paginationButtonPaddingLeftTablet,
+			paginationButtonPaddingTopMobile,
+			paginationButtonPaddingRightMobile,
+			paginationButtonPaddingBottomMobile,
+			paginationButtonPaddingLeftMobile,
+			mobilepaginationButtonPaddingType,
+			tabletpaginationButtonPaddingType,
+			paginationButtonPaddingType,
+			displayPostContentRadio,
+			excludeCurrentPost,
+			rowGapUnit,
+			columnGapUnit,
+			imageBottomSpaceUnit,
+			titleBottomSpaceUnit,
+			metaBottomSpaceUnit,
+			ctaBottomSpaceUnit,
+			titleTransform,
+			metaTransform,
+			excerptTransform,
+			ctaTransform,
+			titleDecoration,
+			metaDecoration,
+			excerptDecoration,
+			ctaDecoration,
+			paddingBtnTop,
+			paddingBtnBottom,
+			paddingBtnLeft,
+			paddingBtnRight,
+			paddingBtnTopTablet,
+			paddingBtnRightTablet,
+			paddingBtnBottomTablet,
+			paddingBtnLeftTablet,
+			paddingBtnTopMobile,
+			paddingBtnRightMobile,
+			paddingBtnBottomMobile,
+			paddingBtnLeftMobile,
+			paddingBtnUnit,
+			mobilePaddingBtnUnit,
+			tabletPaddingBtnUnit,
+			spacingLink,
+			spacingLinkPadding,
+			paddingTop,
+			paddingBottom,
+			paddingLeft,
+			paddingRight,
+			paddingTopTablet,
+			paddingRightTablet,
+			paddingBottomTablet,
+			paddingLeftTablet,
+			paddingTopMobile,
+			paddingRightMobile,
+			paddingBottomMobile,
+			paddingLeftMobile,
+			mobilePaddingUnit,
+			tabletPaddingUnit,
+			excerptBottomSpaceUnit,
+			contentPaddingUnit,
+			postsOffset,
+			taxStyle,
+			taxDivider,
+			displayPostTaxonomyAboveTitle,
+			hideTaxonomyIcon,
+			highlightedTextColor,
+			highlightedTextBgColor,
+			titleLetterSpacing,
+			titleLetterSpacingTablet,
+			titleLetterSpacingMobile,
+			titleLetterSpacingType,
+			metaLetterSpacing,
+			metaLetterSpacingTablet,
+			metaLetterSpacingMobile,
+			metaLetterSpacingType,
+			excerptLetterSpacing,
+			excerptLetterSpacingTablet,
+			excerptLetterSpacingMobile,
+			excerptLetterSpacingType,
+			ctaLetterSpacing,
+			ctaLetterSpacingTablet,
+			ctaLetterSpacingMobile,
+			ctaLetterSpacingType,
+			enableOffset,
+			UAGHideDesktop,
+			UAGHideTab,
+			UAGHideMob
+		},
+		deviceType,
+	} = props;
+	
+
+	const [ state, setState ] = useState( {
+		isEditing: false,
+		innerBlocks: [],
+	} );
+
+	const [ isTaxonomyLoading, setIsTaxonomyLoading] = useState( false );
+
+	useEffect( () => {
+		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		if ( vpaginationButtonPaddingDesktop ) {
+			if ( ! paginationButtonPaddingTop ) {
+				setAttributes( {
+					paginationButtonPaddingTop: vpaginationButtonPaddingDesktop,
+				} );
+			}
+			if ( ! paginationButtonPaddingBottom ) {
+				setAttributes( {
+					paginationButtonPaddingBottom: vpaginationButtonPaddingDesktop,
+				} );
+			}
+		}
+		if ( hpaginationButtonPaddingDesktop ) {
+			if ( ! paginationButtonPaddingRight ) {
+				setAttributes( {
+					paginationButtonPaddingRight: hpaginationButtonPaddingDesktop,
+				} );
+			}
+			if ( ! paginationButtonPaddingLeft ) {
+				setAttributes( {
+					paginationButtonPaddingLeft: hpaginationButtonPaddingDesktop,
+				} );
+			}
+		}
+		if ( vpaginationButtonPaddingTablet ) {
+			if ( ! paginationButtonPaddingTopTablet ) {
+				setAttributes( {
+					paginationButtonPaddingTopTablet: vpaginationButtonPaddingTablet,
+				} );
+			}
+			if ( ! paginationButtonPaddingBottomTablet ) {
+				setAttributes( {
+					paginationButtonPaddingBottomTablet: vpaginationButtonPaddingTablet,
+				} );
+			}
+		}
+		if ( hpaginationButtonPaddingTablet ) {
+			if ( ! paginationButtonPaddingRightTablet ) {
+				setAttributes( {
+					paginationButtonPaddingRightTablet: hpaginationButtonPaddingTablet,
+				} );
+			}
+			if ( ! paginationButtonPaddingLeftTablet ) {
+				setAttributes( {
+					paginationButtonPaddingLeftTablet: hpaginationButtonPaddingTablet,
+				} );
+			}
+		}
+		if ( vpaginationButtonPaddingMobile ) {
+			if ( ! paginationButtonPaddingTopMobile ) {
+				setAttributes( {
+					paginationButtonPaddingTopMobile: vpaginationButtonPaddingMobile,
+				} );
+			}
+			if ( ! paginationButtonPaddingBottomMobile ) {
+				setAttributes( {
+					paginationButtonPaddingBottomMobile: vpaginationButtonPaddingMobile,
+				} );
+			}
+		}
+		if ( hpaginationButtonPaddingMobile ) {
+			if ( ! paginationButtonPaddingRightMobile ) {
+				setAttributes( {
+					paginationButtonPaddingRightMobile: hpaginationButtonPaddingMobile,
+				} );
+			}
+			if ( ! paginationButtonPaddingLeftMobile ) {
+				setAttributes( {
+					paginationButtonPaddingLeftMobile: hpaginationButtonPaddingMobile,
+				} );
+			}
+		}
+		if ( btnVPadding ) {
+			if ( undefined === paddingBtnTop ) {
+				setAttributes( { paddingBtnTop: btnVPadding } );
+			}
+			if ( undefined === paddingBtnBottom ) {
+				setAttributes( { paddingBtnBottom: btnVPadding } );
+			}
+		}
+		if ( btnHPadding ) {
+			if ( undefined === paddingBtnRight ) {
+				setAttributes( { paddingBtnRight: btnHPadding } );
+			}
+			if ( undefined === paddingBtnLeft ) {
+				setAttributes( { paddingBtnLeft: btnHPadding } );
+			}
+		}
+		if ( contentPadding ) {
+			if ( undefined === paddingTop ) {
+				setAttributes( { paddingTop: contentPadding } );
+			}
+			if ( undefined === paddingBottom ) {
+				setAttributes( { paddingBottom: contentPadding } );
+			}
+			if ( undefined === paddingRight ) {
+				setAttributes( { paddingRight: contentPadding } );
+			}
+			if ( undefined === paddingLeft ) {
+				setAttributes( { paddingLeft: contentPadding } );
+			}
+		}
+		if ( contentPaddingTablet ) {
+			if ( undefined === paddingTopTablet ) {
+				setAttributes( {
+					paddingTopTablet: contentPaddingTablet,
+				} );
+			}
+			if ( undefined === paddingBottomTablet ) {
+				setAttributes( {
+					paddingBottomTablet: contentPaddingTablet,
+				} );
+			}
+			if ( undefined === paddingRightTablet ) {
+				setAttributes( {
+					paddingRightTablet: contentPaddingTablet,
+				} );
+			}
+			if ( undefined === paddingLeftTablet ) {
+				setAttributes( {
+					paddingLeftTablet: contentPaddingTablet,
+				} );
+			}
+		}
+		if ( contentPaddingMobile ) {
+			if ( undefined === paddingTopMobile ) {
+				setAttributes( {
+					paddingTopMobile: contentPaddingMobile,
+				} );
+			}
+			if ( undefined === paddingBottomMobile ) {
+				setAttributes( {
+					paddingBottomMobile: contentPaddingMobile,
+				} );
+			}
+			if ( undefined === paddingRightMobile ) {
+				setAttributes( {
+					paddingRightMobile: contentPaddingMobile,
+				} );
+			}
+			if ( undefined === paddingLeftMobile ) {
+				setAttributes( {
+					paddingLeftMobile: contentPaddingMobile,
+				} );
+			}
+		}
+		
+		setAttributes( { allTaxonomyStore : undefined} );
+	}, [] );
+
+	useEffect( () => {
 
 		if( borderWidth ){
 			if( undefined === btnBorderTopWidth ) {
-				props.setAttributes( {
+				setAttributes( {
 					btnBorderTopWidth: borderWidth,
 				} );
 			}
 			if( undefined === btnBorderLeftWidth ) {
-				props.setAttributes( { btnBorderLeftWidth : borderWidth} );
+				setAttributes( { btnBorderLeftWidth : borderWidth} );
 			}
 			if( undefined === btnBorderRightWidth ) {
-				props.setAttributes( { btnBorderRightWidth : borderWidth} );
+				setAttributes( { btnBorderRightWidth : borderWidth} );
 			}
 			if( undefined === btnBorderBottomWidth ) {
-				props.setAttributes( { btnBorderBottomWidth : borderWidth} );
+				setAttributes( { btnBorderBottomWidth : borderWidth} );
 			}
 		}
 
 		if( borderRadius ){
 
 			if( undefined === btnBorderTopLeftRadius ) {
-				props.setAttributes( { btnBorderTopLeftRadius : borderRadius} );
+				setAttributes( { btnBorderTopLeftRadius : borderRadius} );
 			}
 			if( undefined === btnBorderTopRightRadius ) {
-				props.setAttributes( { btnBorderTopRightRadius : borderRadius} );
+				setAttributes( { btnBorderTopRightRadius : borderRadius} );
 			}
 			if( undefined === btnBorderBottomLeftRadius ) {
-				props.setAttributes( { btnBorderBottomLeftRadius : borderRadius} );
+				setAttributes( { btnBorderBottomLeftRadius : borderRadius} );
 			}
 			if( undefined === btnBorderBottomRightRadius ) {
-				props.setAttributes( { btnBorderBottomRightRadius : borderRadius} );
+				setAttributes( { btnBorderBottomRightRadius : borderRadius} );
 			}
 		}
 
 		if( borderColor ){
 			if( undefined === btnBorderColor ) {
-				props.setAttributes( { btnBorderColor : borderColor} );
+				setAttributes( { btnBorderColor : borderColor} );
 			}
 		}
 
 		if( borderHColor ){
 			if( undefined === btnBorderHColor ) {
-				props.setAttributes( { btnBorderHColor : borderHColor} );
+				setAttributes( { btnBorderHColor : borderHColor} );
 			}
 		}
 
 		if( borderStyle ){
 			if( undefined === btnBorderStyle ) {
-				props.setAttributes( { btnBorderStyle : borderStyle} );
+				setAttributes( { btnBorderStyle : borderStyle} );
 			}
 		}
 
@@ -326,7 +514,7 @@ const UAGBPostMasonry = ( props ) => {
 
 		addBlockEditorDynamicStyles( 'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 		
-	}, [ props ] );
+	}, [ attributes ] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
@@ -336,14 +524,13 @@ const UAGBPostMasonry = ( props ) => {
 
 		scrollBlockToView();
 
-	}, [ props.deviceType ] );
+	}, [ deviceType ] );
 
-	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
 	useEffect( () => {
 
 		responsiveConditionPreview( props );
 
-	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, props.deviceType ] );
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	const togglePreview = () => {
 		setState( { isEditing: ! state.isEditing } );
@@ -353,16 +540,12 @@ const UAGBPostMasonry = ( props ) => {
 	};
 
 	const onSelectPostType = ( value ) => {
-		const { setAttributes } = props;
-
 		setAttributes( { postType: value } );
 		setAttributes( { categories: '' } );
 		setAttributes( { taxonomyType: 'category' } );
 	};
 
 	const onSelectTaxonomyType = ( value ) => {
-		const { setAttributes } = props;
-
 		setAttributes( { taxonomyType: value } );
 		setAttributes( { categories: '' } );
 	};
@@ -372,27 +555,9 @@ const UAGBPostMasonry = ( props ) => {
 		setAttributes( { paginationType: 'none' } ); // setting up pagination none when enableOffset is true.
 	};
 
-	const {
-		attributes,
-		setAttributes,
-		deviceType,
-	} = props;
-
 	let categoriesList = [];
 	const { latestPosts, taxonomyList, block } = useSelect( // eslint-disable-line no-unused-vars
 		( select ) => {
-			const {
-				blockName,
-				categories,
-				postsToShow,
-				postsOffset,
-				order,
-				orderBy,
-				postType,
-				taxonomyType,
-				excludeCurrentPost,
-				allTaxonomyStore
-			} = props.attributes;
 			const { getEntityRecords } = select( 'core' );
 
 			if ( ! allTaxonomyStore && ! isTaxonomyLoading ) {
@@ -400,7 +565,7 @@ const UAGBPostMasonry = ( props ) => {
 				apiFetch( {
 					path: '/spectra/v1/all_taxonomy',
 				} ).then( ( data ) => {
-					props.setAttributes( { allTaxonomyStore: data } );
+					setAttributes( { allTaxonomyStore: data } );
 					setIsTaxonomyLoading( false );
 				} );
 			}
@@ -476,214 +641,6 @@ const UAGBPostMasonry = ( props ) => {
 		},
 	);
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
-	const {
-		align,
-		displayPostTitle,
-		displayPostDate,
-		displayPostComment,
-		displayPostExcerpt,
-		displayPostAuthor,
-		displayPostImage,
-		displayPostTaxonomy,
-		imgSize,
-		imgPosition,
-		displayPostLink,
-		newTab,
-		ctaText,
-		columns,
-		tcolumns,
-		mcolumns,
-		order,
-		orderBy,
-		categories,
-		postsToShow,
-		rowGap,
-		rowGapTablet,
-		rowGapMobile,
-		columnGap,
-		columnGapTablet,
-		columnGapMobile,
-		bgColor,
-		titleColor,
-		titleTag,
-		titleFontSize,
-		titleFontSizeType,
-		titleFontSizeMobile,
-		titleFontSizeTablet,
-		titleFontFamily,
-		titleFontWeight,
-		titleFontStyle,
-		titleLineHeightType,
-		titleLineHeight,
-		titleLineHeightTablet,
-		titleLineHeightMobile,
-		titleLoadGoogleFonts,
-		metaFontSize,
-		metaFontSizeType,
-		metaFontSizeMobile,
-		metaFontSizeTablet,
-		metaFontFamily,
-		metaFontWeight,
-		metaFontStyle,
-		metaLineHeightType,
-		metaLineHeight,
-		metaLineHeightTablet,
-		metaLineHeightMobile,
-		metaLoadGoogleFonts,
-		excerptFontSize,
-		excerptFontSizeType,
-		excerptFontSizeTablet,
-		excerptFontSizeMobile,
-		excerptFontFamily,
-		excerptFontWeight,
-		excerptFontStyle,
-		excerptLineHeightType,
-		excerptLineHeight,
-		excerptLineHeightTablet,
-		excerptLineHeightMobile,
-		excerptLoadGoogleFonts,
-		ctaFontSize,
-		ctaFontSizeType,
-		ctaFontSizeTablet,
-		ctaFontSizeMobile,
-		ctaFontFamily,
-		ctaFontWeight,
-		ctaFontStyle,
-		ctaLineHeightType,
-		ctaLineHeight,
-		ctaLineHeightTablet,
-		ctaLineHeightMobile,
-		ctaLoadGoogleFonts,
-		metaColor,
-		excerptColor,
-		ctaColor,
-		ctaBgType,
-		ctaBgHType,
-		ctaBgColor,
-		ctaHColor,
-		ctaBgHColor,
-		imageBottomSpace,
-		imageBottomSpaceTablet,
-		imageBottomSpaceMobile,
-		titleBottomSpace,
-		titleBottomSpaceTablet,
-		titleBottomSpaceMobile,
-		metaBottomSpace,
-		metaBottomSpaceTablet,
-		metaBottomSpaceMobile,
-		excerptBottomSpace,
-		excerptBottomSpaceTablet,
-		excerptBottomSpaceMobile,
-		ctaBottomSpace,
-		ctaBottomSpaceTablet,
-		ctaBottomSpaceMobile,
-		excerptLength,
-		overlayOpacity,
-		bgOverlayColor,
-		linkBox,
-		postType,
-		taxonomyType,
-		postDisplaytext,
-		paginationType,
-		paginationEventType,
-		buttonText,
-		paginationAlign,
-		paginationTextColor,
-		paginationTextHoverColor,
-		paginationMasonryBgColor,
-		paginationBgHoverColor,
-		paginationFontSize,
-		loaderColor,
-		loaderSize,
-		paginationButtonPaddingTop,
-		paginationButtonPaddingRight,
-		paginationButtonPaddingBottom,
-		paginationButtonPaddingLeft,
-		paginationButtonPaddingTopTablet,
-		paginationButtonPaddingRightTablet,
-		paginationButtonPaddingBottomTablet,
-		paginationButtonPaddingLeftTablet,
-		paginationButtonPaddingTopMobile,
-		paginationButtonPaddingRightMobile,
-		paginationButtonPaddingBottomMobile,
-		paginationButtonPaddingLeftMobile,
-		mobilepaginationButtonPaddingType,
-		tabletpaginationButtonPaddingType,
-		paginationButtonPaddingType,
-		displayPostContentRadio,
-		excludeCurrentPost,
-		rowGapUnit,
-		columnGapUnit,
-		imageBottomSpaceUnit,
-		titleBottomSpaceUnit,
-		metaBottomSpaceUnit,
-		ctaBottomSpaceUnit,
-		titleTransform,
-		metaTransform,
-		excerptTransform,
-		ctaTransform,
-		titleDecoration,
-		metaDecoration,
-		excerptDecoration,
-		ctaDecoration,
-		paddingBtnTop,
-		paddingBtnBottom,
-		paddingBtnLeft,
-		paddingBtnRight,
-		paddingBtnTopTablet,
-		paddingBtnRightTablet,
-		paddingBtnBottomTablet,
-		paddingBtnLeftTablet,
-		paddingBtnTopMobile,
-		paddingBtnRightMobile,
-		paddingBtnBottomMobile,
-		paddingBtnLeftMobile,
-		paddingBtnUnit,
-		mobilePaddingBtnUnit,
-		tabletPaddingBtnUnit,
-		spacingLink,
-		spacingLinkPadding,
-		paddingTop,
-		paddingBottom,
-		paddingLeft,
-		paddingRight,
-		paddingTopTablet,
-		paddingRightTablet,
-		paddingBottomTablet,
-		paddingLeftTablet,
-		paddingTopMobile,
-		paddingRightMobile,
-		paddingBottomMobile,
-		paddingLeftMobile,
-		mobilePaddingUnit,
-		tabletPaddingUnit,
-		excerptBottomSpaceUnit,
-		contentPaddingUnit,
-		postsOffset,
-		taxStyle,
-		taxDivider,
-		displayPostTaxonomyAboveTitle,
-		hideTaxonomyIcon,
-		highlightedTextColor,
-		highlightedTextBgColor,
-		titleLetterSpacing,
-		titleLetterSpacingTablet,
-		titleLetterSpacingMobile,
-		titleLetterSpacingType,
-		metaLetterSpacing,
-		metaLetterSpacingTablet,
-		metaLetterSpacingMobile,
-		metaLetterSpacingType,
-		excerptLetterSpacing,
-		excerptLetterSpacingTablet,
-		excerptLetterSpacingMobile,
-		excerptLetterSpacingType,
-		ctaLetterSpacing,
-		ctaLetterSpacingTablet,
-		ctaLetterSpacingMobile,
-		ctaLetterSpacingType,
-		enableOffset
-	} = attributes;
 
 	const taxonomyListOptions = [
 		{
@@ -2699,11 +2656,9 @@ const UAGBPostMasonry = ( props ) => {
 		);
 	}
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/post-masonry.svg`;
-
 	return (
-		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<>
+		<>
+			{ isSelected && (
 				<Settings
 					parentProps={ props }
 					state={ state }
@@ -2712,18 +2667,18 @@ const UAGBPostMasonry = ( props ) => {
 					taxonomyList={ taxonomyList }
 					categoriesList={ categoriesList }
 				/>
-				<Render
-					parentProps={ props }
-					state={ state }
-					setState={ setState }
-					togglePreview={ togglePreview }
-					latestPosts={ latestPosts }
-					categoriesList={ categoriesList }
-					replaceInnerBlocks={ replaceInnerBlocks }
-					block={ block }
-				/>
-			</>
-		)
+			) }
+			<Render
+				parentProps={ props }
+				state={ state }
+				setState={ setState }
+				togglePreview={ togglePreview }
+				latestPosts={ latestPosts }
+				categoriesList={ categoriesList }
+				replaceInnerBlocks={ replaceInnerBlocks }
+				block={ block }
+			/>
+		</>
 	);
 };
 

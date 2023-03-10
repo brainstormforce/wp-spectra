@@ -4,7 +4,7 @@ import '.././style.scss';
 import deprecated from './deprecated';
 import save from './save';
 import attributes from './attributes';
-import edit from './edit';
+import Edit from './edit';
 
 // Components
 import { __ } from '@wordpress/i18n';
@@ -15,6 +15,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import { addFilter } from '@wordpress/hooks';
 import { withSelect } from '@wordpress/data';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
+import PreviewImage from '@Controls/previewImage';
 
 /**
  * Override the default block element to add	wrapper props.
@@ -57,7 +58,12 @@ registerBlockType( 'uagb/content-timeline', {
 		anchor: true,
 	},
 	attributes,
-	edit,
+	edit: ( props ) =>
+			props.attributes.isPreview ? (
+				<PreviewImage image="content-timeline" />
+			) : (
+				<Edit { ...props } />
+			),
 	save,
 	example: {
 		attributes: {

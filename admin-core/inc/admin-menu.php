@@ -277,6 +277,7 @@ class Admin_Menu {
 					'how-to-step',
 					'slider-child',
 					'slider-pro',
+					'image-gallery-pro',
 				);
 
 				if ( ( 'cf7-styler' === $addon && 'active' !== $cf7_status ) || ( 'gf-styler' === $addon && 'active' !== $gf_status ) ) {

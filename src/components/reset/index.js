@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import {  useEffect, useState, useRef } from '@wordpress/element';
 import { getPanelIdFromRef } from '@Utils/Helpers';
 import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 import { select } from '@wordpress/data';

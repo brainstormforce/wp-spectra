@@ -1,5 +1,5 @@
 import { decodeEntities } from '@wordpress/html-entities';
-import React from 'react';
+import { memo } from '@wordpress/element';
 const Title = ( props ) => {
 	const Tag = props.attributes.headingTag;
 
@@ -22,4 +22,4 @@ const Title = ( props ) => {
 	);
 };
 
-export default React.memo( Title );
+export default memo( Title );

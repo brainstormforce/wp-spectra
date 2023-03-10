@@ -28,6 +28,9 @@ __webpack_public_path__ = uagb_blocks_info.uagb_url + 'dist/';
 // Add Font Awesome Polyfiller to localized variable.
 uagb_blocks_info.font_awesome_5_polyfill = fontAwesomePollyfiller;
 
+// Setting local storage key for svg Confirmation data.
+uagLocalStorage.setItem( 'uagSvgConfirmation', JSON.stringify( uagb_blocks_info?.svg_confirmation || false ) );
+
 // The Block Slugs need to be added exactly as below into the array at: /classes/class-spectra-block-prioritization.php.
 // Priorities need to be adequately updated in the respective includes/blocks/block.php files.
 
@@ -44,6 +47,7 @@ import './blocks/icon/block.js';
 import './blocks/blockquote/block.js';
 import './blocks/timeline/content-timeline/block.js';
 import './blocks/timeline/content-timeline-child/block.js'; // Child Block.
+import './blocks/countdown/block.js';
 import './blocks/counter/block.js';
 import './blocks/faq/block.js';
 import './blocks/faq-child/block.js'; // Child Block.
@@ -100,6 +104,12 @@ import './blocks/wp-search/block.js';
 
 // Responsive Device Icons on Editor
 import './components/responsive-icons/index.js';
+
+// Keep category list in separate variable and remove category list from icons list.
+if( uagb_blocks_info.uagb_svg_icons?.uagb_category_list ){
+	wp.uagb_icon_category_list = [ ...uagb_blocks_info.uagb_svg_icons.uagb_category_list ];
+	delete uagb_blocks_info.uagb_svg_icons.uagb_category_list;
+}
 
 wp.UAGBSvgIcons = Object.keys( uagb_blocks_info.uagb_svg_icons );
 

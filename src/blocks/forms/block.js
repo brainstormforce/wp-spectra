@@ -4,7 +4,7 @@
 
 import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
-import edit from './edit';
+import Edit from './edit';
 import save from './save';
 import './style.scss';
 import variations from './variations';
@@ -12,6 +12,7 @@ import deprecated from './deprecated';
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/forms', {
 	title: __( 'Form', 'ultimate-addons-for-gutenberg' ),
@@ -29,7 +30,12 @@ registerBlockType( 'uagb/forms', {
 	},
 	attributes,
 	variations,
-	edit,
+	edit: ( props ) =>
+		props.attributes.isPreview ? (
+			<PreviewImage image="form" />
+		) : (
+			<Edit { ...props } />
+		),
 	supports: {
 		anchor: true,
 	},

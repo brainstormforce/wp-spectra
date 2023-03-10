@@ -2,7 +2,7 @@
  * BLOCK: Tabs Block
  */
 import styling from './styling';
-import React, { useEffect,    } from 'react';
+import { useEffect } from '@wordpress/element';
 
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
@@ -21,11 +21,27 @@ import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 const UAGBTabsEdit = ( props ) => {
 
 	const deviceType = useDeviceType();
-
+	const {
+		isSelected,
+		setAttributes,
+		attributes,
+		attributes: {
+			tabHeaders,
+			borderStyle,
+			borderWidth,
+			borderRadius,
+			borderColor,
+			borderHoverColor,
+			UAGHideDesktop,
+			UAGHideTab,
+			UAGHideMob,
+		},
+		clientId,
+	} = props;
+	
 	useEffect( () => {
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
-		const { borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor } = props.attributes;
 		// Backward Border Migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
 			migrateBorderAttributes( 'tab', {
@@ -44,16 +60,14 @@ const UAGBTabsEdit = ( props ) => {
 				label: 'borderStyle',
 				value: borderStyle
 			},
-			props.setAttributes,
-			props.attributes
+			setAttributes,
+			attributes
 			);
 		}
 		
 	}, [] );
 
 	const updateTabTitle = () => {
-		const { attributes, clientId } = props;
-		const { tabHeaders } = attributes;
 		const { updateBlockAttributes } = ! wp.blockEditor
 			? dispatch( 'core/editor' )
 			: dispatch( 'core/block-editor' );
@@ -67,44 +81,30 @@ const UAGBTabsEdit = ( props ) => {
 	};
 
 	useEffect( () => {
-
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-style-tab-' + props.clientId.substr( 0, 8 ), blockStyling );
-
+		addBlockEditorDynamicStyles( 'uagb-style-tab-' + clientId.substr( 0, 8 ), blockStyling );
 		updateTabTitle();
 		props.resetTabOrder();
-		
-
-	}, [ props ] );
+	}, [ deviceType, attributes ] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-style-tab-' + props.clientId.substr( 0, 8 ), blockStyling );
-
 		scrollBlockToView();
-
 	}, [ deviceType ] );
 
-	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
 	useEffect( () => {
 
 		responsiveConditionPreview( props );
 
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/tabs.svg`;
-
 	return (
-		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<>
-				<Settings parentProps={ props } deviceType = {deviceType} />
-				<Render parentProps={ props } />
-			</>
-		)
+		<>
+			{ isSelected && (
+				<Settings parentProps={ props } deviceType={ deviceType } />
+			) }
+			<Render parentProps={ props } />
+		</>
 	);
 };
 

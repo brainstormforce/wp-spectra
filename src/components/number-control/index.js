@@ -7,12 +7,13 @@ import {
 import ResponsiveToggle from '../responsive-toggle';
 import { __, sprintf } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import { limitMax, limitMin } from '@Controls/unitWiseMinMaxOption';
 import classnames from 'classnames';
 import { select } from '@wordpress/data';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGReset from '../reset';
+import UAGHelpText from '@Components/help-text';
 
 const UAGNumberControl = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -193,9 +194,7 @@ const UAGNumberControl = ( props ) => {
 						required={ props?.required }
 					/>
 				</div>
-				{ props.help && (
-					<p className="uag-control-help-notice">{ props.help }</p>
-				) }
+				<UAGHelpText text={ props.help } />
 			</div>
 			{controlAfterDomElement}
 		</div>
@@ -216,6 +215,7 @@ UAGNumberControl.defaultProps = {
 	responsive: false,
 	showControlHeader: true,
 	inlineControl: true,
+	help: false
 };
 
 export default UAGNumberControl;

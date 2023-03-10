@@ -118,9 +118,7 @@ $selectors = array(
 	'.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap' => array_merge(
 		$icon_and_image_spacing
 	),
-	'.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img' => array_merge(
-		$icon_wrap_border_css
-	),
+	'.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img' => $icon_wrap_border_css,
 	'.wp-block-uagb-counter:hover .wp-block-uagb-counter__image-wrap img' => array(
 		'border-color' => $attr['iconWrapBorderHColor'],
 	),
@@ -223,13 +221,9 @@ $t_selectors['.wp-block-uagb-counter'] = array(
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
 );
 
-$t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap'] = array_merge(
-	$icon_and_image_spacing_tablet
-);
+$t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap'] = $icon_and_image_spacing_tablet;
 
-$t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img'] = array_merge(
-	$icon_wrap_border_css_tablet
-);
+$t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img'] = $icon_wrap_border_css_tablet;
 
 $t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon'] = array_merge(
 	$icon_and_image_spacing_tablet,
@@ -285,13 +279,9 @@ $m_selectors['.wp-block-uagb-counter'] = array(
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
 );
 
-$m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap'] = array_merge(
-	$icon_and_image_spacing_mobile
-);
+$m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap'] = $icon_and_image_spacing_mobile;
 
-$m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img'] = array_merge(
-	$icon_wrap_border_css_mobile
-);
+$m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__image-wrap img'] = $icon_wrap_border_css_mobile;
 
 $m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__icon'] = array_merge(
 	$icon_and_image_spacing_mobile,

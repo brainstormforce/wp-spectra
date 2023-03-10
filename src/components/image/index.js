@@ -1,10 +1,14 @@
-import React, {useEffect, useState, useRef } from 'react';
+import { useEffect, useState,useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { BaseControl } from '@wordpress/components';
 import { MediaUpload } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGB_Block_Icons from '@Controls/block-icons';
+import apiFetch from '@wordpress/api-fetch';
+import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
+import UAGConfirmPopup from '../popup-confirm';
+import UAGHelpText from '@Components/help-text';
 
 const UAGMediaPicker = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -14,11 +18,14 @@ const UAGMediaPicker = ( props ) => {
 		return select( 'core/block-editor' ).getSelectedBlock();
 	}, [] );
 
+	const uagLocalStorage = getUAGEditorStateLocalStorage();
 	const blockNameForHook = selectedBlock?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 
 	useEffect( () => {
 		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
 	}, [blockNameForHook] )
+
+	const [ isOpen, setOpen ] = useState( false );
 
 	const {
 		onSelectImage,
@@ -29,7 +36,8 @@ const UAGMediaPicker = ( props ) => {
 		disableLabel = false,
 		disableRemove = false,
 		allow = [ 'image' ],
-		disableDynamicContent = false
+		disableDynamicContent = false,
+		help = false
 	} = props;
 
 	// This is used to render an icon in place of the background image when needed.
@@ -61,6 +69,16 @@ const UAGMediaPicker = ( props ) => {
 			);
 			placeholderIcon = UAGB_Block_Icons.lottie;
 			break;
+		case 'svg':
+			selectMediaLabel = __(
+				'Upload SVG',
+				'ultimate-addons-for-gutenberg'
+			);
+			replaceMediaLabel = __(
+				'Change SVG',
+				'ultimate-addons-for-gutenberg'
+			);
+			break;
 		default:
 			selectMediaLabel = __(
 				'Select Image',
@@ -86,6 +104,34 @@ const UAGMediaPicker = ( props ) => {
 		return true;
 	}
 
+	const onConfirm = ( open ) => {
+		const formData = new window.FormData();
+		formData.append( 'action', 'uagb_svg_confirmation' );
+		formData.append( 'svg_nonce', uagb_blocks_info.uagb_svg_confirmation_nonce );
+		formData.append( 'confirmation', 'yes' );
+
+		apiFetch( {
+			url: uagb_blocks_info.ajax_url,
+			method: 'POST',
+			body: formData,
+		} ).then( ( response ) => {
+			if( response.success ) {
+				uagLocalStorage.setItem( 'uagSvgConfirmation', JSON.stringify( 'yes' ) );
+				open();
+			}
+		} );
+	}
+
+	const OpenMediaUploader = ( open ) => {
+		const svgConfirmation = getUAGEditorStateLocalStorage( 'uagSvgConfirmation' );
+		if( slug !== 'svg' || svgConfirmation === 'yes' ){
+			open();
+			return;
+		}
+
+		setOpen( true )
+	}
+
 	const renderMediaUploader = ( open ) => {
 		const uploadType = backgroundImage?.url ? 'replace' : 'add';
 		return(
@@ -93,7 +139,7 @@ const UAGMediaPicker = ( props ) => {
 				{ 'add' === uploadType  && (
 					<button
 						className={ `spectra-media-control__clickable spectra-media-control__clickable--${ uploadType }` }
-						onClick={ open }
+						onClick={() => ( OpenMediaUploader( open ) ) }
 					>
 						{
 							renderButton( uploadType )
@@ -103,7 +149,7 @@ const UAGMediaPicker = ( props ) => {
 				<div className='spectra-media-control__footer'>
 					<button
 						className="uag-control-label"
-						onClick={ open }
+						onClick={() => ( OpenMediaUploader( open ) ) }
 					>
 						{ replaceMediaLabel }
 					</button>
@@ -111,6 +157,18 @@ const UAGMediaPicker = ( props ) => {
 						registerImageExtender
 					}
 				</div>
+				{ slug === 'svg' && (
+					<UAGConfirmPopup
+						isOpen = { isOpen }
+						setOpen = { setOpen }
+						onConfirm = { onConfirm }
+						title = { __( 'Upload SVG?', 'ultimate-addons-for-gutenberg' ) }
+						description = { __( 'Upload SVG can be potentially risky. Are you sure?', 'ultimate-addons-for-gutenberg' ) }
+						confirmLabel = { __( 'Upload Anyway', 'ultimate-addons-for-gutenberg' )}
+						cancelLabel = { __( 'Cancel', 'ultimate-addons-for-gutenberg' )}
+						executable = { open }
+					/>
+				)}
 			</>
 		)
 	};
@@ -171,7 +229,7 @@ const UAGMediaPicker = ( props ) => {
 							<div
 								className="spectra-media-control__wrapper"
 								style={ {
-									backgroundImage: ( ! placeholderIcon && backgroundImage?.url ) && (
+									backgroundImage: ( ! placeholderIcon && backgroundImage?.url && ! backgroundImage?.svg ) && (
 										`url("${ generateBackground( backgroundImage?.url ) }")`
 									),
 								} }
@@ -179,6 +237,10 @@ const UAGMediaPicker = ( props ) => {
 								{ ( placeholderIcon && backgroundImage?.url ) && (
 									<div className="spectra-media-control__icon spectra-media-control__icon--stroke">
 										{ placeholderIcon }
+									</div>
+								) }
+								{ ( backgroundImage?.svg ) && (
+									<div className="spectra-media-control__icon spectra-media-control__icon--stroke" dangerouslySetInnerHTML={ { __html:backgroundImage.svg } }>
 									</div>
 								) }
 								<MediaUpload
@@ -197,9 +259,7 @@ const UAGMediaPicker = ( props ) => {
 									</button>
 								) }
 							</div>
-							{ props.help && (
-								<p className="uag-control-help-notice">{ props.help }</p>
-							) }
+							<UAGHelpText text={ help } />
 						</>
 					) : (
 						registerImageExtender

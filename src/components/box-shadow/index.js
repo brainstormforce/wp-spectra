@@ -7,11 +7,12 @@ import Range from '@Components/range/Range.js';
 import AdvancedPopColorControl from '../color-control/advanced-pop-color-control';
 import { Button, Dashicon } from '@wordpress/components';
 import MultiButtonsControl from '../multi-buttons-control/index';
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
+import UAGHelpText from '@Components/help-text';
 
 const BoxShadowControl = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -63,7 +64,8 @@ const BoxShadowControl = ( props ) => {
 		boxShadowPosition,
 		label = __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ),
 		popup = false,
-		blockId
+		blockId,
+		help = false
 	} = props;
 
 	let advancedControls;
@@ -293,6 +295,7 @@ const BoxShadowControl = ( props ) => {
 					>
 						{ boxShadowAdvancedControls }
 						{ showAdvancedControls && advancedControls }
+						<UAGHelpText text={ help } />
 					</div>
 				) : (
 					<>

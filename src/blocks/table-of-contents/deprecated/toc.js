@@ -1,6 +1,7 @@
 import { __ } from '@wordpress/i18n';
+import { Component } from '@wordpress/element';
 
-class TableOfContents extends React.Component {
+class TableOfContents extends Component {
 	render() {
 		const { mappingHeaders, headers } = this.props;
 

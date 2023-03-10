@@ -6,11 +6,12 @@ import { __ } from '@wordpress/i18n';
 import Range from '@Components/range/Range.js';
 import AdvancedPopColorControl from '../color-control/advanced-pop-color-control';
 import { Button, Dashicon } from '@wordpress/components';
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
+import UAGHelpText from '@Components/help-text';
 
 const TextShadowControl = ( props ) => {
 	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
@@ -25,7 +26,8 @@ const TextShadowControl = ( props ) => {
 		textShadowBlur,
 		label = __( 'Text Shadow', 'ultimate-addons-for-gutenberg' ),
 		popup = false,
-		blockId
+		blockId,
+		help = false
 	} = props;
 
 	let advancedControls;
@@ -247,6 +249,7 @@ const TextShadowControl = ( props ) => {
 					</>
 				)
 			}
+			<UAGHelpText text={ help } />
 			{
 				controlAfterDomElement
 			}

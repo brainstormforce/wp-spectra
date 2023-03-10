@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
-import React, { useLayoutEffect, useEffect } from 'react';
+import { useLayoutEffect, memo, useEffect } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
 import getImageHeightWidth from '@Controls/getImageHeightWidth';
@@ -114,4 +114,4 @@ const Render = ( props ) => {
 		</div>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );

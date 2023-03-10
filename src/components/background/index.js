@@ -1,10 +1,9 @@
 import { __ } from '@wordpress/i18n';
-import { useRef } from '@wordpress/element';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import { SelectControl } from '@wordpress/components';
 import styles from './editor.lazy.scss';
 import GradientSettings from '@Components/gradient-settings';
-import React, { useLayoutEffect, useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useLayoutEffect } from '@wordpress/element';
 import UAGMediaPicker from '@Components/image';
 import ResponsiveSlider from '@Components/responsive-slider';
 import ResponsiveSelectControl from '@Components/responsive-select';
@@ -15,6 +14,7 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import {getPanelIdFromRef} from '@Utils/Helpers';
 import { select } from '@wordpress/data';
+import UAGHelpText from '@Components/help-text';
 
 const Background = ( props ) => {
 	const { getSelectedBlock } = select( 'core/block-editor' );
@@ -63,7 +63,8 @@ const Background = ( props ) => {
 		yPositionType,
 		yPositionTypeTablet,
 		yPositionTypeMobile,
-		backgroundVideoOpacity
+		backgroundVideoOpacity,
+		help = false
 	} = props;
 
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
@@ -922,6 +923,7 @@ const Background = ( props ) => {
 			}
 			<div className="uag-bg-select-control">
 				{ advancedControls }
+				<UAGHelpText text={ help } />
 			</div>
 			{
 				controlAfterDomElement

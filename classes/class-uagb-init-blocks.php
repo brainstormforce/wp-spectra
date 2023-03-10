@@ -72,6 +72,9 @@ class UAGB_Init_Blocks {
 			add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
 		}
 
+		if ( current_user_can( 'edit_posts' ) ) {
+			add_action( 'wp_ajax_uagb_svg_confirmation', array( $this, 'confirm_svg_upload' ) );
+		}
 	}
 
 	/**
@@ -101,27 +104,9 @@ class UAGB_Init_Blocks {
 				case 'os':
 					$block_content = $this->os_visibility( $block['attrs'], $block_content );
 					break;
-
-				case 'userstate':
-					$block_content = $this->user_state_visibility( $block_attributes, $block_content );
-					break;
-
-				case 'userRole':
-					$block_content = $this->user_role_visibility( $block_attributes, $block_content );
-					break;
-
-				case 'browser':
-					$block_content = $this->browser_visibility( $block_attributes, $block_content );
-					break;
-
-				case 'os':
-					$block_content = $this->os_visibility( $block_attributes, $block_content );
-					break;
-
 				case 'day':
-					$block_content = $this->day_visibility( $block_attributes, $block_content );
+					$block_content = $this->day_visibility( $block['attrs'], $block_content );
 					break;
-
 				default:
 					// code...
 					break;
@@ -231,14 +216,14 @@ class UAGB_Init_Blocks {
 	 */
 	public function day_visibility( $block_attributes, $block_content ) {
 
-			// If not set restriction. 
+		// If not set restriction. 
 		if ( empty( $block_attributes['UAGDay'] ) ) {
 			return $block_content;
 		}
 	
-			$current_day = strtolower( current_datetime()->format( 'l' ) );
-			// Check in restricted day.
-			return ! in_array( $current_day, $block_attributes['UAGDay'] ) ? $block_content : '';
+		$current_day = strtolower( current_datetime()->format( 'l' ) );
+		// Check in restricted day.
+		return ! in_array( $current_day, $block_attributes['UAGDay'] ) ? $block_content : '';
 
 	}
 
@@ -609,6 +594,8 @@ class UAGB_Init_Blocks {
 				'image_sizes'                        => UAGB_Helper::get_image_sizes(),
 				'post_types'                         => UAGB_Helper::get_post_types(),
 				'uagb_ajax_nonce'                    => $uagb_ajax_nonce,
+				'uagb_svg_confirmation_nonce'        => current_user_can( 'edit_posts' ) ? wp_create_nonce( 'uagb_confirm_svg_nonce' ) : '',
+				'svg_confirmation'                   => current_user_can( 'edit_posts' ) ? get_option( 'spectra_svg_confirmation' ) : '',
 				'uagb_home_url'                      => home_url(),
 				'user_role'                          => $this->get_user_role(),
 				'uagb_url'                           => UAGB_URL,
@@ -754,6 +741,22 @@ class UAGB_Init_Blocks {
 		}
 
 		return $field_options;
+	}
+
+	/**
+	 * Ajax call to confirm add users confirmation option in database
+	 *
+	 * @return void
+	 * @since 2.4.0
+	 */
+	public function confirm_svg_upload() {
+		check_ajax_referer( 'uagb_confirm_svg_nonce', 'svg_nonce' );
+		if ( empty( $_POST['confirmation'] ) || 'yes' !== sanitize_text_field( $_POST['confirmation'] ) ) {
+			wp_send_json_error( array( 'message' => __( 'Invalid request', 'ultimate-addons-for-gutenberg' ) ) );
+		}
+
+		update_option( 'spectra_svg_confirmation', 'yes' );
+		wp_send_json_success();
 	}
 }
 
