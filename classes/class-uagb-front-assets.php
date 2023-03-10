@@ -112,6 +112,9 @@ class UAGB_Front_Assets {
 			$this->post_assets->enqueue_scripts();
 		}
 
+		$current_post_assets = new UAGB_Post_Assets( get_the_ID() );
+		$current_post_assets->enqueue_scripts();
+		
 		/* Archive & 404 page compatibility */
 		if ( is_archive() || is_home() || is_search() || is_404() ) {
 

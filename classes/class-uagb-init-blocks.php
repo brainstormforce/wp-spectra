@@ -86,7 +86,6 @@ class UAGB_Init_Blocks {
 	 * @return mixed Returns the new block content.
 	 */
 	public function render_block( $block_content, $block ) {
-
 		if ( ! empty( $block['attrs']['UAGDisplayConditions'] ) ) {
 			switch ( $block['attrs']['UAGDisplayConditions'] ) {
 				case 'userstate':
