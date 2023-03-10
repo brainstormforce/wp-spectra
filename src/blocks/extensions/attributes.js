@@ -65,6 +65,10 @@ function addAttributes( settings ) {
 					type: 'number',
 					default: 400,
 				},
+				UAGAnimationDelay:{
+					type: 'number',
+					default: 0,
+				},
 				UAGAnimationEasing:{
 					type: 'string',
 					default: 'ease',
