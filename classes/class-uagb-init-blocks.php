@@ -746,7 +746,7 @@ class UAGB_Init_Blocks {
 	 * Ajax call to confirm add users confirmation option in database
 	 *
 	 * @return void
-	 * @since x.x.x
+	 * @since 2.4.0
 	 */
 	public function confirm_svg_upload() {
 		check_ajax_referer( 'uagb_confirm_svg_nonce', 'svg_nonce' );

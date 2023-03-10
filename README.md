@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.1  
-**Stable tag:** 2.3.5  
+**Stable tag:** 2.4.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -179,8 +179,10 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Typography - Added Fahkwang and Jost Google fonts from in Font Families.
 * Improvement: Global - Display Conditions - Added day Addition options to display blocks.
 * Improvement: Performance - Optimized the Editor Performance for all Spectra Blocks.
+* Improvement: Typography - Added Zen dots Google font in Font Families. 
 * Fix: Global - If border style set to default then all Border CSS should be removed.
 * Fix: Global - If border style set to default then all Border CSS should be removed.
+* Fix: Global - Skip Br Tags from button's text.
 * Fix: Image - Block has encountered issue when gutenberg plugin is activated
 * Fix: Buttons - Stack orientation and responsive alignment not working on front-end.
 * Fix: Container - Full width issue when adding container block inside Slider block.

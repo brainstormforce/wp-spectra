@@ -1052,6 +1052,10 @@ function styling( props ) {
 	tabletSelectors = wp.hooks.applyFilters( `spectra.image-gallery.tabletStyling`, tabletSelectors, attributes );
 	mobileSelectors = wp.hooks.applyFilters( `spectra.image-gallery.mobileStyling`, mobileSelectors, attributes );
 
+	selectors = wp.hooks.applyFilters( `spectra.image-gallery.styling`, selectors, props.attributes );
+	tabletSelectors = wp.hooks.applyFilters( `spectra.image-gallery.tabletStyling`, tabletSelectors, props.attributes );
+	mobileSelectors = wp.hooks.applyFilters( `spectra.image-gallery.mobileStyling`, mobileSelectors, props.attributes );
+
 	let stylingCss = generateCSS( selectors, baseSelector );
 
 	stylingCss += generateCSS(

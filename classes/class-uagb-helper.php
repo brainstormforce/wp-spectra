@@ -1317,7 +1317,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param array  $selectors Array of selectors to filter.
 		 * @param array  $attr Attributes.
 		 * @return array Combined selectors array.
-		 * @since X.X.X
+		 * @since 2.4.0
 		 */
 		public static function get_combined_selectors( $block_name, $selectors, $attr ) {
 			if ( ! is_array( $selectors ) ) { 

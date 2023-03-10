@@ -1071,7 +1071,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 		 * @param array $attributes Array of block attributes.
 		 * @return void
 		 *
-		 * @since x.x.x
+		 * @since 2.4.0
 		 */
 		private function render_lightbox( $attributes ) {
 			$total_images = count( $attributes['mediaGallery'] );
@@ -1102,7 +1102,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 		 * @param array $attributes Array of block attributes.
 		 * @return void
 		 *
-		 * @since x.x.x
+		 * @since 2.4.0
 		 */
 		private function render_thumbnails( $attributes ) {
 			$total_images = count( $attributes['mediaGallery'] );
@@ -1569,7 +1569,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 		 * @param string $selector            Selector to identify the lightbox.
 		 * @return string       The Output Buffer.
 		 *
-		 * @since x.x.x
+		 * @since 2.4.0
 		 */
 		public static function render_frontend_lightbox( $id, $attr, $lightbox_settings, $thumbnail_settings, $selector ) {
 			$pro_clicker = apply_filters( 'uagb_image_gallery_pro_lightbox_js', '', $id, $attr );
@@ -1590,7 +1590,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 						counter.innerHTML = parseInt( curPage ) + 1;
 					};
 
-					const enableLightbox = ( goTo, blockScope ) => {
+					const enableLightbox = ( goTo ) => {
 						if ( ! lightboxSwiper ) {
 							return;
 						}
@@ -1609,7 +1609,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 					const images = blockScope.querySelectorAll( '.spectra-image-gallery__media-wrapper' );
 					for ( let i = 0; i < images.length; i++ ) {
 						images[ i ].style.cursor = 'pointer';
-						images[ i ].addEventListener( 'click', () => enableLightbox( i, blockScope ) );
+						images[ i ].addEventListener( 'click', () => enableLightbox( i ) );
 					}
 					<?php // First set the Thumbnail Swiper if needed. This will be used in the Lightbox Swiper. ?>
 					let lightboxSettings = <?php echo $lightbox_settings; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>;
@@ -1686,7 +1686,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 		 * @param array  $media_gallery  The Media Gallery Attribute.
 		 * @return string                The Output Buffer.
 		 *
-		 * @since x.x.x
+		 * @since 2.4.0
 		 */
 		public static function render_image_click( $id, $media_gallery ) {
 			$image_urls = array();
