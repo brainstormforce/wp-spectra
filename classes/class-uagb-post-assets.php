@@ -914,8 +914,8 @@ class UAGB_Post_Assets {
 
 		$content = $wp_embed->run_shortcode( $_wp_current_template_content );
 		
-		$blocks            = $this->parse_blocks( $post_content . $content );
-		// var_dump($blocks);
+		$blocks = $this->parse_blocks( $post_content . $content );
+		
 		$this->page_blocks = $blocks;
 
 		$enable_on_page_css_button = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_on_page_css_button', 'yes' );
@@ -1001,16 +1001,16 @@ class UAGB_Post_Assets {
 						$this->script     .= $assets['js'];
 
 					}
-				} else if ( 'core/template-part' === $block['blockName']  ) {
-					$slug = $block['attrs']['slug'];
+				} elseif ( 'core/template-part' === $block['blockName'] ) {
+					$slug            = $block['attrs']['slug'];
 					$templates_parts = get_block_templates( array( 'slugs__in' => $slug ), 'wp_template_part' );
 					foreach ( $templates_parts as $templates_part ) {
 						if ( $slug === $templates_part->slug ) {
 							$id = $templates_part->wp_id;
 							if ( $id ) {
-								$content = get_post_field( 'post_content', $id );
-								$reusable_blocks = $this->parse_blocks( $content );
-								$assets = $this->get_blocks_assets( $reusable_blocks );
+								$content           = get_post_field( 'post_content', $id );
+								$reusable_blocks   = $this->parse_blocks( $content );
+								$assets            = $this->get_blocks_assets( $reusable_blocks );
 								$this->stylesheet .= $assets['css'];
 								$this->script     .= $assets['js'];
 							}

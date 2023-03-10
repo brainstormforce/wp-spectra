@@ -111,7 +111,7 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 		 * @since 1.23.0
 		 */
 		public function delete_page_assets( $post_id ) {
-			$current_post_type = get_post_type($post_id);
+			$current_post_type = get_post_type( $post_id );
 			if ( 'wp_template_part' === $current_post_type ) {
 
 				$wp_upload_dir = UAGB_Helper::get_uag_upload_dir_path();
