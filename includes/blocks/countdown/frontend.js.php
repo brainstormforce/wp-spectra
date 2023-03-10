@@ -19,7 +19,8 @@ $countdown_options = apply_filters(
 		'showMinutes' => $attr['showMinutes'],
 		'isFrontend'  => true,
 	),
-	$id
+	$id,
+	$attr
 );
 
 ob_start();
