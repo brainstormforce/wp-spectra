@@ -1,4 +1,4 @@
-import { ToggleControl, SelectControl, RangeControl } from '@wordpress/components';
+import { ToggleControl, SelectControl, RangeControl, Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { addFilter, applyFilters } from '@wordpress/hooks';
 import ResponsiveSlider from '@Components/responsive-slider';
@@ -269,9 +269,11 @@ const ResponsiveConditionOptions = ( props ) => {
 const animationOptions = ( props ) => {
 
 	const {
+		clientId,
 		attributes,
 		attributes: {
 			className,
+			block_id,
 			UAGAnimationType,
 			UAGAnimationTime,
 			UAGAnimationDelay,
@@ -375,7 +377,18 @@ const animationOptions = ( props ) => {
 							} )
 						}
 					/>
-					
+					<Button
+						className='uagb-animation__play-button'
+						onClick={ () => {
+							const animatedBlock = document.getElementById( 'block-' + clientId )
+							animatedBlock.setAttribute( 'data-aos', UAGAnimationType )
+							// animatedBlock.classList.add( 'aos-animate' )
+							console.log( animatedBlock )
+						} }
+						variant='tertiary'
+					>
+						{ __( 'Play', 'ultimate-addons-for-gutenberg' ) }
+					</Button>
 				</>
 			}
 		</>
