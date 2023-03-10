@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { __ } from '@wordpress/i18n';
+import { useState, } from '@wordpress/element';
+import { __, sprintf } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 import { useDispatch } from 'react-redux';
 
@@ -40,8 +40,7 @@ export default function MyAccount() {
 		const formData = new window.FormData();
 		formData.append( 'action', 'uag_license_deactivation' );
 		formData.append( 'security', uag_react.license_deactivation_nonce );
-		formData.append( 'key', licenseKey );
-
+		
 		apiFetch( {
 			url: uag_react.ajax_url,
 			method: 'POST',
@@ -58,7 +57,7 @@ export default function MyAccount() {
 	};
 
 	return (
-		<React.Fragment>
+		<>
 			<section className="block border-b border-solid border-slate-200 px-12 py-8 justify-between">
 				<div className="mr-16 w-full">
 					<h3 className="p-0 mb-2 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900">
@@ -74,7 +73,7 @@ export default function MyAccount() {
 							>
 								{ __( 'Activate ', 'ultimate-addons-for-gutenberg' ) }
 								<a href="https://wpspectra.com/pro" className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target='_blank' rel="noreferrer">
-									Spectra Pro
+								{ __( 'Spectra Pro', 'ultimate-addons-for-gutenberg' ) }
 								</a>
 								&nbsp;
 								{ __( 'to get professional support and automatic updates from your WordPress dashboard.', 'ultimate-addons-for-gutenberg' ) }
@@ -152,6 +151,6 @@ export default function MyAccount() {
 					</div>
 				</div>
 			</section>
-		</React.Fragment>
+		</>
 	);
 }
