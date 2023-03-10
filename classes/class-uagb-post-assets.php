@@ -910,7 +910,7 @@ class UAGB_Post_Assets {
 		if ( $_wp_current_template_content ) {
 			$content = $wp_embed->run_shortcode( $_wp_current_template_content );
 		} 
-
+		// This content is appended for the Home page & 404 page.
 		$blocks = $this->parse_blocks( $post_content . $content );
 
 		$this->page_blocks = $blocks;
