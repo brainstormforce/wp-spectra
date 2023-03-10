@@ -83,5 +83,7 @@ return array_merge(
 		'iconBoxShadowBlur'                => '',
 		'iconBoxShadowSpread'              => '',
 		'iconBoxShadowPosition'            => '',
+		// Border.
+		'iconBorderStyle'                  => 'default',
 	)
 );
