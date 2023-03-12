@@ -622,10 +622,10 @@ export default function Settings( props ) {
 									value: sizeSlugMobile,
 								},
 							} }
-							width={ width }
+							width={ width ? width : naturalWidth }
 							widthTablet={widthTablet}
 							widthMobile={widthMobile}
-							height={ height }
+							height={ height ? height : naturalHeight }
 							heightTablet={heightTablet}
 							heightMobile={heightMobile}
 							setAttributes={setAttributes}
