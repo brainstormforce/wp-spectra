@@ -28,6 +28,10 @@ const attributes = {
 		type: 'string',
 		default: '2023-01-01T00:00:00Z',
 	},
+	// This stores endDateTime's value so that it could be retrieved when switching between timer modes ( endDateTime is use across both modes - date and evergreen ).
+	endDateTimeCopy: {
+		type: 'string',
+	},
 	// This is a flag attribute which will dynamically help us set default for endDateTime.
 	timeModified: {
 		type: 'boolean',
