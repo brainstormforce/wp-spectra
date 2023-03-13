@@ -26,9 +26,10 @@ $block_data = array(
 			'type' => 'css',
 		),
 		'uagb-animation-js' => array(
-			'src'  => UAGB_Scripts_Utils::get_js_url( 'spectra-animations' ),
-			'dep'  => array( 'uagb-aos-js' ),
-			'type' => 'js',
+			'src'        => UAGB_Scripts_Utils::get_js_url( 'spectra-animations' ),
+			'dep'        => array( 'uagb-aos-js' ),
+			'type'       => 'js',
+			'skipEditor' => true,
 		),
 	),
 );
