@@ -294,14 +294,44 @@ const animationOptions = ( props ) => {
 		},
 	]; 
 
+	// Function to trigger animation in editor (when changing animation type or clicking on play button).
+	// animationType - holds UAGAnimationType attribute by default but sometimes the attribute is not updated instantaneously, so we pass in the value from the Animation Type select component.
+	const playAnimation = ( animationType = UAGAnimationType ) => {
+
+		const animatedBlock = document.getElementById( 'block-' + clientId )
+		const aosWaitPreviousCode = parseInt( localStorage.getItem( `aosWaitTimeoutCode-${clientId}` ) );
+
+		// If the animation is played previously.
+		if( aosWaitPreviousCode ) {
+			animatedBlock.removeAttribute( 'data-aos' )
+			animatedBlock.classList.remove( 'aos-animate' )
+		}
+
+		animatedBlock.style.transitionDuration = '0s';
+		animatedBlock.setAttribute( 'data-aos', animationType )
+
+		clearTimeout( aosWaitPreviousCode );
+
+		const aosWait = setTimeout( () => {
+			animatedBlock.style.transitionDuration = '';
+			animatedBlock.classList.add( 'aos-animate' )
+		}, 0 );
+
+		localStorage.setItem( `aosWaitTimeoutCode-${clientId}` , aosWait );
+
+	}
+
 	return(
 		<>
 			<SelectControl
 				label={ __( 'Animation Type' ) }
 				value={ UAGAnimationType }
-				onChange={ ( value ) =>
+				onChange={ ( value ) => {
 					setAttributes( { UAGAnimationType: value } )
-				}
+					// Play animation when the animation type is changed.
+					// We pass in 'value' since the UAGAnimationType may still hold the old animation type value.
+					playAnimation( value );
+				} }
 				options={ AnimationList }
 			/>
 			{ ( UAGAnimationType && UAGAnimationType !== '' ) &&
@@ -379,30 +409,7 @@ const animationOptions = ( props ) => {
 					/>
 					<Button
 						className='uagb-animation__play-button'
-						onClick={ () => {
-
-							const animatedBlock = document.getElementById( 'block-' + clientId )
-							const aosWaitPreviousCode = parseInt( localStorage.getItem( `aosWaitTimeoutCode-${clientId}` ) );
-
-							// If the animation is played previously.
-							if( aosWaitPreviousCode ) {
-								animatedBlock.removeAttribute( 'data-aos' )
-								animatedBlock.classList.remove( 'aos-animate' )
-							}
-
-							animatedBlock.style.transitionDuration = '0s';
-							animatedBlock.setAttribute( 'data-aos', UAGAnimationType )
-
-							clearTimeout( aosWaitPreviousCode );
-
-							const aosWait = setTimeout( () => {
-								animatedBlock.style.transitionDuration = '';
-								animatedBlock.classList.add( 'aos-animate' )
-							}, 0 );
-
-							localStorage.setItem( `aosWaitTimeoutCode-${clientId}` , aosWait );
-
-						} }
+						onClick={ () => playAnimation() }
 						variant='tertiary'
 					>
 						{ __( 'Play', 'ultimate-addons-for-gutenberg' ) }
