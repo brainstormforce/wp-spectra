@@ -5,7 +5,7 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import classnames from 'classnames';
 import { useEffect } from '@wordpress/element';
-import { AnimationList, AnimationEasingList } from '@Blocks/extensions/animations-extension/animation-list';
+import { AnimationList, AnimationEasingList, AnimationEasingFunctions } from '@Blocks/extensions/animations-extension/animation-list';
 const { createHigherOrderComponent } = wp.compose;
 
 const { enableConditions, enableResponsiveConditions, enableAnimationsExtension } = uagb_blocks_info;
@@ -309,6 +309,9 @@ const animationOptions = ( props ) => {
 		animatedBlock.style.transitionDuration = '0s';
 		// Add back the AOS attribute.
 		animatedBlock.setAttribute( 'data-aos', animationType )
+
+		// Due to CSS conflicts across themes in the editor, we set the easing using JS.
+		animatedBlock.style.transitionTimingFunction = AnimationEasingFunctions[ UAGAnimationEasing ];
 
 		// Clear previous timeout.
 		clearTimeout( aosWaitPreviousCode );
