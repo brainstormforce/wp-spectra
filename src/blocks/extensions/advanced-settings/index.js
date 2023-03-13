@@ -270,10 +270,7 @@ const animationOptions = ( props ) => {
 
 	const {
 		clientId,
-		attributes,
 		attributes: {
-			className,
-			block_id,
 			UAGAnimationType,
 			UAGAnimationTime,
 			UAGAnimationDelay,
@@ -438,7 +435,6 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		zIndexMobile,
 		UAGDisplayConditions,
 		UAGResponsiveConditions,
-		UAGAnimationType,
 	} = attributes;
 
 	//Filter to add responsive condition compatibility for third party blocks.
