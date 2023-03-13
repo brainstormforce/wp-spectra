@@ -13,13 +13,14 @@ import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStora
 import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGHelpText from '@Components/help-text';
+import { applyFilters } from '@wordpress/hooks';
 
 const BoxShadowControl = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
 	const panelRef = useRef( null );
 	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
 
-	const allBlocksAttributes = wp.hooks.applyFilters( 'uagb.blocksAttributes', blocksAttributes ); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	const allBlocksAttributes = applyFilters( 'uagb.blocksAttributes', blocksAttributes ); // eslint-disable-line @wordpress/no-unused-vars-before-return
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
 
@@ -278,8 +279,8 @@ const BoxShadowControl = ( props ) => {
 	);
 
 	const controlName = getIdFromString( props.label );
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	return (
 		<div

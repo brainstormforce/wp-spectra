@@ -1071,6 +1071,7 @@ class Common_Settings extends Ajax_Base {
 	 * Save settings.
 	 *
 	 * @return void
+	 * @since 2.4.0
 	 */
 	public function enable_on_page_css_button() {
 
@@ -1082,6 +1083,10 @@ class Common_Settings extends Ajax_Base {
 
 		/**
 		 * Nonce verification
+		 *
+		 * @return void
+		 *
+		 * @since 2.4.0
 		 */
 		if ( ! check_ajax_referer( 'uag_enable_on_page_css_button', 'security', false ) ) {
 			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );

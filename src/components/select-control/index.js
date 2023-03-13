@@ -4,7 +4,7 @@ import { select } from '@wordpress/data';
 import styles from './editor.lazy.scss';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import PropTypes from 'prop-types';
-
+import { applyFilters } from '@wordpress/hooks';
 // Use the onChange prop only if needed.
 // When using the onChange prop, you may skip the label KV-Pair of the data prop and the setAttributes prop.
 // Children can now be declared as Options or OptGroups, as in the WP Select Control. Skip the options prop in this case.
@@ -43,9 +43,9 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 
 	const controlName = getIdFromString( label );
 
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
-	const allOptions = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.options`, options, blockNameForHook );
+	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+	const allOptions = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.options`, options, blockNameForHook );
 
 	return (
 		<div
@@ -57,7 +57,7 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 			}
 			{
 				children ? (
-					
+
 						<SelectControl
 							label={ label }
 							value={ data.value }
@@ -68,9 +68,9 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 						>
 							{ children }
 						</SelectControl>
-					
+
 				) : (
-					
+
 						<SelectControl
 							label={ label }
 							value={ data.value }
@@ -80,7 +80,7 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 							options={ allOptions }
 							help={ help }
 						/>
-					
+
 				)
 			}
 			{
