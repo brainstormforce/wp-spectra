@@ -15,8 +15,10 @@ const UAGBCountdownEdit = ( props ) => {
 
 	const {
 		isSelected,
+		clientId,
 		attributes,
 		attributes: {
+			block_id,
 			timeModified,
 			endDateTime,
 			showDays,
@@ -65,7 +67,7 @@ const UAGBCountdownEdit = ( props ) => {
 		}
 
 		// Assigning block_id in the attribute.
-		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 	}, [] );
 
 	const countdownRef = useRef( null );
@@ -73,7 +75,7 @@ const UAGBCountdownEdit = ( props ) => {
 	useEffect( () => {
 		if( countdownRef ) {
 		setTimeout( () => {
-			UAGBCountdown.editorInit( '.uagb-block-' + props.clientId.substr( 0, 8 ), props.attributes, countdownRef.current ); // eslint-disable-line no-undef
+			UAGBCountdown.editorInit( '.uagb-block-' + clientId.substr( 0, 8 ), attributes, countdownRef.current ); // eslint-disable-line no-undef
 		} )
 		}
 	}, [ countdownRef ] );
@@ -82,12 +84,12 @@ const UAGBCountdownEdit = ( props ) => {
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
-		addBlockEditorDynamicStyles( 'uagb-countdown-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-	}, [ attributes ] );
+		addBlockEditorDynamicStyles( 'uagb-countdown-style-' + clientId.substr( 0, 8 ), blockStyling );
+	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
-		if( props.attributes.block_id && timeChanged === 1 ) {
-			UAGBCountdown.changeEndTime( '.uagb-block-' + props.attributes.block_id, props.attributes, countdownRef.current ) // eslint-disable-line no-undef
+		if( block_id && timeChanged === 1 ) {
+			UAGBCountdown.changeEndTime( '.uagb-block-' + block_id, attributes, countdownRef.current ) // eslint-disable-line no-undef
 		}
 		setTimeChanged( 1 );
 	}, [
