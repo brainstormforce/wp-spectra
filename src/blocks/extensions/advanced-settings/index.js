@@ -476,12 +476,6 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		extraProps.style = {'--z-index-desktop': zIndex + ';', '--z-index-tablet': zIndexTablet + ';', '--z-index-mobile': zIndexMobile + ';'}
 	}
 
-	if ( UAGAnimationType ) {
-		extraProps.className = classnames( extraProps.className, 'uagb-animate__animated uagb-animate__' + UAGAnimationType );
-	} else {
-		extraProps.className = extraProps.className;
-	}
-
 	return extraProps;
 }
 
