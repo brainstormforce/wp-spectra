@@ -1033,6 +1033,7 @@ class Common_Settings extends Ajax_Base {
 	 * Save settings.
 	 *
 	 * @return void
+	 * @since 2.4.0
 	 */
 	public function enable_on_page_css_button() {
 
