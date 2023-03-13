@@ -313,7 +313,7 @@ const animationOptions = ( props ) => {
 		clearTimeout( aosWaitPreviousCode );
 
 		const aosWait = setTimeout( () => {
-			animatedBlock.style.transitionDuration = '';
+			animatedBlock.style.transitionDuration = ( UAGAnimationTime/1000 ) + 's';
 			animatedBlock.classList.add( 'aos-animate' )
 		}, 0 );
 
