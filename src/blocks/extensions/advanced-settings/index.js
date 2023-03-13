@@ -380,10 +380,28 @@ const animationOptions = ( props ) => {
 					<Button
 						className='uagb-animation__play-button'
 						onClick={ () => {
+
 							const animatedBlock = document.getElementById( 'block-' + clientId )
+							const aosWaitPreviousCode = parseInt( localStorage.getItem( `aosWaitTimeoutCode-${clientId}` ) );
+
+							// If the animation is played previously.
+							if( aosWaitPreviousCode ) {
+								animatedBlock.removeAttribute( 'data-aos' )
+								animatedBlock.classList.remove( 'aos-animate' )
+							}
+
+							animatedBlock.style.transitionDuration = '0s';
 							animatedBlock.setAttribute( 'data-aos', UAGAnimationType )
-							// animatedBlock.classList.add( 'aos-animate' )
-							console.log( animatedBlock )
+
+							clearTimeout( aosWaitPreviousCode );
+
+							const aosWait = setTimeout( () => {
+								animatedBlock.style.transitionDuration = '';
+								animatedBlock.classList.add( 'aos-animate' )
+							}, 0 );
+
+							localStorage.setItem( `aosWaitTimeoutCode-${clientId}` , aosWait );
+
 						} }
 						variant='tertiary'
 					>
