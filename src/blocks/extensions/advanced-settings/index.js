@@ -329,7 +329,7 @@ const animationOptions = ( props ) => {
 	return(
 		<>
 			<SelectControl
-				label={ __( 'Animation Type' ) }
+				label={ __( 'Animation Type', 'ultimate-addons-for-gutenberg' ) }
 				value={ UAGAnimationType }
 				onChange={ ( value ) => {
 					setAttributes( { UAGAnimationType: value } )
@@ -342,7 +342,7 @@ const animationOptions = ( props ) => {
 			{ ( UAGAnimationType && UAGAnimationType !== '' ) &&
 				<>
 					<RangeControl
-						label="Animation Duration"
+						label={ __( 'Animation Duration', 'ultimate-addons-for-gutenberg' ) }
 						className='uagb-animation__range-control'
 						value={ UAGAnimationTime }
 						onChange={ ( value ) => {
@@ -369,7 +369,7 @@ const animationOptions = ( props ) => {
 						marks={ animationTimeMarks }
 					/>
 					<RangeControl
-						label="Animation Delay"
+						label={ __( 'Animation Delay', 'ultimate-addons-for-gutenberg' ) }
 						className='uagb-animation__range-control'
 						value={ UAGAnimationDelay }
 						onChange={ ( value ) => {
@@ -396,7 +396,7 @@ const animationOptions = ( props ) => {
 						marks={ animationTimeMarks }
 					/>
 					<SelectControl
-						label={ __( 'Animation Easing' ) }
+						label={ __( 'Animation Easing', 'ultimate-addons-for-gutenberg' ) }
 						value={ UAGAnimationEasing }
 						onChange={ ( value ) =>
 							setAttributes( { UAGAnimationEasing: value } )
@@ -404,7 +404,7 @@ const animationOptions = ( props ) => {
 						options={ AnimationEasingList }
 					/>
 					<ToggleControl
-						label={ __( 'Play Repeatedly on Scroll' ) }
+						label={ __( 'Play Repeatedly on Scroll', 'ultimate-addons-for-gutenberg' ) }
 						checked={ UAGAnimationRepeat }
 						onChange={ () =>
 							setAttributes( {
