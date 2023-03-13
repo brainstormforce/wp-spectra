@@ -5,6 +5,7 @@ import getMatrixAlignment from '@Controls/getMatrixAlignment';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateSpacing from '@Controls/generateSpacing';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import { applyFilters } from '@wordpress/hooks';
 
 function styling( props ) {
 	const {
@@ -245,7 +246,7 @@ function styling( props ) {
 	const gridImageGapMobFallback = isNaN( gridImageGapMob ) ? gridImageGapTabFallback : gridImageGapMob;
 	const lightboxCaptionHeightTabFallback = ( 'number' === typeof lightboxCaptionHeightTablet ) ? lightboxCaptionHeightTablet : lightboxCaptionHeightFallback;
 	const lightboxCaptionHeightMobFallback = ( 'number' === typeof lightboxCaptionHeightMobile ) ? lightboxCaptionHeightMobile : lightboxCaptionHeightTabFallback;
-	
+
 
 	// Border Attributes.
 	const arrowBorderCSS = generateBorderCSS( attributes, 'arrow' );
@@ -1048,13 +1049,13 @@ function styling( props ) {
 
 	const baseSelector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
 
-	selectors = wp.hooks.applyFilters( `spectra.image-gallery.styling`, selectors, attributes );
-	tabletSelectors = wp.hooks.applyFilters( `spectra.image-gallery.tabletStyling`, tabletSelectors, attributes );
-	mobileSelectors = wp.hooks.applyFilters( `spectra.image-gallery.mobileStyling`, mobileSelectors, attributes );
+	selectors = applyFilters( `spectra.image-gallery.styling`, selectors, attributes );
+	tabletSelectors = applyFilters( `spectra.image-gallery.tabletStyling`, tabletSelectors, attributes );
+	mobileSelectors = applyFilters( `spectra.image-gallery.mobileStyling`, mobileSelectors, attributes );
 
-	selectors = wp.hooks.applyFilters( `spectra.image-gallery.styling`, selectors, props.attributes );
-	tabletSelectors = wp.hooks.applyFilters( `spectra.image-gallery.tabletStyling`, tabletSelectors, props.attributes );
-	mobileSelectors = wp.hooks.applyFilters( `spectra.image-gallery.mobileStyling`, mobileSelectors, props.attributes );
+	selectors = applyFilters( `spectra.image-gallery.styling`, selectors, props.attributes );
+	tabletSelectors = applyFilters( `spectra.image-gallery.tabletStyling`, tabletSelectors, props.attributes );
+	mobileSelectors = applyFilters( `spectra.image-gallery.mobileStyling`, mobileSelectors, props.attributes );
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 
