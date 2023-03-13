@@ -298,25 +298,33 @@ const animationOptions = ( props ) => {
 	// animationType - holds UAGAnimationType attribute by default but sometimes the attribute is not updated instantaneously, so we pass in the value from the Animation Type select component.
 	const playAnimation = ( animationType = UAGAnimationType ) => {
 
+		// Get block and the setTimeout code to clear from previous usage.
 		const animatedBlock = document.getElementById( 'block-' + clientId )
 		const aosWaitPreviousCode = parseInt( localStorage.getItem( `aosWaitTimeoutCode-${clientId}` ) );
 
-		// If the animation is played previously.
+		// If the animation is played previously, remove the AOS class and attribute first.
 		if( aosWaitPreviousCode ) {
 			animatedBlock.removeAttribute( 'data-aos' )
 			animatedBlock.classList.remove( 'aos-animate' )
 		}
 
+		// transition duration is set to 0s, cause the block first goes to the last frame (animated in reverse) when the AOS attribute is added and this should be instantaneous.
 		animatedBlock.style.transitionDuration = '0s';
+		// Add back the AOS attribute.
 		animatedBlock.setAttribute( 'data-aos', animationType )
 
+		// Clear previous timeout.
 		clearTimeout( aosWaitPreviousCode );
 
+		// Add the aos-animate class to play the animation with the given duration.
 		const aosWait = setTimeout( () => {
+			// Astra theme overrides (or even other themes may) the transition duration to a fixed value.
+			// Hence we do the calculation on the next line.
 			animatedBlock.style.transitionDuration = ( UAGAnimationTime/1000 ) + 's';
 			animatedBlock.classList.add( 'aos-animate' )
 		}, 0 );
 
+		// Set local storage so we can fetch the value during later usage to clear the interval.
 		localStorage.setItem( `aosWaitTimeoutCode-${clientId}` , aosWait );
 
 	}
