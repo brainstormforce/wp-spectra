@@ -812,12 +812,15 @@ class UAGB_Post_Assets {
 					$id = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
 
 					if ( $id ) {
-						$content = get_post_field( 'post_content', $id );
+						$assets = $this->get_assets_using_post_content( $id );
 
-						$reusable_blocks = $this->parse_blocks( $content );
-
-						$assets = $this->get_blocks_assets( $reusable_blocks );
-
+						$this->stylesheet .= $assets['css'];
+						$this->script     .= $assets['js'];
+					}
+				} elseif ( 'core/template-part' === $inner_block['blockName'] ) { // This condition to check is there any inner_block content template part.
+					$id = $this->get_fse_template_part( $inner_block );
+					if ( $id ) {
+						$assets            = $this->get_assets_using_post_content( $id );
 						$this->stylesheet .= $assets['css'];
 						$this->script     .= $assets['js'];
 					}
@@ -906,10 +909,10 @@ class UAGB_Post_Assets {
 		global $wp_embed;
 
 		$content = '';
-		
+
 		if ( $_wp_current_template_content ) {
 			$content = $wp_embed->run_shortcode( $_wp_current_template_content );
-		} 
+		}
 		// This content is appended for the Home page & 404 page.
 		$blocks = $this->parse_blocks( $post_content . $content );
 
@@ -960,6 +963,40 @@ class UAGB_Post_Assets {
 	}
 
 	/**
+	 * Generates ids for all wp template part.
+	 *
+	 * @param array $block the content array.
+	 * @since x.x.x
+	 */
+	public function get_fse_template_part( $block ) {
+		$slug            = $block['attrs']['slug'];
+		$templates_parts = get_block_templates( array( 'slugs__in' => $slug ), 'wp_template_part' );
+		foreach ( $templates_parts as $templates_part ) {
+			if ( $slug === $templates_part->slug ) {
+				$id = $templates_part->wp_id;
+				return $id;
+			}
+		}
+	}
+
+	/**
+	 * Generates parse content for all blocks including reusable blocks.
+	 *
+	 * @param int $id of blocks.
+	 * @since x.x.x
+	 */
+	public function get_assets_using_post_content( $id ) {
+
+		$content = get_post_field( 'post_content', $id );
+
+		$reusable_blocks = $this->parse_blocks( $content );
+
+		$assets = $this->get_blocks_assets( $reusable_blocks );
+
+		return $assets;
+	}
+
+	/**
 	 * Generates assets for all blocks including reusable blocks.
 	 *
 	 * @param array $blocks Blocks array.
@@ -988,30 +1025,19 @@ class UAGB_Post_Assets {
 					$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
 
 					if ( $id ) {
-						$content = get_post_field( 'post_content', $id );
-
-						$reusable_blocks = $this->parse_blocks( $content );
-
-						$assets = $this->get_blocks_assets( $reusable_blocks );
+						$assets = $this->get_assets_using_post_content( $id );
 
 						$this->stylesheet .= $assets['css'];
 						$this->script     .= $assets['js'];
 
 					}
 				} elseif ( 'core/template-part' === $block['blockName'] ) {
-					$slug            = $block['attrs']['slug'];
-					$templates_parts = get_block_templates( array( 'slugs__in' => $slug ), 'wp_template_part' );
-					foreach ( $templates_parts as $templates_part ) {
-						if ( $slug === $templates_part->slug ) {
-							$id = $templates_part->wp_id;
-							if ( $id ) {
-								$content           = get_post_field( 'post_content', $id );
-								$reusable_blocks   = $this->parse_blocks( $content );
-								$assets            = $this->get_blocks_assets( $reusable_blocks );
-								$this->stylesheet .= $assets['css'];
-								$this->script     .= $assets['js'];
-							}
-						}
+					$id = $this->get_fse_template_part( $block );
+					if ( $id ) {
+						$assets = $this->get_assets_using_post_content( $id );
+
+						$this->stylesheet .= $assets['css'];
+						$this->script     .= $assets['js'];
 					}
 				} else {
 					// Add your block specif css here.
