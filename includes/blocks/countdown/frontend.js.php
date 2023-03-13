@@ -2,7 +2,7 @@
 /**
  * Frontend JS File.
  *
- * @since x.x.x
+ * @since 2.4.0
  *
  * @package uagb
  */
@@ -19,7 +19,8 @@ $countdown_options = apply_filters(
 		'showMinutes' => $attr['showMinutes'],
 		'isFrontend'  => true,
 	),
-	$id
+	$id,
+	$attr
 );
 
 ob_start();

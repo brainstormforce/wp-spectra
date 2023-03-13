@@ -1103,7 +1103,15 @@ const attributes = {
 			styleType: 'countdown-box-shadow-position-hover'
 		},
 	},
+	// Box Border Attributes.
 	...boxBorderAttributes,
+	boxBorderStyle: {
+		type: 'string',
+		default: 'default',
+		UAGCopyPaste: {
+			styleType: 'box-border-style',
+		},
+	},
 };
 
 export default attributes;
