@@ -52,7 +52,6 @@ const AnimationsExtension = () => {
 
     return (
         <div
-        key={'animations-extension'}
         className={ classNames(
             animationExtensionStatus
                 ? 'border-white bg-white shadow hover:shadow-hover hover:z-50'
