@@ -17,6 +17,7 @@ const initialState = {
     enableCopyPasteStyles : '',
     enableDisplayConditions : '',
     enableMasonryExtension : '',
+    enableAnimationsExtension : '',
 	socialLogin: {
 		recaptchaVersion: 'v2',
 		recaptchaSiteKey: '',
