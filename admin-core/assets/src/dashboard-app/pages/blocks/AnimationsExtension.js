@@ -1,3 +1,7 @@
+/**
+ * EXTENSION: Animation Extension Admin Dashboard Card
+ */
+
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch } from '@headlessui/react'
