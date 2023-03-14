@@ -327,11 +327,13 @@ const animationOptions = ( props ) => {
 			animatedBlock.classList.add( 'aos-animate' )
 		}, 0 );
 
-		// Remove the classes after the animation has played.
-		// Keeping the classes after the animation has played can lead to buggy behavior.
+		// Remove the classes and attributes after the animation has played.
+		// Keeping the classes and attributes after the animation has played can lead to buggy behavior in the editor.
 		const aosRemoveClasses = setTimeout( () => {
-			animatedBlock.removeAttribute( 'data-aos' )
-			animatedBlock.classList.remove( 'aos-animate' )
+			animatedBlock.removeAttribute( 'data-aos' );
+			animatedBlock.classList.remove( 'aos-animate' );
+			animatedBlock.style.transitionDuration = '';
+			animatedBlock.style.transitionTimingFunction = '';
 		}, ( UAGAnimationDelay + UAGAnimationTime ) );
 
 		// Set local storage so we can fetch the value during later usage to clear the intervals.
