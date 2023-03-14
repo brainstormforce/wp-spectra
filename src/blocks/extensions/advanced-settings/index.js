@@ -298,8 +298,10 @@ const animationOptions = ( props ) => {
 		// Get block and the setTimeout code to clear from previous usage.
 		const animatedBlock = document.getElementById( 'block-' + clientId )
 		const aosWaitPreviousCode = parseInt( localStorage.getItem( `aosWaitTimeoutCode-${clientId}` ) );
+		const aosRemoveClassesTimeoutPreviousCode = parseInt( localStorage.getItem( `aosRemoveClassesTimeoutCode-${clientId}` ) );
 
 		// If the animation is played previously, remove the AOS class and attribute first.
+		// We ensure that the AOS class and attribute is removed in case the user repeated taps the play button.
 		if( aosWaitPreviousCode ) {
 			animatedBlock.removeAttribute( 'data-aos' )
 			animatedBlock.classList.remove( 'aos-animate' )
@@ -313,8 +315,9 @@ const animationOptions = ( props ) => {
 		// Due to CSS conflicts across themes in the editor, we set the easing using JS.
 		animatedBlock.style.transitionTimingFunction = AnimationEasingFunctions[ UAGAnimationEasing ];
 
-		// Clear previous timeout.
+		// Clear previous timeouts.
 		clearTimeout( aosWaitPreviousCode );
+		clearTimeout( aosRemoveClassesTimeoutPreviousCode );
 
 		// Add the aos-animate class to play the animation with the given duration.
 		const aosWait = setTimeout( () => {
@@ -324,8 +327,16 @@ const animationOptions = ( props ) => {
 			animatedBlock.classList.add( 'aos-animate' )
 		}, 0 );
 
-		// Set local storage so we can fetch the value during later usage to clear the interval.
+		// Remove the classes after the animation has played.
+		// Keeping the classes after the animation has played can lead to buggy behavior.
+		const aosRemoveClasses = setTimeout( () => {
+			animatedBlock.removeAttribute( 'data-aos' )
+			animatedBlock.classList.remove( 'aos-animate' )
+		}, ( UAGAnimationDelay + UAGAnimationTime ) );
+
+		// Set local storage so we can fetch the value during later usage to clear the intervals.
 		localStorage.setItem( `aosWaitTimeoutCode-${clientId}` , aosWait );
+		localStorage.setItem( `aosRemoveClassesTimeoutCode-${clientId}` , aosRemoveClasses );
 
 	}
 
