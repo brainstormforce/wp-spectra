@@ -195,6 +195,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Team - Resolved an issue where images were not working as expected on responsive device presets.
 * Fix: Display Conditions - Fixed the undefined `key/index` when the Operating System is set to none.
 * Fix: Responsive Conditions - Updated slanted lines visibility for Counter and Slider Blocks.
+* Fix: Responsive Conditions - Slanted lines not visible for Post timeline and Content timeline Blocks.
 * Fix: Global - Updated Border Settings to remove all Border CSS when set to "default".
 * Fix: Global - Excluded BR Tags from buttons' text.
 * Fix: Global - Cartflows templates throw an error in the editor's Spectra Page Settings.
