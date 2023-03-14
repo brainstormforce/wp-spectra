@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Switch } from '@headlessui/react'
 import apiFetch from '@wordpress/api-fetch';
 import UAGB_Block_Icons from '@Common/block-icons';
-import { useEffect } from 'react';
+import { useEffect } from '@wordpress/element';
 
 function classNames( ...classes ) {
     return classes.filter( Boolean ).join( ' ' )
