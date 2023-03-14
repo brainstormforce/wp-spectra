@@ -1013,14 +1013,17 @@ class Common_Settings extends Ajax_Base {
 			wp_send_json_error( array( 'messsage' => $this->get_error_msg( 'nonce' ) ) );
 		}
 
-		if ( isset( $_POST['value'] ) ) {
-			\UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_animations_extension', sanitize_text_field( $_POST['value'] ) );
+		if ( ! isset( $_POST['value'] ) ) {
+			wp_send_json_error( array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) ) );
 		}
 
-		$response_data = array(
-			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
+		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_animations_extension', sanitize_text_field( $_POST['value'] ) );
+
+		wp_send_json_success(
+			array(
+				'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
+			)
 		);
-		wp_send_json_success( $response_data );
 
 	}
 
