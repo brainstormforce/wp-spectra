@@ -1001,18 +1001,15 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function enable_animations_extension() {
 
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
+			wp_send_json_error( array( 'messsage' => $this->get_error_msg( 'permission' ) ) );
 		}
 
 		/**
 		 * Nonce verification
 		 */
 		if ( ! check_ajax_referer( 'uag_enable_animations_extension', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
+			wp_send_json_error( array( 'messsage' => $this->get_error_msg( 'nonce' ) ) );
 		}
 
 		if ( empty( $_POST ) ) {
