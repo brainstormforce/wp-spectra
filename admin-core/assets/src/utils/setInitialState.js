@@ -40,6 +40,7 @@ const setInitialState = ( store ) => {
 			enableLegacyBlocks: data.uag_enable_legacy_blocks,
 			social: data.social,
             coreBlocks: data.spectra_core_blocks,
+            enableAnimationsExtension: data.uag_enable_animations_extension,
         };
 
         store.dispatch( {type: 'UPDATE_INITIAL_STATE', payload: initialState} );
