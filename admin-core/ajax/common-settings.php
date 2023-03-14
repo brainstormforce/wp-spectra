@@ -996,8 +996,9 @@ class Common_Settings extends Ajax_Base {
 	/**
 	 * Required Plugin Activate
 	 *
-	 * @since x.x.x
 	 * @return void
+	 * 
+	 * @since x.x.x
 	 */
 	public function enable_animations_extension() {
 
