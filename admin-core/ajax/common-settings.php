@@ -1012,11 +1012,6 @@ class Common_Settings extends Ajax_Base {
 			wp_send_json_error( array( 'messsage' => $this->get_error_msg( 'nonce' ) ) );
 		}
 
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-
 		if ( isset( $_POST['value'] ) ) {
 			\UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_animations_extension', sanitize_text_field( $_POST['value'] ) );
 		}
