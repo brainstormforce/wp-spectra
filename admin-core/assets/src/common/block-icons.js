@@ -688,6 +688,8 @@ const UAGB_Block_Icons = {
 			d: 'M7.3607 9.98877L10.0707 12.6987L7.3607 15.4086M9.08789 12.6987L3.16406 12.6987',
 			stroke: iconColor,
 			strokeWidth: 1.4,
+			strokeLinecap: 'round',
+			strokeLinejoin: 'round',
 		} ),
 	),
 };
