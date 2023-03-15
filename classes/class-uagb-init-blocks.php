@@ -124,7 +124,7 @@ class UAGB_Init_Blocks {
 			$attrs['UAGAnimationEasing'] = $attrs['UAGAnimationEasing'] ? $attrs['UAGAnimationEasing'] : 'ease';
 			$attrs['UAGAnimationRepeat'] = $attrs['UAGAnimationRepeat'] ? 'false' : 'true';
 
-			$aos_attributes = '<div data-aos= "' . $attrs['UAGAnimationType'] . '" data-aos-duration="' . $attrs['UAGAnimationTime'] . '" data-aos-delay="' . $attrs['UAGAnimationDelay'] . '" data-aos-easing="' . $attrs['UAGAnimationEasing'] . '" data-aos-once="' . $attrs['UAGAnimationRepeat'] . '" ';
+			$aos_attributes = '<div data-aos= "' . esc_attr( $attrs['UAGAnimationType'] ) . '" data-aos-duration="' . esc_attr( $attrs['UAGAnimationTime'] ) . '" data-aos-delay="' . esc_attr( $attrs['UAGAnimationDelay'] ) . '" data-aos-easing="' . esc_attr( $attrs['UAGAnimationEasing'] ) . '" data-aos-once="' . esc_attr( $attrs['UAGAnimationRepeat'] ) . '" ';
 
 			$block_content = preg_replace( '/<div /', $aos_attributes, $block_content, 1 );
 
