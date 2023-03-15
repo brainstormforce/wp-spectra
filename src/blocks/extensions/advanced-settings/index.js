@@ -436,7 +436,6 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		};
 
 		if( UAGAnimationType !== '' ) {
-			// wrapperProps['data-aos'] = UAGAnimationType;
 			wrapperProps['data-aos-duration'] = UAGAnimationTime;
 			wrapperProps['data-aos-delay'] = UAGAnimationDelay;
 			wrapperProps['data-aos-easing'] = UAGAnimationEasing;
