@@ -348,7 +348,10 @@ const animationOptions = ( props ) => {
 				} }
 				options={ AnimationList }
 			/>
+
+			{/* name: we pass in the block name dynamically since this feature must be available across all Spectra blocks */}
 			{ applyFilters( 'spectra.animations-extension.pro-options', '', name ) }
+
 			{ ( UAGAnimationType && UAGAnimationType !== '' ) &&
 				<>
 					<Button
