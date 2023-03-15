@@ -1,20 +1,12 @@
 import classnames from 'classnames';
 import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
-import { useLayoutEffect,memo } from '@wordpress/element';
+import { memo } from '@wordpress/element';
 
 import { useDeviceType } from '@Controls/getPreviewType';
-import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {
 	props = props.parentProps;
-
-	useLayoutEffect( () => {
-		styles.use();
-		return () => {
-			styles.unuse();
-		};
-	}, [] );
 
 	const {
 		attributes: {
