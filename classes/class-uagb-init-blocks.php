@@ -112,6 +112,24 @@ class UAGB_Init_Blocks {
 					break;
 			}
 		}
+
+		if ( ! empty( $block['attrs']['UAGAnimationType'] ) && $block['attrs']['UAGAnimationType'] ) {
+
+			$attrs = $block['attrs'];
+
+			// Defaults aren't received here, hence we set them.
+			// Without these defaults, empty data is sent to markup (which doesn't affect the functionality at all but still it's a good practice to follow).
+			$attrs['UAGAnimationTime']   = $attrs['UAGAnimationTime'] ? $attrs['UAGAnimationTime'] : 400;
+			$attrs['UAGAnimationDelay']  = $attrs['UAGAnimationDelay'] ? $attrs['UAGAnimationDelay'] : 0;
+			$attrs['UAGAnimationEasing'] = $attrs['UAGAnimationEasing'] ? $attrs['UAGAnimationEasing'] : 'ease';
+			$attrs['UAGAnimationRepeat'] = $attrs['UAGAnimationRepeat'] ? 'false' : 'true';
+
+			$aos_attributes = '<div data-aos= "' . $attrs['UAGAnimationType'] . '" data-aos-duration="' . $attrs['UAGAnimationTime'] . '" data-aos-delay="' . $attrs['UAGAnimationDelay'] . '" data-aos-easing="' . $attrs['UAGAnimationEasing'] . '" data-aos-once="' . $attrs['UAGAnimationRepeat'] . '" ';
+
+			$block_content = preg_replace( '/<div /', $aos_attributes, $block_content, 1 );
+
+		}
+
 		return $block_content;
 	}
 
