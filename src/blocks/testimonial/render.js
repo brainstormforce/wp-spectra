@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import PositionClasses from './classes';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import TestimonialImage from './components/newImage';
-import React, { useLayoutEffect, useRef, useEffect } from 'react';
+import { useEffect, useLayoutEffect, memo,useRef } from '@wordpress/element';
 import AuthorName from './components/AuthorName';
 import Company from './components/Company';
 import Description from './components/Description';
@@ -265,4 +265,4 @@ const Render = ( props ) => {
 		</div>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );

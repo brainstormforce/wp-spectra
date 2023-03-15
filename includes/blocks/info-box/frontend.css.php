@@ -95,17 +95,19 @@ $selectors = array(
 		'fill'        => $attr['iconColor'],
 	),
 	' .uagb-iconbox-icon-wrap'                            => array(
-		'margin'         => 'auto',
-		'display'        => 'inline-block',
-		'line-height'    => 0,
-		'box-sizing'     => 'content-box',
-		'width'          => $icon_size,
-		'height'         => $icon_size,
-		'line-height'    => $icon_size,
-		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, $attr['iconMarginUnit'] ),
-		'padding-right'  => UAGB_Helper::get_css_value( $icon_padding_right, $attr['iconMarginUnit'] ),
-		'padding-top'    => UAGB_Helper::get_css_value( $icon_padding_top, $attr['iconMarginUnit'] ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, $attr['iconMarginUnit'] ),
+		'margin'          => 'auto',
+		'display'         => 'inline-flex',
+		'align-items'     => 'center',
+		'justify-content' => 'center',
+		'line-height'     => 0,
+		'box-sizing'      => 'content-box',
+		'width'           => $icon_size,
+		'height'          => $icon_size,
+		'line-height'     => $icon_size,
+		'padding-left'    => UAGB_Helper::get_css_value( $icon_padding_left, $attr['iconMarginUnit'] ),
+		'padding-right'   => UAGB_Helper::get_css_value( $icon_padding_right, $attr['iconMarginUnit'] ),
+		'padding-top'     => UAGB_Helper::get_css_value( $icon_padding_top, $attr['iconMarginUnit'] ),
+		'padding-bottom'  => UAGB_Helper::get_css_value( $icon_padding_bottom, $attr['iconMarginUnit'] ),
 
 	),
 	'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg' => array(
@@ -651,7 +653,7 @@ if ( 'button' === $attr['ctaType'] ) {
 		'fill' => $attr['ctaBtnLinkColor'],
 	);
 
-	$selectors['.wp-block-uagb-info-box.uagb-infobox__content-wrap .wp-block-button.uagb-ifb-button-wrapper:hover .uagb-infobox-cta-link.wp-block-button__link'] = array(
+	$selectors['.wp-block-uagb-info-box.uagb-infobox__content-wrap .wp-block-button.uagb-ifb-button-wrapper .uagb-infobox-cta-link.wp-block-button__link:hover'] = array(
 		'color'            => $attr['ctaLinkHoverColor'],
 		'background-color' => ( 'color' === $attr['ctaBgHoverType'] ) ? $attr['ctaBgHoverColor'] : 'transparent',
 		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['ctaBorderhoverColor'],
@@ -659,7 +661,7 @@ if ( 'button' === $attr['ctaType'] ) {
 	$selectors[' .uagb-infobox-cta-link:hover'] = array(
 		'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['ctaBorderhoverColor'],
 	);
-	$selectors[' .wp-block-button.uagb-ifb-button-wrapper:hover .uagb-infobox-cta-link > svg'] = array(
+	$selectors[' .wp-block-button.uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover > svg'] = array(
 		'fill' => $attr['ctaLinkHoverColor'],
 	);
 	$selectors['.wp-block-uagb-info-box.uagb-infobox__content-wrap .wp-block-button.uagb-ifb-button-wrapper .uagb-infobox-cta-link.wp-block-button__link:focus'] = array(

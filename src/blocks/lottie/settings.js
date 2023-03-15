@@ -1,4 +1,3 @@
-import React from 'react';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -27,6 +26,7 @@ import {
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import UAGTextControl from '@Components/text-control';
+import { memo } from '@wordpress/element';
 
 const Settings = ( props ) => {
 	const { loopLottie, reverseDirection } = props;
@@ -429,4 +429,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

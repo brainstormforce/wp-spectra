@@ -1,4 +1,3 @@
-import React from 'react';
 import { __ } from '@wordpress/i18n';
 import Range from '@Components/range/Range.js';
 import { InspectorControls } from '@wordpress/block-editor';
@@ -11,6 +10,7 @@ import ResponsiveSlider from '@Components/responsive-slider';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import UAGTextControl from '@Components/text-control';
+import { memo } from '@wordpress/element';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -618,4 +618,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

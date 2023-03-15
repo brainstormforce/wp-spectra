@@ -11,6 +11,7 @@ import teamAttribute from '@Blocks/team/attributes';
 import socialAttribute from '@Blocks/social-share/attributes';
 import socialChildAttribute from '@Blocks/social-share-child/attributes';
 import googleMapAttribute from '@Blocks/google-map/attributes';
+import iconAttribute from '@Blocks/icon/attributes';
 import iconListAttribute from '@Blocks/icon-list/attributes';
 import iconListChildAttribute from '@Blocks/icon-list-child/attributes';
 import priceListAttribute from '@Blocks/price-list/attributes';
@@ -50,6 +51,10 @@ import imageAttribute from '@Blocks/image/attributes';
 import modalAttribute from '@Blocks/modal/attributes';
 import counterAttribute from '@Blocks/counter/attributes';
 import imageGalleryAttribute from '@Blocks/image-gallery/attributes';
+import countdownAttribute from '@Blocks/countdown/attributes';
+import sliderAttribute from '@Blocks/slider/attributes';
+import sliderChildAttribute from '@Blocks/slider-child/attributes';
+
 
 export const blocksAttributes = {
 	'advanced-heading' : advancedHeadingAttribute,
@@ -59,6 +64,7 @@ export const blocksAttributes = {
 	'section' : sectionAttribute,
 	'buttons' : buttonsAttribute,
 	'buttons-child' : buttonsChildAttribute,
+	'icon' : iconAttribute,
 	'info-box' : infoboxAttribute,
 	'testimonial' : testimonialAttribute,
 	'team' : teamAttribute,
@@ -104,4 +110,7 @@ export const blocksAttributes = {
 	'modal': modalAttribute,
 	'counter': counterAttribute,
 	'image-gallery': imageGalleryAttribute,
+	'countdown': countdownAttribute,
+	'slider': sliderAttribute,
+	'slider-child': sliderChildAttribute
 };

@@ -6,7 +6,7 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect, useEffect } from 'react';
+import { useEffect, useLayoutEffect, memo } from '@wordpress/element';
 import getImageHeightWidth from '@Controls/getImageHeightWidth';
 
 const Render = ( props ) => {
@@ -64,4 +64,4 @@ const Render = ( props ) => {
 	);
 };
 
-export default React.memo( Render );
+export default memo( Render );

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useLayoutEffect } from 'react';
+import { useLayoutEffect, memo ,useEffect, useState, useRef} from '@wordpress/element';
 import classnames from 'classnames';
 import { isBlobURL, getBlobByURL, revokeBlobURL } from '@wordpress/blob';
 import { ToolbarButton } from '@wordpress/components';
@@ -383,7 +383,7 @@ const Render = ( props ) => {
 	} );
 
 	return (
-		<React.Fragment>
+		<>
 			<BlockControls group="block">
 				<ImageURLInputUI
 					url={ href || '' }
@@ -456,11 +456,11 @@ const Render = ( props ) => {
 					disableMediaButtons={ temporaryURL || url }
 				/>
 			</div>
-		</React.Fragment>
+		</>
 	);
 }
 
 Render.propTypes = propTypes;
 Render.defaultProps = defaultProps;
 
-export default React.memo( Render );
+export default memo( Render );

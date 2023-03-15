@@ -19,19 +19,21 @@ class Spectra_Block_Prioritization {
 	 * Array of all blocks in order.
 	 * This array should be in the same order as: /src/blocks.js.
 	 *
-	 * @var blocks
+	 * @var array
 	 */
 	private static $blocks = array(
 		// Core Spectra Blocks.
 		'container',
 		'advanced-heading',
 		'image',
+		'icon',
 		'buttons',
 		'info-box',
 		'call-to-action',
 		// Alphabetically Ordered Blocks.
 		'blockquote',
 		'content-timeline',
+		'countdown',
 		'counter',
 		'faq',
 		'forms',

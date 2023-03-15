@@ -228,6 +228,9 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 			return decodeURI( encodeURIComponent( parsedSlug ) );
 		};
 		const $thisScope = document.querySelector( id );
+		if( ! $thisScope ){
+			return;
+		}
 		if ( $thisScope.querySelector( '.uag-toc__collapsible-wrap' ) !== null ){
 			if ( $thisScope.querySelector( '.uag-toc__collapsible-wrap' ).length > 0 ) {
 				$thisScope.querySelector( '.uagb-toc__title-wrap' ).classList.add( 'uagb-toc__is-collapsible' );

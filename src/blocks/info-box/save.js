@@ -184,10 +184,11 @@ export default function save( props ) {
 			{ ctaType === 'all' && (
 				<a // eslint-disable-line jsx-a11y/anchor-has-content
 					href={ ctaLink }
-					className={ !ctaLink ? 'uagb-infobox-link-wrap uagb-infbox__link-to-all uagb-disable-link' : 'uagb-infobox-link-wrap uagb-infbox__link-to-all' }
+					className={ 'uagb-infobox-link-wrap uagb-infbox__link-to-all' }
 					target={ target }
 					aria-label={ 'Infobox Link' }
 					rel="noopener noreferrer"
+					onClick={ ( '' === ctaLink || '#' === ctaLink ) ? 'return false;' : 'return true;'}
 				></a>
 			) }
 			{ output }

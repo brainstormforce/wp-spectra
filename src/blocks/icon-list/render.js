@@ -1,7 +1,7 @@
 // Import classes
 import classnames from 'classnames';
 import { InnerBlocks } from '@wordpress/block-editor';
-import React, { useLayoutEffect, useMemo } from 'react';
+import { useLayoutEffect, memo ,useMemo } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
 
@@ -54,4 +54,4 @@ const Render = ( props ) => {
 		</div>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );

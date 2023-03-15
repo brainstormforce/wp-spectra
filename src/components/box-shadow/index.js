@@ -6,16 +6,23 @@ import { __ } from '@wordpress/i18n';
 import Range from '@Components/range/Range.js';
 import AdvancedPopColorControl from '../color-control/advanced-pop-color-control';
 import { Button, Dashicon } from '@wordpress/components';
-import { useState } from '@wordpress/element';
 import MultiButtonsControl from '../multi-buttons-control/index';
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
+import UAGHelpText from '@Components/help-text';
+import { applyFilters } from '@wordpress/hooks';
 
 const BoxShadowControl = ( props ) => {
-
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const panelRef = useRef( null );
 	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
+
+	const allBlocksAttributes = applyFilters( 'uagb.blocksAttributes', blocksAttributes ); // eslint-disable-line @wordpress/no-unused-vars-before-return
+
+	const { getSelectedBlock } = select( 'core/block-editor' );
 
 	useLayoutEffect( () => {
 		window.addEventListener( 'click', function( e ){
@@ -43,6 +50,11 @@ const BoxShadowControl = ( props ) => {
 		  } );
 	}, [] );
 
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
+
 	const {
 		setAttributes,
 		boxShadowColor,
@@ -53,7 +65,8 @@ const BoxShadowControl = ( props ) => {
 		boxShadowPosition,
 		label = __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ),
 		popup = false,
-		blockId
+		blockId,
+		help = false
 	} = props;
 
 	let advancedControls;
@@ -69,17 +82,15 @@ const BoxShadowControl = ( props ) => {
 		boxShadowPosition.label,
 	];
 
-	const { getSelectedBlock } = select( 'core/block-editor' );
-
 	// Function to get the Block's default Box Shadow Values.
 	const getBlockBoxShadowValue = () => {
 		const selectedBlockName = getSelectedBlock()?.name.split( '/' ).pop();
 
 		let defaultValues = false;
-		if ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ] ) {
+		if ( 'undefined' !== typeof allBlocksAttributes[ selectedBlockName ] ) {
 			attributeNames.forEach( ( attributeName ) => {
 				if ( attributeName ) {
-					const blockDefaultAttributeValue = ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ][ attributeName ]?.default ) ? blocksAttributes[ selectedBlockName ][ attributeName ]?.default : '';
+					const blockDefaultAttributeValue = ( 'undefined' !== typeof allBlocksAttributes[ selectedBlockName ][ attributeName ]?.default ) ? allBlocksAttributes[ selectedBlockName ][ attributeName ]?.default : '';
 					defaultValues = {
 						...defaultValues,
 						[ attributeName ] : blockDefaultAttributeValue,
@@ -267,17 +278,36 @@ const BoxShadowControl = ( props ) => {
 		</div>
 	);
 
-	return popup ? (
+	const controlName = getIdFromString( props.label );
+	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+
+	return (
 		<div
-			className={ `components-base-control uag-box-shadow-options spectra-control-popup__options popup-${blockId} ${ activeClass }` }
+			ref={panelRef}
 		>
-			{ boxShadowAdvancedControls }
-			{ showAdvancedControls && advancedControls }
+			{
+				controlBeforeDomElement
+			}
+			{
+				popup ? (
+					<div
+						className={ ` components-base-control uag-box-shadow-options spectra-control-popup__options popup-${blockId} ${ activeClass }` }
+					>
+						{ boxShadowAdvancedControls }
+						{ showAdvancedControls && advancedControls }
+						<UAGHelpText text={ help } />
+					</div>
+				) : (
+					<>
+						{ overallControls }
+					</>
+				)
+			}
+			{
+				controlAfterDomElement
+			}
 		</div>
-	) : (
-		<>
-			{ overallControls }
-		</>
 	);
 };
 

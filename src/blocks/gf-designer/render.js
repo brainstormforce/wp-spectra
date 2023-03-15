@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { SelectControl, Placeholder, Spinner } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect, memo } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
 const Render = ( props ) => {
@@ -109,4 +109,4 @@ const Render = ( props ) => {
 		</div>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );

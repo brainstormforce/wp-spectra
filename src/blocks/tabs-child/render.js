@@ -1,5 +1,5 @@
-import React from 'react';
 import { InnerBlocks } from '@wordpress/block-editor';
+import { memo } from '@wordpress/element';
 
 const Render = ( props ) => {
 	props = props.parentProps;
@@ -18,4 +18,4 @@ const Render = ( props ) => {
 		</div>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );

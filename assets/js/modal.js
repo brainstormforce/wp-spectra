@@ -51,7 +51,8 @@ window.UAGBModal = {
 					const bodyWrap = document_element.querySelector( 'body' );
 					modalTrigger.addEventListener(
 						'click',
-						function () {
+						function ( e ) {
+							e.preventDefault();
 							if ( typeof innerModal !== 'undefined' && ! innerModal.classList.contains( 'active' ) ) {
 								innerModal.classList.add( 'active' );
 								if ( typeof bodyWrap !== 'undefined' && ! bodyWrap.classList.contains( 'hide-scroll' ) ) {

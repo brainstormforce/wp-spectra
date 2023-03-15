@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import ContentTmClasses from '.././classes';
-import React, { useMemo, useLayoutEffect } from 'react';
+import { useMemo, useLayoutEffect, memo } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -43,7 +43,7 @@ const Render = ( props ) => {
 				className,
 				'uagb-timeline__outer-wrap',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ props.clientId }`,
+				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
 				'uagb-timeline__content-wrap',
 				...ContentTmClasses( props.attributes, deviceType )
 			) }
@@ -60,4 +60,4 @@ const Render = ( props ) => {
 	);
 };
 
-export default React.memo( Render );
+export default memo( Render );

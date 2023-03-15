@@ -116,14 +116,16 @@ class UAGB_Front_Assets {
 		if ( is_archive() || is_home() || is_search() || is_404() ) {
 
 			global $wp_query;
-			$cached_wp_query = $wp_query->posts;
-
-			foreach ( $cached_wp_query as $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-
-				$current_post_assets = new UAGB_Post_Assets( $post->ID );
-
+			$current_object_id = $wp_query->get_queried_object_id();
+			$cached_wp_query   = $wp_query->posts;
+			if ( 0 !== $current_object_id && null !== $current_object_id ) {
+				$current_post_assets = new UAGB_Post_Assets( $current_object_id );
 				$current_post_assets->enqueue_scripts();
-
+			} else {
+				foreach ( $cached_wp_query as $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+					$current_post_assets = new UAGB_Post_Assets( $post->ID );
+					$current_post_assets->enqueue_scripts();
+				}
 			}
 
 			/*
@@ -131,7 +133,7 @@ class UAGB_Front_Assets {
 			or 404 page (which is an obvious case for 404), then get the current page ID and enqueue script.
 			*/
 			if ( ! $cached_wp_query ) {
-				$current_post_assets = new UAGB_Post_Assets( get_queried_object_id() );
+				$current_post_assets = new UAGB_Post_Assets( $current_object_id );
 				$current_post_assets->enqueue_scripts();
 			}
 		}

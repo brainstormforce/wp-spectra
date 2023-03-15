@@ -4,7 +4,8 @@
 
 import classnames from 'classnames';
 import { InnerBlocks } from '@wordpress/block-editor';
-import React, { useLayoutEffect, useMemo } from 'react';
+import { useLayoutEffect, memo ,useMemo} from '@wordpress/element';
+
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
 const ALLOWED_BLOCKS = [ 'uagb/faq-child' ];
@@ -63,4 +64,4 @@ const Render = ( props ) => {
 	);
 };
 
-export default React.memo( Render );
+export default memo( Render );

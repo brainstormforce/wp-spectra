@@ -54,6 +54,7 @@ class Common_Settings extends Ajax_Base {
 			'enable_file_generation',
 			'regenerate_assets',
 			'enable_templates_button',
+			'enable_on_page_css_button',
 			'enable_block_condition',
 			'enable_masonry_gallery',
 			'enable_block_responsive',
@@ -1019,6 +1020,48 @@ class Common_Settings extends Ajax_Base {
 
 		if ( isset( $_POST['value'] ) ) {
 			\UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_templates_button', sanitize_text_field( $_POST['value'] ) );
+		}
+
+		$response_data = array(
+			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
+		);
+		wp_send_json_success( $response_data );
+
+	}
+
+	/**
+	 * Save settings.
+	 *
+	 * @return void
+	 * @since 2.4.0
+	 */
+	public function enable_on_page_css_button() {
+
+		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 *
+		 * @return void
+		 *
+		 * @since 2.4.0
+		 */
+		if ( ! check_ajax_referer( 'uag_enable_on_page_css_button', 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		if ( empty( $_POST ) ) {
+			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		if ( isset( $_POST['value'] ) ) {
+			\UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_on_page_css_button', sanitize_text_field( $_POST['value'] ) );
 		}
 
 		$response_data = array(

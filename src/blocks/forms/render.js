@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { useCallback } from 'react';
+import { memo, useCallback} from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { useDeviceType } from '@Controls/getPreviewType';
 
@@ -52,7 +52,7 @@ const Render = ( props ) => {
 						'Submit',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ submitButtonText.replace( /(<([^>]+)>)/ig, '' ) }
+					value={ submitButtonText.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
 					onChange={ ( value ) =>
 						setAttributes( {
 							submitButtonText: value,
@@ -123,4 +123,4 @@ const Render = ( props ) => {
 	);
 };
 
-export default React.memo( Render );
+export default memo( Render );

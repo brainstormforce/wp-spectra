@@ -90,6 +90,7 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 						'container',
 						'advanced-heading',
 						'image',
+						'icon',
 						'buttons',
 						'info-box',
 						'call-to-action',

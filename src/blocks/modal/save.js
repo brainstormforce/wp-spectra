@@ -1,4 +1,3 @@
-import React from 'react';
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
@@ -21,7 +20,9 @@ export default function Save( props ) {
 		closeIcon,
 		imgTagWidth,
 		imgTagHeight,
-		showBtnIcon
+		showBtnIcon,
+		openModalAs,
+		modalPosition
 	} = props.attributes;
 
 	const textHTML = (
@@ -31,6 +32,8 @@ export default function Save( props ) {
 			className="uagb-modal-text uagb-modal-trigger"
 		/>
 	);
+
+	const isPro = uagb_blocks_info.spectra_pro_status;
 
 	const iconHTML = (
 		<div className='uagb-modal-trigger'>
@@ -131,9 +134,18 @@ export default function Save( props ) {
 				className={ classnames(
 					`${ appearEffect }`,
 					'uagb-modal-popup',
-					`uagb-block-${ block_id }`
+					`uagb-block-${ block_id }`,
+					{
+						[`uagb-modal-type-${openModalAs}`]: isPro,
+						[`uagb-modal-position-${modalPosition}`]: isPro
+					}
 				) }
 			>
+				{ isPro && ( 'window-top-left' === closeIconPosition || 'window-top-right' === closeIconPosition ) && (
+					<div className={classnames( 'uagb-modal-popup-close', closeIconPosition )}>
+						{ '' !== closeIcon && ( renderSVG( closeIcon ) ) }
+					</div>
+				) }
 				<div className="uagb-modal-popup-wrap">
 					<div className="uagb-modal-popup-content">
 						<InnerBlocks.Content />

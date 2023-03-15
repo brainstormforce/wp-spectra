@@ -48,6 +48,7 @@ const initialState = {
         'container',
         'advanced-heading',
         'image',
+        'icon',
         'buttons',
         'info-box',
         'call-to-action',

@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.1
-Stable tag: 2.3.5
+Stable tag: 2.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -169,6 +169,37 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 2.4.0 - WEDNESDAY, 15th MARCH 2023 =
+* New: Introducing the Countdown block that will help you generate hype and create a sense of urgency among your audience, during product sales or releases!
+* New: Introducing the Icon block that allows you to add FontAwesome 6 icons on your website with tonnes of styling options.
+* Feature: Image Gallery - Added a new lightbox feature with all the essential customizability that you'll need.
+* Improvement: Performance - Optimized the editor performance for all Spectra Blocks.
+* Improvement: Performance - Improved the archive page speed.
+* Improvement: Image Gallery - Added a dropdown to select the image size for all the images in the gallery.
+* Improvement: Custom CSS - Disabled the option for "on page-level CSS".
+* Improvement: Typography - Added Fahkwang and Jost Google Fonts in Font Families.
+* Improvement: Typography - Added Zen dots Google font in Font Families.
+* Improvement: Display Conditions - Added a "Day" option to display Spectra blocks on specific days.
+* Fix: Container - Resolved the full-width issue when adding a Container block inside the Slider block.
+* Fix: Container - Resolved an issue where the content was misaligned vertically when the background type was set to "video".
+* Fix: Image - Resolve an issue that was encountered when the Gutenberg plugin was activated.
+* Fix: Image - Updated the image dimensions width & height box as per the Spectra UI guidelines.
+* Fix: Buttons - Fixed the stack orientation and responsive alignment settings not working as expected on the front end.
+* Fix: Info Box - Resolved an issue where the icon was misaligned on tablet/mobile when padding was added.
+* Fix: Info Box - Updated the CTA hover styling on the front end.
+* Fix: Call To Action - Resolved an issue where the additional button's icon color was not changing on hover in the front end.
+* Fix: Forms- Resolved an issue where the form submit throws a success message without adding the "To" email address field.
+* Fix: Forms/Tabs/Table Of Contents - Resolved an issue where the JS throws an error in the console on blog/home page.
+* Fix: Post Timeline - Resolved an issue where the left padding was not applicable on the front end.
+* Fix: Team - Resolved an issue where images were not working as expected on responsive device presets.
+* Fix: Display Conditions - Fixed the undefined `key/index` when the Operating System is set to none.
+* Fix: Responsive Conditions - Updated slanted lines visibility for Counter and Slider Blocks.
+* Fix: Responsive Conditions - Slanted lines not visible for Post timeline and Content timeline Blocks.
+* Fix: Global - Updated Border Settings to remove all Border CSS when set to "default".
+* Fix: Global - Excluded BR Tags from buttons' text.
+* Fix: Global - Cartflows templates throw an error in the editor's Spectra Page Settings.
+* Fix: Global - Fonts was not loading on 404 page when Spectra blocks used in Astra theme's header/footer.
 
 = 2.3.5 - THURSDAY, 2nd FEBRUARY 2023 =
 * Improvement: Global - Removed Backward compatibility of button padding for old users from multiple blocks.

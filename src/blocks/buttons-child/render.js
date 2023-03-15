@@ -7,7 +7,8 @@ import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
-import React from 'react';
+import { memo } from '@wordpress/element';
+
 import { useDeviceType } from '@Controls/getPreviewType';
 
 const Render = ( props ) => {
@@ -50,7 +51,7 @@ const Render = ( props ) => {
 		if( ! removeText ){
 			return <RichText
 						placeholder={ __( 'Add text…' ) }
-						value={ label.replace( /(<([^>]+)>)/ig, '' ) }
+						value={ label.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
 						tagName="div"
 						onChange={ ( value ) => {
 							setAttributes( { label: value } );
@@ -96,4 +97,4 @@ const Render = ( props ) => {
 	);
 };
 
-export default React.memo( Render );
+export default memo( Render );

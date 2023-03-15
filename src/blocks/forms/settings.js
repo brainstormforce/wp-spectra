@@ -1,6 +1,5 @@
-import React from 'react';
 import { __ } from '@wordpress/i18n';
-
+import { memo } from '@wordpress/element';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import ResponsiveBorder from '@Components/responsive-border';
@@ -2051,4 +2050,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

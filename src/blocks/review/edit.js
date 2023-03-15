@@ -4,7 +4,7 @@
 
 import styling from './styling';
 import SchemaNotices from './schema-notices';
-import React, { useEffect } from 'react';
+import { useEffect } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
@@ -15,11 +15,10 @@ import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 const ReviewComponent = ( props ) => {
 
 	const deviceType = useDeviceType();
-
-	const updatePageSchema = () => {
-
-		const { setAttributes, attributes } = props;
-		const {
+	const {
+		isSelected,
+		attributes,
+		attributes: {
 			parts,
 			itemType,
 			summaryDescription,
@@ -48,7 +47,27 @@ const ReviewComponent = ( props ) => {
 			offerExpiry,
 			offerCurrency,
 			offerStatus,
-		} = attributes;
+			UAGHideDesktop,
+			UAGHideTab,
+			UAGHideMob,
+			contentVrPadding,
+			contentHrPadding,
+			topPadding,
+			bottomPadding,
+			rightPadding,
+			leftPadding,
+			enableSchema,
+			items,
+			showFeature,
+			showAuthor,
+			enableDescription,
+			enableImage,
+			bookAuthorName,
+		},
+		setAttributes,
+	} = props;
+
+	const updatePageSchema = () => {
 
 		const newAverage =
 			parts
@@ -190,16 +209,6 @@ const ReviewComponent = ( props ) => {
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
-		const { attributes, setAttributes } = props;
-		const {
-			contentVrPadding,
-			contentHrPadding,
-			topPadding,
-			bottomPadding,
-			rightPadding,
-			leftPadding,
-		} = attributes;
-
 		if ( contentVrPadding ) {
 			if ( undefined === topPadding ) {
 				setAttributes( { topPadding: contentVrPadding } );
@@ -247,68 +256,17 @@ const ReviewComponent = ( props ) => {
 		}
 		
 
-	}, [ props ] );
+	}, [ attributes,deviceType ] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-ratings-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
 		scrollBlockToView();
 	}, [deviceType] );
 
-	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
 	useEffect( () => {
 
 		responsiveConditionPreview( props );
 
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
-
-	// Setup the attributes
-	const { attributes, setAttributes } = props;
-
-	const {
-		block_id,
-		enableSchema,
-		itemType,
-		items,
-		parts,
-		starCount,
-		sku,
-		identifier,
-		aggregateType,
-		offerType,
-		offerCurrency,
-		offerPrice,
-		offerExpiry,
-		datepublish,
-		ctaLink,
-		brand,
-		rTitle,
-		rContent,
-		rAuthor,
-		mainimage,
-		showFeature,
-		showAuthor,
-		enableDescription,
-		enableImage,
-		isbn,
-		bookAuthorName,
-		reviewPublisher,
-		provider,
-		appCategory,
-		operatingSystem,
-		datecreated,
-		directorname,
-		isPreview,
-	} = attributes;
-
-	if ( block_id === '' ) {
-		setAttributes( {
-			block_id: props.clientId.substr( 0, 8 ),
-		} );
-	}
 
 	if (
 		items &&
@@ -323,46 +281,42 @@ const ReviewComponent = ( props ) => {
 		} );
 	}
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/review.svg`;
-
 	return (
-		isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<>
-				<SchemaNotices
-					enableSchema={ enableSchema }
-					itemType={ itemType }
-					rTitle={ rTitle }
-					enableDescription={ enableDescription }
-					rContent={ rContent }
-					enableImage={ enableImage }
-					mainimage={ mainimage }
-					sku={ sku }
-					brand={ brand }
-					starCount={ starCount }
-					showAuthor={ showAuthor }
-					rAuthor={ rAuthor }
-					showfeature={ showFeature }
-					aggregateType={ aggregateType }
-					offerType={ offerType }
-					datepublish={ datepublish }
-					offerCurrency={ offerCurrency }
-					offerPrice={ offerPrice }
-					ctaLink={ ctaLink }
-					offerExpiry={ offerExpiry }
-					identifier={ identifier }
-					isbn={ isbn }
-					bookAuthorName={ bookAuthorName }
-					directorname={ directorname }
-					datecreated={ datecreated }
-					provider={ provider }
-					appCategory={ appCategory }
-					operatingSystem={ operatingSystem }
-					reviewPublisher={ reviewPublisher }
-				/>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } />
-			</>
-		)
+		<>
+			<SchemaNotices
+				enableSchema={ enableSchema }
+				itemType={ itemType }
+				rTitle={ rTitle }
+				enableDescription={ enableDescription }
+				rContent={ rContent }
+				enableImage={ enableImage }
+				mainimage={ mainimage }
+				sku={ sku }
+				brand={ brand }
+				starCount={ starCount }
+				showAuthor={ showAuthor }
+				rAuthor={ rAuthor }
+				showfeature={ showFeature }
+				aggregateType={ aggregateType }
+				offerType={ offerType }
+				datepublish={ datepublish }
+				offerCurrency={ offerCurrency }
+				offerPrice={ offerPrice }
+				ctaLink={ ctaLink }
+				offerExpiry={ offerExpiry }
+				identifier={ identifier }
+				isbn={ isbn }
+				bookAuthorName={ bookAuthorName }
+				directorname={ directorname }
+				datecreated={ datecreated }
+				provider={ provider }
+				appCategory={ appCategory }
+				operatingSystem={ operatingSystem }
+				reviewPublisher={ reviewPublisher }
+			/>
+			{ isSelected && <Settings parentProps={ props } /> }
+			<Render parentProps={ props } />
+		</>
 	);
 };
 

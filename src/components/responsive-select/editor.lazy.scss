@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .uagb-responsive-select-control {
 
 	.uagb-size-type-field-tabs {
@@ -9,4 +11,8 @@
 			margin-bottom: 0;
 		}
 	}
+}
+
+.components-base-control .components-base-control.uagb-responsive-select-control {
+	margin-bottom: $spectra-control-vertical-gap !important;
 }

@@ -9,7 +9,7 @@ import Description from './components/Description';
 import PositionClasses from './classes';
 import TestimonialImage from './components/TestimonialImage';
 import TestimonialImages from './components/oldImage';
-import React, { Fragment } from 'react';
+import { Fragment } from '@wordpress/element';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 

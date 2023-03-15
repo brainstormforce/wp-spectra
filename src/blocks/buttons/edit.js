@@ -3,8 +3,7 @@
  */
 
 import styling from './styling';
-
-import React, { useEffect, useState,    } from 'react';
+import { useEffect,useState } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
@@ -17,6 +16,13 @@ let prevState;
 const ButtonsComponent = ( props ) => {
 
 	const deviceType = useDeviceType();
+	const {
+		isSelected,
+		attributes,
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
+		setAttributes,
+		clientId
+	} = props;
 
 	const initialState = {
 		isFocused: 'false',
@@ -26,14 +32,12 @@ const ButtonsComponent = ( props ) => {
 	const [ state, setStateValue ] = useState( initialState );
 
 	useEffect( () => {
-		// Replacement for componentDidMount.
+		// Assigning block_id in the attribute.
+		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
 		// Assigning block_id in the attribute.
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-
-		// Assigning block_id in the attribute.
-		props.setAttributes( { classMigrate: true } );
-		props.setAttributes( { childMigrate: true } );
+		setAttributes( { classMigrate: true } );
+		setAttributes( { childMigrate: true } );
 
 		prevState = props.isSelected;
 		
@@ -49,37 +53,27 @@ const ButtonsComponent = ( props ) => {
 
 		const blockStyling = styling( props );
 
-		addBlockEditorDynamicStyles( 'uagb-style-buttons-' + props.clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles( 'uagb-style-buttons-' + clientId.substr( 0, 8 ), blockStyling );
 
 		prevState = props.isSelected;
 		
-	}, [ props ] );
+	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-style-buttons-' + props.clientId.substr( 0, 8 ), blockStyling );
-
 		scrollBlockToView();
-
 	}, [deviceType] );
-	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+
 	useEffect( () => {
 
 		responsiveConditionPreview( props );
 
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/buttons.svg`;
-
 	return (
-		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } />
-			</>
-		)
+		<>
+			{ isSelected && <Settings parentProps={ props } /> }
+			<Render parentProps={ props } />
+		</>
 	);
 };
 

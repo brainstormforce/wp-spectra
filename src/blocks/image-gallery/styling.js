@@ -5,9 +5,16 @@ import getMatrixAlignment from '@Controls/getMatrixAlignment';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateSpacing from '@Controls/generateSpacing';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import { applyFilters } from '@wordpress/hooks';
 
 function styling( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+	const {
+		name,
+		clientId,
+		attributes,
+	} = props;
+
+	const blockName = name.replace( 'uagb/', '' );
 	const {
 		// Tile Calcualtion
 		tileSize,
@@ -38,6 +45,15 @@ function styling( props ) {
 		gridImageGapUnit,
 		gridImageGapUnitTab,
 		gridImageGapUnitMob,
+
+		// Lightbox Settings.
+		lightboxDisplayCaptions,
+		lightboxCaptionHeight,
+		lightboxCaptionHeightTablet,
+		lightboxCaptionHeightMobile,
+		lightboxIconSize,
+		lightboxIconSizeTablet,
+		lightboxIconSizeMobile,
 
 		// Caption Settings.
 		captionVisibility,
@@ -92,6 +108,17 @@ function styling( props ) {
 		captionBackgroundBlurAmount,
 		captionBackgroundBlurAmountHover,
 
+		// Lightbox Styling.
+		lightboxEdgeDistance,
+		lightboxEdgeDistanceTablet,
+		lightboxEdgeDistanceMobile,
+		lightboxBackgroundEnableBlur,
+		lightboxBackgroundBlurAmount,
+		lightboxBackgroundColor,
+		lightboxCaptionColor,
+		lightboxCaptionBackgroundColor,
+		lightboxIconColor,
+
 		// Caption Font.
 		captionFontFamily,
 		captionFontWeight,
@@ -121,6 +148,21 @@ function styling( props ) {
 		loadMoreLineHeight,
 		loadMoreLineHeightTab,
 		loadMoreLineHeightMob,
+
+		// Lightbox Font.
+		lightboxFontFamily,
+		lightboxFontWeight,
+		lightboxFontStyle,
+		lightboxTransform,
+		lightboxDecoration,
+		lightboxFontSizeType,
+		lightboxFontSize,
+		lightboxFontSizeTab,
+		lightboxFontSizeMob,
+		lightboxLineHeightType,
+		lightboxLineHeight,
+		lightboxLineHeightTab,
+		lightboxLineHeightMob,
 
 		// Caption Styling.
 		captionBackgroundEffect,
@@ -167,7 +209,7 @@ function styling( props ) {
 		mainTitleBorderColor,
 		mainTitleBorderHColor,
 		imageBorderHColor,
-	} = props.attributes;
+	} = attributes;
 
 	// Arrow & Dots Default Color Fallback ( Not from Theme ).
 	const arrowDotColor = paginateColor ? paginateColor : '#007cba';
@@ -183,6 +225,7 @@ function styling( props ) {
 	const paginateArrowSizeFallback = getFallbackNumber( paginateArrowSize, 'paginateArrowSize', blockName );
 	const paginateLoaderSizeFallback = getFallbackNumber( paginateLoaderSize, 'paginateLoaderSize', blockName );
 	const gridImageGapFallback = getFallbackNumber( gridImageGap, 'gridImageGap', blockName );
+	const lightboxCaptionHeightFallback = getFallbackNumber( lightboxCaptionHeight, 'lightboxCaptionHeight', blockName );
 
 	// Spacing Fallback - Needed for Carousel Editor.
 	const feedMarginTopFallback = isNaN( feedMarginTop ) ? 0 : feedMarginTop;
@@ -201,20 +244,23 @@ function styling( props ) {
 	// Responsive Slider Fallback.
 	const gridImageGapTabFallback = isNaN( gridImageGapTab ) ? gridImageGapFallback : gridImageGapTab;
 	const gridImageGapMobFallback = isNaN( gridImageGapMob ) ? gridImageGapTabFallback : gridImageGapMob;
+	const lightboxCaptionHeightTabFallback = ( 'number' === typeof lightboxCaptionHeightTablet ) ? lightboxCaptionHeightTablet : lightboxCaptionHeightFallback;
+	const lightboxCaptionHeightMobFallback = ( 'number' === typeof lightboxCaptionHeightMobile ) ? lightboxCaptionHeightMobile : lightboxCaptionHeightTabFallback;
+
 
 	// Border Attributes.
-	const arrowBorderCSS = generateBorderCSS( props.attributes, 'arrow' );
-	const arrowBorderCSSTablet = generateBorderCSS( props.attributes, 'arrow', 'tablet' );
-	const arrowBorderCSSMobile = generateBorderCSS( props.attributes, 'arrow', 'mobile' );
-	const btnBorderCSS = generateBorderCSS( props.attributes, 'btn' );
-	const btnBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
-	const btnBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
-	const imageBorderCSS = generateBorderCSS( props.attributes, 'image' );
-	const imageBorderCSSTablet = generateBorderCSS( props.attributes, 'image', 'tablet' );
-	const imageBorderCSSMobile = generateBorderCSS( props.attributes, 'image', 'mobile' );
-	const mainTitleBorderCSS = generateBorderCSS( props.attributes, 'mainTitle' );
-	const mainTitleBorderCSSTablet = generateBorderCSS( props.attributes, 'mainTitle', 'tablet' );
-	const mainTitleBorderCSSMobile = generateBorderCSS( props.attributes, 'mainTitle', 'mobile' );
+	const arrowBorderCSS = generateBorderCSS( attributes, 'arrow' );
+	const arrowBorderCSSTablet = generateBorderCSS( attributes, 'arrow', 'tablet' );
+	const arrowBorderCSSMobile = generateBorderCSS( attributes, 'arrow', 'mobile' );
+	const btnBorderCSS = generateBorderCSS( attributes, 'btn' );
+	const btnBorderCSSTablet = generateBorderCSS( attributes, 'btn', 'tablet' );
+	const btnBorderCSSMobile = generateBorderCSS( attributes, 'btn', 'mobile' );
+	const imageBorderCSS = generateBorderCSS( attributes, 'image' );
+	const imageBorderCSSTablet = generateBorderCSS( attributes, 'image', 'tablet' );
+	const imageBorderCSSMobile = generateBorderCSS( attributes, 'image', 'mobile' );
+	const mainTitleBorderCSS = generateBorderCSS( attributes, 'mainTitle' );
+	const mainTitleBorderCSSTablet = generateBorderCSS( attributes, 'mainTitle', 'tablet' );
+	const mainTitleBorderCSSMobile = generateBorderCSS( attributes, 'mainTitle', 'mobile' );
 
 	// Box Shadow CSS.
 	const imageBoxShadowCSS = `${
@@ -244,7 +290,7 @@ function styling( props ) {
 		( 'inset' === imageBoxShadowPositionHover ) ? ( ` ${ imageBoxShadowPositionHover }` ) : ''
 	}`;
 
-	const selectors = {
+	let selectors = {
 
 		// Feed Selectors
 
@@ -331,31 +377,6 @@ function styling( props ) {
 			'color': paginateButtonTextColorHover,
 			'background-color': paginateColorHover,
 			'border-color': btnBorderHColor,
-		},
-		' .spectra-image-gallery__control-lightbox': {
-			'top': `calc( ${
-				document.getElementById( 'wpadminbar' ).classList.contains( 'mobile' )
-					? document.getElementById( 'wpadminbar' ).offsetHeight
-					: 0
-			}px + ${
-				document.querySelector( '.interface-interface-skeleton__header' ).offsetHeight
-			}px )`,
-			'width': `calc( 100vw - ${
-				document.querySelector( '.interface-interface-skeleton__sidebar' )
-					? document.querySelector( '.interface-interface-skeleton__sidebar' ).offsetWidth
-					: 0
-			}px )`,
-			'height': `calc( 100vh - ${
-				document.getElementById( 'wpadminbar' ).classList.contains( 'mobile' )
-					? document.getElementById( 'wpadminbar' ).offsetHeight
-					: 0
-			}px - ${
-				document.querySelector( '.interface-interface-skeleton__header' ).offsetHeight
-			}px - ${
-				document.querySelector( '.interface-interface-skeleton__footer' )
-					? document.querySelector( '.interface-interface-skeleton__footer' ).offsetHeight
-					: 0
-			}px )`,
 		},
 
 		// Layout and Media Wrapper Selectors
@@ -576,9 +597,56 @@ function styling( props ) {
 				)
 			),
 		},
+
+		// Lightbox Selectors.
+
+		' .spectra-image-gallery__control-lightbox': {
+			'background-color': lightboxBackgroundColor,
+			'backdrop-filter': lightboxBackgroundEnableBlur ? `blur(${ lightboxBackgroundBlurAmount }px)` : undefined,
+		},
+		' .spectra-image-gallery__control-lightbox--caption': {
+			'color': lightboxCaptionColor,
+			'background': `linear-gradient(rgba(0,0,0,0), ${ lightboxCaptionBackgroundColor })`,
+			'min-height': generateCSSUnit( lightboxCaptionHeightFallback, 'px' ),
+			'font-family': ( 'Default' === lightboxFontFamily ) ? '' : lightboxFontFamily,
+			'font-weight': lightboxFontWeight,
+			'font-style': lightboxFontStyle,
+			'text-decoration': lightboxDecoration,
+			'text-transform': lightboxTransform,
+			'font-size': generateCSSUnit( lightboxFontSize, lightboxFontSizeType ),
+			'line-height': generateCSSUnit( lightboxLineHeight, lightboxLineHeightType ),
+		},
+		' .spectra-image-gallery__control-lightbox--thumbnails-wrapper': {
+			'background-color': lightboxDisplayCaptions ? lightboxCaptionBackgroundColor : 'transparent',
+		},
+		' .spectra-image-gallery__control-lightbox--count': {
+			'top': generateCSSUnit( lightboxEdgeDistance, 'px' ),
+			'left': generateCSSUnit( lightboxEdgeDistance, 'px' ),
+			'color': lightboxIconColor,
+			'font-family': ( 'Default' === lightboxFontFamily ) ? '' : lightboxFontFamily,
+			'font-size': generateCSSUnit( lightboxIconSize, 'px' ) ? `calc(${ generateCSSUnit( lightboxIconSize, 'px' ) } * 3 / 4 )` : undefined,
+			'line-height': generateCSSUnit( lightboxIconSize, 'px' ) ? `calc(${ generateCSSUnit( lightboxIconSize, 'px' ) } * 3 / 4 )` : undefined,
+		},
+		' .spectra-image-gallery__control-lightbox--close': {
+			'top': generateCSSUnit( lightboxEdgeDistance, 'px' ),
+			'right': generateCSSUnit( lightboxEdgeDistance, 'px' ),
+		},
+		' .spectra-image-gallery__control-lightbox--close svg': {
+			'width': generateCSSUnit( lightboxIconSize, 'px' ),
+			'height': generateCSSUnit( lightboxIconSize, 'px' ),
+			'fill': lightboxIconColor,
+		},
+		' .spectra-image-gallery__control-lightbox--main .swiper-button-prev': {
+			'left': generateCSSUnit( lightboxEdgeDistance, 'px' ),
+			'color': lightboxIconColor,
+		},
+		' .spectra-image-gallery__control-lightbox--main .swiper-button-next': {
+			'right': generateCSSUnit( lightboxEdgeDistance, 'px' ),
+			'color': lightboxIconColor,
+		},
 	};
 
-	const tabletSelectors = {
+	let tabletSelectors = {
 		'.wp-block-uagb-image-gallery': {
 			'padding': generateSpacing(
 				feedMarginUnitTab,
@@ -663,9 +731,34 @@ function styling( props ) {
 		' .spectra-image-gallery__media-thumbnail-caption--bar-outside': {
 			...mainTitleBorderCSSTablet,
 		},
+		' .spectra-image-gallery__control-lightbox--caption': {
+			'min-height': generateCSSUnit( lightboxCaptionHeightTabFallback, 'px' ),
+			'font-size': generateCSSUnit( lightboxFontSizeTab, lightboxFontSizeType ),
+			'line-height': generateCSSUnit( lightboxLineHeightTab, lightboxLineHeightType ),
+		},
+		' .spectra-image-gallery__control-lightbox--count': {
+			'top': generateCSSUnit( lightboxEdgeDistanceTablet, 'px' ),
+			'left': generateCSSUnit( lightboxEdgeDistanceTablet, 'px' ),
+			'font-size': generateCSSUnit( lightboxIconSizeTablet, 'px' ) ? `calc(${ generateCSSUnit( lightboxIconSizeTablet, 'px' ) } * 3 / 4 )` : undefined,
+			'line-height': generateCSSUnit( lightboxIconSizeTablet, 'px' ) ? `calc(${ generateCSSUnit( lightboxIconSizeTablet, 'px' ) } * 3 / 4 )` : undefined,
+		},
+		' .spectra-image-gallery__control-lightbox--close': {
+			'top': generateCSSUnit( lightboxEdgeDistanceTablet, 'px' ),
+			'right': generateCSSUnit( lightboxEdgeDistanceTablet, 'px' ),
+		},
+		' .spectra-image-gallery__control-lightbox--close svg': {
+			'width': generateCSSUnit( lightboxIconSizeTablet, 'px' ),
+			'height': generateCSSUnit( lightboxIconSizeTablet, 'px' ),
+		},
+		' .spectra-image-gallery__control-lightbox--main .swiper-button-prev': {
+			'left': generateCSSUnit( lightboxEdgeDistanceTablet, 'px' ),
+		},
+		' .spectra-image-gallery__control-lightbox--main .swiper-button-next': {
+			'right': generateCSSUnit( lightboxEdgeDistanceTablet, 'px' ),
+		},
 	};
 
-	const mobileSelectors = {
+	let mobileSelectors = {
 		'.wp-block-uagb-image-gallery': {
 			'padding': generateSpacing(
 				feedMarginUnitMob,
@@ -749,6 +842,31 @@ function styling( props ) {
 
 		' .spectra-image-gallery__media-thumbnail-caption--bar-outside': {
 			...mainTitleBorderCSSMobile,
+		},
+		' .spectra-image-gallery__control-lightbox--caption': {
+			'min-height': generateCSSUnit( lightboxCaptionHeightMobFallback, 'px' ),
+			'font-size': generateCSSUnit( lightboxFontSizeMob, lightboxFontSizeType ),
+			'line-height': generateCSSUnit( lightboxLineHeightMob, lightboxLineHeightType ),
+		},
+		' .spectra-image-gallery__control-lightbox--count': {
+			'top': generateCSSUnit( lightboxEdgeDistanceMobile, 'px' ),
+			'left': generateCSSUnit( lightboxEdgeDistanceMobile, 'px' ),
+			'font-size': generateCSSUnit( lightboxIconSizeMobile, 'px' ) ? `calc(${ generateCSSUnit( lightboxIconSizeMobile, 'px' ) } * 3 / 4 )` : undefined,
+			'line-height': generateCSSUnit( lightboxIconSizeMobile, 'px' ) ? `calc(${ generateCSSUnit( lightboxIconSizeMobile, 'px' ) } * 3 / 4 )` : undefined,
+		},
+		' .spectra-image-gallery__control-lightbox--close': {
+			'top': generateCSSUnit( lightboxEdgeDistanceMobile, 'px' ),
+			'right': generateCSSUnit( lightboxEdgeDistanceMobile, 'px' ),
+		},
+		' .spectra-image-gallery__control-lightbox--close svg': {
+			'width': generateCSSUnit( lightboxIconSizeMobile, 'px' ),
+			'height': generateCSSUnit( lightboxIconSizeMobile, 'px' ),
+		},
+		' .spectra-image-gallery__control-lightbox--main .swiper-button-prev': {
+			'left': generateCSSUnit( lightboxEdgeDistanceMobile, 'px' ),
+		},
+		' .spectra-image-gallery__control-lightbox--main .swiper-button-next': {
+			'right': generateCSSUnit( lightboxEdgeDistanceMobile, 'px' ),
 		},
 	};
 
@@ -929,7 +1047,15 @@ function styling( props ) {
 		};
 	}
 
-	const baseSelector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const baseSelector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
+
+	selectors = applyFilters( `spectra.image-gallery.styling`, selectors, attributes );
+	tabletSelectors = applyFilters( `spectra.image-gallery.tabletStyling`, tabletSelectors, attributes );
+	mobileSelectors = applyFilters( `spectra.image-gallery.mobileStyling`, mobileSelectors, attributes );
+
+	selectors = applyFilters( `spectra.image-gallery.styling`, selectors, props.attributes );
+	tabletSelectors = applyFilters( `spectra.image-gallery.tabletStyling`, tabletSelectors, props.attributes );
+	mobileSelectors = applyFilters( `spectra.image-gallery.mobileStyling`, mobileSelectors, props.attributes );
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 

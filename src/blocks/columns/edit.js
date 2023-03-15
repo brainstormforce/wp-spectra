@@ -7,34 +7,59 @@ import { __ } from '@wordpress/i18n';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
-import React, { useEffect,    useLayoutEffect } from 'react';
+import { useEffect,useLayoutEffect } from '@wordpress/element';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
-
 import Settings from './settings';
 import Render from './render';
-
 import { useSelect, useDispatch } from '@wordpress/data';
-
 import { compose } from '@wordpress/compose';
-
 import {
 	__experimentalBlockVariationPicker as BlockVariationPicker,
 } from '@wordpress/block-editor';
-
 import { withNotices } from '@wordpress/components';
-
 import { createBlock } from '@wordpress/blocks';
-
 import hexToRGBA from '@Controls/hexToRgba';
-
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
-
 import styles from './editor.lazy.scss';
 
 const ColumnsComponent = ( props ) => {
 	const deviceType = useDeviceType();
+	const {
+		attributes,
+		attributes: {
+			topMargin,
+			bottomMargin,
+			topMarginDesktop,
+			bottomMarginDesktop,
+			backgroundOpacity,
+			align,
+			vAlign,
+			backgroundImageColor,
+			backgroundType,
+			gradientOverlayColor1,
+			gradientOverlayColor2,
+			overlayType,
+			gradientOverlayAngle,
+			gradientOverlayLocation1,
+			gradientOverlayPosition,
+			gradientOverlayLocation2,
+			gradientOverlayType,
+			backgroundVideoOpacity,
+			backgroundVideoColor,
+			borderStyle,
+			borderWidth,
+			borderRadius,
+			borderColor,
+			borderHoverColor,
+			UAGHideDesktop,
+			UAGHideTab,
+			UAGHideMob,
+		},
+		setAttributes,
+		isSelected,
+		clientId,
+	} = props;
 
 	const {
 		innerBlocks, // eslint-disable-line no-unused-vars
@@ -53,9 +78,9 @@ const ColumnsComponent = ( props ) => {
 
 				return {
 					// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
-					innerBlocks: getBlocks( props.clientId ),
+					innerBlocks: getBlocks( clientId ),
 					hasInnerBlocks:
-						select( 'core/block-editor' ).getBlocks( props.clientId ).length >
+						select( 'core/block-editor' ).getBlocks( clientId ).length >
 						0,
 
 					blockType: getBlockType( props.name ),
@@ -80,31 +105,6 @@ const ColumnsComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-
-		const { attributes, setAttributes } = props;
-
-		const {
-			topMargin,
-			bottomMargin,
-			topMarginDesktop,
-			bottomMarginDesktop,
-			backgroundOpacity,
-			align,
-			vAlign,
-			backgroundImageColor,
-			backgroundType,
-			gradientOverlayColor1,
-			gradientOverlayColor2,
-			overlayType,
-			gradientOverlayAngle,
-			gradientOverlayLocation1,
-			gradientOverlayPosition,
-			gradientOverlayLocation2,
-			gradientOverlayType,
-			backgroundVideoOpacity,
-			backgroundVideoColor
-		} = attributes
-
 		if ( 'middle' === vAlign ) {
 			setAttributes( { vAlign: 'center' } );
 		}
@@ -131,7 +131,7 @@ const ColumnsComponent = ( props ) => {
 
 		// Replacement for componentDidMount.
 		// Assigning block_id in the attribute.
-		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
 		setAttributes( { classMigrate: true } );
 
@@ -163,7 +163,6 @@ const ColumnsComponent = ( props ) => {
 				setAttributes( { backgroundVideoColor: color } );
 			}
 		}
-		const { borderStyle, borderWidth, borderRadius, borderColor, borderHoverColor } = props.attributes
 		// border migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
 			migrateBorderAttributes( 'columns', {
@@ -182,8 +181,8 @@ const ColumnsComponent = ( props ) => {
 				label: 'borderStyle',
 				value: borderStyle
 			},
-			props.setAttributes,
-			props.attributes
+			setAttributes,
+			attributes
 			);
 			
 
@@ -191,41 +190,29 @@ const ColumnsComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-
-		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
-        addBlockEditorDynamicStyles( 'uagb-columns-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
-
-	}, [ props ] );
+        addBlockEditorDynamicStyles( 'uagb-columns-style-' + clientId.substr( 0, 8 ), blockStyling );
+	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-	    const blockStyling = styling( props );
-
-        addBlockEditorDynamicStyles( 'uagb-columns-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
 		scrollBlockToView();
 	}, [deviceType] );
 
-	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	const blockVariationPickerOnSelect = (
 		nextVariation = defaultVariation
 	) => {
 		if ( nextVariation.attributes ) {
-			props.setAttributes( nextVariation.attributes );
+			setAttributes( nextVariation.attributes );
 		}
 
 		if ( nextVariation.innerBlocks ) {
 			replaceInnerBlocks(
-				props.clientId,
+				clientId,
 				createBlocksFromInnerBlocksTemplate( nextVariation.innerBlocks )
 			);
 		}
@@ -242,35 +229,35 @@ const ColumnsComponent = ( props ) => {
 		);
 	};
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/advanced-columns.svg`;
 	if ( ! hasInnerBlocks ) {
-
 		return (
-			props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-				<div className='uagb-columns-variation-picker'>
-					<BlockVariationPicker
-						icon={ '' }
-						label={ __( 'Advanced Columns', 'ultimate-addons-for-gutenberg' ) }
-						instructions={ __(
-							'Select a variation to start with.',
-							'ultimate-addons-for-gutenberg'
-						) }
-						variations={ variations }
-						onSelect={ ( nextVariation ) =>
-							blockVariationPickerOnSelect( nextVariation )
-						}
-					/>
-				</div>
-			)
+			<div className="uagb-columns-variation-picker">
+				<BlockVariationPicker
+					icon={ '' }
+					label={ __(
+						'Advanced Columns',
+						'ultimate-addons-for-gutenberg'
+					) }
+					instructions={ __(
+						'Select a variation to start with.',
+						'ultimate-addons-for-gutenberg'
+					) }
+					variations={ variations }
+					onSelect={ ( nextVariation ) =>
+						blockVariationPickerOnSelect( nextVariation )
+					}
+				/>
+			</div>
 		);
 	}
 
 	return (
-			<>
-			<Settings parentProps={ props } deviceType = { deviceType } />
+		<>
+			{ isSelected && (
+				<Settings parentProps={ props } deviceType={ deviceType } />
+			) }
 			<Render parentProps={ props } />
-			</>
-
+		</>
 	);
 };
 

@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import InfoBoxPositionClasses from './style-classes';
-import React, { useLayoutEffect, useEffect } from 'react';
+import { useEffect, useLayoutEffect, memo } from '@wordpress/element';
 import Title from './components/Title';
 import InfoBoxDesc from './components/InfoBoxDesc';
 import CallToAction from './components/CTA';
@@ -37,7 +37,6 @@ const Render = ( props ) => {
 		showTitle,
 		showDesc,
 		block_id,
-		ctaLink,
 		imageWidthType,
 		imageWidth
 	} = attributes;
@@ -232,7 +231,7 @@ const Render = ( props ) => {
 		>
 			{ ctaType === 'all' && (
 				<a // eslint-disable-line jsx-a11y/anchor-has-content
-					className={ !ctaLink ? 'uagb-infobox-link-wrap uagb-infbox__link-to-all uagb-disable-link' : 'uagb-infobox-link-wrap uagb-infbox__link-to-all' }
+					className={ 'uagb-infobox-link-wrap uagb-infbox__link-to-all' }
 					aria-label={ 'Infobox Link' }
 					rel="noopener noreferrer"
 					href="/"
@@ -242,4 +241,4 @@ const Render = ( props ) => {
 		</div>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );

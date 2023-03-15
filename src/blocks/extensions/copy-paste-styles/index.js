@@ -9,10 +9,9 @@ import {
 	BlockControls,
 } from '@wordpress/block-editor';
 import { ToolbarGroup, ToolbarButton, Popover, MenuItem } from '@wordpress/components';
-import { useState, useEffect } from '@wordpress/element';
+import { useState, useEffect,useLayoutEffect } from '@wordpress/element';
 import editorStyles from './../editor.lazy.scss';
-import { useLayoutEffect } from 'react';
-import { addFilter } from '@wordpress/hooks';
+import { addFilter, applyFilters } from '@wordpress/hooks';
 import SettingsIcons from './icons.js';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 
@@ -21,7 +20,7 @@ const UAGCopyPasteStyles = () => {
     // Registering the shortcuts
 	const { registerShortcut } = useDispatch( keyboardShortcutsStore );
 
-	const allBlocksAttributes = wp.hooks.applyFilters( 'uagb.blocksAttributes', blocksAttributes )
+	const allBlocksAttributes = applyFilters( 'uagb.blocksAttributes', blocksAttributes )
 
     const [ showPopup, setshowPopup ] = useState( false );
     const [ disablePaste, setdisablePaste ] = useState( false );
