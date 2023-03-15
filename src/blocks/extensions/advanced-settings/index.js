@@ -1,11 +1,11 @@
-import { ToggleControl, SelectControl, RangeControl, Button } from '@wordpress/components';
+import { ToggleControl, SelectControl, Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { addFilter, applyFilters } from '@wordpress/hooks';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import classnames from 'classnames';
 import { useEffect } from '@wordpress/element';
-import { AnimationList, AnimationEasingList, AnimationEasingFunctions } from '@Blocks/extensions/animations-extension/animation-list';
+import { AnimationList } from '@Blocks/extensions/animations-extension/animation-list';
 const { createHigherOrderComponent } = wp.compose;
 
 const { enableConditions, enableResponsiveConditions, enableAnimationsExtension } = uagb_blocks_info;
@@ -270,26 +270,18 @@ const animationOptions = ( props ) => {
 
 	const {
 		clientId,
+		name,
 		attributes: {
 			UAGAnimationType,
 			UAGAnimationTime,
 			UAGAnimationDelay,
 			UAGAnimationEasing,
-			UAGAnimationRepeat,
 		},
 		setAttributes
 	} = props;
 
-	const animationTimeMarks = [
-		{
-			value: 1000,
-			label: '1000'
-		},
-		{
-			value: 2000,
-			label: '2000'
-		},
-	]; 
+	// Get the easing functions from Pro.
+	const AnimationEasingFunctions = applyFilters( 'spectra.animations-extension.easing-pro-options', '', name );
 
 	// Function to trigger animation in editor (when changing animation type or clicking on play button).
 	// animationType - holds UAGAnimationType attribute by default but sometimes the attribute is not updated instantaneously, so we pass in the value from the Animation Type select component.
@@ -313,7 +305,8 @@ const animationOptions = ( props ) => {
 		animatedBlock.setAttribute( 'data-aos', animationType )
 
 		// Due to CSS conflicts across themes in the editor, we set the easing using JS.
-		animatedBlock.style.transitionTimingFunction = AnimationEasingFunctions[ UAGAnimationEasing ];
+		// Also we only provide default 'ease' in the free version, so if the easing function list is empty then use the default 'ease' function.
+		animatedBlock.style.transitionTimingFunction = ( AnimationEasingFunctions ) ? AnimationEasingFunctions[ UAGAnimationEasing ] : 'cubic-bezier(.250, .100, .250, 1)' ;
 
 		// Clear previous timeouts.
 		clearTimeout( aosWaitPreviousCode );
@@ -355,79 +348,9 @@ const animationOptions = ( props ) => {
 				} }
 				options={ AnimationList }
 			/>
+			{ applyFilters( 'spectra.animations-extension.pro-options', '', name ) }
 			{ ( UAGAnimationType && UAGAnimationType !== '' ) &&
 				<>
-					<RangeControl
-						label={ __( 'Animation Duration', 'ultimate-addons-for-gutenberg' ) }
-						className='uagb-animation__range-control'
-						value={ UAGAnimationTime }
-						onChange={ ( value ) => {
-
-							// AOS library only allows time values in increments of 50 and between 50ms to 3000ms.
-
-							if( value % 50 !== 0 ) {
-								value = value - ( value % 50 )
-							}
-
-							if( value < 50 ) {
-								value = 50
-							}
-
-							if( value > 3000 ) {
-								value = 3000
-							}
-
-							setAttributes( { UAGAnimationTime: value } )
-						} }
-						min={ 50 }
-						max={ 3000 }
-						step={ 50 }
-						marks={ animationTimeMarks }
-					/>
-					<RangeControl
-						label={ __( 'Animation Delay', 'ultimate-addons-for-gutenberg' ) }
-						className='uagb-animation__range-control'
-						value={ UAGAnimationDelay }
-						onChange={ ( value ) => {
-
-							// AOS library only allows time values in increments of 50 and between 50ms to 3000ms.
-
-							if( value % 50 !== 0 ) {
-								value = value - ( value % 50 )
-							}
-
-							if( value < 0 ) {
-								value = 0
-							}
-
-							if( value > 3000 ) {
-								value = 3000
-							}
-
-							setAttributes( { UAGAnimationDelay: value } )
-						} }
-						min={ 0 }
-						max={ 3000 }
-						step={ 50 }
-						marks={ animationTimeMarks }
-					/>
-					<SelectControl
-						label={ __( 'Animation Easing', 'ultimate-addons-for-gutenberg' ) }
-						value={ UAGAnimationEasing }
-						onChange={ ( value ) =>
-							setAttributes( { UAGAnimationEasing: value } )
-						}
-						options={ AnimationEasingList }
-					/>
-					<ToggleControl
-						label={ __( 'Play Repeatedly on Scroll', 'ultimate-addons-for-gutenberg' ) }
-						checked={ UAGAnimationRepeat }
-						onChange={ () =>
-							setAttributes( {
-								UAGAnimationRepeat: ! UAGAnimationRepeat,
-							} )
-						}
-					/>
 					<Button
 						className='uagb-animation__play-button'
 						onClick={ () => playAnimation() }
