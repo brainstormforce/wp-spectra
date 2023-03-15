@@ -39,12 +39,7 @@ const AnimationsExtension = () => {
 
     const updateAnimationsExtensionStatus = () => {
 
-        let assetStatus;
-		if ( enableAnimationsExtension === 'disabled' ) {
-            assetStatus = 'enabled';
-		} else {
-            assetStatus = 'disabled';
-		}
+        const assetStatus = ( enableAnimationsExtension === 'disabled' ) ? 'enabled' : 'disabled' ;
 
         dispatch( {type: 'UPDATE_ENABLE_ANIMATIONS_EXTENSION', payload: assetStatus } );
         dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
