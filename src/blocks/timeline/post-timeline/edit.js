@@ -2,7 +2,7 @@
  * External dependencies
  */
 
-import React, { useEffect,  useState  } from 'react';
+import { useEffect, useState } from '@wordpress/element';
 
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
@@ -20,45 +20,56 @@ import { useSelect } from '@wordpress/data';
 
 const PostTimelineComponent = ( props ) => {
 	const deviceType = useDeviceType();
-	const [ isTaxonomyLoading, setIsTaxonomyLoading] = useState( false );
-
-	useEffect( () => {
-
-		// Replacement for componentDidMount.
-		//Store Client id.
-		props.setAttributes( { block_id: props.clientId } );
-
-		const {
+	const {
+		isSelected,
+		setAttributes,
+		attributes: {
+			categories,
+			postsToShow,
+			order,
+			orderBy,
+			postType,
+			taxonomyType,
+			excludeCurrentPost,
+			allTaxonomyStore,
 			timelinAlignment,
 			stack,
 			timelinAlignmentTablet,
-			timelinAlignmentMobile
-		} = props.attributes;
+			timelinAlignmentMobile,
+			UAGHideDesktop,
+			UAGHideTab,
+			UAGHideMob,
+		},
+	} = props;
+		
+	const [ isTaxonomyLoading, setIsTaxonomyLoading] = useState( false );
 
+	useEffect( () => {
+		//Store Client id.
+		setAttributes( { block_id: props.clientId } );
 		if( timelinAlignment ) {
             if( 'none' === stack ) {
                 if( undefined === timelinAlignmentTablet ) {
-                    props.setAttributes( { timelinAlignmentTablet: timelinAlignment } );
+                    setAttributes( { timelinAlignmentTablet: timelinAlignment } );
                 }
                 if( undefined === timelinAlignmentMobile ) {
-                    props.setAttributes( { timelinAlignmentMobile: timelinAlignment } );
+                    setAttributes( { timelinAlignmentMobile: timelinAlignment } );
                 }
             } else {
                 if( undefined === timelinAlignmentTablet && 'tablet' === stack ) {
-                    props.setAttributes( { timelinAlignmentTablet: 'left' } );
-                    props.setAttributes( { timelinAlignmentMobile: 'left' } );
+                    setAttributes( { timelinAlignmentTablet: 'left' } );
+                    setAttributes( { timelinAlignmentMobile: 'left' } );
                 }
 
                 if( undefined === timelinAlignmentMobile && 'mobile' === stack ) {
-                    props.setAttributes( { timelinAlignmentMobile: 'left' } );
-                    props.setAttributes( { timelinAlignmentTablet: timelinAlignment } );
+                    setAttributes( { timelinAlignmentMobile: 'left' } );
+                    setAttributes( { timelinAlignmentTablet: timelinAlignment } );
                 }
             }
         }
 
 	}, [] );
 
-	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
 	useEffect( () => {
 
 		responsiveConditionPreview( props );
@@ -86,17 +97,6 @@ const PostTimelineComponent = ( props ) => {
 
 	const { latestPosts, taxonomyList, block } = useSelect( // eslint-disable-line no-unused-vars
 		( select ) => {
-			const {
-				categories,
-				postsToShow,
-				order,
-				orderBy,
-				postType,
-				taxonomyType,
-				excludeCurrentPost,
-				allTaxonomyStore
-			} = props.attributes;
-
 			const postsToShowFallback = getFallbackNumber( postsToShow, 'postsToShow', 'post-timeline' );
 			const { getEntityRecords } = select( 'core' );
 
@@ -105,7 +105,7 @@ const PostTimelineComponent = ( props ) => {
 				apiFetch( {
 					path: '/spectra/v1/all_taxonomy',
 				} ).then( ( data ) => {
-					props.setAttributes( { allTaxonomyStore: data } );
+					setAttributes( { allTaxonomyStore: data } );
 					setIsTaxonomyLoading( false );
 				} );
 			}
@@ -166,15 +166,17 @@ const PostTimelineComponent = ( props ) => {
 		},
 	);
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/post-timeline.svg`;
-
 	return (
-		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<>
-				<Settings parentProps={ props } taxonomyList={ taxonomyList } categoriesList={ categoriesList } />
-				<Render parentProps={ props } latestPosts={ latestPosts } />
-			</>
-		)
+		<>
+			{ isSelected && (
+				<Settings
+					parentProps={ props }
+					taxonomyList={ taxonomyList }
+					categoriesList={ categoriesList }
+				/>
+			) }
+			<Render parentProps={ props } latestPosts={ latestPosts } />
+		</>
 	);
 };
 export default PostTimelineComponent

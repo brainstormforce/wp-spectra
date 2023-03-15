@@ -1,5 +1,3 @@
-import React from 'react';
-
 import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
 import { __ } from '@wordpress/i18n';
@@ -22,6 +20,7 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import UAGTabsControl from '@Components/tabs';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import UAGIconPicker from '@Components/icon-picker';
+import { memo } from '@wordpress/element';
 
 
 const Settings = ( props ) => {
@@ -1025,4 +1024,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

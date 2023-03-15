@@ -1,5 +1,3 @@
-import React from 'react';
-
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
@@ -25,6 +23,7 @@ import {
 	ToggleControl,
 	Icon,
 } from '@wordpress/components';
+import { memo } from '@wordpress/element';
 
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -2537,4 +2536,4 @@ successMsgLetterSpacingType,
 			</>
 	);
 };
-export default React.memo( Settings );
+export default memo( Settings );

@@ -31,6 +31,23 @@
 	}
 }
 
+.uagb-inspector-tab.uagb-tab-content-advance,
+.block-editor-block-inspector__advanced {
+
+	.form-check-label {
+		width: 50%;
+		margin-bottom: 8px;
+		display: inline-block;
+
+		.uagb-forms-checkbox {
+			border-radius: 2px;
+			width: 1rem;
+			height: 1rem;
+			margin-right: 7px;
+		}
+	}
+}
+
 .uag-copy-paste-styles-popover {
 
 	.components-menu-item__shortcut {

@@ -1,7 +1,8 @@
 import classnames from 'classnames';
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect, memo } from '@wordpress/element';
 import InitialSelector from './components/InitialSelector';
 import ImageGallery from './components/ImageGallery';
+import Lightbox from './components/LightBox';
 import { useDeviceType } from '@Controls/getPreviewType';
 import styles from './editor.lazy.scss';
 
@@ -14,9 +15,9 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
-	
 	const {
+		lightboxPreview,
+		setLightboxPreview,
 		attributes,
 		setAttributes,
 		className,
@@ -34,23 +35,19 @@ const Render = ( props ) => {
 			) }
 		>
 			{
-				readyToRender
-				? (
-					<ImageGallery
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						name={ name }
-					/>
-				)
-				: (
-					<InitialSelector
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-					/>
+				readyToRender ? (
+					<>
+						<ImageGallery { ...{ attributes, setAttributes, name } } />
+						{ lightboxPreview && (
+							<Lightbox { ...{ attributes, setAttributes, setLightboxPreview } } />
+						) }
+					</>
+				) : (
+					<InitialSelector { ...{ attributes, setAttributes } } />
 				)
 			}
 		</div>
 	);
 };
 
-export default React.memo( Render );
+export default memo( Render );

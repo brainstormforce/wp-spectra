@@ -319,10 +319,14 @@ $selectors[ '.uagb-block-' . $id . '.uag-blocks-common-selector' ] = array(
 	'--z-index-mobile'  => $z_index_mobile,
 );
 
-$combined_selectors = array(
-	'desktop' => $selectors,
-	'tablet'  => $t_selectors,
-	'mobile'  => $m_selectors,
+$combined_selectors = UAGB_Helper::get_combined_selectors(
+	'slider', 
+	array(
+		'desktop' => $selectors,
+		'tablet'  => $t_selectors,
+		'mobile'  => $m_selectors,
+	),
+	$attr
 );
 
 return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-slider-container' );

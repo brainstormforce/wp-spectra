@@ -17,21 +17,21 @@ UAGBLottie = { // eslint-disable-line no-undef
 		const reversedir = attr.reverse && attr.loop ? -1 : 1;
 
 		animation.setDirection( reversedir );
-
+		const scope = document.getElementsByClassName( id );
+		if( scope.length === 0 ){
+			return;
+		}
 		if ( 'hover' === attr.playOn ) {
-			document
-				.getElementsByClassName( id )[ 0 ]
+			scope[ 0 ]
 				.addEventListener( 'mouseenter', function () {
 					animation.play();
 				} );
-			document
-				.getElementsByClassName( id )[ 0 ]
+			scope[ 0 ]
 				.addEventListener( 'mouseleave', function () {
 					animation.stop();
 				} );
 		} else if ( 'click' === attr.playOn ) {
-			document
-				.getElementsByClassName( id )[ 0 ]
+			scope[ 0 ]
 				.addEventListener( 'click', function () {
 					animation.stop();
 					animation.play();

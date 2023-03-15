@@ -2,8 +2,6 @@
  * BLOCK: Social Share - Settings.
  */
 
-
-import React from 'react';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -22,6 +20,7 @@ import UAGTabsControl from '@Components/tabs';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import presets from './presets';
 import UAGPresets from '@Components/presets';
+import { memo } from '@wordpress/element';
 const Settings = ( props ) => {
 	props = props.parentProps;
 
@@ -423,4 +422,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

@@ -122,6 +122,14 @@
 			<key name="paginateButtonText" />
 			<key name="imageDefaultCaption" />
 			<xpath>//div[@class="spectra-image-gallery__media-thumbnail-caption"]</xpath>
+			<xpath>//div[@class="spectra-image-gallery__control-lightbox--caption"]</xpath>
+			<xpath>//div[@class="spectra-image-gallery__control-lightbox--count"]</xpath>
+		</gutenberg-block>
+		<gutenberg-block type="uagb/countdown" translate="1">
+			<key name="labelDays" />
+			<key name="labelHours" />
+			<key name="labelMinutes" />
+			<key name="labelSeconds" />
 		</gutenberg-block>
 	</gutenberg-blocks>
 </wpml-config>

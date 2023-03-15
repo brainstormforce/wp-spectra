@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-for */
-import React, {useLayoutEffect} from 'react';
+import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import Separator from '@Components/separator';
 import { useSelect } from '@wordpress/data';
 import {
@@ -9,10 +9,14 @@ import {
 import ResponsiveToggle from '../responsive-toggle';
 import styles from './editor.lazy.scss';
 import classnames from 'classnames';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGReset from '../reset';
+import UAGHelpText from '@Components/help-text';
+import { applyFilters } from '@wordpress/hooks';
 
 const UAGTextControl = ( props ) => {
-
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const panelRef = useRef( null );
     // Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -25,7 +29,12 @@ const UAGTextControl = ( props ) => {
 		return select( 'core/block-editor' ).getSelectedBlock();
 	}, [] );
 
-	const registerTextExtender = props.enableDynamicContent && props.name ? wp.hooks.applyFilters( 'uagb.registerTextExtender', '', selectedBlock?.name, props.name, props.dynamicContentType ) : null;
+	const blockNameForHook = selectedBlock?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
+
+	const registerTextExtender = props.enableDynamicContent && props.name ? applyFilters( 'uagb.registerTextExtender', '', selectedBlock?.name, props.name, props.dynamicContentType ) : null;
 
 	const isEnableDynamicContent = () => {
 		if( !props.enableDynamicContent || ! props.name ){
@@ -79,9 +88,26 @@ const UAGTextControl = ( props ) => {
         );
     };
 
+	const controlName = getIdFromString( props.label ); // there is no label props that's why keep hard coded label
+	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+
+
     return(
-        <>
-            <div className={`components-base-control uagb-text-control uagb-size-type-field-tabs${isEnableDynamicContent() ? ' uagb-text-control--open-dynamic-content' : ''}`}>
+        <div
+			ref={panelRef}
+			className="components-base-control"
+		>
+			{
+				controlBeforeDomElement
+			}
+            <div
+				className = { classnames(
+					'components-base-control uagb-text-control uagb-size-type-field-tabs',
+					isEnableDynamicContent() ? ' uagb-text-control--open-dynamic-content' : '',
+					props.className
+				) }
+			>
                 { props?.variant !== 'inline' && props?.showHeaderControls &&
                     <HeaderControls />
                 }
@@ -101,6 +127,7 @@ const UAGTextControl = ( props ) => {
 										onChange = { handleOnChange }
 										autoComplete = { props?.autoComplete }
 										readOnly={isEnableDynamicContent()}
+										placeholder={ props?.placeholder }
 									/>
 								}
 								{ ( props?.variant === 'textarea' ) &&
@@ -129,16 +156,17 @@ const UAGTextControl = ( props ) => {
 					}
                 </div>
 
-                { props?.help && (
-                    <p className="uag-control-help-notice">{ props?.help }</p>
-                ) }
+                <UAGHelpText text={ props.help } />
 				{
 					isEnableDynamicContent() && (
 						<Separator />
 					)
 				}
             </div>
-        </>
+			{
+				controlAfterDomElement
+			}
+        </div>
     );
 };
 
@@ -154,6 +182,7 @@ UAGTextControl.defaultProps = {
     showHeaderControls: true,
 	dynamicContentType: 'url', // url | text
 	enableDynamicContent: false,
+	help: false
 };
 
 export default UAGTextControl;

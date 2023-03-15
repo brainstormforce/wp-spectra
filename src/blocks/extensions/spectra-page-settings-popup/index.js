@@ -8,11 +8,16 @@ import { __ } from '@wordpress/i18n';
 import SettingsIcons from './icons.js';
 import PageCustomCSS from '../custom-page-css';
 import { PanelBody } from '@wordpress/components';
+import { applyFilters } from '@wordpress/hooks';
 
-const SpectraPageSettingsPopup = () => {
+const SpectraPageSettingsPopup = ( props ) => {
+	const pluginSidebarBefore = applyFilters( `spectra.page-sidebar.before`, '', props );
+	const pluginSidebarAfter = applyFilters( `spectra.page-sidebar.after`, '', props );
 
 	return (
 		<>
+		{ 'yes' === uagb_blocks_info.enable_on_page_css_button && (
+			<>
 			{/* Page Settings Icon. */}
 			<PluginSidebarMoreMenuItem
 				target="spectra-page-settings-panel"
@@ -29,6 +34,7 @@ const SpectraPageSettingsPopup = () => {
 				title={ __( 'Spectra Page Settings' ) }
 				className={'spectra-sidebar'}
 			>
+				{ pluginSidebarBefore }
 				<PanelBody
 					title={ __( 'Custom CSS' ) }
 					initialOpen={ true }
@@ -36,7 +42,10 @@ const SpectraPageSettingsPopup = () => {
 				>
 					<PageCustomCSS/>
 				</PanelBody>
+				{ pluginSidebarAfter }
 			</PluginSidebar>
+			</>
+		)}
 		</>
 	);
 }

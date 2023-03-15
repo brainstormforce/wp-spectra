@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect, memo } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -68,4 +68,4 @@ const Render = ( props ) => {
 	);
 };
 
-export default React.memo( Render );
+export default memo( Render );

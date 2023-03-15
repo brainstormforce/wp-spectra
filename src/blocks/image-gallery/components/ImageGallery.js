@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import getMatrixAlignment from '@Controls/getMatrixAlignment';
@@ -9,8 +9,8 @@ import '/assets/js/imagesloaded.min';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import { RichText } from '@wordpress/block-editor';
-
-const classNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
+import { applyFilters } from '@wordpress/hooks';
+import { uagbClassNames } from '@Utils/Helpers';
 
 const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	const blockName = name.replace( 'uagb/', '' );
@@ -21,6 +21,9 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		mediaGallery,
 		feedLayout,
 		imageDisplayCaption,
+		galleryImageSize,
+		galleryImageSizeTablet,
+		galleryImageSizeMobile,
 
 		feedMarginTop,
 		feedMarginRight,
@@ -103,11 +106,25 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		}
 		// Next Check if this is a carousel that needs dots, and set the height of the dots wrapper.
 		if ( ( mediaGallery && paginateUseDots ) && ( feedLayout === 'carousel' ) ){
-			setSlickDotHeight(
-				( mediaGallery.length > columnsDeskFallback )
-				? slickCarousel.current.children[0].querySelector( '.slick-dots' ).clientHeight
-				: 0
-			);
+			if ( 'Desktop' === deviceType ) {
+				setSlickDotHeight(
+					( mediaGallery.length > columnsDeskFallback )
+					? slickCarousel.current.children[0].querySelector( '.slick-dots' ).clientHeight
+					: 0
+				);
+			} else if ( 'Tablet' === deviceType ) {
+				setSlickDotHeight(
+					( mediaGallery.length > columnsTabFallback )
+					? slickCarousel.current.children[0].querySelector( '.slick-dots' ).clientHeight
+					: 0
+				);
+			} else {
+				setSlickDotHeight(
+					( mediaGallery.length > columnsMobFallback )
+					? slickCarousel.current.children[0].querySelector( '.slick-dots' ).clientHeight
+					: 0
+				);
+			}
 		}
 		// Else check if this is tiled and load all images previously focused by the user.
 		else if ( feedLayout === 'tiled' ){
@@ -122,6 +139,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	}, [
 		feedLayout,
 		JSON.stringify( mediaGallery ),
+		deviceType,
 	] );
 
 	// Update Tile Sizer Tile when needed.
@@ -219,20 +237,15 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		<button
 			type="button"
 			data-role="none"
-			className={ classNames(
+			className={ uagbClassNames( [
 				'spectra-image-gallery__control-arrows',
 				`spectra-image-gallery__control-arrows--${ feedLayout }`,
-				( 'carousel' === feedLayout ) ? 'slick-next' : '',
-				( 'carousel' === feedLayout ) ? 'slick-arrow' : '',
-			) }
+				( 'carousel' === feedLayout ) && 'slick-next',
+				( 'carousel' === feedLayout ) && 'slick-arrow',
+			] ) }
 			aria-label="Next"
 			tabIndex="0"
 			data-direction="Next"
-			onClick={ () => (
-				( 'grid' === feedLayout )
-					? setAttributes( { gridPageNumber: gridPageNumber + 1 } )
-					: ''
-			) }
 			disabled={ ( 'grid' === feedLayout && gridPageNumber === gridPages ) }
 		>
 			{ UAGB_Block_Icons.carousel_right }
@@ -243,20 +256,15 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		<button
 			type="button"
 			data-role="none"
-			className={ classNames(
+			className={uagbClassNames( [
 				'spectra-image-gallery__control-arrows',
 				`spectra-image-gallery__control-arrows--${ feedLayout }`,
-				( 'carousel' === feedLayout ) ? 'slick-prev' : '',
-				( 'carousel' === feedLayout ) ? 'slick-arrow' : '',
-			) }
+				( 'carousel' === feedLayout ) && 'slick-prev',
+				( 'carousel' === feedLayout ) && 'slick-arrow',
+			] )}
 			aria-label="Prev"
 			tabIndex="0"
 			data-direction="Prev"
-			onClick={ () => (
-				( 'grid' === feedLayout )
-					? setAttributes( { gridPageNumber: gridPageNumber - 1 } )
-					: ''
-			) }
 			disabled={ ( 'grid' === feedLayout && 1 === gridPageNumber ) }
 		>
 			{ UAGB_Block_Icons.carousel_left }
@@ -381,6 +389,20 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		}
 	};
 
+	// Set the Image URL with Size based on the Device Type.
+	const setImageURL = ( image ) => {
+		switch ( deviceType ) {
+			case 'Desktop':
+				return image.sizes[ galleryImageSize ] ? image.sizes[ galleryImageSize ].url : image.url;
+			case 'Tablet':
+				return image.sizes[ galleryImageSizeTablet ] ? image.sizes[ galleryImageSizeTablet ].url : image.url;
+			case 'Mobile':
+				return image.sizes[ galleryImageSizeMobile ] ? image.sizes[ galleryImageSizeMobile ].url : image.url;
+			default:
+				return image.url;
+		}
+	}
+
 	const renderGridPagintion = () => (
 		<div className="spectra-image-gallery__control-wrapper">
 			<SlickPrevArrow />
@@ -388,13 +410,14 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				{ [ ...Array( gridPages ) ].map( ( pageData, pageIndex ) => (
 					<li
 						key={ pageIndex }
-						className={ classNames(
+						className={uagbClassNames( [
 							'spectra-image-gallery__control-dot',
-							( pageIndex === gridPageNumber - 1 ) ? 'spectra-image-gallery__control-dot--active' : '',
-						) }
+							pageIndex === gridPageNumber - 1 &&
+								'spectra-image-gallery__control-dot--active',
+						] )}
 						data-go-to={ pageIndex + 1 }
 					>
-						<button onClick={ () => setAttributes( { gridPageNumber: pageIndex + 1 } ) } />
+						<button/>
 					</li>
 				) ) }
 			</ul>
@@ -445,13 +468,13 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				return (
 					<>
 						<div
-							className={ classNames(
+							className={ uagbClassNames( [
 								'spectra-image-gallery',
 								`spectra-image-gallery__layout--${ gridLayout }`,
 								`spectra-image-gallery__layout--${ gridLayout }-col-${ columnsDeskFallback }`,
 								`spectra-image-gallery__layout--${ gridLayout }-col-tab-${ columnsTabFallback }`,
 								`spectra-image-gallery__layout--${ gridLayout }-col-mob-${ columnsMobFallback }`
-							) }
+							] ) }
 						>
 							{ renderImageLooper() }
 						</div>
@@ -462,13 +485,13 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				return (
 					<>
 						<Masonry
-							className={ classNames(
+							className={ uagbClassNames( [
 								'spectra-image-gallery',
 								`spectra-image-gallery__layout--${ feedLayout }`,
 								`spectra-image-gallery__layout--${ feedLayout }-col-${ columnsDeskFallback }`,
 								`spectra-image-gallery__layout--${ feedLayout }-col-tab-${ columnsTabFallback }`,
 								`spectra-image-gallery__layout--${ feedLayout }-col-mob-${ columnsMobFallback }`
-							) }
+							] ) }
 							updateOnEachImageLoad={ true }
 						>
 							{ renderImageLooper() }
@@ -479,13 +502,13 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			case 'tiled':
 				return (
 					<div
-						className={ classNames(
+						className={ uagbClassNames( [
 							'spectra-image-gallery',
 							`spectra-image-gallery__layout--${ feedLayout }`,
 							`spectra-image-gallery__layout--${ feedLayout }-col-${ columnsDeskFallback }`,
 							`spectra-image-gallery__layout--${ feedLayout }-col-tab-${ columnsTabFallback }`,
 							`spectra-image-gallery__layout--${ feedLayout }-col-mob-${ columnsMobFallback }`
-						) }
+						] ) }
 					>
 						{ renderImageLooper() }
 						<div className="spectra-image-gallery__media-sizer" ref={ tileSizer }></div>
@@ -494,10 +517,10 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			case 'carousel':
 				return (
 					<div
-						className={ classNames(
+						className={ uagbClassNames( [
 							'spectra-image-gallery',
 							`spectra-image-gallery__layout--${ feedLayout }`
-						) }
+						] ) }
 						ref={ slickCarousel }
 						style={ { 'margin-bottom': `${ slickDotHeight }px` } }
 					>
@@ -527,7 +550,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	const renderFocusControl = ( mediaObject ) => (
 		focusList[ mediaObject.id ] ? svgUnfocus( mediaObject.id ) : svgFocus( mediaObject.id )
 	);
-	
+
 	const renderMasonryHoverHandler = ( mediaObject ) => (
 		<div
 			className="spectra-image-gallery__media-wrapper--isotope"
@@ -551,23 +574,23 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	const renderThumbnail = ( mediaObject ) => (
 		<>
 			{ ( imageDisplayCaption && ( 'bar-outside' === captionDisplayType && 'top' === getMatrixAlignment( imageCaptionAlignment, 1 ) ) ) && (
-				<div className={ classNames(
+				<div className={ uagbClassNames( [
 					'spectra-image-gallery__media-thumbnail-caption-wrapper',
 					`spectra-image-gallery__media-thumbnail-caption-wrapper--${ captionDisplayType }`
-				) } >
+				] ) } >
 					{ renderCaption( mediaObject ) }
 				</div>
 			) }
-			<div className={ classNames(
+			<div className={ uagbClassNames( [
 				'spectra-image-gallery__media',
 				`spectra-image-gallery__media--${ feedLayout }`,
-			) } >
+			] ) } >
 				<img
-					className={ classNames(
+					className={ uagbClassNames( [
 						'spectra-image-gallery__media-thumbnail',
 						`spectra-image-gallery__media-thumbnail--${ feedLayout }`
-					) }
-					src={ mediaObject.url }
+					] ) }
+					src={ setImageURL( mediaObject ) }
 					alt={ mediaObject.alt }
 					loading="lazy"
 				/>
@@ -575,26 +598,26 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				{ imageDisplayCaption ? (
 					( 'bar-outside' !== captionDisplayType ) && (
 						<div
-							className={ classNames(
+							className={ uagbClassNames( [
 								'spectra-image-gallery__media-thumbnail-caption-wrapper',
 								`spectra-image-gallery__media-thumbnail-caption-wrapper--${ captionDisplayType }`
-							) }
+							] ) }
 						>
 							{ renderCaption( mediaObject ) }
 						</div>
 					)
 				) : (
-					<div className={ classNames(
+					<div className={ uagbClassNames( [
 						'spectra-image-gallery__media-thumbnail-caption-wrapper',
 						'spectra-image-gallery__media-thumbnail-caption-wrapper--overlay'
-					) } />
+					] ) } />
 				) }
 			</div>
 			{ ( imageDisplayCaption && ( 'bar-outside' === captionDisplayType && getMatrixAlignment( imageCaptionAlignment, 1 ) !== 'top' ) ) && (
-				<div className={ classNames(
+				<div className={ uagbClassNames( [
 					'spectra-image-gallery__media-thumbnail-caption-wrapper',
 					`spectra-image-gallery__media-thumbnail-caption-wrapper--${ captionDisplayType }`
-				) } >
+				] ) } >
 					{ renderCaption( mediaObject ) }
 				</div>
 			) }
@@ -608,10 +631,10 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				placeholder={ imageDefaultCaption }
 				value={ mediaObject.caption }
 				onChange={ ( value ) => ( mediaObject.caption = value ) }
-				className={ classNames(
+				className={ uagbClassNames( [
 					'spectra-image-gallery__media-thumbnail-caption',
 					`spectra-image-gallery__media-thumbnail-caption--${ captionDisplayType }`
-				) }
+				] ) }
 				multiline={ false }
 			/>
 		) : (
@@ -621,10 +644,10 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 					placeholder={ __( 'No Caption', 'ultimate-addons-for-gutenberg' ) }
 					value={ imageDefaultCaption }
 					onChange={ ( value ) => ( setAttributes( { imageDefaultCaption: value } ) ) }
-					className={ classNames(
+					className={ uagbClassNames( [
 						'spectra-image-gallery__media-thumbnail-caption',
 						`spectra-image-gallery__media-thumbnail-caption--${ captionDisplayType }`
-					) }
+					] ) }
 					multiline={ false }
 				/>
 			) : (
@@ -646,7 +669,12 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	);
 
 
-	return ( mediaGallery ) ? renderGallery() : renderEmpty();
+	return ( mediaGallery ) ? (
+		<>
+			{ renderGallery() }
+			{ applyFilters( 'spectra.image-gallery.render.customLinks', null, tiledImages, attributes, setAttributes ) }
+		</>
+	) : renderEmpty();
 };
 
 export default ImageGallery;

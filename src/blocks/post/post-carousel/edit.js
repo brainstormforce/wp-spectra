@@ -4,8 +4,7 @@
 
 import styling from '.././styling';
 import { __ } from '@wordpress/i18n';
-import React, { useState, useEffect,   } from 'react';
-
+import { useState, useEffect } from '@wordpress/element';
 import TypographyControl from '@Components/typography';
 import { decodeEntities } from '@wordpress/html-entities';
 import ResponsiveBorder from '@Components/responsive-border';
@@ -49,19 +48,181 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { useSelect, useDispatch } from '@wordpress/data';
 
 const UAGBPostCarousel = ( props ) => {
-
-	const [ state, setState ] = useState( {
-		isEditing: false,
-		innerBlocks: [],
-	} );
-
-	const [ isTaxonomyLoading, setIsTaxonomyLoading] = useState( false );
-
-	useEffect( () => {
-		const { block } = props;
-		setState( { innerBlocks: block } );
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-		const {
+	const {
+		isSelected,
+		attributes,
+		attributes: {
+			align,
+			displayPostTitle,
+			displayPostDate,
+			displayPostComment,
+			displayPostExcerpt,
+			displayPostAuthor,
+			displayPostImage,
+			displayPostTaxonomy,
+			imgSize,
+			imgPosition,
+			displayPostLink,
+			newTab,
+			ctaText,
+			columns,
+			tcolumns,
+			mcolumns,
+			rowGap,
+			rowGapTablet,
+			rowGapMobile,
+			bgType,
+			bgColor,
+			titleColor,
+			titleTag,
+			titleFontSize,
+			titleFontSizeType,
+			titleFontSizeMobile,
+			titleFontSizeTablet,
+			titleFontFamily,
+			titleFontWeight,
+			titleFontStyle,
+			titleLineHeightType,
+			titleLineHeight,
+			titleLineHeightTablet,
+			titleLineHeightMobile,
+			titleLoadGoogleFonts,
+			metaFontSize,
+			metaFontSizeType,
+			metaFontSizeMobile,
+			metaFontSizeTablet,
+			metaFontFamily,
+			metaFontWeight,
+			metaFontStyle,
+			metaLineHeightType,
+			metaLineHeight,
+			metaLineHeightTablet,
+			metaLineHeightMobile,
+			metaLoadGoogleFonts,
+			excerptFontSize,
+			excerptFontSizeType,
+			excerptFontSizeTablet,
+			excerptFontSizeMobile,
+			excerptFontFamily,
+			excerptFontWeight,
+			excerptFontStyle,
+			excerptLineHeightType,
+			excerptLineHeight,
+			excerptLineHeightTablet,
+			excerptLineHeightMobile,
+			excerptLoadGoogleFonts,
+			ctaFontSize,
+			ctaFontSizeType,
+			ctaFontSizeTablet,
+			ctaFontSizeMobile,
+			ctaFontFamily,
+			ctaFontWeight,
+			ctaFontStyle,
+			ctaLineHeightType,
+			ctaLineHeight,
+			ctaLineHeightTablet,
+			ctaLineHeightMobile,
+			ctaLoadGoogleFonts,
+			metaColor,
+			excerptColor,
+			ctaColor,
+			ctaBgType,
+			ctaBgHType,
+			ctaBgColor,
+			ctaHColor,
+			ctaBgHColor,
+			imageBottomSpace,
+			imageBottomSpaceTablet,
+			imageBottomSpaceMobile,
+			titleBottomSpace,
+			titleBottomSpaceTablet,
+			titleBottomSpaceMobile,
+			metaBottomSpace,
+			metaBottomSpaceTablet,
+			metaBottomSpaceMobile,
+			excerptBottomSpace,
+			excerptBottomSpaceTablet,
+			excerptBottomSpaceMobile,
+			ctaBottomSpace,
+			ctaBottomSpaceTablet,
+			ctaBottomSpaceMobile,
+			autoplay,
+			autoplaySpeed,
+			pauseOnHover,
+			infiniteLoop,
+			transitionSpeed,
+			arrowDots,
+			arrowSize,
+			arrowColor,
+			arrowBorderSize,
+			arrowBorderRadius,
+			arrowDistance,
+			arrowDistanceTablet,
+			arrowDistanceMobile,
+			excerptLength,
+			overlayOpacity,
+			bgOverlayColor,
+			linkBox,
+			postDisplaytext,
+			displayPostContentRadio,
+			titleTransform,
+			metaTransform,
+			excerptTransform,
+			ctaTransform,
+			titleDecoration,
+			metaDecoration,
+			excerptDecoration,
+			ctaDecoration,
+			paddingBtnTopTablet,
+			paddingBtnRightTablet,
+			paddingBtnBottomTablet,
+			paddingBtnLeftTablet,
+			paddingBtnTopMobile,
+			paddingBtnRightMobile,
+			paddingBtnBottomMobile,
+			paddingBtnLeftMobile,
+			paddingBtnUnit,
+			mobilePaddingBtnUnit,
+			tabletPaddingBtnUnit,
+			spacingLink,
+			spacingLinkPadding,
+			contentPaddingUnit,
+			mobilePaddingUnit,
+			tabletPaddingUnit,
+			imageBottomSpaceUnit,
+			titleBottomSpaceUnit,
+			metaBottomSpaceUnit,
+			ctaBottomSpaceUnit,
+			excerptBottomSpaceUnit,
+			rowGapUnit,
+			taxStyle,
+			taxDivider,
+			displayPostTaxonomyAboveTitle,
+			hideTaxonomyIcon,
+			highlightedTextColor,
+			highlightedTextBgColor,
+			titleLetterSpacing,
+			titleLetterSpacingTablet,
+			titleLetterSpacingMobile,
+			titleLetterSpacingType,
+			metaLetterSpacing,
+			metaLetterSpacingTablet,
+			metaLetterSpacingMobile,
+			metaLetterSpacingType,
+			excerptLetterSpacing,
+			excerptLetterSpacingTablet,
+			excerptLetterSpacingMobile,
+			excerptLetterSpacingType,
+			ctaLetterSpacing,
+			ctaLetterSpacingTablet,
+			ctaLetterSpacingMobile,
+			ctaLetterSpacingType,
+			enableOffset,
+			// row spacing controls between content and dots
+			dotsMarginTop,
+			dotsMarginTopTablet,
+			dotsMarginTopMobile,
+			dotsMarginTopUnit,
 			btnVPadding,
 			btnHPadding,
 			paddingBtnTop,
@@ -83,88 +244,11 @@ const UAGBPostCarousel = ( props ) => {
 			paddingRightMobile,
 			paddingBottomMobile,
 			paddingLeftMobile,
-
-			// backward compatability added
+			// backward compatibility added
 			columnGap,
 			columnGapTablet,
-			columnGapMobile
-		} = props.attributes;
+			columnGapMobile,
 
-		if ( btnVPadding ) {
-			if ( undefined === paddingBtnTop ) {
-				props.setAttributes( { paddingBtnTop: btnVPadding } );
-			}
-			if ( undefined === paddingBtnBottom ) {
-				props.setAttributes( { paddingBtnBottom: btnVPadding } );
-			}
-		}
-		if ( btnHPadding ) {
-			if ( undefined === paddingBtnRight ) {
-				props.setAttributes( { paddingBtnRight: btnHPadding } );
-			}
-			if ( undefined === paddingBtnLeft ) {
-				props.setAttributes( { paddingBtnLeft: btnHPadding } );
-			}
-		}
-		if ( contentPadding ) {
-			if ( undefined === paddingTop ) {
-				props.setAttributes( { paddingTop: contentPadding } );
-			}
-			if ( undefined === paddingBottom ) {
-				props.setAttributes( { paddingBottom: contentPadding } );
-			}
-			if ( undefined === paddingRight ) {
-				props.setAttributes( { paddingRight: contentPadding } );
-			}
-			if ( undefined === paddingLeft ) {
-				props.setAttributes( { paddingLeft: contentPadding } );
-			}
-		}
-		if ( contentPaddingTablet ) {
-			if ( undefined === paddingTopTablet ) {
-				props.setAttributes( {
-					paddingTopTablet: contentPaddingTablet,
-				} );
-			}
-			if ( undefined === paddingBottomTablet ) {
-				props.setAttributes( {
-					paddingBottomTablet: contentPaddingTablet,
-				} );
-			}
-			if ( undefined === paddingRightTablet ) {
-				props.setAttributes( {
-					paddingRightTablet: contentPaddingTablet,
-				} );
-			}
-			if ( undefined === paddingLeftTablet ) {
-				props.setAttributes( {
-					paddingLeftTablet: contentPaddingTablet,
-				} );
-			}
-		}
-		if ( contentPaddingMobile ) {
-			if ( undefined === paddingTopMobile ) {
-				props.setAttributes( {
-					paddingTopMobile: contentPaddingMobile,
-				} );
-			}
-			if ( undefined === paddingBottomMobile ) {
-				props.setAttributes( {
-					paddingBottomMobile: contentPaddingMobile,
-				} );
-			}
-			if ( undefined === paddingRightMobile ) {
-				props.setAttributes( {
-					paddingRightMobile: contentPaddingMobile,
-				} );
-			}
-			if ( undefined === paddingLeftMobile ) {
-				props.setAttributes( {
-					paddingLeftMobile: contentPaddingMobile,
-				} );
-			}
-		}
-		const {
 			borderStyle,
 			borderWidth,
 			borderRadius,
@@ -181,78 +265,181 @@ const UAGBPostCarousel = ( props ) => {
 			btnBorderColor,
 			btnBorderHColor,
 			btnBorderStyle,
-		} = props.attributes;
+			blockName,
+			categories,
+			postsToShow,
+			postsOffset,
+			order,
+			orderBy,
+			postType,
+			taxonomyType,
+			excludeCurrentPost,
+			allTaxonomyStore,
+			UAGHideDesktop,
+			UAGHideTab,
+			UAGHideMob,
+			equalHeight
+		},
+		setAttributes,
+		deviceType,
+	} = props;
+
+	const [ state, setState ] = useState( {
+		isEditing: false,
+		innerBlocks: [],
+	} );
+
+	const [ isTaxonomyLoading, setIsTaxonomyLoading] = useState( false );
+
+	useEffect( () => {
+		const { block } = props;
+		setState( { innerBlocks: block } );
+		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+
+		if ( btnVPadding ) {
+			if ( undefined === paddingBtnTop ) {
+				setAttributes( { paddingBtnTop: btnVPadding } );
+			}
+			if ( undefined === paddingBtnBottom ) {
+				setAttributes( { paddingBtnBottom: btnVPadding } );
+			}
+		}
+		if ( btnHPadding ) {
+			if ( undefined === paddingBtnRight ) {
+				setAttributes( { paddingBtnRight: btnHPadding } );
+			}
+			if ( undefined === paddingBtnLeft ) {
+				setAttributes( { paddingBtnLeft: btnHPadding } );
+			}
+		}
+		if ( contentPadding ) {
+			if ( undefined === paddingTop ) {
+				setAttributes( { paddingTop: contentPadding } );
+			}
+			if ( undefined === paddingBottom ) {
+				setAttributes( { paddingBottom: contentPadding } );
+			}
+			if ( undefined === paddingRight ) {
+				setAttributes( { paddingRight: contentPadding } );
+			}
+			if ( undefined === paddingLeft ) {
+				setAttributes( { paddingLeft: contentPadding } );
+			}
+		}
+		if ( contentPaddingTablet ) {
+			if ( undefined === paddingTopTablet ) {
+				setAttributes( {
+					paddingTopTablet: contentPaddingTablet,
+				} );
+			}
+			if ( undefined === paddingBottomTablet ) {
+				setAttributes( {
+					paddingBottomTablet: contentPaddingTablet,
+				} );
+			}
+			if ( undefined === paddingRightTablet ) {
+				setAttributes( {
+					paddingRightTablet: contentPaddingTablet,
+				} );
+			}
+			if ( undefined === paddingLeftTablet ) {
+				setAttributes( {
+					paddingLeftTablet: contentPaddingTablet,
+				} );
+			}
+		}
+		if ( contentPaddingMobile ) {
+			if ( undefined === paddingTopMobile ) {
+				setAttributes( {
+					paddingTopMobile: contentPaddingMobile,
+				} );
+			}
+			if ( undefined === paddingBottomMobile ) {
+				setAttributes( {
+					paddingBottomMobile: contentPaddingMobile,
+				} );
+			}
+			if ( undefined === paddingRightMobile ) {
+				setAttributes( {
+					paddingRightMobile: contentPaddingMobile,
+				} );
+			}
+			if ( undefined === paddingLeftMobile ) {
+				setAttributes( {
+					paddingLeftMobile: contentPaddingMobile,
+				} );
+			}
+		}
 
 		if( borderWidth ){
 			if( undefined === btnBorderTopWidth ) {
-				props.setAttributes( {
+				setAttributes( {
 					btnBorderTopWidth: borderWidth,
 				} );
 			}
 			if( undefined === btnBorderLeftWidth ) {
-				props.setAttributes( { btnBorderLeftWidth : borderWidth} );
+				setAttributes( { btnBorderLeftWidth : borderWidth} );
 			}
 			if( undefined === btnBorderRightWidth ) {
-				props.setAttributes( { btnBorderRightWidth : borderWidth} );
+				setAttributes( { btnBorderRightWidth : borderWidth} );
 			}
 			if( undefined === btnBorderBottomWidth ) {
-				props.setAttributes( { btnBorderBottomWidth : borderWidth} );
+				setAttributes( { btnBorderBottomWidth : borderWidth} );
 			}
 		}
 
 		if( borderRadius ){
 
 			if( undefined === btnBorderTopLeftRadius ) {
-				props.setAttributes( { btnBorderTopLeftRadius : borderRadius} );
+				setAttributes( { btnBorderTopLeftRadius : borderRadius} );
 			}
 			if( undefined === btnBorderTopRightRadius ) {
-				props.setAttributes( { btnBorderTopRightRadius : borderRadius} );
+				setAttributes( { btnBorderTopRightRadius : borderRadius} );
 			}
 			if( undefined === btnBorderBottomLeftRadius ) {
-				props.setAttributes( { btnBorderBottomLeftRadius : borderRadius} );
+				setAttributes( { btnBorderBottomLeftRadius : borderRadius} );
 			}
 			if( undefined === btnBorderBottomRightRadius ) {
-				props.setAttributes( { btnBorderBottomRightRadius : borderRadius} );
+				setAttributes( { btnBorderBottomRightRadius : borderRadius} );
 			}
 		}
 
 		if( borderColor ){
 			if( undefined === btnBorderColor ) {
-				props.setAttributes( { btnBorderColor : borderColor} );
+				setAttributes( { btnBorderColor : borderColor} );
 			}
 		}
 
 		if( borderHColor ){
 			if( undefined === btnBorderHColor ) {
-				props.setAttributes( { btnBorderHColor : borderHColor} );
+				setAttributes( { btnBorderHColor : borderHColor} );
 			}
 		}
 
 		if( borderStyle ){
 			if( undefined === btnBorderStyle ) {
-				props.setAttributes( { btnBorderStyle : borderStyle} );
+				setAttributes( { btnBorderStyle : borderStyle} );
 			}
 		}
 		
 
 		if( columnGap && columnGap !== 20 ){
-			props.setAttributes( { dotsMarginTop : columnGap} );
+			setAttributes( { dotsMarginTop : columnGap} );
 		}
 
 		if( columnGapTablet ){
-			props.setAttributes( { dotsMarginTopTablet : columnGapTablet} );
+			setAttributes( { dotsMarginTopTablet : columnGapTablet} );
 		}
 
 		if( columnGapMobile ){
-			props.setAttributes( { dotsMarginTopMobile : columnGapMobile} );
+			setAttributes( { dotsMarginTopMobile : columnGapMobile} );
 		}
 
-		props.setAttributes( { allTaxonomyStore : undefined} );
+		setAttributes( { allTaxonomyStore : undefined} );
 	}, [] );
 
 	useEffect( () => {
 
-		const equalHeight = props.attributes.equalHeight;
 		if ( equalHeight ) {
 			uagb_carousel_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
 		} else {
@@ -271,44 +458,25 @@ const UAGBPostCarousel = ( props ) => {
 
 		addBlockEditorDynamicStyles( 'uagb-post-carousel-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 		
-	}, [ props ] );
+	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
-
-		let blockStyling = styling( props );
-		blockStyling +=
-				'.uagb-block-' +
-				props.clientId.substr( 0, 8 ) +
-				'.uagb-post-grid ul.slick-dots li.slick-active button:before, .uagb-block-' +
-				props.clientId.substr( 0, 8 ) +
-				'.uagb-slick-carousel ul.slick-dots li button:before { color: ' +
-				props.attributes.arrowColor +
-				'; }';
-
-		addBlockEditorDynamicStyles( 'uagb-post-carousel-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
 		scrollBlockToView();
+	}, [ deviceType ] );
 
-	}, [ props.deviceType ] );
-
-	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
 	useEffect( () => {
 
 		responsiveConditionPreview( props );
 
-	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, props.deviceType ] );
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	const onSelectPostType = ( value ) => {
-		const { setAttributes } = props;
-
 		setAttributes( { postType: value } );
 		setAttributes( { categories: '' } );
 		setAttributes( { taxonomyType: 'category' } );
 	};
 
 	const onSelectTaxonomyType = ( value ) => {
-		const { setAttributes } = props;
-
 		setAttributes( { taxonomyType: value } );
 		setAttributes( { categories: '' } );
 	};
@@ -319,18 +487,6 @@ const UAGBPostCarousel = ( props ) => {
 let categoriesList = [];
 	const { latestPosts, taxonomyList, block } = useSelect( // eslint-disable-line no-unused-vars
 		( select ) => {
-			const {
-				blockName,
-				categories,
-				postsToShow,
-				postsOffset,
-				order,
-				orderBy,
-				postType,
-				taxonomyType,
-				excludeCurrentPost,
-				allTaxonomyStore
-			} = props.attributes;
 			const { getEntityRecords } = select( 'core' );
 
 			if ( ! allTaxonomyStore && ! isTaxonomyLoading ) {
@@ -338,7 +494,7 @@ let categoriesList = [];
 				apiFetch( {
 					path: '/spectra/v1/all_taxonomy',
 				} ).then( ( data ) => {
-					props.setAttributes( { allTaxonomyStore: data } );
+					setAttributes( { allTaxonomyStore: data } );
 					setIsTaxonomyLoading( false );
 				} );
 			}
@@ -415,211 +571,6 @@ let categoriesList = [];
 
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 
-	const {
-		attributes,
-		setAttributes,
-		deviceType,
-	} = props;
-	const {
-		blockName,
-		align,
-		displayPostTitle,
-		displayPostDate,
-		displayPostComment,
-		displayPostExcerpt,
-		displayPostAuthor,
-		displayPostImage,
-		displayPostTaxonomy,
-		imgSize,
-		imgPosition,
-		displayPostLink,
-		newTab,
-		ctaText,
-		columns,
-		tcolumns,
-		mcolumns,
-		order,
-		orderBy,
-		categories,
-		postsToShow,
-		rowGap,
-		rowGapTablet,
-		rowGapMobile,
-		bgType,
-		bgColor,
-		titleColor,
-		titleTag,
-		titleFontSize,
-		titleFontSizeType,
-		titleFontSizeMobile,
-		titleFontSizeTablet,
-		titleFontFamily,
-		titleFontWeight,
-		titleFontStyle,
-		titleLineHeightType,
-		titleLineHeight,
-		titleLineHeightTablet,
-		titleLineHeightMobile,
-		titleLoadGoogleFonts,
-		metaFontSize,
-		metaFontSizeType,
-		metaFontSizeMobile,
-		metaFontSizeTablet,
-		metaFontFamily,
-		metaFontWeight,
-		metaFontStyle,
-		metaLineHeightType,
-		metaLineHeight,
-		metaLineHeightTablet,
-		metaLineHeightMobile,
-		metaLoadGoogleFonts,
-		excerptFontSize,
-		excerptFontSizeType,
-		excerptFontSizeTablet,
-		excerptFontSizeMobile,
-		excerptFontFamily,
-		excerptFontWeight,
-		excerptFontStyle,
-		excerptLineHeightType,
-		excerptLineHeight,
-		excerptLineHeightTablet,
-		excerptLineHeightMobile,
-		excerptLoadGoogleFonts,
-		ctaFontSize,
-		ctaFontSizeType,
-		ctaFontSizeTablet,
-		ctaFontSizeMobile,
-		ctaFontFamily,
-		ctaFontWeight,
-		ctaFontStyle,
-		ctaLineHeightType,
-		ctaLineHeight,
-		ctaLineHeightTablet,
-		ctaLineHeightMobile,
-		ctaLoadGoogleFonts,
-		metaColor,
-		excerptColor,
-		ctaColor,
-		ctaBgType,
-		ctaBgHType,
-		ctaBgColor,
-		ctaHColor,
-		ctaBgHColor,
-		imageBottomSpace,
-		imageBottomSpaceTablet,
-		imageBottomSpaceMobile,
-		titleBottomSpace,
-		titleBottomSpaceTablet,
-		titleBottomSpaceMobile,
-		metaBottomSpace,
-		metaBottomSpaceTablet,
-		metaBottomSpaceMobile,
-		excerptBottomSpace,
-		excerptBottomSpaceTablet,
-		excerptBottomSpaceMobile,
-		ctaBottomSpace,
-		ctaBottomSpaceTablet,
-		ctaBottomSpaceMobile,
-		autoplay,
-		autoplaySpeed,
-		pauseOnHover,
-		infiniteLoop,
-		transitionSpeed,
-		arrowDots,
-		arrowSize,
-		arrowColor,
-		arrowBorderSize,
-		arrowBorderRadius,
-		arrowDistance,
-		arrowDistanceTablet,
-		arrowDistanceMobile,
-		excerptLength,
-		overlayOpacity,
-		bgOverlayColor,
-		linkBox,
-		postType,
-		taxonomyType,
-		equalHeight,
-		postDisplaytext,
-		displayPostContentRadio,
-		excludeCurrentPost,
-		titleTransform,
-		metaTransform,
-		excerptTransform,
-		ctaTransform,
-		titleDecoration,
-		metaDecoration,
-		excerptDecoration,
-		ctaDecoration,
-		paddingBtnTop,
-		paddingBtnBottom,
-		paddingBtnLeft,
-		paddingBtnRight,
-		paddingBtnTopTablet,
-		paddingBtnRightTablet,
-		paddingBtnBottomTablet,
-		paddingBtnLeftTablet,
-		paddingBtnTopMobile,
-		paddingBtnRightMobile,
-		paddingBtnBottomMobile,
-		paddingBtnLeftMobile,
-		paddingBtnUnit,
-		mobilePaddingBtnUnit,
-		tabletPaddingBtnUnit,
-		spacingLink,
-		spacingLinkPadding,
-		paddingTop,
-		paddingBottom,
-		paddingLeft,
-		paddingRight,
-		paddingTopTablet,
-		paddingRightTablet,
-		paddingBottomTablet,
-		paddingLeftTablet,
-		paddingTopMobile,
-		paddingRightMobile,
-		paddingBottomMobile,
-		paddingLeftMobile,
-		contentPaddingUnit,
-		mobilePaddingUnit,
-		tabletPaddingUnit,
-		imageBottomSpaceUnit,
-		titleBottomSpaceUnit,
-		metaBottomSpaceUnit,
-		ctaBottomSpaceUnit,
-		excerptBottomSpaceUnit,
-		rowGapUnit,
-		postsOffset,
-		taxStyle,
-		taxDivider,
-		displayPostTaxonomyAboveTitle,
-		hideTaxonomyIcon,
-		highlightedTextColor,
-		highlightedTextBgColor,
-		titleLetterSpacing,
-		titleLetterSpacingTablet,
-		titleLetterSpacingMobile,
-		titleLetterSpacingType,
-		metaLetterSpacing,
-		metaLetterSpacingTablet,
-		metaLetterSpacingMobile,
-		metaLetterSpacingType,
-		excerptLetterSpacing,
-		excerptLetterSpacingTablet,
-		excerptLetterSpacingMobile,
-		excerptLetterSpacingType,
-		ctaLetterSpacing,
-		ctaLetterSpacingTablet,
-		ctaLetterSpacingMobile,
-		ctaLetterSpacingType,
-		enableOffset,
-
-		// row spacing controls between content and dots
-		dotsMarginTop,
-		dotsMarginTopTablet,
-		dotsMarginTopMobile,
-		dotsMarginTopUnit
-	} = attributes;
 
 	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
 
@@ -2507,29 +2458,27 @@ let categoriesList = [];
 		);
 	}
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/post-carousel.svg`;
-
 	return (
-		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<>
+		<>
+			{ isSelected && (
 				<Settings
 					state={ state }
 					togglePreview={ togglePreview }
 					inspectorControls={ inspectorControls }
 					parentProps={ props }
 				/>
-				<Render
-					parentProps={ props }
-					state={ state }
-					setState={ setState }
-					togglePreview={ togglePreview }
-					latestPosts={ latestPosts }
-					categoriesList={ categoriesList }
-					replaceInnerBlocks={ replaceInnerBlocks }
-					block={ block }
-				/>
-			</>
-		)
+			) }
+			<Render
+				parentProps={ props }
+				state={ state }
+				setState={ setState }
+				togglePreview={ togglePreview }
+				latestPosts={ latestPosts }
+				categoriesList={ categoriesList }
+				replaceInnerBlocks={ replaceInnerBlocks }
+				block={ block }
+			/>
+		</>
 	);
 };
 

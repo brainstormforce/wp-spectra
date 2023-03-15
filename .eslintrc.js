@@ -8,7 +8,9 @@ module.exports = {
 		'@wordpress/no-global-event-listener': 'off',
 		'quotes': [ 'error', 'single', { allowTemplateLiterals: true, avoidEscape: true } ],
 		'quote-props': [ 'error', 'consistent-as-needed' ],
-		'space-in-parens': ['error', 'always', { exceptions: [ 'empty' ] } ]
+		'space-in-parens': ['error', 'always', { exceptions: [ 'empty' ] } ],
+		'jsx-a11y/click-events-have-key-events': 'off',
+		'jsx-a11y/no-static-element-interactions': 'off',
 	},
 	overrides: [
 		{

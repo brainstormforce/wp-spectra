@@ -1,5 +1,4 @@
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect } from 'react';
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { doAction } from '@wordpress/hooks';
@@ -9,6 +8,7 @@ import {
 	useState,
 	useRef,
 	useEffect,
+	useLayoutEffect
 } from '@wordpress/element';
 import { select } from '@wordpress/data';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
@@ -197,6 +197,7 @@ const InspectorTabs = ( props ) => {
 
 			{ Array.isArray( children ) &&
 				Children.map( children, ( child, index ) => {
+					if( ! child ) return child;
 					if ( ! child.key ) {
 						throw new Error(
 							'props.key not found in <InspectorTab />, you must use `key` prop'

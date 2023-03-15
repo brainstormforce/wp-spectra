@@ -1,9 +1,9 @@
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
-import React from 'react';
 import { BlockControls } from '@wordpress/block-editor';
 import { ToolbarGroup } from '@wordpress/components';
 import { decodeEntities } from '@wordpress/html-entities';
+import { memo } from '@wordpress/element';
 
 const Settings = ( props ) => {
 	const { state, togglePreview, inspectorControls, categoriesList, taxonomyList } = props;
@@ -147,4 +147,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

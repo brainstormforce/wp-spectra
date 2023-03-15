@@ -2,11 +2,8 @@
  * BLOCK: Testimonial
  */
 import TestimonialStyle from './inline-styles';
-import React, {    useEffect } from 'react';
-
-
+import { useEffect } from '@wordpress/element';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
-
 import Settings from './settings';
 import Render from './render';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -14,21 +11,14 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import hexToRGBA from '@Controls/hexToRgba';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 
 const UAGBtestimonial = ( props ) => {
 	const deviceType = useDeviceType();
-	useEffect( () => {
-
-		const { setAttributes, attributes } = props;
-
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-
-		setAttributes( { classMigrate: true } );
-
-		const {
+	const {
+		setAttributes,
+		attributes,
+		attributes: {
 			backgroundOpacity,
 			backgroundImageColor,
 			backgroundType,
@@ -40,7 +30,25 @@ const UAGBtestimonial = ( props ) => {
 			gradientType,
 			gradientAngle,
 			gradientPosition,
-		} = attributes;
+			borderStyle,
+			borderWidth,
+			borderRadius,
+			borderColor,
+			borderHoverColor,
+			equalHeight,
+			UAGHideDesktop,
+			UAGHideTab,
+			UAGHideMob,
+		},
+		isSelected,
+		clientId,
+	} = props;
+
+		useEffect( () => {
+		// Assigning block_id in the attribute.
+		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
+
+		setAttributes( { classMigrate: true } );
 
 		if( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ){
 			const color1 = hexToRGBA( maybeGetColorForVariable( gradientColor1 ), backgroundOpacity );
@@ -61,7 +69,7 @@ const UAGBtestimonial = ( props ) => {
 				setAttributes( { backgroundOpacity: 101 } );
 			}
 		}
-		const { borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor } = props.attributes;
+
 		// Backward Border Migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
 			migrateBorderAttributes( 'overall', {
@@ -80,8 +88,8 @@ const UAGBtestimonial = ( props ) => {
 				label: 'borderStyle',
 				value: borderStyle
 			},
-			props.setAttributes,
-			props.attributes
+			setAttributes,
+			attributes
 			);
 		}
 		
@@ -89,19 +97,18 @@ const UAGBtestimonial = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		const equalHeight = props.attributes.equalHeight;
 		if ( equalHeight ) {
-			uagb_carousel_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
+			uagb_carousel_height( clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
 		} else {
-			uagb_carousel_unset_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
+			uagb_carousel_unset_height( clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
 		}
 
 		const blockStyling = TestimonialStyle( props );
 
-		addBlockEditorDynamicStyles( 'uagb-testinomial-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles( 'uagb-testinomial-style-' + clientId.substr( 0, 8 ), blockStyling );
 		
-	}, [ props ] );
-	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
+	}, [ attributes, deviceType ] );
+
 	useEffect( () => {
 
 		responsiveConditionPreview( props );
@@ -109,23 +116,14 @@ const UAGBtestimonial = ( props ) => {
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = TestimonialStyle( props );
-
-		addBlockEditorDynamicStyles( 'uagb-testinomial-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
 		scrollBlockToView();
 	}, [deviceType] );
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/testimonial.svg`;
-
 	return (
-		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } />
-			</>
-		)
+		<>
+		{ isSelected && <Settings parentProps={ props } /> }
+			<Render parentProps={ props } />
+		</>
 	);
 };
 

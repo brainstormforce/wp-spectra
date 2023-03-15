@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { useEffect } from 'react';
+import { useEffect,memo } from '@wordpress/element';
 import RestMenuImage from './components/RestMenuImage';
 import Title from './components/Title';
 import Price from './components/Price';
@@ -128,4 +128,4 @@ const Render = ( props ) => {
 		</div>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );

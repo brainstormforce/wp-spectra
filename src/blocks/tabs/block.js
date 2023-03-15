@@ -5,13 +5,14 @@
 import UAGB_Block_Icons from '@Controls/block-icons';
 import './style.scss';
 import attributes from './attributes';
-import edit from './edit';
+import Edit from './edit';
 import deprecated from './deprecated';
 import save from './save';
 
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/tabs', {
 	title: __( 'Tabs', 'ultimate-addons-for-gutenberg' ),
@@ -26,7 +27,12 @@ registerBlockType( 'uagb/tabs', {
 		anchor: true,
 	},
 	attributes,
-	edit,
+	edit: ( props ) =>
+			props.attributes.isPreview ? (
+				<PreviewImage image="tabs" />
+			) : (
+				<Edit { ...props } />
+			),
 	save,
 	deprecated,
 	example: {

@@ -6,7 +6,7 @@
 import UAGIconPicker from '@Components/icon-picker';
 import { __ } from '@wordpress/i18n';
 
-import React from 'react';
+import { memo } from '@wordpress/element';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import ResponsiveBorder from '@Components/responsive-border';
 import SpacingControl from '@Components/spacing-control';
@@ -923,4 +923,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

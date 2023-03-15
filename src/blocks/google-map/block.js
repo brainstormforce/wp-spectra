@@ -4,13 +4,14 @@
 
 import UAGB_Block_Icons from '@Controls/block-icons';
 import './style.scss';
-import edit from './edit';
+import Edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
 import attributes from './attributes';
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 wp.uagb_google_api_key = 'AIzaSyAsd_d46higiozY-zNqtr7zdA81Soswje4';
 
@@ -33,7 +34,12 @@ registerBlockType( 'uagb/google-map', {
 			isPreview: true,
 		}
 	},
-	edit,
+	edit: ( props ) =>
+			props.attributes.isPreview ? (
+				<PreviewImage image="google-maps" />
+			) : (
+				<Edit { ...props } />
+			),
 	save,
 	deprecated,
 } );

@@ -2,12 +2,13 @@
  * BLOCK: Lottie
  */
 
-import edit from './edit';
+import Edit from './edit';
 import UAGB_Block_Icons from '@Controls/block-icons';
 
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/lottie', {
 	title: __( 'Lottie Animation', 'ultimate-addons-for-gutenberg' ),
@@ -24,9 +25,12 @@ registerBlockType( 'uagb/lottie', {
 		}
 	},
 	category: uagb_blocks_info.category,
-	edit,
+	edit: ( props ) =>
+			props.attributes.isPreview ? (
+				<PreviewImage image="lottie" />
+			) : (
+				<Edit { ...props } />
+			),
 	// Render via PHP
-	save() {
-		return null;
-	},
+	save: ()=> null,
 } );

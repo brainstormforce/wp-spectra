@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import AssetsGeneration from '@DashboardApp/pages/settings/AssetsGeneration';
 import RegenerateAssets from '@DashboardApp/pages/settings/RegenerateAssets';
 import TemplatesButton from '@DashboardApp/pages/settings/TemplatesButton';
+import OnPageCSS from '@DashboardApp/pages/settings/OnPageCSS';
 import RollBack from '@DashboardApp/pages/settings/RollBack';
 import BetaUpdates from '@DashboardApp/pages/settings/BetaUpdates';
 import LegacyBlocks from '@DashboardApp/pages/settings/LegacyBlocks';
@@ -14,7 +15,6 @@ import LoadFontsLocally from '@DashboardApp/pages/settings/LoadFontsLocally';
 import PreloadLocalFonts from '@DashboardApp/pages/settings/PreloadLocalFonts';
 import CollapsePanels from '@DashboardApp/pages/settings/CollapsePanels';
 import CopyPasteStyles from '@DashboardApp/pages/settings/CopyPasteStyles';
-import Login from '@DashboardApp/pages/settings/block-settings/Login';
 import DynamicContent from './dynamic-content';
 import ContentWidth from '@DashboardApp/pages/settings/ContentWidth';
 import BlocksEditorSpacing from '@DashboardApp/pages/settings/BlocksEditorSpacing';
@@ -120,6 +120,7 @@ const Settings = () => {
 									)
 								}
                                 <BlocksEditorSpacing/>
+								<OnPageCSS/>
                                 <CollapsePanels/>
                                 <CopyPasteStyles/>
                                 <AutoBlockRecovery/>
@@ -155,11 +156,6 @@ const Settings = () => {
                         }
                         { 'block-settings' === activeSettingsNavigationTab &&
 							<>
-								{
-									uag_react.spectra_pro_status && (
-										<Login />
-									)
-								}
 								<BlockSettings/>
 							</>
                         }

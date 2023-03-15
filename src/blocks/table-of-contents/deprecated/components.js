@@ -1,5 +1,5 @@
 import { select, subscribe } from '@wordpress/data';
-import { Component } from 'react';
+import { Component } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 class TableOfContents extends Component {
