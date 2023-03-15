@@ -16,7 +16,7 @@ import PreviewImage from '@Controls/previewImage';
 registerBlockType( 'uagb/icon', {
 	apiVersion: 2,
 	title: __( 'Icon', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'Add beautiful icons to your website.', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'Add stunning customizable icons to your website.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.icon,
 	category: uagb_blocks_info.category,
 	keywords: [

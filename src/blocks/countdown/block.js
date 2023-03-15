@@ -16,7 +16,7 @@ registerBlockType( 'uagb/countdown', {
 	apiVersion: 2,
 	title: __( 'Countdown', 'ultimate-addons-for-gutenberg' ),
 	description: __(
-		'Create a sense of urgency around your product or offer and drive customers to take advantage of a time-sensitive offer with a countdown timer.',
+		'Create a sense of urgency among your visitors.',
 		'ultimate-addons-for-gutenberg'
 	),
 	icon: UAGB_Block_Icons.countdown,
