@@ -164,7 +164,7 @@ const Render = ( props ) => {
 				'uagb-timeline__outer-wrap',
 				'uagb-timeline__content-wrap',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ props.clientId }`,
+				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
 				ctaEnable,
 				...ContentTmClasses( props.attributes, deviceType )
 			) }
