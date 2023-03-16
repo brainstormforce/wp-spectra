@@ -101,7 +101,7 @@ if ( 'image' === $bg_type ) {
 	}
 }
 
-$selectors[' > .uagb-column__overlay']['border-radius'] = $border['border-top-left-radius'] . ' ' . $border['border-top-right-radius'] . ' ' . $border['border-bottom-left-radius'] . ' ' . $border['border-bottom-right-radius'];
+$selectors[' > .uagb-column__overlay']['border-radius'] = $attr['columnBorderTopLeftRadius'] . ' ' . $attr['columnBorderTopRightRadius'] . ' ' . $attr['columnBorderBottomLeftRadius'] . ' ' . $attr['columnBorderBottomRightRadius'];
 
 if ( '' !== $attr['colWidth'] && 0 !== $attr['colWidth'] ) {
 

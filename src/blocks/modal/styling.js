@@ -7,6 +7,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
+import { applyFilters } from '@wordpress/hooks';
 
 export default function styling( props ) {
 	const {
@@ -195,7 +196,7 @@ export default function styling( props ) {
     };
 
 	const modalPopupContentBackgroundCSSDesktop = generateBackgroundCSS( backgroundAttributesDesktop );
-	const selectors = {
+	let selectors = {
 		' .uagb-modal-popup-wrap' : {
 			'width': generateCSSUnit(
 				modalWidth,
@@ -319,7 +320,7 @@ export default function styling( props ) {
     };
 
 	const modalPopupContentBackgroundCSSTablet = generateBackgroundCSS( backgroundAttributesTablet );
-	const tabletSelectors = {
+	let tabletSelectors = {
 		' .uagb-modal-popup-wrap' : {
 			'width': generateCSSUnit(
 				modalWidthTablet,
@@ -411,7 +412,7 @@ export default function styling( props ) {
     };
 
 	const modalPopupContentBackgroundCSSMobile = generateBackgroundCSS( backgroundAttributesMobile );
-	const mobileSelectors = {
+	let mobileSelectors = {
 		' .uagb-modal-popup-wrap' : {
 			'width': generateCSSUnit(
 				modalWidthMobile,
@@ -619,6 +620,10 @@ export default function styling( props ) {
 		0,
 		8
 	) }`;
+
+	selectors = applyFilters( `spectra.${blockName}.styling`, selectors, props.attributes );
+	tabletSelectors = applyFilters( `spectra.${blockName}.tabletStyling`, tabletSelectors, props.attributes );
+	mobileSelectors = applyFilters( `spectra.${blockName}.mobileStyling`, mobileSelectors, props.attributes );
 
 	let styling_css = generateCSS( selectors, base_selector );
 

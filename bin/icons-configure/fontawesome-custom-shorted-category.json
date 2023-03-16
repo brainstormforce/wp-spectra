@@ -1,0 +1,94 @@
+{
+	"brands": {
+		"title": "Brands",
+		"original_cate": [ "brands" ]
+	},
+	"business": {
+		"title": "Business",
+		"original_cate": [
+			"automotive",
+			"business",
+			"charity",
+			"logistics",
+			"marketing",
+			"money",
+			"buildings",
+			"construction"
+		]
+	},
+	"communication": {
+		"title": "Communication",
+		"original_cate": [
+			"communication",
+			"film-video",
+			"media-playback",
+			"photos-images",
+			"writing"
+		]
+	},
+	"design": {
+		"title": "Design",
+		"original_cate": [
+			"accessibility",
+			"design",
+			"editing",
+			"emoji",
+			"photos-images",
+			"shapes"
+		]
+	},
+	"education": {
+		"title": "Education",
+		"original_cate": [ "alphabet","childhood", "education", "mathematics" ]
+	},
+	"environment": {
+		"title": "Environment",
+		"original_cate": [ "animals","disaster", "nature", "weather" ]
+	},
+	"lifestyle-and-hobbies": {
+		"title": "Lifestyle",
+		"original_cate": [
+			"camping",
+			"clothing-fashion",
+			"food-beverage",
+			"fruits-vegetables",
+			"gaming",
+			"holidays",
+			"household",
+			"music-audio",
+			"shopping",
+			"sports-fitness"
+		]
+	},
+	"science-and-technology": {
+		"title": "Science",
+		"original_cate": [
+			"astronomy",
+			"coding",
+			"connectivity",
+			"devices-hardware",
+			"energy",
+			"media-playback",
+			"medical-health",
+			"science-fiction",
+			"security",
+			"science"
+		]
+	},
+	"social": {
+		"title": "Social",
+		"original_cate": ["charity", "gender", "political", "religion", "social","humanitarian" ]
+	},
+	"travel": {
+		"title": "Travel",
+		"original_cate": [
+			"automotive",
+			"connectivity",
+			"maps",
+			"maritime",
+			"moving",
+			"transportation",
+			"travel-hotel"
+		]
+	}
+}

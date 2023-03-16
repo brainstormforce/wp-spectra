@@ -14,5 +14,6 @@ ob_start();
 		UAGBModal.init( '<?php echo esc_attr( $selector ); ?>' );
 	});
 <?php
-return ob_get_clean();
+$dynamic_js = apply_filters( 'spectra_modal_frontend_dynamic_js', ob_get_clean(), $selector, $attr );
+return $dynamic_js;
 ?>

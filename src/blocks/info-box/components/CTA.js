@@ -25,7 +25,7 @@ const InfoBoxCta = ( props ) => {
 				{ attributes.ctaType === 'text' && (
 					<a // eslint-disable-line jsx-a11y/anchor-is-valid
 						target={ target }
-						className={ !attributes.ctaLink ? 'uagb-infobox-cta-link uagb-disable-link' : 'uagb-infobox-cta-link' }
+						className={ 'uagb-infobox-cta-link' }
 						rel={ rel }
 					>
 						{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
@@ -55,7 +55,7 @@ const InfoBoxCta = ( props ) => {
 						) }
 					>
 						<a // eslint-disable-line jsx-a11y/anchor-is-valid
-							className={ !attributes.ctaLink ? `${ctaBtnClass}  uagb-disable-link` : ctaBtnClass }
+							className={ctaBtnClass }	
 							target={ target }
 							rel={ rel }
 						>
@@ -88,8 +88,9 @@ const InfoBoxCta = ( props ) => {
 					{ attributes.ctaType === 'text' && (
 						<a
 							href={ attributes.ctaLink }
-							target={ target }
-							className={ !attributes.ctaLink ? 'uagb-infobox-cta-link uagb-disable-link' : 'uagb-infobox-cta-link' }
+							target={ target }	
+							onClick={ ( '' === attributes.ctaLink || '#' === attributes.ctaLink ) ? 'return false;' : 'return true;'}
+							className={ 'uagb-infobox-cta-link' }
 							rel={ rel }
 							alt=""
 						>
@@ -105,9 +106,10 @@ const InfoBoxCta = ( props ) => {
 					{ attributes.ctaType === 'button' && (
 						<a
 							href={ attributes.ctaLink }
-							className={ !attributes.ctaLink ? `${ctaBtnClass}  uagb-disable-link` : ctaBtnClass }
+							className={ ctaBtnClass }
 							target={ target }
-							rel={ rel }
+							rel={ rel }	
+							onClick={ ( '' === attributes.ctaLink || '#' === attributes.ctaLink ) ? 'return false;' : 'return true;'}
 							alt=""
 						>
 							{ attributes.ctaIconPosition === 'before' && ctaIconOutput }

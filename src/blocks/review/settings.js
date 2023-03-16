@@ -1,8 +1,6 @@
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
-import React from 'react';
-
 import {
 	InspectorControls,
 } from '@wordpress/block-editor';
@@ -23,6 +21,7 @@ import {
 	Icon
 } from '@wordpress/components';
 import UAGTextControl from '@Components/text-control';
+import { memo } from '@wordpress/element';
 
 let imageSizeOptions = [
 	{
@@ -1528,4 +1527,4 @@ const Settings = ( props ) => {
 		</>
 	);
 };
-export default React.memo( Settings );
+export default memo( Settings );

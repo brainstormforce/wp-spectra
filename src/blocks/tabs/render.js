@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import styles from './editor.lazy.scss';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect, memo } from '@wordpress/element';
 import { InnerBlocks, RichText } from '@wordpress/block-editor';
 import { Tooltip, Dashicon } from '@wordpress/components';
 import { createBlock } from '@wordpress/blocks';
@@ -310,4 +310,4 @@ const Render = ( props ) => {
 		</>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );

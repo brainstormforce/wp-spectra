@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from '@wordpress/element';
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
@@ -151,7 +151,7 @@ const Render = ( props ) => {
 	)
 
 	return (
-		<React.Fragment>
+		<>
 			<div className={ classnames(
 				props.className,
 				`uagb-block-${ block_id }`,
@@ -172,7 +172,7 @@ const Render = ( props ) => {
 					layout !== 'circle' && layout !== 'number' && title
 				}
 			</div>
-		</React.Fragment>
+		</>
 	);
 }
 

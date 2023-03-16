@@ -43,6 +43,14 @@
 		&__tools {
 			padding: $spectra-control-vertical-gap 0 0;
 			border: 0;
+
+			.block-editor-link-control__settings {
+
+				.components-form-toggle:not(.is-checked) .components-form-toggle__thumb {
+					background-color: #1e1e1e;
+					border-color: #1e1e1e;
+				}
+			}
 		}
 
 		&__search-input {

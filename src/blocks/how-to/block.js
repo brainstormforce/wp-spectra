@@ -4,12 +4,13 @@
 
 import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
-import edit from './edit';
+import Edit from './edit';
 import save from './save';
 import './style.scss';
 import deprecated from './deprecated';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/how-to', {
 	title: __( 'How To', 'ultimate-addons-for-gutenberg' ),
@@ -30,7 +31,12 @@ registerBlockType( 'uagb/how-to', {
 		}
 	},
 	attributes,
-	edit,
+	edit: ( props ) =>
+			props.attributes.isPreview ? (
+				<PreviewImage image="how-to" />
+			) : (
+				<Edit { ...props } />
+			),
 	save,
 	deprecated,
 } );

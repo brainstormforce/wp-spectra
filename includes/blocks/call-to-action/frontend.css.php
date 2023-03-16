@@ -125,10 +125,10 @@ $selectors = array(
 		'line-height' => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
 		'fill'        => $attr['secondCtaColor'],
 	),
-	'.wp-block-uagb-call-to-action a.uagb-cta-second__button:hover' => array(
+	'.wp-block-uagb-call-to-action a.uagb-cta-second__button:hover > svg' => array(
 		'fill' => $attr['secondCtaHoverColor'],
 	),
-	'.wp-block-uagb-call-to-action a.uagb-cta-second__button:focus' => array(
+	'.wp-block-uagb-call-to-action a.uagb-cta-second__button:focus > svg' => array(
 		'fill' => $attr['secondCtaHoverColor'],
 	),
 );

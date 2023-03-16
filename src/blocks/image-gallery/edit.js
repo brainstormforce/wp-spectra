@@ -3,7 +3,7 @@
  */
 
 import styling from './styling';
-import React, { useEffect } from 'react';
+import { useEffect, useState } from '@wordpress/element';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import { useDeviceType } from '@Controls/getPreviewType';
 import Settings from './settings';
@@ -11,22 +11,27 @@ import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const UAGBImageGallery = ( props ) => {
+	const {
+		clientId,
+		attributes,
+		attributes:{ UAGHideDesktop, UAGHideTab, UAGHideMob },
+		isSelected,
+		setAttributes
+	} = props;
 
 	const deviceType = useDeviceType();
 	useEffect( () => {
-		const { setAttributes } = props;
 		// Assigning block_id in the attribute.
-		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 		setAttributes( { classMigrate: true } );
 	}, [] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
-        addBlockEditorDynamicStyles( 'uagb-image-gallery-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-	}, [ props, deviceType ] );
+        addBlockEditorDynamicStyles( 'uagb-image-gallery-style-' + clientId.substr( 0, 8 ), blockStyling );
+	}, [ attributes, deviceType ] );
 
-	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
 
 	useEffect( () => {
 
@@ -34,15 +39,25 @@ const UAGBImageGallery = ( props ) => {
 
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/image-gallery.svg`;
+		// Lightbox disabled by default for the block on every instance.
+		const [ lightboxPreview, setLightboxPreview ] = useState( false );
+
+		// Disable the Lightbox when the block isn't selected.
+		useEffect( () => {
+			if ( ! isSelected ) {
+				setLightboxPreview( false );
+			}
+		}, [ isSelected ] );
 
 	return (
-		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } />
-			</>
-		)
+		<>
+			{isSelected && (
+				<Settings
+					{...{ ...props, lightboxPreview, setLightboxPreview }}
+				/>
+			)}
+			<Render {...{ ...props, lightboxPreview, setLightboxPreview }} />
+		</>
 	);
 };
 

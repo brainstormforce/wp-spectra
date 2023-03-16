@@ -3,8 +3,7 @@
  */
 
 import styling from './styling';
-import React, { useState, useEffect,    } from 'react';
-
+import { useEffect,useState,useRef } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
@@ -14,24 +13,28 @@ import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const UAGBLottie = ( props ) => {
 	const deviceType = useDeviceType();
-	const lottieplayer = React.createRef();
+	const {
+		setAttributes,
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob, loop, reverse },
+		clientId,
+	} = props;
+	const lottieplayer = useRef();
 	const [ state, setState ] = useState( { direction: 1, loopState: true } );
 
 	useEffect( () => {
 		// Assigning block_id in the attribute.
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-		props.setAttributes( { classMigrate: true } );
+		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
+		setAttributes( { classMigrate: true } );
 		
 	}, [] );
 
 	useEffect( () => {
 		const blockStyling = styling( props );
 
-		addBlockEditorDynamicStyles( 'uagb-lottie-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles( 'uagb-lottie-style-' + clientId.substr( 0, 8 ), blockStyling );
 		
-	}, [ props ] );
+	}, [ props, deviceType ] );
 
-	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
 	useEffect( () => {
 
 		responsiveConditionPreview( props );
@@ -39,45 +42,30 @@ const UAGBLottie = ( props ) => {
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-lottie-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
 		scrollBlockToView();
 	}, [deviceType] );
 
 	const loopLottie = () => {
-		const { setAttributes } = props;
-		const { loop } = props.attributes;
 		const { loopState } = state;
-
 		setAttributes( { loop: ! loop } );
 		setState( { loopState: ! loopState } );
 	};
 
 	const reverseDirection = () => {
-		const { setAttributes } = props;
-		const { reverse } = props.attributes;
 		const { direction } = state;
-
 		setAttributes( { reverse: ! reverse } );
 		setState( { direction: direction * -1 } );
 	};
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/lottie.svg`;
-
 	return (
-		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<>
-				<Render lottieplayer={ lottieplayer } parentProps={ props } />
-				<Settings
-					parentProps={ props }
-					loopLottie={ loopLottie }
-					reverseDirection={ reverseDirection }
-				/>
-			</>
-		)
+		<>
+			<Render lottieplayer={ lottieplayer } parentProps={ props } />
+			<Settings
+				parentProps={ props }
+				loopLottie={ loopLottie }
+				reverseDirection={ reverseDirection }
+			/>
+		</>
 	);
 };
 

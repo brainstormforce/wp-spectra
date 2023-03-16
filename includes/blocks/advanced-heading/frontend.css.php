@@ -267,10 +267,17 @@ $m_selectors['.wp-block-uagb-advanced-heading .uagb-desc-text']    = array(
 	),
 );
 
-$combined_selectors = array(
-	'desktop' => $selectors,
-	'tablet'  => $t_selectors,
-	'mobile'  => $m_selectors,
+/**
+ * Get Combined selectors with filters.
+ */
+$combined_selectors = UAGB_Helper::get_combined_selectors(
+	'advanced-heading', 
+	array(
+		'desktop' => $selectors,
+		'tablet'  => $t_selectors,
+		'mobile'  => $m_selectors,
+	),
+	$attr
 );
 
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'head', ' .uagb-heading-text', $combined_selectors );

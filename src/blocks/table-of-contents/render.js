@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import TableOfContents from './toc';
-import React, { useLayoutEffect, useEffect, useRef } from 'react';
+import { useEffect, useRef, useLayoutEffect, memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import { RichText } from '@wordpress/block-editor';
@@ -105,4 +105,4 @@ const Render = ( props ) => {
 	);
 };
 
-export default React.memo( Render );
+export default memo( Render );

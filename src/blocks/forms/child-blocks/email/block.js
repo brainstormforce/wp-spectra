@@ -4,11 +4,12 @@
 
 import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
-import edit from './edit';
+import Edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/forms-email', {
 	title: __( 'Email', 'ultimate-addons-for-gutenberg' ),
@@ -17,7 +18,12 @@ registerBlockType( 'uagb/forms-email', {
 	category: uagb_blocks_info.category,
 	parent: [ 'uagb/forms' ],
 	attributes,
-	edit,
+	edit: ( props ) =>
+		props.attributes.isPreview ? (
+			<PreviewImage image="form-field" isChildren={ true } />
+		) : (
+			<Edit { ...props } />
+		),
 	supports: {
 		anchor: true,
 	},

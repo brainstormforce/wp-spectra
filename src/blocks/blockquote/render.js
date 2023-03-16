@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect,memo } from '@wordpress/element';
 import Description from './components/Description';
 import AuthorImage from './components/AuthorImage';
 import AuthorText from './components/AuthorText';
@@ -91,4 +91,4 @@ const Render = ( props ) => {
 	);
 };
 
-export default React.memo( Render );
+export default memo( Render );

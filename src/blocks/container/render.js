@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
-import React from 'react';
+import { memo } from '@wordpress/element';
 import shapes from './shapes';
 import { select } from '@wordpress/data';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -151,4 +151,4 @@ const Render = ( props ) => {
 		</>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );

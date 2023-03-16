@@ -4,7 +4,7 @@ import {
 	renderPostLayout,
 } from '.././function';
 import { useDeviceType } from '@Controls/getPreviewType';
-import React, { useRef } from 'react';
+import { useRef, memo } from '@wordpress/element';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 const Blog = ( props ) => {
@@ -83,4 +83,4 @@ const Blog = ( props ) => {
 		</div>
 	);
 };
-export default React.memo( Blog );
+export default memo( Blog );

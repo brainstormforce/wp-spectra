@@ -1,6 +1,6 @@
 import { decodeEntities } from '@wordpress/html-entities';
 import { __ } from '@wordpress/i18n';
-import React from 'react';
+import { memo } from '@wordpress/element';
 const FeaturedImage = ( props ) => {
 	const { post, attributes } = props;
 
@@ -38,4 +38,4 @@ const FeaturedImage = ( props ) => {
 	return null;
 };
 
-export default React.memo( FeaturedImage );
+export default memo( FeaturedImage );

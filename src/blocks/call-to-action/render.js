@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect,memo } from '@wordpress/element';
 import Title from './components/Title';
 import Description from './components/Description';
 import CTA from './components/CallToActionNew';
@@ -87,4 +87,4 @@ const Render = ( props ) => {
 	);
 };
 
-export default React.memo( Render );
+export default memo( Render );

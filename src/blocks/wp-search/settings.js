@@ -3,7 +3,6 @@ import TypographyControl from '@Components/typography';
 import BoxShadowControl from '@Components/box-shadow';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import WebfontLoader from '@Components/typography/fontloader';
-import React from 'react';
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
 import UAGTabsControl from '@Components/tabs';
@@ -17,6 +16,7 @@ import { InspectorControls } from '@wordpress/block-editor';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import UAGTextControl from '@Components/text-control';
+import { memo } from '@wordpress/element';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -807,4 +807,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

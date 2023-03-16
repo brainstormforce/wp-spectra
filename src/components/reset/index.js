@@ -1,10 +1,14 @@
+import {  useEffect, useState, useRef } from '@wordpress/element';
+import { getPanelIdFromRef } from '@Utils/Helpers';
 import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 import { select } from '@wordpress/data';
 import { Button, Tooltip, Dashicon } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { useState } from '@wordpress/element';
+import { applyFilters } from '@wordpress/hooks';
 
 const UAGReset = ( props ) => {
+	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const panelRef = useRef( null );
 
 	const {
 		onReset,
@@ -16,7 +20,12 @@ const UAGReset = ( props ) => {
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
 
-	const allBlocksAttributes = wp.hooks.applyFilters( 'uagb.blocksAttributes', blocksAttributes )
+	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	useEffect( () => {
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
+	}, [blockNameForHook] )
+
+	const allBlocksAttributes = applyFilters( 'uagb.blocksAttributes', blocksAttributes )
 
 	const getBlockResetValue = () => {
 		const selectedBlockName = getSelectedBlock()?.name.split( '/' ).pop();
@@ -77,23 +86,33 @@ const UAGReset = ( props ) => {
 		}
 	};
 
+	const controlName = 'reset'; // there is no label props that's why keep hard coded label
+	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 	return (
 		<Tooltip
 			text={ __( 'Reset', 'ultimate-addons-for-gutenberg' )}
 			key={ 'reset' }
+			ref={panelRef}
 		>
-		<Button
-			className="uagb-reset"
-			isSecondary
-			isSmall
-			onClick={ ( e ) => {
-				e.preventDefault();
-				resetHandler();
-			} }
-			disabled = {resetDisableState}
-		>
-			<Dashicon icon="image-rotate" />
-		</Button>
+			{
+				controlBeforeDomElement
+			}
+			<Button
+				className="uagb-reset"
+				isSecondary
+				isSmall
+				onClick={ ( e ) => {
+					e.preventDefault();
+					resetHandler();
+				} }
+				disabled = {resetDisableState}
+			>
+				<Dashicon icon="image-rotate" />
+			</Button>
+			{
+				controlAfterDomElement
+			}
 		</Tooltip>
 	);
 }

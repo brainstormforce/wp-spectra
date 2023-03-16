@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React from 'react';
+import { memo } from '@wordpress/element';
 
 const Render = ( props ) => {
 	props = props.parentProps;
@@ -55,4 +55,4 @@ const Render = ( props ) => {
 		</>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );

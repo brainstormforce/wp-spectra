@@ -3,8 +3,7 @@
  */
 
 import CtaStyle from './inline-styles';
-import React, { useEffect,    } from 'react';
-
+import { useEffect } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
@@ -17,14 +16,14 @@ import { migrateBorderAttributes } from '@Controls/generateAttributes';
 const UAGBCallToAction = ( props ) => {
 
 	const deviceType = useDeviceType();
-
-	useEffect( () => {
-		// Assigning block_id in the attribute.
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-
-		props.setAttributes( { classMigrate: true } );
-
-		const {
+	const {
+		isSelected,
+		setAttributes,
+		attributes,
+		attributes: {
+			UAGHideDesktop,
+			UAGHideTab,
+			UAGHideMob,
 			ctaPosition,
 			stack,
 			ctaLeftSpace,
@@ -34,22 +33,30 @@ const UAGBCallToAction = ( props ) => {
 			ctaBorderWidth,
 			ctaBorderColor,
 			ctaBorderhoverColor,
-			ctaBorderRadius
-		} = props.attributes;
+			ctaBorderRadius,
+		},
+		clientId,
+	} = props;
+
+	useEffect( () => {
+		// Assigning block_id in the attribute.
+		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
+
+		setAttributes( { classMigrate: true } );
 
 		if( stack === 'tablet' ) {
-			props.setAttributes( {stack: 'tablet'} );
+			setAttributes( {stack: 'tablet'} );
 		}else if ( stack === 'mobile' ) {
-			props.setAttributes( {stack: 'mobile'} )
+			setAttributes( {stack: 'mobile'} )
 		} else if ( stack === 'none' && ctaPosition === 'right' ) {
-			props.setAttributes( {stack: 'none'} )
+			setAttributes( {stack: 'none'} )
 		} else if ( stack === 'none' && 'below-title' === ctaPosition ) {
-			props.setAttributes( { stack: 'desktop' } );
+			setAttributes( { stack: 'desktop' } );
 		}
 
 		if ( ctaLeftSpace ) {
 			if ( undefined === overallBlockLeftMargin && 'left' === textAlign && 'right' === ctaPosition ) {
-				props.setAttributes( { overallBlockLeftMargin: ctaLeftSpace } );
+				setAttributes( { overallBlockLeftMargin: ctaLeftSpace } );
 			}
 		}
 
@@ -71,8 +78,8 @@ const UAGBCallToAction = ( props ) => {
 				label: 'ctaBorderStyle',
 				value: ctaBorderStyle
 			},
-			props.setAttributes,
-			props.attributes
+			setAttributes,
+			attributes
 			);
 		}
 		
@@ -83,35 +90,25 @@ const UAGBCallToAction = ( props ) => {
 		// Replacement for componentDidUpdate.
 		const blockStyling = CtaStyle( props );
 
-		addBlockEditorDynamicStyles( 'uagb-cta-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles( 'uagb-cta-style-' + clientId.substr( 0, 8 ), blockStyling );
 		
-	}, [ props ] );
+	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = CtaStyle( props );
-
-		addBlockEditorDynamicStyles( 'uagb-cta-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
 		scrollBlockToView();
 	}, [deviceType] );
 
-	const { UAGHideDesktop, UAGHideTab, UAGHideMob  } = props.attributes;
 	useEffect( () => {
 
 		responsiveConditionPreview( props );
 
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/assets/images/block-previews/call-to-action.svg`;
-
 	return (
-		props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } />
-			</>
-		)
+		<>
+			{ isSelected && <Settings parentProps={ props } /> }
+			<Render parentProps={ props } />
+		</>
 	);
 };
 

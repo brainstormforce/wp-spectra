@@ -4,10 +4,9 @@
 import { ButtonGroup, Button, Tooltip  } from '@wordpress/components';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { __, sprintf } from '@wordpress/i18n'
-import { useCallback } from '@wordpress/element'
+import { useCallback,useLayoutEffect } from '@wordpress/element'
 import { dispatch } from '@wordpress/data';
 import styles from './editor.lazy.scss';
-import React, { useLayoutEffect } from 'react';
 const DeviceIcons = () => {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {

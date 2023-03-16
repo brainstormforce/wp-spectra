@@ -6,6 +6,7 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 import generateBorderCSS from '@Controls/generateBorderCSS';
+import { applyFilters } from '@wordpress/hooks';
 
 function styling( props ) {
 
@@ -203,16 +204,16 @@ function styling( props ) {
 		...borderCSS
 	}
 
-	const selectors = {
+	let selectors = {
 		'.wp-block' :{
 			...sliderCSS,
-		}, 
+		},
 		'.wp-block:hover' : {
 			'border-color': sliderBorderHColor,
 			'box-shadow': '',
 		},
 		' .swiper-button-next:after': {
-			'font-size': generateCSSUnit( arrowSize, 'px' )	
+			'font-size': generateCSSUnit( arrowSize, 'px' )
 		},
 		' .swiper-button-next': {
 			'color'            : arrowColor,
@@ -221,7 +222,7 @@ function styling( props ) {
 			'height'           : generateCSSUnit( arrowPadding * 2 + arrowSize, 'px' ),
 			'line-height'      : generateCSSUnit( arrowPadding * 2 + arrowSize, 'px' ),
 			'background-color' : arrowBgColor,
-			...arrowBorderCSS 
+			...arrowBorderCSS
 		},
 		' .swiper-button-prev': {
 			'color'            : arrowColor,
@@ -230,7 +231,7 @@ function styling( props ) {
 			'height'           : generateCSSUnit( arrowPadding * 2 + arrowSize, 'px' ),
 			'line-height'      : generateCSSUnit( arrowPadding * 2 + arrowSize, 'px' ),
 			'background-color' : arrowBgColor,
-			...arrowBorderCSS 
+			...arrowBorderCSS
 		},
 		' .swiper-button-next:hover': {
 			'border-color': attributes['slider-arrowBorderHColor']
@@ -287,7 +288,7 @@ function styling( props ) {
 
 	const sliderBackgroundCSSTablet = generateBackgroundCSS( backgroundAttributesTablet );
 
-	const tablet_selectors = {
+	let tablet_selectors = {
 		'.wp-block' : {
 			'padding-top': generateCSSUnit( topPaddingTablet, paddingTypeTablet ),
 			'padding-bottom': generateCSSUnit( bottomPaddingTablet, paddingTypeTablet ),
@@ -350,7 +351,7 @@ function styling( props ) {
 
 	const containerBackgroundCSSMobile = generateBackgroundCSS( backgroundAttributesMobile );
 
-	const mobile_selectors = {
+	let mobile_selectors = {
 		'.wp-block' : {
 			'padding-top': generateCSSUnit( topPaddingMobile, paddingTypeMobile ),
 			'padding-bottom': generateCSSUnit( bottomPaddingMobile, paddingTypeMobile ),
@@ -392,6 +393,10 @@ function styling( props ) {
 	};
 
 	const base_selector = `.editor-styles-wrapper #block-${ props.clientId }`;
+
+	selectors = applyFilters( `spectra.slider.styling`, selectors, attributes );
+	tablet_selectors = applyFilters( `spectra.slider.tabletStyling`, tablet_selectors, attributes );
+	mobile_selectors = applyFilters( `spectra.slider.mobileStyling`, mobile_selectors, attributes );
 
 	let styling_css = generateCSS( selectors, base_selector );
 

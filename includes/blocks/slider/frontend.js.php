@@ -57,5 +57,8 @@ window.addEventListener("DOMContentLoaded", function(){
 });
 
 <?php
+
+do_action( 'spectra_after_slider_options_loaded', $attr );
+
 return ob_get_clean();
 ?>

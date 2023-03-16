@@ -3,13 +3,14 @@
  */
 
 import UAGB_Block_Icons from '@Controls/block-icons';
-import edit from './edit';
+import Edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
 import attributes from './attributes';
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
+import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/restaurant-menu-child', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
@@ -24,7 +25,12 @@ registerBlockType( 'uagb/restaurant-menu-child', {
 	category: uagb_blocks_info.category,
 	parent: [ 'uagb/restaurant-menu' ],
 	attributes,
-	edit,
+	edit: ( props ) =>
+			props.attributes.isPreview ? (
+				<PreviewImage image="price-list-child" isChildren={ true } />
+			) : (
+				<Edit { ...props } />
+			),
 	save,
 	deprecated,
 	example: {

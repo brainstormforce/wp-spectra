@@ -1,9 +1,6 @@
 /**
  * BLOCK: Post Grid - Settings.
  */
-
-import React from 'react';
-
 import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
 import { __ } from '@wordpress/i18n';
@@ -26,6 +23,7 @@ import BoxShadowControl from '@Components/box-shadow';
 import { decodeEntities } from '@wordpress/html-entities';
 import UAGNumberControl from '@Components/number-control';
 import UAGTextControl from '@Components/text-control';
+import { memo } from '@wordpress/element';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -2613,4 +2611,4 @@ const Settings = ( props ) => {
 	);
 };
 
-export default React.memo( Settings );
+export default memo( Settings );

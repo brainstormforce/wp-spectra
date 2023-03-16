@@ -12,7 +12,7 @@ import Icon from './components/Icon';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { __ } from '@wordpress/i18n';
 import { Placeholder, Spinner } from '@wordpress/components';
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect, memo } from '@wordpress/element';
 import styles from '../editor.lazy.scss';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
@@ -164,7 +164,7 @@ const Render = ( props ) => {
 				'uagb-timeline__outer-wrap',
 				'uagb-timeline__content-wrap',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ props.clientId }`,
+				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
 				ctaEnable,
 				...ContentTmClasses( props.attributes, deviceType )
 			) }
@@ -176,4 +176,4 @@ const Render = ( props ) => {
 		</div>
 	);
 };
-export default React.memo( Render );
+export default memo( Render );
