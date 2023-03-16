@@ -69,6 +69,10 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 			$mob_styling_css  = '';
 			$UAGB_Post_Assets = new UAGB_Post_Assets( get_the_ID() );
 
+			if( isset( $block['attrs']['headFontFamily'] ) ) {
+				$font_family = $block['attrs']['headFontFamily'];
+			}
+			
 			$assets = $UAGB_Post_Assets->get_block_css_and_js( $block );
 
 			$desktop_css = isset( $assets['css']['desktop'] ) ? $assets['css']['desktop'] : '';
@@ -88,8 +92,16 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 			}
 
 			$block_css_style = $desktop_css . $tab_styling_css . $mob_styling_css;
-
 			$style = ! empty( $block_css_style ) ? '<style class="uagb-widgets-style-renderer">' . $block_css_style . '</style>' : '';
+
+			if ( $block['blockName'] == "uagb/advanced-heading" && ! empty( $style ) ) {
+				
+				$gfont_url = "https://fonts.googleapis.com/css?family=" . $font_family;
+				$gfont_url = str_replace(' ', '+', $gfont_url);
+				$link_tag = '<link rel="stylesheet" href=' . $gfont_url . ' media="all">';
+				$style = $style . $link_tag;
+			}
+
 			array_push( $block['innerContent'], $style );
 			return $block;
 		}
