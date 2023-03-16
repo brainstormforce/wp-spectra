@@ -22,18 +22,26 @@ const AnimationsExtension = () => {
 
     useEffect( () => {
 
-        const formData = new window.FormData();
+        const sendApiCall = setTimeout( () => {
 
-		formData.append( 'action', 'uag_enable_animations_extension' );
-		formData.append( 'security', uag_react.enable_animations_extension_nonce );
-		formData.append( 'value', enableAnimationsExtension );
+            const formData = new window.FormData();
 
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( () => {
-		} );
+            formData.append( 'action', 'uag_enable_animations_extension' );
+            formData.append( 'security', uag_react.enable_animations_extension_nonce );
+            formData.append( 'value', enableAnimationsExtension );
+
+            apiFetch( {
+                url: uag_react.ajax_url,
+                method: 'POST',
+                body: formData,
+            } ).then( () => {
+            } );
+
+        }, 300 )
+
+        return ()=>{
+            clearTimeout( sendApiCall );
+        }
 
     }, [enableAnimationsExtension] );
 
