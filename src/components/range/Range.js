@@ -181,6 +181,7 @@ const Range = ( props ) => {
 						min={ min }
 						step={ props?.step || 1 }
 						initialPosition = {inputValue}
+						marks={ props?.marks || false }
 					/>
 					{ withInputField && isNumberControlSupported && (
 						<NumberControl
@@ -216,7 +217,8 @@ Range.defaultProps = {
 	unit: [ 'px', 'em' ],
 	displayUnit: true,
 	responsive: false,
-	help: false
+	help: false,
+	marks: false,
 };
 
 export default Range;
