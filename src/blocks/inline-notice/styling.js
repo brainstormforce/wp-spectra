@@ -176,6 +176,7 @@ function styling( props ) {
 			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
+			'color': textColor,
 			'padding-left': generateCSSUnit(
 				contentLeftPadding,
 				contentPaddingUnit
@@ -192,9 +193,6 @@ function styling( props ) {
 				contentBottomPadding,
 				contentPaddingUnit
 			),
-		},
-
-		' .rich-text.block-editor-rich-text__editable.uagb-notice-text p': {
 			'font-size': generateCSSUnit( descFontSize, descFontSizeType ),
 			'font-weight': descFontWeight,
 			'font-family': descFontFamily,
@@ -205,10 +203,8 @@ function styling( props ) {
 				descLineHeight,
 				descLineHeightType
 			),
-			'color': textColor,
 			'letter-spacing': generateCSSUnit( descLetterSpacing , descLetterSpacingType ),
 		},
-
 		' span.uagb-notice-dismiss': { // For Backward.
 			'fill': noticeDismissColor,
 		},
@@ -266,7 +262,7 @@ function styling( props ) {
 			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 		},
 
-		' .rich-text.block-editor-rich-text__editable.uagb-notice-text p': {
+		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
 			'font-size': generateCSSUnit(
 				descFontSizeMobile,
 				descFontSizeType
@@ -276,8 +272,6 @@ function styling( props ) {
 				descLineHeightType
 			),
 			'letter-spacing': generateCSSUnit( descLetterSpacingMobile , descLetterSpacingType ),
-		},
-		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
 			'padding-left': generateCSSUnit(
 				contentLeftPaddingMobile,
 				mobileContentPaddingUnit
@@ -346,7 +340,7 @@ function styling( props ) {
 			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		},
 
-		' .rich-text.block-editor-rich-text__editable.uagb-notice-text p': {
+		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
 			'font-size': generateCSSUnit(
 				descFontSizeTablet,
 				descFontSizeType
@@ -356,9 +350,6 @@ function styling( props ) {
 				descLineHeightType
 			),
 			'letter-spacing': generateCSSUnit( descLetterSpacingTablet , descLetterSpacingType ),
-		},
-
-		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
 			'padding-left': generateCSSUnit(
 				contentLeftPaddingTablet,
 				tabletContentPaddingUnit

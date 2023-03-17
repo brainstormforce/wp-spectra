@@ -171,6 +171,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### x.x.x ###
+* Fix: Inline Notice - Content color is not working in the backend.
+* Fix: Inline Notice - Content typography is not working.
 * Fix: Taxonomy block - Translation missing for Select string in PHP file.
 
 ### 2.4.0 ###
