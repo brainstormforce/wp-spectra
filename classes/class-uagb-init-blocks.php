@@ -119,10 +119,10 @@ class UAGB_Init_Blocks {
 
 			// Defaults aren't received here, hence we set them.
 			// Without these defaults, empty data is sent to markup (which doesn't affect the functionality at all but still it's a good practice to follow).
-			$attrs['UAGAnimationTime']   = $attrs['UAGAnimationTime'] ? $attrs['UAGAnimationTime'] : 400;
-			$attrs['UAGAnimationDelay']  = $attrs['UAGAnimationDelay'] ? $attrs['UAGAnimationDelay'] : 0;
-			$attrs['UAGAnimationEasing'] = $attrs['UAGAnimationEasing'] ? $attrs['UAGAnimationEasing'] : 'ease';
-			$attrs['UAGAnimationRepeat'] = $attrs['UAGAnimationRepeat'] ? 'false' : 'true';
+			$attrs['UAGAnimationTime']   = array_key_exists( 'UAGAnimationTime', $attrs ) ? $attrs['UAGAnimationTime'] : 400;
+			$attrs['UAGAnimationDelay']  = array_key_exists( 'UAGAnimationDelay', $attrs ) ? $attrs['UAGAnimationDelay'] : 0;
+			$attrs['UAGAnimationEasing'] = array_key_exists( 'UAGAnimationEasing', $attrs ) ? $attrs['UAGAnimationEasing'] : 'ease';
+			$attrs['UAGAnimationRepeat'] = array_key_exists( 'UAGAnimationRepeat', $attrs ) ? 'false' : 'true';
 
 			$aos_attributes = '<div data-aos= "' . esc_attr( $attrs['UAGAnimationType'] ) . '" data-aos-duration="' . esc_attr( $attrs['UAGAnimationTime'] ) . '" data-aos-delay="' . esc_attr( $attrs['UAGAnimationDelay'] ) . '" data-aos-easing="' . esc_attr( $attrs['UAGAnimationEasing'] ) . '" data-aos-once="' . esc_attr( $attrs['UAGAnimationRepeat'] ) . '" ';
 
