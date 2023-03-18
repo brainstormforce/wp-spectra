@@ -69,9 +69,7 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 			$mob_styling_css  = '';
 			$UAGB_Post_Assets = new UAGB_Post_Assets( get_the_ID() );
 
-			// Check if 'headFontFamily' attribute exists in the $block array.
-			if ( isset( $block['attrs']['headFontFamily'] ) ) {
-				// If the attribute exists, assign its value to $font_family variable.
+			if( isset( $block['attrs']['headFontFamily'] ) ) {
 				$font_family = $block['attrs']['headFontFamily'];
 			}
 			
@@ -94,18 +92,15 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 			}
 
 			$block_css_style = $desktop_css . $tab_styling_css . $mob_styling_css;
-			$style           = ! empty( $block_css_style ) ? '<style class="uagb-widgets-style-renderer">' . $block_css_style . '</style>' : '';
+			$style = ! empty( $block_css_style ) ? '<style class="uagb-widgets-style-renderer">' . $block_css_style . '</style>' : '';
 
-			if ( 'uagb/advanced-heading' === $block['blockName'] && ! empty( $style ) ) {
+			if ( $block['blockName'] == "uagb/advanced-heading" && ! empty( $style ) ) {
 				
-				// Generate the Google Fonts URL based on the font family specified in the block attributes.
-				$gfont_url = 'https://fonts.googleapis.com/css?family=' . urlencode( $font_family );
-				
-				// Add the Google Fonts URL to the $style variable as a <link> tag.
-				$style .= '<link rel="stylesheet" href="' . esc_url( $gfont_url ) . '" media="all">';
-				
+				$gfont_url = "https://fonts.googleapis.com/css?family=" . $font_family;
+				$gfont_url = str_replace(' ', '+', $gfont_url);
+				$link_tag = '<link rel="stylesheet" href=' . $gfont_url . ' media="all">';
+				$style = $style . $link_tag;
 			}
-
 
 			array_push( $block['innerContent'], $style );
 			return $block;
