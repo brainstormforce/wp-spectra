@@ -287,8 +287,13 @@ const animationOptions = ( props ) => {
 	// animationType - holds UAGAnimationType attribute by default but sometimes the attribute is not updated instantaneously, so we pass in the value from the Animation Type select component.
 	const playAnimation = ( animationType = UAGAnimationType ) => {
 
-		// Get block and the setTimeout code to clear from previous usage.
-		const animatedBlock = document.getElementById( 'block-' + clientId )
+		// For responsive preview.
+		const editorIframe = document.querySelector( 'iframe[name="editor-canvas"]' )
+		const innerDoc = editorIframe?.contentDocument || editorIframe?.contentWindow.document;
+
+		// Get block and the setTimeout code to clear from previous usage. Also check responsive preview.
+		const animatedBlock = ( editorIframe ) ? innerDoc.getElementById( 'block-' + clientId ) : document.getElementById( 'block-' + clientId )
+
 		const aosWaitPreviousCode = parseInt( localStorage.getItem( `aosWaitTimeoutCode-${clientId}` ) );
 		const aosRemoveClassesTimeoutPreviousCode = parseInt( localStorage.getItem( `aosRemoveClassesTimeoutCode-${clientId}` ) );
 
