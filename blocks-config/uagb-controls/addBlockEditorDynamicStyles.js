@@ -68,6 +68,17 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 
 		// swiper CSS Ends.
 
+		// AOS CSS.
+		const aosStaticCSSStylesTag = document.getElementById( 'uagb-aos-css-css' );
+		let cloneAosStaticCSSStylesTag = false;
+
+		if ( aosStaticCSSStylesTag ) {
+
+			cloneAosStaticCSSStylesTag = aosStaticCSSStylesTag.cloneNode( true );
+		}
+
+		// AOS CSS Ends.
+
 		// Block Editor Spacing CSS.
 		const blockEditorSpacingCSSStylesTag = document.getElementById( 'uagb-blocks-editor-spacing-style' );
 		let cloneBlockEditorSpacingCSSStylesTag = false;
@@ -168,10 +179,19 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 				}
 			}
 
+			// Swiper CSS.
 			if ( cloneSwiperStaticCSSStylesTag ) {
 				const iframeSwiperStaticCSSStylesTag = iframeDocument.getElementById( 'uagb-swiper-css-css' );
 				if ( ! iframeSwiperStaticCSSStylesTag ) {
 					iframeDocument.head.appendChild( cloneSwiperStaticCSSStylesTag );
+				}
+			}
+
+			// AOS CSS.
+			if ( cloneAosStaticCSSStylesTag ) {
+				const iframeAosStaticCSSStylesTag = iframeDocument.getElementById( 'uagb-aos-css-css' );
+				if ( ! iframeAosStaticCSSStylesTag ) {
+					iframeDocument.head.appendChild( cloneAosStaticCSSStylesTag );
 				}
 			}
 
