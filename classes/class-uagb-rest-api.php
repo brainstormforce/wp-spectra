@@ -68,10 +68,9 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 			$tab_styling_css  = '';
 			$mob_styling_css  = '';
 			$UAGB_Post_Assets = new UAGB_Post_Assets( get_the_ID() );
+			$font_family_attrs = preg_grep('/fontfamily/i', array_keys($block['attrs']));
 
-			if( isset( $block['attrs']['headFontFamily'] ) ) {
-				$font_family = $block['attrs']['headFontFamily'];
-			}
+			
 			
 			$assets = $UAGB_Post_Assets->get_block_css_and_js( $block );
 
@@ -94,12 +93,21 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 			$block_css_style = $desktop_css . $tab_styling_css . $mob_styling_css;
 			$style = ! empty( $block_css_style ) ? '<style class="uagb-widgets-style-renderer">' . $block_css_style . '</style>' : '';
 
-			if ( $block['blockName'] == "uagb/advanced-heading" && ! empty( $style ) ) {
+			if (! empty( $style ) ) {
 				
-				$gfont_url = "https://fonts.googleapis.com/css?family=" . $font_family;
-				$gfont_url = str_replace(' ', '+', $gfont_url);
-				$link_tag = '<link rel="stylesheet" href=' . $gfont_url . ' media="all">';
-				$style = $style . $link_tag;
+				
+				$link_tag_list = '';
+				foreach( $font_family_attrs as $attr ) {
+					if( isset( $block['attrs'][$attr] ) ) {
+						$font_family = $block['attrs'][$attr];
+						$gfont_url = 'https://fonts.googleapis.com/css?family=' . urlencode( $font_family );
+						$link_tag = '<link rel="stylesheet" href="' . esc_url( $gfont_url ) . '" media="all">';
+						$link_tag_list .= $link_tag;
+					}
+					
+				}
+				
+				$style = $style . $link_tag_list;
 			}
 
 			array_push( $block['innerContent'], $style );
