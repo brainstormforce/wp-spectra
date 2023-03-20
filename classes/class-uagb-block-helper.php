@@ -1831,5 +1831,46 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			preg_match( '/^-?\d+(?:\.\d{0,2})?/', strval( 100 / $divisions ), $matches );
 			return floatval( $matches[0] ) . '%';
 		}
+
+		/**
+		 * Generate the Box Shadow CSS.
+		 *
+		 * @param int|string $horizontal  The horizontal value or an empty string.
+		 * @param int|string $vertical    The vertical value or an empty string.
+		 * @param int|string $blur        The blur value or an empty string.
+		 * @param int|string $spread      The spread value or an empty string.
+		 * @param string     $color       The color or an empty string.
+		 * @param string     $type        The inset/outset type.
+		 * @param string     $altColor    The alternate color to use for hover if color is unset.
+		 * @return string                 The generated border CSS or an empty string on early return.
+		 *
+		 * @since x.x.x
+		 */
+		public static function generate_box_shadow_css( $horizontal, $vertical, $blur, $spread, $color, $type, $altColor = '' ) {
+			// Although optional, color is required for Sarafi on PC. Return early if color isn't set.
+			if ( ! $color && ! $altColor ) {
+				return '';
+			}
+
+			// Get the CSS units for the required shadow properties.
+			$horizontal = UAGB_Helper::get_css_value( $horizontal, 'px' );
+			$vertical = UAGB_Helper::get_css_value( $vertical, 'px' );
+
+			// If both required properties don't exist, shaow won't be generated.
+			if ( ! $horizontal && ! $vertical ) {
+				return '';
+			}
+
+			// Get the CSS units for the optional shadow properties.
+			$blur = UAGB_Helper::get_css_value( $blur, 'px' );
+			$spread = UAGB_Helper::get_css_value( $spread, 'px' );
+
+			// Return the full CSS if blur is set, else return the required css.
+			return $blur ? (
+				( $horizontal ? $horizontal : 0 ) . ' ' . ( $vertical ? $vertical : 0 ) . ' ' . $blur . ( $spread ? " {$spread}" : '' ) . ' ' . ( $color ? $color : $altColor ) . ( 'outset' === $type ? '' : " {$type}" )
+			) : (
+				( $horizontal ? $horizontal : 0 ) . ' ' . ( $vertical ? $vertical : 0 ) . ' ' . ( $color ? $color : $altColor ) . ( 'outset' === $type ? '' : " {$type}" )
+			);
+		}
 	}
 }
