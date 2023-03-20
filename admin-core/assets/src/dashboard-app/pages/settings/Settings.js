@@ -66,7 +66,7 @@ const Settings = () => {
 		if( uag_react.spectra_pro_status && !uag_react.license_status ){
 			activeSettingsTabFromHash = ( activeHash && 'settings' === activePath ) ? activeHash : 'license';
 			history.push( {
-				pathname: 'options-general.php',
+				pathname: 'admin.php',
 				search: `?page=spectra&path=settings&settings=${activeSettingsTabFromHash}`,
 			} )
 		}
@@ -88,7 +88,7 @@ const Settings = () => {
                             {navigation.map( ( item ) => (
                             <Link // eslint-disable-line
                                 to={ {
-                                    pathname: 'options-general.php',
+                                    pathname: 'admin.php',
                                     search: `?page=spectra&path=settings&settings=${item.slug}`,
                                 } }
                                 key={item.name}

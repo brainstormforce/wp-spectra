@@ -873,7 +873,7 @@ class UAGB_Post_Assets {
 		$this->stylesheet = str_replace( '#CONTENT_WIDTH#', $content_width . 'px', $this->stylesheet );
 
 		if ( '' !== $this->script ) {
-			$this->script = 'document.addEventListener("DOMContentLoaded", function(){ ' . $this->script . ' })';
+			$this->script = 'document.addEventListener("DOMContentLoaded", function(){ ' . $this->script . ' });';
 		}
 
 		/* Update page assets */
