@@ -216,11 +216,11 @@ class UAGB_Init_Blocks {
 	 */
 	public function day_visibility( $block_attributes, $block_content ) {
 
-		// If not set restriction. 
+		// If not set restriction.
 		if ( empty( $block_attributes['UAGDay'] ) ) {
 			return $block_content;
 		}
-	
+
 		$current_day = strtolower( current_datetime()->format( 'l' ) );
 		// Check in restricted day.
 		return ! in_array( $current_day, $block_attributes['UAGDay'] ) ? $block_content : '';
