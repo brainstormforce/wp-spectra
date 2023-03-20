@@ -1854,7 +1854,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// Get the CSS units for the required shadow properties.
 			$horizontal = UAGB_Helper::get_css_value( $horizontal, 'px' );
-			$vertical = UAGB_Helper::get_css_value( $vertical, 'px' );
+			$vertical   = UAGB_Helper::get_css_value( $vertical, 'px' );
 
 			// If both required properties don't exist, shaow won't be generated.
 			if ( ! $horizontal && ! $vertical ) {
@@ -1862,7 +1862,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			// Get the CSS units for the optional shadow properties.
-			$blur = UAGB_Helper::get_css_value( $blur, 'px' );
+			$blur   = UAGB_Helper::get_css_value( $blur, 'px' );
 			$spread = UAGB_Helper::get_css_value( $spread, 'px' );
 
 			// Return the full CSS if blur is set, else return the required css.

@@ -10,7 +10,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
  * @param {string|undefined} color       The shadow color.
  * @param {string|undefined} type        The inset/outset type.
  * @param {string} altColor              An alternate color to use for hover if color is undefined.
- * @returns {string}                     The generated css, or empty string if required properties aren't set.
+ * @return {string}                      The generated css, or empty string if required properties aren't set.
  *
  * @since x.x.x
  */
