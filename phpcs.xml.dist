@@ -18,6 +18,12 @@
 		<exclude name="WordPressVIPMinimum.Variables.ServerVariables.UserControlledHeaders" />
 		<exclude name="WordPressVIPMinimum.Functions.RestrictedFunctions.wp_remote_get_wp_remote_get" />
 	</rule>
+	<!-- Setting textdomain. -->
+	<config name="text_domain" value="ultimate-addons-for-gutenberg"/>
+	<!-- Setting prefix. -->
+	<config name="prefixes" value=""/>
+	<!-- WP version. -->
+	<config name="minimum_supported_wp_version" value="5.2"/>
 	<!-- PHP 5.6 and higher. -->
 	<config name="testVersion" value="5.6-"/>
 	<!-- Check all PHP files in directory tree by default. -->
