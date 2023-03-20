@@ -517,6 +517,7 @@ class Common_Settings extends Ajax_Base {
 	 * This function enables block conditions.
 	 *
 	 * @return void
+	 * @since 2.4.0
 	 */
 	public function enable_block_condition() {
 

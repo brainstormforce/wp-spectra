@@ -26,9 +26,7 @@ const InfoBoxCta = ( props ) => {
 					<a // eslint-disable-line jsx-a11y/anchor-is-valid
 						target={ target }
 						className={ 'uagb-infobox-cta-link' }
-						onClick={ ( '' === attributes.ctaLink || '#' === attributes.ctaLink ) ? 'return false;' : 'return true;'}
 						rel={ rel }
-						href='/'
 					>
 						{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
 							<RichText
@@ -60,8 +58,6 @@ const InfoBoxCta = ( props ) => {
 							className={ctaBtnClass }	
 							target={ target }
 							rel={ rel }
-							href = '/'
-							onClick={ ( '' === attributes.ctaLink || '#' === attributes.ctaLink ) ? 'return false;' : 'return true;'}
 						>
 
 							{ attributes.ctaIconPosition === 'before' && ctaIconOutput }

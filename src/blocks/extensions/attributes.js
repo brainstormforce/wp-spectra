@@ -1,4 +1,5 @@
 const { enableMasonryGallery } = uagb_blocks_info;
+import { addFilter } from '@wordpress/hooks';
 
 function addAttributes( settings ) {
 
@@ -63,7 +64,7 @@ function addAttributes( settings ) {
 	return settings;
 }
 
-wp.hooks.addFilter(
+addFilter(
 	'blocks.registerBlockType',
 	'uagb/advanced-control-block',
 	addAttributes
@@ -91,7 +92,7 @@ if ( 'enabled' === enableMasonryGallery || true === enableMasonryGallery ) {
 		return settings;
 	}
 
-	wp.hooks.addFilter(
+	addFilter(
 		'blocks.registerBlockType',
 		'uagb/masonry-gallery',
 		addMasonryAttribute

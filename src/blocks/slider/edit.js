@@ -14,6 +14,7 @@ import { useDeviceType } from '@Controls/getPreviewType';
 import styles from './editor.lazy.scss';
 import { SwiperSlide } from 'swiper/react';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import { addFilter } from '@wordpress/hooks';
 
 const UAGBSlider = ( props ) => {
 	const deviceType = useDeviceType();
@@ -23,7 +24,7 @@ const UAGBSlider = ( props ) => {
 		attributes,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 	} = props;
-	
+
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -45,7 +46,7 @@ const UAGBSlider = ( props ) => {
 
         addBlockEditorDynamicStyles( 'uagb-slider-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ attributes, deviceType ] );
-    	
+
 	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
@@ -108,7 +109,7 @@ const uagbSlideClass = createHigherOrderComponent( ( BlockListBlock ) => {
 			onClick={( e ) => onSwiperChildClick( e )}
 			aria-hidden="true"
 			><BlockListBlock
-			{ ...props } 
+			{ ...props }
 			wrapperProps={ wrapperProps } /></SwiperSlide>;
 		}
 
@@ -119,7 +120,7 @@ const uagbSlideClass = createHigherOrderComponent( ( BlockListBlock ) => {
     };
 }, 'uagbSlideClass' );
 
-wp.hooks.addFilter(
+addFilter(
     'editor.BlockListBlock',
     'uagb/slider-child',
     uagbSlideClass

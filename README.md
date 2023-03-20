@@ -170,6 +170,12 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: Spectra blocks editor spacing conflicting with Blocksy theme.
+* Fix: Inline Notice - Content color is not working in the backend.
+* Fix: Inline Notice - Content typography is not working.
+* Fix: Taxonomy block - Translation missing for Select string in PHP file.
+
 ### 2.4.0 ###
 * New: Introducing the Countdown block that will help you generate hype and create a sense of urgency among your audience, during product sales or releases!
 * New: Introducing the Icon block that allows you to add FontAwesome 6 icons on your website with tonnes of styling options.
@@ -195,6 +201,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Team - Resolved an issue where images were not working as expected on responsive device presets.
 * Fix: Display Conditions - Fixed the undefined `key/index` when the Operating System is set to none.
 * Fix: Responsive Conditions - Updated slanted lines visibility for Counter and Slider Blocks.
+* Fix: Responsive Conditions - Slanted lines not visible for Post timeline and Content timeline Blocks.
 * Fix: Global - Updated Border Settings to remove all Border CSS when set to "default".
 * Fix: Global - Excluded BR Tags from buttons' text.
 * Fix: Global - Cartflows templates throw an error in the editor's Spectra Page Settings.
