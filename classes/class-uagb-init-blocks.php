@@ -634,6 +634,8 @@ class UAGB_Init_Blocks {
 					'ultimate-addons-for-gutenberg'
 				),
 				'is_rtl'                             => is_rtl(),
+				'insta_linked_accounts'              => UAGB_Admin_Helper::get_admin_settings_option( 'uag_insta_linked_accounts', array() ),
+				'insta_all_users_media'              => apply_filters( 'uag_instagram_transients', array() ),
 			)
 		);
 		// To match the editor with frontend.
