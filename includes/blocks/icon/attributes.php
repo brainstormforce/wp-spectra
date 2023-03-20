@@ -2,7 +2,7 @@
 /**
  * Attributes File.
  *
- * @since x.x.x
+ * @since 2.4.0
  *
  * @package uagb
  */
@@ -83,5 +83,7 @@ return array_merge(
 		'iconBoxShadowBlur'                => '',
 		'iconBoxShadowSpread'              => '',
 		'iconBoxShadowPosition'            => '',
+		// Border.
+		'iconBorderStyle'                  => 'default',
 	)
 );

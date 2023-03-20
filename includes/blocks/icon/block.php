@@ -2,7 +2,7 @@
 /**
  * Block Information.
  *
- * @since x.x.x
+ * @since 2.4.0
  *
  * @package uagb
  */

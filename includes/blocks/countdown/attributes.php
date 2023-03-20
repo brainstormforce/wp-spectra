@@ -2,7 +2,7 @@
 /**
  * Attributes File.
  *
- * @since x.x.x
+ * @since 2.4.0
  *
  * @package uagb
  */
@@ -179,5 +179,8 @@ return array_merge(
 		'boxShadowSpreadHover'         => '',
 		'boxShadowPositionHover'       => '',
 	),
-	$box_border_attribute
+	$box_border_attribute,
+	array(
+		'boxBorderStyle' => 'default',
+	)
 );
