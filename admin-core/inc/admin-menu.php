@@ -87,7 +87,7 @@ class Admin_Menu {
 	 */
 	public function add_action_links( $links ) {
 
-		$default_url = admin_url( 'options-general.php?page=' . $this->menu_slug );
+		$default_url = admin_url( 'admin.php?page=' . $this->menu_slug );
 
 		$mylinks = array(
 			'<a href="' . $default_url . '">' . __( 'Settings', 'ultimate-addons-for-gutenberg' ) . '</a>',
@@ -204,7 +204,7 @@ class Admin_Menu {
 			array(
 				'current_user'             => ! empty( wp_get_current_user()->user_firstname ) ? wp_get_current_user()->user_firstname : wp_get_current_user()->display_name,
 				'admin_base_url'           => admin_url(),
-				'uag_base_url'             => admin_url( 'options-general.php?page=' . $this->menu_slug ),
+				'uag_base_url'             => admin_url( 'admin.php?page=' . $this->menu_slug ),
 				'plugin_dir'               => UAGB_URL,
 				'plugin_ver'               => UAGB_VER,
 				'logo_url'                 => UAGB_URL . 'admin-core/assets/images/dashboard-uag-logo.svg',

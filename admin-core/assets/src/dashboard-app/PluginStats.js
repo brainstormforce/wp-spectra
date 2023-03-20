@@ -56,7 +56,7 @@ const PluginStats = () => {
                     <Link
 						className='mr-8 ml-2 text-sm text-emerald-500 active:text-emerald-500 hover:text-emerald-500 focus:text-emerald-500 cursor-pointer'
 						to={ {
-							pathname: 'options-general.php',
+							pathname: 'admin.php',
 							search: '?page=spectra&path=settings&settings=license',
 						} }
 						onClick={ () => {
@@ -69,7 +69,7 @@ const PluginStats = () => {
                     <Link
 						className='mr-8 ml-2 text-sm text-red-500 active:text-red-500 hover:text-red-500 focus:text-red-500 cursor-pointer'
 						to={ {
-							pathname: 'options-general.php',
+							pathname: 'admin.php',
 							search: '?page=spectra&path=settings&settings=license',
 						} }
 						onClick={ () => {
