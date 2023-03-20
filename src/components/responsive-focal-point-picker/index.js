@@ -11,6 +11,7 @@ import { FocalPointPicker } from '@wordpress/components';
 import { select } from '@wordpress/data';
 import styles from './editor.lazy.scss';
 import UAGHelpText from '@Components/help-text';
+import { applyFilters } from '@wordpress/hooks';
 
 const ResponsiveUAGFocalPointPicker = ( props ) => {
 
@@ -70,8 +71,8 @@ const ResponsiveUAGFocalPointPicker = ( props ) => {
 	);
 
 	const controlName = 'position'; // There is no label props that's why keep hard coded label
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	return (
 		<div

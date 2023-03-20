@@ -2,7 +2,8 @@ import styles from './editor.lazy.scss';
 import { GradientPicker } from '@wordpress/components';
 import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import { getPanelIdFromRef } from '@Utils/Helpers';
-import { select } from '@wordpress/data'
+import { select } from '@wordpress/data';
+import { applyFilters } from '@wordpress/hooks';
 
 const GradientSettings = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -30,13 +31,13 @@ const GradientSettings = ( props ) => {
 	};
 
 	const controlName = 'gradient-settings'; // there is no label props that's why keep hard coded label
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	return (
 		<div
 			ref={panelRef}
-			
+
 		>
 			{
 				controlBeforeDomElement

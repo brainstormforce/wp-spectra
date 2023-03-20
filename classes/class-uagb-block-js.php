@@ -694,6 +694,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		 *
 		 * @since 2.4.0
 		 * @param array $attr the blocks attr.
+		 * @return void
 		 */
 		public static function blocks_countdown_gfont( $attr ) {
 

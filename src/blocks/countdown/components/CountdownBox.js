@@ -1,16 +1,16 @@
-import classnames from 'classnames';
+import { uagbClassNames } from '@Utils/Helpers';
 
 const CountdownBox = ( props ) => {
 
     return (
-        <div className={ classnames(
+        <div className={ uagbClassNames( [
             'wp-block-uagb-countdown__box',
             'wp-block-uagb-countdown__box-' + props.unitType,
-        ) }>
-            <div className={ classnames(
-            'wp-block-uagb-countdown__time',
-            'wp-block-uagb-countdown__time-' + props.unitType,
-            ) }>
+        ] ) }>
+            <div className={ uagbClassNames( [
+                'wp-block-uagb-countdown__time',
+                'wp-block-uagb-countdown__time-' + props.unitType,
+            ] ) }>
                 -
             </div>
             { props.showLabels &&

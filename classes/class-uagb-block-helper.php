@@ -1039,7 +1039,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$connector_bg_size_fallback = self::get_fallback_number( $attr['connectorBgsize'], 'connectorBgsize', $attr['blockName'] );
 
 			$tablet_selector = array(
-				' .uagb-timeline__heading'          => array(
+				' .uagb-timeline__heading'               => array(
 					'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpacingTablet'], 'px' ),
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
 				),
@@ -1071,8 +1071,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-top'    => UAGB_Helper::get_css_value( $attr['topMarginTablet'], $attr['tabletMarginUnit'] ),
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMarginTablet'], $attr['tabletMarginUnit'] ),
 				),
-				' .uagb-timeline__events-inner-new' => array(
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['topPaddingTablet'], $attr['tabletPaddingUnit'] ),
+				' .uagb-timeline__events-inner--content' => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingTablet'], $attr['tabletPaddingUnit'] ),
 					'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPaddingTablet'], $attr['tabletPaddingUnit'] ),
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingTablet'], $attr['tabletPaddingUnit'] ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingTablet'], $attr['tabletPaddingUnit'] ),
@@ -1095,7 +1095,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$connector_bg_size_fallback = self::get_fallback_number( $attr['connectorBgsize'], 'connectorBgsize', $attr['blockName'] );
 
 			$m_selectors = array(
-				' .uagb-timeline__heading'          => array(
+				' .uagb-timeline__heading'               => array(
 					'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpacingMobile'], 'px' ),
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
 				),
@@ -1130,8 +1130,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-top'    => UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['mobileMarginUnit'] ),
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['mobileMarginUnit'] ),
 				),
-				' .uagb-timeline__events-inner-new' => array(
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['topPaddingMobile'], $attr['mobilePaddingUnit'] ),
+				' .uagb-timeline__events-inner--content' => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingMobile'], $attr['mobilePaddingUnit'] ),
 					'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPaddingMobile'], $attr['mobilePaddingUnit'] ),
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingMobile'], $attr['mobilePaddingUnit'] ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingMobile'], $attr['mobilePaddingUnit'] ),

@@ -9,6 +9,7 @@ import { dispatch, select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGHelpText from '@Components/help-text';
+import { applyFilters } from '@wordpress/hooks';
 
 const ResponsiveToggle = props => {
 	const { label, responsive, help = false } = props;
@@ -152,8 +153,8 @@ const ResponsiveToggle = props => {
 };
 
 	const controlName = getIdFromString( props.label );
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 
 	return (

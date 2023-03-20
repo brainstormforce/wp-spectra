@@ -21,7 +21,7 @@ registerBlockType( 'uagb/buttons-child', {
 	attributes,
 	edit: ( props ) =>
 		props.attributes.isPreview ? (
-			<PreviewImage image="buttons-child" />
+			<PreviewImage image="buttons-child" isChildren={ true } />
 		) : (
 			<Edit { ...props } />
 		),

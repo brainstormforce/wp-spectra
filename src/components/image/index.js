@@ -9,6 +9,7 @@ import apiFetch from '@wordpress/api-fetch';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import UAGConfirmPopup from '../popup-confirm';
 import UAGHelpText from '@Components/help-text';
+import { applyFilters } from '@wordpress/hooks';
 
 const UAGMediaPicker = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -90,8 +91,8 @@ const UAGMediaPicker = ( props ) => {
 			);
 	}
 
-	const registerImageExtender = disableDynamicContent ? null : wp.hooks.applyFilters( 'uagb.registerImageExtender', '', selectedBlock?.name, onSelectImage )
-	const registerImageLinkExtender = disableDynamicContent ? null : wp.hooks.applyFilters( 'uagb.registerImageLinkExtender', '', selectedBlock?.name, 'bgImageLink', 'url' )
+	const registerImageExtender = disableDynamicContent ? null : applyFilters( 'uagb.registerImageExtender', '', selectedBlock?.name, onSelectImage )
+	const registerImageLinkExtender = disableDynamicContent ? null : applyFilters( 'uagb.registerImageLinkExtender', '', selectedBlock?.name, 'bgImageLink', 'url' )
 
 	const isShowImageUploader = () => {
 		if( disableDynamicContent ){
@@ -206,8 +207,8 @@ const UAGMediaPicker = ( props ) => {
 	}
 
 	const controlName = getIdFromString( props?.label );
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	return (
 		<div
