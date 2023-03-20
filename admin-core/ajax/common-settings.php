@@ -93,10 +93,11 @@ class Common_Settings extends Ajax_Base {
 	 *
 	 * @param string $option The name of the option to check the nonce against.
 	 * @param string $scope The capability required to perform the action. Default is 'manage_options'.
+	 * @param string $security The security to check the nonce against. Default is 'security'.
 	 * @since x.x.x
 	 * @return void
 	 */
-	public function check_permission_nonce( $option, $scope = 'manage_options' ) {
+	private function check_permission_nonce( $option, $scope = 'manage_options', $security = 'security' ) {
 
 		if ( ! current_user_can( $scope ) ) {
 			wp_send_json_error( array( 'messsage' => $this->get_error_msg( 'permission' ) ) );
@@ -105,7 +106,7 @@ class Common_Settings extends Ajax_Base {
 		/**
 		 * Nonce verification
 		 */
-		if ( ! check_ajax_referer( $option, 'security', false ) ) {
+		if ( ! check_ajax_referer( $option, $security, false ) ) {
 			wp_send_json_error( array( 'messsage' => $this->get_error_msg( 'nonce' ) ) );
 		}
 	}
@@ -118,11 +119,10 @@ class Common_Settings extends Ajax_Base {
 	 * @since x.x.x
 	 * @return void
 	 */
-	public function save_admin_settings( $option, $value ) {
+	private function save_admin_settings( $option, $value ) {
 		// nonce verification done in function check_permission_nonce.
-		if ( isset( $_POST['value'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			\UAGB_Admin_Helper::update_admin_settings_option( $option, $value );
-		}
+		\UAGB_Admin_Helper::update_admin_settings_option( $option, $value );
+		
 
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
@@ -193,7 +193,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Save settings.
+	 * This function saves google recaptcha v3 secret key.
 	 *
 	 * @return void
 	 */
@@ -204,7 +204,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_recaptcha_secret_key_v3', sanitize_text_field( $value ) );
 	}
 	/**
-	 * Save settings.
+	 * This function saves google recaptcha v2 secret key.
 	 *
 	 * @return void
 	 */
@@ -217,7 +217,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Save settings.
+	 * This function saves google recaptcha v2 site key.
 	 *
 	 * @return void
 	 */
@@ -229,7 +229,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Save settings.
+	 * This function saves google recaptcha v3 site key.
 	 *
 	 * @return void
 	 */
@@ -240,7 +240,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_recaptcha_site_key_v3', sanitize_text_field( $value ) );
 	}
 	/**
-	 * Save settings.
+	 * This function saves fetch_pages.
 	 *
 	 * @return void
 	 */
@@ -282,7 +282,7 @@ class Common_Settings extends Ajax_Base {
 		wp_send_json_success( $results );
 	}
 	/**
-	 * Save settings.
+	 * This function saves coming_soon_page.
 	 *
 	 * @return void
 	 */
@@ -294,7 +294,7 @@ class Common_Settings extends Ajax_Base {
 
 	}
 	/**
-	 * Save settings.
+	 * This function saves enable_coming_soon_mode.
 	 *
 	 * @return void
 	 */
@@ -305,7 +305,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_enable_coming_soon_mode', sanitize_text_field( $value ) );
 	}
 	/**
-	 * Save settings.
+	 * This function saves content_width.
 	 *
 	 * @return void
 	 */
@@ -316,7 +316,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_content_width', sanitize_text_field( $value ) );
 	}
 	/**
-	 * Save settings.
+	 * This function saves container global padding.
 	 *
 	 * @return void
 	 */
@@ -327,7 +327,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_container_global_padding', sanitize_text_field( $value ) );
 	}
 	/**
-	 * Save settings.
+	 * This function saves container global elements gap.
 	 *
 	 * @return void
 	 */
@@ -339,7 +339,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Save settings.
+	 * This function saves blocks editor spacing.
 	 *
 	 * @return void
 	 */
@@ -350,7 +350,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_blocks_editor_spacing', sanitize_text_field( $value ) );
 	}
 	/**
-	 * Save settings.
+	 * This function loads selected font globally.
 	 *
 	 * @return void
 	 */
@@ -361,7 +361,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_load_select_font_globally', sanitize_text_field( $value ) );
 	}
 	/**
-	 * Save settings.
+	 * This function saves selected font globally.
 	 *
 	 * @return void
 	 */
@@ -379,7 +379,7 @@ class Common_Settings extends Ajax_Base {
 
 	}
 	/**
-	 * Required Plugin Activate
+	 * This function enables masonry gallery.
 	 *
 	 * @return void
 	 */
@@ -390,7 +390,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_enable_masonry_gallery', sanitize_text_field( $value ) );
 	}
 	/**
-	 * Save settings.
+	 * This function loads gfonts locally.
 	 *
 	 * @return void
 	 */
@@ -401,7 +401,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_load_gfonts_locally', sanitize_text_field( $value ) );
 	}
 	/**
-	 * Save settings.
+	 * This function collapses panels.
 	 *
 	 * @return void
 	 */
@@ -412,7 +412,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_collapse_panels', sanitize_text_field( $value ) );
 	}
 	/**
-	 * Save settings.
+	 * This function enables copy paste.
 	 *
 	 * @return void
 	 */
@@ -423,7 +423,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_copy_paste', sanitize_text_field( $value ) );
 	}
 	/**
-	 * Save settings.
+	 * This function saves social settings.
 	 *
 	 * @since 2.1.0
 	 * @return void
@@ -473,7 +473,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_social', $social );
 	}
 	/**
-	 * Save settings.
+	 * This function enables dynamic content mode.
 	 *
 	 * @since 2.1.0
 	 * @return void
@@ -503,7 +503,7 @@ class Common_Settings extends Ajax_Base {
 		wp_send_json_success( $response_data );
 	}
 	/**
-	 * Save settings.
+	 * This function preloads local fonts.
 	 *
 	 * @return void
 	 */
@@ -514,7 +514,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_preload_local_fonts', sanitize_text_field( $value ) );
 	}
 	/**
-	 * Save settings.
+	 * This function enables block conditions.
 	 *
 	 * @return void
 	 */
@@ -525,7 +525,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_enable_block_condition', sanitize_text_field( $value ) );
 	}
 	/**
-	 * Save settings.
+	 * This function enables block responsiveness.
 	 *
 	 * @return void
 	 */
@@ -536,7 +536,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_enable_block_responsive', sanitize_text_field( $value ) );
 	}
 	/**
-	 * Save settings.
+	 * This function enables dynamic content.
 	 *
 	 * @since 2.1.0
 	 * @return void
@@ -549,7 +549,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Save settings.
+	 * This function enables templates button.
 	 *
 	 * @return void
 	 */
@@ -561,7 +561,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Save settings.
+	 * This function enables the on-page CSS button .
 	 *
 	 * @return void
 	 */
@@ -573,7 +573,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Save settings.
+	 * This function activates and deactivates blocks .
 	 *
 	 * @return void
 	 */
@@ -598,7 +598,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Save settings.
+	 * This function enables beta updates.
 	 *
 	 * @return void
 	 */
@@ -610,7 +610,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Save settings.
+	 * This function enables legacy blocks.
 	 *
 	 * @return void
 	 */
@@ -622,7 +622,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Save settings.
+	 * This function enables file generation.
 	 *
 	 * @return void
 	 */
@@ -634,7 +634,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Save settings.
+	 * This function regenerates assets.
 	 *
 	 * @return void
 	 */
@@ -673,7 +673,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Save settings.
+	 * This function sanitizes form inputs.
 	 *
 	 * @param array $input_settings settimg data.
 	 */
@@ -697,7 +697,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Save settings.
+	 * This function loads font awesome 5.
 	 *
 	 * @return void
 	 */
@@ -709,7 +709,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Save settings.
+	 * This function auto recovers the block.
 	 *
 	 * @return void
 	 */
