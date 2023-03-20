@@ -767,6 +767,8 @@ select {
   height: 2.5rem;
 }.h-12 {
   height: 3rem;
+}.h-14 {
+  height: 3.5rem;
 }.h-16 {
   height: 4rem;
 }.h-20 {
@@ -1186,6 +1188,9 @@ select {
   line-height: 2.4rem;
 }.leading-tight {
   line-height: 1.25;
+}.text-amber-400 {
+  --tw-text-opacity: 1;
+  color: rgb(251 191 36 / var(--tw-text-opacity));
 }.text-emerald-500 {
   --tw-text-opacity: 1;
   color: rgb(16 185 129 / var(--tw-text-opacity));
