@@ -28,7 +28,10 @@ export default function MyAccount() {
             if ( data.success ) {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'License successfully validated!', 'ultimate-addons-for-gutenberg' ) } );
 			} else {
-				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: data?.data?.message } );
+				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: {
+					message : data?.data?.message,
+					messageType: 'error'
+				} } );
 			}
 			setRegenerateAssetsState( false );
 			location.reload(); // eslint-disable-line no-undef
@@ -40,7 +43,7 @@ export default function MyAccount() {
 		const formData = new window.FormData();
 		formData.append( 'action', 'uag_license_deactivation' );
 		formData.append( 'security', uag_react.license_deactivation_nonce );
-
+		
 		apiFetch( {
 			url: uag_react.ajax_url,
 			method: 'POST',
@@ -49,7 +52,10 @@ export default function MyAccount() {
             if ( data.success ) {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'License successfully deactivated!', 'ultimate-addons-for-gutenberg' ) } );
 			} else {
-				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: data?.data?.message } );
+				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: {
+					message : data?.data?.message,
+					messageType: 'error'
+				} } );
 			}
 			setRegenerateAssetsState( false );
 			location.reload(); // eslint-disable-line no-undef

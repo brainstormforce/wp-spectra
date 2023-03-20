@@ -1,6 +1,5 @@
 /* This popup handles all the setting update notifications */
 import { Fragment, useEffect } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
 import { Transition } from '@headlessui/react';
 import { CheckCircleIcon, ExclamationCircleIcon, XCircleIcon } from '@heroicons/react/outline';
 import { XIcon } from '@heroicons/react/solid';
@@ -10,16 +9,16 @@ export default function SettingsSavedNotification() {
 
 	const dispatch = useDispatch();
 
-	const settingsSavedNotification = useSelector( ( state ) => state.settingsSavedNotification );
+	let settingsSavedNotification = useSelector( ( state ) => state.settingsSavedNotification );
+	let messageType;
 
-	// Arrays for Warning and Failed payloads.
-	// If your notification needs one of these icons, add the Payload String here.
-	const warningPayloads = [
-		__( 'Placeholder Warning Text', 'ultimate-addons-for-gutenberg' ),
-	];
-	const failedPayloads = [
-		__( 'Placeholder Failed Text', 'ultimate-addons-for-gutenberg' ),
-	];
+	// To render a warning or error icon, send the payload as an Object with two KV pairs.
+	// message: The Settings Saved Notification String.
+	// messageType: The Icon Type.
+	if ( 'object' === typeof settingsSavedNotification ) {
+		messageType = settingsSavedNotification.messageType;
+		settingsSavedNotification = settingsSavedNotification.message;
+	}
 
 	useEffect( () => {
 		if ( '' !== settingsSavedNotification ) {
@@ -31,13 +30,13 @@ export default function SettingsSavedNotification() {
 
 	// Render the required Icon.
 	const renderIcon = () => {
-		switch ( true ) {
-			case warningPayloads.includes( settingsSavedNotification ):
+		switch ( messageType ) {
+			case 'warning':
 				return ( <ExclamationCircleIcon className="h-6 w-6 text-amber-400" aria-hidden="true" /> );
-			case failedPayloads.includes( settingsSavedNotification ):
+			case 'error':
 				return ( <XCircleIcon className="h-6 w-6 text-red-500" aria-hidden="true" /> );
-			case '' !== settingsSavedNotification:
-				return ( <CheckCircleIcon className="h-6 w-6 text-green-400" aria-hidden="true" /> );
+			default:
+				return ( '' === settingsSavedNotification ) ? '' : ( <CheckCircleIcon className="h-6 w-6 text-green-400" aria-hidden="true" /> );
 		}
 	}
 
@@ -60,7 +59,7 @@ export default function SettingsSavedNotification() {
 						leaveFrom="opacity-100"
 						leaveTo="opacity-0"
 					>
-						<div className="max-w-sm h-14 w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
+						<div className="max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
 							<div className="p-4">
 								<div className="flex items-start">
 									<div className="flex-shrink-0">
