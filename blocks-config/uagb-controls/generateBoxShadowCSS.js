@@ -8,7 +8,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
  * @param {number|undefined} blur        The blur value.
  * @param {number|undefined} spread      The spread value.
  * @param {string|undefined} color       The shadow color.
- * @param {string|undefined} type        The inset/outset type.
+ * @param {string} type                  The inset/outset type.
  * @param {string} altColor              An alternate color to use for hover if color is undefined.
  * @return {string}                      The generated css, or empty string if required properties aren't set.
  *
