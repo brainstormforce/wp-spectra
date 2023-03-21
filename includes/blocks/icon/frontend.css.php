@@ -25,13 +25,13 @@ $box_shadow_properties = array(
 	'vertical'   => $attr['iconBoxShadowVOffset'],
 	'blur'       => $attr['iconBoxShadowBlur'],
 	'spread'     => $attr['iconBoxShadowSpread'],
-	'color'      => $attr['iconBoxShadowColor'],	
+	'color'      => $attr['iconBoxShadowColor'],
 	'position'   => $attr['iconBoxShadowPosition'],
 );
 $box_shadow            = UAGB_Block_Helper::generate_shadow_css( $box_shadow_properties );
 
-$t_selectors         = array();
-$m_selectors         = array();
+$t_selectors = array();
+$m_selectors = array();
 
 $selectors['.uagb-icon-wrapper']                             = array(
 	'text-align' => $attr['align'],
