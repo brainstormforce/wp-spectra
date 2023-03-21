@@ -1834,27 +1834,41 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 		/**
 		 * Generate the Box Shadow CSS.
+		 * 
+		 * For Text Shadow CSS:
+		 * ( 'spread', 'type' ) should not be sent as params during the function call.
+		 * ( 'spread_unit' ) will have no effect.
+		 * 
+		 * For Box/Text Shadow Hover CSS:
+		 * ( 'alt_color' ) should be set as the attribute used for ( 'color' ) in Box/Text Shadow Normal CSS.
 		 *
-		 * @param int|string $horizontal  The horizontal value or an empty string.
-		 * @param int|string $vertical    The vertical value or an empty string.
-		 * @param int|string $blur        The blur value or an empty string.
-		 * @param int|string $spread      The spread value or an empty string.
-		 * @param string     $color       The color or an empty string.
-		 * @param string     $type        The inset/outset type.
-		 * @param string     $altColor    The alternate color to use for hover if color is unset.
-		 * @return string                 The generated border CSS or an empty string on early return.
+		 * @param array $shadow_properties  Array containing the necessary shadow properties.
+		 * @return string                   The generated border CSS or an empty string on early return.
 		 *
 		 * @since x.x.x
 		 */
-		public static function generate_box_shadow_css( $horizontal, $vertical, $blur, $spread, $color, $type, $altColor = '' ) {
+		public static function generate_shadow_css( $shadow_properties ) {
+			// Get the Object Properties.
+			$horizontal      = isset( $shadow_properties['horizontal'] ) ? $shadow_properties['horizontal'] : '';
+			$vertical        = isset( $shadow_properties['vertical'] ) ? $shadow_properties['vertical'] : '';
+			$blur            = isset( $shadow_properties['blur'] ) ? $shadow_properties['blur'] : '';
+			$spread          = isset( $shadow_properties['spread'] ) ? $shadow_properties['spread'] : '';
+			$horizontal_unit = isset( $shadow_properties['horizontal_unit'] ) ? $shadow_properties['horizontal_unit'] : 'px';
+			$vertical_unit   = isset( $shadow_properties['vertical_unit'] ) ? $shadow_properties['vertical_unit'] : 'px';
+			$blur_unit       = isset( $shadow_properties['blur_unit'] ) ? $shadow_properties['blur_unit'] : 'px';
+			$spread_unit     = isset( $shadow_properties['spread_unit'] ) ? $shadow_properties['spread_unit'] : 'px';
+			$color           = isset( $shadow_properties['color'] ) ? $shadow_properties['color'] : '';
+			$position        = isset( $shadow_properties['position'] ) ? $shadow_properties['position'] : 'outset';
+			$alt_color       = isset( $shadow_properties['alt_color'] ) ? $shadow_properties['alt_color'] : '';
+
 			// Although optional, color is required for Sarafi on PC. Return early if color isn't set.
-			if ( ! $color && ! $altColor ) {
+			if ( ! $color && ! $alt_color ) {
 				return '';
 			}
 
 			// Get the CSS units for the required shadow properties.
-			$horizontal = UAGB_Helper::get_css_value( $horizontal, 'px' );
-			$vertical   = UAGB_Helper::get_css_value( $vertical, 'px' );
+			$horizontal = UAGB_Helper::get_css_value( $horizontal, $horizontal_unit );
+			$vertical   = UAGB_Helper::get_css_value( $vertical, $vertical_unit );
 
 			// If both required properties don't exist, shaow won't be generated.
 			if ( ! $horizontal && ! $vertical ) {
@@ -1862,14 +1876,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			// Get the CSS units for the optional shadow properties.
-			$blur   = UAGB_Helper::get_css_value( $blur, 'px' );
-			$spread = UAGB_Helper::get_css_value( $spread, 'px' );
+			$blur   = UAGB_Helper::get_css_value( $blur, $blur_unit );
+			$spread = UAGB_Helper::get_css_value( $spread, $spread_unit );
 
 			// Return the full CSS if blur is set, else return the required css.
 			return $blur ? (
-				( $horizontal ? $horizontal : 0 ) . ' ' . ( $vertical ? $vertical : 0 ) . ' ' . $blur . ( $spread ? " {$spread}" : '' ) . ' ' . ( $color ? $color : $altColor ) . ( 'outset' === $type ? '' : " {$type}" )
+				( $horizontal ? $horizontal : 0 ) . ' ' . ( $vertical ? $vertical : 0 ) . ' ' . $blur . ( $spread ? " {$spread}" : '' ) . ' ' . ( $color ? $color : $alt_color ) . ( 'outset' === $position ? '' : " {$position}" )
 			) : (
-				( $horizontal ? $horizontal : 0 ) . ' ' . ( $vertical ? $vertical : 0 ) . ' ' . ( $color ? $color : $altColor ) . ( 'outset' === $type ? '' : " {$type}" )
+				( $horizontal ? $horizontal : 0 ) . ' ' . ( $vertical ? $vertical : 0 ) . ' ' . ( $color ? $color : $alt_color ) . ( 'outset' === $position ? '' : " {$position}" )
 			);
 		}
 	}

@@ -5,7 +5,7 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBorderCSS from '@Controls/generateBorderCSS';
-import generateBoxShadowCSS from '@Controls/generateBoxShadowCSS';
+import generateShadowCSS from '@Controls/generateShadowCSS';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 export default function styling( props ) {
@@ -205,23 +205,23 @@ export default function styling( props ) {
 	const boxBorderCSSMobile = generateBorderCSS( props.attributes, 'box', 'mobile' );
 
 	// Box Shadow - Fallback is used to match the PHP Defaults - Box Shadow without Fallback will require Backward Compatibility.
-	const boxShadowCSS = generateBoxShadowCSS(
-		getFallbackNumber( boxShadowHOffset, 'boxShadowHOffset', blockName ),
-		getFallbackNumber( boxShadowVOffset, 'boxShadowVOffset', blockName ),
-		boxShadowBlur,
-		boxShadowSpread,
-		boxShadowColor,
-		boxShadowPosition
-	);
-	const boxShadowHoverCSS = generateBoxShadowCSS(
-		getFallbackNumber( boxShadowHOffsetHover, 'boxShadowHOffsetHover', blockName ),
-		getFallbackNumber( boxShadowVOffsetHover, 'boxShadowVOffsetHover', blockName ),
-		boxShadowBlurHover,
-		boxShadowSpreadHover,
-		boxShadowColorHover,
-		boxShadowPositionHover,
-		boxShadowColor,
-	);
+	const boxShadowCSS = generateShadowCSS( {
+		'horizontal': getFallbackNumber( boxShadowHOffset, 'boxShadowHOffset', blockName ),
+		'vertical': getFallbackNumber( boxShadowVOffset, 'boxShadowVOffset', blockName ),
+		'blur': boxShadowBlur,
+		'spread': boxShadowSpread,
+		'color': boxShadowColor,
+		'position': boxShadowPosition,
+	} );
+	const boxShadowHoverCSS = generateShadowCSS( {
+		'horizontal': getFallbackNumber( boxShadowHOffsetHover, 'boxShadowHOffsetHover', blockName ),
+		'vertical': getFallbackNumber( boxShadowVOffsetHover, 'boxShadowVOffsetHover', blockName ),
+		'blur': boxShadowBlurHover,
+		'spread': boxShadowSpreadHover,
+		'color': boxShadowColorHover,
+		'position': boxShadowPositionHover,
+		'altColor': boxShadowColor,
+	} );
 
 	const tabletSelectors = {};
 	const mobileSelectors = {};

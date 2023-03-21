@@ -22,23 +22,26 @@ $box_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'box
 $box_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'box', 'mobile' );
 
 // Box Shadow.
-$box_shadow_css       = UAGB_Block_Helper::generate_box_shadow_css(
-	$attr['boxShadowHOffset'],
-	$attr['boxShadowVOffset'],
-	$attr['boxShadowBlur'],
-	$attr['boxShadowSpread'],
-	$attr['boxShadowColor'],
-	$attr['boxShadowPosition']
+$box_shadow_properties       = array(
+	'horizontal' => $attr['boxShadowHOffset'],
+	'vertical'   => $attr['boxShadowVOffset'],
+	'blur'       => $attr['boxShadowBlur'],
+	'spread'     => $attr['boxShadowSpread'],
+	'color'      => $attr['boxShadowColor'],
+	'position'   => $attr['boxShadowPosition'],
 );
-$box_shadow_hover_css = UAGB_Block_Helper::generate_box_shadow_css(
-	$attr['boxShadowHOffsetHover'],
-	$attr['boxShadowVOffsetHover'],
-	$attr['boxShadowBlurHover'],
-	$attr['boxShadowSpreadHover'],
-	$attr['boxShadowColorHover'],
-	$attr['boxShadowPositionHover'],
-	$attr['boxShadowColor']
+$box_shadow_hover_properties = array(
+	'horizontal' => $attr['boxShadowHOffsetHover'],
+	'vertical'   => $attr['boxShadowVOffsetHover'],
+	'blur'       => $attr['boxShadowBlurHover'],
+	'spread'     => $attr['boxShadowSpreadHover'],
+	'color'      => $attr['boxShadowColorHover'],
+	'position'   => $attr['boxShadowPositionHover'],
+	'alt_color'  => $attr['boxShadowColor'],
 );
+
+$box_shadow_css       = UAGB_Block_Helper::generate_shadow_css( $box_shadow_properties );
+$box_shadow_hover_css = UAGB_Block_Helper::generate_shadow_css( $box_shadow_hover_properties );
 
 $m_selectors = array();
 $t_selectors = array();
