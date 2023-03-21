@@ -364,7 +364,7 @@ const animationOptions = ( props ) => {
 						onClick={ () => playAnimation() }
 						variant='tertiary'
 					>
-						{ __( 'Animate it!', 'ultimate-addons-for-gutenberg' ) }
+						{ __( 'Preview', 'ultimate-addons-for-gutenberg' ) }
 					</Button>
 				</>
 			}
