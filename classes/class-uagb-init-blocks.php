@@ -566,9 +566,6 @@ class UAGB_Init_Blocks {
 
 		$content_width = \UAGB_Admin_Helper::get_global_content_width();
 
-		if ( '' === $content_width ) {
-			$content_width = 1140;
-		}
 
 		$container_padding = UAGB_Admin_Helper::get_admin_settings_option( 'uag_container_global_padding', 'default' );
 
