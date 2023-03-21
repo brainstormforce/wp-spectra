@@ -26,6 +26,7 @@ import AutoBlockRecovery from '@DashboardApp/pages/settings/AutoBlockRecovery';
 import ContainerGlobalPadding from '@DashboardApp/pages/settings/ContainerGlobalPadding';
 import ContainerGlobalElementsGap from '@DashboardApp/pages/settings/ContainerGlobalElementsGap';
 import MyAccount from '@DashboardApp/pages/settings/MyAccount';
+import InstagramUsers from '@DashboardApp/pages/settings/block-settings/InstagramUsers';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import{ useEffect } from 'react';
 
@@ -35,7 +36,6 @@ function classNames( ...classes ) {
 }
 
 const Settings = () => {
-
 
 	const query = new URLSearchParams( useLocation()?.search );
 	const dispatch = useDispatch();
@@ -50,7 +50,7 @@ const Settings = () => {
         { name: __( 'Templates', 'ultimate-addons-for-gutenberg' ), slug: 'templates', icon: SettingsIcons.templates },
         { name: __( 'Version Control', 'ultimate-addons-for-gutenberg' ), slug: 'version-control', icon: SettingsIcons['version-control'] },
         { name: __( 'Performance', 'ultimate-addons-for-gutenberg' ), slug: 'fonts-performance', icon: SettingsIcons['fonts-performance'] },
-		{ name: __( 'Block Settings', 'ultimate-addons-for-gutenberg' ), slug: 'block-settings', icon: SettingsIcons['block-settings'] },
+		{ name: __( 'Integrations', 'ultimate-addons-for-gutenberg' ), slug: 'block-settings', icon: SettingsIcons['block-settings'] },
 		{ name: __( 'Coming Soon', 'ultimate-addons-for-gutenberg' ), slug: 'coming-soon', icon: SettingsIcons['coming-soon'] },
     ];
 
@@ -66,7 +66,7 @@ const Settings = () => {
 		if( uag_react.spectra_pro_status && !uag_react.license_status ){
 			activeSettingsTabFromHash = ( activeHash && 'settings' === activePath ) ? activeHash : 'license';
 			history.push( {
-				pathname: 'options-general.php',
+				pathname: 'admin.php',
 				search: `?page=spectra&path=settings&settings=${activeSettingsTabFromHash}`,
 			} )
 		}
@@ -88,7 +88,7 @@ const Settings = () => {
                             {navigation.map( ( item ) => (
                             <Link // eslint-disable-line
                                 to={ {
-                                    pathname: 'options-general.php',
+                                    pathname: 'admin.php',
                                     search: `?page=spectra&path=settings&settings=${item.slug}`,
                                 } }
                                 key={item.name}
@@ -156,6 +156,14 @@ const Settings = () => {
                         }
                         { 'block-settings' === activeSettingsNavigationTab &&
 							<>
+								{
+									uag_react.spectra_pro_status && (
+										<>
+											<InstagramUsers/>
+											{/* SOCIAL MARKER */}
+										</>
+									)
+								}
 								<BlockSettings/>
 							</>
                         }

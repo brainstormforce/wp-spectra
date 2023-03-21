@@ -87,7 +87,7 @@ class Admin_Menu {
 	 */
 	public function add_action_links( $links ) {
 
-		$default_url = admin_url( 'options-general.php?page=' . $this->menu_slug );
+		$default_url = admin_url( 'admin.php?page=' . $this->menu_slug );
 
 		$mylinks = array(
 			'<a href="' . $default_url . '">' . __( 'Settings', 'ultimate-addons-for-gutenberg' ) . '</a>',
@@ -204,7 +204,7 @@ class Admin_Menu {
 			array(
 				'current_user'             => ! empty( wp_get_current_user()->user_firstname ) ? wp_get_current_user()->user_firstname : wp_get_current_user()->display_name,
 				'admin_base_url'           => admin_url(),
-				'uag_base_url'             => admin_url( 'options-general.php?page=' . $this->menu_slug ),
+				'uag_base_url'             => admin_url( 'admin.php?page=' . $this->menu_slug ),
 				'plugin_dir'               => UAGB_URL,
 				'plugin_ver'               => UAGB_VER,
 				'logo_url'                 => UAGB_URL . 'admin-core/assets/images/dashboard-uag-logo.svg',
@@ -222,6 +222,7 @@ class Admin_Menu {
 				'spectra_pro_ver'          => defined( 'SPECTRA_PRO_VER' ) ? SPECTRA_PRO_VER : null,
 				'spectra_custom_fonts'     => apply_filters( 'spectra_system_fonts', array() ),
 				'is_allow_registration'    => (bool) get_option( 'users_can_register' ),
+				'insta_refresh_users'      => apply_filters( 'uag_refresh_instagram_users', true ),
 			)
 		);
 

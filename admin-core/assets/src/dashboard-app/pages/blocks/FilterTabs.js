@@ -191,7 +191,7 @@ const FilterTabs = () => {
                     {tabs.map( ( tab ) => (
                     <Link // eslint-disable-line
 						to={ {
-							pathname: 'options-general.php',
+							pathname: 'admin.php',
 							search: `?page=spectra&path=blocks&filterTab=${tab.slug}`,
 						} }
                         key={tab.name}

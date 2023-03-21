@@ -83,6 +83,9 @@ class Common_Settings extends Ajax_Base {
 			'auto_block_recovery',
 			'enable_legacy_blocks',
 			'pro_activate',
+			'insta_linked_accounts',
+			'insta_all_users_media',
+			'insta_refresh_all_tokens',
 		);
 
 		$this->init_ajax_events( $ajax_events );
@@ -107,7 +110,7 @@ class Common_Settings extends Ajax_Base {
 		 * Nonce verification
 		 */
 		if ( ! check_ajax_referer( $option, $security, false ) ) {
-			wp_send_json_error( array( 'messsage' => $this->get_error_msg( 'nonce' ) ) );
+			wp_send_json_error( array( 'messsage' => $this->get_error_msg( 'nonce' ) ) ); 
 		}
 	}
 
@@ -156,7 +159,7 @@ class Common_Settings extends Ajax_Base {
 		wp_clean_plugins_cache();
 		$value = ( isset( $_POST['value'] ) ) ? sanitize_text_field( wp_unslash( $_POST['value'] ) ) : '';
 		if ( ! current_user_can( 'activate_plugins' ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) ); // phpcs:ignore 
+			$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) ); // phpcs:ignore PHPCompatibility.Variables.ForbiddenThisUseContexts.OutsideObjectContext
 			wp_send_json_error( $response_data );
 		}
 
@@ -164,12 +167,12 @@ class Common_Settings extends Ajax_Base {
 		 * Nonce verification
 		 */
 		if ( ! check_ajax_referer( 'uag_pro_activate', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) ); // phpcs:ignore
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) ); // phpcs:ignore PHPCompatibility.Variables.ForbiddenThisUseContexts.OutsideObjectContext
 			wp_send_json_error( $response_data );
 		}
 
 		if ( empty( $value ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'default' ) ); // phpcs:ignore
+			$response_data = array( 'messsage' => $this->get_error_msg( 'default' ) ); // phpcs:ignore PHPCompatibility.Variables.ForbiddenThisUseContexts.OutsideObjectContext
 			wp_send_json_error( $response_data );
 		}
 
@@ -193,7 +196,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * This function saves google recaptcha v3 secret key.
+	 * Save settings - Saves google recaptcha v3 secret key.
 	 *
 	 * @return void
 	 */
@@ -204,7 +207,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_recaptcha_secret_key_v3', sanitize_text_field( $value ) );
 	}
 	/**
-	 * This function saves google recaptcha v2 secret key.
+	 * Save settings - Saves google recaptcha v2 secret key.
 	 *
 	 * @return void
 	 */
@@ -217,7 +220,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * This function saves google recaptcha v2 site key.
+	 * Save settings - Saves google recaptcha v2 site key.
 	 *
 	 * @return void
 	 */
@@ -229,7 +232,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * This function saves google recaptcha v3 site key.
+	 * Save settings - Saves google recaptcha v3 site key.
 	 *
 	 * @return void
 	 */
@@ -240,7 +243,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_recaptcha_site_key_v3', sanitize_text_field( $value ) );
 	}
 	/**
-	 * This function saves fetch_pages.
+	 * Save settings - Saves fetch_pages.
 	 *
 	 * @return void
 	 */
@@ -282,7 +285,7 @@ class Common_Settings extends Ajax_Base {
 		wp_send_json_success( $results );
 	}
 	/**
-	 * This function saves coming_soon_page.
+	 * Save settings - Saves coming_soon_page.
 	 *
 	 * @return void
 	 */
@@ -294,7 +297,7 @@ class Common_Settings extends Ajax_Base {
 
 	}
 	/**
-	 * This function saves enable_coming_soon_mode.
+	 * Save settings - Saves enable_coming_soon_mode.
 	 *
 	 * @return void
 	 */
@@ -305,7 +308,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_enable_coming_soon_mode', sanitize_text_field( $value ) );
 	}
 	/**
-	 * This function saves content_width.
+	 * Save setting - Saves content_width.
 	 *
 	 * @return void
 	 */
@@ -316,7 +319,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_content_width', sanitize_text_field( $value ) );
 	}
 	/**
-	 * This function saves container global padding.
+	 * Save setting - Saves container global padding.
 	 *
 	 * @return void
 	 */
@@ -327,7 +330,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_container_global_padding', sanitize_text_field( $value ) );
 	}
 	/**
-	 * This function saves container global elements gap.
+	 * Save setting - Saves container global elements gap.
 	 *
 	 * @return void
 	 */
@@ -339,7 +342,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * This function saves blocks editor spacing.
+	 * Save setting - Saves blocks editor spacing.
 	 *
 	 * @return void
 	 */
@@ -350,7 +353,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_blocks_editor_spacing', sanitize_text_field( $value ) );
 	}
 	/**
-	 * This function loads selected font globally.
+	 * Save setting - Loads selected font globally.
 	 *
 	 * @return void
 	 */
@@ -361,7 +364,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_load_select_font_globally', sanitize_text_field( $value ) );
 	}
 	/**
-	 * This function saves selected font globally.
+	 * Save setting - Saves selected font globally.
 	 *
 	 * @return void
 	 */
@@ -379,7 +382,7 @@ class Common_Settings extends Ajax_Base {
 
 	}
 	/**
-	 * This function enables masonry gallery.
+	 * Save setting - Enables masonry gallery.
 	 *
 	 * @return void
 	 */
@@ -390,7 +393,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_enable_masonry_gallery', sanitize_text_field( $value ) );
 	}
 	/**
-	 * This function loads gfonts locally.
+	 * Save setting - Loads gfonts locally.
 	 *
 	 * @return void
 	 */
@@ -401,7 +404,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_load_gfonts_locally', sanitize_text_field( $value ) );
 	}
 	/**
-	 * This function collapses panels.
+	 * Save setting - Collapses panels.
 	 *
 	 * @return void
 	 */
@@ -412,7 +415,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_collapse_panels', sanitize_text_field( $value ) );
 	}
 	/**
-	 * This function enables copy paste.
+	 * Save setting - Enables copy paste.
 	 *
 	 * @return void
 	 */
@@ -423,7 +426,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_copy_paste', sanitize_text_field( $value ) );
 	}
 	/**
-	 * This function saves social settings.
+	 * Save setting - Saves social settings.
 	 *
 	 * @since 2.1.0
 	 * @return void
@@ -473,7 +476,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_social', $social );
 	}
 	/**
-	 * This function enables dynamic content mode.
+	 * Save setting - Enables dynamic content mode.
 	 *
 	 * @since 2.1.0
 	 * @return void
@@ -503,7 +506,7 @@ class Common_Settings extends Ajax_Base {
 		wp_send_json_success( $response_data );
 	}
 	/**
-	 * This function preloads local fonts.
+	 * Save setting - Preloads local fonts.
 	 *
 	 * @return void
 	 */
@@ -514,7 +517,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_preload_local_fonts', sanitize_text_field( $value ) );
 	}
 	/**
-	 * This function enables block conditions.
+	 * Save setting - Enables block conditions.
 	 *
 	 * @return void
 	 * @since 2.4.0
@@ -526,7 +529,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_enable_block_condition', sanitize_text_field( $value ) );
 	}
 	/**
-	 * This function enables block responsiveness.
+	 * Save setting - Enables block responsiveness.
 	 *
 	 * @return void
 	 */
@@ -537,7 +540,7 @@ class Common_Settings extends Ajax_Base {
 		$this->save_admin_settings( 'uag_enable_block_responsive', sanitize_text_field( $value ) );
 	}
 	/**
-	 * This function enables dynamic content.
+	 * Save setting - Enables dynamic content.
 	 *
 	 * @since 2.1.0
 	 * @return void
@@ -550,7 +553,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * This function enables templates button.
+	 * Save setting - Enables templates button.
 	 *
 	 * @return void
 	 */
@@ -562,7 +565,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * This function enables the on-page CSS button .
+	 * Save setting - Enables the on-page CSS button .
 	 *
 	 * @return void
 	 */
@@ -574,7 +577,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * This function activates and deactivates blocks .
+	 * Save setting - Activates and deactivates blocks .
 	 *
 	 * @return void
 	 */
@@ -599,7 +602,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * This function enables beta updates.
+	 * Save setting - Enables beta updates.
 	 *
 	 * @return void
 	 */
@@ -611,7 +614,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * This function enables legacy blocks.
+	 * Save setting - Enables legacy blocks.
 	 *
 	 * @return void
 	 */
@@ -623,7 +626,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * This function enables file generation.
+	 * Save setting - Enables file generation.
 	 *
 	 * @return void
 	 */
@@ -635,7 +638,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * This function regenerates assets.
+	 * Save setting - Regenerates assets.
 	 *
 	 * @return void
 	 */
@@ -674,7 +677,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * This function sanitizes form inputs.
+	 * Save setting - Sanitizes form inputs.
 	 *
 	 * @param array $input_settings settimg data.
 	 */
@@ -698,7 +701,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * This function loads font awesome 5.
+	 * Save setting - Loads font awesome 5.
 	 *
 	 * @return void
 	 */
@@ -710,7 +713,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * This function auto recovers the block.
+	 * Save setting - Auto recovers the block.
 	 *
 	 * @return void
 	 */
@@ -719,5 +722,56 @@ class Common_Settings extends Ajax_Base {
 		$this->check_permission_nonce( 'uag_auto_block_recovery' );
 		$value = $this->check_post_value(); 
 		$this->save_admin_settings( 'uag_auto_block_recovery', sanitize_text_field( $value ) );
+	}
+	
+	/**
+	 * Save setting - All Linked Instagram Accounts.
+	 *
+	 * @return void
+	 *
+	 * @since x.x.x
+	 */
+	public function insta_linked_accounts() {
+		
+		$this->check_permission_nonce( 'uag_insta_linked_accounts' );
+		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.NonceVerification.Missing
+		// The previous $_POST['value'] is not sanitized, as the array sanitization is handled in the class method used below.
+		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_insta_linked_accounts', $this->sanitize_form_inputs( $value ) );
+
+		wp_send_json_success( array( 'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ) ) );
+	}
+	
+	/**
+	 * Save setting - All Instagram Users' Media.
+	 *
+	 * @return void
+	 *
+	 * @since x.x.x
+	 */
+	public function insta_all_users_media() {
+	
+		$this->check_permission_nonce( 'uag_insta_all_users_media' );
+		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.NonceVerification.Missing
+		// The previous $_POST['value'] is not sanitized, as the array sanitization is handled in the class method used below.
+		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_insta_all_users_media', $this->sanitize_form_inputs( $value ) );
+
+		wp_send_json_success( array( 'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ) ) );
+	}
+
+	/**
+	 * Ajax Request - Refresh All Instagram Tokens.
+	 *
+	 * @return void
+	 *
+	 * @since x.x.x
+	 */
+	public function insta_refresh_all_tokens() {
+		
+		$this->check_permission_nonce( 'uag_insta_refresh_all_tokens' ); 
+		if ( ! empty( $_POST['value'] ) && class_exists( '\SpectraPro\BlocksConfig\InstagramFeed\Block' ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Missing
+			\SpectraPro\BlocksConfig\InstagramFeed\Block::refresh_all_instagram_users();
+			wp_send_json_success( array( 'messsage' => __( 'Successfully refreshed tokens!', 'ultimate-addons-for-gutenberg' ) ) );
+		}
+		wp_send_json_error( array( 'messsage' => __( 'Failed to refresh tokens', 'ultimate-addons-for-gutenberg' ) ) );
 	}
 }
