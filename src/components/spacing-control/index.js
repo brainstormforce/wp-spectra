@@ -359,28 +359,28 @@ const SpacingControl = ( props ) => {
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
-					min={( label==='Width' || label==='Radius' )?0:''}
+					min={ props.min }
 					onChange={ ( e ) => onChangeTopValue( e, 'desktop' ) }
 					value={ ( undefined !== valueTop.value ) ? valueTop.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
-					min={( label==='Width' || label==='Radius' )?0:''}
+					min={ props.min }
 					onChange={ ( e ) => onChangeRightValue( e, 'desktop' ) }
 					value={ ( undefined !== valueRight.value ) ? valueRight.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
-					min={( label==='Width' || label==='Radius' )?0:''}
+					min={ props.min }
 					onChange={ ( e ) => onChangeBottomValue( e, 'desktop' ) }
 					value={ ( undefined !== valueBottom.value ) ? valueBottom.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
-					min={( label==='Width' || label==='Radius' )?0:''}
+					min={ props.min }
 					onChange={ ( e ) => onChangeLeftValue( e, 'desktop' ) }
 					value={ ( undefined !== valueLeft.value ) ? valueLeft.value : '' }
 				/>
@@ -394,28 +394,28 @@ const SpacingControl = ( props ) => {
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
-					min={( label==='Width' || label==='Radius' )?0:''}
+					min={ props.min }
 					onChange={ ( e ) => onChangeTopValue( e, 'tablet' ) }
 					value={ ( undefined !== valueTopTablet.value ) ? valueTopTablet.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
-					min={( label==='Width' || label==='Radius' )?0:''}
+					min={ props.min }
 					onChange={ ( e ) => onChangeRightValue( e, 'tablet' ) }
 					value={ ( undefined !== valueRightTablet.value ) ? valueRightTablet.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
-					min={( label==='Width' || label==='Radius' )?0:''}
+					min={ props.min }
 					onChange={ ( e ) => onChangeBottomValue( e, 'tablet' ) }
 					value={ ( undefined !== valueBottomTablet.value ) ? valueBottomTablet.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
-					min={( label==='Width' || label==='Radius' )?0:''}
+					min={ props.min }
 					onChange={ ( e ) => onChangeLeftValue( e, 'tablet' ) }
 					value={ ( undefined !== valueLeftTablet.value ) ? valueLeftTablet.value : '' }
 				/>
@@ -429,28 +429,28 @@ const SpacingControl = ( props ) => {
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
-					min={( label==='Width' || label==='Radius' )?0:''}
+					min={ props.min }
 					onChange={ ( e ) => onChangeTopValue( e, 'mobile' ) }
 					value={ ( undefined !== valueTopMobile.value ) ? valueTopMobile.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
-					min={( label==='Width' || label==='Radius' )?0:''}
+					min={ props.min }
 					onChange={ ( e ) => onChangeRightValue( e, 'mobile' ) }
 					value={ ( undefined !== valueRightMobile.value ) ? valueRightMobile.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
-					min={( label==='Width' || label==='Radius' )?0:''}
+					min={ props.min }
 					onChange={ ( e ) => onChangeBottomValue( e, 'mobile' ) }
 					value={ ( undefined !== valueBottomMobile.value ) ? valueBottomMobile.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
-					min={( label==='Width' || label==='Radius' )?0:''}
+					min={ props.min }
 					onChange={ ( e ) => onChangeLeftValue( e, 'mobile' ) }
 					value={ ( undefined !== valueLeftMobile.value ) ? valueLeftMobile.value : '' }
 				/>
