@@ -14,6 +14,14 @@ export default function MyAccount() {
 	const licenseMessage = licenseStatus ? __( 'License successfully validated!', 'ultimate-addons-for-gutenberg' ) : __( `Please enter your valid license key below to activate Spectra Pro!`, 'ultimate-addons-for-gutenberg' );
 
 	const activateHandler = () => {
+
+		if ( ! licenseKey ) {
+			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: {
+				message : __( 'Please enter a valid license key!', 'ultimate-addons-for-gutenberg' ),
+				messageType: 'error'
+			} } );
+			return;
+		}
 		setRegenerateAssetsState( 'loading' );
 		const formData = new window.FormData();
 		formData.append( 'action', 'uag_license_activation' );
@@ -27,14 +35,15 @@ export default function MyAccount() {
 		} ).then( ( data ) => {
             if ( data.success ) {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'License successfully validated!', 'ultimate-addons-for-gutenberg' ) } );
+				location.reload(); // eslint-disable-line no-undef
 			} else {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: {
 					message : data?.data?.message,
 					messageType: 'error'
 				} } );
+				setlicenseKey( '' );
 			}
 			setRegenerateAssetsState( false );
-			location.reload(); // eslint-disable-line no-undef
 		} );
 	};
 
@@ -51,6 +60,7 @@ export default function MyAccount() {
 		} ).then( ( data ) => {
             if ( data.success ) {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'License successfully deactivated!', 'ultimate-addons-for-gutenberg' ) } );
+				location.reload(); // eslint-disable-line no-undef
 			} else {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: {
 					message : data?.data?.message,
@@ -58,7 +68,6 @@ export default function MyAccount() {
 				} } );
 			}
 			setRegenerateAssetsState( false );
-			location.reload(); // eslint-disable-line no-undef
 		} );
 	};
 
