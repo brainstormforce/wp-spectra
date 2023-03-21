@@ -123,7 +123,6 @@ class Common_Settings extends Ajax_Base {
 	 * @return void
 	 */
 	private function save_admin_settings( $option, $value ) {
-		// nonce verification done in function check_permission_nonce.
 		\UAGB_Admin_Helper::update_admin_settings_option( $option, $value );
 		
 
@@ -519,8 +518,8 @@ class Common_Settings extends Ajax_Base {
 		$value = $this->check_post_value();
 
 		// will sanitize $value in later stage.
-		$value = isset( $value ) ? json_decode( stripslashes( $value ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-        
+		$value = json_decode( stripslashes( $value ), true ); 
+		
 		if ( 'disabled' === \UAGB_Helper::$file_generation ) {
 			\UAGB_Admin_Helper::create_specific_stylesheet(); // Get Specific Stylesheet.
 		}
@@ -655,7 +654,6 @@ class Common_Settings extends Ajax_Base {
 	public function insta_linked_accounts() {
 		$this->check_permission_nonce( 'uag_insta_linked_accounts' );
 		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.NonceVerification.Missing
-		// The previous $_POST['value'] is not sanitized, as the array sanitization is handled in the class method used below.
 		$this->save_admin_settings( 'uag_insta_linked_accounts', $this->sanitize_form_inputs( $value ) );
 	}
 	
@@ -669,7 +667,6 @@ class Common_Settings extends Ajax_Base {
 	public function insta_all_users_media() {
 		$this->check_permission_nonce( 'uag_insta_all_users_media' );
 		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.NonceVerification.Missing
-		// The previous $_POST['value'] is not sanitized, as the array sanitization is handled in the class method used below.
 		$this->save_admin_settings( 'uag_insta_all_users_media', $this->sanitize_form_inputs( $value ) );
 	}
 
