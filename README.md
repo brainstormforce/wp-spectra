@@ -171,7 +171,10 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### x.x.x ###
-* Fix: Global - Font not loading on editor in FSE theme.
+- Improvement: Added Complete FSE Styles loading compatibility with Spectra Blocks.
+- Fix: Fonts were not loading in editor for FSE template.
+- Fix: Container - inherit content width from FSE global styles.
+- Fix: Image - Resolve an issue of image caption visible twice in editor when caption is enable.
 * Fix: Spectra blocks editor spacing conflicting with Blocksy theme.
 * Fix: Inline Notice - Content color is not working in the backend.
 * Fix: Inline Notice - Content typography is not working.
