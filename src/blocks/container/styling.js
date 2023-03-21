@@ -227,6 +227,12 @@ function styling( props ) {
 		'.wp-block-uagb-container .block-editor-block-list__block' : {
 			'color': textColor,
 		},
+		'.wp-block-uagb-container .block-editor-block-list__block .uagb-heading-text' : {
+			'color': textColor,
+		},
+		'.wp-block-uagb-container .block-editor-block-list__block .uagb-cta__title' : {
+			'color': textColor,
+		},
 		'.wp-block-uagb-container .block-editor-block-list__block a' : {
 			'color': linkColor,
 		},

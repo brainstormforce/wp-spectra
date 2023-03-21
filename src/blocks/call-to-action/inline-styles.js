@@ -237,7 +237,7 @@ function CtaStyle( props ) {
 				titleLineHeightType
 			),
 			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
-			'color': titleColor,
+			'color': titleColor + ' !important',
 			'margin-bottom': generateCSSUnit( titleSpaceFallback, titleSpaceType ),
 		},
 

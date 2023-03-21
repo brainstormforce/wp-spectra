@@ -303,7 +303,7 @@ function styling( props ) {
 		'font-weight': headFontWeight,
 		'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
 		'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),
-		'color': headingColor,
+		'color': headingColor + ' !important',
 		'margin-bottom': generateCSSUnit(
 			getFallbackNumber( headSpace, 'headSpace', blockName ),
 			'px'

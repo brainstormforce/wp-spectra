@@ -127,10 +127,28 @@ if ( ( $attr['isBlockRootParent'] && ! ( 'alignwide' === $attr['innerContentWidt
 }
 
 $background_video_opacity_value = ( isset( $attr['backgroundVideoOpacity'] ) && 'none' !== $attr['overlayType'] && ( ( 'color' === $attr['overlayType'] && ! empty( $attr['backgroundVideoColor'] ) ) || ( 'gradient' === $attr['overlayType'] && ! empty( $attr['gradientValue'] ) ) ) ) ? 1 - $attr['backgroundVideoOpacity'] : 1;
-
+$container_css_selector = '.uagb-block-' . $id . '.wp-block-uagb-container';
 $selectors = array(
 	'.uagb-block-' . $id . '.wp-block-uagb-container' => array(
 		'color' => $attr['textColor'],
+	),
+	$container_css_selector . ' h1' => array(
+		'color' => $attr['textColor'],
+	),
+	$container_css_selector . ' h2' => array(
+		'color' => $attr['textColor'],
+	),
+	$container_css_selector . ' h3' => array(
+		'color' => $attr['textColor'],
+	),
+	$container_css_selector . ' h4' => array(
+		'color' => $attr['textColor'],
+	),
+	$container_css_selector . ' h5' => array(
+		'color' => $attr['textColor'],
+	),
+	$container_css_selector . ' h6' => array(
+		'color' => $attr['textColor'] ,
 	),
 	'.uagb-block-' . $id . ' a'                       => array(
 		'color' => $attr['linkColor'],

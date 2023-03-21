@@ -22,7 +22,7 @@ $highLight_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr
 
 $selectors = array(
 	'.wp-block-uagb-advanced-heading .uagb-heading-text' => array(
-		'color'         => $attr['headingColor'],
+		'color'         => $attr['headingColor'] . ' !important',
 		'margin-bottom' => UAGB_Helper::get_css_value(
 			UAGB_Block_Helper::get_fallback_number( $attr['headSpace'], 'headSpace', $block_name ),
 			'px'
