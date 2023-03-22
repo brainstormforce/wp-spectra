@@ -1,8 +1,8 @@
 /**
  * Accept array of classes.
  *
- * @param  {...string} classes Selectors to combine.
- * @return {string}            The single-line selector string.
+ * @param  {Array}  classes Selectors to combine.
+ * @return {string}         The single-line selector string.
  *
  * @since x.x.x
  */
