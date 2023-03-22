@@ -610,7 +610,8 @@ class Common_Settings extends Ajax_Base {
 	/**
 	 * Save setting - Sanitizes form inputs.
 	 *
-	 * @param array $input_settings settimg data.
+	 * @param array $input_settings setting data.
+	 * @return array    The sanitized form inputs.
 	 */
 	public function sanitize_form_inputs( $input_settings = array() ) {
 		$new_settings = array();
