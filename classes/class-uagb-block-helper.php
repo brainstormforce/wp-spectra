@@ -1833,7 +1833,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		}
 
 		/**
-		 * Generate the Box Shadow CSS.
+ 		 * Generate the Box Shadow or Text Shadow CSS.
 		 * 
 		 * For Text Shadow CSS:
 		 * ( 'spread', 'position' ) should not be sent as params during the function call.
