@@ -113,7 +113,12 @@ class UAGB_Init_Blocks {
 			}
 		}
 
-		if ( ! empty( $block['attrs']['UAGAnimationType'] ) && $block['attrs']['UAGAnimationType'] ) {
+		// Check if animations extension is enabled and an animation type is selected.
+		if (
+			'enabled' === \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_animations_extension', 'enabled' ) &&
+			! empty( $block['attrs']['UAGAnimationType'] ) &&
+			$block['attrs']['UAGAnimationType']
+		) {
 
 			$attrs = $block['attrs'];
 
