@@ -25,6 +25,7 @@ class Common_Settings extends Ajax_Base {
 	 *
 	 * @access private
 	 * @var object Class object.
+	 * 
 	 * @since 2.0.0
 	 */
 	private static $instance;
@@ -32,8 +33,9 @@ class Common_Settings extends Ajax_Base {
 	/**
 	 * Initiator
 	 *
-	 * @since 2.0.0
 	 * @return object initialized object of class.
+	 * 
+	 * @since 2.0.0
 	 */
 	public static function get_instance() {
 		if ( ! isset( self::$instance ) ) {
@@ -398,8 +400,9 @@ class Common_Settings extends Ajax_Base {
 	/**
 	 * Save setting - Saves social settings.
 	 *
-	 * @since 2.1.0
 	 * @return void
+	 * 
+	 * @since 2.1.0
 	 */
 	public function social() {
 		$this->check_permission_nonce( 'uag_social' );
@@ -434,8 +437,9 @@ class Common_Settings extends Ajax_Base {
 	/**
 	 * Save setting - Enables dynamic content mode.
 	 *
-	 * @since 2.1.0
 	 * @return void
+	 * 
+	 * @since 2.1.0
 	 */
 	public function dynamic_content_mode() {
 		$this->check_permission_nonce( 'uag_dynamic_content_mode' );
@@ -458,6 +462,7 @@ class Common_Settings extends Ajax_Base {
 	 * Save setting - Enables block conditions.
 	 *
 	 * @return void
+	 * 
 	 * @since 2.4.0
 	 */
 	public function enable_block_condition() {
@@ -480,8 +485,9 @@ class Common_Settings extends Ajax_Base {
 	/**
 	 * Save setting - Enables dynamic content.
 	 *
-	 * @since 2.1.0
 	 * @return void
+	 * 
+	 * @since 2.1.0
 	 */
 	public function enable_dynamic_content() {
 		$this->check_permission_nonce( 'uag_enable_dynamic_content' );

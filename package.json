@@ -79,7 +79,7 @@
     "lint-css:fix": "npm run lint-css -- --fix",
     "pretty": "prettier --check .",
     "pretty:fix": "prettier --write .",
-    "lint-scripts:fix":"npm run pretty:fix && npm run lint-js -- --fix && npm run lint-css -- --fix",
+    "lint-scripts:fix": "npm run pretty:fix && npm run lint-js -- --fix && npm run lint-css -- --fix",
     "admin-lint-js": "wp-scripts lint-js admin-core/assets/src",
     "admin-lint-js:fix": "npm run admin-lint-js -- --fix",
     "lint:pkg-json": "wp-scripts lint-pkg-json",
