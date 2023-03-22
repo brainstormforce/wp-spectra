@@ -56,7 +56,7 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 		}
 
 		// Slick CSS Ends.
-		
+
 		// swiper CSS.
 		const swiperStaticCSSStylesTag = document.getElementById( 'uagb-swiper-css-css' );
 		let cloneSwiperStaticCSSStylesTag = false;

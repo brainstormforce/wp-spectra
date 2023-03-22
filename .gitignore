@@ -35,5 +35,5 @@ auth.json
 # phpunit
 .phpunit.result.cache
 
-# vscode
+# VScode
 .vscode

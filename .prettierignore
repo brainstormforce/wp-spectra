@@ -7,6 +7,25 @@ packages/e2e-tests/plugins
 packages/react-native-editor/bundle
 vendor
 
+admin-core
+dist
+.github
+*.json
+*.yml
+composer.lock
+lib/
+Gruntfile.js
+node_modules
+*-rtl*
+*.md
+.distignore
+font-awesome-pollyfiller.js
+.eslintrc.js
+*.min.js
+*.min.css
+*.css
+blocks-config/uagb-controls/fonts.js
+
 <!-- Libraries -->
 assets/js/aos.js
 assets/css/aos.css

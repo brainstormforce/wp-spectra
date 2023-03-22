@@ -238,6 +238,11 @@ const globalDataReducer = ( state = {}, action ) => {
 				...state,
 				containerGlobalElementsGap: action.payload,
 				};
+        case 'UPDATE_INSTA_LINKED_ACCOUNTS':
+            return {
+                ...state,
+                instaLinkedAccounts: action.payload,
+            };
         default:
             return state;
     }
