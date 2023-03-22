@@ -46,25 +46,31 @@ const generateShadowCSS = ( shadowProperties ) => {
 		return '';
 	}
 
-	// Get the CSS units for the required shadow properties.
+	// Get the CSS units for the number properties.
 	horizontal = generateCSSUnit( horizontal, horizontalUnit );
-	vertical = generateCSSUnit( vertical, verticalUnit );
-
-	// If both required properties don't exist, shaow won't be generated.
-	if ( ! horizontal && ! vertical ) {
-		return '';
+	if ( '' === horizontal ) {
+		horizontal = 0;
 	}
 
-	// Get the CSS units for the optional shadow properties.
-	blur = generateCSSUnit( blur, blurUnit );
-	spread = generateCSSUnit( spread, spreadUnit );
+	vertical = generateCSSUnit( vertical, verticalUnit );
+	if ( '' === vertical ) {
+		vertical = 0;
+	}
 
-	// Return the full CSS if blur is set, else return the required css.
-	return blur ? (
-		`${ horizontal ? horizontal : 0 } ${ vertical ? vertical : 0 } ${ blur }${ spread ? ` ${ spread }` : '' } ${ color ? color : altColor }${ ( 'outset' === position ) ? '' : ` ${ position }` }`
-	) : (
-		`${ horizontal ? horizontal : 0 } ${ vertical ? vertical : 0 } ${ color ? color : altColor }${ ( 'outset' === position ) ? '' : ` ${ position }` }`
-	);
+	blur = generateCSSUnit( blur, blurUnit );
+	if ( '' === blur ) {
+		blur = 0;
+	}
+	
+	spread = generateCSSUnit( spread, spreadUnit );
+	if ( '' === spread ) {
+		spread = 0;
+	}
+
+	// Return the CSS with horizontal, vertical, blur, and color, and conditionally render spread and position.
+	return (
+		`${ horizontal } ${ vertical } ${ blur }${ spread ? ` ${ spread }` : '' } ${ color ? color : altColor }${ ( 'outset' === position ) ? '' : ` ${ position }` }`
+	)
 }
 
 export default generateShadowCSS;

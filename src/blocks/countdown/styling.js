@@ -206,16 +206,16 @@ export default function styling( props ) {
 
 	// Box Shadow - Fallback is used to match the PHP Defaults - Box Shadow without Fallback will require Backward Compatibility.
 	const boxShadowCSS = generateShadowCSS( {
-		'horizontal': getFallbackNumber( boxShadowHOffset, 'boxShadowHOffset', blockName ),
-		'vertical': getFallbackNumber( boxShadowVOffset, 'boxShadowVOffset', blockName ),
+		'horizontal': boxShadowHOffset,
+		'vertical': boxShadowVOffset,
 		'blur': boxShadowBlur,
 		'spread': boxShadowSpread,
 		'color': boxShadowColor,
 		'position': boxShadowPosition,
 	} );
 	const boxShadowHoverCSS = generateShadowCSS( {
-		'horizontal': getFallbackNumber( boxShadowHOffsetHover, 'boxShadowHOffsetHover', blockName ),
-		'vertical': getFallbackNumber( boxShadowVOffsetHover, 'boxShadowVOffsetHover', blockName ),
+		'horizontal': boxShadowHOffsetHover,
+		'vertical': boxShadowVOffsetHover,
 		'blur': boxShadowBlurHover,
 		'spread': boxShadowSpreadHover,
 		'color': boxShadowColorHover,

@@ -96,16 +96,16 @@ function styling( props ) {
 
 	// Fallback is used to match the PHP Defaults - Drop Shadow without Fallback will require Backward Compatibility.
 	const dropShadow = generateShadowCSS( {
-		'horizontal': getFallbackNumber( iconShadowHOffset, 'iconShadowHOffset', blockName ),
-		'vertical': getFallbackNumber( iconShadowVOffset, 'iconShadowVOffset', blockName ),
+		'horizontal': iconShadowHOffset,
+		'vertical': iconShadowVOffset,
 		'blur': iconShadowBlur,
 		'color': iconShadowColor,
 	} );
 
 	// Fallback is used to match the PHP Defaults - Box Shadow without Fallback will require Backward Compatibility.
 	const boxShadow = generateShadowCSS( {
-		'horizontal': getFallbackNumber( iconBoxShadowHOffset, 'iconBoxShadowHOffset', blockName ),
-		'vertical': getFallbackNumber( iconBoxShadowVOffset, 'iconBoxShadowVOffset', blockName ),
+		'horizontal': iconBoxShadowHOffset,
+		'vertical': iconBoxShadowVOffset,
 		'blur': iconBoxShadowBlur,
 		'spread': iconBoxShadowSpread,
 		'color': iconBoxShadowColor,

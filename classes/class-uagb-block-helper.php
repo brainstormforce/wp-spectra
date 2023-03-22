@@ -1866,24 +1866,30 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				return '';
 			}
 
-			// Get the CSS units for the required shadow properties.
+			// Get the CSS units for the number properties.
 			$horizontal = UAGB_Helper::get_css_value( $horizontal, $horizontal_unit );
-			$vertical   = UAGB_Helper::get_css_value( $vertical, $vertical_unit );
-
-			// If both required properties don't exist, shaow won't be generated.
-			if ( ! $horizontal && ! $vertical ) {
-				return '';
+			if ( '' === $horizontal ) {
+				$horizontal = 0;
 			}
 
-			// Get the CSS units for the optional shadow properties.
-			$blur   = UAGB_Helper::get_css_value( $blur, $blur_unit );
-			$spread = UAGB_Helper::get_css_value( $spread, $spread_unit );
+			$vertical   = UAGB_Helper::get_css_value( $vertical, $vertical_unit );
+			if ( '' === $vertical ) {
+				$vertical = 0;
+			}
 
-			// Return the full CSS if blur is set, else return the required css.
-			return $blur ? (
-				( $horizontal ? $horizontal : 0 ) . ' ' . ( $vertical ? $vertical : 0 ) . ' ' . $blur . ( $spread ? " {$spread}" : '' ) . ' ' . ( $color ? $color : $alt_color ) . ( 'outset' === $position ? '' : " {$position}" )
-			) : (
-				( $horizontal ? $horizontal : 0 ) . ' ' . ( $vertical ? $vertical : 0 ) . ' ' . ( $color ? $color : $alt_color ) . ( 'outset' === $position ? '' : " {$position}" )
+			$blur       = UAGB_Helper::get_css_value( $blur, $blur_unit );
+			if ( '' === $blur ) {
+				$blur = 0;
+			}
+
+			$spread     = UAGB_Helper::get_css_value( $spread, $spread_unit );
+			if ( '' === $spread ) {
+				$spread = 0;
+			}
+
+			// Return the CSS with horizontal, vertical, blur, and color, and conditionally render spread and position.
+			return (
+				$horizontal . ' ' . $vertical . ' ' . $blur . ( $spread ? " {$spread}" : '' ) . ' ' . ( $color ? $color : $alt_color ) . ( 'outset' === $position ? '' : " {$position}" )
 			);
 		}
 	}
