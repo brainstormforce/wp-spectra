@@ -1872,7 +1872,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( '' === $horizontal ) {
 				$horizontal = 0;
 			}
-	
+
 			$vertical = UAGB_Helper::get_css_value( $vertical, $vertical_unit );
 			if ( '' === $vertical ) {
 				$vertical = 0;
