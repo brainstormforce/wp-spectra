@@ -165,7 +165,7 @@ function styling( props ) {
 				titleLineHeight,
 				titleLineHeightType
 			),
-			'color': titleColor,
+			'color': titleColor + ' !important',
 			'padding-left': generateCSSUnit( lPadding, titlePaddingUnit ),
 			'padding-right': generateCSSUnit( rPadding, titlePaddingUnit ),
 			'padding-top': generateCSSUnit( titleTopPadding, titlePaddingUnit ),

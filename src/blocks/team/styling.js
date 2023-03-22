@@ -257,7 +257,7 @@ function styling( props ) {
 		'font-weight': titleFontWeight,
 		'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
 		'line-height': generateCSSUnit( titleLineHeight, titleLineHeightType ),
-		'color': titleColor,
+		'color': titleColor + ' !important',
 		'margin-bottom': generateCSSUnit( titleSpaceFallback, 'px' ),
 		'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 	};

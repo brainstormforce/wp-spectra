@@ -208,7 +208,7 @@ $selectors = array(
 	),
 	// Title Style.
 	'.wp-block-uagb-info-box .uagb-ifb-title'             => array(
-		'color'         => $attr['headingColor'],
+		'color'         => $attr['headingColor'] . ' !important',
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], $attr['headSpaceUnit'] ),
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopMargin'], $attr['headSpaceUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['headLeftMargin'], $attr['headSpaceUnit'] ),

@@ -107,7 +107,7 @@ $selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $right_padding, $attr['titlePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $title_top_padding, $attr['titlePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $title_bottom_padding, $attr['titlePaddingUnit'] ),
-		'color'          => $attr['titleColor'],
+		'color'          => $attr['titleColor'] . ' !important',
 	),
 	' .uagb-notice-text'                    => array(
 		'color'          => $attr['textColor'],

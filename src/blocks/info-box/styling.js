@@ -486,7 +486,7 @@ function styling( props ) {
 			 'text-decoration': headDecoration,
 			 'text-transform': headTransform,
 			 'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
-			 'color': headingColor,
+			 'color': headingColor + ' !important',
 			 'margin-top': generateCSSUnit( headTopMargin, headSpaceUnit ),
 			 'margin-bottom': generateCSSUnit( headSpace, headSpaceUnit ),
 			 'margin-left': generateCSSUnit( headLeftMargin, headSpaceUnit ),

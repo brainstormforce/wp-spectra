@@ -141,7 +141,7 @@ if ( 'above' !== $attr['imgPosition'] ) {
 }
 
 $selectors[ ' ' . $attr['tag'] . '.uagb-team__title' ] = array(
-	'color'         => $attr['titleColor'],
+	'color'         => $attr['titleColor'] . ' !important',
 	'margin-bottom' => UAGB_Helper::get_css_value( $title_space_fallback, 'px' ),
 );
 

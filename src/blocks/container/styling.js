@@ -233,6 +233,21 @@ function styling( props ) {
 		'.wp-block-uagb-container .block-editor-block-list__block .uagb-cta__title' : {
 			'color': textColor,
 		},
+		'.wp-block-uagb-container .block-editor-block-list__block .uagb-notice-title' : {
+			'color': textColor,
+		},
+		'.wp-block-uagb-container .block-editor-block-list__block .uagb-ifb-title' : {
+			'color': textColor, 
+		}, 
+		'.wp-block-uagb-container .block-editor-block-list__block .uagb-post__title' : {
+			'color': textColor,
+		},
+		'.wp-block-uagb-container .block-editor-block-list__block .uagb-team__title' : {
+			'color': textColor,
+		},
+		'.wp-block-uagb-container .block-editor-block-list__block .uagb-cta__buttons' : {
+			'color': textColor,
+		},
 		'.wp-block-uagb-container .block-editor-block-list__block a' : {
 			'color': linkColor,
 		},
