@@ -1872,17 +1872,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$horizontal = 0;
 			}
 
-			$vertical   = UAGB_Helper::get_css_value( $vertical, $vertical_unit );
+			$vertical = UAGB_Helper::get_css_value( $vertical, $vertical_unit );
 			if ( '' === $vertical ) {
 				$vertical = 0;
 			}
 
-			$blur       = UAGB_Helper::get_css_value( $blur, $blur_unit );
+			$blur = UAGB_Helper::get_css_value( $blur, $blur_unit );
 			if ( '' === $blur ) {
 				$blur = 0;
 			}
 
-			$spread     = UAGB_Helper::get_css_value( $spread, $spread_unit );
+			$spread = UAGB_Helper::get_css_value( $spread, $spread_unit );
 			if ( '' === $spread ) {
 				$spread = 0;
 			}
