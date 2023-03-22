@@ -1867,10 +1867,26 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			// Get the CSS units for the number properties.
-			$horizontal = $horizontal ? UAGB_Helper::get_css_value( $horizontal, $horizontal_unit ) : 0;
-			$vertical   = $vertical ? UAGB_Helper::get_css_value( $vertical, $vertical_unit ) : 0;
-			$blur       = $blur ? UAGB_Helper::get_css_value( $blur, $blur_unit ) : 0;
-			$spread     = $spread ? UAGB_Helper::get_css_value( $spread, $spread_unit ) : 0;
+
+			$horizontal = UAGB_Helper::get_css_value( $horizontal, $horizontal_unit );
+			if ( '' === $horizontal ) {
+				$horizontal = 0;
+			}
+	
+			$vertical = UAGB_Helper::get_css_value( $vertical, $vertical_unit );
+			if ( '' === $vertical ) {
+				$vertical = 0;
+			}
+
+			$blur = UAGB_Helper::get_css_value( $blur, $blur_unit );
+			if ( '' === $blur ) {
+				$blur = 0;
+			}
+
+			$spread = UAGB_Helper::get_css_value( $spread, $spread_unit );
+			if ( '' === $spread ) {
+				$spread = 0;
+			}
 
 			// If all numeric unit values are exactly 0, don't render the CSS.
 			if ( ( 0 === $horizontal && 0 === $vertical ) && ( 0 === $blur && 0 === $spread ) ) {
