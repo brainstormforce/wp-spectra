@@ -777,7 +777,12 @@ class UAGB_Post_Assets {
 		}
 
 		// If UAGAnimationType is set and is not equal to none, explicitly load the extension (and it's assets) on frontend.
-		if ( isset( $block['attrs']['UAGAnimationType'] ) && '' !== $block['attrs']['UAGAnimationType'] ) {
+		// Also check if animations extension is enabled.
+		if (
+			'enabled' === \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_animations_extension', 'enabled' ) &&
+			isset( $block['attrs']['UAGAnimationType'] ) &&
+			'' !== $block['attrs']['UAGAnimationType']
+		) {
 			$this->current_block_list[] = 'uagb/animations-extension';
 		}
 
