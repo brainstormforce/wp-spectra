@@ -154,13 +154,13 @@ class Common_Settings extends Ajax_Base {
 	 * @return void
 	 */
 	public function pro_activate() {
-		$post = $_POST; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		wp_clean_plugins_cache();
-		$value = ( isset( $post['value'] ) ) ? sanitize_text_field( wp_unslash( $post['value'] ) ) : '';
+		// nonce verification is done in above function check_permission_nonce.
+		$value = ( isset( $_POST['value'] ) ) ? sanitize_text_field( wp_unslash( $_POST['value'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		$this->check_permission_nonce( 'uag_pro_activate', 'activate_plugins' );
 
 		if ( empty( $value ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'default' ) ); // phpcs:ignore PHPCompatibility.Variables.ForbiddenThisUseContexts.OutsideObjectContext
+			$response_data = array( 'messsage' => $this->get_error_msg( 'default' ) );
 			wp_send_json_error( $response_data );
 		}
 
@@ -234,13 +234,13 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function fetch_pages() {
 		$this->check_permission_nonce( 'uag_fetch_pages' );
-		$post = $_POST; // phpcs:ignore WordPress.Security.NonceVerification.Missing
-
-		$args    = array(
+		
+		$args = array(
 			'post_type'      => 'page',
 			'posts_per_page' => 5,
 		);
-		$keyword = ( isset( $post['keyword'] ) ? sanitize_text_field( $post['keyword'] ) : '' );
+		// nonce verification is done in above function check_permission_nonce.
+		$keyword = ( isset( $_POST['keyword'] ) ? sanitize_text_field( $_POST['keyword'] ) : '' ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		if ( ! empty( $keyword ) ) {
 			$args['s'] = $keyword;
 		}
@@ -401,8 +401,7 @@ class Common_Settings extends Ajax_Base {
 	public function social() {
 		$this->check_permission_nonce( 'uag_social' );
 		$this->check_post_value();
-		$post = $_POST; // phpcs:ignore WordPress.Security.NonceVerification.Missing
-
+		
 		$social = \UAGB_Admin_Helper::get_admin_settings_option(
 			'uag_social',
 			array(
@@ -412,17 +411,18 @@ class Common_Settings extends Ajax_Base {
 				'facebookAppSecret' => '',
 			)
 		);
-		if ( isset( $post['socialRegister'] ) ) {
-			$social['socialRegister'] = rest_sanitize_boolean( sanitize_text_field( $post['socialRegister'] ) );
+		// nonce verification is done in above function check_permission_nonce.
+		if ( isset( $_POST['socialRegister'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$social['socialRegister'] = rest_sanitize_boolean( sanitize_text_field( $_POST['socialRegister'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		}
-		if ( isset( $post['googleClientId'] ) ) {
-			$social['googleClientId'] = sanitize_text_field( $post['googleClientId'] );
+		if ( isset( $_POST['googleClientId'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$social['googleClientId'] = sanitize_text_field( $_POST['googleClientId'] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		}
-		if ( isset( $post['facebookAppId'] ) ) {
-			$social['facebookAppId'] = sanitize_text_field( $post['facebookAppId'] );
+		if ( isset( $_POST['facebookAppId'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$social['facebookAppId'] = sanitize_text_field( $_POST['facebookAppId'] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		}
-		if ( isset( $post['facebookAppSecret'] ) ) {
-			$social['facebookAppSecret'] = sanitize_text_field( $post['facebookAppSecret'] );
+		if ( isset( $_POST['facebookAppSecret'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$social['facebookAppSecret'] = sanitize_text_field( $_POST['facebookAppSecret'] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		}
 
 		$this->save_admin_settings( 'uag_social', $social );
