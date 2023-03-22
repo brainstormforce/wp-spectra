@@ -67,8 +67,8 @@ const generateShadowCSS = ( shadowProperties ) => {
 		spread = 0;
 	}
 
-	// Return the CSS with horizontal, vertical, blur, and color, and conditionally render spread and position.
-	return (
+	// If all numeric unit values are not exactly 0, Return the CSS with horizontal, vertical, blur, and color, and conditionally render spread and position.
+	return ( ( 0 === horizontal && 0 === vertical ) && ( 0 === blur && 0 === spread ) ) ? '' : (
 		`${ horizontal } ${ vertical } ${ blur }${ spread ? ` ${ spread }` : '' } ${ color ? color : altColor }${ ( 'outset' === position ) ? '' : ` ${ position }` }`
 	)
 }
