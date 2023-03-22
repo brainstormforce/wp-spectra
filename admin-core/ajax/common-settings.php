@@ -97,8 +97,9 @@ class Common_Settings extends Ajax_Base {
 	 * @param string $option The name of the option to check the nonce against.
 	 * @param string $scope The capability required to perform the action. Default is 'manage_options'.
 	 * @param string $security The security to check the nonce against. Default is 'security'.
-	 * @since x.x.x
 	 * @return void
+	 * 
+	 * @since x.x.x
 	 */
 	private function check_permission_nonce( $option, $scope = 'manage_options', $security = 'security' ) {
 
@@ -119,8 +120,9 @@ class Common_Settings extends Ajax_Base {
 	 *
 	 * @param string $option The name of the option to update.
 	 * @param mixed  $value The value to be updated.
-	 * @since x.x.x
 	 * @return void
+	 * 
+	 * @since x.x.x
 	 */
 	private function save_admin_settings( $option, $value ) {
 		\UAGB_Admin_Helper::update_admin_settings_option( $option, $value );
@@ -136,8 +138,9 @@ class Common_Settings extends Ajax_Base {
 	 * Checks if the specified key exists in the $_POST array and returns the corresponding value.
 	 *
 	 * @param string $key The key to check in the $_POST array. Default value is 'value'.
-	 * @since x.x.x
 	 * @return mixed The value of the specified key in the $_POST array if it exists, otherwise sends a JSON error response.
+	 * 
+	 *  @since x.x.x
 	 */
 	private function check_post_value( $key = 'value' ) {
 		// nonce verification done in function check_permission_nonce.
