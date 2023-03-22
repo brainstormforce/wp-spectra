@@ -7,6 +7,4 @@
  * @since x.x.x
  */
 
-export const uagbClassNames = ( ...classes ) => {
-    return classes.filter( Boolean ).join( ' ' )
-}
+export const uagbClassNames = ( classes ) => ( classes.filter( Boolean ).join( ' ' ) );
