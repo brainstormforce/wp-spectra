@@ -4,7 +4,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
  * Generate the Box Shadow or Text Shadow CSS.
  * 
  * For Text Shadow CSS:
- * { spread, type } should not be sent as params during the function call.
+ * { spread, position } should not be sent as params during the function call.
  * { spreadUnit } will have no effect.
  * 
  * For Box/Text Shadow Hover CSS:

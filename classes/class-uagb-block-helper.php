@@ -1836,7 +1836,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * Generate the Box Shadow CSS.
 		 * 
 		 * For Text Shadow CSS:
-		 * ( 'spread', 'type' ) should not be sent as params during the function call.
+		 * ( 'spread', 'position' ) should not be sent as params during the function call.
 		 * ( 'spread_unit' ) will have no effect.
 		 * 
 		 * For Box/Text Shadow Hover CSS:

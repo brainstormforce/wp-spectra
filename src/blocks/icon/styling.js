@@ -94,7 +94,6 @@ function styling( props ) {
 	const background = 'classic' === iconBackgroundColorType ? iconBackgroundColor : iconBackgroundGradientColor;
 	const hoverBackground = 'classic' === iconHoverBackgroundColorType ? iconHoverBackgroundColor : iconHoverBackgroundGradientColor;
 
-	// Fallback is used to match the PHP Defaults - Drop Shadow without Fallback will require Backward Compatibility.
 	const dropShadow = generateShadowCSS( {
 		'horizontal': iconShadowHOffset,
 		'vertical': iconShadowVOffset,
@@ -102,7 +101,6 @@ function styling( props ) {
 		'color': iconShadowColor,
 	} );
 
-	// Fallback is used to match the PHP Defaults - Box Shadow without Fallback will require Backward Compatibility.
 	const boxShadow = generateShadowCSS( {
 		'horizontal': iconBoxShadowHOffset,
 		'vertical': iconBoxShadowVOffset,

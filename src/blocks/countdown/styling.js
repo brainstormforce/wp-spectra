@@ -204,7 +204,7 @@ export default function styling( props ) {
 	const boxBorderCSSTablet = generateBorderCSS( props.attributes, 'box', 'tablet' );
 	const boxBorderCSSMobile = generateBorderCSS( props.attributes, 'box', 'mobile' );
 
-	// Box Shadow - Fallback is used to match the PHP Defaults - Box Shadow without Fallback will require Backward Compatibility.
+	// Box Shadow
 	const boxShadowCSS = generateShadowCSS( {
 		'horizontal': boxShadowHOffset,
 		'vertical': boxShadowVOffset,
