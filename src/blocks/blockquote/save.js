@@ -25,63 +25,41 @@ export default function save( props ) {
 		stack,
 	} = props.attributes;
 	return (
-			<div
-				className={ classnames(
-					props.className,
-					`uagb-block-${ block_id }`,
-					`uagb-blockquote__skin-${ skinStyle }`,
-					skinStyle !== 'border'
-						? `uagb-blockquote__align-${ align }`
-						: '',
-					skinStyle === 'quotation'
-						? `uagb-blockquote__style-${ quoteStyle }`
-						: '',
-					enableTweet
-						? `uagb-blockquote__with-tweet uagb-blockquote__tweet-style-${ iconSkin } uagb-blockquote__tweet-${ iconView }`
-						: '',
-					`uagb-blockquote__stack-img-${ stack }`
+		<div
+			className={ classnames(
+				props.className,
+				`uagb-block-${ block_id }`,
+				`uagb-blockquote__skin-${ skinStyle }`,
+				skinStyle !== 'border' ? `uagb-blockquote__align-${ align }` : '',
+				skinStyle === 'quotation' ? `uagb-blockquote__style-${ quoteStyle }` : '',
+				enableTweet
+					? `uagb-blockquote__with-tweet uagb-blockquote__tweet-style-${ iconSkin } uagb-blockquote__tweet-${ iconView }`
+					: '',
+				`uagb-blockquote__stack-img-${ stack }`
+			) }
+		>
+			<blockquote className="uagb-blockquote">
+				{ skinStyle === 'quotation' && (
+					<span className="uagb-blockquote__icon">{ UAGB_Block_Icons.quote_inline_icon }</span>
 				) }
-			>
-				<blockquote className="uagb-blockquote">
-					{ skinStyle === 'quotation' && (
-						<span className="uagb-blockquote__icon">
-								{ UAGB_Block_Icons.quote_inline_icon }
-						</span>
-					) }
-						{ descriptionText !== '' && (
-							<Description
-								attributes={ props.attributes }
-								setAttributes="not_set"
-								props={ props }
-							/>
-						) }					
-						<footer>
-							<div
-								className={ classnames(
-									'uagb-blockquote__author-wrap',
-									authorImage !== ''
-										? `uagb-blockquote__author-at-${ authorImgPosition }`
-										: ''
-								) }
-							>
-								<AuthorImage
-									attributes={ props.attributes }
-								/>
-								{ author !== '' && (
-									<AuthorText
-										attributes={ props.attributes }
-										setAttributes="not_set"
-										props={ props }
-									/>
-								) }
-							</div>
-							{ enableTweet && (
-								<TweetButtonCTA
-									attributes={ props.attributes }
-								/>
-							) }
-						</footer>
-				</blockquote>
-			</div>
+				{ descriptionText !== '' && (
+					<Description attributes={ props.attributes } setAttributes="not_set" props={ props } />
+				) }
+				<footer>
+					<div
+						className={ classnames(
+							'uagb-blockquote__author-wrap',
+							authorImage !== '' ? `uagb-blockquote__author-at-${ authorImgPosition }` : ''
+						) }
+					>
+						<AuthorImage attributes={ props.attributes } />
+						{ author !== '' && (
+							<AuthorText attributes={ props.attributes } setAttributes="not_set" props={ props } />
+						) }
+					</div>
+					{ enableTweet && <TweetButtonCTA attributes={ props.attributes } /> }
+				</footer>
+			</blockquote>
+		</div>
 	);
 }

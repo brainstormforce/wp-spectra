@@ -1,4 +1,3 @@
-
 import { memo } from '@wordpress/element';
 import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
@@ -6,9 +5,7 @@ import { __ } from '@wordpress/i18n';
 import Range from '@Components/range/Range.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
-import InspectorTab, {
-	UAGTabs,
-} from '@Components/inspector-tabs/InspectorTab.js';
+import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import SpacingControl from '@Components/spacing-control';
 import UAGTabsControl from '@Components/tabs';
@@ -16,14 +13,8 @@ import UAGMediaPicker from '@Components/image';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import UAGSelectControl from '@Components/select-control';
-import {
-	ToggleControl,
-	Icon,
-} from '@wordpress/components';
-import {
-	BlockControls,
-	InspectorControls,
-} from '@wordpress/block-editor';
+import { ToggleControl, Icon } from '@wordpress/components';
+import { BlockControls, InspectorControls } from '@wordpress/block-editor';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import UAGTextControl from '@Components/text-control';
 
@@ -197,46 +188,31 @@ const Settings = ( props ) => {
 	if ( descLoadGoogleFonts === true ) {
 		const descconfig = {
 			google: {
-				families: [
-					descFontFamily +
-						( descFontWeight ? ':' + descFontWeight : '' ),
-				],
+				families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
 			},
 		};
 
-		loadDescGoogleFonts = (
-			<WebfontLoader config={ descconfig }></WebfontLoader>
-		);
+		loadDescGoogleFonts = <WebfontLoader config={ descconfig }></WebfontLoader>;
 	}
 
 	if ( authorLoadGoogleFonts === true ) {
 		const authorconfig = {
 			google: {
-				families: [
-					authorFontFamily +
-						( authorFontWeight ? ':' + authorFontWeight : '' ),
-				],
+				families: [ authorFontFamily + ( authorFontWeight ? ':' + authorFontWeight : '' ) ],
 			},
 		};
 
-		loadAuthorGoogleFonts = (
-			<WebfontLoader config={ authorconfig }></WebfontLoader>
-		);
+		loadAuthorGoogleFonts = <WebfontLoader config={ authorconfig }></WebfontLoader>;
 	}
 
 	if ( tweetBtnLoadGoogleFonts === true ) {
 		const tweetBtnconfig = {
 			google: {
-				families: [
-					tweetBtnFontFamily +
-						( tweetBtnFontWeight ? ':' + tweetBtnFontWeight : '' ),
-				],
+				families: [ tweetBtnFontFamily + ( tweetBtnFontWeight ? ':' + tweetBtnFontWeight : '' ) ],
 			},
 		};
 
-		loadTweetGoogleFonts = (
-			<WebfontLoader config={ tweetBtnconfig }></WebfontLoader>
-		);
+		loadTweetGoogleFonts = <WebfontLoader config={ tweetBtnconfig }></WebfontLoader>;
 	}
 
 	/*
@@ -287,38 +263,33 @@ const Settings = ( props ) => {
 				label={ __( 'Author Image', 'ultimate-addons-for-gutenberg' ) }
 				slug={ 'author-image' }
 			/>
-			{ authorImage &&
-				authorImage.url !== 'null' &&
-				authorImage.url !== '' && (
-					<>
-						<MultiButtonsControl
-							setAttributes={ setAttributes }
-							label={ __(
-								'Author Image Position',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								value: authorImgPosition,
-								label: 'authorImgPosition',
-							} }
-							className="uagb-multi-button-alignment-control"
-							options={ [
-								{
-									value: 'left',
-									label: 'Left',
-								},
-								{
-									value: 'top',
-									label: 'Top',
-								},
-								{
-									value: 'right',
-									label: 'Right',
-								},
-							] }
-							showIcons={ false }
-						/>
-					</>
+			{ authorImage && authorImage.url !== 'null' && authorImage.url !== '' && (
+				<>
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __( 'Author Image Position', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: authorImgPosition,
+							label: 'authorImgPosition',
+						} }
+						className="uagb-multi-button-alignment-control"
+						options={ [
+							{
+								value: 'left',
+								label: 'Left',
+							},
+							{
+								value: 'top',
+								label: 'Top',
+							},
+							{
+								value: 'right',
+								label: 'Right',
+							},
+						] }
+						showIcons={ false }
+					/>
+				</>
 			) }
 		</>
 	);
@@ -326,10 +297,7 @@ const Settings = ( props ) => {
 	const quoteSettings = (
 		<>
 			<ResponsiveSlider
-				label={ __(
-					'Quote Icon Size',
-					'ultimate-addons-for-gutenberg'
-				) }
+				label={ __( 'Quote Icon Size', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
 					desktop: {
 						value: quoteSize,
@@ -353,10 +321,7 @@ const Settings = ( props ) => {
 				setAttributes={ setAttributes }
 			/>
 			<ResponsiveSlider
-				label={ __(
-					'Background Size',
-					'ultimate-addons-for-gutenberg'
-				) }
+				label={ __( 'Background Size', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
 					desktop: {
 						value: quotePadding,
@@ -381,10 +346,7 @@ const Settings = ( props ) => {
 			/>
 			{ quoteBgColor && (
 				<Range
-					label={ __(
-						'Quote Icon Border Radius',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Quote Icon Border Radius', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ quoteBorderRadius }
 					data={ {
@@ -399,10 +361,7 @@ const Settings = ( props ) => {
 					} }
 					units={ [
 						{
-							name: __(
-								'Pixel',
-								'ultimate-addons-for-gutenberg'
-							),
+							name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
 							unitValue: 'px',
 						},
 						{
@@ -436,103 +395,70 @@ const Settings = ( props ) => {
 					},
 					{
 						value: 'quotation',
-						label: __(
-							'Quotation',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: __( 'Quotation', 'ultimate-addons-for-gutenberg' ),
 					},
 				] }
 				showIcons={ false }
 			/>
-			{ 'quotation' === skinStyle &&
-			<>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __( 'Quotation Type', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						value: quoteStyle,
-						label: 'quoteStyle',
-					} }
-					className="uagb-multi-button-alignment-control"
-					options={ [
-						{
-							value: 'style_1',
-							label: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'style_2',
-							label: __(
-								'Inline',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					showIcons={ false }
-				/>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __( 'Text Alignment', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						value: align,
-						label: 'align',
-					} }
-					className="uagb-multi-button-alignment-control"
-					options={ [
-						{
-							value: 'left',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-left' ) }
-								/>
-							),
-							tooltip: __(
-								'Left',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'center',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-center' ) }
-								/>
-							),
-							tooltip: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'right',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-right' ) }
-								/>
-							),
-							tooltip: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					showIcons={ true }
-				/>
-			</>
-			}
+			{ 'quotation' === skinStyle && (
+				<>
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __( 'Quotation Type', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: quoteStyle,
+							label: 'quoteStyle',
+						} }
+						className="uagb-multi-button-alignment-control"
+						options={ [
+							{
+								value: 'style_1',
+								label: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'style_2',
+								label: __( 'Inline', 'ultimate-addons-for-gutenberg' ),
+							},
+						] }
+						showIcons={ false }
+					/>
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __( 'Text Alignment', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: align,
+							label: 'align',
+						} }
+						className="uagb-multi-button-alignment-control"
+						options={ [
+							{
+								value: 'left',
+								icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+								tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'center',
+								icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
+								tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'right',
+								icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
+								tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
+							},
+						] }
+						showIcons={ true }
+					/>
+				</>
+			) }
 			{ imageControls }
 		</UAGAdvancedPanelBody>
 	);
 
 	const quoteStyling = (
-		<UAGAdvancedPanelBody
-			title={ __( 'Quote', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
-		>
+		<UAGAdvancedPanelBody title={ __( 'Quote', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<TypographyControl
-				label={ __(
-					'Quote Typography',
-					'ultimate-addons-for-gutenberg'
-				) }
+				label={ __( 'Quote Typography', 'ultimate-addons-for-gutenberg' ) }
 				attributes={ attributes }
 				setAttributes={ setAttributes }
 				loadGoogleFonts={ {
@@ -618,17 +544,11 @@ const Settings = ( props ) => {
 	);
 
 	const authorStyling = (
-		<UAGAdvancedPanelBody
-			title={ __( 'Author', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
-		>
+		<UAGAdvancedPanelBody title={ __( 'Author', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			{ author !== '' && (
 				<>
 					<TypographyControl
-						label={ __(
-							'Author Typography',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Author Typography', 'ultimate-addons-for-gutenberg' ) }
 						attributes={ attributes }
 						setAttributes={ setAttributes }
 						loadGoogleFonts={ {
@@ -714,121 +634,96 @@ const Settings = ( props ) => {
 						setAttributes={ setAttributes }
 					/>
 				</>
-			)}
-			{ authorImage &&
-				authorImage.url !== 'null' &&
-				authorImage.url !== '' && (
-					<>
-						<UAGSelectControl
-							label={ __(
-								'Author Image Size',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								value: authorImageSize,
-								label: 'authorImageSize',
-							} }
-							setAttributes={ setAttributes }
-							options={ imageSizeOptions }
-						/>
-						<ResponsiveSlider
-							label={ __(
-								'Author Image Width',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								desktop: {
-									value: authorImageWidth,
-									label: 'authorImageWidth',
-								},
-								tablet: {
-									value: authorImageWidthTablet,
-									label: 'authorImageWidthTablet',
-								},
-								mobile: {
-									value: authorImageWidthMobile,
-									label: 'authorImageWidthMobile',
-								},
-							} }
-							min={ 0 }
-							max={ 500 }
-							unit={ {
-								value: authorImageWidthUnit,
-								label: 'authorImageWidthUnit',
-							} }
-							setAttributes={ setAttributes }
-						/>
-						<ResponsiveSlider
-							label={ __(
-								'Image Border Radius',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								desktop: {
-									value: authorImgBorderRadius,
-									label: 'authorImgBorderRadius',
-								},
-								tablet: {
-									value: authorImgBorderRadiusTablet,
-									label: 'authorImgBorderRadiusTablet',
-								},
-								mobile: {
-									value: authorImgBorderRadiusMobile,
-									label: 'authorImgBorderRadiusMobile',
-								},
-							} }
-							min={ 0 }
-							max={ 50 }
-							unit={ {
-								value: authorImgBorderRadiusUnit,
-								label: 'authorImgBorderRadiusUnit',
-							} }
-							units={ [
-								{
-									name: __(
-										'Pixel',
-										'ultimate-addons-for-gutenberg'
-									),
-									unitValue: 'px',
-								},
-								{
-									name: __(
-										'%',
-										'ultimate-addons-for-gutenberg'
-									),
-									unitValue: '%',
-								},
-							] }
-							setAttributes={ setAttributes }
-						/>
-					</>
+			) }
+			{ authorImage && authorImage.url !== 'null' && authorImage.url !== '' && (
+				<>
+					<UAGSelectControl
+						label={ __( 'Author Image Size', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: authorImageSize,
+							label: 'authorImageSize',
+						} }
+						setAttributes={ setAttributes }
+						options={ imageSizeOptions }
+					/>
+					<ResponsiveSlider
+						label={ __( 'Author Image Width', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							desktop: {
+								value: authorImageWidth,
+								label: 'authorImageWidth',
+							},
+							tablet: {
+								value: authorImageWidthTablet,
+								label: 'authorImageWidthTablet',
+							},
+							mobile: {
+								value: authorImageWidthMobile,
+								label: 'authorImageWidthMobile',
+							},
+						} }
+						min={ 0 }
+						max={ 500 }
+						unit={ {
+							value: authorImageWidthUnit,
+							label: 'authorImageWidthUnit',
+						} }
+						setAttributes={ setAttributes }
+					/>
+					<ResponsiveSlider
+						label={ __( 'Image Border Radius', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							desktop: {
+								value: authorImgBorderRadius,
+								label: 'authorImgBorderRadius',
+							},
+							tablet: {
+								value: authorImgBorderRadiusTablet,
+								label: 'authorImgBorderRadiusTablet',
+							},
+							mobile: {
+								value: authorImgBorderRadiusMobile,
+								label: 'authorImgBorderRadiusMobile',
+							},
+						} }
+						min={ 0 }
+						max={ 50 }
+						unit={ {
+							value: authorImgBorderRadiusUnit,
+							label: 'authorImgBorderRadiusUnit',
+						} }
+						units={ [
+							{
+								name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+								unitValue: 'px',
+							},
+							{
+								name: __( '%', 'ultimate-addons-for-gutenberg' ),
+								unitValue: '%',
+							},
+						] }
+						setAttributes={ setAttributes }
+					/>
+				</>
 			) }
 		</UAGAdvancedPanelBody>
 	);
 
 	const twitterSettings = (
-		<UAGAdvancedPanelBody
-			title={ __( 'Twitter Icon', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
-		>
+		<UAGAdvancedPanelBody title={ __( 'Twitter Icon', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<ToggleControl
 				label={ __( 'Enable Icon', 'ultimate-addons-for-gutenberg' ) }
 				checked={ enableTweet }
-				onChange={ () =>
-					setAttributes( { enableTweet: ! enableTweet } )
-				}
+				onChange={ () => setAttributes( { enableTweet: ! enableTweet } ) }
 			/>
 			{ enableTweet && (
 				<>
 					<UAGTextControl
-						label={ __(
-							'Twitter Username',
-							'ultimate-addons-for-gutenberg'
-						) }
-						data={{
+						label={ __( 'Twitter Username', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
 							value: iconShareVia,
 							label: 'iconShareVia',
-						}}
+						} }
 						setAttributes={ setAttributes }
 						value={ iconShareVia }
 						onChange={ ( value ) =>
@@ -839,10 +734,7 @@ const Settings = ( props ) => {
 					/>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
-						label={ __(
-							'Icon View',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Icon View', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: iconView,
 							label: 'iconView',
@@ -851,34 +743,22 @@ const Settings = ( props ) => {
 						options={ [
 							{
 								value: 'icon_text',
-								label: __(
-									'Both',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Both', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								value: 'icon',
-								label: __(
-									'Icon',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Icon', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								value: 'text',
-								label: __(
-									'Text',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Text', 'ultimate-addons-for-gutenberg' ),
 							},
 						] }
 						showIcons={ false }
 					/>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
-						label={ __(
-							'Icon Style',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Icon Style', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: iconSkin,
 							label: 'iconSkin',
@@ -887,34 +767,22 @@ const Settings = ( props ) => {
 						options={ [
 							{
 								value: 'classic',
-								label: __(
-									'Classic',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Classic', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								value: 'bubble',
-								label: __(
-									'Bubble',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Bubble', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								value: 'link',
-								label: __(
-									'Link',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Link', 'ultimate-addons-for-gutenberg' ),
 							},
 						] }
 						showIcons={ false }
 					/>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
-						label={ __(
-							'Target URL',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Target URL', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: iconTargetUrl,
 							label: 'iconTargetUrl',
@@ -923,36 +791,25 @@ const Settings = ( props ) => {
 						options={ [
 							{
 								value: 'current',
-								label: __(
-									'Current Page',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Current Page', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								value: 'custom',
-								label: __(
-									'Custom URL',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Custom URL', 'ultimate-addons-for-gutenberg' ),
 							},
 						] }
 						showIcons={ false }
 					/>
 					{ iconTargetUrl === 'custom' && (
 						<UAGTextControl
-							label={ __(
-								'URL',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'URL', 'ultimate-addons-for-gutenberg' ) }
 							value={ customUrl }
-							data={{
+							data={ {
 								value: customUrl,
 								label: 'customUrl',
-							}}
+							} }
 							setAttributes={ setAttributes }
-							onChange={ ( value ) =>
-								setAttributes( { customUrl: value } )
-							}
+							onChange={ ( value ) => setAttributes( { customUrl: value } ) }
 						/>
 					) }
 				</>
@@ -962,14 +819,12 @@ const Settings = ( props ) => {
 					<UAGTextControl
 						label={ __( 'Label', 'ultimate-addons-for-gutenberg' ) }
 						value={ iconLabel }
-						data={{
+						data={ {
 							value: iconLabel,
 							label: 'iconLabel',
-						}}
+						} }
 						setAttributes={ setAttributes }
-						onChange={ ( value ) =>
-							setAttributes( { iconLabel: value } )
-						}
+						onChange={ ( value ) => setAttributes( { iconLabel: value } ) }
 					/>
 				</>
 			) }
@@ -977,16 +832,10 @@ const Settings = ( props ) => {
 	);
 
 	const spacingSettings = (
-		<UAGAdvancedPanelBody
-			title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
-		>
-			{ ( authorImage && authorImage.url ) && (
+		<UAGAdvancedPanelBody title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+			{ authorImage && authorImage.url && (
 				<ResponsiveSlider
-					label={ __(
-						'Author - Image Gap',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Author - Image Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: authorImageGap,
@@ -1013,10 +862,7 @@ const Settings = ( props ) => {
 			{ skinStyle === 'quotation' && (
 				<SpacingControl
 					{ ...props }
-					label={ __(
-						'Quote Icon Margin',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Quote Icon Margin', 'ultimate-addons-for-gutenberg' ) }
 					valueTop={ {
 						value: quoteTopMargin,
 						label: 'quoteTopMargin',
@@ -1088,10 +934,7 @@ const Settings = ( props ) => {
 			) }
 			{ skinStyle === 'border' && (
 				<ResponsiveSlider
-					label={ __(
-						'Border - Quote Gap',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Border - Quote Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: borderGap,
@@ -1116,10 +959,7 @@ const Settings = ( props ) => {
 				/>
 			) }
 			<ResponsiveSlider
-				label={ __(
-					'Quote Bottom Spacing',
-					'ultimate-addons-for-gutenberg'
-				) }
+				label={ __( 'Quote Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
 					desktop: {
 						value: descSpace,
@@ -1144,10 +984,7 @@ const Settings = ( props ) => {
 			/>
 			{ align === 'center' && skinStyle !== 'border' && (
 				<ResponsiveSlider
-					label={ __(
-						'Author Bottom Spacing',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Author Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: authorSpace,
@@ -1175,10 +1012,7 @@ const Settings = ( props ) => {
 			{ skinStyle === 'border' && (
 				<>
 					<ResponsiveSlider
-						label={ __(
-							'Vertical Spacing',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Vertical Spacing', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							desktop: {
 								value: verticalPadding,
@@ -1210,10 +1044,7 @@ const Settings = ( props ) => {
 		const tabOutputNormal = (
 			<>
 				<AdvancedPopColorControl
-					label={ __(
-						'Icon Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ quoteColor ? quoteColor : '' }
 					data={ {
 						value: quoteColor,
@@ -1222,10 +1053,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
-					label={ __(
-						'Icon Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Icon Background Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ quoteBgColor ? quoteBgColor : '' }
 					data={ {
 						value: quoteBgColor,
@@ -1238,10 +1066,7 @@ const Settings = ( props ) => {
 		const tabOutputHover = (
 			<>
 				<AdvancedPopColorControl
-					label={ __(
-						'Icon Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ quoteHoverColor ? quoteHoverColor : '' }
 					data={ {
 						value: quoteHoverColor,
@@ -1250,10 +1075,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
-					label={ __(
-						'Icon Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Icon Background Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ quoteBgHoverColor ? quoteBgHoverColor : '' }
 					data={ {
 						value: quoteBgHoverColor,
@@ -1264,10 +1086,7 @@ const Settings = ( props ) => {
 			</>
 		);
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				{ skinStyle === 'border' && borderStyleSetting() }
 				{ skinStyle === 'quotation' && quoteSettings }
 				{ skinStyle === 'quotation' && (
@@ -1275,17 +1094,11 @@ const Settings = ( props ) => {
 						tabs={ [
 							{
 								name: 'normal',
-								title: __(
-									'Normal',
-									'ultimate-addons-for-gutenberg'
-								),
+								title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								name: 'hover',
-								title: __(
-									'Hover',
-									'ultimate-addons-for-gutenberg'
-								),
+								title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
 							},
 						] }
 						normal={ tabOutputNormal }
@@ -1322,10 +1135,7 @@ const Settings = ( props ) => {
 		return (
 			<>
 				<UAGSelectControl
-					label={ __(
-						'Border Style',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Border Style', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: borderStyle,
 						label: 'borderStyle',
@@ -1334,76 +1144,46 @@ const Settings = ( props ) => {
 					options={ [
 						{
 							value: 'none',
-							label: __(
-								'None',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'None', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'solid',
-							label: __(
-								'Solid',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Solid', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'dotted',
-							label: __(
-								'Dotted',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Dotted', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'dashed',
-							label: __(
-								'Dashed',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Dashed', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'double',
-							label: __(
-								'Double',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Double', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'groove',
-							label: __(
-								'Groove',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Groove', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'inset',
-							label: __(
-								'Inset',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Inset', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'outset',
-							label: __(
-								'Outset',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Outset', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'ridge',
-							label: __(
-								'Ridge',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Ridge', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 				/>
 				{ 'none' !== borderStyle && (
 					<>
 						<Range
-							label={ __(
-								'Thickness',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Thickness', 'ultimate-addons-for-gutenberg' ) }
 							setAttributes={ setAttributes }
 							value={ borderWidth }
 							data={ {
@@ -1421,17 +1201,11 @@ const Settings = ( props ) => {
 							tabs={ [
 								{
 									name: 'normal',
-									title: __(
-										'Normal',
-										'ultimate-addons-for-gutenberg'
-									),
+									title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
 								},
 								{
 									name: 'hover',
-									title: __(
-										'Hover',
-										'ultimate-addons-for-gutenberg'
-									),
+									title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
 								},
 							] }
 							normal={ tabOutputNormal }
@@ -1445,16 +1219,10 @@ const Settings = ( props ) => {
 	};
 	const iconStyleSetting = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Twitter Icon', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Twitter Icon', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				{ iconView !== 'icon' && (
 					<TypographyControl
-						label={ __(
-							'Typography',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 						attributes={ attributes }
 						setAttributes={ setAttributes }
 						loadGoogleFonts={ {
@@ -1534,10 +1302,7 @@ const Settings = ( props ) => {
 				{ iconSkin !== 'link' && (
 					<SpacingControl
 						{ ...props }
-						label={ __(
-							'Padding',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
 						valueTop={ {
 							value: paddingBtnTop,
 							label: 'paddingBtnTop',
@@ -1609,10 +1374,7 @@ const Settings = ( props ) => {
 				) }
 				{ iconView === 'icon_text' && (
 					<Range
-						label={ __(
-							'Icon & Text Spacing',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Icon & Text Spacing', 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }
 						value={ tweetIconSpacing }
 						data={ {
@@ -1633,28 +1395,17 @@ const Settings = ( props ) => {
 						tabs={ [
 							{
 								name: 'normal',
-								title: __(
-									'Normal',
-									'ultimate-addons-for-gutenberg'
-								),
+								title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								name: 'hover',
-								title: __(
-									'Hover',
-									'ultimate-addons-for-gutenberg'
-								),
+								title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
 							},
 						] }
 						normal={
 							<AdvancedPopColorControl
-								label={ __(
-									'Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={
-									tweetLinkColor ? tweetLinkColor : ''
-								}
+								label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+								colorValue={ tweetLinkColor ? tweetLinkColor : '' }
 								data={ {
 									value: tweetLinkColor,
 									label: 'tweetLinkColor',
@@ -1664,13 +1415,8 @@ const Settings = ( props ) => {
 						}
 						hover={
 							<AdvancedPopColorControl
-								label={ __(
-									'Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={
-									tweetBtnHoverColor ? tweetBtnHoverColor : ''
-								}
+								label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+								colorValue={ tweetBtnHoverColor ? tweetBtnHoverColor : '' }
 								data={ {
 									value: tweetBtnHoverColor,
 									label: 'tweetBtnHoverColor',
@@ -1686,29 +1432,18 @@ const Settings = ( props ) => {
 						tabs={ [
 							{
 								name: 'normal',
-								title: __(
-									'Normal',
-									'ultimate-addons-for-gutenberg'
-								),
+								title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								name: 'hover',
-								title: __(
-									'Hover',
-									'ultimate-addons-for-gutenberg'
-								),
+								title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
 							},
 						] }
 						normal={
 							<>
 								<AdvancedPopColorControl
-									label={ __(
-										'Color',
-										'ultimate-addons-for-gutenberg'
-									) }
-									colorValue={
-										tweetBtnColor ? tweetBtnColor : ''
-									}
+									label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+									colorValue={ tweetBtnColor ? tweetBtnColor : '' }
 									data={ {
 										value: tweetBtnColor,
 										label: 'tweetBtnColor',
@@ -1716,13 +1451,8 @@ const Settings = ( props ) => {
 									setAttributes={ setAttributes }
 								/>
 								<AdvancedPopColorControl
-									label={ __(
-										'Background Color',
-										'ultimate-addons-for-gutenberg'
-									) }
-									colorValue={
-										tweetBtnBgColor ? tweetBtnBgColor : ''
-									}
+									label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
+									colorValue={ tweetBtnBgColor ? tweetBtnBgColor : '' }
 									data={ {
 										value: tweetBtnBgColor,
 										label: 'tweetBtnBgColor',
@@ -1734,15 +1464,8 @@ const Settings = ( props ) => {
 						hover={
 							<>
 								<AdvancedPopColorControl
-									label={ __(
-										'Color',
-										'ultimate-addons-for-gutenberg'
-									) }
-									colorValue={
-										tweetBtnHoverColor
-											? tweetBtnHoverColor
-											: ''
-									}
+									label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+									colorValue={ tweetBtnHoverColor ? tweetBtnHoverColor : '' }
 									data={ {
 										value: tweetBtnHoverColor,
 										label: 'tweetBtnHoverColor',
@@ -1750,15 +1473,8 @@ const Settings = ( props ) => {
 									setAttributes={ setAttributes }
 								/>
 								<AdvancedPopColorControl
-									label={ __(
-										'Background Color',
-										'ultimate-addons-for-gutenberg'
-									) }
-									colorValue={
-										tweetBtnBgHoverColor
-											? tweetBtnBgHoverColor
-											: ''
-									}
+									label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
+									colorValue={ tweetBtnBgHoverColor ? tweetBtnBgHoverColor : '' }
 									data={ {
 										value: tweetBtnBgHoverColor,
 										label: 'tweetBtnBgHoverColor',
@@ -1775,8 +1491,7 @@ const Settings = ( props ) => {
 	};
 	return (
 		<>
-			<BlockControls key="controls">
-			</BlockControls>
+			<BlockControls key="controls"></BlockControls>
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
@@ -1790,11 +1505,7 @@ const Settings = ( props ) => {
 						{ authorStyling }
 						{ spacingSettings }
 					</InspectorTab>
-					<InspectorTab
-						{ ...UAGTabs.advance }
-						parentProps={ props }
-					>
-					</InspectorTab>
+					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			{ loadDescGoogleFonts }

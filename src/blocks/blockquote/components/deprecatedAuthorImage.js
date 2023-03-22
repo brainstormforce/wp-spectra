@@ -16,18 +16,13 @@ const deprecatedAuthorImage = ( { attributes } ) => {
 		const authorImageSize = attributes.authorImageSize;
 
 		url =
-			typeof size !== 'undefined' &&
-			typeof size[ authorImageSize ] !== 'undefined'
+			typeof size !== 'undefined' && typeof size[ authorImageSize ] !== 'undefined'
 				? size[ authorImageSize ].url
 				: urlChk;
 
 		return (
 			<div className="uagb-blockquote__author-image">
-				<img
-					className=""
-					src={ url }
-					alt={ attributes.authorImage.alt }
-				/>
+				<img className="" src={ url } alt={ attributes.authorImage.alt } />
 			</div>
 		);
 	}
