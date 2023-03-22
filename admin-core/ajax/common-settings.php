@@ -160,8 +160,8 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function pro_activate() {
 		wp_clean_plugins_cache();
-		// nonce verification is done in above function check_permission_nonce.
-		$value = ( isset( $_POST['value'] ) ) ? sanitize_text_field( wp_unslash( $_POST['value'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$value = $this->check_post_value();
+		$value = sanitize_text_field( wp_unslash( $value ) );
 		$this->check_permission_nonce( 'uag_pro_activate', 'activate_plugins' );
 
 		if ( empty( $value ) ) {
@@ -349,7 +349,7 @@ class Common_Settings extends Ajax_Base {
 	public function select_font_globally() {
 		$this->check_permission_nonce( 'uag_select_font_globally' );
 		$value = $this->check_post_value();
-		$value = isset( $value ) ? json_decode( stripslashes( $value ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$value = json_decode( stripslashes( $value ), true ); 
 		$this->save_admin_settings( 'uag_select_font_globally', $this->sanitize_form_inputs( $value ) );
 	}
 
@@ -406,7 +406,6 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function social() {
 		$this->check_permission_nonce( 'uag_social' );
-		$this->check_post_value();
 		
 		$social = \UAGB_Admin_Helper::get_admin_settings_option(
 			'uag_social',
@@ -663,7 +662,8 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function insta_linked_accounts() {
 		$this->check_permission_nonce( 'uag_insta_linked_accounts' );
-		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.NonceVerification.Missing
+		$value = $this->check_post_value();
+		$value = json_decode( stripslashes( $value ), true );
 		// The previous $_POST['value'] is not sanitized, as the array sanitization is handled in the class method used below.
 		$this->save_admin_settings( 'uag_insta_linked_accounts', $this->sanitize_form_inputs( $value ) );
 	}
@@ -677,7 +677,8 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function insta_all_users_media() {
 		$this->check_permission_nonce( 'uag_insta_all_users_media' );
-		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.NonceVerification.Missing
+		$value = $this->check_post_value();
+		$value = json_decode( stripslashes( $value ), true ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.NonceVerification.Missing
 		// The previous $_POST['value'] is not sanitized, as the array sanitization is handled in the class method used below.
 		$this->save_admin_settings( 'uag_insta_all_users_media', $this->sanitize_form_inputs( $value ) );
 	}
