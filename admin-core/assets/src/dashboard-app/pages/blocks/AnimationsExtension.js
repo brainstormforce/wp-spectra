@@ -60,7 +60,6 @@ const AnimationsExtension = () => {
         ) }
         >
             <div className="flex-shrink-0">
-                {/* Animations Reminder: Please update the icon */}
                 { UAGB_Block_Icons['animations-extension'] }
             </div>
             <div className="uagb-admin-block__extension-title flex-1 min-w-0">
