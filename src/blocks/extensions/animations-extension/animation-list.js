@@ -24,8 +24,8 @@ export const AnimationList = [
     { value: 'fade-right', label: __( 'Fade Right', 'ultimate-addons-for-gutenberg' ) },
     { value: 'fade-up-right', label: __( 'Fade-Up Right', 'ultimate-addons-for-gutenberg' ) },
     { value: 'fade-up-left', label: __( 'Fade-Up Left', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'fade-down-left', label: __( 'Fade-Out Left', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'fade-down-right', label: __( 'Fade-Out Right', 'ultimate-addons-for-gutenberg' ) },
+    { value: 'fade-down-left', label: __( 'Fade-Down Left', 'ultimate-addons-for-gutenberg' ) },
+    { value: 'fade-down-right', label: __( 'Fade-Down Right', 'ultimate-addons-for-gutenberg' ) },
 
     // Zoom.
     { value: 'zoom-in', label: __( 'Zoom-In', 'ultimate-addons-for-gutenberg' ) },
