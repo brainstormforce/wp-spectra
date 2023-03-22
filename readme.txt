@@ -176,6 +176,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Inline Notice - Content color is not working in the backend.
 * Fix: Inline Notice - Content typography is not working.
 * Fix: Taxonomy block - Translation missing for Select string in PHP file.
+* Fix: Social Share - PHP error for old user due `array_merge()` parameter should be array.
 
 = 2.4.0 =
 * New: Introducing the Countdown block that will help you generate hype and create a sense of urgency among your audience, during product sales or releases!
