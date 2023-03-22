@@ -14,13 +14,10 @@ import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/buttons', {
 	title: __( 'Buttons', 'ultimate-addons-for-gutenberg' ),
-	description:  __( 'Add multiple buttons to redirect user to different webpages.', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'Add multiple buttons to redirect user to different webpages.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.buttons,
 	category: uagb_blocks_info.category,
-	keywords: [
-		__( 'buttons', 'ultimate-addons-for-gutenberg' ),
-		__( 'uag', 'ultimate-addons-for-gutenberg' ),
-	],
+	keywords: [ __( 'buttons', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	supports: {
 		anchor: true,
 	},
@@ -30,16 +27,10 @@ registerBlockType( 'uagb/buttons', {
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
 	attributes,
-	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="buttons" />
-		) : (
-			<Edit { ...props } />
-		),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="buttons" /> : <Edit { ...props } /> ),
 	save,
 	deprecated,
 } );
-
