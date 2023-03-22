@@ -1,7 +1,7 @@
 /**
  * Accept array of classes.
  *
- * @param {string} classes - List of classes.
+ * @param {...string} classes - List of classes.
  * @return {string} classes - Classes string.
  *
  * @since x.x.x
