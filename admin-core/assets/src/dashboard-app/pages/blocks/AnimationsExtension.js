@@ -8,10 +8,7 @@ import { Switch } from '@headlessui/react'
 import apiFetch from '@wordpress/api-fetch';
 import UAGB_Block_Icons from '@Common/block-icons';
 import { useEffect } from '@wordpress/element';
-
-function classNames( ...classes ) {
-    return classes.filter( Boolean ).join( ' ' )
-}
+import { uagbClassNames } from '@Utils/Helpers';
 
 const AnimationsExtension = () => {
 
@@ -55,7 +52,7 @@ const AnimationsExtension = () => {
 
     return (
         <div
-        className={ classNames(
+        className={ uagbClassNames(
             animationExtensionStatus
                 ? 'border-white bg-white shadow hover:shadow-hover hover:z-50'
                 : 'border-slate-200 spectra-disabled-icon',
@@ -78,14 +75,14 @@ const AnimationsExtension = () => {
             <Switch
                 checked={animationExtensionStatus}
                 onChange={updateAnimationsExtensionStatus}
-                className={classNames(
+                className={uagbClassNames(
                     animationExtensionStatus ? 'bg-spectra' : 'bg-slate-200',
                     'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                 )}
                 >
                 <span
                     aria-hidden="true"
-                    className={classNames(
+                    className={uagbClassNames(
                     animationExtensionStatus ? 'translate-x-5' : 'translate-x-0',
                     'pointer-events-none inline-block h-3.5 w-3.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
                     )}
