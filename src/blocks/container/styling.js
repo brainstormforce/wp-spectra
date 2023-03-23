@@ -227,25 +227,22 @@ function styling( props ) {
 		'.wp-block-uagb-container .block-editor-block-list__block' : {
 			'color': textColor,
 		},
-		'.wp-block-uagb-container .block-editor-block-list__block .uagb-heading-text' : {
+		'.wp-block-uagb-container h1' : {
 			'color': textColor,
 		},
-		'.wp-block-uagb-container .block-editor-block-list__block .uagb-cta__title' : {
+		'.wp-block-uagb-container h2' : {
 			'color': textColor,
 		},
-		'.wp-block-uagb-container .block-editor-block-list__block .uagb-notice-title' : {
+		'.wp-block-uagb-container h3' : {
 			'color': textColor,
 		},
-		'.wp-block-uagb-container .block-editor-block-list__block .uagb-ifb-title' : {
-			'color': textColor, 
-		}, 
-		'.wp-block-uagb-container .block-editor-block-list__block .uagb-post__title' : {
+		'.wp-block-uagb-container h4' : {
 			'color': textColor,
 		},
-		'.wp-block-uagb-container .block-editor-block-list__block .uagb-team__title' : {
+		'.wp-block-uagb-container h5' : {
 			'color': textColor,
 		},
-		'.wp-block-uagb-container .block-editor-block-list__block .uagb-cta__buttons' : {
+		'.wp-block-uagb-container h6' : {
 			'color': textColor,
 		},
 		'.wp-block-uagb-container .block-editor-block-list__block a' : {

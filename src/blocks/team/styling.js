@@ -257,7 +257,7 @@ function styling( props ) {
 		'font-weight': titleFontWeight,
 		'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
 		'line-height': generateCSSUnit( titleLineHeight, titleLineHeightType ),
-		'color': titleColor + ' !important',
+		'color': titleColor,
 		'margin-bottom': generateCSSUnit( titleSpaceFallback, 'px' ),
 		'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 	};
@@ -429,7 +429,7 @@ function styling( props ) {
 	};
 
 	let stylingCss = '';
-	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `#block-${ props.clientId } .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
 	stylingCss = generateCSS( selectors, id );
 

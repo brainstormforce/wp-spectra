@@ -165,7 +165,7 @@ function styling( props ) {
 				titleLineHeight,
 				titleLineHeightType
 			),
-			'color': titleColor + ' !important',
+			'color': titleColor,
 			'padding-left': generateCSSUnit( lPadding, titlePaddingUnit ),
 			'padding-right': generateCSSUnit( rPadding, titlePaddingUnit ),
 			'padding-top': generateCSSUnit( titleTopPadding, titlePaddingUnit ),
@@ -516,7 +516,7 @@ function styling( props ) {
 		};
 	}
 
-	const baseSelector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
+	const baseSelector = `.editor-styles-wrapper #block-${ props.clientId } .uagb-block-${ block_id }`;
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 

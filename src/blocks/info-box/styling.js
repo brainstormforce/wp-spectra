@@ -486,7 +486,7 @@ function styling( props ) {
 			 'text-decoration': headDecoration,
 			 'text-transform': headTransform,
 			 'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
-			 'color': headingColor + ' !important',
+			 'color': headingColor,
 			 'margin-top': generateCSSUnit( headTopMargin, headSpaceUnit ),
 			 'margin-bottom': generateCSSUnit( headSpace, headSpaceUnit ),
 			 'margin-left': generateCSSUnit( headLeftMargin, headSpaceUnit ),
@@ -1028,7 +1028,7 @@ function styling( props ) {
 	 mobileSelectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSSMobile;
 	 tabletSelectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSSTablet;
 
-	 const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
+	 const id = `.editor-styles-wrapper #block-${ props.clientId } .uagb-block-${ props.clientId.substr(
 		 0,
 		 8
 	 ) }`;
