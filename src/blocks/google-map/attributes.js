@@ -10,21 +10,21 @@ const attributes = {
 		type: 'number',
 		default: 300,
 		UAGCopyPaste: {
-			styleType: 'map-height'
+			styleType: 'map-height',
 		},
 	},
 	heightTablet: {
 		type: 'number',
 		default: 300,
 		UAGCopyPaste: {
-			styleType: 'map-height'
+			styleType: 'map-height',
 		},
 	},
 	heightMobile: {
 		type: 'number',
 		default: 300,
 		UAGCopyPaste: {
-			styleType: 'map-height'
+			styleType: 'map-height',
 		},
 	},
 	zoom: {

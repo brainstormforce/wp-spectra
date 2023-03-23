@@ -8,9 +8,7 @@ import WebfontLoader from '@Components/typography/fontloader';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import UAGSelectControl from '@Components/select-control';
 import { getImageSize } from '@Utils/Helpers';
-import {
-	ToggleControl,
-} from '@wordpress/components';
+import { ToggleControl } from '@wordpress/components';
 let imageSizeOptions = [
 	{
 		value: 'thumbnail',
@@ -102,12 +100,12 @@ const Settings = ( props ) => {
 	 * Event to set Image as while adding.
 	 */
 	const onSelectImage = ( media ) => {
-		if ( !media || !media.url ) {
+		if ( ! media || ! media.url ) {
 			setAttributes( { image: null } );
 			return;
 		}
 
-		if ( !media.type || 'image' !== media.type ) {
+		if ( ! media.type || 'image' !== media.type ) {
 			setAttributes( { image: null } );
 			return;
 		}
@@ -125,7 +123,7 @@ const Settings = ( props ) => {
 	};
 
 	imageSizeOptions.map( ( item ) => {
-		item.label = item.label.replace( /\w/, firstLetter => firstLetter.toUpperCase() );
+		item.label = item.label.replace( /\w/, ( firstLetter ) => firstLetter.toUpperCase() );
 		return item;
 	} );
 
@@ -136,181 +134,142 @@ const Settings = ( props ) => {
 	if ( true === urlLoadGoogleFonts ) {
 		const uconfig = {
 			google: {
-				families: [
-					urlFontFamily +
-						( urlFontWeight ? ':' + urlFontWeight : '' ),
-				],
+				families: [ urlFontFamily + ( urlFontWeight ? ':' + urlFontWeight : '' ) ],
 			},
 		};
 
-		loadUrlGoogleFonts = (
-			<WebfontLoader config={ uconfig }></WebfontLoader>
-		);
+		loadUrlGoogleFonts = <WebfontLoader config={ uconfig }></WebfontLoader>;
 	}
 
 	if ( true === titleLoadGoogleFonts ) {
 		const tconfig = {
 			google: {
-				families: [
-					titleFontFamily +
-						( titleFontWeight ? ':' + titleFontWeight : '' ),
-				],
+				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
 			},
 		};
 
-		loadTitleGoogleFonts = (
-			<WebfontLoader config={ tconfig }></WebfontLoader>
-		);
+		loadTitleGoogleFonts = <WebfontLoader config={ tconfig }></WebfontLoader>;
 	}
 
 	if ( true === descriptionLoadGoogleFonts ) {
 		const dconfig = {
 			google: {
-				families: [
-					descriptionFontFamily +
-						( descriptionFontWeight ? ':' + descriptionFontWeight : '' ),
-				],
+				families: [ descriptionFontFamily + ( descriptionFontWeight ? ':' + descriptionFontWeight : '' ) ],
 			},
 		};
 
-		loadDescriptionGoogleFonts = (
-			<WebfontLoader config={ dconfig }></WebfontLoader>
-		);
+		loadDescriptionGoogleFonts = <WebfontLoader config={ dconfig }></WebfontLoader>;
 	}
 
 	const imageControls = () => {
 		return (
-			<UAGAdvancedPanelBody
-				initialOpen={ true }
-				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
-			>
+			<UAGAdvancedPanelBody initialOpen={ true } title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }>
 				<UAGMediaPicker
 					onSelectImage={ onSelectImage }
 					backgroundImage={ image }
 					onRemoveImage={ onRemoveImage }
 					disableLabel={ true }
 				/>
-				{image &&
-					image.url !== 'null' &&
-					image.url !== '' && (
-						<>
-							<UAGSelectControl
-								label={ __(
-									'Image Size',
-									'ultimate-addons-for-gutenberg'
-								) }
-								data={ {
-									value: imageSize,
-									label: 'imageSize',
-								} }
-								setAttributes={ setAttributes }
-								options={ imageSizeOptions }
-							/>
-							<UAGSelectControl
-								label={ __(
-									'Select Position',
-									'ultimate-addons-for-gutenberg'
-								) }
-								data={ {
-									value: imgPosition,
-									label: 'imgPosition',
-								} }
-								setAttributes={ setAttributes }
-								options={[
-									{ value: 'above-title', label: __( 'Above Title' ) },
-									{ value: 'left-title', label: __( 'Left of Title' ) },
-									{ value: 'right-title', label: __( 'Right of Title' ) }
-								]}
-							/>
-						</>
-					)
-
-				}
+				{ image && image.url !== 'null' && image.url !== '' && (
+					<>
+						<UAGSelectControl
+							label={ __( 'Image Size', 'ultimate-addons-for-gutenberg' ) }
+							data={ {
+								value: imageSize,
+								label: 'imageSize',
+							} }
+							setAttributes={ setAttributes }
+							options={ imageSizeOptions }
+						/>
+						<UAGSelectControl
+							label={ __( 'Select Position', 'ultimate-addons-for-gutenberg' ) }
+							data={ {
+								value: imgPosition,
+								label: 'imgPosition',
+							} }
+							setAttributes={ setAttributes }
+							options={ [
+								{ value: 'above-title', label: __( 'Above Title' ) },
+								{ value: 'left-title', label: __( 'Left of Title' ) },
+								{ value: 'right-title', label: __( 'Right of Title' ) },
+							] }
+						/>
+					</>
+				) }
 			</UAGAdvancedPanelBody>
 		);
 	};
 	const urlControls = () => {
-
 		return (
-			<UAGAdvancedPanelBody title={__( 'Add Link' )} initialOpen={false}>
+			<UAGAdvancedPanelBody title={ __( 'Add Link' ) } initialOpen={ false }>
 				<UAGSelectControl
-					label={ __(
-						'Type',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: urlType,
 						label: 'urlType',
 					} }
 					setAttributes={ setAttributes }
-					options={[
+					options={ [
 						{ value: 'text', label: __( 'Text' ) },
 						{ value: 'all', label: __( 'Complete Box' ) },
 						{ value: 'none', label: __( 'None' ) },
-					]}
+					] }
 				/>
-				{urlType === 'text' && (
+				{ urlType === 'text' && (
 					<>
 						<UAGTextControl
-							label={__( 'Text' )}
-							value={urlText}
-							data={{
+							label={ __( 'Text' ) }
+							value={ urlText }
+							data={ {
 								value: urlText,
 								label: 'urlText',
-							}}
+							} }
 							setAttributes={ setAttributes }
-							onChange={( value ) =>
-								setAttributes( { urlText: value } )
-							}
+							onChange={ ( value ) => setAttributes( { urlText: value } ) }
 						/>
 					</>
-				)}
-				{urlType !== 'none' && (
+				) }
+				{ urlType !== 'none' && (
 					<>
 						<UAGTextControl
-							label={__( 'Link' )}
-							value={url}
-							data={{
+							label={ __( 'Link' ) }
+							value={ url }
+							data={ {
 								value: url,
 								label: 'url',
-							}}
+							} }
 							setAttributes={ setAttributes }
-							onChange={( value ) =>
-								setAttributes( { url: value } )
-							}
+							onChange={ ( value ) => setAttributes( { url: value } ) }
 						/>
 						<ToggleControl
-							label={__( 'Open in new window' )}
-							checked={urlTarget}
-							onChange={() =>
-								setAttributes( { urlTarget: !urlTarget } )
-							}
+							label={ __( 'Open in new window' ) }
+							checked={ urlTarget }
+							onChange={ () => setAttributes( { urlTarget: ! urlTarget } ) }
 						/>
 					</>
-				)}
+				) }
 			</UAGAdvancedPanelBody>
 		);
-	}
+	};
 	const linkStyle = () => {
-
 		return (
-			<UAGAdvancedPanelBody title={__( 'Link' )} initialOpen={true}>
+			<UAGAdvancedPanelBody title={ __( 'Link' ) } initialOpen={ true }>
 				<TypographyControl
-					label={__( 'Typography' )}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					loadGoogleFonts={{
+					label={ __( 'Typography' ) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
 						value: urlLoadGoogleFonts,
 						label: 'urlLoadGoogleFonts',
-					}}
-					fontFamily={{
+					} }
+					fontFamily={ {
 						value: urlFontFamily,
 						label: 'urlFontFamily',
-					}}
-					fontWeight={{
+					} }
+					fontWeight={ {
 						value: urlFontWeight,
 						label: 'urlFontWeight',
-					}}
+					} }
 					fontStyle={ {
 						value: urlFontStyle,
 						label: 'urlFontStyle',
@@ -323,22 +282,22 @@ const Settings = ( props ) => {
 						value: urlDecoration,
 						label: 'urlDecoration',
 					} }
-					fontSizeType={{
+					fontSizeType={ {
 						value: urlFontSizeType,
 						label: 'urlFontSizeType',
-					}}
-					fontSize={{
+					} }
+					fontSize={ {
 						value: urlFontSize,
 						label: 'urlFontSize',
-					}}
-					fontSizeMobile={{
+					} }
+					fontSizeMobile={ {
 						value: urlFontSizeMobile,
 						label: 'urlFontSizeMobile',
-					}}
-					fontSizeTablet={{
+					} }
+					fontSizeTablet={ {
 						value: urlFontSizeTablet,
 						label: 'urlFontSizeTablet',
-					}}
+					} }
 					lineHeightType={ {
 						value: urlLineHeightType,
 						label: 'urlLineHeightType',
@@ -383,27 +342,26 @@ const Settings = ( props ) => {
 				/>
 			</UAGAdvancedPanelBody>
 		);
-	}
+	};
 	const titleStyle = () => {
-
 		return (
-			<UAGAdvancedPanelBody title={__( 'Title' )} initialOpen={ true }>
+			<UAGAdvancedPanelBody title={ __( 'Title' ) } initialOpen={ true }>
 				<TypographyControl
-					label={__( 'Typography' )}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					loadGoogleFonts={{
+					label={ __( 'Typography' ) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
 						value: titleLoadGoogleFonts,
 						label: 'titleLoadGoogleFonts',
-					}}
-					fontFamily={{
+					} }
+					fontFamily={ {
 						value: titleFontFamily,
 						label: 'titleFontFamily',
-					}}
-					fontWeight={{
+					} }
+					fontWeight={ {
 						value: titleFontWeight,
 						label: 'titleFontWeight',
-					}}
+					} }
 					fontStyle={ {
 						value: titleFontStyle,
 						label: 'titleFontStyle',
@@ -416,22 +374,22 @@ const Settings = ( props ) => {
 						value: titleDecoration,
 						label: 'titleDecoration',
 					} }
-					fontSizeType={{
+					fontSizeType={ {
 						value: titleFontSizeType,
 						label: 'titleFontSizeType',
-					}}
-					fontSize={{
+					} }
+					fontSize={ {
 						value: titleFontSize,
 						label: 'titleFontSize',
-					}}
-					fontSizeMobile={{
+					} }
+					fontSizeMobile={ {
 						value: titleFontSizeMobile,
 						label: 'titleFontSizeMobile',
-					}}
-					fontSizeTablet={{
+					} }
+					fontSizeTablet={ {
 						value: titleFontSizeTablet,
 						label: 'titleFontSizeTablet',
-					}}
+					} }
 					lineHeightType={ {
 						value: titleLineHeightType,
 						label: 'titleLineHeightType',
@@ -476,28 +434,27 @@ const Settings = ( props ) => {
 				/>
 			</UAGAdvancedPanelBody>
 		);
-	}
+	};
 
 	const descriptionStyle = () => {
-
 		return (
-			<UAGAdvancedPanelBody title={__( 'Description' )} initialOpen={false}>
+			<UAGAdvancedPanelBody title={ __( 'Description' ) } initialOpen={ false }>
 				<TypographyControl
-					label={__( 'Typography' )}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					loadGoogleFonts={{
+					label={ __( 'Typography' ) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
 						value: descriptionLoadGoogleFonts,
 						label: 'descriptionLoadGoogleFonts',
-					}}
-					fontFamily={{
+					} }
+					fontFamily={ {
 						value: descriptionFontFamily,
 						label: 'descriptionFontFamily',
-					}}
-					fontWeight={{
+					} }
+					fontWeight={ {
 						value: descriptionFontWeight,
 						label: 'descriptionFontWeight',
-					}}
+					} }
 					fontStyle={ {
 						value: descriptionFontStyle,
 						label: 'descriptionFontStyle',
@@ -510,22 +467,22 @@ const Settings = ( props ) => {
 						value: descriptionDecoration,
 						label: 'descriptionDecoration',
 					} }
-					fontSizeType={{
+					fontSizeType={ {
 						value: descriptionFontSizeType,
 						label: 'descriptionFontSizeType',
-					}}
-					fontSize={{
+					} }
+					fontSize={ {
 						value: descriptionFontSize,
 						label: 'descriptionFontSize',
-					}}
-					fontSizeMobile={{
+					} }
+					fontSizeMobile={ {
 						value: descriptionFontSizeMobile,
 						label: 'descriptionFontSizeMobile',
-					}}
-					fontSizeTablet={{
+					} }
+					fontSizeTablet={ {
 						value: descriptionFontSizeTablet,
 						label: 'descriptionFontSizeTablet',
-					}}
+					} }
 					lineHeightType={ {
 						value: descriptionLineHeightType,
 						label: 'descriptionLineHeightType',
@@ -570,23 +527,22 @@ const Settings = ( props ) => {
 				/>
 			</UAGAdvancedPanelBody>
 		);
-	}
+	};
 
 	return (
 		<>
 			<InspectorControls>
 				<InspectorTabs>
-					<InspectorTab {...UAGTabs.general}>
-					{ imageControls() }
-					{ urlControls() }
+					<InspectorTab { ...UAGTabs.general }>
+						{ imageControls() }
+						{ urlControls() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ titleStyle() }
 						{ descriptionStyle() }
 						{ urlType === 'text' && linkStyle() }
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance}>
-					</InspectorTab>
+					<InspectorTab { ...UAGTabs.advance }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			{ loadUrlGoogleFonts }

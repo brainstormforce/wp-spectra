@@ -25,11 +25,7 @@ export default function save( props ) {
 	} = attributes;
 
 	let urlCheck = '';
-	if (
-		typeof image !== 'undefined' &&
-		image !== null &&
-		image !== ''
-	) {
+	if ( typeof image !== 'undefined' && image !== null && image !== '' ) {
 		urlCheck = image.url;
 	}
 
@@ -37,10 +33,7 @@ export default function save( props ) {
 	if ( urlCheck !== '' ) {
 		const size = image.sizes;
 
-		if (
-			typeof size !== 'undefined' &&
-			typeof size[ imageSize ] !== 'undefined'
-		) {
+		if ( typeof size !== 'undefined' && typeof size[ imageSize ] !== 'undefined' ) {
 			imageUrl = size[ imageSize ].url;
 		} else {
 			imageUrl = urlCheck;
@@ -57,75 +50,52 @@ export default function save( props ) {
 			className="uagb-how-to-step-image"
 			src={ imageUrl }
 			alt={ image.alt }
-			width={imgTagWidth} height={imgTagHeight}
+			width={ imgTagWidth }
+			height={ imgTagHeight }
 			loading="lazy"
 		/>
 	);
 	const contentMarkup = (
 		<div className="uagb-step-content-wrap">
-			<RichText.Content
-				tagName="div"
-				className="uagb-how-to-step-name"
-				value={ name }
-			/>
-			<RichText.Content
-				tagName="p"
-				className="uagb-how-to-step-description"
-				value={ description }
-			/>
-			{'text' === urlType && (
+			<RichText.Content tagName="div" className="uagb-how-to-step-name" value={ name } />
+			<RichText.Content tagName="p" className="uagb-how-to-step-description" value={ description } />
+			{ 'text' === urlType && (
 				<>
-					{ '' !== url?
-						<a
-							href={url}
-							target={target}
-							className="uagb-step-link"
-							rel="noopener noreferrer"
-						>
-							<span className="uagb-step-link-text">
-							{urlText}
-							</span>
+					{ '' !== url ? (
+						<a href={ url } target={ target } className="uagb-step-link" rel="noopener noreferrer">
+							<span className="uagb-step-link-text">{ urlText }</span>
 						</a>
-						:
-						<span className="uagb-step-link-text">
-							{urlText}
-						</span>
-					}
+					) : (
+						<span className="uagb-step-link-text">{ urlText }</span>
+					) }
 				</>
-			)}
+			) }
 		</div>
 	);
 	return (
-		<div
-			className={ classnames(
-				'uagb-how-to-step-wrap',
-				`uagb-block-${ block_id }`
-			) }
-		>
+		<div className={ classnames( 'uagb-how-to-step-wrap', `uagb-block-${ block_id }` ) }>
 			{ ( 'all' === urlType || 'none' === urlType ) && (
-					<>
-						{ ( '' !== url && 'all' === urlType )  &&
-							<a // eslint-disable-line jsx-a11y/anchor-has-content
-							href={url}
-							target={target}
+				<>
+					{ '' !== url && 'all' === urlType && (
+						<a // eslint-disable-line jsx-a11y/anchor-has-content
+							href={ url }
+							target={ target }
 							className="uagb-step-link-all"
 							rel="noopener noreferrer"
-							></a>
-						}
-						<div className={`uagb-step-image-content-wrap uag-image-position-${imgPosition}`}>
-							{ imageUrl && imageMarkup }
-							{ contentMarkup }
-						</div>
-					</>
-				)
-			}
-			{'text' === urlType && (
-					<div className={`uagb-step-image-content-wrap uag-image-position-${imgPosition}`}>
+						></a>
+					) }
+					<div className={ `uagb-step-image-content-wrap uag-image-position-${ imgPosition }` }>
 						{ imageUrl && imageMarkup }
 						{ contentMarkup }
 					</div>
-				)
-			}
+				</>
+			) }
+			{ 'text' === urlType && (
+				<div className={ `uagb-step-image-content-wrap uag-image-position-${ imgPosition }` }>
+					{ imageUrl && imageMarkup }
+					{ contentMarkup }
+				</div>
+			) }
 		</div>
 	);
 }

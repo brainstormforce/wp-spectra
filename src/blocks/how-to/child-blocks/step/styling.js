@@ -77,14 +77,8 @@ function styling( props ) {
 			'text-transform': urlTransform,
 			'text-decoration': urlDecoration,
 			'font-weight': urlFontWeight,
-			'font-size': generateCSSUnit(
-				urlFontSize,
-				urlFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				urlLineHeight,
-				urlLineHeightType
-			),
+			'font-size': generateCSSUnit( urlFontSize, urlFontSizeType ),
+			'line-height': generateCSSUnit( urlLineHeight, urlLineHeightType ),
 			'letter-spacing': generateCSSUnit( urlLetterSpacing, urlLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-how-to-step-name': {
@@ -94,14 +88,8 @@ function styling( props ) {
 			'text-transform': titleTransform,
 			'text-decoration': titleDecoration,
 			'font-weight': titleFontWeight,
-			'font-size': generateCSSUnit(
-				titleFontSize,
-				titleFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				titleLineHeight,
-				titleLineHeightType
-			),
+			'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
+			'line-height': generateCSSUnit( titleLineHeight, titleLineHeightType ),
 			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-how-to-step-description': {
@@ -111,110 +99,55 @@ function styling( props ) {
 			'text-transform': descriptionTransform,
 			'text-decoration': descriptionDecoration,
 			'font-weight': descriptionFontWeight,
-			'font-size': generateCSSUnit(
-				descriptionFontSize,
-				descriptionFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				descriptionLineHeight,
-				descriptionLineHeightType
-			),
+			'font-size': generateCSSUnit( descriptionFontSize, descriptionFontSizeType ),
+			'line-height': generateCSSUnit( descriptionLineHeight, descriptionLineHeightType ),
 			'letter-spacing': generateCSSUnit( descriptionLetterSpacing, descriptionLetterSpacingType ),
 		},
 	};
 
 	mobileSelectors = {
 		' .uagb-step-link-text': {
-			'font-size': generateCSSUnit(
-				urlFontSizeMobile,
-				urlFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				urlLineHeightMobile,
-				urlLineHeightType
-			),
+			'font-size': generateCSSUnit( urlFontSizeMobile, urlFontSizeType ),
+			'line-height': generateCSSUnit( urlLineHeightMobile, urlLineHeightType ),
 			'letter-spacing': generateCSSUnit( urlLetterSpacingMobile, urlLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-how-to-step-name': {
-			'font-size': generateCSSUnit(
-				titleFontSizeMobile,
-				titleFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				titleLineHeightMobile,
-				titleLineHeightType
-			),
+			'font-size': generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
+			'line-height': generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
 			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-how-to-step-description': {
-			'font-size': generateCSSUnit(
-				descriptionFontSizeMobile,
-				descriptionFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				descriptionLineHeightMobile,
-				descriptionLineHeightType
-			),
+			'font-size': generateCSSUnit( descriptionFontSizeMobile, descriptionFontSizeType ),
+			'line-height': generateCSSUnit( descriptionLineHeightMobile, descriptionLineHeightType ),
 			'letter-spacing': generateCSSUnit( descriptionLetterSpacingMobile, descriptionLetterSpacingType ),
 		},
 	};
 
 	tabletSelectors = {
 		' .uagb-step-link-text': {
-			'font-size': generateCSSUnit(
-				urlFontSizeTablet,
-				urlFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				urlLineHeightTablet,
-				urlLineHeightType
-			),
+			'font-size': generateCSSUnit( urlFontSizeTablet, urlFontSizeType ),
+			'line-height': generateCSSUnit( urlLineHeightTablet, urlLineHeightType ),
 			'letter-spacing': generateCSSUnit( urlLetterSpacingTablet, urlLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-how-to-step-name': {
-			'font-size': generateCSSUnit(
-				titleFontSizeTablet,
-				titleFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				titleLineHeightTablet,
-				titleLineHeightType
-			),
+			'font-size': generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
+			'line-height': generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
 			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-how-to-step-description': {
-			'font-size': generateCSSUnit(
-				descriptionFontSizeTablet,
-				descriptionFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				descriptionLineHeightTablet,
-				descriptionLineHeightType
-			),
+			'font-size': generateCSSUnit( descriptionFontSizeTablet, descriptionFontSizeType ),
+			'line-height': generateCSSUnit( descriptionLineHeightTablet, descriptionLineHeightType ),
 			'letter-spacing': generateCSSUnit( descriptionLetterSpacingTablet, descriptionLetterSpacingType ),
 		},
 	};
 
-	const baseSelector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
-		0,
-		8
-	) }`;
+	const baseSelector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 
-	stylingCss += generateCSS(
-		tabletSelectors,
-		`${ baseSelector }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
+	stylingCss += generateCSS( tabletSelectors, `${ baseSelector }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
 
-	stylingCss += generateCSS(
-		mobileSelectors,
-		`${ baseSelector }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	stylingCss += generateCSS( mobileSelectors, `${ baseSelector }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
 
 	return stylingCss;
 }

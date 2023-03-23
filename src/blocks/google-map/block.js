@@ -32,14 +32,9 @@ registerBlockType( 'uagb/google-map', {
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="google-maps" />
-			) : (
-				<Edit { ...props } />
-			),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="google-maps" /> : <Edit { ...props } /> ),
 	save,
 	deprecated,
 } );
