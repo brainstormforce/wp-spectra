@@ -44,7 +44,8 @@
 
 .rtl .editor-styles-wrapper {
 
-	.uagb-modal-button-link .uagb-modal-content-wrapper > svg { // Fixed 5px left/right margin when before/after button icon.
+	.uagb-modal-button-link .uagb-modal-content-wrapper > svg {
+		// Fixed 5px left/right margin when before/after button icon.
 		margin-left: 5px;
 		margin-right: 5px;
 	}

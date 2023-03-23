@@ -30,60 +30,61 @@ const UAGBMarketingButtonEdit = ( props ) => {
 		},
 		clientId,
 	} = props;
-	
+
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 		setAttributes( { classMigrate: true } );
 
 		// border migration
-		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-			migrateBorderAttributes( 'btn', {
-				label: 'borderWidth',
-				value: borderWidth,
-			}, {
-				label: 'borderRadius',
-				value: borderRadius
-			}, {
-				label: 'borderColor',
-				value: borderColor
-			}, {
-				label: 'borderHoverColor',
-				value: borderHoverColor
-			},{
-				label: 'borderStyle',
-				value: borderStyle
-			},
-			setAttributes,
-			attributes
+		if ( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ) {
+			migrateBorderAttributes(
+				'btn',
+				{
+					label: 'borderWidth',
+					value: borderWidth,
+				},
+				{
+					label: 'borderRadius',
+					value: borderRadius,
+				},
+				{
+					label: 'borderColor',
+					value: borderColor,
+				},
+				{
+					label: 'borderHoverColor',
+					value: borderHoverColor,
+				},
+				{
+					label: 'borderStyle',
+					value: borderStyle,
+				},
+				setAttributes,
+				attributes
 			);
 		}
-		
 	}, [] );
 
 	useEffect( () => {
-
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 		addBlockEditorDynamicStyles( 'uagb-style-marketing-btn-' + clientId.substr( 0, 8 ), blockStyling );
-		
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
-	}, [deviceType] );
+	}, [ deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
-	
+
 	return (
-			<>
+		<>
 			{ isSelected && <Settings parentProps={ props } /> }
-				<Render parentProps={ props } />
-			</>
+			<Render parentProps={ props } />
+		</>
 	);
 };
 export default UAGBMarketingButtonEdit;
