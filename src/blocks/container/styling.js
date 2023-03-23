@@ -227,22 +227,25 @@ function styling( props ) {
 		'.wp-block-uagb-container .block-editor-block-list__block' : {
 			'color': textColor,
 		},
-		'.wp-block-uagb-container .block-editor-block-list__block h1' : {
+		'.wp-block-uagb-container .block-editor-block-list__block .uagb-heading-text' : {
 			'color': textColor,
 		},
-		'.wp-block-uagb-container .block-editor-block-list__block h2' : {
+		'.wp-block-uagb-container .block-editor-block-list__block .uagb-cta__title' : {
 			'color': textColor,
 		},
-		'.wp-block-uagb-container .block-editor-block-list__block h3' : {
+		'.wp-block-uagb-container .block-editor-block-list__block .uagb-notice-title' : {
 			'color': textColor,
 		},
-		'.wp-block-uagb-container .block-editor-block-list__block h4' : {
+		'.wp-block-uagb-container .block-editor-block-list__block .uagb-ifb-title' : {
 			'color': textColor, 
 		}, 
-		'.wp-block-uagb-container .block-editor-block-list__block h5' : {
+		'.wp-block-uagb-container .block-editor-block-list__block .uagb-post__title' : {
 			'color': textColor,
 		},
-		'.wp-block-uagb-container .block-editor-block-list__block h6' : {
+		'.wp-block-uagb-container .block-editor-block-list__block .uagb-team__title' : {
+			'color': textColor,
+		},
+		'.wp-block-uagb-container .block-editor-block-list__block .uagb-cta__buttons' : {
 			'color': textColor,
 		},
 		'.wp-block-uagb-container .block-editor-block-list__block a' : {
