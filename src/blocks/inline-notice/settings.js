@@ -3,17 +3,13 @@ import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
-import InspectorTab, {
-	UAGTabs,
-} from '@Components/inspector-tabs/InspectorTab.js';
+import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
-import {
-	InspectorControls,
-} from '@wordpress/block-editor';
+import { InspectorControls } from '@wordpress/block-editor';
 
 import { select } from '@wordpress/data';
 import renderSVG from '@Controls/renderIcon';
@@ -120,31 +116,21 @@ const Settings = ( props ) => {
 	if ( true === titleLoadGoogleFonts ) {
 		const hconfig = {
 			google: {
-				families: [
-					titleFontFamily +
-						( titleFontWeight ? ':' + titleFontWeight : '' ),
-				],
+				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
 			},
 		};
 
-		loadTitleGoogleFonts = (
-			<WebfontLoader config={ hconfig }></WebfontLoader>
-		);
+		loadTitleGoogleFonts = <WebfontLoader config={ hconfig }></WebfontLoader>;
 	}
 
 	if ( true === descLoadGoogleFonts ) {
 		const sconfig = {
 			google: {
-				families: [
-					descFontFamily +
-						( descFontWeight ? ':' + descFontWeight : '' ),
-				],
+				families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
 			},
 		};
 
-		loadDescriptionGoogleFonts = (
-			<WebfontLoader config={ sconfig }></WebfontLoader>
-		);
+		loadDescriptionGoogleFonts = <WebfontLoader config={ sconfig }></WebfontLoader>;
 	}
 
 	const updateCookieId = ( value ) => {
@@ -155,7 +141,6 @@ const Settings = ( props ) => {
 		setAttributes( { c_id: post_id + '-' + timestamp } );
 		setAttributes( { cookies: value } );
 	};
-
 
 	// Notice dismiss options
 	const noticeDismissOptions = [
@@ -194,10 +179,7 @@ const Settings = ( props ) => {
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
-					label={ __(
-						'Alignment',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: noticeAlignment,
 						label: 'noticeAlignment',
@@ -206,43 +188,18 @@ const Settings = ( props ) => {
 					options={ [
 						{
 							value: 'left',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-left' ) }
-								/>
-							),
-							tooltip: __(
-								'Left',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+							tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'center',
-							icon: (
-								<Icon
-									icon={ renderSVG(
-										'fa fa-align-center'
-									) }
-								/>
-							),
-							tooltip: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
+							tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'right',
-							icon: (
-								<Icon
-									icon={ renderSVG(
-										'fa fa-align-right'
-									) }
-								/>
-							),
-							tooltip: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
+							tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					showIcons={ true }
@@ -250,10 +207,7 @@ const Settings = ( props ) => {
 
 				{ 'simple' === layout && (
 					<ResponsiveSlider
-						label={ __(
-							'Border Width',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Border Width', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							desktop: {
 								value: highlightWidth,
@@ -308,10 +262,7 @@ const Settings = ( props ) => {
 						},
 						{
 							value: 'span',
-							label: __(
-								'Span',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Span', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'p',
@@ -321,10 +272,7 @@ const Settings = ( props ) => {
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
-					label={ __(
-						'Notice Display',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Notice Display', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: noticeDismiss,
 						label: 'noticeDismiss',
@@ -334,20 +282,12 @@ const Settings = ( props ) => {
 				{ noticeDismiss && (
 					<>
 						<UAGIconPicker
-							label={ __(
-								'Button Icon',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Button Icon', 'ultimate-addons-for-gutenberg' ) }
 							value={ icon }
-							onChange={ ( value ) =>
-								setAttributes( { icon: value } )
-							}
+							onChange={ ( value ) => setAttributes( { icon: value } ) }
 						/>
 						<ResponsiveSlider
-							label={ __(
-								'Button Size',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Button Size', 'ultimate-addons-for-gutenberg' ) }
 							data={ {
 								desktop: {
 									value: iconSize,
@@ -374,20 +314,14 @@ const Settings = ( props ) => {
 				) }
 				{ noticeDismiss && (
 					<ToggleControl
-						label={ __(
-							'Enable Cookies',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Enable Cookies', 'ultimate-addons-for-gutenberg' ) }
 						checked={ cookies }
 						onChange={ updateCookieId }
 					/>
 				) }
-				{ ( cookies && noticeDismiss ) && (
+				{ cookies && noticeDismiss && (
 					<Range
-						label={ __(
-							'Show Closed Notice After (Days)',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Show Closed Notice After (Days)', 'ultimate-addons-for-gutenberg' ) }
 						value={ close_cookie_days }
 						data={ {
 							value: close_cookie_days,
@@ -405,10 +339,7 @@ const Settings = ( props ) => {
 
 	const inlineTitleSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
@@ -419,10 +350,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
-					label={ __(
-						'Border Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Border Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ noticeColor ? noticeColor : '' }
 					data={ {
 						value: noticeColor,
@@ -432,13 +360,8 @@ const Settings = ( props ) => {
 				/>
 				{ noticeDismiss && (
 					<AdvancedPopColorControl
-						label={ __(
-							'Dismiss Icon Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						colorValue={
-							noticeDismissColor ? noticeDismissColor : ''
-						}
+						label={ __( 'Dismiss Icon Color', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ noticeDismissColor ? noticeDismissColor : '' }
 						data={ {
 							value: noticeDismissColor,
 							label: 'noticeDismissColor',
@@ -447,10 +370,7 @@ const Settings = ( props ) => {
 					/>
 				) }
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -602,10 +522,7 @@ const Settings = ( props ) => {
 
 	const inlineContentSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ textColor ? textColor : '' }
@@ -616,10 +533,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ contentBgColor ? contentBgColor : '' }
 					data={ {
 						value: contentBgColor,
@@ -628,10 +542,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -785,17 +696,12 @@ const Settings = ( props ) => {
 		<>
 			<InspectorControls>
 				<InspectorTabs tabs={ [ 'general', 'style', 'advance' ] }>
-					<InspectorTab { ...UAGTabs.general }>
-						{ inlineGeneralSettings() }
-					</InspectorTab>
+					<InspectorTab { ...UAGTabs.general }>{ inlineGeneralSettings() }</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ inlineTitleSettings() }
 						{ inlineContentSettings() }
 					</InspectorTab>
-					<InspectorTab
-						{ ...UAGTabs.advance }
-						parentProps={ props }
-					></InspectorTab>
+					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			{ loadTitleGoogleFonts }

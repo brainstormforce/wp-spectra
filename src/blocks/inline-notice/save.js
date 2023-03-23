@@ -11,21 +11,13 @@ import { RichText } from '@wordpress/block-editor';
 export default function save( props ) {
 	const { attributes, className } = props;
 
-	const {
-		block_id,
-		noticeTitle,
-		noticeContent,
-		noticeAlignment,
-		headingTag,
-		icon,
-		noticeDismiss,
-		cookies,
-	} = attributes;
+	const { block_id, noticeTitle, noticeContent, noticeAlignment, headingTag, icon, noticeDismiss, cookies } =
+		attributes;
 
 	let imageIconHtml = '';
 
 	if ( noticeDismiss ) {
-		imageIconHtml = ( renderSVG( icon )	);
+		imageIconHtml = renderSVG( icon );
 	}
 
 	let active = '';
@@ -43,16 +35,8 @@ export default function save( props ) {
 			) }
 		>
 			{ imageIconHtml }
-			<RichText.Content
-				value={ noticeTitle }
-				tagName={ headingTag }
-				className="uagb-notice-title"
-			/>
-			<RichText.Content
-				value={ noticeContent }
-				tagName="div"
-				className="uagb-notice-text"
-			/>
+			<RichText.Content value={ noticeTitle } tagName={ headingTag } className="uagb-notice-title" />
+			<RichText.Content value={ noticeContent } tagName="div" className="uagb-notice-text" />
 		</div>
 	);
 }

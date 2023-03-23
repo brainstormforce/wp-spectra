@@ -5,17 +5,8 @@
 import generateCSS from '@Controls/generateCSS';
 
 function styling( props ) {
-
-	const {
-		width,
-		widthTablet,
-		widthMob,
-		height,
-		heightTablet,
-		heightMob,
-		backgroundColor,
-		backgroundHColor,
-	} = props.attributes;
+	const { width, widthTablet, widthMob, height, heightTablet, heightMob, backgroundColor, backgroundHColor } =
+		props.attributes;
 
 	const widthFallback = isNaN( width ) ? 'auto' : `${ width }px`;
 	const heightFallback = isNaN( height ) ? 'auto' : `${ height }px`;
@@ -59,10 +50,7 @@ function styling( props ) {
 		},
 	};
 
-	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
-		0,
-		8
-	) }`;
+	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
 	let styling_css = generateCSS( selectors, base_selector );
 
