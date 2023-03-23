@@ -8,13 +8,7 @@ import renderSVG from '@Controls/renderIcon';
 import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
-	const {
-		block_id,
-		layout,
-		placeholder,
-		buttonType,
-		buttonText,
-	} = props.attributes;
+	const { block_id, layout, placeholder, buttonType, buttonText } = props.attributes;
 
 	const renderClassic = () => {
 		if ( 'input-button' === layout ) {
@@ -65,9 +59,7 @@ export default function save( props ) {
 					method="get"
 				>
 					<div className="uagb-search-form__container" role="tablist">
-						<span className="uagb-wp-search-icon-wrap">
-							{ renderSVG( 'fas fa-search' ) }
-						</span>
+						<span className="uagb-wp-search-icon-wrap">{ renderSVG( 'fas fa-search' ) }</span>
 						<input
 							placeholder={ placeholder }
 							className="uagb-search-form__input"

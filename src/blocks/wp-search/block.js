@@ -16,7 +16,10 @@ import PreviewImage from '@Controls/previewImage';
 if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
 	registerBlockType( 'uagb/wp-search', {
 		title: __( 'Search', 'ultimate-addons-for-gutenberg' ),
-		description: __( 'Add a search widget to let users search posts from your website.', 'ultimate-addons-for-gutenberg' ),
+		description: __(
+			'Add a search widget to let users search posts from your website.',
+			'ultimate-addons-for-gutenberg'
+		),
 		icon: renderLegacyBlockEditorIcon( 'wp_search' ),
 		keywords: [
 			__( 'search', 'ultimate-addons-for-gutenberg' ),
@@ -28,18 +31,13 @@ if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_bloc
 		},
 		category: uagb_blocks_info.category,
 		attributes,
-		edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="wp-search" />
-			) : (
-				<Edit { ...props } />
-			),
+		edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="wp-search" /> : <Edit { ...props } /> ),
 		save,
 		example: {
 			attributes: {
 				isPreview: true,
-			}
+			},
 		},
-		deprecated
+		deprecated,
 	} );
 }
