@@ -127,7 +127,8 @@
 	justify-content: flex-end;
 }
 
-.block-editor-block-list__layout .block-editor-block-list__block[data-type="uagb/column"] > .block-editor-block-list__block-edit {
+.block-editor-block-list__layout
+.block-editor-block-list__block[data-type="uagb/column"] > .block-editor-block-list__block-edit {
 	margin-left: 14px;
 	margin-right: 14px;
 
@@ -199,7 +200,10 @@
 	margin-right: 0;
 }
 
-.edit-post-visual-editor .editor-writing-flow .block-editor-block-list__layout .block-editor-block-list__block[data-type="uagb/column"] > .block-editor-block-list__block-edit {
+.edit-post-visual-editor
+.editor-writing-flow
+.block-editor-block-list__layout
+.block-editor-block-list__block[data-type="uagb/column"] > .block-editor-block-list__block-edit {
 	margin-left: 0;
 	margin-right: 0;
 }
@@ -209,11 +213,13 @@
 	overflow: visible;
 }
 
-.edit-post-visual-editor .uagb-editor-preview-mode-mobile .block-editor-block-list__block[data-type="uagb/column"] .block-editor-block-list__block-edit {
+.edit-post-visual-editor
+.uagb-editor-preview-mode-mobile
+.block-editor-block-list__block[data-type="uagb/column"]
+.block-editor-block-list__block-edit {
 	padding-left: 0;
 	padding-right: 0;
 }
-
 
 .uagb-editor-preview-mode-tablet.uagb-columns__reverse-tablet.uagb-columns__stack-none,
 .uagb-editor-preview-mode-mobile.uagb-columns__reverse-tablet.uagb-columns__stack-none,
@@ -259,18 +265,15 @@
 }
 
 .uagb-columns-variation-picker {
-
 	// This selector is apprently active for mobile preview.
 	.components-placeholder.is-medium {
 
 		.components-placeholder__fieldset {
-
 			// Since sub heading is hidden on mobile, we un-hide it.
 			.components-placeholder__instructions {
 				display: inline-block;
 			}
 		}
-
 	}
 
 	.components-placeholder__instructions {
@@ -334,7 +337,7 @@
 	}
 }
 
-@media screen and (max-width: 976px) {
+@media screen and ( max-width: 976px ) {
 
 	.uagb-columns-variation-picker {
 
@@ -347,5 +350,4 @@
 			column-gap: 35px;
 		}
 	}
-
 }

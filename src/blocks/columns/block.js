@@ -18,7 +18,7 @@ import PreviewImage from '@Controls/previewImage';
 if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
 	registerBlockType( 'uagb/columns', {
 		title: __( 'Advanced Columns', 'ultimate-addons-for-gutenberg' ),
-		description:  __( 'Insert a number of columns within a single row.', 'ultimate-addons-for-gutenberg' ),
+		description: __( 'Insert a number of columns within a single row.', 'ultimate-addons-for-gutenberg' ),
 		icon: renderLegacyBlockEditorIcon( 'columns' ),
 		category: uagb_blocks_info.category,
 		keywords: [
@@ -29,11 +29,7 @@ if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_bloc
 		attributes,
 		variations,
 		edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="advanced-columns" />
-		) : (
-			<Edit { ...props } />
-		),
+			props.attributes.isPreview ? <PreviewImage image="advanced-columns" /> : <Edit { ...props } />,
 		getEditWrapperProps( attribute ) {
 			return {
 				'data-align': attribute.align,
@@ -48,7 +44,7 @@ if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_bloc
 		example: {
 			attributes: {
 				isPreview: true,
-			}
+			},
 		},
 		save,
 		deprecated,
