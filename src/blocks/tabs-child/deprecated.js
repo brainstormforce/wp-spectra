@@ -18,11 +18,7 @@ const deprecated = [
 			return (
 				<div className="uagb-tabs__body-container">
 					<div
-						className={ classnames(
-							className,
-							`uagb-blocks__${ block_id }`,
-							'uagb-tabs__body'
-						) }
+						className={ classnames( className, `uagb-blocks__${ block_id }`, 'uagb-tabs__body' ) }
 						aria-labelledby={ `uagb-tabs__tab${ id }` }
 					>
 						<InnerBlocks.Content />
@@ -38,23 +34,17 @@ const deprecated = [
 			const { id, block_id } = attributes;
 
 			return (
-				<div
-					className={ `uagb-tabs__body-container uagb-tabs__inner-tab uagb-inner-tab-${ id }` }
-				>
+				<div className={ `uagb-tabs__body-container uagb-tabs__inner-tab uagb-inner-tab-${ id }` }>
 					<div
-						className={ classnames(
-							className,
-							`uagb-blocks__${ block_id }`,
-							'uagb-tabs__body'
-						) }
+						className={ classnames( className, `uagb-blocks__${ block_id }`, 'uagb-tabs__body' ) }
 						aria-labelledby={ `uagb-tabs__tab${ id }` }
 					>
 						<InnerBlocks.Content />
 					</div>
 				</div>
 			);
-		}
-	}
+		},
+	},
 ];
 
 export default deprecated;
