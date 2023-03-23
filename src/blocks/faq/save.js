@@ -8,12 +8,7 @@ import { InnerBlocks } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { className } = props;
-	const {
-		block_id,
-		schema,
-		enableSchemaSupport,
-		equalHeight,
-	} = props.attributes;
+	const { block_id, schema, enableSchemaSupport, equalHeight } = props.attributes;
 
 	const renderSchema = () => {
 		if ( true === enableSchemaSupport ) {
