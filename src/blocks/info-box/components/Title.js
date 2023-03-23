@@ -5,13 +5,7 @@ import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 
 const Title = ( props ) => {
-	const {
-		attributes,
-		setAttributes,
-		mergeBlocks,
-		insertBlocksAfter,
-		onReplace,
-	} = props;
+	const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace } = props;
 
 	if ( setAttributes !== 'not_set' ) {
 		return (
@@ -20,9 +14,7 @@ const Title = ( props ) => {
 				placeholder={ __( 'Write a Title' ) }
 				value={ attributes.infoBoxTitle }
 				className="uagb-ifb-title"
-				onChange={ ( value ) =>
-					setAttributes( { infoBoxTitle: value } )
-				}
+				onChange={ ( value ) => setAttributes( { infoBoxTitle: value } ) }
 				multiline={ false }
 				onMerge={ mergeBlocks }
 				onSplit={

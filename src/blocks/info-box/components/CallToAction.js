@@ -39,13 +39,9 @@ const InfoBoxCta = ( props ) => {
 						className="uagb-infobox-cta-link"
 						rel={ rel }
 					>
-						{ attributes.ctaIconPosition === 'before' &&
-							ctaIconOutput }
-						<span className="uagb-inline-editing">
-							{ attributes.ctaText }
-						</span>
-						{ attributes.ctaIconPosition === 'after' &&
-							ctaIconOutput }
+						{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
+						<span className="uagb-inline-editing">{ attributes.ctaText }</span>
+						{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 					</a>
 				) }
 
@@ -53,9 +49,7 @@ const InfoBoxCta = ( props ) => {
 					<div
 						className={ classnames(
 							'uagb-ifb-button-wrapper',
-							attributes.inheritFromTheme
-								? 'wp-block-button'
-								: null
+							attributes.inheritFromTheme ? 'wp-block-button' : null
 						) }
 					>
 						<a // eslint-disable-line jsx-a11y/anchor-is-valid
@@ -65,9 +59,7 @@ const InfoBoxCta = ( props ) => {
 						>
 							{ ctaIconOutput }
 							<span className="uagb-ifb-cta-content-wrapper">
-								<span className="uagb-inline-editing ">
-									{ attributes.ctaText }
-								</span>
+								<span className="uagb-inline-editing ">{ attributes.ctaText }</span>
 							</span>
 						</a>
 					</div>
@@ -78,17 +70,9 @@ const InfoBoxCta = ( props ) => {
 	return (
 		<div className="uagb-ifb-cta uagb-infobox-cta-link-style">
 			{ attributes.ctaType === 'text' && (
-				<a
-					href={ attributes.ctaLink }
-					target={ target }
-					className="uagb-infobox-cta-link"
-					rel={ rel }
-					alt=""
-				>
+				<a href={ attributes.ctaLink } target={ target } className="uagb-infobox-cta-link" rel={ rel } alt="">
 					{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
-					<span className="uagb-inline-editing">
-						{ attributes.ctaText }
-					</span>
+					<span className="uagb-inline-editing">{ attributes.ctaText }</span>
 					{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 				</a>
 			) }
@@ -100,18 +84,10 @@ const InfoBoxCta = ( props ) => {
 						attributes.inheritFromTheme ? 'wp-block-button' : null
 					) }
 				>
-					<a
-						href={ attributes.ctaLink }
-						className={ ctaBtnClass }
-						target={ target }
-						rel={ rel }
-						alt=""
-					>
+					<a href={ attributes.ctaLink } className={ ctaBtnClass } target={ target } rel={ rel } alt="">
 						{ ctaIconOutput }
 						<span className="uagb-ifb-cta-content-wrapper">
-							<span className="uagb-inline-editing ">
-								{ attributes.ctaText }
-							</span>
+							<span className="uagb-inline-editing ">{ attributes.ctaText }</span>
 						</span>
 					</a>
 				</div>

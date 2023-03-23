@@ -41,57 +41,57 @@ const UAGBInfoBox = ( props ) => {
 
 		setAttributes( { classMigrate: true } );
 
-		if( ctaBgType === undefined ) {
+		if ( ctaBgType === undefined ) {
 			setAttributes( { ctaBgType: 'color' } );
 		}
 
-		if( ctaBgHoverType === undefined ) {
+		if ( ctaBgHoverType === undefined ) {
 			setAttributes( { ctaBgHoverType: 'color' } );
 		}
 
-		if( showCtaIcon === undefined ) {
+		if ( showCtaIcon === undefined ) {
 			setAttributes( { showCtaIcon: true } );
 		}
-		
+
 		// Backward Border Migration
-		if( ctaBorderWidth || ctaBorderRadius || ctaBorderColor || ctaBorderhoverColor || ctaBorderStyle ){
-
-			migrateBorderAttributes( 'btn', {
-				label: 'ctaBorderWidth',
-				value: ctaBorderWidth,
-			}, {
-				label: 'ctaBorderRadius',
-				value: ctaBorderRadius
-			}, {
-				label: 'ctaBorderColor',
-				value: ctaBorderColor
-			}, {
-				label: 'ctaBorderhoverColor',
-				value: ctaBorderhoverColor
-			},{
-				label: 'ctaBorderStyle',
-				value: ctaBorderStyle
-			},
-			setAttributes,
-			attributes
-		);
+		if ( ctaBorderWidth || ctaBorderRadius || ctaBorderColor || ctaBorderhoverColor || ctaBorderStyle ) {
+			migrateBorderAttributes(
+				'btn',
+				{
+					label: 'ctaBorderWidth',
+					value: ctaBorderWidth,
+				},
+				{
+					label: 'ctaBorderRadius',
+					value: ctaBorderRadius,
+				},
+				{
+					label: 'ctaBorderColor',
+					value: ctaBorderColor,
+				},
+				{
+					label: 'ctaBorderhoverColor',
+					value: ctaBorderhoverColor,
+				},
+				{
+					label: 'ctaBorderStyle',
+					value: ctaBorderStyle,
+				},
+				setAttributes,
+				attributes
+			);
 		}
-
 	}, [] );
 
 	useEffect( () => {
-
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-info-box-style-' + clientId.substr( 0, 8 ), blockStyling );
-		
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
@@ -99,10 +99,10 @@ const UAGBInfoBox = ( props ) => {
 	}, [ deviceType ] );
 
 	return (
-			<>
+		<>
 			{ isSelected && <Settings parentProps={ props } /> }
-				<Render parentProps={ props } />
-			</>
+			<Render parentProps={ props } />
+		</>
 	);
 };
 
