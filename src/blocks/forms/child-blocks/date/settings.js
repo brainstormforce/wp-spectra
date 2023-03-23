@@ -4,9 +4,7 @@ import { ToggleControl } from '@wordpress/components';
 import UAGSelectControl from '@Components/select-control';
 import Separator from '@Components/separator';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
-import InspectorTab, {
-	UAGTabs,
-} from '@Components/inspector-tabs/InspectorTab.js';
+import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 
 import { InspectorControls } from '@wordpress/block-editor';
 
@@ -30,8 +28,6 @@ for ( index = 1; index <= 31; index++ ) {
 	dateDefaults.push( { label: twoDigitDate, value: twoDigitDate } );
 }
 
-
-
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -39,16 +35,7 @@ const Settings = ( props ) => {
 
 	const { attributes, setAttributes } = props;
 
-	const {
-		dateRequired,
-		additonalVal,
-		minYear,
-		minMonth,
-		minDay,
-		maxYear,
-		maxMonth,
-		maxDay,
-	} = attributes;
+	const { dateRequired, additonalVal, minYear, minMonth, minDay, maxYear, maxMonth, maxDay } = attributes;
 
 	let validation_min_value = '';
 	let validation_max_value = '';
@@ -68,10 +55,7 @@ const Settings = ( props ) => {
 	if ( start > end ) {
 		invalidDateErrorMsg = (
 			<p className="uagb-forms-date-invalidate">
-				{ __(
-					'Invalid date range selected',
-					'ultimate-addons-for-gutenberg'
-				) }
+				{ __( 'Invalid date range selected', 'ultimate-addons-for-gutenberg' ) }
 			</p>
 		);
 	}
@@ -82,35 +66,20 @@ const Settings = ( props ) => {
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ dateRequired }
-					onChange={ () =>
-						setAttributes( { dateRequired: ! dateRequired } )
-					}
+					onChange={ () => setAttributes( { dateRequired: ! dateRequired } ) }
 				/>
 				<ToggleControl
-					label={ __(
-						'Additional Validation',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Additional Validation', 'ultimate-addons-for-gutenberg' ) }
 					checked={ additonalVal }
-					onChange={ () =>
-						setAttributes( { additonalVal: ! additonalVal } )
-					}
-					help={ __(
-						'Helps to set range of calender',
-						'ultimate-addons-for-gutenberg'
-					) }
+					onChange={ () => setAttributes( { additonalVal: ! additonalVal } ) }
+					help={ __( 'Helps to set range of calender', 'ultimate-addons-for-gutenberg' ) }
 				/>
 				{ additonalVal && (
 					<>
-						<Separator/>
-						<p>
-							{ __( 'From', 'ultimate-addons-for-gutenberg' ) } :
-						</p>
+						<Separator />
+						<p>{ __( 'From', 'ultimate-addons-for-gutenberg' ) } :</p>
 						<UAGSelectControl
-							label={ __(
-								'Year',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Year', 'ultimate-addons-for-gutenberg' ) }
 							data={ {
 								value: minYear,
 								label: 'minYear',
@@ -119,10 +88,7 @@ const Settings = ( props ) => {
 							options={ YearDefaults }
 						/>
 						<UAGSelectControl
-							label={ __(
-								'Month',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Month', 'ultimate-addons-for-gutenberg' ) }
 							data={ {
 								value: minMonth,
 								label: 'minMonth',
@@ -131,10 +97,7 @@ const Settings = ( props ) => {
 							options={ MonthsDefaults }
 						/>
 						<UAGSelectControl
-							label={ __(
-								'Date',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Date', 'ultimate-addons-for-gutenberg' ) }
 							data={ {
 								value: minDay,
 								label: 'minDay',
@@ -142,15 +105,10 @@ const Settings = ( props ) => {
 							setAttributes={ setAttributes }
 							options={ dateDefaults }
 						/>
-						<Separator/>
-						<p>
-							{ __( 'To', 'ultimate-addons-for-gutenberg' ) } :
-						</p>
+						<Separator />
+						<p>{ __( 'To', 'ultimate-addons-for-gutenberg' ) } :</p>
 						<UAGSelectControl
-							label={ __(
-								'Year',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Year', 'ultimate-addons-for-gutenberg' ) }
 							data={ {
 								value: maxYear,
 								label: 'maxYear',
@@ -159,10 +117,7 @@ const Settings = ( props ) => {
 							options={ YearDefaults }
 						/>
 						<UAGSelectControl
-							label={ __(
-								'Month',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Month', 'ultimate-addons-for-gutenberg' ) }
 							data={ {
 								value: maxMonth,
 								label: 'maxMonth',
@@ -171,10 +126,7 @@ const Settings = ( props ) => {
 							options={ MonthsDefaults }
 						/>
 						<UAGSelectControl
-							label={ __(
-								'Date',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Date', 'ultimate-addons-for-gutenberg' ) }
 							data={ {
 								value: maxDay,
 								label: 'maxDay',
@@ -193,9 +145,7 @@ const Settings = ( props ) => {
 		<>
 			<InspectorControls>
 				<InspectorTabs tabs={ [ 'general', 'advance' ] }>
-					<InspectorTab { ...UAGTabs.general }>
-						{ dateInspectorControls() }
-					</InspectorTab>
+					<InspectorTab { ...UAGTabs.general }>{ dateInspectorControls() }</InspectorTab>
 					<InspectorTab { ...UAGTabs.advance }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
