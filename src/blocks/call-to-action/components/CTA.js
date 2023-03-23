@@ -32,42 +32,31 @@ const CTA = ( props ) => {
 	}
 	return (
 		<div className="uagb-cta__link-wrapper uagb-cta__block-link-style">
-			{ ( attributes.ctaType === 'button' ||
-				attributes.ctaType === 'text' ) && (
+			{ ( attributes.ctaType === 'button' || attributes.ctaType === 'text' ) && (
 				<div
 					className={ classnames(
 						'uagb-cta__button-wrapper',
-						attributes.inheritFromTheme &&
-							attributes.ctaType === 'button'
-							? 'wp-block-button'
-							: null
+						attributes.inheritFromTheme && attributes.ctaType === 'button' ? 'wp-block-button' : null
 					) }
 				>
 					<a
 						href={ link }
 						className={ classnames(
 							'uagb-cta__button-link-wrapper',
-							! attributes.inheritFromTheme
-								? 'uagb-cta__block-link'
-								: null,
-							! attributes.inheritFromTheme
-								? `uagb-cta-typeof-${ attributes.ctaType }`
-								: null,
-							attributes.inheritFromTheme &&
-								attributes.ctaType === 'button'
+							! attributes.inheritFromTheme ? 'uagb-cta__block-link' : null,
+							! attributes.inheritFromTheme ? `uagb-cta-typeof-${ attributes.ctaType }` : null,
+							attributes.inheritFromTheme && attributes.ctaType === 'button'
 								? 'wp-block-button__link'
 								: null
 						) }
 						target={ target }
 						rel={ rel }
 					>
-						{ attributes.ctaIconPosition === 'before' &&
-							ctaIconOutput }
+						{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
 						<span className="uagb-cta__link-content-inner">
 							<span>{ attributes.ctaText }</span>
 						</span>
-						{ attributes.ctaIconPosition === 'after' &&
-							ctaIconOutput }
+						{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 					</a>
 				</div>
 			) }

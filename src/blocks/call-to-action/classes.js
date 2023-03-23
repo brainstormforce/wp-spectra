@@ -13,13 +13,11 @@ function CtaPositionClasses( attributes ) {
 	}
 
 	if ( attributes.ctaPosition === 'right' && attributes.stack !== 'none' ) {
-		iconimgStyleClass +=
-			'uagb-cta__content-stacked-' + attributes.stack + ' ';
+		iconimgStyleClass += 'uagb-cta__content-stacked-' + attributes.stack + ' ';
 	}
 
 	if ( attributes.ctaPosition !== 'below-title' ) {
-		iconimgStyleClass +=
-			'uagb-cta__button-valign-' + attributes.buttonAlign + ' ';
+		iconimgStyleClass += 'uagb-cta__button-valign-' + attributes.buttonAlign + ' ';
 	}
 
 	if ( attributes.ctaType !== 'text' && attributes.ctaType !== 'button' ) {
