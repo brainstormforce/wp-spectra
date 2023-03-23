@@ -10,12 +10,15 @@ import deprecated from './deprecated';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let urlCommonData = {};
+urlCommonData = applyFilters( 'uagb/forms-url', addCommonDataToSpectraBlocks( urlCommonData ) );
 registerBlockType( 'uagb/forms-url', {
+	...urlCommonData,
 	title: __( 'URL', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add a URL input field in your form.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.url,
-	category: uagb_blocks_info.category,
 	parent: [ 'uagb/forms' ],
 	attributes,
 	edit: ( props ) =>
@@ -26,11 +29,6 @@ registerBlockType( 'uagb/forms-url', {
 		),
 	supports: {
 		anchor: true,
-	},
-	example: {
-		attributes: {
-			isPreview: true,
-		}
 	},
 	save,
 	deprecated,

@@ -10,12 +10,15 @@ import { __ } from '@wordpress/i18n';
 import deprecated from './deprecated';
 import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let radioCommonData = {};
+radioCommonData = applyFilters( 'uagb/forms-radio', addCommonDataToSpectraBlocks( radioCommonData ) );
 registerBlockType( 'uagb/forms-radio', {
+	...radioCommonData,
 	title: __( 'Radio', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add radio select boxes to allow a single choice from options.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.radio,
-	category: uagb_blocks_info.category,
 	parent: [ 'uagb/forms' ],
 	attributes,
 	edit: ( props ) =>
@@ -26,11 +29,6 @@ registerBlockType( 'uagb/forms-radio', {
 		),
 	supports: {
 		anchor: true,
-	},
-	example: {
-		attributes: {
-			isPreview: true,
-		}
 	},
 	save,
 	deprecated,

@@ -10,12 +10,15 @@ import save from './save';
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 import PreviewImage from '@Controls/previewImage';
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let acceptCommonData = {};
+acceptCommonData = applyFilters( 'uagb/forms-accept', addCommonDataToSpectraBlocks( acceptCommonData ) );
 registerBlockType( 'uagb/forms-accept', {
+	...acceptCommonData,
 	title: __( 'Accept', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add a consent statement with a checkbox in your form.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.accept,
-	category: uagb_blocks_info.category,
 	parent: [ 'uagb/forms' ],
 	attributes,
 	edit: ( props ) =>
@@ -26,11 +29,6 @@ registerBlockType( 'uagb/forms-accept', {
 		),
 	supports: {
 		anchor: true,
-	},
-	example: {
-		attributes: {
-			isPreview: true,
-		}
 	},
 	save,
 } );

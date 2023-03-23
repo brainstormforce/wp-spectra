@@ -11,12 +11,15 @@ import deprecated from './deprecated';
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 import PreviewImage from '@Controls/previewImage';
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let checkboxCommonData = {};
+checkboxCommonData = applyFilters( 'uagb/forms-checkbox', addCommonDataToSpectraBlocks( checkboxCommonData ) );
 registerBlockType( 'uagb/forms-checkbox', {
+	...checkboxCommonData,
 	title: __( 'Checkbox', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add checkboxes to allow multiple choices from options.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.checkbox,
-	category: uagb_blocks_info.category,
 	parent: [ 'uagb/forms' ],
 	attributes,
 	edit: ( props ) =>
@@ -27,11 +30,6 @@ registerBlockType( 'uagb/forms-checkbox', {
 		),
 	supports: {
 		anchor: true,
-	},
-	example: {
-		attributes: {
-			isPreview: true,
-		}
 	},
 	save,
 	deprecated,
