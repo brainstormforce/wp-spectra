@@ -83,6 +83,9 @@ class Common_Settings extends Ajax_Base {
 			'auto_block_recovery',
 			'enable_legacy_blocks',
 			'pro_activate',
+			'insta_linked_accounts',
+			'insta_all_users_media',
+			'insta_refresh_all_tokens',
 		);
 
 		$this->init_ajax_events( $ajax_events );
@@ -1370,5 +1373,77 @@ class Common_Settings extends Ajax_Base {
 		);
 		wp_send_json_success( $response_data );
 
+	}
+	
+	/**
+	 * Save setting - All Linked Instagram Accounts.
+	 *
+	 * @return void
+	 *
+	 * @since x.x.x
+	 */
+	public function insta_linked_accounts() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( array( 'messsage' => $this->get_error_msg( 'permission' ) ) );
+		}
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_insta_linked_accounts', 'security', false ) ) {
+			wp_send_json_error( array( 'messsage' => $this->get_error_msg( 'nonce' ) ) );
+		}
+		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		// The previous $_POST['value'] is not sanitized, as the array sanitization is handled in the class method used below.
+		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_insta_linked_accounts', $this->sanitize_form_inputs( $value ) );
+
+		wp_send_json_success( array( 'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ) ) );
+	}
+	
+	/**
+	 * Save setting - All Instagram Users' Media.
+	 *
+	 * @return void
+	 *
+	 * @since x.x.x
+	 */
+	public function insta_all_users_media() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( array( 'messsage' => $this->get_error_msg( 'permission' ) ) );
+		}
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_insta_all_users_media', 'security', false ) ) {
+			wp_send_json_error( array( 'messsage' => $this->get_error_msg( 'nonce' ) ) );
+		}
+		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		// The previous $_POST['value'] is not sanitized, as the array sanitization is handled in the class method used below.
+		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_insta_all_users_media', $this->sanitize_form_inputs( $value ) );
+
+		wp_send_json_success( array( 'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ) ) );
+	}
+
+	/**
+	 * Ajax Request - Refresh All Instagram Tokens.
+	 *
+	 * @return void
+	 *
+	 * @since x.x.x
+	 */
+	public function insta_refresh_all_tokens() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( array( 'messsage' => $this->get_error_msg( 'permission' ) ) );
+		}
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_insta_refresh_all_tokens', 'security', false ) ) {
+			wp_send_json_error( array( 'messsage' => $this->get_error_msg( 'nonce' ) ) );
+		}
+		if ( ! empty( $_POST['value'] ) && class_exists( '\SpectraPro\BlocksConfig\InstagramFeed\Block' ) ) {
+			\SpectraPro\BlocksConfig\InstagramFeed\Block::refresh_all_instagram_users();
+			wp_send_json_success( array( 'messsage' => __( 'Successfully refreshed tokens!', 'ultimate-addons-for-gutenberg' ) ) );
+		}
+		wp_send_json_error( array( 'messsage' => __( 'Failed to refresh tokens', 'ultimate-addons-for-gutenberg' ) ) );
 	}
 }

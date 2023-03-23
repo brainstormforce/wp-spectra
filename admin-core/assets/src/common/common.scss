@@ -19,7 +19,7 @@
 	outline: none;
 }
 
-.uag-rollback__dialog {
+.spectra-admin__dialog {
 	z-index: 99999;
 }
 // This Class Can Be Cleared Before Final Push.
@@ -120,10 +120,6 @@
 	.components-base-control__field {
 		font-size: 16px;
 	}
-}
-
-.spectra-recaptcha__heading {
-	color: var(--content-color);
 }
 
 .uag-user-info {

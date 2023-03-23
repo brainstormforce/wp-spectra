@@ -522,6 +522,8 @@ class UAGB_Post_Assets {
 				'mobile_breakpoint' => UAGB_MOBILE_BREAKPOINT,
 			)
 		);
+
+		do_action( 'spectra_localize_pro_block_ajax' );
 	}
 
 	/**
