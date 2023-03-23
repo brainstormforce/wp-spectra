@@ -46,7 +46,7 @@ function styling( props ) {
 		gradientValue,
 		overallBorderHColor,
 		backgroundVideoOpacity,
-		backgroundOpacity
+		backgroundOpacity,
 	} = props.attributes;
 	let inner_width = '100%';
 
@@ -67,18 +67,17 @@ function styling( props ) {
 	}
 	let videoOpacity = 0.5;
 	if ( typeof backgroundVideoOpacity !== 'undefined' ) {
-		videoOpacity = ( 1 < backgroundVideoOpacity ) ? ( ( 100 - backgroundVideoOpacity ) / 100 ) : ( ( 1 - backgroundVideoOpacity ) );
+		videoOpacity = 1 < backgroundVideoOpacity ? ( 100 - backgroundVideoOpacity ) / 100 : 1 - backgroundVideoOpacity;
 	}
 
-	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' )
-	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' )
-	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' )
-
+	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' );
+	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' );
+	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' );
 
 	const selectors = {
 		'.uagb-section__wrap': inlineStyles( props ),
 		' .uagb-section__video-wrap': {
-			'opacity' : videoOpacity
+			'opacity': videoOpacity,
 		},
 		' .uagb-section__inner-wrap': {
 			'max-width': inner_width,
@@ -102,7 +101,7 @@ function styling( props ) {
 		},
 	};
 
-	let backgroundTypeCSS = {}
+	let backgroundTypeCSS = {};
 
 	if ( 'video' === backgroundType ) {
 		if ( 'color' === overlayType ) {
@@ -110,141 +109,107 @@ function styling( props ) {
 				'background-color': backgroundVideoColor,
 			};
 		} else {
-			backgroundTypeCSS[
-				'background-image'
-			] = gradientValue;
+			backgroundTypeCSS[ 'background-image' ] = gradientValue;
 		}
 	} else if ( 'image' === backgroundType ) {
 		if ( 'color' === overlayType ) {
 			backgroundTypeCSS = {
 				'background-color': backgroundImageColor,
-				'opacity' : backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : ''
+				'opacity': backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : '',
 			};
 		} else {
-			backgroundTypeCSS[
-				'background-image'
-			] = gradientValue;
+			backgroundTypeCSS[ 'background-image' ] = gradientValue;
 		}
 	} else if ( 'color' === backgroundType ) {
 		backgroundTypeCSS = {
 			'background-color': backgroundColor,
-			'opacity' : backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : '',
+			'opacity': backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : '',
 		};
 	} else if ( 'gradient' === backgroundType ) {
-		backgroundTypeCSS.opacity =  backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : '';
-		backgroundTypeCSS['background-image'] = gradientValue
+		backgroundTypeCSS.opacity = backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : '';
+		backgroundTypeCSS[ 'background-image' ] = gradientValue;
 	}
 
 	selectors[ ' > .uagb-section__overlay' ] = {
 		...overallBorderCSS,
-		...backgroundTypeCSS
+		...backgroundTypeCSS,
 	};
 
 	tabletSelectors = {
 		'.uagb-section__wrap': {
-			'padding-top': generateCSSUnit(
-				topPaddingTablet,
-				tabletPaddingType
-			),
-			'padding-bottom': generateCSSUnit(
-				bottomPaddingTablet,
-				tabletPaddingType
-			),
-			'padding-left': generateCSSUnit(
-				leftPaddingTablet,
-				tabletPaddingType
-			),
-			'padding-right': generateCSSUnit(
-				rightPaddingTablet,
-				tabletPaddingType
-			),
+			'padding-top': generateCSSUnit( topPaddingTablet, tabletPaddingType ),
+			'padding-bottom': generateCSSUnit( bottomPaddingTablet, tabletPaddingType ),
+			'padding-left': generateCSSUnit( leftPaddingTablet, tabletPaddingType ),
+			'padding-right': generateCSSUnit( rightPaddingTablet, tabletPaddingType ),
 		},
-		' > .uagb-section__overlay': overallBorderCSSTablet
+		' > .uagb-section__overlay': overallBorderCSSTablet,
 	};
 
 	mobileSelectors = {
 		'.uagb-section__wrap': {
-			'padding-top': generateCSSUnit(
-				topPaddingMobile,
-				mobilePaddingType
-			),
-			'padding-bottom': generateCSSUnit(
-				bottomPaddingMobile,
-				mobilePaddingType
-			),
-			'padding-left': generateCSSUnit(
-				leftPaddingMobile,
-				mobilePaddingType
-			),
-			'padding-right': generateCSSUnit(
-				rightPaddingMobile,
-				mobilePaddingType
-			),
+			'padding-top': generateCSSUnit( topPaddingMobile, mobilePaddingType ),
+			'padding-bottom': generateCSSUnit( bottomPaddingMobile, mobilePaddingType ),
+			'padding-left': generateCSSUnit( leftPaddingMobile, mobilePaddingType ),
+			'padding-right': generateCSSUnit( rightPaddingMobile, mobilePaddingType ),
 		},
-		' > .uagb-section__overlay': overallBorderCSSMobile
+		' > .uagb-section__overlay': overallBorderCSSMobile,
 	};
-	tabletSelectors[ '.uagb-section__wrap' ][ 'margin-top' ] = generateCSSUnit(
-		topMarginTablet,
+	tabletSelectors[ '.uagb-section__wrap' ][ 'margin-top' ] = generateCSSUnit( topMarginTablet, tabletMarginType );
+	tabletSelectors[ '.uagb-section__wrap' ][ 'margin-bottom' ] = generateCSSUnit(
+		bottomMarginTablet,
 		tabletMarginType
 	);
-	tabletSelectors[ '.uagb-section__wrap' ][
-		'margin-bottom'
-	] = generateCSSUnit( bottomMarginTablet, tabletMarginType );
-	mobileSelectors[ '.uagb-section__wrap' ][ 'margin-top' ] = generateCSSUnit(
-		topMarginMobile,
+	mobileSelectors[ '.uagb-section__wrap' ][ 'margin-top' ] = generateCSSUnit( topMarginMobile, mobileMarginType );
+	mobileSelectors[ '.uagb-section__wrap' ][ 'margin-bottom' ] = generateCSSUnit(
+		bottomMarginMobile,
 		mobileMarginType
 	);
-	mobileSelectors[ '.uagb-section__wrap' ][
-		'margin-bottom'
-	] = generateCSSUnit( bottomMarginMobile, mobileMarginType );
 
 	if ( 'right' === align && 'boxed' === contentWidth ) {
-		mobileSelectors[ '.uagb-section__wrap' ][
-			'margin-right'
-		] = generateCSSUnit( rightMarginMobile, mobileMarginType );
-		tabletSelectors[ '.uagb-section__wrap' ][
-			'margin-right'
-		] = generateCSSUnit( rightMarginTablet, tabletMarginType );
+		mobileSelectors[ '.uagb-section__wrap' ][ 'margin-right' ] = generateCSSUnit(
+			rightMarginMobile,
+			mobileMarginType
+		);
+		tabletSelectors[ '.uagb-section__wrap' ][ 'margin-right' ] = generateCSSUnit(
+			rightMarginTablet,
+			tabletMarginType
+		);
 	} else if ( 'left' === align && 'boxed' === contentWidth ) {
-		mobileSelectors[ '.uagb-section__wrap' ][
-			'margin-left'
-		] = generateCSSUnit( leftMarginMobile, mobileMarginType );
-		tabletSelectors[ '.uagb-section__wrap' ][
-			'margin-left'
-		] = generateCSSUnit( leftMarginTablet, tabletMarginType );
+		mobileSelectors[ '.uagb-section__wrap' ][ 'margin-left' ] = generateCSSUnit(
+			leftMarginMobile,
+			mobileMarginType
+		);
+		tabletSelectors[ '.uagb-section__wrap' ][ 'margin-left' ] = generateCSSUnit(
+			leftMarginTablet,
+			tabletMarginType
+		);
 	}
 	if ( 'full_width' === contentWidth ) {
-		tabletSelectors[ '.uagb-section__wrap' ][
-			'margin-left'
-		] = generateCSSUnit( leftMarginTablet, tabletMarginType );
-		tabletSelectors[ '.uagb-section__wrap' ][
-			'margin-right'
-		] = generateCSSUnit( rightMarginTablet, tabletMarginType );
-		mobileSelectors[ '.uagb-section__wrap' ][
-			'margin-left'
-		] = generateCSSUnit( leftMarginMobile, mobileMarginType );
-		mobileSelectors[ '.uagb-section__wrap' ][
-			'margin-right'
-		] = generateCSSUnit( rightMarginMobile, mobileMarginType );
+		tabletSelectors[ '.uagb-section__wrap' ][ 'margin-left' ] = generateCSSUnit(
+			leftMarginTablet,
+			tabletMarginType
+		);
+		tabletSelectors[ '.uagb-section__wrap' ][ 'margin-right' ] = generateCSSUnit(
+			rightMarginTablet,
+			tabletMarginType
+		);
+		mobileSelectors[ '.uagb-section__wrap' ][ 'margin-left' ] = generateCSSUnit(
+			leftMarginMobile,
+			mobileMarginType
+		);
+		mobileSelectors[ '.uagb-section__wrap' ][ 'margin-right' ] = generateCSSUnit(
+			rightMarginMobile,
+			mobileMarginType
+		);
 	}
 	let stylingCss = '';
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
 	stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS(
-		tabletSelectors,
-		`${ id }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
+	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
 
-	stylingCss += generateCSS(
-		mobileSelectors,
-		`${ id }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	stylingCss += generateCSS( mobileSelectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
 
 	return stylingCss;
 }

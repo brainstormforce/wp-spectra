@@ -47,52 +47,54 @@ const UAGBSectionEdit = ( props ) => {
 		},
 		setAttributes,
 	} = props;
-	
+
 	useEffect( () => {
 		// Backward Border Migration
-		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-			migrateBorderAttributes( 'overall', {
-				label: 'borderWidth',
-				value: borderWidth,
-			}, {
-				label: 'borderRadius',
-				value: borderRadius
-			}, {
-				label: 'borderColor',
-				value: borderColor
-			}, {
-				label: 'borderHoverColor',
-				value: borderHoverColor
-			},{
-				label: 'borderStyle',
-				value: borderStyle
-			},
-			setAttributes,
-			attributes
+		if ( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ) {
+			migrateBorderAttributes(
+				'overall',
+				{
+					label: 'borderWidth',
+					value: borderWidth,
+				},
+				{
+					label: 'borderRadius',
+					value: borderRadius,
+				},
+				{
+					label: 'borderColor',
+					value: borderColor,
+				},
+				{
+					label: 'borderHoverColor',
+					value: borderHoverColor,
+				},
+				{
+					label: 'borderStyle',
+					value: borderStyle,
+				},
+				setAttributes,
+				attributes
 			);
 		}
-	}, [ ] );
+	}, [] );
 
 	useEffect( () => {
-
 		const blockStyling = styling( props );
 
-        addBlockEditorDynamicStyles( 'uagb-section-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
-	}, [ attributes,deviceType ] );
+		addBlockEditorDynamicStyles( 'uagb-section-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
-	}, [deviceType] );
+	}, [ deviceType ] );
 
 	useEffect( () => {
-		if( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ){
+		if ( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ) {
 			const color1 = hexToRGBA( maybeGetColorForVariable( gradientOverlayColor1 ), backgroundOpacity );
 			const color2 = hexToRGBA( maybeGetColorForVariable( gradientOverlayColor2 ), backgroundOpacity );
 			let gradientVal;
@@ -123,14 +125,13 @@ const UAGBSectionEdit = ( props ) => {
 				setAttributes( { backgroundVideoColor: color } );
 			}
 		}
-
 	}, [] );
 
 	return (
-			<>
+		<>
 			{ isSelected && <Settings parentProps={ props } /> }
-				<Render parentProps={ props } />
-			</>
+			<Render parentProps={ props } />
+		</>
 	);
 };
 

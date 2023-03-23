@@ -9,14 +9,7 @@ import { InnerBlocks } from '@wordpress/block-editor';
 export default function save( props ) {
 	const { attributes, className } = props;
 
-	const {
-		block_id,
-		tag,
-		backgroundType,
-		backgroundVideo,
-		contentWidth,
-		align,
-	} = attributes;
+	const { block_id, tag, backgroundType, backgroundVideo, contentWidth, align } = attributes;
 
 	let blockControlsClass = '';
 
@@ -43,10 +36,7 @@ export default function save( props ) {
 				<div className="uagb-section__video-wrap">
 					{ backgroundVideo && (
 						<video autoPlay loop muted playsinline>
-							<source
-								src={ backgroundVideo.url }
-								type="video/mp4"
-							/>
+							<source src={ backgroundVideo.url } type="video/mp4" />
 						</video>
 					) }
 				</div>
