@@ -3,18 +3,21 @@
  *
  * @param {Object[]} attributes settign array of attributes.
  * @param {number} index_val  index values.
- * @param {string} deviceType device type. 
+ * @param {string} deviceType device type.
  */
- function AlignClass( attributes, index_val, deviceType ) {
+function AlignClass( attributes, index_val, deviceType ) {
 	let alignClass = '';
 	let device = deviceType;
 
-	// For desktop, attribute name does not have `desktop` suffix to support backward compatibility. 
-	if( 'Desktop' === deviceType ) {
+	// For desktop, attribute name does not have `desktop` suffix to support backward compatibility.
+	if ( 'Desktop' === deviceType ) {
 		device = '';
 	}
 
-	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + device ] ? attributes['timelinAlignment' + device ] : attributes.timelinAlignment;
+	const timelinAlignment =
+		'undefined' !== typeof attributes[ 'timelinAlignment' + device ]
+			? attributes[ 'timelinAlignment' + device ]
+			: attributes.timelinAlignment;
 
 	if ( 'left' === timelinAlignment ) {
 		alignClass = 'uagb-timeline__left';

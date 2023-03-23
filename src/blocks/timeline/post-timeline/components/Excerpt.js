@@ -6,7 +6,6 @@ const Excerpt = ( props ) => {
 	const exerptLengthFallback = getFallbackNumber( attributes.exerptLength, 'exerptLength', 'post-timeline' );
 	let trimmed_excerpt;
 	if ( attributes.displayPostExcerpt && post.uagb_excerpt ) {
-		
 		trimmed_excerpt = post.uagb_excerpt.split( /\s+/ ).slice( 0, exerptLengthFallback ).join( ' ' );
 
 		let margin_var = '';

@@ -11,11 +11,7 @@ const Title = ( props ) => {
 	}
 	return (
 		<Tag className="uagb-timeline__heading">
-			<a
-				href={ post.link }
-				target={ target }
-				rel="noopener noreferrer"
-			>
+			<a href={ post.link } target={ target } rel="noopener noreferrer">
 				{ decodeEntities( post.title.rendered.trim() ) }
 			</a>
 		</Tag>
