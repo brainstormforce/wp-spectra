@@ -17,24 +17,13 @@ const Render = ( props ) => {
 	props = props.parentProps;
 
 	const { attributes, setAttributes } = props;
-	const {
-		question,
-		answer,
-		icon,
-		iconActive,
-		layout,
-		headingTag,
-	} = attributes;
+	const { question, answer, icon, iconActive, layout, headingTag } = attributes;
 
 	const faqRenderIcon = () => {
 		return (
 			<>
-				<span className="uagb-icon uagb-faq-icon-wrap">
-					{ renderSVG( icon, setAttributes ) }
-				</span>
-				<span className="uagb-icon-active uagb-faq-icon-wrap">
-					{ renderSVG( iconActive, setAttributes ) }
-				</span>
+				<span className="uagb-icon uagb-faq-icon-wrap">{ renderSVG( icon, setAttributes ) }</span>
+				<span className="uagb-icon-active uagb-faq-icon-wrap">{ renderSVG( iconActive, setAttributes ) }</span>
 			</>
 		);
 	};
@@ -48,16 +37,10 @@ const Render = ( props ) => {
 						tagName={ 'span' !== headingTag ? headingTag : 'div' }
 						placeholder={ __( 'Question' ) }
 						value={ question }
-						onChange={ ( value ) =>
-							setAttributes( { question: value } )
-						}
+						onChange={ ( value ) => setAttributes( { question: value } ) }
 						className="uagb-question"
 						multiline={ false }
-						allowedFormats={ [
-							'core/bold',
-							'core/italic',
-							'core/strikethrough',
-						] }
+						allowedFormats={ [ 'core/bold', 'core/italic', 'core/strikethrough' ] }
 					/>
 				</div>
 				<RichText
@@ -65,16 +48,9 @@ const Render = ( props ) => {
 					tagName="p"
 					placeholder={ __( 'Answer' ) }
 					value={ answer }
-					onChange={ ( value ) =>
-						setAttributes( { answer: value } )
-					}
+					onChange={ ( value ) => setAttributes( { answer: value } ) }
 					multiline={ false }
-					allowedFormats={ [
-						'core/bold',
-						'core/italic',
-						'core/strikethrough',
-						'core/link',
-					] }
+					allowedFormats={ [ 'core/bold', 'core/italic', 'core/strikethrough', 'core/link' ] }
 				/>
 			</>
 		);
@@ -86,9 +62,7 @@ const Render = ( props ) => {
 				'uagb-faq-child__outer-wrap',
 				'uagb-faq-item',
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-				props.isSelected && false !== state.isFocused
-					? 'uagb-faq__active'
-					: ''
+				props.isSelected && false !== state.isFocused ? 'uagb-faq__active' : ''
 			) }
 			role="tab"
 			tabIndex="0"
