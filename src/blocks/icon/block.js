@@ -30,14 +30,9 @@ registerBlockType( 'uagb/icon', {
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
 	attributes,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="icon" />
-			) : (
-				<Edit { ...props } />
-			),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="icon" /> : <Edit { ...props } /> ),
 	save,
 } );
