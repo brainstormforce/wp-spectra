@@ -30,13 +30,7 @@ const Title = ( props ) => {
 			/>
 		);
 	}
-	return (
-		<RichText.Content
-			tagName={ attributes.headingTag }
-			value={ authorTitle }
-			className="uagb-rm__title"
-		/>
-	);
+	return <RichText.Content tagName={ attributes.headingTag } value={ authorTitle } className="uagb-rm__title" />;
 };
 
 export default Title;
