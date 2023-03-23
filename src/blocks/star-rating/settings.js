@@ -6,9 +6,7 @@ import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
 import { Icon, ToggleControl } from '@wordpress/components';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
-import InspectorTab, {
-	UAGTabs,
-} from '@Components/inspector-tabs/InspectorTab.js';
+import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import Range from '@Components/range/Range.js';
 import MultiButtonsControl from '@Components/multi-buttons-control';
@@ -103,7 +101,7 @@ const Settings = ( props ) => {
 			blockMarginLink,
 			starPosition,
 			starPositionTablet,
-			starPositionMobile
+			starPositionMobile,
 		},
 	} = props;
 
@@ -112,80 +110,58 @@ const Settings = ( props ) => {
 	if ( loadGoogleFonts === true ) {
 		const hconfig = {
 			google: {
-				families: [
-					fontFamily + ( fontWeight ? ':' + fontWeight : '' ),
-				],
+				families: [ fontFamily + ( fontWeight ? ':' + fontWeight : '' ) ],
 			},
 		};
 
-		loadTitleGoogleFonts = (
-			<WebfontLoader config={ hconfig }></WebfontLoader>
-		);
+		loadTitleGoogleFonts = <WebfontLoader config={ hconfig }></WebfontLoader>;
 	}
 
 	let alignmentOptions = [
 		{
 			value: 'left',
-			icon: <Icon icon={ renderSVG( 'fa fa-align-left' )
-		} />,
-			tooltip: __(
-				'Left',
-				'ultimate-addons-for-gutenberg'
-			),
+			icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+			tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
 		},
 		{
 			value: 'center',
 			icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
-			tooltip: __(
-				'Center',
-				'ultimate-addons-for-gutenberg'
-			),
+			tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
 		},
 		{
 			value: 'right',
 			icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
-			tooltip: __(
-				'Right',
-				'ultimate-addons-for-gutenberg'
-			),
+			tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
 		},
 		{
 			value: 'full',
 			icon: <Icon icon={ renderSVG( 'fa fa-align-justify' ) } />,
-			tooltip: __(
-				'Full',
-				'ultimate-addons-for-gutenberg'
-			),
+			tooltip: __( 'Full', 'ultimate-addons-for-gutenberg' ),
 		},
 	];
 
 	const deviceType = useDeviceType();
 
-	if ( 'stack' === layout || ( 'stack' === layoutTablet && 'Tablet' === deviceType ) || ( 'stack' === layoutMobile && 'Mobile' === deviceType ) ) {
+	if (
+		'stack' === layout ||
+		( 'stack' === layoutTablet && 'Tablet' === deviceType ) ||
+		( 'stack' === layoutMobile && 'Mobile' === deviceType )
+	) {
 		alignmentOptions = [
 			{
 				value: 'left',
 				icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
-				tooltip: __(
-					'Left',
-					'ultimate-addons-for-gutenberg'
-				),
+				tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
 			},
 			{
 				value: 'center',
 				icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
-				tooltip: __(
-					'Center',
-					'ultimate-addons-for-gutenberg'
-				),
+				tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
 			},
 			{
 				value: 'right',
 				icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
-				tooltip: __(
-					'Right',
-					'ultimate-addons-for-gutenberg'
-				),
+				tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
 			},
 		];
 		if ( 'full' === align ) {
@@ -200,9 +176,7 @@ const Settings = ( props ) => {
 			<ToggleControl
 				label={ __( 'Enable Title', 'ultimate-addons-for-gutenberg' ) }
 				checked={ displayTitle }
-				onChange={ () =>
-					setAttributes( { displayTitle: ! displayTitle } )
-				}
+				onChange={ () => setAttributes( { displayTitle: ! displayTitle } ) }
 			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
@@ -235,8 +209,7 @@ const Settings = ( props ) => {
 				step={ 0.1 }
 				displayUnit={ false }
 			/>
-			{ ( displayTitle ) && (
-
+			{ displayTitle && (
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
@@ -264,9 +237,8 @@ const Settings = ( props ) => {
 							label: __( 'Stack', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
-					responsive={true}
+					responsive={ true }
 				/>
-
 			) }
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
@@ -295,7 +267,7 @@ const Settings = ( props ) => {
 						label: __( 'After', 'ultimate-addons-for-gutenberg' ),
 					},
 				] }
-				responsive={true}
+				responsive={ true }
 			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
@@ -316,15 +288,12 @@ const Settings = ( props ) => {
 				} }
 				options={ alignmentOptions }
 				showIcons={ true }
-				responsive={true}
+				responsive={ true }
 			/>
 		</UAGAdvancedPanelBody>
 	);
 	const titleStyling = (
-		<UAGAdvancedPanelBody
-			title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
-		>
+		<UAGAdvancedPanelBody title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ titleColor }
@@ -397,10 +366,7 @@ const Settings = ( props ) => {
 				} }
 			/>
 			<ResponsiveSlider
-				label={ __(
-					'Gap Between Title And Stars',
-					'ultimate-addons-for-gutenberg'
-				) }
+				label={ __( 'Gap Between Title And Stars', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
 					desktop: {
 						value: titleGap,
@@ -423,10 +389,7 @@ const Settings = ( props ) => {
 		</UAGAdvancedPanelBody>
 	);
 	const starStyling = (
-		<UAGAdvancedPanelBody
-			title={ __( 'Star', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ true }
-		>
+		<UAGAdvancedPanelBody title={ __( 'Star', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ color }
@@ -437,10 +400,7 @@ const Settings = ( props ) => {
 				setAttributes={ setAttributes }
 			/>
 			<AdvancedPopColorControl
-				label={ __(
-					'Unmarked Color',
-					'ultimate-addons-for-gutenberg'
-				) }
+				label={ __( 'Unmarked Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ unmarkedColor }
 				data={ {
 					value: unmarkedColor,
@@ -449,10 +409,7 @@ const Settings = ( props ) => {
 				setAttributes={ setAttributes }
 			/>
 			<ResponsiveSlider
-				label={ __(
-					'Size',
-					'ultimate-addons-for-gutenberg'
-				) }
+				label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
 					desktop: {
 						value: size,
@@ -473,10 +430,7 @@ const Settings = ( props ) => {
 				setAttributes={ setAttributes }
 			/>
 			<ResponsiveSlider
-				label={ __(
-					'Gap Between Stars',
-					'ultimate-addons-for-gutenberg'
-				) }
+				label={ __( 'Gap Between Stars', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
 					desktop: {
 						value: gap,
@@ -500,15 +454,9 @@ const Settings = ( props ) => {
 	);
 
 	const spacingStylePanel = (
-		<UAGAdvancedPanelBody
-			title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
-		>
+		<UAGAdvancedPanelBody title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<SpacingControl
-				label={ __(
-					'Padding',
-					'ultimate-addons-for-gutenberg'
-				) }
+				label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
 				valueTop={ {
 					value: blockTopPadding,
 					label: 'blockTopPadding',
@@ -578,10 +526,7 @@ const Settings = ( props ) => {
 				} }
 			/>
 			<SpacingControl
-				label={ __(
-					'Margin',
-					'ultimate-addons-for-gutenberg'
-				) }
+				label={ __( 'Margin', 'ultimate-addons-for-gutenberg' ) }
 				valueTop={ {
 					value: blockTopMargin,
 					label: 'blockTopMargin',
@@ -657,18 +602,13 @@ const Settings = ( props ) => {
 		<>
 			<InspectorControls>
 				<InspectorTabs tabs={ [ 'general', 'style', 'advance' ] }>
-					<InspectorTab { ...UAGTabs.general }>
-						{ generalSettings }
-					</InspectorTab>
+					<InspectorTab { ...UAGTabs.general }>{ generalSettings }</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ starStyling }
-						{ ( displayTitle && '' !== title ) && titleStyling }
+						{ displayTitle && '' !== title && titleStyling }
 						{ spacingStylePanel }
 					</InspectorTab>
-					<InspectorTab
-						{ ...UAGTabs.advance }
-						parentProps={ props }
-					></InspectorTab>
+					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			{ loadTitleGoogleFonts }

@@ -14,10 +14,7 @@ import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/star-rating', {
 	title: __( 'Star Ratings', 'ultimate-addons-for-gutenberg' ),
-	description: __(
-		'Display customizable star ratings on your page.',
-		'ultimate-addons-for-gutenberg'
-	),
+	description: __( 'Display customizable star ratings on your page.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.star_rating,
 	keywords: [
 		__( 'rating', 'ultimate-addons-for-gutenberg' ),
@@ -30,16 +27,11 @@ registerBlockType( 'uagb/star-rating', {
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
 	category: uagb_blocks_info.category,
 	attributes,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="star-rating" />
-			) : (
-				<Edit { ...props } />
-			),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="star-rating" /> : <Edit { ...props } /> ),
 	save,
-	deprecated
+	deprecated,
 } );

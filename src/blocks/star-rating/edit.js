@@ -14,7 +14,6 @@ import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const UAGStarRating = ( props ) => {
-
 	const deviceType = useDeviceType();
 	const {
 		isSelected,
@@ -23,34 +22,29 @@ const UAGStarRating = ( props ) => {
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		clientId,
 	} = props;
-		
-	useEffect( () => {
 
+	useEffect( () => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
-		
 	}, [] );
 
 	useEffect( () => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-star-rating-style-' + clientId.substr( 0, 8 ), blockStyling );
-		
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
-	}, [deviceType] );
+	}, [ deviceType ] );
 
 	return (
 		<>
-		{ isSelected && <Settings parentProps={ props } /> }
+			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
 		</>
 	);
