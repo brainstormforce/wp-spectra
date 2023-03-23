@@ -1050,6 +1050,18 @@ const UAGB_Block_Icons = {
 			strokeLinejoin: 'round',
 		} ),
 	),
+	instagram_feed: el(
+		'svg',
+		{ width: 24, height: 24, viewBox: '0 0 24 24', fill: 'none', className: 'uagb-editor-icons' },
+		el( 'path', {
+			d: 'M17 6.5H17.1M8.14286 21H15.8571C18.6975 21 21 18.6975 21 15.8571V8.14286C21 5.30254 18.6975 3 15.8571 3H8.14286C5.30254 3 3 5.30254 3 8.14286V15.8571C3 18.6975 5.30254 21 8.14286 21ZM16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z',
+			fill: noColor,
+			stroke: iconColor,
+			strokeWidth: 1.4,
+			strokeLinecap: 'round',
+			strokeLinejoin: 'round',
+		} ),
+	),
 
 	// ------------------------.
 	// All Miscellaneous Icons .
