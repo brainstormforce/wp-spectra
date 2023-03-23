@@ -3,7 +3,7 @@ import defaultAttributes from './attributes';
 
 const countdownPresets = [
 	{
-		defaultAttributes
+		defaultAttributes,
 	},
 	{
 		// Circular Background : Solid Color
@@ -194,7 +194,6 @@ const countdownPresets = [
 		value: 'preset-3',
 		label: __( 'Preset 3', 'ultimate-addons-for-gutenberg' ),
 		attributes: [
-
 			{ label: 'isSquareBox', value: false },
 			{ label: 'boxAlign', value: 'center' },
 			{ label: 'boxAlignTablet', value: 'center' },
@@ -243,7 +242,6 @@ const countdownPresets = [
 			{ label: 'boxPaddingUnitTablet', value: 'px' },
 			{ label: 'boxPaddingUnitMobile', value: 'px' },
 
-
 			{ label: 'internalBoxSpacing', value: 4 },
 			{ label: 'internalBoxSpacingTablet', value: 4 },
 			{ label: 'internalBoxSpacingMobile', value: 2 },
@@ -270,7 +268,7 @@ const countdownPresets = [
 			{ label: 'boxShadowVOffsetHover', value: 0 },
 			{ label: 'boxShadowBlur', value: 50 },
 			{ label: 'boxShadowSpread', value: -30 },
-			
+
 			{ label: 'boxBorderStyle', value: 'none' },
 		],
 		icon: '<svg width="325" height="245" viewBox="0 0 325 245" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"/><rect x="65.1709" y="119.366" width="42.796" height="30.1343" fill="#B6B6B6"/><rect x="79.2689" y="123.816" width="6.28647" height="14.814" fill="white"/><rect x="87.5824" y="123.816" width="6.28647" height="14.814" fill="white"/><path d="M78.7149 144.051C78.7149 143.498 79.1626 143.051 79.7149 143.051H93.4228C93.9751 143.051 94.4228 143.498 94.4228 144.051C94.4228 144.603 93.9751 145.051 93.4228 145.051H79.7149C79.1626 145.051 78.7149 144.603 78.7149 144.051Z" fill="white"/><rect x="115.792" y="119.366" width="42.796" height="30.1343" fill="#B6B6B6"/><rect x="129.89" y="123.816" width="6.28647" height="14.814" fill="white"/><rect x="138.203" y="123.816" width="6.28647" height="14.814" fill="white"/><path d="M129.336 144.051C129.336 143.498 129.783 143.051 130.336 143.051H144.044C144.596 143.051 145.044 143.498 145.044 144.051C145.044 144.603 144.596 145.051 144.044 145.051H130.336C129.783 145.051 129.336 144.603 129.336 144.051Z" fill="white"/><rect x="166.412" y="119.366" width="42.796" height="30.1343" fill="#B6B6B6"/><rect x="180.51" y="123.816" width="6.28647" height="14.814" fill="white"/><rect x="188.824" y="123.816" width="6.28647" height="14.814" fill="white"/><path d="M179.956 144.051C179.956 143.498 180.404 143.051 180.956 143.051H194.664C195.217 143.051 195.664 143.498 195.664 144.051C195.664 144.603 195.217 145.051 194.664 145.051H180.956C180.404 145.051 179.956 144.603 179.956 144.051Z" fill="white"/><rect x="217.033" y="119.366" width="42.796" height="30.1343" fill="#B6B6B6"/><rect x="231.131" y="123.816" width="6.28647" height="14.814" fill="white"/><rect x="239.445" y="123.816" width="6.28647" height="14.814" fill="white"/><path d="M230.577 144.051C230.577 143.498 231.025 143.051 231.577 143.051H245.285C245.837 143.051 246.285 143.498 246.285 144.051C246.285 144.603 245.837 145.051 245.285 145.051H231.577C231.025 145.051 230.577 144.603 230.577 144.051Z" fill="white"/><rect x="65.1709" y="119.366" width="42.796" height="30.1343" fill="#B6B6B6"/><rect x="79.2689" y="123.816" width="6.28647" height="14.814" fill="white"/><rect x="87.5824" y="123.816" width="6.28647" height="14.814" fill="white"/><path d="M78.7149 144.051C78.7149 143.498 79.1626 143.051 79.7149 143.051H93.4228C93.9751 143.051 94.4228 143.498 94.4228 144.051C94.4228 144.603 93.9751 145.051 93.4228 145.051H79.7149C79.1626 145.051 78.7149 144.603 78.7149 144.051Z" fill="white"/><rect x="115.792" y="119.366" width="42.796" height="30.1343" fill="#B6B6B6"/><rect x="129.89" y="123.816" width="6.28647" height="14.814" fill="white"/><rect x="138.203" y="123.816" width="6.28647" height="14.814" fill="white"/><path d="M129.336 144.051C129.336 143.498 129.783 143.051 130.336 143.051H144.044C144.596 143.051 145.044 143.498 145.044 144.051C145.044 144.603 144.596 145.051 144.044 145.051H130.336C129.783 145.051 129.336 144.603 129.336 144.051Z" fill="white"/><rect x="166.412" y="119.366" width="42.796" height="30.1343" fill="#B6B6B6"/><rect x="180.51" y="123.816" width="6.28647" height="14.814" fill="white"/><rect x="188.824" y="123.816" width="6.28647" height="14.814" fill="white"/><path d="M179.956 144.051C179.956 143.498 180.404 143.051 180.956 143.051H194.664C195.217 143.051 195.664 143.498 195.664 144.051C195.664 144.603 195.217 145.051 194.664 145.051H180.956C180.404 145.051 179.956 144.603 179.956 144.051Z" fill="white"/><rect x="217.033" y="119.366" width="42.796" height="30.1343" fill="#B6B6B6"/><rect x="231.131" y="123.816" width="6.28647" height="14.814" fill="white"/><rect x="239.445" y="123.816" width="6.28647" height="14.814" fill="white"/><path d="M230.577 144.051C230.577 143.498 231.025 143.051 231.577 143.051H245.285C245.837 143.051 246.285 143.498 246.285 144.051C246.285 144.603 245.837 145.051 245.285 145.051H231.577C231.025 145.051 230.577 144.603 230.577 144.051Z" fill="white"/></svg>',
@@ -335,7 +333,7 @@ const countdownPresets = [
 			{ label: 'internalBoxSpacing', value: 5 },
 			{ label: 'internalBoxSpacingTablet', value: 5 },
 			{ label: 'internalBoxSpacingMobile', value: 5 },
-			
+
 			{ label: 'digitColor', value: 'inherit' },
 			{ label: 'digitFontSize', value: 48 },
 			{ label: 'digitFontSizeTablet', value: 35 },
@@ -437,7 +435,7 @@ const countdownPresets = [
 			{ label: 'internalBoxSpacing', value: 10 },
 			{ label: 'internalBoxSpacingTablet', value: 4 },
 			{ label: 'internalBoxSpacingMobile', value: 6 },
-			
+
 			{ label: 'digitColor', value: 'inherit' },
 			{ label: 'digitFontSize', value: '' },
 			{ label: 'digitFontSizeTablet', value: '' },
@@ -470,11 +468,11 @@ const countdownPresets = [
 		icon: '<svg width="325" height="245" viewBox="0 0 325 245" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"/><rect x="65.4309" y="125.65" width="8.78394" height="20.6993" fill="#B6B6B6"/><rect x="77.0472" y="125.65" width="8.78394" height="20.6993" fill="#B6B6B6"/><path d="M88.6635 144.952C88.6635 144.181 89.289 143.555 90.0607 143.555H102.28C103.051 143.555 103.677 144.181 103.677 144.952C103.677 145.724 103.051 146.35 102.28 146.35H90.0607C89.289 146.35 88.6635 145.724 88.6635 144.952Z" fill="#B6B6B6"/><rect x="117.395" y="125.65" width="8.78394" height="20.6993" fill="#B6B6B6"/><rect x="129.011" y="125.65" width="8.78394" height="20.6993" fill="#B6B6B6"/><path d="M140.628 144.952C140.628 144.181 141.253 143.555 142.025 143.555H154.244C155.015 143.555 155.641 144.181 155.641 144.952C155.641 145.724 155.015 146.35 154.244 146.35H142.025C141.253 146.35 140.628 145.724 140.628 144.952Z" fill="#B6B6B6"/><rect x="169.359" y="125.65" width="8.78394" height="20.6993" fill="#B6B6B6"/><rect x="180.975" y="125.65" width="8.78394" height="20.6993" fill="#B6B6B6"/><path d="M192.592 144.952C192.592 144.181 193.217 143.555 193.989 143.555H206.208C206.979 143.555 207.605 144.181 207.605 144.952C207.605 145.724 206.979 146.35 206.208 146.35H193.989C193.217 146.35 192.592 145.724 192.592 144.952Z" fill="#B6B6B6"/><rect x="221.323" y="125.65" width="8.78394" height="20.6993" fill="#B6B6B6"/><rect x="232.939" y="125.65" width="8.78394" height="20.6993" fill="#B6B6B6"/><path d="M244.556 144.952C244.556 144.181 245.181 143.555 245.953 143.555H258.172C258.943 143.555 259.569 144.181 259.569 144.952C259.569 145.724 258.943 146.35 258.172 146.35H245.953C245.181 146.35 244.556 145.724 244.556 144.952Z" fill="#B6B6B6"/></svg>',
 	},
 ];
-export {countdownPresets};
+export { countdownPresets };
 
 const boxShadowPresets = [
 	{
-		defaultAttributes
+		defaultAttributes,
 	},
 	{
 		value: 'preset-1',
@@ -484,7 +482,7 @@ const boxShadowPresets = [
 			{ label: 'boxShadowVOffset', value: 8 },
 			{ label: 'boxShadowBlur', value: 12 },
 			{ label: 'boxShadowSpread', value: 0 },
-			{ label: 'boxShadowColor', value: 'rgb(0 0 0 / 15%)' }
+			{ label: 'boxShadowColor', value: 'rgb(0 0 0 / 15%)' },
 		],
 		icon: '<svg xmlns="http://www.w3.org/2000/svg" width="325" height="245" viewBox="0 0 325 245" fill="none"> <path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"/> <g filter="url(#filter0_d_103_451)"> <path d="M268 190.388C268 193.493 265.493 196 262.4 196H63.5995C60.5034 196 58 193.486 58 190.388V82.615C58 79.5136 60.5067 77 63.5995 77H262.4C265.497 77 267.997 79.5136 267.997 82.615L268 190.388Z" fill="#FBFBFB"/> </g> <defs> <filter id="filter0_d_103_451" x="55" y="75" width="218" height="127" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix"/> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/> <feOffset dx="1" dy="2"/> <feGaussianBlur stdDeviation="2"/> <feComposite in2="hardAlpha" operator="out"/> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0"/> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_103_451"/> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_103_451" result="shape"/> </filter> </defs> </svg>',
 	},
@@ -496,7 +494,7 @@ const boxShadowPresets = [
 			{ label: 'boxShadowVOffset', value: 18 },
 			{ label: 'boxShadowBlur', value: 40 },
 			{ label: 'boxShadowSpread', value: -10 },
-			{ label: 'boxShadowColor', value: 'rgb(0 0 0 / 20%)' }
+			{ label: 'boxShadowColor', value: 'rgb(0 0 0 / 20%)' },
 		],
 		icon: '<svg xmlns="http://www.w3.org/2000/svg" width="325" height="245" viewBox="0 0 325 245" fill="none"> <path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"/> <g filter="url(#filter0_d_103_459)"> <path d="M268 190.388C268 193.493 265.493 196 262.4 196H63.5995C60.5034 196 58 193.486 58 190.388V82.615C58 79.5136 60.5067 77 63.5995 77H262.4C265.497 77 267.997 79.5136 267.997 82.615L268 190.388Z" fill="#FBFBFB"/> </g> <defs> <filter id="filter0_d_103_459" x="48" y="71" width="230" height="139" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix"/> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/> <feOffset dy="4"/> <feGaussianBlur stdDeviation="5"/> <feComposite in2="hardAlpha" operator="out"/> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0"/> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_103_459"/> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_103_459" result="shape"/> </filter> </defs> </svg>',
 	},
@@ -508,7 +506,7 @@ const boxShadowPresets = [
 			{ label: 'boxShadowVOffset', value: 4 },
 			{ label: 'boxShadowBlur', value: 12 },
 			{ label: 'boxShadowSpread', value: 0 },
-			{ label: 'boxShadowColor', value: 'rgb(0 0 0 / 10%)' }
+			{ label: 'boxShadowColor', value: 'rgb(0 0 0 / 10%)' },
 		],
 		icon: '<svg xmlns="http://www.w3.org/2000/svg" width="325" height="245" viewBox="0 0 325 245" fill="none"> <path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"/> <g filter="url(#filter0_d_103_463)"> <path d="M268 190.388C268 193.493 265.493 196 262.4 196H63.5995C60.5034 196 58 193.486 58 190.388V82.615C58 79.5136 60.5067 77 63.5995 77H262.4C265.497 77 267.997 79.5136 267.997 82.615L268 190.388Z" fill="#FBFBFB"/> </g> <defs> <filter id="filter0_d_103_463" x="48" y="67" width="230" height="139" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix"/> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/> <feOffset/> <feGaussianBlur stdDeviation="5"/> <feComposite in2="hardAlpha" operator="out"/> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0"/> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_103_463"/> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_103_463" result="shape"/> </filter> </defs> </svg>',
 	},
@@ -520,9 +518,9 @@ const boxShadowPresets = [
 			{ label: 'boxShadowVOffset', value: 2 },
 			{ label: 'boxShadowBlur', value: 5 },
 			{ label: 'boxShadowSpread', value: -1 },
-			{ label: 'boxShadowColor', value: 'rgb(0 0 0 / 15%)' }
+			{ label: 'boxShadowColor', value: 'rgb(0 0 0 / 15%)' },
 		],
-	 	icon: '<svg xmlns="http://www.w3.org/2000/svg" width="325" height="245" viewBox="0 0 325 245" fill="none"> <path d="M28 31.7987C28 29.1485 30.1527 27 32.8081 27H295.192C297.847 27 300 29.1485 300 31.7987V245H28V31.7987Z" fill="white"/> <g filter="url(#filter0_d_103_467)"> <path d="M269 190.388C269 193.493 266.493 196 263.4 196H64.5995C61.5034 196 59 193.486 59 190.388V82.615C59 79.5136 61.5067 77 64.5995 77H263.4C266.497 77 268.997 79.5136 268.997 82.615L269 190.388Z" fill="#FBFBFB"/> </g> <defs> <filter id="filter0_d_103_467" x="53" y="71" width="222" height="131" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix"/> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/> <feOffset/> <feGaussianBlur stdDeviation="3"/> <feComposite in2="hardAlpha" operator="out"/> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0"/> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_103_467"/> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_103_467" result="shape"/> </filter> </defs> </svg>',
+		icon: '<svg xmlns="http://www.w3.org/2000/svg" width="325" height="245" viewBox="0 0 325 245" fill="none"> <path d="M28 31.7987C28 29.1485 30.1527 27 32.8081 27H295.192C297.847 27 300 29.1485 300 31.7987V245H28V31.7987Z" fill="white"/> <g filter="url(#filter0_d_103_467)"> <path d="M269 190.388C269 193.493 266.493 196 263.4 196H64.5995C61.5034 196 59 193.486 59 190.388V82.615C59 79.5136 61.5067 77 64.5995 77H263.4C266.497 77 268.997 79.5136 268.997 82.615L269 190.388Z" fill="#FBFBFB"/> </g> <defs> <filter id="filter0_d_103_467" x="53" y="71" width="222" height="131" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix"/> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/> <feOffset/> <feGaussianBlur stdDeviation="3"/> <feComposite in2="hardAlpha" operator="out"/> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0"/> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_103_467"/> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_103_467" result="shape"/> </filter> </defs> </svg>',
 	},
 	{
 		value: 'preset-5',
@@ -532,7 +530,7 @@ const boxShadowPresets = [
 			{ label: 'boxShadowVOffset', value: 50 },
 			{ label: 'boxShadowBlur', value: 50 },
 			{ label: 'boxShadowSpread', value: -30 },
-			{ label: 'boxShadowColor', value: 'rgb(0 0 0 / 15%)' }
+			{ label: 'boxShadowColor', value: 'rgb(0 0 0 / 15%)' },
 		],
 		icon: '<svg xmlns="http://www.w3.org/2000/svg" width="325" height="245" viewBox="0 0 325 245" fill="none"> <path d="M28 31.7987C28 29.1485 30.1527 27 32.8081 27H295.192C297.847 27 300 29.1485 300 31.7987V245H28V31.7987Z" fill="white"/> <g filter="url(#filter0_d_103_471)"> <ellipse cx="169" cy="174.5" rx="100" ry="16.5" fill="#FAFAFA"/> </g> <path d="M275 189.388C275 192.493 272.493 195 269.4 195H70.5995C67.5034 195 65 192.486 65 189.388V81.615C65 78.5136 67.5067 76 70.5995 76H269.4C272.497 76 274.997 78.5136 274.997 81.615L275 189.388Z" fill="#FBFBFB"/> <defs> <filter id="filter0_d_103_471" x="60" y="154" width="220" height="53" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix"/> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/> <feOffset dx="1" dy="6"/> <feGaussianBlur stdDeviation="5"/> <feComposite in2="hardAlpha" operator="out"/> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0"/> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_103_471"/> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_103_471" result="shape"/> </filter> </defs> </svg>',
 	},
@@ -544,18 +542,16 @@ const boxShadowPresets = [
 			{ label: 'boxShadowVOffset', value: 20 },
 			{ label: 'boxShadowBlur', value: 30 },
 			{ label: 'boxShadowSpread', value: 0 },
-			{ label: 'boxShadowColor', value: 'rgb(0 0 0 / 15%)' }
+			{ label: 'boxShadowColor', value: 'rgb(0 0 0 / 15%)' },
 		],
 		icon: '<svg xmlns="http://www.w3.org/2000/svg" width="325" height="245" viewBox="0 0 325 245" fill="none"> <path d="M28 31.7987C28 29.1485 30.1527 27 32.8081 27H295.192C297.847 27 300 29.1485 300 31.7987V245H28V31.7987Z" fill="white"/> <g filter="url(#filter0_d_103_476)"> <path d="M269 190.388C269 193.493 266.493 196 263.4 196H64.5995C61.5034 196 59 193.486 59 190.388V82.615C59 79.5136 61.5067 77 64.5995 77H263.4C266.497 77 268.997 79.5136 268.997 82.615L269 190.388Z" fill="#FBFBFB"/> </g> <defs> <filter id="filter0_d_103_476" x="52" y="74" width="224" height="133" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix"/> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/> <feOffset dy="4"/> <feGaussianBlur stdDeviation="3.5"/> <feComposite in2="hardAlpha" operator="out"/> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0"/> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_103_476"/> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_103_476" result="shape"/> </filter> </defs> </svg>',
 	},
 ];
-export {boxShadowPresets};
-
-
+export { boxShadowPresets };
 
 const boxShadowHoverPresets = [
 	{
-		defaultAttributes
+		defaultAttributes,
 	},
 	{
 		value: 'preset-1',
@@ -565,7 +561,7 @@ const boxShadowHoverPresets = [
 			{ label: 'boxShadowVOffsetHover', value: 8 },
 			{ label: 'boxShadowBlurHover', value: 12 },
 			{ label: 'boxShadowSpreadHover', value: 15 },
-			{ label: 'boxShadowColorHover', value: 'rgb(0 0 0 / 15%)' }
+			{ label: 'boxShadowColorHover', value: 'rgb(0 0 0 / 15%)' },
 		],
 		icon: '<svg xmlns="http://www.w3.org/2000/svg" width="325" height="245" viewBox="0 0 325 245" fill="none"> <path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"/> <g filter="url(#filter0_d_103_451)"> <path d="M268 190.388C268 193.493 265.493 196 262.4 196H63.5995C60.5034 196 58 193.486 58 190.388V82.615C58 79.5136 60.5067 77 63.5995 77H262.4C265.497 77 267.997 79.5136 267.997 82.615L268 190.388Z" fill="#FBFBFB"/> </g> <defs> <filter id="filter0_d_103_451" x="55" y="75" width="218" height="127" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix"/> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/> <feOffset dx="1" dy="2"/> <feGaussianBlur stdDeviation="2"/> <feComposite in2="hardAlpha" operator="out"/> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0"/> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_103_451"/> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_103_451" result="shape"/> </filter> </defs> </svg>',
 	},
@@ -577,7 +573,7 @@ const boxShadowHoverPresets = [
 			{ label: 'boxShadowVOffsetHover', value: 18 },
 			{ label: 'boxShadowBlurHover', value: 40 },
 			{ label: 'boxShadowSpreadHover', value: -10 },
-			{ label: 'boxShadowColorHover', value: 'rgb(0 0 0 / 20%)' }
+			{ label: 'boxShadowColorHover', value: 'rgb(0 0 0 / 20%)' },
 		],
 		icon: '<svg xmlns="http://www.w3.org/2000/svg" width="325" height="245" viewBox="0 0 325 245" fill="none"> <path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"/> <g filter="url(#filter0_d_103_459)"> <path d="M268 190.388C268 193.493 265.493 196 262.4 196H63.5995C60.5034 196 58 193.486 58 190.388V82.615C58 79.5136 60.5067 77 63.5995 77H262.4C265.497 77 267.997 79.5136 267.997 82.615L268 190.388Z" fill="#FBFBFB"/> </g> <defs> <filter id="filter0_d_103_459" x="48" y="71" width="230" height="139" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix"/> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/> <feOffset dy="4"/> <feGaussianBlur stdDeviation="5"/> <feComposite in2="hardAlpha" operator="out"/> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0"/> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_103_459"/> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_103_459" result="shape"/> </filter> </defs> </svg>',
 	},
@@ -589,7 +585,7 @@ const boxShadowHoverPresets = [
 			{ label: 'boxShadowVOffsetHover', value: 4 },
 			{ label: 'boxShadowBlurHover', value: 12 },
 			{ label: 'boxShadowSpreadHover', value: 0 },
-			{ label: 'boxShadowColorHover', value: 'rgb(0 0 0 / 10%)' }
+			{ label: 'boxShadowColorHover', value: 'rgb(0 0 0 / 10%)' },
 		],
 		icon: '<svg xmlns="http://www.w3.org/2000/svg" width="325" height="245" viewBox="0 0 325 245" fill="none"> <path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"/> <g filter="url(#filter0_d_103_463)"> <path d="M268 190.388C268 193.493 265.493 196 262.4 196H63.5995C60.5034 196 58 193.486 58 190.388V82.615C58 79.5136 60.5067 77 63.5995 77H262.4C265.497 77 267.997 79.5136 267.997 82.615L268 190.388Z" fill="#FBFBFB"/> </g> <defs> <filter id="filter0_d_103_463" x="48" y="67" width="230" height="139" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix"/> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/> <feOffset/> <feGaussianBlur stdDeviation="5"/> <feComposite in2="hardAlpha" operator="out"/> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0"/> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_103_463"/> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_103_463" result="shape"/> </filter> </defs> </svg>',
 	},
@@ -601,9 +597,9 @@ const boxShadowHoverPresets = [
 			{ label: 'boxShadowVOffsetHover', value: 2 },
 			{ label: 'boxShadowBlurHover', value: 5 },
 			{ label: 'boxShadowSpreadHover', value: -1 },
-			{ label: 'boxShadowColorHover', value: 'rgb(0 0 0 / 15%)' }
+			{ label: 'boxShadowColorHover', value: 'rgb(0 0 0 / 15%)' },
 		],
-	 	icon: '<svg xmlns="http://www.w3.org/2000/svg" width="325" height="245" viewBox="0 0 325 245" fill="none"> <path d="M28 31.7987C28 29.1485 30.1527 27 32.8081 27H295.192C297.847 27 300 29.1485 300 31.7987V245H28V31.7987Z" fill="white"/> <g filter="url(#filter0_d_103_467)"> <path d="M269 190.388C269 193.493 266.493 196 263.4 196H64.5995C61.5034 196 59 193.486 59 190.388V82.615C59 79.5136 61.5067 77 64.5995 77H263.4C266.497 77 268.997 79.5136 268.997 82.615L269 190.388Z" fill="#FBFBFB"/> </g> <defs> <filter id="filter0_d_103_467" x="53" y="71" width="222" height="131" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix"/> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/> <feOffset/> <feGaussianBlur stdDeviation="3"/> <feComposite in2="hardAlpha" operator="out"/> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0"/> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_103_467"/> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_103_467" result="shape"/> </filter> </defs> </svg>',
+		icon: '<svg xmlns="http://www.w3.org/2000/svg" width="325" height="245" viewBox="0 0 325 245" fill="none"> <path d="M28 31.7987C28 29.1485 30.1527 27 32.8081 27H295.192C297.847 27 300 29.1485 300 31.7987V245H28V31.7987Z" fill="white"/> <g filter="url(#filter0_d_103_467)"> <path d="M269 190.388C269 193.493 266.493 196 263.4 196H64.5995C61.5034 196 59 193.486 59 190.388V82.615C59 79.5136 61.5067 77 64.5995 77H263.4C266.497 77 268.997 79.5136 268.997 82.615L269 190.388Z" fill="#FBFBFB"/> </g> <defs> <filter id="filter0_d_103_467" x="53" y="71" width="222" height="131" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix"/> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/> <feOffset/> <feGaussianBlur stdDeviation="3"/> <feComposite in2="hardAlpha" operator="out"/> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0"/> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_103_467"/> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_103_467" result="shape"/> </filter> </defs> </svg>',
 	},
 	{
 		value: 'preset-5',
@@ -613,7 +609,7 @@ const boxShadowHoverPresets = [
 			{ label: 'boxShadowVOffsetHover', value: 50 },
 			{ label: 'boxShadowBlurHover', value: 50 },
 			{ label: 'boxShadowSpreadHover', value: -30 },
-			{ label: 'boxShadowColorHover', value: 'rgb(0 0 0 / 15%)' }
+			{ label: 'boxShadowColorHover', value: 'rgb(0 0 0 / 15%)' },
 		],
 		icon: '<svg xmlns="http://www.w3.org/2000/svg" width="325" height="245" viewBox="0 0 325 245" fill="none"> <path d="M28 31.7987C28 29.1485 30.1527 27 32.8081 27H295.192C297.847 27 300 29.1485 300 31.7987V245H28V31.7987Z" fill="white"/> <g filter="url(#filter0_d_103_471)"> <ellipse cx="169" cy="174.5" rx="100" ry="16.5" fill="#FAFAFA"/> </g> <path d="M275 189.388C275 192.493 272.493 195 269.4 195H70.5995C67.5034 195 65 192.486 65 189.388V81.615C65 78.5136 67.5067 76 70.5995 76H269.4C272.497 76 274.997 78.5136 274.997 81.615L275 189.388Z" fill="#FBFBFB"/> <defs> <filter id="filter0_d_103_471" x="60" y="154" width="220" height="53" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix"/> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/> <feOffset dx="1" dy="6"/> <feGaussianBlur stdDeviation="5"/> <feComposite in2="hardAlpha" operator="out"/> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0"/> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_103_471"/> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_103_471" result="shape"/> </filter> </defs> </svg>',
 	},
@@ -625,9 +621,9 @@ const boxShadowHoverPresets = [
 			{ label: 'boxShadowVOffsetHover', value: 20 },
 			{ label: 'boxShadowBlurHover', value: 30 },
 			{ label: 'boxShadowSpreadHover', value: 0 },
-			{ label: 'boxShadowColorHover', value: 'rgb(0 0 0 / 15%)' }
+			{ label: 'boxShadowColorHover', value: 'rgb(0 0 0 / 15%)' },
 		],
 		icon: '<svg xmlns="http://www.w3.org/2000/svg" width="325" height="245" viewBox="0 0 325 245" fill="none"> <path d="M28 31.7987C28 29.1485 30.1527 27 32.8081 27H295.192C297.847 27 300 29.1485 300 31.7987V245H28V31.7987Z" fill="white"/> <g filter="url(#filter0_d_103_476)"> <path d="M269 190.388C269 193.493 266.493 196 263.4 196H64.5995C61.5034 196 59 193.486 59 190.388V82.615C59 79.5136 61.5067 77 64.5995 77H263.4C266.497 77 268.997 79.5136 268.997 82.615L269 190.388Z" fill="#FBFBFB"/> </g> <defs> <filter id="filter0_d_103_476" x="52" y="74" width="224" height="133" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix"/> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/> <feOffset dy="4"/> <feGaussianBlur stdDeviation="3.5"/> <feComposite in2="hardAlpha" operator="out"/> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0"/> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_103_476"/> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_103_476" result="shape"/> </filter> </defs> </svg>',
 	},
 ];
-export {boxShadowHoverPresets};
+export { boxShadowHoverPresets };

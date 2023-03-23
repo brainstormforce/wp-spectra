@@ -1,11 +1,10 @@
 .wp-block-uagb-countdown {
-
 	display: flex;
 	justify-content: center;
 	text-align: center;
 
 	&__box {
-		position: relative;  // Helps to position separators.
+		position: relative; // Helps to position separators.
 		display: flex;
 		flex-direction: column;
 
@@ -14,23 +13,22 @@
 		aspect-ratio: 1;
 		justify-content: center;
 
-		@media (max-width: 976px) {
+		@media ( max-width: 976px ) {
 			width: 100px;
 			height: 100px;
 		}
 
-		@media (max-width: 767px) {
+		@media ( max-width: 767px ) {
 			width: 65px;
 			height: 65px;
 		}
-
 	}
 
 	&__time {
 		// align-self: center;
 		font-size: 52px;
 
-		@media (max-width: 976px) {
+		@media ( max-width: 976px ) {
 			font-size: 32px;
 		}
 	}
@@ -39,11 +37,10 @@
 		// align-self: center;
 		font-size: 14px;
 
-		@media (max-width: 976px) {
+		@media ( max-width: 976px ) {
 			font-size: 12px;
 		}
 	}
-
 }
 
 html:not([dir="rtl"]) {

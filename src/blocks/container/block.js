@@ -34,15 +34,10 @@ registerBlockType( 'uagb/container', {
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
 	variations,
-	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="container" />
-		) : (
-			<Edit { ...props } />
-		),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="container" /> : <Edit { ...props } /> ),
 	save,
 	transforms,
 } );
