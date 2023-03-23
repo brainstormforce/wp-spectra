@@ -5,12 +5,7 @@
 import generateCSS from '@Controls/generateCSS';
 
 function styling( props ) {
-	const {
-		icon_color,
-		icon_hover_color,
-		icon_bg_color,
-		icon_bg_hover_color,
-	} = props.attributes;
+	const { icon_color, icon_hover_color, icon_bg_color, icon_bg_hover_color } = props.attributes;
 
 	const selectors = {
 		'.uagb-ss-repeater a.uagb-ss__link': {

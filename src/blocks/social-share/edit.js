@@ -29,45 +29,35 @@ const SocialShareComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
-        addBlockEditorDynamicStyles( 'uagb-style-social-share-' + clientId.substr( 0, 8 ), blockStyling );
-
+		addBlockEditorDynamicStyles( 'uagb-style-social-share-' + clientId.substr( 0, 8 ), blockStyling );
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
-	}, [deviceType] );
+	}, [ deviceType ] );
 
 	useEffect( () => {
-
 		select( 'core/block-editor' )
-            .getBlocksByClientId( clientId )[0]
-            ?.innerBlocks.forEach( function( block ) {
-
-                dispatch( 'core/block-editor' ).updateBlockAttributes(
-                    block.clientId, {
-                        parentSize: attributes.size,
-                        parentSizeMobile: attributes.sizeMobile,
-                        parentSizeTablet: attributes.sizeTablet,
-
-                    }
-                );
-
-            } );
-
+			.getBlocksByClientId( clientId )[ 0 ]
+			?.innerBlocks.forEach( function ( block ) {
+				dispatch( 'core/block-editor' ).updateBlockAttributes( block.clientId, {
+					parentSize: attributes.size,
+					parentSizeMobile: attributes.sizeMobile,
+					parentSizeTablet: attributes.sizeTablet,
+				} );
+			} );
 	}, [ attributes.size, attributes.sizeMobile, attributes.sizeTablet ] );
 
 	return (
 		<>
-		{ isSelected && <Settings parentProps={ props } /> }
+			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
 		</>
 	);

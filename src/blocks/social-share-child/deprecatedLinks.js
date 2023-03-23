@@ -19,6 +19,6 @@ const links = {
 	telegram: 'https://telegram.me/share/url?url=',
 	skype: 'https://web.skype.com/share?url=',
 	buffer: 'https://buffer.com/add?url=',
-}
+};
 
-export default links
+export default links;
