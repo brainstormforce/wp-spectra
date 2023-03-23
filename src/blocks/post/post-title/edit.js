@@ -24,11 +24,7 @@ export const PostTitle = ( props ) => {
 	if ( attributes.displayPostTitle ) {
 		return (
 			<Tag className={ 'uagb-post__title uagb-post__text' }>
-				<a
-					href={ post.link }
-					target={ target }
-					rel="noopener noreferrer"
-				>
+				<a href={ post.link } target={ target } rel="noopener noreferrer">
 					{ decodeEntities( post.title.rendered.trim() ) }
 				</a>
 			</Tag>

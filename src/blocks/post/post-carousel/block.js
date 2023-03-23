@@ -27,16 +27,11 @@ registerBlockType( 'uagb/post-carousel', {
 		__( 'carousel', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="post-carousel" />
-			) : (
-				<Edit { ...props } />
-			),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="post-carousel" /> : <Edit { ...props } /> ),
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
 	// Render via PHP
 	save() {
