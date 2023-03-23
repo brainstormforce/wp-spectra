@@ -30,14 +30,9 @@ registerBlockType( 'uagb/taxonomy-list', {
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="taxonomy-list" />
-			) : (
-				<Edit { ...props } />
-			),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="taxonomy-list" /> : <Edit { ...props } /> ),
 	// Render via PHP
-	save:()=> null,
+	save: () => null,
 } );

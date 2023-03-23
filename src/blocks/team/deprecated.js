@@ -5,302 +5,298 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/deprecatedRenderIcon';
 import { RichText } from '@wordpress/block-editor';
-import newRenderSVG from '@Controls/renderIcon'
+import newRenderSVG from '@Controls/renderIcon';
 import newAttributes from './attributes';
 
 const attributes = {
-	block_id :{
-		type : "string"
+	block_id: {
+		type: 'string',
 	},
 	classMigrate: {
-		type: "boolean",
-		default: false
+		type: 'boolean',
+		default: false,
 	},
 	align: {
-		type: "string",
-		default: "center",
+		type: 'string',
+		default: 'center',
 	},
-	tag :{
-		type: "string",
-		default: "h3"
+	tag: {
+		type: 'string',
+		default: 'h3',
 	},
 	title: {
-		selector: "h1,h2,h3,h4,h5,h6",
-		default: "John Doe",
+		selector: 'h1,h2,h3,h4,h5,h6',
+		default: 'John Doe',
 	},
 	prefix: {
-		selector: "div.uagb-team__prefix",
-		default: "Designation",
+		selector: 'div.uagb-team__prefix',
+		default: 'Designation',
 	},
 	description_text: {
-		selector: "p",
-		default: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+		selector: 'p',
+		default:
+			'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
 	},
 	titleColor: {
-		type: "string",
+		type: 'string',
 	},
 	prefixColor: {
-		type: "string",
-		default: "#888888"
+		type: 'string',
+		default: '#888888',
 	},
 	descColor: {
-		type: "string",
+		type: 'string',
 	},
 	socialColor: {
-		type: "string",
-		default: "#333"
+		type: 'string',
+		default: '#333',
 	},
 	socialHoverColor: {
-		type: "string"
+		type: 'string',
 	},
 	titleFontFamily: {
-		type: "string",
-		default: "Default",
+		type: 'string',
+		default: 'Default',
 	},
 	titleFontWeight: {
-		type: "string",
+		type: 'string',
 	},
 	titleFontSubset: {
-		type: "string",
+		type: 'string',
 	},
 	titleFontSizeType: {
-		type: "string",
-		default: "px"
+		type: 'string',
+		default: 'px',
 	},
 	titleLineHeightType: {
-		type: "string",
-		default: "em"
+		type: 'string',
+		default: 'em',
 	},
 	titleFontSize: {
-		type: "number",
+		type: 'number',
 	},
 	titleFontSizeTablet: {
-		type: "number",
+		type: 'number',
 	},
 	titleFontSizeMobile: {
-		type: "number",
+		type: 'number',
 	},
 	titleLineHeight: {
-		type: "number",
+		type: 'number',
 	},
 	titleLineHeightTablet: {
-		type: "number",
+		type: 'number',
 	},
 	titleLineHeightMobile: {
-		type: "number",
+		type: 'number',
 	},
 	prefixFontFamily: {
-		type: "string",
-		default: "Default",
+		type: 'string',
+		default: 'Default',
 	},
 	prefixFontWeight: {
-		type: "string",
+		type: 'string',
 	},
 	prefixFontSubset: {
-		type: "string",
+		type: 'string',
 	},
 	prefixFontSizeType: {
-		type: "string",
-		default: "px"
+		type: 'string',
+		default: 'px',
 	},
 	prefixLineHeightType: {
-		type: "string",
-		default: "em"
+		type: 'string',
+		default: 'em',
 	},
 	prefixFontSize: {
-		type: "number",
-		default: 15
+		type: 'number',
+		default: 15,
 	},
 	prefixFontSizeTablet: {
-		type: "number",
+		type: 'number',
 	},
 	prefixFontSizeMobile: {
-		type: "number",
+		type: 'number',
 	},
 	prefixLineHeight: {
-		type: "number",
+		type: 'number',
 	},
 	prefixLineHeightTablet: {
-		type: "number",
+		type: 'number',
 	},
 	prefixLineHeightMobile: {
-		type: "number",
+		type: 'number',
 	},
 	descFontFamily: {
-		type: "string",
-		default: "Default",
+		type: 'string',
+		default: 'Default',
 	},
 	descFontWeight: {
-		type: "string",
+		type: 'string',
 	},
 	descFontSubset: {
-		type: "string",
+		type: 'string',
 	},
 	descFontSizeType: {
-		type: "string",
-		default: "px"
+		type: 'string',
+		default: 'px',
 	},
 	descLineHeightType: {
-		type: "string",
-		default: "em"
+		type: 'string',
+		default: 'em',
 	},
 	descFontSize: {
-		type: "number",
+		type: 'number',
 	},
 	descFontSizeTablet: {
-		type: "number",
+		type: 'number',
 	},
 	descFontSizeMobile: {
-		type: "number",
+		type: 'number',
 	},
 	descLineHeight: {
-		type: "number",
+		type: 'number',
 	},
 	descLineHeightTablet: {
-		type: "number",
+		type: 'number',
 	},
 	descLineHeightMobile: {
-		type: "number",
+		type: 'number',
 	},
 	socialFontSize: {
-		type: "number",
-		default: 20
+		type: 'number',
+		default: 20,
 	},
 	socialFontSizeType: {
-		type: "string",
-		default: "px"
+		type: 'string',
+		default: 'px',
 	},
 	socialFontSizeMobile: {
-		type: "number",
+		type: 'number',
 	},
 	socialFontSizeTablet: {
-		type: "number",
+		type: 'number',
 	},
 	image: {
-		type: "object",
+		type: 'object',
 	},
 	imgStyle: {
-		type: "string",
-		default: "normal"
+		type: 'string',
+		default: 'normal',
 	},
 	imgPosition: {
-		type: "string",
-		default: "above"
+		type: 'string',
+		default: 'above',
 	},
-	imgAlign:{
-		type : "string",
-		default : "top"
+	imgAlign: {
+		type: 'string',
+		default: 'top',
 	},
-	imgSize:{
-		type: "string",
-		default: "thumbnail",
+	imgSize: {
+		type: 'string',
+		default: 'thumbnail',
 	},
-	imgWidth :{
-		type: "number",
+	imgWidth: {
+		type: 'number',
 		default: 120,
 	},
 	titleSpace: {
-		type: "number",
+		type: 'number',
 	},
 	prefixSpace: {
-		type: "number",
+		type: 'number',
 	},
-	descSpace :{
-		type: "number",
+	descSpace: {
+		type: 'number',
 		default: 10,
 	},
-	imgLeftMargin :{
-		type: "number",
+	imgLeftMargin: {
+		type: 'number',
 		default: 20,
 	},
-	imgRightMargin :{
-		type: "number",
+	imgRightMargin: {
+		type: 'number',
 		default: 20,
 	},
-	imgTopMargin :{
-		type: "number",
+	imgTopMargin: {
+		type: 'number',
 		default: 15,
 	},
-	imgBottomMargin :{
-		type: "number",
+	imgBottomMargin: {
+		type: 'number',
 		default: 15,
 	},
 	socialEnable: {
-		type: "boolean",
-		default: true
+		type: 'boolean',
+		default: true,
 	},
-	socialSpace :{
-		type: "number",
+	socialSpace: {
+		type: 'number',
 		default: 20,
 	},
 	socialTarget: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
-	twitterIcon : {
-		type : "string",
-		default : "fab fa-twitter"
+	twitterIcon: {
+		type: 'string',
+		default: 'fab fa-twitter',
 	},
-	fbIcon : {
-		type : "string",
-		default : "fab fa-facebook"
+	fbIcon: {
+		type: 'string',
+		default: 'fab fa-facebook',
 	},
-	linkedinIcon : {
-		type : "string",
-		default : "fab fa-linkedin"
+	linkedinIcon: {
+		type: 'string',
+		default: 'fab fa-linkedin',
 	},
-	pinIcon : {
-		type : "string",
-		default : "fab fa-pinterest"
+	pinIcon: {
+		type: 'string',
+		default: 'fab fa-pinterest',
 	},
 	twitterLink: {
-		type: "string",
-		default : "#"
+		type: 'string',
+		default: '#',
 	},
 	fbLink: {
-		type: "string",
-		default : "#"
+		type: 'string',
+		default: '#',
 	},
 	linkedinLink: {
-		type: "string",
-		default : "#"
+		type: 'string',
+		default: '#',
 	},
 	pinLink: {
-		type: "string",
-		default : "#"
+		type: 'string',
+		default: '#',
 	},
 	stack: {
-		type: "string",
-		default: "tablet"
+		type: 'string',
+		default: 'tablet',
 	},
 	titleLoadGoogleFonts: {
-		type: "boolean",
-		default: false
+		type: 'boolean',
+		default: false,
 	},
 	prefixLoadGoogleFonts: {
-		type: "boolean",
-		default: false
+		type: 'boolean',
+		default: false,
 	},
 	descLoadGoogleFonts: {
-		type: "boolean",
-		default: false
+		type: 'boolean',
+		default: false,
 	},
 	imageMarginUnit: {
 		type: 'string',
 		default: 'px',
 	},
-}
+};
 
 function social_html( icon, link, target ) {
 	const target_value = target ? '_blank' : '_self';
 	return (
 		<li className="uagb-team__social-icon">
-			<a
-				href={ link }
-				target={ target_value }
-				title=""
-				rel="noopener noreferrer"
-			>
+			<a href={ link } target={ target_value } title="" rel="noopener noreferrer">
 				{ renderSVG( icon ) }
 			</a>
 		</li>
@@ -311,13 +307,7 @@ function new_social_html_v2_0_13( icon, link, target ) {
 	const target_value = target ? '_blank' : '_self';
 	return (
 		<li className="uagb-team__social-icon">
-			<a
-				href={ link }
-				aria-label={ icon }
-				target={ target_value }
-				title=""
-				rel="noopener noreferrer"
-			>
+			<a href={ link } aria-label={ icon } target={ target_value } title="" rel="noopener noreferrer">
 				{ newRenderSVG( icon ) }
 			</a>
 		</li>
@@ -328,12 +318,7 @@ function deprecated_social_html( icon, link, target ) {
 	const target_value = target ? '_blank' : '_self';
 	return (
 		<li className="uagb-team__social-icon">
-			<a
-				href={ link }
-				target={ target_value }
-				title=""
-				rel="noopener noreferrer"
-			>
+			<a href={ link } target={ target_value } title="" rel="noopener noreferrer">
 				<span className={ icon }></span>
 			</a>
 		</li>
@@ -344,13 +329,7 @@ function deprecated_social_html_beta_v1( icon, link, target ) {
 	const target_value = target ? '_blank' : '_self';
 	return (
 		<li className="uagb-team__social-icon">
-			<a
-				href={ link }
-				aria-label={ icon }
-				target={ target_value }
-				title=""
-				rel="noopener noreferrer"
-			>
+			<a href={ link } aria-label={ icon } target={ target_value } title="" rel="noopener noreferrer">
 				{ renderSVG( icon ) }
 			</a>
 		</li>
@@ -401,17 +380,8 @@ const deprecated = [
 
 			if ( '' != img_url ) {
 				image_html = (
-					<div
-						className={ classnames(
-							'uagb-team__image-wrap',
-							`uagb-team__image-crop-${ imgStyle }`
-						) }
-					>
-						<img
-							className=""
-							src={ img_url }
-							alt={ image.alt ? image.alt : '' }
-						/>
+					<div className={ classnames( 'uagb-team__image-wrap', `uagb-team__image-crop-${ imgStyle }` ) }>
+						<img className="" src={ img_url } alt={ image.alt ? image.alt : '' } />
 					</div>
 				);
 			}
@@ -435,52 +405,22 @@ const deprecated = [
 							{ imgPosition == 'above' && image_html }
 
 							<div className="uagb-team__title-wrap">
-								<RichText.Content
-									tagName={ tag }
-									value={ title }
-									className="uagb-team__title"
-								/>
-								<RichText.Content
-									tagName="span"
-									value={ prefix }
-									className="uagb-team__prefix"
-								/>
+								<RichText.Content tagName={ tag } value={ title } className="uagb-team__title" />
+								<RichText.Content tagName="span" value={ prefix } className="uagb-team__prefix" />
 							</div>
 
 							<div className="uagb-team__desc-wrap">
-								<RichText.Content
-									tagName="p"
-									value={ description_text }
-									className="uagb-team__desc"
-								/>
+								<RichText.Content tagName="p" value={ description_text } className="uagb-team__desc" />
 							</div>
 							{ socialEnable && (
 								<div className="uagb-team__social-icon-wrap">
 									<ul className="uagb-team__social-list">
 										{ '' != twitterIcon &&
-											deprecated_social_html(
-												twitterIcon,
-												twitterLink,
-												socialTarget
-											) }
-										{ '' != fbIcon &&
-											deprecated_social_html(
-												fbIcon,
-												fbLink,
-												socialTarget
-											) }
+											deprecated_social_html( twitterIcon, twitterLink, socialTarget ) }
+										{ '' != fbIcon && deprecated_social_html( fbIcon, fbLink, socialTarget ) }
 										{ '' != linkedinIcon &&
-											deprecated_social_html(
-												linkedinIcon,
-												linkedinLink,
-												socialTarget
-											) }
-										{ '' != pinIcon &&
-											deprecated_social_html(
-												pinIcon,
-												pinLink,
-												socialTarget
-											) }
+											deprecated_social_html( linkedinIcon, linkedinLink, socialTarget ) }
+										{ '' != pinIcon && deprecated_social_html( pinIcon, pinLink, socialTarget ) }
 									</ul>
 								</div>
 							) }
@@ -535,17 +475,8 @@ const deprecated = [
 
 			if ( '' != img_url ) {
 				image_html = (
-					<div
-						className={ classnames(
-							'uagb-team__image-wrap',
-							`uagb-team__image-crop-${ imgStyle }`
-						) }
-					>
-						<img
-							className=""
-							src={ img_url }
-							alt={ image.alt ? image.alt : '' }
-						/>
+					<div className={ classnames( 'uagb-team__image-wrap', `uagb-team__image-crop-${ imgStyle }` ) }>
+						<img className="" src={ img_url } alt={ image.alt ? image.alt : '' } />
 					</div>
 				);
 			}
@@ -569,52 +500,21 @@ const deprecated = [
 							{ imgPosition == 'above' && image_html }
 
 							<div className="uagb-team__title-wrap">
-								<RichText.Content
-									tagName={ tag }
-									value={ title }
-									className="uagb-team__title"
-								/>
-								<RichText.Content
-									tagName="span"
-									value={ prefix }
-									className="uagb-team__prefix"
-								/>
+								<RichText.Content tagName={ tag } value={ title } className="uagb-team__title" />
+								<RichText.Content tagName="span" value={ prefix } className="uagb-team__prefix" />
 							</div>
 
 							<div className="uagb-team__desc-wrap">
-								<RichText.Content
-									tagName="p"
-									value={ description_text }
-									className="uagb-team__desc"
-								/>
+								<RichText.Content tagName="p" value={ description_text } className="uagb-team__desc" />
 							</div>
 							{ socialEnable && (
 								<div className="uagb-team__social-icon-wrap">
 									<ul className="uagb-team__social-list">
-										{ '' != twitterIcon &&
-											social_html(
-												twitterIcon,
-												twitterLink,
-												socialTarget
-											) }
-										{ '' != fbIcon &&
-											social_html(
-												fbIcon,
-												fbLink,
-												socialTarget
-											) }
+										{ '' != twitterIcon && social_html( twitterIcon, twitterLink, socialTarget ) }
+										{ '' != fbIcon && social_html( fbIcon, fbLink, socialTarget ) }
 										{ '' != linkedinIcon &&
-											social_html(
-												linkedinIcon,
-												linkedinLink,
-												socialTarget
-											) }
-										{ '' != pinIcon &&
-											social_html(
-												pinIcon,
-												pinLink,
-												socialTarget
-											) }
+											social_html( linkedinIcon, linkedinLink, socialTarget ) }
+										{ '' != pinIcon && social_html( pinIcon, pinLink, socialTarget ) }
 									</ul>
 								</div>
 							) }
@@ -669,17 +569,8 @@ const deprecated = [
 
 			if ( '' != img_url ) {
 				image_html = (
-					<div
-						className={ classnames(
-							'uagb-team__image-wrap',
-							`uagb-team__image-crop-${ imgStyle }`
-						) }
-					>
-						<img
-							className=""
-							src={ img_url }
-							alt={ image.alt ? image.alt : '' }
-						/>
+					<div className={ classnames( 'uagb-team__image-wrap', `uagb-team__image-crop-${ imgStyle }` ) }>
+						<img className="" src={ img_url } alt={ image.alt ? image.alt : '' } />
 					</div>
 				);
 			}
@@ -703,52 +594,21 @@ const deprecated = [
 							{ imgPosition == 'above' && image_html }
 
 							<div className="uagb-team__title-wrap">
-								<RichText.Content
-									tagName={ tag }
-									value={ title }
-									className="uagb-team__title"
-								/>
-								<RichText.Content
-									tagName="span"
-									value={ prefix }
-									className="uagb-team__prefix"
-								/>
+								<RichText.Content tagName={ tag } value={ title } className="uagb-team__title" />
+								<RichText.Content tagName="span" value={ prefix } className="uagb-team__prefix" />
 							</div>
 
 							<div className="uagb-team__desc-wrap">
-								<RichText.Content
-									tagName="p"
-									value={ description_text }
-									className="uagb-team__desc"
-								/>
+								<RichText.Content tagName="p" value={ description_text } className="uagb-team__desc" />
 							</div>
 							{ socialEnable && (
 								<div className="uagb-team__social-icon-wrap">
 									<ul className="uagb-team__social-list">
-										{ '' != twitterIcon &&
-											social_html(
-												twitterIcon,
-												twitterLink,
-												socialTarget
-											) }
-										{ '' != fbIcon &&
-											social_html(
-												fbIcon,
-												fbLink,
-												socialTarget
-											) }
+										{ '' != twitterIcon && social_html( twitterIcon, twitterLink, socialTarget ) }
+										{ '' != fbIcon && social_html( fbIcon, fbLink, socialTarget ) }
 										{ '' != linkedinIcon &&
-											social_html(
-												linkedinIcon,
-												linkedinLink,
-												socialTarget
-											) }
-										{ '' != pinIcon &&
-											social_html(
-												pinIcon,
-												pinLink,
-												socialTarget
-											) }
+											social_html( linkedinIcon, linkedinLink, socialTarget ) }
+										{ '' != pinIcon && social_html( pinIcon, pinLink, socialTarget ) }
 									</ul>
 								</div>
 							) }
@@ -763,7 +623,6 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-
 			const {
 				block_id,
 				align,
@@ -785,96 +644,78 @@ const deprecated = [
 				pinLink,
 				socialTarget,
 				socialEnable,
-				stack
-			} = props.attributes
+				stack,
+			} = props.attributes;
 
-			let size = ""
-			let img_url = ""
+			let size = '';
+			let img_url = '';
 
 			if ( image ) {
-				size = image.sizes
+				size = image.sizes;
 				if ( image.sizes ) {
-					img_url = ( size[imgSize] ) ? size[imgSize].url : image.url
+					img_url = size[ imgSize ] ? size[ imgSize ].url : image.url;
 				} else {
-					img_url = image.url
+					img_url = image.url;
 				}
 			}
 
-			let image_html = ""
+			let image_html = '';
 
-			if ( "" != img_url ) {
+			if ( '' != img_url ) {
 				image_html = (
-					<div
-						className={ classnames(
-							"uagb-team__image-wrap",
-							`uagb-team__image-crop-${imgStyle}`,
-						) }>
-						<img
-							className =""
-							src = { img_url }
-							alt = { ( image.alt ) ? image.alt : "" }
-						/>
+					<div className={ classnames( 'uagb-team__image-wrap', `uagb-team__image-crop-${ imgStyle }` ) }>
+						<img className="" src={ img_url } alt={ image.alt ? image.alt : '' } />
 					</div>
-				)
+				);
 			}
 
 			return (
 				<div
-					className = { classnames(
+					className={ classnames(
 						props.className,
-						"uagb-team",
-						"uagb-team__outer-wrap",
-						`uagb-team__image-position-${imgPosition}`,
-						`uagb-team__align-${align}`,
-						`uagb-team__stack-${stack}`,
+						'uagb-team',
+						'uagb-team__outer-wrap',
+						`uagb-team__image-position-${ imgPosition }`,
+						`uagb-team__align-${ align }`,
+						`uagb-team__stack-${ stack }`,
 						`uagb-block-${ block_id }`
-					) }>
-					<div className = "uagb-team__wrap">
+					) }
+				>
+					<div className="uagb-team__wrap">
+						{ imgPosition == 'left' && image_html }
 
-						{ ( imgPosition == "left") && image_html }
+						<div className="uagb-team__content">
+							{ imgPosition == 'above' && image_html }
 
-						<div className = "uagb-team__content">
-
-							{  imgPosition == "above" && image_html }
-
-							<div className = "uagb-team__title-wrap">
-								<RichText.Content
-									tagName= { tag }
-									value={ title }
-									className = 'uagb-team__title'
-								/>
-								<RichText.Content
-									tagName="span"
-									value={ prefix }
-									className='uagb-team__prefix'
-								/>
+							<div className="uagb-team__title-wrap">
+								<RichText.Content tagName={ tag } value={ title } className="uagb-team__title" />
+								<RichText.Content tagName="span" value={ prefix } className="uagb-team__prefix" />
 							</div>
 
-							<div className = "uagb-team__desc-wrap">
-								<RichText.Content
-									tagName='p'
-									value={ description_text }
-									className='uagb-team__desc'
-								/>
+							<div className="uagb-team__desc-wrap">
+								<RichText.Content tagName="p" value={ description_text } className="uagb-team__desc" />
 							</div>
-							{ socialEnable &&
+							{ socialEnable && (
 								<div className="uagb-team__social-icon-wrap">
 									<ul className="uagb-team__social-list">
-										{ "" != twitterIcon && deprecated_social_html_beta_v1( twitterIcon, twitterLink, socialTarget ) }
-										{ "" != fbIcon && deprecated_social_html_beta_v1( fbIcon, fbLink, socialTarget ) }
-										{ "" != linkedinIcon && deprecated_social_html_beta_v1( linkedinIcon, linkedinLink, socialTarget ) }
-										{ "" != pinIcon && deprecated_social_html_beta_v1( pinIcon, pinLink, socialTarget ) }
+										{ '' != twitterIcon &&
+											deprecated_social_html_beta_v1( twitterIcon, twitterLink, socialTarget ) }
+										{ '' != fbIcon &&
+											deprecated_social_html_beta_v1( fbIcon, fbLink, socialTarget ) }
+										{ '' != linkedinIcon &&
+											deprecated_social_html_beta_v1( linkedinIcon, linkedinLink, socialTarget ) }
+										{ '' != pinIcon &&
+											deprecated_social_html_beta_v1( pinIcon, pinLink, socialTarget ) }
 									</ul>
 								</div>
-							}
-
+							) }
 						</div>
 
-						{ ( imgPosition == "right") && image_html }
+						{ imgPosition == 'right' && image_html }
 					</div>
 				</div>
-			)
-		}
+			);
+		},
 	},
 	{
 		attributes,
@@ -919,11 +760,11 @@ const deprecated = [
 
 			if ( '' !== img_url ) {
 				image_html = (
-						<img
-							className={`uagb-team__image-crop-${ imgStyle }`}
-							src={ img_url }
-							alt={ image.alt ? image.alt : '' }
-						/>
+					<img
+						className={ `uagb-team__image-crop-${ imgStyle }` }
+						src={ img_url }
+						alt={ image.alt ? image.alt : '' }
+					/>
 				);
 			}
 
@@ -937,62 +778,30 @@ const deprecated = [
 						`uagb-block-${ block_id }`
 					) }
 				>
-						{ imgPosition === 'left' && image_html }
+					{ imgPosition === 'left' && image_html }
 
-						<div className="uagb-team__content">
-							{ imgPosition === 'above' && image_html }
-								<RichText.Content
-									tagName={ tag }
-									value={ title }
-									className="uagb-team__title"
-								/>
-								<RichText.Content
-									tagName="span"
-									value={ prefix }
-									className="uagb-team__prefix"
-								/>
-								<RichText.Content
-									tagName="p"
-									value={ description_text }
-									className="uagb-team__desc"
-								/>
-							{ socialEnable && (
-									<ul className="uagb-team__social-list">
-										{ '' !== twitterIcon &&
-											social_html(
-												twitterIcon,
-												twitterLink,
-												socialTarget
-											) }
-										{ '' !== fbIcon &&
-											social_html(
-												fbIcon,
-												fbLink,
-												socialTarget
-											) }
-										{ '' !== linkedinIcon &&
-											social_html(
-												linkedinIcon,
-												linkedinLink,
-												socialTarget
-											) }
-										{ '' !== pinIcon &&
-											social_html(
-												pinIcon,
-												pinLink,
-												socialTarget
-											) }
-									</ul>
-							) }
-						</div>
+					<div className="uagb-team__content">
+						{ imgPosition === 'above' && image_html }
+						<RichText.Content tagName={ tag } value={ title } className="uagb-team__title" />
+						<RichText.Content tagName="span" value={ prefix } className="uagb-team__prefix" />
+						<RichText.Content tagName="p" value={ description_text } className="uagb-team__desc" />
+						{ socialEnable && (
+							<ul className="uagb-team__social-list">
+								{ '' !== twitterIcon && social_html( twitterIcon, twitterLink, socialTarget ) }
+								{ '' !== fbIcon && social_html( fbIcon, fbLink, socialTarget ) }
+								{ '' !== linkedinIcon && social_html( linkedinIcon, linkedinLink, socialTarget ) }
+								{ '' !== pinIcon && social_html( pinIcon, pinLink, socialTarget ) }
+							</ul>
+						) }
+					</div>
 
-						{ imgPosition === 'right' && image_html }
+					{ imgPosition === 'right' && image_html }
 				</div>
 			);
-		}
+		},
 	},
 	{
-		attributes : newAttributes,
+		attributes: newAttributes,
 		save( props ) {
 			const {
 				block_id,
@@ -1034,11 +843,11 @@ const deprecated = [
 
 			if ( '' !== img_url ) {
 				image_html = (
-						<img
-							className={`uagb-team__image-crop-${ imgStyle }`}
-							src={ img_url }
-							alt={ image.alt ? image.alt : '' }
-						/>
+					<img
+						className={ `uagb-team__image-crop-${ imgStyle }` }
+						src={ img_url }
+						alt={ image.alt ? image.alt : '' }
+					/>
 				);
 			}
 
@@ -1052,60 +861,30 @@ const deprecated = [
 						`uagb-block-${ block_id }`
 					) }
 				>
-						{ imgPosition === 'left' && image_html }
+					{ imgPosition === 'left' && image_html }
 
-						<div className="uagb-team__content">
-							{ imgPosition === 'above' && image_html }
-								<RichText.Content
-									tagName={ tag }
-									value={ title }
-									className="uagb-team__title"
-								/>
-								<RichText.Content
-									tagName="span"
-									value={ prefix }
-									className="uagb-team__prefix"
-								/>
-								<RichText.Content
-									tagName="p"
-									value={ description_text }
-									className="uagb-team__desc"
-								/>
-							{ socialEnable && (
-									<ul className="uagb-team__social-list">
-										{ '' !== twitterIcon &&
-											new_social_html_v2_0_13(
-												twitterIcon,
-												twitterLink,
-												socialTarget
-											) }
-										{ '' !== fbIcon &&
-											new_social_html_v2_0_13(
-												fbIcon,
-												fbLink,
-												socialTarget
-											) }
-										{ '' !== linkedinIcon &&
-											new_social_html_v2_0_13(
-												linkedinIcon,
-												linkedinLink,
-												socialTarget
-											) }
-										{ '' !== pinIcon &&
-											new_social_html_v2_0_13(
-												pinIcon,
-												pinLink,
-												socialTarget
-											) }
-									</ul>
-							) }
-						</div>
+					<div className="uagb-team__content">
+						{ imgPosition === 'above' && image_html }
+						<RichText.Content tagName={ tag } value={ title } className="uagb-team__title" />
+						<RichText.Content tagName="span" value={ prefix } className="uagb-team__prefix" />
+						<RichText.Content tagName="p" value={ description_text } className="uagb-team__desc" />
+						{ socialEnable && (
+							<ul className="uagb-team__social-list">
+								{ '' !== twitterIcon &&
+									new_social_html_v2_0_13( twitterIcon, twitterLink, socialTarget ) }
+								{ '' !== fbIcon && new_social_html_v2_0_13( fbIcon, fbLink, socialTarget ) }
+								{ '' !== linkedinIcon &&
+									new_social_html_v2_0_13( linkedinIcon, linkedinLink, socialTarget ) }
+								{ '' !== pinIcon && new_social_html_v2_0_13( pinIcon, pinLink, socialTarget ) }
+							</ul>
+						) }
+					</div>
 
-						{ imgPosition === 'right' && image_html }
+					{ imgPosition === 'right' && image_html }
 				</div>
 			);
-		}
-	}
+		},
+	},
 ];
 
 export default deprecated;
