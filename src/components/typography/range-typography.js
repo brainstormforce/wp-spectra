@@ -27,7 +27,7 @@ export default function RangeTypographyControl( props ) {
 				max={ 200 }
 				unit={ props.type }
 				responsive={ true }
-				setAttributes={props.setAttributes}
+				setAttributes={ props.setAttributes }
 				data={ {
 					value: props.size.value,
 					label: props.sizeLabel,
@@ -46,7 +46,7 @@ export default function RangeTypographyControl( props ) {
 				max={ 200 }
 				unit={ props.type }
 				responsive={ true }
-				setAttributes={props.setAttributes}
+				setAttributes={ props.setAttributes }
 				data={ {
 					value: props.sizeTablet.value,
 					label: props.sizeTabletLabel,
@@ -65,7 +65,7 @@ export default function RangeTypographyControl( props ) {
 				max={ 200 }
 				unit={ props.type }
 				responsive={ true }
-				setAttributes={props.setAttributes}
+				setAttributes={ props.setAttributes }
 				data={ {
 					value: props.sizeMobile.value,
 					label: props.sizeMobileLabel,
@@ -78,9 +78,7 @@ export default function RangeTypographyControl( props ) {
 	return (
 		<div className="uagb-size-type-field-tabs">
 			<div className="uagb-responsive-control-inner">
-				{ output[ deviceType ]
-					? output[ deviceType ]
-					: output.Desktop }
+				{ output[ deviceType ] ? output[ deviceType ] : output.Desktop }
 			</div>
 		</div>
 	);
