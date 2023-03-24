@@ -127,8 +127,6 @@ class UAGB_Front_Assets {
 	 */
 	public function enqueue_asset_files() {
 
-		global $_wp_current_template_content;
-
 		if ( $this->post_assets ) {
 			$this->post_assets->enqueue_scripts();
 		}
