@@ -1,5 +1,5 @@
 function generateCSSUnit( value, unit ) {
-	if( isNaN( value ) || value === '' ){
+	if ( isNaN( value ) || value === '' ) {
 		return '';
 	}
 
@@ -7,4 +7,3 @@ function generateCSSUnit( value, unit ) {
 }
 
 export default generateCSSUnit;
-

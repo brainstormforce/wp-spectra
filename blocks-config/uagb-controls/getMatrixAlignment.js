@@ -1,6 +1,6 @@
-export default function getMatrixAlignment( attribute, position, format = '' ){
+export default function getMatrixAlignment( attribute, position, format = '' ) {
 	let requiredAlignment = attribute.split( ' ' )[ position - 1 ];
-	switch( format ){
+	switch ( format ) {
 		case 'flex':
 			switch ( requiredAlignment ) {
 				case 'top':
