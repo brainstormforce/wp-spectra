@@ -1,7 +1,8 @@
-import { useState, } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
+import { useState } from '@wordpress/element';
+import { __, sprintf } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 import { useDispatch } from 'react-redux';
+import ReactHtmlParser from 'react-html-parser';
 
 export default function MyAccount() {
 	const dispatch = useDispatch();
@@ -86,14 +87,23 @@ export default function MyAccount() {
 									color: '#64748b', /* Replicating Tailwind: text-slate-500 */
 								} }
 							>
-								{ __( 'Activate ', 'ultimate-addons-for-gutenberg' ) }
-								<a href="https://wpspectra.com/pro" className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target='_blank' rel="noreferrer">
-								{ __( 'Spectra Pro', 'ultimate-addons-for-gutenberg' ) }
-								</a>
-								&nbsp;
-								{ __( 'to get professional support and automatic updates from your WordPress dashboard.', 'ultimate-addons-for-gutenberg' ) }
-								&nbsp;
-								{__( 'If you don\'t have a license, you can', 'ultimate-addons-for-gutenberg' )} <a className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target='_blank' href="https://wpspectra.com/pricing" rel="noreferrer">{__( 'get it here', 'ultimate-addons-for-gutenberg' )} »</a>
+								{ ReactHtmlParser(
+									sprintf(
+										// translators: %1$s: anchor tag start, %2$s: Spectra Pro, %3$s: anchor tag end, %4$s: String, %5$s String, %6$s anchor tag start, %7$s String, %8$s anchor tag end.
+										__(
+											'Activate %1$s%2$s%3$s%4$s%5$s%6$s%7$s%8$s',
+											'ultimate-addons-for-gutenberg'
+										),
+										'<a href="https://wpspectra.com/pro" class="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target="_blank" rel="noreferrer">',
+										'Spectra Pro',
+										'</a>',
+										' to get professional support and automatic updates from your WordPress dashboard. ',
+										' If you don\'t have a license, you can ',
+										'<a class="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target="_blank" href="https://wpspectra.com/pricing" rel="noreferrer">',
+										' get it here »',
+										'</a>'
+									)
+								) }
 							</p>
 						) }
 						<p
