@@ -370,7 +370,7 @@ function Settings( props ) {
 			title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
-			{ timerType && 
+			{ ( timerType && 'evergreen' !== timerType ) && 
 				<div className='uagb-countdown__datetime-picker'>
 					<div><h2>{ __( 'Timer End Date & Time', 'ultimate-addons-for-gutenberg' ) }</h2></div>
 					<DateTimePicker
