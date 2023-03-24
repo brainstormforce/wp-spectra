@@ -75,7 +75,7 @@ const UAGCopyPasteStyles = () => {
 	const copyStylesHandler = () => {
 		setshowPopup( false );
 
-		/* eslint-disable no-shadow */
+		// eslint-disable-next-line no-shadow
 		const { getSelectedBlock, hasMultiSelection, getMultiSelectedBlocks } = select( 'core/block-editor' );
 
 		if ( hasMultiSelection() ) {
@@ -100,7 +100,7 @@ const UAGCopyPasteStyles = () => {
 
 	const pasteStylesHandler = () => {
 		setshowPopup( false );
-
+		// eslint-disable-next-line no-shadow
 		const { getSelectedBlock, hasMultiSelection, getMultiSelectedBlocks } = select( 'core/block-editor' );
 
 		if ( hasMultiSelection() ) {
@@ -206,6 +206,7 @@ const UAGCopyPasteStyles = () => {
 
 					innerBlocks.map( ( childBlock, index ) => {
 						const childName = childBlock.name.replace( 'uagb/', '' );
+						// eslint-disable-next-line no-shadow
 						const blockAttributes = allBlocksAttributes[ childName ];
 
 						if ( pasteStyle.innerblocks[ index ].name === 'uagb/' + childName ) {
