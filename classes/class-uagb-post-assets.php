@@ -817,13 +817,6 @@ class UAGB_Post_Assets {
 						$this->stylesheet .= $assets['css'];
 						$this->script     .= $assets['js'];
 					}
-				} elseif ( 'core/template-part' === $inner_block['blockName'] ) { // This condition to check is there any inner_block content template part.
-					$id = $this->get_fse_template_part( $inner_block );
-					if ( $id ) {
-						$assets            = $this->get_assets_using_post_content( $id );
-						$this->stylesheet .= $assets['css'];
-						$this->script     .= $assets['js'];
-					}
 				} else {
 					// Get CSS for the Block.
 					$inner_assets    = $this->get_block_css_and_js( $inner_block );
@@ -905,16 +898,7 @@ class UAGB_Post_Assets {
 	 */
 	public function common_function_for_assets_preparation( $post_content ) {
 
-		global $_wp_current_template_content;
-		global $wp_embed;
-
-		$content = '';
-
-		if ( $_wp_current_template_content ) {
-			$content = $wp_embed->run_shortcode( $_wp_current_template_content );
-		}
-		// This content is appended for the Home page & 404 page.
-		$blocks = $this->parse_blocks( $post_content . $content );
+		$blocks = $this->parse_blocks( $post_content );
 
 		$this->page_blocks = $blocks;
 
@@ -1010,14 +994,14 @@ class UAGB_Post_Assets {
 
 		$tab_styling_css = '';
 		$mob_styling_css = '';
-
-		$js = '';
+		$block_css       = '';
+		$js              = '';
 
 		foreach ( $blocks as $i => $block ) {
 
 			if ( is_array( $block ) ) {
 
-				if ( '' === $block['blockName'] || ! isset( $block['attrs'] ) ) {
+				if ( empty( $block['blockName'] ) || ! isset( $block['attrs'] ) ) {
 					continue;
 				}
 
@@ -1034,10 +1018,9 @@ class UAGB_Post_Assets {
 				} elseif ( 'core/template-part' === $block['blockName'] ) {
 					$id = $this->get_fse_template_part( $block );
 					if ( $id ) {
-						$assets = $this->get_assets_using_post_content( $id );
-
-						$this->stylesheet .= $assets['css'];
-						$this->script     .= $assets['js'];
+						$assets     = $this->get_assets_using_post_content( $id );
+						$block_css .= $assets['css'];
+						$js        .= $assets['js'];
 					}
 				} else {
 					// Add your block specif css here.
@@ -1072,7 +1055,7 @@ class UAGB_Post_Assets {
 		}
 
 		return array(
-			'css' => $desktop . $tab_styling_css . $mob_styling_css,
+			'css' => $block_css . $desktop . $tab_styling_css . $mob_styling_css,
 			'js'  => $js,
 		);
 	}
