@@ -32,8 +32,8 @@ const AdvancedPopColorControl = ( props ) => {
 		setPanelNameForHook( getPanelIdFromRef( panelRef ) );
 	}, [ blockNameForHook ] );
 
+	// eslint-disable-next-line no-shadow
 	const { colors } = useSelect( ( select ) => {
-		// eslint-disable-line
 		const settings = select( 'core/block-editor' ).getSettings();
 		return { colors: settings.colors };
 	} );

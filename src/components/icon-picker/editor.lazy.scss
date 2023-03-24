@@ -116,7 +116,7 @@
 	// max-width: 90%;
 	overflow: unset;
 	box-sizing: border-box;
-	*{
+	* {
 		box-sizing: border-box;
 	}
 
@@ -281,8 +281,8 @@
 	}
 	// Icons container
 	.uagb-ip-icons {
-		.ReactVirtualized__Grid__innerScrollContainer{
-			overflow-x: hidden!important;
+		.ReactVirtualized__Grid__innerScrollContainer {
+			overflow-x: hidden !important;
 			max-width: inherit !important;
 		}
 		&.icon-not-found {

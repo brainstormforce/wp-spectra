@@ -6,7 +6,7 @@ import { select } from '@wordpress/data';
 import { applyFilters } from '@wordpress/hooks';
 
 const GradientSettings = ( props ) => {
-	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const [ panelNameForHook, setPanelNameForHook ] = useState( null );
 	const panelRef = useRef( null );
 	const { getSelectedBlock } = select( 'core/block-editor' );
 	// Add and remove the CSS on the drop and remove of the component.
@@ -19,10 +19,8 @@ const GradientSettings = ( props ) => {
 
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	useEffect( () => {
-		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
-	}, [blockNameForHook] )
-
-
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) );
+	}, [ blockNameForHook ] );
 
 	const { setAttributes, backgroundGradient } = props;
 
@@ -31,29 +29,30 @@ const GradientSettings = ( props ) => {
 	};
 
 	const controlName = 'gradient-settings'; // there is no label props that's why keep hard coded label
-	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }.before`,
+		'',
+		blockNameForHook
+	);
+	const controlAfterDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }`,
+		'',
+		blockNameForHook
+	);
 
 	return (
-		<div
-			ref={panelRef}
-
-		>
-			{
-				controlBeforeDomElement
-			}
+		<div ref={ panelRef }>
+			{ controlBeforeDomElement }
 			<GradientPicker
-				__nextHasNoMargin = { true }
+				__nextHasNoMargin={ true }
 				value={ backgroundGradient.value }
 				onChange={ onGradientChange }
 				className="uagb-gradient-picker"
-				gradients={[]} // Passing it an empty to resolve block encounters an error when gutenberg is activated.
+				gradients={ [] } // Passing it an empty to resolve block encounters an error when gutenberg is activated.
 			/>
-			{
-				controlAfterDomElement
-			}
+			{ controlAfterDomElement }
 		</div>
 	);
-}
+};
 
 export default GradientSettings;
