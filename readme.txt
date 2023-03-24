@@ -171,6 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = x.x.x =
+* New: Animations - Give a new life to your page with some scroll-based entrance animations.
 * Fix: Post Grid - Pagination not visible inside editor.
 * Fix: Spectra blocks editor spacing conflicting with Blocksy theme.
 * Fix: Inline Notice - Content color is not working in the backend.
