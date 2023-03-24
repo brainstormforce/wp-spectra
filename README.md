@@ -178,6 +178,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Taxonomy block - Translation missing for Select string in PHP file.
 * Fix: Spacing Control - Removed the capability to set negative values for width & radius settings.
 * Fix: Typography Control - Removed the capability to set negative values for line-height & font size settings.
+* Fix: Social Share - PHP error for old user due `array_merge()` parameter should be array.
 
 ### 2.4.0 ###
 * New: Introducing the Countdown block that will help you generate hype and create a sense of urgency among your audience, during product sales or releases!

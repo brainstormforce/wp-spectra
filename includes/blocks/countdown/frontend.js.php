@@ -12,12 +12,14 @@ $selector = '.uagb-block-' . $id;
 $countdown_options = apply_filters(
 	'uagb_countdown_options',
 	array(
-		'block_id'    => $attr['block_id'],
-		'endDateTime' => $attr['endDateTime'],
-		'showDays'    => $attr['showDays'],
-		'showHours'   => $attr['showHours'],
-		'showMinutes' => $attr['showMinutes'],
-		'isFrontend'  => true,
+		'block_id'       => $attr['block_id'],
+		'endDateTime'    => $attr['endDateTime'],
+		'showDays'       => $attr['showDays'],
+		'showHours'      => $attr['showHours'],
+		'showMinutes'    => $attr['showMinutes'],
+		'isFrontend'     => true,
+		'timerEndAction' => $attr['timerEndAction'],
+		'redirectURL'    => $attr['redirectURL'],
 	),
 	$id,
 	$attr

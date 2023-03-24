@@ -42,6 +42,7 @@ module.exports = {
 		UAGBTableOfContents: true,
 		localStorage: true,
 		uagb_timeline_data: true,
+		uagb_countdown_data: true,
 		UAGBModal: true,
 		CustomEvent: true,
 		fetch: true,
