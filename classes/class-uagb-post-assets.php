@@ -523,7 +523,16 @@ class UAGB_Post_Assets {
 			)
 		);
 
+		wp_localize_script(
+			'uagb-countdown-js',
+			'uagb_countdown_data',
+			array(
+				'site_name_slug' => sanitize_title( get_bloginfo( 'name' ) ),
+			)
+		);
+
 		do_action( 'spectra_localize_pro_block_ajax' );
+
 	}
 
 	/**

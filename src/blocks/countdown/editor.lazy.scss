@@ -1,3 +1,10 @@
+// The following selector is needed so as to create some space around the gutenberg selector,
+// as it makes the block selectable and provides better editing experience
+// while editing the Countdown innerblocks for 'Replace With Content' expiry option.
+[data-type="uagb/countdown"] {
+	padding: 10px 0;
+}
+
 .uagb-countdown__datetime-picker {
 
 	// UTC Notice.
@@ -26,6 +33,21 @@
 
 		ul:not(:last-child) {
 			margin-bottom: 1.5em;
+		}
+	}
+}
+
+// Toolbar.
+.uagb-countdown-pro-toolbar {
+
+	.components-toolbar-button {
+		font-weight: bold;
+
+		&:focus {
+
+			&::before {
+				box-shadow: unset;
+			}
 		}
 	}
 }

@@ -35,5 +35,8 @@ auth.json
 # phpunit
 .phpunit.result.cache
 
+# nvmrc
+.nvmrc
+
 # VScode
 .vscode
