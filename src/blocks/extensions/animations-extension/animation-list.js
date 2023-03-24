@@ -1,3 +1,7 @@
+/**
+ * EXTENSION: Animations Extension - List of animations available.
+ */
+
 import { __ } from '@wordpress/i18n';
 
 export const AnimationList = [
@@ -38,30 +42,5 @@ export const AnimationList = [
     { value: 'zoom-out-up', label: __( 'Zoom-Out Up', 'ultimate-addons-for-gutenberg' ) },
     { value: 'zoom-out-left', label: __( 'Zoom-Out Left', 'ultimate-addons-for-gutenberg' ) },
     { value: 'zoom-out-right', label: __( 'Zoom-Out Right', 'ultimate-addons-for-gutenberg' ) },
-
-];
-
-export const AnimationEasingList = [
-    
-    { value: 'linear', label: __( 'Linear', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'ease', label: __( 'Ease', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'ease-in', label: __( 'Ease In', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'ease-out', label: __( 'Ease Out', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'ease-in-out', label: __( 'Ease In Out', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'ease-in-back', label: __( 'Ease In Back', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'ease-out-back', label: __( 'Ease Out Back', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'ease-in-out-back', label: __( 'Ease In Out Back', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'ease-in-sine', label: __( 'Ease In Sine', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'ease-out-sine', label: __( 'Ease Out Sine', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'ease-in-out-sine', label: __( 'Ease In Out Sine', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'ease-in-quad', label: __( 'Ease In Quad', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'ease-out-quad', label: __( 'Ease Out Quad', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'ease-in-out-quad', label: __( 'Ease In Out Quad', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'ease-in-cubic', label: __( 'Ease In Cubic', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'ease-out-cubic', label: __( 'Ease Out Cubic', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'ease-in-out-cubic', label: __( 'Ease In Out Cubic', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'ease-in-quart', label: __( 'Ease In Quart', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'ease-out-quart', label: __( 'Ease Out Quart', 'ultimate-addons-for-gutenberg' ) },
-    { value: 'ease-in-out-quart', label: __( 'Ease In Out Quart', 'ultimate-addons-for-gutenberg' ) },
 
 ];
