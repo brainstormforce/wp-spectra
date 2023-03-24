@@ -24,6 +24,7 @@ registerBlockType( 'uagb/post-grid', {
 	title: __( 'Post Grid', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Display your posts in a structured grid-based layout.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.post_grid,
+	category: uagb_blocks_info.category,
 	keywords: [
 		__( 'post', 'ultimate-addons-for-gutenberg' ),
 		__( 'grid', 'ultimate-addons-for-gutenberg' ),

@@ -57,6 +57,7 @@ registerBlockType( 'uagb/content-timeline', {
 		__( 'Timeline', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
+	category: uagb_blocks_info.category,
 	supports: {
 		anchor: true,
 	},

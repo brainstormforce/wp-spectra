@@ -21,6 +21,7 @@ registerBlockType( 'uagb/forms-phone', {
 	icon: UAGB_Block_Icons.phone,
 	parent: [ 'uagb/forms' ],
 	attributes,
+	category: uagb_blocks_info.category,
 	edit: ( props ) =>
 		props.attributes.isPreview ? (
 			<PreviewImage image="form-phone" isChildren={ true } />

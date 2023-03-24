@@ -21,6 +21,7 @@ registerBlockType( 'uagb/forms-name', {
 	icon: UAGB_Block_Icons.name,
 	parent: [ 'uagb/forms' ],
 	attributes,
+	category: uagb_blocks_info.category,
 	edit: ( props ) =>
 		props.attributes.isPreview ? (
 			<PreviewImage image="form-field" isChildren={ true } />

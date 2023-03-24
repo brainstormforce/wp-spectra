@@ -25,7 +25,7 @@ registerBlockType( 'uagb/post-carousel', {
 	title: __( 'Post Carousel', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Display your posts in a sliding carousel layout.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.post_carousel,
-
+	category: uagb_blocks_info.category,
 	keywords: [
 		__( 'post', 'ultimate-addons-for-gutenberg' ),
 		__( 'carousel', 'ultimate-addons-for-gutenberg' ),

@@ -22,6 +22,7 @@ registerBlockType( 'uagb/forms-checkbox', {
 	icon: UAGB_Block_Icons.checkbox,
 	parent: [ 'uagb/forms' ],
 	attributes,
+	category: uagb_blocks_info.category,
 	edit: ( props ) =>
 		props.attributes.isPreview ? (
 			<PreviewImage image="form-checkbox" isChildren={ true } />

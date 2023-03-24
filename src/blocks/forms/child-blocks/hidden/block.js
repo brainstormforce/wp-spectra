@@ -21,6 +21,7 @@ registerBlockType( 'uagb/forms-hidden', {
 	icon: UAGB_Block_Icons.hidden,
 	parent: [ 'uagb/forms' ],
 	attributes,
+	category: uagb_blocks_info.category,
 	edit: ( props ) =>
 		props.attributes.isPreview ? (
 			<PreviewImage image="form-hidden" isChildren={ true } />

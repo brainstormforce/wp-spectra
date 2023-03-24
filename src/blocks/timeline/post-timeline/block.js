@@ -28,6 +28,7 @@ registerBlockType( 'uagb/post-timeline', {
 		__( 'timeline', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
+	category: uagb_blocks_info.category,
 	edit: ( props ) =>
 			props.attributes.isPreview ? (
 				<PreviewImage image="post-timeline" />

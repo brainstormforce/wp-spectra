@@ -21,6 +21,7 @@ registerBlockType( 'uagb/forms-radio', {
 	icon: UAGB_Block_Icons.radio,
 	parent: [ 'uagb/forms' ],
 	attributes,
+	category: uagb_blocks_info.category,
 	edit: ( props ) =>
 		props.attributes.isPreview ? (
 			<PreviewImage image="form-radio" isChildren={ true } />
