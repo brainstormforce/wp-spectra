@@ -7,12 +7,14 @@ window.UAGBModal = {
 	init( mainSelector, deviceType, isAdmin ) {
 
         let document_element = document;
+		const siteEditTheme = document.getElementsByClassName( 'edit-site' );
 
-        if( 'desktop' !== deviceType ) {
+        if( 'desktop' !== deviceType || siteEditTheme.length !== 0 ) {
             const tabletPreview = document.getElementsByClassName( 'is-tablet-preview' );
             const mobilePreview = document.getElementsByClassName( 'is-mobile-preview' );
+			const desktopIframe = siteEditTheme[0].getElementsByTagName( 'iframe' )[0];
 
-            if ( 0 !== tabletPreview.length || 0 !== mobilePreview.length ) {
+            if ( 0 !== tabletPreview.length || 0 !== mobilePreview.length || 0 !== desktopIframe.length ) {
 
                 const preview = tabletPreview[0] || mobilePreview[0];
 
@@ -20,7 +22,9 @@ window.UAGBModal = {
 
                 if ( preview ) {
                     iframe = preview.getElementsByTagName( 'iframe' )[0];
-                }
+                } else if( desktopIframe ){
+					iframe = desktopIframe;
+				}
 
                 const iframeDocument = iframe?.contentWindow.document || iframe?.contentDocument;
 
