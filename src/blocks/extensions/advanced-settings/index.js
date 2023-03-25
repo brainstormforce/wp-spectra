@@ -472,6 +472,15 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 			if( isSelected && ! excludeBlocks.includes( name ) ) {
 				return (
 					<>
+					{ 'enabled' === enableAnimationsExtension &&
+						<UAGAdvancedPanelBody
+							title={ __( 'Animations', 'ultimate-addons-for-gutenberg' ) }
+							initialOpen={ false }
+							className="block-editor-block-inspector__advanced uagb-extention-tab"
+						>
+							{ animationOptions( props ) }
+						</UAGAdvancedPanelBody>
+					}
 					{ 'enabled' === enableConditions &&
 					<UAGAdvancedPanelBody
 						title={ __(
@@ -518,15 +527,6 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 							className="block-editor-block-inspector__advanced uagb-extention-tab"
 						>
 							{ zIndexOptions( props ) }
-						</UAGAdvancedPanelBody>
-					}
-					{ 'enabled' === enableAnimationsExtension &&
-						<UAGAdvancedPanelBody
-							title={ __( 'Animations', 'ultimate-addons-for-gutenberg' ) }
-							initialOpen={ false }
-							className="block-editor-block-inspector__advanced uagb-extention-tab"
-						>
-							{ animationOptions( props ) }
 						</UAGAdvancedPanelBody>
 					}
 					</>
