@@ -208,6 +208,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Global - Excluded BR Tags from buttons' text.
 * Fix: Global - Cartflows templates throw an error in the editor's Spectra Page Settings.
 * Fix: Global - Fonts was not loading on 404 page when Spectra blocks used in Astra theme's header/footer.
+* Fix: Global - Fonts were not loading in backend when Spectra blocks are used in Astra theme's header/footer section.
 
 = 2.3.5 - THURSDAY, 2nd FEBRUARY 2023 =
 * Improvement: Global - Removed Backward compatibility of button padding for old users from multiple blocks.
