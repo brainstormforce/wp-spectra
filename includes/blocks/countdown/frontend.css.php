@@ -283,10 +283,14 @@ if ( $is_rtl ) {
 	$m_selectors[ $boxGapSelectorRTL ]['margin-right'] = UAGB_Helper::get_css_value( $attr['boxSpacingMobile'], 'px' );
 }
 
-$combined_selectors = array(
-	'desktop' => $selectors,
-	'tablet'  => $t_selectors,
-	'mobile'  => $m_selectors,
+$combined_selectors = UAGB_Helper::get_combined_selectors(
+	'countdown',
+	array(
+		'desktop' => $selectors,
+		'tablet'  => $t_selectors,
+		'mobile'  => $m_selectors,
+	),
+	$attr 
 );
 
 $base_selector = '.uagb-block-';

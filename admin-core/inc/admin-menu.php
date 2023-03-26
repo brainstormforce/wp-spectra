@@ -222,6 +222,7 @@ class Admin_Menu {
 				'spectra_pro_ver'          => defined( 'SPECTRA_PRO_VER' ) ? SPECTRA_PRO_VER : null,
 				'spectra_custom_fonts'     => apply_filters( 'spectra_system_fonts', array() ),
 				'is_allow_registration'    => (bool) get_option( 'users_can_register' ),
+				'insta_refresh_users'      => apply_filters( 'uag_refresh_instagram_users', true ),
 			)
 		);
 
