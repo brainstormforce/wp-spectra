@@ -176,10 +176,13 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Fonts were not loading in editor for FSE template.
 * Fix: Container - inherit content width from FSE global styles.
 * Fix: Image - Resolve an issue of image caption visible twice in editor when caption is enable.
+* Fix: Post Grid - Pagination not visible inside editor.
 * Fix: Spectra blocks editor spacing conflicting with Blocksy theme.
 * Fix: Inline Notice - Content color is not working in the backend.
 * Fix: Inline Notice - Content typography is not working.
 * Fix: Taxonomy block - Translation missing for Select string in PHP file.
+* Fix: Modal - Info box as a inner block not loading in the Modal block when Gutenberg is activated.
+* Fix: Social Share - PHP error for old user due `array_merge()` parameter should be array.
 
 ### 2.4.0 - WEDNESDAY, 15th MARCH 2023 ###
 * New: Introducing the Countdown block that will help you generate hype and create a sense of urgency among your audience, during product sales or releases!
