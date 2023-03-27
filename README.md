@@ -176,6 +176,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Inline Notice - Content color is not working in the backend.
 * Fix: Inline Notice - Content typography is not working.
 * Fix: Taxonomy block - Translation missing for Select string in PHP file.
+* Fix: Modal - Info box as a inner block not loading in the Modal block when Gutenberg is activated.
 * Fix: Social Share - PHP error for old user due `array_merge()` parameter should be array.
 
 ### 2.4.0 ###
