@@ -1031,10 +1031,9 @@ class UAGB_Post_Assets {
 					$id = $this->get_fse_template_part( $block );
 					
 					if ( $id ) {
-						$assets            = $this->get_assets_using_post_content( $id );
-						$this->stylesheet .= $assets['css'];
-						$block_css        .= $assets['css'];
-						$js               .= $assets['js'];
+						$assets     = $this->get_assets_using_post_content( $id );
+						$block_css .= $assets['css'];
+						$js        .= $assets['js'];
 					}
 				} else {
 					// Add your block specif css here.
@@ -1131,7 +1130,7 @@ class UAGB_Post_Assets {
 		if ( ! $this->post_id ) {
 			return false;
 		}
-		
+
 		$file_system = uagb_filesystem();
 
 		// Get timestamp - Already saved OR new one.
