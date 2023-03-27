@@ -11,6 +11,7 @@ import {migrateBorderAttributes} from '@Controls/generateAttributes';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import WebfontLoader from '@Components/typography/fontloader';
 
 const UAGBWpSearchEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -26,6 +27,12 @@ const UAGBWpSearchEdit = ( props ) => {
 			borderColor,
 			borderHColor,
 			borderRadius,
+			inputloadGoogleFonts,
+			inputFontFamily,
+			inputFontWeight,
+			buttonloadGoogleFonts,
+			buttonFontFamily,
+			buttonFontWeight
 		},
 		clientId,
 		setAttributes,
@@ -101,10 +108,45 @@ const UAGBWpSearchEdit = ( props ) => {
 		scrollBlockToView();
 	}, [deviceType] );
 
+	
+	let loadInputGoogleFonts;
+
+	if ( inputloadGoogleFonts === true ) {
+		const qconfig = {
+			google: {
+				families: [
+					inputFontFamily +
+						( inputFontWeight ? ':' + inputFontWeight : '' ),
+				],
+			},
+		};
+		loadInputGoogleFonts = (
+			<WebfontLoader config={ qconfig }></WebfontLoader>
+		);
+	}
+
+	let loadButtonGoogleFonts;
+
+	if ( buttonloadGoogleFonts === true ) {
+		const qconfig = {
+			google: {
+				families: [
+					buttonFontFamily +
+						( buttonFontWeight ? ':' + buttonFontWeight : '' ),
+				],
+			},
+		};
+		loadButtonGoogleFonts = (
+			<WebfontLoader config={ qconfig }></WebfontLoader>
+		);
+	}
+
 	return (
 		<>
 		{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
+			{ loadInputGoogleFonts }
+			{ loadButtonGoogleFonts }
 		</>
 	);
 };

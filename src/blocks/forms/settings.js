@@ -1,7 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { memo } from '@wordpress/element';
 import TypographyControl from '@Components/typography';
-import WebfontLoader from '@Components/typography/fontloader';
 import ResponsiveBorder from '@Components/responsive-border';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -1964,55 +1963,6 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
-	let loadsubmittextGoogleFonts;
-
-	if ( submitTextloadGoogleFonts === true ) {
-		const qconfig = {
-			google: {
-				families: [
-					submitTextFontFamily +
-						( submitTextFontWeight
-							? ':' + submitTextFontWeight
-							: '' ),
-				],
-			},
-		};
-		loadsubmittextGoogleFonts = (
-			<WebfontLoader config={ qconfig }></WebfontLoader>
-		);
-	}
-
-	let loadlabelGoogleFonts;
-
-	if ( labelloadGoogleFonts === true ) {
-		const qconfig = {
-			google: {
-				families: [
-					labelFontFamily +
-						( labelFontWeight ? ':' + labelFontWeight : '' ),
-				],
-			},
-		};
-		loadlabelGoogleFonts = (
-			<WebfontLoader config={ qconfig }></WebfontLoader>
-		);
-	}
-
-	let loadinputGoogleFonts;
-
-	if ( inputloadGoogleFonts === true ) {
-		const qconfig = {
-			google: {
-				families: [
-					inputFontFamily +
-						( inputFontWeight ? ':' + inputFontWeight : '' ),
-				],
-			},
-		};
-		loadinputGoogleFonts = (
-			<WebfontLoader config={ qconfig }></WebfontLoader>
-		);
-	}
 
 	return (
 		<>
@@ -2041,11 +1991,6 @@ const Settings = ( props ) => {
 					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-
-				{ loadsubmittextGoogleFonts }
-				{ loadlabelGoogleFonts }
-				{ loadinputGoogleFonts }
-
 		</>
 	);
 };
