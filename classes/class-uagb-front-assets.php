@@ -104,7 +104,7 @@ class UAGB_Front_Assets {
 	/**
 	 * Enqueue asset files for FSE Theme.
 	 *
-	 * @since x.x.x
+	 * @since 2.4.1
 	 */
 	public function load_assets_for_fse_theme() {
 		global $_wp_current_template_content;
