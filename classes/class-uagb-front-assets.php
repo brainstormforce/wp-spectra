@@ -109,8 +109,11 @@ class UAGB_Front_Assets {
 	public function load_assets_for_fse_theme() {
 		global $_wp_current_template_content;
 		if ( $_wp_current_template_content ) {
+			$date                             = new DateTime();
+			$new_timestamp                    = $date->getTimestamp();
+			$dynamic_id                       = get_the_ID() + $new_timestamp;
 			$blocks                           = parse_blocks( $_wp_current_template_content );
-			$current_post_assets              = new UAGB_Post_Assets( get_the_ID() );
+			$current_post_assets              = new UAGB_Post_Assets( $dynamic_id );
 			$current_post_assets->page_blocks = $blocks;
 			$assets                           = $current_post_assets->get_blocks_assets( $blocks );
 			$current_post_assets->stylesheet  = $assets['css'];

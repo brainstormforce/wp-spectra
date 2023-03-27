@@ -1027,7 +1027,9 @@ class UAGB_Post_Assets {
 
 					}
 				} elseif ( 'core/template-part' === $block['blockName'] ) {
+					
 					$id = $this->get_fse_template_part( $block );
+					
 					if ( $id ) {
 						$assets     = $this->get_assets_using_post_content( $id );
 						$block_css .= $assets['css'];
