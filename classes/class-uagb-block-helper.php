@@ -1711,7 +1711,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$default = self::get_block_default_attributes( $block_name );
 			return is_numeric( $current_value ) ? $current_value : $default[ $key ];
 		}
-
 		/**
 		 * Get Matrix Alignment Value
 		 *

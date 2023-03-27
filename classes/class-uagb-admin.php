@@ -152,7 +152,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 								'page' => UAGB_SLUG,
 								'spectra-activation-redirect' => true,
 							),
-							admin_url( 'options-general.php' )
+							admin_url( 'admin.php' )
 						)
 					);
 					exit();

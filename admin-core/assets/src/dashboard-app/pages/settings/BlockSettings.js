@@ -100,7 +100,7 @@ const BlockSettings = () => {
 				</a>
 			</p>
 			{/* Recaptcha V2 */}
-			<h4 className="mt-8 font-medium text-sm text-slate-800 spectra-recaptcha__heading">
+			<h4 className="mt-8 font-medium text-sm text-slate-800">
 				{ __( 'reCAPTCHA v2', 'ultimate-addons-for-gutenberg' ) }
 			</h4>
 			<div className='w-9/12 mt-3 grid grid-cols-2 gap-5'>
@@ -124,7 +124,7 @@ const BlockSettings = () => {
 				/>
 			</div>
 			{/* Recaptcha V3 */}
-			<h4 className="mt-8 font-medium text-sm text-slate-800 spectra-recaptcha__heading">
+			<h4 className="mt-8 font-medium text-sm text-slate-800">
 				{ __( 'reCAPTCHA v3', 'ultimate-addons-for-gutenberg' ) }
 			</h4>
 			<div className='w-9/12 mt-3 grid grid-cols-2 gap-5'>
