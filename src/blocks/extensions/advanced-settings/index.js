@@ -475,7 +475,7 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 					{ 'enabled' === enableAnimationsExtension &&
 						<UAGAdvancedPanelBody
 							title={ __( 'Animations', 'ultimate-addons-for-gutenberg' ) }
-							initialOpen={ false }
+							initialOpen={ true }
 							className="block-editor-block-inspector__advanced uagb-extention-tab"
 						>
 							{ animationOptions( props ) }
@@ -487,7 +487,7 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 							'Display Conditions',
 							'ultimate-addons-for-gutenberg'
 						) }
-						initialOpen={ true }
+						initialOpen={ false }
 						className="block-editor-block-inspector__advanced uagb-extention-tab"
 					>
 						{ UserConditionOptions( props ) }
