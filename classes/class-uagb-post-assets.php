@@ -961,7 +961,7 @@ class UAGB_Post_Assets {
 	 * Generates ids for all wp template part.
 	 *
 	 * @param array $block the content array.
-	 * @since x.x.x
+	 * @since 2.4.1
 	 */
 	public function get_fse_template_part( $block ) {
 		$slug            = $block['attrs']['slug'];
@@ -978,7 +978,7 @@ class UAGB_Post_Assets {
 	 * Generates parse content for all blocks including reusable blocks.
 	 *
 	 * @param int $id of blocks.
-	 * @since x.x.x
+	 * @since 2.4.1
 	 */
 	public function get_assets_using_post_content( $id ) {
 
