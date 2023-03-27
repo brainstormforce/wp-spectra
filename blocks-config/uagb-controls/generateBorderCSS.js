@@ -40,6 +40,9 @@ const generateBorderCSS = ( attributes, prefix, deviceType = 'desktop' ) => {
 			borderCSS['border-bottom-left-radius'] = borderBottomLeftRadius;
 	return borderCSS;
 		};
+	
+	// In case of 'default' border style, we return an empty object.
+	return {};
 
 };
 

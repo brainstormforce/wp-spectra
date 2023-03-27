@@ -6,6 +6,7 @@ import Render from './render';
 import { getSettings as getDateSettings } from '@wordpress/date';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import { useDeviceType } from '@Controls/getPreviewType';
+import { applyFilters } from '@wordpress/hooks';
 
 //  Import CSS.
 import './style.scss';
@@ -66,8 +67,12 @@ const UAGBCountdownEdit = ( props ) => {
 			} );
 		}
 
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
+		// editorInnerblocksPreview: This attribute is used to display innerblocks preview for 'Replace with Content' mode.
+		// block_id: Assigning block_id in the attribute.
+		setAttributes( {
+			editorInnerblocksPreview: false,
+			block_id: clientId.substr( 0, 8 ),
+		} );
 	}, [] );
 
 	const countdownRef = useRef( null );
@@ -112,6 +117,10 @@ const UAGBCountdownEdit = ( props ) => {
 
 	return (
 		<>
+			{/* Countdown Toolbar options for Pro (Replace feature) */}
+			{ ( props.attributes.timerEndAction === 'content' ) &&
+				applyFilters( 'spectra.countdown.toolbar-hook', '', props.name )
+			}
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render countdownRef={ countdownRef } parentProps={ props } />
 		</>

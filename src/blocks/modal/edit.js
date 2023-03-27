@@ -11,15 +11,13 @@ const UAGBModalEdit = ( props ) => {
 	const deviceType = useDeviceType();
 	const {
 		isSelected,
-		setAttributes,
 		attributes,
+		setAttributes,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		clientId
 	} = props;
 
 	useEffect( () => {
-
-		setAttributes( { defaultTemplate:  true } );
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
