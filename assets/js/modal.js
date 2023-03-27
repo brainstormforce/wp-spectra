@@ -7,8 +7,9 @@ window.UAGBModal = {
 	init( mainSelector, deviceType, isAdmin ) {
 
         let document_element = document;
+		const siteEditTheme = document.getElementsByClassName( 'edit-site' );
 
-        if( 'desktop' !== deviceType ) {
+		if( deviceType && 'desktop' !== deviceType ) {
             const tabletPreview = document.getElementsByClassName( 'is-tablet-preview' );
             const mobilePreview = document.getElementsByClassName( 'is-mobile-preview' );
 
@@ -28,8 +29,13 @@ window.UAGBModal = {
                     document_element = iframeDocument;
                 }
             }
-
         }
+		if ( siteEditTheme?.length !== 0 ) {
+			const desktopIframe = siteEditTheme[0].getElementsByTagName( 'iframe' )[0];
+			if ( 0 !== desktopIframe?.length ) {
+				document_element = desktopIframe?.contentWindow.document || desktopIframe?.contentDocument;
+			}
+		}
 
         const modalWrapper = document_element.querySelector(
             mainSelector

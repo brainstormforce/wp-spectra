@@ -38,7 +38,7 @@ const UAGBTabsEdit = ( props ) => {
 		},
 		clientId,
 	} = props;
-	
+
 	useEffect( () => {
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
@@ -64,7 +64,7 @@ const UAGBTabsEdit = ( props ) => {
 			attributes
 			);
 		}
-		
+
 	}, [] );
 
 	const updateTabTitle = () => {
@@ -86,7 +86,7 @@ const UAGBTabsEdit = ( props ) => {
 		addBlockEditorDynamicStyles( 'uagb-style-tab-' + clientId.substr( 0, 8 ), blockStyling );
 		updateTabTitle();
 		props.resetTabOrder();
-	}, [ deviceType, attributes ] );
+	}, [ deviceType, props ] );
 
 	useEffect( () => {
 		scrollBlockToView();
