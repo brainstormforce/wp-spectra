@@ -575,6 +575,7 @@ class UAGB_Init_Blocks {
 		}
 
 		$container_elements_gap = UAGB_Admin_Helper::get_admin_settings_option( 'uag_container_global_elements_gap', 20 );
+		$screen                 = get_current_screen();
 
 		wp_localize_script(
 			'uagb-block-editor-js',
@@ -634,6 +635,7 @@ class UAGB_Init_Blocks {
 				'is_rtl'                                  => is_rtl(),
 				'insta_linked_accounts'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_insta_linked_accounts', array() ),
 				'insta_all_users_media'                   => apply_filters( 'uag_instagram_transients', array() ),
+				'is_site_editor'                          => $screen->id,
 			)
 		);
 		// To match the editor with frontend.

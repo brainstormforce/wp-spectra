@@ -11,8 +11,12 @@ import { __ } from '@wordpress/i18n';
 import deprecated from './deprecated';
 import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let starRatingCommonData = {};
+starRatingCommonData = applyFilters( 'uagb/star-rating', addCommonDataToSpectraBlocks( starRatingCommonData ) );
 registerBlockType( 'uagb/star-rating', {
+	...starRatingCommonData,
 	title: __( 'Star Ratings', 'ultimate-addons-for-gutenberg' ),
 	description: __(
 		'Display customizable star ratings on your page.',
@@ -27,13 +31,8 @@ registerBlockType( 'uagb/star-rating', {
 	supports: {
 		anchor: true,
 	},
-	example: {
-		attributes: {
-			isPreview: true,
-		}
-	},
-	category: uagb_blocks_info.category,
 	attributes,
+category: uagb_blocks_info.category,
 	edit: ( props ) =>
 			props.attributes.isPreview ? (
 				<PreviewImage image="star-rating" />
