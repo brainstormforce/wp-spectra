@@ -1,6 +1,5 @@
 import UAGIconPicker from '@Components/icon-picker';
 import TypographyControl from '@Components/typography';
-import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 import { decodeEntities } from '@wordpress/html-entities';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
@@ -266,87 +265,6 @@ const Settings = ( props ) => {
 				label: decodeEntities( categoriesList[ item ].name ),
 			} );
 		} );
-	}
-
-	let loadHeadGoogleFonts;
-	let loadSubHeadGoogleFonts;
-	let loadDateGoogleFonts;
-	let loadAuthorGoogleFonts;
-	let loadCtaGoogleFonts;
-
-	if ( headLoadGoogleFonts === true ) {
-		const headconfig = {
-			google: {
-				families: [
-					headFontFamily +
-						( headFontWeight ? ':' + headFontWeight : '' ),
-				],
-			},
-		};
-
-		loadHeadGoogleFonts = (
-			<WebfontLoader config={ headconfig }></WebfontLoader>
-		);
-	}
-
-	if ( subHeadLoadGoogleFonts === true ) {
-		const subHeadconfig = {
-			google: {
-				families: [
-					subHeadFontFamily +
-						( subHeadFontWeight ? ':' + subHeadFontWeight : '' ),
-				],
-			},
-		};
-
-		loadSubHeadGoogleFonts = (
-			<WebfontLoader config={ subHeadconfig }></WebfontLoader>
-		);
-	}
-
-	if ( dateLoadGoogleFonts === true ) {
-		const dateconfig = {
-			google: {
-				families: [
-					dateFontFamily +
-						( dateFontWeight ? ':' + dateFontWeight : '' ),
-				],
-			},
-		};
-
-		loadDateGoogleFonts = (
-			<WebfontLoader config={ dateconfig }></WebfontLoader>
-		);
-	}
-
-	if ( authorLoadGoogleFonts === true ) {
-		const authorconfig = {
-			google: {
-				families: [
-					authorFontFamily +
-						( authorFontWeight ? ':' + authorFontWeight : '' ),
-				],
-			},
-		};
-
-		loadAuthorGoogleFonts = (
-			<WebfontLoader config={ authorconfig }></WebfontLoader>
-		);
-	}
-
-	if ( ctaLoadGoogleFonts === true ) {
-		const ctaconfig = {
-			google: {
-				families: [
-					ctaFontFamily +
-						( ctaFontWeight ? ':' + ctaFontWeight : '' ),
-				],
-			},
-		};
-
-		loadCtaGoogleFonts = (
-			<WebfontLoader config={ ctaconfig }></WebfontLoader>
-		);
 	}
 
 	const today = new Date();
@@ -2003,12 +1921,7 @@ const Settings = ( props ) => {
 						parentProps={ props }
 					></InspectorTab>
 				</InspectorTabs>
-			</InspectorControls>
-			{ loadHeadGoogleFonts }
-			{ loadSubHeadGoogleFonts }
-			{ loadDateGoogleFonts }
-			{ loadAuthorGoogleFonts }
-			{ loadCtaGoogleFonts }
+			</InspectorControls>			
 		</>
 	);
 };
