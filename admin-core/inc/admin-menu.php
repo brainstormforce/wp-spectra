@@ -132,7 +132,7 @@ class Admin_Menu {
 			$menu_slug,
 			array( $this, 'render' ),
 			$icon,
-			6
+			3
 		);
 
 		add_submenu_page(
