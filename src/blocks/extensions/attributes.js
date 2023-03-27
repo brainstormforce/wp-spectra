@@ -1,5 +1,6 @@
 const { enableMasonryGallery } = uagb_blocks_info;
 import { addFilter } from '@wordpress/hooks';
+import AnimationAttributes from '@Blocks/extensions/animations-extension/attributes.js';
 
 function addAttributes( settings ) {
 
@@ -58,26 +59,7 @@ function addAttributes( settings ) {
 					type: 'boolean',
 					default: false,
 				},
-				UAGAnimationType:{
-					type: 'string',
-					default: '',
-				},
-				UAGAnimationTime:{
-					type: 'number',
-					default: 400,
-				},
-				UAGAnimationDelay:{
-					type: 'number',
-					default: 0,
-				},
-				UAGAnimationEasing:{
-					type: 'string',
-					default: 'ease',
-				},
-				UAGAnimationRepeat:{
-					type: 'boolean',
-					default: false,
-				},
+				...AnimationAttributes,
 			} );
 		}
 	}
