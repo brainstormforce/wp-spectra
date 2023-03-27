@@ -708,7 +708,7 @@ class UAGB_Post_Assets {
 		if ( 'disabled' === $this->load_gfonts_locally ) {
 
 			// Enqueue google fonts.
-			wp_enqueue_style( 'uag-google-fonts', $this->gfonts_url, array(), UAGB_VER, 'all' );
+			wp_enqueue_style( 'uag-google-fonts-' . $this->post_id, $this->gfonts_url, array(), UAGB_VER, 'all' );
 
 		} else {
 
