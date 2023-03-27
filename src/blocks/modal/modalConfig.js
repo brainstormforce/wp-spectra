@@ -63,4 +63,5 @@ export const excludeBlocks = [
 	'uagb/forms-date',
 	'uagb/forms-accept',
 	'uagb/modal',
+    'uagb/slider-child'
 ];
