@@ -5,8 +5,9 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import classnames from 'classnames';
 import { useEffect } from '@wordpress/element';
-import { AnimationList } from '@Blocks/extensions/animations-extension/animation-list';
+import { AnimationList, AnimationSelectControlObject } from '@Blocks/extensions/animations-extension/animation-list';
 const { createHigherOrderComponent } = wp.compose;
+import Select from 'react-select';
 
 const { enableConditions, enableResponsiveConditions, enableAnimationsExtension } = uagb_blocks_info;
 
@@ -342,16 +343,20 @@ const animationOptions = ( props ) => {
 
 	return(
 		<>
-			<SelectControl
-				label={ __( 'Animation Type', 'ultimate-addons-for-gutenberg' ) }
-				value={ UAGAnimationType }
-				onChange={ ( value ) => {
-					setAttributes( { UAGAnimationType: value } )
+			
+			<Select
+				placeholder={ __( 'Animation Type', 'ultimate-addons-for-gutenberg' ) }
+				onChange={ ( selection ) => {
+					setAttributes( { UAGAnimationType: selection.value } )
 					// Play animation when the animation type is changed.
 					// We pass in 'value' since the UAGAnimationType may still hold the old animation type value.
-					playAnimation( value );
+					playAnimation( selection.value );
 				} }
 				options={ AnimationList }
+				value={ ( UAGAnimationType !== '' ) ? AnimationSelectControlObject[UAGAnimationType] : AnimationSelectControlObject.none }
+				defaultValue={ ( UAGAnimationType !== '' ) ? AnimationSelectControlObject[UAGAnimationType] : AnimationSelectControlObject.none }
+				isSearchable={true}
+				className="uagb-animation-type-select"
 			/>
 
 			{/* name: we pass in the block name dynamically since this feature must be available across all Spectra blocks */}
