@@ -112,7 +112,10 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 		 */
 		public function delete_page_assets( $post_id ) {
 			$current_post_type = get_post_type( $post_id );
-			if ( 'wp_template_part' === $current_post_type ) {
+			if ( 'wp_template_part' === $current_post_type || 'wp_template' === $current_post_type ) {
+
+				// Delete all the TOC Post Meta on update of the template.
+				delete_post_meta_by_key( '_uagb_toc_options' );
 
 				$wp_upload_dir = UAGB_Helper::get_uag_upload_dir_path();
 
