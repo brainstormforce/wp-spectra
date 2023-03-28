@@ -6,6 +6,8 @@ import Render from './render';
 import { getSettings as getDateSettings } from '@wordpress/date';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import { useDeviceType } from '@Controls/getPreviewType';
+import { applyFilters } from '@wordpress/hooks';
+import WebfontLoader from '@Components/typography/fontloader';
 
 //  Import CSS.
 import './style.scss';
@@ -27,6 +29,15 @@ const UAGBCountdownEdit = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
+			digitLoadGoogleFonts,
+			digitFontFamily,
+			digitFontWeight,
+			labelLoadGoogleFonts,
+			labelFontFamily,
+			labelFontWeight,
+			separatorLoadGoogleFonts,
+			separatorFontFamily,
+			separatorFontWeight,
 		},
 		setAttributes
 	} = props;
@@ -66,8 +77,12 @@ const UAGBCountdownEdit = ( props ) => {
 			} );
 		}
 
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
+		// editorInnerblocksPreview: This attribute is used to display innerblocks preview for 'Replace with Content' mode.
+		// block_id: Assigning block_id in the attribute.
+		setAttributes( {
+			editorInnerblocksPreview: false,
+			block_id: clientId.substr( 0, 8 ),
+		} );
 	}, [] );
 
 	const countdownRef = useRef( null );
@@ -110,10 +125,63 @@ const UAGBCountdownEdit = ( props ) => {
 		deviceType
 	] );
 
+	// Load all the Google Fonts for The Countdown Block.
+	let loadDigitGoogleFonts;
+	let loadLabelGoogleFonts;
+	let loadSeparatorGoogleFonts;
+
+	if ( digitLoadGoogleFonts === true ) {
+		const digitConfig = {
+			google: {
+				families: [
+					digitFontFamily +
+						( digitFontWeight ? ':' + digitFontWeight : '' ),
+				],
+			},
+		};
+		loadDigitGoogleFonts = (
+			<WebfontLoader config={ digitConfig }></WebfontLoader>
+		);
+	}
+
+	if ( labelLoadGoogleFonts === true ) {
+		const labelConfig = {
+			google: {
+				families: [
+					labelFontFamily + ( labelFontWeight ? ':' + labelFontWeight : '' ),
+				],
+			},
+		};
+		loadLabelGoogleFonts = (
+			<WebfontLoader config={ labelConfig }></WebfontLoader>
+		);
+	}
+
+	if ( separatorLoadGoogleFonts === true ) {
+		const separatorConfig = {
+			google: {
+				families: [
+					separatorFontFamily +
+						( separatorFontWeight ? ':' + separatorFontWeight : '' ),
+				],
+			},
+		};
+		loadSeparatorGoogleFonts = (
+			<WebfontLoader config={ separatorConfig }></WebfontLoader>
+		);
+	}
+
 	return (
 		<>
+			{/* Countdown Toolbar options for Pro (Replace feature) */}
+			{ ( props.attributes.timerEndAction === 'content' ) &&
+				applyFilters( 'spectra.countdown.toolbar-hook', '', props.name )
+			}
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render countdownRef={ countdownRef } parentProps={ props } />
+			{ loadDigitGoogleFonts }
+			{ loadLabelGoogleFonts }
+			{ loadSeparatorGoogleFonts }
 		</>
 	);
 }

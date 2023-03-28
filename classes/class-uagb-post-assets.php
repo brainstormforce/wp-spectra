@@ -522,6 +522,17 @@ class UAGB_Post_Assets {
 				'mobile_breakpoint' => UAGB_MOBILE_BREAKPOINT,
 			)
 		);
+
+		wp_localize_script(
+			'uagb-countdown-js',
+			'uagb_countdown_data',
+			array(
+				'site_name_slug' => sanitize_title( get_bloginfo( 'name' ) ),
+			)
+		);
+
+		do_action( 'spectra_localize_pro_block_ajax' );
+
 	}
 
 	/**
@@ -697,7 +708,7 @@ class UAGB_Post_Assets {
 		if ( 'disabled' === $this->load_gfonts_locally ) {
 
 			// Enqueue google fonts.
-			wp_enqueue_style( 'uag-google-fonts', $this->gfonts_url, array(), UAGB_VER, 'all' );
+			wp_enqueue_style( 'uag-google-fonts-' . $this->post_id, $this->gfonts_url, array(), UAGB_VER, 'all' );
 
 		} else {
 
@@ -812,11 +823,7 @@ class UAGB_Post_Assets {
 					$id = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
 
 					if ( $id ) {
-						$content = get_post_field( 'post_content', $id );
-
-						$reusable_blocks = $this->parse_blocks( $content );
-
-						$assets = $this->get_blocks_assets( $reusable_blocks );
+						$assets = $this->get_assets_using_post_content( $id );
 
 						$this->stylesheet .= $assets['css'];
 						$this->script     .= $assets['js'];
@@ -870,7 +877,7 @@ class UAGB_Post_Assets {
 		$this->stylesheet = str_replace( '#CONTENT_WIDTH#', $content_width . 'px', $this->stylesheet );
 
 		if ( '' !== $this->script ) {
-			$this->script = 'document.addEventListener("DOMContentLoaded", function(){ ' . $this->script . ' })';
+			$this->script = 'document.addEventListener("DOMContentLoaded", function(){ ' . $this->script . ' });';
 		}
 
 		/* Update page assets */
@@ -901,7 +908,9 @@ class UAGB_Post_Assets {
 	 * @since 2.0.0
 	 */
 	public function common_function_for_assets_preparation( $post_content ) {
-		$blocks            = $this->parse_blocks( $post_content );
+
+		$blocks = $this->parse_blocks( $post_content );
+
 		$this->page_blocks = $blocks;
 
 		$enable_on_page_css_button = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_on_page_css_button', 'yes' );
@@ -949,6 +958,40 @@ class UAGB_Post_Assets {
 	}
 
 	/**
+	 * Generates ids for all wp template part.
+	 *
+	 * @param array $block the content array.
+	 * @since 2.4.1
+	 */
+	public function get_fse_template_part( $block ) {
+		$slug            = $block['attrs']['slug'];
+		$templates_parts = get_block_templates( array( 'slugs__in' => $slug ), 'wp_template_part' );
+		foreach ( $templates_parts as $templates_part ) {
+			if ( $slug === $templates_part->slug ) {
+				$id = $templates_part->wp_id;
+				return $id;
+			}
+		}
+	}
+
+	/**
+	 * Generates parse content for all blocks including reusable blocks.
+	 *
+	 * @param int $id of blocks.
+	 * @since 2.4.1
+	 */
+	public function get_assets_using_post_content( $id ) {
+
+		$content = get_post_field( 'post_content', $id );
+
+		$reusable_blocks = $this->parse_blocks( $content );
+
+		$assets = $this->get_blocks_assets( $reusable_blocks );
+
+		return $assets;
+	}
+
+	/**
 	 * Generates assets for all blocks including reusable blocks.
 	 *
 	 * @param array $blocks Blocks array.
@@ -962,14 +1005,14 @@ class UAGB_Post_Assets {
 
 		$tab_styling_css = '';
 		$mob_styling_css = '';
-
-		$js = '';
+		$block_css       = '';
+		$js              = '';
 
 		foreach ( $blocks as $i => $block ) {
 
 			if ( is_array( $block ) ) {
 
-				if ( '' === $block['blockName'] || ! isset( $block['attrs'] ) ) {
+				if ( empty( $block['blockName'] ) || ! isset( $block['attrs'] ) ) {
 					continue;
 				}
 
@@ -977,15 +1020,20 @@ class UAGB_Post_Assets {
 					$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
 
 					if ( $id ) {
-						$content = get_post_field( 'post_content', $id );
-
-						$reusable_blocks = $this->parse_blocks( $content );
-
-						$assets = $this->get_blocks_assets( $reusable_blocks );
+						$assets = $this->get_assets_using_post_content( $id );
 
 						$this->stylesheet .= $assets['css'];
 						$this->script     .= $assets['js'];
 
+					}
+				} elseif ( 'core/template-part' === $block['blockName'] ) {
+					
+					$id = $this->get_fse_template_part( $block );
+					
+					if ( $id ) {
+						$assets     = $this->get_assets_using_post_content( $id );
+						$block_css .= $assets['css'];
+						$js        .= $assets['js'];
 					}
 				} else {
 					// Add your block specif css here.
@@ -1020,7 +1068,7 @@ class UAGB_Post_Assets {
 		}
 
 		return array(
-			'css' => $desktop . $tab_styling_css . $mob_styling_css,
+			'css' => $block_css . $desktop . $tab_styling_css . $mob_styling_css,
 			'js'  => $js,
 		);
 	}

@@ -666,7 +666,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 					</ul>
 				<?php } else { ?>
 					<select class="uagb-list-dropdown-wrap" onchange="redirectToTaxonomyLink(this)">
-						<option selected value=""> -- Select -- </option>
+						<option selected value=""> -- <?php esc_html_e( 'Select', 'ultimate-addons-for-gutenberg' ); ?> -- </option>
 						<?php
 						if ( is_array( $new_categories_list ) ) {
 							foreach ( $new_categories_list as $key => $value ) {

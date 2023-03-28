@@ -167,7 +167,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 
 				if ( empty( $google_recaptcha ) || empty( $remoteip ) ) {
 
-					$errors->add( 'invalid_api', __( 'Please try logging in again to verify that you are not a robot.', 'ultimate-addons-of-gutenberg' ) );
+					$errors->add( 'invalid_api', __( 'Please try logging in again to verify that you are not a robot.', 'ultimate-addons-for-gutenberg' ) );
 					return $errors;
 
 				} else {
@@ -183,7 +183,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 					);
 					if ( is_wp_error( $google_response ) ) {
 
-						$errors->add( 'invalid_recaptcha', __( 'Please try logging in again to verify that you are not a robot.', 'ultimate-addons-of-gutenberg' ) );
+						$errors->add( 'invalid_recaptcha', __( 'Please try logging in again to verify that you are not a robot.', 'ultimate-addons-for-gutenberg' ) );
 						return $errors;
 
 					} else {

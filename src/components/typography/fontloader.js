@@ -59,6 +59,23 @@ const WebfontLoader = ( props ) => {
 			} );
 			addFont( props.config.google.families[ 0 ] );
 		}
+		const siteEditTheme = document.getElementsByClassName( 'edit-site' );
+		
+		if( siteEditTheme && siteEditTheme.length !== 0 ) {
+			
+			const desktopIframe = siteEditTheme[0].getElementsByTagName( 'iframe' )[0];
+
+			if( desktopIframe ) {
+
+				WebFont.load( {
+					...props.config,
+					loading: handleLoading,
+					active: handleActive,
+					inactive: handleInactive,
+					context: desktopIframe.contentWindow,
+				} );
+			}
+		}
 
 		const tabletPreview = document.getElementsByClassName( 'is-tablet-preview' );
 		const mobilePreview = document.getElementsByClassName( 'is-mobile-preview' );
@@ -67,16 +84,16 @@ const WebfontLoader = ( props ) => {
 
 			const preview = tabletPreview[0] || mobilePreview[0];
 
-			const iframe = preview.getElementsByTagName( 'iframe' )[0];
+			const responsiveIframe = preview.getElementsByTagName( 'iframe' )[0];
 
-			if ( iframe ) {
+			if ( responsiveIframe ) {
 
 				WebFont.load( {
 					...props.config,
 					loading: handleLoading,
 					active: handleActive,
 					inactive: handleInactive,
-					context: iframe?.contentWindow
+					context: responsiveIframe.contentWindow
 				} );
 				addFont( props.config.google.families[ 0 ] );
 			}

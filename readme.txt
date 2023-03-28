@@ -2,10 +2,10 @@
 Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
-Requires at least: 4.7
+Requires at least: 5.6
 Requires PHP: 5.6
-Tested up to: 6.1
-Stable tag: 2.4.0
+Tested up to: 6.2
+Stable tag: 2.4.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -169,6 +169,17 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 2.4.1 - MONDAY, 27th MARCH 2023 =
+* Improvement: Updated Spectra to work with WordPress 6.2 and Full Site Editing (FSE) themes.
+* Improvement: Added filter to enable/disable core responsive condition.
+* Improvement: Resolved the Spectra blocks editor spacing conflict with the Blocksy theme.
+* Fix: Image - Resolved an issue where the image caption was visible twice in the editor when caption is enabled.
+* Fix: Inline Notice - Resolved an issue where the content color and typography were not working in the editor.
+* Fix: Modal - Resolved an issue where the Info box as an inner block was not loading in the Modal when Gutenberg was activated.
+* Fix: Social Share - Optimized PHP code for legacy users causing an error due `array_merge()` parameter issues.
+* Fix: Taxonomy List - Added the missing translation for the Select string in the PHP code.
+* Fix: Post Grid - Resolved an issue where pagination was not visible inside the editor.
 
 = 2.4.0 - WEDNESDAY, 15th MARCH 2023 =
 * New: Introducing the Countdown block that will help you generate hype and create a sense of urgency among your audience, during product sales or releases!

@@ -7,6 +7,7 @@ import { useEffect } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
+import WebfontLoader from '@Components/typography/fontloader';
 
 
 import Settings from './settings';
@@ -19,7 +20,20 @@ const UAGBTeam = ( props ) => {
 		isSelected,
 		setAttributes,
 		attributes,
-		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
+		attributes: { 
+			UAGHideDesktop, 
+			UAGHideTab, 
+			UAGHideMob,
+			titleLoadGoogleFonts,
+			titleFontFamily,
+			titleFontWeight,
+			prefixLoadGoogleFonts,
+			prefixFontFamily,
+			prefixFontWeight,
+			descLoadGoogleFonts,
+			descFontFamily,
+			descFontWeight
+		 },
 		clientId,
 	} = props;
 	
@@ -48,10 +62,62 @@ const UAGBTeam = ( props ) => {
 
 	}, [] );
 
+	let loadTitleGoogleFonts;
+	let loadPrefixGoogleFonts;
+	let loadDescGoogleFonts;
+
+	if ( titleLoadGoogleFonts === true ) {
+		const tconfig = {
+			google: {
+				families: [
+					titleFontFamily +
+						( titleFontWeight ? ':' + titleFontWeight : '' ),
+				],
+			},
+		};
+
+		loadTitleGoogleFonts = (
+			<WebfontLoader config={ tconfig }></WebfontLoader>
+		);
+	}
+
+	if ( prefixLoadGoogleFonts === true ) {
+		const pconfig = {
+			google: {
+				families: [
+					prefixFontFamily +
+						( prefixFontWeight ? ':' + prefixFontWeight : '' ),
+				],
+			},
+		};
+
+		loadPrefixGoogleFonts = (
+			<WebfontLoader config={ pconfig }></WebfontLoader>
+		);
+	}
+
+	if ( descLoadGoogleFonts === true ) {
+		const dconfig = {
+			google: {
+				families: [
+					descFontFamily +
+						( descFontWeight ? ':' + descFontWeight : '' ),
+				],
+			},
+		};
+
+		loadDescGoogleFonts = (
+			<WebfontLoader config={ dconfig }></WebfontLoader>
+		);
+	}
+
 	return (
 		<>
 		{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
+			{ loadTitleGoogleFonts }
+			{ loadPrefixGoogleFonts }
+			{ loadDescGoogleFonts }
 		</>
 	);
 };

@@ -1,7 +1,5 @@
 // Import all of our Text Options requirements.
 import TypographyControl from '@Components/typography';
-// Import Web font loader for google fonts.
-import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
 import { Icon, ToggleControl } from '@wordpress/components';
@@ -106,22 +104,6 @@ const Settings = ( props ) => {
 			starPositionMobile
 		},
 	} = props;
-
-	let loadTitleGoogleFonts;
-
-	if ( loadGoogleFonts === true ) {
-		const hconfig = {
-			google: {
-				families: [
-					fontFamily + ( fontWeight ? ':' + fontWeight : '' ),
-				],
-			},
-		};
-
-		loadTitleGoogleFonts = (
-			<WebfontLoader config={ hconfig }></WebfontLoader>
-		);
-	}
 
 	let alignmentOptions = [
 		{
@@ -671,7 +653,6 @@ const Settings = ( props ) => {
 					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			{ loadTitleGoogleFonts }
 		</>
 	);
 };
