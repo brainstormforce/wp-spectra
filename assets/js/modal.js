@@ -61,10 +61,8 @@ window.UAGBModal = {
 							e.preventDefault();
 							if ( typeof innerModal !== 'undefined' && ! innerModal.classList.contains( 'active' ) ) {
 								innerModal.classList.add( 'active' );
-								if ( typeof bodyWrap !== 'undefined' && ! bodyWrap.classList.contains( 'hide-scroll' ) ) {
-									if ( siteEditTheme?.length === 0 ) {
-										bodyWrap.classList.add( 'hide-scroll' );
-									}
+								if ( typeof bodyWrap !== 'undefined' && ! bodyWrap.classList.contains( 'hide-scroll' ) && siteEditTheme?.length === 0 && ! bodyWrap.classList.contains( 'wp-admin' ) ) {
+									bodyWrap.classList.add( 'hide-scroll' );
 								}
 							}
 						}
