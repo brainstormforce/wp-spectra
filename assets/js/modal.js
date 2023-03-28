@@ -62,7 +62,9 @@ window.UAGBModal = {
 							if ( typeof innerModal !== 'undefined' && ! innerModal.classList.contains( 'active' ) ) {
 								innerModal.classList.add( 'active' );
 								if ( typeof bodyWrap !== 'undefined' && ! bodyWrap.classList.contains( 'hide-scroll' ) ) {
-									bodyWrap.classList.add( 'hide-scroll' );
+									if ( siteEditTheme?.length === 0 ) {
+										bodyWrap.classList.add( 'hide-scroll' );
+									}
 								}
 							}
 						}
