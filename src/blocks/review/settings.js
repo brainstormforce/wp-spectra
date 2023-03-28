@@ -1,5 +1,4 @@
 import TypographyControl from '@Components/typography';
-import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 import {
 	InspectorControls,
@@ -203,55 +202,6 @@ const Settings = ( props ) => {
 	const onRemoveImage = () => {
 		setAttributes( { mainimage: '' } );
 	};
-
-	let loadContentGoogleFonts;
-	let loadHeadingGoogleFonts;
-	let loadSubHeadingGoogleFonts;
-
-	if ( headLoadGoogleFonts === true ) {
-		const hconfig = {
-			google: {
-				families: [
-					headFontFamily +
-						( headFontWeight ? ':' + headFontWeight : '' ),
-				],
-			},
-		};
-
-		loadHeadingGoogleFonts = (
-			<WebfontLoader config={ hconfig }></WebfontLoader>
-		);
-	}
-
-	if ( subHeadLoadGoogleFonts === true ) {
-		const sconfig = {
-			google: {
-				families: [
-					subHeadFontFamily +
-						( subHeadFontWeight ? ':' + subHeadFontWeight : '' ),
-				],
-			},
-		};
-
-		loadSubHeadingGoogleFonts = (
-			<WebfontLoader config={ sconfig }></WebfontLoader>
-		);
-	}
-
-	if ( contentLoadGoogleFonts === true ) {
-		const cconfig = {
-			google: {
-				families: [
-					contentFontFamily +
-						( contentFontWeight ? ':' + contentFontWeight : '' ),
-				],
-			},
-		};
-
-		loadContentGoogleFonts = (
-			<WebfontLoader config={ cconfig }></WebfontLoader>
-		);
-	}
 
 	const toggleTarget = () => {
 		setAttributes( { ctaTarget: ! ctaTarget } );
@@ -1520,10 +1470,7 @@ const Settings = ( props ) => {
 						parentProps={ props }
 					></InspectorTab>
 				</InspectorTabs>
-			</InspectorControls>
-			{ loadHeadingGoogleFonts }
-			{ loadSubHeadingGoogleFonts }
-			{ loadContentGoogleFonts }
+			</InspectorControls>			
 		</>
 	);
 };

@@ -11,6 +11,7 @@ import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import WebfontLoader from '@Components/typography/fontloader';
 
 const UAGBInlineNoticeEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -19,7 +20,7 @@ const UAGBInlineNoticeEdit = ( props ) => {
 		setAttributes,
 		clientId,
 		attributes,
-		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob, titleLoadGoogleFonts, titleFontFamily, titleFontWeight, descLoadGoogleFonts, descFontFamily, descFontWeight },
 	} = props;
 	
 	useEffect( () => {
@@ -43,10 +44,45 @@ const UAGBInlineNoticeEdit = ( props ) => {
 
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
+	let loadTitleGoogleFonts;
+	let loadDescriptionGoogleFonts;
+
+	if ( true === titleLoadGoogleFonts ) {
+		const hconfig = {
+			google: {
+				families: [
+					titleFontFamily +
+						( titleFontWeight ? ':' + titleFontWeight : '' ),
+				],
+			},
+		};
+
+		loadTitleGoogleFonts = (
+			<WebfontLoader config={ hconfig }></WebfontLoader>
+		);
+	}
+
+	if ( true === descLoadGoogleFonts ) {
+		const sconfig = {
+			google: {
+				families: [
+					descFontFamily +
+						( descFontWeight ? ':' + descFontWeight : '' ),
+				],
+			},
+		};
+
+		loadDescriptionGoogleFonts = (
+			<WebfontLoader config={ sconfig }></WebfontLoader>
+		);
+	}
+
 	return (
 			<>
 			{ isSelected && <Settings parentProps={ props } /> }
 				<Render parentProps={ props } />
+				{ loadTitleGoogleFonts }
+				{ loadDescriptionGoogleFonts }
 			</>
 	);
 };

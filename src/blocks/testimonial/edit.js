@@ -12,6 +12,7 @@ import scrollBlockToView from '@Controls/scrollBlockToView';
 import hexToRGBA from '@Controls/hexToRgba';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
+import WebfontLoader from '@Components/typography/fontloader';
 
 const UAGBtestimonial = ( props ) => {
 	const deviceType = useDeviceType();
@@ -39,6 +40,15 @@ const UAGBtestimonial = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
+			nameLoadGoogleFonts,
+			nameFontFamily,
+			nameFontWeight,
+			companyLoadGoogleFonts,
+			companyFontFamily,
+			companyFontWeight,
+			descLoadGoogleFonts,
+			descFontFamily,
+			descFontWeight
 		},
 		isSelected,
 		clientId,
@@ -119,10 +129,62 @@ const UAGBtestimonial = ( props ) => {
 		scrollBlockToView();
 	}, [deviceType] );
 
+	let loadNameGoogleFonts;
+	let loadCompanyGoogleFonts;
+	let loadDescGoogleFonts;
+
+	if ( nameLoadGoogleFonts === true ) {
+		const nameconfig = {
+			google: {
+				families: [
+					nameFontFamily +
+						( nameFontWeight ? ':' + nameFontWeight : '' ),
+				],
+			},
+		};
+
+		loadNameGoogleFonts = (
+			<WebfontLoader config={ nameconfig }></WebfontLoader>
+		);
+	}
+
+	if ( companyLoadGoogleFonts === true ) {
+		const companyconfig = {
+			google: {
+				families: [
+					companyFontFamily +
+						( companyFontWeight ? ':' + companyFontWeight : '' ),
+				],
+			},
+		};
+
+		loadCompanyGoogleFonts = (
+			<WebfontLoader config={ companyconfig }></WebfontLoader>
+		);
+	}
+
+	if ( descLoadGoogleFonts === true ) {
+		const descconfig = {
+			google: {
+				families: [
+					descFontFamily +
+						( descFontWeight ? ':' + descFontWeight : '' ),
+				],
+			},
+		};
+
+		loadDescGoogleFonts = (
+			<WebfontLoader config={ descconfig }></WebfontLoader>
+		);
+	}
+
 	return (
 		<>
 		{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
+			{ loadNameGoogleFonts }
+			{ loadCompanyGoogleFonts }
+			{ loadDescGoogleFonts }
 		</>
 	);
 };

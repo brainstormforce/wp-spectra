@@ -4,7 +4,6 @@
 import { memo } from '@wordpress/element';
 import UAGIconPicker from '@Components/icon-picker';
 import TypographyControl from '@Components/typography';
-import WebfontLoader from '@Components/typography/fontloader';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -1333,54 +1332,6 @@ const Settings = ( props ) => {
 		);
 	};
 
-	let loadHeadGoogleFonts;
-	let loadSubHeadGoogleFonts;
-	let loadDateGoogleFonts;
-
-	if ( headLoadGoogleFonts === true ) {
-		const headconfig = {
-			google: {
-				families: [
-					headFontFamily +
-						( headFontWeight ? ':' + headFontWeight : '' ),
-				],
-			},
-		};
-
-		loadHeadGoogleFonts = (
-			<WebfontLoader config={ headconfig }></WebfontLoader>
-		);
-	}
-
-	if ( subHeadLoadGoogleFonts === true ) {
-		const subHeadconfig = {
-			google: {
-				families: [
-					subHeadFontFamily +
-						( subHeadFontWeight ? ':' + subHeadFontWeight : '' ),
-				],
-			},
-		};
-
-		loadSubHeadGoogleFonts = (
-			<WebfontLoader config={ subHeadconfig }></WebfontLoader>
-		);
-	}
-
-	if ( dateLoadGoogleFonts === true ) {
-		const dateconfig = {
-			google: {
-				families: [
-					dateFontFamily +
-						( dateFontWeight ? ':' + dateFontWeight : '' ),
-				],
-			},
-		};
-
-		loadDateGoogleFonts = (
-			<WebfontLoader config={ dateconfig }></WebfontLoader>
-		);
-	}
 	return (
 		<>
 			<InspectorControls>
@@ -1402,9 +1353,6 @@ const Settings = ( props ) => {
 					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			{ loadHeadGoogleFonts }
-			{ loadSubHeadGoogleFonts }
-			{ loadDateGoogleFonts }
 		</>
 	);
 };

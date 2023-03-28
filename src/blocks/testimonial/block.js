@@ -12,8 +12,12 @@ import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let testimonialCommonData = {};
+testimonialCommonData = applyFilters( 'uagb/testimonial', addCommonDataToSpectraBlocks( testimonialCommonData ) );
 registerBlockType( 'uagb/testimonial', {
+	...testimonialCommonData,
 	title: __( 'Testimonials', 'ultimate-addons-for-gutenberg' ), // Block title.
 	description: __( 'Display customer testimonials in customizable layouts.', 'ultimate-addons-for-gutenberg' ), // Block description.
 	icon: UAGB_Block_Icons.testimonial, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
@@ -24,8 +28,8 @@ registerBlockType( 'uagb/testimonial', {
 	supports: {
 		anchor: true,
 	},
-	category: uagb_blocks_info.category,
 	attributes,
+category: uagb_blocks_info.category,
 	edit: ( props ) =>
 			props.attributes.isPreview ? (
 				<PreviewImage image="testimonial" />
@@ -33,10 +37,5 @@ registerBlockType( 'uagb/testimonial', {
 				<Edit { ...props } />
 			),
 	save,
-	example: {
-		attributes: {
-			isPreview: true,
-		}
-	},
 	deprecated,
 } );

@@ -15,23 +15,22 @@ import { __ } from '@wordpress/i18n';
 // Register block controls
 import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let taxonomyListCommonData = {};
+taxonomyListCommonData = applyFilters( 'uagb/taxonomy-list', addCommonDataToSpectraBlocks( taxonomyListCommonData ) );
 // Register the block
 registerBlockType( 'uagb/taxonomy-list', {
+	...taxonomyListCommonData,
 	title: __( 'Taxonomy List', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Display your content categorized as per post type.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.taxonomy_list,
-	category: uagb_blocks_info.category,
 	keywords: [
 		__( 'post', 'ultimate-addons-for-gutenberg' ),
 		__( 'taxonomy', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
-	example: {
-		attributes: {
-			isPreview: true,
-		}
-	},
+	category: uagb_blocks_info.category,
 	edit: ( props ) =>
 			props.attributes.isPreview ? (
 				<PreviewImage image="taxonomy-list" />

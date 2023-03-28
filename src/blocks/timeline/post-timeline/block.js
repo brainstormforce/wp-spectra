@@ -13,23 +13,22 @@ import { registerBlockType } from '@wordpress/blocks';
 
 export const name = 'core/latest-posts';
 import PreviewImage from '@Controls/previewImage';
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let postTimelineCommonData = {};
+postTimelineCommonData = applyFilters( 'uagb/post-timeline', addCommonDataToSpectraBlocks( postTimelineCommonData ) );
 // Register the block.
 registerBlockType( 'uagb/post-timeline', {
+	...postTimelineCommonData,
 	title: __( 'Post Timeline', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Create an attractive timeline to display your posts.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.post_timeline,
-	category: uagb_blocks_info.category,
 	keywords: [
 		__( 'post', 'ultimate-addons-for-gutenberg' ),
 		__( 'timeline', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
-	example: {
-		attributes: {
-			isPreview: true,
-		}
-	},
+	category: uagb_blocks_info.category,
 	edit: ( props ) =>
 			props.attributes.isPreview ? (
 				<PreviewImage image="post-timeline" />

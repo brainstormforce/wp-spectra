@@ -13,22 +13,22 @@ import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let formsCommonData = {};
+formsCommonData = applyFilters( 'uagb/forms', addCommonDataToSpectraBlocks( formsCommonData ) );
 registerBlockType( 'uagb/forms', {
+	...formsCommonData,
 	title: __( 'Form', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add easily customizable forms to gather information.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.forms,
-	category: uagb_blocks_info.category,
+
 	keywords: [
 		__( 'forms', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
-	example: {
-		attributes: {
-			isPreview: true,
-		}
-	},
 	attributes,
+category: uagb_blocks_info.category,
 	variations,
 	edit: ( props ) =>
 		props.attributes.isPreview ? (
