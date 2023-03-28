@@ -89,6 +89,10 @@ UAGBCountdown = { // eslint-disable-line no-undef
 					this.createCookie( CampaignID, this.cache.evergreen, resetDays, 'days' );
 				}
 			}
+
+			// Ensures instantaneous load/firing of countdown functionality.
+			this.updateCountdown( mainSelector, data );
+
             this.countdownInterval[ mainSelector ] = setInterval( () => {
                 this.updateCountdown( mainSelector, data );
             }, 1000 );
@@ -102,6 +106,10 @@ UAGBCountdown = { // eslint-disable-line no-undef
 		clearInterval( this.countdownInterval[ mainSelector ] );
 
         if( typeof this.elements[ mainSelector ] !== 'undefined' ){
+
+			// Ensures instantaneous refresh of value.
+			this.updateCountdown( mainSelector, data, true, ref );
+
             this.countdownInterval[ mainSelector ] = setInterval( () => {
                 this.updateCountdown( mainSelector, data, true, ref );
             }, 1000 );
