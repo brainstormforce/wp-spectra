@@ -170,7 +170,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 2.4.1 - MONDAY, 27th MARCH 2023 =
+= 2.4.1 - TUESDAY, 28th MARCH 2023 =
 * Improvement: Updated Spectra to work with WordPress 6.2 and Full Site Editing (FSE) themes.
 * Improvement: Added filter to enable/disable core responsive condition.
 * Improvement: Resolved the Spectra blocks editor spacing conflict with the Blocksy theme.

@@ -451,9 +451,11 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 			if ( empty( $uagb_toc_heading_content ) || UAGB_ASSET_VER !== $uagb_toc_version ) {
 				global $_wp_current_template_content;
-				$content = get_post( $post->ID )->post_content;
+				// If the current template contents exist, use that - else get the content from the post ID.
 				if ( $_wp_current_template_content ) {
-					$content .= $_wp_current_template_content;
+					$content = $_wp_current_template_content;
+				} else {
+					$content = get_post( $post->ID )->post_content;
 				}
 				$uagb_toc_heading_content          = $this->table_of_contents_get_headings_from_content( $content );
 				$blocks                            = parse_blocks( $content );
