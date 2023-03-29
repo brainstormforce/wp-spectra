@@ -11,8 +11,16 @@ import { RichText } from '@wordpress/block-editor';
 export default function save( props ) {
 	const { attributes, className } = props;
 
-	const { block_id, noticeTitle, noticeContent, noticeAlignment, headingTag, icon, noticeDismiss, cookies } =
-		attributes;
+	const {
+		block_id,
+		noticeTitle,
+		noticeContent,
+		noticeAlignment,
+		headingTag,
+		icon,
+		noticeDismiss,
+		cookies,
+	} = attributes;
 
 	let imageIconHtml = '';
 

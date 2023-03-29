@@ -5,8 +5,16 @@
 import generateCSS from '@Controls/generateCSS';
 
 function styling( props ) {
-	const { width, widthTablet, widthMob, height, heightTablet, heightMob, backgroundColor, backgroundHColor } =
-		props.attributes;
+	const {
+		width,
+		widthTablet,
+		widthMob,
+		height,
+		heightTablet,
+		heightMob,
+		backgroundColor,
+		backgroundHColor,
+	} = props.attributes;
 
 	const widthFallback = isNaN( width ) ? 'auto' : `${ width }px`;
 	const heightFallback = isNaN( height ) ? 'auto' : `${ height }px`;

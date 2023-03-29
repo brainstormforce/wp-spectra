@@ -270,14 +270,16 @@ function styling( props ) {
 	};
 
 	if ( 'modern' === layout ) {
-		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-title' ][ 'background-color' ] =
-			noticeColor;
+		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-title' ][
+			'background-color'
+		] = noticeColor;
 		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-title' ][ 'border-top-right-radius' ] =
 			'3px';
 		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-title' ][ 'border-top-left-radius' ] =
 			'3px';
-		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-text' ][ 'background-color' ] =
-			contentBgColor;
+		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-text' ][
+			'background-color'
+		] = contentBgColor;
 		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-text' ].border =
 			'2px solid ' + noticeColor;
 		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-text' ][ 'border-bottom-left-radius' ] =
@@ -294,12 +296,14 @@ function styling( props ) {
 			'left': generateCSSUnit( posLeftMob, posLeftUnitMob ),
 		};
 	} else if ( 'simple' === layout ) {
-		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-title' ][ 'background-color' ] =
-			contentBgColor;
+		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-title' ][
+			'background-color'
+		] = contentBgColor;
 		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-title' ][ 'border-left' ] =
 			generateCSSUnit( highlightWidthFallback, 'px' ) + ' solid ' + noticeColor;
-		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-text' ][ 'background-color' ] =
-			contentBgColor;
+		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-text' ][
+			'background-color'
+		] = contentBgColor;
 		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-text' ][ 'border-left' ] =
 			generateCSSUnit( highlightWidthFallback, 'px' ) + ' solid ' + noticeColor;
 		mobileSelectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-text' ][ 'border-left' ] =
