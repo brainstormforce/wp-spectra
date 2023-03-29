@@ -39,6 +39,7 @@ const setInitialState = ( store ) => {
 			enableAutoBlockRecovery: data.uag_auto_block_recovery,
 			enableLegacyBlocks: data.uag_enable_legacy_blocks,
 			social: data.social,
+            instaLinkedAccounts: data?.insta_linked_accounts,
             coreBlocks: data.spectra_core_blocks,
         };
 

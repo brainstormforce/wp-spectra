@@ -11,6 +11,7 @@ import { select } from '@wordpress/data';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGReset from '../reset';
 import UAGHelpText from '@Components/help-text';
+import { applyFilters } from '@wordpress/hooks';
 
 const SpacingControl = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -53,7 +54,8 @@ const SpacingControl = ( props ) => {
 		valueTopMobile,
 		link,
 		setAttributes,
-		help = false
+		help = false,
+		min = -50
 	} = props;
 
 	const onChangeUnits = ( value ) => {
@@ -358,24 +360,28 @@ const SpacingControl = ( props ) => {
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
+					min={ min }
 					onChange={ ( e ) => onChangeTopValue( e, 'desktop' ) }
 					value={ ( undefined !== valueTop.value ) ? valueTop.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
+					min={ min }
 					onChange={ ( e ) => onChangeRightValue( e, 'desktop' ) }
 					value={ ( undefined !== valueRight.value ) ? valueRight.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
+					min={ min }
 					onChange={ ( e ) => onChangeBottomValue( e, 'desktop' ) }
 					value={ ( undefined !== valueBottom.value ) ? valueBottom.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
+					min={ min }
 					onChange={ ( e ) => onChangeLeftValue( e, 'desktop' ) }
 					value={ ( undefined !== valueLeft.value ) ? valueLeft.value : '' }
 				/>
@@ -389,24 +395,28 @@ const SpacingControl = ( props ) => {
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
+					min={ min }
 					onChange={ ( e ) => onChangeTopValue( e, 'tablet' ) }
 					value={ ( undefined !== valueTopTablet.value ) ? valueTopTablet.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
+					min={ min }
 					onChange={ ( e ) => onChangeRightValue( e, 'tablet' ) }
 					value={ ( undefined !== valueRightTablet.value ) ? valueRightTablet.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
+					min={ min }
 					onChange={ ( e ) => onChangeBottomValue( e, 'tablet' ) }
 					value={ ( undefined !== valueBottomTablet.value ) ? valueBottomTablet.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
+					min={ min }
 					onChange={ ( e ) => onChangeLeftValue( e, 'tablet' ) }
 					value={ ( undefined !== valueLeftTablet.value ) ? valueLeftTablet.value : '' }
 				/>
@@ -420,24 +430,28 @@ const SpacingControl = ( props ) => {
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
+					min={ min }
 					onChange={ ( e ) => onChangeTopValue( e, 'mobile' ) }
 					value={ ( undefined !== valueTopMobile.value ) ? valueTopMobile.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
+					min={ min }
 					onChange={ ( e ) => onChangeRightValue( e, 'mobile' ) }
 					value={ ( undefined !== valueRightMobile.value ) ? valueRightMobile.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
+					min={ min }
 					onChange={ ( e ) => onChangeBottomValue( e, 'mobile' ) }
 					value={ ( undefined !== valueBottomMobile.value ) ? valueBottomMobile.value : '' }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
+					min={ min }
 					onChange={ ( e ) => onChangeLeftValue( e, 'mobile' ) }
 					value={ ( undefined !== valueLeftMobile.value ) ? valueLeftMobile.value : '' }
 				/>
@@ -475,8 +489,8 @@ const SpacingControl = ( props ) => {
 	};
 
 	const controlName = getIdFromString( props.label );
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	return (
 		<div

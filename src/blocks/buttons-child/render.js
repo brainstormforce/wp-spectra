@@ -51,7 +51,7 @@ const Render = ( props ) => {
 		if( ! removeText ){
 			return <RichText
 						placeholder={ __( 'Add text…' ) }
-						value={ label.replace( /(<([^>]+)>)/ig, '' ) }
+						value={ label.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
 						tagName="div"
 						onChange={ ( value ) => {
 							setAttributes( { label: value } );

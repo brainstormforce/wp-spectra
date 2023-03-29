@@ -10,8 +10,6 @@ import {
 	MediaReplaceFlow,
 	store as blockEditorStore,
 	__experimentalImageEditor as ImageEditor,
-	__experimentalGetElementClassName,
-	RichText
 } from '@wordpress/block-editor';
 import { useMemo, useEffect, useState, useRef } from '@wordpress/element';
 import { __, sprintf, isRTL } from '@wordpress/i18n';
@@ -358,18 +356,6 @@ export default function Image( {
 			which causes duplicated image upload. */ }
 			{ ! temporaryURL && controls }
 			{ img }
-			<RichText
-				identifier="caption"
-				className={ __experimentalGetElementClassName(
-					'caption'
-				) }
-				tagName="figcaption"
-				aria-label={ __( 'Image caption text' , 'ultimate-addons-for-gutenberg' ) }
-				onChange={ ( value ) =>
-					setAttributes( { caption: value } )
-				}
-				inlineToolbar
-			/>
 		</>
 	);
 }

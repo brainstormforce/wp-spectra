@@ -55,7 +55,7 @@ if ( ! class_exists( 'UAGB_Block' ) ) {
 			$block_data = array();
 
 			include $block_file;
-
+			
 			if ( ! empty( $block_slug ) && ! empty( $block_data ) ) {
 				self::$blocks[ $block_slug ] = apply_filters( "spectra_{$block_slug}_blockdata", $block_data );
 			}

@@ -281,7 +281,7 @@ function styling( props ) {
 		 // Need This for All
 		 ' .uagb-iconbox-icon-wrap': {
 			 'margin' : 'auto',
-			 'display' : 'flex',
+			 'display' : 'inline-flex',
 			 'align-items' : 'center',
 			 'justify-content': 'center',
 			 'box-sizing': 'content-box',
@@ -1028,7 +1028,7 @@ function styling( props ) {
 	 mobileSelectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSSMobile;
 	 tabletSelectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSSTablet;
 
-	 const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
+	 const id = `.editor-styles-wrapper #block-${ props.clientId } .uagb-block-${ props.clientId.substr(
 		 0,
 		 8
 	 ) }`;

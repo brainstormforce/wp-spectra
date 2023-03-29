@@ -26,9 +26,7 @@ const InfoBoxCta = ( props ) => {
 					<a // eslint-disable-line jsx-a11y/anchor-is-valid
 						target={ target }
 						className={ 'uagb-infobox-cta-link' }
-						onClick={ ( '' === attributes.ctaLink || '#' === attributes.ctaLink ) ? 'return false;' : 'return true;'}
 						rel={ rel }
-						href='/'
 					>
 						{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
 							<RichText
@@ -37,7 +35,7 @@ const InfoBoxCta = ( props ) => {
 									'Read More',
 									'ultimate-addons-for-gutenberg'
 								) }
-								value={ attributes.ctaText.replace( /(<([^>]+)>)/ig, '' ) }
+								value={ attributes.ctaText.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
 								className="uagb-inline-editing"
 								multiline={ false }
 								onChange={ ( value ) => {
@@ -60,8 +58,6 @@ const InfoBoxCta = ( props ) => {
 							className={ctaBtnClass }	
 							target={ target }
 							rel={ rel }
-							href = '/'
-							onClick={ ( '' === attributes.ctaLink || '#' === attributes.ctaLink ) ? 'return false;' : 'return true;'}
 						>
 
 							{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
@@ -71,7 +67,7 @@ const InfoBoxCta = ( props ) => {
 									'Read More',
 									'ultimate-addons-for-gutenberg'
 								) }
-								value={ attributes.ctaText.replace( /(<([^>]+)>)/ig, '' ) }
+								value={ attributes.ctaText.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
 								className="uagb-inline-editing"
 								multiline={ false }
 								onChange={ ( value ) => {
@@ -101,7 +97,7 @@ const InfoBoxCta = ( props ) => {
 							{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
 							<RichText.Content
 								tagName="span"
-								value={ attributes.ctaText.replace( /(<([^>]+)>)/ig, '' ) }
+								value={ attributes.ctaText.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
 								className="uagb-inline-editing"
 							/>
 							{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
@@ -119,7 +115,7 @@ const InfoBoxCta = ( props ) => {
 							{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
 							<RichText.Content
 								tagName="span"
-								value={ attributes.ctaText.replace( /(<([^>]+)>)/ig, '' ) }
+								value={ attributes.ctaText.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
 								className="uagb-inline-editing"
 							/>
 							{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
