@@ -10,8 +10,12 @@
  import { __ } from '@wordpress/i18n';
  import { registerBlockType } from '@wordpress/blocks';
  import PreviewImage from '@Controls/previewImage';
-
+ import { applyFilters } from '@wordpress/hooks';
+ import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+ let sliderCommonData = {};
+ sliderCommonData = applyFilters( 'uagb/slider', addCommonDataToSpectraBlocks( sliderCommonData ) );
  registerBlockType( 'uagb/slider', {
+	...sliderCommonData,
      apiVersion: 2,
      title: __( 'Slider', 'ultimate-addons-for-gutenberg' ),
      description: __(
@@ -27,13 +31,8 @@
      supports: {
          anchor: true,
      },
-     category: uagb_blocks_info.category,
      attributes,
-     example: {
-         attributes: {
-             isPreview: true,
-         }
-     },
+category: uagb_blocks_info.category,
      edit: ( props ) =>
 			props.attributes.isPreview ? (
 				<PreviewImage image="slider" />

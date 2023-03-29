@@ -8,7 +8,6 @@ import TypographyControl from '@Components/typography';
 import SpacingControl from '@Components/spacing-control';
 import { useDeviceType } from '@Controls/getPreviewType';
 import ResponsiveBorder from '@Components/responsive-border';
-import WebfontLoader from '@Components/typography/fontloader';
 import renderSVG from '@Controls/renderIcon';
 import renderCustomIcon from '@Controls/renderCustomIcon';
 import UAGPresets from '@Components/presets';
@@ -195,6 +194,7 @@ function Settings( props ) {
 			boxBgType,
 			boxBgColor,
 			// Box - Box Shadow.
+			useSeparateBoxShadows,
 			boxShadowColor,
 			boxShadowHOffset,
 			boxShadowVOffset,
@@ -310,56 +310,6 @@ function Settings( props ) {
 		},
 	];
 
-	// <------------------ GOOGLE FONTS ------------------>
-	// Loading Google Fonts.
-	let loadDigitGoogleFonts;
-	let loadLabelGoogleFonts;
-	let loadSeparatorGoogleFonts;
-
-	if ( digitLoadGoogleFonts === true ) {
-		const digitConfig = {
-			google: {
-				families: [
-					digitFontFamily +
-						( digitFontWeight ? ':' + digitFontWeight : '' ),
-				],
-			},
-		};
-
-		loadDigitGoogleFonts = (
-			<WebfontLoader config={ digitConfig }></WebfontLoader>
-		);
-	}
-
-	if ( labelLoadGoogleFonts === true ) {
-		const labelConfig = {
-			google: {
-				families: [
-					labelFontFamily + ( labelFontWeight ? ':' + labelFontWeight : '' ),
-				],
-			},
-		};
-
-		loadLabelGoogleFonts = (
-			<WebfontLoader config={ labelConfig }></WebfontLoader>
-		);
-	}
-
-	if ( separatorLoadGoogleFonts === true ) {
-		const separatorConfig = {
-			google: {
-				families: [
-					separatorFontFamily +
-						( separatorFontWeight ? ':' + separatorFontWeight : '' ),
-				],
-			},
-		};
-
-		loadSeparatorGoogleFonts = (
-			<WebfontLoader config={ separatorConfig }></WebfontLoader>
-		);
-	}
-
 	// This is to fetch the local system's offset from UTC and helps the user know their offset from 00:00UTC.
 
 	const { timezone } = getDateSettings();
@@ -370,7 +320,7 @@ function Settings( props ) {
 			title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
-			{ timerType && 
+			{ ( timerType && 'evergreen' !== timerType ) && 
 				<div className='uagb-countdown__datetime-picker'>
 					<div><h2>{ __( 'Timer End Date & Time', 'ultimate-addons-for-gutenberg' ) }</h2></div>
 					<DateTimePicker
@@ -1190,138 +1140,199 @@ function Settings( props ) {
 			title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
-
-			<UAGTabsControl
-				tabs={ [
-					{
-						name: 'normal',
-						title: __(
-							'Normal',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						name: 'hover',
-						title: __(
-							'Hover',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-				] }
-				normal={
-					<>
-						<UAGPresets
-							setAttributes = { setAttributes }
-							presets = { boxShadowPresets }
-							presetInputType = 'radioImage'
-						/>
-						<BoxShadowControl
-							blockId={ block_id }
-							setAttributes={ setAttributes }
-							label={ __(
-								'Box Shadow',
-								'ultimate-addons-for-gutenberg'
-							) }
-							boxShadowColor={ {
-								value: boxShadowColor,
-								label: 'boxShadowColor',
-								title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-							} }
-							boxShadowHOffset={ {
-								value: boxShadowHOffset,
-								label: 'boxShadowHOffset',
-								title: __(
-									'Horizontal',
-									'ultimate-addons-for-gutenberg'
-								),
-							} }
-							boxShadowVOffset={ {
-								value: boxShadowVOffset,
-								label: 'boxShadowVOffset',
-								title: __(
-									'Vertical',
-									'ultimate-addons-for-gutenberg'
-								),
-							} }
-							boxShadowBlur={ {
-								value: boxShadowBlur,
-								label: 'boxShadowBlur',
-								title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
-							} }
-							boxShadowSpread={ {
-								value: boxShadowSpread,
-								label: 'boxShadowSpread',
-								title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
-							} }
-							boxShadowPosition={ {
-								value: boxShadowPosition,
-								label: 'boxShadowPosition',
-								title: __(
-									'Position',
-									'ultimate-addons-for-gutenberg'
-								),
-							} }
-						/>
-					</>
-				}
-				hover={
-					<>
-						<UAGPresets
-							setAttributes = { setAttributes }
-							presets = { boxShadowHoverPresets }
-							presetInputType = 'radioImage'
-						/>
-						<BoxShadowControl
-							blockId={ block_id }
-							setAttributes={ setAttributes }
-							label={ __(
-								'Box Shadow',
-								'ultimate-addons-for-gutenberg'
-							) }
-							boxShadowColor={ {
-								value: boxShadowColorHover,
-								label: 'boxShadowColorHover',
-								title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-							} }
-							boxShadowHOffset={ {
-								value: boxShadowHOffsetHover,
-								label: 'boxShadowHOffsetHover',
-								title: __(
-									'Horizontal',
-									'ultimate-addons-for-gutenberg'
-								),
-							} }
-							boxShadowVOffset={ {
-								value: boxShadowVOffsetHover,
-								label: 'boxShadowVOffsetHover',
-								title: __(
-									'Vertical',
-									'ultimate-addons-for-gutenberg'
-								),
-							} }
-							boxShadowBlur={ {
-								value: boxShadowBlurHover,
-								label: 'boxShadowBlurHover',
-								title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
-							} }
-							boxShadowSpread={ {
-								value: boxShadowSpreadHover,
-								label: 'boxShadowSpreadHover',
-								title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
-							} }
-							boxShadowPosition={ {
-								value: boxShadowPositionHover,
-								label: 'boxShadowPositionHover',
-								title: __(
-									'Position',
-									'ultimate-addons-for-gutenberg'
-								),
-							} }
-						/>
-					</>
-				}
-				disableBottomSeparator={ true }
+			<ToggleControl
+				label={ __( 'Separate Hover Shadow', 'ultimate-addons-for-gutenberg' ) }
+				checked={ useSeparateBoxShadows }
+				onChange={ () => setAttributes( { useSeparateBoxShadows: ! useSeparateBoxShadows } ) }
 			/>
+			{ useSeparateBoxShadows ? (
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<>
+							<UAGPresets
+								setAttributes = { setAttributes }
+								presets = { boxShadowPresets }
+								presetInputType = 'radioImage'
+							/>
+							<BoxShadowControl
+								blockId={ block_id }
+								setAttributes={ setAttributes }
+								label={ __(
+									'Box Shadow',
+									'ultimate-addons-for-gutenberg'
+								) }
+								boxShadowColor={ {
+									value: boxShadowColor,
+									label: 'boxShadowColor',
+									title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowHOffset={ {
+									value: boxShadowHOffset,
+									label: 'boxShadowHOffset',
+									title: __(
+										'Horizontal',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowVOffset={ {
+									value: boxShadowVOffset,
+									label: 'boxShadowVOffset',
+									title: __(
+										'Vertical',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowBlur={ {
+									value: boxShadowBlur,
+									label: 'boxShadowBlur',
+									title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowSpread={ {
+									value: boxShadowSpread,
+									label: 'boxShadowSpread',
+									title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowPosition={ {
+									value: boxShadowPosition,
+									label: 'boxShadowPosition',
+									title: __(
+										'Position',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+							/>
+						</>
+					}
+					hover={
+						<>
+							<UAGPresets
+								setAttributes = { setAttributes }
+								presets = { boxShadowHoverPresets }
+								presetInputType = 'radioImage'
+							/>
+							<BoxShadowControl
+								blockId={ block_id }
+								setAttributes={ setAttributes }
+								label={ __(
+									'Box Shadow',
+									'ultimate-addons-for-gutenberg'
+								) }
+								boxShadowColor={ {
+									value: boxShadowColorHover,
+									label: 'boxShadowColorHover',
+									title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowHOffset={ {
+									value: boxShadowHOffsetHover,
+									label: 'boxShadowHOffsetHover',
+									title: __(
+										'Horizontal',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowVOffset={ {
+									value: boxShadowVOffsetHover,
+									label: 'boxShadowVOffsetHover',
+									title: __(
+										'Vertical',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowBlur={ {
+									value: boxShadowBlurHover,
+									label: 'boxShadowBlurHover',
+									title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowSpread={ {
+									value: boxShadowSpreadHover,
+									label: 'boxShadowSpreadHover',
+									title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowPosition={ {
+									value: boxShadowPositionHover,
+									label: 'boxShadowPositionHover',
+									title: __(
+										'Position',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+							/>
+						</>
+					}
+					disableBottomSeparator={ true }
+				/>
+			) : (
+				<>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { boxShadowPresets }
+						presetInputType = 'radioImage'
+					/>
+					<BoxShadowControl
+						blockId={ block_id }
+						setAttributes={ setAttributes }
+						label={ __(
+							'Box Shadow',
+							'ultimate-addons-for-gutenberg'
+						) }
+						boxShadowColor={ {
+							value: boxShadowColor,
+							label: 'boxShadowColor',
+							title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+						} }
+						boxShadowHOffset={ {
+							value: boxShadowHOffset,
+							label: 'boxShadowHOffset',
+							title: __(
+								'Horizontal',
+								'ultimate-addons-for-gutenberg'
+							),
+						} }
+						boxShadowVOffset={ {
+							value: boxShadowVOffset,
+							label: 'boxShadowVOffset',
+							title: __(
+								'Vertical',
+								'ultimate-addons-for-gutenberg'
+							),
+						} }
+						boxShadowBlur={ {
+							value: boxShadowBlur,
+							label: 'boxShadowBlur',
+							title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+						} }
+						boxShadowSpread={ {
+							value: boxShadowSpread,
+							label: 'boxShadowSpread',
+							title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+						} }
+						boxShadowPosition={ {
+							value: boxShadowPosition,
+							label: 'boxShadowPosition',
+							title: __(
+								'Position',
+								'ultimate-addons-for-gutenberg'
+							),
+						} }
+					/>
+				</>
+			) }
 		</UAGAdvancedPanelBody>
 	);
 
@@ -1504,9 +1515,6 @@ function Settings( props ) {
 					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			{ loadDigitGoogleFonts }
-			{ loadLabelGoogleFonts }
-			{ loadSeparatorGoogleFonts }
 		</>
 	);
 };

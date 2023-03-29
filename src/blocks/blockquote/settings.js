@@ -1,6 +1,5 @@
 
 import { memo } from '@wordpress/element';
-import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
 import { __ } from '@wordpress/i18n';
 import Range from '@Components/range/Range.js';
@@ -190,54 +189,6 @@ const Settings = ( props ) => {
 		tweetBtnLetterSpacingMobile,
 		tweetBtnLetterSpacingType,
 	} = attributes;
-	let loadDescGoogleFonts;
-	let loadAuthorGoogleFonts;
-	let loadTweetGoogleFonts;
-
-	if ( descLoadGoogleFonts === true ) {
-		const descconfig = {
-			google: {
-				families: [
-					descFontFamily +
-						( descFontWeight ? ':' + descFontWeight : '' ),
-				],
-			},
-		};
-
-		loadDescGoogleFonts = (
-			<WebfontLoader config={ descconfig }></WebfontLoader>
-		);
-	}
-
-	if ( authorLoadGoogleFonts === true ) {
-		const authorconfig = {
-			google: {
-				families: [
-					authorFontFamily +
-						( authorFontWeight ? ':' + authorFontWeight : '' ),
-				],
-			},
-		};
-
-		loadAuthorGoogleFonts = (
-			<WebfontLoader config={ authorconfig }></WebfontLoader>
-		);
-	}
-
-	if ( tweetBtnLoadGoogleFonts === true ) {
-		const tweetBtnconfig = {
-			google: {
-				families: [
-					tweetBtnFontFamily +
-						( tweetBtnFontWeight ? ':' + tweetBtnFontWeight : '' ),
-				],
-			},
-		};
-
-		loadTweetGoogleFonts = (
-			<WebfontLoader config={ tweetBtnconfig }></WebfontLoader>
-		);
-	}
 
 	/*
 	 * Event to set Image as null while removing.
@@ -1797,9 +1748,6 @@ const Settings = ( props ) => {
 					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			{ loadDescGoogleFonts }
-			{ loadAuthorGoogleFonts }
-			{ loadTweetGoogleFonts }
 		</>
 	);
 };

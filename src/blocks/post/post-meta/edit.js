@@ -1,16 +1,7 @@
-import { useLayoutEffect } from '@wordpress/element';
-import styles from './editor.lazy.scss';
 import { dateI18n, format, getSettings } from '@wordpress/date';
 
 export const PostMeta = ( props ) => {
-	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect( () => {
-		styles.use();
-		return () => {
-			styles.unuse();
-		};
-	}, [] );
-
+	
 	const { post, attributes, categoriesList } = props;
 
 	const dateFormat = getSettings().formats.date;

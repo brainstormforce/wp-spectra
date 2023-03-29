@@ -1027,6 +1027,10 @@ const attributes = {
 		},
 	},
 	// Box Shadow for Boxes.
+	useSeparateBoxShadows: {
+		type: 'boolean',
+		default: true,
+	},
 	boxShadowColor: {
 		type: 'string',
 		default: '#00000070',

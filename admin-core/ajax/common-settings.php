@@ -658,7 +658,7 @@ class Common_Settings extends Ajax_Base {
 	 *
 	 * @return void
 	 *
-	 * @since x.x.x
+	 * @since 2.4.1
 	 */
 	public function insta_linked_accounts() {
 		$this->check_permission_nonce( 'uag_insta_linked_accounts' );
@@ -673,7 +673,7 @@ class Common_Settings extends Ajax_Base {
 	 *
 	 * @return void
 	 *
-	 * @since x.x.x
+	 * @since 2.4.1
 	 */
 	public function insta_all_users_media() {
 		$this->check_permission_nonce( 'uag_insta_all_users_media' );
@@ -688,7 +688,7 @@ class Common_Settings extends Ajax_Base {
 	 *
 	 * @return void
 	 *
-	 * @since x.x.x
+	 * @since 2.4.1
 	 */
 	public function insta_refresh_all_tokens() {
 		$this->check_permission_nonce( 'uag_insta_refresh_all_tokens' ); 

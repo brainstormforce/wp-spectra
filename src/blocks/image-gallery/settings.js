@@ -5,7 +5,6 @@ import { useEffect, memo } from '@wordpress/element';
 import getMatrixAlignment from '@Controls/getMatrixAlignment';
 import { useDeviceType } from '@Controls/getPreviewType';
 import TypographyControl from '@Components/typography';
-import WebfontLoader from '@Components/typography/fontloader';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import ImageSizeControl from '@Components/image-size-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -253,41 +252,7 @@ const Settings = ( props ) => {
 		imageBoxShadowSpreadHover,
 		imageBoxShadowPositionHover,
 	} = attributes;
-	
-	// Loading Google Fonts.
-	let loadCaptionGoogleFonts;
-	let loadLoadMoreGoogleFonts;
-	let loadLightboxGoogleFonts;
-
-	if ( captionLoadGoogleFonts === true ) {
-		const captionConfig = {
-			google: {
-				families: [
-					captionFontFamily +
-						( captionFontWeight ? ':' + captionFontWeight : '' ),
-				],
-			},
-		};
-
-		loadCaptionGoogleFonts = (
-			<WebfontLoader config={ captionConfig }></WebfontLoader>
-		);
-	}
-
-	if ( loadMoreLoadGoogleFonts === true ) {
-		const loadMoreConfig = {
-			google: {
-				families: [
-					loadMoreFontFamily + ( loadMoreFontWeight ? ':' + loadMoreFontWeight : '' ),
-				],
-			},
-		};
-
-		loadLoadMoreGoogleFonts = (
-			<WebfontLoader config={ loadMoreConfig }></WebfontLoader>
-		);
-	}
-	
+		
 	// Get the Image Sizes Available.
 	const { imageSizes } = useSelect( ( select ) => {
 			const { getSettings } = select( blockEditorStore );
@@ -302,20 +267,6 @@ const Settings = ( props ) => {
 		acc.push( { label: item.name, value: item.slug } );
 		return acc;
 	}, [] );
-
-	if ( lightboxLoadGoogleFonts === true ) {
-		const lightboxConfig = {
-			google: {
-				families: [
-					lightboxFontFamily + ( lightboxFontWeight ? ':' + lightboxFontWeight : '' ),
-				],
-			},
-		};
-
-		loadLightboxGoogleFonts = (
-			<WebfontLoader config={ lightboxConfig }></WebfontLoader>
-		);
-	}
 
 	// Internationilized Dynamic Labels.
 	let labelForCaptionBgColor;
@@ -2367,10 +2318,7 @@ const Settings = ( props ) => {
 						parentProps={ props }
 					></InspectorTab>
 				</InspectorTabs>
-			</InspectorControls>
-			{ loadCaptionGoogleFonts }
-			{ loadLoadMoreGoogleFonts }
-			{ loadLightboxGoogleFonts }
+			</InspectorControls>			
 		</>
 	);
 };
