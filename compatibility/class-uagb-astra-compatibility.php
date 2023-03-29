@@ -71,8 +71,16 @@ class UAGB_Astra_Compatibility {
 		global $post;
 
 		if ( $post ) {
+			$post_id = $post->ID;
+		}
 
-			$google_fonts = uagb_get_post_assets( $post->ID )->get_fonts();
+		if ( is_404() ) {
+			$post_id = get_queried_object_id();
+		}
+
+		if ( isset( $post_id ) ) {
+
+			$google_fonts = uagb_get_post_assets( $post_id )->get_fonts();
 
 			if ( is_array( $google_fonts ) && ! empty( $google_fonts ) ) {
 

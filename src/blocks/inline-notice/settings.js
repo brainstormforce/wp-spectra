@@ -1,6 +1,5 @@
 import UAGIconPicker from '@Components/icon-picker';
 import TypographyControl from '@Components/typography';
-import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -114,39 +113,7 @@ const Settings = ( props ) => {
 		descLetterSpacingMobile,
 		descLetterSpacingType,
 	} = attributes;
-	let loadTitleGoogleFonts;
-	let loadDescriptionGoogleFonts;
-
-	if ( true === titleLoadGoogleFonts ) {
-		const hconfig = {
-			google: {
-				families: [
-					titleFontFamily +
-						( titleFontWeight ? ':' + titleFontWeight : '' ),
-				],
-			},
-		};
-
-		loadTitleGoogleFonts = (
-			<WebfontLoader config={ hconfig }></WebfontLoader>
-		);
-	}
-
-	if ( true === descLoadGoogleFonts ) {
-		const sconfig = {
-			google: {
-				families: [
-					descFontFamily +
-						( descFontWeight ? ':' + descFontWeight : '' ),
-				],
-			},
-		};
-
-		loadDescriptionGoogleFonts = (
-			<WebfontLoader config={ sconfig }></WebfontLoader>
-		);
-	}
-
+	
 	const updateCookieId = ( value ) => {
 		const { getCurrentPostId } = select( 'core/editor' );
 		const post_id = getCurrentPostId().toString();
@@ -797,9 +764,7 @@ const Settings = ( props ) => {
 						parentProps={ props }
 					></InspectorTab>
 				</InspectorTabs>
-			</InspectorControls>
-			{ loadTitleGoogleFonts }
-			{ loadDescriptionGoogleFonts }
+			</InspectorControls>			
 		</>
 	);
 };

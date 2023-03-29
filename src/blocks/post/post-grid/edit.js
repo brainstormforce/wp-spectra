@@ -16,6 +16,7 @@ import Settings from './settings';
 import Render from './render';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { Placeholder, Spinner } from '@wordpress/components';
+import WebfontLoader from '@Components/typography/fontloader';
 
 const PostGridComponent = ( props ) => {
 
@@ -50,12 +51,27 @@ const PostGridComponent = ( props ) => {
 			taxonomyType,
 			excludeCurrentPost,
 			allTaxonomyStore,
+			postPagination,
+			paginationMarkup,
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
-			postDisplaytext
+			postDisplaytext,
+			titleLoadGoogleFonts,
+			titleFontFamily,
+			titleFontWeight,
+			metaLoadGoogleFonts,
+			metaFontFamily,
+			metaFontWeight,
+			excerptLoadGoogleFonts,
+			excerptFontFamily,
+			excerptFontWeight,
+			ctaLoadGoogleFonts,
+			ctaFontFamily,
+			ctaFontWeight,
 		},
 		setAttributes,
+		clientId,
 	} = props;
 
 	const initialState = {
@@ -71,7 +87,7 @@ const PostGridComponent = ( props ) => {
 		// Replacement for componentDidMount.
 		const { block } = props;
 		setStateValue( { innerBlocks: block } );
-		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
 		if( borderWidth ){
 			if( undefined === btnBorderTopWidth ) {
@@ -134,7 +150,7 @@ const PostGridComponent = ( props ) => {
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
-		addBlockEditorDynamicStyles( 'uagb-post-grid-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles( 'uagb-post-grid-style-' + clientId.substr( 0, 8 ), blockStyling );
 
 	}, [ attributes, deviceType ] );
 
@@ -150,14 +166,12 @@ const PostGridComponent = ( props ) => {
 
 	const togglePreview = () => {
 		setStateValue( { isEditing: ! state.isEditing } );
-		if ( ! state.isEditing ) {
-			__( 'Showing All Post Grid Layout.' );
-		}
 	};
 
 	let categoriesList = [];
-	const { latestPosts, taxonomyList, block } = useSelect( // eslint-disable-line no-unused-vars
+	const { latestPosts, taxonomyList, block } = useSelect(
 		( select ) => {
+
 			const { getEntityRecords } = select( 'core' );
 
 			if ( ! allTaxonomyStore && ! isTaxonomyLoading ) {
@@ -172,7 +186,25 @@ const PostGridComponent = ( props ) => {
 			const allTaxonomy = allTaxonomyStore;
 			const currentTax = allTaxonomy ? allTaxonomy[ postType ] : undefined;
 
-			// let categoriesList = [];
+			if ( true === postPagination && 'empty' === paginationMarkup ) {
+				const formData = new window.FormData();
+
+				formData.append( 'action', 'uagb_post_pagination' );
+				formData.append(
+					'nonce',
+					uagb_blocks_info.uagb_ajax_nonce
+				);
+				formData.append( 'attributes', JSON.stringify( props.attributes ) );
+
+				apiFetch( {
+					url: uagb_blocks_info.ajax_url,
+					method: 'POST',
+					body: formData,
+				} ).then( ( data ) => {
+					props.setAttributes( { paginationMarkup: data.data } );
+				} );
+			}
+
 			let rest_base = '';
 
 			if ( 'undefined' !== typeof currentTax ) {
@@ -236,14 +268,13 @@ const PostGridComponent = ( props ) => {
 				categoriesList,
 				taxonomyList:
 					'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
-				block: getBlocks( props.clientId ),
+				block: getBlocks( clientId ),
 			};
 		},
 	);
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
-	const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
-	if ( ! hasPosts ) {
+	if ( ! ( Array.isArray( latestPosts ) && latestPosts.length ) ) {
 		return (
 			<>
 
@@ -271,6 +302,68 @@ const PostGridComponent = ( props ) => {
 		);
 	}
 
+	// Load all the Google Fonts for The Post Grid Block.
+	let loadTitleGoogleFonts;
+	let loadMetaGoogleFonts;
+	let loadExcerptGoogleFonts;
+	let loadCtaGoogleFonts;
+
+	if ( titleLoadGoogleFonts === true ) {
+		const titleconfig = {
+			google: {
+				families: [
+					titleFontFamily +
+						( titleFontWeight ? ':' + titleFontWeight : '' ),
+				],
+			},
+		};
+		loadTitleGoogleFonts = (
+			<WebfontLoader config={ titleconfig }></WebfontLoader>
+		);
+	}
+
+	if ( metaLoadGoogleFonts === true ) {
+		const metaconfig = {
+			google: {
+				families: [
+					metaFontFamily +
+						( metaFontWeight ? ':' + metaFontWeight : '' ),
+				],
+			},
+		};
+		loadMetaGoogleFonts = (
+			<WebfontLoader config={ metaconfig }></WebfontLoader>
+		);
+	}
+
+	if ( excerptLoadGoogleFonts === true ) {
+		const excerptconfig = {
+			google: {
+				families: [
+					excerptFontFamily +
+						( excerptFontWeight ? ':' + excerptFontWeight : '' ),
+				],
+			},
+		};
+		loadExcerptGoogleFonts = (
+			<WebfontLoader config={ excerptconfig }></WebfontLoader>
+		);
+	}
+
+	if ( ctaLoadGoogleFonts === true ) {
+		const ctaconfig = {
+			google: {
+				families: [
+					ctaFontFamily +
+						( ctaFontWeight ? ':' + ctaFontWeight : '' ),
+				],
+			},
+		};
+		loadCtaGoogleFonts = (
+			<WebfontLoader config={ ctaconfig }></WebfontLoader>
+		);
+	}
+
 	return (
 		<>
 			{ isSelected && (
@@ -294,6 +387,10 @@ const PostGridComponent = ( props ) => {
 				replaceInnerBlocks={ replaceInnerBlocks }
 				block={ block }
 			/>
+			{ loadTitleGoogleFonts }
+			{ loadMetaGoogleFonts }
+			{ loadExcerptGoogleFonts }
+			{ loadCtaGoogleFonts }
 		</>
 	);
 };

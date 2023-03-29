@@ -281,7 +281,7 @@ function styling( props ) {
 		 // Need This for All
 		 ' .uagb-iconbox-icon-wrap': {
 			 'margin' : 'auto',
-			 'display' : 'flex',
+			 'display' : 'inline-flex',
 			 'align-items' : 'center',
 			 'justify-content': 'center',
 			 'box-sizing': 'content-box',

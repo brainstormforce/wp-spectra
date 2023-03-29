@@ -8,7 +8,6 @@ import TypographyControl from '@Components/typography';
 import SpacingControl from '@Components/spacing-control';
 import { useDeviceType } from '@Controls/getPreviewType';
 import ResponsiveBorder from '@Components/responsive-border';
-import WebfontLoader from '@Components/typography/fontloader';
 import renderSVG from '@Controls/renderIcon';
 import renderCustomIcon from '@Controls/renderCustomIcon';
 import UAGPresets from '@Components/presets';
@@ -310,56 +309,6 @@ function Settings( props ) {
 		},
 	];
 
-	// <------------------ GOOGLE FONTS ------------------>
-	// Loading Google Fonts.
-	let loadDigitGoogleFonts;
-	let loadLabelGoogleFonts;
-	let loadSeparatorGoogleFonts;
-
-	if ( digitLoadGoogleFonts === true ) {
-		const digitConfig = {
-			google: {
-				families: [
-					digitFontFamily +
-						( digitFontWeight ? ':' + digitFontWeight : '' ),
-				],
-			},
-		};
-
-		loadDigitGoogleFonts = (
-			<WebfontLoader config={ digitConfig }></WebfontLoader>
-		);
-	}
-
-	if ( labelLoadGoogleFonts === true ) {
-		const labelConfig = {
-			google: {
-				families: [
-					labelFontFamily + ( labelFontWeight ? ':' + labelFontWeight : '' ),
-				],
-			},
-		};
-
-		loadLabelGoogleFonts = (
-			<WebfontLoader config={ labelConfig }></WebfontLoader>
-		);
-	}
-
-	if ( separatorLoadGoogleFonts === true ) {
-		const separatorConfig = {
-			google: {
-				families: [
-					separatorFontFamily +
-						( separatorFontWeight ? ':' + separatorFontWeight : '' ),
-				],
-			},
-		};
-
-		loadSeparatorGoogleFonts = (
-			<WebfontLoader config={ separatorConfig }></WebfontLoader>
-		);
-	}
-
 	// This is to fetch the local system's offset from UTC and helps the user know their offset from 00:00UTC.
 
 	const { timezone } = getDateSettings();
@@ -370,7 +319,7 @@ function Settings( props ) {
 			title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
-			{ timerType && 
+			{ ( timerType && 'evergreen' !== timerType ) && 
 				<div className='uagb-countdown__datetime-picker'>
 					<div><h2>{ __( 'Timer End Date & Time', 'ultimate-addons-for-gutenberg' ) }</h2></div>
 					<DateTimePicker
@@ -387,6 +336,7 @@ function Settings( props ) {
 
 								setAttributes( { 
 									endDateTime: d,
+									endDateTimeCopy: d,
 									displayEndDateTime: value,
 								} )
 							}
@@ -1503,9 +1453,6 @@ function Settings( props ) {
 					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			{ loadDigitGoogleFonts }
-			{ loadLabelGoogleFonts }
-			{ loadSeparatorGoogleFonts }
 		</>
 	);
 };

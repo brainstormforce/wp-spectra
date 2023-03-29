@@ -450,8 +450,15 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			$uagb_toc_heading_content = ! empty( $uagb_toc_options['_uagb_toc_headings'] ) ? $uagb_toc_options['_uagb_toc_headings'] : '';
 
 			if ( empty( $uagb_toc_heading_content ) || UAGB_ASSET_VER !== $uagb_toc_version ) {
-				$uagb_toc_heading_content          = $this->table_of_contents_get_headings_from_content( get_post( $post->ID )->post_content );
-				$blocks                            = parse_blocks( get_post( $post->ID )->post_content );
+				global $_wp_current_template_content;
+				// If the current template contents exist, use that - else get the content from the post ID.
+				if ( $_wp_current_template_content ) {
+					$content = $_wp_current_template_content;
+				} else {
+					$content = get_post( $post->ID )->post_content;
+				}
+				$uagb_toc_heading_content          = $this->table_of_contents_get_headings_from_content( $content );
+				$blocks                            = parse_blocks( $content );
 				$uagb_toc_reusable_heading_content = $this->toc_recursive_reusable_heading( $blocks );
 				$uagb_toc_heading_content          = array_merge( $uagb_toc_heading_content, $uagb_toc_reusable_heading_content );
 

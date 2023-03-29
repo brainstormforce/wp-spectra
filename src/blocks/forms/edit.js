@@ -19,6 +19,8 @@ import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 import {migrateBorderAttributes} from '@Controls/generateAttributes';
 import styles from './editor.lazy.scss';
+import { addFilter } from '@wordpress/hooks';
+import WebfontLoader from '@Components/typography/fontloader';
 
 const UAGBFormsEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -46,6 +48,15 @@ const UAGBFormsEdit = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
+			submitTextloadGoogleFonts,
+			submitTextFontFamily,
+			submitTextFontWeight,
+			labelloadGoogleFonts,
+			labelFontFamily,
+			labelFontWeight,
+			inputloadGoogleFonts,
+			inputFontFamily,
+			inputFontWeight,
 		},
 		setAttributes,
 		clientId,
@@ -102,7 +113,7 @@ const UAGBFormsEdit = ( props ) => {
 				setAttributes( { toggleColor: bgColor } );
 			}
 		}
-		
+
 		const id = clientId;
 
 		window.addEventListener( 'load', renderReadyClasses( id ) );
@@ -200,7 +211,7 @@ const UAGBFormsEdit = ( props ) => {
 			attributes
 			);
 		}
-		
+
 	}, [] );
 
 	useEffect( () => {
@@ -208,7 +219,7 @@ const UAGBFormsEdit = ( props ) => {
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-style-forms-' + clientId.substr( 0, 8 ), blockStyling );
-		
+
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
@@ -341,10 +352,62 @@ const UAGBFormsEdit = ( props ) => {
 		);
 	}
 
+	// Load all the Google Fonts for The Forms Block.
+	let loadsubmittextGoogleFonts;
+	let loadlabelGoogleFonts;
+	let loadinputGoogleFonts;
+
+	if ( submitTextloadGoogleFonts === true ) {
+		const qconfig = {
+			google: {
+				families: [
+					submitTextFontFamily +
+						( submitTextFontWeight
+							? ':' + submitTextFontWeight
+							: '' ),
+				],
+			},
+		};
+		loadsubmittextGoogleFonts = (
+			<WebfontLoader config={ qconfig }></WebfontLoader>
+		);
+	}
+
+	if ( labelloadGoogleFonts === true ) {
+		const qconfig = {
+			google: {
+				families: [
+					labelFontFamily +
+						( labelFontWeight ? ':' + labelFontWeight : '' ),
+				],
+			},
+		};
+		loadlabelGoogleFonts = (
+			<WebfontLoader config={ qconfig }></WebfontLoader>
+		);
+	}
+
+	if ( inputloadGoogleFonts === true ) {
+		const qconfig = {
+			google: {
+				families: [
+					inputFontFamily +
+						( inputFontWeight ? ':' + inputFontWeight : '' ),
+				],
+			},
+		};
+		loadinputGoogleFonts = (
+			<WebfontLoader config={ qconfig }></WebfontLoader>
+		);
+	}
+
 	return (
 			<>
-			{ isSelected && <Settings parentProps={ props } /> }
+				{ isSelected && <Settings parentProps={ props } /> }
 				<Render parentProps={ props } />
+				{ loadsubmittextGoogleFonts }
+				{ loadlabelGoogleFonts }
+				{ loadinputGoogleFonts }
 			</>
 	);
 };
@@ -360,7 +423,7 @@ const addAdvancedClasses = createHigherOrderComponent( ( BlockListBlock ) => {
 	};
 }, 'addAdvancedClasses' );
 
-wp.hooks.addFilter( 'editor.BlockListBlock', 'uagb/forms', addAdvancedClasses );
+addFilter( 'editor.BlockListBlock', 'uagb/forms', addAdvancedClasses );
 
 export default compose(
 	withNotices,

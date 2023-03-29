@@ -3,6 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { Button, Dashicon } from '@wordpress/components';
+import { applyFilters } from '@wordpress/hooks';
 
 /**
  * Internal dependencies
@@ -28,7 +29,7 @@ const TypographyControl = ( props ) => {
 	const panelRef = useRef( null );
 
 	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
-	const allBlocksAttributes = wp.hooks.applyFilters( 'uagb.blocksAttributes', blocksAttributes ); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	const allBlocksAttributes = applyFilters( 'uagb.blocksAttributes', blocksAttributes ); // eslint-disable-line @wordpress/no-unused-vars-before-return
 
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -192,6 +193,7 @@ const TypographyControl = ( props ) => {
 				sizeTabletLabel={ props.lineHeightTablet.label }
 				size={ props.lineHeight }
 				sizeLabel={ props.lineHeight.label }
+				min={ 0 }
 				sizeMobileText={ __(
 					'Line Height',
 					'ultimate-addons-for-gutenberg'
@@ -221,6 +223,7 @@ const TypographyControl = ( props ) => {
 				sizeTabletLabel={ props.letterSpacingTablet.label }
 				size={ props.letterSpacing }
 				sizeLabel={ props.letterSpacing.label }
+				min={ -50 }
 				sizeMobileText={ __(
 					'Letter Spacing',
 					'ultimate-addons-for-gutenberg'
@@ -431,8 +434,8 @@ const TypographyControl = ( props ) => {
 	}
 
 	const controlName = getIdFromString( props.label );
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 
 	return (

@@ -18,9 +18,9 @@ import Background from '@Components/background';
 import ResponsiveBorder from '@Components/responsive-border';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import MultiButtonsControl from '@Components/multi-buttons-control';
-import { 
+import {
 	Icon,
-	ToggleControl, 
+	ToggleControl,
 	ToolbarGroup,
 	ToolbarButton,
 } from '@wordpress/components';
@@ -30,6 +30,7 @@ import AdvancedPopColorControl from '@Components/color-control/advanced-pop-colo
 import { boxShadowPresets, boxShadowHoverPresets } from './presets';
 import UAGPresets from '@Components/presets';
 import { createBlock } from '@wordpress/blocks';
+import { applyFilters } from '@wordpress/hooks';
 
 const Settings = ( props ) => {
 
@@ -38,7 +39,7 @@ const Settings = ( props ) => {
 	const {
 		block_id,
 		swiperInstance,
-	
+
 		pauseOn,
 		infiniteLoop,
 		transitionSpeed,
@@ -112,7 +113,7 @@ const Settings = ( props ) => {
 		marginTypeTablet,
 		marginTypeMobile,
 		marginLink,
-	
+
 		backgroundCustomSizeDesktop,
 		backgroundCustomSizeTablet,
 		backgroundCustomSizeMobile,
@@ -218,11 +219,11 @@ const Settings = ( props ) => {
 	];
 
 	const generalSettings = () => {
-	
+
 		const toggleInfiniteLoop = () => {
 			setAttributes( { infiniteLoop: ! infiniteLoop } );
 		};
-	
+
 		const toggleAutoplay = () => {
 			setAttributes( { autoplay: ! autoplay } );
 		};
@@ -235,9 +236,9 @@ const Settings = ( props ) => {
 			setAttributes( { displayDots: ! displayDots } );
 		};
 
-		const afterNavigationOptions = wp.hooks.applyFilters( 'spectra.slider.tab_general.displayDots.after', '', props );
-		const afterAutoPlayOptions = wp.hooks.applyFilters( 'spectra.slider.tab_general.autoplay.after', '', props );
-		const afterTransitionOptions = wp.hooks.applyFilters( 'spectra.slider.tab_general.transitionSpeed.after', '', props );
+		const afterNavigationOptions = applyFilters( 'spectra.slider.tab_general.displayDots.after', '', props );
+		const afterAutoPlayOptions = applyFilters( 'spectra.slider.tab_general.autoplay.after', '', props );
+		const afterTransitionOptions = applyFilters( 'spectra.slider.tab_general.transitionSpeed.after', '', props );
 
 		const sliderSettings = () => {
 			return (
@@ -1066,7 +1067,7 @@ const Settings = ( props ) => {
 						setAttributes={ setAttributes }
 					/>
 				}
-				{ displayArrows && 
+				{ displayArrows &&
 					<ResponsiveBorder
 						setAttributes={ setAttributes }
 						prefix={ 'slider-arrow' }
@@ -1080,7 +1081,7 @@ const Settings = ( props ) => {
 		)
 	}
 
-	const afterNavigationStyleOptions =  wp.hooks.applyFilters( 'spectra.slider.tab_style.NavigationStyle.after', '', props );
+	const afterNavigationStyleOptions =  applyFilters( 'spectra.slider.tab_style.NavigationStyle.after', '', props );
 
 	return (
 		<>

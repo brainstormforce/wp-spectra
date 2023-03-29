@@ -3,7 +3,6 @@ import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
 import TypographyControl from '@Components/typography';
-import WebfontLoader from '@Components/typography/fontloader';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import ResponsiveSlider from '@Components/responsive-slider';
@@ -130,22 +129,6 @@ const Settings = ( props ) => {
 			),
 		}
 	];
-
-	let loadBtnGoogleFonts;
-
-	if ( loadGoogleFonts === true ) {
-		const btnconfig = {
-			google: {
-				families: [
-					fontFamily + ( fontWeight ? ':' + fontWeight : '' ),
-				],
-			},
-		};
-
-		loadBtnGoogleFonts = (
-			<WebfontLoader config={ btnconfig }></WebfontLoader>
-		);
-	}
 
 	const generalSettings = () => {
 		return (
@@ -564,7 +547,6 @@ const Settings = ( props ) => {
 					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			{ loadBtnGoogleFonts }
 			</>
 	);
 };

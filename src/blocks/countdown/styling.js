@@ -6,6 +6,7 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import { applyFilters } from '@wordpress/hooks';
 
 export default function styling( props ) {
 
@@ -216,10 +217,10 @@ export default function styling( props ) {
 	}
 
 
-	const tabletSelectors = {};
-	const mobileSelectors = {};
+	let tabletSelectors = {};
+	let mobileSelectors = {};
 
-	const selectors = {
+    let selectors = {
 
 		'.wp-block-uagb-countdown':{
 			'justify-content': align,
@@ -232,13 +233,13 @@ export default function styling( props ) {
 			'padding-bottom': generateCSSUnit( blockBottomPadding, blockPaddingUnit ),
 			'padding-left': generateCSSUnit( blockLeftPadding, blockPaddingUnit ),
 		},
-		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box-days':{
+		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-days':{
 			'display': showDays ? '' : 'none',
 		},
-		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box-hours':{
+		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-hours':{
 			'display': ( showDays || showHours ) ? '' : 'none',
 		},
-		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box-minutes':{
+		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-minutes':{
 			'display': ( showDays || showHours || showMinutes ) ? '' : 'none',
 		},
 		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box':{
@@ -447,7 +448,11 @@ export default function styling( props ) {
 
 	const baseSelector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
-	let styling_css = generateCSS( selectors, baseSelector );
+	selectors = applyFilters( `spectra.${blockName}.styling`, selectors, props.attributes );
+	tabletSelectors = applyFilters( `spectra.${blockName}.tabletStyling`, tabletSelectors, props.attributes );
+	mobileSelectors = applyFilters( `spectra.${blockName}.mobileStyling`, mobileSelectors, props.attributes );
+
+    let styling_css = generateCSS( selectors, baseSelector );
 
 	styling_css += generateCSS(
 		tabletSelectors,

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-03-10T05:40:53+00:00\n"
+"POT-Creation-Date: 2023-03-15T11:24:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -72,14 +72,14 @@ msgstr ""
 #: admin-core/ajax/common-settings.php:943
 #: admin-core/ajax/common-settings.php:980
 #: admin-core/ajax/common-settings.php:1017
-#: admin-core/ajax/common-settings.php:1054
-#: admin-core/ajax/common-settings.php:1091
-#: admin-core/ajax/common-settings.php:1132
-#: admin-core/ajax/common-settings.php:1168
-#: admin-core/ajax/common-settings.php:1204
-#: admin-core/ajax/common-settings.php:1240
-#: admin-core/ajax/common-settings.php:1318
-#: admin-core/ajax/common-settings.php:1355
+#: admin-core/ajax/common-settings.php:1059
+#: admin-core/ajax/common-settings.php:1096
+#: admin-core/ajax/common-settings.php:1137
+#: admin-core/ajax/common-settings.php:1173
+#: admin-core/ajax/common-settings.php:1209
+#: admin-core/ajax/common-settings.php:1245
+#: admin-core/ajax/common-settings.php:1323
+#: admin-core/ajax/common-settings.php:1360
 msgid "No post data found!"
 msgstr ""
 
@@ -106,14 +106,14 @@ msgstr ""
 #: admin-core/ajax/common-settings.php:952
 #: admin-core/ajax/common-settings.php:989
 #: admin-core/ajax/common-settings.php:1026
-#: admin-core/ajax/common-settings.php:1063
-#: admin-core/ajax/common-settings.php:1105
-#: admin-core/ajax/common-settings.php:1141
-#: admin-core/ajax/common-settings.php:1177
-#: admin-core/ajax/common-settings.php:1213
-#: admin-core/ajax/common-settings.php:1267
-#: admin-core/ajax/common-settings.php:1327
-#: admin-core/ajax/common-settings.php:1364
+#: admin-core/ajax/common-settings.php:1068
+#: admin-core/ajax/common-settings.php:1110
+#: admin-core/ajax/common-settings.php:1146
+#: admin-core/ajax/common-settings.php:1182
+#: admin-core/ajax/common-settings.php:1218
+#: admin-core/ajax/common-settings.php:1272
+#: admin-core/ajax/common-settings.php:1332
+#: admin-core/ajax/common-settings.php:1369
 #: classes/class-uagb-init-blocks.php:399
 msgid "Successfully saved data!"
 msgstr ""
@@ -11177,7 +11177,7 @@ msgstr ""
 
 #: includes/blocks/icon/block.php:17
 #: dist/blocks.js:17
-msgid "Add beautiful icons to your website."
+msgid "Add stunning customizable icons to your website."
 msgstr ""
 
 #: includes/blocks/image-gallery/block.php:16
@@ -11306,7 +11306,6 @@ msgid "Post Grid"
 msgstr ""
 
 #: includes/blocks/post-grid/block.php:17
-#: dist/blocks.js:17
 msgid "Display your posts in a grid layout."
 msgstr ""
 
@@ -11452,6 +11451,7 @@ msgid "Social Share"
 msgstr ""
 
 #: includes/blocks/social-share/block.php:17
+#: dist/blocks.js:17
 msgid "Share your content on different social media platforms."
 msgstr ""
 
@@ -14044,7 +14044,7 @@ msgid "Separator Top Spacing"
 msgstr ""
 
 #: dist/blocks.js:17
-msgid "Create a sense of urgency around your product or offer and drive customers to take advantage of a time-sensitive offer with a countdown timer."
+msgid "Create a sense of urgency among your visitors."
 msgstr ""
 
 #: dist/blocks.js:17
@@ -16108,6 +16108,10 @@ msgid "This spacing is between the Post Grid and the Pagination"
 msgstr ""
 
 #: dist/blocks.js:17
+msgid "Display your posts in a structured grid-based layout."
+msgstr ""
+
+#: dist/blocks.js:17
 msgid "Show your post's excerpt."
 msgstr ""
 
@@ -16601,10 +16605,6 @@ msgstr ""
 
 #: dist/blocks.js:17
 msgid "Note: Border Radius option is useful when one adds background color to the icons."
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "Share your content on different social media platforms ."
 msgstr ""
 
 #: dist/blocks.js:17

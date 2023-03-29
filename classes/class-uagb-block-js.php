@@ -667,7 +667,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		/**
 		 * Adds Google fonts for Image Gallery block.
 		 *
-		 * @since 2.0.0
+		 * @since 2.1.0
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_image_gallery_gfont( $attr ) {
@@ -694,6 +694,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		 *
 		 * @since 2.4.0
 		 * @param array $attr the blocks attr.
+		 * @return void
 		 */
 		public static function blocks_countdown_gfont( $attr ) {
 

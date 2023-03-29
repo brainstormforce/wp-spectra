@@ -12,8 +12,12 @@ import { registerBlockType } from '@wordpress/blocks';
 import variations from './variations';
 import transforms from './transforms';
 import PreviewImage from '@Controls/previewImage';
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let containerCommonData = {};
+containerCommonData = applyFilters( 'uagb/container', addCommonDataToSpectraBlocks( containerCommonData ) );
 registerBlockType( 'uagb/container', {
+	...containerCommonData,
 	apiVersion: 2,
 	title: __( 'Container', 'ultimate-addons-for-gutenberg' ),
 	description: __(
@@ -29,13 +33,8 @@ registerBlockType( 'uagb/container', {
 	supports: {
 		anchor: true,
 	},
-	category: uagb_blocks_info.category,
 	attributes,
-	example: {
-		attributes: {
-			isPreview: true,
-		}
-	},
+category: uagb_blocks_info.category,
 	variations,
 	edit: ( props ) =>
 		props.attributes.isPreview ? (

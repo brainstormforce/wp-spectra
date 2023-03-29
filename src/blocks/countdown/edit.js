@@ -6,6 +6,8 @@ import Render from './render';
 import { getSettings as getDateSettings } from '@wordpress/date';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import { useDeviceType } from '@Controls/getPreviewType';
+import { applyFilters } from '@wordpress/hooks';
+import WebfontLoader from '@Components/typography/fontloader';
 
 //  Import CSS.
 import './style.scss';
@@ -15,8 +17,10 @@ const UAGBCountdownEdit = ( props ) => {
 
 	const {
 		isSelected,
+		clientId,
 		attributes,
 		attributes: {
+			block_id,
 			timeModified,
 			endDateTime,
 			showDays,
@@ -25,6 +29,15 @@ const UAGBCountdownEdit = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
+			digitLoadGoogleFonts,
+			digitFontFamily,
+			digitFontWeight,
+			labelLoadGoogleFonts,
+			labelFontFamily,
+			labelFontWeight,
+			separatorLoadGoogleFonts,
+			separatorFontFamily,
+			separatorFontWeight,
 		},
 		setAttributes
 	} = props;
@@ -58,13 +71,18 @@ const UAGBCountdownEdit = ( props ) => {
 	
 			setAttributes( {
 				endDateTime: actualTime,
+				endDateTimeCopy: actualTime,
 				displayEndDateTime: displayTime,
 				timeModified: true,
 			} );
 		}
 
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		// editorInnerblocksPreview: This attribute is used to display innerblocks preview for 'Replace with Content' mode.
+		// block_id: Assigning block_id in the attribute.
+		setAttributes( {
+			editorInnerblocksPreview: false,
+			block_id: clientId.substr( 0, 8 ),
+		} );
 	}, [] );
 
 	const countdownRef = useRef( null );
@@ -72,7 +90,7 @@ const UAGBCountdownEdit = ( props ) => {
 	useEffect( () => {
 		if( countdownRef ) {
 		setTimeout( () => {
-			UAGBCountdown.editorInit( '.uagb-block-' + props.clientId.substr( 0, 8 ), props.attributes, countdownRef.current ); // eslint-disable-line no-undef
+			UAGBCountdown.editorInit( '.uagb-block-' + clientId.substr( 0, 8 ), attributes, countdownRef.current ); // eslint-disable-line no-undef
 		} )
 		}
 	}, [ countdownRef ] );
@@ -81,12 +99,12 @@ const UAGBCountdownEdit = ( props ) => {
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
-		addBlockEditorDynamicStyles( 'uagb-countdown-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-	}, [ attributes ] );
+		addBlockEditorDynamicStyles( 'uagb-countdown-style-' + clientId.substr( 0, 8 ), blockStyling );
+	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
-		if( props.attributes.block_id && timeChanged === 1 ) {
-			UAGBCountdown.changeEndTime( '.uagb-block-' + props.attributes.block_id, props.attributes, countdownRef.current ) // eslint-disable-line no-undef
+		if( block_id && timeChanged === 1 ) {
+			UAGBCountdown.changeEndTime( '.uagb-block-' + block_id, attributes, countdownRef.current ) // eslint-disable-line no-undef
 		}
 		setTimeChanged( 1 );
 	}, [
@@ -107,10 +125,63 @@ const UAGBCountdownEdit = ( props ) => {
 		deviceType
 	] );
 
+	// Load all the Google Fonts for The Countdown Block.
+	let loadDigitGoogleFonts;
+	let loadLabelGoogleFonts;
+	let loadSeparatorGoogleFonts;
+
+	if ( digitLoadGoogleFonts === true ) {
+		const digitConfig = {
+			google: {
+				families: [
+					digitFontFamily +
+						( digitFontWeight ? ':' + digitFontWeight : '' ),
+				],
+			},
+		};
+		loadDigitGoogleFonts = (
+			<WebfontLoader config={ digitConfig }></WebfontLoader>
+		);
+	}
+
+	if ( labelLoadGoogleFonts === true ) {
+		const labelConfig = {
+			google: {
+				families: [
+					labelFontFamily + ( labelFontWeight ? ':' + labelFontWeight : '' ),
+				],
+			},
+		};
+		loadLabelGoogleFonts = (
+			<WebfontLoader config={ labelConfig }></WebfontLoader>
+		);
+	}
+
+	if ( separatorLoadGoogleFonts === true ) {
+		const separatorConfig = {
+			google: {
+				families: [
+					separatorFontFamily +
+						( separatorFontWeight ? ':' + separatorFontWeight : '' ),
+				],
+			},
+		};
+		loadSeparatorGoogleFonts = (
+			<WebfontLoader config={ separatorConfig }></WebfontLoader>
+		);
+	}
+
 	return (
 		<>
+			{/* Countdown Toolbar options for Pro (Replace feature) */}
+			{ ( props.attributes.timerEndAction === 'content' ) &&
+				applyFilters( 'spectra.countdown.toolbar-hook', '', props.name )
+			}
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render countdownRef={ countdownRef } parentProps={ props } />
+			{ loadDigitGoogleFonts }
+			{ loadLabelGoogleFonts }
+			{ loadSeparatorGoogleFonts }
 		</>
 	);
 }
