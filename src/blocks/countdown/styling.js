@@ -6,6 +6,7 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import { applyFilters } from '@wordpress/hooks';
 
 export default function styling( props ) {
 
@@ -447,9 +448,9 @@ export default function styling( props ) {
 
 	const baseSelector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
-	selectors = wp.hooks.applyFilters( `spectra.${blockName}.styling`, selectors, props.attributes );
-	tabletSelectors = wp.hooks.applyFilters( `spectra.${blockName}.tabletStyling`, tabletSelectors, props.attributes );
-	mobileSelectors = wp.hooks.applyFilters( `spectra.${blockName}.mobileStyling`, mobileSelectors, props.attributes );
+	selectors = applyFilters( `spectra.${blockName}.styling`, selectors, props.attributes );
+	tabletSelectors = applyFilters( `spectra.${blockName}.tabletStyling`, tabletSelectors, props.attributes );
+	mobileSelectors = applyFilters( `spectra.${blockName}.mobileStyling`, mobileSelectors, props.attributes );
 
     let styling_css = generateCSS( selectors, baseSelector );
 

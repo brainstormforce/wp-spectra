@@ -12,6 +12,7 @@ import { select } from '@wordpress/data';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import WebfontLoader from '@Components/typography/fontloader';
 
 const FaqComponent = ( props ) => {
 
@@ -41,6 +42,12 @@ const FaqComponent = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
+			questionloadGoogleFonts,
+			questionFontFamily,
+			questionFontWeight,
+			answerloadGoogleFonts,
+			answerFontFamily,
+			answerFontWeight,
 		},
 		clientId,
 	} = props;
@@ -270,12 +277,46 @@ const FaqComponent = ( props ) => {
 
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
+	// Load all the Google Fonts for The FAQ Block.
+	let loadQuestionGoogleFonts;
+	let loadAnswerGoogleFonts;
+
+	if ( questionloadGoogleFonts === true ) {
+		const qconfig = {
+			google: {
+				families: [
+					questionFontFamily +
+						( questionFontWeight ? ':' + questionFontWeight : '' ),
+				],
+			},
+		};
+		loadQuestionGoogleFonts = (
+			<WebfontLoader config={ qconfig }></WebfontLoader>
+		);
+	}
+
+	if ( answerloadGoogleFonts === true ) {
+		const aconfig = {
+			google: {
+				families: [
+					answerFontFamily +
+						( answerFontWeight ? ':' + answerFontWeight : '' ),
+				],
+			},
+		};
+		loadAnswerGoogleFonts = (
+			<WebfontLoader config={ aconfig }></WebfontLoader>
+		);
+	}
+
 	return (
 		<>
 			{ isSelected && (
 				<Settings parentProps={ props } deviceType={ deviceType } />
 			) }
 			<Render parentProps={ props } />
+			{ loadQuestionGoogleFonts }
+			{ loadAnswerGoogleFonts }
 		</>
 	);
 };

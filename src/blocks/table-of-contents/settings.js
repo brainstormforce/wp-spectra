@@ -1,7 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import TypographyControl from '@Components/typography';
 import UAGIconPicker from '@Components/icon-picker';
-import WebfontLoader from '@Components/typography/fontloader';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import SpacingControl from '@Components/spacing-control';
@@ -158,36 +157,6 @@ const Settings = ( props ) => {
 		separatorSpaceMobile,
 		separatorSpaceType
 	} = attributes;
-
-	let loadGFonts;
-	let headingloadGFonts;
-
-	if ( loadGoogleFonts === true ) {
-		const config = {
-			google: {
-				families: [
-					fontFamily + ( fontWeight ? ':' + fontWeight : '' ),
-				],
-			},
-		};
-
-		loadGFonts = <WebfontLoader config={ config }></WebfontLoader>;
-	}
-
-	if ( headingLoadGoogleFonts === true ) {
-		const headingconfig = {
-			google: {
-				families: [
-					headingFontFamily +
-						( headingFontWeight ? ':' + headingFontWeight : '' ),
-				],
-			},
-		};
-
-		headingloadGFonts = (
-			<WebfontLoader config={ headingconfig }></WebfontLoader>
-		);
-	}
 
 	const getGeneralPanelBody = () => {
 		return (
@@ -1422,9 +1391,7 @@ const Settings = ( props ) => {
 						parentProps={ props }
 					></InspectorTab>
 				</InspectorTabs>
-			</InspectorControls>
-			{ loadGFonts }
-			{ headingloadGFonts }
+			</InspectorControls>			
 			</>
 	);
 };

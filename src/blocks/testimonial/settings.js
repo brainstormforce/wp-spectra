@@ -1,6 +1,5 @@
 import { __ } from '@wordpress/i18n';
 import TypographyControl from '@Components/typography';
-import WebfontLoader from '@Components/typography/fontloader';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import Background from '@Components/background';
@@ -183,55 +182,6 @@ const Settings = ( props ) => {
 	} = attributes;
 
 	const testItemCountFallback = getFallbackNumber( test_item_count, 'test_item_count', blockName );
-
-	let loadNameGoogleFonts;
-	let loadCompanyGoogleFonts;
-	let loadDescGoogleFonts;
-
-	if ( nameLoadGoogleFonts === true ) {
-		const nameconfig = {
-			google: {
-				families: [
-					nameFontFamily +
-						( nameFontWeight ? ':' + nameFontWeight : '' ),
-				],
-			},
-		};
-
-		loadNameGoogleFonts = (
-			<WebfontLoader config={ nameconfig }></WebfontLoader>
-		);
-	}
-
-	if ( companyLoadGoogleFonts === true ) {
-		const companyconfig = {
-			google: {
-				families: [
-					companyFontFamily +
-						( companyFontWeight ? ':' + companyFontWeight : '' ),
-				],
-			},
-		};
-
-		loadCompanyGoogleFonts = (
-			<WebfontLoader config={ companyconfig }></WebfontLoader>
-		);
-	}
-
-	if ( descLoadGoogleFonts === true ) {
-		const descconfig = {
-			google: {
-				families: [
-					descFontFamily +
-						( descFontWeight ? ':' + descFontWeight : '' ),
-				],
-			},
-		};
-
-		loadDescGoogleFonts = (
-			<WebfontLoader config={ descconfig }></WebfontLoader>
-		);
-	}
 
 	/*
 	 * Event to set Image as while adding.
@@ -1573,10 +1523,7 @@ const Settings = ( props ) => {
 
 	return (
 			<>
-			{ inspectControl() }
-			{ loadNameGoogleFonts }
-			{ loadCompanyGoogleFonts }
-			{ loadDescGoogleFonts }
+			{ inspectControl() }			
 			</>
 
 	);
