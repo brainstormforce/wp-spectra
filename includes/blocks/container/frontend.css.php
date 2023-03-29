@@ -139,6 +139,24 @@ $selectors = array(
 	'.uagb-block-' . $id . '.wp-block-uagb-container' => array(
 		'color' => $attr['textColor'],
 	),
+	'.wp-block-uagb-container h1'                     => array(
+		'color' => $attr['textColor'],
+	),
+	'.wp-block-uagb-container h2'                     => array(
+		'color' => $attr['textColor'],
+	),
+	'.wp-block-uagb-container h3'                     => array(
+		'color' => $attr['textColor'],
+	),
+	'.wp-block-uagb-container h4'                     => array(
+		'color' => $attr['textColor'],
+	),
+	'.wp-block-uagb-container h5'                     => array(
+		'color' => $attr['textColor'],
+	),
+	'.wp-block-uagb-container h6'                     => array(
+		'color' => $attr['textColor'],
+	),
 	'.uagb-block-' . $id . ' a'                       => array(
 		'color' => $attr['linkColor'],
 	),
@@ -349,7 +367,14 @@ if ( 'video' === $attr['backgroundType'] ) {
 	$selectors[ '.uagb-block-' . $id . ' .uagb-container__video-wrap' ]   = array_merge( $video_bg_css, $border );
 	$t_selectors[ '.uagb-block-' . $id . ' .uagb-container__video-wrap' ] = $border_tablet;
 	$m_selectors[ '.uagb-block-' . $id . ' .uagb-container__video-wrap' ] = $border_mobile;
-	$selectors[ '.uagb-block-' . $id ]                                    = array_merge(
+
+	if ( 'alignwide' === $attr['innerContentWidth'] ) {
+		$selectorClass = '.uagb-block-' . $id . ' .uagb-container-inner-blocks-wrap';
+	} else {
+		$selectorClass = '.uagb-block-' . $id;
+	}
+
+	$selectors[ $selectorClass ]   = array_merge(
 		array(
 			'min-height'     => UAGB_Helper::get_css_value( $attr['minHeightDesktop'], $attr['minHeightType'] ),
 			'box-shadow'     =>
@@ -378,7 +403,7 @@ if ( 'video' === $attr['backgroundType'] ) {
 		),
 		$inner_container_css
 	);
-	$t_selectors[ '.uagb-block-' . $id ]                                  = array_merge(
+	$t_selectors[ $selectorClass ] = array_merge(
 		array(
 			'min-height'     => UAGB_Helper::get_css_value( $attr['minHeightTablet'], $attr['minHeightTypeTablet'] ),
 			'padding-top'    => UAGB_Helper::get_css_value( $top_padding_tablet, $attr['paddingTypeTablet'] ),
@@ -394,7 +419,7 @@ if ( 'video' === $attr['backgroundType'] ) {
 		),
 		$inner_container_tablet_css
 	);
-	$m_selectors[ '.uagb-block-' . $id ]                                  = array_merge(
+	$m_selectors[ $selectorClass ] = array_merge(
 		array(
 			'min-height'     => UAGB_Helper::get_css_value( $attr['minHeightMobile'], $attr['minHeightTypeMobile'] ),
 			'padding-top'    => UAGB_Helper::get_css_value( $top_padding_mobile, $attr['paddingTypeMobile'] ),

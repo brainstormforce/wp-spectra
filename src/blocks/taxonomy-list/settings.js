@@ -1,7 +1,6 @@
 import { __ } from '@wordpress/i18n';
 
 import { memo } from '@wordpress/element';
-import WebfontLoader from '@Components/typography/fontloader';
 import renderSVG from '@Controls/renderIcon';
 import TypographyControl from '@Components/typography';
 import BoxShadowControl from '@Components/box-shadow';
@@ -174,55 +173,6 @@ const Settings = ( props ) => {
 				label: taxonomyList[ item ].label,
 			} );
 		} );
-	}
-
-	let loadTitleGoogleFonts;
-	let loadCountGoogleFonts;
-	let loadListGoogleFonts;
-
-	if ( titleLoadGoogleFonts === true ) {
-		const titleconfig = {
-			google: {
-				families: [
-					titleFontFamily +
-						( titleFontWeight ? ':' + titleFontWeight : '' ),
-				],
-			},
-		};
-
-		loadTitleGoogleFonts = (
-			<WebfontLoader config={ titleconfig }></WebfontLoader>
-		);
-	}
-
-	if ( countLoadGoogleFonts === true ) {
-		const countconfig = {
-			google: {
-				families: [
-					countFontFamily +
-						( countFontWeight ? ':' + countFontWeight : '' ),
-				],
-			},
-		};
-
-		loadCountGoogleFonts = (
-			<WebfontLoader config={ countconfig }></WebfontLoader>
-		);
-	}
-
-	if ( listLoadGoogleFonts === true ) {
-		const listconfig = {
-			google: {
-				families: [
-					listFontFamily +
-						( listFontWeight ? ':' + listFontWeight : '' ),
-				],
-			},
-		};
-
-		loadListGoogleFonts = (
-			<WebfontLoader config={ listconfig }></WebfontLoader>
-		);
 	}
 
 	// All Controls.
@@ -1381,12 +1331,7 @@ const Settings = ( props ) => {
 
 	return (
 		<>
-
-				{ inspectorControlsSettings }
-				{ loadTitleGoogleFonts }
-				{ loadCountGoogleFonts }
-				{ loadListGoogleFonts }
-
+			{ inspectorControlsSettings }
 		</>
 	);
 };

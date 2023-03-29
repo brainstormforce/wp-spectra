@@ -102,6 +102,28 @@ class UAGB_Front_Assets {
 	}
 
 	/**
+	 * Enqueue asset files for FSE Theme.
+	 *
+	 * @since 2.4.1
+	 */
+	public function load_assets_for_fse_theme() {
+		global $_wp_current_template_content;
+		if ( $_wp_current_template_content ) {
+			$date                             = new DateTime();
+			$new_timestamp                    = $date->getTimestamp();
+			$dynamic_id                       = get_the_ID() + $new_timestamp;
+			$blocks                           = parse_blocks( $_wp_current_template_content );
+			$current_post_assets              = new UAGB_Post_Assets( $dynamic_id );
+			$current_post_assets->page_blocks = $blocks;
+			$assets                           = $current_post_assets->get_blocks_assets( $blocks );
+			$current_post_assets->stylesheet  = $assets['css'];
+			$current_post_assets->script      = $assets['js'];
+			$current_post_assets->gfonts      = array_merge( $current_post_assets->get_fonts(), UAGB_Helper::$gfonts );
+			$current_post_assets->enqueue_scripts();
+		}
+	}
+
+	/**
 	 * Enqueue asset files.
 	 *
 	 * @since 1.23.0
@@ -112,8 +134,12 @@ class UAGB_Front_Assets {
 			$this->post_assets->enqueue_scripts();
 		}
 
+		if ( wp_is_block_theme() ) {
+			$this->load_assets_for_fse_theme();
+		}
+
 		/* Archive & 404 page compatibility */
-		if ( is_archive() || is_home() || is_search() || is_404() ) {
+		if ( is_archive() || ( is_home() && ! wp_is_block_theme() ) || is_search() || is_404() ) {
 
 			global $wp_query;
 			$current_object_id = $wp_query->get_queried_object_id();

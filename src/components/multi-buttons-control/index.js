@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 import { useLayoutEffect,useEffect, useState, useRef } from '@wordpress/element';
-
+import { applyFilters } from '@wordpress/hooks';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import { Button, ButtonGroup } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
@@ -47,7 +47,7 @@ const MultiButtonsControl = ( props ) => {
 	} = props;
 
 	const selectedBlock = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
-	const allBlocksAttributes = wp.hooks.applyFilters( 'uagb.blocksAttributes', blocksAttributes ); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	const allBlocksAttributes = applyFilters( 'uagb.blocksAttributes', blocksAttributes ); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	const [ buttonPrimaryStateDesktop, setbuttonPrimaryStateDesktop ] = useState( true );
 	const [ buttonPrimaryStateTablet, setbuttonPrimaryStateTablet ] = useState( true );
 	const [ buttonPrimaryStateMobile, setbuttonPrimaryStateMobile ] = useState( true );
@@ -208,9 +208,9 @@ const MultiButtonsControl = ( props ) => {
 		} );
 	};
 	const controlName = getIdFromString( label );
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${selectedBlock}.${panelNameForHook}.${controlName}.before`, '', selectedBlock );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${selectedBlock}.${panelNameForHook}.${controlName}`, '', selectedBlock );
-	const allOptions = wp.hooks.applyFilters( `spectra.${selectedBlock}.${panelNameForHook}.${controlName}.options`, options, selectedBlock );
+	const controlBeforeDomElement = applyFilters( `spectra.${selectedBlock}.${panelNameForHook}.${controlName}.before`, '', selectedBlock );
+	const controlAfterDomElement = applyFilters( `spectra.${selectedBlock}.${panelNameForHook}.${controlName}`, '', selectedBlock );
+	const allOptions = applyFilters( `spectra.${selectedBlock}.${panelNameForHook}.${controlName}.options`, options, selectedBlock );
 
 	return (
 		<div

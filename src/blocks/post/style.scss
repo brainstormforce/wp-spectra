@@ -233,6 +233,8 @@
 		img {
 			display: block;
 			width: 100%;
+			height: auto;
+			max-width: 100%;
 		}
 	}
 
@@ -435,6 +437,12 @@
 	ul.slick-dots {
 		transform: unset;
 		position: relative;
+	}
+
+	.slick-prev:not(:hover):not(:active):not(.has-background),
+	.slick-next:not(:hover):not(:active):not(.has-background),
+	ul.slick-dots li button:not(:hover):not(:active):not(.has-background) {
+		background-color: unset;
 	}
 }
 
@@ -664,3 +672,4 @@
 		transform: scale(1);
 	}
 }
+

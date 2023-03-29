@@ -12,7 +12,7 @@ import { select } from '@wordpress/data';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import PropTypes from 'prop-types';
 import UAGHelpText from '@Components/help-text';
-
+import { applyFilters } from '@wordpress/hooks';
 import Separator from '@Components/separator';
 
 const propTypes = {
@@ -256,6 +256,7 @@ const ResponsiveBorder = ( props ) => {
 						value: attributes[prefix + 'BorderLink'],
 						label: prefix + 'BorderLink',
 					} }
+					min={ 0 }
 				/>
 			) }
 			{ 'default' !== borderStyle && (
@@ -345,6 +346,7 @@ const ResponsiveBorder = ( props ) => {
 						label: prefix + 'BorderRadiusLink',
 					} }
 					help={ borderRadiusHelp ? borderRadiusHelp : false }
+					min={ 0 }
 				/>
 			) }
 			{ 'none' !== borderStyle && 'default' !== borderStyle && (
@@ -364,8 +366,8 @@ const ResponsiveBorder = ( props ) => {
 	);
 
 	const controlName = getIdFromString( props.label );
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	return (
 		<div

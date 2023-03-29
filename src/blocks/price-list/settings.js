@@ -1,6 +1,5 @@
 import { useEffect,memo } from '@wordpress/element';
 import TypographyControl from '@Components/typography';
-import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 import { select } from '@wordpress/data';
 import Range from '@Components/range/Range.js';
@@ -265,55 +264,7 @@ const Settings = ( props ) => {
 		} );
 		setAttributes( { headingAlign: value } )
 	}
-	let loadTitleGoogleFonts;
-	let loadDescGoogleFonts;
-	let loadPriceGoogleFonts;
-
-	if ( titleLoadGoogleFonts === true ) {
-		const titleconfig = {
-			google: {
-				families: [
-					titleFontFamily +
-						( titleFontWeight ? ':' + titleFontWeight : '' ),
-				],
-			},
-		};
-
-		loadTitleGoogleFonts = (
-			<WebfontLoader config={ titleconfig }></WebfontLoader>
-		);
-	}
-
-	if ( descLoadGoogleFonts === true ) {
-		const descconfig = {
-			google: {
-				families: [
-					descFontFamily +
-						( descFontWeight ? ':' + descFontWeight : '' ),
-				],
-			},
-		};
-
-		loadDescGoogleFonts = (
-			<WebfontLoader config={ descconfig }></WebfontLoader>
-		);
-	}
-
-	if ( priceLoadGoogleFonts === true ) {
-		const priceconfig = {
-			google: {
-				families: [
-					priceFontFamily +
-						( priceFontWeight ? ':' + priceFontWeight : '' ),
-				],
-			},
-		};
-
-		loadPriceGoogleFonts = (
-			<WebfontLoader config={ priceconfig }></WebfontLoader>
-		);
-	}
-
+	
 	// Margin Settings.
 	const marginSettings = () => {
 		return (
@@ -1386,11 +1337,6 @@ const Settings = ( props ) => {
 	return (
 		<>
 			{ inspectControl() }
-
-				{ loadTitleGoogleFonts }
-				{ loadDescGoogleFonts }
-				{ loadPriceGoogleFonts }
-
 		</>
 	);
 };

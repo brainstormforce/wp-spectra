@@ -7,6 +7,7 @@ import AdvancedPopColorControl from '@Components/color-control/advanced-pop-colo
 import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import { getPanelIdFromRef } from '@Utils/Helpers';
 import { select } from '@wordpress/data';
+import { applyFilters } from '@wordpress/hooks';
 
 const GradientSettings = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -43,8 +44,8 @@ const GradientSettings = ( props ) => {
 	};
 
 	const controlName = 'gradient-settings'; // there is no label props that's why keep hard coded label
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	const type = undefined !== gradientType ? gradientType.value : 'basic';
 

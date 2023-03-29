@@ -167,7 +167,7 @@ return array_merge(
 		'backgroundVideoOpacity'            => 0.5,
 		'topInvert'                         => false,
 		'bottomInvert'                      => false,
-		'textColor'                         => 'inherit',
+		'textColor'                         => '',
 		'linkColor'                         => '',
 		'linkHoverColor'                    => '',
 		'isBlockRootParent'                 => false,

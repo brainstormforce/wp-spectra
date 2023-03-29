@@ -6,6 +6,7 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
+import generateShadowCSS from '@Controls/generateShadowCSS';
 
 function styling( props ) {
 
@@ -92,25 +93,22 @@ function styling( props ) {
 	const transformation = generateCSSUnit( getFallbackNumber( rotation, 'rotation', blockName ), rotationUnit );
 	const background = 'classic' === iconBackgroundColorType ? iconBackgroundColor : iconBackgroundGradientColor;
 	const hoverBackground = 'classic' === iconHoverBackgroundColorType ? iconHoverBackgroundColor : iconHoverBackgroundGradientColor;
-	let dropShadow = '';
-	const shadowH = generateCSSUnit( iconShadowHOffset, 'px' );
-	const shadowV = generateCSSUnit( iconShadowVOffset, 'px' );
-	const shadowBlur = generateCSSUnit( iconShadowBlur, 'px' );
 
-	if( iconShadowColor && shadowH && shadowV && shadowBlur ) {
-		dropShadow =  shadowH+ ' ' + shadowV + ' ' + shadowBlur + ' ' + iconShadowColor;
-	}
+	const dropShadow = generateShadowCSS( {
+		'horizontal': iconShadowHOffset,
+		'vertical': iconShadowVOffset,
+		'blur': iconShadowBlur,
+		'color': iconShadowColor,
+	} );
 
-	let boxShadow = '';
-	const boxShadowH = generateCSSUnit( iconBoxShadowHOffset, 'px' );
-	const boxShadowV = generateCSSUnit( iconBoxShadowVOffset, 'px' );
-	const boxShadowBlur = generateCSSUnit( iconBoxShadowBlur, 'px' );
-	const boxShadowSpread = generateCSSUnit( iconBoxShadowSpread, 'px' );
-	const boxShadowPosition = iconBoxShadowPosition === 'outset' ? '' : iconBoxShadowPosition
-
-	if( iconBoxShadowColor && boxShadowH && boxShadowV && boxShadowBlur ) {
-		boxShadow =  boxShadowH+ ' ' + boxShadowV + ' ' + boxShadowBlur + ' ' + boxShadowSpread + ' ' + iconBoxShadowColor + ' ' + boxShadowPosition;
-	}
+	const boxShadow = generateShadowCSS( {
+		'horizontal': iconBoxShadowHOffset,
+		'vertical': iconBoxShadowVOffset,
+		'blur': iconBoxShadowBlur,
+		'spread': iconBoxShadowSpread,
+		'color': iconBoxShadowColor,
+		'position': iconBoxShadowPosition,
+	} );
 
 	const selectors = {
 		'.uagb-icon-wrapper': {

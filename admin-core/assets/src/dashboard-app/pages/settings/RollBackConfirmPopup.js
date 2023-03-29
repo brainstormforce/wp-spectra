@@ -1,7 +1,7 @@
-/* This example requires Tailwind CSS v2.0+ */
+/* This popup appears to confirm whether or not the user wishes to rollback to their selected version. */
 import { Fragment, useRef, useState, useEffect } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 
 const RollBackConfirmPopup = ( props ) => {
 	const {
@@ -35,7 +35,7 @@ const RollBackConfirmPopup = ( props ) => {
 	
 	return (
 		<Transition.Root show={ open } as={ Fragment }>
-			<Dialog as="div" className="uag-rollback__dialog fixed backdrop-blur-sm inset-0 overflow-y-auto" initialFocus={ cancelButtonRef } onClose={ setOpen }>
+			<Dialog as="div" className="spectra-admin__dialog fixed backdrop-blur-sm inset-0 overflow-y-auto" initialFocus={ cancelButtonRef } onClose={ setOpen }>
 				<div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
 					<Transition.Child
 						as={ Fragment }
@@ -79,10 +79,14 @@ const RollBackConfirmPopup = ( props ) => {
 									{ __( 'Rollback to Previous Version', 'ultimate-addons-for-gutenberg' ) }
 									</Dialog.Title>
 									<p className="mt-2 text-sm text-slate-500">
-										{
-											// eslint-disable-next-line @wordpress/i18n-no-variables
-											__( `Are you sure you want to rollback to Spectra v${ previousVersionSelect }?`, 'ultimate-addons-for-gutenberg' )
-										}
+										{ sprintf(
+											// translators: %1$s: selected version of Spectra.
+											__(
+												'Are you sure you want to rollback to Spectra v%1$s?',
+												'ultimate-addons-for-gutenberg'
+											),
+											previousVersionSelect,
+										) }
 									</p>
 								</div>
 							</div>

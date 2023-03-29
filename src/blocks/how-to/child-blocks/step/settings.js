@@ -4,7 +4,6 @@ import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.j
 import UAGMediaPicker from '@Components/image';
 import { InspectorControls } from '@wordpress/block-editor';
 import TypographyControl from '@Components/typography';
-import WebfontLoader from '@Components/typography/fontloader';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import UAGSelectControl from '@Components/select-control';
 import { getImageSize } from '@Utils/Helpers';
@@ -128,55 +127,6 @@ const Settings = ( props ) => {
 		item.label = item.label.replace( /\w/, firstLetter => firstLetter.toUpperCase() );
 		return item;
 	} );
-
-	let loadUrlGoogleFonts;
-	let loadTitleGoogleFonts;
-	let loadDescriptionGoogleFonts;
-
-	if ( true === urlLoadGoogleFonts ) {
-		const uconfig = {
-			google: {
-				families: [
-					urlFontFamily +
-						( urlFontWeight ? ':' + urlFontWeight : '' ),
-				],
-			},
-		};
-
-		loadUrlGoogleFonts = (
-			<WebfontLoader config={ uconfig }></WebfontLoader>
-		);
-	}
-
-	if ( true === titleLoadGoogleFonts ) {
-		const tconfig = {
-			google: {
-				families: [
-					titleFontFamily +
-						( titleFontWeight ? ':' + titleFontWeight : '' ),
-				],
-			},
-		};
-
-		loadTitleGoogleFonts = (
-			<WebfontLoader config={ tconfig }></WebfontLoader>
-		);
-	}
-
-	if ( true === descriptionLoadGoogleFonts ) {
-		const dconfig = {
-			google: {
-				families: [
-					descriptionFontFamily +
-						( descriptionFontWeight ? ':' + descriptionFontWeight : '' ),
-				],
-			},
-		};
-
-		loadDescriptionGoogleFonts = (
-			<WebfontLoader config={ dconfig }></WebfontLoader>
-		);
-	}
 
 	const imageControls = () => {
 		return (
@@ -589,9 +539,6 @@ const Settings = ( props ) => {
 					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			{ loadUrlGoogleFonts }
-			{ loadTitleGoogleFonts }
-			{ loadDescriptionGoogleFonts }
 		</>
 	);
 };

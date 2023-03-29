@@ -4,6 +4,7 @@ import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 import { select } from '@wordpress/data';
 import { Button, Tooltip, Dashicon } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import { applyFilters } from '@wordpress/hooks';
 
 const UAGReset = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -24,7 +25,7 @@ const UAGReset = ( props ) => {
 		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
 	}, [blockNameForHook] )
 
-	const allBlocksAttributes = wp.hooks.applyFilters( 'uagb.blocksAttributes', blocksAttributes )
+	const allBlocksAttributes = applyFilters( 'uagb.blocksAttributes', blocksAttributes )
 
 	const getBlockResetValue = () => {
 		const selectedBlockName = getSelectedBlock()?.name.split( '/' ).pop();
@@ -86,8 +87,8 @@ const UAGReset = ( props ) => {
 	};
 
 	const controlName = 'reset'; // there is no label props that's why keep hard coded label
-	const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 	return (
 		<Tooltip
 			text={ __( 'Reset', 'ultimate-addons-for-gutenberg' )}

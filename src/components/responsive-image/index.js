@@ -9,6 +9,7 @@ import { getPanelIdFromRef } from '@Utils/Helpers';
  import { select } from '@wordpress/data';
  import { __ } from '@wordpress/i18n';
  import UAGHelpText from '@Components/help-text';
+ import { applyFilters } from '@wordpress/hooks';
 
 const ResponsiveUAGImage = ( props ) => {
 	const [panelNameForHook, setPanelNameForHook] = useState( null );
@@ -78,8 +79,8 @@ const ResponsiveUAGImage = ( props ) => {
 
 
 	 const controlName = 'image'; // there is no label props that's why keep hard coded label
-	 const controlBeforeDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	 const controlAfterDomElement = wp.hooks.applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+	 const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
+	 const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
 
 	 return (
 		<div

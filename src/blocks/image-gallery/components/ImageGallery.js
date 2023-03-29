@@ -106,11 +106,25 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		}
 		// Next Check if this is a carousel that needs dots, and set the height of the dots wrapper.
 		if ( ( mediaGallery && paginateUseDots ) && ( feedLayout === 'carousel' ) ){
-			setSlickDotHeight(
-				( mediaGallery.length > columnsDeskFallback )
-				? slickCarousel.current.children[0].querySelector( '.slick-dots' ).clientHeight
-				: 0
-			);
+			if ( 'Desktop' === deviceType ) {
+				setSlickDotHeight(
+					( mediaGallery.length > columnsDeskFallback )
+					? slickCarousel.current.children[0].querySelector( '.slick-dots' ).clientHeight
+					: 0
+				);
+			} else if ( 'Tablet' === deviceType ) {
+				setSlickDotHeight(
+					( mediaGallery.length > columnsTabFallback )
+					? slickCarousel.current.children[0].querySelector( '.slick-dots' ).clientHeight
+					: 0
+				);
+			} else {
+				setSlickDotHeight(
+					( mediaGallery.length > columnsMobFallback )
+					? slickCarousel.current.children[0].querySelector( '.slick-dots' ).clientHeight
+					: 0
+				);
+			}
 		}
 		// Else check if this is tiled and load all images previously focused by the user.
 		else if ( feedLayout === 'tiled' ){
@@ -125,6 +139,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	}, [
 		feedLayout,
 		JSON.stringify( mediaGallery ),
+		deviceType,
 	] );
 
 	// Update Tile Sizer Tile when needed.

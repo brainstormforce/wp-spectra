@@ -13,8 +13,12 @@ import { registerBlockType, createBlock } from '@wordpress/blocks';
 import './format';
 import colourNameToHex from '@Controls/changeColorNameToHex';
 import PreviewImage from '@Controls/previewImage';
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let headingCommonData = {};
+headingCommonData = applyFilters( 'uagb/advanced-heading', addCommonDataToSpectraBlocks( headingCommonData ) );
 registerBlockType( 'uagb/advanced-heading', {
+	...headingCommonData,
 	title: __( 'Heading', 'ultimate-addons-for-gutenberg' ),
 	description: __(
 		'Add heading, sub heading and a separator using one block.',
@@ -29,13 +33,8 @@ registerBlockType( 'uagb/advanced-heading', {
 	supports: {
 		anchor: true,
 	},
-	example: {
-		attributes: {
-			isPreview: true,
-		}
-	},
-	category: uagb_blocks_info.category,
 	attributes,
+category: uagb_blocks_info.category,
 	edit: ( props ) =>
 		props.attributes.isPreview ? (
 			<PreviewImage image="advanced-heading" />
