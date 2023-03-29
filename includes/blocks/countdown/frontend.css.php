@@ -22,17 +22,26 @@ $box_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'box
 $box_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'box', 'mobile' );
 
 // Box Shadow.
-$box_shadow_position_css = $attr['boxShadowPosition'];
+$box_shadow_properties       = array(
+	'horizontal' => $attr['boxShadowHOffset'],
+	'vertical'   => $attr['boxShadowVOffset'],
+	'blur'       => $attr['boxShadowBlur'],
+	'spread'     => $attr['boxShadowSpread'],
+	'color'      => $attr['boxShadowColor'],
+	'position'   => $attr['boxShadowPosition'],
+);
+$box_shadow_hover_properties = array(
+	'horizontal' => $attr['boxShadowHOffsetHover'],
+	'vertical'   => $attr['boxShadowVOffsetHover'],
+	'blur'       => $attr['boxShadowBlurHover'],
+	'spread'     => $attr['boxShadowSpreadHover'],
+	'color'      => $attr['boxShadowColorHover'],
+	'position'   => $attr['boxShadowPositionHover'],
+	'alt_color'  => $attr['boxShadowColor'],
+);
 
-if ( 'outset' === $attr['boxShadowPosition'] ) {
-	$box_shadow_position_css = '';
-}
-
-$box_shadow_position_css_hover = $attr['boxShadowPositionHover'];
-
-if ( 'outset' === $attr['boxShadowPositionHover'] ) {
-	$box_shadow_position_css_hover = '';
-}
+$box_shadow_css       = UAGB_Block_Helper::generate_shadow_css( $box_shadow_properties );
+$box_shadow_hover_css = UAGB_Block_Helper::generate_shadow_css( $box_shadow_hover_properties );
 
 $m_selectors = array();
 $t_selectors = array();
@@ -78,17 +87,7 @@ $selectors = array(
 			'padding-left'     => UAGB_Helper::get_css_value( $attr['boxLeftPadding'], $attr['boxPaddingUnit'] ),
 			'row-gap'          => UAGB_Helper::get_css_value( $attr['internalBoxSpacing'], 'px' ),
 			'column-gap'       => UAGB_Helper::get_css_value( $attr['internalBoxSpacing'], 'px' ),
-			'box-shadow'       => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
-													' ' .
-													UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) .
-													' ' .
-													UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) .
-													' ' .
-													UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) .
-													' ' .
-													$attr['boxShadowColor'] .
-													' ' .
-													$box_shadow_position_css,
+			'box-shadow'       => $box_shadow_css,
 		),
 		$box_border_css
 	),
@@ -127,21 +126,9 @@ $selectors = array(
 
 );
 
-// If hover blur or hover color are set, show the hover shadow.
-if ( ( ( '' !== $attr['boxShadowBlurHover'] ) && ( null !== $attr['boxShadowBlurHover'] ) ) || '' !== $attr['boxShadowColorHover'] ) {
-
-	$selectors['.wp-block-uagb-countdown:hover .wp-block-uagb-countdown__box']['box-shadow'] = UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
-																' ' .
-														UAGB_Helper::get_css_value( $attr['boxShadowVOffsetHover'], 'px' ) .
-														' ' .
-														UAGB_Helper::get_css_value( $attr['boxShadowBlurHover'], 'px' ) .
-														' ' .
-														UAGB_Helper::get_css_value( $attr['boxShadowSpreadHover'], 'px' ) .
-														' ' .
-														$attr['boxShadowColorHover'] .
-														' ' .
-														$box_shadow_position_css_hover;
-
+// If using separate box shadow hover settings, then generate CSS for it.
+if ( $attr['useSeparateBoxShadows'] ) {
+	$selectors['.wp-block-uagb-countdown:hover .wp-block-uagb-countdown__box']['box-shadow'] = $box_shadow_hover_css;
 }
 
 // TABLET SELECTORS.
@@ -283,10 +270,14 @@ if ( $is_rtl ) {
 	$m_selectors[ $boxGapSelectorRTL ]['margin-right'] = UAGB_Helper::get_css_value( $attr['boxSpacingMobile'], 'px' );
 }
 
-$combined_selectors = array(
-	'desktop' => $selectors,
-	'tablet'  => $t_selectors,
-	'mobile'  => $m_selectors,
+$combined_selectors = UAGB_Helper::get_combined_selectors(
+	'countdown',
+	array(
+		'desktop' => $selectors,
+		'tablet'  => $t_selectors,
+		'mobile'  => $m_selectors,
+	),
+	$attr 
 );
 
 $base_selector = '.uagb-block-';

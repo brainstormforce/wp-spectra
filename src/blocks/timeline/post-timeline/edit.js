@@ -9,6 +9,7 @@ import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import apiFetch from '@wordpress/api-fetch';
+import WebfontLoader from '@Components/typography/fontloader';
 
 // Import css for timeline.
 import contentTimelineStyle from '.././inline-styles';
@@ -39,6 +40,21 @@ const PostTimelineComponent = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
+			headLoadGoogleFonts,
+			headFontFamily,
+			headFontWeight,
+			subHeadLoadGoogleFonts,
+			subHeadFontFamily,
+			subHeadFontWeight,
+			dateLoadGoogleFonts,
+			dateFontFamily,
+			dateFontWeight,
+			authorLoadGoogleFonts,
+			authorFontFamily,
+			authorFontWeight,
+			ctaLoadGoogleFonts,
+			ctaFontFamily,
+			ctaFontWeight
 		},
 	} = props;
 		
@@ -166,6 +182,87 @@ const PostTimelineComponent = ( props ) => {
 		},
 	);
 
+	let loadHeadGoogleFonts;
+	let loadSubHeadGoogleFonts;
+	let loadDateGoogleFonts;
+	let loadAuthorGoogleFonts;
+	let loadCtaGoogleFonts;
+
+	if ( headLoadGoogleFonts === true ) {
+		const headconfig = {
+			google: {
+				families: [
+					headFontFamily +
+						( headFontWeight ? ':' + headFontWeight : '' ),
+				],
+			},
+		};
+
+		loadHeadGoogleFonts = (
+			<WebfontLoader config={ headconfig }></WebfontLoader>
+		);
+	}
+
+	if ( subHeadLoadGoogleFonts === true ) {
+		const subHeadconfig = {
+			google: {
+				families: [
+					subHeadFontFamily +
+						( subHeadFontWeight ? ':' + subHeadFontWeight : '' ),
+				],
+			},
+		};
+
+		loadSubHeadGoogleFonts = (
+			<WebfontLoader config={ subHeadconfig }></WebfontLoader>
+		);
+	}
+
+	if ( dateLoadGoogleFonts === true ) {
+		const dateconfig = {
+			google: {
+				families: [
+					dateFontFamily +
+						( dateFontWeight ? ':' + dateFontWeight : '' ),
+				],
+			},
+		};
+
+		loadDateGoogleFonts = (
+			<WebfontLoader config={ dateconfig }></WebfontLoader>
+		);
+	}
+
+	if ( authorLoadGoogleFonts === true ) {
+		const authorconfig = {
+			google: {
+				families: [
+					authorFontFamily +
+						( authorFontWeight ? ':' + authorFontWeight : '' ),
+				],
+			},
+		};
+
+		loadAuthorGoogleFonts = (
+			<WebfontLoader config={ authorconfig }></WebfontLoader>
+		);
+	}
+
+	if ( ctaLoadGoogleFonts === true ) {
+		const ctaconfig = {
+			google: {
+				families: [
+					ctaFontFamily +
+						( ctaFontWeight ? ':' + ctaFontWeight : '' ),
+				],
+			},
+		};
+
+		loadCtaGoogleFonts = (
+			<WebfontLoader config={ ctaconfig }></WebfontLoader>
+		);
+	}
+
 	return (
 		<>
 			{ isSelected && (
@@ -176,6 +273,11 @@ const PostTimelineComponent = ( props ) => {
 				/>
 			) }
 			<Render parentProps={ props } latestPosts={ latestPosts } />
+			{ loadHeadGoogleFonts }
+			{ loadSubHeadGoogleFonts }
+			{ loadDateGoogleFonts }
+			{ loadAuthorGoogleFonts }
+			{ loadCtaGoogleFonts }
 		</>
 	);
 };

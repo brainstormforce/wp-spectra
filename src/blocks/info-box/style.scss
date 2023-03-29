@@ -43,14 +43,6 @@ a.uagb-infobox-link-wrap,
 	align-items: center;
 }
 
-a.uagb-infobox-cta-link:hover,
-.entry .entry-content a.uagb-infobox-cta-link:hover,
-a.uagb-infobox-link-wrap:hover,
-.entry .entry-content a.uagb-infobox-link-wrap:hover
-.entry .entry-content a.uagb-infobox-cta-link:hover {
-	color: inherit;
-}
-
 .uagb-infobox-icon-left-title.uagb-infobox-image-valign-middle .uagb-ifb-title-wrap,
 .uagb-infobox-icon-right-title.uagb-infobox-image-valign-middle .uagb-ifb-title-wrap,
 .uagb-infobox-image-valign-middle .uagb-ifb-icon-wrap,
@@ -234,6 +226,10 @@ a.uagb-infobox-link-wrap:hover,
 
 .uagb-ifb-title-wrap {
 	width: 100%;
+}
+
+.uagb-ifb-title {
+	margin-block-start: 0;
 }
 
 .uagb-ifb-title-wrap .uagb-ifb-title-prefix {
