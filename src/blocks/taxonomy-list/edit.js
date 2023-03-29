@@ -5,6 +5,7 @@
 import styling from './styling';
 import { useEffect } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
+import WebfontLoader from '@Components/typography/fontloader';
 
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
@@ -43,6 +44,15 @@ const UAGBTaxonomyList = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
+			titleLoadGoogleFonts,
+			titleFontFamily,
+			titleFontWeight,
+			countLoadGoogleFonts,
+			countFontFamily,
+			countFontWeight,
+			listLoadGoogleFonts,
+			listFontFamily,
+			listFontWeight
 		},
 		setAttributes,
 		clientId,
@@ -171,6 +181,55 @@ const UAGBTaxonomyList = ( props ) => {
 		scrollBlockToView();
 	}, [deviceType] );
 
+	let loadTitleGoogleFonts;
+	let loadCountGoogleFonts;
+	let loadListGoogleFonts;
+
+	if ( titleLoadGoogleFonts === true ) {
+		const titleconfig = {
+			google: {
+				families: [
+					titleFontFamily +
+						( titleFontWeight ? ':' + titleFontWeight : '' ),
+				],
+			},
+		};
+
+		loadTitleGoogleFonts = (
+			<WebfontLoader config={ titleconfig }></WebfontLoader>
+		);
+	}
+
+	if ( countLoadGoogleFonts === true ) {
+		const countconfig = {
+			google: {
+				families: [
+					countFontFamily +
+						( countFontWeight ? ':' + countFontWeight : '' ),
+				],
+			},
+		};
+
+		loadCountGoogleFonts = (
+			<WebfontLoader config={ countconfig }></WebfontLoader>
+		);
+	}
+
+	if ( listLoadGoogleFonts === true ) {
+		const listconfig = {
+			google: {
+				families: [
+					listFontFamily +
+						( listFontWeight ? ':' + listFontWeight : '' ),
+				],
+			},
+		};
+
+		loadListGoogleFonts = (
+			<WebfontLoader config={ listconfig }></WebfontLoader>
+		);
+	}
+
 	return (
 		<>
 			{ isSelected && (
@@ -181,6 +240,9 @@ const UAGBTaxonomyList = ( props ) => {
 				/>
 			) }
 			<Render parentProps={ props } categoriesList={ categoriesList } />
+			{ loadTitleGoogleFonts }
+			{ loadCountGoogleFonts }
+			{ loadListGoogleFonts }
 		</>
 	);
 };

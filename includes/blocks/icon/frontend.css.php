@@ -11,21 +11,27 @@ $icon_width       = UAGB_Helper::get_css_value( $attr['iconSize'], $attr['iconSi
 $transformation   = UAGB_Helper::get_css_value( $attr['rotation'], $attr['rotationUnit'] );
 $background       = 'classic' === $attr['iconBackgroundColorType'] ? $attr['iconBackgroundColor'] : $attr['iconBackgroundGradientColor'];
 $hover_background = 'classic' === $attr['iconHoverBackgroundColorType'] ? $attr['iconHoverBackgroundColor'] : $attr['iconHoverBackgroundGradientColor'];
-$drop_shadow      = '';
-$shadow_h         = UAGB_Helper::get_css_value( $attr['iconShadowHOffset'], 'px' );
-$shadow_v         = UAGB_Helper::get_css_value( $attr['iconShadowVOffset'], 'px' );
-$shadow_blur      = UAGB_Helper::get_css_value( $attr['iconShadowBlur'], 'px' );
-$drop_shadow      = $shadow_h . ' ' . $shadow_v . ' ' . $shadow_blur . ' ' . $attr['iconShadowColor'];
 
-$box_shadow          = '';
-$box_shadow_h        = UAGB_Helper::get_css_value( $attr['iconBoxShadowHOffset'], 'px' );
-$box_shadow_v        = UAGB_Helper::get_css_value( $attr['iconBoxShadowVOffset'], 'px' );
-$box_shadow_blur     = UAGB_Helper::get_css_value( $attr['iconBoxShadowBlur'], 'px' );
-$box_shadow_spread   = UAGB_Helper::get_css_value( $attr['iconBoxShadowSpread'], 'px' );
-$box_shadow_position = 'outset' === $attr['iconBoxShadowPosition'] ? '' : $attr['iconBoxShadowPosition'];
-$box_shadow          = $box_shadow_h . ' ' . $box_shadow_v . ' ' . $box_shadow_blur . ' ' . $attr['iconBoxShadowColor'] . ' ' . $box_shadow_position;
-$t_selectors         = array();
-$m_selectors         = array();
+$drop_shadow_properties = array(
+	'horizontal' => $attr['iconShadowHOffset'],
+	'vertical'   => $attr['iconShadowVOffset'],
+	'blur'       => $attr['iconShadowBlur'],
+	'color'      => $attr['iconShadowColor'],
+);
+$drop_shadow            = UAGB_Block_Helper::generate_shadow_css( $drop_shadow_properties );
+
+$box_shadow_properties = array(
+	'horizontal' => $attr['iconBoxShadowHOffset'],
+	'vertical'   => $attr['iconBoxShadowVOffset'],
+	'blur'       => $attr['iconBoxShadowBlur'],
+	'spread'     => $attr['iconBoxShadowSpread'],
+	'color'      => $attr['iconBoxShadowColor'],
+	'position'   => $attr['iconBoxShadowPosition'],
+);
+$box_shadow            = UAGB_Block_Helper::generate_shadow_css( $box_shadow_properties );
+
+$t_selectors = array();
+$m_selectors = array();
 
 $selectors['.uagb-icon-wrapper']                             = array(
 	'text-align' => $attr['align'],

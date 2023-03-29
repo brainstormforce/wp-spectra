@@ -7,6 +7,7 @@ import { getSettings as getDateSettings } from '@wordpress/date';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { applyFilters } from '@wordpress/hooks';
+import WebfontLoader from '@Components/typography/fontloader';
 
 //  Import CSS.
 import './style.scss';
@@ -28,6 +29,15 @@ const UAGBCountdownEdit = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
+			digitLoadGoogleFonts,
+			digitFontFamily,
+			digitFontWeight,
+			labelLoadGoogleFonts,
+			labelFontFamily,
+			labelFontWeight,
+			separatorLoadGoogleFonts,
+			separatorFontFamily,
+			separatorFontWeight,
 		},
 		setAttributes
 	} = props;
@@ -115,6 +125,52 @@ const UAGBCountdownEdit = ( props ) => {
 		deviceType
 	] );
 
+	// Load all the Google Fonts for The Countdown Block.
+	let loadDigitGoogleFonts;
+	let loadLabelGoogleFonts;
+	let loadSeparatorGoogleFonts;
+
+	if ( digitLoadGoogleFonts === true ) {
+		const digitConfig = {
+			google: {
+				families: [
+					digitFontFamily +
+						( digitFontWeight ? ':' + digitFontWeight : '' ),
+				],
+			},
+		};
+		loadDigitGoogleFonts = (
+			<WebfontLoader config={ digitConfig }></WebfontLoader>
+		);
+	}
+
+	if ( labelLoadGoogleFonts === true ) {
+		const labelConfig = {
+			google: {
+				families: [
+					labelFontFamily + ( labelFontWeight ? ':' + labelFontWeight : '' ),
+				],
+			},
+		};
+		loadLabelGoogleFonts = (
+			<WebfontLoader config={ labelConfig }></WebfontLoader>
+		);
+	}
+
+	if ( separatorLoadGoogleFonts === true ) {
+		const separatorConfig = {
+			google: {
+				families: [
+					separatorFontFamily +
+						( separatorFontWeight ? ':' + separatorFontWeight : '' ),
+				],
+			},
+		};
+		loadSeparatorGoogleFonts = (
+			<WebfontLoader config={ separatorConfig }></WebfontLoader>
+		);
+	}
+
 	return (
 		<>
 			{/* Countdown Toolbar options for Pro (Replace feature) */}
@@ -123,6 +179,9 @@ const UAGBCountdownEdit = ( props ) => {
 			}
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render countdownRef={ countdownRef } parentProps={ props } />
+			{ loadDigitGoogleFonts }
+			{ loadLabelGoogleFonts }
+			{ loadSeparatorGoogleFonts }
 		</>
 	);
 }

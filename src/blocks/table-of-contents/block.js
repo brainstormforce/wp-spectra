@@ -12,12 +12,15 @@ import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let tocCommonData = {};
+tocCommonData = applyFilters( 'uagb/table-of-contents', addCommonDataToSpectraBlocks( tocCommonData ) );
 registerBlockType( 'uagb/table-of-contents', {
+	...tocCommonData,
 	title: __( 'Table Of Contents', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add a table of contents to allow page navigation.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.table_of_contents,
-	category: uagb_blocks_info.category,
 	keywords: [
 		__( 'table of contents', 'ultimate-addons-for-gutenberg' ),
 		__( 'table', 'ultimate-addons-for-gutenberg' ),
@@ -27,6 +30,7 @@ registerBlockType( 'uagb/table-of-contents', {
 		anchor: true,
 	},
 	attributes,
+category: uagb_blocks_info.category,
 	edit: ( props ) =>
 			props.attributes.isPreview ? (
 				<PreviewImage image="table-of-content" />
@@ -35,10 +39,5 @@ registerBlockType( 'uagb/table-of-contents', {
 			),
 	// Render via PHP
 	save: ()=> null,
-	example: {
-		attributes: {
-			isPreview: true,
-		}
-	},
 	deprecated,
 } );

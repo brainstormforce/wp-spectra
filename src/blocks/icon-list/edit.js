@@ -1,7 +1,7 @@
 /**
  * BLOCK: Icon List
  */
-
+import WebfontLoader from '@Components/typography/fontloader';
 import styling from './styling';
 import { useEffect } from '@wordpress/element';
 
@@ -21,7 +21,7 @@ const UAGBIconList = ( props ) => {
 		isSelected,
 		setAttributes,
 		attributes,
-		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob, loadGoogleFonts, fontFamily, fontWeight },
 		clientId,
 	} = props;
 	
@@ -70,10 +70,25 @@ const UAGBIconList = ( props ) => {
 
 	}, [ attributes.parentIcon, attributes.hideLabel, attributes.size ] );
 
+	let googleFonts;
+
+	if ( loadGoogleFonts === true ) {
+		const hconfig = {
+			google: {
+				families: [
+					fontFamily + ( fontWeight ? ':' + fontWeight : '' ),
+				],
+			},
+		};
+
+		googleFonts = <WebfontLoader config={ hconfig }></WebfontLoader>;
+	}
+
 	return (
 			<>
 			{ isSelected && <Settings parentProps={ props } /> }
 				<Render parentProps={ props } />
+				{ googleFonts }
 			</>
 	);
 };

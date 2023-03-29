@@ -9,7 +9,7 @@ import save from './save';
 import './style.scss';
 import deprecated from './deprecated';
 import { __ } from '@wordpress/i18n';
-import { addFilter } from '@wordpress/hooks';
+import { addFilter, applyFilters } from '@wordpress/hooks';
 import { withSelect } from '@wordpress/data';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
 import { registerBlockType } from '@wordpress/blocks';
@@ -41,23 +41,22 @@ const withFaq = createHigherOrderComponent( ( BlockEdit ) => {
 	} );
 }, 'withFaq' );
 
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let faqCommonData = {};
+faqCommonData = applyFilters( 'uagb/faq', addCommonDataToSpectraBlocks( faqCommonData ) );
 registerBlockType( 'uagb/faq', {
+	...faqCommonData,
 	title: __( 'FAQ', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add accordions/FAQ schema to your page.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.faq,
-	category: uagb_blocks_info.category,
 	keywords: [
 		__( 'faq', 'ultimate-addons-for-gutenberg' ),
 		__( 'schema', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 		__( 'accordion', 'ultimate-addons-for-gutenberg' ),
 	],
-	example: {
-		attributes: {
-			isPreview: true,
-		}
-	},
 	attributes,
+category: uagb_blocks_info.category,
 	deprecated,
 	edit: ( props ) =>
 		props.attributes.isPreview ? (
