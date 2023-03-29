@@ -43,10 +43,9 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 					'column-gap': generateCSSUnit( attributes.masonryGutter, 'px' ),
 					'column-count': colCount,
 				},
-				'.wp-block-gallery.blocks-gallery-grid.has-nested-images.uag-masonry.blocks-gallery-grid figure.wp-block-image:not(#individual-image)':
-					{
-						'margin-bottom': generateCSSUnit( attributes.masonryGutter, 'px' ),
-					},
+				'.wp-block-gallery.blocks-gallery-grid.has-nested-images.uag-masonry.blocks-gallery-grid figure.wp-block-image:not(#individual-image)': {
+					'margin-bottom': generateCSSUnit( attributes.masonryGutter, 'px' ),
+				},
 			};
 			const styling = generateCSS( selectors, '#block-' + props.clientId );
 			if ( attributes.masonry ) {

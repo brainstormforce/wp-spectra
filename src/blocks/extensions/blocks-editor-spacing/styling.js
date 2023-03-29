@@ -21,16 +21,13 @@ function styling() {
 	};
 
 	selectors = {
-		'.edit-post-visual-editor .editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper > * + *:not(p), .edit-post-visual-editor .editor-styles-wrapper .block-editor-block-list__layout.is-root-container > * + *:not(p)':
-			spacingCSS,
+		'.edit-post-visual-editor .editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper > * + *:not(p), .edit-post-visual-editor .editor-styles-wrapper .block-editor-block-list__layout.is-root-container > * + *:not(p)': spacingCSS,
 	};
 	tabletSelectors = {
-		'.editor-styles-wrapper > .block-editor-block-list__layout.is-root-container > .wp-block + .wp-block:not(p)':
-			spacingCSS,
+		'.editor-styles-wrapper > .block-editor-block-list__layout.is-root-container > .wp-block + .wp-block:not(p)': spacingCSS,
 	};
 	mobileSelectors = {
-		'.editor-styles-wrapper > .block-editor-block-list__layout.is-root-container > .wp-block + .wp-block:not(p)':
-			spacingCSS,
+		'.editor-styles-wrapper > .block-editor-block-list__layout.is-root-container > .wp-block + .wp-block:not(p)': spacingCSS,
 	};
 
 	let stylingCss = '';
