@@ -443,13 +443,12 @@ function styling( props ) {
 			'line-height': generateCSSUnit( labelLineHeight, labelLineHeightType ),
 			'letter-spacing': generateCSSUnit( labelLetterSpacing, labelLetterSpacingType ),
 		},
-		" .wpgf .gfield_checkbox input[type='checkbox'] + label, .wpgf .gfield_checkbox input[type='checkbox'] + label":
-			{
-				'margin-top': generateCSSUnit(
-					getFallbackNumber( fieldLabelSpacing, 'fieldLabelSpacing', blockName ),
-					'px'
-				),
-			},
+		" .wpgf .gfield_checkbox input[type='checkbox'] + label, .wpgf .gfield_checkbox input[type='checkbox'] + label": {
+			'margin-top': generateCSSUnit(
+				getFallbackNumber( fieldLabelSpacing, 'fieldLabelSpacing', blockName ),
+				'px'
+			),
+		},
 
 		// Focus.
 		' form input:not([type=submit]):focus': {
@@ -663,10 +662,9 @@ function styling( props ) {
 			'background-color': validationMsgBgColor,
 		},
 
-		" .uagb-gf-styler__error-yes .gform_wrapper li.gfield_error input:not([type='submit']):not([type='button']):not([type='image'])":
-			{
-				'border-color': highlightBorderColor,
-			},
+		" .uagb-gf-styler__error-yes .gform_wrapper li.gfield_error input:not([type='submit']):not([type='button']):not([type='image'])": {
+			'border-color': highlightBorderColor,
+		},
 
 		' .uagb-gf-styler__error-yes .gform_wrapper .gfield_error .ginput_container select': {
 			'border-color': highlightBorderColor,
@@ -684,10 +682,9 @@ function styling( props ) {
 			'border-color': highlightBorderColor,
 		},
 
-		' .uagb-gf-styler__error-yes .gform_wrapper li.gfield.gfield_error.gfield_contains_required.gfield_creditcard_warning':
-			{
-				'border-color': highlightBorderColor,
-			},
+		' .uagb-gf-styler__error-yes .gform_wrapper li.gfield.gfield_error.gfield_contains_required.gfield_creditcard_warning': {
+			'border-color': highlightBorderColor,
+		},
 
 		" .uagb-gf-styler__error-yes li.gfield_error .gfield_checkbox input[type='checkbox'] + label:before": {
 			'border-color': highlightBorderColor,
