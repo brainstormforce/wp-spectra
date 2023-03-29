@@ -106,11 +106,12 @@ function styling( props ) {
 		'letter-spacing': generateCSSUnit( fontLetterSpacing, fontLetterSpacingType ),
 	};
 	if ( 'desktop' === stack ) {
-		selectors[ '.uagb-editor-preview-mode-desktop .uagb-buttons-stack-desktop .block-editor-block-list__layout' ] =
-			{
-				'flex-direction': 'column',
-				'row-gap': generateCSSUnit( getFallbackNumber( gap, 'gap', blockName ), 'px' ),
-			};
+		selectors[
+			'.uagb-editor-preview-mode-desktop .uagb-buttons-stack-desktop .block-editor-block-list__layout'
+		] = {
+			'flex-direction': 'column',
+			'row-gap': generateCSSUnit( getFallbackNumber( gap, 'gap', blockName ), 'px' ),
+		};
 		tabletSelectors[
 			'.uagb-editor-preview-mode-tablet .uagb-buttons-stack-desktop .block-editor-block-list__layout'
 		] = {
@@ -215,35 +216,37 @@ function styling( props ) {
 		};
 	}
 
-	tabletSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link' ] =
-		{
-			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
-			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
-			'padding-left': generateCSSUnit( leftTabletPadding, tabletPaddingUnit ),
-			'padding-right': generateCSSUnit( rightTabletPadding, tabletPaddingUnit ),
-			'padding-top': generateCSSUnit( topTabletPadding, tabletPaddingUnit ),
-			'padding-bottom': generateCSSUnit( bottomTabletPadding, tabletPaddingUnit ),
-			'margin-left': generateCSSUnit( leftMarginTablet, marginType ),
-			'margin-right': generateCSSUnit( rightMarginTablet, marginType ),
-			'margin-top': generateCSSUnit( topMarginTablet, marginType ),
-			'margin-bottom': generateCSSUnit( bottomMarginTablet, marginType ),
-			'letter-spacing': generateCSSUnit( fontLetterSpacingTablet, fontLetterSpacingType ),
-		};
+	tabletSelectors[
+		'.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'
+	] = {
+		'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
+		'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
+		'padding-left': generateCSSUnit( leftTabletPadding, tabletPaddingUnit ),
+		'padding-right': generateCSSUnit( rightTabletPadding, tabletPaddingUnit ),
+		'padding-top': generateCSSUnit( topTabletPadding, tabletPaddingUnit ),
+		'padding-bottom': generateCSSUnit( bottomTabletPadding, tabletPaddingUnit ),
+		'margin-left': generateCSSUnit( leftMarginTablet, marginType ),
+		'margin-right': generateCSSUnit( rightMarginTablet, marginType ),
+		'margin-top': generateCSSUnit( topMarginTablet, marginType ),
+		'margin-bottom': generateCSSUnit( bottomMarginTablet, marginType ),
+		'letter-spacing': generateCSSUnit( fontLetterSpacingTablet, fontLetterSpacingType ),
+	};
 
-	mobileSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link' ] =
-		{
-			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
-			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
-			'padding-left': generateCSSUnit( leftMobilePadding, mobilePaddingUnit ),
-			'padding-right': generateCSSUnit( rightMobilePadding, mobilePaddingUnit ),
-			'padding-top': generateCSSUnit( topMobilePadding, mobilePaddingUnit ),
-			'padding-bottom': generateCSSUnit( bottomMobilePadding, mobilePaddingUnit ),
-			'margin-left': generateCSSUnit( leftMarginMobile, marginType ),
-			'margin-right': generateCSSUnit( rightMarginMobile, marginType ),
-			'margin-top': generateCSSUnit( topMarginMobile, marginType ),
-			'margin-bottom': generateCSSUnit( bottomMarginMobile, marginType ),
-			'letter-spacing': generateCSSUnit( fontLetterSpacingMobile, fontLetterSpacingType ),
-		};
+	mobileSelectors[
+		'.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'
+	] = {
+		'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
+		'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
+		'padding-left': generateCSSUnit( leftMobilePadding, mobilePaddingUnit ),
+		'padding-right': generateCSSUnit( rightMobilePadding, mobilePaddingUnit ),
+		'padding-top': generateCSSUnit( topMobilePadding, mobilePaddingUnit ),
+		'padding-bottom': generateCSSUnit( bottomMobilePadding, mobilePaddingUnit ),
+		'margin-left': generateCSSUnit( leftMarginMobile, marginType ),
+		'margin-right': generateCSSUnit( rightMarginMobile, marginType ),
+		'margin-top': generateCSSUnit( topMarginMobile, marginType ),
+		'margin-bottom': generateCSSUnit( bottomMarginMobile, marginType ),
+		'letter-spacing': generateCSSUnit( fontLetterSpacingMobile, fontLetterSpacingType ),
+	};
 
 	const base_selector = ` .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 	let styling_css = generateCSS( selectors, base_selector );
