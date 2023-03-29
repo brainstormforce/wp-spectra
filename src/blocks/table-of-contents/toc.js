@@ -67,7 +67,13 @@ function TableOfContents( props ) {
 				}
 			}
 
-			toc += '<li class="uagb-toc__list"><a href="#">' + title + '</a>';
+			// Replace # with JavaScript:void(0) to avoid page refresh in FSE on click.
+			const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
+			if ( iframeEl ) {
+				toc += '<li class="uagb-toc__list"><a href="JavaScript:void(0);">' + title + '</a>';
+			} else {
+				toc += '<li class="uagb-toc__list"><a href="#">' + title + '</a>';
+			}
 
 			lastLevel = level;
 		} );

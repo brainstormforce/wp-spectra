@@ -164,7 +164,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 			}
 
 
-			if ( headerArray !== 'undefined' ) {
+			if ( headerArray ) {
 				headerArray.forEach( // eslint-disable-next-line
 					function ( index, value ) {
 						const header = index;
@@ -192,7 +192,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 				);
 			}
 
-			if ( headers !== undefined ) {
+			if ( headers ) {
 				headers.forEach( function ( heading, index ) {
 					heading.level = 0;
 
