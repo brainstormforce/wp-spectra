@@ -83,8 +83,18 @@ const deprecated = [
 		save( props ) {
 			const { attributes, className } = props;
 
-			const { label, image_icon, icon, image, block_id, link, target, disableLink, hideLabel, fromParentIcon } =
-				attributes;
+			const {
+				label,
+				image_icon,
+				icon,
+				image,
+				block_id,
+				link,
+				target,
+				disableLink,
+				hideLabel,
+				fromParentIcon,
+			} = attributes;
 
 			let imageIconHtml = '';
 
@@ -177,8 +187,18 @@ const deprecated = [
 		save( props ) {
 			const { attributes, className } = props;
 
-			const { label, image_icon, icon, image, block_id, link, target, disableLink, hideLabel, fromParentIcon } =
-				attributes;
+			const {
+				label,
+				image_icon,
+				icon,
+				image,
+				block_id,
+				link,
+				target,
+				disableLink,
+				hideLabel,
+				fromParentIcon,
+			} = attributes;
 
 			const defaultedAlt = image && image?.alt ? image?.alt : '';
 
@@ -216,8 +236,18 @@ const deprecated = [
 		save( props ) {
 			const { attributes, className } = props;
 
-			const { label, image_icon, icon, image, block_id, link, target, disableLink, hideLabel, fromParentIcon } =
-				attributes;
+			const {
+				label,
+				image_icon,
+				icon,
+				image,
+				block_id,
+				link,
+				target,
+				disableLink,
+				hideLabel,
+				fromParentIcon,
+			} = attributes;
 
 			const defaultedAlt = image && image?.alt ? image?.alt : '';
 

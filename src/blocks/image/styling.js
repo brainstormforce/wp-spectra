@@ -288,14 +288,12 @@ export default function styling( props ) {
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner .uagb-image-caption': {
 			'opacity': captionShowOn === 'always' ? 1 : 0,
 		},
-		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__inner':
-			{
-				'border-color': overlayBorderHColor,
-			},
-		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__color-wrapper':
-			{
-				'opacity': overlayHoverOpacityFallback,
-			},
+		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__inner': {
+			'border-color': overlayBorderHColor,
+		},
+		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__color-wrapper': {
+			'opacity': overlayHoverOpacityFallback,
+		},
 		// Seperator
 		'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-separator': {
 			'width': generateCSSUnit( seperatorWidthFallback, separatorWidthType ),
@@ -390,8 +388,9 @@ export default function styling( props ) {
 		'margin-left': generateCSSUnit( captionLeftMarginTablet, captionMarginUnitTablet ),
 	};
 
-	tablet_selectors[ '.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner' ] =
-		overlayBorderCSSTablet;
+	tablet_selectors[
+		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner'
+	] = overlayBorderCSSTablet;
 
 	tablet_selectors[ '.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading' ] = {
 		'font-size': generateCSSUnit( headingFontSizeTablet, headingFontSizeType ),
@@ -447,8 +446,9 @@ export default function styling( props ) {
 		'margin-left': generateCSSUnit( captionLeftMarginMobile, captionMarginUnitMobile ),
 	};
 
-	mobile_selectors[ '.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner' ] =
-		overlayBorderCSSMobile;
+	mobile_selectors[
+		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner'
+	] = overlayBorderCSSMobile;
 
 	mobile_selectors[ '.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading' ] = {
 		'font-size': generateCSSUnit( headingFontSizeMobile, headingFontSizeType ),

@@ -41,8 +41,16 @@ const propTypes = {};
 const defaultProps = {};
 
 const Render = ( props ) => {
-	const { attributes, setAttributes, className, isSelected, insertBlocksAfter, onReplace, context, clientId } =
-		props.parentProps;
+	const {
+		attributes,
+		setAttributes,
+		className,
+		isSelected,
+		insertBlocksAfter,
+		onReplace,
+		context,
+		clientId,
+	} = props.parentProps;
 
 	const {
 		block_id,
