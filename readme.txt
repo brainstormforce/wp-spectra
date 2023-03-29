@@ -2,7 +2,7 @@
 Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
-Requires at least: 4.7
+Requires at least: 5.6
 Requires PHP: 5.6
 Tested up to: 6.2
 Stable tag: 2.4.1
@@ -170,7 +170,14 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 2.4.1 - MONDAY, 27th MARCH 2023 =
+= x.x.x =
+* Fix: Container - Heading tags were not inheriting color from theme or container.
+* Fix: Image - width and height tag does not appear when image uploaded.
+* Fix: Spacing Control - Removed the capability to set negative values for width & radius settings.
+* Fix: Typography Control - Removed the capability to set negative values for line-height & font size settings.
+* Fix: Post Carousel - TwentyTwentyone theme hover style override for arrow and dot.
+
+= 2.4.1 - TUESDAY, 28th MARCH 2023 =
 * Improvement: Updated Spectra to work with WordPress 6.2 and Full Site Editing (FSE) themes.
 * Improvement: Added filter to enable/disable core responsive condition.
 * Improvement: Resolved the Spectra blocks editor spacing conflict with the Blocksy theme.

@@ -92,13 +92,6 @@
 	} // To resolve inner child with short width when container used inside tab body - https://d.pr/i/dGSoPT.
 }
 
-.uag-advance-panel-body-layout {
-
-	.uagb-responsive-select-control .uagb-size-type-field-tabs {
-		grid-template-columns: 40% 60%;
-	}
-}
-
 //Horizonatal Styles
 .uagb-editor-preview-mode-tablet.uagb-tabs__wrap.uagb-tabs__hstyle1-tablet {
 	flex-direction: column;

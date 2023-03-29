@@ -708,7 +708,7 @@ class UAGB_Post_Assets {
 		if ( 'disabled' === $this->load_gfonts_locally ) {
 
 			// Enqueue google fonts.
-			wp_enqueue_style( 'uag-google-fonts', $this->gfonts_url, array(), UAGB_VER, 'all' );
+			wp_enqueue_style( 'uag-google-fonts-' . $this->post_id, $this->gfonts_url, array(), UAGB_VER, 'all' );
 
 		} else {
 
@@ -1027,7 +1027,9 @@ class UAGB_Post_Assets {
 
 					}
 				} elseif ( 'core/template-part' === $block['blockName'] ) {
+					
 					$id = $this->get_fse_template_part( $block );
+					
 					if ( $id ) {
 						$assets     = $this->get_assets_using_post_content( $id );
 						$block_css .= $assets['css'];
