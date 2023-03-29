@@ -184,11 +184,9 @@ const UAGBContainer = ( props ) => {
 	};
 
 	const createBlocksFromInnerBlocksTemplate = ( innerBlocksTemplate ) => {
-		return innerBlocksTemplate.map(
-			(
-				[ name, attributes, innerBlocks = [] ] // eslint-disable-line no-shadow
-			) => createBlock( name, attributes, createBlocksFromInnerBlocksTemplate( innerBlocks ) )
-		);
+		return innerBlocksTemplate.map( (
+			[ name, attributes, innerBlocks = [] ] // eslint-disable-line no-shadow
+		) => createBlock( name, attributes, createBlocksFromInnerBlocksTemplate( innerBlocks ) ) );
 	};
 
 	if ( ! variationSelected && 0 === select( 'core/block-editor' ).getBlockParents( clientId ).length ) {

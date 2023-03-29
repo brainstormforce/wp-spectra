@@ -302,8 +302,7 @@ export default function styling( props ) {
 			'letter-spacing': generateCSSUnit( digitLetterSpacing, digitLetterSpacingType ),
 			'color': digitColor,
 		},
-		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box:not(:last-child) .wp-block-uagb-countdown__time::after':
-			{}, // Empty ruleset to prevent undefined error.
+		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box:not(:last-child) .wp-block-uagb-countdown__time::after': {}, // Empty ruleset to prevent undefined error.
 		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box:not(:first-child)': {}, // Empty ruleset to prevent undefined error (for RTL Box Gap).
 		'.wp-block-uagb-countdown div.wp-block-uagb-countdown__label': {
 			'align-self': ! isSquareBox && boxFlex === 'row' ? labelVerticalAlignment : 'unset',
