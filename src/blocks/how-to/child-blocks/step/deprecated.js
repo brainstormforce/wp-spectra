@@ -426,8 +426,18 @@ const deprecated = [
 		save( props ) {
 			const { attributes } = props;
 
-			const { block_id, name, description, url, urlType, image, imageSize, urlText, urlTarget, imgPosition } =
-				attributes;
+			const {
+				block_id,
+				name,
+				description,
+				url,
+				urlType,
+				image,
+				imageSize,
+				urlText,
+				urlTarget,
+				imgPosition,
+			} = attributes;
 
 			let urlCheck = '';
 			if ( typeof image !== 'undefined' && image !== null && image !== '' ) {
@@ -493,8 +503,18 @@ const deprecated = [
 		save( props ) {
 			const { attributes } = props;
 
-			const { block_id, name, description, url, urlType, image, imageSize, urlText, urlTarget, imgPosition } =
-				attributes;
+			const {
+				block_id,
+				name,
+				description,
+				url,
+				urlType,
+				image,
+				imageSize,
+				urlText,
+				urlTarget,
+				imgPosition,
+			} = attributes;
 
 			let urlCheck = '';
 			if ( typeof image !== 'undefined' && image !== null && image !== '' ) {
