@@ -2,7 +2,6 @@ import { __ } from '@wordpress/i18n';
 import TypographyControl from '@Components/typography';
 import BoxShadowControl from '@Components/box-shadow';
 import MultiButtonsControl from '@Components/multi-buttons-control';
-import WebfontLoader from '@Components/typography/fontloader';
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
 import UAGTabsControl from '@Components/tabs';
@@ -751,38 +750,6 @@ const Settings = ( props ) => {
 		return '';
 	};
 
-	let loadInputGoogleFonts;
-
-	if ( inputloadGoogleFonts === true ) {
-		const qconfig = {
-			google: {
-				families: [
-					inputFontFamily +
-						( inputFontWeight ? ':' + inputFontWeight : '' ),
-				],
-			},
-		};
-		loadInputGoogleFonts = (
-			<WebfontLoader config={ qconfig }></WebfontLoader>
-		);
-	}
-
-	let loadButtonGoogleFonts;
-
-	if ( buttonloadGoogleFonts === true ) {
-		const qconfig = {
-			google: {
-				families: [
-					buttonFontFamily +
-						( buttonFontWeight ? ':' + buttonFontWeight : '' ),
-				],
-			},
-		};
-		loadButtonGoogleFonts = (
-			<WebfontLoader config={ qconfig }></WebfontLoader>
-		);
-	}
-
 	return (
 		<>
 			<InspectorControls>
@@ -800,9 +767,7 @@ const Settings = ( props ) => {
 						parentProps={ props }
 					></InspectorTab>
 				</InspectorTabs>
-			</InspectorControls>
-			{ loadInputGoogleFonts }
-			{ loadButtonGoogleFonts }
+			</InspectorControls>			
 		</>
 	);
 };
