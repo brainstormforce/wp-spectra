@@ -31,6 +31,6 @@ const attributes = {
 	autocomplete: {
 		type: 'string',
 		default: 'off',
-	}
+	},
 };
 export default attributes;
