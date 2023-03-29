@@ -102,37 +102,37 @@ if ( $attr['noticeDismiss'] ) {
 }
 
 $selectors = array(
-	' .uagb-notice-title'                   => array(
+	'.wp-block-uagb-inline-notice .uagb-notice-title' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $left_padding, $attr['titlePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $right_padding, $attr['titlePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $title_top_padding, $attr['titlePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $title_bottom_padding, $attr['titlePaddingUnit'] ),
 		'color'          => $attr['titleColor'],
 	),
-	' .uagb-notice-text'                    => array(
+	' .uagb-notice-text'                              => array(
 		'color'          => $attr['textColor'],
 		'padding-left'   => UAGB_Helper::get_css_value( $content_left_padding, $attr['contentPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $content_right_padding, $attr['contentPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $content_top_padding, $attr['contentPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $content_bottom_padding, $attr['contentPaddingUnit'] ),
 	),
-	' span.uagb-notice-dismiss svg'         => array( // For Backward.
+	' span.uagb-notice-dismiss svg'                   => array( // For Backward.
 		'fill'  => $attr['noticeDismissColor'],
 		'color' => $attr['noticeDismissColor'],
 	),
-	' svg'                                  => array(
+	' svg'                                            => array(
 		'fill'  => $attr['noticeDismissColor'],
 		'color' => $attr['noticeDismissColor'],
 	),
-	'.uagb-dismissable > svg'               => array(
+	'.uagb-dismissable > svg'                         => array(
 		'width'  => UAGB_Helper::get_css_value( $icon_size_fallback, $attr['iconSizeUnit'] ),
 		'height' => UAGB_Helper::get_css_value( $icon_size_fallback, $attr['iconSizeUnit'] ),
 		'top'    => UAGB_Helper::get_css_value( $attr['titleTopPadding'], $attr['titlePaddingUnit'] ),
 	),
-	'.uagb-inline_notice__align-left svg'   => array(
+	'.uagb-inline_notice__align-left svg'             => array(
 		'right' => UAGB_Helper::get_css_value( $attr['titleRightPadding'], $attr['titlePaddingUnit'] ),
 	),
-	'.uagb-inline_notice__align-center svg' => array(
+	'.uagb-inline_notice__align-center svg'           => array(
 		'right' => UAGB_Helper::get_css_value( $attr['titleRightPadding'], $attr['titlePaddingUnit'] ),
 	),
 );

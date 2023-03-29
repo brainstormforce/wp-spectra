@@ -826,7 +826,7 @@ function CtaStyle( props ) {
 		};
 	}
 
-	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper #block-${ props.clientId } .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
 	let stylingCss = generateCSS( selectors, `${ id }` );
 
