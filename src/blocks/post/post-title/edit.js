@@ -1,15 +1,6 @@
-import { useLayoutEffect } from '@wordpress/element';
 import { decodeEntities } from '@wordpress/html-entities';
-import styles from './editor.lazy.scss';
 
 export const PostTitle = ( props ) => {
-	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect( () => {
-		styles.use();
-		return () => {
-			styles.unuse();
-		};
-	}, [] );
 
 	const { attributes, post } = props;
 

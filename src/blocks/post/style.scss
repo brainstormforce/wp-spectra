@@ -438,6 +438,12 @@
 		transform: unset;
 		position: relative;
 	}
+
+	.slick-prev:not(:hover):not(:active):not(.has-background),
+	.slick-next:not(:hover):not(:active):not(.has-background),
+	ul.slick-dots li button:not(:hover):not(:active):not(.has-background) {
+		background-color: unset;
+	}
 }
 
 .uagb-post-grid[data-equal-height="yes"] .uagb-post__inner-wrap {
@@ -666,3 +672,4 @@
 		transform: scale(1);
 	}
 }
+
