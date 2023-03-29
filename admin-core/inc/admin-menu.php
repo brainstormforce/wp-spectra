@@ -108,6 +108,7 @@ class Admin_Menu {
 
 			add_filter( 'admin_footer_text', array( $this, 'add_footer_link' ), 99 );
 		}
+
 	}
 
 	/**
