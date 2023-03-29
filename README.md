@@ -175,6 +175,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Image - width and height tag does not appear when image uploaded.
 * Fix: Spacing Control - Removed the capability to set negative values for width & radius settings.
 * Fix: Typography Control - Removed the capability to set negative values for line-height & font size settings.
+* Fix: Post Carousel - TwentyTwentyone theme hover style override for arrow and dot.
 
 ### 2.4.1 - TUESDAY, 28th MARCH 2023 ###
 * Improvement: Updated Spectra to work with WordPress 6.2 and Full Site Editing (FSE) themes.
