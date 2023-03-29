@@ -202,11 +202,9 @@ const ColumnsComponent = ( props ) => {
 	};
 
 	const createBlocksFromInnerBlocksTemplate = ( innerBlocksTemplate ) => {
-		return innerBlocksTemplate.map(
-			(
-				[ name, attributes, innerBlocks = [] ] // eslint-disable-line no-shadow
-			) => createBlock( name, attributes, createBlocksFromInnerBlocksTemplate( innerBlocks ) )
-		);
+		return innerBlocksTemplate.map( (
+			[ name, attributes, innerBlocks = [] ] // eslint-disable-line no-shadow
+		) => createBlock( name, attributes, createBlocksFromInnerBlocksTemplate( innerBlocks ) ) );
 	};
 
 	if ( ! hasInnerBlocks ) {

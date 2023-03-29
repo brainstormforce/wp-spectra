@@ -4,8 +4,14 @@
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function inlineStyles( props ) {
-	const { backgroundColor, backgroundType, backgroundImageColor, overlayType, gradientValue, backgroundOpacity } =
-		props.attributes;
+	const {
+		backgroundColor,
+		backgroundType,
+		backgroundImageColor,
+		overlayType,
+		gradientValue,
+		backgroundOpacity,
+	} = props.attributes;
 
 	const style = {};
 
