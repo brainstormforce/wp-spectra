@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { memo, useCallback} from '@wordpress/element';
+import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { useDeviceType } from '@Controls/getPreviewType';
 
@@ -21,20 +21,12 @@ const ALLOWED_BLOCKS = [
 import { InnerBlocks, RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
-
 	props = props.parentProps;
 
 	const deviceType = useDeviceType();
 
 	const { attributes, setAttributes } = props;
-	const {
-		block_id,
-		submitButtonText,
-		formLabel,
-		buttonSize,
-		reCaptchaEnable,
-		reCaptchaType
-	} = attributes;
+	const { block_id, submitButtonText, formLabel, buttonSize, reCaptchaEnable, reCaptchaType } = attributes;
 
 	const onSubmitClick = useCallback( ( e ) => {
 		e.preventDefault();
@@ -42,16 +34,10 @@ const Render = ( props ) => {
 
 	const renderButtonHtml = () => {
 		return (
-			<button
-				onClick={ onSubmitClick }
-				className="uagb-forms-main-submit-button wp-block-button__link"
-			>
+			<button onClick={ onSubmitClick } className="uagb-forms-main-submit-button wp-block-button__link">
 				<RichText
 					tagName="div"
-					placeholder={ __(
-						'Submit',
-						'ultimate-addons-for-gutenberg'
-					) }
+					placeholder={ __( 'Submit', 'ultimate-addons-for-gutenberg' ) }
 					value={ submitButtonText.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
 					onChange={ ( value ) =>
 						setAttributes( {
@@ -66,7 +52,6 @@ const Render = ( props ) => {
 		);
 	};
 
-
 	return (
 		<>
 			<div
@@ -77,46 +62,23 @@ const Render = ( props ) => {
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 				) }
 			>
-				<form
-					className="uagb-forms-main-form"
-					name={ `uagb-form-${ block_id }` }
-				>
+				<form className="uagb-forms-main-form" name={ `uagb-form-${ block_id }` }>
 					<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
 					<div className="uagb-forms-form-hidden-data">
 						{ reCaptchaEnable && (
-							<input
-								type="hidden"
-								id="g-recaptcha-response"
-								className="uagb-forms-recaptcha"
-							/>
+							<input type="hidden" id="g-recaptcha-response" className="uagb-forms-recaptcha" />
 						) }
-						<input
-							type="hidden"
-							name="uagb_forms_form_label"
-							value={ formLabel }
-						/>
-						<input
-							type="hidden"
-							name="uagb_forms_form_id"
-							value={ `uagb-form-${ block_id }` }
-						/>
+						<input type="hidden" name="uagb_forms_form_label" value={ formLabel } />
+						<input type="hidden" name="uagb_forms_form_id" value={ `uagb-form-${ block_id }` } />
 					</div>
 
-					{ reCaptchaEnable &&
-						'v2' === reCaptchaType && (
-							<>
-								<div
-									className="g-recaptcha uagb-forms-field-set"
-									data-sitekey= ''
-								></div>
-							</>
-						) }
-						<div
-							className={ `uagb-form-reacaptcha-error-${ block_id }` }
-						></div>
-					<div className="uagb-forms-main-submit-button-wrap wp-block-button">
-						{ renderButtonHtml() }
-					</div>
+					{ reCaptchaEnable && 'v2' === reCaptchaType && (
+						<>
+							<div className="g-recaptcha uagb-forms-field-set" data-sitekey=""></div>
+						</>
+					) }
+					<div className={ `uagb-form-reacaptcha-error-${ block_id }` }></div>
+					<div className="uagb-forms-main-submit-button-wrap wp-block-button">{ renderButtonHtml() }</div>
 				</form>
 			</div>
 		</>
