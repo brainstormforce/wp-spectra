@@ -9,9 +9,17 @@
 
 $box_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'box' );
 
+$additional_attributes = apply_filters(
+	'spectra_countdown_attributes',
+	array()
+);
+
 return array_merge(
 	array(
 		'block_id'                     => '',
+		'timerType'                    => 'date',
+		'timerEndAction'               => 'zero',
+		'redirectURL'                  => '',
 		'endDateTime'                  => '2023-01-01T00:00:00Z',
 		'displayEndDateTime'           => '2023-01-01T00:00:00Z',
 		'showDays'                     => true,
@@ -180,6 +188,7 @@ return array_merge(
 		'boxShadowSpreadHover'         => '',
 		'boxShadowPositionHover'       => '',
 	),
+	$additional_attributes,
 	$box_border_attribute,
 	array(
 		'boxBorderStyle' => 'default',

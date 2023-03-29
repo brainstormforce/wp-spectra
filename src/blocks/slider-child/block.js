@@ -13,18 +13,22 @@ import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
 import deprecated from './deprecated';
 
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let sliderChildCommonData = {};
+sliderChildCommonData = applyFilters( 'uagb/slider-child', addCommonDataToSpectraBlocks( sliderChildCommonData ) );
 registerBlockType( 'uagb/slider-child', {
+	...sliderChildCommonData,
 	title: __( 'Slider Child', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add and customize content of this slide.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.slider_child,
-	category: uagb_blocks_info.category,
 	parent: [ 'uagb/slider' ],
 	keywords: [
 		__( 'slider', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
 	attributes,
+category: uagb_blocks_info.category,
 	edit: ( props ) =>
 			props.attributes.isPreview ? (
 				<PreviewImage image="slider-child" isChildren={ true } />
@@ -33,9 +37,4 @@ registerBlockType( 'uagb/slider-child', {
 			),
 	save,
 	deprecated,
-	example: {
-		attributes: {
-			isPreview: true,
-		}
-	},
 } );

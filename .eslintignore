@@ -12,6 +12,7 @@ node_modules
 vendor
 *.css
 *.scss
+*.min.js
 
 assets/js/js_cookie.min.js
 

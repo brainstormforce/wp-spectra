@@ -2,7 +2,7 @@ import { ToggleControl, SelectControl, ExternalLink } from '@wordpress/component
 import { __ } from '@wordpress/i18n';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
-const { enableConditionsForCoreBlocks } = uagb_blocks_info;
+const { enableConditionsForCoreBlocks, enableResponsiveConditionsForCoreBlocks } = uagb_blocks_info;
 import { useEffect } from '@wordpress/element';
 import classnames from 'classnames';
 
@@ -32,11 +32,11 @@ const UserConditionOptions = ( props ) => {
     const handleChange = ( e ) => {
 		// Destructuring
 		const { value, checked } = e.target;
-		
+
 		if ( checked ) {
 			setAttributes( { UAGDay: [...UAGDay, value] } );
 		}
-		
+
 		else {
 			setAttributes( { UAGDay: UAGDay.filter( ( i ) => i !== value ) } );
 		}
@@ -170,6 +170,7 @@ const UserResponsiveConditionOptions = ( props ) => {
 
     return(
         <>
+			<hr className="uagb-editor__separator" />
 			<p className="components-base-control__label">{ __( 'Responsive Conditions', 'ultimate-addons-for-gutenberg' ) }</p>
 			<>
 				<ToggleControl
@@ -223,8 +224,7 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 						>
 							{ __( 'Filter to disable responsive/display condition. ' ) }
 						</ExternalLink>
-						<hr className="uagb-editor__separator" />
-						{ UserResponsiveConditionOptions( props ) }
+						{ '1' === enableResponsiveConditionsForCoreBlocks && UserResponsiveConditionOptions( props ) }
 						<hr className="uagb-editor__separator" />
 						{ UserConditionOptions( props ) }
 					</InspectorAdvancedControls>

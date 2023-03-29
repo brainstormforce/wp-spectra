@@ -1096,6 +1096,11 @@
 	}
 }
 
+// Compatibility with Spectra One - Lightbox is absolute, and hence should not have the standard layout flow margins.
+body .is-layout-flow > .wp-block-uagb-image-gallery + .spectra-image-gallery__control-lightbox {
+	margin-block-start: 0;
+}
+
 @-webkit-keyframes sk-bouncedelay {
 
 	0%,

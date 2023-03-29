@@ -1380,7 +1380,7 @@ class Common_Settings extends Ajax_Base {
 	 *
 	 * @return void
 	 *
-	 * @since x.x.x
+	 * @since 2.4.1
 	 */
 	public function insta_linked_accounts() {
 		if ( ! current_user_can( 'manage_options' ) ) {
@@ -1404,7 +1404,7 @@ class Common_Settings extends Ajax_Base {
 	 *
 	 * @return void
 	 *
-	 * @since x.x.x
+	 * @since 2.4.1
 	 */
 	public function insta_all_users_media() {
 		if ( ! current_user_can( 'manage_options' ) ) {
@@ -1428,7 +1428,7 @@ class Common_Settings extends Ajax_Base {
 	 *
 	 * @return void
 	 *
-	 * @since x.x.x
+	 * @since 2.4.1
 	 */
 	public function insta_refresh_all_tokens() {
 		if ( ! current_user_can( 'manage_options' ) ) {

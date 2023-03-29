@@ -11,12 +11,15 @@ import './style.scss';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let buttonsCommonData = {};
+buttonsCommonData = applyFilters( 'uagb/buttons', addCommonDataToSpectraBlocks( buttonsCommonData ) );
 registerBlockType( 'uagb/buttons', {
+	...buttonsCommonData,
 	title: __( 'Buttons', 'ultimate-addons-for-gutenberg' ),
 	description:  __( 'Add multiple buttons to redirect user to different webpages.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.buttons,
-	category: uagb_blocks_info.category,
 	keywords: [
 		__( 'buttons', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
@@ -27,12 +30,8 @@ registerBlockType( 'uagb/buttons', {
 	getEditWrapperProps( attribute ) {
 		return { 'data-btn-width': attribute.align };
 	},
-	example: {
-		attributes: {
-			isPreview: true,
-		}
-	},
 	attributes,
+category: uagb_blocks_info.category,
 	edit: ( props ) =>
 		props.attributes.isPreview ? (
 			<PreviewImage image="buttons" />
