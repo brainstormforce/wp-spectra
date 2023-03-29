@@ -91,12 +91,10 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 				return $block;
 			}
 
-			$style = '<style class="uagb-widgets-style-renderer">' . $block_css_style . '</style>';
-
 			// This line of code creates a new array named $font_family_attrs by searching through the keys of an existing array.
 			$font_family_attrs = preg_grep( '/fontfamily/i', array_keys( $block['attrs'] ) );
-
-			$link_tag_list = '';
+			$link_tag_list     = '';
+			
 			foreach ( $font_family_attrs as $attr ) {
 				if ( ! empty( $block['attrs'][ $attr ] ) ) {
 					// Get the font family value and construct the Google Fonts URL.
@@ -105,6 +103,8 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 					$link_tag_list .= '<link rel="stylesheet" href="' . esc_url( $gfont_url ) . '" media="all">';
 				}
 			}
+
+			$style = '<style class="uagb-widgets-style-renderer">' . $block_css_style . '</style>';
 			$style = $style . $link_tag_list;
 
 			array_push( $block['innerContent'], $style );
