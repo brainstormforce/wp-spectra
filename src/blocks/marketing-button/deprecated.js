@@ -314,8 +314,17 @@ const deprecated = [
 		save( props ) {
 			const { attributes, className } = props;
 
-			const { block_id, align, textAlign, iconPosition, icon, heading, prefix, link, linkTarget } =
-				props.attributes;
+			const {
+				block_id,
+				align,
+				textAlign,
+				iconPosition,
+				icon,
+				heading,
+				prefix,
+				link,
+				linkTarget,
+			} = props.attributes;
 
 			const target = linkTarget ? '_blank' : '';
 
@@ -361,8 +370,18 @@ const deprecated = [
 		save( props ) {
 			const { attributes, className } = props;
 
-			const { block_id, align, textAlign, iconPosition, icon, heading, prefix, link, linkTarget, titleTag } =
-				props.attributes;
+			const {
+				block_id,
+				align,
+				textAlign,
+				iconPosition,
+				icon,
+				heading,
+				prefix,
+				link,
+				linkTarget,
+				titleTag,
+			} = props.attributes;
 
 			let target = linkTarget ? '_blank' : '';
 
@@ -408,8 +427,18 @@ const deprecated = [
 		save( props ) {
 			const { attributes, className } = props;
 
-			const { block_id, align, textAlign, iconPosition, icon, heading, prefix, link, linkTarget, titleTag } =
-				props.attributes;
+			const {
+				block_id,
+				align,
+				textAlign,
+				iconPosition,
+				icon,
+				heading,
+				prefix,
+				link,
+				linkTarget,
+				titleTag,
+			} = props.attributes;
 
 			let target = linkTarget ? '_blank' : '';
 
