@@ -1,8 +1,13 @@
 export const PostTaxonomy = ( props ) => {
 	const { post, categoriesList } = props;
 
-	const { taxStyle, displayPostTaxonomy, displayPostTaxonomyAboveTitle, hideTaxonomyIcon, taxDivider } =
-		props.attributes;
+	const {
+		taxStyle,
+		displayPostTaxonomy,
+		displayPostTaxonomyAboveTitle,
+		hideTaxonomyIcon,
+		taxDivider,
+	} = props.attributes;
 
 	const list = categoriesList;
 	const cat = post.categories;
