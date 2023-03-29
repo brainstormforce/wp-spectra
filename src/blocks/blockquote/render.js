@@ -21,8 +21,17 @@ const Render = ( props ) => {
 
 	const { className, setAttributes, attributes } = props;
 
-	const { skinStyle, align, stack, quoteStyle, enableTweet, iconView, iconSkin, authorImage, authorImgPosition } =
-		attributes;
+	const {
+		skinStyle,
+		align,
+		stack,
+		quoteStyle,
+		enableTweet,
+		iconView,
+		iconSkin,
+		authorImage,
+		authorImgPosition,
+	} = attributes;
 
 	const deviceType = useDeviceType();
 
