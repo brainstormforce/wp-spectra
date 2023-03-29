@@ -288,10 +288,11 @@ function styling( props ) {
 		selectors[ ' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'margin-right': generateCSSUnit( gapFallback / 2, gapType ),
 		};
-		selectors[ ' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]:not(:first-child)' ] =
-			{
-				'margin-left': generateCSSUnit( gapFallback / 2, gapType ),
-			};
+		selectors[
+			' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]:not(:first-child)'
+		] = {
+			'margin-left': generateCSSUnit( gapFallback / 2, gapType ),
+		};
 	} else if ( 'vertical' === iconListLayout ) {
 		selectors[ ' .uagb-icon-list__wrap .block-editor-block-list__layout' ] = {
 			'flex-direction': 'column',
