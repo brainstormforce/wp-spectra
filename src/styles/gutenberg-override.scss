@@ -335,4 +335,52 @@
 			}
 		}
 	}
+
+	// CSS for the Date Time Picker.
+	.block-editor-block-inspector .components-datetime__time {
+
+		// Remove the Bottom Margin set in the field.
+		.components-base-control,
+		.components-base-control:last-child {
+			margin-bottom: 0;
+		}
+
+		// Remove the top padding for all the control's input fields.
+		.components-panel__body .components-base-control__field {
+			padding: 0;
+		}
+
+		// Update the Spearator Color and Height to match the style guidelines.
+		.components-datetime__time-separator {
+			border-color: $spectra-color-border;
+			line-height: calc(#{$spectra-control-input-height} - 2px);
+		}
+
+		// Reduce the height for all the input fields in the date-time control.
+		input {
+			line-height: $spectra-control-input-height;
+			min-height: $spectra-control-input-height;
+			height: $spectra-control-input-height;
+		}
+
+		// Update the buttons in the group sizing to match the style guidelines.
+		.components-button-group .components-button {
+			height: $spectra-control-input-height;
+
+			// Update the Border Radius of the first button in the group.
+			&:first-child {
+				border-radius: $spectra-control-border-radius 0 0 $spectra-control-border-radius;
+			}
+
+			// Update the Border Radius of the last button in the group.
+			&:last-child {
+				border-radius: 0 $spectra-control-border-radius $spectra-control-border-radius 0;
+			}
+
+			// Replace the black border in the primary button
+			&.is-primary {
+				box-shadow: 0 0 0 1px $spectra-color-primary inset;
+			}
+		}
+	}
 }

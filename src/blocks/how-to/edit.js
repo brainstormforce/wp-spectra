@@ -15,6 +15,7 @@ import Settings from './settings';
 import Render from './render';
 
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import WebfontLoader from '@Components/typography/fontloader';
 
 const HowToComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -43,6 +44,15 @@ const HowToComponent = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
+			headLoadGoogleFonts,
+			headFontFamily,
+			headFontWeight,
+			subHeadLoadGoogleFonts,
+			subHeadFontFamily,
+			subHeadFontWeight,
+			priceLoadGoogleFonts,
+			priceFontFamily,
+			priceFontWeight,
 		},
 	} = props;
 	
@@ -200,6 +210,53 @@ const HowToComponent = ( props ) => {
 	
 	const minsValue = timeInMins ? timeInMins : time;
 
+	// Load all the Google Fonts for The How-To Block.
+	let loadHeadingGoogleFonts;
+	let loadSubHeadingGoogleFonts;
+	let loadPriceGoogleFonts;
+
+	if ( true === headLoadGoogleFonts ) {
+		const hconfig = {
+			google: {
+				families: [
+					headFontFamily +
+						( headFontWeight ? ':' + headFontWeight : '' ),
+				],
+			},
+		};
+		loadHeadingGoogleFonts = (
+			<WebfontLoader config={ hconfig }></WebfontLoader>
+		);
+	}
+
+	if ( true === subHeadLoadGoogleFonts ) {
+		const sconfig = {
+			google: {
+				families: [
+					subHeadFontFamily +
+						( subHeadFontWeight ? ':' + subHeadFontWeight : '' ),
+				],
+			},
+		};
+		loadSubHeadingGoogleFonts = (
+			<WebfontLoader config={ sconfig }></WebfontLoader>
+		);
+	}
+
+	if ( true === priceLoadGoogleFonts ) {
+		const pconfig = {
+			google: {
+				families: [
+					priceFontFamily +
+						( priceFontWeight ? ':' + priceFontWeight : '' ),
+				],
+			},
+		};
+		loadPriceGoogleFonts = (
+			<WebfontLoader config={ pconfig }></WebfontLoader>
+		);
+	}
+
 	return (
 		<>
 			<SchemaNotices
@@ -223,6 +280,9 @@ const HowToComponent = ( props ) => {
 			/>
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
+			{ loadHeadingGoogleFonts }
+			{ loadSubHeadingGoogleFonts }
+			{ loadPriceGoogleFonts }
 		</>
 	);
 };

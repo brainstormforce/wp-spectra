@@ -12,7 +12,7 @@ import './style.scss';
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
-import { addFilter } from '@wordpress/hooks';
+import { addFilter, applyFilters } from '@wordpress/hooks';
 import { withSelect } from '@wordpress/data';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
 import PreviewImage from '@Controls/previewImage';
@@ -47,22 +47,21 @@ const withPriceList = createHigherOrderComponent( ( BlockEdit ) => {
 	} );
 }, 'withPriceList' );
 
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let priceListCommonData = {};
+priceListCommonData = applyFilters( 'uagb/restaurant-menu', addCommonDataToSpectraBlocks( priceListCommonData ) );
 registerBlockType( 'uagb/restaurant-menu', {
+	...priceListCommonData,
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'Price List', 'ultimate-addons-for-gutenberg' ), // Block title.
 	description: __( 'Create an attractive price list for your products.', 'ultimate-addons-for-gutenberg' ), // Block description.
 	icon: UAGB_Block_Icons.restaurant_menu, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	keywords: [ __( 'pricelist' ), __( 'menu' ), __( 'uag' ) ],
-	example: {
-		attributes: {
-			isPreview: true,
-		}
-	},
 	supports: {
 		anchor: true,
 	},
-	category: uagb_blocks_info.category,
 	attributes,
+category: uagb_blocks_info.category,
 	edit: ( props ) =>
 			props.attributes.isPreview ? (
 				<PreviewImage image="price-list" />

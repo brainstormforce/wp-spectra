@@ -5,6 +5,8 @@
 // Import block dependencies and components.
 import styling from './styling';
 import { useEffect } from '@wordpress/element';
+// Import Web font loader for google fonts.
+import WebfontLoader from '@Components/typography/fontloader';
 
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
@@ -20,7 +22,7 @@ const UAGStarRating = ( props ) => {
 		isSelected,
 		setAttributes,
 		attributes,
-		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob, loadGoogleFonts, fontFamily, fontWeight },
 		clientId,
 	} = props;
 		
@@ -48,10 +50,27 @@ const UAGStarRating = ( props ) => {
 		scrollBlockToView();
 	}, [deviceType] );
 
+	let loadTitleGoogleFonts;
+
+	if ( loadGoogleFonts === true ) {
+		const hconfig = {
+			google: {
+				families: [
+					fontFamily + ( fontWeight ? ':' + fontWeight : '' ),
+				],
+			},
+		};
+
+		loadTitleGoogleFonts = (
+			<WebfontLoader config={ hconfig }></WebfontLoader>
+		);
+	}
+
 	return (
 		<>
 		{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
+			{ loadTitleGoogleFonts }
 		</>
 	);
 };
