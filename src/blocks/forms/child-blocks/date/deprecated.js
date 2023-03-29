@@ -52,8 +52,18 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-			const { block_id, dateRequired, name, additonalVal, minYear, minMonth, minDay, maxYear, maxMonth, maxDay } =
-				props.attributes;
+			const {
+				block_id,
+				dateRequired,
+				name,
+				additonalVal,
+				minYear,
+				minMonth,
+				minDay,
+				maxYear,
+				maxMonth,
+				maxDay,
+			} = props.attributes;
 
 			var validation_min_value = '';
 			var validation_max_value = '';
