@@ -405,21 +405,19 @@ function styling( props ) {
 			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 		},
-		'.uagb-infobox__content-wrap .uagb-ifb-cta .uagb-ifb-button-wrapper.wp-block-button a.uagb-infobox-cta-link.wp-block-button__link':
-			{
-				'color': ctaBtnLinkColor,
-				'background-color': ctaBgColor,
-				'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
-				'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
-				'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
-				'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
-			},
-		'.uagb-infobox__content-wrap .uagb-ifb-cta .uagb-ifb-button-wrapper.wp-block-button a.uagb-infobox-cta-link.wp-block-button__link:hover':
-			{
-				'color': ctaLinkHoverColor,
-				'background-color': ctaBgHoverType === 'color' ? ctaBgHoverColor : 'transparent',
-				'border-color': btnBorderHColor,
-			},
+		'.uagb-infobox__content-wrap .uagb-ifb-cta .uagb-ifb-button-wrapper.wp-block-button a.uagb-infobox-cta-link.wp-block-button__link': {
+			'color': ctaBtnLinkColor,
+			'background-color': ctaBgColor,
+			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
+			'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
+			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-cta .uagb-ifb-button-wrapper.wp-block-button a.uagb-infobox-cta-link.wp-block-button__link:hover': {
+			'color': ctaLinkHoverColor,
+			'background-color': ctaBgHoverType === 'color' ? ctaBgHoverColor : 'transparent',
+			'border-color': btnBorderHColor,
+		},
 		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover': {
 			'color': ctaLinkHoverColor,
 			'background-color': ctaBgHoverType === 'color' ? ctaBgHoverColor : 'transparent',
@@ -600,13 +598,12 @@ function styling( props ) {
 			'padding-bottom': generateCSSUnit( iconMarginBottomTablet, iconTabletMarginUnit ),
 			'padding-left': generateCSSUnit( iconMarginLeftTablet, iconTabletMarginUnit ),
 		},
-		'.uagb-infobox__content-wrap .uagb-ifb-cta .uagb-ifb-button-wrapper.wp-block-button a.uagb-infobox-cta-link.wp-block-button__link':
-			{
-				'padding-top': generateCSSUnit( paddingBtnTopTablet, tabletPaddingBtnUnit ),
-				'padding-bottom': generateCSSUnit( paddingBtnBottomTablet, tabletPaddingBtnUnit ),
-				'padding-left': generateCSSUnit( paddingBtnLeftTablet, tabletPaddingBtnUnit ),
-				'padding-right': generateCSSUnit( paddingBtnRightTablet, tabletPaddingBtnUnit ),
-			},
+		'.uagb-infobox__content-wrap .uagb-ifb-cta .uagb-ifb-button-wrapper.wp-block-button a.uagb-infobox-cta-link.wp-block-button__link': {
+			'padding-top': generateCSSUnit( paddingBtnTopTablet, tabletPaddingBtnUnit ),
+			'padding-bottom': generateCSSUnit( paddingBtnBottomTablet, tabletPaddingBtnUnit ),
+			'padding-left': generateCSSUnit( paddingBtnLeftTablet, tabletPaddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRightTablet, tabletPaddingBtnUnit ),
+		},
 		' .uagb-infobox-cta-link': {
 			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
@@ -730,13 +727,12 @@ function styling( props ) {
 			'padding-left': generateCSSUnit( iconMarginLeftMobile, iconMobileMarginUnit ),
 			'box-sizing': `${ boxSizingImageMobile }`,
 		},
-		'.uagb-infobox__content-wrap .uagb-ifb-cta .uagb-ifb-button-wrapper.wp-block-button a.uagb-infobox-cta-link.wp-block-button__link':
-			{
-				'padding-top': generateCSSUnit( paddingBtnTopMobile, mobilePaddingBtnUnit ),
-				'padding-bottom': generateCSSUnit( paddingBtnBottomMobile, mobilePaddingBtnUnit ),
-				'padding-left': generateCSSUnit( paddingBtnLeftMobile, mobilePaddingBtnUnit ),
-				'padding-right': generateCSSUnit( paddingBtnRightMobile, mobilePaddingBtnUnit ),
-			},
+		'.uagb-infobox__content-wrap .uagb-ifb-cta .uagb-ifb-button-wrapper.wp-block-button a.uagb-infobox-cta-link.wp-block-button__link': {
+			'padding-top': generateCSSUnit( paddingBtnTopMobile, mobilePaddingBtnUnit ),
+			'padding-bottom': generateCSSUnit( paddingBtnBottomMobile, mobilePaddingBtnUnit ),
+			'padding-left': generateCSSUnit( paddingBtnLeftMobile, mobilePaddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRightMobile, mobilePaddingBtnUnit ),
+		},
 		' .uagb-infobox-cta-link': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),

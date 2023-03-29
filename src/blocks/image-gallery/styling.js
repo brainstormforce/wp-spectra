@@ -442,16 +442,15 @@ function styling( props ) {
 					: captionBackgroundColor
 				: overlayColor,
 		},
-		' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption-wrapper--overlay':
-			{
-				'background-color': imageDisplayCaption
-					? 'antiHover' === captionVisibility
-						? 'rgba(0,0,0,0)'
-						: 'always' === captionVisibility && captionSeparateColors
-						? captionBackgroundColorHover
-						: captionBackgroundColor
-					: overlayColorHover,
-			},
+		' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption-wrapper--overlay': {
+			'background-color': imageDisplayCaption
+				? 'antiHover' === captionVisibility
+					? 'rgba(0,0,0,0)'
+					: 'always' === captionVisibility && captionSeparateColors
+					? captionBackgroundColorHover
+					: captionBackgroundColor
+				: overlayColorHover,
+		},
 		' .spectra-image-gallery__media-thumbnail-caption-wrapper--bar-inside': {
 			'-webkit-align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
 			'align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
