@@ -400,10 +400,9 @@ function styling( props ) {
 			'border-width': generateCSSUnit( radioCheckBorderWidth, radioCheckBorderWidthUnit ),
 			'border-radius': generateCSSUnit( radioCheckBorderRadius, radioCheckBorderRadiusType ),
 		},
-		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type='checkbox']:checked + span:before":
-			{
-				'border-color': inputBorderHColor,
-			},
+		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type='checkbox']:checked + span:before": {
+			'border-color': inputBorderHColor,
+		},
 
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 input[type='radio'] + span:before": {
 			'background-color': radioCheckBgColor,

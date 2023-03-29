@@ -21,8 +21,16 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-			const { ctaPosition, block_id, ctaType, ctaLink, ctaTarget, className, ctaTitle, description } =
-				props.attributes;
+			const {
+				ctaPosition,
+				block_id,
+				ctaType,
+				ctaLink,
+				ctaTarget,
+				className,
+				ctaTitle,
+				description,
+			} = props.attributes;
 
 			const isCta = <CallToAction attributes={ props.attributes } setAttributes="not_set" />;
 
@@ -117,8 +125,16 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-			const { ctaPosition, block_id, ctaType, ctaLink, ctaTarget, className, ctaTitle, description } =
-				props.attributes;
+			const {
+				ctaPosition,
+				block_id,
+				ctaType,
+				ctaLink,
+				ctaTarget,
+				className,
+				ctaTitle,
+				description,
+			} = props.attributes;
 
 			const isCta = <CTA attributes={ props.attributes } setAttributes="not_set" />;
 
@@ -213,8 +229,16 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-			const { ctaPosition, block_id, ctaType, ctaLink, ctaTarget, className, ctaTitle, description } =
-				props.attributes;
+			const {
+				ctaPosition,
+				block_id,
+				ctaType,
+				ctaLink,
+				ctaTarget,
+				className,
+				ctaTitle,
+				description,
+			} = props.attributes;
 
 			const isCta = <CTA attributes={ props.attributes } setAttributes="not_set" />;
 
@@ -306,8 +330,15 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-			const { block_id, ctaType, ctaLink, ctaTarget, ctaTitle, description, enabledSecondCtaButton } =
-				props.attributes;
+			const {
+				block_id,
+				ctaType,
+				ctaLink,
+				ctaTarget,
+				ctaTitle,
+				description,
+				enabledSecondCtaButton,
+			} = props.attributes;
 
 			const isCta = <CTANew attributes={ props.attributes } setAttributes="not_set" />;
 
