@@ -1,7 +1,7 @@
 // Import classes
 import classnames from 'classnames';
 import { InnerBlocks } from '@wordpress/block-editor';
-import { useLayoutEffect, memo ,useMemo } from '@wordpress/element';
+import { useLayoutEffect, memo, useMemo } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
 
@@ -20,11 +20,7 @@ const Render = ( props ) => {
 	const deviceType = useDeviceType();
 	const { attributes } = props;
 
-	const {
-		className,
-		icon_count,
-		block_id,
-	} = attributes;
+	const { className, icon_count, block_id } = attributes;
 
 	const getIconTemplate = useMemo( () => {
 		const childIconList = [];
@@ -45,11 +41,7 @@ const Render = ( props ) => {
 			) }
 		>
 			<div className="uagb-icon-list__wrap">
-				<InnerBlocks
-					template={ getIconTemplate }
-					templateLock={ false }
-					allowedBlocks={ ALLOWED_BLOCKS }
-				/>
+				<InnerBlocks template={ getIconTemplate } templateLock={ false } allowedBlocks={ ALLOWED_BLOCKS } />
 			</div>
 		</div>
 	);

@@ -13,12 +13,7 @@ export default function save( props ) {
 	const { block_id } = attributes;
 
 	return (
-		<div
-			className={ classnames(
-				className,
-				`uagb-block-${ block_id }`
-			) }
-		>
+		<div className={ classnames( className, `uagb-block-${ block_id }` ) }>
 			<div className="uagb-icon-list__wrap">
 				<InnerBlocks.Content />
 			</div>
