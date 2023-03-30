@@ -55,16 +55,11 @@ registerBlockType( 'uagb/faq', {
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
 	attributes,
 	deprecated,
-	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="faq" />
-		) : (
-			<Edit { ...props } />
-		),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="faq" /> : <Edit { ...props } /> ),
 	supports: {
 		anchor: true,
 	},
