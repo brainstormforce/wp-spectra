@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
-import { useLayoutEffect,memo } from '@wordpress/element';
+import { useLayoutEffect, memo } from '@wordpress/element';
 
 import { useDeviceType } from '@Controls/getPreviewType';
 import styles from './editor.lazy.scss';
@@ -26,7 +26,7 @@ const Render = ( props ) => {
 			headingTag,
 			seperatorStyle,
 			seperatorPosition,
-			headingDescPosition
+			headingDescPosition,
 		},
 		setAttributes,
 		className,
@@ -42,14 +42,10 @@ const Render = ( props ) => {
 
 	const headingText = (
 		<>
-
 			{ seperatorPosition === 'above-heading' ? separator : '' }
 			<RichText
 				tagName={ headingTag }
-				placeholder={ __(
-					'Write a Heading',
-					'ultimate-addons-for-gutenberg'
-				) }
+				placeholder={ __( 'Write a Heading', 'ultimate-addons-for-gutenberg' ) }
 				value={ headingTitle }
 				className="uagb-heading-text"
 				multiline={ false }
@@ -66,10 +62,7 @@ const Render = ( props ) => {
 			{ seperatorPosition === 'above-sub-heading' ? separator : '' }
 			<RichText
 				tagName="p"
-				placeholder={ __(
-					'Write a Description',
-					'ultimate-addons-for-gutenberg'
-				) }
+				placeholder={ __( 'Write a Description', 'ultimate-addons-for-gutenberg' ) }
 				value={ headingDesc }
 				className="uagb-desc-text"
 				onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
