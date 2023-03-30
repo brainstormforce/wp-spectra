@@ -5,7 +5,6 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import UAGHelpText from '@Components/help-text';
 
 const MultiMediaSelector = ( props ) => {
-
 	const {
 		slug = 'media',
 		label = __( 'Media', 'ultimate-addons-for-gutenberg' ),
@@ -17,7 +16,7 @@ const MultiMediaSelector = ( props ) => {
 		onRemoveMedia,
 		allowedTypes,
 		createGallery,
-		help = false
+		help = false,
 	} = props;
 
 	const placeholderIcon = UAGB_Block_Icons.gallery_placeholder;
@@ -45,13 +44,13 @@ const MultiMediaSelector = ( props ) => {
 				className={ `spectra-media-control__clickable spectra-media-control__clickable--${ uploadType }` }
 				onClick={ open }
 			>
-				{ ( 'add' === uploadType ) ? (
+				{ 'add' === uploadType ? (
 					renderButton( uploadType )
 				) : (
-					<div className='uag-control-label'>{ replacerLabel }</div>
+					<div className="uag-control-label">{ replacerLabel }</div>
 				) }
 			</button>
-		)
+		);
 	};
 
 	const renderButton = ( buttonType ) => (
@@ -82,9 +81,9 @@ const MultiMediaSelector = ( props ) => {
 					gallery={ createGallery }
 					render={ ( { open } ) => renderMediaUploader( open ) }
 				/>
-				{ ( onRemoveMedia && mediaGallery[ 0 ]?.url ) && (
+				{ onRemoveMedia && mediaGallery[ 0 ]?.url && (
 					<button
-						className='spectra-media-control__clickable spectra-media-control__clickable--close'
+						className="spectra-media-control__clickable spectra-media-control__clickable--close"
 						onClick={ onRemoveMedia }
 					>
 						{ renderButton( 'close' ) }

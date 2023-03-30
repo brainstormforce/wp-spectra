@@ -1,4 +1,4 @@
-import {  useEffect, useState, useRef } from '@wordpress/element';
+import { useEffect, useState, useRef } from '@wordpress/element';
 import { getPanelIdFromRef } from '@Utils/Helpers';
 import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 import { select } from '@wordpress/data';
@@ -7,14 +7,10 @@ import { __ } from '@wordpress/i18n';
 import { applyFilters } from '@wordpress/hooks';
 
 const UAGReset = ( props ) => {
-	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const [ panelNameForHook, setPanelNameForHook ] = useState( null );
 	const panelRef = useRef( null );
 
-	const {
-		onReset,
-		attributeNames,
-		setAttributes
-	} = props;
+	const { onReset, attributeNames, setAttributes } = props;
 
 	const [ refreshPresets, toggleRefreshPresets ] = useState( false );
 
@@ -22,24 +18,26 @@ const UAGReset = ( props ) => {
 
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	useEffect( () => {
-		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
-	}, [blockNameForHook] )
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) );
+	}, [ blockNameForHook ] );
 
-	const allBlocksAttributes = applyFilters( 'uagb.blocksAttributes', blocksAttributes )
+	const allBlocksAttributes = applyFilters( 'uagb.blocksAttributes', blocksAttributes );
 
 	const getBlockResetValue = () => {
 		const selectedBlockName = getSelectedBlock()?.name.split( '/' ).pop();
 		let defaultValues = false;
 
-		if ( attributeNames && 'undefined' !== typeof allBlocksAttributes[selectedBlockName] ) {
+		if ( attributeNames && 'undefined' !== typeof allBlocksAttributes[ selectedBlockName ] ) {
 			attributeNames.map( ( attributeName ) => {
-
 				if ( attributeName ) {
-					const blockDefaultAttributeValue = ( 'undefined' !== typeof allBlocksAttributes[selectedBlockName][attributeName]?.default ) ? allBlocksAttributes[selectedBlockName][attributeName]?.default : '';
+					const blockDefaultAttributeValue =
+						'undefined' !== typeof allBlocksAttributes[ selectedBlockName ][ attributeName ]?.default
+							? allBlocksAttributes[ selectedBlockName ][ attributeName ]?.default
+							: '';
 					defaultValues = {
 						...defaultValues,
-						[attributeName] : blockDefaultAttributeValue,
-					}
+						[ attributeName ]: blockDefaultAttributeValue,
+					};
 				}
 
 				return attributeName;
@@ -47,7 +45,7 @@ const UAGReset = ( props ) => {
 		}
 
 		return defaultValues;
-	}
+	};
 
 	const getResetState = () => {
 		const defaultValues = getBlockResetValue();
@@ -55,7 +53,10 @@ const UAGReset = ( props ) => {
 		let resetDisableState = true;
 
 		attributeNames.map( ( attributeName ) => {
-			if ( selectedBlockAttributes?.[attributeName] && selectedBlockAttributes?.[attributeName] !== defaultValues?.[attributeName] ) {
+			if (
+				selectedBlockAttributes?.[ attributeName ] &&
+				selectedBlockAttributes?.[ attributeName ] !== defaultValues?.[ attributeName ]
+			) {
 				resetDisableState = false;
 			}
 			return attributeName;
@@ -73,10 +74,10 @@ const UAGReset = ( props ) => {
 			attributeNames.map( ( attributeName ) => {
 				if ( attributeName ) {
 					if ( setAttributes ) {
-						setAttributes( { [ attributeName ]: defaultValues?.[attributeName] } )
+						setAttributes( { [ attributeName ]: defaultValues?.[ attributeName ] } );
 					}
 				}
-				toggleRefreshPresets( !refreshPresets );
+				toggleRefreshPresets( ! refreshPresets );
 				return attributeName;
 			} );
 		}
@@ -87,17 +88,19 @@ const UAGReset = ( props ) => {
 	};
 
 	const controlName = 'reset'; // there is no label props that's why keep hard coded label
-	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }.before`,
+		'',
+		blockNameForHook
+	);
+	const controlAfterDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }`,
+		'',
+		blockNameForHook
+	);
 	return (
-		<Tooltip
-			text={ __( 'Reset', 'ultimate-addons-for-gutenberg' )}
-			key={ 'reset' }
-			ref={panelRef}
-		>
-			{
-				controlBeforeDomElement
-			}
+		<Tooltip text={ __( 'Reset', 'ultimate-addons-for-gutenberg' ) } key={ 'reset' } ref={ panelRef }>
+			{ controlBeforeDomElement }
 			<Button
 				className="uagb-reset"
 				isSecondary
@@ -106,15 +109,13 @@ const UAGReset = ( props ) => {
 					e.preventDefault();
 					resetHandler();
 				} }
-				disabled = {resetDisableState}
+				disabled={ resetDisableState }
 			>
 				<Dashicon icon="image-rotate" />
 			</Button>
-			{
-				controlAfterDomElement
-			}
+			{ controlAfterDomElement }
 		</Tooltip>
 	);
-}
+};
 
 export default UAGReset;

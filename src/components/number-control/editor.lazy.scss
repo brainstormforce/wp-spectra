@@ -3,10 +3,8 @@
 .uag-number-control {
 
 	.uagb-number-control__mobile-controls {
-
 		// Full-width Control.
 		&.uag-number-control__full-width {
-
 			color: $spectra-color-body;
 
 			.uag-control-label {
@@ -16,12 +14,10 @@
 			.components-number-control .components-input-control__input {
 				padding: 0 7px 0 12px !important;
 			}
-
 		}
 
 		// Inline Control.
 		&.uag-number-control__inline {
-
 			align-items: center;
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
@@ -38,9 +34,7 @@
 			.components-input-control__container {
 				width: 100%;
 			}
-
 		}
-
 	}
 
 	.uagb-control__header {
@@ -53,5 +47,4 @@
 	.uag-responsive-label-wrap {
 		grid-column: 1 / span 2;
 	}
-
 }
