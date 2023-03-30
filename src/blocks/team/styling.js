@@ -7,7 +7,6 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
-
 	const blockName = props.name.replace( 'uagb/', '' );
 
 	const {
@@ -124,12 +123,9 @@ function styling( props ) {
 	const selectors = {
 		' p.uagb-team__desc.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit( descFontSize, descFontSizeType ),
-			'line-height': generateCSSUnit(
-				descLineHeight,
-				descLineHeightType
-			),
+			'line-height': generateCSSUnit( descLineHeight, descLineHeightType ),
 			'font-family': descFontFamily,
-			'font-style' : descFontStyle,
+			'font-style': descFontStyle,
 			'text-decoration': descDecoration,
 			'text-transform': descTransform,
 			'font-weight': descFontWeight,
@@ -140,15 +136,12 @@ function styling( props ) {
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-team__prefix': {
 			'font-family': prefixFontFamily,
-			'font-style' : prefixFontStyle,
+			'font-style': prefixFontStyle,
 			'text-decoration': prefixDecoration,
 			'text-transform': prefixTransform,
 			'font-weight': prefixFontWeight,
 			'font-size': generateCSSUnit( prefixFontSize, prefixFontSizeType ),
-			'line-height': generateCSSUnit(
-				prefixLineHeight,
-				prefixLineHeightType
-			),
+			'line-height': generateCSSUnit( prefixLineHeight, prefixLineHeightType ),
 			'color': prefixColor,
 			'letter-spacing': generateCSSUnit( prefixLetterSpacing, prefixLetterSpacingType ),
 		},
@@ -157,10 +150,7 @@ function styling( props ) {
 			'font-size': generateCSSUnit( socialFontSizeFallback, socialFontSizeType ),
 			'width': generateCSSUnit( socialFontSizeFallback, socialFontSizeType ),
 			'height': generateCSSUnit( socialFontSizeFallback, socialFontSizeType ),
-			'line-height': generateCSSUnit(
-				socialFontSizeFallback,
-				socialFontSizeType
-			),
+			'line-height': generateCSSUnit( socialFontSizeFallback, socialFontSizeType ),
 		},
 		' .uagb-team__social-icon svg': {
 			'fill': socialColor,
@@ -193,22 +183,17 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( socialSpaceFallback, 'px' ),
 			'margin-right': '0',
 		},
-		' .uagb-team__image-wrap': { // For Backword.
+		' .uagb-team__image-wrap': {
+			// For Backword.
 			'margin-top': generateCSSUnit( imageTopMargin, imageMarginUnit ),
-			'margin-bottom': generateCSSUnit(
-				imageBottomMargin,
-				imageMarginUnit
-			),
+			'margin-bottom': generateCSSUnit( imageBottomMargin, imageMarginUnit ),
 			'margin-left': generateCSSUnit( imageLeftMargin, imageMarginUnit ),
 			'margin-right': generateCSSUnit( imageRightMargin, imageMarginUnit ),
 			'width': generateCSSUnit( imgWidthFallback, 'px' ),
 		},
 		' img': {
 			'margin-top': generateCSSUnit( imageTopMargin, imageMarginUnit ),
-			'margin-bottom': generateCSSUnit(
-				imageBottomMargin,
-				imageMarginUnit
-			),
+			'margin-bottom': generateCSSUnit( imageBottomMargin, imageMarginUnit ),
 			'margin-left': generateCSSUnit( imageLeftMargin, imageMarginUnit ),
 			'margin-right': generateCSSUnit( imageRightMargin, imageMarginUnit ),
 			'width': generateCSSUnit( imgWidthFallback, 'px' ),
@@ -218,13 +203,13 @@ function styling( props ) {
 
 	if ( 'above' === imgPosition ) {
 		if ( 'center' === align ) {
-			selectors[' img']['margin-left'] = 'auto';
-			selectors[' img']['margin-right'] = 'auto';
+			selectors[ ' img' ][ 'margin-left' ] = 'auto';
+			selectors[ ' img' ][ 'margin-right' ] = 'auto';
 			selectors[ ' .uagb-team__social-list' ] = {
 				'justify-content': 'center',
 			};
 		} else if ( 'left' === align ) {
-			selectors[' img']['margin-right'] = 'auto';
+			selectors[ ' img' ][ 'margin-right' ] = 'auto';
 			selectors[ ' .uagb-team__social-list' ] = {
 				'justify-content': 'flex-start',
 			};
@@ -232,26 +217,22 @@ function styling( props ) {
 			selectors[ ' .uagb-team__social-list' ] = {
 				'justify-content': 'flex-end',
 			};
-			selectors[' img']['margin-left'] = 'auto';
+			selectors[ ' img' ][ 'margin-left' ] = 'auto';
 		}
 	}
 
 	if ( 'above' !== imgPosition ) {
 		if ( 'middle' === imgAlign ) {
 			selectors[ ' img' ][ 'align-self' ] = 'center';
-			selectors[ ' .uagb-team__content'] = { 'align-self': 'center', };
+			selectors[ ' .uagb-team__content' ] = { 'align-self': 'center' };
 		} else {
 			selectors[ ' img' ][ 'align-self' ] = 'flex-start';
 		}
 	}
 
-	selectors[
-		' ' +
-			tag +
-			'.rich-text.block-editor-rich-text__editable.uagb-team__title'
-	] = {
+	selectors[ ' ' + tag + '.rich-text.block-editor-rich-text__editable.uagb-team__title' ] = {
 		'font-family': titleFontFamily,
-		'font-style' : titleFontStyle,
+		'font-style': titleFontStyle,
 		'text-decoration': titleDecoration,
 		'text-transform': titleTransform,
 		'font-weight': titleFontWeight,
@@ -268,54 +249,30 @@ function styling( props ) {
 			'height': generateCSSUnit( imgWidthMobile, 'px' ),
 		},
 		' p.uagb-team__desc.block-editor-rich-text__editable': {
-			'font-size': generateCSSUnit(
-				descFontSizeMobile,
-				descFontSizeType
-			),
+			'font-size': generateCSSUnit( descFontSizeMobile, descFontSizeType ),
 			'margin-top': generateCSSUnit( prefixSpaceMobile, 'px' ),
 			'margin-bottom': generateCSSUnit( descSpaceMobile, 'px' ),
 			'letter-spacing': generateCSSUnit( descLetterSpacingMobile, descLetterSpacingType ),
-			'line-height': generateCSSUnit(
-				descLineHeightMobile,
-				descLineHeightType
-			),
+			'line-height': generateCSSUnit( descLineHeightMobile, descLineHeightType ),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-team__prefix': {
-			'font-size': generateCSSUnit(
-				prefixFontSizeMobile,
-				prefixFontSizeType
-			),
+			'font-size': generateCSSUnit( prefixFontSizeMobile, prefixFontSizeType ),
 			'letter-spacing': generateCSSUnit( prefixLetterSpacingMobile, prefixLetterSpacingType ),
-			'line-height': generateCSSUnit(
-				prefixLineHeightMobile,
-				prefixLineHeightType
-			),
+			'line-height': generateCSSUnit( prefixLineHeightMobile, prefixLineHeightType ),
 		},
 		' .uagb-team__social-icon a': {
-			'font-size': generateCSSUnit(
-				socialFontSizeMobile,
-				socialFontSizeType
-			),
+			'font-size': generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
 			'width': generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
 			'height': generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
-			'line-height': generateCSSUnit(
-				socialFontSizeMobile,
-				socialFontSizeType
-			),
+			'line-height': generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
 		},
 		' .uagb-team__social-icon svg': {
 			'width': generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
 			'height': generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
 		},
 		' .uagb-team__image-wrap': {
-			'margin-top': generateCSSUnit(
-				imageMarginTopMobile,
-				mobileImageMarginUnit
-			),
-			'margin-bottom': generateCSSUnit(
-				imageMarginBottomMobile,
-				mobileImageMarginUnit
-			),
+			'margin-top': generateCSSUnit( imageMarginTopMobile, mobileImageMarginUnit ),
+			'margin-bottom': generateCSSUnit( imageMarginBottomMobile, mobileImageMarginUnit ),
 			'margin-left': generateCSSUnit( imageMarginLeftMobile, mobileImageMarginUnit ),
 			'margin-right': generateCSSUnit( imageMarginRightMobile, mobileImageMarginUnit ),
 		},
@@ -332,11 +289,7 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( socialSpaceMobileFallback / 2, 'px' ),
 		},
 	};
-	mobileSelectors[
-		' ' +
-			tag +
-			'.rich-text.block-editor-rich-text__editable.uagb-team__title'
-	] = {
+	mobileSelectors[ ' ' + tag + '.rich-text.block-editor-rich-text__editable.uagb-team__title' ] = {
 		'margin-bottom': generateCSSUnit( titleSpaceMobile, 'px' ),
 		'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 		'line-height': generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
@@ -347,54 +300,30 @@ function styling( props ) {
 			'height': generateCSSUnit( imgWidthTablet, 'px' ),
 		},
 		' p.uagb-team__desc.block-editor-rich-text__editable': {
-			'font-size': generateCSSUnit(
-				descFontSizeTablet,
-				descFontSizeType
-			),
+			'font-size': generateCSSUnit( descFontSizeTablet, descFontSizeType ),
 			'margin-top': generateCSSUnit( prefixSpaceTablet, 'px' ),
 			'margin-bottom': generateCSSUnit( descSpaceTablet, 'px' ),
 			'letter-spacing': generateCSSUnit( descLetterSpacingTablet, descLetterSpacingType ),
-			'line-height': generateCSSUnit(
-				descLineHeightTablet,
-				descLineHeightType
-			),
+			'line-height': generateCSSUnit( descLineHeightTablet, descLineHeightType ),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-team__prefix': {
-			'font-size': generateCSSUnit(
-				prefixFontSizeTablet,
-				prefixFontSizeType
-			),
+			'font-size': generateCSSUnit( prefixFontSizeTablet, prefixFontSizeType ),
 			'letter-spacing': generateCSSUnit( prefixLetterSpacingTablet, prefixLetterSpacingType ),
-			'line-height': generateCSSUnit(
-				prefixLineHeightTablet,
-				prefixLineHeightType
-			),
+			'line-height': generateCSSUnit( prefixLineHeightTablet, prefixLineHeightType ),
 		},
 		' .uagb-team__social-icon a': {
-			'font-size': generateCSSUnit(
-				socialFontSizeTablet,
-				socialFontSizeType
-			),
+			'font-size': generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
 			'width': generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
 			'height': generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
-			'line-height': generateCSSUnit(
-				socialFontSizeTablet,
-				socialFontSizeType
-			),
+			'line-height': generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
 		},
 		' .uagb-team__social-icon svg': {
 			'width': generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
 			'height': generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
 		},
 		' .uagb-team__image-wrap': {
-			'margin-top': generateCSSUnit(
-				imageMarginTopTablet,
-				tabletImageMarginUnit
-			),
-			'margin-bottom': generateCSSUnit(
-				imageMarginBottomTablet,
-				tabletImageMarginUnit
-			),
+			'margin-top': generateCSSUnit( imageMarginTopTablet, tabletImageMarginUnit ),
+			'margin-bottom': generateCSSUnit( imageMarginBottomTablet, tabletImageMarginUnit ),
 			'margin-left': generateCSSUnit( imageMarginLeftTablet, tabletImageMarginUnit ),
 			'margin-right': generateCSSUnit( imageMarginRightTablet, tabletImageMarginUnit ),
 		},
@@ -411,11 +340,7 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( socialSpaceTabletFallback / 2, 'px' ),
 		},
 	};
-	tabletSelectors[
-		' ' +
-			tag +
-			'.rich-text.block-editor-rich-text__editable.uagb-team__title'
-	] = {
+	tabletSelectors[ ' ' + tag + '.rich-text.block-editor-rich-text__editable.uagb-team__title' ] = {
 		'margin-bottom': generateCSSUnit( titleSpaceTablet, 'px' ),
 		'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		'line-height': generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
@@ -433,19 +358,9 @@ function styling( props ) {
 
 	stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS(
-		tabletSelectors,
-		`${ id }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
+	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
 
-	stylingCss += generateCSS(
-		mobileSelectors,
-		`${ id }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	stylingCss += generateCSS( mobileSelectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
 
 	return stylingCss;
 }
