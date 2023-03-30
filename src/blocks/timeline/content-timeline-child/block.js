@@ -28,16 +28,16 @@ registerBlockType( 'uagb/content-timeline-child', {
 	],
 	attributes,
 	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="content-timeline-child" isChildren={ true } />
-			) : (
-				<Edit { ...props } />
-			),
+		props.attributes.isPreview ? (
+			<PreviewImage image="content-timeline-child" isChildren={ true } />
+		) : (
+			<Edit { ...props } />
+		),
 	save,
 	deprecated,
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
 } );

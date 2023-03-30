@@ -28,14 +28,9 @@ registerBlockType( 'uagb/post-timeline', {
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="post-timeline" />
-			) : (
-				<Edit { ...props } />
-			),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="post-timeline" /> : <Edit { ...props } /> ),
 	// Render via PHP
 	save: () => null,
 } );
