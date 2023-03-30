@@ -12,7 +12,6 @@ import Render from './render';
 import { useSelect } from '@wordpress/data';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
-
 const UAGBGF = ( props ) => {
 	const deviceType = useDeviceType();
 	const {
@@ -45,38 +44,32 @@ const UAGBGF = ( props ) => {
 			UAGHideMob,
 		},
 	} = props;
+	// eslint-disable-next-line  no-unused-vars
+	useSelect( ( select ) => {
+		let jsonData = '';
 
-	useSelect(
-		( select ) => { // eslint-disable-line  no-unused-vars
-			let jsonData = '';
+		if ( formId && -1 !== formId && 0 !== formId && ! isHtml ) {
+			const formData = new window.FormData();
 
-			if ( formId && -1 !== formId && 0 !== formId && ! isHtml ) {
+			formData.append( 'action', 'uagb_gf_shortcode' );
+			formData.append( 'nonce', uagb_blocks_info.uagb_ajax_nonce );
+			formData.append( 'formId', formId );
 
-				const formData = new window.FormData();
+			apiFetch( {
+				url: uagb_blocks_info.ajax_url,
+				method: 'POST',
+				body: formData,
+			} ).then( ( data ) => {
+				setAttributes( { isHtml: true } );
+				setAttributes( { formJson: data } );
+				jsonData = data;
+			} );
+		}
 
-				formData.append( 'action', 'uagb_gf_shortcode' );
-				formData.append(
-					'nonce',
-					uagb_blocks_info.uagb_ajax_nonce
-				);
-				formData.append( 'formId', formId );
-
-				apiFetch( {
-					url: uagb_blocks_info.ajax_url,
-					method: 'POST',
-					body: formData,
-				} ).then( ( data ) => {
-					setAttributes( { isHtml: true } );
-					setAttributes( { formJson: data } );
-					jsonData = data;
-				} );
-			}
-
-			return {
-				formHTML: jsonData,
-			};
-		},
-	);
+		return {
+			formHTML: jsonData,
+		};
+	} );
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		setAttributes( { isHtml: false } );
@@ -135,18 +128,15 @@ const UAGBGF = ( props ) => {
 				setAttributes( { fieldleftPadding: fieldHrPadding } );
 			}
 		}
-
 	}, [] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
 		const submitButton = document.querySelector( '.wpgf-submit' );
-		if( submitButton !== null ){
+		if ( submitButton !== null ) {
 			submitButton.addEventListener( 'click', function ( event ) {
 				event.preventDefault();
 			} );
@@ -155,7 +145,6 @@ const UAGBGF = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-gf-styler-' + props.clientId.substr( 0, 8 ), blockStyling );
-
 	}, [ attributes ] );
 
 	useEffect( () => {
@@ -182,27 +171,17 @@ const UAGBGF = ( props ) => {
 	};
 	if ( formId === 0 ) {
 		return (
-			<Placeholder
-				icon="admin-post"
-				label={ __(
-					'Select a Gravity Form',
-					'ultimate-addons-for-gutenberg'
-				) }
-			>
-				<SelectControl
-					value={ formId }
-					onChange={ onSelectForm }
-					options={ uagb_blocks_info.gf_forms }
-				/>
+			<Placeholder icon="admin-post" label={ __( 'Select a Gravity Form', 'ultimate-addons-for-gutenberg' ) }>
+				<SelectControl value={ formId } onChange={ onSelectForm } options={ uagb_blocks_info.gf_forms } />
 			</Placeholder>
 		);
 	}
-	
+
 	return (
-			<>
+		<>
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
-			</>
+		</>
 	);
 };
 
