@@ -13,7 +13,6 @@ import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const ReviewComponent = ( props ) => {
-
 	const deviceType = useDeviceType();
 	const {
 		isSelected,
@@ -68,25 +67,12 @@ const ReviewComponent = ( props ) => {
 	} = props;
 
 	const updatePageSchema = () => {
-
-		const newAverage =
-			parts
-				.map( ( i ) => i.value )
-				.reduce( ( total, v ) => total + v ) /
-			parts.length;
+		const newAverage = parts.map( ( i ) => i.value ).reduce( ( total, v ) => total + v ) / parts.length;
 		const newAverageCount = parts.length;
 		let itemtype = '';
 
-		if (
-			[ 'Product', 'SoftwareApplication', 'Book' ].includes(
-				itemType
-			)
-		) {
-			itemtype =
-				itemSubtype !== 'None' &&
-				itemSubtype !== ''
-					? itemSubtype
-					: itemType;
+		if ( [ 'Product', 'SoftwareApplication', 'Book' ].includes( itemType ) ) {
+			itemtype = itemSubtype !== 'None' && itemSubtype !== '' ? itemSubtype : itemType;
 		} else {
 			itemtype = itemType;
 		}
@@ -190,8 +176,7 @@ const ReviewComponent = ( props ) => {
 		}
 
 		if ( itemType === 'Product' ) {
-			jsonData.itemReviewed[ identifierType ] =
-				identifier;
+			jsonData.itemReviewed[ identifierType ] = identifier;
 			jsonData.itemReviewed.offers = {
 				'@type': offerType,
 				'price': offerPrice,
@@ -202,8 +187,8 @@ const ReviewComponent = ( props ) => {
 			};
 		}
 
-		setAttributes( {schema: JSON.stringify( jsonData )} );
-	}
+		setAttributes( { schema: JSON.stringify( jsonData ) } );
+	};
 
 	useEffect( () => {
 		// Assigning block_id in the attribute.
@@ -227,12 +212,11 @@ const ReviewComponent = ( props ) => {
 			}
 		}
 
-		const postSaveButton = document.getElementsByClassName( 'editor-post-publish-button' )?.[0];
+		const postSaveButton = document.getElementsByClassName( 'editor-post-publish-button' )?.[ 0 ];
 
 		if ( postSaveButton ) {
 			postSaveButton.addEventListener( 'click', updatePageSchema );
 		}
-		
 	}, [] );
 
 	useEffect( () => {
@@ -242,30 +226,28 @@ const ReviewComponent = ( props ) => {
 		addBlockEditorDynamicStyles( 'uagb-ratings-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 
 		const ratingLinkWrapper = document.querySelector( '.uagb-rating-link-wrapper' );
-		if( ratingLinkWrapper !== null ){
+		if ( ratingLinkWrapper !== null ) {
 			ratingLinkWrapper.addEventListener( 'click', function ( event ) {
 				event.preventDefault();
 			} );
 		}
 
-		const postSaveButton = document.getElementsByClassName( 'editor-post-publish-button' )?.[0];
+		const postSaveButton = document.getElementsByClassName( 'editor-post-publish-button' )?.[ 0 ];
 
 		if ( postSaveButton ) {
 			postSaveButton.addEventListener( 'click', updatePageSchema );
-			return () => { postSaveButton?.removeEventListener( 'click', updatePageSchema ); }
+			return () => {
+				postSaveButton?.removeEventListener( 'click', updatePageSchema );
+			};
 		}
-		
-
-	}, [ attributes,deviceType ] );
+	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
-	}, [deviceType] );
+	}, [ deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	if (

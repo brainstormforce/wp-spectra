@@ -25,18 +25,13 @@ registerBlockType( 'uagb/review', {
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
 	supports: {
 		anchor: true,
 	},
 	attributes,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="review" />
-			) : (
-				<Edit { ...props } />
-			),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="review" /> : <Edit { ...props } /> ),
 	save,
-	deprecated
+	deprecated,
 } );

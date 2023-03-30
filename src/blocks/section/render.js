@@ -17,13 +17,7 @@ const Render = ( props ) => {
 	const deviceType = useDeviceType();
 	const { attributes, isSelected, className } = props;
 
-	const {
-		align,
-		contentWidth,
-		tag,
-		backgroundType,
-		backgroundVideo,
-	} = attributes;
+	const { align, contentWidth, tag, backgroundType, backgroundVideo } = attributes;
 
 	const CustomTag = `${ tag }`;
 
@@ -53,10 +47,7 @@ const Render = ( props ) => {
 				<div className="uagb-section__video-wrap">
 					{ backgroundVideo && (
 						<video autoPlay loop muted playsinline>
-							<source
-								src={ backgroundVideo.url }
-								type="video/mp4"
-							/>
+							<source src={ backgroundVideo.url } type="video/mp4" />
 						</video>
 					) }
 				</div>

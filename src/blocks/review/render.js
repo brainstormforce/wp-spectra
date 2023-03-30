@@ -52,9 +52,7 @@ const Render = ( props ) => {
 
 	const bodyInitialState = {
 		average:
-			props.attributes.parts
-				.map( ( i ) => i.value )
-				.reduce( ( total, v ) => total + v ) /
+			props.attributes.parts.map( ( i ) => i.value ).reduce( ( total, v ) => total + v ) /
 			props.attributes.parts.length,
 	};
 
@@ -78,7 +76,7 @@ const Render = ( props ) => {
 	) {
 		urlChk = props.attributes.mainimage.url;
 		title = props.attributes.mainimage.title;
-		defaultedAlt = ( props.attributes.mainimage?.alt ) ? props.attributes.mainimage?.alt : '';
+		defaultedAlt = props.attributes.mainimage?.alt ? props.attributes.mainimage?.alt : '';
 	}
 
 	let url = '';
@@ -86,10 +84,7 @@ const Render = ( props ) => {
 		const size = props.attributes.mainimage.sizes;
 		const imageSize = props.attributes.imgSize;
 
-		if (
-			'undefined' !== typeof size &&
-			'undefined' !== typeof size[ imageSize ]
-		) {
+		if ( 'undefined' !== typeof size && 'undefined' !== typeof size[ imageSize ] ) {
 			url = size[ imageSize ].url;
 		} else {
 			url = urlChk;
@@ -97,8 +92,8 @@ const Render = ( props ) => {
 	}
 
 	useEffect( () => {
-		getImageHeightWidth( url, setAttributes )
-	}, [ url ] )
+		getImageHeightWidth( url, setAttributes );
+	}, [ url ] );
 
 	let imageIconHtml = '';
 
@@ -108,8 +103,8 @@ const Render = ( props ) => {
 				className="uagb-review__source-image"
 				src={ url }
 				title={ title }
-				width={ imgTagWidth}
-				height={ imgTagHeight}
+				width={ imgTagWidth }
+				height={ imgTagHeight }
 				loading="lazy"
 				alt={ defaultedAlt }
 			/>
@@ -126,19 +121,13 @@ const Render = ( props ) => {
 		>
 			<ReviewBody
 				rTitle={ rTitle }
-				setTitle={ ( newValue ) =>
-					setAttributes( { rTitle: newValue } )
-				}
+				setTitle={ ( newValue ) => setAttributes( { rTitle: newValue } ) }
 				ctaLink={ ctaLink }
 				ctaTarget={ ctaTarget }
 				rContent={ rContent }
-				setDescription={ ( newValue ) =>
-					setAttributes( { rContent: newValue } )
-				}
+				setDescription={ ( newValue ) => setAttributes( { rContent: newValue } ) }
 				rAuthor={ rAuthor }
-				setAuthorName={ ( newValue ) =>
-					setAttributes( { rAuthor: newValue } )
-				}
+				setAuthorName={ ( newValue ) => setAttributes( { rAuthor: newValue } ) }
 				headingTag={ headingTag }
 				mainimage={ mainimage }
 				imgSize={ imgSize }
@@ -158,9 +147,7 @@ const Render = ( props ) => {
 				activeStarColor={ activeStarColor }
 				selectedStarColor={ activeStarColor }
 				starOutlineColor={ starOutlineColor }
-				setItemName={ ( newValue ) =>
-					setAttributes( { itemName: newValue } )
-				}
+				setItemName={ ( newValue ) => setAttributes( { itemName: newValue } ) }
 				setImage={ ( img ) =>
 					setAttributes( {
 						imgID: img.id,
@@ -168,22 +155,12 @@ const Render = ( props ) => {
 						imgAlt: img.alt,
 					} )
 				}
-				setItems={ ( newValue ) =>
-					setAttributes( { parts: newValue } )
-				}
-				setSummaryTitle={ ( newValue ) =>
-					setAttributes( { summaryTitle: newValue } )
-				}
-				setSummaryDescription={ ( newValue ) =>
-					setAttributes( { summaryDescription: newValue } )
-				}
+				setItems={ ( newValue ) => setAttributes( { parts: newValue } ) }
+				setSummaryTitle={ ( newValue ) => setAttributes( { summaryTitle: newValue } ) }
+				setSummaryDescription={ ( newValue ) => setAttributes( { summaryDescription: newValue } ) }
 				hasFocus={ isSelected }
-				setEditable={ ( newValue ) =>
-					bodySetStateValue( { editable: newValue } )
-				}
-				setActiveStarIndex={ ( editedStar ) =>
-					bodySetStateValue( { editedStar } )
-				}
+				setEditable={ ( newValue ) => bodySetStateValue( { editable: newValue } ) }
+				setActiveStarIndex={ ( editedStar ) => bodySetStateValue( { editedStar } ) }
 				showfeature={ showFeature }
 				showauthor={ showAuthor }
 				state={ bodyState }

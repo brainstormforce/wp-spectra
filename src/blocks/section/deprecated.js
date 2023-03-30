@@ -11,299 +11,299 @@ import { getBorderAttributes } from '@Controls/generateAttributes';
 const overallBorderAttributes = getBorderAttributes( 'overall' );
 const attributes = {
 	classMigrate: {
-		type: "boolean",
-		default: false
+		type: 'boolean',
+		default: false,
 	},
 	align: {
-		type: "string",
-		default: "center"
+		type: 'string',
+		default: 'center',
 	},
 	block_id: {
-		type: "string",
+		type: 'string',
 	},
 	mobilePaddingType: {
-		type: "string",
-		default: 'px'
+		type: 'string',
+		default: 'px',
 	},
 	tabletPaddingType: {
-		type: "string",
-		default: 'px'
+		type: 'string',
+		default: 'px',
 	},
 	desktopPaddingType: {
-		type: "string",
-		default: 'px'
+		type: 'string',
+		default: 'px',
 	},
 	topPadding: {
-		type: "number",
-		default: 20
+		type: 'number',
+		default: 20,
 	},
 	bottomPadding: {
-		type: "number",
-		default: 20
+		type: 'number',
+		default: 20,
 	},
 	leftPadding: {
-		type: "number",
-		default: 20
+		type: 'number',
+		default: 20,
 	},
 	rightPadding: {
-		type: "number",
-		default: 20
+		type: 'number',
+		default: 20,
 	},
 	mobileMarginType: {
-		type: "string",
-		default: 'px'
+		type: 'string',
+		default: 'px',
 	},
 	tabletMarginType: {
-		type: "string",
-		default: 'px'
+		type: 'string',
+		default: 'px',
 	},
 	desktopMarginType: {
-		type: "string",
-		default: 'px'
+		type: 'string',
+		default: 'px',
 	},
 	topMargin: {
-		type: "number",
-		default: 0
+		type: 'number',
+		default: 0,
 	},
 	bottomMargin: {
-		type: "number",
-		default: 0
+		type: 'number',
+		default: 0,
 	},
 	leftMargin: {
-		type: "number",
-		default: 0
+		type: 'number',
+		default: 0,
 	},
 	rightMargin: {
-		type: "number",
-		default: 0
+		type: 'number',
+		default: 0,
 	},
 
 	topPaddingTablet: {
-		type: "number",
-		default: ""
+		type: 'number',
+		default: '',
 	},
 	bottomPaddingTablet: {
-		type: "number",
-		default: ""
+		type: 'number',
+		default: '',
 	},
 	leftPaddingTablet: {
-		type: "number",
-		default: ""
+		type: 'number',
+		default: '',
 	},
 	rightPaddingTablet: {
-		type: "number",
-		default: ""
+		type: 'number',
+		default: '',
 	},
 	topMarginTablet: {
-		type: "number",
-		default: ""
+		type: 'number',
+		default: '',
 	},
 	bottomMarginTablet: {
-		type: "number",
-		default: ""
+		type: 'number',
+		default: '',
 	},
 	leftMarginTablet: {
-		type: "number",
-		default: ""
+		type: 'number',
+		default: '',
 	},
 	rightMarginTablet: {
-		type: "number",
-		default: ""
+		type: 'number',
+		default: '',
 	},
 
 	topPaddingMobile: {
-		type: "number",
-		default: ""
+		type: 'number',
+		default: '',
 	},
 	bottomPaddingMobile: {
-		type: "number",
-		default: ""
+		type: 'number',
+		default: '',
 	},
 	leftPaddingMobile: {
-		type: "number",
-		default: ""
+		type: 'number',
+		default: '',
 	},
 	rightPaddingMobile: {
-		type: "number",
-		default: ""
+		type: 'number',
+		default: '',
 	},
 	topMarginMobile: {
-		type: "number",
-		default: ""
+		type: 'number',
+		default: '',
 	},
 	bottomMarginMobile: {
-		type: "number",
-		default: ""
+		type: 'number',
+		default: '',
 	},
 	leftMarginMobile: {
-		type: "number",
-		default: ""
+		type: 'number',
+		default: '',
 	},
 	rightMarginMobile: {
-		type: "number",
-		default: ""
+		type: 'number',
+		default: '',
 	},
 	contentWidth: {
-		type: "string",
-		default: "boxed"
+		type: 'string',
+		default: 'boxed',
 	},
 	width: {
-		type: "number",
-		default: 900
+		type: 'number',
+		default: 900,
 	},
 	innerWidth: {
-		type: "number",
-		default: 1140
+		type: 'number',
+		default: 1140,
 	},
 	innerWidthType: {
-		type: "string",
-		default: "px"
+		type: 'string',
+		default: 'px',
 	},
 	themeWidth: {
-		type: "boolean",
-		default: false
+		type: 'boolean',
+		default: false,
 	},
 	tag: {
-		type: "string",
-		default: "section"
+		type: 'string',
+		default: 'section',
 	},
 	backgroundType: {
-		type: "string",
+		type: 'string',
 	},
 	backgroundImage: {
-		type: "object",
+		type: 'object',
 	},
 	backgroundPosition: {
-		type: "string",
-		default: "center-center"
+		type: 'string',
+		default: 'center-center',
 	},
 	backgroundSize: {
-		type: "string",
-		default: "cover"
+		type: 'string',
+		default: 'cover',
 	},
 	backgroundRepeat: {
-		type: "string",
-		default: "no-repeat"
+		type: 'string',
+		default: 'no-repeat',
 	},
 	backgroundAttachment: {
-		type: "string",
-		default: "scroll"
+		type: 'string',
+		default: 'scroll',
 	},
 	backgroundVideo: {
-		type: "object",
+		type: 'object',
 	},
 	backgroundColor: {
-		type: "string",
+		type: 'string',
 	},
 	gradientColor1: {
-		type: "string",
+		type: 'string',
 	},
 	gradientColor2: {
-		type: "string",
+		type: 'string',
 	},
 	gradientType: {
-		type: "string",
-		default: "linear"
+		type: 'string',
+		default: 'linear',
 	},
 	gradientLocation1: {
-		type: "number",
-		default: 0
+		type: 'number',
+		default: 0,
 	},
 	gradientLocation2: {
-		type: "number",
-		default: 100
+		type: 'number',
+		default: 100,
 	},
 	gradientAngle: {
-		type: "number",
-		default: 0
+		type: 'number',
+		default: 0,
 	},
-	gradientPosition : {
-		type: "string",
-		default: "center center"
+	gradientPosition: {
+		type: 'string',
+		default: 'center center',
 	},
 	backgroundOpacity: {
-		type: "number"
+		type: 'number',
 	},
 	backgroundVideoOpacity: {
-		type: "number",
-		default: 50
+		type: 'number',
+		default: 50,
 	},
 	backgroundVideoColor: {
-		type: "string",
+		type: 'string',
 	},
 	backgroundImageColor: {
-		type: "string"
+		type: 'string',
 	},
-	borderStyle : {
-		type: "string",
-		default: "none"
+	borderStyle: {
+		type: 'string',
+		default: 'none',
 	},
-	borderWidth : {
-		type: "number",
-		default: 1
+	borderWidth: {
+		type: 'number',
+		default: 1,
 	},
-	borderRadius : {
-		type: "number"
+	borderRadius: {
+		type: 'number',
 	},
-	borderColor : {
-		type: "string"
+	borderColor: {
+		type: 'string',
 	},
 	overlayType: {
-		type: "string",
-		default: "color"
+		type: 'string',
+		default: 'color',
 	},
 	gradientOverlayColor1: {
-		type: "string",
+		type: 'string',
 	},
 	gradientOverlayColor2: {
-		type: "string",
+		type: 'string',
 	},
 	gradientOverlayType: {
-		type: "string",
-		default: "linear"
+		type: 'string',
+		default: 'linear',
 	},
 	gradientOverlayLocation1: {
-		type: "number",
-		default: 0
+		type: 'number',
+		default: 0,
 	},
 	gradientOverlayLocation2: {
-		type: "number",
-		default: 100
+		type: 'number',
+		default: 100,
 	},
 	gradientOverlayAngle: {
-		type: "number",
-		default: 0
+		type: 'number',
+		default: 0,
 	},
 	gradientOverlayPosition: {
-		type: "string",
-		default: "center center"
+		type: 'string',
+		default: 'center center',
 	},
 	boxShadowColor: {
-		type: "string"
+		type: 'string',
 	},
-	boxShadowHOffset : {
-		type: "number",
-		default: 0
+	boxShadowHOffset: {
+		type: 'number',
+		default: 0,
 	},
-	boxShadowVOffset : {
-		type: "number",
-		default: 0
+	boxShadowVOffset: {
+		type: 'number',
+		default: 0,
 	},
-	boxShadowBlur : {
-		type: "number"
+	boxShadowBlur: {
+		type: 'number',
 	},
-	boxShadowSpread : {
-		type: "number"
+	boxShadowSpread: {
+		type: 'number',
 	},
 	boxShadowPosition: {
-		type: "string",
-		default: "outset"
+		type: 'string',
+		default: 'outset',
 	},
 	gradientValue: {
-		type: "string",
-		default: "",
+		type: 'string',
+		default: '',
 	},
-	...overallBorderAttributes
+	...overallBorderAttributes,
 };
 
 const deprecated = [
@@ -312,14 +312,7 @@ const deprecated = [
 		save( props ) {
 			const { className } = props;
 
-			const {
-				block_id,
-				tag,
-				backgroundType,
-				backgroundVideo,
-				contentWidth,
-				align,
-			} = props.attributes;
+			const { block_id, tag, backgroundType, backgroundVideo, contentWidth, align } = props.attributes;
 
 			let block_controls_class = '';
 
@@ -344,14 +337,7 @@ const deprecated = [
 					<div className="uagb-section__overlay"></div>
 					{ 'video' == backgroundType && (
 						<div className="uagb-section__video-wrap">
-							{ backgroundVideo && (
-								<video
-									src={ backgroundVideo.url }
-									autoPlay
-									loop
-									muted
-								></video>
-							) }
+							{ backgroundVideo && <video src={ backgroundVideo.url } autoPlay loop muted></video> }
 						</div>
 					) }
 					<div className="uagb-section__inner-wrap">
@@ -366,14 +352,7 @@ const deprecated = [
 		save( props ) {
 			const { className } = props;
 
-			const {
-				block_id,
-				tag,
-				backgroundType,
-				backgroundVideo,
-				contentWidth,
-				align,
-			} = props.attributes;
+			const { block_id, tag, backgroundType, backgroundVideo, contentWidth, align } = props.attributes;
 
 			let block_controls_class = '';
 
@@ -400,10 +379,7 @@ const deprecated = [
 						<div className="uagb-section__video-wrap">
 							{ backgroundVideo && (
 								<video autoPlay loop muted playsinline>
-									<source
-										src={ backgroundVideo.url }
-										type="video/mp4"
-									/>
+									<source src={ backgroundVideo.url } type="video/mp4" />
 								</video>
 							) }
 						</div>
@@ -418,54 +394,45 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-			const { attributes, className } = props
+			const { attributes, className } = props;
 
-		const {
-			block_id,
-			tag,
-			backgroundType,
-			backgroundVideo,
-			contentWidth,
-			align
-		} = props.attributes
+			const { block_id, tag, backgroundType, backgroundVideo, contentWidth, align } = props.attributes;
 
-		let block_controls_class = ""
+			let block_controls_class = '';
 
-		if ( "full_width" == contentWidth ) {
-
-			if ( align == "wide" || align == "full" ) {
-				block_controls_class = "align" + align
-			}
-		}
-
-		const CustomTag = `${tag}`
-
-		return (
-			<CustomTag
-				className={ classnames(
-					className,
-					"uagb-section__wrap",
-					`uagb-section__background-${backgroundType}`,
-					block_controls_class,
-					`uagb-block-${block_id}`
-				) }
-			>
-				<div className="uagb-section__overlay"></div>
-				{ "video" == backgroundType &&
-					<div className="uagb-section__video-wrap">
-						{  backgroundVideo &&
-						<video autoplay loop muted playsinline>
-							<source src={ backgroundVideo.url } type='video/mp4' />
-						</video>
-						}
-
-					</div>
+			if ( 'full_width' == contentWidth ) {
+				if ( align == 'wide' || align == 'full' ) {
+					block_controls_class = 'align' + align;
 				}
-				<div className="uagb-section__inner-wrap">
-					<InnerBlocks.Content />
-				</div>
-			</CustomTag>
-		)
+			}
+
+			const CustomTag = `${ tag }`;
+
+			return (
+				<CustomTag
+					className={ classnames(
+						className,
+						'uagb-section__wrap',
+						`uagb-section__background-${ backgroundType }`,
+						block_controls_class,
+						`uagb-block-${ block_id }`
+					) }
+				>
+					<div className="uagb-section__overlay"></div>
+					{ 'video' == backgroundType && (
+						<div className="uagb-section__video-wrap">
+							{ backgroundVideo && (
+								<video autoplay loop muted playsinline>
+									<source src={ backgroundVideo.url } type="video/mp4" />
+								</video>
+							) }
+						</div>
+					) }
+					<div className="uagb-section__inner-wrap">
+						<InnerBlocks.Content />
+					</div>
+				</CustomTag>
+			);
 		},
 	},
 ];

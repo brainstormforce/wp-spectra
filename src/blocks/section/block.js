@@ -16,7 +16,10 @@ import PreviewImage from '@Controls/previewImage';
 if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
 	registerBlockType( 'uagb/section', {
 		title: __( 'Advanced Row', 'ultimate-addons-for-gutenberg' ),
-		description: __( 'Outer wrap section that allows you to add other blocks within it.', 'ultimate-addons-for-gutenberg' ),
+		description: __(
+			'Outer wrap section that allows you to add other blocks within it.',
+			'ultimate-addons-for-gutenberg'
+		),
 		icon: renderLegacyBlockEditorIcon( 'section' ),
 		category: uagb_blocks_info.category,
 		keywords: [
@@ -29,19 +32,10 @@ if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_bloc
 		},
 		attributes,
 		edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="advanced-row" />
-			) : (
-				<Edit { ...props } />
-			),
+			props.attributes.isPreview ? <PreviewImage image="advanced-row" /> : <Edit { ...props } />,
 		getEditWrapperProps( attribute ) {
 			const { align, contentWidth } = attribute;
-			if (
-				'left' === align ||
-				'right' === align ||
-				'wide' === align ||
-				'full' === align
-			) {
+			if ( 'left' === align || 'right' === align || 'wide' === align || 'full' === align ) {
 				if ( 'full_width' === contentWidth ) {
 					return { 'data-align': align };
 				}
@@ -51,7 +45,7 @@ if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_bloc
 		example: {
 			attributes: {
 				isPreview: true,
-			}
+			},
 		},
 		deprecated,
 	} );
