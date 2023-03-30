@@ -31,7 +31,7 @@
 		padding: 30px 65px;
 	}
 
-	@media (max-width: 976px) {
+	@media ( max-width: 976px ) {
 
 		&.uagb-btn-tablet__small-btn .uagb-buttons-repeater.wp-block-button__link {
 			padding: 5px 10px;
@@ -48,10 +48,9 @@
 		&.uagb-btn-tablet__extralarge-btn .uagb-buttons-repeater.wp-block-button__link {
 			padding: 30px 65px;
 		}
-
 	}
 
-	@media (max-width: 767px) {
+	@media ( max-width: 767px ) {
 
 		&.uagb-btn-mobile__small-btn .uagb-buttons-repeater.wp-block-button__link {
 			padding: 5px 10px;
@@ -68,7 +67,5 @@
 		&.uagb-btn-mobile__extralarge-btn .uagb-buttons-repeater.wp-block-button__link {
 			padding: 30px 65px;
 		}
-
 	}
-
 }

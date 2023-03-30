@@ -20,11 +20,7 @@ registerBlockType( 'uagb/buttons-child', {
 	parent: [ 'uagb/buttons' ],
 	attributes,
 	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="buttons-child" isChildren={ true } />
-		) : (
-			<Edit { ...props } />
-		),
+		props.attributes.isPreview ? <PreviewImage image="buttons-child" isChildren={ true } /> : <Edit { ...props } />,
 	save,
 	deprecated,
 	supports: {
@@ -33,6 +29,6 @@ registerBlockType( 'uagb/buttons-child', {
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
 } );
