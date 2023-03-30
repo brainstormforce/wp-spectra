@@ -4,14 +4,13 @@
 
 import classnames from 'classnames';
 import shapes from './shapes';
-import { useMemo,memo } from '@wordpress/element';
+import { useMemo, memo } from '@wordpress/element';
 
 import { useDeviceType } from '@Controls/getPreviewType';
 const ALLOWED_BLOCKS = [ 'uagb/column' ];
 import { InnerBlocks } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
-
 	const { attributes, isSelected, className } = props.parentProps;
 	const deviceType = useDeviceType();
 	const {
@@ -51,8 +50,7 @@ const Render = ( props ) => {
 				'uagb-columns__shape-top',
 				{ 'uagb-columns__shape-flip': topFlip === true },
 				{
-					'uagb-columns__shape-above-content':
-						topContentAboveShape === true,
+					'uagb-columns__shape-above-content': topContentAboveShape === true,
 				}
 			) }
 		>
@@ -67,8 +65,7 @@ const Render = ( props ) => {
 				'uagb-columns__shape-bottom',
 				{ 'uagb-columns__shape-flip': bottomFlip === true },
 				{
-					'uagb-columns__shape-above-content':
-						bottomContentAboveShape === true,
+					'uagb-columns__shape-above-content': bottomContentAboveShape === true,
 				}
 			) }
 			data-negative="false"
@@ -77,23 +74,19 @@ const Render = ( props ) => {
 		</div>
 	);
 
-	const reverseTabletClass = reverseTablet
-		? 'uagb-columns__reverse-tablet'
-		: '';
+	const reverseTabletClass = reverseTablet ? 'uagb-columns__reverse-tablet' : '';
 
-	const reverseMobileClass = reverseMobile
-		? 'uagb-columns__reverse-mobile'
-		: '';
+	const reverseMobileClass = reverseMobile ? 'uagb-columns__reverse-mobile' : '';
 
 	const CustomTag = `${ tag }`;
 
 	const active = isSelected ? 'active' : 'not-active';
 
-	const bgType = ( undefined !== backgroundType ) ? `uagb-columns__background-${ backgroundType }` : '';
+	const bgType = undefined !== backgroundType ? `uagb-columns__background-${ backgroundType }` : '';
 
-	const verticalAlign = ( undefined !== vAlign ) ? `uagb-columns__valign-${ vAlign }` : '';
+	const verticalAlign = undefined !== vAlign ? `uagb-columns__valign-${ vAlign }` : '';
 
-	const alignType = ( undefined !== align ) ? `align${ align }` : '';
+	const alignType = undefined !== align ? `align${ align }` : '';
 
 	return (
 		<CustomTag
@@ -110,7 +103,7 @@ const Render = ( props ) => {
 				reverseTabletClass,
 				reverseMobileClass,
 				`uagb-block-${ props.parentProps.clientId.substr( 0, 8 ) }`,
-				`uagb-columns__max_width-${ contentWidth }`,
+				`uagb-columns__max_width-${ contentWidth }`
 			) }
 		>
 			<div className="uagb-columns__overlay"></div>
@@ -119,25 +112,13 @@ const Render = ( props ) => {
 				<div className="uagb-columns__video-wrap">
 					{ backgroundVideo && (
 						<video autoPlay loop muted playsinline>
-							<source
-								src={ backgroundVideo.url }
-								type="video/mp4"
-							/>
+							<source src={ backgroundVideo.url } type="video/mp4" />
 						</video>
 					) }
 				</div>
 			) }
-			<div
-				className={ classnames(
-					'uagb-columns__inner-wrap',
-					`uagb-columns__columns-${ columns }`
-				) }
-			>
-				<InnerBlocks
-					template={ getColumnsTemplate }
-					templateLock="all"
-					allowedBlocks={ ALLOWED_BLOCKS }
-				/>
+			<div className={ classnames( 'uagb-columns__inner-wrap', `uagb-columns__columns-${ columns }` ) }>
+				<InnerBlocks template={ getColumnsTemplate } templateLock="all" allowedBlocks={ ALLOWED_BLOCKS } />
 			</div>
 			{ bottomDividerHtml }
 		</CustomTag>

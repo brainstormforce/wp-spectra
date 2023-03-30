@@ -13,7 +13,6 @@
 }
 
 .uagb-column__wrap {
-
 	position: relative;
 	overflow: visible;
 
@@ -103,7 +102,7 @@
 	flex-basis: 100%;
 }
 
-@media (max-width: 976px) {
+@media ( max-width: 976px ) {
 
 	.uagb-column__align-tablet-left {
 		margin-left: 0;
@@ -116,7 +115,7 @@
 	}
 }
 
-@media (max-width: 767px) {
+@media ( max-width: 767px ) {
 
 	.uagb-column__align-mobile-left {
 		margin-left: 0;
@@ -129,7 +128,7 @@
 	}
 }
 
-@media (max-width: 449px) {
+@media ( max-width: 449px ) {
 
 	.uagb-columns__wrap.uagb-columns__background-image {
 		background-attachment: scroll !important;
