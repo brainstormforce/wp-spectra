@@ -437,28 +437,26 @@ function styling( props ) {
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 			'letter-spacing': generateCSSUnit( submitTextLetterSpacing, submitTextLetterSpacingType ),
 		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background)':
-			{
-				'color': submitColor,
-				'font-size': generateCSSUnit( submitTextFontSize, submitTextFontSizeType ),
-				'line-height': generateCSSUnit( submitTextLineHeight, submitTextLineHeightType ),
-				'font-family': submitTextFontFamily,
-				'font-style': submitTextFontStyle,
-				'text-transform': submitTextTransform,
-				'text-decoration': submitTextDecoration,
-				'font-weight': submitTextFontWeight,
-				'background-color': submitBgColor,
-				...submitBorder,
-				'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
-				'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
-				'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
-				'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
-			},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background):hover':
-			{
-				'color': submitColorHover,
-				'border-color': btnBorderHColor,
-			},
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background)': {
+			'color': submitColor,
+			'font-size': generateCSSUnit( submitTextFontSize, submitTextFontSizeType ),
+			'line-height': generateCSSUnit( submitTextLineHeight, submitTextLineHeightType ),
+			'font-family': submitTextFontFamily,
+			'font-style': submitTextFontStyle,
+			'text-transform': submitTextTransform,
+			'text-decoration': submitTextDecoration,
+			'font-weight': submitTextFontWeight,
+			'background-color': submitBgColor,
+			...submitBorder,
+			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
+			'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
+			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
+		},
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background):hover': {
+			'color': submitColorHover,
+			'border-color': btnBorderHColor,
+		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button:hover': {
 			'color': submitColorHover,
 			'border-color': btnBorderHColor,
@@ -651,8 +649,7 @@ function styling( props ) {
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
 			'text-align': buttonAlignTablet,
 		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background)':
-			submitBorderTablet,
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background)': submitBorderTablet,
 	};
 
 	mobileSelectors = {
@@ -739,8 +736,7 @@ function styling( props ) {
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
 			'text-align': buttonAlignMobile,
 		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background)':
-			submitBorderMobile,
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background)': submitBorderMobile,
 	};
 
 	if ( 'color' === submitBgType ) {
@@ -817,30 +813,38 @@ function styling( props ) {
 			'padding-left': generateCSSUnit( paddingFieldLeftMobile, paddingFieldUnitmobile ),
 			'padding-right': generateCSSUnit( paddingFieldRightMobile, paddingFieldUnitmobile ),
 		};
-		selectors[ ' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before' ] =
-			toggleBorder;
-		selectors[ ' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before' ] =
-			toggleBorder;
+		selectors[
+			' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'
+		] = toggleBorder;
+		selectors[
+			' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before'
+		] = toggleBorder;
 		selectors[ ' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before' ] = toggleBorder;
 		selectors[ ' .uagb-slider ' ] = {
 			...toggleBorder,
 			'background-color': toggleColor,
 		};
 
-		mobileSelectors[ ' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before' ] =
-			toggleBorderMobile;
-		mobileSelectors[ ' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before' ] =
-			toggleBorderMobile;
-		mobileSelectors[ ' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before' ] =
-			toggleBorderMobile;
+		mobileSelectors[
+			' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'
+		] = toggleBorderMobile;
+		mobileSelectors[
+			' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before'
+		] = toggleBorderMobile;
+		mobileSelectors[
+			' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before'
+		] = toggleBorderMobile;
 		mobileSelectors[ ' .uagb-slider ' ] = toggleBorderMobile;
 
-		tabletSelectors[ ' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before' ] =
-			toggleBorderTablet;
-		tabletSelectors[ ' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before' ] =
-			toggleBorderTablet;
-		tabletSelectors[ ' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before' ] =
-			toggleBorderTablet;
+		tabletSelectors[
+			' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'
+		] = toggleBorderTablet;
+		tabletSelectors[
+			' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before'
+		] = toggleBorderTablet;
+		tabletSelectors[
+			' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before'
+		] = toggleBorderTablet;
 		tabletSelectors[ ' .uagb-slider ' ] = toggleBorderTablet;
 		// Label Hovev Colors
 	} else if ( 'underlined' === formStyle ) {

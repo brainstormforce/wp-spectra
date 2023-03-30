@@ -245,11 +245,9 @@ const UAGBFormsEdit = ( props ) => {
 		}
 	} );
 	const createBlocksFromInnerBlocksTemplate = useCallback( ( innerBlocksTemplate ) => {
-		return innerBlocksTemplate.map(
-			(
-				[ name, attributes, innerBlocks = [] ] // eslint-disable-line no-shadow
-			) => createBlock( name, attributes, createBlocksFromInnerBlocksTemplate( innerBlocks ) )
-		);
+		return innerBlocksTemplate.map( (
+			[ name, attributes, innerBlocks = [] ] // eslint-disable-line no-shadow
+		) => createBlock( name, attributes, createBlocksFromInnerBlocksTemplate( innerBlocks ) ) );
 	} );
 
 	const renderReadyClasses = useCallback( ( id ) => {
