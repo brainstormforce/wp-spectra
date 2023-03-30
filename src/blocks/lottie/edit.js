@@ -3,7 +3,7 @@
  */
 
 import styling from './styling';
-import { useEffect,useState,useRef } from '@wordpress/element';
+import { useEffect, useState, useRef } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
@@ -25,25 +25,21 @@ const UAGBLottie = ( props ) => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 		setAttributes( { classMigrate: true } );
-		
 	}, [] );
 
 	useEffect( () => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-lottie-style-' + clientId.substr( 0, 8 ), blockStyling );
-		
 	}, [ props, deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
-	}, [deviceType] );
+	}, [ deviceType ] );
 
 	const loopLottie = () => {
 		const { loopState } = state;
@@ -60,11 +56,7 @@ const UAGBLottie = ( props ) => {
 	return (
 		<>
 			<Render lottieplayer={ lottieplayer } parentProps={ props } />
-			<Settings
-				parentProps={ props }
-				loopLottie={ loopLottie }
-				reverseDirection={ reverseDirection }
-			/>
+			<Settings parentProps={ props } loopLottie={ loopLottie } reverseDirection={ reverseDirection } />
 		</>
 	);
 };

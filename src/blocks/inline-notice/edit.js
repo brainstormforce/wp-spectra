@@ -21,7 +21,7 @@ const UAGBInlineNoticeEdit = ( props ) => {
 		attributes,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 	} = props;
-	
+
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
@@ -30,24 +30,21 @@ const UAGBInlineNoticeEdit = ( props ) => {
 	useEffect( () => {
 		const blockStyling = styling( props );
 		addBlockEditorDynamicStyles( 'uagb-inline-notice-style-' + clientId.substr( 0, 8 ), blockStyling );
-		
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
-	}, [deviceType] );
+	}, [ deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	return (
-			<>
+		<>
 			{ isSelected && <Settings parentProps={ props } /> }
-				<Render parentProps={ props } />
-			</>
+			<Render parentProps={ props } />
+		</>
 	);
 };
 
