@@ -1,4 +1,4 @@
-import { select,dispatch, subscribe } from '@wordpress/data';
+import { select, dispatch, subscribe } from '@wordpress/data';
 import { createBlock, parse, serialize } from '@wordpress/blocks';
 import isInvalid from './isInvalid';
 
@@ -47,29 +47,28 @@ const initBlockRecovery = ( blocks ) => {
 };
 
 // Create Replacement Blocks Based on the Fixed Variant.
-const recoverBlocks = ( allBlocks ) => (
+const recoverBlocks = ( allBlocks ) =>
 	allBlocks.map( ( block ) => {
 		const curBlock = block;
 
 		if ( 'core/block' === block.name ) {
-			const { attributes: { ref } } = block;
-			const reusableBlockPosts = select( 'core' ).getEntityRecords(
-				'postType',
-				'wp_block'
-			);
+			const {
+				attributes: { ref },
+			} = block;
+			const reusableBlockPosts = select( 'core' ).getEntityRecords( 'postType', 'wp_block' );
 
 			let reusableBlockPost = null;
 
 			if ( reusableBlockPosts ) {
 				reusableBlockPosts?.forEach( ( post ) => {
-					if ( ref === post?.id )  {
+					if ( ref === post?.id ) {
 						reusableBlockPost = post?.content?.raw;
 					}
 				} );
 			}
 
 			if ( null === reusableBlockPost ) {
-				return curBlock
+				return curBlock;
 			}
 
 			const parsedBlocks = parse( reusableBlockPost ) || [];
@@ -103,11 +102,10 @@ const recoverBlocks = ( allBlocks ) => (
 		}
 
 		return curBlock;
-	} )
-);
+	} );
 
 // Recover Current Block.
-const recoverBlock = ( { name, attributes, innerBlocks } ) => ( createBlock( name, attributes, innerBlocks ) );
+const recoverBlock = ( { name, attributes, innerBlocks } ) => createBlock( name, attributes, innerBlocks );
 
 // Start with the Automatic Block Recovery Process.
 const autoBlockRecovery = () => {
@@ -119,12 +117,11 @@ const autoBlockRecovery = () => {
 				const recoveredBlocks = recoverBlocks( select( 'core/block-editor' ).getBlocks() );
 				recoveredBlocks.forEach( ( block ) => {
 					if ( block.isReusable && block.ref ) {
-						dispatch( 'core' ).editEntityRecord(
-							'postType',
-							'wp_block',
-							block.ref,
-							{ content: serialize( block.blocks ) }
-						).then();
+						dispatch( 'core' )
+							.editEntityRecord( 'postType', 'wp_block', block.ref, {
+								content: serialize( block.blocks ),
+							} )
+							.then();
 					}
 
 					if ( block.recovered && block.replacedClientId ) {
@@ -132,7 +129,11 @@ const autoBlockRecovery = () => {
 					}
 				} );
 				if ( recoveryDone ) {
-					console.log( '%cSpectra Auto Recovery Enabled: All Spectra Blocks on this page have been recovered!', 'border-radius: 6px; width: 100%; margin: 16px 0; padding: 16px; background-color: #007CBA; color: #fff; font-weight: bold; text-shadow: 2px 2px 2px #0063A1;' ); //eslint-disable-line no-console
+					//eslint-disable-next-line no-console
+					console.log(
+						'%cSpectra Auto Recovery Enabled: All Spectra Blocks on this page have been recovered!',
+						'border-radius: 6px; width: 100%; margin: 16px 0; padding: 16px; background-color: #007CBA; color: #fff; font-weight: bold; text-shadow: 2px 2px 2px #0063A1;'
+					);
 				}
 				destroyRecoveryCSS();
 			}

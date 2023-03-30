@@ -12,26 +12,20 @@ sass.render(
 	},
 	function ( error, result ) {
 		if ( null !== result && ! error ) {
-			fs.writeFile(
-				paths.pluginDist + '/common-editor.css',
-				result.css,
-				function ( err ) {
-					if ( err ) {
-						throw err;
-					}
-
-					console.log( '\n\nCommon editor generated!' ); // eslint-disable-line
+			fs.writeFile( paths.pluginDist + '/common-editor.css', result.css, function ( err ) {
+				if ( err ) {
+					throw err;
 				}
-			);
+
+				console.log( '\n\nCommon editor generated!' ); // eslint-disable-line
+			} );
 		}
 	}
 );
 
 //Generate individual block's css files
 fs.readdir( paths.pluginSrc + '/blocks', function ( readError, items ) {
-
 	for ( const item of items ) {
-
 		sass.render(
 			{
 				file: paths.pluginSrc + '/blocks/' + item + '/style.scss',
@@ -40,9 +34,7 @@ fs.readdir( paths.pluginSrc + '/blocks', function ( readError, items ) {
 				sourceMap: false,
 			},
 			function ( error, result ) {
-
 				if ( result && ! error ) {
-
 					let file_name = item;
 
 					switch ( item ) {
@@ -57,13 +49,9 @@ fs.readdir( paths.pluginSrc + '/blocks', function ( readError, items ) {
 							break;
 					}
 
-					fs.writeFile(
-						'./assets/css/blocks/' + file_name + '.css',
-						result.css,
-						function ( err ) {
-							if ( err ) throw err;
-						}
-					);
+					fs.writeFile( './assets/css/blocks/' + file_name + '.css', result.css, function ( err ) {
+						if ( err ) throw err;
+					} );
 				}
 			}
 		);

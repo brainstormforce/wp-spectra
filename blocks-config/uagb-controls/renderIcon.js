@@ -30,11 +30,7 @@ function renderSVG( svg, setAttributes = false ) {
 			case 'align-center':
 				return (
 					<svg viewBox="0 0 18 12" xmlns="https://www.w3.org/2000/svg">
-						<path
-							fillRule="evenodd"
-							clipRule="evenodd"
-							d="M4 2H14V0H4V2ZM0 7H18V5H0V7ZM4 12H14V10H4V12Z"
-						/>
+						<path fillRule="evenodd" clipRule="evenodd" d="M4 2H14V0H4V2ZM0 7H18V5H0V7ZM4 12H14V10H4V12Z" />
 					</svg>
 				);
 			case 'align-left':
@@ -50,27 +46,22 @@ function renderSVG( svg, setAttributes = false ) {
 			case 'align-right':
 				return (
 					<svg viewBox="0 0 18 12" xmlns="https://www.w3.org/2000/svg">
-						<path
-							fillRule="evenodd"
-							clipRule="evenodd"
-							d="M8 2H18V0H8V2ZM0 7H18V5H0V7ZM8 12H18V10H8V12Z"
-						/>
+						<path fillRule="evenodd" clipRule="evenodd" d="M8 2H18V0H8V2ZM0 7H18V5H0V7ZM8 12H18V10H8V12Z" />
 					</svg>
 				);
 			case 'align-justify':
 				return (
 					<svg width="18" height="12" viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg">
-						<path d="M0 0H18V2H0V0ZM0 5.00001H18V7.00001H0V5.00001ZM0 10H18V12H0V10Z"/>
+						<path d="M0 0H18V2H0V0ZM0 5.00001H18V7.00001H0V5.00001ZM0 10H18V12H0V10Z" />
 					</svg>
 				);
 		}
 
-		return (
-			( ! setAttributes || 'not_set' === setAttributes )  ?
+		return ! setAttributes || 'not_set' === setAttributes ? (
 			<svg xmlns="https://www.w3.org/2000/svg" viewBox={ viewBox }>
 				<path d={ path }></path>
 			</svg>
-			:
+		) : (
 			<svg width="20" height="20" xmlns="https://www.w3.org/2000/svg" viewBox={ viewBox }>
 				<path d={ path }></path>
 			</svg>

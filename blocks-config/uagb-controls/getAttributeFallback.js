@@ -7,8 +7,10 @@ import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 
 const allBlocksAttributes = wp.hooks.applyFilters( 'uagb.blocksAttributes', blocksAttributes );
 
-const getAttributeFallback = ( currentValue, key, blockName ) => ( currentValue ? currentValue : allBlocksAttributes[blockName][key].default );
+const getAttributeFallback = ( currentValue, key, blockName ) =>
+	currentValue ? currentValue : allBlocksAttributes[ blockName ][ key ].default;
 
-export const getFallbackNumber = ( currentValue, key, blockName ) => ( isNaN( currentValue ) ? allBlocksAttributes[blockName][key].default : currentValue );
+export const getFallbackNumber = ( currentValue, key, blockName ) =>
+	isNaN( currentValue ) ? allBlocksAttributes[ blockName ][ key ].default : currentValue;
 
 export default getAttributeFallback;
