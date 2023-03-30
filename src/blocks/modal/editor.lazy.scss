@@ -1,7 +1,11 @@
 .editor-styles-wrapper {
+
 	.uagb-modal-wrapper {
+
 		.uagb-modal-popup {
+
 			&.uagb-modal-type-right-off-canvas {
+
 				.uagb-modal-popup-wrap {
 					margin: 0 !important;
 				}
@@ -12,6 +16,7 @@
 			}
 
 			&.uagb-modal-type-left-off-canvas {
+
 				.uagb-modal-popup-wrap {
 					margin: 0 !important;
 				}
@@ -26,7 +31,7 @@
 			}
 
 			&.active {
-				background: rgba( 0, 0, 0, 0.6 );
+				background: rgba(0, 0, 0, 0.6);
 				border: 2px none #ddd;
 				display: flex;
 				margin-top: 20px;
@@ -38,6 +43,7 @@
 }
 
 .rtl .editor-styles-wrapper {
+
 	.uagb-modal-button-link .uagb-modal-content-wrapper > svg {
 		// Fixed 5px left/right margin when before/after button icon.
 		margin-left: 5px;
