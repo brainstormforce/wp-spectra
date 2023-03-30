@@ -56,19 +56,14 @@ registerBlockType( 'uagb/restaurant-menu', {
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
 	supports: {
 		anchor: true,
 	},
 	category: uagb_blocks_info.category,
 	attributes,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="price-list" />
-			) : (
-				<Edit { ...props } />
-			),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="price-list" /> : <Edit { ...props } /> ),
 	save,
 	deprecated,
 } );

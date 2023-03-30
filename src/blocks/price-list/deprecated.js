@@ -17,20 +17,12 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-			const {
-				block_id,
-				className,
-				rest_menu_item_arr,
-				imagePosition,
-			} = props.attributes;
+			const { block_id, className, rest_menu_item_arr, imagePosition } = props.attributes;
 
 			return (
 				<>
 					<div
-						className={ classnames(
-							className,
-							'uagb-rest_menu__outer-wrap'
-						) }
+						className={ classnames( className, 'uagb-rest_menu__outer-wrap' ) }
 						id={ `uagb-rm-${ block_id }` }
 					>
 						{ rest_menu_item_arr.map( ( test, index ) => (
@@ -41,77 +33,46 @@ const deprecated = [
 								) }
 								key={ 'wrap-' + index }
 							>
-								<div
-									className="uagb-rm__content"
-									key={ 'tm_content-' + index }
-								>
-									{ ( imagePosition == 'top' ||
-										imagePosition == 'left' ) && (
-										<RestMenuImage
-											attributes={ props.attributes }
-											index_value={ index }
-										/>
+								<div className="uagb-rm__content" key={ 'tm_content-' + index }>
+									{ ( imagePosition == 'top' || imagePosition == 'left' ) && (
+										<RestMenuImage attributes={ props.attributes } index_value={ index } />
 									) }
 
 									<div className="uagb-rm__text-wrap">
 										{
 											<>
-												<div
-													className="uagb-rm-details"
-													key={ 'tm_wraps-' + index }
-												>
+												<div className="uagb-rm-details" key={ 'tm_wraps-' + index }>
 													<div
 														className="uagb-rm__title-wrap"
-														key={
-															'rm_title__wraps-' +
-															index
-														}
+														key={ 'rm_title__wraps-' + index }
 													>
 														<Title
-															attributes={
-																props.attributes
-															}
+															attributes={ props.attributes }
 															setAttributes="not_set"
 															props={ props }
-															index_value={
-																index
-															}
+															index_value={ index }
 														/>
 														<div
 															className="uagb-rest-menu-text-wrap"
-															key={
-																'text-wrap-' +
-																index
-															}
+															key={ 'text-wrap-' + index }
 														>
 															<Description
-																attributes={
-																	props.attributes
-																}
+																attributes={ props.attributes }
 																setAttributes="not_set"
 																props={ props }
-																index_value={
-																	index
-																}
+																index_value={ index }
 															/>
 														</div>
 													</div>
 													<div
 														className="uagb-rm__price-wrap"
-														key={
-															'rm_price__wraps-' +
-															index
-														}
+														key={ 'rm_price__wraps-' + index }
 													>
 														<Price
-															attributes={
-																props.attributes
-															}
+															attributes={ props.attributes }
 															setAttributes="not_set"
 															props={ props }
-															index_value={
-																index
-															}
+															index_value={ index }
 														/>
 													</div>
 												</div>
@@ -119,10 +80,7 @@ const deprecated = [
 										}
 									</div>
 									{ imagePosition == 'right' && (
-										<RestMenuImage
-											attributes={ props.attributes }
-											index_value={ index }
-										/>
+										<RestMenuImage attributes={ props.attributes } index_value={ index } />
 									) }
 								</div>
 								<div className="uagb-rm__separator-parent">
@@ -140,21 +98,12 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-			const {
-				block_id,
-				className,
-				rest_menu_item_arr,
-				imagePosition,
-			} = props.attributes;
+			const { block_id, className, rest_menu_item_arr, imagePosition } = props.attributes;
 
 			return (
 				<>
 					<div
-						className={ classnames(
-							className,
-							'uagb-rest_menu__outer-wrap',
-							`uagb-block-${ block_id }`
-						) }
+						className={ classnames( className, 'uagb-rest_menu__outer-wrap', `uagb-block-${ block_id }` ) }
 					>
 						{ rest_menu_item_arr.map( ( test, index ) => (
 							<div
@@ -164,77 +113,46 @@ const deprecated = [
 								) }
 								key={ 'wrap-' + index }
 							>
-								<div
-									className="uagb-rm__content"
-									key={ 'tm_content-' + index }
-								>
-									{ ( imagePosition == 'top' ||
-										imagePosition == 'left' ) && (
-										<RestMenuImage
-											attributes={ props.attributes }
-											index_value={ index }
-										/>
+								<div className="uagb-rm__content" key={ 'tm_content-' + index }>
+									{ ( imagePosition == 'top' || imagePosition == 'left' ) && (
+										<RestMenuImage attributes={ props.attributes } index_value={ index } />
 									) }
 
 									<div className="uagb-rm__text-wrap">
 										{
 											<>
-												<div
-													className="uagb-rm-details"
-													key={ 'tm_wraps-' + index }
-												>
+												<div className="uagb-rm-details" key={ 'tm_wraps-' + index }>
 													<div
 														className="uagb-rm__title-wrap"
-														key={
-															'rm_title__wraps-' +
-															index
-														}
+														key={ 'rm_title__wraps-' + index }
 													>
 														<Title
-															attributes={
-																props.attributes
-															}
+															attributes={ props.attributes }
 															setAttributes="not_set"
 															props={ props }
-															index_value={
-																index
-															}
+															index_value={ index }
 														/>
 														<div
 															className="uagb-rest-menu-text-wrap"
-															key={
-																'text-wrap-' +
-																index
-															}
+															key={ 'text-wrap-' + index }
 														>
 															<Description
-																attributes={
-																	props.attributes
-																}
+																attributes={ props.attributes }
 																setAttributes="not_set"
 																props={ props }
-																index_value={
-																	index
-																}
+																index_value={ index }
 															/>
 														</div>
 													</div>
 													<div
 														className="uagb-rm__price-wrap"
-														key={
-															'rm_price__wraps-' +
-															index
-														}
+														key={ 'rm_price__wraps-' + index }
 													>
 														<Price
-															attributes={
-																props.attributes
-															}
+															attributes={ props.attributes }
 															setAttributes="not_set"
 															props={ props }
-															index_value={
-																index
-															}
+															index_value={ index }
 														/>
 													</div>
 												</div>
@@ -242,10 +160,7 @@ const deprecated = [
 										}
 									</div>
 									{ imagePosition == 'right' && (
-										<RestMenuImage
-											attributes={ props.attributes }
-											index_value={ index }
-										/>
+										<RestMenuImage attributes={ props.attributes } index_value={ index } />
 									) }
 								</div>
 								<div className="uagb-rm__separator-parent">
@@ -267,11 +182,7 @@ const deprecated = [
 			return (
 				<>
 					<div
-						className={ classnames(
-							className,
-							'uagb-rest_menu__outer-wrap',
-							`uagb-block-${ block_id }`
-						) }
+						className={ classnames( className, 'uagb-rest_menu__outer-wrap', `uagb-block-${ block_id }` ) }
 					>
 						<InnerBlocks.Content />
 					</div>

@@ -30,13 +30,7 @@ const Description = ( props ) => {
 			/>
 		);
 	}
-	return (
-		<RichText.Content
-			tagName="div"
-			value={ description }
-			className="uagb-rm__desc"
-		/>
-	);
+	return <RichText.Content tagName="div" value={ description } className="uagb-rm__desc" />;
 };
 
 export default Description;

@@ -10,9 +10,7 @@ const attributes = {
 	},
 	description: {
 		type: 'string',
-		default: __(
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-		),
+		default: __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' ),
 	},
 	title: {
 		type: 'string',
@@ -24,27 +22,27 @@ const attributes = {
 	},
 	image: {
 		type: 'object',
-		default: { url:`${ uagb_blocks_info.uagb_url }/admin/assets/images/uag-placeholder.svg`},
+		default: { url: `${ uagb_blocks_info.uagb_url }/admin/assets/images/uag-placeholder.svg` },
 	},
 	imagePosition: {
 		type: 'string',
 		default: 'left',
 		UAGCopyPaste: {
-			styleType: 'image-position'
+			styleType: 'image-position',
 		},
 	},
 	imageAlignment: {
 		type: 'string',
 		default: 'top',
 		UAGCopyPaste: {
-			styleType: 'image-align'
+			styleType: 'image-align',
 		},
 	},
 	imageSize: {
 		type: 'string',
 		default: 'medium',
 		UAGCopyPaste: {
-			styleType: 'image-size'
+			styleType: 'image-size',
 		},
 	},
 	headingTag: {
@@ -67,21 +65,21 @@ const attributes = {
 		type: 'string',
 		default: 'left',
 		UAGCopyPaste: {
-			styleType: 'main-title-align'
+			styleType: 'main-title-align',
 		},
 	},
 	stack: {
 		type: 'string',
 		default: 'tablet',
 	},
-	imageWidth:{
+	imageWidth: {
 		type: 'number',
 		default: 100,
 	},
 	imgAlign: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'image-align'
+			styleType: 'image-align',
 		},
 		default: 'side',
 	},

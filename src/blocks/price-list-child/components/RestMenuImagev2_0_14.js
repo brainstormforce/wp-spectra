@@ -28,18 +28,13 @@ const RestMenuImagev2_0_14 = ( props ) => {
 		if ( urlCheck !== '' ) {
 			const size = image.sizes;
 			const imageSize = attributes.imageSize;
-			if (
-				typeof size !== 'undefined' &&
-				typeof size[ imageSize ] !== 'undefined'
-			) {
+			if ( typeof size !== 'undefined' && typeof size[ imageSize ] !== 'undefined' ) {
 				url = size[ imageSize ].url;
 			} else {
 				url = urlCheck;
 			}
 
-			return (
-				<img className="" src={ url } alt={ image.alt } />
-			);
+			return <img className="" src={ url } alt={ image.alt } />;
 		}
 		return null;
 	}

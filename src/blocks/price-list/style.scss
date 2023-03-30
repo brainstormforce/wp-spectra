@@ -69,7 +69,6 @@
 				}
 			}
 
-
 			.uagb-rm__separator {
 				display: -webkit-flex;
 				display: -moz-flexbox;
@@ -304,7 +303,7 @@
 	display: grid;
 }
 
-@media (max-width: 976px) {
+@media ( max-width: 976px ) {
 
 	.wp-block-uagb-restaurant-menu {
 
@@ -365,11 +364,10 @@
 		&.uagb-rm__tablet-column-4 {
 			grid-template-columns: auto auto auto auto;
 		}
-
 	}
 }
 
-@media (max-width: 767px) {
+@media ( max-width: 767px ) {
 
 	.wp-block-uagb-restaurant-menu {
 
@@ -385,7 +383,6 @@
 				align-self: flex-start;
 			}
 		}
-
 
 		.uagb-rm__image-position-right.uagb-rm-stacked-mobile {
 
@@ -415,7 +412,6 @@
 				align-self: flex-end;
 			}
 		}
-
 
 		&.uagb-rm__mobile-column-1 {
 			grid-template-columns: auto;
