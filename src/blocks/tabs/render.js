@@ -23,8 +23,17 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 	const { attributes, setAttributes, clientId } = props;
-	const { tabsStyleD, tabsStyleM, tabsStyleT, tabHeaders, tabActive, tabAlign, showIcon, icon, iconPosition } =
-		attributes;
+	const {
+		tabsStyleD,
+		tabsStyleM,
+		tabsStyleT,
+		tabHeaders,
+		tabActive,
+		tabAlign,
+		showIcon,
+		icon,
+		iconPosition,
+	} = attributes;
 
 	const deviceType = useDeviceType();
 
