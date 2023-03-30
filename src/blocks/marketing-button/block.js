@@ -15,7 +15,10 @@ import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/marketing-button', {
 	title: __( 'Marketing Button', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'Add a marketing call to action button with a short description.', 'ultimate-addons-for-gutenberg' ),
+	description: __(
+		'Add a marketing call to action button with a short description.',
+		'ultimate-addons-for-gutenberg'
+	),
 	icon: UAGB_Block_Icons.marketing_button,
 	category: uagb_blocks_info.category,
 	keywords: [
@@ -28,16 +31,12 @@ registerBlockType( 'uagb/marketing-button', {
 	},
 	attributes,
 	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="marketing-button" />
-			) : (
-				<Edit { ...props } />
-			),
+		props.attributes.isPreview ? <PreviewImage image="marketing-button" /> : <Edit { ...props } />,
 	save,
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
 	deprecated,
 } );

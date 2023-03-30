@@ -14,49 +14,46 @@ const UAGBModalEdit = ( props ) => {
 		setAttributes,
 		attributes,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
-		clientId
+		clientId,
 	} = props;
 
 	useEffect( () => {
-
-		setAttributes( { defaultTemplate:  true } );
+		setAttributes( { defaultTemplate: true } );
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
-
 	}, [] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
-        addBlockEditorDynamicStyles( 'uagb-modal-style-' + clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles( 'uagb-modal-style-' + clientId.substr( 0, 8 ), blockStyling );
 		const blockDetails = applyFilters(
 			`spectra.modal.edit.jsdetails`,
 			{
 				block_id: clientId.substr( 0, 8 ),
-				device_type: deviceType
-			}, props?.attributes
+				device_type: deviceType,
+			},
+			props?.attributes
 		);
-		const loadModalBlockEditor = new CustomEvent( 'UAGModalEditor', { // eslint-disable-line no-undef
+		const loadModalBlockEditor = new CustomEvent( 'UAGModalEditor', {
+			// eslint-disable-line no-undef
 			detail: blockDetails,
 		} );
 
 		document.dispatchEvent( loadModalBlockEditor );
-
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	return (
-			<>
+		<>
 			{ isSelected && <Settings parentProps={ props } /> }
-				<Render parentProps={ props } />
-			</>
+			<Render parentProps={ props } />
+		</>
 	);
-}
+};
 
 export default UAGBModalEdit;
