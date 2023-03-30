@@ -9,9 +9,7 @@ import TypographyControl from '@Components/typography';
 import ResponsiveBorder from '@Components/responsive-border';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
-import InspectorTab, {
-	UAGTabs,
-} from '@Components/inspector-tabs/InspectorTab.js';
+import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
@@ -22,7 +20,7 @@ import UAGSelectControl from '@Components/select-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
-import {buttonsPresets} from './presets';
+import { buttonsPresets } from './presets';
 import UAGPresets from '@Components/presets';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import { decodeEntities } from '@wordpress/html-entities';
@@ -36,13 +34,7 @@ import Render from './render';
 
 const MAX_POSTS_COLUMNS = 8;
 
-import {
-	Placeholder,
-	Spinner,
-	ToggleControl,
-	Icon,
-	ExternalLink
-} from '@wordpress/components';
+import { Placeholder, Spinner, ToggleControl, Icon, ExternalLink } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
 
@@ -291,18 +283,17 @@ const UAGBPostMasonry = ( props ) => {
 			enableOffset,
 			UAGHideDesktop,
 			UAGHideTab,
-			UAGHideMob
+			UAGHideMob,
 		},
 		deviceType,
 	} = props;
-	
 
 	const [ state, setState ] = useState( {
 		isEditing: false,
 		innerBlocks: [],
 	} );
 
-	const [ isTaxonomyLoading, setIsTaxonomyLoading] = useState( false );
+	const [ isTaxonomyLoading, setIsTaxonomyLoading ] = useState( false );
 
 	useEffect( () => {
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
@@ -452,60 +443,58 @@ const UAGBPostMasonry = ( props ) => {
 				} );
 			}
 		}
-		
-		setAttributes( { allTaxonomyStore : undefined} );
+
+		setAttributes( { allTaxonomyStore: undefined } );
 	}, [] );
 
 	useEffect( () => {
-
-		if( borderWidth ){
-			if( undefined === btnBorderTopWidth ) {
+		if ( borderWidth ) {
+			if ( undefined === btnBorderTopWidth ) {
 				setAttributes( {
 					btnBorderTopWidth: borderWidth,
 				} );
 			}
-			if( undefined === btnBorderLeftWidth ) {
-				setAttributes( { btnBorderLeftWidth : borderWidth} );
+			if ( undefined === btnBorderLeftWidth ) {
+				setAttributes( { btnBorderLeftWidth: borderWidth } );
 			}
-			if( undefined === btnBorderRightWidth ) {
-				setAttributes( { btnBorderRightWidth : borderWidth} );
+			if ( undefined === btnBorderRightWidth ) {
+				setAttributes( { btnBorderRightWidth: borderWidth } );
 			}
-			if( undefined === btnBorderBottomWidth ) {
-				setAttributes( { btnBorderBottomWidth : borderWidth} );
-			}
-		}
-
-		if( borderRadius ){
-
-			if( undefined === btnBorderTopLeftRadius ) {
-				setAttributes( { btnBorderTopLeftRadius : borderRadius} );
-			}
-			if( undefined === btnBorderTopRightRadius ) {
-				setAttributes( { btnBorderTopRightRadius : borderRadius} );
-			}
-			if( undefined === btnBorderBottomLeftRadius ) {
-				setAttributes( { btnBorderBottomLeftRadius : borderRadius} );
-			}
-			if( undefined === btnBorderBottomRightRadius ) {
-				setAttributes( { btnBorderBottomRightRadius : borderRadius} );
+			if ( undefined === btnBorderBottomWidth ) {
+				setAttributes( { btnBorderBottomWidth: borderWidth } );
 			}
 		}
 
-		if( borderColor ){
-			if( undefined === btnBorderColor ) {
-				setAttributes( { btnBorderColor : borderColor} );
+		if ( borderRadius ) {
+			if ( undefined === btnBorderTopLeftRadius ) {
+				setAttributes( { btnBorderTopLeftRadius: borderRadius } );
+			}
+			if ( undefined === btnBorderTopRightRadius ) {
+				setAttributes( { btnBorderTopRightRadius: borderRadius } );
+			}
+			if ( undefined === btnBorderBottomLeftRadius ) {
+				setAttributes( { btnBorderBottomLeftRadius: borderRadius } );
+			}
+			if ( undefined === btnBorderBottomRightRadius ) {
+				setAttributes( { btnBorderBottomRightRadius: borderRadius } );
 			}
 		}
 
-		if( borderHColor ){
-			if( undefined === btnBorderHColor ) {
-				setAttributes( { btnBorderHColor : borderHColor} );
+		if ( borderColor ) {
+			if ( undefined === btnBorderColor ) {
+				setAttributes( { btnBorderColor: borderColor } );
 			}
 		}
 
-		if( borderStyle ){
-			if( undefined === btnBorderStyle ) {
-				setAttributes( { btnBorderStyle : borderStyle} );
+		if ( borderHColor ) {
+			if ( undefined === btnBorderHColor ) {
+				setAttributes( { btnBorderHColor: borderHColor } );
+			}
+		}
+
+		if ( borderStyle ) {
+			if ( undefined === btnBorderStyle ) {
+				setAttributes( { btnBorderStyle: borderStyle } );
 			}
 		}
 
@@ -513,7 +502,6 @@ const UAGBPostMasonry = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
 	}, [ attributes ] );
 
 	useEffect( () => {
@@ -523,13 +511,10 @@ const UAGBPostMasonry = ( props ) => {
 		addBlockEditorDynamicStyles( 'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 
 		scrollBlockToView();
-
 	}, [ deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	const togglePreview = () => {
@@ -556,7 +541,8 @@ const UAGBPostMasonry = ( props ) => {
 	};
 
 	let categoriesList = [];
-	const { latestPosts, taxonomyList, block } = useSelect( // eslint-disable-line no-unused-vars
+	const { latestPosts, taxonomyList, block } = useSelect(
+		// eslint-disable-line no-unused-vars
 		( select ) => {
 			const { getEntityRecords } = select( 'core' );
 
@@ -602,9 +588,7 @@ const UAGBPostMasonry = ( props ) => {
 			};
 
 			if ( excludeCurrentPost ) {
-				latestPostsQuery.exclude = select(
-					'core/editor'
-				).getCurrentPostId();
+				latestPostsQuery.exclude = select( 'core/editor' ).getCurrentPostId();
 			}
 
 			const category = [];
@@ -622,23 +606,15 @@ const UAGBPostMasonry = ( props ) => {
 			}
 			const { getBlocks } = select( 'core/block-editor' );
 			if ( undefined !== categories && '' !== categories ) {
-				latestPostsQuery[ rest_base ] =
-					undefined === categories || '' === categories
-						? categories
-						: category;
+				latestPostsQuery[ rest_base ] = undefined === categories || '' === categories ? categories : category;
 			}
 			return {
-				latestPosts: getEntityRecords(
-					'postType',
-					postType,
-					latestPostsQuery
-				),
+				latestPosts: getEntityRecords( 'postType', postType, latestPostsQuery ),
 				categoriesList,
-				taxonomyList:
-					'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
+				taxonomyList: 'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
 				block: getBlocks( props.clientId ),
 			};
-		},
+		}
 	);
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 
@@ -649,9 +625,7 @@ const UAGBPostMasonry = ( props ) => {
 		},
 	];
 
-	const categoryListOptions = [
-		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
-	];
+	const categoryListOptions = [ { value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) } ];
 
 	const bgTypeOptions = [
 		{
@@ -688,10 +662,7 @@ const UAGBPostMasonry = ( props ) => {
 
 	const generalSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
+			<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Text Alignment', 'ultimate-addons-for-gutenberg' ) }
@@ -703,48 +674,24 @@ const UAGBPostMasonry = ( props ) => {
 					options={ [
 						{
 							value: 'left',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-left' ) }
-								/>
-							),
-							tooltip: __(
-								'Left',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+							tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'center',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-center' ) }
-								/>
-							),
-							tooltip: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
+							tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'right',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-right' ) }
-								/>
-							),
-							tooltip: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
+							tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					showIcons={ true }
 				/>
 				<UAGSelectControl
-					label={ __(
-						'Post Type',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Post Type', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: postType,
 					} }
@@ -753,10 +700,7 @@ const UAGBPostMasonry = ( props ) => {
 				/>
 				{ '' !== taxonomyList && (
 					<UAGSelectControl
-						label={ __(
-							'Taxonomy',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Taxonomy', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: taxonomyType,
 						} }
@@ -778,10 +722,7 @@ const UAGBPostMasonry = ( props ) => {
 					</>
 				) }
 				<ToggleControl
-					label={ __(
-						'Exclude Current Post',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Exclude Current Post', 'ultimate-addons-for-gutenberg' ) }
 					checked={ excludeCurrentPost }
 					onChange={ () =>
 						setAttributes( {
@@ -790,10 +731,7 @@ const UAGBPostMasonry = ( props ) => {
 					}
 				/>
 				<UAGNumberControl
-					label={ __(
-						'Posts Per Page',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Posts Per Page', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ postsToShow }
 					data={ {
@@ -806,55 +744,53 @@ const UAGBPostMasonry = ( props ) => {
 					showControlHeader={ false }
 				/>
 				<ToggleControl
-					label={ __(
-						'Offset Starting Post',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Offset Starting Post', 'ultimate-addons-for-gutenberg' ) }
 					checked={ enableOffset }
 					onChange={ onSelectOffset }
-					help= {
+					help={
 						<>
-						{ !enableOffset && (
-							<>
-							{ __(
-								'Note: Enabling this will disable the Pagination. Setting the offset parameter overrides/ignores the paged parameter and breaks pagination. ',
-								'ultimate-addons-for-gutenberg' ) }
-							<ExternalLink
-								href={ 'https://developer.wordpress.org/reference/classes/wp_query/#pagination-parameters:~:text=Warning%3A%20Setting%20the%20offset%20parameter%20overrides/ignores%20the%20paged%20parameter%20and%20breaks%20pagination.%20The%20%27offset%27%20parameter%20is%20ignored%20when%20%27posts_per_page%27%3D%3E%2D1%20(show%20all%20posts)%20is%20used.' }
-							>
-								{ __( 'Read more' ) }
-							</ExternalLink>
-							</>
-							)
-						}
+							{ ! enableOffset && (
+								<>
+									{ __(
+										'Note: Enabling this will disable the Pagination. Setting the offset parameter overrides/ignores the paged parameter and breaks pagination. ',
+										'ultimate-addons-for-gutenberg'
+									) }
+									<ExternalLink
+										href={
+											'https://developer.wordpress.org/reference/classes/wp_query/#pagination-parameters:~:text=Warning%3A%20Setting%20the%20offset%20parameter%20overrides/ignores%20the%20paged%20parameter%20and%20breaks%20pagination.%20The%20%27offset%27%20parameter%20is%20ignored%20when%20%27posts_per_page%27%3D%3E%2D1%20(show%20all%20posts)%20is%20used.'
+										}
+									>
+										{ __( 'Read more' ) }
+									</ExternalLink>
+								</>
+							) }
 						</>
 					}
 				/>
 				{ enableOffset && (
-				<UAGNumberControl
-					label={ __(
-						'Offset By',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ postsOffset }
-					data={ {
-						value: postsOffset,
-						label: 'postsOffset',
-					} }
-					onChange={ onChangePostsOffset }
-					min={ 0 }
-					max={ 100 }
-					displayUnit={ false }
-					help= {
-						<>
-						{ enableOffset && __(
-						'Note: The offset will skip the number of posts set, and will use the next post as the starting post.',
-						'ultimate-addons-for-gutenberg' )}
-						</>
-					}
-				/>
-				)}
+					<UAGNumberControl
+						label={ __( 'Offset By', 'ultimate-addons-for-gutenberg' ) }
+						setAttributes={ setAttributes }
+						value={ postsOffset }
+						data={ {
+							value: postsOffset,
+							label: 'postsOffset',
+						} }
+						onChange={ onChangePostsOffset }
+						min={ 0 }
+						max={ 100 }
+						displayUnit={ false }
+						help={
+							<>
+								{ enableOffset &&
+									__(
+										'Note: The offset will skip the number of posts set, and will use the next post as the starting post.',
+										'ultimate-addons-for-gutenberg'
+									) }
+							</>
+						}
+					/>
+				) }
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Order By', 'ultimate-addons-for-gutenberg' ) }
@@ -865,31 +801,19 @@ const UAGBPostMasonry = ( props ) => {
 					options={ [
 						{
 							value: 'date',
-							label: __(
-								'Date',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Date', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'title',
-							label: __(
-								'Title',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Title', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'rand',
-							label: __(
-								'Random',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Random', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'menu_order',
-							label: __(
-								'Menu Order',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Menu Order', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 				/>
@@ -903,17 +827,11 @@ const UAGBPostMasonry = ( props ) => {
 					options={ [
 						{
 							value: 'desc',
-							label: __(
-								'Descending',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Descending', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'asc',
-							label: __(
-								'Ascending',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Ascending', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 				/>
@@ -934,42 +852,36 @@ const UAGBPostMasonry = ( props ) => {
 						},
 					} }
 					min={ 0 }
-					max={MAX_POSTS_COLUMNS}
+					max={ MAX_POSTS_COLUMNS }
 					displayUnit={ false }
 					setAttributes={ setAttributes }
 				/>
 				{ ! enableOffset && (
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __(
-						'Pagination',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						value: paginationType,
-						label: 'paginationType',
-					} }
-					className="uagb-multi-button-alignment-control"
-					options={ [
-						{
-							value: 'none',
-							label: 'None',
-						},
-						{
-							value: 'infinite',
-							label: 'Infinite',
-						},
-					] }
-					showIcons={ false }
-				/>
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __( 'Pagination', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: paginationType,
+							label: 'paginationType',
+						} }
+						className="uagb-multi-button-alignment-control"
+						options={ [
+							{
+								value: 'none',
+								label: 'None',
+							},
+							{
+								value: 'infinite',
+								label: 'Infinite',
+							},
+						] }
+						showIcons={ false }
+					/>
 				) }
 				{ 'infinite' === paginationType && (
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
-						label={ __(
-							'Infinite Load Event',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Infinite Load Event', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: paginationEventType,
 							label: 'paginationEventType',
@@ -988,31 +900,22 @@ const UAGBPostMasonry = ( props ) => {
 						showIcons={ false }
 					/>
 				) }
-				{ 'infinite' === paginationType &&
-					'button' === paginationEventType && (
-						<>
+				{ 'infinite' === paginationType && 'button' === paginationEventType && (
+					<>
 						<UAGTextControl
 							autoComplete="off"
-							label={ __(
-								'Button Text',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Button Text', 'ultimate-addons-for-gutenberg' ) }
 							value={ buttonText }
-							data={{
+							data={ {
 								value: buttonText,
 								label: 'buttonText',
-							}}
+							} }
 							setAttributes={ setAttributes }
-							onChange={ ( value ) =>
-								setAttributes( { buttonText: value } )
-							}
+							onChange={ ( value ) => setAttributes( { buttonText: value } ) }
 						/>
 						<MultiButtonsControl
 							setAttributes={ setAttributes }
-							label={ __(
-								'Pagination Button Alignment',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Pagination Button Alignment', 'ultimate-addons-for-gutenberg' ) }
 							data={ {
 								value: paginationAlign,
 								label: 'paginationAlign',
@@ -1021,72 +924,35 @@ const UAGBPostMasonry = ( props ) => {
 							options={ [
 								{
 									value: 'left',
-									icon: (
-										<Icon
-											icon={ renderSVG(
-												'fa fa-align-left'
-											) }
-										/>
-									),
-									tooltip: __(
-										'Left',
-										'ultimate-addons-for-gutenberg'
-									),
+									icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+									tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
 								},
 								{
 									value: 'center',
-									icon: (
-										<Icon
-											icon={ renderSVG(
-												'fa fa-align-center'
-											) }
-										/>
-									),
-									tooltip: __(
-										'Center',
-										'ultimate-addons-for-gutenberg'
-									),
+									icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
+									tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
 								},
 								{
 									value: 'right',
-									icon: (
-										<Icon
-											icon={ renderSVG(
-												'fa fa-align-right'
-											) }
-										/>
-									),
-									tooltip: __(
-										'Right',
-										'ultimate-addons-for-gutenberg'
-									),
+									icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
+									tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
 								},
 							] }
 							showIcons={ true }
 						/>
-						</>
-					) }
-				<h2>
-					{ __(
-						'If Posts Not Found',
-						'ultimate-addons-for-gutenberg'
-					) }
-				</h2>
+					</>
+				) }
+				<h2>{ __( 'If Posts Not Found', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<UAGTextControl
 					autoComplete="off"
-					label={ __(
-						'Display Message',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Display Message', 'ultimate-addons-for-gutenberg' ) }
 					value={ postDisplaytext }
-					data={{
+					data={ {
 						value: postDisplaytext,
 						label: 'postDisplaytext',
-					}}
+					} }
 					setAttributes={ setAttributes }
-					onChange={ ( value ) =>
-						setAttributes( { postDisplaytext: value } )
-					}
+					onChange={ ( value ) => setAttributes( { postDisplaytext: value } ) }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1095,20 +961,14 @@ const UAGBPostMasonry = ( props ) => {
 		if ( 'infinite' === paginationType ) {
 			return (
 				<UAGAdvancedPanelBody
-					title={ __(
-						'Pagination',
-						'ultimate-addons-for-gutenberg'
-					) }
+					title={ __( 'Pagination', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 					className="uagb__url-panel-body"
 				>
 					{ 'button' === paginationEventType && (
 						<>
 							<Range
-								label={ __(
-									'Font Size',
-									'ultimate-addons-for-gutenberg'
-								) }
+								label={ __( 'Font Size', 'ultimate-addons-for-gutenberg' ) }
 								value={ paginationFontSize }
 								data={ {
 									value: paginationFontSize,
@@ -1121,10 +981,7 @@ const UAGBPostMasonry = ( props ) => {
 							/>
 							<SpacingControl
 								{ ...props }
-								label={ __(
-									'Padding',
-									'ultimate-addons-for-gutenberg'
-								) }
+								label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
 								valueTop={ {
 									value: paginationButtonPaddingTop,
 									label: 'paginationButtonPaddingTop',
@@ -1151,8 +1008,7 @@ const UAGBPostMasonry = ( props ) => {
 								} }
 								valueBottomTablet={ {
 									value: paginationButtonPaddingBottomTablet,
-									label:
-										'paginationButtonPaddingBottomTablet',
+									label: 'paginationButtonPaddingBottomTablet',
 								} }
 								valueLeftTablet={ {
 									value: paginationButtonPaddingLeftTablet,
@@ -1168,8 +1024,7 @@ const UAGBPostMasonry = ( props ) => {
 								} }
 								valueBottomMobile={ {
 									value: paginationButtonPaddingBottomMobile,
-									label:
-										'paginationButtonPaddingBottomMobile',
+									label: 'paginationButtonPaddingBottomMobile',
 								} }
 								valueLeftMobile={ {
 									value: paginationButtonPaddingLeftMobile,
@@ -1199,26 +1054,17 @@ const UAGBPostMasonry = ( props ) => {
 								tabs={ [
 									{
 										name: 'normal',
-										title: __(
-											'Normal',
-											'ultimate-addons-for-gutenberg'
-										),
+										title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
 									},
 									{
 										name: 'hover',
-										title: __(
-											'Hover',
-											'ultimate-addons-for-gutenberg'
-										),
+										title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
 									},
 								] }
 								normal={
 									<>
 										<AdvancedPopColorControl
-											label={ __(
-												'Text Color',
-												'ultimate-addons-for-gutenberg'
-											) }
+											label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
 											colorValue={ paginationTextColor }
 											data={ {
 												value: paginationTextColor,
@@ -1227,13 +1073,8 @@ const UAGBPostMasonry = ( props ) => {
 											setAttributes={ setAttributes }
 										/>
 										<AdvancedPopColorControl
-											label={ __(
-												'Background Color',
-												'ultimate-addons-for-gutenberg'
-											) }
-											colorValue={
-												paginationMasonryBgColor
-											}
+											label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
+											colorValue={ paginationMasonryBgColor }
 											data={ {
 												value: paginationMasonryBgColor,
 												label: 'paginationMasonryBgColor',
@@ -1245,13 +1086,8 @@ const UAGBPostMasonry = ( props ) => {
 								hover={
 									<>
 										<AdvancedPopColorControl
-											label={ __(
-												'Text Color',
-												'ultimate-addons-for-gutenberg'
-											) }
-											colorValue={
-												paginationTextHoverColor
-											}
+											label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
+											colorValue={ paginationTextHoverColor }
 											data={ {
 												value: paginationTextHoverColor,
 												label: 'paginationTextHoverColor',
@@ -1259,13 +1095,8 @@ const UAGBPostMasonry = ( props ) => {
 											setAttributes={ setAttributes }
 										/>
 										<AdvancedPopColorControl
-											label={ __(
-												'Background Color',
-												'ultimate-addons-for-gutenberg'
-											) }
-											colorValue={
-												paginationBgHoverColor
-											}
+											label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
+											colorValue={ paginationBgHoverColor }
 											data={ {
 												value: paginationBgHoverColor,
 												label: 'paginationBgHoverColor',
@@ -1282,17 +1113,14 @@ const UAGBPostMasonry = ( props ) => {
 								attributes={ attributes }
 								deviceType={ deviceType }
 								disableBottomSeparator={ true }
-								disabledBorderTitle= { false }
+								disabledBorderTitle={ false }
 							/>
 						</>
 					) }
 					{ 'scroll' === paginationEventType && (
 						<>
 							<AdvancedPopColorControl
-								label={ __(
-									'Loader Color',
-									'ultimate-addons-for-gutenberg'
-								) }
+								label={ __( 'Loader Color', 'ultimate-addons-for-gutenberg' ) }
 								colorValue={ loaderColor }
 								data={ {
 									value: loaderColor,
@@ -1301,10 +1129,7 @@ const UAGBPostMasonry = ( props ) => {
 								setAttributes={ setAttributes }
 							/>
 							<Range
-								label={ __(
-									'Loader Size',
-									'ultimate-addons-for-gutenberg'
-								) }
+								label={ __( 'Loader Size', 'ultimate-addons-for-gutenberg' ) }
 								setAttributes={ setAttributes }
 								value={ loaderSize }
 								data={ {
@@ -1325,15 +1150,9 @@ const UAGBPostMasonry = ( props ) => {
 	};
 	const imageSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<ToggleControl
-					label={ __(
-						'Show Featured Image',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Show Featured Image', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostImage }
 					onChange={ () =>
 						setAttributes( {
@@ -1343,10 +1162,7 @@ const UAGBPostMasonry = ( props ) => {
 				/>
 				{ displayPostImage === true && (
 					<UAGSelectControl
-						label={ __(
-							'Sizes',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Sizes', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: imgSize,
 							label: 'imgSize',
@@ -1358,10 +1174,7 @@ const UAGBPostMasonry = ( props ) => {
 				{ displayPostImage === true && (
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
-						label={ __(
-							'Position',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Position', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: imgPosition,
 							label: 'imgPosition',
@@ -1369,31 +1182,20 @@ const UAGBPostMasonry = ( props ) => {
 						options={ [
 							{
 								value: 'top',
-								label: __(
-									'Top',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Top', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								value: 'background',
-								label: __(
-									'Background',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Background', 'ultimate-addons-for-gutenberg' ),
 							},
 						] }
 					/>
 				) }
 				{ displayPostImage === true && imgPosition === 'background' && (
 					<ToggleControl
-						label={ __(
-							'Link Complete Box',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Link Complete Box', 'ultimate-addons-for-gutenberg' ) }
 						checked={ linkBox }
-						onChange={ () =>
-							setAttributes( { linkBox: ! linkBox } )
-						}
+						onChange={ () => setAttributes( { linkBox: ! linkBox } ) }
 					/>
 				) }
 			</UAGAdvancedPanelBody>
@@ -1401,15 +1203,9 @@ const UAGBPostMasonry = ( props ) => {
 	};
 	const contentSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<ToggleControl
-					label={ __(
-						'Show Title',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Show Title', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostTitle }
 					onChange={ () =>
 						setAttributes( {
@@ -1418,10 +1214,7 @@ const UAGBPostMasonry = ( props ) => {
 					}
 				/>
 				<ToggleControl
-					label={ __(
-						'Show Author',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Show Author', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostAuthor }
 					onChange={ () =>
 						setAttributes( {
@@ -1432,15 +1225,10 @@ const UAGBPostMasonry = ( props ) => {
 				<ToggleControl
 					label={ __( 'Show Date', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostDate }
-					onChange={ () =>
-						setAttributes( { displayPostDate: ! displayPostDate } )
-					}
+					onChange={ () => setAttributes( { displayPostDate: ! displayPostDate } ) }
 				/>
 				<ToggleControl
-					label={ __(
-						'Show Comment',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Show Comment', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostComment }
 					onChange={ () =>
 						setAttributes( {
@@ -1449,10 +1237,7 @@ const UAGBPostMasonry = ( props ) => {
 					}
 				/>
 				<ToggleControl
-					label={ __(
-						'Show Taxonomy',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Show Taxonomy', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostTaxonomy }
 					onChange={ () =>
 						setAttributes( {
@@ -1461,88 +1246,67 @@ const UAGBPostMasonry = ( props ) => {
 					}
 				/>
 				{ displayPostTaxonomy && (
-				<>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __(
-						'Taxonomy Position',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						value: displayPostTaxonomyAboveTitle,
-						label: 'displayPostTaxonomyAboveTitle',
-					} }
-					options={ [
-						{
-							value: 'withMeta',
-							label: __(
-								'With Meta',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'aboveTitle',
-							label: __(
-								'Above Title',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-				/>
-				{ 'aboveTitle' === displayPostTaxonomyAboveTitle && (
-				<>
-					<MultiButtonsControl
-						setAttributes={ setAttributes }
-						label={ __(
-							'Taxonomy Style',
-							'ultimate-addons-for-gutenberg'
+					<>
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __( 'Taxonomy Position', 'ultimate-addons-for-gutenberg' ) }
+							data={ {
+								value: displayPostTaxonomyAboveTitle,
+								label: 'displayPostTaxonomyAboveTitle',
+							} }
+							options={ [
+								{
+									value: 'withMeta',
+									label: __( 'With Meta', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'aboveTitle',
+									label: __( 'Above Title', 'ultimate-addons-for-gutenberg' ),
+								},
+							] }
+						/>
+						{ 'aboveTitle' === displayPostTaxonomyAboveTitle && (
+							<>
+								<MultiButtonsControl
+									setAttributes={ setAttributes }
+									label={ __( 'Taxonomy Style', 'ultimate-addons-for-gutenberg' ) }
+									data={ {
+										value: taxStyle,
+										label: 'taxStyle',
+									} }
+									options={ [
+										{
+											value: 'default',
+											label: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
+										},
+										{
+											value: 'highlighted',
+											label: __( 'Highlighted', 'ultimate-addons-for-gutenberg' ),
+										},
+									] }
+								/>
+								{ 'default' === taxStyle && (
+									<UAGTextControl
+										label={ __( 'Taxonomy Divider', 'ultimate-addons-for-gutenberg' ) }
+										value={ taxDivider }
+										data={ {
+											value: taxDivider,
+											label: 'taxDivider',
+										} }
+										setAttributes={ setAttributes }
+										onChange={ ( value ) =>
+											setAttributes( {
+												taxDivider: value,
+											} )
+										}
+									/>
+								) }
+							</>
 						) }
-						data={ {
-							value: taxStyle,
-							label: 'taxStyle',
-						} }
-						options={ [
-							{
-								value: 'default',
-								label: __(
-									'Normal',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'highlighted',
-								label: __(
-									'Highlighted',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-						] }
-					/>
-				{ 'default' === taxStyle && (
-					<UAGTextControl
-						label={ __( 'Taxonomy Divider', 'ultimate-addons-for-gutenberg' ) }
-						value={ taxDivider }
-						data={{
-							value: taxDivider,
-							label: 'taxDivider',
-						}}
-						setAttributes={ setAttributes }
-						onChange={ ( value ) =>
-							setAttributes( {
-								taxDivider: value,
-							} )
-						}
-					/>
-				) }
-				</>
-				) }
-				</>
+					</>
 				) }
 				<ToggleControl
-					label={ __(
-						'Show Meta Icon',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Show Meta Icon', 'ultimate-addons-for-gutenberg' ) }
 					checked={ hideTaxonomyIcon }
 					onChange={ () =>
 						setAttributes( {
@@ -1551,10 +1315,7 @@ const UAGBPostMasonry = ( props ) => {
 					}
 				/>
 				<ToggleControl
-					label={ __(
-						'Show Excerpt',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Show Excerpt', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostExcerpt }
 					onChange={ () =>
 						setAttributes( {
@@ -1572,93 +1333,65 @@ const UAGBPostMasonry = ( props ) => {
 						} }
 						options={ [
 							{
-								label: __(
-									'Excerpt',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Excerpt', 'ultimate-addons-for-gutenberg' ),
 								value: 'excerpt',
 							},
 							{
-								label: __(
-									'Full post',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Full post', 'ultimate-addons-for-gutenberg' ),
 								value: 'full_post',
 							},
 						] }
 					/>
 				) }
-				{ displayPostExcerpt &&
-					displayPostContentRadio === 'excerpt' && (
-						<Range
-							label={ __(
-								'Max number of words in excerpt',
-								'ultimate-addons-for-gutenberg'
-							) }
-							setAttributes={ setAttributes }
-							value={ excerptLength }
-							data={ {
-								value: excerptLength,
-								label: 'excerptLength',
-							} }
-							min={ 1 }
-							max={ 100 }
-							displayUnit={ false }
-						/>
-					) }
+				{ displayPostExcerpt && displayPostContentRadio === 'excerpt' && (
+					<Range
+						label={ __( 'Max number of words in excerpt', 'ultimate-addons-for-gutenberg' ) }
+						setAttributes={ setAttributes }
+						value={ excerptLength }
+						data={ {
+							value: excerptLength,
+							label: 'excerptLength',
+						} }
+						min={ 1 }
+						max={ 100 }
+						displayUnit={ false }
+					/>
+				) }
 			</UAGAdvancedPanelBody>
 		);
 	};
 	const readMoreLinkSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __(
-					'Read More Link',
-					'ultimate-addons-for-gutenberg'
-				) }
+				title={ __( 'Read More Link', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<ToggleControl
-					label={ __(
-						'Show Read More Link',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Show Read More Link', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostLink }
-					onChange={ () =>
-						setAttributes( { displayPostLink: ! displayPostLink } )
-					}
+					onChange={ () => setAttributes( { displayPostLink: ! displayPostLink } ) }
 				/>
 				{ displayPostLink && (
 					<>
 						<ToggleControl
-							label={ __(
-								'Open Links in New Tab',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Open Links in New Tab', 'ultimate-addons-for-gutenberg' ) }
 							checked={ newTab }
-							onChange={ () =>
-								setAttributes( { newTab: ! newTab } )
-							}
+							onChange={ () => setAttributes( { newTab: ! newTab } ) }
 						/>
 						<UAGTextControl
-							label={ __(
-								'Text',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Text', 'ultimate-addons-for-gutenberg' ) }
 							value={ ctaText }
-							data={{
+							data={ {
 								value: ctaText,
 								label: 'ctaText',
-							}}
+							} }
 							setAttributes={ setAttributes }
-							onChange={ ( value ) =>
-								setAttributes( { ctaText: value } )
-							}
+							onChange={ ( value ) => setAttributes( { ctaText: value } ) }
 						/>
 						<UAGPresets
-							setAttributes = { setAttributes }
-							presets = { buttonsPresets }
-							presetInputType = 'radioImage'
+							setAttributes={ setAttributes }
+							presets={ buttonsPresets }
+							presetInputType="radioImage"
 						/>
 					</>
 				) }
@@ -1667,15 +1400,9 @@ const UAGBPostMasonry = ( props ) => {
 	};
 	const spacingSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ bgColor }
 					data={ {
 						value: bgColor,
@@ -1733,10 +1460,7 @@ const UAGBPostMasonry = ( props ) => {
 				/>
 				<SpacingControl
 					{ ...props }
-					label={ __(
-						'Content Padding',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Content Padding', 'ultimate-addons-for-gutenberg' ) }
 					valueTop={ {
 						value: paddingTop,
 						label: 'paddingTop',
@@ -1811,17 +1535,11 @@ const UAGBPostMasonry = ( props ) => {
 
 	const imageStyle = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
-				{imgPosition === 'background' &&
+			<UAGAdvancedPanelBody title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+				{ imgPosition === 'background' && (
 					<>
 						<AdvancedPopColorControl
-							label={ __(
-								'Background Overlay Color',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Background Overlay Color', 'ultimate-addons-for-gutenberg' ) }
 							colorValue={ bgOverlayColor }
 							data={ {
 								value: bgOverlayColor,
@@ -1830,10 +1548,7 @@ const UAGBPostMasonry = ( props ) => {
 							setAttributes={ setAttributes }
 						/>
 						<Range
-							label={ __(
-								'Overlay Opacity',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Overlay Opacity', 'ultimate-addons-for-gutenberg' ) }
 							setAttributes={ setAttributes }
 							value={ overlayOpacity }
 							data={ {
@@ -1845,8 +1560,8 @@ const UAGBPostMasonry = ( props ) => {
 							displayUnit={ false }
 						/>
 					</>
-				}
-				{imgPosition === 'top' &&
+				) }
+				{ imgPosition === 'top' && (
 					<ResponsiveSlider
 						label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
@@ -1871,16 +1586,13 @@ const UAGBPostMasonry = ( props ) => {
 						} }
 						setAttributes={ setAttributes }
 					/>
-				}
+				) }
 			</UAGAdvancedPanelBody>
 		);
 	};
 	const titleStyle = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'HTML Tag', 'ultimate-addons-for-gutenberg' ) }
@@ -1915,10 +1627,7 @@ const UAGBPostMasonry = ( props ) => {
 						},
 						{
 							value: 'span',
-							label: __(
-								'Span',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Span', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'p',
@@ -1927,10 +1636,7 @@ const UAGBPostMasonry = ( props ) => {
 					] }
 				/>
 				<AdvancedPopColorControl
-					label={ __(
-						'Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor }
 					data={ {
 						value: titleColor,
@@ -1939,10 +1645,7 @@ const UAGBPostMasonry = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -2042,16 +1745,12 @@ const UAGBPostMasonry = ( props ) => {
 					} }
 					setAttributes={ setAttributes }
 				/>
-
 			</UAGAdvancedPanelBody>
 		);
 	};
 	const metaStyle = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Meta', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Meta', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ metaColor }
@@ -2061,33 +1760,30 @@ const UAGBPostMasonry = ( props ) => {
 					} }
 					setAttributes={ setAttributes }
 				/>
-				{ ( 'aboveTitle' === displayPostTaxonomyAboveTitle && 'highlighted' === taxStyle ) && (
+				{ 'aboveTitle' === displayPostTaxonomyAboveTitle && 'highlighted' === taxStyle && (
 					<>
-					<AdvancedPopColorControl
-						label={ __( 'Taxonomy Text Color', 'ultimate-addons-for-gutenberg' ) }
-						colorValue={ highlightedTextColor }
-						data={ {
-							value: highlightedTextColor,
-							label: 'highlightedTextColor',
-						} }
-						setAttributes={ setAttributes }
-					/>
-					<AdvancedPopColorControl
-						label={ __( 'Highlighted Color', 'ultimate-addons-for-gutenberg' ) }
-						colorValue={ highlightedTextBgColor }
-						data={ {
-							value: highlightedTextBgColor,
-							label: 'highlightedTextBgColor',
-						} }
-						setAttributes={ setAttributes }
-					/>
+						<AdvancedPopColorControl
+							label={ __( 'Taxonomy Text Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ highlightedTextColor }
+							data={ {
+								value: highlightedTextColor,
+								label: 'highlightedTextColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+						<AdvancedPopColorControl
+							label={ __( 'Highlighted Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ highlightedTextBgColor }
+							data={ {
+								value: highlightedTextBgColor,
+								label: 'highlightedTextBgColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
 					</>
-				)}
+				) }
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -2192,10 +1888,7 @@ const UAGBPostMasonry = ( props ) => {
 	};
 	const excerptStyle = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Excerpt', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Excerpt', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ excerptColor }
@@ -2206,10 +1899,7 @@ const UAGBPostMasonry = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -2315,36 +2005,24 @@ const UAGBPostMasonry = ( props ) => {
 	const readMoreLinkStyleSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __(
-					'Read More Link',
-					'ultimate-addons-for-gutenberg'
-				) }
+				title={ __( 'Read More Link', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<UAGTabsControl
 					tabs={ [
 						{
 							name: 'normal',
-							title: __(
-								'Normal',
-								'ultimate-addons-for-gutenberg'
-							),
+							title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							name: 'hover',
-							title: __(
-								'Hover',
-								'ultimate-addons-for-gutenberg'
-							),
+							title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					normal={
 						<>
 							<AdvancedPopColorControl
-								label={ __(
-									'Color',
-									'ultimate-addons-for-gutenberg'
-								) }
+								label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 								colorValue={ ctaColor }
 								data={ {
 									value: ctaColor,
@@ -2362,12 +2040,9 @@ const UAGBPostMasonry = ( props ) => {
 								className="uagb-multi-button-alignment-control"
 								options={ bgTypeOptions }
 							/>
-							{ ctaBgType === 'color' &&
+							{ ctaBgType === 'color' && (
 								<AdvancedPopColorControl
-									label={ __(
-										'Background Color',
-										'ultimate-addons-for-gutenberg'
-									) }
+									label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 									colorValue={ ctaBgColor }
 									data={ {
 										value: ctaBgColor,
@@ -2375,16 +2050,13 @@ const UAGBPostMasonry = ( props ) => {
 									} }
 									setAttributes={ setAttributes }
 								/>
-							}
+							) }
 						</>
 					}
 					hover={
 						<>
 							<AdvancedPopColorControl
-								label={ __(
-									'Color',
-									'ultimate-addons-for-gutenberg'
-								) }
+								label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 								colorValue={ ctaHColor }
 								data={ {
 									value: ctaHColor,
@@ -2402,12 +2074,9 @@ const UAGBPostMasonry = ( props ) => {
 								className="uagb-multi-button-alignment-control"
 								options={ bgTypeOptions }
 							/>
-							{ ctaBgHType === 'color' &&
+							{ ctaBgHType === 'color' && (
 								<AdvancedPopColorControl
-									label={ __(
-										'Background Color',
-										'ultimate-addons-for-gutenberg'
-									) }
+									label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 									colorValue={ ctaBgHColor }
 									data={ {
 										value: ctaBgHColor,
@@ -2415,16 +2084,13 @@ const UAGBPostMasonry = ( props ) => {
 									} }
 									setAttributes={ setAttributes }
 								/>
-							}
+							) }
 						</>
 					}
 					disableBottomSeparator={ false }
 				/>
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -2532,10 +2198,7 @@ const UAGBPostMasonry = ( props ) => {
 				/>
 				<SpacingControl
 					{ ...props }
-					label={ __(
-						'Button Padding',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Button Padding', 'ultimate-addons-for-gutenberg' ) }
 					valueTop={ {
 						value: paddingBtnTop,
 						label: 'paddingBtnTop',
@@ -2620,18 +2283,14 @@ const UAGBPostMasonry = ( props ) => {
 				<InspectorTab { ...UAGTabs.style }>
 					{ spacingSettings() }
 					{ displayPostTitle && titleStyle() }
-					{ ( displayPostAuthor ||
-						displayPostDate ||
-						displayPostComment ||
-						displayPostTaxonomy ) &&
+					{ ( displayPostAuthor || displayPostDate || displayPostComment || displayPostTaxonomy ) &&
 						metaStyle() }
 					{ displayPostExcerpt && excerptStyle() }
 					{ displayPostLink && readMoreLinkStyleSettings() }
 					{ paginationSettings() }
-					{ displayPostImage === true &&
-						imageStyle() }
+					{ displayPostImage === true && imageStyle() }
 				</InspectorTab>
-				<InspectorTab { ...UAGTabs.advance } parentProps={props}></InspectorTab>
+				<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 			</InspectorTabs>
 		</InspectorControls>
 	);
@@ -2640,17 +2299,8 @@ const UAGBPostMasonry = ( props ) => {
 		return (
 			<>
 				{ inspectorControls }
-				<Placeholder
-					icon="admin-post"
-					label={
-						__( 'Post Masonry', 'ultimate-addons-for-gutenberg' )
-					}
-				>
-					{ ! Array.isArray( latestPosts ) ? (
-						<Spinner />
-					) : (
-						postDisplaytext
-					) }
+				<Placeholder icon="admin-post" label={ __( 'Post Masonry', 'ultimate-addons-for-gutenberg' ) }>
+					{ ! Array.isArray( latestPosts ) ? <Spinner /> : postDisplaytext }
 				</Placeholder>
 			</>
 		);

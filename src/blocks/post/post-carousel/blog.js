@@ -1,9 +1,6 @@
 import classnames from 'classnames';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import {
-	InnerBlockLayoutContextProvider,
-	renderPostLayout,
-} from '.././function';
+import { InnerBlockLayoutContextProvider, renderPostLayout } from '.././function';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { useRef, useEffect, memo } from '@wordpress/element';
 
@@ -47,53 +44,47 @@ function Blog( props ) {
 	const transitionSpeedFallback = getFallbackNumber( transitionSpeed, 'transitionSpeed', blockName );
 	const arrowSizeFallback = getFallbackNumber( arrowSize, 'arrowSize', blockName );
 	const arrowBorderSizeFallback = getFallbackNumber( arrowBorderSize, 'arrowBorderSize', blockName );
-	const isImageEnabled = ( attributes.displayPostImage === true ) ? 'uagb-post__image-enabled' : 'uagb-post__image-disabled';
-
+	const isImageEnabled =
+		attributes.displayPostImage === true ? 'uagb-post__image-enabled' : 'uagb-post__image-disabled';
 
 	const updateImageBgWidth = () => {
-
 		setTimeout( () => {
-
-			if( article?.current ){
-				const articleWidth  = article?.current?.offsetWidth;
+			if ( article?.current ) {
+				const articleWidth = article?.current?.offsetWidth;
 				const imageWidth = 100 - ( rowGapFallback / articleWidth ) * 100;
 				const parent = article?.current?.closest( '.uagb-post__image-position-background' );
 
 				if ( parent ) {
 					const images = parent?.getElementsByClassName( 'uagb-post__image' );
-					for( const image of images ) {
+					for ( const image of images ) {
 						if ( image ) {
 							image.style.width = imageWidth + '%';
 							image.style.marginLeft = rowGapFallback / 2 + 'px';
-
 						}
 					}
 				}
 			}
-
-		}, 100 )
+		}, 100 );
 	};
 	useEffect( () => {
 		updateImageBgWidth();
-    }, [ ] );
+	}, [] );
 
 	useEffect( () => {
 		updateImageBgWidth();
-    }, [ props ] );
+	}, [ props ] );
 
 	useEffect( () => {
 		updateImageBgWidth();
-    }, [article] );
+	}, [ article ] );
 
 	useEffect( () => {
 		updateImageBgWidth();
-    }, [imgPosition] );
+	}, [ imgPosition ] );
 
 	// Removing posts from display should be instant.
 	const displayPosts =
-		latestPosts.length > postsToShowFallback
-			? latestPosts.slice( 0, postsToShowFallback )
-			: latestPosts;
+		latestPosts.length > postsToShowFallback ? latestPosts.slice( 0, postsToShowFallback ) : latestPosts;
 
 	function NextArrow() {
 		return (
@@ -133,14 +124,10 @@ function Blog( props ) {
 		);
 	}
 
-	const dots =
-		'dots' === arrowDots || 'arrows_dots' === arrowDots ? true : false;
-	const arrows =
-		'arrows' === arrowDots || 'arrows_dots' === arrowDots ? true : false;
+	const dots = 'dots' === arrowDots || 'arrows_dots' === arrowDots ? true : false;
+	const arrows = 'arrows' === arrowDots || 'arrows_dots' === arrowDots ? true : false;
 
-	const equalHeightClass = equalHeight
-		? 'uagb-post__carousel_equal-height'
-		: '';
+	const equalHeightClass = equalHeight ? 'uagb-post__carousel_equal-height' : '';
 
 	const settings = {
 		slidesToShow: columnsFallback,
@@ -179,7 +166,7 @@ function Blog( props ) {
 	};
 
 	const all_posts = displayPosts.map( ( post, i ) => (
-		<article ref={article} key={ i } className="uagb-post__inner-wrap">
+		<article ref={ article } key={ i } className="uagb-post__inner-wrap">
 			{ renderPostLayout(
 				'uagb/post-carousel',
 				post,
@@ -211,10 +198,7 @@ function Blog( props ) {
 				) }
 				data-blog-id={ block_id }
 			>
-				<InnerBlockLayoutContextProvider
-					parentName="uagb/post-carousel"
-					parentClassName="uagb-block-grid"
-				>
+				<InnerBlockLayoutContextProvider parentName="uagb/post-carousel" parentClassName="uagb-block-grid">
 					{ all_posts }
 				</InnerBlockLayoutContextProvider>
 			</div>
