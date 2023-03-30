@@ -18,8 +18,15 @@ const Render = ( props ) => {
 	const { attributes } = props;
 
 	// Caching all attributes.
-	const { layout, seperatorStyle, noTaxDisplaytext, showCount, listDisplayStyle, showhierarchy, titleTag } =
-		attributes;
+	const {
+		layout,
+		seperatorStyle,
+		noTaxDisplaytext,
+		showCount,
+		listDisplayStyle,
+		showhierarchy,
+		titleTag,
+	} = attributes;
 
 	let Tag;
 	if ( 'grid' === layout ) {
