@@ -15,19 +15,9 @@ const Render = ( props ) => {
 
 	const { attributes } = props;
 
-	const {
-		block_id,
-		acceptRequired,
-		acceptText,
-		showLink,
-		linkLabel,
-		link,
-		linkInNewTab,
-	} = attributes;
+	const { block_id, acceptRequired, acceptText, showLink, linkLabel, link, linkInNewTab } = attributes;
 
-	const isRequired = acceptRequired
-		? __( 'required', 'ultimate-addons-for-gutenberg' )
-		: '';
+	const isRequired = acceptRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
 	const target = linkInNewTab
 		? __( '_blank', 'ultimate-addons-for-gutenberg' )
 		: __( '_self', 'ultimate-addons-for-gutenberg' );
@@ -35,19 +25,11 @@ const Render = ( props ) => {
 	return (
 		<>
 			<div
-				className={ classnames(
-					'uagb-forms-accept-wrap',
-					'uagb-forms-field-set',
-					`uagb-block-${ block_id }`
-				) }
+				className={ classnames( 'uagb-forms-accept-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }
 			>
 				{ showLink && (
 					<div className="uagb-forms-accept-privacy-link">
-						<a
-							href={ link }
-							target={ target }
-							rel="noopener noreferrer"
-						>
+						<a href={ link } target={ target } rel="noopener noreferrer">
 							{ ' ' }
 							{ linkLabel }{ ' ' }
 						</a>
