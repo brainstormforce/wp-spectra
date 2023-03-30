@@ -173,7 +173,7 @@ const UAGPresets = ( props ) => {
 					onChange={ () => updatePresets( key ) }
 					onClick={ () => updatePresets( key ) }
 				/>
-				
+
 				{ /* eslint-disable-next-line jsx-a11y/label-has-associated-control, jsx-a11y/no-noninteractive-element-interactions */ }
 				<label
 					htmlFor={ key }
