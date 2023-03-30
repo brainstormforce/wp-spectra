@@ -25,16 +25,16 @@ registerBlockType( 'uagb/social-share-child', {
 	],
 	attributes,
 	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="social-share-child" isChildren={ true } />
-			) : (
-				<Edit { ...props } />
-			),
+		props.attributes.isPreview ? (
+			<PreviewImage image="social-share-child" isChildren={ true } />
+		) : (
+			<Edit { ...props } />
+		),
 	save,
 	deprecated,
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
 } );

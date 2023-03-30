@@ -29,15 +29,10 @@ registerBlockType( 'uagb/social-share', {
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
 	attributes,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="social-share" />
-			) : (
-				<Edit { ...props } />
-			),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="social-share" /> : <Edit { ...props } /> ),
 	save,
 	transform,
 	deprecated,
