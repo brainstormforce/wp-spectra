@@ -16,10 +16,7 @@ import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/advanced-heading', {
 	title: __( 'Heading', 'ultimate-addons-for-gutenberg' ),
-	description: __(
-		'Add heading, sub heading and a separator using one block.',
-		'ultimate-addons-for-gutenberg'
-	),
+	description: __( 'Add heading, sub heading and a separator using one block.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.advanced_heading,
 	keywords: [
 		__( 'creative heading', 'ultimate-addons-for-gutenberg' ),
@@ -32,16 +29,12 @@ registerBlockType( 'uagb/advanced-heading', {
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
 	category: uagb_blocks_info.category,
 	attributes,
 	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="advanced-heading" />
-		) : (
-			<Edit { ...props } />
-		),
+		props.attributes.isPreview ? <PreviewImage image="advanced-heading" /> : <Edit { ...props } />,
 	save,
 	deprecated,
 	transforms: {
@@ -90,15 +83,15 @@ registerBlockType( 'uagb/advanced-heading', {
 					const newitems = [];
 					childBlocks.forEach( ( item, i ) => {
 						newitems.push( {
-							text: childBlocks[i].attributes.content
-						} )
+							text: childBlocks[ i ].attributes.content,
+						} );
 					} );
 
 					return newitems.map( ( text ) =>
 						createBlock( 'uagb/advanced-heading', {
 							headingTitle: text.text,
 							headingColor: colourNameToHex( _attributes.textColor ),
-							blockBackground: colourNameToHex( _attributes.backgroundColor )
+							blockBackground: colourNameToHex( _attributes.backgroundColor ),
 						} )
 					);
 				},

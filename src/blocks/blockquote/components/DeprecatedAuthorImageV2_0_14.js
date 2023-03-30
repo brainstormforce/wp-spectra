@@ -16,18 +16,11 @@ const DeprecatedAuthorImageV2_0_14 = ( { attributes } ) => {
 		const authorImageSize = attributes.authorImageSize;
 
 		url =
-			typeof size !== 'undefined' &&
-			typeof size[ authorImageSize ] !== 'undefined'
+			typeof size !== 'undefined' && typeof size[ authorImageSize ] !== 'undefined'
 				? size[ authorImageSize ].url
 				: urlChk;
 
-		return (
-				<img
-					className=""
-					src={ url }
-					alt={ attributes.authorImage.alt }
-				/>
-		);
+		return <img className="" src={ url } alt={ attributes.authorImage.alt } />;
 	}
 
 	return null;

@@ -19,29 +19,23 @@ const UAGBAdvancedHeading = ( props ) => {
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		isSelected,
 		setAttributes,
-		clientId
+		clientId,
 	} = props;
-	
+
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
-		setAttributes( { classMigrate: true } )
-
+		setAttributes( { classMigrate: true } );
 	}, [] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
-		addBlockEditorDynamicStyles(
-			'uagb-adv-heading-style-' + clientId.substr( 0, 8 ),
-			blockStyling
-		);
+		addBlockEditorDynamicStyles( 'uagb-adv-heading-style-' + clientId.substr( 0, 8 ), blockStyling );
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
@@ -49,10 +43,10 @@ const UAGBAdvancedHeading = ( props ) => {
 	}, [ deviceType ] );
 
 	return (
-			<>
+		<>
 			{ isSelected && <Settings parentProps={ props } /> }
-				<Render parentProps={ props } />
-			</>
+			<Render parentProps={ props } />
+		</>
 	);
 };
 export default UAGBAdvancedHeading;

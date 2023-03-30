@@ -1,40 +1,40 @@
 /**
  * BLOCK: Advanced Heading - Deprecated Block
  */
- import classnames from 'classnames';
- import attributes_v2_3_4 from './v2.3.4/attributes';
- import save_v2_3_4 from './v2.3.4/save';
+import classnames from 'classnames';
+import attributes_v2_3_4 from './v2.3.4/attributes';
+import save_v2_3_4 from './v2.3.4/save';
 import { RichText } from '@wordpress/block-editor';
 const attributes = {
 	block_id: {
-		type: "string"
+		type: 'string',
 	},
 	classMigrate: {
-		type: "boolean",
-		default: false
+		type: 'boolean',
+		default: false,
 	},
 	headingTitleToggle: {
 		source: 'boolean',
 		default: true,
 	},
 	headingTitle: {
-		source: "html",
-		selector: "h1,h2,h3,h4,h5,h6",
+		source: 'html',
+		selector: 'h1,h2,h3,h4,h5,h6',
 	},
 	headingId: {
-		type: "string",
+		type: 'string',
 	},
 	headingDesc: {
-		source: "html",
-		selector: "p",
-		default: "",
+		source: 'html',
+		selector: 'p',
+		default: '',
 	},
 	headingAlign: {
-		type: "string",
-		default: "center",
+		type: 'string',
+		default: 'center',
 	},
 	headingColor: {
-		type: "string",
+		type: 'string',
 	},
 	seperatorPosition: {
 		type: 'string',
@@ -45,122 +45,122 @@ const attributes = {
 		default: 'below-heading',
 	},
 	subHeadingColor: {
-		type: "string",
+		type: 'string',
 	},
 	separatorColor: {
-		type: "string",
+		type: 'string',
 	},
 	headingTag: {
-		type: "string",
-		default: "h2"
+		type: 'string',
+		default: 'h2',
 	},
 	level: {
-		type: "number",
-		default: 2
+		type: 'number',
+		default: 2,
 	},
 	seperatorStyle: {
-		type: "string",
-		default: "solid",
+		type: 'string',
+		default: 'solid',
 	},
 	separatorHeight: {
-		type: "number",
-		default: 2
+		type: 'number',
+		default: 2,
 	},
 	separatorWidth: {
-		type: "number",
-		default: 12
+		type: 'number',
+		default: 12,
 	},
-	separatorWidthType : {
-		type: "string",
-		default: "%"
+	separatorWidthType: {
+		type: 'string',
+		default: '%',
 	},
 	headSpace: {
-		type: "number",
-		default: 15
+		type: 'number',
+		default: 15,
 	},
 	headFontFamily: {
-		type: "string",
-		default: "Default",
+		type: 'string',
+		default: 'Default',
 	},
 	headFontWeight: {
-		type: "string",
+		type: 'string',
 	},
 	headFontSubset: {
-		type: "string",
+		type: 'string',
 	},
 	headFontSizeType: {
-		type: "string",
-		default: "px"
+		type: 'string',
+		default: 'px',
 	},
 	headLineHeightType: {
-		type: "string",
-		default: "em"
+		type: 'string',
+		default: 'em',
 	},
 	headFontSize: {
-		type: "number",
+		type: 'number',
 	},
 	headFontSizeTablet: {
-		type: "number",
+		type: 'number',
 	},
 	headFontSizeMobile: {
-		type: "number",
+		type: 'number',
 	},
 	headLineHeight: {
-		type: "number",
+		type: 'number',
 	},
 	headLineHeightTablet: {
-		type: "number",
+		type: 'number',
 	},
 	headLineHeightMobile: {
-		type: "number",
+		type: 'number',
 	},
 	subHeadFontFamily: {
-		type: "string",
-		default: "",
+		type: 'string',
+		default: '',
 	},
 	subHeadFontWeight: {
-		type: "string",
+		type: 'string',
 	},
 	subHeadFontSubset: {
-		type: "string",
+		type: 'string',
 	},
 	subHeadFontSize: {
-		type: "number",
+		type: 'number',
 	},
 	subHeadFontSizeType: {
-		type: "string",
-		default: "px"
+		type: 'string',
+		default: 'px',
 	},
 	subHeadFontSizeTablet: {
-		type: "number",
+		type: 'number',
 	},
 	subHeadFontSizeMobile: {
-		type: "number",
+		type: 'number',
 	},
 	subHeadLineHeight: {
-		type: "number",
+		type: 'number',
 	},
 	subHeadLineHeightType: {
-		type: "string",
-		default: "em"
+		type: 'string',
+		default: 'em',
 	},
 	subHeadLineHeightTablet: {
-		type: "number",
+		type: 'number',
 	},
 	subHeadLineHeightMobile: {
-		type: "number",
+		type: 'number',
 	},
 	separatorSpace: {
-		type: "number",
-		default: 15
+		type: 'number',
+		default: 15,
 	},
 	headLoadGoogleFonts: {
-		type: "boolean",
-		default: false
+		type: 'boolean',
+		default: false,
 	},
 	subHeadLoadGoogleFonts: {
-		type: "boolean",
-		default: false
+		type: 'boolean',
+		default: false,
 	},
 	headingDescToggle: {
 		source: 'boolean',
@@ -177,19 +177,13 @@ const attributes = {
 	separatorSpaceType: {
 		type: 'string',
 		default: 'px',
-	}
-}
+	},
+};
 const deprecated = [
 	{
 		attributes,
 		save( props ) {
-			const {
-				block_id,
-				headingTitle,
-				headingDesc,
-				headingTag,
-				seperatorStyle,
-			} = props.attributes;
+			const { block_id, headingTitle, headingDesc, headingTag, seperatorStyle } = props.attributes;
 
 			let seprator_output = '';
 			if ( seperatorStyle !== 'none' ) {
@@ -200,21 +194,10 @@ const deprecated = [
 				);
 			}
 			return (
-				<div
-					className={ props.className }
-					id={ `uagb-adv-heading-${ block_id }` }
-				>
-					<RichText.Content
-						tagName={ headingTag }
-						value={ headingTitle }
-						className="uagb-heading-text"
-					/>
+				<div className={ props.className } id={ `uagb-adv-heading-${ block_id }` }>
+					<RichText.Content tagName={ headingTag } value={ headingTitle } className="uagb-heading-text" />
 					{ seprator_output }
-					<RichText.Content
-						tagName="p"
-						value={ headingDesc }
-						className="uagb-desc-text"
-					/>
+					<RichText.Content tagName="p" value={ headingDesc } className="uagb-desc-text" />
 				</div>
 			);
 		},
@@ -222,14 +205,7 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-			const {
-				block_id,
-				headingTitle,
-				headingDesc,
-				headingTag,
-				seperatorStyle,
-				headingId,
-			} = props.attributes;
+			const { block_id, headingTitle, headingDesc, headingTag, seperatorStyle, headingId } = props.attributes;
 
 			let seprator_output = '';
 			if ( seperatorStyle !== 'none' ) {
@@ -240,10 +216,7 @@ const deprecated = [
 				);
 			}
 			return (
-				<div
-					className={ props.className }
-					id={ `uagb-adv-heading-${ block_id }` }
-				>
+				<div className={ props.className } id={ `uagb-adv-heading-${ block_id }` }>
 					<RichText.Content
 						tagName={ headingTag }
 						value={ headingTitle }
@@ -251,11 +224,7 @@ const deprecated = [
 						id={ headingId }
 					/>
 					{ seprator_output }
-					<RichText.Content
-						tagName="p"
-						value={ headingDesc }
-						className="uagb-desc-text"
-					/>
+					<RichText.Content tagName="p" value={ headingDesc } className="uagb-desc-text" />
 				</div>
 			);
 		},
@@ -263,14 +232,7 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-			const {
-				block_id,
-				headingTitle,
-				headingDesc,
-				headingTag,
-				seperatorStyle,
-				headingId,
-			} = props.attributes;
+			const { block_id, headingTitle, headingDesc, headingTag, seperatorStyle, headingId } = props.attributes;
 
 			let seprator_output = '';
 			if ( seperatorStyle !== 'none' ) {
@@ -281,12 +243,7 @@ const deprecated = [
 				);
 			}
 			return (
-				<div
-					className={ classnames(
-						props.className,
-						`uagb-block-${ block_id }`
-					) }
-				>
+				<div className={ classnames( props.className, `uagb-block-${ block_id }` ) }>
 					<RichText.Content
 						tagName={ headingTag }
 						value={ headingTitle }
@@ -294,26 +251,15 @@ const deprecated = [
 						id={ headingId }
 					/>
 					{ seprator_output }
-					<RichText.Content
-						tagName="p"
-						value={ headingDesc }
-						className="uagb-desc-text"
-					/>
+					<RichText.Content tagName="p" value={ headingDesc } className="uagb-desc-text" />
 				</div>
-			)
-		}
+			);
+		},
 	},
 	{
 		attributes,
 		save( props ) {
-			const {
-				block_id,
-				headingTitle,
-				headingDesc,
-				headingTag,
-				seperatorStyle,
-				headingId,
-			} = props.attributes;
+			const { block_id, headingTitle, headingDesc, headingTag, seperatorStyle, headingId } = props.attributes;
 
 			let seprator = '';
 			if ( seperatorStyle !== 'none' ) {
@@ -337,84 +283,55 @@ const deprecated = [
 			let descText = '';
 
 			if ( headingDesc !== '' ) {
-				descText = (
-					<RichText.Content
-						tagName="p"
-						value={ headingDesc }
-						className="uagb-desc-text"
-					/>
-				);
+				descText = <RichText.Content tagName="p" value={ headingDesc } className="uagb-desc-text" />;
 			}
 
 			return (
-				<div
-					className={ classnames(
-						props.className,
-						`uagb-block-${ block_id }`
-					) }
-				>
+				<div className={ classnames( props.className, `uagb-block-${ block_id }` ) }>
 					{ headingText }
 					{ seprator }
 					{ descText }
 				</div>
 			);
-		}
+		},
 	},
 	{
 		attributes,
 		save( props ) {
-		const {
-			block_id,
-			headingTitle,
-			headingDesc,
-			headingTag,
-			seperatorStyle,
-			headingId,
-		} = props.attributes;
+			const { block_id, headingTitle, headingDesc, headingTag, seperatorStyle, headingId } = props.attributes;
 
-		let seprator = '';
-		if ( seperatorStyle !== 'none' ) {
-			seprator = (
-				<div className="uagb-separator-wrap">
-					<div className="uagb-separator"></div>
+			let seprator = '';
+			if ( seperatorStyle !== 'none' ) {
+				seprator = (
+					<div className="uagb-separator-wrap">
+						<div className="uagb-separator"></div>
+					</div>
+				);
+			}
+			let headingText = '';
+			if ( headingTitle !== '' ) {
+				headingText = (
+					<RichText.Content
+						tagName={ headingTag }
+						value={ headingTitle }
+						className="uagb-heading-text"
+						id={ headingId }
+					/>
+				);
+			}
+			let descText = '';
+
+			if ( headingDesc !== '' ) {
+				descText = <RichText.Content tagName="p" value={ headingDesc } className="uagb-desc-text" />;
+			}
+
+			return (
+				<div className={ classnames( props.className, `uagb-block-${ block_id }` ) }>
+					{ headingText }
+					{ seprator }
+					{ descText }
 				</div>
 			);
-		}
-		let headingText = '';
-		if ( headingTitle !== '' ) {
-			headingText = (
-				<RichText.Content
-					tagName={ headingTag }
-					value={ headingTitle }
-					className="uagb-heading-text"
-					id={ headingId }
-				/>
-			);
-		}
-		let descText = '';
-
-		if ( headingDesc !== '' ) {
-			descText = (
-				<RichText.Content
-					tagName="p"
-					value={ headingDesc }
-					className="uagb-desc-text"
-				/>
-			);
-		}
-
-		return (
-			<div
-				className={ classnames(
-					props.className,
-					`uagb-block-${ block_id }`
-				) }
-			>
-				{ headingText }
-				{ seprator }
-				{ descText }
-			</div>
-		);
 		},
 	},
 	{
