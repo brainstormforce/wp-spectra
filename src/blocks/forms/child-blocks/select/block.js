@@ -8,7 +8,7 @@ import Edit from './edit';
 import save from './save';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-import deprecated from './deprecated'
+import deprecated from './deprecated';
 import PreviewImage from '@Controls/previewImage';
 
 registerBlockType( 'uagb/forms-select', {
@@ -19,15 +19,11 @@ registerBlockType( 'uagb/forms-select', {
 	parent: [ 'uagb/forms' ],
 	attributes,
 	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="form-field" isChildren={ true } />
-		) : (
-			<Edit { ...props } />
-		),
+		props.attributes.isPreview ? <PreviewImage image="form-field" isChildren={ true } /> : <Edit { ...props } />,
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
 	save,
 	deprecated,
