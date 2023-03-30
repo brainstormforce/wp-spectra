@@ -461,10 +461,9 @@ function contentTimelineStyle( props ) {
 		'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right': {
 			'margin-right': generateCSSUnit( horizontalSpaceTablet, horizontalSpaceUnitTablet ),
 		},
-		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-right .uagb-timeline__arrow:after':
-			{
-				'border-right-color': backgroundColor,
-			},
+		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-right .uagb-timeline__arrow:after': {
+			'border-right-color': backgroundColor,
+		},
 		// Responsive alignment CSS
 
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__heading': {
@@ -479,10 +478,9 @@ function contentTimelineStyle( props ) {
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-inner': {
 			'text-align': alignTablet,
 		},
-		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-hide.uagb-timeline__date-inner':
-			{
-				'text-align': alignTablet,
-			},
+		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-hide.uagb-timeline__date-inner': {
+			'text-align': alignTablet,
+		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author-link': {
 			'text-align': alignTablet,
 		},
@@ -604,10 +602,9 @@ function contentTimelineStyle( props ) {
 			'margin-top': generateCSSUnit( topMarginMobile, mobileMarginUnit ),
 			'margin-bottom': generateCSSUnit( bottomMarginMobile, mobileMarginUnit ),
 		},
-		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__day-right .uagb-timeline__arrow:after':
-			{
-				'border-right-color': backgroundColor,
-			},
+		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__day-right .uagb-timeline__arrow:after': {
+			'border-right-color': backgroundColor,
+		},
 
 		//Responsive alignment CSS
 
@@ -623,10 +620,9 @@ function contentTimelineStyle( props ) {
 		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-inner': {
 			'text-align': alignMobile,
 		},
-		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-hide.uagb-timeline__date-inner':
-			{
-				'text-align': alignMobile,
-			},
+		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-hide.uagb-timeline__date-inner': {
+			'text-align': alignMobile,
+		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__author-link': {
 			'text-align': alignMobile,
 		},

@@ -10,8 +10,16 @@ import { format } from '@wordpress/date';
 import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
-	const { block_id, headingTag, displayPostDate, icon, t_date, dateFormat, time_heading, time_desc } =
-		props.attributes;
+	const {
+		block_id,
+		headingTag,
+		displayPostDate,
+		icon,
+		t_date,
+		dateFormat,
+		time_heading,
+		time_desc,
+	} = props.attributes;
 
 	const displayInnerDate = true;
 	let postDate = t_date;

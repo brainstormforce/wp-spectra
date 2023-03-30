@@ -18,8 +18,16 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-			const { block_id, headingTag, displayPostDate, icon, t_date, dateFormat, time_heading, time_desc } =
-				props.attributes;
+			const {
+				block_id,
+				headingTag,
+				displayPostDate,
+				icon,
+				t_date,
+				dateFormat,
+				time_heading,
+				time_desc,
+			} = props.attributes;
 
 			const display_inner_date = true;
 			const icon_class = 'uagb-timeline__icon-new out-view-uagb-timeline__icon ';
@@ -92,8 +100,16 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-			const { block_id, headingTag, displayPostDate, icon, t_date, dateFormat, time_heading, time_desc } =
-				props.attributes;
+			const {
+				block_id,
+				headingTag,
+				displayPostDate,
+				icon,
+				t_date,
+				dateFormat,
+				time_heading,
+				time_desc,
+			} = props.attributes;
 
 			const displayInnerDate = true;
 			let postDate = t_date;
