@@ -10,9 +10,7 @@ import { select, dispatch } from '@wordpress/data';
 const { updateBlockAttributes, insertBlock, removeBlock } = ! wp.blockEditor
 	? dispatch( 'core/editor' )
 	: dispatch( 'core/block-editor' );
-const { getBlockOrder } = ! wp.blockEditor
-	? select( 'core/editor' )
-	: select( 'core/block-editor' );
+const { getBlockOrder } = ! wp.blockEditor ? select( 'core/editor' ) : select( 'core/block-editor' );
 import { useDeviceType } from '@Controls/getPreviewType';
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -24,11 +22,7 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-	const {
-		attributes,
-		setAttributes,
-		clientId,
-	} = props;
+	const { attributes, setAttributes, clientId } = props;
 	const {
 		tabsStyleD,
 		tabsStyleM,
@@ -38,10 +32,10 @@ const Render = ( props ) => {
 		tabAlign,
 		showIcon,
 		icon,
-		iconPosition
+		iconPosition,
 	} = attributes;
 
-	const deviceType = useDeviceType()
+	const deviceType = useDeviceType();
 
 	const onMoveForward = ( oldIndex, realTabsCount ) => {
 		return () => {
@@ -76,9 +70,7 @@ const Render = ( props ) => {
 	const onMove = ( oldIndex, newIndex ) => {
 		const { tabActiveFrontend } = attributes;
 
-		const { getBlock } = ! wp.blockEditor
-			? select( 'core/editor' )
-			: select( 'core/block-editor' );
+		const { getBlock } = ! wp.blockEditor ? select( 'core/editor' ) : select( 'core/block-editor' );
 		const tabsBlock = getBlock( clientId );
 
 		const titles = [ ...tabHeaders ];
@@ -96,9 +88,7 @@ const Render = ( props ) => {
 	const updateTabTitle = () => {
 		const childBlocks = getBlockOrder( clientId );
 
-		childBlocks.forEach( ( childBlockId ) =>
-			updateBlockAttributes( childBlockId, { tabHeaders } )
-		);
+		childBlocks.forEach( ( childBlockId ) => updateBlockAttributes( childBlockId, { tabHeaders } ) );
 	};
 	const addTab = () => {
 		const tabItemBlock = createBlock( 'uagb/tabs-child' );
@@ -114,9 +104,7 @@ const Render = ( props ) => {
 
 		removeBlock( childBlocks[ index ], false );
 		setAttributes( {
-			tabHeaders: attributes.tabHeaders.filter(
-				( vl, idx ) => idx !== index
-			),
+			tabHeaders: attributes.tabHeaders.filter( ( vl, idx ) => idx !== index ),
 		} );
 		updateTabsAttr( { tabActive: 0 } );
 		props.resetTabOrder();
@@ -125,11 +113,8 @@ const Render = ( props ) => {
 		const childBlocks = getBlockOrder( clientId );
 
 		setAttributes( attrs );
-		childBlocks.forEach( ( childBlockId ) =>
-			updateBlockAttributes( childBlockId, attrs )
-		);
+		childBlocks.forEach( ( childBlockId ) => updateBlockAttributes( childBlockId, attrs ) );
 	};
-
 
 	return (
 		<>
@@ -143,93 +128,64 @@ const Render = ( props ) => {
 					`uagb-tabs__${ tabsStyleM }-mobile`
 				) }
 			>
-				<ul
-					className={ `uagb-tabs__panel uagb-tabs__align-${ tabAlign }` }
-				>
+				<ul className={ `uagb-tabs__panel uagb-tabs__align-${ tabAlign }` }>
 					{ tabHeaders.map( ( header, index ) => (
 						<li
 							key={ index }
-							className={ `uagb-tab ${
-								tabActive === index ? 'uagb-tabs__active' : ''
-							} ` }
+							className={ `uagb-tab ${ tabActive === index ? 'uagb-tabs__active' : '' } ` }
 							id={ `uagb-tabs__tab${ index }` }
 						>
 							{ tabHeaders.length > 0 && (
 								<div className="uagb-tabs-editor-controls">
 									{ index !== 0 && (
-										<Tooltip
-											text={ __(
-												'Move item back',
-												'ultimate-addons-for-gutenberg'
-											) }
-										>
+										<Tooltip text={ __( 'Move item back', 'ultimate-addons-for-gutenberg' ) }>
 											<span // eslint-disable-line jsx-a11y/click-events-have-key-events
-												role='button'
+												role="button"
 												className="uagb-tab-item__move-back"
-												onClick={
-													index === 0
-														? ' '
-														: onMoveBack(
-																index,
-																tabHeaders.length
-														  )
-												}
-												aria-disabled={
-													index === tabHeaders.length
-												}
-												disabled={
-													index === tabHeaders.length
-												}
+												onClick={ index === 0 ? ' ' : onMoveBack( index, tabHeaders.length ) }
+												aria-disabled={ index === tabHeaders.length }
+												disabled={ index === tabHeaders.length }
 											>
-												{ ( tabsStyleD.includes( 'vstyle' ) && deviceType === 'Desktop' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Tablet' ) || ( ( tabsStyleM.includes( 'vstyle' ) || tabsStyleM.includes( 'stack' ) ) && deviceType === 'Mobile' ) ? (
+												{ ( tabsStyleD.includes( 'vstyle' ) && deviceType === 'Desktop' ) ||
+												( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Tablet' ) ||
+												( ( tabsStyleM.includes( 'vstyle' ) ||
+													tabsStyleM.includes( 'stack' ) ) &&
+													deviceType === 'Mobile' ) ? (
 													<Dashicon icon="arrow-up" />
-												) :
+												) : (
 													<Dashicon icon="arrow-left" />
-												}
+												) }
 											</span>
 										</Tooltip>
 									) }
 									{ index + 1 !== tabHeaders.length && (
-										<Tooltip
-											text={ __(
-												'Move item forward',
-												'ultimate-addons-for-gutenberg'
-											) }
-										>
+										<Tooltip text={ __( 'Move item forward', 'ultimate-addons-for-gutenberg' ) }>
 											<span // eslint-disable-line jsx-a11y/click-events-have-key-events
-												role='button'
+												role="button"
 												className="uagb-tab-item__move-forward"
 												onClick={
 													index === tabHeaders.length
 														? ' '
-														: onMoveForward(
-																index,
-																tabHeaders.length
-														  )
+														: onMoveForward( index, tabHeaders.length )
 												}
-												aria-disabled={
-													index === tabHeaders.length
-												}
-												disabled={
-													index === tabHeaders.length
-												}
+												aria-disabled={ index === tabHeaders.length }
+												disabled={ index === tabHeaders.length }
 											>
-												{ ( tabsStyleD.includes( 'vstyle' ) && deviceType === 'Desktop' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Tablet' ) || ( ( tabsStyleM.includes( 'vstyle' ) || tabsStyleM.includes( 'stack' ) ) && deviceType === 'Mobile' ) ? (
+												{ ( tabsStyleD.includes( 'vstyle' ) && deviceType === 'Desktop' ) ||
+												( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Tablet' ) ||
+												( ( tabsStyleM.includes( 'vstyle' ) ||
+													tabsStyleM.includes( 'stack' ) ) &&
+													deviceType === 'Mobile' ) ? (
 													<Dashicon icon="arrow-down" />
-												) :
+												) : (
 													<Dashicon icon="arrow-right" />
-												}
+												) }
 											</span>
 										</Tooltip>
 									) }
-									<Tooltip
-										text={ __(
-											'Remove tab',
-											'ultimate-addons-for-gutenberg'
-										) }
-									>
+									<Tooltip text={ __( 'Remove tab', 'ultimate-addons-for-gutenberg' ) }>
 										<span // eslint-disable-line jsx-a11y/click-events-have-key-events
-											role='button'
+											role="button"
 											tabIndex={ index }
 											className="uagb-tabs__remove"
 											onClick={ () => removeTab( index ) }
@@ -240,7 +196,7 @@ const Render = ( props ) => {
 								</div>
 							) }
 							<a // eslint-disable-line jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events
-								role='button'
+								role="button"
 								tabIndex={ index }
 								className={ `uagb-tabs__icon-position-${ iconPosition } uagb-tabs-list` }
 								onClick={ () => {
@@ -248,59 +204,37 @@ const Render = ( props ) => {
 								} }
 								data-tab={ index }
 							>
-								{ showIcon &&
-									icon &&
-									( iconPosition === 'left' ||
-										iconPosition === 'top' ) && (
-										<span className="uagb-tabs__icon">
-											{ renderSVG( icon, setAttributes ) }
-										</span>
-									) }
+								{ showIcon && icon && ( iconPosition === 'left' || iconPosition === 'top' ) && (
+									<span className="uagb-tabs__icon">{ renderSVG( icon, setAttributes ) }</span>
+								) }
 								<RichText
 									tagName="p"
 									value={ header }
-									onChange={ ( value ) =>
-										updateTabsTitle( value, index )
-									}
+									onChange={ ( value ) => updateTabsTitle( value, index ) }
 									onSplit={ () => null }
-									placeholder={ __(
-										'Title…',
-										'ultimate-addons-for-gutenberg'
-									) }
+									placeholder={ __( 'Title…', 'ultimate-addons-for-gutenberg' ) }
 									allowedFormats={ [ 'core/bold', 'core/italic' ] }
 								/>
-								{ showIcon &&
-									icon &&
-									( iconPosition === 'right' ||
-										iconPosition === 'bottom' ) && (
-										<span className="uagb-tabs__icon">
-											{ renderSVG( icon, setAttributes ) }
-										</span>
-									) }
+								{ showIcon && icon && ( iconPosition === 'right' || iconPosition === 'bottom' ) && (
+									<span className="uagb-tabs__icon">{ renderSVG( icon, setAttributes ) }</span>
+								) }
 							</a>
 						</li>
 					) ) }
-					<li className="uagb-tab uagb-tabs__add-tab" // eslint-disable-line jsx-a11y/click-events-have-key-events
-						role='presentation'
-						tabIndex='0'
-						onClick={ () => addTab() }>
-						<Tooltip
-							text={ __(
-								'Add tab',
-								'ultimate-addons-for-gutenberg'
-							) }
-						>
-								<Dashicon icon="plus" />
+					<li
+						className="uagb-tab uagb-tabs__add-tab" // eslint-disable-line jsx-a11y/click-events-have-key-events
+						role="presentation"
+						tabIndex="0"
+						onClick={ () => addTab() }
+					>
+						<Tooltip text={ __( 'Add tab', 'ultimate-addons-for-gutenberg' ) }>
+							<Dashicon icon="plus" />
 						</Tooltip>
-						</li>
+					</li>
 				</ul>
 				<div className="uagb-tabs__body-wrap">
 					<InnerBlocks
-						template={ [
-							[ 'uagb/tabs-child' ],
-							[ 'uagb/tabs-child' ],
-							[ 'uagb/tabs-child' ],
-						] }
+						template={ [ [ 'uagb/tabs-child' ], [ 'uagb/tabs-child' ], [ 'uagb/tabs-child' ] ] }
 						templateLock={ false }
 						allowedBlocks={ [ 'uagb/tabs-child' ] }
 						renderAppender={ false }

@@ -19,25 +19,17 @@ registerBlockType( 'uagb/tabs', {
 	description: __( 'Display your content under different tabs.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.tabs,
 	category: uagb_blocks_info.category,
-	keywords: [
-		__( 'tabs', 'ultimate-addons-for-gutenberg' ),
-		__( 'uag', 'ultimate-addons-for-gutenberg' ),
-	],
+	keywords: [ __( 'tabs', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	supports: {
 		anchor: true,
 	},
 	attributes,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="tabs" />
-			) : (
-				<Edit { ...props } />
-			),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="tabs" /> : <Edit { ...props } /> ),
 	save,
 	deprecated,
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
 } );

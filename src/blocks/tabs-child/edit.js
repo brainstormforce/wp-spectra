@@ -22,8 +22,7 @@ const UAGBTabsChildEdit = ( props ) => {
 		// Apply parent style if newly inserted
 		if ( rootBlockAttrs !== null && rootBlockAttrs.needUpdate !== false ) {
 			Object.keys( rootBlockAttrs ).map(
-				( attribute ) =>
-					( attributes[ attribute ] = rootBlockAttrs[ attribute ] )
+				( attribute ) => ( attributes[ attribute ] = rootBlockAttrs[ attribute ] )
 			);
 		}
 	}, [] );
