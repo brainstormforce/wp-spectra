@@ -70,44 +70,20 @@ const variations = [
 					radioName: 'Some question with below listed option?',
 					options: [
 						{
-							optiontitle: __(
-								'Option Name 1',
-								'ultimate-addons-for-gutenberg'
-							),
-							optionvalue: __(
-								'Option Value 1',
-								'ultimate-addons-for-gutenberg'
-							),
+							optiontitle: __( 'Option Name 1', 'ultimate-addons-for-gutenberg' ),
+							optionvalue: __( 'Option Value 1', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
-							optiontitle: __(
-								'Option Name 2',
-								'ultimate-addons-for-gutenberg'
-							),
-							optionvalue: __(
-								'Option Value 2',
-								'ultimate-addons-for-gutenberg'
-							),
+							optiontitle: __( 'Option Name 2', 'ultimate-addons-for-gutenberg' ),
+							optionvalue: __( 'Option Value 2', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
-							optiontitle: __(
-								'Option Name 3',
-								'ultimate-addons-for-gutenberg'
-							),
-							optionvalue: __(
-								'Option Value 3',
-								'ultimate-addons-for-gutenberg'
-							),
+							optiontitle: __( 'Option Name 3', 'ultimate-addons-for-gutenberg' ),
+							optionvalue: __( 'Option Value 3', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
-							optiontitle: __(
-								'Option Name 4',
-								'ultimate-addons-for-gutenberg'
-							),
-							optionvalue: __(
-								'Option Value 4',
-								'ultimate-addons-for-gutenberg'
-							),
+							optiontitle: __( 'Option Name 4', 'ultimate-addons-for-gutenberg' ),
+							optionvalue: __( 'Option Value 4', 'ultimate-addons-for-gutenberg' ),
 						},
 					],
 				},
@@ -116,10 +92,7 @@ const variations = [
 				'uagb/forms-name',
 				{
 					name: __( 'Subject', 'ultimate-addons-for-gutenberg' ),
-					placeholder: __(
-						'Enter your subject',
-						'ultimate-addons-for-gutenberg'
-					),
+					placeholder: __( 'Enter your subject', 'ultimate-addons-for-gutenberg' ),
 					nameRequired: true,
 					autocomplete: 'off',
 				},
