@@ -14,9 +14,9 @@ const UAGBImageGallery = ( props ) => {
 	const {
 		clientId,
 		attributes,
-		attributes:{ UAGHideDesktop, UAGHideTab, UAGHideMob },
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		isSelected,
-		setAttributes
+		setAttributes,
 	} = props;
 
 	const deviceType = useDeviceType();
@@ -29,34 +29,27 @@ const UAGBImageGallery = ( props ) => {
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
-        addBlockEditorDynamicStyles( 'uagb-image-gallery-style-' + clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles( 'uagb-image-gallery-style-' + clientId.substr( 0, 8 ), blockStyling );
 	}, [ attributes, deviceType ] );
 
-
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-		// Lightbox disabled by default for the block on every instance.
-		const [ lightboxPreview, setLightboxPreview ] = useState( false );
+	// Lightbox disabled by default for the block on every instance.
+	const [ lightboxPreview, setLightboxPreview ] = useState( false );
 
-		// Disable the Lightbox when the block isn't selected.
-		useEffect( () => {
-			if ( ! isSelected ) {
-				setLightboxPreview( false );
-			}
-		}, [ isSelected ] );
+	// Disable the Lightbox when the block isn't selected.
+	useEffect( () => {
+		if ( ! isSelected ) {
+			setLightboxPreview( false );
+		}
+	}, [ isSelected ] );
 
 	return (
 		<>
-			{isSelected && (
-				<Settings
-					{...{ ...props, lightboxPreview, setLightboxPreview }}
-				/>
-			)}
-			<Render {...{ ...props, lightboxPreview, setLightboxPreview }} />
+			{ isSelected && <Settings { ...{ ...props, lightboxPreview, setLightboxPreview } } /> }
+			<Render { ...{ ...props, lightboxPreview, setLightboxPreview } } />
 		</>
 	);
 };

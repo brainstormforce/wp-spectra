@@ -5,13 +5,7 @@ import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 
 const InfoBoxDesc = ( props ) => {
-	const {
-		attributes,
-		setAttributes,
-		mergeBlocks,
-		insertBlocksAfter,
-		onReplace,
-	} = props;
+	const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace } = props;
 
 	if ( setAttributes !== 'not_set' ) {
 		return (
@@ -20,9 +14,7 @@ const InfoBoxDesc = ( props ) => {
 				value={ attributes.headingDesc }
 				placeholder={ __( 'Write a Description' ) }
 				className="uagb-ifb-desc"
-				onChange={ ( value ) =>
-					setAttributes( { headingDesc: value } )
-				}
+				onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
 				onMerge={ mergeBlocks }
 				onSplit={
 					insertBlocksAfter
@@ -41,13 +33,7 @@ const InfoBoxDesc = ( props ) => {
 			/>
 		);
 	}
-	return (
-		<RichText.Content
-			tagName="p"
-			value={ attributes.headingDesc }
-			className="uagb-ifb-desc"
-		/>
-	);
+	return <RichText.Content tagName="p" value={ attributes.headingDesc } className="uagb-ifb-desc" />;
 };
 
 export default InfoBoxDesc;
