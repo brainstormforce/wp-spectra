@@ -41,14 +41,8 @@ const UAGIconPicker = ( props ) => {
 			) }
 
 			<div className="uag-ip-selected-icon" onClick={ openModal }>
-				<div className="uag-ip-selected-icon-overlay">
-					{ ! isIconAvailable && renderSVG( 'plus' ) }
-				</div>
-				{ isIconAvailable && (
-					<div className="uag-ip-selected-icon-value">
-						{ renderSVG( value ) }
-					</div>
-				) }
+				<div className="uag-ip-selected-icon-overlay">{ ! isIconAvailable && renderSVG( 'plus' ) }</div>
+				{ isIconAvailable && <div className="uag-ip-selected-icon-value">{ renderSVG( value ) }</div> }
 			</div>
 			<div className="uag-ip-actions">
 				<span onClick={ openModal }>
@@ -61,9 +55,7 @@ const UAGIconPicker = ( props ) => {
 	);
 	return (
 		<div className="uag-custom-ip components-base-control">
-			<span className="uag-control-label">
-				{ label || __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
-			</span>
+			<span className="uag-control-label">{ label || __( 'Icon', 'ultimate-addons-for-gutenberg' ) }</span>
 			{ modalPlaceHolder }
 			{ isOpen && (
 				<ModalContainer
