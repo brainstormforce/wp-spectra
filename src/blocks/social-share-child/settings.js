@@ -21,8 +21,16 @@ const Settings = ( props ) => {
 
 	const { attributes, setAttributes } = props;
 
-	const { type, image_icon, icon, image, icon_color, icon_hover_color, icon_bg_color, icon_bg_hover_color } =
-		attributes;
+	const {
+		type,
+		image_icon,
+		icon,
+		image,
+		icon_color,
+		icon_hover_color,
+		icon_bg_color,
+		icon_bg_hover_color,
+	} = attributes;
 
 	/*
 	 * Event to set Image as while adding.
