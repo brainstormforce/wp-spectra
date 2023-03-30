@@ -28,15 +28,10 @@ registerBlockType( 'uagb/how-to', {
 	example: {
 		attributes: {
 			isPreview: true,
-		}
+		},
 	},
 	attributes,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="how-to" />
-			) : (
-				<Edit { ...props } />
-			),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="how-to" /> : <Edit { ...props } /> ),
 	save,
 	deprecated,
 } );
