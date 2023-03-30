@@ -3,11 +3,11 @@
  */
 
 import styling from './styling';
-import { useEffect,useState } from '@wordpress/element';
+import { useEffect, useState } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
-import {migrateBorderAttributes} from '@Controls/generateAttributes';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
@@ -46,28 +46,33 @@ const UAGBWpSearchEdit = ( props ) => {
 		} );
 
 		// border
-		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
-			migrateBorderAttributes( 'input', {
-				label: 'borderWidth',
-				value: borderWidth,
-			}, {
-				label: 'borderRadius',
-				value: borderRadius
-			}, {
-				label: 'borderColor',
-				value: borderColor
-			}, {
-				label: 'borderHColor',
-				value: borderHColor
-			},{
-				label: 'borderStyle',
-				value: borderStyle
-			},
-			setAttributes,
-			attributes
+		if ( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ) {
+			migrateBorderAttributes(
+				'input',
+				{
+					label: 'borderWidth',
+					value: borderWidth,
+				},
+				{
+					label: 'borderRadius',
+					value: borderRadius,
+				},
+				{
+					label: 'borderColor',
+					value: borderColor,
+				},
+				{
+					label: 'borderHColor',
+					value: borderHColor,
+				},
+				{
+					label: 'borderStyle',
+					value: borderStyle,
+				},
+				setAttributes,
+				attributes
 			);
 		}
-		
 	}, [] );
 
 	// componentDidUpdate.
@@ -81,14 +86,11 @@ const UAGBWpSearchEdit = ( props ) => {
 			setState( {
 				isFocused: true,
 			} );
-        }
-		
+		}
 	}, [ props ] );
-	
+
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
@@ -96,14 +98,14 @@ const UAGBWpSearchEdit = ( props ) => {
 		const blockStyling = styling( props );
 		addBlockEditorDynamicStyles( 'uagb-style-wp-search-' + clientId.substr( 0, 8 ), blockStyling );
 	}, [ deviceType, attributes ] );
-	
+
 	useEffect( () => {
 		scrollBlockToView();
-	}, [deviceType] );
+	}, [ deviceType ] );
 
 	return (
 		<>
-		{ isSelected && <Settings parentProps={ props } /> }
+			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
 		</>
 	);

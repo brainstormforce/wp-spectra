@@ -7,9 +7,7 @@ import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
 import UAGTabsControl from '@Components/tabs';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
-import InspectorTab, {
-	UAGTabs,
-} from '@Components/inspector-tabs/InspectorTab.js';
+import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import ResponsiveBorder from '@Components/responsive-border';
 import { InspectorControls } from '@wordpress/block-editor';
@@ -123,15 +121,12 @@ const Settings = ( props ) => {
 					showIcons={ false }
 				/>
 				<UAGTextControl
-					label={ __(
-						'Placeholder',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Placeholder', 'ultimate-addons-for-gutenberg' ) }
 					value={ placeholder }
-					data={{
+					data={ {
 						value: placeholder,
 						label: 'placeholder',
-					}}
+					} }
 					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( {
@@ -140,10 +135,7 @@ const Settings = ( props ) => {
 					}
 				/>
 				<Range
-					label={ __(
-						'Input Width',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Input Width', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ inputSize }
 					data={ {
@@ -154,10 +146,7 @@ const Settings = ( props ) => {
 					max={ 200 }
 					units={ [
 						{
-							name: __(
-								'Pixel',
-								'ultimate-addons-for-gutenberg'
-							),
+							name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
 							unitValue: 'px',
 						},
 						{
@@ -177,10 +166,7 @@ const Settings = ( props ) => {
 				{ layout === 'input-button' && (
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
-						label={ __(
-							'Button Type',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Button Type', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: buttonType,
 							label: 'buttonType',
@@ -204,10 +190,10 @@ const Settings = ( props ) => {
 						<UAGTextControl
 							label={ __( 'Text', 'ultimate-addons-for-gutenberg' ) }
 							value={ buttonText }
-							data={{
+							data={ {
 								value: buttonText,
 								label: 'buttonText',
-							}}
+							} }
 							setAttributes={ setAttributes }
 							onChange={ ( value ) => {
 								setAttributes( {
@@ -229,10 +215,7 @@ const Settings = ( props ) => {
 				className="uagb__url-panel-body"
 			>
 				<AdvancedPopColorControl
-					label={ __(
-						'Text Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ textColor ? textColor : '' }
 					data={ {
 						value: textColor,
@@ -241,10 +224,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ inputBgColor ? inputBgColor : '' }
 					data={ {
 						value: inputBgColor,
@@ -254,15 +234,12 @@ const Settings = ( props ) => {
 				/>
 				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					borderStyleLabel={__( 'Style', 'ultimate-addons-for-gutenberg' )}
-					borderWidthLabel={__( 'Width', 'ultimate-addons-for-gutenberg' )}
-					borderRadiusLabel={__( 'Radius', 'ultimate-addons-for-gutenberg' )}
-					borderColorLabel={__( 'Color', 'ultimate-addons-for-gutenberg' )}
-					borderHoverColorLabel={__(
-						'Hover Color',
-						'ultimate-addons-for-gutenberg'
-					)}
-					prefix={'input'}
+					borderStyleLabel={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
+					borderWidthLabel={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
+					borderRadiusLabel={ __( 'Radius', 'ultimate-addons-for-gutenberg' ) }
+					borderColorLabel={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					borderHoverColorLabel={ __( 'Hover Color', 'ultimate-addons-for-gutenberg' ) }
+					prefix={ 'input' }
 					attributes={ attributes }
 					deviceType={ deviceType }
 				/>
@@ -338,10 +315,7 @@ const Settings = ( props ) => {
 					} }
 					units={ [
 						{
-							name: __(
-								'Pixel',
-								'ultimate-addons-for-gutenberg'
-							),
+							name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
 							unitValue: 'px',
 						},
 						{
@@ -355,10 +329,7 @@ const Settings = ( props ) => {
 					] }
 				/>
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -421,10 +392,7 @@ const Settings = ( props ) => {
 				<BoxShadowControl
 					blockId={ block_id }
 					setAttributes={ setAttributes }
-					label={ __(
-						'Box Shadow',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
 					boxShadowColor={ {
 						value: boxShadowColor,
 						label: 'boxShadowColor',
@@ -433,18 +401,12 @@ const Settings = ( props ) => {
 					boxShadowHOffset={ {
 						value: boxShadowHOffset,
 						label: 'boxShadowHOffset',
-						title: __(
-							'Horizontal',
-							'ultimate-addons-for-gutenberg'
-						),
+						title: __( 'Horizontal', 'ultimate-addons-for-gutenberg' ),
 					} }
 					boxShadowVOffset={ {
 						value: boxShadowVOffset,
 						label: 'boxShadowVOffset',
-						title: __(
-							'Vertical',
-							'ultimate-addons-for-gutenberg'
-						),
+						title: __( 'Vertical', 'ultimate-addons-for-gutenberg' ),
 					} }
 					boxShadowBlur={ {
 						value: boxShadowBlur,
@@ -459,10 +421,7 @@ const Settings = ( props ) => {
 					boxShadowPosition={ {
 						value: boxShadowPosition,
 						label: 'boxShadowPosition',
-						title: __(
-							'Position',
-							'ultimate-addons-for-gutenberg'
-						),
+						title: __( 'Position', 'ultimate-addons-for-gutenberg' ),
 					} }
 					popup={ true }
 				/>
@@ -474,10 +433,7 @@ const Settings = ( props ) => {
 		const tabOutputNormal = (
 			<>
 				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ buttonBgColor ? buttonBgColor : '' }
 					data={ {
 						value: buttonBgColor,
@@ -487,10 +443,7 @@ const Settings = ( props ) => {
 				/>
 				{ 'text' === buttonType && (
 					<AdvancedPopColorControl
-						label={ __(
-							'Text Color',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ buttonTextColor ? buttonTextColor : '' }
 						data={ {
 							value: buttonTextColor,
@@ -501,10 +454,7 @@ const Settings = ( props ) => {
 				) }
 				{ 'icon' === buttonType && (
 					<AdvancedPopColorControl
-						label={ __(
-							'Icon Color',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ buttonIconColor ? buttonIconColor : '' }
 						data={ {
 							value: buttonIconColor,
@@ -518,10 +468,7 @@ const Settings = ( props ) => {
 		const tabOutputHover = (
 			<>
 				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ buttonBgHoverColor ? buttonBgHoverColor : '' }
 					data={ {
 						value: buttonBgHoverColor,
@@ -531,13 +478,8 @@ const Settings = ( props ) => {
 				/>
 				{ 'text' === buttonType && (
 					<AdvancedPopColorControl
-						label={ __(
-							'Text Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						colorValue={
-							buttonTextHoverColor ? buttonTextHoverColor : ''
-						}
+						label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ buttonTextHoverColor ? buttonTextHoverColor : '' }
 						data={ {
 							value: buttonTextHoverColor,
 							label: 'buttonTextHoverColor',
@@ -547,13 +489,8 @@ const Settings = ( props ) => {
 				) }
 				{ 'icon' === buttonType && (
 					<AdvancedPopColorControl
-						label={ __(
-							'Icon Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						colorValue={
-							buttonIconHoverColor ? buttonIconHoverColor : ''
-						}
+						label={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ buttonIconHoverColor ? buttonIconHoverColor : '' }
 						data={ {
 							value: buttonIconHoverColor,
 							label: 'buttonIconHoverColor',
@@ -587,80 +524,73 @@ const Settings = ( props ) => {
 					/>
 					{ 'text' === buttonType && (
 						<>
-						<TypographyControl
-							label={ __(
-								'Typography',
-								'ultimate-addons-for-gutenberg'
-							) }
-							attributes={ attributes }
-							setAttributes={ setAttributes }
-							loadGoogleFonts={ {
-								value: buttonloadGoogleFonts,
-								label: 'buttonloadGoogleFonts',
-							} }
-							fontFamily={ {
-								value: buttonFontFamily,
-								label: 'buttonFontFamily',
-							} }
-							fontWeight={ {
-								value: buttonFontWeight,
-								label: 'buttonFontWeight',
-							} }
-							fontStyle={ {
-								value: buttonFontStyle,
-								label: 'buttonFontStyle',
-							} }
-							fontSizeType={ {
-								value: buttonFontSizeType,
-								label: 'buttonFontSizeType',
-							} }
-							fontSize={ {
-								value: buttonFontSize,
-								label: 'buttonFontSize',
-							} }
-							fontSizeMobile={ {
-								value: buttonFontSizeMobile,
-								label: 'buttonFontSizeMobile',
-							} }
-							fontSizeTablet={ {
-								value: buttonFontSizeTablet,
-								label: 'buttonFontSizeTablet',
-							} }
-							lineHeightType={ {
-								value: buttonLineHeightType,
-								label: 'buttonLineHeightType',
-							} }
-							lineHeight={ {
-								value: buttonLineHeight,
-								label: 'buttonLineHeight',
-							} }
-							lineHeightMobile={ {
-								value: buttonLineHeightMobile,
-								label: 'buttonLineHeightMobile',
-							} }
-							lineHeightTablet={ {
-								value: buttonLineHeightTablet,
-								label: 'buttonLineHeightTablet',
-							} }
-							transform={ {
-								value: buttonTransform,
-								label: 'buttonTransform',
-							} }
-							decoration={ {
-								value: buttonDecoration,
-								label: 'buttonDecoration',
-							} }
-						/>
+							<TypographyControl
+								label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
+								attributes={ attributes }
+								setAttributes={ setAttributes }
+								loadGoogleFonts={ {
+									value: buttonloadGoogleFonts,
+									label: 'buttonloadGoogleFonts',
+								} }
+								fontFamily={ {
+									value: buttonFontFamily,
+									label: 'buttonFontFamily',
+								} }
+								fontWeight={ {
+									value: buttonFontWeight,
+									label: 'buttonFontWeight',
+								} }
+								fontStyle={ {
+									value: buttonFontStyle,
+									label: 'buttonFontStyle',
+								} }
+								fontSizeType={ {
+									value: buttonFontSizeType,
+									label: 'buttonFontSizeType',
+								} }
+								fontSize={ {
+									value: buttonFontSize,
+									label: 'buttonFontSize',
+								} }
+								fontSizeMobile={ {
+									value: buttonFontSizeMobile,
+									label: 'buttonFontSizeMobile',
+								} }
+								fontSizeTablet={ {
+									value: buttonFontSizeTablet,
+									label: 'buttonFontSizeTablet',
+								} }
+								lineHeightType={ {
+									value: buttonLineHeightType,
+									label: 'buttonLineHeightType',
+								} }
+								lineHeight={ {
+									value: buttonLineHeight,
+									label: 'buttonLineHeight',
+								} }
+								lineHeightMobile={ {
+									value: buttonLineHeightMobile,
+									label: 'buttonLineHeightMobile',
+								} }
+								lineHeightTablet={ {
+									value: buttonLineHeightTablet,
+									label: 'buttonLineHeightTablet',
+								} }
+								transform={ {
+									value: buttonTransform,
+									label: 'buttonTransform',
+								} }
+								decoration={ {
+									value: buttonDecoration,
+									label: 'buttonDecoration',
+								} }
+							/>
 						</>
-						)
-					}
+					) }
 					{ 'icon' === buttonType && (
 						<>
 							<Range
-								label={ __(
-									'Icon Size',
-									'ultimate-addons-for-gutenberg'
-								) }
+								label={ __( 'Icon Size', 'ultimate-addons-for-gutenberg' ) }
 								setAttributes={ setAttributes }
 								value={ buttonIconSize }
 								data={ {
@@ -680,17 +610,11 @@ const Settings = ( props ) => {
 						tabs={ [
 							{
 								name: 'normal',
-								title: __(
-									'Normal',
-									'ultimate-addons-for-gutenberg'
-								),
+								title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								name: 'hover',
-								title: __(
-									'Hover',
-									'ultimate-addons-for-gutenberg'
-								),
+								title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
 							},
 						] }
 						normal={ tabOutputNormal }
@@ -714,10 +638,7 @@ const Settings = ( props ) => {
 				>
 					<>
 						<Range
-							label={ __(
-								'Size',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
 							setAttributes={ setAttributes }
 							value={ iconSize }
 							data={ {
@@ -732,10 +653,7 @@ const Settings = ( props ) => {
 							} }
 						/>
 						<AdvancedPopColorControl
-							label={ __(
-								'Color',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 							colorValue={ iconColor ? iconColor : '' }
 							data={ {
 								value: iconColor,
@@ -756,15 +674,10 @@ const Settings = ( props ) => {
 	if ( inputloadGoogleFonts === true ) {
 		const qconfig = {
 			google: {
-				families: [
-					inputFontFamily +
-						( inputFontWeight ? ':' + inputFontWeight : '' ),
-				],
+				families: [ inputFontFamily + ( inputFontWeight ? ':' + inputFontWeight : '' ) ],
 			},
 		};
-		loadInputGoogleFonts = (
-			<WebfontLoader config={ qconfig }></WebfontLoader>
-		);
+		loadInputGoogleFonts = <WebfontLoader config={ qconfig }></WebfontLoader>;
 	}
 
 	let loadButtonGoogleFonts;
@@ -772,33 +685,23 @@ const Settings = ( props ) => {
 	if ( buttonloadGoogleFonts === true ) {
 		const qconfig = {
 			google: {
-				families: [
-					buttonFontFamily +
-						( buttonFontWeight ? ':' + buttonFontWeight : '' ),
-				],
+				families: [ buttonFontFamily + ( buttonFontWeight ? ':' + buttonFontWeight : '' ) ],
 			},
 		};
-		loadButtonGoogleFonts = (
-			<WebfontLoader config={ qconfig }></WebfontLoader>
-		);
+		loadButtonGoogleFonts = <WebfontLoader config={ qconfig }></WebfontLoader>;
 	}
 
 	return (
 		<>
 			<InspectorControls>
 				<InspectorTabs>
-					<InspectorTab { ...UAGTabs.general }>
-						{ generalSettings() }
-					</InspectorTab>
+					<InspectorTab { ...UAGTabs.general }>{ generalSettings() }</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ inputSettings() }
 						{ iconSettings() }
 						{ buttonSettings() }
 					</InspectorTab>
-					<InspectorTab
-						{ ...UAGTabs.advance }
-						parentProps={ props }
-					></InspectorTab>
+					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			{ loadInputGoogleFonts }
