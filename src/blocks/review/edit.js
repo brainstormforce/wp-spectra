@@ -11,6 +11,7 @@ import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import WebfontLoader from '@Components/typography/fontloader';
 
 const ReviewComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -62,6 +63,15 @@ const ReviewComponent = ( props ) => {
 			enableDescription,
 			enableImage,
 			bookAuthorName,
+			headLoadGoogleFonts,
+			headFontFamily,
+			headFontWeight,
+			subHeadLoadGoogleFonts,
+			subHeadFontFamily,
+			subHeadFontWeight,
+			contentLoadGoogleFonts,
+			contentFontFamily,
+			contentFontWeight,
 		},
 		setAttributes,
 	} = props;
@@ -263,6 +273,40 @@ const ReviewComponent = ( props ) => {
 		} );
 	}
 
+	let loadContentGoogleFonts;
+	let loadHeadingGoogleFonts;
+	let loadSubHeadingGoogleFonts;
+
+	if ( headLoadGoogleFonts === true ) {
+		const hconfig = {
+			google: {
+				families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
+			},
+		};
+
+		loadHeadingGoogleFonts = <WebfontLoader config={ hconfig }></WebfontLoader>;
+	}
+
+	if ( subHeadLoadGoogleFonts === true ) {
+		const sconfig = {
+			google: {
+				families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
+			},
+		};
+
+		loadSubHeadingGoogleFonts = <WebfontLoader config={ sconfig }></WebfontLoader>;
+	}
+
+	if ( contentLoadGoogleFonts === true ) {
+		const cconfig = {
+			google: {
+				families: [ contentFontFamily + ( contentFontWeight ? ':' + contentFontWeight : '' ) ],
+			},
+		};
+
+		loadContentGoogleFonts = <WebfontLoader config={ cconfig }></WebfontLoader>;
+	}
+
 	return (
 		<>
 			<SchemaNotices
@@ -298,6 +342,9 @@ const ReviewComponent = ( props ) => {
 			/>
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
+			{ loadHeadingGoogleFonts }
+			{ loadSubHeadingGoogleFonts }
+			{ loadContentGoogleFonts }
 		</>
 	);
 };

@@ -4,7 +4,6 @@ import { useDeviceType } from '@Controls/getPreviewType';
 import { limitMax, limitMin } from '@Controls/unitWiseMinMaxOption';
 import { select } from '@wordpress/data';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
-import UAGHelpText from '@Components/help-text';
 import { applyFilters } from '@wordpress/hooks';
 
 const ResponsiveSlider = ( props ) => {
@@ -129,7 +128,6 @@ const ResponsiveSlider = ( props ) => {
 					{ output[ deviceType ] ? output[ deviceType ] : output.Desktop }
 				</div>
 			</div>
-			<UAGHelpText text={ props.help } />
 			{ controlAfterDomElement }
 		</div>
 	);

@@ -15,7 +15,7 @@ if ( has_post_thumbnail() ) {
 	$thumbnail_id = get_post_thumbnail_id( $post->ID );
 	$thumbnail    = $thumbnail_id ? current( wp_get_attachment_image_src( $thumbnail_id, 'large', true ) ) : '';
 } else {
-	$thumbnail = null;
+	$thumbnail = '';
 }
 ob_start();
 ?>

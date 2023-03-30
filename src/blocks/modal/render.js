@@ -6,36 +6,9 @@ import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import { useDeviceType } from '@Controls/getPreviewType';
 import styles from './editor.lazy.scss';
 import getImageHeightWidth from '@Controls/getImageHeightWidth';
-
-const excludeBlocks = [
-	'uagb/how-to-step',
-	'uagb/buttons-child',
-	'uagb/faq-child',
-	'uagb/content-timeline-child',
-	'uagb/icon-list-child',
-	'uagb/social-share-child',
-	'uagb/restaurant-menu-child',
-	'uagb/tabs-child',
-	'uagb/post-image',
-	'uagb/post-taxonomy',
-	'uagb/post-title',
-	'uagb/post-meta',
-	'uagb/post-excerpt',
-	'uagb/post-button',
-	'uagb/forms-name',
-	'uagb/forms-email',
-	'uagb/forms-hidden',
-	'uagb/forms-phone',
-	'uagb/forms-textarea',
-	'uagb/forms-url',
-	'uagb/forms-select',
-	'uagb/forms-radio',
-	'uagb/forms-checkbox',
-	'uagb/forms-toggle',
-	'uagb/forms-date',
-	'uagb/forms-accept',
-	'uagb/modal',
-];
+import { useDispatch } from '@wordpress/data';
+import { createBlocksFromInnerBlocksTemplate } from '@wordpress/blocks';
+import { excludeBlocks, defaultContent } from './modalConfig';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -45,13 +18,8 @@ const Render = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
-
-	const { attributes, setAttributes } = props.parentProps;
-
-	const ALLOWED_BLOCKS = wp.blocks
-		.getBlockTypes()
-		.map( ( block ) => block.name )
-		.filter( ( blockName ) => ! excludeBlocks.includes( blockName ) );
+	const deviceType = useDeviceType();
+	const { attributes, setAttributes, clientId } = props.parentProps;
 
 	const {
 		block_id,
@@ -71,14 +39,32 @@ const Render = ( props ) => {
 		imgTagWidth,
 		imgTagHeight,
 		showBtnIcon,
-		defaultTemplate,
 		openModalAs,
 		modalPosition,
+		defaultTemplate,
 	} = attributes;
 
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 	const isPro = uagb_blocks_info.spectra_pro_status;
 
-	const deviceType = useDeviceType();
+	const ALLOWED_BLOCKS = wp.blocks
+		.getBlockTypes()
+		.map( ( block ) => block.name )
+		.filter( ( blockName ) => ! excludeBlocks.includes( blockName ) );
+
+	const TEMPLATE = [ [ 'core/paragraph', { placeholder: 'Type / to choose a block' } ] ];
+
+	const enablePopup = ( e ) => {
+		e.preventDefault();
+		if ( ! defaultTemplate ) {
+			replaceInnerBlocks( clientId, createBlocksFromInnerBlocksTemplate( defaultContent ) );
+			setAttributes( { defaultTemplate: true } );
+		}
+	};
+
+	useEffect( () => {
+		getImageHeightWidth( url, setAttributes );
+	}, [ imageSize ] );
 
 	const textHTML = (
 		<RichText
@@ -92,13 +78,11 @@ const Render = ( props ) => {
 
 	const iconHTML = <div className="uagb-modal-trigger">{ '' !== icon && renderSVG( icon, setAttributes ) }</div>;
 
-	const defaultedAlt = iconImage && iconImage?.alt ? iconImage?.alt : '';
+	const defaultedAlt = iconImage?.alt ? iconImage.alt : '';
 	let imageIconHtml = '';
 	let url = '';
-	useEffect( () => {
-		getImageHeightWidth( url, setAttributes );
-	}, [ imageSize ] );
-	if ( iconImage && iconImage.url ) {
+
+	if ( iconImage?.url ) {
 		url = iconImage.url;
 		const size = iconImage.sizes;
 		const imageSizes = imageSize;
@@ -131,7 +115,7 @@ const Render = ( props ) => {
 			<a // eslint-disable-line jsx-a11y/anchor-is-valid
 				className={ buttonClasses }
 				href={ '#' }
-				onClick={ 'return false;' }
+				onClick={ enablePopup }
 				target="_self"
 				rel="noopener noreferrer"
 			>
@@ -150,36 +134,6 @@ const Render = ( props ) => {
 			</a>
 		</div>
 	);
-
-	const getStepAsChild = [
-		[
-			'uagb/info-box',
-			{
-				icon: 'circle-check',
-				iconBottomMargin: 15,
-				infoBoxTitle: __( 'Engage Your Visitors!', 'ultimate-addons-for-gutenberg' ),
-				headFontWeight: 500,
-				headSpace: 10,
-				headingDesc: __(
-					'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis pulvinar dapibus.',
-					'ultimate-addons-for-gutenberg'
-				),
-				subHeadSpace: 30,
-				ctaType: 'button',
-				btnBorderStyle: 'none',
-				showCtaIcon: false,
-				ctaText: __( 'Call To Action', 'ultimate-addons-for-gutenberg' ),
-				paddingBtnTop: 14,
-				paddingBtnRight: 28,
-				paddingBtnBottom: 14,
-				paddingBtnLeft: 28,
-				btnBorderTopLeftRadius: 3,
-				btnBorderTopRightRadius: 3,
-				btnBorderBottomLeftRadius: 3,
-				btnBorderBottomRightRadius: 3,
-			},
-		],
-	];
 
 	return (
 		<>
@@ -213,11 +167,7 @@ const Render = ( props ) => {
 					<div className="uagb-modal-popup-wrap">
 						<div className="uagb-modal-popup-content">
 							<InnerBlocks
-								template={
-									defaultTemplate === undefined || defaultTemplate === false
-										? getStepAsChild
-										: [ [ 'core/paragraph', { placeholder: 'Type / to choose a block' } ] ]
-								}
+								template={ TEMPLATE }
 								allowedBlocks={ ALLOWED_BLOCKS }
 								renderAppender={ InnerBlocks.DefaultBlockAppender }
 							/>

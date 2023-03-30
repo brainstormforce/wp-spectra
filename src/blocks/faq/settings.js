@@ -3,7 +3,6 @@
  */
 import { memo } from '@wordpress/element';
 import renderSVG from '@Controls/renderIcon';
-import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
 import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
@@ -1131,28 +1130,6 @@ const Settings = ( props ) => {
 		);
 	};
 
-	let loadQuestionGoogleFonts;
-	let loadAnswerGoogleFonts;
-
-	if ( questionloadGoogleFonts === true ) {
-		const qconfig = {
-			google: {
-				families: [ questionFontFamily + ( questionFontWeight ? ':' + questionFontWeight : '' ) ],
-			},
-		};
-
-		loadQuestionGoogleFonts = <WebfontLoader config={ qconfig }></WebfontLoader>;
-	}
-
-	if ( answerloadGoogleFonts === true ) {
-		const aconfig = {
-			google: {
-				families: [ answerFontFamily + ( answerFontWeight ? ':' + answerFontWeight : '' ) ],
-			},
-		};
-
-		loadAnswerGoogleFonts = <WebfontLoader config={ aconfig }></WebfontLoader>;
-	}
 	const presetSettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
@@ -1179,8 +1156,6 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			{ loadQuestionGoogleFonts }
-			{ loadAnswerGoogleFonts }
 		</>
 	);
 };

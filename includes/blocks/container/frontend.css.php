@@ -132,6 +132,24 @@ $selectors = array(
 	'.uagb-block-' . $id . '.wp-block-uagb-container' => array(
 		'color' => $attr['textColor'],
 	),
+	'.wp-block-uagb-container h1'                     => array(
+		'color' => $attr['textColor'],
+	),
+	'.wp-block-uagb-container h2'                     => array(
+		'color' => $attr['textColor'],
+	),
+	'.wp-block-uagb-container h3'                     => array(
+		'color' => $attr['textColor'],
+	),
+	'.wp-block-uagb-container h4'                     => array(
+		'color' => $attr['textColor'],
+	),
+	'.wp-block-uagb-container h5'                     => array(
+		'color' => $attr['textColor'],
+	),
+	'.wp-block-uagb-container h6'                     => array(
+		'color' => $attr['textColor'],
+	),
 	'.uagb-block-' . $id . ' a'                       => array(
 		'color' => $attr['linkColor'],
 	),

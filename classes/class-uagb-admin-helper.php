@@ -106,7 +106,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		 * @param  string  $key     The option key.
 		 * @param  mixed   $default Option default value if option is not available.
 		 * @param  boolean $network_override Whether to allow the network admin setting to be overridden on subsites.
-		 * @return string           Return the option value
+		 * @return mixed            Return the option value.
 		 * @since 0.0.1
 		 */
 		public static function get_admin_settings_option( $key, $default = false, $network_override = false ) {
@@ -396,9 +396,14 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 					$content_width = intval( $content_width_third_party );
 					self::update_admin_settings_option( 'uag_content_width_set_by', __( 'Filter added through any 3rd Party Theme/Plugin.', 'ultimate-addons-for-gutenberg' ) );
 				}
+				if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
+					$settings      = wp_get_global_settings();
+					$content_width = intval( $settings['layout']['contentSize'] );
+					self::update_admin_settings_option( 'uag_content_width_set_by', __( "Full Site Editor's Global Styles", 'ultimate-addons-for-gutenberg' ) );
+				}
 			}
 
-			return $content_width;
+			return '' === $content_width ? 1140 : $content_width;
 		}
 	}
 

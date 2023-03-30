@@ -3,7 +3,6 @@ import UAGIconPicker from '@Components/icon-picker';
 import renderSVG from '@Controls/renderIcon';
 
 import TypographyControl from '@Components/typography';
-import WebfontLoader from '@Components/typography/fontloader';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import ResponsiveSlider from '@Components/responsive-slider';
@@ -188,40 +187,6 @@ const Settings = ( props ) => {
 
 	if ( image && image.sizes ) {
 		imageSizeOptions = getImageSize( image.sizes );
-	}
-
-	let loadTitleGoogleFonts;
-	let loadPrefixGoogleFonts;
-	let loadDescGoogleFonts;
-
-	if ( titleLoadGoogleFonts === true ) {
-		const tconfig = {
-			google: {
-				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
-			},
-		};
-
-		loadTitleGoogleFonts = <WebfontLoader config={ tconfig }></WebfontLoader>;
-	}
-
-	if ( prefixLoadGoogleFonts === true ) {
-		const pconfig = {
-			google: {
-				families: [ prefixFontFamily + ( prefixFontWeight ? ':' + prefixFontWeight : '' ) ],
-			},
-		};
-
-		loadPrefixGoogleFonts = <WebfontLoader config={ pconfig }></WebfontLoader>;
-	}
-
-	if ( descLoadGoogleFonts === true ) {
-		const dconfig = {
-			google: {
-				families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
-			},
-		};
-
-		loadDescGoogleFonts = <WebfontLoader config={ dconfig }></WebfontLoader>;
 	}
 
 	const getImagePanelBody = () => {
@@ -1107,22 +1072,7 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const getFontSettings = () => {
-		return (
-			<>
-				{ loadTitleGoogleFonts }
-				{ loadPrefixGoogleFonts }
-				{ loadDescGoogleFonts }
-			</>
-		);
-	};
-
-	return (
-		<>
-			{ getInspectorControls() }
-			{ getFontSettings() }
-		</>
-	);
+	return <>{ getInspectorControls() }</>;
 };
 
 export default memo( Settings );

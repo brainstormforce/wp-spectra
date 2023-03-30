@@ -11,7 +11,12 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
 
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let countdownCommonData = {};
+countdownCommonData = applyFilters( 'uagb/countdown', addCommonDataToSpectraBlocks( countdownCommonData ) );
 registerBlockType( 'uagb/countdown', {
+	...countdownCommonData,
 	apiVersion: 2,
 	title: __( 'Countdown', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Create a sense of urgency among your visitors.', 'ultimate-addons-for-gutenberg' ),
@@ -26,13 +31,8 @@ registerBlockType( 'uagb/countdown', {
 	supports: {
 		anchor: true,
 	},
-	category: uagb_blocks_info.category,
 	attributes,
+	category: uagb_blocks_info.category,
 	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="countdown" /> : <Edit { ...props } /> ),
 	save,
-	example: {
-		attributes: {
-			isPreview: true,
-		},
-	},
 } );

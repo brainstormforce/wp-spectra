@@ -396,7 +396,10 @@ function styling( props ) {
 		),
 	};
 
-	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const base_selector = `.editor-styles-wrapper #block-${ props.clientId } .uagb-block-${ props.clientId.substr(
+		0,
+		8
+	) }`;
 
 	selectors = applyFilters( `spectra.${ blockName }.styling`, selectors, props.attributes );
 	tablet_selectors = applyFilters( `spectra.${ blockName }.tabletStyling`, tablet_selectors, props.attributes );

@@ -5,7 +5,9 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBorderCSS from '@Controls/generateBorderCSS';
+import generateShadowCSS from '@Controls/generateShadowCSS';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import { applyFilters } from '@wordpress/hooks';
 
 export default function styling( props ) {
 	const {
@@ -151,6 +153,7 @@ export default function styling( props ) {
 			boxBgType,
 			boxBgColor,
 			// Box - Box Shadow.
+			useSeparateBoxShadows,
 			boxShadowColor,
 			boxShadowHOffset,
 			boxShadowVOffset,
@@ -221,23 +224,29 @@ export default function styling( props ) {
 	const boxBorderCSSTablet = generateBorderCSS( props.attributes, 'box', 'tablet' );
 	const boxBorderCSSMobile = generateBorderCSS( props.attributes, 'box', 'mobile' );
 
-	let boxShadowPositionCSS = boxShadowPosition;
+	// Box Shadow
+	const boxShadowCSS = generateShadowCSS( {
+		'horizontal': boxShadowHOffset,
+		'vertical': boxShadowVOffset,
+		'blur': boxShadowBlur,
+		'spread': boxShadowSpread,
+		'color': boxShadowColor,
+		'position': boxShadowPosition,
+	} );
+	const boxShadowHoverCSS = generateShadowCSS( {
+		'horizontal': boxShadowHOffsetHover,
+		'vertical': boxShadowVOffsetHover,
+		'blur': boxShadowBlurHover,
+		'spread': boxShadowSpreadHover,
+		'color': boxShadowColorHover,
+		'position': boxShadowPositionHover,
+		'altColor': boxShadowColor,
+	} );
 
-	// Box Shadow.
-	if ( 'outset' === boxShadowPosition ) {
-		boxShadowPositionCSS = '';
-	}
+	let tabletSelectors = {};
+	let mobileSelectors = {};
 
-	let boxShadowPositionCSSHover = boxShadowPositionHover;
-
-	if ( 'outset' === boxShadowPositionHover ) {
-		boxShadowPositionCSSHover = '';
-	}
-
-	const tabletSelectors = {};
-	const mobileSelectors = {};
-
-	const selectors = {
+	let selectors = {
 		'.wp-block-uagb-countdown': {
 			'justify-content': align,
 			'margin-top': generateCSSUnit( blockTopMargin, blockMarginUnit ),
@@ -249,13 +258,13 @@ export default function styling( props ) {
 			'padding-bottom': generateCSSUnit( blockBottomPadding, blockPaddingUnit ),
 			'padding-left': generateCSSUnit( blockLeftPadding, blockPaddingUnit ),
 		},
-		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box-days': {
+		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-days': {
 			'display': showDays ? '' : 'none',
 		},
-		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box-hours': {
+		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-hours': {
 			'display': showDays || showHours ? '' : 'none',
 		},
-		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box-minutes': {
+		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-minutes': {
 			'display': showDays || showHours || showMinutes ? '' : 'none',
 		},
 		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box': {
@@ -272,18 +281,7 @@ export default function styling( props ) {
 			'padding-left': generateCSSUnit( boxLeftPadding, boxPaddingUnit ),
 			'row-gap': generateCSSUnit( internalBoxSpacingFallback, 'px' ),
 			'column-gap': generateCSSUnit( internalBoxSpacingFallback, 'px' ),
-			'box-shadow':
-				generateCSSUnit( boxShadowHOffset, 'px' ) +
-				' ' +
-				generateCSSUnit( boxShadowVOffset, 'px' ) +
-				' ' +
-				generateCSSUnit( boxShadowBlur, 'px' ) +
-				' ' +
-				generateCSSUnit( boxShadowSpread, 'px' ) +
-				' ' +
-				boxShadowColor +
-				' ' +
-				boxShadowPositionCSS,
+			'box-shadow': boxShadowCSS,
 			...boxBorderCSS,
 		},
 		'.wp-block-uagb-countdown:hover .wp-block-uagb-countdown__box': {
@@ -319,25 +317,8 @@ export default function styling( props ) {
 	};
 
 	// Box Shadow.
-	const boxShadowBlurHoverTemp = isNaN( boxShadowBlurHover ) ? '' : boxShadowBlurHover;
-	const boxShadowColorHoverTemp = boxShadowColorHover ? boxShadowColorHover : '';
-
-	if ( '' !== boxShadowColorHoverTemp || '' !== boxShadowBlurHoverTemp ) {
-		const boxShadowBlurHoverCSSUnit =
-			'' === boxShadowBlurHoverTemp ? '' : generateCSSUnit( boxShadowBlurHoverTemp, 'px' );
-
-		selectors[ '.wp-block-uagb-countdown:hover .wp-block-uagb-countdown__box' ][ 'box-shadow' ] =
-			generateCSSUnit( boxShadowHOffsetHover, 'px' ) +
-			' ' +
-			generateCSSUnit( boxShadowVOffsetHover, 'px' ) +
-			' ' +
-			boxShadowBlurHoverCSSUnit +
-			' ' +
-			generateCSSUnit( boxShadowSpreadHover, 'px' ) +
-			' ' +
-			boxShadowColorHoverTemp +
-			' ' +
-			boxShadowPositionCSSHover;
+	if ( useSeparateBoxShadows ) {
+		selectors[ '.wp-block-uagb-countdown:hover .wp-block-uagb-countdown__box' ][ 'box-shadow' ] = boxShadowHoverCSS;
 	}
 
 	// TABLET SELECTORS.
@@ -478,6 +459,10 @@ export default function styling( props ) {
 	}
 
 	const baseSelector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+
+	selectors = applyFilters( `spectra.${ blockName }.styling`, selectors, props.attributes );
+	tabletSelectors = applyFilters( `spectra.${ blockName }.tabletStyling`, tabletSelectors, props.attributes );
+	mobileSelectors = applyFilters( `spectra.${ blockName }.mobileStyling`, mobileSelectors, props.attributes );
 
 	let styling_css = generateCSS( selectors, baseSelector );
 

@@ -15,7 +15,6 @@ import Range from '@Components/range/Range.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
 import TypographyControl from '@Components/typography';
-import WebfontLoader from '@Components/typography/fontloader';
 import UAGTabsControl from '@Components/tabs';
 import ResponsiveBorder from '@Components/responsive-border';
 import Background from '@Components/background';
@@ -200,30 +199,6 @@ export default function Settings( props ) {
 		modalTriggerBgType,
 		modalTriggerBgHoverType,
 	} = attributes;
-
-	let loadTextGoogleFonts;
-
-	if ( textLoadGoogleFonts === true ) {
-		const hconfig = {
-			google: {
-				families: [ textFontFamily + ( textFontWeight ? ':' + textFontWeight : '' ) ],
-			},
-		};
-
-		loadTextGoogleFonts = <WebfontLoader config={ hconfig }></WebfontLoader>;
-	}
-
-	let loadBtnGoogleFonts;
-
-	if ( btnLoadGoogleFonts === true ) {
-		const btnconfig = {
-			google: {
-				families: [ btnFontFamily + ( btnFontWeight ? ':' + btnFontWeight : '' ) ],
-			},
-		};
-
-		loadBtnGoogleFonts = <WebfontLoader config={ btnconfig }></WebfontLoader>;
-	}
 
 	/*
 	 * Event to set Image as while adding.
@@ -1456,8 +1431,6 @@ export default function Settings( props ) {
 					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			{ loadTextGoogleFonts }
-			{ loadBtnGoogleFonts }
 		</>
 	);
 }

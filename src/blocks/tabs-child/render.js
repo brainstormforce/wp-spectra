@@ -5,6 +5,7 @@ const Render = ( props ) => {
 	props = props.parentProps;
 	const { attributes } = props;
 	const { tabActive, id } = attributes;
+
 	return (
 		<div
 			className={ `uagb-tabs__body-container uagb-inner-tab-${ id }` }

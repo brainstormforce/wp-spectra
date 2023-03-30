@@ -3,7 +3,6 @@ import { __ } from '@wordpress/i18n';
 import { memo } from '@wordpress/element';
 
 import TypographyControl from '@Components/typography';
-import WebfontLoader from '@Components/typography/fontloader';
 import { InspectorControls } from '@wordpress/block-editor';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -220,51 +219,6 @@ const Settings = ( props ) => {
 		btncontentWidthMobile,
 		btncontentWidthType,
 	} = attributes;
-
-	let loadCtaGoogleFonts;
-	let loadTitleGoogleFonts;
-	let loadDescGoogleFonts;
-	let loadSecCtaGoogleFonts;
-
-	if ( secondCtaLoadGoogleFonts === true ) {
-		const secondCtaBtnconfig = {
-			google: {
-				families: [ secondCtaFontFamily + ( secondCtaFontWeight ? ':' + secondCtaFontWeight : '' ) ],
-			},
-		};
-
-		loadSecCtaGoogleFonts = <WebfontLoader config={ secondCtaBtnconfig }></WebfontLoader>;
-	}
-
-	if ( ctaLoadGoogleFonts === true ) {
-		const ctaconfig = {
-			google: {
-				families: [ ctaFontFamily + ( ctaFontWeight ? ':' + ctaFontWeight : '' ) ],
-			},
-		};
-
-		loadCtaGoogleFonts = <WebfontLoader config={ ctaconfig }></WebfontLoader>;
-	}
-
-	if ( titleLoadGoogleFonts === true ) {
-		const titleconfig = {
-			google: {
-				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
-			},
-		};
-
-		loadTitleGoogleFonts = <WebfontLoader config={ titleconfig }></WebfontLoader>;
-	}
-
-	if ( descLoadGoogleFonts === true ) {
-		const descconfig = {
-			google: {
-				families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
-			},
-		};
-
-		loadDescGoogleFonts = <WebfontLoader config={ descconfig }></WebfontLoader>;
-	}
 
 	const secBtnSettings = () => {
 		return (
@@ -1778,10 +1732,6 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			{ loadCtaGoogleFonts }
-			{ loadSecCtaGoogleFonts }
-			{ loadTitleGoogleFonts }
-			{ loadDescGoogleFonts }
 		</>
 	);
 };

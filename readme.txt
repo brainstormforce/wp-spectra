@@ -2,10 +2,10 @@
 Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
-Requires at least: 4.7
+Requires at least: 5.6
 Requires PHP: 5.6
-Tested up to: 6.1
-Stable tag: 2.4.0
+Tested up to: 6.2
+Stable tag: 2.4.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -171,14 +171,25 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = x.x.x =
-* Fix: Post Grid - Pagination not visible inside editor.
-* Fix: Spectra blocks editor spacing conflicting with Blocksy theme.
-* Fix: Inline Notice - Content color is not working in the backend.
-* Fix: Inline Notice - Content typography is not working.
-* Fix: Taxonomy block - Translation missing for Select string in PHP file.
-* Fix: Social Share - PHP error for old user due `array_merge()` parameter should be array.
+* Fix: Container - Heading tags were not inheriting color from theme or container.
+* Fix: Image - width and height tag does not appear when image uploaded.
+* Fix: Spacing Control - Removed the capability to set negative values for width & radius settings.
+* Fix: Typography Control - Removed the capability to set negative values for line-height & font size settings.
+* Fix: Post Carousel - TwentyTwentyone theme hover style override for arrow and dot.
+* Fix: Global - Fonts were not loading in the customizer when Spectra blocks are used in Astra theme's header/footer section.
 
-= 2.4.0 =
+= 2.4.1 - TUESDAY, 28th MARCH 2023 =
+* Improvement: Updated Spectra to work with WordPress 6.2 and Full Site Editing (FSE) themes.
+* Improvement: Added filter to enable/disable core responsive condition.
+* Improvement: Resolved the Spectra blocks editor spacing conflict with the Blocksy theme.
+* Fix: Image - Resolved an issue where the image caption was visible twice in the editor when caption is enabled.
+* Fix: Inline Notice - Resolved an issue where the content color and typography were not working in the editor.
+* Fix: Modal - Resolved an issue where the Info box as an inner block was not loading in the Modal when Gutenberg was activated.
+* Fix: Social Share - Optimized PHP code for legacy users causing an error due `array_merge()` parameter issues.
+* Fix: Taxonomy List - Added the missing translation for the Select string in the PHP code.
+* Fix: Post Grid - Resolved an issue where pagination was not visible inside the editor.
+
+= 2.4.0 - WEDNESDAY, 15th MARCH 2023 =
 * New: Introducing the Countdown block that will help you generate hype and create a sense of urgency among your audience, during product sales or releases!
 * New: Introducing the Icon block that allows you to add FontAwesome 6 icons on your website with tonnes of styling options.
 * Feature: Image Gallery - Added a new lightbox feature with all the essential customizability that you'll need.

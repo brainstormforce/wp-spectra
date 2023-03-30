@@ -13,8 +13,12 @@ import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let infoBoxCommonData = {};
+infoBoxCommonData = applyFilters( 'uagb/info-box', addCommonDataToSpectraBlocks( infoBoxCommonData ) );
 registerBlockType( 'uagb/info-box', {
+	...infoBoxCommonData,
 	title: __( 'Info Box', 'ultimate-addons-for-gutenberg' ),
 	description: __(
 		'Add image/icon, separator and text description using a single block.',
@@ -25,14 +29,10 @@ registerBlockType( 'uagb/info-box', {
 	supports: {
 		anchor: true,
 	},
-	category: uagb_blocks_info.category,
+
 	attributes,
+	category: uagb_blocks_info.category,
 	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="info-box" /> : <Edit { ...props } /> ),
 	save,
-	example: {
-		attributes: {
-			isPreview: true,
-		},
-	},
 	deprecated,
 } );

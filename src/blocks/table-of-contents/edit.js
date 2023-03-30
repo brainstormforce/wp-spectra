@@ -10,6 +10,7 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import WebfontLoader from '@Components/typography/fontloader';
 
 import Settings from './settings';
 import Render from './render';
@@ -32,6 +33,12 @@ const UAGBTableOfContentsEdit = ( props ) => {
 			borderRadius,
 			borderColor,
 			borderHoverColor,
+			loadGoogleFonts,
+			fontFamily,
+			fontWeight,
+			headingLoadGoogleFonts,
+			headingFontFamily,
+			headingFontWeight,
 		},
 	} = props;
 
@@ -156,7 +163,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 			} );
 		}
 
-		if ( headerArray !== 'undefined' ) {
+		if ( headerArray ) {
 			headerArray.forEach(
 				// eslint-disable-next-line
 				function ( index, value ) {
@@ -185,7 +192,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 			);
 		}
 
-		if ( headers !== undefined ) {
+		if ( headers ) {
 			headers.forEach( function ( heading, index ) {
 				heading.level = 0;
 
@@ -219,11 +226,35 @@ const UAGBTableOfContentsEdit = ( props ) => {
 		}
 	}
 	/* eslint-enable no-undef */
+	let loadGFonts;
+	let headingloadGFonts;
+
+	if ( loadGoogleFonts === true ) {
+		const config = {
+			google: {
+				families: [ fontFamily + ( fontWeight ? ':' + fontWeight : '' ) ],
+			},
+		};
+
+		loadGFonts = <WebfontLoader config={ config }></WebfontLoader>;
+	}
+
+	if ( headingLoadGoogleFonts === true ) {
+		const headingconfig = {
+			google: {
+				families: [ headingFontFamily + ( headingFontWeight ? ':' + headingFontWeight : '' ) ],
+			},
+		};
+
+		headingloadGFonts = <WebfontLoader config={ headingconfig }></WebfontLoader>;
+	}
 
 	return (
 		<>
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } headers={ headers } />
+			{ loadGFonts }
+			{ headingloadGFonts }
 		</>
 	);
 };

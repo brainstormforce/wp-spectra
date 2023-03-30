@@ -12,8 +12,12 @@ import { __ } from '@wordpress/i18n';
 import colourNameToHex from '@Controls/changeColorNameToHex';
 import { registerBlockType, createBlock } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let blockquoteCommonData = {};
+blockquoteCommonData = applyFilters( 'uagb/blockquote', addCommonDataToSpectraBlocks( blockquoteCommonData ) );
 registerBlockType( 'uagb/blockquote', {
+	...blockquoteCommonData,
 	title: __( 'Blockquote', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Display qoutes/quoted texts using blockquote.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.blockquote,
@@ -25,15 +29,10 @@ registerBlockType( 'uagb/blockquote', {
 	supports: {
 		anchor: true,
 	},
-	category: uagb_blocks_info.category,
 	attributes,
+	category: uagb_blocks_info.category,
 	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="blockquote" /> : <Edit { ...props } /> ),
 	save,
-	example: {
-		attributes: {
-			isPreview: true,
-		},
-	},
 	deprecated,
 	transforms: {
 		from: [

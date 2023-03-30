@@ -2,7 +2,6 @@ import UAGIconPicker from '@Components/icon-picker';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import TypographyControl from '@Components/typography';
-import WebfontLoader from '@Components/typography/fontloader';
 import ResponsiveBorder from '@Components/responsive-border';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -324,51 +323,6 @@ const Settings = ( props ) => {
 
 	if ( iconImage && iconImage.sizes ) {
 		imageSizeOptions = getImageSize( iconImage.sizes );
-	}
-
-	let loadPrefixGoogleFonts;
-	let loadSubHeadGoogleFonts;
-	let loadCtaGoogleFonts;
-	let loadHeadGoogleFonts;
-
-	if ( prefixLoadGoogleFonts === true ) {
-		const prefixconfig = {
-			google: {
-				families: [ prefixFontFamily + ( prefixFontWeight ? ':' + prefixFontWeight : '' ) ],
-			},
-		};
-
-		loadPrefixGoogleFonts = <WebfontLoader config={ prefixconfig }></WebfontLoader>;
-	}
-
-	if ( headLoadGoogleFonts === true ) {
-		const headconfig = {
-			google: {
-				families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
-			},
-		};
-
-		loadHeadGoogleFonts = <WebfontLoader config={ headconfig }></WebfontLoader>;
-	}
-
-	if ( subHeadLoadGoogleFonts === true ) {
-		const subHeadconfig = {
-			google: {
-				families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
-			},
-		};
-
-		loadSubHeadGoogleFonts = <WebfontLoader config={ subHeadconfig }></WebfontLoader>;
-	}
-
-	if ( subHeadLoadGoogleFonts === true ) {
-		const ctaconfig = {
-			google: {
-				families: [ ctaFontFamily + ( ctaFontWeight ? ':' + ctaFontWeight : '' ) ],
-			},
-		};
-
-		loadCtaGoogleFonts = <WebfontLoader config={ ctaconfig }></WebfontLoader>;
 	}
 
 	// Global Controls.
@@ -2222,11 +2176,6 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-
-			{ loadPrefixGoogleFonts }
-			{ loadSubHeadGoogleFonts }
-			{ loadCtaGoogleFonts }
-			{ loadHeadGoogleFonts }
 		</>
 	);
 };

@@ -1,7 +1,6 @@
 import { memo } from '@wordpress/element';
 
 import TypographyControl from '@Components/typography';
-import WebfontLoader from '@Components/typography/fontloader';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
@@ -178,28 +177,6 @@ const Settings = ( props ) => {
 		highLightPaddingLink,
 	} = attributes;
 
-	let loadHeadingGoogleFonts;
-	let loadSubHeadingGoogleFonts;
-
-	if ( headLoadGoogleFonts === true ) {
-		const hconfig = {
-			google: {
-				families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
-			},
-		};
-
-		loadHeadingGoogleFonts = <WebfontLoader config={ hconfig }></WebfontLoader>;
-	}
-
-	if ( subHeadLoadGoogleFonts === true ) {
-		const sconfig = {
-			google: {
-				families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
-			},
-		};
-
-		loadSubHeadingGoogleFonts = <WebfontLoader config={ sconfig }></WebfontLoader>;
-	}
 	let separatorPositionOptions = [
 		{
 			value: 'above-heading',
@@ -1252,9 +1229,6 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-
-			{ loadHeadingGoogleFonts }
-			{ loadSubHeadingGoogleFonts }
 		</div>
 	);
 };

@@ -204,6 +204,7 @@ const TypographyControl = ( props ) => {
 				sizeTabletLabel={ props.lineHeightTablet.label }
 				size={ props.lineHeight }
 				sizeLabel={ props.lineHeight.label }
+				min={ 0 }
 				sizeMobileText={ __( 'Line Height', 'ultimate-addons-for-gutenberg' ) }
 				sizeTabletText={ __( 'Line Height', 'ultimate-addons-for-gutenberg' ) }
 				sizeText={ __( 'Line Height', 'ultimate-addons-for-gutenberg' ) }
@@ -224,6 +225,7 @@ const TypographyControl = ( props ) => {
 				sizeTabletLabel={ props.letterSpacingTablet.label }
 				size={ props.letterSpacing }
 				sizeLabel={ props.letterSpacing.label }
+				min={ -50 }
 				sizeMobileText={ __( 'Letter Spacing', 'ultimate-addons-for-gutenberg' ) }
 				sizeTabletText={ __( 'Letter Spacing', 'ultimate-addons-for-gutenberg' ) }
 				sizeText={ __( 'Letter Spacing', 'ultimate-addons-for-gutenberg' ) }

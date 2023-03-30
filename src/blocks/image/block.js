@@ -12,7 +12,12 @@ import { registerBlockType, createBlock } from '@wordpress/blocks';
 import deprecated from './deprecated';
 import PreviewImage from '@Controls/previewImage';
 
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let imageCommonData = {};
+imageCommonData = applyFilters( 'uagb/image', addCommonDataToSpectraBlocks( imageCommonData ) );
 registerBlockType( 'uagb/image', {
+	...imageCommonData,
 	title: __( 'Image', 'ultimate-addons-for-gutenberg' ),
 	description: __(
 		'Add images on your webpage with multiple customization options.',
@@ -25,11 +30,6 @@ registerBlockType( 'uagb/image', {
 		__( 'caption', 'ultimate-addons-for-gutenberg' ),
 		__( 'overlay image', 'ultimate-addons-for-gutenberg' ),
 	],
-	example: {
-		attributes: {
-			isPreview: true,
-		},
-	},
 	supports: {
 		anchor: true,
 		color: {
@@ -39,8 +39,9 @@ registerBlockType( 'uagb/image', {
 		},
 		align: true,
 	},
-	category: uagb_blocks_info.category,
+
 	attributes,
+	category: uagb_blocks_info.category,
 	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="image" /> : <Edit { ...props } /> ),
 	save,
 	deprecated,

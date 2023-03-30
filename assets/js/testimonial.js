@@ -9,7 +9,7 @@ window.UAGBTestimonialCarousel = {
 
 			Object.keys( postActive ).forEach( ( key ) => {
 				const thisHeight = postActive[ key ].offsetHeight,
-					blogPost = postActive[ key ].querySelector( '.uagb-tm__content' ),
+					blogPost = postActive[ key ].querySelector( '.uagb-testimonial__wrap' ),
 					blogPostHeight = blogPost.offsetHeight;
 
 				if ( maxHeight < blogPostHeight ) {
@@ -23,7 +23,7 @@ window.UAGBTestimonialCarousel = {
 			} );
 
 			Object.keys( postActive ).forEach( ( key ) => {
-				const selector = postActive[ key ].querySelector( '.uagb-tm__content' );
+				const selector = postActive[ key ].querySelector( '.uagb-testimonial__wrap' );
 				selector.style.height = maxHeight + 'px';
 			} );
 
@@ -37,7 +37,7 @@ window.UAGBTestimonialCarousel = {
 					return true;
 				}
 
-				selector = $this.querySelector( '.uagb-tm__content' );
+				selector = $this.querySelector( '.uagb-testimonial__wrap' );
 				const blogPostHeight = selector.offsetHeight;
 				selector.style.height = blogPostHeight + 'px';
 			} );
@@ -68,7 +68,7 @@ window.UAGBTestimonialCarousel = {
 // Set Carousel Height for Customiser.
 // eslint-disable-next-line no-unused-vars
 function uagb_carousel_height( id ) {
-	const wrap = document.querySelector( '#wpwrap .uagb-slick-carousel.uagb-block-' + id );
+	const wrap = document.querySelector( '#wpwrap .uagb-block-' + id + ' .is-carousel' );
 	if ( wrap ) {
 		window.UAGBTestimonialCarousel._setHeight( wrap );
 	}

@@ -211,6 +211,7 @@ const ResponsiveBorder = ( props ) => {
 						value: attributes[ prefix + 'BorderLink' ],
 						label: prefix + 'BorderLink',
 					} }
+					min={ 0 }
 				/>
 			) }
 			{ 'default' !== borderStyle && (
@@ -294,6 +295,7 @@ const ResponsiveBorder = ( props ) => {
 						label: prefix + 'BorderRadiusLink',
 					} }
 					help={ borderRadiusHelp ? borderRadiusHelp : false }
+					min={ 0 }
 				/>
 			) }
 			{ 'none' !== borderStyle && 'default' !== borderStyle && (

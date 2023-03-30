@@ -15,6 +15,7 @@ import Settings from './settings';
 import Render from './render';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { Placeholder, Spinner } from '@wordpress/components';
+import WebfontLoader from '@Components/typography/fontloader';
 
 const PostGridComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -54,6 +55,18 @@ const PostGridComponent = ( props ) => {
 			UAGHideTab,
 			UAGHideMob,
 			postDisplaytext,
+			titleLoadGoogleFonts,
+			titleFontFamily,
+			titleFontWeight,
+			metaLoadGoogleFonts,
+			metaFontFamily,
+			metaFontWeight,
+			excerptLoadGoogleFonts,
+			excerptFontFamily,
+			excerptFontWeight,
+			ctaLoadGoogleFonts,
+			ctaFontFamily,
+			ctaFontWeight,
 		},
 		setAttributes,
 		clientId,
@@ -254,6 +267,48 @@ const PostGridComponent = ( props ) => {
 		);
 	}
 
+	// Load all the Google Fonts for The Post Grid Block.
+	let loadTitleGoogleFonts;
+	let loadMetaGoogleFonts;
+	let loadExcerptGoogleFonts;
+	let loadCtaGoogleFonts;
+
+	if ( titleLoadGoogleFonts === true ) {
+		const titleconfig = {
+			google: {
+				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
+			},
+		};
+		loadTitleGoogleFonts = <WebfontLoader config={ titleconfig }></WebfontLoader>;
+	}
+
+	if ( metaLoadGoogleFonts === true ) {
+		const metaconfig = {
+			google: {
+				families: [ metaFontFamily + ( metaFontWeight ? ':' + metaFontWeight : '' ) ],
+			},
+		};
+		loadMetaGoogleFonts = <WebfontLoader config={ metaconfig }></WebfontLoader>;
+	}
+
+	if ( excerptLoadGoogleFonts === true ) {
+		const excerptconfig = {
+			google: {
+				families: [ excerptFontFamily + ( excerptFontWeight ? ':' + excerptFontWeight : '' ) ],
+			},
+		};
+		loadExcerptGoogleFonts = <WebfontLoader config={ excerptconfig }></WebfontLoader>;
+	}
+
+	if ( ctaLoadGoogleFonts === true ) {
+		const ctaconfig = {
+			google: {
+				families: [ ctaFontFamily + ( ctaFontWeight ? ':' + ctaFontWeight : '' ) ],
+			},
+		};
+		loadCtaGoogleFonts = <WebfontLoader config={ ctaconfig }></WebfontLoader>;
+	}
+
 	return (
 		<>
 			{ isSelected && (
@@ -277,6 +332,10 @@ const PostGridComponent = ( props ) => {
 				replaceInnerBlocks={ replaceInnerBlocks }
 				block={ block }
 			/>
+			{ loadTitleGoogleFonts }
+			{ loadMetaGoogleFonts }
+			{ loadExcerptGoogleFonts }
+			{ loadCtaGoogleFonts }
 		</>
 	);
 };

@@ -2,7 +2,7 @@ import { ToggleControl, SelectControl, ExternalLink } from '@wordpress/component
 import { __ } from '@wordpress/i18n';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
-const { enableConditionsForCoreBlocks } = uagb_blocks_info;
+const { enableConditionsForCoreBlocks, enableResponsiveConditionsForCoreBlocks } = uagb_blocks_info;
 import { useEffect } from '@wordpress/element';
 import classnames from 'classnames';
 
@@ -149,6 +149,7 @@ const UserResponsiveConditionOptions = ( props ) => {
 
 	return (
 		<>
+			<hr className="uagb-editor__separator" />
 			<p className="components-base-control__label">
 				{ __( 'Responsive Conditions', 'ultimate-addons-for-gutenberg' ) }
 			</p>
@@ -227,8 +228,7 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 						<ExternalLink href={ 'https://wpspectra.com/docs/display-conditions-blocks/' }>
 							{ __( 'Filter to disable responsive/display condition. ' ) }
 						</ExternalLink>
-						<hr className="uagb-editor__separator" />
-						{ UserResponsiveConditionOptions( props ) }
+						{ '1' === enableResponsiveConditionsForCoreBlocks && UserResponsiveConditionOptions( props ) }
 						<hr className="uagb-editor__separator" />
 						{ UserConditionOptions( props ) }
 					</InspectorAdvancedControls>

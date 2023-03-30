@@ -16,6 +16,8 @@ export default function Save( props ) {
 		linkClass,
 		width,
 		height,
+		naturalHeight,
+		naturalWidth,
 		align,
 		id,
 		linkTarget,
@@ -37,8 +39,8 @@ export default function Save( props ) {
 			src={ url }
 			alt={ alt }
 			className={ id ? `uag-image-${ id }` : null }
-			width={ width }
-			height={ height }
+			width={ width ? width : naturalWidth }
+			height={ height ? height : naturalHeight }
 			title={ title }
 			loading="lazy"
 		/>

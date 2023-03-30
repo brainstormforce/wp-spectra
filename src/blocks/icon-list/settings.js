@@ -1,4 +1,3 @@
-import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
 import { __ } from '@wordpress/i18n';
 import { select } from '@wordpress/data';
@@ -120,18 +119,6 @@ const Settings = ( props ) => {
 		blockPaddingUnitMobile,
 		blockPaddingLink,
 	} = attributes;
-
-	let googleFonts;
-
-	if ( loadGoogleFonts === true ) {
-		const hconfig = {
-			google: {
-				families: [ fontFamily + ( fontWeight ? ':' + fontWeight : '' ) ],
-			},
-		};
-
-		googleFonts = <WebfontLoader config={ hconfig }></WebfontLoader>;
-	}
 
 	const changeChildAttr = ( value ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
@@ -866,7 +853,6 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			{ googleFonts }
 		</>
 	);
 };
