@@ -1737,6 +1737,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			$alignment_property = explode( ' ', esc_attr( $value ) )[ $pos - 1 ];
+
+			// Return early if alignment propery is not a string.
+			if ( ! is_string( $alignment_property ) ) {
+				return '';
+			}
+		
 			switch ( $format ) {
 				case 'flex':
 					switch ( $alignment_property ) {
