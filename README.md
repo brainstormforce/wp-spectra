@@ -169,7 +169,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 ## Changelog ##
-
 ### x.x.x ###
 * Fix: Container - Heading tags were not inheriting color from theme or container.
 * Fix: Image - width and height tag does not appear when image uploaded.
@@ -177,6 +176,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Typography Control - Removed the capability to set negative values for line-height & font size settings.
 * Fix: Post Carousel - TwentyTwentyone theme hover style override for arrow and dot.
 * Fix: Global - Fonts were not loading in the customizer when Spectra blocks are used in Astra theme's header/footer section.
+* Fix: Advanced Heading - Removed Extra padding in the editor.
 
 ### 2.4.1 - TUESDAY, 28th MARCH 2023 ###
 * Improvement: Updated Spectra to work with WordPress 6.2 and Full Site Editing (FSE) themes.
