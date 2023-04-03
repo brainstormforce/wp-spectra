@@ -1731,8 +1731,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_matrix_alignment( $value, $pos, $format = '' ) {
 
-			// Return early if remote styles is not set.
-			if ( empty( $value ) ) {
+			// Return early if remote styles is not a string.
+			if ( ! is_string( $value ) ) {
 				return '';
 			}
 
