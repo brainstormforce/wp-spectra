@@ -11,15 +11,18 @@ import './style.scss';
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 import PreviewImage from '@Controls/previewImage';
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let columnCommonData = {};
+columnCommonData = applyFilters( 'uagb/column', addCommonDataToSpectraBlocks( columnCommonData ) );
 registerBlockType( 'uagb/column', {
+	...columnCommonData,
 	title: __( 'Column', 'ultimate-addons-for-gutenberg' ),
 	description: __(
 		'Immediate child of Advanced Columns',
 		'ultimate-addons-for-gutenberg'
 	),
 	icon: renderLegacyBlockEditorIcon( 'column' ),
-	category: uagb_blocks_info.category,
 	parent: [ 'uagb/columns' ],
 	supports: {
 		inserter: false,
@@ -27,6 +30,7 @@ registerBlockType( 'uagb/column', {
 		editorsKitBlockNavigator: true,
 	},
 	attributes,
+category: uagb_blocks_info.category,
 	edit: ( props ) =>
 		props.attributes.isPreview ? (
 			<PreviewImage image="advanced-columns-child" isChildren={ true } />
@@ -35,9 +39,4 @@ registerBlockType( 'uagb/column', {
 		),
 	save,
 	deprecated,
-	example: {
-		attributes: {
-			isPreview: true,
-		},
-	},
 } );

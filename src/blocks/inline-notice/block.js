@@ -11,12 +11,16 @@ import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let inlineNoticeCommonData = {};
+inlineNoticeCommonData = applyFilters( 'uagb/inline-notice', addCommonDataToSpectraBlocks( inlineNoticeCommonData ) );
 registerBlockType( 'uagb/inline-notice', {
+	...inlineNoticeCommonData,
 	title: __( 'Inline Notice', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Highlight important information using inline notice block.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.inline_notice,
-	category: uagb_blocks_info.category,
+
 	keywords: [
 		__( 'inline notice', 'ultimate-addons-for-gutenberg' ),
 		__( 'notice', 'ultimate-addons-for-gutenberg' ),
@@ -26,11 +30,7 @@ registerBlockType( 'uagb/inline-notice', {
 		anchor: true,
 	},
 	attributes,
-	example: {
-		attributes: {
-			isPreview: true,
-		}
-	},
+category: uagb_blocks_info.category,
 	deprecated,
 	edit: ( props ) =>
 			props.attributes.isPreview ? (

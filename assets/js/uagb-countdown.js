@@ -1,6 +1,9 @@
+// Global uagb_countdown_data.
 UAGBCountdown = { // eslint-disable-line no-undef
 	elements: {},
 	countdownInterval: {},
+	cookie_slug: uagb_countdown_data.site_name_slug,
+	cache: {},
 
 	editorInit( mainSelector, data = {}, countdownRef ) {
 
@@ -24,11 +27,72 @@ UAGBCountdown = { // eslint-disable-line no-undef
 		}, 1000 );
 	},
 
+	createCookie( name, value, expire_days, unit ) {
+		let expires = '';
+		if ( expire_days ) {
+			const date = new Date();
+			if ( 'minutes' === unit ) {
+				date.setTime( date.getTime() + ( expire_days * 60 * 1000 ) );
+			} else if ( 'hours' === unit ) {
+				date.setTime( date.getTime() + ( expire_days * 60 * 60 * 1000 ) );
+			} else {
+				date.setTime( date.getTime()+( expire_days*24*60*60*1000 ) );
+			}
+			expires = '; expires='+date.toGMTString();
+		}
+
+		document.cookie = this.cookie_slug + '-' + name+'='+value+expires+'; path=/';
+	},
+
+	getCookie( name ) {
+		const value = '; ' + document.cookie;
+		const parts = value.split( '; ' + this.cookie_slug + '-' + name + '=' );
+		if ( parts.length === 2 ) {
+			return parts.pop().split( ';' ).shift();
+		}
+		return '';
+	},
+
 	init( mainSelector, data = {} ) {
 
         this.elements[mainSelector] = this.getElement( mainSelector );
 
         if( typeof this.elements[ mainSelector ] !== 'undefined' ){
+			if ( 'evergreen' === data?.timerType ) {
+				const CampaignID = '' !== data?.campaignID && null !== data?.campaignID ? data.campaignID : data.block_id;
+				this.cache.cookie = this.getCookie( CampaignID );
+				//Check for saved cookie.
+				if ( '' !== this.cache.cookie ) {
+					const currentTimeStamp = new Date;
+					const diff = Math.floor( this.cache.cookie - currentTimeStamp.getTime() );
+					const endTimeStamp = currentTimeStamp.getTime() + diff;
+					const totalDate = new Date( endTimeStamp );
+
+					// Setting enddate as per cookie timestamp.
+					data.endDateTime = totalDate.toISOString().replace( /\.\d{3}Z$/, 'Z' );
+				} else {
+					data.endDateTime = this.getEvergreenEndDate( data.evergreenDays, data.evergreenHrs, data.evergreenMinutes );
+
+					/**
+					 * Setting timestamp and cookie after initial load.
+					 * We are getting values of Hrs. and Minutes. and adding to the current timestamp to get endtime.
+					 */
+					const newDate = new Date;
+					newDate.setTime( newDate.getTime() + ( Math.floor( data.evergreenDays )*24*60*60*1000 ) );
+					newDate.setTime( newDate.getTime() + ( Math.floor( data.evergreenHrs )*60*60*1000 ) );
+					newDate.setTime( newDate.getTime() + ( Math.floor( data.evergreenMinutes )*60*1000 ) );
+
+					// Setting value for cache.
+					this.cache.evergreen = newDate.getTime() + 100;
+					const resetDays = '' !== data?.resetDays && 0 < data.resetDays ? data.resetDays : 30;
+					// Create the cookie for evergreen time.
+					this.createCookie( CampaignID, this.cache.evergreen, resetDays, 'days' );
+				}
+			}
+
+			// Ensures instantaneous load/firing of countdown functionality.
+			this.updateCountdown( mainSelector, data );
+
             this.countdownInterval[ mainSelector ] = setInterval( () => {
                 this.updateCountdown( mainSelector, data );
             }, 1000 );
@@ -42,6 +106,10 @@ UAGBCountdown = { // eslint-disable-line no-undef
 		clearInterval( this.countdownInterval[ mainSelector ] );
 
         if( typeof this.elements[ mainSelector ] !== 'undefined' ){
+
+			// Ensures instantaneous refresh of value.
+			this.updateCountdown( mainSelector, data, true, ref );
+
             this.countdownInterval[ mainSelector ] = setInterval( () => {
                 this.updateCountdown( mainSelector, data, true, ref );
             }, 1000 );
@@ -167,6 +235,12 @@ UAGBCountdown = { // eslint-disable-line no-undef
 			clearInterval( this.countdownInterval[ mainSelector ] );
 		}
 
+    },
+
+	getEvergreenEndDate( days, hours, minutes ) {
+        const now = new Date();
+        const newDate = new Date( now.getTime() + ( days * 24 * 60 + hours * 60 + minutes ) * 60 * 1000 );
+        return newDate.toISOString().replace( /\.\d{3}Z$/, 'Z' );
     }
 
 };

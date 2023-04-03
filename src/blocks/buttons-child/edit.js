@@ -9,6 +9,7 @@ import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
+import WebfontLoader from '@Components/typography/fontloader';
 
 import Settings from './settings';
 import Render from './render';
@@ -26,6 +27,9 @@ const ButtonsChildComponent = ( props ) => {
 			borderRadius,
 			borderColor,
 			borderHColor,
+			loadGoogleFonts,
+			fontFamily,
+			fontWeight
 		},
 		setAttributes,
 	} = props;
@@ -76,6 +80,22 @@ const ButtonsChildComponent = ( props ) => {
 		scrollBlockToView();
 	}, [deviceType] );
 
+	let loadBtnGoogleFonts;
+
+	if ( loadGoogleFonts === true ) {
+		const btnconfig = {
+			google: {
+				families: [
+					fontFamily + ( fontWeight ? ':' + fontWeight : '' ),
+				],
+			},
+		};
+
+		loadBtnGoogleFonts = (
+			<WebfontLoader config={ btnconfig }></WebfontLoader>
+		);
+	}
+
 	return (
 		<>
 			{ isSelected && (
@@ -87,6 +107,7 @@ const ButtonsChildComponent = ( props ) => {
 				/>
 			) }
 			<Render parentProps={ props } />
+			{ loadBtnGoogleFonts }
 		</>
 	);
 };

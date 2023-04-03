@@ -13,12 +13,15 @@ import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let tabsCommonData = {};
+tabsCommonData = applyFilters( 'uagb/tabs', addCommonDataToSpectraBlocks( tabsCommonData ) );
 registerBlockType( 'uagb/tabs', {
+	...tabsCommonData,
 	title: __( 'Tabs', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Display your content under different tabs.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.tabs,
-	category: uagb_blocks_info.category,
 	keywords: [
 		__( 'tabs', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
@@ -27,6 +30,7 @@ registerBlockType( 'uagb/tabs', {
 		anchor: true,
 	},
 	attributes,
+category: uagb_blocks_info.category,
 	edit: ( props ) =>
 			props.attributes.isPreview ? (
 				<PreviewImage image="tabs" />
@@ -35,9 +39,4 @@ registerBlockType( 'uagb/tabs', {
 			),
 	save,
 	deprecated,
-	example: {
-		attributes: {
-			isPreview: true,
-		}
-	},
 } );

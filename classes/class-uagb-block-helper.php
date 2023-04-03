@@ -1831,5 +1831,72 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			preg_match( '/^-?\d+(?:\.\d{0,2})?/', strval( 100 / $divisions ), $matches );
 			return floatval( $matches[0] ) . '%';
 		}
+
+		/**
+		 * Generate the Box Shadow or Text Shadow CSS.
+		 * 
+		 * For Text Shadow CSS:
+		 * ( 'spread', 'position' ) should not be sent as params during the function call.
+		 * ( 'spread_unit' ) will have no effect.
+		 * 
+		 * For Box/Text Shadow Hover CSS:
+		 * ( 'alt_color' ) should be set as the attribute used for ( 'color' ) in Box/Text Shadow Normal CSS.
+		 *
+		 * @param array $shadow_properties  Array containing the necessary shadow properties.
+		 * @return string                   The generated border CSS or an empty string on early return.
+		 *
+		 * @since x.x.x
+		 */
+		public static function generate_shadow_css( $shadow_properties ) {
+			// Get the Object Properties.
+			$horizontal      = isset( $shadow_properties['horizontal'] ) ? $shadow_properties['horizontal'] : '';
+			$vertical        = isset( $shadow_properties['vertical'] ) ? $shadow_properties['vertical'] : '';
+			$blur            = isset( $shadow_properties['blur'] ) ? $shadow_properties['blur'] : '';
+			$spread          = isset( $shadow_properties['spread'] ) ? $shadow_properties['spread'] : '';
+			$horizontal_unit = isset( $shadow_properties['horizontal_unit'] ) ? $shadow_properties['horizontal_unit'] : 'px';
+			$vertical_unit   = isset( $shadow_properties['vertical_unit'] ) ? $shadow_properties['vertical_unit'] : 'px';
+			$blur_unit       = isset( $shadow_properties['blur_unit'] ) ? $shadow_properties['blur_unit'] : 'px';
+			$spread_unit     = isset( $shadow_properties['spread_unit'] ) ? $shadow_properties['spread_unit'] : 'px';
+			$color           = isset( $shadow_properties['color'] ) ? $shadow_properties['color'] : '';
+			$position        = isset( $shadow_properties['position'] ) ? $shadow_properties['position'] : 'outset';
+			$alt_color       = isset( $shadow_properties['alt_color'] ) ? $shadow_properties['alt_color'] : '';
+
+			// Although optional, color is required for Sarafi on PC. Return early if color isn't set.
+			if ( ! $color && ! $alt_color ) {
+				return '';
+			}
+
+			// Get the CSS units for the number properties.
+
+			$horizontal = UAGB_Helper::get_css_value( $horizontal, $horizontal_unit );
+			if ( '' === $horizontal ) {
+				$horizontal = 0;
+			}
+
+			$vertical = UAGB_Helper::get_css_value( $vertical, $vertical_unit );
+			if ( '' === $vertical ) {
+				$vertical = 0;
+			}
+
+			$blur = UAGB_Helper::get_css_value( $blur, $blur_unit );
+			if ( '' === $blur ) {
+				$blur = 0;
+			}
+
+			$spread = UAGB_Helper::get_css_value( $spread, $spread_unit );
+			if ( '' === $spread ) {
+				$spread = 0;
+			}
+
+			// If all numeric unit values are exactly 0, don't render the CSS.
+			if ( ( 0 === $horizontal && 0 === $vertical ) && ( 0 === $blur && 0 === $spread ) ) {
+				return '';
+			}
+			
+			// Return the CSS with horizontal, vertical, blur, and color - and conditionally render spread and position.
+			return (
+				$horizontal . ' ' . $vertical . ' ' . $blur . ( $spread ? " {$spread}" : '' ) . ' ' . ( $color ? $color : $alt_color ) . ( 'outset' === $position ? '' : " {$position}" )
+			);
+		}
 	}
 }

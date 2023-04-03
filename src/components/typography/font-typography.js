@@ -144,6 +144,7 @@ function FontFamilyControl( props ) {
 				sizeTabletLabel={ props.fontSizeTablet.label }
 				size={ props.fontSize }
 				sizeLabel={ props.fontSize.label }
+				min={ 0 }
 				sizeMobileText={
 					! props.fontSizeLabel
 						? __( 'Font Size', 'ultimate-addons-for-gutenberg' )

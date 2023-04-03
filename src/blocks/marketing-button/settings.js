@@ -3,7 +3,6 @@ import UAGIconPicker from '@Components/icon-picker';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import TypographyControl from '@Components/typography';
-import WebfontLoader from '@Components/typography/fontloader';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -128,40 +127,6 @@ const Settings = ( props ) => {
 		prefixLetterSpacingMobile,
 		prefixLetterSpacingType,
 	} = attributes;
-
-	// Load Google fonts for heading.
-	let loadTitleGoogleFonts;
-	if ( titleLoadGoogleFonts === true ) {
-		const titleconfig = {
-			google: {
-				families: [
-					titleFontFamily +
-						( titleFontWeight ? ':' + titleFontWeight : '' ),
-				],
-			},
-		};
-
-		loadTitleGoogleFonts = (
-			<WebfontLoader config={ titleconfig }></WebfontLoader>
-		);
-	}
-
-	// Load Google fonts for prefix.
-	let loadPrefixGoogleFonts;
-	if ( prefixLoadGoogleFonts === true ) {
-		const prefixconfig = {
-			google: {
-				families: [
-					prefixFontFamily +
-						( prefixFontWeight ? ':' + prefixFontWeight : '' ),
-				],
-			},
-		};
-
-		loadPrefixGoogleFonts = (
-			<WebfontLoader config={ prefixconfig }></WebfontLoader>
-		);
-	}
 
 	const generalSettings = () => {
 		return (
@@ -1178,8 +1143,6 @@ const Settings = ( props ) => {
 					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			{ loadTitleGoogleFonts }
-			{ loadPrefixGoogleFonts }
 			</>
 	);
 };
