@@ -1725,9 +1725,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $value  Alignment Matrix value.
 		 * @param int    $pos    Human readable position.
 		 * @param string $format Response format.
+		 * @return string        The formatted Matrix Alignment.
+		 *
 		 * @since 2.1.0
 		 */
 		public static function get_matrix_alignment( $value, $pos, $format = '' ) {
+
+			// Return early if remote styles is not set.
+			if ( empty( $value ) ) {
+				return '';
+			}
+
 			$alignment_property = explode( ' ', esc_attr( $value ) )[ $pos - 1 ];
 			switch ( $format ) {
 				case 'flex':

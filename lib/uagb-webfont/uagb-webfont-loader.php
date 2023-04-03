@@ -440,12 +440,22 @@ if ( ! class_exists( 'UAGB_WebFont_Loader' ) ) {
 		 */
 		public function get_remote_files_from_css() {
 
+			// Return early if remote styles is not set.
+			if ( empty( $this->remote_styles ) ) {
+				return array();
+			}
+
 			$font_faces = explode( '@font-face', $this->remote_styles );
 
 			$result = array();
 
 			// Loop all our font-face declarations.
 			foreach ( $font_faces as $font_face ) {
+
+				// Continue the loop if the current font face is not set.
+				if ( empty( $font_face ) ) {
+					continue;
+				}
 
 				// Make sure we only process styles inside this declaration.
 				$style = explode( '}', $font_face )[0];
