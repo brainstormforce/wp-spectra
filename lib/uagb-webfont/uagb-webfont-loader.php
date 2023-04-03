@@ -440,8 +440,8 @@ if ( ! class_exists( 'UAGB_WebFont_Loader' ) ) {
 		 */
 		public function get_remote_files_from_css() {
 
-			// Return early if remote styles is not a string.
-			if ( ! is_string( $this->remote_styles ) ) {
+			// Return early if remote styles is not a string, or is empty.
+			if ( ! is_string( $this->remote_styles ) || empty( $this->remote_styles ) ) {
 				return array();
 			}
 
@@ -452,8 +452,8 @@ if ( ! class_exists( 'UAGB_WebFont_Loader' ) ) {
 			// Loop all our font-face declarations.
 			foreach ( $font_faces as $font_face ) {
 
-				// Continue the loop if the current font face is not a string.
-				if ( ! is_string( $font_face ) ) {
+				// Continue the loop if the current font face is not a string, or is empty.
+				if ( ! is_string( $font_face ) || empty( $font_face ) ) {
 					continue;
 				}
 
