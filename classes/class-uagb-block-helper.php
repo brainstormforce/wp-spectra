@@ -1731,7 +1731,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_matrix_alignment( $value, $pos, $format = '' ) {
 
-			// Return early if remote styles is not a string, or is empty.
+			// Return early if remote styles is not a string, or is empty, of if the position is not an integer.
 			if ( ! is_string( $value ) || empty( $value ) || ! is_int( $pos ) ) {
 				return '';
 			}
