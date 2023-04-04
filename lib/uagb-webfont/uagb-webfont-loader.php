@@ -447,7 +447,7 @@ if ( ! class_exists( 'UAGB_WebFont_Loader' ) ) {
 
 			$font_faces = explode( '@font-face', $this->remote_styles );
 
-			// Return early if font faces is not an array.
+			// Return early if font faces is not an array, or is empty.
 			if ( ! is_array( $font_faces ) || empty( $font_faces ) ) {
 				return array();
 			}

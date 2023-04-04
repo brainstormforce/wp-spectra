@@ -1738,7 +1738,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$alignment_array = explode( ' ', esc_attr( $value ) );
 
-			// Return early if alignment propery is not a string.
+			// Return early if alignment propery at the given position is not a string, or is empty.
 			if ( ! is_string( $alignment_array[ $pos - 1 ] ) || empty( $alignment_array[ $pos - 1 ] ) ) {
 				return '';
 			}
