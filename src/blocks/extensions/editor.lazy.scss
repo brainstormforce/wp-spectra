@@ -159,3 +159,15 @@
 		}
 	}
 }
+
+// Help tooltip needs readjustment since we are using markers here.
+.block-editor-block-inspector .uagb-inspector-tab div.uagb-animation__range-control-wrapper {
+
+	div.components-base-control {
+
+		p.components-base-control__help {
+			margin-top: 20px;
+		}
+	}
+
+}
