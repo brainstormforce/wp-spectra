@@ -1736,12 +1736,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				return '';
 			}
 
-			$alignment_property = explode( ' ', esc_attr( $value ) )[ $pos - 1 ];
+			$alignment_array = explode( ' ', esc_attr( $value ) );
 
 			// Return early if alignment propery is not a string.
-			if ( ! is_string( $alignment_property ) ) {
+			if ( ! is_string( $alignment_array[ $pos - 1 ] ) || empty( $alignment_array[ $pos - 1 ] ) ) {
 				return '';
 			}
+
+			$alignment_property = $alignment_array[ $pos - 1 ];
 		
 			switch ( $format ) {
 				case 'flex':
