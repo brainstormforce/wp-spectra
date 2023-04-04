@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .edit-post-visual-editor .wp-block-gallery.uag-masonry {
 
 	/* For Backword */
@@ -159,10 +161,24 @@
 		}
 	}
 
+	// Animation Type - Options heading.
 	.uagb-animation-type-select__group-heading {
-		font-weight: 700;
-		font-size: 80%;
+		font-weight: 600;
+		font-size: 95%;
+		color: #1d2327;
 	}
+
+	// Animation Type - Options styling.
+	.uagb-animation-type-select__option {
+		color: #50575e;
+		padding: 8px 20px;
+
+		&--is-selected,
+		&--is-focused {
+			background-color: #dcf2ff;
+		}
+	}
+
 }
 
 // Help tooltip needs readjustment since we are using markers here.
