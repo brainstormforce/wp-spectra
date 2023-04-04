@@ -281,49 +281,6 @@ const animationOptions = ( props ) => {
 		setAttributes
 	} = props;
 
-	// // Recommended way to set most of the styling for the 
-	// const customSelectStyles = {
-	// 	// container: ( provided ) => ( {
-	// 	// 	...provided,
-	// 	// 	width: '100%',
-	// 	// } ),
-	// 	// control: ( provided ) => ( {
-	// 	// 	...provided,
-	// 	// 	border: '1px solid #E6E7E9',
-	// 	// 	boxShadow: 'none',
-	// 	// 	height: '30px',
-	// 	// 	minHeight: '30px',
-	// 	// 	borderRadius: '3px',
-	// 	// } ),
-	// 	// placeholder: ( provided ) => ( {
-	// 	// 	...provided,
-	// 	// 	color: '#50575E',
-	// 	// } ),
-	// 	// menu: ( provided ) => ( {
-	// 	// 	...provided,
-	// 	// 	color: '#50575E',
-	// 	// } ),
-	// 	// singleValue: ( provided ) => ( {
-	// 	// 	...provided,
-	// 	// 	color: '#50575E',
-	// 	// 	top: '50%',
-	// 	// 	transform: 'translateY(-50%);',
-	// 	// } ),
-	// 	// indicatorSeparator: ( provided ) => ( {
-	// 	// 	...provided,
-	// 	// 	display: 'none',
-	// 	// } ),
-	// 	// dropdownIndicator: ( provided ) => ( {
-	// 	// 	...provided,
-	// 	// 	color: '#50575E',
-	// 	// } ),
-	// 	// valueContainer: ( provided ) => ( {
-	// 	// 	...provided,
-	// 	// 	height: '30px',
-	// 	// 	padding: '0px 8px',
-	// 	// } ),
-	// }
-
 	// Get the easing functions from Pro.
 	const AnimationEasingFunctions = applyFilters( 'spectra.animations-extension.easing-pro-options', '', name );
 
