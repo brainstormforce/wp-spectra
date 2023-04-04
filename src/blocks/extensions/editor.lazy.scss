@@ -123,7 +123,7 @@
 
 	.uagb-animation-type-select__control {
 		cursor: pointer;
-		border: 1px solid #e6e7e9;
+		border: 1px solid $spectra-color-border ;
 		box-shadow: none;
 		height: 30px;
 		min-height: 30px;
@@ -140,7 +140,7 @@
 
 	.uagb-animation-type-select__dropdown-indicator {
 
-		color: #50575e;
+		color: $spectra-color-body;
 		padding-left: 6px;
 
 		svg {
@@ -165,17 +165,17 @@
 	.uagb-animation-type-select__group-heading {
 		font-weight: 600;
 		font-size: 95%;
-		color: #1d2327;
+		color: $spectra-color-heading;
 	}
 
 	// Animation Type - Options styling.
 	.uagb-animation-type-select__option {
-		color: #50575e;
+		color: $spectra-color-body;
 		padding: 8px 20px;
 
 		&--is-selected,
 		&--is-focused {
-			background-color: #dcf2ff;
+			background-color: $spectra-color-tab-background;
 		}
 	}
 
