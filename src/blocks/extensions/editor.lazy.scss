@@ -102,3 +102,60 @@
 	}
 
 }
+
+// Animation Type - Searchable Select Control CSS.
+.uagb-animation-type-searchable-select {
+
+	& input[type='text']:focus {
+		box-shadow: unset;
+	}
+
+	.uagb-animation-type-select__container {
+		width: 100%;
+	}
+
+	.uagb-animation-type-select__input input {
+		box-shadow: none;
+		border: none;
+	}
+
+	.uagb-animation-type-select__control {
+		cursor: pointer;
+		border: 1px solid #E6E7E9;
+		box-shadow: none;
+		height: 30px;
+		min-height: 30px;
+		border-radius: 3px;
+	}
+
+	.uagb-animation-type-select__menu {
+		z-index: 99999;
+	}
+
+	.uagb-animation-type-select__indicator-separator {
+		display: none;
+	}
+
+	.uagb-animation-type-select__dropdown-indicator {
+
+		color: #50575E;
+		padding-left: 6px;
+
+		svg {
+			height: 14px;
+			width: 14px;
+		}
+	}
+
+	.uagb-animation-type-select__value-container {
+
+		top: 0;
+		height: 30px;
+		padding: 0px 8px;
+
+		> div {
+			margin: 0;
+			padding: 0;
+		}
+	}
+}
