@@ -106,7 +106,7 @@
 // Animation Type - Searchable Select Control CSS.
 .uagb-animation-type-searchable-select {
 
-	& input[type='text']:focus {
+	& input[type="text"]:focus {
 		box-shadow: unset;
 	}
 
@@ -121,7 +121,7 @@
 
 	.uagb-animation-type-select__control {
 		cursor: pointer;
-		border: 1px solid #E6E7E9;
+		border: 1px solid #e6e7e9;
 		box-shadow: none;
 		height: 30px;
 		min-height: 30px;
@@ -138,7 +138,7 @@
 
 	.uagb-animation-type-select__dropdown-indicator {
 
-		color: #50575E;
+		color: #50575e;
 		padding-left: 6px;
 
 		svg {
@@ -151,7 +151,7 @@
 
 		top: 0;
 		height: 30px;
-		padding: 0px 8px;
+		padding: 0 8px;
 
 		> div {
 			margin: 0;
