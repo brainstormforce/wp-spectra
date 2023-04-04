@@ -169,6 +169,11 @@
 		color: $spectra-color-body;
 		padding: 8px 20px;
 
+		// This specifically styles the 'None' option.
+		&[id$="option-0"] {
+			padding-left: 12px;
+		}
+
 		&--is-selected,
 		&--is-focused {
 			background-color: $spectra-color-tab-background;
