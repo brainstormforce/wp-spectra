@@ -476,10 +476,14 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 
 			const excludeDeprecatedBlocks = ['uagb/cf7-styler','uagb/wp-search', 'uagb/gf-styler', 'uagb/columns', 'uagb/section'];
 
+			const excludeBlocksAnimations = [ 'uagb/content-timeline-child' ];
+
 			if( isSelected && ! excludeBlocks.includes( name ) ) {
 				return (
 					<>
 					{ 'enabled' === enableAnimationsExtension &&
+						! excludeDeprecatedBlocks.includes( name ) &&
+						! excludeBlocksAnimations.includes( name ) &&
 						<UAGAdvancedPanelBody
 							title={ __( 'Animations', 'ultimate-addons-for-gutenberg' ) }
 							initialOpen={ true }
