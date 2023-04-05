@@ -397,9 +397,14 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 					$content_width = intval( $content_width_third_party );
 					self::update_admin_settings_option( 'uag_content_width_set_by', __( 'Filter added through any 3rd Party Theme/Plugin.', 'ultimate-addons-for-gutenberg' ) );
 				}
+				if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
+					$settings      = wp_get_global_settings();
+					$content_width = intval( $settings['layout']['contentSize'] );
+					self::update_admin_settings_option( 'uag_content_width_set_by', __( "Full Site Editor's Global Styles", 'ultimate-addons-for-gutenberg' ) );
+				}
 			}
 
-			return $content_width;
+			return '' === $content_width ? 1140 : $content_width;
 		}
 	}
 
