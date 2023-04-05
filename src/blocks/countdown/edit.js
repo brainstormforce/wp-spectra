@@ -171,11 +171,14 @@ const UAGBCountdownEdit = ( props ) => {
 		);
 	}
 
+	// Hooks cannot be applied within conditional renders, so we pre-fetch the value.
+	const countdownToolbar = applyFilters( 'spectra.countdown.toolbar-hook', '', props.name );
+
 	return (
 		<>
 			{/* Countdown Toolbar options for Pro (Replace feature) */}
 			{ ( props.attributes.timerEndAction === 'content' ) &&
-				applyFilters( 'spectra.countdown.toolbar-hook', '', props.name )
+				countdownToolbar
 			}
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render countdownRef={ countdownRef } parentProps={ props } />
