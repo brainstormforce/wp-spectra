@@ -478,12 +478,32 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 
 			const excludeBlocksAnimations = [ 'uagb/content-timeline-child' ];
 
+			const getParentBlocks = wp.data.select( 'core/block-editor' ).getBlockParents( props.clientId );
+
+			let notHasDisallowedParentForAnimations = true;
+
+			// Currently we are disallowing animations feature in Tabs block.
+			if ( getParentBlocks.length ) {
+
+				for ( let i = 0; i < getParentBlocks.length; i++ ) {
+
+					const currentParent =  wp.data.select( 'core/block-editor' ).getBlock( getParentBlocks[i] );
+	
+					if( currentParent.name === 'uagb/tabs' || currentParent.name === 'uagb/tabs-child' ) {
+						notHasDisallowedParentForAnimations = false;
+						break;
+					}
+					
+				}
+			}
+
 			if( isSelected && ! excludeBlocks.includes( name ) ) {
 				return (
 					<>
 					{ 'enabled' === enableAnimationsExtension &&
 						! excludeDeprecatedBlocks.includes( name ) &&
 						! excludeBlocksAnimations.includes( name ) &&
+						notHasDisallowedParentForAnimations &&
 						<UAGAdvancedPanelBody
 							title={ __( 'Animations', 'ultimate-addons-for-gutenberg' ) }
 							initialOpen={ true }
