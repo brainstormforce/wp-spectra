@@ -125,9 +125,9 @@
 		cursor: pointer;
 		border: 1px solid $spectra-color-border;
 		box-shadow: none;
-		height: 30px;
-		min-height: 30px;
-		border-radius: 3px;
+		height: $spectra-control-input-height;
+		min-height: $spectra-control-input-height;
+		border-radius: $spectra-control-border-radius;
 	}
 
 	.uagb-animation-type-select__indicator-separator {
@@ -148,7 +148,7 @@
 	.uagb-animation-type-select__value-container {
 
 		top: 0;
-		height: 30px;
+		height: $spectra-control-input-height;
 		padding: 0 8px;
 
 		> div {
