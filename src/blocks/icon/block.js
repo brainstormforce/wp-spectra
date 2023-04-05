@@ -12,13 +12,16 @@ import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
-
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+let iconCommonData = {};
+iconCommonData = applyFilters( 'uagb/icon', addCommonDataToSpectraBlocks( iconCommonData ) );
 registerBlockType( 'uagb/icon', {
+	...iconCommonData,
 	apiVersion: 2,
 	title: __( 'Icon', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add stunning customizable icons to your website.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.icon,
-	category: uagb_blocks_info.category,
 	keywords: [
 		// More keywords can be added.
 		__( 'icon', 'ultimate-addons-for-gutenberg' ),
@@ -27,12 +30,8 @@ registerBlockType( 'uagb/icon', {
 	supports: {
 		anchor: true,
 	},
-	example: {
-		attributes: {
-			isPreview: true,
-		}
-	},
 	attributes,
+category: uagb_blocks_info.category,
 	edit: ( props ) =>
 			props.attributes.isPreview ? (
 				<PreviewImage image="icon" />

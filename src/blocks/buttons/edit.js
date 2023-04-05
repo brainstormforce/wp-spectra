@@ -9,6 +9,7 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
+import WebfontLoader from '@Components/typography/fontloader';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 let prevState;
@@ -19,7 +20,7 @@ const ButtonsComponent = ( props ) => {
 	const {
 		isSelected,
 		attributes,
-		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob, loadGoogleFonts, fontFamily, fontWeight },
 		setAttributes,
 		clientId
 	} = props;
@@ -69,10 +70,28 @@ const ButtonsComponent = ( props ) => {
 
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
+	
+	let loadBtnGoogleFonts;
+
+	if ( loadGoogleFonts === true ) {
+		const btnconfig = {
+			google: {
+				families: [
+					fontFamily + ( fontWeight ? ':' + fontWeight : '' ),
+				],
+			},
+		};
+
+		loadBtnGoogleFonts = (
+			<WebfontLoader config={ btnconfig }></WebfontLoader>
+		);
+	}
+
 	return (
 		<>
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
+			{ loadBtnGoogleFonts }
 		</>
 	);
 };

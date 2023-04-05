@@ -11,6 +11,7 @@ import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import WebfontLoader from '@Components/typography/fontloader';
 
 const UAGBRestaurantMenu = ( props ) => {
 	const deviceType = useDeviceType();
@@ -25,6 +26,15 @@ const UAGBRestaurantMenu = ( props ) => {
 			UAGHideTab,
 			UAGHideMob,
 			showImage,
+			titleLoadGoogleFonts,
+			titleFontFamily,
+			titleFontWeight,
+			descLoadGoogleFonts,
+			descFontFamily,
+			descFontWeight,
+			priceLoadGoogleFonts,
+			priceFontFamily,
+			priceFontWeight
 		},
 		setAttributes,
 		clientId,
@@ -94,10 +104,62 @@ const UAGBRestaurantMenu = ( props ) => {
             } );
 	}, [ showImage ] );
 
+	let loadTitleGoogleFonts;
+	let loadDescGoogleFonts;
+	let loadPriceGoogleFonts;
+
+	if ( titleLoadGoogleFonts === true ) {
+		const titleconfig = {
+			google: {
+				families: [
+					titleFontFamily +
+						( titleFontWeight ? ':' + titleFontWeight : '' ),
+				],
+			},
+		};
+
+		loadTitleGoogleFonts = (
+			<WebfontLoader config={ titleconfig }></WebfontLoader>
+		);
+	}
+
+	if ( descLoadGoogleFonts === true ) {
+		const descconfig = {
+			google: {
+				families: [
+					descFontFamily +
+						( descFontWeight ? ':' + descFontWeight : '' ),
+				],
+			},
+		};
+
+		loadDescGoogleFonts = (
+			<WebfontLoader config={ descconfig }></WebfontLoader>
+		);
+	}
+
+	if ( priceLoadGoogleFonts === true ) {
+		const priceconfig = {
+			google: {
+				families: [
+					priceFontFamily +
+						( priceFontWeight ? ':' + priceFontWeight : '' ),
+				],
+			},
+		};
+
+		loadPriceGoogleFonts = (
+			<WebfontLoader config={ priceconfig }></WebfontLoader>
+		);
+	}
+
 	return (
 			<>
 			{ isSelected && <Settings parentProps={ props } /> }
 				<Render parentProps={ props } />
+				{ loadTitleGoogleFonts }
+				{ loadDescGoogleFonts }
+				{ loadPriceGoogleFonts }
 			</>
 	);
 };

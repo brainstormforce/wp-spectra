@@ -440,15 +440,38 @@ if ( ! class_exists( 'UAGB_WebFont_Loader' ) ) {
 		 */
 		public function get_remote_files_from_css() {
 
+			// Return early if remote styles is not a string, or is empty.
+			if ( ! is_string( $this->remote_styles ) || empty( $this->remote_styles ) ) {
+				return array();
+			}
+
 			$font_faces = explode( '@font-face', $this->remote_styles );
+
+			// Return early if font faces is not an array, or is empty.
+			if ( ! is_array( $font_faces ) || empty( $font_faces ) ) {
+				return array();
+			}
 
 			$result = array();
 
 			// Loop all our font-face declarations.
 			foreach ( $font_faces as $font_face ) {
 
+				// Continue the loop if the current font face is not a string, or is empty.
+				if ( ! is_string( $font_face ) || empty( $font_face ) ) {
+					continue;
+				}
+
+				// Get the styles based on the font face.
+				$style_array = explode( '}', $font_face );
+
+				// Continue the loop if the current font face is not a string, or is empty.
+				if ( ! is_string( $style_array[0] ) || empty( $style_array[0] ) ) {
+					continue;
+				}
+
 				// Make sure we only process styles inside this declaration.
-				$style = explode( '}', $font_face )[0];
+				$style = $style_array[0];
 
 				// Sanity check.
 				if ( false === strpos( $style, 'font-family' ) ) {

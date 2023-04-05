@@ -975,7 +975,6 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'desc-color'
 		},
-		default: 'inherit',
 	},
 	linkColor: {
 		type: 'string',

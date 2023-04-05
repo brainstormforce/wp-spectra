@@ -174,6 +174,7 @@ return array_merge(
 		'boxBgColor'                   => '',
 		// Box - Box Shadow.
 		// Box Shadow.
+		'useSeparateBoxShadows'        => true,
 		'boxShadowColor'               => '#00000070',
 		'boxShadowHOffset'             => 0,
 		'boxShadowVOffset'             => 0,

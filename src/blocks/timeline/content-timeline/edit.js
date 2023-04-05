@@ -11,6 +11,7 @@ import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import WebfontLoader from '@Components/typography/fontloader';
 
 const ContentTimelineComponent = ( props ) => {
     const deviceType = useDeviceType();
@@ -25,6 +26,15 @@ const ContentTimelineComponent = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
+			headLoadGoogleFonts,
+			headFontFamily,
+			headFontWeight,
+			subHeadLoadGoogleFonts,
+			subHeadFontFamily,
+			subHeadFontWeight,
+			dateLoadGoogleFonts,
+			dateFontFamily,
+			dateFontWeight,
 		},
 		isSelected,
 	} = props;
@@ -151,10 +161,60 @@ const ContentTimelineComponent = ( props ) => {
 		scrollBlockToView();
 	}, [deviceType] );
 
+	// Load all the Google Fonts for The Content Timeline Block.
+	let loadHeadGoogleFonts;
+	let loadSubHeadGoogleFonts;
+	let loadDateGoogleFonts;
+
+	if ( headLoadGoogleFonts === true ) {
+		const headconfig = {
+			google: {
+				families: [
+					headFontFamily +
+						( headFontWeight ? ':' + headFontWeight : '' ),
+				],
+			},
+		};
+		loadHeadGoogleFonts = (
+			<WebfontLoader config={ headconfig }></WebfontLoader>
+		);
+	}
+
+	if ( subHeadLoadGoogleFonts === true ) {
+		const subHeadconfig = {
+			google: {
+				families: [
+					subHeadFontFamily +
+						( subHeadFontWeight ? ':' + subHeadFontWeight : '' ),
+				],
+			},
+		};
+		loadSubHeadGoogleFonts = (
+			<WebfontLoader config={ subHeadconfig }></WebfontLoader>
+		);
+	}
+
+	if ( dateLoadGoogleFonts === true ) {
+		const dateconfig = {
+			google: {
+				families: [
+					dateFontFamily +
+						( dateFontWeight ? ':' + dateFontWeight : '' ),
+				],
+			},
+		};
+		loadDateGoogleFonts = (
+			<WebfontLoader config={ dateconfig }></WebfontLoader>
+		);
+	}
+
     return (
 		<>
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
+			{ loadHeadGoogleFonts }
+			{ loadSubHeadGoogleFonts }
+			{ loadDateGoogleFonts }
 		</>
 	);
 };
