@@ -1746,10 +1746,26 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $value  Alignment Matrix value.
 		 * @param int    $pos    Human readable position.
 		 * @param string $format Response format.
+		 * @return string        The formatted Matrix Alignment.
+		 *
 		 * @since 2.1.0
 		 */
 		public static function get_matrix_alignment( $value, $pos, $format = '' ) {
-			$alignment_property = explode( ' ', esc_attr( $value ) )[ $pos - 1 ];
+
+			// Return early if remote styles is not a string, or is empty, of if the position is not an integer.
+			if ( ! is_string( $value ) || empty( $value ) || ! is_int( $pos ) ) {
+				return '';
+			}
+
+			$alignment_array = explode( ' ', esc_attr( $value ) );
+
+			// Return early if alignment propery at the given position is not a string, or is empty.
+			if ( ! is_string( $alignment_array[ $pos - 1 ] ) || empty( $alignment_array[ $pos - 1 ] ) ) {
+				return '';
+			}
+
+			$alignment_property = $alignment_array[ $pos - 1 ];
+		
 			switch ( $format ) {
 				case 'flex':
 					switch ( $alignment_property ) {
