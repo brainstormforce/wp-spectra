@@ -821,6 +821,13 @@ const Background = ( props ) => {
 											props.backgroundGradient
 										}
 										setAttributes={ setAttributes }
+										gradientType={ props.gradientType }	
+										backgroundGradientColor2={ props.backgroundGradientColor2 }
+										backgroundGradientColor1={ props.backgroundGradientColor1 }
+										backgroundGradientType={ props.backgroundGradientType }
+										backgroundGradientLocation1={ props.backgroundGradientLocation1 }
+										backgroundGradientLocation2={ props.backgroundGradientLocation2 }
+										backgroundGradientAngle= {props.backgroundGradientAngle}
 									/>
 								</div>
 							) }
@@ -832,7 +839,14 @@ const Background = ( props ) => {
 				<div className="uag-background-gradient">
 					<GradientSettings
 						backgroundGradient={ props.backgroundGradient }
+						gradientType={ props.gradientType }	
 						setAttributes={ props.setAttributes }
+						backgroundGradientColor2={ props.backgroundGradientColor2 }
+						backgroundGradientColor1={ props.backgroundGradientColor1 }
+						backgroundGradientType={ props.backgroundGradientType }
+						backgroundGradientLocation1={ props.backgroundGradientLocation1 }
+						backgroundGradientLocation2={ props.backgroundGradientLocation2 }
+						backgroundGradientAngle= { props.backgroundGradientAngle }
 					/>
 				</div>
 			) }
@@ -900,6 +914,13 @@ const Background = ( props ) => {
 												props.backgroundGradient
 											}
 											setAttributes={ setAttributes }
+											gradientType={ props.gradientType }	
+											backgroundGradientColor2={ props.backgroundGradientColor2 }
+											backgroundGradientColor1={ props.backgroundGradientColor1 }
+											backgroundGradientType={ props.backgroundGradientType }
+											backgroundGradientLocation1={ props.backgroundGradientLocation1 }
+											backgroundGradientLocation2={ props.backgroundGradientLocation2 }
+											backgroundGradientAngle= {props.backgroundGradientAngle}
 										/>
 									</div>
 								) }

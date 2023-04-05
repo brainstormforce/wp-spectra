@@ -91,6 +91,20 @@ const Settings = ( props ) => {
 		hoverbackgroundType,
 		gradientValue,
 		hovergradientValue,
+		hovergradientColor1,
+		hoverselectGradient,
+		hovergradientColor2,
+		hovergradientLocation1,
+		hovergradientLocation2,
+		hovergradientType,
+		hovergradientAngle,
+		gradientColor1,
+		gradientColor2,
+		gradientLocation1,
+		gradientLocation2,
+		gradientType,
+		gradientAngle,
+		selectGradient,
 		topMargin,
 		rightMargin,
 		bottomMargin,
@@ -470,6 +484,34 @@ const Settings = ( props ) => {
 											value: gradientValue,
 											label: 'gradientValue',
 										}}
+										backgroundGradientColor1={{
+											value: gradientColor1,
+											label: 'gradientColor1'
+										}}
+										gradientType={{
+											value: selectGradient,
+											label: 'selectGradient',
+										}}
+										backgroundGradientColor2={{
+											value: 	gradientColor2,
+											label: 'gradientColor2'
+										}}
+										backgroundGradientLocation1={{
+											value: 	gradientLocation1,
+											label: 'gradientLocation1'
+										}}
+										backgroundGradientLocation2={{
+											value: 	gradientLocation2,
+											label: 'gradientLocation2'
+										}}
+										backgroundGradientType={{
+											value: 	gradientType,
+											label: 'gradientType'
+										}}
+										backgroundGradientAngle={{
+											value: 	gradientAngle,
+											label: 'gradientAngle'
+										}}
 										setAttributes={ setAttributes }
 									/>
 								) }
@@ -534,6 +576,34 @@ const Settings = ( props ) => {
 										backgroundGradient={ {
 											value: hovergradientValue,
 											label: 'hovergradientValue',
+										}}
+										backgroundGradientColor1={{
+											value: hovergradientColor1,
+											label: 'hovergradientColor1'
+										}}
+										gradientType={{
+											value: hoverselectGradient,
+											label: 'hoverselectGradient',
+										}}
+										backgroundGradientColor2={{
+											value: 	hovergradientColor2,
+											label: 'hovergradientColor2'
+										}}
+										backgroundGradientLocation1={{
+											value: 	hovergradientLocation1,
+											label: 'hovergradientLocation1'
+										}}
+										backgroundGradientLocation2={{
+											value: 	hovergradientLocation2,
+											label: 'hovergradientLocation2'
+										}}
+										backgroundGradientType={{
+											value: 	hovergradientType,
+											label: 'hovergradientType'
+										}}
+										backgroundGradientAngle={{
+											value: 	hovergradientAngle,
+											label: 'hovergradientAngle'
 										}}
 										setAttributes={ setAttributes }
 									/>

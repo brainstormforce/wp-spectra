@@ -194,6 +194,20 @@ const Settings = ( props ) => {
 		submitTextLetterSpacingType,
 		gradientValue,
 		gradientHValue,
+		gradientHColor1,
+		selectHGradient,
+		gradientHColor2,
+		gradientHLocation1,
+		gradientHLocation2,
+		gradientHType,
+		gradientHAngle,
+		gradientColor1,
+		gradientColor2,
+		gradientLocation1,
+		gradientLocation2,
+		gradientType,
+		gradientAngle,
+		selectGradient,
 	} = attributes;
 
 	const presetSettings = () => {
@@ -1575,6 +1589,34 @@ const Settings = ( props ) => {
 									value: gradientValue,
 									label: 'gradientValue',
 								}}
+								backgroundGradientColor1={{
+									value: gradientColor1,
+									label: 'gradientColor1'
+								}}
+								gradientType={{
+									value: selectGradient,
+									label: 'selectGradient',
+								}}
+								backgroundGradientColor2={{
+									value: 	gradientColor2,
+									label: 'gradientColor2'
+								}}
+								backgroundGradientLocation1={{
+									value: 	gradientLocation1,
+									label: 'gradientLocation1'
+								}}
+								backgroundGradientLocation2={{
+									value: 	gradientLocation2,
+									label: 'gradientLocation2'
+								}}
+								backgroundGradientType={{
+									value: 	gradientType,
+									label: 'gradientType'
+								}}
+								backgroundGradientAngle={{
+									value: 	gradientAngle,
+									label: 'gradientAngle'
+								}}
 								setAttributes={ setAttributes }
 							/>
 						) }
@@ -1649,6 +1691,34 @@ const Settings = ( props ) => {
 								backgroundGradient={ {
 									value: gradientHValue,
 									label: 'gradientHValue',
+								}}
+								backgroundGradientColor1={{
+									value: gradientHColor1,
+									label: 'gradientHColor1'
+								}}
+								gradientType={{
+									value: selectHGradient,
+									label: 'selectHGradient',
+								}}
+								backgroundGradientColor2={{
+									value: 	gradientHColor2,
+									label: 'gradientHColor2'
+								}}
+								backgroundGradientLocation1={{
+									value: 	gradientHLocation1,
+									label: 'gradientHLocation1'
+								}}
+								backgroundGradientLocation2={{
+									value: 	gradientHLocation2,
+									label: 'gradientHLocation2'
+								}}
+								backgroundGradientType={{
+									value: 	gradientHType,
+									label: 'gradientHType'
+								}}
+								backgroundGradientAngle={{
+									value: 	gradientHAngle,
+									label: 'gradientHAngle'
 								}}
 								setAttributes={ setAttributes }
 							/>

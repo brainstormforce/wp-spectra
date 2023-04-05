@@ -447,6 +447,13 @@ const attributes = {
 			styleType: 'column-gradient-value'
 		}
 	},
+	selectGradient: {
+		type: 'string',
+		default: 'basic',
+		UAGCopyPaste: {
+			styleType: 'gradient-type'
+		}
+	},
 	...borderAttributes
 };
 

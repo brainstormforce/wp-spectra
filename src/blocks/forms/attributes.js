@@ -1241,12 +1241,110 @@ const attributes = {
 			styleType: 'btn-bg-gradient-value'
 		},
 	},
+	gradientColor1: {
+		type: 'string',
+		default: '#06558a',
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-color-1'
+		}
+	},
+	gradientColor2: {
+		type: 'string',
+		default: '#0063A1',
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-color-2'
+		}
+	},
+	gradientType: {
+		type: 'string',
+		default: 'linear',
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-color-type'
+		}
+	},
+	selectGradient: {
+		type: 'string',
+		default: 'basic',
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-type'
+		}
+	},
+	gradientLocation1: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-location-1'
+		}
+	},
+	gradientLocation2: {
+		type: 'number',
+		default: 100,
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-location-2'
+		}
+	},
+	gradientAngle: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-angle'
+		}
+	},
 	gradientHValue: {
 		type: 'string',
 		default: 'linear-gradient(90deg, rgba(6, 147, 227, 0.5) 0%, rgba(155, 81, 224, 0.5) 100%)',
 		UAGCopyPaste: {
 			styleType: 'btn-hbg-gradient-value'
 		},
+	},
+	gradientHColor1: {
+		type: 'string',
+		default: '#06558a',
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-color-1'
+		}
+	},
+	gradientHColor2: {
+		type: 'string',
+		default: '#0063A1',
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-color-2'
+		}
+	},
+	gradientHType: {
+		type: 'string',
+		default: 'linear',
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-color-type'
+		}
+	},
+	selectHGradient: {
+		type: 'Boolean',
+		default: false,
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-type'
+		}
+	},
+	gradientHLocation1: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-location-1'
+		}
+	},
+	gradientHLocation2: {
+		type: 'number',
+		default: 100,
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-location-2'
+		}
+	},
+	gradientHAngle: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-angle'
+		}
 	},
 };
 export default attributes;

@@ -174,12 +174,110 @@ const attributes = {
 			styleType: 'btn-bg-gradient-value'
 		},
 	},
+	gradientColor1: {
+		type: 'string',
+		default: '#06558a',
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-color-1'
+		}
+	},
+	gradientColor2: {
+		type: 'string',
+		default: '#0063A1',
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-color-2'
+		}
+	},
+	gradientType: {
+		type: 'string',
+		default: 'linear',
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-color-type'
+		}
+	},
+	hoverselectGradient: {
+		type: 'string',
+		default: 'basic',
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-type'
+		}
+	},
+	selectGradient: {
+		type: 'string',
+		default: 'basic',
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-type'
+		}
+	},
+	gradientLocation1: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-location-1'
+		}
+	},
+	gradientLocation2: {
+		type: 'number',
+		default: 100,
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-location-2'
+		}
+	},
+	gradientAngle: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-angle'
+		}
+	},
 	hovergradientValue: {
 		type: 'string',
 		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-hbg-gradient-value'
 		},
+	},
+	hovergradientColor1: {
+		type: 'string',
+		default: '#06558a',
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-color-1'
+		}
+	},
+	hovergradientColor2: {
+		type: 'string',
+		default: '#0063A1',
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-color-2'
+		}
+	},
+	hovergradientType: {
+		type: 'string',
+		default: 'linear',
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-color-type'
+		}
+	},
+	hovergradientLocation1: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-location-1'
+		}
+	},
+	hovergradientLocation2: {
+		type: 'number',
+		default: 100,
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-location-2'
+		}
+	},
+	hovergradientAngle: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-angle'
+		}
 	},
 	mobilePaddingUnit: {
 		type: 'string',

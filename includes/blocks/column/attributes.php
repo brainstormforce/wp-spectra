@@ -71,6 +71,7 @@ return array_merge(
 		'gradientOverlayLocation2' => '100',
 		'gradientOverlayAngle'     => '0',
 		'gradientValue'            => '',
+		'selectGradient'           => 'basic',
 	),
 	$border_attribute
 );

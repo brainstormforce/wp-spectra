@@ -20,6 +20,13 @@ function generateBackgroundCSS ( backgroundAttributes ) {
 		xPositionType,
 		yPosition,
 		yPositionType,
+        gradientColor1,
+		gradientColor2,
+		gradientLocation1,
+		gradientLocation2,
+		gradientType,
+		gradientAngle,
+		selectGradient,
     } = backgroundAttributes;
 
     const bgCSS = {};
@@ -28,6 +35,30 @@ function generateBackgroundCSS ( backgroundAttributes ) {
     const yPositionValue = ( isNaN( yPosition ) || '' === yPosition ) ? 0 : yPosition;
     const yPositionTypeValue = ( undefined !== yPositionType ) ? yPositionType : '';
 
+    let gradient;
+    
+    switch ( selectGradient ) {
+        case 'basic':
+            gradient = gradientValue;
+            break;
+        case 'advanced':
+            switch ( gradientType ) {
+                case 'linear':
+                    gradient = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${	gradientColor2 } ${ gradientLocation2 }%)`;
+                    break;
+                case 'radial':
+                    gradient = `radial-gradient( at center center, ${ gradientColor1} ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+                    break;
+                default:
+                    gradient = '';
+                    break;
+            }
+            break;
+        default:
+            gradient = '';
+            break;
+    }
+    
     if( undefined !== backgroundType && '' !== backgroundType ) {
 
         if ( 'color' === backgroundType ) {
@@ -43,23 +74,23 @@ function generateBackgroundCSS ( backgroundAttributes ) {
 
                 bgCSS['background-image'] = 'linear-gradient(to right, ' + backgroundImageColor + ', ' + backgroundImageColor + '), url(' + backgroundImage?.url + ');';
             }
-			if (  'gradient' === overlayType && '' !== backgroundImage && backgroundImage && gradientValue && backgroundImage?.url ) {
-                bgCSS['background-image'] = gradientValue + ', url(' + backgroundImage?.url + ');';
+			if (  'gradient' === overlayType && '' !== backgroundImage && backgroundImage && gradient && backgroundImage?.url ) {
+                bgCSS['background-image'] = gradient + ', url(' + backgroundImage?.url + ');';
             }
             if ( '' !== backgroundImage && backgroundImage && 'none' === overlayType && backgroundImage?.url ) {
                 bgCSS['background-image'] = 'url(' + backgroundImage?.url + ');';
             }
         } else if ( 'gradient' === backgroundType ) {
-            if ( '' !== gradientValue && 'unset' !== gradientValue ) {
-                bgCSS.background = gradientValue;
+            if ( '' !== gradient && 'unset' !== gradient ) {
+                bgCSS.background = gradient;
             }
         } else if ( 'video' === backgroundType ) {
 			if ( 'color' === overlayType && '' !== backgroundVideo && '' !== backgroundVideoColor && undefined !== backgroundVideoColor && 'unset' !== backgroundVideoColor ) {
 
                 bgCSS.background = backgroundVideoColor;
             }
-			if (  'gradient' === overlayType && '' !== backgroundVideo && backgroundVideo && gradientValue ) {
-                bgCSS['background-image'] = gradientValue + ';';
+			if (  'gradient' === overlayType && '' !== backgroundVideo && backgroundVideo && gradient ) {
+                bgCSS['background-image'] = gradient + ';';
             }
 		}
 
