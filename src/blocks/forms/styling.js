@@ -160,6 +160,20 @@ function styling( props ) {
 		submitTextLetterSpacingType,
 		gradientHValue,
 		gradientValue,
+		gradientHColor1,
+		gradientHColor2,
+		gradientHLocation1,
+		gradientHLocation2,
+		gradientHType,
+		gradientHAngle,
+		selectHGradient,
+		gradientColor1,
+		gradientColor2,
+		gradientLocation1,
+		gradientLocation2,
+		gradientType,
+		gradientAngle,
+		selectGradient,
 	} = props.attributes;
 
 	let selectors = {};
@@ -446,7 +460,6 @@ function styling( props ) {
 			'text-transform': submitTextTransform,
 			'text-decoration': submitTextDecoration,
 			'font-weight': submitTextFontWeight,
-			'background-color': submitBgColor,
 			...submitBorder,
 			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
 			'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
@@ -749,6 +762,13 @@ function styling( props ) {
 		const backgroundAttributes = {
 			'backgroundType': 'gradient',
 			'gradientValue': gradientValue,
+			'gradientColor1': gradientColor1,
+			'gradientColor2': gradientColor2,
+			'gradientLocation1': gradientLocation1,
+			'gradientLocation2': gradientLocation2,
+			'gradientType': gradientType,
+			'gradientAngle': gradientAngle,
+			'selectGradient': selectGradient,
 		};
 
 		const btnBackground = generateBackgroundCSS( backgroundAttributes );
@@ -774,6 +794,13 @@ function styling( props ) {
 		const hoverbackgroundAttributes = {
 			'backgroundType': 'gradient',
 			'gradientValue': gradientHValue,
+			'gradientColor1': gradientHColor1,
+			'gradientColor2': gradientHColor2,
+			'gradientLocation1': gradientHLocation1,
+			'gradientLocation2': gradientHLocation2,
+			'gradientType': gradientHType,
+			'gradientAngle': gradientHAngle,
+			'selectGradient': selectHGradient,
 		};
 
 		const btnhBackground = generateBackgroundCSS( hoverbackgroundAttributes );

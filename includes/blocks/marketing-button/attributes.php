@@ -34,7 +34,7 @@ return array_merge(
 		'backgroundColor'           => '',
 		'backgroundHoverColor'      => '',
 		'gradientColor1'            => '#06558a',
-		'gradientColor2'            => '#0170b9',
+		'gradientColor2'            => '#0063A1',
 		'gradientType'              => 'linear',
 		'gradientLocation1'         => 0,
 		'gradientLocation2'         => 100,

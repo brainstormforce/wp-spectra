@@ -56,8 +56,15 @@ function styling( props ) {
 		boxShadowSpread,
 		boxShadowPosition,
 		gradientValue,
+		selectGradient,
+		gradientType,
 		columnsBorderHColor,
 		overlayType,
+		gradientColor1,
+		gradientColor2,
+		gradientLocation1,
+		gradientLocation2,
+		gradientAngle,
 	} = props.attributes;
 
 	let max_width = '100%';
@@ -162,7 +169,30 @@ function styling( props ) {
 			'background-color': backgroundColor,
 		};
 	} else if ( 'gradient' === backgroundType ) {
-		selectors[ ' > .uagb-columns__overlay' ][ 'background-image' ] = gradientValue;
+		let gradient;
+
+		switch ( selectGradient ) {
+			case 'basic':
+				gradient = gradientValue;
+				break;
+			case 'advanced':
+				switch ( gradientType ) {
+					case 'linear':
+						gradient = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+						break;
+					case 'radial':
+						gradient = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+						break;
+					default:
+						gradient = '';
+						break;
+				}
+				break;
+			default:
+				gradient = '';
+				break;
+		}
+		selectors[ ' > .uagb-columns__overlay' ][ 'background-image' ] = gradient;
 		selectors[ ' > .uagb-columns__overlay' ].opacity =
 			backgroundOpacity && 0 !== backgroundOpacity ? backgroundOpacity / 100 : '';
 	}

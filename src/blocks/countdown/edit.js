@@ -146,11 +146,13 @@ const UAGBCountdownEdit = ( props ) => {
 		loadSeparatorGoogleFonts = <WebfontLoader config={ separatorConfig }></WebfontLoader>;
 	}
 
+	// Hooks cannot be applied within conditional renders, so we pre-fetch the value.
+	const countdownToolbar = applyFilters( 'spectra.countdown.toolbar-hook', '', props.name );
+
 	return (
 		<>
 			{ /* Countdown Toolbar options for Pro (Replace feature) */ }
-			{ props.attributes.timerEndAction === 'content' &&
-				applyFilters( 'spectra.countdown.toolbar-hook', '', props.name ) }
+			{ props.attributes.timerEndAction === 'content' && countdownToolbar }
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render countdownRef={ countdownRef } parentProps={ props } />
 			{ loadDigitGoogleFonts }

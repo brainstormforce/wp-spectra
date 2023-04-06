@@ -137,6 +137,13 @@ function testimonialStyle( props ) {
 		companyLetterSpacingMobile,
 		companyLetterSpacingType,
 		overlayType,
+		gradientColor1,
+		gradientColor2,
+		gradientLocation1,
+		gradientLocation2,
+		gradientAngle,
+		selectGradient,
+		gradientType,
 	} = props.attributes;
 
 	const arrowSizeFallback = getFallbackNumber( arrowSize, 'arrowSize', blockName );
@@ -357,9 +364,30 @@ function testimonialStyle( props ) {
 		},
 	};
 	if ( 'gradient' === backgroundType ) {
-		if ( gradientValue ) {
-			selectors[ ' .uagb-tm__content' ][ 'background-image' ] = gradientValue;
+		let gradient;
+		switch ( selectGradient ) {
+			case 'basic':
+				gradient = gradientValue;
+				break;
+			case 'advanced':
+				switch ( gradientType ) {
+					case 'linear':
+						gradient = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+						break;
+					case 'radial':
+						gradient = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+						break;
+					default:
+						gradient = '';
+						break;
+				}
+				break;
+			default:
+				gradient = '';
+				break;
 		}
+
+		selectors[ ' .uagb-tm__content' ][ 'background-image' ] = gradient;
 	}
 
 	if ( 'image' === backgroundType ) {

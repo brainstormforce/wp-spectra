@@ -110,17 +110,23 @@ $selectors = array(
 );
 if ( 'gradient' === $attr['backgroundType'] ) {
 	$selectors[' .uagb-tm__content']['background-color'] = 'transparent';
+	
+	$gradientColor1    = isset( $attr['gradientColor1'] ) ? $attr['gradientColor1'] : '';
+	$gradientColor2    = isset( $attr['gradientColor2'] ) ? $attr['gradientColor2'] : '';
+	$gradientType      = isset( $attr['gradientType'] ) ? $attr['gradientType'] : '';
+	$gradientLocation1 = isset( $attr['gradientLocation1'] ) ? $attr['gradientLocation1'] : '';
+	$gradientLocation2 = isset( $attr['gradientLocation2'] ) ? $attr['gradientLocation2'] : '';
+	$gradientAngle     = isset( $attr['gradientAngle'] ) ? $attr['gradientAngle'] : '';
 
-	if ( $attr['gradientValue'] ) {
-		$selectors[' .uagb-tm__content']['background-image'] = $attr['gradientValue'];
-	} else {
-		if ( 'linear' === $attr['gradientType'] ) {
-
-			$selectors[' .uagb-tm__content']['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
-		} else {
-			$selectors[' .uagb-tm__content']['background-image'] = 'radial-gradient( at ' . $gradientPosition . ', ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
-		}
+	if ( 'basic' === $attr['selectGradient'] && $attr['gradientValue'] ) {
+		$gradient = $attr['gradientValue'];
+	} elseif ( 'linear' === $gradientType && 'advanced' === $attr['selectGradient'] ) {
+		$gradient = 'linear-gradient(' . $gradientAngle . 'deg, ' . $gradientColor1 . ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
+	} elseif ( 'radial' === $gradientType && 'advanced' === $attr['selectGradient'] ) {
+		$gradient = 'radial-gradient( at center center, ' . $gradientColor1 . ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
 	}
+	$selectors[' .uagb-tm__content']['background-image'] = $gradient;
+	
 }
 if ( 'image' === $attr['backgroundType'] ) {
 	if ( 'color' === $attr['overlayType'] ) {
