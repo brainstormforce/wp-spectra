@@ -866,6 +866,16 @@ const Settings = ( props ) => {
 								label: 'ctaLink',
 							}}
 						/>
+						<ToggleControl
+							checked={ ctaTarget }
+							onChange={ () =>
+								setAttributes( { ctaTarget: ! ctaTarget } )
+							}
+							label={ __(
+								'Open in new window',
+								'ultimate-addons-for-gutenberg'
+							) }
+						/>
 					</>
 				) }
 				{ ctaType !== 'all' && ctaType !== 'none' && (
@@ -967,18 +977,6 @@ const Settings = ( props ) => {
 							setAttributes={ setAttributes }
 						/>
 					</>
-				) }
-				{ ctaType !== 'none' && (
-					<ToggleControl
-						checked={ ctaTarget }
-						onChange={ () =>
-							setAttributes( { ctaTarget: ! ctaTarget } )
-						}
-						label={ __(
-							'Open in new window',
-							'ultimate-addons-for-gutenberg'
-						) }
-					/>
 				) }
 			</UAGAdvancedPanelBody>
 		);
