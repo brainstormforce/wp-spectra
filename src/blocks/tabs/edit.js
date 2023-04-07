@@ -19,7 +19,6 @@ import { withDispatch, dispatch, select } from '@wordpress/data';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const UAGBTabsEdit = ( props ) => {
-
 	const deviceType = useDeviceType();
 	const {
 		isSelected,
@@ -43,41 +42,42 @@ const UAGBTabsEdit = ( props ) => {
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
 		// Backward Border Migration
-		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-			migrateBorderAttributes( 'tab', {
-				label: 'borderWidth',
-				value: borderWidth,
-			}, {
-				label: 'borderRadius',
-				value: borderRadius
-			}, {
-				label: 'borderColor',
-				value: borderColor
-			}, {
-				label: 'borderHoverColor',
-				value: borderHoverColor
-			},{
-				label: 'borderStyle',
-				value: borderStyle
-			},
-			setAttributes,
-			attributes
+		if ( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ) {
+			migrateBorderAttributes(
+				'tab',
+				{
+					label: 'borderWidth',
+					value: borderWidth,
+				},
+				{
+					label: 'borderRadius',
+					value: borderRadius,
+				},
+				{
+					label: 'borderColor',
+					value: borderColor,
+				},
+				{
+					label: 'borderHoverColor',
+					value: borderHoverColor,
+				},
+				{
+					label: 'borderStyle',
+					value: borderStyle,
+				},
+				setAttributes,
+				attributes
 			);
 		}
-
 	}, [] );
 
 	const updateTabTitle = () => {
 		const { updateBlockAttributes } = ! wp.blockEditor
 			? dispatch( 'core/editor' )
 			: dispatch( 'core/block-editor' );
-		const { getBlockOrder } = ! wp.blockEditor
-			? select( 'core/editor' )
-			: select( 'core/block-editor' );
+		const { getBlockOrder } = ! wp.blockEditor ? select( 'core/editor' ) : select( 'core/block-editor' );
 		const childBlocks = getBlockOrder( clientId );
-		childBlocks.forEach( ( childBlockId ) =>
-			updateBlockAttributes( childBlockId, { tabHeaders } )
-		);
+		childBlocks.forEach( ( childBlockId ) => updateBlockAttributes( childBlockId, { tabHeaders } ) );
 	};
 
 	useEffect( () => {
@@ -93,28 +93,22 @@ const UAGBTabsEdit = ( props ) => {
 	}, [ deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	return (
 		<>
-			{ isSelected && (
-				<Settings parentProps={ props } deviceType={ deviceType } />
-			) }
+			{ isSelected && <Settings parentProps={ props } deviceType={ deviceType } /> }
 			<Render parentProps={ props } />
 		</>
 	);
 };
 
 export default compose(
-
-	withDispatch( ( dispatch, { clientId }, { select } ) => { // eslint-disable-line no-shadow
+	// eslint-disable-next-line no-shadow
+	withDispatch( ( dispatch, { clientId }, { select } ) => {
 		const { getBlock } = select( 'core/block-editor' );
-		const { updateBlockAttributes, moveBlockToPosition } = dispatch(
-			'core/block-editor'
-		);
+		const { updateBlockAttributes, moveBlockToPosition } = dispatch( 'core/block-editor' );
 
 		const block = getBlock( clientId );
 
@@ -138,12 +132,7 @@ export default compose(
 				this.resetTabOrder();
 			},
 			moveTab( tabId, newIndex ) {
-				moveBlockToPosition(
-					tabId,
-					clientId,
-					clientId,
-					parseInt( newIndex )
-				);
+				moveBlockToPosition( tabId, clientId, clientId, parseInt( newIndex ) );
 			},
 		};
 	} )

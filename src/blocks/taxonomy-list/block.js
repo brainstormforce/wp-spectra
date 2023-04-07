@@ -31,12 +31,7 @@ registerBlockType( 'uagb/taxonomy-list', {
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
 	category: uagb_blocks_info.category,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="taxonomy-list" />
-			) : (
-				<Edit { ...props } />
-			),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="taxonomy-list" /> : <Edit { ...props } /> ),
 	// Render via PHP
-	save:()=> null,
+	save: () => null,
 } );

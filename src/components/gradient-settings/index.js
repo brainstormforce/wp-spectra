@@ -10,7 +10,7 @@ import { select } from '@wordpress/data';
 import { applyFilters } from '@wordpress/hooks';
 
 const GradientSettings = ( props ) => {
-	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const [ panelNameForHook, setPanelNameForHook ] = useState( null );
 	const panelRef = useRef( null );
 	const { getSelectedBlock } = select( 'core/block-editor' );
 	// Add and remove the CSS on the drop and remove of the component.
@@ -21,7 +21,7 @@ const GradientSettings = ( props ) => {
 		};
 	}, [] );
 
-	const  { 	
+	const {
 		setAttributes,
 		gradientType,
 		backgroundGradient,
@@ -30,22 +30,30 @@ const GradientSettings = ( props ) => {
 		backgroundGradientType,
 		backgroundGradientLocation1,
 		backgroundGradientLocation2,
-		backgroundGradientAngle 
-		} = props;
-	
+		backgroundGradientAngle,
+	} = props;
+
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
-	
+
 	useEffect( () => {
-		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
-	}, [blockNameForHook] );
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) );
+	}, [ blockNameForHook ] );
 
 	const onGradientChange = ( value ) => {
 		setAttributes( { [ backgroundGradient.label ]: value } );
 	};
 
 	const controlName = 'gradient-settings'; // there is no label props that's why keep hard coded label
-	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }.before`,
+		'',
+		blockNameForHook
+	);
+	const controlAfterDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }`,
+		'',
+		blockNameForHook
+	);
 
 	const type = undefined !== gradientType ? gradientType.value : 'basic';
 
@@ -54,7 +62,7 @@ const GradientSettings = ( props ) => {
 			{ undefined !== gradientType && (
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
-					label={ 'Select Gradient'}
+					label={ 'Select Gradient' }
 					data={ {
 						value: gradientType.value,
 						label: gradientType.label,
@@ -62,46 +70,33 @@ const GradientSettings = ( props ) => {
 					options={ [
 						{
 							value: 'basic',
-							label: __(
-								'Basic',
-								'ultimate-addons-for-gutenberg'
-							)
+							label: __( 'Basic', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'advanced',
-							label: __(
-								'Advanced',
-								'ultimate-addons-for-gutenberg'
-							)
+							label: __( 'Advanced', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					showIcons={ false }
 				/>
-			)}
-			<div ref={panelRef}>
-				{
-					controlBeforeDomElement
-				}
+			) }
+			<div ref={ panelRef }>
+				{ controlBeforeDomElement }
 				{ 'basic' === type && (
 					<GradientPicker
-						__nextHasNoMargin = { true }
+						__nextHasNoMargin={ true }
 						value={ backgroundGradient.value }
 						onChange={ onGradientChange }
 						className="uagb-gradient-picker"
-						gradients={[]} // Passing it an empty to resolve block encounters an error when gutenberg is activated.
+						gradients={ [] } // Passing it an empty to resolve block encounters an error when gutenberg is activated.
 					/>
-				)}
-				{
-					controlAfterDomElement
-				}
+				) }
+				{ controlAfterDomElement }
 			</div>
 			{ 'advanced' === type && (
 				<>
 					<AdvancedPopColorControl
-						label={ __(
-							'Color 1',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Color 1', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ backgroundGradientColor1.value ? backgroundGradientColor1.value : '' }
 						data={ {
 							value: backgroundGradientColor1.value,
@@ -110,10 +105,7 @@ const GradientSettings = ( props ) => {
 						setAttributes={ setAttributes }
 					/>
 					<AdvancedPopColorControl
-						label={ __(
-							'Color 2',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Color 2', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ backgroundGradientColor2.value ? backgroundGradientColor2.value : '' }
 						data={ {
 							value: backgroundGradientColor2.value,
@@ -123,10 +115,7 @@ const GradientSettings = ( props ) => {
 					/>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
-						label={ __(
-							'Type',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: backgroundGradientType.value,
 							label: backgroundGradientType.label,
@@ -135,25 +124,16 @@ const GradientSettings = ( props ) => {
 						options={ [
 							{
 								value: 'linear',
-								label: __(
-									'Linear',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Linear', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								value: 'radial',
-								label: __(
-									'Radial',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Radial', 'ultimate-addons-for-gutenberg' ),
 							},
 						] }
 					/>
 					<Range
-						label={ __(
-							'Location 1',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Location 1', 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }
 						value={ backgroundGradientLocation1.value }
 						data={ {
@@ -165,10 +145,7 @@ const GradientSettings = ( props ) => {
 						displayUnit={ false }
 					/>
 					<Range
-						label={ __(
-							'Location 2',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Location 2', 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }
 						value={ backgroundGradientLocation2.value }
 						data={ {
@@ -179,12 +156,9 @@ const GradientSettings = ( props ) => {
 						max={ 100 }
 						displayUnit={ false }
 					/>
-					{ 'linear' === backgroundGradientType.value &&
+					{ 'linear' === backgroundGradientType.value && (
 						<Range
-							label={ __(
-								'Angle',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Angle', 'ultimate-addons-for-gutenberg' ) }
 							setAttributes={ setAttributes }
 							value={ backgroundGradientAngle.value }
 							data={ {
@@ -195,11 +169,11 @@ const GradientSettings = ( props ) => {
 							max={ 360 }
 							displayUnit={ false }
 						/>
-					}
+					) }
 				</>
-			)}
+			) }
 		</>
 	);
-}
+};
 
 export default GradientSettings;

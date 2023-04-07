@@ -30,40 +30,28 @@ const Render = ( props ) => {
 	const deviceType = useDeviceType();
 	const { attributes, className, setAttributes } = props;
 
-	const {
-		displayPostLink,
-		postsToShow,
-	} = attributes;
+	const { displayPostLink, postsToShow } = attributes;
 
-	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + deviceType ] ? attributes['timelinAlignment' + deviceType ] :  attributes.timelinAlignment;
+	const timelinAlignment =
+		'undefined' !== typeof attributes[ 'timelinAlignment' + deviceType ]
+			? attributes[ 'timelinAlignment' + deviceType ]
+			: attributes.timelinAlignment;
 	const postsToShowFallback = getFallbackNumber( postsToShow, 'postsToShow', blockName );
 
 	/* Render output at backend */
 	const getContent = () => {
-
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
 		if ( ! hasPosts ) {
 			return (
-				<Placeholder
-					icon="admin-post"
-					label={
-						__( 'Post Timeline', 'ultimate-addons-for-gutenberg' )
-					}
-				>
-					{ ! Array.isArray( latestPosts ) ? (
-						<Spinner />
-					) : (
-						__( 'No posts found.' )
-					) }
+				<Placeholder icon="admin-post" label={ __( 'Post Timeline', 'ultimate-addons-for-gutenberg' ) }>
+					{ ! Array.isArray( latestPosts ) ? <Spinner /> : __( 'No posts found.' ) }
 				</Placeholder>
 			);
 		}
 		// Removing posts from display should be instant.
 		const displayPosts =
-			latestPosts.length > postsToShowFallback
-				? latestPosts.slice( 0, postsToShowFallback )
-				: latestPosts;
+			latestPosts.length > postsToShowFallback ? latestPosts.slice( 0, postsToShowFallback ) : latestPosts;
 
 		let contentAlignClass = AlignClass( props.attributes, 0, deviceType ); // Get classname for layout alignment
 		let dayAlignClass = DayAlignClass( props.attributes, 0, deviceType ); // Get classname for day alignment.
@@ -75,65 +63,34 @@ const Render = ( props ) => {
 				{ displayPosts.map( ( post, index ) => {
 					if ( timelinAlignment === 'center' ) {
 						displayInnerDate = true;
-						contentAlignClass = AlignClass(
-							props.attributes,
-							index,
-							deviceType
-						);
-						dayAlignClass = DayAlignClass(
-							props.attributes,
-							index,
-							deviceType
-						);
+						contentAlignClass = AlignClass( props.attributes, index, deviceType );
+						dayAlignClass = DayAlignClass( props.attributes, index, deviceType );
 					}
 
 					return (
-						<article
-							className={ classnames( 'uagb-timeline__field ', contentAlignClass ) }
-							key={ index }
-						>
+						<article className={ classnames( 'uagb-timeline__field ', contentAlignClass ) } key={ index }>
 							{ <Icon attributes={ attributes } /> }
 							<div className={ classnames( dayAlignClass, 'uagb-timeline__events-inner-new' ) }>
-								<div className='uagb-timeline__events-inner--content'>
+								<div className="uagb-timeline__events-inner--content">
 									<PostDate
 										post={ post }
 										attributes={ attributes }
 										dateClass="uagb-timeline__date-hide uagb-timeline__inner-date-new"
 									/>
+									{ <FeaturedImage post={ post } attributes={ attributes } /> }
+									{ <Title post={ post } attributes={ attributes } /> }
+									{ <Author post={ post } attributes={ attributes } /> }
+									{ <Excerpt post={ post } attributes={ attributes } /> }
 									{
-										<FeaturedImage
+										<CtaLink
 											post={ post }
 											attributes={ attributes }
+											setAttributes={ setAttributes }
 										/>
 									}
-										{
-											<Title
-												post={ post }
-												attributes={ attributes }
-											/>
-										}
-										{
-											<Author
-												post={ post }
-												attributes={ attributes }
-											/>
-										}
-										{
-											<Excerpt
-												post={ post }
-												attributes={ attributes }
-											/>
-										}
-										{
-											<CtaLink
-												post={ post }
-												attributes={ attributes }
-												setAttributes ={ setAttributes }
-											/>
-										}
 
-										<div className="uagb-timeline__arrow"></div>
-									</div>
+									<div className="uagb-timeline__arrow"></div>
+								</div>
 							</div>
 							{ displayInnerDate && (
 								<>

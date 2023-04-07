@@ -39,9 +39,9 @@ const ColumnComponent = ( props ) => {
 		isSelected,
 		clientId,
 	} = props;
-	
+
 	useEffect( () => {
-		if( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ){
+		if ( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ) {
 			const color1 = hexToRGBA( maybeGetColorForVariable( gradientOverlayColor1 ), backgroundOpacity );
 			const color2 = hexToRGBA( maybeGetColorForVariable( gradientOverlayColor2 ), backgroundOpacity );
 			let gradientVal;
@@ -67,27 +67,32 @@ const ColumnComponent = ( props ) => {
 		}
 
 		// border migration
-		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-
-			migrateBorderAttributes( 'column', {
-				label: 'borderWidth',
-				value: borderWidth,
-			}, {
-				label: 'borderRadius',
-				value: borderRadius
-			}, {
-				label: 'borderColor',
-				value: borderColor
-			}, {
-				label: 'borderHoverColor',
-				value: borderHoverColor
-			},{
-				label: 'borderStyle',
-				value: borderStyle
-			},
-			setAttributes,
-			attributes
-		);
+		if ( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ) {
+			migrateBorderAttributes(
+				'column',
+				{
+					label: 'borderWidth',
+					value: borderWidth,
+				},
+				{
+					label: 'borderRadius',
+					value: borderRadius,
+				},
+				{
+					label: 'borderColor',
+					value: borderColor,
+				},
+				{
+					label: 'borderHoverColor',
+					value: borderHoverColor,
+				},
+				{
+					label: 'borderStyle',
+					value: borderStyle,
+				},
+				setAttributes,
+				attributes
+			);
 		}
 	}, [] );
 
@@ -95,7 +100,7 @@ const ColumnComponent = ( props ) => {
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
-        addBlockEditorDynamicStyles( 'uagb-column-style-' + clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles( 'uagb-column-style-' + clientId.substr( 0, 8 ), blockStyling );
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
@@ -104,9 +109,7 @@ const ColumnComponent = ( props ) => {
 
 	return (
 		<>
-			{ isSelected && (
-				<Settings parentProps={ props } deviceType={ deviceType } />
-			) }
+			{ isSelected && <Settings parentProps={ props } deviceType={ deviceType } /> }
 			<Render parentProps={ props } />
 		</>
 	);

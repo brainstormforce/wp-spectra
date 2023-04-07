@@ -9,7 +9,6 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
-
 	const blockName = props.name.replace( 'uagb/', '' );
 
 	const {
@@ -113,9 +112,9 @@ function styling( props ) {
 	if ( 'outset' === boxShadowPosition ) {
 		boxShadowPositionCSS = '';
 	}
-	const borderCSS = generateBorderCSS( props.attributes, 'btn' );	
-	const borderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' )
-	const borderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' )
+	const borderCSS = generateBorderCSS( props.attributes, 'btn' );
+	const borderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
 
 	selectors = {
 		'.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater': {
@@ -133,15 +132,20 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( leftMargin, marginType ),
 			'margin-right': generateCSSUnit( rightMargin, marginType ),
 			'margin-top': generateCSSUnit( topMargin, marginType ),
-			'margin-bottom': generateCSSUnit(
-				bottomMargin,
-				marginType
-			),
+			'margin-bottom': generateCSSUnit( bottomMargin, marginType ),
 			'color': color,
 			'box-shadow':
-			generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
-			generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
-			boxShadowColor + ' ' +	boxShadowPositionCSS,
+				generateCSSUnit( boxShadowHOffset, 'px' ) +
+				' ' +
+				generateCSSUnit( boxShadowVOffset, 'px' ) +
+				' ' +
+				generateCSSUnit( boxShadowBlur, 'px' ) +
+				' ' +
+				generateCSSUnit( boxShadowSpread, 'px' ) +
+				' ' +
+				boxShadowColor +
+				' ' +
+				boxShadowPositionCSS,
 			'letter-spacing': generateCSSUnit( letterSpacing, letterSpacingType ),
 		},
 		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover': {
@@ -152,78 +156,60 @@ function styling( props ) {
 		},
 		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__link': {
 			'color': color,
-		}
+		},
 	};
-	selectors[' .wp-block-button__link.uagb-buttons-repeater'] = borderCSS;
-	selectors[' .wp-block-button__link.uagb-buttons-repeater:hover'] = {
+	selectors[ ' .wp-block-button__link.uagb-buttons-repeater' ] = borderCSS;
+	selectors[ ' .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
 		'border-color': btnBorderHColor,
 	};
-	
+
 	//Twenty Twenty theme
-	selectors['.uagb-buttons__outer-wrap.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'] = borderCSS;
-	tabletSelectors['.uagb-buttons__outer-wrap.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'] = borderCSSTablet;
-	mobileSelectors['.uagb-buttons__outer-wrap.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'] = borderCSSMobile;
-	selectors['.uagb-buttons__outer-wrap.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater:hover'] = {
+	selectors[
+		'.uagb-buttons__outer-wrap.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'
+	] = borderCSS;
+	tabletSelectors[
+		'.uagb-buttons__outer-wrap.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'
+	] = borderCSSTablet;
+	mobileSelectors[
+		'.uagb-buttons__outer-wrap.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'
+	] = borderCSSMobile;
+	selectors[
+		'.uagb-buttons__outer-wrap.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater:hover'
+	] = {
 		'border-color': btnBorderHColor,
 	};
-	mobileSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater' ] = {
+	mobileSelectors[
+		'.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'
+	] = {
 		'font-size': generateCSSUnit( sizeMobile, sizeType ),
 		'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
 		'letter-spacing': generateCSSUnit( letterSpacingMobile, letterSpacingType ),
-		'padding-left': generateCSSUnit(
-			leftMobilePadding,
-			mobilePaddingUnit
-		),
-		'padding-right': generateCSSUnit(
-			rightMobilePadding,
-			mobilePaddingUnit
-		),
-		'padding-top': generateCSSUnit(
-			topMobilePadding,
-			mobilePaddingUnit
-		),
-		'padding-bottom': generateCSSUnit(
-			bottomMobilePadding,
-			mobilePaddingUnit
-		),
+		'padding-left': generateCSSUnit( leftMobilePadding, mobilePaddingUnit ),
+		'padding-right': generateCSSUnit( rightMobilePadding, mobilePaddingUnit ),
+		'padding-top': generateCSSUnit( topMobilePadding, mobilePaddingUnit ),
+		'padding-bottom': generateCSSUnit( bottomMobilePadding, mobilePaddingUnit ),
 		'margin-left': generateCSSUnit( leftMarginMobile, marginType ),
 		'margin-right': generateCSSUnit( rightMarginMobile, marginType ),
 		'margin-top': generateCSSUnit( topMarginMobile, marginType ),
-		'margin-bottom': generateCSSUnit(
-			bottomMarginMobile,
-			marginType
-		),
-		...borderCSSMobile
+		'margin-bottom': generateCSSUnit( bottomMarginMobile, marginType ),
+		...borderCSSMobile,
 	};
 
-	tabletSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater' ] = {
+	tabletSelectors[
+		'.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'
+	] = {
 		'font-size': generateCSSUnit( sizeTablet, sizeType ),
 		'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
 		'letter-spacing': generateCSSUnit( letterSpacingTablet, letterSpacingType ),
-		'padding-left': generateCSSUnit(
-			leftTabletPadding,
-			tabletPaddingUnit
-		),
-		'padding-right': generateCSSUnit(
-			rightTabletPadding,
-			tabletPaddingUnit
-		),
-		'padding-top': generateCSSUnit(
-			topTabletPadding,
-			tabletPaddingUnit
-		),
-		'padding-bottom': generateCSSUnit(
-			bottomTabletPadding,
-			tabletPaddingUnit
-		),
+		'padding-left': generateCSSUnit( leftTabletPadding, tabletPaddingUnit ),
+		'padding-right': generateCSSUnit( rightTabletPadding, tabletPaddingUnit ),
+		'padding-top': generateCSSUnit( topTabletPadding, tabletPaddingUnit ),
+		'padding-bottom': generateCSSUnit( bottomTabletPadding, tabletPaddingUnit ),
 		'margin-left': generateCSSUnit( leftMarginTablet, marginType ),
 		'margin-right': generateCSSUnit( rightMarginTablet, marginType ),
 		'margin-top': generateCSSUnit( topMarginTablet, marginType ),
-		'margin-bottom': generateCSSUnit(
-			bottomMarginTablet,
-			marginType
-		),
-		...borderCSSTablet
+		'margin-bottom': generateCSSUnit( bottomMarginTablet, marginType ),
+		...borderCSSTablet,
 	};
 
 	selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg' ] = {
@@ -231,20 +217,26 @@ function styling( props ) {
 		'height': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), 'px' ),
 		'fill': iconColor,
 	};
-	tabletSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg' ] = {
+	tabletSelectors[
+		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg'
+	] = {
 		'width': generateCSSUnit( iconSizeTablet, 'px' ),
 		'height': generateCSSUnit( iconSizeTablet, 'px' ),
 		'fill': iconColor,
 	};
-	mobileSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg' ] = {
+	mobileSelectors[
+		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg'
+	] = {
 		'width': generateCSSUnit( iconSizeMobile, 'px' ),
 		'height': generateCSSUnit( iconSizeMobile, 'px' ),
 		'fill': iconColor,
 	};
-	selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__icon > svg' ] = {
+	selectors[
+		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__icon > svg'
+	] = {
 		'fill': iconHColor,
 	};
-	if( ! removeText ) {
+	if ( ! removeText ) {
 		selectors[ ' .uagb-button__icon-position-after' ] = {
 			'margin-left': generateCSSUnit( getFallbackNumber( iconSpace, 'iconSpace', blockName ), 'px' ),
 		};
@@ -269,9 +261,9 @@ function styling( props ) {
 	}
 
 	if ( 'transparent' === backgroundType ) {
-		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ]  = {
+		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = {
 			'background': 'transparent',
-		}
+		};
 	} else if ( 'gradient' === backgroundType ) {
 		const backgroundAttributes = {
 			'backgroundType': 'gradient',
@@ -290,13 +282,13 @@ function styling( props ) {
 	} else if ( 'color' === backgroundType ) {
 		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater' ] = {
 			'background': background,
-		}
+		};
 	}
 
 	if ( 'transparent' === hoverbackgroundType ) {
-		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover' ]  = {
+		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
 			'background': 'transparent',
-		}
+		};
 	} else if ( 'gradient' === hoverbackgroundType ) {
 		const hoverbackgroundAttributes = {
 			'backgroundType': 'gradient',
@@ -311,28 +303,20 @@ function styling( props ) {
 		};
 
 		const btnhBackground = generateBackgroundCSS( hoverbackgroundAttributes );
-		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover' ] = btnhBackground;
+		selectors[
+			'.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover'
+		] = btnhBackground;
 	} else if ( 'color' === hoverbackgroundType ) {
 		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
 			'background': hBackground,
-		}
+		};
 	}
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 	let stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS(
-		tabletSelectors,
-		`${ id }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
+	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
 
-	stylingCss += generateCSS(
-		mobileSelectors,
-		`${ id }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	stylingCss += generateCSS( mobileSelectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
 
 	return stylingCss;
 }

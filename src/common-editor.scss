@@ -97,18 +97,16 @@
 		border-radius: 2px;
 	}
 
-
 	.block-editor-block-list__block:not([contenteditable]):focus {
 		z-index: 1;
 	}
-
 }
 
-.block-editor-block-list__layout .block-editor-block-list__block.is-selected { // Added CSS for better clarity to the users to indicates which block is selected & being edited.
+.block-editor-block-list__layout .block-editor-block-list__block.is-selected {
+	// Added CSS for better clarity to the users to indicates which block is selected & being edited.
 	box-shadow: 0 0 0 1.5px $spectra-color-primary;
 	border-radius: 2px;
 }
-
 
 /* UAG Control Label CSS*/
 .uag-control-label,
@@ -375,7 +373,8 @@ hr.uagb-editor__separator {
 }
 
 .uagb-size-type-field button.components-button.uagb-size-btn.is-primary,
-.uagb-size-type-field button.components-button.uagb-size-btn.is-primary:focus:not(:disabled):not([aria-disabled="true"]) {
+.uagb-size-type-field
+button.components-button.uagb-size-btn.is-primary:focus:not(:disabled):not([aria-disabled="true"]) {
 	box-shadow: none;
 	background: transparent;
 	border: none;
@@ -391,7 +390,8 @@ hr.uagb-editor__separator {
 }
 
 .uagb-size-type-field button.components-button.uagb-size-btn:hover,
-.uagb-size-type-field button.components-button.uagb-size-btn:hover:focus:not(:disabled):not([aria-disabled="true"]) {
+.uagb-size-type-field
+button.components-button.uagb-size-btn:hover:focus:not(:disabled):not([aria-disabled="true"]) {
 	color: $spectra-color-heading;
 	background: transparent;
 	-webkit-box-shadow: none;
@@ -721,7 +721,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	circle {
 		stroke: $spectra-color-secondary;
 	}
-
 }
 
 /* Breadcrumbs css */
@@ -759,7 +758,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 
 /* Gradient Picker CSS */
 .uagb-gradient-picker {
-
 	// This helps to fix alignment of gradient control input fields.
 	.components-flex.components-custom-gradient-picker__ui-line {
 		align-items: baseline;
@@ -780,7 +778,8 @@ button.components-button.uagb-review-select-btn.is-secondary {
 
 	.components-toggle-control .components-base-control__field {
 
-		.components-flex { // WP6.1 compatibility.
+		.components-flex {
+			// WP6.1 compatibility.
 			display: flex;
 			flex-direction: row-reverse;
 			justify-content: space-between;

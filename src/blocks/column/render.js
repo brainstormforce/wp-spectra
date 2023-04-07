@@ -4,7 +4,7 @@
 
 import classnames from 'classnames';
 import { InnerBlocks } from '@wordpress/block-editor';
-import { useLayoutEffect,memo } from '@wordpress/element';
+import { useLayoutEffect, memo } from '@wordpress/element';
 
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -29,10 +29,8 @@ const Render = ( props ) => {
 	const active = isSelected ? 'active' : 'not-active';
 
 	const alignClass = 'center' === align ? '' : `uagb-column__align-${ align }`;
-	const alignClassMobile =
-		'' === alignMobile ? '' : `uagb-column__align-mobile-${ alignMobile }`;
-	const alignClassTablet =
-		'' === alignTablet ? '' : `uagb-column__align-tablet-${ alignTablet }`;
+	const alignClassMobile = '' === alignMobile ? '' : `uagb-column__align-mobile-${ alignMobile }`;
+	const alignClassTablet = '' === alignTablet ? '' : `uagb-column__align-tablet-${ alignTablet }`;
 
 	return (
 		<div

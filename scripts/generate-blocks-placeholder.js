@@ -14,38 +14,48 @@ const dest_content = `/**
 `;
 
 const getBlockSlug = ( content ) => {
-	return ( content.match( /registerBlockType\(\s*.*?['"](.*?)['"]/ ) ||
-		[] )[ 1 ];
+	return ( content.match( /registerBlockType\(\s*.*?['"](.*?)['"]/ ) || [] )[ 1 ];
 };
 
 const getBlockTitle = ( content ) => {
 	return ( content.match( /title\s*:.*?(__\(.*?\))/ ) || [] )[ 1 ];
 };
 
-const registerBlocks = glob
-	.sync( './src/blocks/**/block.js' )
-	.reduce( ( code, file ) => {
-		const content = fs.readFileSync( path.resolve( file ), 'utf8' );
+const registerBlocks = glob.sync( './src/blocks/**/block.js' ).reduce( ( code, file ) => {
+	const content = fs.readFileSync( path.resolve( file ), 'utf8' );
 
-		const blockSlug = getBlockSlug( content );
-		const blockTitle = getBlockTitle( content );
+	const blockSlug = getBlockSlug( content );
+	const blockTitle = getBlockTitle( content );
 
-		const excludedBlocks = ['./src/blocks/post/post-button/block.js', './src/blocks/post/post-excerpt/block.js', './src/blocks/post/post-image/block.js', './src/blocks/post/post-masonry/block.js', './src/blocks/post/post-meta/block.js',
-		'./src/blocks/post/post-taxonomy/block.js', './src/blocks/post/post-title/block.js', './src/blocks/wp-search/block.js','./src/blocks/gf-designer/block.js', './src/blocks/cf7-designer/block.js', './src/blocks/columns/block.js', './src/blocks/column/block.js', './src/blocks/section/block.js'];
+	const excludedBlocks = [
+		'./src/blocks/post/post-button/block.js',
+		'./src/blocks/post/post-excerpt/block.js',
+		'./src/blocks/post/post-image/block.js',
+		'./src/blocks/post/post-masonry/block.js',
+		'./src/blocks/post/post-meta/block.js',
+		'./src/blocks/post/post-taxonomy/block.js',
+		'./src/blocks/post/post-title/block.js',
+		'./src/blocks/wp-search/block.js',
+		'./src/blocks/gf-designer/block.js',
+		'./src/blocks/cf7-designer/block.js',
+		'./src/blocks/columns/block.js',
+		'./src/blocks/column/block.js',
+		'./src/blocks/section/block.js',
+	];
 
-		if ( ! blockSlug || ! blockTitle || -1 !== file.indexOf( 'child' ) || excludedBlocks.includes( file ) ) {
-			return code;
-		}
+	if ( ! blockSlug || ! blockTitle || -1 !== file.indexOf( 'child' ) || excludedBlocks.includes( file ) ) {
+		return code;
+	}
 
-		return `${ code }
+	return `${ code }
 registerBlockType( '${ blockSlug }', { title: ${ blockTitle } } );`;
-	}, dest_content );
+}, dest_content );
 
 fs.writeFile( dest_file, registerBlocks, ( err ) => {
 	if ( err ) {
 		console.log( err ); // eslint-disable-line
-		return
+		return;
 	}
 
-	console.log( `Sucessfully written block registration placeholder ${ dest_file }` ) // eslint-disable-line
+	console.log( `Sucessfully written block registration placeholder ${ dest_file }` ); // eslint-disable-line
 } );

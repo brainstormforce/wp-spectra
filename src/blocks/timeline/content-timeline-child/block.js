@@ -17,7 +17,10 @@ import PreviewImage from '@Controls/previewImage';
 import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 let contentTimelineChildCommonData = {};
-contentTimelineChildCommonData = applyFilters( 'uagb/content-timeline-child', addCommonDataToSpectraBlocks( contentTimelineChildCommonData ) );
+contentTimelineChildCommonData = applyFilters(
+	'uagb/content-timeline-child',
+	addCommonDataToSpectraBlocks( contentTimelineChildCommonData )
+);
 registerBlockType( 'uagb/content-timeline-child', {
 	...contentTimelineChildCommonData,
 	title: __( 'Content Timeline Child', 'ultimate-addons-for-gutenberg' ),
@@ -32,11 +35,11 @@ registerBlockType( 'uagb/content-timeline-child', {
 	category: uagb_blocks_info.category,
 	attributes,
 	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="content-timeline-child" isChildren={ true } />
-			) : (
-				<Edit { ...props } />
-			),
+		props.attributes.isPreview ? (
+			<PreviewImage image="content-timeline-child" isChildren={ true } />
+		) : (
+			<Edit { ...props } />
+		),
 	save,
 	deprecated,
 } );

@@ -5,20 +5,16 @@
 import { __ } from '@wordpress/i18n';
 import { useEffect, useState } from '@wordpress/element';
 
-
 import Settings from './settings';
 import Render from './render';
 
 const UAGBFormsSelectEdit = ( props ) => {
 	const { setAttributes, isSelected, clientId } = props;
-	
+
 	const [ setState ] = useState( {
 		optionsstate: [
 			{
-				optiontitle: __(
-					'Option Name 1',
-					'ultimate-addons-for-gutenberg'
-				),
+				optiontitle: __( 'Option Name 1', 'ultimate-addons-for-gutenberg' ),
 			},
 		],
 	} );
@@ -29,10 +25,7 @@ const UAGBFormsSelectEdit = ( props ) => {
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-style-forms-select-' + clientId.substr( 0, 8 )
-		);
+		$style.setAttribute( 'id', 'uagb-style-forms-select-' + clientId.substr( 0, 8 ) );
 		document.head.appendChild( $style );
 	}, [] );
 

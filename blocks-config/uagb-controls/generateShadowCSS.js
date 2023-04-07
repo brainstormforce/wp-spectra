@@ -2,11 +2,11 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 
 /**
  * Generate the Box Shadow or Text Shadow CSS.
- * 
+ *
  * For Text Shadow CSS:
  * { spread, position } should not be sent as params during the function call.
  * { spreadUnit } will have no effect.
- * 
+ *
  * For Box/Text Shadow Hover CSS:
  * { altColor } should be set as the attribute used for { color } in Box/Text Shadow Normal CSS.
  *
@@ -61,21 +61,21 @@ const generateShadowCSS = ( shadowProperties ) => {
 	if ( '' === blur ) {
 		blur = 0;
 	}
-	
+
 	spread = generateCSSUnit( spread, spreadUnit );
 	if ( '' === spread ) {
 		spread = 0;
 	}
 
 	// If all numeric unit values are exactly 0, don't render the CSS.
-	if ( ( 0 === horizontal && 0 === vertical ) && ( 0 === blur && 0 === spread ) ) {
+	if ( 0 === horizontal && 0 === vertical && 0 === blur && 0 === spread ) {
 		return '';
 	}
 
 	// Return the CSS with horizontal, vertical, blur, and color - and conditionally render spread and position.
-	return (
-		`${ horizontal } ${ vertical } ${ blur }${ spread ? ` ${ spread }` : '' } ${ color ? color : altColor }${ ( 'outset' === position ) ? '' : ` ${ position }` }`
-	);
-}
+	return `${ horizontal } ${ vertical } ${ blur }${ spread ? ` ${ spread }` : '' } ${ color ? color : altColor }${
+		'outset' === position ? '' : ` ${ position }`
+	}`;
+};
 
 export default generateShadowCSS;

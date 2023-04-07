@@ -9,8 +9,7 @@ const fs = require( 'fs' );
 
 // Make sure any symlinks in the project folder are resolved:
 const pluginDir = fs.realpathSync( process.cwd() );
-const resolvePlugin = ( relativePath ) =>
-	path.resolve( pluginDir, relativePath );
+const resolvePlugin = ( relativePath ) => path.resolve( pluginDir, relativePath );
 
 // Config after eject: we're in ./config/
 module.exports = {

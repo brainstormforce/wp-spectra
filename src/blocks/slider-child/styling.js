@@ -8,7 +8,6 @@ import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
-
 	const { attributes } = props;
 	let {
 		backgroundType,
@@ -87,7 +86,6 @@ function styling( props ) {
 		gradientType,
 		gradientAngle,
 		selectGradient,
-
 	} = attributes;
 
 	const borderCSSTablet = generateBorderCSS( props.attributes, 'container', 'tablet' );
@@ -120,10 +118,10 @@ function styling( props ) {
 	const selectors = {};
 
 	const backgroundAttributesDesktop = {
-        'backgroundType': backgroundType,
-        'backgroundImage': backgroundImageDesktop,
-        'backgroundColor': backgroundColor,
-        'gradientValue': gradientValue,
+		'backgroundType': backgroundType,
+		'backgroundImage': backgroundImageDesktop,
+		'backgroundColor': backgroundColor,
+		'gradientValue': gradientValue,
 		'gradientColor1': gradientColor1,
 		'gradientColor2': gradientColor2,
 		'gradientLocation1': gradientLocation1,
@@ -131,20 +129,20 @@ function styling( props ) {
 		'gradientType': gradientType,
 		'gradientAngle': gradientAngle,
 		'selectGradient': selectGradient,
-        'backgroundRepeat': backgroundRepeatDesktop,
-        'backgroundPosition': backgroundPositionDesktop,
-        'backgroundSize': backgroundSizeDesktop,
-        'backgroundAttachment': backgroundAttachmentDesktop,
-		'backgroundCustomSize' : backgroundCustomSizeDesktop,
-		'backgroundCustomSizeType' : backgroundCustomSizeType,
-		'backgroundImageColor' : backgroundImageColor,
-		'overlayType' : overlayType,
+		'backgroundRepeat': backgroundRepeatDesktop,
+		'backgroundPosition': backgroundPositionDesktop,
+		'backgroundSize': backgroundSizeDesktop,
+		'backgroundAttachment': backgroundAttachmentDesktop,
+		'backgroundCustomSize': backgroundCustomSizeDesktop,
+		'backgroundCustomSizeType': backgroundCustomSizeType,
+		'backgroundImageColor': backgroundImageColor,
+		'overlayType': overlayType,
 		'customPosition': customPosition,
 		'xPosition': xPositionDesktop,
 		'xPositionType': xPositionType,
 		'yPosition': yPositionDesktop,
 		'yPositionType': yPositionType,
-    };
+	};
 
 	const BackgroundCSSDesktop = generateBackgroundCSS( backgroundAttributesDesktop );
 
@@ -153,21 +151,21 @@ function styling( props ) {
 		'padding-bottom': generateCSSUnit( bottomPaddingDesktop, paddingType ),
 		'padding-left': generateCSSUnit( leftPaddingDesktop, paddingType ),
 		'padding-right': generateCSSUnit( rightPaddingDesktop, paddingType ),
-		'margin-top': generateCSSUnit( topMarginDesktop, marginType ) +	' !important',
+		'margin-top': generateCSSUnit( topMarginDesktop, marginType ) + ' !important',
 		'margin-bottom': generateCSSUnit( bottomMarginDesktop, marginType ) + ' !important',
 		'margin-left': generateCSSUnit( leftMarginDesktop, marginType ),
 		'margin-right': generateCSSUnit( rightMarginDesktop, marginType ),
 		...BackgroundCSSDesktop,
-		'overflow' : overflow
-	}
+		'overflow': overflow,
+	};
 
-	selectors[' .swiper-content'] = sliderCSS;
+	selectors[ ' .swiper-content' ] = sliderCSS;
 
 	const backgroundAttributesTablet = {
-        'backgroundType': backgroundType,
-        'backgroundImage': backgroundImageTablet,
-        'backgroundColor': backgroundColor,
-        'gradientValue': gradientValue,
+		'backgroundType': backgroundType,
+		'backgroundImage': backgroundImageTablet,
+		'backgroundColor': backgroundColor,
+		'gradientValue': gradientValue,
 		'gradientColor1': gradientColor1,
 		'gradientColor2': gradientColor2,
 		'gradientLocation1': gradientLocation1,
@@ -175,43 +173,43 @@ function styling( props ) {
 		'gradientType': gradientType,
 		'gradientAngle': gradientAngle,
 		'selectGradient': selectGradient,
-        'backgroundRepeat': backgroundRepeatTablet,
-        'backgroundPosition': backgroundPositionTablet,
-        'backgroundSize': backgroundSizeTablet,
-        'backgroundAttachment': backgroundAttachmentTablet,
-		'backgroundCustomSize' : backgroundCustomSizeTablet,
-		'backgroundCustomSizeType' : backgroundCustomSizeType,
-		'backgroundImageColor' : backgroundImageColor,
-		'overlayType' : overlayType,
+		'backgroundRepeat': backgroundRepeatTablet,
+		'backgroundPosition': backgroundPositionTablet,
+		'backgroundSize': backgroundSizeTablet,
+		'backgroundAttachment': backgroundAttachmentTablet,
+		'backgroundCustomSize': backgroundCustomSizeTablet,
+		'backgroundCustomSizeType': backgroundCustomSizeType,
+		'backgroundImageColor': backgroundImageColor,
+		'overlayType': overlayType,
 		'customPosition': customPosition,
 		'xPosition': xPositionTablet,
 		'xPositionType': xPositionTypeTablet,
 		'yPosition': yPositionTablet,
 		'yPositionType': yPositionTypeTablet,
-    };
+	};
 
 	const containerBackgroundCSSTablet = generateBackgroundCSS( backgroundAttributesTablet );
 
 	const tablet_selectors = {
-		' .swiper-content' : {
+		' .swiper-content': {
 			'padding-top': generateCSSUnit( topPaddingTablet, paddingTypeTablet ),
 			'padding-bottom': generateCSSUnit( bottomPaddingTablet, paddingTypeTablet ),
 			'padding-left': generateCSSUnit( leftPaddingTablet, paddingTypeTablet ),
 			'padding-right': generateCSSUnit( rightPaddingTablet, paddingTypeTablet ),
-			'margin-top': generateCSSUnit( topMarginTablet, marginTypeTablet )  + ' !important',
-			'margin-bottom': generateCSSUnit( bottomMarginTablet, marginTypeTablet )  + ' !important',
+			'margin-top': generateCSSUnit( topMarginTablet, marginTypeTablet ) + ' !important',
+			'margin-bottom': generateCSSUnit( bottomMarginTablet, marginTypeTablet ) + ' !important',
 			'margin-left': generateCSSUnit( leftMarginTablet, marginTypeTablet ),
 			'margin-right': generateCSSUnit( rightMarginTablet, marginTypeTablet ),
 			...containerBackgroundCSSTablet,
-			...borderCSSTablet
+			...borderCSSTablet,
 		},
 	};
 
 	const backgroundAttributesMobile = {
-        'backgroundType': backgroundType,
-        'backgroundImage': backgroundImageMobile,
-        'backgroundColor': backgroundColor,
-        'gradientValue': gradientValue,
+		'backgroundType': backgroundType,
+		'backgroundImage': backgroundImageMobile,
+		'backgroundColor': backgroundColor,
+		'gradientValue': gradientValue,
 		'gradientColor1': gradientColor1,
 		'gradientColor2': gradientColor2,
 		'gradientLocation1': gradientLocation1,
@@ -219,35 +217,35 @@ function styling( props ) {
 		'gradientType': gradientType,
 		'gradientAngle': gradientAngle,
 		'selectGradient': selectGradient,
-        'backgroundRepeat': backgroundRepeatMobile,
-        'backgroundPosition': backgroundPositionMobile,
-        'backgroundSize': backgroundSizeMobile,
-        'backgroundAttachment': backgroundAttachmentMobile,
-		'backgroundCustomSize' : backgroundCustomSizeMobile,
-		'backgroundCustomSizeType' : backgroundCustomSizeType,
-		'backgroundImageColor' : backgroundImageColor,
-		'overlayType' : overlayType,
+		'backgroundRepeat': backgroundRepeatMobile,
+		'backgroundPosition': backgroundPositionMobile,
+		'backgroundSize': backgroundSizeMobile,
+		'backgroundAttachment': backgroundAttachmentMobile,
+		'backgroundCustomSize': backgroundCustomSizeMobile,
+		'backgroundCustomSizeType': backgroundCustomSizeType,
+		'backgroundImageColor': backgroundImageColor,
+		'overlayType': overlayType,
 		'customPosition': customPosition,
 		'xPosition': xPositionMobile,
 		'xPositionType': xPositionTypeMobile,
 		'yPosition': yPositionMobile,
 		'yPositionType': yPositionTypeMobile,
-    };
+	};
 
 	const containerBackgroundCSSMobile = generateBackgroundCSS( backgroundAttributesMobile );
 
 	const mobile_selectors = {
-		' .swiper-content' : {
+		' .swiper-content': {
 			'padding-top': generateCSSUnit( topPaddingMobile, paddingTypeMobile ),
 			'padding-bottom': generateCSSUnit( bottomPaddingMobile, paddingTypeMobile ),
 			'padding-left': generateCSSUnit( leftPaddingMobile, paddingTypeMobile ),
 			'padding-right': generateCSSUnit( rightPaddingMobile, paddingTypeMobile ),
-			'margin-top': generateCSSUnit( topMarginMobile, marginTypeMobile )  + ' !important',
-			'margin-bottom': generateCSSUnit( bottomMarginMobile, marginTypeMobile )  + ' !important',
+			'margin-top': generateCSSUnit( topMarginMobile, marginTypeMobile ) + ' !important',
+			'margin-bottom': generateCSSUnit( bottomMarginMobile, marginTypeMobile ) + ' !important',
 			'margin-left': generateCSSUnit( leftMarginMobile, marginTypeMobile ),
 			'margin-right': generateCSSUnit( rightMarginMobile, marginTypeMobile ),
 			...containerBackgroundCSSMobile,
-			...borderCSSMobile
+			...borderCSSMobile,
 		},
 	};
 

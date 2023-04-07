@@ -1,9 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { memo } from '@wordpress/element';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
-import InspectorTab, {
-	UAGTabs,
-} from '@Components/inspector-tabs/InspectorTab.js';
+import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import UAGSelectControl from '@Components/select-control';
 import { InspectorControls } from '@wordpress/block-editor';
 import { ToggleControl } from '@wordpress/components';
@@ -21,10 +19,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody initialOpen={ true }>
 				<UAGSelectControl
-					label={ __(
-						'Autocomplete',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Autocomplete', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: autocomplete,
 						label: 'autocomplete',
@@ -43,13 +38,8 @@ const Settings = ( props ) => {
 						label: 'placeholder',
 					} }
 					setAttributes={ setAttributes }
-					onChange={ ( value ) =>
-						setAttributes( { placeholder: value } )
-					}
-					placeholder={ __(
-						'Placeholder',
-						'ultimate-addons-for-gutenberg'
-					) }
+					onChange={ ( value ) => setAttributes( { placeholder: value } ) }
+					placeholder={ __( 'Placeholder', 'ultimate-addons-for-gutenberg' ) }
 				/>
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
@@ -63,9 +53,7 @@ const Settings = ( props ) => {
 	return (
 		<InspectorControls>
 			<InspectorTabs tabs={ [ 'general', 'advance' ] }>
-				<InspectorTab { ...UAGTabs.general }>
-					{ nameInspectorControls() }
-				</InspectorTab>
+				<InspectorTab { ...UAGTabs.general }>{ nameInspectorControls() }</InspectorTab>
 				<InspectorTab { ...UAGTabs.advance }></InspectorTab>
 			</InspectorTabs>
 		</InspectorControls>

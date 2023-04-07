@@ -23,21 +23,14 @@ registerBlockType( 'uagb/tabs-child', {
 	description: __( 'Display your content in a tab.', 'ultimate-addons-for-gutenberg' ),
 	parent: [ 'uagb/tabs' ],
 	icon: UAGB_Block_Icons.tabs_child,
-	keywords: [
-		__( 'tabs', 'ultimate-addons-for-gutenberg' ),
-		__( 'uag', 'ultimate-addons-for-gutenberg' ),
-	],
+	keywords: [ __( 'tabs', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	supports: {
 		anchor: true,
 	},
 	attributes,
-category: uagb_blocks_info.category,
+	category: uagb_blocks_info.category,
 	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="tabs-child" isChildren={ true } />
-			) : (
-				<Edit { ...props } />
-			),
+		props.attributes.isPreview ? <PreviewImage image="tabs-child" isChildren={ true } /> : <Edit { ...props } />,
 	save,
 	deprecated,
 } );

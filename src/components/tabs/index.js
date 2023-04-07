@@ -9,7 +9,7 @@ import UAGHelpText from '@Components/help-text';
 import { applyFilters } from '@wordpress/hooks';
 
 const UAGTabsControl = ( props ) => {
-	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const [ panelNameForHook, setPanelNameForHook ] = useState( null );
 	const panelRef = useRef( null );
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -19,86 +19,80 @@ const UAGTabsControl = ( props ) => {
 		};
 	}, [] );
 
-
 	const { getSelectedBlock } = select( 'core/block-editor' );
 
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	useEffect( () => {
-		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
-	}, [blockNameForHook] )
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) );
+	}, [ blockNameForHook ] );
 
 	const tabRef = useRef( null );
 
-	const tabsCountClass =
-		3 === props.tabs.length ? 'uag-control-tabs-three-tabs ' : '';
+	const tabsCountClass = 3 === props.tabs.length ? 'uag-control-tabs-three-tabs ' : '';
 
-	const tabs = props.tabs.map( ( tab, index )=>{
+	const tabs = props.tabs.map( ( tab, index ) => {
 		return {
 			...tab,
-			className: `uagb-tab-${index + 1} ${tab?.name}`
-		}
+			className: `uagb-tab-${ index + 1 } ${ tab?.name }`,
+		};
 	} );
 
 	const controlName = 'tabs'; // there is no label props that's why keep hard coded label
-	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
-
+	const controlBeforeDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }.before`,
+		'',
+		blockNameForHook
+	);
+	const controlAfterDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }`,
+		'',
+		blockNameForHook
+	);
 
 	return (
-		<div
-			ref={panelRef}
-
-		>
-			{
-				controlBeforeDomElement
-			}
+		<div ref={ panelRef }>
+			{ controlBeforeDomElement }
 			<TabPanel
 				className={ `uag-control-tabs ${ tabsCountClass }` }
 				activeClass="active-tab"
 				tabs={ tabs }
 				ref={ tabRef }
-				onSelect= {
-					( tabName ) => {
-						const selectedTab = document.getElementsByClassName( 'uag-control-tabs' )[0]?.querySelector( `.${ tabName }` );
-						let selectedTabClass = false;
-						if ( selectedTab && selectedTab?.classList ) {
-							selectedTab?.classList.forEach( ( className ) => {
-								if ( className.includes( 'uagb-tab' ) ) {
-									selectedTabClass = `.${ className }`;
-								}
-							} );
-						}
-
-						const blockName = getSelectedBlock()?.name;
-						const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
-						const data = {
-							...uagSettingState,
-							[blockName] : {
-								...uagSettingState?.[blockName],
-								selectedInnerTab : selectedTabClass
+				onSelect={ ( tabName ) => {
+					const selectedTab = document
+						.getElementsByClassName( 'uag-control-tabs' )[ 0 ]
+						?.querySelector( `.${ tabName }` );
+					let selectedTabClass = false;
+					if ( selectedTab && selectedTab?.classList ) {
+						selectedTab?.classList.forEach( ( className ) => {
+							if ( className.includes( 'uagb-tab' ) ) {
+								selectedTabClass = `.${ className }`;
 							}
-						}
-
-						const uagLocalStorage = getUAGEditorStateLocalStorage();
-						if ( uagLocalStorage ) {
-							uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
-						}
+						} );
 					}
-				}
+
+					const blockName = getSelectedBlock()?.name;
+					const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+					const data = {
+						...uagSettingState,
+						[ blockName ]: {
+							...uagSettingState?.[ blockName ],
+							selectedInnerTab: selectedTabClass,
+						},
+					};
+
+					const uagLocalStorage = getUAGEditorStateLocalStorage();
+					if ( uagLocalStorage ) {
+						uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
+					}
+				} }
 			>
 				{ ( tabName ) => {
-					return (
-						<div className="uag-control-tabs-output">
-							{ props[ tabName.name ] }
-						</div>
-					);
+					return <div className="uag-control-tabs-output">{ props[ tabName.name ] }</div>;
 				} }
 			</TabPanel>
-			{ ! props?.disableBottomSeparator && <Separator/> }
+			{ ! props?.disableBottomSeparator && <Separator /> }
 			<UAGHelpText text={ props.help } />
-			{
-				controlAfterDomElement
-			}
+			{ controlAfterDomElement }
 		</div>
 	);
 };

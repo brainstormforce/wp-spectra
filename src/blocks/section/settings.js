@@ -1,9 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import BoxShadowControl from '@Components/box-shadow';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
-import InspectorTab, {
-	UAGTabs,
-} from '@Components/inspector-tabs/InspectorTab.js';
+import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
 import Background from '@Components/background';
@@ -11,11 +9,7 @@ import ResponsiveBorder from '@Components/responsive-border';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
 import renderSVG from '@Controls/renderIcon';
-import {
-	BlockControls,
-	AlignmentToolbar,
-	InspectorControls,
-} from '@wordpress/block-editor';
+import { BlockControls, AlignmentToolbar, InspectorControls } from '@wordpress/block-editor';
 import { ToggleControl, Icon } from '@wordpress/components';
 import { memo } from '@wordpress/element';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -104,10 +98,7 @@ const Settings = ( props ) => {
 			<UAGAdvancedPanelBody initialOpen={ true }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
-					label={ __(
-						'Content Width',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Content Width', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: contentWidth,
 						label: 'contentWidth',
@@ -127,93 +118,57 @@ const Settings = ( props ) => {
 				/>
 				{ 'boxed' === contentWidth && (
 					<>
-					<MultiButtonsControl
-						setAttributes={ setAttributes }
-						label={ __(
-							'Alignment',
-							'ultimate-addons-for-gutenberg'
-						) }
-						data={ {
-							value: align,
-							label: 'align',
-						} }
-						className="uagb-multi-button-alignment-control"
-						options={ [
-							{
-								value: 'left',
-								icon: (
-									<Icon
-										icon={ renderSVG( 'fa fa-align-left' ) }
-									/>
-								),
-								tooltip: __(
-									'Left',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'center',
-								icon: (
-									<Icon
-										icon={ renderSVG(
-											'fa fa-align-center'
-										) }
-									/>
-								),
-								tooltip: __(
-									'Center',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'right',
-								icon: (
-									<Icon
-										icon={ renderSVG(
-											'fa fa-align-right'
-										) }
-									/>
-								),
-								tooltip: __(
-									'Right',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-						] }
-						showIcons={ true }
-					/>
-					<Range
-						label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
-						setAttributes={ setAttributes }
-						value={ width }
-						data={ {
-							value: width,
-							label: 'width',
-						} }
-						min={ 0 }
-						max={ 2000 }
-						displayUnit={ false }
-					/>
-				</>
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
+							data={ {
+								value: align,
+								label: 'align',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'left',
+									icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+									tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'center',
+									icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
+									tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'right',
+									icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
+									tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
+								},
+							] }
+							showIcons={ true }
+						/>
+						<Range
+							label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
+							setAttributes={ setAttributes }
+							value={ width }
+							data={ {
+								value: width,
+								label: 'width',
+							} }
+							min={ 0 }
+							max={ 2000 }
+							displayUnit={ false }
+						/>
+					</>
 				) }
 				{ contentWidth !== 'boxed' && (
 					<ToggleControl
-						label={ __(
-							'Inherit Inner Width from Theme',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Inherit Inner Width from Theme', 'ultimate-addons-for-gutenberg' ) }
 						checked={ themeWidth }
-						onChange={ () =>
-							setAttributes( { themeWidth: ! themeWidth } )
-						}
+						onChange={ () => setAttributes( { themeWidth: ! themeWidth } ) }
 					/>
 				) }
 				{ contentWidth !== 'boxed' && ! themeWidth && (
 					<Range
-						label={ __(
-							'Inner Width',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Inner Width', 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }
 						value={ innerWidth }
 						data={ {
@@ -228,34 +183,22 @@ const Settings = ( props ) => {
 						} }
 						units={ [
 							{
-								name: __(
-									'Pixel',
-									'ultimate-addons-for-gutenberg'
-								),
+								name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
 								unitValue: 'px',
 							},
 							{
-								name: __(
-									'Em',
-									'ultimate-addons-for-gutenberg'
-								),
+								name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
 								unitValue: 'em',
 							},
 							{
-								name: __(
-									'%',
-									'ultimate-addons-for-gutenberg'
-								),
+								name: __( '%', 'ultimate-addons-for-gutenberg' ),
 								unitValue: '%',
 							},
 						] }
 					/>
 				) }
 				<UAGSelectControl
-					label={ __(
-						'HTML Tag',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'HTML Tag', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: tag,
 						label: 'tag',
@@ -268,45 +211,27 @@ const Settings = ( props ) => {
 						},
 						{
 							value: 'header',
-							label: __(
-								'header',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'header', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'footer',
-							label: __(
-								'footer',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'footer', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'main',
-							label: __(
-								'main',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'main', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'article',
-							label: __(
-								'article',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'article', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'section',
-							label: __(
-								'section',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'section', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'aside',
-							label: __(
-								'aside',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'aside', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'nav',
@@ -469,44 +394,41 @@ const Settings = ( props ) => {
 
 	const getBackgroundPanelBody = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<Background
 					setAttributes={ setAttributes }
 					backgroundGradient={ {
 						value: gradientValue,
 						label: 'gradientValue',
 					} }
-					backgroundGradientColor1={{
+					backgroundGradientColor1={ {
 						value: gradientColor1,
-						label: 'gradientColor1'
-					}}
-					gradientType={{
+						label: 'gradientColor1',
+					} }
+					gradientType={ {
 						value: selectGradient,
 						label: 'selectGradient',
-					}}
-					backgroundGradientColor2={{
-						value: 	gradientColor2,
-						label: 'gradientColor2'
-					}}
-					backgroundGradientLocation1={{
-						value: 	gradientLocation1,
-						label: 'gradientLocation1'
-					}}
-					backgroundGradientLocation2={{
-						value: 	gradientLocation2,
-						label: 'gradientLocation2'
-					}}
-					backgroundGradientType={{
-						value: 	gradientType,
-						label: 'gradientType'
-					}}
-					backgroundGradientAngle={{
-						value: 	gradientAngle,
-						label: 'gradientAngle'
-					}}
+					} }
+					backgroundGradientColor2={ {
+						value: gradientColor2,
+						label: 'gradientColor2',
+					} }
+					backgroundGradientLocation1={ {
+						value: gradientLocation1,
+						label: 'gradientLocation1',
+					} }
+					backgroundGradientLocation2={ {
+						value: gradientLocation2,
+						label: 'gradientLocation2',
+					} }
+					backgroundGradientType={ {
+						value: gradientType,
+						label: 'gradientType',
+					} }
+					backgroundGradientAngle={ {
+						value: gradientAngle,
+						label: 'gradientAngle',
+					} }
 					backgroundImageColor={ {
 						value: backgroundImageColor,
 						label: 'backgroundImageColor',
@@ -515,9 +437,9 @@ const Settings = ( props ) => {
 						value: overlayType,
 						label: 'overlayType',
 					} }
-					gradientOverlay={{
+					gradientOverlay={ {
 						value: true,
-					}}
+					} }
 					backgroundSize={ {
 						value: backgroundSize,
 						label: 'backgroundSize',
@@ -561,7 +483,7 @@ const Settings = ( props ) => {
 						value: backgroundVideoOpacity,
 						label: 'backgroundVideoOpacity',
 					} }
-					onOpacityChange = { ( opacity ) => setAttributes( { backgroundVideoOpacity: opacity } ) }
+					onOpacityChange={ ( opacity ) => setAttributes( { backgroundVideoOpacity: opacity } ) }
 					{ ...props }
 				/>
 			</UAGAdvancedPanelBody>
@@ -571,74 +493,50 @@ const Settings = ( props ) => {
 	const getBorderPanelBody = () => {
 		return (
 			<>
-				<UAGAdvancedPanelBody
-					title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
-					initialOpen={ false }
-				>
+				<UAGAdvancedPanelBody title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<ResponsiveBorder
 						setAttributes={ setAttributes }
-						prefix={'overall'}
+						prefix={ 'overall' }
 						attributes={ attributes }
-						deviceType={ deviceType}
+						deviceType={ deviceType }
 						disableBottomSeparator={ true }
-						disabledBorderTitle= { true }
+						disabledBorderTitle={ true }
 					/>
 				</UAGAdvancedPanelBody>
 				<UAGAdvancedPanelBody title="Box Shadow" initialOpen={ false }>
 					<BoxShadowControl
 						blockId={ block_id }
 						setAttributes={ setAttributes }
-						label={ __(
-							'Box Shadow',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
 						boxShadowColor={ {
 							value: boxShadowColor,
 							label: 'boxShadowColor',
-							title: __(
-								'Color',
-								'ultimate-addons-for-gutenberg'
-							),
+							title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
 						} }
 						boxShadowHOffset={ {
 							value: boxShadowHOffset,
 							label: 'boxShadowHOffset',
-							title: __(
-								'Horizontal',
-								'ultimate-addons-for-gutenberg'
-							),
+							title: __( 'Horizontal', 'ultimate-addons-for-gutenberg' ),
 						} }
 						boxShadowVOffset={ {
 							value: boxShadowVOffset,
 							label: 'boxShadowVOffset',
-							title: __(
-								'Vertical',
-								'ultimate-addons-for-gutenberg'
-							),
+							title: __( 'Vertical', 'ultimate-addons-for-gutenberg' ),
 						} }
 						boxShadowBlur={ {
 							value: boxShadowBlur,
 							label: 'boxShadowBlur',
-							title: __(
-								'Blur',
-								'ultimate-addons-for-gutenberg'
-							),
+							title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
 						} }
 						boxShadowSpread={ {
 							value: boxShadowSpread,
 							label: 'boxShadowSpread',
-							title: __(
-								'Spread',
-								'ultimate-addons-for-gutenberg'
-							),
+							title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
 						} }
 						boxShadowPosition={ {
 							value: boxShadowPosition,
 							label: 'boxShadowPosition',
-							title: __(
-								'Position',
-								'ultimate-addons-for-gutenberg'
-							),
+							title: __( 'Position', 'ultimate-addons-for-gutenberg' ),
 						} }
 					/>
 				</UAGAdvancedPanelBody>
@@ -649,23 +547,18 @@ const Settings = ( props ) => {
 	const generalSetting = () => {
 		return (
 			<InspectorTabs>
-				<InspectorTab { ...UAGTabs.general }>
-					{ getLayoutPanelBody() }
-				</InspectorTab>
+				<InspectorTab { ...UAGTabs.general }>{ getLayoutPanelBody() }</InspectorTab>
 				<InspectorTab { ...UAGTabs.style }>
 					{ getBackgroundPanelBody() }
 					{ getBorderPanelBody() }
 					{ getSpacingPanelBody() }
 				</InspectorTab>
-				<InspectorTab
-					{ ...UAGTabs.advance }
-					parentProps={ props }
-				></InspectorTab>
+				<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 			</InspectorTabs>
 		);
 	};
 	return (
-			<>
+		<>
 			<BlockControls>
 				<AlignmentToolbar
 					value={ align }
@@ -676,8 +569,7 @@ const Settings = ( props ) => {
 				/>
 			</BlockControls>
 			<InspectorControls>{ generalSetting() }</InspectorControls>
-			</>
-
+		</>
 	);
 };
 

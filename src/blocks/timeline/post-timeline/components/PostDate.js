@@ -12,9 +12,7 @@ const PostDate = ( props ) => {
 					color: attributes.dateColor,
 				} }
 			>
-				{ attributes.displayPostDate && post.date_gmt && (
-					dateI18n( attributes.dateFormat, post.date_gmt )
-				) }
+				{ attributes.displayPostDate && post.date_gmt && dateI18n( attributes.dateFormat, post.date_gmt ) }
 			</div>
 		</>
 	);

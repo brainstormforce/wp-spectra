@@ -19,17 +19,7 @@ const EditorStars = ( props ) => {
 		} );
 	};
 
-	const {
-		limit,
-		id,
-		className,
-		inactiveStarColor,
-		onClick,
-		style,
-		starOutlineColor,
-		value,
-		activeStarColor,
-	} = props;
+	const { limit, id, className, inactiveStarColor, onClick, style, starOutlineColor, value, activeStarColor } = props;
 
 	return (
 		<div

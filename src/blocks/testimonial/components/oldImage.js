@@ -15,29 +15,16 @@ const TestimonialImage = ( props ) => {
 		if ( urlCheck !== '' ) {
 			const size = image.sizes;
 			const imageSize = attributes.imageSize;
-			if (
-				typeof size !== 'undefined' &&
-				typeof size[ imageSize ] !== 'undefined'
-			) {
+			if ( typeof size !== 'undefined' && typeof size[ imageSize ] !== 'undefined' ) {
 				url = size[ imageSize ].url;
 			} else {
 				url = urlCheck;
 			}
 
 			return (
-				<div
-					className="uagb-tm__image-content"
-					key={ 'tm_img-wrap-' + index_value }
-				>
-					<div
-						className="uagb-tm__image"
-						key={ 'tm_img-' + index_value }
-					>
-						<img
-							className="uagb-tm-img-src"
-							src={ url }
-							alt={ image.alt }
-						/>
+				<div className="uagb-tm__image-content" key={ 'tm_img-wrap-' + index_value }>
+					<div className="uagb-tm__image" key={ 'tm_img-' + index_value }>
+						<img className="uagb-tm-img-src" src={ url } alt={ image.alt } />
 					</div>
 				</div>
 			);

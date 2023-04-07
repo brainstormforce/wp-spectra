@@ -5,9 +5,7 @@ import { memo } from '@wordpress/element';
 import UAGIconPicker from '@Components/icon-picker';
 import TypographyControl from '@Components/typography';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
-import InspectorTab, {
-	UAGTabs,
-} from '@Components/inspector-tabs/InspectorTab.js';
+import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import renderSVG from '@Controls/renderIcon';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import Range from '@Components/range/Range.js';
@@ -19,14 +17,9 @@ import UAGSelectControl from '@Components/select-control';
 import { __ } from '@wordpress/i18n';
 
 import { dateI18n } from '@wordpress/date';
-import {
-	InspectorControls,
-} from '@wordpress/block-editor';
+import { InspectorControls } from '@wordpress/block-editor';
 
-import {
-	ToggleControl,
-	Icon,
-} from '@wordpress/components';
+import { ToggleControl, Icon } from '@wordpress/components';
 
 import { select } from '@wordpress/data';
 
@@ -160,14 +153,12 @@ const Settings = ( props ) => {
 			horizontalSpaceMobile,
 			horizontalSpaceUnit,
 			horizontalSpaceUnitTablet,
-			horizontalSpaceUnitMobile
+			horizontalSpaceUnitMobile,
 		},
 	} = props;
 
 	const getborderwidth = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
 
 		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.borderwidth = value;
@@ -176,9 +167,7 @@ const Settings = ( props ) => {
 	};
 
 	const getseparatorwidth = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
 
 		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.separatorwidth = value;
@@ -187,9 +176,7 @@ const Settings = ( props ) => {
 	};
 
 	const getdateFormat = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
 
 		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.dateFormat = value;
@@ -198,9 +185,7 @@ const Settings = ( props ) => {
 	};
 
 	const getTimelineicon = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
 
 		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.icon = value;
@@ -209,9 +194,7 @@ const Settings = ( props ) => {
 	};
 
 	const toggleDisplayPostDate = () => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
 
 		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.displayPostDate = displayPostDate;
@@ -223,16 +206,10 @@ const Settings = ( props ) => {
 
 	const generalSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
-					label={ __(
-						'Orientation',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Orientation', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: timelinAlignment,
@@ -251,43 +228,22 @@ const Settings = ( props ) => {
 					options={ [
 						{
 							value: 'left',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-left' ) }
-								/>
-							),
-							tooltip: __(
-								'Left',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+							tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'center',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-center' ) }
-								/>
-							),
-							tooltip: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
+							tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'right',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-right' ) }
-								/>
-							),
-							tooltip: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
+							tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					showIcons={ true }
-					responsive={true}
+					responsive={ true }
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -310,50 +266,26 @@ const Settings = ( props ) => {
 					options={ [
 						{
 							value: 'left',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-left' ) }
-								/>
-							),
-							tooltip: __(
-								'Left',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+							tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'center',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-center' ) }
-								/>
-							),
-							tooltip: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
+							tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'right',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-right' ) }
-								/>
-							),
-							tooltip: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
+							tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					showIcons={ true }
-					responsive={true}
+					responsive={ true }
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
-					label={ __(
-						'Arrow Alignment',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Arrow Alignment', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: arrowlinAlignment,
 						label: 'arrowlinAlignment',
@@ -366,36 +298,24 @@ const Settings = ( props ) => {
 						},
 						{
 							value: 'bottom',
-							label: __(
-								'Bottom',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Bottom', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'center',
-							label: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Center', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					showIcons={ false }
 				/>
 				<h2>{ __( 'Date' ) }</h2>
 				<ToggleControl
-					label={ __(
-						'Display Date',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Display Date', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostDate }
 					onChange={ toggleDisplayPostDate }
 				/>
 				{ displayPostDate && (
 					<UAGSelectControl
-						label={ __(
-							'Date Format',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Date Format', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: dateFormat,
 						} }
@@ -459,10 +379,7 @@ const Settings = ( props ) => {
 							{ value: 'F Y', label: dateI18n( 'F Y', today ) },
 							{
 								value: 'custom',
-								label: __(
-									'Normal Text',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Normal Text', 'ultimate-addons-for-gutenberg' ),
 							},
 						] }
 					/>
@@ -472,10 +389,7 @@ const Settings = ( props ) => {
 	};
 	const spacingSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<SpacingControl
 					{ ...props }
 					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
@@ -547,10 +461,7 @@ const Settings = ( props ) => {
 					} }
 				/>
 				<ResponsiveSlider
-					label={ __(
-						'Timeline - Marker Gap',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Timeline - Marker Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: horizontalSpace,
@@ -581,10 +492,7 @@ const Settings = ( props ) => {
 					limitMax={ { 'px': 50, '%': 100, 'em': 50 } }
 					units={ [
 						{
-							name: __(
-								'PX',
-								'ultimate-addons-for-gutenberg'
-							),
+							name: __( 'PX', 'ultimate-addons-for-gutenberg' ),
 							unitValue: 'px',
 						},
 						{
@@ -599,10 +507,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<ResponsiveSlider
-					label={ __(
-						'Timeline Item Gap',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Timeline Item Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: verticalSpace,
@@ -633,10 +538,7 @@ const Settings = ( props ) => {
 					limitMax={ { 'px': 100, '%': 100, 'em': 100 } }
 					units={ [
 						{
-							name: __(
-								'PX',
-								'ultimate-addons-for-gutenberg'
-							),
+							name: __( 'PX', 'ultimate-addons-for-gutenberg' ),
 							unitValue: 'px',
 						},
 						{
@@ -659,10 +561,7 @@ const Settings = ( props ) => {
 	};
 	const connectorSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Connector', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Connector', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<UAGIconPicker
 					label={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 					value={ icon }
@@ -670,10 +569,7 @@ const Settings = ( props ) => {
 				/>
 				{ icon && (
 					<ResponsiveSlider
-						label={ __(
-							'Icon Size',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Icon Size', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							desktop: {
 								value: iconSize,
@@ -695,10 +591,7 @@ const Settings = ( props ) => {
 					/>
 				) }
 				<ResponsiveSlider
-					label={ __(
-						'Icon Background Size',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Icon Background Size', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: connectorBgsize,
@@ -719,10 +612,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<Range
-					label={ __(
-						'Border Width',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Border Width', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ borderwidth }
 					data={ {
@@ -735,10 +625,7 @@ const Settings = ( props ) => {
 					displayUnit={ false }
 				/>
 				<Range
-					label={ __(
-						'Connector Thickness',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Connector Thickness', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ separatorwidth }
 					data={ {
@@ -761,10 +648,7 @@ const Settings = ( props ) => {
 			>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
-					label={ __(
-						'Heading Tag',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Heading Tag', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: headingTag,
 						label: 'headingTag',
@@ -796,10 +680,7 @@ const Settings = ( props ) => {
 						},
 						{
 							value: 'span',
-							label: __(
-								'Span',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Span', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'p',
@@ -816,12 +697,7 @@ const Settings = ( props ) => {
 				title={ __( 'Timeline Item', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<h2>
-					{ __(
-						'Heading',
-						'ultimate-addons-for-gutenberg'
-					) }
-				</h2>
+				<h2>{ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ headingColor ? headingColor : '' }
@@ -832,10 +708,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ props.attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -909,10 +782,7 @@ const Settings = ( props ) => {
 					} }
 				/>
 				<ResponsiveSlider
-					label={ __(
-						'Bottom Spacing',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: headSpace,
@@ -933,12 +803,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<hr className="uagb-editor__separator" />
-				<h2>
-					{ __(
-						'Description',
-						'ultimate-addons-for-gutenberg'
-					) }
-				</h2>
+				<h2>{ __( 'Description', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ subHeadingColor ? subHeadingColor : '' }
@@ -949,10 +814,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ props.attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -1029,17 +891,9 @@ const Settings = ( props ) => {
 					} }
 				/>
 				<hr className="uagb-editor__separator" />
-				<h2>
-					{ __(
-						'Timeline',
-						'ultimate-addons-for-gutenberg'
-					) }
-				</h2>
+				<h2>{ __( 'Timeline', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<ResponsiveSlider
-					label={ __(
-						'Border radius',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Border radius', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: borderRadius,
@@ -1069,14 +923,11 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
-		)
-		};
+		);
+	};
 	const dateColorSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Date', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Date', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ dateColor ? dateColor : '' }
@@ -1087,10 +938,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ props.attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -1168,10 +1016,7 @@ const Settings = ( props ) => {
 				/>
 				{ timelinAlignment !== 'center' && (
 					<ResponsiveSlider
-						label={ __(
-							'Bottom Spacing',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							desktop: {
 								value: dateBottomspace,
@@ -1199,10 +1044,7 @@ const Settings = ( props ) => {
 		const iconColorSettings = (
 			<UAGAdvancedPanelBody>
 				<AdvancedPopColorControl
-					label={ __(
-						'Connector Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Connector Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ separatorColor ? separatorColor : '' }
 					data={ {
 						value: separatorColor,
@@ -1211,10 +1053,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
-					label={ __(
-						'Icon Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ iconColor ? iconColor : '' }
 					data={ {
 						value: iconColor,
@@ -1223,10 +1062,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ separatorBg ? separatorBg : '' }
 					data={ {
 						value: separatorBg,
@@ -1235,10 +1071,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
-					label={ __(
-						'Border Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Border Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ separatorBorder ? separatorBorder : '' }
 					data={ {
 						value: separatorBorder,
@@ -1252,10 +1085,7 @@ const Settings = ( props ) => {
 		const iconFocusSettings = (
 			<UAGAdvancedPanelBody>
 				<AdvancedPopColorControl
-					label={ __(
-						'Connector Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Connector Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ separatorFillColor ? separatorFillColor : '' }
 					data={ {
 						value: separatorFillColor,
@@ -1264,10 +1094,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
-					label={ __(
-						'Icon Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ iconFocus ? iconFocus : '' }
 					data={ {
 						value: iconFocus,
@@ -1276,10 +1103,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ iconBgFocus ? iconBgFocus : '' }
 					data={ {
 						value: iconBgFocus,
@@ -1288,10 +1112,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
-					label={ __(
-						'Border Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Border Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ borderFocus ? borderFocus : '' }
 					data={ {
 						value: borderFocus,
@@ -1303,25 +1124,16 @@ const Settings = ( props ) => {
 		);
 
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Connector', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Connector', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<UAGTabsControl
 					tabs={ [
 						{
 							name: 'normal',
-							title: __(
-								'Normal',
-								'ultimate-addons-for-gutenberg'
-							),
+							title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							name: 'focus',
-							title: __(
-								'Focus',
-								'ultimate-addons-for-gutenberg'
-							),
+							title: __( 'Focus', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					normal={ iconColorSettings }
@@ -1347,10 +1159,7 @@ const Settings = ( props ) => {
 						{ displayPostDate && dateColorSettings() }
 						{ connectorColorSettings() }
 					</InspectorTab>
-					<InspectorTab
-						{ ...UAGTabs.advance }
-						parentProps={ props }
-					></InspectorTab>
+					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 		</>

@@ -52,7 +52,7 @@ function styling( props ) {
 		mobilePaddingType,
 		tabletPaddingType,
 		desktopPaddingType,
-		columnBorderHColor
+		columnBorderHColor,
 	} = props.attributes;
 
 	const borderCSS = generateBorderCSS( props.attributes, 'column' );
@@ -72,13 +72,11 @@ function styling( props ) {
 		'margin-bottom': generateCSSUnit( bottomMargin, desktopMarginType ),
 		'margin-left': generateCSSUnit( leftMargin, desktopMarginType ),
 		'margin-right': generateCSSUnit( rightMargin, desktopMarginType ),
-		...borderCSS
+		...borderCSS,
 	};
 
 	if ( 'image' === backgroundType ) {
-		style[ 'background-image' ] = backgroundImage
-			? `url(${ backgroundImage.url })`
-			: null;
+		style[ 'background-image' ] = backgroundImage ? `url(${ backgroundImage.url })` : null;
 		style[ 'background-position' ] = position;
 		style[ 'background-attachment' ] = backgroundAttachment;
 		style[ 'background-repeat' ] = backgroundRepeat;
@@ -96,71 +94,29 @@ function styling( props ) {
 
 	tabletSelectors = {
 		'': {
-			'padding-top': generateCSSUnit(
-				topPaddingTablet,
-				tabletPaddingType
-			),
-			'padding-bottom': generateCSSUnit(
-				bottomPaddingTablet,
-				tabletPaddingType
-			),
-			'padding-left': generateCSSUnit(
-				leftPaddingTablet,
-				tabletPaddingType
-			),
-			'padding-right': generateCSSUnit(
-				rightPaddingTablet,
-				tabletPaddingType
-			),
+			'padding-top': generateCSSUnit( topPaddingTablet, tabletPaddingType ),
+			'padding-bottom': generateCSSUnit( bottomPaddingTablet, tabletPaddingType ),
+			'padding-left': generateCSSUnit( leftPaddingTablet, tabletPaddingType ),
+			'padding-right': generateCSSUnit( rightPaddingTablet, tabletPaddingType ),
 			'margin-top': generateCSSUnit( topMarginTablet, tabletMarginType ),
-			'margin-bottom': generateCSSUnit(
-				bottomMarginTablet,
-				tabletMarginType
-			),
-			'margin-left': generateCSSUnit(
-				leftMarginTablet,
-				tabletMarginType
-			),
-			'margin-right': generateCSSUnit(
-				rightMarginTablet,
-				tabletMarginType
-			),
-			...borderCSSTablet
+			'margin-bottom': generateCSSUnit( bottomMarginTablet, tabletMarginType ),
+			'margin-left': generateCSSUnit( leftMarginTablet, tabletMarginType ),
+			'margin-right': generateCSSUnit( rightMarginTablet, tabletMarginType ),
+			...borderCSSTablet,
 		},
 	};
 
 	mobileSelectors = {
 		'': {
-			'padding-top': generateCSSUnit(
-				topPaddingMobile,
-				mobilePaddingType
-			),
-			'padding-bottom': generateCSSUnit(
-				bottomPaddingMobile,
-				mobilePaddingType
-			),
-			'padding-left': generateCSSUnit(
-				leftPaddingMobile,
-				mobilePaddingType
-			),
-			'padding-right': generateCSSUnit(
-				rightPaddingMobile,
-				mobilePaddingType
-			),
+			'padding-top': generateCSSUnit( topPaddingMobile, mobilePaddingType ),
+			'padding-bottom': generateCSSUnit( bottomPaddingMobile, mobilePaddingType ),
+			'padding-left': generateCSSUnit( leftPaddingMobile, mobilePaddingType ),
+			'padding-right': generateCSSUnit( rightPaddingMobile, mobilePaddingType ),
 			'margin-top': generateCSSUnit( topMarginMobile, mobileMarginType ),
-			'margin-bottom': generateCSSUnit(
-				bottomMarginMobile,
-				mobileMarginType
-			),
-			'margin-left': generateCSSUnit(
-				leftMarginMobile,
-				mobileMarginType
-			),
-			'margin-right': generateCSSUnit(
-				rightMarginMobile,
-				mobileMarginType
-			),
-			...borderCSSMobile
+			'margin-bottom': generateCSSUnit( bottomMarginMobile, mobileMarginType ),
+			'margin-left': generateCSSUnit( leftMarginMobile, mobileMarginType ),
+			'margin-right': generateCSSUnit( rightMarginMobile, mobileMarginType ),
+			...borderCSSMobile,
 		},
 	};
 
@@ -188,19 +144,9 @@ function styling( props ) {
 
 	stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS(
-		tabletSelectors,
-		`.uagb-editor-preview-mode-tablet ${ id }`,
-		true,
-		'tablet'
-	);
+	stylingCss += generateCSS( tabletSelectors, `.uagb-editor-preview-mode-tablet ${ id }`, true, 'tablet' );
 
-	stylingCss += generateCSS(
-		mobileSelectors,
-		`.uagb-editor-preview-mode-mobile ${ id }`,
-		true,
-		'mobile'
-	);
+	stylingCss += generateCSS( mobileSelectors, `.uagb-editor-preview-mode-mobile ${ id }`, true, 'mobile' );
 
 	return stylingCss;
 }

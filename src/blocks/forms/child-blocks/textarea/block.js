@@ -23,11 +23,7 @@ registerBlockType( 'uagb/forms-textarea', {
 	attributes,
 	category: uagb_blocks_info.category,
 	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="form-textarea" isChildren={ true } />
-		) : (
-			<Edit { ...props } />
-		),
+		props.attributes.isPreview ? <PreviewImage image="form-textarea" isChildren={ true } /> : <Edit { ...props } />,
 	supports: {
 		anchor: true,
 	},

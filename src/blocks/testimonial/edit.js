@@ -48,19 +48,19 @@ const UAGBtestimonial = ( props ) => {
 			companyFontWeight,
 			descLoadGoogleFonts,
 			descFontFamily,
-			descFontWeight
+			descFontWeight,
 		},
 		isSelected,
 		clientId,
 	} = props;
 
-		useEffect( () => {
+	useEffect( () => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
 		setAttributes( { classMigrate: true } );
 
-		if( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ){
+		if ( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ) {
 			const color1 = hexToRGBA( maybeGetColorForVariable( gradientColor1 ), backgroundOpacity );
 			const color2 = hexToRGBA( maybeGetColorForVariable( gradientColor2 ), backgroundOpacity );
 			let gradientVal;
@@ -81,29 +81,33 @@ const UAGBtestimonial = ( props ) => {
 		}
 
 		// Backward Border Migration
-		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-			migrateBorderAttributes( 'overall', {
-				label: 'borderWidth',
-				value: borderWidth,
-			}, {
-				label: 'borderRadius',
-				value: borderRadius
-			}, {
-				label: 'borderColor',
-				value: borderColor
-			}, {
-				label: 'borderHoverColor',
-				value: borderHoverColor
-			},{
-				label: 'borderStyle',
-				value: borderStyle
-			},
-			setAttributes,
-			attributes
+		if ( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ) {
+			migrateBorderAttributes(
+				'overall',
+				{
+					label: 'borderWidth',
+					value: borderWidth,
+				},
+				{
+					label: 'borderRadius',
+					value: borderRadius,
+				},
+				{
+					label: 'borderColor',
+					value: borderColor,
+				},
+				{
+					label: 'borderHoverColor',
+					value: borderHoverColor,
+				},
+				{
+					label: 'borderStyle',
+					value: borderStyle,
+				},
+				setAttributes,
+				attributes
 			);
 		}
-		
-
 	}, [] );
 
 	useEffect( () => {
@@ -116,18 +120,15 @@ const UAGBtestimonial = ( props ) => {
 		const blockStyling = TestimonialStyle( props );
 
 		addBlockEditorDynamicStyles( 'uagb-testinomial-style-' + clientId.substr( 0, 8 ), blockStyling );
-		
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
-	}, [deviceType] );
+	}, [ deviceType ] );
 
 	let loadNameGoogleFonts;
 	let loadCompanyGoogleFonts;
@@ -136,51 +137,36 @@ const UAGBtestimonial = ( props ) => {
 	if ( nameLoadGoogleFonts === true ) {
 		const nameconfig = {
 			google: {
-				families: [
-					nameFontFamily +
-						( nameFontWeight ? ':' + nameFontWeight : '' ),
-				],
+				families: [ nameFontFamily + ( nameFontWeight ? ':' + nameFontWeight : '' ) ],
 			},
 		};
 
-		loadNameGoogleFonts = (
-			<WebfontLoader config={ nameconfig }></WebfontLoader>
-		);
+		loadNameGoogleFonts = <WebfontLoader config={ nameconfig }></WebfontLoader>;
 	}
 
 	if ( companyLoadGoogleFonts === true ) {
 		const companyconfig = {
 			google: {
-				families: [
-					companyFontFamily +
-						( companyFontWeight ? ':' + companyFontWeight : '' ),
-				],
+				families: [ companyFontFamily + ( companyFontWeight ? ':' + companyFontWeight : '' ) ],
 			},
 		};
 
-		loadCompanyGoogleFonts = (
-			<WebfontLoader config={ companyconfig }></WebfontLoader>
-		);
+		loadCompanyGoogleFonts = <WebfontLoader config={ companyconfig }></WebfontLoader>;
 	}
 
 	if ( descLoadGoogleFonts === true ) {
 		const descconfig = {
 			google: {
-				families: [
-					descFontFamily +
-						( descFontWeight ? ':' + descFontWeight : '' ),
-				],
+				families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
 			},
 		};
 
-		loadDescGoogleFonts = (
-			<WebfontLoader config={ descconfig }></WebfontLoader>
-		);
+		loadDescGoogleFonts = <WebfontLoader config={ descconfig }></WebfontLoader>;
 	}
 
 	return (
 		<>
-		{ isSelected && <Settings parentProps={ props } /> }
+			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
 			{ loadNameGoogleFonts }
 			{ loadCompanyGoogleFonts }

@@ -58,7 +58,6 @@
 				width: 25%;
 				margin-right: 5px;
 			}
-
 		}
 
 		.required::after {
@@ -115,7 +114,6 @@
 		height: 25px;
 	}
 
-
 	/* Hide default HTML checkbox */
 
 	.uagb-switch input {
@@ -149,7 +147,6 @@
 	}
 
 	.uagb-switch input:checked + .uagb-slider::before {
-
 		background-color: #fff;
 	}
 
@@ -231,7 +228,7 @@ select::before {
 	padding: 10px 15px;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and ( max-width: 767px ) {
 
 	.uagb-forms__outer-wrap {
 

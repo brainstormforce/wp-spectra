@@ -60,13 +60,11 @@ const WebfontLoader = ( props ) => {
 			addFont( props.config.google.families[ 0 ] );
 		}
 		const siteEditTheme = document.getElementsByClassName( 'edit-site' );
-		
-		if( siteEditTheme && siteEditTheme.length !== 0 ) {
-			
-			const desktopIframe = siteEditTheme[0].getElementsByTagName( 'iframe' )[0];
 
-			if( desktopIframe ) {
+		if ( siteEditTheme && siteEditTheme.length !== 0 ) {
+			const desktopIframe = siteEditTheme[ 0 ].getElementsByTagName( 'iframe' )[ 0 ];
 
+			if ( desktopIframe ) {
 				WebFont.load( {
 					...props.config,
 					loading: handleLoading,
@@ -81,19 +79,17 @@ const WebfontLoader = ( props ) => {
 		const mobilePreview = document.getElementsByClassName( 'is-mobile-preview' );
 
 		if ( 0 !== tabletPreview.length || 0 !== mobilePreview.length ) {
+			const preview = tabletPreview[ 0 ] || mobilePreview[ 0 ];
 
-			const preview = tabletPreview[0] || mobilePreview[0];
-
-			const responsiveIframe = preview.getElementsByTagName( 'iframe' )[0];
+			const responsiveIframe = preview.getElementsByTagName( 'iframe' )[ 0 ];
 
 			if ( responsiveIframe ) {
-
 				WebFont.load( {
 					...props.config,
 					loading: handleLoading,
 					active: handleActive,
 					inactive: handleInactive,
-					context: responsiveIframe.contentWindow
+					context: responsiveIframe.contentWindow,
 				} );
 				addFont( props.config.google.families[ 0 ] );
 			}

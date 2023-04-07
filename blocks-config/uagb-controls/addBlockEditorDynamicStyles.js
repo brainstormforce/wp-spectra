@@ -1,15 +1,11 @@
-
 const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
-
 	setTimeout( () => {
-
 		// Static Editor CSS.
 
 		const editorStaticCSSStylesTag = document.getElementById( 'uagb-editor-styles' );
 		let cloneEditorStaticCSSStylesTag = false;
 
 		if ( editorStaticCSSStylesTag ) {
-
 			cloneEditorStaticCSSStylesTag = editorStaticCSSStylesTag.cloneNode( true );
 		}
 
@@ -17,7 +13,6 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 		let cloneEditorProStaticCSSStylesTag = false;
 
 		if ( editorProStaticCSSStylesTag ) {
-
 			cloneEditorProStaticCSSStylesTag = editorProStaticCSSStylesTag.cloneNode( true );
 		}
 
@@ -27,7 +22,6 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 		let cloneEditorDashiconsCSSStylesTag = false;
 
 		if ( editorDashiconsCSSStylesTag ) {
-
 			cloneEditorDashiconsCSSStylesTag = editorDashiconsCSSStylesTag.cloneNode( true );
 		}
 
@@ -39,19 +33,16 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 		let cloneStaticCSSStylesTag = false;
 
 		if ( staticCSSStylesTag ) {
-
 			cloneStaticCSSStylesTag = staticCSSStylesTag.cloneNode( true );
 		}
 
 		// Static CSS Ends.
-
 
 		// Slick CSS.
 		const slickStaticCSSStylesTag = document.getElementById( 'uagb-slick-css-css' );
 		let cloneSlickStaticCSSStylesTag = false;
 
 		if ( slickStaticCSSStylesTag ) {
-
 			cloneSlickStaticCSSStylesTag = slickStaticCSSStylesTag.cloneNode( true );
 		}
 
@@ -62,7 +53,6 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 		let cloneSwiperStaticCSSStylesTag = false;
 
 		if ( swiperStaticCSSStylesTag ) {
-
 			cloneSwiperStaticCSSStylesTag = swiperStaticCSSStylesTag.cloneNode( true );
 		}
 
@@ -73,25 +63,17 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 		let cloneBlockEditorSpacingCSSStylesTag = false;
 
 		if ( blockEditorSpacingCSSStylesTag ) {
-
 			cloneBlockEditorSpacingCSSStylesTag = blockEditorSpacingCSSStylesTag.cloneNode( true );
 		}
 
 		// Block Editor Spacing CSS Ends.
 
 		// Desktop.
-		const element = document.getElementById(
-			styleTagId
-		);
-
+		const element = document.getElementById( styleTagId );
 
 		if ( null === element || undefined === element ) {
-
 			const $style = document.createElement( 'style' );
-			$style.setAttribute(
-				'id',
-				styleTagId
-			);
+			$style.setAttribute( 'id', styleTagId );
 
 			$style.innerHTML = styling;
 			document.head.appendChild( $style );
@@ -108,15 +90,14 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 		const twentyTwentyEditorIframe = document.getElementsByClassName( 'edit-site-visual-editor__editor-canvas' );
 
 		if ( 0 !== tabletPreview.length || 0 !== mobilePreview.length || 0 !== twentyTwentyEditorIframe.length ) {
-
-			const preview = tabletPreview[0] || mobilePreview[0];
+			const preview = tabletPreview[ 0 ] || mobilePreview[ 0 ];
 
 			let iframe = false;
 
 			if ( 0 !== twentyTwentyEditorIframe.length ) {
-				iframe = twentyTwentyEditorIframe[0];
+				iframe = twentyTwentyEditorIframe[ 0 ];
 			} else if ( preview ) {
-				iframe = preview.getElementsByTagName( 'iframe' )[0];
+				iframe = preview.getElementsByTagName( 'iframe' )[ 0 ];
 			}
 
 			const iframeDocument = iframe?.contentWindow.document || iframe?.contentDocument;
@@ -177,39 +158,31 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 
 			// Block Editor Spacing  CSS.
 			if ( cloneBlockEditorSpacingCSSStylesTag ) {
-				const iframeBlockEditorSpacingCSSStylesTag = iframeDocument.getElementById( 'uagb-blocks-editor-spacing-style' );
+				const iframeBlockEditorSpacingCSSStylesTag = iframeDocument.getElementById(
+					'uagb-blocks-editor-spacing-style'
+				);
 				if ( ! iframeBlockEditorSpacingCSSStylesTag ) {
 					iframeDocument.head.appendChild( cloneBlockEditorSpacingCSSStylesTag );
 				}
 			}
 
-			let iframeElement = iframeDocument.getElementById(
-				styleTagId
-			);
+			let iframeElement = iframeDocument.getElementById( styleTagId );
 
 			if ( null === iframeElement || undefined === iframeElement ) {
-
 				const $style = document.createElement( 'style' );
-				$style.setAttribute(
-					'id',
-					styleTagId
-				);
+				$style.setAttribute( 'id', styleTagId );
 
 				// Dynamic CSS.
 				iframeDocument.head.appendChild( $style );
-
 			}
 
-			iframeElement = iframeDocument.getElementById(
-				styleTagId
-			);
+			iframeElement = iframeDocument.getElementById( styleTagId );
 
 			if ( null !== iframeElement && undefined !== iframeElement ) {
 				iframeElement.innerHTML = styling;
 			}
 		}
 	} );
-}
+};
 
 export default addBlockEditorDynamicStyles;
-

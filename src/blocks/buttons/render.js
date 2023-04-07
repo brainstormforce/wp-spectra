@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { InnerBlocks } from '@wordpress/block-editor';
-import { useLayoutEffect,useMemo,memo } from '@wordpress/element';
+import { useLayoutEffect, useMemo, memo } from '@wordpress/element';
 
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -39,26 +39,19 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				'uagb-buttons__outer-wrap',
-				`uagb-btn__${buttonSize}-btn`,
-				`uagb-btn-tablet__${buttonSizeTablet}-btn`,
-				`uagb-btn-mobile__${buttonSizeMobile}-btn`,
+				`uagb-btn__${ buttonSize }-btn`,
+				`uagb-btn-tablet__${ buttonSizeTablet }-btn`,
+				`uagb-btn-mobile__${ buttonSizeMobile }-btn`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
+				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
 			) }
 		>
-			<div
-				className={ classnames(
-					'uagb-buttons__wrap',
-					`uagb-buttons-stack-${ stack }`
-				) }
-			>
+			<div className={ classnames( 'uagb-buttons__wrap', `uagb-buttons-stack-${ stack }` ) }>
 				<InnerBlocks
 					template={ getButtonTemplate }
 					templateLock={ false }
 					allowedBlocks={ ALLOWED_BLOCKS }
-					__experimentalMoverDirection={
-						'desktop' === stack ? 'vertical' : 'horizontal'
-					}
+					__experimentalMoverDirection={ 'desktop' === stack ? 'vertical' : 'horizontal' }
 				/>
 			</div>
 		</div>

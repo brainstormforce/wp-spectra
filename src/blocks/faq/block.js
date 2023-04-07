@@ -56,14 +56,9 @@ registerBlockType( 'uagb/faq', {
 		__( 'accordion', 'ultimate-addons-for-gutenberg' ),
 	],
 	attributes,
-category: uagb_blocks_info.category,
+	category: uagb_blocks_info.category,
 	deprecated,
-	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="faq" />
-		) : (
-			<Edit { ...props } />
-		),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="faq" /> : <Edit { ...props } /> ),
 	supports: {
 		anchor: true,
 	},

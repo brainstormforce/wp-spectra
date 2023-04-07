@@ -17,12 +17,12 @@ export default function save( props ) {
 		seperatorStyle,
 		headingId,
 		seperatorPosition,
-		headingDescPosition
+		headingDescPosition,
 	} = props.attributes;
 
 	let seprator = '';
 	if ( seperatorStyle !== 'none' ) {
-		seprator = <div className="uagb-separator"></div>
+		seprator = <div className="uagb-separator"></div>;
 	}
 	let headingText = '';
 	if ( headingTitle ) {
@@ -45,23 +45,14 @@ export default function save( props ) {
 		descText = (
 			<>
 				{ seperatorPosition === 'above-sub-heading' ? seprator : '' }
-				<RichText.Content
-					tagName="p"
-					value={ headingDesc }
-					className="uagb-desc-text"
-				/>
+				<RichText.Content tagName="p" value={ headingDesc } className="uagb-desc-text" />
 				{ seperatorPosition === 'below-sub-heading' ? seprator : '' }
 			</>
 		);
 	}
 
 	return (
-		<div
-			className={ classnames(
-				props.className,
-				`uagb-block-${ block_id }`
-			) }
-		>
+		<div className={ classnames( props.className, `uagb-block-${ block_id }` ) }>
 			{ headingDescToggle && 'above-heading' === headingDescPosition ? descText : '' }
 			{ headingTitleToggle && headingText }
 			{ headingDescToggle && 'below-heading' === headingDescPosition ? descText : '' }

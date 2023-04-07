@@ -12,7 +12,7 @@ function spectra_responsive_icons() {
 }
 
 function spectra_responsive_icon() {
-	if ( !document.querySelector( '.edit-post-header__settings' ) ) {
+	if ( ! document.querySelector( '.edit-post-header__settings' ) ) {
 		return null;
 	}
 	if ( document.querySelector( '.spectra-responsive-icons__wrap' ) ) {
@@ -22,10 +22,8 @@ function spectra_responsive_icon() {
 	const buttonWrapper = document.createElement( 'div' );
 	buttonWrapper.classList.add( 'spectra-responsive-icons__wrap' );
 
-	document.querySelector( '.edit-post-header__settings' ).insertBefore( buttonWrapper,document.querySelector( '.edit-post-header__settings' ).firstChild );
-	wp.element.render(
-		<DeviceIcons />,
-		document.querySelector( '.spectra-responsive-icons__wrap' )
-	);
+	document
+		.querySelector( '.edit-post-header__settings' )
+		.insertBefore( buttonWrapper, document.querySelector( '.edit-post-header__settings' ).firstChild );
+	wp.element.render( <DeviceIcons />, document.querySelector( '.spectra-responsive-icons__wrap' ) );
 }
-

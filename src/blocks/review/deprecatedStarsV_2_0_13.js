@@ -19,17 +19,7 @@ const deprecatedStarsV_2_0_13 = ( props ) => {
 		} );
 	};
 
-	const {
-		limit,
-		id,
-		className,
-		inactiveStarColor,
-		onClick,
-		style,
-		starOutlineColor,
-		value,
-		activeStarColor,
-	} = props;
+	const { limit, id, className, inactiveStarColor, onClick, style, starOutlineColor, value, activeStarColor } = props;
 
 	return (
 		<div

@@ -22,13 +22,9 @@ registerBlockType( 'uagb/buttons-child', {
 	icon: UAGB_Block_Icons.buttons_child,
 	parent: [ 'uagb/buttons' ],
 	attributes,
-category: uagb_blocks_info.category,
+	category: uagb_blocks_info.category,
 	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="buttons-child" isChildren={ true } />
-		) : (
-			<Edit { ...props } />
-		),
+		props.attributes.isPreview ? <PreviewImage image="buttons-child" isChildren={ true } /> : <Edit { ...props } />,
 	save,
 	deprecated,
 	supports: {

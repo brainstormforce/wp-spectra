@@ -23,19 +23,11 @@ registerBlockType( 'uagb/forms', {
 	description: __( 'Add easily customizable forms to gather information.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.forms,
 
-	keywords: [
-		__( 'forms', 'ultimate-addons-for-gutenberg' ),
-		__( 'uag', 'ultimate-addons-for-gutenberg' ),
-	],
+	keywords: [ __( 'forms', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	attributes,
-category: uagb_blocks_info.category,
+	category: uagb_blocks_info.category,
 	variations,
-	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="form" />
-		) : (
-			<Edit { ...props } />
-		),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="form" /> : <Edit { ...props } /> ),
 	supports: {
 		anchor: true,
 	},

@@ -19,13 +19,7 @@ const Render = ( props ) => {
 	const deviceType = useDeviceType();
 	const { attributes, setAttributes } = props;
 
-	const {
-		block_id,
-		layout,
-		placeholder,
-		buttonType,
-		buttonText,
-	} = attributes;
+	const { block_id, layout, placeholder, buttonType, buttonText } = attributes;
 
 	const renderClassic = () => {
 		if ( 'input-button' === layout ) {
@@ -37,10 +31,7 @@ const Render = ( props ) => {
 					action={ uagb_blocks_info.uagb_home_url }
 					method="get"
 				>
-					<div
-						className="uagb-search-form__container wp-block-button"
-						role="tablist"
-					>
+					<div className="uagb-search-form__container wp-block-button" role="tablist">
 						<input
 							placeholder={ placeholder }
 							className="uagb-search-form__input"
@@ -49,10 +40,7 @@ const Render = ( props ) => {
 							title="Search"
 						/>
 
-						<button
-							className="uagb-search-submit wp-block-button__link"
-							type="submit"
-						>
+						<button className="uagb-search-submit wp-block-button__link" type="submit">
 							{ 'icon' === buttonType && (
 								<span className="uagb-wp-search-button-icon-wrap">
 									{ renderSVG( 'fas fa-search' ) }
@@ -61,10 +49,7 @@ const Render = ( props ) => {
 							{ 'text' === buttonType && (
 								<RichText
 									tagName="span"
-									placeholder={ __(
-										'Search',
-										'ultimate-addons-for-gutenberg'
-									) }
+									placeholder={ __( 'Search', 'ultimate-addons-for-gutenberg' ) }
 									value={ buttonText }
 									onChange={ ( value ) =>
 										setAttributes( {
@@ -73,11 +58,7 @@ const Render = ( props ) => {
 									}
 									className="uagb-wp-search-button-text"
 									multiline={ false }
-									allowedFormats={ [
-										'core/bold',
-										'core/italic',
-										'core/strikethrough',
-									] }
+									allowedFormats={ [ 'core/bold', 'core/italic', 'core/strikethrough' ] }
 								/>
 							) }
 						</button>
@@ -100,9 +81,7 @@ const Render = ( props ) => {
 					method="get"
 				>
 					<div className="uagb-search-form__container" role="tablist">
-						<span className="uagb-wp-search-icon-wrap">
-							{ renderSVG( 'fas fa-search' ) }
-						</span>
+						<span className="uagb-wp-search-icon-wrap">{ renderSVG( 'fas fa-search' ) }</span>
 						<input
 							placeholder={ placeholder }
 							className="uagb-search-form__input"

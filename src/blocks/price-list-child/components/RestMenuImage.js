@@ -2,7 +2,7 @@ const RestMenuImage = ( props ) => {
 	const { attributes, index_value } = props;
 	let urlCheck = '';
 	let imageArr = '';
-	const { imageWidth, imgTagHeight } = attributes
+	const { imageWidth, imgTagHeight } = attributes;
 
 	if ( typeof index_value !== 'undefined' ) {
 		const imageArray = attributes.rest_menu_item_arr[ index_value ];
@@ -29,17 +29,21 @@ const RestMenuImage = ( props ) => {
 		if ( urlCheck !== '' ) {
 			const size = image.sizes;
 			const imageSize = attributes.imageSize;
-			if (
-				typeof size !== 'undefined' &&
-				typeof size[ imageSize ] !== 'undefined'
-			) {
+			if ( typeof size !== 'undefined' && typeof size[ imageSize ] !== 'undefined' ) {
 				url = size[ imageSize ].url;
 			} else {
 				url = urlCheck;
 			}
 
 			return (
-				<img className="" src={ url } alt={ image.alt } width={ imageWidth } height= { imgTagHeight } loading="lazy"/>
+				<img
+					className=""
+					src={ url }
+					alt={ image.alt }
+					width={ imageWidth }
+					height={ imgTagHeight }
+					loading="lazy"
+				/>
 			);
 		}
 		return null;

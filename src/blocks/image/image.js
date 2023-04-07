@@ -1,8 +1,4 @@
-import {
-	ResizableBox,
-	Spinner,
-	ToolbarButton,
-} from '@wordpress/components';
+import { ResizableBox, Spinner, ToolbarButton } from '@wordpress/components';
 import { useViewportMatch } from '@wordpress/compose';
 import { useSelect, useDispatch } from '@wordpress/data';
 import {
@@ -18,8 +14,7 @@ import { crop } from '@wordpress/icons';
 import { useDeviceType } from '@Controls/getPreviewType';
 import useClientWidth from './use-client-width';
 import { MIN_SIZE, ALLOWED_MEDIA_TYPES } from './constants';
-import {isMediaDestroyed} from './utils'
-
+import { isMediaDestroyed } from './utils';
 
 export default function Image( {
 	temporaryURL,
@@ -46,7 +41,7 @@ export default function Image( {
 	containerRef,
 	context,
 	clientId,
-	onImageLoadError
+	onImageLoadError,
 } ) {
 	const imageRef = useRef();
 	const { allowResize = true } = context;
@@ -55,32 +50,22 @@ export default function Image( {
 
 	const { multiImageSelection } = useSelect(
 		( select ) => {
-			const { getMultiSelectedBlockClientIds, getBlockName } = select(
-				blockEditorStore
-			);
+			const { getMultiSelectedBlockClientIds, getBlockName } = select( blockEditorStore );
 			const multiSelectedClientIds = getMultiSelectedBlockClientIds();
 			return {
 				multiImageSelection:
 					multiSelectedClientIds.length &&
-					multiSelectedClientIds.every(
-						( _clientId ) =>
-							getBlockName( _clientId ) === 'uagb/image'
-					),
+					multiSelectedClientIds.every( ( _clientId ) => getBlockName( _clientId ) === 'uagb/image' ),
 			};
 		},
 		[ id, isSelected ]
 	);
 
-	const {
-		imageEditing,
-		maxWidth
-	} = useSelect(
+	const { imageEditing, maxWidth } = useSelect(
 		( select ) => {
-			const {
-				getSettings
-			} = select( blockEditorStore );
+			const { getSettings } = select( blockEditorStore );
 			// eslint-disable-next-line no-shadow
-			const {imageEditing, maxWidth} = getSettings()
+			const { imageEditing, maxWidth } = getSettings();
 			return {
 				imageEditing,
 				maxWidth,
@@ -89,19 +74,12 @@ export default function Image( {
 		[ clientId ]
 	);
 
-
-
 	const isLargeViewport = useViewportMatch( 'medium' );
 	const isWideAligned = [ 'wide', 'full' ].includes( align );
-	const [
-		{ loadedNaturalWidth, loadedNaturalHeight },
-		setLoadedNaturalSize,
-	] = useState( {} );
+	const [ { loadedNaturalWidth, loadedNaturalHeight }, setLoadedNaturalSize ] = useState( {} );
 	const [ isEditingImage, setIsEditingImage ] = useState( false );
 	const clientWidth = useClientWidth( containerRef, [ align ] );
 	const isResizable = allowResize && ! ( isWideAligned && isLargeViewport );
-
-
 
 	// Get naturalWidth and naturalHeight from image ref, and fall back to loaded natural
 	// width and height. This resolves an issue in Safari where the loaded natural
@@ -111,17 +89,12 @@ export default function Image( {
 		const naturalWidth = imageRef.current?.naturalWidth || loadedNaturalWidth || undefined;
 		// eslint-disable-next-line
 		const naturalHeight = imageRef.current?.naturalHeight || loadedNaturalHeight || undefined;
-		setAttributes( {naturalWidth, naturalHeight} )
+		setAttributes( { naturalWidth, naturalHeight } );
 		return {
 			naturalWidth,
-			naturalHeight
+			naturalHeight,
 		};
-	}, [
-		loadedNaturalWidth,
-		loadedNaturalHeight,
-		imageRef.current?.complete,
-	] );
-
+	}, [ loadedNaturalWidth, loadedNaturalHeight, imageRef.current?.complete ] );
 
 	const filename = getFilename( url );
 	let defaultedAlt;
@@ -131,7 +104,7 @@ export default function Image( {
 	} else if ( filename ) {
 		defaultedAlt = sprintf(
 			/* translators: %s: file name */
-			__( 'This image has an empty alt attribute; its file name is %s' , 'ultimate-addons-for-gutenberg' ),
+			__( 'This image has an empty alt attribute; its file name is %s', 'ultimate-addons-for-gutenberg' ),
 			filename
 		);
 	} else {
@@ -143,7 +116,9 @@ export default function Image( {
 		// should direct focus to block.
 		<>
 			<img
-				srcSet={`${temporaryURL || url} ${urlTablet ? ',' + urlTablet + ' 780w' : ''}${urlMobile ? ', ' + urlMobile + ' 360w' : ''}`}
+				srcSet={ `${ temporaryURL || url } ${ urlTablet ? ',' + urlTablet + ' 780w' : '' }${
+					urlMobile ? ', ' + urlMobile + ' 360w' : ''
+				}` }
 				src={ temporaryURL || url }
 				alt={ defaultedAlt }
 				onLoad={ ( event ) => {
@@ -166,9 +141,7 @@ export default function Image( {
 		const exceedMaxWidth = naturalWidth > clientWidth;
 		const ratio = naturalHeight / naturalWidth;
 		imageWidthWithinContainer = exceedMaxWidth ? clientWidth : naturalWidth;
-		imageHeightWithinContainer = exceedMaxWidth
-			? clientWidth * ratio
-			: naturalHeight;
+		imageHeightWithinContainer = exceedMaxWidth ? clientWidth * ratio : naturalHeight;
 	}
 
 	useEffect( () => {
@@ -203,7 +176,7 @@ export default function Image( {
 			/>
 		);
 	} else if ( ! isResizable || ! imageWidthWithinContainer ) {
-		if( 'full' !== align ) {
+		if ( 'full' !== align ) {
 			img = <div>{ img }</div>;
 		}
 	} else {
@@ -211,10 +184,8 @@ export default function Image( {
 		const currentHeight = height || imageHeightWithinContainer;
 
 		const ratio = naturalWidth / naturalHeight;
-		const minWidth =
-			naturalWidth < naturalHeight ? MIN_SIZE : MIN_SIZE * ratio;
-		const minHeight =
-			naturalHeight < naturalWidth ? MIN_SIZE : MIN_SIZE / ratio;
+		const minWidth = naturalWidth < naturalHeight ? MIN_SIZE : MIN_SIZE * ratio;
+		const minHeight = naturalHeight < naturalWidth ? MIN_SIZE : MIN_SIZE / ratio;
 
 		// With the current implementation of ResizableBox, an image needs an
 		// explicit pixel value for the max-width. In absence of being able to
@@ -257,17 +228,17 @@ export default function Image( {
 
 		let resWidth = '';
 		let resHeight = '';
-		if( deviceType === 'Tablet' ){
+		if ( deviceType === 'Tablet' ) {
 			resWidth = widthTablet ? widthTablet : width;
 			resHeight = heightTablet ? heightTablet : height;
-		} else if( deviceType === 'Mobile' ){
-			if( widthMobile ){
+		} else if ( deviceType === 'Mobile' ) {
+			if ( widthMobile ) {
 				resWidth = widthMobile;
 			} else {
 				resWidth = widthTablet ? widthTablet : width;
 			}
-			if( heightMobile ){
-				resHeight = heightMobile
+			if ( heightMobile ) {
+				resHeight = heightMobile;
 			} else {
 				resHeight = heightTablet ? heightTablet : height;
 			}
@@ -297,21 +268,21 @@ export default function Image( {
 				onResizeStart={ onResizeStart }
 				onResizeStop={ ( event, direction, elt, delta ) => {
 					onResizeStop();
-					if( deviceType === 'Tablet' ){
+					if ( deviceType === 'Tablet' ) {
 						const tabletWidth = widthTablet ? widthTablet : 780;
 						setAttributes( {
-							widthTablet:  Math.abs( parseInt( tabletWidth + delta.width, 10 ) ),
+							widthTablet: Math.abs( parseInt( tabletWidth + delta.width, 10 ) ),
 							heightTablet: Math.abs( parseInt( heightTablet + delta.height, 10 ) ),
 						} );
-					} else if( deviceType === 'Mobile' ){
+					} else if ( deviceType === 'Mobile' ) {
 						const mobileWidth = widthMobile ? widthMobile : 320;
 						setAttributes( {
-							widthMobile:  Math.abs( parseInt( mobileWidth + delta.width, 10 ) ),
+							widthMobile: Math.abs( parseInt( mobileWidth + delta.width, 10 ) ),
 							heightMobile: Math.abs( parseInt( heightMobile + delta.height, 10 ) ),
 						} );
 					} else {
 						setAttributes( {
-							width:  Math.abs( parseInt( currentWidth + delta.width, 10 ) ),
+							width: Math.abs( parseInt( currentWidth + delta.width, 10 ) ),
 							height: Math.abs( parseInt( currentHeight + delta.height, 10 ) ),
 						} );
 					}
@@ -329,7 +300,7 @@ export default function Image( {
 					<ToolbarButton
 						onClick={ () => setIsEditingImage( true ) }
 						icon={ crop }
-						label={ __( 'Crop' , 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Crop', 'ultimate-addons-for-gutenberg' ) }
 					/>
 				) }
 			</BlockControls>

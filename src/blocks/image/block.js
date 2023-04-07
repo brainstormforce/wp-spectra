@@ -4,7 +4,7 @@
 
 import Edit from './edit';
 import save from './save';
-import attributes from './attributes'
+import attributes from './attributes';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 import './style.scss';
@@ -19,7 +19,10 @@ imageCommonData = applyFilters( 'uagb/image', addCommonDataToSpectraBlocks( imag
 registerBlockType( 'uagb/image', {
 	...imageCommonData,
 	title: __( 'Image', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'Add images on your webpage with multiple customization options.', 'ultimate-addons-for-gutenberg' ),
+	description: __(
+		'Add images on your webpage with multiple customization options.',
+		'ultimate-addons-for-gutenberg'
+	),
 	icon: UAGB_Block_Icons.image,
 	keywords: [
 		__( 'image', 'ultimate-addons-for-gutenberg' ),
@@ -32,19 +35,14 @@ registerBlockType( 'uagb/image', {
 		color: {
 			__experimentalDuotone: 'img',
 			text: false,
-			background: false
+			background: false,
 		},
 		align: true,
 	},
 
 	attributes,
-category: uagb_blocks_info.category,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="image" />
-			) : (
-				<Edit { ...props } />
-			),
+	category: uagb_blocks_info.category,
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="image" /> : <Edit { ...props } /> ),
 	save,
 	deprecated,
 	transforms: {

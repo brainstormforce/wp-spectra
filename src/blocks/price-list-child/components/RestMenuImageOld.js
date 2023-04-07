@@ -28,10 +28,7 @@ const RestMenuImageOld = ( props ) => {
 		if ( urlCheck !== '' ) {
 			const size = image.sizes;
 			const imageSize = attributes.imageSize;
-			if (
-				typeof size !== 'undefined' &&
-				typeof size[ imageSize ] !== 'undefined'
-			) {
+			if ( typeof size !== 'undefined' && typeof size[ imageSize ] !== 'undefined' ) {
 				url = size[ imageSize ].url;
 			} else {
 				url = urlCheck;

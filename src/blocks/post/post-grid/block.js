@@ -30,12 +30,7 @@ registerBlockType( 'uagb/post-grid', {
 		__( 'grid', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="post-grid" />
-			) : (
-				<Edit { ...props } />
-			),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="post-grid" /> : <Edit { ...props } /> ),
 	// Render via PHP
-	save : () => null,
+	save: () => null,
 } );
