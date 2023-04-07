@@ -45,16 +45,7 @@ export class Stars extends Component {
 	}
 	render() {
 		const { displayValue } = this.state;
-		const {
-			limit,
-			id,
-			className,
-			inactiveStarColor,
-			onHover,
-			onClick,
-			style,
-			starOutlineColor,
-		} = this.props;
+		const { limit, id, className, inactiveStarColor, onHover, onClick, style, starOutlineColor } = this.props;
 		return (
 			<div
 				className={ className }
@@ -78,9 +69,7 @@ export class Stars extends Component {
 						onClick={ () => onClick || this.mouseClick( i ) }
 					>
 						<defs>
-							<mask
-								id={ `uagb_review_star_filter-${ id }-${ i }` }
-							>
+							<mask id={ `uagb_review_star_filter-${ id }-${ i }` }>
 								<rect
 									height="150"
 									width={
@@ -124,10 +113,7 @@ export class ReviewBody extends Component {
 		super( props );
 		this.state = {
 			average:
-				this.props.items
-					.map( ( i ) => i.value )
-					.reduce( ( total, v ) => total + v ) /
-				this.props.items.length,
+				this.props.items.map( ( i ) => i.value ).reduce( ( total, v ) => total + v ) / this.props.items.length,
 		};
 	}
 
@@ -164,9 +150,7 @@ export class ReviewBody extends Component {
 
 		const { average } = this.state;
 
-		const newAverage =
-			items.map( ( i ) => i.value ).reduce( ( total, v ) => total + v ) /
-			items.length;
+		const newAverage = items.map( ( i ) => i.value ).reduce( ( total, v ) => total + v ) / items.length;
 
 		if ( average !== newAverage ) {
 			this.setState( { average: newAverage } );
@@ -180,18 +164,10 @@ export class ReviewBody extends Component {
 
 		return (
 			<div className="uagb_review_block">
-				<a
-					href={ ctaLink }
-					className="uagb-rating-link-wrapper"
-					target={ target }
-					rel={ rel }
-				>
+				<a href={ ctaLink } className="uagb-rating-link-wrapper" target={ target } rel={ rel }>
 					<RichText
 						tagName={ headingTag }
-						placeholder={ __(
-							'Title of the review',
-							'ultimate-addons-for-gutenberg'
-						) }
+						placeholder={ __( 'Title of the review', 'ultimate-addons-for-gutenberg' ) }
 						keepPlaceholderOnFocus
 						value={ rTitle }
 						className="uagb-rating-title"
@@ -201,10 +177,7 @@ export class ReviewBody extends Component {
 				{ descriptionEnabled === true && (
 					<RichText
 						tagName="p"
-						placeholder={ __(
-							'Review Description',
-							'ultimate-addons-for-gutenberg'
-						) }
+						placeholder={ __( 'Review Description', 'ultimate-addons-for-gutenberg' ) }
 						keepPlaceholderOnFocus
 						value={ rContent }
 						className="uagb-rating-desc"
@@ -214,21 +187,14 @@ export class ReviewBody extends Component {
 				{ showauthor === true && (
 					<RichText
 						tagName="p"
-						placeholder={ __(
-							'Review Author',
-							'ultimate-addons-for-gutenberg'
-						) }
+						placeholder={ __( 'Review Author', 'ultimate-addons-for-gutenberg' ) }
 						keepPlaceholderOnFocus
 						value={ rAuthor }
 						className="uagb-rating-author"
 						onChange={ ( text ) => setAuthorName( text ) }
 					/>
 				) }
-				{ imageEnabled === true && (
-					<div className="uagb-rating__source-wrap">
-						{ image_icon_html }
-					</div>
-				) }
+				{ imageEnabled === true && <div className="uagb-rating__source-wrap">{ image_icon_html }</div> }
 				{ items.map(
 					( j, i ) =>
 						showfeature === true && (
@@ -259,23 +225,13 @@ export class ReviewBody extends Component {
 											onClick={ () => {
 												const newItems = items
 													.slice( 0, i )
-													.concat(
-														items.slice(
-															i + 1,
-															items.length
-														)
-													);
+													.concat( items.slice( i + 1, items.length ) );
 												setItems( newItems );
 												this.setState( {
 													average:
 														newItems
-															.map(
-																( k ) => k.value
-															)
-															.reduce(
-																( total, v ) =>
-																	total + v
-															) / newItems.length,
+															.map( ( k ) => k.value )
+															.reduce( ( total, v ) => total + v ) / newItems.length,
 												} );
 											} }
 										/>
@@ -300,10 +256,7 @@ export class ReviewBody extends Component {
 												average:
 													newArray
 														.map( ( k ) => k.value )
-														.reduce(
-															( total, v ) =>
-																total + v
-														) / newArray.length,
+														.reduce( ( total, v ) => total + v ) / newArray.length,
 											} );
 										} }
 										inactiveStarColor={ inactiveStarColor }
@@ -330,29 +283,19 @@ export class ReviewBody extends Component {
 				<div className="uagb_review_summary">
 					<RichText
 						className="uagb_review_summary_title"
-						placeholder={ __(
-							'Title of the summary goes here',
-							'ultimate-addons-for-gutenberg'
-						) }
+						placeholder={ __( 'Title of the summary goes here', 'ultimate-addons-for-gutenberg' ) }
 						tagName="p"
 						onChange={ ( text ) => setSummaryTitle( text ) }
 						value={ summaryTitle }
 					/>
 					<div className="uagb_review_overall_value">
 						<RichText
-							placeholder={ __(
-								'Summary of the review goes here',
-								'ultimate-addons-for-gutenberg'
-							) }
-							onChange={ ( text ) =>
-								setSummaryDescription( text )
-							}
+							placeholder={ __( 'Summary of the review goes here', 'ultimate-addons-for-gutenberg' ) }
+							onChange={ ( text ) => setSummaryDescription( text ) }
 							value={ summaryDescription }
 						/>
 						<div className="uagb_review_average">
-							<span className="uagb_review_rating">
-								{ Math.round( average * 10 ) / 10 }
-							</span>
+							<span className="uagb_review_rating">{ Math.round( average * 10 ) / 10 }</span>
 							<Stars
 								id={ `${ ID }-average` }
 								className="uagb_review_average_stars"

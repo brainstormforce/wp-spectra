@@ -182,7 +182,7 @@
 	padding: 30px;
 }
 
-@media (max-width: 976px) {
+@media ( max-width: 976px ) {
 
 	.uagb-columns__stack-tablet > .uagb-columns__columns-1 > .uagb-column__wrap,
 	.uagb-columns__stack-tablet > .uagb-columns__columns-2 > .uagb-column__wrap,
@@ -196,7 +196,8 @@
 	.uagb-columns__stack-tablet {
 		display: block;
 
-		> .uagb-columns__inner-wrap { // For Backword.
+		> .uagb-columns__inner-wrap {
+			// For Backword.
 			display: block;
 		}
 
@@ -204,7 +205,6 @@
 			display: flex;
 			flex-direction: column-reverse;
 		}
-
 	}
 
 	.uagb-columns__reverse-tablet .uagb-columns__inner-wrap {
@@ -213,7 +213,7 @@
 	}
 }
 
-@media (max-width: 767px) {
+@media ( max-width: 767px ) {
 
 	.uagb-columns__stack-mobile > .uagb-columns__columns-1 > .uagb-column__wrap,
 	.uagb-columns__stack-mobile > .uagb-columns__columns-2 > .uagb-column__wrap,
@@ -227,7 +227,8 @@
 	.uagb-columns__stack-mobile {
 		display: block;
 
-		> .uagb-columns__inner-wrap { // For Backword.
+		> .uagb-columns__inner-wrap {
+			// For Backword.
 			display: block;
 		}
 
@@ -252,14 +253,14 @@
 	}
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media ( min-width: 768px ) and ( max-width: 1024px ) {
 
 	.wp-block-uagb-columns.uagb-columns__wrap.uagb-columns__background-image {
 		background-attachment: scroll;
 	}
 }
 
-@media (max-width: 449px) {
+@media ( max-width: 449px ) {
 
 	.uagb-columns__wrap {
 

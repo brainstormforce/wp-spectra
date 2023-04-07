@@ -28,10 +28,7 @@ const variations = [
 	},
 	{
 		name: 'two-column-split',
-		label: __(
-			'Two columns; equal split',
-			'ultimate-addons-for-gutenberg'
-		),
+		label: __( 'Two columns; equal split', 'ultimate-addons-for-gutenberg' ),
 		icon: rowIcons.layout5050,
 		attributes: {
 			columns: 2,
@@ -46,10 +43,7 @@ const variations = [
 	},
 	{
 		name: 'two-columns-one-third-two-thirds',
-		label: __(
-			'Two columns; one-third, two-thirds split',
-			'ultimate-addons-for-gutenberg'
-		),
+		label: __( 'Two columns; one-third, two-thirds split', 'ultimate-addons-for-gutenberg' ),
 		icon: rowIcons.layout3366,
 		attributes: {
 			columns: 2,
@@ -62,10 +56,7 @@ const variations = [
 	},
 	{
 		name: 'two-columns-two-thirds-one-third',
-		label: __(
-			'Two columns; two-thirds, one-third split',
-			'ultimate-addons-for-gutenberg'
-		),
+		label: __( 'Two columns; two-thirds, one-third split', 'ultimate-addons-for-gutenberg' ),
 		icon: rowIcons.layout6633,
 		attributes: {
 			columns: 2,
@@ -78,10 +69,7 @@ const variations = [
 	},
 	{
 		name: 'three-columns-equal',
-		label: __(
-			'Three columns; equal split',
-			'ultimate-addons-for-gutenberg'
-		),
+		label: __( 'Three columns; equal split', 'ultimate-addons-for-gutenberg' ),
 		icon: rowIcons.layout333333,
 		attributes: {
 			columns: 3,
@@ -95,10 +83,7 @@ const variations = [
 	},
 	{
 		name: 'three-column-first-half',
-		label: __(
-			'Three columns; equal split',
-			'ultimate-addons-for-gutenberg'
-		),
+		label: __( 'Three columns; equal split', 'ultimate-addons-for-gutenberg' ),
 		icon: rowIcons.layout252550,
 		attributes: {
 			columns: 3,
@@ -113,10 +98,7 @@ const variations = [
 	},
 	{
 		name: 'three-column',
-		label: __(
-			'Three columns; equal split',
-			'ultimate-addons-for-gutenberg'
-		),
+		label: __( 'Three columns; equal split', 'ultimate-addons-for-gutenberg' ),
 		icon: rowIcons.layout502525,
 		attributes: {
 			columns: 3,
@@ -131,10 +113,7 @@ const variations = [
 	},
 	{
 		name: 'three-columns-wider-center',
-		label: __(
-			'Three columns; wide center column',
-			'ultimate-addons-for-gutenberg'
-		),
+		label: __( 'Three columns; wide center column', 'ultimate-addons-for-gutenberg' ),
 		icon: rowIcons.layout255025,
 		attributes: {
 			columns: 3,
@@ -148,10 +127,7 @@ const variations = [
 	},
 	{
 		name: 'four-column',
-		label: __(
-			'Four columns; equal split',
-			'ultimate-addons-for-gutenberg'
-		),
+		label: __( 'Four columns; equal split', 'ultimate-addons-for-gutenberg' ),
 		icon: rowIcons.layout25252525,
 		attributes: {
 			columns: 4,
@@ -167,10 +143,7 @@ const variations = [
 	},
 	{
 		name: 'five-column',
-		label: __(
-			'Five columns; equal split',
-			'ultimate-addons-for-gutenberg'
-		),
+		label: __( 'Five columns; equal split', 'ultimate-addons-for-gutenberg' ),
 		icon: rowIcons.layout2525252525,
 		attributes: {
 			columns: 5,

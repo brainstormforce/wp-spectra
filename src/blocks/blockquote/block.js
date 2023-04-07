@@ -19,10 +19,7 @@ blockquoteCommonData = applyFilters( 'uagb/blockquote', addCommonDataToSpectraBl
 registerBlockType( 'uagb/blockquote', {
 	...blockquoteCommonData,
 	title: __( 'Blockquote', 'ultimate-addons-for-gutenberg' ),
-	description: __(
-		'Display qoutes/quoted texts using blockquote.',
-		'ultimate-addons-for-gutenberg'
-	),
+	description: __( 'Display qoutes/quoted texts using blockquote.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.blockquote,
 	keywords: [
 		__( 'blockquote', 'ultimate-addons-for-gutenberg' ),
@@ -33,13 +30,8 @@ registerBlockType( 'uagb/blockquote', {
 		anchor: true,
 	},
 	attributes,
-category: uagb_blocks_info.category,
-	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="blockquote" />
-		) : (
-			<Edit { ...props } />
-		),
+	category: uagb_blocks_info.category,
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="blockquote" /> : <Edit { ...props } /> ),
 	save,
 	deprecated,
 	transforms: {
@@ -53,7 +45,7 @@ category: uagb_blocks_info.category,
 						author: attribute.citation,
 						align: attribute.align,
 						descColor: colourNameToHex( attribute.textColor ),
-						authorColor: colourNameToHex( attribute.backgroundColor )
+						authorColor: colourNameToHex( attribute.backgroundColor ),
 					} );
 				},
 			},
@@ -65,7 +57,7 @@ category: uagb_blocks_info.category,
 						descriptionText: attribute.content,
 						align: attribute.textAlign,
 						descColor: colourNameToHex( attribute.textColor ),
-						authorColor: colourNameToHex( attribute.backgroundColor )
+						authorColor: colourNameToHex( attribute.backgroundColor ),
 					} );
 				},
 			},
@@ -76,7 +68,7 @@ category: uagb_blocks_info.category,
 					return createBlock( 'uagb/blockquote', {
 						descriptionText: attribute.content,
 						descColor: colourNameToHex( attribute.textColor ),
-						authorColor: colourNameToHex( attribute.backgroundColor )
+						authorColor: colourNameToHex( attribute.backgroundColor ),
 					} );
 				},
 			},
@@ -87,15 +79,15 @@ category: uagb_blocks_info.category,
 					const newitems = [];
 					childBlocks.forEach( ( item, i ) => {
 						newitems.push( {
-							text: childBlocks[i].attributes.content
-						} )
+							text: childBlocks[ i ].attributes.content,
+						} );
 					} );
 
 					return newitems.map( ( text ) =>
 						createBlock( 'uagb/blockquote', {
 							descriptionText: text.text,
 							descColor: colourNameToHex( _attributes.textColor ),
-							authorColor: colourNameToHex( _attributes.backgroundColor )
+							authorColor: colourNameToHex( _attributes.backgroundColor ),
 						} )
 					);
 				},

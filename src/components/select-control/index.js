@@ -25,7 +25,7 @@ const defaultProps = {
 };
 
 export default function UAGSelectControl( { layout, label, options, data, setAttributes, onChange, help, children } ) {
-	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const [ panelNameForHook, setPanelNameForHook ] = useState( null );
 	const panelRef = useRef( null );
 
 	useLayoutEffect( () => {
@@ -38,54 +38,53 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 	const { getSelectedBlock } = select( 'core/block-editor' );
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	useEffect( () => {
-		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
-	}, [blockNameForHook] )
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) );
+	}, [ blockNameForHook ] );
 
 	const controlName = getIdFromString( label );
 
-	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
-	const allOptions = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.options`, options, blockNameForHook );
+	const controlBeforeDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }.before`,
+		'',
+		blockNameForHook
+	);
+	const controlAfterDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }`,
+		'',
+		blockNameForHook
+	);
+	const allOptions = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }.options`,
+		options,
+		blockNameForHook
+	);
 
 	return (
-		<div
-			ref={panelRef}
-			className={ `uagb-select-control uagb-select-control--layout-${ layout }` }
-		>
-			{
-				controlBeforeDomElement
-			}
-			{
-				children ? (
-
-						<SelectControl
-							label={ label }
-							value={ data.value }
-							onChange={ ( value ) => (
-								onChange ? onChange( value ) : setAttributes( { [data.label]: value } )
-							) }
-							help={ help }
-						>
-							{ children }
-						</SelectControl>
-
-				) : (
-
-						<SelectControl
-							label={ label }
-							value={ data.value }
-							onChange={ ( value ) => (
-								onChange ? onChange( value ) : setAttributes( { [data.label]: value } )
-							) }
-							options={ allOptions }
-							help={ help }
-						/>
-
-				)
-			}
-			{
-				controlAfterDomElement
-			}
+		<div ref={ panelRef } className={ `uagb-select-control uagb-select-control--layout-${ layout }` }>
+			{ controlBeforeDomElement }
+			{ children ? (
+				<SelectControl
+					label={ label }
+					value={ data.value }
+					onChange={ ( value ) =>
+						onChange ? onChange( value ) : setAttributes( { [ data.label ]: value } )
+					}
+					help={ help }
+				>
+					{ children }
+				</SelectControl>
+			) : (
+				<SelectControl
+					label={ label }
+					value={ data.value }
+					onChange={ ( value ) =>
+						onChange ? onChange( value ) : setAttributes( { [ data.label ]: value } )
+					}
+					options={ allOptions }
+					help={ help }
+				/>
+			) }
+			{ controlAfterDomElement }
 		</div>
 	);
 }

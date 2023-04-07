@@ -32,13 +32,8 @@ registerBlockType( 'uagb/google-map', {
 		anchor: true,
 	},
 	attributes,
-category: uagb_blocks_info.category,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="google-maps" />
-			) : (
-				<Edit { ...props } />
-			),
+	category: uagb_blocks_info.category,
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="google-maps" /> : <Edit { ...props } /> ),
 	save,
 	deprecated,
 } );

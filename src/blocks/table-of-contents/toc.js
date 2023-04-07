@@ -53,9 +53,7 @@ function TableOfContents( props ) {
 					toc += '<li class="uagb-toc__list">';
 					depthArray[ level ] = currentDepth;
 				} else if ( level < lastLevel ) {
-					const closing = Math.abs(
-						currentDepth - depthArray[ level ]
-					);
+					const closing = Math.abs( currentDepth - depthArray[ level ] );
 
 					if ( level > parentLevel ) {
 						toc += str.repeat( closing );
@@ -80,26 +78,16 @@ function TableOfContents( props ) {
 
 		toc += str.repeat( lastLevel );
 
-		return (
-			<ol
-				className="uagb-toc__list"
-				dangerouslySetInnerHTML={ { __html: toc } }
-			></ol>
-		);
+		return <ol className="uagb-toc__list" dangerouslySetInnerHTML={ { __html: toc } }></ol>;
 	};
 
 	if (
 		mappingHeaders !== 'undefined' &&
 		headers &&
 		headers.length > 0 &&
-		headers.filter( ( header ) => mappingHeaders[ header.tag - 1 ] )
-			.length > 0
+		headers.filter( ( header ) => mappingHeaders[ header.tag - 1 ] ).length > 0
 	) {
-		return (
-			<div className="uagb-toc__list-wrap">
-				{ renderList( filterArray( headers ) ) }
-			</div>
-		);
+		return <div className="uagb-toc__list-wrap">{ renderList( filterArray( headers ) ) }</div>;
 	}
 	return (
 		<p className="uagb_table-of-contents-placeholder">

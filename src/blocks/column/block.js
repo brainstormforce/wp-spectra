@@ -18,10 +18,7 @@ columnCommonData = applyFilters( 'uagb/column', addCommonDataToSpectraBlocks( co
 registerBlockType( 'uagb/column', {
 	...columnCommonData,
 	title: __( 'Column', 'ultimate-addons-for-gutenberg' ),
-	description: __(
-		'Immediate child of Advanced Columns',
-		'ultimate-addons-for-gutenberg'
-	),
+	description: __( 'Immediate child of Advanced Columns', 'ultimate-addons-for-gutenberg' ),
 	icon: renderLegacyBlockEditorIcon( 'column' ),
 	parent: [ 'uagb/columns' ],
 	supports: {
@@ -30,7 +27,7 @@ registerBlockType( 'uagb/column', {
 		editorsKitBlockNavigator: true,
 	},
 	attributes,
-category: uagb_blocks_info.category,
+	category: uagb_blocks_info.category,
 	edit: ( props ) =>
 		props.attributes.isPreview ? (
 			<PreviewImage image="advanced-columns-child" isChildren={ true } />

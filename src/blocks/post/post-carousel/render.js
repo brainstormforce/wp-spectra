@@ -47,7 +47,8 @@ const Render = ( props ) => {
 
 		const onReset = () => {
 			const newBlocks = [];
-			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attribute ] ) => { // eslint-disable-line no-shadow
+			// eslint-disable-next-line no-shadow
+			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attribute ] ) => {
 				newBlocks.push( createBlock( name, attribute ) );
 				return true;
 			} );
@@ -71,10 +72,7 @@ const Render = ( props ) => {
 							'Edit the blocks inside the preview below to change the content displayed for each post within the post carousel.'
 						) }
 					</Tip>
-					<InnerBlockLayoutContextProvider
-						parentName="uagb/post-grid"
-						parentClassName="uagb-block-grid"
-					>
+					<InnerBlockLayoutContextProvider parentName="uagb/post-grid" parentClassName="uagb-block-grid">
 						<article className="uagb-post__inner-wrap uagb-post__edit-mode">
 							<div className="uagb-post__text">
 								<InnerBlocks { ...InnerBlockProps } />
@@ -82,24 +80,13 @@ const Render = ( props ) => {
 						</article>
 					</InnerBlockLayoutContextProvider>
 					<div className="uagb-block-all-post__actions">
-						<Button
-							className="uagb-block-all-post__done-button"
-							isPrimary
-							onClick={ onDone }
-						>
+						<Button className="uagb-block-all-post__done-button" isPrimary onClick={ onDone }>
 							{ __( 'Done' ) }
 						</Button>
-						<Button
-							className="uagb-block-all-post__cancel-button"
-							isTertiary
-							onClick={ onCancel }
-						>
+						<Button className="uagb-block-all-post__cancel-button" isTertiary onClick={ onCancel }>
 							{ __( 'Cancel' ) }
 						</Button>
-						<Button
-							className="uagb-block-all-post__reset-button"
-							onClick={ onReset }
-						>
+						<Button className="uagb-block-all-post__reset-button" onClick={ onReset }>
 							{ __( 'Reset Layout' ) }
 						</Button>
 					</div>
@@ -117,7 +104,7 @@ const Render = ( props ) => {
 			categoriesList={ categoriesList }
 			deviceType={ deviceType }
 			name={ name }
-			setAttributes ={ setAttributes }
+			setAttributes={ setAttributes }
 		/>
 	);
 

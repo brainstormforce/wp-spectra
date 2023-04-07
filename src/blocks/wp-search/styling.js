@@ -8,7 +8,6 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
-
 	const blockName = props.name.replace( 'uagb/', '' );
 
 	const {
@@ -24,9 +23,7 @@ function styling( props ) {
 		boxShadowSpread,
 		boxShadowPosition,
 
-
 		inputBorderHColor,
-
 
 		buttonBgColor,
 		buttonBgHoverColor,
@@ -101,14 +98,11 @@ function styling( props ) {
 	let mobileSelectors = {};
 
 	const $iconSize = generateCSSUnit( iconSizeFallback, iconSizeType );
-	const $buttonIconSize = generateCSSUnit(
-		buttonIconSizeFallback,
-		buttonIconSizeType
-	);
+	const $buttonIconSize = generateCSSUnit( buttonIconSizeFallback, buttonIconSizeType );
 
-	const inputBorderCSS = generateBorderCSS( props.attributes, 'input' )
-	const inputBorderCSSTablet = generateBorderCSS( props.attributes, 'input', 'tablet' )
-	const inputBorderCSSMobile = generateBorderCSS( props.attributes, 'input', 'mobile' )
+	const inputBorderCSS = generateBorderCSS( props.attributes, 'input' );
+	const inputBorderCSSTablet = generateBorderCSS( props.attributes, 'input', 'tablet' );
+	const inputBorderCSSMobile = generateBorderCSS( props.attributes, 'input', 'mobile' );
 
 	const inputCSS = {
 		'color': textColor,
@@ -116,7 +110,7 @@ function styling( props ) {
 		'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 		'line-height': generateCSSUnit( inputLineHeight, inputLineHeightType ),
 		'font-family': inputFontFamily,
-		'font-style' : inputFontStyle,
+		'font-style': inputFontStyle,
 		'font-weight': inputFontWeight,
 		'text-decoration': inputDecoration,
 		'text-transform': inputTransform,
@@ -124,22 +118,10 @@ function styling( props ) {
 		'border-radius': '0px',
 		'margin': 0,
 		'outline': 'unset',
-		'padding-top': generateCSSUnit(
-			paddingInputTop,
-			inputPaddingTypeDesktop
-		),
-		'padding-bottom': generateCSSUnit(
-			paddingInputBottom,
-			inputPaddingTypeDesktop
-		),
-		'padding-right': generateCSSUnit(
-			paddingInputRight,
-			inputPaddingTypeDesktop
-		),
-		'padding-left': generateCSSUnit(
-			paddingInputLeft,
-			inputPaddingTypeDesktop
-		),
+		'padding-top': generateCSSUnit( paddingInputTop, inputPaddingTypeDesktop ),
+		'padding-bottom': generateCSSUnit( paddingInputBottom, inputPaddingTypeDesktop ),
+		'padding-right': generateCSSUnit( paddingInputRight, inputPaddingTypeDesktop ),
+		'padding-left': generateCSSUnit( paddingInputLeft, inputPaddingTypeDesktop ),
 		'transition': 'all .5s',
 	};
 
@@ -165,7 +147,7 @@ function styling( props ) {
 	if ( 'undefined' !== typeof iconColor && '' !== iconColor ) {
 		tmpIconColor = iconColor;
 	}
-	
+
 	boxCSS.width = generateCSSUnit( inputSizeFallback, inputSizeType );
 
 	selectors = {
@@ -186,12 +168,9 @@ function styling( props ) {
 		},
 		' .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text': {
 			'font-size': generateCSSUnit( buttonFontSize, buttonFontSizeType ),
-			'line-height': generateCSSUnit(
-				buttonLineHeight,
-				buttonLineHeightType
-			),
+			'line-height': generateCSSUnit( buttonLineHeight, buttonLineHeightType ),
 			'font-family': buttonFontFamily,
-			'font-style' : buttonFontStyle,
+			'font-style': buttonFontStyle,
 			'font-weight': buttonFontWeight,
 			'text-decoration': buttonDecoration,
 			'text-transform': buttonTransform,
@@ -212,16 +191,10 @@ function styling( props ) {
 	};
 
 	if ( 'input-button' === layout || 'input' === layout ) {
-		selectors[
-			' .uagb-search-form__container .uagb-search-form__input'
-		] = inputCSS;
+		selectors[ ' .uagb-search-form__container .uagb-search-form__input' ] = inputCSS;
 
-		selectors[
-			' .uagb-search-wrapper .uagb-search-form__container'
-		] = boxCSS;
-		selectors[
-			' .uagb-search-wrapper .uagb-search-form__container:hover'
-		] = {
+		selectors[ ' .uagb-search-wrapper .uagb-search-form__container' ] = boxCSS;
+		selectors[ ' .uagb-search-wrapper .uagb-search-form__container:hover' ] = {
 			'border-color': inputBorderHColor,
 		};
 		if ( 'inset' === boxShadowPosition ) {
@@ -241,141 +214,60 @@ function styling( props ) {
 			};
 		}
 
-		selectors[
-			' .uagb-search-form__container .uagb-wp-search-icon-wrap'
-		] = {
+		selectors[ ' .uagb-search-form__container .uagb-wp-search-icon-wrap' ] = {
 			'background-color': inputBgColor,
-			'padding-top': generateCSSUnit(
-				paddingInputTop,
-				inputPaddingTypeDesktop
-			),
-			'padding-bottom': generateCSSUnit(
-				paddingInputBottom,
-				inputPaddingTypeDesktop
-			),
-			'padding-left': generateCSSUnit(
-				paddingInputLeft,
-				inputPaddingTypeDesktop
-			),
+			'padding-top': generateCSSUnit( paddingInputTop, inputPaddingTypeDesktop ),
+			'padding-bottom': generateCSSUnit( paddingInputBottom, inputPaddingTypeDesktop ),
+			'padding-left': generateCSSUnit( paddingInputLeft, inputPaddingTypeDesktop ),
 		};
 	}
 
-	selectors[
-		'.uagb-layout-input-button .uagb-search-form__container .uagb-search-submit'
-	] = {
+	selectors[ '.uagb-layout-input-button .uagb-search-form__container .uagb-search-submit' ] = {
 		'background-color': buttonBgColor,
 	};
-	selectors[
-		'.uagb-layout-input-button .uagb-search-form__container .uagb-search-submit:hover'
-	] = {
+	selectors[ '.uagb-layout-input-button .uagb-search-form__container .uagb-search-submit:hover' ] = {
 		'background-color': buttonBgHoverColor,
 	};
 
 	mobileSelectors = {
 		' .uagb-search-wrapper .uagb-search-form__container': inputBorderCSSMobile,
 		' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input': {
-			'font-size': generateCSSUnit(
-				inputFontSizeMobile,
-				inputFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				inputLineHeightMobile,
-				inputLineHeightType
-			),
-			'padding-top': generateCSSUnit(
-				paddingInputTopMobile,
-				mobilePaddingInputUnit
-			),
-			'padding-bottom': generateCSSUnit(
-				paddingInputBottomMobile,
-				mobilePaddingInputUnit
-			),
-			'padding-right': generateCSSUnit(
-				paddingInputRightMobile,
-				mobilePaddingInputUnit
-			),
-			'padding-left': generateCSSUnit(
-				paddingInputLeftMobile,
-				mobilePaddingInputUnit
-			),
+			'font-size': generateCSSUnit( inputFontSizeMobile, inputFontSizeType ),
+			'line-height': generateCSSUnit( inputLineHeightMobile, inputLineHeightType ),
+			'padding-top': generateCSSUnit( paddingInputTopMobile, mobilePaddingInputUnit ),
+			'padding-bottom': generateCSSUnit( paddingInputBottomMobile, mobilePaddingInputUnit ),
+			'padding-right': generateCSSUnit( paddingInputRightMobile, mobilePaddingInputUnit ),
+			'padding-left': generateCSSUnit( paddingInputLeftMobile, mobilePaddingInputUnit ),
 		},
 		' .uagb-search-form__container .uagb-wp-search-icon-wrap': {
-			'padding-top': generateCSSUnit(
-				paddingInputTopMobile,
-				mobilePaddingInputUnit
-			),
-			'padding-bottom': generateCSSUnit(
-				paddingInputBottomMobile,
-				mobilePaddingInputUnit
-			),
-			'padding-left': generateCSSUnit(
-				paddingInputLeftMobile,
-				mobilePaddingInputUnit
-			),
+			'padding-top': generateCSSUnit( paddingInputTopMobile, mobilePaddingInputUnit ),
+			'padding-bottom': generateCSSUnit( paddingInputBottomMobile, mobilePaddingInputUnit ),
+			'padding-left': generateCSSUnit( paddingInputLeftMobile, mobilePaddingInputUnit ),
 		},
 		' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text': {
-			'font-size': generateCSSUnit(
-				buttonFontSizeMobile,
-				buttonFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				buttonLineHeightMobile,
-				buttonLineHeightType
-			),
+			'font-size': generateCSSUnit( buttonFontSizeMobile, buttonFontSizeType ),
+			'line-height': generateCSSUnit( buttonLineHeightMobile, buttonLineHeightType ),
 		},
 	};
 
 	tabletSelectors = {
 		' .uagb-search-wrapper .uagb-search-form__container': inputBorderCSSTablet,
 		' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input': {
-			'font-size': generateCSSUnit(
-				inputFontSizeTablet,
-				inputFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				inputLineHeightTablet,
-				inputLineHeightType
-			),
-			'padding-top': generateCSSUnit(
-				paddingInputTopTablet,
-				tabletPaddingInputUnit
-			),
-			'padding-bottom': generateCSSUnit(
-				paddingInputBottomTablet,
-				tabletPaddingInputUnit
-			),
-			'padding-right': generateCSSUnit(
-				paddingInputRightTablet,
-				tabletPaddingInputUnit
-			),
-			'padding-left': generateCSSUnit(
-				paddingInputLeftTablet,
-				tabletPaddingInputUnit
-			),
+			'font-size': generateCSSUnit( inputFontSizeTablet, inputFontSizeType ),
+			'line-height': generateCSSUnit( inputLineHeightTablet, inputLineHeightType ),
+			'padding-top': generateCSSUnit( paddingInputTopTablet, tabletPaddingInputUnit ),
+			'padding-bottom': generateCSSUnit( paddingInputBottomTablet, tabletPaddingInputUnit ),
+			'padding-right': generateCSSUnit( paddingInputRightTablet, tabletPaddingInputUnit ),
+			'padding-left': generateCSSUnit( paddingInputLeftTablet, tabletPaddingInputUnit ),
 		},
 		' .uagb-search-form__container .uagb-wp-search-icon-wrap': {
-			'padding-top': generateCSSUnit(
-				paddingInputTopTablet,
-				tabletPaddingInputUnit
-			),
-			'padding-bottom': generateCSSUnit(
-				paddingInputBottomTablet,
-				tabletPaddingInputUnit
-			),
-			'padding-left': generateCSSUnit(
-				paddingInputLeftTablet,
-				tabletPaddingInputUnit
-			),
+			'padding-top': generateCSSUnit( paddingInputTopTablet, tabletPaddingInputUnit ),
+			'padding-bottom': generateCSSUnit( paddingInputBottomTablet, tabletPaddingInputUnit ),
+			'padding-left': generateCSSUnit( paddingInputLeftTablet, tabletPaddingInputUnit ),
 		},
 		' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text': {
-			'font-size': generateCSSUnit(
-				buttonFontSizeTablet,
-				buttonFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				buttonLineHeightTablet,
-				buttonLineHeightType
-			),
+			'font-size': generateCSSUnit( buttonFontSizeTablet, buttonFontSizeType ),
+			'line-height': generateCSSUnit( buttonLineHeightTablet, buttonLineHeightType ),
 		},
 	};
 	let stylingCss = '';
@@ -383,19 +275,9 @@ function styling( props ) {
 
 	stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS(
-		tabletSelectors,
-		`${ id }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
+	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
 
-	stylingCss += generateCSS(
-		mobileSelectors,
-		`${ id }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	stylingCss += generateCSS( mobileSelectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
 
 	return stylingCss;
 }

@@ -4,9 +4,9 @@ const config = require( '@wordpress/prettier-config' );
 
 config.overrides = [
 	{
-		files: [ '*.scss', '*.css' ],
+		files: [ '*.scss', '*.css', '*.js' ],
 		options: {
-			printWidth: 800,
+			printWidth: 120,
 			singleQuote: true,
 		},
 	},

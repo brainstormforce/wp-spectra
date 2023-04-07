@@ -15,7 +15,6 @@ import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 const UAGBCallToAction = ( props ) => {
-
 	const deviceType = useDeviceType();
 	const {
 		isSelected,
@@ -46,7 +45,7 @@ const UAGBCallToAction = ( props ) => {
 			titleFontFamily,
 			titleFontWeight,
 			descFontFamily,
-			descFontWeight
+			descFontWeight,
 		},
 		clientId,
 	} = props;
@@ -57,12 +56,12 @@ const UAGBCallToAction = ( props ) => {
 
 		setAttributes( { classMigrate: true } );
 
-		if( stack === 'tablet' ) {
-			setAttributes( {stack: 'tablet'} );
-		}else if ( stack === 'mobile' ) {
-			setAttributes( {stack: 'mobile'} )
+		if ( stack === 'tablet' ) {
+			setAttributes( { stack: 'tablet' } );
+		} else if ( stack === 'mobile' ) {
+			setAttributes( { stack: 'mobile' } );
 		} else if ( stack === 'none' && ctaPosition === 'right' ) {
-			setAttributes( {stack: 'none'} )
+			setAttributes( { stack: 'none' } );
 		} else if ( stack === 'none' && 'below-title' === ctaPosition ) {
 			setAttributes( { stack: 'desktop' } );
 		}
@@ -74,47 +73,48 @@ const UAGBCallToAction = ( props ) => {
 		}
 
 		// border
-		if( ctaBorderWidth || ctaBorderRadius || ctaBorderColor || ctaBorderhoverColor || ctaBorderStyle ){
-			migrateBorderAttributes( 'btn', {
-				label: 'ctaBorderWidth',
-				value: ctaBorderWidth,
-			}, {
-				label: 'ctaBorderRadius',
-				value: ctaBorderRadius
-			}, {
-				label: 'ctaBorderColor',
-				value: ctaBorderColor
-			}, {
-				label: 'ctaBorderhoverColor',
-				value: ctaBorderhoverColor
-			},{
-				label: 'ctaBorderStyle',
-				value: ctaBorderStyle
-			},
-			setAttributes,
-			attributes
+		if ( ctaBorderWidth || ctaBorderRadius || ctaBorderColor || ctaBorderhoverColor || ctaBorderStyle ) {
+			migrateBorderAttributes(
+				'btn',
+				{
+					label: 'ctaBorderWidth',
+					value: ctaBorderWidth,
+				},
+				{
+					label: 'ctaBorderRadius',
+					value: ctaBorderRadius,
+				},
+				{
+					label: 'ctaBorderColor',
+					value: ctaBorderColor,
+				},
+				{
+					label: 'ctaBorderhoverColor',
+					value: ctaBorderhoverColor,
+				},
+				{
+					label: 'ctaBorderStyle',
+					value: ctaBorderStyle,
+				},
+				setAttributes,
+				attributes
 			);
 		}
-		
 	}, [] );
 
 	useEffect( () => {
-
 		// Replacement for componentDidUpdate.
 		const blockStyling = CtaStyle( props );
 
 		addBlockEditorDynamicStyles( 'uagb-cta-style-' + clientId.substr( 0, 8 ), blockStyling );
-		
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
-	}, [deviceType] );
+	}, [ deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	let loadCtaGoogleFonts;
@@ -125,60 +125,41 @@ const UAGBCallToAction = ( props ) => {
 	if ( secondCtaLoadGoogleFonts === true ) {
 		const secondCtaBtnconfig = {
 			google: {
-				families: [
-					secondCtaFontFamily + ( secondCtaFontWeight ? ':' + secondCtaFontWeight : '' ),
-				],
+				families: [ secondCtaFontFamily + ( secondCtaFontWeight ? ':' + secondCtaFontWeight : '' ) ],
 			},
 		};
 
-		loadSecCtaGoogleFonts = (
-			<WebfontLoader config={ secondCtaBtnconfig }></WebfontLoader>
-		);
+		loadSecCtaGoogleFonts = <WebfontLoader config={ secondCtaBtnconfig }></WebfontLoader>;
 	}
 
 	if ( ctaLoadGoogleFonts === true ) {
 		const ctaconfig = {
 			google: {
-				families: [
-					ctaFontFamily +
-						( ctaFontWeight ? ':' + ctaFontWeight : '' ),
-				],
+				families: [ ctaFontFamily + ( ctaFontWeight ? ':' + ctaFontWeight : '' ) ],
 			},
 		};
 
-		loadCtaGoogleFonts = (
-			<WebfontLoader config={ ctaconfig }></WebfontLoader>
-		);
+		loadCtaGoogleFonts = <WebfontLoader config={ ctaconfig }></WebfontLoader>;
 	}
 
 	if ( titleLoadGoogleFonts === true ) {
 		const titleconfig = {
 			google: {
-				families: [
-					titleFontFamily +
-						( titleFontWeight ? ':' + titleFontWeight : '' ),
-				],
+				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
 			},
 		};
 
-		loadTitleGoogleFonts = (
-			<WebfontLoader config={ titleconfig }></WebfontLoader>
-		);
+		loadTitleGoogleFonts = <WebfontLoader config={ titleconfig }></WebfontLoader>;
 	}
 
 	if ( descLoadGoogleFonts === true ) {
 		const descconfig = {
 			google: {
-				families: [
-					descFontFamily +
-						( descFontWeight ? ':' + descFontWeight : '' ),
-				],
+				families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
 			},
 		};
 
-		loadDescGoogleFonts = (
-			<WebfontLoader config={ descconfig }></WebfontLoader>
-		);
+		loadDescGoogleFonts = <WebfontLoader config={ descconfig }></WebfontLoader>;
 	}
 
 	return (

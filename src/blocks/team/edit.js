@@ -9,7 +9,6 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import WebfontLoader from '@Components/typography/fontloader';
 
-
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
@@ -20,9 +19,9 @@ const UAGBTeam = ( props ) => {
 		isSelected,
 		setAttributes,
 		attributes,
-		attributes: { 
-			UAGHideDesktop, 
-			UAGHideTab, 
+		attributes: {
+			UAGHideDesktop,
+			UAGHideTab,
 			UAGHideMob,
 			titleLoadGoogleFonts,
 			titleFontFamily,
@@ -32,23 +31,19 @@ const UAGBTeam = ( props ) => {
 			prefixFontWeight,
 			descLoadGoogleFonts,
 			descFontFamily,
-			descFontWeight
-		 },
+			descFontWeight,
+		},
 		clientId,
 	} = props;
-	
+
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
-
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-team-style-' + clientId.substr( 0, 8 ), blockStyling );
-		
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
@@ -59,7 +54,6 @@ const UAGBTeam = ( props ) => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 		setAttributes( { classMigrate: true } );
-
 	}, [] );
 
 	let loadTitleGoogleFonts;
@@ -69,51 +63,36 @@ const UAGBTeam = ( props ) => {
 	if ( titleLoadGoogleFonts === true ) {
 		const tconfig = {
 			google: {
-				families: [
-					titleFontFamily +
-						( titleFontWeight ? ':' + titleFontWeight : '' ),
-				],
+				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
 			},
 		};
 
-		loadTitleGoogleFonts = (
-			<WebfontLoader config={ tconfig }></WebfontLoader>
-		);
+		loadTitleGoogleFonts = <WebfontLoader config={ tconfig }></WebfontLoader>;
 	}
 
 	if ( prefixLoadGoogleFonts === true ) {
 		const pconfig = {
 			google: {
-				families: [
-					prefixFontFamily +
-						( prefixFontWeight ? ':' + prefixFontWeight : '' ),
-				],
+				families: [ prefixFontFamily + ( prefixFontWeight ? ':' + prefixFontWeight : '' ) ],
 			},
 		};
 
-		loadPrefixGoogleFonts = (
-			<WebfontLoader config={ pconfig }></WebfontLoader>
-		);
+		loadPrefixGoogleFonts = <WebfontLoader config={ pconfig }></WebfontLoader>;
 	}
 
 	if ( descLoadGoogleFonts === true ) {
 		const dconfig = {
 			google: {
-				families: [
-					descFontFamily +
-						( descFontWeight ? ':' + descFontWeight : '' ),
-				],
+				families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
 			},
 		};
 
-		loadDescGoogleFonts = (
-			<WebfontLoader config={ dconfig }></WebfontLoader>
-		);
+		loadDescGoogleFonts = <WebfontLoader config={ dconfig }></WebfontLoader>;
 	}
 
 	return (
 		<>
-		{ isSelected && <Settings parentProps={ props } /> }
+			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
 			{ loadTitleGoogleFonts }
 			{ loadPrefixGoogleFonts }

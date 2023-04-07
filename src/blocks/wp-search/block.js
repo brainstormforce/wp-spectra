@@ -20,7 +20,10 @@ if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_bloc
 	registerBlockType( 'uagb/wp-search', {
 		...searchCommonData,
 		title: __( 'Search', 'ultimate-addons-for-gutenberg' ),
-		description: __( 'Add a search widget to let users search posts from your website.', 'ultimate-addons-for-gutenberg' ),
+		description: __(
+			'Add a search widget to let users search posts from your website.',
+			'ultimate-addons-for-gutenberg'
+		),
 		icon: renderLegacyBlockEditorIcon( 'wp_search' ),
 		keywords: [
 			__( 'search', 'ultimate-addons-for-gutenberg' ),
@@ -31,14 +34,9 @@ if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_bloc
 			anchor: true,
 		},
 		attributes,
-category: uagb_blocks_info.category,
-		edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="wp-search" />
-			) : (
-				<Edit { ...props } />
-			),
+		category: uagb_blocks_info.category,
+		edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="wp-search" /> : <Edit { ...props } /> ),
 		save,
-		deprecated
+		deprecated,
 	} );
 }

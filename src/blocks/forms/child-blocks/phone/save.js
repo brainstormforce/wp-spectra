@@ -20,7 +20,7 @@ export default function save( props ) {
 		placeholder = __( '123-45-678', 'ultimate-addons-for-gutenberg' );
 	} else if ( pattern === '[0-9]{3}-?[0-9]{3}-?[0-9]{4}' ) {
 		placeholder = __( '123-456-7890', 'ultimate-addons-for-gutenberg' );
-	} else if ( pattern === '[0-9]{3}\s?[0-9]{3}\s?[0-9]{4}' ) {
+	} else if ( pattern === '[0-9]{3}s?[0-9]{3}s?[0-9]{4}' ) {
 		placeholder = __( '123 456 7890', 'ultimate-addons-for-gutenberg' );
 	}
 
@@ -49,18 +49,10 @@ export default function save( props ) {
 		);
 	}
 
-	const isRequired = phoneRequired
-		? __( 'required', 'ultimate-addons-for-gutenberg' )
-		: '';
+	const isRequired = phoneRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
 
 	return (
-		<div
-			className={ classnames(
-				'uagb-forms-phone-wrap',
-				'uagb-forms-field-set',
-				`uagb-block-${ block_id }`
-			) }
-		>
+		<div className={ classnames( 'uagb-forms-phone-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }>
 			<RichText.Content
 				tagName="div"
 				value={ phoneName }
@@ -75,7 +67,7 @@ export default function save( props ) {
 					name={ `${ phoneName }[]` }
 				>
 					{ countryOptions.map( ( o, index ) => (
-						<option value={ o.props.value } key={ index } selected={o.props.value === selectPhoneCode}>
+						<option value={ o.props.value } key={ index } selected={ o.props.value === selectPhoneCode }>
 							{ o.props.children }
 						</option>
 					) ) }

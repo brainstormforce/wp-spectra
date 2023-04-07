@@ -34,74 +34,64 @@ const UAGBRestaurantMenu = ( props ) => {
 			descFontWeight,
 			priceLoadGoogleFonts,
 			priceFontFamily,
-			priceFontWeight
+			priceFontWeight,
 		},
 		setAttributes,
 		clientId,
 	} = props;
-	
+
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 		setAttributes( { classMigrate: true } );
 		setAttributes( { childMigrate: true } );
-		if( imagePosition ){
-			if( 'left' === imagePosition ){
+		if ( imagePosition ) {
+			if ( 'left' === imagePosition ) {
 				setAttributes( { imgAlign: 'side' } );
 			}
-			if( 'right' === imagePosition ){
+			if ( 'right' === imagePosition ) {
 				setAttributes( { imgAlign: 'side' } );
 			}
-			if( 'top' === imagePosition ){
+			if ( 'top' === imagePosition ) {
 				setAttributes( { imgAlign: 'top' } );
 			}
 		}
 
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			clientId
-		);
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.imageAlignment = imageAlignment;
 		} );
-		
 	}, [] );
 
 	useEffect( () => {
-
 		const blockStyling = RestMenuStyle( props );
 
 		addBlockEditorDynamicStyles( 'uagb-restaurant-menu-style-' + clientId.substr( 0, 8 ), blockStyling );
-		if( 'side' === imgAlign && 'right' !== imagePosition ){
-			setAttributes( { imagePosition : 'left' } );
-			setAttributes( { headingAlign : 'left' } );
+		if ( 'side' === imgAlign && 'right' !== imagePosition ) {
+			setAttributes( { imagePosition: 'left' } );
+			setAttributes( { headingAlign: 'left' } );
 		}
-		if( 'top' === imgAlign ){
-			setAttributes( { imagePosition : 'top' } );
+		if ( 'top' === imgAlign ) {
+			setAttributes( { imagePosition: 'top' } );
 		}
-		
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
-	}, [deviceType] );
+	}, [ deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
 		// Set showImage attribute in child blocks based on current parent block's value.
 		select( 'core/block-editor' )
-            .getBlocksByClientId( clientId )[0]
-            ?.innerBlocks.forEach( function( block ) {
-                dispatch( 'core/block-editor' ).updateBlockAttributes(
-                    block.clientId, { showImage }
-                );
-
-            } );
+			.getBlocksByClientId( clientId )[ 0 ]
+			?.innerBlocks.forEach( function ( block ) {
+				dispatch( 'core/block-editor' ).updateBlockAttributes( block.clientId, { showImage } );
+			} );
 	}, [ showImage ] );
 
 	let loadTitleGoogleFonts;
@@ -111,56 +101,41 @@ const UAGBRestaurantMenu = ( props ) => {
 	if ( titleLoadGoogleFonts === true ) {
 		const titleconfig = {
 			google: {
-				families: [
-					titleFontFamily +
-						( titleFontWeight ? ':' + titleFontWeight : '' ),
-				],
+				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
 			},
 		};
 
-		loadTitleGoogleFonts = (
-			<WebfontLoader config={ titleconfig }></WebfontLoader>
-		);
+		loadTitleGoogleFonts = <WebfontLoader config={ titleconfig }></WebfontLoader>;
 	}
 
 	if ( descLoadGoogleFonts === true ) {
 		const descconfig = {
 			google: {
-				families: [
-					descFontFamily +
-						( descFontWeight ? ':' + descFontWeight : '' ),
-				],
+				families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
 			},
 		};
 
-		loadDescGoogleFonts = (
-			<WebfontLoader config={ descconfig }></WebfontLoader>
-		);
+		loadDescGoogleFonts = <WebfontLoader config={ descconfig }></WebfontLoader>;
 	}
 
 	if ( priceLoadGoogleFonts === true ) {
 		const priceconfig = {
 			google: {
-				families: [
-					priceFontFamily +
-						( priceFontWeight ? ':' + priceFontWeight : '' ),
-				],
+				families: [ priceFontFamily + ( priceFontWeight ? ':' + priceFontWeight : '' ) ],
 			},
 		};
 
-		loadPriceGoogleFonts = (
-			<WebfontLoader config={ priceconfig }></WebfontLoader>
-		);
+		loadPriceGoogleFonts = <WebfontLoader config={ priceconfig }></WebfontLoader>;
 	}
 
 	return (
-			<>
+		<>
 			{ isSelected && <Settings parentProps={ props } /> }
-				<Render parentProps={ props } />
-				{ loadTitleGoogleFonts }
-				{ loadDescGoogleFonts }
-				{ loadPriceGoogleFonts }
-			</>
+			<Render parentProps={ props } />
+			{ loadTitleGoogleFonts }
+			{ loadDescGoogleFonts }
+			{ loadPriceGoogleFonts }
+		</>
 	);
 };
 export default UAGBRestaurantMenu;

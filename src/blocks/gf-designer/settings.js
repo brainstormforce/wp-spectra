@@ -3,9 +3,7 @@ import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
-import InspectorTab, {
-	UAGTabs,
-} from '@Components/inspector-tabs/InspectorTab.js';
+import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import Range from '@Components/range/Range.js';
@@ -13,18 +11,10 @@ import UAGTabsControl from '@Components/tabs';
 import SpacingControl from '@Components/spacing-control';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGSelectControl from '@Components/select-control';
-import {
-	AlignmentToolbar,
-	BlockControls,
-	InspectorControls,
-} from '@wordpress/block-editor';
+import { AlignmentToolbar, BlockControls, InspectorControls } from '@wordpress/block-editor';
 
-import {
-	ToggleControl,
-	Icon,
-} from '@wordpress/components';
+import { ToggleControl, Icon } from '@wordpress/components';
 import { memo } from '@wordpress/element';
-
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -253,33 +243,33 @@ const Settings = ( props ) => {
 		successMsgFontStyle,
 		successMsgTransform,
 		labelLetterSpacing,
-labelLetterSpacingTablet,
-labelLetterSpacingMobile,
-labelLetterSpacingType,
-inputLetterSpacing,
-inputLetterSpacingTablet,
-inputLetterSpacingMobile,
-inputLetterSpacingType,
-radioCheckLetterSpacing,
-radioCheckLetterSpacingTablet,
-radioCheckLetterSpacingMobile,
-radioCheckLetterSpacingType,
-buttonLetterSpacing,
-buttonLetterSpacingTablet,
-buttonLetterSpacingMobile,
-buttonLetterSpacingType,
-validationMsgLetterSpacing,
-validationMsgLetterSpacingTablet,
-validationMsgLetterSpacingMobile,
-validationMsgLetterSpacingType,
-msgLetterSpacing,
-msgLetterSpacingTablet,
-msgLetterSpacingMobile,
-msgLetterSpacingType,
-successMsgLetterSpacing,
-successMsgLetterSpacingTablet,
-successMsgLetterSpacingMobile,
-successMsgLetterSpacingType,
+		labelLetterSpacingTablet,
+		labelLetterSpacingMobile,
+		labelLetterSpacingType,
+		inputLetterSpacing,
+		inputLetterSpacingTablet,
+		inputLetterSpacingMobile,
+		inputLetterSpacingType,
+		radioCheckLetterSpacing,
+		radioCheckLetterSpacingTablet,
+		radioCheckLetterSpacingMobile,
+		radioCheckLetterSpacingType,
+		buttonLetterSpacing,
+		buttonLetterSpacingTablet,
+		buttonLetterSpacingMobile,
+		buttonLetterSpacingType,
+		validationMsgLetterSpacing,
+		validationMsgLetterSpacingTablet,
+		validationMsgLetterSpacingMobile,
+		validationMsgLetterSpacingType,
+		msgLetterSpacing,
+		msgLetterSpacingTablet,
+		msgLetterSpacingMobile,
+		msgLetterSpacingType,
+		successMsgLetterSpacing,
+		successMsgLetterSpacingTablet,
+		successMsgLetterSpacingMobile,
+		successMsgLetterSpacingType,
 	} = attributes;
 
 	let loadInputGoogleFonts;
@@ -292,112 +282,74 @@ successMsgLetterSpacingType,
 	if ( labelLoadGoogleFonts === true ) {
 		const labelconfig = {
 			google: {
-				families: [
-					labelFontFamily +
-						( labelFontWeight ? ':' + labelFontWeight : '' ),
-				],
+				families: [ labelFontFamily + ( labelFontWeight ? ':' + labelFontWeight : '' ) ],
 			},
 		};
 
-		loadLabelGoogleFonts = (
-			<WebfontLoader config={ labelconfig }></WebfontLoader>
-		);
+		loadLabelGoogleFonts = <WebfontLoader config={ labelconfig }></WebfontLoader>;
 	}
 
 	if ( inputLoadGoogleFonts === true ) {
 		const inputconfig = {
 			google: {
-				families: [
-					inputFontFamily +
-						( inputFontWeight ? ':' + inputFontWeight : '' ),
-				],
+				families: [ inputFontFamily + ( inputFontWeight ? ':' + inputFontWeight : '' ) ],
 			},
 		};
 
-		loadInputGoogleFonts = (
-			<WebfontLoader config={ inputconfig }></WebfontLoader>
-		);
+		loadInputGoogleFonts = <WebfontLoader config={ inputconfig }></WebfontLoader>;
 	}
 
 	if ( buttonLoadGoogleFonts === true ) {
 		const buttonconfig = {
 			google: {
-				families: [
-					buttonFontFamily +
-						( buttonFontWeight ? ':' + buttonFontWeight : '' ),
-				],
+				families: [ buttonFontFamily + ( buttonFontWeight ? ':' + buttonFontWeight : '' ) ],
 			},
 		};
 
-		loadButtonGoogleFonts = (
-			<WebfontLoader config={ buttonconfig }></WebfontLoader>
-		);
+		loadButtonGoogleFonts = <WebfontLoader config={ buttonconfig }></WebfontLoader>;
 	}
 
 	if ( radioCheckLoadGoogleFonts === true ) {
 		const radioCheckconfig = {
 			google: {
-				families: [
-					radioCheckFontFamily +
-						( radioCheckFontWeight
-							? ':' + radioCheckFontWeight
-							: '' ),
-				],
+				families: [ radioCheckFontFamily + ( radioCheckFontWeight ? ':' + radioCheckFontWeight : '' ) ],
 			},
 		};
 
-		loadRadioGoogleFonts = (
-			<WebfontLoader config={ radioCheckconfig }></WebfontLoader>
-		);
+		loadRadioGoogleFonts = <WebfontLoader config={ radioCheckconfig }></WebfontLoader>;
 	}
 
 	if ( validationMsgLoadGoogleFonts === true ) {
 		const validationMsgconfig = {
 			google: {
 				families: [
-					validationMsgFontFamily +
-						( validationMsgFontWeight
-							? ':' + validationMsgFontWeight
-							: '' ),
+					validationMsgFontFamily + ( validationMsgFontWeight ? ':' + validationMsgFontWeight : '' ),
 				],
 			},
 		};
 
-		loadValidationGoogleFonts = (
-			<WebfontLoader config={ validationMsgconfig }></WebfontLoader>
-		);
+		loadValidationGoogleFonts = <WebfontLoader config={ validationMsgconfig }></WebfontLoader>;
 	}
 
 	if ( msgLoadGoogleFonts === true ) {
 		const msgconfig = {
 			google: {
-				families: [
-					msgFontFamily +
-						( msgFontWeight ? ':' + msgFontWeight : '' ),
-				],
+				families: [ msgFontFamily + ( msgFontWeight ? ':' + msgFontWeight : '' ) ],
 			},
 		};
 
-		loadMsgGoogleFonts = (
-			<WebfontLoader config={ msgconfig }></WebfontLoader>
-		);
+		loadMsgGoogleFonts = <WebfontLoader config={ msgconfig }></WebfontLoader>;
 	}
 
 	const fieldBorderSetting = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __(
-					'Field Style & Border',
-					'ultimate-addons-for-gutenberg'
-				) }
+				title={ __( 'Field Style & Border', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
-					label={ __(
-						'Field Style',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Field Style', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: fieldStyle,
 						label: 'fieldStyle',
@@ -409,19 +361,13 @@ successMsgLetterSpacingType,
 						},
 						{
 							value: 'underline',
-							label: __(
-								'Underline',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Underline', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 				/>
 				<SpacingControl
 					{ ...props }
-					label={ __(
-						'Padding',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
 					valueTop={ {
 						value: fieldtopPadding,
 						label: 'fieldtopPadding',
@@ -491,10 +437,7 @@ successMsgLetterSpacingType,
 				/>
 				{ fieldStyle === 'box' && (
 					<UAGSelectControl
-						label={ __(
-							'Border Style',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Border Style', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: fieldBorderStyle,
 							label: 'fieldBorderStyle',
@@ -503,77 +446,46 @@ successMsgLetterSpacingType,
 						options={ [
 							{
 								value: 'none',
-								label: __(
-									'None',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'None', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								value: 'solid',
-								label: __(
-									'Solid',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Solid', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								value: 'dotted',
-								label: __(
-									'Dotted',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Dotted', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								value: 'dashed',
-								label: __(
-									'Dashed',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Dashed', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								value: 'double',
-								label: __(
-									'Double',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Double', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								value: 'groove',
-								label: __(
-									'Groove',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Groove', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								value: 'inset',
-								label: __(
-									'Inset',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Inset', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								value: 'outset',
-								label: __(
-									'Outset',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Outset', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								value: 'ridge',
-								label: __(
-									'Ridge',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Ridge', 'ultimate-addons-for-gutenberg' ),
 							},
 						] }
 					/>
 				) }
-				{ ( 'none' !== fieldBorderStyle ||
-					fieldStyle === 'underline' ) && (
+				{ ( 'none' !== fieldBorderStyle || fieldStyle === 'underline' ) && (
 					<ResponsiveSlider
-						label={ __(
-							'Width',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							desktop: {
 								value: fieldBorderWidth,
@@ -592,15 +504,11 @@ successMsgLetterSpacingType,
 						max={ 50 }
 						unit={ {
 							value: fieldBorderWidthType,
-							label:
-								'fieldBorderWidthType',
+							label: 'fieldBorderWidthType',
 						} }
 						units={ [
 							{
-								name: __(
-									'Pixel',
-									'ultimate-addons-for-gutenberg'
-								),
+								name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
 								unitValue: 'px',
 							},
 						] }
@@ -623,10 +531,7 @@ successMsgLetterSpacingType,
 					} }
 					units={ [
 						{
-							name: __(
-								'Pixel',
-								'ultimate-addons-for-gutenberg'
-							),
+							name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
 							unitValue: 'px',
 						},
 						{
@@ -639,31 +544,19 @@ successMsgLetterSpacingType,
 					tabs={ [
 						{
 							name: 'normal',
-							title: __(
-								'Normal',
-								'ultimate-addons-for-gutenberg'
-							),
+							title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							name: 'active',
-							title: __(
-								'Active',
-								'ultimate-addons-for-gutenberg'
-							),
+							title: __( 'Active', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					normal={
-						( 'none' !== fieldBorderStyle ||
-							fieldStyle === 'underline' ) && (
+						( 'none' !== fieldBorderStyle || fieldStyle === 'underline' ) && (
 							<>
 								<AdvancedPopColorControl
-									label={ __(
-										'Color',
-										'ultimate-addons-for-gutenberg'
-									) }
-									colorValue={
-										fieldBorderColor ? fieldBorderColor : ''
-									}
+									label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+									colorValue={ fieldBorderColor ? fieldBorderColor : '' }
 									data={ {
 										value: fieldBorderColor,
 										label: 'fieldBorderColor',
@@ -674,19 +567,11 @@ successMsgLetterSpacingType,
 						)
 					}
 					active={
-						( 'none' !== fieldBorderStyle ||
-							fieldStyle === 'underline' ) && (
+						( 'none' !== fieldBorderStyle || fieldStyle === 'underline' ) && (
 							<>
 								<AdvancedPopColorControl
-									label={ __(
-										'Color',
-										'ultimate-addons-for-gutenberg'
-									) }
-									colorValue={
-										fieldBorderFocusColor
-											? fieldBorderFocusColor
-											: ''
-									}
+									label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+									colorValue={ fieldBorderFocusColor ? fieldBorderFocusColor : '' }
 									data={ {
 										value: fieldBorderFocusColor,
 										label: 'fieldBorderFocusColor',
@@ -704,10 +589,7 @@ successMsgLetterSpacingType,
 
 	const inputSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Input', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Input', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ fieldInputColor ? fieldInputColor : '' }
@@ -718,10 +600,7 @@ successMsgLetterSpacingType,
 					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ fieldBgColor ? fieldBgColor : '' }
 					data={ {
 						value: fieldBgColor,
@@ -807,10 +686,7 @@ successMsgLetterSpacingType,
 					} }
 				/>
 				<ResponsiveSlider
-					label={ __(
-						'Text Area Height',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Text Area Height', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: textAreaHeight,
@@ -836,27 +712,17 @@ successMsgLetterSpacingType,
 
 	const labelSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Label', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Label', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<ToggleControl
 					label="Hide Label"
 					checked={ enableLabel }
-					onChange={ () =>
-						setAttributes( { enableLabel: ! enableLabel } )
-					}
+					onChange={ () => setAttributes( { enableLabel: ! enableLabel } ) }
 				/>
 				{ ! enableLabel && (
 					<>
 						<AdvancedPopColorControl
-							label={ __(
-								'Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={
-								fieldLabelColor ? fieldLabelColor : ''
-							}
+							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ fieldLabelColor ? fieldLabelColor : '' }
 							data={ {
 								value: fieldLabelColor,
 								label: 'fieldLabelColor',
@@ -864,10 +730,7 @@ successMsgLetterSpacingType,
 							setAttributes={ setAttributes }
 						/>
 						<TypographyControl
-							label={ __(
-								'Typography',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 							attributes={ attributes }
 							setAttributes={ setAttributes }
 							loadGoogleFonts={ {
@@ -951,14 +814,9 @@ successMsgLetterSpacingType,
 
 	const fieldSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-			>
+			<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }>
 				<UAGSelectControl
-					label={ __(
-						'Select Form',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Select Form', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: formId,
 					} }
@@ -968,9 +826,7 @@ successMsgLetterSpacingType,
 				<ToggleControl
 					label="Enable AJAX Form Submission"
 					checked={ enableAjax }
-					onChange={ () =>
-						setAttributes( { enableAjax: ! enableAjax } )
-					}
+					onChange={ () => setAttributes( { enableAjax: ! enableAjax } ) }
 				/>
 				<ToggleControl
 					label="Using Multiple Gravity Forms"
@@ -983,10 +839,7 @@ successMsgLetterSpacingType,
 				/>
 				{ enableTabSupport && (
 					<Range
-						label={ __(
-							'Tab Index',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Tab Index', 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }
 						value={ formTabIndex }
 						data={ {
@@ -1000,10 +853,7 @@ successMsgLetterSpacingType,
 				) }
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
-					label={ __(
-						'Form Title & Description',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Form Title & Description', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: titleDescStyle,
 						label: 'titleDescStyle',
@@ -1011,82 +861,45 @@ successMsgLetterSpacingType,
 					options={ [
 						{
 							value: 'yes',
-							label: __(
-								'Show',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Show', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'none',
-							label: __(
-								'Hide',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Hide', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 				/>
 				<MultiButtonsControl
-						setAttributes={ setAttributes }
-						label={ __(
-							'Field & Input Label Alignment',
-							'ultimate-addons-for-gutenberg'
-						) }
-						data={ {
-							value: align,
-							label: 'align',
-						} }
-						className="uagb-multi-button-alignment-control"
-						options={ [
-							{
-								value: 'left',
-								icon: (
-									<Icon
-										icon={ renderSVG( 'fa fa-align-left' ) }
-									/>
-								),
-								tooltip: __(
-									'Left',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'center',
-								icon: (
-									<Icon
-										icon={ renderSVG(
-											'fa fa-align-center'
-										) }
-									/>
-								),
-								tooltip: __(
-									'Center',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'right',
-								icon: (
-									<Icon
-										icon={ renderSVG(
-											'fa fa-align-right'
-										) }
-									/>
-								),
-								tooltip: __(
-									'Right',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-						] }
-						showIcons={ true }
-					/>
+					setAttributes={ setAttributes }
+					label={ __( 'Field & Input Label Alignment', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: align,
+						label: 'align',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'left',
+							icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+							tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'center',
+							icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
+							tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'right',
+							icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
+							tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
+						},
+					] }
+					showIcons={ true }
+				/>
 				{ titleDescStyle !== 'none' && (
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
-						label={ __(
-							'Title & Description Alignment',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Title & Description Alignment', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: titleDescAlignment,
 							label: 'titleDescAlignment',
@@ -1095,43 +908,18 @@ successMsgLetterSpacingType,
 						options={ [
 							{
 								value: 'left',
-								icon: (
-									<Icon
-										icon={ renderSVG( 'fa fa-align-left' ) }
-									/>
-								),
-								tooltip: __(
-									'Left',
-									'ultimate-addons-for-gutenberg'
-								),
+								icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+								tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								value: 'center',
-								icon: (
-									<Icon
-										icon={ renderSVG(
-											'fa fa-align-center'
-										) }
-									/>
-								),
-								tooltip: __(
-									'Center',
-									'ultimate-addons-for-gutenberg'
-								),
+								icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
+								tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								value: 'right',
-								icon: (
-									<Icon
-										icon={ renderSVG(
-											'fa fa-align-right'
-										) }
-									/>
-								),
-								tooltip: __(
-									'Right',
-									'ultimate-addons-for-gutenberg'
-								),
+								icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
+								tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
 							},
 						] }
 						showIcons={ true }
@@ -1157,55 +945,27 @@ successMsgLetterSpacingType,
 					options={ [
 						{
 							value: 'left',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-left' ) }
-								/>
-							),
-							tooltip: __(
-								'Left',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+							tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'center',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-center' ) }
-								/>
-							),
-							tooltip: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
+							tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'right',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-right' ) }
-								/>
-							),
-							tooltip: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
+							tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'justify',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-justify' ) }
-								/>
-							),
-							tooltip: __(
-								'Justified',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-justify' ) } />,
+							tooltip: __( 'Justified', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					showIcons={ true }
-					responsive={true}
+					responsive={ true }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1216,10 +976,7 @@ successMsgLetterSpacingType,
 		return (
 			<>
 				<UAGSelectControl
-					label={ __(
-						'Style',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: buttonBorderStyle,
 						label: 'buttonBorderStyle',
@@ -1228,75 +985,45 @@ successMsgLetterSpacingType,
 					options={ [
 						{
 							value: 'none',
-							label: __(
-								'None',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'None', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'solid',
-							label: __(
-								'Solid',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Solid', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'dotted',
-							label: __(
-								'Dotted',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Dotted', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'dashed',
-							label: __(
-								'Dashed',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Dashed', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'double',
-							label: __(
-								'Double',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Double', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'groove',
-							label: __(
-								'Groove',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Groove', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'inset',
-							label: __(
-								'Inset',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Inset', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'outset',
-							label: __(
-								'Outset',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Outset', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'ridge',
-							label: __(
-								'Ridge',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Ridge', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 				/>
 				{ 'none' !== buttonBorderStyle && (
 					<ResponsiveSlider
-						label={ __(
-							'Width',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							desktop: {
 								value: buttonBorderWidth,
@@ -1315,15 +1042,11 @@ successMsgLetterSpacingType,
 						max={ 50 }
 						unit={ {
 							value: buttonBorderWidthType,
-							label:
-								'buttonBorderWidthType',
+							label: 'buttonBorderWidthType',
 						} }
 						units={ [
 							{
-								name: __(
-									'Pixel',
-									'ultimate-addons-for-gutenberg'
-								),
+								name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
 								unitValue: 'px',
 							},
 						] }
@@ -1346,10 +1069,7 @@ successMsgLetterSpacingType,
 					} }
 					units={ [
 						{
-							name: __(
-								'Pixel',
-								'ultimate-addons-for-gutenberg'
-							),
+							name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
 							unitValue: 'px',
 						},
 						{
@@ -1366,10 +1086,7 @@ successMsgLetterSpacingType,
 		return (
 			<>
 				<AdvancedPopColorControl
-					label={ __(
-						'Text Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ buttonTextColor ? buttonTextColor : '' }
 					data={ {
 						value: buttonTextColor,
@@ -1378,10 +1095,7 @@ successMsgLetterSpacingType,
 					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ buttonBgColor }
 					data={ {
 						value: buttonBgColor,
@@ -1392,13 +1106,8 @@ successMsgLetterSpacingType,
 				{ 'none' !== buttonBorderStyle && (
 					<>
 						<AdvancedPopColorControl
-							label={ __(
-								'Border Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={
-								buttonBorderColor ? buttonBorderColor : ''
-							}
+							label={ __( 'Border Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ buttonBorderColor ? buttonBorderColor : '' }
 							data={ {
 								value: buttonBorderColor,
 								label: 'buttonBorderColor',
@@ -1415,13 +1124,8 @@ successMsgLetterSpacingType,
 		return (
 			<>
 				<AdvancedPopColorControl
-					label={ __(
-						'Text Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={
-						buttonTextHoverColor ? buttonTextHoverColor : ''
-					}
+					label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ buttonTextHoverColor ? buttonTextHoverColor : '' }
 					data={ {
 						value: buttonTextHoverColor,
 						label: 'buttonTextHoverColor',
@@ -1429,10 +1133,7 @@ successMsgLetterSpacingType,
 					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ buttonBgHoverColor }
 					data={ {
 						value: buttonBgHoverColor,
@@ -1443,15 +1144,8 @@ successMsgLetterSpacingType,
 				{ 'none' !== buttonBorderStyle && (
 					<>
 						<AdvancedPopColorControl
-							label={ __(
-								'Border Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={
-								buttonBorderHoverColor
-									? buttonBorderHoverColor
-									: ''
-							}
+							label={ __( 'Border Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ buttonBorderHoverColor ? buttonBorderHoverColor : '' }
 							data={ {
 								value: buttonBorderHoverColor,
 								label: 'buttonBorderHoverColor',
@@ -1472,10 +1166,7 @@ successMsgLetterSpacingType,
 			>
 				{ btnBorderSetting() }
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -1553,10 +1244,7 @@ successMsgLetterSpacingType,
 				/>
 				<SpacingControl
 					{ ...props }
-					label={ __(
-						'Button Padding',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Button Padding', 'ultimate-addons-for-gutenberg' ) }
 					valueTop={ {
 						value: buttontopPadding,
 						label: 'buttontopPadding',
@@ -1628,17 +1316,11 @@ successMsgLetterSpacingType,
 					tabs={ [
 						{
 							name: 'normal',
-							title: __(
-								'Normal',
-								'ultimate-addons-for-gutenberg'
-							),
+							title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							name: 'hover',
-							title: __(
-								'Hover',
-								'ultimate-addons-for-gutenberg'
-							),
+							title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					normal={ buttonNormalSettings() }
@@ -1651,15 +1333,9 @@ successMsgLetterSpacingType,
 
 	const spacingSetting = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<ResponsiveSlider
-					label={ __(
-						'Label & Input Space',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Label & Input Space', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: fieldLabelSpacing,
@@ -1680,10 +1356,7 @@ successMsgLetterSpacingType,
 					setAttributes={ setAttributes }
 				/>
 				<ResponsiveSlider
-					label={ __(
-						'Fields Space',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Fields Space', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: fieldSpacing,
@@ -1710,29 +1383,18 @@ successMsgLetterSpacingType,
 	const radioCheckSetting = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __(
-					'Radio & Checkbox',
-					'ultimate-addons-for-gutenberg'
-				) }
+				title={ __( 'Radio & Checkbox', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<ToggleControl
-					label={ __(
-						'Override Current Style',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Override Current Style', 'ultimate-addons-for-gutenberg' ) }
 					checked={ enableOveride }
-					onChange={ () =>
-						setAttributes( { enableOveride: ! enableOveride } )
-					}
+					onChange={ () => setAttributes( { enableOveride: ! enableOveride } ) }
 				/>
 				{ enableOveride && (
 					<>
 						<ResponsiveSlider
-							label={ __(
-								'Size',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
 							data={ {
 								desktop: {
 									value: radioCheckSize,
@@ -1752,17 +1414,9 @@ successMsgLetterSpacingType,
 							displayUnit={ false }
 							setAttributes={ setAttributes }
 						/>
-						<h2>
-							{ __(
-								'Radio & Checkbox Label',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</h2>
+						<h2>{ __( 'Radio & Checkbox Label', 'ultimate-addons-for-gutenberg' ) }</h2>
 						<AdvancedPopColorControl
-							label={ __(
-								'Label Color',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Label Color', 'ultimate-addons-for-gutenberg' ) }
 							colorValue={ radioCheckLableColor }
 							data={ {
 								value: radioCheckLableColor,
@@ -1771,10 +1425,7 @@ successMsgLetterSpacingType,
 							setAttributes={ setAttributes }
 						/>
 						<AdvancedPopColorControl
-							label={ __(
-								'Background Color',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 							colorValue={ radioCheckBgColor }
 							data={ {
 								value: radioCheckBgColor,
@@ -1783,10 +1434,7 @@ successMsgLetterSpacingType,
 							setAttributes={ setAttributes }
 						/>
 						<AdvancedPopColorControl
-							label={ __(
-								'Selected Color',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Selected Color', 'ultimate-addons-for-gutenberg' ) }
 							colorValue={ radioCheckSelectColor }
 							data={ {
 								value: radioCheckSelectColor,
@@ -1795,10 +1443,7 @@ successMsgLetterSpacingType,
 							setAttributes={ setAttributes }
 						/>
 						<TypographyControl
-							label={ __(
-								'Typography',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 							attributes={ attributes }
 							setAttributes={ setAttributes }
 							loadGoogleFonts={ {
@@ -1878,10 +1523,7 @@ successMsgLetterSpacingType,
 							<>
 								<h2>{ __( 'Radio & Checkbox Border' ) }</h2>
 								<ResponsiveSlider
-									label={ __(
-										'Width',
-										'ultimate-addons-for-gutenberg'
-									) }
+									label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
 									data={ {
 										desktop: {
 											value: radioCheckBorderWidth,
@@ -1900,30 +1542,19 @@ successMsgLetterSpacingType,
 									max={ 50 }
 									unit={ {
 										value: radioCheckBorderWidthType,
-										label:
-											'radioCheckBorderWidthType',
+										label: 'radioCheckBorderWidthType',
 									} }
 									units={ [
 										{
-											name: __(
-												'Pixel',
-												'ultimate-addons-for-gutenberg'
-											),
+											name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
 											unitValue: 'px',
 										},
 									] }
 									setAttributes={ setAttributes }
 								/>
 								<AdvancedPopColorControl
-									label={ __(
-										'Color',
-										'ultimate-addons-for-gutenberg'
-									) }
-									colorValue={
-										radioCheckBorderColor
-											? radioCheckBorderColor
-											: ''
-									}
+									label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+									colorValue={ radioCheckBorderColor ? radioCheckBorderColor : '' }
 									data={ {
 										value: radioCheckBorderColor,
 										label: 'radioCheckBorderColor',
@@ -1933,10 +1564,7 @@ successMsgLetterSpacingType,
 							</>
 						) }
 						<Range
-							label={ __(
-								'Checkbox Rounded Corners',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Checkbox Rounded Corners', 'ultimate-addons-for-gutenberg' ) }
 							setAttributes={ setAttributes }
 							value={ radioCheckBorderRadius }
 							data={ {
@@ -1951,17 +1579,11 @@ successMsgLetterSpacingType,
 							} }
 							units={ [
 								{
-									name: __(
-										'Pixel',
-										'ultimate-addons-for-gutenberg'
-									),
+									name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
 									unitValue: 'px',
 								},
 								{
-									name: __(
-										'%',
-										'ultimate-addons-for-gutenberg'
-									),
+									name: __( '%', 'ultimate-addons-for-gutenberg' ),
 									unitValue: '%',
 								},
 							] }
@@ -1975,29 +1597,15 @@ successMsgLetterSpacingType,
 	const msgSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __(
-					'Success/Error Message',
-					'ultimate-addons-for-gutenberg'
-				) }
+				title={ __( 'Success/Error Message', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<p className="uagb-settings-notice">
-					{ __(
-						'Note: This styling can be only seen on frontend',
-						'ultimate-addons-for-gutenberg'
-					) }
+					{ __( 'Note: This styling can be only seen on frontend', 'ultimate-addons-for-gutenberg' ) }
 				</p>
-				<h2>
-					{ __(
-						'Field Validation',
-						'ultimate-addons-for-gutenberg'
-					) }
-				</h2>
+				<h2>{ __( 'Field Validation', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<AdvancedPopColorControl
-					label={ __(
-						'Message Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Message Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ validationMsgColor ? validationMsgColor : '' }
 					data={ {
 						value: validationMsgColor,
@@ -2084,10 +1692,7 @@ successMsgLetterSpacingType,
 				/>
 				<SpacingControl
 					{ ...props }
-					label={ __(
-						'Padding',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
 					valueTop={ {
 						value: msgtopPadding,
 						label: 'msgtopPadding',
@@ -2156,10 +1761,7 @@ successMsgLetterSpacingType,
 					} }
 				/>
 				<ToggleControl
-					label={ __(
-						'Advanced Settings',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Advanced Settings', 'ultimate-addons-for-gutenberg' ) }
 					checked={ advancedValidationSettings }
 					onChange={ () =>
 						setAttributes( {
@@ -2171,13 +1773,8 @@ successMsgLetterSpacingType,
 				{ advancedValidationSettings && (
 					<>
 						<AdvancedPopColorControl
-							label={ __(
-								'Field Background Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={
-								validationMsgBgColor ? validationMsgBgColor : ''
-							}
+							label={ __( 'Field Background Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ validationMsgBgColor ? validationMsgBgColor : '' }
 							data={ {
 								value: validationMsgBgColor,
 								label: 'validationMsgBgColor',
@@ -2190,13 +1787,8 @@ successMsgLetterSpacingType,
 				{ advancedValidationSettings && (
 					<>
 						<AdvancedPopColorControl
-							label={ __(
-								'Highlight Border Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={
-								highlightBorderColor ? highlightBorderColor : ''
-							}
+							label={ __( 'Highlight Border Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ highlightBorderColor ? highlightBorderColor : '' }
 							data={ {
 								value: highlightBorderColor,
 								label: 'highlightBorderColor',
@@ -2205,12 +1797,7 @@ successMsgLetterSpacingType,
 						/>
 					</>
 				) }
-				<h2>
-					{ __(
-						'Error Message Validation',
-						'ultimate-addons-for-gutenberg'
-					) }
-				</h2>
+				<h2>{ __( 'Error Message Validation', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ errorMsgColor ? errorMsgColor : '' }
@@ -2221,10 +1808,7 @@ successMsgLetterSpacingType,
 					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ errorMsgBgColor ? errorMsgBgColor : '' }
 					data={ {
 						value: errorMsgBgColor,
@@ -2233,13 +1817,8 @@ successMsgLetterSpacingType,
 					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
-					label={ __(
-						'Border Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={
-						errorMsgBorderColor ? errorMsgBorderColor : ''
-					}
+					label={ __( 'Border Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ errorMsgBorderColor ? errorMsgBorderColor : '' }
 					data={ {
 						value: errorMsgBorderColor,
 						label: 'errorMsgBorderColor',
@@ -2247,10 +1826,7 @@ successMsgLetterSpacingType,
 					setAttributes={ setAttributes }
 				/>
 				<Range
-					label={ __(
-						'Border Width',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Border Width', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ msgBorderSize }
 					data={ {
@@ -2261,24 +1837,17 @@ successMsgLetterSpacingType,
 					max={ 50 }
 					unit={ {
 						value: msgBorderSizeType,
-						label:
-							'msgBorderSizeType',
+						label: 'msgBorderSizeType',
 					} }
 					units={ [
 						{
-							name: __(
-								'Pixel',
-								'ultimate-addons-for-gutenberg'
-							),
+							name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
 							unitValue: 'px',
 						},
 					] }
 				/>
 				<Range
-					label={ __(
-						'Border Radius',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Border Radius', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ msgBorderRadius }
 					data={ {
@@ -2293,10 +1862,7 @@ successMsgLetterSpacingType,
 					} }
 					units={ [
 						{
-							name: __(
-								'Pixel',
-								'ultimate-addons-for-gutenberg'
-							),
+							name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
 							unitValue: 'px',
 						},
 						{
@@ -2306,10 +1872,7 @@ successMsgLetterSpacingType,
 					] }
 				/>
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -2382,12 +1945,7 @@ successMsgLetterSpacingType,
 						label: 'msgLetterSpacingType',
 					} }
 				/>
-				<h2>
-					{ __(
-						'Success Message Validation',
-						'ultimate-addons-for-gutenberg'
-					) }
-				</h2>
+				<h2>{ __( 'Success Message Validation', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ successMsgColor ? successMsgColor : '' }
@@ -2398,10 +1956,7 @@ successMsgLetterSpacingType,
 					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -2484,10 +2039,7 @@ successMsgLetterSpacingType,
 	const blockControls = () => {
 		return (
 			<BlockControls key="controls">
-				<AlignmentToolbar
-					value={ align }
-					onChange={ ( value ) => setAttributes( { align: value } ) }
-				/>
+				<AlignmentToolbar value={ align } onChange={ ( value ) => setAttributes( { align: value } ) } />
 			</BlockControls>
 		);
 	};
@@ -2505,13 +2057,11 @@ successMsgLetterSpacingType,
 	};
 
 	return (
-			<>
+		<>
 			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
-					<InspectorTab { ...UAGTabs.general }>
-						{ fieldSettings() }
-					</InspectorTab>
+					<InspectorTab { ...UAGTabs.general }>{ fieldSettings() }</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ fieldBorderSetting() }
 						{ labelSettings() }
@@ -2521,10 +2071,7 @@ successMsgLetterSpacingType,
 						{ msgSettings() }
 						{ spacingSetting() }
 					</InspectorTab>
-					<InspectorTab
-						{ ...UAGTabs.advance }
-						parentProps={ props }
-					></InspectorTab>
+					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			{ loadInputGoogleFonts }
@@ -2533,7 +2080,7 @@ successMsgLetterSpacingType,
 			{ loadRadioGoogleFonts }
 			{ loadValidationGoogleFonts }
 			{ loadMsgGoogleFonts }
-			</>
+		</>
 	);
 };
 export default memo( Settings );

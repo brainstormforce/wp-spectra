@@ -22,7 +22,7 @@ if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_bloc
 	registerBlockType( 'uagb/columns', {
 		...columnsCommonData,
 		title: __( 'Advanced Columns', 'ultimate-addons-for-gutenberg' ),
-		description:  __( 'Insert a number of columns within a single row.', 'ultimate-addons-for-gutenberg' ),
+		description: __( 'Insert a number of columns within a single row.', 'ultimate-addons-for-gutenberg' ),
 		icon: renderLegacyBlockEditorIcon( 'columns' ),
 		keywords: [
 			__( 'columns', 'ultimate-addons-for-gutenberg' ),
@@ -30,14 +30,10 @@ if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_bloc
 			__( 'uag', 'ultimate-addons-for-gutenberg' ),
 		],
 		attributes,
-category: uagb_blocks_info.category,
+		category: uagb_blocks_info.category,
 		variations,
 		edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="advanced-columns" />
-		) : (
-			<Edit { ...props } />
-		),
+			props.attributes.isPreview ? <PreviewImage image="advanced-columns" /> : <Edit { ...props } />,
 		getEditWrapperProps( attribute ) {
 			return {
 				'data-align': attribute.align,

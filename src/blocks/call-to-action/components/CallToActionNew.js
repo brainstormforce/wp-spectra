@@ -21,19 +21,19 @@ const CTA = ( props ) => {
 	}
 
 	let link = '/';
-	let preventDefaultFunc = ( e ) => {  // Disables click events for link in editor.
+	let preventDefaultFunc = ( e ) => {
+		// Disables click events for link in editor.
 		e.preventDefault();
-	}
+	};
 	if ( setAttributes === 'not_set' ) {
 		link = attributes.ctaLink;
-		preventDefaultFunc = false;  // Ensures click events for links aren't disabled for frontend.
+		preventDefaultFunc = false; // Ensures click events for links aren't disabled for frontend.
 	}
 
 	if ( setAttributes !== 'not_set' ) {
 		return (
 			<>
-				{ ( attributes.ctaType === 'button' ||
-					attributes.ctaType === 'text' ) && (
+				{ ( attributes.ctaType === 'button' || attributes.ctaType === 'text' ) && (
 					<a
 						href={ link }
 						className={ classnames(
@@ -56,13 +56,12 @@ const CTA = ( props ) => {
 					</a>
 				) }
 			</>
-		)
+		);
 	}
 
 	return (
 		<>
-			{ ( attributes.ctaType === 'button' ||
-				attributes.ctaType === 'text' ) && (
+			{ ( attributes.ctaType === 'button' || attributes.ctaType === 'text' ) && (
 				<a
 					href={ link }
 					className={ classnames(
@@ -74,9 +73,7 @@ const CTA = ( props ) => {
 					onClick={ preventDefaultFunc }
 				>
 					{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
-					<RichText.Content
-						value={ attributes.ctaText.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
-					/>
+					<RichText.Content value={ attributes.ctaText.replace( /<(?!br\s*V?)[^>]+>/g, '' ) } />
 					{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 				</a>
 			) }

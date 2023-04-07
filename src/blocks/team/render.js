@@ -18,14 +18,7 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 	const deviceType = useDeviceType();
-	const {
-		className,
-		setAttributes,
-		attributes,
-		mergeBlocks,
-		insertBlocksAfter,
-		onReplace,
-	} = props;
+	const { className, setAttributes, attributes, mergeBlocks, insertBlocksAfter, onReplace } = props;
 
 	const {
 		align,
@@ -59,10 +52,7 @@ const Render = ( props ) => {
 				className="uagb-team__title"
 				onChange={ ( value ) => setAttributes( { title: value } ) }
 				multiline={ false }
-				placeholder={ __(
-					'Write a Title',
-					'ultimate-addons-for-gutenberg'
-				) }
+				placeholder={ __( 'Write a Title', 'ultimate-addons-for-gutenberg' ) }
 				onMerge={ mergeBlocks }
 				onSplit={
 					insertBlocksAfter
@@ -85,10 +75,7 @@ const Render = ( props ) => {
 				className="uagb-team__prefix"
 				onChange={ ( value ) => setAttributes( { prefix: value } ) }
 				onMerge={ mergeBlocks }
-				placeholder={ __(
-					'Write a Designation',
-					'ultimate-addons-for-gutenberg'
-				) }
+				placeholder={ __( 'Write a Designation', 'ultimate-addons-for-gutenberg' ) }
 				onSplit={
 					insertBlocksAfter
 						? ( before, after, ...blocks ) => {
@@ -112,13 +99,7 @@ const Render = ( props ) => {
 
 		return (
 			<li className="uagb-team__social-icon">
-				<a
-					href={ link }
-					aria-label={ icon }
-					target={ target_value }
-					title=""
-					rel="noopener noreferrer"
-				>
+				<a href={ link } aria-label={ icon } target={ target_value } title="" rel="noopener noreferrer">
 					{ renderSVG( icon, setAttributes ) }
 				</a>
 			</li>
@@ -126,46 +107,38 @@ const Render = ( props ) => {
 	};
 
 	const socialLinks = (
-			<ul className="uagb-team__social-list">
-				{ '' !== twitterIcon &&
-					socialHtml( twitterIcon, twitterLink, socialTarget ) }
-				{ '' !== fbIcon && socialHtml( fbIcon, fbLink, socialTarget ) }
-				{ '' !== linkedinIcon &&
-					socialHtml( linkedinIcon, linkedinLink, socialTarget ) }
-				{ '' !== pinIcon &&
-					socialHtml( pinIcon, pinLink, socialTarget ) }
-			</ul>
+		<ul className="uagb-team__social-list">
+			{ '' !== twitterIcon && socialHtml( twitterIcon, twitterLink, socialTarget ) }
+			{ '' !== fbIcon && socialHtml( fbIcon, fbLink, socialTarget ) }
+			{ '' !== linkedinIcon && socialHtml( linkedinIcon, linkedinLink, socialTarget ) }
+			{ '' !== pinIcon && socialHtml( pinIcon, pinLink, socialTarget ) }
+		</ul>
 	);
 
 	// Get description and seperator components.
 	const descHtml = (
-			<RichText
-				tagName="p"
-				value={ description_text }
-				placeholder={ __(
-					'Write a Description',
-					'ultimate-addons-for-gutenberg'
-				) }
-				className="uagb-team__desc"
-				onChange={ ( value ) =>
-					setAttributes( { description_text: value } )
-				}
-				onMerge={ mergeBlocks }
-				onSplit={
-					insertBlocksAfter
-						? ( before, after, ...blocks ) => {
-								setAttributes( { content: before } );
-								insertBlocksAfter( [
-									...blocks,
-									createBlock( 'core/paragraph', {
-										content: after,
-									} ),
-								] );
-						  }
-						: undefined
-				}
-				onRemove={ () => onReplace( [] ) }
-			/>
+		<RichText
+			tagName="p"
+			value={ description_text }
+			placeholder={ __( 'Write a Description', 'ultimate-addons-for-gutenberg' ) }
+			className="uagb-team__desc"
+			onChange={ ( value ) => setAttributes( { description_text: value } ) }
+			onMerge={ mergeBlocks }
+			onSplit={
+				insertBlocksAfter
+					? ( before, after, ...blocks ) => {
+							setAttributes( { content: before } );
+							insertBlocksAfter( [
+								...blocks,
+								createBlock( 'core/paragraph', {
+									content: after,
+								} ),
+							] );
+					  }
+					: undefined
+			}
+			onRemove={ () => onReplace( [] ) }
+		/>
 	);
 
 	let size = '';
@@ -184,14 +157,14 @@ const Render = ( props ) => {
 
 	if ( '' !== imgUrl ) {
 		imageHtml = (
-				<img
-					className={`uagb-team__image-crop-${ imgStyle }`}
-					src={ imgUrl }
-					alt={ image.alt ? image.alt : '' }
-					height={ imgWidth }
-					width={ imgWidth }
-					loading="lazy"
-				/>
+			<img
+				className={ `uagb-team__image-crop-${ imgStyle }` }
+				src={ imgUrl }
+				alt={ image.alt ? image.alt : '' }
+				height={ imgWidth }
+				width={ imgWidth }
+				loading="lazy"
+			/>
 		);
 	}
 
@@ -206,19 +179,19 @@ const Render = ( props ) => {
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
 			) }
 		>
-				{ imgPosition === 'left' && imageHtml }
+			{ imgPosition === 'left' && imageHtml }
 
-				<div className="uagb-team__content">
-					{ imgPosition === 'above' && imageHtml }
+			<div className="uagb-team__content">
+				{ imgPosition === 'above' && imageHtml }
 
-					{ titleHtml }
+				{ titleHtml }
 
-					{ descHtml }
+				{ descHtml }
 
-					{ socialEnable && socialLinks }
-				</div>
+				{ socialEnable && socialLinks }
+			</div>
 
-				{ imgPosition === 'right' && imageHtml }
+			{ imgPosition === 'right' && imageHtml }
 		</div>
 	);
 };

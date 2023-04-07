@@ -13,41 +13,49 @@ const UAGBModalEdit = ( props ) => {
 	const {
 		isSelected,
 		attributes,
-		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob, textLoadGoogleFonts, textFontFamily, textFontWeight, btnLoadGoogleFonts, btnFontFamily, btnFontWeight },
-		setAttributes,		
-		clientId
+		attributes: {
+			UAGHideDesktop,
+			UAGHideTab,
+			UAGHideMob,
+			textLoadGoogleFonts,
+			textFontFamily,
+			textFontWeight,
+			btnLoadGoogleFonts,
+			btnFontFamily,
+			btnFontWeight,
+		},
+		setAttributes,
+		clientId,
 	} = props;
 
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
-
 	}, [] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
-        addBlockEditorDynamicStyles( 'uagb-modal-style-' + clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles( 'uagb-modal-style-' + clientId.substr( 0, 8 ), blockStyling );
 		const blockDetails = applyFilters(
 			`spectra.modal.edit.jsdetails`,
 			{
 				block_id: clientId.substr( 0, 8 ),
-				device_type: deviceType
-			}, props?.attributes
+				device_type: deviceType,
+			},
+			props?.attributes
 		);
-		const loadModalBlockEditor = new CustomEvent( 'UAGModalEditor', { // eslint-disable-line no-undef
+		const loadModalBlockEditor = new CustomEvent( 'UAGModalEditor', {
+			// eslint-disable-line no-undef
 			detail: blockDetails,
 		} );
 
 		document.dispatchEvent( loadModalBlockEditor );
-
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	let loadTextGoogleFonts;
@@ -55,16 +63,11 @@ const UAGBModalEdit = ( props ) => {
 	if ( textLoadGoogleFonts === true ) {
 		const hconfig = {
 			google: {
-				families: [
-					textFontFamily +
-						( textFontWeight ? ':' + textFontWeight : '' ),
-				],
+				families: [ textFontFamily + ( textFontWeight ? ':' + textFontWeight : '' ) ],
 			},
 		};
 
-		loadTextGoogleFonts = (
-			<WebfontLoader config={ hconfig }></WebfontLoader>
-		);
+		loadTextGoogleFonts = <WebfontLoader config={ hconfig }></WebfontLoader>;
 	}
 
 	let loadBtnGoogleFonts;
@@ -72,27 +75,21 @@ const UAGBModalEdit = ( props ) => {
 	if ( btnLoadGoogleFonts === true ) {
 		const btnconfig = {
 			google: {
-				families: [
-					btnFontFamily +
-						( btnFontWeight ? ':' + btnFontWeight : '' ),
-				],
+				families: [ btnFontFamily + ( btnFontWeight ? ':' + btnFontWeight : '' ) ],
 			},
 		};
 
-		loadBtnGoogleFonts = (
-			<WebfontLoader config={ btnconfig }></WebfontLoader>
-		);
+		loadBtnGoogleFonts = <WebfontLoader config={ btnconfig }></WebfontLoader>;
 	}
 
-
 	return (
-			<>
+		<>
 			{ isSelected && <Settings parentProps={ props } /> }
-				<Render parentProps={ props } />
-				{ loadTextGoogleFonts }
-				{ loadBtnGoogleFonts }
-			</>
+			<Render parentProps={ props } />
+			{ loadTextGoogleFonts }
+			{ loadBtnGoogleFonts }
+		</>
 	);
-}
+};
 
 export default UAGBModalEdit;

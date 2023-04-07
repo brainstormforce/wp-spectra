@@ -20,9 +20,19 @@ const UAGBInlineNoticeEdit = ( props ) => {
 		setAttributes,
 		clientId,
 		attributes,
-		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob, titleLoadGoogleFonts, titleFontFamily, titleFontWeight, descLoadGoogleFonts, descFontFamily, descFontWeight },
+		attributes: {
+			UAGHideDesktop,
+			UAGHideTab,
+			UAGHideMob,
+			titleLoadGoogleFonts,
+			titleFontFamily,
+			titleFontWeight,
+			descLoadGoogleFonts,
+			descFontFamily,
+			descFontWeight,
+		},
 	} = props;
-	
+
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
@@ -31,17 +41,14 @@ const UAGBInlineNoticeEdit = ( props ) => {
 	useEffect( () => {
 		const blockStyling = styling( props );
 		addBlockEditorDynamicStyles( 'uagb-inline-notice-style-' + clientId.substr( 0, 8 ), blockStyling );
-		
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
-	}, [deviceType] );
+	}, [ deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	let loadTitleGoogleFonts;
@@ -50,40 +57,30 @@ const UAGBInlineNoticeEdit = ( props ) => {
 	if ( true === titleLoadGoogleFonts ) {
 		const hconfig = {
 			google: {
-				families: [
-					titleFontFamily +
-						( titleFontWeight ? ':' + titleFontWeight : '' ),
-				],
+				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
 			},
 		};
 
-		loadTitleGoogleFonts = (
-			<WebfontLoader config={ hconfig }></WebfontLoader>
-		);
+		loadTitleGoogleFonts = <WebfontLoader config={ hconfig }></WebfontLoader>;
 	}
 
 	if ( true === descLoadGoogleFonts ) {
 		const sconfig = {
 			google: {
-				families: [
-					descFontFamily +
-						( descFontWeight ? ':' + descFontWeight : '' ),
-				],
+				families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
 			},
 		};
 
-		loadDescriptionGoogleFonts = (
-			<WebfontLoader config={ sconfig }></WebfontLoader>
-		);
+		loadDescriptionGoogleFonts = <WebfontLoader config={ sconfig }></WebfontLoader>;
 	}
 
 	return (
-			<>
+		<>
 			{ isSelected && <Settings parentProps={ props } /> }
-				<Render parentProps={ props } />
-				{ loadTitleGoogleFonts }
-				{ loadDescriptionGoogleFonts }
-			</>
+			<Render parentProps={ props } />
+			{ loadTitleGoogleFonts }
+			{ loadDescriptionGoogleFonts }
+		</>
 	);
 };
 

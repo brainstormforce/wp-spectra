@@ -13,34 +13,19 @@ export default function save( props ) {
 
 	const { block_id, selectRequired, options, selectName } = attributes;
 
-	const isRequired = selectRequired
-		? __( 'required', 'ultimate-addons-for-gutenberg' )
-		: '';
+	const isRequired = selectRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
 
 	return (
-		<div
-			className={ classnames(
-				'uagb-forms-select-wrap',
-				'uagb-forms-field-set',
-				`uagb-block-${ block_id }`
-			) }
-		>
+		<div className={ classnames( 'uagb-forms-select-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }>
 			<RichText.Content
 				tagName="div"
 				value={ selectName }
 				className={ `uagb-forms-select-label ${ isRequired } uagb-forms-input-label` }
 				id={ block_id }
 			/>
-			<select
-				className="uagb-forms-select-box uagb-forms-input"
-				required={ selectRequired }
-				name={ block_id }
-			>
+			<select className="uagb-forms-select-box uagb-forms-input" required={ selectRequired } name={ block_id }>
 				<option value="" disabled selected>
-					{ __(
-						'Select your option',
-						'ultimate-addons-for-gutenberg'
-					) }
+					{ __( 'Select your option', 'ultimate-addons-for-gutenberg' ) }
 				</option>
 				{ options.map( ( o, index ) => {
 					return (

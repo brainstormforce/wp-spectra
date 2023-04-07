@@ -17,32 +17,36 @@ const UAGBAdvancedHeading = ( props ) => {
 	const deviceType = useDeviceType();
 	const {
 		attributes,
-		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob, headLoadGoogleFonts, headFontFamily, headFontWeight, subHeadLoadGoogleFonts, subHeadFontFamily, subHeadFontWeight },
+		attributes: {
+			UAGHideDesktop,
+			UAGHideTab,
+			UAGHideMob,
+			headLoadGoogleFonts,
+			headFontFamily,
+			headFontWeight,
+			subHeadLoadGoogleFonts,
+			subHeadFontFamily,
+			subHeadFontWeight,
+		},
 		isSelected,
 		setAttributes,
-		clientId
+		clientId,
 	} = props;
-	
+
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
-		setAttributes( { classMigrate: true } )
-
+		setAttributes( { classMigrate: true } );
 	}, [] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
-		addBlockEditorDynamicStyles(
-			'uagb-adv-heading-style-' + clientId.substr( 0, 8 ),
-			blockStyling
-		);
+		addBlockEditorDynamicStyles( 'uagb-adv-heading-style-' + clientId.substr( 0, 8 ), blockStyling );
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
@@ -55,38 +59,28 @@ const UAGBAdvancedHeading = ( props ) => {
 	if ( headLoadGoogleFonts === true ) {
 		const hconfig = {
 			google: {
-				families: [
-					headFontFamily +
-						( headFontWeight ? ':' + headFontWeight : '' ),
-				],
+				families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
 			},
 		};
 
-		loadHeadingGoogleFonts = (
-			<WebfontLoader config={ hconfig }></WebfontLoader>
-		);
+		loadHeadingGoogleFonts = <WebfontLoader config={ hconfig }></WebfontLoader>;
 	}
 	if ( subHeadLoadGoogleFonts === true ) {
 		const sconfig = {
 			google: {
-				families: [
-					subHeadFontFamily +
-						( subHeadFontWeight ? ':' + subHeadFontWeight : '' ),
-				],
+				families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
 			},
 		};
 
-		loadSubHeadingGoogleFonts = (
-			<WebfontLoader config={ sconfig }></WebfontLoader>
-		);
+		loadSubHeadingGoogleFonts = <WebfontLoader config={ sconfig }></WebfontLoader>;
 	}
 	return (
-			<>
+		<>
 			{ isSelected && <Settings parentProps={ props } /> }
-				<Render parentProps={ props } />
-				{ loadHeadingGoogleFonts }
-				{ loadSubHeadingGoogleFonts }
-			</>
+			<Render parentProps={ props } />
+			{ loadHeadingGoogleFonts }
+			{ loadSubHeadingGoogleFonts }
+		</>
 	);
 };
 export default UAGBAdvancedHeading;

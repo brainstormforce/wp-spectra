@@ -7,9 +7,7 @@ if ( uagb_deactivated_blocks.length ) {
 				continue;
 			}
 
-			wp.blocks.unregisterBlockType(
-				uagb_deactivated_blocks[ block_index ]
-			);
+			wp.blocks.unregisterBlockType( uagb_deactivated_blocks[ block_index ] );
 		}
 	}
 }

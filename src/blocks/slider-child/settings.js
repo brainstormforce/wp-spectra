@@ -1,23 +1,17 @@
-import { useEffect,memo } from '@wordpress/element';
+import { useEffect, memo } from '@wordpress/element';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
-import InspectorTab, {
-	UAGTabs,
-} from '@Components/inspector-tabs/InspectorTab.js';
+import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import { __ } from '@wordpress/i18n';
 
-import {
-	InspectorControls
-} from '@wordpress/block-editor';
+import { InspectorControls } from '@wordpress/block-editor';
 import SpacingControl from '@Components/spacing-control';
 import Background from '@Components/background';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
-
 	props = props.parentProps;
 	const { attributes, setAttributes } = props;
 	const {
-
 		backgroundType,
 		backgroundImageDesktop,
 		backgroundImageTablet,
@@ -37,6 +31,13 @@ const Settings = ( props ) => {
 		backgroundSizeMobile,
 		backgroundImageColor,
 		gradientValue,
+		gradientColor1,
+		gradientColor2,
+		gradientLocation1,
+		gradientLocation2,
+		gradientType,
+		gradientAngle,
+		selectGradient,
 
 		topPaddingDesktop,
 		bottomPaddingDesktop,
@@ -91,11 +92,9 @@ const Settings = ( props ) => {
 	} = attributes;
 
 	const parentClientId = wp.data.select( 'core/block-editor' ).getBlockHierarchyRootClientId( props.clientId );
-	const parentBlokAttributes =  wp.data.select( 'core/block-editor' ).getBlockAttributes( parentClientId );
+	const parentBlokAttributes = wp.data.select( 'core/block-editor' ).getBlockAttributes( parentClientId );
 
-	const {
-		enableHashNavigation 
-	} = parentBlokAttributes;
+	const { enableHashNavigation } = parentBlokAttributes;
 
 	// This useEffect ensures that background size is set to cover, so as to ensure color takes up entire width and height,
 	// in case bg type was set to Image before and given a custom width and height.
@@ -107,25 +106,50 @@ const Settings = ( props ) => {
 				backgroundSizeMobile: 'cover',
 			} );
 		}
-	}, [backgroundType] );
+	}, [ backgroundType ] );
 
 	const backgroundSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<Background
 					setAttributes={ setAttributes }
 					backgroundGradient={ {
 						value: gradientValue,
 						label: 'gradientValue',
 					} }
+					backgroundGradientColor1={ {
+						value: gradientColor1,
+						label: 'gradientColor1',
+					} }
+					gradientType={ {
+						value: selectGradient,
+						label: 'selectGradient',
+					} }
+					backgroundGradientColor2={ {
+						value: gradientColor2,
+						label: 'gradientColor2',
+					} }
+					backgroundGradientLocation1={ {
+						value: gradientLocation1,
+						label: 'gradientLocation1',
+					} }
+					backgroundGradientLocation2={ {
+						value: gradientLocation2,
+						label: 'gradientLocation2',
+					} }
+					backgroundGradientType={ {
+						value: gradientType,
+						label: 'gradientType',
+					} }
+					backgroundGradientAngle={ {
+						value: gradientAngle,
+						label: 'gradientAngle',
+					} }
 					backgroundImageColor={ {
 						value: backgroundImageColor,
 						label: 'backgroundImageColor',
 					} }
-					backgroundSize={{
+					backgroundSize={ {
 						desktop: {
 							value: backgroundSizeDesktop,
 							label: 'backgroundSizeDesktop',
@@ -138,8 +162,8 @@ const Settings = ( props ) => {
 							value: backgroundSizeMobile,
 							label: 'backgroundSizeMobile',
 						},
-					}}
-					backgroundCustomSize={{
+					} }
+					backgroundCustomSize={ {
 						desktop: {
 							value: backgroundCustomSizeDesktop,
 							label: 'backgroundCustomSizeDesktop',
@@ -152,12 +176,12 @@ const Settings = ( props ) => {
 							value: backgroundCustomSizeMobile,
 							label: 'backgroundCustomSizeMobile',
 						},
-					}}
-					backgroundCustomSizeType={{
+					} }
+					backgroundCustomSizeType={ {
 						value: backgroundCustomSizeType,
-						label: 'backgroundCustomSizeType'
-					}}
-					backgroundRepeat={{
+						label: 'backgroundCustomSizeType',
+					} }
+					backgroundRepeat={ {
 						desktop: {
 							value: backgroundRepeatDesktop,
 							label: 'backgroundRepeatDesktop',
@@ -170,8 +194,8 @@ const Settings = ( props ) => {
 							value: backgroundRepeatMobile,
 							label: 'backgroundRepeatMobile',
 						},
-					}}
-					backgroundAttachment={{
+					} }
+					backgroundAttachment={ {
 						desktop: {
 							value: backgroundAttachmentDesktop,
 							label: 'backgroundAttachmentDesktop',
@@ -184,8 +208,8 @@ const Settings = ( props ) => {
 							value: backgroundAttachmentMobile,
 							label: 'backgroundAttachmentMobile',
 						},
-					}}
-					backgroundPosition={{
+					} }
+					backgroundPosition={ {
 						desktop: {
 							value: backgroundPositionDesktop,
 							label: 'backgroundPositionDesktop',
@@ -198,8 +222,8 @@ const Settings = ( props ) => {
 							value: backgroundPositionMobile,
 							label: 'backgroundPositionMobile',
 						},
-					}}
-					backgroundImage={{
+					} }
+					backgroundImage={ {
 						desktop: {
 							value: backgroundImageDesktop,
 							label: 'backgroundImageDesktop',
@@ -212,8 +236,8 @@ const Settings = ( props ) => {
 							value: backgroundImageMobile,
 							label: 'backgroundImageMobile',
 						},
-					}}
-					imageResponsive={true}
+					} }
+					imageResponsive={ true }
 					backgroundColor={ {
 						value: backgroundColor,
 						label: 'backgroundColor',
@@ -222,65 +246,65 @@ const Settings = ( props ) => {
 						value: backgroundType,
 						label: 'backgroundType',
 					} }
-					overlayType={{
+					overlayType={ {
 						value: overlayType,
-						label: 'overlayType'
-					}}
-					gradientOverlay={{
+						label: 'overlayType',
+					} }
+					gradientOverlay={ {
 						value: true,
-					}}
-					customPosition={{
+					} }
+					customPosition={ {
 						value: customPosition,
-						label: 'customPosition'
-					}}
-					xPositionDesktop={{
+						label: 'customPosition',
+					} }
+					xPositionDesktop={ {
 						value: xPositionDesktop,
-						label: 'xPositionDesktop'
-					}}
-					xPositionTablet={{
+						label: 'xPositionDesktop',
+					} }
+					xPositionTablet={ {
 						value: xPositionTablet,
-						label: 'xPositionTablet'
-					}}
-					xPositionMobile={{
+						label: 'xPositionTablet',
+					} }
+					xPositionMobile={ {
 						value: xPositionMobile,
-						label: 'xPositionMobile'
-					}}
-					xPositionType={{
+						label: 'xPositionMobile',
+					} }
+					xPositionType={ {
 						value: xPositionType,
-						label: 'xPositionType'
-					}}
-					xPositionTypeTablet={{
+						label: 'xPositionType',
+					} }
+					xPositionTypeTablet={ {
 						value: xPositionTypeTablet,
-						label: 'xPositionTypeTablet'
-					}}
-					xPositionTypeMobile={{
+						label: 'xPositionTypeTablet',
+					} }
+					xPositionTypeMobile={ {
 						value: xPositionTypeMobile,
-						label: 'xPositionTypeMobile'
-					}}
-					yPositionDesktop={{
+						label: 'xPositionTypeMobile',
+					} }
+					yPositionDesktop={ {
 						value: yPositionDesktop,
-						label: 'yPositionDesktop'
-					}}
-					yPositionTablet={{
+						label: 'yPositionDesktop',
+					} }
+					yPositionTablet={ {
 						value: yPositionTablet,
-						label: 'yPositionTablet'
-					}}
-					yPositionMobile={{
+						label: 'yPositionTablet',
+					} }
+					yPositionMobile={ {
 						value: yPositionMobile,
-						label: 'yPositionMobile'
-					}}
-					yPositionType={{
+						label: 'yPositionMobile',
+					} }
+					yPositionType={ {
 						value: yPositionType,
-						label: 'yPositionType'
-					}}
-					yPositionTypeTablet={{
+						label: 'yPositionType',
+					} }
+					yPositionTypeTablet={ {
 						value: yPositionTypeTablet,
-						label: 'yPositionTypeTablet'
-					}}
-					yPositionTypeMobile={{
+						label: 'yPositionTypeTablet',
+					} }
+					yPositionTypeMobile={ {
 						value: yPositionTypeMobile,
-						label: 'yPositionTypeMobile'
-					}}
+						label: 'yPositionTypeMobile',
+					} }
 					backgroundVideoType={ {
 						value: false,
 					} }
@@ -291,11 +315,8 @@ const Settings = ( props ) => {
 	};
 
 	const spacingSettings = () => {
-		return(
-			<UAGAdvancedPanelBody
-				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+		return (
+			<UAGAdvancedPanelBody title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<SpacingControl
 					{ ...props }
 					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
@@ -438,35 +459,23 @@ const Settings = ( props ) => {
 				/>
 			</UAGAdvancedPanelBody>
 		);
-	}
+	};
 
 	const isPro = uagb_blocks_info.spectra_pro_status;
-	const tabs = ( isPro && enableHashNavigation ) ? [ 'general', 'style', 'advance' ] :  [ 'style', 'advance' ];
-	const defaultTab = ( isPro && enableHashNavigation ) ? 'general' : 'style';
+	const tabs = isPro && enableHashNavigation ? [ 'general', 'style', 'advance' ] : [ 'style', 'advance' ];
+	const defaultTab = isPro && enableHashNavigation ? 'general' : 'style';
 
 	return (
-			<InspectorControls>
-				<InspectorTabs
-				defaultTab={defaultTab}
-				tabs={tabs}
-				>
-					{ isPro && 
-						( 
-						<InspectorTab { ...UAGTabs.general }>
-						</InspectorTab>
-						)
-					}
-					<InspectorTab { ...UAGTabs.style }>
-						{ backgroundSettings() }
-						{ spacingSettings() }
-					</InspectorTab>
-					<InspectorTab
-						{ ...UAGTabs.advance }
-						parentProps={ props }
-					></InspectorTab>
-				</InspectorTabs>
-			</InspectorControls>
-
+		<InspectorControls>
+			<InspectorTabs defaultTab={ defaultTab } tabs={ tabs }>
+				{ isPro && <InspectorTab { ...UAGTabs.general }></InspectorTab> }
+				<InspectorTab { ...UAGTabs.style }>
+					{ backgroundSettings() }
+					{ spacingSettings() }
+				</InspectorTab>
+				<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
+			</InspectorTabs>
+		</InspectorControls>
 	);
 };
 export default memo( Settings );

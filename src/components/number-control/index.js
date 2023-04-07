@@ -1,9 +1,4 @@
-import {
-	ButtonGroup,
-	Button,
-	Tooltip,
-	__experimentalNumberControl as NumberControl,
-} from '@wordpress/components';
+import { ButtonGroup, Button, Tooltip, __experimentalNumberControl as NumberControl } from '@wordpress/components';
 import ResponsiveToggle from '../responsive-toggle';
 import { __, sprintf } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
@@ -17,7 +12,7 @@ import UAGHelpText from '@Components/help-text';
 import { applyFilters } from '@wordpress/hooks';
 
 const UAGNumberControl = ( props ) => {
-	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const [ panelNameForHook, setPanelNameForHook ] = useState( null );
 	const panelRef = useRef( null );
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -31,14 +26,14 @@ const UAGNumberControl = ( props ) => {
 
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	useEffect( () => {
-		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
-	}, [blockNameForHook] )
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) );
+	}, [ blockNameForHook ] );
 
 	const { isShiftStepEnabled } = props;
 
 	let max = limitMax( props.unit?.value, props );
 	let min = limitMin( props.unit?.value, props );
-	const inputValue = isNaN( props?.value ) ? '' :  props?.value;
+	const inputValue = isNaN( props?.value ) ? '' : props?.value;
 
 	let unitSizes = [
 		{
@@ -60,7 +55,7 @@ const UAGNumberControl = ( props ) => {
 		if ( props.setAttributes ) {
 			props.setAttributes( {
 				[ props.data.label ]: parsedValue,
-			} )
+			} );
 		}
 		if ( props?.onChange ) {
 			props.onChange( parsedValue );
@@ -68,17 +63,15 @@ const UAGNumberControl = ( props ) => {
 	};
 
 	const resetValues = ( defaultValues ) => {
-
 		if ( props?.onChange ) {
-			props?.onChange( defaultValues[props?.data?.label] )
+			props?.onChange( defaultValues[ props?.data?.label ] );
 		}
 		if ( props.displayUnit ) {
-			onChangeUnits( defaultValues[props?.unit?.label] )
+			onChangeUnits( defaultValues[ props?.unit?.label ] );
 		}
 	};
 
 	const onChangeUnits = ( newValue ) => {
-
 		props.setAttributes( { [ props.unit.label ]: newValue } );
 
 		max = limitMax( newValue, props );
@@ -90,7 +83,6 @@ const UAGNumberControl = ( props ) => {
 		if ( props.value < min ) {
 			handleOnChange( min );
 		}
-
 	};
 
 	const onUnitSizeClick = ( uSizes ) => {
@@ -103,7 +95,7 @@ const UAGNumberControl = ( props ) => {
 						__( '%s units', 'ultimate-addons-for-gutenberg' ),
 						key.name
 					) }
-					key={key.name}
+					key={ key.name }
 				>
 					<Button
 						key={ key.unitValue }
@@ -129,25 +121,18 @@ const UAGNumberControl = ( props ) => {
 	};
 
 	const ControlHeader = () => {
-
-		return(
+		return (
 			<div className="uagb-control__header">
 				<div className="uagb-number-control__actions uagb-control__actions">
 					<UAGReset
-						onReset={resetValues}
-						attributeNames = {[
-							props.data.label,
-							props.displayUnit ? props.unit.label : false
-						]}
+						onReset={ resetValues }
+						attributeNames={ [ props.data.label, props.displayUnit ? props.unit.label : false ] }
 						setAttributes={ props.setAttributes }
 					/>
 					{ props.displayUnit && (
 						<ButtonGroup
 							className="uagb-control__units"
-							aria-label={ __(
-								'Select Units',
-								'ultimate-addons-for-gutenberg'
-							) }
+							aria-label={ __( 'Select Units', 'ultimate-addons-for-gutenberg' ) }
 						>
 							{ onUnitSizeClick( unitSizes ) }
 						</ButtonGroup>
@@ -155,34 +140,31 @@ const UAGNumberControl = ( props ) => {
 				</div>
 			</div>
 		);
-	}
+	};
 
 	const variant = props.inlineControl ? 'inline' : 'full-width';
 
 	const controlName = getIdFromString( props?.label ); //
-	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
-
+	const controlBeforeDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }.before`,
+		'',
+		blockNameForHook
+	);
+	const controlAfterDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }`,
+		'',
+		blockNameForHook
+	);
 
 	return (
-		<div
-			ref={panelRef}
-			className="components-base-control"
-		>
-			{controlBeforeDomElement}
+		<div ref={ panelRef } className="components-base-control">
+			{ controlBeforeDomElement }
 			<div className="uag-number-control uagb-size-type-field-tabs">
-				{ props.showControlHeader &&
-					<ControlHeader />
-				}
-				<div className={ classnames(
-						'uagb-number-control__mobile-controls',
-						'uag-number-control__' + variant,
-					) }
+				{ props.showControlHeader && <ControlHeader /> }
+				<div
+					className={ classnames( 'uagb-number-control__mobile-controls', 'uag-number-control__' + variant ) }
 				>
-					<ResponsiveToggle
-						label= { props.label }
-						responsive= { props.responsive }
-					/>
+					<ResponsiveToggle label={ props.label } responsive={ props.responsive } />
 					<NumberControl
 						labelPosition="edge"
 						disabled={ props.disabled }
@@ -197,7 +179,7 @@ const UAGNumberControl = ( props ) => {
 				</div>
 				<UAGHelpText text={ props.help } />
 			</div>
-			{controlAfterDomElement}
+			{ controlAfterDomElement }
 		</div>
 	);
 };
@@ -216,7 +198,7 @@ UAGNumberControl.defaultProps = {
 	responsive: false,
 	showControlHeader: true,
 	inlineControl: true,
-	help: false
+	help: false,
 };
 
 export default UAGNumberControl;

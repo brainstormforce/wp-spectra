@@ -18,18 +18,9 @@ export default function save( props ) {
 		);
 	}
 	return (
-		<div
-			className={ classnames(
-				props.className,
-				`uagb-block-${ block_id }`
-			) }
-		>
-			{ ( displayTitle && title ) && (
-				<RichText.Content
-					tagName="p"
-					value={ title }
-					className="uag-star-rating__title"
-				/>
+		<div className={ classnames( props.className, `uagb-block-${ block_id }` ) }>
+			{ displayTitle && title && (
+				<RichText.Content tagName="p" value={ title } className="uag-star-rating__title" />
 			) }
 			<div className="uag-star-rating" title={ `${ rating }/${ range }` }>
 				{ stars }

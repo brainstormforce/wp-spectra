@@ -52,44 +52,36 @@ const UAGBTaxonomyList = ( props ) => {
 			countFontWeight,
 			listLoadGoogleFonts,
 			listFontFamily,
-			listFontWeight
+			listFontWeight,
 		},
 		setAttributes,
 		clientId,
 	} = props;
-	
+
 	let categoriesList = [];
 
-	const {
-		taxonomyList,
-		termsList,
-	} = useSelect(
-		( select ) => { // eslint-disable-line  no-unused-vars
-			const allTaxonomy = ( null !== listInJson ) ? listInJson.data : '';
-			const currentTax = ( '' !== allTaxonomy ) ? allTaxonomy[ postType ] : 'undefined';
+	// eslint-disable-next-line  no-unused-vars
+	const { taxonomyList, termsList } = useSelect( ( select ) => {
+		const allTaxonomy = null !== listInJson ? listInJson.data : '';
+		const currentTax = '' !== allTaxonomy ? allTaxonomy[ postType ] : 'undefined';
 
-			const listToShowTaxonomy = showEmptyTaxonomy
-				? 'with_empty_taxonomy'
-				: 'without_empty_taxonomy';
+		const listToShowTaxonomy = showEmptyTaxonomy ? 'with_empty_taxonomy' : 'without_empty_taxonomy';
 
-			if ( 'undefined' !== typeof currentTax ) {
-				if (
-					'undefined' !== typeof currentTax[ listToShowTaxonomy ] &&
-					'undefined' !==
-						typeof currentTax[ listToShowTaxonomy ][ taxonomyType ]
-				) {
-					categoriesList = currentTax[ listToShowTaxonomy ][ taxonomyType ];
-				}
+		if ( 'undefined' !== typeof currentTax ) {
+			if (
+				'undefined' !== typeof currentTax[ listToShowTaxonomy ] &&
+				'undefined' !== typeof currentTax[ listToShowTaxonomy ][ taxonomyType ]
+			) {
+				categoriesList = currentTax[ listToShowTaxonomy ][ taxonomyType ];
 			}
+		}
 
-			return {
-				categoriesList,
-				taxonomyList:
-					'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
-				termsList: 'undefined' !== typeof currentTax ? currentTax.terms : [],
-			};
-		},
-	);
+		return {
+			categoriesList,
+			taxonomyList: 'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
+			termsList: 'undefined' !== typeof currentTax ? currentTax.terms : [],
+		};
+	} );
 
 	useEffect( () => {
 		// Assigning block_id in the attribute.
@@ -98,10 +90,7 @@ const UAGBTaxonomyList = ( props ) => {
 		const formData = new window.FormData();
 
 		formData.append( 'action', 'uagb_get_taxonomy' );
-		formData.append(
-			'nonce',
-			uagb_blocks_info.uagb_ajax_nonce
-		);
+		formData.append( 'nonce', uagb_blocks_info.uagb_ajax_nonce );
 		apiFetch( {
 			url: uagb_blocks_info.ajax_url,
 			method: 'POST',
@@ -110,76 +99,70 @@ const UAGBTaxonomyList = ( props ) => {
 			setAttributes( { listInJson: data } );
 		} );
 
-		if( borderThickness ){
-			if( undefined === overallBorderTopWidth ) {
+		if ( borderThickness ) {
+			if ( undefined === overallBorderTopWidth ) {
 				setAttributes( {
 					overallBorderTopWidth: borderThickness,
 				} );
 			}
-			if( undefined === overallBorderLeftWidth ) {
-				setAttributes( { overallBorderLeftWidth : borderThickness} );
+			if ( undefined === overallBorderLeftWidth ) {
+				setAttributes( { overallBorderLeftWidth: borderThickness } );
 			}
-			if( undefined === overallBorderRightWidth ) {
-				setAttributes( { overallBorderRightWidth : borderThickness} );
+			if ( undefined === overallBorderRightWidth ) {
+				setAttributes( { overallBorderRightWidth: borderThickness } );
 			}
-			if( undefined === overallBorderBottomWidth ) {
-				setAttributes( { overallBorderBottomWidth : borderThickness} );
-			}
-		}
-
-		if( borderRadius ){
-
-			if( undefined === overallBorderTopLeftRadius ) {
-				setAttributes( { overallBorderTopLeftRadius : borderRadius} );
-			}
-			if( undefined === overallBorderTopRightRadius ) {
-				setAttributes( { overallBorderTopRightRadius : borderRadius} );
-			}
-			if( undefined === overallBorderBottomLeftRadius ) {
-				setAttributes( { overallBorderBottomLeftRadius : borderRadius} );
-			}
-			if( undefined === overallBorderBottomRightRadius ) {
-				setAttributes( { overallBorderBottomRightRadius : borderRadius} );
+			if ( undefined === overallBorderBottomWidth ) {
+				setAttributes( { overallBorderBottomWidth: borderThickness } );
 			}
 		}
 
-		if( borderColor ){
-			if( undefined === overallBorderColor ) {
-				setAttributes( { overallBorderColor : borderColor} );
+		if ( borderRadius ) {
+			if ( undefined === overallBorderTopLeftRadius ) {
+				setAttributes( { overallBorderTopLeftRadius: borderRadius } );
+			}
+			if ( undefined === overallBorderTopRightRadius ) {
+				setAttributes( { overallBorderTopRightRadius: borderRadius } );
+			}
+			if ( undefined === overallBorderBottomLeftRadius ) {
+				setAttributes( { overallBorderBottomLeftRadius: borderRadius } );
+			}
+			if ( undefined === overallBorderBottomRightRadius ) {
+				setAttributes( { overallBorderBottomRightRadius: borderRadius } );
 			}
 		}
 
-		if( borderHoverColor ){
-			if( undefined === overallBorderHColor ) {
-				setAttributes( { overallBorderHColor : borderHoverColor} );
+		if ( borderColor ) {
+			if ( undefined === overallBorderColor ) {
+				setAttributes( { overallBorderColor: borderColor } );
 			}
 		}
 
-		if( borderStyle ){
-			if( undefined === overallBorderStyle ) {
-				setAttributes( { overallBorderStyle : borderStyle} );
+		if ( borderHoverColor ) {
+			if ( undefined === overallBorderHColor ) {
+				setAttributes( { overallBorderHColor: borderHoverColor } );
 			}
 		}
-		
+
+		if ( borderStyle ) {
+			if ( undefined === overallBorderStyle ) {
+				setAttributes( { overallBorderStyle: borderStyle } );
+			}
+		}
 	}, [] );
 
 	useEffect( () => {
-
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-taxonomy-list-' + clientId.substr( 0, 8 ), blockStyling );
-		
-	}, [ attributes, deviceType  ] );
+	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
-	}, [deviceType] );
+	}, [ deviceType ] );
 
 	let loadTitleGoogleFonts;
 	let loadCountGoogleFonts;
@@ -188,57 +171,36 @@ const UAGBTaxonomyList = ( props ) => {
 	if ( titleLoadGoogleFonts === true ) {
 		const titleconfig = {
 			google: {
-				families: [
-					titleFontFamily +
-						( titleFontWeight ? ':' + titleFontWeight : '' ),
-				],
+				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
 			},
 		};
 
-		loadTitleGoogleFonts = (
-			<WebfontLoader config={ titleconfig }></WebfontLoader>
-		);
+		loadTitleGoogleFonts = <WebfontLoader config={ titleconfig }></WebfontLoader>;
 	}
 
 	if ( countLoadGoogleFonts === true ) {
 		const countconfig = {
 			google: {
-				families: [
-					countFontFamily +
-						( countFontWeight ? ':' + countFontWeight : '' ),
-				],
+				families: [ countFontFamily + ( countFontWeight ? ':' + countFontWeight : '' ) ],
 			},
 		};
 
-		loadCountGoogleFonts = (
-			<WebfontLoader config={ countconfig }></WebfontLoader>
-		);
+		loadCountGoogleFonts = <WebfontLoader config={ countconfig }></WebfontLoader>;
 	}
 
 	if ( listLoadGoogleFonts === true ) {
 		const listconfig = {
 			google: {
-				families: [
-					listFontFamily +
-						( listFontWeight ? ':' + listFontWeight : '' ),
-				],
+				families: [ listFontFamily + ( listFontWeight ? ':' + listFontWeight : '' ) ],
 			},
 		};
 
-		loadListGoogleFonts = (
-			<WebfontLoader config={ listconfig }></WebfontLoader>
-		);
+		loadListGoogleFonts = <WebfontLoader config={ listconfig }></WebfontLoader>;
 	}
 
 	return (
 		<>
-			{ isSelected && (
-				<Settings
-					parentProps={ props }
-					taxonomyList={ taxonomyList }
-					termsList={ termsList }
-				/>
-			) }
+			{ isSelected && <Settings parentProps={ props } taxonomyList={ taxonomyList } termsList={ termsList } /> }
 			<Render parentProps={ props } categoriesList={ categoriesList } />
 			{ loadTitleGoogleFonts }
 			{ loadCountGoogleFonts }

@@ -28,9 +28,7 @@ const Settings = ( props ) => {
 
 	const taxonomyListOptions = [];
 
-	const categoryListOptions = [
-		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
-	];
+	const categoryListOptions = [ { value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) } ];
 
 	if ( '' !== taxonomyList ) {
 		Object.keys( taxonomyList ).map( ( item ) => {
@@ -53,9 +51,7 @@ const Settings = ( props ) => {
 	return (
 		<>
 			{ inspectorControls }
-			<BlockControls>
-				{ getBlockControls() }
-			</BlockControls>
+			<BlockControls>{ getBlockControls() }</BlockControls>
 		</>
 	);
 };

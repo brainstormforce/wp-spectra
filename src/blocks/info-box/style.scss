@@ -289,7 +289,6 @@ a.uagb-infobox-link-wrap {
 
 .uagb-infobox-cta-link {
 	display: inline-flex;
-
 }
 
 .block-editor-page #wpwrap .uagb-infobox-cta-link svg,
@@ -339,7 +338,7 @@ a.uagb-infbox__link-to-all {
 	-webkit-box-shadow: none;
 }
 
-@media only screen and (max-width: 976px) {
+@media only screen and ( max-width: 976px ) {
 
 	.uagb-infobox-stacked-tablet.uagb-infobox__content-wrap .uagb-ifb-image-content {
 		padding: 0;
@@ -403,7 +402,7 @@ a.uagb-infbox__link-to-all {
 	}
 }
 
-@media screen and (max-width: 767px) {
+@media screen and ( max-width: 767px ) {
 
 	.uagb-infobox-stacked-mobile.uagb-infobox__content-wrap {
 		display: inline-block;
@@ -439,7 +438,6 @@ a.uagb-infbox__link-to-all {
 			width: 100%;
 			text-align: center;
 		}
-
 	}
 
 	.uagb-infobox-icon-left-title.uagb-infobox-stacked-mobile,

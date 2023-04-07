@@ -25,7 +25,7 @@ export default function save( props ) {
 	let imageIconHtml = '';
 
 	if ( noticeDismiss ) {
-		imageIconHtml = ( renderSVG( icon )	);
+		imageIconHtml = renderSVG( icon );
 	}
 
 	let active = '';
@@ -43,16 +43,8 @@ export default function save( props ) {
 			) }
 		>
 			{ imageIconHtml }
-			<RichText.Content
-				value={ noticeTitle }
-				tagName={ headingTag }
-				className="uagb-notice-title"
-			/>
-			<RichText.Content
-				value={ noticeContent }
-				tagName="div"
-				className="uagb-notice-text"
-			/>
+			<RichText.Content value={ noticeTitle } tagName={ headingTag } className="uagb-notice-title" />
+			<RichText.Content value={ noticeContent } tagName="div" className="uagb-notice-text" />
 		</div>
 	);
 }

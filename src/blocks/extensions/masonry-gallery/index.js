@@ -12,7 +12,6 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { select } from '@wordpress/data';
 
 const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
-
 	return ( props ) => {
 		const { attributes, setAttributes, isSelected } = props;
 		const blockName = props.name;
@@ -33,50 +32,29 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 			const selectors = {
 				/* Start Backword */
 				'.wp-block-gallery ul.blocks-gallery-grid': {
-					'column-gap': generateCSSUnit(
-						attributes.masonryGutter,
-						'px'
-					),
+					'column-gap': generateCSSUnit( attributes.masonryGutter, 'px' ),
 					'column-count': colCount,
 				},
 				'.wp-block-gallery ul.blocks-gallery-grid li.blocks-gallery-item': {
-					'margin-bottom': generateCSSUnit(
-						attributes.masonryGutter,
-						'px'
-					),
+					'margin-bottom': generateCSSUnit( attributes.masonryGutter, 'px' ),
 				},
 				/* End Backword */
 				'.wp-block-gallery.blocks-gallery-grid.has-nested-images.uag-masonry.blocks-gallery-grid': {
-					'column-gap': generateCSSUnit(
-						attributes.masonryGutter,
-						'px'
-					),
+					'column-gap': generateCSSUnit( attributes.masonryGutter, 'px' ),
 					'column-count': colCount,
 				},
 				'.wp-block-gallery.blocks-gallery-grid.has-nested-images.uag-masonry.blocks-gallery-grid figure.wp-block-image:not(#individual-image)': {
-					'margin-bottom': generateCSSUnit(
-						attributes.masonryGutter,
-						'px'
-					),
+					'margin-bottom': generateCSSUnit( attributes.masonryGutter, 'px' ),
 				},
 			};
-			const styling = generateCSS(
-				selectors,
-				'#block-' + props.clientId
-			);
+			const styling = generateCSS( selectors, '#block-' + props.clientId );
 			if ( attributes.masonry ) {
-				const element = document.getElementById(
-					'uag-gallery-masonry-style-' + props.clientId.substr( 0, 8 )
-				);
+				const element = document.getElementById( 'uag-gallery-masonry-style-' + props.clientId.substr( 0, 8 ) );
 				if ( null !== element && undefined !== element ) {
 					element.innerHTML = styling;
 				} else {
 					const style = document.createElement( 'style' );
-					style.setAttribute(
-						'id',
-						'uag-gallery-masonry-style-' +
-							props.clientId.substr( 0, 8 )
-					);
+					style.setAttribute( 'id', 'uag-gallery-masonry-style-' + props.clientId.substr( 0, 8 ) );
 					style.innerHTML = styling;
 					document.head.appendChild( style );
 				}
@@ -115,18 +93,18 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 
 		applyCSS();
 
-		const imagesID = ( undefined !== attributes.ids ) ? attributes.ids.length : select( 'core/block-editor' ).getBlocks( props.clientId ).length;
+		const imagesID =
+			undefined !== attributes.ids
+				? attributes.ids.length
+				: select( 'core/block-editor' ).getBlocks( props.clientId ).length;
 
 		return (
 			<>
 				<BlockEdit { ...props } />
-				{ isSelected && blockType.includes( blockName ) && ( imagesID.length !== 0 ) && (
+				{ isSelected && blockType.includes( blockName ) && imagesID.length !== 0 && (
 					<InspectorControls>
 						<UAGAdvancedPanelBody
-							title={ __(
-								'Masonry Gallery',
-								'ultimate-addons-for-gutenberg'
-							) }
+							title={ __( 'Masonry Gallery', 'ultimate-addons-for-gutenberg' ) }
 							initialOpen={ false }
 						>
 							<ToggleControl
@@ -136,14 +114,9 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 							/>
 							{ attributes.masonry && (
 								<RangeControl
-									label={ __(
-										'Gap',
-										'ultimate-addons-for-gutenberg'
-									) }
+									label={ __( 'Gap', 'ultimate-addons-for-gutenberg' ) }
 									value={ attributes.masonryGutter }
-									onChange={ ( value ) =>
-										applyGutter( value )
-									}
+									onChange={ ( value ) => applyGutter( value ) }
 									min={ 0 }
 									max={ 100 }
 									allowReset
@@ -158,26 +131,15 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 }, 'MasonryGallery' );
 
 function ApplyUniqueClass( extraProps, blockType, attributes ) {
-
 	if ( 'core/gallery' === blockType.name && attributes.masonry ) {
-		extraProps.className =
-			extraProps.className + ' uagb-block-' + attributes.block_id;
+		extraProps.className = extraProps.className + ' uagb-block-' + attributes.block_id;
 	}
 
 	return extraProps;
 }
 
 if ( 'enabled' === enableMasonryGallery || true === enableMasonryGallery ) {
-	addFilter(
-		'editor.BlockEdit',
-		'uagb/masonry-gallery',
-		MasonryGallery,
-		999
-	);
+	addFilter( 'editor.BlockEdit', 'uagb/masonry-gallery', MasonryGallery, 999 );
 
-	addFilter(
-		'blocks.getSaveContent.extraProps',
-		'uagb/apply-extra-class',
-		ApplyUniqueClass,
-	);
+	addFilter( 'blocks.getSaveContent.extraProps', 'uagb/apply-extra-class', ApplyUniqueClass );
 }
