@@ -175,9 +175,9 @@ const Lightbox = ( { attributes, setAttributes, setLightboxPreview } ) => {
 			{ renderLightbox() }
 			{ renderThumbnails() }
 			{ lightboxDisplayCount && (
-				<div className="spectra-image-gallery__control-lightbox--count">
-					{ `${ CurrentSlide + 1 } / ${ lightboxTotal }` }
-				</div>
+				<div className="spectra-image-gallery__control-lightbox--count">{ `${
+					CurrentSlide + 1
+				} / ${ lightboxTotal }` }</div>
 			) }
 			{ lightboxCloseIcon && (
 				<button
