@@ -238,17 +238,11 @@ const ResponsiveConditionOptions = ( props ) => {
 };
 
 const animationOptions = ( props ) => {
-
 	const {
 		clientId,
 		name,
-		attributes: {
-			UAGAnimationType,
-			UAGAnimationTime,
-			UAGAnimationDelay,
-			UAGAnimationEasing,
-		},
-		setAttributes
+		attributes: { UAGAnimationType, UAGAnimationTime, UAGAnimationDelay, UAGAnimationEasing },
+		setAttributes,
 	} = props;
 
 	// Get the easing functions from Pro.
@@ -257,32 +251,37 @@ const animationOptions = ( props ) => {
 	// Function to trigger animation in editor (when changing animation type or clicking on play button).
 	// animationType - holds UAGAnimationType attribute by default but sometimes the attribute is not updated instantaneously, so we pass in the value from the Animation Type select component.
 	const playAnimation = ( animationType = UAGAnimationType ) => {
-
 		// For responsive preview.
-		const editorIframe = document.querySelector( 'iframe[name="editor-canvas"]' )
+		const editorIframe = document.querySelector( 'iframe[name="editor-canvas"]' );
 		const innerDoc = editorIframe?.contentDocument || editorIframe?.contentWindow.document;
 
 		// Get block and the setTimeout code to clear from previous usage. Also check responsive preview.
-		const animatedBlock = ( editorIframe ) ? innerDoc.getElementById( 'block-' + clientId ) : document.getElementById( 'block-' + clientId )
+		const animatedBlock = editorIframe
+			? innerDoc.getElementById( 'block-' + clientId )
+			: document.getElementById( 'block-' + clientId );
 
-		const aosWaitPreviousCode = parseInt( localStorage.getItem( `aosWaitTimeoutCode-${clientId}` ) );
-		const aosRemoveClassesTimeoutPreviousCode = parseInt( localStorage.getItem( `aosRemoveClassesTimeoutCode-${clientId}` ) );
+		const aosWaitPreviousCode = parseInt( localStorage.getItem( `aosWaitTimeoutCode-${ clientId }` ) );
+		const aosRemoveClassesTimeoutPreviousCode = parseInt(
+			localStorage.getItem( `aosRemoveClassesTimeoutCode-${ clientId }` )
+		);
 
 		// If the animation is played previously, remove the AOS class and attribute first.
 		// We ensure that the AOS class and attribute is removed in case the user repeated taps the play button.
-		if( aosWaitPreviousCode ) {
-			animatedBlock.removeAttribute( 'data-aos' )
-			animatedBlock.classList.remove( 'aos-animate' )
+		if ( aosWaitPreviousCode ) {
+			animatedBlock.removeAttribute( 'data-aos' );
+			animatedBlock.classList.remove( 'aos-animate' );
 		}
 
 		// transition duration is set to 0s, cause the block first goes to the last frame (animated in reverse) when the AOS attribute is added and this should be instantaneous.
 		animatedBlock.style.transitionDuration = '0s';
 		// Add back the AOS attribute.
-		animatedBlock.setAttribute( 'data-aos', animationType )
+		animatedBlock.setAttribute( 'data-aos', animationType );
 
 		// Due to CSS conflicts across themes in the editor, we set the easing using JS.
 		// Also we only provide default 'ease' in the free version, so if the easing function list is empty then use the default 'ease' function.
-		animatedBlock.style.transitionTimingFunction = ( AnimationEasingFunctions ) ? AnimationEasingFunctions[ UAGAnimationEasing ] : 'cubic-bezier(.250, .100, .250, 1)' ;
+		animatedBlock.style.transitionTimingFunction = AnimationEasingFunctions
+			? AnimationEasingFunctions[ UAGAnimationEasing ]
+			: 'cubic-bezier(.250, .100, .250, 1)';
 
 		// Clear previous timeouts.
 		clearTimeout( aosWaitPreviousCode );
@@ -292,8 +291,8 @@ const animationOptions = ( props ) => {
 		const aosWait = setTimeout( () => {
 			// Astra theme overrides (or even other themes may) the transition duration to a fixed value.
 			// Hence we do the calculation on the next line.
-			animatedBlock.style.transitionDuration = ( UAGAnimationTime/1000 ) + 's';
-			animatedBlock.classList.add( 'aos-animate' )
+			animatedBlock.style.transitionDuration = UAGAnimationTime / 1000 + 's';
+			animatedBlock.classList.add( 'aos-animate' );
 		}, 0 );
 
 		// Remove the classes and attributes after the animation has played.
@@ -303,46 +302,52 @@ const animationOptions = ( props ) => {
 			animatedBlock.classList.remove( 'aos-animate' );
 			animatedBlock.style.transitionDuration = '';
 			animatedBlock.style.transitionTimingFunction = '';
-		}, ( UAGAnimationDelay + UAGAnimationTime ) );
+		}, UAGAnimationDelay + UAGAnimationTime );
 
 		// Set local storage so we can fetch the value during later usage to clear the intervals.
-		localStorage.setItem( `aosWaitTimeoutCode-${clientId}` , aosWait );
-		localStorage.setItem( `aosRemoveClassesTimeoutCode-${clientId}` , aosRemoveClasses );
+		localStorage.setItem( `aosWaitTimeoutCode-${ clientId }`, aosWait );
+		localStorage.setItem( `aosRemoveClassesTimeoutCode-${ clientId }`, aosRemoveClasses );
+	};
 
-	}
-
-	return(
+	return (
 		<>
-			
 			<Select
 				placeholder={ __( 'Animation Type', 'ultimate-addons-for-gutenberg' ) }
 				onChange={ ( selection ) => {
-					setAttributes( { UAGAnimationType: selection.value } )
+					setAttributes( { UAGAnimationType: selection.value } );
 					// Play animation when the animation type is changed.
 					// We pass in 'value' since the UAGAnimationType may still hold the old animation type value.
 					playAnimation( selection.value );
 				} }
 				options={ AnimationList }
-				value={ ( UAGAnimationType !== '' ) ? AnimationSelectControlObject[UAGAnimationType] : AnimationSelectControlObject.none }
-				defaultValue={ ( UAGAnimationType !== '' ) ? AnimationSelectControlObject[UAGAnimationType] : AnimationSelectControlObject.none }
-				isSearchable={true}
+				value={
+					UAGAnimationType !== ''
+						? AnimationSelectControlObject[ UAGAnimationType ]
+						: AnimationSelectControlObject.none
+				}
+				defaultValue={
+					UAGAnimationType !== ''
+						? AnimationSelectControlObject[ UAGAnimationType ]
+						: AnimationSelectControlObject.none
+				}
+				isSearchable={ true }
 				className="uagb-animation-type-select"
 			/>
 
-			{/* name: we pass in the block name dynamically since this feature must be available across all Spectra blocks */}
+			{ /* name: we pass in the block name dynamically since this feature must be available across all Spectra blocks */ }
 			{ applyFilters( 'spectra.animations-extension.pro-options', '', name ) }
 
-			{ ( UAGAnimationType && UAGAnimationType !== '' ) &&
+			{ UAGAnimationType && UAGAnimationType !== '' && (
 				<>
 					<Button
-						className='uagb-animation__play-button'
+						className="uagb-animation__play-button"
 						onClick={ () => playAnimation() }
-						variant='tertiary'
+						variant="tertiary"
 					>
 						{ __( 'Preview', 'ultimate-addons-for-gutenberg' ) }
 					</Button>
 				</>
-			}
+			) }
 		</>
 	);
 };
@@ -402,9 +407,7 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 
 // This adds AOS related data attributes to Gutenberg wrapper in editor.
 const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
-	
 	return ( props ) => {
-
 		const { attributes } = props;
 		const {
 			UAGAnimationType,
@@ -418,18 +421,17 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 			...props.wrapperProps,
 		};
 
-		if( UAGAnimationType !== '' ) {
-			wrapperProps['data-aos-duration'] = UAGAnimationTime;
-			wrapperProps['data-aos-delay'] = UAGAnimationDelay;
-			wrapperProps['data-aos-easing'] = UAGAnimationEasing;
-			if( ! UAGAnimationRepeat ) {
-				wrapperProps['data-aos-once'] = 'true';
+		if ( UAGAnimationType !== '' ) {
+			wrapperProps[ 'data-aos-duration' ] = UAGAnimationTime;
+			wrapperProps[ 'data-aos-delay' ] = UAGAnimationDelay;
+			wrapperProps[ 'data-aos-easing' ] = UAGAnimationEasing;
+			if ( ! UAGAnimationRepeat ) {
+				wrapperProps[ 'data-aos-once' ] = 'true';
 			}
 		}
 
 		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
 	};
-	
 }, 'withAOSWrapperProps' );
 
 //For UAG Blocks.
@@ -460,7 +462,7 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 	if ( isSelected && ! excludeBlocks.includes( name ) ) {
 		return (
 			<>
-				{ 'enabled' === enableAnimationsExtension &&
+				{ 'enabled' === enableAnimationsExtension && (
 					<UAGAdvancedPanelBody
 						title={ __( 'Animations', 'ultimate-addons-for-gutenberg' ) }
 						initialOpen={ true }
@@ -468,7 +470,7 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 					>
 						{ animationOptions( props ) }
 					</UAGAdvancedPanelBody>
-				}
+				) }
 				{ 'enabled' === enableConditions && (
 					<UAGAdvancedPanelBody
 						title={ __( 'Display Conditions', 'ultimate-addons-for-gutenberg' ) }
