@@ -58,9 +58,8 @@ const BlockCard = ( props ) => {
 			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
         } );
     };
-    
-	// This ternary will be removed once Spectra Pro is Released.
-    return ( pro_filler ) ? null : (
+
+    return (
         <div
         key={slug}
         className={ classNames(

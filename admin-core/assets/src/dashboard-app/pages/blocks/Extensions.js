@@ -10,21 +10,18 @@ const Extensions = ( { currentTab } ) => {
 		return (
 			<>
 				<DisplayConditionsExtension/>
-				{/* This Component will be rendered once Spectra Pro is Released. */}
 				{/* <DynamicContentExtension/> */}
 				<MasonryGalleryExtension/>
 				<ResponsiveConditionsExtention/>
 			</>
 		);
+	} else if ( 'pro' === currentTab ) {
+		return (
+			<>
+				{/* <DynamicContentExtension/> */}
+			</>
+		);
 	}
-	// This Else condition will be rendered once Spectra Pro is Released.
-	// else if ( 'pro' === currentTab ) {
-	// 	return (
-	// 		<>
-	// 			<DynamicContentExtension/>
-	// 		</>
-	// 	);
-	// }
 	return null;
 };
 

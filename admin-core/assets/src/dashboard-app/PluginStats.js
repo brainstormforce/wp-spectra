@@ -91,17 +91,14 @@ const PluginStats = () => {
 				</div>
 			)
 		) : (
-			// All commented code below this will be rendered once Spectra Pro is Released.
-			// The Placeholder Div Fixes the Spacing Issue caused by the text removal
-			// <a
-			// 	className='mr-8 ml-2 text-sm text-spectra active:text-spectra hover:text-spectra focus:text-spectra cursor-pointer'
-			// 	href='https://wpspectra.com/pricing'
-			// 	rel='noreferrer noopener'
-			// 	target='_blank'
-			// >
-			// 	{ __( 'Upgrade to Pro', 'ultimate-addons-for-gutenberg' ) }
-			// </a>
-			<div className='w-4' />
+			<a
+				className='mr-8 ml-2 text-sm text-spectra active:text-spectra hover:text-spectra focus:text-spectra cursor-pointer'
+				href='https://wpspectra.com/pricing'
+				rel='noreferrer noopener'
+				target='_blank'
+			>
+				{ __( 'Upgrade to Pro', 'ultimate-addons-for-gutenberg' ) }
+			</a>
 		)
 	);
 
@@ -122,10 +119,9 @@ const PluginStats = () => {
 					<div className='mr-2 px-1.5 py-[3px] text-[10px] leading-[10px] text-white bg-slate-800 border border-slate-800 rounded'>
 						{ __( 'Pro', 'ultimate-addons-for-gutenberg' ) }
 					</div>
-					{/* All Code below this will be moved out of this conditional render once Spectra Pro is Released. */}
-					{ renderDivider() }
 				</>
 			) }
+			{ renderDivider() }
 			{ renderLicenseStatus() }
 		</>
 	);
