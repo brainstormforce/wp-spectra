@@ -149,11 +149,12 @@
 
 		@include grid-columns;
 	}
-
 }
 
 // Tablet Grid Properties for FSE Themes like Twenty Twenty-Two and Spectra One.
-.editor-styles-wrapper .is-root-container.edit-site-block-editor__block-list.wp-site-blocks .uagb-editor-preview-mode-tablet {
+.editor-styles-wrapper
+.is-root-container.edit-site-block-editor__block-list.wp-site-blocks
+.uagb-editor-preview-mode-tablet {
 
 	.spectra-image-gallery__layout--masonry-col-tab,
 	.spectra-image-gallery__layout--grid-col-tab,
@@ -164,7 +165,9 @@
 }
 
 // Mobile Grid Properties for FSE Themes like Twenty Twenty-Two and Spectra One.
-.editor-styles-wrapper .is-root-container.edit-site-block-editor__block-list.wp-site-blocks .uagb-editor-preview-mode-mobile {
+.editor-styles-wrapper
+.is-root-container.edit-site-block-editor__block-list.wp-site-blocks
+.uagb-editor-preview-mode-mobile {
 
 	.spectra-image-gallery__layout--masonry-col-mob,
 	.spectra-image-gallery__layout--grid-col-mob,

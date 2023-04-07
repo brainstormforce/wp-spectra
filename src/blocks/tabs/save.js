@@ -37,36 +37,22 @@ export default function save( props ) {
 				{ tabHeaders.map( ( header, index ) => (
 					<li
 						key={ index }
-						className={ `uagb-tab ${
-							tabActiveFrontend === index
-								? 'uagb-tabs__active'
-								: ''
-						}` }
-						role='none' 
+						className={ `uagb-tab ${ tabActiveFrontend === index ? 'uagb-tabs__active' : '' }` }
+						role="none"
 					>
 						<a
 							href={ `#uagb-tabs__tab${ index }` }
 							className={ `uagb-tabs-list uagb-tabs__icon-position-${ iconPosition }` }
 							data-tab={ index }
-							role='tab'
+							role="tab"
 						>
-							{ showIcon &&
-								( iconPosition === 'left' ||
-									iconPosition === 'top' ) && (
-									<span className="uagb-tabs__icon">
-										{ renderSVG( icon ) }
-									</span>
-								) }
-							<RichText.Content
-								value={ header }
-							/>
-							{ showIcon &&
-								( iconPosition === 'right' ||
-									iconPosition === 'bottom' ) && (
-									<span className="uagb-tabs__icon">
-										{ renderSVG( icon ) }
-									</span>
-								) }
+							{ showIcon && ( iconPosition === 'left' || iconPosition === 'top' ) && (
+								<span className="uagb-tabs__icon">{ renderSVG( icon ) }</span>
+							) }
+							<RichText.Content value={ header } />
+							{ showIcon && ( iconPosition === 'right' || iconPosition === 'bottom' ) && (
+								<span className="uagb-tabs__icon">{ renderSVG( icon ) }</span>
+							) }
 						</a>
 					</li>
 				) ) }

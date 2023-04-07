@@ -6,9 +6,7 @@ import ResponsiveBorder from '@Components/responsive-border';
 import SpacingControl from '@Components/spacing-control';
 import { __ } from '@wordpress/i18n';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
-import InspectorTab, {
-	UAGTabs,
-} from '@Components/inspector-tabs/InspectorTab.js';
+import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import { memo } from '@wordpress/element';
 
@@ -53,6 +51,13 @@ const Settings = ( props ) => {
 			backgroundSize,
 			backgroundImageColor,
 			gradientValue,
+			gradientColor1,
+			gradientColor2,
+			gradientLocation1,
+			gradientLocation2,
+			gradientType,
+			gradientAngle,
+			selectGradient,
 			overlayType,
 			mobilePaddingType,
 			tabletPaddingType,
@@ -72,14 +77,9 @@ const Settings = ( props ) => {
 
 	const layoutSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }>
 				<ResponsiveSlider
-					label={ __(
-						'Content Width (%)',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Content Width (%)', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: colWidth,
@@ -105,10 +105,7 @@ const Settings = ( props ) => {
 
 	const spacingSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<SpacingControl
 					{ ...props }
 					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
@@ -255,15 +252,40 @@ const Settings = ( props ) => {
 
 	const backgroundSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<Background
 					setAttributes={ setAttributes }
 					backgroundGradient={ {
 						value: gradientValue,
 						label: 'gradientValue',
+					} }
+					backgroundGradientColor1={ {
+						value: gradientColor1,
+						label: 'gradientColor1',
+					} }
+					gradientType={ {
+						value: selectGradient,
+						label: 'selectGradient',
+					} }
+					backgroundGradientColor2={ {
+						value: gradientColor2,
+						label: 'gradientColor2',
+					} }
+					backgroundGradientLocation1={ {
+						value: gradientLocation1,
+						label: 'gradientLocation1',
+					} }
+					backgroundGradientLocation2={ {
+						value: gradientLocation2,
+						label: 'gradientLocation2',
+					} }
+					backgroundGradientType={ {
+						value: gradientType,
+						label: 'gradientType',
+					} }
+					backgroundGradientAngle={ {
+						value: gradientAngle,
+						label: 'gradientAngle',
 					} }
 					backgroundImageColor={ {
 						value: backgroundImageColor,
@@ -273,9 +295,9 @@ const Settings = ( props ) => {
 						value: overlayType,
 						label: 'overlayType',
 					} }
-					gradientOverlay={{
+					gradientOverlay={ {
 						value: true,
-					}}
+					} }
 					backgroundSize={ {
 						value: backgroundSize,
 						label: 'backgroundSize',
@@ -315,41 +337,31 @@ const Settings = ( props ) => {
 
 	const borderSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					prefix={'column'}
+					prefix={ 'column' }
 					attributes={ props.attributes }
 					deviceType={ deviceType }
 					disableBottomSeparator={ true }
-					disabledBorderTitle= { true }
+					disabledBorderTitle={ true }
 				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
 
 	return (
-
-			<InspectorControls>
-				<InspectorTabs>
-					<InspectorTab { ...UAGTabs.general }>
-						{ layoutSettings() }
-					</InspectorTab>
-					<InspectorTab { ...UAGTabs.style }>
-						{ backgroundSettings() }
-						{ borderSettings() }
-						{ spacingSettings() }
-					</InspectorTab>
-					<InspectorTab
-						{ ...UAGTabs.advance }
-						parentProps={ props }
-					></InspectorTab>
-				</InspectorTabs>
-			</InspectorControls>
-
+		<InspectorControls>
+			<InspectorTabs>
+				<InspectorTab { ...UAGTabs.general }>{ layoutSettings() }</InspectorTab>
+				<InspectorTab { ...UAGTabs.style }>
+					{ backgroundSettings() }
+					{ borderSettings() }
+					{ spacingSettings() }
+				</InspectorTab>
+				<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
+			</InspectorTabs>
+		</InspectorControls>
 	);
 };
 

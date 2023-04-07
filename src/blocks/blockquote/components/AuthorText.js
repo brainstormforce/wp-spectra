@@ -36,13 +36,7 @@ const AuthorText = ( { attributes, setAttributes, props } ) => {
 		);
 	}
 
-	return (
-		<RichText.Content
-			tagName="cite"
-			value={ attributes.author }
-			className="uagb-blockquote__author"
-		/>
-	);
+	return <RichText.Content tagName="cite" value={ attributes.author } className="uagb-blockquote__author" />;
 };
 
 export default AuthorText;

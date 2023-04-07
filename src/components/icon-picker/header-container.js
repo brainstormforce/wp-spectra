@@ -1,20 +1,12 @@
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 const HeaderContainer = ( props ) => {
-	const {
-		searchIconInputValue,
-		onClickRemoveSearch,
-		searchIcon,
-		inputElement,
-	} = props;
+	const { searchIconInputValue, onClickRemoveSearch, searchIcon, inputElement } = props;
 	const removeTextIcon = () => {
 		return '' === searchIconInputValue ? (
 			renderSVG( 'sistrix' )
 		) : (
-			<span
-				onClick={ onClickRemoveSearch }
-				className="dashicons dashicons-no-alt"
-			></span>
+			<span onClick={ onClickRemoveSearch } className="dashicons dashicons-no-alt"></span>
 		);
 	};
 
@@ -27,10 +19,7 @@ const HeaderContainer = ( props ) => {
 					{ removeTextIcon() }
 					<input
 						type="text"
-						placeholder={ __(
-							'Search',
-							'ultimate-addons-for-gutenberg'
-						) }
+						placeholder={ __( 'Search', 'ultimate-addons-for-gutenberg' ) }
 						value={ searchIconInputValue }
 						onChange={ searchIcon }
 						ref={ inputElement }

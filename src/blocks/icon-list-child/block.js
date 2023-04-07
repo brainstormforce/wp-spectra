@@ -14,7 +14,10 @@ import PreviewImage from '@Controls/previewImage';
 import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 let iconListChildCommonData = {};
-iconListChildCommonData = applyFilters( 'uagb/icon-list-child', addCommonDataToSpectraBlocks( iconListChildCommonData ) );
+iconListChildCommonData = applyFilters(
+	'uagb/icon-list-child',
+	addCommonDataToSpectraBlocks( iconListChildCommonData )
+);
 registerBlockType( 'uagb/icon-list-child', {
 	...iconListChildCommonData,
 	title: __( 'Icon', 'ultimate-addons-for-gutenberg' ),
@@ -22,13 +25,13 @@ registerBlockType( 'uagb/icon-list-child', {
 	icon: UAGB_Block_Icons.icon_list_child,
 	parent: [ 'uagb/icon-list' ],
 	attributes,
-category: uagb_blocks_info.category,
+	category: uagb_blocks_info.category,
 	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="icon-list-child" isChildren={ true } />
-			) : (
-				<Edit { ...props } />
-			),
+		props.attributes.isPreview ? (
+			<PreviewImage image="icon-list-child" isChildren={ true } />
+		) : (
+			<Edit { ...props } />
+		),
 	save,
 	deprecated,
 } );

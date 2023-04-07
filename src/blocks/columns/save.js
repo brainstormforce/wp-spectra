@@ -28,7 +28,7 @@ export default function save( props ) {
 		reverseMobile,
 		topContentAboveShape,
 		bottomContentAboveShape,
-		contentWidth
+		contentWidth,
 	} = attributes;
 
 	const CustomTag = `${ tag }`;
@@ -40,8 +40,7 @@ export default function save( props ) {
 				'uagb-columns__shape-top',
 				{ 'uagb-columns__shape-flip': topFlip === true },
 				{
-					'uagb-columns__shape-above-content':
-						topContentAboveShape === true,
+					'uagb-columns__shape-above-content': topContentAboveShape === true,
 				}
 			) }
 		>
@@ -56,8 +55,7 @@ export default function save( props ) {
 				'uagb-columns__shape-bottom',
 				{ 'uagb-columns__shape-flip': bottomFlip === true },
 				{
-					'uagb-columns__shape-above-content':
-						bottomContentAboveShape === true,
+					'uagb-columns__shape-above-content': bottomContentAboveShape === true,
 				}
 			) }
 			data-negative="false"
@@ -66,19 +64,15 @@ export default function save( props ) {
 		</div>
 	);
 
-	const reverseTabletClass = reverseTablet
-		? 'uagb-columns__reverse-tablet'
-		: '';
+	const reverseTabletClass = reverseTablet ? 'uagb-columns__reverse-tablet' : '';
 
-	const reverseMobileClass = reverseMobile
-		? 'uagb-columns__reverse-mobile'
-		: '';
+	const reverseMobileClass = reverseMobile ? 'uagb-columns__reverse-mobile' : '';
 
-	const bgType = ( undefined !== backgroundType ) ? `uagb-columns__background-${ backgroundType }` : '';
+	const bgType = undefined !== backgroundType ? `uagb-columns__background-${ backgroundType }` : '';
 
-	const verticalAlign = ( undefined !== vAlign ) ? `uagb-columns__valign-${ vAlign }` : '';
+	const verticalAlign = undefined !== vAlign ? `uagb-columns__valign-${ vAlign }` : '';
 
-	const alignType = ( undefined !== align ) ? `align${ align }` : '';
+	const alignType = undefined !== align ? `align${ align }` : '';
 
 	return (
 		<CustomTag
@@ -94,7 +88,7 @@ export default function save( props ) {
 				reverseMobileClass,
 				`uagb-block-${ block_id }`,
 				`uagb-columns__columns-${ columns }`,
-				`uagb-columns__max_width-${ contentWidth }`,
+				`uagb-columns__max_width-${ contentWidth }`
 			) }
 		>
 			<div className="uagb-columns__overlay"></div>
@@ -103,20 +97,12 @@ export default function save( props ) {
 				<div className="uagb-columns__video-wrap">
 					{ backgroundVideo && (
 						<video autoPlay loop muted playsinline>
-							<source
-								src={ backgroundVideo.url }
-								type="video/mp4"
-							/>
+							<source src={ backgroundVideo.url } type="video/mp4" />
 						</video>
 					) }
 				</div>
 			) }
-			<div
-				className={ classnames(
-					'uagb-columns__inner-wrap',
-					`uagb-columns__columns-${ columns }`
-				) }
-			>
+			<div className={ classnames( 'uagb-columns__inner-wrap', `uagb-columns__columns-${ columns }` ) }>
 				<InnerBlocks.Content />
 			</div>
 			{ bottomDividerHtml }

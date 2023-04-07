@@ -139,7 +139,6 @@
 		&:not(.wp-block-uagb-post-grid).uagb-post__columns-mobile-8 article {
 			width: 12.5%;
 		}
-
 	}
 
 	&:not(.is-grid).uagb-post__items {
@@ -176,7 +175,8 @@
 	-ms-transform: translate(-50%, -50%);
 }
 
-.editor-styles-wrapper .is-root-container.edit-site-block-editor__block-list.wp-site-blocks .is-masonry { // Applies only in theme builder 2022.
+.editor-styles-wrapper .is-root-container.edit-site-block-editor__block-list.wp-site-blocks .is-masonry {
+	// Applies only in theme builder 2022.
 	height: initial !important;
 }
 
@@ -205,7 +205,5 @@
 				bottom: 20px;
 			}
 		}
-
 	}
-
 }

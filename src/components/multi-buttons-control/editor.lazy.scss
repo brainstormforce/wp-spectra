@@ -33,8 +33,7 @@
 	}
 
 	.uagb-multi-button.is-secondary:hover:not(:disabled),
-	.uagb-multi-button-grou[aria-label="Gap"]
-	.uagb-multi-button.is-tertiary:hover:not(:disabled) {
+	.uagb-multi-button-grou[aria-label="Gap"] .uagb-multi-button.is-tertiary:hover:not(:disabled) {
 		color: $spectra-color-heading;
 		box-shadow: inset 0 0 0 1px $spectra-color-border;
 	}
@@ -45,8 +44,7 @@
 	}
 
 	.uagb-multi-button.is-secondary:active:not(:disabled),
-	.uagb-multi-button-grou[aria-label="Gap"]
-	.uagb-multi-button.is-tertiary:active:not(:disabled) {
+	.uagb-multi-button-grou[aria-label="Gap"] .uagb-multi-button.is-tertiary:active:not(:disabled) {
 		background: $spectra-color-plain-background;
 		box-shadow: inset 0 0 0 1px $spectra-color-border;
 	}
@@ -75,7 +73,6 @@
 
 // Classes for Spectra Improvemnets (BEM Convention).
 .spectra-multi-buttons {
-
 	// Classes for Color Scheme.
 	&__color-scheme {
 
@@ -91,7 +88,6 @@
 					fill: $spectra-color-primary;
 				}
 			}
-
 		}
 
 		&--secondary {

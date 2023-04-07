@@ -9,9 +9,7 @@ import { InspectorControls } from '@wordpress/block-editor';
 import UAGSelectControl from '@Components/select-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
-import InspectorTab, {
-	UAGTabs,
-} from '@Components/inspector-tabs/InspectorTab.js';
+import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGTabsControl from '@Components/tabs';
 import UAGMediaPicker from '@Components/image';
@@ -91,10 +89,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody initialOpen={ true }>
 				<UAGSelectControl
-					label={ __(
-						'Type',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: type,
 					} }
@@ -102,94 +97,55 @@ const Settings = ( props ) => {
 					options={ [
 						{
 							value: 'facebook',
-							label: __(
-								'Facebook',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Facebook', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'twitter',
-							label: __(
-								'Twitter',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Twitter', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'google',
-							label: __(
-								'Google Currents',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Google Currents', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'pinterest',
-							label: __(
-								'Pinterest',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Pinterest', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'linkedin',
-							label: __(
-								'LinkedIn',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'LinkedIn', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'digg',
-							label: __(
-								'Digg',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Digg', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'blogger',
-							label: __(
-								'Blogger',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Blogger', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'reddit',
-							label: __(
-								'Reddit',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Reddit', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'stumbleupon',
-							label: __(
-								'StumbleUpon',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'StumbleUpon', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'tumblr',
-							label: __(
-								'Tumblr',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Tumblr', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'myspace',
-							label: __(
-								'Myspace',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Myspace', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'email',
-							label: __(
-								'Email',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Email', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'pocket',
-							label: __(
-								'Pocket',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Pocket', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'vk',
@@ -197,54 +153,33 @@ const Settings = ( props ) => {
 						},
 						{
 							value: 'odnoklassniki',
-							label: __(
-								'Odnoklassniki',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Odnoklassniki', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'skype',
-							label: __(
-								'Skype',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Skype', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'telegram',
-							label: __(
-								'Telegram',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Telegram', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'whatsapp',
-							label: __(
-								'WhatsApp',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'WhatsApp', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'xing',
-							label: __(
-								'Xing',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Xing', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'buffer',
-							label: __(
-								'Buffer',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Buffer', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
-					label={ __(
-						'Image / Icon',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Image / Icon', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: image_icon,
 						label: 'image_icon',
@@ -253,17 +188,11 @@ const Settings = ( props ) => {
 					options={ [
 						{
 							value: 'icon',
-							label: __(
-								'Icon',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Icon', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'image',
-							label: __(
-								'Image',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Image', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					showIcons={ false }
@@ -271,14 +200,9 @@ const Settings = ( props ) => {
 				{ 'icon' === image_icon && (
 					<>
 						<UAGIconPicker
-							label={ __(
-								'Icon',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 							value={ icon }
-							onChange={ ( value ) =>
-								setAttributes( { icon: value } )
-							}
+							onChange={ ( value ) => setAttributes( { icon: value } ) }
 						/>
 					</>
 				) }
@@ -300,10 +224,7 @@ const Settings = ( props ) => {
 			colorControl = (
 				<>
 					<AdvancedPopColorControl
-						label={ __(
-							'Background Color',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ icon_bg_color ? icon_bg_color : '' }
 						data={ {
 							value: icon_bg_color,
@@ -316,13 +237,8 @@ const Settings = ( props ) => {
 			colorControlHover = (
 				<>
 					<AdvancedPopColorControl
-						label={ __(
-							'Background Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						colorValue={
-							icon_bg_hover_color ? icon_bg_hover_color : ''
-						}
+						label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ icon_bg_hover_color ? icon_bg_hover_color : '' }
 						data={ {
 							value: icon_bg_hover_color,
 							label: 'icon_bg_hover_color',
@@ -344,10 +260,7 @@ const Settings = ( props ) => {
 						setAttributes={ setAttributes }
 					/>
 					<AdvancedPopColorControl
-						label={ __(
-							'Background Color',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ icon_bg_color ? icon_bg_color : '' }
 						data={ {
 							value: icon_bg_color,
@@ -369,13 +282,8 @@ const Settings = ( props ) => {
 						setAttributes={ setAttributes }
 					/>
 					<AdvancedPopColorControl
-						label={ __(
-							'Background Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						colorValue={
-							icon_bg_hover_color ? icon_bg_hover_color : ''
-						}
+						label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ icon_bg_hover_color ? icon_bg_hover_color : '' }
 						data={ {
 							value: icon_bg_hover_color,
 							label: 'icon_bg_hover_color',
@@ -386,25 +294,16 @@ const Settings = ( props ) => {
 			);
 		}
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<UAGTabsControl
 					tabs={ [
 						{
 							name: 'normal',
-							title: __(
-								'Normal',
-								'ultimate-addons-for-gutenberg'
-							),
+							title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							name: 'hover',
-							title: __(
-								'Hover',
-								'ultimate-addons-for-gutenberg'
-							),
+							title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					normal={ colorControl }
@@ -417,16 +316,9 @@ const Settings = ( props ) => {
 	return (
 		<InspectorControls>
 			<InspectorTabs>
-				<InspectorTab { ...UAGTabs.general }>
-					{ generalSettings() }
-				</InspectorTab>
-				<InspectorTab { ...UAGTabs.style }>
-					{ iconColorSettings() }
-				</InspectorTab>
-				<InspectorTab
-					{ ...UAGTabs.advance }
-					parentProps={ props }
-				></InspectorTab>
+				<InspectorTab { ...UAGTabs.general }>{ generalSettings() }</InspectorTab>
+				<InspectorTab { ...UAGTabs.style }>{ iconColorSettings() }</InspectorTab>
+				<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 			</InspectorTabs>
 		</InspectorControls>
 	);

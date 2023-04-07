@@ -8,7 +8,6 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function testimonialStyle( props ) {
-
 	const blockName = props.name.replace( 'uagb/', '' );
 
 	const {
@@ -137,7 +136,14 @@ function testimonialStyle( props ) {
 		companyLetterSpacingTablet,
 		companyLetterSpacingMobile,
 		companyLetterSpacingType,
-		overlayType
+		overlayType,
+		gradientColor1,
+		gradientColor2,
+		gradientLocation1,
+		gradientLocation2,
+		gradientAngle,
+		selectGradient,
+		gradientType,
 	} = props.attributes;
 
 	const arrowSizeFallback = getFallbackNumber( arrowSize, 'arrowSize', blockName );
@@ -152,9 +158,9 @@ function testimonialStyle( props ) {
 	const columnGapTabletFallback = isNaN( columnGapTablet ) ? columnGapFallback : columnGapTablet;
 	const columnGapMobileFallback = isNaN( columnGapMobile ) ? columnGapTabletFallback : columnGapMobile;
 
-	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' )
-	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' )
-	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' )
+	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' );
+	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' );
+	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' );
 
 	let imgAlign = 'center';
 
@@ -175,10 +181,7 @@ function testimonialStyle( props ) {
 		' .uagb-testimonial__wrap .uagb-tm__image-content': {
 			'padding-top': generateCSSUnit( imgpaddingTop, imgpaddingUnit ),
 			'padding-right': generateCSSUnit( imgpaddingRight, imgpaddingUnit ),
-			'padding-bottom': generateCSSUnit(
-				imgpaddingBottom,
-				imgpaddingUnit
-			),
+			'padding-bottom': generateCSSUnit( imgpaddingBottom, imgpaddingUnit ),
 			'padding-left': generateCSSUnit( imgpaddingLeft, imgpaddingUnit ),
 		},
 		' .uagb-tm__image-position-top .uagb-tm__image-content': {
@@ -204,29 +207,20 @@ function testimonialStyle( props ) {
 			'font-style': nameFontStyle,
 			'text-decoration': nameDecoration,
 			'text-transform': nameTransform,
-			'line-height': generateCSSUnit(
-				nameLineHeight,
-				nameLineHeightType
-			),
+			'line-height': generateCSSUnit( nameLineHeight, nameLineHeightType ),
 			'color': authorColor,
 			'margin-bottom': generateCSSUnit( nameSpaceFallback, nameSpaceType ),
 			'letter-spacing': generateCSSUnit( nameLetterSpacing, nameLetterSpacingType ),
 		},
 		// Title Style
 		' .uagb-tm__company': {
-			'font-size': generateCSSUnit(
-				companyFontSize,
-				companyFontSizeType
-			),
+			'font-size': generateCSSUnit( companyFontSize, companyFontSizeType ),
 			'font-family': companyFontFamily,
 			'font-weight': companyFontWeight,
 			'font-style': companyFontStyle,
 			'text-decoration': companyDecoration,
 			'text-transform': companyTransform,
-			'line-height': generateCSSUnit(
-				companyLineHeight,
-				companyLineHeightType
-			),
+			'line-height': generateCSSUnit( companyLineHeight, companyLineHeightType ),
 			'color': companyColor,
 			'letter-spacing': generateCSSUnit( companyLetterSpacing, companyLetterSpacingType ),
 		},
@@ -238,10 +232,7 @@ function testimonialStyle( props ) {
 			'text-decoration': descDecoration,
 			'text-transform': descTransform,
 			'font-weight': descFontWeight,
-			'line-height': generateCSSUnit(
-				descLineHeight,
-				descLineHeightType
-			),
+			'line-height': generateCSSUnit( descLineHeight, descLineHeightType ),
 			'color': descColor,
 			'margin-bottom': generateCSSUnit( descSpaceFallback, descSpaceType ),
 			'letter-spacing': generateCSSUnit( descLetterSpacing, descLetterSpacingType ),
@@ -260,8 +251,7 @@ function testimonialStyle( props ) {
 		' .uagb-testimonial__wrap .uagb-tm__content': overallBorderCSS,
 		' .uagb-testimonial__wrap .uagb-tm__content:hover': {
 			'border-color': overallBorderHColor,
-		}
-
+		},
 	};
 
 	if ( testItemCountFallback === columnsFallback ) {
@@ -298,75 +288,33 @@ function testimonialStyle( props ) {
 		},
 		' .uagb-tm__desc': {
 			'margin-bottom': generateCSSUnit( descSpaceMobile, descSpaceType ),
-			'font-size': generateCSSUnit(
-				descFontSizeMobile,
-				descFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				descLineHeightMobile,
-				descLineHeightType
-			),
+			'font-size': generateCSSUnit( descFontSizeMobile, descFontSizeType ),
+			'line-height': generateCSSUnit( descLineHeightMobile, descLineHeightType ),
 			'letter-spacing': generateCSSUnit( descLetterSpacingMobile, descLetterSpacingType ),
 		},
 		' .uagb-testimonial__wrap .uagb-tm__content': overallBorderCSSMobile,
 		' .uagb-testimonial__wrap .uagb-tm__image-content': {
 			'text-align': headingAlignMobile,
-			'padding-top': generateCSSUnit(
-				imgpaddingTopMobile,
-				imgmobilePaddingUnit
-			),
-			'padding-right': generateCSSUnit(
-				imgpaddingRightMobile,
-				imgmobilePaddingUnit
-			),
-			'padding-bottom': generateCSSUnit(
-				imgpaddingBottomMobile,
-				imgmobilePaddingUnit
-			),
-			'padding-left': generateCSSUnit(
-				imgpaddingLeftMobile,
-				imgmobilePaddingUnit
-			),
+			'padding-top': generateCSSUnit( imgpaddingTopMobile, imgmobilePaddingUnit ),
+			'padding-right': generateCSSUnit( imgpaddingRightMobile, imgmobilePaddingUnit ),
+			'padding-bottom': generateCSSUnit( imgpaddingBottomMobile, imgmobilePaddingUnit ),
+			'padding-left': generateCSSUnit( imgpaddingLeftMobile, imgmobilePaddingUnit ),
 		},
 		' .uagb-tm__company': {
-			'font-size': generateCSSUnit(
-				companyFontSizeMobile,
-				companyFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				companyLineHeightMobile,
-				companyLineHeightType
-			),
+			'font-size': generateCSSUnit( companyFontSizeMobile, companyFontSizeType ),
+			'line-height': generateCSSUnit( companyLineHeightMobile, companyLineHeightType ),
 			'letter-spacing': generateCSSUnit( companyLetterSpacingMobile, companyLetterSpacingType ),
 		},
 		' .uagb-tm__author-name': {
-			'font-size': generateCSSUnit(
-				nameFontSizeMobile,
-				nameFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				nameLineHeightMobile,
-				nameLineHeightType
-			),
+			'font-size': generateCSSUnit( nameFontSizeMobile, nameFontSizeType ),
+			'line-height': generateCSSUnit( nameLineHeightMobile, nameLineHeightType ),
 		},
 		' .uagb-tm__content': {
 			'text-align': headingAlignMobile,
-			'padding-top': generateCSSUnit(
-				paddingTopMobile,
-				mobilePaddingUnit
-			),
-			'padding-bottom': generateCSSUnit(
-				paddingBottomMobile,
-				mobilePaddingUnit
-			),
-			'padding-left': generateCSSUnit(
-				paddingLeftMobile,
-				mobilePaddingUnit
-			),
-			'padding-right': generateCSSUnit(
-				paddingRightMobile,
-				mobilePaddingUnit
-			),
+			'padding-top': generateCSSUnit( paddingTopMobile, mobilePaddingUnit ),
+			'padding-bottom': generateCSSUnit( paddingBottomMobile, mobilePaddingUnit ),
+			'padding-left': generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
+			'padding-right': generateCSSUnit( paddingRightMobile, mobilePaddingUnit ),
 		},
 	};
 
@@ -387,107 +335,81 @@ function testimonialStyle( props ) {
 		' .uagb-testimonial__wrap .uagb-tm__content': overallBorderCSSTablet,
 		' .uagb-testimonial__wrap .uagb-tm__image-content': {
 			'text-align': headingAlignTablet,
-			'padding-top': generateCSSUnit(
-				imgpaddingTopTablet,
-				imgtabletPaddingUnit
-			),
-			'padding-right': generateCSSUnit(
-				imgpaddingRightTablet,
-				imgtabletPaddingUnit
-			),
-			'padding-bottom': generateCSSUnit(
-				imgpaddingBottomTablet,
-				imgtabletPaddingUnit
-			),
-			'padding-left': generateCSSUnit(
-				imgpaddingLeftTablet,
-				imgtabletPaddingUnit
-			),
+			'padding-top': generateCSSUnit( imgpaddingTopTablet, imgtabletPaddingUnit ),
+			'padding-right': generateCSSUnit( imgpaddingRightTablet, imgtabletPaddingUnit ),
+			'padding-bottom': generateCSSUnit( imgpaddingBottomTablet, imgtabletPaddingUnit ),
+			'padding-left': generateCSSUnit( imgpaddingLeftTablet, imgtabletPaddingUnit ),
 		},
 		' .uagb-tm__content': {
 			'text-align': headingAlignTablet,
-			'padding-top': generateCSSUnit(
-				paddingTopTablet,
-				tabletPaddingUnit
-			),
-			'padding-bottom': generateCSSUnit(
-				paddingBottomTablet,
-				tabletPaddingUnit
-			),
-			'padding-left': generateCSSUnit(
-				paddingLeftTablet,
-				tabletPaddingUnit
-			),
-			'padding-right': generateCSSUnit(
-				paddingRightTablet,
-				tabletPaddingUnit
-			),
+			'padding-top': generateCSSUnit( paddingTopTablet, tabletPaddingUnit ),
+			'padding-bottom': generateCSSUnit( paddingBottomTablet, tabletPaddingUnit ),
+			'padding-left': generateCSSUnit( paddingLeftTablet, tabletPaddingUnit ),
+			'padding-right': generateCSSUnit( paddingRightTablet, tabletPaddingUnit ),
 		},
 		' .uagb-tm__desc': {
 			'margin-bottom': generateCSSUnit( descSpaceTablet, descSpaceType ),
-			'font-size': generateCSSUnit(
-				descFontSizeTablet,
-				descFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				descLineHeightTablet,
-				descLineHeightType
-			),
+			'font-size': generateCSSUnit( descFontSizeTablet, descFontSizeType ),
+			'line-height': generateCSSUnit( descLineHeightTablet, descLineHeightType ),
 			'letter-spacing': generateCSSUnit( descLetterSpacingTablet, descLetterSpacingType ),
 		},
 		' .uagb-tm__company': {
-			'font-size': generateCSSUnit(
-				companyFontSizeTablet,
-				companyFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				companyLineHeightTablet,
-				companyLineHeightType
-			),
+			'font-size': generateCSSUnit( companyFontSizeTablet, companyFontSizeType ),
+			'line-height': generateCSSUnit( companyLineHeightTablet, companyLineHeightType ),
 			'letter-spacing': generateCSSUnit( companyLetterSpacingTablet, companyLetterSpacingType ),
 		},
 		' .uagb-tm__author-name': {
-			'font-size': generateCSSUnit(
-				nameFontSizeTablet,
-				nameFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				nameLineHeightTablet,
-				nameLineHeightType
-			),
+			'font-size': generateCSSUnit( nameFontSizeTablet, nameFontSizeType ),
+			'line-height': generateCSSUnit( nameLineHeightTablet, nameLineHeightType ),
 		},
 	};
 	if ( 'gradient' === backgroundType ) {
-		if ( gradientValue ) {
-			selectors[ ' .uagb-tm__content' ][
-				'background-image'
-			] = gradientValue;
+		let gradient;
+		switch ( selectGradient ) {
+			case 'basic':
+				gradient = gradientValue;
+				break;
+			case 'advanced':
+				switch ( gradientType ) {
+					case 'linear':
+						gradient = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+						break;
+					case 'radial':
+						gradient = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+						break;
+					default:
+						gradient = '';
+						break;
+				}
+				break;
+			default:
+				gradient = '';
+				break;
 		}
+
+		selectors[ ' .uagb-tm__content' ][ 'background-image' ] = gradient;
 	}
 
 	if ( 'image' === backgroundType ) {
-
 		if ( 'color' === overlayType ) {
 			selectors[ ' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay' ] = {
 				'background-color': backgroundImageColor,
 			};
-		} else if( 'gradient' === overlayType ) {
-			if( gradientValue ) {
+		} else if ( 'gradient' === overlayType ) {
+			if ( gradientValue ) {
 				selectors[ ' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay' ] = {
 					'background-image': gradientValue,
-				}
+				};
 			}
 		}
 	} else {
-		selectors[ ' .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content'] = {
+		selectors[ ' .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content' ] = {
 			'background-color': backgroundColor,
 		};
 	}
 
-	selectors[ ' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__content'] = {
-		'background-image': backgroundImage
-			? `url(${ backgroundImage.url })`
-			: null,
+	selectors[ ' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__content' ] = {
+		'background-image': backgroundImage ? `url(${ backgroundImage.url })` : null,
 		'background-position': position,
 		'background-repeat': backgroundRepeat,
 		'background-size': backgroundSize,
@@ -497,18 +419,8 @@ function testimonialStyle( props ) {
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
 	stylingCss = generateCSS( selectors, id );
-	stylingCss += generateCSS(
-		tabletSelectors,
-		`${ id }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
-	stylingCss += generateCSS(
-		mobileSelectors,
-		`${ id }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	stylingCss += generateCSS( mobileSelectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
 
 	return stylingCss;
 }

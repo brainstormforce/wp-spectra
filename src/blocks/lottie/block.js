@@ -24,12 +24,7 @@ registerBlockType( 'uagb/lottie', {
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
 	category: uagb_blocks_info.category,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="lottie" />
-			) : (
-				<Edit { ...props } />
-			),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="lottie" /> : <Edit { ...props } /> ),
 	// Render via PHP
-	save: ()=> null,
+	save: () => null,
 } );

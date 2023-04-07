@@ -16,16 +16,13 @@
 		.wp-block-uagb-counter__icon {
 			margin-bottom: 10px;
 		}
-
 	}
 
 	&--bars {
-
 		display: flex;
 		flex-direction: column;
 
 		.wp-block-uagb-counter-bars-container {
-
 			width: 100%;
 			background-color: #eaeaea;
 
@@ -125,7 +122,7 @@
 }
 
 .wp-block-uagb-counter__icon svg {
-	width: 30px;  // To reduce jerk while loading SVG (SVG appears oversized for a moment, without this).
+	width: 30px; // To reduce jerk while loading SVG (SVG appears oversized for a moment, without this).
 }
 
 .wp-block-uagb-counter__title {

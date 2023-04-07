@@ -15,15 +15,7 @@ const deprecated = [
 		save: ( props ) => {
 			const { attributes, className } = props;
 
-			const {
-				block_id,
-				align,
-				items,
-				socials,
-				social_count,
-				social_layout,
-				current_url,
-			} = props.attributes;
+			const { block_id, align, items, socials, social_count, social_layout, current_url } = props.attributes;
 
 			return (
 				<div
@@ -43,9 +35,7 @@ const deprecated = [
 							let url = '';
 
 							if ( null != current_url ) {
-								url =
-									links[ social.type ] +
-									encodeURI( current_url );
+								url = links[ social.type ] + encodeURI( current_url );
 							}
 
 							let image_icon_html = '';
@@ -53,39 +43,20 @@ const deprecated = [
 							if ( social.image_icon == 'icon' ) {
 								if ( social.icon ) {
 									image_icon_html = (
-										<span
-											className={ classnames(
-												social.icon,
-												'uagb-ss__source-icon'
-											) }
-										></span>
+										<span className={ classnames( social.icon, 'uagb-ss__source-icon' ) }></span>
 									);
 								}
 							} else if ( social.image ) {
-								image_icon_html = (
-									<img
-										className="uagb-ss__source-image"
-										src={ social.image.url }
-									/>
-								);
+								image_icon_html = <img className="uagb-ss__source-image" src={ social.image.url } />;
 							}
 
 							return (
 								<div
-									className={ classnames(
-										`uagb-ss-repeater-${ index }`,
-										'uagb-ss__wrapper'
-									) }
+									className={ classnames( `uagb-ss-repeater-${ index }`, 'uagb-ss__wrapper' ) }
 									key={ index }
 								>
-									<a
-										className="uagb-ss__link"
-										href={ url }
-										rel="noopener noreferrer"
-									>
-										<span className="uagb-ss__source-wrap">
-											{ image_icon_html }
-										</span>
+									<a className="uagb-ss__link" href={ url } rel="noopener noreferrer">
+										<span className="uagb-ss__source-wrap">{ image_icon_html }</span>
 									</a>
 								</div>
 							);
@@ -100,15 +71,7 @@ const deprecated = [
 		save: ( props ) => {
 			const { attributes, className } = props;
 
-			const {
-				block_id,
-				align,
-				items,
-				socials,
-				social_count,
-				social_layout,
-				current_url,
-			} = props.attributes;
+			const { block_id, align, items, socials, social_count, social_layout, current_url } = props.attributes;
 
 			return (
 				<div
@@ -136,36 +99,20 @@ const deprecated = [
 							if ( social.image_icon == 'icon' ) {
 								if ( social.icon ) {
 									image_icon_html = (
-										<span className="uagb-ss__source-icon">
-											{ renderSVG( social.icon ) }
-										</span>
+										<span className="uagb-ss__source-icon">{ renderSVG( social.icon ) }</span>
 									);
 								}
 							} else if ( social.image ) {
-								image_icon_html = (
-									<img
-										className="uagb-ss__source-image"
-										src={ social.image.url }
-									/>
-								);
+								image_icon_html = <img className="uagb-ss__source-image" src={ social.image.url } />;
 							}
 
 							return (
 								<div
-									className={ classnames(
-										`uagb-ss-repeater-${ index }`,
-										'uagb-ss__wrapper'
-									) }
+									className={ classnames( `uagb-ss-repeater-${ index }`, 'uagb-ss__wrapper' ) }
 									key={ index }
 								>
-									<a
-										className="uagb-ss__link"
-										data-href={ url }
-										rel="noopener noreferrer"
-									>
-										<span className="uagb-ss__source-wrap">
-											{ image_icon_html }
-										</span>
+									<a className="uagb-ss__link" data-href={ url } rel="noopener noreferrer">
+										<span className="uagb-ss__source-wrap">{ image_icon_html }</span>
 									</a>
 								</div>
 							);
@@ -180,15 +127,7 @@ const deprecated = [
 		save: ( props ) => {
 			const { attributes, className } = props;
 
-			const {
-				block_id,
-				align,
-				items,
-				socials,
-				social_count,
-				social_layout,
-				current_url,
-			} = props.attributes;
+			const { block_id, align, items, socials, social_count, social_layout, current_url } = props.attributes;
 
 			return (
 				<div
@@ -216,36 +155,20 @@ const deprecated = [
 							if ( social.image_icon == 'icon' ) {
 								if ( social.icon ) {
 									image_icon_html = (
-										<span className="uagb-ss__source-icon">
-											{ renderSVG( social.icon ) }
-										</span>
+										<span className="uagb-ss__source-icon">{ renderSVG( social.icon ) }</span>
 									);
 								}
 							} else if ( social.image ) {
-								image_icon_html = (
-									<img
-										className="uagb-ss__source-image"
-										src={ social.image.url }
-									/>
-								);
+								image_icon_html = <img className="uagb-ss__source-image" src={ social.image.url } />;
 							}
 
 							return (
 								<div
-									className={ classnames(
-										`uagb-ss-repeater-${ index }`,
-										'uagb-ss__wrapper'
-									) }
+									className={ classnames( `uagb-ss-repeater-${ index }`, 'uagb-ss__wrapper' ) }
 									key={ index }
 								>
-									<a
-										className="uagb-ss__link"
-										data-href={ url }
-										rel="noopener noreferrer"
-									>
-										<span className="uagb-ss__source-wrap">
-											{ image_icon_html }
-										</span>
+									<a className="uagb-ss__link" data-href={ url } rel="noopener noreferrer">
+										<span className="uagb-ss__source-wrap">{ image_icon_html }</span>
 									</a>
 								</div>
 							);

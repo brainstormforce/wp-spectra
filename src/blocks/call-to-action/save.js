@@ -12,45 +12,22 @@ import CTA from './components/CallToActionNew';
 import SecondCTAButton from './components/SecondCTAButton';
 
 export default function save( props ) {
-	const {
-		block_id,
-		ctaType,
-		ctaLink,
-		ctaTarget,
-		ctaTitle,
-		description,
-		enabledSecondCtaButton
-	} = props.attributes;
+	const { block_id, ctaType, ctaLink, ctaTarget, ctaTitle, description, enabledSecondCtaButton } = props.attributes;
 
-	const isCta = (
-		<CTA attributes={ props.attributes } setAttributes="not_set" />
-	);
+	const isCta = <CTA attributes={ props.attributes } setAttributes="not_set" />;
 
-	const secondCtaButton = ( 'button' === ctaType && enabledSecondCtaButton ) ? <SecondCTAButton attributes={ props.attributes } setAttributes="not_set" /> : '';
+	const secondCtaButton =
+		'button' === ctaType && enabledSecondCtaButton ? (
+			<SecondCTAButton attributes={ props.attributes } setAttributes="not_set" />
+		) : (
+			''
+		);
 
 	// Get description and seperator components.
-	const desc = (
-		<>
-			{ '' !== description && (
-				<Description
-					attributes={ props.attributes }
-					setAttributes="not_set"
-				/>
-			) }
-		</>
-	);
+	const desc = <>{ '' !== description && <Description attributes={ props.attributes } setAttributes="not_set" /> }</>;
 
 	// Get Title components.
-	const titleText = (
-		<>
-			{ '' !== ctaTitle && (
-				<Title
-					attributes={ props.attributes }
-					setAttributes="not_set"
-				/>
-			) }
-		</>
-	);
+	const titleText = <>{ '' !== ctaTitle && <Title attributes={ props.attributes } setAttributes="not_set" /> }</>;
 
 	const output = (
 		<>
@@ -58,9 +35,9 @@ export default function save( props ) {
 				{ titleText }
 				{ desc }
 			</div>
-			<div className='uagb-cta__buttons'>
-				{isCta}
-				{secondCtaButton}
+			<div className="uagb-cta__buttons">
+				{ isCta }
+				{ secondCtaButton }
 			</div>
 		</>
 	);
@@ -71,22 +48,17 @@ export default function save( props ) {
 	}
 
 	return (
-		<div
-			className={ classnames(
-				`uagb-block-${ block_id }`,
-				'button' === ctaType ? 'wp-block-button' : '',
-			) }
-		>
+		<div className={ classnames( `uagb-block-${ block_id }`, 'button' === ctaType ? 'wp-block-button' : '' ) }>
 			{ ctaType === 'all' && (
 				<>
-				<a
-					href={ ctaLink }
-					className="uagb-cta__link-to-all"
-					target={ target }
-					rel="noopener noreferrer"
-				>
-				</a>
-				{ output }
+					{ /* eslint-disable-next-line */ }
+					<a
+						href={ ctaLink }
+						className="uagb-cta__link-to-all"
+						target={ target }
+						rel="noopener noreferrer"
+					></a>
+					{ output }
 				</>
 			) }
 			{ ctaType !== 'all' && output }

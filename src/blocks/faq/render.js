@@ -4,7 +4,7 @@
 
 import classnames from 'classnames';
 import { InnerBlocks } from '@wordpress/block-editor';
-import { useLayoutEffect, memo ,useMemo} from '@wordpress/element';
+import { useLayoutEffect, memo, useMemo } from '@wordpress/element';
 
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';

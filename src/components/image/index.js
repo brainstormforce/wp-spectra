@@ -1,4 +1,4 @@
-import { useEffect, useState,useRef } from '@wordpress/element';
+import { useEffect, useState, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { BaseControl } from '@wordpress/components';
 import { MediaUpload } from '@wordpress/block-editor';
@@ -12,7 +12,7 @@ import UAGHelpText from '@Components/help-text';
 import { applyFilters } from '@wordpress/hooks';
 
 const UAGMediaPicker = ( props ) => {
-	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const [ panelNameForHook, setPanelNameForHook ] = useState( null );
 	const panelRef = useRef( null );
 
 	const selectedBlock = useSelect( ( select ) => {
@@ -23,8 +23,8 @@ const UAGMediaPicker = ( props ) => {
 	const blockNameForHook = selectedBlock?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 
 	useEffect( () => {
-		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
-	}, [blockNameForHook] )
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) );
+	}, [ blockNameForHook ] );
 
 	const [ isOpen, setOpen ] = useState( false );
 
@@ -38,7 +38,7 @@ const UAGMediaPicker = ( props ) => {
 		disableRemove = false,
 		allow = [ 'image' ],
 		disableDynamicContent = false,
-		help = false
+		help = false,
 	} = props;
 
 	// This is used to render an icon in place of the background image when needed.
@@ -49,61 +49,41 @@ const UAGMediaPicker = ( props ) => {
 
 	switch ( slug ) {
 		case 'video':
-			selectMediaLabel = __(
-				'Select Video',
-				'ultimate-addons-for-gutenberg'
-			);
-			replaceMediaLabel = __(
-				'Change Video',
-				'ultimate-addons-for-gutenberg'
-			);
+			selectMediaLabel = __( 'Select Video', 'ultimate-addons-for-gutenberg' );
+			replaceMediaLabel = __( 'Change Video', 'ultimate-addons-for-gutenberg' );
 			placeholderIcon = UAGB_Block_Icons.video_placeholder;
 			break;
 		case 'lottie':
-			selectMediaLabel = __(
-				'Select Lottie Animation',
-				'ultimate-addons-for-gutenberg'
-			);
-			replaceMediaLabel = __(
-				'Change Lottie Animation',
-				'ultimate-addons-for-gutenberg'
-			);
+			selectMediaLabel = __( 'Select Lottie Animation', 'ultimate-addons-for-gutenberg' );
+			replaceMediaLabel = __( 'Change Lottie Animation', 'ultimate-addons-for-gutenberg' );
 			placeholderIcon = UAGB_Block_Icons.lottie;
 			break;
 		case 'svg':
-			selectMediaLabel = __(
-				'Upload SVG',
-				'ultimate-addons-for-gutenberg'
-			);
-			replaceMediaLabel = __(
-				'Change SVG',
-				'ultimate-addons-for-gutenberg'
-			);
+			selectMediaLabel = __( 'Upload SVG', 'ultimate-addons-for-gutenberg' );
+			replaceMediaLabel = __( 'Change SVG', 'ultimate-addons-for-gutenberg' );
 			break;
 		default:
-			selectMediaLabel = __(
-				'Select Image',
-				'ultimate-addons-for-gutenberg'
-			);
-			replaceMediaLabel = __(
-				'Change Image',
-				'ultimate-addons-for-gutenberg'
-			);
+			selectMediaLabel = __( 'Select Image', 'ultimate-addons-for-gutenberg' );
+			replaceMediaLabel = __( 'Change Image', 'ultimate-addons-for-gutenberg' );
 	}
 
-	const registerImageExtender = disableDynamicContent ? null : applyFilters( 'uagb.registerImageExtender', '', selectedBlock?.name, onSelectImage )
-	const registerImageLinkExtender = disableDynamicContent ? null : applyFilters( 'uagb.registerImageLinkExtender', '', selectedBlock?.name, 'bgImageLink', 'url' )
+	const registerImageExtender = disableDynamicContent
+		? null
+		: applyFilters( 'uagb.registerImageExtender', '', selectedBlock?.name, onSelectImage );
+	const registerImageLinkExtender = disableDynamicContent
+		? null
+		: applyFilters( 'uagb.registerImageLinkExtender', '', selectedBlock?.name, 'bgImageLink', 'url' );
 
 	const isShowImageUploader = () => {
-		if( disableDynamicContent ){
+		if ( disableDynamicContent ) {
 			return true;
 		}
-		const dynamicContent = selectedBlock?.attributes?.dynamicContent
-		if( dynamicContent && dynamicContent?.bgImage?.enable === true ) {
-			return false
+		const dynamicContent = selectedBlock?.attributes?.dynamicContent;
+		if ( dynamicContent && dynamicContent?.bgImage?.enable === true ) {
+			return false;
 		}
 		return true;
-	}
+	};
 
 	const onConfirm = ( open ) => {
 		const formData = new window.FormData();
@@ -116,62 +96,58 @@ const UAGMediaPicker = ( props ) => {
 			method: 'POST',
 			body: formData,
 		} ).then( ( response ) => {
-			if( response.success ) {
+			if ( response.success ) {
 				uagLocalStorage.setItem( 'uagSvgConfirmation', JSON.stringify( 'yes' ) );
 				open();
 			}
 		} );
-	}
+	};
 
 	const OpenMediaUploader = ( open ) => {
 		const svgConfirmation = getUAGEditorStateLocalStorage( 'uagSvgConfirmation' );
-		if( slug !== 'svg' || svgConfirmation === 'yes' ){
+		if ( slug !== 'svg' || svgConfirmation === 'yes' ) {
 			open();
 			return;
 		}
 
-		setOpen( true )
-	}
+		setOpen( true );
+	};
 
 	const renderMediaUploader = ( open ) => {
 		const uploadType = backgroundImage?.url ? 'replace' : 'add';
-		return(
+		return (
 			<>
-				{ 'add' === uploadType  && (
+				{ 'add' === uploadType && (
 					<button
 						className={ `spectra-media-control__clickable spectra-media-control__clickable--${ uploadType }` }
-						onClick={() => ( OpenMediaUploader( open ) ) }
+						onClick={ () => OpenMediaUploader( open ) }
 					>
-						{
-							renderButton( uploadType )
-						}
+						{ renderButton( uploadType ) }
 					</button>
-				)}
-				<div className='spectra-media-control__footer'>
-					<button
-						className="uag-control-label"
-						onClick={() => ( OpenMediaUploader( open ) ) }
-					>
+				) }
+				<div className="spectra-media-control__footer">
+					<button className="uag-control-label" onClick={ () => OpenMediaUploader( open ) }>
 						{ replaceMediaLabel }
 					</button>
-					{
-						registerImageExtender
-					}
+					{ registerImageExtender }
 				</div>
 				{ slug === 'svg' && (
 					<UAGConfirmPopup
-						isOpen = { isOpen }
-						setOpen = { setOpen }
-						onConfirm = { onConfirm }
-						title = { __( 'Upload SVG?', 'ultimate-addons-for-gutenberg' ) }
-						description = { __( 'Upload SVG can be potentially risky. Are you sure?', 'ultimate-addons-for-gutenberg' ) }
-						confirmLabel = { __( 'Upload Anyway', 'ultimate-addons-for-gutenberg' )}
-						cancelLabel = { __( 'Cancel', 'ultimate-addons-for-gutenberg' )}
-						executable = { open }
+						isOpen={ isOpen }
+						setOpen={ setOpen }
+						onConfirm={ onConfirm }
+						title={ __( 'Upload SVG?', 'ultimate-addons-for-gutenberg' ) }
+						description={ __(
+							'Upload SVG can be potentially risky. Are you sure?',
+							'ultimate-addons-for-gutenberg'
+						) }
+						confirmLabel={ __( 'Upload Anyway', 'ultimate-addons-for-gutenberg' ) }
+						cancelLabel={ __( 'Cancel', 'ultimate-addons-for-gutenberg' ) }
+						executable={ open }
 					/>
-				)}
+				) }
 			</>
-		)
+		);
 	};
 
 	const renderButton = ( buttonType ) => (
@@ -184,7 +160,7 @@ const UAGMediaPicker = ( props ) => {
 	const generateBackground = ( media ) => {
 		const regex = /(?:\.([^.]+))?$/;
 		let mediaURL = media;
-		switch ( regex.exec( String( mediaURL ) )[1] ){
+		switch ( regex.exec( String( mediaURL ) )[ 1 ] ) {
 			// For Lottie JSON Files.
 			case 'json':
 				mediaURL = '';
@@ -204,75 +180,76 @@ const UAGMediaPicker = ( props ) => {
 				break;
 		}
 		return mediaURL;
-	}
+	};
 
 	const controlName = getIdFromString( props?.label );
-	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }.before`,
+		'',
+		blockNameForHook
+	);
+	const controlAfterDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }`,
+		'',
+		blockNameForHook
+	);
 
 	return (
-		<div
-			ref={panelRef}
-			className="components-base-control"
-		>
-			{
-				controlBeforeDomElement
-			}
+		<div ref={ panelRef } className="components-base-control">
+			{ controlBeforeDomElement }
 			<BaseControl
 				className="spectra-media-control"
 				id={ `uagb-option-selector-${ slug }` }
 				label={ label }
 				hideLabelFromVision={ disableLabel }
 			>
-				{
-					isShowImageUploader() ? (
-						<>
-							<div
-								className="spectra-media-control__wrapper"
-								style={ {
-									backgroundImage: ( ! placeholderIcon && backgroundImage?.url && ! backgroundImage?.svg ) && (
-										`url("${ generateBackground( backgroundImage?.url ) }")`
-									),
-								} }
-							>
-								{ ( placeholderIcon && backgroundImage?.url ) && (
-									<div className="spectra-media-control__icon spectra-media-control__icon--stroke">
-										{ placeholderIcon }
-									</div>
-								) }
-								{ ( backgroundImage?.svg ) && (
-									<div className="spectra-media-control__icon spectra-media-control__icon--stroke" dangerouslySetInnerHTML={ { __html:backgroundImage.svg } }>
-									</div>
-								) }
-								<MediaUpload
-									title={ selectMediaLabel }
-									onSelect={ onSelectImage }
-									allowedTypes={ allow }
-									value={ backgroundImage }
-									render={ ( { open } ) => renderMediaUploader( open ) }
-								/>
-								{ ( ! disableRemove && backgroundImage?.url ) && (
-									<button
-										className='spectra-media-control__clickable spectra-media-control__clickable--close'
-										onClick={ onRemoveImage }
-									>
-										{ renderButton( 'close' ) }
-									</button>
-								) }
-							</div>
-							<UAGHelpText text={ help } />
-						</>
-					) : (
-						registerImageExtender
-					)
-				}
+				{ isShowImageUploader() ? (
+					<>
+						<div
+							className="spectra-media-control__wrapper"
+							style={ {
+								backgroundImage:
+									! placeholderIcon &&
+									backgroundImage?.url &&
+									! backgroundImage?.svg &&
+									`url("${ generateBackground( backgroundImage?.url ) }")`,
+							} }
+						>
+							{ placeholderIcon && backgroundImage?.url && (
+								<div className="spectra-media-control__icon spectra-media-control__icon--stroke">
+									{ placeholderIcon }
+								</div>
+							) }
+							{ backgroundImage?.svg && (
+								<div
+									className="spectra-media-control__icon spectra-media-control__icon--stroke"
+									dangerouslySetInnerHTML={ { __html: backgroundImage.svg } }
+								></div>
+							) }
+							<MediaUpload
+								title={ selectMediaLabel }
+								onSelect={ onSelectImage }
+								allowedTypes={ allow }
+								value={ backgroundImage }
+								render={ ( { open } ) => renderMediaUploader( open ) }
+							/>
+							{ ! disableRemove && backgroundImage?.url && (
+								<button
+									className="spectra-media-control__clickable spectra-media-control__clickable--close"
+									onClick={ onRemoveImage }
+								>
+									{ renderButton( 'close' ) }
+								</button>
+							) }
+						</div>
+						<UAGHelpText text={ help } />
+					</>
+				) : (
+					registerImageExtender
+				) }
 			</BaseControl>
-			{
-				registerImageLinkExtender
-			}
-			{
-				controlAfterDomElement
-			}
+			{ registerImageLinkExtender }
+			{ controlAfterDomElement }
 		</div>
 	);
 };

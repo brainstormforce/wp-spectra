@@ -34,14 +34,9 @@ registerBlockType( 'uagb/container', {
 		anchor: true,
 	},
 	attributes,
-category: uagb_blocks_info.category,
+	category: uagb_blocks_info.category,
 	variations,
-	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="container" />
-		) : (
-			<Edit { ...props } />
-		),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="container" /> : <Edit { ...props } /> ),
 	save,
 	transforms,
 } );

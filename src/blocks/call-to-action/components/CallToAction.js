@@ -3,9 +3,7 @@ import classnames from 'classnames';
 const CallToAction = ( props ) => {
 	const { attributes, setAttributes } = props;
 
-	const ctaBtnClass =
-		'uagb-cta__block-link uagb-cta__button-link-wrapper uagb-cta-typeof-' +
-		attributes.ctaType;
+	const ctaBtnClass = 'uagb-cta__block-link uagb-cta__button-link-wrapper uagb-cta-typeof-' + attributes.ctaType;
 
 	let target = '_self';
 	const rel = 'noopener noreferrer';
@@ -33,22 +31,14 @@ const CallToAction = ( props ) => {
 	}
 	return (
 		<div className="uagb-cta__link-wrapper uagb-cta__block-link-style">
-			{ ( attributes.ctaType === 'button' ||
-				attributes.ctaType === 'text' ) && (
+			{ ( attributes.ctaType === 'button' || attributes.ctaType === 'text' ) && (
 				<div className="uagb-cta__button-wrapper">
-					<a
-						href={ link }
-						className={ ctaBtnClass }
-						target={ target }
-						rel={ rel }
-					>
-						{ attributes.ctaIconPosition === 'before' &&
-							ctaIconOutput }
+					<a href={ link } className={ ctaBtnClass } target={ target } rel={ rel }>
+						{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
 						<span className="uagb-cta__link-content-inner">
 							<span>{ attributes.ctaText }</span>
 						</span>
-						{ attributes.ctaIconPosition === 'after' &&
-							ctaIconOutput }
+						{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 					</a>
 				</div>
 			) }

@@ -18,17 +18,16 @@ faqChildCommonData = applyFilters( 'uagb/faq-child', addCommonDataToSpectraBlock
 registerBlockType( 'uagb/faq-child', {
 	...faqChildCommonData,
 	title: __( 'FAQ Child', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'Add a frequently asked question/accordion to display information.', 'ultimate-addons-for-gutenberg' ),
+	description: __(
+		'Add a frequently asked question/accordion to display information.',
+		'ultimate-addons-for-gutenberg'
+	),
 	icon: UAGB_Block_Icons.faq_child,
 	parent: [ 'uagb/faq' ],
 	attributes,
-category: uagb_blocks_info.category,
+	category: uagb_blocks_info.category,
 	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="faq-child" isChildren={ true } />
-		) : (
-			<Edit { ...props } />
-		),
+		props.attributes.isPreview ? <PreviewImage image="faq-child" isChildren={ true } /> : <Edit { ...props } />,
 	supports: {
 		anchor: true,
 	},

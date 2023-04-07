@@ -42,8 +42,10 @@ const Render = ( props ) => {
 		},
 	} = props;
 
-	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + deviceType ] ? attributes['timelinAlignment' + deviceType ] : attributes.timelinAlignment;
-
+	const timelinAlignment =
+		'undefined' !== typeof attributes[ 'timelinAlignment' + deviceType ]
+			? attributes[ 'timelinAlignment' + deviceType ]
+			: attributes.timelinAlignment;
 
 	const splitBlock = ( before, after, ...blocks ) => {
 		if ( after ) {
@@ -79,83 +81,64 @@ const Render = ( props ) => {
 				'wp-block-uagb-content-timeline-child uagb-timeline__field',
 				`uagb-timeline-child-${ block_id }`,
 				props.attributes.content_class
-			)}
+			) }
 		>
-				<div className="uagb-timeline__marker uagb-timeline__out-view-icon">
-						{ renderSVG( icon, setAttributes ) ? renderSVG( icon, setAttributes ) : <svg xmlns="" viewBox="0 0 256 512"></svg> }
-				</div>
-				<div className={ classnames( props.attributes.dayalign_class, 'uagb-timeline__events-inner-new' ) } >
-					<div className='uagb-timeline__events-inner--content'>
-							{ displayPostDate !== true && t_date && (
-								<div
-									className={
-										'uagb-timeline__date-hide uagb-timeline__inner-date-new'
-									}
-								>
-									{ ( 'custom' !== dateFormat &&
-										format( dateFormat, postDate ) ) ||
-										postDate }
-								</div>
-							) }
-								<RichText
-									tagName={ headingTag }
-									value={ time_heading }
-									onChange={ ( value ) =>
-										setAttributes( { time_heading: value } )
-									}
-									placeholder={ __(
-										'Write a Heading',
-										'ultimate-addons-for-gutenberg'
-									) }
-									className="uagb-timeline__heading"
-									onMerge={ mergeBlocks }
-									onSplit={
-										insertBlocksAfter
-											? ( before, after, ...blocks ) => {
-													setAttributes( {
-														content: before,
-													} );
-													insertBlocksAfter( [
-														...blocks,
-														createBlock(
-															'core/paragraph',
-															{ content: after }
-														),
-													] );
-											  }
-											: undefined
-									}
-									onRemove={ () => onReplace( [] ) }
-								/>
-							<RichText
-								tagName="p"
-								value={ time_desc }
-								onChange={ ( value ) =>
-									setAttributes( { time_desc: value } )
-								}
-								placeholder={ __(
-									'Write a Description',
-									'ultimate-addons-for-gutenberg'
-								) }
-								className="uagb-timeline-desc-content"
-								onMerge={ mergeBlocks }
-								onSplit={ splitBlock }
-								onRemove={ () => onReplace( [] ) }
-							/>
-							<div className="uagb-timeline__arrow"></div>
-					</div>
-				</div>
-				{ displayInnerDate && (
-					<div className="uagb-timeline__date-new">
-						{ displayPostDate !== true && t_date && (
-							<>
-								{ ( 'custom' !== dateFormat &&
-									format( dateFormat, postDate ) ) ||
-									postDate }
-							</>
-						) }
-					</div>
+			<div className="uagb-timeline__marker uagb-timeline__out-view-icon">
+				{ renderSVG( icon, setAttributes ) ? (
+					renderSVG( icon, setAttributes )
+				) : (
+					<svg xmlns="" viewBox="0 0 256 512"></svg>
 				) }
+			</div>
+			<div className={ classnames( props.attributes.dayalign_class, 'uagb-timeline__events-inner-new' ) }>
+				<div className="uagb-timeline__events-inner--content">
+					{ displayPostDate !== true && t_date && (
+						<div className={ 'uagb-timeline__date-hide uagb-timeline__inner-date-new' }>
+							{ ( 'custom' !== dateFormat && format( dateFormat, postDate ) ) || postDate }
+						</div>
+					) }
+					<RichText
+						tagName={ headingTag }
+						value={ time_heading }
+						onChange={ ( value ) => setAttributes( { time_heading: value } ) }
+						placeholder={ __( 'Write a Heading', 'ultimate-addons-for-gutenberg' ) }
+						className="uagb-timeline__heading"
+						onMerge={ mergeBlocks }
+						onSplit={
+							insertBlocksAfter
+								? ( before, after, ...blocks ) => {
+										setAttributes( {
+											content: before,
+										} );
+										insertBlocksAfter( [
+											...blocks,
+											createBlock( 'core/paragraph', { content: after } ),
+										] );
+								  }
+								: undefined
+						}
+						onRemove={ () => onReplace( [] ) }
+					/>
+					<RichText
+						tagName="p"
+						value={ time_desc }
+						onChange={ ( value ) => setAttributes( { time_desc: value } ) }
+						placeholder={ __( 'Write a Description', 'ultimate-addons-for-gutenberg' ) }
+						className="uagb-timeline-desc-content"
+						onMerge={ mergeBlocks }
+						onSplit={ splitBlock }
+						onRemove={ () => onReplace( [] ) }
+					/>
+					<div className="uagb-timeline__arrow"></div>
+				</div>
+			</div>
+			{ displayInnerDate && (
+				<div className="uagb-timeline__date-new">
+					{ displayPostDate !== true && t_date && (
+						<>{ ( 'custom' !== dateFormat && format( dateFormat, postDate ) ) || postDate }</>
+					) }
+				</div>
+			) }
 		</article>
 	);
 };

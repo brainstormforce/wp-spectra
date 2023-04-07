@@ -35,17 +35,7 @@ function hexToRgba( color, opacity ) {
 		: null;
 
 	if ( parsed_color ) {
-		return (
-			'rgba(' +
-			parsed_color.r +
-			',' +
-			parsed_color.g +
-			',' +
-			parsed_color.b +
-			',' +
-			opacity +
-			')'
-		);
+		return 'rgba(' + parsed_color.r + ',' + parsed_color.g + ',' + parsed_color.b + ',' + opacity + ')';
 	}
 
 	return '';

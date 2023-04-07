@@ -28,10 +28,7 @@ const Render = ( props ) => {
 		const childTimeline = [];
 
 		for ( let i = 0; i < timelineItem; i++ ) {
-			childTimeline.push( [
-				'uagb/content-timeline-child',
-				tm_content[ i ],
-			] );
+			childTimeline.push( [ 'uagb/content-timeline-child', tm_content[ i ] ] );
 		}
 
 		return childTimeline;

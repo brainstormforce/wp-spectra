@@ -17,7 +17,10 @@ import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 let CF7CommonData = {};
 CF7CommonData = applyFilters( 'cf7-styler', addCommonDataToSpectraBlocks( CF7CommonData ) );
-if ( uagb_blocks_info.cf7_is_active && ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) ) {
+if (
+	uagb_blocks_info.cf7_is_active &&
+	( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks )
+) {
 	registerBlockType( 'uagb/cf7-styler', {
 		...CF7CommonData,
 		title: __( 'Contact Form 7 Designer', 'ultimate-addons-for-gutenberg' ), // Block title.
@@ -32,11 +35,7 @@ if ( uagb_blocks_info.cf7_is_active && ( 'yes' === uagb_blocks_info.uagb_old_use
 			anchor: true,
 		},
 		edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="contact-form-7-styler" />
-		) : (
-			<Edit { ...props } />
-		),
+			props.attributes.isPreview ? <PreviewImage image="contact-form-7-styler" /> : <Edit { ...props } />,
 		save: () => null,
 	} );
 }

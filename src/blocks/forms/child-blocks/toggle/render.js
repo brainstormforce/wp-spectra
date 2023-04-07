@@ -18,35 +18,18 @@ const Render = ( props ) => {
 
 	const { attributes, setAttributes } = props;
 
-	const {
-		block_id,
-		toggleRequired,
-		name,
-		toggleStatus,
-		layout,
-		trueValue,
-		falseValue,
-	} = attributes;
+	const { block_id, toggleRequired, name, toggleStatus, layout, trueValue, falseValue } = attributes;
 
-	const isRequired = toggleRequired
-		? __( 'required', 'ultimate-addons-for-gutenberg' )
-		: '';
+	const isRequired = toggleRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
 
 	return (
 		<>
 			<div
-				className={ classnames(
-					'uagb-forms-toggle-wrap',
-					'uagb-forms-field-set',
-					`uagb-block-${ block_id }`
-				) }
+				className={ classnames( 'uagb-forms-toggle-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }
 			>
 				<RichText
 					tagName="div"
-					placeholder={ __(
-						'Name',
-						'ultimate-addons-for-gutenberg'
-					) }
+					placeholder={ __( 'Name', 'ultimate-addons-for-gutenberg' ) }
 					value={ name }
 					onChange={ ( value ) => setAttributes( { name: value } ) }
 					className={ `uagb-forms-toggle-label ${ isRequired } uagb-forms-input-label` }

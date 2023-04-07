@@ -13,12 +13,11 @@ import Settings from './settings';
 import Render from './render';
 
 const UAGBIcon = ( props ) => {
-
 	const deviceType = useDeviceType();
 	const {
 		clientId,
 		attributes,
-		attributes:{ UAGHideDesktop, UAGHideTab, UAGHideMob },
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		isSelected,
 	} = props;
 	const blockId = clientId.substr( 0, 8 );
@@ -32,9 +31,9 @@ const UAGBIcon = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-			// Replacement for componentDidUpdate.
-			const blockStyling = styling( props );
-			addBlockEditorDynamicStyles( 'uagb-style-icon-' + blockId, blockStyling );
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+		addBlockEditorDynamicStyles( 'uagb-style-icon-' + blockId, blockStyling );
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
@@ -44,7 +43,6 @@ const UAGBIcon = ( props ) => {
 	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
-
 
 	return (
 		<>

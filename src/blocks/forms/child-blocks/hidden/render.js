@@ -8,9 +8,7 @@ const Render = ( props ) => {
 
 	const { block_id, hidden_field_name, hidden_field_value } = attributes;
 
-	const hidden_field_label = hidden_field_name
-		.replace( /\s+/g, '-' )
-		.toLowerCase();
+	const hidden_field_label = hidden_field_name.replace( /\s+/g, '-' ).toLowerCase();
 
 	const changeHiddenName = ( value ) => {
 		const { setAttributes } = props;
@@ -19,12 +17,7 @@ const Render = ( props ) => {
 
 	return (
 		<>
-			<div
-				className={ classnames(
-					'uagb-forms-hidden-wrap',
-					`uagb-block-${ block_id }`
-				) }
-			>
+			<div className={ classnames( 'uagb-forms-hidden-wrap', `uagb-block-${ block_id }` ) }>
 				{ /* Edit View */ }
 				{ props.isSelected && (
 					<input
@@ -44,7 +37,7 @@ const Render = ( props ) => {
 							{ hidden_field_name }
 						</label>
 						<input
-						    id={ hidden_field_label }
+							id={ hidden_field_label }
 							type="hidden"
 							className="uagb-forms-hidden-input"
 							value={ hidden_field_value }

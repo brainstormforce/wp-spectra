@@ -26,33 +26,30 @@ export default function save( props ) {
 	} = attributes;
 
 	const btnText = () => {
-		if( ! removeText ){
-			return <RichText.Content
-						value={ label.replace( /(<([^>]+)>)/ig, '' ) }
-						tagName="div"
-						className="uagb-button__link"
-					/>
+		if ( ! removeText ) {
+			return (
+				<RichText.Content
+					value={ label.replace( /(<([^>]+)>)/gi, '' ) }
+					tagName="div"
+					className="uagb-button__link"
+				/>
+			);
 		}
-			return '';
-
-	}
+		return '';
+	};
 	const iconHtml = ( curr_position ) => {
 		if ( showIcon && '' !== icon && curr_position === iconPosition ) {
 			return (
-				<span
-					className={ classnames(
-						'uagb-button__icon',
-						`uagb-button__icon-position-${ iconPosition }`
-					) }
-				>
+				<span className={ classnames( 'uagb-button__icon', `uagb-button__icon-position-${ iconPosition }` ) }>
 					{ renderSVG( icon ) }
 				</span>
 			);
 		}
 		return null;
 	};
-	const openNewWindow = opensInNewTab ? '_blank' : '_self' ;
-	const hasBackground = background !== '' || backgroundType === 'transparent' ||  'gradient' === backgroundType ? 'has-background' : '';
+	const openNewWindow = opensInNewTab ? '_blank' : '_self';
+	const hasBackground =
+		background !== '' || backgroundType === 'transparent' || 'gradient' === backgroundType ? 'has-background' : '';
 
 	return (
 		<div
@@ -61,7 +58,7 @@ export default function save( props ) {
 				'uagb-buttons__outer-wrap',
 				`uagb-block-${ block_id }`,
 				'wp-block-button',
-				btnBorderStyle !== 'none' && btnBorderStyle !== 'default' ? 'is-style-outline' : '',
+				btnBorderStyle !== 'none' && btnBorderStyle !== 'default' ? 'is-style-outline' : ''
 			) }
 		>
 			<div className="uagb-button__wrapper">
@@ -70,10 +67,10 @@ export default function save( props ) {
 						'uagb-buttons-repeater',
 						'wp-block-button__link',
 						hasBackground,
-						color !== '' ? 'has-text-color' : '',
+						color !== '' ? 'has-text-color' : ''
 					) }
 					href={ link }
-					rel= { noFollow ? 'nofollow noopener' : 'follow noopener' }
+					rel={ noFollow ? 'nofollow noopener' : 'follow noopener' }
 					target={ openNewWindow }
 				>
 					{ iconHtml( 'before' ) }

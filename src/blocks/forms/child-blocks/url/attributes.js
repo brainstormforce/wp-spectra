@@ -26,6 +26,6 @@ const attributes = {
 	autocomplete: {
 		type: 'string',
 		default: 'url',
-	}
+	},
 };
 export default attributes;

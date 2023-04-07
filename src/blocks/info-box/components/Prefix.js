@@ -5,13 +5,7 @@ import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 
 const Prefix = ( props ) => {
-	const {
-		attributes,
-		setAttributes,
-		mergeBlocks,
-		insertBlocksAfter,
-		onReplace,
-	} = props;
+	const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace } = props;
 
 	if ( setAttributes !== 'not_set' ) {
 		return (
@@ -42,13 +36,7 @@ const Prefix = ( props ) => {
 			/>
 		);
 	}
-	return (
-		<RichText.Content
-			tagName="span"
-			value={ attributes.prefixTitle }
-			className="uagb-ifb-title-prefix"
-		/>
-	);
+	return <RichText.Content tagName="span" value={ attributes.prefixTitle } className="uagb-ifb-title-prefix" />;
 };
 
 export default Prefix;

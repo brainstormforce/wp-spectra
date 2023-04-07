@@ -40,146 +40,83 @@ const SchemaNotices = ( props ) => {
 	switch ( itemType ) {
 		case 'Product':
 			if ( 'undefined' === typeof sku || '' === sku ) {
-				msg = __(
-					'Missing merchant-specific identifier for product ( SKU )',
-					'ultimate-addons-for-gutenberg'
-				);
+				msg = __( 'Missing merchant-specific identifier for product ( SKU )', 'ultimate-addons-for-gutenberg' );
 				emptyItems.push( msg );
 			}
 			if ( 'undefined' === typeof brand || '' === brand ) {
-				msg = __(
-					'Missing brand of the product',
-					'ultimate-addons-for-gutenberg'
-				);
+				msg = __( 'Missing brand of the product', 'ultimate-addons-for-gutenberg' );
 				emptyItems.push( msg );
 			}
 			if ( 'undefined' === typeof offerType || '' === offerType ) {
-				msg = __(
-					'Missing offer Type',
-					'ultimate-addons-for-gutenberg'
-				);
+				msg = __( 'Missing offer Type', 'ultimate-addons-for-gutenberg' );
 				emptyItems.push( msg );
 			}
-			if (
-				'undefined' === typeof offerCurrency ||
-				'' === offerCurrency
-			) {
-				msg = __(
-					'Missing offer currency of a product',
-					'ultimate-addons-for-gutenberg'
-				);
+			if ( 'undefined' === typeof offerCurrency || '' === offerCurrency ) {
+				msg = __( 'Missing offer currency of a product', 'ultimate-addons-for-gutenberg' );
 				emptyItems.push( msg );
 			}
 			if ( 'undefined' === typeof offerPrice || '' === offerPrice ) {
-				msg = __(
-					'Missing offer price of a product',
-					'ultimate-addons-for-gutenberg'
-				);
+				msg = __( 'Missing offer price of a product', 'ultimate-addons-for-gutenberg' );
 				emptyItems.push( msg );
 			}
 			if ( 'undefined' === typeof offerExpiry || '' === offerExpiry ) {
-				msg = __(
-					'Missing offer expiry of a product',
-					'ultimate-addons-for-gutenberg'
-				);
+				msg = __( 'Missing offer expiry of a product', 'ultimate-addons-for-gutenberg' );
 				emptyItems.push( msg );
 			}
 			if ( 'undefined' === typeof identifier || '' === identifier ) {
-				msg = __(
-					'Missing global identifiers',
-					'ultimate-addons-for-gutenberg'
-				);
+				msg = __( 'Missing global identifiers', 'ultimate-addons-for-gutenberg' );
 				emptyItems.push( msg );
 			}
 			break;
 
 		case 'Book':
 			if ( 'undefined' === typeof isbn || '' === isbn ) {
-				msg = __(
-					'Missing ISBN number of a book',
-					'ultimate-addons-for-gutenberg'
-				);
+				msg = __( 'Missing ISBN number of a book', 'ultimate-addons-for-gutenberg' );
 				emptyItems.push( msg );
 			}
-			if (
-				'undefined' === typeof bookAuthorName ||
-				'' === bookAuthorName
-			) {
-				msg = __(
-					'Missing author of the book',
-					'ultimate-addons-for-gutenberg'
-				);
+			if ( 'undefined' === typeof bookAuthorName || '' === bookAuthorName ) {
+				msg = __( 'Missing author of the book', 'ultimate-addons-for-gutenberg' );
 				emptyItems.push( msg );
 			}
 			break;
 
 		case 'Movie':
 			if ( 'undefined' === typeof datecreated || '' === datecreated ) {
-				msg = __(
-					'Missing released date of the movie',
-					'ultimate-addons-for-gutenberg'
-				);
+				msg = __( 'Missing released date of the movie', 'ultimate-addons-for-gutenberg' );
 				emptyItems.push( msg );
 			}
 			if ( 'undefined' === typeof directorname || '' === directorname ) {
-				msg = __(
-					'Missing director name of the movie',
-					'ultimate-addons-for-gutenberg'
-				);
+				msg = __( 'Missing director name of the movie', 'ultimate-addons-for-gutenberg' );
 				emptyItems.push( msg );
 			}
 			break;
 
 		case 'Course':
 			if ( 'undefined' === typeof provider || '' === provider ) {
-				msg = __(
-					'Missing provider of the course',
-					'ultimate-addons-for-gutenberg'
-				);
+				msg = __( 'Missing provider of the course', 'ultimate-addons-for-gutenberg' );
 				emptyItems.push( msg );
 			}
 			break;
 
 		case 'SoftwareApplication':
 			if ( 'undefined' === typeof appCategory || '' === appCategory ) {
-				msg = __(
-					'Missing type of application (Application Category)',
-					'ultimate-addons-for-gutenberg'
-				);
+				msg = __( 'Missing type of application (Application Category)', 'ultimate-addons-for-gutenberg' );
 				emptyItems.push( msg );
 			}
-			if (
-				'undefined' === typeof operatingSystem ||
-				'' === operatingSystem
-			) {
-				msg = __(
-					'Missing operating system(s) required',
-					'ultimate-addons-for-gutenberg'
-				);
+			if ( 'undefined' === typeof operatingSystem || '' === operatingSystem ) {
+				msg = __( 'Missing operating system(s) required', 'ultimate-addons-for-gutenberg' );
 				emptyItems.push( msg );
 			}
 			if ( 'undefined' === typeof offerType || '' === offerType ) {
-				msg = __(
-					'Missing Offer Type',
-					'ultimate-addons-for-gutenberg'
-				);
+				msg = __( 'Missing Offer Type', 'ultimate-addons-for-gutenberg' );
 				emptyItems.push( msg );
 			}
 			if ( 'undefined' === typeof offerPrice || '' === offerPrice ) {
-				msg = __(
-					'Missing offer price of the application',
-					'ultimate-addons-for-gutenberg'
-				);
+				msg = __( 'Missing offer price of the application', 'ultimate-addons-for-gutenberg' );
 				emptyItems.push( msg );
 			}
-			if (
-				'undefined' === typeof offerCurrency ||
-				'' === offerCurrency
-			) {
-				msg = __(
-					'Missing offer currency of the application',
-					'ultimate-addons-for-gutenberg'
-				);
+			if ( 'undefined' === typeof offerCurrency || '' === offerCurrency ) {
+				msg = __( 'Missing offer currency of the application', 'ultimate-addons-for-gutenberg' );
 				emptyItems.push( msg );
 			}
 			break;
@@ -191,21 +128,11 @@ const SchemaNotices = ( props ) => {
 
 	if ( itemType ) {
 		if ( 'undefined' === typeof rTitle || '' === rTitle ) {
-			msg = __(
-				'Missing title of the review',
-				'ultimate-addons-for-gutenberg'
-			);
+			msg = __( 'Missing title of the review', 'ultimate-addons-for-gutenberg' );
 			emptyItems.push( msg );
 		}
-		if (
-			'undefined' === typeof rContent ||
-			'' === rContent ||
-			false === enableDescription
-		) {
-			msg = __(
-				'Missing review description',
-				'ultimate-addons-for-gutenberg'
-			);
+		if ( 'undefined' === typeof rContent || '' === rContent || false === enableDescription ) {
+			msg = __( 'Missing review description', 'ultimate-addons-for-gutenberg' );
 			emptyItems.push( msg );
 		}
 		if (
@@ -222,39 +149,21 @@ const SchemaNotices = ( props ) => {
 			msg = __( 'Missing url field', 'ultimate-addons-for-gutenberg' );
 			emptyItems.push( msg );
 		}
-		if (
-			'undefined' === typeof rAuthor ||
-			'' === rAuthor ||
-			false === showAuthor
-		) {
-			msg = __(
-				'Missing review author name',
-				'ultimate-addons-for-gutenberg'
-			);
+		if ( 'undefined' === typeof rAuthor || '' === rAuthor || false === showAuthor ) {
+			msg = __( 'Missing review author name', 'ultimate-addons-for-gutenberg' );
 			emptyItems.push( msg );
 		}
-		if (
-			'undefined' === typeof reviewPublisher ||
-			'' === reviewPublisher
-		) {
-			msg = __(
-				'Missing review publisher',
-				'ultimate-addons-for-gutenberg'
-			);
+		if ( 'undefined' === typeof reviewPublisher || '' === reviewPublisher ) {
+			msg = __( 'Missing review publisher', 'ultimate-addons-for-gutenberg' );
 			emptyItems.push( msg );
 		}
 		if ( 'undefined' === typeof datepublish || '' === datepublish ) {
-			msg = __(
-				'Missing date of publish',
-				'ultimate-addons-for-gutenberg'
-			);
+			msg = __( 'Missing date of publish', 'ultimate-addons-for-gutenberg' );
 			emptyItems.push( msg );
 		}
 	}
 
-	const listItems = emptyItems.map( ( item ) => (
-		<li key={ item }> { item } </li>
-	) );
+	const listItems = emptyItems.map( ( item ) => <li key={ item }> { item } </li> );
 
 	const schemaNoticeMarkup = () => {
 		if ( enableSchema === true ) {
@@ -268,9 +177,7 @@ const SchemaNotices = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }{ ' ' }
 						</h6>
-						<ul className="rating-schema-notices-list">
-							{ listItems }
-						</ul>
+						<ul className="rating-schema-notices-list">{ listItems }</ul>
 						<p>
 							{ __(
 								'P.S. Note that this notice is visible only in the editor. This will not be visible in frontend. Also, once the required fields are added, this notice will go away.',
@@ -282,10 +189,7 @@ const SchemaNotices = ( props ) => {
 								target="_blank"
 								rel="noreferrer"
 							>
-								{ __(
-									'Read more.',
-									'ultimate-addons-for-gutenberg'
-								) }
+								{ __( 'Read more.', 'ultimate-addons-for-gutenberg' ) }
 							</a>
 						</p>
 					</div>

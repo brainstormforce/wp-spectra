@@ -1,9 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
-import InspectorTab, {
-	UAGTabs,
-} from '@Components/inspector-tabs/InspectorTab.js';
+import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import ResponsiveSlider from '@Components/responsive-slider';
@@ -11,18 +9,9 @@ import Range from '@Components/range/Range.js';
 import UAGMediaPicker from '@Components/image';
 import UAGTabsControl from '@Components/tabs';
 
-import {
-	InspectorControls,
-	MediaPlaceholder,
-	BlockControls,
-	MediaReplaceFlow,
-} from '@wordpress/block-editor';
+import { InspectorControls, MediaPlaceholder, BlockControls, MediaReplaceFlow } from '@wordpress/block-editor';
 
-import {
-	ToggleControl,
-	ToolbarGroup,
-	Icon,
-} from '@wordpress/components';
+import { ToggleControl, ToolbarGroup, Icon } from '@wordpress/components';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import UAGTextControl from '@Components/text-control';
@@ -69,10 +58,7 @@ const Settings = ( props ) => {
 
 	const controlsSettings = (
 		<>
-			<UAGAdvancedPanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
+			<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'File Source', 'ultimate-addons-for-gutenberg' ) }
@@ -83,17 +69,11 @@ const Settings = ( props ) => {
 					options={ [
 						{
 							value: 'library',
-							label: __(
-								'Library',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Library', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'url',
-							label: __(
-								'URL',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'URL', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 				/>
@@ -119,24 +99,18 @@ const Settings = ( props ) => {
 				) }
 				{ lottieSource === 'url' && (
 					<UAGTextControl
-						label={ __(
-							'Lottie Animation URL',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Lottie Animation URL', 'ultimate-addons-for-gutenberg' ) }
 						value={ lottieURl }
-						data={{
+						data={ {
 							value: lottieURl,
 							label: 'lottieURl',
-						}}
+						} }
 						setAttributes={ setAttributes }
 						onChange={ ( value ) => setAttributes( { lottieURl: value } ) }
 					/>
 				) }
 			</UAGAdvancedPanelBody>
-			<UAGAdvancedPanelBody
-				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Play On', 'ultimate-addons-for-gutenberg' ) }
@@ -160,18 +134,15 @@ const Settings = ( props ) => {
 						},
 						{
 							value: 'scroll',
-							label: __(
-								'Viewport',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Viewport', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					help={
-						( 'scroll' === playOn || 'none' === playOn )
+						'scroll' === playOn || 'none' === playOn
 							? __(
 									"This setting will only take effect once you are on the live page, and not while you're editing.",
 									'ultimate-addons-for-gutenberg'
-							)
+							  )
 							: ''
 					}
 				/>
@@ -191,19 +162,12 @@ const Settings = ( props ) => {
 						},
 						{
 							value: 'center',
-							icon: (
-								<Icon icon={ renderSVG( 'fa fa-align-center' ) } />
-							),
-							tooltip: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
+							tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'right',
-							icon: (
-								<Icon icon={ renderSVG( 'fa fa-align-right' ) } />
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
 							tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
@@ -239,10 +203,7 @@ const Settings = ( props ) => {
 						label={ __( 'Reverse', 'ultimate-addons-for-gutenberg' ) }
 						checked={ reverse }
 						onChange={ reverseDirection }
-						help={ __(
-							'Direction of animation.',
-							'ultimate-addons-for-gutenberg'
-						) }
+						help={ __( 'Direction of animation.', 'ultimate-addons-for-gutenberg' ) }
 					/>
 				) }
 			</UAGAdvancedPanelBody>
@@ -250,10 +211,7 @@ const Settings = ( props ) => {
 	);
 
 	const styleSettings = (
-		<UAGAdvancedPanelBody
-			title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ true }
-		>
+		<UAGAdvancedPanelBody title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 			<ResponsiveSlider
 				label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
@@ -413,16 +371,9 @@ const Settings = ( props ) => {
 			{ validJsonPath === 'valid' && getBlockControls() }
 			<InspectorControls>
 				<InspectorTabs tabs={ [ 'general', 'style', 'advance' ] }>
-					<InspectorTab { ...UAGTabs.general }>
-						{ controlsSettings }
-					</InspectorTab>
-					<InspectorTab { ...UAGTabs.style }>
-						{ styleSettings }
-					</InspectorTab>
-					<InspectorTab
-						{ ...UAGTabs.advance }
-						parentProps={ props }
-					></InspectorTab>
+					<InspectorTab { ...UAGTabs.general }>{ controlsSettings }</InspectorTab>
+					<InspectorTab { ...UAGTabs.style }>{ styleSettings }</InspectorTab>
+					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 		</>

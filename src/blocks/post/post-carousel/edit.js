@@ -10,9 +10,7 @@ import { decodeEntities } from '@wordpress/html-entities';
 import ResponsiveBorder from '@Components/responsive-border';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
-import InspectorTab, {
-	UAGTabs,
-} from '@Components/inspector-tabs/InspectorTab.js';
+import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
@@ -21,7 +19,7 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import UAGSelectControl from '@Components/select-control';
 import renderSVG from '@Controls/renderIcon';
-import presets, {buttonsPresets} from './presets';
+import presets, { buttonsPresets } from './presets';
 import UAGPresets from '@Components/presets';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
@@ -37,12 +35,7 @@ const MAX_POSTS_COLUMNS = 8;
 import Settings from './settings';
 import Render from './render';
 
-import {
-	Placeholder,
-	Spinner,
-	ToggleControl,
-	Icon
-} from '@wordpress/components';
+import { Placeholder, Spinner, ToggleControl, Icon } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
 
@@ -279,7 +272,7 @@ const UAGBPostCarousel = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
-			equalHeight
+			equalHeight,
 		},
 		setAttributes,
 		deviceType,
@@ -290,7 +283,7 @@ const UAGBPostCarousel = ( props ) => {
 		innerBlocks: [],
 	} );
 
-	const [ isTaxonomyLoading, setIsTaxonomyLoading] = useState( false );
+	const [ isTaxonomyLoading, setIsTaxonomyLoading ] = useState( false );
 
 	useEffect( () => {
 		const { block } = props;
@@ -372,75 +365,72 @@ const UAGBPostCarousel = ( props ) => {
 			}
 		}
 
-		if( borderWidth ){
-			if( undefined === btnBorderTopWidth ) {
+		if ( borderWidth ) {
+			if ( undefined === btnBorderTopWidth ) {
 				setAttributes( {
 					btnBorderTopWidth: borderWidth,
 				} );
 			}
-			if( undefined === btnBorderLeftWidth ) {
-				setAttributes( { btnBorderLeftWidth : borderWidth} );
+			if ( undefined === btnBorderLeftWidth ) {
+				setAttributes( { btnBorderLeftWidth: borderWidth } );
 			}
-			if( undefined === btnBorderRightWidth ) {
-				setAttributes( { btnBorderRightWidth : borderWidth} );
+			if ( undefined === btnBorderRightWidth ) {
+				setAttributes( { btnBorderRightWidth: borderWidth } );
 			}
-			if( undefined === btnBorderBottomWidth ) {
-				setAttributes( { btnBorderBottomWidth : borderWidth} );
-			}
-		}
-
-		if( borderRadius ){
-
-			if( undefined === btnBorderTopLeftRadius ) {
-				setAttributes( { btnBorderTopLeftRadius : borderRadius} );
-			}
-			if( undefined === btnBorderTopRightRadius ) {
-				setAttributes( { btnBorderTopRightRadius : borderRadius} );
-			}
-			if( undefined === btnBorderBottomLeftRadius ) {
-				setAttributes( { btnBorderBottomLeftRadius : borderRadius} );
-			}
-			if( undefined === btnBorderBottomRightRadius ) {
-				setAttributes( { btnBorderBottomRightRadius : borderRadius} );
+			if ( undefined === btnBorderBottomWidth ) {
+				setAttributes( { btnBorderBottomWidth: borderWidth } );
 			}
 		}
 
-		if( borderColor ){
-			if( undefined === btnBorderColor ) {
-				setAttributes( { btnBorderColor : borderColor} );
+		if ( borderRadius ) {
+			if ( undefined === btnBorderTopLeftRadius ) {
+				setAttributes( { btnBorderTopLeftRadius: borderRadius } );
+			}
+			if ( undefined === btnBorderTopRightRadius ) {
+				setAttributes( { btnBorderTopRightRadius: borderRadius } );
+			}
+			if ( undefined === btnBorderBottomLeftRadius ) {
+				setAttributes( { btnBorderBottomLeftRadius: borderRadius } );
+			}
+			if ( undefined === btnBorderBottomRightRadius ) {
+				setAttributes( { btnBorderBottomRightRadius: borderRadius } );
 			}
 		}
 
-		if( borderHColor ){
-			if( undefined === btnBorderHColor ) {
-				setAttributes( { btnBorderHColor : borderHColor} );
+		if ( borderColor ) {
+			if ( undefined === btnBorderColor ) {
+				setAttributes( { btnBorderColor: borderColor } );
 			}
 		}
 
-		if( borderStyle ){
-			if( undefined === btnBorderStyle ) {
-				setAttributes( { btnBorderStyle : borderStyle} );
+		if ( borderHColor ) {
+			if ( undefined === btnBorderHColor ) {
+				setAttributes( { btnBorderHColor: borderHColor } );
 			}
 		}
-		
 
-		if( columnGap && columnGap !== 20 ){
-			setAttributes( { dotsMarginTop : columnGap} );
+		if ( borderStyle ) {
+			if ( undefined === btnBorderStyle ) {
+				setAttributes( { btnBorderStyle: borderStyle } );
+			}
 		}
 
-		if( columnGapTablet ){
-			setAttributes( { dotsMarginTopTablet : columnGapTablet} );
+		if ( columnGap && columnGap !== 20 ) {
+			setAttributes( { dotsMarginTop: columnGap } );
 		}
 
-		if( columnGapMobile ){
-			setAttributes( { dotsMarginTopMobile : columnGapMobile} );
+		if ( columnGapTablet ) {
+			setAttributes( { dotsMarginTopTablet: columnGapTablet } );
 		}
 
-		setAttributes( { allTaxonomyStore : undefined} );
+		if ( columnGapMobile ) {
+			setAttributes( { dotsMarginTopMobile: columnGapMobile } );
+		}
+
+		setAttributes( { allTaxonomyStore: undefined } );
 	}, [] );
 
 	useEffect( () => {
-
 		if ( equalHeight ) {
 			uagb_carousel_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
 		} else {
@@ -449,16 +439,15 @@ const UAGBPostCarousel = ( props ) => {
 
 		let blockStyling = styling( props );
 		blockStyling +=
-				'.uagb-block-' +
-				props.clientId.substr( 0, 8 ) +
-				'.uagb-post-grid ul.slick-dots li.slick-active button:before, .uagb-block-' +
-				props.clientId.substr( 0, 8 ) +
-				'.uagb-slick-carousel ul.slick-dots li button:before { color: ' +
-				props.attributes.arrowColor +
-				'; }';
+			'.uagb-block-' +
+			props.clientId.substr( 0, 8 ) +
+			'.uagb-post-grid ul.slick-dots li.slick-active button:before, .uagb-block-' +
+			props.clientId.substr( 0, 8 ) +
+			'.uagb-slick-carousel ul.slick-dots li button:before { color: ' +
+			props.attributes.arrowColor +
+			'; }';
 
 		addBlockEditorDynamicStyles( 'uagb-post-carousel-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
@@ -466,9 +455,7 @@ const UAGBPostCarousel = ( props ) => {
 	}, [ deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	const onSelectPostType = ( value ) => {
@@ -485,8 +472,9 @@ const UAGBPostCarousel = ( props ) => {
 	const onSelectOffset = ( value ) => {
 		setAttributes( { enableOffset: value } );
 	};
-let categoriesList = [];
-	const { latestPosts, taxonomyList, block } = useSelect( // eslint-disable-line no-unused-vars
+	let categoriesList = [];
+	const { latestPosts, taxonomyList, block } = useSelect(
+		// eslint-disable-line no-unused-vars
 		( select ) => {
 			const { getEntityRecords } = select( 'core' );
 
@@ -531,9 +519,7 @@ let categoriesList = [];
 			};
 
 			if ( excludeCurrentPost ) {
-				latestPostsQuery.exclude = select(
-					'core/editor'
-				).getCurrentPostId();
+				latestPostsQuery.exclude = select( 'core/editor' ).getCurrentPostId();
 			}
 
 			const category = [];
@@ -551,27 +537,18 @@ let categoriesList = [];
 			}
 			const { getBlocks } = select( 'core/block-editor' );
 			if ( undefined !== categories && '' !== categories ) {
-				latestPostsQuery[ rest_base ] =
-					undefined === categories || '' === categories
-						? categories
-						: category;
+				latestPostsQuery[ rest_base ] = undefined === categories || '' === categories ? categories : category;
 			}
 			return {
-				latestPosts: getEntityRecords(
-					'postType',
-					postType,
-					latestPostsQuery
-				),
+				latestPosts: getEntityRecords( 'postType', postType, latestPostsQuery ),
 				categoriesList,
-				taxonomyList:
-					'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
+				taxonomyList: 'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
 				block: getBlocks( props.clientId ),
 			};
-		},
+		}
 	);
 
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
-
 
 	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
 
@@ -582,9 +559,7 @@ let categoriesList = [];
 		},
 	];
 
-	const categoryListOptions = [
-		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
-	];
+	const categoryListOptions = [ { value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) } ];
 
 	const bgTypeOptions = [
 		{
@@ -615,16 +590,11 @@ let categoriesList = [];
 		} );
 	}
 	const presetSettings = () => {
-		return <UAGAdvancedPanelBody
-					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
-					initialOpen={ true }
-				>
-					<UAGPresets
-						setAttributes = { setAttributes }
-						presets = { presets }
-						presetInputType = 'radioImage'
-					/>
-				</UAGAdvancedPanelBody>
+		return (
+			<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+				<UAGPresets setAttributes={ setAttributes } presets={ presets } presetInputType="radioImage" />
+			</UAGAdvancedPanelBody>
+		);
 	};
 	const togglePreview = () => {
 		setState( { isEditing: ! state.isEditing } );
@@ -637,10 +607,7 @@ let categoriesList = [];
 
 	const getGeneralPanelBody = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Text Alignment', 'ultimate-addons-for-gutenberg' ) }
@@ -652,48 +619,24 @@ let categoriesList = [];
 					options={ [
 						{
 							value: 'left',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-left' ) }
-								/>
-							),
-							tooltip: __(
-								'Left',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+							tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'center',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-center' ) }
-								/>
-							),
-							tooltip: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
+							tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'right',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-right' ) }
-								/>
-							),
-							tooltip: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
+							tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					showIcons={ true }
 				/>
 				<UAGSelectControl
-					label={ __(
-						'Post Type',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Post Type', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: postType,
 					} }
@@ -702,10 +645,7 @@ let categoriesList = [];
 				/>
 				{ '' !== taxonomyList && (
 					<UAGSelectControl
-						label={ __(
-							'Taxonomy',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Taxonomy', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: taxonomyType,
 						} }
@@ -727,10 +667,7 @@ let categoriesList = [];
 					</>
 				) }
 				<ToggleControl
-					label={ __(
-						'Exclude Current Post',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Exclude Current Post', 'ultimate-addons-for-gutenberg' ) }
 					checked={ excludeCurrentPost }
 					onChange={ () =>
 						setAttributes( {
@@ -739,10 +676,7 @@ let categoriesList = [];
 					}
 				/>
 				<UAGNumberControl
-					label={ __(
-						'Posts Per Page',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Posts Per Page', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ postsToShow }
 					data={ {
@@ -755,45 +689,42 @@ let categoriesList = [];
 					showControlHeader={ false }
 				/>
 				<ToggleControl
-					label={ __(
-						'Offset Starting Post',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Offset Starting Post', 'ultimate-addons-for-gutenberg' ) }
 					checked={ enableOffset }
 					onChange={ onSelectOffset }
-					help= {
+					help={
 						<>
-							{ !enableOffset && __(
-							'Note: The offset will skip the number of posts set, and will use the next post as the starting post.',
-							'ultimate-addons-for-gutenberg' )
-							}
-						</>
-						}
-				/>
-				{ enableOffset && (
-				<UAGNumberControl
-					label={ __(
-						'Offset By',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ postsOffset }
-					data={ {
-						value: postsOffset,
-						label: 'postsOffset',
-					} }
-					min={ 0 }
-					max={ 100 }
-					displayUnit={ false }
-					help= {
-						<>
-						{ enableOffset && __(
-						'Note: The offset will skip the number of posts set, and will use the next post as the starting post.',
-						'ultimate-addons-for-gutenberg' )}
+							{ ! enableOffset &&
+								__(
+									'Note: The offset will skip the number of posts set, and will use the next post as the starting post.',
+									'ultimate-addons-for-gutenberg'
+								) }
 						</>
 					}
 				/>
-				)}
+				{ enableOffset && (
+					<UAGNumberControl
+						label={ __( 'Offset By', 'ultimate-addons-for-gutenberg' ) }
+						setAttributes={ setAttributes }
+						value={ postsOffset }
+						data={ {
+							value: postsOffset,
+							label: 'postsOffset',
+						} }
+						min={ 0 }
+						max={ 100 }
+						displayUnit={ false }
+						help={
+							<>
+								{ enableOffset &&
+									__(
+										'Note: The offset will skip the number of posts set, and will use the next post as the starting post.',
+										'ultimate-addons-for-gutenberg'
+									) }
+							</>
+						}
+					/>
+				) }
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Order By', 'ultimate-addons-for-gutenberg' ) }
@@ -804,31 +735,19 @@ let categoriesList = [];
 					options={ [
 						{
 							value: 'date',
-							label: __(
-								'Date',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Date', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'title',
-							label: __(
-								'Title',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Title', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'rand',
-							label: __(
-								'Random',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Random', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'menu_order',
-							label: __(
-								'Menu Order',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Menu Order', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 				/>
@@ -842,17 +761,11 @@ let categoriesList = [];
 					options={ [
 						{
 							value: 'desc',
-							label: __(
-								'Descending',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Descending', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'asc',
-							label: __(
-								'Ascending',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Ascending', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 				/>
@@ -873,47 +786,32 @@ let categoriesList = [];
 						},
 					} }
 					min={ 1 }
-					max={MAX_POSTS_COLUMNS}
+					max={ MAX_POSTS_COLUMNS }
 					displayUnit={ false }
 					setAttributes={ setAttributes }
 				/>
 				{ columnsFallback > 1 && (
-				<ToggleControl
-					label={ __(
-						'Equal Height',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ equalHeight }
-					onChange={ () =>
-						setAttributes( { equalHeight: ! equalHeight } )
-					}
-					help={ __(
-						"Note: Above setting will only take effect once you are on the live page, and not while you're editing.",
-						'ultimate-addons-for-gutenberg'
-					) }
-				/>
+					<ToggleControl
+						label={ __( 'Equal Height', 'ultimate-addons-for-gutenberg' ) }
+						checked={ equalHeight }
+						onChange={ () => setAttributes( { equalHeight: ! equalHeight } ) }
+						help={ __(
+							"Note: Above setting will only take effect once you are on the live page, and not while you're editing.",
+							'ultimate-addons-for-gutenberg'
+						) }
+					/>
 				) }
-				<h2>
-					{ __(
-						'If Posts Not Found',
-						'ultimate-addons-for-gutenberg'
-					) }
-				</h2>
+				<h2>{ __( 'If Posts Not Found', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<UAGTextControl
 					autoComplete="off"
-					label={ __(
-						'Display Message',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Display Message', 'ultimate-addons-for-gutenberg' ) }
 					value={ postDisplaytext }
-					data={{
+					data={ {
 						value: postDisplaytext,
 						label: 'postDisplaytext',
-					}}
+					} }
 					setAttributes={ setAttributes }
-					onChange={ ( value ) =>
-						setAttributes( { postDisplaytext: value } )
-					}
+					onChange={ ( value ) => setAttributes( { postDisplaytext: value } ) }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -921,19 +819,11 @@ let categoriesList = [];
 
 	const getCarouselPanelBody = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Carousel', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Carousel', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<ToggleControl
-					label={ __(
-						'Pause On Hover',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Pause On Hover', 'ultimate-addons-for-gutenberg' ) }
 					checked={ pauseOnHover }
-					onChange={ () =>
-						setAttributes( { pauseOnHover: ! pauseOnHover } )
-					}
+					onChange={ () => setAttributes( { pauseOnHover: ! pauseOnHover } ) }
 				/>
 				<ToggleControl
 					label={ __( 'Autoplay', 'ultimate-addons-for-gutenberg' ) }
@@ -942,10 +832,7 @@ let categoriesList = [];
 				/>
 				{ autoplay === true && (
 					<Range
-						label={ __(
-							'Autoplay Speed (ms)',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Autoplay Speed (ms)', 'ultimate-addons-for-gutenberg' ) }
 						value={ autoplaySpeed }
 						data={ {
 							value: autoplaySpeed,
@@ -958,20 +845,12 @@ let categoriesList = [];
 					/>
 				) }
 				<ToggleControl
-					label={ __(
-						'Infinite Loop',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Infinite Loop', 'ultimate-addons-for-gutenberg' ) }
 					checked={ infiniteLoop }
-					onChange={ () =>
-						setAttributes( { infiniteLoop: ! infiniteLoop } )
-					}
+					onChange={ () => setAttributes( { infiniteLoop: ! infiniteLoop } ) }
 				/>
 				<Range
-					label={ __(
-						'Transition Speed (ms)',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Transition Speed (ms)', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					displayUnit={ false }
 					value={ transitionSpeed }
@@ -984,10 +863,7 @@ let categoriesList = [];
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
-					label={ __(
-						'Arrows & Dots Type',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Arrows & Dots Type', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: arrowDots,
 						label: 'arrowDots',
@@ -995,24 +871,15 @@ let categoriesList = [];
 					options={ [
 						{
 							value: 'arrows',
-							label: __(
-								'Arrows',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Arrows', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'dots',
-							label: __(
-								'Dots',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Dots', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'arrows_dots',
-							label: __(
-								'Both',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Both', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 				/>
@@ -1022,15 +889,9 @@ let categoriesList = [];
 
 	const getImagePanelBody = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<ToggleControl
-					label={ __(
-						'Show Featured Image',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Show Featured Image', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostImage }
 					onChange={ () =>
 						setAttributes( {
@@ -1040,10 +901,7 @@ let categoriesList = [];
 				/>
 				{ displayPostImage === true && (
 					<UAGSelectControl
-						label={ __(
-							'Sizes',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Sizes', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: imgSize,
 							label: 'imgSize',
@@ -1055,10 +913,7 @@ let categoriesList = [];
 				{ displayPostImage === true && (
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
-						label={ __(
-							'Position',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Position', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: imgPosition,
 							label: 'imgPosition',
@@ -1066,31 +921,20 @@ let categoriesList = [];
 						options={ [
 							{
 								value: 'top',
-								label: __(
-									'Top',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Top', 'ultimate-addons-for-gutenberg' ),
 							},
 							{
 								value: 'background',
-								label: __(
-									'Background',
-									'ultimate-addons-for-gutenberg'
-								),
+								label: __( 'Background', 'ultimate-addons-for-gutenberg' ),
 							},
 						] }
 					/>
 				) }
 				{ displayPostImage === true && imgPosition === 'background' && (
 					<ToggleControl
-						label={ __(
-							'Link Complete Box',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Link Complete Box', 'ultimate-addons-for-gutenberg' ) }
 						checked={ linkBox }
-						onChange={ () =>
-							setAttributes( { linkBox: ! linkBox } )
-						}
+						onChange={ () => setAttributes( { linkBox: ! linkBox } ) }
 					/>
 				) }
 			</UAGAdvancedPanelBody>
@@ -1099,15 +943,9 @@ let categoriesList = [];
 
 	const getContentPanelBody = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<ToggleControl
-					label={ __(
-						'Show Title',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Show Title', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostTitle }
 					onChange={ () =>
 						setAttributes( {
@@ -1116,10 +954,7 @@ let categoriesList = [];
 					}
 				/>
 				<ToggleControl
-					label={ __(
-						'Show Author',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Show Author', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostAuthor }
 					onChange={ () =>
 						setAttributes( {
@@ -1130,15 +965,10 @@ let categoriesList = [];
 				<ToggleControl
 					label={ __( 'Show Date', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostDate }
-					onChange={ () =>
-						setAttributes( { displayPostDate: ! displayPostDate } )
-					}
+					onChange={ () => setAttributes( { displayPostDate: ! displayPostDate } ) }
 				/>
 				<ToggleControl
-					label={ __(
-						'Show Comment',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Show Comment', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostComment }
 					onChange={ () =>
 						setAttributes( {
@@ -1147,10 +977,7 @@ let categoriesList = [];
 					}
 				/>
 				<ToggleControl
-					label={ __(
-						'Show Taxonomy',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Show Taxonomy', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostTaxonomy }
 					onChange={ () =>
 						setAttributes( {
@@ -1159,88 +986,67 @@ let categoriesList = [];
 					}
 				/>
 				{ displayPostTaxonomy && (
-				<>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __(
-						'Taxonomy Position',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						value: displayPostTaxonomyAboveTitle,
-						label: 'displayPostTaxonomyAboveTitle',
-					} }
-					options={ [
-						{
-							value: 'withMeta',
-							label: __(
-								'With Meta',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'aboveTitle',
-							label: __(
-								'Above Title',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-				/>
-				{ 'aboveTitle' === displayPostTaxonomyAboveTitle && (
-				<>
-					<MultiButtonsControl
-						setAttributes={ setAttributes }
-						label={ __(
-							'Taxonomy Style',
-							'ultimate-addons-for-gutenberg'
+					<>
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __( 'Taxonomy Position', 'ultimate-addons-for-gutenberg' ) }
+							data={ {
+								value: displayPostTaxonomyAboveTitle,
+								label: 'displayPostTaxonomyAboveTitle',
+							} }
+							options={ [
+								{
+									value: 'withMeta',
+									label: __( 'With Meta', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'aboveTitle',
+									label: __( 'Above Title', 'ultimate-addons-for-gutenberg' ),
+								},
+							] }
+						/>
+						{ 'aboveTitle' === displayPostTaxonomyAboveTitle && (
+							<>
+								<MultiButtonsControl
+									setAttributes={ setAttributes }
+									label={ __( 'Taxonomy Style', 'ultimate-addons-for-gutenberg' ) }
+									data={ {
+										value: taxStyle,
+										label: 'taxStyle',
+									} }
+									options={ [
+										{
+											value: 'default',
+											label: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
+										},
+										{
+											value: 'highlighted',
+											label: __( 'Highlighted', 'ultimate-addons-for-gutenberg' ),
+										},
+									] }
+								/>
+								{ 'default' === taxStyle && (
+									<UAGTextControl
+										label={ __( 'Taxonomy Divider', 'ultimate-addons-for-gutenberg' ) }
+										value={ taxDivider }
+										data={ {
+											value: taxDivider,
+											label: 'taxDivider',
+										} }
+										setAttributes={ setAttributes }
+										onChange={ ( value ) =>
+											setAttributes( {
+												taxDivider: value,
+											} )
+										}
+									/>
+								) }
+							</>
 						) }
-						data={ {
-							value: taxStyle,
-							label: 'taxStyle',
-						} }
-						options={ [
-							{
-								value: 'default',
-								label: __(
-									'Normal',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'highlighted',
-								label: __(
-									'Highlighted',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-						] }
-					/>
-				{ 'default' === taxStyle && (
-					<UAGTextControl
-						label={ __( 'Taxonomy Divider', 'ultimate-addons-for-gutenberg' ) }
-						value={ taxDivider }
-						data={{
-							value: taxDivider,
-							label: 'taxDivider',
-						}}
-						setAttributes={ setAttributes }
-						onChange={ ( value ) =>
-							setAttributes( {
-								taxDivider: value,
-							} )
-						}
-					/>
-				) }
-				</>
-				) }
-				</>
+					</>
 				) }
 				<ToggleControl
-					label={ __(
-						'Show Meta Icon',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Show Meta Icon', 'ultimate-addons-for-gutenberg' ) }
 					checked={ hideTaxonomyIcon }
 					onChange={ () =>
 						setAttributes( {
@@ -1249,10 +1055,7 @@ let categoriesList = [];
 					}
 				/>
 				<ToggleControl
-					label={ __(
-						'Show Excerpt',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Show Excerpt', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostExcerpt }
 					onChange={ () =>
 						setAttributes( {
@@ -1262,48 +1065,38 @@ let categoriesList = [];
 				/>
 				{ displayPostExcerpt && (
 					<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __( 'Show:', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						value: displayPostContentRadio,
-						label: 'displayPostContentRadio',
-					} }
-					options={ [
-						{
-							label: __(
-								'Excerpt',
-								'ultimate-addons-for-gutenberg'
-							),
-							value: 'excerpt',
-						},
-						{
-							label: __(
-								'Full post',
-								'ultimate-addons-for-gutenberg'
-							),
-							value: 'full_post',
-						},
-					] }
-				/>
+						setAttributes={ setAttributes }
+						label={ __( 'Show:', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: displayPostContentRadio,
+							label: 'displayPostContentRadio',
+						} }
+						options={ [
+							{
+								label: __( 'Excerpt', 'ultimate-addons-for-gutenberg' ),
+								value: 'excerpt',
+							},
+							{
+								label: __( 'Full post', 'ultimate-addons-for-gutenberg' ),
+								value: 'full_post',
+							},
+						] }
+					/>
 				) }
-				{ displayPostExcerpt &&
-					displayPostContentRadio === 'excerpt' && (
-						<Range
-							label={ __(
-								'Max number of words in excerpt',
-								'ultimate-addons-for-gutenberg'
-							) }
-							setAttributes={ setAttributes }
-							value={ excerptLength }
-							data={ {
-								value: excerptLength,
-								label: 'excerptLength',
-							} }
-							min={ 1 }
-							max={ 100 }
-							displayUnit={ false }
-						/>
-					) }
+				{ displayPostExcerpt && displayPostContentRadio === 'excerpt' && (
+					<Range
+						label={ __( 'Max number of words in excerpt', 'ultimate-addons-for-gutenberg' ) }
+						setAttributes={ setAttributes }
+						value={ excerptLength }
+						data={ {
+							value: excerptLength,
+							label: 'excerptLength',
+						} }
+						min={ 1 }
+						max={ 100 }
+						displayUnit={ false }
+					/>
+				) }
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -1311,53 +1104,35 @@ let categoriesList = [];
 	const getReadMoreLinkPanelBody = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __(
-					'Read More Link',
-					'ultimate-addons-for-gutenberg'
-				) }
+				title={ __( 'Read More Link', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<ToggleControl
-					label={ __(
-						'Show Read More Link',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Show Read More Link', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostLink }
-					onChange={ () =>
-						setAttributes( { displayPostLink: ! displayPostLink } )
-					}
+					onChange={ () => setAttributes( { displayPostLink: ! displayPostLink } ) }
 				/>
 				{ displayPostLink && (
 					<>
 						<ToggleControl
-							label={ __(
-								'Open Links in New Tab',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Open Links in New Tab', 'ultimate-addons-for-gutenberg' ) }
 							checked={ newTab }
-							onChange={ () =>
-								setAttributes( { newTab: ! newTab } )
-							}
+							onChange={ () => setAttributes( { newTab: ! newTab } ) }
 						/>
 						<UAGTextControl
-							label={ __(
-								'Text',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ __( 'Text', 'ultimate-addons-for-gutenberg' ) }
 							value={ ctaText }
-							data={{
+							data={ {
 								value: ctaText,
 								label: 'ctaText',
-							}}
+							} }
 							setAttributes={ setAttributes }
-							onChange={ ( value ) =>
-								setAttributes( { ctaText: value } )
-							}
+							onChange={ ( value ) => setAttributes( { ctaText: value } ) }
 						/>
 						<UAGPresets
-							setAttributes = { setAttributes }
-							presets = { buttonsPresets }
-							presetInputType = 'radioImage'
+							setAttributes={ setAttributes }
+							presets={ buttonsPresets }
+							presetInputType="radioImage"
 						/>
 					</>
 				) }
@@ -1367,10 +1142,7 @@ let categoriesList = [];
 
 	const spacingSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
@@ -1382,12 +1154,9 @@ let categoriesList = [];
 					className="uagb-multi-button-alignment-control"
 					options={ bgTypeOptions }
 				/>
-				{ ( bgType === 'color' ) &&
+				{ bgType === 'color' && (
 					<AdvancedPopColorControl
-						label={ __(
-							'Background Color',
-							'ultimate-addons-for-gutenberg'
-						) }
+						label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ bgColor }
 						data={ {
 							value: bgColor,
@@ -1395,7 +1164,7 @@ let categoriesList = [];
 						} }
 						setAttributes={ setAttributes }
 					/>
-				}
+				) }
 				<ResponsiveSlider
 					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -1422,10 +1191,7 @@ let categoriesList = [];
 				/>
 				<SpacingControl
 					{ ...props }
-					label={ __(
-						'Content Padding',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Content Padding', 'ultimate-addons-for-gutenberg' ) }
 					valueTop={ {
 						value: paddingTop,
 						label: 'paddingTop',
@@ -1500,76 +1266,64 @@ let categoriesList = [];
 
 	const imageStyle = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
-			{imgPosition === 'background' && (
-				<>
-					<AdvancedPopColorControl
-						label={ __(
-							'Background Overlay Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						colorValue={ bgOverlayColor }
+			<UAGAdvancedPanelBody title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+				{ imgPosition === 'background' && (
+					<>
+						<AdvancedPopColorControl
+							label={ __( 'Background Overlay Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ bgOverlayColor }
+							data={ {
+								value: bgOverlayColor,
+								label: 'bgOverlayColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+						<Range
+							label={ __( 'Overlay Opacity', 'ultimate-addons-for-gutenberg' ) }
+							setAttributes={ setAttributes }
+							value={ overlayOpacity }
+							data={ {
+								value: overlayOpacity,
+								label: 'overlayOpacity',
+							} }
+							min={ 0 }
+							max={ 100 }
+							displayUnit={ false }
+						/>
+					</>
+				) }
+				{ imgPosition === 'top' && (
+					<ResponsiveSlider
+						label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
-							value: bgOverlayColor,
-							label: 'bgOverlayColor',
-						} }
-						setAttributes={ setAttributes }
-					/>
-					<Range
-						label={ __(
-							'Overlay Opacity',
-							'ultimate-addons-for-gutenberg'
-						) }
-						setAttributes={ setAttributes }
-						value={ overlayOpacity }
-						data={ {
-							value: overlayOpacity,
-							label: 'overlayOpacity',
+							desktop: {
+								value: imageBottomSpace,
+								label: 'imageBottomSpace',
+							},
+							tablet: {
+								value: imageBottomSpaceTablet,
+								label: 'imageBottomSpaceTablet',
+							},
+							mobile: {
+								value: imageBottomSpaceMobile,
+								label: 'imageBottomSpaceMobile',
+							},
 						} }
 						min={ 0 }
-						max={ 100 }
-						displayUnit={ false }
+						max={ 50 }
+						unit={ {
+							value: imageBottomSpaceUnit,
+							label: 'imageBottomSpaceUnit',
+						} }
+						setAttributes={ setAttributes }
 					/>
-				</>
-			)}
-			{imgPosition === 'top' && (
-			<ResponsiveSlider
-				label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
-				data={ {
-					desktop: {
-						value: imageBottomSpace,
-						label: 'imageBottomSpace',
-					},
-					tablet: {
-						value: imageBottomSpaceTablet,
-						label: 'imageBottomSpaceTablet',
-					},
-					mobile: {
-						value: imageBottomSpaceMobile,
-						label: 'imageBottomSpaceMobile',
-					},
-				} }
-				min={ 0 }
-				max={ 50 }
-				unit={ {
-					value: imageBottomSpaceUnit,
-					label: 'imageBottomSpaceUnit',
-				} }
-				setAttributes={ setAttributes }
-			/>
-			)}
+				) }
 			</UAGAdvancedPanelBody>
 		);
 	};
 	const titleStyle = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'HTML Tag', 'ultimate-addons-for-gutenberg' ) }
@@ -1604,10 +1358,7 @@ let categoriesList = [];
 						},
 						{
 							value: 'span',
-							label: __(
-								'Span',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Span', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'p',
@@ -1616,10 +1367,7 @@ let categoriesList = [];
 					] }
 				/>
 				<AdvancedPopColorControl
-					label={ __(
-						'Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor }
 					data={ {
 						value: titleColor,
@@ -1628,10 +1376,7 @@ let categoriesList = [];
 					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -1731,16 +1476,12 @@ let categoriesList = [];
 					} }
 					setAttributes={ setAttributes }
 				/>
-
 			</UAGAdvancedPanelBody>
 		);
 	};
 	const metaStyle = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Meta', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Meta', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ metaColor }
@@ -1750,33 +1491,30 @@ let categoriesList = [];
 					} }
 					setAttributes={ setAttributes }
 				/>
-				{ ( 'aboveTitle' === displayPostTaxonomyAboveTitle && 'highlighted' === taxStyle ) && (
+				{ 'aboveTitle' === displayPostTaxonomyAboveTitle && 'highlighted' === taxStyle && (
 					<>
-					<AdvancedPopColorControl
-						label={ __( 'Taxonomy Text Color', 'ultimate-addons-for-gutenberg' ) }
-						colorValue={ highlightedTextColor }
-						data={ {
-							value: highlightedTextColor,
-							label: 'highlightedTextColor',
-						} }
-						setAttributes={ setAttributes }
-					/>
-					<AdvancedPopColorControl
-						label={ __( 'Highlighted Color', 'ultimate-addons-for-gutenberg' ) }
-						colorValue={ highlightedTextBgColor }
-						data={ {
-							value: highlightedTextBgColor,
-							label: 'highlightedTextBgColor',
-						} }
-						setAttributes={ setAttributes }
-					/>
+						<AdvancedPopColorControl
+							label={ __( 'Taxonomy Text Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ highlightedTextColor }
+							data={ {
+								value: highlightedTextColor,
+								label: 'highlightedTextColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+						<AdvancedPopColorControl
+							label={ __( 'Highlighted Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ highlightedTextBgColor }
+							data={ {
+								value: highlightedTextBgColor,
+								label: 'highlightedTextBgColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
 					</>
-				)}
+				) }
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -1881,10 +1619,7 @@ let categoriesList = [];
 	};
 	const excerptStyle = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Excerpt', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Excerpt', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ excerptColor }
@@ -1895,10 +1630,7 @@ let categoriesList = [];
 					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -2004,36 +1736,24 @@ let categoriesList = [];
 	const readMoreLinkStyleSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __(
-					'Read More Link',
-					'ultimate-addons-for-gutenberg'
-				) }
+				title={ __( 'Read More Link', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<UAGTabsControl
 					tabs={ [
 						{
 							name: 'normal',
-							title: __(
-								'Normal',
-								'ultimate-addons-for-gutenberg'
-							),
+							title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							name: 'hover',
-							title: __(
-								'Hover',
-								'ultimate-addons-for-gutenberg'
-							),
+							title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					normal={
 						<>
 							<AdvancedPopColorControl
-								label={ __(
-									'Color',
-									'ultimate-addons-for-gutenberg'
-								) }
+								label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 								colorValue={ ctaColor }
 								data={ {
 									value: ctaColor,
@@ -2051,12 +1771,9 @@ let categoriesList = [];
 								className="uagb-multi-button-alignment-control"
 								options={ bgTypeOptions }
 							/>
-							{ ctaBgType === 'color' &&
+							{ ctaBgType === 'color' && (
 								<AdvancedPopColorControl
-									label={ __(
-										'Background Color',
-										'ultimate-addons-for-gutenberg'
-									) }
+									label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 									colorValue={ ctaBgColor }
 									data={ {
 										value: ctaBgColor,
@@ -2064,16 +1781,13 @@ let categoriesList = [];
 									} }
 									setAttributes={ setAttributes }
 								/>
-							}
+							) }
 						</>
 					}
 					hover={
 						<>
 							<AdvancedPopColorControl
-								label={ __(
-									'Color',
-									'ultimate-addons-for-gutenberg'
-								) }
+								label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 								colorValue={ ctaHColor }
 								data={ {
 									value: ctaHColor,
@@ -2091,12 +1805,9 @@ let categoriesList = [];
 								className="uagb-multi-button-alignment-control"
 								options={ bgTypeOptions }
 							/>
-							{ ctaBgHType === 'color' &&
+							{ ctaBgHType === 'color' && (
 								<AdvancedPopColorControl
-									label={ __(
-										'Background Color',
-										'ultimate-addons-for-gutenberg'
-									) }
+									label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 									colorValue={ ctaBgHColor }
 									data={ {
 										value: ctaBgHColor,
@@ -2104,16 +1815,13 @@ let categoriesList = [];
 									} }
 									setAttributes={ setAttributes }
 								/>
-							}
+							) }
 						</>
 					}
 					disableBottomSeparator={ false }
 				/>
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -2218,7 +1926,7 @@ let categoriesList = [];
 					prefix={ 'btn' }
 					attributes={ attributes }
 					deviceType={ deviceType }
-					disabledBorderTitle= { false }
+					disabledBorderTitle={ false }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -2301,10 +2009,7 @@ let categoriesList = [];
 				initialOpen={ false }
 			>
 				<AdvancedPopColorControl
-					label={ __(
-						'Color',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ arrowColor }
 					data={ {
 						value: arrowColor,
@@ -2312,100 +2017,91 @@ let categoriesList = [];
 					} }
 					setAttributes={ setAttributes }
 				/>
-			{ 'dots' !== arrowDots &&
-				<>
-				<Range
-					label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
-					value={ arrowSize }
-					data={ {
-						value: arrowSize,
-						label: 'arrowSize',
-					} }
-					min={ 0 }
-					max={ 50 }
-					setAttributes={ setAttributes }
-					displayUnit={ false }
-				/>
-				<Range
-					label={ __(
-						'Border Size',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ arrowBorderSize }
-					data={ {
-						value: arrowBorderSize,
-						label: 'arrowBorderSize',
-					} }
-					min={ 0 }
-					max={ 50 }
-					setAttributes={ setAttributes }
-					displayUnit={ false }
-				/>
-				<Range
-					label={ __(
-						'Border Radius',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					displayUnit={ false }
-					value={ arrowBorderRadius }
-					data={ {
-						value: arrowBorderRadius,
-						label: 'arrowBorderRadius',
-					} }
-					min={ 0 }
-					max={ 50 }
-				/>
-				<ResponsiveSlider
-					label={ __( 'Arrow Distance from Edges', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						desktop: {
-							value: arrowDistance,
-							label: 'arrowDistance',
-						},
-						tablet: {
-							value: arrowDistanceTablet,
-							label: 'arrowDistanceTablet',
-						},
-						mobile: {
-							value: arrowDistanceMobile,
-							label: 'arrowDistanceMobile',
-						},
-					} }
-					min={ -50 }
-					max={ 50 }
-					displayUnit={ false }
-					setAttributes={ setAttributes }
-				/>
-				<ResponsiveSlider
-					label={ __(
-						'Top Margin for Dots',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						desktop: {
-							value: dotsMarginTop,
-							label: 'dotsMarginTop',
-						},
-						tablet: {
-							value: dotsMarginTopTablet,
-							label: 'dotsMarginTopTablet',
-						},
-						mobile: {
-							value: dotsMarginTopMobile,
-							label: 'dotsMarginTopMobile',
-						},
-					} }
-					min={ 1 }
-					max={ 50 }
-					unit={ {
-						value: dotsMarginTopUnit,
-						label: 'dotsMarginTopUnit',
-					} }
-					setAttributes={ setAttributes }
-				/>
-				</>
-			}
+				{ 'dots' !== arrowDots && (
+					<>
+						<Range
+							label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
+							value={ arrowSize }
+							data={ {
+								value: arrowSize,
+								label: 'arrowSize',
+							} }
+							min={ 0 }
+							max={ 50 }
+							setAttributes={ setAttributes }
+							displayUnit={ false }
+						/>
+						<Range
+							label={ __( 'Border Size', 'ultimate-addons-for-gutenberg' ) }
+							value={ arrowBorderSize }
+							data={ {
+								value: arrowBorderSize,
+								label: 'arrowBorderSize',
+							} }
+							min={ 0 }
+							max={ 50 }
+							setAttributes={ setAttributes }
+							displayUnit={ false }
+						/>
+						<Range
+							label={ __( 'Border Radius', 'ultimate-addons-for-gutenberg' ) }
+							setAttributes={ setAttributes }
+							displayUnit={ false }
+							value={ arrowBorderRadius }
+							data={ {
+								value: arrowBorderRadius,
+								label: 'arrowBorderRadius',
+							} }
+							min={ 0 }
+							max={ 50 }
+						/>
+						<ResponsiveSlider
+							label={ __( 'Arrow Distance from Edges', 'ultimate-addons-for-gutenberg' ) }
+							data={ {
+								desktop: {
+									value: arrowDistance,
+									label: 'arrowDistance',
+								},
+								tablet: {
+									value: arrowDistanceTablet,
+									label: 'arrowDistanceTablet',
+								},
+								mobile: {
+									value: arrowDistanceMobile,
+									label: 'arrowDistanceMobile',
+								},
+							} }
+							min={ -50 }
+							max={ 50 }
+							displayUnit={ false }
+							setAttributes={ setAttributes }
+						/>
+						<ResponsiveSlider
+							label={ __( 'Top Margin for Dots', 'ultimate-addons-for-gutenberg' ) }
+							data={ {
+								desktop: {
+									value: dotsMarginTop,
+									label: 'dotsMarginTop',
+								},
+								tablet: {
+									value: dotsMarginTopTablet,
+									label: 'dotsMarginTopTablet',
+								},
+								mobile: {
+									value: dotsMarginTopMobile,
+									label: 'dotsMarginTopMobile',
+								},
+							} }
+							min={ 1 }
+							max={ 50 }
+							unit={ {
+								value: dotsMarginTopUnit,
+								label: 'dotsMarginTopUnit',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					</>
+				) }
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -2424,17 +2120,14 @@ let categoriesList = [];
 				<InspectorTab { ...UAGTabs.style }>
 					{ spacingSettings() }
 					{ displayPostTitle && titleStyle() }
-					{ ( displayPostAuthor ||
-						displayPostDate ||
-						displayPostComment ||
-						displayPostTaxonomy ) &&
+					{ ( displayPostAuthor || displayPostDate || displayPostComment || displayPostTaxonomy ) &&
 						metaStyle() }
 					{ displayPostExcerpt && excerptStyle() }
 					{ displayPostLink && readMoreLinkStyleSettings() }
-					{ displayPostImage  && imageStyle() }
+					{ displayPostImage && imageStyle() }
 					{ carouselStyle() }
 				</InspectorTab>
-				<InspectorTab { ...UAGTabs.advance } parentProps={props}></InspectorTab>
+				<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 			</InspectorTabs>
 		</InspectorControls>
 	);
@@ -2443,17 +2136,8 @@ let categoriesList = [];
 		return (
 			<>
 				{ inspectorControls }
-				<Placeholder
-					icon="admin-post"
-					label={
-						__( 'Post Carousel', 'ultimate-addons-for-gutenberg' )
-					}
-				>
-					{ ! Array.isArray( latestPosts ) ? (
-						<Spinner />
-					) : (
-						postDisplaytext
-					) }
+				<Placeholder icon="admin-post" label={ __( 'Post Carousel', 'ultimate-addons-for-gutenberg' ) }>
+					{ ! Array.isArray( latestPosts ) ? <Spinner /> : postDisplaytext }
 				</Placeholder>
 			</>
 		);
@@ -2468,57 +2152,37 @@ let categoriesList = [];
 	if ( titleLoadGoogleFonts === true ) {
 		const titleconfig = {
 			google: {
-				families: [
-					titleFontFamily +
-						( titleFontWeight ? ':' + titleFontWeight : '' ),
-				],
+				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
 			},
 		};
-		loadTitleGoogleFonts = (
-			<WebfontLoader config={ titleconfig }></WebfontLoader>
-		);
+		loadTitleGoogleFonts = <WebfontLoader config={ titleconfig }></WebfontLoader>;
 	}
 
 	if ( metaLoadGoogleFonts === true ) {
 		const metaconfig = {
 			google: {
-				families: [
-					metaFontFamily +
-						( metaFontWeight ? ':' + metaFontWeight : '' ),
-				],
+				families: [ metaFontFamily + ( metaFontWeight ? ':' + metaFontWeight : '' ) ],
 			},
 		};
-		loadMetaGoogleFonts = (
-			<WebfontLoader config={ metaconfig }></WebfontLoader>
-		);
+		loadMetaGoogleFonts = <WebfontLoader config={ metaconfig }></WebfontLoader>;
 	}
 
 	if ( excerptLoadGoogleFonts === true ) {
 		const excerptconfig = {
 			google: {
-				families: [
-					excerptFontFamily +
-						( excerptFontWeight ? ':' + excerptFontWeight : '' ),
-				],
+				families: [ excerptFontFamily + ( excerptFontWeight ? ':' + excerptFontWeight : '' ) ],
 			},
 		};
-		loadExcerptGoogleFonts = (
-			<WebfontLoader config={ excerptconfig }></WebfontLoader>
-		);
+		loadExcerptGoogleFonts = <WebfontLoader config={ excerptconfig }></WebfontLoader>;
 	}
 
 	if ( ctaLoadGoogleFonts === true ) {
 		const ctaconfig = {
 			google: {
-				families: [
-					ctaFontFamily +
-						( ctaFontWeight ? ':' + ctaFontWeight : '' ),
-				],
+				families: [ ctaFontFamily + ( ctaFontWeight ? ':' + ctaFontWeight : '' ) ],
 			},
 		};
-		loadCtaGoogleFonts = (
-			<WebfontLoader config={ ctaconfig }></WebfontLoader>
-		);
+		loadCtaGoogleFonts = <WebfontLoader config={ ctaconfig }></WebfontLoader>;
 	}
 
 	return (
@@ -2549,4 +2213,4 @@ let categoriesList = [];
 	);
 };
 
-export default UAGBPostCarousel
+export default UAGBPostCarousel;

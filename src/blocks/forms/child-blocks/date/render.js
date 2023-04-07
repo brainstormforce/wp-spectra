@@ -3,7 +3,6 @@ import { useLayoutEffect, memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 
-
 import { RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
@@ -19,15 +18,7 @@ const Render = ( props ) => {
 
 	const { attributes, setAttributes } = props;
 
-	const {
-		block_id,
-		dateRequired,
-		name,
-		additonalVal,
-		minYear,
-		minMonth,
-		minDay,
-	} = attributes;
+	const { block_id, dateRequired, name, additonalVal, minYear, minMonth, minDay } = attributes;
 
 	let validation_min_value = '';
 	const validation_max_value = '';
@@ -59,25 +50,14 @@ const Render = ( props ) => {
 		);
 	}
 
-	const isRequired = dateRequired
-		? __( 'required', 'ultimate-addons-for-gutenberg' )
-		: '';
+	const isRequired = dateRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
 
 	return (
 		<>
-			<div
-				className={ classnames(
-					'uagb-forms-date-wrap',
-					'uagb-forms-field-set',
-					`uagb-block-${ block_id }`
-				) }
-			>
+			<div className={ classnames( 'uagb-forms-date-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }>
 				<RichText
 					tagName="div"
-					placeholder={ __(
-						'Date',
-						'ultimate-addons-for-gutenberg'
-					) }
+					placeholder={ __( 'Date', 'ultimate-addons-for-gutenberg' ) }
 					value={ name }
 					onChange={ ( value ) => setAttributes( { name: value } ) }
 					className={ `uagb-forms-date-label ${ isRequired } uagb-forms-input-label` }

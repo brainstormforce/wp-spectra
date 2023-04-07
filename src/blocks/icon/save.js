@@ -5,46 +5,40 @@ import renderSVG from '@Controls/renderIcon';
 import { useBlockProps } from '@wordpress/block-editor';
 import { getProtocol, prependHTTP } from '@wordpress/url';
 
-export default function save( props ){
-
+export default function save( props ) {
 	const { attributes } = props;
-	const {
-		icon,
-		block_id,
-		link,
-		target,
-		disableLink,
-	} = attributes;
+	const { icon, block_id, link, target, disableLink } = attributes;
 
 	let iconHtml = '';
 
 	const targetVal = target ? '_blank' : '_self';
 	let linkUrl = disableLink ? link : '#';
 
-	if( '#' !== linkUrl ) {
-		linkUrl = getProtocol( linkUrl ) ? linkUrl : prependHTTP( linkUrl )
+	if ( '#' !== linkUrl ) {
+		linkUrl = getProtocol( linkUrl ) ? linkUrl : prependHTTP( linkUrl );
 	}
 
-	if( disableLink && linkUrl ) {
+	if ( disableLink && linkUrl ) {
 		iconHtml = (
 			<a // eslint-disable-line jsx-a11y/anchor-has-content
 				rel="noopener noreferrer"
 				href={ linkUrl || '#' }
-				target = { targetVal }
+				target={ targetVal }
 			>
 				{ renderSVG( icon ? icon : 'circle-check' ) }
-			</a> )
+			</a>
+		);
 	} else {
-		iconHtml = ( renderSVG( icon ? icon : 'circle-check' ) )
+		iconHtml = renderSVG( icon ? icon : 'circle-check' );
 	}
 
 	const blockProps = useBlockProps.save( {
-		className: `uagb-block-${ block_id } uagb-icon-wrapper`
+		className: `uagb-block-${ block_id } uagb-icon-wrapper`,
 	} );
 
 	return (
 		<div { ...blockProps }>
-			<span className='uagb-svg-wrapper' >{ iconHtml }</span>
+			<span className="uagb-svg-wrapper">{ iconHtml }</span>
 		</div>
 	);
-};
+}

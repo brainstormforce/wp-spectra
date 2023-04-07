@@ -29,13 +29,8 @@ registerBlockType( 'uagb/review', {
 		anchor: true,
 	},
 	attributes,
-category: uagb_blocks_info.category,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="review" />
-			) : (
-				<Edit { ...props } />
-			),
+	category: uagb_blocks_info.category,
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="review" /> : <Edit { ...props } /> ),
 	save,
-	deprecated
+	deprecated,
 } );

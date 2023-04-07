@@ -5,14 +5,7 @@ import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 
 const Company = ( props ) => {
-	const {
-		attributes,
-		setAttributes,
-		index_value,
-		mergeBlocks,
-		insertBlocksAfter,
-		onReplace,
-	} = props;
+	const { attributes, setAttributes, index_value, mergeBlocks, insertBlocksAfter, onReplace } = props;
 
 	const testArray = attributes.test_block[ index_value ];
 	let company = '';
@@ -39,10 +32,7 @@ const Company = ( props ) => {
 					setAttributes( { test_block: dataCopy } );
 				} }
 				multiline={ false }
-				placeholder={ __(
-					'Company Name',
-					'ultimate-addons-for-gutenberg'
-				) }
+				placeholder={ __( 'Company Name', 'ultimate-addons-for-gutenberg' ) }
 				onMerge={ mergeBlocks }
 				onSplit={
 					insertBlocksAfter
@@ -61,13 +51,7 @@ const Company = ( props ) => {
 			/>
 		);
 	}
-	return (
-		<RichText.Content
-			tagName="span"
-			value={ company }
-			className="uagb-tm__company"
-		/>
-	);
+	return <RichText.Content tagName="span" value={ company } className="uagb-tm__company" />;
 };
 
 export default Company;

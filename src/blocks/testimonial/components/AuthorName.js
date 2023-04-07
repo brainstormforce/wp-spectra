@@ -5,14 +5,7 @@ import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 
 const AuthorName = ( props ) => {
-	const {
-		attributes,
-		setAttributes,
-		index_value,
-		mergeBlocks,
-		insertBlocksAfter,
-		onReplace,
-	} = props;
+	const { attributes, setAttributes, index_value, mergeBlocks, insertBlocksAfter, onReplace } = props;
 
 	const testArray = attributes.test_block[ index_value ];
 	let authorName = '';
@@ -27,10 +20,7 @@ const AuthorName = ( props ) => {
 			<RichText
 				tagName="div"
 				value={ authorName }
-				placeholder={ __(
-					'Author Name',
-					'ultimate-addons-for-gutenberg'
-				) }
+				placeholder={ __( 'Author Name', 'ultimate-addons-for-gutenberg' ) }
 				className="uagb-tm__author-name"
 				onChange={ ( value ) => {
 					const new_content = {
@@ -60,13 +50,7 @@ const AuthorName = ( props ) => {
 			/>
 		);
 	}
-	return (
-		<RichText.Content
-			tagName="span"
-			value={ authorName }
-			className="uagb-tm__author-name"
-		/>
-	);
+	return <RichText.Content tagName="span" value={ authorName } className="uagb-tm__author-name" />;
 };
 
 export default AuthorName;

@@ -50,6 +50,6 @@ const attributes = {
 	autocomplete: {
 		type: 'string',
 		default: 'bday',
-	}
+	},
 };
 export default attributes;

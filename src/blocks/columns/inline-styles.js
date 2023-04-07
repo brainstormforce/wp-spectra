@@ -19,7 +19,7 @@ function inlineStyles( props ) {
 		backgroundRepeat,
 		backgroundType,
 		desktopMarginType,
-		desktopPaddingType
+		desktopPaddingType,
 	} = props.attributes;
 
 	const borderCSS = generateBorderCSS( props.attributes, 'columns' );
@@ -31,15 +31,13 @@ function inlineStyles( props ) {
 		'padding-right': generateCSSUnit( rightPadding, desktopPaddingType ),
 		'margin-top': generateCSSUnit( topMarginDesktop, desktopMarginType ),
 		'margin-bottom': generateCSSUnit( bottomMarginDesktop, desktopMarginType ),
-		...borderCSS
+		...borderCSS,
 	};
 
 	const position = backgroundPosition.replace( '-', ' ' );
 
 	if ( 'image' === backgroundType ) {
-		style[ 'background-image' ] = backgroundImage
-			? `url(${ backgroundImage.url })`
-			: null;
+		style[ 'background-image' ] = backgroundImage ? `url(${ backgroundImage.url })` : null;
 		style[ 'background-position' ] = position;
 		style[ 'background-attachment' ] = backgroundAttachment;
 		style[ 'background-repeat' ] = backgroundRepeat;

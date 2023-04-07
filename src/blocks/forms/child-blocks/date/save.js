@@ -60,18 +60,10 @@ export default function save( props ) {
 			/>
 		);
 	}
-	const isRequired = dateRequired
-		? __( 'required', 'ultimate-addons-for-gutenberg' )
-		: '';
+	const isRequired = dateRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
 
 	return (
-		<div
-			className={ classnames(
-				'uagb-forms-date-wrap',
-				'uagb-forms-field-set',
-				`uagb-block-${ block_id }`
-			) }
-		>
+		<div className={ classnames( 'uagb-forms-date-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }>
 			<RichText.Content
 				tagName="div"
 				value={ name }

@@ -1,16 +1,15 @@
-
 import { __ } from '@wordpress/i18n';
 import GradientSettings from '@Components/gradient-settings';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
-import { select } from '@wordpress/data'
+import { select } from '@wordpress/data';
 import styles from './editor.lazy.scss';
 import { applyFilters } from '@wordpress/hooks';
 
-export default function ColorSwitchControl( {label, type, classic, gradient, setAttributes} ) {
-	const [panelNameForHook, setPanelNameForHook] = useState( null );
+export default function ColorSwitchControl( { label, type, classic, gradient, setAttributes } ) {
+	const [ panelNameForHook, setPanelNameForHook ] = useState( null );
 	const panelRef = useRef( null );
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -24,22 +23,24 @@ export default function ColorSwitchControl( {label, type, classic, gradient, set
 
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	useEffect( () => {
-		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
-	}, [blockNameForHook] )
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) );
+	}, [ blockNameForHook ] );
 
 	const controlName = getIdFromString( label );
-	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
-
+	const controlBeforeDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }.before`,
+		'',
+		blockNameForHook
+	);
+	const controlAfterDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }`,
+		'',
+		blockNameForHook
+	);
 
 	return (
-		<div
-			ref={panelRef}
-			className="components-base-control"
-		>
-			{
-				controlBeforeDomElement
-			}
+		<div ref={ panelRef } className="components-base-control">
+			{ controlBeforeDomElement }
 			<div className="uagb-color-switch-control-container">
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -49,45 +50,30 @@ export default function ColorSwitchControl( {label, type, classic, gradient, set
 					options={ [
 						{
 							value: 'classic',
-							label: __(
-								'Classic',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Classic', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'gradient',
-							label: __(
-								'Gradient',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Gradient', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					showIcons={ false }
 				/>
-				{
-					type.value === 'classic' ? (
-						<AdvancedPopColorControl
-							label={__( 'Color', 'ultimate-addons-for-gutenberg' )}
-							colorValue={ classic.value }
-							data={ {
-								value: classic.value,
-								label: classic.label,
-							} }
-							setAttributes={ setAttributes }
-						/>
-					) : (
-						<GradientSettings
-							backgroundGradient={
-								gradient
-							}
-							setAttributes={ setAttributes }
-						/>
-					)
-				}
+				{ type.value === 'classic' ? (
+					<AdvancedPopColorControl
+						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ classic.value }
+						data={ {
+							value: classic.value,
+							label: classic.label,
+						} }
+						setAttributes={ setAttributes }
+					/>
+				) : (
+					<GradientSettings backgroundGradient={ gradient } setAttributes={ setAttributes } />
+				) }
 			</div>
-			{
-				controlAfterDomElement
-			}
+			{ controlAfterDomElement }
 		</div>
 	);
 }

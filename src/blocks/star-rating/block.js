@@ -18,10 +18,7 @@ starRatingCommonData = applyFilters( 'uagb/star-rating', addCommonDataToSpectraB
 registerBlockType( 'uagb/star-rating', {
 	...starRatingCommonData,
 	title: __( 'Star Ratings', 'ultimate-addons-for-gutenberg' ),
-	description: __(
-		'Display customizable star ratings on your page.',
-		'ultimate-addons-for-gutenberg'
-	),
+	description: __( 'Display customizable star ratings on your page.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.star_rating,
 	keywords: [
 		__( 'rating', 'ultimate-addons-for-gutenberg' ),
@@ -32,13 +29,8 @@ registerBlockType( 'uagb/star-rating', {
 		anchor: true,
 	},
 	attributes,
-category: uagb_blocks_info.category,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="star-rating" />
-			) : (
-				<Edit { ...props } />
-			),
+	category: uagb_blocks_info.category,
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="star-rating" /> : <Edit { ...props } /> ),
 	save,
-	deprecated
+	deprecated,
 } );

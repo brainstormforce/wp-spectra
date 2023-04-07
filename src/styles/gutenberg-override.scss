@@ -8,11 +8,15 @@
 
 	.uagb-inspector-tab {
 
-		&::-webkit-input-placeholder { /* Edge */
+		&::-webkit-input-placeholder {
+
+			/* Edge */
 			color: #aaa;
 		}
 
-		&:-ms-input-placeholder { /* Internet Explorer 10-11 */
+		&:-ms-input-placeholder {
+
+			/* Internet Explorer 10-11 */
 			color: #aaa;
 		}
 
@@ -212,7 +216,6 @@
 
 	// Input Wrapper for Multiple Gutenberg Components.
 	.components-input-control__container {
-
 		// Select Control.
 		// ----------------------------------------------------------------------------------------------------------
 		// NOTE: We will have to implement CustomSelectControl in place of SelectControl to style the Selected State.
@@ -262,7 +265,6 @@
 
 		// Input Wrapper for Multiple Gutenberg Components.
 		.components-input-control__container {
-
 			// Select Control.
 			// ----------------------------------------------------------------------------------------------------------
 			// NOTE: We will have to implement CustomSelectControl in place of SelectControl to style the Selected State.
@@ -338,7 +340,6 @@
 
 	// CSS for the Date Time Picker.
 	.block-editor-block-inspector .components-datetime__time {
-
 		// Remove the Bottom Margin set in the field.
 		.components-base-control,
 		.components-base-control:last-child {

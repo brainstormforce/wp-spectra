@@ -1,4 +1,5 @@
-UAGBLottie = { // eslint-disable-line no-undef
+// eslint-disable-next-line no-undef
+UAGBLottie = {
 	_run( attr, id ) {
 		const animation = bodymovin.loadAnimation( {
 			container: document.getElementsByClassName( id )[ 0 ],
@@ -18,24 +19,21 @@ UAGBLottie = { // eslint-disable-line no-undef
 
 		animation.setDirection( reversedir );
 		const scope = document.getElementsByClassName( id );
-		if( scope.length === 0 ){
+		if ( scope.length === 0 ) {
 			return;
 		}
 		if ( 'hover' === attr.playOn ) {
-			scope[ 0 ]
-				.addEventListener( 'mouseenter', function () {
-					animation.play();
-				} );
-			scope[ 0 ]
-				.addEventListener( 'mouseleave', function () {
-					animation.stop();
-				} );
+			scope[ 0 ].addEventListener( 'mouseenter', function () {
+				animation.play();
+			} );
+			scope[ 0 ].addEventListener( 'mouseleave', function () {
+				animation.stop();
+			} );
 		} else if ( 'click' === attr.playOn ) {
-			scope[ 0 ]
-				.addEventListener( 'click', function () {
-					animation.stop();
-					animation.play();
-				} );
+			scope[ 0 ].addEventListener( 'click', function () {
+				animation.stop();
+				animation.play();
+			} );
 		} else if ( 'scroll' === attr.playOn ) {
 			window.addEventListener( 'scroll', function () {
 				animation.stop();

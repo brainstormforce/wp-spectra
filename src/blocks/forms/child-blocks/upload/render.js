@@ -11,25 +11,16 @@ const Render = ( props ) => {
 
 	const { block_id, uploadRequired, name } = attributes;
 
-	const isRequired = uploadRequired
-		? __( 'required', 'ultimate-addons-for-gutenberg' )
-		: '';
+	const isRequired = uploadRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
 
 	return (
 		<>
 			<div
-				className={ classnames(
-					'uagb-forms-upload-wrap',
-					'uagb-forms-field-set',
-					`uagb-block-${ block_id }`
-				) }
+				className={ classnames( 'uagb-forms-upload-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }
 			>
 				<RichText
 					tagName="div"
-					placeholder={ __(
-						'Name',
-						'ultimate-addons-for-gutenberg'
-					) }
+					placeholder={ __( 'Name', 'ultimate-addons-for-gutenberg' ) }
 					value={ name }
 					onChange={ ( value ) => setAttributes( { name: value } ) }
 					className={ `uagb-forms-upload-label ${ isRequired } uagb-forms-input-label` }

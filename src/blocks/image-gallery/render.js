@@ -15,17 +15,10 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const {
-		lightboxPreview,
-		setLightboxPreview,
-		attributes,
-		setAttributes,
-		className,
-		name,
-	} = props;
+	const { lightboxPreview, setLightboxPreview, attributes, setAttributes, className, name } = props;
 	const { block_id, readyToRender } = attributes;
 	const deviceType = useDeviceType();
-	
+
 	return (
 		<div
 			className={ classnames(
@@ -34,18 +27,14 @@ const Render = ( props ) => {
 				`uagb-block-${ block_id }`
 			) }
 		>
-			{
-				readyToRender ? (
-					<>
-						<ImageGallery { ...{ attributes, setAttributes, name } } />
-						{ lightboxPreview && (
-							<Lightbox { ...{ attributes, setAttributes, setLightboxPreview } } />
-						) }
-					</>
-				) : (
-					<InitialSelector { ...{ attributes, setAttributes } } />
-				)
-			}
+			{ readyToRender ? (
+				<>
+					<ImageGallery { ...{ attributes, setAttributes, name } } />
+					{ lightboxPreview && <Lightbox { ...{ attributes, setAttributes, setLightboxPreview } } /> }
+				</>
+			) : (
+				<InitialSelector { ...{ attributes, setAttributes } } />
+			) }
 		</div>
 	);
 };

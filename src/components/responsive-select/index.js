@@ -12,7 +12,7 @@ import UAGHelpText from '@Components/help-text';
 import { applyFilters } from '@wordpress/hooks';
 
 const ResponsiveSelectControl = ( props ) => {
-	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const [ panelNameForHook, setPanelNameForHook ] = useState( null );
 	const panelRef = useRef( null );
 
 	// Add and remove the CSS on the drop and remove of the component.
@@ -27,9 +27,8 @@ const ResponsiveSelectControl = ( props ) => {
 
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	useEffect( () => {
-		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
-	}, [blockNameForHook] )
-
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) );
+	}, [ blockNameForHook ] );
 
 	const { label, data, setAttributes, options, help = false } = props;
 
@@ -41,57 +40,48 @@ const ResponsiveSelectControl = ( props ) => {
 	output.Desktop = (
 		<SelectControl
 			value={ data.desktop.value }
-			onChange={ ( value ) =>
-				setAttributes( { [ data.desktop.label ]: value } )
-			}
+			onChange={ ( value ) => setAttributes( { [ data.desktop.label ]: value } ) }
 			options={ options.desktop }
 		/>
 	);
 	output.Tablet = (
 		<SelectControl
 			value={ data.tablet.value }
-			onChange={ ( value ) =>
-				setAttributes( { [ data.tablet.label ]: value } )
-			}
+			onChange={ ( value ) => setAttributes( { [ data.tablet.label ]: value } ) }
 			options={ options.tablet || options.desktop }
 		/>
 	);
 	output.Mobile = (
 		<SelectControl
 			value={ data.mobile.value }
-			onChange={ ( value ) =>
-				setAttributes( { [ data.mobile.label ]: value } )
-			}
+			onChange={ ( value ) => setAttributes( { [ data.mobile.label ]: value } ) }
 			options={ options.mobile || options.desktop }
 		/>
 	);
 
 	const controlName = getIdFromString( props.label );
-	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
-
+	const controlBeforeDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }.before`,
+		'',
+		blockNameForHook
+	);
+	const controlAfterDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }`,
+		'',
+		blockNameForHook
+	);
 
 	return (
-		<div
-			ref={panelRef}
-			className="uagb-responsive-select-control components-base-control"
-		>
-			{
-				controlBeforeDomElement
-			}
-				<div className="uagb-size-type-field-tabs">
-					<div className="uagb-control__header">
-						<ResponsiveToggle
-							label= { label }
-							responsive= { responsive }
-						/>
-					</div>
-					{ output[ deviceType ] ? output[ deviceType ] : output.Desktop }
+		<div ref={ panelRef } className="uagb-responsive-select-control components-base-control">
+			{ controlBeforeDomElement }
+			<div className="uagb-size-type-field-tabs">
+				<div className="uagb-control__header">
+					<ResponsiveToggle label={ label } responsive={ responsive } />
 				</div>
-				<UAGHelpText text={ help } />
-			{
-				controlAfterDomElement
-			}
+				{ output[ deviceType ] ? output[ deviceType ] : output.Desktop }
+			</div>
+			<UAGHelpText text={ help } />
+			{ controlAfterDomElement }
 		</div>
 	);
 };

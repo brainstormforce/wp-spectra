@@ -36,20 +36,21 @@ function SchemaNotices( props ) {
 		if (
 			'uagb/how-to-step' !== step.name &&
 			( '' === step.attributes.ctaLink ||
-			'#' === step.attributes.ctaLink ||
-			'' === step.attributes.infoBoxTitle ||
-			'' === step.attributes.headingDesc ||
-			'' === step.attributes.iconImage?.url )
+				'#' === step.attributes.ctaLink ||
+				'' === step.attributes.infoBoxTitle ||
+				'' === step.attributes.headingDesc ||
+				'' === step.attributes.iconImage?.url )
 		) {
 			steps_empty_item_flag = true;
 		}
 
-		if ( 'uagb/how-to-step' === step.name &&
-		( '' === step.attributes.url ||
-		'#' === step.attributes.url ||
-		'' === step.attributes.name ||
-		'' === step.attributes.description ||
-		'' === step.attributes?.image?.url )
+		if (
+			'uagb/how-to-step' === step.name &&
+			( '' === step.attributes.url ||
+				'#' === step.attributes.url ||
+				'' === step.attributes.name ||
+				'' === step.attributes.description ||
+				'' === step.attributes?.image?.url )
 		) {
 			steps_empty_item_flag = true;
 		}
@@ -61,18 +62,10 @@ function SchemaNotices( props ) {
 	if ( 'undefined' === typeof headingDesc || '' === headingDesc ) {
 		emptyItems.push( 'Description' );
 	}
-	if (
-		! mainimage ||
-		mainimage === 'null' ||
-		mainimage.url === 'null' ||
-		mainimage.url === ''
-	) {
+	if ( ! mainimage || mainimage === 'null' || mainimage.url === 'null' || mainimage.url === '' ) {
 		emptyItems.push( 'Main Image' );
 	}
-	if (
-		true === showTotaltime &&
-		( 'undefined' === typeof timeNeeded || '' === timeNeeded )
-	) {
+	if ( true === showTotaltime && ( 'undefined' === typeof timeNeeded || '' === timeNeeded ) ) {
 		emptyItems.push( 'Time Needed Label' );
 	}
 	if (
@@ -85,37 +78,24 @@ function SchemaNotices( props ) {
 	) {
 		emptyItems.push( 'Time' );
 	}
-	if (
-		true === showEstcost &&
-		( 'undefined' === typeof estCost || '' === estCost )
-	) {
+	if ( true === showEstcost && ( 'undefined' === typeof estCost || '' === estCost ) ) {
 		emptyItems.push( 'Total Cost Label' );
 	}
-	if (
-		true === showEstcost &&
-		( 'undefined' === typeof cost || '' === cost )
-	) {
+	if ( true === showEstcost && ( 'undefined' === typeof cost || '' === cost ) ) {
 		emptyItems.push( 'Cost' );
 	}
-	if (
-		true === showEstcost &&
-		( 'undefined' === typeof currencyType || '' === currencyType )
-	) {
+	if ( true === showEstcost && ( 'undefined' === typeof currencyType || '' === currencyType ) ) {
 		emptyItems.push( 'Currency Unit' );
 	}
 	if (
 		true === showTools &&
-		( 'undefined' === typeof tools ||
-			0 === tools.length ||
-			'' === tools[ 0 ].add_required_tools )
+		( 'undefined' === typeof tools || 0 === tools.length || '' === tools[ 0 ].add_required_tools )
 	) {
 		emptyItems.push( 'Tools' );
 	}
 	if (
 		true === showMaterials &&
-		( 'undefined' === typeof materials ||
-			0 === materials.length ||
-			'' === materials[ 0 ].add_required_materials )
+		( 'undefined' === typeof materials || 0 === materials.length || '' === materials[ 0 ].add_required_materials )
 	) {
 		emptyItems.push( 'Materials' );
 	}
@@ -123,13 +103,9 @@ function SchemaNotices( props ) {
 		emptyItems.push( 'Atleast 2 Steps are required' );
 	}
 	if ( true === steps_empty_item_flag ) {
-		emptyItems.push(
-			'The Heading, Description, Image & Link may required for each Step. '
-		);
+		emptyItems.push( 'The Heading, Description, Image & Link may required for each Step. ' );
 	}
-	const listItems = emptyItems.map( ( item ) => (
-		<li key={ item }> { item } </li>
-	) );
+	const listItems = emptyItems.map( ( item ) => <li key={ item }> { item } </li> );
 
 	const schemaNoticeMarkup = () => {
 		if ( 0 !== emptyItems.length ) {
@@ -141,9 +117,7 @@ function SchemaNotices( props ) {
 							'It seems the following fields are empty. This may generate Schema errors / warnings for your Page, we recommend you to fill these fields.'
 						) }{ ' ' }
 					</h6>
-					<ul className="how-to-schema-notices-list">
-						{ listItems }
-					</ul>
+					<ul className="how-to-schema-notices-list">{ listItems }</ul>
 					<p>
 						{ __(
 							'P.S. Note that this notice is visible only in the editor. This will not be visible in frontend. Also, once the required fields are added, this notice will go away.'

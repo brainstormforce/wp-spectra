@@ -18,15 +18,9 @@ function TweetButtonCTA( props ) {
 				</>
 			) }
 
-			{ attributes.iconView === 'icon' && (
-				<>{ UAGB_Block_Icons.quote_tweet_icon }</>
-			) }
+			{ attributes.iconView === 'icon' && <>{ UAGB_Block_Icons.quote_tweet_icon }</> }
 
-			{ attributes.iconView === 'text' && (
-				<>
-					{ attributes.iconLabel }
-				</>
-			) }
+			{ attributes.iconView === 'text' && <>{ attributes.iconLabel }</> }
 		</a>
 	);
 }

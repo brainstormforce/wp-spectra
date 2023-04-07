@@ -175,6 +175,13 @@ return array_merge(
 		'widthTypeMobile'                   => '%',
 		'overflow'                          => 'visible',
 		'equalHeight'                       => false,
+		'gradientColor1'                    => '#06558a',
+		'gradientColor2'                    => '#0063A1',
+		'gradientType'                      => 'linear',
+		'gradientLocation1'                 => 0,
+		'gradientLocation2'                 => 100,
+		'gradientAngle'                     => 0,
+		'selectGradient'                    => 'basic',
 	),
 	$border_attribute
 );

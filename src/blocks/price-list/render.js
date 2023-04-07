@@ -37,9 +37,9 @@ const Render = ( props ) => {
 				className,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-				`uagb-rm__desk-column-${columns}`,
-				`uagb-rm__tablet-column-${tcolumns}`,
-				`uagb-rm__mobile-column-${mcolumns}`,
+				`uagb-rm__desk-column-${ columns }`,
+				`uagb-rm__tablet-column-${ tcolumns }`,
+				`uagb-rm__mobile-column-${ mcolumns }`
 			) }
 		>
 			<InnerBlocks

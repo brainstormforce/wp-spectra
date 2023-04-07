@@ -29,20 +29,19 @@ export default function UAGBCounterEdit( props ) {
 			headingFontWeight,
 		},
 	} = props;
-	
+
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
-
 	}, [] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
-        addBlockEditorDynamicStyles( 'uagb-counter-style-' + clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles( 'uagb-counter-style-' + clientId.substr( 0, 8 ), blockStyling );
 	}, [ attributes ] );
-    	
+
 	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
@@ -54,28 +53,19 @@ export default function UAGBCounterEdit( props ) {
 	if ( numberLoadGoogleFonts === true ) {
 		const numberConfig = {
 			google: {
-				families: [
-					numberFontFamily +
-						( numberFontWeight ? ':' + numberFontWeight : '' ),
-				],
+				families: [ numberFontFamily + ( numberFontWeight ? ':' + numberFontWeight : '' ) ],
 			},
 		};
-		loadNumberGoogleFonts = (
-			<WebfontLoader config={ numberConfig }></WebfontLoader>
-		);
+		loadNumberGoogleFonts = <WebfontLoader config={ numberConfig }></WebfontLoader>;
 	}
 
 	if ( headingLoadGoogleFonts === true ) {
 		const headingConfig = {
 			google: {
-				families: [
-					headingFontFamily + ( headingFontWeight ? ':' + headingFontWeight : '' ),
-				],
+				families: [ headingFontFamily + ( headingFontWeight ? ':' + headingFontWeight : '' ) ],
 			},
 		};
-		loadHeadingGoogleFonts = (
-			<WebfontLoader config={ headingConfig }></WebfontLoader>
-		);
+		loadHeadingGoogleFonts = <WebfontLoader config={ headingConfig }></WebfontLoader>;
 	}
 
 	return (

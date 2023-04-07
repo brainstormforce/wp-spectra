@@ -20,24 +20,19 @@ infoBoxCommonData = applyFilters( 'uagb/info-box', addCommonDataToSpectraBlocks(
 registerBlockType( 'uagb/info-box', {
 	...infoBoxCommonData,
 	title: __( 'Info Box', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'Add image/icon, separator and text description using a single block.', 'ultimate-addons-for-gutenberg' ),
+	description: __(
+		'Add image/icon, separator and text description using a single block.',
+		'ultimate-addons-for-gutenberg'
+	),
 	icon: UAGB_Block_Icons.info_box,
-	keywords: [
-		__( 'info box', 'ultimate-addons-for-gutenberg' ),
-		__( 'uag', 'ultimate-addons-for-gutenberg' ),
-	],
+	keywords: [ __( 'info box', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	supports: {
 		anchor: true,
 	},
 
 	attributes,
-category: uagb_blocks_info.category,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="info-box" />
-			) : (
-				<Edit { ...props } />
-			),
+	category: uagb_blocks_info.category,
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="info-box" /> : <Edit { ...props } /> ),
 	save,
 	deprecated,
 } );

@@ -16,7 +16,6 @@ const uagLocalStorage = getUAGEditorStateLocalStorage();
 if ( uagLocalStorage ) {
 	uagLocalStorage.removeItem( 'uagSettingState' );
 	uagLocalStorage.removeItem( 'isSpectraFontAwesomeAPILoading' );
-
 }
 
 import blocksEditorSpacing from './blocks/extensions/blocks-editor-spacing';
@@ -106,7 +105,7 @@ import './blocks/wp-search/block.js';
 import './components/responsive-icons/index.js';
 
 // Keep category list in separate variable and remove category list from icons list.
-if( uagb_blocks_info.uagb_svg_icons?.uagb_category_list ){
+if ( uagb_blocks_info.uagb_svg_icons?.uagb_category_list ) {
 	wp.uagb_icon_category_list = [ ...uagb_blocks_info.uagb_svg_icons.uagb_category_list ];
 	delete uagb_blocks_info.uagb_svg_icons.uagb_category_list;
 }

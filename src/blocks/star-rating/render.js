@@ -39,16 +39,13 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
+				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
 			) }
 		>
 			{ displayTitle && (
 				<RichText
 					tagName="p"
-					placeholder={ __(
-						'Write a title',
-						'ultimate-addons-for-gutenberg'
-					) }
+					placeholder={ __( 'Write a title', 'ultimate-addons-for-gutenberg' ) }
 					value={ title }
 					className="uag-star-rating__title"
 					onChange={ ( value ) => setAttributes( { title: value } ) }

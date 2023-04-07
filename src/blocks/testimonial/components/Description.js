@@ -5,14 +5,7 @@ import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 
 const Description = ( props ) => {
-	const {
-		attributes,
-		setAttributes,
-		index_value,
-		mergeBlocks,
-		insertBlocksAfter,
-		onReplace,
-	} = props;
+	const { attributes, setAttributes, index_value, mergeBlocks, insertBlocksAfter, onReplace } = props;
 
 	const testArray = attributes.test_block[ index_value ];
 	let description = '';
@@ -27,10 +20,7 @@ const Description = ( props ) => {
 			<RichText
 				tagName="div"
 				value={ description }
-				placeholder={ __(
-					'Write Description',
-					'ultimate-addons-for-gutenberg'
-				) }
+				placeholder={ __( 'Write Description', 'ultimate-addons-for-gutenberg' ) }
 				className="uagb-tm__desc"
 				onChange={ ( value ) => {
 					const new_content = {
@@ -60,13 +50,7 @@ const Description = ( props ) => {
 			/>
 		);
 	}
-	return (
-		<RichText.Content
-			tagName="div"
-			value={ description }
-			className="uagb-tm__desc"
-		/>
-	);
+	return <RichText.Content tagName="div" value={ description } className="uagb-tm__desc" />;
 };
 
 export default Description;

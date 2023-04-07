@@ -30,13 +30,7 @@ const Price = ( props ) => {
 			/>
 		);
 	}
-	return (
-		<RichText.Content
-			tagName="span"
-			value={ price }
-			className="uagb-rm__price"
-		/>
-	);
+	return <RichText.Content tagName="span" value={ price } className="uagb-rm__price" />;
 };
 
 export default Price;

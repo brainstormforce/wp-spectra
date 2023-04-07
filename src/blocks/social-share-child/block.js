@@ -14,7 +14,10 @@ import PreviewImage from '@Controls/previewImage';
 import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 let socialShareChildCommonData = {};
-socialShareChildCommonData = applyFilters( 'uagb/social-share-child', addCommonDataToSpectraBlocks( socialShareChildCommonData ) );
+socialShareChildCommonData = applyFilters(
+	'uagb/social-share-child',
+	addCommonDataToSpectraBlocks( socialShareChildCommonData )
+);
 registerBlockType( 'uagb/social-share-child', {
 	...socialShareChildCommonData,
 	title: __( 'Social Share Child', 'ultimate-addons-for-gutenberg' ),
@@ -27,13 +30,13 @@ registerBlockType( 'uagb/social-share-child', {
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
 	attributes,
-category: uagb_blocks_info.category,
+	category: uagb_blocks_info.category,
 	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="social-share-child" isChildren={ true } />
-			) : (
-				<Edit { ...props } />
-			),
+		props.attributes.isPreview ? (
+			<PreviewImage image="social-share-child" isChildren={ true } />
+		) : (
+			<Edit { ...props } />
+		),
 	save,
 	deprecated,
 } );

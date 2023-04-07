@@ -5,24 +5,15 @@ import { memo } from '@wordpress/element';
 import { RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
-	
 	props = props.parentProps;
-	
+
 	const blockName = props.name.replace( 'uagb/', '' );
 
 	const { attributes, setAttributes } = props;
 
-	const {
-		block_id,
-		textareaRequired,
-		textareaName,
-		rows,
-		placeholder,
-	} = attributes;
+	const { block_id, textareaRequired, textareaName, rows, placeholder } = attributes;
 
-	const isRequired = textareaRequired
-		? __( 'required', 'ultimate-addons-for-gutenberg' )
-		: '';
+	const isRequired = textareaRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
 
 	return (
 		<>
@@ -35,14 +26,9 @@ const Render = ( props ) => {
 			>
 				<RichText
 					tagName="div"
-					placeholder={ __(
-						'Textarea Name',
-						'ultimate-addons-for-gutenberg'
-					) }
+					placeholder={ __( 'Textarea Name', 'ultimate-addons-for-gutenberg' ) }
 					value={ textareaName }
-					onChange={ ( value ) =>
-						setAttributes( { textareaName: value } )
-					}
+					onChange={ ( value ) => setAttributes( { textareaName: value } ) }
 					className={ `uagb-forms-textarea-label ${ isRequired } uagb-forms-input-label` }
 					multiline={ false }
 					id={ block_id }

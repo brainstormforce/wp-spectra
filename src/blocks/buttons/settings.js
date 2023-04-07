@@ -1,4 +1,3 @@
-
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
@@ -11,9 +10,7 @@ import ResponsiveSelectControl from '@Components/responsive-select';
 
 import { Icon } from '@wordpress/components';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
-import InspectorTab, {
-	UAGTabs,
-} from '@Components/inspector-tabs/InspectorTab.js';
+import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -89,45 +86,29 @@ const Settings = ( props ) => {
 		fontLetterSpacingTablet,
 		fontLetterSpacingMobile,
 		fontLetterSpacingType,
-
 	} = attributes;
 
 	const buttonSizeOptions = [
 		{
 			value: 'default',
-			label: __(
-				'Default',
-				'ultimate-addons-for-gutenberg'
-			),
+			label: __( 'Default', 'ultimate-addons-for-gutenberg' ),
 		},
 		{
 			value: 'small',
-			label: __(
-				'Small',
-				'ultimate-addons-for-gutenberg'
-			),
+			label: __( 'Small', 'ultimate-addons-for-gutenberg' ),
 		},
 		{
 			value: 'medium',
-			label: __(
-				'Medium',
-				'ultimate-addons-for-gutenberg'
-			),
+			label: __( 'Medium', 'ultimate-addons-for-gutenberg' ),
 		},
 		{
 			value: 'large',
-			label: __(
-				'Large',
-				'ultimate-addons-for-gutenberg'
-			),
+			label: __( 'Large', 'ultimate-addons-for-gutenberg' ),
 		},
 		{
 			value: 'extralarge',
-			label: __(
-				'Extra Large',
-				'ultimate-addons-for-gutenberg'
-			),
-		}
+			label: __( 'Extra Large', 'ultimate-addons-for-gutenberg' ),
+		},
 	];
 
 	const generalSettings = () => {
@@ -153,55 +134,27 @@ const Settings = ( props ) => {
 					options={ [
 						{
 							value: 'left',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-left' ) }
-								/>
-							),
-							tooltip: __(
-								'Left',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+							tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'center',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-center' ) }
-								/>
-							),
-							tooltip: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
+							tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'right',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-right' ) }
-								/>
-							),
-							tooltip: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
+							tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'full',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-justify' ) }
-								/>
-							),
-							tooltip: __(
-								'Full Width',
-								'ultimate-addons-for-gutenberg'
-							),
+							icon: <Icon icon={ renderSVG( 'fa fa-align-justify' ) } />,
+							tooltip: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					showIcons={ true }
-					responsive={true}
+					responsive={ true }
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -213,31 +166,19 @@ const Settings = ( props ) => {
 					options={ [
 						{
 							value: 'none',
-							label: __(
-								'None',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'None', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'desktop',
-							label: __(
-								'Desktop',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Desktop', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'tablet',
-							label: __(
-								'Tablet',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Tablet', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'mobile',
-							label: __(
-								'Mobile',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Mobile', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					help={ __(
@@ -246,10 +187,7 @@ const Settings = ( props ) => {
 					) }
 				/>
 				<ResponsiveSlider
-					label={ __(
-						'Gap Between Buttons',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Gap Between Buttons', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: gap,
@@ -298,16 +236,9 @@ const Settings = ( props ) => {
 
 	const styleSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Text', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
-
+			<UAGAdvancedPanelBody title={ __( 'Text', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -382,10 +313,7 @@ const Settings = ( props ) => {
 	};
 	const spacingSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+			<UAGAdvancedPanelBody title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<SpacingControl
 					{ ...props }
 					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
@@ -531,23 +459,18 @@ const Settings = ( props ) => {
 	};
 
 	return (
-			<>
+		<>
 			<InspectorControls>
 				<InspectorTabs>
-					<InspectorTab { ...UAGTabs.general }>
-						{ generalSettings() }
-					</InspectorTab>
+					<InspectorTab { ...UAGTabs.general }>{ generalSettings() }</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ styleSettings() }
 						{ spacingSettings() }
 					</InspectorTab>
-					<InspectorTab
-						{ ...UAGTabs.advance }
-						parentProps={ props }
-					></InspectorTab>
+					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			</>
+		</>
 	);
 };
 

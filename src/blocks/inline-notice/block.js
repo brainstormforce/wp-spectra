@@ -30,13 +30,8 @@ registerBlockType( 'uagb/inline-notice', {
 		anchor: true,
 	},
 	attributes,
-category: uagb_blocks_info.category,
+	category: uagb_blocks_info.category,
 	deprecated,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="inline-notice" />
-			) : (
-				<Edit { ...props } />
-			),
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="inline-notice" /> : <Edit { ...props } /> ),
 	save,
 } );
