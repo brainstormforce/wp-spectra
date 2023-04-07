@@ -8,8 +8,10 @@ import Settings from './settings';
 import Render from './render';
 //  Import CSS.
 import './style.scss';
+import { compose } from '@wordpress/compose';
+import { getLoopImage } from './getLoopImage';
 
-export default function UAGBImageEdit( props ) {
+function UAGBImageEdit( props ) {
 	const deviceType = useDeviceType();
 	const {
 		setAttributes,
@@ -46,3 +48,4 @@ export default function UAGBImageEdit( props ) {
 		</>
 	);
 }
+export default compose( getLoopImage )( UAGBImageEdit );

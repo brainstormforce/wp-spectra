@@ -11,7 +11,6 @@ import './style.scss';
 import { registerBlockType, createBlock } from '@wordpress/blocks';
 import deprecated from './deprecated';
 import PreviewImage from '@Controls/previewImage';
-
 import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 let imageCommonData = {};
@@ -44,6 +43,9 @@ registerBlockType( 'uagb/image', {
 	category: uagb_blocks_info.category,
 	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="image" /> : <Edit { ...props } /> ),
 	save,
+	__experimentalLabel: ( atts ) =>
+		applyFilters( 'uag_loop_data_source_label', __( 'Image', 'ultimate-addons-for-gutenberg' ), atts ),
+	usesContext: [ 'postId', 'postType' ],
 	deprecated,
 	transforms: {
 		from: [

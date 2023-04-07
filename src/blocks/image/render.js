@@ -40,17 +40,20 @@ const propTypes = {};
 
 const defaultProps = {};
 
-const Render = ( props ) => {
-	const {
-		attributes,
-		setAttributes,
-		className,
-		isSelected,
-		insertBlocksAfter,
-		onReplace,
-		context,
-		clientId,
-	} = props.parentProps;
+const Render = ( parentProps ) => {
+	const { parentProps: props } = parentProps;
+	let { attributes } = props;
+	const { setAttributes, className, isSelected, insertBlocksAfter, onReplace, context, clientId } = props;
+
+	if ( props?.loopUrl ) {
+		attributes = { ...attributes, url: props.loopUrl };
+	}
+	if ( props?.loopAlt ) {
+		attributes = { ...attributes, alt: props.loopAlt };
+	}
+	if ( props?.loopWidth ) {
+		attributes = { ...attributes, width: props.loopWidth };
+	}
 
 	const {
 		block_id,
