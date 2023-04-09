@@ -459,7 +459,11 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 		'uagb/section',
 	];
 
-			const excludeBlocksAnimations = [ 'uagb/content-timeline-child', 'uagb/slider-child' ];
+			const excludeBlocksAnimations = [
+				'uagb/content-timeline-child',
+				'uagb/slider-child',
+				'uagb/content-timeline-child',
+			];
 
 			const getParentBlocks = wp.data.select( 'core/block-editor' ).getBlockParents( props.clientId );
 
