@@ -63,7 +63,6 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 		let cloneAosStaticCSSStylesTag = false;
 
 		if ( aosStaticCSSStylesTag ) {
-
 			cloneAosStaticCSSStylesTag = aosStaticCSSStylesTag.cloneNode( true );
 		}
 
