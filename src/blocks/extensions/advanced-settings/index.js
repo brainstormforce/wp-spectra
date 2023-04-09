@@ -320,9 +320,17 @@ const animationOptions = ( props ) => {
 					playAnimation( selection.value );
 				} }
 				options={ AnimationList }
-				value={ ( UAGAnimationType !== '' ) ? AnimationSelectControlObject[UAGAnimationType] : AnimationSelectControlObject.none }
-				defaultValue={ ( UAGAnimationType !== '' ) ? AnimationSelectControlObject[UAGAnimationType] : AnimationSelectControlObject.none }
-				isSearchable={true}
+				value={
+					UAGAnimationType !== ''
+						? AnimationSelectControlObject[ UAGAnimationType ]
+						: AnimationSelectControlObject.none
+				}
+				defaultValue={
+					UAGAnimationType !== ''
+						? AnimationSelectControlObject[ UAGAnimationType ]
+						: AnimationSelectControlObject.none
+				}
+				isSearchable={ true }
 				className="uagb-animation-type-searchable-select"
 				// Library specific prop.
 				classNamePrefix="uagb-animation-type-select"
@@ -453,103 +461,89 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 		'uagb/section',
 	];
 
-			const excludeBlocksAnimations = [
-				'uagb/content-timeline-child',
-				'uagb/slider-child',
-				'uagb/content-timeline-child',
-			];
+	const excludeBlocksAnimations = [
+		'uagb/content-timeline-child',
+		'uagb/slider-child',
+		'uagb/content-timeline-child',
+	];
 
-			const getParentBlocks = wp.data.select( 'core/block-editor' ).getBlockParents( props.clientId );
+	const getParentBlocks = wp.data.select( 'core/block-editor' ).getBlockParents( props.clientId );
 
-			let notHasDisallowedParentForAnimations = true;
+	let notHasDisallowedParentForAnimations = true;
 
-			// Currently we are disallowing animations feature in Tabs block.
-			if ( getParentBlocks.length ) {
+	// Currently we are disallowing animations feature in Tabs block.
+	if ( getParentBlocks.length ) {
+		for ( let i = 0; i < getParentBlocks.length; i++ ) {
+			const currentParent = wp.data.select( 'core/block-editor' ).getBlock( getParentBlocks[ i ] );
 
-				for ( let i = 0; i < getParentBlocks.length; i++ ) {
-
-					const currentParent =  wp.data.select( 'core/block-editor' ).getBlock( getParentBlocks[i] );
-	
-					if( currentParent.name === 'uagb/tabs' || currentParent.name === 'uagb/tabs-child' ) {
-						notHasDisallowedParentForAnimations = false;
-						break;
-					}
-					
-				}
+			if ( currentParent.name === 'uagb/tabs' || currentParent.name === 'uagb/tabs-child' ) {
+				notHasDisallowedParentForAnimations = false;
+				break;
 			}
-
-				return (
-					<>
-						{   isSelected &&
-							'enabled' === enableAnimationsExtension &&
-							! excludeDeprecatedBlocks.includes( name ) &&
-							! excludeBlocksAnimations.includes( name ) &&
-							notHasDisallowedParentForAnimations &&
-							<UAGAdvancedPanelBody
-								title={ __( 'Animations', 'ultimate-addons-for-gutenberg' ) }
-								initialOpen={ true }
-								className="block-editor-block-inspector__advanced uagb-extention-tab"
-							>
-								{ animationOptions( props ) }
-							</UAGAdvancedPanelBody>
-						}
-						{ isSelected && ! excludeBlocks.includes( name ) &&
-							<>
-								{ 'enabled' === enableConditions &&
-									<UAGAdvancedPanelBody
-										title={ __(
-											'Display Conditions',
-											'ultimate-addons-for-gutenberg'
-										) }
-										initialOpen={ false }
-										className="block-editor-block-inspector__advanced uagb-extention-tab"
-									>
-										{ UserConditionOptions( props ) }
-										<p className="components-base-control__help">
-											{ __(
-												"Above setting will only take effect once you are on the live page, and not while you're editing.",
-												'ultimate-addons-for-gutenberg'
-											) }
-										</p>
-									</UAGAdvancedPanelBody>
-								}
-								{ 'enabled' === enableResponsiveConditions &&
-									<UAGAdvancedPanelBody
-										title={ __(
-											'Responsive Conditions',
-											'ultimate-addons-for-gutenberg'
-										) }
-										initialOpen={ false }
-										className="block-editor-block-inspector__advanced uagb-extention-tab"
-									>
-									{ ResponsiveConditionOptions( props ) }
-										<p className="components-base-control__help">
-											{ __(
-												"Above setting will only take effect once you are on the live page, and not while you're editing.",
-												'ultimate-addons-for-gutenberg'
-											) }
-										</p>
-									</UAGAdvancedPanelBody>
-								}
-								{ ! excludeDeprecatedBlocks.includes( name ) &&
-									<UAGAdvancedPanelBody
-										title={ __(
-											'Z-Index',
-											'ultimate-addons-for-gutenberg'
-										) }
-										initialOpen={ false }
-										className="block-editor-block-inspector__advanced uagb-extention-tab"
-									>
-										{ zIndexOptions( props ) }
-									</UAGAdvancedPanelBody>
-								}
-							</>
-						}
-					</>
-				);
-
 		}
+	}
+
+	return (
+		<>
+			{ isSelected &&
+				'enabled' === enableAnimationsExtension &&
+				! excludeDeprecatedBlocks.includes( name ) &&
+				! excludeBlocksAnimations.includes( name ) &&
+				notHasDisallowedParentForAnimations && (
+					<UAGAdvancedPanelBody
+						title={ __( 'Animations', 'ultimate-addons-for-gutenberg' ) }
+						initialOpen={ true }
+						className="block-editor-block-inspector__advanced uagb-extention-tab"
+					>
+						{ animationOptions( props ) }
+					</UAGAdvancedPanelBody>
+				) }
+			{ isSelected && ! excludeBlocks.includes( name ) && (
+				<>
+					{ 'enabled' === enableConditions && (
+						<UAGAdvancedPanelBody
+							title={ __( 'Display Conditions', 'ultimate-addons-for-gutenberg' ) }
+							initialOpen={ false }
+							className="block-editor-block-inspector__advanced uagb-extention-tab"
+						>
+							{ UserConditionOptions( props ) }
+							<p className="components-base-control__help">
+								{ __(
+									"Above setting will only take effect once you are on the live page, and not while you're editing.",
+									'ultimate-addons-for-gutenberg'
+								) }
+							</p>
+						</UAGAdvancedPanelBody>
+					) }
+					{ 'enabled' === enableResponsiveConditions && (
+						<UAGAdvancedPanelBody
+							title={ __( 'Responsive Conditions', 'ultimate-addons-for-gutenberg' ) }
+							initialOpen={ false }
+							className="block-editor-block-inspector__advanced uagb-extention-tab"
+						>
+							{ ResponsiveConditionOptions( props ) }
+							<p className="components-base-control__help">
+								{ __(
+									"Above setting will only take effect once you are on the live page, and not while you're editing.",
+									'ultimate-addons-for-gutenberg'
+								) }
+							</p>
+						</UAGAdvancedPanelBody>
+					) }
+					{ ! excludeDeprecatedBlocks.includes( name ) && (
+						<UAGAdvancedPanelBody
+							title={ __( 'Z-Index', 'ultimate-addons-for-gutenberg' ) }
+							initialOpen={ false }
+							className="block-editor-block-inspector__advanced uagb-extention-tab"
+						>
+							{ zIndexOptions( props ) }
+						</UAGAdvancedPanelBody>
+					) }
+				</>
+			) }
+		</>
 	);
+} );
 
 addFilter( 'editor.BlockListBlock', 'uagb/with-aos-wrapper-props', withAOSWrapperProps );
 addFilter( 'blocks.getSaveContent.extraProps', 'uagb/apply-extra-class', ApplyExtraClass );

@@ -6,7 +6,6 @@ import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.j
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
-	
 	props = props.parentProps;
 
 	return (
@@ -15,7 +14,9 @@ const Settings = ( props ) => {
 				<InspectorTabs tabs={ [ 'general', 'advance' ] }>
 					<InspectorTab { ...UAGTabs.general }>
 						<UAGAdvancedPanelBody initialOpen={ true }>
-							<p className="uagb-settings-notice">{ __( 'For the styling options please select the Parent Block.' ) }</p>
+							<p className="uagb-settings-notice">
+								{ __( 'For the styling options please select the Parent Block.' ) }
+							</p>
 						</UAGAdvancedPanelBody>
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
