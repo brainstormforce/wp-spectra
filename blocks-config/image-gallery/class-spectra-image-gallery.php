@@ -133,6 +133,10 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 								'type'    => 'array',
 								'default' => array(),
 							),
+							'focusListObject'  => array(
+								'type'    => 'object',
+								'default' => array(),
+							),
 						),
 						// Gallery Settings.
 						array(
@@ -941,6 +945,15 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 					}
 				}
 
+				// Check if the new Object Focus List is empty and the old Array Focus List is not - if so, transfer it.
+				if ( empty( $attributes['focusListObject'] ) && is_array( $attributes['focusList'] ) && ! empty( $attributes['focusList'] ) ) {
+					foreach ( $attributes['focusList'] as $image_id => $focus_value ) {
+						if ( true === $focus_value ) {
+							$attributes['focusListObject'][ $image_id ] = $focus_value;
+						}
+					}
+				}
+
 				$wrap = array(
 					'wp-block-uagb-image-gallery',
 					'uagb-block-' . $attributes['block_id'],
@@ -1308,7 +1321,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 		private function render_single_media( $mediaArray, $atts ) {
 			// Check if this is part of the Tiled Layout, and if so then check if the current image is focused or not.
 			$focusedClass = '';
-			if ( 'tiled' === $atts['feedLayout'] && ( array_key_exists( $mediaArray['id'], $atts['focusList'] ) && ( true === $atts['focusList'][ $mediaArray['id'] ] ) ) ) {
+			if ( 'tiled' === $atts['feedLayout'] && ! empty( $atts['focusListObject'][ $mediaArray['id'] ] ) ) {
 				$focusedClass = ' spectra-image-gallery__media-wrapper--focus';
 			}
 			?>
