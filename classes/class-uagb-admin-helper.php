@@ -398,7 +398,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 				}
 				if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
 					$settings      = wp_get_global_settings();
-					$content_width = intval( $settings['layout']['contentSize'] );
+					$content_width = intval( $settings['layout']['wideSize'] );
 					self::update_admin_settings_option( 'uag_content_width_set_by', __( "Full Site Editor's Global Styles", 'ultimate-addons-for-gutenberg' ) );
 				}
 			}

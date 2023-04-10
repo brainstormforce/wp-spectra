@@ -169,9 +169,11 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+
 ### x.x.x ###
 * Improvement: Global - Added Advanced options in Gradient Component.
 * Fix: Container - Heading tags were not inheriting color from theme or container.
+* Fix: Container - Updated default content width for block based themes to wideSize.
 * Fix: Image - width and height tag does not appear when image uploaded.
 * Fix: Image Gallery - Replaced the Null Array FocusList with an Optimized Object.
 * Fix: Spacing Control - Removed the capability to set negative values for width & radius settings.
