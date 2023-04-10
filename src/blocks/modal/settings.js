@@ -389,27 +389,29 @@ export default function Settings( props ) {
 					) }
 				</>
 			) }
-			<MultiButtonsControl
-				setAttributes={ setAttributes }
-				label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
-				data={ {
-					desktop: {
-						value: modalAlign,
-						label: 'modalAlign',
-					},
-					tablet: {
-						value: modalAlignTablet,
-						label: 'modalAlignTablet',
-					},
-					mobile: {
-						value: modalAlignMobile,
-						label: 'modalAlignMobile',
-					},
-				} }
-				options={ alignmentOptions }
-				showIcons={ true }
-				responsive={ true }
-			/>
+			{ [ 'button', 'icon', 'text', 'image' ].includes( modalTrigger ) && (
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: modalAlign,
+							label: 'modalAlign',
+						},
+						tablet: {
+							value: modalAlignTablet,
+							label: 'modalAlignTablet',
+						},
+						mobile: {
+							value: modalAlignMobile,
+							label: 'modalAlignMobile',
+						},
+					} }
+					options={ alignmentOptions }
+					showIcons={ true }
+					responsive={ true }
+				/>
+			) }
 		</UAGAdvancedPanelBody>
 	);
 
