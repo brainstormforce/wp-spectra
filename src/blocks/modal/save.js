@@ -95,7 +95,7 @@ export default function Save( props ) {
 			<div
 				className={ classnames( `${ appearEffect }`, 'uagb-modal-popup', `uagb-block-${ block_id }`, {
 					[ `uagb-modal-type-${ openModalAs }` ]: isPro,
-					[ `uagb-modal-position-${ modalPosition }` ]: isPro,
+					[ `uagb-modal-position-${ modalPosition }` ]: isPro && 'popup' === openModalAs,
 				} ) }
 			>
 				{ isPro && ( 'window-top-left' === closeIconPosition || 'window-top-right' === closeIconPosition ) && (
