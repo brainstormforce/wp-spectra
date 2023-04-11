@@ -151,6 +151,28 @@ const Render = ( props ) => {
 		props.setAttributes( { swiperInstance: swiper } );
 	};
 
+	const setSwiperNavigationPagination = ( swiperInst ) => {
+		if ( swiperInst?.params?.navigation ) {
+			swiperInst.params.navigation.prevEl = sliderNavPrevRef.current;
+			swiperInst.params.navigation.nextEl = sliderNavNextRef.current;
+
+			// Re-init navigation
+			swiperInst.navigation.destroy();
+			swiperInst.navigation.init();
+			swiperInst.navigation.update();
+		}
+
+		if ( swiperInst?.params?.pagination ) {
+			swiperInst.params.pagination.el = sliderPaginationRef.current;
+			swiperInst.params.pagination.clickable = true;
+
+			// Re-init pagination
+			swiperInst.pagination.init();
+			swiperInst.pagination.render();
+			swiperInst.pagination.update();
+		}
+	};
+
 	const settings = {
 		slidesPerView: 1,
 		autoplay: false,
@@ -164,25 +186,7 @@ const Render = ( props ) => {
 		},
 		onAfterInit( swiperInst ) {
 			setTimeout( () => {
-				if ( swiperInst?.params?.navigation ) {
-					swiperInst.params.navigation.prevEl = sliderNavPrevRef.current;
-					swiperInst.params.navigation.nextEl = sliderNavNextRef.current;
-
-					// Re-init navigation
-					swiperInst.navigation.destroy();
-					swiperInst.navigation.init();
-					swiperInst.navigation.update();
-				}
-
-				if ( swiperInst?.params?.pagination ) {
-					swiperInst.params.pagination.el = sliderPaginationRef.current;
-					swiperInst.params.pagination.clickable = true;
-
-					// Re-init pagination
-					swiperInst.pagination.init();
-					swiperInst.pagination.render();
-					swiperInst.pagination.update();
-				}
+				setSwiperNavigationPagination( swiperInst );
 			} );
 		},
 	};
@@ -192,6 +196,12 @@ const Render = ( props ) => {
 			swiperInstance.update();
 		}
 	}, [ props ] );
+
+	useEffect( () => {
+		if ( swiperInstance ) {
+			setSwiperNavigationPagination( swiperInstance );
+		}
+	}, [ displayArrows, displayDots ] );
 
 	useEffect( () => {
 		if ( swiperInstance && swiperInstance.slides ) {
