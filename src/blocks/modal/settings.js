@@ -205,6 +205,7 @@ export default function Settings( props ) {
 		yPositionTypeMobile,
 		modalTriggerBgType,
 		modalTriggerBgHoverType,
+		openModalAs
 	} = attributes;
 
 	/*
@@ -415,6 +416,8 @@ export default function Settings( props ) {
 		</UAGAdvancedPanelBody>
 	);
 
+	const isTypePopup = ( 'left-off-canvas' !== openModalAs && 'right-off-canvas' !== openModalAs );
+
 	const modalContentPanel = (
 		<UAGAdvancedPanelBody title={ __( 'Container', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<ResponsiveSlider
@@ -451,27 +454,29 @@ export default function Settings( props ) {
 				] }
 				setAttributes={ setAttributes }
 			/>
-			<MultiButtonsControl
-				setAttributes={ setAttributes }
-				label={ __( 'Modal Popup Height', 'ultimate-addons-for-gutenberg' ) }
-				data={ {
-					value: modalBoxHeight,
-					label: 'modalBoxHeight',
-				} }
-				options={ [
-					{
-						value: 'auto',
-						label: __( 'Auto', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'custom',
-						label: __( 'Custom', 'ultimate-addons-for-gutenberg' ),
-					},
-				] }
-				showIcons={ false }
-				responsive={ false }
-			/>
-			{ modalBoxHeight !== 'custom' && (
+			{ ( isTypePopup ) &&
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Modal Popup Height', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: modalBoxHeight,
+						label: 'modalBoxHeight',
+					} }
+					options={ [
+						{
+							value: 'auto',
+							label: __( 'Auto', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'custom',
+							label: __( 'Custom', 'ultimate-addons-for-gutenberg' ),
+						},
+					] }
+					showIcons={ false }
+					responsive={ false }
+				/>
+			}
+			{ isTypePopup && modalBoxHeight !== 'custom' && (
 				<ResponsiveSlider
 					label={ __( 'Max Height', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -503,7 +508,7 @@ export default function Settings( props ) {
 					setAttributes={ setAttributes }
 				/>
 			) }
-			{ modalBoxHeight !== 'auto' && (
+			{ isTypePopup && modalBoxHeight !== 'auto' && (
 				<ResponsiveSlider
 					label={ __( 'Modal Popup Height', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
