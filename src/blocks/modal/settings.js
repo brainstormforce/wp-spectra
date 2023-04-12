@@ -289,6 +289,7 @@ export default function Settings( props ) {
 		}
 	}
 
+	// This setting panel will only be open by default if Pro is not active.
 	const modalTriggerPanel = (
 		<UAGAdvancedPanelBody title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) } initialOpen={ ! isPro }>
 			<UAGSelectControl
@@ -562,17 +563,14 @@ export default function Settings( props ) {
 						label: 'closeIconPosition',
 					} }
 					setAttributes={ setAttributes }
-					options={ [
-						{
-							value: 'popup-top-left',
-							label: __( 'Top Left', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'popup-top-right',
-							label: __( 'Top Right', 'ultimate-addons-for-gutenberg' ),
-						},
-					] }
-				/>
+				>
+					<option value='popup-top-left'>
+						{ __( 'Top Left', 'ultimate-addons-for-gutenberg' ) }
+					</option>
+					<option value='popup-top-right'>
+						{ __( 'Top Right', 'ultimate-addons-for-gutenberg' ) }
+					</option>
+				</UAGSelectControl>
 			) }
 			<ToggleControl
 				label={ __( 'Close on ESC Keypress', 'ultimate-addons-for-gutenberg' ) }

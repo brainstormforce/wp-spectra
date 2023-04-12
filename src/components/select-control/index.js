@@ -43,19 +43,31 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 
 	const controlName = getIdFromString( label );
 
+	// Filter for the control that should appear before this control.
 	const controlBeforeDomElement = applyFilters(
 		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }.before`,
 		'',
 		blockNameForHook
 	);
+
+	// Filter for the control that should appear after this control.
 	const controlAfterDomElement = applyFilters(
 		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }`,
 		'',
 		blockNameForHook
 	);
+
+	// Filter for all the options of this control.
 	const allOptions = applyFilters(
 		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }.options`,
 		options,
+		blockNameForHook
+	);
+
+	// Filter for all the children of this control.
+	const allChildren = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }.children`,
+		children,
 		blockNameForHook
 	);
 
@@ -71,7 +83,7 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 					}
 					help={ help }
 				>
-					{ children }
+					{ allChildren }
 				</SelectControl>
 			) : (
 				<SelectControl
