@@ -29,7 +29,7 @@ let imageSizeOptions = [
 	{ value: 'medium', label: __( 'Medium', 'ultimate-addons-for-gutenberg' ) },
 	{ value: 'full', label: __( 'Large', 'ultimate-addons-for-gutenberg' ) },
 ];
-
+const isPro = uagb_blocks_info.spectra_pro_status;
 export default function Settings( props ) {
 	props = props.parentProps;
 	const { attributes, setAttributes, deviceType } = props;
@@ -290,7 +290,7 @@ export default function Settings( props ) {
 	}
 
 	const modalTriggerPanel = (
-		<UAGAdvancedPanelBody title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+		<UAGAdvancedPanelBody title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) } initialOpen={ ! isPro }>
 			<UAGSelectControl
 				setAttributes={ setAttributes }
 				label={ __( 'Modal Trigger', 'ultimate-addons-for-gutenberg' ) }
