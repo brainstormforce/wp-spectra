@@ -10,11 +10,13 @@ const Renderer = ( props ) => {
 	} = props;
 
 	let { headingTitle } = props.attributes;
+	let allowedFormats = false;
 
 	// Check if heading block is children block of loop builder.
 	if ( -1 !== headingTitle.indexOf( '<span data-spectra-dc-field="' ) ) {
 		const renderedMarkup = applyFilters( `uag_render_text_loop_data`, headingTitle, context );
 		if ( renderedMarkup !== '' ) {
+			allowedFormats = [ 'uagb/dynamic-content' ];
 			headingTitle = renderedMarkup;
 		}
 	}
@@ -29,6 +31,7 @@ const Renderer = ( props ) => {
 			onChange={ ( value ) => {
 				setAttributes( { headingTitle: value } );
 			} }
+			allowedFormats={ allowedFormats }
 		/>
 	);
 };

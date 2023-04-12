@@ -7,10 +7,13 @@ const RendererDesc = ( props ) => {
 
 	let { headingDesc } = props.attributes;
 
+	let allowedFormats = false;
+
 	// Check if heading block is children block of loop builder.
 	if ( headingDesc && -1 !== headingDesc.indexOf( '<span data-spectra-dc-field="' ) ) {
 		const renderedMarkup = applyFilters( `uag_render_text_loop_data`, headingDesc, context );
 		if ( renderedMarkup !== '' ) {
+			allowedFormats = [ 'uagb/dynamic-content' ];
 			headingDesc = renderedMarkup;
 		}
 	}
@@ -22,6 +25,7 @@ const RendererDesc = ( props ) => {
 			value={ headingDesc }
 			className="uagb-desc-text"
 			onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
+			allowedFormats={ allowedFormats }
 		/>
 	);
 };
