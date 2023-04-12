@@ -66,6 +66,11 @@ const Render = ( props ) => {
 		getImageHeightWidth( url, setAttributes );
 	}, [ imageSize ] );
 
+	useEffect( ()=>{
+		replaceInnerBlocks( clientId, createBlocksFromInnerBlocksTemplate( defaultContent ) );
+		setAttributes( { defaultTemplate: true } );
+	},[] )
+
 	const textHTML = (
 		<RichText
 			tagName="span"
