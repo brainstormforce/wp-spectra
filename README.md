@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.2  
-**Stable tag:** 2.4.1  
+**Stable tag:** 2.4.2  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -169,6 +169,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+
+### 2.4.2 - WEDNESDAY, 12th APRIL 2023 ###
+* Fix: Container - Updated default content width for block based themes to wideSize.
 
 ### 2.4.1 - TUESDAY, 28th MARCH 2023 ###
 * Improvement: Updated Spectra to work with WordPress 6.2 and Full Site Editing (FSE) themes.
