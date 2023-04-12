@@ -3,7 +3,9 @@ UAGBCounter = {
 	elements: {},
 	init( mainSelector, data = {} ) {
 		this.elements = this.getDefaultElements( mainSelector );
-		if ( ! data.isFrontend ) {
+		data = this._getCounterData( this.elements.counterWrapper, data );
+
+		if( !data.isFrontend ){
 			this.elements.counterWrapper.removeAttribute( 'played' );
 		}
 		if ( typeof this.elements.counterWrapper !== 'undefined' && this.elements.counterWrapper ) {
@@ -167,8 +169,20 @@ UAGBCounter = {
 			return parseFloat( 0 );
 		}
 
-		return data.totalNumber || parseFloat( data.startNumber ) === parseFloat( 0 )
-			? parseFloat( data.totalNumber )
-			: parseFloat( 100 );
+		return ( data.totalNumber || parseFloat( data.startNumber ) === parseFloat( 0 ) ) ? parseFloat( data.totalNumber ) : parseFloat( 100 );
 	},
+	_getCounterData( element,data ){
+		
+		// Getting data from html attribute data-counter and overwrite data which comes from php.
+		let getCounterData = element.getAttribute( 'data-counter' );
+		if( ! getCounterData || null === getCounterData || undefined === getCounterData ){
+			return data;
+		}
+
+		getCounterData = JSON.parse( getCounterData );
+		if( getCounterData ){
+			data = { ...data, ...getCounterData};
+		}
+		return data;
+	}
 };
