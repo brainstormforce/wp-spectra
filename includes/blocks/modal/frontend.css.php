@@ -362,6 +362,11 @@ if ( 'custom' !== $attr['modalBoxHeight'] ) {
 		$content_border_css_mobile
 	);
 }
+
+$flex_alignment   = ( 'left' === $attr['modalAlign'] ) ? 'flex-start' : ( ( 'right' === $attr['modalAlign'] ) ? 'flex-end' : 'center' );
+$t_flex_alignment = ( 'left' === $attr['modalAlignTablet'] ) ? 'flex-start' : ( ( 'right' === $attr['modalAlignTablet'] ) ? 'flex-end' : 'center' );
+$m_flex_alignment = ( 'left' === $attr['modalAlignMobile'] ) ? 'flex-start' : ( ( 'right' === $attr['modalAlignMobile'] ) ? 'flex-end' : 'center' );
+
 if ( 'full' !== $attr['modalAlign'] ) {
 	$selectors['.uagb-modal-wrapper']     = array(
 		'text-align' => $attr['modalAlign'],
@@ -369,6 +374,15 @@ if ( 'full' !== $attr['modalAlign'] ) {
 	$selectors[' .wp-block-button__link'] = array(
 		'width' => 'unset',
 	);
+	$selectors[' .uagb-modal-trigger']    = array(
+		'justify-content' => $flex_alignment,
+	);
+	if ( 'image' === $attr['modalTrigger'] ) {
+		$selectors['.uagb-modal-wrapper .uagb-spectra-editor-wrap'] = array(
+			'display'         => 'flex',
+			'justify-content' => $flex_alignment,
+		);
+	}
 } else {
 	$selectors[' .wp-block-button__link.uagb-modal-trigger'] = array(
 		'width'           => '100%',
@@ -383,6 +397,15 @@ if ( 'full' !== $attr['modalAlignMobile'] ) {
 	$m_selectors[' .wp-block-button__link'] = array(
 		'width' => 'unset',
 	);
+	$m_selectors[' .uagb-modal-trigger']    = array(
+		'justify-content' => $m_flex_alignment,
+	);
+	if ( 'image' === $attr['modalTrigger'] ) {
+		$m_selectors['.uagb-modal-wrapper .uagb-spectra-editor-wrap'] = array(
+			'display'         => 'flex',
+			'justify-content' => $m_flex_alignment,
+		);
+	}
 } else {
 	$m_selectors[' .wp-block-button__link.uagb-modal-trigger'] = array(
 		'width'           => '100%',
@@ -391,9 +414,18 @@ if ( 'full' !== $attr['modalAlignMobile'] ) {
 }
 
 if ( 'full' !== $attr['modalAlignTablet'] ) {
-	$t_selectors['.uagb-modal-wrapper'] = array(
+	$t_selectors['.uagb-modal-wrapper']  = array(
 		'text-align' => $attr['modalAlignTablet'],
 	);
+	$t_selectors[' .uagb-modal-trigger'] = array(
+		'justify-content' => $t_flex_alignment,
+	);
+	if ( 'image' === $attr['modalTrigger'] ) {
+		$t_selectors['.uagb-modal-wrapper .uagb-spectra-editor-wrap'] = array(
+			'display'         => 'flex',
+			'justify-content' => $t_flex_alignment,
+		);
+	}
 } else {
 	$t_selectors[' .wp-block-button__link.uagb-modal-trigger'] = array(
 		'width'           => '100%',
@@ -405,7 +437,7 @@ if ( 'full' !== $attr['modalAlignTablet'] ) {
  * Get Combined selectors with filters.
  */
 $combined_selectors = UAGB_Helper::get_combined_selectors(
-	'modal', 
+	'modal',
 	array(
 		'desktop' => $selectors,
 		'tablet'  => $t_selectors,
