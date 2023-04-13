@@ -9,7 +9,7 @@ const RendererDesc = ( props ) => {
 
 	let allowedFormats = false;
 
-	// Check if heading block is children block of loop builder.
+	// Check if this has dynamic content.
 	if ( headingDesc && -1 !== headingDesc.indexOf( '<span data-spectra-dc-field="' ) ) {
 		const renderedMarkup = applyFilters( `uag_render_text_loop_data`, headingDesc, context );
 		if ( renderedMarkup !== '' ) {

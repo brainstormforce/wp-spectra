@@ -112,7 +112,7 @@ const Render = ( props ) => {
 	const desc = (
 		<>
 			{ 'none' !== seperatorStyle && seperatorPos === 'after_title' && showSeperator && seperatorHtml }
-			{ showDesc && <InfoBoxDesc attributes={ attributes } setAttributes={ setAttributes } props={ props } /> }
+			{ showDesc && <InfoBoxDesc { ...props } /> }
 			{ 'none' !== seperatorStyle && seperatorPos === 'after_desc' && seperatorHtml }
 			{ ctaType !== 'none' && <CallToAction attributes={ attributes } setAttributes={ setAttributes } /> }
 		</>
@@ -121,9 +121,9 @@ const Render = ( props ) => {
 	// Get Title and Prefix components.
 	const titleText = (
 		<div className="uagb-ifb-title-wrap">
-			{ showPrefix && <Prefix attributes={ attributes } setAttributes={ setAttributes } props={ props } /> }
+			{ showPrefix && <Prefix { ...props } /> }
 			{ 'none' !== seperatorStyle && seperatorPos === 'after_prefix' && seperatorHtml }
-			{ showTitle && <Title attributes={ attributes } setAttributes={ setAttributes } props={ props } /> }
+			{ showTitle && <Title { ...props } /> }
 		</div>
 	);
 
