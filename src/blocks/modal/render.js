@@ -66,6 +66,11 @@ const Render = ( props ) => {
 		getImageHeightWidth( url, setAttributes );
 	}, [ imageSize ] );
 
+	useEffect( ()=>{
+		replaceInnerBlocks( clientId, createBlocksFromInnerBlocksTemplate( defaultContent ) );
+		setAttributes( { defaultTemplate: true } );
+	},[] )
+
 	const textHTML = (
 		<RichText
 			tagName="span"
@@ -155,7 +160,7 @@ const Render = ( props ) => {
 				<div
 					className={ classnames( `${ appearEffect }`, 'uagb-modal-popup', `uagb-block-${ block_id }`, {
 						[ `uagb-modal-type-${ openModalAs }` ]: isPro,
-						[ `uagb-modal-position-${ modalPosition }` ]: isPro,
+						[ `uagb-modal-position-${ modalPosition }` ]: isPro && 'popup' === openModalAs ,
 					} ) }
 				>
 					{ isPro &&

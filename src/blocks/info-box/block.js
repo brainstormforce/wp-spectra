@@ -29,7 +29,7 @@ registerBlockType( 'uagb/info-box', {
 	supports: {
 		anchor: true,
 	},
-
+	usesContext: [ 'postId', 'postType' ],
 	attributes,
 	category: uagb_blocks_info.category,
 	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="info-box" /> : <Edit { ...props } /> ),

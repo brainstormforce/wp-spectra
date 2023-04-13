@@ -17,6 +17,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	const {
 		tileSize,
 		focusList,
+		focusListObject,
 
 		mediaGallery,
 		feedLayout,
@@ -139,7 +140,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 			mediaGallery.forEach( ( image ) => {
 				if ( tiledImages.current[ image.id ] !== undefined && tiledImages.current[ image.id ] !== null ) {
 					if (
-						focusList[ image.id ] &&
+						focusListObject[ image.id ] &&
 						! tiledImages.current[ image.id ].classList.contains(
 							'spectra-image-gallery__media-wrapper--focus'
 						)
@@ -223,21 +224,36 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		if ( ! focusUpdate ) {
 			return;
 		}
-		for ( let i = 0; i < focusList.length; i++ ) {
+		const updateFocusListObject = focusListObject;
+		Object.keys( updateFocusListObject ).forEach( ( currentImageID ) => {
 			if (
-				focusList[ i ] !== undefined &&
-				tiledImages.current[ i ] !== undefined &&
-				tiledImages.current[ i ] !== null
+				undefined === tiledImages.current[ currentImageID ] ||
+				null === tiledImages.current[ currentImageID ]
 			) {
-				if ( focusList[ i ] ) {
-					tiledImages.current[ i ].classList.add( 'spectra-image-gallery__media-wrapper--focus' );
-				} else {
-					tiledImages.current[ i ].classList.remove( 'spectra-image-gallery__media-wrapper--focus' );
-				}
+				return;
 			}
-		}
+			if (
+				updateFocusListObject[ currentImageID ] &&
+				! tiledImages.current[ currentImageID ].classList.contains(
+					'spectra-image-gallery__media-wrapper--focus'
+				)
+			) {
+				tiledImages.current[ currentImageID ].classList.add( 'spectra-image-gallery__media-wrapper--focus' );
+			} else if ( ! updateFocusListObject[ currentImageID ] ) {
+				tiledImages.current[ currentImageID ].classList.remove( 'spectra-image-gallery__media-wrapper--focus' );
+				delete updateFocusListObject[ currentImageID ];
+			}
+		} );
+		setAttributes( { focusListObject: { ...updateFocusListObject } } );
 		setFocusUpdate( false );
 	}, [ focusUpdate ] );
+
+	// If the old focus list was deleted and the new focus list was created, trigger the focus update.
+	useEffect( () => {
+		if ( Array.isArray( focusList ) && ! focusList.length ) {
+			setFocusUpdate( true );
+		}
+	}, [ focusList ] );
 
 	const SlickNextArrow = () => (
 		<button
@@ -322,15 +338,10 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	};
 
 	const alterFocus = ( imageId, needsFocus ) => {
-		const updatedFocusPairs = focusList;
+		const updatedFocusPairs = focusListObject;
 		updatedFocusPairs[ imageId ] = needsFocus;
-		if ( needsFocus ) {
-			setAttributes( { imageId: true } );
-		} else {
-			setAttributes( { imageId: false } );
-		}
+		setAttributes( { focusListObject: { ...updatedFocusPairs } } );
 		setFocusUpdate( true );
-		setAttributes( { focusList: updatedFocusPairs } );
 	};
 
 	const svgFocus = ( imageId ) => (
@@ -536,7 +547,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	};
 
 	const renderFocusControl = ( mediaObject ) =>
-		focusList[ mediaObject.id ] ? svgUnfocus( mediaObject.id ) : svgFocus( mediaObject.id );
+		focusListObject[ mediaObject.id ] ? svgUnfocus( mediaObject.id ) : svgFocus( mediaObject.id );
 
 	const renderMasonryHoverHandler = ( mediaObject ) => (
 		<div className="spectra-image-gallery__media-wrapper--isotope" key={ mediaObject.id }>

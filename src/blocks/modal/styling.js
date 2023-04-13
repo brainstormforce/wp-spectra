@@ -501,6 +501,19 @@ export default function styling( props ) {
 		};
 	}
 
+	function getFlexAlignment( textalign ) {
+		if ( textalign === 'left' ) {
+			return 'flex-start';
+		} else if ( textalign === 'right' ) {
+			return 'flex-end';
+		}
+		return 'center';
+	}
+
+	const alignment = getFlexAlignment( modalAlign );
+	const alignmentTablet = getFlexAlignment( modalAlignTablet );
+	const alignmentMobile = getFlexAlignment( modalAlignMobile );
+
 	if ( modalAlign !== 'full' ) {
 		selectors[ '.uagb-modal-wrapper .uagb-spectra-editor-wrap' ] = {
 			'text-align': modalAlign,
@@ -508,6 +521,15 @@ export default function styling( props ) {
 		selectors[ ' .wp-block-button__link' ] = {
 			'width': 'unset',
 		};
+		selectors[ ' .uagb-modal-trigger' ] = {
+			'justify-content': alignment,
+		};
+		if ( 'image' === modalTrigger ) {
+			selectors[ '.uagb-modal-wrapper .uagb-spectra-editor-wrap' ] = {
+				'display': 'flex',
+				'justify-content': alignment,
+			}
+		}
 	} else {
 		selectors[ ' .wp-block-button__link.uagb-modal-trigger' ] = {
 			'width': '100%',
@@ -522,6 +544,15 @@ export default function styling( props ) {
 		tabletSelectors[ ' .wp-block-button__link' ] = {
 			'width': 'unset',
 		};
+		tabletSelectors[ ' .uagb-modal-trigger' ] = {
+			'justify-content': alignmentTablet,
+		};
+		if ( 'image' === modalTrigger ) {
+			tabletSelectors[ '.uagb-modal-wrapper .uagb-spectra-editor-wrap' ] = {
+				'display': 'flex',
+				'justify-content': alignmentTablet,
+			}
+		}
 	} else {
 		tabletSelectors[ ' .wp-block-button__link.uagb-modal-trigger' ] = {
 			'width': '100%',
@@ -536,6 +567,15 @@ export default function styling( props ) {
 		mobileSelectors[ ' .wp-block-button__link' ] = {
 			'width': 'unset',
 		};
+		mobileSelectors[ ' .uagb-modal-trigger' ] = {
+			'justify-content': alignmentMobile,
+		};
+		if ( 'image' === modalTrigger ) {
+			mobileSelectors[ '.uagb-modal-wrapper .uagb-spectra-editor-wrap' ] = {
+				'display': 'flex',
+				'justify-content': alignmentMobile,
+			}
+		}
 	} else {
 		mobileSelectors[ ' .wp-block-button__link.uagb-modal-trigger' ] = {
 			'width': '100%',

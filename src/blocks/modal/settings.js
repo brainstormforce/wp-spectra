@@ -29,7 +29,7 @@ let imageSizeOptions = [
 	{ value: 'medium', label: __( 'Medium', 'ultimate-addons-for-gutenberg' ) },
 	{ value: 'full', label: __( 'Large', 'ultimate-addons-for-gutenberg' ) },
 ];
-
+const isPro = uagb_blocks_info.spectra_pro_status;
 export default function Settings( props ) {
 	props = props.parentProps;
 	const { attributes, setAttributes, deviceType } = props;
@@ -205,6 +205,7 @@ export default function Settings( props ) {
 		yPositionTypeMobile,
 		modalTriggerBgType,
 		modalTriggerBgHoverType,
+		openModalAs
 	} = attributes;
 
 	/*
@@ -288,8 +289,9 @@ export default function Settings( props ) {
 		}
 	}
 
+	// This setting panel will only be open by default if Pro is not active.
 	const modalTriggerPanel = (
-		<UAGAdvancedPanelBody title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+		<UAGAdvancedPanelBody title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) } initialOpen={ ! isPro }>
 			<UAGSelectControl
 				setAttributes={ setAttributes }
 				label={ __( 'Modal Trigger', 'ultimate-addons-for-gutenberg' ) }
@@ -389,29 +391,33 @@ export default function Settings( props ) {
 					) }
 				</>
 			) }
-			<MultiButtonsControl
-				setAttributes={ setAttributes }
-				label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
-				data={ {
-					desktop: {
-						value: modalAlign,
-						label: 'modalAlign',
-					},
-					tablet: {
-						value: modalAlignTablet,
-						label: 'modalAlignTablet',
-					},
-					mobile: {
-						value: modalAlignMobile,
-						label: 'modalAlignMobile',
-					},
-				} }
-				options={ alignmentOptions }
-				showIcons={ true }
-				responsive={ true }
-			/>
+			{ [ 'button', 'icon', 'text', 'image' ].includes( modalTrigger ) && (
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: modalAlign,
+							label: 'modalAlign',
+						},
+						tablet: {
+							value: modalAlignTablet,
+							label: 'modalAlignTablet',
+						},
+						mobile: {
+							value: modalAlignMobile,
+							label: 'modalAlignMobile',
+						},
+					} }
+					options={ alignmentOptions }
+					showIcons={ true }
+					responsive={ true }
+				/>
+			) }
 		</UAGAdvancedPanelBody>
 	);
+
+	const isTypePopup = ( 'left-off-canvas' !== openModalAs && 'right-off-canvas' !== openModalAs );
 
 	const modalContentPanel = (
 		<UAGAdvancedPanelBody title={ __( 'Container', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
@@ -449,27 +455,29 @@ export default function Settings( props ) {
 				] }
 				setAttributes={ setAttributes }
 			/>
-			<MultiButtonsControl
-				setAttributes={ setAttributes }
-				label={ __( 'Modal Popup Height', 'ultimate-addons-for-gutenberg' ) }
-				data={ {
-					value: modalBoxHeight,
-					label: 'modalBoxHeight',
-				} }
-				options={ [
-					{
-						value: 'auto',
-						label: __( 'Auto', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'custom',
-						label: __( 'Custom', 'ultimate-addons-for-gutenberg' ),
-					},
-				] }
-				showIcons={ false }
-				responsive={ false }
-			/>
-			{ modalBoxHeight !== 'custom' && (
+			{ ( isTypePopup ) &&
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Modal Popup Height', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: modalBoxHeight,
+						label: 'modalBoxHeight',
+					} }
+					options={ [
+						{
+							value: 'auto',
+							label: __( 'Auto', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'custom',
+							label: __( 'Custom', 'ultimate-addons-for-gutenberg' ),
+						},
+					] }
+					showIcons={ false }
+					responsive={ false }
+				/>
+			}
+			{ isTypePopup && modalBoxHeight !== 'custom' && (
 				<ResponsiveSlider
 					label={ __( 'Max Height', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -501,7 +509,7 @@ export default function Settings( props ) {
 					setAttributes={ setAttributes }
 				/>
 			) }
-			{ modalBoxHeight !== 'auto' && (
+			{ isTypePopup && modalBoxHeight !== 'auto' && (
 				<ResponsiveSlider
 					label={ __( 'Modal Popup Height', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -555,17 +563,14 @@ export default function Settings( props ) {
 						label: 'closeIconPosition',
 					} }
 					setAttributes={ setAttributes }
-					options={ [
-						{
-							value: 'popup-top-left',
-							label: __( 'Top Left', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'popup-top-right',
-							label: __( 'Top Right', 'ultimate-addons-for-gutenberg' ),
-						},
-					] }
-				/>
+				>
+					<option value='popup-top-left'>
+						{ __( 'Top Left', 'ultimate-addons-for-gutenberg' ) }
+					</option>
+					<option value='popup-top-right'>
+						{ __( 'Top Right', 'ultimate-addons-for-gutenberg' ) }
+					</option>
+				</UAGSelectControl>
 			) }
 			<ToggleControl
 				label={ __( 'Close on ESC Keypress', 'ultimate-addons-for-gutenberg' ) }

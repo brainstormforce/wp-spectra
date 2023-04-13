@@ -1,3 +1,4 @@
+@import "../../styles/variables";
 $border-color: #d6d9dd;
 
 .components-panel[data-uagb-tab] {
@@ -13,6 +14,7 @@ $border-color: #d6d9dd;
 
 		.block-editor-block-inspector > div > .components-panel__body.uagb-dynamic-content-wrap {
 			display: block;
+			border-bottom: 1px solid #e0e0e0 !important;
 		}
 	}
 
@@ -116,13 +118,24 @@ $border-color: #d6d9dd;
 			border-bottom-right-radius: 0;
 
 			&::before {
+				/* Commented CSS used to show border at top of the tabs. */
+				// border-color: $border-color;
+				// border-top-color: #0085ba;
+				// border-top-width: 4px;
+				/* End here. */
+				/* Below CSS used to show border at bottom of the tabs. */
 				border-color: $border-color;
-				border-top-color: #0085ba;
-				border-top-width: 4px;
+				border-top-color: transparent;
+				border-top-width: 0;
+				/* End here. */
 			}
 
 			&::after {
 				border-color: transparent;
+				/* Below CSS used to show border at bottom of the tabs. */
+				box-shadow: inset 0 -3px 0 0 $spectra-color-primary;
+				color: $spectra-color-primary;
+				/* End here. */
 			}
 
 			+ button {

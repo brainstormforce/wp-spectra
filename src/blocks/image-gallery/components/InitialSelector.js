@@ -9,20 +9,17 @@ const InitialSelector = ( { attributes, setAttributes } ) => {
 	const handleGalleryUpdate = ( media ) => {
 		let goodToGo = true;
 		const updatedIDs = [];
-		const focusList = [];
 		media.forEach( ( image ) => {
 			if ( ! image || ! image.url || ! image.type || 'image' !== image.type ) {
 				goodToGo = false;
 			} else {
 				updatedIDs.push( image.id );
-				focusList[ image.id ] = false;
 			}
 		} );
 		if ( goodToGo ) {
 			setAttributes( {
 				mediaGallery: media,
 				mediaIDs: updatedIDs,
-				focusList,
 				readyToRender: true,
 			} );
 		}
