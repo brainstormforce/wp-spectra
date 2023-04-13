@@ -4,6 +4,7 @@ import { useSelect, useDispatch } from '@wordpress/data';
 const ALLOWED_BLOCKS = [ 'uagb/slider-child' ];
 import { useDeviceType } from '@Controls/getPreviewType';
 import { __ } from '@wordpress/i18n';
+import { doAction } from '@wordpress/hooks';
 
 import { Navigation, Pagination, Autoplay, Manipulation } from 'swiper';
 import { Swiper } from 'swiper/react';
@@ -25,6 +26,8 @@ const Render = ( props ) => {
 	const sliderNavPrevRef = useRef();
 	const sliderNavNextRef = useRef();
 	const { selectBlock } = useDispatch( blockEditorStore );
+
+	doAction( `spectra.slider.before_render`, attributes );
 
 	const { isListViewOpen, hasChildren } = useSelect( ( select ) => {
 		const { isListViewOpened } = select( 'core/edit-post' );
