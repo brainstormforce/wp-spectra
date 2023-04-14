@@ -22,7 +22,7 @@ UAGBCountdown = {
 		this.elements[ mainSelector ] = this.getElement( mainSelector );
 
 		this.countdownInterval[ mainSelector ] = setInterval( () => {
-			this.updateCountdown( mainSelector, data, true, countdownRef );
+			this.updateCountdown( mainSelector, data, countdownRef );
 		}, 1000 );
 	},
 
@@ -93,12 +93,19 @@ UAGBCountdown = {
 				}
 			}
 
-			// Ensures instantaneous load/firing of countdown functionality.
-			this.updateCountdown( mainSelector, data );
+			// Slider block may create duplicate instances of it's slides, which may contain instances of the same countdowns.
+			const allSameCountdownInstances = document.querySelectorAll( mainSelector );
 
-			this.countdownInterval[ mainSelector ] = setInterval( () => {
-				this.updateCountdown( mainSelector, data );
-			}, 1000 );
+			for( let i = 0; i < allSameCountdownInstances.length; i++ ) {
+
+				// Ensures instantaneous load/firing of countdown functionality.
+				this.updateCountdown( mainSelector, data, allSameCountdownInstances[i] );
+
+				this.countdownInterval[ mainSelector ] = setInterval( () => {
+					this.updateCountdown( mainSelector, data, allSameCountdownInstances[i] );
+				}, 1000 );
+			}
+
 		}
 	},
 
@@ -107,11 +114,11 @@ UAGBCountdown = {
 
 		if ( typeof this.elements[ mainSelector ] !== 'undefined' ) {
 			// Ensures instantaneous refresh of value.
-			this.updateCountdown( mainSelector, data, true, ref );
+			this.updateCountdown( mainSelector, data, ref );
 
-			this.countdownInterval[ mainSelector ] = setInterval( () => {
-				this.updateCountdown( mainSelector, data, true, ref );
-			}, 1000 );
+            this.countdownInterval[ mainSelector ] = setInterval( () => {
+                this.updateCountdown( mainSelector, data, ref );
+            }, 1000 );
 		}
 	},
 
@@ -127,8 +134,9 @@ UAGBCountdown = {
 		return domElement;
 	},
 
-	updateCountdown( mainSelector, data, isEditor = false, ref = null ) {
-		if ( isEditor && ! ref ) {
+    updateCountdown( mainSelector, data, ref = null ) {
+		
+		if( ! ref ){
 			return;
 		}
 
@@ -146,36 +154,18 @@ UAGBCountdown = {
 		let daysWrap;
 		let hoursWrap;
 		let minutesWrap;
-		let secondsWrap;
+		const secondsWrap = ref.querySelector( '.wp-block-uagb-countdown__time-seconds' );
 
-		if ( isEditor ) {
-			if ( data.showDays ) {
-				daysWrap = ref.querySelector( '.wp-block-uagb-countdown__time-days' );
-			}
+		if ( data.showDays ) {
+			daysWrap = ref.querySelector( '.wp-block-uagb-countdown__time-days' );
+		}
 
-			if ( data.showHours ) {
-				hoursWrap = ref.querySelector( '.wp-block-uagb-countdown__time-hours' );
-			}
+		if ( data.showHours ) {
+			hoursWrap = ref.querySelector( '.wp-block-uagb-countdown__time-hours' );
+		}
 
-			if ( data.showMinutes ) {
-				minutesWrap = ref.querySelector( '.wp-block-uagb-countdown__time-minutes' );
-			}
-
-			secondsWrap = ref.querySelector( '.wp-block-uagb-countdown__time-seconds' );
-		} else {
-			if ( data.showDays ) {
-				daysWrap = this.elements[ mainSelector ]?.querySelector( '.wp-block-uagb-countdown__time-days' );
-			}
-
-			if ( data.showHours ) {
-				hoursWrap = this.elements[ mainSelector ]?.querySelector( '.wp-block-uagb-countdown__time-hours' );
-			}
-
-			if ( data.showMinutes ) {
-				minutesWrap = this.elements[ mainSelector ]?.querySelector( '.wp-block-uagb-countdown__time-minutes' );
-			}
-
-			secondsWrap = this.elements[ mainSelector ]?.querySelector( '.wp-block-uagb-countdown__time-seconds' );
+		if ( data.showMinutes ) {
+			minutesWrap = ref.querySelector( '.wp-block-uagb-countdown__time-minutes' );
 		}
 
 		// Calculations.
