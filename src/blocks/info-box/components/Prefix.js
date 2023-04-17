@@ -8,6 +8,11 @@ import { applyFilters } from '@wordpress/hooks';
 const Prefix = ( props ) => {
 	const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace, context } = props;
 	let { prefixTitle } = attributes;
+
+	if( 'not_set' === setAttributes ){
+		return <RichText.Content tagName="span" value={ prefixTitle } className="uagb-ifb-title-prefix" />
+	}
+
 	let allowedFormats = false;
 	
 	// Check if this has dynamic content.

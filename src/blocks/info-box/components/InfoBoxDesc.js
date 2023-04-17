@@ -7,8 +7,12 @@ import { applyFilters } from '@wordpress/hooks';
 
 const InfoBoxDesc = ( props ) => {
 	const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace, context } = props;
-	
 	let { headingDesc } = attributes;
+
+	if( 'not_set' === setAttributes ){
+		return <RichText.Content tagName="p" value={ headingDesc } className="uagb-ifb-desc" />
+	}
+
 	let allowedFormats = false;
 	
 	// Check if this has dynamic content.
