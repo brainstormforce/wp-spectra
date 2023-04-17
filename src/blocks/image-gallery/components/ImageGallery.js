@@ -524,7 +524,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 							`spectra-image-gallery__layout--${ feedLayout }`,
 						] ) }
 						ref={ slickCarousel }
-						style={ { 'margin-bottom': `${ slickDotHeight }px` } }
+						style={ { marginBottom: `${ slickDotHeight }px` } }
 					>
 						<Slider className="uagb-slick-carousel" { ...carouselSettings }>
 							{ renderImageLooper() }

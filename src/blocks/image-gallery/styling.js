@@ -401,7 +401,10 @@ function styling( attributes, clientId, name ) {
 			'margin-bottom': `${ generateCSSUnit( paginateDotDistanceFallback, 'px' ) } !important`,
 		},
 		' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper': {
-			'padding': generateSpacing( gridImageGapUnit, gridImageGapFallback ),
+			'padding': generateSpacing( gridImageGapUnit, 0, gridImageGapFallback / 2 ),
+		},
+		' .spectra-image-gallery__layout--carousel .slick-list': {
+			'margin': generateSpacing( gridImageGapUnit, 0, -( gridImageGapFallback / 2 ) ),
 		},
 		' .spectra-image-gallery__layout--tiled': {
 			'grid-gap': generateCSSUnit( gridImageGapFallback, gridImageGapUnit ),
@@ -614,7 +617,10 @@ function styling( attributes, clientId, name ) {
 			'padding': generateSpacing( gridImageGapUnitTab, gridImageGapTabFallback / 2 ),
 		},
 		' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper': {
-			'padding': generateSpacing( gridImageGapUnitTab, gridImageGapTabFallback ),
+			'padding': generateSpacing( gridImageGapUnitTab, 0, gridImageGapTabFallback / 2 ),
+		},
+		' .spectra-image-gallery__layout--carousel .slick-list': {
+			'margin': generateSpacing( gridImageGapUnitTab, 0, -( gridImageGapTabFallback / 2 ) ),
 		},
 		' .spectra-image-gallery__layout--tiled': {
 			'grid-gap': generateCSSUnit( gridImageGapTabFallback, gridImageGapUnitTab ),
@@ -703,7 +709,10 @@ function styling( attributes, clientId, name ) {
 			'padding': generateSpacing( gridImageGapUnitMob, gridImageGapMobFallback / 2 ),
 		},
 		' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper': {
-			'padding': generateSpacing( gridImageGapUnitMob, gridImageGapMobFallback ),
+			'padding': generateSpacing( gridImageGapUnitMob, 0, gridImageGapMobFallback / 2 ),
+		},
+		' .spectra-image-gallery__layout--carousel .slick-list': {
+			'margin': generateSpacing( gridImageGapUnitMob, 0, -( gridImageGapMobFallback / 2 ) ),
 		},
 		' .spectra-image-gallery__layout--tiled': {
 			'grid-gap': generateCSSUnit( gridImageGapMobFallback, gridImageGapUnitMob ),

@@ -2,6 +2,7 @@
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import { useEffect, memo } from '@wordpress/element';
+import { doAction } from '@wordpress/hooks';
 import getMatrixAlignment from '@Controls/getMatrixAlignment';
 import { useDeviceType } from '@Controls/getPreviewType';
 import TypographyControl from '@Components/typography';
@@ -412,6 +413,9 @@ const Settings = ( props ) => {
 						value: 'bar-outside',
 					},
 			  ];
+
+	// Do any other actions needed before rendering.
+	doAction( 'spectra.image-gallery.settings.actions', attributes, setAttributes );
 
 	const renderCaptionDisplay = ( isHover ) => (
 		<>

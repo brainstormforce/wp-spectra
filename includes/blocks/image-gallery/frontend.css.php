@@ -196,9 +196,17 @@ $selectors = array(
 		) . ' !important',
 	),
 	' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper' => array(
-		'padding' => UAGB_Helper::get_css_value(
-			$attr['gridImageGap'],
-			$attr['gridImageGapUnit']
+		'padding' => UAGB_Block_Helper::generate_spacing(
+			$attr['gridImageGapUnit'],
+			0,
+			$attr['gridImageGap'] / 2
+		),
+	),
+	' .spectra-image-gallery__layout--carousel .slick-list' => array(
+		'margin' => UAGB_Block_Helper::generate_spacing(
+			$attr['gridImageGapUnit'],
+			0,
+			-( $attr['gridImageGap'] / 2 )
 		),
 	),
 	' .spectra-image-gallery__layout--tiled'             => array(
@@ -431,7 +439,15 @@ $t_selectors = array(
 	' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper' => array(
 		'padding' => UAGB_Block_Helper::generate_spacing(
 			$attr['gridImageGapUnitTab'],
+			0,
 			$grid_image_gap_tablet_fallback
+		),
+	),
+	' .spectra-image-gallery__layout--carousel .slick-list' => array(
+		'margin' => UAGB_Block_Helper::generate_spacing(
+			$attr['gridImageGapUnitTab'],
+			0,
+			-$grid_image_gap_tablet_fallback
 		),
 	),
 	' .spectra-image-gallery__layout--tiled'            => array(
@@ -549,7 +565,15 @@ $m_selectors = array(
 	' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper' => array(
 		'padding' => UAGB_Block_Helper::generate_spacing(
 			$attr['gridImageGapUnitMob'],
+			0,
 			$grid_image_gap_mobile_fallback
+		),
+	),
+	' .spectra-image-gallery__layout--carousel .slick-list' => array(
+		'margin' => UAGB_Block_Helper::generate_spacing(
+			$attr['gridImageGapUnitMob'],
+			0,
+			-$grid_image_gap_mobile_fallback
 		),
 	),
 	' .spectra-image-gallery__layout--tiled .spectra-image-gallery__media-wrapper' => array(
