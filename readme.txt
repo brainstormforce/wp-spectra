@@ -183,6 +183,10 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Advanced Heading - Removed Extra padding in the editor.
 * Fix: Global - Mobile should inherit tablet setting values instead of taking desktop values in the editor.
 * Fix: Editor Sidebar - x-axis Scrollbar should be hidden when switched to RTL.
+* Fix: Inspector tabs - Improper border when switched to RTL.
+* Fix: ResponsiveSlider - Improper direction of Slider when switched to RTL.
+* Fix: Control_units - Alignment issue in control_units when switched to RTL.
+* Fix: Color_reset_button - Padding issue in reset and color indicator padding issue when switched to RTL.
 
 = 2.4.2 - WEDNESDAY, 12th APRIL 2023 =
 * Fix: Container - Updated default content width for block based themes to wideSize.

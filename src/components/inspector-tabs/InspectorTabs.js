@@ -129,7 +129,7 @@ const InspectorTabs = ( props ) => {
 					) }
 				>
 					{ tabs.indexOf( LAYOUT ) > -1 && (
-						<button
+						<div
 							className={ classnames( {
 								'uagb-active': currentTab === LAYOUT,
 							} ) }
@@ -142,11 +142,11 @@ const InspectorTabs = ( props ) => {
 								/>
 							</svg>
 							<h5>{ __( 'General' ) }</h5>
-						</button>
+						</div>
 					) }
 
 					{ tabs.indexOf( STYLE ) > -1 && (
-						<button
+						<div
 							className={ classnames( {
 								'uagb-active': currentTab === STYLE,
 							} ) }
@@ -158,11 +158,11 @@ const InspectorTabs = ( props ) => {
 								</g>
 							</svg>
 							<h5>{ __( 'Style' ) }</h5>
-						</button>
+						</div>
 					) }
 
 					{ tabs.indexOf( ADVANCE ) > -1 && (
-						<button
+						<div
 							className={ classnames( {
 								'uagb-active': currentTab === ADVANCE,
 							} ) }
@@ -175,7 +175,7 @@ const InspectorTabs = ( props ) => {
 								/>
 							</svg>
 							<h5>{ __( 'Advanced' ) }</h5>
-						</button>
+						</div>
 					) }
 				</div>
 			</div>
