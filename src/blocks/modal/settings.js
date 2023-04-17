@@ -422,7 +422,7 @@ export default function Settings( props ) {
 	const modalContentPanel = (
 		<UAGAdvancedPanelBody title={ __( 'Container', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<ResponsiveSlider
-				label={ __( 'Modal Popup Width', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Modal Width', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
 					desktop: {
 						value: modalWidth,
@@ -458,7 +458,7 @@ export default function Settings( props ) {
 			{ isTypePopup && (
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
-					label={ __( 'Modal Popup Height', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Modal Height', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: modalBoxHeight,
 						label: 'modalBoxHeight',

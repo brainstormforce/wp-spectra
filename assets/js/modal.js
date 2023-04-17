@@ -71,7 +71,7 @@ window.UAGBModal = {
 						modalPopup.classList.remove( 'active' );
 					}
 					if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
-						bodyWrap.classList.remove( 'hide-scroll' );
+						UAGBModal.closeModalScrollCheck( bodyWrap );
 					}
 				} );
 
@@ -85,7 +85,7 @@ window.UAGBModal = {
 							innerModal.classList.remove( 'active' );
 						}
 						if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
-							bodyWrap.classList.remove( 'hide-scroll' );
+							UAGBModal.closeModalScrollCheck( bodyWrap );
 						}
 					} );
 				}
@@ -97,11 +97,19 @@ window.UAGBModal = {
 							innerModal.classList.remove( 'active' );
 						}
 						if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
-							bodyWrap.classList.remove( 'hide-scroll' );
+							UAGBModal.closeModalScrollCheck( bodyWrap );
 						}
 					}
 				} );
 			}
+		}
+	},
+
+	// Close the Modal and check if the Scrollbar needs to be reactivated.
+	closeModalScrollCheck( bodyWrapper ) {
+		const allActiveModals = document.querySelectorAll( '.uagb-modal-popup.active' );
+		if ( 0 === allActiveModals.length ) {
+			bodyWrapper.classList.remove( 'hide-scroll' );
 		}
 	},
 };
