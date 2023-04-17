@@ -266,7 +266,7 @@ function styling( attributes, clientId ) {
 			'bottom': generateCSSUnit( dotsMarginTop, 'px' ),
 		},
 		' .swiper-pagination-bullet': {
-			'background-color': '' === arrowBgColor || 'undefined' === typeof arrowBgColor ? arrowColor : arrowBgColor,
+			'background-color': arrowColor,
 		},
 		' .swiper-wrapper': {
 			'align-items': verticalAlign,
