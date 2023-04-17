@@ -181,6 +181,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Carousel - TwentyTwentyone theme hover style override for arrow and dot.
 * Fix: Global - Fonts were not loading in the customizer when Spectra blocks are used in Astra theme's header/footer section.
 * Fix: Advanced Heading - Removed Extra padding in the editor.
+* Fix: Global - Mobile should inherit tablet setting values instead of taking desktop values in the editor.
 * Fix: Editor Sidebar - x-axis Scrollbar should be hidden when switched to RTL.
 
 = 2.4.2 - WEDNESDAY, 12th APRIL 2023 =

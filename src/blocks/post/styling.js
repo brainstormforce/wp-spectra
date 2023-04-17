@@ -1006,19 +1006,9 @@ function styling( attributes, clientId ) {
 
 	stylingCss = generateCSS( selectors, `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }` );
 
-	stylingCss += generateCSS(
-		tabletSelectors,
-		`.uagb-block-${ clientId.substr( 0, 8 ) }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
+	stylingCss += generateCSS( tabletSelectors, `.uagb-block-${ clientId.substr( 0, 8 ) }`, true, 'tablet' );
 
-	stylingCss += generateCSS(
-		mobileSelectors,
-		`.uagb-block-${ clientId.substr( 0, 8 ) }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	stylingCss += generateCSS( mobileSelectors, `.uagb-block-${ clientId.substr( 0, 8 ) }`, true, 'mobile' );
 
 	return stylingCss;
 }

@@ -464,9 +464,9 @@ export default function styling( attributes, clientId, name ) {
 
 	let styling_css = generateCSS( selectors, baseSelector );
 
-	styling_css += generateCSS( tabletSelectors, `${ baseSelector }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	styling_css += generateCSS( tabletSelectors, `${ baseSelector }`, true, 'tablet' );
 
-	styling_css += generateCSS( mobileSelectors, `${ baseSelector }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	styling_css += generateCSS( mobileSelectors, `${ baseSelector }`, true, 'mobile' );
 
 	return styling_css;
 }

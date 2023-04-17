@@ -416,9 +416,9 @@ function styling( attributes, clientId, name ) {
 
 	let styling_css = generateCSS( selectors, id );
 
-	styling_css += generateCSS( tablet_selectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	styling_css += generateCSS( tablet_selectors, `${ id }`, true, 'tablet' );
 
-	styling_css += generateCSS( mobile_selectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	styling_css += generateCSS( mobile_selectors, `${ id }`, true, 'mobile' );
 
 	if ( '' !== scrollToTopColor ) {
 		styling_css += '.uagb-toc__scroll-top { color: ' + scrollToTopColor + '; }';
