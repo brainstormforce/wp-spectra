@@ -16,8 +16,10 @@ import { __ } from '@wordpress/i18n';
 import { useSelect, useDispatch, select } from '@wordpress/data';
 import { __experimentalBlockVariationPicker as BlockVariationPicker } from '@wordpress/block-editor';
 import { createBlock } from '@wordpress/blocks';
+import { compose } from '@wordpress/compose';
 import styles from './editor.lazy.scss';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import { containerWrapper } from './containerWrapper';
 
 const UAGBContainer = ( props ) => {
 	const deviceType = useDeviceType();
@@ -215,4 +217,4 @@ const UAGBContainer = ( props ) => {
 	);
 };
 
-export default UAGBContainer;
+export default compose( containerWrapper )( UAGBContainer );
