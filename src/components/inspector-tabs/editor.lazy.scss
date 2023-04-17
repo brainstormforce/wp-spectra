@@ -4,8 +4,7 @@ $border-color: #d6d9dd;
 .components-panel[data-uagb-tab] {
 	z-index: 99;
 
-	&:not([data-uagb-tab="advance"]) {
-
+	&:not( [data-uagb-tab="advance"] ) {
 		.components-panel__body.block-editor-block-inspector__advanced,
 		.components-panel__body.editor-block-inspector__advanced.block-editor-block-inspector__advanced,
 		.block-editor-block-inspector > div > .components-panel__body {
@@ -37,7 +36,6 @@ $border-color: #d6d9dd;
 	}
 
 	.components-panel__body.edit-post-settings-sidebar__panel-block {
-
 		.block-editor-block-card {
 			overflow: unset;
 
@@ -108,7 +106,7 @@ $border-color: #d6d9dd;
 			border-top: none;
 		}
 
-		&:not(.uagb-active)::after {
+		&:not( .uagb-active )::after {
 			background: #fff;
 		}
 
@@ -222,7 +220,6 @@ $border-color: #d6d9dd;
 	}
 
 	&.advance.uagb-inspector-tabs-count-3 {
-
 		button:first-child {
 			border-bottom-right-radius: 0;
 

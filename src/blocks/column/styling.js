@@ -7,7 +7,7 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function styling( props ) {
+function styling( attributes, clientId ) {
 	const {
 		colWidth,
 		colWidthTablet,
@@ -53,11 +53,11 @@ function styling( props ) {
 		tabletPaddingType,
 		desktopPaddingType,
 		columnBorderHColor,
-	} = props.attributes;
+	} = attributes;
 
-	const borderCSS = generateBorderCSS( props.attributes, 'column' );
-	const borderCSSTablet = generateBorderCSS( props.attributes, 'column', 'tablet' );
-	const borderCSSMobile = generateBorderCSS( props.attributes, 'column', 'mobile' );
+	const borderCSS = generateBorderCSS( attributes, 'column' );
+	const borderCSSTablet = generateBorderCSS( attributes, 'column', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( attributes, 'column', 'mobile' );
 
 	const position = backgroundPosition.replace( '-', ' ' );
 	let tabletSelectors = {};
@@ -84,8 +84,8 @@ function styling( props ) {
 	}
 
 	const selectors = {
-		':before': inlineStyles( props ),
-		':after': inlineStyles( props ),
+		':before': inlineStyles( attributes ),
+		':after': inlineStyles( attributes ),
 		'': style,
 	};
 	selectors[ '.block-editor-block-list__block:hover' ] = {
@@ -140,7 +140,7 @@ function styling( props ) {
 
 	let stylingCss = '';
 
-	const id = `#block-${ props.clientId }`;
+	const id = `#block-${ clientId }`;
 
 	stylingCss = generateCSS( selectors, id );
 

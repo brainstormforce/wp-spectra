@@ -1,7 +1,7 @@
 /**
  * BLOCK: Forms - Edit
  */
-import { useLayoutEffect, useEffect, useCallback } from '@wordpress/element';
+import { useLayoutEffect, useEffect, useCallback, useMemo } from '@wordpress/element';
 import styling from './styling';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
@@ -20,7 +20,8 @@ import apiFetch from '@wordpress/api-fetch';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import styles from './editor.lazy.scss';
 import { addFilter } from '@wordpress/hooks';
-import WebfontLoader from '@Components/typography/fontloader';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import DynamicFontLoader from './dynamicFontLoader';
 
 const UAGBFormsEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -48,18 +49,10 @@ const UAGBFormsEdit = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
-			submitTextloadGoogleFonts,
-			submitTextFontFamily,
-			submitTextFontWeight,
-			labelloadGoogleFonts,
-			labelFontFamily,
-			labelFontWeight,
-			inputloadGoogleFonts,
-			inputFontFamily,
-			inputFontWeight,
 		},
 		setAttributes,
 		clientId,
+		name,
 	} = props;
 
 	const {
@@ -230,10 +223,10 @@ const UAGBFormsEdit = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-style-forms-' + clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
+
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
@@ -335,45 +328,12 @@ const UAGBFormsEdit = ( props ) => {
 		);
 	}
 
-	// Load all the Google Fonts for The Forms Block.
-	let loadsubmittextGoogleFonts;
-	let loadlabelGoogleFonts;
-	let loadinputGoogleFonts;
-
-	if ( submitTextloadGoogleFonts === true ) {
-		const qconfig = {
-			google: {
-				families: [ submitTextFontFamily + ( submitTextFontWeight ? ':' + submitTextFontWeight : '' ) ],
-			},
-		};
-		loadsubmittextGoogleFonts = <WebfontLoader config={ qconfig }></WebfontLoader>;
-	}
-
-	if ( labelloadGoogleFonts === true ) {
-		const qconfig = {
-			google: {
-				families: [ labelFontFamily + ( labelFontWeight ? ':' + labelFontWeight : '' ) ],
-			},
-		};
-		loadlabelGoogleFonts = <WebfontLoader config={ qconfig }></WebfontLoader>;
-	}
-
-	if ( inputloadGoogleFonts === true ) {
-		const qconfig = {
-			google: {
-				families: [ inputFontFamily + ( inputFontWeight ? ':' + inputFontWeight : '' ) ],
-			},
-		};
-		loadinputGoogleFonts = <WebfontLoader config={ qconfig }></WebfontLoader>;
-	}
-
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
-			{ loadsubmittextGoogleFonts }
-			{ loadlabelGoogleFonts }
-			{ loadinputGoogleFonts }
 		</>
 	);
 };

@@ -1,7 +1,5 @@
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-
-import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
 import ResponsiveBorder from '@Components/responsive-border';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
@@ -235,73 +233,6 @@ const Settings = ( props ) => {
 		inputBorderBottomWidthMobile,
 	} = attributes;
 
-	let loadInputGoogleFonts;
-	let loadButtonGoogleFonts;
-	let loadLabelGoogleFonts;
-	let loadRadioGoogleFonts;
-	let loadValidationGoogleFonts;
-	let loadMsgGoogleFonts;
-	if ( labelLoadGoogleFonts === true ) {
-		const labelconfig = {
-			google: {
-				families: [ labelFontFamily + ( labelFontWeight ? ':' + labelFontWeight : '' ) ],
-			},
-		};
-
-		loadLabelGoogleFonts = <WebfontLoader config={ labelconfig }></WebfontLoader>;
-	}
-
-	if ( inputLoadGoogleFonts === true ) {
-		const inputconfig = {
-			google: {
-				families: [ inputFontFamily + ( inputFontWeight ? ':' + inputFontWeight : '' ) ],
-			},
-		};
-
-		loadInputGoogleFonts = <WebfontLoader config={ inputconfig }></WebfontLoader>;
-	}
-
-	if ( buttonLoadGoogleFonts === true ) {
-		const buttonconfig = {
-			google: {
-				families: [ buttonFontFamily + ( buttonFontWeight ? ':' + buttonFontWeight : '' ) ],
-			},
-		};
-
-		loadButtonGoogleFonts = <WebfontLoader config={ buttonconfig }></WebfontLoader>;
-	}
-
-	if ( radioCheckLoadGoogleFonts === true ) {
-		const radioCheckconfig = {
-			google: {
-				families: [ radioCheckFontFamily + ( radioCheckFontWeight ? ':' + radioCheckFontWeight : '' ) ],
-			},
-		};
-
-		loadRadioGoogleFonts = <WebfontLoader config={ radioCheckconfig }></WebfontLoader>;
-	}
-
-	if ( validationMsgLoadGoogleFonts === true ) {
-		const validationMsgconfig = {
-			google: {
-				families: [
-					validationMsgFontFamily + ( validationMsgFontWeight ? ':' + validationMsgFontWeight : '' ),
-				],
-			},
-		};
-
-		loadValidationGoogleFonts = <WebfontLoader config={ validationMsgconfig }></WebfontLoader>;
-	}
-
-	if ( msgLoadGoogleFonts === true ) {
-		const msgconfig = {
-			google: {
-				families: [ msgFontFamily + ( msgFontWeight ? ':' + msgFontWeight : '' ) ],
-			},
-		};
-
-		loadMsgGoogleFonts = <WebfontLoader config={ msgconfig }></WebfontLoader>;
-	}
 	const buttonNormalSettings = (
 		<>
 			<AdvancedPopColorControl
@@ -1602,12 +1533,6 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			{ loadInputGoogleFonts }
-			{ loadButtonGoogleFonts }
-			{ loadLabelGoogleFonts }
-			{ loadRadioGoogleFonts }
-			{ loadValidationGoogleFonts }
-			{ loadMsgGoogleFonts }
 		</>
 	);
 };

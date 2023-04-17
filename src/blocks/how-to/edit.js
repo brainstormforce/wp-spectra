@@ -7,7 +7,7 @@ import styling from './styling';
 import './style.scss';
 import { useSelect } from '@wordpress/data';
 
-import { useState, useEffect } from '@wordpress/element';
+import { useState, useEffect, useMemo } from '@wordpress/element';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -15,7 +15,8 @@ import Settings from './settings';
 import Render from './render';
 
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-import WebfontLoader from '@Components/typography/fontloader';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import DynamicFontLoader from './dynamicFontLoader';
 
 const HowToComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -44,16 +45,9 @@ const HowToComponent = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
-			headLoadGoogleFonts,
-			headFontFamily,
-			headFontWeight,
-			subHeadLoadGoogleFonts,
-			subHeadFontFamily,
-			subHeadFontWeight,
-			priceLoadGoogleFonts,
-			priceFontFamily,
-			priceFontWeight,
 		},
+		clientId,
+		name,
 	} = props;
 
 	const [ prevState, setPrevState ] = useState( '' );
@@ -146,7 +140,7 @@ const HowToComponent = ( props ) => {
 		// Replacement for componentDidMount.
 
 		// Assigning block_id in the attribute.
-		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
 		setAttributes( {
 			schema: JSON.stringify( schemaJsonData ),
@@ -164,10 +158,11 @@ const HowToComponent = ( props ) => {
 
 			setPrevState( schemaJsonData );
 		}
-		const blockStyling = styling( props );
 
-		addBlockEditorDynamicStyles( 'uagb-how-to-schema-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
+
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
@@ -179,40 +174,10 @@ const HowToComponent = ( props ) => {
 
 	const minsValue = timeInMins ? timeInMins : time;
 
-	// Load all the Google Fonts for The How-To Block.
-	let loadHeadingGoogleFonts;
-	let loadSubHeadingGoogleFonts;
-	let loadPriceGoogleFonts;
-
-	if ( true === headLoadGoogleFonts ) {
-		const hconfig = {
-			google: {
-				families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
-			},
-		};
-		loadHeadingGoogleFonts = <WebfontLoader config={ hconfig }></WebfontLoader>;
-	}
-
-	if ( true === subHeadLoadGoogleFonts ) {
-		const sconfig = {
-			google: {
-				families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
-			},
-		};
-		loadSubHeadingGoogleFonts = <WebfontLoader config={ sconfig }></WebfontLoader>;
-	}
-
-	if ( true === priceLoadGoogleFonts ) {
-		const pconfig = {
-			google: {
-				families: [ priceFontFamily + ( priceFontWeight ? ':' + priceFontWeight : '' ) ],
-			},
-		};
-		loadPriceGoogleFonts = <WebfontLoader config={ pconfig }></WebfontLoader>;
-	}
-
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			<SchemaNotices
 				headingTitle={ headingTitle }
 				headingDesc={ headingDesc }
@@ -230,13 +195,10 @@ const HowToComponent = ( props ) => {
 				currencyType={ currencyType }
 				tools={ tools }
 				materials={ materials }
-				clientId={ props.clientId }
+				clientId={ clientId }
 			/>
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
-			{ loadHeadingGoogleFonts }
-			{ loadSubHeadingGoogleFonts }
-			{ loadPriceGoogleFonts }
 		</>
 	);
 };

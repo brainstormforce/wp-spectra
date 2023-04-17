@@ -2,7 +2,7 @@
  * BLOCK: Tabs Block
  */
 import styling from './styling';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useMemo } from '@wordpress/element';
 
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
@@ -17,6 +17,7 @@ import { compose } from '@wordpress/compose';
 
 import { withDispatch, dispatch, select } from '@wordpress/data';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
 
 const UAGBTabsEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -36,6 +37,7 @@ const UAGBTabsEdit = ( props ) => {
 			UAGHideMob,
 		},
 		clientId,
+		name,
 	} = props;
 
 	useEffect( () => {
@@ -82,8 +84,7 @@ const UAGBTabsEdit = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-		addBlockEditorDynamicStyles( 'uagb-style-tab-' + clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 		updateTabTitle();
 		props.resetTabOrder();
 	}, [ deviceType, props ] );
@@ -96,8 +97,11 @@ const UAGBTabsEdit = ( props ) => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
 			{ isSelected && <Settings parentProps={ props } deviceType={ deviceType } /> }
 			<Render parentProps={ props } />
 		</>

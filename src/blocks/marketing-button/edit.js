@@ -3,15 +3,16 @@
  */
 
 import styling from './styling';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import Settings from './settings';
-import WebfontLoader from '@Components/typography/fontloader';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import DynamicFontLoader from './dynamicFontLoader';
 
 const UAGBMarketingButtonEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -28,14 +29,9 @@ const UAGBMarketingButtonEdit = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
-			titleLoadGoogleFonts,
-			titleFontFamily,
-			titleFontWeight,
-			prefixLoadGoogleFonts,
-			prefixFontFamily,
-			prefixFontWeight,
 		},
 		clientId,
+		name,
 	} = props;
 
 	useEffect( () => {
@@ -75,48 +71,25 @@ const UAGBMarketingButtonEdit = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-		addBlockEditorDynamicStyles( 'uagb-style-marketing-btn-' + clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+
 	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	// Load Google fonts for heading.
-	let loadTitleGoogleFonts;
-	if ( titleLoadGoogleFonts === true ) {
-		const titleconfig = {
-			google: {
-				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
-			},
-		};
-
-		loadTitleGoogleFonts = <WebfontLoader config={ titleconfig }></WebfontLoader>;
-	}
-
-	// Load Google fonts for prefix.
-	let loadPrefixGoogleFonts;
-	if ( prefixLoadGoogleFonts === true ) {
-		const prefixconfig = {
-			google: {
-				families: [ prefixFontFamily + ( prefixFontWeight ? ':' + prefixFontWeight : '' ) ],
-			},
-		};
-
-		loadPrefixGoogleFonts = <WebfontLoader config={ prefixconfig }></WebfontLoader>;
-	}
-
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
-			{ loadTitleGoogleFonts }
-			{ loadPrefixGoogleFonts }
 		</>
 	);
 };

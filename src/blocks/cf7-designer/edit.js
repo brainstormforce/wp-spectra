@@ -1,12 +1,13 @@
 import styling from './styling';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useMemo } from '@wordpress/element';
 
 import apiFetch from '@wordpress/api-fetch';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-
+import DynamicFontLoader from './dynamicFontLoader';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import Settings from './settings';
 import Render from './render';
 
@@ -78,6 +79,7 @@ const UAGBCF7 = ( props ) => {
 			UAGHideTab,
 			UAGHideMob,
 		},
+		name,
 	} = props;
 
 	// eslint-disable-next-line no-unused-vars
@@ -277,8 +279,7 @@ const UAGBCF7 = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-		addBlockEditorDynamicStyles( 'uagb-cf7-styler-' + clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
@@ -289,8 +290,12 @@ const UAGBCF7 = ( props ) => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings parentProps={ props } deviceType={ deviceType } /> }
 			<Render parentProps={ props } />
 		</>

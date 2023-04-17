@@ -3,13 +3,14 @@
  */
 
 import styling from './styling';
-import { useEffect, useState, useRef } from '@wordpress/element';
+import { useEffect, useState, useRef, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
 
 const UAGBLottie = ( props ) => {
 	const deviceType = useDeviceType();
@@ -17,6 +18,8 @@ const UAGBLottie = ( props ) => {
 		setAttributes,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob, loop, reverse },
 		clientId,
+		name,
+		attributes,
 	} = props;
 	const lottieplayer = useRef();
 	const [ state, setState ] = useState( { direction: 1, loopState: true } );
@@ -28,10 +31,10 @@ const UAGBLottie = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-lottie-style-' + clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 	}, [ props, deviceType ] );
+
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		responsiveConditionPreview( props );
@@ -55,6 +58,7 @@ const UAGBLottie = ( props ) => {
 
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
 			<Render lottieplayer={ lottieplayer } parentProps={ props } />
 			<Settings parentProps={ props } loopLottie={ loopLottie } reverseDirection={ reverseDirection } />
 		</>

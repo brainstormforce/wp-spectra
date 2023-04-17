@@ -4,40 +4,25 @@
 
 import RestMenuStyle from './inline-styles';
 import { select, dispatch } from '@wordpress/data';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-import WebfontLoader from '@Components/typography/fontloader';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import DynamicFontLoader from './dynamicFontLoader';
 
 const UAGBRestaurantMenu = ( props ) => {
 	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		attributes,
-		attributes: {
-			imgAlign,
-			imagePosition,
-			imageAlignment,
-			UAGHideDesktop,
-			UAGHideTab,
-			UAGHideMob,
-			showImage,
-			titleLoadGoogleFonts,
-			titleFontFamily,
-			titleFontWeight,
-			descLoadGoogleFonts,
-			descFontFamily,
-			descFontWeight,
-			priceLoadGoogleFonts,
-			priceFontFamily,
-			priceFontWeight,
-		},
+		attributes: { imgAlign, imagePosition, imageAlignment, UAGHideDesktop, UAGHideTab, UAGHideMob, showImage },
 		setAttributes,
 		clientId,
+		name,
 	} = props;
 
 	useEffect( () => {
@@ -65,9 +50,7 @@ const UAGBRestaurantMenu = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		const blockStyling = RestMenuStyle( props );
-
-		addBlockEditorDynamicStyles( 'uagb-restaurant-menu-style-' + clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 		if ( 'side' === imgAlign && 'right' !== imagePosition ) {
 			setAttributes( { imagePosition: 'left' } );
 			setAttributes( { headingAlign: 'left' } );
@@ -94,47 +77,17 @@ const UAGBRestaurantMenu = ( props ) => {
 			} );
 	}, [ showImage ] );
 
-	let loadTitleGoogleFonts;
-	let loadDescGoogleFonts;
-	let loadPriceGoogleFonts;
-
-	if ( titleLoadGoogleFonts === true ) {
-		const titleconfig = {
-			google: {
-				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
-			},
-		};
-
-		loadTitleGoogleFonts = <WebfontLoader config={ titleconfig }></WebfontLoader>;
-	}
-
-	if ( descLoadGoogleFonts === true ) {
-		const descconfig = {
-			google: {
-				families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
-			},
-		};
-
-		loadDescGoogleFonts = <WebfontLoader config={ descconfig }></WebfontLoader>;
-	}
-
-	if ( priceLoadGoogleFonts === true ) {
-		const priceconfig = {
-			google: {
-				families: [ priceFontFamily + ( priceFontWeight ? ':' + priceFontWeight : '' ) ],
-			},
-		};
-
-		loadPriceGoogleFonts = <WebfontLoader config={ priceconfig }></WebfontLoader>;
-	}
+	const blockStyling = useMemo( () => RestMenuStyle( attributes, clientId, name, deviceType ), [
+		attributes,
+		deviceType,
+	] );
 
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
-			{ loadTitleGoogleFonts }
-			{ loadDescGoogleFonts }
-			{ loadPriceGoogleFonts }
 		</>
 	);
 };

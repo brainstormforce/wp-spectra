@@ -5,7 +5,7 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
-function styling( props ) {
+function styling( attributes ) {
 	const {
 		block_id,
 		starColor,
@@ -85,7 +85,7 @@ function styling( props ) {
 		contentLetterSpacingTablet,
 		contentLetterSpacingMobile,
 		contentLetterSpacingType,
-	} = props.attributes;
+	} = attributes;
 
 	let tabletSelectors = {};
 	let mobileSelectors = {};

@@ -7,8 +7,8 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-function styling( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+function styling( attributes, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		block_id,
@@ -80,7 +80,7 @@ function styling( props ) {
 		buttonWidthType,
 		inputFontStyle,
 		buttonFontStyle,
-	} = props.attributes;
+	} = attributes;
 
 	const inputSizeFallback = getFallbackNumber( inputSize, 'inputSize', blockName );
 	const buttonWidthFallback = getFallbackNumber( buttonWidth, 'buttonWidth', blockName );
@@ -100,9 +100,9 @@ function styling( props ) {
 	const $iconSize = generateCSSUnit( iconSizeFallback, iconSizeType );
 	const $buttonIconSize = generateCSSUnit( buttonIconSizeFallback, buttonIconSizeType );
 
-	const inputBorderCSS = generateBorderCSS( props.attributes, 'input' );
-	const inputBorderCSSTablet = generateBorderCSS( props.attributes, 'input', 'tablet' );
-	const inputBorderCSSMobile = generateBorderCSS( props.attributes, 'input', 'mobile' );
+	const inputBorderCSS = generateBorderCSS( attributes, 'input' );
+	const inputBorderCSSTablet = generateBorderCSS( attributes, 'input', 'tablet' );
+	const inputBorderCSSMobile = generateBorderCSS( attributes, 'input', 'mobile' );
 
 	const inputCSS = {
 		'color': textColor,

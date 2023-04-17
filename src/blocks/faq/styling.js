@@ -7,8 +7,8 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function styling( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+function styling( attributes, clientId, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		layout,
@@ -120,15 +120,15 @@ function styling( props ) {
 		iconBgSizeMobile,
 		iconBgSizeType,
 		iconBorderHColor,
-	} = props.attributes;
+	} = attributes;
 
-	const borderCSS = generateBorderCSS( props.attributes, 'overall', '' );
-	const borderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' );
-	const borderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' );
+	const borderCSS = generateBorderCSS( attributes, 'overall', '' );
+	const borderCSSTablet = generateBorderCSS( attributes, 'overall', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( attributes, 'overall', 'mobile' );
 
-	const iconBorderCSS = generateBorderCSS( props.attributes, 'icon', '' );
-	const iconBorderCSSTablet = generateBorderCSS( props.attributes, 'icon', 'tablet' );
-	const iconBorderCSSMobile = generateBorderCSS( props.attributes, 'icon', 'mobile' );
+	const iconBorderCSS = generateBorderCSS( attributes, 'icon', '' );
+	const iconBorderCSSTablet = generateBorderCSS( attributes, 'icon', 'tablet' );
+	const iconBorderCSSMobile = generateBorderCSS( attributes, 'icon', 'mobile' );
 
 	let selectors = {};
 	let tabletSelectors = {};
@@ -421,7 +421,7 @@ function styling( props ) {
 	}
 
 	let stylingCss = '';
-	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	stylingCss = generateCSS( selectors, id );
 

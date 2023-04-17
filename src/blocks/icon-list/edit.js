@@ -1,9 +1,8 @@
 /**
  * BLOCK: Icon List
  */
-import WebfontLoader from '@Components/typography/fontloader';
-import styling from './styling';
-import { useEffect } from '@wordpress/element';
+
+import { useEffect, useMemo } from '@wordpress/element';
 
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
@@ -13,6 +12,9 @@ import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 import Settings from './settings';
 import Render from './render';
+import styling from './styling';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import DynamicFontLoader from './dynamicFontLoader';
 
 const UAGBIconList = ( props ) => {
 	const deviceType = useDeviceType();
@@ -20,8 +22,9 @@ const UAGBIconList = ( props ) => {
 		isSelected,
 		setAttributes,
 		attributes,
-		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob, loadGoogleFonts, fontFamily, fontWeight },
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		clientId,
+		name,
 	} = props;
 
 	useEffect( () => {
@@ -33,14 +36,14 @@ const UAGBIconList = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-style-icon-list-' + clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
+
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		responsiveConditionPreview( props );
@@ -58,23 +61,12 @@ const UAGBIconList = ( props ) => {
 			} );
 	}, [ attributes.parentIcon, attributes.hideLabel, attributes.size ] );
 
-	let googleFonts;
-
-	if ( loadGoogleFonts === true ) {
-		const hconfig = {
-			google: {
-				families: [ fontFamily + ( fontWeight ? ':' + fontWeight : '' ) ],
-			},
-		};
-
-		googleFonts = <WebfontLoader config={ hconfig }></WebfontLoader>;
-	}
-
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
-			{ googleFonts }
 		</>
 	);
 };

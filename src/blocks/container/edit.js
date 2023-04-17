@@ -2,7 +2,7 @@
  * BLOCK: Container
  */
 import styling from './styling';
-import { useEffect, useLayoutEffect } from '@wordpress/element';
+import { useEffect, useLayoutEffect, useMemo } from '@wordpress/element';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -17,6 +17,7 @@ import { useSelect, useDispatch, select } from '@wordpress/data';
 import { __experimentalBlockVariationPicker as BlockVariationPicker } from '@wordpress/block-editor';
 import { createBlock } from '@wordpress/blocks';
 import styles from './editor.lazy.scss';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
 
 const UAGBContainer = ( props ) => {
 	const deviceType = useDeviceType();
@@ -36,6 +37,7 @@ const UAGBContainer = ( props ) => {
 		},
 		clientId,
 		setAttributes,
+		name,
 	} = props;
 
 	const {
@@ -161,9 +163,10 @@ const UAGBContainer = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		const blockStyling = styling( props );
-		addBlockEditorDynamicStyles( 'uagb-container-style-' + clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
+
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
@@ -205,6 +208,7 @@ const UAGBContainer = ( props ) => {
 
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
 		</>

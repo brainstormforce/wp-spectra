@@ -4,7 +4,7 @@
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function inlineStyles( props ) {
+function inlineStyles( attributes ) {
 	const {
 		leftPadding,
 		rightPadding,
@@ -20,9 +20,9 @@ function inlineStyles( props ) {
 		backgroundType,
 		desktopMarginType,
 		desktopPaddingType,
-	} = props.attributes;
+	} = attributes;
 
-	const borderCSS = generateBorderCSS( props.attributes, 'columns' );
+	const borderCSS = generateBorderCSS( attributes, 'columns' );
 
 	const style = {
 		'padding-top': generateCSSUnit( topPadding, desktopPaddingType ),

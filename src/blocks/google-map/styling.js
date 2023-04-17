@@ -1,15 +1,14 @@
 /**
  * Returns Dynamic Generated CSS
  */
-
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-function styling( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+function styling( attributes, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
-	const { block_id, height, heightTablet, heightMobile } = props.attributes;
+	const { block_id, height, heightTablet, heightMobile } = attributes;
 
 	const heightFallback = getFallbackNumber( height, 'height', blockName );
 	const heightTabletFallback = getFallbackNumber( heightTablet, 'heightTablet', blockName );

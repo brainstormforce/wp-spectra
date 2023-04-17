@@ -3,7 +3,7 @@
  */
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function inlineStyles( props ) {
+function inlineStyles( attributes ) {
 	const {
 		backgroundColor,
 		backgroundType,
@@ -11,11 +11,11 @@ function inlineStyles( props ) {
 		overlayType,
 		gradientValue,
 		backgroundOpacity,
-	} = props.attributes;
+	} = attributes;
 
 	const style = {};
 
-	const borderCSS = generateBorderCSS( props.attributes, 'column' );
+	const borderCSS = generateBorderCSS( attributes, 'column' );
 
 	switch ( backgroundType ) {
 		case 'image':

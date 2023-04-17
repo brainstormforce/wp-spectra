@@ -3,7 +3,7 @@
  */
 
 import styling from './styling';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useMemo } from '@wordpress/element';
 
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
@@ -12,6 +12,7 @@ import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
 
 import hexToRGBA from '@Controls/hexToRgba';
 
@@ -46,6 +47,8 @@ const UAGBSectionEdit = ( props ) => {
 			backgroundVideoColor,
 		},
 		setAttributes,
+		clientId,
+		name,
 	} = props;
 
 	useEffect( () => {
@@ -80,9 +83,7 @@ const UAGBSectionEdit = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-section-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
@@ -127,8 +128,11 @@ const UAGBSectionEdit = ( props ) => {
 		}
 	}, [] );
 
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
 		</>

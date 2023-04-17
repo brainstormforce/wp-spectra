@@ -26,21 +26,18 @@
 }
 
 .uagb-editor-preview-mode-tablet.uagb-columns__stack-tablet {
-
 	.block-editor-block-list__layout {
 		flex-direction: column;
 	}
 }
 
 .uagb-editor-preview-mode-mobile.uagb-columns__stack-tablet {
-
 	.block-editor-block-list__layout {
 		flex-direction: column;
 	}
 }
 
 .uagb-editor-preview-mode-mobile.uagb-columns__stack-mobile {
-
 	.block-editor-block-list__layout {
 		flex-direction: column;
 	}
@@ -132,7 +129,7 @@
 	margin-left: 14px;
 	margin-right: 14px;
 
-	> div:not(.editor-block-contextual-toolbar) {
+	> div:not( .editor-block-contextual-toolbar ) {
 		width: 100%;
 	}
 
@@ -225,7 +222,6 @@
 .uagb-editor-preview-mode-mobile.uagb-columns__reverse-tablet.uagb-columns__stack-none,
 .uagb-editor-preview-mode-mobile.uagb-columns__reverse-mobile.uagb-columns__stack-none,
 .uagb-editor-preview-mode-tablet.uagb-columns__reverse-tablet.uagb-columns__stack-mobile {
-
 	> .uagb-columns__inner-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout {
 		flex-direction: row-reverse;
 	}
@@ -236,7 +232,6 @@
 .uagb-editor-preview-mode-mobile.uagb-columns__reverse-tablet.uagb-columns__stack-mobile,
 .uagb-editor-preview-mode-mobile.uagb-columns__reverse-mobile.uagb-columns__stack-mobile,
 .uagb-editor-preview-mode-tablet.uagb-columns__reverse-tablet.uagb-columns__stack-tablet {
-
 	> .uagb-columns__inner-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout {
 		flex-direction: column-reverse;
 	}
@@ -246,7 +241,6 @@
 .uagb-editor-preview-mode-mobile.uagb-columns__stack-mobile,
 .uagb-editor-preview-mode-tablet.uagb-columns__stack-tablet,
 .uagb-editor-preview-mode-mobile.uagb-columns__stack-tablet {
-
 	> .uagb-columns__inner-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout > .block-editor-block-list__block[data-type="uagb/column"] {
 		width: 100% !important;
 	}
@@ -267,7 +261,6 @@
 .uagb-columns-variation-picker {
 	// This selector is apprently active for mobile preview.
 	.components-placeholder.is-medium {
-
 		.components-placeholder__fieldset {
 			// Since sub heading is hidden on mobile, we un-hide it.
 			.components-placeholder__instructions {
@@ -282,7 +275,7 @@
 	}
 
 	.components-button,
-	.components-button:hover:not(:disabled) {
+	.components-button:hover:not( :disabled ) {
 		box-shadow: none;
 		outline: none;
 
@@ -293,12 +286,11 @@
 		}
 	}
 
-	.components-button:hover:not(:disabled) {
+	.components-button:hover:not( :disabled ) {
 		color: #9eaab5;
 	}
 
 	.block-editor-block-variation-picker__skip {
-
 		.components-button {
 			color: #0073aa;
 		}
@@ -338,9 +330,7 @@
 }
 
 @media screen and ( max-width: 976px ) {
-
 	.uagb-columns-variation-picker {
-
 		.components-placeholder__fieldset {
 			max-width: 100%;
 		}

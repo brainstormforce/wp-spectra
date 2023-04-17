@@ -5,7 +5,6 @@
  */
 
 .uagb-buttons__outer-wrap {
-
 	.uagb-buttons__wrap {
 		display: inline-flex;
 		width: 100%;
@@ -32,7 +31,6 @@
 	}
 
 	@media ( max-width: 976px ) {
-
 		&.uagb-btn-tablet__small-btn .uagb-buttons-repeater.wp-block-button__link {
 			padding: 5px 10px;
 		}
@@ -51,7 +49,6 @@
 	}
 
 	@media ( max-width: 767px ) {
-
 		&.uagb-btn-mobile__small-btn .uagb-buttons-repeater.wp-block-button__link {
 			padding: 5px 10px;
 		}

@@ -8,10 +8,8 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateShadowCSS from '@Controls/generateShadowCSS';
 
-function styling( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
-
-	const { attributes } = props;
+function styling( attributes, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		block_id,

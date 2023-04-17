@@ -5,7 +5,7 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
-function styling( props ) {
+function styling( attributes, clientId ) {
 	const {
 		icon_color,
 		label_color,
@@ -47,7 +47,7 @@ function styling( props ) {
 		childPaddingUnit,
 		childPaddingUnitTablet,
 		childPaddingUnitMobile,
-	} = props.attributes;
+	} = attributes;
 
 	const selectors = {
 		'.wp-block-uagb-icon-list-child': {
@@ -114,7 +114,7 @@ function styling( props ) {
 	};
 
 	let stylingCss = '';
-	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	stylingCss = generateCSS( selectors, id );
 

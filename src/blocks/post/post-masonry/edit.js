@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { useEffect, useState } from '@wordpress/element';
+import { useEffect, useState, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import styling from '.././styling';
@@ -28,7 +28,8 @@ import UAGNumberControl from '@Components/number-control';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import apiFetch from '@wordpress/api-fetch';
 import UAGTextControl from '@Components/text-control';
-import WebfontLoader from '@Components/typography/fontloader';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import DynamicFontLoader from '.././dynamicFontLoader';
 
 import Settings from './settings';
 import Render from './render';
@@ -287,6 +288,8 @@ const UAGBPostMasonry = ( props ) => {
 			UAGHideMob,
 		},
 		deviceType,
+		clientId,
+		name,
 	} = props;
 
 	const [ state, setState ] = useState( {
@@ -500,16 +503,13 @@ const UAGBPostMasonry = ( props ) => {
 		}
 
 		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
 
-		addBlockEditorDynamicStyles( 'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 	}, [ attributes ] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 
 		scrollBlockToView();
 	}, [ deviceType ] );
@@ -517,6 +517,8 @@ const UAGBPostMasonry = ( props ) => {
 	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
+
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	const togglePreview = () => {
 		setState( { isEditing: ! state.isEditing } );
@@ -2307,50 +2309,10 @@ const UAGBPostMasonry = ( props ) => {
 		);
 	}
 
-	// Load all the Google Fonts for The Post Masonry Block.
-	let loadTitleGoogleFonts;
-	let loadMetaGoogleFonts;
-	let loadExcerptGoogleFonts;
-	let loadCtaGoogleFonts;
-
-	if ( titleLoadGoogleFonts === true ) {
-		const titleconfig = {
-			google: {
-				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
-			},
-		};
-		loadTitleGoogleFonts = <WebfontLoader config={ titleconfig }></WebfontLoader>;
-	}
-
-	if ( metaLoadGoogleFonts === true ) {
-		const metaconfig = {
-			google: {
-				families: [ metaFontFamily + ( metaFontWeight ? ':' + metaFontWeight : '' ) ],
-			},
-		};
-		loadMetaGoogleFonts = <WebfontLoader config={ metaconfig }></WebfontLoader>;
-	}
-
-	if ( excerptLoadGoogleFonts === true ) {
-		const excerptconfig = {
-			google: {
-				families: [ excerptFontFamily + ( excerptFontWeight ? ':' + excerptFontWeight : '' ) ],
-			},
-		};
-		loadExcerptGoogleFonts = <WebfontLoader config={ excerptconfig }></WebfontLoader>;
-	}
-
-	if ( ctaLoadGoogleFonts === true ) {
-		const ctaconfig = {
-			google: {
-				families: [ ctaFontFamily + ( ctaFontWeight ? ':' + ctaFontWeight : '' ) ],
-			},
-		};
-		loadCtaGoogleFonts = <WebfontLoader config={ ctaconfig }></WebfontLoader>;
-	}
-
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && (
 				<Settings
 					parentProps={ props }
@@ -2371,10 +2333,6 @@ const UAGBPostMasonry = ( props ) => {
 				replaceInnerBlocks={ replaceInnerBlocks }
 				block={ block }
 			/>
-			{ loadTitleGoogleFonts }
-			{ loadMetaGoogleFonts }
-			{ loadExcerptGoogleFonts }
-			{ loadCtaGoogleFonts }
 		</>
 	);
 };

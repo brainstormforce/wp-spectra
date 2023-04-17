@@ -9,7 +9,7 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function styling( props ) {
+function styling( attributes, clientId ) {
 	const {
 		align,
 		fieldBgColor,
@@ -148,15 +148,15 @@ function styling( props ) {
 		validationMsgLetterSpacingMobile,
 		validationMsgLetterSpacingType,
 		inputBorderBottomWidth,
-	} = props.attributes;
+	} = attributes;
 
-	const fieldBorderCSS = generateBorderCSS( props.attributes, 'input' );
-	const fieldBorderCSSTablet = generateBorderCSS( props.attributes, 'input', 'tablet' );
-	const fieldBorderCSSMobile = generateBorderCSS( props.attributes, 'input', 'mobile' );
+	const fieldBorderCSS = generateBorderCSS( attributes, 'input' );
+	const fieldBorderCSSTablet = generateBorderCSS( attributes, 'input', 'tablet' );
+	const fieldBorderCSSMobile = generateBorderCSS( attributes, 'input', 'mobile' );
 
-	const buttonBorderCSS = generateBorderCSS( props.attributes, 'btn' );
-	const buttonBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
-	const buttonBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+	const buttonBorderCSS = generateBorderCSS( attributes, 'btn' );
+	const buttonBorderCSSTablet = generateBorderCSS( attributes, 'btn', 'tablet' );
+	const buttonBorderCSSMobile = generateBorderCSS( attributes, 'btn', 'mobile' );
 
 	fieldBorderCSS[ 'border-color' ] =
 		fieldBorderCSS[ 'border-color' ] === '' ? '#EEEEEE' : fieldBorderCSS[ 'border-color' ];
@@ -627,7 +627,7 @@ function styling( props ) {
 		' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])': fieldPaddingMobile,
 		' .wpcf7 select.wpcf7-select[multiple="multiple"] option': fieldPaddingMobile,
 	};
-	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
 	let stylingCss = generateCSS( selectors, `${ id }` );
 
 	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );

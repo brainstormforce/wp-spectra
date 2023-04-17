@@ -1,11 +1,11 @@
 import styling from './styling';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-import WebfontLoader from '@Components/typography/fontloader';
-
+import DynamicFontLoader from './dynamicFontLoader';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import Settings from './settings';
 import Render from './render';
 
@@ -13,25 +13,11 @@ const UAGBBlockQuote = ( props ) => {
 	const deviceType = useDeviceType();
 	const {
 		attributes,
-		attributes: {
-			UAGHideDesktop,
-			UAGHideTab,
-			UAGHideMob,
-			authorImageWidthUnit,
-			authorImgBorderRadiusUnit,
-			descLoadGoogleFonts,
-			authorLoadGoogleFonts,
-			tweetBtnLoadGoogleFonts,
-			descFontFamily,
-			descFontWeight,
-			authorFontFamily,
-			authorFontWeight,
-			tweetBtnFontFamily,
-			tweetBtnFontWeight,
-		},
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob, authorImageWidthUnit, authorImgBorderRadiusUnit },
 		isSelected,
 		setAttributes,
 		clientId,
+		name,
 	} = props;
 
 	useEffect( () => {
@@ -51,9 +37,8 @@ const UAGBBlockQuote = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
 
-		addBlockEditorDynamicStyles( 'uagb-blockquote-style-' + clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
@@ -64,47 +49,14 @@ const UAGBBlockQuote = ( props ) => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	let loadDescGoogleFonts;
-	let loadAuthorGoogleFonts;
-	let loadTweetGoogleFonts;
-
-	if ( descLoadGoogleFonts === true ) {
-		const descconfig = {
-			google: {
-				families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
-			},
-		};
-
-		loadDescGoogleFonts = <WebfontLoader config={ descconfig }></WebfontLoader>;
-	}
-
-	if ( authorLoadGoogleFonts === true ) {
-		const authorconfig = {
-			google: {
-				families: [ authorFontFamily + ( authorFontWeight ? ':' + authorFontWeight : '' ) ],
-			},
-		};
-
-		loadAuthorGoogleFonts = <WebfontLoader config={ authorconfig }></WebfontLoader>;
-	}
-
-	if ( tweetBtnLoadGoogleFonts === true ) {
-		const tweetBtnconfig = {
-			google: {
-				families: [ tweetBtnFontFamily + ( tweetBtnFontWeight ? ':' + tweetBtnFontWeight : '' ) ],
-			},
-		};
-
-		loadTweetGoogleFonts = <WebfontLoader config={ tweetBtnconfig }></WebfontLoader>;
-	}
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
-			{ loadDescGoogleFonts }
-			{ loadAuthorGoogleFonts }
-			{ loadTweetGoogleFonts }
 		</>
 	);
 };

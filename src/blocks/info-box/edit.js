@@ -1,7 +1,7 @@
 /**
  * BLOCK: Info Box - Edit Class
  */
-import { useEffect } from '@wordpress/element';
+import { useEffect, useMemo } from '@wordpress/element';
 
 import styling from './styling';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -9,8 +9,8 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-import WebfontLoader from '@Components/typography/fontloader';
-
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import DynamicFontLoader from './dynamicFontLoader';
 import Settings from './settings';
 import Render from './render';
 
@@ -32,19 +32,8 @@ const UAGBInfoBox = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
-			prefixLoadGoogleFonts,
-			headLoadGoogleFonts,
-			subHeadLoadGoogleFonts,
-			ctaLoadGoogleFonts,
-			prefixFontFamily,
-			prefixFontWeight,
-			headFontFamily,
-			headFontWeight,
-			subHeadFontFamily,
-			subHeadFontWeight,
-			ctaFontFamily,
-			ctaFontWeight,
 		},
+		name,
 		clientId,
 	} = props;
 
@@ -98,72 +87,23 @@ const UAGBInfoBox = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-info-box-style-' + clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
-
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
-	let loadPrefixGoogleFonts;
-	let loadSubHeadGoogleFonts;
-	let loadCtaGoogleFonts;
-	let loadHeadGoogleFonts;
-
-	if ( prefixLoadGoogleFonts === true ) {
-		const prefixconfig = {
-			google: {
-				families: [ prefixFontFamily + ( prefixFontWeight ? ':' + prefixFontWeight : '' ) ],
-			},
-		};
-
-		loadPrefixGoogleFonts = <WebfontLoader config={ prefixconfig }></WebfontLoader>;
-	}
-
-	if ( headLoadGoogleFonts === true ) {
-		const headconfig = {
-			google: {
-				families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
-			},
-		};
-
-		loadHeadGoogleFonts = <WebfontLoader config={ headconfig }></WebfontLoader>;
-	}
-
-	if ( subHeadLoadGoogleFonts === true ) {
-		const subHeadconfig = {
-			google: {
-				families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
-			},
-		};
-
-		loadSubHeadGoogleFonts = <WebfontLoader config={ subHeadconfig }></WebfontLoader>;
-	}
-
-	if ( ctaLoadGoogleFonts === true ) {
-		const ctaconfig = {
-			google: {
-				families: [ ctaFontFamily + ( ctaFontWeight ? ':' + ctaFontWeight : '' ) ],
-			},
-		};
-
-		loadCtaGoogleFonts = <WebfontLoader config={ ctaconfig }></WebfontLoader>;
-	}
-
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
-			{ loadPrefixGoogleFonts }
-			{ loadSubHeadGoogleFonts }
-			{ loadCtaGoogleFonts }
-			{ loadHeadGoogleFonts }
 		</>
 	);
 };

@@ -4,14 +4,15 @@
 
 // Import block dependencies and components.
 import styling from './styling';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-import WebfontLoader from '@Components/typography/fontloader';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import DynamicFontLoader from './dynamicFontLoader';
 
 const UAGBInlineNoticeEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -20,17 +21,8 @@ const UAGBInlineNoticeEdit = ( props ) => {
 		setAttributes,
 		clientId,
 		attributes,
-		attributes: {
-			UAGHideDesktop,
-			UAGHideTab,
-			UAGHideMob,
-			titleLoadGoogleFonts,
-			titleFontFamily,
-			titleFontWeight,
-			descLoadGoogleFonts,
-			descFontFamily,
-			descFontWeight,
-		},
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
+		name,
 	} = props;
 
 	useEffect( () => {
@@ -39,47 +31,25 @@ const UAGBInlineNoticeEdit = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		const blockStyling = styling( props );
-		addBlockEditorDynamicStyles( 'uagb-inline-notice-style-' + clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+
 	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	let loadTitleGoogleFonts;
-	let loadDescriptionGoogleFonts;
-
-	if ( true === titleLoadGoogleFonts ) {
-		const hconfig = {
-			google: {
-				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
-			},
-		};
-
-		loadTitleGoogleFonts = <WebfontLoader config={ hconfig }></WebfontLoader>;
-	}
-
-	if ( true === descLoadGoogleFonts ) {
-		const sconfig = {
-			google: {
-				families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
-			},
-		};
-
-		loadDescriptionGoogleFonts = <WebfontLoader config={ sconfig }></WebfontLoader>;
-	}
-
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
-			{ loadTitleGoogleFonts }
-			{ loadDescriptionGoogleFonts }
 		</>
 	);
 };

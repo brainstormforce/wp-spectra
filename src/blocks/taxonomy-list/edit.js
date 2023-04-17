@@ -3,9 +3,10 @@
  */
 
 import styling from './styling';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useMemo } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
-import WebfontLoader from '@Components/typography/fontloader';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import DynamicFontLoader from './dynamicFontLoader';
 
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
@@ -44,18 +45,10 @@ const UAGBTaxonomyList = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
-			titleLoadGoogleFonts,
-			titleFontFamily,
-			titleFontWeight,
-			countLoadGoogleFonts,
-			countFontFamily,
-			countFontWeight,
-			listLoadGoogleFonts,
-			listFontFamily,
-			listFontWeight,
 		},
 		setAttributes,
 		clientId,
+		name,
 	} = props;
 
 	let categoriesList = [];
@@ -151,9 +144,7 @@ const UAGBTaxonomyList = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-style-taxonomy-list-' + clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
@@ -164,47 +155,14 @@ const UAGBTaxonomyList = ( props ) => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
-	let loadTitleGoogleFonts;
-	let loadCountGoogleFonts;
-	let loadListGoogleFonts;
-
-	if ( titleLoadGoogleFonts === true ) {
-		const titleconfig = {
-			google: {
-				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
-			},
-		};
-
-		loadTitleGoogleFonts = <WebfontLoader config={ titleconfig }></WebfontLoader>;
-	}
-
-	if ( countLoadGoogleFonts === true ) {
-		const countconfig = {
-			google: {
-				families: [ countFontFamily + ( countFontWeight ? ':' + countFontWeight : '' ) ],
-			},
-		};
-
-		loadCountGoogleFonts = <WebfontLoader config={ countconfig }></WebfontLoader>;
-	}
-
-	if ( listLoadGoogleFonts === true ) {
-		const listconfig = {
-			google: {
-				families: [ listFontFamily + ( listFontWeight ? ':' + listFontWeight : '' ) ],
-			},
-		};
-
-		loadListGoogleFonts = <WebfontLoader config={ listconfig }></WebfontLoader>;
-	}
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings parentProps={ props } taxonomyList={ taxonomyList } termsList={ termsList } /> }
 			<Render parentProps={ props } categoriesList={ categoriesList } />
-			{ loadTitleGoogleFonts }
-			{ loadCountGoogleFonts }
-			{ loadListGoogleFonts }
 		</>
 	);
 };

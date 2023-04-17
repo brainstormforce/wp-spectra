@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from '@wordpress/element';
+import { useEffect, useState, useRef, useMemo } from '@wordpress/element';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import styling from './styling';
 import Settings from './settings';
@@ -7,7 +7,8 @@ import { getSettings as getDateSettings } from '@wordpress/date';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { applyFilters } from '@wordpress/hooks';
-import WebfontLoader from '@Components/typography/fontloader';
+import DynamicFontLoader from './dynamicFontLoader';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
 
 //  Import CSS.
 import './style.scss';
@@ -27,17 +28,9 @@ const UAGBCountdownEdit = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
-			digitLoadGoogleFonts,
-			digitFontFamily,
-			digitFontWeight,
-			labelLoadGoogleFonts,
-			labelFontFamily,
-			labelFontWeight,
-			separatorLoadGoogleFonts,
-			separatorFontFamily,
-			separatorFontWeight,
 		},
 		setAttributes,
+		name,
 	} = props;
 
 	const [ timeChanged, setTimeChanged ] = useState( 0 );
@@ -98,10 +91,10 @@ const UAGBCountdownEdit = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-countdown-style-' + clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
+
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		if ( block_id && timeChanged === 1 ) {
@@ -114,38 +107,6 @@ const UAGBCountdownEdit = ( props ) => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	// Load all the Google Fonts for The Countdown Block.
-	let loadDigitGoogleFonts;
-	let loadLabelGoogleFonts;
-	let loadSeparatorGoogleFonts;
-
-	if ( digitLoadGoogleFonts === true ) {
-		const digitConfig = {
-			google: {
-				families: [ digitFontFamily + ( digitFontWeight ? ':' + digitFontWeight : '' ) ],
-			},
-		};
-		loadDigitGoogleFonts = <WebfontLoader config={ digitConfig }></WebfontLoader>;
-	}
-
-	if ( labelLoadGoogleFonts === true ) {
-		const labelConfig = {
-			google: {
-				families: [ labelFontFamily + ( labelFontWeight ? ':' + labelFontWeight : '' ) ],
-			},
-		};
-		loadLabelGoogleFonts = <WebfontLoader config={ labelConfig }></WebfontLoader>;
-	}
-
-	if ( separatorLoadGoogleFonts === true ) {
-		const separatorConfig = {
-			google: {
-				families: [ separatorFontFamily + ( separatorFontWeight ? ':' + separatorFontWeight : '' ) ],
-			},
-		};
-		loadSeparatorGoogleFonts = <WebfontLoader config={ separatorConfig }></WebfontLoader>;
-	}
-
 	// Hooks cannot be applied within conditional renders, so we pre-fetch the value.
 	const countdownToolbar = applyFilters( 'spectra.countdown.toolbar-hook', '', props.name );
 
@@ -153,11 +114,10 @@ const UAGBCountdownEdit = ( props ) => {
 		<>
 			{ /* Countdown Toolbar options for Pro (Replace feature) */ }
 			{ props.attributes.timerEndAction === 'content' && countdownToolbar }
+			<DynamicFontLoader { ...{ attributes } } />
+			<DynamicCSSLoader { ...{ blockStyling } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render countdownRef={ countdownRef } parentProps={ props } />
-			{ loadDigitGoogleFonts }
-			{ loadLabelGoogleFonts }
-			{ loadSeparatorGoogleFonts }
 		</>
 	);
 };

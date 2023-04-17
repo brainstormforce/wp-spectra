@@ -7,9 +7,7 @@ import generateSpacing from '@Controls/generateSpacing';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import { applyFilters } from '@wordpress/hooks';
 
-function styling( props ) {
-	const { name, clientId, attributes } = props;
-
+function styling( attributes, clientId, name ) {
 	const blockName = name.replace( 'uagb/', '' );
 	const {
 		// Tile Calcualtion
@@ -949,9 +947,9 @@ function styling( props ) {
 	tabletSelectors = applyFilters( `spectra.image-gallery.tabletStyling`, tabletSelectors, attributes );
 	mobileSelectors = applyFilters( `spectra.image-gallery.mobileStyling`, mobileSelectors, attributes );
 
-	selectors = applyFilters( `spectra.image-gallery.styling`, selectors, props.attributes );
-	tabletSelectors = applyFilters( `spectra.image-gallery.tabletStyling`, tabletSelectors, props.attributes );
-	mobileSelectors = applyFilters( `spectra.image-gallery.mobileStyling`, mobileSelectors, props.attributes );
+	selectors = applyFilters( `spectra.image-gallery.styling`, selectors, attributes );
+	tabletSelectors = applyFilters( `spectra.image-gallery.tabletStyling`, tabletSelectors, attributes );
+	mobileSelectors = applyFilters( `spectra.image-gallery.mobileStyling`, mobileSelectors, attributes );
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 

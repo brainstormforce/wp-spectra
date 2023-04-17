@@ -1,6 +1,5 @@
 import { memo } from '@wordpress/element';
 import { uagbClassNames } from '@Utils/Helpers';
-
 import { useDeviceType } from '@Controls/getPreviewType';
 import Renderer from './renderer';
 import RendererDesc from './renderer-desc';

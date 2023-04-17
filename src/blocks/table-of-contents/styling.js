@@ -7,8 +7,8 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-function styling( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+function styling( attributes, clientId, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		customWidth,
@@ -126,7 +126,7 @@ function styling( props ) {
 		separatorHColor,
 		separatorSpaceTablet,
 		separatorSpaceMobile,
-	} = props.attributes;
+	} = attributes;
 
 	const tColumnsDesktopFallback = getFallbackNumber( tColumnsDesktop, 'tColumnsDesktop', blockName );
 	const tColumnsTabletFallback = getFallbackNumber( tColumnsTablet, 'tColumnsTablet', blockName );
@@ -137,9 +137,9 @@ function styling( props ) {
 	let tablet_selectors = {};
 	let mobile_selectors = {};
 
-	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' );
-	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' );
-	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' );
+	const overallBorderCSS = generateBorderCSS( attributes, 'overall' );
+	const overallBorderCSSTablet = generateBorderCSS( attributes, 'overall', 'tablet' );
+	const overallBorderCSSMobile = generateBorderCSS( attributes, 'overall', 'mobile' );
 
 	selectors = {
 		'.wp-block-uagb-table-of-contents': {
@@ -412,7 +412,7 @@ function styling( props ) {
 		};
 	}
 
-	const id = `.block-editor-block-list__block .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.block-editor-block-list__block .uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	let styling_css = generateCSS( selectors, id );
 

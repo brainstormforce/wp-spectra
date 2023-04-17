@@ -1,7 +1,7 @@
 /**
  * BLOCK: Slider
  */
-import { useEffect, useLayoutEffect } from '@wordpress/element';
+import { useEffect, useLayoutEffect, useMemo } from '@wordpress/element';
 import { withSelect, useDispatch } from '@wordpress/data';
 import styling from './styling';
 import Settings from './settings';
@@ -14,6 +14,7 @@ import { useDeviceType } from '@Controls/getPreviewType';
 import styles from './editor.lazy.scss';
 import { SwiperSlide } from 'swiper/react';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import { addFilter } from '@wordpress/hooks';
 
 const UAGBSlider = ( props ) => {
@@ -22,6 +23,8 @@ const UAGBSlider = ( props ) => {
 		isSelected,
 		setAttributes,
 		attributes,
+		clientId,
+		name,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 	} = props;
 
@@ -40,17 +43,18 @@ const UAGBSlider = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-slider-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
 		</>

@@ -4,7 +4,7 @@
 
 import styling from '.././styling';
 import { __ } from '@wordpress/i18n';
-import { useState, useEffect } from '@wordpress/element';
+import { useState, useEffect, useMemo } from '@wordpress/element';
 import TypographyControl from '@Components/typography';
 import { decodeEntities } from '@wordpress/html-entities';
 import ResponsiveBorder from '@Components/responsive-border';
@@ -28,7 +28,8 @@ import UAGNumberControl from '@Components/number-control';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import apiFetch from '@wordpress/api-fetch';
 import UAGTextControl from '@Components/text-control';
-import WebfontLoader from '@Components/typography/fontloader';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import DynamicFontLoader from '.././dynamicFontLoader';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -276,6 +277,8 @@ const UAGBPostCarousel = ( props ) => {
 		},
 		setAttributes,
 		deviceType,
+		clientId,
+		name,
 	} = props;
 
 	const [ state, setState ] = useState( {
@@ -437,18 +440,19 @@ const UAGBPostCarousel = ( props ) => {
 			uagb_carousel_unset_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
 		}
 
-		let blockStyling = styling( props );
-		blockStyling +=
-			'.uagb-block-' +
-			props.clientId.substr( 0, 8 ) +
-			'.uagb-post-grid ul.slick-dots li.slick-active button:before, .uagb-block-' +
-			props.clientId.substr( 0, 8 ) +
-			'.uagb-slick-carousel ul.slick-dots li button:before { color: ' +
-			props.attributes.arrowColor +
-			'; }';
-
-		addBlockEditorDynamicStyles( 'uagb-post-carousel-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
+
+	let blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+
+	blockStyling +=
+		'.uagb-block-' +
+		props.clientId.substr( 0, 8 ) +
+		'.uagb-post-grid ul.slick-dots li.slick-active button:before, .uagb-block-' +
+		props.clientId.substr( 0, 8 ) +
+		'.uagb-slick-carousel ul.slick-dots li button:before { color: ' +
+		props.attributes.arrowColor +
+		'; }';
 
 	useEffect( () => {
 		scrollBlockToView();
@@ -2143,50 +2147,10 @@ const UAGBPostCarousel = ( props ) => {
 		);
 	}
 
-	// Load all the Google Fonts for The Post Carousel Block.
-	let loadTitleGoogleFonts;
-	let loadMetaGoogleFonts;
-	let loadExcerptGoogleFonts;
-	let loadCtaGoogleFonts;
-
-	if ( titleLoadGoogleFonts === true ) {
-		const titleconfig = {
-			google: {
-				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
-			},
-		};
-		loadTitleGoogleFonts = <WebfontLoader config={ titleconfig }></WebfontLoader>;
-	}
-
-	if ( metaLoadGoogleFonts === true ) {
-		const metaconfig = {
-			google: {
-				families: [ metaFontFamily + ( metaFontWeight ? ':' + metaFontWeight : '' ) ],
-			},
-		};
-		loadMetaGoogleFonts = <WebfontLoader config={ metaconfig }></WebfontLoader>;
-	}
-
-	if ( excerptLoadGoogleFonts === true ) {
-		const excerptconfig = {
-			google: {
-				families: [ excerptFontFamily + ( excerptFontWeight ? ':' + excerptFontWeight : '' ) ],
-			},
-		};
-		loadExcerptGoogleFonts = <WebfontLoader config={ excerptconfig }></WebfontLoader>;
-	}
-
-	if ( ctaLoadGoogleFonts === true ) {
-		const ctaconfig = {
-			google: {
-				families: [ ctaFontFamily + ( ctaFontWeight ? ':' + ctaFontWeight : '' ) ],
-			},
-		};
-		loadCtaGoogleFonts = <WebfontLoader config={ ctaconfig }></WebfontLoader>;
-	}
-
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && (
 				<Settings
 					state={ state }
@@ -2205,10 +2169,6 @@ const UAGBPostCarousel = ( props ) => {
 				replaceInnerBlocks={ replaceInnerBlocks }
 				block={ block }
 			/>
-			{ loadTitleGoogleFonts }
-			{ loadMetaGoogleFonts }
-			{ loadExcerptGoogleFonts }
-			{ loadCtaGoogleFonts }
 		</>
 	);
 };

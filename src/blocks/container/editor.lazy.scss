@@ -1,5 +1,4 @@
 .uagb-container-variation-picker {
-
 	.uagb-variation-close {
 		font-size: 35px;
 		background: none;
@@ -18,7 +17,7 @@
 	.components-button,
 	.components-button.is-secondary,
 	.components-button.is-tertiary,
-	.components-button:hover:not(:disabled) {
+	.components-button:hover:not( :disabled ) {
 		box-shadow: none;
 		outline: none;
 		color: #d5dadf;
@@ -30,12 +29,11 @@
 		}
 	}
 
-	.components-button:hover:not(:disabled) svg {
+	.components-button:hover:not( :disabled ) svg {
 		color: #bcc0c4;
 	}
 
 	.block-editor-block-variation-picker__skip {
-
 		.components-button {
 			color: #0073aa;
 		}
@@ -82,8 +80,7 @@
 
 .uagb-editor-preview-mode-tablet,
 .uagb-editor-preview-mode-mobile {
-
-	.components-button.is-secondary:hover:not(:disabled) {
+	.components-button.is-secondary:hover:not( :disabled ) {
 		// Disabled boxShadow and outline on responsive.
 		box-shadow: none;
 		outline: none;
@@ -100,7 +97,6 @@
 }
 //Image Scroll issue.
 .block-editor-block-list__layout.is-root-container {
-
 	.uagb-is-root-container,
 	.uagb-container-has-children .wp-block-uagb-container {
 		border-radius: unset;
@@ -109,9 +105,7 @@
 
 // Container select layout view CSS for Astra customizer.
 #customize-theme-controls {
-
 	.uagb-container-variation-picker {
-
 		.block-editor-block-variation-picker__variations {
 			width: 300px;
 		}
@@ -122,7 +116,6 @@
 		}
 
 		.components-placeholder__label {
-
 			.dashicon {
 				display: none;
 			}
@@ -131,7 +124,6 @@
 }
 
 @media only screen and ( min-width: 1024px ) {
-
 	.wp-block-uagb-container > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
 		width: 100%;
 	}
@@ -146,10 +138,8 @@
 	.wp-block-group > .uagb-container-has-children.wp-block-uagb-container,
 	.wp-block-columns > .wp-block-column > .uagb-container-has-children.wp-block-uagb-container,
 	.is-root-container > .uagb-slider-container .uagb-container-has-children.wp-block-uagb-container {
-
 		& > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks,
 		& > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout {
-
 			& > .wp-block {
 				width: 100%;
 			}
@@ -184,7 +174,6 @@
 	}
 
 	.block-editor-block-list__layout {
-
 		.block-list-appender.wp-block {
 			width: auto;
 

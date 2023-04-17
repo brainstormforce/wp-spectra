@@ -3,35 +3,23 @@
  */
 
 import styling from './styling';
-import { useEffect, useState } from '@wordpress/element';
+import { useEffect, useState, useMemo } from '@wordpress/element';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import { useDeviceType } from '@Controls/getPreviewType';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-import WebfontLoader from '@Components/typography/fontloader';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import DynamicFontLoader from './dynamicFontLoader';
 
 const UAGBImageGallery = ( props ) => {
 	const {
 		clientId,
 		attributes,
-		attributes: {
-			UAGHideDesktop,
-			UAGHideTab,
-			UAGHideMob,
-			captionLoadGoogleFonts,
-			captionFontFamily,
-			captionFontWeight,
-			loadMoreLoadGoogleFonts,
-			loadMoreFontFamily,
-			loadMoreFontWeight,
-			lightboxLoadGoogleFonts,
-			lightboxFontFamily,
-			lightboxFontWeight,
-			focusList,
-		},
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob, focusList },
 		isSelected,
 		setAttributes,
+		name,
 	} = props;
 
 	const deviceType = useDeviceType();
@@ -57,9 +45,10 @@ const UAGBImageGallery = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-		addBlockEditorDynamicStyles( 'uagb-image-gallery-style-' + clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
+
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		responsiveConditionPreview( props );
@@ -75,48 +64,12 @@ const UAGBImageGallery = ( props ) => {
 		}
 	}, [ isSelected ] );
 
-	// Loading Google Fonts.
-	let loadCaptionGoogleFonts;
-	let loadLoadMoreGoogleFonts;
-	let loadLightboxGoogleFonts;
-
-	if ( captionLoadGoogleFonts === true ) {
-		const captionConfig = {
-			google: {
-				families: [ captionFontFamily + ( captionFontWeight ? ':' + captionFontWeight : '' ) ],
-			},
-		};
-
-		loadCaptionGoogleFonts = <WebfontLoader config={ captionConfig }></WebfontLoader>;
-	}
-
-	if ( loadMoreLoadGoogleFonts === true ) {
-		const loadMoreConfig = {
-			google: {
-				families: [ loadMoreFontFamily + ( loadMoreFontWeight ? ':' + loadMoreFontWeight : '' ) ],
-			},
-		};
-
-		loadLoadMoreGoogleFonts = <WebfontLoader config={ loadMoreConfig }></WebfontLoader>;
-	}
-
-	if ( lightboxLoadGoogleFonts === true ) {
-		const lightboxConfig = {
-			google: {
-				families: [ lightboxFontFamily + ( lightboxFontWeight ? ':' + lightboxFontWeight : '' ) ],
-			},
-		};
-
-		loadLightboxGoogleFonts = <WebfontLoader config={ lightboxConfig }></WebfontLoader>;
-	}
-
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings { ...{ ...props, lightboxPreview, setLightboxPreview } } /> }
 			<Render { ...{ ...props, lightboxPreview, setLightboxPreview } } />
-			{ loadCaptionGoogleFonts }
-			{ loadLoadMoreGoogleFonts }
-			{ loadLightboxGoogleFonts }
 		</>
 	);
 };

@@ -42,11 +42,11 @@
 	}
 }
 
-.interface-complementary-area.edit-post-sidebar:has(.spectra-sidebar) {
+.interface-complementary-area.edit-post-sidebar:has( .spectra-sidebar ) {
 	height: auto;
 }
 
-.interface-interface-skeleton__sidebar:has(.spectra-sidebar) {
+.interface-interface-skeleton__sidebar:has( .spectra-sidebar ) {
 	height: auto;
 }
 

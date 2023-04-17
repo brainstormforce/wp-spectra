@@ -8,8 +8,8 @@ import getAttributeFallback, { getFallbackNumber } from '@Controls/getAttributeF
 import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 
-function styling( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+function styling( attributes, clientId, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		formPaddingTop,
@@ -174,7 +174,7 @@ function styling( props ) {
 		gradientType,
 		gradientAngle,
 		selectGradient,
-	} = props.attributes;
+	} = attributes;
 
 	let selectors = {};
 	let tabletSelectors = {};
@@ -197,13 +197,13 @@ function styling( props ) {
 		? toggleWidthSizeNumberTablet
 		: toggleWidthSizeMobile;
 
-	const inputBorder = generateBorderCSS( props.attributes, 'field' );
-	const inputBorderTablet = generateBorderCSS( props.attributes, 'field', 'tablet' );
-	const inputBorderMobile = generateBorderCSS( props.attributes, 'field', 'mobile' );
+	const inputBorder = generateBorderCSS( attributes, 'field' );
+	const inputBorderTablet = generateBorderCSS( attributes, 'field', 'tablet' );
+	const inputBorderMobile = generateBorderCSS( attributes, 'field', 'mobile' );
 
-	const toggleBorder = generateBorderCSS( props.attributes, 'checkBoxToggle' );
-	const toggleBorderTablet = generateBorderCSS( props.attributes, 'checkBoxToggle', 'tablet' );
-	const toggleBorderMobile = generateBorderCSS( props.attributes, 'checkBoxToggle', 'mobile' );
+	const toggleBorder = generateBorderCSS( attributes, 'checkBoxToggle' );
+	const toggleBorderTablet = generateBorderCSS( attributes, 'checkBoxToggle', 'tablet' );
+	const toggleBorderMobile = generateBorderCSS( attributes, 'checkBoxToggle', 'mobile' );
 
 	// Individual Toggle Border Radius Fallback for Inner Dot.
 	let toggleBorderRadiusTLFallback = getAttributeFallback(
@@ -336,9 +336,9 @@ function styling( props ) {
 			? toggleBorderMobile[ 'border-left-width' ]
 			: toggleBorderLTabletFallback;
 
-	const submitBorder = generateBorderCSS( props.attributes, 'btn' );
-	const submitBorderTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
-	const submitBorderMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+	const submitBorder = generateBorderCSS( attributes, 'btn' );
+	const submitBorderTablet = generateBorderCSS( attributes, 'btn', 'tablet' );
+	const submitBorderMobile = generateBorderCSS( attributes, 'btn', 'mobile' );
 
 	selectors = {
 		'.uagb-forms__outer-wrap': {
@@ -948,7 +948,7 @@ function styling( props ) {
 	}
 
 	let stylingCss = '';
-	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const base_selector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
 	stylingCss = generateCSS( selectors, base_selector );
 
 	stylingCss += generateCSS( tabletSelectors, `${ base_selector }.uagb-editor-preview-mode-tablet`, true, 'tablet' );

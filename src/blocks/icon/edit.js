@@ -2,7 +2,7 @@
  * BLOCK: Icon - Edit
  */
 
-import { useEffect } from '@wordpress/element';
+import { useEffect, useMemo } from '@wordpress/element';
 
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
@@ -11,6 +11,7 @@ import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import styling from './styling';
 import Settings from './settings';
 import Render from './render';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
 
 const UAGBIcon = ( props ) => {
 	const deviceType = useDeviceType();
@@ -19,6 +20,7 @@ const UAGBIcon = ( props ) => {
 		attributes,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		isSelected,
+		name,
 	} = props;
 	const blockId = clientId.substr( 0, 8 );
 
@@ -32,9 +34,10 @@ const UAGBIcon = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-		addBlockEditorDynamicStyles( 'uagb-style-icon-' + blockId, blockStyling );
+		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
+
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
@@ -46,6 +49,7 @@ const UAGBIcon = ( props ) => {
 
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
 			{ isSelected && <Settings { ...props } /> }
 			<Render { ...props } />
 		</>

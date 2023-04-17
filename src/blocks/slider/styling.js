@@ -8,8 +8,7 @@ import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 import { applyFilters } from '@wordpress/hooks';
 
-function styling( props ) {
-	const { attributes } = props;
+function styling( attributes, clientId ) {
 	let {
 		backgroundType,
 		backgroundImageDesktop,
@@ -121,13 +120,13 @@ function styling( props ) {
 		selectGradient,
 	} = attributes;
 
-	const borderCSS = generateBorderCSS( props.attributes, 'slider' );
-	const borderCSSTablet = generateBorderCSS( props.attributes, 'slider', 'tablet' );
-	const borderCSSMobile = generateBorderCSS( props.attributes, 'slider', 'mobile' );
+	const borderCSS = generateBorderCSS( attributes, 'slider' );
+	const borderCSSTablet = generateBorderCSS( attributes, 'slider', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( attributes, 'slider', 'mobile' );
 
-	const arrowBorderCSS = generateBorderCSS( props.attributes, 'slider-arrow' );
-	const arrowBorderCSSTablet = generateBorderCSS( props.attributes, 'slider-arrow', 'tablet' );
-	const arrowBorderCSSMobile = generateBorderCSS( props.attributes, 'slider-arrow', 'mobile' );
+	const arrowBorderCSS = generateBorderCSS( attributes, 'slider-arrow' );
+	const arrowBorderCSSTablet = generateBorderCSS( attributes, 'slider-arrow', 'tablet' );
+	const arrowBorderCSSMobile = generateBorderCSS( attributes, 'slider-arrow', 'mobile' );
 
 	arrowSizeTablet = 'undefined' !== typeof arrowSizeTablet ? arrowSizeTablet : arrowSize;
 	arrowSizeMobile = 'undefined' !== typeof arrowSizeMobile ? arrowSizeMobile : arrowSizeTablet;
@@ -435,7 +434,7 @@ function styling( props ) {
 		},
 	};
 
-	const base_selector = `.editor-styles-wrapper #block-${ props.clientId }`;
+	const base_selector = `.editor-styles-wrapper #block-${ clientId }`;
 
 	selectors = applyFilters( `spectra.slider.styling`, selectors, attributes );
 	tablet_selectors = applyFilters( `spectra.slider.tabletStyling`, tablet_selectors, attributes );

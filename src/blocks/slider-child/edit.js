@@ -5,14 +5,15 @@
 import Settings from './settings';
 import Render from './render';
 import styling from './styling';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useMemo } from '@wordpress/element';
 
 import { withSelect, useDispatch } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
 
 const UAGBSlide = ( props ) => {
-	const { isSelected, setAttributes, attributes, deviceType } = props;
+	const { isSelected, setAttributes, attributes, deviceType, clientId, name } = props;
 
 	useEffect( () => {
 		// Assigning block_id in the attribute.
@@ -21,13 +22,14 @@ const UAGBSlide = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-slider-child-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
+
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
 		</>

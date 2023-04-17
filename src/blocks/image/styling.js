@@ -7,8 +7,8 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-export default function styling( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+export default function styling( attributes, clientId, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		width,
@@ -158,7 +158,7 @@ export default function styling( props ) {
 		customHeightSetDesktop,
 		customHeightSetTablet,
 		customHeightSetMobile,
-	} = props.attributes;
+	} = attributes;
 
 	const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
 	const overlayPositionFromEdgeFallback = getFallbackNumber(
@@ -171,12 +171,12 @@ export default function styling( props ) {
 	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
 	const overlayHoverOpacityFallback = getFallbackNumber( overlayHoverOpacity, 'overlayHoverOpacity', blockName );
 
-	const overlayBorderCSS = generateBorderCSS( props.attributes, 'overlay' );
-	const overlayBorderCSSTablet = generateBorderCSS( props.attributes, 'overlay', 'tablet' );
-	const overlayBorderCSSMobile = generateBorderCSS( props.attributes, 'overlay', 'mobile' );
-	const imageBorderCSS = generateBorderCSS( props.attributes, 'image' );
-	const imageBorderCSSTablet = generateBorderCSS( props.attributes, 'image', 'tablet' );
-	const imageBorderCSSMobile = generateBorderCSS( props.attributes, 'image', 'mobile' );
+	const overlayBorderCSS = generateBorderCSS( attributes, 'overlay' );
+	const overlayBorderCSSTablet = generateBorderCSS( attributes, 'overlay', 'tablet' );
+	const overlayBorderCSSMobile = generateBorderCSS( attributes, 'overlay', 'mobile' );
+	const imageBorderCSS = generateBorderCSS( attributes, 'image' );
+	const imageBorderCSSTablet = generateBorderCSS( attributes, 'image', 'tablet' );
+	const imageBorderCSSMobile = generateBorderCSS( attributes, 'image', 'mobile' );
 
 	const tabletWidth = '' !== widthTablet ? widthTablet : width;
 	const mobileWidth = '' !== widthMobile ? widthMobile : tabletWidth;
@@ -358,7 +358,7 @@ export default function styling( props ) {
 		}
 	}
 
-	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const base_selector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	const tablet_selectors = {};
 	const mobile_selectors = {};

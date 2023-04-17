@@ -1,4 +1,4 @@
-const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
+const addBlockEditorDynamicStyles = () => {
 	setTimeout( () => {
 		// Static Editor CSS.
 
@@ -67,22 +67,6 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 		}
 
 		// Block Editor Spacing CSS Ends.
-
-		// Desktop.
-		const element = document.getElementById( styleTagId );
-
-		if ( null === element || undefined === element ) {
-			const $style = document.createElement( 'style' );
-			$style.setAttribute( 'id', styleTagId );
-
-			$style.innerHTML = styling;
-			document.head.appendChild( $style );
-		}
-
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling;
-		}
-		// Desktop ends.
 
 		// Tablet / Mobile Starts.
 		const tabletPreview = document.getElementsByClassName( 'is-tablet-preview' );
@@ -164,22 +148,6 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 				if ( ! iframeBlockEditorSpacingCSSStylesTag ) {
 					iframeDocument.head.appendChild( cloneBlockEditorSpacingCSSStylesTag );
 				}
-			}
-
-			let iframeElement = iframeDocument.getElementById( styleTagId );
-
-			if ( null === iframeElement || undefined === iframeElement ) {
-				const $style = document.createElement( 'style' );
-				$style.setAttribute( 'id', styleTagId );
-
-				// Dynamic CSS.
-				iframeDocument.head.appendChild( $style );
-			}
-
-			iframeElement = iframeDocument.getElementById( styleTagId );
-
-			if ( null !== iframeElement && undefined !== iframeElement ) {
-				iframeElement.innerHTML = styling;
 			}
 		}
 	} );

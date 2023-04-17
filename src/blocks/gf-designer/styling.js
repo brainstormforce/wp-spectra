@@ -8,8 +8,8 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-function styling( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+function styling( attributes, clientId, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		align,
@@ -244,7 +244,7 @@ function styling( props ) {
 		successMsgLetterSpacingTablet,
 		successMsgLetterSpacingMobile,
 		successMsgLetterSpacingType,
-	} = props.attributes;
+	} = attributes;
 
 	const selectors = {
 		' .gform_wrapper form': {
@@ -1169,10 +1169,7 @@ function styling( props ) {
 		},
 	};
 
-	const base_selector = `.editor-styles-wrapper .wp-block-uagb-gf-styler.uagb-block-${ props.clientId.substr(
-		0,
-		8
-	) }`;
+	const base_selector = `.editor-styles-wrapper .wp-block-uagb-gf-styler.uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	let stylingCss = generateCSS( selectors, `${ base_selector }` );
 
