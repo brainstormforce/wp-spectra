@@ -38,7 +38,7 @@ window.UAGBModal = {
 
 		if ( typeof modalWrapper !== 'undefined' && modalWrapper ) {
 			const modalTrigger = modalWrapper.querySelector( '.uagb-modal-trigger' );
-
+			const closeOverlayClick = modalWrapper.dataset.overlayclick;
 			if ( typeof modalTrigger !== 'undefined' && modalTrigger ) {
 				modalTrigger.style.pointerEvents = 'auto';
 
@@ -75,20 +75,20 @@ window.UAGBModal = {
 					}
 				} );
 
-				innerModal.addEventListener( 'click', function ( e ) {
-					const closeOverlayClick = modalWrapper.dataset.overlayclick;
-
-					if (
-						'enable' === closeOverlayClick &&
-						innerModal.classList.contains( 'active' ) &&
-						! innerModal.querySelector( '.uagb-modal-popup-wrap' ).contains( e.target )
-					) {
-						innerModal.classList.remove( 'active' );
-					}
-					if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
-						bodyWrap.classList.remove( 'hide-scroll' );
-					}
-				} );
+				if( 'disable' !== closeOverlayClick ){
+					innerModal.addEventListener( 'click', function ( e ) {
+						if (
+							'enable' === closeOverlayClick &&
+							innerModal.classList.contains( 'active' ) &&
+							! innerModal.querySelector( '.uagb-modal-popup-wrap' ).contains( e.target )
+						) {
+							innerModal.classList.remove( 'active' );
+						}
+						if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+							bodyWrap.classList.remove( 'hide-scroll' );
+						}
+					} );
+				}
 
 				document.addEventListener( 'keyup', function ( e ) {
 					const closeOnEsc = modalWrapper.dataset.escpress;

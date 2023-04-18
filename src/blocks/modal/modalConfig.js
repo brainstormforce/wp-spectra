@@ -33,6 +33,8 @@ export const defaultContent = [
 
 // excludeBlocks are blocks that restricted to use as child block inside Modal.
 export const excludeBlocks = [
+	'uagb/modal',
+	// Spectra Child Blocks.
 	'uagb/how-to-step',
 	'uagb/buttons-child',
 	'uagb/faq-child',
@@ -59,6 +61,13 @@ export const excludeBlocks = [
 	'uagb/forms-toggle',
 	'uagb/forms-date',
 	'uagb/forms-accept',
-	'uagb/modal',
 	'uagb/slider-child',
+	// Spectra Pro Child Blocks.
+	'uagb/register-email',
+	'uagb/register-first-name',
+	'uagb/register-last-name',
+	'uagb/register-password',
+	'uagb/register-reenter-password',
+	'uagb/register-terms',
+	'uagb/register-username',
 ];

@@ -315,25 +315,21 @@ const Settings = ( props ) => {
 							} }
 							onChange={ ( value ) => setAttributes( { transitionEffect: value } ) }
 							setAttributes={ setAttributes }
-							options={ [
-								{
-									value: 'slide',
-									label: __( 'Slide', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'fade',
-									label: __( 'Fade', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'flip',
-									label: __( 'Flip', 'ultimate-addons-for-gutenberg' ),
-								},
-							] }
 							help={ __(
 								"Above setting will only take effect once you are on the live page, and not while you're editing.",
 								'ultimate-addons-for-gutenberg'
 							) }
-						/>
+						>
+							<option value='slide'>
+								{ __( 'Slide', 'ultimate-addons-for-gutenberg' ) }
+							</option>
+							<option value='fade'>
+								{ __( 'Fade', 'ultimate-addons-for-gutenberg' ) }
+							</option>
+							<option value='flip'>
+								{ __( 'Flip', 'ultimate-addons-for-gutenberg' ) }
+							</option>
+						</UAGSelectControl>
 						<Range
 							label={ __( 'Transition Speed (ms)', 'ultimate-addons-for-gutenberg' ) }
 							setAttributes={ setAttributes }

@@ -35,6 +35,10 @@ const attributes = {
 		type: 'array',
 		default: [],
 	},
+	focusListObject: {
+		type: 'object',
+		default: {},
+	},
 
 	// Gallery Settings
 

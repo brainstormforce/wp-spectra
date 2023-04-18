@@ -131,14 +131,23 @@ const attributes = {
 	buttonAlign: {
 		type: 'string',
 		default: 'left',
+		UAGCopyPaste: {
+			styleType: 'btn-align',
+		},
 	},
 	buttonAlignTablet: {
 		type: 'string',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'btn-align-tablet',
+		},
 	},
 	buttonAlignMobile: {
 		type: 'string',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'btn-align-mobile',
+		},
 	},
 	confirmationType: {
 		type: 'string',
@@ -250,7 +259,7 @@ const attributes = {
 		type: 'string',
 		default: 'medium',
 		UAGCopyPaste: {
-			styleType: 'btn-color',
+			styleType: 'btn-size',
 		},
 	},
 	// Border
@@ -366,20 +375,20 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 		UAGCopyPaste: {
-			styleType: 'main-title-load-google-fonts',
+			styleType: 'label-load-google-fonts',
 		},
 	},
 	labelFontFamily: {
 		type: 'string',
 		default: 'Default',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-family',
+			styleType: 'label-font-family',
 		},
 	},
 	labelFontWeight: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-weight',
+			styleType: 'label-font-weight',
 		},
 	},
 	// label Font Size
@@ -387,13 +396,13 @@ const attributes = {
 		type: 'number',
 		default: 15,
 		UAGCopyPaste: {
-			styleType: 'main-title-font-size',
+			styleType: 'label-font-size',
 		},
 	},
 	labelFontSizeType: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-size-type',
+			styleType: 'label-font-size-type',
 		},
 		default: 'px',
 	},
@@ -401,14 +410,14 @@ const attributes = {
 		type: 'number',
 		default: 15,
 		UAGCopyPaste: {
-			styleType: 'main-title-font-size-tablet',
+			styleType: 'label-font-size-tablet',
 		},
 	},
 	labelFontSizeMobile: {
 		type: 'number',
 		default: 15,
 		UAGCopyPaste: {
-			styleType: 'main-title-font-size-mobile',
+			styleType: 'label-font-size-mobile',
 		},
 	},
 	// label Line Height
@@ -416,25 +425,25 @@ const attributes = {
 		type: 'string',
 		default: 'em',
 		UAGCopyPaste: {
-			styleType: 'main-title-line-height-type',
+			styleType: 'label-line-height-type',
 		},
 	},
 	labelLineHeight: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-line-height',
+			styleType: 'label-line-height',
 		},
 	},
 	labelLineHeightTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-line-height-tablet',
+			styleType: 'label-line-height-tablet',
 		},
 	},
 	labelLineHeightMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-line-height-mobile',
+			styleType: 'label-line-height-mobile',
 		},
 	},
 
@@ -444,26 +453,26 @@ const attributes = {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'main-title-bottom-margin',
+			styleType: 'label-bottom-margin',
 		},
 	},
 	labelGapTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-bottom-margin-tablet',
+			styleType: 'label-bottom-margin-tablet',
 		},
 	},
 	labelGapMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-margin-bottom-mobile',
+			styleType: 'label-margin-bottom-mobile',
 		},
 	},
 	labelGapUnit: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'main-title-margin-unit',
+			styleType: 'label-margin-unit',
 		},
 	},
 
@@ -632,14 +641,14 @@ const attributes = {
 	labelColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-color',
+			styleType: 'label-color',
 		},
 		default: '',
 	},
 	labelHoverColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-hover-color',
+			styleType: 'label-hover-color',
 		},
 		default: '',
 	},
@@ -738,19 +747,19 @@ const attributes = {
 		type: 'number',
 		default: 20,
 		UAGCopyPaste: {
-			styleType: 'field-gap',
+			styleType: 'field-row-gap',
 		},
 	},
 	fieldGapTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'field-gap',
+			styleType: 'field-row-gap-tablet',
 		},
 	},
 	fieldGapMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'field-gap',
+			styleType: 'field-row-gap-mobile',
 		},
 	},
 
@@ -979,13 +988,13 @@ const attributes = {
 	labelTransform: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-transform',
+			styleType: 'label-transform',
 		},
 	},
 	labelDecoration: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-decoration',
+			styleType: 'label-decoration',
 		},
 	},
 	inputTransform: {
@@ -1004,7 +1013,7 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'field-gap-type',
+			styleType: 'field-row-gap-type',
 		},
 	},
 	paddingFieldTop: {
@@ -1126,7 +1135,7 @@ const attributes = {
 		type: 'string',
 		default: 'normal',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-style',
+			styleType: 'label-font-style',
 		},
 	},
 	inputFontStyle: {

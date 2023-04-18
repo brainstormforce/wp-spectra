@@ -210,16 +210,16 @@ const ModalContainer = ( props ) => {
 				inputElement={ inputElement }
 			/>
 			{ /* middle  */ }
-			<div className="uagb-ip-lr-container">
+			<section className="uagb-ip-lr-container">
 				<div className="uagb-ip-left">{ listOfCategory() }</div>
 				<div className="uagb-ip-right">
 					<div className="uagb-ip-modal-container" ref={ iconContainerRef }>
 						{ renderIconList() }
 					</div>
 				</div>
-			</div>
+			</section>
 			{ /* Footer */ }
-			<div className="uagb-ip-footer">
+			<section className="uagb-ip-footer">
 				<button
 					className={ '' === insertIcon ? 'disable' : null }
 					onClick={
@@ -233,7 +233,7 @@ const ModalContainer = ( props ) => {
 				>
 					{ __( 'Insert Icon', 'ultimate-addons-for-gutenberg' ) }
 				</button>
-			</div>
+			</section>
 		</Modal>
 	);
 };

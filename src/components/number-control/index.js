@@ -5,11 +5,12 @@ import styles from './editor.lazy.scss';
 import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element';
 import { limitMax, limitMin } from '@Controls/unitWiseMinMaxOption';
 import classnames from 'classnames';
-import { select } from '@wordpress/data';
+import { select, useSelect } from '@wordpress/data';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGReset from '../reset';
-import UAGHelpText from '@Components/help-text';
+import Separator from '@Components/separator';
 import { applyFilters } from '@wordpress/hooks';
+import UAGHelpText from '@Components/help-text';
 
 const UAGNumberControl = ( props ) => {
 	const [ panelNameForHook, setPanelNameForHook ] = useState( null );
@@ -28,6 +29,25 @@ const UAGNumberControl = ( props ) => {
 	useEffect( () => {
 		setPanelNameForHook( getPanelIdFromRef( panelRef ) );
 	}, [ blockNameForHook ] );
+
+	// Get selected block's data.
+	const selectedBlock = useSelect( () => {
+		return select( 'core/block-editor' ).getSelectedBlock();
+	}, [] );
+
+	// If Dynamic Content prop is enabled and the name (attribute name) is set, we retrieve the controls for the dynamic content feature. 
+	const registerTextExtender = props.enableDynamicContent && props.name ? wp.hooks.applyFilters( 'uagb.registerTextExtender', '', selectedBlock?.name, props.name, props.dynamicContentType ) : null;
+
+	const isEnableDynamicContent = () => {
+		if( !props.enableDynamicContent || ! props.name ){
+			return false;
+		}
+		const dynamicContent = selectedBlock?.attributes?.dynamicContent
+		if( dynamicContent && dynamicContent?.[props.name]?.enable === true ) {
+			return true
+		}
+		return false;
+	}
 
 	const { isShiftStepEnabled } = props;
 
@@ -157,28 +177,49 @@ const UAGNumberControl = ( props ) => {
 	);
 
 	return (
-		<div ref={ panelRef } className="components-base-control">
+		<div ref={ panelRef } className={`components-base-control uag-number-control uagb-size-type-field-tabs${isEnableDynamicContent() ? ' uagb-text-control--open-dynamic-content' : ''}`}>
 			{ controlBeforeDomElement }
-			<div className="uag-number-control uagb-size-type-field-tabs">
-				{ props.showControlHeader && <ControlHeader /> }
-				<div
-					className={ classnames( 'uagb-number-control__mobile-controls', 'uag-number-control__' + variant ) }
-				>
-					<ResponsiveToggle label={ props.label } responsive={ props.responsive } />
-					<NumberControl
-						labelPosition="edge"
-						disabled={ props.disabled }
-						isShiftStepEnabled={ isShiftStepEnabled }
-						max={ max }
-						min={ min }
-						onChange={ handleOnChange }
-						value={ inputValue }
-						step={ props?.step || 1 }
-						required={ props?.required }
-					/>
-				</div>
-				<UAGHelpText text={ props.help } />
+			{ props.showControlHeader &&
+				<ControlHeader />
+			}
+			<div className={ classnames(
+					'uagb-number-control__mobile-controls',
+					'uag-number-control__' + variant,
+				) }
+			>
+				<ResponsiveToggle
+					label= { props.label }
+					responsive= { props.responsive }
+				/>
+				{/* If Dynamic Content is enabled, we don't need to show the input field */}
+				{ !isEnableDynamicContent() &&
+					<>
+						<NumberControl
+							labelPosition="edge"
+							disabled={ props.disabled }
+							isShiftStepEnabled={ isShiftStepEnabled }
+							max={ max }
+							min={ min }
+							onChange={ handleOnChange }
+							value={ inputValue }
+							step={ props?.step || 1 }
+							required={ props?.required }
+							readOnly={isEnableDynamicContent()}
+						/>
+					</>
+				}
+				{/* Show the Dynamic Content Controls */}
+				{
+					registerTextExtender
+				}
 			</div>
+			{ <UAGHelpText text={ props.help } />}
+			{/* Add a separator below for better UI since many dynamic content controls are shown */}
+			{
+				isEnableDynamicContent() && (
+					<Separator />
+				)
+			}
 			{ controlAfterDomElement }
 		</div>
 	);
@@ -198,6 +239,9 @@ UAGNumberControl.defaultProps = {
 	responsive: false,
 	showControlHeader: true,
 	inlineControl: true,
+	dynamicContentType: 'text',
+	enableDynamicContent: false,
+	// name: attribute name as a string,  // a prop used when dynamic content support needs to be added to an instance of this control.
 	help: false,
 };
 

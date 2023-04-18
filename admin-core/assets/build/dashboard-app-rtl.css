@@ -771,8 +771,6 @@ select {
   width: 100vw;
 }.w-6 {
   width: 1.5rem;
-}.w-4 {
-  width: 1rem;
 }.w-full {
   width: 100%;
 }.w-0 {
@@ -797,6 +795,8 @@ select {
   width: 78%;
 }.w-1 {
   width: 0.25rem;
+}.w-4 {
+  width: 1rem;
 }.w-auto {
   width: auto;
 }.min-w-0 {

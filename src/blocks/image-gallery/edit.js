@@ -28,6 +28,7 @@ const UAGBImageGallery = ( props ) => {
 			lightboxLoadGoogleFonts,
 			lightboxFontFamily,
 			lightboxFontWeight,
+			focusList,
 		},
 		isSelected,
 		setAttributes,
@@ -38,6 +39,20 @@ const UAGBImageGallery = ( props ) => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 		setAttributes( { classMigrate: true } );
+
+		// Replacing the old Focus List Array with the Object List.
+		if ( Array.isArray( focusList ) && focusList.length ) {
+			const convertedList = {};
+			focusList.forEach( ( isFocused, imageIndex ) => {
+				if ( true === isFocused ) {
+					convertedList[ imageIndex ] = true;
+				}
+			} );
+			setAttributes( {
+				focusList: [],
+				focusListObject: { ...convertedList },
+			} );
+		}
 	}, [] );
 
 	useEffect( () => {

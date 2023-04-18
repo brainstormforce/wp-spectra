@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 5.6
 Tested up to: 6.2
-Stable tag: 2.4.1
+Stable tag: 2.4.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -174,12 +174,17 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * New: Animations - Give a new life to your page with some scroll-based entrance animations.
 * Improvement: Global - Added Advanced options in Gradient Component.
 * Fix: Container - Heading tags were not inheriting color from theme or container.
+* Fix: Container - Updated default content width for block based themes to wideSize.
 * Fix: Image - width and height tag does not appear when image uploaded.
+* Fix: Image Gallery - Replaced the Null Array FocusList with an Optimized Object.
 * Fix: Spacing Control - Removed the capability to set negative values for width & radius settings.
 * Fix: Typography Control - Removed the capability to set negative values for line-height & font size settings.
 * Fix: Post Carousel - TwentyTwentyone theme hover style override for arrow and dot.
 * Fix: Global - Fonts were not loading in the customizer when Spectra blocks are used in Astra theme's header/footer section.
 * Fix: Advanced Heading - Removed Extra padding in the editor.
+
+= 2.4.2 - WEDNESDAY, 12th APRIL 2023 =
+* Fix: Container - Updated default content width for block based themes to wideSize.
 
 = 2.4.1 - TUESDAY, 28th MARCH 2023 =
 * Improvement: Updated Spectra to work with WordPress 6.2 and Full Site Editing (FSE) themes.
@@ -191,6 +196,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Social Share - Optimized PHP code for legacy users causing an error due `array_merge()` parameter issues.
 * Fix: Taxonomy List - Added the missing translation for the Select string in the PHP code.
 * Fix: Post Grid - Resolved an issue where pagination was not visible inside the editor.
+* Fix: Modal - Resolved an issue where trigger alignment option was displayed for Automatic/Custom-Id/Classs trigger types in modal.
 
 = 2.4.0 - WEDNESDAY, 15th MARCH 2023 =
 * New: Introducing the Countdown block that will help you generate hype and create a sense of urgency among your audience, during product sales or releases!
