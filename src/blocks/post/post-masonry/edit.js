@@ -3,7 +3,6 @@
  */
 import { useEffect, useState, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-
 import styling from '.././styling';
 import TypographyControl from '@Components/typography';
 import ResponsiveBorder from '@Components/responsive-border';
@@ -18,7 +17,6 @@ import renderSVG from '@Controls/renderIcon';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { buttonsPresets } from './presets';
 import UAGPresets from '@Components/presets';
@@ -30,7 +28,8 @@ import apiFetch from '@wordpress/api-fetch';
 import UAGTextControl from '@Components/text-control';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from '.././dynamicFontLoader';
-
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 import Settings from './settings';
 import Render from './render';
 
@@ -503,14 +502,9 @@ const UAGBPostMasonry = ( props ) => {
 		}
 
 		// Replacement for componentDidUpdate.
-
-		addBlockEditorDynamicStyles();
 	}, [ attributes ] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
-
 		scrollBlockToView();
 	}, [ deviceType ] );
 
@@ -2337,4 +2331,6 @@ const UAGBPostMasonry = ( props ) => {
 	);
 };
 
-export default UAGBPostMasonry;
+export default compose(
+	AddStaticStyles,
+)( UAGBPostMasonry );

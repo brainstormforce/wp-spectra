@@ -6,13 +6,14 @@ import styling from './styling';
 import SchemaNotices from './schema-notices';
 import { useEffect, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const ReviewComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -224,9 +225,6 @@ const ReviewComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
-
 		const ratingLinkWrapper = document.querySelector( '.uagb-rating-link-wrapper' );
 		if ( ratingLinkWrapper !== null ) {
 			ratingLinkWrapper.addEventListener( 'click', function ( event ) {
@@ -308,4 +306,6 @@ const ReviewComponent = ( props ) => {
 	);
 };
 
-export default ReviewComponent;
+export default compose(
+	AddStaticStyles,
+)( ReviewComponent );

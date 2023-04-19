@@ -1,13 +1,13 @@
 import { useEffect, useMemo } from '@wordpress/element';
 import styling from './styling';
-
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import Settings from './settings';
 import Render from './render';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBGoogleMap = ( props ) => {
 	const deviceType = useDeviceType();
@@ -26,11 +26,6 @@ const UAGBGoogleMap = ( props ) => {
 			block_id: clientId.substr( 0, 8 ),
 		} );
 	}, [] );
-
-	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
-	}, [ attributes, deviceType ] );
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
@@ -51,4 +46,6 @@ const UAGBGoogleMap = ( props ) => {
 	);
 };
 
-export default UAGBGoogleMap;
+export default compose(
+	AddStaticStyles,
+)( UAGBGoogleMap );

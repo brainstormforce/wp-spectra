@@ -21,7 +21,6 @@ import UAGSelectControl from '@Components/select-control';
 import renderSVG from '@Controls/renderIcon';
 import presets, { buttonsPresets } from './presets';
 import UAGPresets from '@Components/presets';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import UAGNumberControl from '@Components/number-control';
@@ -30,16 +29,13 @@ import apiFetch from '@wordpress/api-fetch';
 import UAGTextControl from '@Components/text-control';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from '.././dynamicFontLoader';
-
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 const MAX_POSTS_COLUMNS = 8;
-
 import Settings from './settings';
 import Render from './render';
-
 import { Placeholder, Spinner, ToggleControl, Icon } from '@wordpress/components';
-
 import { InspectorControls } from '@wordpress/block-editor';
-
 import { useSelect, useDispatch } from '@wordpress/data';
 
 const UAGBPostCarousel = ( props ) => {
@@ -439,8 +435,6 @@ const UAGBPostCarousel = ( props ) => {
 		} else {
 			uagb_carousel_unset_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
 		}
-
-		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
 
 	let blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
@@ -2173,4 +2167,6 @@ const UAGBPostCarousel = ( props ) => {
 	);
 };
 
-export default UAGBPostCarousel;
+export default compose(
+	AddStaticStyles,
+)( UAGBPostCarousel );

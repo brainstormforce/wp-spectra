@@ -1,5 +1,4 @@
 import { useEffect, useMemo } from '@wordpress/element';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import styling from './styling';
 import Settings from './settings';
 import Render from './render';
@@ -7,11 +6,12 @@ import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import { useDeviceType } from '@Controls/getPreviewType';
 import DynamicFontLoader from './dynamicFontLoader';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
-
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 //  Import CSS.
 import './style.scss';
 
-export default function UAGBCounterEdit( props ) {
+const UAGBCounterEdit = ( props ) => {
 	const deviceType = useDeviceType();
 	const {
 		setAttributes,
@@ -26,12 +26,6 @@ export default function UAGBCounterEdit( props ) {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 	}, [] );
-
-	useEffect( () => {
-		// Replacement for componentDidUpdate.
-
-		addBlockEditorDynamicStyles();
-	}, [ attributes ] );
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
@@ -48,3 +42,7 @@ export default function UAGBCounterEdit( props ) {
 		</>
 	);
 }
+
+export default compose(
+	AddStaticStyles,
+)( UAGBCounterEdit );

@@ -1,13 +1,14 @@
 import styling from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicFontLoader from './dynamicFontLoader';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import Settings from './settings';
 import Render from './render';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBBlockQuote = ( props ) => {
 	const deviceType = useDeviceType();
@@ -36,12 +37,6 @@ const UAGBBlockQuote = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-
-		addBlockEditorDynamicStyles();
-	}, [ attributes, deviceType ] );
-
-	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
@@ -61,4 +56,6 @@ const UAGBBlockQuote = ( props ) => {
 	);
 };
 
-export default UAGBBlockQuote;
+export default compose(
+	AddStaticStyles,
+)( UAGBBlockQuote );

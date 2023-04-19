@@ -2,10 +2,8 @@
  * BLOCK: Info Box - Edit Class
  */
 import { useEffect, useMemo } from '@wordpress/element';
-
 import styling from './styling';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
@@ -13,6 +11,8 @@ import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
 import Settings from './settings';
 import Render from './render';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBInfoBox = ( props ) => {
 	const deviceType = useDeviceType();
@@ -86,14 +86,11 @@ const UAGBInfoBox = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
-	}, [ attributes, deviceType ] );
-
-	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
+
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+	
 	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
@@ -108,4 +105,6 @@ const UAGBInfoBox = ( props ) => {
 	);
 };
 
-export default UAGBInfoBox;
+export default compose(
+	AddStaticStyles,
+)( UAGBInfoBox );

@@ -3,18 +3,13 @@
  */
 import styling from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
-
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
-
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
-
 import Settings from './settings';
 import Render from './render';
-
 import { compose } from '@wordpress/compose';
-
 import { withDispatch, dispatch, select } from '@wordpress/data';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
@@ -84,7 +79,6 @@ const UAGBTabsEdit = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
 		updateTabTitle();
 		props.resetTabOrder();
 	}, [ deviceType, props ] );
@@ -139,5 +133,6 @@ export default compose(
 				moveBlockToPosition( tabId, clientId, clientId, parseInt( newIndex ) );
 			},
 		};
-	} )
+	} ),
+	AddStaticStyles,
 )( UAGBTabsEdit );

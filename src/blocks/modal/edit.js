@@ -1,5 +1,4 @@
 import { useEffect, useMemo } from '@wordpress/element';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import styling from './styling';
 import Settings from './settings';
 import Render from './render';
@@ -8,6 +7,8 @@ import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import { applyFilters } from '@wordpress/hooks';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBModalEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -27,7 +28,6 @@ const UAGBModalEdit = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
 		const blockDetails = applyFilters(
 			`spectra.modal.edit.jsdetails`,
 			{
@@ -60,4 +60,6 @@ const UAGBModalEdit = ( props ) => {
 	);
 };
 
-export default UAGBModalEdit;
+export default compose(
+	AddStaticStyles,
+)( UAGBModalEdit );

@@ -4,13 +4,14 @@
 
 import styling from './styling';
 import { useEffect, useState, useMemo } from '@wordpress/element';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import { useDeviceType } from '@Controls/getPreviewType';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBImageGallery = ( props ) => {
 	const {
@@ -43,11 +44,6 @@ const UAGBImageGallery = ( props ) => {
 		}
 	}, [] );
 
-	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
-	}, [ attributes, deviceType ] );
-
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
@@ -74,4 +70,6 @@ const UAGBImageGallery = ( props ) => {
 	);
 };
 
-export default UAGBImageGallery;
+export default compose(
+	AddStaticStyles,
+)( UAGBImageGallery );

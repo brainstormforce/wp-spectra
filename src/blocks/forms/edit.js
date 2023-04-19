@@ -4,7 +4,6 @@
 import { useLayoutEffect, useEffect, useCallback, useMemo } from '@wordpress/element';
 import styling from './styling';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import Settings from './settings';
@@ -22,6 +21,7 @@ import styles from './editor.lazy.scss';
 import { addFilter } from '@wordpress/hooks';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBFormsEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -222,10 +222,6 @@ const UAGBFormsEdit = ( props ) => {
 		}
 	}, [] );
 
-	useEffect( () => {
-		addBlockEditorDynamicStyles();
-	}, [ attributes, deviceType ] );
-
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
@@ -346,4 +342,8 @@ const addAdvancedClasses = createHigherOrderComponent( ( BlockListBlock ) => {
 
 addFilter( 'editor.BlockListBlock', 'uagb/forms', addAdvancedClasses );
 
-export default compose( withNotices, addAdvancedClasses )( UAGBFormsEdit );
+export default compose(
+	withNotices,
+	addAdvancedClasses,
+	AddStaticStyles,
+)( UAGBFormsEdit );

@@ -3,22 +3,20 @@
  */
 
 import { useEffect, useState, useMemo } from '@wordpress/element';
-
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import apiFetch from '@wordpress/api-fetch';
 import DynamicFontLoader from './dynamicFontLoader';
-
 // Import css for timeline.
 import contentTimelineStyle from '.././inline-styles';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
-
 import { useSelect } from '@wordpress/data';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const PostTimelineComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -79,8 +77,6 @@ const PostTimelineComponent = ( props ) => {
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
 		const loadPostTimelineEditor = new CustomEvent( 'UAGTimelineEditor', {
 			// eslint-disable-line no-undef
 			detail: {},
@@ -180,4 +176,6 @@ const PostTimelineComponent = ( props ) => {
 		</>
 	);
 };
-export default PostTimelineComponent;
+export default compose(
+	AddStaticStyles,
+)( PostTimelineComponent );

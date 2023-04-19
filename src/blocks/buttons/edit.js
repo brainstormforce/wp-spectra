@@ -5,13 +5,14 @@
 import styling from './styling';
 import { useEffect, useState, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import DynamicFontLoader from './dynamicFontLoader';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 let prevState;
 
@@ -51,9 +52,6 @@ const ButtonsComponent = ( props ) => {
 				isFocused: 'false',
 			} );
 		}
-
-		addBlockEditorDynamicStyles();
-
 		prevState = props.isSelected;
 	}, [ attributes, deviceType ] );
 
@@ -77,4 +75,6 @@ const ButtonsComponent = ( props ) => {
 	);
 };
 
-export default ButtonsComponent;
+export default compose(
+	AddStaticStyles,
+)( ButtonsComponent );

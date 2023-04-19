@@ -4,8 +4,6 @@
 
 import styling from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
-
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
@@ -13,7 +11,8 @@ import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
-
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 import hexToRGBA from '@Controls/hexToRgba';
 
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
@@ -83,10 +82,6 @@ const UAGBSectionEdit = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		addBlockEditorDynamicStyles();
-	}, [ attributes, deviceType ] );
-
-	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
@@ -139,4 +134,6 @@ const UAGBSectionEdit = ( props ) => {
 	);
 };
 
-export default UAGBSectionEdit;
+export default compose(
+	AddStaticStyles,
+)( UAGBSectionEdit );

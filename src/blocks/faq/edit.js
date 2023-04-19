@@ -5,7 +5,6 @@
 import styling from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import { select } from '@wordpress/data';
@@ -14,6 +13,8 @@ import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicFontLoader from './dynamicFontLoader';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const FaqComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -151,8 +152,6 @@ const FaqComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		addBlockEditorDynamicStyles();
-
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( faqChild ) => {
@@ -241,9 +240,6 @@ const FaqComponent = ( props ) => {
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
-
 		scrollBlockToView();
 	}, [ deviceType ] );
 
@@ -261,4 +257,6 @@ const FaqComponent = ( props ) => {
 	);
 };
 
-export default FaqComponent;
+export default compose(
+	AddStaticStyles,
+)( FaqComponent );

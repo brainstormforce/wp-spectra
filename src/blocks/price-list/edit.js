@@ -6,13 +6,14 @@ import RestMenuStyle from './inline-styles';
 import { select, dispatch } from '@wordpress/data';
 import { useEffect, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBRestaurantMenu = ( props ) => {
 	const deviceType = useDeviceType();
@@ -50,7 +51,6 @@ const UAGBRestaurantMenu = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		addBlockEditorDynamicStyles();
 		if ( 'side' === imgAlign && 'right' !== imagePosition ) {
 			setAttributes( { imagePosition: 'left' } );
 			setAttributes( { headingAlign: 'left' } );
@@ -91,4 +91,7 @@ const UAGBRestaurantMenu = ( props ) => {
 		</>
 	);
 };
-export default UAGBRestaurantMenu;
+
+export default compose(
+	AddStaticStyles,
+)( UAGBRestaurantMenu );

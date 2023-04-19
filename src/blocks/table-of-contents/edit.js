@@ -4,18 +4,16 @@
 
 import styling from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
-
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
-
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 import Settings from './settings';
 import Render from './render';
-
 import { useSelect } from '@wordpress/data';
 
 const UAGBTableOfContentsEdit = ( props ) => {
@@ -92,11 +90,6 @@ const UAGBTableOfContentsEdit = ( props ) => {
 			);
 		}
 	}, [] );
-
-	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
-	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		responsiveConditionPreview( props );
@@ -233,4 +226,6 @@ const UAGBTableOfContentsEdit = ( props ) => {
 	);
 };
 
-export default UAGBTableOfContentsEdit;
+export default compose(
+	AddStaticStyles,
+)( UAGBTableOfContentsEdit );

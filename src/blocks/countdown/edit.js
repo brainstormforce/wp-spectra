@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef, useMemo } from '@wordpress/element';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import styling from './styling';
 import Settings from './settings';
 import Render from './render';
@@ -9,7 +8,8 @@ import { useDeviceType } from '@Controls/getPreviewType';
 import { applyFilters } from '@wordpress/hooks';
 import DynamicFontLoader from './dynamicFontLoader';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
-
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 //  Import CSS.
 import './style.scss';
 
@@ -89,11 +89,6 @@ const UAGBCountdownEdit = ( props ) => {
 		}
 	}, [ countdownRef ] );
 
-	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
-	}, [ attributes, deviceType ] );
-
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
@@ -122,4 +117,6 @@ const UAGBCountdownEdit = ( props ) => {
 	);
 };
 
-export default UAGBCountdownEdit;
+export default compose(
+	AddStaticStyles,
+)( UAGBCountdownEdit );

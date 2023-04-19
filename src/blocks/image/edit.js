@@ -1,5 +1,4 @@
 import { useEffect, useMemo } from '@wordpress/element';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import styling from './styling';
@@ -11,6 +10,7 @@ import './style.scss';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import { compose } from '@wordpress/compose';
 import { getLoopImage } from './getLoopImage';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 function UAGBImageEdit( props ) {
 	const deviceType = useDeviceType();
@@ -27,11 +27,6 @@ function UAGBImageEdit( props ) {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 	}, [] );
-
-	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
-	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
@@ -51,4 +46,4 @@ function UAGBImageEdit( props ) {
 		</>
 	);
 }
-export default compose( getLoopImage )( UAGBImageEdit );
+export default compose( getLoopImage, AddStaticStyles )( UAGBImageEdit );

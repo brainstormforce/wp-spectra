@@ -5,12 +5,13 @@
 import styling from './styling';
 import { useEffect, useState, useRef, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBLottie = ( props ) => {
 	const deviceType = useDeviceType();
@@ -29,10 +30,6 @@ const UAGBLottie = ( props ) => {
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 		setAttributes( { classMigrate: true } );
 	}, [] );
-
-	useEffect( () => {
-		addBlockEditorDynamicStyles();
-	}, [ props, deviceType ] );
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
@@ -65,4 +62,6 @@ const UAGBLottie = ( props ) => {
 	);
 };
 
-export default UAGBLottie;
+export default compose(
+	AddStaticStyles,
+)( UAGBLottie );

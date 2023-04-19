@@ -3,18 +3,17 @@
  */
 
 import { useEffect, useMemo } from '@wordpress/element';
-
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { select, dispatch } from '@wordpress/data';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-
 import Settings from './settings';
 import Render from './render';
 import styling from './styling';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBIconList = ( props ) => {
 	const deviceType = useDeviceType();
@@ -33,11 +32,6 @@ const UAGBIconList = ( props ) => {
 		setAttributes( { classMigrate: true } );
 		setAttributes( { childMigrate: true } );
 	}, [] );
-
-	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
-	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
@@ -71,4 +65,6 @@ const UAGBIconList = ( props ) => {
 	);
 };
 
-export default UAGBIconList;
+export default compose(
+	AddStaticStyles,
+)( UAGBIconList );

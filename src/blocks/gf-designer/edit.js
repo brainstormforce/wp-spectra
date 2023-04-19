@@ -1,11 +1,9 @@
 import styling from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
-
 import { __ } from '@wordpress/i18n';
 import { SelectControl, Placeholder } from '@wordpress/components';
 import apiFetch from '@wordpress/api-fetch';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
@@ -13,6 +11,8 @@ import { useSelect } from '@wordpress/data';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBGF = ( props ) => {
 	const deviceType = useDeviceType();
@@ -145,17 +145,11 @@ const UAGBGF = ( props ) => {
 				event.preventDefault();
 			} );
 		}
-
-		addBlockEditorDynamicStyles();
 	}, [ attributes ] );
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-
-		addBlockEditorDynamicStyles();
-
 		scrollBlockToView();
 	}, [ deviceType ] );
 
@@ -190,4 +184,6 @@ const UAGBGF = ( props ) => {
 	);
 };
 
-export default UAGBGF;
+export default compose(
+	AddStaticStyles,
+)( UAGBGF );

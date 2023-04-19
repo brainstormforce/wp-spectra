@@ -6,16 +6,16 @@ import { withSelect, useDispatch } from '@wordpress/data';
 import styling from './styling';
 import Settings from './settings';
 import Render from './render';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 //  Import CSS.
 import './style.scss';
-import { compose } from '@wordpress/compose';
+import { compose, createHigherOrderComponent } from '@wordpress/compose';
 import { useDeviceType } from '@Controls/getPreviewType';
 import styles from './editor.lazy.scss';
 import { SwiperSlide } from 'swiper/react';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import { addFilter } from '@wordpress/hooks';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBSlider = ( props ) => {
 	const deviceType = useDeviceType();
@@ -40,11 +40,6 @@ const UAGBSlider = ( props ) => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 	}, [] );
-
-	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
-	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		responsiveConditionPreview( props );
@@ -76,9 +71,11 @@ const applyWithSelect = withSelect( ( select, props ) => {
 		blockParents,
 	};
 } );
-export default compose( applyWithSelect )( UAGBSlider );
 
-const { createHigherOrderComponent } = wp.compose;
+export default compose(
+	applyWithSelect,
+	AddStaticStyles,
+)( UAGBSlider );
 
 const uagbSlideClass = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {

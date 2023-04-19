@@ -4,7 +4,6 @@
 import styling from './styling';
 
 import { useEffect, useMemo } from '@wordpress/element';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import Settings from './settings';
@@ -12,7 +11,8 @@ import Render from './render';
 import { select, dispatch } from '@wordpress/data';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
-
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 const SocialShareComponent = ( props ) => {
 	const deviceType = useDeviceType();
 	const {
@@ -33,11 +33,6 @@ const SocialShareComponent = ( props ) => {
 	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
-
-	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
-	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
@@ -66,4 +61,6 @@ const SocialShareComponent = ( props ) => {
 	);
 };
 
-export default SocialShareComponent;
+export default compose(
+	AddStaticStyles,
+)( SocialShareComponent );

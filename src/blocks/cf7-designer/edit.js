@@ -3,14 +3,14 @@ import { useEffect, useMemo } from '@wordpress/element';
 
 import apiFetch from '@wordpress/api-fetch';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicFontLoader from './dynamicFontLoader';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import Settings from './settings';
 import Render from './render';
-
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 import { useSelect } from '@wordpress/data';
 
 const UAGBCF7 = ( props ) => {
@@ -277,10 +277,6 @@ const UAGBCF7 = ( props ) => {
 		}
 	}, [ props ] );
 
-	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
-	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
@@ -301,4 +297,7 @@ const UAGBCF7 = ( props ) => {
 		</>
 	);
 };
-export default UAGBCF7;
+
+export default compose(
+	AddStaticStyles,
+)( UAGBCF7 );

@@ -6,13 +6,14 @@ import contentTimelineStyle from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
 import { dispatch, select } from '@wordpress/data';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const ContentTimelineComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -56,7 +57,6 @@ const ContentTimelineComponent = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
 		if ( null === select( 'core/block-editor' ).getBlocksByClientId( clientId )[ 0 ] ) {
 			return;
 		}
@@ -139,4 +139,6 @@ const ContentTimelineComponent = ( props ) => {
 	);
 };
 
-export default ContentTimelineComponent;
+export default compose(
+	AddStaticStyles,
+)( ContentTimelineComponent );

@@ -5,7 +5,6 @@
 import styling from './styling';
 import { useEffect, useState, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import Settings from './settings';
@@ -13,7 +12,8 @@ import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
-
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 const UAGBWpSearchEdit = ( props ) => {
 	const deviceType = useDeviceType();
 	const {
@@ -97,11 +97,6 @@ const UAGBWpSearchEdit = ( props ) => {
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
-	}, [ deviceType, attributes ] );
-
-	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
@@ -117,4 +112,6 @@ const UAGBWpSearchEdit = ( props ) => {
 	);
 };
 
-export default UAGBWpSearchEdit;
+export default compose(
+	AddStaticStyles,
+)( UAGBWpSearchEdit );

@@ -4,7 +4,6 @@
 
 import { useEffect, useMemo } from '@wordpress/element';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import Settings from './settings';
@@ -14,6 +13,8 @@ import './style.scss';
 import styling from './styling';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBAdvancedHeading = ( props ) => {
 	const deviceType = useDeviceType();
@@ -37,11 +38,6 @@ const UAGBAdvancedHeading = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
-	}, [ attributes, deviceType ] );
-
-	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
@@ -56,4 +52,7 @@ const UAGBAdvancedHeading = ( props ) => {
 		</>
 	);
 };
-export default UAGBAdvancedHeading;
+
+export default compose(
+	AddStaticStyles,
+)( UAGBAdvancedHeading );

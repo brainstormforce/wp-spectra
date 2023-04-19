@@ -7,7 +7,6 @@ import { useEffect, useState, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
@@ -17,6 +16,8 @@ import { useSelect, useDispatch } from '@wordpress/data';
 import { Placeholder, Spinner } from '@wordpress/components';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from '.././dynamicFontLoader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const PostGridComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -128,11 +129,6 @@ const PostGridComponent = ( props ) => {
 
 		setAttributes( { allTaxonomyStore: undefined } );
 	}, [] );
-
-	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
-	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		responsiveConditionPreview( props );
@@ -286,4 +282,6 @@ const PostGridComponent = ( props ) => {
 	);
 };
 
-export default PostGridComponent;
+export default compose(
+	AddStaticStyles,
+)( PostGridComponent );

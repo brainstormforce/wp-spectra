@@ -4,7 +4,6 @@
 
 import styling from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
@@ -13,6 +12,8 @@ import Render from './render';
 import hexToRGBA from '@Controls/hexToRgba';
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const ColumnComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -99,11 +100,6 @@ const ColumnComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
-	}, [ attributes, deviceType ] );
-
-	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
@@ -118,4 +114,6 @@ const ColumnComponent = ( props ) => {
 	);
 };
 
-export default ColumnComponent;
+export default compose(
+	AddStaticStyles,
+)( ColumnComponent );

@@ -7,13 +7,14 @@ import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import Settings from './settings';
 import Render from './render';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import hexToRGBA from '@Controls/hexToRgba';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 import DynamicCSSLoader from '../../components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
+import AddStaticStyles from '@Controls/AddStaticStyles';
+import { compose } from '@wordpress/compose';
 
 const UAGBtestimonial = ( props ) => {
 	const deviceType = useDeviceType();
@@ -109,8 +110,6 @@ const UAGBtestimonial = ( props ) => {
 		} else {
 			uagb_carousel_unset_height( clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
 		}
-
-		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
@@ -136,4 +135,6 @@ const UAGBtestimonial = ( props ) => {
 	);
 };
 
-export default UAGBtestimonial;
+export default compose(
+	AddStaticStyles,
+)( UAGBtestimonial );

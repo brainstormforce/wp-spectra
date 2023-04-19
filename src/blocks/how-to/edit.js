@@ -6,17 +6,16 @@ import SchemaNotices from './schema-notices';
 import styling from './styling';
 import './style.scss';
 import { useSelect } from '@wordpress/data';
-
 import { useState, useEffect, useMemo } from '@wordpress/element';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import Settings from './settings';
 import Render from './render';
-
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const HowToComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -158,8 +157,6 @@ const HowToComponent = ( props ) => {
 
 			setPrevState( schemaJsonData );
 		}
-
-		addBlockEditorDynamicStyles();
 	}, [ attributes, deviceType ] );
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
@@ -203,4 +200,6 @@ const HowToComponent = ( props ) => {
 	);
 };
 
-export default HowToComponent;
+export default compose(
+	AddStaticStyles,
+)( HowToComponent );

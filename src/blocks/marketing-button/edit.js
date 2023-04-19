@@ -5,7 +5,6 @@
 import styling from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import Settings from './settings';
@@ -13,6 +12,8 @@ import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBMarketingButtonEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -70,11 +71,6 @@ const UAGBMarketingButtonEdit = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
-	}, [ attributes, deviceType ] );
-
-	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
@@ -93,4 +89,7 @@ const UAGBMarketingButtonEdit = ( props ) => {
 		</>
 	);
 };
-export default UAGBMarketingButtonEdit;
+
+export default compose(
+	AddStaticStyles,
+)( UAGBMarketingButtonEdit );

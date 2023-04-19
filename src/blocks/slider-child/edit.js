@@ -6,10 +6,9 @@ import Settings from './settings';
 import Render from './render';
 import styling from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
-
+import AddStaticStyles from '@Controls/AddStaticStyles';
 import { withSelect, useDispatch } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 
 const UAGBSlide = ( props ) => {
@@ -19,11 +18,6 @@ const UAGBSlide = ( props ) => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 	}, [] );
-
-	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		addBlockEditorDynamicStyles();
-	}, [ attributes, deviceType ] );
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
@@ -58,4 +52,8 @@ const applyWithSelect = withSelect( ( select, props ) => {
 		slideIndex,
 	};
 } );
-export default compose( applyWithSelect )( UAGBSlide );
+
+export default compose(
+	applyWithSelect,
+	AddStaticStyles,
+)( UAGBSlide );

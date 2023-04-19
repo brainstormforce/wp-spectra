@@ -7,15 +7,14 @@ import { useEffect, useMemo } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
-
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useSelect } from '@wordpress/data';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 const UAGBTaxonomyList = ( props ) => {
 	const deviceType = useDeviceType();
 	const {
@@ -144,10 +143,6 @@ const UAGBTaxonomyList = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		addBlockEditorDynamicStyles();
-	}, [ attributes, deviceType ] );
-
-	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
@@ -167,4 +162,6 @@ const UAGBTaxonomyList = ( props ) => {
 	);
 };
 
-export default UAGBTaxonomyList;
+export default compose(
+	AddStaticStyles,
+)( UAGBTaxonomyList );
