@@ -10,7 +10,7 @@ const Description = ( props ) => {
 			<RichText
 				tagName="p"
 				value={ attributes.description }
-				placeholder={ __( 'Write a Description' ) }
+				placeholder={ __( 'Write a Description', 'ultimate-addons-for-gutenberg' ) }
 				className="uagb-cta__desc"
 				onChange={ ( value ) => setAttributes( { description: value } ) }
 				onMerge={ mergeBlocks }

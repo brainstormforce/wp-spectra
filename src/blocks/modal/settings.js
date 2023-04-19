@@ -614,7 +614,7 @@ export default function Settings( props ) {
 			) }
 
 			{ modalTrigger === 'icon' && icon === '' && (
-				<p className="uagb-settings-notice">{ __( 'For the styling options please select the Icon.' ) }</p>
+				<p className="uagb-settings-notice">{ __( 'For the styling options please select the Icon.', 'ultimate-addons-for-gutenberg' ) }</p>
 			) }
 
 			{ modalTrigger === 'text' && (
@@ -802,7 +802,7 @@ export default function Settings( props ) {
 			) }
 
 			{ modalTrigger === 'image' && iconImage === undefined && (
-				<p className="uagb-settings-notice">{ __( 'For the styling options please select the Image.' ) }</p>
+				<p className="uagb-settings-notice">{ __( 'For the styling options please select the Image.', 'ultimate-addons-for-gutenberg' ) }</p>
 			) }
 
 			{ modalTrigger === 'button' && (

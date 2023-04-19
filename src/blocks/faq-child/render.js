@@ -35,7 +35,7 @@ const Render = ( props ) => {
 					{ 'accordion' === layout && faqRenderIcon() }
 					<RichText
 						tagName={ 'span' !== headingTag ? headingTag : 'div' }
-						placeholder={ __( 'Question' ) }
+						placeholder={ __( 'Question', 'ultimate-addons-for-gutenberg' ) }
 						value={ question }
 						onChange={ ( value ) => setAttributes( { question: value } ) }
 						className="uagb-question"
@@ -46,7 +46,7 @@ const Render = ( props ) => {
 				<RichText
 					className="uagb-faq-content"
 					tagName="p"
-					placeholder={ __( 'Answer' ) }
+					placeholder={ __( 'Answer', 'ultimate-addons-for-gutenberg' ) }
 					value={ answer }
 					onChange={ ( value ) => setAttributes( { answer: value } ) }
 					multiline={ false }

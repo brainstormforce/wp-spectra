@@ -31,7 +31,7 @@ const Title = ( props ) => {
 	return (
 		<RichText
 			tagName={ attributes.headingTag }
-			placeholder={ __( 'Write a Title' ) }
+			placeholder={ __( 'Write a Title', 'ultimate-addons-for-gutenberg' ) }
 			value={ infoBoxTitle }
 			className="uagb-ifb-title"
 			onChange={ ( value ) => setAttributes( { infoBoxTitle: value } ) }

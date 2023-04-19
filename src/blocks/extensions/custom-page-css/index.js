@@ -63,7 +63,7 @@ const PageCustomCSS = () => {
 	return (
 		<>
 			<p className="spectra-custom-css-notice">
-				{ __( 'Add your own CSS code here to customize the page as per your expectations.' ) }
+				{ __( 'Add your own CSS code here to customize the page as per your expectations.', 'ultimate-addons-for-gutenberg' ) }
 			</p>
 			<hr></hr>
 			<p className="spectra-custom-css-example spectra-custom-css-notice">

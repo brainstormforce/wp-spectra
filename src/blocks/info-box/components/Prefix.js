@@ -28,7 +28,7 @@ const Prefix = ( props ) => {
 		<RichText
 			tagName="div"
 			value={ prefixTitle }
-			placeholder={ __( 'Write a Prefix' ) }
+			placeholder={ __( 'Write a Prefix', 'ultimate-addons-for-gutenberg' ) }
 			className="uagb-ifb-title-prefix"
 			multiline={ false }
 			onChange={ ( value ) => {

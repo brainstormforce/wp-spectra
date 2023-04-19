@@ -124,7 +124,7 @@ const Settings = ( props ) => {
 	const generalSettings = () => {
 		return (
 			<>
-				<UAGAdvancedPanelBody title={ __( 'Content' ) } initialOpen={ false }>
+				<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __( 'Button Alignment', 'ultimate-addons-for-gutenberg' ) }
@@ -205,7 +205,7 @@ const Settings = ( props ) => {
 						onChange={ () => setAttributes( { linkTarget: ! linkTarget } ) }
 					/>
 				</UAGAdvancedPanelBody>
-				<UAGAdvancedPanelBody title={ __( 'Heading' ) } initialOpen={ false }>
+				<UAGAdvancedPanelBody title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __( 'Tag', 'ultimate-addons-for-gutenberg' ) }
@@ -643,7 +643,7 @@ const Settings = ( props ) => {
 
 	const btnPaddingSettings = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Spacing' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<SpacingControl
 					{ ...props }
 					label={ __( 'Button Padding', 'ultimate-addons-for-gutenberg' ) }
@@ -730,7 +730,7 @@ const Settings = ( props ) => {
 	};
 	const backgroundSettings = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Background' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }

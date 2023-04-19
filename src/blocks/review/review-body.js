@@ -86,7 +86,7 @@ const ReviewBody = ( props ) => {
 						<div className="uagb_review_entry" key={ i }>
 							<RichText
 								style={ { marginRight: 'auto' } }
-								placeholder={ __( 'Edit feature' ) }
+								placeholder={ __( 'Edit feature', 'ultimate-addons-for-gutenberg' ) }
 								value={ j.label }
 								onChange={ ( text ) =>
 									setItems( [
@@ -151,7 +151,7 @@ const ReviewBody = ( props ) => {
 			) }
 			{ showfeature === true && (
 				<div // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-					title={ __( 'Insert new review entry' ) }
+					title={ __( 'Insert new review entry', 'ultimate-addons-for-gutenberg' ) }
 					onClick={ () => {
 						setItems( [ ...items, { label: '', value: 0 } ] );
 						props.setStateValue( {

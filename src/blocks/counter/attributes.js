@@ -964,7 +964,7 @@ const attributes = {
 		type: 'object',
 		default: {
 			url: '',
-			alt: __( 'Counter placeholder img' ),
+			alt: __( 'Counter placeholder img', 'ultimate-addons-for-gutenberg' ),
 		},
 	},
 	imageSize: {

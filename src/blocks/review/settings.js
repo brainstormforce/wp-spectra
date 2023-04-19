@@ -1150,7 +1150,7 @@ const Settings = ( props ) => {
 						setAttributes={ setAttributes }
 						onChange={ ( value ) => setAttributes( { directorname: value } ) }
 					/>
-					<h2>{ __( 'Date of create' ) }</h2>
+					<h2>{ __( 'Date of create', 'ultimate-addons-for-gutenberg' ) }</h2>
 					<DateTimePicker
 						currentDate={ datecreated }
 						onChange={ ( value ) => setAttributes( { datecreated: value } ) }

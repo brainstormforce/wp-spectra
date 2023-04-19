@@ -300,7 +300,7 @@ const Render = ( parentProps ) => {
 	const isExternal = isExternalImage( id, url );
 	const src = isExternal ? url : undefined;
 	const mediaPreview = !! url && (
-		<img alt={ __( 'Edit image' ) } title={ __( 'Edit image' ) } className={ 'edit-image-preview' } src={ url } />
+		<img alt={ __( 'Edit image', 'ultimate-addons-for-gutenberg' ) } title={ __( 'Edit image', 'ultimate-addons-for-gutenberg' ) } className={ 'edit-image-preview' } src={ url } />
 	);
 
 	// If an image is externally hosted, try to fetch the image data. This may
@@ -330,7 +330,7 @@ const Render = ( parentProps ) => {
 				}
 
 				setExternalBlob();
-				createNotice( 'success', __( 'Image uploaded.' ), {
+				createNotice( 'success', __( 'Image uploaded.', 'ultimate-addons-for-gutenberg' ), {
 					type: 'snackbar',
 				} );
 			},
@@ -365,7 +365,7 @@ const Render = ( parentProps ) => {
 					rel={ rel }
 				/>
 				{ externalBlob && (
-					<ToolbarButton onClick={ uploadExternal } icon={ upload } label={ __( 'Upload external image' ) } />
+					<ToolbarButton onClick={ uploadExternal } icon={ upload } label={ __( 'Upload external image', 'ultimate-addons-for-gutenberg' ) } />
 				) }
 			</BlockControls>
 			<div

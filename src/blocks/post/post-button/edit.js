@@ -14,7 +14,7 @@ export const PostButton = ( props ) => {
 			<div className="uagb-post__text">
 				<div className={ classnames( 'uagb-post__cta', 'wp-block-button' ) }>
 					<RichText
-						value={ attributes.ctaText ? attributes.ctaText : __( 'Read More' ) }
+						value={ attributes.ctaText ? attributes.ctaText : __( 'Read More', 'ultimate-addons-for-gutenberg' ) }
 						onChange={ ( value ) => setAttributes( { ctaText: value } ) }
 						className={ classnames( 'uagb-text-link', 'wp-block-button__link' ) }
 						href={ post.link }

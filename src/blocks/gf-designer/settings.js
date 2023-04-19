@@ -539,7 +539,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
-					label={ __( 'Typography' ) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -1451,7 +1451,7 @@ const Settings = ( props ) => {
 						/>
 						{ fieldBorderStyle !== 'none' && (
 							<>
-								<h2>{ __( 'Radio & Checkbox Border' ) }</h2>
+								<h2>{ __( 'Radio & Checkbox Border', 'ultimate-addons-for-gutenberg' ) }</h2>
 								<ResponsiveSlider
 									label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
 									data={ {
@@ -1544,7 +1544,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
-					label={ __( 'Typography' ) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {

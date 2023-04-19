@@ -603,7 +603,7 @@ const UAGBPostCarousel = ( props ) => {
 	const togglePreview = () => {
 		setState( { isEditing: ! state.isEditing } );
 		if ( ! state.isEditing ) {
-			__( 'Showing All Post Grid Layout.' );
+			__( 'Showing All Post Grid Layout.', 'ultimate-addons-for-gutenberg' );
 		}
 	};
 

@@ -97,7 +97,7 @@ const presets = [
 	},
 	{
 		value: 'preset-4',
-		label: __( 'Preset 4', 'ultimate-addon b s-for-gutenberg' ),
+		label: __( 'Preset 4', 'ultimate-addons-for-gutenberg' ),
 		attributes: [
 			{ label: 'iconAlign', value: 'row-reverse' },
 			{ label: 'questionLeftPaddingDesktop', value: 25 },

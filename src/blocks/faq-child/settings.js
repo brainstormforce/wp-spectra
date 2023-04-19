@@ -5,7 +5,7 @@ import { memo } from '@wordpress/element';
 const Settings = () => {
 	const faqChildControls = () => {
 		return (
-			<p className="uagb-settings-notice">{ __( 'For the styling options please select the Parent Block.' ) }</p>
+			<p className="uagb-settings-notice">{ __( 'For the styling options please select the Parent Block.', 'ultimate-addons-for-gutenberg' ) }</p>
 		);
 	};
 

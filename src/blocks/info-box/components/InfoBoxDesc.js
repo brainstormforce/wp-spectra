@@ -28,7 +28,7 @@ const InfoBoxDesc = ( props ) => {
 		<RichText
 			tagName="p"
 			value={ headingDesc }
-			placeholder={ __( 'Write a Description' ) }
+			placeholder={ __( 'Write a Description', 'ultimate-addons-for-gutenberg' ) }
 			className="uagb-ifb-desc"
 			onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
 			onMerge={ mergeBlocks }

@@ -11,13 +11,13 @@ const UserConditionOptions = ( props ) => {
 	const { UAGLoggedIn, UAGLoggedOut, UAGDisplayConditions, UAGSystem, UAGBrowser, UAGUserRole, UAGDay } = attributes;
 
 	const options = [
-		{ value: 'monday', label: __( 'Monday' ) },
-		{ value: 'tuesday', label: __( 'Tuesday' ) },
-		{ value: 'wednesday', label: __( 'Wednesday' ) },
-		{ value: 'thursday', label: __( 'Thursday' ) },
-		{ value: 'friday', label: __( 'Friday' ) },
-		{ value: 'saturday', label: __( 'Saturday' ) },
-		{ value: 'sunday', label: __( 'Sunday' ) },
+		{ value: 'monday', label: __( 'Monday', 'ultimate-addons-for-gutenberg' ) },
+		{ value: 'tuesday', label: __( 'Tuesday', 'ultimate-addons-for-gutenberg' ) },
+		{ value: 'wednesday', label: __( 'Wednesday', 'ultimate-addons-for-gutenberg' ) },
+		{ value: 'thursday', label: __( 'Thursday', 'ultimate-addons-for-gutenberg' ) },
+		{ value: 'friday', label: __( 'Friday', 'ultimate-addons-for-gutenberg' ) },
+		{ value: 'saturday', label: __( 'Saturday', 'ultimate-addons-for-gutenberg' ) },
+		{ value: 'sunday', label: __( 'Sunday', 'ultimate-addons-for-gutenberg' ) },
 	];
 
 	const handleChange = ( e ) => {
@@ -34,27 +34,27 @@ const UserConditionOptions = ( props ) => {
 	return (
 		<>
 			<SelectControl
-				label={ __( 'Display Conditions' ) }
+				label={ __( 'Display Conditions', 'ultimate-addons-for-gutenberg' ) }
 				value={ UAGDisplayConditions }
 				onChange={ ( value ) => setAttributes( { UAGDisplayConditions: value } ) }
 				options={ [
-					{ value: 'none', label: __( 'None' ) },
-					{ value: 'userstate', label: __( 'User State' ) },
-					{ value: 'userRole', label: __( 'User Role' ) },
-					{ value: 'browser', label: __( 'Browser' ) },
-					{ value: 'os', label: __( 'Operating System' ) },
-					{ value: 'day', label: __( 'Day' ) },
+					{ value: 'none', label: __( 'None', 'ultimate-addons-for-gutenberg' ) },
+					{ value: 'userstate', label: __( 'User State', 'ultimate-addons-for-gutenberg' ) },
+					{ value: 'userRole', label: __( 'User Role', 'ultimate-addons-for-gutenberg' ) },
+					{ value: 'browser', label: __( 'Browser', 'ultimate-addons-for-gutenberg' ) },
+					{ value: 'os', label: __( 'Operating System', 'ultimate-addons-for-gutenberg' ) },
+					{ value: 'day', label: __( 'Day', 'ultimate-addons-for-gutenberg' ) },
 				] }
 			/>
 			{ UAGDisplayConditions === 'userstate' && (
 				<>
 					<ToggleControl
-						label={ __( 'Hide From Logged In Users' ) }
+						label={ __( 'Hide From Logged In Users', 'ultimate-addons-for-gutenberg' ) }
 						checked={ UAGLoggedIn }
 						onChange={ () => setAttributes( { UAGLoggedIn: ! attributes.UAGLoggedIn } ) }
 					/>
 					<ToggleControl
-						label={ __( 'Hide From Logged Out Users' ) }
+						label={ __( 'Hide From Logged Out Users', 'ultimate-addons-for-gutenberg' ) }
 						checked={ UAGLoggedOut }
 						onChange={ () => setAttributes( { UAGLoggedOut: ! attributes.UAGLoggedOut } ) }
 					/>
@@ -63,18 +63,18 @@ const UserConditionOptions = ( props ) => {
 			{ UAGDisplayConditions === 'os' && (
 				<>
 					<SelectControl
-						label={ __( 'Hide on Operating System' ) }
+						label={ __( 'Hide on Operating System', 'ultimate-addons-for-gutenberg' ) }
 						value={ UAGSystem }
 						onChange={ ( value ) => setAttributes( { UAGSystem: value } ) }
 						options={ [
-							{ value: '', label: __( 'None' ) },
-							{ value: 'iphone', label: __( 'iOS' ) },
-							{ value: 'android', label: __( 'Android' ) },
-							{ value: 'windows', label: __( 'Windows' ) },
-							{ value: 'open_bsd', label: __( 'OpenBSD' ) },
-							{ value: 'sun_os', label: __( 'SunOS' ) },
-							{ value: 'linux', label: __( 'Linux' ) },
-							{ value: 'mac_os', label: __( 'Mac OS' ) },
+							{ value: '', label: __( 'None', 'ultimate-addons-for-gutenberg' ) },
+							{ value: 'iphone', label: __( 'iOS', 'ultimate-addons-for-gutenberg' ) },
+							{ value: 'android', label: __( 'Android', 'ultimate-addons-for-gutenberg' ) },
+							{ value: 'windows', label: __( 'Windows', 'ultimate-addons-for-gutenberg' ) },
+							{ value: 'open_bsd', label: __( 'OpenBSD', 'ultimate-addons-for-gutenberg' ) },
+							{ value: 'sun_os', label: __( 'SunOS', 'ultimate-addons-for-gutenberg' ) },
+							{ value: 'linux', label: __( 'Linux', 'ultimate-addons-for-gutenberg' ) },
+							{ value: 'mac_os', label: __( 'Mac OS', 'ultimate-addons-for-gutenberg' ) },
 						] }
 					/>
 				</>
@@ -82,17 +82,17 @@ const UserConditionOptions = ( props ) => {
 			{ UAGDisplayConditions === 'browser' && (
 				<>
 					<SelectControl
-						label={ __( 'Hide on Browser' ) }
+						label={ __( 'Hide on Browser', 'ultimate-addons-for-gutenberg' ) }
 						value={ UAGBrowser }
 						onChange={ ( value ) => setAttributes( { UAGBrowser: value } ) }
 						options={ [
-							{ value: '', label: __( 'None' ) },
-							{ value: 'firefox', label: __( 'Mozilla Firefox' ) },
-							{ value: 'chrome', label: __( 'Google Chrome' ) },
-							{ value: 'opera_mini', label: __( 'Opera Mini' ) },
-							{ value: 'opera', label: __( 'Opera' ) },
-							{ value: 'safari', label: __( 'Safari' ) },
-							{ value: 'edge', label: __( 'Microsoft Edge' ) },
+							{ value: '', label: __( 'None', 'ultimate-addons-for-gutenberg' ) },
+							{ value: 'firefox', label: __( 'Mozilla Firefox', 'ultimate-addons-for-gutenberg' ) },
+							{ value: 'chrome', label: __( 'Google Chrome', 'ultimate-addons-for-gutenberg' ) },
+							{ value: 'opera_mini', label: __( 'Opera Mini', 'ultimate-addons-for-gutenberg' ) },
+							{ value: 'opera', label: __( 'Opera', 'ultimate-addons-for-gutenberg' ) },
+							{ value: 'safari', label: __( 'Safari', 'ultimate-addons-for-gutenberg' ) },
+							{ value: 'edge', label: __( 'Microsoft Edge', 'ultimate-addons-for-gutenberg' ) },
 						] }
 					/>
 				</>
@@ -100,7 +100,7 @@ const UserConditionOptions = ( props ) => {
 			{ UAGDisplayConditions === 'userRole' && (
 				<>
 					<SelectControl
-						label={ __( 'Hide for User Role' ) }
+						label={ __( 'Hide for User Role', 'ultimate-addons-for-gutenberg' ) }
 						value={ UAGUserRole }
 						onChange={ ( value ) => setAttributes( { UAGUserRole: value } ) }
 						options={ uagb_blocks_info.user_role }
@@ -155,7 +155,7 @@ const UserResponsiveConditionOptions = ( props ) => {
 			</p>
 			<>
 				<ToggleControl
-					label={ __( 'Hide on Desktop' ) }
+					label={ __( 'Hide on Desktop', 'ultimate-addons-for-gutenberg' ) }
 					checked={ UAGHideDesktop }
 					onChange={ () =>
 						setAttributes( {
@@ -165,7 +165,7 @@ const UserResponsiveConditionOptions = ( props ) => {
 					}
 				/>
 				<ToggleControl
-					label={ __( 'Hide on Tablet' ) }
+					label={ __( 'Hide on Tablet', 'ultimate-addons-for-gutenberg' ) }
 					checked={ UAGHideTab }
 					onChange={ () =>
 						setAttributes( {
@@ -175,7 +175,7 @@ const UserResponsiveConditionOptions = ( props ) => {
 					}
 				/>
 				<ToggleControl
-					label={ __( 'Hide on Mobile' ) }
+					label={ __( 'Hide on Mobile', 'ultimate-addons-for-gutenberg' ) }
 					checked={ UAGHideMob }
 					onChange={ () =>
 						setAttributes( {
@@ -226,7 +226,7 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 							) }
 						</p>
 						<ExternalLink href={ 'https://wpspectra.com/docs/display-conditions-blocks/' }>
-							{ __( 'Filter to disable responsive/display condition. ' ) }
+							{ __( 'Filter to disable responsive/display condition. ', 'ultimate-addons-for-gutenberg' ) }
 						</ExternalLink>
 						{ '1' === enableResponsiveConditionsForCoreBlocks && UserResponsiveConditionOptions( props ) }
 						<hr className="uagb-editor__separator" />

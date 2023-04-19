@@ -10,7 +10,7 @@ const attributes = {
 	},
 	itemType: {
 		type: 'string',
-		default: __( 'Product' ),
+		default: __( 'Product', 'ultimate-addons-for-gutenberg' ),
 	},
 	itemSubtype: {
 		type: 'string',
@@ -134,7 +134,7 @@ const attributes = {
 	},
 	summaryTitle: {
 		type: 'string',
-		default: __( 'Summary' ),
+		default: __( 'Summary', 'ultimate-addons-for-gutenberg' ),
 	},
 	summaryDescription: {
 		type: 'string',
@@ -290,11 +290,11 @@ const attributes = {
 	},
 	featuresTitle: {
 		type: 'string',
-		default: __( 'List Of Features:' ),
+		default: __( 'List Of Features:', 'ultimate-addons-for-gutenberg' ),
 	},
 	featuresAvgText: {
 		type: 'string',
-		default: __( 'Average Ratings' ),
+		default: __( 'Average Ratings', 'ultimate-addons-for-gutenberg' ),
 	},
 	feature_count: {
 		type: 'number',
@@ -357,11 +357,11 @@ const attributes = {
 	},
 	availabilityvalue: {
 		type: 'string',
-		default: __( 'Instock' ),
+		default: __( 'Instock', 'ultimate-addons-for-gutenberg' ),
 	},
 	availabilitytext: {
 		type: 'string',
-		default: __( 'Availability' ),
+		default: __( 'Availability', 'ultimate-addons-for-gutenberg' ),
 	},
 	contentVrPadding: {
 		type: 'number',

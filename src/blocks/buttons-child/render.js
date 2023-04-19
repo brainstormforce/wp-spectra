@@ -46,7 +46,7 @@ const Render = ( props ) => {
 		if ( ! removeText ) {
 			return (
 				<RichText
-					placeholder={ __( 'Add text…' ) }
+					placeholder={ __( 'Add text…', 'ultimate-addons-for-gutenberg' ) }
 					value={ label.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
 					tagName="div"
 					onChange={ ( value ) => {

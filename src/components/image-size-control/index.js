@@ -243,7 +243,7 @@ export default function ImageSizeControl( {
 				<div className="block-editor-image-size-control">
 					<div className="uagb-size-type-field-tabs">
 						<div className="uagb-control__header">
-							<ResponsiveToggle label={ __( 'Image Dimensions' ) } responsive={ responsive } />
+							<ResponsiveToggle label={ __( 'Image Dimensions', 'ultimate-addons-for-gutenberg' ) } responsive={ responsive } />
 						</div>
 						<div className="block-editor-image-size-control__row">{ output[ deviceType ] }</div>
 					</div>

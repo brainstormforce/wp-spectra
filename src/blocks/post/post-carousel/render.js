@@ -69,7 +69,7 @@ const Render = ( props ) => {
 				<div className="uagb-post-grid uagb-block-all-post-grid-item-template">
 					<Tip>
 						{ __(
-							'Edit the blocks inside the preview below to change the content displayed for each post within the post carousel.'
+							'Edit the blocks inside the preview below to change the content displayed for each post within the post carousel.', 'ultimate-addons-for-gutenberg'
 						) }
 					</Tip>
 					<InnerBlockLayoutContextProvider parentName="uagb/post-grid" parentClassName="uagb-block-grid">
@@ -81,13 +81,13 @@ const Render = ( props ) => {
 					</InnerBlockLayoutContextProvider>
 					<div className="uagb-block-all-post__actions">
 						<Button className="uagb-block-all-post__done-button" isPrimary onClick={ onDone }>
-							{ __( 'Done' ) }
+							{ __( 'Done', 'ultimate-addons-for-gutenberg' ) }
 						</Button>
 						<Button className="uagb-block-all-post__cancel-button" isTertiary onClick={ onCancel }>
-							{ __( 'Cancel' ) }
+							{ __( 'Cancel', 'ultimate-addons-for-gutenberg' ) }
 						</Button>
 						<Button className="uagb-block-all-post__reset-button" onClick={ onReset }>
-							{ __( 'Reset Layout' ) }
+							{ __( 'Reset Layout', 'ultimate-addons-for-gutenberg' ) }
 						</Button>
 					</div>
 				</div>

@@ -190,7 +190,7 @@ function FontFamilyControl( props ) {
 			{ /* Font Family */ }
 			<div className="components-base-control uag-font-family-searchable-select__wrapper">
 				<label className="components-input-control__label" htmlFor="font-family">
-					{ __( 'Font Family' ) }
+					{ __( 'Font Family', 'ultimate-addons-for-gutenberg' ) }
 				</label>
 				<Select
 					styles={ customSelectStyles }

@@ -19,7 +19,7 @@ registerBlockType( 'uagb/post-button', {
 	description: __( 'Customize this post button.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.post_grid,
 	parent: [ 'uagb/post-grid', 'uagb/post-masonry', 'uagb/post-carousel' ],
-	keywords: [ __( 'post' ), __( 'button' ), __( 'uag' ) ],
+	keywords: [ __( 'post', 'ultimate-addons-for-gutenberg' ), __( 'button', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	PostButton,
 	save,
 } );

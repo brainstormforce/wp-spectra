@@ -166,7 +166,7 @@ const Settings = ( props ) => {
 				<ToolbarGroup>
 					<ToolbarButton
 						icon="insert"
-						label={ __( 'Add Slide' ) }
+						label={ __( 'Add Slide', 'ultimate-addons-for-gutenberg' ) }
 						onClick={ () => {
 							insertBlock( createBlock( 'uagb/slider-child' ), block.innerBlocks.length, block.clientId );
 
@@ -226,7 +226,7 @@ const Settings = ( props ) => {
 						initialOpen={ false }
 					>
 						<ToggleControl
-							label={ __( 'Autoplay' ) }
+							label={ __( 'Autoplay', 'ultimate-addons-for-gutenberg' ) }
 							checked={ autoplay }
 							onChange={ toggleAutoplay }
 							help={ __(

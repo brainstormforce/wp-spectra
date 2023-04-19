@@ -108,7 +108,7 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 							initialOpen={ false }
 						>
 							<ToggleControl
-								label={ __( 'Enable Masonry Layout' ) }
+								label={ __( 'Enable Masonry Layout', 'ultimate-addons-for-gutenberg' ) }
 								checked={ attributes.masonry }
 								onChange={ ( value ) => update( value ) }
 							/>

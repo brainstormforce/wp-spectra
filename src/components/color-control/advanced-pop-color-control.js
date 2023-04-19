@@ -210,12 +210,12 @@ const AdvancedPopColorControl = ( props ) => {
 									} }
 									className="uagb-clear-btn-inside-picker components-button components-circular-option-picker__clear is-secondary is-small"
 								>
-									{ __( 'Clear' ) }
+									{ __( 'Clear', 'ultimate-addons-for-gutenberg' ) }
 								</button>
 							</Popover>
 						) }
 						{ visible.isVisible && (
-							<Tooltip text={ __( 'Select Color' ) }>
+							<Tooltip text={ __( 'Select Color', 'ultimate-addons-for-gutenberg' ) }>
 								<Button className={ `uagb-color-icon-indicate uagb-has-alpha` } onClick={ toggleClose }>
 									<ColorIndicator
 										className={ `uagb-advanced-color-indicate ${ globalIndicator }` }
@@ -231,7 +231,7 @@ const AdvancedPopColorControl = ( props ) => {
 							</Tooltip>
 						) }
 						{ ! visible.isVisible && (
-							<Tooltip text={ __( 'Select Color' ) }>
+							<Tooltip text={ __( 'Select Color', 'ultimate-addons-for-gutenberg' ) }>
 								<Button
 									className={ `uagb-color-icon-indicate uagb-has-alpha` }
 									onClick={ toggleVisible }

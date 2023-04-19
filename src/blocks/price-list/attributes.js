@@ -7,9 +7,9 @@ const itemCount = 4;
 const restMenuBlock = [];
 
 for ( let i = 1; i <= itemCount; i++ ) {
-	const descText = __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' );
+	const descText = __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'ultimate-addons-for-gutenberg' );
 	const titleText = 'Menu Item ' + i;
-	const priceText = __( '$9' );
+	const priceText = __( '$9', 'ultimate-addons-for-gutenberg' );
 	restMenuBlock.push( {
 		description: descText,
 		title: titleText,

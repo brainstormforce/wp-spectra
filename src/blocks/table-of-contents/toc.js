@@ -91,7 +91,7 @@ function TableOfContents( props ) {
 	}
 	return (
 		<p className="uagb_table-of-contents-placeholder">
-			{ __( 'Add a header to begin generating the table of contents' ) }
+			{ __( 'Add a header to begin generating the table of contents', 'ultimate-addons-for-gutenberg' ) }
 		</p>
 	);
 }

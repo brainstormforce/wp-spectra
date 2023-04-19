@@ -310,9 +310,9 @@ const Settings = ( props ) => {
 						target="__blank"
 					>
 						{ ' ' }
-						{ __( 'this document' ) }{ ' ' }
+						{ __( 'this document', 'ultimate-addons-for-gutenberg' ) }{ ' ' }
 					</a>
-					{ __( 'to know more about it.' ) }
+					{ __( 'to know more about it.', 'ultimate-addons-for-gutenberg' ) }
 				</span>
 			</div>
 		);
@@ -328,9 +328,9 @@ const Settings = ( props ) => {
 				) }
 				<a className="uagb-lottie-instructions__lottie-url" href="https://lottiefiles.com/" target="__blank">
 					{ ' ' }
-					{ __( 'here on this' ) }{ ' ' }
+					{ __( 'here on this', 'ultimate-addons-for-gutenberg' ) }{ ' ' }
 				</a>
-				{ __( 'website.' ) }
+				{ __( 'website.', 'ultimate-addons-for-gutenberg' ) }
 			</span>
 		);
 		return (

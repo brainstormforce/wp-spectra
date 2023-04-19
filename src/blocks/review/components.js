@@ -202,7 +202,7 @@ export class ReviewBody extends Component {
 								<RichText
 									style={ { marginRight: 'auto' } }
 									key={ i }
-									placeholder={ __( 'Edit feature' ) }
+									placeholder={ __( 'Edit feature', 'ultimate-addons-for-gutenberg' ) }
 									value={ j.label }
 									onChange={ ( text ) =>
 										setItems( [
@@ -270,7 +270,7 @@ export class ReviewBody extends Component {
 				) }
 				{ showfeature === true && (
 					<div // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-						title={ __( 'Insert new review entry' ) }
+						title={ __( 'Insert new review entry', 'ultimate-addons-for-gutenberg' ) }
 						onClick={ () => {
 							setItems( [ ...items, { label: '', value: 0 } ] );
 							this.setState( {
