@@ -184,6 +184,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Advanced Heading - Removed Extra padding in the editor.
 * Fix: Global - Mobile should inherit tablet setting values instead of taking desktop values in the editor.
 * Fix: Editor Sidebar - x-axis Scrollbar should be hidden when switched to RTL.
+* Fix: Table of Contents - HTML validation issue in the HTML validator.
 * Fix: Inspector tabs - Improper border when switched to RTL.
 * Fix: ResponsiveSlider - Improper direction of Slider when switched to RTL.
 * Fix: Control_units - Alignment issue in control_units when switched to RTL.
