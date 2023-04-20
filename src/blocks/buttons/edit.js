@@ -3,14 +3,16 @@
  */
 
 import styling from './styling';
-import { useEffect, useState } from '@wordpress/element';
+import { useEffect, useState, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
-import WebfontLoader from '@Components/typography/fontloader';
+import DynamicFontLoader from './dynamicFontLoader';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 let prevState;
 
@@ -19,9 +21,10 @@ const ButtonsComponent = ( props ) => {
 	const {
 		isSelected,
 		attributes,
-		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob, loadGoogleFonts, fontFamily, fontWeight },
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		setAttributes,
 		clientId,
+		name,
 	} = props;
 
 	const initialState = {
@@ -49,11 +52,6 @@ const ButtonsComponent = ( props ) => {
 				isFocused: 'false',
 			} );
 		}
-
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-style-buttons-' + clientId.substr( 0, 8 ), blockStyling );
-
 		prevState = props.isSelected;
 	}, [ attributes, deviceType ] );
 
@@ -65,25 +63,18 @@ const ButtonsComponent = ( props ) => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	let loadBtnGoogleFonts;
-
-	if ( loadGoogleFonts === true ) {
-		const btnconfig = {
-			google: {
-				families: [ fontFamily + ( fontWeight ? ':' + fontWeight : '' ) ],
-			},
-		};
-
-		loadBtnGoogleFonts = <WebfontLoader config={ btnconfig }></WebfontLoader>;
-	}
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
-			{ loadBtnGoogleFonts }
 		</>
 	);
 };
 
-export default ButtonsComponent;
+export default compose(
+	AddStaticStyles,
+)( ButtonsComponent );

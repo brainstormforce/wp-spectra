@@ -43,7 +43,6 @@
 		position: relative;
 
 		&--action {
-
 			&-wrapper {
 				display: flex;
 				justify-content: space-between;
@@ -69,7 +68,7 @@
 					line-height: 20px;
 				}
 
-				&:focus:not(:disabled) {
+				&:focus:not( :disabled ) {
 					box-shadow: none;
 					outline: none;
 				}
@@ -81,7 +80,6 @@
 		}
 
 		&.active {
-
 			.spectra-control-popup__options--action-button {
 				color: $spectra-color-primary;
 			}
@@ -90,7 +88,6 @@
 }
 
 .components-base-control:last-child {
-
 	.spectra-control-popup {
 		margin-bottom: $spectra-panel-body-padding;
 	}

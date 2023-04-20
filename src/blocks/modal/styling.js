@@ -9,7 +9,7 @@ import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 import { applyFilters } from '@wordpress/hooks';
 
-export default function styling( props ) {
+export default function styling( attributes, clientId, name ) {
 	const {
 		modalTrigger,
 		buttonIconPosition,
@@ -168,9 +168,9 @@ export default function styling( props ) {
 		selectGradient,
 		modalTriggerBgType,
 		modalTriggerBgHoverType,
-	} = props.attributes;
+	} = attributes;
 
-	const blockName = props.name.replace( 'uagb/', '' );
+	const blockName = name.replace( 'uagb/', '' );
 	const buttonIconSpaceFallback = getFallbackNumber( buttonIconSpace, 'buttonIconSpace', blockName );
 	const buttonIconSpaceFallbackTablet = isNaN( buttonIconSpaceTablet )
 		? buttonIconSpaceFallback
@@ -179,13 +179,13 @@ export default function styling( props ) {
 		? buttonIconSpaceFallbackTablet
 		: buttonIconSpaceMobile;
 
-	const borderCSS = generateBorderCSS( props.attributes, 'btn' );
-	const borderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
-	const borderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+	const borderCSS = generateBorderCSS( attributes, 'btn' );
+	const borderCSSTablet = generateBorderCSS( attributes, 'btn', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( attributes, 'btn', 'mobile' );
 
-	const contentBorderCSS = generateBorderCSS( props.attributes, 'content' );
-	const contentBorderCSSTablet = generateBorderCSS( props.attributes, 'content', 'tablet' );
-	const contentBorderCSSMobile = generateBorderCSS( props.attributes, 'content', 'mobile' );
+	const contentBorderCSS = generateBorderCSS( attributes, 'content' );
+	const contentBorderCSSTablet = generateBorderCSS( attributes, 'content', 'tablet' );
+	const contentBorderCSSMobile = generateBorderCSS( attributes, 'content', 'mobile' );
 	const backgroundAttributesDesktop = {
 		'backgroundType': backgroundType,
 		'backgroundImage': backgroundImageDesktop,
@@ -583,17 +583,17 @@ export default function styling( props ) {
 		};
 	}
 
-	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const base_selector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
 
-	selectors = applyFilters( `spectra.${ blockName }.styling`, selectors, props.attributes );
-	tabletSelectors = applyFilters( `spectra.${ blockName }.tabletStyling`, tabletSelectors, props.attributes );
-	mobileSelectors = applyFilters( `spectra.${ blockName }.mobileStyling`, mobileSelectors, props.attributes );
+	selectors = applyFilters( `spectra.${ blockName }.styling`, selectors, attributes );
+	tabletSelectors = applyFilters( `spectra.${ blockName }.tabletStyling`, tabletSelectors, attributes );
+	mobileSelectors = applyFilters( `spectra.${ blockName }.mobileStyling`, mobileSelectors, attributes );
 
 	let styling_css = generateCSS( selectors, base_selector );
 
-	styling_css += generateCSS( tabletSelectors, `${ base_selector }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	styling_css += generateCSS( tabletSelectors, `${ base_selector }`, true, 'tablet' );
 
-	styling_css += generateCSS( mobileSelectors, `${ base_selector }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	styling_css += generateCSS( mobileSelectors, `${ base_selector }`, true, 'mobile' );
 
 	return styling_css;
 }

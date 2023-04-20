@@ -6,7 +6,6 @@
  */
 
 .wp-block-uagb-cf7-styler {
-
 	&.uagb-editor-preview-mode-tablet,
 	&.uagb-editor-preview-mode-mobile {
 		margin: 20px;
@@ -26,7 +25,7 @@
 		width: 100%;
 	}
 
-	.wpcf7 input:not([type="submit"]):focus,
+	.wpcf7 input:not( [type="submit"] ):focus,
 	.wpcf7 select:focus,
 	.wpcf7 textarea:focus {
 		box-shadow: none;
@@ -36,7 +35,7 @@
 		-webkit-box-shadow: none;
 	}
 
-	.wpcf7 input:not([type="submit"]),
+	.wpcf7 input:not( [type="submit"] ),
 	.wpcf7 select,
 	.wpcf7 textarea {
 		width: 100%;
@@ -204,7 +203,6 @@
 }
 
 .wp-core-ui .uagb-cf7-styler__outer-wrap {
-
 	.wpcf7-form-control.wpcf7-select {
 		max-width: 100%;
 		background-image: none;

@@ -3,18 +3,17 @@
  */
 
 import styling from './styling';
-import { useEffect } from '@wordpress/element';
-
+import { useEffect, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-import WebfontLoader from '@Components/typography/fontloader';
-
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import DynamicFontLoader from './dynamicFontLoader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 import Settings from './settings';
 import Render from './render';
-
 import { useSelect } from '@wordpress/data';
 
 const UAGBTableOfContentsEdit = ( props ) => {
@@ -23,6 +22,8 @@ const UAGBTableOfContentsEdit = ( props ) => {
 		isSelected,
 		setAttributes,
 		attributes,
+		name,
+		clientId,
 		attributes: {
 			scrollToTop,
 			UAGHideDesktop,
@@ -33,12 +34,6 @@ const UAGBTableOfContentsEdit = ( props ) => {
 			borderRadius,
 			borderColor,
 			borderHoverColor,
-			loadGoogleFonts,
-			fontFamily,
-			fontWeight,
-			headingLoadGoogleFonts,
-			headingFontFamily,
-			headingFontWeight,
 		},
 	} = props;
 
@@ -95,13 +90,6 @@ const UAGBTableOfContentsEdit = ( props ) => {
 			);
 		}
 	}, [] );
-
-	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-style-toc-' + props.clientId.substr( 0, 8 ), blockStyling );
-	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		responsiveConditionPreview( props );
@@ -225,38 +213,19 @@ const UAGBTableOfContentsEdit = ( props ) => {
 			scrollElement.classList.remove( 'uagb-toc__show-scroll' );
 		}
 	}
-	/* eslint-enable no-undef */
-	let loadGFonts;
-	let headingloadGFonts;
 
-	if ( loadGoogleFonts === true ) {
-		const config = {
-			google: {
-				families: [ fontFamily + ( fontWeight ? ':' + fontWeight : '' ) ],
-			},
-		};
-
-		loadGFonts = <WebfontLoader config={ config }></WebfontLoader>;
-	}
-
-	if ( headingLoadGoogleFonts === true ) {
-		const headingconfig = {
-			google: {
-				families: [ headingFontFamily + ( headingFontWeight ? ':' + headingFontWeight : '' ) ],
-			},
-		};
-
-		headingloadGFonts = <WebfontLoader config={ headingconfig }></WebfontLoader>;
-	}
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } headers={ headers } />
-			{ loadGFonts }
-			{ headingloadGFonts }
 		</>
 	);
 };
 
-export default UAGBTableOfContentsEdit;
+export default compose(
+	AddStaticStyles,
+)( UAGBTableOfContentsEdit );

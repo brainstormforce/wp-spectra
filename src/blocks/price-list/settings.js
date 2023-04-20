@@ -250,7 +250,7 @@ const Settings = ( props ) => {
 	// Margin Settings.
 	const marginSettings = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Spacing' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<ResponsiveSlider
 					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -396,15 +396,15 @@ const Settings = ( props ) => {
 
 	// Image sizes.
 	const imageSizeOptions = [
-		{ value: 'thumbnail', label: __( 'Thumbnail' ) },
-		{ value: 'medium', label: __( 'Medium' ) },
-		{ value: 'full', label: __( 'Large' ) },
+		{ value: 'thumbnail', label: __( 'Thumbnail', 'ultimate-addons-for-gutenberg' ) },
+		{ value: 'medium', label: __( 'Medium', 'ultimate-addons-for-gutenberg' ) },
+		{ value: 'full', label: __( 'Large', 'ultimate-addons-for-gutenberg' ) },
 	];
 
 	//Image Setting
 	const imageSettings = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Image' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<ToggleControl
 					label={ __( 'Show Image', 'ultimate-addons-for-gutenberg' ) }
 					checked={ showImage }
@@ -478,7 +478,7 @@ const Settings = ( props ) => {
 									label: 'Mobile',
 								},
 							] }
-							help={ __( 'Note: Choose on what breakpoint the Images will stack.' ) }
+							help={ __( 'Note: Choose on what breakpoint the Images will stack.', 'ultimate-addons-for-gutenberg' ) }
 							showIcons={ false }
 							onChange={ setStack }
 						/>
@@ -587,7 +587,7 @@ const Settings = ( props ) => {
 	//Image Setting
 	const imageStyles = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Image' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<SpacingControl
 					{ ...props }
 					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
@@ -666,7 +666,7 @@ const Settings = ( props ) => {
 	//Color settings
 	const contentSettings = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Content' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ descColor ? descColor : '' }
@@ -677,7 +677,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
-					label={ __( 'Typography' ) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -760,7 +760,7 @@ const Settings = ( props ) => {
 	//seperator setting
 	const separatorSettings = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Separator' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Separator', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<UAGSelectControl
 					label={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -769,15 +769,15 @@ const Settings = ( props ) => {
 					} }
 					setAttributes={ setAttributes }
 					options={ [
-						{ value: 'none', label: __( 'None' ) },
-						{ value: 'solid', label: __( 'Solid' ) },
-						{ value: 'dotted', label: __( 'Dotted' ) },
-						{ value: 'dashed', label: __( 'Dashed' ) },
-						{ value: 'double', label: __( 'Double' ) },
-						{ value: 'groove', label: __( 'Groove' ) },
-						{ value: 'inset', label: __( 'Inset' ) },
-						{ value: 'outset', label: __( 'Outset' ) },
-						{ value: 'ridge', label: __( 'Ridge' ) },
+						{ value: 'none', label: __( 'None', 'ultimate-addons-for-gutenberg' ) },
+						{ value: 'solid', label: __( 'Solid', 'ultimate-addons-for-gutenberg' ) },
+						{ value: 'dotted', label: __( 'Dotted', 'ultimate-addons-for-gutenberg' ) },
+						{ value: 'dashed', label: __( 'Dashed', 'ultimate-addons-for-gutenberg' ) },
+						{ value: 'double', label: __( 'Double', 'ultimate-addons-for-gutenberg' ) },
+						{ value: 'groove', label: __( 'Groove', 'ultimate-addons-for-gutenberg' ) },
+						{ value: 'inset', label: __( 'Inset', 'ultimate-addons-for-gutenberg' ) },
+						{ value: 'outset', label: __( 'Outset', 'ultimate-addons-for-gutenberg' ) },
+						{ value: 'ridge', label: __( 'Ridge', 'ultimate-addons-for-gutenberg' ) },
 					] }
 				/>
 				{ 'none' !== seperatorStyle && (
@@ -821,7 +821,7 @@ const Settings = ( props ) => {
 							setAttributes={ setAttributes }
 						/>
 						<Range
-							label={ __( 'Thickness' ) }
+							label={ __( 'Thickness', 'ultimate-addons-for-gutenberg' ) }
 							setAttributes={ setAttributes }
 							value={ seperatorThickness }
 							data={ {
@@ -850,7 +850,7 @@ const Settings = ( props ) => {
 	// Typography settings.
 	const priceSettings = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Price' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Price', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ priceColor ? priceColor : '' }
@@ -861,7 +861,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
-					label={ __( 'Typography' ) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -942,7 +942,7 @@ const Settings = ( props ) => {
 	};
 	const titleSettings = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Title' ) } initialOpen={ true }>
+			<UAGAdvancedPanelBody title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
@@ -953,7 +953,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
-					label={ __( 'Typography' ) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -1079,7 +1079,7 @@ const Settings = ( props ) => {
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
 						{ presetSettings() }
-						<UAGAdvancedPanelBody title={ __( 'General' ) } initialOpen={ false }>
+						<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 							<ResponsiveSlider
 								label={ __( 'Columns', 'ultimate-addons-for-gutenberg' ) }
 								data={ {

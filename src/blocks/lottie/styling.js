@@ -4,7 +4,7 @@
 
 import generateCSS from '@Controls/generateCSS';
 
-function styling( props ) {
+function styling( attributes, clientId ) {
 	const {
 		width,
 		widthTablet,
@@ -14,7 +14,7 @@ function styling( props ) {
 		heightMob,
 		backgroundColor,
 		backgroundHColor,
-	} = props.attributes;
+	} = attributes;
 
 	const widthFallback = isNaN( width ) ? 'auto' : `${ width }px`;
 	const heightFallback = isNaN( height ) ? 'auto' : `${ height }px`;
@@ -58,23 +58,13 @@ function styling( props ) {
 		},
 	};
 
-	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const base_selector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	let styling_css = generateCSS( selectors, base_selector );
 
-	styling_css += generateCSS(
-		tablet_selectors,
-		`${ base_selector }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
+	styling_css += generateCSS( tablet_selectors, `${ base_selector }`, true, 'tablet' );
 
-	styling_css += generateCSS(
-		mobile_selectors,
-		`${ base_selector }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	styling_css += generateCSS( mobile_selectors, `${ base_selector }`, true, 'mobile' );
 
 	return styling_css;
 }

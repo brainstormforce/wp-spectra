@@ -6,8 +6,8 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-function styling( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+function styling( attributes, clientId, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		titleSpace,
@@ -93,7 +93,7 @@ function styling( props ) {
 		prefixLetterSpacingTablet,
 		prefixLetterSpacingMobile,
 		prefixLetterSpacingType,
-	} = props.attributes;
+	} = attributes;
 
 	const gradientLocation1Fallback = getFallbackNumber( gradientLocation1, 'gradientLocation1', blockName );
 	const gradientLocation2Fallback = getFallbackNumber( gradientLocation2, 'gradientLocation2', blockName );
@@ -109,9 +109,9 @@ function styling( props ) {
 	const setIconColor = '' === iconColor ? titleColor : iconColor;
 	const setIconHoverColor = '' === iconHoverColor ? titleHoverColor : iconHoverColor;
 
-	const btnBorderCSS = generateBorderCSS( props.attributes, 'btn' );
-	const btnBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
-	const btnBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+	const btnBorderCSS = generateBorderCSS( attributes, 'btn' );
+	const btnBorderCSSTablet = generateBorderCSS( attributes, 'btn', 'tablet' );
+	const btnBorderCSSMobile = generateBorderCSS( attributes, 'btn', 'mobile' );
 
 	selectors = {
 		' .uagb-marketing-btn__prefix': {
@@ -268,13 +268,13 @@ function styling( props ) {
 
 	mobileSelectors[ ' svg' ][ marginType ] = generateCSSUnit( iconSpaceMobile, 'px' );
 
-	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	let stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	stylingCss += generateCSS( tabletSelectors, `${ id }`, true, 'tablet' );
 
-	stylingCss += generateCSS( mobileSelectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	stylingCss += generateCSS( mobileSelectors, `${ id }`, true, 'mobile' );
 
 	return stylingCss;
 }

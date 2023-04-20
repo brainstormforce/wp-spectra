@@ -34,6 +34,7 @@ if (
 		supports: {
 			anchor: true,
 		},
+		category: uagb_blocks_info.category,
 		edit: ( props ) =>
 			props.attributes.isPreview ? <PreviewImage image="contact-form-7-styler" /> : <Edit { ...props } />,
 		save: () => null,

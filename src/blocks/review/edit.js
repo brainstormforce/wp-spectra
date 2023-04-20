@@ -4,14 +4,16 @@
 
 import styling from './styling';
 import SchemaNotices from './schema-notices';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-import WebfontLoader from '@Components/typography/fontloader';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import DynamicFontLoader from './dynamicFontLoader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const ReviewComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -63,17 +65,10 @@ const ReviewComponent = ( props ) => {
 			enableDescription,
 			enableImage,
 			bookAuthorName,
-			headLoadGoogleFonts,
-			headFontFamily,
-			headFontWeight,
-			subHeadLoadGoogleFonts,
-			subHeadFontFamily,
-			subHeadFontWeight,
-			contentLoadGoogleFonts,
-			contentFontFamily,
-			contentFontWeight,
 		},
 		setAttributes,
+		name,
+		clientId,
 	} = props;
 
 	const updatePageSchema = () => {
@@ -230,11 +225,6 @@ const ReviewComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-ratings-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
 		const ratingLinkWrapper = document.querySelector( '.uagb-rating-link-wrapper' );
 		if ( ratingLinkWrapper !== null ) {
 			ratingLinkWrapper.addEventListener( 'click', function ( event ) {
@@ -273,39 +263,7 @@ const ReviewComponent = ( props ) => {
 		} );
 	}
 
-	let loadContentGoogleFonts;
-	let loadHeadingGoogleFonts;
-	let loadSubHeadingGoogleFonts;
-
-	if ( headLoadGoogleFonts === true ) {
-		const hconfig = {
-			google: {
-				families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
-			},
-		};
-
-		loadHeadingGoogleFonts = <WebfontLoader config={ hconfig }></WebfontLoader>;
-	}
-
-	if ( subHeadLoadGoogleFonts === true ) {
-		const sconfig = {
-			google: {
-				families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
-			},
-		};
-
-		loadSubHeadingGoogleFonts = <WebfontLoader config={ sconfig }></WebfontLoader>;
-	}
-
-	if ( contentLoadGoogleFonts === true ) {
-		const cconfig = {
-			google: {
-				families: [ contentFontFamily + ( contentFontWeight ? ':' + contentFontWeight : '' ) ],
-			},
-		};
-
-		loadContentGoogleFonts = <WebfontLoader config={ cconfig }></WebfontLoader>;
-	}
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	return (
 		<>
@@ -340,13 +298,14 @@ const ReviewComponent = ( props ) => {
 				operatingSystem={ operatingSystem }
 				reviewPublisher={ reviewPublisher }
 			/>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
-			{ loadHeadingGoogleFonts }
-			{ loadSubHeadingGoogleFonts }
-			{ loadContentGoogleFonts }
 		</>
 	);
 };
 
-export default ReviewComponent;
+export default compose(
+	AddStaticStyles,
+)( ReviewComponent );

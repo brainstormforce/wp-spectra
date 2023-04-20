@@ -3,11 +3,10 @@
  */
 
 import styling from '.././styling';
-import { useEffect, useState } from '@wordpress/element';
+import { useEffect, useState, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
@@ -15,7 +14,10 @@ import Settings from './settings';
 import Render from './render';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { Placeholder, Spinner } from '@wordpress/components';
-import WebfontLoader from '@Components/typography/fontloader';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import DynamicFontLoader from '.././dynamicFontLoader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const PostGridComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -55,21 +57,10 @@ const PostGridComponent = ( props ) => {
 			UAGHideTab,
 			UAGHideMob,
 			postDisplaytext,
-			titleLoadGoogleFonts,
-			titleFontFamily,
-			titleFontWeight,
-			metaLoadGoogleFonts,
-			metaFontFamily,
-			metaFontWeight,
-			excerptLoadGoogleFonts,
-			excerptFontFamily,
-			excerptFontWeight,
-			ctaLoadGoogleFonts,
-			ctaFontFamily,
-			ctaFontWeight,
 		},
 		setAttributes,
 		clientId,
+		name,
 	} = props;
 
 	const initialState = {
@@ -140,19 +131,14 @@ const PostGridComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-post-grid-style-' + clientId.substr( 0, 8 ), blockStyling );
-	}, [ attributes, deviceType ] );
-
-	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
+
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	const togglePreview = () => {
 		setStateValue( { isEditing: ! state.isEditing } );
@@ -267,50 +253,10 @@ const PostGridComponent = ( props ) => {
 		);
 	}
 
-	// Load all the Google Fonts for The Post Grid Block.
-	let loadTitleGoogleFonts;
-	let loadMetaGoogleFonts;
-	let loadExcerptGoogleFonts;
-	let loadCtaGoogleFonts;
-
-	if ( titleLoadGoogleFonts === true ) {
-		const titleconfig = {
-			google: {
-				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
-			},
-		};
-		loadTitleGoogleFonts = <WebfontLoader config={ titleconfig }></WebfontLoader>;
-	}
-
-	if ( metaLoadGoogleFonts === true ) {
-		const metaconfig = {
-			google: {
-				families: [ metaFontFamily + ( metaFontWeight ? ':' + metaFontWeight : '' ) ],
-			},
-		};
-		loadMetaGoogleFonts = <WebfontLoader config={ metaconfig }></WebfontLoader>;
-	}
-
-	if ( excerptLoadGoogleFonts === true ) {
-		const excerptconfig = {
-			google: {
-				families: [ excerptFontFamily + ( excerptFontWeight ? ':' + excerptFontWeight : '' ) ],
-			},
-		};
-		loadExcerptGoogleFonts = <WebfontLoader config={ excerptconfig }></WebfontLoader>;
-	}
-
-	if ( ctaLoadGoogleFonts === true ) {
-		const ctaconfig = {
-			google: {
-				families: [ ctaFontFamily + ( ctaFontWeight ? ':' + ctaFontWeight : '' ) ],
-			},
-		};
-		loadCtaGoogleFonts = <WebfontLoader config={ ctaconfig }></WebfontLoader>;
-	}
-
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && (
 				<Settings
 					parentProps={ props }
@@ -332,12 +278,10 @@ const PostGridComponent = ( props ) => {
 				replaceInnerBlocks={ replaceInnerBlocks }
 				block={ block }
 			/>
-			{ loadTitleGoogleFonts }
-			{ loadMetaGoogleFonts }
-			{ loadExcerptGoogleFonts }
-			{ loadCtaGoogleFonts }
 		</>
 	);
 };
 
-export default PostGridComponent;
+export default compose(
+	AddStaticStyles,
+)( PostGridComponent );

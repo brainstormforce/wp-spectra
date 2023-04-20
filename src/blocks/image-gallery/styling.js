@@ -7,9 +7,7 @@ import generateSpacing from '@Controls/generateSpacing';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import { applyFilters } from '@wordpress/hooks';
 
-function styling( props ) {
-	const { name, clientId, attributes } = props;
-
+function styling( attributes, clientId, name ) {
 	const blockName = name.replace( 'uagb/', '' );
 	const {
 		// Tile Calcualtion
@@ -403,7 +401,10 @@ function styling( props ) {
 			'margin-bottom': `${ generateCSSUnit( paginateDotDistanceFallback, 'px' ) } !important`,
 		},
 		' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper': {
-			'padding': generateSpacing( gridImageGapUnit, gridImageGapFallback ),
+			'padding': generateSpacing( gridImageGapUnit, 0, gridImageGapFallback / 2 ),
+		},
+		' .spectra-image-gallery__layout--carousel .slick-list': {
+			'margin': generateSpacing( gridImageGapUnit, 0, -( gridImageGapFallback / 2 ) ),
 		},
 		' .spectra-image-gallery__layout--tiled': {
 			'grid-gap': generateCSSUnit( gridImageGapFallback, gridImageGapUnit ),
@@ -616,7 +617,10 @@ function styling( props ) {
 			'padding': generateSpacing( gridImageGapUnitTab, gridImageGapTabFallback / 2 ),
 		},
 		' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper': {
-			'padding': generateSpacing( gridImageGapUnitTab, gridImageGapTabFallback ),
+			'padding': generateSpacing( gridImageGapUnitTab, 0, gridImageGapTabFallback / 2 ),
+		},
+		' .spectra-image-gallery__layout--carousel .slick-list': {
+			'margin': generateSpacing( gridImageGapUnitTab, 0, -( gridImageGapTabFallback / 2 ) ),
 		},
 		' .spectra-image-gallery__layout--tiled': {
 			'grid-gap': generateCSSUnit( gridImageGapTabFallback, gridImageGapUnitTab ),
@@ -705,7 +709,10 @@ function styling( props ) {
 			'padding': generateSpacing( gridImageGapUnitMob, gridImageGapMobFallback / 2 ),
 		},
 		' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper': {
-			'padding': generateSpacing( gridImageGapUnitMob, gridImageGapMobFallback ),
+			'padding': generateSpacing( gridImageGapUnitMob, 0, gridImageGapMobFallback / 2 ),
+		},
+		' .spectra-image-gallery__layout--carousel .slick-list': {
+			'margin': generateSpacing( gridImageGapUnitMob, 0, -( gridImageGapMobFallback / 2 ) ),
 		},
 		' .spectra-image-gallery__layout--tiled': {
 			'grid-gap': generateCSSUnit( gridImageGapMobFallback, gridImageGapUnitMob ),
@@ -949,15 +956,15 @@ function styling( props ) {
 	tabletSelectors = applyFilters( `spectra.image-gallery.tabletStyling`, tabletSelectors, attributes );
 	mobileSelectors = applyFilters( `spectra.image-gallery.mobileStyling`, mobileSelectors, attributes );
 
-	selectors = applyFilters( `spectra.image-gallery.styling`, selectors, props.attributes );
-	tabletSelectors = applyFilters( `spectra.image-gallery.tabletStyling`, tabletSelectors, props.attributes );
-	mobileSelectors = applyFilters( `spectra.image-gallery.mobileStyling`, mobileSelectors, props.attributes );
+	selectors = applyFilters( `spectra.image-gallery.styling`, selectors, attributes );
+	tabletSelectors = applyFilters( `spectra.image-gallery.tabletStyling`, tabletSelectors, attributes );
+	mobileSelectors = applyFilters( `spectra.image-gallery.mobileStyling`, mobileSelectors, attributes );
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 
-	stylingCss += generateCSS( tabletSelectors, `${ baseSelector }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	stylingCss += generateCSS( tabletSelectors, `${ baseSelector }`, true, 'tablet' );
 
-	stylingCss += generateCSS( mobileSelectors, `${ baseSelector }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	stylingCss += generateCSS( mobileSelectors, `${ baseSelector }`, true, 'mobile' );
 
 	return stylingCss;
 }

@@ -115,16 +115,15 @@
 			position: relative;
 		}
 
-		&.uagb-spacing-control__mobile-controls-item--spacing.components-button.is-secondary:active:not(:disabled),
-		&.uagb-spacing-control__mobile-controls-item--spacing.components-button.is-tertiary:active:not(:disabled) {
+		&.uagb-spacing-control__mobile-controls-item--spacing.components-button.is-secondary:active:not( :disabled ),
+		&.uagb-spacing-control__mobile-controls-item--spacing.components-button.is-tertiary:active:not( :disabled ) {
 			background: #fff;
 			color: $spectra-color-body;
 		}
 
 		&.components-button {
-
-			&.is-secondary:hover:not(:disabled),
-			&.is-tertiary:hover:not(:disabled) {
+			&.is-secondary:hover:not( :disabled ),
+			&.is-tertiary:hover:not( :disabled ) {
 				color: unset;
 				background: unset;
 				box-shadow: unset;

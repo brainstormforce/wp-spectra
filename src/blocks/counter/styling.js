@@ -7,8 +7,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-export default function styling( props ) {
-	const { attributes } = props;
+export default function styling( attributes, clientId, name ) {
 	const {
 		align,
 		alignTablet,
@@ -198,7 +197,7 @@ export default function styling( props ) {
 		iconMarginUnitMobile,
 	} = attributes;
 
-	const blockName = props.name.replace( 'uagb/', '' );
+	const blockName = name.replace( 'uagb/', '' );
 
 	// <---------- FALLBACKS ---------->
 
@@ -239,9 +238,9 @@ export default function styling( props ) {
 	const imageWidthFallbackMobile = isNaN( imageWidthMobile ) ? imageWidthFallbackTablet : imageWidthMobile;
 
 	// Border.
-	const iconWrapCSS = generateBorderCSS( props.attributes, 'iconWrap' );
-	const iconWrapCSSTablet = generateBorderCSS( props.attributes, 'iconWrap', 'tablet' );
-	const iconWrapCSSMobile = generateBorderCSS( props.attributes, 'iconWrap', 'mobile' );
+	const iconWrapCSS = generateBorderCSS( attributes, 'iconWrap' );
+	const iconWrapCSSTablet = generateBorderCSS( attributes, 'iconWrap', 'tablet' );
+	const iconWrapCSSMobile = generateBorderCSS( attributes, 'iconWrap', 'mobile' );
 
 	const circlePos = circleSizeFallback / 2;
 	const circleRadius = circlePos - circleStrokeSizeFallback / 2;
@@ -398,7 +397,7 @@ export default function styling( props ) {
 		},
 	};
 
-	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const base_selector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	const tablet_selectors = {};
 	const mobile_selectors = {};
@@ -431,6 +430,26 @@ export default function styling( props ) {
 	tablet_selectors[ '.wp-block-uagb-counter .wp-block-uagb-counter__icon svg' ] = {
 		'width': generateCSSUnit( iconSizeFallbackTablet, iconSizeTypeTablet ),
 		'height': generateCSSUnit( iconSizeFallbackTablet, iconSizeTypeTablet ),
+	};
+
+	tablet_selectors[ '.wp-block-uagb-counter .wp-block-uagb-counter__title' ] = {
+		'font-size': generateCSSUnit( headingFontSizeTablet, headingFontSizeType ),
+		'line-height': generateCSSUnit( headingLineHeightTablet, headingLineHeightType ),
+		'letter-Spacing': generateCSSUnit( headingLetterSpacingTablet, headingLetterSpacingType ),
+		'margin-top': generateCSSUnit( headingTopMarginTablet, headingMarginUnitTablet ),
+		'margin-right': generateCSSUnit( headingRightMarginTablet, headingMarginUnitTablet ),
+		'margin-bottom': generateCSSUnit( headingBottomMarginTablet, headingMarginUnitTablet ),
+		'margin-left': generateCSSUnit( headingLeftMarginTablet, headingMarginUnitTablet ),
+	};
+
+	tablet_selectors[ '.wp-block-uagb-counter .wp-block-uagb-counter__number' ] = {
+		'font-size': generateCSSUnit( numberFontSizeTablet, numberFontSizeType ),
+		'line-height': generateCSSUnit( numberLineHeightTablet, numberLineHeightType ),
+		'letter-Spacing': generateCSSUnit( numberLetterSpacingTablet, numberLetterSpacingType ),
+		'margin-top': generateCSSUnit( numberTopMarginTablet, numberMarginUnitTablet ),
+		'margin-right': generateCSSUnit( numberRightMarginTablet, numberMarginUnitTablet ),
+		'margin-bottom': generateCSSUnit( numberBottomMarginTablet, numberMarginUnitTablet ),
+		'margin-left': generateCSSUnit( numberLeftMarginTablet, numberMarginUnitTablet ),
 	};
 
 	tablet_selectors[ '.wp-block-uagb-counter .wp-block-uagb-counter__title' ] = {
@@ -496,6 +515,16 @@ export default function styling( props ) {
 	mobile_selectors[ '.wp-block-uagb-counter .wp-block-uagb-counter__icon svg' ] = {
 		'width': generateCSSUnit( iconSizeFallbackMobile, iconSizeTypeMobile ),
 		'height': generateCSSUnit( iconSizeFallbackMobile, iconSizeTypeMobile ),
+	};
+
+	mobile_selectors[ '.wp-block-uagb-counter .wp-block-uagb-counter__title' ] = {
+		'font-size': generateCSSUnit( headingFontSizeMobile, headingFontSizeType ),
+		'line-height': generateCSSUnit( headingLineHeightMobile, headingLineHeightType ),
+		'letter-Spacing': generateCSSUnit( headingLetterSpacingMobile, headingLetterSpacingType ),
+		'margin-top': generateCSSUnit( headingTopMarginMobile, headingMarginUnitMobile ),
+		'margin-right': generateCSSUnit( headingRightMarginMobile, headingMarginUnitMobile ),
+		'margin-bottom': generateCSSUnit( headingBottomMarginMobile, headingMarginUnitMobile ),
+		'margin-left': generateCSSUnit( headingLeftMarginMobile, headingMarginUnitMobile ),
 	};
 
 	mobile_selectors[ '.wp-block-uagb-counter .wp-block-uagb-counter__title' ] = {
@@ -642,19 +671,9 @@ export default function styling( props ) {
 
 	let styling_css = generateCSS( selectors, base_selector );
 
-	styling_css += generateCSS(
-		tablet_selectors,
-		`${ base_selector }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
+	styling_css += generateCSS( tablet_selectors, `${ base_selector }`, true, 'tablet' );
 
-	styling_css += generateCSS(
-		mobile_selectors,
-		`${ base_selector }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	styling_css += generateCSS( mobile_selectors, `${ base_selector }`, true, 'mobile' );
 
 	return styling_css;
 }

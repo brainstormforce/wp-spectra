@@ -6,7 +6,7 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-function RestMenuStyle( props ) {
+function RestMenuStyle( attributes, clientId, name ) {
 	const {
 		headingAlign,
 		priceColor,
@@ -122,9 +122,9 @@ function RestMenuStyle( props ) {
 		imgAlign,
 		imageAlignment,
 		stack,
-	} = props.attributes;
+	} = attributes;
 
-	const blockName = props.name.replace( 'uagb/', '' );
+	const blockName = name.replace( 'uagb/', '' );
 
 	const seperatorThicknessFallback = getFallbackNumber( seperatorThickness, 'seperatorThickness', blockName );
 
@@ -390,13 +390,13 @@ function RestMenuStyle( props ) {
 	}
 
 	let stylingCss = '';
-	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	stylingCss += generateCSS( tabletSelectors, `${ id }`, true, 'tablet' );
 
-	stylingCss += generateCSS( mobileSelectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	stylingCss += generateCSS( mobileSelectors, `${ id }`, true, 'mobile' );
 
 	return stylingCss;
 }

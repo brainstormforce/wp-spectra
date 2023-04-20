@@ -1,7 +1,6 @@
 /**
  * Set inline styles.
  *
- * @param  {Object} props - The block object.
  * @return {Object} The inline background type CSS.
  */
 
@@ -10,7 +9,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function styling( props ) {
+function styling( attributes, clientId ) {
 	const {
 		blockName,
 		btnBorderHColor,
@@ -232,7 +231,7 @@ function styling( props ) {
 		dotsMarginTopTablet,
 		dotsMarginTopMobile,
 		dotsMarginTopUnit,
-	} = props.attributes;
+	} = attributes;
 
 	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
 	const columnGapFallback = getFallbackNumber( columnGap, 'columnGap', blockName );
@@ -263,17 +262,17 @@ function styling( props ) {
 	const rowGapTabletFallback = isNaN( rowGapTablet ) ? rowGapFallback : rowGapTablet;
 	const rowGapMobileFallback = isNaN( rowGapMobile ) ? rowGapTabletFallback : rowGapMobile;
 
-	const borderCSS = generateBorderCSS( props.attributes, 'btn' );
-	const borderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
-	const borderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+	const borderCSS = generateBorderCSS( attributes, 'btn' );
+	const borderCSSTablet = generateBorderCSS( attributes, 'btn', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( attributes, 'btn', 'mobile' );
 
-	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' );
-	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' );
-	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' );
+	const overallBorderCSS = generateBorderCSS( attributes, 'overall' );
+	const overallBorderCSSTablet = generateBorderCSS( attributes, 'overall', 'tablet' );
+	const overallBorderCSSMobile = generateBorderCSS( attributes, 'overall', 'mobile' );
 
-	const paginationMasonryBorderCSS = generateBorderCSS( props.attributes, 'paginationMasonry' );
-	const paginationMasonryBorderCSSTablet = generateBorderCSS( props.attributes, 'paginationMasonry', 'tablet' );
-	const paginationMasonryBorderCSSMobile = generateBorderCSS( props.attributes, 'paginationMasonry', 'mobile' );
+	const paginationMasonryBorderCSS = generateBorderCSS( attributes, 'paginationMasonry' );
+	const paginationMasonryBorderCSSTablet = generateBorderCSS( attributes, 'paginationMasonry', 'tablet' );
+	const paginationMasonryBorderCSSMobile = generateBorderCSS( attributes, 'paginationMasonry', 'mobile' );
 
 	// post carousal margin top for dots
 
@@ -1005,21 +1004,11 @@ function styling( props ) {
 
 	let stylingCss = '';
 
-	stylingCss = generateCSS( selectors, `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }` );
+	stylingCss = generateCSS( selectors, `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }` );
 
-	stylingCss += generateCSS(
-		tabletSelectors,
-		`.uagb-block-${ props.clientId.substr( 0, 8 ) }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
+	stylingCss += generateCSS( tabletSelectors, `.uagb-block-${ clientId.substr( 0, 8 ) }`, true, 'tablet' );
 
-	stylingCss += generateCSS(
-		mobileSelectors,
-		`.uagb-block-${ props.clientId.substr( 0, 8 ) }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	stylingCss += generateCSS( mobileSelectors, `.uagb-block-${ clientId.substr( 0, 8 ) }`, true, 'mobile' );
 
 	return stylingCss;
 }

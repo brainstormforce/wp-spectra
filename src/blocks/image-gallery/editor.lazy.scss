@@ -5,7 +5,6 @@
 /* stylelint-disable at-rule-no-unknown */
 
 @mixin grid-columns {
-
 	&-1 {
 		grid-template-columns: repeat(1, minmax(0, 1fr));
 	}
@@ -40,7 +39,6 @@
 }
 
 .spectra-image-gallery-init {
-
 	&-wrapper {
 		display: flex;
 		flex-direction: column;
@@ -103,7 +101,6 @@
 .editor-styles-wrapper .is-root-container.edit-site-block-editor__block-list.wp-site-blocks,
 .uagb-editor-preview-mode-tablet,
 .uagb-editor-preview-mode-mobile {
-
 	.spectra-image-gallery__layout--masonry {
 		height: initial !important;
 		display: grid;
@@ -126,7 +123,6 @@
 
 // Tablet Grid for the Masonry Layout in Responsive Gutenberg Editor.
 .uagb-editor-preview-mode-tablet {
-
 	.spectra-image-gallery__layout--masonry-col-tab {
 
 		@include grid-columns;
@@ -135,7 +131,6 @@
 
 // Mobile Grid for the Masonry Layout in Responsive Gutenberg Editor.
 .uagb-editor-preview-mode-mobile {
-
 	.spectra-image-gallery__layout--masonry-col-mob {
 
 		@include grid-columns;
@@ -144,7 +139,6 @@
 
 // Desktop Masonry Grid Compatibility for FSE Themes like Twenty Twenty-Two and Spectra One.
 .editor-styles-wrapper .is-root-container.edit-site-block-editor__block-list.wp-site-blocks {
-
 	.spectra-image-gallery__layout--masonry-col {
 
 		@include grid-columns;
@@ -155,7 +149,6 @@
 .editor-styles-wrapper
 .is-root-container.edit-site-block-editor__block-list.wp-site-blocks
 .uagb-editor-preview-mode-tablet {
-
 	.spectra-image-gallery__layout--masonry-col-tab,
 	.spectra-image-gallery__layout--grid-col-tab,
 	.spectra-image-gallery__layout--tiled-col-tab {
@@ -168,7 +161,6 @@
 .editor-styles-wrapper
 .is-root-container.edit-site-block-editor__block-list.wp-site-blocks
 .uagb-editor-preview-mode-mobile {
-
 	.spectra-image-gallery__layout--masonry-col-mob,
 	.spectra-image-gallery__layout--grid-col-mob,
 	.spectra-image-gallery__layout--tiled-col-mob {

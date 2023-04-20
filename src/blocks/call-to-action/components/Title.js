@@ -9,7 +9,7 @@ const Title = ( props ) => {
 		return (
 			<RichText
 				tagName={ attributes.titleTag }
-				placeholder={ __( 'Write a Heading' ) }
+				placeholder={ __( 'Write a Heading', 'ultimate-addons-for-gutenberg' ) }
 				value={ attributes.ctaTitle }
 				className="uagb-cta__title"
 				onChange={ ( value ) => setAttributes( { ctaTitle: value } ) }

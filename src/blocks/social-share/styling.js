@@ -6,8 +6,8 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-function styling( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+function styling( attributes, clientId, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		align,
@@ -30,7 +30,7 @@ function styling( props ) {
 		iconHoverColor,
 		iconBgColor,
 		iconBgHoverColor,
-	} = props.attributes;
+	} = attributes;
 
 	const bgSizeFallback = getFallbackNumber( bgSize, 'bgSize', blockName );
 	const sizeFallback = getFallbackNumber( size, 'size', blockName );
@@ -391,13 +391,13 @@ function styling( props ) {
 	};
 
 	let stylingCss = '';
-	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	stylingCss += generateCSS( tabletSelectors, `${ id }`, true, 'tablet' );
 
-	stylingCss += generateCSS( mobileSelectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	stylingCss += generateCSS( mobileSelectors, `${ id }`, true, 'mobile' );
 
 	return stylingCss;
 }

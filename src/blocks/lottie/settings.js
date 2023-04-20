@@ -9,7 +9,7 @@ import Range from '@Components/range/Range.js';
 import UAGMediaPicker from '@Components/image';
 import UAGTabsControl from '@Components/tabs';
 
-import { InspectorControls, MediaPlaceholder, BlockControls, MediaReplaceFlow } from '@wordpress/block-editor';
+import { InspectorControls, BlockControls, MediaReplaceFlow } from '@wordpress/block-editor';
 
 import { ToggleControl, ToolbarGroup, Icon } from '@wordpress/components';
 
@@ -18,13 +18,13 @@ import UAGTextControl from '@Components/text-control';
 import { memo } from '@wordpress/element';
 
 const Settings = ( props ) => {
-	const { loopLottie, reverseDirection } = props;
-
 	props = props.parentProps;
 
-	const { setAttributes, attributes } = props;
+	const { loopLottie, reverseDirection } = props;
 
 	const {
+		setAttributes,
+		attributes: {
 		lottieSource,
 		align,
 		height,
@@ -41,20 +41,10 @@ const Settings = ( props ) => {
 		lottieURl,
 		playOn,
 		backgroundHColor,
-	} = attributes;
-
-	const onSelectLottieJSON = ( media ) => {
-		if ( ! media || ! media.url ) {
-			setAttributes( { jsonLottie: null } );
-			return;
-		}
-
-		setAttributes( { jsonLottie: media, lottieURl: media.url, lottieSource: 'library' } );
-	};
-
-	const onSelectLottieURL = ( mediaURL ) => {
-		setAttributes( { lottieURl: mediaURL, lottieSource: 'url' } );
-	};
+		},
+		onSelectLottieJSON,
+		onSelectLottieURL,
+	} = props;
 
 	const controlsSettings = (
 		<>
@@ -292,11 +282,6 @@ const Settings = ( props ) => {
 		</UAGAdvancedPanelBody>
 	);
 
-	//Check if given url is valid or not for json extension.
-	let validJsonPath = 'invalid';
-	if ( lottieURl && lottieURl.endsWith( '.json' ) ) {
-		validJsonPath = 'valid';
-	}
 	if ( ! uagb_blocks_info.uagb_mime_type ) {
 		return (
 			<div className="uagb-show-notice">
@@ -310,42 +295,10 @@ const Settings = ( props ) => {
 						target="__blank"
 					>
 						{ ' ' }
-						{ __( 'this document' ) }{ ' ' }
+						{ __( 'this document', 'ultimate-addons-for-gutenberg' ) }{ ' ' }
 					</a>
-					{ __( 'to know more about it.' ) }
+					{ __( 'to know more about it.', 'ultimate-addons-for-gutenberg' ) }
 				</span>
-			</div>
-		);
-	}
-
-	if ( validJsonPath === 'invalid' ) {
-		const lottie_url = (
-			<span className="uagb-lottie-instructions">
-				{ ' ' }
-				{ __(
-					'Allows you to add fancy animation i.e Lottie to your website. You can see sample Lottie animations',
-					'ultimate-addons-for-gutenberg'
-				) }
-				<a className="uagb-lottie-instructions__lottie-url" href="https://lottiefiles.com/" target="__blank">
-					{ ' ' }
-					{ __( 'here on this' ) }{ ' ' }
-				</a>
-				{ __( 'website.' ) }
-			</span>
-		);
-		return (
-			<div className="uagb-lottie_upload_wrap">
-				<MediaPlaceholder
-					labels={ {
-						title: __( 'Lottie', 'ultimate-addons-for-gutenberg' ),
-						instructions: lottie_url,
-					} }
-					allowedTypes={ [ 'application/json' ] }
-					accept={ [ 'application/json' ] }
-					value={ jsonLottie }
-					onSelectURL={ ( value ) => onSelectLottieURL( value ) }
-					onSelect={ onSelectLottieJSON }
-				/>
 			</div>
 		);
 	}
@@ -368,7 +321,7 @@ const Settings = ( props ) => {
 
 	return (
 		<>
-			{ validJsonPath === 'valid' && getBlockControls() }
+			{ getBlockControls() }
 			<InspectorControls>
 				<InspectorTabs tabs={ [ 'general', 'style', 'advance' ] }>
 					<InspectorTab { ...UAGTabs.general }>{ controlsSettings }</InspectorTab>

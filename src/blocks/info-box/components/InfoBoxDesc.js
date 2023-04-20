@@ -7,8 +7,12 @@ import { applyFilters } from '@wordpress/hooks';
 
 const InfoBoxDesc = ( props ) => {
 	const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace, context } = props;
-	
 	let { headingDesc } = attributes;
+
+	if( 'not_set' === setAttributes ){
+		return <RichText.Content tagName="p" value={ headingDesc } className="uagb-ifb-desc" />
+	}
+
 	let allowedFormats = false;
 	
 	// Check if this has dynamic content.
@@ -24,7 +28,7 @@ const InfoBoxDesc = ( props ) => {
 		<RichText
 			tagName="p"
 			value={ headingDesc }
-			placeholder={ __( 'Write a Description' ) }
+			placeholder={ __( 'Write a Description', 'ultimate-addons-for-gutenberg' ) }
 			className="uagb-ifb-desc"
 			onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
 			onMerge={ mergeBlocks }

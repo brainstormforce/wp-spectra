@@ -1,9 +1,8 @@
 /**
  * External dependencies
  */
-import { useEffect, useState } from '@wordpress/element';
+import { useEffect, useState, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-
 import styling from '.././styling';
 import TypographyControl from '@Components/typography';
 import ResponsiveBorder from '@Components/responsive-border';
@@ -18,7 +17,6 @@ import renderSVG from '@Controls/renderIcon';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { buttonsPresets } from './presets';
 import UAGPresets from '@Components/presets';
@@ -28,8 +26,10 @@ import UAGNumberControl from '@Components/number-control';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import apiFetch from '@wordpress/api-fetch';
 import UAGTextControl from '@Components/text-control';
-import WebfontLoader from '@Components/typography/fontloader';
-
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import DynamicFontLoader from '.././dynamicFontLoader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 import Settings from './settings';
 import Render from './render';
 
@@ -287,6 +287,8 @@ const UAGBPostMasonry = ( props ) => {
 			UAGHideMob,
 		},
 		deviceType,
+		clientId,
+		name,
 	} = props;
 
 	const [ state, setState ] = useState( {
@@ -500,17 +502,9 @@ const UAGBPostMasonry = ( props ) => {
 		}
 
 		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ attributes ] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
 		scrollBlockToView();
 	}, [ deviceType ] );
 
@@ -518,10 +512,12 @@ const UAGBPostMasonry = ( props ) => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+
 	const togglePreview = () => {
 		setState( { isEditing: ! state.isEditing } );
 		if ( ! state.isEditing ) {
-			__( 'Showing All Post Masonry Layout.' );
+			__( 'Showing All Post Masonry Layout.', 'ultimate-addons-for-gutenberg' );
 		}
 	};
 
@@ -761,7 +757,7 @@ const UAGBPostMasonry = ( props ) => {
 											'https://developer.wordpress.org/reference/classes/wp_query/#pagination-parameters:~:text=Warning%3A%20Setting%20the%20offset%20parameter%20overrides/ignores%20the%20paged%20parameter%20and%20breaks%20pagination.%20The%20%27offset%27%20parameter%20is%20ignored%20when%20%27posts_per_page%27%3D%3E%2D1%20(show%20all%20posts)%20is%20used.'
 										}
 									>
-										{ __( 'Read more' ) }
+										{ __( 'Read more', 'ultimate-addons-for-gutenberg' ) }
 									</ExternalLink>
 								</>
 							) }
@@ -2307,50 +2303,10 @@ const UAGBPostMasonry = ( props ) => {
 		);
 	}
 
-	// Load all the Google Fonts for The Post Masonry Block.
-	let loadTitleGoogleFonts;
-	let loadMetaGoogleFonts;
-	let loadExcerptGoogleFonts;
-	let loadCtaGoogleFonts;
-
-	if ( titleLoadGoogleFonts === true ) {
-		const titleconfig = {
-			google: {
-				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
-			},
-		};
-		loadTitleGoogleFonts = <WebfontLoader config={ titleconfig }></WebfontLoader>;
-	}
-
-	if ( metaLoadGoogleFonts === true ) {
-		const metaconfig = {
-			google: {
-				families: [ metaFontFamily + ( metaFontWeight ? ':' + metaFontWeight : '' ) ],
-			},
-		};
-		loadMetaGoogleFonts = <WebfontLoader config={ metaconfig }></WebfontLoader>;
-	}
-
-	if ( excerptLoadGoogleFonts === true ) {
-		const excerptconfig = {
-			google: {
-				families: [ excerptFontFamily + ( excerptFontWeight ? ':' + excerptFontWeight : '' ) ],
-			},
-		};
-		loadExcerptGoogleFonts = <WebfontLoader config={ excerptconfig }></WebfontLoader>;
-	}
-
-	if ( ctaLoadGoogleFonts === true ) {
-		const ctaconfig = {
-			google: {
-				families: [ ctaFontFamily + ( ctaFontWeight ? ':' + ctaFontWeight : '' ) ],
-			},
-		};
-		loadCtaGoogleFonts = <WebfontLoader config={ ctaconfig }></WebfontLoader>;
-	}
-
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && (
 				<Settings
 					parentProps={ props }
@@ -2371,12 +2327,10 @@ const UAGBPostMasonry = ( props ) => {
 				replaceInnerBlocks={ replaceInnerBlocks }
 				block={ block }
 			/>
-			{ loadTitleGoogleFonts }
-			{ loadMetaGoogleFonts }
-			{ loadExcerptGoogleFonts }
-			{ loadCtaGoogleFonts }
 		</>
 	);
 };
 
-export default UAGBPostMasonry;
+export default compose(
+	AddStaticStyles,
+)( UAGBPostMasonry );

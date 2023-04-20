@@ -3,15 +3,17 @@
  */
 
 import contentTimelineStyle from './styling';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useMemo } from '@wordpress/element';
 import { dispatch, select } from '@wordpress/data';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-import WebfontLoader from '@Components/typography/fontloader';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import DynamicFontLoader from './dynamicFontLoader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const ContentTimelineComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -19,24 +21,9 @@ const ContentTimelineComponent = ( props ) => {
 		setAttributes,
 		clientId,
 		attributes,
-		attributes: {
-			timelinAlignmentTablet,
-			timelinAlignmentMobile,
-			stack,
-			UAGHideDesktop,
-			UAGHideTab,
-			UAGHideMob,
-			headLoadGoogleFonts,
-			headFontFamily,
-			headFontWeight,
-			subHeadLoadGoogleFonts,
-			subHeadFontFamily,
-			subHeadFontWeight,
-			dateLoadGoogleFonts,
-			dateFontFamily,
-			dateFontWeight,
-		},
+		attributes: { timelinAlignmentTablet, timelinAlignmentMobile, stack, UAGHideDesktop, UAGHideTab, UAGHideMob },
 		isSelected,
+		name,
 	} = props;
 
 	useEffect( () => {
@@ -70,9 +57,6 @@ const ContentTimelineComponent = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		const blockStyling = contentTimelineStyle( props );
-
-		addBlockEditorDynamicStyles( 'uagb-content-timeline-style-' + clientId.substr( 0, 8 ), blockStyling );
 		if ( null === select( 'core/block-editor' ).getBlocksByClientId( clientId )[ 0 ] ) {
 			return;
 		}
@@ -140,47 +124,21 @@ const ContentTimelineComponent = ( props ) => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
-	// Load all the Google Fonts for The Content Timeline Block.
-	let loadHeadGoogleFonts;
-	let loadSubHeadGoogleFonts;
-	let loadDateGoogleFonts;
-
-	if ( headLoadGoogleFonts === true ) {
-		const headconfig = {
-			google: {
-				families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
-			},
-		};
-		loadHeadGoogleFonts = <WebfontLoader config={ headconfig }></WebfontLoader>;
-	}
-
-	if ( subHeadLoadGoogleFonts === true ) {
-		const subHeadconfig = {
-			google: {
-				families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
-			},
-		};
-		loadSubHeadGoogleFonts = <WebfontLoader config={ subHeadconfig }></WebfontLoader>;
-	}
-
-	if ( dateLoadGoogleFonts === true ) {
-		const dateconfig = {
-			google: {
-				families: [ dateFontFamily + ( dateFontWeight ? ':' + dateFontWeight : '' ) ],
-			},
-		};
-		loadDateGoogleFonts = <WebfontLoader config={ dateconfig }></WebfontLoader>;
-	}
+	const blockStyling = useMemo( () => contentTimelineStyle( attributes, clientId, name, deviceType ), [
+		attributes,
+		deviceType,
+	] );
 
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
-			{ loadHeadGoogleFonts }
-			{ loadSubHeadGoogleFonts }
-			{ loadDateGoogleFonts }
 		</>
 	);
 };
 
-export default ContentTimelineComponent;
+export default compose(
+	AddStaticStyles,
+)( ContentTimelineComponent );

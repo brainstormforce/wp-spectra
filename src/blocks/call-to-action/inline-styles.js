@@ -7,8 +7,8 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function CtaStyle( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+function CtaStyle( attributes, clientId, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		stack,
@@ -187,11 +187,11 @@ function CtaStyle( props ) {
 		btncontentWidthMobile,
 		btncontentWidthType,
 		enabledSecondCtaButton,
-	} = props.attributes;
+	} = attributes;
 
-	const ctaBorderCSS = generateBorderCSS( props.attributes, 'btn' );
-	const ctaBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
-	const ctaBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+	const ctaBorderCSS = generateBorderCSS( attributes, 'btn' );
+	const ctaBorderCSSTablet = generateBorderCSS( attributes, 'btn', 'tablet' );
+	const ctaBorderCSSMobile = generateBorderCSS( attributes, 'btn', 'mobile' );
 	const titleSpaceFallback = getFallbackNumber( titleSpace, 'titleSpace', blockName );
 	const descSpaceFallback = getFallbackNumber( descSpace, 'descSpace', blockName );
 	const secondCtaIconSpaceFallback = getFallbackNumber( secondCtaIconSpace, 'secondCtaIconSpace', blockName );
@@ -201,9 +201,9 @@ function CtaStyle( props ) {
 	const gapBtnFallback = getFallbackNumber( gapBtn, 'gapBtn', blockName );
 	const buttonRightSpaceFallback = getFallbackNumber( buttonRightSpace, 'buttonRightSpace', blockName );
 
-	const secondCtaBorderCSS = generateBorderCSS( props.attributes, 'secondCta' );
-	const secondCtaBorderCSSTablet = generateBorderCSS( props.attributes, 'secondCta', 'tablet' );
-	const secondCtaBorderCSSMobile = generateBorderCSS( props.attributes, 'secondCta', 'mobile' );
+	const secondCtaBorderCSS = generateBorderCSS( attributes, 'secondCta' );
+	const secondCtaBorderCSSTablet = generateBorderCSS( attributes, 'secondCta', 'tablet' );
+	const secondCtaBorderCSSMobile = generateBorderCSS( attributes, 'secondCta', 'mobile' );
 
 	const selectors = {
 		' .uagb-cta__content-wrap': {
@@ -742,13 +742,13 @@ function CtaStyle( props ) {
 		};
 	}
 
-	const id = `.editor-styles-wrapper #block-${ props.clientId } .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper #block-${ clientId } .uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	let stylingCss = generateCSS( selectors, `${ id }` );
 
-	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	stylingCss += generateCSS( tabletSelectors, `${ id }`, true, 'tablet' );
 
-	stylingCss += generateCSS( mobileSelectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	stylingCss += generateCSS( mobileSelectors, `${ id }`, true, 'mobile' );
 
 	return stylingCss;
 }

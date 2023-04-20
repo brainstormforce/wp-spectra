@@ -3,15 +3,16 @@
  */
 
 import CtaStyle from './inline-styles';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
-import WebfontLoader from '@Components/typography/fontloader';
-
+import DynamicFontLoader from './dynamicFontLoader';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 const UAGBCallToAction = ( props ) => {
@@ -34,20 +35,9 @@ const UAGBCallToAction = ( props ) => {
 			ctaBorderColor,
 			ctaBorderhoverColor,
 			ctaBorderRadius,
-			secondCtaLoadGoogleFonts,
-			ctaLoadGoogleFonts,
-			titleLoadGoogleFonts,
-			descLoadGoogleFonts,
-			secondCtaFontFamily,
-			secondCtaFontWeight,
-			ctaFontFamily,
-			ctaFontWeight,
-			titleFontFamily,
-			titleFontWeight,
-			descFontFamily,
-			descFontWeight,
 		},
 		clientId,
+		name,
 	} = props;
 
 	useEffect( () => {
@@ -103,13 +93,6 @@ const UAGBCallToAction = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = CtaStyle( props );
-
-		addBlockEditorDynamicStyles( 'uagb-cta-style-' + clientId.substr( 0, 8 ), blockStyling );
-	}, [ attributes, deviceType ] );
-
-	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
@@ -117,61 +100,21 @@ const UAGBCallToAction = ( props ) => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	let loadCtaGoogleFonts;
-	let loadTitleGoogleFonts;
-	let loadDescGoogleFonts;
-	let loadSecCtaGoogleFonts;
-
-	if ( secondCtaLoadGoogleFonts === true ) {
-		const secondCtaBtnconfig = {
-			google: {
-				families: [ secondCtaFontFamily + ( secondCtaFontWeight ? ':' + secondCtaFontWeight : '' ) ],
-			},
-		};
-
-		loadSecCtaGoogleFonts = <WebfontLoader config={ secondCtaBtnconfig }></WebfontLoader>;
-	}
-
-	if ( ctaLoadGoogleFonts === true ) {
-		const ctaconfig = {
-			google: {
-				families: [ ctaFontFamily + ( ctaFontWeight ? ':' + ctaFontWeight : '' ) ],
-			},
-		};
-
-		loadCtaGoogleFonts = <WebfontLoader config={ ctaconfig }></WebfontLoader>;
-	}
-
-	if ( titleLoadGoogleFonts === true ) {
-		const titleconfig = {
-			google: {
-				families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
-			},
-		};
-
-		loadTitleGoogleFonts = <WebfontLoader config={ titleconfig }></WebfontLoader>;
-	}
-
-	if ( descLoadGoogleFonts === true ) {
-		const descconfig = {
-			google: {
-				families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
-			},
-		};
-
-		loadDescGoogleFonts = <WebfontLoader config={ descconfig }></WebfontLoader>;
-	}
+	const blockStyling = useMemo( () => CtaStyle( attributes, clientId, name, deviceType ), [
+		attributes,
+		deviceType,
+	] );
 
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
-			{ loadCtaGoogleFonts }
-			{ loadSecCtaGoogleFonts }
-			{ loadTitleGoogleFonts }
-			{ loadDescGoogleFonts }
 		</>
 	);
 };
 
-export default UAGBCallToAction;
+export default compose(
+	AddStaticStyles,
+)( UAGBCallToAction );

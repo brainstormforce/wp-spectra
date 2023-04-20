@@ -175,6 +175,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Global - Added Advanced options in Gradient Component.
 * Fix: Container - Heading tags were not inheriting color from theme or container.
 * Fix: Container - Updated default content width for block based themes to wideSize.
+* Fix: Container - Removed Z-index restrictions that caused Image Gallery Lightboxes to get overlapped by other content.
 * Fix: Image - width and height tag does not appear when image uploaded.
 * Fix: Image Gallery - Replaced the Null Array FocusList with an Optimized Object.
 * Fix: Spacing Control - Removed the capability to set negative values for width & radius settings.
@@ -182,6 +183,18 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Carousel - TwentyTwentyone theme hover style override for arrow and dot.
 * Fix: Global - Fonts were not loading in the customizer when Spectra blocks are used in Astra theme's header/footer section.
 * Fix: Advanced Heading - Removed Extra padding in the editor.
+* Fix: Container - Neve theme full width issues on front-end.
+* Fix: Post carousel - Gap between post not visible when only 2 post is present.
+* Fix: Global - Mobile should inherit tablet setting values instead of taking desktop values in the editor.
+* Fix: Editor Sidebar - x-axis Scrollbar should be hidden when switched to RTL.
+* Fix: Table of Contents - HTML validation issue in the HTML validator.
+* Fix: Inspector tabs - Improper border when switched to RTL.
+* Fix: ResponsiveSlider - Improper direction of Slider when switched to RTL.
+* Fix: Control_units - Alignment issue in control_units when switched to RTL.
+* Fix: Color_reset_button - Padding issue in reset and color indicator padding issue when switched to RTL.
+* Fix: Advanced Columns - Border radius not getting applied in frontend.
+* Fix: Image - Extra spacing and escaping container size issue in FSE Theme.
+* Fix: Forms - Missing fields label Accessibility issues for date and toggle child.
 
 ### 2.4.2 - WEDNESDAY, 12th APRIL 2023 ###
 * Fix: Container - Updated default content width for block based themes to wideSize.
@@ -197,6 +210,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Taxonomy List - Added the missing translation for the Select string in the PHP code.
 * Fix: Post Grid - Resolved an issue where pagination was not visible inside the editor.
 * Fix: Modal - Resolved an issue where trigger alignment option was displayed for Automatic/Custom-Id/Classs trigger types in modal.
+* Fix: Image - Resolved an issue where image responsive sizing was not proper for mobile devices.
 
 ### 2.4.0 - WEDNESDAY, 15th MARCH 2023 ###
 * New: Introducing the Countdown block that will help you generate hype and create a sense of urgency among your audience, during product sales or releases!

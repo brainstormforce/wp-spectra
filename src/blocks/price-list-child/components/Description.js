@@ -22,7 +22,7 @@ const Description = ( props ) => {
 			<RichText
 				tagName="div"
 				value={ description }
-				placeholder={ __( 'Write a Description' ) }
+				placeholder={ __( 'Write a Description', 'ultimate-addons-for-gutenberg' ) }
 				className="uagb-rm__desc"
 				onChange={ ( value ) => {
 					setAttributes( { description: value } );

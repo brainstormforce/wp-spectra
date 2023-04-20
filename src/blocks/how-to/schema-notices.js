@@ -114,13 +114,13 @@ function SchemaNotices( props ) {
 					<h6>
 						{ ' ' }
 						{ __(
-							'It seems the following fields are empty. This may generate Schema errors / warnings for your Page, we recommend you to fill these fields.'
+							'It seems the following fields are empty. This may generate Schema errors / warnings for your Page, we recommend you to fill these fields.', 'ultimate-addons-for-gutenberg'
 						) }{ ' ' }
 					</h6>
 					<ul className="how-to-schema-notices-list">{ listItems }</ul>
 					<p>
 						{ __(
-							'P.S. Note that this notice is visible only in the editor. This will not be visible in frontend. Also, once the required fields are added, this notice will go away.'
+							'P.S. Note that this notice is visible only in the editor. This will not be visible in frontend. Also, once the required fields are added, this notice will go away.', 'ultimate-addons-for-gutenberg'
 						) }
 						&nbsp;
 						<a
@@ -128,7 +128,7 @@ function SchemaNotices( props ) {
 							target="_blank"
 							rel="noreferrer"
 						>
-							{ __( 'Read more.' ) }
+							{ __( 'Read more.', 'ultimate-addons-for-gutenberg' ) }
 						</a>
 					</p>
 				</div>

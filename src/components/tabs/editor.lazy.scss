@@ -8,9 +8,7 @@
 	padding: 0 $spectra-panel-body-padding;
 
 	&.uag-control-tabs-three-tabs {
-
 		.components-tab-panel__tabs {
-
 			& > .components-button {
 				width: 31.3%;
 			}
@@ -41,7 +39,7 @@
 				background: $spectra-color-plain-background;
 			}
 
-			&:focus:not(:disabled) {
+			&:focus:not( :disabled ) {
 				box-shadow: none;
 			}
 		}

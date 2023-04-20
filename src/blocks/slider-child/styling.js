@@ -7,8 +7,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function styling( props ) {
-	const { attributes } = props;
+function styling( attributes, clientId ) {
 	let {
 		backgroundType,
 		backgroundImageDesktop,
@@ -88,8 +87,8 @@ function styling( props ) {
 		selectGradient,
 	} = attributes;
 
-	const borderCSSTablet = generateBorderCSS( props.attributes, 'container', 'tablet' );
-	const borderCSSMobile = generateBorderCSS( props.attributes, 'container', 'mobile' );
+	const borderCSSTablet = generateBorderCSS( attributes, 'container', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( attributes, 'container', 'mobile' );
 
 	topPaddingTablet = 'undefined' !== typeof topPaddingTablet ? topPaddingTablet : topPaddingDesktop;
 	topPaddingMobile = 'undefined' !== typeof topPaddingMobile ? topPaddingMobile : topPaddingTablet;
@@ -249,23 +248,13 @@ function styling( props ) {
 		},
 	};
 
-	const base_selector = `.editor-styles-wrapper #block-${ props.clientId }`;
+	const base_selector = `.editor-styles-wrapper #block-${ clientId }`;
 
 	let styling_css = generateCSS( selectors, base_selector );
 
-	styling_css += generateCSS(
-		tablet_selectors,
-		`${ base_selector }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
+	styling_css += generateCSS( tablet_selectors, `${ base_selector }`, true, 'tablet' );
 
-	styling_css += generateCSS(
-		mobile_selectors,
-		`${ base_selector }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	styling_css += generateCSS( mobile_selectors, `${ base_selector }`, true, 'mobile' );
 
 	return styling_css;
 }

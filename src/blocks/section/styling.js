@@ -6,7 +6,7 @@ import inlineStyles from './inline-styles';
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
-function styling( props ) {
+function styling( attributes, clientId ) {
 	const {
 		backgroundType,
 		backgroundVideoColor,
@@ -54,7 +54,7 @@ function styling( props ) {
 		gradientLocation2,
 		gradientType,
 		gradientAngle,
-	} = props.attributes;
+	} = attributes;
 	let inner_width = '100%';
 
 	if ( typeof contentWidth !== 'undefined' ) {
@@ -77,12 +77,12 @@ function styling( props ) {
 		videoOpacity = 1 < backgroundVideoOpacity ? ( 100 - backgroundVideoOpacity ) / 100 : 1 - backgroundVideoOpacity;
 	}
 
-	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' );
-	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' );
-	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' );
+	const overallBorderCSS = generateBorderCSS( attributes, 'overall' );
+	const overallBorderCSSTablet = generateBorderCSS( attributes, 'overall', 'tablet' );
+	const overallBorderCSSMobile = generateBorderCSS( attributes, 'overall', 'mobile' );
 
 	const selectors = {
-		'.uagb-section__wrap': inlineStyles( props ),
+		'.uagb-section__wrap': inlineStyles( attributes ),
 		' .uagb-section__video-wrap': {
 			'opacity': videoOpacity,
 		},
@@ -233,13 +233,13 @@ function styling( props ) {
 		);
 	}
 	let stylingCss = '';
-	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	stylingCss += generateCSS( tabletSelectors, `${ id }`, true, 'tablet' );
 
-	stylingCss += generateCSS( mobileSelectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	stylingCss += generateCSS( mobileSelectors, `${ id }`, true, 'mobile' );
 
 	return stylingCss;
 }

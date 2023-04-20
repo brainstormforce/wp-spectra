@@ -8,6 +8,15 @@ import { applyFilters } from '@wordpress/hooks';
 const Title = ( props ) => {
 	const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace, context } = props;
 	let { infoBoxTitle } = attributes;
+
+	if( 'not_set' === setAttributes ){
+		return <RichText.Content
+			tagName={attributes.headingTag}
+			value={ infoBoxTitle }
+			className="uagb-ifb-title"
+		/>
+	}
+
 	let allowedFormats = false;
 	
 	// Check if this has dynamic content.
@@ -22,7 +31,7 @@ const Title = ( props ) => {
 	return (
 		<RichText
 			tagName={ attributes.headingTag }
-			placeholder={ __( 'Write a Title' ) }
+			placeholder={ __( 'Write a Title', 'ultimate-addons-for-gutenberg' ) }
 			value={ infoBoxTitle }
 			className="uagb-ifb-title"
 			onChange={ ( value ) => setAttributes( { infoBoxTitle: value } ) }

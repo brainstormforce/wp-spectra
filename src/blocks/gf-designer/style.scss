@@ -142,7 +142,7 @@
 .uag-gf-input-size-xs
 .uagb-gf-styler__check-style-enabled
 .gform_body
-input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="image"]):not([type="file"]),
+input:not( [type="radio"] ):not( [type="checkbox"] ):not( [type="submit"] ):not( [type="button"] ):not( [type="image"] ):not( [type="file"] ),
 .uag-gf-input-size-xs .uagb-gf-styler__check-style-enabled .ginput_container textarea,
 .uag-gf-input-size-xs .uagb-gf-styler__check-style-enabled .ginput_container .chosen-single,
 .uag-gf-input-size-xs .uagb-gf-styler__check-style-enabled .ginput_container .chosen-choices {
@@ -197,7 +197,7 @@ input[type="checkbox"] + label::before {
 .uag-gf-input-size-sm
 .uagb-gf-styler__check-style-enabled
 .gform_body
-input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="image"]):not([type="file"]),
+input:not( [type="radio"] ):not( [type="checkbox"] ):not( [type="submit"] ):not( [type="button"] ):not( [type="image"] ):not( [type="file"] ),
 .uag-gf-input-size-sm .uagb-gf-styler__check-style-enabled .ginput_container textarea,
 .uag-gf-input-size-sm .uagb-gf-styler__check-style-enabled .ginput_container .chosen-single,
 .uag-gf-input-size-sm .uagb-gf-styler__check-style-enabled .ginput_container .chosen-choices {
@@ -247,7 +247,7 @@ input[type="checkbox"] + label::before {
 .uag-gf-input-size-md
 .uagb-gf-styler__check-style-enabled
 .gform_body
-input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="image"]):not([type="file"]),
+input:not( [type="radio"] ):not( [type="checkbox"] ):not( [type="submit"] ):not( [type="button"] ):not( [type="image"] ):not( [type="file"] ),
 .uag-gf-input-size-md .uagb-gf-styler__check-style-enabled .ginput_container textarea,
 .uag-gf-input-size-md .uagb-gf-styler__check-style-enabled .ginput_container .chosen-single,
 .uag-gf-input-size-md .uagb-gf-styler__check-style-enabled .ginput_container .chosen-choices {
@@ -297,7 +297,7 @@ input[type="checkbox"] + label::before {
 .uag-gf-input-size-lg
 .uagb-gf-styler__check-style-enabled
 .gform_body
-input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="image"]):not([type="file"]),
+input:not( [type="radio"] ):not( [type="checkbox"] ):not( [type="submit"] ):not( [type="button"] ):not( [type="image"] ):not( [type="file"] ),
 .uag-gf-input-size-lg .uagb-gf-styler__check-style-enabled .ginput_container textarea,
 .uag-gf-input-size-lg .uagb-gf-styler__check-style-enabled .ginput_container .chosen-single,
 .uag-gf-input-size-lg .uagb-gf-styler__check-style-enabled .ginput_container .chosen-choices {
@@ -347,7 +347,7 @@ input[type="checkbox"] + label::before {
 .uag-gf-input-size-xl
 .uagb-gf-styler__check-style-enabled
 .gform_body
-input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="image"]):not([type="file"]),
+input:not( [type="radio"] ):not( [type="checkbox"] ):not( [type="submit"] ):not( [type="button"] ):not( [type="image"] ):not( [type="file"] ),
 .uag-gf-input-size-xl .uagb-gf-styler__check-style-enabled .ginput_container textarea,
 .uag-gf-input-size-xl .uagb-gf-styler__check-style-enabled .ginput_container .chosen-single,
 .uag-gf-input-size-xl .uagb-gf-styler__check-style-enabled .ginput_container .chosen-choices {
@@ -392,7 +392,7 @@ input[type="checkbox"]:checked + label::before {
 	margin-right: 5px !important;
 }
 
-.uagb-gf-styler__check-style-enabled .gform_wrapper .gform_footer:not(.top_label) {
+.uagb-gf-styler__check-style-enabled .gform_wrapper .gform_footer:not( .top_label ) {
 	width: 100%;
 	padding: 0 0 0 0;
 	margin-right: 0;
@@ -417,7 +417,7 @@ input[type="checkbox"]:checked + label::before {
 .gform_wrapper.gform_validation_error
 .gform_body
 ul
-li.gfield.gfield_error:not(.gf_left_half):not(.gf_right_half) {
+li.gfield.gfield_error:not( .gf_left_half ):not( .gf_right_half ) {
 	max-width: 100% !important;
 }
 
@@ -521,7 +521,7 @@ input[type="checkbox"]:checked + label::before {
 .uagb-gf-styler__check-style-enabled
 .gform_wrapper
 ul.gform_fields
-li.gfield:not(.gf_left_half):not(.gf_left_third):not(.gf_middle_third) {
+li.gfield:not( .gf_left_half ):not( .gf_left_third ):not( .gf_middle_third ) {
 	padding-right: 0;
 }
 
@@ -598,7 +598,6 @@ input[type="text"] {
 /* Gravity Form ends */
 
 @media only screen and ( max-width: 976px ) {
-
 	.uagb-gf-styler__btn-align-center .gform_page .gform_page_footer {
 		text-align: center;
 	}
@@ -644,7 +643,6 @@ input[type="text"] {
 }
 
 @media only screen and ( max-width: 767px ) {
-
 	.uagb-gf-styler__btn-align-center .gform_page .gform_page_footer {
 		text-align: center;
 	}
@@ -690,7 +688,6 @@ input[type="text"] {
 }
 
 @media ( min-width: 780px ) {
-
 	.uagb-gf-styler__btn-align-justify .gform_wrapper .gform_footer input[type="submit"],
 	.uagb-gf-styler__btn-align-justify .gform_page .gform_page_footer input[type="button"],
 	.uagb-gf-styler__btn-align-justify .gform_page .gform_page_footer input[type="submit"] {
@@ -704,7 +701,6 @@ input[type="text"] {
 }
 
 @media ( max-width: 780px ) {
-
 	.uagb-gf-styler__btn-align-tablet-center .gform_wrapper .gform_footer input[type="submit"],
 	.uagb-gf-styler__btn-align-tablet-center .gform_page .gform_page_footer input[type="button"],
 	.uagb-gf-styler__btn-align-tablet-center .gform_page .gform_page_footer input[type="submit"],

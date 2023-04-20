@@ -8,10 +8,9 @@ import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function styling( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+function styling( attributes, clientId, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
-	const { attributes } = props;
 	let {
 		block_id,
 		widthDesktop,
@@ -182,9 +181,9 @@ function styling( props ) {
 	const rowGapDesktopFallback = getFallbackNumber( rowGapDesktop, 'rowGapDesktop', blockName );
 	const columnGapDesktopFallback = getFallbackNumber( columnGapDesktop, 'columnGapDesktop', blockName );
 
-	const borderCSS = generateBorderCSS( props.attributes, 'container' );
-	const borderCSSTablet = generateBorderCSS( props.attributes, 'container', 'tablet' );
-	const borderCSSMobile = generateBorderCSS( props.attributes, 'container', 'mobile' );
+	const borderCSS = generateBorderCSS( attributes, 'container' );
+	const borderCSSTablet = generateBorderCSS( attributes, 'container', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( attributes, 'container', 'mobile' );
 
 	topPaddingTablet = 'undefined' !== typeof topPaddingTablet ? topPaddingTablet : topPaddingDesktop;
 	topPaddingMobile = 'undefined' !== typeof topPaddingMobile ? topPaddingMobile : topPaddingTablet;
@@ -392,21 +391,21 @@ function styling( props ) {
 	};
 
 	const widthSelectorsDesktop = {
-		[ `.is-root-container > .block-editor-block-list__block .block-editor-block-list__block#block-${ props.clientId } ` ]: {
+		[ `.is-root-container > .block-editor-block-list__block .block-editor-block-list__block#block-${ clientId } ` ]: {
 			'max-width': generateCSSUnit( widthDesktopFallback, widthType ),
 			'width': '100%',
 		},
 	};
 
 	const widthSelectorsTablet = {
-		[ `.is-root-container > .block-editor-block-list__block .uagb-editor-preview-mode-tablet.block-editor-block-list__block#block-${ props.clientId } ` ]: {
+		[ `.is-root-container > .block-editor-block-list__block .uagb-editor-preview-mode-tablet.block-editor-block-list__block#block-${ clientId } ` ]: {
 			'max-width': generateCSSUnit( widthTablet, widthTypeTablet ),
 			'width': '100%',
 		},
 	};
 
 	const widthSelectorsMobile = {
-		[ `.is-root-container > .block-editor-block-list__block .uagb-editor-preview-mode-mobile.block-editor-block-list__block#block-${ props.clientId } ` ]: {
+		[ `.is-root-container > .block-editor-block-list__block .uagb-editor-preview-mode-mobile.block-editor-block-list__block#block-${ clientId } ` ]: {
 			'max-width': generateCSSUnit( widthMobile, widthTypeMobile ),
 			'width': '100%',
 		},
@@ -710,27 +709,17 @@ function styling( props ) {
 		);
 	}
 
-	const base_selector = `.editor-styles-wrapper #block-${ props.clientId }`;
+	const base_selector = `.editor-styles-wrapper #block-${ clientId }`;
 
 	let styling_css = generateCSS( selectors, base_selector );
 
 	styling_css += generateCSS( widthSelectorsDesktop, '.editor-styles-wrapper ' );
 
-	styling_css += generateCSS(
-		tablet_selectors,
-		`${ base_selector }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
+	styling_css += generateCSS( tablet_selectors, `${ base_selector }`, true, 'tablet' );
 
 	styling_css += generateCSS( widthSelectorsTablet, '.editor-styles-wrapper ', true, 'tablet' );
 
-	styling_css += generateCSS(
-		mobile_selectors,
-		`${ base_selector }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	styling_css += generateCSS( mobile_selectors, `${ base_selector }`, true, 'mobile' );
 
 	styling_css += generateCSS( widthSelectorsMobile, '.editor-styles-wrapper ', true, 'mobile' );
 

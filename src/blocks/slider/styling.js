@@ -8,8 +8,7 @@ import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 import { applyFilters } from '@wordpress/hooks';
 
-function styling( props ) {
-	const { attributes } = props;
+function styling( attributes, clientId ) {
 	let {
 		backgroundType,
 		backgroundImageDesktop,
@@ -121,13 +120,13 @@ function styling( props ) {
 		selectGradient,
 	} = attributes;
 
-	const borderCSS = generateBorderCSS( props.attributes, 'slider' );
-	const borderCSSTablet = generateBorderCSS( props.attributes, 'slider', 'tablet' );
-	const borderCSSMobile = generateBorderCSS( props.attributes, 'slider', 'mobile' );
+	const borderCSS = generateBorderCSS( attributes, 'slider' );
+	const borderCSSTablet = generateBorderCSS( attributes, 'slider', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( attributes, 'slider', 'mobile' );
 
-	const arrowBorderCSS = generateBorderCSS( props.attributes, 'slider-arrow' );
-	const arrowBorderCSSTablet = generateBorderCSS( props.attributes, 'slider-arrow', 'tablet' );
-	const arrowBorderCSSMobile = generateBorderCSS( props.attributes, 'slider-arrow', 'mobile' );
+	const arrowBorderCSS = generateBorderCSS( attributes, 'slider-arrow' );
+	const arrowBorderCSSTablet = generateBorderCSS( attributes, 'slider-arrow', 'tablet' );
+	const arrowBorderCSSMobile = generateBorderCSS( attributes, 'slider-arrow', 'mobile' );
 
 	arrowSizeTablet = 'undefined' !== typeof arrowSizeTablet ? arrowSizeTablet : arrowSize;
 	arrowSizeMobile = 'undefined' !== typeof arrowSizeMobile ? arrowSizeMobile : arrowSizeTablet;
@@ -267,7 +266,7 @@ function styling( props ) {
 			'bottom': generateCSSUnit( dotsMarginTop, 'px' ),
 		},
 		' .swiper-pagination-bullet': {
-			'background-color': '' === arrowBgColor || 'undefined' === typeof arrowBgColor ? arrowColor : arrowBgColor,
+			'background-color': arrowColor,
 		},
 		' .swiper-wrapper': {
 			'align-items': verticalAlign,
@@ -435,7 +434,7 @@ function styling( props ) {
 		},
 	};
 
-	const base_selector = `.editor-styles-wrapper #block-${ props.clientId }`;
+	const base_selector = `.editor-styles-wrapper #block-${ clientId }`;
 
 	selectors = applyFilters( `spectra.slider.styling`, selectors, attributes );
 	tablet_selectors = applyFilters( `spectra.slider.tabletStyling`, tablet_selectors, attributes );
@@ -443,19 +442,9 @@ function styling( props ) {
 
 	let styling_css = generateCSS( selectors, base_selector );
 
-	styling_css += generateCSS(
-		tablet_selectors,
-		`${ base_selector }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
+	styling_css += generateCSS( tablet_selectors, `${ base_selector }`, true, 'tablet' );
 
-	styling_css += generateCSS(
-		mobile_selectors,
-		`${ base_selector }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	styling_css += generateCSS( mobile_selectors, `${ base_selector }`, true, 'mobile' );
 
 	return styling_css;
 }

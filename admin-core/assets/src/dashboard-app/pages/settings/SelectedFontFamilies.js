@@ -149,7 +149,7 @@ const SelectedFontFamilies = () => {
             </p>
             <Select
                 isMulti
-                placeholder={ __( 'Select the font families you want' ) }
+                placeholder={ __( 'Select the font families you want', 'ultimate-addons-for-gutenberg' ) }
                 defaultValue = { selectedFontFamilies }
                 onChange={ ( value ) => updateSelectedFontFamilies( value ) }
                 options={ fonts }

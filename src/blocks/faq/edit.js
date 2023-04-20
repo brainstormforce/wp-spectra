@@ -3,16 +3,18 @@
  */
 
 import styling from './styling';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import { select } from '@wordpress/data';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-import WebfontLoader from '@Components/typography/fontloader';
+import DynamicFontLoader from './dynamicFontLoader';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const FaqComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -41,14 +43,9 @@ const FaqComponent = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
-			questionloadGoogleFonts,
-			questionFontFamily,
-			questionFontWeight,
-			answerloadGoogleFonts,
-			answerFontFamily,
-			answerFontWeight,
 		},
 		clientId,
+		name,
 	} = props;
 
 	const updatePageSchema = () => {
@@ -155,10 +152,6 @@ const FaqComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-style-faq-' + clientId.substr( 0, 8 ), blockStyling );
-
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( faqChild ) => {
@@ -244,12 +237,9 @@ const FaqComponent = ( props ) => {
 		}
 	}, [ attributes ] );
 
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-style-faq-' + clientId.substr( 0, 8 ), blockStyling );
-
 		scrollBlockToView();
 	}, [ deviceType ] );
 
@@ -257,36 +247,16 @@ const FaqComponent = ( props ) => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	// Load all the Google Fonts for The FAQ Block.
-	let loadQuestionGoogleFonts;
-	let loadAnswerGoogleFonts;
-
-	if ( questionloadGoogleFonts === true ) {
-		const qconfig = {
-			google: {
-				families: [ questionFontFamily + ( questionFontWeight ? ':' + questionFontWeight : '' ) ],
-			},
-		};
-		loadQuestionGoogleFonts = <WebfontLoader config={ qconfig }></WebfontLoader>;
-	}
-
-	if ( answerloadGoogleFonts === true ) {
-		const aconfig = {
-			google: {
-				families: [ answerFontFamily + ( answerFontWeight ? ':' + answerFontWeight : '' ) ],
-			},
-		};
-		loadAnswerGoogleFonts = <WebfontLoader config={ aconfig }></WebfontLoader>;
-	}
-
 	return (
 		<>
+			<DynamicFontLoader { ...{ attributes } } />
+			<DynamicCSSLoader { ...{ blockStyling } } />
 			{ isSelected && <Settings parentProps={ props } deviceType={ deviceType } /> }
 			<Render parentProps={ props } />
-			{ loadQuestionGoogleFonts }
-			{ loadAnswerGoogleFonts }
 		</>
 	);
 };
 
-export default FaqComponent;
+export default compose(
+	AddStaticStyles,
+)( FaqComponent );

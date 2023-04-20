@@ -7,8 +7,8 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-export default function styling( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+export default function styling( attributes, clientId, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		width,
@@ -158,7 +158,7 @@ export default function styling( props ) {
 		customHeightSetDesktop,
 		customHeightSetTablet,
 		customHeightSetMobile,
-	} = props.attributes;
+	} = attributes;
 
 	const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
 	const overlayPositionFromEdgeFallback = getFallbackNumber(
@@ -171,12 +171,12 @@ export default function styling( props ) {
 	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
 	const overlayHoverOpacityFallback = getFallbackNumber( overlayHoverOpacity, 'overlayHoverOpacity', blockName );
 
-	const overlayBorderCSS = generateBorderCSS( props.attributes, 'overlay' );
-	const overlayBorderCSSTablet = generateBorderCSS( props.attributes, 'overlay', 'tablet' );
-	const overlayBorderCSSMobile = generateBorderCSS( props.attributes, 'overlay', 'mobile' );
-	const imageBorderCSS = generateBorderCSS( props.attributes, 'image' );
-	const imageBorderCSSTablet = generateBorderCSS( props.attributes, 'image', 'tablet' );
-	const imageBorderCSSMobile = generateBorderCSS( props.attributes, 'image', 'mobile' );
+	const overlayBorderCSS = generateBorderCSS( attributes, 'overlay' );
+	const overlayBorderCSSTablet = generateBorderCSS( attributes, 'overlay', 'tablet' );
+	const overlayBorderCSSMobile = generateBorderCSS( attributes, 'overlay', 'mobile' );
+	const imageBorderCSS = generateBorderCSS( attributes, 'image' );
+	const imageBorderCSSTablet = generateBorderCSS( attributes, 'image', 'tablet' );
+	const imageBorderCSSMobile = generateBorderCSS( attributes, 'image', 'mobile' );
 
 	const tabletWidth = '' !== widthTablet ? widthTablet : width;
 	const mobileWidth = '' !== widthMobile ? widthMobile : tabletWidth;
@@ -185,6 +185,23 @@ export default function styling( props ) {
 	const mobileHeight = '' !== heightMobile ? heightMobile : tabletHeight;
 
 	const getImageShadowPosition = imageBoxShadowPosition !== 'outset' ? imageBoxShadowPosition : '';
+	
+	function getBlockAlign( alignment ) {
+		switch ( alignment ) {
+			case 'center':
+				return 'center';
+			case 'left':
+				return 'flex-start';
+			case 'right':
+				return 'flex-end';
+			default:
+				return '';
+		}
+	}
+	
+	const blockAlign = getBlockAlign( align );
+	const blockAlignTablet = getBlockAlign( alignTablet );
+	const blockAlignMobile = getBlockAlign( alignMobile );
 
 	const selectors = {
 		'.wp-block-uagb-image': {
@@ -193,10 +210,12 @@ export default function styling( props ) {
 			'margin-bottom': generateCSSUnit( imageBottomMargin, imageMarginUnit ),
 			'margin-left': generateCSSUnit( imageLeftMargin, imageMarginUnit ),
 			'text-align': align,
+			'justify-content': blockAlign,
+		},
+		' .wp-block-uagb-image__figure' : {
+			'align-items': blockAlign,
 		},
 		'.wp-block-uagb-image--layout-default figure img': {
-			'width': 'inherit',
-			'height': 'inherit',
 			'box-shadow':
 				generateCSSUnit( imageBoxShadowHOffset, 'px' ) +
 				' ' +
@@ -235,8 +254,6 @@ export default function styling( props ) {
 		},
 		// overlay
 		'.wp-block-uagb-image--layout-overlay figure img': {
-			'width': 'inherit',
-			'height': 'inherit',
 			'box-shadow':
 				generateCSSUnit( imageBoxShadowHOffset, 'px' ) +
 				' ' +
@@ -358,7 +375,7 @@ export default function styling( props ) {
 		}
 	}
 
-	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const base_selector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	const tablet_selectors = {};
 	const mobile_selectors = {};
@@ -377,6 +394,10 @@ export default function styling( props ) {
 		'margin-bottom': generateCSSUnit( imageBottomMarginTablet, imageMarginUnitTablet ),
 		'margin-left': generateCSSUnit( imageLeftMarginTablet, imageMarginUnitTablet ),
 		'text-align': alignTablet,
+		'justify-content': blockAlignTablet,
+	};
+	tablet_selectors[' .wp-block-uagb-image__figure'] = {
+		'align-items': blockAlignTablet,
 	};
 	tablet_selectors[ '.wp-block-uagb-image .wp-block-uagb-image__figure figcaption' ] = {
 		'font-size': generateCSSUnit( captionFontSizeTablet, captionFontSizeType ),
@@ -434,8 +455,11 @@ export default function styling( props ) {
 		'margin-bottom': generateCSSUnit( imageBottomMarginMobile, imageMarginUnitMobile ),
 		'margin-left': generateCSSUnit( imageLeftMarginMobile, imageMarginUnitMobile ),
 		'text-align': alignMobile,
+		'justify-content': blockAlignMobile,
 	};
-
+	mobile_selectors[' .wp-block-uagb-image__figure'] = {
+		'align-items': blockAlignMobile,
+	};
 	mobile_selectors[ '.wp-block-uagb-image .wp-block-uagb-image__figure figcaption' ] = {
 		'font-size': generateCSSUnit( captionFontSizeMobile, captionFontSizeType ),
 		'line-height': generateCSSUnit( captionLineHeightMobile, captionLineHeightType ),
@@ -479,19 +503,9 @@ export default function styling( props ) {
 
 	let styling_css = generateCSS( selectors, base_selector );
 
-	styling_css += generateCSS(
-		tablet_selectors,
-		`${ base_selector }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
+	styling_css += generateCSS( tablet_selectors, `${ base_selector }`, true, 'tablet' );
 
-	styling_css += generateCSS(
-		mobile_selectors,
-		`${ base_selector }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	styling_css += generateCSS( mobile_selectors, `${ base_selector }`, true, 'mobile' );
 
 	return styling_css;
 }

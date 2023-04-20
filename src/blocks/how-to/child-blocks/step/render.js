@@ -84,7 +84,7 @@ const Render = ( props ) => {
 			<RichText
 				tagName="p"
 				value={ description }
-				placeholder={ __( 'Write a Description' ) }
+				placeholder={ __( 'Write a Description', 'ultimate-addons-for-gutenberg' ) }
 				className="uagb-how-to-step-description"
 				onChange={ ( value ) => setAttributes( { description: value } ) }
 				onMerge={ mergeBlocks }

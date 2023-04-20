@@ -3,15 +3,16 @@
  */
 import styling from './styling';
 
-import { useEffect } from '@wordpress/element';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { useEffect, useMemo } from '@wordpress/element';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import Settings from './settings';
 import Render from './render';
 import { select, dispatch } from '@wordpress/data';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 const SocialShareComponent = ( props ) => {
 	const deviceType = useDeviceType();
 	const {
@@ -19,6 +20,7 @@ const SocialShareComponent = ( props ) => {
 		setAttributes,
 		clientId,
 		attributes,
+		name,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 	} = props;
 
@@ -31,13 +33,6 @@ const SocialShareComponent = ( props ) => {
 	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
-
-	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-style-social-share-' + clientId.substr( 0, 8 ), blockStyling );
-	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
@@ -55,12 +50,17 @@ const SocialShareComponent = ( props ) => {
 			} );
 	}, [ attributes.size, attributes.sizeMobile, attributes.sizeTablet ] );
 
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
 		</>
 	);
 };
 
-export default SocialShareComponent;
+export default compose(
+	AddStaticStyles,
+)( SocialShareComponent );

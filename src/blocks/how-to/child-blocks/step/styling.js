@@ -5,7 +5,7 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
-function styling( props ) {
+function styling( attributes, clientId ) {
 	const {
 		urlFontSize,
 		urlFontSizeType,
@@ -64,7 +64,7 @@ function styling( props ) {
 		urlLetterSpacingTablet,
 		urlLetterSpacingMobile,
 		urlLetterSpacingType,
-	} = props.attributes;
+	} = attributes;
 
 	let tabletSelectors = {};
 	let mobileSelectors = {};
@@ -141,13 +141,13 @@ function styling( props ) {
 		},
 	};
 
-	const baseSelector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const baseSelector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 
-	stylingCss += generateCSS( tabletSelectors, `${ baseSelector }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	stylingCss += generateCSS( tabletSelectors, `${ baseSelector }`, true, 'tablet' );
 
-	stylingCss += generateCSS( mobileSelectors, `${ baseSelector }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	stylingCss += generateCSS( mobileSelectors, `${ baseSelector }`, true, 'mobile' );
 
 	return stylingCss;
 }

@@ -205,7 +205,7 @@ export default function Settings( props ) {
 		yPositionTypeMobile,
 		modalTriggerBgType,
 		modalTriggerBgHoverType,
-		openModalAs
+		openModalAs,
 	} = attributes;
 
 	/*
@@ -417,12 +417,12 @@ export default function Settings( props ) {
 		</UAGAdvancedPanelBody>
 	);
 
-	const isTypePopup = ( 'left-off-canvas' !== openModalAs && 'right-off-canvas' !== openModalAs );
+	const isTypePopup = 'left-off-canvas' !== openModalAs && 'right-off-canvas' !== openModalAs;
 
 	const modalContentPanel = (
 		<UAGAdvancedPanelBody title={ __( 'Container', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<ResponsiveSlider
-				label={ __( 'Modal Popup Width', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Modal Width', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
 					desktop: {
 						value: modalWidth,
@@ -455,10 +455,10 @@ export default function Settings( props ) {
 				] }
 				setAttributes={ setAttributes }
 			/>
-			{ ( isTypePopup ) &&
+			{ isTypePopup && (
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
-					label={ __( 'Modal Popup Height', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Modal Height', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: modalBoxHeight,
 						label: 'modalBoxHeight',
@@ -476,7 +476,7 @@ export default function Settings( props ) {
 					showIcons={ false }
 					responsive={ false }
 				/>
-			}
+			) }
 			{ isTypePopup && modalBoxHeight !== 'custom' && (
 				<ResponsiveSlider
 					label={ __( 'Max Height', 'ultimate-addons-for-gutenberg' ) }
@@ -614,7 +614,7 @@ export default function Settings( props ) {
 			) }
 
 			{ modalTrigger === 'icon' && icon === '' && (
-				<p className="uagb-settings-notice">{ __( 'For the styling options please select the Icon.' ) }</p>
+				<p className="uagb-settings-notice">{ __( 'For the styling options please select the Icon.', 'ultimate-addons-for-gutenberg' ) }</p>
 			) }
 
 			{ modalTrigger === 'text' && (
@@ -802,7 +802,7 @@ export default function Settings( props ) {
 			) }
 
 			{ modalTrigger === 'image' && iconImage === undefined && (
-				<p className="uagb-settings-notice">{ __( 'For the styling options please select the Image.' ) }</p>
+				<p className="uagb-settings-notice">{ __( 'For the styling options please select the Image.', 'ultimate-addons-for-gutenberg' ) }</p>
 			) }
 
 			{ modalTrigger === 'button' && (

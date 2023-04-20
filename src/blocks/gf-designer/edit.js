@@ -1,16 +1,18 @@
 import styling from './styling';
-import { useEffect } from '@wordpress/element';
-
+import { useEffect, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { SelectControl, Placeholder } from '@wordpress/components';
 import apiFetch from '@wordpress/api-fetch';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import { useSelect } from '@wordpress/data';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import DynamicFontLoader from './dynamicFontLoader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBGF = ( props ) => {
 	const deviceType = useDeviceType();
@@ -43,6 +45,8 @@ const UAGBGF = ( props ) => {
 			UAGHideTab,
 			UAGHideMob,
 		},
+		clientId,
+		name,
 	} = props;
 	// eslint-disable-next-line  no-unused-vars
 	useSelect( ( select ) => {
@@ -73,7 +77,7 @@ const UAGBGF = ( props ) => {
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		setAttributes( { isHtml: false } );
-		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
 		if ( buttonVrPadding ) {
 			if ( undefined === buttontopPadding ) {
@@ -141,18 +145,11 @@ const UAGBGF = ( props ) => {
 				event.preventDefault();
 			} );
 		}
-
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-gf-styler-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ attributes ] );
 
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-gf-styler-' + props.clientId.substr( 0, 8 ), blockStyling );
-
 		scrollBlockToView();
 	}, [ deviceType ] );
 
@@ -179,10 +176,14 @@ const UAGBGF = ( props ) => {
 
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
 		</>
 	);
 };
 
-export default UAGBGF;
+export default compose(
+	AddStaticStyles,
+)( UAGBGF );

@@ -15,7 +15,7 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.general }>
 						<UAGAdvancedPanelBody initialOpen={ true }>
 							<p className="uagb-settings-notice">
-								{ __( 'For the styling options please select the Parent Block.' ) }
+								{ __( 'For the styling options please select the Parent Block.', 'ultimate-addons-for-gutenberg' ) }
 							</p>
 						</UAGAdvancedPanelBody>
 					</InspectorTab>

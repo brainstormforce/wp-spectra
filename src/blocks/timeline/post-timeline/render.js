@@ -45,7 +45,7 @@ const Render = ( props ) => {
 		if ( ! hasPosts ) {
 			return (
 				<Placeholder icon="admin-post" label={ __( 'Post Timeline', 'ultimate-addons-for-gutenberg' ) }>
-					{ ! Array.isArray( latestPosts ) ? <Spinner /> : __( 'No posts found.' ) }
+					{ ! Array.isArray( latestPosts ) ? <Spinner /> : __( 'No posts found.', 'ultimate-addons-for-gutenberg' ) }
 				</Placeholder>
 			);
 		}

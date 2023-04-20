@@ -36,6 +36,7 @@ export default function Save( props ) {
 			srcSet={ `${ url } ${ urlTablet ? ',' + urlTablet + ' 780w' : '' }${
 				urlMobile ? ', ' + urlMobile + ' 360w' : ''
 			}` }
+			sizes="(max-width: 480px) 150px"
 			src={ url }
 			alt={ alt }
 			className={ id ? `uag-image-${ id }` : null }

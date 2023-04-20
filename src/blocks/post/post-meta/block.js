@@ -19,7 +19,7 @@ registerBlockType( 'uagb/post-meta', {
 	description: __( 'Show your post meta details.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.post_grid,
 	parent: [ 'uagb/post-grid', 'uagb/post-masonry', 'uagb/post-carousel' ],
-	keywords: [ __( 'post' ), __( 'meta' ), __( 'uag' ) ],
+	keywords: [ __( 'post', 'ultimate-addons-for-gutenberg' ), __( 'meta', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	PostMeta,
 	save,
 } );

@@ -9,7 +9,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function styling( props ) {
+function styling( attributes, clientId ) {
 	const {
 		backgroundType,
 		backgroundVideoColor,
@@ -65,7 +65,7 @@ function styling( props ) {
 		gradientLocation1,
 		gradientLocation2,
 		gradientAngle,
-	} = props.attributes;
+	} = attributes;
 
 	let max_width = '100%';
 
@@ -89,12 +89,12 @@ function styling( props ) {
 		videoOpacity = 1 < backgroundVideoOpacity ? ( 100 - backgroundVideoOpacity ) / 100 : 1 - backgroundVideoOpacity;
 	}
 
-	const borderCSS = generateBorderCSS( props.attributes, 'columns' );
-	const borderCSSTablet = generateBorderCSS( props.attributes, 'columns', 'tablet' );
-	const borderCSSMobile = generateBorderCSS( props.attributes, 'columns', 'mobile' );
+	const borderCSS = generateBorderCSS( attributes, 'columns' );
+	const borderCSSTablet = generateBorderCSS( attributes, 'columns', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( attributes, 'columns', 'mobile' );
 
 	const selectors = {
-		'.uagb-columns__wrap': inlineStyles( props ),
+		'.uagb-columns__wrap': inlineStyles( attributes ),
 		' .uagb-columns__video-wrap': {
 			'opacity': videoOpacity,
 		},
@@ -238,13 +238,13 @@ function styling( props ) {
 	};
 
 	let styling_css = '';
-	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	styling_css = generateCSS( selectors, id );
 
-	styling_css += generateCSS( tablet_selectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	styling_css += generateCSS( tablet_selectors, `${ id }`, true, 'tablet' );
 
-	styling_css += generateCSS( mobile_selectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	styling_css += generateCSS( mobile_selectors, `${ id }`, true, 'mobile' );
 
 	return styling_css;
 }

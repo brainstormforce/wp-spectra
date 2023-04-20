@@ -3,7 +3,7 @@
  */
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
-function inlineStyles( props ) {
+function inlineStyles( attributes ) {
 	const {
 		align,
 		contentWidth,
@@ -24,7 +24,7 @@ function inlineStyles( props ) {
 		backgroundType,
 		desktopMarginType,
 		desktopPaddingType,
-	} = props.attributes;
+	} = attributes;
 
 	const style = {
 		'padding-top': generateCSSUnit( topPadding, desktopPaddingType ),

@@ -1,5 +1,4 @@
-import { useEffect } from '@wordpress/element';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { useEffect, useMemo } from '@wordpress/element';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import styling from './styling';
@@ -8,8 +7,10 @@ import Settings from './settings';
 import Render from './render';
 //  Import CSS.
 import './style.scss';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import { compose } from '@wordpress/compose';
 import { getLoopImage } from './getLoopImage';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 function UAGBImageEdit( props ) {
 	const deviceType = useDeviceType();
@@ -18,6 +19,7 @@ function UAGBImageEdit( props ) {
 		isSelected,
 		clientId,
 		attributes,
+		name,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 	} = props;
 
@@ -27,15 +29,10 @@ function UAGBImageEdit( props ) {
 	}, [] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-image-style-' + clientId.substr( 0, 8 ), blockStyling );
-	}, [ attributes, deviceType ] );
-
-	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
+
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		responsiveConditionPreview( props );
@@ -43,9 +40,10 @@ function UAGBImageEdit( props ) {
 
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
 		</>
 	);
 }
-export default compose( getLoopImage )( UAGBImageEdit );
+export default compose( getLoopImage, AddStaticStyles )( UAGBImageEdit );

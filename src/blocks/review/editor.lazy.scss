@@ -2,8 +2,7 @@ $breakpoint-tablet: 976px;
 $breakpoint-mobile: 768px;
 
 .editor-styles-wrapper [data-type="uagb/review"] {
-
-	.uagb_review_entry div:nth-child(2) {
+	.uagb_review_entry div:nth-child( 2 ) {
 		min-width: unset !important; // !important is required to override markup/inline-styling.
 		display: flex;
 	}

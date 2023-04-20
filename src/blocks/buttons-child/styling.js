@@ -8,8 +8,8 @@ import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function styling( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+function styling( attributes, clientId, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		fontFamily,
@@ -101,7 +101,7 @@ function styling( props ) {
 		letterSpacingTablet,
 		letterSpacingMobile,
 		letterSpacingType,
-	} = props.attributes;
+	} = attributes;
 
 	const tabletSelectors = {};
 	const mobileSelectors = {};
@@ -112,10 +112,10 @@ function styling( props ) {
 	if ( 'outset' === boxShadowPosition ) {
 		boxShadowPositionCSS = '';
 	}
-	const borderCSS = generateBorderCSS( props.attributes, 'btn' );
-	const borderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
-	const borderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
 
+	const borderCSS = generateBorderCSS( attributes, 'btn' );
+	const borderCSSTablet = generateBorderCSS( attributes, 'btn', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( attributes, 'btn', 'mobile' );
 	selectors = {
 		'.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater': {
 			'font-size': generateCSSUnit( size, sizeType ),
@@ -311,12 +311,12 @@ function styling( props ) {
 			'background': hBackground,
 		};
 	}
-	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
 	let stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	stylingCss += generateCSS( tabletSelectors, `${ id }`, true, 'tablet' );
 
-	stylingCss += generateCSS( mobileSelectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	stylingCss += generateCSS( mobileSelectors, `${ id }`, true, 'mobile' );
 
 	return stylingCss;
 }

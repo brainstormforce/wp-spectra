@@ -17,7 +17,7 @@ const Settings = ( props ) => {
 				controls={ [
 					{
 						icon: 'edit',
-						title: __( 'Edit' ),
+						title: __( 'Edit', 'ultimate-addons-for-gutenberg' ),
 						onClick: () => togglePreview(),
 						isActive: isEditing,
 					},

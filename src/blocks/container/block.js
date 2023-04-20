@@ -6,6 +6,7 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
 import Edit from './edit';
 import save from './save';
+import deprecated from './deprecated';
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
@@ -38,5 +39,6 @@ registerBlockType( 'uagb/container', {
 	variations,
 	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="container" /> : <Edit { ...props } /> ),
 	save,
+	deprecated,
 	transforms,
 } );

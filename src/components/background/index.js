@@ -398,8 +398,8 @@ const Background = ( props ) => {
 										label: customPosition.label,
 									} }
 									options={ [
-										{ value: 'default', label: __( 'Default' ) },
-										{ value: 'custom', label: __( 'Custom' ) },
+										{ value: 'default', label: __( 'Default', 'ultimate-addons-for-gutenberg' ) },
+										{ value: 'custom', label: __( 'Custom', 'ultimate-addons-for-gutenberg' ) },
 									] }
 								/>
 							</div>

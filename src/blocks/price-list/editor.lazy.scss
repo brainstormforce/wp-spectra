@@ -5,7 +5,6 @@
  * which makes it higher in priority.
  */
 .editor-styles-wrapper {
-
 	[data-type="uagb/restaurant-menu"].block-editor-block-list__block {
 		display: flex;
 		width: 100%;
@@ -62,7 +61,6 @@
 		/* Responsive for price-list on tablet in editor
 		*/
 		&.uagb-editor-preview-mode-tablet {
-
 			.uagb-rm__content .uagb-rm-details .uagb-rm__title {
 				display: contents;
 			}
@@ -88,7 +86,6 @@
 		/* Responsive for price-list on mobile in editor
 		*/
 		&.uagb-editor-preview-mode-mobile {
-
 			.uagb-rm__content .uagb-rm-details .uagb-rm__title {
 				display: contents;
 			}

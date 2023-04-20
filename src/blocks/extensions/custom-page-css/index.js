@@ -2,7 +2,6 @@ import { select, dispatch } from '@wordpress/data';
 import { useRef, useEffect, useState, useLayoutEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import editorStyles from './editor.lazy.scss';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 
 const PageCustomCSS = () => {
 	const tabRef = useRef( null );
@@ -18,7 +17,17 @@ const PageCustomCSS = () => {
 	}, [] );
 
 	useEffect( () => {
-		addBlockEditorDynamicStyles( 'uagb-blocks-editor-spacing-style', customCSS );
+		const isExistStyle = document.getElementById(
+			'uagb-blocks-editor-custom-css'
+		);
+		if( ! isExistStyle ){
+			const node = document.createElement( 'style' )
+			node.setAttribute( 'id', 'uagb-blocks-editor-custom-css' );
+			node.textContent = customCSS;
+			document.head.appendChild( node )
+		}else{
+			isExistStyle.textContent = customCSS
+		}
 	}, [ customCSS ] );
 
 	useEffect( () => {
@@ -63,7 +72,7 @@ const PageCustomCSS = () => {
 	return (
 		<>
 			<p className="spectra-custom-css-notice">
-				{ __( 'Add your own CSS code here to customize the page as per your expectations.' ) }
+				{ __( 'Add your own CSS code here to customize the page as per your expectations.', 'ultimate-addons-for-gutenberg' ) }
 			</p>
 			<hr></hr>
 			<p className="spectra-custom-css-example spectra-custom-css-notice">

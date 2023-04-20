@@ -2,21 +2,17 @@
  * BLOCK: Tabs Block
  */
 import styling from './styling';
-import { useEffect } from '@wordpress/element';
-
+import { useEffect, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
-
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
-
 import Settings from './settings';
 import Render from './render';
-
 import { compose } from '@wordpress/compose';
-
 import { withDispatch, dispatch, select } from '@wordpress/data';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
 
 const UAGBTabsEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -36,6 +32,7 @@ const UAGBTabsEdit = ( props ) => {
 			UAGHideMob,
 		},
 		clientId,
+		name,
 	} = props;
 
 	useEffect( () => {
@@ -82,8 +79,6 @@ const UAGBTabsEdit = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-		addBlockEditorDynamicStyles( 'uagb-style-tab-' + clientId.substr( 0, 8 ), blockStyling );
 		updateTabTitle();
 		props.resetTabOrder();
 	}, [ deviceType, props ] );
@@ -96,8 +91,11 @@ const UAGBTabsEdit = ( props ) => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
 			{ isSelected && <Settings parentProps={ props } deviceType={ deviceType } /> }
 			<Render parentProps={ props } />
 		</>
@@ -135,5 +133,6 @@ export default compose(
 				moveBlockToPosition( tabId, clientId, clientId, parseInt( newIndex ) );
 			},
 		};
-	} )
+	} ),
+	AddStaticStyles,
 )( UAGBTabsEdit );

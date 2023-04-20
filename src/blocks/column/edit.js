@@ -3,8 +3,7 @@
  */
 
 import styling from './styling';
-import { useEffect } from '@wordpress/element';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { useEffect, useMemo } from '@wordpress/element';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
@@ -12,6 +11,9 @@ import Settings from './settings';
 import Render from './render';
 import hexToRGBA from '@Controls/hexToRgba';
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const ColumnComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -38,6 +40,7 @@ const ColumnComponent = ( props ) => {
 		},
 		isSelected,
 		clientId,
+		name,
 	} = props;
 
 	useEffect( () => {
@@ -97,22 +100,20 @@ const ColumnComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-column-style-' + clientId.substr( 0, 8 ), blockStyling );
-	}, [ attributes, deviceType ] );
-
-	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
 			{ isSelected && <Settings parentProps={ props } deviceType={ deviceType } /> }
 			<Render parentProps={ props } />
 		</>
 	);
 };
 
-export default ColumnComponent;
+export default compose(
+	AddStaticStyles,
+)( ColumnComponent );

@@ -10,15 +10,15 @@ const attributes = {
 	},
 	description: {
 		type: 'string',
-		default: __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' ),
+		default: __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'ultimate-addons-for-gutenberg' ),
 	},
 	title: {
 		type: 'string',
-		default: __( 'Menu Item' ),
+		default: __( 'Menu Item', 'ultimate-addons-for-gutenberg' ),
 	},
 	price: {
 		type: 'string',
-		default: __( '$9' ),
+		default: __( '$9', 'ultimate-addons-for-gutenberg' ),
 	},
 	image: {
 		type: 'object',

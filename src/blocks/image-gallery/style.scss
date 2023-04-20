@@ -16,7 +16,6 @@
 
 // This Mixin Handles Special Tiles
 @mixin specialTiles {
-
 	.spectra-image-gallery__media-wrapper {
 		position: relative;
 		min-width: 0;
@@ -47,13 +46,11 @@
 }
 
 .spectra-image-gallery {
-
 	* {
 		box-sizing: border-box;
 	}
 
 	&__layout {
-
 		&--grid {
 			display: -moz-grid;
 			display: -ms-grid;
@@ -61,7 +58,6 @@
 			grid-template-columns: repeat(3, minmax(0, 1fr));
 
 			&-col {
-
 				&-1 {
 					grid-template-columns: repeat(1, minmax(0, 1fr));
 				}
@@ -102,9 +98,7 @@
 		}
 
 		&--isogrid {
-
 			&-col {
-
 				&-1 .spectra-image-gallery__media-wrapper--isotope {
 					width: 100%;
 				}
@@ -145,9 +139,7 @@
 		}
 
 		&--masonry {
-
 			&-col {
-
 				&-1 .spectra-image-gallery__media-wrapper--isotope {
 					width: 100%;
 				}
@@ -216,7 +208,6 @@
 			min-width: 0;
 
 			&-col {
-
 				&-1 {
 					grid-template-columns: repeat(1, minmax(0, 1fr));
 				}
@@ -385,7 +376,6 @@
 				}
 
 				&--bar {
-
 					&-inside {
 						width: 100%;
 						overflow: hidden;
@@ -415,7 +405,6 @@
 					}
 
 					&--bar {
-
 						&-inside {
 							position: absolute;
 							top: 0;
@@ -438,7 +427,6 @@
 	}
 
 	&__control {
-
 		&-wrapper {
 			display: -ms-flex;
 			display: -moz-flex;
@@ -740,15 +728,10 @@
 }
 
 @media ( max-width: 976px ) {
-
 	.spectra-image-gallery {
-
 		&__layout {
-
 			&--grid {
-
 				&-col-tab {
-
 					&-1 {
 						grid-template-columns: repeat(1, minmax(0, 1fr));
 					}
@@ -784,9 +767,7 @@
 			}
 
 			&--isogrid {
-
 				&-col-tab {
-
 					&-1 .spectra-image-gallery__media-wrapper--isotope {
 						width: 100%;
 					}
@@ -822,9 +803,7 @@
 			}
 
 			&--masonry {
-
 				&-col-tab {
-
 					&-1 .spectra-image-gallery__media-wrapper--isotope {
 						width: 100%;
 					}
@@ -860,9 +839,7 @@
 			}
 
 			&--tiled {
-
 				&-col-tab {
-
 					&-1 {
 						grid-template-columns: repeat(1, minmax(0, 1fr));
 					}
@@ -915,15 +892,10 @@
 }
 
 @media ( max-width: 767px ) {
-
 	.spectra-image-gallery {
-
 		&__layout {
-
 			&--grid {
-
 				&-col-mob {
-
 					&-1 {
 						grid-template-columns: repeat(1, minmax(0, 1fr));
 					}
@@ -959,9 +931,7 @@
 			}
 
 			&--isogrid {
-
 				&-col-mob {
-
 					&-1 .spectra-image-gallery__media-wrapper--isotope {
 						width: 100%;
 					}
@@ -997,9 +967,7 @@
 			}
 
 			&--masonry {
-
 				&-col-mob {
-
 					&-1 .spectra-image-gallery__media-wrapper--isotope {
 						width: 100%;
 					}
@@ -1035,9 +1003,7 @@
 			}
 
 			&--tiled {
-
 				&-col-mob {
-
 					&-1 {
 						grid-template-columns: repeat(1, minmax(0, 1fr));
 					}
@@ -1090,19 +1056,17 @@
 }
 
 .entry-content {
-
 	.wp-block-uagb-image-gallery .uagb-image-gallery__link {
 		text-decoration: none;
 	}
 }
 
-// Compatibility with Spectra One - Lightbox is absolute, and hence should not have the standard layout flow margins.
-body .is-layout-flow > .wp-block-uagb-image-gallery + .spectra-image-gallery__control-lightbox {
+// Compatibility with Spectra One - Lightbox is absolute, and hence should not have the standard layout margins.
+body .wp-block-post-content > .wp-block-uagb-image-gallery + .spectra-image-gallery__control-lightbox {
 	margin-block-start: 0;
 }
 
 @-webkit-keyframes sk-bouncedelay {
-
 	0%,
 	80%,
 	100% {
@@ -1117,7 +1081,6 @@ body .is-layout-flow > .wp-block-uagb-image-gallery + .spectra-image-gallery__co
 }
 
 @keyframes sk-bouncedelay {
-
 	0%,
 	80%,
 	100% {

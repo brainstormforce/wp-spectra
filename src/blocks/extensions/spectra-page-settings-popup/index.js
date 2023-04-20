@@ -20,7 +20,7 @@ const SpectraPageSettingsPopup = ( props ) => {
 				<>
 					{ /* Page Settings Icon. */ }
 					<PluginSidebarMoreMenuItem target="spectra-page-settings-panel" icon={ SettingsIcons.logo }>
-						{ __( 'Spectra Page Settings' ) }
+						{ __( 'Spectra Page Settings', 'ultimate-addons-for-gutenberg' ) }
 					</PluginSidebarMoreMenuItem>
 
 					{ /* Page Settings Area. */ }
@@ -28,12 +28,12 @@ const SpectraPageSettingsPopup = ( props ) => {
 						isPinnable={ true }
 						icon={ SettingsIcons.logo }
 						name="spectra-page-settings-panel"
-						title={ __( 'Spectra Page Settings' ) }
+						title={ __( 'Spectra Page Settings', 'ultimate-addons-for-gutenberg' ) }
 						className={ 'spectra-sidebar' }
 					>
 						{ pluginSidebarBefore }
 						<PanelBody
-							title={ __( 'Custom CSS' ) }
+							title={ __( 'Custom CSS', 'ultimate-addons-for-gutenberg' ) }
 							initialOpen={ true }
 							className={ 'spectra-custom-css-panel' }
 						>

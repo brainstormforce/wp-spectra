@@ -7,7 +7,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function styling( props ) {
+function styling( attributes, clientId, name ) {
 	const {
 		headingAlign,
 		headingAlignTablet,
@@ -238,9 +238,9 @@ function styling( props ) {
 		blockPaddingUnit,
 		blockPaddingUnitTablet,
 		blockPaddingUnitMobile,
-	} = props.attributes;
+	} = attributes;
 
-	const blockName = props.name.replace( 'uagb/', '' );
+	const blockName = name.replace( 'uagb/', '' );
 	//Range
 	const seperatorThicknessFallback = getFallbackNumber( seperatorThickness, 'seperatorThickness', blockName );
 	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
@@ -260,10 +260,10 @@ function styling( props ) {
 	const imageWidthFallbackTablet = isNaN( imageWidthTablet ) ? imageWidthFallback : imageWidthTablet;
 	const imageWidthFallbackMobile = isNaN( imageWidthMobile ) ? imageWidthFallbackTablet : imageWidthMobile;
 
-	const ctaBorderCSS = generateBorderCSS( props.attributes, 'btn' );
+	const ctaBorderCSS = generateBorderCSS( attributes, 'btn' );
 
-	const ctaBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
-	const ctaBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+	const ctaBorderCSSTablet = generateBorderCSS( attributes, 'btn', 'tablet' );
+	const ctaBorderCSSMobile = generateBorderCSS( attributes, 'btn', 'mobile' );
 
 	const boxSizingIcon = '%' === iconSizeType ? 'border-box' : 'content-box';
 	const boxSizingImage = '%' === imageWidthUnit ? 'border-box' : 'content-box';
@@ -878,12 +878,12 @@ function styling( props ) {
 	mobileSelectors[ ' .uagb-infobox-cta-link.wp-block-button__link' ] = ctaBorderCSSMobile;
 	tabletSelectors[ ' .uagb-infobox-cta-link.wp-block-button__link' ] = ctaBorderCSSTablet;
 
-	const id = `.editor-styles-wrapper #block-${ props.clientId } .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper #block-${ clientId } .uagb-block-${ clientId.substr( 0, 8 ) }`;
 	let stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	stylingCss += generateCSS( tabletSelectors, `${ id }`, true, 'tablet' );
 
-	stylingCss += generateCSS( mobileSelectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	stylingCss += generateCSS( mobileSelectors, `${ id }`, true, 'mobile' );
 	return stylingCss;
 }
 

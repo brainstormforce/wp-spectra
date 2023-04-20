@@ -541,13 +541,13 @@ const Settings = ( props ) => {
 								label: 'headingTag',
 							} }
 							options={ [
-								{ value: 'h1', label: __( 'H1' ) },
-								{ value: 'h2', label: __( 'H2' ) },
-								{ value: 'h3', label: __( 'H3' ) },
-								{ value: 'h4', label: __( 'H4' ) },
-								{ value: 'h5', label: __( 'H5' ) },
-								{ value: 'h6', label: __( 'H6' ) },
-								{ value: 'p', label: __( 'P' ) },
+								{ value: 'h1', label: __( 'H1', 'ultimate-addons-for-gutenberg' ) },
+								{ value: 'h2', label: __( 'H2', 'ultimate-addons-for-gutenberg' ) },
+								{ value: 'h3', label: __( 'H3', 'ultimate-addons-for-gutenberg' ) },
+								{ value: 'h4', label: __( 'H4', 'ultimate-addons-for-gutenberg' ) },
+								{ value: 'h5', label: __( 'H5', 'ultimate-addons-for-gutenberg' ) },
+								{ value: 'h6', label: __( 'H6', 'ultimate-addons-for-gutenberg' ) },
+								{ value: 'p', label: __( 'P', 'ultimate-addons-for-gutenberg' ) },
 							] }
 						/>
 					</>

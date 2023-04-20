@@ -7,8 +7,8 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function styling( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+function styling( attributes, clientId, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		headerBgColor,
@@ -106,14 +106,14 @@ function styling( props ) {
 		titleLetterSpacingTablet,
 		titleLetterSpacingMobile,
 		titleLetterSpacingType,
-	} = props.attributes;
+	} = attributes;
 
 	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
 	const iconSpacingFallback = getFallbackNumber( iconSpacing, 'iconSpacing', blockName );
 
-	const borderCSS = generateBorderCSS( props.attributes, 'tab', '' );
-	const borderCSSTablet = generateBorderCSS( props.attributes, 'tab', 'tablet' );
-	const borderCSSMobile = generateBorderCSS( props.attributes, 'tab', 'mobile' );
+	const borderCSS = generateBorderCSS( attributes, 'tab', '' );
+	const borderCSSTablet = generateBorderCSS( attributes, 'tab', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( attributes, 'tab', 'mobile' );
 
 	let selectors = {};
 	let tabletSelectors = {};
@@ -679,13 +679,13 @@ function styling( props ) {
 		},
 	};
 
-	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const base_selector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	let stylingCss = generateCSS( selectors, base_selector );
 
-	stylingCss += generateCSS( tabletSelectors, `${ base_selector }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	stylingCss += generateCSS( tabletSelectors, `${ base_selector }`, true, 'tablet' );
 
-	stylingCss += generateCSS( mobileSelectors, `${ base_selector }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	stylingCss += generateCSS( mobileSelectors, `${ base_selector }`, true, 'mobile' );
 
 	return stylingCss;
 }

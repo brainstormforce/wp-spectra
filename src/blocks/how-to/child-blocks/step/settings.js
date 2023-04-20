@@ -154,9 +154,9 @@ const Settings = ( props ) => {
 							} }
 							setAttributes={ setAttributes }
 							options={ [
-								{ value: 'above-title', label: __( 'Above Title' ) },
-								{ value: 'left-title', label: __( 'Left of Title' ) },
-								{ value: 'right-title', label: __( 'Right of Title' ) },
+								{ value: 'above-title', label: __( 'Above Title', 'ultimate-addons-for-gutenberg' ) },
+								{ value: 'left-title', label: __( 'Left of Title', 'ultimate-addons-for-gutenberg' ) },
+								{ value: 'right-title', label: __( 'Right of Title', 'ultimate-addons-for-gutenberg' ) },
 							] }
 						/>
 					</>
@@ -166,7 +166,7 @@ const Settings = ( props ) => {
 	};
 	const urlControls = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Add Link' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Add Link', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<UAGSelectControl
 					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -175,15 +175,15 @@ const Settings = ( props ) => {
 					} }
 					setAttributes={ setAttributes }
 					options={ [
-						{ value: 'text', label: __( 'Text' ) },
-						{ value: 'all', label: __( 'Complete Box' ) },
-						{ value: 'none', label: __( 'None' ) },
+						{ value: 'text', label: __( 'Text', 'ultimate-addons-for-gutenberg' ) },
+						{ value: 'all', label: __( 'Complete Box', 'ultimate-addons-for-gutenberg' ) },
+						{ value: 'none', label: __( 'None', 'ultimate-addons-for-gutenberg' ) },
 					] }
 				/>
 				{ urlType === 'text' && (
 					<>
 						<UAGTextControl
-							label={ __( 'Text' ) }
+							label={ __( 'Text', 'ultimate-addons-for-gutenberg' ) }
 							value={ urlText }
 							data={ {
 								value: urlText,
@@ -197,7 +197,7 @@ const Settings = ( props ) => {
 				{ urlType !== 'none' && (
 					<>
 						<UAGTextControl
-							label={ __( 'Link' ) }
+							label={ __( 'Link', 'ultimate-addons-for-gutenberg' ) }
 							value={ url }
 							data={ {
 								value: url,
@@ -207,7 +207,7 @@ const Settings = ( props ) => {
 							onChange={ ( value ) => setAttributes( { url: value } ) }
 						/>
 						<ToggleControl
-							label={ __( 'Open in new window' ) }
+							label={ __( 'Open in new window', 'ultimate-addons-for-gutenberg' ) }
 							checked={ urlTarget }
 							onChange={ () => setAttributes( { urlTarget: ! urlTarget } ) }
 						/>
@@ -218,9 +218,9 @@ const Settings = ( props ) => {
 	};
 	const linkStyle = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Link' ) } initialOpen={ true }>
+			<UAGAdvancedPanelBody title={ __( 'Link', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<TypographyControl
-					label={ __( 'Typography' ) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -310,9 +310,9 @@ const Settings = ( props ) => {
 	};
 	const titleStyle = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Title' ) } initialOpen={ true }>
+			<UAGAdvancedPanelBody title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<TypographyControl
-					label={ __( 'Typography' ) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -403,9 +403,9 @@ const Settings = ( props ) => {
 
 	const descriptionStyle = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Description' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Description', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<TypographyControl
-					label={ __( 'Typography' ) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {

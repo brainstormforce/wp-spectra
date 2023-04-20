@@ -481,7 +481,7 @@ const Settings = ( props ) => {
 
 	const afterSubmitActions = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Actions' ) } initialOpen={ false } className="uagb__url-panel-body">
+			<UAGAdvancedPanelBody title={ __( 'Actions', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false } className="uagb__url-panel-body">
 				<p className="uagb-form-notice">
 					{ __(
 						'Note: It is required to enter an email ID to receive the data submitted via Form. Else you will not receive any data.',

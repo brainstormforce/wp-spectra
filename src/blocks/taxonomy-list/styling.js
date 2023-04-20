@@ -7,8 +7,8 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function styling( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+function styling( attributes, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		block_id,
@@ -113,7 +113,7 @@ function styling( props ) {
 		seperatorWidth,
 		seperatorThickness,
 		seperatorColor,
-	} = props.attributes;
+	} = attributes;
 
 	const listBottomMarginFallback = getFallbackNumber( listBottomMargin, 'listBottomMargin', blockName );
 	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
@@ -123,9 +123,9 @@ function styling( props ) {
 	const rowGapFallback = getFallbackNumber( rowGap, 'rowGap', blockName );
 	const columnGapFallback = getFallbackNumber( columnGap, 'columnGap', blockName );
 
-	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall', '' );
-	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' );
-	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' );
+	const overallBorderCSS = generateBorderCSS( attributes, 'overall', '' );
+	const overallBorderCSSTablet = generateBorderCSS( attributes, 'overall', 'tablet' );
+	const overallBorderCSSMobile = generateBorderCSS( attributes, 'overall', 'mobile' );
 
 	let selectors = {};
 	let tabletSelectors = {};
@@ -445,9 +445,9 @@ function styling( props ) {
 
 	stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	stylingCss += generateCSS( tabletSelectors, `${ id }`, true, 'tablet' );
 
-	stylingCss += generateCSS( mobileSelectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	stylingCss += generateCSS( mobileSelectors, `${ id }`, true, 'mobile' );
 
 	return stylingCss;
 }

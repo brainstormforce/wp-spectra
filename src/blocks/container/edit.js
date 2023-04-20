@@ -2,8 +2,7 @@
  * BLOCK: Container
  */
 import styling from './styling';
-import { useEffect, useLayoutEffect } from '@wordpress/element';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { useEffect, useLayoutEffect, useMemo } from '@wordpress/element';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
@@ -12,11 +11,17 @@ import Settings from './settings';
 import Render from './render';
 //  Import CSS.
 import './style.scss';
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import { useSelect, useDispatch, select } from '@wordpress/data';
 import { __experimentalBlockVariationPicker as BlockVariationPicker } from '@wordpress/block-editor';
 import { createBlock } from '@wordpress/blocks';
 import styles from './editor.lazy.scss';
+import UAGB_Block_Icons from '@Controls/block-icons';
+import ReactHtmlParser from 'react-html-parser';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
+import { containerWrapper } from './containerWrapper';
 
 const UAGBContainer = ( props ) => {
 	const deviceType = useDeviceType();
@@ -36,6 +41,7 @@ const UAGBContainer = ( props ) => {
 		},
 		clientId,
 		setAttributes,
+		name,
 	} = props;
 
 	const {
@@ -160,10 +166,7 @@ const UAGBContainer = ( props ) => {
 		}
 	}, [] );
 
-	useEffect( () => {
-		const blockStyling = styling( props );
-		addBlockEditorDynamicStyles( 'uagb-container-style-' + clientId.substr( 0, 8 ), blockStyling );
-	}, [ attributes, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
@@ -184,18 +187,29 @@ const UAGBContainer = ( props ) => {
 	};
 
 	const createBlocksFromInnerBlocksTemplate = ( innerBlocksTemplate ) => {
-		return innerBlocksTemplate.map( (
-			[ name, attributes, innerBlocks = [] ] // eslint-disable-line no-shadow
-		) => createBlock( name, attributes, createBlocksFromInnerBlocksTemplate( innerBlocks ) ) );
+		return innerBlocksTemplate.map(
+			(
+				[ name, attributes, innerBlocks = [] ] // eslint-disable-line no-shadow
+			) => createBlock( name, attributes, createBlocksFromInnerBlocksTemplate( innerBlocks ) )
+		);
 	};
 
 	if ( ! variationSelected && 0 === select( 'core/block-editor' ).getBlockParents( clientId ).length ) {
 		return (
 			<div className="uagb-container-variation-picker">
 				<BlockVariationPicker
-					icon={ '' }
-					label={ __( 'Select a Layout', 'ultimate-addons-for-gutenberg' ) }
-					instructions={ false }
+					icon={ UAGB_Block_Icons.container }
+					label={ __( 'Container', 'ultimate-addons-for-gutenberg' ) }
+					instructions={ ReactHtmlParser(
+						sprintf(
+							// translators: %s: closing </br> tag.
+							__(
+								'Customizable containers with endless creation possibilities.%sSelect a container layout to start with.',
+								'ultimate-addons-for-gutenberg'
+							),
+							`</br>` 
+						)
+					) }
 					variations={ variations }
 					onSelect={ ( nextVariation ) => blockVariationPickerOnSelect( nextVariation ) }
 				/>
@@ -205,10 +219,14 @@ const UAGBContainer = ( props ) => {
 
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
 		</>
 	);
 };
 
-export default UAGBContainer;
+export default compose(
+	containerWrapper,
+	AddStaticStyles,
+)( UAGBContainer );

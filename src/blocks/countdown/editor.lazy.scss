@@ -25,12 +25,11 @@
 
 	// Help note.
 	.components-datetime__calendar-help {
-
 		.components-heading {
 			margin-bottom: 1.5em;
 		}
 
-		ul:not(:last-child) {
+		ul:not( :last-child ) {
 			margin-bottom: 1.5em;
 		}
 	}
@@ -38,12 +37,10 @@
 
 // Toolbar.
 .uagb-countdown-pro-toolbar {
-
 	.components-toolbar-button {
 		font-weight: bold;
 
 		&:focus {
-
 			&::before {
 				box-shadow: unset;
 			}

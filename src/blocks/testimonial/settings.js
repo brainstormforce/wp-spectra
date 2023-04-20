@@ -272,7 +272,7 @@ const Settings = ( props ) => {
 					checked={ pauseOnHover }
 					onChange={ togglePauseOnHover }
 				/>
-				<ToggleControl label={ __( 'Autoplay' ) } checked={ autoplay } onChange={ toggleAutoplay } />
+				<ToggleControl label={ __( 'Autoplay', 'ultimate-addons-for-gutenberg' ) } checked={ autoplay } onChange={ toggleAutoplay } />
 				{ autoplay === true && (
 					<Range
 						label={ __( 'Autoplay Speed (ms)', 'ultimate-addons-for-gutenberg' ) }
@@ -1073,7 +1073,7 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
-						<UAGAdvancedPanelBody title={ __( 'General' ) } initialOpen={ true }>
+						<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 							<Range
 								label={ __( 'Number of Testimonials', 'ultimate-addons-for-gutenberg' ) }
 								value={ test_item_count }

@@ -86,7 +86,7 @@ export default function save( props ) {
 			) }
 			{ ...customTagLinkAttributes }
 		>
-			{ topDividerHtml }
+			{/* Video Background is positioned absolutely. The place in the DOM is to render it underneath the shape dividers and content. */}
 			{ 'video' === backgroundType && (
 				<div className="uagb-container__video-wrap">
 					{ backgroundVideo && (
@@ -96,6 +96,10 @@ export default function save( props ) {
 					) }
 				</div>
 			) }
+			{/* Both the dividers are positioned absolutely. Their place in the DOM is just to determine their default Z-index. */}
+			{ topDividerHtml }
+			{ bottomDividerHtml }
+			{/* Render the content above the Video Background if any and above the Shape Dividers. */}
 			{ isBlockRootParent && 'alignfull' === contentWidth && 'alignwide' === innerContentWidth ? (
 				<div className="uagb-container-inner-blocks-wrap">
 					<InnerBlocks.Content />
@@ -103,7 +107,6 @@ export default function save( props ) {
 			) : (
 				<InnerBlocks.Content />
 			) }
-			{ bottomDividerHtml }
 		</CustomTag>
 	);
 }

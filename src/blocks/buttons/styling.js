@@ -6,8 +6,8 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-function styling( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+function styling( attributes, clientId, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		fontFamily,
@@ -69,7 +69,7 @@ function styling( props ) {
 		fontLetterSpacingTablet,
 		fontLetterSpacingMobile,
 		fontLetterSpacingType,
-	} = props.attributes;
+	} = attributes;
 
 	const selectors = {};
 	const tabletSelectors = {};
@@ -248,12 +248,13 @@ function styling( props ) {
 		'letter-spacing': generateCSSUnit( fontLetterSpacingMobile, fontLetterSpacingType ),
 	};
 
-	const base_selector = ` .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const base_selector = ` .uagb-block-${ clientId.substr( 0, 8 ) }`;
+
 	let styling_css = generateCSS( selectors, base_selector );
 
-	styling_css += generateCSS( tabletSelectors, `${ base_selector }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	styling_css += generateCSS( tabletSelectors, `${ base_selector }`, true, 'tablet' );
 
-	styling_css += generateCSS( mobileSelectors, `${ base_selector }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	styling_css += generateCSS( mobileSelectors, `${ base_selector }`, true, 'mobile' );
 
 	return styling_css;
 }

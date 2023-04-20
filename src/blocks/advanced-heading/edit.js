@@ -1,36 +1,30 @@
 /**
  * BLOCK: Advanced Heading
  */
-import styling from './styling';
-import { useEffect } from '@wordpress/element';
+
+import { useEffect, useMemo } from '@wordpress/element';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
 import Settings from './settings';
 import Render from './render';
-import WebfontLoader from '@Components/typography/fontloader';
 //  Import CSS.
 import './style.scss';
+import styling from './styling';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import DynamicFontLoader from './dynamicFontLoader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBAdvancedHeading = ( props ) => {
 	const deviceType = useDeviceType();
 	const {
 		attributes,
-		attributes: {
-			UAGHideDesktop,
-			UAGHideTab,
-			UAGHideMob,
-			headLoadGoogleFonts,
-			headFontFamily,
-			headFontWeight,
-			subHeadLoadGoogleFonts,
-			subHeadFontFamily,
-			subHeadFontWeight,
-		},
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		isSelected,
 		setAttributes,
 		clientId,
+		name,
 	} = props;
 
 	useEffect( () => {
@@ -44,43 +38,21 @@ const UAGBAdvancedHeading = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-		addBlockEditorDynamicStyles( 'uagb-adv-heading-style-' + clientId.substr( 0, 8 ), blockStyling );
-	}, [ attributes, deviceType ] );
-
-	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
-	let loadHeadingGoogleFonts;
-	let loadSubHeadingGoogleFonts;
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
-	if ( headLoadGoogleFonts === true ) {
-		const hconfig = {
-			google: {
-				families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
-			},
-		};
-
-		loadHeadingGoogleFonts = <WebfontLoader config={ hconfig }></WebfontLoader>;
-	}
-	if ( subHeadLoadGoogleFonts === true ) {
-		const sconfig = {
-			google: {
-				families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
-			},
-		};
-
-		loadSubHeadingGoogleFonts = <WebfontLoader config={ sconfig }></WebfontLoader>;
-	}
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
-			{ loadHeadingGoogleFonts }
-			{ loadSubHeadingGoogleFonts }
 		</>
 	);
 };
-export default UAGBAdvancedHeading;
+
+export default compose(
+	AddStaticStyles,
+)( UAGBAdvancedHeading );

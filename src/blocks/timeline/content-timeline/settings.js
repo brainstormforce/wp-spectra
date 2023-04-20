@@ -307,7 +307,7 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
-				<h2>{ __( 'Date' ) }</h2>
+				<h2>{ __( 'Date', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<ToggleControl
 					label={ __( 'Display Date', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostDate }

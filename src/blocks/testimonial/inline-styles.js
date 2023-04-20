@@ -7,8 +7,8 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function testimonialStyle( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+function testimonialStyle( attributes, clientId, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		headingAlign,
@@ -144,7 +144,7 @@ function testimonialStyle( props ) {
 		gradientAngle,
 		selectGradient,
 		gradientType,
-	} = props.attributes;
+	} = attributes;
 
 	const arrowSizeFallback = getFallbackNumber( arrowSize, 'arrowSize', blockName );
 	const testItemCountFallback = getFallbackNumber( test_item_count, 'test_item_count', blockName );
@@ -158,9 +158,9 @@ function testimonialStyle( props ) {
 	const columnGapTabletFallback = isNaN( columnGapTablet ) ? columnGapFallback : columnGapTablet;
 	const columnGapMobileFallback = isNaN( columnGapMobile ) ? columnGapTabletFallback : columnGapMobile;
 
-	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' );
-	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' );
-	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' );
+	const overallBorderCSS = generateBorderCSS( attributes, 'overall' );
+	const overallBorderCSSTablet = generateBorderCSS( attributes, 'overall', 'tablet' );
+	const overallBorderCSSMobile = generateBorderCSS( attributes, 'overall', 'mobile' );
 
 	let imgAlign = 'center';
 
@@ -416,11 +416,11 @@ function testimonialStyle( props ) {
 	};
 
 	let stylingCss = '';
-	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	stylingCss = generateCSS( selectors, id );
-	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
-	stylingCss += generateCSS( mobileSelectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	stylingCss += generateCSS( tabletSelectors, `${ id }`, true, 'tablet' );
+	stylingCss += generateCSS( mobileSelectors, `${ id }`, true, 'mobile' );
 
 	return stylingCss;
 }

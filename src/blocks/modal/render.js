@@ -54,21 +54,15 @@ const Render = ( props ) => {
 
 	const TEMPLATE = [ [ 'core/paragraph', { placeholder: 'Type / to choose a block' } ] ];
 
-	const enablePopup = ( e ) => {
-		e.preventDefault();
-		if ( ! defaultTemplate ) {
-			replaceInnerBlocks( clientId, createBlocksFromInnerBlocksTemplate( defaultContent ) );
-			setAttributes( { defaultTemplate: true } );
-		}
-	};
-
 	useEffect( () => {
 		getImageHeightWidth( url, setAttributes );
 	}, [ imageSize ] );
 
 	useEffect( ()=>{
-		replaceInnerBlocks( clientId, createBlocksFromInnerBlocksTemplate( defaultContent ) );
-		setAttributes( { defaultTemplate: true } );
+		if ( ! defaultTemplate ) {
+			replaceInnerBlocks( clientId, createBlocksFromInnerBlocksTemplate( defaultContent ) );
+			setAttributes( { defaultTemplate: true } );
+		}
 	},[] )
 
 	const textHTML = (
@@ -119,8 +113,7 @@ const Render = ( props ) => {
 		<div className={ classnames( 'uagb-spectra-button-wrapper', 'wp-block-button' ) }>
 			<a // eslint-disable-line jsx-a11y/anchor-is-valid
 				className={ buttonClasses }
-				href={ '#' }
-				onClick={ enablePopup }
+				href="#"
 				target="_self"
 				rel="noopener noreferrer"
 			>
@@ -160,7 +153,7 @@ const Render = ( props ) => {
 				<div
 					className={ classnames( `${ appearEffect }`, 'uagb-modal-popup', `uagb-block-${ block_id }`, {
 						[ `uagb-modal-type-${ openModalAs }` ]: isPro,
-						[ `uagb-modal-position-${ modalPosition }` ]: isPro && 'popup' === openModalAs ,
+						[ `uagb-modal-position-${ modalPosition }` ]: isPro && 'popup' === openModalAs,
 					} ) }
 				>
 					{ isPro &&

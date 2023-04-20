@@ -4,10 +4,9 @@
 
 import styling from './styling';
 import { __ } from '@wordpress/i18n';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useDeviceType } from '@Controls/getPreviewType';
-import { useEffect, useLayoutEffect } from '@wordpress/element';
+import { useEffect, useLayoutEffect, useMemo } from '@wordpress/element';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import Settings from './settings';
@@ -20,6 +19,8 @@ import { createBlock } from '@wordpress/blocks';
 import hexToRGBA from '@Controls/hexToRgba';
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 import styles from './editor.lazy.scss';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const ColumnsComponent = ( props ) => {
 	const deviceType = useDeviceType();
@@ -57,6 +58,7 @@ const ColumnsComponent = ( props ) => {
 		setAttributes,
 		isSelected,
 		clientId,
+		name,
 	} = props;
 
 	const {
@@ -178,14 +180,10 @@ const ColumnsComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-columns-style-' + clientId.substr( 0, 8 ), blockStyling );
-	}, [ attributes, deviceType ] );
-
-	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
+
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		responsiveConditionPreview( props );
@@ -223,10 +221,14 @@ const ColumnsComponent = ( props ) => {
 
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
 			{ isSelected && <Settings parentProps={ props } deviceType={ deviceType } /> }
 			<Render parentProps={ props } />
 		</>
 	);
 };
 
-export default compose( withNotices )( ColumnsComponent );
+export default compose(
+	withNotices,
+	AddStaticStyles,
+)( ColumnsComponent );

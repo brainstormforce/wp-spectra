@@ -9,170 +9,168 @@ import generateShadowCSS from '@Controls/generateShadowCSS';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import { applyFilters } from '@wordpress/hooks';
 
-export default function styling( props ) {
+export default function styling( attributes, clientId, name ) {
 	const {
-		'attributes': {
-			showDays,
-			showHours,
-			showMinutes,
-			// digit.
-			digitFontFamily,
-			digitFontWeight,
-			digitFontStyle,
-			digitFontSize,
-			digitColor,
-			digitDecoration,
-			digitFontSizeType,
-			digitFontSizeMobile,
-			digitFontSizeTablet,
-			digitLineHeight,
-			digitLineHeightType,
-			digitLineHeightMobile,
-			digitLineHeightTablet,
-			digitLetterSpacing,
-			digitLetterSpacingType,
-			digitLetterSpacingMobile,
-			digitLetterSpacingTablet,
-			// label.
-			labelFontFamily,
-			labelFontWeight,
-			labelFontStyle,
-			labelFontSize,
-			labelColor,
-			labelTransform,
-			labelDecoration,
-			labelFontSizeType,
-			labelFontSizeMobile,
-			labelFontSizeTablet,
-			labelLineHeight,
-			labelLineHeightType,
-			labelLineHeightMobile,
-			labelLineHeightTablet,
-			labelLetterSpacing,
-			labelLetterSpacingType,
-			labelLetterSpacingMobile,
-			labelLetterSpacingTablet,
-			// Separator styling.
-			separatorFontFamily,
-			separatorFontWeight,
-			separatorFontStyle,
-			separatorFontSize,
-			separatorColor,
-			separatorFontSizeType,
-			separatorFontSizeMobile,
-			separatorFontSizeTablet,
-			separatorLineHeight,
-			separatorLineHeightType,
-			separatorLineHeightMobile,
-			separatorLineHeightTablet,
-			separatorRightSpacing,
-			separatorRightSpacingTablet,
-			separatorRightSpacingMobile,
-			separatorTopSpacing,
-			separatorTopSpacingTablet,
-			separatorTopSpacingMobile,
-			// Block Margin
-			blockTopMargin,
-			blockRightMargin,
-			blockLeftMargin,
-			blockBottomMargin,
-			blockTopMarginTablet,
-			blockRightMarginTablet,
-			blockLeftMarginTablet,
-			blockBottomMarginTablet,
-			blockTopMarginMobile,
-			blockRightMarginMobile,
-			blockLeftMarginMobile,
-			blockBottomMarginMobile,
-			blockMarginUnit,
-			blockMarginUnitTablet,
-			blockMarginUnitMobile,
-			// Block Padding
-			blockTopPadding,
-			blockRightPadding,
-			blockLeftPadding,
-			blockBottomPadding,
-			blockTopPaddingTablet,
-			blockRightPaddingTablet,
-			blockLeftPaddingTablet,
-			blockBottomPaddingTablet,
-			blockTopPaddingMobile,
-			blockRightPaddingMobile,
-			blockLeftPaddingMobile,
-			blockBottomPaddingMobile,
-			blockPaddingUnit,
-			blockPaddingUnitTablet,
-			blockPaddingUnitMobile,
-			// Box Padding.
-			boxTopPadding,
-			boxRightPadding,
-			boxLeftPadding,
-			boxBottomPadding,
-			boxTopPaddingTablet,
-			boxRightPaddingTablet,
-			boxLeftPaddingTablet,
-			boxBottomPaddingTablet,
-			boxTopPaddingMobile,
-			boxRightPaddingMobile,
-			boxLeftPaddingMobile,
-			boxBottomPaddingMobile,
-			boxPaddingUnit,
-			boxPaddingUnitTablet,
-			boxPaddingUnitMobile,
-			// Overall Align.
-			align,
-			alignTablet,
-			alignMobile,
-			// Box Align.
-			boxAlign,
-			boxAlignTablet,
-			boxAlignMobile,
-			// Box Width.
-			boxWidth,
-			boxWidthTablet,
-			boxWidthMobile,
-			// Square Box.
-			isSquareBox,
-			// Label Vertical Alignment.
-			labelVerticalAlignment,
-			labelVerticalAlignmentTablet,
-			labelVerticalAlignmentMobile,
-			// Box Spacing.
-			boxSpacing,
-			boxSpacingTablet,
-			boxSpacingMobile,
-			// Internal Box Spacing.
-			internalBoxSpacing,
-			internalBoxSpacingTablet,
-			internalBoxSpacingMobile,
-			// Box Flex Direction.
-			boxFlex,
-			boxFlexTablet,
-			boxFlexMobile,
-			// Box Background.
-			boxBgType,
-			boxBgColor,
-			// Box - Box Shadow.
-			useSeparateBoxShadows,
-			boxShadowColor,
-			boxShadowHOffset,
-			boxShadowVOffset,
-			boxShadowBlur,
-			boxShadowSpread,
-			boxShadowPosition,
-			boxShadowColorHover,
-			boxShadowHOffsetHover,
-			boxShadowVOffsetHover,
-			boxShadowBlurHover,
-			boxShadowSpreadHover,
-			boxShadowPositionHover,
-			showSeparator,
-			separatorType,
-			boxBorderHColor,
-		},
-	} = props;
+		showDays,
+		showHours,
+		showMinutes,
+		// digit.
+		digitFontFamily,
+		digitFontWeight,
+		digitFontStyle,
+		digitFontSize,
+		digitColor,
+		digitDecoration,
+		digitFontSizeType,
+		digitFontSizeMobile,
+		digitFontSizeTablet,
+		digitLineHeight,
+		digitLineHeightType,
+		digitLineHeightMobile,
+		digitLineHeightTablet,
+		digitLetterSpacing,
+		digitLetterSpacingType,
+		digitLetterSpacingMobile,
+		digitLetterSpacingTablet,
+		// label.
+		labelFontFamily,
+		labelFontWeight,
+		labelFontStyle,
+		labelFontSize,
+		labelColor,
+		labelTransform,
+		labelDecoration,
+		labelFontSizeType,
+		labelFontSizeMobile,
+		labelFontSizeTablet,
+		labelLineHeight,
+		labelLineHeightType,
+		labelLineHeightMobile,
+		labelLineHeightTablet,
+		labelLetterSpacing,
+		labelLetterSpacingType,
+		labelLetterSpacingMobile,
+		labelLetterSpacingTablet,
+		// Separator styling.
+		separatorFontFamily,
+		separatorFontWeight,
+		separatorFontStyle,
+		separatorFontSize,
+		separatorColor,
+		separatorFontSizeType,
+		separatorFontSizeMobile,
+		separatorFontSizeTablet,
+		separatorLineHeight,
+		separatorLineHeightType,
+		separatorLineHeightMobile,
+		separatorLineHeightTablet,
+		separatorRightSpacing,
+		separatorRightSpacingTablet,
+		separatorRightSpacingMobile,
+		separatorTopSpacing,
+		separatorTopSpacingTablet,
+		separatorTopSpacingMobile,
+		// Block Margin
+		blockTopMargin,
+		blockRightMargin,
+		blockLeftMargin,
+		blockBottomMargin,
+		blockTopMarginTablet,
+		blockRightMarginTablet,
+		blockLeftMarginTablet,
+		blockBottomMarginTablet,
+		blockTopMarginMobile,
+		blockRightMarginMobile,
+		blockLeftMarginMobile,
+		blockBottomMarginMobile,
+		blockMarginUnit,
+		blockMarginUnitTablet,
+		blockMarginUnitMobile,
+		// Block Padding
+		blockTopPadding,
+		blockRightPadding,
+		blockLeftPadding,
+		blockBottomPadding,
+		blockTopPaddingTablet,
+		blockRightPaddingTablet,
+		blockLeftPaddingTablet,
+		blockBottomPaddingTablet,
+		blockTopPaddingMobile,
+		blockRightPaddingMobile,
+		blockLeftPaddingMobile,
+		blockBottomPaddingMobile,
+		blockPaddingUnit,
+		blockPaddingUnitTablet,
+		blockPaddingUnitMobile,
+		// Box Padding.
+		boxTopPadding,
+		boxRightPadding,
+		boxLeftPadding,
+		boxBottomPadding,
+		boxTopPaddingTablet,
+		boxRightPaddingTablet,
+		boxLeftPaddingTablet,
+		boxBottomPaddingTablet,
+		boxTopPaddingMobile,
+		boxRightPaddingMobile,
+		boxLeftPaddingMobile,
+		boxBottomPaddingMobile,
+		boxPaddingUnit,
+		boxPaddingUnitTablet,
+		boxPaddingUnitMobile,
+		// Overall Align.
+		align,
+		alignTablet,
+		alignMobile,
+		// Box Align.
+		boxAlign,
+		boxAlignTablet,
+		boxAlignMobile,
+		// Box Width.
+		boxWidth,
+		boxWidthTablet,
+		boxWidthMobile,
+		// Square Box.
+		isSquareBox,
+		// Label Vertical Alignment.
+		labelVerticalAlignment,
+		labelVerticalAlignmentTablet,
+		labelVerticalAlignmentMobile,
+		// Box Spacing.
+		boxSpacing,
+		boxSpacingTablet,
+		boxSpacingMobile,
+		// Internal Box Spacing.
+		internalBoxSpacing,
+		internalBoxSpacingTablet,
+		internalBoxSpacingMobile,
+		// Box Flex Direction.
+		boxFlex,
+		boxFlexTablet,
+		boxFlexMobile,
+		// Box Background.
+		boxBgType,
+		boxBgColor,
+		// Box - Box Shadow.
+		useSeparateBoxShadows,
+		boxShadowColor,
+		boxShadowHOffset,
+		boxShadowVOffset,
+		boxShadowBlur,
+		boxShadowSpread,
+		boxShadowPosition,
+		boxShadowColorHover,
+		boxShadowHOffsetHover,
+		boxShadowVOffsetHover,
+		boxShadowBlurHover,
+		boxShadowSpreadHover,
+		boxShadowPositionHover,
+		showSeparator,
+		separatorType,
+		boxBorderHColor,
+	} = attributes;
 
-	const blockName = props.name.replace( 'uagb/', '' );
+	const blockName = name.replace( 'uagb/', '' );
 
 	const isRTL = '1' === uagb_blocks_info.is_rtl ? true : false;
 
@@ -220,9 +218,9 @@ export default function styling( props ) {
 		: separatorTopSpacingMobile;
 
 	// Border.
-	const boxBorderCSS = generateBorderCSS( props.attributes, 'box' );
-	const boxBorderCSSTablet = generateBorderCSS( props.attributes, 'box', 'tablet' );
-	const boxBorderCSSMobile = generateBorderCSS( props.attributes, 'box', 'mobile' );
+	const boxBorderCSS = generateBorderCSS( attributes, 'box' );
+	const boxBorderCSSTablet = generateBorderCSS( attributes, 'box', 'tablet' );
+	const boxBorderCSSMobile = generateBorderCSS( attributes, 'box', 'mobile' );
 
 	// Box Shadow
 	const boxShadowCSS = generateShadowCSS( {
@@ -458,17 +456,17 @@ export default function styling( props ) {
 		mobileSelectors[ boxGapSelectorRTL ][ 'margin-right' ] = generateCSSUnit( boxSpacingFallbackMobile, 'px' );
 	}
 
-	const baseSelector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const baseSelector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
 
-	selectors = applyFilters( `spectra.${ blockName }.styling`, selectors, props.attributes );
-	tabletSelectors = applyFilters( `spectra.${ blockName }.tabletStyling`, tabletSelectors, props.attributes );
-	mobileSelectors = applyFilters( `spectra.${ blockName }.mobileStyling`, mobileSelectors, props.attributes );
+	selectors = applyFilters( `spectra.${ blockName }.styling`, selectors, attributes );
+	tabletSelectors = applyFilters( `spectra.${ blockName }.tabletStyling`, tabletSelectors, attributes );
+	mobileSelectors = applyFilters( `spectra.${ blockName }.mobileStyling`, mobileSelectors, attributes );
 
 	let styling_css = generateCSS( selectors, baseSelector );
 
-	styling_css += generateCSS( tabletSelectors, `${ baseSelector }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	styling_css += generateCSS( tabletSelectors, `${ baseSelector }`, true, 'tablet' );
 
-	styling_css += generateCSS( mobileSelectors, `${ baseSelector }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	styling_css += generateCSS( mobileSelectors, `${ baseSelector }`, true, 'mobile' );
 
 	return styling_css;
 }

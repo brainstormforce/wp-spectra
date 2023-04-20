@@ -22,7 +22,7 @@ const Title = ( props ) => {
 			<RichText
 				tagName={ attributes.headingTag }
 				value={ authorTitle }
-				placeholder={ __( 'Write a Title' ) }
+				placeholder={ __( 'Write a Title', 'ultimate-addons-for-gutenberg' ) }
 				className="uagb-rm__title"
 				onChange={ ( value ) => {
 					setAttributes( { title: value } );

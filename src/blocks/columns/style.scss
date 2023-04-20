@@ -107,7 +107,6 @@
 
 .uagb-columns__valign-center,
 .uagb-columns__valign-middle {
-
 	.uagb-column__wrap {
 		display: flex;
 		flex-direction: column;
@@ -116,7 +115,6 @@
 }
 
 .uagb-columns__valign-top {
-
 	.uagb-column__wrap {
 		-webkit-box-align: flex-start;
 		-webkit-align-items: flex-start;
@@ -126,7 +124,6 @@
 }
 
 .uagb-columns__valign-bottom {
-
 	.uagb-column__wrap {
 		display: flex;
 		flex-direction: column;
@@ -183,7 +180,6 @@
 }
 
 @media ( max-width: 976px ) {
-
 	.uagb-columns__stack-tablet > .uagb-columns__columns-1 > .uagb-column__wrap,
 	.uagb-columns__stack-tablet > .uagb-columns__columns-2 > .uagb-column__wrap,
 	.uagb-columns__stack-tablet > .uagb-columns__columns-3 > .uagb-column__wrap,
@@ -214,7 +210,6 @@
 }
 
 @media ( max-width: 767px ) {
-
 	.uagb-columns__stack-mobile > .uagb-columns__columns-1 > .uagb-column__wrap,
 	.uagb-columns__stack-mobile > .uagb-columns__columns-2 > .uagb-column__wrap,
 	.uagb-columns__stack-mobile > .uagb-columns__columns-3 > .uagb-column__wrap,
@@ -234,7 +229,6 @@
 
 		&.uagb-columns__reverse-mobile,
 		&.uagb-columns__reverse-tablet {
-
 			.uagb-columns__inner-wrap {
 				display: flex;
 				flex-direction: column-reverse;
@@ -254,16 +248,13 @@
 }
 
 @media ( min-width: 768px ) and ( max-width: 1024px ) {
-
 	.wp-block-uagb-columns.uagb-columns__wrap.uagb-columns__background-image {
 		background-attachment: scroll;
 	}
 }
 
 @media ( max-width: 449px ) {
-
 	.uagb-columns__wrap {
-
 		.uagb-column__wrap.uagb-column__background-image {
 			background-attachment: scroll !important;
 		}

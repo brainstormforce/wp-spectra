@@ -43,13 +43,10 @@
 	}
 }
 
-html:not([dir="rtl"]) {
-
+html:not( [dir="rtl"] ) {
 	.wp-block-uagb-countdown {
-
 		&__box {
-
-			&:not(:last-child) {
+			&:not( :last-child ) {
 				margin-right: 38px;
 
 				.wp-block-uagb-countdown__time::after {
@@ -68,7 +65,7 @@ html:not([dir="rtl"]) {
 	}
 
 	// Remove margin for seconds (when innerblocks are present).
-	.wp-block-uagb-countdown > .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-seconds:not(:last-child) {
+	.wp-block-uagb-countdown > .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-seconds:not( :last-child ) {
 		margin-right: unset;
 	}
 }
@@ -78,12 +75,9 @@ html:not([dir="rtl"]) {
 }
 
 html[dir="rtl"] {
-
 	.wp-block-uagb-countdown {
-
 		&__box {
-
-			&:not(:first-child) {
+			&:not( :first-child ) {
 				margin-right: 38px;
 
 				.wp-block-uagb-countdown__time::before {
@@ -97,7 +91,6 @@ html[dir="rtl"] {
 
 // These fixes are specific to the Astra theme.
 body[class*="astra"] {
-
 	.wp-block-uagb-countdown {
 		line-height: normal;
 	}

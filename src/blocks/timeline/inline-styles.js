@@ -6,8 +6,8 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-function contentTimelineStyle( props ) {
-	const blockName = props.name.replace( 'uagb/', '' );
+function contentTimelineStyle( attributes, clientId, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		dateBottomspace,
@@ -168,7 +168,7 @@ function contentTimelineStyle( props ) {
 		horizontalSpaceUnit,
 		horizontalSpaceUnitTablet,
 		horizontalSpaceUnitMobile,
-	} = props.attributes;
+	} = attributes;
 
 	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
 	const connectorBgSizeFallback = getFallbackNumber( connectorBgsize, 'connectorBgsize', blockName );
@@ -676,13 +676,13 @@ function contentTimelineStyle( props ) {
 	};
 
 	let stylingCss = '';
-	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }.uagb-timeline__outer-wrap`;
+	const id = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }.uagb-timeline__outer-wrap`;
 
 	stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	stylingCss += generateCSS( tabletSelectors, `${ id }`, true, 'tablet' );
 
-	stylingCss += generateCSS( mobileSelectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	stylingCss += generateCSS( mobileSelectors, `${ id }`, true, 'mobile' );
 
 	return stylingCss;
 }

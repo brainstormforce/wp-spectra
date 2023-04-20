@@ -55,7 +55,7 @@ const UAGCopyPasteStyles = () => {
 		registerShortcut( {
 			name: 'uagb/copy',
 			category: 'block',
-			description: __( 'Copy the selected block(s).' ),
+			description: __( 'Copy the selected block(s).', 'ultimate-addons-for-gutenberg' ),
 			keyCombination: {
 				modifier: 'primaryShift',
 				character: 'y',
@@ -65,7 +65,7 @@ const UAGCopyPasteStyles = () => {
 		registerShortcut( {
 			name: 'uagb/paste',
 			category: 'block',
-			description: __( 'Paste the selected block(s).' ),
+			description: __( 'Paste the selected block(s).', 'ultimate-addons-for-gutenberg' ),
 			keyCombination: {
 				modifier: 'primaryShift',
 				character: 'u',

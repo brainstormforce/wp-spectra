@@ -29,7 +29,7 @@ export const PostImage = ( props ) => {
 					>
 						<img
 							src={ src[ 0 ] }
-							alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
+							alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'ultimate-addons-for-gutenberg' ) }
 						/>
 					</a>
 				) }
