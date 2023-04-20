@@ -2,7 +2,6 @@
 	display: flex;
 	position: relative;
 	box-sizing: border-box;
-	z-index: 2;
 	transition-property: box-shadow;
 	transition-duration: 0.2s;
 	transition-timing-function: ease;
@@ -18,11 +17,6 @@
 		box-sizing: border-box;
 		margin-left: auto !important;
 		margin-right: auto !important;
-		z-index: 2;
-	}
-
-	& > *:not( .uagb-container__shape ) {
-		z-index: 2;
 	}
 
 	// Background Video CSS Start.
@@ -33,7 +27,6 @@
 		left: 0;
 		position: absolute;
 		overflow: hidden;
-		z-index: 0;
 		-webkit-transition: opacity 1s;
 		-o-transition: opacity 1s;
 		transition: opacity 1s;
@@ -93,7 +86,6 @@ body .ast-container .wp-block-uagb-container > .uagb-container-inner-blocks-wrap
 	width: 100%;
 	line-height: 0;
 	direction: ltr;
-	z-index: 1;
 }
 
 .uagb-container__shape-top {
