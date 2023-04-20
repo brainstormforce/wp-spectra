@@ -34,6 +34,7 @@ if (
 		supports: {
 			anchor: true,
 		},
+		category: uagb_blocks_info.category,
 		edit: ( props ) =>
 			props.attributes.isPreview ? <PreviewImage image="gravity-form-styler" /> : <Edit { ...props } />,
 		save() {
