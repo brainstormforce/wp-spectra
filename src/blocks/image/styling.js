@@ -185,6 +185,23 @@ export default function styling( attributes, clientId, name ) {
 	const mobileHeight = '' !== heightMobile ? heightMobile : tabletHeight;
 
 	const getImageShadowPosition = imageBoxShadowPosition !== 'outset' ? imageBoxShadowPosition : '';
+	
+	function getBlockAlign( alignment ) {
+		switch ( alignment ) {
+			case 'center':
+				return 'center';
+			case 'left':
+				return 'flex-start';
+			case 'right':
+				return 'flex-end';
+			default:
+				return '';
+		}
+	}
+	
+	const blockAlign = getBlockAlign( align );
+	const blockAlignTablet = getBlockAlign( alignTablet );
+	const blockAlignMobile = getBlockAlign( alignMobile );
 
 	const selectors = {
 		'.wp-block-uagb-image': {
@@ -193,10 +210,12 @@ export default function styling( attributes, clientId, name ) {
 			'margin-bottom': generateCSSUnit( imageBottomMargin, imageMarginUnit ),
 			'margin-left': generateCSSUnit( imageLeftMargin, imageMarginUnit ),
 			'text-align': align,
+			'justify-content': blockAlign,
+		},
+		' .wp-block-uagb-image__figure' : {
+			'align-items': blockAlign,
 		},
 		'.wp-block-uagb-image--layout-default figure img': {
-			'width': 'inherit',
-			'height': 'inherit',
 			'box-shadow':
 				generateCSSUnit( imageBoxShadowHOffset, 'px' ) +
 				' ' +
@@ -235,8 +254,6 @@ export default function styling( attributes, clientId, name ) {
 		},
 		// overlay
 		'.wp-block-uagb-image--layout-overlay figure img': {
-			'width': 'inherit',
-			'height': 'inherit',
 			'box-shadow':
 				generateCSSUnit( imageBoxShadowHOffset, 'px' ) +
 				' ' +
@@ -377,6 +394,10 @@ export default function styling( attributes, clientId, name ) {
 		'margin-bottom': generateCSSUnit( imageBottomMarginTablet, imageMarginUnitTablet ),
 		'margin-left': generateCSSUnit( imageLeftMarginTablet, imageMarginUnitTablet ),
 		'text-align': alignTablet,
+		'justify-content': blockAlignTablet,
+	};
+	tablet_selectors[' .wp-block-uagb-image__figure'] = {
+		'align-items': blockAlignTablet,
 	};
 	tablet_selectors[ '.wp-block-uagb-image .wp-block-uagb-image__figure figcaption' ] = {
 		'font-size': generateCSSUnit( captionFontSizeTablet, captionFontSizeType ),
@@ -434,8 +455,11 @@ export default function styling( attributes, clientId, name ) {
 		'margin-bottom': generateCSSUnit( imageBottomMarginMobile, imageMarginUnitMobile ),
 		'margin-left': generateCSSUnit( imageLeftMarginMobile, imageMarginUnitMobile ),
 		'text-align': alignMobile,
+		'justify-content': blockAlignMobile,
 	};
-
+	mobile_selectors[' .wp-block-uagb-image__figure'] = {
+		'align-items': blockAlignMobile,
+	};
 	mobile_selectors[ '.wp-block-uagb-image .wp-block-uagb-image__figure figcaption' ] = {
 		'font-size': generateCSSUnit( captionFontSizeMobile, captionFontSizeType ),
 		'line-height': generateCSSUnit( captionLineHeightMobile, captionLineHeightType ),

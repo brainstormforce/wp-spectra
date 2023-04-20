@@ -1,13 +1,16 @@
 .wp-block-uagb-image {
+	display: flex;
 	&__figure {
 		position: relative;
-		display: inline-block;
+		display: flex;
+		flex-direction: column;
 		max-width: 100%;
 		height: auto;
 		margin: 0;
 
 		img {
 			height: auto;
+			display: flex;
 			max-width: 100%;
 		}
 
