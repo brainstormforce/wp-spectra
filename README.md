@@ -203,6 +203,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Taxonomy List - Added the missing translation for the Select string in the PHP code.
 * Fix: Post Grid - Resolved an issue where pagination was not visible inside the editor.
 * Fix: Modal - Resolved an issue where trigger alignment option was displayed for Automatic/Custom-Id/Classs trigger types in modal.
+* Fix: Image - Resolved an issue where image responsive sizing was not proper for mobile devices.
 
 ### 2.4.0 - WEDNESDAY, 15th MARCH 2023 ###
 * New: Introducing the Countdown block that will help you generate hype and create a sense of urgency among your audience, during product sales or releases!

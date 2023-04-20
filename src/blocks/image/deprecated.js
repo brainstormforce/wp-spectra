@@ -6,6 +6,7 @@ import attributesV2_0_13 from './deprecated/v2_0_13/attribute';
 import saveV2_0_13 from './deprecated/v2_0_13/save';
 import attributesV2_2_0 from './deprecated/v2_2_0/attribute';
 import saveV2_2_0 from './deprecated/v2_2_0/save';
+import saveV2_4_2 from './deprecated/v2_4_2/save';
 
 const deprecated = [
 	{
@@ -279,6 +280,10 @@ const deprecated = [
 	{
 		attributes: attributesV2_2_0,
 		save: saveV2_2_0,
+	},
+	{
+		attributes: attributes,
+		save: saveV2_4_2,
 	},
 ];
 
