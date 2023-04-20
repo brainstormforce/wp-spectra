@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.2  
-**Stable tag:** 2.4.2  
+**Stable tag:** 2.5.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -170,30 +170,30 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### x.x.x ###
+### 2.5.0 - THURSDAY, 20th APRIL 2023 ###
+* New: Spectra now has support for the all-new Spectra Pro!
+* Improvement: Global - Improved the editor performance.
 * Improvement: Global - Added Advanced options in Gradient Component.
-* Fix: Container - Heading tags were not inheriting color from theme or container.
-* Fix: Container - Updated default content width for block based themes to wideSize.
+* Fix: Container - Resolved an issue where the heading tags were not inheriting the color from the theme or the Container.
+* Fix: Container - Updated the default content width for block-based themes to "wideSize".
 * Fix: Container - Removed Z-index restrictions that caused Image Gallery Lightboxes to get overlapped by other content.
-* Fix: Image - width and height tag does not appear when image uploaded.
-* Fix: Image Gallery - Replaced the Null Array FocusList with an Optimized Object.
-* Fix: Spacing Control - Removed the capability to set negative values for width & radius settings.
-* Fix: Typography Control - Removed the capability to set negative values for line-height & font size settings.
-* Fix: Post Carousel - TwentyTwentyone theme hover style override for arrow and dot.
-* Fix: Global - Fonts were not loading in the customizer when Spectra blocks are used in Astra theme's header/footer section.
-* Fix: Advanced Heading - Removed Extra padding in the editor.
-* Fix: Container - Neve theme full width issues on front-end.
-* Fix: Post carousel - Gap between post not visible when only 2 post is present.
-* Fix: Global - Mobile should inherit tablet setting values instead of taking desktop values in the editor.
-* Fix: Editor Sidebar - x-axis Scrollbar should be hidden when switched to RTL.
-* Fix: Table of Contents - HTML validation issue in the HTML validator.
-* Fix: Inspector tabs - Improper border when switched to RTL.
-* Fix: ResponsiveSlider - Improper direction of Slider when switched to RTL.
-* Fix: Control_units - Alignment issue in control_units when switched to RTL.
-* Fix: Color_reset_button - Padding issue in reset and color indicator padding issue when switched to RTL.
-* Fix: Advanced Columns - Border radius not getting applied in frontend.
-* Fix: Image - Extra spacing and escaping container size issue in FSE Theme.
-* Fix: Forms - Missing fields label Accessibility issues for date and toggle child.
+* Fix: Container - Handled the full-width issue encountered with the Neve theme on the front-end.
+* Fix: Heading - Removed the extra padding that was visible in the editor.
+* Fix: Image - Resolved an issue where the width and height tags would not appear when an image is uploaded.
+* Fix: Image - Removed the extra spacing and fixed the escaping container size issue in FSE themes.
+* Fix: Forms - Resolved an accessibility issue wherein the field labels for date and toggle child were missing.
+* Fix: Image Gallery - Replaced the null array focus list with an optimized object.
+* Fix: Image Gallery - Updated the carousel gap to work as required.
+* Fix: Post Carousel - Resolved an issue in the TwentyTwentyone theme wherein the hover styles for arrows and dots were mismatched in the editor and front-end.
+* Fix: Post Carousel - Resolved an issue in which the gap between posts was not visible when only 2 posts were present.
+* Fix: Slider - Updated dot color setting to avoid taking the background color of arrows.
+* Fix: Table Of Contents - Resolved an HTML validation issue in the HTML validator.
+* Fix: Advanced Columns - Resolved an issue in which the border radius was not getting applied in the front-end.
+* Fix: Controls - Updated control UI to render seamlessly when in RTL mode.
+* Fix: Spacing Control - Removed the capability to set negative values for width and border radius settings.
+* Fix: Typography Control - Removed the capability to set negative values for line height and font size settings.
+* Fix: Global - Resolved an issue in which fonts would not load in the customizer when Spectra blocks are used in Astra theme's header/footer section.
+* Fix: Global - Updated the mobile settings to inherit tablet setting values in the editor instead of inheriting desktop values.
 
 ### 2.4.2 - WEDNESDAY, 12th APRIL 2023 ###
 * Fix: Container - Updated default content width for block based themes to wideSize.
