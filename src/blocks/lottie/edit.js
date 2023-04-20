@@ -15,13 +15,10 @@ import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBLottie = ( props ) => {
 	const deviceType = useDeviceType();
-	const {
-		setAttributes,
-		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob, loop, reverse },
-		clientId,
-		name,
-		attributes,
-	} = props;
+
+	const { setAttributes, attributes, isSelected, clientId, name } = props;
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob, loop, reverse } = attributes;
 	const lottieplayer = useRef();
 	const [ state, setState ] = useState( { direction: 1, loopState: true } );
 
@@ -57,7 +54,9 @@ const UAGBLottie = ( props ) => {
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			<Render lottieplayer={ lottieplayer } parentProps={ props } />
-			<Settings parentProps={ props } loopLottie={ loopLottie } reverseDirection={ reverseDirection } />
+			{ isSelected && (
+				<Settings parentProps={ props } loopLottie={ loopLottie } reverseDirection={ reverseDirection } />
+			) }
 		</>
 	);
 };
