@@ -5,6 +5,8 @@
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
+import attributesNewVer from './attributes';
+import saveV2_4_1 from './v2.4.1/save';
 
 const attributes = {
 	block_id: {
@@ -117,8 +119,12 @@ const deprecated = [
 					{ date_html }
 				</div>
 			);
-		},
-	},
+        },
+    },
+	{
+		attributes: attributesNewVer,
+		save: saveV2_4_1,
+	}
 ];
 
 export default deprecated;

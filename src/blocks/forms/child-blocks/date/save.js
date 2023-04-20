@@ -47,6 +47,7 @@ export default function save( props ) {
 				max={ validation_max_value }
 				name={ block_id }
 				autoComplete={ autocomplete }
+				aria-label={ name }
 			/>
 		);
 	} else {
@@ -57,6 +58,7 @@ export default function save( props ) {
 				required={ dateRequired }
 				name={ block_id }
 				autoComplete={ autocomplete }
+				aria-label={ name }
 			/>
 		);
 	}

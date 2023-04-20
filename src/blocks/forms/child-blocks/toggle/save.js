@@ -36,6 +36,7 @@ export default function save( props ) {
 					value={ toggleStatus ? trueValue : falseValue }
 					required={ toggleRequired }
 					name={ block_id }
+					aria-label={ name }
 				/>
 				<input
 					type="checkbox"
@@ -46,6 +47,7 @@ export default function save( props ) {
 					value={ toggleStatus ? trueValue : falseValue }
 					required={ toggleRequired }
 					name={ block_id }
+					aria-label={ name }
 				/>
 				<span className={ `uagb-slider ${ layout }` }></span>
 			</label>
