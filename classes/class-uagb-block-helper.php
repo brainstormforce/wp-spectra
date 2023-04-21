@@ -1882,7 +1882,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array $shadow_properties  Array containing the necessary shadow properties.
 		 * @return string                   The generated border CSS or an empty string on early return.
 		 *
-		 * @since x.x.x
+		 * @since 2.5.0
 		 */
 		public static function generate_shadow_css( $shadow_properties ) {
 			// Get the Object Properties.
