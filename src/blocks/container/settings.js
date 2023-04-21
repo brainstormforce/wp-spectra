@@ -730,6 +730,9 @@ const Settings = ( props ) => {
 							createSuggestionButtonText={ ( newValue ) =>
 								`${ __( 'New:', 'ultimate-addons-for-gutenberg' ) } ${ newValue }`
 							}
+							onRemove={ () => {
+								setAttributes( { htmlTagLink: undefined } )
+							} }
 						/>
 					) }
 					<MultiButtonsControl

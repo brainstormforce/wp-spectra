@@ -28,7 +28,7 @@ const defaultProps = {
 	],
 };
 
-export default function UAGLinkControl( { label, placeholder, settings, onChange, help, value } ) {
+export default function UAGLinkControl( { data, label, placeholder, settings, onChange, help, setAttributes } ) {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -49,10 +49,13 @@ export default function UAGLinkControl( { label, placeholder, settings, onChange
 				<LinkControl
 					id={ ID }
 					searchInputPlaceholder={ placeholder }
-					value={ value }
+					value={ data?.value }
 					settings={ settings }
 					onChange={ onChange }
 					withCreateSuggestion={ false }
+					onRemove={ () => {
+						setAttributes( { [ data?.label ]: undefined } )
+					} }
 				/>
 				{ help && <p className="uagb-link-control__help">{ help }</p> }
 			</div>
