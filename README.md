@@ -195,6 +195,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Global - Resolved an issue in which fonts would not load in the customizer when Spectra blocks are used in Astra theme's header/footer section.
 * Fix: Global - Updated the mobile settings to inherit tablet setting values in the editor instead of inheriting desktop values.
 * Fix: Container - Fixed settings link control's unlink functionality.
+* Fix: Countdown - Fixed separator line-height not matching (looking the same as editor) on frontend.
 
 ### 2.4.2 - WEDNESDAY, 12th APRIL 2023 ###
 * Fix: Container - Updated default content width for block based themes to wideSize.
