@@ -71,7 +71,9 @@ body {
 		}
 	}
 }
-
+.wp-block-uagb-modal {
+	width: 100%;
+}
 .entry {
 	.entry-content {
 		a.uagb-modal-button-link {
@@ -99,6 +101,8 @@ body {
 
 img.uagb-modal-trigger {
 	cursor: pointer;
+	height: auto;
+	max-width: 100%;
 }
 
 div.uagb-spectra-button-wrapper {
