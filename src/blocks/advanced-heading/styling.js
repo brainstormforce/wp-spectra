@@ -151,6 +151,7 @@ function styling( attributes, clientId, name ) {
 		subHeadSpace,
 		subHeadSpaceTablet,
 		subHeadSpaceMobile,
+		headingDescToggle
 	} = attributes;
 
 	let tablet_selectors = {};
@@ -257,7 +258,6 @@ function styling( attributes, clientId, name ) {
 		'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
 		'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),
 		'color': headingColor,
-		'margin-bottom': generateCSSUnit( getFallbackNumber( headSpace, 'headSpace', blockName ), 'px' ),
 		'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
 		...headingGradientStyle,
 	};
@@ -316,7 +316,6 @@ function styling( attributes, clientId, name ) {
 		'font-size': generateCSSUnit( headFontSizeTablet, headFontSizeType ),
 		'line-height': generateCSSUnit( headLineHeightTablet, headLineHeightType ),
 		'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
-		'margin-bottom': generateCSSUnit( getFallbackNumber( headSpaceTablet, 'headSpaceTablet', blockName ), 'px' ),
 	};
 	tablet_selectors[ ' p.uagb-desc-text' ] = {
 		'font-size': generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeType ),
@@ -364,7 +363,6 @@ function styling( attributes, clientId, name ) {
 		'font-size': generateCSSUnit( headFontSizeMobile, headFontSizeType ),
 		'line-height': generateCSSUnit( headLineHeightMobile, headLineHeightType ),
 		'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
-		'margin-bottom': generateCSSUnit( getFallbackNumber( headSpaceMobile, 'headSpaceMobile', blockName ), 'px' ),
 	};
 	mobile_selectors[ ' p.uagb-desc-text' ] = {
 		'font-size': generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeType ),
@@ -396,6 +394,17 @@ function styling( attributes, clientId, name ) {
 		),
 	};
 
+	if( headingDescToggle || 'none' !== seperatorStyle ) {
+		selectors[ ' .uagb-heading-text' ] ={ 
+			'margin-bottom': generateCSSUnit( getFallbackNumber( headSpace, 'headSpace', blockName ), 'px' ),
+		};
+		tablet_selectors[ ' .uagb-heading-text' ] = {
+			'margin-bottom': generateCSSUnit( getFallbackNumber( headSpaceTablet, 'headSpaceTablet', blockName ), 'px' ),
+		};
+		mobile_selectors[ ' .uagb-heading-text' ] = {
+			'margin-bottom': generateCSSUnit( getFallbackNumber( headSpaceMobile, 'headSpaceMobile', blockName ), 'px' ),
+		};
+	}
 	const base_selector = `.editor-styles-wrapper #block-${ clientId } .uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	selectors = applyFilters( `spectra.${ blockName }.styling`, selectors, attributes );
