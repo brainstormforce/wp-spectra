@@ -964,7 +964,7 @@ class UAGB_Post_Assets {
 	 * @since 2.4.1
 	 */
 	public function get_fse_template_part( $block ) {
-		if( empty( $block['attrs']['slug'] ) ){
+		if ( empty( $block['attrs']['slug'] ) ) {
 			return;
 		}
 
