@@ -113,7 +113,6 @@ const Render = ( props ) => {
 		<div className={ classnames( 'uagb-spectra-button-wrapper', 'wp-block-button' ) }>
 			<a // eslint-disable-line jsx-a11y/anchor-is-valid
 				className={ buttonClasses }
-				href="#"
 				target="_self"
 				rel="noopener noreferrer"
 			>
