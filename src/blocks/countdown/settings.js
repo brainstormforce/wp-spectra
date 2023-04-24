@@ -24,6 +24,7 @@ import { memo } from '@wordpress/element';
 
 function Settings( props ) {
 	props = props.parentProps;
+	const isPro = uagb_blocks_info.spectra_pro_status;
 	const {
 		setAttributes,
 		attributes,
@@ -255,10 +256,26 @@ function Settings( props ) {
 
 	const { timezone } = getDateSettings();
 
+	const displayDatePanel = () => {
+		let flag = true;
+		if( ! timerType ) {
+			return false;
+		}
+		switch( timerType ) {
+			case 'date':
+				flag = true;
+				break;
+			case 'evergreen':
+				flag = isPro ? false : true;
+				break;
+		}
+		return flag;
+	}
+
 	// <------------------ GENERAL TAB ------------------>
 	const generalPanel = (
 		<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
-			{ timerType && 'evergreen' !== timerType && (
+			{ displayDatePanel() && (
 				<div className="uagb-countdown__datetime-picker">
 					<div>
 						<h2>{ __( 'Timer End Date & Time', 'ultimate-addons-for-gutenberg' ) }</h2>
