@@ -3,17 +3,6 @@ document.addEventListener( 'UAGModalEditor', function ( e ) {
 } );
 
 window.UAGBModal = {
-	_getDocumentElement() {
-		let document_element = document;
-		const getEditorIframe = document.querySelectorAll( 'iframe[name="editor-canvas"]' );
-		if( getEditorIframe?.length ){
-			const iframeDocument = getEditorIframe?.[0]?.contentWindow?.document || getEditorIframe?.[0]?.contentDocument;
-			if ( iframeDocument ) {
-				document_element = iframeDocument;
-			}
-		}
-		return document_element;
-	},
 	init( mainSelector, isAdmin ) {
 		const document_element = UAGBModal._getDocumentElement();
 		const modalWrapper = document_element.querySelector( mainSelector );
@@ -87,7 +76,17 @@ window.UAGBModal = {
 			}
 		}
 	},
-
+	_getDocumentElement() {
+		let document_element = document;
+		const getEditorIframe = document.querySelectorAll( 'iframe[name="editor-canvas"]' );
+		if( getEditorIframe?.length ){
+			const iframeDocument = getEditorIframe?.[0]?.contentWindow?.document || getEditorIframe?.[0]?.contentDocument;
+			if ( iframeDocument ) {
+				document_element = iframeDocument;
+			}
+		}
+		return document_element;
+	},
 	// Close the Modal and check if the Scrollbar needs to be reactivated.
 	closeModalScrollCheck( bodyWrapper ) {
 		const allActiveModals = document.querySelectorAll( '.uagb-modal-popup.active' );
