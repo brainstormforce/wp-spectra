@@ -6,7 +6,7 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import classnames from 'classnames';
 import { useEffect } from '@wordpress/element';
 import { AnimationList, AnimationSelectControlObject } from '@Blocks/extensions/animations-extension/animation-list';
-const { createHigherOrderComponent } = wp.compose;
+import { createHigherOrderComponent } from '@wordpress/compose';
 import Select from 'react-select';
 
 const { enableConditions, enableResponsiveConditions, enableAnimationsExtension } = uagb_blocks_info;
