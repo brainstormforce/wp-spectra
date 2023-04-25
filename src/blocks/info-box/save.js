@@ -4,16 +4,15 @@
 
 // Import block dependencies and components.
 import classnames from 'classnames';
-import Prefix from './components/Prefix';
-import Title from './components/Title';
-import InfoBoxDesc from './components/InfoBoxDesc';
 import Icon from './components/Icons';
 import InfoBoxPositionClasses from './style-classes';
 import InfoBoxSeparator from './components/Separator';
 import CallToAction from './components/CTA';
 import InfoBoxIconImage from './components/IconImages';
+import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
+	const { attributes } = props; 
 	const {
 		iconimgPosition,
 		block_id,
@@ -30,26 +29,23 @@ export default function save( props ) {
 		showDesc,
 		icon,
 		seperatorPosition,
-	} = props.attributes;
+	} = attributes;
 
 	// Get icon/Image components.
 	let isImage = '';
 
 	if ( source_type === 'icon' && icon !== '' ) {
-		isImage = <Icon attributes={ props.attributes } />;
+		isImage = <Icon attributes={ attributes } />;
 	} else {
-		isImage = <InfoBoxIconImage attributes={ props.attributes } />;
+		isImage = <InfoBoxIconImage attributes={ attributes } />;
 	}
 
 	let iconImageHtml = isImage;
 	let position = seperatorPosition;
-	const seperatorHtml = <InfoBoxSeparator attributes={ props.attributes } />
+	const seperatorHtml = <InfoBoxSeparator attributes={ attributes } />;
 	let showSeperator = true;
 
-	if (
-		position === 'after_icon' &&
-		( iconimgPosition === 'above-title' || iconimgPosition === 'below-title' )
-	) {
+	if ( position === 'after_icon' && ( iconimgPosition === 'above-title' || iconimgPosition === 'below-title' ) ) {
 		showSeperator = false;
 		iconImageHtml = (
 			<>
@@ -59,12 +55,15 @@ export default function save( props ) {
 		);
 	}
 
-	if ( position === 'after_icon' && ( iconimgPosition === 'left-title' ||
-	iconimgPosition === 'right-title' || iconimgPosition === 'left' ||
-	iconimgPosition === 'right' ) ) {
+	if (
+		position === 'after_icon' &&
+		( iconimgPosition === 'left-title' ||
+			iconimgPosition === 'right-title' ||
+			iconimgPosition === 'left' ||
+			iconimgPosition === 'right' )
+	) {
 		position = 'after_title';
 	}
-
 
 	if ( iconimgPosition === 'below-title' && position === 'after_title' ) {
 		showSeperator = false;
@@ -78,45 +77,28 @@ export default function save( props ) {
 	// Get description and seperator components.
 	const desc = (
 		<>
-			{ 'none' !== seperatorStyle &&
-				position === 'after_title' &&
-				showSeperator &&
-				seperatorHtml }
-				{ showDesc && '' !== headingDesc && (
-					<InfoBoxDesc
-						attributes={ props.attributes }
-						setAttributes="not_set"
-					/>
-				) }
-				{ 'none' !== seperatorStyle &&
-					position === 'after_desc' &&
-					seperatorHtml }
-				{ ctaType !== 'none' && (
-					<CallToAction attributes={ props.attributes } />
-				) }
+			{ 'none' !== seperatorStyle && position === 'after_title' && showSeperator && seperatorHtml }
+			{ showDesc && '' !== headingDesc && (
+				<RichText.Content tagName="p" value={ attributes.headingDesc } className="uagb-ifb-desc" />
+			) }
+			{ 'none' !== seperatorStyle && position === 'after_desc' && seperatorHtml }
+			{ ctaType !== 'none' && <CallToAction attributes={ attributes } /> }
 		</>
 	);
 
 	// Get Title and Prefix components.
 	const titleText = (
-			<div className="uagb-ifb-title-wrap">
-				{ showPrefix && '' !== prefixTitle && (
-					<Prefix
-						attributes={ props.attributes }
-						setAttributes="not_set"
-					/>
-				) }
-				{ 'none' !== seperatorStyle &&
-					position === 'after_prefix' &&
-					seperatorHtml }
-				{ showTitle && '' !== infoBoxTitle && (
-					<Title
-						attributes={ props.attributes }
-						setAttributes="not_set"
-					/>
-				) }
-			</div>
-		);
+		<div className="uagb-ifb-title-wrap">
+			{ showPrefix && '' !== prefixTitle && <RichText.Content tagName="span" value={ attributes.prefixTitle } className="uagb-ifb-title-prefix" /> }
+			{ 'none' !== seperatorStyle && position === 'after_prefix' && seperatorHtml }
+			{showTitle && '' !== infoBoxTitle &&
+				<RichText.Content
+					tagName={attributes.headingTag}
+					value={attributes.infoBoxTitle}
+					className="uagb-ifb-title"
+				/>}
+		</div>
+	);
 
 	const output = (
 		<>
@@ -124,15 +106,11 @@ export default function save( props ) {
 			<div className="uagb-ifb-content">
 				{ iconimgPosition === 'above-title' && iconImageHtml }
 
-				{ ( iconimgPosition === 'above-title' ||
-					iconimgPosition === 'below-title' ) &&
-					titleText }
+				{ ( iconimgPosition === 'above-title' || iconimgPosition === 'below-title' ) && titleText }
 
 				{ iconimgPosition === 'below-title' && iconImageHtml }
 
-				{ ( iconimgPosition === 'above-title' ||
-					iconimgPosition === 'below-title' ) &&
-					desc }
+				{ ( iconimgPosition === 'above-title' || iconimgPosition === 'below-title' ) && desc }
 
 				{ iconimgPosition === 'left-title' && (
 					<>
@@ -154,8 +132,7 @@ export default function save( props ) {
 					</>
 				) }
 
-				{ ( iconimgPosition === 'left' ||
-					iconimgPosition === 'right' ) && (
+				{ ( iconimgPosition === 'left' || iconimgPosition === 'right' ) && (
 					<>
 						{ titleText }
 						{ desc }
@@ -178,7 +155,7 @@ export default function save( props ) {
 				`uagb-block-${ block_id }`,
 				'uagb-infobox__content-wrap',
 				ctaType === 'all' ? ' uagb-infobox_cta-type-all' : '',
-				...InfoBoxPositionClasses( props.attributes )
+				...InfoBoxPositionClasses( attributes )
 			) }
 		>
 			{ ctaType === 'all' && (
@@ -188,7 +165,7 @@ export default function save( props ) {
 					target={ target }
 					aria-label={ 'Infobox Link' }
 					rel="noopener noreferrer"
-					onClick={ ( '' === ctaLink || '#' === ctaLink ) ? 'return false;' : 'return true;'}
+					onClick={ '' === ctaLink || '#' === ctaLink ? 'return false;' : 'return true;' }
 				></a>
 			) }
 			{ output }

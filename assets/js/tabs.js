@@ -1,13 +1,12 @@
-UAGBTabs = { // eslint-disable-line no-undef
+// eslint-disable-next-line no-undef
+UAGBTabs = {
 	init( $selector ) {
 		const tabsWrap = document.querySelector( $selector );
-		if( ! tabsWrap ){
+		if ( ! tabsWrap ) {
 			return;
 		}
 		const tabActive = tabsWrap.getAttribute( 'data-tab-active' );
-		const tabLi = tabsWrap.querySelectorAll(
-			'.uagb-tabs__panel > li.uagb-tab'
-		);
+		const tabLi = tabsWrap.querySelectorAll( '.uagb-tabs__panel > li.uagb-tab' );
 		const tabBody = tabsWrap.querySelectorAll( '.uagb-tabs__body-container' );
 
 		// Set initial active class to Tabs body.
@@ -47,30 +46,19 @@ UAGBTabs = { // eslint-disable-line no-undef
 		const tabId = tabName.getAttribute( 'data-tab' );
 		const tabPanel = selectedLi.closest( '.uagb-tabs__panel' );
 		const tabSelectedBody = document.querySelector(
-			mainWrapClass +
-				' > .uagb-tabs__body-wrap > .uagb-inner-tab-' +
-				tabId
+			mainWrapClass + ' > .uagb-tabs__body-wrap > .uagb-inner-tab-' + tabId
 		);
 		const tabUnselectedBody = document.querySelectorAll(
-			mainWrapClass +
-				' > .uagb-tabs__body-wrap > .uagb-tabs__body-container:not(.uagb-inner-tab-' +
-				tabId +
-				')'
+			mainWrapClass + ' > .uagb-tabs__body-wrap > .uagb-tabs__body-container:not(.uagb-inner-tab-' + tabId + ')'
 		);
 		const allLi = tabPanel.querySelectorAll( 'a.uagb-tabs-list' );
 
 		// Remove old li active class.
-		tabPanel
-			.querySelector( '.uagb-tabs__active' )
-			?.classList.remove( 'uagb-tabs__active' );
-
+		tabPanel.querySelector( '.uagb-tabs__active' )?.classList.remove( 'uagb-tabs__active' );
 
 		//Remove old tab body active class.
 		document
-			.querySelector(
-				mainWrapClass +
-					' > .uagb-tabs__body-wrap > .uagb-tabs-body__active'
-			)
+			.querySelector( mainWrapClass + ' > .uagb-tabs__body-wrap > .uagb-tabs-body__active' )
 			?.classList.remove( 'uagb-tabs-body__active' );
 
 		// Set aria-selected attribute as flase for old active tab.
@@ -102,20 +90,15 @@ UAGBTabs = { // eslint-disable-line no-undef
 			const mainWrapClass = $selector;
 			const tabId = escape( tabsHash.substring( 1 ) );
 			const selectedLi = document.querySelector( '#' + tabId );
-			const topPos =
-				selectedLi.getBoundingClientRect().top + window.pageYOffset;
+			const topPos = selectedLi.getBoundingClientRect().top + window.pageYOffset;
 			window.scrollTo( {
 				top: topPos,
 				behavior: 'smooth',
 			} );
-			const tabNum = selectedLi
-				.querySelector( 'a.uagb-tabs-list' )
-				.getAttribute( 'data-tab' );
+			const tabNum = selectedLi.querySelector( 'a.uagb-tabs-list' ).getAttribute( 'data-tab' );
 			const listPanel = selectedLi.closest( '.uagb-tabs__panel' );
 			const tabSelectedBody = document.querySelector(
-				mainWrapClass +
-					' > .uagb-tabs__body-wrap > .uagb-inner-tab-' +
-					tabNum
+				mainWrapClass + ' > .uagb-tabs__body-wrap > .uagb-inner-tab-' + tabNum
 			);
 			const tabUnselectedBody = document.querySelectorAll(
 				mainWrapClass +
@@ -124,21 +107,14 @@ UAGBTabs = { // eslint-disable-line no-undef
 					')'
 			);
 			const allLi = selectedLi.querySelectorAll( 'a.uagb-tabs-list' );
-			const selectedAnchor = selectedLi.querySelector(
-				'a.uagb-tabs-list'
-			);
+			const selectedAnchor = selectedLi.querySelector( 'a.uagb-tabs-list' );
 
 			// Remove old li active class.
-			listPanel
-				.querySelector( '.uagb-tabs__active' )
-				.classList.remove( 'uagb-tabs__active' );
+			listPanel.querySelector( '.uagb-tabs__active' ).classList.remove( 'uagb-tabs__active' );
 
 			// Remove old tab body active class.
 			document
-				.querySelector(
-					mainWrapClass +
-						' > .uagb-tabs__body-wrap > .uagb-tabs-body__active'
-				)
+				.querySelector( mainWrapClass + ' > .uagb-tabs__body-wrap > .uagb-tabs-body__active' )
 				.classList.remove( 'uagb-tabs-body__active' );
 
 			// Set aria-selected attribute as flase for old active tab.

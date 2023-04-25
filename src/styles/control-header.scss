@@ -26,6 +26,7 @@
 		position: relative;
 		top: 0;
 		display: flex;
+		direction: initial;
 
 		.uagb-reset {
 			padding: 0;
@@ -45,6 +46,7 @@
 		}
 
 		.uagb-control__units {
+			direction: initial;
 			display: flex;
 			align-items: center;
 
@@ -81,7 +83,7 @@
 					background-color: unset;
 					color: $spectra-color-body;
 
-					&:hover:not(:disabled) {
+					&:hover:not( :disabled ) {
 						color: $spectra-color-primary;
 					}
 				}
@@ -96,7 +98,7 @@
 			}
 		}
 
-		.components-button.is-secondary:hover:not(:disabled) {
+		.components-button.is-secondary:hover:not( :disabled ) {
 			background: 0 0;
 			box-shadow: 0 0;
 		}

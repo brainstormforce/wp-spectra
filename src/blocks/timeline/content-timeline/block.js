@@ -30,22 +30,25 @@ const enhance = compose(
 			selected: select( 'core/block-editor' ).getSelectedBlock(),
 		};
 	} )
-	);
-	/**
-	 * Add custom UAG attributes to selected blocks
-	 *
-	 * @param {Function} BlockEdit Original component.
-	 * @return {string} Wrapped component.
-	 */
-	const withcontentTimeline = createHigherOrderComponent( ( BlockEdit ) => {
-		return enhance( ( { ...props } ) => {
-		 return <BlockEdit { ...props } />;
-	 } );
+);
+/**
+ * Add custom UAG attributes to selected blocks
+ *
+ * @param {Function} BlockEdit Original component.
+ * @return {string} Wrapped component.
+ */
+const withcontentTimeline = createHigherOrderComponent( ( BlockEdit ) => {
+	return enhance( ( { ...props } ) => {
+		return <BlockEdit { ...props } />;
+	} );
 }, 'withcontentTimeline' );
 
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 let contentTimelineCommonData = {};
-contentTimelineCommonData = applyFilters( 'uagb/content-timeline', addCommonDataToSpectraBlocks( contentTimelineCommonData ) );
+contentTimelineCommonData = applyFilters(
+	'uagb/content-timeline',
+	addCommonDataToSpectraBlocks( contentTimelineCommonData )
+);
 registerBlockType( 'uagb/content-timeline', {
 	...contentTimelineCommonData,
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
@@ -63,11 +66,7 @@ registerBlockType( 'uagb/content-timeline', {
 	},
 	attributes,
 	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="content-timeline" />
-			) : (
-				<Edit { ...props } />
-			),
+		props.attributes.isPreview ? <PreviewImage image="content-timeline" /> : <Edit { ...props } />,
 	save,
 	deprecated,
 } );

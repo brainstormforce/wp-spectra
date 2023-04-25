@@ -1,11 +1,11 @@
 @import "../../styles/variables";
 
 .uag-number-control {
-
 	.uagb-number-control__mobile-controls {
-
 		// Full-width Control.
 		&.uag-number-control__full-width {
+
+			position: relative;
 
 			color: $spectra-color-body;
 
@@ -17,11 +17,18 @@
 				padding: 0 7px 0 12px !important;
 			}
 
+			> .components-button {
+				position: absolute;
+				left: 75%;
+				bottom: 0%;
+				height: $spectra-control-input-height;
+				z-index: 1;
+			}
+
 		}
 
 		// Inline Control.
 		&.uag-number-control__inline {
-
 			align-items: center;
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
@@ -39,8 +46,25 @@
 				width: 100%;
 			}
 
+			.uagb-dynamic-content-wrap {
+				width: 245%;
+				margin-top: 20px;
+			}
+
+			> .components-button {
+				position: absolute;
+				right: 34%;
+			}
+
 		}
 
+		> .components-button svg {
+			width: 18px;
+			stroke: $spectra-color-icon;
+			stroke-width: 1.4;
+			fill: none;
+			z-index: 1;
+		}
 	}
 
 	.uagb-control__header {
@@ -52,6 +76,30 @@
 
 	.uag-responsive-label-wrap {
 		grid-column: 1 / span 2;
+	}
+
+	.uagb-dynamic-content-wrap {
+		margin-top: 20px;
+	}
+
+	// To fix dynamic content layout for inline control variant.
+	&.uagb-text-control--open-dynamic-content {
+
+		.uag-number-control__inline {
+
+			display: block;
+
+			.uagb-dynamic-content-wrap {
+				width: 100%;
+				margin-top: 20px;
+			}
+		}
+	}
+
+	// Enables/shows arrows in the input field in Chrome (even in inactive state, so as to maintain a consistent UI across browsers).
+	input[type="number"]::-webkit-inner-spin-button,
+	input[type="number"]::-webkit-outer-spin-button {
+		opacity: 1;
 	}
 
 }

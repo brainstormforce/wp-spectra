@@ -8,9 +8,8 @@ import getAttributeFallback, { getFallbackNumber } from '@Controls/getAttributeF
 import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 
-function styling( props ) {
-
-	const blockName = props.name.replace( 'uagb/', '' );
+function styling( attributes, clientId, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		formPaddingTop,
@@ -161,7 +160,21 @@ function styling( props ) {
 		submitTextLetterSpacingType,
 		gradientHValue,
 		gradientValue,
-	} = props.attributes;
+		gradientHColor1,
+		gradientHColor2,
+		gradientHLocation1,
+		gradientHLocation2,
+		gradientHType,
+		gradientHAngle,
+		selectHGradient,
+		gradientColor1,
+		gradientColor2,
+		gradientLocation1,
+		gradientLocation2,
+		gradientType,
+		gradientAngle,
+		selectGradient,
+	} = attributes;
 
 	let selectors = {};
 	let tabletSelectors = {};
@@ -180,56 +193,152 @@ function styling( props ) {
 	// Used for Calculations, needs to be numeric.
 	const toggleWidthSizeNumber = getFallbackNumber( toggleWidthSize, 'toggleWidthSize', blockName );
 	const toggleWidthSizeNumberTablet = isNaN( toggleWidthSizeTablet ) ? toggleWidthSizeNumber : toggleWidthSizeTablet;
-	const toggleWidthSizeNumberMobile = isNaN( toggleWidthSizeMobile ) ? toggleWidthSizeNumberTablet : toggleWidthSizeMobile;
+	const toggleWidthSizeNumberMobile = isNaN( toggleWidthSizeMobile )
+		? toggleWidthSizeNumberTablet
+		: toggleWidthSizeMobile;
 
-	const inputBorder = generateBorderCSS( props.attributes, 'field' );
-	const inputBorderTablet = generateBorderCSS( props.attributes, 'field', 'tablet' );
-	const inputBorderMobile = generateBorderCSS( props.attributes, 'field', 'mobile' );
+	const inputBorder = generateBorderCSS( attributes, 'field' );
+	const inputBorderTablet = generateBorderCSS( attributes, 'field', 'tablet' );
+	const inputBorderMobile = generateBorderCSS( attributes, 'field', 'mobile' );
 
-	const toggleBorder = generateBorderCSS( props.attributes, 'checkBoxToggle' );
-	const toggleBorderTablet = generateBorderCSS( props.attributes, 'checkBoxToggle', 'tablet' );
-	const toggleBorderMobile = generateBorderCSS( props.attributes, 'checkBoxToggle', 'mobile' );
-
-	// Individual Toggle Border Radius Fallback for Inner Dot.
-	let toggleBorderRadiusTLFallback = getAttributeFallback( toggleBorder['border-top-left-radius'], 'checkBoxToggleBorderTopLeftRadius', blockName );
-	let toggleBorderRadiusTRFallback = getAttributeFallback( toggleBorder['border-top-right-radius'], 'checkBoxToggleBorderTopRightRadius', blockName );
-	let toggleBorderRadiusBRFallback = getAttributeFallback( toggleBorder['border-bottom-right-radius'], 'checkBoxToggleBorderBottomRightRadius', blockName );
-	let toggleBorderRadiusBLFallback = getAttributeFallback( toggleBorder['border-bottom-left-radius'], 'checkBoxToggleBorderBottomLeftRadius', blockName );
-	toggleBorderRadiusTLFallback = isNaN( toggleBorderRadiusTLFallback ) ? toggleBorderRadiusTLFallback : `${ toggleBorderRadiusTLFallback }px`;
-	toggleBorderRadiusTRFallback = isNaN( toggleBorderRadiusTRFallback ) ? toggleBorderRadiusTRFallback : `${ toggleBorderRadiusTRFallback }px`;
-	toggleBorderRadiusBRFallback = isNaN( toggleBorderRadiusBRFallback ) ? toggleBorderRadiusBRFallback : `${ toggleBorderRadiusBRFallback }px`;
-	toggleBorderRadiusBLFallback = isNaN( toggleBorderRadiusBLFallback ) ? toggleBorderRadiusBLFallback : `${ toggleBorderRadiusBLFallback }px`;
-	const toggleBorderRadiusTLTabletFallback = ( '' !== toggleBorderTablet['border-top-left-radius'] && 'px' !== toggleBorderTablet['border-top-left-radius'] ) ? toggleBorderTablet['border-top-left-radius'] : toggleBorderRadiusTLFallback;
-	const toggleBorderRadiusTRTabletFallback = ( '' !== toggleBorderTablet['border-top-right-radius'] && 'px' !== toggleBorderTablet['border-top-right-radius'] ) ? toggleBorderTablet['border-top-right-radius'] : toggleBorderRadiusTRFallback;
-	const toggleBorderRadiusBRTabletFallback = ( '' !== toggleBorderTablet['border-bottom-right-radius'] && 'px' !== toggleBorderTablet['border-bottom-right-radius'] ) ? toggleBorderTablet['border-bottom-right-radius'] : toggleBorderRadiusBRFallback;
-	const toggleBorderRadiusBLTabletFallback = ( '' !== toggleBorderTablet['border-bottom-left-radius'] && 'px' !== toggleBorderTablet['border-bottom-left-radius'] ) ? toggleBorderTablet['border-bottom-left-radius'] : toggleBorderRadiusBLFallback;
-	const toggleBorderRadiusTLMobileFallback = ( '' !== toggleBorderMobile['border-top-left-radius'] && 'px' !== toggleBorderMobile['border-top-left-radius'] ) ? toggleBorderMobile['border-top-left-radius'] : toggleBorderRadiusTLTabletFallback;
-	const toggleBorderRadiusTRMobileFallback = ( '' !== toggleBorderMobile['border-top-right-radius'] && 'px' !== toggleBorderMobile['border-top-right-radius'] ) ? toggleBorderMobile['border-top-right-radius'] : toggleBorderRadiusTRTabletFallback;
-	const toggleBorderRadiusBRMobileFallback = ( '' !== toggleBorderMobile['border-bottom-right-radius'] && 'px' !== toggleBorderMobile['border-bottom-right-radius'] ) ? toggleBorderMobile['border-bottom-right-radius'] : toggleBorderRadiusBRTabletFallback;
-	const toggleBorderRadiusBLMobileFallback = ( '' !== toggleBorderMobile['border-bottom-left-radius'] && 'px' !== toggleBorderMobile['border-bottom-left-radius'] ) ? toggleBorderMobile['border-bottom-left-radius'] : toggleBorderRadiusBLTabletFallback;
+	const toggleBorder = generateBorderCSS( attributes, 'checkBoxToggle' );
+	const toggleBorderTablet = generateBorderCSS( attributes, 'checkBoxToggle', 'tablet' );
+	const toggleBorderMobile = generateBorderCSS( attributes, 'checkBoxToggle', 'mobile' );
 
 	// Individual Toggle Border Radius Fallback for Inner Dot.
-	let toggleBorderTFallback = undefined !== toggleBorder['border-top-width'] ? getAttributeFallback( toggleBorder['border-top-width'], 'checkBoxToggleBorderTopWidth', blockName ) : '';
-	let toggleBorderLFallback = undefined !== toggleBorder['border-left-width'] ? getAttributeFallback( toggleBorder['border-left-width'], 'checkBoxToggleBorderLeftWidth', blockName ) : '';
-	let toggleBorderBFallback = undefined !== toggleBorder['border-bottom-width'] ? getAttributeFallback( toggleBorder['border-bottom-width'], 'checkBoxToggleBorderBottomWidth', blockName ) : '';
-	let toggleBorderRFallback = undefined !== toggleBorder['border-right-width'] ? getAttributeFallback( toggleBorder['border-right-width'], 'checkBoxToggleBorderBottomRight', blockName ) : '';
+	let toggleBorderRadiusTLFallback = getAttributeFallback(
+		toggleBorder[ 'border-top-left-radius' ],
+		'checkBoxToggleBorderTopLeftRadius',
+		blockName
+	);
+	let toggleBorderRadiusTRFallback = getAttributeFallback(
+		toggleBorder[ 'border-top-right-radius' ],
+		'checkBoxToggleBorderTopRightRadius',
+		blockName
+	);
+	let toggleBorderRadiusBRFallback = getAttributeFallback(
+		toggleBorder[ 'border-bottom-right-radius' ],
+		'checkBoxToggleBorderBottomRightRadius',
+		blockName
+	);
+	let toggleBorderRadiusBLFallback = getAttributeFallback(
+		toggleBorder[ 'border-bottom-left-radius' ],
+		'checkBoxToggleBorderBottomLeftRadius',
+		blockName
+	);
+	toggleBorderRadiusTLFallback = isNaN( toggleBorderRadiusTLFallback )
+		? toggleBorderRadiusTLFallback
+		: `${ toggleBorderRadiusTLFallback }px`;
+	toggleBorderRadiusTRFallback = isNaN( toggleBorderRadiusTRFallback )
+		? toggleBorderRadiusTRFallback
+		: `${ toggleBorderRadiusTRFallback }px`;
+	toggleBorderRadiusBRFallback = isNaN( toggleBorderRadiusBRFallback )
+		? toggleBorderRadiusBRFallback
+		: `${ toggleBorderRadiusBRFallback }px`;
+	toggleBorderRadiusBLFallback = isNaN( toggleBorderRadiusBLFallback )
+		? toggleBorderRadiusBLFallback
+		: `${ toggleBorderRadiusBLFallback }px`;
+	const toggleBorderRadiusTLTabletFallback =
+		'' !== toggleBorderTablet[ 'border-top-left-radius' ] && 'px' !== toggleBorderTablet[ 'border-top-left-radius' ]
+			? toggleBorderTablet[ 'border-top-left-radius' ]
+			: toggleBorderRadiusTLFallback;
+	const toggleBorderRadiusTRTabletFallback =
+		'' !== toggleBorderTablet[ 'border-top-right-radius' ] &&
+		'px' !== toggleBorderTablet[ 'border-top-right-radius' ]
+			? toggleBorderTablet[ 'border-top-right-radius' ]
+			: toggleBorderRadiusTRFallback;
+	const toggleBorderRadiusBRTabletFallback =
+		'' !== toggleBorderTablet[ 'border-bottom-right-radius' ] &&
+		'px' !== toggleBorderTablet[ 'border-bottom-right-radius' ]
+			? toggleBorderTablet[ 'border-bottom-right-radius' ]
+			: toggleBorderRadiusBRFallback;
+	const toggleBorderRadiusBLTabletFallback =
+		'' !== toggleBorderTablet[ 'border-bottom-left-radius' ] &&
+		'px' !== toggleBorderTablet[ 'border-bottom-left-radius' ]
+			? toggleBorderTablet[ 'border-bottom-left-radius' ]
+			: toggleBorderRadiusBLFallback;
+	const toggleBorderRadiusTLMobileFallback =
+		'' !== toggleBorderMobile[ 'border-top-left-radius' ] && 'px' !== toggleBorderMobile[ 'border-top-left-radius' ]
+			? toggleBorderMobile[ 'border-top-left-radius' ]
+			: toggleBorderRadiusTLTabletFallback;
+	const toggleBorderRadiusTRMobileFallback =
+		'' !== toggleBorderMobile[ 'border-top-right-radius' ] &&
+		'px' !== toggleBorderMobile[ 'border-top-right-radius' ]
+			? toggleBorderMobile[ 'border-top-right-radius' ]
+			: toggleBorderRadiusTRTabletFallback;
+	const toggleBorderRadiusBRMobileFallback =
+		'' !== toggleBorderMobile[ 'border-bottom-right-radius' ] &&
+		'px' !== toggleBorderMobile[ 'border-bottom-right-radius' ]
+			? toggleBorderMobile[ 'border-bottom-right-radius' ]
+			: toggleBorderRadiusBRTabletFallback;
+	const toggleBorderRadiusBLMobileFallback =
+		'' !== toggleBorderMobile[ 'border-bottom-left-radius' ] &&
+		'px' !== toggleBorderMobile[ 'border-bottom-left-radius' ]
+			? toggleBorderMobile[ 'border-bottom-left-radius' ]
+			: toggleBorderRadiusBLTabletFallback;
+
+	// Individual Toggle Border Radius Fallback for Inner Dot.
+	let toggleBorderTFallback =
+		undefined !== toggleBorder[ 'border-top-width' ]
+			? getAttributeFallback( toggleBorder[ 'border-top-width' ], 'checkBoxToggleBorderTopWidth', blockName )
+			: '';
+	let toggleBorderLFallback =
+		undefined !== toggleBorder[ 'border-left-width' ]
+			? getAttributeFallback( toggleBorder[ 'border-left-width' ], 'checkBoxToggleBorderLeftWidth', blockName )
+			: '';
+	let toggleBorderBFallback =
+		undefined !== toggleBorder[ 'border-bottom-width' ]
+			? getAttributeFallback(
+					toggleBorder[ 'border-bottom-width' ],
+					'checkBoxToggleBorderBottomWidth',
+					blockName
+			  )
+			: '';
+	let toggleBorderRFallback =
+		undefined !== toggleBorder[ 'border-right-width' ]
+			? getAttributeFallback( toggleBorder[ 'border-right-width' ], 'checkBoxToggleBorderBottomRight', blockName )
+			: '';
 
 	toggleBorderTFallback = isNaN( toggleBorderTFallback ) ? toggleBorderTFallback : `${ toggleBorderTFallback }px`;
 	toggleBorderRFallback = isNaN( toggleBorderRFallback ) ? toggleBorderRFallback : `${ toggleBorderRFallback }px`;
 	toggleBorderBFallback = isNaN( toggleBorderBFallback ) ? toggleBorderBFallback : `${ toggleBorderBFallback }px`;
 	toggleBorderLFallback = isNaN( toggleBorderLFallback ) ? toggleBorderLFallback : `${ toggleBorderLFallback }px`;
-	const toggleBorderTTabletFallback = ( 'px' !== toggleBorderTablet['border-top-width'] && '' !== toggleBorderTablet['border-top-width'] ) ? toggleBorderTablet['border-top-width'] : toggleBorderTFallback;
-	const toggleBorderRTabletFallback = ( 'px' !== toggleBorderTablet['border-right-width'] && '' !== toggleBorderTablet['border-right-width'] ) ? toggleBorderTablet['border-right-width'] : toggleBorderRFallback;
-	const toggleBorderBTabletFallback = ( 'px' !== toggleBorderTablet['border-bottom-width'] && '' !== toggleBorderTablet['border-bottom-width'] ) ? toggleBorderTablet['border-bottom-width'] : toggleBorderBFallback;
-	const toggleBorderLTabletFallback = ( 'px' !== toggleBorderTablet['border-left-width'] && '' !== toggleBorderTablet['border-left-width'] ) ? toggleBorderTablet['border-left-width'] : toggleBorderLFallback;
-	const toggleBorderTMobileFallback = ( 'px' !== toggleBorderMobile['border-top-width'] && '' !== toggleBorderMobile['border-top-width'] ) ? toggleBorderMobile['border-top-width'] : toggleBorderTTabletFallback;
-	const toggleBorderRMobileFallback = ( 'px' !== toggleBorderMobile['border-right-width'] && '' !== toggleBorderMobile['border-right-width'] ) ? toggleBorderMobile['border-right-width'] : toggleBorderRTabletFallback;
-	const toggleBorderBMobileFallback = ( 'px' !== toggleBorderMobile['border-bottom-width'] && '' !== toggleBorderMobile['border-bottom-width'] ) ? toggleBorderMobile['border-bottom-width'] : toggleBorderBTabletFallback;
-	const toggleBorderLMobileFallback = ( 'px' !== toggleBorderMobile['border-left-width'] && '' !== toggleBorderMobile['border-left-width'] ) ? toggleBorderMobile['border-left-width'] : toggleBorderLTabletFallback;
+	const toggleBorderTTabletFallback =
+		'px' !== toggleBorderTablet[ 'border-top-width' ] && '' !== toggleBorderTablet[ 'border-top-width' ]
+			? toggleBorderTablet[ 'border-top-width' ]
+			: toggleBorderTFallback;
+	const toggleBorderRTabletFallback =
+		'px' !== toggleBorderTablet[ 'border-right-width' ] && '' !== toggleBorderTablet[ 'border-right-width' ]
+			? toggleBorderTablet[ 'border-right-width' ]
+			: toggleBorderRFallback;
+	const toggleBorderBTabletFallback =
+		'px' !== toggleBorderTablet[ 'border-bottom-width' ] && '' !== toggleBorderTablet[ 'border-bottom-width' ]
+			? toggleBorderTablet[ 'border-bottom-width' ]
+			: toggleBorderBFallback;
+	const toggleBorderLTabletFallback =
+		'px' !== toggleBorderTablet[ 'border-left-width' ] && '' !== toggleBorderTablet[ 'border-left-width' ]
+			? toggleBorderTablet[ 'border-left-width' ]
+			: toggleBorderLFallback;
+	const toggleBorderTMobileFallback =
+		'px' !== toggleBorderMobile[ 'border-top-width' ] && '' !== toggleBorderMobile[ 'border-top-width' ]
+			? toggleBorderMobile[ 'border-top-width' ]
+			: toggleBorderTTabletFallback;
+	const toggleBorderRMobileFallback =
+		'px' !== toggleBorderMobile[ 'border-right-width' ] && '' !== toggleBorderMobile[ 'border-right-width' ]
+			? toggleBorderMobile[ 'border-right-width' ]
+			: toggleBorderRTabletFallback;
+	const toggleBorderBMobileFallback =
+		'px' !== toggleBorderMobile[ 'border-bottom-width' ] && '' !== toggleBorderMobile[ 'border-bottom-width' ]
+			? toggleBorderMobile[ 'border-bottom-width' ]
+			: toggleBorderBTabletFallback;
+	const toggleBorderLMobileFallback =
+		'px' !== toggleBorderMobile[ 'border-left-width' ] && '' !== toggleBorderMobile[ 'border-left-width' ]
+			? toggleBorderMobile[ 'border-left-width' ]
+			: toggleBorderLTabletFallback;
 
-	const submitBorder = generateBorderCSS( props.attributes, 'btn' );
-	const submitBorderTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
-	const submitBorderMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+	const submitBorder = generateBorderCSS( attributes, 'btn' );
+	const submitBorderTablet = generateBorderCSS( attributes, 'btn', 'tablet' );
+	const submitBorderMobile = generateBorderCSS( attributes, 'btn', 'mobile' );
 
 	selectors = {
 		'.uagb-forms__outer-wrap': {
@@ -250,10 +359,7 @@ function styling( props ) {
 		},
 		' .uagb-forms-main-form .uagb-forms-input-label': {
 			'font-size': generateCSSUnit( labelFontSize, labelFontSizeType ),
-			'line-height': generateCSSUnit(
-				labelLineHeight,
-				labelLineHeightType
-			),
+			'line-height': generateCSSUnit( labelLineHeight, labelLineHeightType ),
 			'font-family': labelFontFamily,
 			'font-style': labelFontStyle,
 			'text-transform': labelTransform,
@@ -265,10 +371,7 @@ function styling( props ) {
 		},
 		' .uagb-forms-main-form  .uagb-forms-input::placeholder': {
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
-			'line-height': generateCSSUnit(
-				inputLineHeight,
-				inputLineHeightType
-			),
+			'line-height': generateCSSUnit( inputLineHeight, inputLineHeightType ),
 			'font-family': inputFontFamily,
 			'font-style': inputFontStyle,
 			'text-transform': inputTransform,
@@ -279,10 +382,7 @@ function styling( props ) {
 		},
 		' .uagb-forms-main-form input': {
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
-			'line-height': generateCSSUnit(
-				inputLineHeight,
-				inputLineHeightType
-			),
+			'line-height': generateCSSUnit( inputLineHeight, inputLineHeightType ),
 			'font-family': inputFontFamily,
 			'font-style': inputFontStyle,
 			'text-transform': inputTransform,
@@ -296,10 +396,7 @@ function styling( props ) {
 		},
 		' .uagb-forms-main-form textarea': {
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
-			'line-height': generateCSSUnit(
-				inputLineHeight,
-				inputLineHeightType
-			),
+			'line-height': generateCSSUnit( inputLineHeight, inputLineHeightType ),
 			'font-family': inputFontFamily,
 			'font-style': inputFontStyle,
 			'text-transform': inputTransform,
@@ -310,10 +407,7 @@ function styling( props ) {
 		},
 		' .uagb-forms-main-form select': {
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
-			'line-height': generateCSSUnit(
-				inputLineHeight,
-				inputLineHeightType
-			),
+			'line-height': generateCSSUnit( inputLineHeight, inputLineHeightType ),
 			'font-family': inputFontFamily,
 			'font-style': inputFontStyle,
 			'text-transform': inputTransform,
@@ -328,30 +422,23 @@ function styling( props ) {
 			'background-color': `${ bgActiveColor } !important`,
 		},
 		' .uagb-forms-main-form .uagb-forms-input:focus::placeholder': {
-			'color': `${ inputplaceholderActiveColor } !important`
+			'color': `${ inputplaceholderActiveColor } !important`,
 		},
 		' .uagb-forms-main-form .uagb-forms-phone-flex': {
 			'height': `calc(${
 				inputLineHeight ? generateCSSUnit( inputLineHeight, inputLineHeightType ) : '2em'
-			} + ${
-				generateCSSUnit( paddingFieldTop, paddingFieldUnit )
-			} + ${
-				generateCSSUnit( paddingFieldBottom, paddingFieldUnit )
-			})`,
+			} + ${ generateCSSUnit( paddingFieldTop, paddingFieldUnit ) } + ${ generateCSSUnit(
+				paddingFieldBottom,
+				paddingFieldUnit
+			) })`,
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
 			'text-align': buttonAlign,
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button': {
 			'color': submitColor,
-			'font-size': generateCSSUnit(
-				submitTextFontSize,
-				submitTextFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				submitTextLineHeight,
-				submitTextLineHeightType
-			),
+			'font-size': generateCSSUnit( submitTextFontSize, submitTextFontSizeType ),
+			'line-height': generateCSSUnit( submitTextLineHeight, submitTextLineHeightType ),
 			'font-family': submitTextFontFamily,
 			'font-style': submitTextFontStyle,
 			'text-transform': submitTextTransform,
@@ -359,36 +446,23 @@ function styling( props ) {
 			'font-weight': submitTextFontWeight,
 			...submitBorder,
 			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
-			'padding-bottom': generateCSSUnit(
-				paddingBtnBottom,
-				paddingBtnUnit
-			),
+			'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
 			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 			'letter-spacing': generateCSSUnit( submitTextLetterSpacing, submitTextLetterSpacingType ),
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background)': {
 			'color': submitColor,
-			'font-size': generateCSSUnit(
-				submitTextFontSize,
-				submitTextFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				submitTextLineHeight,
-				submitTextLineHeightType
-			),
+			'font-size': generateCSSUnit( submitTextFontSize, submitTextFontSizeType ),
+			'line-height': generateCSSUnit( submitTextLineHeight, submitTextLineHeightType ),
 			'font-family': submitTextFontFamily,
 			'font-style': submitTextFontStyle,
 			'text-transform': submitTextTransform,
 			'text-decoration': submitTextDecoration,
 			'font-weight': submitTextFontWeight,
-			'background-color': submitBgColor,
 			...submitBorder,
 			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
-			'padding-bottom': generateCSSUnit(
-				paddingBtnBottom,
-				paddingBtnUnit
-			),
+			'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
 			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 		},
@@ -403,12 +477,16 @@ function styling( props ) {
 		' .uagb-switch': {
 			// 20 is the min size of the toggle.
 			// Space around the toggle dot is calculated as 1/6th the size of the toggle dot.
-			'height': `calc(${ toggleBorder['border-bottom-width'] } + ${ toggleBorder['border-top-width'] } + ${ generateCSSUnit(
-				parseInt( 20 + toggleWidthSizeNumber + ( ( 20 + toggleWidthSizeNumber ) / 3 ) ),
+			'height': `calc(${ toggleBorder[ 'border-bottom-width' ] } + ${
+				toggleBorder[ 'border-top-width' ]
+			} + ${ generateCSSUnit(
+				parseInt( 20 + toggleWidthSizeNumber + ( 20 + toggleWidthSizeNumber ) / 3 ),
 				'px'
 			) })`,
-			'width': `calc(${ toggleBorder['border-left-width'] } + ${ toggleBorder['border-right-width'] } + ${ generateCSSUnit(
-				parseInt( ( ( 20 + toggleWidthSizeNumber ) * 2.5 ) + ( ( 20 + toggleWidthSizeNumber ) / 3 ) ),
+			'width': `calc(${ toggleBorder[ 'border-left-width' ] } + ${
+				toggleBorder[ 'border-right-width' ]
+			} + ${ generateCSSUnit(
+				parseInt( ( 20 + toggleWidthSizeNumber ) * 2.5 + ( 20 + toggleWidthSizeNumber ) / 3 ),
 				'px'
 			) })`,
 		},
@@ -436,7 +514,7 @@ function styling( props ) {
 		},
 		' .uagb-switch input:checked + .uagb-slider:before ': {
 			'transform': `translateX(${ generateCSSUnit(
-				parseInt( ( ( ( 20 + toggleWidthSizeNumber ) * 2.5 ) - ( 20 + toggleWidthSizeNumber ) ) ),
+				parseInt( ( 20 + toggleWidthSizeNumber ) * 2.5 - ( 20 + toggleWidthSizeNumber ) ),
 				'px'
 			) })`,
 			'background-color': toggleDotActiveColor,
@@ -532,17 +610,17 @@ function styling( props ) {
 			'width': generateCSSUnit( toggleSizeTabletFallback, 'px' ),
 			'height': generateCSSUnit( toggleSizeTabletFallback, 'px' ),
 		},
-		' .uagb-switch' : {
-			'height': `calc(${ toggleBorderTTabletFallback} + ${ toggleBorderBTabletFallback } + ${ generateCSSUnit(
-				parseInt( 20 + toggleWidthSizeNumberTablet + ( ( 20 + toggleWidthSizeNumberTablet ) / 3 ) ),
+		' .uagb-switch': {
+			'height': `calc(${ toggleBorderTTabletFallback } + ${ toggleBorderBTabletFallback } + ${ generateCSSUnit(
+				parseInt( 20 + toggleWidthSizeNumberTablet + ( 20 + toggleWidthSizeNumberTablet ) / 3 ),
 				'px'
 			) })`,
 			'width': `calc(${ toggleBorderLTabletFallback } + ${ toggleBorderRTabletFallback } + ${ generateCSSUnit(
-				parseInt( ( ( 20 + toggleWidthSizeNumberTablet ) * 2.5 ) + ( ( 20 + toggleWidthSizeNumberTablet ) / 3 ) ),
+				parseInt( ( 20 + toggleWidthSizeNumberTablet ) * 2.5 + ( 20 + toggleWidthSizeNumberTablet ) / 3 ),
 				'px'
 			) })`,
 		},
-		' .uagb-switch .uagb-slider:before' : {
+		' .uagb-switch .uagb-slider:before': {
 			'height': generateCSSUnit( 20 + toggleWidthSizeNumberTablet, 'px' ),
 			'width': generateCSSUnit( 20 + toggleWidthSizeNumberTablet, 'px' ),
 			'top': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeNumberTablet ) / 6 ), 'px' ),
@@ -554,64 +632,31 @@ function styling( props ) {
 		' .uagb-slider.round': {
 			'border-radius': generateCSSUnit( 20 + toggleWidthSizeNumberTablet, 'px' ),
 		},
-		' .uagb-switch input:checked + .uagb-slider:before ' : {
+		' .uagb-switch input:checked + .uagb-slider:before ': {
 			'transform': `translateX(${ generateCSSUnit(
-				parseInt( ( ( ( 20 + toggleWidthSizeNumberTablet ) * 2.5 ) - ( 20 + toggleWidthSizeNumberTablet ) ) ),
+				parseInt( ( 20 + toggleWidthSizeNumberTablet ) * 2.5 - ( 20 + toggleWidthSizeNumberTablet ) ),
 				'px'
 			) })`,
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button': {
-			'padding-top': generateCSSUnit(
-				paddingBtnTopTablet,
-				tabletPaddingBtnUnit
-			),
-			'padding-bottom': generateCSSUnit(
-				paddingBtnBottomTablet,
-				tabletPaddingBtnUnit
-			),
-			'padding-left': generateCSSUnit(
-				paddingBtnLeftTablet,
-				tabletPaddingBtnUnit
-			),
-			'padding-right': generateCSSUnit(
-				paddingBtnRightTablet,
-				tabletPaddingBtnUnit
-			),
-			'font-size': generateCSSUnit(
-				submitTextFontSizeTablet,
-				submitTextFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				submitTextLineHeightTablet,
-				submitTextLineHeightType
-			),
-			'letter-spacing': generateCSSUnit(
-				submitTextLetterSpacingTablet,
-				submitTextLetterSpacingType
-			),
-			...submitBorderTablet
+			'padding-top': generateCSSUnit( paddingBtnTopTablet, tabletPaddingBtnUnit ),
+			'padding-bottom': generateCSSUnit( paddingBtnBottomTablet, tabletPaddingBtnUnit ),
+			'padding-left': generateCSSUnit( paddingBtnLeftTablet, tabletPaddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRightTablet, tabletPaddingBtnUnit ),
+			'font-size': generateCSSUnit( submitTextFontSizeTablet, submitTextFontSizeType ),
+			'line-height': generateCSSUnit( submitTextLineHeightTablet, submitTextLineHeightType ),
+			'letter-spacing': generateCSSUnit( submitTextLetterSpacingTablet, submitTextLetterSpacingType ),
+			...submitBorderTablet,
 		},
 		' .uagb-forms-main-form .uagb-forms-input-label': {
-			'font-size': generateCSSUnit(
-				labelFontSizeTablet,
-				labelFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				labelLineHeightTablet,
-				labelLineHeightType
-			),
+			'font-size': generateCSSUnit( labelFontSizeTablet, labelFontSizeType ),
+			'line-height': generateCSSUnit( labelLineHeightTablet, labelLineHeightType ),
 			'margin-bottom': generateCSSUnit( labelGapTablet, labelGapUnit ),
 			'letter-spacing': generateCSSUnit( labelLetterSpacingTablet, labelLetterSpacingType ),
 		},
 		' .uagb-forms-main-form  .uagb-forms-input::placeholder': {
-			'font-size': generateCSSUnit(
-				inputFontSizeTablet,
-				inputFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				inputLineHeightTablet,
-				inputLineHeightType
-			),
+			'font-size': generateCSSUnit( inputFontSizeTablet, inputFontSizeType ),
+			'line-height': generateCSSUnit( inputLineHeightTablet, inputLineHeightType ),
 			'letter-spacing': generateCSSUnit( inputLetterSpacingTablet, inputLetterSpacingType ),
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
@@ -651,17 +696,17 @@ function styling( props ) {
 		' .uagb-forms-main-form .uagb-forms-field-set': {
 			'margin-bottom': generateCSSUnit( fieldGapMobile, fieldGapType ),
 		},
-		' .uagb-switch' : {
+		' .uagb-switch': {
 			'height': `calc(${ toggleBorderTMobileFallback } + ${ toggleBorderBMobileFallback } + ${ generateCSSUnit(
-				parseInt(  20 + toggleWidthSizeNumberMobile + ( ( 20 + toggleWidthSizeNumberMobile ) / 3 ) ),
+				parseInt( 20 + toggleWidthSizeNumberMobile + ( 20 + toggleWidthSizeNumberMobile ) / 3 ),
 				'px'
 			) })`,
 			'width': `calc(${ toggleBorderLMobileFallback } + ${ toggleBorderRMobileFallback } + ${ generateCSSUnit(
-				parseInt(  ( ( 20 + toggleWidthSizeNumberMobile ) * 2.5 ) + ( ( 20 + toggleWidthSizeNumberMobile ) / 3 ) ),
+				parseInt( ( 20 + toggleWidthSizeNumberMobile ) * 2.5 + ( 20 + toggleWidthSizeNumberMobile ) / 3 ),
 				'px'
 			) })`,
 		},
-		' .uagb-switch .uagb-slider:before' : {
+		' .uagb-switch .uagb-slider:before': {
 			'height': generateCSSUnit( 20 + toggleWidthSizeNumberMobile, 'px' ),
 			'width': generateCSSUnit( 20 + toggleWidthSizeNumberMobile, 'px' ),
 			'top': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeNumberMobile ) / 6 ), 'px' ),
@@ -673,61 +718,32 @@ function styling( props ) {
 		' .uagb-slider.round': {
 			'border-radius': generateCSSUnit( 20 + toggleWidthSizeNumberMobile, 'px' ),
 		},
-		' .uagb-switch input:checked + .uagb-slider:before ' : {
+		' .uagb-switch input:checked + .uagb-slider:before ': {
 			'transform': `translateX(${ generateCSSUnit(
-				parseInt( ( ( ( 20 + toggleWidthSizeNumberMobile ) * 2.5 ) - ( 20 + toggleWidthSizeNumberMobile ) ) ),
+				parseInt( ( 20 + toggleWidthSizeNumberMobile ) * 2.5 - ( 20 + toggleWidthSizeNumberMobile ) ),
 				'px'
 			) })`,
 		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button': { // eslint-disable-line no-dupe-keys
-			'padding-top': generateCSSUnit(
-				paddingBtnTopMobile,
-				mobilePaddingBtnUnit
-			),
-			'padding-bottom': generateCSSUnit(
-				paddingBtnBottomMobile,
-				mobilePaddingBtnUnit
-			),
-			'padding-left': generateCSSUnit(
-				paddingBtnLeftMobile,
-				mobilePaddingBtnUnit
-			),
-			'padding-right': generateCSSUnit(
-				paddingBtnRightMobile,
-				mobilePaddingBtnUnit
-			),
-			'font-size': generateCSSUnit(
-				submitTextFontSizeMobile,
-				submitTextFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				submitTextLineHeightMobile,
-				submitTextLineHeightType
-			),
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button': {
+			// eslint-disable-line no-dupe-keys
+			'padding-top': generateCSSUnit( paddingBtnTopMobile, mobilePaddingBtnUnit ),
+			'padding-bottom': generateCSSUnit( paddingBtnBottomMobile, mobilePaddingBtnUnit ),
+			'padding-left': generateCSSUnit( paddingBtnLeftMobile, mobilePaddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRightMobile, mobilePaddingBtnUnit ),
+			'font-size': generateCSSUnit( submitTextFontSizeMobile, submitTextFontSizeType ),
+			'line-height': generateCSSUnit( submitTextLineHeightMobile, submitTextLineHeightType ),
 			...submitBorderMobile,
 			'letter-spacing': generateCSSUnit( submitTextLetterSpacingMobile, submitTextLetterSpacingType ),
 		},
 		' .uagb-forms-main-form .uagb-forms-input-label': {
-			'font-size': generateCSSUnit(
-				labelFontSizeMobile,
-				labelFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				labelLineHeightMobile,
-				labelLineHeightType
-			),
+			'font-size': generateCSSUnit( labelFontSizeMobile, labelFontSizeType ),
+			'line-height': generateCSSUnit( labelLineHeightMobile, labelLineHeightType ),
 			'margin-bottom': generateCSSUnit( labelGapMobile, labelGapUnit ),
 			'letter-spacing': generateCSSUnit( labelLetterSpacingMobile, labelLetterSpacingType ),
 		},
 		' .uagb-forms-main-form  .uagb-forms-input::placeholder': {
-			'font-size': generateCSSUnit(
-				inputFontSizeMobile,
-				inputFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				inputLineHeightMobile,
-				inputLineHeightType
-			),
+			'font-size': generateCSSUnit( inputFontSizeMobile, inputFontSizeType ),
+			'line-height': generateCSSUnit( inputLineHeightMobile, inputLineHeightType ),
 			'letter-spacing': generateCSSUnit( inputLetterSpacingMobile, inputLetterSpacingType ),
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
@@ -737,102 +753,92 @@ function styling( props ) {
 	};
 
 	if ( 'color' === submitBgType ) {
-		selectors[ ' .uagb-forms-main-form  .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button.wp-block-button__link' ] = {
+		selectors[
+			' .uagb-forms-main-form  .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button.wp-block-button__link'
+		] = {
 			'background-color': submitBgColor,
 		};
-	} else if( 'gradient' === submitBgType ) {
-
+	} else if ( 'gradient' === submitBgType ) {
 		const backgroundAttributes = {
 			'backgroundType': 'gradient',
 			'gradientValue': gradientValue,
+			'gradientColor1': gradientColor1,
+			'gradientColor2': gradientColor2,
+			'gradientLocation1': gradientLocation1,
+			'gradientLocation2': gradientLocation2,
+			'gradientType': gradientType,
+			'gradientAngle': gradientAngle,
+			'selectGradient': selectGradient,
 		};
 
 		const btnBackground = generateBackgroundCSS( backgroundAttributes );
 
-		selectors[ ' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button.wp-block-button__link' ] = btnBackground;
-	} else if( 'transparent' === submitBgType ) {
-		selectors[ ' .uagb-forms-main-form  .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button.wp-block-button__link' ] = {
+		selectors[
+			' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button.wp-block-button__link'
+		] = btnBackground;
+	} else if ( 'transparent' === submitBgType ) {
+		selectors[
+			' .uagb-forms-main-form  .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button.wp-block-button__link'
+		] = {
 			'background': 'transparent',
 		};
 	}
 	//Hover
 	if ( 'color' === submitBgHoverType ) {
-		selectors[ ' .uagb-forms-main-form  .uagb-forms-main-submit-button-wrap:hover .uagb-forms-main-submit-button.wp-block-button__link' ] = {
+		selectors[
+			' .uagb-forms-main-form  .uagb-forms-main-submit-button-wrap:hover .uagb-forms-main-submit-button.wp-block-button__link'
+		] = {
 			'background-color': submitBgColorHover,
 		};
-	} else if( 'gradient' === submitBgHoverType ) {
-
+	} else if ( 'gradient' === submitBgHoverType ) {
 		const hoverbackgroundAttributes = {
 			'backgroundType': 'gradient',
 			'gradientValue': gradientHValue,
+			'gradientColor1': gradientHColor1,
+			'gradientColor2': gradientHColor2,
+			'gradientLocation1': gradientHLocation1,
+			'gradientLocation2': gradientHLocation2,
+			'gradientType': gradientHType,
+			'gradientAngle': gradientHAngle,
+			'selectGradient': selectHGradient,
 		};
 
 		const btnhBackground = generateBackgroundCSS( hoverbackgroundAttributes );
 
-		selectors[ ' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap:hover .uagb-forms-main-submit-button.wp-block-button__link' ] = btnhBackground;
-
-	} else if( 'transparent' === submitBgHoverType ) {
-		selectors[ ' .uagb-forms-main-form  .uagb-forms-main-submit-button-wrap:hover .uagb-forms-main-submit-button.wp-block-button__link' ] = {
-			'background' : 'transparent',
-		}
+		selectors[
+			' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap:hover .uagb-forms-main-submit-button.wp-block-button__link'
+		] = btnhBackground;
+	} else if ( 'transparent' === submitBgHoverType ) {
+		selectors[
+			' .uagb-forms-main-form  .uagb-forms-main-submit-button-wrap:hover .uagb-forms-main-submit-button.wp-block-button__link'
+		] = {
+			'background': 'transparent',
+		};
 	}
-	
+
 	if ( 'boxed' === formStyle ) {
 		selectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
 			...inputBorder,
 			'background-color': bgColor,
 			'color': inputColor,
 			'padding-top': generateCSSUnit( paddingFieldTop, paddingFieldUnit ),
-			'padding-bottom': generateCSSUnit(
-				paddingFieldBottom,
-				paddingFieldUnit
-			),
-			'padding-left': generateCSSUnit(
-				paddingFieldLeft,
-				paddingFieldUnit
-			),
-			'padding-right': generateCSSUnit(
-				paddingFieldRight,
-				paddingFieldUnit
-			),
+			'padding-bottom': generateCSSUnit( paddingFieldBottom, paddingFieldUnit ),
+			'padding-left': generateCSSUnit( paddingFieldLeft, paddingFieldUnit ),
+			'padding-right': generateCSSUnit( paddingFieldRight, paddingFieldUnit ),
 		};
 		tabletSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
 			...inputBorderTablet,
-			'padding-top': generateCSSUnit(
-				paddingFieldTopTablet,
-				paddingFieldUnitTablet
-			),
-			'padding-bottom': generateCSSUnit(
-				paddingFieldBottomTablet,
-				paddingFieldUnitTablet
-			),
-			'padding-left': generateCSSUnit(
-				paddingFieldLeftTablet,
-				paddingFieldUnitTablet
-			),
-			'padding-right': generateCSSUnit(
-				paddingFieldRightTablet,
-				paddingFieldUnitTablet
-			),
+			'padding-top': generateCSSUnit( paddingFieldTopTablet, paddingFieldUnitTablet ),
+			'padding-bottom': generateCSSUnit( paddingFieldBottomTablet, paddingFieldUnitTablet ),
+			'padding-left': generateCSSUnit( paddingFieldLeftTablet, paddingFieldUnitTablet ),
+			'padding-right': generateCSSUnit( paddingFieldRightTablet, paddingFieldUnitTablet ),
 		};
 		mobileSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
 			...inputBorderMobile,
-			'padding-top': generateCSSUnit(
-				paddingFieldTopMobile,
-				paddingFieldUnitmobile
-			),
-			'padding-bottom': generateCSSUnit(
-				paddingFieldBottomMobile,
-				paddingFieldUnitmobile
-			),
-			'padding-left': generateCSSUnit(
-				paddingFieldLeftMobile,
-				paddingFieldUnitmobile
-			),
-			'padding-right': generateCSSUnit(
-				paddingFieldRightMobile,
-				paddingFieldUnitmobile
-			),
+			'padding-top': generateCSSUnit( paddingFieldTopMobile, paddingFieldUnitmobile ),
+			'padding-bottom': generateCSSUnit( paddingFieldBottomMobile, paddingFieldUnitmobile ),
+			'padding-left': generateCSSUnit( paddingFieldLeftMobile, paddingFieldUnitmobile ),
+			'padding-right': generateCSSUnit( paddingFieldRightMobile, paddingFieldUnitmobile ),
 		};
 		selectors[
 			' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'
@@ -840,9 +846,7 @@ function styling( props ) {
 		selectors[
 			' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before'
 		] = toggleBorder;
-		selectors[
-			' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before'
-		] = toggleBorder;
+		selectors[ ' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before' ] = toggleBorder;
 		selectors[ ' .uagb-slider ' ] = {
 			...toggleBorder,
 			'background-color': toggleColor,
@@ -884,18 +888,9 @@ function styling( props ) {
 			...inputBorder,
 			'color': inputColor,
 			'padding-top': generateCSSUnit( paddingFieldTop, paddingFieldUnit ),
-			'padding-bottom': generateCSSUnit(
-				paddingFieldBottom,
-				paddingFieldUnit
-			),
-			'padding-left': generateCSSUnit(
-				paddingFieldLeft,
-				paddingFieldUnit
-			),
-			'padding-right': generateCSSUnit(
-				paddingFieldRight,
-				paddingFieldUnit
-			),
+			'padding-bottom': generateCSSUnit( paddingFieldBottom, paddingFieldUnit ),
+			'padding-left': generateCSSUnit( paddingFieldLeft, paddingFieldUnit ),
+			'padding-right': generateCSSUnit( paddingFieldRight, paddingFieldUnit ),
 		};
 		selectors[ ' .uagb-forms-main-form .uagb-forms-input:focus' ] = {
 			'border-top-width': 0,
@@ -904,46 +899,20 @@ function styling( props ) {
 			'box-shadow': 'unset',
 		};
 		tabletSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
-			'padding-top': generateCSSUnit(
-				paddingFieldTopTablet,
-				paddingFieldUnitTablet
-			),
-			'padding-bottom': generateCSSUnit(
-				paddingFieldBottomTablet,
-				paddingFieldUnitTablet
-			),
-			'padding-left': generateCSSUnit(
-				paddingFieldLeftTablet,
-				paddingFieldUnitTablet
-			),
-			'padding-right': generateCSSUnit(
-				paddingFieldRightTablet,
-				paddingFieldUnitTablet
-			),
-			...inputBorderTablet
+			'padding-top': generateCSSUnit( paddingFieldTopTablet, paddingFieldUnitTablet ),
+			'padding-bottom': generateCSSUnit( paddingFieldBottomTablet, paddingFieldUnitTablet ),
+			'padding-left': generateCSSUnit( paddingFieldLeftTablet, paddingFieldUnitTablet ),
+			'padding-right': generateCSSUnit( paddingFieldRightTablet, paddingFieldUnitTablet ),
+			...inputBorderTablet,
 		};
 		mobileSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
-			'padding-top': generateCSSUnit(
-				paddingFieldTopMobile,
-				paddingFieldUnitmobile
-			),
-			'padding-bottom': generateCSSUnit(
-				paddingFieldBottomMobile,
-				paddingFieldUnitmobile
-			),
-			'padding-left': generateCSSUnit(
-				paddingFieldLeftMobile,
-				paddingFieldUnitmobile
-			),
-			'padding-right': generateCSSUnit(
-				paddingFieldRightMobile,
-				paddingFieldUnitmobile
-			),
-			...inputBorderMobile
+			'padding-top': generateCSSUnit( paddingFieldTopMobile, paddingFieldUnitmobile ),
+			'padding-bottom': generateCSSUnit( paddingFieldBottomMobile, paddingFieldUnitmobile ),
+			'padding-left': generateCSSUnit( paddingFieldLeftMobile, paddingFieldUnitmobile ),
+			'padding-right': generateCSSUnit( paddingFieldRightMobile, paddingFieldUnitmobile ),
+			...inputBorderMobile,
 		};
-		selectors[
-			' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'
-		] = {
+		selectors[ ' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before' ] = {
 			'border-bottom':
 				generateCSSUnit( checkBoxToggleBorderBottomWidth, 'px' ) +
 				' ' +
@@ -951,9 +920,7 @@ function styling( props ) {
 				' ' +
 				checkBoxToggleBorderColor,
 		};
-		selectors[
-			' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before'
-		] = {
+		selectors[ ' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before' ] = {
 			'border-bottom':
 				generateCSSUnit( checkBoxToggleBorderBottomWidth, 'px' ) +
 				' ' +
@@ -961,9 +928,7 @@ function styling( props ) {
 				' ' +
 				checkBoxToggleBorderColor,
 		};
-		selectors[
-			' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before'
-		] = {
+		selectors[ ' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before' ] = {
 			'border-bottom':
 				generateCSSUnit( checkBoxToggleBorderBottomWidth, 'px' ) +
 				' ' +
@@ -983,25 +948,12 @@ function styling( props ) {
 	}
 
 	let stylingCss = '';
-	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
-		0,
-		8
-	) }`;
+	const base_selector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
 	stylingCss = generateCSS( selectors, base_selector );
 
-	stylingCss += generateCSS(
-		tabletSelectors,
-		`${ base_selector }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
+	stylingCss += generateCSS( tabletSelectors, `${ base_selector }`, true, 'tablet' );
 
-	stylingCss += generateCSS(
-		mobileSelectors,
-		`${ base_selector }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	stylingCss += generateCSS( mobileSelectors, `${ base_selector }`, true, 'mobile' );
 
 	return stylingCss;
 }

@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.2  
-**Stable tag:** 2.4.2  
+**Stable tag:** 2.5.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -170,8 +170,36 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+### 2.5.0 - THURSDAY, 20th APRIL 2023 ###
+* New: Spectra now has support for the all-new Spectra Pro!
+* Improvement: Global - Improved the editor performance.
+* Improvement: Global - Added Advanced options in Gradient Component.
+* Fix: Container - Resolved an issue where the heading tags were not inheriting the color from the theme or the Container.
+* Fix: Container - Removed Z-index restrictions that caused Image Gallery Lightboxes to get overlapped by other content.
+* Fix: Container - Handled the full-width issue encountered with the Neve theme on the front-end.
+* Fix: Container - Fixed settings link control's unlink functionality.
+* Fix: Heading - Removed the extra padding that was visible in the editor.
+* Fix: Image - Resolved an issue where the width and height tags would not appear when an image is uploaded.
+* Fix: Image - Removed the extra spacing and fixed the escaping container size issue in FSE themes.
+* Fix: Image - Resolved an issue in which the image sizing was incorrectly set for mobile devices on the front-end.
+* Fix: Countdown - Fixed separator line-height mismatch between the editor and the front-end.
+* Fix: Forms - Resolved an accessibility issue wherein the field labels for date and toggle child were missing.
+* Fix: Image Gallery - Replaced the null array focus list with an optimized object.
+* Fix: Image Gallery - Updated the carousel gap to work as required.
+* Fix: Modal - Removed the trigger alignment option for automatic, custom ID and custom class trigger types.
+* Fix: Post Carousel - Resolved an issue in the TwentyTwentyone theme wherein the hover styles for arrows and dots were mismatched in the editor and front-end.
+* Fix: Post Carousel - Resolved an issue in which the gap between posts was not visible when only 2 posts were present.
+* Fix: Slider - Updated dot color setting to avoid taking the background color of arrows.
+* Fix: Table Of Contents - Resolved an HTML validation issue in the HTML validator.
+* Fix: Advanced Columns - Resolved an issue in which the border radius was not getting applied in the front-end.
+* Fix: Controls - Updated control UI to render seamlessly when in RTL mode.
+* Fix: Spacing Control - Removed the capability to set negative values for width and border radius settings.
+* Fix: Typography Control - Removed the capability to set negative values for line height and font size settings.
+* Fix: Global - Resolved an issue in which fonts would not load in the customizer when Spectra blocks are used in Astra theme's header/footer section.
+* Fix: Global - Updated the mobile settings to inherit tablet setting values in the editor instead of inheriting desktop values.
+
 ### 2.4.2 - WEDNESDAY, 12th APRIL 2023 ###
-* Fix: Container - Updated default content width for block based themes to wideSize.
+* Fix: Container - Updated the default content width for block-based themes to "wideSize".
 
 ### 2.4.1 - TUESDAY, 28th MARCH 2023 ###
 * Improvement: Updated Spectra to work with WordPress 6.2 and Full Site Editing (FSE) themes.

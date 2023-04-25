@@ -1,6 +1,5 @@
 /** Text Shadow Popup CSS*/
 .uag-text-shadow-options {
-
 	margin-bottom: 24px;
 	position: relative;
 
@@ -23,7 +22,7 @@
 				line-height: 20px;
 			}
 
-			&:focus:not(:disabled) {
+			&:focus:not( :disabled ) {
 				box-shadow: none;
 				outline: none;
 			}
@@ -87,4 +86,3 @@
 .block-editor-block-inspector .components-base-control:last-child {
 	margin-bottom: 0;
 }
-

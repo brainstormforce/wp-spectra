@@ -47,7 +47,8 @@ const Render = ( props ) => {
 
 		const onReset = () => {
 			const newBlocks = [];
-			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attribute ] ) => { // eslint-disable-line no-shadow
+			// eslint-disable-next-line no-shadow
+			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attribute ] ) => {
 				newBlocks.push( createBlock( name, attribute ) );
 				return true;
 			} );
@@ -68,13 +69,10 @@ const Render = ( props ) => {
 				<div className="uagb-post-grid uagb-block-all-post-grid-item-template">
 					<Tip>
 						{ __(
-							'Edit the blocks inside the preview below to change the content displayed for each post within the post grid.'
+							'Edit the blocks inside the preview below to change the content displayed for each post within the post grid.', 'ultimate-addons-for-gutenberg'
 						) }
 					</Tip>
-					<InnerBlockLayoutContextProvider
-						parentName="uagb/post-masonry"
-						parentClassName="uagb-block-grid"
-					>
+					<InnerBlockLayoutContextProvider parentName="uagb/post-masonry" parentClassName="uagb-block-grid">
 						<article className="uagb-post__inner-wrap uagb-post__edit-mode">
 							<div className="uagb-post__text">
 								<InnerBlocks { ...InnerBlockProps } />
@@ -82,25 +80,14 @@ const Render = ( props ) => {
 						</article>
 					</InnerBlockLayoutContextProvider>
 					<div className="uagb-block-all-post__actions">
-						<Button
-							className="uagb-block-all-post__done-button"
-							isPrimary
-							onClick={ onDone }
-						>
-							{ __( 'Done' ) }
+						<Button className="uagb-block-all-post__done-button" isPrimary onClick={ onDone }>
+							{ __( 'Done', 'ultimate-addons-for-gutenberg' ) }
 						</Button>
-						<Button
-							className="uagb-block-all-post__cancel-button"
-							isTertiary
-							onClick={ onCancel }
-						>
-							{ __( 'Cancel' ) }
+						<Button className="uagb-block-all-post__cancel-button" isTertiary onClick={ onCancel }>
+							{ __( 'Cancel', 'ultimate-addons-for-gutenberg' ) }
 						</Button>
-						<Button
-							className="uagb-block-all-post__reset-button"
-							onClick={ onReset }
-						>
-							{ __( 'Reset Layout' ) }
+						<Button className="uagb-block-all-post__reset-button" onClick={ onReset }>
+							{ __( 'Reset Layout', 'ultimate-addons-for-gutenberg' ) }
 						</Button>
 					</div>
 				</div>
@@ -117,9 +104,8 @@ const Render = ( props ) => {
 			categoriesList={ categoriesList }
 			deviceType={ deviceType }
 			name={ name }
-			setAttributes = { setAttributes }
+			setAttributes={ setAttributes }
 		/>
-
 	);
 
 	return <>{ state.isEditing ? renderEditMode() : renderViewMode }</>;

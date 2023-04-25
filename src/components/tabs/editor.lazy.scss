@@ -4,13 +4,11 @@
 
 .uag-control-tabs {
 	// width: 100%;
-	margin: 0 (-$spectra-panel-body-padding);
+	margin: 0 ( -$spectra-panel-body-padding );
 	padding: 0 $spectra-panel-body-padding;
 
 	&.uag-control-tabs-three-tabs {
-
 		.components-tab-panel__tabs {
-
 			& > .components-button {
 				width: 31.3%;
 			}
@@ -19,7 +17,7 @@
 
 	& > .components-tab-panel__tabs {
 		justify-content: space-between;
-		margin: 0 (-$spectra-panel-body-padding) $spectra-control-vertical-gap;
+		margin: 0 ( -$spectra-panel-body-padding ) $spectra-control-vertical-gap;
 		padding: 0 $spectra-panel-body-padding;
 		border-bottom: 1px solid $spectra-color-border;
 
@@ -41,7 +39,7 @@
 				background: $spectra-color-plain-background;
 			}
 
-			&:focus:not(:disabled) {
+			&:focus:not( :disabled ) {
 				box-shadow: none;
 			}
 		}

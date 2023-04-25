@@ -269,14 +269,14 @@ if ( 'none' !== $attr['separatorStyle'] ) {
 	// Since we need the separator to ignore the padding and cover the entire width of the parent container,
 	// we use calc and do the following calculations.
 
-	$calc_padding_left  = UAGB_Helper::get_css_value( $attr['leftPadding'], $attr['paddingTypeDesktop'] );
-	$calc_padding_right = UAGB_Helper::get_css_value( $attr['rightPadding'], $attr['paddingTypeDesktop'] );
+	$calc_padding_left  = UAGB_Helper::get_css_value( $left_padding, $attr['paddingTypeDesktop'] );
+	$calc_padding_right = UAGB_Helper::get_css_value( $right_padding, $attr['paddingTypeDesktop'] );
 
-	$t_calc_padding_left  = UAGB_Helper::get_css_value( $attr['leftPaddingTablet'], $attr['paddingTypeTablet'] );
-	$t_calc_padding_right = UAGB_Helper::get_css_value( $attr['rightPaddingTablet'], $attr['paddingTypeTablet'] );
+	$t_calc_padding_left  = UAGB_Helper::get_css_value( $tablet_left_padding, $attr['paddingTypeTablet'] );
+	$t_calc_padding_right = UAGB_Helper::get_css_value( $tablet_right_padding, $attr['paddingTypeTablet'] );
 
-	$m_calc_padding_left  = UAGB_Helper::get_css_value( $attr['leftPaddingMobile'], $attr['paddingTypeMobile'] );
-	$m_calc_padding_right = UAGB_Helper::get_css_value( $attr['rightPaddingMobile'], $attr['paddingTypeMobile'] );
+	$m_calc_padding_left  = UAGB_Helper::get_css_value( $mobile_left_padding, $attr['paddingTypeMobile'] );
+	$m_calc_padding_right = UAGB_Helper::get_css_value( $mobile_right_padding, $attr['paddingTypeMobile'] );
 
 	$selectors[' .uagb-toc__separator'] = array(
 		'border-top-style' => $attr['separatorStyle'],

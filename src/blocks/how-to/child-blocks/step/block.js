@@ -22,11 +22,7 @@ registerBlockType( 'uagb/how-to-step', {
 	parent: [ 'uagb/how-to' ],
 	attributes,
 	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="how-to-step" isChildren={ true } />
-			) : (
-				<Edit { ...props } />
-			),
+		props.attributes.isPreview ? <PreviewImage image="how-to-step" isChildren={ true } /> : <Edit { ...props } />,
 	supports: {
 		anchor: true,
 	},

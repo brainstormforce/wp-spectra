@@ -2,15 +2,13 @@
   Content Timeline.
 */
 .block-editor-inner-blocks {
-
 	.block-editor-block-list__layout .block-editor-block-list__block {
 		padding: 0;
 		margin: 0;
 		max-width: unset;
 	}
 
-	@media screen and (max-width: 1023px) {
-
+	@media screen and ( max-width: 1023px ) {
 		// The speech-bubble like arrows are not visible in tablet/mobile preview as they get hidden behind the timeline-line, and hence the following code.
 		.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-right.uagb-timeline__events-inner-new {
 			left: -15px;
@@ -27,14 +25,11 @@
 		.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left.uagb-timeline__events-inner-new {
 			right: -15px;
 		}
-
 	}
-
 }
 
 .editor-styles-wrapper .block-editor-block-list__block,
 .edit-post-visual-editor .block-editor-block-list__block {
-
 	&[data-type="uagb/content-timeline"] {
 		padding: 15px;
 
@@ -46,7 +41,6 @@
 	}
 
 	.uagb-timeline__outer-wrap {
-
 		&.uagb-timeline__left-block .uagb-timeline__line {
 			right: auto;
 			left: 34px;

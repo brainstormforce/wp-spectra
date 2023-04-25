@@ -15,22 +15,37 @@ export default function RangeTypographyControl( props ) {
 		return select( 'core/edit-post' )?.__experimentalGetPreviewDeviceType();
 	}, [] );
 
+	const {
+		sizeText,
+		size,
+		min,
+		type,
+		setAttributes,
+		sizeLabel,
+		sizeTabletText,
+		sizeTablet,
+		sizeTabletLabel,
+		sizeMobileText,
+		sizeMobile,
+		sizeMobileLabel,
+	} = props;
+
 	const output = {};
 
 	output.Desktop = (
 		<>
 			<Range
 				{ ...props }
-				label={ props.sizeText }
-				value={ props.size.value || '' }
-				min={ -50 }
+				label={ sizeText }
+				value={ size.value || '' }
+				min={ min }
 				max={ 200 }
-				unit={ props.type }
+				unit={ type }
 				responsive={ true }
-				setAttributes={props.setAttributes}
+				setAttributes={ setAttributes }
 				data={ {
-					value: props.size.value,
-					label: props.sizeLabel,
+					value: size.value,
+					label: sizeLabel,
 				} }
 				step={ props?.step }
 			/>
@@ -40,16 +55,16 @@ export default function RangeTypographyControl( props ) {
 		<>
 			<Range
 				{ ...props }
-				label={ props.sizeTabletText }
-				value={ props.sizeTablet.value }
-				min={ -50 }
+				label={ sizeTabletText }
+				value={ sizeTablet.value }
+				min={ min }
 				max={ 200 }
-				unit={ props.type }
+				unit={ type }
 				responsive={ true }
-				setAttributes={props.setAttributes}
+				setAttributes={ setAttributes }
 				data={ {
-					value: props.sizeTablet.value,
-					label: props.sizeTabletLabel,
+					value: sizeTablet.value,
+					label: sizeTabletLabel,
 				} }
 				step={ props?.step }
 			/>
@@ -59,16 +74,16 @@ export default function RangeTypographyControl( props ) {
 		<>
 			<Range
 				{ ...props }
-				label={ props.sizeMobileText }
-				value={ props.sizeMobile.value }
-				min={ -50 }
+				label={ sizeMobileText }
+				value={ sizeMobile.value }
+				min={ min }
 				max={ 200 }
-				unit={ props.type }
+				unit={ type }
 				responsive={ true }
-				setAttributes={props.setAttributes}
+				setAttributes={ setAttributes }
 				data={ {
-					value: props.sizeMobile.value,
-					label: props.sizeMobileLabel,
+					value: sizeMobile.value,
+					label: sizeMobileLabel,
 				} }
 				step={ props?.step }
 			/>
@@ -78,9 +93,7 @@ export default function RangeTypographyControl( props ) {
 	return (
 		<div className="uagb-size-type-field-tabs">
 			<div className="uagb-responsive-control-inner">
-				{ output[ deviceType ]
-					? output[ deviceType ]
-					: output.Desktop }
+				{ output[ deviceType ] ? output[ deviceType ] : output.Desktop }
 			</div>
 		</div>
 	);

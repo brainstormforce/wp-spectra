@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import PositionClasses from './classes';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import TestimonialImage from './components/newImage';
-import { useEffect, useLayoutEffect, memo,useRef } from '@wordpress/element';
+import { useEffect, useLayoutEffect, memo, useRef } from '@wordpress/element';
 import AuthorName from './components/AuthorName';
 import Company from './components/Company';
 import Description from './components/Description';
@@ -46,7 +46,7 @@ const Render = ( props ) => {
 		autoplaySpeed,
 		arrowColor,
 		equalHeight,
-		imageWidth
+		imageWidth,
 	} = attributes;
 
 	const sliderRef = useRef();
@@ -64,7 +64,7 @@ const Render = ( props ) => {
 					borderRadius: arrowBorderRadius,
 					borderWidth: getFallbackNumber( arrowBorderSize, 'arrowBorderSize', blockName ),
 				} }
-				onClick = { onClick }
+				onClick={ onClick }
 			>
 				{ UAGB_Block_Icons.carousel_right }
 			</button>
@@ -84,25 +84,27 @@ const Render = ( props ) => {
 					borderRadius: arrowBorderRadius,
 					borderWidth: getFallbackNumber( arrowBorderSize, 'arrowBorderSize', blockName ),
 				} }
-				onClick= { onClick }
+				onClick={ onClick }
 			>
 				{ UAGB_Block_Icons.carousel_left }
 			</button>
 		);
 	};
 
-	const dots =
-		'dots' === arrowDots || 'arrows_dots' === arrowDots ? true : false;
-	const arrows =
-		'arrows' === arrowDots || 'arrows_dots' === arrowDots ? true : false;
+	const dots = 'dots' === arrowDots || 'arrows_dots' === arrowDots ? true : false;
+	const arrows = 'arrows' === arrowDots || 'arrows_dots' === arrowDots ? true : false;
 
-		const equalHeightClass = equalHeight
-		? 'uagb-post__carousel_equal-height'
-		: '';
+	const equalHeightClass = equalHeight ? 'uagb-post__carousel_equal-height' : '';
 
 	const settings = {
 		accessibility: false,
-		slidesToShow: ( deviceType === 'Desktop' ? getFallbackNumber( columns, 'columns', blockName ) : deviceType === 'Tablet' ? getFallbackNumber( tcolumns, 'columns', blockName ): getFallbackNumber( mcolumns, 'columns', blockName ) ), // eslint-disable-line no-nested-ternary
+		slidesToShow:
+			// eslint-disable-next-line no-nested-ternary
+			deviceType === 'Desktop'
+				? getFallbackNumber( columns, 'columns', blockName )
+				: deviceType === 'Tablet'
+				? getFallbackNumber( tcolumns, 'columns', blockName )
+				: getFallbackNumber( mcolumns, 'columns', blockName ),
 		slidesToScroll: 1,
 		autoplaySpeed: getFallbackNumber( autoplaySpeed, 'autoplaySpeed', blockName ),
 		autoplay,
@@ -118,16 +120,17 @@ const Render = ( props ) => {
 			}
 		},
 		draggable: false,
-		nextArrow: <NextArrow arrowSize={ arrowSize } onClick={sliderRef.slickNext} />,
-		prevArrow: <PrevArrow arrowSize={ arrowSize } onClick={sliderRef.slickPrev} />,
+		nextArrow: <NextArrow arrowSize={ arrowSize } onClick={ sliderRef.slickNext } />,
+		prevArrow: <PrevArrow arrowSize={ arrowSize } onClick={ sliderRef.slickPrev } />,
 	};
 
 	const isGridLayout = test_item_count === columns ? 'uagb-post__carousel_notset' : '';
 	const isGridLayoutTablet = test_item_count === tcolumns ? 'uagb-post__carousel_notset-tablet' : '';
 	const isGridLayoutMobile = test_item_count === mcolumns ? 'uagb-post__carousel_notset-mobile' : '';
-	
+
 	// image size.
-	const imageArray = attributes.test_block[ 0 ]?.image || attributes.test_block[ 1 ]?.image || attributes.test_block[ 2 ]?.image;
+	const imageArray =
+		attributes.test_block[ 0 ]?.image || attributes.test_block[ 1 ]?.image || attributes.test_block[ 2 ]?.image;
 	let url = '';
 	let urlCheck = '';
 
@@ -141,10 +144,7 @@ const Render = ( props ) => {
 		if ( urlCheck !== '' ) {
 			const size = image.sizes;
 			const imageSize = attributes.imageSize;
-			if (
-				typeof size !== 'undefined' &&
-				typeof size[ imageSize ] !== 'undefined'
-			) {
+			if ( typeof size !== 'undefined' && typeof size[ imageSize ] !== 'undefined' ) {
 				url = size[ imageSize ].url;
 			} else {
 				url = urlCheck;
@@ -153,8 +153,8 @@ const Render = ( props ) => {
 	}
 
 	useEffect( () => {
-		getImageHeightWidth( url, setAttributes, { type: 'width', value: imageWidth } )
-	}, [ imageWidth, url ] )
+		getImageHeightWidth( url, setAttributes, { type: 'width', value: imageWidth } );
+	}, [ imageWidth, url ] );
 
 	return (
 		<div
@@ -169,99 +169,70 @@ const Render = ( props ) => {
 				isGridLayoutMobile
 			) }
 		>
-
-				<Slider
-					className={ classnames(
-						'is-carousel',
-						`uagb-tm__columns-${ getFallbackNumber( columns, 'columns', blockName ) }`,
-						'uagb-tm__items',
-					) }
-					{ ...settings }
-					ref={ sliderRef }
-				>
-					{ test_block.map( ( test, index ) => (
-						<div
-							className={ classnames(
-								'uagb-testimonial__wrap',
-								...PositionClasses( attributes )
+			<Slider
+				className={ classnames(
+					'is-carousel',
+					`uagb-tm__columns-${ getFallbackNumber( columns, 'columns', blockName ) }`,
+					'uagb-tm__items'
+				) }
+				{ ...settings }
+				ref={ sliderRef }
+			>
+				{ test_block.map( ( test, index ) => (
+					<div
+						className={ classnames( 'uagb-testimonial__wrap', ...PositionClasses( attributes ) ) }
+						key={ 'wrap-' + index }
+					>
+						<div className="uagb-tm__content" key={ 'tm_content-' + index }>
+							<div className="uagb-tm__overlay"></div>
+							{ ( imagePosition === 'top' || imagePosition === 'left' ) && (
+								<TestimonialImage attributes={ attributes } index_value={ index } />
 							) }
-							key={ 'wrap-' + index }
-						>
-							<div
-								className="uagb-tm__content"
-								key={ 'tm_content-' + index }
-							>
-								<div className="uagb-tm__overlay"></div>
-								{ ( imagePosition === 'top' ||
-									imagePosition === 'left' ) && (
-									<TestimonialImage
-										attributes={ attributes }
-										index_value={ index }
-									/>
-								) }
 
-								<div className="uagb-tm__text-wrap">
+							<div className="uagb-tm__text-wrap">
+								{
+									// Get description.
+									<>
+										<Description
+											attributes={ attributes }
+											setAttributes={ setAttributes }
+											props={ props }
+											index_value={ index }
+										/>
+									</>
+								}
+								<div className="uagb-tm__meta-inner">
+									{ imagePosition === 'bottom' && (
+										<TestimonialImage attributes={ attributes } index_value={ index } />
+									) }
+
 									{
-										// Get description.
 										<>
-											<Description
-												attributes={ attributes }
-												setAttributes={ setAttributes }
-												props={ props }
-												index_value={ index }
-											/>
+											<div className="uagb-testimonial-details" key={ 'tm_wraps-' + index }>
+												<AuthorName
+													attributes={ attributes }
+													setAttributes={ setAttributes }
+													props={ props }
+													index_value={ index }
+												/>
+												<Company
+													attributes={ attributes }
+													setAttributes={ setAttributes }
+													props={ props }
+													index_value={ index }
+												/>
+											</div>
 										</>
 									}
-									<div className="uagb-tm__meta-inner">
-										{ imagePosition === 'bottom' && (
-											<TestimonialImage
-												attributes={ attributes }
-												index_value={ index }
-											/>
-										) }
-
-										{
-											<>
-												<div
-													className="uagb-testimonial-details"
-													key={ 'tm_wraps-' + index }
-												>
-													<AuthorName
-														attributes={
-															attributes
-														}
-														setAttributes={
-															setAttributes
-														}
-														props={ props }
-														index_value={ index }
-													/>
-													<Company
-														attributes={
-															attributes
-														}
-														setAttributes={
-															setAttributes
-														}
-														props={ props }
-														index_value={ index }
-													/>
-												</div>
-											</>
-										}
-									</div>
 								</div>
-								{ imagePosition === 'right' && (
-									<TestimonialImage
-										attributes={ attributes }
-										index_value={ index }
-									/>
-								) }
 							</div>
+							{ imagePosition === 'right' && (
+								<TestimonialImage attributes={ attributes } index_value={ index } />
+							) }
 						</div>
-					) ) }
-				</Slider>
-
+					</div>
+				) ) }
+			</Slider>
 		</div>
 	);
 };

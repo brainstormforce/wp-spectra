@@ -1,11 +1,9 @@
 body {
-
 	&.hide-scroll {
 		overflow: hidden;
 	}
 
 	.uagb-modal-popup-wrap {
-
 		.wp-block {
 			max-width: none !important;
 			margin: 0 !important;
@@ -26,7 +24,7 @@ body {
 		left: 0;
 		right: 0;
 		display: flex;
-		z-index: 99999;
+		z-index: 9999999;
 		visibility: visible;
 
 		.uagb-modal-popup-close {
@@ -61,7 +59,7 @@ body {
 		background: #fff;
 		color: #333;
 		position: relative;
-		z-index: 99999;
+		z-index: 9999999;
 
 		.uagb-modal-popup-content::-webkit-scrollbar {
 			width: 5px;
@@ -72,13 +70,12 @@ body {
 			border-radius: 100px;
 		}
 	}
-
 }
-
+.wp-block-uagb-modal {
+	width: 100%;
+}
 .entry {
-
 	.entry-content {
-
 		a.uagb-modal-button-link {
 			text-decoration: none;
 			align-items: center;
@@ -90,7 +87,8 @@ body {
 	}
 }
 
-.uagb-modal-trigger {
+.uagb-modal-trigger:not(img) {
+	display: flex;
 
 	svg {
 		font-size: 30px;
@@ -103,6 +101,8 @@ body {
 
 img.uagb-modal-trigger {
 	cursor: pointer;
+	height: auto;
+	max-width: 100%;
 }
 
 div.uagb-spectra-button-wrapper {
@@ -126,18 +126,16 @@ div.uagb-spectra-button-wrapper {
 }
 
 .components-popover {
-	z-index: 1000000 !important;
+	z-index: 99999999 !important;
 }
 
 /* Effect 1: Fade in and scale up */
 .uagb-effect-default {
-
 	.uagb-modal-popup-wrap {
 		opacity: 0;
 	}
 
 	&.active {
-
 		.uagb-modal-popup-wrap {
 			opacity: 1;
 			-webkit-transition: all 0.3s;

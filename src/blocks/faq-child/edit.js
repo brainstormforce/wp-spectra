@@ -2,8 +2,7 @@
  * BLOCK: FAQ - Child
  */
 
-import { useEffect, useState} from '@wordpress/element';
-
+import { useEffect, useState } from '@wordpress/element';
 
 import Settings from './settings';
 import Render from './render';

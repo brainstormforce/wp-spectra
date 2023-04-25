@@ -4,6 +4,9 @@
 		"selector-class-pattern": null,
 		"no-descending-specificity": null,
 		"font-weight-notation": null,
+		"comment-empty-line-before": null,
+		"selector-pseudo-class-parentheses-space-inside": null,
+		"rule-empty-line-before": null,
 		"declaration-property-unit-allowed-list": {
 			"line-height": [ "px", "em" ]
 		},

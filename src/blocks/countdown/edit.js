@@ -1,5 +1,4 @@
-import { useEffect, useState, useRef } from '@wordpress/element';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { useEffect, useState, useRef, useMemo } from '@wordpress/element';
 import styling from './styling';
 import Settings from './settings';
 import Render from './render';
@@ -7,14 +6,14 @@ import { getSettings as getDateSettings } from '@wordpress/date';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { applyFilters } from '@wordpress/hooks';
-import WebfontLoader from '@Components/typography/fontloader';
-
+import DynamicFontLoader from './dynamicFontLoader';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 //  Import CSS.
 import './style.scss';
 
-
 const UAGBCountdownEdit = ( props ) => {
-
 	const {
 		isSelected,
 		clientId,
@@ -29,17 +28,9 @@ const UAGBCountdownEdit = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
-			digitLoadGoogleFonts,
-			digitFontFamily,
-			digitFontWeight,
-			labelLoadGoogleFonts,
-			labelFontFamily,
-			labelFontWeight,
-			separatorLoadGoogleFonts,
-			separatorFontFamily,
-			separatorFontWeight,
 		},
-		setAttributes
+		setAttributes,
+		name,
 	} = props;
 
 	const [ timeChanged, setTimeChanged ] = useState( 0 );
@@ -47,10 +38,10 @@ const UAGBCountdownEdit = ( props ) => {
 	const deviceType = useDeviceType();
 
 	useEffect( () => {
-
 		// Dynamically set default value to Jan 1 of next year (UTC),
-		// on drag and drop of a new instance of the block. 
-		if( ! timeModified ) {  // check if time has been modified dynamically using the flag attribute.
+		// on drag and drop of a new instance of the block.
+		if ( ! timeModified ) {
+			// check if time has been modified dynamically using the flag attribute.
 
 			// Get WordPress' timezone offset from settings.
 			const { timezone } = getDateSettings();
@@ -62,13 +53,16 @@ const UAGBCountdownEdit = ( props ) => {
 			const displayTime = new Date();
 
 			// Set the default end time to 7 days later (one for displaying in input fields, and another with actual timezone offset calculations).
-			actualTime.setMilliseconds( actualTime.getMilliseconds() + ( 7 * 24 * 60 * 60 * 1000 ) );
+			actualTime.setMilliseconds( actualTime.getMilliseconds() + 7 * 24 * 60 * 60 * 1000 );
 
-			displayTime.setMilliseconds( displayTime.getMilliseconds() + ( 7 * 24 * 60 * 60 * 1000 ) );
+			displayTime.setMilliseconds( displayTime.getMilliseconds() + 7 * 24 * 60 * 60 * 1000 );
 
 			// For display time, we consider local and WP timezone offset.
-			displayTime.setMilliseconds( displayTime.getMilliseconds() + ( ( displayTime.getTimezoneOffset() * 60 * 1000 ) + ( timezone.offset * 60 * 60 * 1000 ) ) );
-	
+			displayTime.setMilliseconds(
+				displayTime.getMilliseconds() +
+					( displayTime.getTimezoneOffset() * 60 * 1000 + timezone.offset * 60 * 60 * 1000 )
+			);
+
 			setAttributes( {
 				endDateTime: actualTime,
 				endDateTimeCopy: actualTime,
@@ -88,102 +82,41 @@ const UAGBCountdownEdit = ( props ) => {
 	const countdownRef = useRef( null );
 
 	useEffect( () => {
-		if( countdownRef ) {
-		setTimeout( () => {
-			UAGBCountdown.editorInit( '.uagb-block-' + clientId.substr( 0, 8 ), attributes, countdownRef.current ); // eslint-disable-line no-undef
-		} )
+		if ( countdownRef ) {
+			setTimeout( () => {
+				UAGBCountdown.editorInit( '.uagb-block-' + clientId.substr( 0, 8 ), attributes, countdownRef.current ); // eslint-disable-line no-undef
+			} );
 		}
 	}, [ countdownRef ] );
 
-	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-countdown-style-' + clientId.substr( 0, 8 ), blockStyling );
-	}, [ attributes, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
-		if( block_id && timeChanged === 1 ) {
-			UAGBCountdown.changeEndTime( '.uagb-block-' + block_id, attributes, countdownRef.current ) // eslint-disable-line no-undef
+		if ( block_id && timeChanged === 1 ) {
+			UAGBCountdown.changeEndTime( '.uagb-block-' + block_id, attributes, countdownRef.current ); // eslint-disable-line no-undef
 		}
 		setTimeChanged( 1 );
-	}, [
-		endDateTime,
-		showDays,
-		showHours,
-		showMinutes,
-	] )
+	}, [ endDateTime, showDays, showHours, showMinutes ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
+	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	}, [
-		UAGHideDesktop,
-		UAGHideTab,
-		UAGHideMob,
-		deviceType
-	] );
-
-	// Load all the Google Fonts for The Countdown Block.
-	let loadDigitGoogleFonts;
-	let loadLabelGoogleFonts;
-	let loadSeparatorGoogleFonts;
-
-	if ( digitLoadGoogleFonts === true ) {
-		const digitConfig = {
-			google: {
-				families: [
-					digitFontFamily +
-						( digitFontWeight ? ':' + digitFontWeight : '' ),
-				],
-			},
-		};
-		loadDigitGoogleFonts = (
-			<WebfontLoader config={ digitConfig }></WebfontLoader>
-		);
-	}
-
-	if ( labelLoadGoogleFonts === true ) {
-		const labelConfig = {
-			google: {
-				families: [
-					labelFontFamily + ( labelFontWeight ? ':' + labelFontWeight : '' ),
-				],
-			},
-		};
-		loadLabelGoogleFonts = (
-			<WebfontLoader config={ labelConfig }></WebfontLoader>
-		);
-	}
-
-	if ( separatorLoadGoogleFonts === true ) {
-		const separatorConfig = {
-			google: {
-				families: [
-					separatorFontFamily +
-						( separatorFontWeight ? ':' + separatorFontWeight : '' ),
-				],
-			},
-		};
-		loadSeparatorGoogleFonts = (
-			<WebfontLoader config={ separatorConfig }></WebfontLoader>
-		);
-	}
+	// Hooks cannot be applied within conditional renders, so we pre-fetch the value.
+	const countdownToolbar = applyFilters( 'spectra.countdown.toolbar-hook', '', props.name );
 
 	return (
 		<>
-			{/* Countdown Toolbar options for Pro (Replace feature) */}
-			{ ( props.attributes.timerEndAction === 'content' ) &&
-				applyFilters( 'spectra.countdown.toolbar-hook', '', props.name )
-			}
+			{ /* Countdown Toolbar options for Pro (Replace feature) */ }
+			{ props.attributes.timerEndAction === 'content' && countdownToolbar }
+			<DynamicFontLoader { ...{ attributes } } />
+			<DynamicCSSLoader { ...{ blockStyling } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render countdownRef={ countdownRef } parentProps={ props } />
-			{ loadDigitGoogleFonts }
-			{ loadLabelGoogleFonts }
-			{ loadSeparatorGoogleFonts }
 		</>
 	);
-}
+};
 
-export default UAGBCountdownEdit;
+export default compose(
+	AddStaticStyles,
+)( UAGBCountdownEdit );

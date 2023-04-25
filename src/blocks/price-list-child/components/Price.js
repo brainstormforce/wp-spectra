@@ -23,20 +23,14 @@ const Price = ( props ) => {
 				tagName="div"
 				value={ price }
 				className="uagb-rm__price"
-				placeholder={ __( 'Price' ) }
+				placeholder={ __( 'Price', 'ultimate-addons-for-gutenberg' ) }
 				onChange={ ( value ) => {
 					setAttributes( { price: value } );
 				} }
 			/>
 		);
 	}
-	return (
-		<RichText.Content
-			tagName="span"
-			value={ price }
-			className="uagb-rm__price"
-		/>
-	);
+	return <RichText.Content tagName="span" value={ price } className="uagb-rm__price" />;
 };
 
 export default Price;

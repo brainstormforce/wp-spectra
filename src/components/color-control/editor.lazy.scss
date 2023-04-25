@@ -7,7 +7,6 @@
 	.uagb-beside-color-click {
 		display: flex;
 		align-items: center;
-		padding-left: 10px;
 	}
 
 	.uagb-color-icon-indicate {
@@ -34,8 +33,7 @@
 		margin: 0;
 	}
 
-	.uagb-color-icon-indicate
-	.component-color-indicator.uagb-advanced-color-indicate {
+	.uagb-color-icon-indicate .component-color-indicator.uagb-advanced-color-indicate {
 		width: $spectra-control-circle-indicator;
 		height: $spectra-control-circle-indicator;
 		border-radius: 50%;
@@ -62,11 +60,9 @@
 	.uag-global-icon-white::before {
 		color: #fff;
 	}
-
 }
 
 .uagb-popover-color {
-
 	.components-popover__content {
 		overflow-x: hidden;
 		overflow-y: auto;

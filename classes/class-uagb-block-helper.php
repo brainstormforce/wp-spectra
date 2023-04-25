@@ -71,8 +71,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			} elseif ( 'gradient' === $attr['backgroundType'] ) {
 				$bg_obj = array(
-					'backgroundType' => 'gradient',
-					'gradientValue'  => $attr['gradientValue'],
+					'backgroundType'    => 'gradient',
+					'gradientValue'     => $attr['gradientValue'],
+					'gradientColor1'    => $attr['gradientColor1'],
+					'gradientColor2'    => $attr['gradientColor2'],
+					'gradientType'      => $attr['gradientType'],
+					'gradientLocation1' => $attr['gradientLocation1'],
+					'gradientLocation2' => $attr['gradientLocation2'],
+					'gradientAngle'     => $attr['gradientAngle'],
+					'selectGradient'    => $attr['selectGradient'],
 				);
 
 				$btn_bg_css                           = self::uag_get_background_obj( $bg_obj );
@@ -1362,6 +1369,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$bg_img              = isset( $bg_obj['backgroundImage'] ) && isset( $bg_obj['backgroundImage']['url'] ) ? $bg_obj['backgroundImage']['url'] : '';
 			$bg_color            = isset( $bg_obj['backgroundColor'] ) ? $bg_obj['backgroundColor'] : '';
 			$gradient_value      = isset( $bg_obj['gradientValue'] ) ? $bg_obj['gradientValue'] : '';
+			$gradientColor1      = isset( $bg_obj['gradientColor1'] ) ? $bg_obj['gradientColor1'] : '';
+			$gradientColor2      = isset( $bg_obj['gradientColor2'] ) ? $bg_obj['gradientColor2'] : '';
+			$gradientType        = isset( $bg_obj['gradientType'] ) ? $bg_obj['gradientType'] : '';
+			$gradientLocation1   = isset( $bg_obj['gradientLocation1'] ) ? $bg_obj['gradientLocation1'] : '';
+			$gradientLocation2   = isset( $bg_obj['gradientLocation2'] ) ? $bg_obj['gradientLocation2'] : '';
+			$gradientAngle       = isset( $bg_obj['gradientAngle'] ) ? $bg_obj['gradientAngle'] : '';
+			$selectGradient      = isset( $bg_obj['selectGradient'] ) ? $bg_obj['selectGradient'] : '';
 			$repeat              = isset( $bg_obj['backgroundRepeat'] ) ? $bg_obj['backgroundRepeat'] : '';
 			$position            = isset( $bg_obj['backgroundPosition'] ) ? $bg_obj['backgroundPosition'] : '';
 			$size                = isset( $bg_obj['backgroundSize'] ) ? $bg_obj['backgroundSize'] : '';
@@ -1382,6 +1396,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( 'custom' === $size ) {
 				$size = $bg_custom_size . $bg_custom_size_type;
 			}
+			if ( 'basic' === $selectGradient ) {
+				$gradient = $gradient_value;
+			} elseif ( 'linear' === $gradientType && 'advanced' === $selectGradient ) {
+				$gradient = 'linear-gradient(' . $gradientAngle . 'deg, ' . $gradientColor1 . ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
+			} elseif ( 'radial' === $gradientType && 'advanced' === $selectGradient ) {
+				$gradient = 'radial-gradient( at center center, ' . $gradientColor1 . ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
+			}
 
 			if ( '' !== $bg_type ) {
 				switch ( $bg_type ) {
@@ -1397,8 +1418,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						if ( 'color' === $overlay_type && '' !== $bg_img && '' !== $bg_image_color ) {
 							$gen_bg_css['background-image'] = 'linear-gradient(to right, ' . $bg_image_color . ', ' . $bg_image_color . '), url(' . $bg_img . ');';
 						}
-						if ( 'gradient' === $overlay_type && '' !== $bg_img && '' !== $gradient_value ) {
-							$gen_bg_css['background-image'] = $gradient_value . ', url(' . $bg_img . ');';
+						if ( 'gradient' === $overlay_type && '' !== $bg_img && '' !== $gradient ) {
+							$gen_bg_css['background-image'] = $gradient . ', url(' . $bg_img . ');';
 						}
 						if ( 'none' === $overlay_type && '' !== $bg_img ) {
 							$gen_bg_css['background-image'] = 'url(' . $bg_img . ');';
@@ -1406,16 +1427,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						break;
 
 					case 'gradient':
-						if ( isset( $gradient_value ) ) {
-							$gen_bg_css['background-image'] = $gradient_value . ';';
+						if ( isset( $gradient ) ) {
+							$gen_bg_css['background-image'] = $gradient . ';';
 						}
 						break;
 					case 'video':
 						if ( 'color' === $overlay_type && '' !== $bg_video && '' !== $bg_video_color ) {
 							$gen_bg_css['background'] = $bg_video_color . ';';
 						}
-						if ( 'gradient' === $overlay_type && '' !== $bg_video && '' !== $gradient_value ) {
-							$gen_bg_css['background-image'] = $gradient_value . ';';
+						if ( 'gradient' === $overlay_type && '' !== $bg_video && '' !== $gradient ) {
+							$gen_bg_css['background-image'] = $gradient . ';';
 						}
 						break;
 
@@ -1725,10 +1746,26 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $value  Alignment Matrix value.
 		 * @param int    $pos    Human readable position.
 		 * @param string $format Response format.
+		 * @return string        The formatted Matrix Alignment.
+		 *
 		 * @since 2.1.0
 		 */
 		public static function get_matrix_alignment( $value, $pos, $format = '' ) {
-			$alignment_property = explode( ' ', esc_attr( $value ) )[ $pos - 1 ];
+
+			// Return early if remote styles is not a string, or is empty, of if the position is not an integer.
+			if ( ! is_string( $value ) || empty( $value ) || ! is_int( $pos ) ) {
+				return '';
+			}
+
+			$alignment_array = explode( ' ', esc_attr( $value ) );
+
+			// Return early if alignment propery at the given position is not a string, or is empty.
+			if ( ! is_string( $alignment_array[ $pos - 1 ] ) || empty( $alignment_array[ $pos - 1 ] ) ) {
+				return '';
+			}
+
+			$alignment_property = $alignment_array[ $pos - 1 ];
+		
 			switch ( $format ) {
 				case 'flex':
 					switch ( $alignment_property ) {
@@ -1830,6 +1867,73 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$matches = array();
 			preg_match( '/^-?\d+(?:\.\d{0,2})?/', strval( 100 / $divisions ), $matches );
 			return floatval( $matches[0] ) . '%';
+		}
+
+		/**
+		 * Generate the Box Shadow or Text Shadow CSS.
+		 * 
+		 * For Text Shadow CSS:
+		 * ( 'spread', 'position' ) should not be sent as params during the function call.
+		 * ( 'spread_unit' ) will have no effect.
+		 * 
+		 * For Box/Text Shadow Hover CSS:
+		 * ( 'alt_color' ) should be set as the attribute used for ( 'color' ) in Box/Text Shadow Normal CSS.
+		 *
+		 * @param array $shadow_properties  Array containing the necessary shadow properties.
+		 * @return string                   The generated border CSS or an empty string on early return.
+		 *
+		 * @since 2.5.0
+		 */
+		public static function generate_shadow_css( $shadow_properties ) {
+			// Get the Object Properties.
+			$horizontal      = isset( $shadow_properties['horizontal'] ) ? $shadow_properties['horizontal'] : '';
+			$vertical        = isset( $shadow_properties['vertical'] ) ? $shadow_properties['vertical'] : '';
+			$blur            = isset( $shadow_properties['blur'] ) ? $shadow_properties['blur'] : '';
+			$spread          = isset( $shadow_properties['spread'] ) ? $shadow_properties['spread'] : '';
+			$horizontal_unit = isset( $shadow_properties['horizontal_unit'] ) ? $shadow_properties['horizontal_unit'] : 'px';
+			$vertical_unit   = isset( $shadow_properties['vertical_unit'] ) ? $shadow_properties['vertical_unit'] : 'px';
+			$blur_unit       = isset( $shadow_properties['blur_unit'] ) ? $shadow_properties['blur_unit'] : 'px';
+			$spread_unit     = isset( $shadow_properties['spread_unit'] ) ? $shadow_properties['spread_unit'] : 'px';
+			$color           = isset( $shadow_properties['color'] ) ? $shadow_properties['color'] : '';
+			$position        = isset( $shadow_properties['position'] ) ? $shadow_properties['position'] : 'outset';
+			$alt_color       = isset( $shadow_properties['alt_color'] ) ? $shadow_properties['alt_color'] : '';
+
+			// Although optional, color is required for Sarafi on PC. Return early if color isn't set.
+			if ( ! $color && ! $alt_color ) {
+				return '';
+			}
+
+			// Get the CSS units for the number properties.
+
+			$horizontal = UAGB_Helper::get_css_value( $horizontal, $horizontal_unit );
+			if ( '' === $horizontal ) {
+				$horizontal = 0;
+			}
+
+			$vertical = UAGB_Helper::get_css_value( $vertical, $vertical_unit );
+			if ( '' === $vertical ) {
+				$vertical = 0;
+			}
+
+			$blur = UAGB_Helper::get_css_value( $blur, $blur_unit );
+			if ( '' === $blur ) {
+				$blur = 0;
+			}
+
+			$spread = UAGB_Helper::get_css_value( $spread, $spread_unit );
+			if ( '' === $spread ) {
+				$spread = 0;
+			}
+
+			// If all numeric unit values are exactly 0, don't render the CSS.
+			if ( ( 0 === $horizontal && 0 === $vertical ) && ( 0 === $blur && 0 === $spread ) ) {
+				return '';
+			}
+			
+			// Return the CSS with horizontal, vertical, blur, and color - and conditionally render spread and position.
+			return (
+				$horizontal . ' ' . $vertical . ' ' . $blur . ( $spread ? " {$spread}" : '' ) . ' ' . ( $color ? $color : $alt_color ) . ( 'outset' === $position ? '' : " {$position}" )
+			);
 		}
 	}
 }

@@ -16,23 +16,17 @@ const FeaturedImage = ( props ) => {
 			target = '_blank';
 		}
 		return (
-				<a
-					href={ post.link }
-					target={ target }
-					rel="noopener noreferrer"
-					style={ {
-						textAlign: attributes.align,
-					} }
-					className="uagb-timeline__image"
-				>
-					<img
-						src={ src[ 0 ] }
-						alt={
-							decodeEntities( post.title.rendered.trim() ) ||
-							__( '(Untitled)' )
-						}
-					/>
-				</a>
+			<a
+				href={ post.link }
+				target={ target }
+				rel="noopener noreferrer"
+				style={ {
+					textAlign: attributes.align,
+				} }
+				className="uagb-timeline__image"
+			>
+				<img src={ src[ 0 ] } alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'ultimate-addons-for-gutenberg' ) } />
+			</a>
 		);
 	}
 	return null;

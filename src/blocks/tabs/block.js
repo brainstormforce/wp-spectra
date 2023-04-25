@@ -22,21 +22,13 @@ registerBlockType( 'uagb/tabs', {
 	title: __( 'Tabs', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Display your content under different tabs.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.tabs,
-	keywords: [
-		__( 'tabs', 'ultimate-addons-for-gutenberg' ),
-		__( 'uag', 'ultimate-addons-for-gutenberg' ),
-	],
+	keywords: [ __( 'tabs', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	supports: {
 		anchor: true,
 	},
 	attributes,
-category: uagb_blocks_info.category,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="tabs" />
-			) : (
-				<Edit { ...props } />
-			),
+	category: uagb_blocks_info.category,
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="tabs" /> : <Edit { ...props } /> ),
 	save,
 	deprecated,
 } );

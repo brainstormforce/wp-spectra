@@ -4,7 +4,6 @@
 
 import { useEffect } from '@wordpress/element';
 
-
 import Settings from './settings';
 import Render from './render';
 
@@ -17,10 +16,7 @@ const UAGBFormsAcceptEdit = ( props ) => {
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-style-forms-accept-' + clientId.substr( 0, 8 )
-		);
+		$style.setAttribute( 'id', 'uagb-style-forms-accept-' + clientId.substr( 0, 8 ) );
 		document.head.appendChild( $style );
 	}, [] );
 

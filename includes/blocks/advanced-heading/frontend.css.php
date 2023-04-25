@@ -22,11 +22,7 @@ $highLight_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr
 
 $selectors = array(
 	'.wp-block-uagb-advanced-heading .uagb-heading-text' => array(
-		'color'         => $attr['headingColor'],
-		'margin-bottom' => UAGB_Helper::get_css_value(
-			UAGB_Block_Helper::get_fallback_number( $attr['headSpace'], 'headSpace', $block_name ),
-			'px'
-		),
+		'color' => $attr['headingColor'],
 	),
 	'.wp-block-uagb-advanced-heading '                   => array(
 		'background'     => 'classic' === $attr['blockBackgroundType'] ? $attr['blockBackground'] : $attr['blockGradientBackground'],
@@ -242,31 +238,38 @@ $m_selectors['.wp-block-uagb-advanced-heading .uagb-highlight'] = array_merge(
 	$highLight_border_css_mobile
 );
 
-$t_selectors['.wp-block-uagb-advanced-heading .uagb-heading-text'] = array(
-	'margin-bottom' => UAGB_Helper::get_css_value(
-		UAGB_Block_Helper::get_fallback_number( $attr['headSpaceTablet'], 'headSpaceTablet', $block_name ),
-		$attr['headSpaceType']
-	),
-);
-$m_selectors['.wp-block-uagb-advanced-heading .uagb-heading-text'] = array(
-	'margin-bottom' => UAGB_Helper::get_css_value(
-		UAGB_Block_Helper::get_fallback_number( $attr['headSpaceMobile'], 'headSpaceMobile', $block_name ),
-		$attr['headSpaceType']
-	),
-);
-$t_selectors['.wp-block-uagb-advanced-heading .uagb-desc-text']    = array(
+$t_selectors['.wp-block-uagb-advanced-heading .uagb-desc-text'] = array(
 	'margin-bottom' => UAGB_Helper::get_css_value(
 		UAGB_Block_Helper::get_fallback_number( $attr['subHeadSpaceTablet'], 'subHeadSpaceTablet', $block_name ),
 		$attr['subHeadSpaceType']
 	),
 );
-$m_selectors['.wp-block-uagb-advanced-heading .uagb-desc-text']    = array(
+$m_selectors['.wp-block-uagb-advanced-heading .uagb-desc-text'] = array(
 	'margin-bottom' => UAGB_Helper::get_css_value(
 		UAGB_Block_Helper::get_fallback_number( $attr['subHeadSpaceMobile'], 'subHeadSpaceMobile', $block_name ),
 		$attr['subHeadSpaceType']
 	),
 );
-
+if ( $attr['headingDescToggle'] || 'none' !== $attr['seperatorStyle'] ) {
+	$selectors[' .uagb-heading-text']   = array(
+		'margin-bottom' => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['headSpace'], 'headSpace', $block_name ),
+			'px'
+		),
+	);
+	$t_selectors[' .uagb-heading-text'] = array(
+		'margin-bottom' => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['headSpaceTablet'], 'headSpaceTablet', $block_name ),
+			$attr['headSpaceType']
+		),
+	);
+	$m_selectors[' .uagb-heading-text'] = array(
+		'margin-bottom' => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['headSpaceMobile'], 'headSpaceMobile', $block_name ),
+			$attr['headSpaceType']
+		),
+	);
+}
 /**
  * Get Combined selectors with filters.
  */

@@ -27,33 +27,19 @@ const InfoBoxCta = ( props ) => {
 	return (
 		<div className="uagb-ifb-cta uagb-infobox-cta-link-style">
 			{ attributes.ctaType === 'text' && (
-				<a
-					href={ attributes.ctaLink }
-					target={ target }
-					className="uagb-infobox-cta-link"
-					rel={ rel }
-				>
+				<a href={ attributes.ctaLink } target={ target } className="uagb-infobox-cta-link" rel={ rel }>
 					{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
-					<span className="uagb-inline-editing">
-						{ attributes.ctaText }
-					</span>
+					<span className="uagb-inline-editing">{ attributes.ctaText }</span>
 					{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 				</a>
 			) }
 
 			{ attributes.ctaType === 'button' && (
 				<div className="uagb-ifb-button-wrapper">
-					<a
-						href={ attributes.ctaLink }
-						className={ ctaBtnClass }
-						target={ target }
-						rel={ rel }
-					>
+					<a href={ attributes.ctaLink } className={ ctaBtnClass } target={ target } rel={ rel }>
 						{ ctaIconOutput }
 						<span className="uagb-ifb-cta-content-wrapper">
-							<span className="uagb-inline-editing ">
-								{ attributes.ctaText }
-							</span>
+							<span className="uagb-inline-editing ">{ attributes.ctaText }</span>
 						</span>
 					</a>
 				</div>

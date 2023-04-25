@@ -13,12 +13,15 @@ function ContentTmClasses( attributes, deviceType ) {
 
 	let device = deviceType;
 
-	// For desktop, attribute name does not have `desktop` suffix to support backward compatibility. 
-	if( 'Desktop' === deviceType ) {
+	// For desktop, attribute name does not have `desktop` suffix to support backward compatibility.
+	if ( 'Desktop' === deviceType ) {
 		device = '';
 	}
 
-	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + device ] ? attributes['timelinAlignment' + device ] : attributes.timelinAlignment;
+	const timelinAlignment =
+		'undefined' !== typeof attributes[ 'timelinAlignment' + device ]
+			? attributes[ 'timelinAlignment' + device ]
+			: attributes.timelinAlignment;
 
 	/* Alignmnet */
 	let alignClass = 'uagb-timeline__center-block ' + ' ';

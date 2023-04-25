@@ -6,9 +6,8 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-function styling( props ) {
-
-	const blockName = props.name.replace( 'uagb/', '' );
+function styling( attributes, clientId, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		align,
@@ -31,7 +30,7 @@ function styling( props ) {
 		iconHoverColor,
 		iconBgColor,
 		iconBgHoverColor,
-	} = props.attributes;
+	} = attributes;
 
 	const bgSizeFallback = getFallbackNumber( bgSize, 'bgSize', blockName );
 	const sizeFallback = getFallbackNumber( size, 'size', blockName );
@@ -80,9 +79,7 @@ function styling( props ) {
 		'margin-bottom': generateCSSUnit( gapMobile, 'px' ),
 	};
 
-	selectors[
-		'.uagb-social-share__layout-vertical.uagb-social-share__outer-wrap'
-	] = {
+	selectors[ '.uagb-social-share__layout-vertical.uagb-social-share__outer-wrap' ] = {
 		'flex-direction': 'column',
 	};
 
@@ -131,9 +128,9 @@ function styling( props ) {
 	};
 
 	function getFlexAlignment( textalign ) {
-		if ( textalign === 'left' ){
+		if ( textalign === 'left' ) {
 			return 'flex-start';
-		} else if( textalign === 'right' ){
+		} else if ( textalign === 'right' ) {
 			return 'flex-end';
 		}
 		return 'center';
@@ -171,9 +168,7 @@ function styling( props ) {
 		'align-items': alignmentMobile,
 	};
 
-	selectors[
-		'.uagb-social-share__outer-wrap'
-	] = {
+	selectors[ '.uagb-social-share__outer-wrap' ] = {
 		'justify-content': alignment,
 		'-webkit-box-pack': alignment,
 		'-ms-flex-pack': alignment,
@@ -182,9 +177,7 @@ function styling( props ) {
 		'align-items': alignment,
 	};
 
-	tabletSelectors[
-		'.uagb-social-share__outer-wrap'
-	] = {
+	tabletSelectors[ '.uagb-social-share__outer-wrap' ] = {
 		'justify-content': alignmentTablet,
 		'-webkit-box-pack': alignmentTablet,
 		'-ms-flex-pack': alignmentTablet,
@@ -193,9 +186,7 @@ function styling( props ) {
 		'align-items': alignmentTablet,
 	};
 
-	mobileSelectors[
-		'.uagb-social-share__outer-wrap'
-	] = {
+	mobileSelectors[ '.uagb-social-share__outer-wrap' ] = {
 		'justify-content': alignmentMobile,
 		'-webkit-box-pack': alignmentMobile,
 		'-ms-flex-pack': alignmentMobile,
@@ -217,21 +208,18 @@ function styling( props ) {
 				'margin-right': 0,
 				'margin-bottom': generateCSSUnit( gapFallback, 'px' ),
 				'background': iconBgColor,
-
 			};
 			tabletSelectors[ ' .uagb-ss__wrapper' ] = {
 				'margin-left': 0,
 				'margin-right': 0,
 				'margin-bottom': generateCSSUnit( gapTablet, 'px' ),
 				'background': iconBgColor,
-
 			};
 			mobileSelectors[ ' .uagb-ss__wrapper' ] = {
 				'margin-left': 0,
 				'margin-right': 0,
 				'margin-bottom': generateCSSUnit( gapMobile, 'px' ),
 				'background': iconBgColor,
-
 			};
 
 			selectors[ '.uagb-social-share__outer-wrap' ] = {
@@ -271,19 +259,13 @@ function styling( props ) {
 				'background': iconBgColor,
 			};
 
-			tabletSelectors[
-				'.uagb-editor-preview-mode-tablet .block-editor-block-list__layout'
-			] = {
+			tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
 				'flex-direction': 'column',
 			};
-			mobileSelectors[
-				'.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'
-			] = {
+			mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
 				'flex-direction': 'column',
 			};
-			tabletSelectors[
-				'.uagb-social-share__layout-horizontal .uagb-ss__wrapper'
-			] = {
+			tabletSelectors[ '.uagb-social-share__layout-horizontal .uagb-ss__wrapper' ] = {
 				'margin-left': 0,
 				'margin-right': 0,
 			};
@@ -322,18 +304,13 @@ function styling( props ) {
 				'margin-right': 0,
 				'margin-bottom': generateCSSUnit( gapMobile, 'px' ),
 				'background': iconBgColor,
-
 			};
 
-			mobileSelectors[
-				'.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'
-			] = {
+			mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
 				'flex-direction': 'column',
 			};
 
-			mobileSelectors[
-				'.uagb-social-share__layout-horizontal .uagb-ss__wrapper'
-			] = {
+			mobileSelectors[ '.uagb-social-share__layout-horizontal .uagb-ss__wrapper' ] = {
 				'margin-left': 0,
 				'margin-right': 0,
 			};
@@ -414,23 +391,13 @@ function styling( props ) {
 	};
 
 	let stylingCss = '';
-	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS(
-		tabletSelectors,
-		`${ id }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
+	stylingCss += generateCSS( tabletSelectors, `${ id }`, true, 'tablet' );
 
-	stylingCss += generateCSS(
-		mobileSelectors,
-		`${ id }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	stylingCss += generateCSS( mobileSelectors, `${ id }`, true, 'mobile' );
 
 	return stylingCss;
 }

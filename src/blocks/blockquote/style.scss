@@ -24,7 +24,6 @@
 
 	/* for backward */
 	.uagb-blockquote__skin-quotation {
-
 		blockquote.uagb-blockquote {
 			margin: 0;
 			padding: 0;
@@ -53,7 +52,6 @@
 		}
 
 		&.uagb-blockquote__style-style_2 {
-
 			.uagb-blockquote__icon-wrap {
 				display: inline-block;
 				float: left;
@@ -63,7 +61,6 @@
 
 	.uagb-blockquote__tweet-style-classic,
 	.uagb-blockquote__tweet-style-bubble {
-
 		a.uagb-blockquote__tweet-button {
 			background-color: #1da1f2;
 			border-radius: 100em;
@@ -100,7 +97,6 @@
 	}
 
 	.uagb-blockquote__with-tweet {
-
 		.uagb-blockquote footer {
 			display: -webkit-box;
 			display: -webkit-flex;
@@ -136,7 +132,6 @@
 	/* end backward */
 
 	&.uagb-blockquote__skin-quotation {
-
 		blockquote.uagb-blockquote {
 			vertical-align: baseline;
 			padding: 0;
@@ -166,7 +161,6 @@
 		}
 
 		&.uagb-blockquote__style-style_2 {
-
 			&.uagb-blockquote__align-right .uagb-blockquote__icon {
 				display: inline-block;
 				float: right;
@@ -436,12 +430,9 @@
 	}
 }
 
-@media only screen and (max-width: 976px) {
-
+@media only screen and ( max-width: 976px ) {
 	.wp-block-uagb-blockquote {
-
 		&.uagb-blockquote__stack-img-tablet {
-
 			.uagb-blockquote__author {
 				width: 100%;
 			}
@@ -501,12 +492,9 @@
 	}
 }
 
-@media screen and (max-width: 767px) {
-
+@media screen and ( max-width: 767px ) {
 	.wp-block-uagb-blockquote {
-
 		&.uagb-blockquote__stack-img-mobile {
-
 			.uagb-blockquote__author {
 				width: 100%;
 			}

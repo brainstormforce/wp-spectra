@@ -23,18 +23,11 @@ registerBlockType( 'uagb/slider-child', {
 	description: __( 'Add and customize content of this slide.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.slider_child,
 	parent: [ 'uagb/slider' ],
-	keywords: [
-		__( 'slider', 'ultimate-addons-for-gutenberg' ),
-		__( 'uag', 'ultimate-addons-for-gutenberg' ),
-	],
+	keywords: [ __( 'slider', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	attributes,
-category: uagb_blocks_info.category,
+	category: uagb_blocks_info.category,
 	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="slider-child" isChildren={ true } />
-			) : (
-				<Edit { ...props } />
-			),
+		props.attributes.isPreview ? <PreviewImage image="slider-child" isChildren={ true } /> : <Edit { ...props } />,
 	save,
 	deprecated,
 } );

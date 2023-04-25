@@ -16,39 +16,36 @@ const SpectraPageSettingsPopup = ( props ) => {
 
 	return (
 		<>
-		{ 'yes' === uagb_blocks_info.enable_on_page_css_button && (
-			<>
-			{/* Page Settings Icon. */}
-			<PluginSidebarMoreMenuItem
-				target="spectra-page-settings-panel"
-				icon={ SettingsIcons.logo }
-			>
-				{ __( 'Spectra Page Settings' ) }
-			</PluginSidebarMoreMenuItem>
+			{ 'yes' === uagb_blocks_info.enable_on_page_css_button && (
+				<>
+					{ /* Page Settings Icon. */ }
+					<PluginSidebarMoreMenuItem target="spectra-page-settings-panel" icon={ SettingsIcons.logo }>
+						{ __( 'Spectra Page Settings', 'ultimate-addons-for-gutenberg' ) }
+					</PluginSidebarMoreMenuItem>
 
-			{/* Page Settings Area. */}
-			<PluginSidebar
-				isPinnable={ true }
-				icon={ SettingsIcons.logo }
-				name="spectra-page-settings-panel"
-				title={ __( 'Spectra Page Settings' ) }
-				className={'spectra-sidebar'}
-			>
-				{ pluginSidebarBefore }
-				<PanelBody
-					title={ __( 'Custom CSS' ) }
-					initialOpen={ true }
-					className={'spectra-custom-css-panel'}
-				>
-					<PageCustomCSS/>
-				</PanelBody>
-				{ pluginSidebarAfter }
-			</PluginSidebar>
-			</>
-		)}
+					{ /* Page Settings Area. */ }
+					<PluginSidebar
+						isPinnable={ true }
+						icon={ SettingsIcons.logo }
+						name="spectra-page-settings-panel"
+						title={ __( 'Spectra Page Settings', 'ultimate-addons-for-gutenberg' ) }
+						className={ 'spectra-sidebar' }
+					>
+						{ pluginSidebarBefore }
+						<PanelBody
+							title={ __( 'Custom CSS', 'ultimate-addons-for-gutenberg' ) }
+							initialOpen={ true }
+							className={ 'spectra-custom-css-panel' }
+						>
+							<PageCustomCSS />
+						</PanelBody>
+						{ pluginSidebarAfter }
+					</PluginSidebar>
+				</>
+			) }
 		</>
 	);
-}
+};
 
 export default compose(
 	withSelect( ( select ) => {
@@ -60,8 +57,6 @@ export default compose(
 		};
 	} ),
 	withDispatch( ( dispatch ) => ( {
-		setMetaFieldValue: ( value, field ) => dispatch( 'core/editor' ).editPost(
-			{ meta: { [ field ]: value } }
-		),
-	} ) ),
+		setMetaFieldValue: ( value, field ) => dispatch( 'core/editor' ).editPost( { meta: { [ field ]: value } } ),
+	} ) )
 )( SpectraPageSettingsPopup );

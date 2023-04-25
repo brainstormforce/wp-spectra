@@ -3,13 +3,11 @@
  */
 
 .editor-styles-wrapper .uagb-post-grid {
-
-	&:not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap {
+	&:not( .wp-block-uagb-post-grid ) .uagb-post__inner-wrap {
 		background-clip: content-box !important;
 	}
 
 	.uagb-post__inner-wrap {
-
 		&.uagb-post__edit-mode {
 			margin: 20px;
 
@@ -72,77 +70,74 @@
 	}
 
 	&.uagb-editor-preview-mode-tablet {
-
-		&:not(.wp-block-uagb-post-grid).uagb-post__columns-tablet-1 article {
+		&:not( .wp-block-uagb-post-grid ).uagb-post__columns-tablet-1 article {
 			width: 100%;
 		}
 
-		&:not(.wp-block-uagb-post-grid).uagb-post__columns-tablet-2 article {
+		&:not( .wp-block-uagb-post-grid ).uagb-post__columns-tablet-2 article {
 			width: 50%;
 		}
 
-		&:not(.wp-block-uagb-post-grid).uagb-post__columns-tablet-3 article {
+		&:not( .wp-block-uagb-post-grid ).uagb-post__columns-tablet-3 article {
 			width: 33.2%;
 		}
 
-		&:not(.wp-block-uagb-post-grid).uagb-post__columns-tablet-4 article {
+		&:not( .wp-block-uagb-post-grid ).uagb-post__columns-tablet-4 article {
 			width: 25%;
 		}
 
-		&:not(.wp-block-uagb-post-grid).uagb-post__columns-tablet-5 article {
+		&:not( .wp-block-uagb-post-grid ).uagb-post__columns-tablet-5 article {
 			width: 20%;
 		}
 
-		&:not(.wp-block-uagb-post-grid).uagb-post__columns-tablet-6 article {
+		&:not( .wp-block-uagb-post-grid ).uagb-post__columns-tablet-6 article {
 			width: 16.66%;
 		}
 
-		&:not(.wp-block-uagb-post-grid).uagb-post__columns-tablet-7 article {
+		&:not( .wp-block-uagb-post-grid ).uagb-post__columns-tablet-7 article {
 			width: 14.28%;
 		}
 
-		&:not(.wp-block-uagb-post-grid).uagb-post__columns-tablet-8 article {
+		&:not( .wp-block-uagb-post-grid ).uagb-post__columns-tablet-8 article {
 			width: 12.5%;
 		}
 	}
 
 	&.uagb-editor-preview-mode-mobile {
-
-		&:not(.wp-block-uagb-post-grid).uagb-post__columns-mobile-1 article {
+		&:not( .wp-block-uagb-post-grid ).uagb-post__columns-mobile-1 article {
 			width: 100%;
 		}
 
-		&:not(.wp-block-uagb-post-grid).uagb-post__columns-mobile-2 article {
+		&:not( .wp-block-uagb-post-grid ).uagb-post__columns-mobile-2 article {
 			width: 50%;
 		}
 
-		&:not(.wp-block-uagb-post-grid).uagb-post__columns-mobile-3 article {
+		&:not( .wp-block-uagb-post-grid ).uagb-post__columns-mobile-3 article {
 			width: 33.2%;
 		}
 
-		&:not(.wp-block-uagb-post-grid).uagb-post__columns-mobile-4 article {
+		&:not( .wp-block-uagb-post-grid ).uagb-post__columns-mobile-4 article {
 			width: 25%;
 		}
 
-		&:not(.wp-block-uagb-post-grid).uagb-post__columns-mobile-5 article {
+		&:not( .wp-block-uagb-post-grid ).uagb-post__columns-mobile-5 article {
 			width: 20%;
 		}
 
-		&:not(.wp-block-uagb-post-grid).uagb-post__columns-mobile-6 article {
+		&:not( .wp-block-uagb-post-grid ).uagb-post__columns-mobile-6 article {
 			width: 16.66%;
 		}
 
-		&:not(.wp-block-uagb-post-grid).uagb-post__columns-mobile-7 article {
+		&:not( .wp-block-uagb-post-grid ).uagb-post__columns-mobile-7 article {
 			width: 14.28%;
 		}
 
-		&:not(.wp-block-uagb-post-grid).uagb-post__columns-mobile-8 article {
+		&:not( .wp-block-uagb-post-grid ).uagb-post__columns-mobile-8 article {
 			width: 12.5%;
 		}
-
 	}
 
-	&:not(.is-grid).uagb-post__items {
+	&:not( .is-grid ).uagb-post__items {
 		display: flex;
 		-ms-flex-wrap: wrap;
 		-webkit-flex-wrap: wrap;
@@ -176,7 +171,8 @@
 	-ms-transform: translate(-50%, -50%);
 }
 
-.editor-styles-wrapper .is-root-container.edit-site-block-editor__block-list.wp-site-blocks .is-masonry { // Applies only in theme builder 2022.
+.editor-styles-wrapper .is-root-container.edit-site-block-editor__block-list.wp-site-blocks .is-masonry {
+	// Applies only in theme builder 2022.
 	height: initial !important;
 }
 
@@ -189,14 +185,12 @@
 }
 
 .editor-styles-wrapper .is-grid {
-
 	&.uagb-equal_height_inline-read-more-buttons-in-editor {
-
 		&.uagb-post__image-position-top article.uagb-post__inner-wrap,
 		&.uagb-post__image-position-background article.uagb-post__inner-wrap {
 			position: relative;
 
-			.uagb-post__text:nth-last-child(2) {
+			.uagb-post__text:nth-last-child( 2 ) {
 				padding-bottom: 100px !important;
 			}
 
@@ -205,7 +199,5 @@
 				bottom: 20px;
 			}
 		}
-
 	}
-
 }

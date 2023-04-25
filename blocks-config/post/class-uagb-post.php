@@ -1712,6 +1712,26 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							( function( $ ) {
 								var cols = parseInt( '<?php echo esc_html( $value['columns'] ); ?>' );
 								var $scope = $( '.uagb-block-<?php echo esc_html( $key ); ?>' );
+								let imagePosition = '<?php echo esc_html( $value['imgPosition'] ); ?>';
+
+								if( 'top' !== imagePosition ){
+									// This CSS is for Post BG Image Spacing
+									let articles = document.querySelectorAll( '.uagb-post__image-position-background .uagb-post__inner-wrap' );
+									if( ! articles?.length ) {
+										return;
+									}
+									for( let article of articles ) {
+										let image = article.getElementsByClassName('uagb-post__image');
+										if ( image[0] ) {
+											let articleWidth = article.offsetWidth;
+											let rowGap = <?php echo esc_html( $value['rowGap'] ); ?>;
+											let imageWidth = 100 - ( rowGap / articleWidth ) * 100;
+											image[0].style.width = imageWidth + '%';
+											image[0].style.marginLeft = rowGap / 2 + 'px';
+
+										}
+									}
+								}
 								if ( ! $scope.hasClass('is-carousel') || cols >= $scope.children('article.uagb-post__inner-wrap').length ) {
 									return;
 								}
@@ -1750,21 +1770,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									$scope.slick( slider_options );
 
 								});
-								// This CSS is for Post BG Image Spacing
-								let articles = document.querySelectorAll( '.uagb-post__image-position-background .uagb-post__inner-wrap' );
-
-								for( let article of articles ) {
-									let articleWidth = article.offsetWidth;
-									let rowGap = <?php echo esc_html( $value['rowGap'] ); ?>;
-									let imageWidth = 100 - ( rowGap / articleWidth ) * 100;
-									let image = article.getElementsByClassName('uagb-post__image');
-									if ( image[0] ) {
-										image[0].style.width = imageWidth + '%';
-										image[0].style.marginLeft = rowGap / 2 + 'px';
-
-									}
-
-								}
 								var enableEqualHeight = ( '<?php echo esc_html( $equal_height ); ?>' );
 
 								if( enableEqualHeight ){

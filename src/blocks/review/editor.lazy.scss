@@ -2,9 +2,8 @@ $breakpoint-tablet: 976px;
 $breakpoint-mobile: 768px;
 
 .editor-styles-wrapper [data-type="uagb/review"] {
-
-	.uagb_review_entry div:nth-child(2) {
-		min-width: unset !important;  // !important is required to override markup/inline-styling.
+	.uagb_review_entry div:nth-child( 2 ) {
+		min-width: unset !important; // !important is required to override markup/inline-styling.
 		display: flex;
 	}
 
@@ -44,11 +43,11 @@ $breakpoint-mobile: 768px;
 		float: right;
 		margin-left: 50px;
 
-		@media screen and (max-width: $breakpoint-tablet) {
+		@media screen and ( max-width: $breakpoint-tablet ) {
 			margin-left: 25px;
 		}
 
-		@media screen and (max-width: $breakpoint-mobile) {
+		@media screen and ( max-width: $breakpoint-mobile ) {
 			margin-left: 15px;
 		}
 	}

@@ -21,21 +21,13 @@ registerBlockType( 'uagb/testimonial', {
 	title: __( 'Testimonials', 'ultimate-addons-for-gutenberg' ), // Block title.
 	description: __( 'Display customer testimonials in customizable layouts.', 'ultimate-addons-for-gutenberg' ), // Block description.
 	icon: UAGB_Block_Icons.testimonial, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-	keywords: [
-		__( 'testimonial', 'ultimate-addons-for-gutenberg' ),
-		__( 'uag', 'ultimate-addons-for-gutenberg' ),
-	],
+	keywords: [ __( 'testimonial', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	supports: {
 		anchor: true,
 	},
 	attributes,
-category: uagb_blocks_info.category,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="testimonial" />
-			) : (
-				<Edit { ...props } />
-			),
+	category: uagb_blocks_info.category,
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="testimonial" /> : <Edit { ...props } /> ),
 	save,
 	deprecated,
 } );

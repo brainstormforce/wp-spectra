@@ -1,8 +1,8 @@
-import { useLayoutEffect, memo ,useEffect, useState, useRef} from '@wordpress/element';
+import { useLayoutEffect, memo, useEffect, useState, useRef } from '@wordpress/element';
 import classnames from 'classnames';
 import { isBlobURL, getBlobByURL, revokeBlobURL } from '@wordpress/blob';
 import { ToolbarButton } from '@wordpress/components';
-import { useSelect, useDispatch  } from '@wordpress/data';
+import { useSelect, useDispatch } from '@wordpress/data';
 import { upload } from '@wordpress/icons';
 import {
 	BlockControls,
@@ -10,26 +10,25 @@ import {
 	BlockIcon,
 	MediaPlaceholder,
 	useBlockProps,
-	__experimentalImageURLInputUI as ImageURLInputUI
+	__experimentalImageURLInputUI as ImageURLInputUI,
 } from '@wordpress/block-editor';
 import { store as coreStore } from '@wordpress/core-data';
 import { __ } from '@wordpress/i18n';
 import { useDeviceType } from '@Controls/getPreviewType';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import Image from './image'
-import Layout from './layout'
+import Image from './image';
+import Layout from './layout';
 import styles from './editor.lazy.scss';
 
 /**
  * Internal dependencies
  */
-import {pickRelevantMediaFiles, isTemporaryImage, isExternalImage, hasDefaultSize, isMediaDestroyed} from './utils'
-
+import { pickRelevantMediaFiles, isTemporaryImage, isExternalImage, hasDefaultSize, isMediaDestroyed } from './utils';
 
 /**
  * Module constants
  */
- import {
+import {
 	LINK_DESTINATION_ATTACHMENT,
 	LINK_DESTINATION_CUSTOM,
 	LINK_DESTINATION_MEDIA,
@@ -41,17 +40,20 @@ const propTypes = {};
 
 const defaultProps = {};
 
-const Render = ( props ) => {
-	const {
-		attributes,
-		setAttributes,
-		className,
-		isSelected,
-		insertBlocksAfter,
-		onReplace,
-		context,
-		clientId
-	} = props.parentProps;
+const Render = ( parentProps ) => {
+	const { parentProps: props } = parentProps;
+	let { attributes } = props;
+	const { setAttributes, className, isSelected, insertBlocksAfter, onReplace, context, clientId } = props;
+
+	if ( props?.loopUrl ) {
+		attributes = { ...attributes, url: props.loopUrl };
+	}
+	if ( props?.loopAlt ) {
+		attributes = { ...attributes, alt: props.loopAlt };
+	}
+	if ( props?.loopWidth ) {
+		attributes = { ...attributes, width: props.loopWidth };
+	}
 
 	const {
 		block_id,
@@ -67,7 +69,7 @@ const Render = ( props ) => {
 		imageHoverEffect,
 		href,
 		linkDestination,
-	} = attributes
+	} = attributes;
 
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -96,16 +98,15 @@ const Render = ( props ) => {
 	const { imageDefaultSize, mediaUpload } = useSelect( ( select ) => {
 		const { getSettings } = select( blockEditorStore );
 		// eslint-disable-next-line no-shadow
-		const {imageDefaultSize, mediaUpload} = getSettings();
-		return {imageDefaultSize, mediaUpload}
+		const { imageDefaultSize, mediaUpload } = getSettings();
+		return { imageDefaultSize, mediaUpload };
 	}, [] );
-
 
 	const { image } = useSelect(
 		( select ) => {
 			const { getMedia } = select( coreStore );
 			return {
-				image: id && isSelected ? getMedia( id ) : null
+				image: id && isSelected ? getMedia( id ) : null,
 			};
 		},
 		[ id, isSelected ]
@@ -139,13 +140,9 @@ const Render = ( props ) => {
 	}
 
 	function onUploadError( message ) {
-		createNotice(
-			'error',
-			message,
-			{
-				type: 'snackbar'
-			}
-		);
+		createNotice( 'error', message, {
+			type: 'snackbar',
+		} );
 	}
 
 	function onSelectImage( media ) {
@@ -160,7 +157,6 @@ const Render = ( props ) => {
 
 			return;
 		}
-
 
 		if ( isBlobURL( media.url ) ) {
 			setTemporaryURL( media.url );
@@ -177,7 +173,7 @@ const Render = ( props ) => {
 				...mediaAttributes,
 				alt: mediaAttributes.alt,
 				id: mediaAttributes.id,
-				link: mediaAttributes.link
+				link: mediaAttributes.link,
 			};
 		}
 
@@ -189,15 +185,9 @@ const Render = ( props ) => {
 				height: undefined,
 				// Fallback to size "full" if there's no default image size.
 				// It means the image is smaller, and the block will use a full-size URL.
-				sizeSlug: hasDefaultSize( media, imageDefaultSize )
-					? imageDefaultSize
-					: 'full',
-				sizeSlugTablet: hasDefaultSize( media, imageDefaultSize )
-				? imageDefaultSize
-				: 'full',
-				sizeSlugMobile: hasDefaultSize( media, imageDefaultSize )
-				? imageDefaultSize
-				: 'full',
+				sizeSlug: hasDefaultSize( media, imageDefaultSize ) ? imageDefaultSize : 'full',
+				sizeSlugTablet: hasDefaultSize( media, imageDefaultSize ) ? imageDefaultSize : 'full',
+				sizeSlugMobile: hasDefaultSize( media, imageDefaultSize ) ? imageDefaultSize : 'full',
 			};
 		} else {
 			// Keep the same url when selecting the same file, so "Image Size"
@@ -212,10 +202,7 @@ const Render = ( props ) => {
 			// Use the WordPress option to determine the proper default.
 			// The constants used in Gutenberg do not match WP options so a little more complicated than ideal.
 			// TODO: fix this in a follow up PR, requires updating media-text and ui component.
-			switch (
-				wp?.media?.view?.settings?.defaultProps?.link ||
-				LINK_DESTINATION_NONE
-			) {
+			switch ( wp?.media?.view?.settings?.defaultProps?.link || LINK_DESTINATION_NONE ) {
 				case 'file':
 				case LINK_DESTINATION_MEDIA:
 					linkDestination = LINK_DESTINATION_MEDIA;
@@ -250,7 +237,7 @@ const Render = ( props ) => {
 			...mediaAttributes,
 			...additionalAttributes,
 			linkDestination,
-		}
+		};
 		setAttributes( imageAttributes );
 	}
 
@@ -287,13 +274,9 @@ const Render = ( props ) => {
 				allowedTypes: ALLOWED_MEDIA_TYPES,
 				onError: ( message ) => {
 					isTemp = false;
-					createNotice(
-						'error',
-						message,
-						{
-							type: 'snackbar'
-						}
-					);
+					createNotice( 'error', message, {
+						type: 'snackbar',
+					} );
 					setAttributes( {
 						src: undefined,
 						id: undefined,
@@ -317,14 +300,8 @@ const Render = ( props ) => {
 	const isExternal = isExternalImage( id, url );
 	const src = isExternal ? url : undefined;
 	const mediaPreview = !! url && (
-		<img
-			alt={ __( 'Edit image' ) }
-			title={ __( 'Edit image' ) }
-			className={ 'edit-image-preview' }
-			src={ url }
-		/>
+		<img alt={ __( 'Edit image', 'ultimate-addons-for-gutenberg' ) } title={ __( 'Edit image', 'ultimate-addons-for-gutenberg' ) } className={ 'edit-image-preview' } src={ url } />
 	);
-
 
 	// If an image is externally hosted, try to fetch the image data. This may
 	// fail if the image host doesn't allow CORS with the domain. If it works,
@@ -353,23 +330,15 @@ const Render = ( props ) => {
 				}
 
 				setExternalBlob();
-				createNotice(
-					'success',
-					__( 'Image uploaded.' ),
-					{
-						type: 'snackbar'
-					}
-				);
+				createNotice( 'success', __( 'Image uploaded.', 'ultimate-addons-for-gutenberg' ), {
+					type: 'snackbar',
+				} );
 			},
 			allowedTypes: ALLOWED_MEDIA_TYPES,
 			onError( message ) {
-				createNotice(
-					'error',
-					message,
-					{
-						type: 'snackbar'
-					}
-				);
+				createNotice( 'error', message, {
+					type: 'snackbar',
+				} );
 			},
 		} );
 	}
@@ -379,7 +348,7 @@ const Render = ( props ) => {
 	}
 
 	const blockProps = useBlockProps( {
-		ref
+		ref,
 	} );
 
 	return (
@@ -396,55 +365,55 @@ const Render = ( props ) => {
 					rel={ rel }
 				/>
 				{ externalBlob && (
-					<ToolbarButton
-						onClick={ uploadExternal }
-						icon={ upload }
-						label={ __( 'Upload external image' ) }
-					/>
+					<ToolbarButton onClick={ uploadExternal } icon={ upload } label={ __( 'Upload external image', 'ultimate-addons-for-gutenberg' ) } />
 				) }
 			</BlockControls>
-			<div {...blockProps} className={ classnames(
-				className,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`,
-				`wp-block-uagb-image--layout-${ layout }`,
-				`wp-block-uagb-image--effect-${imageHoverEffect}`,
-				`wp-block-uagb-image--align-${align ? align : 'none'}`
-			) }>
+			<div
+				{ ...blockProps }
+				className={ classnames(
+					className,
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+					`uagb-block-${ block_id }`,
+					`wp-block-uagb-image--layout-${ layout }`,
+					`wp-block-uagb-image--effect-${ imageHoverEffect }`,
+					`wp-block-uagb-image--align-${ align ? align : 'none' }`
+				) }
+			>
 				{ ( temporaryURL || url ) && (
-				<figure className='wp-block-uagb-image__figure'>
-					<Image
-						temporaryURL={ temporaryURL }
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						isSelected={ isSelected }
-						insertBlocksAfter={ insertBlocksAfter }
-						onReplace={ onReplace }
-						onSelectImage={ onSelectImage }
-						onSelectURL={ onSelectURL }
-						onUploadError={ onUploadError }
-						containerRef={ ref }
-						context={ context }
-						clientId={ clientId }
-						onCloseModal={ onCloseModal }
-						onImageLoadError={ onImageError }
-					/>
-					<Layout
-						captionRef={captionRef}
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						isSelected={ isSelected }
-					/>
-				</figure>
+					<figure className="wp-block-uagb-image__figure">
+						<Image
+							temporaryURL={ temporaryURL }
+							attributes={ attributes }
+							setAttributes={ setAttributes }
+							isSelected={ isSelected }
+							insertBlocksAfter={ insertBlocksAfter }
+							onReplace={ onReplace }
+							onSelectImage={ onSelectImage }
+							onSelectURL={ onSelectURL }
+							onUploadError={ onUploadError }
+							containerRef={ ref }
+							context={ context }
+							clientId={ clientId }
+							onCloseModal={ onCloseModal }
+							onImageLoadError={ onImageError }
+						/>
+						<Layout
+							captionRef={ captionRef }
+							attributes={ attributes }
+							setAttributes={ setAttributes }
+							isSelected={ isSelected }
+						/>
+					</figure>
 				) }
 				<MediaPlaceholder
 					icon={ <BlockIcon icon={ UAGB_Block_Icons.image } /> }
-					labels={
-						{
-							title: __( 'Image', 'ultimate-addons-for-gutenberg' ),
-							instructions: __( 'Upload an image file, pick one from your media library, or add one with a URL.', 'ultimate-addons-for-gutenberg' )
-						}
-					}
+					labels={ {
+						title: __( 'Image', 'ultimate-addons-for-gutenberg' ),
+						instructions: __(
+							'Upload an image file, pick one from your media library, or add one with a URL.',
+							'ultimate-addons-for-gutenberg'
+						),
+					} }
 					onSelect={ onSelectImage }
 					onSelectURL={ onSelectURL }
 					onError={ onUploadError }
@@ -458,7 +427,7 @@ const Render = ( props ) => {
 			</div>
 		</>
 	);
-}
+};
 
 Render.propTypes = propTypes;
 Render.defaultProps = defaultProps;

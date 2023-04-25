@@ -27,100 +27,100 @@ const attributes = {
 		type: 'string',
 		default: 'left',
 		UAGCopyPaste: {
-			styleType: 'overall-alignment'
+			styleType: 'overall-alignment',
 		},
 	},
 	enableSeparator: {
 		type: 'boolean',
 		default: false,
 		UAGCopyPaste: {
-			styleType: 'enable-separator'
+			styleType: 'enable-separator',
 		},
 	},
 	rowsGap: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'row-gap'
+			styleType: 'row-gap',
 		},
 	},
 	rowsGapTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'row-gap-tablet'
+			styleType: 'row-gap-tablet',
 		},
 	},
 	rowsGapMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'row-gap-mobile'
+			styleType: 'row-gap-mobile',
 		},
 	},
 	rowsGapUnit: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'row-gap-type'
+			styleType: 'row-gap-type',
 		},
 	},
 	columnsGap: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'column-gap'
+			styleType: 'column-gap',
 		},
 	},
 	columnsGapTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'column-gap-tablet'
+			styleType: 'column-gap-tablet',
 		},
 	},
 	columnsGapMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'column-gap-mobile'
+			styleType: 'column-gap-mobile',
 		},
 	},
 	columnsGapUnit: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'column-gap-type'
+			styleType: 'column-gap-type',
 		},
 	},
 	boxBgType: {
 		type: 'string',
 		default: 'color',
 		UAGCopyPaste: {
-			styleType: 'faq-bg-type'
+			styleType: 'faq-bg-type',
 		},
 	},
 	boxBgHoverType: {
 		type: 'string',
 		default: 'color',
 		UAGCopyPaste: {
-			styleType: 'faq-bg-hover-type'
+			styleType: 'faq-bg-hover-type',
 		},
 	},
 	boxBgColor: {
 		type: 'string',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'faq-bg-color'
+			styleType: 'faq-bg-color',
 		},
 	},
 	boxBgHoverColor: {
 		type: 'string',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'faq-bg-hover-color'
+			styleType: 'faq-bg-hover-color',
 		},
 	},
 	boxPaddingTypeMobile: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'faq-padding-type-mobile'
+			styleType: 'faq-padding-type-mobile',
 		},
 		default: 'px',
 	},
@@ -128,56 +128,56 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'faq-padding-type-tablet'
+			styleType: 'faq-padding-type-tablet',
 		},
 	},
 	boxPaddingTypeDesktop: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'faq-padding-type-desktop'
+			styleType: 'faq-padding-type-desktop',
 		},
 	},
 	vBoxPaddingMobile: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'faq-vertical-padding-mobile'
+			styleType: 'faq-vertical-padding-mobile',
 		},
 	},
 	hBoxPaddingMobile: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'faq-horizontal-padding-mobile'
+			styleType: 'faq-horizontal-padding-mobile',
 		},
 	},
 	vBoxPaddingTablet: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'faq-vertical-padding-tablet'
+			styleType: 'faq-vertical-padding-tablet',
 		},
 	},
 	hBoxPaddingTablet: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'faq-horizontal-padding-tablet'
+			styleType: 'faq-horizontal-padding-tablet',
 		},
 	},
 	vBoxPaddingDesktop: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'faq-vertical-padding-desktop'
+			styleType: 'faq-vertical-padding-desktop',
 		},
 	},
 	hBoxPaddingDesktop: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'faq-horizontal-padding-desktop'
+			styleType: 'faq-horizontal-padding-desktop',
 		},
 	},
 	borderHoverColor: {
@@ -185,383 +185,383 @@ const attributes = {
 	},
 	borderStyle: {
 		type: 'string',
-		default : 'solid'
+		default: 'solid',
 	},
 	borderWidth: {
 		type: 'number',
-		default : 1
+		default: 1,
 	},
 	borderRadius: {
 		type: 'number',
-		default : 2
+		default: 2,
 	},
 	borderColor: {
 		type: 'string',
-		default: '#D2D2D2'
+		default: '#D2D2D2',
 	},
 	questionTextColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-color'
+			styleType: 'main-title-color',
 		},
 	},
 	questionTextActiveColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-hover-color'
+			styleType: 'main-title-hover-color',
 		},
 	},
 	questionTextBgColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-bg-color'
+			styleType: 'main-title-bg-color',
 		},
 	},
 	questionTextActiveBgColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-hover-bg-color'
+			styleType: 'main-title-hover-bg-color',
 		},
 	},
 	questionPaddingTypeDesktop: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-padding-type-desktop'
+			styleType: 'main-title-padding-type-desktop',
 		},
 		default: 'px',
 	},
 	questionPaddingTypeTablet: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-padding-type-tablet'
+			styleType: 'main-title-padding-type-tablet',
 		},
 		default: 'px',
 	},
 	questionPaddingTypeMobile: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-padding-type-mobile'
+			styleType: 'main-title-padding-type-mobile',
 		},
 		default: 'px',
 	},
 	vquestionPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-vertical-padding-mobile'
+			styleType: 'main-title-vertical-padding-mobile',
 		},
 		default: 10,
 	},
 	vquestionPaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-vertical-padding-tablet'
+			styleType: 'main-title-vertical-padding-tablet',
 		},
 		default: 10,
 	},
 	vquestionPaddingDesktop: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-vertical-padding-desktop'
+			styleType: 'main-title-vertical-padding-desktop',
 		},
 		default: 10,
 	},
 	hquestionPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-horizontal-padding-mobile'
+			styleType: 'main-title-horizontal-padding-mobile',
 		},
 		default: 10,
 	},
 	hquestionPaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-horizontal-padding-tablet'
+			styleType: 'main-title-horizontal-padding-tablet',
 		},
 		default: 10,
 	},
 	hquestionPaddingDesktop: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-horizontal-padding-desktop'
+			styleType: 'main-title-horizontal-padding-desktop',
 		},
 		default: 10,
 	},
 	answerTextColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-color'
+			styleType: 'desc-color',
 		},
 	},
 	answerPaddingTypeDesktop: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'desc-padding-type-desktop'
+			styleType: 'desc-padding-type-desktop',
 		},
 	},
 	answerPaddingTypeTablet: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-padding-type-tablet'
+			styleType: 'desc-padding-type-tablet',
 		},
 		default: 'px',
 	},
 	answerPaddingTypeMobile: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-padding-type-mobile'
+			styleType: 'desc-padding-type-mobile',
 		},
 		default: 'px',
 	},
 	vanswerPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-vertical-padding-mobile'
+			styleType: 'desc-vertical-padding-mobile',
 		},
 		default: 10,
 	},
 	vanswerPaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-vertical-padding-tablet'
+			styleType: 'desc-vertical-padding-tablet',
 		},
 		default: 10,
 	},
 	vanswerPaddingDesktop: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-vertical-padding-desktop'
+			styleType: 'desc-vertical-padding-desktop',
 		},
 		default: 10,
 	},
 	hanswerPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-horizontal-padding-mobile'
+			styleType: 'desc-horizontal-padding-mobile',
 		},
 		default: 10,
 	},
 	hanswerPaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-horizontal-padding-tablet'
+			styleType: 'desc-horizontal-padding-tablet',
 		},
 		default: 10,
 	},
 	hanswerPaddingDesktop: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-horizontal-padding-desktop'
+			styleType: 'desc-horizontal-padding-desktop',
 		},
 		default: 10,
 	},
 	iconColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'icon-color'
+			styleType: 'icon-color',
 		},
 	},
 	iconActiveColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'icon-hover-color'
+			styleType: 'icon-hover-color',
 		},
 	},
 	gapBtwIconQUestion: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'icon-spacing'
+			styleType: 'icon-spacing',
 		},
 	},
 	gapBtwIconQUestionTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'icon-spacing-tablet'
+			styleType: 'icon-spacing-tablet',
 		},
 	},
 	gapBtwIconQUestionMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'icon-spacing-mobile'
+			styleType: 'icon-spacing-mobile',
 		},
 	},
 	questionloadGoogleFonts: {
 		type: 'boolean',
 		UAGCopyPaste: {
-			styleType: 'main-title-load-google-fonts'
+			styleType: 'main-title-load-google-fonts',
 		},
 		default: false,
 	},
 	answerloadGoogleFonts: {
 		type: 'boolean',
 		UAGCopyPaste: {
-			styleType: 'desc-load-google-fonts'
+			styleType: 'desc-load-google-fonts',
 		},
 		default: false,
 	},
 	questionFontFamily: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-family'
+			styleType: 'main-title-font-family',
 		},
 		default: 'Default',
 	},
 	questionFontWeight: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-weight'
+			styleType: 'main-title-font-weight',
 		},
 	},
 	questionFontStyle: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-style'
+			styleType: 'main-title-font-style',
 		},
 		default: 'normal',
 	},
 	questionTransform: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-transform'
+			styleType: 'main-title-transform',
 		},
 	},
 	questionDecoration: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-decoration'
+			styleType: 'main-title-decoration',
 		},
 	},
 	questionFontSize: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-size'
+			styleType: 'main-title-font-size',
 		},
 	},
 	questionFontSizeType: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-size-type'
+			styleType: 'main-title-font-size-type',
 		},
 		default: 'px',
 	},
 	questionFontSizeTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-size-tablet'
+			styleType: 'main-title-font-size-tablet',
 		},
 	},
 	questionFontSizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-size-mobile'
+			styleType: 'main-title-font-size-mobile',
 		},
 	},
 	questionLineHeight: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-line-height'
+			styleType: 'main-title-line-height',
 		},
 	},
 	questionLineHeightType: {
 		type: 'string',
 		default: 'em',
 		UAGCopyPaste: {
-			styleType: 'main-title-line-height-type'
+			styleType: 'main-title-line-height-type',
 		},
 	},
 	questionLineHeightTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-line-height-tablet'
+			styleType: 'main-title-line-height-tablet',
 		},
 	},
 	questionLineHeightMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-line-height-mobile'
+			styleType: 'main-title-line-height-mobile',
 		},
 	},
 	answerFontFamily: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-font-family'
+			styleType: 'desc-font-family',
 		},
 		default: 'Default',
 	},
 	answerFontWeight: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-font-weight'
+			styleType: 'desc-font-weight',
 		},
 	},
 	answerFontStyle: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-font-style'
+			styleType: 'desc-font-style',
 		},
 		default: 'normal',
 	},
 	answerTransform: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-transform'
+			styleType: 'desc-transform',
 		},
 	},
 	answerDecoration: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-decoration'
+			styleType: 'desc-decoration',
 		},
 	},
 	answerFontSize: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-font-size'
+			styleType: 'desc-font-size',
 		},
 	},
 	answerFontSizeType: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-font-size-type'
+			styleType: 'desc-font-size-type',
 		},
 		default: 'px',
 	},
 	answerFontSizeTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-font-size-tablet'
+			styleType: 'desc-font-size-tablet',
 		},
 	},
 	answerFontSizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-font-size-mobile'
+			styleType: 'desc-font-size-mobile',
 		},
 	},
 	answerLineHeight: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-line-height'
+			styleType: 'desc-line-height',
 		},
 	},
 	answerLineHeightType: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-line-height-type'
+			styleType: 'desc-line-height-type',
 		},
 		default: 'em',
 	},
 	answerLineHeightTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-line-height-tablet'
+			styleType: 'desc-line-height-tablet',
 		},
 	},
 	answerLineHeightMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-line-height-mobile'
+			styleType: 'desc-line-height-mobile',
 		},
 	},
 	icon: {
@@ -576,79 +576,79 @@ const attributes = {
 		type: 'string',
 		default: 'row',
 		UAGCopyPaste: {
-			styleType: 'icon-align'
+			styleType: 'icon-align',
 		},
 	},
 	iconSize: {
 		type: 'number',
 		default: 12,
 		UAGCopyPaste: {
-			styleType: 'icon-size'
+			styleType: 'icon-size',
 		},
 	},
 	iconSizeTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'icon-size-tablet'
+			styleType: 'icon-size-tablet',
 		},
 	},
 	iconSizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'icon-size-mobile'
+			styleType: 'icon-size-mobile',
 		},
 	},
 	iconSizeType: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'icon-size-type'
+			styleType: 'icon-size-type',
 		},
 	},
 	iconBgSize: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'icon-bg-size'
+			styleType: 'icon-bg-size',
 		},
 	},
 	iconBgSizeTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'icon-bg-size-tablet'
+			styleType: 'icon-bg-size-tablet',
 		},
 	},
 	iconBgSizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'icon-bg-size-mobile'
+			styleType: 'icon-bg-size-mobile',
 		},
 	},
 	iconBgSizeType: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'icon-bg-size-type'
+			styleType: 'icon-bg-size-type',
 		},
 	},
 	columns: {
 		type: 'number',
 		default: 2,
 		UAGCopyPaste: {
-			styleType: 'column-count'
+			styleType: 'column-count',
 		},
 	},
 	tcolumns: {
 		type: 'number',
 		default: 2,
 		UAGCopyPaste: {
-			styleType: 'column-count-tablet'
+			styleType: 'column-count-tablet',
 		},
 	},
 	mcolumns: {
 		type: 'number',
 		default: 1,
 		UAGCopyPaste: {
-			styleType: 'column-count-mobile'
+			styleType: 'column-count-mobile',
 		},
 	},
 	schema: {
@@ -663,49 +663,49 @@ const attributes = {
 		type: 'boolean',
 		default: true,
 		UAGCopyPaste: {
-			styleType: 'equal-height'
+			styleType: 'equal-height',
 		},
 	},
 	questionLeftPaddingTablet: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'main-title-left-padding-tablet'
+			styleType: 'main-title-left-padding-tablet',
 		},
 	},
 	questionBottomPaddingTablet: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'main-title-bottom-padding-tablet'
+			styleType: 'main-title-bottom-padding-tablet',
 		},
 	},
 	questionLeftPaddingDesktop: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'main-title-left-padding-desktop'
+			styleType: 'main-title-left-padding-desktop',
 		},
 	},
 	questionBottomPaddingDesktop: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'main-title-bottom-padding-desktop'
+			styleType: 'main-title-bottom-padding-desktop',
 		},
 	},
 	questionLeftPaddingMobile: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'main-title-left-padding-mobile'
+			styleType: 'main-title-left-padding-mobile',
 		},
 	},
 	questionBottomPaddingMobile: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'main-title-bottom-padding-mobile'
+			styleType: 'main-title-bottom-padding-mobile',
 		},
 	},
 	headingTag: {
@@ -724,73 +724,73 @@ const attributes = {
 	answerTopPadding: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-top-padding'
+			styleType: 'desc-top-padding',
 		},
 	},
 	answerRightPadding: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-right-padding'
+			styleType: 'desc-right-padding',
 		},
 	},
 	answerBottomPadding: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-bottom-padding'
+			styleType: 'desc-bottom-padding',
 		},
 	},
 	answerLeftPadding: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-left-padding'
+			styleType: 'desc-left-padding',
 		},
 	},
 	answerTopPaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-top-padding-tablet'
+			styleType: 'desc-top-padding-tablet',
 		},
 	},
 	answerRightPaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-right-padding-tablet'
+			styleType: 'desc-right-padding-tablet',
 		},
 	},
 	answerBottomPaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-bottom-padding-tablet'
+			styleType: 'desc-bottom-padding-tablet',
 		},
 	},
 	answerLeftPaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-left-padding-tablet'
+			styleType: 'desc-left-padding-tablet',
 		},
 	},
 	answerTopPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-top-padding-mobile'
+			styleType: 'desc-top-padding-mobile',
 		},
 	},
 	answerRightPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-right-padding-mobile'
+			styleType: 'desc-right-padding-mobile',
 		},
 	},
 	answerBottomPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-bottom-padding-mobile'
+			styleType: 'desc-bottom-padding-mobile',
 		},
 	},
 	answerLeftPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-left-padding-mobile'
+			styleType: 'desc-left-padding-mobile',
 		},
 	},
 	isPreview: {
@@ -802,59 +802,59 @@ const attributes = {
 	questionLetterSpacing: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-letter-spacing'
-		}
+			styleType: 'main-title-letter-spacing',
+		},
 	},
 	questionLetterSpacingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-letter-spacing-tablet'
-		}
+			styleType: 'main-title-letter-spacing-tablet',
+		},
 	},
 	questionLetterSpacingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-letter-spacing-mobile'
-		}
+			styleType: 'main-title-letter-spacing-mobile',
+		},
 	},
 	questionLetterSpacingType: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'main-title-letter-spacing-type'
-		}
+			styleType: 'main-title-letter-spacing-type',
+		},
 	},
 	answerLetterSpacing: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-letter-spacing'
-		}
+			styleType: 'desc-letter-spacing',
+		},
 	},
 	answerLetterSpacingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-letter-spacing-tablet'
-		}
+			styleType: 'desc-letter-spacing-tablet',
+		},
 	},
 	answerLetterSpacingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-letter-spacing-mobile'
-		}
+			styleType: 'desc-letter-spacing-mobile',
+		},
 	},
 	answerLetterSpacingType: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'desc-letter-spacing-type'
-		}
+			styleType: 'desc-letter-spacing-type',
+		},
 	},
 	iconBgColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'icon-bg-color'
-		}
+			styleType: 'icon-bg-color',
+		},
 	},
-	...iconBorderAttributes
+	...iconBorderAttributes,
 };
 export default attributes;

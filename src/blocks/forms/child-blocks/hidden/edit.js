@@ -4,7 +4,6 @@
 
 import { useEffect } from '@wordpress/element';
 
-
 import Settings from './settings';
 import Render from './render';
 
@@ -17,18 +16,15 @@ const UAGBFormsHiddenEdit = ( props ) => {
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-style-forms-hidden-' + clientId.substr( 0, 8 )
-		);
+		$style.setAttribute( 'id', 'uagb-style-forms-hidden-' + clientId.substr( 0, 8 ) );
 		document.head.appendChild( $style );
 	}, [] );
 
 	return (
-			<>
+		<>
 			{ isSelected && <Settings parentProps={ props } /> }
-				<Render parentProps={ props } />
-			</>
+			<Render parentProps={ props } />
+		</>
 	);
 };
 

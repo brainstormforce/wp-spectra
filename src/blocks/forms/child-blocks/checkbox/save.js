@@ -12,18 +12,10 @@ export default function save( props ) {
 
 	const { block_id, checkboxRequired, options, checkboxName } = attributes;
 
-	const isRequired = checkboxRequired
-		? __( 'required', 'ultimate-addons-for-gutenberg' )
-		: '';
+	const isRequired = checkboxRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
 
 	return (
-		<div
-			className={ classnames(
-				'uagb-forms-checkbox-wrap',
-				'uagb-forms-field-set',
-				`uagb-block-${ block_id }`
-			) }
-		>
+		<div className={ classnames( 'uagb-forms-checkbox-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }>
 			<RichText.Content
 				tagName="div"
 				value={ checkboxName }
@@ -44,9 +36,7 @@ export default function save( props ) {
 							value={ optionvalue }
 							required={ checkboxRequired }
 						/>
-						<label htmlFor={ `checkbox-${ value }-${ block_id }` }>
-							{ o.optiontitle }
-						</label>
+						<label htmlFor={ `checkbox-${ value }-${ block_id }` }>{ o.optiontitle }</label>
 						<br />
 					</Fragment>
 				);

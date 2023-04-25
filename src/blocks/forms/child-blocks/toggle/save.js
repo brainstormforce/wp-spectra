@@ -11,28 +11,12 @@ import { RichText } from '@wordpress/block-editor';
 export default function save( props ) {
 	const { attributes } = props;
 
-	const {
-		block_id,
-		toggleRequired,
-		name,
-		toggleStatus,
-		layout,
-		trueValue,
-		falseValue,
-	} = attributes;
+	const { block_id, toggleRequired, name, toggleStatus, layout, trueValue, falseValue } = attributes;
 
-	const isRequired = toggleRequired
-		? __( 'required', 'ultimate-addons-for-gutenberg' )
-		: '';
+	const isRequired = toggleRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
 
 	return (
-		<div
-			className={ classnames(
-				'uagb-forms-toggle-wrap',
-				'uagb-forms-field-set',
-				`uagb-block-${ block_id }`
-			) }
-		>
+		<div className={ classnames( 'uagb-forms-toggle-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }>
 			<RichText.Content
 				tagName="div"
 				value={ name }
@@ -40,7 +24,9 @@ export default function save( props ) {
 				id={ block_id }
 			/>
 			<label // eslint-disable-line jsx-a11y/label-has-for
-			className="uagb-switch" id="uag-form">
+				className="uagb-switch"
+				id="uag-form"
+			>
 				<input
 					type="hidden"
 					className="uagb-forms-toggle-input"
@@ -50,6 +36,7 @@ export default function save( props ) {
 					value={ toggleStatus ? trueValue : falseValue }
 					required={ toggleRequired }
 					name={ block_id }
+					aria-label={ name }
 				/>
 				<input
 					type="checkbox"
@@ -60,6 +47,7 @@ export default function save( props ) {
 					value={ toggleStatus ? trueValue : falseValue }
 					required={ toggleRequired }
 					name={ block_id }
+					aria-label={ name }
 				/>
 				<span className={ `uagb-slider ${ layout }` }></span>
 			</label>

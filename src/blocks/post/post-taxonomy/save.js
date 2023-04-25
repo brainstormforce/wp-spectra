@@ -4,7 +4,7 @@ export default function save() {
 		<>
 			<span className="uagb-post__taxonomy uagb-post__text">
 				<span className="dashicons-tag dashicons"></span>
-				{ __( 'Category' ) }
+				{ __( 'Category', 'ultimate-addons-for-gutenberg' ) }
 			</span>
 		</>
 	);

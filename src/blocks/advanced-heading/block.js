@@ -14,16 +14,14 @@ import './format';
 import colourNameToHex from '@Controls/changeColorNameToHex';
 import PreviewImage from '@Controls/previewImage';
 import { applyFilters } from '@wordpress/hooks';
+
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 let headingCommonData = {};
 headingCommonData = applyFilters( 'uagb/advanced-heading', addCommonDataToSpectraBlocks( headingCommonData ) );
 registerBlockType( 'uagb/advanced-heading', {
 	...headingCommonData,
 	title: __( 'Heading', 'ultimate-addons-for-gutenberg' ),
-	description: __(
-		'Add heading, sub heading and a separator using one block.',
-		'ultimate-addons-for-gutenberg'
-	),
+	description: __( 'Add heading, sub heading and a separator using one block.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.advanced_heading,
 	keywords: [
 		__( 'creative heading', 'ultimate-addons-for-gutenberg' ),
@@ -34,15 +32,14 @@ registerBlockType( 'uagb/advanced-heading', {
 		anchor: true,
 	},
 	attributes,
-category: uagb_blocks_info.category,
+	category: uagb_blocks_info.category,
 	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="advanced-heading" />
-		) : (
-			<Edit { ...props } />
-		),
+		props.attributes.isPreview ? <PreviewImage image="advanced-heading" /> : <Edit { ...props } />,
 	save,
+	__experimentalLabel: ( atts ) =>
+		applyFilters( 'uag_loop_data_source_label', __( 'Heading', 'ultimate-addons-for-gutenberg' ), atts ),
 	deprecated,
+	usesContext: [ 'postId', 'postType' ],
 	transforms: {
 		from: [
 			{
@@ -89,15 +86,15 @@ category: uagb_blocks_info.category,
 					const newitems = [];
 					childBlocks.forEach( ( item, i ) => {
 						newitems.push( {
-							text: childBlocks[i].attributes.content
-						} )
+							text: childBlocks[ i ].attributes.content,
+						} );
 					} );
 
 					return newitems.map( ( text ) =>
 						createBlock( 'uagb/advanced-heading', {
 							headingTitle: text.text,
 							headingColor: colourNameToHex( _attributes.textColor ),
-							blockBackground: colourNameToHex( _attributes.backgroundColor )
+							blockBackground: colourNameToHex( _attributes.backgroundColor ),
 						} )
 					);
 				},

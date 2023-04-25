@@ -14,23 +14,14 @@ const InnerBlockLayoutContext = createContext( {
 	isLoading: false,
 } );
 
-export const useInnerBlockLayoutContext = () =>
-	useContext( InnerBlockLayoutContext );
+export const useInnerBlockLayoutContext = () => useContext( InnerBlockLayoutContext );
 
-export const InnerBlockLayoutContextProvider = ( {
-	parentName = '',
-	parentClassName = '',
-	children,
-} ) => {
+export const InnerBlockLayoutContextProvider = ( { parentName = '', parentClassName = '', children } ) => {
 	const contextValue = {
 		parentName,
 		parentClassName,
 	};
-	return (
-		<InnerBlockLayoutContext.Provider value={ contextValue }>
-			{ children }
-		</InnerBlockLayoutContext.Provider>
-	);
+	return <InnerBlockLayoutContext.Provider value={ contextValue }>{ children }</InnerBlockLayoutContext.Provider>;
 };
 
 export const DEFAULT_POST_LIST_LAYOUT = [
@@ -41,14 +32,7 @@ export const DEFAULT_POST_LIST_LAYOUT = [
 	[ 'uagb/post-excerpt' ],
 	[ 'uagb/post-button' ],
 ];
-export const renderPostLayout = (
-	blockName,
-	post,
-	layoutConfig,
-	attributes,
-	categoriesList,
-	setAttributes
-) => {
+export const renderPostLayout = ( blockName, post, layoutConfig, attributes, categoriesList, setAttributes ) => {
 	if ( ! layoutConfig ) {
 		return;
 	}
@@ -57,14 +41,7 @@ export const renderPostLayout = (
 	let children = []; // eslint-disable-line no-unused-vars
 	return layoutConfig.map( ( [ name, props = {} ], key ) => {
 		if ( !! props.children && props.children.length > 0 ) {
-			children = renderPostLayout(
-				blockName,
-				post,
-				props.children,
-				attributes,
-				categoriesList,
-				setAttributes
-			);
+			children = renderPostLayout( blockName, post, props.children, attributes, categoriesList, setAttributes );
 		}
 
 		const LayoutComponent = blockMap[ name ];
@@ -79,7 +56,7 @@ export const renderPostLayout = (
 					post={ post }
 					attributes={ attributes }
 					categoriesList={ categoriesList }
-					setAttributes = { setAttributes }
+					setAttributes={ setAttributes }
 				/>
 			</Suspense>
 		);
@@ -111,10 +88,7 @@ const assertBlockComponent = ( options, optionName ) => {
 		if ( typeof options[ optionName ] === 'function' ) {
 			return;
 		}
-		if (
-			options[ optionName ].$$typeof &&
-			options[ optionName ].$$typeof === Symbol.for( 'react.lazy' )
-		) {
+		if ( options[ optionName ].$$typeof && options[ optionName ].$$typeof === Symbol.for( 'react.lazy' ) ) {
 			return;
 		}
 	}
@@ -162,8 +136,7 @@ registerBlockComponent( {
 	component: PostButton,
 } );
 
-export const getBlockMap = ( blockName ) =>
-	getRegisteredBlockComponents( blockName );
+export const getBlockMap = ( blockName ) => getRegisteredBlockComponents( blockName );
 
 export function getRegisteredBlockComponents( context ) {
 	const parentInnerBlocks =
@@ -194,10 +167,7 @@ export const getPostLayoutConfig = ( innerBlocks ) => {
 			{
 				...block.attributes,
 				post: undefined,
-				children:
-					block.innerBlocks.length > 0
-						? getPostLayoutConfig( block.innerBlocks )
-						: [],
+				children: block.innerBlocks.length > 0 ? getPostLayoutConfig( block.innerBlocks ) : [],
 			},
 		];
 	} );

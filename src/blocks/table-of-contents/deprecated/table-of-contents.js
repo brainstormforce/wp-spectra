@@ -11,19 +11,14 @@ class TOC extends Component {
 				.filter( ( header ) => mappingHeaders[ header.tag - 1 ] )
 				.forEach( ( header ) => {
 					let last = arrays.length - 1;
-					if (
-						arrays.length === 0 ||
-						arrays[ last ][ 0 ].tag < header.tag
-					) {
+					if ( arrays.length === 0 || arrays[ last ][ 0 ].tag < header.tag ) {
 						arrays.push( [ header ] );
 					} else if ( arrays[ last ][ 0 ].tag === header.tag ) {
 						arrays[ last ].push( header );
 					} else {
 						while ( arrays[ last ][ 0 ].tag > header.tag ) {
 							if ( arrays.length > 1 ) {
-								arrays[ arrays.length - 2 ].push(
-									arrays.pop()
-								);
+								arrays[ arrays.length - 2 ].push( arrays.pop() );
 								last = arrays.length - 1;
 							} else break;
 						}
@@ -33,11 +28,7 @@ class TOC extends Component {
 					}
 				} );
 
-			while (
-				arrays.length > 1 &&
-				arrays[ arrays.length - 1 ][ 0 ].tag >
-					arrays[ arrays.length - 2 ][ 0 ].tag
-			) {
+			while ( arrays.length > 1 && arrays[ arrays.length - 1 ][ 0 ].tag > arrays[ arrays.length - 2 ][ 0 ].tag ) {
 				arrays[ arrays.length - 2 ].push( arrays.pop() );
 			}
 
@@ -81,23 +72,17 @@ class TOC extends Component {
 			typeof mappingHeaders !== undefined &&
 			headers &&
 			headers.length > 0 &&
-			headers.filter( ( header ) => mappingHeaders[ header.tag - 1 ] )
-				.length > 0
+			headers.filter( ( header ) => mappingHeaders[ header.tag - 1 ] ).length > 0
 		) {
 			return (
-				<div
-					className="uagb-toc__list-wrap"
-					data-headers={ JSON.stringify( headers ) }
-				>
+				<div className="uagb-toc__list-wrap" data-headers={ JSON.stringify( headers ) }>
 					{ parseList( filterArray( headers ) ) }
 				</div>
 			);
 		}
 		return (
 			<p className="uagb_table-of-contents-placeholder">
-				{ __(
-					'Add a header to begin generating the table of contents'
-				) }
+				{ __( 'Add a header to begin generating the table of contents' ) }
 			</p>
 		);
 	}

@@ -18,12 +18,9 @@ buttonsCommonData = applyFilters( 'uagb/buttons', addCommonDataToSpectraBlocks( 
 registerBlockType( 'uagb/buttons', {
 	...buttonsCommonData,
 	title: __( 'Buttons', 'ultimate-addons-for-gutenberg' ),
-	description:  __( 'Add multiple buttons to redirect user to different webpages.', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'Add multiple buttons to redirect user to different webpages.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.buttons,
-	keywords: [
-		__( 'buttons', 'ultimate-addons-for-gutenberg' ),
-		__( 'uag', 'ultimate-addons-for-gutenberg' ),
-	],
+	keywords: [ __( 'buttons', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	supports: {
 		anchor: true,
 	},
@@ -31,14 +28,8 @@ registerBlockType( 'uagb/buttons', {
 		return { 'data-btn-width': attribute.align };
 	},
 	attributes,
-category: uagb_blocks_info.category,
-	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="buttons" />
-		) : (
-			<Edit { ...props } />
-		),
+	category: uagb_blocks_info.category,
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="buttons" /> : <Edit { ...props } /> ),
 	save,
 	deprecated,
 } );
-

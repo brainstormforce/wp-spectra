@@ -1,5 +1,4 @@
 .uagb-gradient-picker {
-
 	.components-custom-gradient-picker__gradient-bar {
 		border-radius: 5px;
 		height: 30px;
@@ -13,5 +12,24 @@
 		.components-custom-gradient-picker__insert-point {
 			top: 7px;
 		}
+	}
+}
+
+.block-editor-block-inspector .uagb-inspector-tab .uag-background-gradient {
+	.uagb-color-popover-container,
+	.uagb-multi-buttons-control,
+	.uagb-size-type-field-tabs {
+		margin-bottom: 24px;
+	}
+
+	.uagb-size-type-field-tabs {
+		display: block;
+	}
+
+	.uagb-gradient-advanced-option {
+		width: 100%;
+		justify-content: right;
+		margin-bottom: 5px;
+		padding-right: 0;
 	}
 }

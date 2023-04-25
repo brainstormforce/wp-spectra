@@ -19,7 +19,7 @@ import UAGHelpText from '@Components/help-text';
 const isNumberControlSupported = !! NumberControl;
 
 const Range = ( props ) => {
-	const [panelNameForHook, setPanelNameForHook] = useState( null );
+	const [ panelNameForHook, setPanelNameForHook ] = useState( null );
 	const panelRef = useRef( null );
 
 	// Add and remove the CSS on the drop and remove of the component.
@@ -33,15 +33,14 @@ const Range = ( props ) => {
 	const { getSelectedBlock } = select( 'core/block-editor' );
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	useEffect( () => {
-		setPanelNameForHook( getPanelIdFromRef( panelRef ) )
-	}, [blockNameForHook] )
-
+		setPanelNameForHook( getPanelIdFromRef( panelRef ) );
+	}, [ blockNameForHook ] );
 
 	const { withInputField, isShiftStepEnabled } = props;
 
 	let max = limitMax( props.unit?.value, props );
 	let min = limitMin( props.unit?.value, props );
-	const inputValue = isNaN( props?.value ) ? '' :  props?.value;
+	const inputValue = isNaN( props?.value ) ? '' : props?.value;
 
 	let unitSizes = [
 		{
@@ -63,7 +62,7 @@ const Range = ( props ) => {
 		if ( props.setAttributes ) {
 			props.setAttributes( {
 				[ props.data.label ]: parsedValue,
-			} )
+			} );
 		}
 		if ( props?.onChange ) {
 			props.onChange( parsedValue );
@@ -71,17 +70,15 @@ const Range = ( props ) => {
 	};
 
 	const resetValues = ( defaultValues ) => {
-
 		if ( props?.onChange ) {
-			props?.onChange( defaultValues[props?.data?.label] )
+			props?.onChange( defaultValues[ props?.data?.label ] );
 		}
 		if ( props.displayUnit ) {
-			onChangeUnits( defaultValues[props?.unit?.label] )
+			onChangeUnits( defaultValues[ props?.unit?.label ] );
 		}
 	};
 
 	const onChangeUnits = ( newValue ) => {
-
 		props.setAttributes( { [ props.unit.label ]: newValue } );
 
 		max = limitMax( newValue, props );
@@ -93,7 +90,6 @@ const Range = ( props ) => {
 		if ( props.value < min ) {
 			handleOnChange( min );
 		}
-
 	};
 
 	const onUnitSizeClick = ( uSizes ) => {
@@ -106,7 +102,7 @@ const Range = ( props ) => {
 						__( '%s units', 'ultimate-addons-for-gutenberg' ),
 						key.name
 					) }
-					key={key.name}
+					key={ key.name }
 				>
 					<Button
 						key={ key.unitValue }
@@ -132,39 +128,33 @@ const Range = ( props ) => {
 	};
 
 	const controlName = getIdFromString( props.label );
-	const controlBeforeDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}.before`, '', blockNameForHook );
-	const controlAfterDomElement = applyFilters( `spectra.${blockNameForHook}.${panelNameForHook}.${controlName}`, '', blockNameForHook );
+	const controlBeforeDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }.before`,
+		'',
+		blockNameForHook
+	);
+	const controlAfterDomElement = applyFilters(
+		`spectra.${ blockNameForHook }.${ panelNameForHook }.${ controlName }`,
+		'',
+		blockNameForHook
+	);
 
 	return (
-		<div
-			ref={panelRef}
-			className="components-base-control"
-		>
-			{
-				controlBeforeDomElement
-			}
+		<div ref={ panelRef } className="components-base-control">
+			{ controlBeforeDomElement }
 			<div className="uag-range-control uagb-size-type-field-tabs">
 				<div className="uagb-control__header">
-					<ResponsiveToggle
-						label= { props.label }
-						responsive= { props.responsive }
-					/>
+					<ResponsiveToggle label={ props.label } responsive={ props.responsive } />
 					<div className="uagb-range-control__actions uagb-control__actions">
 						<UAGReset
-							onReset={resetValues}
-							attributeNames = {[
-								props.data.label,
-								props.displayUnit ? props.unit.label : false
-							]}
+							onReset={ resetValues }
+							attributeNames={ [ props.data.label, props.displayUnit ? props.unit.label : false ] }
 							setAttributes={ props.setAttributes }
 						/>
 						{ props.displayUnit && (
 							<ButtonGroup
 								className="uagb-control__units"
-								aria-label={ __(
-									'Select Units',
-									'ultimate-addons-for-gutenberg'
-								) }
+								aria-label={ __( 'Select Units', 'ultimate-addons-for-gutenberg' ) }
 							>
 								{ onUnitSizeClick( unitSizes ) }
 							</ButtonGroup>
@@ -180,7 +170,7 @@ const Range = ( props ) => {
 						max={ max }
 						min={ min }
 						step={ props?.step || 1 }
-						initialPosition = {inputValue}
+						initialPosition={ inputValue }
 						marks={ props?.marks || false }
 					/>
 					{ withInputField && isNumberControlSupported && (
@@ -197,9 +187,7 @@ const Range = ( props ) => {
 				</div>
 				<UAGHelpText text={ props.help } />
 			</div>
-			{
-				controlAfterDomElement
-			}
+			{ controlAfterDomElement }
 		</div>
 	);
 };

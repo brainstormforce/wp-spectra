@@ -3,17 +3,19 @@ let scrollOffset = 30;
 let scrolltoTop = false;
 let scrollElement = null;
 
-
-UAGBTableOfContents = { // eslint-disable-line no-undef
+// eslint-disable-next-line no-undef
+UAGBTableOfContents = {
 	init( id ) {
-		if( document.querySelector( '.uagb-toc__list' ) !== null ){
-			document.querySelector( '.uagb-toc__list' ).addEventListener( 'click',
+		if ( document.querySelector( '.uagb-toc__list' ) !== null ) {
+			document.querySelector( '.uagb-toc__list' ).addEventListener(
+				'click',
 				UAGBTableOfContents._scroll // eslint-disable-line no-undef
 			);
 		}
-		if( document.querySelector( '.uagb-toc__scroll-top' ) !== null ){
-			document.querySelector( '.uagb-toc__scroll-top' ).addEventListener( 'click',
-				UAGBTableOfContents._scrollTop// eslint-disable-line no-undef
+		if ( document.querySelector( '.uagb-toc__scroll-top' ) !== null ) {
+			document.querySelector( '.uagb-toc__scroll-top' ).addEventListener(
+				'click',
+				UAGBTableOfContents._scrollTop // eslint-disable-line no-undef
 			);
 		}
 
@@ -21,19 +23,17 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 
 		/* We need the following fail-safe click listener cause an usual click-listener
 		 * will fail in case the 'Make TOC Collapsible' is not enabled right from the start/page-load.
-		*/
+		 */
 		document.addEventListener( 'click', collapseListener );
 
-		function collapseListener( event ){
-
+		function collapseListener( event ) {
 			const element = event.target;
 
 			// These two conditions help us target the required element (collapsible icon beside TOC heading).
-			const condition1 = ( element?.tagName === 'path' || element?.tagName === 'svg' );  // Check if the clicked element type is either path or SVG.
-			const condition2 = ( element?.parentNode?.className === 'uagb-toc__title' );  // Check if the clicked element's parent has the required class.
+			const condition1 = element?.tagName === 'path' || element?.tagName === 'svg'; // Check if the clicked element type is either path or SVG.
+			const condition2 = element?.parentNode?.className === 'uagb-toc__title'; // Check if the clicked element's parent has the required class.
 
-			if( condition1 && condition2 ){
-
+			if ( condition1 && condition2 ) {
 				const $root = element?.closest( '.wp-block-uagb-table-of-contents' );
 
 				if ( $root.classList.contains( 'uagb-toc__collapse' ) ) {
@@ -45,17 +45,18 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 				} else {
 					$root.classList.add( 'uagb-toc__collapse' );
 					UAGBTableOfContents._slideUp(
-						elementToOpen?.querySelector( '.wp-block-uagb-table-of-contents.uagb-toc__collapse .uagb-toc__list-wrap' ),
+						elementToOpen?.querySelector(
+							'.wp-block-uagb-table-of-contents.uagb-toc__collapse .uagb-toc__list-wrap'
+						),
 						500
 					);
-
 				}
-
 			}
 		}
 
-		document.addEventListener( 'scroll',
-			UAGBTableOfContents._showHideScroll// eslint-disable-line no-undef
+		document.addEventListener(
+			'scroll',
+			UAGBTableOfContents._showHideScroll // eslint-disable-line no-undef
 		);
 	},
 
@@ -85,7 +86,6 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 	},
 
 	_slideDown( target, duration ) {
-
 		target.style?.removeProperty( 'display' );
 		let display = window?.getComputedStyle( target ).display;
 
@@ -126,16 +126,17 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 		if ( null === selectedAnchor ) {
 			return;
 		}
-		const node =  document.querySelector( '.wp-block-uagb-table-of-contents' );
+		const node = document.querySelector( '.wp-block-uagb-table-of-contents' );
 
 		scrollOffset = node.getAttribute( 'data-offset' );
 
 		const offset = document.querySelector( hash ).offsetTop;
 
 		if ( null !== offset ) {
-			scroll( { // eslint-disable-line no-undef
+			// eslint-disable-next-line no-undef
+			scroll( {
 				top: offset - scrollOffset,
-				behavior: 'smooth'
+				behavior: 'smooth',
 			} );
 		}
 	},
@@ -143,9 +144,8 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 	_showHideScroll() {
 		scrollElement = document.querySelector( '.uagb-toc__scroll-top' );
 		if ( null !== scrollElement ) {
-
 			if ( window.scrollY > 300 ) {
-				if ( scrolltoTop  ) {
+				if ( scrolltoTop ) {
 					scrollElement.classList.add( 'uagb-toc__show-scroll' );
 				} else {
 					scrollElement.classList.remove( 'uagb-toc__show-scroll' );
@@ -164,7 +164,6 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 	},
 
 	_scroll( e ) {
-
 		e.preventDefault();
 
 		let hash = e.target.getAttribute( 'href' );
@@ -178,20 +177,21 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 			hash = hash.substring( 1 );
 
 			if ( document?.querySelector( "[id='" + hash + "']" ) ) {
-
-				offset = document.querySelector( "[id='" + hash + "']"  )?.getBoundingClientRect().top + window.scrollY;
+				offset = document.querySelector( "[id='" + hash + "']" )?.getBoundingClientRect().top + window.scrollY;
 			}
 			if ( scrollData ) {
 				if ( null !== offset ) {
-					scroll( { // eslint-disable-line no-undef
+					// eslint-disable-next-line no-undef
+					scroll( {
 						top: offset - scrollOffset,
-						behavior: 'smooth'
+						behavior: 'smooth',
 					} );
 				}
 			} else {
-				scroll( { // eslint-disable-line no-undef
+				// eslint-disable-next-line no-undef
+				scroll( {
 					top: offset,
-					behavior: 'auto'
+					behavior: 'auto',
 				} );
 			}
 		}
@@ -228,10 +228,10 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 			return decodeURI( encodeURIComponent( parsedSlug ) );
 		};
 		const $thisScope = document.querySelector( id );
-		if( ! $thisScope ){
+		if ( ! $thisScope ) {
 			return;
 		}
-		if ( $thisScope.querySelector( '.uag-toc__collapsible-wrap' ) !== null ){
+		if ( $thisScope.querySelector( '.uag-toc__collapsible-wrap' ) !== null ) {
 			if ( $thisScope.querySelector( '.uag-toc__collapsible-wrap' ).length > 0 ) {
 				$thisScope.querySelector( '.uagb-toc__title-wrap' ).classList.add( 'uagb-toc__is-collapsible' );
 			}
@@ -248,11 +248,14 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 			allowedHTagStr = null !== allowedHTags ? allowedHTags.join( ',' ) : '';
 		}
 
-		const allHeader = undefined !== allowedHTagStr && '' !== allowedHTagStr ? document.body.querySelectorAll( allowedHTagStr ) : document.body.querySelectorAll( 'h1, h2, h3, h4, h5, h6' );
+		const allHeader =
+			undefined !== allowedHTagStr && '' !== allowedHTagStr
+				? document.body.querySelectorAll( allowedHTagStr )
+				: document.body.querySelectorAll( 'h1, h2, h3, h4, h5, h6' );
 
 		if ( 0 !== allHeader.length ) {
 			const tocListWrap = $thisScope.querySelector( '.uagb-toc__list-wrap' );
-			if( ! tocListWrap ) {
+			if ( ! tocListWrap ) {
 				return;
 			}
 			const divsArr = Array.from( allHeader );
@@ -260,16 +263,10 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 			const ArrayOfDuplicateElements = function ( headingArray = [] ) {
 				const arrayWithDuplicateEntries = [];
 				headingArray.reduce( ( temporaryArray, currentVal ) => {
-					if (
-						!temporaryArray.some(
-							( item ) => item.innerText === currentVal.innerText
-						)
-						) {
-
+					if ( ! temporaryArray.some( ( item ) => item.innerText === currentVal.innerText ) ) {
 						temporaryArray.push( currentVal );
 					} else {
 						arrayWithDuplicateEntries.push( currentVal );
-
 					}
 					return temporaryArray;
 				}, [] );
@@ -278,48 +275,48 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 			const duplicateHeadings = ArrayOfDuplicateElements( divsArr );
 			/* Logic for Remove duplicate heading with same HTML tag and create an new array with duplicate entries ends here. */
 			for ( let i = 0; i < divsArr.length; i++ ) {
-
-				let headerText = parseTocSlug( divsArr[i].innerText );
-				if( '' !== divsArr[i].innerText ) {
+				let headerText = parseTocSlug( divsArr[ i ].innerText );
+				if ( '' !== divsArr[ i ].innerText ) {
 					if ( headerText.length < 1 ) {
 						const aTags = tocListWrap.getElementsByTagName( 'a' );
-						const searchText = divsArr[i].innerText;
+						const searchText = divsArr[ i ].innerText;
 						for ( let j = 0; j < aTags.length; j++ ) {
-							if ( aTags[j].textContent === searchText ) {
+							if ( aTags[ j ].textContent === searchText ) {
 								const randomID = '#toc_' + Math.random();
-								aTags[j].setAttribute( 'href' , randomID );
-								headerText =  randomID.substring( 1 );
+								aTags[ j ].setAttribute( 'href', randomID );
+								headerText = randomID.substring( 1 );
 							}
 						}
 					}
 				}
 				const span = document.createElement( 'span' );
 				span.id = headerText;
-				span.className =  'uag-toc__heading-anchor';
-				divsArr[i].prepend( span );
+				span.className = 'uag-toc__heading-anchor';
+				divsArr[ i ].prepend( span );
 				/* Logic for Create an unique Id for duplicate heading start here. */
-				for ( let k = 0; k < duplicateHeadings.length; k++ ){
+				for ( let k = 0; k < duplicateHeadings.length; k++ ) {
 					const randomID = '#toc_' + Math.random();
-					duplicateHeadings[k]?.querySelector( '.uag-toc__heading-anchor' )?.setAttribute( 'id',randomID.substring( 1 ) )
+					duplicateHeadings[ k ]
+						?.querySelector( '.uag-toc__heading-anchor' )
+						?.setAttribute( 'id', randomID.substring( 1 ) );
 					const aTags = Array.from( tocListWrap.getElementsByTagName( 'a' ) );
 					const duplicateHeadingsInTOC = ArrayOfDuplicateElements( aTags );
 					for ( let l = 0; l < duplicateHeadingsInTOC.length; l++ ) {
-						duplicateHeadingsInTOC[k]?.setAttribute( 'href' , randomID );
+						duplicateHeadingsInTOC[ k ]?.setAttribute( 'href', randomID );
 					}
 				}
 				/* Logic for Create an unique Id for duplicate heading ends here. */
-
 			}
 		}
 
 		scrolltoTop = attr.scrollToTop;
 
-		const scrollToTopSvg = '<svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="26px" height="16.043px" viewBox="57 35.171 26 16.043" enable-background="new 57 35.171 26 16.043" xml:space="preserve"><path d="M57.5,38.193l12.5,12.5l12.5-12.5l-2.5-2.5l-10,10l-10-10L57.5,38.193z"/></svg>';
+		const scrollToTopSvg =
+			'<svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="26px" height="16.043px" viewBox="57 35.171 26 16.043" enable-background="new 57 35.171 26 16.043" xml:space="preserve"><path d="M57.5,38.193l12.5,12.5l12.5-12.5l-2.5-2.5l-10,10l-10-10L57.5,38.193z"/></svg>';
 
 		scrollElement = document.querySelector( '.uagb-toc__scroll-top' );
 
 		if ( scrollElement === null ) {
-
 			const scrollToTopDiv = document.createElement( 'div' );
 			scrollToTopDiv.classList.add( 'uagb-toc__scroll-top' );
 			scrollToTopDiv.innerHTML = scrollToTopSvg;
@@ -334,4 +331,3 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 		UAGBTableOfContents.init( id ); // eslint-disable-line no-undef
 	},
 };
-

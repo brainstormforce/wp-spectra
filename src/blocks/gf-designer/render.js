@@ -52,18 +52,8 @@ const Render = ( props ) => {
 	}
 	if ( parseInt( formId ) === 0 ) {
 		return (
-			<Placeholder
-				icon="admin-post"
-				label={ __(
-					'Select a Gravity Form',
-					'ultimate-addons-for-gutenberg'
-				) }
-			>
-				<SelectControl
-					value={ formId }
-					onChange={ onSelectForm }
-					options={ uagb_blocks_info.gf_forms }
-				/>
+			<Placeholder icon="admin-post" label={ __( 'Select a Gravity Form', 'ultimate-addons-for-gutenberg' ) }>
+				<SelectControl value={ formId } onChange={ onSelectForm } options={ uagb_blocks_info.gf_forms } />
 			</Placeholder>
 		);
 	}
@@ -86,22 +76,12 @@ const Render = ( props ) => {
 					`uagb-gf-styler__gform-heading-${ titleDescStyle }`,
 					enableOveride ? 'uagb-gf-styler__check-style-enabled' : '',
 					enableLabel ? 'uagb-gf-styler__hide-label' : '',
-					advancedValidationSettings
-						? 'uagb-gf-styler__error-yes'
-						: ''
+					advancedValidationSettings ? 'uagb-gf-styler__error-yes' : ''
 				) }
 			>
-				{ isHtml && (
-					<div dangerouslySetInnerHTML={ { __html: html } } />
-				) }
+				{ isHtml && <div dangerouslySetInnerHTML={ { __html: html } } /> }
 				{ isHtml === false && (
-					<Placeholder
-						icon="admin-post"
-						label={ __(
-							'Loading',
-							'ultimate-addons-for-gutenberg'
-						) }
-					>
+					<Placeholder icon="admin-post" label={ __( 'Loading', 'ultimate-addons-for-gutenberg' ) }>
 						<Spinner />
 					</Placeholder>
 				) }

@@ -1,9 +1,7 @@
 /* --------- All Change Indicators for Spectra --------- */
 
 .spectra {
-
 	&__change-indicator {
-
 		&--dot {
 			width: 6px;
 			height: 6px;
@@ -17,6 +15,7 @@
 				//stylelint-disable-next-line at-rule-no-unknown
 				@extend .spectra__change-indicator--dot;
 				left: 4px;
+				right: 4px;
 			}
 
 			&-left {

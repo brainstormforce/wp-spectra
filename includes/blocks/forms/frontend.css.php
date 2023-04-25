@@ -643,8 +643,15 @@ if ( 'transparent' === $attr['submitBgType'] ) {
 
 } elseif ( 'gradient' === $attr['submitBgType'] ) {
 	$bg_obj = array(
-		'backgroundType' => 'gradient',
-		'gradientValue'  => $attr['gradientValue'],
+		'backgroundType'    => 'gradient',
+		'gradientValue'     => $attr['gradientValue'],
+		'gradientColor1'    => $attr['gradientColor1'],
+		'gradientColor2'    => $attr['gradientColor2'],
+		'gradientType'      => $attr['gradientType'],
+		'gradientLocation1' => $attr['gradientLocation1'],
+		'gradientLocation2' => $attr['gradientLocation2'],
+		'gradientAngle'     => $attr['gradientAngle'],
+		'selectGradient'    => $attr['selectGradient'],
 	);
 
 	$btn_bg_css = UAGB_Block_Helper::uag_get_background_obj( $bg_obj );
@@ -666,8 +673,15 @@ if ( 'transparent' === $attr['submitBgHoverType'] ) {
 
 } elseif ( 'gradient' === $attr['submitBgHoverType'] ) {
 	$bg_hover_obj = array(
-		'backgroundType' => 'gradient',
-		'gradientValue'  => $attr['gradientHValue'],
+		'backgroundType'    => 'gradient',
+		'gradientValue'     => $attr['gradientHValue'],
+		'gradientColor1'    => $attr['gradientColor1'],
+		'gradientColor2'    => $attr['gradientColor2'],
+		'gradientType'      => $attr['gradientType'],
+		'gradientLocation1' => $attr['gradientLocation1'],
+		'gradientLocation2' => $attr['gradientLocation2'],
+		'gradientAngle'     => $attr['gradientAngle'],
+		'selectGradient'    => $attr['selectHGradient'],
 	);
 
 	$btn_hover_bg_css = UAGB_Block_Helper::uag_get_background_obj( $bg_hover_obj );

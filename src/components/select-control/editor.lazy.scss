@@ -1,9 +1,7 @@
 @import "../../styles/variables";
 
 .uagb-select-control {
-
 	&--layout-inline {
-
 		.components-select-control {
 			align-items: center;
 			display: grid;
@@ -23,5 +21,4 @@
 			margin-bottom: 0;
 		}
 	}
-
 }

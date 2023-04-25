@@ -42,7 +42,6 @@
 }
 
 .uagb-step-image-content-wrap {
-
 	&.uag-image-position-left-title {
 		display: flex;
 
@@ -82,4 +81,11 @@
 .uagb-howto-req-materials-text {
 	margin-block-start: 1.33em;
 	margin-block-end: 1.33em;
+}
+.uagb-how-to-main-wrap {
+	width: 100%;
+	.uagb-howto__source-image {
+		height: auto;
+		max-width: 100%;
+	}
 }

@@ -38,7 +38,6 @@
 		transition: all 0.2s;
 
 		&.uagb-rm__image-position-right {
-
 			.uagb-rm__price {
 				text-align: left !important;
 			}
@@ -69,7 +68,6 @@
 					word-break: normal;
 				}
 			}
-
 
 			.uagb-rm__separator {
 				display: -webkit-flex;
@@ -113,7 +111,6 @@
 		}
 
 		&.uagb-rm__align-right {
-
 			& .uagb-rm__price {
 				display: table-cell;
 				text-align: left;
@@ -186,7 +183,6 @@
 	}
 
 	.uagb-rm__image-position-center {
-
 		&.uagb-rm__align-center .uagb-rm-details,
 		&.uagb-rm__align-center .uagb-rm__title-wrap,
 		&.uagb-rm__align-center .uagb-rm__price {
@@ -198,7 +194,6 @@
 
 	/*CSS for image position left with all alignment*/
 	.uagb-rm__image-position-left {
-
 		.uagb-rm__content {
 			display: -ms-flexbox;
 			display: flex;
@@ -254,7 +249,6 @@
 
 	/*CSS for image position right with all alignment*/
 	.uagb-rm__image-position-right {
-
 		.uagb-rm__content {
 			display: -ms-flexbox;
 			display: flex;
@@ -294,7 +288,6 @@
 	}
 
 	.uagb-rm__image-position-top {
-
 		&.uagb-rm__align-right .uagb-rm-details {
 			display: inline-table;
 		}
@@ -305,12 +298,9 @@
 	display: grid;
 }
 
-@media (max-width: 976px) {
-
+@media ( max-width: 976px ) {
 	.wp-block-uagb-restaurant-menu {
-
 		.uagb-rm__image-position-left.uagb-rm-stacked-tablet {
-
 			.uagb-rm__content {
 				display: block;
 				display: block;
@@ -323,7 +313,6 @@
 		}
 
 		.uagb-rm__image-position-right.uagb-rm-stacked-tablet {
-
 			.uagb-rm__content {
 				display: block;
 				display: block;
@@ -366,16 +355,12 @@
 		&.uagb-rm__tablet-column-4 {
 			grid-template-columns: auto auto auto auto;
 		}
-
 	}
 }
 
-@media (max-width: 767px) {
-
+@media ( max-width: 767px ) {
 	.wp-block-uagb-restaurant-menu {
-
 		.uagb-rm__image-position-left {
-
 			&.uagb-rm-stacked-mobile .uagb-rm__content {
 				display: block;
 				display: block;
@@ -387,9 +372,7 @@
 			}
 		}
 
-
 		.uagb-rm__image-position-right.uagb-rm-stacked-mobile {
-
 			.uagb-rm__content {
 				display: block;
 				display: block;
@@ -416,7 +399,6 @@
 				align-self: flex-end;
 			}
 		}
-
 
 		&.uagb-rm__mobile-column-1 {
 			grid-template-columns: auto;

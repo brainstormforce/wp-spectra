@@ -1,31 +1,35 @@
 /**
  * WordPress dependencies
  */
- import {
-	createBlock,
-	createBlocksFromInnerBlocksTemplate,
-} from '@wordpress/blocks';
+import { createBlock, createBlocksFromInnerBlocksTemplate } from '@wordpress/blocks';
 
 // A function that converts text-based image position values to the
 // new container's object based image position values.
 function getImageBackgroundPosition( oldImagePosition ) {
+	switch ( oldImagePosition ) {
+		case 'left top':
+			return { x: 0, y: 0 };
+		case 'center top':
+			return { x: 0.5, y: 0 };
+		case 'right top':
+			return { x: 1, y: 0 };
 
-	switch( oldImagePosition ) {
+		case 'left center':
+			return { x: 0, y: 0.5 };
+		case 'center center':
+			return { x: 0.5, y: 0.5 };
+		case 'right center':
+			return { x: 1, y: 0.5 };
 
-		case 'left top': return { x: 0, y:0 };
-		case 'center top': return { x: 0.5, y:0 };
-		case 'right top': return { x: 1, y:0 };
+		case 'left bottom':
+			return { x: 0, y: 1 };
+		case 'center bottom':
+			return { x: 0.5, y: 1 };
+		case 'right bottom':
+			return { x: 1, y: 1 };
 
-		case 'left center': return { x: 0, y:0.5 };
-		case 'center center': return { x: 0.5, y:0.5 };
-		case 'right center': return { x: 1, y:0.5 };
-
-		case 'left bottom': return { x: 0, y:1 };
-		case 'center bottom': return { x: 0.5, y:1 };
-		case 'right bottom': return { x: 1, y:1 };
-
-		default: return { x: 0.5, y:0.5 };
-
+		default:
+			return { x: 0.5, y: 0.5 };
 	}
 }
 
@@ -36,17 +40,23 @@ const transforms = {
 			blocks: [ 'core/group' ],
 			priority: 1,
 			transform: ( attributes, innerBlocks ) => {
-				const {
-					align,
-					backgroundColor,
-					style,
-					gradient
-				} = attributes;
+				const { align, backgroundColor, style, gradient } = attributes;
 
-				const contentWidth = align ? `align${align}` : 'default';
-				const bgColor = backgroundColor ? backgroundColor : style?.color?.background ? style?.color?.background : null; // eslint-disable-line no-nested-ternary
+				const contentWidth = align ? `align${ align }` : 'default';
+				// eslint-disable-next-line no-nested-ternary
+				const bgColor = backgroundColor
+					? backgroundColor
+					: style?.color?.background
+					? style?.color?.background
+					: null;
 
-				const backgroundType = ( gradient || style?.color?.gradient ) ? 'gradient' : ( bgColor || style?.color?.background ) ? 'color' : 'none'; // eslint-disable-line no-nested-ternary
+				const backgroundType =
+					// eslint-disable-next-line no-nested-ternary
+					gradient || style?.color?.gradient
+						? 'gradient'
+						: bgColor || style?.color?.background
+						? 'color'
+						: 'none';
 
 				return createBlock(
 					'uagb/container',
@@ -55,12 +65,10 @@ const transforms = {
 						backgroundType,
 						backgroundColor: bgColor,
 						gradientValue: gradient || style?.color?.gradient,
-						variationSelected: true
+						variationSelected: true,
 					},
 					innerBlocks
 				);
-
-
 			},
 		},
 		{
@@ -68,27 +76,42 @@ const transforms = {
 			blocks: [ 'core/columns' ],
 			priority: 1,
 			transform: ( attributes, innerBlocks ) => {
-				const {
-					align,
-					backgroundColor,
-					style,
-					gradient,
-					isStackedOnMobile
-				} = attributes;
+				const { align, backgroundColor, style, gradient, isStackedOnMobile } = attributes;
 
-				const contentWidth = align ? `align${align}` : 'default';
-				const bgColor = backgroundColor ? backgroundColor : style?.color?.background ? style?.color?.background : null; // eslint-disable-line no-nested-ternary
+				const contentWidth = align ? `align${ align }` : 'default';
+				// eslint-disable-next-line no-nested-ternary
+				const bgColor = backgroundColor
+					? backgroundColor
+					: style?.color?.background
+					? style?.color?.background
+					: null;
 
-				const backgroundType = ( gradient || style?.color?.gradient ) ? 'gradient' : ( bgColor || style?.color?.background ) ? 'color' : 'none'; // eslint-disable-line no-nested-ternary
+				const backgroundType =
+					// eslint-disable-next-line no-nested-ternary
+					gradient || style?.color?.gradient
+						? 'gradient'
+						: bgColor || style?.color?.background
+						? 'color'
+						: 'none';
 
 				const innerBlocksTemplate = [];
-				const containerChildWidth = ( 100 / innerBlocks.length );
+				const containerChildWidth = 100 / innerBlocks.length;
 
 				innerBlocks.map( ( child ) => {
+					// eslint-disable-next-line no-nested-ternary
+					const bgColorChild = child?.attributes?.backgroundColor
+						? child?.attributes?.backgroundColor
+						: child?.attributes?.style?.color?.background
+						? child?.attributes?.style?.color?.background
+						: null;
 
-					const bgColorChild = child?.attributes?.backgroundColor ? child?.attributes?.backgroundColor : child?.attributes?.style?.color?.background ? child?.attributes?.style?.color?.background : null; // eslint-disable-line no-nested-ternary
-
-					const backgroundTypeChild = ( child?.attributes?.gradient || child?.attributes?.style?.color?.gradient ) ? 'gradient' : ( bgColorChild || child?.attributes?.style?.color?.background ) ? 'color' : 'none'; // eslint-disable-line no-nested-ternary
+					const backgroundTypeChild =
+						// eslint-disable-next-line no-nested-ternary
+						child?.attributes?.gradient || child?.attributes?.style?.color?.gradient
+							? 'gradient'
+							: bgColorChild || child?.attributes?.style?.color?.background
+							? 'color'
+							: 'none';
 
 					const width = child?.attributes?.width ? child?.attributes?.width : containerChildWidth;
 
@@ -98,9 +121,9 @@ const transforms = {
 							widthDesktop: width,
 							backgroundTypeChild,
 							backgroundColor: bgColorChild,
-							gradientValue: gradient || style?.color?.gradient
+							gradientValue: gradient || style?.color?.gradient,
 						},
-						child?.innerBlocks
+						child?.innerBlocks,
 					] );
 
 					return child;
@@ -116,12 +139,10 @@ const transforms = {
 						directionDesktop: 'row',
 						directionTablet: 'row',
 						directionMobile: isStackedOnMobile ? 'column' : 'row',
-						variationSelected: true
+						variationSelected: true,
 					},
 					createBlocksFromInnerBlocksTemplate( innerBlocksTemplate )
 				);
-
-
 			},
 		},
 		{
@@ -129,7 +150,6 @@ const transforms = {
 			blocks: [ 'uagb/section' ],
 			priority: 1,
 			transform: ( attributes, innerBlocks ) => {
-
 				const {
 					backgroundType,
 					backgroundColor,
@@ -195,7 +215,6 @@ const transforms = {
 				let innerContentWidth = null;
 
 				if ( 'full_width' === contentWidth ) {
-
 					innerContainerCustomWidth = 'px' === innerWidthType ? innerWidth : 1200;
 
 					innerContentWidth = 'px' === innerWidthType ? 'alignwide' : 'alignfull';
@@ -251,13 +270,19 @@ const transforms = {
 						rightPaddingDesktop: rightPadding,
 						topPaddingDesktop: topPadding,
 						bottomPaddingDesktop: bottomPadding,
-						backgroundImageDesktop : backgroundImage,
-						backgroundSizeDesktop : backgroundSize,
-						backgroundRepeatDesktop : backgroundRepeat,
-						backgroundAttachmentDesktop : backgroundAttachment,
+						backgroundImageDesktop: backgroundImage,
+						backgroundSizeDesktop: backgroundSize,
+						backgroundRepeatDesktop: backgroundRepeat,
+						backgroundAttachmentDesktop: backgroundAttachment,
 						backgroundVideoColor: backgroundVideoColor || '#00000011',
 						backgroundVideo,
-						overlayType: ( overlayType === 'color' && backgroundImageColor ) ? overlayType : ( overlayType === 'gradient' ) ? 'gradient' : 'none',  // eslint-disable-line no-nested-ternary
+						overlayType:
+							// eslint-disable-next-line no-nested-ternary
+							overlayType === 'color' && backgroundImageColor
+								? overlayType
+								: overlayType === 'gradient'
+								? 'gradient'
+								: 'none',
 						backgroundImageColor: backgroundImageColor || '#00000000',
 						variationSelected: true,
 						htmlTag: tag,
@@ -272,7 +297,6 @@ const transforms = {
 			blocks: [ 'uagb/columns' ],
 			priority: 1,
 			transform: ( attributes, innerBlocks ) => {
-
 				const {
 					backgroundType,
 					backgroundColor,
@@ -366,14 +390,13 @@ const transforms = {
 				let innerContentWidth = null;
 
 				if ( 'full' === align ) {
+					innerContainerCustomWidth = 'custom' === contentWidth && 'px' === widthType ? width : 1200;
 
-					innerContainerCustomWidth = ( 'custom' === contentWidth && 'px' === widthType ) ? width : 1200;
-
-					innerContentWidth = ( 'custom' === contentWidth && 'px' === widthType ) ? 'alignwide' : 'alignfull';
+					innerContentWidth = 'custom' === contentWidth && 'px' === widthType ? 'alignwide' : 'alignfull';
 				}
 
 				const innerBlocksTemplate = [];
-				const containerChildWidth = ( 100 / columns );
+				const containerChildWidth = 100 / columns;
 				/* eslint-disable no-shadow */
 				innerBlocks.map( ( child ) => {
 					const {
@@ -487,17 +510,17 @@ const transforms = {
 							overlayType: backgroundImageColor ? 'color' : 'none',
 							alignItemsDesktop: 'flex-start',
 						},
-						child?.innerBlocks
+						child?.innerBlocks,
 					] );
 
 					return child;
 				} );
 
-				const getReverseColMobile = ( reverseTablet || reverseMobile ? 'column-reverse' : 'column' );
-				const getReverseRowMobile = ( reverseTablet || reverseMobile ? 'row-reverse' : 'row' );
+				const getReverseColMobile = reverseTablet || reverseMobile ? 'column-reverse' : 'column';
+				const getReverseRowMobile = reverseTablet || reverseMobile ? 'row-reverse' : 'row';
 
-				const getReverseColTablet = ( reverseTablet ? 'column-reverse' : 'column' );
-				const getReverseRowTablet = ( reverseTablet ? 'row-reverse' : 'row' );
+				const getReverseColTablet = reverseTablet ? 'column-reverse' : 'column';
+				const getReverseRowTablet = reverseTablet ? 'row-reverse' : 'row';
 
 				return createBlock(
 					'uagb/container',
@@ -539,22 +562,22 @@ const transforms = {
 						bottomPaddingTablet,
 						leftPaddingTablet,
 						rightPaddingTablet,
-						leftPaddingDesktop : leftPadding,
-						rightPaddingDesktop : rightPadding,
-						topPaddingDesktop : topPadding,
-						bottomPaddingDesktop : bottomPadding,
-						backgroundImageDesktop : backgroundImage,
+						leftPaddingDesktop: leftPadding,
+						rightPaddingDesktop: rightPadding,
+						topPaddingDesktop: topPadding,
+						bottomPaddingDesktop: bottomPadding,
+						backgroundImageDesktop: backgroundImage,
 						backgroundPositionDesktop: getImageBackgroundPosition( backgroundPosition ),
-						backgroundSizeDesktop : backgroundSize,
-						backgroundRepeatDesktop : backgroundRepeat,
-						backgroundAttachmentDesktop : backgroundAttachment,
+						backgroundSizeDesktop: backgroundSize,
+						backgroundRepeatDesktop: backgroundRepeat,
+						backgroundAttachmentDesktop: backgroundAttachment,
 						backgroundVideoColor: backgroundVideoColor || '#00000011',
 						backgroundVideo,
 						overlayType: backgroundImageColor ? 'color' : 'none',
 						backgroundImageColor: backgroundImageColor || '#00000000',
 						directionDesktop: 'row',
 						directionTablet: 'tablet' === stack ? getReverseColTablet : getReverseRowTablet,
-						directionMobile: ( 'mobile' === stack ) ? getReverseColMobile : getReverseRowMobile,
+						directionMobile: 'mobile' === stack ? getReverseColMobile : getReverseRowMobile,
 						variationSelected: true,
 						columnGapDesktop: 0,
 						containerBorderTopLeftRadius: borderRadius || columnsBorderTopLeftRadius,
@@ -592,7 +615,7 @@ const transforms = {
 				);
 			},
 		},
-	]
+	],
 };
 
 export default transforms;

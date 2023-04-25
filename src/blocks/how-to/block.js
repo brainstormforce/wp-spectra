@@ -29,13 +29,8 @@ registerBlockType( 'uagb/how-to', {
 		anchor: true,
 	},
 	attributes,
-category: uagb_blocks_info.category,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="how-to" />
-			) : (
-				<Edit { ...props } />
-			),
+	category: uagb_blocks_info.category,
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="how-to" /> : <Edit { ...props } /> ),
 	save,
 	deprecated,
 } );

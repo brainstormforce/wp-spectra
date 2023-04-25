@@ -4,7 +4,6 @@
  * CSS for both Frontend+Backend.
  */
 .wp-block-uagb-cf7-styler {
-
 	// We need this particular block to maintain consistent input field height across WP Editor and Frontend.
 	// And also because the min-height and line-height in the WP Editor were inherited from core WordPress directory: wp-admin/forms.css.
 	// All the selectors here are also copied from wp-admin/forms.css.
@@ -158,10 +157,8 @@
 	}
 }
 
-@media (min-width: 769px) {
-
+@media ( min-width: 769px ) {
 	.wp-block-uagb-cf7-styler {
-
 		.uagb-cf7_styler-col {
 			-js-display: flex;
 			display: -webkit-box;
@@ -205,8 +202,7 @@
 	}
 }
 
-@media (min-width: 780px) {
-
+@media ( min-width: 780px ) {
 	.uagb-cf7-styler__btn-align-right input.wpcf7-form-control.wpcf7-submit {
 		margin-right: 0;
 		margin-left: auto;
@@ -232,8 +228,7 @@
 	}
 }
 
-@media (max-width: 780px) {
-
+@media ( max-width: 780px ) {
 	.uagb-cf7-styler__btn-align-tablet-right input.wpcf7-form-control.wpcf7-submit {
 		margin-right: 0;
 		margin-left: auto;
@@ -250,8 +245,7 @@
 	}
 }
 
-@media (min-width: 641px) and (max-width: 780px) {
-
+@media ( min-width: 641px ) and ( max-width: 780px ) {
 	.uagb-cf7-styler__btn-align-tablet-justify input.wpcf7-form-control.wpcf7-submit {
 		-webkit-box-pack: center;
 		-ms-flex-pack: center;
@@ -262,8 +256,7 @@
 	}
 }
 
-@media (max-width: 641px) {
-
+@media ( max-width: 641px ) {
 	.uagb-cf7-styler__btn-align-mobile-right input.wpcf7-form-control.wpcf7-submit {
 		margin-right: 0;
 		margin-left: auto;
