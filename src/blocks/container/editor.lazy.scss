@@ -85,6 +85,7 @@
 			font-size: 13px;
 			line-height: 20px;
 			color: $spectra-color-body;
+			width: 100%;
 		}
 	}
 
@@ -170,7 +171,8 @@
 	.is-root-container > .wp-block-template-part > .uagb-container-has-children.wp-block-uagb-container,
 	.wp-block-group > .uagb-container-has-children.wp-block-uagb-container,
 	.wp-block-columns > .wp-block-column > .uagb-container-has-children.wp-block-uagb-container,
-	.is-root-container > .uagb-slider-container .uagb-container-has-children.wp-block-uagb-container {
+	.is-root-container > .uagb-slider-container .uagb-container-has-children.wp-block-uagb-container,
+	.wp-block-uagb-countdown-innerblocks .uagb-container-has-children {
 		& > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks,
 		& > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout {
 			& > .wp-block {

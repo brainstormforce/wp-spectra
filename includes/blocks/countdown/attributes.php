@@ -82,7 +82,7 @@ return array_merge(
 		'separatorFontSizeMobile'      => '',
 		'separatorFontSizeTablet'      => '',
 		'separatorLineHeight'          => '',
-		'separatorLineHeightType'      => 'px',
+		'separatorLineHeightType'      => 'em',
 		'separatorLineHeightMobile'    => '',
 		'separatorLineHeightTablet'    => '',
 		'separatorRightSpacing'        => 26,

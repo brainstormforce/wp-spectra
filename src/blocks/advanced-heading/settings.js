@@ -544,36 +544,38 @@ const Settings = ( props ) => {
 					} }
 					popup={ true }
 				/>
-				<ResponsiveSlider
-					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						desktop: {
-							value: headSpace,
-							label: 'headSpace',
-						},
-						tablet: {
-							value: headSpaceTablet,
-							label: 'headSpaceTablet',
-						},
-						mobile: {
-							value: headSpaceMobile,
-							label: 'headSpaceMobile',
-						},
-					} }
-					min={ 0 }
-					max={ 200 }
-					unit={ {
-						value: headSpaceType,
-						label: 'headSpaceType',
-					} }
-					units={ [
-						{
-							name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
-							unitValue: 'px',
-						},
-					] }
-					setAttributes={ setAttributes }
-				/>
+				{ ( headingDescToggle || 'none' !== seperatorStyle ) && (
+					<ResponsiveSlider
+						label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							desktop: {
+								value: headSpace,
+								label: 'headSpace',
+							},
+							tablet: {
+								value: headSpaceTablet,
+								label: 'headSpaceTablet',
+							},
+							mobile: {
+								value: headSpaceMobile,
+								label: 'headSpaceMobile',
+							},
+						} }
+						min={ 0 }
+						max={ 200 }
+						unit={ {
+							value: headSpaceType,
+							label: 'headSpaceType',
+						} }
+						units={ [
+							{
+								name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+								unitValue: 'px',
+							},
+						] }
+						setAttributes={ setAttributes }
+					/>
+				) }
 			</UAGAdvancedPanelBody>
 		);
 	};
