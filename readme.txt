@@ -170,7 +170,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 2.5.0 - THURSDAY, 20th APRIL 2023 =
+= 2.5.0 - TUESDAY, 25th APRIL 2023 =
 * New: Spectra now has support for the all-new Spectra Pro!
 * Improvement: Global - Improved the editor performance.
 * Improvement: Global - Added Advanced options in Gradient Component.
