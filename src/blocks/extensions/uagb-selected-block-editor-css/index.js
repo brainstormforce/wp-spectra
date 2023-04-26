@@ -34,8 +34,8 @@ const AddCssComponent = ( props ) => {
                     addStyleTag();
                 }
             }else if( getStyleTag() ){
-                    removeStyleTag();
-                }
+                removeStyleTag();
+            }
         }
     },[ name ] );
 
