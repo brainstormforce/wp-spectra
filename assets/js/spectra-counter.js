@@ -1,8 +1,18 @@
-// eslint-disable-next-line no-undef
 UAGBCounter = {
 	elements: {},
 	init( mainSelector, data = {} ) {
 		this.elements = this.getDefaultElements( mainSelector );
+		const elements = document.querySelectorAll( `.wp-block-uagb-counter${mainSelector}` );
+        if ( elements && elements.length > 1 ) {
+            for( const element of elements ) {
+                this.elements.counterWrapper = element;
+                this.handleCounterWrapper( data );	
+            }
+        } else {
+            this.handleCounterWrapper( data );
+        }   
+	},
+	handleCounterWrapper( data ) {
 		data = this._getCounterData( this.elements.counterWrapper, data );
 
 		if( !data.isFrontend ){

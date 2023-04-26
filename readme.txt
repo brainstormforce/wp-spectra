@@ -170,6 +170,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= x.x.x =
+* Fix: Counter - Added support for use within Slider (previously not working within Slider when it's set to infinite loop).
+
 = 2.5.0 - TUESDAY, 25th APRIL 2023 =
 * New: Spectra now has support for the all-new Spectra Pro!
 * Improvement: Global - Improved the editor performance.
