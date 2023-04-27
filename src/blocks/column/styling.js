@@ -7,7 +7,7 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function styling( props ) {
+function styling( attributes, clientId ) {
 	const {
 		colWidth,
 		colWidthTablet,
@@ -52,12 +52,12 @@ function styling( props ) {
 		mobilePaddingType,
 		tabletPaddingType,
 		desktopPaddingType,
-		columnBorderHColor
-	} = props.attributes;
+		columnBorderHColor,
+	} = attributes;
 
-	const borderCSS = generateBorderCSS( props.attributes, 'column' );
-	const borderCSSTablet = generateBorderCSS( props.attributes, 'column', 'tablet' );
-	const borderCSSMobile = generateBorderCSS( props.attributes, 'column', 'mobile' );
+	const borderCSS = generateBorderCSS( attributes, 'column' );
+	const borderCSSTablet = generateBorderCSS( attributes, 'column', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( attributes, 'column', 'mobile' );
 
 	const position = backgroundPosition.replace( '-', ' ' );
 	let tabletSelectors = {};
@@ -72,13 +72,11 @@ function styling( props ) {
 		'margin-bottom': generateCSSUnit( bottomMargin, desktopMarginType ),
 		'margin-left': generateCSSUnit( leftMargin, desktopMarginType ),
 		'margin-right': generateCSSUnit( rightMargin, desktopMarginType ),
-		...borderCSS
+		...borderCSS,
 	};
 
 	if ( 'image' === backgroundType ) {
-		style[ 'background-image' ] = backgroundImage
-			? `url(${ backgroundImage.url })`
-			: null;
+		style[ 'background-image' ] = backgroundImage ? `url(${ backgroundImage.url })` : null;
 		style[ 'background-position' ] = position;
 		style[ 'background-attachment' ] = backgroundAttachment;
 		style[ 'background-repeat' ] = backgroundRepeat;
@@ -86,8 +84,8 @@ function styling( props ) {
 	}
 
 	const selectors = {
-		':before': inlineStyles( props ),
-		':after': inlineStyles( props ),
+		':before': inlineStyles( attributes ),
+		':after': inlineStyles( attributes ),
 		'': style,
 	};
 	selectors[ '.block-editor-block-list__block:hover' ] = {
@@ -96,71 +94,29 @@ function styling( props ) {
 
 	tabletSelectors = {
 		'': {
-			'padding-top': generateCSSUnit(
-				topPaddingTablet,
-				tabletPaddingType
-			),
-			'padding-bottom': generateCSSUnit(
-				bottomPaddingTablet,
-				tabletPaddingType
-			),
-			'padding-left': generateCSSUnit(
-				leftPaddingTablet,
-				tabletPaddingType
-			),
-			'padding-right': generateCSSUnit(
-				rightPaddingTablet,
-				tabletPaddingType
-			),
+			'padding-top': generateCSSUnit( topPaddingTablet, tabletPaddingType ),
+			'padding-bottom': generateCSSUnit( bottomPaddingTablet, tabletPaddingType ),
+			'padding-left': generateCSSUnit( leftPaddingTablet, tabletPaddingType ),
+			'padding-right': generateCSSUnit( rightPaddingTablet, tabletPaddingType ),
 			'margin-top': generateCSSUnit( topMarginTablet, tabletMarginType ),
-			'margin-bottom': generateCSSUnit(
-				bottomMarginTablet,
-				tabletMarginType
-			),
-			'margin-left': generateCSSUnit(
-				leftMarginTablet,
-				tabletMarginType
-			),
-			'margin-right': generateCSSUnit(
-				rightMarginTablet,
-				tabletMarginType
-			),
-			...borderCSSTablet
+			'margin-bottom': generateCSSUnit( bottomMarginTablet, tabletMarginType ),
+			'margin-left': generateCSSUnit( leftMarginTablet, tabletMarginType ),
+			'margin-right': generateCSSUnit( rightMarginTablet, tabletMarginType ),
+			...borderCSSTablet,
 		},
 	};
 
 	mobileSelectors = {
 		'': {
-			'padding-top': generateCSSUnit(
-				topPaddingMobile,
-				mobilePaddingType
-			),
-			'padding-bottom': generateCSSUnit(
-				bottomPaddingMobile,
-				mobilePaddingType
-			),
-			'padding-left': generateCSSUnit(
-				leftPaddingMobile,
-				mobilePaddingType
-			),
-			'padding-right': generateCSSUnit(
-				rightPaddingMobile,
-				mobilePaddingType
-			),
+			'padding-top': generateCSSUnit( topPaddingMobile, mobilePaddingType ),
+			'padding-bottom': generateCSSUnit( bottomPaddingMobile, mobilePaddingType ),
+			'padding-left': generateCSSUnit( leftPaddingMobile, mobilePaddingType ),
+			'padding-right': generateCSSUnit( rightPaddingMobile, mobilePaddingType ),
 			'margin-top': generateCSSUnit( topMarginMobile, mobileMarginType ),
-			'margin-bottom': generateCSSUnit(
-				bottomMarginMobile,
-				mobileMarginType
-			),
-			'margin-left': generateCSSUnit(
-				leftMarginMobile,
-				mobileMarginType
-			),
-			'margin-right': generateCSSUnit(
-				rightMarginMobile,
-				mobileMarginType
-			),
-			...borderCSSMobile
+			'margin-bottom': generateCSSUnit( bottomMarginMobile, mobileMarginType ),
+			'margin-left': generateCSSUnit( leftMarginMobile, mobileMarginType ),
+			'margin-right': generateCSSUnit( rightMarginMobile, mobileMarginType ),
+			...borderCSSMobile,
 		},
 	};
 
@@ -184,23 +140,13 @@ function styling( props ) {
 
 	let stylingCss = '';
 
-	const id = `#block-${ props.clientId }`;
+	const id = `#block-${ clientId }`;
 
 	stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS(
-		tabletSelectors,
-		`.uagb-editor-preview-mode-tablet ${ id }`,
-		true,
-		'tablet'
-	);
+	stylingCss += generateCSS( tabletSelectors, `${ id }`, true, 'tablet' );
 
-	stylingCss += generateCSS(
-		mobileSelectors,
-		`.uagb-editor-preview-mode-mobile ${ id }`,
-		true,
-		'mobile'
-	);
+	stylingCss += generateCSS( mobileSelectors, `${ id }`, true, 'mobile' );
 
 	return stylingCss;
 }

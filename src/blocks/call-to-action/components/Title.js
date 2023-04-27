@@ -3,19 +3,13 @@ import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 
 const Title = ( props ) => {
-	const {
-		attributes,
-		setAttributes,
-		mergeBlocks,
-		insertBlocksAfter,
-		onReplace,
-	} = props;
+	const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace } = props;
 
 	if ( setAttributes !== 'not_set' ) {
 		return (
 			<RichText
 				tagName={ attributes.titleTag }
-				placeholder={ __( 'Write a Heading' ) }
+				placeholder={ __( 'Write a Heading', 'ultimate-addons-for-gutenberg' ) }
 				value={ attributes.ctaTitle }
 				className="uagb-cta__title"
 				onChange={ ( value ) => setAttributes( { ctaTitle: value } ) }
@@ -39,11 +33,7 @@ const Title = ( props ) => {
 		);
 	}
 	return (
-		<RichText.Content
-			tagName={ attributes.titleTag }
-			value={ attributes.ctaTitle }
-			className="uagb-cta__title"
-		/>
+		<RichText.Content tagName={ attributes.titleTag } value={ attributes.ctaTitle } className="uagb-cta__title" />
 	);
 };
 

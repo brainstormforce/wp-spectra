@@ -7,9 +7,8 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function styling( props ) {
-
-	const blockName = props.name.replace( 'uagb/', '' );
+function styling( attributes, clientId, name ) {
+	const blockName = name.replace( 'uagb/', '' );
 
 	const {
 		layout,
@@ -120,17 +119,16 @@ function styling( props ) {
 		iconBgSizeTablet,
 		iconBgSizeMobile,
 		iconBgSizeType,
-		iconBorderHColor
-	} = props.attributes;
+		iconBorderHColor,
+	} = attributes;
 
+	const borderCSS = generateBorderCSS( attributes, 'overall', '' );
+	const borderCSSTablet = generateBorderCSS( attributes, 'overall', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( attributes, 'overall', 'mobile' );
 
-	const borderCSS = generateBorderCSS( props.attributes, 'overall', '' );
-	const borderCSSTablet = generateBorderCSS( props.attributes,'overall', 'tablet' );
-	const borderCSSMobile = generateBorderCSS( props.attributes,'overall', 'mobile' );
-
-	const iconBorderCSS = generateBorderCSS( props.attributes, 'icon', '' );
-	const iconBorderCSSTablet = generateBorderCSS( props.attributes,'icon', 'tablet' );
-	const iconBorderCSSMobile = generateBorderCSS( props.attributes,'icon', 'mobile' );
+	const iconBorderCSS = generateBorderCSS( attributes, 'icon', '' );
+	const iconBorderCSSTablet = generateBorderCSS( attributes, 'icon', 'tablet' );
+	const iconBorderCSSMobile = generateBorderCSS( attributes, 'icon', 'mobile' );
 
 	let selectors = {};
 	let tabletSelectors = {};
@@ -162,15 +160,18 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( getFallbackNumber( rowsGap, 'rowsGap', blockName ), rowsGapUnit ),
 		},
 		'.uagb-faq-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout': {
-			'grid-column-gap': generateCSSUnit( getFallbackNumber( columnsGap, 'columnsGap', blockName ), columnsGapUnit ),
+			'grid-column-gap': generateCSSUnit(
+				getFallbackNumber( columnsGap, 'columnsGap', blockName ),
+				columnsGapUnit
+			),
 			'grid-row-gap': generateCSSUnit( getFallbackNumber( rowsGap, 'rowsGap', blockName ), rowsGapUnit ),
 		},
 		' .uagb-faq-item': {
-			'background-color': ( boxBgType === 'color' ) ? boxBgColor : 'transparent',
-			...borderCSS
+			'background-color': boxBgType === 'color' ? boxBgColor : 'transparent',
+			...borderCSS,
 		},
 		' .uagb-faq-item:hover': {
-			'background-color': ( boxBgHoverType === 'color' ) ? boxBgHoverColor : 'transparent',
+			'background-color': boxBgHoverType === 'color' ? boxBgHoverColor : 'transparent',
 			'border-color': overallBorderHColor,
 		},
 		' .uagb-faq-item .uagb-question': {
@@ -189,55 +190,34 @@ function styling( props ) {
 			'background-color': questionTextActiveBgColor,
 		},
 		' .uagb-faq-questions-button': {
-			'padding-top': generateCSSUnit(
-				vquestionPaddingDesktop,
-				questionPaddingTypeDesktop
-			),
-			'padding-bottom': generateCSSUnit(
-				questionBottomPaddingDesktop,
-				questionPaddingTypeDesktop
-			),
-			'padding-right': generateCSSUnit(
-				hquestionPaddingDesktop,
-				questionPaddingTypeDesktop
-			),
-			'padding-left': generateCSSUnit(
-				questionLeftPaddingDesktop,
-				questionPaddingTypeDesktop
-			),
+			'padding-top': generateCSSUnit( vquestionPaddingDesktop, questionPaddingTypeDesktop ),
+			'padding-bottom': generateCSSUnit( questionBottomPaddingDesktop, questionPaddingTypeDesktop ),
+			'padding-right': generateCSSUnit( hquestionPaddingDesktop, questionPaddingTypeDesktop ),
+			'padding-left': generateCSSUnit( questionLeftPaddingDesktop, questionPaddingTypeDesktop ),
 			'background-color': questionTextBgColor,
 		},
 		' .uagb-faq-content': {
-			'padding-top': generateCSSUnit(
-				answerTopPadding,
-				answerPaddingTypeDesktop
-			),
-			'padding-bottom': generateCSSUnit(
-				answerBottomPadding,
-				answerPaddingTypeDesktop
-			),
-			'padding-right': generateCSSUnit(
-				answerRightPadding,
-				answerPaddingTypeDesktop
-			),
-			'padding-left': generateCSSUnit(
-				answerLeftPadding,
-				answerPaddingTypeDesktop
-			),
+			'padding-top': generateCSSUnit( answerTopPadding, answerPaddingTypeDesktop ),
+			'padding-bottom': generateCSSUnit( answerBottomPadding, answerPaddingTypeDesktop ),
+			'padding-right': generateCSSUnit( answerRightPadding, answerPaddingTypeDesktop ),
+			'padding-left': generateCSSUnit( answerLeftPadding, answerPaddingTypeDesktop ),
 		},
 		'.uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap': {
-			'margin-right': generateCSSUnit( getFallbackNumber( gapBtwIconQUestion, 'gapBtwIconQUestion', blockName ), 'px' ),
+			'margin-right': generateCSSUnit(
+				getFallbackNumber( gapBtwIconQUestion, 'gapBtwIconQUestion', blockName ),
+				'px'
+			),
 		},
 		'.uagb-faq-icon-row-reverse .uagb-faq-item .uagb-faq-icon-wrap': {
-			'margin-left': generateCSSUnit( getFallbackNumber( gapBtwIconQUestion, 'gapBtwIconQUestion', blockName ), 'px' ),
+			'margin-left': generateCSSUnit(
+				getFallbackNumber( gapBtwIconQUestion, 'gapBtwIconQUestion', blockName ),
+				'px'
+			),
 		},
 		' .uagb-faq-item .uagb-faq-icon-wrap': {
 			'background-color': iconBgColor,
-			'padding': generateCSSUnit(
-				iconBgSize,
-				iconBgSizeType
-			),
-			...iconBorderCSS
+			'padding': generateCSSUnit( iconBgSize, iconBgSizeType ),
+			...iconBorderCSS,
 		},
 		' .uagb-faq-item .uagb-faq-icon-wrap:hover': {
 			'border-color': iconBorderHColor,
@@ -249,16 +229,10 @@ function styling( props ) {
 			'flex-direction': iconAlign,
 		},
 		' .uagb-faq-questions-button .uagb-question': {
-			'font-size': generateCSSUnit(
-				questionFontSize,
-				questionFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				questionLineHeight,
-				questionLineHeightType
-			),
+			'font-size': generateCSSUnit( questionFontSize, questionFontSizeType ),
+			'line-height': generateCSSUnit( questionLineHeight, questionLineHeightType ),
 			'font-family': questionFontFamily,
-			'font-style' : questionFontStyle,
+			'font-style': questionFontStyle,
 			'text-decoration': questionDecoration,
 			'text-transform': questionTransform,
 			'font-weight': questionFontWeight,
@@ -266,12 +240,9 @@ function styling( props ) {
 		},
 		' .uagb-faq-item .uagb-faq-content': {
 			'font-size': generateCSSUnit( answerFontSize, answerFontSizeType ),
-			'line-height': generateCSSUnit(
-				answerLineHeight,
-				answerLineHeightType
-			),
+			'line-height': generateCSSUnit( answerLineHeight, answerLineHeightType ),
 			'font-family': answerFontFamily,
-			'font-style' : answerFontStyle,
+			'font-style': answerFontStyle,
 			'text-decoration': answerDecoration,
 			'text-transform': answerTransform,
 			'font-weight': answerFontWeight,
@@ -282,71 +253,32 @@ function styling( props ) {
 
 	tabletSelectors = {
 		' .uagb-faq-questions-button': {
-			'padding-top': generateCSSUnit(
-				vquestionPaddingTablet,
-				questionPaddingTypeTablet
-			),
-			'padding-bottom': generateCSSUnit(
-				questionBottomPaddingTablet,
-				questionPaddingTypeTablet
-			),
-			'padding-right': generateCSSUnit(
-				hquestionPaddingTablet,
-				questionPaddingTypeTablet
-			),
-			'padding-left': generateCSSUnit(
-				questionLeftPaddingTablet,
-				questionPaddingTypeTablet
-			),
+			'padding-top': generateCSSUnit( vquestionPaddingTablet, questionPaddingTypeTablet ),
+			'padding-bottom': generateCSSUnit( questionBottomPaddingTablet, questionPaddingTypeTablet ),
+			'padding-right': generateCSSUnit( hquestionPaddingTablet, questionPaddingTypeTablet ),
+			'padding-left': generateCSSUnit( questionLeftPaddingTablet, questionPaddingTypeTablet ),
 		},
 		' .uagb-faq-item .uagb-faq-icon-wrap': {
-			'padding': generateCSSUnit(
-				iconBgSizeTablet,
-				iconBgSizeType
-			),
+			'padding': generateCSSUnit( iconBgSizeTablet, iconBgSizeType ),
 			...iconBorderCSSTablet,
 		},
 		' .uagb-faq-item': {
-			...borderCSSTablet
+			...borderCSSTablet,
 		},
 		' .uagb-faq-content': {
-			'padding-top': generateCSSUnit(
-				answerTopPaddingTablet,
-				answerPaddingTypeTablet
-			),
-			'padding-bottom': generateCSSUnit(
-				answerBottomPaddingTablet,
-				answerPaddingTypeTablet
-			),
-			'padding-right': generateCSSUnit(
-				answerRightPaddingTablet,
-				answerPaddingTypeTablet
-			),
-			'padding-left': generateCSSUnit(
-				answerLeftPaddingTablet,
-				answerPaddingTypeTablet
-			),
+			'padding-top': generateCSSUnit( answerTopPaddingTablet, answerPaddingTypeTablet ),
+			'padding-bottom': generateCSSUnit( answerBottomPaddingTablet, answerPaddingTypeTablet ),
+			'padding-right': generateCSSUnit( answerRightPaddingTablet, answerPaddingTypeTablet ),
+			'padding-left': generateCSSUnit( answerLeftPaddingTablet, answerPaddingTypeTablet ),
 		},
 		' .uagb-faq-questions-button .uagb-question': {
-			'font-size': generateCSSUnit(
-				questionFontSizeTablet,
-				questionFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				questionLineHeightTablet,
-				questionLineHeightType
-			),
+			'font-size': generateCSSUnit( questionFontSizeTablet, questionFontSizeType ),
+			'line-height': generateCSSUnit( questionLineHeightTablet, questionLineHeightType ),
 			'letter-spacing': generateCSSUnit( questionLetterSpacingTablet, questionLetterSpacingType ),
 		},
 		' .uagb-faq-item .uagb-faq-content': {
-			'font-size': generateCSSUnit(
-				answerFontSizeTablet,
-				answerFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				answerLineHeightTablet,
-				answerLineHeightType
-			),
+			'font-size': generateCSSUnit( answerFontSizeTablet, answerFontSizeType ),
+			'line-height': generateCSSUnit( answerLineHeightTablet, answerLineHeightType ),
 			'letter-spacing': generateCSSUnit( answerLetterSpacingTablet, answerLetterSpacingType ),
 		},
 		' .uagb-icon svg': {
@@ -376,13 +308,10 @@ function styling( props ) {
 
 	mobileSelectors = {
 		' .uagb-faq-item': {
-			...borderCSSMobile
+			...borderCSSMobile,
 		},
 		' .uagb-faq-item .uagb-faq-icon-wrap': {
-			'padding': generateCSSUnit(
-				iconBgSizeMobile,
-				iconBgSizeType
-			),
+			'padding': generateCSSUnit( iconBgSizeMobile, iconBgSizeType ),
 			...iconBorderCSSMobile,
 		},
 		'.uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap': {
@@ -392,61 +321,25 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( gapBtwIconQUestionMobile, 'px' ),
 		},
 		' .uagb-faq-questions-button': {
-			'padding-top': generateCSSUnit(
-				vquestionPaddingMobile,
-				questionPaddingTypeMobile
-			),
-			'padding-bottom': generateCSSUnit(
-				questionBottomPaddingMobile,
-				questionPaddingTypeMobile
-			),
-			'padding-right': generateCSSUnit(
-				hquestionPaddingMobile,
-				questionPaddingTypeMobile
-			),
-			'padding-left': generateCSSUnit(
-				questionLeftPaddingMobile,
-				questionPaddingTypeMobile
-			),
+			'padding-top': generateCSSUnit( vquestionPaddingMobile, questionPaddingTypeMobile ),
+			'padding-bottom': generateCSSUnit( questionBottomPaddingMobile, questionPaddingTypeMobile ),
+			'padding-right': generateCSSUnit( hquestionPaddingMobile, questionPaddingTypeMobile ),
+			'padding-left': generateCSSUnit( questionLeftPaddingMobile, questionPaddingTypeMobile ),
 		},
 		' .uagb-faq-content': {
-			'padding-top': generateCSSUnit(
-				answerTopPaddingMobile,
-				answerPaddingTypeMobile
-			),
-			'padding-bottom': generateCSSUnit(
-				answerBottomPaddingMobile,
-				answerPaddingTypeMobile
-			),
-			'padding-right': generateCSSUnit(
-				answerRightPaddingMobile,
-				answerPaddingTypeMobile
-			),
-			'padding-left': generateCSSUnit(
-				answerLeftPaddingMobile,
-				answerPaddingTypeMobile
-			),
+			'padding-top': generateCSSUnit( answerTopPaddingMobile, answerPaddingTypeMobile ),
+			'padding-bottom': generateCSSUnit( answerBottomPaddingMobile, answerPaddingTypeMobile ),
+			'padding-right': generateCSSUnit( answerRightPaddingMobile, answerPaddingTypeMobile ),
+			'padding-left': generateCSSUnit( answerLeftPaddingMobile, answerPaddingTypeMobile ),
 		},
 		' .uagb-faq-questions-button .uagb-question': {
-			'font-size': generateCSSUnit(
-				questionFontSizeMobile,
-				questionFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				questionLineHeightMobile,
-				questionLineHeightType
-			),
+			'font-size': generateCSSUnit( questionFontSizeMobile, questionFontSizeType ),
+			'line-height': generateCSSUnit( questionLineHeightMobile, questionLineHeightType ),
 			'letter-spacing': generateCSSUnit( questionLetterSpacingMobile, questionLetterSpacingType ),
 		},
 		' .uagb-faq-item .uagb-faq-content': {
-			'font-size': generateCSSUnit(
-				answerFontSizeMobile,
-				answerFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				answerLineHeightMobile,
-				answerLineHeightType
-			),
+			'font-size': generateCSSUnit( answerFontSizeMobile, answerFontSizeType ),
+			'line-height': generateCSSUnit( answerLineHeightMobile, answerLineHeightType ),
 			'letter-spacing': generateCSSUnit( answerLetterSpacingMobile, answerLetterSpacingType ),
 		},
 		' .uagb-icon svg': {
@@ -469,9 +362,7 @@ function styling( props ) {
 	};
 
 	if ( 'accordion' === layout && true === inactiveOtherItems ) {
-		selectors[
-			' .block-editor-block-list__layout .uagb-faq-child__outer-wrap .uagb-faq-content '
-		] = {
+		selectors[ ' .block-editor-block-list__layout .uagb-faq-child__outer-wrap .uagb-faq-content ' ] = {
 			'display': 'none',
 		};
 	}
@@ -505,60 +396,38 @@ function styling( props ) {
 		};
 	}
 	if ( true === enableSeparator ) {
-		selectors[
-			'.uagb-faq__outer-wrap .uagb-faq-child__outer-wrap .uagb-faq-content '
-		] = {
+		selectors[ '.uagb-faq__outer-wrap .uagb-faq-child__outer-wrap .uagb-faq-content ' ] = {
 			'border-style': 'solid',
-			'border-top-color' : overallBorderColor,
-            'border-top-width' : generateCSSUnit( overallBorderTopWidth, 'px' ),
+			'border-top-color': overallBorderColor,
+			'border-top-width': generateCSSUnit( overallBorderTopWidth, 'px' ),
 		};
-		selectors[
-			'.uagb-faq__outer-wrap .uagb-faq-child__outer-wrap .uagb-faq-content:hover '
-		] = {
+		selectors[ '.uagb-faq__outer-wrap .uagb-faq-child__outer-wrap .uagb-faq-content:hover ' ] = {
 			'border-top-color': overallBorderHColor,
 		};
 	}
 	if ( 'grid' === layout ) {
-		selectors[
-			' .block-editor-block-list__layout .uagb-faq-child__outer-wrap '
-		] = {
+		selectors[ ' .block-editor-block-list__layout .uagb-faq-child__outer-wrap ' ] = {
 			'text-align': align,
 		};
-		selectors[
-			'.uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout '
-		] = {
+		selectors[ '.uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout ' ] = {
 			'grid-template-columns': 'repeat(' + getFallbackNumber( columns, 'columns', blockName ) + ', 1fr)',
 		};
-		tabletSelectors[
-			'.uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout '
-		] = {
+		tabletSelectors[ '.uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout ' ] = {
 			'grid-template-columns': 'repeat(' + getFallbackNumber( tcolumns, 'tcolumns', blockName ) + ', 1fr)',
 		};
-		mobileSelectors[
-			'.uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout '
-		] = {
+		mobileSelectors[ '.uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout ' ] = {
 			'grid-template-columns': 'repeat(' + getFallbackNumber( mcolumns, 'mcolumns', blockName ) + ', 1fr)',
 		};
 	}
 
 	let stylingCss = '';
-	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS(
-		tabletSelectors,
-		`${ id }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
+	stylingCss += generateCSS( tabletSelectors, `${ id }`, true, 'tablet' );
 
-	stylingCss += generateCSS(
-		mobileSelectors,
-		`${ id }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	stylingCss += generateCSS( mobileSelectors, `${ id }`, true, 'mobile' );
 
 	return stylingCss;
 }

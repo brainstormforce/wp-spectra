@@ -3,7 +3,7 @@
  */
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
-function inlineStyles( props ) {
+function inlineStyles( attributes ) {
 	const {
 		align,
 		contentWidth,
@@ -24,7 +24,7 @@ function inlineStyles( props ) {
 		backgroundType,
 		desktopMarginType,
 		desktopPaddingType,
-	} = props.attributes;
+	} = attributes;
 
 	const style = {
 		'padding-top': generateCSSUnit( topPadding, desktopPaddingType ),
@@ -38,17 +38,11 @@ function inlineStyles( props ) {
 		switch ( align ) {
 			case 'right':
 				style[ 'margin-left' ] = 'auto';
-				style[ 'margin-right' ] = generateCSSUnit(
-					rightMargin,
-					desktopMarginType
-				);
+				style[ 'margin-right' ] = generateCSSUnit( rightMargin, desktopMarginType );
 				break;
 			case 'left':
 				style[ 'margin-right' ] = 'auto';
-				style[ 'margin-left' ] = generateCSSUnit(
-					leftMargin,
-					desktopMarginType
-				);
+				style[ 'margin-left' ] = generateCSSUnit( leftMargin, desktopMarginType );
 				break;
 			case 'center':
 				style[ 'margin-right' ] = 'auto';
@@ -58,14 +52,8 @@ function inlineStyles( props ) {
 	}
 
 	if ( 'full_width' === contentWidth ) {
-		style[ 'margin-left' ] = generateCSSUnit(
-			leftMargin,
-			desktopMarginType
-		);
-		style[ 'margin-right' ] = generateCSSUnit(
-			rightMargin,
-			desktopMarginType
-		);
+		style[ 'margin-left' ] = generateCSSUnit( leftMargin, desktopMarginType );
+		style[ 'margin-right' ] = generateCSSUnit( rightMargin, desktopMarginType );
 	}
 
 	const position = backgroundPosition.replace( '-', ' ' );
@@ -81,9 +69,7 @@ function inlineStyles( props ) {
 	style[ 'max-width' ] = section_width;
 
 	if ( 'image' === backgroundType ) {
-		style[ 'background-image' ] = backgroundImage
-			? `url(${ backgroundImage.url })`
-			: null;
+		style[ 'background-image' ] = backgroundImage ? `url(${ backgroundImage.url })` : null;
 		style[ 'background-position' ] = position;
 		style[ 'background-attachment' ] = backgroundAttachment;
 		style[ 'background-repeat' ] = backgroundRepeat;

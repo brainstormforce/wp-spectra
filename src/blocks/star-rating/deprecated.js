@@ -31,20 +31,14 @@ const deprecated = [
 						`uag-star-rating__layout-${ layout }`
 					) }
 				>
-					{ title && (
-						<RichText.Content
-							tagName="p"
-							value={ title }
-							className="uag-star-rating__title"
-						/>
-					) }
+					{ title && <RichText.Content tagName="p" value={ title } className="uag-star-rating__title" /> }
 					<div className="uag-star-rating" title={ `${ rating }/${ range }` }>
 						{ stars }
 					</div>
 				</div>
 			);
 		},
-	}
+	},
 ];
 
 export default deprecated;

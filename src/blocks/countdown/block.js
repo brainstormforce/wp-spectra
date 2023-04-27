@@ -19,10 +19,7 @@ registerBlockType( 'uagb/countdown', {
 	...countdownCommonData,
 	apiVersion: 2,
 	title: __( 'Countdown', 'ultimate-addons-for-gutenberg' ),
-	description: __(
-		'Create a sense of urgency among your visitors.',
-		'ultimate-addons-for-gutenberg'
-	),
+	description: __( 'Create a sense of urgency among your visitors.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.countdown,
 	keywords: [
 		__( 'countdown', 'ultimate-addons-for-gutenberg' ),
@@ -35,12 +32,7 @@ registerBlockType( 'uagb/countdown', {
 		anchor: true,
 	},
 	attributes,
-category: uagb_blocks_info.category,
-	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="countdown" />
-		) : (
-			<Edit { ...props } />
-		),
+	category: uagb_blocks_info.category,
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="countdown" /> : <Edit { ...props } /> ),
 	save,
 } );

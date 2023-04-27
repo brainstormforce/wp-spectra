@@ -4,13 +4,8 @@
 
 import generateCSS from '@Controls/generateCSS';
 
-function styling( props ) {
-	const {
-		icon_color,
-		icon_hover_color,
-		icon_bg_color,
-		icon_bg_hover_color,
-	} = props.attributes;
+function styling( attributes, clientId ) {
+	const { icon_color, icon_hover_color, icon_bg_color, icon_bg_hover_color } = attributes;
 
 	const selectors = {
 		'.uagb-ss-repeater a.uagb-ss__link': {
@@ -34,7 +29,7 @@ function styling( props ) {
 	};
 
 	let stylingCss = '';
-	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	stylingCss = generateCSS( selectors, id );
 

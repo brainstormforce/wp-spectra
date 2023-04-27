@@ -4,7 +4,7 @@
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function inlineStyles( props ) {
+function inlineStyles( attributes ) {
 	const {
 		leftPadding,
 		rightPadding,
@@ -19,10 +19,10 @@ function inlineStyles( props ) {
 		backgroundRepeat,
 		backgroundType,
 		desktopMarginType,
-		desktopPaddingType
-	} = props.attributes;
+		desktopPaddingType,
+	} = attributes;
 
-	const borderCSS = generateBorderCSS( props.attributes, 'columns' );
+	const borderCSS = generateBorderCSS( attributes, 'columns' );
 
 	const style = {
 		'padding-top': generateCSSUnit( topPadding, desktopPaddingType ),
@@ -31,15 +31,13 @@ function inlineStyles( props ) {
 		'padding-right': generateCSSUnit( rightPadding, desktopPaddingType ),
 		'margin-top': generateCSSUnit( topMarginDesktop, desktopMarginType ),
 		'margin-bottom': generateCSSUnit( bottomMarginDesktop, desktopMarginType ),
-		...borderCSS
+		...borderCSS,
 	};
 
 	const position = backgroundPosition.replace( '-', ' ' );
 
 	if ( 'image' === backgroundType ) {
-		style[ 'background-image' ] = backgroundImage
-			? `url(${ backgroundImage.url })`
-			: null;
+		style[ 'background-image' ] = backgroundImage ? `url(${ backgroundImage.url })` : null;
 		style[ 'background-position' ] = position;
 		style[ 'background-attachment' ] = backgroundAttachment;
 		style[ 'background-repeat' ] = backgroundRepeat;

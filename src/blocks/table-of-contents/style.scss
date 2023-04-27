@@ -5,7 +5,6 @@
  */
 
 .wp-block-uagb-table-of-contents {
-
 	.uagb-toc__wrap {
 		display: inline-block;
 	}
@@ -16,7 +15,6 @@
 
 	ul.uagb-toc__list,
 	ol.uagb-toc__list {
-
 		list-style-position: inside;
 		padding-left: 0;
 		margin-bottom: 0;
@@ -105,7 +103,6 @@ ol.uagb-toc__list > li {
 
 // These fixes are specific to the Astra theme.
 body[class*="astra"] {
-
 	.uagb-toc__list {
 		line-height: normal;
 	}

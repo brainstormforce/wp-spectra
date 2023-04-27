@@ -49,6 +49,10 @@ const WebfontLoader = ( props ) => {
 		setValue( { status: statuses.inactive } );
 	};
 
+	const isUrl = string => {
+		try { return Boolean( new URL( string ) ); }
+		catch( e ){ return false; }
+	}
 	const loadFonts = () => {
 		if ( ! googlefonts.includes( props.config.google.families[ 0 ] ) ) {
 			WebFont.load( {
@@ -59,44 +63,23 @@ const WebfontLoader = ( props ) => {
 			} );
 			addFont( props.config.google.families[ 0 ] );
 		}
-		const siteEditTheme = document.getElementsByClassName( 'edit-site' );
-		
-		if( siteEditTheme && siteEditTheme.length !== 0 ) {
-			
-			const desktopIframe = siteEditTheme[0].getElementsByTagName( 'iframe' )[0];
+		const iframeFound = document.getElementsByTagName( 'iframe' )[ 0 ];
+		let isIframeFromDifferentOrigin = false;
 
-			if( desktopIframe ) {
-
-				WebFont.load( {
-					...props.config,
-					loading: handleLoading,
-					active: handleActive,
-					inactive: handleInactive,
-					context: desktopIframe.contentWindow,
-				} );
-			}
+		if ( iframeFound?.src && isUrl( iframeFound?.src ) ) {
+			const iframeUrl = new URL( iframeFound?.src )
+			isIframeFromDifferentOrigin = ( iframeUrl?.hostname !== window?.location?.hostname ) ? true : false;
 		}
 
-		const tabletPreview = document.getElementsByClassName( 'is-tablet-preview' );
-		const mobilePreview = document.getElementsByClassName( 'is-mobile-preview' );
-
-		if ( 0 !== tabletPreview.length || 0 !== mobilePreview.length ) {
-
-			const preview = tabletPreview[0] || mobilePreview[0];
-
-			const responsiveIframe = preview.getElementsByTagName( 'iframe' )[0];
-
-			if ( responsiveIframe ) {
-
-				WebFont.load( {
-					...props.config,
-					loading: handleLoading,
-					active: handleActive,
-					inactive: handleInactive,
-					context: responsiveIframe.contentWindow
-				} );
-				addFont( props.config.google.families[ 0 ] );
-			}
+		if ( iframeFound && ! isIframeFromDifferentOrigin ) {
+			WebFont.load( {
+				...props.config,
+				loading: handleLoading,
+				active: handleActive,
+				inactive: handleInactive,
+				context: iframeFound.contentWindow,
+			} );
+			addFont( props.config.google.families[ 0 ] );
 		}
 	};
 

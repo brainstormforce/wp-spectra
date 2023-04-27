@@ -30,13 +30,8 @@ registerBlockType( 'uagb/social-share', {
 		anchor: true,
 	},
 	attributes,
-category: uagb_blocks_info.category,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="social-share" />
-			) : (
-				<Edit { ...props } />
-			),
+	category: uagb_blocks_info.category,
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="social-share" /> : <Edit { ...props } /> ),
 	save,
 	transform,
 	deprecated,

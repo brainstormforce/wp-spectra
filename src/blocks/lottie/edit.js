@@ -3,21 +3,22 @@
  */
 
 import styling from './styling';
-import { useEffect,useState,useRef } from '@wordpress/element';
+import { useEffect, useState, useRef, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBLottie = ( props ) => {
 	const deviceType = useDeviceType();
-	const {
-		setAttributes,
-		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob, loop, reverse },
-		clientId,
-	} = props;
+
+	const { setAttributes, attributes, isSelected, clientId, name } = props;
+
+	const { UAGHideDesktop, UAGHideTab, UAGHideMob, loop, reverse } = attributes;
 	const lottieplayer = useRef();
 	const [ state, setState ] = useState( { direction: 1, loopState: true } );
 
@@ -25,25 +26,17 @@ const UAGBLottie = ( props ) => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 		setAttributes( { classMigrate: true } );
-		
 	}, [] );
 
-	useEffect( () => {
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-lottie-style-' + clientId.substr( 0, 8 ), blockStyling );
-		
-	}, [ props, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
-	}, [deviceType] );
+	}, [ deviceType ] );
 
 	const loopLottie = () => {
 		const { loopState } = state;
@@ -59,14 +52,15 @@ const UAGBLottie = ( props ) => {
 
 	return (
 		<>
+			<DynamicCSSLoader { ...{ blockStyling } } />
 			<Render lottieplayer={ lottieplayer } parentProps={ props } />
-			<Settings
-				parentProps={ props }
-				loopLottie={ loopLottie }
-				reverseDirection={ reverseDirection }
-			/>
+			{ isSelected && (
+				<Settings parentProps={ props } loopLottie={ loopLottie } reverseDirection={ reverseDirection } />
+			) }
 		</>
 	);
 };
 
-export default UAGBLottie;
+export default compose(
+	AddStaticStyles,
+)( UAGBLottie );

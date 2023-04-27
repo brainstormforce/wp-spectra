@@ -43,13 +43,10 @@ export default function save( props ) {
 
 	let iconImageHtml = isImage;
 	let position = seperatorPosition;
-	const seperatorHtml = <InfoBoxSeparator attributes={ props.attributes } />
+	const seperatorHtml = <InfoBoxSeparator attributes={ props.attributes } />;
 	let showSeperator = true;
 
-	if (
-		position === 'after_icon' &&
-		( iconimgPosition === 'above-title' || iconimgPosition === 'below-title' )
-	) {
+	if ( position === 'after_icon' && ( iconimgPosition === 'above-title' || iconimgPosition === 'below-title' ) ) {
 		showSeperator = false;
 		iconImageHtml = (
 			<>
@@ -59,12 +56,15 @@ export default function save( props ) {
 		);
 	}
 
-	if ( position === 'after_icon' && ( iconimgPosition === 'left-title' ||
-	iconimgPosition === 'right-title' || iconimgPosition === 'left' ||
-	iconimgPosition === 'right' ) ) {
+	if (
+		position === 'after_icon' &&
+		( iconimgPosition === 'left-title' ||
+			iconimgPosition === 'right-title' ||
+			iconimgPosition === 'left' ||
+			iconimgPosition === 'right' )
+	) {
 		position = 'after_title';
 	}
-
 
 	if ( iconimgPosition === 'below-title' && position === 'after_title' ) {
 		showSeperator = false;
@@ -78,45 +78,23 @@ export default function save( props ) {
 	// Get description and seperator components.
 	const desc = (
 		<>
-			{ 'none' !== seperatorStyle &&
-				position === 'after_title' &&
-				showSeperator &&
-				seperatorHtml }
-				{ showDesc && '' !== headingDesc && (
-					<InfoBoxDesc
-						attributes={ props.attributes }
-						setAttributes="not_set"
-					/>
-				) }
-				{ 'none' !== seperatorStyle &&
-					position === 'after_desc' &&
-					seperatorHtml }
-				{ ctaType !== 'none' && (
-					<CallToAction attributes={ props.attributes } />
-				) }
+			{ 'none' !== seperatorStyle && position === 'after_title' && showSeperator && seperatorHtml }
+			{ showDesc && '' !== headingDesc && (
+				<InfoBoxDesc attributes={ props.attributes } setAttributes="not_set" />
+			) }
+			{ 'none' !== seperatorStyle && position === 'after_desc' && seperatorHtml }
+			{ ctaType !== 'none' && <CallToAction attributes={ props.attributes } /> }
 		</>
 	);
 
 	// Get Title and Prefix components.
 	const titleText = (
-			<div className="uagb-ifb-title-wrap">
-				{ showPrefix && '' !== prefixTitle && (
-					<Prefix
-						attributes={ props.attributes }
-						setAttributes="not_set"
-					/>
-				) }
-				{ 'none' !== seperatorStyle &&
-					position === 'after_prefix' &&
-					seperatorHtml }
-				{ showTitle && '' !== infoBoxTitle && (
-					<Title
-						attributes={ props.attributes }
-						setAttributes="not_set"
-					/>
-				) }
-			</div>
-		);
+		<div className="uagb-ifb-title-wrap">
+			{ showPrefix && '' !== prefixTitle && <Prefix attributes={ props.attributes } setAttributes="not_set" /> }
+			{ 'none' !== seperatorStyle && position === 'after_prefix' && seperatorHtml }
+			{ showTitle && '' !== infoBoxTitle && <Title attributes={ props.attributes } setAttributes="not_set" /> }
+		</div>
+	);
 
 	const output = (
 		<>
@@ -124,15 +102,11 @@ export default function save( props ) {
 			<div className="uagb-ifb-content">
 				{ iconimgPosition === 'above-title' && iconImageHtml }
 
-				{ ( iconimgPosition === 'above-title' ||
-					iconimgPosition === 'below-title' ) &&
-					titleText }
+				{ ( iconimgPosition === 'above-title' || iconimgPosition === 'below-title' ) && titleText }
 
 				{ iconimgPosition === 'below-title' && iconImageHtml }
 
-				{ ( iconimgPosition === 'above-title' ||
-					iconimgPosition === 'below-title' ) &&
-					desc }
+				{ ( iconimgPosition === 'above-title' || iconimgPosition === 'below-title' ) && desc }
 
 				{ iconimgPosition === 'left-title' && (
 					<>
@@ -154,8 +128,7 @@ export default function save( props ) {
 					</>
 				) }
 
-				{ ( iconimgPosition === 'left' ||
-					iconimgPosition === 'right' ) && (
+				{ ( iconimgPosition === 'left' || iconimgPosition === 'right' ) && (
 					<>
 						{ titleText }
 						{ desc }

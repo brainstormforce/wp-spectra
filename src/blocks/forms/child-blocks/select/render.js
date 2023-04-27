@@ -26,12 +26,8 @@ const Render = ( props ) => {
 
 	const addOption = () => {
 		const newOption = {
-			optiontitle:
-				__( 'Option Name ', 'ultimate-addons-for-gutenberg' ) +
-				`${ options.length + 1 }`,
-			optionvalue:
-				__( 'Option Value ', 'ultimate-addons-for-gutenberg' ) +
-				`${ options.length + 1 }`,
+			optiontitle: __( 'Option Name ', 'ultimate-addons-for-gutenberg' ) + `${ options.length + 1 }`,
+			optionvalue: __( 'Option Value ', 'ultimate-addons-for-gutenberg' ) + `${ options.length + 1 }`,
 		};
 		options[ options.length ] = newOption;
 		const addnewOptions = options.map( ( item ) => item );
@@ -61,9 +57,7 @@ const Render = ( props ) => {
 				<input
 					className="uagb-inner-input-view"
 					aria-label={ s.optionvalue }
-					onChange={ ( e ) =>
-						changeOption( { optionvalue: e.target.value }, index )
-					}
+					onChange={ ( e ) => changeOption( { optionvalue: e.target.value }, index ) }
 					type="text"
 					value={ s.optionvalue }
 				/>
@@ -94,10 +88,7 @@ const Render = ( props ) => {
 				defaultValue=""
 			>
 				<option value="" disabled>
-					{ __(
-						'Select your option',
-						'ultimate-addons-for-gutenberg'
-					) }
+					{ __( 'Select your option', 'ultimate-addons-for-gutenberg' ) }
 				</option>
 				{ showoptionsField }
 			</select>
@@ -129,29 +120,18 @@ const Render = ( props ) => {
 		setAttributes( { deleteCurrentOptions } );
 	};
 
-	const isRequired = selectRequired
-		? __( 'required', 'ultimate-addons-for-gutenberg' )
-		: '';
+	const isRequired = selectRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
 
 	return (
 		<>
 			<div
-				className={ classnames(
-					'uagb-forms-select-wrap',
-					'uagb-forms-field-set',
-					`uagb-block-${ block_id }`
-				) }
+				className={ classnames( 'uagb-forms-select-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }
 			>
 				<RichText
 					tagName="div"
-					placeholder={ __(
-						'Select Title',
-						'ultimate-addons-for-gutenberg'
-					) }
+					placeholder={ __( 'Select Title', 'ultimate-addons-for-gutenberg' ) }
 					value={ selectName }
-					onChange={ ( value ) =>
-						setAttributes( { selectName: value } )
-					}
+					onChange={ ( value ) => setAttributes( { selectName: value } ) }
 					className={ `uagb-forms-select-label ${ isRequired } uagb-forms-input-label` }
 					multiline={ false }
 					id={ block_id }
@@ -162,10 +142,7 @@ const Render = ( props ) => {
 						<div className="uagb-forms-select-controls">
 							<div>
 								<Button isSecondary onClick={ addOption }>
-									{ __(
-										' + Add Option ',
-										'ultimate-addons-for-gutenberg'
-									) }
+									{ __( ' + Add Option ', 'ultimate-addons-for-gutenberg' ) }
 								</Button>
 							</div>
 						</div>

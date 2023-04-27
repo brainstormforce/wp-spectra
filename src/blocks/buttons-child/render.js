@@ -35,12 +35,7 @@ const Render = ( props ) => {
 	const iconHtml = ( curr_position ) => {
 		if ( showIcon && '' !== icon && curr_position === iconPosition ) {
 			return (
-				<span
-					className={ classnames(
-						'uagb-button__icon',
-						`uagb-button__icon-position-${ iconPosition }`
-					) }
-				>
+				<span className={ classnames( 'uagb-button__icon', `uagb-button__icon-position-${ iconPosition }` ) }>
 					{ renderSVG( icon, setAttributes ) }
 				</span>
 			);
@@ -48,25 +43,27 @@ const Render = ( props ) => {
 		return null;
 	};
 	const btnText = () => {
-		if( ! removeText ){
-			return <RichText
-						placeholder={ __( 'Add text…' ) }
-						value={ label.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
-						tagName="div"
-						onChange={ ( value ) => {
-							setAttributes( { label: value } );
-						} }
-						className="uagb-button__link"
-						rel= { noFollow ? 'nofollow noopener' : 'follow noopener' }
-						keepPlaceholderOnFocus
-						allowedFormats={ [] } // Removed the WP default link/bold/italic from the toolbar for button.
-					/>
+		if ( ! removeText ) {
+			return (
+				<RichText
+					placeholder={ __( 'Add text…', 'ultimate-addons-for-gutenberg' ) }
+					value={ label.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
+					tagName="div"
+					onChange={ ( value ) => {
+						setAttributes( { label: value } );
+					} }
+					className="uagb-button__link"
+					rel={ noFollow ? 'nofollow noopener' : 'follow noopener' }
+					keepPlaceholderOnFocus
+					allowedFormats={ [] } // Removed the WP default link/bold/italic from the toolbar for button.
+				/>
+			);
 		}
-			return '';
+		return '';
+	};
 
-	}
-
-	const hasBackground = background !== '' || backgroundType === 'transparent' || 'gradient' === backgroundType  ? 'has-background' : '';
+	const hasBackground =
+		background !== '' || backgroundType === 'transparent' || 'gradient' === backgroundType ? 'has-background' : '';
 
 	return (
 		<div
@@ -76,7 +73,7 @@ const Render = ( props ) => {
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
 				'wp-block-button',
-				btnBorderStyle !== 'none' && btnBorderStyle !== 'default' ? 'is-style-outline' : '',
+				btnBorderStyle !== 'none' && btnBorderStyle !== 'default' ? 'is-style-outline' : ''
 			) }
 		>
 			<div className="uagb-button__wrapper">
@@ -85,7 +82,7 @@ const Render = ( props ) => {
 						'uagb-buttons-repeater',
 						'wp-block-button__link',
 						hasBackground,
-						color !== '' ? 'has-text-color' : '',
+						color !== '' ? 'has-text-color' : ''
 					) }
 				>
 					{ iconHtml( 'before' ) }

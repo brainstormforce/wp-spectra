@@ -2,17 +2,19 @@
  * BLOCK: Testimonial
  */
 import TestimonialStyle from './inline-styles';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useMemo } from '@wordpress/element';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import Settings from './settings';
 import Render from './render';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import hexToRGBA from '@Controls/hexToRgba';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
-import WebfontLoader from '@Components/typography/fontloader';
+import DynamicCSSLoader from '../../components/dynamic-css-loader';
+import DynamicFontLoader from './dynamicFontLoader';
+import AddStaticStyles from '@Controls/AddStaticStyles';
+import { compose } from '@wordpress/compose';
 
 const UAGBtestimonial = ( props ) => {
 	const deviceType = useDeviceType();
@@ -40,27 +42,19 @@ const UAGBtestimonial = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
-			nameLoadGoogleFonts,
-			nameFontFamily,
-			nameFontWeight,
-			companyLoadGoogleFonts,
-			companyFontFamily,
-			companyFontWeight,
-			descLoadGoogleFonts,
-			descFontFamily,
-			descFontWeight
 		},
 		isSelected,
 		clientId,
+		name,
 	} = props;
 
-		useEffect( () => {
+	useEffect( () => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
 		setAttributes( { classMigrate: true } );
 
-		if( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ){
+		if ( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ) {
 			const color1 = hexToRGBA( maybeGetColorForVariable( gradientColor1 ), backgroundOpacity );
 			const color2 = hexToRGBA( maybeGetColorForVariable( gradientColor2 ), backgroundOpacity );
 			let gradientVal;
@@ -81,29 +75,33 @@ const UAGBtestimonial = ( props ) => {
 		}
 
 		// Backward Border Migration
-		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-			migrateBorderAttributes( 'overall', {
-				label: 'borderWidth',
-				value: borderWidth,
-			}, {
-				label: 'borderRadius',
-				value: borderRadius
-			}, {
-				label: 'borderColor',
-				value: borderColor
-			}, {
-				label: 'borderHoverColor',
-				value: borderHoverColor
-			},{
-				label: 'borderStyle',
-				value: borderStyle
-			},
-			setAttributes,
-			attributes
+		if ( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ) {
+			migrateBorderAttributes(
+				'overall',
+				{
+					label: 'borderWidth',
+					value: borderWidth,
+				},
+				{
+					label: 'borderRadius',
+					value: borderRadius,
+				},
+				{
+					label: 'borderColor',
+					value: borderColor,
+				},
+				{
+					label: 'borderHoverColor',
+					value: borderHoverColor,
+				},
+				{
+					label: 'borderStyle',
+					value: borderStyle,
+				},
+				setAttributes,
+				attributes
 			);
 		}
-		
-
 	}, [] );
 
 	useEffect( () => {
@@ -112,81 +110,31 @@ const UAGBtestimonial = ( props ) => {
 		} else {
 			uagb_carousel_unset_height( clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
 		}
-
-		const blockStyling = TestimonialStyle( props );
-
-		addBlockEditorDynamicStyles( 'uagb-testinomial-style-' + clientId.substr( 0, 8 ), blockStyling );
-		
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
-	}, [deviceType] );
+	}, [ deviceType ] );
 
-	let loadNameGoogleFonts;
-	let loadCompanyGoogleFonts;
-	let loadDescGoogleFonts;
-
-	if ( nameLoadGoogleFonts === true ) {
-		const nameconfig = {
-			google: {
-				families: [
-					nameFontFamily +
-						( nameFontWeight ? ':' + nameFontWeight : '' ),
-				],
-			},
-		};
-
-		loadNameGoogleFonts = (
-			<WebfontLoader config={ nameconfig }></WebfontLoader>
-		);
-	}
-
-	if ( companyLoadGoogleFonts === true ) {
-		const companyconfig = {
-			google: {
-				families: [
-					companyFontFamily +
-						( companyFontWeight ? ':' + companyFontWeight : '' ),
-				],
-			},
-		};
-
-		loadCompanyGoogleFonts = (
-			<WebfontLoader config={ companyconfig }></WebfontLoader>
-		);
-	}
-
-	if ( descLoadGoogleFonts === true ) {
-		const descconfig = {
-			google: {
-				families: [
-					descFontFamily +
-						( descFontWeight ? ':' + descFontWeight : '' ),
-				],
-			},
-		};
-
-		loadDescGoogleFonts = (
-			<WebfontLoader config={ descconfig }></WebfontLoader>
-		);
-	}
+	const blockStyling = useMemo( () => TestimonialStyle( attributes, clientId, name, deviceType ), [
+		attributes,
+		deviceType,
+	] );
 
 	return (
 		<>
-		{ isSelected && <Settings parentProps={ props } /> }
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
+			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
-			{ loadNameGoogleFonts }
-			{ loadCompanyGoogleFonts }
-			{ loadDescGoogleFonts }
 		</>
 	);
 };
 
-export default UAGBtestimonial;
+export default compose(
+	AddStaticStyles,
+)( UAGBtestimonial );

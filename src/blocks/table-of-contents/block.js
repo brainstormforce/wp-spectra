@@ -30,14 +30,10 @@ registerBlockType( 'uagb/table-of-contents', {
 		anchor: true,
 	},
 	attributes,
-category: uagb_blocks_info.category,
+	category: uagb_blocks_info.category,
 	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="table-of-content" />
-			) : (
-				<Edit { ...props } />
-			),
+		props.attributes.isPreview ? <PreviewImage image="table-of-content" /> : <Edit { ...props } />,
 	// Render via PHP
-	save: ()=> null,
+	save: () => null,
 	deprecated,
 } );

@@ -26,21 +26,18 @@
 }
 
 .uagb-editor-preview-mode-tablet.uagb-columns__stack-tablet {
-
 	.block-editor-block-list__layout {
 		flex-direction: column;
 	}
 }
 
 .uagb-editor-preview-mode-mobile.uagb-columns__stack-tablet {
-
 	.block-editor-block-list__layout {
 		flex-direction: column;
 	}
 }
 
 .uagb-editor-preview-mode-mobile.uagb-columns__stack-mobile {
-
 	.block-editor-block-list__layout {
 		flex-direction: column;
 	}
@@ -127,11 +124,12 @@
 	justify-content: flex-end;
 }
 
-.block-editor-block-list__layout .block-editor-block-list__block[data-type="uagb/column"] > .block-editor-block-list__block-edit {
+.block-editor-block-list__layout
+.block-editor-block-list__block[data-type="uagb/column"] > .block-editor-block-list__block-edit {
 	margin-left: 14px;
 	margin-right: 14px;
 
-	> div:not(.editor-block-contextual-toolbar) {
+	> div:not( .editor-block-contextual-toolbar ) {
 		width: 100%;
 	}
 
@@ -199,7 +197,10 @@
 	margin-right: 0;
 }
 
-.edit-post-visual-editor .editor-writing-flow .block-editor-block-list__layout .block-editor-block-list__block[data-type="uagb/column"] > .block-editor-block-list__block-edit {
+.edit-post-visual-editor
+.editor-writing-flow
+.block-editor-block-list__layout
+.block-editor-block-list__block[data-type="uagb/column"] > .block-editor-block-list__block-edit {
 	margin-left: 0;
 	margin-right: 0;
 }
@@ -209,17 +210,18 @@
 	overflow: visible;
 }
 
-.edit-post-visual-editor .uagb-editor-preview-mode-mobile .block-editor-block-list__block[data-type="uagb/column"] .block-editor-block-list__block-edit {
+.edit-post-visual-editor
+.uagb-editor-preview-mode-mobile
+.block-editor-block-list__block[data-type="uagb/column"]
+.block-editor-block-list__block-edit {
 	padding-left: 0;
 	padding-right: 0;
 }
-
 
 .uagb-editor-preview-mode-tablet.uagb-columns__reverse-tablet.uagb-columns__stack-none,
 .uagb-editor-preview-mode-mobile.uagb-columns__reverse-tablet.uagb-columns__stack-none,
 .uagb-editor-preview-mode-mobile.uagb-columns__reverse-mobile.uagb-columns__stack-none,
 .uagb-editor-preview-mode-tablet.uagb-columns__reverse-tablet.uagb-columns__stack-mobile {
-
 	> .uagb-columns__inner-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout {
 		flex-direction: row-reverse;
 	}
@@ -230,7 +232,6 @@
 .uagb-editor-preview-mode-mobile.uagb-columns__reverse-tablet.uagb-columns__stack-mobile,
 .uagb-editor-preview-mode-mobile.uagb-columns__reverse-mobile.uagb-columns__stack-mobile,
 .uagb-editor-preview-mode-tablet.uagb-columns__reverse-tablet.uagb-columns__stack-tablet {
-
 	> .uagb-columns__inner-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout {
 		flex-direction: column-reverse;
 	}
@@ -240,7 +241,6 @@
 .uagb-editor-preview-mode-mobile.uagb-columns__stack-mobile,
 .uagb-editor-preview-mode-tablet.uagb-columns__stack-tablet,
 .uagb-editor-preview-mode-mobile.uagb-columns__stack-tablet {
-
 	> .uagb-columns__inner-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout > .block-editor-block-list__block[data-type="uagb/column"] {
 		width: 100% !important;
 	}
@@ -259,18 +259,14 @@
 }
 
 .uagb-columns-variation-picker {
-
 	// This selector is apprently active for mobile preview.
 	.components-placeholder.is-medium {
-
 		.components-placeholder__fieldset {
-
 			// Since sub heading is hidden on mobile, we un-hide it.
 			.components-placeholder__instructions {
 				display: inline-block;
 			}
 		}
-
 	}
 
 	.components-placeholder__instructions {
@@ -279,7 +275,7 @@
 	}
 
 	.components-button,
-	.components-button:hover:not(:disabled) {
+	.components-button:hover:not( :disabled ) {
 		box-shadow: none;
 		outline: none;
 
@@ -290,12 +286,11 @@
 		}
 	}
 
-	.components-button:hover:not(:disabled) {
+	.components-button:hover:not( :disabled ) {
 		color: #9eaab5;
 	}
 
 	.block-editor-block-variation-picker__skip {
-
 		.components-button {
 			color: #0073aa;
 		}
@@ -334,10 +329,8 @@
 	}
 }
 
-@media screen and (max-width: 976px) {
-
+@media screen and ( max-width: 976px ) {
 	.uagb-columns-variation-picker {
-
 		.components-placeholder__fieldset {
 			max-width: 100%;
 		}
@@ -347,5 +340,4 @@
 			column-gap: 35px;
 		}
 	}
-
 }

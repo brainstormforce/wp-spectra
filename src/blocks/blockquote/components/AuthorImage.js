@@ -16,20 +16,19 @@ const AuthorImage = ( { attributes } ) => {
 		const { authorImageSize, authorImageWidth } = attributes;
 
 		url =
-			typeof size !== 'undefined' &&
-			typeof size[ authorImageSize ] !== 'undefined'
+			typeof size !== 'undefined' && typeof size[ authorImageSize ] !== 'undefined'
 				? size[ authorImageSize ].url
 				: urlChk;
 
 		return (
-				<img
-					className=""
-					src={ url }
-					alt={ attributes.authorImage.alt }
-					width={authorImageWidth}
-					height={authorImageWidth}
-					loading="lazy"
-				/>
+			<img
+				className=""
+				src={ url }
+				alt={ attributes.authorImage.alt }
+				width={ authorImageWidth }
+				height={ authorImageWidth }
+				loading="lazy"
+			/>
 		);
 	}
 

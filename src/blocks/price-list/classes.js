@@ -3,19 +3,16 @@
  */
 
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
-function PositionClasses( attributes , name = 'uagb/restaurant-menu' ) {
-	const {
-		columns,
-		tcolumns,
-		mcolumns
-	} = attributes;
+function PositionClasses( attributes, name = 'uagb/restaurant-menu' ) {
+	const { columns, tcolumns, mcolumns } = attributes;
 
 	let iconimgStyleClass = '';
 	let imgeCount = 0;
 	const image = attributes.image;
 
 	if ( typeof attributes.rest_menu_item_arr !== 'undefined' ) {
-		attributes.rest_menu_item_arr.map( ( item ) => { // eslint-disable-line  array-callback-return
+		// eslint-disable-next-line  array-callback-return
+		attributes.rest_menu_item_arr.map( ( item ) => {
 			const image_arr = item.image;
 			if ( image_arr && typeof image_arr !== 'undefined' ) {
 				imgeCount++;
@@ -28,23 +25,17 @@ function PositionClasses( attributes , name = 'uagb/restaurant-menu' ) {
 	}
 
 	if ( imgeCount > 0 ) {
-		iconimgStyleClass +=
-			'uagb-rm__image-position-' + attributes.imagePosition + ' ';
+		iconimgStyleClass += 'uagb-rm__image-position-' + attributes.imagePosition + ' ';
 	}
 
 	iconimgStyleClass += ' uagb-rm__align-' + attributes.headingAlign + ' ';
 
-	if (
-		'left' === attributes.imagePosition ||
-		'right' === attributes.imagePosition
-	) {
-		iconimgStyleClass +=
-			'uagb-rm__image-aligned-' + attributes.imageAlignment + ' ';
+	if ( 'left' === attributes.imagePosition || 'right' === attributes.imagePosition ) {
+		iconimgStyleClass += 'uagb-rm__image-aligned-' + attributes.imageAlignment + ' ';
 		if ( attributes.stack !== 'none' ) {
 			iconimgStyleClass += 'uagb-rm-stacked-' + attributes.stack + ' ';
 			if ( attributes.imagePosition === 'right' ) {
-				iconimgStyleClass +=
-					'uagb-rm-reverse-order-' + attributes.stack + ' ';
+				iconimgStyleClass += 'uagb-rm-reverse-order-' + attributes.stack + ' ';
 			}
 		}
 	}

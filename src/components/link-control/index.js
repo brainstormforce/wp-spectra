@@ -1,9 +1,7 @@
 import { useLayoutEffect } from '@wordpress/element';
-import {
-	__experimentalLinkControl as LinkControl
-} from '@wordpress/block-editor';
-import {__} from '@wordpress/i18n';
-import {getIdFromString} from '@Utils/Helpers';
+import { __experimentalLinkControl as LinkControl } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
+import { getIdFromString } from '@Utils/Helpers';
 import styles from './editor.lazy.scss';
 import PropTypes from 'prop-types';
 
@@ -25,12 +23,12 @@ const defaultProps = {
 		},
 		{
 			id: 'noFollow',
-			title: __( 'Add nofollow', 'ultimate-addons-for-gutenberg' )
-		}
-	]
+			title: __( 'Add nofollow', 'ultimate-addons-for-gutenberg' ),
+		},
+	],
 };
 
-export default function UAGLinkControl( {label, placeholder, settings, onChange, help, value} ) {
+export default function UAGLinkControl( { data, label, placeholder, settings, onChange, help, setAttributes } ) {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -39,30 +37,27 @@ export default function UAGLinkControl( {label, placeholder, settings, onChange,
 		};
 	}, [] );
 
-	const ID = getIdFromString( label ? label : placeholder )
+	const ID = getIdFromString( label ? label : placeholder );
 	return (
 		<>
-			<div className='uagb-link-control'>
-				{
-					label && (
-						<label htmlFor={ID} className='uagb-link-control__label'>
-							{label}
-						</label>
-					)
-				}
+			<div className="uagb-link-control">
+				{ label && (
+					<label htmlFor={ ID } className="uagb-link-control__label">
+						{ label }
+					</label>
+				) }
 				<LinkControl
-					id={ID}
+					id={ ID }
 					searchInputPlaceholder={ placeholder }
-					value={ value }
+					value={ data?.value }
 					settings={ settings }
 					onChange={ onChange }
 					withCreateSuggestion={ false }
+					onRemove={ () => {
+						setAttributes( { [ data?.label ]: undefined } )
+					} }
 				/>
-				{
-					help && (
-						<p className='uagb-link-control__help'>{help}</p>
-					)
-				}
+				{ help && <p className="uagb-link-control__help">{ help }</p> }
 			</div>
 		</>
 	);

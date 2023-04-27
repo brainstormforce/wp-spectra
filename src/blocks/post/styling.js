@@ -1,7 +1,6 @@
 /**
  * Set inline styles.
  *
- * @param  {Object} props - The block object.
  * @return {Object} The inline background type CSS.
  */
 
@@ -10,7 +9,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function styling( props ) {
+function styling( attributes, clientId ) {
 	const {
 		blockName,
 		btnBorderHColor,
@@ -232,7 +231,7 @@ function styling( props ) {
 		dotsMarginTopTablet,
 		dotsMarginTopMobile,
 		dotsMarginTopUnit,
-	} = props.attributes;
+	} = attributes;
 
 	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
 	const columnGapFallback = getFallbackNumber( columnGap, 'columnGap', blockName );
@@ -243,33 +242,51 @@ function styling( props ) {
 	const excerptBottomSpaceFallback = getFallbackNumber( excerptBottomSpace, 'excerptBottomSpace', blockName );
 	const ctaBottomSpaceFallback = getFallbackNumber( ctaBottomSpace, 'ctaBottomSpace', blockName );
 
-	const paginationSpacingFallback = undefined !== paginationSpacing ? getFallbackNumber( paginationSpacing, 'paginationSpacing', blockName ) : '';
-	const paginationBorderRadiusFallback = undefined !== paginationBorderRadius ? getFallbackNumber( paginationBorderRadius, 'paginationBorderRadius', blockName ) : '';
-	const paginationBorderSizeFallback = undefined !== paginationBorderSize ? getFallbackNumber( paginationBorderSize, 'paginationBorderSize', blockName ) : '';
+	const paginationSpacingFallback =
+		undefined !== paginationSpacing ? getFallbackNumber( paginationSpacing, 'paginationSpacing', blockName ) : '';
+	const paginationBorderRadiusFallback =
+		undefined !== paginationBorderRadius
+			? getFallbackNumber( paginationBorderRadius, 'paginationBorderRadius', blockName )
+			: '';
+	const paginationBorderSizeFallback =
+		undefined !== paginationBorderSize
+			? getFallbackNumber( paginationBorderSize, 'paginationBorderSize', blockName )
+			: '';
 	const arrowSizeFallback = undefined !== arrowSize ? getFallbackNumber( arrowSize, 'arrowSize', blockName ) : '';
-	const paginationFontSizeFallback = undefined !== paginationFontSize ? getFallbackNumber( paginationFontSize, 'paginationFontSize', blockName ) : '';
+	const paginationFontSizeFallback =
+		undefined !== paginationFontSize
+			? getFallbackNumber( paginationFontSize, 'paginationFontSize', blockName )
+			: '';
 	const loaderSizeFallback = undefined !== loaderSize ? getFallbackNumber( loaderSize, 'loaderSize', blockName ) : '';
 
 	const rowGapTabletFallback = isNaN( rowGapTablet ) ? rowGapFallback : rowGapTablet;
 	const rowGapMobileFallback = isNaN( rowGapMobile ) ? rowGapTabletFallback : rowGapMobile;
 
-	const borderCSS = generateBorderCSS( props.attributes, 'btn' );
-	const borderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
-	const borderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+	const borderCSS = generateBorderCSS( attributes, 'btn' );
+	const borderCSSTablet = generateBorderCSS( attributes, 'btn', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( attributes, 'btn', 'mobile' );
 
-	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' );
-	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' );
-	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' );
+	const overallBorderCSS = generateBorderCSS( attributes, 'overall' );
+	const overallBorderCSSTablet = generateBorderCSS( attributes, 'overall', 'tablet' );
+	const overallBorderCSSMobile = generateBorderCSS( attributes, 'overall', 'mobile' );
 
-	const paginationMasonryBorderCSS = generateBorderCSS( props.attributes, 'paginationMasonry' );
-	const paginationMasonryBorderCSSTablet = generateBorderCSS( props.attributes, 'paginationMasonry', 'tablet' );
-	const paginationMasonryBorderCSSMobile = generateBorderCSS( props.attributes, 'paginationMasonry', 'mobile' );
+	const paginationMasonryBorderCSS = generateBorderCSS( attributes, 'paginationMasonry' );
+	const paginationMasonryBorderCSSTablet = generateBorderCSS( attributes, 'paginationMasonry', 'tablet' );
+	const paginationMasonryBorderCSSMobile = generateBorderCSS( attributes, 'paginationMasonry', 'mobile' );
 
 	// post carousal margin top for dots
 
 	const dotsMarginTopFallback = getFallbackNumber( dotsMarginTop, 'dotsMarginTop', 'post-carousel' );
-	const dotsMarginTopTabletFallback = getFallbackNumber( dotsMarginTopTablet, 'dotsMarginTopTablet', 'post-carousel' );
-	const dotsMarginTopMobileFallback = getFallbackNumber( dotsMarginTopMobile, 'dotsMarginTopMobile', 'post-carousel' );
+	const dotsMarginTopTabletFallback = getFallbackNumber(
+		dotsMarginTopTablet,
+		'dotsMarginTopTablet',
+		'post-carousel'
+	);
+	const dotsMarginTopMobileFallback = getFallbackNumber(
+		dotsMarginTopMobile,
+		'dotsMarginTopMobile',
+		'post-carousel'
+	);
 
 	let mobileSelectors = {};
 	let tabletSelectors = {};
@@ -286,11 +303,11 @@ function styling( props ) {
 		boxShadowPositionCSSHover = '';
 	}
 	const selectors = {
-		'.wp-block-uagb-post-grid' : {
+		'.wp-block-uagb-post-grid': {
 			'grid-template-columns': 'repeat(' + columns + ' , minmax(0, 1fr))',
 		},
 		'.wp-block-uagb-post-grid.uagb-post__items': {
-			'column-gap': generateCSSUnit( columnGapFallback , columnGapUnit ),
+			'column-gap': generateCSSUnit( columnGapFallback, columnGapUnit ),
 			'row-gap': generateCSSUnit( rowGapFallback, rowGapUnit ),
 		},
 		':not(.wp-block-uagb-post-grid).uagb-post__items': {
@@ -311,9 +328,17 @@ function styling( props ) {
 		},
 		'.wp-block-uagb-post-grid .uagb-post__inner-wrap': {
 			'box-shadow':
-				generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
-				generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
-				boxShadowColor + ' ' +	boxShadowPositionCSS,
+				generateCSSUnit( boxShadowHOffset, 'px' ) +
+				' ' +
+				generateCSSUnit( boxShadowVOffset, 'px' ) +
+				' ' +
+				generateCSSUnit( boxShadowBlur, 'px' ) +
+				' ' +
+				generateCSSUnit( boxShadowSpread, 'px' ) +
+				' ' +
+				boxShadowColor +
+				' ' +
+				boxShadowPositionCSS,
 			...overallBorderCSS,
 			'padding-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
 			'padding-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
@@ -334,55 +359,40 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( paddingBottom, contentPaddingUnit ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__cta': {
-			'padding-bottom': generateCSSUnit(
-				ctaBottomSpaceFallback,
-				ctaBottomSpaceUnit
-			),
+			'padding-bottom': generateCSSUnit( ctaBottomSpaceFallback, ctaBottomSpaceUnit ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__image': {
-			'padding-bottom': generateCSSUnit(
-				imageBottomSpaceFallback,
-				imageBottomSpaceUnit
-			),
+			'padding-bottom': generateCSSUnit( imageBottomSpaceFallback, imageBottomSpaceUnit ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__image + .uagb-post__title ': {
 			'margin-top': '0px',
 		},
 		' .uagb-post__inner-wrap .uagb-post__title': {
-			'padding-bottom': generateCSSUnit(
-				titleBottomSpaceFallback,
-				titleBottomSpaceUnit
-			),
+			'padding-bottom': generateCSSUnit( titleBottomSpaceFallback, titleBottomSpaceUnit ),
 		},
 		' .uagb-post__inner-wrap .uagb-post-grid-byline': {
-			'padding-bottom': generateCSSUnit(
-				metaBottomSpaceFallback,
-				metaBottomSpaceUnit
-			),
+			'padding-bottom': generateCSSUnit( metaBottomSpaceFallback, metaBottomSpaceUnit ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__excerpt': {
-			'padding-bottom': generateCSSUnit(
-				excerptBottomSpaceFallback,
-				excerptBottomSpaceUnit
-			),
+			'padding-bottom': generateCSSUnit( excerptBottomSpaceFallback, excerptBottomSpaceUnit ),
 		},
 		' .uagb-post__image:before': {
 			'background-color': bgOverlayColor,
 			'opacity': overlayOpacityFallback / 100,
 		},
 		' .uagb-post-pagination-wrap': {
-			'margin-top': generateCSSUnit(
-				paginationSpacingFallback,
-				paginationSpacingUnit
-			),
+			'margin-top': generateCSSUnit( paginationSpacingFallback, paginationSpacingUnit ),
 			'justify-content': paginationAlignment,
 		},
 	};
 
 	if ( 'left' === paginationAlignment ) {
-		selectors[' .uagb-post-pagination-wrap']['margin-left'] = generateCSSUnit( rowGapFallback / 2, rowGapUnit );
+		selectors[ ' .uagb-post-pagination-wrap' ][ 'margin-left' ] = generateCSSUnit( rowGapFallback / 2, rowGapUnit );
 	} else if ( 'right' === paginationAlignment ) {
-		selectors[' .uagb-post-pagination-wrap']['margin-right'] = generateCSSUnit( rowGapFallback / 2, rowGapUnit );
+		selectors[ ' .uagb-post-pagination-wrap' ][ 'margin-right' ] = generateCSSUnit(
+			rowGapFallback / 2,
+			rowGapUnit
+		);
 	}
 
 	selectors[ ' .uagb-post__title' ] = {
@@ -390,10 +400,7 @@ function styling( props ) {
 		'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
 		'font-family': titleFontFamily,
 		'font-weight': titleFontWeight,
-		'line-height': generateCSSUnit(
-			titleLineHeight,
-			titleLineHeightType
-		),
+		'line-height': generateCSSUnit( titleLineHeight, titleLineHeightType ),
 		'text-transform': titleTransform,
 		'text-decoration': titleDecoration,
 		'font-style': titleFontStyle,
@@ -404,10 +411,7 @@ function styling( props ) {
 		'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
 		'font-family': titleFontFamily,
 		'font-weight': titleFontWeight,
-		'line-height': generateCSSUnit(
-			titleLineHeight,
-			titleLineHeightType
-		),
+		'line-height': generateCSSUnit( titleLineHeight, titleLineHeightType ),
 		'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 	};
 	selectors[ ' .uagb-post-grid-byline' ] = {
@@ -415,10 +419,7 @@ function styling( props ) {
 		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
 		'font-family': metaFontFamily,
 		'font-weight': metaFontWeight,
-		'line-height': generateCSSUnit(
-			metaLineHeight,
-			metaLineHeightType
-		),
+		'line-height': generateCSSUnit( metaLineHeight, metaLineHeightType ),
 		'text-transform': metaTransform,
 		'text-decoration': metaDecoration,
 		'font-style': metaFontStyle,
@@ -428,10 +429,7 @@ function styling( props ) {
 		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
 		'font-family': metaFontFamily,
 		'font-weight': metaFontWeight,
-		'line-height': generateCSSUnit(
-			metaLineHeight,
-			metaLineHeightType
-		),
+		'line-height': generateCSSUnit( metaLineHeight, metaLineHeightType ),
 		'text-transform': metaTransform,
 		'text-decoration': metaDecoration,
 		'font-style': metaFontStyle,
@@ -441,10 +439,7 @@ function styling( props ) {
 		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
 		'font-family': metaFontFamily,
 		'font-weight': metaFontWeight,
-		'line-height': generateCSSUnit(
-			metaLineHeight,
-			metaLineHeightType
-		),
+		'line-height': generateCSSUnit( metaLineHeight, metaLineHeightType ),
 		'text-transform': metaTransform,
 		'text-decoration': metaDecoration,
 		'font-style': metaFontStyle,
@@ -455,10 +450,7 @@ function styling( props ) {
 		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
 		'font-family': metaFontFamily,
 		'font-weight': metaFontWeight,
-		'line-height': generateCSSUnit(
-			metaLineHeight,
-			metaLineHeightType
-		),
+		'line-height': generateCSSUnit( metaLineHeight, metaLineHeightType ),
 		'text-transform': metaTransform,
 		'text-decoration': metaDecoration,
 		'font-style': metaFontStyle,
@@ -470,10 +462,7 @@ function styling( props ) {
 		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
 		'font-family': metaFontFamily,
 		'font-weight': metaFontWeight,
-		'line-height': generateCSSUnit(
-			metaLineHeight,
-			metaLineHeightType
-		),
+		'line-height': generateCSSUnit( metaLineHeight, metaLineHeightType ),
 		'text-transform': metaTransform,
 		'text-decoration': metaDecoration,
 		'font-style': metaFontStyle,
@@ -484,10 +473,7 @@ function styling( props ) {
 		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
 		'font-family': metaFontFamily,
 		'font-weight': metaFontWeight,
-		'line-height': generateCSSUnit(
-			metaLineHeight,
-			metaLineHeightType
-		),
+		'line-height': generateCSSUnit( metaLineHeight, metaLineHeightType ),
 		'text-transform': metaTransform,
 		'text-decoration': metaDecoration,
 		'letter-spacing': generateCSSUnit( metaLetterSpacing, metaLetterSpacingType ),
@@ -497,26 +483,17 @@ function styling( props ) {
 		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
 		'font-family': metaFontFamily,
 		'font-weight': metaFontWeight,
-		'line-height': generateCSSUnit(
-			metaLineHeight,
-			metaLineHeightType
-		),
+		'line-height': generateCSSUnit( metaLineHeight, metaLineHeightType ),
 		'text-transform': metaTransform,
 		'text-decoration': metaDecoration,
 		'letter-spacing': generateCSSUnit( metaLetterSpacing, metaLetterSpacingType ),
 	};
 	selectors[ ' .uagb-post__excerpt' ] = {
 		'color': excerptColor,
-		'font-size': generateCSSUnit(
-			excerptFontSize,
-			excerptFontSizeType
-		),
+		'font-size': generateCSSUnit( excerptFontSize, excerptFontSizeType ),
 		'font-family': excerptFontFamily,
 		'font-weight': excerptFontWeight,
-		'line-height': generateCSSUnit(
-			excerptLineHeight,
-			excerptLineHeightType
-		),
+		'line-height': generateCSSUnit( excerptLineHeight, excerptLineHeightType ),
 		'font-style': excerptFontStyle,
 		'text-transform': excerptTransform,
 		'text-decoration': excerptDecoration,
@@ -530,12 +507,9 @@ function styling( props ) {
 		'font-weight': ctaFontWeight,
 		'font-style': ctaFontStyle,
 		'line-height': generateCSSUnit( ctaLineHeight, ctaLineHeightType ),
-		'background': ( ctaBgType === 'color' ) ? ctaBgColor : 'transparent',
+		'background': ctaBgType === 'color' ? ctaBgColor : 'transparent',
 		'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
-		'padding-bottom': generateCSSUnit(
-			paddingBtnBottom,
-			paddingBtnUnit
-		),
+		'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
 		'text-transform': ctaTransform,
 		'text-decoration': ctaDecoration,
 		'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
@@ -543,7 +517,9 @@ function styling( props ) {
 		...borderCSS,
 		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
 	};
-	selectors[ ' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta:not(.is-style-outline) .uagb-text-link.wp-block-button__link:not(.has-background) ' ] = {
+	selectors[
+		' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta:not(.is-style-outline) .uagb-text-link.wp-block-button__link:not(.has-background) '
+	] = {
 		'pointer-events': 'visible',
 		'color': ctaColor,
 		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
@@ -553,10 +529,7 @@ function styling( props ) {
 		'line-height': generateCSSUnit( ctaLineHeight, ctaLineHeightType ),
 		'background': ctaBgColor,
 		'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
-		'padding-bottom': generateCSSUnit(
-			paddingBtnBottom,
-			paddingBtnUnit
-		),
+		'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
 		'text-transform': ctaTransform,
 		'text-decoration': ctaDecoration,
 		'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
@@ -564,9 +537,11 @@ function styling( props ) {
 		...borderCSS,
 		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
 	};
-	selectors[ ' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta:not(.is-style-outline) .uagb-text-link.wp-block-button__link:not(.has-background):hover' ] = {
+	selectors[
+		' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta:not(.is-style-outline) .uagb-text-link.wp-block-button__link:not(.has-background):hover'
+	] = {
 		'color': ctaHColor,
-		'background': ( ctaBgHType === 'color' ) ? ctaBgHColor : 'transparent',
+		'background': ctaBgHType === 'color' ? ctaBgHColor : 'transparent',
 		'border-color': btnBorderHColor,
 	};
 
@@ -576,46 +551,26 @@ function styling( props ) {
 				'background-color': paginationBgColor,
 				'color': paginationColor,
 			};
-			if (
-				'undefined' === typeof paginationBgActiveColor &&
-				'undefined' === typeof paginationActiveColor
-			) {
-				selectors[
-					' .uagb-post-pagination-wrap .page-numbers.current'
-				] = {
+			if ( 'undefined' === typeof paginationBgActiveColor && 'undefined' === typeof paginationActiveColor ) {
+				selectors[ ' .uagb-post-pagination-wrap .page-numbers.current' ] = {
 					'background-color': paginationBgColor,
 					'color': paginationColor,
 				};
 			}
-			if (
-				'undefined' === typeof paginationBgActiveColor &&
-				'undefined' !== typeof paginationActiveColor
-			) {
-				selectors[
-					' .uagb-post-pagination-wrap .page-numbers.current'
-				] = {
+			if ( 'undefined' === typeof paginationBgActiveColor && 'undefined' !== typeof paginationActiveColor ) {
+				selectors[ ' .uagb-post-pagination-wrap .page-numbers.current' ] = {
 					'background-color': paginationBgColor,
 					'color': paginationActiveColor,
 				};
 			}
-			if (
-				'undefined' !== typeof paginationBgActiveColor &&
-				'undefined' === typeof paginationActiveColor
-			) {
-				selectors[
-					' .uagb-post-pagination-wrap .page-numbers.current'
-				] = {
+			if ( 'undefined' !== typeof paginationBgActiveColor && 'undefined' === typeof paginationActiveColor ) {
+				selectors[ ' .uagb-post-pagination-wrap .page-numbers.current' ] = {
 					'background-color': paginationBgActiveColor,
 					'color': paginationColor,
 				};
 			}
-			if (
-				'undefined' !== typeof paginationBgActiveColor &&
-				'undefined' !== typeof paginationActiveColor
-			) {
-				selectors[
-					' .uagb-post-pagination-wrap .page-numbers.current'
-				] = {
+			if ( 'undefined' !== typeof paginationBgActiveColor && 'undefined' !== typeof paginationActiveColor ) {
+				selectors[ ' .uagb-post-pagination-wrap .page-numbers.current' ] = {
 					'background-color': paginationBgActiveColor,
 					'color': paginationActiveColor,
 				};
@@ -626,93 +581,46 @@ function styling( props ) {
 				'border-style': 'solid',
 				'border-width': generateCSSUnit( paginationBorderSizeFallback, 'px' ),
 				'border-color': paginationBorderColor,
-				'border-radius': generateCSSUnit(
-					paginationBorderRadiusFallback,
-					'px'
-				),
+				'border-radius': generateCSSUnit( paginationBorderRadiusFallback, 'px' ),
 				'color': paginationColor,
 				'background-color': 'transparent',
 			};
-			if (
-				'undefined' !== typeof paginationBorderActiveColor &&
-				'undefined' !== typeof paginationActiveColor
-			) {
-				selectors[
-					' .uagb-post-pagination-wrap .page-numbers.current'
-				] = {
+			if ( 'undefined' !== typeof paginationBorderActiveColor && 'undefined' !== typeof paginationActiveColor ) {
+				selectors[ ' .uagb-post-pagination-wrap .page-numbers.current' ] = {
 					'border-style': 'solid',
-					'border-width': generateCSSUnit(
-						paginationBorderSizeFallback,
-						'px'
-					),
+					'border-width': generateCSSUnit( paginationBorderSizeFallback, 'px' ),
 					'border-color': paginationBorderActiveColor,
-					'border-radius': generateCSSUnit(
-						paginationBorderRadiusFallback,
-						'px'
-					),
+					'border-radius': generateCSSUnit( paginationBorderRadiusFallback, 'px' ),
 					'color': paginationActiveColor,
 					'background-color': 'transparent',
 				};
 			}
-			if (
-				'undefined' === typeof paginationBorderActiveColor &&
-				'undefined' !== typeof paginationActiveColor
-			) {
-				selectors[
-					' .uagb-post-pagination-wrap .page-numbers.current'
-				] = {
+			if ( 'undefined' === typeof paginationBorderActiveColor && 'undefined' !== typeof paginationActiveColor ) {
+				selectors[ ' .uagb-post-pagination-wrap .page-numbers.current' ] = {
 					'border-style': 'solid',
-					'border-width': generateCSSUnit(
-						paginationBorderSizeFallback,
-						'px'
-					),
+					'border-width': generateCSSUnit( paginationBorderSizeFallback, 'px' ),
 					'border-color': paginationBorderColor,
-					'border-radius': generateCSSUnit(
-						paginationBorderRadiusFallback,
-						'px'
-					),
+					'border-radius': generateCSSUnit( paginationBorderRadiusFallback, 'px' ),
 					'color': paginationActiveColor,
 					'background-color': 'transparent',
 				};
 			}
-			if (
-				'undefined' !== typeof paginationBorderActiveColor &&
-				'undefined' === typeof paginationActiveColor
-			) {
-				selectors[
-					' .uagb-post-pagination-wrap .page-numbers.current'
-				] = {
+			if ( 'undefined' !== typeof paginationBorderActiveColor && 'undefined' === typeof paginationActiveColor ) {
+				selectors[ ' .uagb-post-pagination-wrap .page-numbers.current' ] = {
 					'border-style': 'solid',
-					'border-width': generateCSSUnit(
-						paginationBorderSizeFallback,
-						'px'
-					),
+					'border-width': generateCSSUnit( paginationBorderSizeFallback, 'px' ),
 					'border-color': paginationBorderActiveColor,
-					'border-radius': generateCSSUnit(
-						paginationBorderRadiusFallback,
-						'px'
-					),
+					'border-radius': generateCSSUnit( paginationBorderRadiusFallback, 'px' ),
 					'color': paginationColor,
 					'background-color': 'transparent',
 				};
 			}
-			if (
-				'undefined' === typeof paginationBorderHColor &&
-				'undefined' === typeof paginationActiveColor
-			) {
-				selectors[
-					' .uagb-post-pagination-wrap .page-numbers.current'
-				] = {
+			if ( 'undefined' === typeof paginationBorderHColor && 'undefined' === typeof paginationActiveColor ) {
+				selectors[ ' .uagb-post-pagination-wrap .page-numbers.current' ] = {
 					'border-style': 'solid',
-					'border-width': generateCSSUnit(
-						paginationBorderSizeFallback,
-						'px'
-					),
+					'border-width': generateCSSUnit( paginationBorderSizeFallback, 'px' ),
 					'border-color': paginationBorderColor,
-					'border-radius': generateCSSUnit(
-						paginationBorderRadiusFallback,
-						'px'
-					),
+					'border-radius': generateCSSUnit( paginationBorderRadiusFallback, 'px' ),
 					'color': paginationColor,
 					'background-color': 'transparent',
 				};
@@ -739,7 +647,7 @@ function styling( props ) {
 	};
 
 	mobileSelectors = {
-		'.wp-block-uagb-post-grid' : {
+		'.wp-block-uagb-post-grid': {
 			'grid-template-columns': 'repeat(' + mcolumns + ' , minmax(0, 1fr))',
 		},
 		'.uagb-post__arrow-outside.uagb-post-grid .slick-prev': {
@@ -749,114 +657,60 @@ function styling( props ) {
 			'right': generateCSSUnit( arrowDistanceMobile, 'px' ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__title': {
-			'font-size': generateCSSUnit(
-				titleFontSizeMobile,
-				titleFontSizeType
-			),
+			'font-size': generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
 			'line-height': titleLineHeightMobile + titleLineHeightType,
-			'padding-bottom': generateCSSUnit(
-				titleBottomSpaceMobile,
-				titleBottomSpaceUnit
-			),
+			'padding-bottom': generateCSSUnit( titleBottomSpaceMobile, titleBottomSpaceUnit ),
 		},
 		'.wp-block-uagb-post-grid .uagb-post__inner-wrap': overallBorderCSSMobile,
 		' .uagb-post__title a': {
-			'font-size': generateCSSUnit(
-				titleFontSizeMobile,
-				titleFontSizeType
-			),
+			'font-size': generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
 			'line-height': titleLineHeightMobile + titleLineHeightType,
 			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 		},
 		' .uagb-post__inner-wrap .uagb-post-grid-byline': {
-			'font-size': generateCSSUnit(
-				metaFontSizeMobile,
-				metaFontSizeType
-			),
+			'font-size': generateCSSUnit( metaFontSizeMobile, metaFontSizeType ),
 			'line-height': metaLineHeightMobile + metaLineHeightType,
-			'padding-bottom': generateCSSUnit(
-				metaBottomSpaceMobile,
-				metaBottomSpaceUnit
-			),
+			'padding-bottom': generateCSSUnit( metaBottomSpaceMobile, metaBottomSpaceUnit ),
 			'letter-spacing': generateCSSUnit( metaLetterSpacingMobile, metaLetterSpacingType ),
 		},
 		' span.uagb-post__taxonomy.default': {
-			'font-size': generateCSSUnit(
-				metaFontSizeMobile,
-				metaFontSizeType
-			),
+			'font-size': generateCSSUnit( metaFontSizeMobile, metaFontSizeType ),
 			'line-height': metaLineHeightMobile + metaLineHeightType,
 			'letter-spacing': generateCSSUnit( metaLetterSpacingMobile, metaLetterSpacingType ),
 		},
 		' .uagb-post-grid-byline .uagb-post__author': {
-			'font-size': generateCSSUnit(
-				metaFontSizeMobile,
-				metaFontSizeType
-			),
+			'font-size': generateCSSUnit( metaFontSizeMobile, metaFontSizeType ),
 			'line-height': metaLineHeightMobile + metaLineHeightType,
 			'letter-spacing': generateCSSUnit( metaLetterSpacingMobile, metaLetterSpacingType ),
 		},
 		' .uagb-post-grid-byline .uagb-post__author a': {
-			'font-size': generateCSSUnit(
-				metaFontSizeMobile,
-				metaFontSizeType
-			),
+			'font-size': generateCSSUnit( metaFontSizeMobile, metaFontSizeType ),
 			'line-height': metaLineHeightMobile + metaLineHeightType,
 			'letter-spacing': generateCSSUnit( metaLetterSpacingMobile, metaLetterSpacingType ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__excerpt': {
-			'font-size': generateCSSUnit(
-				excerptFontSizeMobile,
-				excerptFontSizeType
-			),
+			'font-size': generateCSSUnit( excerptFontSizeMobile, excerptFontSizeType ),
 			'line-height': excerptLineHeightMobile + excerptLineHeightType,
-			'padding-bottom': generateCSSUnit(
-				excerptBottomSpaceMobile,
-				excerptBottomSpaceUnit
-			),
+			'padding-bottom': generateCSSUnit( excerptBottomSpaceMobile, excerptBottomSpaceUnit ),
 			'letter-spacing': generateCSSUnit( excerptLetterSpacingMobile, excerptLetterSpacingType ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__cta': {
-			'font-size': generateCSSUnit(
-				ctaFontSizeMobile,
-				ctaFontSizeType
-			),
+			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			'line-height': ctaLineHeightMobile + ctaLineHeightType,
-			'padding-bottom': generateCSSUnit(
-				ctaBottomSpaceMobile,
-				ctaBottomSpaceUnit
-			),
+			'padding-bottom': generateCSSUnit( ctaBottomSpaceMobile, ctaBottomSpaceUnit ),
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__cta a': {
-			'font-size': generateCSSUnit(
-				ctaFontSizeMobile,
-				ctaFontSizeType
-			),
+			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			'line-height': ctaLineHeightMobile + ctaLineHeightType,
-			'padding-top': generateCSSUnit(
-				paddingBtnTopMobile,
-				mobilePaddingBtnUnit
-			),
-			'padding-bottom': generateCSSUnit(
-				paddingBtnBottomMobile,
-				mobilePaddingBtnUnit
-			),
-			'padding-left': generateCSSUnit(
-				paddingBtnLeftMobile,
-				mobilePaddingBtnUnit
-			),
-			'padding-right': generateCSSUnit(
-				paddingBtnRightMobile,
-				mobilePaddingBtnUnit
-			),
+			'padding-top': generateCSSUnit( paddingBtnTopMobile, mobilePaddingBtnUnit ),
+			'padding-bottom': generateCSSUnit( paddingBtnBottomMobile, mobilePaddingBtnUnit ),
+			'padding-left': generateCSSUnit( paddingBtnLeftMobile, mobilePaddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRightMobile, mobilePaddingBtnUnit ),
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__image': {
-			'padding-bottom': generateCSSUnit(
-				imageBottomSpaceMobile,
-				imageBottomSpaceUnit
-			),
+			'padding-bottom': generateCSSUnit( imageBottomSpaceMobile, imageBottomSpaceUnit ),
 		},
 		'.uagb-post__items': {
 			'margin-right': generateCSSUnit( -rowGapMobileFallback / 2, rowGapUnit ),
@@ -868,7 +722,7 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( columnGapMobile, columnGapUnit ),
 		},
 		'.wp-block-uagb-post-grid.uagb-post__items': {
-			'column-gap': generateCSSUnit( columnGapMobile , columnGapUnit ),
+			'column-gap': generateCSSUnit( columnGapMobile, columnGapUnit ),
 			'row-gap': generateCSSUnit( rowGapMobile, rowGapUnit ),
 		},
 		' .is-masonry': {
@@ -892,21 +746,30 @@ function styling( props ) {
 	const boxShadowBlurHoverValue = isNaN( boxShadowBlurHover ) ? '' : boxShadowBlurHover;
 	const boxShadowColorHoverValue = boxShadowColorHover ? boxShadowColorHover : '';
 
-	if( '' !== boxShadowColorHoverValue || '' !== boxShadowBlurHoverValue ) {
+	if ( '' !== boxShadowColorHoverValue || '' !== boxShadowBlurHoverValue ) {
+		const boxShadowBlurHoverCSSUnit =
+			'' === boxShadowBlurHoverValue ? '' : generateCSSUnit( boxShadowBlurHoverValue, 'px' );
 
-		const boxShadowBlurHoverCSSUnit = ( '' === boxShadowBlurHoverValue ) ? '' : generateCSSUnit( boxShadowBlurHoverValue, 'px' );
-
-		selectors['.wp-block-uagb-post-grid .uagb-post__inner-wrap:hover'] = {
-			'box-shadow' : generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
-													boxShadowBlurHoverCSSUnit + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
-													boxShadowColorHoverValue + ' ' +	boxShadowPositionCSSHover
-		}
+		selectors[ '.wp-block-uagb-post-grid .uagb-post__inner-wrap:hover' ] = {
+			'box-shadow':
+				generateCSSUnit( boxShadowHOffsetHover, 'px' ) +
+				' ' +
+				generateCSSUnit( boxShadowVOffsetHover, 'px' ) +
+				' ' +
+				boxShadowBlurHoverCSSUnit +
+				' ' +
+				generateCSSUnit( boxShadowSpreadHover, 'px' ) +
+				' ' +
+				boxShadowColorHoverValue +
+				' ' +
+				boxShadowPositionCSSHover,
+		};
 	}
-	selectors['.wp-block-uagb-post-grid article:hover'] = {
-		'border-color' : overallBorderHColor
-	}
+	selectors[ '.wp-block-uagb-post-grid article:hover' ] = {
+		'border-color': overallBorderHColor,
+	};
 	tabletSelectors = {
-		'.wp-block-uagb-post-grid' : {
+		'.wp-block-uagb-post-grid': {
 			'grid-template-columns': 'repeat(' + tcolumns + ' , minmax(0, 1fr))',
 		},
 		'.uagb-post__arrow-outside.uagb-post-grid .slick-prev': {
@@ -916,114 +779,59 @@ function styling( props ) {
 			'right': generateCSSUnit( arrowDistanceTablet, 'px' ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__title': {
-			'font-size': generateCSSUnit(
-				titleFontSizeTablet,
-				titleFontSizeType
-			),
+			'font-size': generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
 			'line-height': titleLineHeightTablet + titleLineHeightType,
-			'padding-bottom': generateCSSUnit(
-				titleBottomSpaceTablet,
-				titleBottomSpaceUnit
-			),
+			'padding-bottom': generateCSSUnit( titleBottomSpaceTablet, titleBottomSpaceUnit ),
 		},
 		' .uagb-post__title a': {
-			'font-size': generateCSSUnit(
-				titleFontSizeTablet,
-				titleFontSizeType
-			),
+			'font-size': generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
 			'line-height': titleLineHeightTablet + titleLineHeightType,
 			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		},
 		' .uagb-post__inner-wrap .uagb-post-grid-byline': {
-			'font-size': generateCSSUnit(
-				metaFontSizeTablet,
-				metaFontSizeType
-			),
+			'font-size': generateCSSUnit( metaFontSizeTablet, metaFontSizeType ),
 			'line-height': metaLineHeightTablet + metaLineHeightType,
-			'padding-bottom': generateCSSUnit(
-				metaBottomSpaceTablet,
-				metaBottomSpaceUnit
-			),
+			'padding-bottom': generateCSSUnit( metaBottomSpaceTablet, metaBottomSpaceUnit ),
 			'letter-spacing': generateCSSUnit( metaLetterSpacingTablet, metaLetterSpacingType ),
 		},
 		' span.uagb-post__taxonomy.default': {
-			'font-size': generateCSSUnit(
-				metaFontSizeTablet,
-				metaFontSizeType
-			),
+			'font-size': generateCSSUnit( metaFontSizeTablet, metaFontSizeType ),
 			'line-height': metaLineHeightTablet + metaLineHeightType,
 			'letter-spacing': generateCSSUnit( metaLetterSpacingTablet, metaLetterSpacingType ),
 		},
 		' .uagb-post-grid-byline .uagb-post__author': {
-			'font-size': generateCSSUnit(
-				metaFontSizeTablet,
-				metaFontSizeType
-			),
+			'font-size': generateCSSUnit( metaFontSizeTablet, metaFontSizeType ),
 			'line-height': metaLineHeightTablet + metaLineHeightType,
 			'letter-spacing': generateCSSUnit( metaLetterSpacingTablet, metaLetterSpacingType ),
 		},
 		' .uagb-post-grid-byline .uagb-post__author a': {
-			'font-size': generateCSSUnit(
-				metaFontSizeTablet,
-				metaFontSizeType
-			),
+			'font-size': generateCSSUnit( metaFontSizeTablet, metaFontSizeType ),
 			'line-height': metaLineHeightTablet + metaLineHeightType,
 			'letter-spacing': generateCSSUnit( metaLetterSpacingTablet, metaLetterSpacingType ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__excerpt': {
-			'font-size': generateCSSUnit(
-				excerptFontSizeTablet,
-				excerptFontSizeType
-			),
+			'font-size': generateCSSUnit( excerptFontSizeTablet, excerptFontSizeType ),
 			'line-height': excerptLineHeightTablet + excerptLineHeightType,
-			'padding-bottom': generateCSSUnit(
-				excerptBottomSpaceTablet,
-				excerptBottomSpaceUnit
-			),
+			'padding-bottom': generateCSSUnit( excerptBottomSpaceTablet, excerptBottomSpaceUnit ),
 			'letter-spacing': generateCSSUnit( excerptLetterSpacingTablet, excerptLetterSpacingType ),
-
 		},
 		' .uagb-post__inner-wrap .uagb-post__cta': {
-			'font-size': generateCSSUnit(
-				ctaFontSizeTablet,
-				ctaFontSizeType
-			),
+			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 			'line-height': ctaLineHeightTablet + ctaLineHeightType,
-			'padding-bottom': generateCSSUnit(
-				ctaBottomSpaceTablet,
-				ctaBottomSpaceUnit
-			),
+			'padding-bottom': generateCSSUnit( ctaBottomSpaceTablet, ctaBottomSpaceUnit ),
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__cta .uagb-text-link': {
-			'font-size': generateCSSUnit(
-				ctaFontSizeTablet,
-				ctaFontSizeType
-			),
+			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 			'line-height': ctaLineHeightTablet + ctaLineHeightType,
-			'padding-top': generateCSSUnit(
-				paddingBtnTopTablet,
-				tabletPaddingBtnUnit
-			),
-			'padding-bottom': generateCSSUnit(
-				paddingBtnBottomTablet,
-				tabletPaddingBtnUnit
-			),
-			'padding-left': generateCSSUnit(
-				paddingBtnLeftTablet,
-				tabletPaddingBtnUnit
-			),
-			'padding-right': generateCSSUnit(
-				paddingBtnRightTablet,
-				tabletPaddingBtnUnit
-			),
+			'padding-top': generateCSSUnit( paddingBtnTopTablet, tabletPaddingBtnUnit ),
+			'padding-bottom': generateCSSUnit( paddingBtnBottomTablet, tabletPaddingBtnUnit ),
+			'padding-left': generateCSSUnit( paddingBtnLeftTablet, tabletPaddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRightTablet, tabletPaddingBtnUnit ),
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__image': {
-			'padding-bottom': generateCSSUnit(
-				imageBottomSpaceTablet,
-				imageBottomSpaceUnit
-			),
+			'padding-bottom': generateCSSUnit( imageBottomSpaceTablet, imageBottomSpaceUnit ),
 		},
 		'.uagb-post__items': {
 			'margin-right': generateCSSUnit( -rowGapTabletFallback / 2, rowGapUnit ),
@@ -1035,7 +843,7 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( columnGapTablet, columnGapUnit ),
 		},
 		'.wp-block-uagb-post-grid.uagb-post__items': {
-			'column-gap': generateCSSUnit( columnGapTablet , columnGapUnit ),
+			'column-gap': generateCSSUnit( columnGapTablet, columnGapUnit ),
 			'row-gap': generateCSSUnit( rowGapTablet, rowGapUnit ),
 		},
 		'.wp-block-uagb-post-grid .uagb-post__inner-wrap': overallBorderCSSTablet,
@@ -1059,53 +867,29 @@ function styling( props ) {
 
 	if ( 'infinite' === paginationType ) {
 		if ( 'button' === paginationEventType ) {
-			selectors['.uagb-post__items'] = {
+			selectors[ '.uagb-post__items' ] = {
 				'margin-bottom': '40px',
 			};
 			selectors[ ' .uagb-post__load-more-wrap' ] = {
 				'text-align': paginationAlign,
 			};
-			selectors[
-				' .uagb-post__load-more-wrap .uagb-post-pagination-button'
-			] = {
+			selectors[ ' .uagb-post__load-more-wrap .uagb-post-pagination-button' ] = {
 				'color': paginationTextColor,
 				'background-color': paginationMasonryBgColor,
-				'font-size': generateCSSUnit(
-					paginationFontSizeFallback,
-					'px'
-				),
-				'padding-top': generateCSSUnit(
-					paginationButtonPaddingTop,
-					paginationButtonPaddingType
-				),
-				'padding-bottom': generateCSSUnit(
-					paginationButtonPaddingBottom,
-					paginationButtonPaddingType
-				),
-				'padding-right': generateCSSUnit(
-					paginationButtonPaddingRight,
-					paginationButtonPaddingType
-				),
-				'padding-left': generateCSSUnit(
-					paginationButtonPaddingLeft,
-					paginationButtonPaddingType
-				),
-				...paginationMasonryBorderCSS
+				'font-size': generateCSSUnit( paginationFontSizeFallback, 'px' ),
+				'padding-top': generateCSSUnit( paginationButtonPaddingTop, paginationButtonPaddingType ),
+				'padding-bottom': generateCSSUnit( paginationButtonPaddingBottom, paginationButtonPaddingType ),
+				'padding-right': generateCSSUnit( paginationButtonPaddingRight, paginationButtonPaddingType ),
+				'padding-left': generateCSSUnit( paginationButtonPaddingLeft, paginationButtonPaddingType ),
+				...paginationMasonryBorderCSS,
 			};
-			selectors[
-				' .uagb-post__load-more-wrap .uagb-post-pagination-button:hover'
-			] = {
+			selectors[ ' .uagb-post__load-more-wrap .uagb-post-pagination-button:hover' ] = {
 				'color': paginationTextHoverColor,
 				'background-color': paginationBgHoverColor,
 				'border-color': paginationMasonryBorderHColor,
 			};
-			mobileSelectors[
-				' .uagb-post__load-more-wrap .uagb-post-pagination-button'
-			] = {
-				'padding-top': generateCSSUnit(
-					paginationButtonPaddingTopMobile,
-					mobilepaginationButtonPaddingType
-				),
+			mobileSelectors[ ' .uagb-post__load-more-wrap .uagb-post-pagination-button' ] = {
+				'padding-top': generateCSSUnit( paginationButtonPaddingTopMobile, mobilepaginationButtonPaddingType ),
 				'padding-bottom': generateCSSUnit(
 					paginationButtonPaddingBottomMobile,
 					mobilepaginationButtonPaddingType
@@ -1114,18 +898,10 @@ function styling( props ) {
 					paginationButtonPaddingRightMobile,
 					mobilepaginationButtonPaddingType
 				),
-				'padding-left': generateCSSUnit(
-					paginationButtonPaddingLeftMobile,
-					mobilepaginationButtonPaddingType
-				),
+				'padding-left': generateCSSUnit( paginationButtonPaddingLeftMobile, mobilepaginationButtonPaddingType ),
 			};
-			tabletSelectors[
-				' .uagb-post__load-more-wrap .uagb-post-pagination-button'
-			] = {
-				'padding-top': generateCSSUnit(
-					paginationButtonPaddingTopTablet,
-					tabletpaginationButtonPaddingType
-				),
+			tabletSelectors[ ' .uagb-post__load-more-wrap .uagb-post-pagination-button' ] = {
+				'padding-top': generateCSSUnit( paginationButtonPaddingTopTablet, tabletpaginationButtonPaddingType ),
 				'padding-bottom': generateCSSUnit(
 					paginationButtonPaddingRightTablet,
 					tabletpaginationButtonPaddingType
@@ -1134,10 +910,7 @@ function styling( props ) {
 					paginationButtonPaddingBottomTablet,
 					tabletpaginationButtonPaddingType
 				),
-				'padding-left': generateCSSUnit(
-					paginationButtonPaddingLeftTablet,
-					tabletpaginationButtonPaddingType
-				),
+				'padding-left': generateCSSUnit( paginationButtonPaddingLeftTablet, tabletpaginationButtonPaddingType ),
 			};
 		}
 		if ( 'scroll' === paginationEventType ) {
@@ -1150,113 +923,92 @@ function styling( props ) {
 	}
 	tabletSelectors[ '.uagb-post-grid .uagb-post__inner-wrap' ] = {
 		'padding-top': generateCSSUnit( paddingTopTablet, tabletPaddingUnit ),
-		'padding-bottom': generateCSSUnit(
-			paddingBottomTablet,
-			tabletPaddingUnit
-		),
+		'padding-bottom': generateCSSUnit( paddingBottomTablet, tabletPaddingUnit ),
 		'padding-left': generateCSSUnit( paddingLeftTablet, tabletPaddingUnit ),
-		'padding-right': generateCSSUnit(
-			paddingRightTablet,
-			tabletPaddingUnit
-		),
-		...overallBorderCSSTablet
+		'padding-right': generateCSSUnit( paddingRightTablet, tabletPaddingUnit ),
+		...overallBorderCSSTablet,
 	};
 	mobileSelectors[ '.uagb-post-grid .uagb-post__inner-wrap' ] = {
 		'padding-top': generateCSSUnit( paddingTopMobile, mobilePaddingUnit ),
-		'padding-bottom': generateCSSUnit(
-			paddingBottomMobile,
-			mobilePaddingUnit
-		),
+		'padding-bottom': generateCSSUnit( paddingBottomMobile, mobilePaddingUnit ),
 		'padding-left': generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
-		'padding-right': generateCSSUnit(
-			paddingRightMobile,
-			mobilePaddingUnit
-		),
-		...overallBorderCSSMobile
+		'padding-right': generateCSSUnit( paddingRightMobile, mobilePaddingUnit ),
+		...overallBorderCSSMobile,
 	};
 	tabletSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSTablet;
 	mobileSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSMobile;
 	tabletSelectors[ ' .uagb-post__load-more-wrap .uagb-post-pagination-button' ] = paginationMasonryBorderCSSTablet;
 	mobileSelectors[ ' .uagb-post__load-more-wrap .uagb-post-pagination-button' ] = paginationMasonryBorderCSSMobile;
-	if ( 'background' === imgPosition ){
+	if ( 'background' === imgPosition ) {
 		selectors[ ' .uagb-post__inner-wrap .uagb-post__text:nth-child(2)' ] = {
 			'margin-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
 		};
 	}
 
-	if( imgPosition !== 'background' ){
-		selectors['.wp-block-uagb-post-grid .uagb-post__inner-wrap  > .uagb-post__image:first-child'] = {
-			'margin-top': generateCSSUnit( - paddingTop, contentPaddingUnit ),
-			'margin-left': generateCSSUnit( - paddingLeft, contentPaddingUnit ),
-			'margin-right': generateCSSUnit( - paddingRight, contentPaddingUnit ),
-		}
-		mobileSelectors['.wp-block-uagb-post-grid .uagb-post__inner-wrap  > .uagb-post__image:first-child'] = {
-			'margin-top': generateCSSUnit( - paddingTopMobile, mobilePaddingUnit ),
-			'margin-left': generateCSSUnit( - paddingLeftMobile, mobilePaddingUnit ),
-			'margin-right': generateCSSUnit( - paddingRightMobile, mobilePaddingUnit ),
-		}
-		tabletSelectors['.wp-block-uagb-post-grid .uagb-post__inner-wrap  > .uagb-post__image:first-child'] = {
-			'margin-top': generateCSSUnit( - paddingTopTablet, tabletPaddingUnit ),
-			'margin-left': generateCSSUnit( - paddingLeftTablet, tabletPaddingUnit ),
-			'margin-right': generateCSSUnit( - paddingRightTablet, tabletPaddingUnit ),
-		}
+	if ( imgPosition !== 'background' ) {
+		selectors[ '.wp-block-uagb-post-grid .uagb-post__inner-wrap  > .uagb-post__image:first-child' ] = {
+			'margin-top': generateCSSUnit( -paddingTop, contentPaddingUnit ),
+			'margin-left': generateCSSUnit( -paddingLeft, contentPaddingUnit ),
+			'margin-right': generateCSSUnit( -paddingRight, contentPaddingUnit ),
+		};
+		mobileSelectors[ '.wp-block-uagb-post-grid .uagb-post__inner-wrap  > .uagb-post__image:first-child' ] = {
+			'margin-top': generateCSSUnit( -paddingTopMobile, mobilePaddingUnit ),
+			'margin-left': generateCSSUnit( -paddingLeftMobile, mobilePaddingUnit ),
+			'margin-right': generateCSSUnit( -paddingRightMobile, mobilePaddingUnit ),
+		};
+		tabletSelectors[ '.wp-block-uagb-post-grid .uagb-post__inner-wrap  > .uagb-post__image:first-child' ] = {
+			'margin-top': generateCSSUnit( -paddingTopTablet, tabletPaddingUnit ),
+			'margin-left': generateCSSUnit( -paddingLeftTablet, tabletPaddingUnit ),
+			'margin-right': generateCSSUnit( -paddingRightTablet, tabletPaddingUnit ),
+		};
 	}
 
-	tabletSelectors[ ' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta:not(.is-style-outline) .uagb-text-link.wp-block-button__link:not(.has-background) ' ] = borderCSSTablet;
-	mobileSelectors[ ' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta:not(.is-style-outline) .uagb-text-link.wp-block-button__link:not(.has-background) ' ] = borderCSSMobile;
+	tabletSelectors[
+		' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta:not(.is-style-outline) .uagb-text-link.wp-block-button__link:not(.has-background) '
+	] = borderCSSTablet;
+	mobileSelectors[
+		' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta:not(.is-style-outline) .uagb-text-link.wp-block-button__link:not(.has-background) '
+	] = borderCSSMobile;
 
 	// post carousal margin top for dots
-	selectors[ ' .slick-dots'] = {
-		'margin-top' : generateCSSUnit( dotsMarginTopFallback , dotsMarginTopUnit ) + '!important'
-	}
-	tabletSelectors[ ' .slick-dots'] = {
-		'margin-top' : generateCSSUnit( dotsMarginTopTabletFallback , dotsMarginTopUnit ) + '!important'
-	}
-	mobileSelectors[ ' .slick-dots'] = {
-		'margin-top' : generateCSSUnit( dotsMarginTopMobileFallback , dotsMarginTopUnit ) + '!important'
-	}
+	selectors[ ' .slick-dots' ] = {
+		'margin-top': generateCSSUnit( dotsMarginTopFallback, dotsMarginTopUnit ) + '!important',
+	};
+	tabletSelectors[ ' .slick-dots' ] = {
+		'margin-top': generateCSSUnit( dotsMarginTopTabletFallback, dotsMarginTopUnit ) + '!important',
+	};
+	mobileSelectors[ ' .slick-dots' ] = {
+		'margin-top': generateCSSUnit( dotsMarginTopMobileFallback, dotsMarginTopUnit ) + '!important',
+	};
 
-	if ( 'post-grid' === blockName ){
-		selectors[ '.uagb-equal_height_inline-read-more-buttons-in-editor .uagb-post__inner-wrap .uagb-post__text:last-child' ] = {
+	if ( 'post-grid' === blockName ) {
+		selectors[
+			'.uagb-equal_height_inline-read-more-buttons-in-editor .uagb-post__inner-wrap .uagb-post__text:last-child'
+		] = {
 			'left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
 			'right': generateCSSUnit( paddingRight, contentPaddingUnit ),
-		}
-		tabletSelectors[ '.uagb-equal_height_inline-read-more-buttons-in-editor .uagb-post__inner-wrap .uagb-post__text:last-child' ] = {
+		};
+		tabletSelectors[
+			'.uagb-equal_height_inline-read-more-buttons-in-editor .uagb-post__inner-wrap .uagb-post__text:last-child'
+		] = {
 			'left': generateCSSUnit( paddingLeftTablet, tabletPaddingUnit ),
 			'right': generateCSSUnit( paddingRightTablet, tabletPaddingUnit ),
-		}
-		mobileSelectors[ '.uagb-equal_height_inline-read-more-buttons-in-editor .uagb-post__inner-wrap .uagb-post__text:last-child' ] = {
+		};
+		mobileSelectors[
+			'.uagb-equal_height_inline-read-more-buttons-in-editor .uagb-post__inner-wrap .uagb-post__text:last-child'
+		] = {
 			'left': generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
 			'right': generateCSSUnit( paddingRightMobile, mobilePaddingUnit ),
-		}
+		};
 	}
 
 	let stylingCss = '';
 
-	stylingCss = generateCSS(
-		selectors,
-		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`
-	);
+	stylingCss = generateCSS( selectors, `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }` );
 
-	stylingCss += generateCSS(
-		tabletSelectors,
-		`.uagb-block-${ props.clientId.substr(
-			0,
-			8
-		) }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
+	stylingCss += generateCSS( tabletSelectors, `.uagb-block-${ clientId.substr( 0, 8 ) }`, true, 'tablet' );
 
-	stylingCss += generateCSS(
-		mobileSelectors,
-		`.uagb-block-${ props.clientId.substr(
-			0,
-			8
-		) }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	stylingCss += generateCSS( mobileSelectors, `.uagb-block-${ clientId.substr( 0, 8 ) }`, true, 'mobile' );
 
 	return stylingCss;
 }

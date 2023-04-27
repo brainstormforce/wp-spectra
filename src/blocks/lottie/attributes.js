@@ -1,100 +1,101 @@
-const attributes = {  // eslint-disable-line no-unused-vars
-	block_id         : {
-		type : 'string',
+const attributes = {
+	// eslint-disable-line no-unused-vars
+	block_id: {
+		type: 'string',
 	},
 	lottieSource: {
 		type: 'string',
 		default: 'library',
 	},
-	align            : {
-		type    : 'string',
-		default : 'center',
+	align: {
+		type: 'string',
+		default: 'center',
 		UAGCopyPaste: {
-			styleType: 'overall-alignment'
+			styleType: 'overall-alignment',
 		},
 	},
-	lottieURl        : {
-		type    : 'string',
-		default : '',
+	lottieURl: {
+		type: 'string',
+		default: '',
 	},
-	jsonLottie       : {
-		type : 'object',
+	jsonLottie: {
+		type: 'object',
 	},
 	// Controls.
-	loop             : {
-		type    : 'boolean',
-		default : true,
+	loop: {
+		type: 'boolean',
+		default: true,
 	},
-	speed            : {
-		type    : 'number',
-		default : 1,
+	speed: {
+		type: 'number',
+		default: 1,
 	},
-	reverse          : {
-		type    : 'boolean',
-		default : false,
+	reverse: {
+		type: 'boolean',
+		default: false,
 	},
-	playOnHover      : {
-		type    : 'boolean',
-		default : false,
+	playOnHover: {
+		type: 'boolean',
+		default: false,
 	},
-	playOn           : {
-		type    : 'string',
-		default : 'none',
+	playOn: {
+		type: 'string',
+		default: 'none',
 	},
 	// Style.
-	height           : {
-		type : 'number',
+	height: {
+		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'lottie-height'
+			styleType: 'lottie-height',
 		},
 	},
-	heightTablet     : {
-		type : 'number',
+	heightTablet: {
+		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'lottie-height-tablet'
+			styleType: 'lottie-height-tablet',
 		},
 	},
-	heightMob        : {
-		type : 'number',
+	heightMob: {
+		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'lottie-height-mobile'
+			styleType: 'lottie-height-mobile',
 		},
 	},
-	width            : {
-		type : 'number',
+	width: {
+		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'lottie-width'
+			styleType: 'lottie-width',
 		},
 	},
-	widthTablet      : {
-		type : 'number',
+	widthTablet: {
+		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'lottie-width-tablet'
+			styleType: 'lottie-width-tablet',
 		},
 	},
-	widthMob         : {
-		type : 'number',
+	widthMob: {
+		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'lottie-width-mobile'
+			styleType: 'lottie-width-mobile',
 		},
 	},
-	backgroundColor  : {
-		type    : 'string',
-		default : '',
+	backgroundColor: {
+		type: 'string',
+		default: '',
 		UAGCopyPaste: {
-			styleType: 'lottie-bg-color'
+			styleType: 'lottie-bg-color',
 		},
 	},
-	backgroundHColor : {
-		type    : 'string',
-		default : '',
+	backgroundHColor: {
+		type: 'string',
+		default: '',
 		UAGCopyPaste: {
-			styleType: 'lottie-bg-hover-color'
+			styleType: 'lottie-bg-hover-color',
 		},
 	},
 	isPreview: {
 		type: 'boolean',
 		default: false,
 	},
-}
+};
 export default attributes;

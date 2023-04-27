@@ -1,7 +1,6 @@
 @import "../../styles/variables";
 
 .uag-bg-select-control {
-
 	.uag-background-color,
 	.uag-background-image,
 	.uag-background-gradient,
@@ -30,7 +29,6 @@
 	}
 
 	.uag-background-image > .components-base-control > .uagb-responsive-select-control {
-
 		.uagb-size-type-field-tabs {
 			display: block;
 
@@ -41,9 +39,7 @@
 	}
 
 	.uag-responsive-image-select.uagb-responsive-select-control {
-
 		.uagb-size-type-field-tabs {
-
 			.uagb-control__header {
 				margin-bottom: 10px;
 			}
@@ -61,7 +57,6 @@
 	}
 
 	.uag-background-image-size {
-
 		.uagb-responsive-control-inner > .components-base-control {
 			display: block;
 			margin-top: $spectra-control-vertical-gap;
@@ -73,7 +68,6 @@
 	}
 
 	.uag-background-image-position {
-
 		.uagb-size-type-field-tabs {
 			flex-direction: column;
 			align-items: flex-start;

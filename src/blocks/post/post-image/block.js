@@ -19,7 +19,7 @@ registerBlockType( 'uagb/post-image', {
 	description: __( 'Customize your post image.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.post_grid,
 	parent: [ 'uagb/post-grid', 'uagb/post-masonry', 'uagb/post-carousel' ],
-	keywords: [ __( 'post' ), __( 'image' ), __( 'uag' ) ],
+	keywords: [ __( 'post', 'ultimate-addons-for-gutenberg' ), __( 'image', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	PostImage,
 	save,
 } );

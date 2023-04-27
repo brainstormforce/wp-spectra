@@ -15,9 +15,9 @@ export default function save( props ) {
 			className={ classnames(
 				className,
 				`uagb-block-${ block_id }`,
-				`uagb-rm__desk-column-${columns}`,
-				`uagb-rm__tablet-column-${tcolumns}`,
-				`uagb-rm__mobile-column-${mcolumns}`,
+				`uagb-rm__desk-column-${ columns }`,
+				`uagb-rm__tablet-column-${ tcolumns }`,
+				`uagb-rm__mobile-column-${ mcolumns }`
 			) }
 		>
 			<InnerBlocks.Content />

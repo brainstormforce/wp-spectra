@@ -23,14 +23,10 @@ registerBlockType( 'uagb/forms-phone', {
 	attributes,
 	category: uagb_blocks_info.category,
 	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="form-phone" isChildren={ true } />
-		) : (
-			<Edit { ...props } />
-		),
+		props.attributes.isPreview ? <PreviewImage image="form-phone" isChildren={ true } /> : <Edit { ...props } />,
 	supports: {
 		anchor: true,
 	},
 	save,
-	deprecated
+	deprecated,
 } );

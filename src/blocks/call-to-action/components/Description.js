@@ -3,24 +3,16 @@ import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 
 const Description = ( props ) => {
-	const {
-		attributes,
-		setAttributes,
-		mergeBlocks,
-		insertBlocksAfter,
-		onReplace,
-	} = props;
+	const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace } = props;
 
 	if ( setAttributes !== 'not_set' ) {
 		return (
 			<RichText
 				tagName="p"
 				value={ attributes.description }
-				placeholder={ __( 'Write a Description' ) }
+				placeholder={ __( 'Write a Description', 'ultimate-addons-for-gutenberg' ) }
 				className="uagb-cta__desc"
-				onChange={ ( value ) =>
-					setAttributes( { description: value } )
-				}
+				onChange={ ( value ) => setAttributes( { description: value } ) }
 				onMerge={ mergeBlocks }
 				onSplit={
 					insertBlocksAfter
@@ -39,13 +31,7 @@ const Description = ( props ) => {
 			/>
 		);
 	}
-	return (
-		<RichText.Content
-			tagName="p"
-			value={ attributes.description }
-			className="uagb-cta__desc"
-		/>
-	);
+	return <RichText.Content tagName="p" value={ attributes.description } className="uagb-cta__desc" />;
 };
 
 export default Description;

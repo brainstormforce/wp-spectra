@@ -42,6 +42,8 @@ return array_merge(
 		'readyToRender'                      => false,
 		'tileSize'                           => 0,
 		'focusList'                          => array(),
+		'focusListObject'                    => array(),
+
 		// Gallery Settings.
 		'mediaGallery'                       => array(),
 		'mediaIDs'                           => array(),

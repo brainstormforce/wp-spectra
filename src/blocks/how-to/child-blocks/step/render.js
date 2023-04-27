@@ -38,11 +38,7 @@ const Render = ( props ) => {
 	} = attributes;
 
 	let urlCheck = '';
-	if (
-		typeof image !== 'undefined' &&
-		image !== null &&
-		image !== ''
-	) {
+	if ( typeof image !== 'undefined' && image !== null && image !== '' ) {
 		urlCheck = image.url;
 	}
 
@@ -50,10 +46,7 @@ const Render = ( props ) => {
 	if ( urlCheck !== '' ) {
 		const size = image.sizes;
 
-		if (
-			typeof size !== 'undefined' &&
-			typeof size[ imageSize ] !== 'undefined'
-		) {
+		if ( typeof size !== 'undefined' && typeof size[ imageSize ] !== 'undefined' ) {
 			imageUrl = size[ imageSize ].url;
 		} else {
 			imageUrl = urlCheck;
@@ -65,15 +58,16 @@ const Render = ( props ) => {
 	}
 
 	useEffect( () => {
-		getImageHeightWidth( imageUrl, setAttributes )
-	}, [ imageUrl ] )
+		getImageHeightWidth( imageUrl, setAttributes );
+	}, [ imageUrl ] );
 
 	const imageMarkup = (
 		<img
 			className="uagb-how-to-step-image"
 			src={ imageUrl }
 			alt={ image.alt }
-			width={imgTagWidth} height={imgTagHeight}
+			width={ imgTagWidth }
+			height={ imgTagHeight }
 			loading="lazy"
 		/>
 	);
@@ -82,10 +76,7 @@ const Render = ( props ) => {
 			<RichText
 				tagName="div"
 				className="uagb-how-to-step-name"
-				placeholder={ __(
-					'Name',
-					'ultimate-addons-for-gutenberg'
-				) }
+				placeholder={ __( 'Name', 'ultimate-addons-for-gutenberg' ) }
 				value={ name }
 				onChange={ ( value ) => setAttributes( { name: value } ) }
 				multiline={ false }
@@ -93,11 +84,9 @@ const Render = ( props ) => {
 			<RichText
 				tagName="p"
 				value={ description }
-				placeholder={ __( 'Write a Description' ) }
+				placeholder={ __( 'Write a Description', 'ultimate-addons-for-gutenberg' ) }
 				className="uagb-how-to-step-description"
-				onChange={ ( value ) =>
-					setAttributes( { description: value } )
-				}
+				onChange={ ( value ) => setAttributes( { description: value } ) }
 				onMerge={ mergeBlocks }
 				onSplit={
 					insertBlocksAfter
@@ -109,31 +98,22 @@ const Render = ( props ) => {
 										description: after,
 									} ),
 								] );
-						}
+						  }
 						: undefined
 				}
 				onRemove={ () => onReplace( [] ) }
 			/>
-			{'text' === urlType && (
+			{ 'text' === urlType && (
 				<>
-					{ '' !== url?
-						<a
-							href={url}
-							target={target}
-							className="uagb-step-link"
-							rel="noopener noreferrer"
-						>
-							<span className="uagb-step-link-text">
-							{urlText}
-							</span>
+					{ '' !== url ? (
+						<a href={ url } target={ target } className="uagb-step-link" rel="noopener noreferrer">
+							<span className="uagb-step-link-text">{ urlText }</span>
 						</a>
-						:
-						<span className="uagb-step-link-text">
-							{urlText}
-						</span>
-					}
+					) : (
+						<span className="uagb-step-link-text">{ urlText }</span>
+					) }
 				</>
-			)}
+			) }
 		</div>
 	);
 	return (
@@ -145,30 +125,28 @@ const Render = ( props ) => {
 			) }
 		>
 			{ ( 'all' === urlType || 'none' === urlType ) && (
-					<>
-						{ ( '' !== url && 'all' === urlType ) &&
-							<a // eslint-disable-line jsx-a11y/anchor-has-content, jsx-a11y/anchor-is-valid
+				<>
+					{ '' !== url && 'all' === urlType && (
+						<a // eslint-disable-line jsx-a11y/anchor-has-content, jsx-a11y/anchor-is-valid
 							className="uagb-step-link"
-							aria-label={'Step Link'}
+							aria-label={ 'Step Link' }
 							rel="noopener noreferrer"
-							target={target}
-							></a>
-						}
-						<div className={`uagb-step-image-content-wrap uag-image-position-${imgPosition}`}>
-							{ imageUrl && imageMarkup }
-
-							{ contentMarkup }
-						</div>
-					</>
-				)
-			}
-			{'text' === urlType && (
-					<div className={`uagb-step-image-content-wrap uag-image-position-${imgPosition}`}>
+							target={ target }
+						></a>
+					) }
+					<div className={ `uagb-step-image-content-wrap uag-image-position-${ imgPosition }` }>
 						{ imageUrl && imageMarkup }
+
 						{ contentMarkup }
 					</div>
-				)
-			}
+				</>
+			) }
+			{ 'text' === urlType && (
+				<div className={ `uagb-step-image-content-wrap uag-image-position-${ imgPosition }` }>
+					{ imageUrl && imageMarkup }
+					{ contentMarkup }
+				</div>
+			) }
 		</div>
 	);
 };

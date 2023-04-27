@@ -41,47 +41,22 @@ export default function save( props ) {
 				`uagb-forms__${ buttonSize }-btn`
 			) }
 		>
-			<form
-				className="uagb-forms-main-form"
-				method="post"
-				autoComplete="on"
-				name={ `uagb-form-${ block_id }` }
-			>
+			<form className="uagb-forms-main-form" method="post" autoComplete="on" name={ `uagb-form-${ block_id }` }>
 				<InnerBlocks.Content />
 				<div className="uagb-forms-form-hidden-data">
 					{ reCaptchaEnable && (
-						<input
-							type="hidden"
-							id="g-recaptcha-response"
-							className="uagb-forms-recaptcha"
-						/>
+						<input type="hidden" id="g-recaptcha-response" className="uagb-forms-recaptcha" />
 					) }
-					<input
-						type="hidden"
-						className="uagb_forms_form_label"
-						value={ formLabel }
-					/>
-					<input
-						type="hidden"
-						className="uagb_forms_form_id"
-						value={ `uagb-form-${ block_id }` }
-					/>
+					<input type="hidden" className="uagb_forms_form_label" value={ formLabel } />
+					<input type="hidden" className="uagb_forms_form_id" value={ `uagb-form-${ block_id }` } />
 				</div>
-				{ reCaptchaEnable &&
-					'v2' === reCaptchaType && (
-						<>
-							<div
-								className="g-recaptcha uagb-forms-field-set"
-								data-sitekey= ''
-							></div>
-						</>
-					) }
-					<div
-						className={ `uagb-form-reacaptcha-error-${ block_id }` }
-					></div>
-				<div className="uagb-forms-main-submit-button-wrap wp-block-button">
-					{ renderButtonHtml() }
-				</div>
+				{ reCaptchaEnable && 'v2' === reCaptchaType && (
+					<>
+						<div className="g-recaptcha uagb-forms-field-set" data-sitekey=""></div>
+					</>
+				) }
+				<div className={ `uagb-form-reacaptcha-error-${ block_id }` }></div>
+				<div className="uagb-forms-main-submit-button-wrap wp-block-button">{ renderButtonHtml() }</div>
 			</form>
 			{ 'message' === confirmationType && (
 				<>

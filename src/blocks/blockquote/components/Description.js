@@ -8,10 +8,7 @@ const Description = ( { attributes, setAttributes, props } ) => {
 			<RichText
 				tagName="div"
 				value={ attributes.descriptionText }
-				placeholder={ __(
-					'Write a Quote',
-					'ultimate-addons-for-gutenberg'
-				) }
+				placeholder={ __( 'Write a Quote', 'ultimate-addons-for-gutenberg' ) }
 				className="uagb-blockquote__content"
 				onChange={ ( value ) =>
 					setAttributes( {
@@ -39,13 +36,7 @@ const Description = ( { attributes, setAttributes, props } ) => {
 		);
 	}
 
-	return (
-		<RichText.Content
-			tagName="div"
-			value={ attributes.descriptionText }
-			className="uagb-blockquote__content"
-		/>
-	);
+	return <RichText.Content tagName="div" value={ attributes.descriptionText } className="uagb-blockquote__content" />;
 };
 
 export default Description;

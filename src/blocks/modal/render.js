@@ -44,49 +44,38 @@ const Render = ( props ) => {
 		defaultTemplate,
 	} = attributes;
 
-    const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 	const isPro = uagb_blocks_info.spectra_pro_status;
-	
+
 	const ALLOWED_BLOCKS = wp.blocks
 		.getBlockTypes()
 		.map( ( block ) => block.name )
-		.filter( ( blockName ) => !excludeBlocks.includes( blockName ) );
+		.filter( ( blockName ) => ! excludeBlocks.includes( blockName ) );
 
-	const TEMPLATE = [ ['core/paragraph', { placeholder: 'Type / to choose a block' } ] ];
-	
-	const enablePopup = ( e ) => {
-		e.preventDefault();
-		if ( ! defaultTemplate ) {
-			replaceInnerBlocks(
-				clientId,
-				createBlocksFromInnerBlocksTemplate( defaultContent )
-			);
-			setAttributes( { defaultTemplate: true } );
-		}
-	}
+	const TEMPLATE = [ [ 'core/paragraph', { placeholder: 'Type / to choose a block' } ] ];
 
 	useEffect( () => {
 		getImageHeightWidth( url, setAttributes );
-	}, [imageSize] );
+	}, [ imageSize ] );
+
+	useEffect( ()=>{
+		if ( ! defaultTemplate ) {
+			replaceInnerBlocks( clientId, createBlocksFromInnerBlocksTemplate( defaultContent ) );
+			setAttributes( { defaultTemplate: true } );
+		}
+	},[] )
 
 	const textHTML = (
 		<RichText
 			tagName="span"
-			placeholder={ __(
-				'Add Your Text Here',
-				'ultimate-addons-for-gutenberg'
-			) }
+			placeholder={ __( 'Add Your Text Here', 'ultimate-addons-for-gutenberg' ) }
 			value={ triggerText }
 			className="uagb-modal-text uagb-modal-trigger"
 			onChange={ ( value ) => setAttributes( { triggerText: value } ) }
 		/>
 	);
 
-	const iconHTML = (
-		<div className='uagb-modal-trigger'>
-			{'' !== icon && renderSVG( icon, setAttributes ) }
-		</div>
-	);
+	const iconHTML = <div className="uagb-modal-trigger">{ '' !== icon && renderSVG( icon, setAttributes ) }</div>;
 
 	const defaultedAlt = iconImage?.alt ? iconImage.alt : '';
 	let imageIconHtml = '';
@@ -97,10 +86,7 @@ const Render = ( props ) => {
 		const size = iconImage.sizes;
 		const imageSizes = imageSize;
 
-		if (
-			typeof size !== 'undefined' &&
-			typeof size[ imageSizes ] !== 'undefined'
-		) {
+		if ( typeof size !== 'undefined' && typeof size[ imageSizes ] !== 'undefined' ) {
 			url = size[ imageSizes ].url;
 		}
 
@@ -108,7 +94,7 @@ const Render = ( props ) => {
 			<img
 				src={ url }
 				alt={ defaultedAlt }
-				className='uagb-modal-trigger'
+				className="uagb-modal-trigger"
 				width={ imgTagWidth }
 				height={ imgTagHeight }
 				loading="lazy"
@@ -121,44 +107,27 @@ const Render = ( props ) => {
 		buttonIconOutput = renderSVG( buttonIcon, setAttributes );
 	}
 
-	const buttonClasses =
-		'uagb-modal-button-link wp-block-button__link uagb-modal-trigger';
-    
+	const buttonClasses = 'uagb-modal-button-link wp-block-button__link uagb-modal-trigger';
+
 	const buttonHTML = (
-		<div
-			className={ classnames(
-				'uagb-spectra-button-wrapper',
-				'wp-block-button'
-			) }
-		>
+		<div className={ classnames( 'uagb-spectra-button-wrapper', 'wp-block-button' ) }>
 			<a // eslint-disable-line jsx-a11y/anchor-is-valid
 				className={ buttonClasses }
-				href={ '#' }
-				onClick={ enablePopup }
-				target='_self'
-				rel='noopener noreferrer'
+				href="#"
+				target="_self"
+				rel="noopener noreferrer"
 			>
-				<span
-					className='uagb-modal-content-wrapper'>
-					{ showBtnIcon &&
-						buttonIconPosition === 'before' &&
-						buttonIconOutput }
+				<span className="uagb-modal-content-wrapper">
+					{ showBtnIcon && buttonIconPosition === 'before' && buttonIconOutput }
 					<RichText
 						tagName="span"
-						placeholder={ __(
-							'Click Here',
-							'ultimate-addons-for-gutenberg'
-						) }
+						placeholder={ __( 'Click Here', 'ultimate-addons-for-gutenberg' ) }
 						value={ buttonText }
-						className='uagb-inline-editing'
-						onChange={ ( value ) =>
-							setAttributes( { buttonText: value } )
-						}
+						className="uagb-inline-editing"
+						onChange={ ( value ) => setAttributes( { buttonText: value } ) }
 						allowedFormats={ [] } // Removed the WP default link/bold/italic from the toolbar for button.
 					/>
-					{showBtnIcon &&
-						buttonIconPosition === 'after' &&
-						buttonIconOutput}
+					{ showBtnIcon && buttonIconPosition === 'after' && buttonIconOutput }
 				</span>
 			</a>
 		</div>
@@ -175,52 +144,37 @@ const Render = ( props ) => {
 				data-escpress={ escPress ? 'enable' : 'disable' }
 				data-overlayclick={ overlayClick ? 'enable' : 'disable' }
 			>
-				<div className='uagb-spectra-editor-wrap'>
-					{'text' === modalTrigger && textHTML}
-					{'icon' === modalTrigger && iconHTML}
-					{'image' === modalTrigger && imageIconHtml}
-					{'button' === modalTrigger && buttonHTML}
+				<div className="uagb-spectra-editor-wrap">
+					{ 'text' === modalTrigger && textHTML }
+					{ 'icon' === modalTrigger && iconHTML }
+					{ 'image' === modalTrigger && imageIconHtml }
+					{ 'button' === modalTrigger && buttonHTML }
 				</div>
 				<div
-					className={ classnames(
-						`${ appearEffect }`,
-						'uagb-modal-popup',
-						`uagb-block-${ block_id }`,
-						{
-							[`uagb-modal-type-${ openModalAs }`]: isPro,
-							[`uagb-modal-position-${ modalPosition }`]: isPro
-						}
-					) }
+					className={ classnames( `${ appearEffect }`, 'uagb-modal-popup', `uagb-block-${ block_id }`, {
+						[ `uagb-modal-type-${ openModalAs }` ]: isPro,
+						[ `uagb-modal-position-${ modalPosition }` ]: isPro && 'popup' === openModalAs,
+					} ) }
 				>
 					{ isPro &&
-						( 'window-top-left' === closeIconPosition ||
-							'window-top-right' === closeIconPosition ) && (
-							<div
-								className={ classnames(
-									'uagb-modal-popup-close',
-									closeIconPosition
-								) }
-							>
+						( 'window-top-left' === closeIconPosition || 'window-top-right' === closeIconPosition ) && (
+							<div className={ classnames( 'uagb-modal-popup-close', closeIconPosition ) }>
 								{ '' !== closeIcon && renderSVG( closeIcon ) }
 							</div>
 						) }
-					<div className='uagb-modal-popup-wrap'>
-						<div className='uagb-modal-popup-content'>
+					<div className="uagb-modal-popup-wrap">
+						<div className="uagb-modal-popup-content">
 							<InnerBlocks
 								template={ TEMPLATE }
 								allowedBlocks={ ALLOWED_BLOCKS }
-								renderAppender={
-									InnerBlocks.DefaultBlockAppender
-								}
+								renderAppender={ InnerBlocks.DefaultBlockAppender }
 							/>
 						</div>
-						{ ( 'popup-top-left' === closeIconPosition ||
-							'popup-top-right' === closeIconPosition ) && (
-							<div className='uagb-modal-popup-close'>
-								{'' !== closeIcon &&
-									renderSVG( closeIcon, setAttributes ) }
+						{ ( 'popup-top-left' === closeIconPosition || 'popup-top-right' === closeIconPosition ) && (
+							<div className="uagb-modal-popup-close">
+								{ '' !== closeIcon && renderSVG( closeIcon, setAttributes ) }
 							</div>
-						)}
+						) }
 					</div>
 				</div>
 			</div>

@@ -26,12 +26,8 @@ const Render = ( props ) => {
 
 	const addOption = () => {
 		const newOption = {
-			optiontitle:
-				__( 'Option Name ', 'ultimate-addons-for-gutenberg' ) +
-				`${ options.length + 1 }`,
-			optionvalue:
-				__( 'Option Value ', 'ultimate-addons-for-gutenberg' ) +
-				`${ options.length + 1 }`,
+			optiontitle: __( 'Option Name ', 'ultimate-addons-for-gutenberg' ) + `${ options.length + 1 }`,
+			optionvalue: __( 'Option Value ', 'ultimate-addons-for-gutenberg' ) + `${ options.length + 1 }`,
 		};
 		options[ options.length ] = newOption;
 		const addnewOptions = options.map( ( item ) => item );
@@ -52,8 +48,7 @@ const Render = ( props ) => {
 				/>
 				<label // eslint-disable-line jsx-a11y/label-has-associated-control
 					htmlFor={ option.optiontitle }
-				>
-				</label>
+				></label>
 				<input
 					className="uagb-inner-input-view"
 					aria-label={ option.optiontitle }
@@ -72,9 +67,7 @@ const Render = ( props ) => {
 				<input
 					className="uagb-inner-input-view"
 					aria-label={ option.optionvalue }
-					onChange={ ( e ) =>
-						changeOption( { optionvalue: e.target.value }, index )
-					}
+					onChange={ ( e ) => changeOption( { optionvalue: e.target.value }, index ) }
 					type="text"
 					value={ option.optionvalue }
 				/>
@@ -134,29 +127,18 @@ const Render = ( props ) => {
 		setAttributes( { deleteOptions } );
 	};
 
-	const isRequired = radioRequired
-		? __( 'required', 'ultimate-addons-for-gutenberg' )
-		: '';
+	const isRequired = radioRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
 
 	return (
 		<>
 			<div
-				className={ classnames(
-					'uagb-forms-radio-wrap',
-					'uagb-forms-field-set',
-					`uagb-block-${ block_id }`
-				) }
+				className={ classnames( 'uagb-forms-radio-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }
 			>
 				<RichText
 					tagName="div"
-					placeholder={ __(
-						'Radio Title',
-						'ultimate-addons-for-gutenberg'
-					) }
+					placeholder={ __( 'Radio Title', 'ultimate-addons-for-gutenberg' ) }
 					value={ radioName }
-					onChange={ ( value ) =>
-						setAttributes( { radioName: value } )
-					}
+					onChange={ ( value ) => setAttributes( { radioName: value } ) }
 					className={ `uagb-forms-radio-label ${ isRequired } uagb-forms-input-label` }
 					multiline={ false }
 					id={ block_id }
@@ -167,10 +149,7 @@ const Render = ( props ) => {
 							{ editView }
 							<div>
 								<Button isSecondary onClick={ addOption }>
-									{ __(
-										' + Add Option ',
-										'ultimate-addons-for-gutenberg'
-									) }
+									{ __( ' + Add Option ', 'ultimate-addons-for-gutenberg' ) }
 								</Button>
 							</div>
 						</div>

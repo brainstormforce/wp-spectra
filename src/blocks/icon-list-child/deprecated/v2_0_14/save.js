@@ -9,7 +9,7 @@ import renderSVG from '@Controls/renderIcon';
 import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
-	const { attributes , className } = props;
+	const { attributes, className } = props;
 
 	const {
 		label,
@@ -21,25 +21,19 @@ export default function save( props ) {
 		target,
 		disableLink,
 		hideLabel,
-		fromParentIcon
+		fromParentIcon,
 	} = attributes;
 
-	const defaultedAlt = ( image && image?.alt ) ? image?.alt : '';
+	const defaultedAlt = image && image?.alt ? image?.alt : '';
 
 	let imageIconHtml = '';
 
 	if ( image_icon === 'icon' ) {
-		if( icon || fromParentIcon ){
+		if ( icon || fromParentIcon ) {
 			imageIconHtml = icon ? renderSVG( icon ) : renderSVG( fromParentIcon );
 		}
 	} else if ( image && image.url && image_icon !== 'none' ) {
-		imageIconHtml = (
-			<img
-				className="uagb-icon-list__source-image"
-				src={ image.url }
-				alt={ defaultedAlt }
-			/>
-		);
+		imageIconHtml = <img className="uagb-icon-list__source-image" src={ image.url } alt={ defaultedAlt } />;
 	}
 
 	const targetVal = target ? '_blank' : '_self';
@@ -51,35 +45,20 @@ export default function save( props ) {
 	}
 
 	return (
-		<div
-			className={ classnames(
-				className,
-				`uagb-block-${ block_id }`
-			) }
-		>
+		<div className={ classnames( className, `uagb-block-${ block_id }` ) }>
 			{ disableLinks && (
 				<a
 					target={ targetVal }
-					aria-label={ label.replace( /(<([^>]+)>)/ig, '' ) }
+					aria-label={ label.replace( /(<([^>]+)>)/gi, '' ) }
 					rel="noopener noreferrer"
 					href={ linkUrl }
 				>
 					{ ' ' }
 				</a>
 			) }
-			{
-				imageIconHtml && (
-					<span className="uagb-icon-list__source-wrap">
-						{ imageIconHtml }
-					</span>
-				)
-			}
+			{ imageIconHtml && <span className="uagb-icon-list__source-wrap">{ imageIconHtml }</span> }
 			{ ! hideLabel && '' !== label && (
-				<RichText.Content
-					tagName="span"
-					value={ label }
-					className="uagb-icon-list__label"
-				/>
+				<RichText.Content tagName="span" value={ label } className="uagb-icon-list__label" />
 			) }
 		</div>
 	);

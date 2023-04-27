@@ -30,7 +30,7 @@ const Render = ( props ) => {
 		placeholder = __( '123-45-678', 'ultimate-addons-for-gutenberg' );
 	} else if ( pattern === '[0-9]{3}-?[0-9]{3}-?[0-9]{4}' ) {
 		placeholder = __( '123-456-7890', 'ultimate-addons-for-gutenberg' );
-	} else if ( pattern === '[0-9]{3}\s?[0-9]{3}\s?[0-9]{4}' ) {
+	} else if ( pattern === '[0-9]{3}s?[0-9]{3}s?[0-9]{4}' ) {
 		placeholder = __( '123 456 7890', 'ultimate-addons-for-gutenberg' );
 	}
 
@@ -59,40 +59,30 @@ const Render = ( props ) => {
 	}
 	const contryCode = [];
 
-	countryOptions.map( ( o, index ) => ( // eslint-disable-line no-unused-vars
-		contryCode.push( { value:  o.props.value, label:  o.props.children } )
-	) )
+	countryOptions.map( (
+		o,
+		index // eslint-disable-line no-unused-vars
+	) => contryCode.push( { value: o.props.value, label: o.props.children } ) );
 
-	const isRequired = phoneRequired
-		? __( 'required', 'ultimate-addons-for-gutenberg' )
-		: '';
+	const isRequired = phoneRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
 
 	return (
 		<>
 			<div
-				className={ classnames(
-					'uagb-forms-phone-wrap',
-					'uagb-forms-field-set',
-					`uagb-block-${ block_id }`
-				) }
+				className={ classnames( 'uagb-forms-phone-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }
 			>
 				<RichText
 					tagName="div"
-					placeholder={ __(
-						'Phone Name',
-						'ultimate-addons-for-gutenberg'
-					) }
+					placeholder={ __( 'Phone Name', 'ultimate-addons-for-gutenberg' ) }
 					value={ phoneName }
-					onChange={ ( value ) =>
-						setAttributes( { phoneName: value } )
-					}
+					onChange={ ( value ) => setAttributes( { phoneName: value } ) }
 					className={ `uagb-forms-phone-label ${ isRequired } uagb-forms-input-label` }
 					multiline={ false }
 					id={ block_id }
 				/>
 				<div className="uagb-forms-phone-flex">
 					<SelectControl
-						className= { 'uagb-forms-input uagb-form-phone-country uagb-form-phone-country-editor' }
+						className={ 'uagb-forms-input uagb-form-phone-country uagb-form-phone-country-editor' }
 						options={ contryCode }
 						value={ selectPhoneCode }
 						onChange={ ( value ) =>

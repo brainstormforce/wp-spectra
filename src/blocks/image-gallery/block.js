@@ -16,10 +16,7 @@ imageGalleryCommonData = applyFilters( 'uagb/image-gallery', addCommonDataToSpec
 registerBlockType( 'uagb/image-gallery', {
 	...imageGalleryCommonData,
 	title: __( 'Image Gallery', 'ultimate-addons-for-gutenberg' ),
-	description: __(
-		'Create a highly customizable image gallery',
-		'ultimate-addons-for-gutenberg'
-	),
+	description: __( 'Create a highly customizable image gallery', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.image_gallery,
 	keywords: [
 		__( 'image', 'ultimate-addons-for-gutenberg' ),
@@ -37,13 +34,8 @@ registerBlockType( 'uagb/image-gallery', {
 		anchor: true,
 	},
 	attributes,
-category: uagb_blocks_info.category,
-	edit: ( props ) =>
-			props.attributes.isPreview ? (
-				<PreviewImage image="image-gallery" />
-			) : (
-				<Edit { ...props } />
-			),
+	category: uagb_blocks_info.category,
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="image-gallery" /> : <Edit { ...props } /> ),
 	save() {
 		return null;
 	},

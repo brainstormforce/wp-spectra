@@ -18,7 +18,7 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-	const { attributes, setAttributes , className } = props;
+	const { attributes, setAttributes, className } = props;
 	const {
 		label,
 		image_icon,
@@ -36,25 +36,25 @@ const Render = ( props ) => {
 
 	const deviceType = useDeviceType();
 
-	const defaultedAlt = ( image && image?.alt ) ? image?.alt : '';
+	const defaultedAlt = image && image?.alt ? image?.alt : '';
 
 	let imageIconHtml = '';
 
 	useEffect( () => {
-		if( image && image.url && image_icon !== 'none' ){
-			getImageHeightWidth( image?.url, setAttributes, { type: 'width', value: imageSizeChild} )
+		if ( image && image.url && image_icon !== 'none' ) {
+			getImageHeightWidth( image?.url, setAttributes, { type: 'width', value: imageSizeChild } );
 		}
-	}, [ image, imageSizeChild ] )
+	}, [ image, imageSizeChild ] );
 
 	if ( image_icon === 'icon' ) {
-		if( icon || fromParentIcon ){
+		if ( icon || fromParentIcon ) {
 			imageIconHtml = icon ? renderSVG( icon, setAttributes ) : renderSVG( fromParentIcon, setAttributes );
 		}
 	} else if ( image && image.url && image_icon !== 'none' ) {
 		imageIconHtml = (
 			<img
 				className="uagb-icon-list__source-image"
-				alt= { defaultedAlt }
+				alt={ defaultedAlt }
 				src={ image.url }
 				width={ imageSizeChild }
 				height={ imgTagHeight }
@@ -71,44 +71,29 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				`uagb-block-${ block_id }`,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 			) }
 		>
 			{ disableLink && (
 				<a
 					target={ targetVal }
 					rel="noopener noreferrer"
-					aria-label={ label.replace( /(<([^>]+)>)/ig, '' ) }
+					aria-label={ label.replace( /(<([^>]+)>)/gi, '' ) }
 					href={ linkUrl }
 				>
 					{ ' ' }
 				</a>
 			) }
-			{
-				imageIconHtml && (
-					<span className="uagb-icon-list__source-wrap">
-						{ imageIconHtml }
-					</span>
-				)
-			}
+			{ imageIconHtml && <span className="uagb-icon-list__source-wrap">{ imageIconHtml }</span> }
 			{ ! hideLabel && (
 				<RichText
 					tagName="span"
-					placeholder={ __(
-						'Label Name',
-						'ultimate-addons-for-gutenberg'
-					) }
+					placeholder={ __( 'Label Name', 'ultimate-addons-for-gutenberg' ) }
 					value={ label }
-					onChange={ ( value ) =>
-						setAttributes( { label: value } )
-					}
+					onChange={ ( value ) => setAttributes( { label: value } ) }
 					className="uagb-icon-list__label"
 					multiline={ false }
-					allowedFormats={ [
-						'core/bold',
-						'core/italic',
-						'core/strikethrough',
-					] }
+					allowedFormats={ [ 'core/bold', 'core/italic', 'core/strikethrough' ] }
 				/>
 			) }
 		</div>

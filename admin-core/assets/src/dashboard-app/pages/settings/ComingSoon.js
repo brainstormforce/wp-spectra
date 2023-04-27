@@ -137,7 +137,7 @@ const ComingSoon = () => {
 			</p>
 			<Select
 				isMulti={ false }
-				placeholder={ __( 'Select the page you want' ) }
+				placeholder={ __( 'Select the page you want', 'ultimate-addons-for-gutenberg' ) }
 				defaultValue = { comingSoonPage }
 				onChange={ ( value ) => updateSelectedPage( value ) }
 				onInputChange={ onChangeHandler }

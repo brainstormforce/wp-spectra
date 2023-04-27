@@ -4,17 +4,18 @@
 
 import styling from './styling';
 import SchemaNotices from './schema-notices';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useMemo } from '@wordpress/element';
 import { useDeviceType } from '@Controls/getPreviewType';
-import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-import WebfontLoader from '@Components/typography/fontloader';
+import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import DynamicFontLoader from './dynamicFontLoader';
+import { compose } from '@wordpress/compose';
+import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const ReviewComponent = ( props ) => {
-
 	const deviceType = useDeviceType();
 	const {
 		isSelected,
@@ -64,39 +65,19 @@ const ReviewComponent = ( props ) => {
 			enableDescription,
 			enableImage,
 			bookAuthorName,
-			headLoadGoogleFonts,
-			headFontFamily,
-			headFontWeight,
-			subHeadLoadGoogleFonts,
-			subHeadFontFamily,
-			subHeadFontWeight,
-			contentLoadGoogleFonts,
-			contentFontFamily,
-			contentFontWeight
 		},
 		setAttributes,
+		name,
+		clientId,
 	} = props;
 
 	const updatePageSchema = () => {
-
-		const newAverage =
-			parts
-				.map( ( i ) => i.value )
-				.reduce( ( total, v ) => total + v ) /
-			parts.length;
+		const newAverage = parts.map( ( i ) => i.value ).reduce( ( total, v ) => total + v ) / parts.length;
 		const newAverageCount = parts.length;
 		let itemtype = '';
 
-		if (
-			[ 'Product', 'SoftwareApplication', 'Book' ].includes(
-				itemType
-			)
-		) {
-			itemtype =
-				itemSubtype !== 'None' &&
-				itemSubtype !== ''
-					? itemSubtype
-					: itemType;
+		if ( [ 'Product', 'SoftwareApplication', 'Book' ].includes( itemType ) ) {
+			itemtype = itemSubtype !== 'None' && itemSubtype !== '' ? itemSubtype : itemType;
 		} else {
 			itemtype = itemType;
 		}
@@ -200,8 +181,7 @@ const ReviewComponent = ( props ) => {
 		}
 
 		if ( itemType === 'Product' ) {
-			jsonData.itemReviewed[ identifierType ] =
-				identifier;
+			jsonData.itemReviewed[ identifierType ] = identifier;
 			jsonData.itemReviewed.offers = {
 				'@type': offerType,
 				'price': offerPrice,
@@ -212,8 +192,8 @@ const ReviewComponent = ( props ) => {
 			};
 		}
 
-		setAttributes( {schema: JSON.stringify( jsonData )} );
-	}
+		setAttributes( { schema: JSON.stringify( jsonData ) } );
+	};
 
 	useEffect( () => {
 		// Assigning block_id in the attribute.
@@ -237,45 +217,37 @@ const ReviewComponent = ( props ) => {
 			}
 		}
 
-		const postSaveButton = document.getElementsByClassName( 'editor-post-publish-button' )?.[0];
+		const postSaveButton = document.getElementsByClassName( 'editor-post-publish-button' )?.[ 0 ];
 
 		if ( postSaveButton ) {
 			postSaveButton.addEventListener( 'click', updatePageSchema );
 		}
-		
 	}, [] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-ratings-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-
 		const ratingLinkWrapper = document.querySelector( '.uagb-rating-link-wrapper' );
-		if( ratingLinkWrapper !== null ){
+		if ( ratingLinkWrapper !== null ) {
 			ratingLinkWrapper.addEventListener( 'click', function ( event ) {
 				event.preventDefault();
 			} );
 		}
 
-		const postSaveButton = document.getElementsByClassName( 'editor-post-publish-button' )?.[0];
+		const postSaveButton = document.getElementsByClassName( 'editor-post-publish-button' )?.[ 0 ];
 
 		if ( postSaveButton ) {
 			postSaveButton.addEventListener( 'click', updatePageSchema );
-			return () => { postSaveButton?.removeEventListener( 'click', updatePageSchema ); }
+			return () => {
+				postSaveButton?.removeEventListener( 'click', updatePageSchema );
+			};
 		}
-		
-
-	}, [ attributes,deviceType ] );
+	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
-	}, [deviceType] );
+	}, [ deviceType ] );
 
 	useEffect( () => {
-
 		responsiveConditionPreview( props );
-
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	if (
@@ -290,56 +262,8 @@ const ReviewComponent = ( props ) => {
 			items: '[{"label":"","value":0}]',
 		} );
 	}
-	
-	let loadContentGoogleFonts;
-	let loadHeadingGoogleFonts;
-	let loadSubHeadingGoogleFonts;
 
-	if ( headLoadGoogleFonts === true ) {
-		const hconfig = {
-			google: {
-				families: [
-					headFontFamily +
-						( headFontWeight ? ':' + headFontWeight : '' ),
-				],
-			},
-		};
-
-		loadHeadingGoogleFonts = (
-			<WebfontLoader config={ hconfig }></WebfontLoader>
-		);
-	}
-
-	if ( subHeadLoadGoogleFonts === true ) {
-		const sconfig = {
-			google: {
-				families: [
-					subHeadFontFamily +
-						( subHeadFontWeight ? ':' + subHeadFontWeight : '' ),
-				],
-			},
-		};
-
-		loadSubHeadingGoogleFonts = (
-			<WebfontLoader config={ sconfig }></WebfontLoader>
-		);
-	}
-
-	if ( contentLoadGoogleFonts === true ) {
-		const cconfig = {
-			google: {
-				families: [
-					contentFontFamily +
-						( contentFontWeight ? ':' + contentFontWeight : '' ),
-				],
-			},
-		};
-
-		loadContentGoogleFonts = (
-			<WebfontLoader config={ cconfig }></WebfontLoader>
-		);
-	}
-
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	return (
 		<>
@@ -374,13 +298,14 @@ const ReviewComponent = ( props ) => {
 				operatingSystem={ operatingSystem }
 				reviewPublisher={ reviewPublisher }
 			/>
+			<DynamicCSSLoader { ...{ blockStyling } } />
+			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } />
-			{ loadHeadingGoogleFonts }
-			{ loadSubHeadingGoogleFonts }
-			{ loadContentGoogleFonts }
 		</>
 	);
 };
 
-export default ReviewComponent;
+export default compose(
+	AddStaticStyles,
+)( ReviewComponent );

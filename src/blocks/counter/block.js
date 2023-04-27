@@ -18,25 +18,14 @@ counterCommonData = applyFilters( 'uagb/counter', addCommonDataToSpectraBlocks( 
 registerBlockType( 'uagb/counter', {
 	...counterCommonData,
 	title: __( 'Counter', 'ultimate-addons-for-gutenberg' ),
-	description: __(
-		'This block allows you to add number counter.',
-		'ultimate-addons-for-gutenberg'
-	),
+	description: __( 'This block allows you to add number counter.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.counter,
-	keywords: [
-		__( 'counter', 'ultimate-addons-for-gutenberg' ),
-		__( 'number', 'ultimate-addons-for-gutenberg' ),
-	],
+	keywords: [ __( 'counter', 'ultimate-addons-for-gutenberg' ), __( 'number', 'ultimate-addons-for-gutenberg' ) ],
 	supports: {
 		anchor: true,
 	},
 	attributes,
-category: uagb_blocks_info.category,
-	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="counter" />
-		) : (
-			<Edit { ...props } />
-		),
+	category: uagb_blocks_info.category,
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="counter" /> : <Edit { ...props } /> ),
 	save,
 } );

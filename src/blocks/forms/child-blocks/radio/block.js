@@ -23,11 +23,7 @@ registerBlockType( 'uagb/forms-radio', {
 	attributes,
 	category: uagb_blocks_info.category,
 	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="form-radio" isChildren={ true } />
-		) : (
-			<Edit { ...props } />
-		),
+		props.attributes.isPreview ? <PreviewImage image="form-radio" isChildren={ true } /> : <Edit { ...props } />,
 	supports: {
 		anchor: true,
 	},

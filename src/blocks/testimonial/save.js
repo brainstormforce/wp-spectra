@@ -20,11 +20,9 @@ export default function save( props ) {
 		test_block,
 		imagePosition,
 		equalHeight,
-		test_item_count
+		test_item_count,
 	} = props.attributes;
-	const equalHeightClass = equalHeight
-	? 'uagb-post__carousel_equal-height'
-	: '';
+	const equalHeightClass = equalHeight ? 'uagb-post__carousel_equal-height' : '';
 	const isGridLayout = test_item_count === columns ? 'uagb-post__carousel_notset' : '';
 	const isGridLayoutTablet = test_item_count === tcolumns ? 'uagb-post__carousel_notset-tablet' : '';
 	const isGridLayoutMobile = test_item_count === mcolumns ? 'uagb-post__carousel_notset-mobile' : '';
@@ -44,28 +42,18 @@ export default function save( props ) {
 				className={ classnames(
 					'is-carousel',
 					`uagb-tm__columns-${ getFallbackNumber( columns, 'columns', 'testimonial' ) }`,
-					'uagb-tm__items',
+					'uagb-tm__items'
 				) }
 			>
 				{ test_block.map( ( test, index ) => (
 					<div
-						className={ classnames(
-							'uagb-testimonial__wrap',
-							...PositionClasses( props.attributes )
-						) }
+						className={ classnames( 'uagb-testimonial__wrap', ...PositionClasses( props.attributes ) ) }
 						key={ 'wrap-' + index }
 					>
-						<div
-							className="uagb-tm__content"
-							key={ 'tm_content-' + index }
-						>
+						<div className="uagb-tm__content" key={ 'tm_content-' + index }>
 							<div className="uagb-tm__overlay"></div>
-							{ ( imagePosition === 'top' ||
-								imagePosition === 'left' ) && (
-								<TestimonialImage
-									attributes={ props.attributes }
-									index_value={ index }
-								/>
+							{ ( imagePosition === 'top' || imagePosition === 'left' ) && (
+								<TestimonialImage attributes={ props.attributes } index_value={ index } />
 							) }
 
 							<div className="uagb-tm__text-wrap">
@@ -82,31 +70,21 @@ export default function save( props ) {
 								}
 								<div className="uagb-tm__meta-inner">
 									{ imagePosition === 'bottom' && (
-										<TestimonialImage
-											attributes={ props.attributes }
-											index_value={ index }
-										/>
+										<TestimonialImage attributes={ props.attributes } index_value={ index } />
 									) }
 
 									{
 										//title_text
 										<>
-											<div
-												className="uagb-testimonial-details"
-												key={ 'tm_wraps-' + index }
-											>
+											<div className="uagb-testimonial-details" key={ 'tm_wraps-' + index }>
 												<AuthorName
-													attributes={
-														props.attributes
-													}
+													attributes={ props.attributes }
 													setAttributes="not_set"
 													props={ props }
 													index_value={ index }
 												/>
 												<Company
-													attributes={
-														props.attributes
-													}
+													attributes={ props.attributes }
 													setAttributes="not_set"
 													props={ props }
 													index_value={ index }
@@ -117,10 +95,7 @@ export default function save( props ) {
 								</div>
 							</div>
 							{ imagePosition === 'right' && (
-								<TestimonialImage
-									attributes={ props.attributes }
-									index_value={ index }
-								/>
+								<TestimonialImage attributes={ props.attributes } index_value={ index } />
 							) }
 						</div>
 					</div>

@@ -116,7 +116,7 @@
 	// max-width: 90%;
 	overflow: unset;
 	box-sizing: border-box;
-	*{
+	* {
 		box-sizing: border-box;
 	}
 
@@ -126,7 +126,9 @@
 		background-color: #fff;
 		overflow: unset;
 		border-radius: $spectra-control-popup-border-radius;
-
+		> div:not( .components-modal__header ) {
+			height: 100%;
+		}
 		.components-modal__header {
 			height: 0;
 
@@ -281,8 +283,8 @@
 	}
 	// Icons container
 	.uagb-ip-icons {
-		.ReactVirtualized__Grid__innerScrollContainer{
-			overflow-x: hidden!important;
+		.ReactVirtualized__Grid__innerScrollContainer {
+			overflow-x: hidden !important;
 			max-width: inherit !important;
 		}
 		&.icon-not-found {

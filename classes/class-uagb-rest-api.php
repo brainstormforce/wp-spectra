@@ -68,28 +68,45 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 			$tab_styling_css  = '';
 			$mob_styling_css  = '';
 			$UAGB_Post_Assets = new UAGB_Post_Assets( get_the_ID() );
-
+			
 			$assets = $UAGB_Post_Assets->get_block_css_and_js( $block );
 
 			$desktop_css = isset( $assets['css']['desktop'] ) ? $assets['css']['desktop'] : '';
-			$tablet_css  = isset( $assets['css']['tablet'] ) ? $assets['css']['tablet'] : '';
-			$mobile_css  = isset( $assets['css']['mobile'] ) ? $assets['css']['mobile'] : '';
 
-			if ( ! empty( $tablet_css ) ) {
+			if ( ! empty( $assets['css']['tablet'] ) ) {
 				$tab_styling_css .= '@media only screen and (max-width: ' . UAGB_TABLET_BREAKPOINT . 'px) {';
-				$tab_styling_css .= $tablet_css;
+				$tab_styling_css .= $assets['css']['tablet'];
 				$tab_styling_css .= '}';
 			}
 
-			if ( ! empty( $mobile_css ) ) {
+			if ( ! empty( $assets['css']['mobile'] ) ) {
 				$mob_styling_css .= '@media only screen and (max-width: ' . UAGB_MOBILE_BREAKPOINT . 'px) {';
-				$mob_styling_css .= $mobile_css;
+				$mob_styling_css .= $assets['css']['mobile'];
 				$mob_styling_css .= '}';
 			}
 
 			$block_css_style = $desktop_css . $tab_styling_css . $mob_styling_css;
 
-			$style = ! empty( $block_css_style ) ? '<style class="uagb-widgets-style-renderer">' . $block_css_style . '</style>' : '';
+			if ( empty( $block_css_style ) ) {
+				return $block;
+			}
+
+			// This line of code creates a new array named $font_family_attrs by searching through the keys of an existing array.
+			$font_family_attrs = preg_grep( '/fontfamily/i', array_keys( $block['attrs'] ) );
+			$link_tag_list     = '';
+			
+			foreach ( $font_family_attrs as $attr ) {
+				if ( ! empty( $block['attrs'][ $attr ] ) ) {
+					// Get the font family value and construct the Google Fonts URL.
+					$gfont_url = 'https://fonts.googleapis.com/css?family=' . urlencode( $block['attrs'][ $attr ] );
+					// Create a link tag for the stylesheet with the constructed URL.
+					$link_tag_list .= '<link rel="stylesheet" href="' . esc_url( $gfont_url ) . '" media="all">';
+				}
+			}
+
+			$style = '<style class="uagb-widgets-style-renderer">' . $block_css_style . '</style>';
+			$style = $style . $link_tag_list;
+
 			array_push( $block['innerContent'], $style );
 			return $block;
 		}

@@ -1,5 +1,4 @@
 .wp-block-uagb-counter {
-
 	.wp-block-uagb-counter__icon,
 	.wp-block-uagb-counter__image-wrap {
 		display: inline-block;
@@ -7,7 +6,6 @@
 	}
 
 	&--number {
-
 		.wp-block-uagb-counter__number {
 			font-size: 52px;
 			color: #3a3a3a;
@@ -16,16 +14,13 @@
 		.wp-block-uagb-counter__icon {
 			margin-bottom: 10px;
 		}
-
 	}
 
 	&--bars {
-
 		display: flex;
 		flex-direction: column;
 
 		.wp-block-uagb-counter-bars-container {
-
 			width: 100%;
 			background-color: #eaeaea;
 
@@ -66,7 +61,6 @@
 	}
 
 	&--circle {
-
 		.wp-block-uagb-counter-circle-container {
 			position: relative;
 			display: inline-block;
@@ -125,7 +119,7 @@
 }
 
 .wp-block-uagb-counter__icon svg {
-	width: 30px;  // To reduce jerk while loading SVG (SVG appears oversized for a moment, without this).
+	width: 30px; // To reduce jerk while loading SVG (SVG appears oversized for a moment, without this).
 }
 
 .wp-block-uagb-counter__title {
@@ -137,7 +131,6 @@
 // These fixes are specific to the Astra theme.
 // Astra theme adds line-height on frontend which interferes with the WYSIWYG experience.
 body[class*="astra"] {
-
 	.wp-block-uagb-counter__title,
 	.wp-block-uagb-counter__number {
 		line-height: normal;

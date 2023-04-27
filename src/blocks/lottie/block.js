@@ -9,6 +9,8 @@ import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
+import attributes from './attributes';
+
 import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 let lottieCommonData = {};
@@ -24,6 +26,7 @@ registerBlockType( 'uagb/lottie', {
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
 	category: uagb_blocks_info.category,
+	attributes,
 	edit: ( props ) =>
 			props.attributes.isPreview ? (
 				<PreviewImage image="lottie" />
@@ -31,5 +34,5 @@ registerBlockType( 'uagb/lottie', {
 				<Edit { ...props } />
 			),
 	// Render via PHP
-	save: ()=> null,
+	save: () => null,
 } );

@@ -23,7 +23,7 @@ CallToActionCommonData = applyFilters( 'uagb/call-to-action', addCommonDataToSpe
 registerBlockType( 'uagb/call-to-action', {
 	...CallToActionCommonData,
 	title: __( 'Call To Action', 'ultimate-addons-for-gutenberg' ),
-	description:__( 'Add a button along with heading and description.', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'Add a button along with heading and description.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.call_to_action,
 	keywords: [
 		__( 'cta', 'ultimate-addons-for-gutenberg' ),
@@ -34,13 +34,8 @@ registerBlockType( 'uagb/call-to-action', {
 		anchor: true,
 	},
 	attributes,
-category: uagb_blocks_info.category,
-	edit: ( props ) =>
-		props.attributes.isPreview ? (
-			<PreviewImage image="call-to-action" />
-		) : (
-			<Edit { ...props } />
-		),
+	category: uagb_blocks_info.category,
+	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="call-to-action" /> : <Edit { ...props } /> ),
 	save,
 	deprecated,
 } );

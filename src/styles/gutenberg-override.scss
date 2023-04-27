@@ -5,14 +5,14 @@
 .components-panel .uagb-inspector-tab,
 .components-panel,
 #customize-theme-controls {
-
 	.uagb-inspector-tab {
-
-		&::-webkit-input-placeholder { /* Edge */
+		&::-webkit-input-placeholder {
+			/* Edge */
 			color: #aaa;
 		}
 
-		&:-ms-input-placeholder { /* Internet Explorer 10-11 */
+		&:-ms-input-placeholder {
+			/* Internet Explorer 10-11 */
 			color: #aaa;
 		}
 
@@ -45,8 +45,7 @@
 			border: 0;
 
 			.block-editor-link-control__settings {
-
-				.components-form-toggle:not(.is-checked) .components-form-toggle__thumb {
+				.components-form-toggle:not( .is-checked ) .components-form-toggle__thumb {
 					background-color: #1e1e1e;
 					border-color: #1e1e1e;
 				}
@@ -58,7 +57,6 @@
 		}
 
 		&__settings {
-
 			.block-editor-link-control__setting {
 				margin-bottom: $spectra-control-vertical-gap;
 			}
@@ -130,7 +128,6 @@
 			}
 
 			&__settings {
-
 				.block-editor-link-control__setting {
 					margin-bottom: $spectra-control-vertical-gap;
 				}
@@ -186,23 +183,7 @@
 		.components-form-toggle {
 			margin-right: 0;
 
-			.components-form-toggle__track {
-				background-color: $spectra-color-plain-background;
-				border-color: $spectra-color-icon;
-			}
-
-			.components-form-toggle__thumb {
-				background-color: $spectra-color-icon;
-				border-color: $spectra-color-icon;
-			}
-
 			&.is-checked {
-
-				.components-form-toggle__track {
-					background-color: $spectra-color-primary;
-					border-color: transparent;
-				}
-
 				.components-form-toggle__thumb {
 					background-color: $spectra-color-plain-background;
 				}
@@ -212,7 +193,6 @@
 
 	// Input Wrapper for Multiple Gutenberg Components.
 	.components-input-control__container {
-
 		// Select Control.
 		// ----------------------------------------------------------------------------------------------------------
 		// NOTE: We will have to implement CustomSelectControl in place of SelectControl to style the Selected State.
@@ -238,7 +218,6 @@
 
 		.components-input-control__input:focus-visible,
 		.components-select-control__input:active {
-
 			& ~ .components-input-control__backdrop {
 				border-color: $spectra-color-border-hover;
 			}
@@ -248,7 +227,6 @@
 			}
 
 			&.is-checked {
-
 				.components-form-toggle__track {
 					background-color: $spectra-color-primary;
 					border-color: transparent;
@@ -262,7 +240,6 @@
 
 		// Input Wrapper for Multiple Gutenberg Components.
 		.components-input-control__container {
-
 			// Select Control.
 			// ----------------------------------------------------------------------------------------------------------
 			// NOTE: We will have to implement CustomSelectControl in place of SelectControl to style the Selected State.
@@ -288,7 +265,6 @@
 
 			.components-input-control__input:focus-visible,
 			.components-select-control__input:active {
-
 				& ~ .components-input-control__backdrop {
 					border-color: $spectra-color-border-hover;
 				}
@@ -297,7 +273,6 @@
 
 		// Range Control.
 		.components-range-control__wrapper {
-
 			.components-range-control__track {
 				color: $spectra-color-primary;
 
@@ -326,11 +301,11 @@
 			color: $spectra-color-primary;
 			box-shadow: inset 0 0 0 1px $spectra-color-primary;
 
-			&:hover:not(:disabled) {
+			&:hover:not( :disabled ) {
 				color: $spectra-color-primary;
 			}
 
-			&:active:not(:disabled) {
+			&:active:not( :disabled ) {
 				background-color: $spectra-color-light-background;
 			}
 		}
@@ -338,7 +313,6 @@
 
 	// CSS for the Date Time Picker.
 	.block-editor-block-inspector .components-datetime__time {
-
 		// Remove the Bottom Margin set in the field.
 		.components-base-control,
 		.components-base-control:last-child {

@@ -26,9 +26,7 @@
 	}
 
 	.uagb-control__header {
-
 		.uagb-number-control__actions {
-
 			.uagb-reset {
 				height: fit-content;
 			}
@@ -36,7 +34,6 @@
 	}
 
 	&__controls {
-
 		> .components-button {
 			position: absolute;
 			right: 0;
@@ -54,9 +51,7 @@
 		}
 
 		&-inline {
-
 			.components-base-control__field {
-
 				display: flex;
 				align-items: center;
 
@@ -94,5 +89,4 @@
 	&.components-base-control > .components-base-control__help {
 		margin-top: $spectra-control-label-bottom-margin;
 	}
-
 }

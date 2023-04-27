@@ -1,5 +1,4 @@
 .uagb-forms__outer-wrap {
-
 	.uagb-forms-input,
 	.uagb-forms-input::placeholder,
 	.uagb-forms-input-label,
@@ -17,7 +16,6 @@
 	}
 
 	.uagb-forms-main-form {
-
 		.uagb-forms-input,
 		input[type="text"] {
 			min-height: 0 !important;
@@ -27,7 +25,7 @@
 			}
 		}
 
-		input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+		input:not( [type="checkbox"] ):not( [type="radio"] ):not( [type="file"] ),
 		textarea,
 		select {
 			width: 100%;
@@ -38,7 +36,6 @@
 		}
 
 		.uagb-forms-phone-wrap {
-
 			.uagb-form-phone-country {
 				width: 25%;
 				margin-right: 5px;
@@ -58,7 +55,6 @@
 				width: 25%;
 				margin-right: 5px;
 			}
-
 		}
 
 		.required::after {
@@ -115,7 +111,6 @@
 		height: 25px;
 	}
 
-
 	/* Hide default HTML checkbox */
 
 	.uagb-switch input {
@@ -149,7 +144,6 @@
 	}
 
 	.uagb-switch input:checked + .uagb-slider::before {
-
 		background-color: #fff;
 	}
 
@@ -231,10 +225,8 @@ select::before {
 	padding: 10px 15px;
 }
 
-@media only screen and (max-width: 767px) {
-
+@media only screen and ( max-width: 767px ) {
 	.uagb-forms__outer-wrap {
-
 		.uagb-forms-main-form {
 			//Phone block css.
 			.uagb-forms-phone-flex {

@@ -7,13 +7,7 @@ import generateSpacing from '@Controls/generateSpacing';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import { applyFilters } from '@wordpress/hooks';
 
-function styling( props ) {
-	const {
-		name,
-		clientId,
-		attributes,
-	} = props;
-
+function styling( attributes, clientId, name ) {
 	const blockName = name.replace( 'uagb/', '' );
 	const {
 		// Tile Calcualtion
@@ -215,17 +209,41 @@ function styling( props ) {
 	const arrowDotColor = paginateColor ? paginateColor : '#007cba';
 
 	// Range Fallback.
-	const captionBackgroundBlurAmountFallback = getFallbackNumber( captionBackgroundBlurAmount, 'captionBackgroundBlurAmount', blockName );
-	const captionBackgroundBlurAmountHoverFallback = getFallbackNumber( captionBackgroundBlurAmountHover, 'captionBackgroundBlurAmountHover', blockName );
-	const captionBackgroundEffectAmountFallback = getFallbackNumber( captionBackgroundEffectAmount, 'captionBackgroundEffectAmount', blockName );
-	const captionBackgroundEffectAmountHoverFallback = getFallbackNumber( captionBackgroundEffectAmountHover, 'captionBackgroundEffectAmountHover', blockName );
+	const captionBackgroundBlurAmountFallback = getFallbackNumber(
+		captionBackgroundBlurAmount,
+		'captionBackgroundBlurAmount',
+		blockName
+	);
+	const captionBackgroundBlurAmountHoverFallback = getFallbackNumber(
+		captionBackgroundBlurAmountHover,
+		'captionBackgroundBlurAmountHover',
+		blockName
+	);
+	const captionBackgroundEffectAmountFallback = getFallbackNumber(
+		captionBackgroundEffectAmount,
+		'captionBackgroundEffectAmount',
+		blockName
+	);
+	const captionBackgroundEffectAmountHoverFallback = getFallbackNumber(
+		captionBackgroundEffectAmountHover,
+		'captionBackgroundEffectAmountHover',
+		blockName
+	);
 	const captionGapFallback = getFallbackNumber( captionGap, 'captionGap', blockName );
-	const paginateArrowDistanceFallback = getFallbackNumber( paginateArrowDistance, 'paginateArrowDistance', blockName );
+	const paginateArrowDistanceFallback = getFallbackNumber(
+		paginateArrowDistance,
+		'paginateArrowDistance',
+		blockName
+	);
 	const paginateDotDistanceFallback = isNaN( paginateDotDistance ) ? 0 : paginateDotDistance;
 	const paginateArrowSizeFallback = getFallbackNumber( paginateArrowSize, 'paginateArrowSize', blockName );
 	const paginateLoaderSizeFallback = getFallbackNumber( paginateLoaderSize, 'paginateLoaderSize', blockName );
 	const gridImageGapFallback = getFallbackNumber( gridImageGap, 'gridImageGap', blockName );
-	const lightboxCaptionHeightFallback = getFallbackNumber( lightboxCaptionHeight, 'lightboxCaptionHeight', blockName );
+	const lightboxCaptionHeightFallback = getFallbackNumber(
+		lightboxCaptionHeight,
+		'lightboxCaptionHeight',
+		blockName
+	);
 
 	// Spacing Fallback - Needed for Carousel Editor.
 	const feedMarginTopFallback = isNaN( feedMarginTop ) ? 0 : feedMarginTop;
@@ -244,9 +262,12 @@ function styling( props ) {
 	// Responsive Slider Fallback.
 	const gridImageGapTabFallback = isNaN( gridImageGapTab ) ? gridImageGapFallback : gridImageGapTab;
 	const gridImageGapMobFallback = isNaN( gridImageGapMob ) ? gridImageGapTabFallback : gridImageGapMob;
-	const lightboxCaptionHeightTabFallback = ( 'number' === typeof lightboxCaptionHeightTablet ) ? lightboxCaptionHeightTablet : lightboxCaptionHeightFallback;
-	const lightboxCaptionHeightMobFallback = ( 'number' === typeof lightboxCaptionHeightMobile ) ? lightboxCaptionHeightMobile : lightboxCaptionHeightTabFallback;
-
+	const lightboxCaptionHeightTabFallback =
+		'number' === typeof lightboxCaptionHeightTablet ? lightboxCaptionHeightTablet : lightboxCaptionHeightFallback;
+	const lightboxCaptionHeightMobFallback =
+		'number' === typeof lightboxCaptionHeightMobile
+			? lightboxCaptionHeightMobile
+			: lightboxCaptionHeightTabFallback;
 
 	// Border Attributes.
 	const arrowBorderCSS = generateBorderCSS( attributes, 'arrow' );
@@ -263,35 +284,20 @@ function styling( props ) {
 	const mainTitleBorderCSSMobile = generateBorderCSS( attributes, 'mainTitle', 'mobile' );
 
 	// Box Shadow CSS.
-	const imageBoxShadowCSS = `${
-		generateCSSUnit( imageBoxShadowHOffset, 'px' )
-	} ${
-		generateCSSUnit( imageBoxShadowVOffset, 'px' )
-	} ${
-		generateCSSUnit( imageBoxShadowBlur, 'px' )
-	} ${
-		generateCSSUnit( imageBoxShadowSpread, 'px' )
-	}${
-		imageBoxShadowColor ? ( ` ${ imageBoxShadowColor }` ) : ''
-	}${
-		( 'inset' === imageBoxShadowPosition ) ? ( ` ${ imageBoxShadowPosition }` ) : ''
-	}`;
-	const imageBoxShadowHoverCSS = `${
-		generateCSSUnit( imageBoxShadowHOffsetHover, 'px' )
-	} ${
-		generateCSSUnit( imageBoxShadowVOffsetHover, 'px' )
-	} ${
-		generateCSSUnit( imageBoxShadowBlurHover, 'px' )
-	} ${
-		generateCSSUnit( imageBoxShadowSpreadHover, 'px' )
-	}${
-		imageBoxShadowColorHover ? ( ` ${ imageBoxShadowColorHover }` ) : ''
-	}${
-		( 'inset' === imageBoxShadowPositionHover ) ? ( ` ${ imageBoxShadowPositionHover }` ) : ''
-	}`;
+	const imageBoxShadowCSS = `${ generateCSSUnit( imageBoxShadowHOffset, 'px' ) } ${ generateCSSUnit(
+		imageBoxShadowVOffset,
+		'px'
+	) } ${ generateCSSUnit( imageBoxShadowBlur, 'px' ) } ${ generateCSSUnit( imageBoxShadowSpread, 'px' ) }${
+		imageBoxShadowColor ? ` ${ imageBoxShadowColor }` : ''
+	}${ 'inset' === imageBoxShadowPosition ? ` ${ imageBoxShadowPosition }` : '' }`;
+	const imageBoxShadowHoverCSS = `${ generateCSSUnit( imageBoxShadowHOffsetHover, 'px' ) } ${ generateCSSUnit(
+		imageBoxShadowVOffsetHover,
+		'px'
+	) } ${ generateCSSUnit( imageBoxShadowBlurHover, 'px' ) } ${ generateCSSUnit( imageBoxShadowSpreadHover, 'px' ) }${
+		imageBoxShadowColorHover ? ` ${ imageBoxShadowColorHover }` : ''
+	}${ 'inset' === imageBoxShadowPositionHover ? ` ${ imageBoxShadowPositionHover }` : '' }`;
 
 	let selectors = {
-
 		// Feed Selectors
 
 		'.wp-block-uagb-image-gallery': {
@@ -299,7 +305,7 @@ function styling( props ) {
 				feedMarginUnit,
 				feedMarginTopFallback,
 				feedMarginRightFallback,
-				( 'carousel' === feedLayout ) ? ( feedMarginBottomFallback + 5 ) : feedMarginBottomFallback, // Editor Only Fix for the Carousel Dots.
+				'carousel' === feedLayout ? feedMarginBottomFallback + 5 : feedMarginBottomFallback, // Editor Only Fix for the Carousel Dots.
 				feedMarginLeftFallback
 			),
 		},
@@ -364,7 +370,7 @@ function styling( props ) {
 			),
 			'color': paginateButtonTextColor,
 			'background-color': paginateColor,
-			'font-family': ( 'Default' === loadMoreFontFamily ) ? '' : loadMoreFontFamily,
+			'font-family': 'Default' === loadMoreFontFamily ? '' : loadMoreFontFamily,
 			'font-weight': loadMoreFontWeight,
 			'font-style': loadMoreFontStyle,
 			'text-decoration': loadMoreDecoration,
@@ -382,38 +388,26 @@ function styling( props ) {
 		// Layout and Media Wrapper Selectors
 
 		' .spectra-image-gallery__layout--grid': {
-			'grid-gap': generateCSSUnit(
-				gridImageGapFallback,
-				gridImageGapUnit
-			),
+			'grid-gap': generateCSSUnit( gridImageGapFallback, gridImageGapUnit ),
 		},
 		' .spectra-image-gallery__layout--masonry': {
-			'margin': generateCSSUnit(
-				-Math.abs( gridImageGapFallback / 2 ),
-				gridImageGapUnit
-			),
+			'margin': generateCSSUnit( -Math.abs( gridImageGapFallback / 2 ), gridImageGapUnit ),
 		},
 		' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper--isotope': {
-			'padding': generateSpacing(
-				gridImageGapUnit,
-				( gridImageGapFallback / 2 ),
-			),
+			'padding': generateSpacing( gridImageGapUnit, gridImageGapFallback / 2 ),
 		},
 		' .spectra-image-gallery__layout--carousel': {
 			// Override Slick Slider Margin and add a Base Margin Bottom for Dots with Calc.
 			'margin-bottom': `${ generateCSSUnit( paginateDotDistanceFallback, 'px' ) } !important`,
 		},
 		' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper': {
-			'padding': generateSpacing(
-				gridImageGapUnit,
-				gridImageGapFallback,
-			),
+			'padding': generateSpacing( gridImageGapUnit, 0, gridImageGapFallback / 2 ),
+		},
+		' .spectra-image-gallery__layout--carousel .slick-list': {
+			'margin': generateSpacing( gridImageGapUnit, 0, -( gridImageGapFallback / 2 ) ),
 		},
 		' .spectra-image-gallery__layout--tiled': {
-			'grid-gap': generateCSSUnit(
-				gridImageGapFallback,
-				gridImageGapUnit
-			),
+			'grid-gap': generateCSSUnit( gridImageGapFallback, gridImageGapUnit ),
 			'grid-auto-rows': generateCSSUnit( tileSize, 'px' ),
 		},
 		' .spectra-image-gallery__media': {
@@ -425,69 +419,38 @@ function styling( props ) {
 
 		// Thumbnail Selectors
 		' .spectra-image-gallery__media-thumbnail-blurrer': {
-			'-webkit-backdrop-filter': `blur( ${ generateCSSUnit(
-				captionBackgroundBlurAmountFallback,
-				'px'
-			) } )`,
-			'backdrop-filter': `blur( ${ generateCSSUnit(
-				captionBackgroundBlurAmountFallback,
-				'px'
-			) } )`,
+			'-webkit-backdrop-filter': `blur( ${ generateCSSUnit( captionBackgroundBlurAmountFallback, 'px' ) } )`,
+			'backdrop-filter': `blur( ${ generateCSSUnit( captionBackgroundBlurAmountFallback, 'px' ) } )`,
 		},
 		' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer': {
-			'-webkit-backdrop-filter': `blur( ${ generateCSSUnit(
-				captionBackgroundBlurAmountHoverFallback,
-				'px'
-			) } )`,
-			'backdrop-filter': `blur( ${ generateCSSUnit(
-				captionBackgroundBlurAmountHoverFallback,
-				'px'
-			) } )`,
+			'-webkit-backdrop-filter': `blur( ${ generateCSSUnit( captionBackgroundBlurAmountHoverFallback, 'px' ) } )`,
+			'backdrop-filter': `blur( ${ generateCSSUnit( captionBackgroundBlurAmountHoverFallback, 'px' ) } )`,
 		},
 
 		// Caption Wrapper Selectors
 		' .spectra-image-gallery__media-thumbnail-caption-wrapper--overlay': {
-			'background-color': (
-				( imageDisplayCaption ) ? (
-					( 'hover' === captionVisibility ) ? (
-						'rgba(0,0,0,0)'
-					) : (
-						captionBackgroundColor
-					)
-				) : (
-					overlayColor
-				)
-			),
+			'background-color': imageDisplayCaption
+				? 'hover' === captionVisibility
+					? 'rgba(0,0,0,0)'
+					: captionBackgroundColor
+				: overlayColor,
 		},
-		' .spectra-image-gallery__media-thumbnail-caption-wrapper--overlay a': { // Caption Wrapper Selectors when link is get added to caption.
-			'color': (
-				( imageDisplayCaption ) ? (
-					( 'hover' === captionVisibility ) ? (
-						'rgba(0,0,0,0)'
-					) : (
-						captionBackgroundColor
-					)
-				) : (
-					overlayColor
-				)
-			),
+		' .spectra-image-gallery__media-thumbnail-caption-wrapper--overlay a': {
+			// Caption Wrapper Selectors when link is get added to caption.
+			'color': imageDisplayCaption
+				? 'hover' === captionVisibility
+					? 'rgba(0,0,0,0)'
+					: captionBackgroundColor
+				: overlayColor,
 		},
 		' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption-wrapper--overlay': {
-			'background-color': (
-				( imageDisplayCaption ) ? (
-					( 'antiHover' === captionVisibility ) ? (
-						'rgba(0,0,0,0)'
-					) : (
-						( 'always' === captionVisibility && captionSeparateColors ) ? (
-							captionBackgroundColorHover
-						) : (
-							captionBackgroundColor
-						)
-					)
-				) : (
-					overlayColorHover
-				)
-			),
+			'background-color': imageDisplayCaption
+				? 'antiHover' === captionVisibility
+					? 'rgba(0,0,0,0)'
+					: 'always' === captionVisibility && captionSeparateColors
+					? captionBackgroundColorHover
+					: captionBackgroundColor
+				: overlayColorHover,
 		},
 		' .spectra-image-gallery__media-thumbnail-caption-wrapper--bar-inside': {
 			'-webkit-align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
@@ -499,34 +462,22 @@ function styling( props ) {
 		// Caption Selectors
 
 		' .spectra-image-gallery__media-thumbnail-caption': {
-			'color': ( 'hover' === captionVisibility ) ? 'rgba(0,0,0,0)' : captionColor,
+			'color': 'hover' === captionVisibility ? 'rgba(0,0,0,0)' : captionColor,
 			'text-align': getMatrixAlignment( imageCaptionAlignment, 2 ),
-			'font-family': ( 'Default' === captionFontFamily ) ? '' : captionFontFamily,
+			'font-family': 'Default' === captionFontFamily ? '' : captionFontFamily,
 			'font-weight': captionFontWeight,
 			'font-style': captionFontStyle,
 			'text-decoration': captionDecoration,
 			'text-transform': captionTransform,
 			'font-size': generateCSSUnit( captionFontSize, captionFontSizeType ),
 			'line-height': generateCSSUnit( captionLineHeight, captionLineHeightType ),
-			'padding-top': generateCSSUnit(
-				captionPaddingTop,
-				captionPaddingUnit
-			),
-			'padding-right': generateCSSUnit(
-				captionPaddingRight,
-				captionPaddingUnit
-			),
-			'padding-bottom': generateCSSUnit(
-				captionPaddingBottom,
-				captionPaddingUnit
-			),
-			'padding-left': generateCSSUnit(
-				captionPaddingLeft,
-				captionPaddingUnit
-			),
+			'padding-top': generateCSSUnit( captionPaddingTop, captionPaddingUnit ),
+			'padding-right': generateCSSUnit( captionPaddingRight, captionPaddingUnit ),
+			'padding-bottom': generateCSSUnit( captionPaddingBottom, captionPaddingUnit ),
+			'padding-left': generateCSSUnit( captionPaddingLeft, captionPaddingUnit ),
 		},
 		' .spectra-image-gallery__media-thumbnail-caption a': {
-			'color': ( 'hover' === captionVisibility ) ? 'rgba(0,0,0,0)' : captionColor,
+			'color': 'hover' === captionVisibility ? 'rgba(0,0,0,0)' : captionColor,
 		},
 		' .spectra-image-gallery__media-thumbnail-caption--overlay': {
 			'-webkit-align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
@@ -535,33 +486,23 @@ function styling( props ) {
 			'justify-content': getMatrixAlignment( imageCaptionAlignment, 2, 'flex' ),
 		},
 		' .spectra-image-gallery__media-thumbnail-caption--bar-inside': {
-			'background-color': ( 'hover' === captionVisibility ) ? 'rgba(0,0,0,0)' : captionBackgroundColor,
+			'background-color': 'hover' === captionVisibility ? 'rgba(0,0,0,0)' : captionBackgroundColor,
 			...mainTitleBorderCSS,
-			'border-color': ( 'hover' === captionVisibility ) ? 'rgba(0,0,0,0)' : mainTitleBorderColor,
+			'border-color': 'hover' === captionVisibility ? 'rgba(0,0,0,0)' : mainTitleBorderColor,
 		},
 		' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption--bar-inside': {
-			'background-color': (
-				( captionVisibility === 'antiHover' ) ? (
-					'rgba(0,0,0,0)'
-				) : (
-					( 'always' === captionVisibility && captionSeparateColors ) ? (
-						captionBackgroundColorHover
-					) : (
-						captionBackgroundColor
-					)
-				)
-			),
-			'border-color': (
-				( 'antiHover' === captionVisibility ) ? (
-					'rgba(0,0,0,0)'
-				) : (
-					( 'always' === captionVisibility && captionSeparateColors ) ? (
-						mainTitleBorderHColor
-					) : (
-						mainTitleBorderColor
-					)
-				)
-			),
+			'background-color':
+				captionVisibility === 'antiHover'
+					? 'rgba(0,0,0,0)'
+					: 'always' === captionVisibility && captionSeparateColors
+					? captionBackgroundColorHover
+					: captionBackgroundColor,
+			'border-color':
+				'antiHover' === captionVisibility
+					? 'rgba(0,0,0,0)'
+					: 'always' === captionVisibility && captionSeparateColors
+					? mainTitleBorderHColor
+					: mainTitleBorderColor,
 		},
 		' .spectra-image-gallery__media-thumbnail-caption--bar-outside': {
 			'background-color': captionBackgroundColor,
@@ -572,30 +513,21 @@ function styling( props ) {
 			'border-color': captionSeparateColors ? mainTitleBorderHColor : mainTitleBorderColor,
 		},
 		' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption': {
-			'color': (
-				( 'antiHover' === captionVisibility ) ? (
-					'rgba(0,0,0,0)'
-				) : (
-					( 'always' === captionVisibility && captionSeparateColors ) ? (
-						captionColorHover
-					) : (
-						captionColor
-					)
-				)
-			),
+			'color':
+				'antiHover' === captionVisibility
+					? 'rgba(0,0,0,0)'
+					: 'always' === captionVisibility && captionSeparateColors
+					? captionColorHover
+					: captionColor,
 		},
-		' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption a': { // Caption Wrapper Selectors when link is get added to caption.
-			'color': (
-				( 'antiHover' === captionVisibility ) ? (
-					'rgba(0,0,0,0)'
-				) : (
-					( 'always' === captionVisibility && captionSeparateColors ) ? (
-						captionColorHover
-					) : (
-						captionColor
-					)
-				)
-			),
+		' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption a': {
+			// Caption Wrapper Selectors when link is get added to caption.
+			'color':
+				'antiHover' === captionVisibility
+					? 'rgba(0,0,0,0)'
+					: 'always' === captionVisibility && captionSeparateColors
+					? captionColorHover
+					: captionColor,
 		},
 
 		// Lightbox Selectors.
@@ -608,7 +540,7 @@ function styling( props ) {
 			'color': lightboxCaptionColor,
 			'background': `linear-gradient(rgba(0,0,0,0), ${ lightboxCaptionBackgroundColor })`,
 			'min-height': generateCSSUnit( lightboxCaptionHeightFallback, 'px' ),
-			'font-family': ( 'Default' === lightboxFontFamily ) ? '' : lightboxFontFamily,
+			'font-family': 'Default' === lightboxFontFamily ? '' : lightboxFontFamily,
 			'font-weight': lightboxFontWeight,
 			'font-style': lightboxFontStyle,
 			'text-decoration': lightboxDecoration,
@@ -623,9 +555,13 @@ function styling( props ) {
 			'top': generateCSSUnit( lightboxEdgeDistance, 'px' ),
 			'left': generateCSSUnit( lightboxEdgeDistance, 'px' ),
 			'color': lightboxIconColor,
-			'font-family': ( 'Default' === lightboxFontFamily ) ? '' : lightboxFontFamily,
-			'font-size': generateCSSUnit( lightboxIconSize, 'px' ) ? `calc(${ generateCSSUnit( lightboxIconSize, 'px' ) } * 3 / 4 )` : undefined,
-			'line-height': generateCSSUnit( lightboxIconSize, 'px' ) ? `calc(${ generateCSSUnit( lightboxIconSize, 'px' ) } * 3 / 4 )` : undefined,
+			'font-family': 'Default' === lightboxFontFamily ? '' : lightboxFontFamily,
+			'font-size': generateCSSUnit( lightboxIconSize, 'px' )
+				? `calc(${ generateCSSUnit( lightboxIconSize, 'px' ) } * 3 / 4 )`
+				: undefined,
+			'line-height': generateCSSUnit( lightboxIconSize, 'px' )
+				? `calc(${ generateCSSUnit( lightboxIconSize, 'px' ) } * 3 / 4 )`
+				: undefined,
 		},
 		' .spectra-image-gallery__control-lightbox--close': {
 			'top': generateCSSUnit( lightboxEdgeDistance, 'px' ),
@@ -652,7 +588,7 @@ function styling( props ) {
 				feedMarginUnitTab,
 				feedMarginTopTabFallback,
 				feedMarginRightTabFallback,
-				( 'carousel' === feedLayout ) ? ( feedMarginBottomTabFallback + 5 ) : feedMarginBottomTabFallback, // Editor Only Fix for the Carousel Dots.
+				'carousel' === feedLayout ? feedMarginBottomTabFallback + 5 : feedMarginBottomTabFallback, // Editor Only Fix for the Carousel Dots.
 				feedMarginLeftTabFallback
 			),
 		},
@@ -672,34 +608,22 @@ function styling( props ) {
 			...btnBorderCSSTablet,
 		},
 		' .spectra-image-gallery__layout--grid': {
-			'grid-gap': generateCSSUnit(
-				gridImageGapTabFallback,
-				gridImageGapUnitTab
-			),
+			'grid-gap': generateCSSUnit( gridImageGapTabFallback, gridImageGapUnitTab ),
 		},
 		' .spectra-image-gallery__layout--masonry': {
-			'margin': generateCSSUnit(
-				-Math.abs( gridImageGapTabFallback / 2 ),
-				gridImageGapUnitTab
-			),
+			'margin': generateCSSUnit( -Math.abs( gridImageGapTabFallback / 2 ), gridImageGapUnitTab ),
 		},
 		' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper--isotope': {
-			'padding': generateSpacing(
-				gridImageGapUnitTab,
-				( gridImageGapTabFallback / 2 ),
-			),
+			'padding': generateSpacing( gridImageGapUnitTab, gridImageGapTabFallback / 2 ),
 		},
 		' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper': {
-			'padding': generateSpacing(
-				gridImageGapUnitTab,
-				gridImageGapTabFallback,
-			),
+			'padding': generateSpacing( gridImageGapUnitTab, 0, gridImageGapTabFallback / 2 ),
+		},
+		' .spectra-image-gallery__layout--carousel .slick-list': {
+			'margin': generateSpacing( gridImageGapUnitTab, 0, -( gridImageGapTabFallback / 2 ) ),
 		},
 		' .spectra-image-gallery__layout--tiled': {
-			'grid-gap': generateCSSUnit(
-				gridImageGapTabFallback,
-				gridImageGapUnitTab
-			),
+			'grid-gap': generateCSSUnit( gridImageGapTabFallback, gridImageGapUnitTab ),
 		},
 		' .spectra-image-gallery__media': {
 			...imageBorderCSSTablet,
@@ -707,22 +631,10 @@ function styling( props ) {
 		' .spectra-image-gallery__media-thumbnail-caption': {
 			'font-size': generateCSSUnit( captionFontSizeTab, captionFontSizeType ),
 			'line-height': generateCSSUnit( captionLineHeightTab, captionLineHeightType ),
-			'padding-top': generateCSSUnit(
-				captionPaddingTopTab,
-				captionPaddingUnitTab
-			),
-			'padding-right': generateCSSUnit(
-				captionPaddingRightTab,
-				captionPaddingUnitTab
-			),
-			'padding-bottom': generateCSSUnit(
-				captionPaddingBottomTab,
-				captionPaddingUnitTab
-			),
-			'padding-left': generateCSSUnit(
-				captionPaddingLeftTab,
-				captionPaddingUnitTab
-			),
+			'padding-top': generateCSSUnit( captionPaddingTopTab, captionPaddingUnitTab ),
+			'padding-right': generateCSSUnit( captionPaddingRightTab, captionPaddingUnitTab ),
+			'padding-bottom': generateCSSUnit( captionPaddingBottomTab, captionPaddingUnitTab ),
+			'padding-left': generateCSSUnit( captionPaddingLeftTab, captionPaddingUnitTab ),
 		},
 		' .spectra-image-gallery__media-thumbnail-caption--bar-inside': {
 			...mainTitleBorderCSSTablet,
@@ -739,8 +651,12 @@ function styling( props ) {
 		' .spectra-image-gallery__control-lightbox--count': {
 			'top': generateCSSUnit( lightboxEdgeDistanceTablet, 'px' ),
 			'left': generateCSSUnit( lightboxEdgeDistanceTablet, 'px' ),
-			'font-size': generateCSSUnit( lightboxIconSizeTablet, 'px' ) ? `calc(${ generateCSSUnit( lightboxIconSizeTablet, 'px' ) } * 3 / 4 )` : undefined,
-			'line-height': generateCSSUnit( lightboxIconSizeTablet, 'px' ) ? `calc(${ generateCSSUnit( lightboxIconSizeTablet, 'px' ) } * 3 / 4 )` : undefined,
+			'font-size': generateCSSUnit( lightboxIconSizeTablet, 'px' )
+				? `calc(${ generateCSSUnit( lightboxIconSizeTablet, 'px' ) } * 3 / 4 )`
+				: undefined,
+			'line-height': generateCSSUnit( lightboxIconSizeTablet, 'px' )
+				? `calc(${ generateCSSUnit( lightboxIconSizeTablet, 'px' ) } * 3 / 4 )`
+				: undefined,
 		},
 		' .spectra-image-gallery__control-lightbox--close': {
 			'top': generateCSSUnit( lightboxEdgeDistanceTablet, 'px' ),
@@ -764,7 +680,7 @@ function styling( props ) {
 				feedMarginUnitMob,
 				feedMarginTopMobFallback,
 				feedMarginRightMobFallback,
-				( 'carousel' === feedLayout ) ? ( feedMarginBottomMobFallback + 5 ) : feedMarginBottomMobFallback, // Editor Only Fix for the Carousel Dots.
+				'carousel' === feedLayout ? feedMarginBottomMobFallback + 5 : feedMarginBottomMobFallback, // Editor Only Fix for the Carousel Dots.
 				feedMarginLeftMobFallback
 			),
 		},
@@ -784,34 +700,22 @@ function styling( props ) {
 			...btnBorderCSSMobile,
 		},
 		' .spectra-image-gallery__layout--grid': {
-			'grid-gap': generateCSSUnit(
-				gridImageGapMobFallback,
-				gridImageGapUnitMob
-			),
+			'grid-gap': generateCSSUnit( gridImageGapMobFallback, gridImageGapUnitMob ),
 		},
 		' .spectra-image-gallery__layout--masonry': {
-			'margin': generateCSSUnit(
-				-Math.abs( gridImageGapMobFallback / 2 ),
-				gridImageGapUnitMob
-			),
+			'margin': generateCSSUnit( -Math.abs( gridImageGapMobFallback / 2 ), gridImageGapUnitMob ),
 		},
 		' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper--isotope': {
-			'padding': generateSpacing(
-				gridImageGapUnitMob,
-				( gridImageGapMobFallback / 2 ),
-			),
+			'padding': generateSpacing( gridImageGapUnitMob, gridImageGapMobFallback / 2 ),
 		},
 		' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper': {
-			'padding': generateSpacing(
-				gridImageGapUnitMob,
-				gridImageGapMobFallback,
-			),
+			'padding': generateSpacing( gridImageGapUnitMob, 0, gridImageGapMobFallback / 2 ),
+		},
+		' .spectra-image-gallery__layout--carousel .slick-list': {
+			'margin': generateSpacing( gridImageGapUnitMob, 0, -( gridImageGapMobFallback / 2 ) ),
 		},
 		' .spectra-image-gallery__layout--tiled': {
-			'grid-gap': generateCSSUnit(
-				gridImageGapMobFallback,
-				gridImageGapUnitMob
-			),
+			'grid-gap': generateCSSUnit( gridImageGapMobFallback, gridImageGapUnitMob ),
 		},
 		' .spectra-image-gallery__media': {
 			...imageBorderCSSMobile,
@@ -819,22 +723,10 @@ function styling( props ) {
 		' .spectra-image-gallery__media-thumbnail-caption': {
 			'font-size': generateCSSUnit( captionFontSizeMob, captionFontSizeType ),
 			'line-height': generateCSSUnit( captionLineHeightMob, captionLineHeightType ),
-			'padding-top': generateCSSUnit(
-				captionPaddingTopMob,
-				captionPaddingUnitMob
-			),
-			'padding-right': generateCSSUnit(
-				captionPaddingRightMob,
-				captionPaddingUnitMob
-			),
-			'padding-bottom': generateCSSUnit(
-				captionPaddingBottomMob,
-				captionPaddingUnitMob
-			),
-			'padding-left': generateCSSUnit(
-				captionPaddingLeftMob,
-				captionPaddingUnitMob
-			),
+			'padding-top': generateCSSUnit( captionPaddingTopMob, captionPaddingUnitMob ),
+			'padding-right': generateCSSUnit( captionPaddingRightMob, captionPaddingUnitMob ),
+			'padding-bottom': generateCSSUnit( captionPaddingBottomMob, captionPaddingUnitMob ),
+			'padding-left': generateCSSUnit( captionPaddingLeftMob, captionPaddingUnitMob ),
 		},
 		' .spectra-image-gallery__media-thumbnail-caption--bar-inside': {
 			...mainTitleBorderCSSMobile,
@@ -851,8 +743,12 @@ function styling( props ) {
 		' .spectra-image-gallery__control-lightbox--count': {
 			'top': generateCSSUnit( lightboxEdgeDistanceMobile, 'px' ),
 			'left': generateCSSUnit( lightboxEdgeDistanceMobile, 'px' ),
-			'font-size': generateCSSUnit( lightboxIconSizeMobile, 'px' ) ? `calc(${ generateCSSUnit( lightboxIconSizeMobile, 'px' ) } * 3 / 4 )` : undefined,
-			'line-height': generateCSSUnit( lightboxIconSizeMobile, 'px' ) ? `calc(${ generateCSSUnit( lightboxIconSizeMobile, 'px' ) } * 3 / 4 )` : undefined,
+			'font-size': generateCSSUnit( lightboxIconSizeMobile, 'px' )
+				? `calc(${ generateCSSUnit( lightboxIconSizeMobile, 'px' ) } * 3 / 4 )`
+				: undefined,
+			'line-height': generateCSSUnit( lightboxIconSizeMobile, 'px' )
+				? `calc(${ generateCSSUnit( lightboxIconSizeMobile, 'px' ) } * 3 / 4 )`
+				: undefined,
 		},
 		' .spectra-image-gallery__control-lightbox--close': {
 			'top': generateCSSUnit( lightboxEdgeDistanceMobile, 'px' ),
@@ -871,7 +767,7 @@ function styling( props ) {
 	};
 
 	// Background Effect based styling.
-	switch( captionBackgroundEffect ){
+	switch ( captionBackgroundEffect ) {
 		case 'none':
 			selectors[ ' .spectra-image-gallery__media-thumbnail' ] = {
 				...selectors[ ' .spectra-image-gallery__media-thumbnail' ],
@@ -893,8 +789,8 @@ function styling( props ) {
 				) } )`,
 			};
 			break;
-	};
-	switch( captionBackgroundEffectHover ){
+	}
+	switch ( captionBackgroundEffectHover ) {
 		case 'none':
 			selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ] = {
 				'-webkit-filter': `none`,
@@ -914,8 +810,8 @@ function styling( props ) {
 				) } )`,
 			};
 			break;
-	};
-	if ( ! captionBackgroundEnableBlur ){
+	}
+	if ( ! captionBackgroundEnableBlur ) {
 		selectors[ ' .spectra-image-gallery__media-thumbnail-blurrer' ] = {
 			...selectors[ ' .spectra-image-gallery__media-thumbnail-blurrer' ],
 			'-webkit-backdrop-filter': 'none',
@@ -928,35 +824,28 @@ function styling( props ) {
 	}
 
 	// Caption Type based styling.
-	if ( imageDisplayCaption && ( 'bar-outside' === captionDisplayType ) ) {
+	if ( imageDisplayCaption && 'bar-outside' === captionDisplayType ) {
 		if ( 'top' === imageCaptionAlignment01 ) {
 			selectors[ ' .spectra-image-gallery__media-thumbnail-caption-wrapper' ] = {
 				...selectors[ ' .spectra-image-gallery__media-thumbnail-caption-wrapper' ],
-				'margin-bottom': generateCSSUnit(
-					captionGapFallback,
-					captionGapUnit
-				),
+				'margin-bottom': generateCSSUnit( captionGapFallback, captionGapUnit ),
 			};
-		}
-		else {
+		} else {
 			selectors[ ' .spectra-image-gallery__media-thumbnail-caption-wrapper' ] = {
 				...selectors[ ' .spectra-image-gallery__media-thumbnail-caption-wrapper' ],
-				'margin-top': generateCSSUnit(
-					captionGapFallback,
-					captionGapUnit
-				),
+				'margin-top': generateCSSUnit( captionGapFallback, captionGapUnit ),
 			};
 		}
 	}
 	// Grid based styling.
-	if ( 'grid' === feedLayout && feedPagination ){
+	if ( 'grid' === feedLayout && feedPagination ) {
 		selectors[ ' .spectra-image-gallery__control-wrapper' ] = {
 			'margin-top': generateCSSUnit( paginateDotDistanceFallback, paginateDotDistanceUnit ),
-		}
+		};
 	}
 
 	// Carousel based styling.
-	if ( 'carousel' === feedLayout && carouselSquares ){
+	if ( 'carousel' === feedLayout && carouselSquares ) {
 		selectors[ ' .spectra-image-gallery__media--carousel' ] = {
 			'aspect-ratio': 1,
 		};
@@ -981,25 +870,29 @@ function styling( props ) {
 	// New Zoom Effect on Hover.
 	switch ( imageZoomType ) {
 		case 'zoom-in':
-			if( imageEnableZoom ){
+			if ( imageEnableZoom ) {
 				selectors[ ' .spectra-image-gallery__media-thumbnail' ] = {
 					...selectors[ ' .spectra-image-gallery__media-thumbnail' ],
 					'transform': 'scale3d(1.005, 1.005, 1.005)',
 				};
 				selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ] = {
-					...selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ],
+					...selectors[
+						' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail'
+					],
 					'transform': 'scale3d(1.1, 1.1, 1.1)',
 				};
 			}
 			break;
 		case 'zoom-out':
-			if ( imageEnableZoom ){
+			if ( imageEnableZoom ) {
 				selectors[ ' .spectra-image-gallery__media-thumbnail' ] = {
 					...selectors[ ' .spectra-image-gallery__media-thumbnail' ],
 					'transform': 'scale3d(1.1, 1.1, 1.1)',
 				};
 				selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ] = {
-					...selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail' ],
+					...selectors[
+						' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail'
+					],
 					'transform': 'scale3d(1.005, 1.005, 1.005)',
 				};
 			}
@@ -1014,17 +907,20 @@ function styling( props ) {
 		};
 		selectors[ ' .spectra-image-gallery__media-thumbnail-blurrer' ] = {
 			...selectors[ ' .spectra-image-gallery__media-thumbnail-blurrer' ],
-			'box-shadow': `0 0 transparent${ 'inset' === imageBoxShadowPositionHover ? ` ${ imageBoxShadowPositionHover }` : '' }`,
+			'box-shadow': `0 0 transparent${
+				'inset' === imageBoxShadowPositionHover ? ` ${ imageBoxShadowPositionHover }` : ''
+			}`,
 		};
-	}
-	else {
+	} else {
 		selectors[ ' .spectra-image-gallery__media-thumbnail-blurrer' ] = {
 			...selectors[ ' .spectra-image-gallery__media-thumbnail-blurrer' ],
 			'box-shadow': imageBoxShadowCSS,
 		};
 		selectors[ ' .spectra-image-gallery__media' ] = {
 			...selectors[ ' .spectra-image-gallery__media' ],
-			'box-shadow': `0 0 transparent${ 'inset' === imageBoxShadowPositionHover ? ` ${ imageBoxShadowPositionHover }` : '' }`,
+			'box-shadow': `0 0 transparent${
+				'inset' === imageBoxShadowPositionHover ? ` ${ imageBoxShadowPositionHover }` : ''
+			}`,
 		};
 	}
 
@@ -1033,17 +929,24 @@ function styling( props ) {
 			'box-shadow': imageBoxShadowHoverCSS,
 		};
 		selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer' ] = {
-			...selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer' ],
-			'box-shadow': `0 0 transparent${ 'inset' === imageBoxShadowPosition ? ` ${ imageBoxShadowPosition }` : '' }`,
+			...selectors[
+				' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer'
+			],
+			'box-shadow': `0 0 transparent${
+				'inset' === imageBoxShadowPosition ? ` ${ imageBoxShadowPosition }` : ''
+			}`,
 		};
-	}
-	else {
+	} else {
 		selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer' ] = {
-			...selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer' ],
+			...selectors[
+				' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer'
+			],
 			'box-shadow': imageBoxShadowHoverCSS,
 		};
 		selectors[ ' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media' ] = {
-			'box-shadow': `0 0 transparent${ 'inset' === imageBoxShadowPosition ? ` ${ imageBoxShadowPosition }` : '' }`,
+			'box-shadow': `0 0 transparent${
+				'inset' === imageBoxShadowPosition ? ` ${ imageBoxShadowPosition }` : ''
+			}`,
 		};
 	}
 
@@ -1053,25 +956,15 @@ function styling( props ) {
 	tabletSelectors = applyFilters( `spectra.image-gallery.tabletStyling`, tabletSelectors, attributes );
 	mobileSelectors = applyFilters( `spectra.image-gallery.mobileStyling`, mobileSelectors, attributes );
 
-	selectors = applyFilters( `spectra.image-gallery.styling`, selectors, props.attributes );
-	tabletSelectors = applyFilters( `spectra.image-gallery.tabletStyling`, tabletSelectors, props.attributes );
-	mobileSelectors = applyFilters( `spectra.image-gallery.mobileStyling`, mobileSelectors, props.attributes );
+	selectors = applyFilters( `spectra.image-gallery.styling`, selectors, attributes );
+	tabletSelectors = applyFilters( `spectra.image-gallery.tabletStyling`, tabletSelectors, attributes );
+	mobileSelectors = applyFilters( `spectra.image-gallery.mobileStyling`, mobileSelectors, attributes );
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 
-	stylingCss += generateCSS(
-		tabletSelectors,
-		`${ baseSelector }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
+	stylingCss += generateCSS( tabletSelectors, `${ baseSelector }`, true, 'tablet' );
 
-	stylingCss += generateCSS(
-		mobileSelectors,
-		`${ baseSelector }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	stylingCss += generateCSS( mobileSelectors, `${ baseSelector }`, true, 'mobile' );
 
 	return stylingCss;
 }
