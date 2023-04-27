@@ -171,6 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = x.x.x =
+* Feature: You can now add Google Fonts to Block Based Themes from Spectra Dashboard.
 * Fix: Counter - Added support for use within Slider (previously not working within Slider when it's set to infinite loop).
 * Fix: Buttons - Gap settings on Mobile preview is taking desktop value as default.
 * Fix: Resolve an issue of PHP error appear for block-based widget editor.

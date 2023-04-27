@@ -11,6 +11,7 @@ import RollBack from '@DashboardApp/pages/settings/RollBack';
 import BetaUpdates from '@DashboardApp/pages/settings/BetaUpdates';
 import LegacyBlocks from '@DashboardApp/pages/settings/LegacyBlocks';
 import SelectedFontFamilies from '@DashboardApp/pages/settings/SelectedFontFamilies';
+import FSEFontFamilies from '@DashboardApp/pages/settings/FSEFontFamilies';
 import LoadFontsLocally from '@DashboardApp/pages/settings/LoadFontsLocally';
 import PreloadLocalFonts from '@DashboardApp/pages/settings/PreloadLocalFonts';
 import CollapsePanels from '@DashboardApp/pages/settings/CollapsePanels';
@@ -43,6 +44,7 @@ const Settings = () => {
 
 	const activeSettingsNavigationTab = useSelector( ( state ) => state.activeSettingsNavigationTab );
     const initialStateSetFlag = useSelector( ( state ) => state.initialStateSetFlag );
+    const spectraIsBlockTheme = useSelector( ( state ) => state.spectraIsBlockTheme );
 
 	const navigation = [
 		{ name: __( 'Editor Options', 'ultimate-addons-for-gutenberg' ), slug: 'global-settings', icon: SettingsIcons['global-settings'] },
@@ -54,6 +56,9 @@ const Settings = () => {
 		{ name: __( 'Coming Soon', 'ultimate-addons-for-gutenberg' ), slug: 'coming-soon', icon: SettingsIcons['coming-soon'] },
     ];
 
+    if ( spectraIsBlockTheme ) {
+        navigation.push( { name: __( 'Theme Fonts', 'ultimate-addons-for-gutenberg' ), slug: 'fse-support', icon: SettingsIcons.font } );
+    }
 	if( uag_react.spectra_pro_status ){
 		navigation.push( { name: __( 'License', 'ultimate-addons-for-gutenberg' ), slug: 'license', icon: SettingsIcons.account } );
 	}
@@ -153,6 +158,10 @@ const Settings = () => {
                                 <PreloadLocalFonts/>
                                 <SelectedFontFamilies/>
                             </>
+                        }
+                        {
+                            'fse-support' === activeSettingsNavigationTab && spectraIsBlockTheme &&
+                                <FSEFontFamilies/>
                         }
                         { 'block-settings' === activeSettingsNavigationTab &&
 							<>

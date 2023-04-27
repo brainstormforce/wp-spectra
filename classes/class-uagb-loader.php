@@ -70,6 +70,8 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$this->loader();
 
+			add_action( 'after_setup_theme', array( $this, 'load_compatibility' ) );
+
 			add_action( 'plugins_loaded', array( $this, 'load_plugin' ) );
 
 			add_action( 'init', array( $this, 'init_actions' ) );
@@ -186,6 +188,16 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			}
 		}
 
+		/**
+		 * Loads theme compatibility files.
+		 *
+		 * @since x.x.x
+		 *
+		 * @return void
+		 */
+		public function load_compatibility() {
+			require_once UAGB_DIR . 'classes/class-uagb-fse-fonts-compatibility.php';
+		}
 		/**
 		 * Fix REST API issue with blocks registered via PHP register_block_type.
 		 *

@@ -41,6 +41,10 @@ module.exports = {
 				__dirname,
 				'assets/src/common/'
 			),
+			'@Helpers': path.resolve(
+				newPath,
+				'blocks-config/utils/'
+			),
 		},
 	},
 	output: {

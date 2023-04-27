@@ -50,5 +50,6 @@ module.exports = {
 		Headers: true,
 		FormData: true,
 		UAGBCounter: true,
+		location: true
 	},
 };

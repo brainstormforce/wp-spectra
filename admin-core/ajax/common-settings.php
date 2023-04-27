@@ -63,6 +63,9 @@ class Common_Settings extends Ajax_Base {
 			'enable_dynamic_content',
 			'blocks_activation_and_deactivation',
 			'load_select_font_globally',
+			'load_fse_font_globally',
+			'fse_font_globally',
+			'fse_font_globally_delete',
 			'select_font_globally',
 			'load_gfonts_locally',
 			'preload_local_fonts',
@@ -342,8 +345,21 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
+	 * Save setting - Loads selected font globally.
+	 *
+	 * @since x.x.x
+	 * @return void
+	 */
+	public function load_fse_font_globally() {
+		$this->check_permission_nonce( 'uag_load_fse_font_globally' );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_load_fse_font_globally', sanitize_text_field( $value ) );
+	}
+
+	/**
 	 * Save setting - Saves selected font globally.
 	 *
+	 * @since x.x.x
 	 * @return void
 	 */
 	public function select_font_globally() {
@@ -351,6 +367,41 @@ class Common_Settings extends Ajax_Base {
 		$value = $this->check_post_value();
 		$value = json_decode( stripslashes( $value ), true ); 
 		$this->save_admin_settings( 'uag_select_font_globally', $this->sanitize_form_inputs( $value ) );
+	}
+	
+	/**
+	 * Save setting - Saves selected font globally.
+	 *
+	 * @since x.x.x
+	 * @return void
+	 */
+	public function fse_font_globally_delete() {
+		$this->check_permission_nonce( 'uag_fse_font_globally_delete' );
+		$value = $this->check_post_value();
+		$value = json_decode( stripslashes( $value ), true ); 
+		\UAGB_FSE_Fonts_Compatibility::delete_theme_font_family( $value );
+	}
+
+	/**
+	 * Save setting - Saves selected font globally.
+	 *
+	 * @since x.x.x
+	 * @return void
+	 */
+	public function fse_font_globally() {
+		$this->check_permission_nonce( 'uag_fse_font_globally' );
+		$value = $this->check_post_value();
+		$value = json_decode( stripslashes( $value ), true ); 
+
+		$spectra_global_fse_fonts = \UAGB_Admin_Helper::get_admin_settings_option( 'spectra_global_fse_fonts', array() );
+
+		if ( ! is_array( $spectra_global_fse_fonts ) ) {  
+			$spectra_global_fse_fonts = array();
+		}
+		
+		$spectra_global_fse_fonts[] = $value;
+		
+		$this->save_admin_settings( 'spectra_global_fse_fonts', $this->sanitize_form_inputs( $spectra_global_fse_fonts ) );
 	}
 
 	/**
