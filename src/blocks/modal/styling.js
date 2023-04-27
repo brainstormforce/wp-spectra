@@ -214,10 +214,18 @@ export default function styling( attributes, clientId, name ) {
 	};
 
 	const modalPopupContentBackgroundCSSDesktop = generateBackgroundCSS( backgroundAttributesDesktop );
+	const modalPopupContentDesktop = {
+		'width': generateCSSUnit( modalWidth, modalWidthType ),
+		'padding-left': generateCSSUnit( paddingModalLeft, paddingModalUnit ),
+		'padding-right': generateCSSUnit( paddingModalRight, paddingModalUnit ),
+		'padding-top': generateCSSUnit( paddingModalTop, paddingModalUnit ),
+		'padding-bottom': generateCSSUnit( paddingModalBottom, paddingModalUnit ),
+	}
 	let selectors = {
 		' .uagb-modal-popup-wrap': {
-			'width': generateCSSUnit( modalWidth, modalWidthType ),
 			'height': generateCSSUnit( modalHeight, modalHeightType ),
+			...modalPopupContentDesktop,
+			...modalPopupContentBackgroundCSSDesktop,
 			...contentBorderCSS,
 		},
 		' .uagb-modal-popup-wrap:hover': {
@@ -232,13 +240,6 @@ export default function styling( attributes, clientId, name ) {
 		},
 		' .uagb-modal-popup.active': {
 			'background': overlayColor,
-		},
-		' .uagb-modal-popup-content': {
-			'padding-left': generateCSSUnit( paddingModalLeft, paddingModalUnit ),
-			'padding-right': generateCSSUnit( paddingModalRight, paddingModalUnit ),
-			'padding-top': generateCSSUnit( paddingModalTop, paddingModalUnit ),
-			'padding-bottom': generateCSSUnit( paddingModalBottom, paddingModalUnit ),
-			...modalPopupContentBackgroundCSSDesktop,
 		},
 		' .uagb-modal-trigger svg': {
 			'width': generateCSSUnit( iconSize, 'px' ),
@@ -330,18 +331,19 @@ export default function styling( attributes, clientId, name ) {
 	};
 
 	const modalPopupContentBackgroundCSSTablet = generateBackgroundCSS( backgroundAttributesTablet );
+	const modalPopupContentTablet = {
+		'width': generateCSSUnit( modalWidthTablet, modalWidthType ),
+		'padding-left': generateCSSUnit( paddingModalLeftTablet, tabletPaddingModalUnit ),
+		'padding-right': generateCSSUnit( paddingModalRightTablet, tabletPaddingModalUnit ),
+		'padding-top': generateCSSUnit( paddingModalTopTablet, tabletPaddingModalUnit ),
+		'padding-bottom': generateCSSUnit( paddingModalBottomTablet, tabletPaddingModalUnit ),
+	}
 	let tabletSelectors = {
 		' .uagb-modal-popup-wrap': {
-			'width': generateCSSUnit( modalWidthTablet, modalWidthType ),
 			'height': generateCSSUnit( modalHeightTablet, modalHeightType ),
-			...contentBorderCSSTablet,
-		},
-		' .uagb-modal-popup-content': {
-			'padding-left': generateCSSUnit( paddingModalLeftTablet, tabletPaddingModalUnit ),
-			'padding-right': generateCSSUnit( paddingModalRightTablet, tabletPaddingModalUnit ),
-			'padding-top': generateCSSUnit( paddingModalTopTablet, tabletPaddingModalUnit ),
-			'padding-bottom': generateCSSUnit( paddingModalBottomTablet, tabletPaddingModalUnit ),
+			...modalPopupContentTablet,
 			...modalPopupContentBackgroundCSSTablet,
+			...contentBorderCSSTablet,
 		},
 		' .uagb-modal-text.uagb-modal-trigger': {
 			'font-size': generateCSSUnit( textFontSizeTablet, textFontSizeType ),
@@ -393,18 +395,19 @@ export default function styling( attributes, clientId, name ) {
 	};
 
 	const modalPopupContentBackgroundCSSMobile = generateBackgroundCSS( backgroundAttributesMobile );
+	const modalPopupContentMobile = {
+		'width': generateCSSUnit( modalWidthMobile, modalWidthType ),
+		'padding-left': generateCSSUnit( paddingModalLeftMobile, mobilePaddingModalUnit ),
+		'padding-right': generateCSSUnit( paddingModalRightMobile, mobilePaddingModalUnit ),
+		'padding-top': generateCSSUnit( paddingModalTopMobile, mobilePaddingModalUnit ),
+		'padding-bottom': generateCSSUnit( paddingModalBottomMobile, mobilePaddingModalUnit ),
+	 }
 	let mobileSelectors = {
 		' .uagb-modal-popup-wrap': {
-			'width': generateCSSUnit( modalWidthMobile, modalWidthType ),
 			'height': generateCSSUnit( modalHeightMobile, modalHeightType ),
-			...contentBorderCSSMobile,
-		},
-		' .uagb-modal-popup-content': {
-			'padding-left': generateCSSUnit( paddingModalLeftMobile, mobilePaddingModalUnit ),
-			'padding-right': generateCSSUnit( paddingModalRightMobile, mobilePaddingModalUnit ),
-			'padding-top': generateCSSUnit( paddingModalTopMobile, mobilePaddingModalUnit ),
-			'padding-bottom': generateCSSUnit( paddingModalBottomMobile, mobilePaddingModalUnit ),
+			...modalPopupContentMobile,
 			...modalPopupContentBackgroundCSSMobile,
+			...contentBorderCSSMobile,
 		},
 		' .uagb-modal-text.uagb-modal-trigger': {
 			'font-size': generateCSSUnit( textFontSizeMobile, textFontSizeType ),
@@ -432,20 +435,23 @@ export default function styling( attributes, clientId, name ) {
 	if ( modalBoxHeight !== 'custom' ) {
 		selectors[ ' .uagb-modal-popup-wrap' ] = {
 			'height': 'auto',
-			'width': generateCSSUnit( modalWidth, modalWidthType ),
 			'max-height': generateCSSUnit( maxHeight, maxHeightType ),
+			...modalPopupContentDesktop,
+			...modalPopupContentBackgroundCSSDesktop,
 			...contentBorderCSS,
 		};
 		tabletSelectors[ ' .uagb-modal-popup-wrap' ] = {
 			'height': 'auto',
-			'width': generateCSSUnit( modalWidthTablet, modalWidthType ),
 			'max-height': generateCSSUnit( maxHeightTablet, maxHeightType ),
+			...modalPopupContentTablet,
+			...modalPopupContentBackgroundCSSTablet,
 			...contentBorderCSSTablet,
 		};
 		mobileSelectors[ ' .uagb-modal-popup-wrap' ] = {
 			'height': 'auto',
-			'width': generateCSSUnit( modalWidthMobile, modalWidthType ),
 			'max-height': generateCSSUnit( maxHeightMobile, maxHeightType ),
+			...modalPopupContentMobile,
+			...modalPopupContentBackgroundCSSMobile,
 			...contentBorderCSSMobile,
 		};
 	}
