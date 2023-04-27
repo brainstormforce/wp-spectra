@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.5.0\n"
+"Project-Id-Version: Spectra 2.5.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-04-25T11:01:38+00:00\n"
+"POT-Creation-Date: 2023-04-27T12:07:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -18,8 +18,8 @@ msgstr ""
 #: admin-core/inc/admin-menu.php:130
 #: admin-core/inc/admin-menu.php:131
 #: admin-core/inc/admin-menu.php:141
-#: admin-core/inc/admin-menu.php:220
-#: classes/class-uagb-admin-helper.php:385
+#: admin-core/inc/admin-menu.php:225
+#: classes/class-uagb-admin-helper.php:386
 #: classes/class-uagb-init-blocks.php:436
 msgid "Spectra"
 msgstr ""
@@ -49,25 +49,25 @@ msgstr ""
 msgid "Sorry, something went wrong."
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:134
-#: admin-core/ajax/common-settings.php:604
+#: admin-core/ajax/common-settings.php:137
+#: admin-core/ajax/common-settings.php:655
 #: classes/class-uagb-init-blocks.php:399
 msgid "Successfully saved data!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:150
+#: admin-core/ajax/common-settings.php:153
 msgid "No post data found!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:186
+#: admin-core/ajax/common-settings.php:189
 msgid "Plugin Successfully Activated"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:697
+#: admin-core/ajax/common-settings.php:748
 msgid "Successfully refreshed tokens!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:699
+#: admin-core/ajax/common-settings.php:750
 msgid "Failed to refresh tokens"
 msgstr ""
 
@@ -86,7 +86,7 @@ msgid "Dashboard"
 msgstr ""
 
 #. translators: HTML entities.
-#: admin-core/inc/admin-menu.php:411
+#: admin-core/inc/admin-menu.php:417
 msgid "Thank you for using %1$sSpectra.%2$s"
 msgstr ""
 
@@ -10651,15 +10651,15 @@ msgstr ""
 msgid "YouTube Square"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:393
+#: classes/class-uagb-admin-helper.php:394
 msgid "Astra Theme"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:397
+#: classes/class-uagb-admin-helper.php:398
 msgid "Filter added through any 3rd Party Theme/Plugin."
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:402
+#: classes/class-uagb-admin-helper.php:403
 msgid "Full Site Editor's Global Styles"
 msgstr ""
 
@@ -10701,6 +10701,14 @@ msgstr ""
 #. translators: %s: html tags
 #: classes/class-uagb-admin.php:242
 msgid "Spectra requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING."
+msgstr ""
+
+#: classes/class-uagb-fse-fonts-compatibility.php:533
+msgid "There was some error in deleting the font."
+msgstr ""
+
+#: classes/class-uagb-fse-fonts-compatibility.php:559
+msgid "Successfully deleted font."
 msgstr ""
 
 #: classes/class-uagb-helper.php:402
@@ -10762,11 +10770,11 @@ msgid "Invalid request"
 msgstr ""
 
 #. translators: %s: html tags
-#: classes/class-uagb-loader.php:308
+#: classes/class-uagb-loader.php:320
 msgid "The %1$sSpectra%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated."
 msgstr ""
 
-#: classes/class-uagb-loader.php:311
+#: classes/class-uagb-loader.php:323
 msgid "Install Gutenberg"
 msgstr ""
 
@@ -11665,7 +11673,7 @@ msgid "Responsive Conditions"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Dynamic Content"
 msgstr ""
 
@@ -11728,7 +11736,8 @@ msgid "Rollback"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:5
+#: admin-core/assets/build/dashboard-app.js:9
 #: dist/blocks.js:11
 #: dist/blocks.js:18
 msgid "Cancel"
@@ -11759,346 +11768,410 @@ msgid "Spectra offers 700+ Google font options. If this is overwhelming for your
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Select the font families you want"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
+msgid "Remove Font Family"
+msgstr ""
+
+#. translators: %1$s: Strong Tag,  %2$s: selected font family of Spectra, %3$s Strong Closing Tag.
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Are you sure you want to remove %1$s%2$s%3$s font family?"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Remove"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Font Families"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Successfully saved!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Spectra offers 700+ Google font options. You can select which you want to use in your FSE Typography"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Select one or more font weights"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Select one or more font styles"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Add Google Font"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+#: dist/blocks.js:12
+msgid "Font Family"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Variant"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+#: dist/blocks.js:1
+#: dist/blocks.js:11
+#: dist/blocks.js:12
+#: dist/blocks.js:16
+#: dist/blocks.js:18
+msgid "Style"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Currently no Font Families added."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Load Google Fonts Locally"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Enable this option to download Google fonts and save them on your server. This can be great for improving speed of your website and to comply with GDPR laws."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Preload Local Fonts"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "This option will load the font files right away on page load. Preloading Local Fonts can speeds up your website even further."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Collapse Panels"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Enable the \"Collapse Panels\" option if you want to Collapse all other Panels in your Blocks Settings except for the one which is clicked This way you have only one Panel of Settings in front of you to Focus on."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Copy Paste Styles"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Enable the \"Copy Paste Styles\" option to have the ability to copy & paste Spectra & Core Gutenberg Blocks Styles."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Choose how you want to display dynamic content settings"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Popup"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Sidebar"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Default Content Width"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "px"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "This setting will apply to Container Block's default Content Width."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Blocks Editor Spacing"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "This setting will apply spacing in between all blocks inside block editor."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Enable Coming Soon Mode"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Is your website still in the making? Is it not yet ready for other people to see?"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Enable the coming soon mode. Only the page you select below will be displayed to people who are not logged in."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Select the page you want"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 #: dist/blocks.js:18
 msgid "Google reCAPTCHA"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "To enable reCAPTCHA for your form, please follow the steps mentioned "
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "here. "
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "reCAPTCHA v2"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Site Key v2"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Secret Key v2"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "reCAPTCHA v3"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Site Key v3"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Secret Key v3"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Load Font Awesome 5 Support"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Enable this to make sure all previously used Font Awesome 5 icons are displayed correctly while using the Font Awesome 6 library."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Automatic Block Recovery"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Enable this to automatically recover any erroneous blocks that may occur on your web pages. This will save you time spent on clicking all those \"Attempt Block Recovery\" Buttons."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Container Padding"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "This setting will apply default padding in the Container Block."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Container Elements Gap"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "This setting will apply default Row & Column Gaps in the Container Block."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Deactivate"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Activate"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Your license is active."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Paste your license key here"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
 #: admin-core/assets/build/dashboard-app.js:5
+#: admin-core/assets/build/dashboard-app.js:7
 msgid "License successfully validated!"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Please enter your valid license key below to activate Spectra Pro!"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "License Key"
 msgstr ""
 
 #. translators: %1$s: first anchor tag start, %2$s: first anchor tag end, %3$s second anchor tag start, %4$s second anchor tag end.
-#: admin-core/assets/build/dashboard-app.js:5
+#: admin-core/assets/build/dashboard-app.js:7
 msgid "Activate %1$sSpectra Pro%2$s to get professional support and automatic updates from your WordPress dashboard. If you don't have a license, you can %3$sget it here »%4$s"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:5
+#: admin-core/assets/build/dashboard-app.js:7
 msgid "Please enter a valid license key!"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:5
+#: admin-core/assets/build/dashboard-app.js:7
 msgid "License successfully deactivated!"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:5
+#: admin-core/assets/build/dashboard-app.js:7
 msgid "Unlink User"
 msgstr ""
 
 #. translators: %1$s: span tag start, %2$s: Instagram account name, %3$s: span tag end.
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Are you sure you wish to unlink %1$s@%2$s%3$s?"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Unlink"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Link User"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Linking"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Inavalid Token"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Account Exists!"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Account Linked!"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Failed to Add Account"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Instagram Accounts"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Link your Instagram account(s), or enable Developer Mode to link someone else's account(s)."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "It looks like one or more accounts have been disabled due to security reasons. Here are some of them:"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "1. The Instagram Account password was changed."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "2. The Instagram Account was made private."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "3. The Instagram Account was unused on Spectra for 60 days."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Please unlink and relink the account(s) marked in red."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "No need to share passwords. Share our"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Access Token Generator"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "with your client and ask them to share their token with you."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Invalid Token"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Link a Personal Account"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Developer Mode"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "No linked accounts."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Please link an Instagram Account to start using it with Spectra!"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Personal Account"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Business Account"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Instagram Account"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Disabled"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Linked Users"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Editor Options"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Asset Generation"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Templates"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Version Control"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Performance"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Integrations"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Coming Soon"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Theme Fonts"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "License"
 msgstr ""
 
@@ -12299,14 +12372,6 @@ msgstr ""
 #: dist/blocks.js:1
 #: dist/blocks.js:18
 msgid "General"
-msgstr ""
-
-#: dist/blocks.js:1
-#: dist/blocks.js:11
-#: dist/blocks.js:12
-#: dist/blocks.js:16
-#: dist/blocks.js:18
-msgid "Style"
 msgstr ""
 
 #: dist/blocks.js:1
@@ -13238,10 +13303,6 @@ msgstr ""
 #: dist/blocks.js:12
 #: dist/blocks.js:18
 msgid "Font Size"
-msgstr ""
-
-#: dist/blocks.js:12
-msgid "Font Family"
 msgstr ""
 
 #: dist/blocks.js:12

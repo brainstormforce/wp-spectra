@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 5.6
 Tested up to: 6.2
-Stable tag: 2.5.0
+Stable tag: 2.5.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -170,7 +170,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= x.x.x =
+= 2.5.1 - THURSDAY, 27th APRIL 2023 =
 * Feature: You can now add Google Fonts to Block Based Themes from Spectra Dashboard.
 * Fix: Counter - Added support for use within Slider (previously not working within Slider when it's set to infinite loop).
 * Fix: Buttons - Gap settings on Mobile preview is taking desktop value as default.

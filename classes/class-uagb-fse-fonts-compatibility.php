@@ -2,7 +2,7 @@
 /**
  * UAGB FSE Fonts Compatibility.
  *
- * @since x.x.x
+ * @since 2.5.1
  * @package UAGB
  */
 
@@ -15,14 +15,14 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 	/**
 	 * Class UAGB_FSE_Fonts_Compatibility.
 	 *
-	 * @since x.x.x
+	 * @since 2.5.1
 	 */
 	final class UAGB_FSE_Fonts_Compatibility {
 
 		/**
 		 * Member Variable
 		 *
-		 * @since x.x.x
+		 * @since 2.5.1
 		 * @var instance
 		 */
 		private static $instance;
@@ -31,7 +31,7 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 		 * Base path.
 		 *
 		 * @access protected
-		 * @since x.x.x
+		 * @since 2.5.1
 		 * @var string
 		 */
 		protected $base_path;
@@ -40,7 +40,7 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 		 * Base URL.
 		 *
 		 * @access protected
-		 * @since x.x.x
+		 * @since 2.5.1
 		 * @var string
 		 */
 		protected $base_url;
@@ -49,7 +49,7 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 		 * The remote CSS.
 		 *
 		 * @access protected
-		 * @since x.x.x
+		 * @since 2.5.1
 		 * @var string
 		 */
 		protected $remote_styles;
@@ -61,7 +61,7 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 		 * This will change the user-agent user to make the request.
 		 *
 		 * @access protected
-		 * @since x.x.x
+		 * @since 2.5.1
 		 * @var string
 		 */
 		protected $font_format = 'woff2';
@@ -70,7 +70,7 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 		 *  Initiator
 		 *
 		 * @return object instance.
-		 * @since x.x.x
+		 * @since 2.5.1
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
@@ -83,20 +83,20 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 		 * Constructor
 		 *
 		 * @return void
-		 * @since x.x.x
+		 * @since 2.5.1
 		 */
-		public function __construct() { 
+		public function __construct() {
 			$this->base_path = UAGB_UPLOAD_DIR . 'assets/';
-			
+
 			$this->base_url = UAGB_UPLOAD_URL . 'assets/';
-			
+
 			if ( empty( $_GET['page'] ) || 'spectra' !== $_GET['page'] || empty( $_GET['path'] ) || 'settings' !== $_GET['path'] || empty( $_GET['settings'] ) || 'fse-support' !== $_GET['settings'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				return;
 			}
 
 			$uagb_filesystem   = uagb_filesystem();
 			$fonts_folder_path = get_stylesheet_directory() . '/assets/fonts/spectra';
-			
+
 			if ( file_exists( $fonts_folder_path ) ) {
 				$uagb_filesystem->delete( $fonts_folder_path, true, 'd' );
 			}
@@ -114,12 +114,12 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 		 * Save Google Fonts to the FSE Theme.
 		 *
 		 * @return void
-		 * @since x.x.x
+		 * @since 2.5.1
 		 */
 		public function save_google_fonts_to_theme() {
 
 			$spectra_global_fse_fonts = \UAGB_Admin_Helper::get_admin_settings_option( 'spectra_global_fse_fonts', array() );
-			
+
 			if ( empty( $spectra_global_fse_fonts ) || ! is_array( $spectra_global_fse_fonts ) ) {
 				return;
 			}
@@ -132,7 +132,7 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 					$font_weight = ! empty( $weight['value'] ) ? $weight['value'] : '';
 					foreach ( $font['style'] as $style ) {
 						$font_style = ! empty( $style['value'] ) ? $style['value'] : '';
-						
+
 						$final_font_files = $this->get_fonts_file_url( $font_family, $font_weight, $font_style );
 						// Add each variant as one font face.
 						$new_font_faces[] = array(
@@ -152,7 +152,7 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 		 *
 		 * @return string slug.
 		 * @param string $name Font Family.
-		 * @since x.x.x
+		 * @since 2.5.1
 		 */
 		public function get_font_slug( $name ) {
 			$slug = sanitize_title( $name );
@@ -167,10 +167,10 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 		 * @param string $font_weight Font Weight.
 		 * @param string $font_style Font Style.
 		 * @return array final font files.
-		 * @since x.x.x
+		 * @since 2.5.1
 		 */
 		public function get_fonts_file_url( $font_family, $font_weight, $font_style ) {
-			
+
 			$font_family_key = sanitize_key( strtolower( str_replace( ' ', '-', $font_family ) ) );
 			$fonts_attr      = str_replace( ' ', '+', $font_family );
 			$fonts_file_name = $font_family_key;
@@ -183,7 +183,7 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 				}
 			}
 			$fonts_link = 'https://fonts.googleapis.com/css?family=' . esc_attr( $fonts_attr );
-			
+
 			// Get the remote URL contents.
 			$this->remote_styles = $this->get_remote_url_contents( $fonts_link );
 			$font_files          = $this->get_remote_files_from_css();
@@ -202,26 +202,26 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 			$final_font_files = array();
 
 			foreach ( $font_files[ $font_family_key ] as $key => $font_file ) {
-				
+
 				// require file.php if the download_url function doesn't exist.
 				if ( ! function_exists( 'download_url' ) ) {
 					require_once wp_normalize_path( ABSPATH . '/wp-admin/includes/file.php' );
 				}
 				// Download file to temporary location.
 				$tmp_path = download_url( $font_file );
-	
+
 				// Make sure there were no errors.
 				if ( is_wp_error( $tmp_path ) ) {
 					return array();
 				}
-				
+
 				$fonts_file_name_final = $fonts_file_name . $key . '.' . $this->font_format;
 				// Move font asset to theme assets folder.
 				rename( $tmp_path, get_stylesheet_directory() . '/assets/fonts/spectra/' . $fonts_file_name_final ); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_rename
 
 				$final_font_files[] = 'file:./assets/fonts/spectra/' . $fonts_file_name_final;
 			}
-			
+
 			return $final_font_files;
 		}
 
@@ -229,7 +229,7 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 		 * Get the filesystem.
 		 *
 		 * @access protected
-		 * @since x.x.x
+		 * @since 2.5.1
 		 * @return WP_Filesystem
 		 */
 		protected function get_filesystem() {
@@ -250,7 +250,7 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 		 *
 		 * @access public
 		 * @param string $url URL.
-		 * @since x.x.x
+		 * @since 2.5.1
 		 * @return string Returns the remote URL contents.
 		 */
 		public function get_remote_url_contents( $url ) {
@@ -291,7 +291,7 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 		 * Get font files from the CSS.
 		 *
 		 * @access public
-		 * @since x.x.x
+		 * @since 2.5.1
 		 * @return array Returns an array of font-families and the font-files used.
 		 */
 		public function get_remote_files_from_css() {
@@ -305,7 +305,7 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 
 			// Return early if font faces is not an array, or is empty.
 			if ( ! is_array( $font_faces ) || empty( $font_faces ) ) {
-				return array(); 
+				return array();
 			}
 
 			$result = array();
@@ -380,13 +380,13 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 		 * @param string $font_slug Font Slug.
 		 * @param array  $font_faces Font Faces.
 		 * @return void
-		 * @since x.x.x
+		 * @since 2.5.1
 		 */
 		public function add_or_update_theme_font_faces( $font_name, $font_slug, $font_faces ) {
 			// Get the current theme.json and fontFamilies defined (if any).
 			$theme_json_raw      = json_decode( file_get_contents( get_stylesheet_directory() . '/theme.json' ), true );
 			$theme_font_families = isset( $theme_json_raw['settings']['typography']['fontFamilies'] ) ? $theme_json_raw['settings']['typography']['fontFamilies'] : null;
-	
+
 			$existent_family = $theme_font_families ? array_values(
 				array_filter(
 					$theme_font_families,
@@ -394,7 +394,7 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 						return $font_family['slug'] === $font_slug; }
 				)
 			) : null;
-	
+
 			// Add the new font faces.
 			if ( empty( $existent_family ) ) { // If the new font family doesn't exist in the theme.json font families, add it to the exising font families.
 				$theme_font_families[] = array(
@@ -414,19 +414,19 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 				$existent_family[0]['fontFace'] = $font_faces;
 				$theme_font_families            = array_merge( $theme_font_families, $existent_family );
 			}
-	
+
 			// Overwrite the previous fontFamilies with the new ones.
 			$theme_json_raw['settings']['typography']['fontFamilies'] = $theme_font_families;
-	
+
 			$theme_json        = wp_json_encode( $theme_json_raw, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
 			$theme_json_string = preg_replace( '~(?:^|\G)\h{4}~m', "\t", $theme_json );
-	
+
 			// Write the new theme.json to the theme folder.
 			file_put_contents( // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions
 				get_stylesheet_directory() . '/theme.json',
 				$theme_json_string
 			);
-	
+
 		}
 
 		/**
@@ -434,8 +434,8 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 		 *
 		 * @param array $input_settings setting data.
 		 * @return array    The sanitized form inputs.
-		 * 
-		 * @since x.x.x
+		 *
+		 * @since 2.5.1
 		 */
 		public static function sanitize_form_inputs( $input_settings = array() ) {
 			$new_settings = array();
@@ -455,21 +455,21 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 
 			return $new_settings;
 		}
-		
+
 		/**
 		 * Delete all Spectra font files from the theme JSON.
 		 *
 		 * @return void
-		 * @since x.x.x
+		 * @since 2.5.1
 		 */
 		public static function delete_all_theme_font_family() {
 
 			// Construct updated theme.json.
 			$theme_json_raw = json_decode( file_get_contents( get_stylesheet_directory() . '/theme.json' ), true );
-			
+
 			// Overwrite the previous fontFamilies with the new ones.
 			$font_families = $theme_json_raw['settings']['typography']['fontFamilies'];
-			
+
 			if ( ! empty( $font_families ) && is_array( $font_families ) ) {
 				$font_families = array_values(
 					array_filter(
@@ -499,12 +499,12 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 		 *
 		 * @return void
 		 * @param array $font Font Data.
-		 * @since x.x.x
+		 * @since 2.5.1
 		 */
 		public static function delete_theme_font_family( $font ) {
 			// Construct updated theme.json.
 			$theme_json_raw = json_decode( file_get_contents( get_stylesheet_directory() . '/theme.json' ), true );
-			
+
 			// Overwrite the previous fontFamilies with the new ones.
 			$font_families = $theme_json_raw['settings']['typography']['fontFamilies'];
 			if ( ! empty( $font_families ) && is_array( $font_families ) ) {
@@ -527,7 +527,7 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 			);
 
 			$spectra_global_fse_fonts = \UAGB_Admin_Helper::get_admin_settings_option( 'spectra_global_fse_fonts', array() );
-			
+
 			if ( ! is_array( $spectra_global_fse_fonts ) ) {
 				$response_data = array(
 					'messsage' => __( 'There was some error in deleting the font.', 'ultimate-addons-for-gutenberg' ),
@@ -546,7 +546,7 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 					}
 				)
 			);
-			
+
 			foreach ( $spectra_global_fse_fonts as $key => $value ) {
 				if ( $font['fontFamily'] === $value['value'] ) {
 					array_splice( $spectra_global_fse_fonts, $key, $key );
