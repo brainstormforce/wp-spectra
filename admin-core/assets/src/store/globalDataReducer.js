@@ -59,6 +59,11 @@ const globalDataReducer = ( state = {}, action ) => {
                 ...state,
                 selectedFontFamilies: action.payload,
             };
+        case 'UPDATE_ENABLE_FSE_FONT_FAMILIES':
+            return {
+                ...state,
+                enableFSEFontFamilies: action.payload,
+        };
         case 'UPDATE_ENABLE_LOAD_FONTS_LOCALLY':
             return {
                 ...state,

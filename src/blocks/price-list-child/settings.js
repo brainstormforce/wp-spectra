@@ -45,7 +45,7 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs tabs={ [ 'general', 'advance' ] }>
 					<InspectorTab { ...UAGTabs.general }>
-						<UAGAdvancedPanelBody initialOpen={ true }>
+					<UAGAdvancedPanelBody title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 							<p className="uagb-settings-notice">
 								{ showImage
 									? __(

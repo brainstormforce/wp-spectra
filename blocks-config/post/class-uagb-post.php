@@ -827,16 +827,20 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 					// Spacing Attributes.
 					'paddingTop'                    => array(
-						'type' => 'number',
+						'type'    => 'number',
+						'default' => 20,
 					),
 					'paddingBottom'                 => array(
-						'type' => 'number',
+						'type'    => 'number',
+						'default' => 20,
 					),
 					'paddingRight'                  => array(
-						'type' => 'number',
+						'type'    => 'number',
+						'default' => 20,
 					),
 					'paddingLeft'                   => array(
-						'type' => 'number',
+						'type'    => 'number',
+						'default' => 20,
 					),
 					'paddingTopMobile'              => array(
 						'type' => 'number',

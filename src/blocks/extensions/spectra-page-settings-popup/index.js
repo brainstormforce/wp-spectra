@@ -1,7 +1,6 @@
 /**
  * Meta Options build.
  */
-import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
 import { compose } from '@wordpress/compose';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
@@ -11,9 +10,12 @@ import { PanelBody } from '@wordpress/components';
 import { applyFilters } from '@wordpress/hooks';
 
 const SpectraPageSettingsPopup = ( props ) => {
+	if ( 'site-editor' === uagb_blocks_info.is_site_editor ){
+		return;
+	}
 	const pluginSidebarBefore = applyFilters( `spectra.page-sidebar.before`, '', props );
 	const pluginSidebarAfter = applyFilters( `spectra.page-sidebar.after`, '', props );
-
+	const { PluginSidebar, PluginSidebarMoreMenuItem } = window?.wp?.editPost;
 	return (
 		<>
 			{ 'yes' === uagb_blocks_info.enable_on_page_css_button && (

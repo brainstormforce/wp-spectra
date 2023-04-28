@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 5.6
 Tested up to: 6.2
-Stable tag: 2.5.0
+Stable tag: 2.5.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -173,7 +173,16 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 = x.x.x =
 * New: Animations - Give a new life to your page with some scroll-based entrance animations.
 
-= 2.5.0 - THURSDAY, 20th APRIL 2023 =
+= 2.5.1 - THURSDAY, 27th APRIL 2023 =
+* Feature: You can now add Google Fonts to Block Based Themes from Spectra Dashboard.
+* Fix: Counter - Added support for use within Slider (previously not working within Slider when it's set to infinite loop).
+* Fix: Buttons - Gap settings on Mobile preview is taking desktop value as default.
+* Fix: Modal - Container background do not get border radius.
+* Fix: Modal - Background not applying properly when custom width is set.
+* Fix: Resolve an issue of PHP error appear for block-based widget editor.
+* Fix: Table Of Contents - Removed the console warning that was thrown for an empty collapsible Table Of Contents block.
+
+= 2.5.0 - TUESDAY, 25th APRIL 2023 =
 * New: Spectra now has support for the all-new Spectra Pro!
 * Improvement: Global - Improved the editor performance.
 * Improvement: Global - Added Advanced options in Gradient Component.
