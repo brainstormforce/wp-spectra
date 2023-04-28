@@ -244,6 +244,8 @@ export default function styling( attributes, clientId, name ) {
 			'background': overlayColor,
 		},
 		' .uagb-modal-popup-content': {
+			'width': generateCSSUnit( modalWidth, modalWidthType ),
+			'height': generateCSSUnit( modalHeight, modalHeightType ),
 			'padding-left': generateCSSUnit( paddingModalLeft, paddingModalUnit ),
 			'padding-right': generateCSSUnit( paddingModalRight, paddingModalUnit ),
 			'padding-top': generateCSSUnit( paddingModalTop, paddingModalUnit ),
@@ -347,6 +349,8 @@ export default function styling( attributes, clientId, name ) {
 			'width': generateCSSUnit( modalWidthTablet, modalWidthType ),
 		},
 		' .uagb-modal-popup-content': {
+			'width': generateCSSUnit( modalWidthTablet, modalWidthType ),
+			'height': generateCSSUnit( modalHeightTablet, modalHeightType ),
 			'padding-left': generateCSSUnit( paddingModalLeftTablet, tabletPaddingModalUnit ),
 			'padding-right': generateCSSUnit( paddingModalRightTablet, tabletPaddingModalUnit ),
 			'padding-top': generateCSSUnit( paddingModalTopTablet, tabletPaddingModalUnit ),
@@ -410,6 +414,8 @@ export default function styling( attributes, clientId, name ) {
 			'width': generateCSSUnit( modalWidthMobile, modalWidthType ),
 		},
 		' .uagb-modal-popup-content': {
+			'width': generateCSSUnit( modalWidthMobile, modalWidthType ),
+			'height': generateCSSUnit( modalHeightMobile, modalHeightType ),
 			'padding-left': generateCSSUnit( paddingModalLeftMobile, mobilePaddingModalUnit ),
 			'padding-right': generateCSSUnit( paddingModalRightMobile, mobilePaddingModalUnit ),
 			'padding-top': generateCSSUnit( paddingModalTopMobile, mobilePaddingModalUnit ),

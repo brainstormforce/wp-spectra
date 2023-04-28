@@ -80,6 +80,8 @@ $selectors               = array(
 	),
 	' .uagb-modal-popup-content'                 => array_merge(
 		array(
+			'width'          => UAGB_Helper::get_css_value( $attr['modalWidth'], $attr['modalWidthType'] ),
+			'height'         => UAGB_Helper::get_css_value( $attr['modalHeight'], $attr['modalHeightType'] ),
 			'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingModalLeft'], $attr['paddingModalUnit'] ),
 			'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingModalRight'], $attr['paddingModalUnit'] ),
 			'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingModalTop'], $attr['paddingModalUnit'] ),
@@ -176,6 +178,8 @@ $t_selectors             = array(
 	),
 	' .uagb-modal-popup-content'               => array_merge(
 		array(
+			'height'         => UAGB_Helper::get_css_value( $attr['modalHeightTablet'], $attr['modalHeightType'] ),
+			'width'          => UAGB_Helper::get_css_value( $attr['modalWidthTablet'], $attr['modalWidthType'] ),
 			'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingModalLeftTablet'], $attr['tabletPaddingModalUnit'] ),
 			'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingModalRightTablet'], $attr['tabletPaddingModalUnit'] ),
 			'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingModalTopTablet'], $attr['tabletPaddingModalUnit'] ),
@@ -240,6 +244,8 @@ $m_selectors             = array(
 	),
 	' .uagb-modal-popup-content'               => array_merge(
 		array(
+			'width'          => UAGB_Helper::get_css_value( $attr['modalWidthMobile'], $attr['modalWidthType'] ),
+			'height'         => UAGB_Helper::get_css_value( $attr['modalHeightMobile'], $attr['modalHeightType'] ),
 			'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingModalLeftMobile'], $attr['mobilePaddingModalUnit'] ),
 			'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingModalRightMobile'], $attr['mobilePaddingModalUnit'] ),
 			'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingModalTopMobile'], $attr['mobilePaddingModalUnit'] ),
