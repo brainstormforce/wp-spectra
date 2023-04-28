@@ -8,23 +8,11 @@
  */
 
 $btn_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute(
-	'btn',
-	array(
-		'borderTopLeftRadius'     => 3,
-		'borderTopRightRadius'    => 3,
-		'borderBottomLeftRadius'  => 3,
-		'borderBottomRightRadius' => 3,
-	)
+	'btn'
 );
 
 $content_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute(
-	'content',
-	array(
-		'borderTopLeftRadius'     => 3,
-		'borderTopRightRadius'    => 3,
-		'borderBottomLeftRadius'  => 3,
-		'borderBottomRightRadius' => 3,
-	)
+	'content'
 );
 
 $additional_attributes = apply_filters(
