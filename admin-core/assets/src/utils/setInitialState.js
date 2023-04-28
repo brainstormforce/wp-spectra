@@ -4,6 +4,7 @@ const setInitialState = ( store ) => {
     apiFetch( {
         path: '/uag/v1/admin/commonsettings/',
     } ).then( ( data ) => {
+        
         const initialState = {
             initialStateSetFlag : true,
             activeBlocksFilterTab : 'all',
@@ -16,6 +17,7 @@ const setInitialState = ( store ) => {
             enableBeta : data.enable_beta_updates,
             enableSelectedFontFamilies : data.load_select_font_globally,
             selectedFontFamilies :  data.select_font_globally,
+            enableFSEFontFamilies : data.load_fse_font_globally,
             enableLoadFontsLocally : data.load_gfonts_locally,
             enablePreloadLocalFonts : data.preload_local_fonts,
             enableCollapsePanels : data.collapse_panels,
@@ -41,6 +43,9 @@ const setInitialState = ( store ) => {
 			social: data.social,
             instaLinkedAccounts: data?.insta_linked_accounts,
             coreBlocks: data.spectra_core_blocks,
+            spectraFSEFonts: data.spectra_global_fse_fonts,
+            spectraIsBlockTheme: data.wp_is_block_theme,
+            themeFonts: data.theme_fonts
         };
 
         store.dispatch( {type: 'UPDATE_INITIAL_STATE', payload: initialState} );

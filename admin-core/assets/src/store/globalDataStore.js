@@ -11,6 +11,7 @@ const initialState = {
     enableBeta : '',
     enableSelectedFontFamilies : '',
     selectedFontFamilies : '',
+    enableFSEFontFamilies : '',
     enableLoadFontsLocally : '',
     enablePreloadLocalFonts : '',
     enableCollapsePanels : '',
@@ -53,7 +54,10 @@ const initialState = {
         'buttons',
         'info-box',
         'call-to-action',
-    ]
+    ],
+    spectraFSEFonts: [],
+    themeFonts: [],
+    spectraIsBlockTheme: false
 };
 
 const globalDataStore = createStore(

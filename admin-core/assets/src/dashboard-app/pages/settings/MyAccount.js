@@ -36,7 +36,7 @@ export default function MyAccount() {
 		} ).then( ( data ) => {
             if ( data.success ) {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'License successfully validated!', 'ultimate-addons-for-gutenberg' ) } );
-				location.reload(); // eslint-disable-line no-undef
+				location.reload();
 			} else {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: {
 					message : data?.data?.message,
@@ -61,7 +61,7 @@ export default function MyAccount() {
 		} ).then( ( data ) => {
             if ( data.success ) {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'License successfully deactivated!', 'ultimate-addons-for-gutenberg' ) } );
-				location.reload(); // eslint-disable-line no-undef
+				location.reload();
 			} else {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: {
 					message : data?.data?.message,
