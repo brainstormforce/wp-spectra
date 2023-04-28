@@ -112,18 +112,21 @@ const FSEFontFamilies = () => {
    
     const updateSelectedFontFamilies = ( font, type ) => {
 		if ( enableFSEFontFamilies === 'enabled' ) {
-            if ( 'family' === type ) {
-                setFSEFontFamilies( font );
-            } else if ( 'weight' === type ) {
-                const updateObj = {...fseFontFamilies}
-                updateObj.weight = font;
-                font = updateObj;
-                setFSEFontFamilies( font );
-            } else if ( 'styles' === type ) {
-                const updateObj = {...fseFontFamilies}
-                updateObj.style = font;
-                font = updateObj;
-                setFSEFontFamilies( font );
+            const updateObj = {...fseFontFamilies}
+            switch( type ) {
+                case 'family':
+                    setFSEFontFamilies( font );
+                    break;
+                case 'weight':
+                    updateObj.weight = font;
+                    font = updateObj;
+                    setFSEFontFamilies( font );
+                    break;
+                case 'styles':
+                    updateObj.style = font;
+                    font = updateObj;
+                    setFSEFontFamilies( font );
+                    break;
             }
 		}
 	};
@@ -339,7 +342,7 @@ const FSEFontFamilies = () => {
                             0 === spectraFSEFonts?.length &&
                             (
                                 <div className="px-6 py-3">
-                                {__( 'Currently no Font Families added.', 'ultimate-addons-for-gutenberg' )}
+                                {__( 'Currently, no Font Families added.', 'ultimate-addons-for-gutenberg' )}
                                 </div>
                             )
                         }
