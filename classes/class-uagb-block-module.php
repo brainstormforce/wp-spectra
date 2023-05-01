@@ -249,6 +249,16 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 						'dep'  => array(),
 						'type' => 'css',
 					),
+					'uagb-aos-js'       => array(
+						'src'  => UAGB_URL . 'assets/js/aos.min.js',
+						'dep'  => array(),
+						'type' => 'js',
+					),
+					'uagb-aos-css'      => array(
+						'src'  => UAGB_URL . 'assets/css/aos.min.css',
+						'dep'  => array(),
+						'type' => 'css',
+					),
 				);
 			}
 

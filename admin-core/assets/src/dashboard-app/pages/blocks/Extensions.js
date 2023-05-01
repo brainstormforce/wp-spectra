@@ -1,6 +1,7 @@
 import DisplayConditionsExtension from '@DashboardApp/pages/blocks/DisplayConditionsExtension';
 import MasonryGalleryExtension from '@DashboardApp/pages/blocks/MasonryGalleryExtension';
 import ResponsiveConditionsExtention from '@DashboardApp/pages/blocks/ResponsiveConditionsExtention';
+import AnimationsExtension from '@DashboardApp/pages/blocks/AnimationsExtension';
 import DynamicContentExtension from '@DashboardApp/pages/blocks/DynamicContentExtension';
 
 const Extensions = ( { currentTab } ) => {
@@ -9,6 +10,7 @@ const Extensions = ( { currentTab } ) => {
 	if ( 'extensions' === currentTab || 'all' === currentTab ) {
 		return (
 			<>
+				<AnimationsExtension/>
 				<DisplayConditionsExtension/>
 				<DynamicContentExtension/>
 				<MasonryGalleryExtension/>

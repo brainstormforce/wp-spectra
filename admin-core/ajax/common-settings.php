@@ -61,6 +61,7 @@ class Common_Settings extends Ajax_Base {
 			'enable_masonry_gallery',
 			'enable_block_responsive',
 			'enable_dynamic_content',
+			'enable_animations_extension',
 			'blocks_activation_and_deactivation',
 			'load_select_font_globally',
 			'load_fse_font_globally',
@@ -546,7 +547,20 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Save setting - Enables templates button.
+	 * Required Plugin Activate
+	 *
+	 * @return void
+	 * 
+	 * @since x.x.x
+	 */
+	public function enable_animations_extension() {
+		$this->check_permission_nonce( 'uag_enable_animations_extension' );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_enable_animations_extension', sanitize_text_field( $value ) );
+	}
+
+	/**
+	 * Save settings - Enables templates button.
 	 *
 	 * @return void
 	 */
