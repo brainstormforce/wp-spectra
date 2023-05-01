@@ -791,8 +791,7 @@ class UAGB_Post_Assets {
 		// Also check if animations extension is enabled.
 		if (
 			'enabled' === \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_animations_extension', 'enabled' ) &&
-			isset( $block['attrs']['UAGAnimationType'] ) &&
-			'' !== $block['attrs']['UAGAnimationType']
+			! empty( $block['attrs']['UAGAnimationType'] )
 		) {
 			$this->current_block_list[] = 'uagb/animations-extension';
 		}
