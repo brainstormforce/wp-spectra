@@ -117,10 +117,6 @@ We understand the need for a quality product backed by dedicated support that ca
 
 You may now contribute to the plugin on Github: <a href="https://github.com/brainstormforce/ultimate-addons-for-gutenberg" target="_blank" rel="">Spectra on Github</a>
 
-<strong>CREDITS</strong>
-
-The awesome React FontIconPicker is developed by <a href="http://codeb.it/" target="_blank" rel="">Alessandro Benoit</a> & <a href="https://github.com/swashata" target="_blank" rel="">Swashata</a>. Our external packages use <a href="https://github.com/n49/react-stars" target="_blank" rel="">Star Ratings Component</a> that are distributed under the terms of the ISC. While <a href="https://github.com/akiran/react-slick" target="_blank" rel="">Slick</a>, <a href="https://github.com/chenqingspring/react-lottie" target="_blank" rel="">Lottie</a> and <a href="https://github.com/ericnorris/striptags" target="_blank" rel="">Striptags</a> is distributed under the terms of the MIT.
-
 ## Installation ##
 
 1. Install the Spectra either via the WordPress plugin directory or by uploading the files to your server at wp-content/plugins.
@@ -159,6 +155,10 @@ Absolutely no! The Spectra is built with ease and performance in mind. Its modul
 ### What more do I get with the Spectra? ###
 
 When you use the Spectra along with the free Astra theme, you get a huge library of ready-to-use starter sites that can be imported and used to build your own. Read an article about the <a href="https://wpspectra.com/ready-websites-for-gutenberg/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Starter Sites with Gutenberg</a> to know more.
+
+## Credits ##
+
+The awesome React FontIconPicker is developed by [Alessandro Benoit](http://codeb.it/) & [Swashata](https://github.com/swashata). Our external packages uses [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
 
 ## Screenshots ##
 
