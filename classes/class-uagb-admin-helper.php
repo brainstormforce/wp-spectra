@@ -80,6 +80,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 						'call-to-action',
 					)
 				),
+				'wp_is_block_theme'                 => function_exists( 'wp_is_block_theme' ) ? wp_is_block_theme() : false,
 			);
 
 			return $options;

@@ -25,7 +25,7 @@ class Common_Settings extends Ajax_Base {
 	 *
 	 * @access private
 	 * @var object Class object.
-	 * 
+	 *
 	 * @since 2.0.0
 	 */
 	private static $instance;
@@ -34,7 +34,7 @@ class Common_Settings extends Ajax_Base {
 	 * Initiator
 	 *
 	 * @return object initialized object of class.
-	 * 
+	 *
 	 * @since 2.0.0
 	 */
 	public static function get_instance() {
@@ -63,6 +63,9 @@ class Common_Settings extends Ajax_Base {
 			'enable_dynamic_content',
 			'blocks_activation_and_deactivation',
 			'load_select_font_globally',
+			'load_fse_font_globally',
+			'fse_font_globally',
+			'fse_font_globally_delete',
 			'select_font_globally',
 			'load_gfonts_locally',
 			'preload_local_fonts',
@@ -100,7 +103,7 @@ class Common_Settings extends Ajax_Base {
 	 * @param string $scope The capability required to perform the action. Default is 'manage_options'.
 	 * @param string $security The security to check the nonce against. Default is 'security'.
 	 * @return void
-	 * 
+	 *
 	 * @since 2.5.0
 	 */
 	private function check_permission_nonce( $option, $scope = 'manage_options', $security = 'security' ) {
@@ -113,7 +116,7 @@ class Common_Settings extends Ajax_Base {
 		 * Nonce verification
 		 */
 		if ( ! check_ajax_referer( $option, $security, false ) ) {
-			wp_send_json_error( array( 'messsage' => $this->get_error_msg( 'nonce' ) ) ); 
+			wp_send_json_error( array( 'messsage' => $this->get_error_msg( 'nonce' ) ) );
 		}
 	}
 
@@ -123,31 +126,31 @@ class Common_Settings extends Ajax_Base {
 	 * @param string $option The name of the option to update.
 	 * @param mixed  $value The value to be updated.
 	 * @return void
-	 * 
+	 *
 	 * @since 2.5.0
 	 */
 	private function save_admin_settings( $option, $value ) {
 		\UAGB_Admin_Helper::update_admin_settings_option( $option, $value );
-		
+
 
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
 		);
 		wp_send_json_success( $response_data );
 	}
-	
+
 	/**
 	 * Checks if the specified key exists in the $_POST array and returns the corresponding value.
 	 *
 	 * @param string $key The key to check in the $_POST array. Default value is 'value'.
 	 * @return mixed The value of the specified key in the $_POST array if it exists, otherwise sends a JSON error response.
-	 * 
+	 *
 	 *  @since 2.5.0
 	 */
 	private function check_post_value( $key = 'value' ) {
 		// nonce verification done in function check_permission_nonce.
 		if ( ! isset( $_POST[ $key ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			wp_send_json_error( array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) ) );  
+			wp_send_json_error( array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) ) );
 		}
 		// security validation done as per data type in function save_admin_settings.
 		return $_POST[ $key ]; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.NonceVerification.Missing
@@ -239,7 +242,7 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function fetch_pages() {
 		$this->check_permission_nonce( 'uag_fetch_pages' );
-		
+
 		$args = array(
 			'post_type'      => 'page',
 			'posts_per_page' => 5,
@@ -342,15 +345,63 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
+	 * Save setting - Loads selected font globally.
+	 *
+	 * @since 2.5.1
+	 * @return void
+	 */
+	public function load_fse_font_globally() {
+		$this->check_permission_nonce( 'uag_load_fse_font_globally' );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_load_fse_font_globally', sanitize_text_field( $value ) );
+	}
+
+	/**
 	 * Save setting - Saves selected font globally.
 	 *
+	 * @since 2.5.1
 	 * @return void
 	 */
 	public function select_font_globally() {
 		$this->check_permission_nonce( 'uag_select_font_globally' );
 		$value = $this->check_post_value();
-		$value = json_decode( stripslashes( $value ), true ); 
+		$value = json_decode( stripslashes( $value ), true );
 		$this->save_admin_settings( 'uag_select_font_globally', $this->sanitize_form_inputs( $value ) );
+	}
+
+	/**
+	 * Save setting - Saves selected font globally.
+	 *
+	 * @since 2.5.1
+	 * @return void
+	 */
+	public function fse_font_globally_delete() {
+		$this->check_permission_nonce( 'uag_fse_font_globally_delete' );
+		$value = $this->check_post_value();
+		$value = json_decode( stripslashes( $value ), true );
+		\UAGB_FSE_Fonts_Compatibility::delete_theme_font_family( $value );
+	}
+
+	/**
+	 * Save setting - Saves selected font globally.
+	 *
+	 * @since 2.5.1
+	 * @return void
+	 */
+	public function fse_font_globally() {
+		$this->check_permission_nonce( 'uag_fse_font_globally' );
+		$value = $this->check_post_value();
+		$value = json_decode( stripslashes( $value ), true );
+
+		$spectra_global_fse_fonts = \UAGB_Admin_Helper::get_admin_settings_option( 'spectra_global_fse_fonts', array() );
+
+		if ( ! is_array( $spectra_global_fse_fonts ) ) {
+			$spectra_global_fse_fonts = array();
+		}
+
+		$spectra_global_fse_fonts[] = $value;
+
+		$this->save_admin_settings( 'spectra_global_fse_fonts', $this->sanitize_form_inputs( $spectra_global_fse_fonts ) );
 	}
 
 	/**
@@ -401,12 +452,12 @@ class Common_Settings extends Ajax_Base {
 	 * Save setting - Saves social settings.
 	 *
 	 * @return void
-	 * 
+	 *
 	 * @since 2.1.0
 	 */
 	public function social() {
 		$this->check_permission_nonce( 'uag_social' );
-		
+
 		$social = \UAGB_Admin_Helper::get_admin_settings_option(
 			'uag_social',
 			array(
@@ -437,7 +488,7 @@ class Common_Settings extends Ajax_Base {
 	 * Save setting - Enables dynamic content mode.
 	 *
 	 * @return void
-	 * 
+	 *
 	 * @since 2.1.0
 	 */
 	public function dynamic_content_mode() {
@@ -461,7 +512,7 @@ class Common_Settings extends Ajax_Base {
 	 * Save setting - Enables block conditions.
 	 *
 	 * @return void
-	 * 
+	 *
 	 * @since 2.4.0
 	 */
 	public function enable_block_condition() {
@@ -485,7 +536,7 @@ class Common_Settings extends Ajax_Base {
 	 * Save setting - Enables dynamic content.
 	 *
 	 * @return void
-	 * 
+	 *
 	 * @since 2.1.0
 	 */
 	public function enable_dynamic_content() {
@@ -526,12 +577,12 @@ class Common_Settings extends Ajax_Base {
 		$value = $this->check_post_value();
 
 		// will sanitize $value in later stage.
-		$value = json_decode( stripslashes( $value ), true ); 
-		
+		$value = json_decode( stripslashes( $value ), true );
+
 		if ( 'disabled' === \UAGB_Helper::$file_generation ) {
 			\UAGB_Admin_Helper::create_specific_stylesheet(); // Get Specific Stylesheet.
 		}
-		
+
 		$this->save_admin_settings( '_uagb_blocks', $this->sanitize_form_inputs( $value ) );
 	}
 
@@ -649,10 +700,10 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function auto_block_recovery() {
 		$this->check_permission_nonce( 'uag_auto_block_recovery' );
-		$value = $this->check_post_value(); 
+		$value = $this->check_post_value();
 		$this->save_admin_settings( 'uag_auto_block_recovery', sanitize_text_field( $value ) );
 	}
-	
+
 	/**
 	 * Save setting - All Linked Instagram Accounts.
 	 *
@@ -667,7 +718,7 @@ class Common_Settings extends Ajax_Base {
 		// The previous $value is not sanitized, as the array sanitization is handled in the class method used below.
 		$this->save_admin_settings( 'uag_insta_linked_accounts', $this->sanitize_form_inputs( $value ) );
 	}
-	
+
 	/**
 	 * Save setting - All Instagram Users' Media.
 	 *
@@ -691,7 +742,7 @@ class Common_Settings extends Ajax_Base {
 	 * @since 2.4.1
 	 */
 	public function insta_refresh_all_tokens() {
-		$this->check_permission_nonce( 'uag_insta_refresh_all_tokens' ); 
+		$this->check_permission_nonce( 'uag_insta_refresh_all_tokens' );
 		if ( ! empty( $_POST['value'] ) && class_exists( '\SpectraPro\BlocksConfig\InstagramFeed\Block' ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Missing
 			\SpectraPro\BlocksConfig\InstagramFeed\Block::refresh_all_instagram_users();
 			wp_send_json_success( array( 'messsage' => __( 'Successfully refreshed tokens!', 'ultimate-addons-for-gutenberg' ) ) );

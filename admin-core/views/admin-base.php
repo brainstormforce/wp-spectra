@@ -9,7 +9,6 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 ?>
 <div class="uag-menu-page-wrapper">
 	<div id="uag-menu-page">
