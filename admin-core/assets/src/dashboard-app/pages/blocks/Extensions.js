@@ -10,11 +10,11 @@ const Extensions = ( { currentTab } ) => {
 	if ( 'extensions' === currentTab || 'all' === currentTab ) {
 		return (
 			<>
+				<AnimationsExtension/>
 				<DisplayConditionsExtension/>
 				<DynamicContentExtension/>
 				<MasonryGalleryExtension/>
 				<ResponsiveConditionsExtention/>
-				<AnimationsExtension/>
 			</>
 		);
 	} else if ( 'pro' === currentTab ) {
