@@ -44,7 +44,7 @@ const FaqChildComponent = ( props ) => {
 
 	return (
 		<>
-			{ isSelected && <Settings /> }
+			{ isSelected && <Settings parentProps={ props } /> }
 			<Render parentProps={ props } state={ state } />
 		</>
 	);

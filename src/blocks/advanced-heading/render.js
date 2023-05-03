@@ -20,7 +20,11 @@ const Render = ( props ) => {
 		setAttributes,
 		className,
 		context,
+		onReplace,
+		mergeBlocks
 	} = props;
+
+	const params = { setAttributes, attributes, context, onReplace, mergeBlocks };
 
 	const deviceType = useDeviceType();
 
@@ -33,7 +37,7 @@ const Render = ( props ) => {
 	const headingText = (
 		<>
 			{ seperatorPosition === 'above-heading' ? separator : '' }
-			<Renderer { ...{ setAttributes, attributes, context } } />
+			<Renderer { ...params } />
 			{ seperatorPosition === 'below-heading' ? separator : '' }
 		</>
 	);
@@ -41,7 +45,7 @@ const Render = ( props ) => {
 	const descText = (
 		<>
 			{ seperatorPosition === 'above-sub-heading' ? separator : '' }
-			<RendererDesc { ...{ setAttributes, attributes, context } } />
+			<RendererDesc { ...params } />
 			{ seperatorPosition === 'below-sub-heading' ? separator : '' }
 		</>
 	);

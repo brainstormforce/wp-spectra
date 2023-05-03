@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.2  
-**Stable tag:** 2.5.0  
+**Stable tag:** 2.5.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -170,20 +170,36 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### 2.5.0 - THURSDAY, 20th APRIL 2023 ###
+### x.x.x ###
+* New: Animations - Give a new life to your page with some scroll-based entrance animations.
+* Improvement: Added functionality in which a new paragraph block will be created when clicking enter in heading block.
+
+### 2.5.1 - THURSDAY, 27th APRIL 2023 ###
+* Feature: You can now add Google Fonts to Block Based Themes from Spectra Dashboard.
+* Fix: Counter - Added support for use within Slider (previously not working within Slider when it's set to infinite loop).
+* Fix: Buttons - Gap settings on Mobile preview is taking desktop value as default.
+* Fix: Modal - Container background do not get border radius.
+* Fix: Modal - Background not applying properly when custom width is set.
+* Fix: Resolve an issue of PHP error appear for block-based widget editor.
+* Fix: Table Of Contents - Removed the console warning that was thrown for an empty collapsible Table Of Contents block.
+
+### 2.5.0 - TUESDAY, 25th APRIL 2023 ###
 * New: Spectra now has support for the all-new Spectra Pro!
 * Improvement: Global - Improved the editor performance.
 * Improvement: Global - Added Advanced options in Gradient Component.
 * Fix: Container - Resolved an issue where the heading tags were not inheriting the color from the theme or the Container.
-* Fix: Container - Updated the default content width for block-based themes to "wideSize".
 * Fix: Container - Removed Z-index restrictions that caused Image Gallery Lightboxes to get overlapped by other content.
 * Fix: Container - Handled the full-width issue encountered with the Neve theme on the front-end.
+* Fix: Container - Fixed settings link control's unlink functionality.
 * Fix: Heading - Removed the extra padding that was visible in the editor.
 * Fix: Image - Resolved an issue where the width and height tags would not appear when an image is uploaded.
 * Fix: Image - Removed the extra spacing and fixed the escaping container size issue in FSE themes.
+* Fix: Image - Resolved an issue in which the image sizing was incorrectly set for mobile devices on the front-end.
+* Fix: Countdown - Fixed separator line-height mismatch between the editor and the front-end.
 * Fix: Forms - Resolved an accessibility issue wherein the field labels for date and toggle child were missing.
 * Fix: Image Gallery - Replaced the null array focus list with an optimized object.
 * Fix: Image Gallery - Updated the carousel gap to work as required.
+* Fix: Modal - Removed the trigger alignment option for automatic, custom ID and custom class trigger types.
 * Fix: Post Carousel - Resolved an issue in the TwentyTwentyone theme wherein the hover styles for arrows and dots were mismatched in the editor and front-end.
 * Fix: Post Carousel - Resolved an issue in which the gap between posts was not visible when only 2 posts were present.
 * Fix: Slider - Updated dot color setting to avoid taking the background color of arrows.
@@ -194,11 +210,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Typography Control - Removed the capability to set negative values for line height and font size settings.
 * Fix: Global - Resolved an issue in which fonts would not load in the customizer when Spectra blocks are used in Astra theme's header/footer section.
 * Fix: Global - Updated the mobile settings to inherit tablet setting values in the editor instead of inheriting desktop values.
-* Fix: Container - Fixed settings link control's unlink functionality.
-* Fix: Countdown - Fixed separator line-height not matching (looking the same as editor) on frontend.
 
 ### 2.4.2 - WEDNESDAY, 12th APRIL 2023 ###
-* Fix: Container - Updated default content width for block based themes to wideSize.
+* Fix: Container - Updated the default content width for block-based themes to "wideSize".
 
 ### 2.4.1 - TUESDAY, 28th MARCH 2023 ###
 * Improvement: Updated Spectra to work with WordPress 6.2 and Full Site Editing (FSE) themes.
@@ -210,8 +224,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Social Share - Optimized PHP code for legacy users causing an error due `array_merge()` parameter issues.
 * Fix: Taxonomy List - Added the missing translation for the Select string in the PHP code.
 * Fix: Post Grid - Resolved an issue where pagination was not visible inside the editor.
-* Fix: Modal - Resolved an issue where trigger alignment option was displayed for Automatic/Custom-Id/Classs trigger types in modal.
-* Fix: Image - Resolved an issue where image responsive sizing was not proper for mobile devices.
 
 ### 2.4.0 - WEDNESDAY, 15th MARCH 2023 ###
 * New: Introducing the Countdown block that will help you generate hype and create a sense of urgency among your audience, during product sales or releases!

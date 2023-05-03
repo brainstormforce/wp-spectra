@@ -1,9 +1,10 @@
 import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 import { applyFilters } from '@wordpress/hooks';
+import { createBlock } from '@wordpress/blocks';
 
 const RendererDesc = ( props ) => {
-	const { setAttributes, context } = props;
+	const { setAttributes, attributes, context, onReplace, mergeBlocks  } = props;
 
 	let { headingDesc } = props.attributes;
 
@@ -17,7 +18,9 @@ const RendererDesc = ( props ) => {
 			headingDesc = renderedMarkup;
 		}
 	}
-
+	
+	const propsOnSplit = ( value ) => value ? createBlock( 'uagb/advanced-heading', { ...attributes, headingDesc: value} ) : createBlock( 'core/paragraph' );
+	
 	return (
 		<RichText
 			tagName="p"
@@ -26,6 +29,10 @@ const RendererDesc = ( props ) => {
 			className="uagb-desc-text"
 			onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
 			allowedFormats={ allowedFormats }
+			onMerge={ mergeBlocks }
+			onSplit={ propsOnSplit }
+			onReplace={ onReplace }
+			onRemove={ () => onReplace( [] ) }
 		/>
 	);
 };

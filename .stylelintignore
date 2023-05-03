@@ -27,4 +27,9 @@ admin-core/assets/build/
 admin-core/assets/images/
 admin-core/**/*-rtl.css
 
+# Misc.
+
 src/components/icon-picker/editor.lazy.scss
+
+# AOS libary files
+assets/css/aos.css
