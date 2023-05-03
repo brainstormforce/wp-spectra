@@ -33,7 +33,7 @@ return array_merge(
 		'separatorHeightType'          => 'px',
 		'separatorSpaceType'           => 'px',
 		'separatorColor'               => '#0170b9',
-		'seperatorStyle'               => 'solid',
+		'seperatorStyle'               => 'none',
 		'separatorHeight'              => 2,
 		'separatorWidth'               => 12,
 		'separatorWidthTablet'         => '',
