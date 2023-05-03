@@ -3,13 +3,11 @@
  */
 
 import { useEffect } from '@wordpress/element';
-import { useDeviceType } from '@Controls/getPreviewType';
 import Settings from './settings';
 import Render from './render';
 
 const ContentTimelineChildComponent = ( props ) => {
-	const deviceType = useDeviceType();
-	const { isSelected, setAttributes } = props;
+	const { isSelected, setAttributes, deviceType } = props;
 
 	useEffect( () => {
 		// Replacement for componentDidMount.

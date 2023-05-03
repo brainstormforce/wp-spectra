@@ -6,13 +6,11 @@ import classnames from 'classnames';
 import shapes from './shapes';
 import { useMemo, memo } from '@wordpress/element';
 
-import { useDeviceType } from '@Controls/getPreviewType';
 const ALLOWED_BLOCKS = [ 'uagb/column' ];
 import { InnerBlocks } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
-	const { attributes, isSelected, className } = props.parentProps;
-	const deviceType = useDeviceType();
+	const { attributes, isSelected, className, deviceType } = props.parentProps;
 	const {
 		stack,
 		align,

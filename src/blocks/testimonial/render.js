@@ -7,7 +7,6 @@ import AuthorName from './components/AuthorName';
 import Company from './components/Company';
 import Description from './components/Description';
 import styles from './editor.lazy.scss';
-import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import Slider from 'react-slick';
 import getImageHeightWidth from '@Controls/getImageHeightWidth';
@@ -22,9 +21,8 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-	const deviceType = useDeviceType();
 	const blockName = props.name.replace( 'uagb/', '' );
-	const { className, setAttributes, attributes } = props;
+	const { className, setAttributes, attributes, deviceType } = props;
 
 	// Setup the attributes.
 	const {

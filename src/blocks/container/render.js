@@ -3,13 +3,11 @@ import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import shapes from './shapes';
 import { select } from '@wordpress/data';
-import { useDeviceType } from '@Controls/getPreviewType';
 import backgroundCss from './backgroundCss';
 
 const Render = ( props ) => {
-	const deviceType = useDeviceType();
 	props = props.parentProps;
-	const { attributes, clientId } = props;
+	const { attributes, clientId, deviceType } = props;
 
 	const {
 		block_id,

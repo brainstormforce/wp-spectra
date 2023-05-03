@@ -6,7 +6,6 @@ import styling from '.././styling';
 import { useEffect, useState, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
-import { useDeviceType } from '@Controls/getPreviewType';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
@@ -20,7 +19,6 @@ import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const PostGridComponent = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		attributes,
@@ -61,6 +59,7 @@ const PostGridComponent = ( props ) => {
 		setAttributes,
 		clientId,
 		name,
+		deviceType
 	} = props;
 
 	const initialState = {

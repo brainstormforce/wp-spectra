@@ -5,7 +5,6 @@ import { createBlock } from '@wordpress/blocks';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import { useLayoutEffect, memo, useEffect } from '@wordpress/element';
 import styles from './editor.lazy.scss';
-import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import getImageHeightWidth from '@Controls/getImageHeightWidth';
 
@@ -27,8 +26,6 @@ const Render = ( props ) => {
 	props = props.parentProps;
 
 	const blockName = props.name.replace( 'uagb/', '' );
-
-	const deviceType = useDeviceType();
 
 	// Setup the attributes
 	const {
@@ -65,6 +62,7 @@ const Render = ( props ) => {
 			imgTagHeight,
 			imgTagWidth,
 		},
+		deviceType
 	} = props;
 
 	const splitBlock = ( before, after, ...blocks ) => {

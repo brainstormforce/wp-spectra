@@ -5,7 +5,6 @@ import { useLayoutEffect, useEffect, useCallback, useMemo } from '@wordpress/ele
 import styling from './styling';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import scrollBlockToView from '@Controls/scrollBlockToView';
-import { useDeviceType } from '@Controls/getPreviewType';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
@@ -24,7 +23,6 @@ import DynamicFontLoader from './dynamicFontLoader';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBFormsEdit = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		attributes,
@@ -53,6 +51,7 @@ const UAGBFormsEdit = ( props ) => {
 		setAttributes,
 		clientId,
 		name,
+		deviceType
 	} = props;
 
 	const {

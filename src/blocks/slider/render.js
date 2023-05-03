@@ -2,7 +2,6 @@ import { useBlockProps, useInnerBlocksProps, store as blockEditorStore } from '@
 import { useEffect, useRef, useMemo, memo } from '@wordpress/element';
 import { useSelect, useDispatch } from '@wordpress/data';
 const ALLOWED_BLOCKS = [ 'uagb/slider-child' ];
-import { useDeviceType } from '@Controls/getPreviewType';
 import { __ } from '@wordpress/i18n';
 import { doAction } from '@wordpress/hooks';
 
@@ -18,9 +17,9 @@ const Render = ( props ) => {
 		block,
 		blockParents,
 		attributes: { slide_content },
+		deviceType
 	} = props;
 
-	const deviceType = useDeviceType();
 	const swiperRef = useRef();
 	const sliderPaginationRef = useRef();
 	const sliderNavPrevRef = useRef();

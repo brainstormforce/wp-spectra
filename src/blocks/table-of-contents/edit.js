@@ -4,7 +4,6 @@
 
 import styling from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
-import { useDeviceType } from '@Controls/getPreviewType';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
@@ -17,7 +16,6 @@ import Render from './render';
 import { useSelect } from '@wordpress/data';
 
 const UAGBTableOfContentsEdit = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		setAttributes,
@@ -35,6 +33,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 			borderColor,
 			borderHoverColor,
 		},
+		deviceType
 	} = props;
 
 	useEffect( () => {

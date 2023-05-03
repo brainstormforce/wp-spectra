@@ -1,7 +1,6 @@
 import classnames from 'classnames';
 import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { useDeviceType } from '@Controls/getPreviewType';
 
 const ALLOWED_BLOCKS = [
 	'uagb/forms-name',
@@ -23,9 +22,7 @@ import { InnerBlocks, RichText } from '@wordpress/block-editor';
 const Render = ( props ) => {
 	props = props.parentProps;
 
-	const deviceType = useDeviceType();
-
-	const { attributes, setAttributes } = props;
+	const { attributes, setAttributes, deviceType } = props;
 	const { block_id, submitButtonText, formLabel, buttonSize, reCaptchaEnable, reCaptchaType } = attributes;
 
 	const onSubmitClick = useCallback( ( e ) => {

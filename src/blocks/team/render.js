@@ -5,7 +5,6 @@ import renderSVG from '@Controls/renderIcon';
 import { createBlock } from '@wordpress/blocks';
 import { RichText } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
-import { useDeviceType } from '@Controls/getPreviewType';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -17,8 +16,7 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-	const deviceType = useDeviceType();
-	const { className, setAttributes, attributes, mergeBlocks, insertBlocksAfter, onReplace } = props;
+	const { className, setAttributes, attributes, mergeBlocks, insertBlocksAfter, onReplace, deviceType } = props;
 
 	const {
 		align,

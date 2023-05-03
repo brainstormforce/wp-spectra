@@ -5,7 +5,6 @@
 // Import classes
 import styling from './styling';
 import { useEffect, useState, useMemo } from '@wordpress/element';
-import { useDeviceType } from '@Controls/getPreviewType';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import DynamicFontLoader from './dynamicFontLoader';
@@ -16,8 +15,6 @@ import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const ButtonsChildComponent = ( props ) => {
-	const deviceType = useDeviceType();
-
 	const {
 		isSelected,
 		clientId,
@@ -25,6 +22,7 @@ const ButtonsChildComponent = ( props ) => {
 		attributes: { borderStyle, borderWidth, borderRadius, borderHColor, borderColor },
 		setAttributes,
 		name,
+		deviceType
 	} = props;
 
 	const initialState = {
