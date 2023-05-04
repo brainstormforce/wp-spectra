@@ -5,7 +5,6 @@
 import contentTimelineStyle from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
 import { dispatch, select } from '@wordpress/data';
-import { useDeviceType } from '@Controls/getPreviewType';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
@@ -16,7 +15,6 @@ import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const ContentTimelineComponent = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		setAttributes,
 		clientId,
@@ -24,6 +22,7 @@ const ContentTimelineComponent = ( props ) => {
 		attributes: { timelinAlignmentTablet, timelinAlignmentMobile, stack, UAGHideDesktop, UAGHideTab, UAGHideMob },
 		isSelected,
 		name,
+		deviceType
 	} = props;
 
 	useEffect( () => {

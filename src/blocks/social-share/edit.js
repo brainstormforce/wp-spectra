@@ -5,7 +5,6 @@ import styling from './styling';
 
 import { useEffect, useMemo } from '@wordpress/element';
 import scrollBlockToView from '@Controls/scrollBlockToView';
-import { useDeviceType } from '@Controls/getPreviewType';
 import Settings from './settings';
 import Render from './render';
 import { select, dispatch } from '@wordpress/data';
@@ -14,7 +13,6 @@ import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 const SocialShareComponent = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		setAttributes,
@@ -22,6 +20,7 @@ const SocialShareComponent = ( props ) => {
 		attributes,
 		name,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
+		deviceType
 	} = props;
 
 	useEffect( () => {

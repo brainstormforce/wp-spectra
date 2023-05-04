@@ -8,7 +8,6 @@ import './style.scss';
 import { useSelect } from '@wordpress/data';
 import { useState, useEffect, useMemo } from '@wordpress/element';
 import scrollBlockToView from '@Controls/scrollBlockToView';
-import { useDeviceType } from '@Controls/getPreviewType';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
@@ -18,7 +17,6 @@ import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const HowToComponent = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		attributes,
@@ -47,6 +45,7 @@ const HowToComponent = ( props ) => {
 		},
 		clientId,
 		name,
+		deviceType
 	} = props;
 
 	const [ prevState, setPrevState ] = useState( '' );

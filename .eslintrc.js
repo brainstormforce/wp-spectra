@@ -49,5 +49,7 @@ module.exports = {
 		fetch: true,
 		Headers: true,
 		FormData: true,
+		UAGBCounter: true,
+		location: true
 	},
 };

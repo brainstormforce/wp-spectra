@@ -18,13 +18,13 @@ import { addFilter } from '@wordpress/hooks';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBSlider = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		setAttributes,
 		attributes,
 		clientId,
 		name,
+		deviceType,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 	} = props;
 

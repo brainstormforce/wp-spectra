@@ -5,7 +5,6 @@
 import styling from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
 import scrollBlockToView from '@Controls/scrollBlockToView';
-import { useDeviceType } from '@Controls/getPreviewType';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import Settings from './settings';
 import Render from './render';
@@ -16,7 +15,6 @@ import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const ColumnComponent = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		setAttributes,
 		attributes,
@@ -41,6 +39,7 @@ const ColumnComponent = ( props ) => {
 		isSelected,
 		clientId,
 		name,
+		deviceType
 	} = props;
 
 	useEffect( () => {

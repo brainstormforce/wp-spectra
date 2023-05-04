@@ -204,6 +204,10 @@ return array_merge(
 		'tcolumns'                    => 2,
 		'mcolumns'                    => 1,
 		'imgEqualheight'              => false,
+		'paddingTop'                  => 20,
+		'paddingBottom'               => 20,
+		'paddingRight'                => 20,
+		'paddingLeft'                 => 20,
 	),
 	$btn_border_attribute,
 	$overall_border_attribute

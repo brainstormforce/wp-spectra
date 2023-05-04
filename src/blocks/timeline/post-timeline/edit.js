@@ -4,7 +4,6 @@
 
 import { useEffect, useState, useMemo } from '@wordpress/element';
 import scrollBlockToView from '@Controls/scrollBlockToView';
-import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import apiFetch from '@wordpress/api-fetch';
 import DynamicFontLoader from './dynamicFontLoader';
@@ -19,13 +18,13 @@ import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const PostTimelineComponent = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		setAttributes,
 		attributes,
 		name,
 		clientId,
+		deviceType,
 		attributes: {
 			categories,
 			postsToShow,

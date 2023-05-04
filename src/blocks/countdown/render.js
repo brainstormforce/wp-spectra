@@ -1,5 +1,4 @@
 import { useLayoutEffect, memo } from '@wordpress/element';
-import { useDeviceType } from '@Controls/getPreviewType';
 import styles from './editor.lazy.scss';
 import { useBlockProps } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
@@ -19,9 +18,8 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const deviceType = useDeviceType();
 	const {
-		attributes: { block_id, showLabels, labelDays, labelHours, labelMinutes, labelSeconds, timerEndAction },
+		attributes: { block_id, showLabels, labelDays, labelHours, labelMinutes, labelSeconds, timerEndAction }, deviceType
 	} = props;
 
 	const blockProps = useBlockProps( {

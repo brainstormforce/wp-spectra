@@ -1,6 +1,5 @@
 import { useEffect, useMemo } from '@wordpress/element';
 import scrollBlockToView from '@Controls/scrollBlockToView';
-import { useDeviceType } from '@Controls/getPreviewType';
 import styling from './styling';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import Settings from './settings';
@@ -13,7 +12,6 @@ import { getLoopImage } from './getLoopImage';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 
 function UAGBImageEdit( props ) {
-	const deviceType = useDeviceType();
 	const {
 		setAttributes,
 		isSelected,
@@ -21,6 +19,7 @@ function UAGBImageEdit( props ) {
 		attributes,
 		name,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
+		deviceType
 	} = props;
 
 	useEffect( () => {

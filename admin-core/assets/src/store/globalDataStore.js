@@ -11,12 +11,14 @@ const initialState = {
     enableBeta : '',
     enableSelectedFontFamilies : '',
     selectedFontFamilies : '',
+    enableFSEFontFamilies : '',
     enableLoadFontsLocally : '',
     enablePreloadLocalFonts : '',
     enableCollapsePanels : '',
     enableCopyPasteStyles : '',
     enableDisplayConditions : '',
     enableMasonryExtension : '',
+    enableAnimationsExtension : '',
 	socialLogin: {
 		recaptchaVersion: 'v2',
 		recaptchaSiteKey: '',
@@ -53,7 +55,10 @@ const initialState = {
         'buttons',
         'info-box',
         'call-to-action',
-    ]
+    ],
+    spectraFSEFonts: [],
+    themeFonts: [],
+    spectraIsBlockTheme: false
 };
 
 const globalDataStore = createStore(

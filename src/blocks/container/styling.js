@@ -40,21 +40,11 @@ function styling( attributes, clientId, name ) {
 		alignContentMobile,
 		backgroundType,
 		backgroundImageDesktop,
-		backgroundImageTablet,
-		backgroundImageMobile,
 		backgroundColor,
 		backgroundPositionDesktop,
-		backgroundPositionTablet,
-		backgroundPositionMobile,
 		backgroundAttachmentDesktop,
-		backgroundAttachmentTablet,
-		backgroundAttachmentMobile,
 		backgroundRepeatDesktop,
-		backgroundRepeatTablet,
-		backgroundRepeatMobile,
 		backgroundSizeDesktop,
-		backgroundSizeTablet,
-		backgroundSizeMobile,
 		gradientValue,
 		containerBorderHColor,
 		boxShadowColor,
@@ -125,24 +115,9 @@ function styling( attributes, clientId, name ) {
 		topHeightMobile,
 		topWidth,
 		backgroundCustomSizeDesktop,
-		backgroundCustomSizeTablet,
-		backgroundCustomSizeMobile,
 		backgroundCustomSizeType,
 		backgroundImageColor,
 		overlayType,
-		customPosition,
-		xPositionDesktop,
-		xPositionTablet,
-		xPositionMobile,
-		xPositionType,
-		xPositionTypeTablet,
-		xPositionTypeMobile,
-		yPositionDesktop,
-		yPositionTablet,
-		yPositionMobile,
-		yPositionType,
-		yPositionTypeTablet,
-		yPositionTypeMobile,
 		backgroundVideoOpacity,
 		backgroundVideoColor,
 		innerContentCustomWidthType,
@@ -291,37 +266,6 @@ function styling( attributes, clientId, name ) {
 		},
 	};
 
-	const backgroundAttributesDesktop = {
-		'backgroundType': backgroundType,
-		'backgroundImage': backgroundImageDesktop,
-		'backgroundColor': backgroundColor,
-		'gradientValue': gradientValue,
-		'gradientColor1': gradientColor1,
-		'gradientColor2': gradientColor2,
-		'gradientLocation1': gradientLocation1,
-		'gradientLocation2': gradientLocation2,
-		'gradientType': gradientType,
-		'gradientAngle': gradientAngle,
-		'selectGradient': selectGradient,
-		'backgroundRepeat': backgroundRepeatDesktop,
-		'backgroundPosition': backgroundPositionDesktop,
-		'backgroundSize': backgroundSizeDesktop,
-		'backgroundAttachment': backgroundAttachmentDesktop,
-		'backgroundCustomSize': backgroundCustomSizeDesktop,
-		'backgroundCustomSizeType': backgroundCustomSizeType,
-		'backgroundImageColor': backgroundImageColor,
-		'overlayType': overlayType,
-		'backgroundVideo': backgroundVideo,
-		'backgroundVideoColor': backgroundVideoColor,
-		'customPosition': customPosition,
-		'xPosition': xPositionDesktop,
-		'xPositionType': xPositionType,
-		'yPosition': yPositionDesktop,
-		'yPositionType': yPositionType,
-	};
-
-	const containerBackgroundCSSDesktop = generateBackgroundCSS( backgroundAttributesDesktop );
-
 	let boxShadowPositionCSS = boxShadowPosition;
 
 	if ( 'outset' === boxShadowPosition ) {
@@ -343,7 +287,6 @@ function styling( attributes, clientId, name ) {
 		'margin-bottom': generateCSSUnit( bottomMarginDesktop, marginType ) + ' !important',
 		'margin-left': generateCSSUnit( leftMarginDesktop, marginType ),
 		'margin-right': generateCSSUnit( rightMarginDesktop, marginType ),
-		...containerBackgroundCSSDesktop,
 		'box-shadow':
 			generateCSSUnit( boxShadowHOffset, 'px' ) +
 			' ' +
@@ -447,37 +390,6 @@ function styling( attributes, clientId, name ) {
 		};
 	}
 
-	const backgroundAttributesTablet = {
-		'backgroundType': backgroundType,
-		'backgroundImage': backgroundImageTablet,
-		'backgroundColor': backgroundColor,
-		'gradientValue': gradientValue,
-		'gradientColor1': gradientColor1,
-		'gradientColor2': gradientColor2,
-		'gradientLocation1': gradientLocation1,
-		'gradientLocation2': gradientLocation2,
-		'gradientType': gradientType,
-		'gradientAngle': gradientAngle,
-		'selectGradient': selectGradient,
-		'backgroundRepeat': backgroundRepeatTablet,
-		'backgroundPosition': backgroundPositionTablet,
-		'backgroundSize': backgroundSizeTablet,
-		'backgroundAttachment': backgroundAttachmentTablet,
-		'backgroundCustomSize': backgroundCustomSizeTablet,
-		'backgroundCustomSizeType': backgroundCustomSizeType,
-		'backgroundImageColor': backgroundImageColor,
-		'overlayType': overlayType,
-		'backgroundVideo': backgroundVideo,
-		'backgroundVideoColor': backgroundVideoColor,
-		'customPosition': customPosition,
-		'xPosition': xPositionTablet,
-		'xPositionType': xPositionTypeTablet,
-		'yPosition': yPositionTablet,
-		'yPositionType': yPositionTypeTablet,
-	};
-
-	const containerBackgroundCSSTablet = generateBackgroundCSS( backgroundAttributesTablet );
-
 	const tablet_selectors = {
 		[ containerFlexSelector ]: {
 			'flex-direction': directionTablet,
@@ -504,37 +416,6 @@ function styling( attributes, clientId, name ) {
 			'height': generateCSSUnit( bottomHeightTablet, 'px' ),
 		},
 	};
-
-	const backgroundAttributesMobile = {
-		'backgroundType': backgroundType,
-		'backgroundImage': backgroundImageMobile,
-		'backgroundColor': backgroundColor,
-		'gradientValue': gradientValue,
-		'gradientColor1': gradientColor1,
-		'gradientColor2': gradientColor2,
-		'gradientLocation1': gradientLocation1,
-		'gradientLocation2': gradientLocation2,
-		'gradientType': gradientType,
-		'gradientAngle': gradientAngle,
-		'selectGradient': selectGradient,
-		'backgroundRepeat': backgroundRepeatMobile,
-		'backgroundPosition': backgroundPositionMobile,
-		'backgroundSize': backgroundSizeMobile,
-		'backgroundAttachment': backgroundAttachmentMobile,
-		'backgroundCustomSize': backgroundCustomSizeMobile,
-		'backgroundCustomSizeType': backgroundCustomSizeType,
-		'backgroundImageColor': backgroundImageColor,
-		'overlayType': overlayType,
-		'backgroundVideo': backgroundVideo,
-		'backgroundVideoColor': backgroundVideoColor,
-		'customPosition': customPosition,
-		'xPosition': xPositionMobile,
-		'xPositionType': xPositionTypeMobile,
-		'yPosition': yPositionMobile,
-		'yPositionType': yPositionTypeMobile,
-	};
-
-	const containerBackgroundCSSMobile = generateBackgroundCSS( backgroundAttributesMobile );
 
 	const mobile_selectors = {
 		[ containerFlexSelector ]: {
@@ -653,7 +534,6 @@ function styling( attributes, clientId, name ) {
 			'margin-left': generateCSSUnit( leftMarginTablet, marginTypeTablet ),
 			'margin-right': generateCSSUnit( rightMarginTablet, marginTypeTablet ),
 			'min-height': generateCSSUnit( minHeightTablet, minHeightTypeTablet ),
-			...containerBackgroundCSSTablet,
 			...borderCSSTablet,
 		};
 		mobile_selectors[ '.wp-block' ] = {
@@ -666,7 +546,6 @@ function styling( attributes, clientId, name ) {
 			'margin-left': generateCSSUnit( leftMarginMobile, marginTypeMobile ),
 			'margin-right': generateCSSUnit( rightMarginMobile, marginTypeMobile ),
 			'min-height': generateCSSUnit( minHeightMobile, minHeightTypeMobile ),
-			...containerBackgroundCSSMobile,
 			...borderCSSMobile,
 		};
 		selectors[ '.wp-block:hover' ] = {

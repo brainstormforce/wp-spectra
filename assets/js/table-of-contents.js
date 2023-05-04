@@ -5,7 +5,19 @@ let scrollElement = null;
 
 // eslint-disable-next-line no-undef
 UAGBTableOfContents = {
+	_getDocumentElement() {
+		let document_element = document;
+		const getEditorIframe = document.querySelectorAll( 'iframe[name="editor-canvas"]' );
+		if( getEditorIframe?.length ){
+			const iframeDocument = getEditorIframe?.[0]?.contentWindow?.document || getEditorIframe?.[0]?.contentDocument;
+			if ( iframeDocument ) {
+				document_element = iframeDocument;
+			}
+		}
+		return document_element;
+	},
 	init( id ) {
+		const document_element = UAGBTableOfContents._getDocumentElement();
 		if ( document.querySelector( '.uagb-toc__list' ) !== null ) {
 			document.querySelector( '.uagb-toc__list' ).addEventListener(
 				'click',
@@ -19,12 +31,12 @@ UAGBTableOfContents = {
 			);
 		}
 
-		const elementToOpen = document.querySelector( id );
+		const elementToOpen = document_element.querySelector( id );
 
 		/* We need the following fail-safe click listener cause an usual click-listener
 		 * will fail in case the 'Make TOC Collapsible' is not enabled right from the start/page-load.
 		 */
-		document.addEventListener( 'click', collapseListener );
+		document_element.addEventListener( 'click', collapseListener );
 
 		function collapseListener( event ) {
 			const element = event.target;
@@ -34,20 +46,22 @@ UAGBTableOfContents = {
 			const condition2 = element?.parentNode?.className === 'uagb-toc__title'; // Check if the clicked element's parent has the required class.
 
 			if ( condition1 && condition2 ) {
-				const $root = element?.closest( '.wp-block-uagb-table-of-contents' );
-
-				if ( $root.classList.contains( 'uagb-toc__collapse' ) ) {
-					$root.classList.remove( 'uagb-toc__collapse' );
+				const $root = element?.closest( `.wp-block-uagb-table-of-contents${id}` );
+				const tocListWrapEl = elementToOpen?.querySelector( '.wp-block-uagb-table-of-contents .uagb-toc__list-wrap' );
+				// If not have the tocListWrapEl then return false!
+				if ( ! tocListWrapEl ) {
+					return;
+				}
+				if ( $root?.classList?.contains( 'uagb-toc__collapse' ) ) {
+					$root?.classList?.remove( 'uagb-toc__collapse' );
 					UAGBTableOfContents._slideDown(
-						elementToOpen?.querySelector( '.wp-block-uagb-table-of-contents .uagb-toc__list-wrap' ),
+						tocListWrapEl,
 						500
 					);
 				} else {
-					$root.classList.add( 'uagb-toc__collapse' );
+					$root?.classList?.add( 'uagb-toc__collapse' );
 					UAGBTableOfContents._slideUp(
-						elementToOpen?.querySelector(
-							'.wp-block-uagb-table-of-contents.uagb-toc__collapse .uagb-toc__list-wrap'
-						),
+						tocListWrapEl,
 						500
 					);
 				}

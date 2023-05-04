@@ -3,7 +3,6 @@
  */
 
 import { useEffect, useMemo } from '@wordpress/element';
-import { useDeviceType } from '@Controls/getPreviewType';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { select, dispatch } from '@wordpress/data';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
@@ -16,7 +15,6 @@ import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBIconList = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		setAttributes,
@@ -24,6 +22,7 @@ const UAGBIconList = ( props ) => {
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		clientId,
 		name,
+		deviceType
 	} = props;
 
 	useEffect( () => {

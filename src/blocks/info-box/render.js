@@ -9,7 +9,6 @@ import Icon from './components/Icons';
 import InfoBoxIconImage from './components/IconImages';
 import Prefix from './components/Prefix';
 import styles from './editor.lazy.scss';
-import { useDeviceType } from '@Controls/getPreviewType';
 import getImageHeightWidth from '@Controls/getImageHeightWidth';
 
 const Render = ( props ) => {
@@ -22,8 +21,7 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-	const deviceType = useDeviceType();
-	const { attributes, setAttributes } = props;
+	const { attributes, setAttributes, deviceType } = props;
 
 	// Setup the attributes.
 	const {

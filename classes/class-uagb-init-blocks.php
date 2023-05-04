@@ -112,6 +112,29 @@ class UAGB_Init_Blocks {
 					break;
 			}
 		}
+
+		// Check if animations extension is enabled and an animation type is selected.
+		if (
+			'enabled' === \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_animations_extension', 'enabled' ) &&
+			! empty( $block['attrs']['UAGAnimationType'] ) &&
+			$block['attrs']['UAGAnimationType']
+		) {
+
+			$attrs = $block['attrs'];
+
+			// Defaults aren't received here, hence we set them.
+			// Without these defaults, empty data is sent to markup (which doesn't affect the functionality at all but still it's a good practice to follow).
+			$attrs['UAGAnimationTime']   = isset( $attrs['UAGAnimationTime'] ) ? $attrs['UAGAnimationTime'] : 400;
+			$attrs['UAGAnimationDelay']  = isset( $attrs['UAGAnimationDelay'] ) ? $attrs['UAGAnimationDelay'] : 0;
+			$attrs['UAGAnimationEasing'] = isset( $attrs['UAGAnimationEasing'] ) ? $attrs['UAGAnimationEasing'] : 'ease';
+			$attrs['UAGAnimationRepeat'] = isset( $attrs['UAGAnimationRepeat'] ) ? 'false' : 'true';
+
+			$aos_attributes = '<div data-aos= "' . esc_attr( $attrs['UAGAnimationType'] ) . '" data-aos-duration="' . esc_attr( $attrs['UAGAnimationTime'] ) . '" data-aos-delay="' . esc_attr( $attrs['UAGAnimationDelay'] ) . '" data-aos-easing="' . esc_attr( $attrs['UAGAnimationEasing'] ) . '" data-aos-once="' . esc_attr( $attrs['UAGAnimationRepeat'] ) . '" ';
+
+			$block_content = preg_replace( '/<div /', $aos_attributes, $block_content, 1 );
+
+		}
+
 		return $block_content;
 	}
 
@@ -603,6 +626,7 @@ class UAGB_Init_Blocks {
 				'enableConditionsForCoreBlocks'           => apply_filters( 'enable_block_condition_for_core', true ),
 				'enableResponsiveConditionsForCoreBlocks' => apply_filters( 'enable_responsive_condition_for_core', true ),
 				'enableMasonryGallery'                    => apply_filters( 'uag_enable_masonry_gallery', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ) ),
+				'enableAnimationsExtension'               => apply_filters( 'uag_enable_animations_extension', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_animations_extension', 'enabled' ) ),
 				'enableResponsiveConditions'              => apply_filters( 'enable_block_responsive', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_responsive', 'enabled' ) ),
 				'uagb_svg_icons'                          => UAGB_Helper::backend_load_font_awesome_icons(),
 				'uagb_enable_extensions_for_blocks'       => apply_filters( 'uagb_enable_extensions_for_blocks', array() ),

@@ -5,7 +5,6 @@ import styles from './editor.lazy.scss';
 import { format } from '@wordpress/date';
 
 import { __ } from '@wordpress/i18n';
-import { useDeviceType } from '@Controls/getPreviewType';
 
 import { createBlock } from '@wordpress/blocks';
 
@@ -20,7 +19,6 @@ const Render = ( props ) => {
 		};
 	}, [] );
 	props = props.parentProps;
-	const deviceType = useDeviceType();
 
 	// Setup the attributes.
 	const {
@@ -40,6 +38,7 @@ const Render = ( props ) => {
 			time_desc,
 			content,
 		},
+		deviceType
 	} = props;
 
 	const timelinAlignment =

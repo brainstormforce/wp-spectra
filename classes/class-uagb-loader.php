@@ -70,6 +70,8 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$this->loader();
 
+			add_action( 'after_setup_theme', array( $this, 'load_compatibility' ) );
+
 			add_action( 'plugins_loaded', array( $this, 'load_plugin' ) );
 
 			add_action( 'init', array( $this, 'init_actions' ) );
@@ -84,7 +86,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.5.0' );
+			define( 'UAGB_VER', '2.5.1' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'spectra' );
@@ -186,6 +188,16 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			}
 		}
 
+		/**
+		 * Loads theme compatibility files.
+		 *
+		 * @since 2.5.1
+		 *
+		 * @return void
+		 */
+		public function load_compatibility() {
+			require_once UAGB_DIR . 'classes/class-uagb-fse-fonts-compatibility.php';
+		}
 		/**
 		 * Fix REST API issue with blocks registered via PHP register_block_type.
 		 *
