@@ -973,6 +973,10 @@ class UAGB_Post_Assets {
 	 * @since 2.4.1
 	 */
 	public function get_fse_template_part( $block ) {
+		if ( empty( $block['attrs']['slug'] ) ) {
+			return;
+		}
+
 		$slug            = $block['attrs']['slug'];
 		$templates_parts = get_block_templates( array( 'slugs__in' => $slug ), 'wp_template_part' );
 		foreach ( $templates_parts as $templates_part ) {

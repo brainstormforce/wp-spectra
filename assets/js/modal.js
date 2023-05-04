@@ -1,40 +1,12 @@
 document.addEventListener( 'UAGModalEditor', function ( e ) {
-	UAGBModal.init( '.uagb-block-' + e.detail.block_id, e.detail.device_type, true );
+	UAGBModal.init( '.uagb-block-' + e.detail.block_id, true );
 } );
 
 window.UAGBModal = {
-	init( mainSelector, deviceType, isAdmin ) {
-		let document_element = document;
-		const siteEditTheme = document.getElementsByClassName( 'edit-site' );
-
-		if ( deviceType && 'desktop' !== deviceType ) {
-			const tabletPreview = document.getElementsByClassName( 'is-tablet-preview' );
-			const mobilePreview = document.getElementsByClassName( 'is-mobile-preview' );
-
-			if ( 0 !== tabletPreview.length || 0 !== mobilePreview.length ) {
-				const preview = tabletPreview[ 0 ] || mobilePreview[ 0 ];
-
-				let iframe = false;
-
-				if ( preview ) {
-					iframe = preview.getElementsByTagName( 'iframe' )[ 0 ];
-				}
-
-				const iframeDocument = iframe?.contentWindow.document || iframe?.contentDocument;
-
-				if ( iframeDocument ) {
-					document_element = iframeDocument;
-				}
-			}
-		}
-		if ( siteEditTheme?.length !== 0 ) {
-			const desktopIframe = siteEditTheme[ 0 ].getElementsByTagName( 'iframe' )[ 0 ];
-			if ( 0 !== desktopIframe?.length ) {
-				document_element = desktopIframe?.contentWindow.document || desktopIframe?.contentDocument;
-			}
-		}
-
+	init( mainSelector, isAdmin ) {
+		const document_element = UAGBModal._getDocumentElement();
 		const modalWrapper = document_element.querySelector( mainSelector );
+		const siteEditTheme = document.getElementsByClassName( 'edit-site' );
 
 		if ( typeof modalWrapper !== 'undefined' && modalWrapper ) {
 			const modalTrigger = modalWrapper.querySelector( '.uagb-modal-trigger' );
@@ -104,7 +76,17 @@ window.UAGBModal = {
 			}
 		}
 	},
-
+	_getDocumentElement() {
+		let document_element = document;
+		const getEditorIframe = document.querySelectorAll( 'iframe[name="editor-canvas"]' );
+		if( getEditorIframe?.length ){
+			const iframeDocument = getEditorIframe?.[0]?.contentWindow?.document || getEditorIframe?.[0]?.contentDocument;
+			if ( iframeDocument ) {
+				document_element = iframeDocument;
+			}
+		}
+		return document_element;
+	},
 	// Close the Modal and check if the Scrollbar needs to be reactivated.
 	closeModalScrollCheck( bodyWrapper ) {
 		const allActiveModals = document.querySelectorAll( '.uagb-modal-popup.active' );
