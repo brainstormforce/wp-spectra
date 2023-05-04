@@ -5,7 +5,6 @@
 import styling from './styling';
 import SchemaNotices from './schema-notices';
 import { useEffect, useMemo } from '@wordpress/element';
-import { useDeviceType } from '@Controls/getPreviewType';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
@@ -16,7 +15,6 @@ import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const ReviewComponent = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		attributes,
@@ -69,6 +67,7 @@ const ReviewComponent = ( props ) => {
 		setAttributes,
 		name,
 		clientId,
+		deviceType
 	} = props;
 
 	const updatePageSchema = () => {

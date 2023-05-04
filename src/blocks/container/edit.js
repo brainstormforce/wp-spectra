@@ -4,7 +4,6 @@
 import styling from './styling';
 import { useEffect, useLayoutEffect, useMemo } from '@wordpress/element';
 import scrollBlockToView from '@Controls/scrollBlockToView';
-import { useDeviceType } from '@Controls/getPreviewType';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import Settings from './settings';
@@ -24,7 +23,6 @@ import AddStaticStyles from '@Controls/AddStaticStyles';
 import { containerWrapper } from './containerWrapper';
 
 const UAGBContainer = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		attributes,
@@ -42,6 +40,7 @@ const UAGBContainer = ( props ) => {
 		clientId,
 		setAttributes,
 		name,
+		deviceType
 	} = props;
 
 	const {

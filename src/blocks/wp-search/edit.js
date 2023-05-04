@@ -4,7 +4,6 @@
 
 import styling from './styling';
 import { useEffect, useState, useMemo } from '@wordpress/element';
-import { useDeviceType } from '@Controls/getPreviewType';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import Settings from './settings';
@@ -15,7 +14,6 @@ import DynamicFontLoader from './dynamicFontLoader';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 const UAGBWpSearchEdit = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		attributes,
@@ -32,6 +30,7 @@ const UAGBWpSearchEdit = ( props ) => {
 		clientId,
 		setAttributes,
 		name,
+		deviceType
 	} = props;
 
 	const initState = {

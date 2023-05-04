@@ -2,7 +2,6 @@ import { useEffect } from '@wordpress/element';
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
-import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import CounterIcon from './component/CounterIcon';
 import getImageHeightWidth from '@Controls/getImageHeightWidth';
@@ -12,7 +11,7 @@ const propTypes = {};
 const defaultProps = {};
 
 const Render = ( props ) => {
-	const { attributes, setAttributes } = props.parentProps;
+	const { attributes, setAttributes, deviceType } = props.parentProps;
 
 	const {
 		block_id,
@@ -37,8 +36,6 @@ const Render = ( props ) => {
 		imageWidthType,
 		imageWidth,
 	} = attributes;
-
-	const deviceType = useDeviceType();
 
 	// CLS section starts.
 

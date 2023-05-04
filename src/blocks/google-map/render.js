@@ -4,11 +4,7 @@ import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-import { useDeviceType } from '@Controls/getPreviewType';
-
 const Render = ( props ) => {
-	const deviceType = useDeviceType();
-
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -24,6 +20,7 @@ const Render = ( props ) => {
 	const {
 		className,
 		attributes: { zoom, address, language, height },
+		deviceType
 	} = props;
 
 	const encoded_address = encodeURI( address );

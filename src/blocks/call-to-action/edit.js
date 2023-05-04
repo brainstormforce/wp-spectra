@@ -4,7 +4,6 @@
 
 import CtaStyle from './inline-styles';
 import { useEffect, useMemo } from '@wordpress/element';
-import { useDeviceType } from '@Controls/getPreviewType';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
@@ -16,7 +15,6 @@ import AddStaticStyles from '@Controls/AddStaticStyles';
 
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 const UAGBCallToAction = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		setAttributes,
@@ -38,6 +36,7 @@ const UAGBCallToAction = ( props ) => {
 		},
 		clientId,
 		name,
+		deviceType
 	} = props;
 
 	useEffect( () => {
