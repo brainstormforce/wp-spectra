@@ -159,7 +159,10 @@ const backgroundCss = ( attributes, deviceType ) => {
 		);
 
 	for ( const cssProp in bgCss ) {
-		createCamelCase[ snakeToCamel( cssProp ) ] = bgCss[cssProp]?.replace( ';', '' );
+if( ! bgCss[cssProp] ){
+ continue;
+}
+		createCamelCase[ snakeToCamel( cssProp ) ] = bgCss[cssProp].replace( ';', '' );
 	}
 	return createCamelCase;
 }
