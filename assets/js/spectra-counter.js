@@ -184,7 +184,7 @@ UAGBCounter = {
 	_getCounterData( element,data ){
 		
 		// Getting data from html attribute data-counter and overwrite data which comes from php.
-		let getCounterData = element.getAttribute( 'data-counter' );
+		let getCounterData = element?.getAttribute( 'data-counter' );
 		if( ! getCounterData || null === getCounterData || undefined === getCounterData ){
 			return data;
 		}
