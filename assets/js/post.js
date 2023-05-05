@@ -77,7 +77,7 @@ window.UAGBPostMasonry = {
 		let count = 2;
 		const windowHeight50 = window.innerHeight / 1.25;
 		let $scope = document.querySelector( $selector );
-		const loader = $scope.querySelectorAll( '.uagb-post-inf-loader' );
+		const loader = $scope?.querySelectorAll( '.uagb-post-inf-loader' );
 		if ( 'none' !== $attr.paginationType && 'scroll' === $attr.paginationEventType ) {
 			window.addEventListener( 'scroll', function () {
 				let postItems = $scope.querySelector( '.uagb-post__items' );
@@ -110,7 +110,7 @@ window.UAGBPostMasonry = {
 		}
 
 		if ( 'button' === $attr.paginationEventType ) {
-			if ( $scope.querySelector( '.uagb-post-pagination-button' ) ) {
+			if ( $scope?.querySelector( '.uagb-post-pagination-button' ) ) {
 				$scope.style.marginBottom = '40px';
 
 				$scope.querySelector( '.uagb-post-pagination-button' ).onclick = function () {
