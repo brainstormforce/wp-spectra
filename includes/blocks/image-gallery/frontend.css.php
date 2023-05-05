@@ -70,13 +70,14 @@ $selectors = array(
 	// Feed Selectors.
 
 	'.wp-block-uagb-image-gallery'                       => array(
-		'padding' => UAGB_Block_Helper::generate_spacing(
+		'padding'    => UAGB_Block_Helper::generate_spacing(
 			$attr['feedMarginUnit'],
 			$attr['feedMarginTop'],
 			$attr['feedMarginRight'],
 			$attr['feedMarginBottom'],
 			$attr['feedMarginLeft']
 		),
+		'visibility' => 'carousel' === $attr['feedLayout'] ? 'hidden' : '',
 	),
 
 	// Control Settings.
