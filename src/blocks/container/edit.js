@@ -82,25 +82,35 @@ const UAGBContainer = ( props ) => {
 	useEffect( () => {
 		const isBlockRootParentID = select( 'core/block-editor' ).getBlockParents( clientId );
 
-		const parentBlockName = select( 'core/block-editor' ).getBlocksByClientId( isBlockRootParentID );
-
-		if (
-			( parentBlockName[ 0 ] && 'uagb/container' !== parentBlockName[ 0 ].name ) ||
-			undefined === parentBlockName[ 0 ]
-		) {
-			setAttributes( { isBlockRootParent: true } );
-		}
+		const parentBlocks = select( 'core/block-editor' ).getBlocksByClientId( isBlockRootParentID );
 
 		let hasSliderParent = false;
+
 		const sliderBlocks = [ 'uagb/slider', 'uagb/slider-child' ];
+		const parentBlocksNames = [];
 
-		for ( let index = 0; index < parentBlockName.length; index++ ) {
-			if ( sliderBlocks.includes( parentBlockName[ index ].name ) ) {
-				hasSliderParent = true;
-				break;
+		if ( parentBlocks && parentBlocks?.length > 0 ) {
+
+			for ( const parent in parentBlocks ) {
+				const parentName = parentBlocks[parent]?.name;
+				// For Slider.
+				if ( sliderBlocks.includes( parentName ) ) {
+					hasSliderParent = true;
+				}
+
+				// For Container Root.
+				parentBlocksNames.push( parentName );
 			}
-		}
 
+			if ( ! parentBlocksNames.includes( 'uagb/container' ) ) {
+				setAttributes( { isBlockRootParent: true } );
+			} else {
+				setAttributes( { isBlockRootParent: false } );
+			}
+		} else {
+			setAttributes( { isBlockRootParent: true } );
+		}
+		
 		setAttributes( { hasSliderParent } );
 
 		// Assigning block_id in the attribute.
