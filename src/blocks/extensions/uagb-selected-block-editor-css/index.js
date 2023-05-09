@@ -7,7 +7,7 @@ const AddCssComponent = ( props ) => {
     const { name } = props;
 
     const addCss = () => {
-        return '.components-panel .block-editor-block-inspector div[role="tablist"].components-tab-panel__tabs{display:none;}';
+        return '.components-panel .block-editor-block-inspector :not(.uag-control-tabs) > div[role="tablist"].components-tab-panel__tabs{display:none;}';
     }
 
     const addStyleTag = () => {
@@ -21,7 +21,7 @@ const AddCssComponent = ( props ) => {
         const style = document.getElementById( STYLE_ID );
         return style ? true : false;
     };
-    
+
     const removeStyleTag = () => {
         document.getElementById( STYLE_ID ).remove();
     };
