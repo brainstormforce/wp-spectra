@@ -419,6 +419,11 @@ class UAGB_Post_Assets {
 			if ( 'disabled' === $this->file_generation || $this->fallback_js ) {
 				add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
 			}
+		} else {
+			// this custom css load,if only WP core block is present on the page.
+			if ( $this->stylesheet ) {
+				add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
+			}
 		}
 	}
 	/**
