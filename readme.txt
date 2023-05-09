@@ -179,6 +179,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Buttons - Text hover color applying to Icon when Enable Icon setting is ON.
 * Fix: Forms - Issue on submit failure in FSE theme.
 * Fix: Image Gallery - Resolved an issue wherein the carousel images would initially appear big on load.
+* Fix: Post Grid - Resolved a pagination bug in Post Grid that affected the other grid's pagination.
 * Fix: Table of Content - Gap Between Lists not working in front-end
 * Fix: Taxonomy List - Child taxonomies link were showing the link of the parent taxonomy.
 * Fix: Info Box -  Prefix margin not getting applied on frontend.
