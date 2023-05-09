@@ -67,7 +67,7 @@ UAGBCounter = {
 				}
 			} );
 		};
-		const IO = new IntersectionObserver( callback, { threshold: 1 } ); // eslint-disable-line no-undef
+		const IO = new IntersectionObserver( callback, { threshold: 0.75 } );
 		IO.observe( that.elements.counterWrapper );
 	},
 	_numberCount( data ) {

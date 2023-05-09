@@ -50,6 +50,7 @@ module.exports = {
 		Headers: true,
 		FormData: true,
 		UAGBCounter: true,
-		location: true
+		location: true,
+		IntersectionObserver: true,
 	},
 };
