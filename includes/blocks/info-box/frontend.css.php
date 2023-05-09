@@ -199,7 +199,7 @@ $selectors = array(
 		'border-radius'  => UAGB_Helper::get_css_value( $attr['iconimgBorderRadius'], $attr['iconimgBorderRadiusUnit'] ),
 	),
 	// Prefix Style.
-	' .uagb-ifb-title-prefix'                             => array(
+	' .uagb-ifb-title-wrap .uagb-ifb-title-prefix'        => array(
 		'color'         => $attr['prefixColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['prefixSpace'], $attr['prefixSpaceUnit'] ),
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['prefixTopMargin'], $attr['prefixSpaceUnit'] ),
@@ -304,7 +304,7 @@ if ( 'text' === $attr['ctaType'] ) {
 }
 
 $m_selectors = array(
-	' .uagb-ifb-title-prefix'                              => array(
+	' .uagb-ifb-title-wrap .uagb-ifb-title-prefix'         => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['prefixMobileSpace'], $attr['prefixMobileMarginUnit'] ),
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['prefixMarginTopMobile'], $attr['prefixMobileMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['prefixMarginLeftMobile'], $attr['prefixMobileMarginUnit'] ),
@@ -430,7 +430,7 @@ $m_selectors = array(
 );
 
 $t_selectors = array(
-	' .uagb-ifb-title-prefix'                              => array(
+	' .uagb-ifb-title-wrap .uagb-ifb-title-prefix'         => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['prefixTabletSpace'], $attr['prefixTabletMarginUnit'] ),
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['prefixMarginTopTablet'], $attr['prefixTabletMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['prefixMarginLeftTablet'], $attr['prefixTabletMarginUnit'] ),
