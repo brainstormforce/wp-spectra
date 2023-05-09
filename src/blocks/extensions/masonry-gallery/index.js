@@ -25,6 +25,48 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 		}, [] );
 
 		/**
+		 * Returns the root element of the current document, taking into account the iframe "editor-canvas" if present.
+		 *
+		 * @since x.x.x
+		 *
+		 * @return {HTMLElement} The root element of the document.
+		 */
+		const getDocumentElement = () => {
+			let document_element = document;
+			// Find the iframe element with the name "editor-canvas" and assign it to getEditorIframe.
+			const getEditorIframe = document.querySelectorAll( 'iframe[name="editor-canvas"]' );
+			const styleElement = document.getElementById( 'uagb-editor-styles' );
+
+			if( getEditorIframe?.length ){
+				// Get the document of the iframe.
+				const iframeDocument = getEditorIframe?.[0]?.contentWindow?.document || getEditorIframe?.[0]?.contentDocument;
+
+				// If the iframe document is present...
+				if ( iframeDocument ) {
+
+					// Set the root element to the iframe document.
+					document_element = iframeDocument;
+
+					// Get the style element with the ID 'uagb-editor-styles' from the iframe document.
+					const _element = document_element.getElementById( 'uagb-editor-styles' );
+
+					// If the HTML style element is not found within the `_document` iframe...
+					if ( !_element ) {
+						if ( styleElement ) {
+
+							// Clone the `styleElement` and append it to the head of the `_document` of iframe.
+							const clonedElement = styleElement.cloneNode( true );
+							document_element.head?.appendChild( clonedElement );
+							
+						}
+					}
+				}
+			}
+
+			return document_element;
+		};
+
+		/**
 		 * Generates CSS for the given values for editor.
 		 */
 		const applyCSS = () => {
@@ -48,15 +90,17 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 				},
 			};
 			const styling = generateCSS( selectors, '#block-' + props.clientId );
+			const _document = getDocumentElement();
+		
 			if ( attributes.masonry ) {
-				const element = document.getElementById( 'uag-gallery-masonry-style-' + props.clientId.substr( 0, 8 ) );
+				const element = _document.getElementById( 'uag-gallery-masonry-style-' + props.clientId.substr( 0, 8 ) );
 				if ( null !== element && undefined !== element ) {
 					element.innerHTML = styling;
 				} else {
-					const style = document.createElement( 'style' );
+					const style = _document.createElement( 'style' );
 					style.setAttribute( 'id', 'uag-gallery-masonry-style-' + props.clientId.substr( 0, 8 ) );
 					style.innerHTML = styling;
-					document.head.appendChild( style );
+					_document.head?.appendChild( style );
 				}
 			}
 		};

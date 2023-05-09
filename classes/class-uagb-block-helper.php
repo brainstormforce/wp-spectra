@@ -1189,6 +1189,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 							'margin-bottom' => UAGB_Helper::get_css_value( $attr['masonryGutter'], 'px' ),
 						),
 					);
+				} else {
+					$selectors = array(
+						'.wp-block-gallery.has-nested-images figure.wp-block-image:not(#individual-image) img' => array(
+							'margin-bottom' => '1em',
+						),
+					);
 				}
 				$t_selectors = array();
 				if ( $col_count > 3 ) {
@@ -1225,7 +1231,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin'             => 0,
 					'display'            => 'block',
 					'grid-template-rows' => '1fr auto',
-					'margin-bottom'      => '1em',
 					'break-inside'       => 'avoid',
 					'width'              => 'unset',
 				),

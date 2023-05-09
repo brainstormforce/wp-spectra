@@ -373,9 +373,11 @@ class UAGB_Post_Assets {
 	 * @since 1.23.0
 	 */
 	public function enqueue_scripts() {
-
+		global $_wp_current_template_content;
+		$blocks = parse_blocks( $_wp_current_template_content );
 		// Global Required assets.
-		if ( has_blocks( $this->post_id ) ) {
+		// If the current template has content and contains blocks, execute this code block.
+		if ( has_blocks( $this->post_id ) || ( $_wp_current_template_content && has_blocks( $blocks ) ) ) {
 			/* Print conditional css for all blocks */
 			add_action( 'wp_head', array( $this, 'print_conditional_css' ), 80 );
 		}
@@ -625,7 +627,6 @@ class UAGB_Post_Assets {
 		if ( in_array( 'uagb/masonry-gallery', $this->current_block_list, true ) ) {
 			$conditional_block_css .= UAGB_Block_Helper::get_masonry_gallery_css();
 		}
-
 		echo '<style id="uagb-style-conditional-extension">' . $conditional_block_css . '</style>'; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 
 		self::$conditional_blocks_printed = true;
