@@ -231,8 +231,38 @@ class UAGB_Post_Assets {
 			global $post;
 			$this_post = $this->preview ? $post : get_post( $this->post_id );
 			$this->prepare_assets( $this_post );
+			$this->prepare_ast_custom_layout_post_assets();
 			$content = get_option( 'widget_block' );
 			$this->prepare_widget_area_assets( $content );
+		}
+
+	}
+
+	/**
+	 * Generate assets of Astra custom layout post in preview 
+	 * 
+	 * @since x.x.x
+	 * @return void
+	 */
+	public function prepare_ast_custom_layout_post_assets() {
+
+		if ( ! defined( 'ASTRA_ADVANCED_HOOKS_POST_TYPE' ) ) {
+			return;
+		}
+		
+		$option = array(
+			'location'  => 'ast-advanced-hook-location',
+			'exclusion' => 'ast-advanced-hook-exclusion',
+			'users'     => 'ast-advanced-hook-users',
+		);
+		$result = Astra_Target_Rules_Fields::get_instance()->get_posts_by_conditions( ASTRA_ADVANCED_HOOKS_POST_TYPE, $option );
+
+		if ( empty( $result ) || ! is_array( $result ) ) {
+			return;
+		}
+		foreach ( $result as $post_id => $post_data ) {
+			$custom_post = get_post( $post_id );
+			$this->prepare_assets( $custom_post );
 		}
 	}
 

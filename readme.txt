@@ -207,6 +207,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Carousel - Resolved an issue in which the gap between posts was not visible when only 2 posts were present.
 * Fix: Slider - Updated dot color setting to avoid taking the background color of arrows.
 * Fix: Table Of Contents - Resolved an HTML validation issue in the HTML validator.
+* Fix: Table Of Contents - Updated the front-end preview UI to match in the "Inside Post/Page Content" type of Astra's Custom Layout.
 * Fix: Advanced Columns - Resolved an issue in which the border radius was not getting applied in the front-end.
 * Fix: Controls - Updated control UI to render seamlessly when in RTL mode.
 * Fix: Spacing Control - Removed the capability to set negative values for width and border radius settings.
