@@ -175,6 +175,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Typography - Added Bebas Neue Google font in Font Families .
 * Improvement: Countdown - Added the Countdown block to the list of Core Blocks.
 * Improvement: Added functionality in which a new paragraph block will be created when clicking enter in heading block.
+* Fix: Image - giving an error `Could not edit image. No route was found matching the URL and request method.` when we try to crop the image.
 * Fix: Buttons - Text hover color applying to Icon when Enable Icon setting is ON.
 * Fix: Forms - Issue on submit failure in FSE theme.
 * Fix: Image Gallery - Resolved an issue wherein the carousel images would initially appear big on load.
