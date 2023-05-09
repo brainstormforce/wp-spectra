@@ -91,8 +91,9 @@ const Settings = ( props ) => {
 		yPositionTypeMobile,
 	} = attributes;
 
-	const parentClientId = wp.data.select( 'core/block-editor' ).getBlockHierarchyRootClientId( props.clientId );
-	const parentBlokAttributes = wp.data.select( 'core/block-editor' ).getBlockAttributes( parentClientId );
+	const parentClientIds = wp.data.select( 'core/block-editor' ).getBlockParents( props.clientId );
+	const immediateParentClientId = parentClientIds.at( -1 );
+	const parentBlokAttributes = wp.data.select( 'core/block-editor' ).getBlockAttributes( immediateParentClientId );
 
 	const { enableHashNavigation } = parentBlokAttributes;
 
