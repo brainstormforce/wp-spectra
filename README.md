@@ -178,6 +178,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Image Gallery - Resolved an issue wherein the carousel images would initially appear big on load.
 * Fix: Tabs - Set tabs title default color to inherit to prevent it from taking link color from theme.
 * Fix: Container - Resolved an issue where the video/image background styling were not working as expected on the front-end.
+* Fix: Modal - Resolved an issue with the close button in Astra's custom layout action hook `before_add_to_card_form`.
 * Fix: Custom CSS - CSS were not loading on frontend when WP core block uses a custom css on page and there is no spectra block on the page.
 
 ### 2.5.1 - THURSDAY, 27th APRIL 2023 ###

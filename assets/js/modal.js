@@ -8,71 +8,72 @@ window.UAGBModal = {
 		const modalWrapper = document_element.querySelector( mainSelector );
 		const siteEditTheme = document.getElementsByClassName( 'edit-site' );
 
-		if ( typeof modalWrapper !== 'undefined' && modalWrapper ) {
-			const modalTrigger = modalWrapper.querySelector( '.uagb-modal-trigger' );
-			const closeOverlayClick = modalWrapper.dataset.overlayclick;
-			if ( typeof modalTrigger !== 'undefined' && modalTrigger ) {
-				modalTrigger.style.pointerEvents = 'auto';
 
-				const innerModal = modalWrapper.querySelector( '.uagb-modal-popup' );
+		if ( typeof modalWrapper !== 'undefined' && modalWrapper.length !== 0 ) {
+			for ( const modalWrapperEl of modalWrapper ) {
+				const modalTrigger = modalWrapperEl.querySelector( '.uagb-modal-trigger' );
+				const closeOverlayClick = modalWrapperEl.dataset.overlayclick;
+				if ( typeof modalTrigger !== 'undefined' && modalTrigger ) {
+					modalTrigger.style.pointerEvents = 'auto';
 
-				if ( null !== innerModal && ! isAdmin ) {
-					document.body?.appendChild( innerModal );
-				}
-				const bodyWrap = document_element.querySelector( 'body' );
-				modalTrigger.addEventListener( 'click', function ( e ) {
-					e.preventDefault();
-					if ( typeof innerModal !== 'undefined' && ! innerModal.classList.contains( 'active' ) ) {
-						innerModal.classList.add( 'active' );
-						if (
-							typeof bodyWrap !== 'undefined' &&
-							! bodyWrap.classList.contains( 'hide-scroll' ) &&
-							siteEditTheme?.length === 0 &&
-							! bodyWrap.classList.contains( 'wp-admin' )
-						) {
-							bodyWrap.classList.add( 'hide-scroll' );
-						}
+					const innerModal = modalWrapperEl.querySelector( '.uagb-modal-popup' );
+
+					if ( null !== innerModal && ! isAdmin ) {
+						document.body?.appendChild( innerModal );
 					}
-				} );
-
-				const closeModal = document_element.querySelector( `${ mainSelector } .uagb-modal-popup-close` );
-
-				closeModal.addEventListener( 'click', function () {
-					const modalPopup = document_element.querySelector( `${ mainSelector }.uagb-modal-popup` );
-					if ( typeof modalPopup !== 'undefined' && modalPopup.classList.contains( 'active' ) ) {
-						modalPopup.classList.remove( 'active' );
-					}
-					if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
-						UAGBModal.closeModalScrollCheck( bodyWrap );
-					}
-				} );
-
-				if( 'disable' !== closeOverlayClick ){
-					innerModal.addEventListener( 'click', function ( e ) {
-						if (
-							'enable' === closeOverlayClick &&
-							innerModal.classList.contains( 'active' ) &&
-							! innerModal.querySelector( '.uagb-modal-popup-wrap' ).contains( e.target )
-						) {
-							innerModal.classList.remove( 'active' );
-						}
-						if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
-							UAGBModal.closeModalScrollCheck( bodyWrap );
+					const bodyWrap = document_element.querySelector( 'body' );
+					modalTrigger.addEventListener( 'click', function ( e ) {
+						e.preventDefault();
+						if ( typeof innerModal !== 'undefined' && ! innerModal.classList.contains( 'active' ) ) {
+							innerModal.classList.add( 'active' );
+							if (
+								typeof bodyWrap !== 'undefined' &&
+								! bodyWrap.classList.contains( 'hide-scroll' ) &&
+								siteEditTheme?.length === 0 &&
+								! bodyWrap.classList.contains( 'wp-admin' )
+							) {
+								bodyWrap.classList.add( 'hide-scroll' );
+							}
 						}
 					} );
-				}
 
-				document.addEventListener( 'keyup', function ( e ) {
-					const closeOnEsc = modalWrapper.dataset.escpress;
-					if ( 27 === e.keyCode && 'enable' === closeOnEsc ) {
+					const closeModal = innerModal.querySelector( `${ mainSelector } .uagb-modal-popup-close` );
+					closeModal.addEventListener( 'click', function () {
 						if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
 							innerModal.classList.remove( 'active' );
 						}
 						if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
 							UAGBModal.closeModalScrollCheck( bodyWrap );
 						}
+					} );
+
+					if( 'disable' !== closeOverlayClick ){
+						innerModal.addEventListener( 'click', function ( e ) {
+							if (
+								'enable' === closeOverlayClick &&
+								innerModal.classList.contains( 'active' ) &&
+								! innerModal.querySelector( '.uagb-modal-popup-wrap' ).contains( e.target )
+							) {
+								innerModal.classList.remove( 'active' );
+							}
+							if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+								UAGBModal.closeModalScrollCheck( bodyWrap );
+							}
+						} );
 					}
-				} );
+
+					document.addEventListener( 'keyup', function ( e ) {
+						const closeOnEsc = modalWrapperEl.dataset.escpress;
+						if ( 27 === e.keyCode && 'enable' === closeOnEsc ) {
+							if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
+								innerModal.classList.remove( 'active' );
+							}
+							if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+								UAGBModal.closeModalScrollCheck( bodyWrap );
+							}
+						}
+					} );
+				}
 			}
 		}
 	},
