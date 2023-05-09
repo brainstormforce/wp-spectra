@@ -176,6 +176,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Countdown - Added the Countdown block to the list of Core Blocks.
 * Fix: Forms - Issue on submit failure in FSE theme.
 * Fix: Image Gallery - Resolved an issue wherein the carousel images would initially appear big on load.
+* Fix: Tabs - Set tabs title default color to inherit to prevent it from taking link color from theme.
 * Fix: Container - Resolved an issue where the video/image background styling were not working as expected on the front-end.
 
 ### 2.5.1 - THURSDAY, 27th APRIL 2023 ###
