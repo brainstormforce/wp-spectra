@@ -173,6 +173,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ### x.x.x ###
 * New: Animations - Give a new life to your page with some scroll-based entrance animations.
 * Improvement: Added functionality in which a new paragraph block will be created when clicking enter in heading block.
+* Improvement: Countdown - Added the Countdown block to the list of Core Blocks.
 * Fix: Forms - Issue on submit failure in FSE theme.
 * Fix: Image Gallery - Resolved an issue wherein the carousel images would initially appear big on load.
 * Fix: Container - Resolved an issue where the video/image background styling were not working as expected on the front-end.

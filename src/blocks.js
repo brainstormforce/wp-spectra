@@ -42,11 +42,11 @@ import './blocks/buttons-child/block.js'; // Child Block.
 import './blocks/info-box/block.js';
 import './blocks/call-to-action/block.js';
 import './blocks/icon/block.js';
+import './blocks/countdown/block.js';
 // Alphabetically Ordered Blocks.
 import './blocks/blockquote/block.js';
 import './blocks/timeline/content-timeline/block.js';
 import './blocks/timeline/content-timeline-child/block.js'; // Child Block.
-import './blocks/countdown/block.js';
 import './blocks/counter/block.js';
 import './blocks/faq/block.js';
 import './blocks/faq-child/block.js'; // Child Block.

@@ -79,6 +79,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 						'buttons',
 						'info-box',
 						'call-to-action',
+						'countdown',
 					)
 				),
 				'wp_is_block_theme'                 => function_exists( 'wp_is_block_theme' ) ? wp_is_block_theme() : false,

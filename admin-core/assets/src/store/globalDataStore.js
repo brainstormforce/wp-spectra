@@ -2,23 +2,23 @@ import { createStore } from 'redux';
 import globalDataReducer from './globalDataReducer';
 
 const initialState = {
-    initialStateSetFlag : false,
-    activeBlocksFilterTab : 'all',
-    activeSettingsNavigationTab : '',
-    blocksStatuses : [],
-    enableFileGeneration : '',
-    enableTemplates : '',
-    enableBeta : '',
-    enableSelectedFontFamilies : '',
-    selectedFontFamilies : '',
-    enableFSEFontFamilies : '',
-    enableLoadFontsLocally : '',
-    enablePreloadLocalFonts : '',
-    enableCollapsePanels : '',
-    enableCopyPasteStyles : '',
-    enableDisplayConditions : '',
-    enableMasonryExtension : '',
-    enableAnimationsExtension : '',
+	initialStateSetFlag : false,
+	activeBlocksFilterTab : 'all',
+	activeSettingsNavigationTab : '',
+	blocksStatuses : [],
+	enableFileGeneration : '',
+	enableTemplates : '',
+	enableBeta : '',
+	enableSelectedFontFamilies : '',
+	selectedFontFamilies : '',
+	enableFSEFontFamilies : '',
+	enableLoadFontsLocally : '',
+	enablePreloadLocalFonts : '',
+	enableCollapsePanels : '',
+	enableCopyPasteStyles : '',
+	enableDisplayConditions : '',
+	enableMasonryExtension : '',
+	enableAnimationsExtension : '',
 	socialLogin: {
 		recaptchaVersion: 'v2',
 		recaptchaSiteKey: '',
@@ -43,29 +43,30 @@ const initialState = {
 	blocksEditorSpacing: '',
 	containerGlobalPadding: '',
 	containerGlobalElementsGap: 20,
-    enableFontAwesome5: ( 'yes' === uag_react.global_data.uagb_old_user_less_than_2 ) ? 'enabled' : 'disabled',
-    enableAutoBlockRecovery: ( 'yes' === uag_react.global_data.uagb_old_user_less_than_2 ) ? 'enabled' : 'disabled',
+	enableFontAwesome5: ( 'yes' === uag_react.global_data.uagb_old_user_less_than_2 ) ? 'enabled' : 'disabled',
+	enableAutoBlockRecovery: ( 'yes' === uag_react.global_data.uagb_old_user_less_than_2 ) ? 'enabled' : 'disabled',
 	enableLegacyBlocks: ( 'yes' === uag_react.global_data.uagb_old_user_less_than_2 ) ? 'yes' : 'no',
 	instaLinkedAccounts: '',
-    coreBlocks: [
-        'container',
-        'advanced-heading',
-        'image',
-        'icon',
-        'buttons',
-        'info-box',
-        'call-to-action',
-    ],
-    spectraFSEFonts: [],
-    themeFonts: [],
-    spectraIsBlockTheme: false
+	coreBlocks: [
+		'container',
+		'advanced-heading',
+		'image',
+		'icon',
+		'buttons',
+		'info-box',
+		'call-to-action',
+		'countdown',
+	],
+	spectraFSEFonts: [],
+	themeFonts: [],
+	spectraIsBlockTheme: false
 };
 
 const globalDataStore = createStore(
-    globalDataReducer,
-    initialState,
-    window.__REDUX_DEVTOOLS_EXTENSION__ &&
-    window.__REDUX_DEVTOOLS_EXTENSION__()
+	globalDataReducer,
+	initialState,
+	window.__REDUX_DEVTOOLS_EXTENSION__ &&
+	window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 export default globalDataStore;

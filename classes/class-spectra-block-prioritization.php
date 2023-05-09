@@ -30,10 +30,10 @@ class Spectra_Block_Prioritization {
 		'buttons',
 		'info-box',
 		'call-to-action',
+		'countdown',
 		// Alphabetically Ordered Blocks.
 		'blockquote',
 		'content-timeline',
-		'countdown',
 		'counter',
 		'faq',
 		'forms',
