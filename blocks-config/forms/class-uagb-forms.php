@@ -66,7 +66,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 * @param  array $blocks_array Block Array.
 		 * @param  int   $block_id of Block.
 		 *
-		 * @return array $recursive_inner_forms inner blocks Array.
+		 * @return mixed $recursive_inner_forms inner blocks Array.
 		 */
 		private function recursive_inner_forms( $blocks_array, $block_id ) {
 			if ( empty( $blocks_array ) ) {
@@ -77,14 +77,14 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				if ( empty( $blocks ) ) {
 					continue;
 				}
-				if ( isset( $blocks['blockName'] ) && 'uagb/forms' === $blocks['blockName'] ) {
-					if ( ! empty( $blocks['attrs'] ) && isset( $blocks['attrs']['block_id'] ) && $blocks['attrs']['block_id'] === $block_id ) {
+				if ( isset( $blocks['blockName'] ) && ( 'uagb/forms' === $blocks['blockName'] || 'core/block' === $blocks['blockName'] ) ) {
+					if ( ! empty( $blocks['attrs'] ) && isset( $blocks['attrs']['block_id'] ) ) {
 						return $blocks['attrs'];
 					}
 				} else {
 					if ( is_array( $blocks['innerBlocks'] ) && ! empty( $blocks['innerBlocks'] ) ) {
 						foreach ( $blocks['innerBlocks'] as $j => $inner_block ) {
-							if ( isset( $inner_block['blockName'] ) && 'uagb/forms' === $inner_block['blockName'] ) {
+							if ( isset( $inner_block['blockName'] ) && ( 'uagb/forms' === $inner_block ['blockName'] || 'core/block' === $inner_block['blockName'] ) ) {
 								if ( ! empty( $inner_block['attrs'] ) && isset( $inner_block['attrs']['block_id'] ) && $inner_block['attrs']['block_id'] === $block_id ) {
 									return $inner_block['attrs'];
 								}
@@ -125,7 +125,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 
 			$post_content = get_post_field( 'post_content', sanitize_text_field( $_POST['post_id'] ) );
 
-			if ( has_block( 'uagb/forms', $post_content ) ) {
+			if ( has_block( 'uagb/forms' || 'core/block', $post_content ) ) {
 				$blocks = parse_blocks( $post_content );
 				if ( ! empty( $blocks ) && is_array( $blocks ) ) {
 					$current_block_attributes = $this->recursive_inner_forms( $blocks, $block_id );
