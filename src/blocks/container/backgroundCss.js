@@ -1,5 +1,25 @@
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
-const backgroundCss = ( attributes, deviceType ) => {
+import { select } from '@wordpress/data';
+
+const backgroundCss = ( attributes, deviceType, clientId ) => {
+	let parentBlockNames = [];
+	// Get an array of parent block client IDs for the block with the specified ID.
+	const parentBlockClientIds = select( 'core/block-editor' ).getBlockParents( clientId );
+
+	if ( parentBlockClientIds?.length > 0 ) {
+		// Iterate through the parent block client IDs array and get the name of each parent block.
+		parentBlockNames = parentBlockClientIds.map( ( ID ) => {
+			return select( 'core/block-editor' ).getBlockName( ID );
+		} );
+	}
+
+	// check if 'uagb/loop-builder' is present in parentBlockNames.
+	const isLoopBuilderPresent = parentBlockNames.includes( 'uagb/loop-builder' );
+
+	const placeHolderImage = isLoopBuilderPresent ? { 
+		type: 'image', 
+		url: uagb_blocks_info.uagb_url + '/admin/assets/images/uag-placeholder.svg' 
+	} : {};
 	const {
 		backgroundType,
 		backgroundImageDesktop,
@@ -52,7 +72,7 @@ const backgroundCss = ( attributes, deviceType ) => {
 	const backgroundAttributesDesktop = {
 		backgroundType,
 		backgroundColor,
-		backgroundImage: backgroundImageDesktop,
+		backgroundImage: backgroundImageDesktop?.url ? backgroundImageDesktop : placeHolderImage,
 		gradientValue,
 		gradientColor1,
 		gradientColor2,
@@ -81,7 +101,7 @@ const backgroundCss = ( attributes, deviceType ) => {
 	const backgroundAttributesTablet = {
 		backgroundType,
 		backgroundColor,
-		backgroundImage: backgroundImageTablet,
+		backgroundImage: backgroundImageTablet?.url ? backgroundImageTablet : placeHolderImage,
 		gradientValue,
 		gradientColor1,
 		gradientColor2,
@@ -110,7 +130,7 @@ const backgroundCss = ( attributes, deviceType ) => {
 	const backgroundAttributesMobile = {
 		backgroundType,
 		backgroundColor,
-		backgroundImage: backgroundImageMobile,
+		backgroundImage: backgroundImageMobile?.url ? backgroundImageMobile : placeHolderImage,
 		gradientValue,
 		gradientColor1,
 		gradientColor2,

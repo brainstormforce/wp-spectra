@@ -44,6 +44,7 @@ class Spectra_Block_Prioritization {
 		'inline-notice',
 		'instagram-feed',
 		'login',
+		'loop-builder',
 		'lottie',
 		'marketing-button',
 		'modal',

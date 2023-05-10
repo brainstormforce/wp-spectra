@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import shapes from './shapes';
-import { select } from '@wordpress/data';
+import { select, useSelect } from '@wordpress/data';
 import backgroundCss from './backgroundCss';
 
 const Render = ( props ) => {
@@ -12,7 +12,6 @@ const Render = ( props ) => {
 	const {
 		block_id,
 		htmlTag,
-		htmlTagLink,
 		topType,
 		topFlip,
 		topContentAboveShape,
@@ -32,7 +31,7 @@ const Render = ( props ) => {
 	const direction = attributes[ 'direction' + deviceType ];
 
 	const moverDirection = 'row' === direction ? 'horizontal' : 'vertical';
-	const getContainerBGStyle = backgroundCss( attributes, deviceType );
+	const getContainerBGStyle = backgroundCss( attributes, deviceType, clientId );
 
 	const topDividerHtml = 'none' !== topType && (
 		<div
@@ -70,21 +69,7 @@ const Render = ( props ) => {
 
 	const hasChildBlocks = getBlockOrder( clientId ).length > 0;
 
-	const CustomTag = `${ htmlTag }`;
-	const customTagLinkAttributes = {};
-	if ( htmlTag === 'a' ) {
-		customTagLinkAttributes.rel = 'noopener';
-		customTagLinkAttributes.onClick = ( e ) => e.preventDefault();
-		if ( htmlTagLink?.url ) {
-			customTagLinkAttributes.href = htmlTagLink?.url;
-		}
-		if ( htmlTagLink?.opensInNewTab ) {
-			customTagLinkAttributes.target = '_blank';
-		}
-		if ( htmlTagLink?.noFollow ) {
-			customTagLinkAttributes.rel = 'nofollow noopener';
-		}
-	}
+	const CustomTag = 'a' === htmlTag ? 'div' : `${ htmlTag }`;	
 
 	const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( clientId ).length;
 	const hasChildrenClass = hasChildren ? 'uagb-container-has-children' : '';
@@ -111,9 +96,28 @@ const Render = ( props ) => {
 		innerBlocksParams.allowedBlocks = ALLOWED_BLOCKS;
 	}
 
+	const { getBlockParentsAll, getBlockSingle } = useSelect( ( selectStore ) => {
+		const { getBlockParents, getBlock } = selectStore( 'core/block-editor' );
+		return { getBlockParentsAll: getBlockParents, getBlockSingle: getBlock };
+	}, [] );
+
+	const parentBlockIds = getBlockParentsAll( clientId );
+	const parentBlockNames = parentBlockIds.map( ( id ) => getBlockSingle( id ).name );
+
+	if ( parentBlockNames.includes( 'uagb/loop-builder' ) ) {
+		const allowedBlocks = [
+			'uagb/advanced-heading',
+			'uagb/image',
+			'uagb/buttons',
+			'uagb/container',
+			'uagb/info-box'
+		]
+		innerBlocksParams.allowedBlocks = allowedBlocks;
+	}
+
 	return (
 		<>
-			<CustomTag { ...blockProps } key={ block_id } { ...customTagLinkAttributes }>
+			<CustomTag { ...blockProps } key={ block_id }>
 				{/* Video Background is positioned absolutely. The place in the DOM is to render it underneath the shape dividers and content. */}
 				{ 'video' === backgroundType && (
 					<div className="uagb-container__video-wrap">

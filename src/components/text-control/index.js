@@ -48,7 +48,7 @@ const UAGTextControl = ( props ) => {
 	};
 
 	const handleOnChange = ( newValue ) => {
-		if ( props.name ) {
+		if ( props.name && props?.setAttributes ) {
 			props.setAttributes( { [ props.name ]: newValue } );
 		} else if ( props?.setAttributes ) {
 			props?.setAttributes( {

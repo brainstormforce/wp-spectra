@@ -6,6 +6,15 @@
 	transition-duration: 0.2s;
 	transition-timing-function: ease;
 
+	.spectra-container-link-overlay {
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 10;
+	}
+
 	&.uagb-is-root-container {
 		margin-left: auto;
 		margin-right: auto;

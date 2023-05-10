@@ -59,54 +59,68 @@ export default function save( props ) {
 		</div>
 	);
 
-	const CustomTag = `${ htmlTag }`;
+	const isPro = uagb_blocks_info.spectra_pro_status;
+
+	const CustomTag = 'a' === htmlTag ? 'div' : `${ htmlTag }`;
 	const customTagLinkAttributes = {};
 	if ( htmlTag === 'a' ) {
-		customTagLinkAttributes.rel = 'noopener';
-		if ( htmlTagLink?.url ) {
-			customTagLinkAttributes.href = htmlTagLink?.url;
-		}
-		if ( htmlTagLink?.opensInNewTab ) {
-			customTagLinkAttributes.target = '_blank';
-		}
-		if ( htmlTagLink?.noFollow ) {
-			customTagLinkAttributes.rel = 'nofollow noopener';
-		}
+        customTagLinkAttributes.rel = 'noopener';
+        if ( isPro ) {
+            if ( htmlTagLink?.url ) {
+                customTagLinkAttributes.href = htmlTagLink?.url;
+            }
+        } else {
+            if ( htmlTagLink?.url ) {
+                customTagLinkAttributes.href = htmlTagLink?.url;
+            }
+            if ( htmlTagLink?.opensInNewTab ) {
+                customTagLinkAttributes.target = '_blank';
+            }
+            if ( htmlTagLink?.noFollow ) {
+                customTagLinkAttributes.rel = 'nofollow noopener';
+            }
+        }
 	}
 
 	const blockProps = useBlockProps.save();
 
 	return (
-		<CustomTag
-			id={ blockProps.id }
-			className={ classnames(
-				blockProps.className,
-				`uagb-block-${ block_id }`,
-				isBlockRootParent ? `${ contentWidth } uagb-is-root-container` : ''
-			) }
-			{ ...customTagLinkAttributes }
-		>
-			{/* Video Background is positioned absolutely. The place in the DOM is to render it underneath the shape dividers and content. */}
-			{ 'video' === backgroundType && (
-				<div className="uagb-container__video-wrap">
-					{ backgroundVideo && (
-						<video autoPlay loop muted playsinline>
-							<source src={ backgroundVideo.url } type="video/mp4" />
-						</video>
-					) }
-				</div>
-			) }
-			{/* Both the dividers are positioned absolutely. Their place in the DOM is just to determine their default Z-index. */}
-			{ topDividerHtml }
-			{ bottomDividerHtml }
-			{/* Render the content above the Video Background if any and above the Shape Dividers. */}
-			{ isBlockRootParent && 'alignfull' === contentWidth && 'alignwide' === innerContentWidth ? (
-				<div className="uagb-container-inner-blocks-wrap">
+		<>
+			<CustomTag
+				id={ blockProps.id }
+				className={ classnames(
+					blockProps.className,
+					`uagb-block-${ block_id }`,
+					isBlockRootParent ? `${ contentWidth } uagb-is-root-container` : ''
+				) }
+			>
+				{/* Video Background is positioned absolutely. The place in the DOM is to render it underneath the shape dividers and content. */}
+				{ 'video' === backgroundType && (
+					<div className="uagb-container__video-wrap">
+						{ backgroundVideo && (
+							<video autoPlay loop muted playsinline>
+								<source src={ backgroundVideo.url } type="video/mp4" />
+							</video>
+						) }
+					</div>
+				) }
+				{/* Both the dividers are positioned absolutely. Their place in the DOM is just to determine their default Z-index. */}
+				{ topDividerHtml }
+				{ bottomDividerHtml }
+				{/* Render the content above the Video Background if any and above the Shape Dividers. */}
+				{ isBlockRootParent && 'alignfull' === contentWidth && 'alignwide' === innerContentWidth ? (
+					<div className="uagb-container-inner-blocks-wrap">
+						<InnerBlocks.Content />
+					</div>
+				) : (
 					<InnerBlocks.Content />
-				</div>
-			) : (
-				<InnerBlocks.Content />
-			) }
-		</CustomTag>
+					) }
+				{ 
+					htmlTag === 'a' && 'undefined' !== typeof customTagLinkAttributes.href && (
+						<a className='spectra-container-link-overlay' { ...customTagLinkAttributes } > </a>
+					)
+				}
+			</CustomTag>
+		</>
 	);
 }
