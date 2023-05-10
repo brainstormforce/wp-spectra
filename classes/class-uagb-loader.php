@@ -378,6 +378,58 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 						},
 					)
 				);
+
+			// Adds filters to modify the blocks allowed in excerpts.
+			add_filter( 'excerpt_allowed_blocks', array( $this, 'add_blocks_to_excerpt' ), 20 );
+			add_filter( 'excerpt_allowed_wrapper_blocks', array( $this, 'add_wrapper_blocks_to_excerpt' ), 20 );
+			add_filter( 'uagb_blocks_allowed_in_excerpt', array( $this, 'add_uagb_blocks_to_excerpt' ), 20, 2 );
+		}
+		
+		/**
+		 * Adds specified blocks to the list of allowed blocks in excerpts.
+		 *
+		 * @param array $allowed    List of allowed blocks in excerpts.
+		 * @since x.x.x
+		 * @return array            Modified list of allowed blocks in excerpts.
+		 */
+		public function add_blocks_to_excerpt( $allowed ) {
+			return apply_filters( 'uagb_blocks_allowed_in_excerpt', $allowed, array( 'uagb/advanced-heading' ) );
+		}
+
+		/**
+		 * Adds specified wrapper blocks to the list of allowed blocks in excerpts.
+		 *
+		 * @param array $allowed    List of allowed blocks in excerpts.
+		 * @since x.x.x
+		 * @return array            Modified list of allowed blocks in excerpts.
+		 */
+		public function add_wrapper_blocks_to_excerpt( $allowed ) {
+			return apply_filters(
+				'uagb_blocks_allowed_in_excerpt',
+				$allowed,
+				array(
+					'uagb/container',
+					'uagb/columns',
+					'uagb/column',
+				) 
+			);
+		}
+
+		/**
+		 * Adds specified UAGB blocks to the list of allowed blocks in excerpts.
+		 *
+		 * @param array $excerpt_blocks     List of allowed blocks in excerpts.
+		 * @param array $blocks_to_add      Blocks to add to the list of allowed blocks in excerpts.
+		 * @since x.x.x
+		 * @return array                    The merged excerpt blocks array if both parameters are arrays, or the original excerpt blocks if either parameter is not an array.
+		 */
+		public function add_uagb_blocks_to_excerpt( $excerpt_blocks, $blocks_to_add ) {
+			if ( is_array( $excerpt_blocks ) && is_array( $blocks_to_add ) ) {
+				return array_merge( $excerpt_blocks, $blocks_to_add );
+			}
+			
+			// If either parameter is not an array, return the original excerpt blocks.
+			return $excerpt_blocks;
 		}
 	}
 }
