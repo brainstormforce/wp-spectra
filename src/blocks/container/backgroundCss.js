@@ -157,9 +157,9 @@ const backgroundCss = ( attributes, deviceType, clientId ) => {
 	};
 
 	let bgCss;
-	if ( 'mobile' === deviceType ) {
+	if ( 'Mobile' === deviceType ) {
 		bgCss = generateBackgroundCSS( backgroundAttributesMobile );
-	} else if ( 'tablet' === deviceType ) {
+	} else if ( 'Tablet' === deviceType ) {
 		bgCss = generateBackgroundCSS( backgroundAttributesTablet );
 	} else {
 		bgCss = generateBackgroundCSS( backgroundAttributesDesktop );

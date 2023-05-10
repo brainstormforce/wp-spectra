@@ -5,31 +5,36 @@ document.addEventListener( 'UAGModalEditor', function ( e ) {
 window.UAGBModal = {
 	init( mainSelector, isAdmin ) {
 		const document_element = UAGBModal._getDocumentElement();
-		const modalWrapper = document_element.querySelector( mainSelector );
+		const modalWrapper = document_element.querySelectorAll( mainSelector );
 		const siteEditTheme = document.getElementsByClassName( 'edit-site' );
+		const pageTemplate = document.getElementsByClassName( 'block-editor-iframe__body' );
 
-
-		if ( typeof modalWrapper !== 'undefined' && modalWrapper.length !== 0 ) {
+		if ( modalWrapper?.length ) {
 			for ( const modalWrapperEl of modalWrapper ) {
 				const modalTrigger = modalWrapperEl.querySelector( '.uagb-modal-trigger' );
 				const closeOverlayClick = modalWrapperEl.dataset.overlayclick;
-				if ( typeof modalTrigger !== 'undefined' && modalTrigger ) {
+				if ( modalTrigger ) {
 					modalTrigger.style.pointerEvents = 'auto';
 
-					const innerModal = modalWrapperEl.querySelector( '.uagb-modal-popup' );
+					const innerModal = modalWrapperEl?.querySelector( '.uagb-modal-popup' );
 
-					if ( null !== innerModal && ! isAdmin ) {
+					if ( ! innerModal ) {
+						continue;
+					}
+
+					if ( ! isAdmin ) {
 						document.body?.appendChild( innerModal );
 					}
 					const bodyWrap = document_element.querySelector( 'body' );
 					modalTrigger.addEventListener( 'click', function ( e ) {
 						e.preventDefault();
-						if ( typeof innerModal !== 'undefined' && ! innerModal.classList.contains( 'active' ) ) {
+						if ( ! innerModal.classList.contains( 'active' ) ) {
 							innerModal.classList.add( 'active' );
 							if (
-								typeof bodyWrap !== 'undefined' &&
+								bodyWrap &&
 								! bodyWrap.classList.contains( 'hide-scroll' ) &&
-								siteEditTheme?.length === 0 &&
+								siteEditTheme?.length &&
+								pageTemplate?.length &&
 								! bodyWrap.classList.contains( 'wp-admin' )
 							) {
 								bodyWrap.classList.add( 'hide-scroll' );
@@ -39,14 +44,13 @@ window.UAGBModal = {
 
 					const closeModal = innerModal.querySelector( `${ mainSelector } .uagb-modal-popup-close` );
 					closeModal.addEventListener( 'click', function () {
-						if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
+						if ( innerModal.classList.contains( 'active' ) ) {
 							innerModal.classList.remove( 'active' );
 						}
-						if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+						if ( bodyWrap && bodyWrap.classList.contains( 'hide-scroll' ) ) {
 							UAGBModal.closeModalScrollCheck( bodyWrap );
 						}
 					} );
-
 					if( 'disable' !== closeOverlayClick ){
 						innerModal.addEventListener( 'click', function ( e ) {
 							if (
@@ -56,7 +60,7 @@ window.UAGBModal = {
 							) {
 								innerModal.classList.remove( 'active' );
 							}
-							if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+							if ( bodyWrap && bodyWrap.classList.contains( 'hide-scroll' ) ) {
 								UAGBModal.closeModalScrollCheck( bodyWrap );
 							}
 						} );
@@ -65,10 +69,10 @@ window.UAGBModal = {
 					document.addEventListener( 'keyup', function ( e ) {
 						const closeOnEsc = modalWrapperEl.dataset.escpress;
 						if ( 27 === e.keyCode && 'enable' === closeOnEsc ) {
-							if ( typeof innerModal !== 'undefined' && innerModal.classList.contains( 'active' ) ) {
+							if ( innerModal.classList.contains( 'active' ) ) {
 								innerModal.classList.remove( 'active' );
 							}
-							if ( typeof bodyWrap !== 'undefined' && bodyWrap.classList.contains( 'hide-scroll' ) ) {
+							if ( bodyWrap && bodyWrap.classList.contains( 'hide-scroll' ) ) {
 								UAGBModal.closeModalScrollCheck( bodyWrap );
 							}
 						}
