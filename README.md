@@ -173,6 +173,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ### x.x.x ###
 * Fix: Resolved an issue where Spectra heading and wrapper blocks were not displayed in post excerpts.
 * New: Animations - Give a new life to your page with some scroll-based entrance animations.
+* New: Introducing the Separator block that will help you divide your page content in style.
 * Improvement: Typography - Added Bebas Neue Google font in Font Families .
 * Improvement: Countdown - Added the Countdown block to the list of Core Blocks.
 * Improvement: Added functionality in which a new paragraph block will be created when clicking enter in heading block.

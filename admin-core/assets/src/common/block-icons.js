@@ -636,6 +636,17 @@ const UAGB_Block_Icons = {
 			strokeWidth: 1.4,
 		} ),
 	),
+	'separator': el(
+        'svg',
+        { width: 40, height: 40, viewBox: '0 0 24 24', fill: 'none' },
+        el( 'path', {
+			d: 'M4 12H20M14 17L12 19L10 17M14 7L12 5L10 7',
+            strokeWidth: 1.4,
+            strokeLinecap: 'round',
+            strokeLinejoin: 'round',
+            stroke: iconColor,
+        } ),
+    ),
 
 	// ---------------------------------.
 	// Spectra Pro Blocks and Extensions.
