@@ -281,7 +281,7 @@ $attr['buttonIconSpaceMobile'] = is_numeric( $attr['buttonIconSpaceMobile'] ) ? 
 if ( 'button' === $attr['modalTrigger'] ) {
 	if ( 'after' === $attr['buttonIconPosition'] ) {
 		$selectors[' .uagb-modal-button-link svg ']   = array(
-			'margin-left' => UAGB_Helper::get_css_value( $buttonIconSpace_fallback, $attr['buttonIconSpaceType'] ),
+			'margin-left' => UAGB_Helper::get_css_value( $attr['buttonIconSpace'], $attr['buttonIconSpaceType'] ),
 		);
 		$t_selectors[' .uagb-modal-button-link svg '] = array(
 			'margin-left' => UAGB_Helper::get_css_value( $attr['buttonIconSpaceTablet'], $attr['buttonIconSpaceType'] ),
@@ -291,7 +291,7 @@ if ( 'button' === $attr['modalTrigger'] ) {
 		);
 	} else {
 		$selectors[' .uagb-modal-button-link svg']   = array(
-			'margin-right' => UAGB_Helper::get_css_value( $buttonIconSpace_fallback, $attr['buttonIconSpaceType'] ),
+			'margin-right' => UAGB_Helper::get_css_value( $attr['buttonIconSpace'], $attr['buttonIconSpaceType'] ),
 		);
 		$t_selectors[' .uagb-modal-button-link svg'] = array(
 			'margin-right' => UAGB_Helper::get_css_value( $attr['buttonIconSpaceTablet'], $attr['buttonIconSpaceType'] ),
@@ -306,7 +306,7 @@ if ( $is_rtl ) {
 	if ( 'button' === $attr['modalTrigger'] ) {
 		if ( 'after' === $attr['buttonIconPosition'] ) {
 			$selectors[' .uagb-modal-button-link svg ']   = array(
-				'margin-right' => UAGB_Helper::get_css_value( $buttonIconSpace_fallback, $attr['buttonIconSpaceType'] ),
+				'margin-right' => UAGB_Helper::get_css_value( $attr['buttonIconSpace'], $attr['buttonIconSpaceType'] ),
 			);
 			$t_selectors[' .uagb-modal-button-link svg '] = array(
 				'margin-right' => UAGB_Helper::get_css_value( $attr['buttonIconSpaceTablet'], $attr['buttonIconSpaceType'] ),
@@ -316,7 +316,7 @@ if ( $is_rtl ) {
 			);
 		} else {
 			$selectors[' .uagb-modal-button-link svg']   = array(
-				'margin-left' => UAGB_Helper::get_css_value( $buttonIconSpace_fallback, $attr['buttonIconSpaceType'] ),
+				'margin-left' => UAGB_Helper::get_css_value( $attr['buttonIconSpace'], $attr['buttonIconSpaceType'] ),
 			);
 			$t_selectors[' .uagb-modal-button-link svg'] = array(
 				'margin-left' => UAGB_Helper::get_css_value( $attr['buttonIconSpaceTablet'], $attr['buttonIconSpaceType'] ),

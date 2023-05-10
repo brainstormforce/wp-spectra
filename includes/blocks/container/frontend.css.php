@@ -397,8 +397,8 @@ if ( 'video' === $attr['backgroundType'] ) {
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginDesktop'], $attr['marginType'] ) . ' !important',
 		'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginDesktop'], $attr['marginType'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginDesktop'], $attr['marginType'] ),
-		'row-gap'        => UAGB_Helper::get_css_value( $row_gap_desktop_fallback, $attr['rowGapType'] ),
-		'column-gap'     => UAGB_Helper::get_css_value( $column_gap_desktop_fallback, $attr['columnGapType'] ),
+		'row-gap'        => UAGB_Helper::get_css_value( $attr['rowGapDesktop'], $attr['rowGapType'] ),
+		'column-gap'     => UAGB_Helper::get_css_value( $attr['columnGapDesktop'], $attr['columnGapType'] ),
 		'overflow'       => $attr['overflow'],
 	);
 	$t_selectors[ '.uagb-block-' . $id ] = array(
