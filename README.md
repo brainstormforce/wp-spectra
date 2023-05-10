@@ -189,6 +189,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Modal - Resolved an issue with the close button in Astra's custom layout action hook `before_add_to_card_form`.
 * Fix: Custom CSS - CSS were not loading on frontend when WP core block uses a custom css on page and there is no spectra block on the page.
 * Fix: Modal - Inside the Container, the alignment of the block gets in center from the left.
+* Fix: Resolved an issue of PHP error appearing for Full Site Editing (FSE) fonts compatibility.
+* Fix: Global - Fixed an issue wherein a Google error would appear when loading Google Fonts locally with a specific font weight and family set to default.
+* Fix: Global - Fixed a font resource URL breakage issue when a provided google_font array contains a font-family with an empty string.
 
 ### 2.5.1 - THURSDAY, 27th APRIL 2023 ###
 * Feature: You can now add Google Fonts to Block Based Themes from Spectra Dashboard.

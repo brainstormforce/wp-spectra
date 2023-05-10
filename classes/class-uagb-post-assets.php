@@ -660,9 +660,11 @@ class UAGB_Post_Assets {
 			if ( ! empty( $fonts_attr ) ) {
 				$fonts_attr .= '|'; // Append a new font to the string.
 			}
+			if ( empty( $gfont_values['fontfamily'] ) && 'string' === gettype( $gfont_values['fontfamily'] ) ) {
+				continue;
+			}
 			$fonts_attr  .= str_replace( ' ', '+', $gfont_values['fontfamily'] );
 			$fonts_slug[] = sanitize_key( str_replace( ' ', '-', strtolower( $gfont_values['fontfamily'] ) ) );
-
 			if ( ! empty( $gfont_values['fontvariants'] ) ) {
 				$fonts_attr .= ':';
 				$fonts_attr .= implode( ',', $gfont_values['fontvariants'] );
@@ -1078,9 +1080,9 @@ class UAGB_Post_Assets {
 
 					}
 				} elseif ( 'core/template-part' === $block['blockName'] ) {
-					
+
 					$id = $this->get_fse_template_part( $block );
-					
+
 					if ( $id ) {
 						$assets     = $this->get_assets_using_post_content( $id );
 						$block_css .= $assets['css'];
