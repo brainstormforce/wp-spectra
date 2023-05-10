@@ -4,7 +4,7 @@
  * @param  {Array}  classes Selectors to combine.
  * @return {string}         The single-line selector string.
  *
- * @since x.x.x
+ * @since 2.6.0
  */
 
 export const uagbClassNames = ( classes ) => ( classes.filter( Boolean ).join( ' ' ) );

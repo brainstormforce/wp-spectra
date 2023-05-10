@@ -548,7 +548,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		 *
 		 * Adds Google fonts for Separator block.
 		 *
-		 * @since x.x.x
+		 * @since 2.6.0
 		 * @param array $attr the blocks attr.
 		 * @return void
 		 */

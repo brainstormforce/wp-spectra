@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 5.6
 Tested up to: 6.2
-Stable tag: 2.5.1
+Stable tag: 2.6.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -166,7 +166,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= x.x.x =
+= 2.6.0 - THURSDAY, 11th MAY 2023 =
 * Fix: Resolved an issue where Spectra heading and wrapper blocks were not displayed in post excerpts.
 * New: Animations - Give a new life to your page with some scroll-based entrance animations.
 * New: Introducing the Separator block that will help you divide your page content in style.

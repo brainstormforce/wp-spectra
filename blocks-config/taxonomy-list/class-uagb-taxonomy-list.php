@@ -585,7 +585,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 		 * @param string $slug of category.
 		 * @param string $taxonomy_type attributes.
 		 *
-		 * @since x.x.x
+		 * @since 2.6.0
 		 * @return string link using slug.
 		 */
 		public function get_link_of_individual_categories( $slug, $taxonomy_type ) {

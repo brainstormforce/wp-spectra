@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.5.1\n"
+"Project-Id-Version: Spectra 2.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-04-27T12:07:30+00:00\n"
+"POT-Creation-Date: 2023-05-10T12:36:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -19,8 +19,8 @@ msgstr ""
 #: admin-core/inc/admin-menu.php:131
 #: admin-core/inc/admin-menu.php:141
 #: admin-core/inc/admin-menu.php:225
-#: classes/class-uagb-admin-helper.php:386
-#: classes/class-uagb-init-blocks.php:436
+#: classes/class-uagb-admin-helper.php:388
+#: classes/class-uagb-init-blocks.php:459
 msgid "Spectra"
 msgstr ""
 
@@ -49,25 +49,25 @@ msgstr ""
 msgid "Sorry, something went wrong."
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:137
-#: admin-core/ajax/common-settings.php:655
-#: classes/class-uagb-init-blocks.php:399
+#: admin-core/ajax/common-settings.php:138
+#: admin-core/ajax/common-settings.php:669
+#: classes/class-uagb-init-blocks.php:422
 msgid "Successfully saved data!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:153
+#: admin-core/ajax/common-settings.php:154
 msgid "No post data found!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:189
+#: admin-core/ajax/common-settings.php:190
 msgid "Plugin Successfully Activated"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:748
+#: admin-core/ajax/common-settings.php:762
 msgid "Successfully refreshed tokens!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:750
+#: admin-core/ajax/common-settings.php:764
 msgid "Failed to refresh tokens"
 msgstr ""
 
@@ -86,16 +86,16 @@ msgid "Dashboard"
 msgstr ""
 
 #. translators: HTML entities.
-#: admin-core/inc/admin-menu.php:417
+#: admin-core/inc/admin-menu.php:418
 msgid "Thank you for using %1$sSpectra.%2$s"
 msgstr ""
 
-#: blocks-config/forms/class-uagb-forms.php:170
-#: blocks-config/forms/class-uagb-forms.php:186
+#: blocks-config/forms/class-uagb-forms.php:193
+#: blocks-config/forms/class-uagb-forms.php:209
 msgid "Please try logging in again to verify that you are not a robot."
 msgstr ""
 
-#: blocks-config/forms/class-uagb-forms.php:254
+#: blocks-config/forms/class-uagb-forms.php:277
 #: includes/blocks/forms/attributes.php:69
 #: dist/blocks.js:1
 #: dist/blocks.js:18
@@ -122,8 +122,8 @@ msgid "Unable to load image"
 msgstr ""
 
 #: blocks-config/post-timeline/class-uagb-post-timeline.php:523
-#: blocks-config/post/class-uagb-post.php:540
-#: blocks-config/post/class-uagb-post.php:2072
+#: blocks-config/post/class-uagb-post.php:542
+#: blocks-config/post/class-uagb-post.php:2124
 #: includes/blocks/post-carousel/attributes.php:116
 #: includes/blocks/post-grid/attributes.php:107
 #: includes/blocks/post-masonry/attributes.php:110
@@ -139,7 +139,7 @@ msgstr ""
 #: blocks-config/table-of-content/class-uagb-table-of-content.php:644
 #: blocks-config/table-of-content/class-uagb-table-of-content.php:648
 #: includes/blocks/table-of-contents/attributes.php:18
-#: dist/blocks-placeholder.js:36
+#: dist/blocks-placeholder.js:37
 #: dist/blocks.js:1
 #: dist/blocks.js:18
 msgid "Table Of Contents"
@@ -157,7 +157,7 @@ msgstr ""
 msgid "Taxonomy Not Available."
 msgstr ""
 
-#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:669
+#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:688
 #: includes/blocks/forms-select/block.php:15
 #: dist/blocks.js:18
 msgid "Select"
@@ -4587,6 +4587,7 @@ msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6.php:13
 #: blocks-config/uagb-controls/uagb-icons.php:13
+#: dist/blocks.js:11
 #: dist/blocks.js:12
 #: dist/blocks.js:18
 msgid "Link"
@@ -10651,15 +10652,15 @@ msgstr ""
 msgid "YouTube Square"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:394
+#: classes/class-uagb-admin-helper.php:396
 msgid "Astra Theme"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:398
+#: classes/class-uagb-admin-helper.php:400
 msgid "Filter added through any 3rd Party Theme/Plugin."
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:403
+#: classes/class-uagb-admin-helper.php:405
 msgid "Full Site Editor's Global Styles"
 msgstr ""
 
@@ -10703,11 +10704,11 @@ msgstr ""
 msgid "Spectra requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING."
 msgstr ""
 
-#: classes/class-uagb-fse-fonts-compatibility.php:533
+#: classes/class-uagb-fse-fonts-compatibility.php:538
 msgid "There was some error in deleting the font."
 msgstr ""
 
-#: classes/class-uagb-fse-fonts-compatibility.php:559
+#: classes/class-uagb-fse-fonts-compatibility.php:564
 msgid "Successfully deleted font."
 msgstr ""
 
@@ -10716,20 +10717,20 @@ msgstr ""
 msgid "Full"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:238
-#: classes/class-uagb-init-blocks.php:382
+#: classes/class-uagb-init-blocks.php:261
+#: classes/class-uagb-init-blocks.php:405
 msgid "User is not authenticated!"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:369
+#: classes/class-uagb-init-blocks.php:392
 msgid "Please select a valid Gravity Form."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:419
+#: classes/class-uagb-init-blocks.php:442
 msgid "Please select a valid Contact Form 7."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:558
+#: classes/class-uagb-init-blocks.php:581
 #: dist/blocks.js:11
 #: dist/blocks.js:12
 #: dist/blocks.js:16
@@ -10737,13 +10738,13 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:630
+#: classes/class-uagb-init-blocks.php:654
 msgid ""
 "Use custom class added in block's advanced settings to target your desired block. Examples:\n"
 "\t\t\t\t.my-class {text-align: center;} // my-class is a custom selector"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:665
+#: classes/class-uagb-init-blocks.php:689
 #: dist/blocks.js:11
 #: dist/blocks.js:12
 #: dist/blocks.js:16
@@ -10751,21 +10752,21 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:694
-#: classes/class-uagb-init-blocks.php:727
+#: classes/class-uagb-init-blocks.php:718
+#: classes/class-uagb-init-blocks.php:751
 #: dist/blocks.js:18
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:708
+#: classes/class-uagb-init-blocks.php:732
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:741
+#: classes/class-uagb-init-blocks.php:765
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:757
+#: classes/class-uagb-init-blocks.php:781
 msgid "Invalid request"
 msgstr ""
 
@@ -10785,6 +10786,14 @@ msgstr ""
 #: includes/blocks/advanced-heading/block.php:17
 #: dist/blocks.js:12
 msgid "Add heading, sub heading and a separator using one block."
+msgstr ""
+
+#: includes/blocks/animations-extension/block.php:13
+msgid "Animations Extension"
+msgstr ""
+
+#: includes/blocks/animations-extension/block.php:14
+msgid "Add animations to Spectra blocks."
 msgstr ""
 
 #: includes/blocks/blockquote/block.php:16
@@ -10882,7 +10891,7 @@ msgid "Add and customize displaying content of this timeline."
 msgstr ""
 
 #: includes/blocks/content-timeline/block.php:16
-#: dist/blocks-placeholder.js:41
+#: dist/blocks-placeholder.js:42
 #: dist/blocks.js:18
 msgid "Content Timeline"
 msgstr ""
@@ -11233,6 +11242,14 @@ msgstr ""
 msgid "This block lets you add a user login form."
 msgstr ""
 
+#: includes/blocks/loop-builder/block.php:16
+msgid "Loop Builder"
+msgstr ""
+
+#: includes/blocks/loop-builder/block.php:17
+msgid "This block allows you to generate custom loop from different posts."
+msgstr ""
+
 #: includes/blocks/lottie/block.php:16
 #: dist/blocks-placeholder.js:26
 #: dist/blocks.js:18
@@ -11357,7 +11374,7 @@ msgid "Show your post's under categories."
 msgstr ""
 
 #: includes/blocks/post-timeline/block.php:16
-#: dist/blocks-placeholder.js:42
+#: dist/blocks-placeholder.js:43
 #: dist/blocks.js:18
 msgid "Post Timeline"
 msgstr ""
@@ -11427,9 +11444,22 @@ msgstr ""
 msgid "Outer wrap section that allows you to add other blocks within it."
 msgstr ""
 
+#: includes/blocks/separator/block.php:16
+#: dist/blocks-placeholder.js:33
+#: dist/blocks.js:12
+#: dist/blocks.js:16
+#: dist/blocks.js:18
+msgid "Separator"
+msgstr ""
+
+#: includes/blocks/separator/block.php:17
+#: dist/blocks.js:18
+msgid "Add a modern separator to divide your page content with icon/text."
+msgstr ""
+
 #: includes/blocks/slider-child/block.php:14
 #: includes/blocks/slider/block.php:16
-#: dist/blocks-placeholder.js:33
+#: dist/blocks-placeholder.js:34
 #: dist/blocks.js:18
 msgid "Slider"
 msgstr ""
@@ -11452,7 +11482,7 @@ msgid "Share your content on this social media platform."
 msgstr ""
 
 #: includes/blocks/social-share/block.php:16
-#: dist/blocks-placeholder.js:34
+#: dist/blocks-placeholder.js:35
 #: dist/blocks.js:18
 msgid "Social Share"
 msgstr ""
@@ -11463,7 +11493,7 @@ msgid "Share your content on different social media platforms."
 msgstr ""
 
 #: includes/blocks/star-rating/block.php:16
-#: dist/blocks-placeholder.js:35
+#: dist/blocks-placeholder.js:36
 #: dist/blocks.js:18
 msgid "Star Ratings"
 msgstr ""
@@ -11493,7 +11523,7 @@ msgid "Display your content in a tab."
 msgstr ""
 
 #: includes/blocks/tabs/block.php:16
-#: dist/blocks-placeholder.js:37
+#: dist/blocks-placeholder.js:38
 #: dist/blocks.js:18
 msgid "Tabs"
 msgstr ""
@@ -11504,7 +11534,7 @@ msgid "Display your content under different tabs."
 msgstr ""
 
 #: includes/blocks/taxonomy-list/block.php:16
-#: dist/blocks-placeholder.js:38
+#: dist/blocks-placeholder.js:39
 #: dist/blocks.js:18
 msgid "Taxonomy List"
 msgstr ""
@@ -11515,7 +11545,7 @@ msgid "Display your content categorized as per post type."
 msgstr ""
 
 #: includes/blocks/team/block.php:16
-#: dist/blocks-placeholder.js:39
+#: dist/blocks-placeholder.js:40
 #: dist/blocks.js:18
 msgid "Team"
 msgstr ""
@@ -11526,7 +11556,7 @@ msgid "Showcase your team by displaying info and social media profiles."
 msgstr ""
 
 #: includes/blocks/testimonial/block.php:16
-#: dist/blocks-placeholder.js:40
+#: dist/blocks-placeholder.js:41
 #: dist/blocks.js:18
 msgid "Testimonials"
 msgstr ""
@@ -11670,6 +11700,11 @@ msgstr ""
 #: admin-core/assets/build/dashboard-app.js:1
 #: dist/blocks.js:18
 msgid "Responsive Conditions"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+#: dist/blocks.js:18
+msgid "Animations"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
@@ -11828,7 +11863,7 @@ msgid "Style"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:5
-msgid "Currently no Font Families added."
+msgid "Currently, no Font Families added."
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:5
@@ -12367,6 +12402,10 @@ msgstr ""
 
 #: dist/blocks.js:1
 msgid "Counter placeholder img"
+msgstr ""
+
+#: dist/blocks.js:1
+msgid "Divider"
 msgstr ""
 
 #: dist/blocks.js:1
@@ -13055,6 +13094,10 @@ msgid "link"
 msgstr ""
 
 #: dist/blocks.js:11
+msgid "Search here…"
+msgstr ""
+
+#: dist/blocks.js:11
 #: dist/blocks.js:18
 msgid "Open in new window"
 msgstr ""
@@ -13429,12 +13472,6 @@ msgstr ""
 
 #: dist/blocks.js:12
 msgid "Enable Sub Heading"
-msgstr ""
-
-#: dist/blocks.js:12
-#: dist/blocks.js:16
-#: dist/blocks.js:18
-msgid "Separator"
 msgstr ""
 
 #: dist/blocks.js:12
@@ -14072,6 +14109,134 @@ msgid "icon"
 msgstr ""
 
 #: dist/blocks.js:18
+msgid "Timer End Date & Time"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Show Days"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Show Hours"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Show Minutes"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Labels"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Show Labels"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Days"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Hours"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Minutes"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Seconds"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Show Separator"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Separator Type"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Colon"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Square Shaped Box"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Inner Alignment"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Label Position"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Label Vertical Alignment"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "This feature works best after adding line-height to the label."
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Box Width"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Gap Between Boxes"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Gap Between Digits & Labels"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Digit"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Label"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Separator Right Spacing"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Separator Top Spacing"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Separate Hover Shadow"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Create a sense of urgency among your visitors."
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "countdown"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "timer"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "sale"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "offer"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "discount"
+msgstr ""
+
+#: dist/blocks.js:18
 msgid "Author Image"
 msgstr ""
 
@@ -14177,10 +14342,6 @@ msgstr ""
 
 #: dist/blocks.js:18
 msgid "Custom URL"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Label"
 msgstr ""
 
 #: dist/blocks.js:18
@@ -14317,130 +14478,6 @@ msgstr ""
 
 #: dist/blocks.js:18
 msgid "Add and customize content of this timeline."
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Timer End Date & Time"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Show Days"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Show Hours"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Show Minutes"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Labels"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Show Labels"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Days"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Hours"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Minutes"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Seconds"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Show Separator"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Separator Type"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Colon"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Square Shaped Box"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Inner Alignment"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Label Position"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Label Vertical Alignment"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "This feature works best after adding line-height to the label."
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Box Width"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Gap Between Boxes"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Gap Between Digits & Labels"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Digit"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Separator Right Spacing"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Separator Top Spacing"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Separate Hover Shadow"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "Create a sense of urgency among your visitors."
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "countdown"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "timer"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "sale"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "offer"
-msgstr ""
-
-#: dist/blocks.js:18
-msgid "discount"
 msgstr ""
 
 #: dist/blocks.js:18
@@ -17020,6 +17057,38 @@ msgid "review"
 msgstr ""
 
 #: dist/blocks.js:18
+msgid "Note: Please set Separator Height for proper thickness."
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Rectangles"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Parallelogram"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Leaves"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Add Element"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Separator Height"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "divider"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "separator"
+msgstr ""
+
+#: dist/blocks.js:18
 msgid "Add Slide"
 msgstr ""
 
@@ -17533,6 +17602,102 @@ msgstr ""
 
 #: dist/blocks.js:18
 msgid "Enable Masonry Layout"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Fade Down"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Fade Up"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Fade Left"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Fade Right"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Flip Down"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Flip Up"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Flip Left"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Flip Right"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Slide Down"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Slide Up"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Slide Left"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Slide Right"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Zoom-In"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Zoom-In Down"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Zoom-In Up"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Zoom-In Left"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Zoom-In Right"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Zoom-Out"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Zoom-Out Down"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Zoom-Out Up"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Zoom-Out Left"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Zoom-Out Right"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Animation Type"
+msgstr ""
+
+#: dist/blocks.js:18
+msgid "Preview"
 msgstr ""
 
 #: dist/blocks.js:18

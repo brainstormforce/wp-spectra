@@ -1190,7 +1190,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		/**
 		 * Renders the post grid block on pagination clicks.
 		 *
-		 * @since x.x.x
+		 * @since 2.6.0
 		 * 
 		 * @return void
 		 */

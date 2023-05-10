@@ -241,7 +241,7 @@ class UAGB_Post_Assets {
 	/**
 	 * Generate assets of Astra custom layout post in preview
 	 *
-	 * @since x.x.x
+	 * @since 2.6.0
 	 * @return void
 	 */
 	public function prepare_ast_custom_layout_post_assets() {

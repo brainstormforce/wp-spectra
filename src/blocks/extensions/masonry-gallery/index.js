@@ -27,7 +27,7 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 		/**
 		 * Returns the root element of the current document, taking into account the iframe "editor-canvas" if present.
 		 *
-		 * @since x.x.x
+		 * @since 2.6.0
 		 *
 		 * @return {HTMLElement} The root element of the document.
 		 */
@@ -57,7 +57,7 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 							// Clone the `styleElement` and append it to the head of the `_document` of iframe.
 							const clonedElement = styleElement.cloneNode( true );
 							document_element.head?.appendChild( clonedElement );
-							
+
 						}
 					}
 				}
@@ -91,7 +91,7 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 			};
 			const styling = generateCSS( selectors, '#block-' + props.clientId );
 			const _document = getDocumentElement();
-		
+
 			if ( attributes.masonry ) {
 				const element = _document.getElementById( 'uag-gallery-masonry-style-' + props.clientId.substr( 0, 8 ) );
 				if ( null !== element && undefined !== element ) {

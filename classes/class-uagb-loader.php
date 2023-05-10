@@ -86,7 +86,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.5.1' );
+			define( 'UAGB_VER', '2.6.0' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'spectra' );
@@ -389,7 +389,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 * Adds specified blocks to the list of allowed blocks in excerpts.
 		 *
 		 * @param array $allowed    List of allowed blocks in excerpts.
-		 * @since x.x.x
+		 * @since 2.6.0
 		 * @return array            Modified list of allowed blocks in excerpts.
 		 */
 		public function add_blocks_to_excerpt( $allowed ) {
@@ -400,7 +400,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 * Adds specified wrapper blocks to the list of allowed blocks in excerpts.
 		 *
 		 * @param array $allowed    List of allowed blocks in excerpts.
-		 * @since x.x.x
+		 * @since 2.6.0
 		 * @return array            Modified list of allowed blocks in excerpts.
 		 */
 		public function add_wrapper_blocks_to_excerpt( $allowed ) {
@@ -420,7 +420,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 *
 		 * @param array $excerpt_blocks     List of allowed blocks in excerpts.
 		 * @param array $blocks_to_add      Blocks to add to the list of allowed blocks in excerpts.
-		 * @since x.x.x
+		 * @since 2.6.0
 		 * @return array                    The merged excerpt blocks array if both parameters are arrays, or the original excerpt blocks if either parameter is not an array.
 		 */
 		public function add_uagb_blocks_to_excerpt( $excerpt_blocks, $blocks_to_add ) {
