@@ -84,18 +84,32 @@ const UAGBContainer = ( props ) => {
 
 		const parentBlocks = select( 'core/block-editor' ).getBlocksByClientId( isBlockRootParentID );
 
-		let hasSliderParent = false;
+		// Check if a parent of this container is one of these special blocks.
+		const blockParents = {
+			hasSliderParent: false,
+			hasPopupParent: false,
+		};
 
-		const sliderBlocks = [ 'uagb/slider', 'uagb/slider-child' ];
+		// Add the lists of special block cases.
+		const specialBlocks = {
+			sliderBlocks: [ 'uagb/slider', 'uagb/slider-child' ],
+			popupBlocks: [ 'uagb/modal', 'uagb/popup-builder' ],
+		};
+
 		const parentBlocksNames = [];
 
-		if ( parentBlocks && parentBlocks?.length > 0 ) {
+		if ( parentBlocks?.length ) {
 
 			for ( const parent in parentBlocks ) {
 				const parentName = parentBlocks[parent]?.name;
 				// For Slider.
-				if ( sliderBlocks.includes( parentName ) ) {
-					hasSliderParent = true;
+				if ( specialBlocks.sliderBlocks.includes( parentName ) ) {
+					blockParents.hasSliderParent = true;
+				}
+
+				// For Modal and Popup Builder.
+				if ( specialBlocks.popupBlocks.includes( parentName ) ) {
+					blockParents.hasPopupParent = true;
 				}
 
 				// For Container Root.
@@ -111,7 +125,10 @@ const UAGBContainer = ( props ) => {
 			setAttributes( { isBlockRootParent: true } );
 		}
 		
-		setAttributes( { hasSliderParent } );
+		setAttributes( {
+			hasSliderParent: blockParents.hasSliderParent,
+			hasPopupParent: blockParents.hasPopupParent
+		} );
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );

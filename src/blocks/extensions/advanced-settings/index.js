@@ -457,18 +457,26 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 		'uagb/slider-child',
 	];
 
+	const excludeDisplayConditionBlocks = [
+		'uagb/popup-builder',
+	];
+
 	const excludeDeprecatedBlocks = [
+		// Legacy Blocks.
 		'uagb/cf7-styler',
 		'uagb/wp-search',
 		'uagb/gf-styler',
 		'uagb/columns',
 		'uagb/section',
+		// Other Blocks without Z-index settings.
+		'uagb/popup-builder',
 	];
 
 	const excludeBlocksAnimations = [
 		'uagb/content-timeline-child',
 		'uagb/slider-child',
 		'uagb/content-timeline-child',
+		'uagb/popup-builder',
 	];
 
 	const getParentBlocks = wp.data.select( 'core/block-editor' ).getBlockParents( props.clientId );
@@ -504,7 +512,7 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 				) }
 			{ isSelected && ! excludeBlocks.includes( name ) && (
 				<>
-					{ 'enabled' === enableConditions && (
+					{ ( 'enabled' === enableConditions && ! excludeDisplayConditionBlocks.includes( name ) ) && (
 						<UAGAdvancedPanelBody
 							title={ __( 'Display Conditions', 'ultimate-addons-for-gutenberg' ) }
 							initialOpen={ false }

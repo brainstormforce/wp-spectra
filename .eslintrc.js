@@ -52,5 +52,7 @@ module.exports = {
 		UAGBCounter: true,
 		location: true,
 		IntersectionObserver: true,
+		navigator: true,
+		uagb_popup_builder_admin: true,
 	},
 };

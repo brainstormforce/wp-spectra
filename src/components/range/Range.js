@@ -146,11 +146,13 @@ const Range = ( props ) => {
 				<div className="uagb-control__header">
 					<ResponsiveToggle label={ props.label } responsive={ props.responsive } />
 					<div className="uagb-range-control__actions uagb-control__actions">
-						<UAGReset
-							onReset={ resetValues }
-							attributeNames={ [ props.data.label, props.displayUnit ? props.unit.label : false ] }
-							setAttributes={ props.setAttributes }
-						/>
+						{ props?.allowReset && (
+							<UAGReset
+								onReset={ resetValues }
+								attributeNames={ [ props.data.label, props.displayUnit ? props.unit.label : false ] }
+								setAttributes={ props.setAttributes }
+							/>
+						) }
 						{ props.displayUnit && (
 							<ButtonGroup
 								className="uagb-control__units"

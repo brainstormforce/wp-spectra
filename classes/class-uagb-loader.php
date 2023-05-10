@@ -379,6 +379,9 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 					)
 				);
 
+			// This class is loaded from blocks config.
+			UAGB_Popup_Builder::generate_scripts();
+
 			// Adds filters to modify the blocks allowed in excerpts.
 			add_filter( 'excerpt_allowed_blocks', array( $this, 'add_blocks_to_excerpt' ), 20 );
 			add_filter( 'excerpt_allowed_wrapper_blocks', array( $this, 'add_wrapper_blocks_to_excerpt' ), 20 );

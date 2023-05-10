@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
+import { getBlockTypes } from '@wordpress/blocks';
 import { memo } from '@wordpress/element';
 import shapes from './shapes';
 import { select, useSelect } from '@wordpress/data';
@@ -25,7 +26,8 @@ const Render = ( props ) => {
 		isBlockRootParent,
 		contentWidth,
 		innerContentWidth,
-		hasSliderParent
+		hasSliderParent,
+		hasPopupParent,
 	} = attributes;
 
 	const direction = attributes[ 'direction' + deviceType ];
@@ -84,15 +86,24 @@ const Render = ( props ) => {
 		renderAppender: hasChildBlocks ? undefined : InnerBlocks.ButtonBlockAppender,
 	};
 
-	if ( hasSliderParent ) {
-		const parentBlocks = wp.blocks.getBlockTypes().filter( function ( item ) {
-			return ! item.parent;
-		} );
+	// If a special block is needed, run this code block.
+	if ( hasSliderParent || hasPopupParent ) {
 
-		const ALLOWED_BLOCKS = parentBlocks
-			.map( ( block ) => block.name )
-			.filter( ( blockName ) => [ 'uagb/slider' ].indexOf( blockName ) === -1 );
+		const parentBlocks = getBlockTypes().filter( ( item ) => ( ! item.parent ) );
+	
+		let ALLOWED_BLOCKS = parentBlocks.map( ( block ) => block.name );
+	
+		// Check if a parent of this container is a Slider block. If so, disallow the Slider block in this container.
+		if ( hasSliderParent ) {
+			ALLOWED_BLOCKS = ALLOWED_BLOCKS.filter( ( blockName ) => [ 'uagb/slider' ].indexOf( blockName ) === -1 );
+		}
+	
+		// Check if a parent of this container is a Popup block. If so, disallow the Modal block in this container.
+		if ( hasPopupParent ) {
+			ALLOWED_BLOCKS = ALLOWED_BLOCKS.filter( ( blockName ) => [ 'uagb/modal' ].indexOf( blockName ) === -1 );
+		}
 
+		// Add the Updated Block List to the Inner Block Params.
 		innerBlocksParams.allowedBlocks = ALLOWED_BLOCKS;
 	}
 

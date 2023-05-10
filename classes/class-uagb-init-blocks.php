@@ -75,8 +75,98 @@ class UAGB_Init_Blocks {
 		if ( current_user_can( 'edit_posts' ) ) {
 			add_action( 'wp_ajax_uagb_svg_confirmation', array( $this, 'confirm_svg_upload' ) );
 		}
+
+		add_action( 'init', array( $this, 'register_popup_builder' ) );
 	}
 
+	/**
+	 * Register the Popup Builder CPT.
+	 * 
+	 * @return void
+	 *
+	 * @since x.x.x
+	 */
+	public function register_popup_builder() {
+		$supports = array(
+			'title',
+			'editor',
+			'custom-fields',
+			'author',
+		);
+
+		$labels = array(
+			'name'               => _x( 'Popup Builder', 'plural', 'ultimate-addons-for-gutenberg' ),
+			'singular_name'      => _x( 'Popup', 'singular', 'ultimate-addons-for-gutenberg' ),
+			'view_item'          => __( 'View Popup', 'ultimate-addons-for-gutenberg' ),
+			'add_new_item'       => __( 'Create New Popup', 'ultimate-addons-for-gutenberg' ),
+			'add_new'            => __( 'Create Popup', 'ultimate-addons-for-gutenberg' ),
+			'edit_item'          => __( 'Edit Popup', 'ultimate-addons-for-gutenberg' ),
+			'search_items'       => __( 'Search Popups', 'ultimate-addons-for-gutenberg' ),
+			'update_item'        => __( 'Update Popup', 'ultimate-addons-for-gutenberg' ),
+			'item_updated'       => __( 'Popup Updated', 'ultimate-addons-for-gutenberg' ),
+			'not_found'          => __( 'No Popups Found', 'ultimate-addons-for-gutenberg' ),
+			'not_found_in_trash' => __( 'No Popups in Trash', 'ultimate-addons-for-gutenberg' ),
+		);
+
+		$type_args = array(
+			'supports'      => $supports,
+			'labels'        => $labels,
+			'public'        => false,
+			'show_in_menu'  => false,
+			'show_ui'       => true,
+			'show_in_rest'  => true,
+			'template_lock' => 'all',
+			'template'      => array(
+				array( 'uagb/popup-builder', array() ),
+			),
+			'rewrite'       => array(
+				'slug'       => 'spectra-popup',
+				'with-front' => false,
+				'pages'      => false,
+			),
+		);
+
+		$meta_args_popup_type = array(
+			'single'        => true,
+			'type'          => 'string', 
+			'default'       => 'unset',
+			'auth_callback' => '__return_true',
+			'show_in_rest'  => true,
+		);
+
+		$meta_args_popup_enabled = array(
+			'single'        => true,
+			'type'          => 'boolean',
+			'default'       => false,
+			'auth_callback' => '__return_true',
+			'show_in_rest'  => true,
+		);
+
+		$meta_args_popup_repetition = array(
+			'single'        => true,
+			'type'          => 'number',
+			'default'       => 1,
+			'auth_callback' => '__return_true',
+			'show_in_rest'  => true,
+		);
+
+		register_post_type( 'spectra-popup', $type_args );
+
+		register_post_meta( 'spectra-popup', 'spectra-popup-type', $meta_args_popup_type );
+		register_post_meta( 'spectra-popup', 'spectra-popup-enabled', $meta_args_popup_enabled );
+		register_post_meta( 'spectra-popup', 'spectra-popup-repetition', $meta_args_popup_repetition );
+		do_action( 'register_spectra_pro_popup_meta' );
+
+		$spectra_popup_dashboard = UAGB_Popup_Builder::create_for_admin();
+
+		add_action( 'admin_enqueue_scripts', array( $spectra_popup_dashboard, 'popup_toggle_scripts' ) );
+
+		add_action( 'wp_ajax_uag_update_popup_status', array( $spectra_popup_dashboard, 'update_popup_status' ) );
+
+		add_filter( 'manage_spectra-popup_posts_columns', array( $spectra_popup_dashboard, 'popup_builder_admin_headings' ) );
+		add_action( 'manage_spectra-popup_posts_custom_column', array( $spectra_popup_dashboard, 'popup_builder_admin_content' ), 10, 2 );
+	}
+	
 	/**
 	 * Render block.
 	 *
@@ -660,6 +750,7 @@ class UAGB_Init_Blocks {
 				'insta_linked_accounts'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_insta_linked_accounts', array() ),
 				'insta_all_users_media'                   => apply_filters( 'uag_instagram_transients', array() ),
 				'is_site_editor'                          => $screen->id,
+				'current_post_id'                         => get_the_ID(),
 			)
 		);
 		// To match the editor with frontend.

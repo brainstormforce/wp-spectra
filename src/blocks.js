@@ -33,6 +33,8 @@ uagLocalStorage.setItem( 'uagSvgConfirmation', JSON.stringify( uagb_blocks_info?
 // The Block Slugs need to be added exactly as below into the array at: /classes/class-spectra-block-prioritization.php.
 // Priorities need to be adequately updated in the respective includes/blocks/block.php files.
 
+// CPT Specific Blocks.
+import './blocks/popup-builder/block.js';
 // Core Spectra Blocks.
 import './blocks/container/block.js';
 import './blocks/advanced-heading/block.js';

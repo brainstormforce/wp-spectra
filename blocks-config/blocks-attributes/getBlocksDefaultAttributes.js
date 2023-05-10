@@ -55,6 +55,7 @@ import separatorAttribute from '@Blocks/separator/attributes';
 import countdownAttribute from '@Blocks/countdown/attributes';
 import sliderAttribute from '@Blocks/slider/attributes';
 import sliderChildAttribute from '@Blocks/slider-child/attributes';
+import popupBuilderAttribute from '@Blocks/popup-builder/attributes';
 
 export const blocksAttributes = {
 	'advanced-heading': advancedHeadingAttribute,
@@ -114,4 +115,5 @@ export const blocksAttributes = {
 	'countdown': countdownAttribute,
 	'slider': sliderAttribute,
 	'slider-child': sliderChildAttribute,
+	'popup-builder': popupBuilderAttribute,
 };

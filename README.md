@@ -167,6 +167,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### 2.6.0 - THURSDAY, 11th MAY 2023 ###
+* New: Introducing the Popup Builder - Create sitewide Popups and Info Bars with ease!
 * Fix: Resolved an issue where Spectra heading and wrapper blocks were not displayed in post excerpts.
 * New: Animations - Give a new life to your page with some scroll-based entrance animations.
 * New: Introducing the Separator block that will help you divide your page content in style.

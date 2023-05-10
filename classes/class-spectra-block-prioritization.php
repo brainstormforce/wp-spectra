@@ -70,6 +70,8 @@ class Spectra_Block_Prioritization {
 		'gf-styler',
 		'post-masonry',
 		'wp-search',
+		// Extensions.
+		'popup-builder',
 	);
 
 	/**
