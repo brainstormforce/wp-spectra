@@ -186,6 +186,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Info Box -  Prefix margin not getting applied on frontend.
 * Fix: Tabs - Set tabs title default color to inherit to prevent it from taking link color from theme.
 * Fix: Container - Resolved an issue where the video/image background styling were not working as expected on the front-end.
+* Fix: Multi-buttons Control - Resolved a console issue that occurs when setAttributes is not defined.
 * Fix: Modal - Resolved an issue with the close button in Astra's custom layout action hook `before_add_to_card_form`.
 * Fix: Custom CSS - CSS were not loading on frontend when WP core block uses a custom css on page and there is no spectra block on the page.
 * Fix: Modal - Inside the Container, the alignment of the block gets in center from the left.
