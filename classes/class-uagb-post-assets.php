@@ -239,8 +239,8 @@ class UAGB_Post_Assets {
 	}
 
 	/**
-	 * Generate assets of Astra custom layout post in preview 
-	 * 
+	 * Generate assets of Astra custom layout post in preview
+	 *
 	 * @since x.x.x
 	 * @return void
 	 */
@@ -249,7 +249,7 @@ class UAGB_Post_Assets {
 		if ( ! defined( 'ASTRA_ADVANCED_HOOKS_POST_TYPE' ) ) {
 			return;
 		}
-		
+
 		$option = array(
 			'location'  => 'ast-advanced-hook-location',
 			'exclusion' => 'ast-advanced-hook-exclusion',
@@ -1075,9 +1075,13 @@ class UAGB_Post_Assets {
 					if ( $id ) {
 						$assets = $this->get_assets_using_post_content( $id );
 
-						$this->stylesheet .= $assets['css'];
-						$this->script     .= $assets['js'];
-
+						if ( wp_is_block_theme() ) {
+							$block_css .= $assets['css'];
+							$js        .= $assets['js'];
+						} else {
+							$this->stylesheet .= $assets['css'];
+							$this->script     .= $assets['js'];
+						}
 					}
 				} elseif ( 'core/template-part' === $block['blockName'] ) {
 
@@ -1119,7 +1123,6 @@ class UAGB_Post_Assets {
 			$mob_styling_css .= $mobile;
 			$mob_styling_css .= '}';
 		}
-
 		return array(
 			'css' => $block_css . $desktop . $tab_styling_css . $mob_styling_css,
 			'js'  => $js,

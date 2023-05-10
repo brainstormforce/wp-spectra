@@ -194,6 +194,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Resolved an issue of PHP error appearing for Full Site Editing (FSE) fonts compatibility.
 * Fix: Global - Fixed an issue wherein a Google error would appear when loading Google Fonts locally with a specific font weight and family set to default.
 * Fix: Global - Fixed a font resource URL breakage issue when a provided google_font array contains a font-family with an empty string.
+* Fix: Global - Updated dynamic styling to load in FSE (Full Site Editing) template pages in the frontend for reusable blocks.
 
 = 2.5.1 - THURSDAY, 27th APRIL 2023 =
 * Feature: You can now add Google Fonts to Block Based Themes from Spectra Dashboard.
@@ -204,7 +205,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Modal - Background not applying properly when custom width is set.
 * Fix: Resolve an issue of PHP error appear for block-based widget editor.
 * Fix: Table Of Contents - Removed the console warning that was thrown for an empty collapsible Table Of Contents block.
-* Fix: Forms - Form submit failure when we use forms as reusable block.
 
 = 2.5.0 - TUESDAY, 25th APRIL 2023 =
 * New: Spectra now has support for the all-new Spectra Pro!
