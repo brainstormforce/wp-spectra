@@ -10,8 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_image_gallery_gfont( $attr );
 
-$block_name = 'image-gallery';
-
 // Arrow & Dots Default Color Fallback ( Not from Theme ).
 $arrow_dot_color = $attr['paginateColor'] ? $attr['paginateColor'] : '#007cba';
 

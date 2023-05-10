@@ -10,36 +10,16 @@
 // Add fonts.
 UAGB_Block_JS::blocks_counter_gfont( $attr );
 
-$block_name = 'counter';
-
-// <-------------- FALLBACKS -------------->.
-
-// Number fallbacks.
-$end_number_fallback = UAGB_Block_Helper::get_fallback_number( $attr['endNumber'], 'endNumber', $block_name );
-
-// Circle, circle stroke and bar size.
-$circle_size_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['circleSize'], 'circleSize', $block_name );
-$circle_stroke_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['circleStokeSize'], 'circleStokeSize', $block_name );
-$bar_size_fallback           = UAGB_Block_Helper::get_fallback_number( $attr['barSize'], 'barSize', $block_name );
-
-// Prefix spacing fallbacks.
-$prefix_right_distance_fallback    = UAGB_Block_Helper::get_fallback_number( $attr['prefixRightDistance'], 'prefixRightDistance', $block_name );
-$attr['prefixRightDistanceTablet'] = is_numeric( $attr['prefixRightDistanceTablet'] ) ? $attr['prefixRightDistanceTablet'] : $prefix_right_distance_fallback;
+$attr['prefixRightDistanceTablet'] = is_numeric( $attr['prefixRightDistanceTablet'] ) ? $attr['prefixRightDistanceTablet'] : $attr['prefixRightDistance'];
 $attr['prefixRightDistanceMobile'] = is_numeric( $attr['prefixRightDistanceMobile'] ) ? $attr['prefixRightDistanceMobile'] : $attr['prefixRightDistanceTablet'];
 
-// Suffix spacing fallbacks.
-$suffix_left_distance_fallback    = UAGB_Block_Helper::get_fallback_number( $attr['suffixLeftDistance'], 'suffixLeftDistance', $block_name );
-$attr['suffixLeftDistanceTablet'] = is_numeric( $attr['suffixLeftDistanceTablet'] ) ? $attr['suffixLeftDistanceTablet'] : $suffix_left_distance_fallback;
+$attr['suffixLeftDistanceTablet'] = is_numeric( $attr['suffixLeftDistanceTablet'] ) ? $attr['suffixLeftDistanceTablet'] : $attr['suffixLeftDistance'];
 $attr['suffixLeftDistanceMobile'] = is_numeric( $attr['suffixLeftDistanceMobile'] ) ? $attr['suffixLeftDistanceMobile'] : $attr['suffixLeftDistanceTablet'];
 
-// Icon size fallbacks.
-$icon_size_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name );
-$attr['iconSizeTablet'] = is_numeric( $attr['iconSizeTablet'] ) ? $attr['iconSizeTablet'] : $icon_size_fallback;
+$attr['iconSizeTablet'] = is_numeric( $attr['iconSizeTablet'] ) ? $attr['iconSizeTablet'] : $attr['iconSize'];
 $attr['iconSizeMobile'] = is_numeric( $attr['iconSizeMobile'] ) ? $attr['iconSizeMobile'] : $attr['iconSizeTablet'];
 
-// Image size fallbacks.
-$image_width_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['imageWidth'], 'imageWidth', $block_name );
-$attr['imageWidthTablet'] = is_numeric( $attr['imageWidthTablet'] ) ? $attr['imageWidthTablet'] : $image_width_fallback;
+$attr['imageWidthTablet'] = is_numeric( $attr['imageWidthTablet'] ) ? $attr['imageWidthTablet'] : $attr['imageWidth'];
 $attr['imageWidthMobile'] = is_numeric( $attr['imageWidthMobile'] ) ? $attr['imageWidthMobile'] : $attr['imageWidthTablet'];
 
 // Icon, Image Border CSS.
@@ -47,8 +27,8 @@ $icon_wrap_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr
 $icon_wrap_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'iconWrap', 'tablet' );
 $icon_wrap_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'iconWrap', 'mobile' );
 
-$circle_pos    = ( $circle_size_fallback / 2 );
-$circle_radius = $circle_pos - ( $circle_stroke_size_fallback / 2 );
+$circle_pos    = ( $attr['circleSize'] / 2 );
+$circle_radius = $circle_pos - ( $attr['circleStokeSize'] / 2 );
 $circle_dash   = round( floatval( 2 * pi() * $circle_radius ), 2 );
 
 // Icon and Image Common Padding.
@@ -135,8 +115,8 @@ $selectors = array(
 	),
 	'.wp-block-uagb-counter .wp-block-uagb-counter__icon svg' => array(
 		'fill'   => $attr['iconColor'],
-		'width'  => UAGB_Helper::get_css_value( $icon_size_fallback, $attr['iconSizeType'] ),
-		'height' => UAGB_Helper::get_css_value( $icon_size_fallback, $attr['iconSizeType'] ),
+		'width'  => UAGB_Helper::get_css_value( $attr['iconSize'], $attr['iconSizeType'] ),
+		'height' => UAGB_Helper::get_css_value( $attr['iconSize'], $attr['iconSizeType'] ),
 	),
 	'.wp-block-uagb-counter:hover .wp-block-uagb-counter__icon svg' => array(
 		'fill' => $attr['iconHoverColor'],
@@ -172,16 +152,16 @@ $selectors = array(
 		'margin-left'     => UAGB_Helper::get_css_value( $attr['numberLeftMargin'], $attr['numberMarginUnit'] ),
 	),
 	'.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-prefix' => array(
-		'margin-right' => UAGB_Helper::get_css_value( $prefix_right_distance_fallback, 'px' ),
+		'margin-right' => UAGB_Helper::get_css_value( $attr['prefixRightDistance'], 'px' ),
 	),
 	'.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-suffix' => array(
-		'margin-left' => UAGB_Helper::get_css_value( $suffix_left_distance_fallback, 'px' ),
+		'margin-left' => UAGB_Helper::get_css_value( $attr['suffixLeftDistance'], 'px' ),
 	),
 	'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container' => array(
-		'max-width' => UAGB_Helper::get_css_value( $circle_size_fallback, 'px' ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['circleSize'], 'px' ),
 	),
 	'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg circle' => array(
-		'stroke-width' => UAGB_Helper::get_css_value( $circle_stroke_size_fallback, 'px' ),
+		'stroke-width' => UAGB_Helper::get_css_value( $attr['circleStokeSize'], 'px' ),
 		'stroke'       => $attr['circleBackground'],
 		'r'            => UAGB_Helper::get_css_value( $circle_radius, 'px' ),
 		'cx'           => UAGB_Helper::get_css_value( $circle_pos, 'px' ),
@@ -199,7 +179,7 @@ $selectors = array(
 		'background' => $attr['barBackground'],
 	),
 	'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container .wp-block-uagb-counter__number' => array(
-		'height'         => UAGB_Helper::get_css_value( $bar_size_fallback, 'px' ),
+		'height'         => UAGB_Helper::get_css_value( $attr['barSize'], 'px' ),
 		'background'     => $attr['barForeground'],
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['numberTopMargin'], $attr['numberMarginUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['numberRightMargin'], $attr['numberMarginUnit'] ),
@@ -327,7 +307,7 @@ $m_selectors['.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container
 if ( $attr['imageWidthType'] ) {
 	// Image.
 	$selectors[' .wp-block-uagb-counter__image-wrap .wp-block-uagb-counter__image'] = array(
-		'width' => UAGB_Helper::get_css_value( $image_width_fallback, $attr['imageWidthUnit'] ),
+		'width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
 	);
 
 	$t_selectors[' .wp-block-uagb-counter__image-wrap .wp-block-uagb-counter__image'] = array(
@@ -376,7 +356,7 @@ if ( 'bars' === $attr['layout'] ) {
 	$m_selectors[ $num_container ]['margin-left']   = 'unset';
 	$m_selectors[ $num_container ]['margin-right']  = 'unset';
 
-	if ( 0 === $end_number_fallback ) {
+	if ( 0 === $attr['endNumber'] ) {
 
 		$selectors[ $num_container ]['padding-left']  = 'unset';
 		$selectors[ $num_container ]['padding-right'] = 'unset';

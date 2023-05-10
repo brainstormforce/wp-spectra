@@ -10,13 +10,6 @@
 // Add fonts.
 UAGB_Block_JS::blocks_star_rating_gfont( $attr );
 
-$block_name = 'star-rating';
-
-$rating_fallback    = UAGB_Block_Helper::get_fallback_number( $attr['rating'], 'rating', $block_name );
-$title_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleGap'], 'titleGap', $block_name );
-$size_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['size'], 'size', $block_name );
-$gap_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['gap'], 'gap', $block_name );
-
 $t_selectors = array();
 $m_selectors = array();
 $selectors   = array();
@@ -104,7 +97,7 @@ $selectors = array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 		'color'        => $attr['unmarkedColor'],
 	),
-	' .uag-star:nth-child(-n+' . floor( $rating_fallback ) . ')' => array(
+	' .uag-star:nth-child(-n+' . floor( $attr['rating'] ) . ')' => array(
 		'color' => $attr['color'],
 	),
 	' .uag-star-rating__title' => array(
@@ -274,7 +267,7 @@ if ( 'stack' === $attr['layoutMobile'] ) {
 	);
 }
 
-$selectors[' .uag-star-rating__title'][ $index ]          = UAGB_Helper::get_css_value( $title_gap_fallback, 'px' );
+$selectors[' .uag-star-rating__title'][ $index ]          = UAGB_Helper::get_css_value( $attr['titleGap'], 'px' );
 $t_selectors[' .uag-star-rating__title'][ $index_tablet ] = UAGB_Helper::get_css_value( $attr['titleGapTablet'], 'px' );
 $m_selectors[' .uag-star-rating__title'][ $index_mobile ] = UAGB_Helper::get_css_value( $attr['titleGapMobile'], 'px' );
 $t_selectors[' .uag-star-rating']                         = array(
@@ -290,18 +283,18 @@ $m_selectors[' .uag-star-rating > span']                  = array(
 	'margin-right' => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
 );
 
-$remainder = ( $rating_fallback - floor( $rating_fallback ) );
+$remainder = ( $attr['rating'] - floor( $attr['rating'] ) );
 $width     = $remainder * 100;
 
 if ( 0 !== $width ) {
-	$selectors[ ' .uag-star:nth-child(' . ceil( $rating_fallback ) . '):before' ] = array(
+	$selectors[ ' .uag-star:nth-child(' . ceil( $attr['rating'] ) . '):before' ] = array(
 		'color'    => $attr['color'],
 		'width'    => UAGB_Helper::get_css_value( $width, '%' ),
 		'position' => 'absolute',
 		'content'  => "'★'",
 		'overflow' => 'hidden',
 	);
-	$selectors[ ' .uag-star:nth-child(' . ceil( $rating_fallback ) . ')' ]        = array(
+	$selectors[ ' .uag-star:nth-child(' . ceil( $attr['rating'] ) . ')' ]        = array(
 		'position' => 'relative',
 	);
 }

@@ -10,16 +10,7 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_team_gfont( $attr );
 
-$block_name = 'team';
-
-$img_width_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['imgWidth'], 'imgWidth', $block_name );
-$title_space_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['titleSpace'], 'titleSpace', $block_name );
-$prefix_space_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['prefixSpace'], 'prefixSpace', $block_name );
-$desc_space_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['descSpace'], 'descSpace', $block_name );
-$social_font_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['socialFontSize'], 'socialFontSize', $block_name );
-$social_space_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['socialSpace'], 'socialSpace', $block_name );
-
-$social_space_tablet_fallback = is_numeric( $attr['socialSpaceTablet'] ) ? $attr['socialSpaceTablet'] : $social_space_fallback;
+$social_space_tablet_fallback = is_numeric( $attr['socialSpaceTablet'] ) ? $attr['socialSpaceTablet'] : $attr['socialSpace'];
 $social_space_mobile_fallback = is_numeric( $attr['socialSpaceMobile'] ) ? $attr['socialSpaceMobile'] : $social_space_tablet_fallback;
 
 $m_selectors = array();
@@ -30,15 +21,15 @@ $image_bottom_margin = isset( $attr['imageBottomMargin'] ) ? $attr['imageBottomM
 $image_left_margin   = isset( $attr['imageLeftMargin'] ) ? $attr['imageLeftMargin'] : $attr['imgLeftMargin'];
 $image_right_margin  = isset( $attr['imageRightMargin'] ) ? $attr['imageRightMargin'] : $attr['imgRightMargin'];
 
-$icon_size   = UAGB_Helper::get_css_value( $social_font_size_fallback, $attr['socialFontSizeType'] );
+$icon_size   = UAGB_Helper::get_css_value( $attr['socialFontSize'], $attr['socialFontSizeType'] );
 $m_icon_size = UAGB_Helper::get_css_value( $attr['socialFontSizeMobile'], $attr['socialFontSizeType'] );
 $t_icon_size = UAGB_Helper::get_css_value( $attr['socialFontSizeTablet'], $attr['socialFontSizeType'] );
 
 $selectors = array(
 	' p.uagb-team__desc'                    => array(
 		'color'         => $attr['descColor'],
-		'margin-bottom' => UAGB_Helper::get_css_value( $desc_space_fallback, 'px' ),
-		'margin-top'    => UAGB_Helper::get_css_value( $prefix_space_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpace'], 'px' ),
+		'margin-top'    => UAGB_Helper::get_css_value( $attr['prefixSpace'], 'px' ),
 	),
 	' .uagb-team__prefix'                   => array(
 		'color' => $attr['prefixColor'],
@@ -62,23 +53,23 @@ $selectors = array(
 		'fill' => $attr['socialHoverColor'],
 	),
 	'.uagb-team__image-position-left .uagb-team__social-icon' => array(
-		'margin-right' => UAGB_Helper::get_css_value( $social_space_fallback, 'px' ),
+		'margin-right' => UAGB_Helper::get_css_value( $attr['socialSpace'], 'px' ),
 		'margin-left'  => UAGB_Helper::get_css_value( 0, 'px' ),
 	),
 	'.uagb-team__image-position-right .uagb-team__social-icon' => array(
-		'margin-left'  => UAGB_Helper::get_css_value( $social_space_fallback, 'px' ),
+		'margin-left'  => UAGB_Helper::get_css_value( $attr['socialSpace'], 'px' ),
 		'margin-right' => UAGB_Helper::get_css_value( 0, 'px' ),
 	),
 	'.uagb-team__image-position-above.uagb-team__align-center .uagb-team__social-icon' => array(
-		'margin-right' => UAGB_Helper::get_css_value( ( $social_space_fallback / 2 ), 'px' ),
-		'margin-left'  => UAGB_Helper::get_css_value( ( $social_space_fallback / 2 ), 'px' ),
+		'margin-right' => UAGB_Helper::get_css_value( ( $attr['socialSpace'] / 2 ), 'px' ),
+		'margin-left'  => UAGB_Helper::get_css_value( ( $attr['socialSpace'] / 2 ), 'px' ),
 	),
 	'.uagb-team__image-position-above.uagb-team__align-left .uagb-team__social-icon' => array(
-		'margin-right' => UAGB_Helper::get_css_value( $social_space_fallback, 'px' ),
+		'margin-right' => UAGB_Helper::get_css_value( $attr['socialSpace'], 'px' ),
 		'margin-left'  => UAGB_Helper::get_css_value( 0, 'px' ),
 	),
 	'.uagb-team__image-position-above.uagb-team__align-right .uagb-team__social-icon' => array(
-		'margin-left'  => UAGB_Helper::get_css_value( $social_space_fallback, 'px' ),
+		'margin-left'  => UAGB_Helper::get_css_value( $attr['socialSpace'], 'px' ),
 		'margin-right' => UAGB_Helper::get_css_value( 0, 'px' ),
 	),
 	' .uagb-team__image-wrap'               => array( // For Backword.
@@ -86,32 +77,32 @@ $selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $image_bottom_margin, $attr['imageMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $image_left_margin, $attr['imageMarginUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $image_right_margin, $attr['imageMarginUnit'] ),
-		'width'         => UAGB_Helper::get_css_value( $img_width_fallback, 'px' ),
-		'height'        => UAGB_Helper::get_css_value( $img_width_fallback, 'px' ),
+		'width'         => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
+		'height'        => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
 	),
 	'.uagb-team__image-position-left > img' => array( // When Image position is left.
 		'margin-top'    => UAGB_Helper::get_css_value( $image_top_margin, $attr['imageMarginUnit'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $image_bottom_margin, $attr['imageMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $image_left_margin, $attr['imageMarginUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $image_right_margin, $attr['imageMarginUnit'] ),
-		'width'         => UAGB_Helper::get_css_value( $img_width_fallback, 'px' ),
-		'height'        => UAGB_Helper::get_css_value( $img_width_fallback, 'px' ),
+		'width'         => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
+		'height'        => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
 	),
 	'.uagb-team__image-position-right .uagb-team__content + img' => array( // When Image position is right.
 		'margin-top'    => UAGB_Helper::get_css_value( $image_top_margin, $attr['imageMarginUnit'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $image_bottom_margin, $attr['imageMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $image_left_margin, $attr['imageMarginUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $image_right_margin, $attr['imageMarginUnit'] ),
-		'width'         => UAGB_Helper::get_css_value( $img_width_fallback, 'px' ),
-		'height'        => UAGB_Helper::get_css_value( $img_width_fallback, 'px' ),
+		'width'         => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
+		'height'        => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
 	),
 	'.uagb-team__image-position-above img'  => array( // When Image position is above.
 		'margin-top'    => UAGB_Helper::get_css_value( $image_top_margin, $attr['imageMarginUnit'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $image_bottom_margin, $attr['imageMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $image_left_margin, $attr['imageMarginUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $image_right_margin, $attr['imageMarginUnit'] ),
-		'width'         => UAGB_Helper::get_css_value( $img_width_fallback, 'px' ),
-		'height'        => UAGB_Helper::get_css_value( $img_width_fallback, 'px' ),
+		'width'         => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
+		'height'        => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
 	),
 
 );
@@ -142,7 +133,7 @@ if ( 'above' !== $attr['imgPosition'] ) {
 
 $selectors[ ' ' . $attr['tag'] . '.uagb-team__title' ] = array(
 	'color'         => $attr['titleColor'],
-	'margin-bottom' => UAGB_Helper::get_css_value( $title_space_fallback, 'px' ),
+	'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpace'], 'px' ),
 );
 
 $m_selectors = array(

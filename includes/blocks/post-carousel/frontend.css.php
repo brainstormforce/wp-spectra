@@ -10,8 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_post_gfont( $attr );
 
-$arrow_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['arrowSize'], 'arrowSize', $attr['blockName'] );
-
 $selectors = UAGB_Block_Helper::get_post_selectors( $attr );
 
 $m_selectors = UAGB_Block_Helper::get_post_mobile_selectors( $attr );
@@ -33,11 +31,7 @@ if ( 'background' === $attr['imgPosition'] && $attr['columns'] === $attr['postsT
 	);
 }
 
-$dots_margin_top_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['dotsMarginTop'], 'dotsMarginTop', $attr['blockName'] );
-$dots_margin_top_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['dotsMarginTopTablet'], 'dotsMarginTopTablet', $attr['blockName'] );
-$dots_margin_top_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['dotsMarginTopMobile'], 'dotsMarginTopMobile', $attr['blockName'] );
-
-$arrow_size = UAGB_Helper::get_css_value( $arrow_size_fallback, 'px' );
+$arrow_size = UAGB_Helper::get_css_value( $attr['arrowSize'], 'px' );
 
 $selectors['.is_carousel .uagb-post__inner-wrap'] = array(
 	'background-color' => $attr['bgType'] ? $attr['bgColor'] : 'transparent',
@@ -107,13 +101,13 @@ if ( isset( $attr['arrowDots'] ) && 'dots' === $attr['arrowDots'] ) {
 
 // post carousal margin top for dots.
 $selectors[' .slick-dots']   = array(
-	'margin-top' => UAGB_Helper::get_css_value( $dots_margin_top_fallback, $attr['dotsMarginTopUnit'] ) . ' !important',
+	'margin-top' => UAGB_Helper::get_css_value( $attr['dotsMarginTop'], $attr['dotsMarginTopUnit'] ) . ' !important',
 );
 $t_selectors[' .slick-dots'] = array(
-	'margin-top' => UAGB_Helper::get_css_value( $dots_margin_top_tablet_fallback, $attr['dotsMarginTopUnit'] ) . ' !important',
+	'margin-top' => UAGB_Helper::get_css_value( $attr['dotsMarginTopTablet'], $attr['dotsMarginTopUnit'] ) . ' !important',
 );
 $m_selectors[' .slick-dots'] = array(
-	'margin-top' => UAGB_Helper::get_css_value( $dots_margin_top_mobile_fallback, $attr['dotsMarginTopUnit'] ) . ' !important',
+	'margin-top' => UAGB_Helper::get_css_value( $attr['dotsMarginTopMobile'], $attr['dotsMarginTopUnit'] ) . ' !important',
 );
 
 $combined_selectors = array(

@@ -9,7 +9,6 @@
 
 // Adds Fonts.
 UAGB_Block_JS::blocks_modal_gfont( $attr );
-$block_name      = 'modal';
 $m_selectors     = array();
 $t_selectors     = array();
 $selectors       = array();
@@ -276,8 +275,7 @@ if ( 'popup-top-left' === $attr['closeIconPosition'] ) {
 	);
 }
 
-$buttonIconSpace_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['buttonIconSpace'], 'buttonIconSpace', $block_name );
-$attr['buttonIconSpaceTablet'] = is_numeric( $attr['buttonIconSpaceTablet'] ) ? $attr['buttonIconSpaceTablet'] : $buttonIconSpace_fallback;
+$attr['buttonIconSpaceTablet'] = is_numeric( $attr['buttonIconSpaceTablet'] ) ? $attr['buttonIconSpaceTablet'] : $attr['buttonIconSpace'];
 $attr['buttonIconSpaceMobile'] = is_numeric( $attr['buttonIconSpaceMobile'] ) ? $attr['buttonIconSpaceMobile'] : $attr['buttonIconSpaceTablet'];
 
 if ( 'button' === $attr['modalTrigger'] ) {
