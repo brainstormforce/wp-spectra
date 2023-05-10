@@ -109,8 +109,8 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 					);
 				}
 
-				// If user is older than 2.5.2 then enable the Countdown Block that was added to the Core Blocks in this release.
-				if ( version_compare( $saved_version, '2.5.2', '<' ) ) {
+				// If user is older than 2.6.0 then enable the Countdown Block that was added to the Core Blocks in this release.
+				if ( version_compare( $saved_version, '2.6.0', '<' ) ) {
 					array_push(
 						$core_blocks,
 						'countdown'

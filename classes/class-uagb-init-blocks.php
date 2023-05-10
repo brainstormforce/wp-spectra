@@ -84,7 +84,7 @@ class UAGB_Init_Blocks {
 	 * 
 	 * @return void
 	 *
-	 * @since x.x.x
+	 * @since 2.6.0
 	 */
 	public function register_popup_builder() {
 		$supports = array(

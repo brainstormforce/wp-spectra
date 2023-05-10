@@ -4,7 +4,7 @@
  *
  * @package UAGB
  *
- * @since x.x.x
+ * @since 2.6.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Class UAGB_Popup_Builder.
  *
- * @since x.x.x
+ * @since 2.6.0
  */
 class UAGB_Popup_Builder {
 
@@ -23,7 +23,7 @@ class UAGB_Popup_Builder {
 	 *
 	 * @var int $post_id
 	 *
-	 * @since x.x.x
+	 * @since 2.6.0
 	 */
 	protected $post_id;
 
@@ -32,7 +32,7 @@ class UAGB_Popup_Builder {
 	 *
 	 * @var array $popup_ids
 	 *
-	 * @since x.x.x
+	 * @since 2.6.0
 	 */
 	protected $popup_ids;
 
@@ -41,7 +41,7 @@ class UAGB_Popup_Builder {
 	 * 
 	 * @return void
 	 *
-	 * @since x.x.x
+	 * @since 2.6.0
 	 */
 	public function __construct() {
 		$this->post_id   = 0;
@@ -57,7 +57,7 @@ class UAGB_Popup_Builder {
 	 *
 	 * @return object  Initialized object of this class.
 	 *
-	 * @since x.x.x
+	 * @since 2.6.0
 	 */
 	public static function create_for_admin() {
 		$instance = new self();
@@ -70,7 +70,7 @@ class UAGB_Popup_Builder {
 	 *
 	 * @return object  Initialized object of this class.
 	 *
-	 * @since x.x.x
+	 * @since 2.6.0
 	 */
 	public static function generate_scripts() {
 		$instance = new self();
@@ -83,7 +83,7 @@ class UAGB_Popup_Builder {
 	 *
 	 * @return void
 	 *
-	 * @since x.x.x
+	 * @since 2.6.0
 	 */
 	public function add_popup_builder_submenu() {
 		add_submenu_page(
@@ -100,7 +100,7 @@ class UAGB_Popup_Builder {
 	 *
 	 * @return void
 	 *
-	 * @since x.x.x
+	 * @since 2.6.0
 	 */
 	public function enqueue_popup_scripts_for_post() {
 		if ( ! is_front_page() ) {
@@ -118,7 +118,7 @@ class UAGB_Popup_Builder {
 	 * @param array $attr   The shortcode attributes.
 	 * @return string|void  The output buffer or void for early return.
 	 *
-	 * @since x.x.x
+	 * @since 2.6.0
 	 */
 	public function spectra_popup_shortcode( $attr ) {
 		$attr = shortcode_atts(
@@ -160,7 +160,7 @@ class UAGB_Popup_Builder {
 	 *
 	 * @return void
 	 *
-	 * @since x.x.x
+	 * @since 2.6.0
 	 */
 	public function enqueue_popup_scripts() {
 		$args   = array( 'post_type' => 'spectra-popup' );
@@ -190,7 +190,7 @@ class UAGB_Popup_Builder {
 	 *
 	 * @return void
 	 *
-	 * @since x.x.x
+	 * @since 2.6.0
 	 */
 	public function generate_popup_shortcode() {
 		if ( is_array( $this->popup_ids ) && ! empty( $this->popup_ids ) ) {
@@ -206,7 +206,7 @@ class UAGB_Popup_Builder {
 	 * @param array $columns  Array of columns.
 	 * @return array
 	 *
-	 * @since x.x.x
+	 * @since 2.6.0
 	 */
 	public static function popup_builder_admin_headings( $columns ) {
 		unset( $columns['date'] );
@@ -232,7 +232,7 @@ class UAGB_Popup_Builder {
 	 * @param int    $post_id  Post id.
 	 * @return void
 	 *
-	 * @since x.x.x
+	 * @since 2.6.0
 	 */
 	public function popup_builder_admin_content( $column, $post_id ) {
 		switch ( $column ) {
@@ -273,7 +273,7 @@ class UAGB_Popup_Builder {
 	 *
 	 * @return void
 	 *
-	 * @since x.x.x
+	 * @since 2.6.0
 	 */
 	public function popup_toggle_scripts() {
 
@@ -315,7 +315,7 @@ class UAGB_Popup_Builder {
 	 *
 	 * @return void
 	 *
-	 * @since x.x.x
+	 * @since 2.6.0
 	 */
 	public function update_popup_status() {
 		check_ajax_referer( 'uagb_popup_builder_admin_nonce', 'nonce' );
