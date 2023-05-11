@@ -453,8 +453,9 @@ export default function styling( attributes, clientId, name ) {
 		},
 	};
 
-	// If Background Type is not set, add the default background color.
-	if ( 'none' === backgroundType ) {
+	// If Background Type or Background Image is not set, add the default background color.
+	// Tablet and Mobile Image Backgrounds are handled by the device hierarchy.
+	if ( 'none' === backgroundType || ( 'image' === backgroundType  && ! backgroundImageDesktop ) ) {
 		selectors[' .uagb-popup-builder__container']['background-color'] = '#fff';
 	}
 

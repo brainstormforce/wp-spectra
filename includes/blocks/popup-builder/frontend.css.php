@@ -243,7 +243,9 @@ $t_selectors = array(
 				$attr['popupPaddingBottomTablet'],
 				$attr['popupPaddingLeftTablet']
 			),
-		)
+		),
+		$popup_bg_css_tablet,
+		$content_border_css_tablet
 	),
 	' .uagb-popup-builder__container--banner' => array(
 		'min-height' => ! $attr['hasFixedHeight'] ? UAGB_Helper::get_css_value( $attr['popupHeightTablet'], $attr['popupHeightUnitTablet'] ) : '',
@@ -293,7 +295,9 @@ $m_selectors = array(
 				$attr['popupPaddingBottomMobile'],
 				$attr['popupPaddingLeftMobile']
 			),
-		)
+		),
+		$popup_bg_css_mobile,
+		$content_border_css_mobile
 	),
 	' .uagb-popup-builder__container--banner' => array(
 		'min-height' => ! $attr['hasFixedHeight'] ? UAGB_Helper::get_css_value( $attr['popupHeightMobile'], $attr['popupHeightUnitMobile'] ) : '',
@@ -303,8 +307,9 @@ $m_selectors = array(
 	),
 );
 
-// If Background Type is not set, add the default background color.
-if ( 'none' === $attr['backgroundType'] ) {
+// If Background Type or Background Image is not set, add the default background color.
+// Tablet and Mobile Image Backgrounds are handled by the device hierarchy.
+if ( 'none' === $attr['backgroundType'] || ( 'image' === $attr['backgroundType'] && ! $attr['backgroundImageDesktop'] ) ) {
 	$selectors[' .uagb-popup-builder__container']['background-color'] = '#fff';
 }
 

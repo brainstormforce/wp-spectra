@@ -19,7 +19,7 @@ const backgroundCss = ( attributes, deviceType, clientId ) => {
 	const placeHolderImage = isLoopBuilderPresent ? { 
 		type: 'image', 
 		url: uagb_blocks_info.uagb_url + '/admin/assets/images/uag-placeholder.svg' 
-	} : {};
+	} : '';
 	const {
 		backgroundType,
 		backgroundImageDesktop,
@@ -98,10 +98,12 @@ const backgroundCss = ( attributes, deviceType, clientId ) => {
 		yPositionType,
 	};
 
+	// Any properties that should be inherited from Desktop will be imported from backgroundAttributesDesktop, since only 1 CSS file is generated at a time in bgCss.
 	const backgroundAttributesTablet = {
 		backgroundType,
 		backgroundColor,
-		backgroundImage: backgroundImageTablet?.url ? backgroundImageTablet : placeHolderImage,
+		// The placeholder image or Desktop background image would already be set or undefined in backgroundAttributesDesktop by this point.
+		backgroundImage: backgroundImageTablet?.url ? backgroundImageTablet : backgroundAttributesDesktop.backgroundImage,
 		gradientValue,
 		gradientColor1,
 		gradientColor2,
@@ -110,27 +112,29 @@ const backgroundCss = ( attributes, deviceType, clientId ) => {
 		gradientType,
 		gradientAngle,
 		selectGradient,
-		backgroundRepeat: backgroundRepeatTablet,
-		backgroundPosition: backgroundPositionTablet,
-		backgroundSize: backgroundSizeTablet,
-		backgroundAttachment: backgroundAttachmentTablet,
-		backgroundCustomSize: backgroundCustomSizeTablet,
+		backgroundRepeat: backgroundRepeatTablet ? backgroundRepeatTablet : backgroundAttributesDesktop.backgroundRepeat,
+		backgroundPosition: backgroundPositionTablet ? backgroundPositionTablet : backgroundAttributesDesktop.backgroundPosition,
+		backgroundSize: backgroundSizeTablet ? backgroundSizeTablet : backgroundAttributesDesktop.backgroundSize,
+		backgroundAttachment: backgroundAttachmentTablet ? backgroundAttachmentTablet : backgroundAttributesDesktop.backgroundAttachment,
+		backgroundCustomSize: backgroundCustomSizeTablet ? backgroundCustomSizeTablet : backgroundAttributesDesktop.backgroundCustomSize,
 		backgroundCustomSizeType,
 		backgroundImageColor,
 		overlayType,
 		backgroundVideo,
 		backgroundVideoColor,
 		customPosition,
-		xPosition: xPositionTablet,
-		xPositionType: xPositionTypeTablet,
-		yPosition: yPositionTablet,
-		yPositionType: yPositionTypeTablet,
+		xPosition: ! isNaN( xPositionTablet ) ? xPositionTablet : backgroundAttributesDesktop.xPosition,
+		xPositionType: xPositionTypeTablet ? xPositionTypeTablet : backgroundAttributesDesktop.xPositionType,
+		yPosition: ! isNaN( yPositionTablet ) ? yPositionTablet : backgroundAttributesDesktop.yPosition,
+		yPositionType: yPositionTypeTablet ? yPositionTypeTablet : backgroundAttributesDesktop.yPositionType,
 	};
 
+	// Any properties that should be inherited from Tablet will be imported from backgroundAttributesTablet ( which inherits from backgroundAttributesDesktop ), since only 1 CSS file is generated at a time in bgCss.
 	const backgroundAttributesMobile = {
 		backgroundType,
 		backgroundColor,
-		backgroundImage: backgroundImageMobile?.url ? backgroundImageMobile : placeHolderImage,
+		// The placeholder image or Tablet background image would already be set or undefined in backgroundAttributesTablet by this point.
+		backgroundImage: backgroundImageMobile?.url ? backgroundImageMobile : backgroundAttributesTablet.backgroundImage,
 		gradientValue,
 		gradientColor1,
 		gradientColor2,
@@ -139,24 +143,25 @@ const backgroundCss = ( attributes, deviceType, clientId ) => {
 		gradientType,
 		gradientAngle,
 		selectGradient,
-		backgroundRepeat: backgroundRepeatMobile,
-		backgroundPosition: backgroundPositionMobile,
-		backgroundSize: backgroundSizeMobile,
-		backgroundAttachment: backgroundAttachmentMobile,
-		backgroundCustomSize: backgroundCustomSizeMobile,
+		backgroundRepeat: backgroundRepeatMobile ? backgroundRepeatMobile : backgroundAttributesTablet.backgroundRepeat,
+		backgroundPosition: backgroundPositionMobile ? backgroundPositionMobile : backgroundAttributesTablet.backgroundPosition,
+		backgroundSize: backgroundSizeMobile ? backgroundSizeMobile : backgroundAttributesTablet.backgroundSize,
+		backgroundAttachment: backgroundAttachmentMobile ? backgroundAttachmentMobile : backgroundAttributesTablet.backgroundAttachment,
+		backgroundCustomSize: backgroundCustomSizeMobile ? backgroundCustomSizeMobile : backgroundAttributesTablet.backgroundCustomSize,
 		backgroundCustomSizeType,
 		backgroundImageColor,
 		overlayType,
 		backgroundVideo,
 		backgroundVideoColor,
 		customPosition,
-		xPosition: xPositionMobile,
-		xPositionType: xPositionTypeMobile,
-		yPosition: yPositionMobile,
-		yPositionType: yPositionTypeMobile,
+		xPosition: ! isNaN( xPositionMobile ) ? xPositionMobile : backgroundAttributesTablet.xPosition,
+		xPositionType: xPositionTypeMobile ? xPositionTypeMobile : backgroundAttributesTablet.xPositionType,
+		yPosition: ! isNaN( yPositionMobile ) ? yPositionMobile : backgroundAttributesTablet.yPosition,
+		yPositionType: yPositionTypeMobile ? yPositionTypeMobile : backgroundAttributesTablet.yPositionType,
 	};
 
 	let bgCss;
+
 	if ( 'Mobile' === deviceType ) {
 		bgCss = generateBackgroundCSS( backgroundAttributesMobile );
 	} else if ( 'Tablet' === deviceType ) {
@@ -164,7 +169,8 @@ const backgroundCss = ( attributes, deviceType, clientId ) => {
 	} else {
 		bgCss = generateBackgroundCSS( backgroundAttributesDesktop );
 	}
-	if ( !bgCss ) {
+
+	if ( ! bgCss ) {
 		return null;
 	}
 
@@ -184,6 +190,7 @@ const backgroundCss = ( attributes, deviceType, clientId ) => {
 		}
 		createCamelCase[ snakeToCamel( cssProp ) ] = bgCss[cssProp].replace( ';', '' );
 	}
+
 	return createCamelCase;
 }
 export default backgroundCss;
