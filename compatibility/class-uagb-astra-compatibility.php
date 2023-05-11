@@ -86,10 +86,7 @@ class UAGB_Astra_Compatibility {
 			if ( is_array( $google_fonts ) && ! empty( $google_fonts ) ) {
 
 				foreach ( $google_fonts as $key => $gfont_values ) {
-					if ( 'string' !== gettype( $gfont_values['fontfamily'] ) && 'string' !== gettype( $gfont_values['fontvariants'] ) ) {
-						return $astra_fonts;
-					}
-					if ( ! empty( $gfont_values['fontfamily'] ) && ! empty( $gfont_values['fontvariants'] ) ) {
+					if ( ! empty( $gfont_values['fontfamily'] ) && is_string( $gfont_values['fontfamily'] ) && isset( $gfont_values['fontvariants'] ) ) {
 
 						$astra_fonts[ $gfont_values['fontfamily'] ] = $gfont_values['fontvariants'];
 
