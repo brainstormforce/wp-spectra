@@ -225,7 +225,10 @@ window.UAGBPostGrid = {
 		  .then( function( data ) { 
 
 			// Get the relevant DOM elements to replace.
-			const grid_element = document.querySelectorAll( '.uagb-block-'+ block_id )[0];
+			const grid_element = document.querySelector( '.uagb-block-'+ block_id );
+			if( ! grid_element ) {	
+				return;
+			}
 
 			// Remove the old elements and replace them with the updated markup received from the AJAX response.
 			const html = data.data.replace( /\n|\t/g, '' );

@@ -589,7 +589,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 		 * @return string link using slug.
 		 */
 		public function get_link_of_individual_categories( $slug, $taxonomy_type ) {
-			if ( 'string' !== gettype( $slug ) ) {
+			if ( ! is_string( $slug ) ) {
 				return '#';
 			}
 			$link = get_term_link( $slug, $taxonomy_type );

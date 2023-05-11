@@ -660,7 +660,7 @@ class UAGB_Post_Assets {
 			if ( ! empty( $fonts_attr ) ) {
 				$fonts_attr .= '|'; // Append a new font to the string.
 			}
-			if ( empty( $gfont_values['fontfamily'] ) && 'string' === gettype( $gfont_values['fontfamily'] ) ) {
+			if ( empty( $gfont_values['fontfamily'] ) && is_string( $gfont_values['fontfamily'] ) ) {
 				continue;
 			}
 			$fonts_attr  .= str_replace( ' ', '+', $gfont_values['fontfamily'] );
