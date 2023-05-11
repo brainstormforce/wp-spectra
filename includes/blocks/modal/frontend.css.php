@@ -64,7 +64,7 @@ $selectors               = array(
 		'border-bottom-left-radius'  => UAGB_Helper::get_css_value( $attr['contentBorderBottomLeftRadius'], $attr['contentBorderRadiusUnit'] ),
 		'border-bottom-right-radius' => UAGB_Helper::get_css_value( $attr['contentBorderBottomRightRadius'], $attr['contentBorderRadiusUnit'] ),
 	),
-	' .uagb-modal-popup-wrap:hover'              => array(
+	' .uagb-modal-popup-content:hover'           => array(
 		'border-color' => $attr['contentBorderHColor'],
 	),
 	' .uagb-modal-popup-close svg'               => array(
