@@ -152,8 +152,21 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 						}
 					}
 				}
+			} 
+			
+			$widget_content = get_option( 'widget_block' );
+			
+			if ( ! empty( $widget_content ) && is_array( $widget_content ) && empty( $current_block_attributes ) ) {
+				foreach ( $widget_content as $value ) {
+					if ( empty( $value['content'] ) ) {
+						continue;
+					}
+					if ( has_block( 'uagb/forms', $value['content'] ) ) {
+						$current_block_attributes = $this->recursive_inner_forms( parse_blocks( $value['content'] ), $block_id );
+					}
+				}
 			}
-
+			
 			if ( empty( $current_block_attributes ) ) {
 				wp_send_json_error( 400 );
 			}
