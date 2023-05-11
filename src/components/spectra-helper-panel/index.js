@@ -48,9 +48,11 @@ const SpectraHelperPanel = ( props ) => {
 	return (
 		<div className='uagb-helper-panel'>
 			{ useLogo && spectraLogo }
-			<h3 className='uagb-helper-panel__element uagb-helper-panel__element--message'>
-				{ message && message }
-			</h3>
+			{ message &&
+				<h3 className='uagb-helper-panel__element uagb-helper-panel__element--message'>
+					message 
+				</h3>
+			}
 		</div>
 	);
 };
