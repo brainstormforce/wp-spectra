@@ -56,5 +56,6 @@ module.exports = {
 		uagb_popup_builder_admin: true,
 		UAGBLottie: true,
 		AOS: true,
+		UAGBForms: true,
 	},
 };
