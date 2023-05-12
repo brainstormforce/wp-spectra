@@ -241,8 +241,8 @@ if ( '' !== $attr['contentPaddingTablet'] ) {
 		'padding-bottom' => 'calc( ' . UAGB_Helper::get_css_value( $attr['contentPaddingTablet'], $attr['contentPaddingTypeTablet'] ) . ' / 2 )',
 	);
 	$t_selectors[' .uagb-toc__list-wrap ul.uagb-toc__list > li'] = array(
-		'padding-top'    => 'calc( ' . UAGB_Helper::get_css_value( $attr['contentPaddingTablet'] . $attr['contentPaddingTypeTablet'] ) . ' / 2 )',
-		'padding-bottom' => 'calc( ' . UAGB_Helper::get_css_value( $attr['contentPaddingTablet'] . $attr['contentPaddingTypeTablet'] ) . ' / 2 )',
+		'padding-top'    => 'calc( ' . UAGB_Helper::get_css_value( $attr['contentPaddingTablet'], $attr['contentPaddingTypeTablet'] ) . ' / 2 )',
+		'padding-bottom' => 'calc( ' . UAGB_Helper::get_css_value( $attr['contentPaddingTablet'], $attr['contentPaddingTypeTablet'] ) . ' / 2 )',
 	);
 }
 
@@ -252,8 +252,8 @@ if ( '' !== $attr['contentPaddingMobile'] ) {
 		'padding-bottom' => 'calc( ' . UAGB_Helper::get_css_value( $attr['contentPaddingMobile'], $attr['contentPaddingTypeMobile'] ) . ' / 2 )',
 	);
 	$m_selectors[' .uagb-toc__list-wrap ul.uagb-toc__list > li'] = array(
-		'padding-top'    => 'calc( ' . UAGB_Helper::get_css_value( $attr['contentPaddingMobile'] . $attr['contentPaddingTypeMobile'] ) . ' / 2 )',
-		'padding-bottom' => 'calc( ' . UAGB_Helper::get_css_value( $attr['contentPaddingMobile'] . $attr['contentPaddingTypeMobile'] ) . ' / 2 )',
+		'padding-top'    => 'calc( ' . UAGB_Helper::get_css_value( $attr['contentPaddingMobile'], $attr['contentPaddingTypeMobile'] ) . ' / 2 )',
+		'padding-bottom' => 'calc( ' . UAGB_Helper::get_css_value( $attr['contentPaddingMobile'], $attr['contentPaddingTypeMobile'] ) . ' / 2 )',
 	);
 }
 
