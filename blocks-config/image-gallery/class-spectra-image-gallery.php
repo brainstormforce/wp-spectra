@@ -1535,7 +1535,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 						getSlickCarousel.slick(' . $settings . ');
 					}
 				}
-			})';
+			});';
 		}
 
 		/**
