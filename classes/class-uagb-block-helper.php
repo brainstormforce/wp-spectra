@@ -1420,6 +1420,24 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						break;
 
 					case 'image':
+						if ( isset( $repeat ) ) {
+							$gen_bg_css['background-repeat'] = esc_attr( $repeat );
+						}
+						if ( 'custom' !== $custom_position && isset( $position ) && isset( $position['x'] ) && isset( $position['y'] ) ) {
+							$position_value                    = $position['x'] * 100 . '% ' . $position['y'] * 100 . '%';
+							$gen_bg_css['background-position'] = $position_value;
+						} elseif ( 'custom' === $custom_position && isset( $x_position ) && isset( $y_position ) && isset( $x_position_type ) && isset( $y_position_type ) ) {
+							$position_value                    = $x_position . $x_position_type . ' ' . $y_position . $y_position_type;
+							$gen_bg_css['background-position'] = $position_value;
+						}
+		
+						if ( isset( $size ) ) {
+							$gen_bg_css['background-size'] = esc_attr( $size );
+						}
+		
+						if ( isset( $attachment ) ) {
+							$gen_bg_css['background-attachment'] = esc_attr( $attachment );
+						}
 						if ( 'color' === $overlay_type && '' !== $bg_img && '' !== $bg_image_color ) {
 							$gen_bg_css['background-image'] = 'linear-gradient(to right, ' . $bg_image_color . ', ' . $bg_image_color . '), url(' . $bg_img . ');';
 						}
@@ -1450,28 +1468,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				}
 			} elseif ( '' !== $bg_color ) {
 				$gen_bg_css['background-color'] = $bg_color . ';';
-			}
-
-			if ( '' !== $bg_img ) {
-				if ( isset( $repeat ) ) {
-					$gen_bg_css['background-repeat'] = esc_attr( $repeat );
-				}
-
-				if ( 'custom' !== $custom_position && isset( $position ) && isset( $position['x'] ) && isset( $position['y'] ) ) {
-					$position_value                    = $position['x'] * 100 . '% ' . $position['y'] * 100 . '%';
-					$gen_bg_css['background-position'] = $position_value;
-				} elseif ( 'custom' === $custom_position && isset( $x_position ) && isset( $y_position ) && isset( $x_position_type ) && isset( $y_position_type ) ) {
-					$position_value                    = $x_position . $x_position_type . ' ' . $y_position . $y_position_type;
-					$gen_bg_css['background-position'] = $position_value;
-				}
-
-				if ( isset( $size ) ) {
-					$gen_bg_css['background-size'] = esc_attr( $size );
-				}
-
-				if ( isset( $attachment ) ) {
-					$gen_bg_css['background-attachment'] = esc_attr( $attachment );
-				}
 			}
 
 			return $gen_bg_css;

@@ -1,4 +1,4 @@
-import { useEffect, memo } from '@wordpress/element';
+import { memo } from '@wordpress/element';
 
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
@@ -237,18 +237,6 @@ const Settings = ( props ) => {
 					'Define the horizontal alignment of every line of blocks inside this flex container.',
 					'ultimate-addons-for-gutenberg'
 			  );
-
-	// This useEffect ensures that background size is set to cover, so as to ensure color takes up entire width and height,
-	// in case bg type was set to Image before and given a custom width and height.
-	useEffect( () => {
-		if ( backgroundType === 'color' ) {
-			setAttributes( {
-				backgroundSizeDesktop: 'cover',
-				backgroundSizeTablet: 'cover',
-				backgroundSizeMobile: 'cover',
-			} );
-		}
-	}, [ backgroundType ] );
 
 	const onChangeHeight = ( value ) => {
 		setAttributes( { equalHeight: value } );
