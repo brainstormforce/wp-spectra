@@ -241,7 +241,17 @@ class UAGB_Popup_Builder {
 				if ( ! is_string( $layout ) ) {
 					break;
 				}
-				echo esc_attr( ucfirst( $layout ) ); 
+				switch ( $layout ) {
+					case 'banner':
+						echo esc_html__( 'Info Bar', 'ultimate-addons-for-gutenberg' );
+						break;
+					case 'popup':
+						echo esc_html__( 'Popup', 'ultimate-addons-for-gutenberg' );
+						break;
+					default:
+						echo esc_html__( 'Unset', 'ultimate-addons-for-gutenberg' );
+						break;
+				}
 				break;
 			case 'spectra_popup_toggle':
 				$layout = get_post_meta( $post_id, 'spectra-popup-type', true );
