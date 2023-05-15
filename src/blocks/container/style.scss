@@ -149,4 +149,10 @@ body .ast-container .wp-block-uagb-container > .uagb-container-inner-blocks-wrap
 		margin-right: calc(50% - 50vw);
 	}
 }
+//Heading block compatibility
+@media only screen and (max-width: 767px) {
+	.wp-block-uagb-container .wp-block-uagb-advanced-heading {
+		width: -webkit-fill-available !important;
+	}
+}
 

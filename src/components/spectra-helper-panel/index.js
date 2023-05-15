@@ -50,7 +50,7 @@ const SpectraHelperPanel = ( props ) => {
 			{ useLogo && spectraLogo }
 			{ message &&
 				<h3 className='uagb-helper-panel__element uagb-helper-panel__element--message'>
-					message 
+					{ message } 
 				</h3>
 			}
 		</div>
