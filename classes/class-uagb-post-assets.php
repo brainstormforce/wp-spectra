@@ -870,12 +870,21 @@ class UAGB_Post_Assets {
 			foreach ( $block['innerBlocks'] as $j => $inner_block ) {
 				if ( 'core/block' === $inner_block['blockName'] ) {
 					$id = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
-
 					if ( $id ) {
 						$assets = $this->get_assets_using_post_content( $id );
-
-						$this->stylesheet .= $assets['css'];
-						$this->script     .= $assets['js'];
+						if ( wp_is_block_theme() ) {
+							$reuse_block_css             = array(
+								'desktop' => '',
+								'tablet'  => '',
+								'mobile'  => '',
+							);
+							$reuse_block_css['desktop'] .= $assets['css'];
+							$css                         = array_merge( $css, $reuse_block_css );
+							$js                         .= $assets['js'];
+						} else {
+							$this->stylesheet .= $assets['css'];
+							$this->script     .= $assets['js'];
+						}
 					}
 				} else {
 					// Get CSS for the Block.
