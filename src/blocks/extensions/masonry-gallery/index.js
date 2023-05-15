@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
-import { ToggleControl, RangeControl } from '@wordpress/components';
+import { ToggleControl } from '@wordpress/components';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
 const { enableMasonryGallery } = uagb_blocks_info;
@@ -10,6 +10,7 @@ import styles from './../editor.lazy.scss';
 import { useLayoutEffect } from '@wordpress/element';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { select } from '@wordpress/data';
+import Range from '@Components/range/Range.js';
 
 const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
@@ -35,34 +36,31 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 			let document_element = document;
 			// Find the iframe element with the name "editor-canvas" and assign it to getEditorIframe.
 			const getEditorIframe = document.querySelectorAll( 'iframe[name="editor-canvas"]' );
+
+			if ( ! getEditorIframe?.[ 0 ] ) {
+				return document;
+			}
+			// Get the document of the iframe.
+			const iframeDocument =
+				getEditorIframe[ 0 ]?.contentWindow?.document || getEditorIframe[ 0 ]?.contentDocument;
+            
+			if ( ! iframeDocument ) {
+				return document;
+			}
+			// Set the root element to the iframe document.
+			document_element = iframeDocument;
+
+			// Get the style element with the ID 'uagb-editor-styles' from the iframe document.
+			const _element = document_element.getElementById( 'uagb-editor-styles' );
 			const styleElement = document.getElementById( 'uagb-editor-styles' );
-
-			if( getEditorIframe?.length ){
-				// Get the document of the iframe.
-				const iframeDocument = getEditorIframe?.[0]?.contentWindow?.document || getEditorIframe?.[0]?.contentDocument;
-
-				// If the iframe document is present...
-				if ( iframeDocument ) {
-
-					// Set the root element to the iframe document.
-					document_element = iframeDocument;
-
-					// Get the style element with the ID 'uagb-editor-styles' from the iframe document.
-					const _element = document_element.getElementById( 'uagb-editor-styles' );
-
-					// If the HTML style element is not found within the `_document` iframe...
-					if ( !_element ) {
-						if ( styleElement ) {
-
-							// Clone the `styleElement` and append it to the head of the `_document` of iframe.
-							const clonedElement = styleElement.cloneNode( true );
-							document_element.head?.appendChild( clonedElement );
-
-						}
-					}
+			// If the HTML style element is not found within the `_document` iframe...
+			if ( ! _element ) {
+				if ( styleElement ) {
+					// Clone the `styleElement` and append it to the head of the `_document` of iframe.
+					const clonedElement = styleElement.cloneNode( true );
+					document_element.head?.appendChild( clonedElement );
 				}
 			}
-
 			return document_element;
 		};
 
@@ -93,7 +91,9 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 			const _document = getDocumentElement();
 
 			if ( attributes.masonry ) {
-				const element = _document.getElementById( 'uag-gallery-masonry-style-' + props.clientId.substr( 0, 8 ) );
+				const element = _document.getElementById(
+					'uag-gallery-masonry-style-' + props.clientId.substr( 0, 8 )
+				);
 				if ( null !== element && undefined !== element ) {
 					element.innerHTML = styling;
 				} else {
@@ -122,19 +122,6 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 			setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 		};
 
-		/**
-		 * Gutter value for the Masonry layout
-		 *
-		 * @param {number} value
-		 */
-		const applyGutter = ( value ) => {
-			if ( undefined === value ) {
-				return;
-			}
-			setAttributes( { masonryGutter: value } );
-			applyCSS();
-		};
-
 		applyCSS();
 
 		const imagesID =
@@ -157,13 +144,22 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 								onChange={ ( value ) => update( value ) }
 							/>
 							{ attributes.masonry && (
-								<RangeControl
+								<Range
 									label={ __( 'Gap', 'ultimate-addons-for-gutenberg' ) }
-									value={ attributes.masonryGutter }
-									onChange={ ( value ) => applyGutter( value ) }
+									data={ {
+										value: attributes.masonryGutter,
+										label: 'masonryGutter',
+									} }
 									min={ 0 }
 									max={ 100 }
-									allowReset
+									setAttributes={ setAttributes }
+									value={ attributes.masonryGutter }
+									units={ [
+										{
+											name: __( 'Gap', 'ultimate-addons-for-gutenberg' ),
+											unitValue: 'px',
+										},
+									] }
 								/>
 							) }
 						</UAGAdvancedPanelBody>

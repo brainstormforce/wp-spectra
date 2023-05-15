@@ -182,6 +182,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Image Gallery - Resolved an issue wherein the carousel images would initially appear big on load.
 * Fix: Form - Resolved an issue in which the forms were not being submitted when the block is used inside the footer widget.
 * Fix: Masonry Gallery Extension - Resolved an issue in which the Masonry Gallery extension would not work as intended in the FSE.
+* Fix: Masonry Gallery - Resolved an issue in which the reset button did not work as intended.
 * Fix: Modal - Resolved an issue with the close button in Astra's custom layout action hook `before_add_to_card_form`.
 * Fix: Modal - Resolved an issue wherein the alignment of the block moves to the center from the left when inside the Container.
 * Fix: Post Blocks - Resolved an issue wherein the Spectra Heading and Container blocks were not displayed in post excerpts.
