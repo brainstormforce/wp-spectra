@@ -57,7 +57,7 @@ export default function Save( props ) {
 	};
 	const figureImage = (
 		<>
-			{ href ? (
+			{ ( href && '' !== href ) ? (
 				<a className={ linkClass } href={ href } target={ linkTarget } rel={ getRel() }>
 					{ image }
 				</a>
