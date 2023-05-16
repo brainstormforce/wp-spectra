@@ -16,7 +16,6 @@ const separatorPresets = [
 			{ label: 'separatorStyle', value: 'solid' },
 			{ label: 'separatorBorderHeight', value: 3 },
 			{ label: 'separatorBorderHeightType', value: 'px' },
-			{ label: 'elementColor', value: '#0085ba' },
 			{ label: 'elementPosition', value: 'center' },
 		],
 		icon:
@@ -30,7 +29,6 @@ const separatorPresets = [
 			{ label: 'separatorStyle', value: 'solid' },
 			{ label: 'separatorBorderHeight', value: 3 },
 			{ label: 'separatorBorderHeightType', value: 'px' },
-			{ label: 'elementColor', value: '#0085ba' },
 			{ label: 'elementPosition', value: 'center' },
 		],
 		icon:
@@ -44,7 +42,6 @@ const separatorPresets = [
 			{ label: 'separatorStyle', value: 'solid' },
 			{ label: 'separatorBorderHeight', value: 3 },
 			{ label: 'separatorBorderHeightType', value: 'px' },
-			{ label: 'elementColor', value: '#0085ba' },
 			{ label: 'elementPosition', value: 'left' },
 		],
 		icon:

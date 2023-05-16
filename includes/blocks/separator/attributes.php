@@ -28,7 +28,7 @@ return array(
 	'separatorHeightMobile'          => 10,
 	'separatorHeightTablet'          => 10,
 	'separatorHeightType'            => 'px',
-	'separatorColor'                 => '#333',
+	'separatorColor'                 => '',
 	'elementType'                    => 'none',
 	'elementPosition'                => 'center',
 	'elementSpacing'                 => 15,

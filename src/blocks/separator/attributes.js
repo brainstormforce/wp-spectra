@@ -411,7 +411,6 @@ const attributes = {
 	},
 	elementColor: {
 		type: 'string',
-		default: '#333',
 		UAGCopyPaste: {
 			styleType: 'main-title-color',
 		},
