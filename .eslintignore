@@ -17,3 +17,8 @@ vendor
 assets/js/js_cookie.min.js
 
 **/deprecated/**
+
+# Misc.
+
+# AOS library files.
+assets/js/aos.js

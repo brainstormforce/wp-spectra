@@ -4,7 +4,6 @@
 
 import styling from './styling';
 import { useEffect, useState, useMemo } from '@wordpress/element';
-import { useDeviceType } from '@Controls/getPreviewType';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
@@ -21,9 +20,9 @@ const UAGBImageGallery = ( props ) => {
 		isSelected,
 		setAttributes,
 		name,
+		deviceType
 	} = props;
 
-	const deviceType = useDeviceType();
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );

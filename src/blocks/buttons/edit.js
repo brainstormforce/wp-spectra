@@ -4,7 +4,6 @@
 
 import styling from './styling';
 import { useEffect, useState, useMemo } from '@wordpress/element';
-import { useDeviceType } from '@Controls/getPreviewType';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
@@ -17,7 +16,6 @@ import AddStaticStyles from '@Controls/AddStaticStyles';
 let prevState;
 
 const ButtonsComponent = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		attributes,
@@ -25,6 +23,7 @@ const ButtonsComponent = ( props ) => {
 		setAttributes,
 		clientId,
 		name,
+		deviceType
 	} = props;
 
 	const initialState = {

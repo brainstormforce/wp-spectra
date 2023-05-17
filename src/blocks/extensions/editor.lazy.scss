@@ -1,4 +1,6 @@
-.edit-post-visual-editor .wp-block-gallery.uag-masonry {
+@import "../../styles/variables";
+
+.wp-block-gallery.uag-masonry {
 	/* For Backword */
 	ul.blocks-gallery-grid {
 		column-count: 4;
@@ -94,4 +96,106 @@
 	border: 1px solid rgba( 0, 0, 0, 0.02 );
 }
 
+.uagb-animation {
+
+	&__play-button {
+		width: 100%;
+		justify-content: center;
+		border-style: solid;
+		border-width: 1px;
+	}
+
+	&__range-control {
+
+		.components-range-control__marks {
+			top: 13px;
+		}
+	}
+}
+
 /* stylelint-enable */
+
+// Animation Type - Searchable Select Control CSS.
+.uagb-animation-type-searchable-select {
+
+	& input[type="text"]:focus {
+		box-shadow: unset;
+	}
+
+	.uagb-animation-type-select__container {
+		width: 100%;
+	}
+
+	.uagb-animation-type-select__input input {
+		box-shadow: none;
+		border: none;
+	}
+
+	.uagb-animation-type-select__control {
+		cursor: pointer;
+		border: 1px solid $spectra-color-border;
+		box-shadow: none;
+		height: $spectra-control-input-height;
+		min-height: $spectra-control-input-height;
+		border-radius: $spectra-control-border-radius;
+	}
+
+	.uagb-animation-type-select__indicator-separator {
+		display: none;
+	}
+
+	.uagb-animation-type-select__dropdown-indicator {
+		color: $spectra-color-body;
+		padding-left: 6px;
+
+		svg {
+			height: 14px;
+			width: 14px;
+		}
+	}
+
+	.uagb-animation-type-select__value-container {
+		top: 0;
+		height: $spectra-control-input-height;
+		padding: 0 8px;
+
+		> div {
+			margin: 0;
+			padding: 0;
+		}
+	}
+
+	// Animation Type - Options heading.
+	.uagb-animation-type-select__group-heading {
+		font-weight: 600;
+		font-size: 95%;
+		color: $spectra-color-body;
+	}
+
+	// Animation Type - Options styling.
+	.uagb-animation-type-select__option {
+		color: $spectra-color-body;
+		padding: 8px 20px;
+
+		// This specifically styles the 'None' option.
+		&[id$="option-0"] {
+			padding-left: 12px;
+		}
+
+		&--is-selected,
+		&--is-focused {
+			background-color: $spectra-color-tab-background;
+		}
+	}
+}
+
+// Help tooltip needs readjustment since we are using markers here.
+.block-editor-block-inspector .uagb-inspector-tab div.uagb-animation__range-control-wrapper {
+
+	div.components-base-control {
+
+		p.components-base-control__help {
+			margin-top: 20px;
+		}
+	}
+}

@@ -50,6 +50,12 @@ module.exports = {
 		Headers: true,
 		FormData: true,
 		UAGBCounter: true,
-		location: true
+		location: true,
+		IntersectionObserver: true,
+		navigator: true,
+		uagb_popup_builder_admin: true,
+		UAGBLottie: true,
+		AOS: true,
+		UAGBForms: true,
 	},
 };

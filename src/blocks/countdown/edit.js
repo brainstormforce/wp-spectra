@@ -4,7 +4,6 @@ import Settings from './settings';
 import Render from './render';
 import { getSettings as getDateSettings } from '@wordpress/date';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-import { useDeviceType } from '@Controls/getPreviewType';
 import { applyFilters } from '@wordpress/hooks';
 import DynamicFontLoader from './dynamicFontLoader';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
@@ -31,11 +30,10 @@ const UAGBCountdownEdit = ( props ) => {
 		},
 		setAttributes,
 		name,
+		deviceType
 	} = props;
 
 	const [ timeChanged, setTimeChanged ] = useState( 0 );
-
-	const deviceType = useDeviceType();
 
 	useEffect( () => {
 		// Dynamically set default value to Jan 1 of next year (UTC),

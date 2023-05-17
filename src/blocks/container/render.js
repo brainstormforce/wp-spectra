@@ -1,19 +1,18 @@
 import classnames from 'classnames';
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
+import { getBlockTypes } from '@wordpress/blocks';
 import { memo } from '@wordpress/element';
 import shapes from './shapes';
-import { select } from '@wordpress/data';
-import { useDeviceType } from '@Controls/getPreviewType';
+import { select, useSelect } from '@wordpress/data';
+import backgroundCss from './backgroundCss';
 
 const Render = ( props ) => {
-	const deviceType = useDeviceType();
 	props = props.parentProps;
-	const { attributes, clientId } = props;
+	const { attributes, clientId, deviceType } = props;
 
 	const {
 		block_id,
 		htmlTag,
-		htmlTagLink,
 		topType,
 		topFlip,
 		topContentAboveShape,
@@ -28,11 +27,13 @@ const Render = ( props ) => {
 		contentWidth,
 		innerContentWidth,
 		hasSliderParent,
+		hasPopupParent,
 	} = attributes;
 
 	const direction = attributes[ 'direction' + deviceType ];
 
 	const moverDirection = 'row' === direction ? 'horizontal' : 'vertical';
+	const getContainerBGStyle = backgroundCss( attributes, deviceType, clientId );
 
 	const topDividerHtml = 'none' !== topType && (
 		<div
@@ -70,27 +71,14 @@ const Render = ( props ) => {
 
 	const hasChildBlocks = getBlockOrder( clientId ).length > 0;
 
-	const CustomTag = `${ htmlTag }`;
-	const customTagLinkAttributes = {};
-	if ( htmlTag === 'a' ) {
-		customTagLinkAttributes.rel = 'noopener';
-		customTagLinkAttributes.onClick = ( e ) => e.preventDefault();
-		if ( htmlTagLink?.url ) {
-			customTagLinkAttributes.href = htmlTagLink?.url;
-		}
-		if ( htmlTagLink?.opensInNewTab ) {
-			customTagLinkAttributes.target = '_blank';
-		}
-		if ( htmlTagLink?.noFollow ) {
-			customTagLinkAttributes.rel = 'nofollow noopener';
-		}
-	}
+	const CustomTag = 'a' === htmlTag ? 'div' : `${ htmlTag }`;	
 
 	const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( clientId ).length;
 	const hasChildrenClass = hasChildren ? 'uagb-container-has-children' : '';
 	const isRootContainerClass = isBlockRootParent ? `${ contentWidth } uagb-is-root-container` : '';
 	const blockProps = useBlockProps( {
 		className: `uagb-block-${ block_id } ${ hasChildrenClass } uagb-editor-preview-mode-${ deviceType.toLowerCase() } ${ isRootContainerClass }`,
+		style: getContainerBGStyle
 	} );
 
 	const innerBlocksParams = {
@@ -98,21 +86,49 @@ const Render = ( props ) => {
 		renderAppender: hasChildBlocks ? undefined : InnerBlocks.ButtonBlockAppender,
 	};
 
-	if ( hasSliderParent ) {
-		const parentBlocks = wp.blocks.getBlockTypes().filter( function ( item ) {
-			return ! item.parent;
-		} );
+	// If a special block is needed, run this code block.
+	if ( hasSliderParent || hasPopupParent ) {
 
-		const ALLOWED_BLOCKS = parentBlocks
-			.map( ( block ) => block.name )
-			.filter( ( blockName ) => [ 'uagb/slider' ].indexOf( blockName ) === -1 );
+		const parentBlocks = getBlockTypes().filter( ( item ) => ( ! item.parent ) );
+	
+		let ALLOWED_BLOCKS = parentBlocks.map( ( block ) => block.name );
+	
+		// Check if a parent of this container is a Slider block. If so, disallow the Slider block in this container.
+		if ( hasSliderParent ) {
+			ALLOWED_BLOCKS = ALLOWED_BLOCKS.filter( ( blockName ) => [ 'uagb/slider' ].indexOf( blockName ) === -1 );
+		}
+	
+		// Check if a parent of this container is a Popup block. If so, disallow the Modal block in this container.
+		if ( hasPopupParent ) {
+			ALLOWED_BLOCKS = ALLOWED_BLOCKS.filter( ( blockName ) => [ 'uagb/modal' ].indexOf( blockName ) === -1 );
+		}
 
+		// Add the Updated Block List to the Inner Block Params.
 		innerBlocksParams.allowedBlocks = ALLOWED_BLOCKS;
+	}
+
+	const { getBlockParentsAll, getBlockSingle } = useSelect( ( selectStore ) => {
+		const { getBlockParents, getBlock } = selectStore( 'core/block-editor' );
+		return { getBlockParentsAll: getBlockParents, getBlockSingle: getBlock };
+	}, [] );
+
+	const parentBlockIds = getBlockParentsAll( clientId );
+	const parentBlockNames = parentBlockIds.map( ( id ) => getBlockSingle( id ).name );
+
+	if ( parentBlockNames.includes( 'uagb/loop-builder' ) ) {
+		const allowedBlocks = [
+			'uagb/advanced-heading',
+			'uagb/image',
+			'uagb/buttons',
+			'uagb/container',
+			'uagb/info-box'
+		]
+		innerBlocksParams.allowedBlocks = allowedBlocks;
 	}
 
 	return (
 		<>
-			<CustomTag { ...blockProps } key={ block_id } { ...customTagLinkAttributes }>
+			<CustomTag { ...blockProps } key={ block_id }>
 				{/* Video Background is positioned absolutely. The place in the DOM is to render it underneath the shape dividers and content. */}
 				{ 'video' === backgroundType && (
 					<div className="uagb-container__video-wrap">

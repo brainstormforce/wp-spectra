@@ -10,19 +10,9 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_testimonial_gfont( $attr );
 
-$block_name = 'testimonial';
-
-$test_item_count_fallback = UAGB_Block_Helper::get_fallback_number( $attr['test_item_count'], 'test_item_count', $block_name );
-$row_gap_fallback         = UAGB_Block_Helper::get_fallback_number( $attr['rowGap'], 'rowGap', $block_name );
-$name_space_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['nameSpace'], 'nameSpace', $block_name );
-$desc_space_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['descSpace'], 'descSpace', $block_name );
-$column_gap_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['columnGap'], 'columnGap', $block_name );
-$columns_fallback         = UAGB_Block_Helper::get_fallback_number( $attr['columns'], 'columns', $block_name );
-$image_width_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['imageWidth'], 'imageWidth', $block_name );
-
-$row_gap_tablet_fallback    = is_numeric( $attr['rowGapTablet'] ) ? $attr['rowGapTablet'] : $row_gap_fallback;
+$row_gap_tablet_fallback    = is_numeric( $attr['rowGapTablet'] ) ? $attr['rowGapTablet'] : $attr['rowGap'];
 $row_gap_mobile_fallback    = is_numeric( $attr['rowGapMobile'] ) ? $attr['rowGapMobile'] : $row_gap_tablet_fallback;
-$column_gap_tablet_fallback = is_numeric( $attr['columnGapTablet'] ) ? $attr['columnGapTablet'] : $column_gap_fallback;
+$column_gap_tablet_fallback = is_numeric( $attr['columnGapTablet'] ) ? $attr['columnGapTablet'] : $attr['columnGap'];
 $column_gap_mobile_fallback = is_numeric( $attr['columnGapMobile'] ) ? $attr['columnGapMobile'] : $column_gap_tablet_fallback;
 
 $img_align = 'center';
@@ -60,9 +50,9 @@ $imgpaddingLeft   = isset( $attr['imgpaddingLeft'] ) ? $attr['imgpaddingLeft'] :
 
 $selectors = array(
 	' .uagb-testimonial__wrap'                         => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, $attr['rowGapType'] ),
-		'padding-left'  => UAGB_Helper::get_css_value( ( ( $column_gap_fallback ) / 2 ), $attr['columnGapType'] ),
-		'padding-right' => UAGB_Helper::get_css_value( ( ( $column_gap_fallback ) / 2 ), $attr['columnGapType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGap'], $attr['rowGapType'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( ( ( $attr['columnGap'] ) / 2 ), $attr['columnGapType'] ),
+		'padding-right' => UAGB_Helper::get_css_value( ( ( $attr['columnGap'] ) / 2 ), $attr['columnGapType'] ),
 	),
 	' .uagb-tm__content'                               => array(
 		'text-align'     => $attr['headingAlign'],
@@ -79,20 +69,20 @@ $selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $imgpaddingRight, $attr['imgpaddingUnit'] ),
 	),
 	' .uagb-tm__image img'                             => array(
-		'width'     => UAGB_Helper::get_css_value( $image_width_fallback, $attr['imageWidthType'] ),
-		'max-width' => UAGB_Helper::get_css_value( $image_width_fallback, $attr['imageWidthType'] ),
+		'width'     => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthType'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthType'] ),
 	),
 
 	' .uagb-tm__author-name'                           => array(
 		'color'         => $attr['authorColor'],
-		'margin-bottom' => $name_space_fallback . $attr['nameSpaceType'],
+		'margin-bottom' => $attr['nameSpace'] . $attr['nameSpaceType'],
 	),
 	' .uagb-tm__company'                               => array(
 		'color' => $attr['companyColor'],
 	),
 	' .uagb-tm__desc'                                  => array(
 		'color'         => $attr['descColor'],
-		'margin-bottom' => UAGB_Helper::get_css_value( $desc_space_fallback, $attr['descSpaceType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpace'], $attr['descSpaceType'] ),
 	),
 	' .uagb-testimonial__wrap .uagb-tm__content'       => $overall_border,
 	' .uagb-testimonial__wrap .uagb-tm__content:hover' => array(
@@ -157,7 +147,7 @@ if ( 'dots' === $attr['arrowDots'] ) {
 	);
 }
 
-if ( '1' === $test_item_count_fallback || $test_item_count_fallback === $columns_fallback ) {
+if ( '1' === $attr['test_item_count'] || $attr['test_item_count'] === $attr['columns'] ) {
 	$selectors['.uagb-slick-carousel'] = array(
 		'padding' => 0,
 	);

@@ -636,6 +636,17 @@ const UAGB_Block_Icons = {
 			strokeWidth: 1.4,
 		} ),
 	),
+	'separator': el(
+        'svg',
+        { width: 40, height: 40, viewBox: '0 0 24 24', fill: 'none' },
+        el( 'path', {
+			d: 'M4 12H20M14 17L12 19L10 17M14 7L12 5L10 7',
+            strokeWidth: 1.4,
+            strokeLinecap: 'round',
+            strokeLinejoin: 'round',
+            stroke: iconColor,
+        } ),
+    ),
 
 	// ---------------------------------.
 	// Spectra Pro Blocks and Extensions.
@@ -670,6 +681,28 @@ const UAGB_Block_Icons = {
 			strokeWidth: 1.4,
 		} ),
 	),
+	'animations-extension': el(
+		'svg',
+		{ width: 40, height: 40, viewBox: '0 0 25 25', fill: 'none' },
+		el( 'path', {
+			d: 'M12.3428 21.5269L12.3428 3.86768L21.8502 3.86768C22.8468 3.86768 23.6548 4.76311 23.6548 5.86768L23.6548 19.5269C23.6548 20.6315 22.8468 21.5269 21.8502 21.5269H12.3428Z',
+			stroke: iconColor,
+			strokeWidth: 1.4,
+		} ),
+		el( 'path', {
+			d: 'M15.7205 21.5269H3.03955C1.93498 21.5269 1.03955 20.6315 1.03955 19.5269V5.86768C1.03955 4.76311 1.93498 3.86768 3.03955 3.86768H18.5795',
+			stroke: iconColor,
+			strokeWidth: 1.4,
+			strokeDasharray: '1.5 1.5'
+		} ),
+		el( 'path', {
+			d: 'M7.3607 9.98877L10.0707 12.6987L7.3607 15.4086M9.08789 12.6987L3.16406 12.6987',
+			stroke: iconColor,
+			strokeWidth: 1.4,
+			strokeLinecap: 'round',
+			strokeLinejoin: 'round',
+		} ),
+	),
 	'instagram-feed': el(
 		'svg',
 		{ width: 40, height: 40, viewBox: '0 0 24 24', fill: 'none' },
@@ -678,6 +711,20 @@ const UAGB_Block_Icons = {
 			stroke: iconColor,
 			strokeWidth: 1.4,
 			strokeLinecap: 'round',
+		} ),
+	),
+	'loop-builder': el(
+		'svg',
+		{ width: 40, height: 40, viewBox: '0 0 25 24', fill: 'none' },
+		el( 'path', {
+			d: 'M3.35981 8.80578C5.11039 7.05892 7.94864 7.05892 9.69922 8.80578L12.8689 11.9687L9.69922 15.1317C7.94864 16.8785 5.11039 16.8785 3.35981 15.1317C1.60923 13.3848 1.60923 10.5526 3.35981 8.80578Z',
+			stroke: iconColor,
+			strokeWidth: 1.4,
+		} ),
+		el( 'path', {
+			d: 'M22.2987 15.1942C20.5481 16.9411 17.7099 16.9411 15.9593 15.1942L12.7896 12.0313L15.9593 8.86831C17.7099 7.12146 20.5481 7.12146 22.2987 8.86831C24.0493 10.6152 24.0493 13.4474 22.2987 15.1942Z',
+			stroke: iconColor,
+			strokeWidth: 1.4,
 		} ),
 	),
 };

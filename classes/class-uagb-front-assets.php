@@ -56,7 +56,6 @@ class UAGB_Front_Assets {
 	 * Constructor
 	 */
 	public function __construct() {
-
 		add_action( 'wp', array( $this, 'set_initial_variables' ), 99 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_asset_files' ) );
 	}

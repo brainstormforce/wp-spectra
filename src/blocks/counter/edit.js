@@ -3,7 +3,6 @@ import styling from './styling';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-import { useDeviceType } from '@Controls/getPreviewType';
 import DynamicFontLoader from './dynamicFontLoader';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import { compose } from '@wordpress/compose';
@@ -12,7 +11,6 @@ import AddStaticStyles from '@Controls/AddStaticStyles';
 import './style.scss';
 
 const UAGBCounterEdit = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		setAttributes,
 		isSelected,
@@ -20,6 +18,7 @@ const UAGBCounterEdit = ( props ) => {
 		attributes,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		name,
+		deviceType
 	} = props;
 
 	useEffect( () => {

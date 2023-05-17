@@ -1,0 +1,30 @@
+@import "../../styles/variables";
+
+.components-panel .uagb-inspector-tab .uagb-helper-panel {
+	padding: 32px 24px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-top: 1px solid #e0e0e0; // This color is used to divide the inspector panels.
+
+	&__element {
+
+		&--logo {
+			margin-bottom: 10px;
+		}
+
+		&--message {
+			margin: 0 0 15px;
+			font-size: 13px;
+			font-weight: 400;
+			line-height: 16px;
+			color: $spectra-color-body;
+			text-transform: unset;
+			text-align: center;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}

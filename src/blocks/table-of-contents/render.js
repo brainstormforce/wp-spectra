@@ -5,7 +5,6 @@ import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import { RichText } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
-import { useDeviceType } from '@Controls/getPreviewType';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 const Render = ( props ) => {
@@ -19,8 +18,7 @@ const Render = ( props ) => {
 	const { headers } = props;
 	props = props.parentProps;
 	const blockName = props.name.replace( 'uagb/', '' );
-	const deviceType = useDeviceType();
-	const { attributes, setAttributes, className } = props;
+	const { attributes, setAttributes, className, deviceType } = props;
 
 	const {
 		classMigrate,

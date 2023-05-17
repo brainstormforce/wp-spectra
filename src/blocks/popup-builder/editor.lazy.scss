@@ -1,0 +1,88 @@
+.uagb-popup-builder,
+.uagb-editor-preview-mode-tablet.uagb-popup-builder,
+.uagb-editor-preview-mode-mobile.uagb-popup-builder {
+	display: flex;
+	opacity: 1;
+	// Important is added to override the front-end important CSS.
+	width: 100% !important;
+	height: 1px !important;
+	min-height: 100vh !important;
+	max-width: 100% !important;
+	z-index: initial !important;
+
+	// The z-index is lowered in the editor to avoid overlapping the Block Controls.
+	&__close {
+		z-index: 30;
+	}
+
+	// This selector is added to style the block appender drop zone for Popup Builder without affecting children Containers.
+	&__container > .block-editor-inner-blocks > .block-editor-block-list__layout > .block-list-appender > .block-editor-inserter > .block-editor-button-block-appender {
+		box-shadow: none;
+		padding: 16px;
+		border-radius: 2px;
+		border: 1px dashed #d5dadf;
+
+		svg {
+			fill: #a0a7ac;
+		}
+	}
+
+	// This is styling for the Variant Switching Block Control.
+	&__variant-control-popover {
+		top: 6px !important;
+
+		.components-popover__content {
+			box-shadow: 0 0 0 1px #1d2327;
+		}
+
+		.components-menu-item__button {
+			color: #50575e;
+
+			svg {
+				fill: none;
+				margin-right: 6px;
+
+				path {
+					stroke: #50575e;
+				}
+			}
+
+			&:disabled {
+				color: #007cba;
+				opacity: 1;
+
+				svg path {
+					stroke: #007cba;
+				}
+			}
+		}
+	}
+}
+
+.spectra-popup {
+
+	&__notice {
+		font-style: italic;
+		margin-bottom: 16px;
+		color: #1d2327;
+
+		&--clickable {
+			cursor: pointer;
+
+			.dashicons {
+				-webkit-transition: color 250ms;
+				-moz-transition: color 250ms;
+				-o-transition: color 250ms;
+				transition: color 250ms;
+				margin-right: 8px;
+			}
+		}
+
+		&--secondary {
+			font-size: 11px;
+			line-height: 1.4;
+			color: #a4afb7;
+			margin-bottom: 25px;
+		}
+	}
+}

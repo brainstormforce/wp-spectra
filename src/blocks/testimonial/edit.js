@@ -6,7 +6,6 @@ import { useEffect, useMemo } from '@wordpress/element';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import Settings from './settings';
 import Render from './render';
-import { useDeviceType } from '@Controls/getPreviewType';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import hexToRGBA from '@Controls/hexToRgba';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
@@ -17,7 +16,6 @@ import AddStaticStyles from '@Controls/AddStaticStyles';
 import { compose } from '@wordpress/compose';
 
 const UAGBtestimonial = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		setAttributes,
 		attributes,
@@ -46,6 +44,7 @@ const UAGBtestimonial = ( props ) => {
 		isSelected,
 		clientId,
 		name,
+		deviceType
 	} = props;
 
 	useEffect( () => {

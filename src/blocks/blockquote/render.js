@@ -6,7 +6,6 @@ import AuthorImage from './components/AuthorImage';
 import AuthorText from './components/AuthorText';
 import TweetButtonCTA from './components/TweetButtonCTA';
 import styles from './editor.lazy.scss';
-import { useDeviceType } from '@Controls/getPreviewType';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -19,7 +18,7 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { className, setAttributes, attributes } = props;
+	const { className, setAttributes, attributes, deviceType } = props;
 
 	const {
 		skinStyle,
@@ -32,8 +31,6 @@ const Render = ( props ) => {
 		authorImage,
 		authorImgPosition,
 	} = attributes;
-
-	const deviceType = useDeviceType();
 
 	return (
 		<div

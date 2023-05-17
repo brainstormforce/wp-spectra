@@ -2,7 +2,6 @@ import { useEffect, useMemo } from '@wordpress/element';
 import styling from './styling';
 import Settings from './settings';
 import Render from './render';
-import { useDeviceType } from '@Controls/getPreviewType';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import { applyFilters } from '@wordpress/hooks';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
@@ -11,7 +10,6 @@ import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBModalEdit = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		attributes,
@@ -19,6 +17,7 @@ const UAGBModalEdit = ( props ) => {
 		setAttributes,
 		clientId,
 		name,
+		deviceType
 	} = props;
 
 	useEffect( () => {

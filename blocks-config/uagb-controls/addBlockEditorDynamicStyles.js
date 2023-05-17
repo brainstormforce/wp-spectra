@@ -19,6 +19,8 @@ const addBlockEditorDynamicStyles = () => {
 		const blockCssCss = cloneLinkTag( 'uagb-block-css-css' );
 		const slickStyle = cloneLinkTag( 'uagb-slick-css-css' );
 		const swiperStyle = cloneLinkTag( 'uagb-swiper-css-css' );
+		const aosStyle = cloneLinkTag( 'uagb-aos-css-css' );
+
 		const editorStyle = cloneStyleTag( 'uagb-editor-styles' );
 		const editorProStyle = cloneStyleTag( 'spectra-pro-editor-styles' );
 		const spacingStyle = cloneStyleTag( 'uagb-blocks-editor-spacing-style' );
@@ -54,6 +56,8 @@ const addBlockEditorDynamicStyles = () => {
 			copyLinkTag( dashiconsCss, 'dashicons-css' );
 			copyLinkTag( slickStyle, 'uagb-slick-css-css' );
 			copyLinkTag( swiperStyle, 'uagb-swiper-css-css' );
+			copyLinkTag( aosStyle, 'uagb-aos-css-css' );
+
 			copyStyleTag( editorStyle, 'uagb-editor-styles' );
 			copyStyleTag( editorProStyle, 'spectra-pro-editor-styles' );
 			copyStyleTag( spacingStyle, 'uagb-blocks-editor-spacing-style' );

@@ -10,14 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_how_to_gfont( $attr );
 
-$block_name = 'how-to';
-
-$row_gap_fallback  = UAGB_Block_Helper::get_fallback_number( $attr['row_gap'], 'row_gap', $block_name );
-$trow_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['rowGapTablet'], 'rowGapTablet', $block_name );
-$mrow_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['rowGapMobile'], 'rowGapMobile', $block_name );
-
-$step_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['step_gap'], 'step_gap', $block_name );
-
 $t_selectors = array();
 $m_selectors = array();
 
@@ -29,84 +21,84 @@ $selectors = array(
 		'text-align' => $attr['overallAlignment'],
 	),
 	'.uagb-how-to-main-wrap p.uagb-howto-desc-text'        => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 
 	'.uagb-how-to-main-wrap .uagb-howto__source-wrap'      => array( // For Backword.
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 	'.uagb-how-to-main-wrap .uagb-howto__source-image'     => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 
 	'.uagb-how-to-main-wrap span.uagb-howto__time-wrap'    => array(
-		'margin-bottom'   => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 		'justify-content' => $attr['overallAlignment'],
 	),
 
 	'.uagb-how-to-main-wrap span.uagb-howto__cost-wrap'    => array(
-		'margin-bottom'   => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 		'justify-content' => $attr['overallAlignment'],
 	),
 
 	' h4.uagb-howto-req-steps-text'                        => array(
-		'margin-top'    => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'margin-top'    => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 	' h4.uagb-howto-req-materials-text'                    => array(
-		'margin-top' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'margin-top' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 
 
 	'.uagb-how-to-main-wrap .uagb-how-to-tools-child__wrapper:last-child' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 
 	'.uagb-how-to-main-wrap .uagb-how-to-tools__wrap'      => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 
 	'.uagb-how-to-main-wrap .uagb-how-to-materials-child__wrapper:last-child' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 
 	// for backward compatibility.
 	' .uagb-how-to-materials .uagb-how-to-materials-child__wrapper:last-child' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 
 	' .uagb-tools__wrap .uagb-how-to-tools-child__wrapper:last-child' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 
 	' .uagb-how-to-main-wrap span.uagb-howto__cost-wrap'   => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 
 	' .uagb-how-to-main-wrap span.uagb-howto__time-wrap'   => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 
 	'.uagb-how-to-main-wrap p'                             => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 
 	' .uagb-howto__source-wrap'                            => array( // For Backword.
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 	' .uagb-howto__source-image'                           => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 
 	' .uagb-infobox__content-wrap'                         => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $step_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['step_gap'], 'px' ),
 	),
 
 	' .uagb-infobox__content-wrap:last-child'              => array(
 		'margin-bottom' => '0px',
 	),
 	' .uagb-how-to-step-wrap'                              => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $step_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['step_gap'], 'px' ),
 	),
 
 	' .uagb-how-to-step-wrap:last-child'                   => array(
@@ -114,14 +106,14 @@ $selectors = array(
 	),
 	' span.uagb-howto__time-wrap .uagb-howto-timeNeeded-value' => array(
 		'margin-left' => UAGB_Helper::get_css_value(
-			UAGB_Block_Helper::get_fallback_number( $attr['timeSpace'], 'timeSpace', $block_name ),
+			$attr['timeSpace'],
 			'px'
 		),
 	),
 
 	' span.uagb-howto__cost-wrap .uagb-howto-estcost-value' => array(
 		'margin-left' => UAGB_Helper::get_css_value(
-			UAGB_Block_Helper::get_fallback_number( $attr['costSpace'], 'costSpace', $block_name ),
+			$attr['costSpace'],
 			'px'
 		),
 	),
@@ -178,75 +170,75 @@ $selectors[' .uagb-materials__label'] = array(
 
 $t_selectors = array(
 	'.uagb-how-to-main-wrap p.uagb-howto-desc-text'     => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $trow_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapTablet'], 'px' ),
 	),
 	'.uagb-how-to-main-wrap .uagb-howto__source-image'  => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $trow_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapTablet'], 'px' ),
 	),
 
 	'.uagb-how-to-main-wrap span.uagb-howto__time-wrap' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $trow_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapTablet'], 'px' ),
 	),
 
 	'.uagb-how-to-main-wrap span.uagb-howto__cost-wrap' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $trow_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapTablet'], 'px' ),
 	),
 
 	' h4.uagb-howto-req-steps-text'                     => array(
-		'margin-top'    => UAGB_Helper::get_css_value( $trow_gap_fallback, 'px' ),
-		'margin-bottom' => UAGB_Helper::get_css_value( $trow_gap_fallback, 'px' ),
+		'margin-top'    => UAGB_Helper::get_css_value( $attr['rowGapTablet'], 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapTablet'], 'px' ),
 	),
 
 	' h4.uagb-howto-req-materials-text'                 => array(
-		'margin-top' => UAGB_Helper::get_css_value( $trow_gap_fallback, 'px' ),
+		'margin-top' => UAGB_Helper::get_css_value( $attr['rowGapTablet'], 'px' ),
 	),
 	'.uagb-how-to-main-wrap .uagb-how-to-tools-child__wrapper:last-child' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $trow_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapTablet'], 'px' ),
 	),
 
 	'.uagb-how-to-main-wrap .uagb-how-to-tools__wrap'   => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $trow_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapTablet'], 'px' ),
 	),
 
 	'.uagb-how-to-main-wrap .uagb-how-to-materials-child__wrapper:last-child' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $trow_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapTablet'], 'px' ),
 	),
 );
 
 $m_selectors = array(
 	'.uagb-how-to-main-wrap p.uagb-howto-desc-text'     => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $mrow_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapMobile'], 'px' ),
 	),
 	'.uagb-how-to-main-wrap .uagb-howto__source-image'  => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $mrow_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapMobile'], 'px' ),
 	),
 
 	'.uagb-how-to-main-wrap span.uagb-howto__time-wrap' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $mrow_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapMobile'], 'px' ),
 	),
 
 	'.uagb-how-to-main-wrap span.uagb-howto__cost-wrap' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $mrow_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapMobile'], 'px' ),
 	),
 
 	' h4.uagb-howto-req-steps-text'                     => array(
-		'margin-top'    => UAGB_Helper::get_css_value( $mrow_gap_fallback, 'px' ),
-		'margin-bottom' => UAGB_Helper::get_css_value( $mrow_gap_fallback, 'px' ),
+		'margin-top'    => UAGB_Helper::get_css_value( $attr['rowGapMobile'], 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapMobile'], 'px' ),
 	),
 
 	' h4.uagb-howto-req-materials-text'                 => array(
-		'margin-top' => UAGB_Helper::get_css_value( $mrow_gap_fallback, 'px' ),
+		'margin-top' => UAGB_Helper::get_css_value( $attr['rowGapMobile'], 'px' ),
 	),
 	'.uagb-how-to-main-wrap .uagb-how-to-tools-child__wrapper:last-child' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $mrow_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapMobile'], 'px' ),
 	),
 
 	'.uagb-how-to-main-wrap .uagb-how-to-tools__wrap'   => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $mrow_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapMobile'], 'px' ),
 	),
 
 	'.uagb-how-to-main-wrap .uagb-how-to-materials-child__wrapper:last-child' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $mrow_gap_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapMobile'], 'px' ),
 	),
 );
 

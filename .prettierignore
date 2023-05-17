@@ -6,6 +6,7 @@ packages/block-serialization-spec-parser/parser.js
 packages/e2e-tests/plugins
 packages/react-native-editor/bundle
 vendor
+
 admin-core
 dist
 .github
@@ -24,3 +25,7 @@ font-awesome-pollyfiller.js
 *.min.css
 *.css
 blocks-config/uagb-controls/fonts.js
+
+<!-- Libraries -->
+assets/js/aos.js
+assets/css/aos.css

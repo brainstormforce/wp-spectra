@@ -10,13 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_wp_search_gfont( $attr );
 
-$block_name = 'wp-search';
-
-$input_size_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['inputSize'], 'inputSize', $block_name );
-$button_width_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['buttonWidth'], 'buttonWidth', $block_name );
-$button_icon_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['buttonIconSize'], 'buttonIconSize', $block_name );
-$icon_size_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name );
-
 $selectors            = array();
 $t_selectors          = array();
 $m_selectors          = array();
@@ -38,8 +31,8 @@ $paddingInputRightMobile  = isset( $attr['paddingInputRightMobile'] ) ? UAGB_Hel
 $paddingInputBottomMobile = isset( $attr['paddingInputBottomMobile'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputBottomMobile'], $attr['mobilePaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
 $paddingInputLeftMobile   = isset( $attr['paddingInputLeftMobile'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputLeftMobile'], $attr['mobilePaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
 
-$iconSize       = UAGB_Helper::get_css_value( $icon_size_fallback, $attr['iconSizeType'] );
-$buttonIconSize = UAGB_Helper::get_css_value( $button_icon_size_fallback, $attr['buttonIconSizeType'] );
+$iconSize       = UAGB_Helper::get_css_value( $attr['iconSize'], $attr['iconSizeType'] );
+$buttonIconSize = UAGB_Helper::get_css_value( $attr['buttonIconSize'], $attr['buttonIconSizeType'] );
 $inputCSS       = array(
 	'color'            => $attr['textColor'],
 	'background-color' => $attr['inputBgColor'],
@@ -74,9 +67,9 @@ $boxCSS = array_merge(
 	)
 );
 if ( 'px' === $attr['inputSizeType'] ) {
-	$boxCSS['max-width'] = UAGB_Helper::get_css_value( $input_size_fallback, $attr['inputSizeType'] );
+	$boxCSS['max-width'] = UAGB_Helper::get_css_value( $attr['inputSize'], $attr['inputSizeType'] );
 } else {
-	$boxCSS['width'] = UAGB_Helper::get_css_value( $input_size_fallback, $attr['inputSizeType'] );
+	$boxCSS['width'] = UAGB_Helper::get_css_value( $attr['inputSize'], $attr['inputSizeType'] );
 }
 $icon_color = $attr['textColor'];
 
@@ -86,7 +79,7 @@ if ( $attr['iconColor'] && '' !== $attr['iconColor'] ) {
 
 $selectors = array(
 	' .uagb-search-form__container .uagb-search-submit' => array(
-		'width'   => UAGB_Helper::get_css_value( $button_width_fallback, $attr['buttonWidthType'] ),
+		'width'   => UAGB_Helper::get_css_value( $attr['buttonWidth'], $attr['buttonWidthType'] ),
 		'padding' => 0,
 		'border'  => 0,
 	),

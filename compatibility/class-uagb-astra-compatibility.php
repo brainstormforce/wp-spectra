@@ -65,6 +65,7 @@ class UAGB_Astra_Compatibility {
 	 * @param array $astra_fonts Astra Fonts Object.
 	 *
 	 * @since 2.0.0
+	 * @return array
 	 */
 	public function add_google_fonts_in_astra( $astra_fonts ) {
 
@@ -85,8 +86,7 @@ class UAGB_Astra_Compatibility {
 			if ( is_array( $google_fonts ) && ! empty( $google_fonts ) ) {
 
 				foreach ( $google_fonts as $key => $gfont_values ) {
-
-					if ( isset( $gfont_values['fontfamily'] ) && isset( $gfont_values['fontvariants'] ) ) {
+					if ( ! empty( $gfont_values['fontfamily'] ) && is_string( $gfont_values['fontfamily'] ) && isset( $gfont_values['fontvariants'] ) ) {
 
 						$astra_fonts[ $gfont_values['fontfamily'] ] = $gfont_values['fontvariants'];
 
