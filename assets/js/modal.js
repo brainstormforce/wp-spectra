@@ -6,8 +6,8 @@ window.UAGBModal = {
 	init( mainSelector, isAdmin ) {
 		const document_element = UAGBModal._getDocumentElement();
 		const modalWrapper = document_element.querySelectorAll( mainSelector );
-		const siteEditTheme = document.getElementsByClassName( 'edit-site' );
-		const pageTemplate = document.getElementsByClassName( 'block-editor-iframe__body' );
+		const siteEditTheme = document_element.getElementsByClassName( 'edit-site' );
+		const pageTemplate = document_element.getElementsByClassName( 'block-editor-iframe__body' );
 
 		if ( modalWrapper?.length ) {
 			for ( const modalWrapperEl of modalWrapper ) {
@@ -17,24 +17,27 @@ window.UAGBModal = {
 					modalTrigger.style.pointerEvents = 'auto';
 
 					const innerModal = modalWrapperEl?.querySelector( '.uagb-modal-popup' );
-
 					if ( ! innerModal ) {
 						continue;
 					}
 
 					if ( ! isAdmin ) {
-						document.body?.appendChild( innerModal );
+						document_element.body?.appendChild( innerModal );
 					}
+
 					const bodyWrap = document_element.querySelector( 'body' );
+					if ( ! bodyWrap ) {
+						continue;
+					}
+
 					modalTrigger.addEventListener( 'click', function ( e ) {
 						e.preventDefault();
 						if ( ! innerModal.classList.contains( 'active' ) ) {
 							innerModal.classList.add( 'active' );
 							if (
-								bodyWrap &&
 								! bodyWrap.classList.contains( 'hide-scroll' ) &&
-								siteEditTheme?.length &&
-								pageTemplate?.length &&
+								! siteEditTheme?.length &&
+								! pageTemplate?.length &&
 								! bodyWrap.classList.contains( 'wp-admin' )
 							) {
 								bodyWrap.classList.add( 'hide-scroll' );
@@ -43,15 +46,18 @@ window.UAGBModal = {
 					} );
 
 					const closeModal = innerModal.querySelector( `${ mainSelector } .uagb-modal-popup-close` );
-					closeModal.addEventListener( 'click', function () {
-						if ( innerModal.classList.contains( 'active' ) ) {
-							innerModal.classList.remove( 'active' );
-						}
-						if ( bodyWrap && bodyWrap.classList.contains( 'hide-scroll' ) ) {
-							UAGBModal.closeModalScrollCheck( bodyWrap );
-						}
-					} );
-					if( 'disable' !== closeOverlayClick ){
+					if ( closeModal ) {
+						closeModal.addEventListener( 'click', function () {
+							if ( innerModal.classList.contains( 'active' ) ) {
+								innerModal.classList.remove( 'active' );
+							}
+							if ( bodyWrap.classList.contains( 'hide-scroll' ) ) {
+								UAGBModal.closeModalScrollCheck( bodyWrap, document_element );
+							}
+						} );
+					}
+
+					if ( 'disable' !== closeOverlayClick ) {
 						innerModal.addEventListener( 'click', function ( e ) {
 							if (
 								'enable' === closeOverlayClick &&
@@ -60,8 +66,8 @@ window.UAGBModal = {
 							) {
 								innerModal.classList.remove( 'active' );
 							}
-							if ( bodyWrap && bodyWrap.classList.contains( 'hide-scroll' ) ) {
-								UAGBModal.closeModalScrollCheck( bodyWrap );
+							if ( bodyWrap.classList.contains( 'hide-scroll' ) ) {
+								UAGBModal.closeModalScrollCheck( bodyWrap, document_element );
 							}
 						} );
 					}
@@ -72,8 +78,8 @@ window.UAGBModal = {
 							if ( innerModal.classList.contains( 'active' ) ) {
 								innerModal.classList.remove( 'active' );
 							}
-							if ( bodyWrap && bodyWrap.classList.contains( 'hide-scroll' ) ) {
-								UAGBModal.closeModalScrollCheck( bodyWrap );
+							if ( bodyWrap.classList.contains( 'hide-scroll' ) ) {
+								UAGBModal.closeModalScrollCheck( bodyWrap, document_element );
 							}
 						}
 					} );
@@ -81,11 +87,12 @@ window.UAGBModal = {
 			}
 		}
 	},
+	// Get the Document element if it's inside an iFrame.
 	_getDocumentElement() {
 		let document_element = document;
 		const getEditorIframe = document.querySelectorAll( 'iframe[name="editor-canvas"]' );
-		if( getEditorIframe?.length ){
-			const iframeDocument = getEditorIframe?.[0]?.contentWindow?.document || getEditorIframe?.[0]?.contentDocument;
+		if ( getEditorIframe?.length ) {
+			const iframeDocument = getEditorIframe[0]?.contentWindow?.document || getEditorIframe[0]?.contentDocument;
 			if ( iframeDocument ) {
 				document_element = iframeDocument;
 			}
@@ -93,9 +100,9 @@ window.UAGBModal = {
 		return document_element;
 	},
 	// Close the Modal and check if the Scrollbar needs to be reactivated.
-	closeModalScrollCheck( bodyWrapper ) {
-		const allActiveModals = document.querySelectorAll( '.uagb-modal-popup.active' );
-		if ( 0 === allActiveModals.length ) {
+	closeModalScrollCheck( bodyWrapper, document_element ) {
+		const allActiveModals = document_element.querySelectorAll( '.uagb-modal-popup.active' );
+		if ( ! allActiveModals?.length ) {
 			bodyWrapper.classList.remove( 'hide-scroll' );
 		}
 	},
