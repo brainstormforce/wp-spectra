@@ -368,7 +368,7 @@ if ( 'video' === $attr['backgroundType'] ) {
 	} else {
 		$selectorClass = '.wp-block-uagb-container.uagb-block-' . $id;
 	}
-	$selectors[ '.uagb-block-' . $id . ' > div:not(.uagb-container__video-wrap)' ] = array(
+	$selectors[ '.uagb-block-' . $id . ' > div:not(.uagb-container__video-wrap):not(.uagb-container__shape)' ] = array(
 		'position' => 'relative',
 	);
 	$selectors[ $selectorClass ]   = $inner_container_css;
