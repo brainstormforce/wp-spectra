@@ -319,6 +319,7 @@ function styling( attributes, clientId, name ) {
 	}
 
 	selectors[ containerFlexSelector ] = {
+		'min-height': generateCSSUnit( minHeightDesktop, minHeightType ),
 		'flex-direction': directionDesktop,
 		'align-items': alignItemsDesktop,
 		'justify-content': justifyContentDesktop,
