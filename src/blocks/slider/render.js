@@ -17,7 +17,7 @@ const Render = ( props ) => {
 		block,
 		blockParents,
 		attributes: { slide_content },
-		deviceType
+		deviceType,
 	} = props;
 
 	const swiperRef = useRef();
@@ -29,7 +29,7 @@ const Render = ( props ) => {
 	doAction( `spectra.slider.before_render`, attributes );
 
 	const { isListViewOpen, hasChildren } = useSelect( ( select ) => {
-		const { isListViewOpened } = select( 'core/edit-post' );
+	const { isListViewOpened } = select( 'core/edit-post' ) || select( 'core/edit-widgets' ) || select( 'core/edit-site' );
 
 		return {
 			isListViewOpen: isListViewOpened(),

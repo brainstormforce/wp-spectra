@@ -166,7 +166,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= 2.6.0 - THURSDAY, 11th MAY 2023 =
+= 2.6.0 - WEDNESDAY, 17th MAY 2023 =
 * New: Introducing the Popup Builder - Create sitewide Popups and Info Bars with ease!
 * New: Introducing the Animations extension - Give a new life to your page with some scroll-based entrance animations.
 * New: Introducing the Separator block -  Divide your page content in style.
@@ -187,6 +187,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Modal - Resolved an issue wherein the alignment of the block moves to the center from the left when inside the Container.
 * Fix: Post Blocks - Resolved an issue wherein the Spectra Heading and Container blocks were not displayed in post excerpts.
 * Fix: Post Grid - Resolved a pagination bug in Post Grid that affected the other grid's pagination.
+* Fix: Slider - Fixed an issue that was causing the Slider block to malfunction when used in the Full Site Editing (FSE) template and widget editors.
 * Fix: Table Of Contents - Updated the front-end preview UI to match in the "Inside Post/Page Content" type of Astra's Custom Layout.
 * Fix: Table Of Contents - Resolved an issue wherein the gap between lists setting would not work as required on the front-end.
 * Fix: Tabs - Set the tab title default color to 'inherit' to prevent it from taking the link color from the theme.
