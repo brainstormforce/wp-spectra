@@ -500,7 +500,7 @@ function styling( attributes, clientId, name ) {
 			'border-color':
 				'antiHover' === captionVisibility
 					? 'rgba(0,0,0,0)'
-					: 'always' === captionVisibility && captionSeparateColors
+					: 'antiHover' !== captionVisibility 
 					? mainTitleBorderHColor
 					: mainTitleBorderColor,
 		},
