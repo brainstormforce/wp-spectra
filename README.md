@@ -166,6 +166,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: Image Gallery - Resolved an issue in which the 'show on hover' border color for bar-type captions would not work as intended.
+
 ### 2.6.0 - WEDNESDAY, 17th MAY 2023 ###
 * New: Introducing the Popup Builder - Create sitewide Popups and Info Bars with ease!
 * New: Introducing the Animations extension - Give a new life to your page with some scroll-based entrance animations.
