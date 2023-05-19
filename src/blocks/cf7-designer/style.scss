@@ -160,34 +160,38 @@
 @media ( min-width: 769px ) {
 	.wp-block-uagb-cf7-styler {
 		.uagb-cf7_styler-col {
-			-js-display: flex;
-			display: -webkit-box;
-			display: -webkit-flex;
-			display: -moz-box;
-			display: -ms-flexbox;
-			display: flex;
+			& > p {
+				-js-display: flex;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: -moz-box;
+				display: -ms-flexbox;
+				display: flex;
+				flex-wrap: wrap;
+				width: 100%;
+			}
 		}
 
 		.uagb-cf7_styler-col label,
-		.uagb-cf7_styler-col > span {
+		.uagb-cf7_styler-col > p > span {
 			-webkit-box-flex: 1;
 			-webkit-flex-grow: 1;
 			-moz-box-flex: 1;
 			-ms-flex-positive: 1;
+			flex: 1;
 			flex-grow: 1;
-			flex-basis: 100%;
 		}
 
 		.uagb-cf7_styler-col br {
 			display: none;
 		}
 
-		.uagb-cf7_styler-col > span.uagb-cf7_styler-col-1 {
+		.uagb-cf7_styler-col > p > span.uagb-cf7_styler-col-1 {
 			padding-right: 15px;
 			padding-left: 0;
 		}
 
-		.uagb-cf7_styler-col > span.uagb-cf7_styler-col-3 {
+		.uagb-cf7_styler-col > p > span.uagb-cf7_styler-col-3 {
 			padding-right: 0;
 			padding-left: 15px;
 		}

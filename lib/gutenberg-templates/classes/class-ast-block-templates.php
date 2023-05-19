@@ -299,8 +299,8 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 		 */
 		public function activate_plugin() {
 
-			if ( ! current_user_can( 'edit_posts' ) ) {
-				wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
+			if ( ! current_user_can( 'activate_plugins' ) ) {
+				wp_send_json_error( __( 'You are not allowed to perform this action.', 'astra-sites' ) );
 			}
 			// Verify Nonce.
 			check_ajax_referer( 'ast-block-templates-ajax-nonce', 'security' );
@@ -312,12 +312,7 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 			$activate = activate_plugin( $plugin_init, '', false, true );
 
 			if ( is_wp_error( $activate ) ) {
-				wp_send_json_error(
-					array(
-						'success' => false,
-						'message' => $activate->get_error_message(),
-					)
-				);
+				wp_send_json_error( $activate->get_error_message() );
 			}
 
 			wp_send_json_success(
@@ -402,11 +397,15 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 				return;
 			}
 
-			wp_enqueue_script( 'ast-block-templates', AST_BLOCK_TEMPLATES_URI . 'dist/null.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'masonry', 'imagesloaded', 'updates' ), AST_BLOCK_TEMPLATES_VER, true );
+			wp_enqueue_script( 'ast-block-templates', AST_BLOCK_TEMPLATES_URI . 'dist/main.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'masonry', 'imagesloaded', 'updates' ), AST_BLOCK_TEMPLATES_VER, true );
 			wp_add_inline_script( 'ast-block-templates', 'window.lodash = _.noConflict();', 'after' );
 
 			wp_enqueue_style( 'ast-block-templates', AST_BLOCK_TEMPLATES_URI . 'dist/style.css', array(), AST_BLOCK_TEMPLATES_VER, 'all' );
 
+			$license_status = false;
+			if ( is_callable( 'BSF_License_Manager::bsf_is_active_license' ) ) {
+				$license_status = BSF_License_Manager::bsf_is_active_license( 'astra-pro-sites' );
+			}
 			wp_localize_script(
 				'ast-block-templates',
 				'AstBlockTemplatesVars',
@@ -433,6 +432,9 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 						'button_class'            => '',
 						'display_suggestion_link' => true,
 						'suggestion_link'         => 'https://wpastra.com/sites-suggestions/?utm_source=demo-import-panel&utm_campaign=astra-sites&utm_medium=suggestions',
+						'license_status'          => $license_status,
+						'isPro'                   => defined( 'ASTRA_PRO_SITES_NAME' ) ? true : false,
+						'getProURL'               => defined( 'ASTRA_PRO_SITES_NAME' ) ? esc_url( admin_url( 'plugins.php?bsf-inline-license-form=astra-pro-sites' ) ) : esc_url( 'https://wpastra.com/starter-templates-plans/?utm_source=gutenberg-templates&utm_medium=dashboard&utm_campaign=Starter-Template-Backend' ),
 					)
 				)
 			);
@@ -595,26 +597,29 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 				'size'     => filesize( $temp_file ),
 			);
 
-			$defaults = array(
+			$defaults = apply_filters(
+				'ast_block_templates_wp_handle_sideload',
+				array(
 
-				// Tells WordPress to not look for the POST form
-				// fields that would normally be present as
-				// we downloaded the file from a remote server, so there
-				// will be no form fields
-				// Default is true.
-				'test_form'   => false,
+					// Tells WordPress to not look for the POST form
+					// fields that would normally be present as
+					// we downloaded the file from a remote server, so there
+					// will be no form fields
+					// Default is true.
+					'test_form'   => false,
 
-				// Setting this to false lets WordPress allow empty files, not recommended.
-				// Default is true.
-				'test_size'   => true,
+					// Setting this to false lets WordPress allow empty files, not recommended.
+					// Default is true.
+					'test_size'   => true,
 
-				// A properly uploaded file will pass this test. There should be no reason to override this one.
-				'test_upload' => true,
+					// A properly uploaded file will pass this test. There should be no reason to override this one.
+					'test_upload' => true,
 
-				'mimes'       => array(
-					'xml'  => 'text/xml',
-					'json' => 'application/json',
-				),
+					'mimes'       => array(
+						'xml'  => 'text/xml',
+						'json' => 'application/json',
+					),
+				) 
 			);
 
 			$overrides = wp_parse_args( $overrides, $defaults );

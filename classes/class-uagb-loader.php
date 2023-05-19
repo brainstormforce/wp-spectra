@@ -86,7 +86,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.6.0' );
+			define( 'UAGB_VER', '2.6.1' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'spectra' );
@@ -263,6 +263,26 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 					unset( $attributes['UAGResponsiveConditions'] );
 				}
 
+				if ( isset( $attributes['UAGAnimationType'] ) ) {
+					unset( $attributes['UAGAnimationType'] );
+				}
+
+				if ( isset( $attributes['UAGAnimationTime'] ) ) {
+					unset( $attributes['UAGAnimationTime'] );
+				}
+
+				if ( isset( $attributes['UAGAnimationDelay'] ) ) {
+					unset( $attributes['UAGAnimationDelay'] );
+				}
+
+				if ( isset( $attributes['UAGAnimationEasing'] ) ) {
+					unset( $attributes['UAGAnimationEasing'] );
+				}
+
+				if ( isset( $attributes['UAGAnimationRepeat'] ) ) {
+					unset( $attributes['UAGAnimationRepeat'] );
+				}
+
 					$request['attributes'] = $attributes;
 
 			}
@@ -387,7 +407,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			add_filter( 'excerpt_allowed_wrapper_blocks', array( $this, 'add_wrapper_blocks_to_excerpt' ), 20 );
 			add_filter( 'uagb_blocks_allowed_in_excerpt', array( $this, 'add_uagb_blocks_to_excerpt' ), 20, 2 );
 		}
-		
+
 		/**
 		 * Adds specified blocks to the list of allowed blocks in excerpts.
 		 *
@@ -414,7 +434,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 					'uagb/container',
 					'uagb/columns',
 					'uagb/column',
-				) 
+				)
 			);
 		}
 
@@ -430,7 +450,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			if ( is_array( $excerpt_blocks ) && is_array( $blocks_to_add ) ) {
 				return array_merge( $excerpt_blocks, $blocks_to_add );
 			}
-			
+
 			// If either parameter is not an array, return the original excerpt blocks.
 			return $excerpt_blocks;
 		}
