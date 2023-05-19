@@ -168,6 +168,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Fix: Image Gallery - Resolved an issue in which the 'show on hover' border color for bar-type captions would not work as intended.
+* Fix: CF7 Designer - Resolved an issue with CF7 Styler where CSS of custom classes were not being applied correctly to multiple column fields.
 
 = 2.6.0 - WEDNESDAY, 17th MAY 2023 =
 * New: Introducing the Popup Builder - Create sitewide Popups and Info Bars with ease!
