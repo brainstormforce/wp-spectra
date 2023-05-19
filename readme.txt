@@ -169,7 +169,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 = 2.6.1 - FRIDAY, 19th MAY 2003 =
 * Fix: Admin Dashboard - Added missing i18n support for some strings.
 * Fix: Admin Dashboard - 'Activate all' and 'Deactivate all' previously had no impact on the status of Animations extension.
-* Fix: Animations Extension - Resolved Error loading issue for dynamic blocks caused by animation attributes.
+* Fix: Animations Extension - Resolved the 'Error loading' issue for dynamic blocks that was caused by animation attributes.
 * Fix: CF7 Designer - Resolved an issue with CF7 Styler where CSS of custom classes were not being applied correctly to multiple column fields.
 * Fix: Image Gallery - Resolved an issue in which the 'show on hover' border color for bar-type captions would not work as intended.
 
