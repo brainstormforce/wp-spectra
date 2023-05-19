@@ -2,6 +2,7 @@ import apiFetch from '@wordpress/api-fetch';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { __ } from '@wordpress/i18n';
 
 const FilterTabs = () => {
 
@@ -80,6 +81,7 @@ const FilterTabs = () => {
             dispatch( {type: 'UPDATE_ENABLE_DISPLAY_CONDITIONS', payload: 'enabled' } );
 			dispatch( {type: 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS', payload: 'enabled' } );
 			dispatch( {type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'enabled' } );
+            dispatch( {type: 'UPDATE_ENABLE_ANIMATIONS_EXTENSION', payload: 'enabled' } );
         }
 
         if ( 'pro' === activeBlocksFilterTab ) {
@@ -125,6 +127,7 @@ const FilterTabs = () => {
             dispatch( {type: 'UPDATE_ENABLE_DISPLAY_CONDITIONS', payload: 'disabled' } );
 			dispatch( {type: 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS', payload: 'disabled' } );
 			dispatch( {type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'disabled' } );
+            dispatch( {type: 'UPDATE_ENABLE_ANIMATIONS_EXTENSION', payload: 'disabled' } );
         }
 
         if ( 'pro' === activeBlocksFilterTab ) {
@@ -169,7 +172,7 @@ const FilterTabs = () => {
         <div className="mx-auto mb-6 px-6 lg:max-w-[80rem]">
             <div className="w-full sm:hidden">
                 <label htmlFor="tabs" className="sr-only">
-                    Select a tab
+                    { __( 'Select a tab', 'ultimate-addons-for-gutenberg' ) }
                 </label>
                 {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
                 <select
@@ -209,14 +212,14 @@ const FilterTabs = () => {
                         className="focus:bg-indigo-50 focus:text-slate-500 focus-visible:text-spectra hover:bg-indigo-50 hover:text-spectra -ml-px relative inline-flex items-center px-4 py-2 border border-slate-200 bg-white text-sm font-medium text-slate-500 focus:z-10 focus:outline-none rounded-l-md transition"
                         onClick={activateAllBlocks}
                     >
-                        Activate all
+                        { __( 'Activate all', 'ultimate-addons-for-gutenberg' ) }
                     </button>
                     <button
                         type="button"
                         className="focus:bg-indigo-50 focus:text-slate-500 focus-visible:text-spectra hover:bg-indigo-50 hover:text-spectra -ml-px relative inline-flex items-center px-4 py-2 border border-slate-200 bg-white text-sm font-medium text-slate-500 focus:z-10 focus:outline-none rounded-r-md transition"
                         onClick={deactivateAllBlocks}
                     >
-                        Deactivate all
+                        { __( 'Deactivate all', 'ultimate-addons-for-gutenberg' ) }
                     </button>
                 </span>
             </div>
